@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  LIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CiFreeIni (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CiLoadIni () ; 
- char* IniStrValue (int /*<<< orphan*/ *,char*) ; 
- int IsEmptyStr (char*) ; 
- int /*<<< orphan*/  NormalizePath (char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  StrCpy (char*,int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int UINT ;
+typedef int LIST ;
+
+
+ int CiFreeIni (int *) ;
+ int * CiLoadIni () ;
+ char* IniStrValue (int *,char*) ;
+ int IsEmptyStr (char*) ;
+ int NormalizePath (char*,int ,char*) ;
+ int StrCpy (char*,int ,char*) ;
 
 bool CiLoadConfigFilePathFromIni(char *path, UINT size)
 {
-	char *tmp;
-	LIST *o;
-	bool ret = false;
+ char *tmp;
+ LIST *o;
+ bool ret = 0;
 
-	// Validate arguments
-	if (path == NULL)
-	{
-		return false;
-	}
 
-	o = CiLoadIni();
+ if (path == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (o == NULL)
-	{
-		return false;
-	}
+ o = CiLoadIni();
 
-	StrCpy(path, size, "");
+ if (o == ((void*)0))
+ {
+  return 0;
+ }
 
-	tmp = IniStrValue(o, "ConfigPath");
-	NormalizePath(path, size, tmp);
+ StrCpy(path, size, "");
 
-	if (IsEmptyStr(path) == false)
-	{
-		ret = true;
-	}
-	else
-	{
-		ret = false;
-	}
+ tmp = IniStrValue(o, "ConfigPath");
+ NormalizePath(path, size, tmp);
 
-	CiFreeIni(o);
+ if (IsEmptyStr(path) == 0)
+ {
+  ret = 1;
+ }
+ else
+ {
+  ret = 0;
+ }
 
-	return ret;
+ CiFreeIni(o);
+
+ return ret;
 }

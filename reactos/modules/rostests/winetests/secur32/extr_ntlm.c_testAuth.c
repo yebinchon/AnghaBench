@@ -1,94 +1,94 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_26__   TYPE_6__ ;
-typedef  struct TYPE_25__   TYPE_5__ ;
-typedef  struct TYPE_24__   TYPE_4__ ;
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  info ;
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  int UINT ;
-struct TYPE_26__ {unsigned char* User; unsigned char* Domain; unsigned char* Password; int /*<<< orphan*/  Flags; void* PasswordLength; void* DomainLength; void* UserLength; } ;
+
+
+typedef struct TYPE_26__ TYPE_6__ ;
+typedef struct TYPE_25__ TYPE_5__ ;
+typedef struct TYPE_24__ TYPE_4__ ;
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+
+
+typedef int info ;
+typedef int ULONG ;
+typedef int UINT ;
+struct TYPE_26__ {unsigned char* User; unsigned char* Domain; unsigned char* Password; int Flags; void* PasswordLength; void* DomainLength; void* UserLength; } ;
 struct TYPE_25__ {scalar_t__ NegotiationState; TYPE_3__* PackageInfo; } ;
 struct TYPE_24__ {int cbMaxToken; int cbMaxSignature; int cbSecurityTrailer; scalar_t__ cbBlockSize; } ;
 struct TYPE_23__ {int fCapabilities; int wVersion; scalar_t__ wRPCID; scalar_t__ Name; char* Comment; } ;
-struct TYPE_21__ {int /*<<< orphan*/  member_0; } ;
-struct TYPE_22__ {int /*<<< orphan*/  cred; int /*<<< orphan*/  ctxt; TYPE_6__* id; TYPE_1__ member_0; } ;
-typedef  TYPE_2__ SspiData ;
-typedef  TYPE_3__ SecPkgInfoA ;
-typedef  TYPE_4__ SecPkgContext_Sizes ;
-typedef  TYPE_5__ SecPkgContext_NegotiationInfoA ;
-typedef  TYPE_6__ SEC_WINNT_AUTH_IDENTITY_A ;
-typedef  scalar_t__ SECURITY_STATUS ;
-typedef  int /*<<< orphan*/ * PSecPkgInfoA ;
-typedef  scalar_t__ BOOL ;
+struct TYPE_21__ {int member_0; } ;
+struct TYPE_22__ {int cred; int ctxt; TYPE_6__* id; TYPE_1__ member_0; } ;
+typedef TYPE_2__ SspiData ;
+typedef TYPE_3__ SecPkgInfoA ;
+typedef TYPE_4__ SecPkgContext_Sizes ;
+typedef TYPE_5__ SecPkgContext_NegotiationInfoA ;
+typedef TYPE_6__ SEC_WINNT_AUTH_IDENTITY_A ;
+typedef scalar_t__ SECURITY_STATUS ;
+typedef int * PSecPkgInfoA ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- scalar_t__ FreeContextBuffer (TYPE_3__*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int HeapSize (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int NTLM_BASE_CAPS ; 
- scalar_t__ QueryContextAttributesA (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_5__*) ; 
- scalar_t__ RPC_C_AUTHN_WINNT ; 
- int /*<<< orphan*/  SECPKG_ATTR_NEGOTIATION_INFO ; 
- int /*<<< orphan*/  SECPKG_ATTR_SIZES ; 
- int SECPKG_FLAG_APPCONTAINER_CHECKS ; 
- int SECPKG_FLAG_READONLY_WITH_CHECKSUM ; 
- int SECPKG_FLAG_RESTRICTED_TOKENS ; 
- scalar_t__ SECPKG_NEGOTIATION_COMPLETE ; 
- scalar_t__ SEC_E_LOGON_DENIED ; 
- scalar_t__ SEC_E_OK ; 
- scalar_t__ SEC_I_CONTINUE_NEEDED ; 
- int /*<<< orphan*/  SEC_WINNT_AUTH_IDENTITY_ANSI ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  cleanupBuffers (TYPE_2__*) ; 
- int /*<<< orphan*/  communicate (TYPE_2__*,TYPE_2__*) ; 
- scalar_t__ getSecError (scalar_t__) ; 
- int /*<<< orphan*/  lstrcmpA (scalar_t__,char*) ; 
- int lstrlenA (char*) ; 
- int /*<<< orphan*/  memset (TYPE_5__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ pDeleteSecurityContext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pFreeContextBuffer (int /*<<< orphan*/ *) ; 
- scalar_t__ pFreeCredentialsHandle (int /*<<< orphan*/ *) ; 
- scalar_t__ pQueryContextAttributesA (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_4__*) ; 
- scalar_t__ pQuerySecurityPackageInfoA (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ runClient (TYPE_2__*,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ runFakeServer (TYPE_2__*,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ runServer (TYPE_2__*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sec_pkg_name ; 
- scalar_t__ setupClient (TYPE_2__*,int /*<<< orphan*/ ) ; 
- scalar_t__ setupFakeServer (TYPE_2__*,int /*<<< orphan*/ ) ; 
- scalar_t__ setupServer (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  skip (char*,...) ; 
- void* strlen (char*) ; 
- scalar_t__ test_pass ; 
- scalar_t__ test_user ; 
- int /*<<< orphan*/  trace (char*) ; 
- scalar_t__ workgroup ; 
+
+ scalar_t__ FALSE ;
+ scalar_t__ FreeContextBuffer (TYPE_3__*) ;
+ int GetProcessHeap () ;
+ int HeapSize (int ,int ,TYPE_3__*) ;
+ int NTLM_BASE_CAPS ;
+ scalar_t__ QueryContextAttributesA (int *,int ,TYPE_5__*) ;
+ scalar_t__ RPC_C_AUTHN_WINNT ;
+ int SECPKG_ATTR_NEGOTIATION_INFO ;
+ int SECPKG_ATTR_SIZES ;
+ int SECPKG_FLAG_APPCONTAINER_CHECKS ;
+ int SECPKG_FLAG_READONLY_WITH_CHECKSUM ;
+ int SECPKG_FLAG_RESTRICTED_TOKENS ;
+ scalar_t__ SECPKG_NEGOTIATION_COMPLETE ;
+ scalar_t__ SEC_E_LOGON_DENIED ;
+ scalar_t__ SEC_E_OK ;
+ scalar_t__ SEC_I_CONTINUE_NEEDED ;
+ int SEC_WINNT_AUTH_IDENTITY_ANSI ;
+ scalar_t__ TRUE ;
+ int cleanupBuffers (TYPE_2__*) ;
+ int communicate (TYPE_2__*,TYPE_2__*) ;
+ scalar_t__ getSecError (scalar_t__) ;
+ int lstrcmpA (scalar_t__,char*) ;
+ int lstrlenA (char*) ;
+ int memset (TYPE_5__*,int ,int) ;
+ int ok (int,char*,...) ;
+ scalar_t__ pDeleteSecurityContext (int *) ;
+ int pFreeContextBuffer (int *) ;
+ scalar_t__ pFreeCredentialsHandle (int *) ;
+ scalar_t__ pQueryContextAttributesA (int *,int ,TYPE_4__*) ;
+ scalar_t__ pQuerySecurityPackageInfoA (int ,int **) ;
+ scalar_t__ runClient (TYPE_2__*,scalar_t__,int ) ;
+ scalar_t__ runFakeServer (TYPE_2__*,scalar_t__,int ) ;
+ scalar_t__ runServer (TYPE_2__*,scalar_t__,int ) ;
+ int sec_pkg_name ;
+ scalar_t__ setupClient (TYPE_2__*,int ) ;
+ scalar_t__ setupFakeServer (TYPE_2__*,int ) ;
+ scalar_t__ setupServer (TYPE_2__*,int ) ;
+ int skip (char*,...) ;
+ void* strlen (char*) ;
+ scalar_t__ test_pass ;
+ scalar_t__ test_user ;
+ int trace (char*) ;
+ scalar_t__ workgroup ;
 
 __attribute__((used)) static void testAuth(ULONG data_rep, BOOL fake)
 {
-    SECURITY_STATUS         client_stat = SEC_I_CONTINUE_NEEDED;
-    SECURITY_STATUS         server_stat = SEC_I_CONTINUE_NEEDED;
-    SECURITY_STATUS         sec_status;
-    PSecPkgInfoA            pkg_info = NULL;
-    BOOL                    first = TRUE;
-    SspiData                client = {{0}}, server = {{0}};
+    SECURITY_STATUS client_stat = SEC_I_CONTINUE_NEEDED;
+    SECURITY_STATUS server_stat = SEC_I_CONTINUE_NEEDED;
+    SECURITY_STATUS sec_status;
+    PSecPkgInfoA pkg_info = ((void*)0);
+    BOOL first = TRUE;
+    SspiData client = {{0}}, server = {{0}};
     SEC_WINNT_AUTH_IDENTITY_A id;
-    SecPkgContext_Sizes     ctxt_sizes;
+    SecPkgContext_Sizes ctxt_sizes;
     SecPkgContext_NegotiationInfoA info;
     SecPkgInfoA *pi;
 
@@ -189,7 +189,7 @@ __attribute__((used)) static void testAuth(ULONG data_rep, BOOL fake)
 
     pi = info.PackageInfo;
     ok(info.NegotiationState == SECPKG_NEGOTIATION_COMPLETE, "got %u\n", info.NegotiationState);
-    ok(pi != NULL, "expected non-NULL PackageInfo\n");
+    ok(pi != ((void*)0), "expected non-NULL PackageInfo\n");
     if (pi)
     {
         UINT expected, got;

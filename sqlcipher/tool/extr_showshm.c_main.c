@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  close (scalar_t__) ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__ fd ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,...) ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- unsigned char* getContent (int /*<<< orphan*/ ,int) ; 
- scalar_t__ open (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_ckpt_info (unsigned char*) ; 
- int /*<<< orphan*/  print_index_hdr (unsigned char*,int) ; 
- int /*<<< orphan*/  stderr ; 
+ int O_RDONLY ;
+ int close (scalar_t__) ;
+ int exit (int) ;
+ scalar_t__ fd ;
+ int fprintf (int ,char*,char*,...) ;
+ int free (unsigned char*) ;
+ unsigned char* getContent (int ,int) ;
+ scalar_t__ open (char*,int ) ;
+ int print_ckpt_info (unsigned char*) ;
+ int print_index_hdr (unsigned char*,int) ;
+ int stderr ;
 
 int main(int argc, char **argv){
   unsigned char *aData;

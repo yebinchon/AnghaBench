@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509 ;
-struct TYPE_3__ {int /*<<< orphan*/  length; int /*<<< orphan*/  data; } ;
-typedef  int /*<<< orphan*/  EVP_MD ;
-typedef  TYPE_1__ ASN1_BIT_STRING ;
 
-/* Variables and functions */
- int EVP_Digest (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*,unsigned int*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- TYPE_1__* X509_get0_pubkey_bitstr (int /*<<< orphan*/  const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int X509 ;
+struct TYPE_3__ {int length; int data; } ;
+typedef int EVP_MD ;
+typedef TYPE_1__ ASN1_BIT_STRING ;
+
+
+ int EVP_Digest (int ,int ,unsigned char*,unsigned int*,int const*,int *) ;
+ TYPE_1__* X509_get0_pubkey_bitstr (int const*) ;
 
 int X509_pubkey_digest(const X509 *data, const EVP_MD *type,
                        unsigned char *md, unsigned int *len)
@@ -27,5 +27,5 @@ int X509_pubkey_digest(const X509 *data, const EVP_MD *type,
     key = X509_get0_pubkey_bitstr(data);
     if (!key)
         return 0;
-    return EVP_Digest(key->data, key->length, md, len, type, NULL);
+    return EVP_Digest(key->data, key->length, md, len, type, ((void*)0));
 }

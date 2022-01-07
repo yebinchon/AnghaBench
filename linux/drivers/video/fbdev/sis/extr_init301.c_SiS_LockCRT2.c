@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct SiS_Private {scalar_t__ ChipType; int /*<<< orphan*/  SiS_Part1Port; } ;
 
-/* Variables and functions */
- scalar_t__ SIS_315H ; 
- int /*<<< orphan*/  SiS_SetRegAND (int /*<<< orphan*/ ,int,int) ; 
- scalar_t__ XGI_20 ; 
+
+
+
+struct SiS_Private {scalar_t__ ChipType; int SiS_Part1Port; } ;
+
+
+ scalar_t__ SIS_315H ;
+ int SiS_SetRegAND (int ,int,int) ;
+ scalar_t__ XGI_20 ;
 
 __attribute__((used)) static
 void

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_mode; } ;
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATF_REQUIRE_MSG (int,char*,char const*) ; 
- int O_CREAT ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int O_TRUNC ; 
- int O_WRONLY ; 
- int /*<<< orphan*/  close (int const) ; 
- int fchmod (int const,int /*<<< orphan*/ ) ; 
- int fstat (int const,struct stat*) ; 
- int open (char const*,int,...) ; 
- int read (int const,char*,int) ; 
- int write (int const,char*,int) ; 
+
+
+
+struct stat {int st_mode; } ;
+typedef int ssize_t ;
+typedef int buffer ;
+
+
+ int ATF_REQUIRE_MSG (int,char*,char const*) ;
+ int O_CREAT ;
+ int O_RDONLY ;
+ int O_TRUNC ;
+ int O_WRONLY ;
+ int close (int const) ;
+ int fchmod (int const,int ) ;
+ int fstat (int const,struct stat*) ;
+ int open (char const*,int,...) ;
+ int read (int const,char*,int) ;
+ int write (int const,char*,int) ;
 
 void
 atf_utils_copy_file(const char *source, const char *destination)

@@ -1,54 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  aSpace ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int aSpace ;
 struct TYPE_9__ {int nInit; unsigned char* zInit; int nState; int (* xNextChar ) (TYPE_2__*) ;int* aOp; int* aArg; } ;
 struct TYPE_8__ {unsigned char const* z; int i; int mx; } ;
 struct TYPE_7__ {int* aState; unsigned int nState; } ;
-typedef  TYPE_1__ ReStateSet ;
-typedef  int ReStateNumber ;
-typedef  TYPE_2__ ReInput ;
-typedef  TYPE_3__ ReCompiled ;
+typedef TYPE_1__ ReStateSet ;
+typedef int ReStateNumber ;
+typedef TYPE_2__ ReInput ;
+typedef TYPE_3__ ReCompiled ;
 
-/* Variables and functions */
- int RE_EOF ; 
-#define  RE_OP_ACCEPT 142 
-#define  RE_OP_ANY 141 
-#define  RE_OP_ANYSTAR 140 
-#define  RE_OP_BOUNDARY 139 
-#define  RE_OP_CC_EXC 138 
-#define  RE_OP_CC_INC 137 
- int RE_OP_CC_VALUE ; 
-#define  RE_OP_DIGIT 136 
-#define  RE_OP_FORK 135 
-#define  RE_OP_GOTO 134 
-#define  RE_OP_MATCH 133 
-#define  RE_OP_NOTDIGIT 132 
-#define  RE_OP_NOTSPACE 131 
-#define  RE_OP_NOTWORD 130 
-#define  RE_OP_SPACE 129 
-#define  RE_OP_WORD 128 
- int /*<<< orphan*/  re_add_state (TYPE_1__*,int) ; 
- int /*<<< orphan*/  re_digit_char (int) ; 
- int /*<<< orphan*/  re_space_char (int) ; 
- int /*<<< orphan*/  re_word_char (int) ; 
- int /*<<< orphan*/  sqlite3_free (int*) ; 
- int* sqlite3_malloc64 (int) ; 
- scalar_t__ strlen (char const*) ; 
- scalar_t__ strncmp (char const*,char const*,int) ; 
- int stub1 (TYPE_2__*) ; 
+
+ int RE_EOF ;
+
+
+
+
+
+
+ int RE_OP_CC_VALUE ;
+ int re_add_state (TYPE_1__*,int) ;
+ int re_digit_char (int) ;
+ int re_space_char (int) ;
+ int re_word_char (int) ;
+ int sqlite3_free (int*) ;
+ int* sqlite3_malloc64 (int) ;
+ scalar_t__ strlen (char const*) ;
+ scalar_t__ strncmp (char const*,char const*,int) ;
+ int stub1 (TYPE_2__*) ;
 
 __attribute__((used)) static int re_match(ReCompiled *pRe, const unsigned char *zIn, int nIn){
   ReStateSet aStateSet[2], *pThis, *pNext;
@@ -65,10 +56,10 @@ __attribute__((used)) static int re_match(ReCompiled *pRe, const unsigned char *
   in.i = 0;
   in.mx = nIn>=0 ? nIn : (int)strlen((char const*)zIn);
 
-  /* Look for the initial prefix match, if there is one. */
+
   if( pRe->nInit ){
     unsigned char x = pRe->zInit[0];
-    while( in.i+pRe->nInit<=in.mx 
+    while( in.i+pRe->nInit<=in.mx
      && (zIn[in.i]!=x ||
          strncmp((const char*)zIn+in.i, (const char*)pRe->zInit, pRe->nInit)!=0)
     ){
@@ -99,62 +90,62 @@ __attribute__((used)) static int re_match(ReCompiled *pRe, const unsigned char *
     for(i=0; i<pThis->nState; i++){
       int x = pThis->aState[i];
       switch( pRe->aOp[x] ){
-        case RE_OP_MATCH: {
+        case 133: {
           if( pRe->aArg[x]==c ) re_add_state(pNext, x+1);
           break;
         }
-        case RE_OP_ANY: {
+        case 141: {
           re_add_state(pNext, x+1);
           break;
         }
-        case RE_OP_WORD: {
+        case 128: {
           if( re_word_char(c) ) re_add_state(pNext, x+1);
           break;
         }
-        case RE_OP_NOTWORD: {
+        case 130: {
           if( !re_word_char(c) ) re_add_state(pNext, x+1);
           break;
         }
-        case RE_OP_DIGIT: {
+        case 136: {
           if( re_digit_char(c) ) re_add_state(pNext, x+1);
           break;
         }
-        case RE_OP_NOTDIGIT: {
+        case 132: {
           if( !re_digit_char(c) ) re_add_state(pNext, x+1);
           break;
         }
-        case RE_OP_SPACE: {
+        case 129: {
           if( re_space_char(c) ) re_add_state(pNext, x+1);
           break;
         }
-        case RE_OP_NOTSPACE: {
+        case 131: {
           if( !re_space_char(c) ) re_add_state(pNext, x+1);
           break;
         }
-        case RE_OP_BOUNDARY: {
+        case 139: {
           if( re_word_char(c)!=re_word_char(cPrev) ) re_add_state(pThis, x+1);
           break;
         }
-        case RE_OP_ANYSTAR: {
+        case 140: {
           re_add_state(pNext, x);
           re_add_state(pThis, x+1);
           break;
         }
-        case RE_OP_FORK: {
+        case 135: {
           re_add_state(pThis, x+pRe->aArg[x]);
           re_add_state(pThis, x+1);
           break;
         }
-        case RE_OP_GOTO: {
+        case 134: {
           re_add_state(pThis, x+pRe->aArg[x]);
           break;
         }
-        case RE_OP_ACCEPT: {
+        case 142: {
           rc = 1;
           goto re_match_end;
         }
-        case RE_OP_CC_INC:
-        case RE_OP_CC_EXC: {
+        case 137:
+        case 138: {
           int j = 1;
           int n = pRe->aArg[x];
           int hit = 0;
@@ -173,15 +164,15 @@ __attribute__((used)) static int re_match(ReCompiled *pRe, const unsigned char *
               }
             }
           }
-          if( pRe->aOp[x]==RE_OP_CC_EXC ) hit = !hit;
+          if( pRe->aOp[x]==138 ) hit = !hit;
           if( hit ) re_add_state(pNext, x+n);
-          break;            
+          break;
         }
       }
     }
   }
   for(i=0; i<pNext->nState; i++){
-    if( pRe->aOp[pNext->aState[i]]==RE_OP_ACCEPT ){ rc = 1; break; }
+    if( pRe->aOp[pNext->aState[i]]==142 ){ rc = 1; break; }
   }
 re_match_end:
   sqlite3_free(pToFree);

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int position; void* word; } ;
-typedef  TYPE_1__ searchy_pair_word_position_t ;
+typedef TYPE_1__ searchy_pair_word_position_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int get_notword (char const*) ; 
- int get_word (char const*) ; 
- int /*<<< orphan*/  kprintf (char*,char const*) ; 
- void* searchy_make_tag (char*,int,int) ; 
- void* searchy_term_hash (char*,int,int) ; 
- void* searchy_word_hash (char const*,int) ; 
+
+ int assert (int) ;
+ int exit (int) ;
+ int get_notword (char const*) ;
+ int get_word (char const*) ;
+ int kprintf (char*,char const*) ;
+ void* searchy_make_tag (char*,int,int) ;
+ void* searchy_term_hash (char*,int,int) ;
+ void* searchy_word_hash (char const*,int) ;
 
 int searchy_extract_words (const char *text, int len, searchy_pair_word_position_t *Q, int max_words, int universal, int tag_owner, long long item_id, int *positions) {
   int no_nw = 1;
@@ -75,7 +75,7 @@ int searchy_extract_words (const char *text, int len, searchy_pair_word_position
     assert (wl > 0 && wl < 511);
     if (*text == 0x1f) {
       Q[Qw].word = searchy_word_hash (text, wl);
-      Q[Qw++].position = 0; /* we don't count tags */
+      Q[Qw++].position = 0;
     } else {
       (*positions)++;
       Q[Qw].word = searchy_term_hash ((char *) text, wl, 0);

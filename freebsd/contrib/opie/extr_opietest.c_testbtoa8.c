@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  testout ;
+
+
+
+
+typedef int testout ;
 struct opie_otpkey {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  buffer ; 
- scalar_t__ memcmp (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  memcpy (struct opie_otpkey*,unsigned char*,int) ; 
- int /*<<< orphan*/  opiebtoa8 (int /*<<< orphan*/ ,struct opie_otpkey*) ; 
+
+ int buffer ;
+ scalar_t__ memcmp (int ,char*,int) ;
+ int memcpy (struct opie_otpkey*,unsigned char*,int) ;
+ int opiebtoa8 (int ,struct opie_otpkey*) ;
 
 int testbtoa8()
 {
@@ -26,12 +26,12 @@ int testbtoa8()
   struct opie_otpkey testin_aligned;
 
   memcpy(&testin_aligned, testin, sizeof(struct opie_otpkey));
-    
+
   if (!opiebtoa8(buffer, &testin_aligned))
     return -1;
 
   if (memcmp(buffer, testout, sizeof(testout)))
     return -1;
-  
-  return 0;  
+
+  return 0;
 }

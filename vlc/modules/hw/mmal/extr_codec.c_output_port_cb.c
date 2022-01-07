@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_7__ ;
-typedef  struct TYPE_23__   TYPE_6__ ;
-typedef  struct TYPE_22__   TYPE_5__ ;
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_18__ {int /*<<< orphan*/  b_top_field_first; int /*<<< orphan*/  b_progressive; int /*<<< orphan*/  date; } ;
-typedef  TYPE_1__ picture_t ;
+
+
+typedef struct TYPE_24__ TYPE_7__ ;
+typedef struct TYPE_23__ TYPE_6__ ;
+typedef struct TYPE_22__ TYPE_5__ ;
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+struct TYPE_18__ {int b_top_field_first; int b_progressive; int date; } ;
+typedef TYPE_1__ picture_t ;
 struct TYPE_19__ {TYPE_3__* p_sys; } ;
-typedef  TYPE_2__ decoder_t ;
-struct TYPE_20__ {TYPE_6__* output_format; scalar_t__ opaque; int /*<<< orphan*/  sem; int /*<<< orphan*/  output_in_transit; scalar_t__ output_pool; int /*<<< orphan*/  b_top_field_first; int /*<<< orphan*/  b_progressive; } ;
-typedef  TYPE_3__ decoder_sys_t ;
-struct TYPE_24__ {scalar_t__ cmd; scalar_t__ length; int /*<<< orphan*/ * data; scalar_t__ alloc_size; int /*<<< orphan*/ * user_data; int /*<<< orphan*/  pts; } ;
-struct TYPE_23__ {int /*<<< orphan*/  encoding; } ;
-struct TYPE_22__ {int /*<<< orphan*/  format; } ;
+typedef TYPE_2__ decoder_t ;
+struct TYPE_20__ {TYPE_6__* output_format; scalar_t__ opaque; int sem; int output_in_transit; scalar_t__ output_pool; int b_top_field_first; int b_progressive; } ;
+typedef TYPE_3__ decoder_sys_t ;
+struct TYPE_24__ {scalar_t__ cmd; scalar_t__ length; int * data; scalar_t__ alloc_size; int * user_data; int pts; } ;
+struct TYPE_23__ {int encoding; } ;
+struct TYPE_22__ {int format; } ;
 struct TYPE_21__ {scalar_t__ userdata; } ;
-typedef  TYPE_4__ MMAL_PORT_T ;
-typedef  TYPE_5__ MMAL_EVENT_FORMAT_CHANGED_T ;
-typedef  TYPE_6__ MMAL_ES_FORMAT_T ;
-typedef  TYPE_7__ MMAL_BUFFER_HEADER_T ;
+typedef TYPE_4__ MMAL_PORT_T ;
+typedef TYPE_5__ MMAL_EVENT_FORMAT_CHANGED_T ;
+typedef TYPE_6__ MMAL_ES_FORMAT_T ;
+typedef TYPE_7__ MMAL_BUFFER_HEADER_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MMAL_ENCODING_OPAQUE ; 
- scalar_t__ MMAL_EVENT_FORMAT_CHANGED ; 
- int /*<<< orphan*/  atomic_fetch_sub (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  decoder_QueueVideo (TYPE_2__*,TYPE_1__*) ; 
- int /*<<< orphan*/  mmal_buffer_header_release (TYPE_7__*) ; 
- TYPE_5__* mmal_event_format_changed_get (TYPE_7__*) ; 
- TYPE_6__* mmal_format_alloc () ; 
- int /*<<< orphan*/  mmal_format_full_copy (TYPE_6__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  picture_Release (TYPE_1__*) ; 
- int /*<<< orphan*/  vlc_sem_post (int /*<<< orphan*/ *) ; 
+
+ int MMAL_ENCODING_OPAQUE ;
+ scalar_t__ MMAL_EVENT_FORMAT_CHANGED ;
+ int atomic_fetch_sub (int *,int) ;
+ int decoder_QueueVideo (TYPE_2__*,TYPE_1__*) ;
+ int mmal_buffer_header_release (TYPE_7__*) ;
+ TYPE_5__* mmal_event_format_changed_get (TYPE_7__*) ;
+ TYPE_6__* mmal_format_alloc () ;
+ int mmal_format_full_copy (TYPE_6__*,int ) ;
+ int picture_Release (TYPE_1__*) ;
+ int vlc_sem_post (int *) ;
 
 __attribute__((used)) static void output_port_cb(MMAL_PORT_T *port, MMAL_BUFFER_HEADER_T *buffer)
 {
@@ -62,9 +62,9 @@ __attribute__((used)) static void output_port_cb(MMAL_PORT_T *port, MMAL_BUFFER_
         } else {
             picture_Release(picture);
             if (sys->output_pool) {
-                buffer->user_data = NULL;
+                buffer->user_data = ((void*)0);
                 buffer->alloc_size = 0;
-                buffer->data = NULL;
+                buffer->data = ((void*)0);
                 mmal_buffer_header_release(buffer);
             }
         }

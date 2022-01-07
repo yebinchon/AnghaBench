@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int lo; } ;
-typedef  TYPE_1__ pdf_vmtx ;
+typedef TYPE_1__ pdf_vmtx ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static int cmpv(const void *a0, const void *b0)
 {
-	pdf_vmtx *a = (pdf_vmtx*)a0;
-	pdf_vmtx *b = (pdf_vmtx*)b0;
-	return a->lo - b->lo;
+ pdf_vmtx *a = (pdf_vmtx*)a0;
+ pdf_vmtx *b = (pdf_vmtx*)b0;
+ return a->lo - b->lo;
 }

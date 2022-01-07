@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct prompt {scalar_t__ Term; struct datalink* TermMode; int /*<<< orphan*/  fd_in; int /*<<< orphan*/  comtio; } ;
+
+
+
+
+struct prompt {scalar_t__ Term; struct datalink* TermMode; int fd_in; int comtio; } ;
 struct datalink {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  F_GETFL ; 
- int /*<<< orphan*/  F_SETFL ; 
- int O_NONBLOCK ; 
- int /*<<< orphan*/  TCSADRAIN ; 
- int fcntl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ stdout ; 
- int /*<<< orphan*/  tcsetattr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int F_GETFL ;
+ int F_SETFL ;
+ int O_NONBLOCK ;
+ int TCSADRAIN ;
+ int fcntl (int ,int ,int) ;
+ scalar_t__ stdout ;
+ int tcsetattr (int ,int ,int *) ;
 
 void
 prompt_TtyTermMode(struct prompt *p, struct datalink *dl)

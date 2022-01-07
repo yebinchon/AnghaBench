@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct GPU_FFT_TRANS {int /*<<< orphan*/  base; } ;
 
-/* Variables and functions */
- int gpu_fft_base_exec (int /*<<< orphan*/ *,int) ; 
+
+
+
+struct GPU_FFT_TRANS {int base; } ;
+
+
+ int gpu_fft_base_exec (int *,int) ;
 
 unsigned gpu_fft_trans_execute(struct GPU_FFT_TRANS *info) {
     return gpu_fft_base_exec(&info->base, 1);

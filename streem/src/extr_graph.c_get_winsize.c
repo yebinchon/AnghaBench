@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct winsize {int ws_col; int ws_row; } ;
 
-/* Variables and functions */
- int STRM_NG ; 
- int STRM_OK ; 
- int /*<<< orphan*/  TIOCGWINSZ ; 
- int ioctl (int,int /*<<< orphan*/ ,struct winsize*) ; 
+
+ int STRM_NG ;
+ int STRM_OK ;
+ int TIOCGWINSZ ;
+ int ioctl (int,int ,struct winsize*) ;
 
 __attribute__((used)) static int
 get_winsize(int* row, int* col)

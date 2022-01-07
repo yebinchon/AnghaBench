@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct m_property {int dummy; } ;
 struct demuxer {int num_editions; int edition; struct demux_edition* editions; } ;
-struct demux_edition {int /*<<< orphan*/  metadata; } ;
+struct demux_edition {int metadata; } ;
 struct TYPE_3__ {struct demuxer* demuxer; } ;
-typedef  TYPE_1__ MPContext ;
+typedef TYPE_1__ MPContext ;
 
-/* Variables and functions */
- int M_PROPERTY_OK ; 
- int M_PROPERTY_PRINT ; 
- int M_PROPERTY_UNAVAILABLE ; 
- int /*<<< orphan*/  get_edition_entry ; 
- int /*<<< orphan*/  list_current ; 
- int /*<<< orphan*/  list_normal ; 
- int m_property_read_list (int,void*,int,int /*<<< orphan*/ ,TYPE_1__*) ; 
- char* mp_tags_get_str (int /*<<< orphan*/ ,char*) ; 
- char* talloc_asprintf_append (char*,char*,...) ; 
- char* talloc_strdup_append (char*,int /*<<< orphan*/ ) ; 
+
+ int M_PROPERTY_OK ;
+ int M_PROPERTY_PRINT ;
+ int M_PROPERTY_UNAVAILABLE ;
+ int get_edition_entry ;
+ int list_current ;
+ int list_normal ;
+ int m_property_read_list (int,void*,int,int ,TYPE_1__*) ;
+ char* mp_tags_get_str (int ,char*) ;
+ char* talloc_asprintf_append (char*,char*,...) ;
+ char* talloc_strdup_append (char*,int ) ;
 
 __attribute__((used)) static int property_list_editions(void *ctx, struct m_property *prop,
                                   int action, void *arg)
@@ -38,7 +38,7 @@ __attribute__((used)) static int property_list_editions(void *ctx, struct m_prop
         return M_PROPERTY_UNAVAILABLE;
 
     if (action == M_PROPERTY_PRINT) {
-        char *res = NULL;
+        char *res = ((void*)0);
 
         struct demux_edition *editions = demuxer->editions;
         int num_editions = demuxer->num_editions;

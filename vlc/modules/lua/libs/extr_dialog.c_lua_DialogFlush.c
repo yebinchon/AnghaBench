@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  extension_dialog_t ;
 
-/* Variables and functions */
- int VLC_SUCCESS ; 
- scalar_t__ lua_GetDialogUpdate (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_SetDialogUpdate (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_getfield (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_getglobal (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ lua_topointer (int /*<<< orphan*/ *,int) ; 
- int vlc_ext_dialog_update (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlclua_get_this (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int lua_State ;
+typedef int extension_dialog_t ;
+
+
+ int VLC_SUCCESS ;
+ scalar_t__ lua_GetDialogUpdate (int *) ;
+ int lua_SetDialogUpdate (int *,int ) ;
+ int lua_getfield (int *,int,char*) ;
+ int lua_getglobal (int *,char*) ;
+ scalar_t__ lua_topointer (int *,int) ;
+ int vlc_ext_dialog_update (int ,int *) ;
+ int vlclua_get_this (int *) ;
 
 int lua_DialogFlush( lua_State *L )
 {

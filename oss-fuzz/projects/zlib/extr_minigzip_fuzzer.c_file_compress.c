@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  outfile ;
-typedef  int /*<<< orphan*/ * gzFile ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- char* GZ_SUFFIX ; 
- int MAX_NAME_LEN ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,...) ; 
- int /*<<< orphan*/  gz_compress (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * gzopen (char*,char*) ; 
- int /*<<< orphan*/  perror (char*) ; 
- char* prog ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  unlink (char*) ; 
 
-void file_compress(char  *file, char  *mode)
+
+
+typedef int outfile ;
+typedef int * gzFile ;
+typedef int FILE ;
+
+
+ char* GZ_SUFFIX ;
+ int MAX_NAME_LEN ;
+ int exit (int) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,char*,...) ;
+ int gz_compress (int *,int *) ;
+ int * gzopen (char*,char*) ;
+ int perror (char*) ;
+ char* prog ;
+ int snprintf (char*,int,char*,char*,char*) ;
+ int stderr ;
+ int strlen (char*) ;
+ int unlink (char*) ;
+
+void file_compress(char *file, char *mode)
 {
     char outfile[MAX_NAME_LEN];
-    FILE  *in;
+    FILE *in;
     gzFile out;
 
     if (strlen(file) + strlen(GZ_SUFFIX) >= sizeof(outfile)) {
@@ -43,12 +43,12 @@ void file_compress(char  *file, char  *mode)
     snprintf(outfile, sizeof(outfile), "%s%s", file, GZ_SUFFIX);
 
     in = fopen(file, "rb");
-    if (in == NULL) {
+    if (in == ((void*)0)) {
         perror(file);
         exit(1);
     }
     out = gzopen(outfile, mode);
-    if (out == NULL) {
+    if (out == ((void*)0)) {
         fprintf(stderr, "%s: can't gzopen %s\n", prog, outfile);
         exit(1);
     }

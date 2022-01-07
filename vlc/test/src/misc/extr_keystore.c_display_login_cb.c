@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_dialog_id ;
-struct TYPE_2__ {char const* psz_user; int /*<<< orphan*/ * psz_pwd; } ;
-struct testcase {int /*<<< orphan*/  b_dialog_store; TYPE_1__ dialog; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int vlc_dialog_id ;
+struct TYPE_2__ {char const* psz_user; int * psz_pwd; } ;
+struct testcase {int b_dialog_store; TYPE_1__ dialog; } ;
 struct dialog_ctx {int b_abort; struct testcase* p_test; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  vlc_dialog_id_dismiss (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_dialog_id_post_login (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int vlc_dialog_id_dismiss (int *) ;
+ int vlc_dialog_id_post_login (int *,char const*,int *,int ) ;
 
 __attribute__((used)) static void
 display_login_cb(void *p_data, vlc_dialog_id *p_id, const char *psz_title,
@@ -32,14 +32,14 @@ display_login_cb(void *p_data, vlc_dialog_id *p_id, const char *psz_title,
     struct dialog_ctx *p_dialog_ctx = p_data;
     const struct testcase *p_testcase = p_dialog_ctx->p_test;
 
-    const char *psz_user = p_testcase->dialog.psz_user != NULL ?
+    const char *psz_user = p_testcase->dialog.psz_user != ((void*)0) ?
                            p_testcase->dialog.psz_user : psz_default_username;
-    if (!p_dialog_ctx->b_abort && psz_user != NULL
-     && p_testcase->dialog.psz_pwd != NULL)
+    if (!p_dialog_ctx->b_abort && psz_user != ((void*)0)
+     && p_testcase->dialog.psz_pwd != ((void*)0))
     {
         vlc_dialog_id_post_login(p_id, psz_user, p_testcase->dialog.psz_pwd,
                                  p_testcase->b_dialog_store);
-        p_dialog_ctx->b_abort = true;
+        p_dialog_ctx->b_abort = 1;
     }
     else
         vlc_dialog_id_dismiss(p_id);

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ether_addr {int* ether_addr_octet; } ;
 struct TYPE_2__ {struct ether_addr ad_actor_system; } ;
-typedef  TYPE_1__ Bond ;
+typedef TYPE_1__ Bond ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  assert (void*) ; 
- int ether_addr_from_string (char const*,struct ether_addr*) ; 
- scalar_t__ ether_addr_is_null (struct ether_addr*) ; 
- int /*<<< orphan*/  log_syntax (char const*,int /*<<< orphan*/ ,char const*,unsigned int,int,char*,char const*) ; 
+
+ int LOG_ERR ;
+ int assert (void*) ;
+ int ether_addr_from_string (char const*,struct ether_addr*) ;
+ scalar_t__ ether_addr_is_null (struct ether_addr*) ;
+ int log_syntax (char const*,int ,char const*,unsigned int,int,char*,char const*) ;
 
 int config_parse_ad_actor_system(
                 const char *unit,

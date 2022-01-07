@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int type; } ;
-typedef  TYPE_1__ ibnd_node_t ;
+typedef TYPE_1__ ibnd_node_t ;
 
-/* Variables and functions */
-#define  IB_NODE_CA 130 
-#define  IB_NODE_ROUTER 129 
-#define  IB_NODE_SWITCH 128 
+
+
+
+
 
 __attribute__((used)) static inline const char *nodetype_str(ibnd_node_t * node)
 {
-	switch (node->type) {
-	case IB_NODE_SWITCH:
-		return "Switch";
-	case IB_NODE_CA:
-		return "CA";
-	case IB_NODE_ROUTER:
-		return "Router";
-	}
-	return "??";
+ switch (node->type) {
+ case 128:
+  return "Switch";
+ case 130:
+  return "CA";
+ case 129:
+  return "Router";
+ }
+ return "??";
 }

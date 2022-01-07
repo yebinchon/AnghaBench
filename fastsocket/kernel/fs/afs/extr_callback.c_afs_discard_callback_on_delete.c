@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct afs_vnode {int cb_promised; int /*<<< orphan*/  cb_promise; struct afs_server* server; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * rb_node; } ;
-struct afs_server {int /*<<< orphan*/  cb_lock; TYPE_1__ cb_promises; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _enter (char*,int) ; 
- int /*<<< orphan*/  _leave (char*) ; 
- int /*<<< orphan*/  rb_erase (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct afs_vnode {int cb_promised; int cb_promise; struct afs_server* server; } ;
+struct TYPE_2__ {int * rb_node; } ;
+struct afs_server {int cb_lock; TYPE_1__ cb_promises; } ;
+
+
+ int ASSERT (int ) ;
+ int _enter (char*,int) ;
+ int _leave (char*) ;
+ int rb_erase (int *,TYPE_1__*) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 void afs_discard_callback_on_delete(struct afs_vnode *vnode)
 {
-	struct afs_server *server = vnode->server;
+ struct afs_server *server = vnode->server;
 
-	_enter("%d", vnode->cb_promised);
+ _enter("%d", vnode->cb_promised);
 
-	if (!vnode->cb_promised) {
-		_leave(" [not promised]");
-		return;
-	}
+ if (!vnode->cb_promised) {
+  _leave(" [not promised]");
+  return;
+ }
 
-	ASSERT(server != NULL);
+ ASSERT(server != ((void*)0));
 
-	spin_lock(&server->cb_lock);
-	if (vnode->cb_promised) {
-		ASSERT(server->cb_promises.rb_node != NULL);
-		rb_erase(&vnode->cb_promise, &server->cb_promises);
-		vnode->cb_promised = false;
-	}
-	spin_unlock(&server->cb_lock);
-	_leave("");
+ spin_lock(&server->cb_lock);
+ if (vnode->cb_promised) {
+  ASSERT(server->cb_promises.rb_node != ((void*)0));
+  rb_erase(&vnode->cb_promise, &server->cb_promises);
+  vnode->cb_promised = 0;
+ }
+ spin_unlock(&server->cb_lock);
+ _leave("");
 }

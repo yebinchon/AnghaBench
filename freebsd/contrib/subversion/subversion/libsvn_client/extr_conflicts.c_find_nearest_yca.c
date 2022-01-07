@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_session_t ;
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int svn_ra_session_t ;
 struct TYPE_8__ {scalar_t__ apr_err; } ;
-typedef  TYPE_1__ svn_error_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  svn_client__pathrev_t ;
-typedef  int /*<<< orphan*/  apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_error_t ;
+typedef int svn_client_ctx_t ;
+typedef int svn_client__pathrev_t ;
+typedef int apr_size_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- scalar_t__ SVN_ERR_FS_NOT_FOUND ; 
- TYPE_1__* SVN_NO_ERROR ; 
- TYPE_1__* find_yca (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_1__*) ; 
- TYPE_1__* svn_error_trace (TYPE_1__*) ; 
- int /*<<< orphan*/  svn_path_component_count (char const*) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- char* svn_relpath_dirname (char const*,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ SVN_ERR_FS_NOT_FOUND ;
+ TYPE_1__* SVN_NO_ERROR ;
+ TYPE_1__* find_yca (int **,char const*,int ,char const*,int ,char const*,char const*,int *,int *,int *,int *) ;
+ int svn_error_clear (TYPE_1__*) ;
+ TYPE_1__* svn_error_trace (TYPE_1__*) ;
+ int svn_path_component_count (char const*) ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ char* svn_relpath_dirname (char const*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 find_nearest_yca(svn_client__pathrev_t **yca_locp,
@@ -51,7 +51,7 @@ find_nearest_yca(svn_client__pathrev_t **yca_locp,
   const char *p1, *p2;
   apr_size_t c1, c2;
 
-  *yca_locp = NULL;
+  *yca_locp = ((void*)0);
 
   iterpool = svn_pool_create(scratch_pool);
 
@@ -73,7 +73,7 @@ find_nearest_yca(svn_client__pathrev_t **yca_locp,
               if (err->apr_err == SVN_ERR_FS_NOT_FOUND)
                 {
                   svn_error_clear(err);
-                  yca_loc = NULL;
+                  yca_loc = ((void*)0);
                 }
               else
                 return svn_error_trace(err);

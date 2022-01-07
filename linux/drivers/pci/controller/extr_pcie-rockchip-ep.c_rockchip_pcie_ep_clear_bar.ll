@@ -1,0 +1,129 @@
+; ModuleID = '/home/carl/AnghaBench/linux/drivers/pci/controller/extr_pcie-rockchip-ep.c_rockchip_pcie_ep_clear_bar.c'
+source_filename = "/home/carl/AnghaBench/linux/drivers/pci/controller/extr_pcie-rockchip-ep.c_rockchip_pcie_ep_clear_bar.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.pci_epc = type { i32 }
+%struct.pci_epf_bar = type { i32 }
+%struct.rockchip_pcie_ep = type { %struct.rockchip_pcie }
+%struct.rockchip_pcie = type { i32 }
+
+@BAR_4 = common dso_local global i32 0, align 4
+@ROCKCHIP_PCIE_CORE_BAR_CFG_CTRL_DISABLED = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void (%struct.pci_epc*, i32, %struct.pci_epf_bar*)* @rockchip_pcie_ep_clear_bar to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @rockchip_pcie_ep_clear_bar(%struct.pci_epc* %0, i32 %1, %struct.pci_epf_bar* %2) #0 {
+  %4 = alloca %struct.pci_epc*, align 8
+  %5 = alloca i32, align 4
+  %6 = alloca %struct.pci_epf_bar*, align 8
+  %7 = alloca %struct.rockchip_pcie_ep*, align 8
+  %8 = alloca %struct.rockchip_pcie*, align 8
+  %9 = alloca i32, align 4
+  %10 = alloca i32, align 4
+  %11 = alloca i32, align 4
+  %12 = alloca i32, align 4
+  %13 = alloca i32, align 4
+  store %struct.pci_epc* %0, %struct.pci_epc** %4, align 8
+  store i32 %1, i32* %5, align 4
+  store %struct.pci_epf_bar* %2, %struct.pci_epf_bar** %6, align 8
+  %14 = load %struct.pci_epc*, %struct.pci_epc** %4, align 8
+  %15 = call %struct.rockchip_pcie_ep* @epc_get_drvdata(%struct.pci_epc* %14)
+  store %struct.rockchip_pcie_ep* %15, %struct.rockchip_pcie_ep** %7, align 8
+  %16 = load %struct.rockchip_pcie_ep*, %struct.rockchip_pcie_ep** %7, align 8
+  %17 = getelementptr inbounds %struct.rockchip_pcie_ep, %struct.rockchip_pcie_ep* %16, i32 0, i32 0
+  store %struct.rockchip_pcie* %17, %struct.rockchip_pcie** %8, align 8
+  %18 = load %struct.pci_epf_bar*, %struct.pci_epf_bar** %6, align 8
+  %19 = getelementptr inbounds %struct.pci_epf_bar, %struct.pci_epf_bar* %18, i32 0, i32 0
+  %20 = load i32, i32* %19, align 4
+  store i32 %20, i32* %13, align 4
+  %21 = load i32, i32* %13, align 4
+  %22 = load i32, i32* @BAR_4, align 4
+  %23 = icmp ult i32 %21, %22
+  br i1 %23, label %24, label %28
+
+24:                                               ; preds = %3
+  %25 = load i32, i32* %5, align 4
+  %26 = call i32 @ROCKCHIP_PCIE_CORE_EP_FUNC_BAR_CFG0(i32 %25)
+  store i32 %26, i32* %9, align 4
+  %27 = load i32, i32* %13, align 4
+  store i32 %27, i32* %11, align 4
+  br label %34
+
+28:                                               ; preds = %3
+  %29 = load i32, i32* %5, align 4
+  %30 = call i32 @ROCKCHIP_PCIE_CORE_EP_FUNC_BAR_CFG1(i32 %29)
+  store i32 %30, i32* %9, align 4
+  %31 = load i32, i32* %13, align 4
+  %32 = load i32, i32* @BAR_4, align 4
+  %33 = sub i32 %31, %32
+  store i32 %33, i32* %11, align 4
+  br label %34
+
+34:                                               ; preds = %28, %24
+  %35 = load i32, i32* @ROCKCHIP_PCIE_CORE_BAR_CFG_CTRL_DISABLED, align 4
+  store i32 %35, i32* %12, align 4
+  %36 = load %struct.rockchip_pcie*, %struct.rockchip_pcie** %8, align 8
+  %37 = load i32, i32* %9, align 4
+  %38 = call i32 @rockchip_pcie_read(%struct.rockchip_pcie* %36, i32 %37)
+  store i32 %38, i32* %10, align 4
+  %39 = load i32, i32* %11, align 4
+  %40 = call i32 @ROCKCHIP_PCIE_CORE_EP_FUNC_BAR_CFG_BAR_APERTURE_MASK(i32 %39)
+  %41 = load i32, i32* %11, align 4
+  %42 = call i32 @ROCKCHIP_PCIE_CORE_EP_FUNC_BAR_CFG_BAR_CTRL_MASK(i32 %41)
+  %43 = or i32 %40, %42
+  %44 = xor i32 %43, -1
+  %45 = load i32, i32* %10, align 4
+  %46 = and i32 %45, %44
+  store i32 %46, i32* %10, align 4
+  %47 = load i32, i32* %11, align 4
+  %48 = load i32, i32* %12, align 4
+  %49 = call i32 @ROCKCHIP_PCIE_CORE_EP_FUNC_BAR_CFG_BAR_CTRL(i32 %47, i32 %48)
+  %50 = load i32, i32* %10, align 4
+  %51 = or i32 %50, %49
+  store i32 %51, i32* %10, align 4
+  %52 = load %struct.rockchip_pcie*, %struct.rockchip_pcie** %8, align 8
+  %53 = load i32, i32* %10, align 4
+  %54 = load i32, i32* %9, align 4
+  %55 = call i32 @rockchip_pcie_write(%struct.rockchip_pcie* %52, i32 %53, i32 %54)
+  %56 = load %struct.rockchip_pcie*, %struct.rockchip_pcie** %8, align 8
+  %57 = load i32, i32* %5, align 4
+  %58 = load i32, i32* %13, align 4
+  %59 = call i32 @ROCKCHIP_PCIE_AT_IB_EP_FUNC_BAR_ADDR0(i32 %57, i32 %58)
+  %60 = call i32 @rockchip_pcie_write(%struct.rockchip_pcie* %56, i32 0, i32 %59)
+  %61 = load %struct.rockchip_pcie*, %struct.rockchip_pcie** %8, align 8
+  %62 = load i32, i32* %5, align 4
+  %63 = load i32, i32* %13, align 4
+  %64 = call i32 @ROCKCHIP_PCIE_AT_IB_EP_FUNC_BAR_ADDR1(i32 %62, i32 %63)
+  %65 = call i32 @rockchip_pcie_write(%struct.rockchip_pcie* %61, i32 0, i32 %64)
+  ret void
+}
+
+declare dso_local %struct.rockchip_pcie_ep* @epc_get_drvdata(%struct.pci_epc*) #1
+
+declare dso_local i32 @ROCKCHIP_PCIE_CORE_EP_FUNC_BAR_CFG0(i32) #1
+
+declare dso_local i32 @ROCKCHIP_PCIE_CORE_EP_FUNC_BAR_CFG1(i32) #1
+
+declare dso_local i32 @rockchip_pcie_read(%struct.rockchip_pcie*, i32) #1
+
+declare dso_local i32 @ROCKCHIP_PCIE_CORE_EP_FUNC_BAR_CFG_BAR_APERTURE_MASK(i32) #1
+
+declare dso_local i32 @ROCKCHIP_PCIE_CORE_EP_FUNC_BAR_CFG_BAR_CTRL_MASK(i32) #1
+
+declare dso_local i32 @ROCKCHIP_PCIE_CORE_EP_FUNC_BAR_CFG_BAR_CTRL(i32, i32) #1
+
+declare dso_local i32 @rockchip_pcie_write(%struct.rockchip_pcie*, i32, i32) #1
+
+declare dso_local i32 @ROCKCHIP_PCIE_AT_IB_EP_FUNC_BAR_ADDR0(i32, i32) #1
+
+declare dso_local i32 @ROCKCHIP_PCIE_AT_IB_EP_FUNC_BAR_ADDR1(i32, i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

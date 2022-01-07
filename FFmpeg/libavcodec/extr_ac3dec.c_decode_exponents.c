@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int int8_t ;
-struct TYPE_3__ {int /*<<< orphan*/  avctx; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_1__ AC3DecodeContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int EXP_D45 ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int** ungroup_3_in_7_bits_tab ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int8_t ;
+struct TYPE_3__ {int avctx; } ;
+typedef int GetBitContext ;
+typedef TYPE_1__ AC3DecodeContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int EXP_D45 ;
+ int av_log (int ,int ,char*,int) ;
+ int get_bits (int *,int) ;
+ int** ungroup_3_in_7_bits_tab ;
 
 __attribute__((used)) static int decode_exponents(AC3DecodeContext *s,
                             GetBitContext *gbc, int exp_strategy, int ngrps,
@@ -33,7 +33,7 @@ __attribute__((used)) static int decode_exponents(AC3DecodeContext *s,
     int dexp[256];
     int expacc, prevexp;
 
-    /* unpack groups */
+
     group_size = exp_strategy + (exp_strategy == EXP_D45);
     for (grp = 0, i = 0; grp < ngrps; grp++) {
         expacc = get_bits(gbc, 7);
@@ -46,7 +46,7 @@ __attribute__((used)) static int decode_exponents(AC3DecodeContext *s,
         dexp[i++] = ungroup_3_in_7_bits_tab[expacc][2];
     }
 
-    /* convert to absolute exps and expand groups */
+
     prevexp = absexp;
     for (i = 0, j = 0; i < ngrps * 3; i++) {
         prevexp += dexp[i] - 2;

@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ scalar_t__ DATA_REG_LOW ;
+ scalar_t__ INDEX_REG ;
+ int outb (unsigned char,scalar_t__) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ DATA_REG_LOW ; 
- scalar_t__ INDEX_REG ; 
- int /*<<< orphan*/  outb (unsigned char,scalar_t__) ; 
-
-__attribute__((used)) static inline void nsp32_index_write1(unsigned int  base,
-				      unsigned int  reg,
-				      unsigned char val)
+__attribute__((used)) static inline void nsp32_index_write1(unsigned int base,
+          unsigned int reg,
+          unsigned char val)
 {
-	outb(reg, base + INDEX_REG   );
-	outb(val, base + DATA_REG_LOW);
+ outb(reg, base + INDEX_REG );
+ outb(val, base + DATA_REG_LOW);
 }

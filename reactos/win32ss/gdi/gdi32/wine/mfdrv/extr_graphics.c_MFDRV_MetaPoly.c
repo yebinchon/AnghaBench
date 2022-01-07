@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int rdSize; short rdFunction; short* rdParm; } ;
-typedef  int /*<<< orphan*/  POINTS ;
-typedef  int /*<<< orphan*/  PHYSDEV ;
-typedef  TYPE_1__ METARECORD ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int POINTS ;
+typedef int PHYSDEV ;
+typedef TYPE_1__ METARECORD ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  MFDRV_WriteRecord (int /*<<< orphan*/ ,TYPE_1__*,int) ; 
- int /*<<< orphan*/  memcpy (short*,int /*<<< orphan*/ *,short) ; 
+
+ int FALSE ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_1__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_1__*) ;
+ int MFDRV_WriteRecord (int ,TYPE_1__*,int) ;
+ int memcpy (short*,int *,short) ;
 
 __attribute__((used)) static BOOL MFDRV_MetaPoly(PHYSDEV dev, short func, POINTS *pt, short count)
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static BOOL MFDRV_MetaPoly(PHYSDEV dev, short func, POINTS
 
     len = sizeof(METARECORD) + (count * 4);
     if (!(mr = HeapAlloc( GetProcessHeap(), HEAP_ZERO_MEMORY, len )))
-	return FALSE;
+ return FALSE;
 
     mr->rdSize = len / 2;
     mr->rdFunction = func;

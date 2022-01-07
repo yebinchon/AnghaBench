@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VC1Context ;
 
-/* Variables and functions */
- int BMV_TYPE_BACKWARD ; 
- int BMV_TYPE_INTERPOLATED ; 
- int /*<<< orphan*/  ff_vc1_interp_mc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_vc1_mc_1mv (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int VC1Context ;
+
+
+ int BMV_TYPE_BACKWARD ;
+ int BMV_TYPE_INTERPOLATED ;
+ int ff_vc1_interp_mc (int *) ;
+ int ff_vc1_mc_1mv (int *,int) ;
 
 __attribute__((used)) static inline void vc1_b_mc(VC1Context *v, int dmv_x[2], int dmv_y[2],
                             int direct, int mode)

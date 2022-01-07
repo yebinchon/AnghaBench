@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int TimeLineID ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * AllocateFile (char*,char*) ; 
- scalar_t__ ArchiveRecoveryRequested ; 
- scalar_t__ ENOENT ; 
- int /*<<< orphan*/  FATAL ; 
- int /*<<< orphan*/  FreeFile (int /*<<< orphan*/ *) ; 
- int MAXFNAMELEN ; 
- int MAXPGPATH ; 
- int /*<<< orphan*/  RestoreArchivedFile (char*,char*,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TLHistoryFileName (char*,int) ; 
- int /*<<< orphan*/  TLHistoryFilePath (char*,int) ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode_for_file_access () ; 
- int /*<<< orphan*/  errmsg (char*,char*) ; 
- scalar_t__ errno ; 
+
+
+
+typedef int TimeLineID ;
+typedef int FILE ;
+
+
+ int * AllocateFile (char*,char*) ;
+ scalar_t__ ArchiveRecoveryRequested ;
+ scalar_t__ ENOENT ;
+ int FATAL ;
+ int FreeFile (int *) ;
+ int MAXFNAMELEN ;
+ int MAXPGPATH ;
+ int RestoreArchivedFile (char*,char*,char*,int ,int) ;
+ int TLHistoryFileName (char*,int) ;
+ int TLHistoryFilePath (char*,int) ;
+ int ereport (int ,int ) ;
+ int errcode_for_file_access () ;
+ int errmsg (char*,char*) ;
+ scalar_t__ errno ;
 
 bool
 existsTimeLineHistory(TimeLineID probeTLI)
 {
-	char		path[MAXPGPATH];
-	char		histfname[MAXFNAMELEN];
-	FILE	   *fd;
+ char path[MAXPGPATH];
+ char histfname[MAXFNAMELEN];
+ FILE *fd;
 
-	/* Timeline 1 does not have a history file, so no need to check */
-	if (probeTLI == 1)
-		return false;
 
-	if (ArchiveRecoveryRequested)
-	{
-		TLHistoryFileName(histfname, probeTLI);
-		RestoreArchivedFile(path, histfname, "RECOVERYHISTORY", 0, false);
-	}
-	else
-		TLHistoryFilePath(path, probeTLI);
+ if (probeTLI == 1)
+  return 0;
 
-	fd = AllocateFile(path, "r");
-	if (fd != NULL)
-	{
-		FreeFile(fd);
-		return true;
-	}
-	else
-	{
-		if (errno != ENOENT)
-			ereport(FATAL,
-					(errcode_for_file_access(),
-					 errmsg("could not open file \"%s\": %m", path)));
-		return false;
-	}
+ if (ArchiveRecoveryRequested)
+ {
+  TLHistoryFileName(histfname, probeTLI);
+  RestoreArchivedFile(path, histfname, "RECOVERYHISTORY", 0, 0);
+ }
+ else
+  TLHistoryFilePath(path, probeTLI);
+
+ fd = AllocateFile(path, "r");
+ if (fd != ((void*)0))
+ {
+  FreeFile(fd);
+  return 1;
+ }
+ else
+ {
+  if (errno != ENOENT)
+   ereport(FATAL,
+     (errcode_for_file_access(),
+      errmsg("could not open file \"%s\": %m", path)));
+  return 0;
+ }
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct mb862xxfb_par {int dummy; } ;
-struct fb_var_screeninfo {int /*<<< orphan*/  xoffset; int /*<<< orphan*/  yoffset; } ;
-struct TYPE_2__ {int /*<<< orphan*/  xres_virtual; int /*<<< orphan*/  yres_virtual; } ;
+struct fb_var_screeninfo {int xoffset; int yoffset; } ;
+struct TYPE_2__ {int xres_virtual; int yres_virtual; } ;
 struct fb_info {TYPE_1__ var; struct mb862xxfb_par* par; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GC_L0WH_L0WW ; 
- int /*<<< orphan*/  GC_L0WY_L0WX ; 
- int /*<<< orphan*/  disp ; 
- int /*<<< orphan*/  outreg (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned long) ; 
- unsigned long pack (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int GC_L0WH_L0WW ;
+ int GC_L0WY_L0WX ;
+ int disp ;
+ int outreg (int ,int ,unsigned long) ;
+ unsigned long pack (int ,int ) ;
 
 __attribute__((used)) static int mb862xxfb_pan(struct fb_var_screeninfo *var,
-			 struct fb_info *info)
+    struct fb_info *info)
 {
-	struct mb862xxfb_par *par = info->par;
-	unsigned long reg;
+ struct mb862xxfb_par *par = info->par;
+ unsigned long reg;
 
-	reg = pack(var->yoffset, var->xoffset);
-	outreg(disp, GC_L0WY_L0WX, reg);
+ reg = pack(var->yoffset, var->xoffset);
+ outreg(disp, GC_L0WY_L0WX, reg);
 
-	reg = pack(info->var.yres_virtual, info->var.xres_virtual);
-	outreg(disp, GC_L0WH_L0WW, reg);
-	return 0;
+ reg = pack(info->var.yres_virtual, info->var.xres_virtual);
+ outreg(disp, GC_L0WH_L0WW, reg);
+ return 0;
 }

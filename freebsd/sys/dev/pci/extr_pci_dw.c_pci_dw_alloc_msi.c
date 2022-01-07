@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  phandle_t ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int intr_alloc_msi (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int*) ; 
- int /*<<< orphan*/  ofw_bus_get_node (int /*<<< orphan*/ ) ; 
- int ofw_bus_msimap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pci_get_rid (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int phandle_t ;
+typedef int device_t ;
+
+
+ int intr_alloc_msi (int ,int ,int ,int,int,int*) ;
+ int ofw_bus_get_node (int ) ;
+ int ofw_bus_msimap (int ,int ,int *,int *) ;
+ int pci_get_rid (int ) ;
 
 __attribute__((used)) static int
 pci_dw_alloc_msi(device_t pci, device_t child, int count,
     int maxcount, int *irqs)
 {
-	phandle_t msi_parent;
-	int rv;
+ phandle_t msi_parent;
+ int rv;
 
-	rv = ofw_bus_msimap(ofw_bus_get_node(pci), pci_get_rid(child),
-	    &msi_parent, NULL);
-	if (rv != 0)
-		return (rv);
+ rv = ofw_bus_msimap(ofw_bus_get_node(pci), pci_get_rid(child),
+     &msi_parent, ((void*)0));
+ if (rv != 0)
+  return (rv);
 
-	return (intr_alloc_msi(pci, child, msi_parent, count, maxcount,
-	    irqs));
+ return (intr_alloc_msi(pci, child, msi_parent, count, maxcount,
+     irqs));
 }

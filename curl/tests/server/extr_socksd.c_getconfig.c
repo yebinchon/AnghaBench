@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buffer ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int buffer ;
 struct TYPE_2__ {void* connectrep; void* responsemethod; void* password; void* user; void* port; void* addr; void* nmethods_max; void* nmethods_min; void* version; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FOPEN_READTEXT ; 
- void* byteval (char*) ; 
- TYPE_1__ config ; 
- int /*<<< orphan*/  configfile ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  logmsg (char*,...) ; 
- int /*<<< orphan*/  resetdefaults () ; 
- void* shortval (char*) ; 
- int sscanf (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (void*,char*) ; 
+
+ int FOPEN_READTEXT ;
+ void* byteval (char*) ;
+ TYPE_1__ config ;
+ int configfile ;
+ int fclose (int *) ;
+ scalar_t__ fgets (char*,int,int *) ;
+ int * fopen (int ,int ) ;
+ int logmsg (char*,...) ;
+ int resetdefaults () ;
+ void* shortval (char*) ;
+ int sscanf (char*,char*,char*,char*) ;
+ int strcmp (char*,char*) ;
+ int strcpy (void*,char*) ;
 
 __attribute__((used)) static void getconfig(void)
 {
@@ -69,11 +69,11 @@ __attribute__((used)) static void getconfig(void)
           strcpy(config.password, value);
           logmsg("password [%s] set", config.password);
         }
-        /* Methods:
-           o  X'00' NO AUTHENTICATION REQUIRED
-           o  X'01' GSSAPI
-           o  X'02' USERNAME/PASSWORD
-        */
+
+
+
+
+
         else if(!strcmp(key, "method")) {
           config.responsemethod = byteval(value);
           logmsg("method [%d] set", config.responsemethod);

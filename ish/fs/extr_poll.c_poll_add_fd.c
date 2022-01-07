@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  union poll_fd_info {int dummy; } poll_fd_info ;
-struct poll_fd {int types; int /*<<< orphan*/  fds; int /*<<< orphan*/  polls; union poll_fd_info info; struct poll* poll; struct fd* fd; } ;
-struct poll {int /*<<< orphan*/  lock; int /*<<< orphan*/  poll_fds; } ;
-struct fd {int /*<<< orphan*/  poll_lock; int /*<<< orphan*/  poll_fds; } ;
 
-/* Variables and functions */
- int _ENOMEM ; 
- int /*<<< orphan*/  list_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lock (int /*<<< orphan*/ *) ; 
- struct poll_fd* malloc (int) ; 
- int /*<<< orphan*/  unlock (int /*<<< orphan*/ *) ; 
+
+
+
+typedef union poll_fd_info {int dummy; } poll_fd_info ;
+struct poll_fd {int types; int fds; int polls; union poll_fd_info info; struct poll* poll; struct fd* fd; } ;
+struct poll {int lock; int poll_fds; } ;
+struct fd {int poll_lock; int poll_fds; } ;
+
+
+ int _ENOMEM ;
+ int list_add (int *,int *) ;
+ int lock (int *) ;
+ struct poll_fd* malloc (int) ;
+ int unlock (int *) ;
 
 int poll_add_fd(struct poll *poll, struct fd *fd, int types, union poll_fd_info info) {
     int err;
@@ -28,7 +28,7 @@ int poll_add_fd(struct poll *poll, struct fd *fd, int types, union poll_fd_info 
     lock(&poll->lock);
 
     struct poll_fd *poll_fd = malloc(sizeof(struct poll_fd));
-    if (poll_fd == NULL) {
+    if (poll_fd == ((void*)0)) {
         err = _ENOMEM;
         goto out;
     }

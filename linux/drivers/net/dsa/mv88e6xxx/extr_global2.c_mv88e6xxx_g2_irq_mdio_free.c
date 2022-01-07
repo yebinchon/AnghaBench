@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct mv88e6xxx_chip {TYPE_1__* info; } ;
-struct mii_bus {int /*<<< orphan*/ * irq; } ;
+struct mii_bus {int * irq; } ;
 struct TYPE_2__ {int num_internal_phys; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  irq_dispose_mapping (int /*<<< orphan*/ ) ; 
+
+ int irq_dispose_mapping (int ) ;
 
 void mv88e6xxx_g2_irq_mdio_free(struct mv88e6xxx_chip *chip,
-				struct mii_bus *bus)
+    struct mii_bus *bus)
 {
-	int phy;
+ int phy;
 
-	for (phy = 0; phy < chip->info->num_internal_phys; phy++)
-		irq_dispose_mapping(bus->irq[phy]);
+ for (phy = 0; phy < chip->info->num_internal_phys; phy++)
+  irq_dispose_mapping(bus->irq[phy]);
 }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zdev_t ;
-typedef  int u16_t ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int zdev_t ;
+typedef int u16_t ;
 struct dest {void* vtxq; struct dest* next; TYPE_1__* tid_tx; } ;
-struct TYPE_7__ {int /*<<< orphan*/ ** dest; struct dest** Head; } ;
+struct TYPE_7__ {int ** dest; struct dest** Head; } ;
 struct TYPE_6__ {scalar_t__ destLock; } ;
-struct TYPE_5__ {int /*<<< orphan*/  size; int /*<<< orphan*/  aggTail; int /*<<< orphan*/  aggHead; } ;
-typedef  TYPE_1__* TID_TX ;
+struct TYPE_5__ {int size; int aggTail; int aggHead; } ;
+typedef TYPE_1__* TID_TX ;
 
-/* Variables and functions */
- TYPE_4__ DESTQ ; 
- TYPE_3__* wd ; 
- int /*<<< orphan*/  zfwMemFree (int /*<<< orphan*/ *,struct dest*,int) ; 
- int /*<<< orphan*/  zm_agg_qlen (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zmw_declare_for_critical_section () ; 
- int /*<<< orphan*/  zmw_enter_critical_section (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zmw_get_wlan_dev (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zmw_leave_critical_section (int /*<<< orphan*/ *) ; 
 
-void    zfAggDestDelete(zdev_t* dev, u16_t Qtype, TID_TX tid_tx, void* vtxq)
+ TYPE_4__ DESTQ ;
+ TYPE_3__* wd ;
+ int zfwMemFree (int *,struct dest*,int) ;
+ int zm_agg_qlen (int *,int ,int ) ;
+ int zmw_declare_for_critical_section () ;
+ int zmw_enter_critical_section (int *) ;
+ int zmw_get_wlan_dev (int *) ;
+ int zmw_leave_critical_section (int *) ;
+
+void zfAggDestDelete(zdev_t* dev, u16_t Qtype, TID_TX tid_tx, void* vtxq)
 {
     struct dest* dest, *temp;
-    u16_t   i;
+    u16_t i;
 
     zmw_get_wlan_dev(dev);
 
@@ -47,7 +47,7 @@ void    zfAggDestDelete(zdev_t* dev, u16_t Qtype, TID_TX tid_tx, void* vtxq)
     }
 
 
-    //zmw_declare_for_critical_section();
+
     for (i=0; i<4; i++) {
         if (!DESTQ.Head[i]) continue;
         dest = DESTQ.Head[i];
@@ -72,29 +72,29 @@ void    zfAggDestDelete(zdev_t* dev, u16_t Qtype, TID_TX tid_tx, void* vtxq)
                 return;
             }
             if (!DESTQ.Head[i]) {
-                temp = NULL;
+                temp = ((void*)0);
             }
             else {
                 temp = dest->next;
                 if (temp == dest) {
-                    DESTQ.Head[i] = DESTQ.dest[i] = NULL;
-                    //DESTQ.size[i] = 0;
+                    DESTQ.Head[i] = DESTQ.dest[i] = ((void*)0);
+
                 }
                 else {
                     dest->next = dest->next->next;
                 }
             }
 
-            if (temp == NULL)
-                {/* do nothing */} //zfwMemFree(dev, temp, sizeof(struct dest));
+            if (temp == ((void*)0))
+                { }
             else
                 zfwMemFree(dev, temp, sizeof(struct dest));
 
-            /*zmw_enter_critical_section(dev);
-            if (DESTQ.size[i] > 0)
-                DESTQ.size[i]--;
-            zmw_leave_critical_section(dev);
-            */
+
+
+
+
+
         }
 
     }

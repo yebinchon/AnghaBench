@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {void* reply; void* handler; } ;
-struct TYPE_4__ {int /*<<< orphan*/  kind; } ;
+struct TYPE_4__ {int kind; } ;
 struct TYPE_6__ {TYPE_2__ exc; scalar_t__ thread; TYPE_1__ status; } ;
 struct inf {int nomsg; int pause_sc; int want_signals; int want_exceptions; scalar_t__ default_thread_detach_sc; scalar_t__ default_thread_pause_sc; scalar_t__ default_thread_run_sc; scalar_t__ detach_sc; scalar_t__ pending_execs; scalar_t__ no_wait; scalar_t__ traced; scalar_t__ stopped; scalar_t__ running; void* event_port; scalar_t__ signal_thread; scalar_t__ step_thread; TYPE_3__ wait; scalar_t__ pid; scalar_t__ threads_up_to_date; scalar_t__ threads; scalar_t__ task; } ;
 
-/* Variables and functions */
- void* MACH_PORT_NULL ; 
- int /*<<< orphan*/  TARGET_WAITKIND_SPURIOUS ; 
- struct inf* xmalloc (int) ; 
+
+ void* MACH_PORT_NULL ;
+ int TARGET_WAITKIND_SPURIOUS ;
+ struct inf* xmalloc (int) ;
 
 struct inf *
 make_inf (void)
@@ -50,8 +50,8 @@ make_inf (void)
   inf->default_thread_run_sc = 0;
   inf->default_thread_pause_sc = 0;
   inf->default_thread_detach_sc = 0;
-  inf->want_signals = 1;	/* By default */
-  inf->want_exceptions = 1;	/* By default */
+  inf->want_signals = 1;
+  inf->want_exceptions = 1;
 
   return inf;
 }

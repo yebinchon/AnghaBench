@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u8 ;
-struct qlcnic_hardware_context {int /*<<< orphan*/  beacon_state; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ u8 ;
+struct qlcnic_hardware_context {int beacon_state; } ;
 struct TYPE_2__ {scalar_t__* arg; } ;
 struct qlcnic_cmd_args {TYPE_1__ rsp; } ;
-struct qlcnic_adapter {int /*<<< orphan*/  netdev; struct qlcnic_hardware_context* ahw; } ;
+struct qlcnic_adapter {int netdev; struct qlcnic_hardware_context* ahw; } ;
 
-/* Variables and functions */
- scalar_t__ QLCNIC_BEACON_DISABLE ; 
- int /*<<< orphan*/  QLCNIC_CMD_GET_LED_CONFIG ; 
- int /*<<< orphan*/  QLC_83XX_BEACON_OFF ; 
- int /*<<< orphan*/  QLC_83XX_BEACON_ON ; 
- scalar_t__ QLC_83XX_ENABLE_BEACON ; 
- int /*<<< orphan*/  netdev_err (int /*<<< orphan*/ ,char*,int) ; 
- int qlcnic_alloc_mbx_args (struct qlcnic_cmd_args*,struct qlcnic_adapter*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qlcnic_free_mbx_args (struct qlcnic_cmd_args*) ; 
- int qlcnic_issue_cmd (struct qlcnic_adapter*,struct qlcnic_cmd_args*) ; 
+
+ scalar_t__ QLCNIC_BEACON_DISABLE ;
+ int QLCNIC_CMD_GET_LED_CONFIG ;
+ int QLC_83XX_BEACON_OFF ;
+ int QLC_83XX_BEACON_ON ;
+ scalar_t__ QLC_83XX_ENABLE_BEACON ;
+ int netdev_err (int ,char*,int) ;
+ int qlcnic_alloc_mbx_args (struct qlcnic_cmd_args*,struct qlcnic_adapter*,int ) ;
+ int qlcnic_free_mbx_args (struct qlcnic_cmd_args*) ;
+ int qlcnic_issue_cmd (struct qlcnic_adapter*,struct qlcnic_cmd_args*) ;
 
 __attribute__((used)) static void qlcnic_83xx_get_beacon_state(struct qlcnic_adapter *adapter)
 {
-	struct qlcnic_hardware_context *ahw = adapter->ahw;
-	struct qlcnic_cmd_args cmd;
-	u8 beacon_state;
-	int err = 0;
+ struct qlcnic_hardware_context *ahw = adapter->ahw;
+ struct qlcnic_cmd_args cmd;
+ u8 beacon_state;
+ int err = 0;
 
-	err = qlcnic_alloc_mbx_args(&cmd, adapter, QLCNIC_CMD_GET_LED_CONFIG);
-	if (!err) {
-		err = qlcnic_issue_cmd(adapter, &cmd);
-		if (!err) {
-			beacon_state = cmd.rsp.arg[4];
-			if (beacon_state == QLCNIC_BEACON_DISABLE)
-				ahw->beacon_state = QLC_83XX_BEACON_OFF;
-			else if (beacon_state == QLC_83XX_ENABLE_BEACON)
-				ahw->beacon_state = QLC_83XX_BEACON_ON;
-		}
-	} else {
-		netdev_err(adapter->netdev, "Get beacon state failed, err=%d\n",
-			   err);
-	}
+ err = qlcnic_alloc_mbx_args(&cmd, adapter, QLCNIC_CMD_GET_LED_CONFIG);
+ if (!err) {
+  err = qlcnic_issue_cmd(adapter, &cmd);
+  if (!err) {
+   beacon_state = cmd.rsp.arg[4];
+   if (beacon_state == QLCNIC_BEACON_DISABLE)
+    ahw->beacon_state = QLC_83XX_BEACON_OFF;
+   else if (beacon_state == QLC_83XX_ENABLE_BEACON)
+    ahw->beacon_state = QLC_83XX_BEACON_ON;
+  }
+ } else {
+  netdev_err(adapter->netdev, "Get beacon state failed, err=%d\n",
+      err);
+ }
 
-	qlcnic_free_mbx_args(&cmd);
+ qlcnic_free_mbx_args(&cmd);
 
-	return;
+ return;
 }

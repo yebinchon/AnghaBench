@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * strchr (char const*,int) ; 
+ int * strchr (char const*,int) ;
 
 char *
 Strtok(char *buf, const char *delims)
 {
-	static char *p = NULL;
-	char *start, *end;
+ static char *p = ((void*)0);
+ char *start, *end;
 
-	if (buf != NULL) {
-		p = buf;
-	} else {
-		if (p == NULL)
-			return (NULL);		/* No more tokens. */
-	}
-	for (start = p, end = p; ; end++) {
-		if (*end == '\0') {
-			p = NULL;		/* This is the last token. */
-			break;
-		}
-		if (strchr(delims, (int) *end) != NULL) {
-			*end++ = '\0';
-			p = end;
-			break;
-		}
-	}
-	return (start);
+ if (buf != ((void*)0)) {
+  p = buf;
+ } else {
+  if (p == ((void*)0))
+   return (((void*)0));
+ }
+ for (start = p, end = p; ; end++) {
+  if (*end == '\0') {
+   p = ((void*)0);
+   break;
+  }
+  if (strchr(delims, (int) *end) != ((void*)0)) {
+   *end++ = '\0';
+   p = end;
+   break;
+  }
+ }
+ return (start);
 }

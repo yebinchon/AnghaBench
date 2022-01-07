@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sym_hist {int dummy; } ;
-struct annotation {int /*<<< orphan*/  src; } ;
+struct annotation {int src; } ;
 
-/* Variables and functions */
- struct sym_hist* annotated_source__histogram (int /*<<< orphan*/ ,int) ; 
+
+ struct sym_hist* annotated_source__histogram (int ,int) ;
 
 __attribute__((used)) static inline struct sym_hist *annotation__histogram(struct annotation *notes, int idx)
 {
-	return annotated_source__histogram(notes->src, idx);
+ return annotated_source__histogram(notes->src, idx);
 }

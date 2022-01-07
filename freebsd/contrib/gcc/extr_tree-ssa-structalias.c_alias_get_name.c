@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- scalar_t__ DECL_P (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DECL_UID (int /*<<< orphan*/ ) ; 
- scalar_t__ SSA_NAME ; 
- int /*<<< orphan*/  SSA_NAME_VAR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSA_NAME_VERSION (int /*<<< orphan*/ ) ; 
- scalar_t__ TREE_CODE (int /*<<< orphan*/ ) ; 
- int asprintf (char**,char*,char const*,...) ; 
- int /*<<< orphan*/  dump_file ; 
- int /*<<< orphan*/  free (char*) ; 
- char* get_name (int /*<<< orphan*/ ) ; 
- char* ggc_strdup (char*) ; 
+
+
+
+typedef int tree ;
+
+
+ scalar_t__ DECL_P (int ) ;
+ int DECL_UID (int ) ;
+ scalar_t__ SSA_NAME ;
+ int SSA_NAME_VAR (int ) ;
+ int SSA_NAME_VERSION (int ) ;
+ scalar_t__ TREE_CODE (int ) ;
+ int asprintf (char**,char*,char const*,...) ;
+ int dump_file ;
+ int free (char*) ;
+ char* get_name (int ) ;
+ char* ggc_strdup (char*) ;
 
 __attribute__((used)) static const char *
 alias_get_name (tree decl)
@@ -32,7 +32,7 @@ alias_get_name (tree decl)
   char *temp;
   int num_printed = 0;
 
-  if (res != NULL)
+  if (res != ((void*)0))
     return res;
 
   res = "NULL";
@@ -42,8 +42,8 @@ alias_get_name (tree decl)
   if (TREE_CODE (decl) == SSA_NAME)
     {
       num_printed = asprintf (&temp, "%s_%u",
-			      alias_get_name (SSA_NAME_VAR (decl)),
-			      SSA_NAME_VERSION (decl));
+         alias_get_name (SSA_NAME_VAR (decl)),
+         SSA_NAME_VERSION (decl));
     }
   else if (DECL_P (decl))
     {

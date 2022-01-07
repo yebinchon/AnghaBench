@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_9__ ;
-typedef  struct TYPE_24__   TYPE_8__ ;
-typedef  struct TYPE_23__   TYPE_7__ ;
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_25__ TYPE_9__ ;
+typedef struct TYPE_24__ TYPE_8__ ;
+typedef struct TYPE_23__ TYPE_7__ ;
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_25__ {scalar_t__ MaxFALL; scalar_t__ MaxCLL; } ;
 struct TYPE_24__ {int has_primaries; int has_luminance; void* min_luminance; void* max_luminance; void** white_point; void*** display_primaries; } ;
 struct TYPE_23__ {TYPE_3__* codecpar; } ;
 struct TYPE_22__ {scalar_t__ r_x; scalar_t__ r_y; scalar_t__ g_x; scalar_t__ g_y; scalar_t__ b_x; scalar_t__ b_y; scalar_t__ white_x; scalar_t__ white_y; scalar_t__ max_luminance; scalar_t__ min_luminance; } ;
-struct TYPE_17__ {int /*<<< orphan*/  nb_elem; TYPE_4__* elem; } ;
+struct TYPE_17__ {int nb_elem; TYPE_4__* elem; } ;
 struct TYPE_18__ {TYPE_1__ color; } ;
 struct TYPE_21__ {TYPE_2__ video; } ;
 struct TYPE_20__ {scalar_t__ matrix_coefficients; scalar_t__ primaries; scalar_t__ transfer_characteristics; scalar_t__ range; int chroma_siting_horz; int chroma_siting_vert; scalar_t__ max_fall; scalar_t__ max_cll; TYPE_6__ mastering_meta; } ;
-struct TYPE_19__ {scalar_t__ color_space; scalar_t__ color_primaries; scalar_t__ color_trc; scalar_t__ color_range; int /*<<< orphan*/  chroma_location; } ;
-typedef  TYPE_4__ MatroskaTrackVideoColor ;
-typedef  TYPE_5__ MatroskaTrack ;
-typedef  TYPE_6__ MatroskaMasteringMeta ;
-typedef  TYPE_7__ AVStream ;
-typedef  TYPE_8__ AVMasteringDisplayMetadata ;
-typedef  TYPE_9__ AVContentLightMetadata ;
+struct TYPE_19__ {scalar_t__ color_space; scalar_t__ color_primaries; scalar_t__ color_trc; scalar_t__ color_range; int chroma_location; } ;
+typedef TYPE_4__ MatroskaTrackVideoColor ;
+typedef TYPE_5__ MatroskaTrack ;
+typedef TYPE_6__ MatroskaMasteringMeta ;
+typedef TYPE_7__ AVStream ;
+typedef TYPE_8__ AVMasteringDisplayMetadata ;
+typedef TYPE_9__ AVContentLightMetadata ;
 
-/* Variables and functions */
- scalar_t__ AVCOL_PRI_RESERVED ; 
- scalar_t__ AVCOL_PRI_RESERVED0 ; 
- scalar_t__ AVCOL_RANGE_JPEG ; 
- scalar_t__ AVCOL_RANGE_UNSPECIFIED ; 
- scalar_t__ AVCOL_SPC_RESERVED ; 
- scalar_t__ AVCOL_TRC_RESERVED ; 
- scalar_t__ AVCOL_TRC_RESERVED0 ; 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_PKT_DATA_CONTENT_LIGHT_LEVEL ; 
- int /*<<< orphan*/  AV_PKT_DATA_MASTERING_DISPLAY_METADATA ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  INT_MAX ; 
- int MATROSKA_COLOUR_CHROMASITINGHORZ_NB ; 
- int MATROSKA_COLOUR_CHROMASITINGHORZ_UNDETERMINED ; 
- int MATROSKA_COLOUR_CHROMASITINGVERT_NB ; 
- int MATROSKA_COLOUR_CHROMASITINGVERT_UNDETERMINED ; 
- TYPE_9__* av_content_light_metadata_alloc (size_t*) ; 
- void* av_d2q (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_freep (TYPE_9__**) ; 
- int av_stream_add_side_data (TYPE_7__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t) ; 
- scalar_t__ av_stream_new_side_data (TYPE_7__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  avcodec_chroma_pos_to_enum (int,int) ; 
- int /*<<< orphan*/  memset (TYPE_8__*,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ AVCOL_PRI_RESERVED ;
+ scalar_t__ AVCOL_PRI_RESERVED0 ;
+ scalar_t__ AVCOL_RANGE_JPEG ;
+ scalar_t__ AVCOL_RANGE_UNSPECIFIED ;
+ scalar_t__ AVCOL_SPC_RESERVED ;
+ scalar_t__ AVCOL_TRC_RESERVED ;
+ scalar_t__ AVCOL_TRC_RESERVED0 ;
+ int AVERROR (int ) ;
+ int AV_PKT_DATA_CONTENT_LIGHT_LEVEL ;
+ int AV_PKT_DATA_MASTERING_DISPLAY_METADATA ;
+ int ENOMEM ;
+ int INT_MAX ;
+ int MATROSKA_COLOUR_CHROMASITINGHORZ_NB ;
+ int MATROSKA_COLOUR_CHROMASITINGHORZ_UNDETERMINED ;
+ int MATROSKA_COLOUR_CHROMASITINGVERT_NB ;
+ int MATROSKA_COLOUR_CHROMASITINGVERT_UNDETERMINED ;
+ TYPE_9__* av_content_light_metadata_alloc (size_t*) ;
+ void* av_d2q (scalar_t__,int ) ;
+ int av_freep (TYPE_9__**) ;
+ int av_stream_add_side_data (TYPE_7__*,int ,int *,size_t) ;
+ scalar_t__ av_stream_new_side_data (TYPE_7__*,int ,int) ;
+ int avcodec_chroma_pos_to_enum (int,int) ;
+ int memset (TYPE_8__*,int ,int) ;
 
 __attribute__((used)) static int mkv_parse_video_color(AVStream *st, const MatroskaTrack *track) {
     const MatroskaTrackVideoColor *color = track->video.color.elem;
@@ -70,7 +70,7 @@ __attribute__((used)) static int mkv_parse_video_color(AVStream *st, const Matro
         return 0;
 
     mastering_meta = &color->mastering_meta;
-    // Mastering primaries are CIE 1931 coords, and must be > 0.
+
     has_mastering_primaries =
         mastering_meta->r_x > 0 && mastering_meta->r_y > 0 &&
         mastering_meta->g_x > 0 && mastering_meta->g_y > 0 &&
@@ -91,8 +91,8 @@ __attribute__((used)) static int mkv_parse_video_color(AVStream *st, const Matro
         st->codecpar->color_range = color->range;
     if (color->chroma_siting_horz != MATROSKA_COLOUR_CHROMASITINGHORZ_UNDETERMINED &&
         color->chroma_siting_vert != MATROSKA_COLOUR_CHROMASITINGVERT_UNDETERMINED &&
-        color->chroma_siting_horz  < MATROSKA_COLOUR_CHROMASITINGHORZ_NB &&
-        color->chroma_siting_vert  < MATROSKA_COLOUR_CHROMASITINGVERT_NB) {
+        color->chroma_siting_horz < MATROSKA_COLOUR_CHROMASITINGHORZ_NB &&
+        color->chroma_siting_vert < MATROSKA_COLOUR_CHROMASITINGVERT_NB) {
         st->codecpar->chroma_location =
             avcodec_chroma_pos_to_enum((color->chroma_siting_horz - 1) << 7,
                                        (color->chroma_siting_vert - 1) << 7);
@@ -109,7 +109,7 @@ __attribute__((used)) static int mkv_parse_video_color(AVStream *st, const Matro
             av_freep(&metadata);
             return ret;
         }
-        metadata->MaxCLL  = color->max_cll;
+        metadata->MaxCLL = color->max_cll;
         metadata->MaxFALL = color->max_fall;
     }
 

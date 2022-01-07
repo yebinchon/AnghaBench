@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  config_file_t ;
-struct TYPE_6__ {int /*<<< orphan*/  config_file_new_entry_cb; } ;
-typedef  TYPE_2__ config_file_cb_t ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int config_file_t ;
+struct TYPE_6__ {int config_file_new_entry_cb; } ;
+typedef TYPE_2__ config_file_cb_t ;
 struct TYPE_7__ {unsigned int loading_cheat_size; unsigned int loading_cheat_offset; TYPE_1__* cheats; } ;
-struct TYPE_5__ {unsigned int idx; int state; int big_endian; int memory_search_size; int /*<<< orphan*/  cheat_type; int /*<<< orphan*/ * code; int /*<<< orphan*/ * desc; } ;
+struct TYPE_5__ {unsigned int idx; int state; int big_endian; int memory_search_size; int cheat_type; int * code; int * desc; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHEAT_HANDLER_TYPE_EMU ; 
- int /*<<< orphan*/  CHEAT_TYPE_SET_TO_VALUE ; 
- int /*<<< orphan*/  cheat_manager_alloc_if_empty () ; 
- unsigned int cheat_manager_get_size () ; 
- int /*<<< orphan*/  cheat_manager_load_cb_first_pass ; 
- int /*<<< orphan*/  cheat_manager_load_cb_second_pass ; 
- int /*<<< orphan*/  cheat_manager_new (unsigned int) ; 
- scalar_t__ cheat_manager_realloc (unsigned int,int /*<<< orphan*/ ) ; 
- TYPE_4__ cheat_manager_state ; 
- int /*<<< orphan*/  config_file_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * config_file_new_with_callback (char const*,TYPE_2__*) ; 
+
+ int CHEAT_HANDLER_TYPE_EMU ;
+ int CHEAT_TYPE_SET_TO_VALUE ;
+ int cheat_manager_alloc_if_empty () ;
+ unsigned int cheat_manager_get_size () ;
+ int cheat_manager_load_cb_first_pass ;
+ int cheat_manager_load_cb_second_pass ;
+ int cheat_manager_new (unsigned int) ;
+ scalar_t__ cheat_manager_realloc (unsigned int,int ) ;
+ TYPE_4__ cheat_manager_state ;
+ int config_file_free (int *) ;
+ int * config_file_new_with_callback (char const*,TYPE_2__*) ;
 
 bool cheat_manager_load(const char *path, bool append)
 {
    config_file_cb_t cb;
-   unsigned orig_size  = 0;
-   unsigned cheats     = 0;
-   unsigned i          = 0;
-   config_file_t *conf = NULL;
+   unsigned orig_size = 0;
+   unsigned cheats = 0;
+   unsigned i = 0;
+   config_file_t *conf = ((void*)0);
 
    cb.config_file_new_entry_cb = cheat_manager_load_cb_first_pass;
 
@@ -47,7 +47,7 @@ bool cheat_manager_load(const char *path, bool append)
    conf = config_file_new_with_callback(path, &cb);
 
    if (!conf)
-      return false;
+      return 0;
 
    cheats = cheat_manager_state.loading_cheat_size;
 
@@ -55,7 +55,7 @@ bool cheat_manager_load(const char *path, bool append)
       goto error;
 
    config_file_free(conf);
-   conf = NULL;
+   conf = ((void*)0);
 
    cheat_manager_alloc_if_empty();
 
@@ -81,10 +81,10 @@ bool cheat_manager_load(const char *path, bool append)
    for (i = orig_size; cheat_manager_state.cheats && i < cheats; i++)
    {
       cheat_manager_state.cheats[i].idx = i;
-      cheat_manager_state.cheats[i].desc = NULL;
-      cheat_manager_state.cheats[i].code = NULL;
-      cheat_manager_state.cheats[i].state = false;
-      cheat_manager_state.cheats[i].big_endian = false;
+      cheat_manager_state.cheats[i].desc = ((void*)0);
+      cheat_manager_state.cheats[i].code = ((void*)0);
+      cheat_manager_state.cheats[i].state = 0;
+      cheat_manager_state.cheats[i].big_endian = 0;
       cheat_manager_state.cheats[i].cheat_type = CHEAT_TYPE_SET_TO_VALUE;
       cheat_manager_state.cheats[i].memory_search_size = 3;
    }
@@ -94,13 +94,13 @@ bool cheat_manager_load(const char *path, bool append)
    conf = config_file_new_with_callback(path, &cb);
 
    if (!conf)
-      return false;
+      return 0;
 
    config_file_free(conf);
 
-   return true;
+   return 1;
 
 error:
    config_file_free(conf);
-   return false;
+   return 0;
 }

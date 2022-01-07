@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc__db_wcroot_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_skel_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  void* svn_boolean_t ;
-struct insert_base_baton_t {char const* repos_root_url; char const* repos_uuid; char const* repos_relpath; int /*<<< orphan*/ * work_items; int /*<<< orphan*/ * conflict; void* delete_working; void* insert_base_deleted; int /*<<< orphan*/  depth; int /*<<< orphan*/  revision; int /*<<< orphan*/  kind; int /*<<< orphan*/  status; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_IS_VALID_REVNUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_WC__DB_WITH_TXN (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VERIFY_USABLE_WCROOT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  blank_ibb (struct insert_base_baton_t*) ; 
- int /*<<< orphan*/  flush_entries (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  insert_base_node (struct insert_base_baton_t*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_depth_empty ; 
- int /*<<< orphan*/  svn_dirent_is_absolute (char const*) ; 
- int /*<<< orphan*/  svn_node_dir ; 
- int /*<<< orphan*/  svn_wc__db_status_incomplete ; 
- int /*<<< orphan*/  svn_wc__db_wcroot_parse_local_abspath (int /*<<< orphan*/ **,char const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_wc__db_wcroot_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_skel_t ;
+typedef int svn_revnum_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef void* svn_boolean_t ;
+struct insert_base_baton_t {char const* repos_root_url; char const* repos_uuid; char const* repos_relpath; int * work_items; int * conflict; void* delete_working; void* insert_base_deleted; int depth; int revision; int kind; int status; } ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int SVN_IS_VALID_REVNUM (int ) ;
+ int * SVN_NO_ERROR ;
+ int SVN_WC__DB_WITH_TXN (int ,int *) ;
+ int VERIFY_USABLE_WCROOT (int *) ;
+ int blank_ibb (struct insert_base_baton_t*) ;
+ int flush_entries (int *,char const*,int ,int *) ;
+ int insert_base_node (struct insert_base_baton_t*,int *,char const*,int *) ;
+ int svn_depth_empty ;
+ int svn_dirent_is_absolute (char const*) ;
+ int svn_node_dir ;
+ int svn_wc__db_status_incomplete ;
+ int svn_wc__db_wcroot_parse_local_abspath (int **,char const**,int *,char const*,int *,int *) ;
 
 svn_error_t *
 svn_wc__db_base_add_incomplete_directory(svn_wc__db_t *db,
@@ -66,7 +66,7 @@ svn_wc__db_base_add_incomplete_directory(svn_wc__db_t *db,
 
   blank_ibb(&ibb);
 
-  /* Calculate repos_id in insert_base_node() to avoid extra transaction */
+
   ibb.repos_root_url = repos_root_url;
   ibb.repos_uuid = repos_uuid;
 

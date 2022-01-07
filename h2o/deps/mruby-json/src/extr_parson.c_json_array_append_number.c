@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  JSON_Value ;
-typedef  scalar_t__ JSON_Status ;
-typedef  int /*<<< orphan*/  JSON_Array ;
 
-/* Variables and functions */
- scalar_t__ JSONFailure ; 
- scalar_t__ JSONSuccess ; 
- scalar_t__ json_array_append_value (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  json_value_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_value_init_number (double) ; 
+
+
+
+typedef int JSON_Value ;
+typedef scalar_t__ JSON_Status ;
+typedef int JSON_Array ;
+
+
+ scalar_t__ JSONFailure ;
+ scalar_t__ JSONSuccess ;
+ scalar_t__ json_array_append_value (int *,int *) ;
+ int json_value_free (int *) ;
+ int * json_value_init_number (double) ;
 
 JSON_Status json_array_append_number(JSON_Array *array, double number) {
     JSON_Value *value = json_value_init_number(number);
-    if (value == NULL) {
+    if (value == ((void*)0)) {
         return JSONFailure;
     }
     if (json_array_append_value(array, value) == JSONFailure) {

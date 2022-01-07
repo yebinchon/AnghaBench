@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ verbose; } ;
 struct Curl_easy {TYPE_1__ set; } ;
 
-/* Variables and functions */
- unsigned int CURL_IAC ; 
-#define  CURL_NEW_ENV_VALUE 137 
-#define  CURL_NEW_ENV_VAR 136 
- int CURL_SE ; 
- int /*<<< orphan*/  CURL_TELCMD (int) ; 
- scalar_t__ CURL_TELCMD_OK (int) ; 
- int /*<<< orphan*/  CURL_TELOPT (unsigned char) ; 
-#define  CURL_TELOPT_NAWS 135 
-#define  CURL_TELOPT_NEW_ENVIRON 134 
- scalar_t__ CURL_TELOPT_OK (unsigned char) ; 
-#define  CURL_TELOPT_TTYPE 133 
-#define  CURL_TELOPT_XDISPLOC 132 
-#define  CURL_TELQUAL_INFO 131 
-#define  CURL_TELQUAL_IS 130 
-#define  CURL_TELQUAL_NAME 129 
-#define  CURL_TELQUAL_SEND 128 
- int /*<<< orphan*/  infof (struct Curl_easy*,char*,...) ; 
+
+ unsigned int CURL_IAC ;
+
+
+ int CURL_SE ;
+ int CURL_TELCMD (int) ;
+ scalar_t__ CURL_TELCMD_OK (int) ;
+ int CURL_TELOPT (unsigned char) ;
+
+
+ scalar_t__ CURL_TELOPT_OK (unsigned char) ;
+
+
+
+
+
+
+ int infof (struct Curl_easy*,char*,...) ;
 
 __attribute__((used)) static void printsub(struct Curl_easy *data,
-                     int direction,             /* '<' or '>' */
-                     unsigned char *pointer,    /* where suboption data is */
-                     size_t length)             /* length of suboption data */
+                     int direction,
+                     unsigned char *pointer,
+                     size_t length)
 {
   if(data->set.verbose) {
     unsigned int i = 0;
@@ -74,10 +74,10 @@ __attribute__((used)) static void printsub(struct Curl_easy *data,
 
     if(CURL_TELOPT_OK(pointer[0])) {
       switch(pointer[0]) {
-      case CURL_TELOPT_TTYPE:
-      case CURL_TELOPT_XDISPLOC:
-      case CURL_TELOPT_NEW_ENVIRON:
-      case CURL_TELOPT_NAWS:
+      case 133:
+      case 132:
+      case 134:
+      case 135:
         infof(data, "%s", CURL_TELOPT(pointer[0]));
         break;
       default:
@@ -89,42 +89,42 @@ __attribute__((used)) static void printsub(struct Curl_easy *data,
       infof(data, "%d (unknown)", pointer[i]);
 
     switch(pointer[0]) {
-    case CURL_TELOPT_NAWS:
+    case 135:
       if(length > 4)
         infof(data, "Width: %d ; Height: %d", (pointer[1]<<8) | pointer[2],
               (pointer[3]<<8) | pointer[4]);
       break;
     default:
       switch(pointer[1]) {
-      case CURL_TELQUAL_IS:
+      case 130:
         infof(data, " IS");
         break;
-      case CURL_TELQUAL_SEND:
+      case 128:
         infof(data, " SEND");
         break;
-      case CURL_TELQUAL_INFO:
+      case 131:
         infof(data, " INFO/REPLY");
         break;
-      case CURL_TELQUAL_NAME:
+      case 129:
         infof(data, " NAME");
         break;
       }
 
       switch(pointer[0]) {
-      case CURL_TELOPT_TTYPE:
-      case CURL_TELOPT_XDISPLOC:
+      case 133:
+      case 132:
         pointer[length] = 0;
         infof(data, " \"%s\"", &pointer[2]);
         break;
-      case CURL_TELOPT_NEW_ENVIRON:
-        if(pointer[1] == CURL_TELQUAL_IS) {
+      case 134:
+        if(pointer[1] == 130) {
           infof(data, " ");
           for(i = 3; i < length; i++) {
             switch(pointer[i]) {
-            case CURL_NEW_ENV_VAR:
+            case 136:
               infof(data, ", ");
               break;
-            case CURL_NEW_ENV_VALUE:
+            case 137:
               infof(data, " = ");
               break;
             default:

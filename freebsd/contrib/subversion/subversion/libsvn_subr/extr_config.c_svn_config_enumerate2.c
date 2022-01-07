@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_config_t ;
-typedef  int /*<<< orphan*/  (* svn_config_enumerator2_t ) (int /*<<< orphan*/ ,char const*,void*,int /*<<< orphan*/ *) ;
-struct TYPE_7__ {int /*<<< orphan*/  options; } ;
-typedef  TYPE_1__ cfg_section_t ;
-struct TYPE_8__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_2__ cfg_option_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- TYPE_2__* apr_hash_this_val (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  find_option (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,TYPE_1__**) ; 
- int /*<<< orphan*/  make_string_from_option (char const**,int /*<<< orphan*/ *,TYPE_1__*,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int svn_config_t ;
+typedef int (* svn_config_enumerator2_t ) (int ,char const*,void*,int *) ;
+struct TYPE_7__ {int options; } ;
+typedef TYPE_1__ cfg_section_t ;
+struct TYPE_8__ {int name; } ;
+typedef TYPE_2__ cfg_option_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_index_t ;
+
+
+ int * apr_hash_first (int *,int ) ;
+ int * apr_hash_next (int *) ;
+ TYPE_2__* apr_hash_this_val (int *) ;
+ int find_option (int *,char const*,int *,TYPE_1__**) ;
+ int make_string_from_option (char const**,int *,TYPE_1__*,TYPE_2__*,int *) ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
 
 int
 svn_config_enumerate2(svn_config_t *cfg, const char *section,
@@ -41,21 +41,21 @@ svn_config_enumerate2(svn_config_t *cfg, const char *section,
   apr_pool_t *iteration_pool;
   int count;
 
-  find_option(cfg, section, NULL, &sec);
-  if (sec == NULL)
+  find_option(cfg, section, ((void*)0), &sec);
+  if (sec == ((void*)0))
     return 0;
 
   iteration_pool = svn_pool_create(pool);
   count = 0;
   for (opt_ndx = apr_hash_first(pool, sec->options);
-       opt_ndx != NULL;
+       opt_ndx != ((void*)0);
        opt_ndx = apr_hash_next(opt_ndx))
     {
       cfg_option_t *opt = apr_hash_this_val(opt_ndx);
       const char *temp_value;
 
       ++count;
-      make_string_from_option(&temp_value, cfg, sec, opt, NULL);
+      make_string_from_option(&temp_value, cfg, sec, opt, ((void*)0));
       svn_pool_clear(iteration_pool);
       if (!callback(opt->name, temp_value, baton, iteration_pool))
         break;

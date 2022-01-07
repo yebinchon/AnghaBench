@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_10__ {int dwStyle; int /*<<< orphan*/  todaysDate; int /*<<< orphan*/  hwndSelf; } ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_10__ {int dwStyle; int todaysDate; int hwndSelf; } ;
 struct TYPE_9__ {short x; short y; } ;
-typedef  int /*<<< orphan*/  SYSTEMTIME ;
-typedef  TYPE_1__ POINT ;
-typedef  TYPE_2__ MONTHCAL_INFO ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HMENU ;
+typedef int SYSTEMTIME ;
+typedef TYPE_1__ POINT ;
+typedef TYPE_2__ MONTHCAL_INFO ;
+typedef int LRESULT ;
+typedef int LPARAM ;
+typedef int HMENU ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AppendMenuW (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  COMCTL32_hModule ; 
- int /*<<< orphan*/  ClientToScreen (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  CreatePopupMenu () ; 
- scalar_t__ HIWORD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDM_GOTODAY ; 
- scalar_t__ LOWORD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LoadStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int MCS_MULTISELECT ; 
- int MF_ENABLED ; 
- int MF_STRING ; 
- int /*<<< orphan*/  MONTHCAL_NotifySelect (TYPE_2__*) ; 
- int /*<<< orphan*/  MONTHCAL_NotifySelectionChange (TYPE_2__*) ; 
- int /*<<< orphan*/  MONTHCAL_SetCurSel (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MONTHCAL_SetSelRange (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int TPM_NONOTIFY ; 
- int TPM_RETURNCMD ; 
- int TPM_RIGHTBUTTON ; 
- scalar_t__ TrackPopupMenu (int /*<<< orphan*/ ,int,short,short,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int ARRAY_SIZE (int *) ;
+ int AppendMenuW (int ,int,int,int *) ;
+ int COMCTL32_hModule ;
+ int ClientToScreen (int ,TYPE_1__*) ;
+ int CreatePopupMenu () ;
+ scalar_t__ HIWORD (int ) ;
+ int IDM_GOTODAY ;
+ scalar_t__ LOWORD (int ) ;
+ int LoadStringW (int ,int ,int *,int ) ;
+ int MCS_MULTISELECT ;
+ int MF_ENABLED ;
+ int MF_STRING ;
+ int MONTHCAL_NotifySelect (TYPE_2__*) ;
+ int MONTHCAL_NotifySelectionChange (TYPE_2__*) ;
+ int MONTHCAL_SetCurSel (TYPE_2__*,int *) ;
+ int MONTHCAL_SetSelRange (TYPE_2__*,int *) ;
+ int TPM_NONOTIFY ;
+ int TPM_RETURNCMD ;
+ int TPM_RIGHTBUTTON ;
+ scalar_t__ TrackPopupMenu (int ,int,short,short,int ,int ,int *) ;
 
 __attribute__((used)) static LRESULT
 MONTHCAL_RButtonUp(MONTHCAL_INFO *infoPtr, LPARAM lParam)
@@ -58,7 +58,7 @@ MONTHCAL_RButtonUp(MONTHCAL_INFO *infoPtr, LPARAM lParam)
   menupoint.y = (short)HIWORD(lParam);
   ClientToScreen(infoPtr->hwndSelf, &menupoint);
   if( TrackPopupMenu(hMenu, TPM_RIGHTBUTTON | TPM_NONOTIFY | TPM_RETURNCMD,
-		     menupoint.x, menupoint.y, 0, infoPtr->hwndSelf, NULL))
+       menupoint.x, menupoint.y, 0, infoPtr->hwndSelf, ((void*)0)))
   {
       if (infoPtr->dwStyle & MCS_MULTISELECT)
       {

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  username_buf ;
-typedef  int /*<<< orphan*/  uri_buf ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int username_buf ;
+typedef int uri_buf ;
 struct mg_str {int dummy; } ;
 struct TYPE_4__ {scalar_t__ len; } ;
-struct TYPE_3__ {scalar_t__ len; int /*<<< orphan*/  p; } ;
-struct http_message {TYPE_2__ query_string; TYPE_1__ uri; int /*<<< orphan*/  method; } ;
-typedef  int /*<<< orphan*/  response_buf ;
-typedef  int /*<<< orphan*/  qop_buf ;
-typedef  int /*<<< orphan*/  nonce_buf ;
-typedef  int /*<<< orphan*/  nc_buf ;
-typedef  int /*<<< orphan*/  cnonce_buf ;
-typedef  int /*<<< orphan*/  FILE ;
+struct TYPE_3__ {scalar_t__ len; int p; } ;
+struct http_message {TYPE_2__ query_string; TYPE_1__ uri; int method; } ;
+typedef int response_buf ;
+typedef int qop_buf ;
+typedef int nonce_buf ;
+typedef int nc_buf ;
+typedef int cnonce_buf ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MG_FREE (char*) ; 
- int mg_check_digest_auth (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ mg_check_nonce (char*) ; 
- struct mg_str* mg_get_http_header (struct http_message*,char*) ; 
- scalar_t__ mg_http_parse_header2 (struct mg_str*,char*,char**,int) ; 
- int /*<<< orphan*/  mg_mk_str (char const*) ; 
- int /*<<< orphan*/  mg_mk_str_n (int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int MG_FREE (char*) ;
+ int mg_check_digest_auth (int ,int ,int ,int ,int ,int ,int ,int ,int ,int *) ;
+ scalar_t__ mg_check_nonce (char*) ;
+ struct mg_str* mg_get_http_header (struct http_message*,char*) ;
+ scalar_t__ mg_http_parse_header2 (struct mg_str*,char*,char**,int) ;
+ int mg_mk_str (char const*) ;
+ int mg_mk_str_n (int ,scalar_t__) ;
 
 int mg_http_check_digest_auth(struct http_message *hm, const char *auth_domain,
                               FILE *fp) {
@@ -44,9 +44,9 @@ int mg_http_check_digest_auth(struct http_message *hm, const char *auth_domain,
   char *username = username_buf, *cnonce = cnonce_buf, *response = response_buf,
        *uri = uri_buf, *qop = qop_buf, *nc = nc_buf, *nonce = nonce_buf;
 
-  /* Parse "Authorization:" header, fail fast on parse error */
-  if (hm == NULL || fp == NULL ||
-      (hdr = mg_get_http_header(hm, "Authorization")) == NULL ||
+
+  if (hm == ((void*)0) || fp == ((void*)0) ||
+      (hdr = mg_get_http_header(hm, "Authorization")) == ((void*)0) ||
       mg_http_parse_header2(hdr, "username", &username, sizeof(username_buf)) ==
           0 ||
       mg_http_parse_header2(hdr, "cnonce", &cnonce, sizeof(cnonce_buf)) == 0 ||
@@ -61,7 +61,7 @@ int mg_http_check_digest_auth(struct http_message *hm, const char *auth_domain,
     goto clean;
   }
 
-  /* NOTE(lsm): due to a bug in MSIE, we do not compare URIs */
+
 
   ret = mg_check_digest_auth(
       hm->method,

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  state_machine; int /*<<< orphan*/  error; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int state_machine; int error; } ;
 struct TYPE_4__ {TYPE_1__ parent; } ;
-typedef  int /*<<< orphan*/  SCI_CONTROLLER_HANDLE_T ;
-typedef  int /*<<< orphan*/  SCI_CONTROLLER_ERROR ;
-typedef  TYPE_2__ SCIF_SAS_CONTROLLER_T ;
+typedef int SCI_CONTROLLER_HANDLE_T ;
+typedef int SCI_CONTROLLER_ERROR ;
+typedef TYPE_2__ SCIF_SAS_CONTROLLER_T ;
 
-/* Variables and functions */
- int SCIF_LOG_OBJECT_CONTROLLER ; 
- int SCIF_LOG_OBJECT_SHUTDOWN ; 
- int /*<<< orphan*/  SCIF_LOG_TRACE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SCI_BASE_CONTROLLER_STATE_FAILED ; 
- int /*<<< orphan*/  sci_base_object_get_logger (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sci_base_state_machine_change_state (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ sci_object_get_association (int /*<<< orphan*/ ) ; 
+
+ int SCIF_LOG_OBJECT_CONTROLLER ;
+ int SCIF_LOG_OBJECT_SHUTDOWN ;
+ int SCIF_LOG_TRACE (int ) ;
+ int SCI_BASE_CONTROLLER_STATE_FAILED ;
+ int sci_base_object_get_logger (int ) ;
+ int sci_base_state_machine_change_state (int *,int ) ;
+ scalar_t__ sci_object_get_association (int ) ;
 
 void scic_cb_controller_error(
-   SCI_CONTROLLER_HANDLE_T  controller,
+   SCI_CONTROLLER_HANDLE_T controller,
    SCI_CONTROLLER_ERROR error
 )
 {

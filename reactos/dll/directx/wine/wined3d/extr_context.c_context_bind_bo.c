@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_gl_info {int dummy; } ;
 struct wined3d_context {struct wined3d_gl_info* gl_info; } ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  scalar_t__ GLenum ;
+typedef int GLuint ;
+typedef scalar_t__ GLenum ;
 
-/* Variables and functions */
- scalar_t__ GL_ELEMENT_ARRAY_BUFFER ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATE_INDEXBUFFER ; 
- int /*<<< orphan*/  context_invalidate_state (struct wined3d_context*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glBindBuffer (scalar_t__,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ GL_ELEMENT_ARRAY_BUFFER ;
+ int GL_EXTCALL (int ) ;
+ int STATE_INDEXBUFFER ;
+ int context_invalidate_state (struct wined3d_context*,int ) ;
+ int glBindBuffer (scalar_t__,int ) ;
 
 void context_bind_bo(struct wined3d_context *context, GLenum binding, GLuint name)
 {

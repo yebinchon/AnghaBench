@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int FALSE ;
 
-/* Forward declarations */
 
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
-#define  SIGUSR1 129 
-#define  SIGUSR2 128 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  online ; 
+ int TRUE ;
+ int online ;
 
 void handler(int sig) {
-	switch (sig) {
-	case SIGUSR1:
-		online = TRUE;
-		break;
-	case SIGUSR2:
-		online = FALSE;
-		break;
-	}
+ switch (sig) {
+ case 129:
+  online = TRUE;
+  break;
+ case 128:
+  online = FALSE;
+  break;
+ }
 }

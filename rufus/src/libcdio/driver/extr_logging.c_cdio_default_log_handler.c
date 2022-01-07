@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int cdio_log_level_t ;
 
-/* Variables and functions */
-#define  CDIO_LOG_ASSERT 132 
-#define  CDIO_LOG_DEBUG 131 
-#define  CDIO_LOG_ERROR 130 
-#define  CDIO_LOG_INFO 129 
-#define  CDIO_LOG_WARN 128 
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  cdio_assert_not_reached () ; 
- int cdio_loglevel_default ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+typedef int cdio_log_level_t ;
+
+
+
+
+
+
+
+ int EXIT_FAILURE ;
+ int abort () ;
+ int cdio_assert_not_reached () ;
+ int cdio_loglevel_default ;
+ int exit (int ) ;
+ int fflush (int ) ;
+ int fprintf (int ,char*,char const*) ;
+ int stderr ;
+ int stdout ;
 
 extern void
 cdio_default_log_handler(cdio_log_level_t level, const char message[])
 {
   switch (level)
     {
-    case CDIO_LOG_ERROR:
+    case 130:
       if (level >= cdio_loglevel_default) {
         fprintf (stderr, "**ERROR: %s\n", message);
         fflush (stderr);
       }
       exit (EXIT_FAILURE);
       break;
-    case CDIO_LOG_DEBUG:
+    case 131:
       if (level >= cdio_loglevel_default) {
         fprintf (stdout, "--DEBUG: %s\n", message);
       }
       break;
-    case CDIO_LOG_WARN:
+    case 128:
       if (level >= cdio_loglevel_default) {
         fprintf (stdout, "++ WARN: %s\n", message);
       }
       break;
-    case CDIO_LOG_INFO:
+    case 129:
       if (level >= cdio_loglevel_default) {
         fprintf (stdout, "   INFO: %s\n", message);
       }
       break;
-    case CDIO_LOG_ASSERT:
+    case 132:
       if (level >= cdio_loglevel_default) {
         fprintf (stderr, "!ASSERT: %s\n", message);
         fflush (stderr);

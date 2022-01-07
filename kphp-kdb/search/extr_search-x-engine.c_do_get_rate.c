@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct connection {int dummy; } ;
 
-/* Variables and functions */
- int MAX_RATES ; 
- scalar_t__ get_rates (int*,long long) ; 
- scalar_t__ get_single_rate (int*,long long,int) ; 
- int get_sorting_mode (char const) ; 
- int return_one_key (struct connection*,char const*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int,...) ; 
- int sscanf (char const*,char*,int*,...) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int,char const) ; 
+
+ int MAX_RATES ;
+ scalar_t__ get_rates (int*,long long) ;
+ scalar_t__ get_single_rate (int*,long long,int) ;
+ int get_sorting_mode (char const) ;
+ int return_one_key (struct connection*,char const*,char*,int ) ;
+ int sprintf (char*,char*,int,...) ;
+ int sscanf (char const*,char*,int*,...) ;
+ int vkprintf (int,char*,int,char const) ;
 
 __attribute__((used)) static int do_get_rate (struct connection *c, const char *key, int len, int dog_len) {
   int rates[2];

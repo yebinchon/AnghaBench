@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cache_entry {int /*<<< orphan*/  ce_flags; } ;
-typedef  int /*<<< orphan*/  gint64 ;
-typedef  scalar_t__ gboolean ;
-typedef  int /*<<< orphan*/  SeafStat ;
-typedef  int /*<<< orphan*/  GHashTable ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CE_REMOVE ; 
- scalar_t__ FALSE ; 
- int FETCH_CHECKOUT_FAILED ; 
- int FETCH_CHECKOUT_SUCCESS ; 
- char* build_checkout_path (char const*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fill_stat_cache_info (struct cache_entry*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- scalar_t__ seaf_set_file_time (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seaf_stat (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  seaf_util_exists (char*) ; 
- scalar_t__ seaf_util_mkdir (char*,int) ; 
- int /*<<< orphan*/  seaf_warning (char*,char*) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+
+
+struct cache_entry {int ce_flags; } ;
+typedef int gint64 ;
+typedef scalar_t__ gboolean ;
+typedef int SeafStat ;
+typedef int GHashTable ;
+
+
+ int CE_REMOVE ;
+ scalar_t__ FALSE ;
+ int FETCH_CHECKOUT_FAILED ;
+ int FETCH_CHECKOUT_SUCCESS ;
+ char* build_checkout_path (char const*,char const*,int ) ;
+ int fill_stat_cache_info (struct cache_entry*,int *) ;
+ int g_free (char*) ;
+ scalar_t__ seaf_set_file_time (char*,int ) ;
+ int seaf_stat (char*,int *) ;
+ int seaf_util_exists (char*) ;
+ scalar_t__ seaf_util_mkdir (char*,int) ;
+ int seaf_warning (char*,char*) ;
+ int strlen (char const*) ;
 
 int
 checkout_empty_dir (const char *worktree,

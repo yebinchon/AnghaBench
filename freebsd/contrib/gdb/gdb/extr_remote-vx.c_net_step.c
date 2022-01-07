@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum clnt_stat { ____Placeholder_clnt_stat } clnt_stat ;
-struct TYPE_3__ {scalar_t__ endAddr; scalar_t__ startAddr; int /*<<< orphan*/  taskId; } ;
-typedef  TYPE_1__ SOURCE_STEP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PIDGET (int /*<<< orphan*/ ) ; 
- int RPC_SUCCESS ; 
- int /*<<< orphan*/  VX_SOURCE_STEP ; 
- int /*<<< orphan*/  error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  inferior_ptid ; 
- int net_clnt_call (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  rpcerr ; 
- scalar_t__ step_range_end ; 
- scalar_t__ step_range_start ; 
- int /*<<< orphan*/  xdr_SOURCE_STEP ; 
- int /*<<< orphan*/  xdr_int ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef enum clnt_stat { ____Placeholder_clnt_stat } clnt_stat ;
+struct TYPE_3__ {scalar_t__ endAddr; scalar_t__ startAddr; int taskId; } ;
+typedef TYPE_1__ SOURCE_STEP ;
+
+
+ int PIDGET (int ) ;
+ int RPC_SUCCESS ;
+ int VX_SOURCE_STEP ;
+ int error (int ) ;
+ int inferior_ptid ;
+ int net_clnt_call (int ,int ,TYPE_1__*,int ,int*) ;
+ int rpcerr ;
+ scalar_t__ step_range_end ;
+ scalar_t__ step_range_start ;
+ int xdr_SOURCE_STEP ;
+ int xdr_int ;
 
 __attribute__((used)) static int
 net_step (void)
@@ -49,7 +49,7 @@ net_step (void)
     }
 
   status = net_clnt_call (VX_SOURCE_STEP, xdr_SOURCE_STEP, &source_step,
-			  xdr_int, &step_status);
+     xdr_int, &step_status);
 
   if (status == RPC_SUCCESS)
     return step_status;

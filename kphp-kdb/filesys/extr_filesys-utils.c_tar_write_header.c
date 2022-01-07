@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gzFile ;
 
-/* Variables and functions */
- int gzwrite (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,unsigned int) ; 
+
+
+
+typedef int gzFile ;
+
+
+ int gzwrite (int ,char*,int) ;
+ int sprintf (char*,char*,unsigned int) ;
 
 __attribute__((used)) static int tar_write_header (gzFile f, char b[512]) {
-  unsigned chksum = 8 * 32; /* eight checksum bytes taken to be ascii spaces (decimal value 32) */
+  unsigned chksum = 8 * 32;
   int i;
   for (i = 0; i < 512; i++) {
     chksum += (unsigned char) b[i];

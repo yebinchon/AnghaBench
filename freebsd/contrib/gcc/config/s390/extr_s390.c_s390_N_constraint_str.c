@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
-typedef  int /*<<< orphan*/  HOST_WIDE_INT ;
 
-/* Variables and functions */
- int DImode ; 
- int /*<<< orphan*/  GEN_INT (int /*<<< orphan*/ ) ; 
- scalar_t__ GET_MODE_SIZE (int) ; 
- int HImode ; 
- int QImode ; 
- int SImode ; 
- int s390_single_part (int /*<<< orphan*/ ,int,int,int) ; 
+
+
+
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+typedef int HOST_WIDE_INT ;
+
+
+ int DImode ;
+ int GEN_INT (int ) ;
+ scalar_t__ GET_MODE_SIZE (int) ;
+ int HImode ;
+ int QImode ;
+ int SImode ;
+ int s390_single_part (int ,int,int,int) ;
 
 int
 s390_N_constraint_str (const char *str, HOST_WIDE_INT value)

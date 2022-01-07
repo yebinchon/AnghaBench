@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct gb_connection {TYPE_1__* bundle; } ;
-struct fw_download {int /*<<< orphan*/  id_map; int /*<<< orphan*/  mutex; struct gb_connection* connection; int /*<<< orphan*/  fw_requests; int /*<<< orphan*/ * parent; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dev; } ;
+struct fw_download {int id_map; int mutex; struct gb_connection* connection; int fw_requests; int * parent; } ;
+struct TYPE_2__ {int dev; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- int gb_connection_enable (struct gb_connection*) ; 
- int /*<<< orphan*/  gb_connection_set_data (struct gb_connection*,struct fw_download*) ; 
- int /*<<< orphan*/  ida_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ida_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (struct fw_download*) ; 
- struct fw_download* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_init (int /*<<< orphan*/ *) ; 
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int INIT_LIST_HEAD (int *) ;
+ int gb_connection_enable (struct gb_connection*) ;
+ int gb_connection_set_data (struct gb_connection*,struct fw_download*) ;
+ int ida_destroy (int *) ;
+ int ida_init (int *) ;
+ int kfree (struct fw_download*) ;
+ struct fw_download* kzalloc (int,int ) ;
+ int mutex_init (int *) ;
 
 int gb_fw_download_connection_init(struct gb_connection *connection)
 {
-	struct fw_download *fw_download;
-	int ret;
+ struct fw_download *fw_download;
+ int ret;
 
-	if (!connection)
-		return 0;
+ if (!connection)
+  return 0;
 
-	fw_download = kzalloc(sizeof(*fw_download), GFP_KERNEL);
-	if (!fw_download)
-		return -ENOMEM;
+ fw_download = kzalloc(sizeof(*fw_download), GFP_KERNEL);
+ if (!fw_download)
+  return -ENOMEM;
 
-	fw_download->parent = &connection->bundle->dev;
-	INIT_LIST_HEAD(&fw_download->fw_requests);
-	ida_init(&fw_download->id_map);
-	gb_connection_set_data(connection, fw_download);
-	fw_download->connection = connection;
-	mutex_init(&fw_download->mutex);
+ fw_download->parent = &connection->bundle->dev;
+ INIT_LIST_HEAD(&fw_download->fw_requests);
+ ida_init(&fw_download->id_map);
+ gb_connection_set_data(connection, fw_download);
+ fw_download->connection = connection;
+ mutex_init(&fw_download->mutex);
 
-	ret = gb_connection_enable(connection);
-	if (ret)
-		goto err_destroy_id_map;
+ ret = gb_connection_enable(connection);
+ if (ret)
+  goto err_destroy_id_map;
 
-	return 0;
+ return 0;
 
 err_destroy_id_map:
-	ida_destroy(&fw_download->id_map);
-	kfree(fw_download);
+ ida_destroy(&fw_download->id_map);
+ kfree(fw_download);
 
-	return ret;
+ return ret;
 }

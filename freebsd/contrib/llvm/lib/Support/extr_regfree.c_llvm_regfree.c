@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct re_guts {scalar_t__ magic; char* must; int /*<<< orphan*/ * setbits; int /*<<< orphan*/ * sets; int /*<<< orphan*/ * strip; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct re_guts {scalar_t__ magic; char* must; int * setbits; int * sets; int * strip; } ;
 struct TYPE_3__ {scalar_t__ re_magic; struct re_guts* re_g; } ;
-typedef  TYPE_1__ llvm_regex_t ;
+typedef TYPE_1__ llvm_regex_t ;
 
-/* Variables and functions */
- scalar_t__ MAGIC1 ; 
- scalar_t__ MAGIC2 ; 
- int /*<<< orphan*/  free (char*) ; 
+
+ scalar_t__ MAGIC1 ;
+ scalar_t__ MAGIC2 ;
+ int free (char*) ;
 
 void
 llvm_regfree(llvm_regex_t *preg)
 {
-	struct re_guts *g;
+ struct re_guts *g;
 
-	if (preg->re_magic != MAGIC1)	/* oops */
-		return;			/* nice to complain, but hard */
+ if (preg->re_magic != MAGIC1)
+  return;
 
-	g = preg->re_g;
-	if (g == NULL || g->magic != MAGIC2)	/* oops again */
-		return;
-	preg->re_magic = 0;		/* mark it invalid */
-	g->magic = 0;			/* mark it invalid */
+ g = preg->re_g;
+ if (g == ((void*)0) || g->magic != MAGIC2)
+  return;
+ preg->re_magic = 0;
+ g->magic = 0;
 
-	if (g->strip != NULL)
-		free((char *)g->strip);
-	if (g->sets != NULL)
-		free((char *)g->sets);
-	if (g->setbits != NULL)
-		free((char *)g->setbits);
-	if (g->must != NULL)
-		free(g->must);
-	free((char *)g);
+ if (g->strip != ((void*)0))
+  free((char *)g->strip);
+ if (g->sets != ((void*)0))
+  free((char *)g->sets);
+ if (g->setbits != ((void*)0))
+  free((char *)g->setbits);
+ if (g->must != ((void*)0))
+  free(g->must);
+ free((char *)g);
 }

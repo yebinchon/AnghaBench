@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct MPOpts {int osd_level; double osd_duration; int /*<<< orphan*/  osd_bar_visible; int /*<<< orphan*/  video_osd; } ;
-struct TYPE_2__ {int type; double value; scalar_t__ num_stops; int /*<<< orphan*/  stops; } ;
-struct MPContext {TYPE_1__ osd_progbar; int /*<<< orphan*/  osd; scalar_t__ osd_visible; struct MPOpts* opts; scalar_t__ video_out; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_TARRAY_APPEND (struct MPContext*,int /*<<< orphan*/ ,scalar_t__,float) ; 
- scalar_t__ mp_time_sec () ; 
- int /*<<< orphan*/  mp_wakeup_core (struct MPContext*) ; 
- int /*<<< orphan*/  osd_set_progbar (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct MPOpts {int osd_level; double osd_duration; int osd_bar_visible; int video_osd; } ;
+struct TYPE_2__ {int type; double value; scalar_t__ num_stops; int stops; } ;
+struct MPContext {TYPE_1__ osd_progbar; int osd; scalar_t__ osd_visible; struct MPOpts* opts; scalar_t__ video_out; } ;
+
+
+ int MP_TARRAY_APPEND (struct MPContext*,int ,scalar_t__,float) ;
+ scalar_t__ mp_time_sec () ;
+ int mp_wakeup_core (struct MPContext*) ;
+ int osd_set_progbar (int ,TYPE_1__*) ;
 
 void set_osd_bar(struct MPContext *mpctx, int type,
                  double min, double max, double neutral, double val)

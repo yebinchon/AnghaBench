@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sockaddr_un {int /*<<< orphan*/  sun_path; int /*<<< orphan*/  sun_family; } ;
+
+
+
+
+struct sockaddr_un {int sun_path; int sun_family; } ;
 struct sockaddr {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_LOCAL ; 
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  FD_CLOEXEC ; 
- int /*<<< orphan*/  F_SETFD ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- scalar_t__ connect (int,struct sockaddr const*,int) ; 
- int /*<<< orphan*/  err (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  fcntl (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* getenv (char*) ; 
- int /*<<< orphan*/  memset (struct sockaddr_un*,int /*<<< orphan*/ ,int) ; 
- char* root_atom_contents (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* sstrdup (char const*) ; 
- int /*<<< orphan*/  strncpy (int /*<<< orphan*/ ,char*,int) ; 
+
+ int AF_LOCAL ;
+ int EXIT_FAILURE ;
+ int FD_CLOEXEC ;
+ int F_SETFD ;
+ int SOCK_STREAM ;
+ scalar_t__ connect (int,struct sockaddr const*,int) ;
+ int err (int ,char*,...) ;
+ int fcntl (int,int ,int ) ;
+ int free (char*) ;
+ char* getenv (char*) ;
+ int memset (struct sockaddr_un*,int ,int) ;
+ char* root_atom_contents (char*,int *,int ) ;
+ int socket (int ,int ,int ) ;
+ char* sstrdup (char const*) ;
+ int strncpy (int ,char*,int) ;
 
 int ipc_connect(const char *socket_path) {
-    char *path = NULL;
-    if (socket_path != NULL) {
+    char *path = ((void*)0);
+    if (socket_path != ((void*)0)) {
         path = sstrdup(socket_path);
     }
 
-    if (path == NULL) {
-        if ((path = getenv("I3SOCK")) != NULL) {
+    if (path == ((void*)0)) {
+        if ((path = getenv("I3SOCK")) != ((void*)0)) {
             path = sstrdup(path);
         }
     }
 
-    if (path == NULL) {
-        path = root_atom_contents("I3_SOCKET_PATH", NULL, 0);
+    if (path == ((void*)0)) {
+        path = root_atom_contents("I3_SOCKET_PATH", ((void*)0), 0);
     }
 
-    if (path == NULL) {
+    if (path == ((void*)0)) {
         path = sstrdup("/tmp/i3-ipc.sock");
     }
 

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct bxe_softc {int mtu; int num_queues; TYPE_1__* fp; } ;
 struct TYPE_2__ {int rx_buf_size; int mbuf_alloc_size; } ;
 
-/* Variables and functions */
- int ETH_OVERHEAD ; 
- int IP_HEADER_ALIGNMENT_PADDING ; 
- int MCLBYTES ; 
- int MJUMPAGESIZE ; 
+
+ int ETH_OVERHEAD ;
+ int IP_HEADER_ALIGNMENT_PADDING ;
+ int MCLBYTES ;
+ int MJUMPAGESIZE ;
 
 __attribute__((used)) static void
 bxe_set_fp_rx_buf_size(struct bxe_softc *sc)

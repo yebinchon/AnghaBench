@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wps_factory_information_t ;
-struct TYPE_3__ {int /*<<< orphan*/  device_name; int /*<<< orphan*/  model_number; int /*<<< orphan*/  model_name; int /*<<< orphan*/  manufacturer; } ;
 
-/* Variables and functions */
- int ESP_ERR_NO_MEM ; 
- int ESP_OK ; 
- int /*<<< orphan*/  MSG_ERROR ; 
- TYPE_1__* os_zalloc (int) ; 
- TYPE_1__* s_factory_info ; 
- int /*<<< orphan*/  sprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  wpa_printf (int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int wps_factory_information_t ;
+struct TYPE_3__ {int device_name; int model_number; int model_name; int manufacturer; } ;
+
+
+ int ESP_ERR_NO_MEM ;
+ int ESP_OK ;
+ int MSG_ERROR ;
+ TYPE_1__* os_zalloc (int) ;
+ TYPE_1__* s_factory_info ;
+ int sprintf (int ,char*) ;
+ int wpa_printf (int ,char*) ;
 
 int wps_set_default_factory(void)
 {

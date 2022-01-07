@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vstack {struct vstack* next; struct varobj* var; } ;
 struct varobj {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  xfree (struct vstack*) ; 
+
+ int xfree (struct vstack*) ;
 
 __attribute__((used)) static struct varobj *
 vpop (struct vstack **pstack)
@@ -22,8 +22,8 @@ vpop (struct vstack **pstack)
   struct vstack *s;
   struct varobj *v;
 
-  if ((*pstack)->var == NULL && (*pstack)->next == NULL)
-    return NULL;
+  if ((*pstack)->var == ((void*)0) && (*pstack)->next == ((void*)0))
+    return ((void*)0);
 
   s = *pstack;
   v = s->var;

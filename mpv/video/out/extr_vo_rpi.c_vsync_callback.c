@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vo {struct priv* priv; } ;
-struct priv {int vsync_counter; int /*<<< orphan*/  display_mutex; int /*<<< orphan*/  display_cond; } ;
-typedef  int /*<<< orphan*/  DISPMANX_UPDATE_HANDLE_T ;
+struct priv {int vsync_counter; int display_mutex; int display_cond; } ;
+typedef int DISPMANX_UPDATE_HANDLE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pthread_cond_signal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int pthread_cond_signal (int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 __attribute__((used)) static void vsync_callback(DISPMANX_UPDATE_HANDLE_T u, void *arg)
 {

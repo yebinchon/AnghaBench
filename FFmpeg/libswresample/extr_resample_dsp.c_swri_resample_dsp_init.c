@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  resample_linear; int /*<<< orphan*/  resample_common; int /*<<< orphan*/  resample_one; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int resample_linear; int resample_common; int resample_one; } ;
 struct TYPE_8__ {int format; TYPE_1__ dsp; } ;
-typedef  TYPE_2__ ResampleContext ;
+typedef TYPE_2__ ResampleContext ;
 
-/* Variables and functions */
- scalar_t__ ARCH_AARCH64 ; 
- scalar_t__ ARCH_ARM ; 
- scalar_t__ ARCH_X86 ; 
-#define  AV_SAMPLE_FMT_DBLP 131 
-#define  AV_SAMPLE_FMT_FLTP 130 
-#define  AV_SAMPLE_FMT_S16P 129 
-#define  AV_SAMPLE_FMT_S32P 128 
- int /*<<< orphan*/  resample_common_double ; 
- int /*<<< orphan*/  resample_common_float ; 
- int /*<<< orphan*/  resample_common_int16 ; 
- int /*<<< orphan*/  resample_common_int32 ; 
- int /*<<< orphan*/  resample_linear_double ; 
- int /*<<< orphan*/  resample_linear_float ; 
- int /*<<< orphan*/  resample_linear_int16 ; 
- int /*<<< orphan*/  resample_linear_int32 ; 
- int /*<<< orphan*/  resample_one_double ; 
- int /*<<< orphan*/  resample_one_float ; 
- int /*<<< orphan*/  resample_one_int16 ; 
- int /*<<< orphan*/  resample_one_int32 ; 
- int /*<<< orphan*/  swri_resample_dsp_aarch64_init (TYPE_2__*) ; 
- int /*<<< orphan*/  swri_resample_dsp_arm_init (TYPE_2__*) ; 
- int /*<<< orphan*/  swri_resample_dsp_x86_init (TYPE_2__*) ; 
+
+ scalar_t__ ARCH_AARCH64 ;
+ scalar_t__ ARCH_ARM ;
+ scalar_t__ ARCH_X86 ;
+
+
+
+
+ int resample_common_double ;
+ int resample_common_float ;
+ int resample_common_int16 ;
+ int resample_common_int32 ;
+ int resample_linear_double ;
+ int resample_linear_float ;
+ int resample_linear_int16 ;
+ int resample_linear_int32 ;
+ int resample_one_double ;
+ int resample_one_float ;
+ int resample_one_int16 ;
+ int resample_one_int32 ;
+ int swri_resample_dsp_aarch64_init (TYPE_2__*) ;
+ int swri_resample_dsp_arm_init (TYPE_2__*) ;
+ int swri_resample_dsp_x86_init (TYPE_2__*) ;
 
 void swri_resample_dsp_init(ResampleContext *c)
 {
     switch(c->format){
-    case AV_SAMPLE_FMT_S16P:
+    case 129:
         c->dsp.resample_one = resample_one_int16;
         c->dsp.resample_common = resample_common_int16;
         c->dsp.resample_linear = resample_linear_int16;
         break;
-    case AV_SAMPLE_FMT_S32P:
+    case 128:
         c->dsp.resample_one = resample_one_int32;
         c->dsp.resample_common = resample_common_int32;
         c->dsp.resample_linear = resample_linear_int32;
         break;
-    case AV_SAMPLE_FMT_FLTP:
+    case 130:
         c->dsp.resample_one = resample_one_float;
         c->dsp.resample_common = resample_common_float;
         c->dsp.resample_linear = resample_linear_float;
         break;
-    case AV_SAMPLE_FMT_DBLP:
+    case 131:
         c->dsp.resample_one = resample_one_double;
         c->dsp.resample_common = resample_common_double;
         c->dsp.resample_linear = resample_linear_double;

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
-struct qpn_map {int /*<<< orphan*/  n_free; scalar_t__ page; } ;
+
+
+
+
+typedef int u32 ;
+struct qpn_map {int n_free; scalar_t__ page; } ;
 struct ipath_qp_table {struct qpn_map* map; } ;
 
-/* Variables and functions */
- int BITS_PER_PAGE ; 
- int BITS_PER_PAGE_MASK ; 
- int /*<<< orphan*/  atomic_inc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  clear_bit (int,scalar_t__) ; 
+
+ int BITS_PER_PAGE ;
+ int BITS_PER_PAGE_MASK ;
+ int atomic_inc (int *) ;
+ int clear_bit (int,scalar_t__) ;
 
 __attribute__((used)) static void free_qpn(struct ipath_qp_table *qpt, u32 qpn)
 {
-	struct qpn_map *map;
+ struct qpn_map *map;
 
-	map = qpt->map + qpn / BITS_PER_PAGE;
-	if (map->page)
-		clear_bit(qpn & BITS_PER_PAGE_MASK, map->page);
-	atomic_inc(&map->n_free);
+ map = qpt->map + qpn / BITS_PER_PAGE;
+ if (map->page)
+  clear_bit(qpn & BITS_PER_PAGE_MASK, map->page);
+ atomic_inc(&map->n_free);
 }

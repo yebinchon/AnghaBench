@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  m68krcycles_done; int /*<<< orphan*/  state; int /*<<< orphan*/  pc; } ;
-typedef  TYPE_1__ SH2 ;
 
-/* Variables and functions */
- int C_M68K_TO_SH2 (TYPE_1__,int) ; 
- scalar_t__ C_SH2_TO_M68K (TYPE_1__,int) ; 
- int /*<<< orphan*/  EL_32X ; 
- int /*<<< orphan*/  EVT_RUN_END ; 
- int /*<<< orphan*/  EVT_RUN_START ; 
- int POPT_EN_DRC ; 
- int PicoOpt ; 
- int /*<<< orphan*/  SH2_STATE_RUN ; 
- int /*<<< orphan*/  elprintf_sh2 (TYPE_1__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int,...) ; 
- int /*<<< orphan*/  pevt_log_sh2_o (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int sh2_execute (TYPE_1__*,int,int) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int m68krcycles_done; int state; int pc; } ;
+typedef TYPE_1__ SH2 ;
+
+
+ int C_M68K_TO_SH2 (TYPE_1__,int) ;
+ scalar_t__ C_SH2_TO_M68K (TYPE_1__,int) ;
+ int EL_32X ;
+ int EVT_RUN_END ;
+ int EVT_RUN_START ;
+ int POPT_EN_DRC ;
+ int PicoOpt ;
+ int SH2_STATE_RUN ;
+ int elprintf_sh2 (TYPE_1__*,int ,char*,int ,int,...) ;
+ int pevt_log_sh2_o (TYPE_1__*,int ) ;
+ int sh2_execute (TYPE_1__*,int,int) ;
 
 __attribute__((used)) static inline void run_sh2(SH2 *sh2, int m68k_cycles)
 {

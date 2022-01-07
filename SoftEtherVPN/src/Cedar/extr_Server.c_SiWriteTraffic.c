@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  Recv; int /*<<< orphan*/  Send; } ;
-typedef  TYPE_1__ TRAFFIC ;
-typedef  int /*<<< orphan*/  FOLDER ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CfgCreateFolder (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  SiWriteTrafficInner (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int Recv; int Send; } ;
+typedef TYPE_1__ TRAFFIC ;
+typedef int FOLDER ;
+
+
+ int * CfgCreateFolder (int *,char*) ;
+ int SiWriteTrafficInner (int *,char*,int *) ;
 
 void SiWriteTraffic(FOLDER *parent, char *name, TRAFFIC *t)
 {
-	FOLDER *f;
-	// Validate arguments
-	if (parent == NULL || name == NULL || t == NULL)
-	{
-		return;
-	}
+ FOLDER *f;
 
-	f = CfgCreateFolder(parent, name);
+ if (parent == ((void*)0) || name == ((void*)0) || t == ((void*)0))
+ {
+  return;
+ }
 
-	SiWriteTrafficInner(f, "SendTraffic", &t->Send);
-	SiWriteTrafficInner(f, "RecvTraffic", &t->Recv);
+ f = CfgCreateFolder(parent, name);
+
+ SiWriteTrafficInner(f, "SendTraffic", &t->Send);
+ SiWriteTrafficInner(f, "RecvTraffic", &t->Recv);
 }

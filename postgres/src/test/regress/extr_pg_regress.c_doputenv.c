@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* psprintf (char*,char const*,char const*) ; 
- int /*<<< orphan*/  putenv (char*) ; 
+ char* psprintf (char*,char const*,char const*) ;
+ int putenv (char*) ;
 
 __attribute__((used)) static void
 doputenv(const char *var, const char *val)
 {
-	char	   *s;
+ char *s;
 
-	s = psprintf("%s=%s", var, val);
-	putenv(s);
+ s = psprintf("%s=%s", var, val);
+ putenv(s);
 }

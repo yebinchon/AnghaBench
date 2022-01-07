@@ -1,56 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LOG_ERR ; 
- scalar_t__ NgMkSockNode (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  csock ; 
- int /*<<< orphan*/ * csock_fd ; 
- int /*<<< orphan*/  csock_input ; 
- int /*<<< orphan*/  dsock ; 
- int /*<<< orphan*/ * dsock_fd ; 
- int /*<<< orphan*/  dsock_input ; 
- int /*<<< orphan*/  exit (int) ; 
- void* fd_select (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  module ; 
- scalar_t__ ng_node_id (char*) ; 
- int /*<<< orphan*/  oid_begemotNg ; 
- int /*<<< orphan*/  or_register (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  reg_index ; 
- scalar_t__ snmp_node ; 
- int /*<<< orphan*/  snmp_nodename ; 
- int /*<<< orphan*/  syslog (int /*<<< orphan*/ ,char*) ; 
+ int LOG_ERR ;
+ scalar_t__ NgMkSockNode (int ,int *,int *) ;
+ int csock ;
+ int * csock_fd ;
+ int csock_input ;
+ int dsock ;
+ int * dsock_fd ;
+ int dsock_input ;
+ int exit (int) ;
+ void* fd_select (int ,int ,int *,int ) ;
+ int module ;
+ scalar_t__ ng_node_id (char*) ;
+ int oid_begemotNg ;
+ int or_register (int *,char*,int ) ;
+ int reg_index ;
+ scalar_t__ snmp_node ;
+ int snmp_nodename ;
+ int syslog (int ,char*) ;
 
 __attribute__((used)) static void
 ng_start(void)
 {
-	if (snmp_node == 0) {
-		if (NgMkSockNode(snmp_nodename, &csock, &dsock) < 0) {
-			syslog(LOG_ERR, "NgMkSockNode: %m");
-			exit(1);
-		}
-		snmp_node = ng_node_id(".:");
-	}
+ if (snmp_node == 0) {
+  if (NgMkSockNode(snmp_nodename, &csock, &dsock) < 0) {
+   syslog(LOG_ERR, "NgMkSockNode: %m");
+   exit(1);
+  }
+  snmp_node = ng_node_id(".:");
+ }
 
-	if ((csock_fd = fd_select(csock, csock_input, NULL, module)) == NULL) {
-		syslog(LOG_ERR, "fd_select failed on csock: %m");
-		return;
-	}
-	if ((dsock_fd = fd_select(dsock, dsock_input, NULL, module)) == NULL) {
-		syslog(LOG_ERR, "fd_select failed on dsock: %m");
-		return;
-	}
+ if ((csock_fd = fd_select(csock, csock_input, ((void*)0), module)) == ((void*)0)) {
+  syslog(LOG_ERR, "fd_select failed on csock: %m");
+  return;
+ }
+ if ((dsock_fd = fd_select(dsock, dsock_input, ((void*)0), module)) == ((void*)0)) {
+  syslog(LOG_ERR, "fd_select failed on dsock: %m");
+  return;
+ }
 
-	reg_index = or_register(&oid_begemotNg,
-	    "The MIB for the NetGraph access module for SNMP.", module);
+ reg_index = or_register(&oid_begemotNg,
+     "The MIB for the NetGraph access module for SNMP.", module);
 }

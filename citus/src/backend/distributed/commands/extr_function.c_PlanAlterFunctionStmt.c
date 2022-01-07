@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  objtype; } ;
-typedef  int /*<<< orphan*/  ObjectAddress ;
-typedef  int /*<<< orphan*/  Node ;
-typedef  int /*<<< orphan*/  List ;
-typedef  TYPE_1__ AlterFunctionStmt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALL_WORKERS ; 
- int /*<<< orphan*/  AssertObjectTypeIsFunctional (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DISABLE_DDL_PROPAGATION ; 
- char* DeparseTreeNode (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ENABLE_DDL_PROPAGATION ; 
- int /*<<< orphan*/  EnsureCoordinator () ; 
- int /*<<< orphan*/  EnsureSequentialModeForFunctionDDL () ; 
- int /*<<< orphan*/  ErrorIfUnsupportedAlterFunctionStmt (TYPE_1__*) ; 
- int /*<<< orphan*/ * GetObjectAddressFromParseTree (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * NIL ; 
- int /*<<< orphan*/ * NodeDDLTaskList (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  QualifyTreeNode (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ShouldPropagateAlterFunction (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * list_make3 (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int objtype; } ;
+typedef int ObjectAddress ;
+typedef int Node ;
+typedef int List ;
+typedef TYPE_1__ AlterFunctionStmt ;
+
+
+ int ALL_WORKERS ;
+ int AssertObjectTypeIsFunctional (int ) ;
+ int DISABLE_DDL_PROPAGATION ;
+ char* DeparseTreeNode (int *) ;
+ int ENABLE_DDL_PROPAGATION ;
+ int EnsureCoordinator () ;
+ int EnsureSequentialModeForFunctionDDL () ;
+ int ErrorIfUnsupportedAlterFunctionStmt (TYPE_1__*) ;
+ int * GetObjectAddressFromParseTree (int *,int) ;
+ int * NIL ;
+ int * NodeDDLTaskList (int ,int *) ;
+ int QualifyTreeNode (int *) ;
+ int ShouldPropagateAlterFunction (int const*) ;
+ int * list_make3 (int ,void*,int ) ;
 
 List *
 PlanAlterFunctionStmt(AlterFunctionStmt *stmt, const char *queryString)
 {
-	const char *sql = NULL;
-	const ObjectAddress *address = NULL;
-	List *commands = NIL;
+ const char *sql = ((void*)0);
+ const ObjectAddress *address = ((void*)0);
+ List *commands = NIL;
 
-	AssertObjectTypeIsFunctional(stmt->objtype);
+ AssertObjectTypeIsFunctional(stmt->objtype);
 
-	address = GetObjectAddressFromParseTree((Node *) stmt, false);
-	if (!ShouldPropagateAlterFunction(address))
-	{
-		return NIL;
-	}
+ address = GetObjectAddressFromParseTree((Node *) stmt, 0);
+ if (!ShouldPropagateAlterFunction(address))
+ {
+  return NIL;
+ }
 
-	EnsureCoordinator();
-	ErrorIfUnsupportedAlterFunctionStmt(stmt);
-	EnsureSequentialModeForFunctionDDL();
-	QualifyTreeNode((Node *) stmt);
-	sql = DeparseTreeNode((Node *) stmt);
+ EnsureCoordinator();
+ ErrorIfUnsupportedAlterFunctionStmt(stmt);
+ EnsureSequentialModeForFunctionDDL();
+ QualifyTreeNode((Node *) stmt);
+ sql = DeparseTreeNode((Node *) stmt);
 
-	commands = list_make3(DISABLE_DDL_PROPAGATION,
-						  (void *) sql,
-						  ENABLE_DDL_PROPAGATION);
+ commands = list_make3(DISABLE_DDL_PROPAGATION,
+        (void *) sql,
+        ENABLE_DDL_PROPAGATION);
 
-	return NodeDDLTaskList(ALL_WORKERS, commands);
+ return NodeDDLTaskList(ALL_WORKERS, commands);
 }

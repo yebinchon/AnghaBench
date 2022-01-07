@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_notify_state_t ;
-typedef  int /*<<< orphan*/  svn_wc_adm_access_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct diff_callbacks3_wrapper_baton {int /*<<< orphan*/  baton; int /*<<< orphan*/  anchor; TYPE_1__* callbacks3; int /*<<< orphan*/  anchor_abspath; int /*<<< orphan*/  db; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
-struct TYPE_2__ {int /*<<< orphan*/ * (* dir_props_changed ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_dirent_join (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc__adm_retrieve_internal2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int svn_wc_notify_state_t ;
+typedef int svn_wc_adm_access_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+struct diff_callbacks3_wrapper_baton {int baton; int anchor; TYPE_1__* callbacks3; int anchor_abspath; int db; } ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_array_header_t ;
+struct TYPE_2__ {int * (* dir_props_changed ) (int *,int *,int *,int ,int const*,int *,int ) ;} ;
+
+
+ int * stub1 (int *,int *,int *,int ,int const*,int *,int ) ;
+ int svn_dirent_join (int ,char const*,int *) ;
+ int * svn_wc__adm_retrieve_internal2 (int ,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 wrap_4to3_dir_props_changed(svn_wc_notify_state_t *propstate,

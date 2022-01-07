@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  text ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int text ;
 struct TYPE_12__ {TYPE_2__* priv; } ;
-struct TYPE_11__ {int* linesize; int /*<<< orphan*/ * data; } ;
+struct TYPE_11__ {int* linesize; int * data; } ;
 struct TYPE_10__ {int h; int w; int ir_channel; int channels; scalar_t__ format; TYPE_1__* iir; } ;
 struct TYPE_9__ {double** ab; int* nb_ab; float g; } ;
-typedef  TYPE_2__ AudioIIRContext ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVFilterContext ;
+typedef TYPE_2__ AudioIIRContext ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FFMAX (int,int /*<<< orphan*/ ) ; 
- float FLT_MAX ; 
- float FLT_MIN ; 
- int M_PI ; 
- float atan2 (double,double) ; 
- int av_clip (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  av_free (float*) ; 
- float* av_malloc_array (int,int) ; 
- double const cos (double) ; 
- int /*<<< orphan*/  draw_line (TYPE_3__*,int,int,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  drawtext (TYPE_3__*,int,int,char*,int) ; 
- float fmaxf (float,float) ; 
- float fminf (float,float) ; 
- float hypot (double,double) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- double const sin (double) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,float) ; 
+
+ int FFMAX (int,int ) ;
+ float FLT_MAX ;
+ float FLT_MIN ;
+ int M_PI ;
+ float atan2 (double,double) ;
+ int av_clip (int,int ,int) ;
+ int av_free (float*) ;
+ float* av_malloc_array (int,int) ;
+ double const cos (double) ;
+ int draw_line (TYPE_3__*,int,int,int ,int,int) ;
+ int drawtext (TYPE_3__*,int,int,char*,int) ;
+ float fmaxf (float,float) ;
+ float fminf (float,float) ;
+ float hypot (double,double) ;
+ int memset (int ,int ,int) ;
+ double const sin (double) ;
+ int snprintf (char*,int,char*,float) ;
 
 __attribute__((used)) static void draw_response(AVFilterContext *ctx, AVFrame *out)
 {
@@ -122,7 +122,7 @@ __attribute__((used)) static void draw_response(AVFilterContext *ctx, AVFrame *o
     }
 
     for (i = 0; i < s->w - 1; i++) {
-        float dw =  M_PI / (s->w - 1);
+        float dw = M_PI / (s->w - 1);
 
         delay[i] = -(phase[i + 1] - phase[i]) / dw;
         min_delay = fminf(min_delay, delay[i]);
@@ -147,11 +147,11 @@ __attribute__((used)) static void draw_response(AVFilterContext *ctx, AVFrame *o
         if (prev_ydelay < 0)
             prev_ydelay = ydelay;
 
-        draw_line(out, i,   ymag, FFMAX(i - 1, 0),   prev_ymag, 0xFFFF00FF);
+        draw_line(out, i, ymag, FFMAX(i - 1, 0), prev_ymag, 0xFFFF00FF);
         draw_line(out, i, yphase, FFMAX(i - 1, 0), prev_yphase, 0xFF00FF00);
         draw_line(out, i, ydelay, FFMAX(i - 1, 0), prev_ydelay, 0xFF00FFFF);
 
-        prev_ymag   = ymag;
+        prev_ymag = ymag;
         prev_yphase = yphase;
         prev_ydelay = ydelay;
     }

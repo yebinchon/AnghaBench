@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ifnet_t ;
-typedef  int /*<<< orphan*/  errno_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ifnet_lladdr_copy_bytes_internal (int /*<<< orphan*/ ,void*,size_t,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int ifnet_t ;
+typedef int errno_t ;
+
+
+ int ifnet_lladdr_copy_bytes_internal (int ,void*,size_t,int *) ;
 
 errno_t
 ifnet_lladdr_copy_bytes(ifnet_t interface, void *lladdr, size_t length)
 {
-	return (ifnet_lladdr_copy_bytes_internal(interface, lladdr, length,
-	    NULL));
+ return (ifnet_lladdr_copy_bytes_internal(interface, lladdr, length,
+     ((void*)0)));
 }

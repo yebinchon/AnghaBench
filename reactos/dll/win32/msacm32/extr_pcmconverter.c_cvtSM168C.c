@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  C168 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  M16 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  R16 (unsigned char const*) ; 
+
+
+
+typedef int DWORD ;
+
+
+ int C168 (int ) ;
+ int M16 (int ,int ) ;
+ int R16 (unsigned char const*) ;
 
 __attribute__((used)) static void cvtSM168C(const DWORD srcRate, const unsigned char *src, DWORD *nsrc,
                       const DWORD dstRate, unsigned char *dst, DWORD *ndst)

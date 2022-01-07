@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint8 ;
-typedef  int /*<<< orphan*/  uint32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef char uint8 ;
+typedef int uint32 ;
 struct TYPE_2__ {char pubexp; } ;
-typedef  TYPE_1__ RSAPUBKEY ;
-typedef  int /*<<< orphan*/  PUBLICKEYSTRUC ;
+typedef TYPE_1__ RSAPUBKEY ;
+typedef int PUBLICKEYSTRUC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  error (char*,char*,char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int /*<<< orphan*/ ) ; 
+
+ int error (char*,char*,char*,int ,char*,int ) ;
+ int memcpy (char*,char*,int ) ;
 
 int rdssl_rkey_get_exp_mod(uint8 * rkey, uint8 * exponent, uint32 max_exp_len, uint8 * modulus,
     uint32 max_mod_len)

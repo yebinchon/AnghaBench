@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u_int32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ u_int32_t ;
 struct TYPE_2__ {int len; } ;
-struct fsm_opt {int /*<<< orphan*/  data; TYPE_1__ hdr; } ;
+struct fsm_opt {int data; TYPE_1__ hdr; } ;
 struct ccp_config {int dummy; } ;
 struct bundle {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LogCCP ; 
- scalar_t__ MPPE_ConfigVal (struct bundle*,struct ccp_config const*) ; 
- int /*<<< orphan*/  MPPE_MasterKeyValid ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ua_htonl (scalar_t__*,int /*<<< orphan*/ ) ; 
+
+ int LogCCP ;
+ scalar_t__ MPPE_ConfigVal (struct bundle*,struct ccp_config const*) ;
+ int MPPE_MasterKeyValid ;
+ int log_Printf (int ,char*) ;
+ int ua_htonl (scalar_t__*,int ) ;
 
 __attribute__((used)) static void
 MPPEInitOptsOutput(struct bundle *bundle, struct fsm_opt *o,

@@ -1,94 +1,84 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  qnx_input_t ;
-typedef  int /*<<< orphan*/  navigator_window_state_t ;
-typedef  int /*<<< orphan*/  bps_event_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CMD_EVENT_MENU_TOGGLE ; 
-#define  NAVIGATOR_EXIT 137 
-#define  NAVIGATOR_SWIPE_DOWN 136 
-#define  NAVIGATOR_SYSKEY_BACK 135 
-#define  NAVIGATOR_SYSKEY_END 134 
-#define  NAVIGATOR_SYSKEY_PRESS 133 
-#define  NAVIGATOR_SYSKEY_SEND 132 
-#define  NAVIGATOR_WINDOW_FULLSCREEN 131 
-#define  NAVIGATOR_WINDOW_INVISIBLE 130 
-#define  NAVIGATOR_WINDOW_STATE 129 
-#define  NAVIGATOR_WINDOW_THUMBNAIL 128 
- int /*<<< orphan*/  RARCH_CTL_SET_SHUTDOWN ; 
- int /*<<< orphan*/  RETROK_BACKSPACE ; 
- int /*<<< orphan*/  RETRO_DEVICE_KEYBOARD ; 
- int bps_event_get_code (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bps_get_event (int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  command_event (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  input_keyboard_event (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  navigator_event_get_syskey_key (int /*<<< orphan*/ *) ; 
- int navigator_event_get_window_state (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rarch_ctl (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int qnx_input_t ;
+typedef int navigator_window_state_t ;
+typedef int bps_event_t ;
+
+
+ int CMD_EVENT_MENU_TOGGLE ;
+ int RARCH_CTL_SET_SHUTDOWN ;
+ int RETROK_BACKSPACE ;
+ int RETRO_DEVICE_KEYBOARD ;
+ int bps_event_get_code (int *) ;
+ int bps_get_event (int **,int) ;
+ int command_event (int ,int *) ;
+ int input_keyboard_event (int,int ,int ,int ,int ) ;
+ int navigator_event_get_syskey_key (int *) ;
+ int navigator_event_get_window_state (int *) ;
+ int rarch_ctl (int ,int *) ;
 
 __attribute__((used)) static void qnx_handle_navigator_event(
       qnx_input_t *qnx, bps_event_t *event)
 {
    navigator_window_state_t state;
-   bps_event_t *event_pause = NULL;
+   bps_event_t *event_pause = ((void*)0);
 
    switch (bps_event_get_code(event))
    {
-      case NAVIGATOR_SYSKEY_PRESS:
+      case 133:
          switch(navigator_event_get_syskey_key(event))
          {
-            case NAVIGATOR_SYSKEY_BACK:
-               input_keyboard_event(true, RETROK_BACKSPACE, 0, 0, RETRO_DEVICE_KEYBOARD);
-               input_keyboard_event(false, RETROK_BACKSPACE, 0, 0, RETRO_DEVICE_KEYBOARD);
+            case 135:
+               input_keyboard_event(1, RETROK_BACKSPACE, 0, 0, RETRO_DEVICE_KEYBOARD);
+               input_keyboard_event(0, RETROK_BACKSPACE, 0, 0, RETRO_DEVICE_KEYBOARD);
                break;
-            case NAVIGATOR_SYSKEY_SEND:
-            case NAVIGATOR_SYSKEY_END:
+            case 132:
+            case 134:
                break;
             default:
                break;
          }
          break;
-      case NAVIGATOR_SWIPE_DOWN:
-         command_event(CMD_EVENT_MENU_TOGGLE, NULL);
+      case 136:
+         command_event(CMD_EVENT_MENU_TOGGLE, ((void*)0));
          break;
-      case NAVIGATOR_WINDOW_STATE:
+      case 129:
          switch(navigator_event_get_window_state(event))
          {
-            case NAVIGATOR_WINDOW_THUMBNAIL:
-            case NAVIGATOR_WINDOW_INVISIBLE:
-               while(true)
+            case 128:
+            case 130:
+               while(1)
                {
                   unsigned event_code;
 
-                  /* Block until we get a resume or exit event. */
+
                   bps_get_event(&event_pause, -1);
                   event_code = bps_event_get_code(event_pause);
 
-                  if(event_code == NAVIGATOR_WINDOW_STATE)
+                  if(event_code == 129)
                   {
-                     if(navigator_event_get_window_state(event_pause) == NAVIGATOR_WINDOW_FULLSCREEN)
+                     if(navigator_event_get_window_state(event_pause) == 131)
                         break;
                   }
-                  else if(event_code == NAVIGATOR_EXIT)
+                  else if(event_code == 137)
                      goto shutdown;
                }
                break;
-            case NAVIGATOR_WINDOW_FULLSCREEN:
+            case 131:
                break;
          }
          break;
-     case NAVIGATOR_EXIT:
+     case 137:
         goto shutdown;
       default:
          break;
@@ -97,9 +87,9 @@ __attribute__((used)) static void qnx_handle_navigator_event(
    return;
 
    togglemenu:
-       command_event(CMD_EVENT_MENU_TOGGLE, NULL);
+       command_event(CMD_EVENT_MENU_TOGGLE, ((void*)0));
        return;
    shutdown:
-       rarch_ctl(RARCH_CTL_SET_SHUTDOWN, NULL);
+       rarch_ctl(RARCH_CTL_SET_SHUTDOWN, ((void*)0));
        return;
 }

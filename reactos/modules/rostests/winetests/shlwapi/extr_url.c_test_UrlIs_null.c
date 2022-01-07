@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ pUrlIsA (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ pUrlIsW (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ FALSE ;
+ int ok (int,char*,int ) ;
+ scalar_t__ pUrlIsA (int *,int ) ;
+ scalar_t__ pUrlIsW (int *,int ) ;
 
 __attribute__((used)) static void test_UrlIs_null(DWORD flag)
 {
     BOOL ret;
-    ret = pUrlIsA(NULL, flag);
+    ret = pUrlIsA(((void*)0), flag);
     ok(ret == FALSE, "pUrlIsA(NULL, %d) failed\n", flag);
-    ret = pUrlIsW(NULL, flag);
+    ret = pUrlIsW(((void*)0), flag);
     ok(ret == FALSE, "pUrlIsW(NULL, %d) failed\n", flag);
 }

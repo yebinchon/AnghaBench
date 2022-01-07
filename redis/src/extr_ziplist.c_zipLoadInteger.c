@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int int8_t ;
-typedef  int int64_t ;
-typedef  int int32_t ;
-typedef  int int16_t ;
-typedef  int /*<<< orphan*/  i64 ;
-typedef  int /*<<< orphan*/  i32 ;
-typedef  int /*<<< orphan*/  i16 ;
 
-/* Variables and functions */
- unsigned char ZIP_INT_16B ; 
- unsigned char ZIP_INT_24B ; 
- unsigned char ZIP_INT_32B ; 
- unsigned char ZIP_INT_64B ; 
- unsigned char ZIP_INT_8B ; 
- unsigned char ZIP_INT_IMM_MASK ; 
- unsigned char ZIP_INT_IMM_MAX ; 
- unsigned char ZIP_INT_IMM_MIN ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int*,unsigned char*,int) ; 
- int /*<<< orphan*/  memrev16ifbe (int*) ; 
- int /*<<< orphan*/  memrev32ifbe (int*) ; 
- int /*<<< orphan*/  memrev64ifbe (int*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int int8_t ;
+typedef int int64_t ;
+typedef int int32_t ;
+typedef int int16_t ;
+typedef int i64 ;
+typedef int i32 ;
+typedef int i16 ;
+
+
+ unsigned char ZIP_INT_16B ;
+ unsigned char ZIP_INT_24B ;
+ unsigned char ZIP_INT_32B ;
+ unsigned char ZIP_INT_64B ;
+ unsigned char ZIP_INT_8B ;
+ unsigned char ZIP_INT_IMM_MASK ;
+ unsigned char ZIP_INT_IMM_MAX ;
+ unsigned char ZIP_INT_IMM_MIN ;
+ int assert (int *) ;
+ int memcpy (int*,unsigned char*,int) ;
+ int memrev16ifbe (int*) ;
+ int memrev32ifbe (int*) ;
+ int memrev64ifbe (int*) ;
 
 int64_t zipLoadInteger(unsigned char *p, unsigned char encoding) {
     int16_t i16;
@@ -60,7 +60,7 @@ int64_t zipLoadInteger(unsigned char *p, unsigned char encoding) {
     } else if (encoding >= ZIP_INT_IMM_MIN && encoding <= ZIP_INT_IMM_MAX) {
         ret = (encoding & ZIP_INT_IMM_MASK)-1;
     } else {
-        assert(NULL);
+        assert(((void*)0));
     }
     return ret;
 }

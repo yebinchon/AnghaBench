@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int preparse_status; TYPE_4__* req; int /*<<< orphan*/  parser; int /*<<< orphan*/  state; } ;
-typedef  TYPE_2__ input_preparser_task_t ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int preparse_status; TYPE_4__* req; int parser; int state; } ;
+typedef TYPE_2__ input_preparser_task_t ;
 struct TYPE_11__ {scalar_t__ fetcher; } ;
-typedef  TYPE_3__ input_preparser_t ;
-struct TYPE_12__ {int options; int /*<<< orphan*/  userdata; int /*<<< orphan*/ * item; TYPE_1__* cbs; } ;
-typedef  TYPE_4__ input_preparser_req_t ;
-typedef  int /*<<< orphan*/  input_item_t ;
-struct TYPE_9__ {int /*<<< orphan*/  (* on_preparse_ended ) (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ;} ;
+typedef TYPE_3__ input_preparser_t ;
+struct TYPE_12__ {int options; int userdata; int * item; TYPE_1__* cbs; } ;
+typedef TYPE_4__ input_preparser_req_t ;
+typedef int input_item_t ;
+struct TYPE_9__ {int (* on_preparse_ended ) (int *,int,int ) ;} ;
 
-/* Variables and functions */
- int ITEM_PREPARSE_DONE ; 
- int ITEM_PREPARSE_FAILED ; 
- int ITEM_PREPARSE_TIMEOUT ; 
- int META_REQUEST_OPTION_FETCH_ANY ; 
- int /*<<< orphan*/  ReqHold (TYPE_4__*) ; 
- int /*<<< orphan*/  ReqRelease (TYPE_4__*) ; 
-#define  VLC_ETIMEOUT 129 
-#define  VLC_SUCCESS 128 
- int atomic_load (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  input_fetcher_Push (scalar_t__,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  input_fetcher_callbacks ; 
- int /*<<< orphan*/  input_item_SetPreparsed (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  input_item_parser_id_Release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+ int ITEM_PREPARSE_DONE ;
+ int ITEM_PREPARSE_FAILED ;
+ int ITEM_PREPARSE_TIMEOUT ;
+ int META_REQUEST_OPTION_FETCH_ANY ;
+ int ReqHold (TYPE_4__*) ;
+ int ReqRelease (TYPE_4__*) ;
+
+
+ int atomic_load (int *) ;
+ int free (TYPE_2__*) ;
+ int input_fetcher_Push (scalar_t__,int *,int,int *,TYPE_2__*) ;
+ int input_fetcher_callbacks ;
+ int input_item_SetPreparsed (int *,int) ;
+ int input_item_parser_id_Release (int ) ;
+ int stub1 (int *,int,int ) ;
 
 __attribute__((used)) static void PreparserCloseInput( void* preparser_, void* task_ )
 {
@@ -51,10 +51,10 @@ __attribute__((used)) static void PreparserCloseInput( void* preparser_, void* t
     int status;
     switch( atomic_load( &task->state ) )
     {
-        case VLC_SUCCESS:
+        case 128:
             status = ITEM_PREPARSE_DONE;
             break;
-        case VLC_ETIMEOUT:
+        case 129:
             status = ITEM_PREPARSE_TIMEOUT;
             break;
         default:
@@ -79,7 +79,7 @@ __attribute__((used)) static void PreparserCloseInput( void* preparser_, void* t
 
     free(task);
 
-    input_item_SetPreparsed( item, true );
+    input_item_SetPreparsed( item, 1 );
     if (req->cbs && req->cbs->on_preparse_ended)
         req->cbs->on_preparse_ended(req->item, status, req->userdata);
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_1__* man; } ;
-struct vmw_private {int /*<<< orphan*/  svga_lock; TYPE_2__ bdev; } ;
+struct vmw_private {int svga_lock; TYPE_2__ bdev; } ;
 struct TYPE_3__ {int use_type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVGA_REG_ENABLE ; 
- size_t TTM_PL_VRAM ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vmw_write (struct vmw_private*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int SVGA_REG_ENABLE ;
+ size_t TTM_PL_VRAM ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int vmw_write (struct vmw_private*,int ,int ) ;
 
 __attribute__((used)) static void __vmw_svga_enable(struct vmw_private *dev_priv)
 {
-	spin_lock(&dev_priv->svga_lock);
-	if (!dev_priv->bdev.man[TTM_PL_VRAM].use_type) {
-		vmw_write(dev_priv, SVGA_REG_ENABLE, SVGA_REG_ENABLE);
-		dev_priv->bdev.man[TTM_PL_VRAM].use_type = true;
-	}
-	spin_unlock(&dev_priv->svga_lock);
+ spin_lock(&dev_priv->svga_lock);
+ if (!dev_priv->bdev.man[TTM_PL_VRAM].use_type) {
+  vmw_write(dev_priv, SVGA_REG_ENABLE, SVGA_REG_ENABLE);
+  dev_priv->bdev.man[TTM_PL_VRAM].use_type = 1;
+ }
+ spin_unlock(&dev_priv->svga_lock);
 }

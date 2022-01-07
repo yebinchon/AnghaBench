@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint64_t ;
-struct TYPE_5__ {int /*<<< orphan*/  builder; int /*<<< orphan*/  settings; } ;
-typedef  TYPE_1__ signal_user_data_t ;
-typedef  int /*<<< orphan*/  gdouble ;
-typedef  int /*<<< orphan*/  GtkWidget ;
-typedef  int /*<<< orphan*/  GhbValue ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * GHB_WIDGET (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  GTK_COMBO_BOX (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_ui_quality (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ghb_audio_bitrate_opts_filter (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  ghb_audio_list_refresh_selected (TYPE_1__*) ; 
- int /*<<< orphan*/  ghb_audio_samplerate_opts_filter (int /*<<< orphan*/ ,int) ; 
- void* ghb_dict_get_int (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ghb_dict_get_value (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ghb_double_value (int /*<<< orphan*/ ) ; 
- int ghb_get_best_mix (void*,int,int) ; 
- int /*<<< orphan*/ * ghb_get_title_audio_track (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ghb_mix_opts_filter (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ghb_sanitize_audio_settings (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int ghb_settings_audio_encoder_codec (int /*<<< orphan*/ *,char*) ; 
- int ghb_settings_mixdown_mix (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ghb_ui_update (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_audio_bitrate_get_limits (int,int,int,int*,int*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef void* uint64_t ;
+struct TYPE_5__ {int builder; int settings; } ;
+typedef TYPE_1__ signal_user_data_t ;
+typedef int gdouble ;
+typedef int GtkWidget ;
+typedef int GhbValue ;
+
+
+ int * GHB_WIDGET (int ,char*) ;
+ int GTK_COMBO_BOX (int *) ;
+ int get_ui_quality (int *) ;
+ int ghb_audio_bitrate_opts_filter (int ,int,int) ;
+ int ghb_audio_list_refresh_selected (TYPE_1__*) ;
+ int ghb_audio_samplerate_opts_filter (int ,int) ;
+ void* ghb_dict_get_int (int *,char*) ;
+ int ghb_dict_get_value (int *,char*) ;
+ int ghb_double_value (int ) ;
+ int ghb_get_best_mix (void*,int,int) ;
+ int * ghb_get_title_audio_track (int ,int) ;
+ int ghb_mix_opts_filter (int ,int) ;
+ int ghb_sanitize_audio_settings (int ,int *) ;
+ int ghb_settings_audio_encoder_codec (int *,char*) ;
+ int ghb_settings_mixdown_mix (int *,char*) ;
+ int ghb_ui_update (TYPE_1__*,char*,int ) ;
+ int hb_audio_bitrate_get_limits (int,int,int,int*,int*) ;
 
 __attribute__((used)) static void
 ghb_adjust_audio_rate_combos(signal_user_data_t *ud, GhbValue *asettings)
 {
-    if (asettings != NULL)
+    if (asettings != ((void*)0))
     {
         ghb_sanitize_audio_settings(ud->settings, asettings);
 

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  ide_drive_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cs5535_set_speed (int /*<<< orphan*/ *,int /*<<< orphan*/  const) ; 
+
+
+
+typedef int u8 ;
+typedef int ide_drive_t ;
+
+
+ int cs5535_set_speed (int *,int const) ;
 
 __attribute__((used)) static void cs5535_set_dma_mode(ide_drive_t *drive, const u8 speed)
 {
-	cs5535_set_speed(drive, speed);
+ cs5535_set_speed(drive, speed);
 }

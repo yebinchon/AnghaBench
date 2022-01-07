@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tc_device {char* id; struct tc_class* last_class; struct tc_class* classes; } ;
 struct tc_class {char isqdisc; void* id; void* leafid; void* leaf_hash; void* parentid; void* parent_hash; void* hash; struct tc_class* prev; struct tc_class* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_TC_LOOP ; 
- struct tc_class* callocz (int,int) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,char*,char*,char*,char*) ; 
- int /*<<< orphan*/  error (char*,void*,char*) ; 
- scalar_t__ likely (struct tc_class*) ; 
- void* simple_hash (void*) ; 
- void* strdupz (char*) ; 
- struct tc_class* tc_class_index_add (struct tc_device*,struct tc_class*) ; 
- struct tc_class* tc_class_index_find (struct tc_device*,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ unlikely (int) ; 
+
+ int D_TC_LOOP ;
+ struct tc_class* callocz (int,int) ;
+ int debug (int ,char*,char*,char*,char*,char*) ;
+ int error (char*,void*,char*) ;
+ scalar_t__ likely (struct tc_class*) ;
+ void* simple_hash (void*) ;
+ void* strdupz (char*) ;
+ struct tc_class* tc_class_index_add (struct tc_device*,struct tc_class*) ;
+ struct tc_class* tc_class_index_find (struct tc_device*,char*,int ) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static inline struct tc_class *tc_class_add(struct tc_device *n, char *id, char qdisc, char *parentid, char *leafid)
 {

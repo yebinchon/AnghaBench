@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gfx_fbo_scale {int /*<<< orphan*/  abs_y; int /*<<< orphan*/  scale_y; int /*<<< orphan*/  type_y; int /*<<< orphan*/  abs_x; int /*<<< orphan*/  scale_x; int /*<<< orphan*/  type_x; int /*<<< orphan*/  valid; int /*<<< orphan*/  srgb_fbo; int /*<<< orphan*/  fp_fbo; } ;
-typedef  int /*<<< orphan*/  key ;
-typedef  int /*<<< orphan*/  config_file_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  config_set_bool (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shader_write_scale_dim (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,unsigned int) ; 
+
+
+
+struct gfx_fbo_scale {int abs_y; int scale_y; int type_y; int abs_x; int scale_x; int type_x; int valid; int srgb_fbo; int fp_fbo; } ;
+typedef int key ;
+typedef int config_file_t ;
+
+
+ int config_set_bool (int *,char*,int ) ;
+ int shader_write_scale_dim (int *,char*,int ,int ,int ,unsigned int) ;
+ int snprintf (char*,int,char*,unsigned int) ;
 
 __attribute__((used)) static void shader_write_fbo(config_file_t *conf,
       const struct gfx_fbo_scale *fbo, unsigned i)

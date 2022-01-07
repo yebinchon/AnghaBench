@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct item {long long item_id; int extra; } ;
 
-/* Variables and functions */
- int FLAG_DELETED ; 
- long long ITEMS_HASH_PRIME ; 
- struct item** Items ; 
- scalar_t__ MAX_ITEMS ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_item (struct item*,long long) ; 
- int /*<<< orphan*/  del_items ; 
- int /*<<< orphan*/  fits (long long) ; 
- scalar_t__ tot_items ; 
- struct item* ztmalloc (int) ; 
+
+ int FLAG_DELETED ;
+ long long ITEMS_HASH_PRIME ;
+ struct item** Items ;
+ scalar_t__ MAX_ITEMS ;
+ int assert (int ) ;
+ int create_item (struct item*,long long) ;
+ int del_items ;
+ int fits (long long) ;
+ scalar_t__ tot_items ;
+ struct item* ztmalloc (int) ;
 
 __attribute__((used)) static struct item *get_item_f (long long item_id, int force) {
   int h1, h2;

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bitmask {int dummy; } ;
 
-/* Variables and functions */
- int _getbit (struct bitmask const*,unsigned int) ; 
+
+ int _getbit (struct bitmask const*,unsigned int) ;
 
 int bitmask_isbitset(const struct bitmask *bmp, unsigned int i)
 {
-	return _getbit(bmp, i);
+ return _getbit(bmp, i);
 }

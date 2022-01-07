@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct sockaddr_storage {int /*<<< orphan*/  ss_len; } ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct sockaddr_storage {int ss_len; } ;
 struct sockaddr {int dummy; } ;
 struct TYPE_6__ {scalar_t__ rmx_sendpipe; scalar_t__ rmx_recvpipe; } ;
-struct TYPE_10__ {int rtm_type; int rtm_flags; int rtm_msglen; scalar_t__ rtm_errno; int /*<<< orphan*/  rtm_addrs; int /*<<< orphan*/  rtm_inits; TYPE_1__ rtm_rmx; int /*<<< orphan*/  rtm_pid; scalar_t__ rtm_seq; int /*<<< orphan*/  rtm_version; } ;
+struct TYPE_10__ {int rtm_type; int rtm_flags; int rtm_msglen; scalar_t__ rtm_errno; int rtm_addrs; int rtm_inits; TYPE_1__ rtm_rmx; int rtm_pid; scalar_t__ rtm_seq; int rtm_version; } ;
 struct rtmsg {char* m_space; TYPE_5__ m_rtm; } ;
 struct ncprange {int dummy; } ;
 struct ncpaddr {int dummy; } ;
 struct TYPE_7__ {scalar_t__ sendpipe; scalar_t__ recvpipe; } ;
 struct TYPE_8__ {TYPE_2__ cfg; } ;
 struct bundle {TYPE_4__* iface; TYPE_3__ ncp; scalar_t__ routing_seq; } ;
-struct TYPE_9__ {int /*<<< orphan*/  index; } ;
+struct TYPE_9__ {int index; } ;
 
-/* Variables and functions */
- scalar_t__ EEXIST ; 
- scalar_t__ ENETUNREACH ; 
- scalar_t__ ESRCH ; 
- int ID0socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ID0write (int,struct rtmsg*,int) ; 
- int /*<<< orphan*/  LogDEBUG ; 
- int /*<<< orphan*/  LogERROR ; 
- int /*<<< orphan*/  LogTCPIP ; 
- int /*<<< orphan*/  LogWARN ; 
- int NCP_ASCIIBUFFERSIZE ; 
- int /*<<< orphan*/  PF_ROUTE ; 
- int /*<<< orphan*/  RTA_DST ; 
- int /*<<< orphan*/  RTA_GATEWAY ; 
- int /*<<< orphan*/  RTA_NETMASK ; 
- int RTF_GATEWAY ; 
- int RTF_HOST ; 
- int RTF_STATIC ; 
- int RTF_UP ; 
- int RTM_ADD ; 
- int RTM_CHANGE ; 
- int RTM_DELETE ; 
- int /*<<< orphan*/  RTM_VERSION ; 
- int /*<<< orphan*/  RTV_RPIPE ; 
- int /*<<< orphan*/  RTV_SPIPE ; 
- int /*<<< orphan*/  SOCK_RAW ; 
- int /*<<< orphan*/  add_scope (struct sockaddr*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  getpid () ; 
- scalar_t__ log_IsKept (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  memcpy_roundup (char*,struct sockaddr_storage*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct rtmsg*,char,int) ; 
- int /*<<< orphan*/  ncpaddr_getsa (struct ncpaddr const*,struct sockaddr_storage*) ; 
- scalar_t__ ncpaddr_isdefault (struct ncpaddr const*) ; 
- char* ncpaddr_ntoa (struct ncpaddr const*) ; 
- int /*<<< orphan*/  ncprange_getsa (struct ncprange const*,struct sockaddr_storage*,struct sockaddr_storage*) ; 
- int /*<<< orphan*/  ncprange_ishost (struct ncprange const*) ; 
- int /*<<< orphan*/  ncprange_ntoa (struct ncprange const*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,...) ; 
- int /*<<< orphan*/  strerror (scalar_t__) ; 
+
+ scalar_t__ EEXIST ;
+ scalar_t__ ENETUNREACH ;
+ scalar_t__ ESRCH ;
+ int ID0socket (int ,int ,int ) ;
+ int ID0write (int,struct rtmsg*,int) ;
+ int LogDEBUG ;
+ int LogERROR ;
+ int LogTCPIP ;
+ int LogWARN ;
+ int NCP_ASCIIBUFFERSIZE ;
+ int PF_ROUTE ;
+ int RTA_DST ;
+ int RTA_GATEWAY ;
+ int RTA_NETMASK ;
+ int RTF_GATEWAY ;
+ int RTF_HOST ;
+ int RTF_STATIC ;
+ int RTF_UP ;
+ int RTM_ADD ;
+ int RTM_CHANGE ;
+ int RTM_DELETE ;
+ int RTM_VERSION ;
+ int RTV_RPIPE ;
+ int RTV_SPIPE ;
+ int SOCK_RAW ;
+ int add_scope (struct sockaddr*,int ) ;
+ int close (int) ;
+ scalar_t__ errno ;
+ int getpid () ;
+ scalar_t__ log_IsKept (int ) ;
+ int log_Printf (int ,char*,...) ;
+ int memcpy_roundup (char*,struct sockaddr_storage*,int ) ;
+ int memset (struct rtmsg*,char,int) ;
+ int ncpaddr_getsa (struct ncpaddr const*,struct sockaddr_storage*) ;
+ scalar_t__ ncpaddr_isdefault (struct ncpaddr const*) ;
+ char* ncpaddr_ntoa (struct ncpaddr const*) ;
+ int ncprange_getsa (struct ncprange const*,struct sockaddr_storage*,struct sockaddr_storage*) ;
+ int ncprange_ishost (struct ncprange const*) ;
+ int ncprange_ntoa (struct ncprange const*) ;
+ int snprintf (char*,int,char*,...) ;
+ int strerror (scalar_t__) ;
 
 int
 rt_Set(struct bundle *bundle, int cmd, const struct ncprange *dst,
@@ -110,22 +110,22 @@ rt_Set(struct bundle *bundle, int cmd, const struct ncprange *dst,
   }
 
   ncprange_getsa(dst, &sadst, &samask);
-#if defined(__KAME__) && !defined(NOINET6)
-  add_scope((struct sockaddr *)&sadst, bundle->iface->index);
-#endif
+
+
+
 
   cp = rtmes.m_space;
   cp += memcpy_roundup(cp, &sadst, sadst.ss_len);
   if (cmd == RTM_ADD) {
-    if (gw == NULL) {
+    if (gw == ((void*)0)) {
       log_Printf(LogERROR, "rt_Set: Program error\n");
       close(s);
       return result;
     }
     ncpaddr_getsa(gw, &sagw);
-#if defined(__KAME__) && !defined(NOINET6)
-    add_scope((struct sockaddr *)&sagw, bundle->iface->index);
-#endif
+
+
+
     if (ncpaddr_isdefault(gw)) {
       if (!quiet)
         log_Printf(LogERROR, "rt_Set: Cannot add a route with"
@@ -151,15 +151,15 @@ rt_Set(struct bundle *bundle, int cmd, const struct ncprange *dst,
     log_Printf(LogTCPIP, "rt_Set failure:\n");
     log_Printf(LogTCPIP, "rt_Set:  Cmd = %s\n", cmdstr);
     log_Printf(LogTCPIP, "rt_Set:  Dst = %s\n", ncprange_ntoa(dst));
-    if (gw != NULL)
+    if (gw != ((void*)0))
       log_Printf(LogTCPIP, "rt_Set:  Gateway = %s\n", ncpaddr_ntoa(gw));
 failed:
     if (cmd == RTM_ADD && (rtmes.m_rtm.rtm_errno == EEXIST ||
                            (rtmes.m_rtm.rtm_errno == 0 && errno == EEXIST))) {
       if (!bang) {
         log_Printf(LogWARN, "Add route failed: %s already exists\n",
-		   ncprange_ntoa(dst));
-        result = 0;	/* Don't add to our dynamic list */
+     ncprange_ntoa(dst));
+        result = 0;
       } else {
         rtmes.m_rtm.rtm_type = cmd = RTM_CHANGE;
         if ((wb = ID0write(s, &rtmes, nb)) < 0)
@@ -177,7 +177,7 @@ failed:
                    ncprange_ntoa(dst), strerror(errno));
     } else
       log_Printf(LogWARN, "%s route failed: %s: %s\n",
-		 cmdstr, ncprange_ntoa(dst), strerror(rtmes.m_rtm.rtm_errno));
+   cmdstr, ncprange_ntoa(dst), strerror(rtmes.m_rtm.rtm_errno));
   }
 
   if (log_IsKept(LogDEBUG)) {

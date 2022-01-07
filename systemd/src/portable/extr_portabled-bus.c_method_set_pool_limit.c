@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-struct TYPE_2__ {int /*<<< orphan*/  polkit_registry; } ;
-typedef  TYPE_1__ Manager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CAP_SYS_ADMIN ; 
- int ENOTTY ; 
- int /*<<< orphan*/  FILE_SIZE_VALID_OR_INFINITY (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SD_BUS_ERROR_INVALID_ARGS ; 
- int /*<<< orphan*/  SD_BUS_ERROR_NOT_SUPPORTED ; 
- int /*<<< orphan*/  UID_INVALID ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  btrfs_qgroup_set_limit (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int btrfs_subvol_set_subtree_quota_limit (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int bus_verify_polkit_async (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int sd_bus_error_set_errnof (int /*<<< orphan*/ *,int,char*) ; 
- int sd_bus_error_setf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int sd_bus_message_read (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int sd_bus_reply_method_return (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
+struct TYPE_2__ {int polkit_registry; } ;
+typedef TYPE_1__ Manager ;
+
+
+ int CAP_SYS_ADMIN ;
+ int ENOTTY ;
+ int FILE_SIZE_VALID_OR_INFINITY (int ) ;
+ int SD_BUS_ERROR_INVALID_ARGS ;
+ int SD_BUS_ERROR_NOT_SUPPORTED ;
+ int UID_INVALID ;
+ int assert (int *) ;
+ int btrfs_qgroup_set_limit (char*,int ,int ) ;
+ int btrfs_subvol_set_subtree_quota_limit (char*,int ,int ) ;
+ int bus_verify_polkit_async (int *,int ,char*,int *,int,int ,int *,int *) ;
+ int sd_bus_error_set_errnof (int *,int,char*) ;
+ int sd_bus_error_setf (int *,int ,char*) ;
+ int sd_bus_message_read (int *,char*,int *) ;
+ int sd_bus_reply_method_return (int *,int *) ;
 
 __attribute__((used)) static int method_set_pool_limit(sd_bus_message *message, void *userdata, sd_bus_error *error) {
         Manager *m = userdata;
@@ -50,15 +50,15 @@ __attribute__((used)) static int method_set_pool_limit(sd_bus_message *message, 
                         message,
                         CAP_SYS_ADMIN,
                         "org.freedesktop.portable1.manage-images",
-                        NULL,
-                        false,
+                        ((void*)0),
+                        0,
                         UID_INVALID,
                         &m->polkit_registry,
                         error);
         if (r < 0)
                 return r;
         if (r == 0)
-                return 1; /* Will call us back */
+                return 1;
 
         (void) btrfs_qgroup_set_limit("/var/lib/portables", 0, limit);
 
@@ -68,5 +68,5 @@ __attribute__((used)) static int method_set_pool_limit(sd_bus_message *message, 
         if (r < 0)
                 return sd_bus_error_set_errnof(error, r, "Failed to adjust quota limit: %m");
 
-        return sd_bus_reply_method_return(message, NULL);
+        return sd_bus_reply_method_return(message, ((void*)0));
 }

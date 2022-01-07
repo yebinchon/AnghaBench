@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ n_inotify_watches; int /*<<< orphan*/  inotify_watches; int /*<<< orphan*/  inotify_fd; } ;
-typedef  TYPE_1__ sd_bus ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  bus_detach_inotify_event (TYPE_1__*) ; 
- int /*<<< orphan*/  mfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  safe_close (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ n_inotify_watches; int inotify_watches; int inotify_fd; } ;
+typedef TYPE_1__ sd_bus ;
+
+
+ int assert (TYPE_1__*) ;
+ int bus_detach_inotify_event (TYPE_1__*) ;
+ int mfree (int ) ;
+ int safe_close (int ) ;
 
 void bus_close_inotify_fd(sd_bus *b) {
         assert(b);

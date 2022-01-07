@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  _TCBVAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  display_tcb (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/ * g_tcb_info ; 
- int parse_tcb (int /*<<< orphan*/ *,unsigned char*) ; 
+
+
+
+typedef int _TCBVAR ;
+
+
+ int display_tcb (int *,unsigned char*,int) ;
+ int * g_tcb_info ;
+ int parse_tcb (int *,unsigned char*) ;
 
 void
 parse_n_display_tcb(unsigned char *buf)

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lexer {char const* pos; char const* start; int /*<<< orphan*/  ring_buffer; int /*<<< orphan*/  end; int /*<<< orphan*/  state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lex_text ; 
- int /*<<< orphan*/  lexeme_ring_buffer_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rawmemchr (char const*,char) ; 
+
+
+
+struct lexer {char const* pos; char const* start; int ring_buffer; int end; int state; } ;
+
+
+ int lex_text ;
+ int lexeme_ring_buffer_init (int *) ;
+ int rawmemchr (char const*,char) ;
 
 __attribute__((used)) static void lex_init(struct lexer *lexer, const char *input)
 {

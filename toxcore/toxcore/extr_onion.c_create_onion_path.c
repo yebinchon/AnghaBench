@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_9__ {int /*<<< orphan*/ * self_public_key; int /*<<< orphan*/ * self_secret_key; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * public_key; int /*<<< orphan*/  ip_port; } ;
-struct TYPE_7__ {int /*<<< orphan*/  node_public_key3; int /*<<< orphan*/  node_public_key2; int /*<<< orphan*/  node_public_key1; int /*<<< orphan*/  ip_port3; int /*<<< orphan*/  ip_port2; int /*<<< orphan*/  ip_port1; int /*<<< orphan*/  public_key3; int /*<<< orphan*/  shared_key3; int /*<<< orphan*/  public_key2; int /*<<< orphan*/  shared_key2; int /*<<< orphan*/  public_key1; int /*<<< orphan*/  shared_key1; } ;
-typedef  TYPE_1__ Onion_Path ;
-typedef  TYPE_2__ Node_format ;
-typedef  TYPE_3__ DHT ;
 
-/* Variables and functions */
- int crypto_box_PUBLICKEYBYTES ; 
- int crypto_box_SECRETKEYBYTES ; 
- int /*<<< orphan*/  crypto_box_keypair (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  encrypt_precompute (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_9__ {int * self_public_key; int * self_secret_key; } ;
+struct TYPE_8__ {int * public_key; int ip_port; } ;
+struct TYPE_7__ {int node_public_key3; int node_public_key2; int node_public_key1; int ip_port3; int ip_port2; int ip_port1; int public_key3; int shared_key3; int public_key2; int shared_key2; int public_key1; int shared_key1; } ;
+typedef TYPE_1__ Onion_Path ;
+typedef TYPE_2__ Node_format ;
+typedef TYPE_3__ DHT ;
+
+
+ int crypto_box_PUBLICKEYBYTES ;
+ int crypto_box_SECRETKEYBYTES ;
+ int crypto_box_keypair (int *,int *) ;
+ int encrypt_precompute (int *,int *,int ) ;
+ int memcpy (int ,int *,int) ;
 
 int create_onion_path(const DHT *dht, Onion_Path *new_path, const Node_format *nodes)
 {

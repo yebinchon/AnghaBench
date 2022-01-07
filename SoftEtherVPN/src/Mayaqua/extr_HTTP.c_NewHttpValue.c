@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {void* Data; void* Name; } ;
-typedef  TYPE_1__ HTTP_VALUE ;
+typedef TYPE_1__ HTTP_VALUE ;
 
-/* Variables and functions */
- void* CopyStr (char*) ; 
- int /*<<< orphan*/  Trim (void*) ; 
- TYPE_1__* ZeroMalloc (int) ; 
+
+ void* CopyStr (char*) ;
+ int Trim (void*) ;
+ TYPE_1__* ZeroMalloc (int) ;
 
 HTTP_VALUE *NewHttpValue(char *name, char *data)
 {
-	HTTP_VALUE *v;
-	// Validate arguments
-	if (name == NULL || data == NULL)
-	{
-		return NULL;
-	}
+ HTTP_VALUE *v;
 
-	v = ZeroMalloc(sizeof(HTTP_VALUE));
+ if (name == ((void*)0) || data == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	v->Name = CopyStr(name);
-	v->Data = CopyStr(data);
+ v = ZeroMalloc(sizeof(HTTP_VALUE));
 
-	Trim(v->Name);
-	Trim(v->Data);
+ v->Name = CopyStr(name);
+ v->Data = CopyStr(data);
 
-	return v;
+ Trim(v->Name);
+ Trim(v->Data);
+
+ return v;
 }

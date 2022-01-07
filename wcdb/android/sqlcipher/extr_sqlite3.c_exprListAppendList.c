@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_13__ {int nExpr; TYPE_1__* a; } ;
-struct TYPE_12__ {int /*<<< orphan*/  db; } ;
-struct TYPE_11__ {int /*<<< orphan*/  sortOrder; int /*<<< orphan*/  pExpr; } ;
-typedef  TYPE_2__ Parse ;
-typedef  TYPE_3__ ExprList ;
-typedef  int /*<<< orphan*/  Expr ;
+struct TYPE_12__ {int db; } ;
+struct TYPE_11__ {int sortOrder; int pExpr; } ;
+typedef TYPE_2__ Parse ;
+typedef TYPE_3__ ExprList ;
+typedef int Expr ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * sqlite3ExprDup (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_3__* sqlite3ExprListAppend (TYPE_2__*,TYPE_3__*,int /*<<< orphan*/ *) ; 
+
+ int * sqlite3ExprDup (int ,int ,int ) ;
+ TYPE_3__* sqlite3ExprListAppend (TYPE_2__*,TYPE_3__*,int *) ;
 
 __attribute__((used)) static ExprList *exprListAppendList(
-  Parse *pParse,          /* Parsing context */
-  ExprList *pList,        /* List to which to append. Might be NULL */
-  ExprList *pAppend       /* List of values to append. Might be NULL */
+  Parse *pParse,
+  ExprList *pList,
+  ExprList *pAppend
 ){
   if( pAppend ){
     int i;

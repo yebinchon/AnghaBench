@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct connection {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT ; 
- int MAX_CNT ; 
- int MAX_FRIENDS ; 
- int /*<<< orphan*/  RETURN (int /*<<< orphan*/ ,int) ; 
- int STATS_BUFF_SIZE ; 
- int active_aio_queries ; 
- int /*<<< orphan*/  assert (int) ; 
- char* buf ; 
- int /*<<< orphan*/  do_add_exception (int,int) ; 
- int do_clear_exceptions (int) ; 
- int /*<<< orphan*/  eat_at (char const*,int,char**,int*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,int) ; 
- int* fr_buff ; 
- int /*<<< orphan*/  get ; 
- int get_suggestions (int,int,int,int*) ; 
- int mf_prepare_stats () ; 
- int prepare_stats (struct connection*,char*,int) ; 
- int /*<<< orphan*/  return_one_key (struct connection*,char const*,char*,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int,...) ; 
- int sscanf (char*,char*,int*,...) ; 
- char* stats_buff ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- int verbosity ; 
+
+ int INIT ;
+ int MAX_CNT ;
+ int MAX_FRIENDS ;
+ int RETURN (int ,int) ;
+ int STATS_BUFF_SIZE ;
+ int active_aio_queries ;
+ int assert (int) ;
+ char* buf ;
+ int do_add_exception (int,int) ;
+ int do_clear_exceptions (int) ;
+ int eat_at (char const*,int,char**,int*) ;
+ int fprintf (int ,char*,char const*,int) ;
+ int* fr_buff ;
+ int get ;
+ int get_suggestions (int,int,int,int*) ;
+ int mf_prepare_stats () ;
+ int prepare_stats (struct connection*,char*,int) ;
+ int return_one_key (struct connection*,char const*,char*,int) ;
+ int sprintf (char*,char*,int,...) ;
+ int sscanf (char*,char*,int*,...) ;
+ char* stats_buff ;
+ int stderr ;
+ int strncmp (char*,char*,int) ;
+ int verbosity ;
 
 int memcache_try_get (struct connection *c, const char *old_key, int old_key_len) {
   INIT;
@@ -54,7 +54,7 @@ int memcache_try_get (struct connection *c, const char *old_key, int old_key_len
     int uid;
 
     sscanf (key, "unload_user%d", &uid);
-//    test_user_unload (uid);
+
 
     return_one_key (c, old_key, "0", 1);
 
@@ -62,7 +62,7 @@ int memcache_try_get (struct connection *c, const char *old_key, int old_key_len
   }
 
   if (key_len >= 10 && !strncmp (key, "unload_lru", 10)) {
-//    user_LRU_unload();
+
     return_one_key (c, old_key, "0", 1);
 
     RETURN(get, 0);

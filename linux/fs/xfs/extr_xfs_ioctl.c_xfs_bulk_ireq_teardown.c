@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct xfs_ibulk {int /*<<< orphan*/  ocount; int /*<<< orphan*/  startino; } ;
-struct xfs_bulk_ireq {int /*<<< orphan*/  ocount; int /*<<< orphan*/  ino; } ;
 
-/* Variables and functions */
+
+
+
+struct xfs_ibulk {int ocount; int startino; } ;
+struct xfs_bulk_ireq {int ocount; int ino; } ;
+
+
 
 __attribute__((used)) static void
 xfs_bulk_ireq_teardown(
-	struct xfs_bulk_ireq	*hdr,
-	struct xfs_ibulk	*breq)
+ struct xfs_bulk_ireq *hdr,
+ struct xfs_ibulk *breq)
 {
-	hdr->ino = breq->startino;
-	hdr->ocount = breq->ocount;
+ hdr->ino = breq->startino;
+ hdr->ocount = breq->ocount;
 }

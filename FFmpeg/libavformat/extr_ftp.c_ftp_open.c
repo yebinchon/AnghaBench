@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {int is_streamed; TYPE_2__* priv_data; } ;
-typedef  TYPE_1__ URLContext ;
+typedef TYPE_1__ URLContext ;
 struct TYPE_11__ {int write_seekable; } ;
-typedef  TYPE_2__ FTPContext ;
+typedef TYPE_2__ FTPContext ;
 
-/* Variables and functions */
- int AVIO_FLAG_READ ; 
- int AVIO_FLAG_WRITE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ff_dlog (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  ftp_close (TYPE_1__*) ; 
- int ftp_connect (TYPE_1__*,char const*) ; 
- scalar_t__ ftp_file_size (TYPE_2__*) ; 
- scalar_t__ ftp_restart (TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+ int AVIO_FLAG_READ ;
+ int AVIO_FLAG_WRITE ;
+ int AV_LOG_ERROR ;
+ int av_log (TYPE_1__*,int ,char*) ;
+ int ff_dlog (TYPE_1__*,char*) ;
+ int ftp_close (TYPE_1__*) ;
+ int ftp_connect (TYPE_1__*,char const*) ;
+ scalar_t__ ftp_file_size (TYPE_2__*) ;
+ scalar_t__ ftp_restart (TYPE_2__*,int ) ;
 
 __attribute__((used)) static int ftp_open(URLContext *h, const char *url, int flags)
 {

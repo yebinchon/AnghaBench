@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT64 ;
-typedef  int UINT32 ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT64 ;
+typedef int UINT32 ;
 struct TYPE_5__ {scalar_t__ Address; } ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  TYPE_1__ ACPI_GENERIC_ADDRESS ;
+typedef int ACPI_STATUS ;
+typedef TYPE_1__ ACPI_GENERIC_ADDRESS ;
 
-/* Variables and functions */
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  AcpiHwRead (scalar_t__*,TYPE_1__*) ; 
+
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int AE_OK ;
+ int AcpiHwRead (scalar_t__*,TYPE_1__*) ;
 
 __attribute__((used)) static ACPI_STATUS
 AcpiHwReadMultiple (
-    UINT32                  *Value,
-    ACPI_GENERIC_ADDRESS    *RegisterA,
-    ACPI_GENERIC_ADDRESS    *RegisterB)
+    UINT32 *Value,
+    ACPI_GENERIC_ADDRESS *RegisterA,
+    ACPI_GENERIC_ADDRESS *RegisterB)
 {
-    UINT32                  ValueA = 0;
-    UINT32                  ValueB = 0;
-    UINT64                  Value64;
-    ACPI_STATUS             Status;
+    UINT32 ValueA = 0;
+    UINT32 ValueB = 0;
+    UINT64 Value64;
+    ACPI_STATUS Status;
 
 
-    /* The first register is always required */
+
 
     Status = AcpiHwRead (&Value64, RegisterA);
     if (ACPI_FAILURE (Status))
@@ -43,7 +43,7 @@ AcpiHwReadMultiple (
     }
     ValueA = (UINT32) Value64;
 
-    /* Second register is optional */
+
 
     if (RegisterB->Address)
     {
@@ -54,17 +54,6 @@ AcpiHwReadMultiple (
         }
         ValueB = (UINT32) Value64;
     }
-
-    /*
-     * OR the two return values together. No shifting or masking is necessary,
-     * because of how the PM1 registers are defined in the ACPI specification:
-     *
-     * "Although the bits can be split between the two register blocks (each
-     * register block has a unique pointer within the FADT), the bit positions
-     * are maintained. The register block with unimplemented bits (that is,
-     * those implemented in the other register block) always returns zeros,
-     * and writes have no side effects"
-     */
     *Value = (ValueA | ValueB);
     return (AE_OK);
 }

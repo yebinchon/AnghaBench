@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* u32 ;
-typedef  int /*<<< orphan*/  lsm_db ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef void* u32 ;
+typedef int lsm_db ;
 struct TYPE_8__ {int* aiKeyPtr; } ;
-typedef  TYPE_1__ TreeNode ;
+typedef TYPE_1__ TreeNode ;
 struct TYPE_9__ {int* aiKeyPtr; } ;
-typedef  TYPE_2__ TreeLeaf ;
-struct TYPE_10__ {size_t iNode; int /*<<< orphan*/ * aiCell; TYPE_1__** apTreeNode; } ;
-typedef  TYPE_3__ TreeCursor ;
+typedef TYPE_2__ TreeLeaf ;
+struct TYPE_10__ {size_t iNode; int * aiCell; TYPE_1__** apTreeNode; } ;
+typedef TYPE_3__ TreeCursor ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_2__* newTreeLeaf (int /*<<< orphan*/ *,void**,int*) ; 
- int treeInsert (int /*<<< orphan*/ *,TYPE_3__*,void*,int,void*,int /*<<< orphan*/ ) ; 
- int treeUpdatePtr (int /*<<< orphan*/ *,TYPE_3__*,void*) ; 
+
+ int LSM_OK ;
+ int assert (int) ;
+ TYPE_2__* newTreeLeaf (int *,void**,int*) ;
+ int treeInsert (int *,TYPE_3__*,void*,int,void*,int ) ;
+ int treeUpdatePtr (int *,TYPE_3__*,void*) ;
 
 __attribute__((used)) static int treeInsertLeaf(
-  lsm_db *pDb,                    /* Database handle */
-  TreeCursor *pCsr,               /* Cursor structure */
-  u32 iTreeKey,                   /* Key pointer to insert */
-  int iSlot                       /* Insert key to the left of this */
+  lsm_db *pDb,
+  TreeCursor *pCsr,
+  u32 iTreeKey,
+  int iSlot
 ){
-  int rc = LSM_OK;                /* Return code */
+  int rc = LSM_OK;
   TreeNode *pLeaf = pCsr->apTreeNode[pCsr->iNode];
   TreeLeaf *pNew;
   u32 iNew;
@@ -49,7 +49,7 @@ __attribute__((used)) static int treeInsertLeaf(
   pNew = newTreeLeaf(pDb, &iNew, &rc);
   if( pNew ){
     if( pLeaf->aiKeyPtr[0] && pLeaf->aiKeyPtr[2] ){
-      /* The leaf is full. Split it in two. */
+
       TreeLeaf *pRight;
       u32 iRight;
       pRight = newTreeLeaf(pDb, &iRight, &rc);
@@ -64,7 +64,7 @@ __attribute__((used)) static int treeInsertLeaf(
           case 3: pRight->aiKeyPtr[2] = iTreeKey; break;
         }
 
-        rc = treeInsert(pDb, pCsr, iNew, pLeaf->aiKeyPtr[1], iRight, 
+        rc = treeInsert(pDb, pCsr, iNew, pLeaf->aiKeyPtr[1], iRight,
             pCsr->aiCell[pCsr->iNode]
         );
       }

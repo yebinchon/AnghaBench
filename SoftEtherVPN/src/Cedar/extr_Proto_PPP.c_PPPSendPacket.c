@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PPP_SESSION ;
-typedef  int /*<<< orphan*/  PPP_PACKET ;
 
-/* Variables and functions */
- int PPPSendPacketEx (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int PPP_SESSION ;
+typedef int PPP_PACKET ;
+
+
+ int PPPSendPacketEx (int *,int *,int) ;
 
 bool PPPSendPacket(PPP_SESSION *p, PPP_PACKET *pp)
 {
-	return PPPSendPacketEx(p, pp, false);
+ return PPPSendPacketEx(p, pp, 0);
 }

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8 ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8 ;
 struct TYPE_3__ {int size; scalar_t__ data; } ;
-typedef  int /*<<< orphan*/  FONTGLYPH ;
-typedef  TYPE_1__ DATABLOB ;
-typedef  int /*<<< orphan*/  BRUSH ;
+typedef int FONTGLYPH ;
+typedef TYPE_1__ DATABLOB ;
+typedef int BRUSH ;
 
-/* Variables and functions */
- int COLOR16TO32 (int) ; 
- int /*<<< orphan*/  DO_GLYPH (int*,int) ; 
- int /*<<< orphan*/  GR_MODE_COPY ; 
- int /*<<< orphan*/  GrFillRect (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int) ; 
- int /*<<< orphan*/  GrSetGCForeground (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  GrSetGCMode (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GrSetGCUseBackground (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int MIX_OPAQUE ; 
- int TEXT2_IMPLICIT_X ; 
- int TEXT2_VERTICAL ; 
- TYPE_1__* cache_get_text (int) ; 
- int /*<<< orphan*/  cache_put_text (int,int*,int) ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int g_bpp ; 
- int /*<<< orphan*/  g_gc ; 
- int g_server_bpp ; 
- int g_width ; 
- int /*<<< orphan*/  g_wnd ; 
+
+ int COLOR16TO32 (int) ;
+ int DO_GLYPH (int*,int) ;
+ int GR_MODE_COPY ;
+ int GrFillRect (int ,int ,int,int,int,int) ;
+ int GrSetGCForeground (int ,int) ;
+ int GrSetGCMode (int ,int ) ;
+ int GrSetGCUseBackground (int ,int ) ;
+ int MIX_OPAQUE ;
+ int TEXT2_IMPLICIT_X ;
+ int TEXT2_VERTICAL ;
+ TYPE_1__* cache_get_text (int) ;
+ int cache_put_text (int,int*,int) ;
+ int error (char*) ;
+ int exit (int) ;
+ int g_bpp ;
+ int g_gc ;
+ int g_server_bpp ;
+ int g_width ;
+ int g_wnd ;
 
 void ui_draw_text(uint8 font, uint8 flags, uint8 opcode, int mixmode,
                   int x, int y,
@@ -49,7 +49,7 @@ void ui_draw_text(uint8 font, uint8 flags, uint8 opcode, int mixmode,
   DATABLOB * entry;
 
   GrSetGCMode(g_gc, GR_MODE_COPY);
-  GrSetGCUseBackground(g_gc, 0); /* this can be set when gc is created */
+  GrSetGCUseBackground(g_gc, 0);
   if (g_server_bpp == 16 && g_bpp == 32)
   {
     fgcolor = COLOR16TO32(fgcolor);
@@ -69,7 +69,7 @@ void ui_draw_text(uint8 font, uint8 flags, uint8 opcode, int mixmode,
     GrFillRect(g_wnd, g_gc, clipx, clipy, clipcx, clipcy);
   }
   GrSetGCForeground(g_gc, fgcolor);
-  /* Paint text, character by character */
+
   for (i = 0; i < length;)
   {
     switch (text[i])
@@ -84,15 +84,15 @@ void ui_draw_text(uint8 font, uint8 flags, uint8 opcode, int mixmode,
           error("this shouldn't be happening\n");
           exit(1);
         }
-        /* this will move pointer from start to first character after */
-        /* FF command */
+
+
         length -= i + 3;
         text = &(text[i + 3]);
         i = 0;
         break;
       case 0xfe:
         entry = cache_get_text(text[i + 1]);
-        if (entry != NULL)
+        if (entry != ((void*)0))
         {
           if ((((uint8 *) (entry->data))[1] == 0) &&
                                 (!(flags & TEXT2_IMPLICIT_X)))
@@ -120,8 +120,8 @@ void ui_draw_text(uint8 font, uint8 flags, uint8 opcode, int mixmode,
           i += 2;
         }
         length -= i;
-        /* this will move pointer from start to first character after */
-        /* FE command */
+
+
         text = &(text[i]);
         i = 0;
         break;

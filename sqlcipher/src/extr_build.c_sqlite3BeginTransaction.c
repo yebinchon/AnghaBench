@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int nDb; } ;
-typedef  TYPE_1__ sqlite3 ;
-typedef  int /*<<< orphan*/  Vdbe ;
+typedef TYPE_1__ sqlite3 ;
+typedef int Vdbe ;
 struct TYPE_7__ {TYPE_1__* db; } ;
-typedef  TYPE_2__ Parse ;
+typedef TYPE_2__ Parse ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OP_AutoCommit ; 
- int /*<<< orphan*/  OP_Transaction ; 
- int /*<<< orphan*/  SQLITE_TRANSACTION ; 
- int TK_DEFERRED ; 
- int TK_EXCLUSIVE ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ sqlite3AuthCheck (TYPE_2__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * sqlite3GetVdbe (TYPE_2__*) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp0 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  sqlite3VdbeUsesBtree (int /*<<< orphan*/ *,int) ; 
+
+ int OP_AutoCommit ;
+ int OP_Transaction ;
+ int SQLITE_TRANSACTION ;
+ int TK_DEFERRED ;
+ int TK_EXCLUSIVE ;
+ int assert (int) ;
+ scalar_t__ sqlite3AuthCheck (TYPE_2__*,int ,char*,int ,int ) ;
+ int * sqlite3GetVdbe (TYPE_2__*) ;
+ int sqlite3VdbeAddOp0 (int *,int ) ;
+ int sqlite3VdbeAddOp2 (int *,int ,int,int) ;
+ int sqlite3VdbeUsesBtree (int *,int) ;
 
 void sqlite3BeginTransaction(Parse *pParse, int type){
   sqlite3 *db;

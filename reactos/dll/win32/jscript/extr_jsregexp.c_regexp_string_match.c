@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
-typedef  struct TYPE_13__   TYPE_12__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  tmp_heap; } ;
-typedef  TYPE_1__ script_ctx_t ;
-typedef  int /*<<< orphan*/  match_state_t ;
+
+
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+typedef struct TYPE_13__ TYPE_12__ ;
+
+
+struct TYPE_14__ {int tmp_heap; } ;
+typedef TYPE_1__ script_ctx_t ;
+typedef int match_state_t ;
 struct TYPE_15__ {scalar_t__ length; scalar_t__ index; } ;
-typedef  TYPE_2__ match_result_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int /*<<< orphan*/  heap_pool_t ;
-typedef  char WCHAR ;
-struct TYPE_16__ {int /*<<< orphan*/  dispex; TYPE_12__* jsregexp; } ;
+typedef TYPE_2__ match_result_t ;
+typedef int jsval_t ;
+typedef int jsstr_t ;
+typedef int jsdisp_t ;
+typedef int heap_pool_t ;
+typedef char WCHAR ;
+struct TYPE_16__ {int dispex; TYPE_12__* jsregexp; } ;
 struct TYPE_13__ {int flags; } ;
-typedef  TYPE_3__ RegExpInstance ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  scalar_t__ HRESULT ;
+typedef TYPE_3__ RegExpInstance ;
+typedef int IDispatch ;
+typedef scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ E_OUTOFMEMORY ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  FALSE ; 
- int REG_GLOB ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/ * alloc_match_state (TYPE_12__*,int /*<<< orphan*/ *,char const*) ; 
- scalar_t__ create_array (TYPE_1__*,unsigned int,int /*<<< orphan*/ **) ; 
- scalar_t__ create_match_array (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  heap_free (TYPE_2__*) ; 
- int /*<<< orphan*/  heap_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * heap_pool_mark (int /*<<< orphan*/ *) ; 
- scalar_t__ jsdisp_propput_idx (int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ ) ; 
- scalar_t__ jsdisp_propput_name (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
- char* jsstr_flatten (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsstr_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * jsstr_substr (int /*<<< orphan*/ *,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  jsval_disp (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_null () ; 
- int /*<<< orphan*/  jsval_number (scalar_t__) ; 
- int /*<<< orphan*/  jsval_obj (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_string (int /*<<< orphan*/ *) ; 
- TYPE_3__* regexp_from_jsdisp (int /*<<< orphan*/ *) ; 
- scalar_t__ regexp_match (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__**,unsigned int*) ; 
- scalar_t__ regexp_match_next (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
+
+ scalar_t__ E_OUTOFMEMORY ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int FALSE ;
+ int REG_GLOB ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_OK ;
+ int TRACE (char*) ;
+ int * alloc_match_state (TYPE_12__*,int *,char const*) ;
+ scalar_t__ create_array (TYPE_1__*,unsigned int,int **) ;
+ scalar_t__ create_match_array (TYPE_1__*,int *,int *,int **) ;
+ int heap_free (TYPE_2__*) ;
+ int heap_pool_clear (int *) ;
+ int * heap_pool_mark (int *) ;
+ scalar_t__ jsdisp_propput_idx (int *,unsigned int,int ) ;
+ scalar_t__ jsdisp_propput_name (int *,char const*,int ) ;
+ int jsdisp_release (int *) ;
+ char* jsstr_flatten (int *) ;
+ int jsstr_release (int *) ;
+ int * jsstr_substr (int *,scalar_t__,scalar_t__) ;
+ int jsval_disp (int *) ;
+ int jsval_null () ;
+ int jsval_number (scalar_t__) ;
+ int jsval_obj (int *) ;
+ int jsval_string (int *) ;
+ TYPE_3__* regexp_from_jsdisp (int *) ;
+ scalar_t__ regexp_match (TYPE_1__*,int *,int *,int ,TYPE_2__**,unsigned int*) ;
+ scalar_t__ regexp_match_next (TYPE_1__*,int *,int ,int *,int **) ;
 
 HRESULT regexp_string_match(script_ctx_t *ctx, jsdisp_t *re, jsstr_t *jsstr, jsval_t *r)
 {

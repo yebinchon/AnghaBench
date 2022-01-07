@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SKIP_IF (int) ; 
- int /*<<< orphan*/  perf_breakpoint_supported () ; 
- int runtest () ; 
- int /*<<< orphan*/  srand (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
+ int SKIP_IF (int) ;
+ int perf_breakpoint_supported () ;
+ int runtest () ;
+ int srand (int ) ;
+ int time (int *) ;
 
 __attribute__((used)) static int perf_hwbreak(void)
 {
-	srand ( time(NULL) );
+ srand ( time(((void*)0)) );
 
-	SKIP_IF(!perf_breakpoint_supported());
+ SKIP_IF(!perf_breakpoint_supported());
 
-	return runtest();
+ return runtest();
 }

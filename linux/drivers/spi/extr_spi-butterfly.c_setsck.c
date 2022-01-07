@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct spi_device {int dummy; } ;
-struct butterfly {int /*<<< orphan*/  lastbyte; int /*<<< orphan*/  port; } ;
+struct butterfly {int lastbyte; int port; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  parport_write_data (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spi_sck_bit ; 
- struct butterfly* spidev_to_pp (struct spi_device*) ; 
+
+ int parport_write_data (int ,int ) ;
+ int spi_sck_bit ;
+ struct butterfly* spidev_to_pp (struct spi_device*) ;
 
 __attribute__((used)) static inline void
 setsck(struct spi_device *spi, int is_on)
 {
-	struct butterfly	*pp = spidev_to_pp(spi);
-	u8			bit, byte = pp->lastbyte;
+ struct butterfly *pp = spidev_to_pp(spi);
+ u8 bit, byte = pp->lastbyte;
 
-	bit = spi_sck_bit;
+ bit = spi_sck_bit;
 
-	if (is_on)
-		byte |= bit;
-	else
-		byte &= ~bit;
-	parport_write_data(pp->port, byte);
-	pp->lastbyte = byte;
+ if (is_on)
+  byte |= bit;
+ else
+  byte &= ~bit;
+ parport_write_data(pp->port, byte);
+ pp->lastbyte = byte;
 }

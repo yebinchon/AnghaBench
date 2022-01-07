@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct solos_card {TYPE_2__* dev; } ;
 struct sk_buff {int dummy; } ;
 struct pkt_hdr {void* type; void* vci; void* vpi; void* size; } ;
-struct TYPE_4__ {int /*<<< orphan*/  aal; } ;
-struct atm_vcc {int /*<<< orphan*/  flags; TYPE_3__* dev; int /*<<< orphan*/  vci; int /*<<< orphan*/  vpi; TYPE_1__ qos; } ;
+struct TYPE_4__ {int aal; } ;
+struct atm_vcc {int flags; TYPE_3__* dev; int vci; int vpi; TYPE_1__ qos; } ;
 struct TYPE_6__ {struct solos_card* dev_data; } ;
-struct TYPE_5__ {int /*<<< orphan*/  dev; } ;
+struct TYPE_5__ {int dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATM_AAL5 ; 
- int /*<<< orphan*/  ATM_VF_ADDR ; 
- int /*<<< orphan*/  ATM_VF_READY ; 
- int EINVAL ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_ATOMIC ; 
- int /*<<< orphan*/  PKT_POPEN ; 
- int /*<<< orphan*/  SOLOS_CHAN (TYPE_3__*) ; 
- struct sk_buff* alloc_skb (int,int /*<<< orphan*/ ) ; 
- void* cpu_to_le16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dev_warn (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  fpga_queue (struct solos_card*,int /*<<< orphan*/ ,struct sk_buff*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_vccs (int /*<<< orphan*/ ) ; 
- scalar_t__ net_ratelimit () ; 
- int /*<<< orphan*/  set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ skb_put (struct sk_buff*,int) ; 
+
+ int ATM_AAL5 ;
+ int ATM_VF_ADDR ;
+ int ATM_VF_READY ;
+ int EINVAL ;
+ int ENOMEM ;
+ int GFP_ATOMIC ;
+ int PKT_POPEN ;
+ int SOLOS_CHAN (TYPE_3__*) ;
+ struct sk_buff* alloc_skb (int,int ) ;
+ void* cpu_to_le16 (int ) ;
+ int dev_warn (int *,char*,...) ;
+ int fpga_queue (struct solos_card*,int ,struct sk_buff*,int *) ;
+ int list_vccs (int ) ;
+ scalar_t__ net_ratelimit () ;
+ int set_bit (int ,int *) ;
+ scalar_t__ skb_put (struct sk_buff*,int) ;
 
 __attribute__((used)) static int popen(struct atm_vcc *vcc)
 {
-	struct solos_card *card = vcc->dev->dev_data;
-	struct sk_buff *skb;
-	struct pkt_hdr *header;
+ struct solos_card *card = vcc->dev->dev_data;
+ struct sk_buff *skb;
+ struct pkt_hdr *header;
 
-	if (vcc->qos.aal != ATM_AAL5) {
-		dev_warn(&card->dev->dev, "Unsupported ATM type %d\n",
-			 vcc->qos.aal);
-		return -EINVAL;
-	}
+ if (vcc->qos.aal != ATM_AAL5) {
+  dev_warn(&card->dev->dev, "Unsupported ATM type %d\n",
+    vcc->qos.aal);
+  return -EINVAL;
+ }
 
-	skb = alloc_skb(sizeof(*header), GFP_ATOMIC);
-	if (!skb && net_ratelimit()) {
-		dev_warn(&card->dev->dev, "Failed to allocate sk_buff in popen()\n");
-		return -ENOMEM;
-	}
-	header = (void *)skb_put(skb, sizeof(*header));
+ skb = alloc_skb(sizeof(*header), GFP_ATOMIC);
+ if (!skb && net_ratelimit()) {
+  dev_warn(&card->dev->dev, "Failed to allocate sk_buff in popen()\n");
+  return -ENOMEM;
+ }
+ header = (void *)skb_put(skb, sizeof(*header));
 
-	header->size = cpu_to_le16(0);
-	header->vpi = cpu_to_le16(vcc->vpi);
-	header->vci = cpu_to_le16(vcc->vci);
-	header->type = cpu_to_le16(PKT_POPEN);
+ header->size = cpu_to_le16(0);
+ header->vpi = cpu_to_le16(vcc->vpi);
+ header->vci = cpu_to_le16(vcc->vci);
+ header->type = cpu_to_le16(PKT_POPEN);
 
-	fpga_queue(card, SOLOS_CHAN(vcc->dev), skb, NULL);
+ fpga_queue(card, SOLOS_CHAN(vcc->dev), skb, ((void*)0));
 
-	set_bit(ATM_VF_ADDR, &vcc->flags);
-	set_bit(ATM_VF_READY, &vcc->flags);
-	list_vccs(0);
+ set_bit(ATM_VF_ADDR, &vcc->flags);
+ set_bit(ATM_VF_READY, &vcc->flags);
+ list_vccs(0);
 
 
-	return 0;
+ return 0;
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-struct TYPE_3__ {unsigned int* prob; int scale; int /*<<< orphan*/  avctx; } ;
-typedef  TYPE_1__ lag_rac ;
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- scalar_t__ UINT_MAX ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int av_log2 (unsigned int) ; 
- scalar_t__ lag_decode_prob (int /*<<< orphan*/ *,unsigned int*) ; 
- int show_bits_long (int /*<<< orphan*/ *,int) ; 
- void* softfloat_mul (scalar_t__,scalar_t__) ; 
- scalar_t__ softfloat_reciprocal (unsigned int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
+struct TYPE_3__ {unsigned int* prob; int scale; int avctx; } ;
+typedef TYPE_1__ lag_rac ;
+typedef int GetBitContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ scalar_t__ UINT_MAX ;
+ int av_log (int ,int ,char*) ;
+ int av_log2 (unsigned int) ;
+ scalar_t__ lag_decode_prob (int *,unsigned int*) ;
+ int show_bits_long (int *,int) ;
+ void* softfloat_mul (scalar_t__,scalar_t__) ;
+ scalar_t__ softfloat_reciprocal (unsigned int) ;
 
 __attribute__((used)) static int lag_read_prob_header(lag_rac *rac, GetBitContext *gb)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static int lag_read_prob_header(lag_rac *rac, GetBitContex
 
     rac->prob[0] = 0;
     rac->prob[257] = UINT_MAX;
-    /* Read probabilities from bitstream */
+
     for (i = 1; i < 257; i++) {
         if (lag_decode_prob(gb, &rac->prob[i]) < 0) {
             av_log(rac->avctx, AV_LOG_ERROR, "Invalid probability encountered.\n");
@@ -71,7 +71,7 @@ __attribute__((used)) static int lag_read_prob_header(lag_rac *rac, GetBitContex
         return AVERROR_INVALIDDATA;
     }
 
-    /* Scale probabilities so cumulative probability is an even power of 2. */
+
     scale_factor = av_log2(cumul_prob);
 
     if (cumul_prob & (cumul_prob - 1)) {
@@ -107,23 +107,12 @@ __attribute__((used)) static int lag_read_prob_header(lag_rac *rac, GetBitContex
                 rac->prob[i]++;
                 scaled_cumul_prob--;
             }
-            /* Comment from reference source:
-             * if (b & 0x80 == 0) {     // order of operations is 'wrong'; it has been left this way
-             *                          // since the compression change is negligible and fixing it
-             *                          // breaks backwards compatibility
-             *      b =- (signed int)b;
-             *      b &= 0xFF;
-             * } else {
-             *      b++;
-             *      b &= 0x7f;
-             * }
-             */
         }
     }
 
     rac->scale = scale_factor;
 
-    /* Fill probability array with cumulative probability for each symbol. */
+
     for (i = 1; i < 257; i++)
         rac->prob[i] += rac->prob[i - 1];
 

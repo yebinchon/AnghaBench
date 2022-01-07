@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RelFileNode ;
-typedef  int /*<<< orphan*/  ForkNumber ;
-typedef  int /*<<< orphan*/  BlockNumber ;
 
-/* Variables and functions */
- int /*<<< orphan*/  forget_invalid_pages (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int RelFileNode ;
+typedef int ForkNumber ;
+typedef int BlockNumber ;
+
+
+ int forget_invalid_pages (int ,int ,int ) ;
 
 void
 XLogTruncateRelation(RelFileNode rnode, ForkNumber forkNum,
-					 BlockNumber nblocks)
+      BlockNumber nblocks)
 {
-	forget_invalid_pages(rnode, forkNum, nblocks);
+ forget_invalid_pages(rnode, forkNum, nblocks);
 }

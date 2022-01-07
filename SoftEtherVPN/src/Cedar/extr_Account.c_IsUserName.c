@@ -1,108 +1,108 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
-typedef  scalar_t__ UINT ;
 
-/* Variables and functions */
- char* ADMINISTRATOR_USERNAME ; 
- char* BRIDGE_USER_NAME ; 
- char* BRIDGE_USER_NAME_PRINT ; 
- int IsSafeChar (char) ; 
- int /*<<< orphan*/  L3_USERNAME ; 
- char* LINK_USER_NAME ; 
- char* LINK_USER_NAME_PRINT ; 
- int MAX_SIZE ; 
- char* SNAT_USER_NAME ; 
- char* SNAT_USER_NAME_PRINT ; 
- scalar_t__ StartWith (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ StrCmpi (char*,char*) ; 
- int /*<<< orphan*/  StrCpy (char*,int,char*) ; 
- scalar_t__ StrLen (char*) ; 
- int /*<<< orphan*/  Trim (char*) ; 
+
+
+
+typedef int tmp ;
+typedef scalar_t__ UINT ;
+
+
+ char* ADMINISTRATOR_USERNAME ;
+ char* BRIDGE_USER_NAME ;
+ char* BRIDGE_USER_NAME_PRINT ;
+ int IsSafeChar (char) ;
+ int L3_USERNAME ;
+ char* LINK_USER_NAME ;
+ char* LINK_USER_NAME_PRINT ;
+ int MAX_SIZE ;
+ char* SNAT_USER_NAME ;
+ char* SNAT_USER_NAME_PRINT ;
+ scalar_t__ StartWith (char*,int ) ;
+ scalar_t__ StrCmpi (char*,char*) ;
+ int StrCpy (char*,int,char*) ;
+ scalar_t__ StrLen (char*) ;
+ int Trim (char*) ;
 
 bool IsUserName(char *name)
 {
-	UINT i, len;
-	char tmp[MAX_SIZE];
-	// Validate arguments
-	if (name == NULL)
-	{
-		return false;
-	}
+ UINT i, len;
+ char tmp[MAX_SIZE];
 
-	StrCpy(tmp, sizeof(tmp), name);
-	name = tmp;
+ if (name == ((void*)0))
+ {
+  return 0;
+ }
 
-	Trim(name);
+ StrCpy(tmp, sizeof(tmp), name);
+ name = tmp;
 
-	len = StrLen(name);
-	if (len == 0)
-	{
-		return false;
-	}
+ Trim(name);
 
-	if (StrCmpi(name, "*") == 0)
-	{
-		return true;
-	}
+ len = StrLen(name);
+ if (len == 0)
+ {
+  return 0;
+ }
 
-	for (i = 0; i < len; i++)
-	{
-		if (IsSafeChar(name[i]) == false && name[i] != '@')
-		{
-			return false;
-		}
-	}
+ if (StrCmpi(name, "*") == 0)
+ {
+  return 1;
+ }
 
-	if (StrCmpi(name, LINK_USER_NAME) == 0)
-	{
-		return false;
-	}
+ for (i = 0; i < len; i++)
+ {
+  if (IsSafeChar(name[i]) == 0 && name[i] != '@')
+  {
+   return 0;
+  }
+ }
 
-	if (StartWith(name, L3_USERNAME))
-	{
-		return false;
-	}
+ if (StrCmpi(name, LINK_USER_NAME) == 0)
+ {
+  return 0;
+ }
 
-	if (StrCmpi(name, LINK_USER_NAME_PRINT) == 0)
-	{
-		return false;
-	}
+ if (StartWith(name, L3_USERNAME))
+ {
+  return 0;
+ }
 
-	if (StrCmpi(name, SNAT_USER_NAME) == 0)
-	{
-		return false;
-	}
+ if (StrCmpi(name, LINK_USER_NAME_PRINT) == 0)
+ {
+  return 0;
+ }
 
-	if (StrCmpi(name, SNAT_USER_NAME_PRINT) == 0)
-	{
-		return false;
-	}
+ if (StrCmpi(name, SNAT_USER_NAME) == 0)
+ {
+  return 0;
+ }
 
-	if (StrCmpi(name, BRIDGE_USER_NAME) == 0)
-	{
-		return false;
-	}
+ if (StrCmpi(name, SNAT_USER_NAME_PRINT) == 0)
+ {
+  return 0;
+ }
 
-	if (StrCmpi(name, BRIDGE_USER_NAME_PRINT) == 0)
-	{
-		return false;
-	}
+ if (StrCmpi(name, BRIDGE_USER_NAME) == 0)
+ {
+  return 0;
+ }
 
-	if (StrCmpi(name, ADMINISTRATOR_USERNAME) == 0)
-	{
-		return false;
-	}
+ if (StrCmpi(name, BRIDGE_USER_NAME_PRINT) == 0)
+ {
+  return 0;
+ }
 
-	return true;
+ if (StrCmpi(name, ADMINISTRATOR_USERNAME) == 0)
+ {
+  return 0;
+ }
+
+ return 1;
 }

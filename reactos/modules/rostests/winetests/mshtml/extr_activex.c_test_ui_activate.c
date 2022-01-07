@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IOleInPlaceSite ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLEAR_CALLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_IOleInPlaceSite ; 
- scalar_t__ IOleClientSite_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ IOleInPlaceSite_OnUIActivate (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IOleInPlaceSite_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Invoke_ENABLED ; 
- int /*<<< orphan*/  SET_EXPECT (int /*<<< orphan*/ ) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  client_site ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
+
+
+
+typedef int IOleInPlaceSite ;
+typedef scalar_t__ HRESULT ;
+
+
+ int CLEAR_CALLED (int ) ;
+ int IID_IOleInPlaceSite ;
+ scalar_t__ IOleClientSite_QueryInterface (int ,int *,void**) ;
+ scalar_t__ IOleInPlaceSite_OnUIActivate (int *) ;
+ int IOleInPlaceSite_Release (int *) ;
+ int Invoke_ENABLED ;
+ int SET_EXPECT (int ) ;
+ scalar_t__ S_OK ;
+ int client_site ;
+ int ok (int,char*,scalar_t__) ;
 
 __attribute__((used)) static void test_ui_activate(void)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static void test_ui_activate(void)
     SET_EXPECT(Invoke_ENABLED);
     hres = IOleInPlaceSite_OnUIActivate(ip_site);
     ok(hres == S_OK, "OnUIActivate failed: %08x\n", hres);
-    CLEAR_CALLED(Invoke_ENABLED); /* Not called on IE10 */
+    CLEAR_CALLED(Invoke_ENABLED);
 
     IOleInPlaceSite_Release(ip_site);
 }

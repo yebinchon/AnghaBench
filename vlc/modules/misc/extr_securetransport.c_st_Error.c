@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_tls_t ;
-struct TYPE_2__ {int /*<<< orphan*/  obj; } ;
-typedef  TYPE_1__ vlc_tls_st_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/  ECONNRESET ; 
-#define  errSSLClosedAbort 130 
-#define  errSSLClosedGraceful 129 
-#define  errSSLWouldBlock 128 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ ,char*,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int vlc_tls_t ;
+struct TYPE_2__ {int obj; } ;
+typedef TYPE_1__ vlc_tls_st_t ;
+
+
+ int EAGAIN ;
+ int ECONNRESET ;
+
+
+
+ int errno ;
+ int msg_Dbg (int ,char*,int) ;
+ int msg_Err (int ,char*,int) ;
 
 __attribute__((used)) static int st_Error (vlc_tls_t *obj, int val)
 {
@@ -31,12 +31,12 @@ __attribute__((used)) static int st_Error (vlc_tls_t *obj, int val)
 
     switch (val)
     {
-        case errSSLWouldBlock:
+        case 128:
             errno = EAGAIN;
             break;
 
-        case errSSLClosedGraceful:
-        case errSSLClosedAbort:
+        case 129:
+        case 130:
             msg_Dbg(sys->obj, "Connection closed with code %d", val);
             errno = ECONNRESET;
             break;

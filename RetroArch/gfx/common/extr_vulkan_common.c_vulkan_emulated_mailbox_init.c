@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vulkan_emulated_mailbox {int /*<<< orphan*/  thread; int /*<<< orphan*/  lock; int /*<<< orphan*/  cond; int /*<<< orphan*/  swapchain; int /*<<< orphan*/  device; } ;
-typedef  int /*<<< orphan*/  VkSwapchainKHR ;
-typedef  int /*<<< orphan*/  VkDevice ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (struct vulkan_emulated_mailbox*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  scond_new () ; 
- int /*<<< orphan*/  slock_new () ; 
- int /*<<< orphan*/  sthread_create (int /*<<< orphan*/ ,struct vulkan_emulated_mailbox*) ; 
- int /*<<< orphan*/  vulkan_emulated_mailbox_loop ; 
+
+
+
+struct vulkan_emulated_mailbox {int thread; int lock; int cond; int swapchain; int device; } ;
+typedef int VkSwapchainKHR ;
+typedef int VkDevice ;
+
+
+ int memset (struct vulkan_emulated_mailbox*,int ,int) ;
+ int scond_new () ;
+ int slock_new () ;
+ int sthread_create (int ,struct vulkan_emulated_mailbox*) ;
+ int vulkan_emulated_mailbox_loop ;
 
 bool vulkan_emulated_mailbox_init(struct vulkan_emulated_mailbox *mailbox,
    VkDevice device,
@@ -31,12 +31,12 @@ bool vulkan_emulated_mailbox_init(struct vulkan_emulated_mailbox *mailbox,
 
    mailbox->cond = scond_new();
    if (!mailbox->cond)
-      return false;
+      return 0;
    mailbox->lock = slock_new();
    if (!mailbox->lock)
-      return false;
+      return 0;
    mailbox->thread = sthread_create(vulkan_emulated_mailbox_loop, mailbox);
    if (!mailbox->thread)
-      return false;
-   return true;
+      return 0;
+   return 1;
 }

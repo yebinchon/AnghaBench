@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UNS16 ;
-struct TYPE_4__ {int /*<<< orphan*/ ** pSearch; scalar_t__ nLists; } ;
-typedef  int /*<<< orphan*/  STRINGINFO ;
-typedef  int /*<<< orphan*/  FICL_WORD ;
-typedef  int /*<<< orphan*/  FICL_HASH ;
-typedef  TYPE_1__ FICL_DICT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  ficlLockDictionary (int) ; 
- int /*<<< orphan*/  hashHashCode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * hashLookup (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UNS16 ;
+struct TYPE_4__ {int ** pSearch; scalar_t__ nLists; } ;
+typedef int STRINGINFO ;
+typedef int FICL_WORD ;
+typedef int FICL_HASH ;
+typedef TYPE_1__ FICL_DICT ;
+
+
+ int assert (TYPE_1__*) ;
+ int ficlLockDictionary (int) ;
+ int hashHashCode (int ) ;
+ int * hashLookup (int *,int ,int ) ;
 
 FICL_WORD *dictLookup(FICL_DICT *pDict, STRINGINFO si)
 {
-    FICL_WORD *pFW = NULL;
+    FICL_WORD *pFW = ((void*)0);
     FICL_HASH *pHash;
     int i;
-    UNS16 hashCode   = hashHashCode(si);
+    UNS16 hashCode = hashHashCode(si);
 
     assert(pDict);
 

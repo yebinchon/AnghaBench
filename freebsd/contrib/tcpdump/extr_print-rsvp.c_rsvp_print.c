@@ -1,49 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_short ;
-typedef  int /*<<< orphan*/  u_int ;
-typedef  int /*<<< orphan*/  u_char ;
-struct rsvp_common_header {int msg_type; int /*<<< orphan*/  checksum; int /*<<< orphan*/  ttl; int /*<<< orphan*/  version_flags; int /*<<< orphan*/  length; } ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int u_short ;
+typedef int u_int ;
+typedef int u_char ;
+struct rsvp_common_header {int msg_type; int checksum; int ttl; int version_flags; int length; } ;
 struct TYPE_6__ {int ndo_vflag; } ;
-typedef  TYPE_1__ netdissect_options ;
+typedef TYPE_1__ netdissect_options ;
 
-/* Variables and functions */
- int EXTRACT_16BITS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ND_PRINT (TYPE_1__*) ; 
- int /*<<< orphan*/  ND_TCHECK (struct rsvp_common_header const) ; 
- int /*<<< orphan*/  RSVP_EXTRACT_FLAGS (int /*<<< orphan*/ ) ; 
- scalar_t__ RSVP_EXTRACT_VERSION (int /*<<< orphan*/ ) ; 
-#define  RSVP_MSGTYPE_ACK 139 
-#define  RSVP_MSGTYPE_BUNDLE 138 
-#define  RSVP_MSGTYPE_HELLO 137 
-#define  RSVP_MSGTYPE_HELLO_OLD 136 
-#define  RSVP_MSGTYPE_PATH 135 
-#define  RSVP_MSGTYPE_PATHERR 134 
-#define  RSVP_MSGTYPE_PATHTEAR 133 
-#define  RSVP_MSGTYPE_RESV 132 
-#define  RSVP_MSGTYPE_RESVCONF 131 
-#define  RSVP_MSGTYPE_RESVERR 130 
-#define  RSVP_MSGTYPE_RESVTEAR 129 
-#define  RSVP_MSGTYPE_SREFRESH 128 
- scalar_t__ RSVP_VERSION ; 
- int /*<<< orphan*/  bittok2str (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_unknown_data (TYPE_1__*,int /*<<< orphan*/  const*,char*,int) ; 
- int /*<<< orphan*/  rsvp_header_flag_values ; 
- int /*<<< orphan*/  rsvp_msg_type_values ; 
- int rsvp_obj_print (TYPE_1__*,int /*<<< orphan*/  const*,int,int /*<<< orphan*/  const*,char*,int,struct rsvp_common_header const*) ; 
- int /*<<< orphan*/  tok2str (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  tstr ; 
+
+ int EXTRACT_16BITS (int ) ;
+ int ND_PRINT (TYPE_1__*) ;
+ int ND_TCHECK (struct rsvp_common_header const) ;
+ int RSVP_EXTRACT_FLAGS (int ) ;
+ scalar_t__ RSVP_EXTRACT_VERSION (int ) ;
+ scalar_t__ RSVP_VERSION ;
+ int bittok2str (int ,char*,int ) ;
+ int print_unknown_data (TYPE_1__*,int const*,char*,int) ;
+ int rsvp_header_flag_values ;
+ int rsvp_msg_type_values ;
+ int rsvp_obj_print (TYPE_1__*,int const*,int,int const*,char*,int,struct rsvp_common_header const*) ;
+ int tok2str (int ,char*,int) ;
+ int tstr ;
 
 void
 rsvp_print(netdissect_options *ndo,
@@ -58,16 +46,16 @@ rsvp_print(netdissect_options *ndo,
     rsvp_com_header = (const struct rsvp_common_header *)pptr;
     ND_TCHECK(*rsvp_com_header);
 
-    /*
-     * Sanity checking of the header.
-     */
+
+
+
     if (RSVP_EXTRACT_VERSION(rsvp_com_header->version_flags) != RSVP_VERSION) {
-	ND_PRINT((ndo, "ERROR: RSVP version %u packet not supported",
+ ND_PRINT((ndo, "ERROR: RSVP version %u packet not supported",
                RSVP_EXTRACT_VERSION(rsvp_com_header->version_flags)));
-	return;
+ return;
     }
 
-    /* in non-verbose mode just lets print the basic Message Type*/
+
     if (ndo->ndo_vflag < 1) {
         ND_PRINT((ndo, "RSVPv%u %s Message, length: %u",
                RSVP_EXTRACT_VERSION(rsvp_com_header->version_flags),
@@ -76,7 +64,7 @@ rsvp_print(netdissect_options *ndo,
         return;
     }
 
-    /* ok they seem to want to know everything - lets fully decode it */
+
 
     plen = tlen = EXTRACT_16BITS(rsvp_com_header->length);
 
@@ -100,12 +88,12 @@ rsvp_print(netdissect_options *ndo,
 
     switch(rsvp_com_header->msg_type) {
 
-    case RSVP_MSGTYPE_BUNDLE:
-        /*
-         * Process each submessage in the bundle message.
-         * Bundle messages may not contain bundle submessages, so we don't
-         * need to handle bundle submessages specially.
-         */
+    case 138:
+
+
+
+
+
         while(tlen > 0) {
             const u_char *subpptr=tptr, *subtptr;
             u_short subplen, subtlen;
@@ -115,9 +103,9 @@ rsvp_print(netdissect_options *ndo,
             rsvp_com_header = (const struct rsvp_common_header *)subpptr;
             ND_TCHECK(*rsvp_com_header);
 
-            /*
-             * Sanity checking of the header.
-             */
+
+
+
             if (RSVP_EXTRACT_VERSION(rsvp_com_header->version_flags) != RSVP_VERSION) {
                 ND_PRINT((ndo, "ERROR: RSVP version %u packet not supported",
                        RSVP_EXTRACT_VERSION(rsvp_com_header->version_flags)));
@@ -150,9 +138,9 @@ rsvp_print(netdissect_options *ndo,
             subtptr+=sizeof(const struct rsvp_common_header);
             subtlen-=sizeof(const struct rsvp_common_header);
 
-            /*
-             * Print all objects in the submessage.
-             */
+
+
+
             if (rsvp_obj_print(ndo, subpptr, subplen, subtptr, "\n\t    ", subtlen, rsvp_com_header) == -1)
                 return;
 
@@ -162,20 +150,20 @@ rsvp_print(netdissect_options *ndo,
 
         break;
 
-    case RSVP_MSGTYPE_PATH:
-    case RSVP_MSGTYPE_RESV:
-    case RSVP_MSGTYPE_PATHERR:
-    case RSVP_MSGTYPE_RESVERR:
-    case RSVP_MSGTYPE_PATHTEAR:
-    case RSVP_MSGTYPE_RESVTEAR:
-    case RSVP_MSGTYPE_RESVCONF:
-    case RSVP_MSGTYPE_HELLO_OLD:
-    case RSVP_MSGTYPE_HELLO:
-    case RSVP_MSGTYPE_ACK:
-    case RSVP_MSGTYPE_SREFRESH:
-        /*
-         * Print all objects in the message.
-         */
+    case 135:
+    case 132:
+    case 134:
+    case 130:
+    case 133:
+    case 129:
+    case 131:
+    case 136:
+    case 137:
+    case 139:
+    case 128:
+
+
+
         if (rsvp_obj_print(ndo, pptr, plen, tptr, "\n\t  ", tlen, rsvp_com_header) == -1)
             return;
         break;

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
-typedef  enum AVCodecID { ____Placeholder_AVCodecID } AVCodecID ;
-typedef  int /*<<< orphan*/  buf3 ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef enum AVCodecID { ____Placeholder_AVCodecID } AVCodecID ;
+typedef int buf3 ;
 struct TYPE_3__ {int* buf; int buf_size; } ;
-typedef  TYPE_1__ AVProbeData ;
+typedef TYPE_1__ AVProbeData ;
 
-/* Variables and functions */
- int AVPROBE_SCORE_EXTENSION ; 
- int AV_CODEC_ID_AC3 ; 
- int AV_CODEC_ID_EAC3 ; 
- int /*<<< orphan*/  AV_CRC_16_ANSI ; 
- int FFMAX (int,int) ; 
- int av_ac3_parse_header (int const*,int,int*,int*) ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- scalar_t__ av_crc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int const*,int) ; 
- int /*<<< orphan*/  av_crc_get_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcmp (int const*,char*,int) ; 
+
+ int AVPROBE_SCORE_EXTENSION ;
+ int AV_CODEC_ID_AC3 ;
+ int AV_CODEC_ID_EAC3 ;
+ int AV_CRC_16_ANSI ;
+ int FFMAX (int,int) ;
+ int av_ac3_parse_header (int const*,int,int*,int*) ;
+ int av_assert0 (int) ;
+ scalar_t__ av_crc (int ,int ,int const*,int) ;
+ int av_crc_get_table (int ) ;
+ int memcmp (int const*,char*,int) ;
 
 __attribute__((used)) static int ac3_eac3_probe(const AVProbeData *p, enum AVCodecID expected_codec_id)
 {
@@ -59,8 +59,8 @@ __attribute__((used)) static int ac3_eac3_probe(const AVProbeData *p, enum AVCod
             }
             if (buf[0] == 0x77 && buf[1] == 0x0B) {
                 for(i=0; i<8; i+=2) {
-                    buf3[i  ] = buf2[i+1];
-                    buf3[i+1] = buf2[i  ];
+                    buf3[i ] = buf2[i+1];
+                    buf3[i+1] = buf2[i ];
                 }
                 ret = av_ac3_parse_header(buf3, 8, &bitstream_id,
                                           &frame_size);
@@ -74,8 +74,8 @@ __attribute__((used)) static int ac3_eac3_probe(const AVProbeData *p, enum AVCod
             if (buf[0] == 0x77 && buf[1] == 0x0B) {
                 av_assert0(frame_size <= sizeof(buf3));
                 for(i = 8; i < frame_size; i += 2) {
-                    buf3[i  ] = buf2[i+1];
-                    buf3[i+1] = buf2[i  ];
+                    buf3[i ] = buf2[i+1];
+                    buf3[i+1] = buf2[i ];
                 }
                 if (av_crc(av_crc_get_table(AV_CRC_16_ANSI), 0, buf3 + 2, frame_size - 2))
                     break;
@@ -92,11 +92,11 @@ __attribute__((used)) static int ac3_eac3_probe(const AVProbeData *p, enum AVCod
             first_frames = frames;
     }
     if(codec_id != expected_codec_id) return 0;
-    // keep this in sync with mp3 probe, both need to avoid
-    // issues with MPEG-files!
-    if   (first_frames>=7) return AVPROBE_SCORE_EXTENSION + 1;
+
+
+    if (first_frames>=7) return AVPROBE_SCORE_EXTENSION + 1;
     else if(max_frames>200)return AVPROBE_SCORE_EXTENSION;
     else if(max_frames>=4) return AVPROBE_SCORE_EXTENSION/2;
     else if(max_frames>=1) return 1;
-    else                   return 0;
+    else return 0;
 }

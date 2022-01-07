@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_lldp ;
 
-/* Variables and functions */
- int /*<<< orphan*/  safe_close (int /*<<< orphan*/ ) ; 
- int sd_lldp_detach_event (int /*<<< orphan*/ *) ; 
- int sd_lldp_stop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sd_lldp_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * test_fd ; 
+
+
+
+typedef int sd_lldp ;
+
+
+ int safe_close (int ) ;
+ int sd_lldp_detach_event (int *) ;
+ int sd_lldp_stop (int *) ;
+ int sd_lldp_unref (int *) ;
+ int * test_fd ;
 
 __attribute__((used)) static int stop_lldp(sd_lldp *lldp) {
         int r;

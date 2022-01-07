@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_5__ {TYPE_1__* priv_data; } ;
-struct TYPE_4__ {int packet_index; int packet_len; int /*<<< orphan*/ * packet; } ;
-typedef  TYPE_1__ DVDSubParseContext ;
-typedef  TYPE_2__ AVCodecParserContext ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
+struct TYPE_4__ {int packet_index; int packet_len; int * packet; } ;
+typedef TYPE_1__ DVDSubParseContext ;
+typedef TYPE_2__ AVCodecParserContext ;
+typedef int AVCodecContext ;
 
-/* Variables and functions */
- unsigned int AV_INPUT_BUFFER_PADDING_SIZE ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int AV_RB16 (int /*<<< orphan*/  const*) ; 
- int AV_RB32 (int /*<<< orphan*/  const*) ; 
- unsigned int INT_MAX ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/ * av_malloc (unsigned int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
+
+ unsigned int AV_INPUT_BUFFER_PADDING_SIZE ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int AV_RB16 (int const*) ;
+ int AV_RB32 (int const*) ;
+ unsigned int INT_MAX ;
+ int av_freep (int **) ;
+ int av_log (int *,int ,char*,int) ;
+ int * av_malloc (unsigned int) ;
+ int memcpy (int *,int const*,int) ;
 
 __attribute__((used)) static int dvdsub_parse(AVCodecParserContext *s,
                         AVCodecContext *avctx,
@@ -38,7 +38,7 @@ __attribute__((used)) static int dvdsub_parse(AVCodecParserContext *s,
 {
     DVDSubParseContext *pc = s->priv_data;
 
-    *poutbuf      = buf;
+    *poutbuf = buf;
     *poutbuf_size = buf_size;
 
     if (pc->packet_index == 0) {
@@ -48,7 +48,7 @@ __attribute__((used)) static int dvdsub_parse(AVCodecParserContext *s,
             return buf_size;
         }
         pc->packet_len = AV_RB16(buf);
-        if (pc->packet_len == 0) /* HD-DVD subpicture packet */
+        if (pc->packet_len == 0)
             pc->packet_len = AV_RB32(buf+2);
         av_freep(&pc->packet);
         if ((unsigned)pc->packet_len > INT_MAX - AV_INPUT_BUFFER_PADDING_SIZE) {
@@ -68,11 +68,11 @@ __attribute__((used)) static int dvdsub_parse(AVCodecParserContext *s,
                 return buf_size;
             }
         } else {
-            /* erroneous size */
+
             pc->packet_index = 0;
         }
     }
-    *poutbuf = NULL;
+    *poutbuf = ((void*)0);
     *poutbuf_size = 0;
     return buf_size;
 }

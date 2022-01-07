@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_session_t ;
-typedef  int /*<<< orphan*/  svn_ra_reporter3_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_delta_editor_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_ra_do_update3 (int /*<<< orphan*/ *,int /*<<< orphan*/  const**,void**,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_revnum_t ;
+typedef int svn_ra_session_t ;
+typedef int svn_ra_reporter3_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef int svn_delta_editor_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int * svn_error_trace (int ) ;
+ int svn_ra_do_update3 (int *,int const**,void**,int ,char const*,int ,int ,int ,int const*,void*,int *,int *) ;
 
 svn_error_t *
 svn_ra_do_update2(svn_ra_session_t *session,
@@ -42,7 +42,7 @@ svn_ra_do_update2(svn_ra_session_t *session,
                               revision_to_update_to, update_target,
                               depth,
                               send_copyfrom_args,
-                              FALSE /* ignore_ancestry */,
+                              FALSE ,
                               update_editor, update_baton,
                               pool, pool));
 }

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ZSTD_DDict ;
-struct TYPE_7__ {size_t staticSize; int /*<<< orphan*/  format; } ;
-typedef  TYPE_1__ ZSTD_DCtx ;
-typedef  int U32 ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUGLOG (int,char*,...) ; 
- int /*<<< orphan*/  FORWARD_IF_ERROR (size_t const) ; 
- int MEM_readLE32 (void const*) ; 
- int /*<<< orphan*/  RETURN_ERROR_IF (size_t,int /*<<< orphan*/ ,char*) ; 
- void* ZSTD_DDict_dictContent (int /*<<< orphan*/  const*) ; 
- size_t ZSTD_DDict_dictSize (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ZSTD_MAGICNUMBER ; 
- int const ZSTD_MAGIC_SKIPPABLE_MASK ; 
- int const ZSTD_MAGIC_SKIPPABLE_START ; 
- int /*<<< orphan*/  ZSTD_checkContinuity (TYPE_1__*,void*) ; 
- size_t const ZSTD_decompressBegin_usingDDict (TYPE_1__*,int /*<<< orphan*/  const*) ; 
- size_t const ZSTD_decompressBegin_usingDict (TYPE_1__*,void const*,size_t) ; 
- size_t ZSTD_decompressFrame (TYPE_1__*,void*,size_t,void const**,size_t*) ; 
- size_t ZSTD_decompressLegacy (void*,size_t,void const*,size_t const,void const*,size_t) ; 
- scalar_t__ ZSTD_error_prefix_unknown ; 
- size_t ZSTD_findFrameCompressedSizeLegacy (void const*,size_t) ; 
- scalar_t__ ZSTD_getErrorCode (size_t const) ; 
- scalar_t__ ZSTD_isError (size_t const) ; 
- scalar_t__ ZSTD_isLegacy (void const*,size_t) ; 
- size_t ZSTD_startingInputLength (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memory_allocation ; 
- size_t readSkippableFrameSize (void const*,size_t) ; 
- int /*<<< orphan*/  srcSize_wrong ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int ZSTD_DDict ;
+struct TYPE_7__ {size_t staticSize; int format; } ;
+typedef TYPE_1__ ZSTD_DCtx ;
+typedef int U32 ;
+typedef int BYTE ;
+
+
+ int DEBUGLOG (int,char*,...) ;
+ int FORWARD_IF_ERROR (size_t const) ;
+ int MEM_readLE32 (void const*) ;
+ int RETURN_ERROR_IF (size_t,int ,char*) ;
+ void* ZSTD_DDict_dictContent (int const*) ;
+ size_t ZSTD_DDict_dictSize (int const*) ;
+ int ZSTD_MAGICNUMBER ;
+ int const ZSTD_MAGIC_SKIPPABLE_MASK ;
+ int const ZSTD_MAGIC_SKIPPABLE_START ;
+ int ZSTD_checkContinuity (TYPE_1__*,void*) ;
+ size_t const ZSTD_decompressBegin_usingDDict (TYPE_1__*,int const*) ;
+ size_t const ZSTD_decompressBegin_usingDict (TYPE_1__*,void const*,size_t) ;
+ size_t ZSTD_decompressFrame (TYPE_1__*,void*,size_t,void const**,size_t*) ;
+ size_t ZSTD_decompressLegacy (void*,size_t,void const*,size_t const,void const*,size_t) ;
+ scalar_t__ ZSTD_error_prefix_unknown ;
+ size_t ZSTD_findFrameCompressedSizeLegacy (void const*,size_t) ;
+ scalar_t__ ZSTD_getErrorCode (size_t const) ;
+ scalar_t__ ZSTD_isError (size_t const) ;
+ scalar_t__ ZSTD_isLegacy (void const*,size_t) ;
+ size_t ZSTD_startingInputLength (int ) ;
+ int assert (int) ;
+ int memory_allocation ;
+ size_t readSkippableFrameSize (void const*,size_t) ;
+ int srcSize_wrong ;
 
 __attribute__((used)) static size_t ZSTD_decompressMultiFrame(ZSTD_DCtx* dctx,
                                         void* dst, size_t dstCapacity,
@@ -53,7 +53,7 @@ __attribute__((used)) static size_t ZSTD_decompressMultiFrame(ZSTD_DCtx* dctx,
     int moreThan1Frame = 0;
 
     DEBUGLOG(5, "ZSTD_decompressMultiFrame");
-    assert(dict==NULL || ddict==NULL);  /* either dict or ddict set, not both */
+    assert(dict==((void*)0) || ddict==((void*)0));
 
     if (ddict) {
         dict = ZSTD_DDict_dictContent(ddict);
@@ -61,30 +61,7 @@ __attribute__((used)) static size_t ZSTD_decompressMultiFrame(ZSTD_DCtx* dctx,
     }
 
     while (srcSize >= ZSTD_startingInputLength(dctx->format)) {
-
-#if defined(ZSTD_LEGACY_SUPPORT) && (ZSTD_LEGACY_SUPPORT >= 1)
-        if (ZSTD_isLegacy(src, srcSize)) {
-            size_t decodedSize;
-            size_t const frameSize = ZSTD_findFrameCompressedSizeLegacy(src, srcSize);
-            if (ZSTD_isError(frameSize)) return frameSize;
-            RETURN_ERROR_IF(dctx->staticSize, memory_allocation,
-                "legacy support is not compatible with static dctx");
-
-            decodedSize = ZSTD_decompressLegacy(dst, dstCapacity, src, frameSize, dict, dictSize);
-            if (ZSTD_isError(decodedSize)) return decodedSize;
-
-            assert(decodedSize <=- dstCapacity);
-            dst = (BYTE*)dst + decodedSize;
-            dstCapacity -= decodedSize;
-
-            src = (const BYTE*)src + frameSize;
-            srcSize -= frameSize;
-
-            continue;
-        }
-#endif
-
-        {   U32 const magicNumber = MEM_readLE32(src);
+        { U32 const magicNumber = MEM_readLE32(src);
             DEBUGLOG(4, "reading magic number %08X (expecting %08X)",
                         (unsigned)magicNumber, ZSTD_MAGICNUMBER);
             if ((magicNumber & ZSTD_MAGIC_SKIPPABLE_MASK) == ZSTD_MAGIC_SKIPPABLE_START) {
@@ -95,19 +72,19 @@ __attribute__((used)) static size_t ZSTD_decompressMultiFrame(ZSTD_DCtx* dctx,
                 src = (const BYTE *)src + skippableSize;
                 srcSize -= skippableSize;
                 continue;
-        }   }
+        } }
 
         if (ddict) {
-            /* we were called from ZSTD_decompress_usingDDict */
+
             FORWARD_IF_ERROR(ZSTD_decompressBegin_usingDDict(dctx, ddict));
         } else {
-            /* this will initialize correctly with no dict if dict == NULL, so
-             * use this in all cases but ddict */
+
+
             FORWARD_IF_ERROR(ZSTD_decompressBegin_usingDict(dctx, dict, dictSize));
         }
         ZSTD_checkContinuity(dctx, dst);
 
-        {   const size_t res = ZSTD_decompressFrame(dctx, dst, dstCapacity,
+        { const size_t res = ZSTD_decompressFrame(dctx, dst, dstCapacity,
                                                     &src, &srcSize);
             RETURN_ERROR_IF(
                 (ZSTD_getErrorCode(res) == ZSTD_error_prefix_unknown)
@@ -128,7 +105,7 @@ __attribute__((used)) static size_t ZSTD_decompressMultiFrame(ZSTD_DCtx* dctx,
             dstCapacity -= res;
         }
         moreThan1Frame = 1;
-    }  /* while (srcSize >= ZSTD_frameHeaderSize_prefix) */
+    }
 
     RETURN_ERROR_IF(srcSize, srcSize_wrong, "input not entirely consumed");
 

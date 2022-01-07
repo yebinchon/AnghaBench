@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct dm_buffer {TYPE_1__* c; } ;
-struct TYPE_2__ {int /*<<< orphan*/  block_size; } ;
+struct TYPE_2__ {int block_size; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dm_bufio_mark_partial_buffer_dirty (struct dm_buffer*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int dm_bufio_mark_partial_buffer_dirty (struct dm_buffer*,int ,int ) ;
 
 void dm_bufio_mark_buffer_dirty(struct dm_buffer *b)
 {
-	dm_bufio_mark_partial_buffer_dirty(b, 0, b->c->block_size);
+ dm_bufio_mark_partial_buffer_dirty(b, 0, b->c->block_size);
 }

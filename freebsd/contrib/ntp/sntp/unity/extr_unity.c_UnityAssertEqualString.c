@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t _UU32 ;
-typedef  int /*<<< orphan*/  UNITY_LINE_TYPE ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef size_t _UU32 ;
+typedef int UNITY_LINE_TYPE ;
 struct TYPE_2__ {int CurrentTestFailed; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UNITY_FAIL_AND_BAIL ; 
- int /*<<< orphan*/  UNITY_SKIP_EXECUTION ; 
- TYPE_1__ Unity ; 
- int /*<<< orphan*/  UnityAddMsgIfSpecified (char const*) ; 
- int /*<<< orphan*/  UnityPrintExpectedAndActualStrings (char const*,char const*) ; 
- int /*<<< orphan*/  UnityTestResultsFailBegin (int /*<<< orphan*/  const) ; 
+
+ int UNITY_FAIL_AND_BAIL ;
+ int UNITY_SKIP_EXECUTION ;
+ TYPE_1__ Unity ;
+ int UnityAddMsgIfSpecified (char const*) ;
+ int UnityPrintExpectedAndActualStrings (char const*,char const*) ;
+ int UnityTestResultsFailBegin (int const) ;
 
 void UnityAssertEqualString(const char* expected,
                             const char* actual,
@@ -32,7 +32,7 @@ void UnityAssertEqualString(const char* expected,
 
     UNITY_SKIP_EXECUTION;
 
-    // if both pointers not null compare the strings
+
     if (expected && actual)
     {
         for (i = 0; expected[i] || actual[i]; i++)
@@ -45,7 +45,7 @@ void UnityAssertEqualString(const char* expected,
         }
     }
     else
-    { // handle case of one pointers being null (if both null, test should pass)
+    {
         if (expected != actual)
         {
             Unity.CurrentTestFailed = 1;

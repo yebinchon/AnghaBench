@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * curl_easy_init () ; 
- int /*<<< orphan*/  curl_easy_perform (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*) ; 
+
+
+
+typedef int CURL ;
+
+
+ int CURLOPT_URL ;
+ int curl_easy_cleanup (int *) ;
+ int * curl_easy_init () ;
+ int curl_easy_perform (int *) ;
+ int curl_easy_setopt (int *,int ,void*) ;
 
 __attribute__((used)) static void *pull_one_url(void *url)
 {
@@ -25,8 +25,8 @@ __attribute__((used)) static void *pull_one_url(void *url)
 
   curl = curl_easy_init();
   curl_easy_setopt(curl, CURLOPT_URL, url);
-  curl_easy_perform(curl); /* ignores error */
+  curl_easy_perform(curl);
   curl_easy_cleanup(curl);
 
-  return NULL;
+  return ((void*)0);
 }

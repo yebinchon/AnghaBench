@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  net; } ;
-typedef  TYPE_1__ Onion ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NET_PACKET_ONION_RECV_1 ; 
- int /*<<< orphan*/  NET_PACKET_ONION_RECV_2 ; 
- int /*<<< orphan*/  NET_PACKET_ONION_RECV_3 ; 
- int /*<<< orphan*/  NET_PACKET_ONION_SEND_1 ; 
- int /*<<< orphan*/  NET_PACKET_ONION_SEND_2 ; 
- int /*<<< orphan*/  NET_PACKET_ONION_SEND_INITIAL ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  networking_registerhandler (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int net; } ;
+typedef TYPE_1__ Onion ;
+
+
+ int NET_PACKET_ONION_RECV_1 ;
+ int NET_PACKET_ONION_RECV_2 ;
+ int NET_PACKET_ONION_RECV_3 ;
+ int NET_PACKET_ONION_SEND_1 ;
+ int NET_PACKET_ONION_SEND_2 ;
+ int NET_PACKET_ONION_SEND_INITIAL ;
+ int free (TYPE_1__*) ;
+ int networking_registerhandler (int ,int ,int *,int *) ;
 
 void kill_onion(Onion *onion)
 {
-    if (onion == NULL)
+    if (onion == ((void*)0))
         return;
 
-    networking_registerhandler(onion->net, NET_PACKET_ONION_SEND_INITIAL, NULL, NULL);
-    networking_registerhandler(onion->net, NET_PACKET_ONION_SEND_1, NULL, NULL);
-    networking_registerhandler(onion->net, NET_PACKET_ONION_SEND_2, NULL, NULL);
+    networking_registerhandler(onion->net, NET_PACKET_ONION_SEND_INITIAL, ((void*)0), ((void*)0));
+    networking_registerhandler(onion->net, NET_PACKET_ONION_SEND_1, ((void*)0), ((void*)0));
+    networking_registerhandler(onion->net, NET_PACKET_ONION_SEND_2, ((void*)0), ((void*)0));
 
-    networking_registerhandler(onion->net, NET_PACKET_ONION_RECV_3, NULL, NULL);
-    networking_registerhandler(onion->net, NET_PACKET_ONION_RECV_2, NULL, NULL);
-    networking_registerhandler(onion->net, NET_PACKET_ONION_RECV_1, NULL, NULL);
+    networking_registerhandler(onion->net, NET_PACKET_ONION_RECV_3, ((void*)0), ((void*)0));
+    networking_registerhandler(onion->net, NET_PACKET_ONION_RECV_2, ((void*)0), ((void*)0));
+    networking_registerhandler(onion->net, NET_PACKET_ONION_RECV_1, ((void*)0), ((void*)0));
 
     free(onion);
 }

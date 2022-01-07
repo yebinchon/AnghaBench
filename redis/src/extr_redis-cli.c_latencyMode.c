@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  redisReply ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int redisReply ;
 struct TYPE_2__ {int interval; scalar_t__ output; scalar_t__ latency_history; } ;
 
-/* Variables and functions */
- int LATENCY_HISTORY_DEFAULT_INTERVAL ; 
- int LATENCY_SAMPLE_RATE ; 
- scalar_t__ OUTPUT_STANDARD ; 
- TYPE_1__ config ; 
- int /*<<< orphan*/  context ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  freeReplyObject (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  latencyModePrint (long long,long long,double,long long) ; 
- long long mstime () ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/ * reconnectingRedisCommand (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  usleep (int) ; 
+
+ int LATENCY_HISTORY_DEFAULT_INTERVAL ;
+ int LATENCY_SAMPLE_RATE ;
+ scalar_t__ OUTPUT_STANDARD ;
+ TYPE_1__ config ;
+ int context ;
+ int exit (int) ;
+ int fprintf (int ,char*) ;
+ int freeReplyObject (int *) ;
+ int latencyModePrint (long long,long long,double,long long) ;
+ long long mstime () ;
+ int printf (char*,...) ;
+ int * reconnectingRedisCommand (int ,char*) ;
+ int stderr ;
+ int usleep (int) ;
 
 __attribute__((used)) static void latencyMode(void) {
     redisReply *reply;
@@ -39,19 +39,19 @@ __attribute__((used)) static void latencyMode(void) {
     double avg;
     long long history_start = mstime();
 
-    /* Set a default for the interval in case of --latency option
-     * with --raw, --csv or when it is redirected to non tty. */
+
+
     if (config.interval == 0) {
         config.interval = 1000;
     } else {
-        config.interval /= 1000; /* We need to convert to milliseconds. */
+        config.interval /= 1000;
     }
 
     if (!context) exit(1);
     while(1) {
         start = mstime();
         reply = reconnectingRedisCommand(context,"PING");
-        if (reply == NULL) {
+        if (reply == ((void*)0)) {
             fprintf(stderr,"\nI/O error\n");
             exit(1);
         }
@@ -69,7 +69,7 @@ __attribute__((used)) static void latencyMode(void) {
         }
 
         if (config.output == OUTPUT_STANDARD) {
-            printf("\x1b[0G\x1b[2K"); /* Clear the line. */
+            printf("\x1b[0G\x1b[2K");
             latencyModePrint(min,max,avg,count);
         } else {
             if (config.latency_history) {

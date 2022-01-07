@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  path; scalar_t__ offset; int /*<<< orphan*/  d; } ;
-typedef  TYPE_1__ vfs_spiffs_dir_t ;
-struct TYPE_6__ {int /*<<< orphan*/  fs; } ;
-typedef  TYPE_2__ esp_spiffs_t ;
-typedef  int /*<<< orphan*/  DIR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  SPIFFS_OBJ_NAME_LEN ; 
- int /*<<< orphan*/  SPIFFS_clearerr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SPIFFS_errno (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SPIFFS_opendir (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (char const*) ; 
- TYPE_1__* calloc (int,int) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  spiffs_res_to_errno (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlcpy (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int path; scalar_t__ offset; int d; } ;
+typedef TYPE_1__ vfs_spiffs_dir_t ;
+struct TYPE_6__ {int fs; } ;
+typedef TYPE_2__ esp_spiffs_t ;
+typedef int DIR ;
+
+
+ int ENOMEM ;
+ int SPIFFS_OBJ_NAME_LEN ;
+ int SPIFFS_clearerr (int ) ;
+ int SPIFFS_errno (int ) ;
+ int SPIFFS_opendir (int ,char const*,int *) ;
+ int assert (char const*) ;
+ TYPE_1__* calloc (int,int) ;
+ int errno ;
+ int free (TYPE_1__*) ;
+ int spiffs_res_to_errno (int ) ;
+ int strlcpy (int ,char const*,int ) ;
 
 __attribute__((used)) static DIR* vfs_spiffs_opendir(void* ctx, const char* name)
 {
@@ -38,13 +38,13 @@ __attribute__((used)) static DIR* vfs_spiffs_opendir(void* ctx, const char* name
     vfs_spiffs_dir_t * dir = calloc(1, sizeof(vfs_spiffs_dir_t));
     if (!dir) {
         errno = ENOMEM;
-        return NULL;
+        return ((void*)0);
     }
     if (!SPIFFS_opendir(efs->fs, name, &dir->d)) {
         free(dir);
         errno = spiffs_res_to_errno(SPIFFS_errno(efs->fs));
         SPIFFS_clearerr(efs->fs);
-        return NULL;
+        return ((void*)0);
     }
     dir->offset = 0;
     strlcpy(dir->path, name, SPIFFS_OBJ_NAME_LEN);

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t WORD ;
 
-/* Variables and functions */
- scalar_t__ memcmp (size_t*,size_t*,int) ; 
- size_t number_of_subtables_with_diffs ; 
- int /*<<< orphan*/  printf (char*) ; 
- size_t** subtables_with_diffs ; 
+
+
+
+typedef size_t WORD ;
+
+
+ scalar_t__ memcmp (size_t*,size_t*,int) ;
+ size_t number_of_subtables_with_diffs ;
+ int printf (char*) ;
+ size_t** subtables_with_diffs ;
 
 __attribute__((used)) static WORD find_subtable_with_diffs(WORD *table, WORD *subtable)
 {

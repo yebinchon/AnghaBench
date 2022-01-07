@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ OSSL_NELEM (unsigned int*) ; 
- int /*<<< orphan*/  constant_time_eq_8 ; 
- int /*<<< orphan*/  constant_time_ge_8 ; 
- int /*<<< orphan*/  constant_time_lt_8 ; 
- int /*<<< orphan*/  test_binary_op_8 (int /*<<< orphan*/ *,char*,unsigned int,unsigned int,int) ; 
- unsigned int* test_values_8 ; 
+ scalar_t__ OSSL_NELEM (unsigned int*) ;
+ int constant_time_eq_8 ;
+ int constant_time_ge_8 ;
+ int constant_time_lt_8 ;
+ int test_binary_op_8 (int *,char*,unsigned int,unsigned int,int) ;
+ unsigned int* test_values_8 ;
 
 __attribute__((used)) static int test_binops_8(int i)
 {

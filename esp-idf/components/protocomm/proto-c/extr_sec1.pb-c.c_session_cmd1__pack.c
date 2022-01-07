@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_4__ {int /*<<< orphan*/ * descriptor; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_4__ {int * descriptor; } ;
 struct TYPE_5__ {TYPE_1__ base; } ;
-typedef  TYPE_2__ SessionCmd1 ;
-typedef  int /*<<< orphan*/  ProtobufCMessage ;
+typedef TYPE_2__ SessionCmd1 ;
+typedef int ProtobufCMessage ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- size_t protobuf_c_message_pack (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  session_cmd1__descriptor ; 
+
+ int assert (int) ;
+ size_t protobuf_c_message_pack (int const*,int *) ;
+ int session_cmd1__descriptor ;
 
 size_t session_cmd1__pack
                      (const SessionCmd1 *message,
-                      uint8_t       *out)
+                      uint8_t *out)
 {
   assert(message->base.descriptor == &session_cmd1__descriptor);
   return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);

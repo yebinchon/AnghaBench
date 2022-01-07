@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  KC_SPC ; 
- int /*<<< orphan*/  LCTL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tap_code16 (int /*<<< orphan*/ ) ; 
+ int KC_SPC ;
+ int LCTL (int ) ;
+ int tap_code16 (int ) ;
 
 void tmux_prefix(void) {
   tap_code16(LCTL(KC_SPC));

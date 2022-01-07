@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  val ;
-typedef  int /*<<< orphan*/  tag ;
-typedef  int /*<<< orphan*/  attr ;
-typedef  int /*<<< orphan*/  HTMLSTREAMPARSER ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLOPT_FOLLOWLOCATION ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURLOPT_WRITEDATA ; 
- int /*<<< orphan*/  CURLOPT_WRITEFUNCTION ; 
- int EXIT_FAILURE ; 
- int EXIT_SUCCESS ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * curl_easy_init () ; 
- int /*<<< orphan*/  curl_easy_perform (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  html_parser_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * html_parser_init () ; 
- int /*<<< orphan*/  html_parser_set_attr_buffer (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  html_parser_set_attr_to_lower (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  html_parser_set_tag_buffer (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  html_parser_set_tag_to_lower (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  html_parser_set_val_buffer (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- long write_callback ; 
+
+
+
+typedef int val ;
+typedef int tag ;
+typedef int attr ;
+typedef int HTMLSTREAMPARSER ;
+typedef int CURL ;
+
+
+ int CURLOPT_FOLLOWLOCATION ;
+ int CURLOPT_URL ;
+ int CURLOPT_WRITEDATA ;
+ int CURLOPT_WRITEFUNCTION ;
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int curl_easy_cleanup (int *) ;
+ int * curl_easy_init () ;
+ int curl_easy_perform (int *) ;
+ int curl_easy_setopt (int *,int ,...) ;
+ int html_parser_cleanup (int *) ;
+ int * html_parser_init () ;
+ int html_parser_set_attr_buffer (int *,char*,int) ;
+ int html_parser_set_attr_to_lower (int *,int) ;
+ int html_parser_set_tag_buffer (int *,char*,int) ;
+ int html_parser_set_tag_to_lower (int *,int) ;
+ int html_parser_set_val_buffer (int *,char*,int) ;
+ int printf (char*,char*) ;
+ long write_callback ;
 
 int main(int argc, char *argv[])
 {

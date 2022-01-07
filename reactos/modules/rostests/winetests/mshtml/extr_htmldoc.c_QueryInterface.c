@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ClientSite ; 
- int /*<<< orphan*/  Dispatch ; 
- int /*<<< orphan*/  DocHostUIHandler ; 
- int /*<<< orphan*/  DocumentSite ; 
- int /*<<< orphan*/  E_NOINTERFACE ; 
- int /*<<< orphan*/  IID_IDispatch ; 
- int /*<<< orphan*/  IID_IDocHostShowUI ; 
- int /*<<< orphan*/  IID_IDocHostUIHandler ; 
- int /*<<< orphan*/  IID_IDocHostUIHandler2 ; 
- int /*<<< orphan*/  IID_IDocHostUIHandlerPriv ; 
- int /*<<< orphan*/  IID_IOleClientSite ; 
- int /*<<< orphan*/  IID_IOleCommandTarget ; 
- int /*<<< orphan*/  IID_IOleContainer ; 
- int /*<<< orphan*/  IID_IOleControlSite ; 
- int /*<<< orphan*/  IID_IOleDocumentSite ; 
- int /*<<< orphan*/  IID_IOleInPlaceSite ; 
- int /*<<< orphan*/  IID_IOleInPlaceSiteEx ; 
- int /*<<< orphan*/  IID_IOleInPlaceSiteWindowless ; 
- int /*<<< orphan*/  IID_IOleWindow ; 
- int /*<<< orphan*/  IID_IProxyManager ; 
- int /*<<< orphan*/  IID_IRenMailEditor ; 
- int /*<<< orphan*/  IID_IServiceProvider ; 
- int /*<<< orphan*/  IID_IThumbnailView ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  IID_unk1 ; 
- int /*<<< orphan*/  IID_unk4 ; 
- int /*<<< orphan*/  IID_unk5 ; 
- int /*<<< orphan*/  InPlaceSiteWindowless ; 
- scalar_t__ IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OleCommandTarget ; 
- int /*<<< orphan*/  OleContainer ; 
- int /*<<< orphan*/  OleControlSite ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  ServiceProvider ; 
- scalar_t__ ipsex ; 
- scalar_t__ ipsw ; 
- int /*<<< orphan*/  trace (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wine_dbgstr_guid (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int REFIID ;
+typedef int HRESULT ;
+
+
+ int ClientSite ;
+ int Dispatch ;
+ int DocHostUIHandler ;
+ int DocumentSite ;
+ int E_NOINTERFACE ;
+ int IID_IDispatch ;
+ int IID_IDocHostShowUI ;
+ int IID_IDocHostUIHandler ;
+ int IID_IDocHostUIHandler2 ;
+ int IID_IDocHostUIHandlerPriv ;
+ int IID_IOleClientSite ;
+ int IID_IOleCommandTarget ;
+ int IID_IOleContainer ;
+ int IID_IOleControlSite ;
+ int IID_IOleDocumentSite ;
+ int IID_IOleInPlaceSite ;
+ int IID_IOleInPlaceSiteEx ;
+ int IID_IOleInPlaceSiteWindowless ;
+ int IID_IOleWindow ;
+ int IID_IProxyManager ;
+ int IID_IRenMailEditor ;
+ int IID_IServiceProvider ;
+ int IID_IThumbnailView ;
+ int IID_IUnknown ;
+ int IID_unk1 ;
+ int IID_unk4 ;
+ int IID_unk5 ;
+ int InPlaceSiteWindowless ;
+ scalar_t__ IsEqualGUID (int *,int ) ;
+ int OleCommandTarget ;
+ int OleContainer ;
+ int OleControlSite ;
+ int S_OK ;
+ int ServiceProvider ;
+ scalar_t__ ipsex ;
+ scalar_t__ ipsw ;
+ int trace (char*,int ) ;
+ int wine_dbgstr_guid (int ) ;
 
 __attribute__((used)) static HRESULT QueryInterface(REFIID riid, void **ppv)
 {
-    *ppv = NULL;
+    *ppv = ((void*)0);
 
     if(IsEqualGUID(&IID_IUnknown, riid) || IsEqualGUID(&IID_IOleClientSite, riid))
         *ppv = &ClientSite;
@@ -74,27 +74,27 @@ __attribute__((used)) static HRESULT QueryInterface(REFIID riid, void **ppv)
     else if(IsEqualGUID(&IID_IServiceProvider, riid))
         *ppv = &ServiceProvider;
     else if(IsEqualGUID(&IID_IOleInPlaceSiteEx, riid))
-        *ppv = ipsex ? &InPlaceSiteWindowless : NULL;
+        *ppv = ipsex ? &InPlaceSiteWindowless : ((void*)0);
     else if(IsEqualGUID(&IID_IOleInPlaceSiteWindowless, riid))
-        *ppv = ipsw ? &InPlaceSiteWindowless : NULL;
+        *ppv = ipsw ? &InPlaceSiteWindowless : ((void*)0);
     else if(IsEqualGUID(&IID_IOleControlSite, riid))
         *ppv = &OleControlSite;
     else if(IsEqualGUID(&IID_IDocHostShowUI, riid))
-        return E_NOINTERFACE; /* TODO */
+        return E_NOINTERFACE;
     else if(IsEqualGUID(&IID_IProxyManager, riid))
-        return E_NOINTERFACE; /* ? */
+        return E_NOINTERFACE;
     else if(IsEqualGUID(&IID_unk1, riid))
-        return E_NOINTERFACE; /* HTMLWindow2 ? */
+        return E_NOINTERFACE;
     else if(IsEqualGUID(&IID_IThumbnailView, riid))
-        return E_NOINTERFACE; /* ? */
+        return E_NOINTERFACE;
     else if(IsEqualGUID(&IID_IRenMailEditor, riid))
-        return E_NOINTERFACE; /* ? */
+        return E_NOINTERFACE;
     else if(IsEqualGUID(&IID_unk4, riid))
-        return E_NOINTERFACE; /* ? */
+        return E_NOINTERFACE;
     else if(IsEqualGUID(&IID_unk5, riid))
-        return E_NOINTERFACE; /* IE10 */
+        return E_NOINTERFACE;
     else if(IsEqualGUID(&IID_IDocHostUIHandlerPriv, riid))
-        return E_NOINTERFACE; /* ? */
+        return E_NOINTERFACE;
     else
         trace("QI(%s)\n", wine_dbgstr_guid(riid));
 

@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FLAG_REVERSE_SEARCH ; 
- int find_range_idx (int) ; 
- int get_sorting_mode (int) ; 
+ int FLAG_REVERSE_SEARCH ;
+ int find_range_idx (int) ;
+ int get_sorting_mode (int) ;
 
 __attribute__((used)) static int get_range_idx_with_add (int ch) {
   int sm = get_sorting_mode (ch);
@@ -22,7 +14,7 @@ __attribute__((used)) static int get_range_idx_with_add (int ch) {
     return -1;
   }
   if (! (sm & FLAG_REVERSE_SEARCH)) {
-    //ch is not uppercase letter
+
     return -1;
   }
   sm &= ~FLAG_REVERSE_SEARCH;

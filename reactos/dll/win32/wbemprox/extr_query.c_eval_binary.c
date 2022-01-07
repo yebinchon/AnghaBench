@@ -1,43 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct table {int dummy; } ;
-struct complex_expr {int op; int /*<<< orphan*/  right; int /*<<< orphan*/  left; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  scalar_t__ LONGLONG ;
-typedef  scalar_t__ INT_PTR ;
-typedef  scalar_t__ HRESULT ;
+struct complex_expr {int op; int right; int left; } ;
+typedef int WCHAR ;
+typedef int UINT ;
+typedef scalar_t__ LONGLONG ;
+typedef scalar_t__ INT_PTR ;
+typedef scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int) ; 
-#define  OP_AND 135 
-#define  OP_EQ 134 
-#define  OP_GE 133 
-#define  OP_GT 132 
-#define  OP_LE 131 
-#define  OP_LT 130 
-#define  OP_NE 129 
-#define  OP_OR 128 
- scalar_t__ S_OK ; 
- scalar_t__ WBEM_E_INVALID_QUERY ; 
- scalar_t__ eval_boolcmp (int,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ eval_cond (struct table const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ *) ; 
- scalar_t__ eval_strcmp (int,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,scalar_t__*) ; 
- int /*<<< orphan*/ * format_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ is_boolcmp (struct complex_expr const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ is_int (int /*<<< orphan*/ ) ; 
- scalar_t__ is_strcmp (struct complex_expr const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  resolve_type (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ERR (char*,int) ;
+ scalar_t__ S_OK ;
+ scalar_t__ WBEM_E_INVALID_QUERY ;
+ scalar_t__ eval_boolcmp (int,scalar_t__,scalar_t__,int ,int ,scalar_t__*) ;
+ scalar_t__ eval_cond (struct table const*,int ,int ,scalar_t__*,int *) ;
+ scalar_t__ eval_strcmp (int,int const*,int const*,scalar_t__*) ;
+ int * format_int (int *,int ,scalar_t__) ;
+ scalar_t__ is_boolcmp (struct complex_expr const*,int ,int ) ;
+ scalar_t__ is_int (int ) ;
+ scalar_t__ is_strcmp (struct complex_expr const*,int ,int ) ;
+ int resolve_type (int ,int ) ;
 
 __attribute__((used)) static HRESULT eval_binary( const struct table *table, UINT row, const struct complex_expr *expr,
                             LONGLONG *val, UINT *type )
@@ -70,28 +62,28 @@ __attribute__((used)) static HRESULT eval_binary( const struct table *table, UIN
     }
     switch (expr->op)
     {
-    case OP_EQ:
+    case 134:
         *val = (lval == rval);
         break;
-    case OP_AND:
+    case 135:
         *val = (lval && rval);
         break;
-    case OP_OR:
+    case 128:
         *val = (lval || rval);
         break;
-    case OP_GT:
+    case 132:
         *val = (lval > rval);
         break;
-    case OP_LT:
+    case 130:
         *val = (lval < rval);
         break;
-    case OP_LE:
+    case 131:
         *val = (lval <= rval);
         break;
-    case OP_GE:
+    case 133:
         *val = (lval >= rval);
         break;
-    case OP_NE:
+    case 129:
         *val = (lval != rval);
         break;
     default:

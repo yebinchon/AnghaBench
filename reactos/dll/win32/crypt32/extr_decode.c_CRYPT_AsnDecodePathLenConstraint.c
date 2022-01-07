@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct PATH_LEN_CONSTRAINT {int /*<<< orphan*/  dwPathLenConstraint; void* fPathLenConstraint; } ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  void* BOOL ;
 
-/* Variables and functions */
- void* CRYPT_AsnDecodeIntInternal (int /*<<< orphan*/  const*,scalar_t__,scalar_t__,int /*<<< orphan*/ *,scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  ERROR_MORE_DATA ; 
- void* FALSE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,void*,...) ; 
- void* TRUE ; 
+
+
+
+struct PATH_LEN_CONSTRAINT {int dwPathLenConstraint; void* fPathLenConstraint; } ;
+typedef scalar_t__ DWORD ;
+typedef int BYTE ;
+typedef void* BOOL ;
+
+
+ void* CRYPT_AsnDecodeIntInternal (int const*,scalar_t__,scalar_t__,int *,scalar_t__*,scalar_t__*) ;
+ int ERROR_MORE_DATA ;
+ void* FALSE ;
+ int GetLastError () ;
+ int SetLastError (int ) ;
+ int TRACE (char*,void*,...) ;
+ void* TRUE ;
 
 __attribute__((used)) static BOOL CRYPT_AsnDecodePathLenConstraint(const BYTE *pbEncoded,
  DWORD cbEncoded, DWORD dwFlags, void *pvStructInfo, DWORD *pcbStructInfo,
@@ -36,7 +36,7 @@ __attribute__((used)) static BOOL CRYPT_AsnDecodePathLenConstraint(const BYTE *p
 
     if (!pvStructInfo)
     {
-        ret = CRYPT_AsnDecodeIntInternal(pbEncoded, cbEncoded, dwFlags, NULL,
+        ret = CRYPT_AsnDecodeIntInternal(pbEncoded, cbEncoded, dwFlags, ((void*)0),
          &size, pcbDecoded);
         *pcbStructInfo = bytesNeeded;
     }

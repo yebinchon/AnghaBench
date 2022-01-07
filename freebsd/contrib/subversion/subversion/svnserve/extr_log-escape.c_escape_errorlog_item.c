@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int apr_size_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  c2x (unsigned char const,char,unsigned char*) ; 
- scalar_t__ svn_ctype_iscntrl (unsigned char const) ; 
- int /*<<< orphan*/  svn_ctype_isprint (unsigned char const) ; 
+
+
+
+typedef int apr_size_t ;
+
+
+ int c2x (unsigned char const,char,unsigned char*) ;
+ scalar_t__ svn_ctype_iscntrl (unsigned char const) ;
+ int svn_ctype_isprint (unsigned char const) ;
 
 apr_size_t escape_errorlog_item(char *dest, const char *source,
                                 apr_size_t buflen)
@@ -23,7 +23,7 @@ apr_size_t escape_errorlog_item(char *dest, const char *source,
     unsigned char *d, *ep;
     const unsigned char *s;
 
-    if (!source || !buflen) { /* be safe */
+    if (!source || !buflen) {
         return 0;
     }
 
@@ -33,12 +33,12 @@ apr_size_t escape_errorlog_item(char *dest, const char *source,
 
     for (; d < ep && *s; ++s) {
 
-        /* httpd-2.2.4/server/util.c has this:
-             if (TEST_CHAR(*s, T_ESCAPE_LOGITEM)) {
-           which does this same check with a fast lookup table.  Well,
-           mostly the same; we don't escape quotes, as that does.
-        */
-        if (*s && (   !svn_ctype_isprint(*s)
+
+
+
+
+
+        if (*s && ( !svn_ctype_isprint(*s)
                    || *s == '\\'
                    || svn_ctype_iscntrl(*s))) {
             *d++ = '\\';
@@ -66,12 +66,12 @@ apr_size_t escape_errorlog_item(char *dest, const char *source,
             case '\\':
                 *d++ = *s;
                 break;
-            case '"': /* no need for this in error log */
+            case '"':
                 d[-1] = *s;
                 break;
             default:
                 if (d >= ep - 2) {
-                    ep = --d; /* break the for loop as well */
+                    ep = --d;
                     break;
                 }
                 c2x(*s, 'x', d);

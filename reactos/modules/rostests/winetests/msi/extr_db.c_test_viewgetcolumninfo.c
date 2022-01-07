@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int MSIHANDLE ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  MSICOLINFO_NAMES ; 
- int /*<<< orphan*/  MSICOLINFO_TYPES ; 
- int /*<<< orphan*/  MsiCloseHandle (int) ; 
- int check_record (int,int,char*) ; 
- int create_db () ; 
- int get_column_info (int,char*,int /*<<< orphan*/ ) ; 
- int get_columns_table_type (int,char*,int) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- scalar_t__ run_query (int,int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int MSIHANDLE ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int MSICOLINFO_NAMES ;
+ int MSICOLINFO_TYPES ;
+ int MsiCloseHandle (int) ;
+ int check_record (int,int,char*) ;
+ int create_db () ;
+ int get_column_info (int,char*,int ) ;
+ int get_columns_table_type (int,char*,int) ;
+ int ok (int,char*) ;
+ scalar_t__ run_query (int,int ,char*) ;
 
 __attribute__((used)) static void test_viewgetcolumninfo(void)
 {
@@ -47,7 +47,7 @@ __attribute__((used)) static void test_viewgetcolumninfo(void)
             "  PRIMARY KEY `Property`)" );
     ok( r == ERROR_SUCCESS , "Failed to create table\n" );
 
-    /* check the column types */
+
     rec = get_column_info( hdb, "select * from `Properties`", MSICOLINFO_TYPES );
     ok( rec, "failed to get column info record\n" );
 
@@ -63,7 +63,7 @@ __attribute__((used)) static void test_viewgetcolumninfo(void)
 
     MsiCloseHandle( rec );
 
-    /* check the type in _Columns */
+
     ok( 0x3dff == get_columns_table_type(hdb, "Properties", 1 ), "_columns table wrong\n");
     ok( 0x1d01 == get_columns_table_type(hdb, "Properties", 2 ), "_columns table wrong\n");
     ok( 0x1502 == get_columns_table_type(hdb, "Properties", 3 ), "_columns table wrong\n");
@@ -74,7 +74,7 @@ __attribute__((used)) static void test_viewgetcolumninfo(void)
     ok( 0x1d00 == get_columns_table_type(hdb, "Properties", 8 ), "_columns table wrong\n");
     ok( 0x1f00 == get_columns_table_type(hdb, "Properties", 9 ), "_columns table wrong\n");
 
-    /* now try the names */
+
     rec = get_column_info( hdb, "select * from `Properties`", MSICOLINFO_NAMES );
     ok( rec, "failed to get column info record\n" );
 
@@ -95,7 +95,7 @@ __attribute__((used)) static void test_viewgetcolumninfo(void)
             "( `Name` CHAR(255), `Data` OBJECT  PRIMARY KEY `Name`)" );
     ok( r == ERROR_SUCCESS , "Failed to create table\n" );
 
-    /* check the column types */
+
     rec = get_column_info( hdb, "select * from `Binary`", MSICOLINFO_TYPES );
     ok( rec, "failed to get column info record\n" );
 
@@ -104,11 +104,11 @@ __attribute__((used)) static void test_viewgetcolumninfo(void)
 
     MsiCloseHandle( rec );
 
-    /* check the type in _Columns */
+
     ok( 0x3dff == get_columns_table_type(hdb, "Binary", 1 ), "_columns table wrong\n");
     ok( 0x1900 == get_columns_table_type(hdb, "Binary", 2 ), "_columns table wrong\n");
 
-    /* now try the names */
+
     rec = get_column_info( hdb, "select * from `Binary`", MSICOLINFO_NAMES );
     ok( rec, "failed to get column info record\n" );
 

@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- size_t strlen (char*) ; 
- char* strrchr (char*,char) ; 
- int /*<<< orphan*/  xasprintf (char**,char*,int,char*,char*) ; 
+ size_t strlen (char*) ;
+ char* strrchr (char*,char) ;
+ int xasprintf (char**,char*,int,char*,char*) ;
 
 char *
 splice(char *dir, char *path)
 {
-	char *tail, *buf;
-	size_t dirlen;
+ char *tail, *buf;
+ size_t dirlen;
 
-	dirlen = strlen(dir);
-	while (dirlen != 0 && dir[dirlen - 1] == '/')
-	    dirlen--;
-	if ((tail = strrchr(path, '/')) == NULL)
-		tail = path;
-	else
-		tail++;
-	xasprintf(&buf, "%.*s/%s", (int)dirlen, dir, tail);
-	return (buf);
+ dirlen = strlen(dir);
+ while (dirlen != 0 && dir[dirlen - 1] == '/')
+     dirlen--;
+ if ((tail = strrchr(path, '/')) == ((void*)0))
+  tail = path;
+ else
+  tail++;
+ xasprintf(&buf, "%.*s/%s", (int)dirlen, dir, tail);
+ return (buf);
 }

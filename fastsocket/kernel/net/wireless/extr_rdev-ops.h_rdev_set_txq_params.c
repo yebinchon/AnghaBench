@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct net_device {int dummy; } ;
 struct ieee80211_txq_params {int dummy; } ;
-struct cfg80211_registered_device {int /*<<< orphan*/  wiphy; TYPE_1__* ops; } ;
-struct TYPE_2__ {int (* set_txq_params ) (int /*<<< orphan*/ *,struct net_device*,struct ieee80211_txq_params*) ;} ;
+struct cfg80211_registered_device {int wiphy; TYPE_1__* ops; } ;
+struct TYPE_2__ {int (* set_txq_params ) (int *,struct net_device*,struct ieee80211_txq_params*) ;} ;
 
-/* Variables and functions */
- int stub1 (int /*<<< orphan*/ *,struct net_device*,struct ieee80211_txq_params*) ; 
- int /*<<< orphan*/  trace_rdev_return_int (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  trace_rdev_set_txq_params (int /*<<< orphan*/ *,struct net_device*,struct ieee80211_txq_params*) ; 
+
+ int stub1 (int *,struct net_device*,struct ieee80211_txq_params*) ;
+ int trace_rdev_return_int (int *,int) ;
+ int trace_rdev_set_txq_params (int *,struct net_device*,struct ieee80211_txq_params*) ;
 
 __attribute__((used)) static inline int rdev_set_txq_params(struct cfg80211_registered_device *rdev,
-				      struct net_device *dev,
-				      struct ieee80211_txq_params *params)
+          struct net_device *dev,
+          struct ieee80211_txq_params *params)
 
 {
-	int ret;
-	trace_rdev_set_txq_params(&rdev->wiphy, dev, params);
-	ret = rdev->ops->set_txq_params(&rdev->wiphy, dev, params);
-	trace_rdev_return_int(&rdev->wiphy, ret);
-	return ret;
+ int ret;
+ trace_rdev_set_txq_params(&rdev->wiphy, dev, params);
+ ret = rdev->ops->set_txq_params(&rdev->wiphy, dev, params);
+ trace_rdev_return_int(&rdev->wiphy, ret);
+ return ret;
 }

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_1__* locinfo; } ;
-struct TYPE_3__ {int /*<<< orphan*/ * lc_handle; int /*<<< orphan*/  mb_cur_max; int /*<<< orphan*/  lc_collate_cp; int /*<<< orphan*/  lc_codepage; } ;
+struct TYPE_3__ {int * lc_handle; int mb_cur_max; int lc_collate_cp; int lc_codepage; } ;
 
-/* Variables and functions */
- unsigned int LC_MAX ; 
- unsigned int LC_MIN ; 
- int /*<<< orphan*/  LOCK_LOCALE ; 
- int /*<<< orphan*/  MSVCRT___lc_collate_cp ; 
- int /*<<< orphan*/ * MSVCRT___lc_handle ; 
- scalar_t__ MSVCRT__create_locale (int /*<<< orphan*/ ,char*) ; 
- TYPE_2__* MSVCRT_locale ; 
- int /*<<< orphan*/  UNLOCK_LOCALE ; 
- int /*<<< orphan*/  _MB_CP_ANSI ; 
- int /*<<< orphan*/  __lc_codepage ; 
- int /*<<< orphan*/  __mb_cur_max ; 
- int /*<<< orphan*/  _setmbcp (int /*<<< orphan*/ ) ; 
- scalar_t__ global_locale ; 
+
+ unsigned int LC_MAX ;
+ unsigned int LC_MIN ;
+ int LOCK_LOCALE ;
+ int MSVCRT___lc_collate_cp ;
+ int * MSVCRT___lc_handle ;
+ scalar_t__ MSVCRT__create_locale (int ,char*) ;
+ TYPE_2__* MSVCRT_locale ;
+ int UNLOCK_LOCALE ;
+ int _MB_CP_ANSI ;
+ int __lc_codepage ;
+ int __mb_cur_max ;
+ int _setmbcp (int ) ;
+ scalar_t__ global_locale ;
 
 void __init_global_locale()
 {
     unsigned i;
 
     LOCK_LOCALE;
-    /* Someone created it before us */
+
     if(global_locale)
         return;
     global_locale = MSVCRT__create_locale(0, "C");

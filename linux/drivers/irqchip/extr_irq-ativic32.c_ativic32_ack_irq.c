@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct irq_data {int /*<<< orphan*/  hwirq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NDS32_SR_INT_PEND2 ; 
- int /*<<< orphan*/  __nds32__mtsr_dsb (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct irq_data {int hwirq; } ;
+
+
+ int BIT (int ) ;
+ int NDS32_SR_INT_PEND2 ;
+ int __nds32__mtsr_dsb (int ,int ) ;
 
 __attribute__((used)) static void ativic32_ack_irq(struct irq_data *data)
 {
-	__nds32__mtsr_dsb(BIT(data->hwirq), NDS32_SR_INT_PEND2);
+ __nds32__mtsr_dsb(BIT(data->hwirq), NDS32_SR_INT_PEND2);
 }

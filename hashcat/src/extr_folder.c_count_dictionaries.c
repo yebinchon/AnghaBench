@@ -1,25 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 int count_dictionaries (char **dictionary_files)
 {
-  if (dictionary_files == NULL) return 0;
+  if (dictionary_files == ((void*)0)) return 0;
 
   int cnt = 0;
 
-  for (int d = 0; dictionary_files[d] != NULL; d++)
+  for (int d = 0; dictionary_files[d] != ((void*)0); d++)
   {
     cnt++;
   }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int tree ;
 struct TYPE_4__ {TYPE_2__* next; } ;
-struct TYPE_5__ {scalar_t__ kind; int /*<<< orphan*/  bad_p; int /*<<< orphan*/  user_conv_p; TYPE_1__ u; int /*<<< orphan*/  type; } ;
-typedef  TYPE_2__ conversion ;
+struct TYPE_5__ {scalar_t__ kind; int bad_p; int user_conv_p; TYPE_1__ u; int type; } ;
+typedef TYPE_2__ conversion ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NULL_TREE ; 
- int /*<<< orphan*/  TREE_TYPE (int /*<<< orphan*/ ) ; 
- scalar_t__ ck_ref_bind ; 
+
+ int NULL_TREE ;
+ int TREE_TYPE (int ) ;
+ scalar_t__ ck_ref_bind ;
 
 __attribute__((used)) static tree
 maybe_handle_ref_bind (conversion **ics)

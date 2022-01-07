@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EINVAL ; 
- int ENOMEM ; 
- int /*<<< orphan*/  assert (char const*) ; 
- int /*<<< orphan*/  cg_controller_is_valid (char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ isempty (char const*) ; 
- int /*<<< orphan*/  path_is_absolute (char*) ; 
- int /*<<< orphan*/  path_is_normalized (char const*) ; 
- char* path_simplify (char*,int) ; 
- char* strchr (char const*,char) ; 
- char* strdup (char const*) ; 
- char* strndup (char const*,int) ; 
+ int EINVAL ;
+ int ENOMEM ;
+ int assert (char const*) ;
+ int cg_controller_is_valid (char const*) ;
+ int free (char*) ;
+ scalar_t__ isempty (char const*) ;
+ int path_is_absolute (char*) ;
+ int path_is_normalized (char const*) ;
+ char* path_simplify (char*,int) ;
+ char* strchr (char const*,char) ;
+ char* strdup (char const*) ;
+ char* strndup (char const*,int) ;
 
 int cg_split_spec(const char *spec, char **controller, char **path) {
-        char *t = NULL, *u = NULL;
+        char *t = ((void*)0), *u = ((void*)0);
         const char *e;
 
         assert(spec);
@@ -40,11 +32,11 @@ int cg_split_spec(const char *spec, char **controller, char **path) {
                         if (!t)
                                 return -ENOMEM;
 
-                        *path = path_simplify(t, false);
+                        *path = path_simplify(t, 0);
                 }
 
                 if (controller)
-                        *controller = NULL;
+                        *controller = ((void*)0);
 
                 return 0;
         }
@@ -63,7 +55,7 @@ int cg_split_spec(const char *spec, char **controller, char **path) {
                 }
 
                 if (path)
-                        *path = NULL;
+                        *path = ((void*)0);
 
                 return 0;
         }
@@ -77,7 +69,7 @@ int cg_split_spec(const char *spec, char **controller, char **path) {
         }
 
         if (isempty(e+1))
-                u = NULL;
+                u = ((void*)0);
         else {
                 u = strdup(e+1);
                 if (!u) {
@@ -92,7 +84,7 @@ int cg_split_spec(const char *spec, char **controller, char **path) {
                         return -EINVAL;
                 }
 
-                path_simplify(u, false);
+                path_simplify(u, 0);
         }
 
         if (controller)

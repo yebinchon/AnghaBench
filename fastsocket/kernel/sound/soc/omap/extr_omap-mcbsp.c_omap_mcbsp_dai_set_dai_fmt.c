@@ -1,148 +1,148 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct snd_soc_dai {int /*<<< orphan*/  private_data; } ;
-struct omap_mcbsp_reg_cfg {int spcr2; int xccr; int rccr; int pcr0; int /*<<< orphan*/  srgr2; int /*<<< orphan*/  xcr2; int /*<<< orphan*/  rcr2; int /*<<< orphan*/  spcr1; } ;
+
+
+
+
+struct snd_soc_dai {int private_data; } ;
+struct omap_mcbsp_reg_cfg {int spcr2; int xccr; int rccr; int pcr0; int srgr2; int xcr2; int rcr2; int spcr1; } ;
 struct omap_mcbsp_data {unsigned int fmt; scalar_t__ configured; struct omap_mcbsp_reg_cfg regs; } ;
 
-/* Variables and functions */
- int CLKRM ; 
- int CLKRP ; 
- int CLKXM ; 
- int CLKXP ; 
- int DXENDLY (int) ; 
- int EINVAL ; 
- int FREE ; 
- int /*<<< orphan*/  FSGM ; 
- int FSRM ; 
- int FSRP ; 
- int FSXM ; 
- int FSXP ; 
- int /*<<< orphan*/  RDATDLY (int) ; 
- int RDISABLE ; 
- int RDMAEN ; 
- int /*<<< orphan*/  RFIG ; 
- int RFULL_CYCLE ; 
- int /*<<< orphan*/  RINTM (int) ; 
-#define  SND_SOC_DAIFMT_CBM_CFM 136 
-#define  SND_SOC_DAIFMT_CBS_CFS 135 
-#define  SND_SOC_DAIFMT_DSP_A 134 
-#define  SND_SOC_DAIFMT_DSP_B 133 
- unsigned int SND_SOC_DAIFMT_FORMAT_MASK ; 
-#define  SND_SOC_DAIFMT_I2S 132 
-#define  SND_SOC_DAIFMT_IB_IF 131 
-#define  SND_SOC_DAIFMT_IB_NF 130 
- unsigned int SND_SOC_DAIFMT_INV_MASK ; 
- unsigned int SND_SOC_DAIFMT_MASTER_MASK ; 
-#define  SND_SOC_DAIFMT_NB_IF 129 
-#define  SND_SOC_DAIFMT_NB_NF 128 
- int /*<<< orphan*/  XDATDLY (int) ; 
- int XDISABLE ; 
- int XDMAEN ; 
- int /*<<< orphan*/  XFIG ; 
- int XINTM (int) ; 
- scalar_t__ cpu_is_omap2430 () ; 
- scalar_t__ cpu_is_omap34xx () ; 
- int /*<<< orphan*/  memset (struct omap_mcbsp_reg_cfg*,int /*<<< orphan*/ ,int) ; 
- struct omap_mcbsp_data* to_mcbsp (int /*<<< orphan*/ ) ; 
+
+ int CLKRM ;
+ int CLKRP ;
+ int CLKXM ;
+ int CLKXP ;
+ int DXENDLY (int) ;
+ int EINVAL ;
+ int FREE ;
+ int FSGM ;
+ int FSRM ;
+ int FSRP ;
+ int FSXM ;
+ int FSXP ;
+ int RDATDLY (int) ;
+ int RDISABLE ;
+ int RDMAEN ;
+ int RFIG ;
+ int RFULL_CYCLE ;
+ int RINTM (int) ;
+
+
+
+
+ unsigned int SND_SOC_DAIFMT_FORMAT_MASK ;
+
+
+
+ unsigned int SND_SOC_DAIFMT_INV_MASK ;
+ unsigned int SND_SOC_DAIFMT_MASTER_MASK ;
+
+
+ int XDATDLY (int) ;
+ int XDISABLE ;
+ int XDMAEN ;
+ int XFIG ;
+ int XINTM (int) ;
+ scalar_t__ cpu_is_omap2430 () ;
+ scalar_t__ cpu_is_omap34xx () ;
+ int memset (struct omap_mcbsp_reg_cfg*,int ,int) ;
+ struct omap_mcbsp_data* to_mcbsp (int ) ;
 
 __attribute__((used)) static int omap_mcbsp_dai_set_dai_fmt(struct snd_soc_dai *cpu_dai,
-				      unsigned int fmt)
+          unsigned int fmt)
 {
-	struct omap_mcbsp_data *mcbsp_data = to_mcbsp(cpu_dai->private_data);
-	struct omap_mcbsp_reg_cfg *regs = &mcbsp_data->regs;
-	unsigned int temp_fmt = fmt;
+ struct omap_mcbsp_data *mcbsp_data = to_mcbsp(cpu_dai->private_data);
+ struct omap_mcbsp_reg_cfg *regs = &mcbsp_data->regs;
+ unsigned int temp_fmt = fmt;
 
-	if (mcbsp_data->configured)
-		return 0;
+ if (mcbsp_data->configured)
+  return 0;
 
-	mcbsp_data->fmt = fmt;
-	memset(regs, 0, sizeof(*regs));
-	/* Generic McBSP register settings */
-	regs->spcr2	|= XINTM(3) | FREE;
-	regs->spcr1	|= RINTM(3);
-	/* RFIG and XFIG are not defined in 34xx */
-	if (!cpu_is_omap34xx()) {
-		regs->rcr2	|= RFIG;
-		regs->xcr2	|= XFIG;
-	}
-	if (cpu_is_omap2430() || cpu_is_omap34xx()) {
-		regs->xccr = DXENDLY(1) | XDMAEN | XDISABLE;
-		regs->rccr = RFULL_CYCLE | RDMAEN | RDISABLE;
-	}
+ mcbsp_data->fmt = fmt;
+ memset(regs, 0, sizeof(*regs));
 
-	switch (fmt & SND_SOC_DAIFMT_FORMAT_MASK) {
-	case SND_SOC_DAIFMT_I2S:
-		/* 1-bit data delay */
-		regs->rcr2	|= RDATDLY(1);
-		regs->xcr2	|= XDATDLY(1);
-		break;
-	case SND_SOC_DAIFMT_DSP_A:
-		/* 1-bit data delay */
-		regs->rcr2      |= RDATDLY(1);
-		regs->xcr2      |= XDATDLY(1);
-		/* Invert FS polarity configuration */
-		temp_fmt ^= SND_SOC_DAIFMT_NB_IF;
-		break;
-	case SND_SOC_DAIFMT_DSP_B:
-		/* 0-bit data delay */
-		regs->rcr2      |= RDATDLY(0);
-		regs->xcr2      |= XDATDLY(0);
-		/* Invert FS polarity configuration */
-		temp_fmt ^= SND_SOC_DAIFMT_NB_IF;
-		break;
-	default:
-		/* Unsupported data format */
-		return -EINVAL;
-	}
+ regs->spcr2 |= XINTM(3) | FREE;
+ regs->spcr1 |= RINTM(3);
 
-	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
-	case SND_SOC_DAIFMT_CBS_CFS:
-		/* McBSP master. Set FS and bit clocks as outputs */
-		regs->pcr0	|= FSXM | FSRM |
-				   CLKXM | CLKRM;
-		/* Sample rate generator drives the FS */
-		regs->srgr2	|= FSGM;
-		break;
-	case SND_SOC_DAIFMT_CBM_CFM:
-		/* McBSP slave */
-		break;
-	default:
-		/* Unsupported master/slave configuration */
-		return -EINVAL;
-	}
+ if (!cpu_is_omap34xx()) {
+  regs->rcr2 |= RFIG;
+  regs->xcr2 |= XFIG;
+ }
+ if (cpu_is_omap2430() || cpu_is_omap34xx()) {
+  regs->xccr = DXENDLY(1) | XDMAEN | XDISABLE;
+  regs->rccr = RFULL_CYCLE | RDMAEN | RDISABLE;
+ }
 
-	/* Set bit clock (CLKX/CLKR) and FS polarities */
-	switch (temp_fmt & SND_SOC_DAIFMT_INV_MASK) {
-	case SND_SOC_DAIFMT_NB_NF:
-		/*
-		 * Normal BCLK + FS.
-		 * FS active low. TX data driven on falling edge of bit clock
-		 * and RX data sampled on rising edge of bit clock.
-		 */
-		regs->pcr0	|= FSXP | FSRP |
-				   CLKXP | CLKRP;
-		break;
-	case SND_SOC_DAIFMT_NB_IF:
-		regs->pcr0	|= CLKXP | CLKRP;
-		break;
-	case SND_SOC_DAIFMT_IB_NF:
-		regs->pcr0	|= FSXP | FSRP;
-		break;
-	case SND_SOC_DAIFMT_IB_IF:
-		break;
-	default:
-		return -EINVAL;
-	}
+ switch (fmt & SND_SOC_DAIFMT_FORMAT_MASK) {
+ case 132:
 
-	return 0;
+  regs->rcr2 |= RDATDLY(1);
+  regs->xcr2 |= XDATDLY(1);
+  break;
+ case 134:
+
+  regs->rcr2 |= RDATDLY(1);
+  regs->xcr2 |= XDATDLY(1);
+
+  temp_fmt ^= 129;
+  break;
+ case 133:
+
+  regs->rcr2 |= RDATDLY(0);
+  regs->xcr2 |= XDATDLY(0);
+
+  temp_fmt ^= 129;
+  break;
+ default:
+
+  return -EINVAL;
+ }
+
+ switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
+ case 135:
+
+  regs->pcr0 |= FSXM | FSRM |
+       CLKXM | CLKRM;
+
+  regs->srgr2 |= FSGM;
+  break;
+ case 136:
+
+  break;
+ default:
+
+  return -EINVAL;
+ }
+
+
+ switch (temp_fmt & SND_SOC_DAIFMT_INV_MASK) {
+ case 128:
+
+
+
+
+
+  regs->pcr0 |= FSXP | FSRP |
+       CLKXP | CLKRP;
+  break;
+ case 129:
+  regs->pcr0 |= CLKXP | CLKRP;
+  break;
+ case 130:
+  regs->pcr0 |= FSXP | FSRP;
+  break;
+ case 131:
+  break;
+ default:
+  return -EINVAL;
+ }
+
+ return 0;
 }

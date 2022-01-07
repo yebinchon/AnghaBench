@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int /*<<< orphan*/  dispex_prop_t ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  char* DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  delete_prop (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  find_prop_name (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  string_hash (char*) ; 
- int /*<<< orphan*/  swprintf (char*,char const*,char*) ; 
+
+
+
+typedef int jsdisp_t ;
+typedef int dispex_prop_t ;
+typedef char WCHAR ;
+typedef int HRESULT ;
+typedef char* DWORD ;
+typedef int BOOL ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int delete_prop (int *,int *) ;
+ int find_prop_name (int *,int ,char*,int **) ;
+ int string_hash (char*) ;
+ int swprintf (char*,char const*,char*) ;
 
 HRESULT jsdisp_delete_idx(jsdisp_t *obj, DWORD idx)
 {

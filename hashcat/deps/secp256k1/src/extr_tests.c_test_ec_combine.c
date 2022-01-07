@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  secp256k1_scalar ;
-typedef  int /*<<< orphan*/  secp256k1_pubkey ;
-typedef  int /*<<< orphan*/  secp256k1_gej ;
-typedef  int /*<<< orphan*/  secp256k1_ge ;
-typedef  int /*<<< orphan*/  sd ;
-struct TYPE_3__ {int /*<<< orphan*/  ecmult_gen_ctx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK (int) ; 
- int /*<<< orphan*/  SECP256K1_SCALAR_CONST (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* ctx ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  random_scalar_order_test (int /*<<< orphan*/ *) ; 
- int secp256k1_ec_pubkey_combine (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int) ; 
- int /*<<< orphan*/  secp256k1_ecmult_gen (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_ge_set_gej (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_pubkey_save (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_scalar_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int secp256k1_scalar ;
+typedef int secp256k1_pubkey ;
+typedef int secp256k1_gej ;
+typedef int secp256k1_ge ;
+typedef int sd ;
+struct TYPE_3__ {int ecmult_gen_ctx; } ;
+
+
+ int CHECK (int) ;
+ int SECP256K1_SCALAR_CONST (int ,int ,int ,int ,int ,int ,int ,int ) ;
+ TYPE_1__* ctx ;
+ scalar_t__ memcmp (int *,int *,int) ;
+ int random_scalar_order_test (int *) ;
+ int secp256k1_ec_pubkey_combine (TYPE_1__*,int *,int const**,int) ;
+ int secp256k1_ecmult_gen (int *,int *,int *) ;
+ int secp256k1_ge_set_gej (int *,int *) ;
+ int secp256k1_pubkey_save (int *,int *) ;
+ int secp256k1_scalar_add (int *,int *,int *) ;
 
 void test_ec_combine(void) {
     secp256k1_scalar sum = SECP256K1_SCALAR_CONST(0, 0, 0, 0, 0, 0, 0, 0);

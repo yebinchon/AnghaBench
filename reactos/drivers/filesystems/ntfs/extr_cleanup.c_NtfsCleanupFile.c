@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  Flags; scalar_t__ FsContext; } ;
-struct TYPE_7__ {int /*<<< orphan*/  FileSize; } ;
-struct TYPE_8__ {int Flags; scalar_t__ OpenHandleCount; int /*<<< orphan*/  MainResource; TYPE_1__ RFCB; } ;
-typedef  TYPE_2__* PNTFS_FCB ;
-typedef  TYPE_3__* PFILE_OBJECT ;
-typedef  int /*<<< orphan*/  PDEVICE_EXTENSION ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CcUninitializeCacheMap (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DPRINT (char*,int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExAcquireResourceExclusiveLite (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExReleaseResourceLite (int /*<<< orphan*/ *) ; 
- int FCB_IS_VOLUME ; 
- int /*<<< orphan*/  FO_CLEANUP_COMPLETE ; 
- int /*<<< orphan*/  STATUS_PENDING ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int Flags; scalar_t__ FsContext; } ;
+struct TYPE_7__ {int FileSize; } ;
+struct TYPE_8__ {int Flags; scalar_t__ OpenHandleCount; int MainResource; TYPE_1__ RFCB; } ;
+typedef TYPE_2__* PNTFS_FCB ;
+typedef TYPE_3__* PFILE_OBJECT ;
+typedef int PDEVICE_EXTENSION ;
+typedef int NTSTATUS ;
+typedef int BOOLEAN ;
+
+
+ int CcUninitializeCacheMap (TYPE_3__*,int *,int *) ;
+ int DPRINT (char*,int ,TYPE_3__*,int ) ;
+ int ExAcquireResourceExclusiveLite (int *,int ) ;
+ int ExReleaseResourceLite (int *) ;
+ int FCB_IS_VOLUME ;
+ int FO_CLEANUP_COMPLETE ;
+ int STATUS_PENDING ;
+ int STATUS_SUCCESS ;
 
 NTSTATUS
 NtfsCleanupFile(PDEVICE_EXTENSION DeviceExt,
@@ -54,7 +54,7 @@ NtfsCleanupFile(PDEVICE_EXTENSION DeviceExt,
 
         if (Fcb->OpenHandleCount != 0)
         {
-            // Remove share access when handled
+
         }
     }
     else
@@ -66,11 +66,11 @@ NtfsCleanupFile(PDEVICE_EXTENSION DeviceExt,
 
         Fcb->OpenHandleCount--;
 
-        CcUninitializeCacheMap(FileObject, &Fcb->RFCB.FileSize, NULL);
+        CcUninitializeCacheMap(FileObject, &Fcb->RFCB.FileSize, ((void*)0));
 
         if (Fcb->OpenHandleCount != 0)
         {
-            // Remove share access when handled
+
         }
 
         FileObject->Flags |= FO_CLEANUP_COMPLETE;

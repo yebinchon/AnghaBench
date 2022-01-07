@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pktcdvd_device {int /*<<< orphan*/ * dfs_d_root; int /*<<< orphan*/ * dfs_f_info; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  debugfs_remove (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pkt_debugfs_root ; 
+
+
+
+struct pktcdvd_device {int * dfs_d_root; int * dfs_f_info; } ;
+
+
+ int debugfs_remove (int *) ;
+ int pkt_debugfs_root ;
 
 __attribute__((used)) static void pkt_debugfs_dev_remove(struct pktcdvd_device *pd)
 {
-	if (!pkt_debugfs_root)
-		return;
-	debugfs_remove(pd->dfs_f_info);
-	debugfs_remove(pd->dfs_d_root);
-	pd->dfs_f_info = NULL;
-	pd->dfs_d_root = NULL;
+ if (!pkt_debugfs_root)
+  return;
+ debugfs_remove(pd->dfs_f_info);
+ debugfs_remove(pd->dfs_d_root);
+ pd->dfs_f_info = ((void*)0);
+ pd->dfs_d_root = ((void*)0);
 }

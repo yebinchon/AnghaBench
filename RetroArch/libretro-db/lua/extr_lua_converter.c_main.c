@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  RFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_COMMON ; 
- int /*<<< orphan*/  RETRO_VFS_FILE_ACCESS_HINT_NONE ; 
- int /*<<< orphan*/  RETRO_VFS_FILE_ACCESS_WRITE ; 
- int /*<<< orphan*/  call_init (int /*<<< orphan*/ *,int,char const**) ; 
- int errno ; 
- int /*<<< orphan*/  filestream_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * filestream_open (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int libretrodb_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ luaL_dofile (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  luaL_dostring (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * luaL_newstate () ; 
- int /*<<< orphan*/  luaL_openlibs (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,char const*,...) ; 
- char* strerror (int) ; 
- int /*<<< orphan*/  value_provider ; 
+
+
+
+typedef int lua_State ;
+typedef int RFILE ;
+
+
+ int LUA_COMMON ;
+ int RETRO_VFS_FILE_ACCESS_HINT_NONE ;
+ int RETRO_VFS_FILE_ACCESS_WRITE ;
+ int call_init (int *,int,char const**) ;
+ int errno ;
+ int filestream_close (int *) ;
+ int * filestream_open (char const*,int ,int ) ;
+ int libretrodb_create (int *,int *,int *) ;
+ scalar_t__ luaL_dofile (int *,char const*) ;
+ int luaL_dostring (int *,int ) ;
+ int * luaL_newstate () ;
+ int luaL_openlibs (int *) ;
+ int lua_close (int *) ;
+ int printf (char*,char const*,...) ;
+ char* strerror (int) ;
+ int value_provider ;
 
 int main(int argc, char ** argv)
 {
@@ -45,9 +45,9 @@ int main(int argc, char ** argv)
       return 1;
    }
 
-   db_file  = argv[1];
+   db_file = argv[1];
    lua_file = argv[2];
-   L        = luaL_newstate();
+   L = luaL_newstate();
 
    luaL_openlibs(L);
    luaL_dostring(L, LUA_COMMON);

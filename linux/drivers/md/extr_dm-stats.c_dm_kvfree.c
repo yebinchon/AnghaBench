@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  free_shared_memory (size_t) ; 
- int /*<<< orphan*/  kvfree (void*) ; 
+ int free_shared_memory (size_t) ;
+ int kvfree (void*) ;
 
 __attribute__((used)) static void dm_kvfree(void *ptr, size_t alloc_size)
 {
-	if (!ptr)
-		return;
+ if (!ptr)
+  return;
 
-	free_shared_memory(alloc_size);
+ free_shared_memory(alloc_size);
 
-	kvfree(ptr);
+ kvfree(ptr);
 }

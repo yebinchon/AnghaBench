@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u64 ;
 struct extent_state {int dummy; } ;
 struct extent_io_tree {TYPE_2__* mapping; TYPE_1__* ops; } ;
-struct TYPE_4__ {int /*<<< orphan*/  host; } ;
-struct TYPE_3__ {int /*<<< orphan*/  (* split_extent_hook ) (int /*<<< orphan*/ ,struct extent_state*,int /*<<< orphan*/ ) ;} ;
+struct TYPE_4__ {int host; } ;
+struct TYPE_3__ {int (* split_extent_hook ) (int ,struct extent_state*,int ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,struct extent_state*,int /*<<< orphan*/ ) ; 
+
+ int stub1 (int ,struct extent_state*,int ) ;
 
 __attribute__((used)) static void split_cb(struct extent_io_tree *tree, struct extent_state *orig,
-		     u64 split)
+       u64 split)
 {
-	if (tree->ops && tree->ops->split_extent_hook)
-		tree->ops->split_extent_hook(tree->mapping->host, orig, split);
+ if (tree->ops && tree->ops->split_extent_hook)
+  tree->ops->split_extent_hook(tree->mapping->host, orig, split);
 }

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  TYPE_1__* t_Handle ;
-struct TYPE_10__ {int tsbs; int /*<<< orphan*/  activate; scalar_t__ iprcpt; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ t_FmPcdCcReassmTimeoutParams ;
-struct TYPE_9__ {int /*<<< orphan*/  h_Hc; scalar_t__ physicalMuramBase; int /*<<< orphan*/  h_Fm; } ;
-typedef  TYPE_1__ t_FmPcd ;
-typedef  int /*<<< orphan*/  t_Error ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_COND (TYPE_1__*) ; 
- int /*<<< orphan*/  E_FULL ; 
- int /*<<< orphan*/  E_INVALID_SELECTION ; 
- int /*<<< orphan*/  E_INVALID_VALUE ; 
- int /*<<< orphan*/  E_NOT_AVAILABLE ; 
- int /*<<< orphan*/  E_NO_MEMORY ; 
- int /*<<< orphan*/  E_OK ; 
- int /*<<< orphan*/  FM_PCD_MANIP_REASM_TIMEOUT_THREAD_THRESH ; 
- scalar_t__ FmGetTimeStampScale (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FmHcPcdCcTimeoutReassm (int /*<<< orphan*/ ,TYPE_2__*,int*) ; 
- int /*<<< orphan*/  LOG2 (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  MAJOR ; 
- char* NO_MSG ; 
- int /*<<< orphan*/  RETURN_ERROR (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ XX_VirtToPhys (TYPE_1__*) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef TYPE_1__* t_Handle ;
+struct TYPE_10__ {int tsbs; int activate; scalar_t__ iprcpt; int member_0; } ;
+typedef TYPE_2__ t_FmPcdCcReassmTimeoutParams ;
+struct TYPE_9__ {int h_Hc; scalar_t__ physicalMuramBase; int h_Fm; } ;
+typedef TYPE_1__ t_FmPcd ;
+typedef int t_Error ;
+
+
+ int ASSERT_COND (TYPE_1__*) ;
+ int E_FULL ;
+ int E_INVALID_SELECTION ;
+ int E_INVALID_VALUE ;
+ int E_NOT_AVAILABLE ;
+ int E_NO_MEMORY ;
+ int E_OK ;
+ int FM_PCD_MANIP_REASM_TIMEOUT_THREAD_THRESH ;
+ scalar_t__ FmGetTimeStampScale (int ) ;
+ int FmHcPcdCcTimeoutReassm (int ,TYPE_2__*,int*) ;
+ int LOG2 (int ,scalar_t__) ;
+ int MAJOR ;
+ char* NO_MSG ;
+ int RETURN_ERROR (int ,int ,char*) ;
+ int TRUE ;
+ scalar_t__ XX_VirtToPhys (TYPE_1__*) ;
 
 t_Error FmPcdRegisterReassmPort(t_Handle h_FmPcd, t_Handle h_ReasmCommonPramTbl)
 {

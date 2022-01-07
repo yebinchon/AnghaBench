@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  GeoPoly ;
 
-/* Variables and functions */
- int /*<<< orphan*/  geopolyArea (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * geopolyFuncParam (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_double (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+typedef int GeoPoly ;
+
+
+ int geopolyArea (int *) ;
+ int * geopolyFuncParam (int *,int *,int ) ;
+ int sqlite3_free (int *) ;
+ int sqlite3_result_double (int *,int ) ;
 
 __attribute__((used)) static void geopolyAreaFunc(
   sqlite3_context *context,
@@ -29,5 +29,5 @@ __attribute__((used)) static void geopolyAreaFunc(
   if( p ){
     sqlite3_result_double(context, geopolyArea(p));
     sqlite3_free(p);
-  }            
+  }
 }

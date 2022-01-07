@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  OOM () ; 
- scalar_t__ maxmem ; 
- int /*<<< orphan*/  xmlFree (char*) ; 
- scalar_t__ xmlMemUsed () ; 
- char* xmlMemoryStrdup (char const*) ; 
+ int OOM () ;
+ scalar_t__ maxmem ;
+ int xmlFree (char*) ;
+ scalar_t__ xmlMemUsed () ;
+ char* xmlMemoryStrdup (char const*) ;
 
 __attribute__((used)) static char *
 myStrdupFunc(const char *str)
@@ -24,11 +16,11 @@ myStrdupFunc(const char *str)
     char *ret;
 
     ret = xmlMemoryStrdup(str);
-    if (ret != NULL) {
+    if (ret != ((void*)0)) {
         if (xmlMemUsed() > maxmem) {
             OOM();
             xmlFree(ret);
-            return (NULL);
+            return (((void*)0));
         }
     }
     return (ret);

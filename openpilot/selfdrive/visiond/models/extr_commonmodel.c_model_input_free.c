@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  loadyuv; int /*<<< orphan*/  transform; } ;
-typedef  TYPE_1__ ModelInput ;
 
-/* Variables and functions */
- int /*<<< orphan*/  loadyuv_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  transform_destroy (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int loadyuv; int transform; } ;
+typedef TYPE_1__ ModelInput ;
+
+
+ int loadyuv_destroy (int *) ;
+ int transform_destroy (int *) ;
 
 void model_input_free(ModelInput* s) {
   transform_destroy(&s->transform);

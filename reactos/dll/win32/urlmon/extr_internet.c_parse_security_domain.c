@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  IInternetProtocolInfo ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  IInternetProtocolInfo_ParseUrl (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IInternetProtocolInfo_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PARSE_SECURITY_DOMAIN ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * get_protocol_info (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int LPWSTR ;
+typedef int LPCWSTR ;
+typedef int IInternetProtocolInfo ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int E_FAIL ;
+ int IInternetProtocolInfo_ParseUrl (int *,int ,int ,int ,int ,int ,int *,int ) ;
+ int IInternetProtocolInfo_Release (int *) ;
+ int PARSE_SECURITY_DOMAIN ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int TRACE (char*,int ,int ,int ,int ,int *) ;
+ int debugstr_w (int ) ;
+ int * get_protocol_info (int ) ;
 
 __attribute__((used)) static HRESULT parse_security_domain(LPCWSTR url, DWORD flags, LPWSTR result,
         DWORD size, DWORD *rsize)

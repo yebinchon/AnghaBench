@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct snippetMatch {scalar_t__ snStatus; int iTerm; int iCol; int iStart; int nByte; } ;
-struct TYPE_6__ {int nMatch; int /*<<< orphan*/  nSnippet; int /*<<< orphan*/  zSnippet; struct snippetMatch* aMatch; } ;
+struct TYPE_6__ {int nMatch; int nSnippet; int zSnippet; struct snippetMatch* aMatch; } ;
 struct TYPE_5__ {int nTerms; } ;
-struct TYPE_7__ {TYPE_2__ snippet; int /*<<< orphan*/  pStmt; TYPE_1__ q; } ;
-typedef  TYPE_3__ fulltext_cursor ;
-typedef  int /*<<< orphan*/  StringBuffer ;
+struct TYPE_7__ {TYPE_2__ snippet; int pStmt; TYPE_1__ q; } ;
+typedef TYPE_3__ fulltext_cursor ;
+typedef int StringBuffer ;
 
-/* Variables and functions */
- scalar_t__ SNIPPET_DESIRED ; 
- void* SNIPPET_IGNORE ; 
- int /*<<< orphan*/  append (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  appendWhiteSpace (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  initStringBuffer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nappend (int /*<<< orphan*/ *,char const*,int) ; 
- int sqlite3_column_bytes (int /*<<< orphan*/ ,int) ; 
- scalar_t__ sqlite3_column_text (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stringBufferData (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stringBufferLength (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  trimWhiteSpace (int /*<<< orphan*/ *) ; 
- int wordBoundary (int,char const*,int,struct snippetMatch*,int,int) ; 
+
+ scalar_t__ SNIPPET_DESIRED ;
+ void* SNIPPET_IGNORE ;
+ int append (int *,char const*) ;
+ int appendWhiteSpace (int *) ;
+ int initStringBuffer (int *) ;
+ int nappend (int *,char const*,int) ;
+ int sqlite3_column_bytes (int ,int) ;
+ scalar_t__ sqlite3_column_text (int ,int) ;
+ int sqlite3_free (int ) ;
+ int stringBufferData (int *) ;
+ int stringBufferLength (int *) ;
+ int trimWhiteSpace (int *) ;
+ int wordBoundary (int,char const*,int,struct snippetMatch*,int,int) ;
 
 __attribute__((used)) static void snippetText(
-  fulltext_cursor *pCursor,   /* The cursor we need the snippet for */
-  const char *zStartMark,     /* Markup to appear before each match */
-  const char *zEndMark,       /* Markup to appear after each match */
-  const char *zEllipsis       /* Ellipsis mark */
+  fulltext_cursor *pCursor,
+  const char *zStartMark,
+  const char *zEndMark,
+  const char *zEllipsis
 ){
   int i, j;
   struct snippetMatch *aMatch;
@@ -54,7 +54,7 @@ __attribute__((used)) static void snippetText(
   int iStart, iEnd;
   int tailEllipsis = 0;
   int iMatch;
-  
+
 
   sqlite3_free(pCursor->snippet.zSnippet);
   pCursor->snippet.zSnippet = 0;

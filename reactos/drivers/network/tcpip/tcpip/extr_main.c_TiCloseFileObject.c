@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_8__ ;
-typedef  struct TYPE_22__   TYPE_7__ ;
-typedef  struct TYPE_21__   TYPE_6__ ;
-typedef  struct TYPE_20__   TYPE_5__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG_PTR ;
+
+
+typedef struct TYPE_23__ TYPE_8__ ;
+typedef struct TYPE_22__ TYPE_7__ ;
+typedef struct TYPE_21__ TYPE_6__ ;
+typedef struct TYPE_20__ TYPE_5__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int ULONG_PTR ;
 struct TYPE_23__ {TYPE_1__* FileObject; } ;
-struct TYPE_19__ {int /*<<< orphan*/  Status; } ;
+struct TYPE_19__ {int Status; } ;
 struct TYPE_22__ {TYPE_4__ IoStatus; } ;
-struct TYPE_18__ {int /*<<< orphan*/  ControlChannel; int /*<<< orphan*/  ConnectionContext; int /*<<< orphan*/  AddressHandle; } ;
+struct TYPE_18__ {int ControlChannel; int ConnectionContext; int AddressHandle; } ;
 struct TYPE_21__ {TYPE_3__ Handle; } ;
-struct TYPE_17__ {int /*<<< orphan*/  ControlChannel; int /*<<< orphan*/  ConnectionContext; int /*<<< orphan*/  AddressHandle; } ;
+struct TYPE_17__ {int ControlChannel; int ConnectionContext; int AddressHandle; } ;
 struct TYPE_20__ {TYPE_2__ Handle; } ;
-struct TYPE_16__ {int /*<<< orphan*/  FsContext2; TYPE_6__* FsContext; } ;
-typedef  TYPE_5__ TDI_REQUEST ;
-typedef  TYPE_6__* PTRANSPORT_CONTEXT ;
-typedef  TYPE_7__* PIRP ;
-typedef  TYPE_8__* PIO_STACK_LOCATION ;
-typedef  int /*<<< orphan*/  PDEVICE_OBJECT ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
+struct TYPE_16__ {int FsContext2; TYPE_6__* FsContext; } ;
+typedef TYPE_5__ TDI_REQUEST ;
+typedef TYPE_6__* PTRANSPORT_CONTEXT ;
+typedef TYPE_7__* PIRP ;
+typedef TYPE_8__* PIO_STACK_LOCATION ;
+typedef int PDEVICE_OBJECT ;
+typedef int NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ExFreePoolWithTag (TYPE_6__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FileCloseAddress (TYPE_5__*) ; 
- int /*<<< orphan*/  FileCloseConnection (TYPE_5__*) ; 
- int /*<<< orphan*/  FileCloseControlChannel (TYPE_5__*) ; 
- TYPE_8__* IoGetCurrentIrpStackLocation (TYPE_7__*) ; 
- int /*<<< orphan*/  MIN_TRACE ; 
- scalar_t__ NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATUS_INVALID_PARAMETER ; 
-#define  TDI_CONNECTION_FILE 130 
-#define  TDI_CONTROL_CHANNEL_FILE 129 
-#define  TDI_TRANSPORT_ADDRESS_FILE 128 
- int /*<<< orphan*/  TI_DbgPrint (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TRANS_CONTEXT_TAG ; 
+
+ int ExFreePoolWithTag (TYPE_6__*,int ) ;
+ int FileCloseAddress (TYPE_5__*) ;
+ int FileCloseConnection (TYPE_5__*) ;
+ int FileCloseControlChannel (TYPE_5__*) ;
+ TYPE_8__* IoGetCurrentIrpStackLocation (TYPE_7__*) ;
+ int MIN_TRACE ;
+ scalar_t__ NT_SUCCESS (int ) ;
+ int STATUS_INVALID_PARAMETER ;
+
+
+
+ int TI_DbgPrint (int ,char*) ;
+ int TRANS_CONTEXT_TAG ;
 
 NTSTATUS TiCloseFileObject(
     PDEVICE_OBJECT DeviceObject,
@@ -58,7 +58,7 @@ NTSTATUS TiCloseFileObject(
     TDI_REQUEST Request;
     NTSTATUS Status;
 
-    IrpSp   = IoGetCurrentIrpStackLocation(Irp);
+    IrpSp = IoGetCurrentIrpStackLocation(Irp);
     Context = IrpSp->FileObject->FsContext;
     if (!Context)
     {
@@ -68,17 +68,17 @@ NTSTATUS TiCloseFileObject(
 
     switch ((ULONG_PTR)IrpSp->FileObject->FsContext2)
     {
-        case TDI_TRANSPORT_ADDRESS_FILE:
+        case 128:
             Request.Handle.AddressHandle = Context->Handle.AddressHandle;
             Status = FileCloseAddress(&Request);
             break;
 
-        case TDI_CONNECTION_FILE:
+        case 130:
             Request.Handle.ConnectionContext = Context->Handle.ConnectionContext;
             Status = FileCloseConnection(&Request);
             break;
 
-        case TDI_CONTROL_CHANNEL_FILE:
+        case 129:
             Request.Handle.ControlChannel = Context->Handle.ControlChannel;
             Status = FileCloseControlChannel(&Request);
             break;

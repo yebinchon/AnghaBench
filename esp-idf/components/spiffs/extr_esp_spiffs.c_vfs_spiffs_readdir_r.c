@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  offset; int /*<<< orphan*/  path; int /*<<< orphan*/  d; } ;
-typedef  TYPE_1__ vfs_spiffs_dir_t ;
-struct spiffs_dirent {char* name; int /*<<< orphan*/  type; } ;
-struct dirent {int /*<<< orphan*/  d_name; int /*<<< orphan*/  d_type; scalar_t__ d_ino; } ;
-struct TYPE_4__ {int /*<<< orphan*/  fs; } ;
-typedef  TYPE_2__ esp_spiffs_t ;
-typedef  int /*<<< orphan*/  DIR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SPIFFS_OBJ_NAME_LEN ; 
- int /*<<< orphan*/  SPIFFS_clearerr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SPIFFS_errno (int /*<<< orphan*/ ) ; 
- scalar_t__ SPIFFS_readdir (int /*<<< orphan*/ *,struct spiffs_dirent*) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int errno ; 
- int /*<<< orphan*/  snprintf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char*) ; 
- int spiffs_res_to_errno (int /*<<< orphan*/ ) ; 
- size_t strlen (int /*<<< orphan*/ ) ; 
- scalar_t__ strncasecmp (int /*<<< orphan*/ ,char const*,size_t) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int offset; int path; int d; } ;
+typedef TYPE_1__ vfs_spiffs_dir_t ;
+struct spiffs_dirent {char* name; int type; } ;
+struct dirent {int d_name; int d_type; scalar_t__ d_ino; } ;
+struct TYPE_4__ {int fs; } ;
+typedef TYPE_2__ esp_spiffs_t ;
+typedef int DIR ;
+
+
+ int SPIFFS_OBJ_NAME_LEN ;
+ int SPIFFS_clearerr (int ) ;
+ int SPIFFS_errno (int ) ;
+ scalar_t__ SPIFFS_readdir (int *,struct spiffs_dirent*) ;
+ int assert (int *) ;
+ int errno ;
+ int snprintf (int ,int ,char*,char*) ;
+ int spiffs_res_to_errno (int ) ;
+ size_t strlen (int ) ;
+ scalar_t__ strncasecmp (int ,char const*,size_t) ;
 
 __attribute__((used)) static int vfs_spiffs_readdir_r(void* ctx, DIR* pdir, struct dirent* entry,
                                 struct dirent** out_dirent)
@@ -46,7 +46,7 @@ __attribute__((used)) static int vfs_spiffs_readdir_r(void* ctx, DIR* pdir, stru
             errno = spiffs_res_to_errno(SPIFFS_errno(efs->fs));
             SPIFFS_clearerr(efs->fs);
             if (!errno) {
-                *out_dirent = NULL;
+                *out_dirent = ((void*)0);
             }
             return errno;
         }

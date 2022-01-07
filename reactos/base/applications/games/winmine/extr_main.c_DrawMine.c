@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ top; scalar_t__ left; } ;
 struct TYPE_7__ {unsigned int cols; unsigned int rows; scalar_t__ status; TYPE_2__ mines_rect; TYPE_1__** box; } ;
 struct TYPE_5__ {int FlagType; scalar_t__ NumMines; scalar_t__ IsMine; } ;
-typedef  unsigned int MINEBMP_OFFSET ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  BOOL ;
-typedef  TYPE_3__ BOARD ;
+typedef unsigned int MINEBMP_OFFSET ;
+typedef int HDC ;
+typedef int BOOL ;
+typedef TYPE_3__ BOARD ;
 
-/* Variables and functions */
- unsigned int BOX_BMP ; 
- int /*<<< orphan*/  BitBlt (int /*<<< orphan*/ ,scalar_t__,scalar_t__,unsigned int,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ) ; 
-#define  COMPLETE 131 
- unsigned int EXPLODE_BMP ; 
-#define  FLAG 130 
- unsigned int FLAG_BMP ; 
- scalar_t__ GAMEOVER ; 
- unsigned int MINE_BMP ; 
- unsigned int MINE_HEIGHT ; 
- unsigned int MINE_WIDTH ; 
- unsigned int MPRESS_BMP ; 
-#define  NORMAL 129 
- unsigned int QPRESS_BMP ; 
-#define  QUESTION 128 
- unsigned int QUESTION_BMP ; 
- int /*<<< orphan*/  SRCCOPY ; 
- int /*<<< orphan*/  WINE_TRACE (char*) ; 
- unsigned int WRONG_BMP ; 
+
+ unsigned int BOX_BMP ;
+ int BitBlt (int ,scalar_t__,scalar_t__,unsigned int,unsigned int,int ,int ,unsigned int,int ) ;
+
+ unsigned int EXPLODE_BMP ;
+
+ unsigned int FLAG_BMP ;
+ scalar_t__ GAMEOVER ;
+ unsigned int MINE_BMP ;
+ unsigned int MINE_HEIGHT ;
+ unsigned int MINE_WIDTH ;
+ unsigned int MPRESS_BMP ;
+
+ unsigned int QPRESS_BMP ;
+
+ unsigned int QUESTION_BMP ;
+ int SRCCOPY ;
+ int WINE_TRACE (char*) ;
+ unsigned int WRONG_BMP ;
 
 __attribute__((used)) static void DrawMine( HDC hdc, HDC hMemDC, BOARD *p_board, unsigned col, unsigned row, BOOL IsPressed )
 {
@@ -51,55 +51,55 @@ __attribute__((used)) static void DrawMine( HDC hdc, HDC hMemDC, BOARD *p_board,
     if( p_board->status == GAMEOVER ) {
         if( p_board->box[col][row].IsMine ) {
             switch( p_board->box[col][row].FlagType ) {
-            case FLAG:
+            case 130:
                 offset = FLAG_BMP;
                 break;
-            case COMPLETE:
+            case 131:
                 offset = EXPLODE_BMP;
                 break;
-            case QUESTION:
-                /* fall through */
-            case NORMAL:
+            case 128:
+
+            case 129:
                 offset = MINE_BMP;
             }
         } else {
             switch( p_board->box[col][row].FlagType ) {
-            case QUESTION:
+            case 128:
                 offset = QUESTION_BMP;
                 break;
-            case FLAG:
+            case 130:
                 offset = WRONG_BMP;
                 break;
-            case NORMAL:
+            case 129:
                 offset = BOX_BMP;
                 break;
-            case COMPLETE:
-                /* Do nothing */
+            case 131:
+
                 break;
             default:
                 WINE_TRACE("Unknown FlagType during game over in DrawMine\n");
                 break;
             }
         }
-    } else {    /* WAITING or PLAYING */
+    } else {
         switch( p_board->box[col][row].FlagType ) {
-        case QUESTION:
+        case 128:
             if( !IsPressed )
                 offset = QUESTION_BMP;
             else
                 offset = QPRESS_BMP;
             break;
-        case FLAG:
+        case 130:
             offset = FLAG_BMP;
             break;
-        case NORMAL:
+        case 129:
             if( !IsPressed )
                 offset = BOX_BMP;
             else
                 offset = MPRESS_BMP;
             break;
-        case COMPLETE:
-            /* Do nothing */
+        case 131:
+
             break;
         default:
             WINE_TRACE("Unknown FlagType while playing in DrawMine\n");
@@ -107,7 +107,7 @@ __attribute__((used)) static void DrawMine( HDC hdc, HDC hMemDC, BOARD *p_board,
         }
     }
 
-    if( p_board->box[col][row].FlagType == COMPLETE
+    if( p_board->box[col][row].FlagType == 131
         && !p_board->box[col][row].IsMine )
           offset = (MINEBMP_OFFSET) p_board->box[col][row].NumMines;
 

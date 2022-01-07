@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lsm_env ;
-struct TYPE_5__ {scalar_t__ nOut; int flags; struct TYPE_5__* aOBuffer; struct TYPE_5__* aIBuffer; struct TYPE_5__* apHash; struct TYPE_5__* pLsmFile; scalar_t__ fdLog; int /*<<< orphan*/ * pEnv; scalar_t__ fdDb; struct TYPE_5__* aData; struct TYPE_5__* pFreeNext; struct TYPE_5__* pFree; struct TYPE_5__* pLruNext; struct TYPE_5__* pLruFirst; } ;
-typedef  TYPE_1__ Page ;
-typedef  TYPE_1__ FileSystem ;
 
-/* Variables and functions */
- int PAGE_FREE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  lsmEnvClose (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  lsmFree (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int lsm_env ;
+struct TYPE_5__ {scalar_t__ nOut; int flags; struct TYPE_5__* aOBuffer; struct TYPE_5__* aIBuffer; struct TYPE_5__* apHash; struct TYPE_5__* pLsmFile; scalar_t__ fdLog; int * pEnv; scalar_t__ fdDb; struct TYPE_5__* aData; struct TYPE_5__* pFreeNext; struct TYPE_5__* pFree; struct TYPE_5__* pLruNext; struct TYPE_5__* pLruFirst; } ;
+typedef TYPE_1__ Page ;
+typedef TYPE_1__ FileSystem ;
+
+
+ int PAGE_FREE ;
+ int assert (int) ;
+ int lsmEnvClose (int *,scalar_t__) ;
+ int lsmFree (int *,TYPE_1__*) ;
 
 void lsmFsClose(FileSystem *pFS){
   if( pFS ){

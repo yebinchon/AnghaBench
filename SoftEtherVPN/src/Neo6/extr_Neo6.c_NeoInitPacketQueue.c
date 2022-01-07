@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * Tail; scalar_t__ NumPacketQueue; int /*<<< orphan*/ * PacketQueue; int /*<<< orphan*/  PacketQueueLock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NeoNewLock () ; 
- TYPE_1__* ctx ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * Tail; scalar_t__ NumPacketQueue; int * PacketQueue; int PacketQueueLock; } ;
+
+
+ int NeoNewLock () ;
+ TYPE_1__* ctx ;
 
 void NeoInitPacketQueue()
 {
-	// Create a lock
-	ctx->PacketQueueLock = NeoNewLock();
-	// Initialize the packet queue
-	ctx->PacketQueue = NULL;
-	ctx->NumPacketQueue = 0;
-	ctx->Tail = NULL;
+
+ ctx->PacketQueueLock = NeoNewLock();
+
+ ctx->PacketQueue = ((void*)0);
+ ctx->NumPacketQueue = 0;
+ ctx->Tail = ((void*)0);
 }

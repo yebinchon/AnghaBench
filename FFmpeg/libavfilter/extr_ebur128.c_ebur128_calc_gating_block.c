@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {size_t channels; TYPE_1__* d; } ;
-struct TYPE_4__ {scalar_t__* channel_map; size_t audio_data_index; double* audio_data; size_t audio_data_frames; int /*<<< orphan*/ * block_energy_histogram; } ;
-typedef  TYPE_2__ FFEBUR128State ;
+struct TYPE_4__ {scalar_t__* channel_map; size_t audio_data_index; double* audio_data; size_t audio_data_frames; int * block_energy_histogram; } ;
+typedef TYPE_2__ FFEBUR128State ;
 
-/* Variables and functions */
- scalar_t__ FF_EBUR128_DUAL_MONO ; 
- scalar_t__ FF_EBUR128_Mm060 ; 
- scalar_t__ FF_EBUR128_Mm090 ; 
- scalar_t__ FF_EBUR128_Mm110 ; 
- scalar_t__ FF_EBUR128_Mp060 ; 
- scalar_t__ FF_EBUR128_Mp090 ; 
- scalar_t__ FF_EBUR128_Mp110 ; 
- scalar_t__ FF_EBUR128_UNUSED ; 
- size_t find_histogram_index (double) ; 
- double* histogram_energy_boundaries ; 
+
+ scalar_t__ FF_EBUR128_DUAL_MONO ;
+ scalar_t__ FF_EBUR128_Mm060 ;
+ scalar_t__ FF_EBUR128_Mm090 ;
+ scalar_t__ FF_EBUR128_Mm110 ;
+ scalar_t__ FF_EBUR128_Mp060 ;
+ scalar_t__ FF_EBUR128_Mp090 ;
+ scalar_t__ FF_EBUR128_Mp110 ;
+ scalar_t__ FF_EBUR128_UNUSED ;
+ size_t find_histogram_index (double) ;
+ double* histogram_energy_boundaries ;
 
 __attribute__((used)) static void ebur128_calc_gating_block(FFEBUR128State * st,
                                       size_t frames_per_block,

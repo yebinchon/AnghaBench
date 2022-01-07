@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct db_stmt {int dummy; } ;
 struct TYPE_2__ {int i; } ;
 struct db_row {TYPE_1__ u; } ;
-typedef  int /*<<< orphan*/  JsonNode ;
+typedef int JsonNode ;
 
-/* Variables and functions */
- scalar_t__ UNLIKELY (int) ; 
- int /*<<< orphan*/  db_stmt_bind (struct db_stmt*,struct db_row*,int) ; 
- int /*<<< orphan*/  db_stmt_step (struct db_stmt*,struct db_row*) ; 
- int /*<<< orphan*/  json_append_member (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  json_mknumber (int) ; 
- int /*<<< orphan*/ * json_mkobject () ; 
- int rand () ; 
+
+ scalar_t__ UNLIKELY (int) ;
+ int db_stmt_bind (struct db_stmt*,struct db_row*,int) ;
+ int db_stmt_step (struct db_stmt*,struct db_row*) ;
+ int json_append_member (int *,char*,int ) ;
+ int json_mknumber (int) ;
+ int * json_mkobject () ;
+ int rand () ;
 
 __attribute__((used)) static JsonNode *
 db_query(struct db_stmt *stmt, struct db_row rows[], struct db_row results[])
 {
-    JsonNode *object = NULL;
+    JsonNode *object = ((void*)0);
     int id = rand() % 10000;
 
     rows[0].u.i = id;

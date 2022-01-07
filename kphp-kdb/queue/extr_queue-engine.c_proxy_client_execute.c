@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mcc_data {int key_len; int arg_num; int response_len; } ;
-struct connection {int /*<<< orphan*/  last_response_time; } ;
+struct connection {int last_response_time; } ;
 
-/* Variables and functions */
- struct mcc_data* MCC_DATA (struct connection*) ; 
- int SKIP_ALL_BYTES ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,int,int) ; 
- int /*<<< orphan*/  precise_now ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbosity ; 
+
+ struct mcc_data* MCC_DATA (struct connection*) ;
+ int SKIP_ALL_BYTES ;
+ int fprintf (int ,char*,int,int,int,int) ;
+ int precise_now ;
+ int stderr ;
+ scalar_t__ verbosity ;
 
 int proxy_client_execute (struct connection *c, int op) {
   struct mcc_data *D = MCC_DATA(c);

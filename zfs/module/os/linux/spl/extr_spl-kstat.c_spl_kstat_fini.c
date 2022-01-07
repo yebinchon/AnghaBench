@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kstat_module_list ; 
- int /*<<< orphan*/  kstat_module_lock ; 
- int /*<<< orphan*/  list_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_destroy (int /*<<< orphan*/ *) ; 
+ int ASSERT (int ) ;
+ int kstat_module_list ;
+ int kstat_module_lock ;
+ int list_empty (int *) ;
+ int mutex_destroy (int *) ;
 
 void
 spl_kstat_fini(void)
 {
-	ASSERT(list_empty(&kstat_module_list));
-	mutex_destroy(&kstat_module_lock);
+ ASSERT(list_empty(&kstat_module_list));
+ mutex_destroy(&kstat_module_lock);
 }

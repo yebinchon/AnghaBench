@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ float AngleNormalize180 (float) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- float AngleNormalize180 (float) ; 
-
-float	AngleSubtract( float a1, float a2 ) {
-	return AngleNormalize180(a1 - a2);
+float AngleSubtract( float a1, float a2 ) {
+ return AngleNormalize180(a1 - a2);
 }

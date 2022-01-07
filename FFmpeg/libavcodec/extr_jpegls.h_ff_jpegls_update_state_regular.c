@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int* A; int twonear; int* B; int* N; int* C; } ;
-typedef  TYPE_1__ JLSState ;
+typedef TYPE_1__ JLSState ;
 
-/* Variables and functions */
- int FFABS (int) ; 
- int FFMAX (int,int) ; 
- int FFMIN (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_jpegls_downscale_state (TYPE_1__*,int) ; 
+
+ int FFABS (int) ;
+ int FFMAX (int,int) ;
+ int FFMIN (int,int ) ;
+ int ff_jpegls_downscale_state (TYPE_1__*,int) ;
 
 __attribute__((used)) static inline int ff_jpegls_update_state_regular(JLSState *state,
                                                  int Q, int err)
@@ -26,7 +26,7 @@ __attribute__((used)) static inline int ff_jpegls_update_state_regular(JLSState 
     if(FFABS(err) > 0xFFFF)
         return -0x10000;
     state->A[Q] += FFABS(err);
-    err         *= state->twonear;
+    err *= state->twonear;
     state->B[Q] += err;
 
     ff_jpegls_downscale_state(state, Q);

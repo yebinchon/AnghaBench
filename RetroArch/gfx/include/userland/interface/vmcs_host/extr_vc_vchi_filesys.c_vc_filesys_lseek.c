@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint32_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef void* uint32_t ;
 struct TYPE_3__ {void** params; } ;
 struct TYPE_4__ {TYPE_1__ fileserv_msg; } ;
 
-/* Variables and functions */
- scalar_t__ FILESERV_RESP_OK ; 
- int /*<<< orphan*/  VC_FILESYS_LSEEK ; 
- scalar_t__ lock_obtain () ; 
- int /*<<< orphan*/  lock_release () ; 
- TYPE_2__ vc_filesys_client ; 
- scalar_t__ vchi_msg_stub (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ FILESERV_RESP_OK ;
+ int VC_FILESYS_LSEEK ;
+ scalar_t__ lock_obtain () ;
+ int lock_release () ;
+ TYPE_2__ vc_filesys_client ;
+ scalar_t__ vchi_msg_stub (TYPE_1__*,int ,int) ;
 
 long vc_filesys_lseek(int fildes, long offset, int whence)
 {

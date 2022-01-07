@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nilfs_palloc_req {int /*<<< orphan*/ * pr_desc_bh; int /*<<< orphan*/ * pr_bitmap_bh; scalar_t__ pr_entry_nr; } ;
+
+
+
+
+struct nilfs_palloc_req {int * pr_desc_bh; int * pr_bitmap_bh; scalar_t__ pr_entry_nr; } ;
 struct inode {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  brelse (int /*<<< orphan*/ *) ; 
+
+ int brelse (int *) ;
 
 void nilfs_palloc_abort_free_entry(struct inode *inode,
-				   struct nilfs_palloc_req *req)
+       struct nilfs_palloc_req *req)
 {
-	brelse(req->pr_bitmap_bh);
-	brelse(req->pr_desc_bh);
+ brelse(req->pr_bitmap_bh);
+ brelse(req->pr_desc_bh);
 
-	req->pr_entry_nr = 0;
-	req->pr_bitmap_bh = NULL;
-	req->pr_desc_bh = NULL;
+ req->pr_entry_nr = 0;
+ req->pr_bitmap_bh = ((void*)0);
+ req->pr_desc_bh = ((void*)0);
 }

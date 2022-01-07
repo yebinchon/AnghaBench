@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  HPET_ADDR ; 
- int /*<<< orphan*/  SMBUS_PCI_REG40 ; 
- int /*<<< orphan*/  SMBUS_PCI_REG64 ; 
- int /*<<< orphan*/  SMBUS_PCI_REGB4 ; 
- int /*<<< orphan*/  hpet_enable_legacy_int () ; 
- int /*<<< orphan*/  smbus_enable (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  smbus_write (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int HPET_ADDR ;
+ int SMBUS_PCI_REG40 ;
+ int SMBUS_PCI_REG64 ;
+ int SMBUS_PCI_REGB4 ;
+ int hpet_enable_legacy_int () ;
+ int smbus_enable (int ,int) ;
+ int smbus_write (int ,int ) ;
 
 __attribute__((used)) static void hpet_setup(void)
 {
-	/* set hpet base address */
-	smbus_write(SMBUS_PCI_REGB4, HPET_ADDR);
 
-	/* enable decoding of access to HPET MMIO*/
-	smbus_enable(SMBUS_PCI_REG40, (1 << 28));
+ smbus_write(SMBUS_PCI_REGB4, HPET_ADDR);
 
-	/* HPET irq enable */
-	smbus_enable(SMBUS_PCI_REG64, (1 << 10));
 
-	hpet_enable_legacy_int();
+ smbus_enable(SMBUS_PCI_REG40, (1 << 28));
+
+
+ smbus_enable(SMBUS_PCI_REG64, (1 << 10));
+
+ hpet_enable_legacy_int();
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  device_extension ;
-struct TYPE_3__ {int /*<<< orphan*/  count; void* offset; void* objid; void* root; } ;
-typedef  int /*<<< orphan*/  PIRP ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  TYPE_1__ EXTENT_DATA_REF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TYPE_EXTENT_DATA_REF ; 
- int /*<<< orphan*/  decrease_extent_refcount (int /*<<< orphan*/ *,void*,void*,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef void* uint64_t ;
+typedef int uint32_t ;
+typedef int device_extension ;
+struct TYPE_3__ {int count; void* offset; void* objid; void* root; } ;
+typedef int PIRP ;
+typedef int NTSTATUS ;
+typedef TYPE_1__ EXTENT_DATA_REF ;
+
+
+ int TYPE_EXTENT_DATA_REF ;
+ int decrease_extent_refcount (int *,void*,void*,int ,TYPE_1__*,int *,int ,int ,int,int ) ;
 
 NTSTATUS decrease_extent_refcount_data(device_extension* Vcb, uint64_t address, uint64_t size, uint64_t root, uint64_t inode,
                                        uint64_t offset, uint32_t refcount, bool superseded, PIRP Irp) {
@@ -32,5 +32,5 @@ NTSTATUS decrease_extent_refcount_data(device_extension* Vcb, uint64_t address, 
     edr.offset = offset;
     edr.count = refcount;
 
-    return decrease_extent_refcount(Vcb, address, size, TYPE_EXTENT_DATA_REF, &edr, NULL, 0, 0, superseded, Irp);
+    return decrease_extent_refcount(Vcb, address, size, TYPE_EXTENT_DATA_REF, &edr, ((void*)0), 0, 0, superseded, Irp);
 }

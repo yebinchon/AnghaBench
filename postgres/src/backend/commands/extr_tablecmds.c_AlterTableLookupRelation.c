@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ missing_ok; int /*<<< orphan*/  relation; } ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  LOCKMODE ;
-typedef  TYPE_1__ AlterTableStmt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RVR_MISSING_OK ; 
- int /*<<< orphan*/  RangeVarCallbackForAlterRelation ; 
- int /*<<< orphan*/  RangeVarGetRelidExtended (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ missing_ok; int relation; } ;
+typedef int Oid ;
+typedef int LOCKMODE ;
+typedef TYPE_1__ AlterTableStmt ;
+
+
+ int RVR_MISSING_OK ;
+ int RangeVarCallbackForAlterRelation ;
+ int RangeVarGetRelidExtended (int ,int ,int ,int ,void*) ;
 
 Oid
 AlterTableLookupRelation(AlterTableStmt *stmt, LOCKMODE lockmode)
 {
-	return RangeVarGetRelidExtended(stmt->relation, lockmode,
-									stmt->missing_ok ? RVR_MISSING_OK : 0,
-									RangeVarCallbackForAlterRelation,
-									(void *) stmt);
+ return RangeVarGetRelidExtended(stmt->relation, lockmode,
+         stmt->missing_ok ? RVR_MISSING_OK : 0,
+         RangeVarCallbackForAlterRelation,
+         (void *) stmt);
 }

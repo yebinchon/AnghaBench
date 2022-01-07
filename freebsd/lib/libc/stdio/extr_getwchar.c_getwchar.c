@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wint_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fgetwc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stdin ; 
+
+
+
+typedef int wint_t ;
+
+
+ int fgetwc (int ) ;
+ int stdin ;
 
 wint_t
 getwchar(void)
 {
-	return (fgetwc(stdin));
+ return (fgetwc(stdin));
 }

@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint64_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  stream_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint64_t ;
+typedef scalar_t__ uint32_t ;
+typedef int stream_t ;
 struct TYPE_5__ {scalar_t__ i_size; scalar_t__ i_pos; scalar_t__ const i_type; scalar_t__ i_index; scalar_t__ p_father; } ;
-typedef  TYPE_1__ MP4_Box_t ;
+typedef TYPE_1__ MP4_Box_t ;
 
-/* Variables and functions */
- scalar_t__ GetDWBE (int /*<<< orphan*/ *) ; 
- TYPE_1__* MP4_ReadBoxRestricted (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,scalar_t__ const*,int*) ; 
- int /*<<< orphan*/  MP4_Seek (int /*<<< orphan*/ *,scalar_t__ const) ; 
- int /*<<< orphan*/  assert (int) ; 
- int vlc_stream_Read (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ vlc_stream_Tell (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ GetDWBE (int *) ;
+ TYPE_1__* MP4_ReadBoxRestricted (int *,TYPE_1__*,int *,scalar_t__ const*,int*) ;
+ int MP4_Seek (int *,scalar_t__ const) ;
+ int assert (int) ;
+ int vlc_stream_Read (int *,int *,int) ;
+ scalar_t__ vlc_stream_Tell (int *) ;
 
 __attribute__((used)) static int MP4_ReadBoxContainerChildrenIndexed( stream_t *p_stream,
                MP4_Box_t *p_container, const uint32_t stoplist[],
                const uint32_t excludelist[], bool b_indexed )
 {
-    /* Size of root container is set to 0 when unknown, for exemple
-     * with a DASH stream. In that case, we skip the following check */
+
+
     if( (p_container->i_size || p_container->p_father)
             && ( vlc_stream_Tell( p_stream ) + ((b_indexed)?16:8) >
         (uint64_t)(p_container->i_pos + p_container->i_size) )
       )
     {
-        /* there is no box to load */
+
         return 0;
     }
 
-    uint64_t i_last_pos = 0; /* used to detect read failure loops */
+    uint64_t i_last_pos = 0;
     const uint64_t i_end = p_container->i_pos + p_container->i_size;
-    MP4_Box_t *p_box = NULL;
-    bool b_onexclude = false;
+    MP4_Box_t *p_box = ((void*)0);
+    bool b_onexclude = 0;
     bool b_continue;
     do
     {
-        b_continue = false;
+        b_continue = 0;
         if ( p_container->i_size )
         {
             const uint64_t i_tell = vlc_stream_Tell( p_stream );
@@ -64,10 +64,10 @@ __attribute__((used)) static int MP4_ReadBoxContainerChildrenIndexed( stream_t *
                 break;
             i_index = GetDWBE(&read[4]);
         }
-        b_onexclude = false; /* If stopped due exclude list */
-        if( (p_box = MP4_ReadBoxRestricted( p_stream, p_container, NULL, excludelist, &b_onexclude )) )
+        b_onexclude = 0;
+        if( (p_box = MP4_ReadBoxRestricted( p_stream, p_container, ((void*)0), excludelist, &b_onexclude )) )
         {
-            b_continue = true;
+            b_continue = 1;
             p_box->i_index = i_index;
             for(size_t i=0; stoplist && stoplist[i]; i++)
             {
@@ -85,17 +85,17 @@ __attribute__((used)) static int MP4_ReadBoxContainerChildrenIndexed( stream_t *
 
         if ( !p_box )
         {
-            /* Continue with next if box fails to load */
+
             if( i_last_pos == i_tell )
                 break;
             i_last_pos = i_tell;
-            b_continue = true;
+            b_continue = 1;
         }
 
     } while( b_continue );
 
-    /* Always move to end of container */
-    if ( !b_onexclude &&  p_container->i_size )
+
+    if ( !b_onexclude && p_container->i_size )
     {
         const uint64_t i_tell = vlc_stream_Tell( p_stream );
         if ( i_tell != i_end )

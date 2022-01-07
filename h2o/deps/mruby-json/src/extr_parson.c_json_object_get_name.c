@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char const** names; } ;
-typedef  TYPE_1__ JSON_Object ;
+typedef TYPE_1__ JSON_Object ;
 
-/* Variables and functions */
- size_t json_object_get_count (TYPE_1__ const*) ; 
+
+ size_t json_object_get_count (TYPE_1__ const*) ;
 
 const char * json_object_get_name(const JSON_Object *object, size_t index) {
-    if (object == NULL || index >= json_object_get_count(object)) {
-        return NULL;
+    if (object == ((void*)0) || index >= json_object_get_count(object)) {
+        return ((void*)0);
     }
     return object->names[index];
 }

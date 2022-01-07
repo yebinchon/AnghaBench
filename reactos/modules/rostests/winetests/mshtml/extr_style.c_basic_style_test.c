@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IHTMLStyle ;
-typedef  int /*<<< orphan*/  IHTMLElement ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  int /*<<< orphan*/  IHTMLCurrentStyle ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IHTMLCurrentStyle_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLDocument2_get_body (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IHTMLElement_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLElement_get_style (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IHTMLStyle_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/ * get_current_style (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * get_element_by_id (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  test_body_style (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_current_style (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_set_csstext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_style_filters (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int IHTMLStyle ;
+typedef int IHTMLElement ;
+typedef int IHTMLDocument2 ;
+typedef int IHTMLCurrentStyle ;
+typedef scalar_t__ HRESULT ;
+
+
+ int IHTMLCurrentStyle_Release (int *) ;
+ scalar_t__ IHTMLDocument2_get_body (int *,int **) ;
+ int IHTMLElement_Release (int *) ;
+ scalar_t__ IHTMLElement_get_style (int *,int **) ;
+ int IHTMLStyle_Release (int *) ;
+ scalar_t__ S_OK ;
+ int * get_current_style (int *) ;
+ int * get_element_by_id (int *,char*) ;
+ int ok (int,char*,scalar_t__) ;
+ int test_body_style (int *) ;
+ int test_current_style (int *) ;
+ int test_set_csstext (int *) ;
+ int test_style_filters (int *) ;
 
 __attribute__((used)) static void basic_style_test(IHTMLDocument2 *doc)
 {

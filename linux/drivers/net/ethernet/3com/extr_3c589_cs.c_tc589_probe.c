@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct pcmcia_device {int config_index; int /*<<< orphan*/  config_flags; TYPE_1__** resource; struct net_device* priv; int /*<<< orphan*/  dev; } ;
-struct net_device {int /*<<< orphan*/ * ethtool_ops; int /*<<< orphan*/  watchdog_timeo; int /*<<< orphan*/ * netdev_ops; } ;
-struct el3_private {int /*<<< orphan*/  lock; struct pcmcia_device* p_dev; } ;
-struct TYPE_2__ {int end; int /*<<< orphan*/  flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONF_ENABLE_IRQ ; 
- int ENOMEM ; 
- int /*<<< orphan*/  IO_DATA_PATH_WIDTH_16 ; 
- int /*<<< orphan*/  TX_TIMEOUT ; 
- struct net_device* alloc_etherdev (int) ; 
- int /*<<< orphan*/  dev_dbg (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  el3_netdev_ops ; 
- int /*<<< orphan*/  netdev_ethtool_ops ; 
- struct el3_private* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
- int tc589_config (struct pcmcia_device*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct pcmcia_device {int config_index; int config_flags; TYPE_1__** resource; struct net_device* priv; int dev; } ;
+struct net_device {int * ethtool_ops; int watchdog_timeo; int * netdev_ops; } ;
+struct el3_private {int lock; struct pcmcia_device* p_dev; } ;
+struct TYPE_2__ {int end; int flags; } ;
+
+
+ int CONF_ENABLE_IRQ ;
+ int ENOMEM ;
+ int IO_DATA_PATH_WIDTH_16 ;
+ int TX_TIMEOUT ;
+ struct net_device* alloc_etherdev (int) ;
+ int dev_dbg (int *,char*) ;
+ int el3_netdev_ops ;
+ int netdev_ethtool_ops ;
+ struct el3_private* netdev_priv (struct net_device*) ;
+ int spin_lock_init (int *) ;
+ int tc589_config (struct pcmcia_device*) ;
 
 __attribute__((used)) static int tc589_probe(struct pcmcia_device *link)
 {
-	struct el3_private *lp;
-	struct net_device *dev;
+ struct el3_private *lp;
+ struct net_device *dev;
 
-	dev_dbg(&link->dev, "3c589_attach()\n");
+ dev_dbg(&link->dev, "3c589_attach()\n");
 
-	/* Create new ethernet device */
-	dev = alloc_etherdev(sizeof(struct el3_private));
-	if (!dev)
-		return -ENOMEM;
-	lp = netdev_priv(dev);
-	link->priv = dev;
-	lp->p_dev = link;
 
-	spin_lock_init(&lp->lock);
-	link->resource[0]->end = 16;
-	link->resource[0]->flags |= IO_DATA_PATH_WIDTH_16;
+ dev = alloc_etherdev(sizeof(struct el3_private));
+ if (!dev)
+  return -ENOMEM;
+ lp = netdev_priv(dev);
+ link->priv = dev;
+ lp->p_dev = link;
 
-	link->config_flags |= CONF_ENABLE_IRQ;
-	link->config_index = 1;
+ spin_lock_init(&lp->lock);
+ link->resource[0]->end = 16;
+ link->resource[0]->flags |= IO_DATA_PATH_WIDTH_16;
 
-	dev->netdev_ops = &el3_netdev_ops;
-	dev->watchdog_timeo = TX_TIMEOUT;
+ link->config_flags |= CONF_ENABLE_IRQ;
+ link->config_index = 1;
 
-	dev->ethtool_ops = &netdev_ethtool_ops;
+ dev->netdev_ops = &el3_netdev_ops;
+ dev->watchdog_timeo = TX_TIMEOUT;
 
-	return tc589_config(link);
+ dev->ethtool_ops = &netdev_ethtool_ops;
+
+ return tc589_config(link);
 }

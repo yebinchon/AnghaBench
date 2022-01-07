@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char u8 ;
-struct usb_ftdi {int command_next; int command_head; TYPE_1__* udev; int /*<<< orphan*/  bulk_out_endpointAddr; } ;
-struct urb {int /*<<< orphan*/  transfer_dma; int /*<<< orphan*/  transfer_flags; } ;
-typedef  int /*<<< orphan*/  diag ;
-struct TYPE_5__ {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  URB_NO_TRANSFER_DMA_MAP ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ *,char*,int,...) ; 
- int fill_buffer_with_all_queued_commands (struct usb_ftdi*,char*,int,int) ; 
- int /*<<< orphan*/  ftdi_elan_kick_respond_queue (struct usb_ftdi*) ; 
- int ftdi_elan_total_command_size (struct usb_ftdi*,int) ; 
- int /*<<< orphan*/  ftdi_elan_write_bulk_callback ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
- struct urb* usb_alloc_urb (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* usb_buffer_alloc (TYPE_1__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usb_buffer_free (TYPE_1__*,int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usb_fill_bulk_urb (struct urb*,TYPE_1__*,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ,struct usb_ftdi*) ; 
- int /*<<< orphan*/  usb_free_urb (struct urb*) ; 
- int /*<<< orphan*/  usb_sndbulkpipe (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int usb_submit_urb (struct urb*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef char u8 ;
+struct usb_ftdi {int command_next; int command_head; TYPE_1__* udev; int bulk_out_endpointAddr; } ;
+struct urb {int transfer_dma; int transfer_flags; } ;
+typedef int diag ;
+struct TYPE_5__ {int dev; } ;
+
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int URB_NO_TRANSFER_DMA_MAP ;
+ int dev_err (int *,char*,int,...) ;
+ int fill_buffer_with_all_queued_commands (struct usb_ftdi*,char*,int,int) ;
+ int ftdi_elan_kick_respond_queue (struct usb_ftdi*) ;
+ int ftdi_elan_total_command_size (struct usb_ftdi*,int) ;
+ int ftdi_elan_write_bulk_callback ;
+ int sprintf (char*,char*,...) ;
+ struct urb* usb_alloc_urb (int ,int ) ;
+ char* usb_buffer_alloc (TYPE_1__*,int,int ,int *) ;
+ int usb_buffer_free (TYPE_1__*,int,char*,int ) ;
+ int usb_fill_bulk_urb (struct urb*,TYPE_1__*,int ,char*,int,int ,struct usb_ftdi*) ;
+ int usb_free_urb (struct urb*) ;
+ int usb_sndbulkpipe (TYPE_1__*,int ) ;
+ int usb_submit_urb (struct urb*,int ) ;
 
 __attribute__((used)) static int ftdi_elan_command_engine(struct usb_ftdi *ftdi)
 {
@@ -91,8 +91,8 @@ __attribute__((used)) static int ftdi_elan_command_engine(struct usb_ftdi *ftdi)
                 usb_free_urb(urb);
                 return retval;
         }
-        usb_free_urb(urb);        /* release our reference to this urb,
-                the USB core will eventually free it entirely */
+        usb_free_urb(urb);
+
         ftdi->command_head += command_size;
         ftdi_elan_kick_respond_queue(ftdi);
         return 0;

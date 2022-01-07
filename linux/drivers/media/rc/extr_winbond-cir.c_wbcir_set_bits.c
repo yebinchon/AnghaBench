@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
 
-/* Variables and functions */
- int inb (unsigned long) ; 
- int /*<<< orphan*/  outb (int,unsigned long) ; 
+
+
+
+typedef int u8 ;
+
+
+ int inb (unsigned long) ;
+ int outb (int,unsigned long) ;
 
 __attribute__((used)) static void
 wbcir_set_bits(unsigned long addr, u8 bits, u8 mask)
 {
-	u8 val;
+ u8 val;
 
-	val = inb(addr);
-	val = ((val & ~mask) | (bits & mask));
-	outb(val, addr);
+ val = inb(addr);
+ val = ((val & ~mask) | (bits & mask));
+ outb(val, addr);
 }

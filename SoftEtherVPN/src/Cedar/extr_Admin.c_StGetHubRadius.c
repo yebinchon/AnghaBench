@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int UINT ;
 struct TYPE_9__ {TYPE_1__* Server; } ;
-struct TYPE_8__ {int /*<<< orphan*/  RadiusRetryInterval; int /*<<< orphan*/  RadiusSecret; int /*<<< orphan*/  RadiusPort; int /*<<< orphan*/  RadiusServerName; int /*<<< orphan*/  HubName; } ;
-struct TYPE_7__ {scalar_t__ ServerType; int /*<<< orphan*/ * Cedar; } ;
-typedef  TYPE_1__ SERVER ;
-typedef  TYPE_2__ RPC_RADIUS ;
-typedef  int /*<<< orphan*/  HUB ;
-typedef  int /*<<< orphan*/  CEDAR ;
-typedef  TYPE_3__ ADMIN ;
+struct TYPE_8__ {int RadiusRetryInterval; int RadiusSecret; int RadiusPort; int RadiusServerName; int HubName; } ;
+struct TYPE_7__ {scalar_t__ ServerType; int * Cedar; } ;
+typedef TYPE_1__ SERVER ;
+typedef TYPE_2__ RPC_RADIUS ;
+typedef int HUB ;
+typedef int CEDAR ;
+typedef TYPE_3__ ADMIN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_RIGHT ; 
- int /*<<< orphan*/  ERR_HUB_NOT_FOUND ; 
- int /*<<< orphan*/  ERR_NOT_SUPPORTED ; 
- int /*<<< orphan*/  ERR_NO_ERROR ; 
- int /*<<< orphan*/ * GetHub (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetRadiusServerEx (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LockHubList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseHub (int /*<<< orphan*/ *) ; 
- scalar_t__ SERVER_TYPE_FARM_MEMBER ; 
- int /*<<< orphan*/  UnlockHubList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Zero (TYPE_2__*,int) ; 
+
+ int CHECK_RIGHT ;
+ int ERR_HUB_NOT_FOUND ;
+ int ERR_NOT_SUPPORTED ;
+ int ERR_NO_ERROR ;
+ int * GetHub (int *,int ) ;
+ int GetRadiusServerEx (int *,int ,int,int *,int ,int,int *) ;
+ int LockHubList (int *) ;
+ int ReleaseHub (int *) ;
+ scalar_t__ SERVER_TYPE_FARM_MEMBER ;
+ int UnlockHubList (int *) ;
+ int Zero (TYPE_2__*,int) ;
 
 UINT StGetHubRadius(ADMIN *a, RPC_RADIUS *t)
 {
-	SERVER *s = a->Server;
-	CEDAR *c = s->Cedar;
-	HUB *h = NULL;
+ SERVER *s = a->Server;
+ CEDAR *c = s->Cedar;
+ HUB *h = ((void*)0);
 
-	CHECK_RIGHT;
+ CHECK_RIGHT;
 
-	if (s->ServerType == SERVER_TYPE_FARM_MEMBER)
-	{
-		return ERR_NOT_SUPPORTED;
-	}
+ if (s->ServerType == SERVER_TYPE_FARM_MEMBER)
+ {
+  return ERR_NOT_SUPPORTED;
+ }
 
-	LockHubList(c);
-	{
-		h = GetHub(c, t->HubName);
-	}
-	UnlockHubList(c);
+ LockHubList(c);
+ {
+  h = GetHub(c, t->HubName);
+ }
+ UnlockHubList(c);
 
-	if (h == NULL)
-	{
-		return ERR_HUB_NOT_FOUND;
-	}
+ if (h == ((void*)0))
+ {
+  return ERR_HUB_NOT_FOUND;
+ }
 
-	Zero(t, sizeof(RPC_RADIUS));
-	//GetRadiusServer(h, t->RadiusServerName, sizeof(t->RadiusServerName),
-	//	&t->RadiusPort, t->RadiusSecret, sizeof(t->RadiusSecret));
-	GetRadiusServerEx(h, t->RadiusServerName, sizeof(t->RadiusServerName),
-		&t->RadiusPort, t->RadiusSecret, sizeof(t->RadiusSecret), &t->RadiusRetryInterval);
+ Zero(t, sizeof(RPC_RADIUS));
 
-	ReleaseHub(h);
 
-	return ERR_NO_ERROR;
+ GetRadiusServerEx(h, t->RadiusServerName, sizeof(t->RadiusServerName),
+  &t->RadiusPort, t->RadiusSecret, sizeof(t->RadiusSecret), &t->RadiusRetryInterval);
+
+ ReleaseHub(h);
+
+ return ERR_NO_ERROR;
 }

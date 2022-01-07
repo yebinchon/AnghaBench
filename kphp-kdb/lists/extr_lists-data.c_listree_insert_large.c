@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
 struct TYPE_17__ {int rpos; } ;
-typedef  TYPE_1__ tree_ext_small_t ;
-struct TYPE_18__ {int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
-typedef  TYPE_2__ tree_ext_large_t ;
-typedef  int /*<<< orphan*/  object_id_t ;
+typedef TYPE_1__ tree_ext_small_t ;
+struct TYPE_18__ {int y; int x; } ;
+typedef TYPE_2__ tree_ext_large_t ;
+typedef int object_id_t ;
 struct TYPE_19__ {scalar_t__ N; TYPE_2__** root; } ;
-typedef  TYPE_3__ listree_direct_t ;
+typedef TYPE_3__ listree_direct_t ;
 
-/* Variables and functions */
- TYPE_2__* LARGE_NODE (TYPE_1__*) ; 
- int /*<<< orphan*/  MAKE_RPOS (int,int /*<<< orphan*/ ) ; 
- TYPE_1__* NIL ; 
- scalar_t__ NODE_TYPE (TYPE_1__*) ; 
- int /*<<< orphan*/  SMALL_NODE (TYPE_2__*) ; 
- scalar_t__ TF_MINUS ; 
- int /*<<< orphan*/  TF_PLUS ; 
- int /*<<< orphan*/  assert (int) ; 
- int find_rpos_direct (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_data_direct (TYPE_3__*,scalar_t__) ; 
- int /*<<< orphan*/  lrand48 () ; 
- TYPE_2__* new_tree_subnode_large (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  object_id_equal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* tree_ext_adjust_deltas (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- TYPE_1__* tree_ext_insert (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* tree_ext_lookup (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ TYPE_2__* LARGE_NODE (TYPE_1__*) ;
+ int MAKE_RPOS (int,int ) ;
+ TYPE_1__* NIL ;
+ scalar_t__ NODE_TYPE (TYPE_1__*) ;
+ int SMALL_NODE (TYPE_2__*) ;
+ scalar_t__ TF_MINUS ;
+ int TF_PLUS ;
+ int assert (int) ;
+ int find_rpos_direct (TYPE_3__*,int ) ;
+ int get_data_direct (TYPE_3__*,scalar_t__) ;
+ int lrand48 () ;
+ TYPE_2__* new_tree_subnode_large (int ,int ,int ) ;
+ int object_id_equal (int ,int ) ;
+ TYPE_1__* tree_ext_adjust_deltas (int ,int ,int) ;
+ TYPE_1__* tree_ext_insert (int ,int ,int ,int ) ;
+ TYPE_1__* tree_ext_lookup (int ,int ) ;
 
 __attribute__((used)) static tree_ext_large_t *listree_insert_large (listree_direct_t *LD, object_id_t x) {
   tree_ext_large_t **R = LD->root;
@@ -51,7 +51,7 @@ __attribute__((used)) static tree_ext_large_t *listree_insert_large (listree_dir
     return node;
   } else {
     assert (NODE_TYPE(T) == TF_MINUS);
-    T->rpos &= -4;	// TF_MINUS -> TF_ZERO
+    T->rpos &= -4;
     assert (tree_ext_adjust_deltas (SMALL_NODE (*R), x, 1) == T);
     return LARGE_NODE (T);
   }

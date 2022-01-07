@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  database_id; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int database_id; } ;
 struct TYPE_3__ {int initialized; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  InvalidOid ; 
- TYPE_2__ database_info ; 
- TYPE_1__ s_catalog ; 
+
+ int InvalidOid ;
+ TYPE_2__ database_info ;
+ TYPE_1__ s_catalog ;
 
 void
 ts_catalog_reset(void)
 {
-	s_catalog.initialized = false;
-	database_info.database_id = InvalidOid;
+ s_catalog.initialized = 0;
+ database_info.database_id = InvalidOid;
 }

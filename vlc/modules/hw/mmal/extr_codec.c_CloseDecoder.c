@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ decoder_t ;
-struct TYPE_9__ {int /*<<< orphan*/  sem; TYPE_4__* component; scalar_t__ output_pool; scalar_t__ output_format; scalar_t__ input_pool; TYPE_3__* output; TYPE_3__* input; } ;
-typedef  TYPE_2__ decoder_sys_t ;
+typedef TYPE_1__ decoder_t ;
+struct TYPE_9__ {int sem; TYPE_4__* component; scalar_t__ output_pool; scalar_t__ output_format; scalar_t__ input_pool; TYPE_3__* output; TYPE_3__* input; } ;
+typedef TYPE_2__ decoder_sys_t ;
 struct TYPE_11__ {scalar_t__ is_enabled; TYPE_3__* control; } ;
 struct TYPE_10__ {scalar_t__ is_enabled; } ;
-typedef  int /*<<< orphan*/  MMAL_BUFFER_HEADER_T ;
+typedef int MMAL_BUFFER_HEADER_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bcm_host_deinit () ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  mmal_component_disable (TYPE_4__*) ; 
- int /*<<< orphan*/  mmal_component_release (TYPE_4__*) ; 
- int /*<<< orphan*/  mmal_format_free (scalar_t__) ; 
- int /*<<< orphan*/  mmal_pool_destroy (scalar_t__) ; 
- int /*<<< orphan*/  mmal_port_disable (TYPE_3__*) ; 
- int /*<<< orphan*/  vlc_sem_destroy (int /*<<< orphan*/ *) ; 
+
+ int bcm_host_deinit () ;
+ int free (TYPE_2__*) ;
+ int mmal_component_disable (TYPE_4__*) ;
+ int mmal_component_release (TYPE_4__*) ;
+ int mmal_format_free (scalar_t__) ;
+ int mmal_pool_destroy (scalar_t__) ;
+ int mmal_port_disable (TYPE_3__*) ;
+ int vlc_sem_destroy (int *) ;
 
 __attribute__((used)) static void CloseDecoder(decoder_t *dec)
 {

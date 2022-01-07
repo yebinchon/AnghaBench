@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mm {scalar_t__ refcount; int /*<<< orphan*/  mem; int /*<<< orphan*/ * exefile; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fd_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (struct mm*) ; 
- int /*<<< orphan*/  mem_destroy (int /*<<< orphan*/ *) ; 
+
+
+
+struct mm {scalar_t__ refcount; int mem; int * exefile; } ;
+
+
+ int fd_close (int *) ;
+ int free (struct mm*) ;
+ int mem_destroy (int *) ;
 
 void mm_release(struct mm *mm) {
     if (--mm->refcount == 0) {
-        if (mm->exefile != NULL)
+        if (mm->exefile != ((void*)0))
             fd_close(mm->exefile);
         mem_destroy(&mm->mem);
         free(mm);

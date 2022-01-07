@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct raw1394_portinfo {int dummy; } ;
-typedef  int /*<<< orphan*/  stream_t ;
-typedef  int /*<<< orphan*/  raw1394handle_t ;
+typedef int stream_t ;
+typedef int raw1394handle_t ;
 
-/* Variables and functions */
- int VLC_EGENERIC ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  raw1394_destroy_handle (int /*<<< orphan*/ ) ; 
- int raw1394_get_port_info (int /*<<< orphan*/ ,struct raw1394_portinfo*,int) ; 
- int /*<<< orphan*/  raw1394_new_handle () ; 
- int /*<<< orphan*/  vlc_strerror_c (int /*<<< orphan*/ ) ; 
+
+ int VLC_EGENERIC ;
+ int errno ;
+ int msg_Err (int *,char*,int ) ;
+ int raw1394_destroy_handle (int ) ;
+ int raw1394_get_port_info (int ,struct raw1394_portinfo*,int) ;
+ int raw1394_new_handle () ;
+ int vlc_strerror_c (int ) ;
 
 __attribute__((used)) static int Raw1394GetNumPorts( stream_t *p_access )
 {
@@ -29,7 +29,7 @@ __attribute__((used)) static int Raw1394GetNumPorts( stream_t *p_access )
     struct raw1394_portinfo pinf[ 16 ];
     raw1394handle_t handle;
 
-    /* get a raw1394 handle */
+
     if( !( handle = raw1394_new_handle() ) )
     {
         msg_Err( p_access, "raw1394 - failed to get handle: %s",

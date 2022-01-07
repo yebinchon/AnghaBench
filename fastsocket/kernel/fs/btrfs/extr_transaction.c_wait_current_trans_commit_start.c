@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct btrfs_transaction {int /*<<< orphan*/  in_commit; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct btrfs_transaction {int in_commit; } ;
 struct btrfs_root {TYPE_1__* fs_info; } ;
-struct TYPE_2__ {int /*<<< orphan*/  transaction_blocked_wait; } ;
+struct TYPE_2__ {int transaction_blocked_wait; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  wait_event (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int wait_event (int ,int ) ;
 
 __attribute__((used)) static void wait_current_trans_commit_start(struct btrfs_root *root,
-					    struct btrfs_transaction *trans)
+         struct btrfs_transaction *trans)
 {
-	wait_event(root->fs_info->transaction_blocked_wait, trans->in_commit);
+ wait_event(root->fs_info->transaction_blocked_wait, trans->in_commit);
 }

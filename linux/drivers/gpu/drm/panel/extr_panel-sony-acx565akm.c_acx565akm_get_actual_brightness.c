@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
+
+
+
+
+typedef int u8 ;
 struct acx565akm_panel {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MIPI_DCS_GET_DISPLAY_BRIGHTNESS ; 
- int /*<<< orphan*/  acx565akm_read (struct acx565akm_panel*,int /*<<< orphan*/ ,int*,int) ; 
+
+ int MIPI_DCS_GET_DISPLAY_BRIGHTNESS ;
+ int acx565akm_read (struct acx565akm_panel*,int ,int*,int) ;
 
 __attribute__((used)) static int acx565akm_get_actual_brightness(struct acx565akm_panel *lcd)
 {
-	u8 bv;
+ u8 bv;
 
-	acx565akm_read(lcd, MIPI_DCS_GET_DISPLAY_BRIGHTNESS, &bv, 1);
+ acx565akm_read(lcd, MIPI_DCS_GET_DISPLAY_BRIGHTNESS, &bv, 1);
 
-	return bv;
+ return bv;
 }

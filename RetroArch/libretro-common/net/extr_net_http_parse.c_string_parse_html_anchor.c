@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,size_t) ; 
- char* strcasestr (char const*,char*) ; 
- char* strstr (char const*,char*) ; 
+ int memcpy (char*,char const*,int) ;
+ int memset (char*,int ,size_t) ;
+ char* strcasestr (char const*,char*) ;
+ char* strstr (char const*,char*) ;
 
 int string_parse_html_anchor(const char *line, char *link, char *name,
       size_t link_size, size_t name_size)
@@ -51,7 +43,7 @@ int string_parse_html_anchor(const char *line, char *link, char *name,
       if (!*name)
       {
          const char *start = strstr(line, "\">");
-         const char *end   = start ? strstr(start, "</a>") : NULL;
+         const char *end = start ? strstr(start, "</a>") : ((void*)0);
 
          if (!start || !end)
             return 1;

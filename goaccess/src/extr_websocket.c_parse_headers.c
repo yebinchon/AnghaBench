@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char* buf; } ;
-typedef  TYPE_1__ WSHeaders ;
+typedef TYPE_1__ WSHeaders ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int strlen (char const*) ; 
- char* strstr (char const*,char*) ; 
- int ws_set_header_fields (char*,TYPE_1__*) ; 
- char* xmalloc (int) ; 
+
+ int free (char*) ;
+ int memcpy (char*,char const*,int) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int strlen (char const*) ;
+ char* strstr (char const*,char*) ;
+ int ws_set_header_fields (char*,TYPE_1__*) ;
+ char* xmalloc (int) ;
 
 __attribute__((used)) static int
 parse_headers (WSHeaders * headers)
 {
-  char *tmp = NULL;
+  char *tmp = ((void*)0);
   const char *buffer = headers->buf;
-  const char *line = buffer, *next = NULL;
+  const char *line = buffer, *next = ((void*)0);
   int len = 0;
 
   while (line) {
-    if ((next = strstr (line, "\r\n")) != NULL)
+    if ((next = strstr (line, "\r\n")) != ((void*)0))
       len = (next - line);
     else
       len = strlen (line);
@@ -50,7 +50,7 @@ parse_headers (WSHeaders * headers)
     }
 
     free (tmp);
-    line = next ? (next + 2) : NULL;
+    line = next ? (next + 2) : ((void*)0);
 
     if (strcmp (next, "\r\n\r\n") == 0)
       break;

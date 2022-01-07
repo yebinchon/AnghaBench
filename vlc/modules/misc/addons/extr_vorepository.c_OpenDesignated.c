@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-struct TYPE_2__ {int /*<<< orphan*/  pf_retrieve; int /*<<< orphan*/  pf_find; scalar_t__ psz_uri; } ;
-typedef  TYPE_1__ addons_finder_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FindDesignated ; 
- int /*<<< orphan*/  Retrieve ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- scalar_t__ strlen (scalar_t__) ; 
- scalar_t__ strncmp (char*,scalar_t__,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+struct TYPE_2__ {int pf_retrieve; int pf_find; scalar_t__ psz_uri; } ;
+typedef TYPE_1__ addons_finder_t ;
+
+
+ int FindDesignated ;
+ int Retrieve ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ scalar_t__ strlen (scalar_t__) ;
+ scalar_t__ strncmp (char*,scalar_t__,int) ;
 
 __attribute__((used)) static int OpenDesignated(vlc_object_t *p_this)
 {

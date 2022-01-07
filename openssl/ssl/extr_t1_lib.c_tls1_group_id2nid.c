@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
 struct TYPE_3__ {int nid; } ;
-typedef  TYPE_1__ TLS_GROUP_INFO ;
+typedef TYPE_1__ TLS_GROUP_INFO ;
 
-/* Variables and functions */
- int NID_undef ; 
- TYPE_1__* tls1_group_id_lookup (int /*<<< orphan*/ ) ; 
+
+ int NID_undef ;
+ TYPE_1__* tls1_group_id_lookup (int ) ;
 
 int tls1_group_id2nid(uint16_t group_id)
 {
     const TLS_GROUP_INFO *ginf = tls1_group_id_lookup(group_id);
 
-    return ginf == NULL ? NID_undef : ginf->nid;
+    return ginf == ((void*)0) ? NID_undef : ginf->nid;
 }

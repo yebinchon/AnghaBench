@@ -1,0 +1,58 @@
+; ModuleID = '/home/carl/AnghaBench/git/builtin/extr_prune-packed.c_prune_packed_objects.c'
+source_filename = "/home/carl/AnghaBench/git/builtin/extr_prune-packed.c_prune_packed_objects.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+@PRUNE_PACKED_VERBOSE = common dso_local global i32 0, align 4
+@.str = private unnamed_addr constant [27 x i8] c"Removing duplicate objects\00", align 1
+@progress = common dso_local global i32 0, align 4
+@prune_object = common dso_local global i32 0, align 4
+@prune_subdir = common dso_local global i32 0, align 4
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local void @prune_packed_objects(i32 %0) #0 {
+  %2 = alloca i32, align 4
+  store i32 %0, i32* %2, align 4
+  %3 = load i32, i32* %2, align 4
+  %4 = load i32, i32* @PRUNE_PACKED_VERBOSE, align 4
+  %5 = and i32 %3, %4
+  %6 = icmp ne i32 %5, 0
+  br i1 %6, label %7, label %10
+
+7:                                                ; preds = %1
+  %8 = call i32 @_(i8* getelementptr inbounds ([27 x i8], [27 x i8]* @.str, i64 0, i64 0))
+  %9 = call i32 @start_delayed_progress(i32 %8, i32 256)
+  store i32 %9, i32* @progress, align 4
+  br label %10
+
+10:                                               ; preds = %7, %1
+  %11 = call i32 (...) @get_object_directory()
+  %12 = load i32, i32* @prune_object, align 4
+  %13 = load i32, i32* @prune_subdir, align 4
+  %14 = call i32 @for_each_loose_file_in_objdir(i32 %11, i32 %12, i32* null, i32 %13, i32* %2)
+  %15 = load i32, i32* @progress, align 4
+  %16 = call i32 @display_progress(i32 %15, i32 256)
+  %17 = call i32 @stop_progress(i32* @progress)
+  ret void
+}
+
+declare dso_local i32 @start_delayed_progress(i32, i32) #1
+
+declare dso_local i32 @_(i8*) #1
+
+declare dso_local i32 @for_each_loose_file_in_objdir(i32, i32, i32*, i32, i32*) #1
+
+declare dso_local i32 @get_object_directory(...) #1
+
+declare dso_local i32 @display_progress(i32, i32) #1
+
+declare dso_local i32 @stop_progress(i32*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

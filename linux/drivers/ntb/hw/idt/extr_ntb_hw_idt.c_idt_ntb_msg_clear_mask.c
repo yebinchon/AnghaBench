@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
+
+
+
+
+typedef int u64 ;
 struct ntb_dev {int dummy; } ;
-struct idt_ntb_dev {int /*<<< orphan*/  msg_mask_lock; } ;
+struct idt_ntb_dev {int msg_mask_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IDT_NT_MSGSTSMSK ; 
- int /*<<< orphan*/  idt_reg_clear_bits (struct idt_ntb_dev*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct idt_ntb_dev* to_ndev_ntb (struct ntb_dev*) ; 
+
+ int IDT_NT_MSGSTSMSK ;
+ int idt_reg_clear_bits (struct idt_ntb_dev*,int ,int *,int ) ;
+ struct idt_ntb_dev* to_ndev_ntb (struct ntb_dev*) ;
 
 __attribute__((used)) static int idt_ntb_msg_clear_mask(struct ntb_dev *ntb, u64 mask_bits)
 {
-	struct idt_ntb_dev *ndev = to_ndev_ntb(ntb);
+ struct idt_ntb_dev *ndev = to_ndev_ntb(ntb);
 
-	idt_reg_clear_bits(ndev, IDT_NT_MSGSTSMSK, &ndev->msg_mask_lock,
-			   mask_bits);
+ idt_reg_clear_bits(ndev, IDT_NT_MSGSTSMSK, &ndev->msg_mask_lock,
+      mask_bits);
 
-	return 0;
+ return 0;
 }

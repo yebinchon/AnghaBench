@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_5__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
-typedef  struct TYPE_15__   TYPE_11__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int int64_t ;
+
+
+typedef struct TYPE_20__ TYPE_5__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+typedef struct TYPE_15__ TYPE_11__ ;
+
+
+typedef int uint64_t ;
+typedef int int64_t ;
 struct TYPE_20__ {scalar_t__ eof_reached; } ;
 struct TYPE_19__ {int nb_frames; void* duration; TYPE_2__* priv_data; } ;
 struct TYPE_18__ {TYPE_11__* fc; } ;
 struct TYPE_17__ {unsigned int stts_count; int duration_for_fps; int nb_frames_for_fps; int track_end; TYPE_1__* stts_data; } ;
 struct TYPE_16__ {unsigned int count; int duration; } ;
 struct TYPE_15__ {int nb_streams; TYPE_4__** streams; } ;
-typedef  TYPE_1__ MOVStts ;
-typedef  TYPE_2__ MOVStreamContext ;
-typedef  TYPE_3__ MOVContext ;
-typedef  int /*<<< orphan*/  MOVAtom ;
-typedef  TYPE_4__ AVStream ;
-typedef  TYPE_5__ AVIOContext ;
+typedef TYPE_1__ MOVStts ;
+typedef TYPE_2__ MOVStreamContext ;
+typedef TYPE_3__ MOVContext ;
+typedef int MOVAtom ;
+typedef TYPE_4__ AVStream ;
+typedef TYPE_5__ AVIOContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int /*<<< orphan*/  AV_LOG_TRACE ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  ENOMEM ; 
- void* FFMAX (unsigned int,int) ; 
- void* FFMIN (void*,int) ; 
- int INT64_MAX ; 
- int INT_MAX ; 
- TYPE_1__* av_fast_realloc (TYPE_1__*,unsigned int*,unsigned int) ; 
- int /*<<< orphan*/  av_freep (TYPE_1__**) ; 
- int /*<<< orphan*/  av_log (TYPE_11__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  avio_r8 (TYPE_5__*) ; 
- int /*<<< orphan*/  avio_rb24 (TYPE_5__*) ; 
- void* avio_rb32 (TYPE_5__*) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AV_LOG_TRACE ;
+ int AV_LOG_WARNING ;
+ int ENOMEM ;
+ void* FFMAX (unsigned int,int) ;
+ void* FFMIN (void*,int) ;
+ int INT64_MAX ;
+ int INT_MAX ;
+ TYPE_1__* av_fast_realloc (TYPE_1__*,unsigned int*,unsigned int) ;
+ int av_freep (TYPE_1__**) ;
+ int av_log (TYPE_11__*,int ,char*,...) ;
+ int avio_r8 (TYPE_5__*) ;
+ int avio_rb24 (TYPE_5__*) ;
+ void* avio_rb32 (TYPE_5__*) ;
 
 __attribute__((used)) static int mov_read_stts(MOVContext *c, AVIOContext *pb, MOVAtom atom)
 {
@@ -61,8 +61,8 @@ __attribute__((used)) static int mov_read_stts(MOVContext *c, AVIOContext *pb, M
     st = c->fc->streams[c->fc->nb_streams-1];
     sc = st->priv_data;
 
-    avio_r8(pb); /* version */
-    avio_rb24(pb); /* flags */
+    avio_r8(pb);
+    avio_rb24(pb);
     entries = avio_rb32(pb);
 
     av_log(c->fc, AV_LOG_TRACE, "track[%u].stts.entries = %u\n",
@@ -108,7 +108,7 @@ __attribute__((used)) static int mov_read_stts(MOVContext *c, AVIOContext *pb, M
         duration <= INT64_MAX - sc->duration_for_fps &&
         total_sample_count <= INT_MAX - sc->nb_frames_for_fps
     ) {
-        sc->duration_for_fps  += duration;
+        sc->duration_for_fps += duration;
         sc->nb_frames_for_fps += total_sample_count;
     }
 

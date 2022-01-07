@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PUTBITS2 (int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int PUTBITS2 (int) ;
 
 __attribute__((used)) static void dvb_encode_rle2(uint8_t **pq,
                             const uint8_t *bitmap, int linesize,
@@ -57,7 +57,7 @@ __attribute__((used)) static void dvb_encode_rle2(uint8_t **pq,
                 PUTBITS2(v & 3);
                 PUTBITS2(color);
             } else if (len >= 29) {
-                /* length = 29 ... 284 */
+
                 if (len > 284)
                     len = 284;
                 v = len - 29;
@@ -78,7 +78,7 @@ __attribute__((used)) static void dvb_encode_rle2(uint8_t **pq,
             }
             x += len;
         }
-        /* end of line */
+
         PUTBITS2(0);
         PUTBITS2(0);
         PUTBITS2(0);

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int done; int /*<<< orphan*/  phi_stmt; scalar_t__ num_phi; scalar_t__ phi_i; int /*<<< orphan*/  iter_type; int /*<<< orphan*/ * mustkills; int /*<<< orphan*/ * mustdefs; int /*<<< orphan*/ * mayuses; int /*<<< orphan*/ * maydefs; int /*<<< orphan*/ * vuses; int /*<<< orphan*/ * uses; int /*<<< orphan*/ * defs; } ;
-typedef  TYPE_1__ ssa_op_iter ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NULL_TREE ; 
- int /*<<< orphan*/  ssa_op_iter_none ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int done; int phi_stmt; scalar_t__ num_phi; scalar_t__ phi_i; int iter_type; int * mustkills; int * mustdefs; int * mayuses; int * maydefs; int * vuses; int * uses; int * defs; } ;
+typedef TYPE_1__ ssa_op_iter ;
+
+
+ int NULL_TREE ;
+ int ssa_op_iter_none ;
 
 __attribute__((used)) static inline void
 clear_and_done_ssa_iter (ssa_op_iter *ptr)
 {
-  ptr->defs = NULL;
-  ptr->uses = NULL;
-  ptr->vuses = NULL;
-  ptr->maydefs = NULL;
-  ptr->mayuses = NULL;
-  ptr->mustdefs = NULL;
-  ptr->mustkills = NULL;
+  ptr->defs = ((void*)0);
+  ptr->uses = ((void*)0);
+  ptr->vuses = ((void*)0);
+  ptr->maydefs = ((void*)0);
+  ptr->mayuses = ((void*)0);
+  ptr->mustdefs = ((void*)0);
+  ptr->mustkills = ((void*)0);
   ptr->iter_type = ssa_op_iter_none;
   ptr->phi_i = 0;
   ptr->num_phi = 0;
   ptr->phi_stmt = NULL_TREE;
-  ptr->done = true;
+  ptr->done = 1;
 }

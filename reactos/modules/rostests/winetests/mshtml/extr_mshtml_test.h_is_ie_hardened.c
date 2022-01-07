@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int /*<<< orphan*/  KEY_QUERY_VALUE ; 
- scalar_t__ REG_DWORD ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ ,scalar_t__*) ; 
+
+
+
+typedef int LPBYTE ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+typedef int BOOL ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int HKEY_CURRENT_USER ;
+ int KEY_QUERY_VALUE ;
+ scalar_t__ REG_DWORD ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegOpenKeyExA (int ,char*,int ,int ,int *) ;
+ scalar_t__ RegQueryValueExA (int ,char*,int *,scalar_t__*,int ,scalar_t__*) ;
 
 __attribute__((used)) static inline BOOL is_ie_hardened(void)
 {
@@ -33,7 +33,7 @@ __attribute__((used)) static inline BOOL is_ie_hardened(void)
     if(RegOpenKeyExA(HKEY_CURRENT_USER, "Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap",
                     0, KEY_QUERY_VALUE, &zone_map) == ERROR_SUCCESS) {
         size = sizeof(DWORD);
-        if (RegQueryValueExA(zone_map, "IEHarden", NULL, &type, (LPBYTE) &ie_harden, &size) != ERROR_SUCCESS ||
+        if (RegQueryValueExA(zone_map, "IEHarden", ((void*)0), &type, (LPBYTE) &ie_harden, &size) != ERROR_SUCCESS ||
             type != REG_DWORD) {
             ie_harden = 0;
         }

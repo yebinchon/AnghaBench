@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int boolean_t ;
-typedef  int /*<<< orphan*/  UInt8 ;
-typedef  int /*<<< orphan*/ * CFURLRef ;
-typedef  int /*<<< orphan*/ * CFStringRef ;
-typedef  int /*<<< orphan*/ * CFDictionaryRef ;
-typedef  int /*<<< orphan*/ * CFBundleRef ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CFBundleCreate (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CFBundleGetInfoDictionary (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CFDictionaryGetValue (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CFRelease (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CFURLCreateFromFileSystemRepresentation (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- char* convert_cfstring (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  free (char*) ; 
- char const* gProgname ; 
- int /*<<< orphan*/  kCFAllocatorDefault ; 
- int /*<<< orphan*/  kCFBundleGetInfoStringKey ; 
- int /*<<< orphan*/  kNSHumanReadableCopyrightKey ; 
- int kxld_validate_copyright_string (char*) ; 
- int /*<<< orphan*/  printFormat () ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- int /*<<< orphan*/  usage () ; 
+
+
+
+typedef int boolean_t ;
+typedef int UInt8 ;
+typedef int * CFURLRef ;
+typedef int * CFStringRef ;
+typedef int * CFDictionaryRef ;
+typedef int * CFBundleRef ;
+
+
+ int * CFBundleCreate (int ,int *) ;
+ int * CFBundleGetInfoDictionary (int *) ;
+ int * CFDictionaryGetValue (int *,int ) ;
+ int CFRelease (int *) ;
+ int * CFURLCreateFromFileSystemRepresentation (int ,int const*,int ,int ) ;
+ int FALSE ;
+ char* convert_cfstring (int *) ;
+ int fprintf (int ,char*,...) ;
+ int free (char*) ;
+ char const* gProgname ;
+ int kCFAllocatorDefault ;
+ int kCFBundleGetInfoStringKey ;
+ int kNSHumanReadableCopyrightKey ;
+ int kxld_validate_copyright_string (char*) ;
+ int printFormat () ;
+ int stderr ;
+ int strlen (char const*) ;
+ int usage () ;
 
 int
 main(int argc, const char *argv[])
 {
     int result = 1;
-    boolean_t infoCopyrightIsValid = false;
-    boolean_t readableCopyrightIsValid = false;
-    CFURLRef anURL = NULL;                      // must release
-    CFBundleRef aBundle = NULL;                 // must release
-    CFDictionaryRef aDict = NULL;               // do not release
-    CFStringRef infoCopyrightString = NULL;     // do not release
-    CFStringRef readableCopyrightString = NULL; // do not release
-    char *infoStr = NULL;                       // must free
-    char *readableStr = NULL;                   // must free
+    boolean_t infoCopyrightIsValid = 0;
+    boolean_t readableCopyrightIsValid = 0;
+    CFURLRef anURL = ((void*)0);
+    CFBundleRef aBundle = ((void*)0);
+    CFDictionaryRef aDict = ((void*)0);
+    CFStringRef infoCopyrightString = ((void*)0);
+    CFStringRef readableCopyrightString = ((void*)0);
+    char *infoStr = ((void*)0);
+    char *readableStr = ((void*)0);
 
     gProgname = argv[0];
 
@@ -59,7 +59,7 @@ main(int argc, const char *argv[])
     }
 
     anURL = CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault,
-        (const UInt8 *) argv[1], strlen(argv[1]), /* isDirectory */ FALSE);
+        (const UInt8 *) argv[1], strlen(argv[1]), FALSE);
     if (!anURL) {
         fprintf(stderr, "Can't create path from %s\n", argv[1]);
         goto finish;
@@ -93,7 +93,7 @@ main(int argc, const char *argv[])
         infoStr = convert_cfstring(infoCopyrightString);
         if (!infoStr) goto finish;
 
-        infoCopyrightIsValid = kxld_validate_copyright_string(infoStr); 
+        infoCopyrightIsValid = kxld_validate_copyright_string(infoStr);
     }
 
     if (readableCopyrightString) {
@@ -110,7 +110,7 @@ main(int argc, const char *argv[])
                     "obsolete.  Please migrate your copyright string to NSHumanReadableCopyright.\n\n");
         } else {
             fprintf(stderr, "Error: There is no valid copyright string for this kext.\n\n");
-            printFormat(); 
+            printFormat();
             goto finish;
         }
     }

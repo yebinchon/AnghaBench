@@ -1,104 +1,104 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct symbol {int type; int flags; int /*<<< orphan*/  name; TYPE_1__* def; } ;
-struct TYPE_2__ {int /*<<< orphan*/  val; int /*<<< orphan*/  tri; } ;
 
-/* Variables and functions */
-#define  S_BOOLEAN 133 
- int S_DEF_AUTO ; 
-#define  S_HEX 132 
-#define  S_INT 131 
-#define  S_OTHER 130 
-#define  S_STRING 129 
-#define  S_TRISTATE 128 
- int /*<<< orphan*/  conf_warning (char*,...) ; 
- int /*<<< orphan*/  isspace (char) ; 
- int /*<<< orphan*/  memmove (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mod ; 
- int /*<<< orphan*/  no ; 
- int /*<<< orphan*/  strdup (char*) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- char* strpbrk (char*,char*) ; 
- int /*<<< orphan*/  sym_string_valid (struct symbol*,char*) ; 
- int /*<<< orphan*/  yes ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct symbol {int type; int flags; int name; TYPE_1__* def; } ;
+struct TYPE_2__ {int val; int tri; } ;
+
+
+
+ int S_DEF_AUTO ;
+
+
+
+
+
+ int conf_warning (char*,...) ;
+ int isspace (char) ;
+ int memmove (char*,char*,int ) ;
+ int mod ;
+ int no ;
+ int strdup (char*) ;
+ int strlen (char*) ;
+ char* strpbrk (char*,char*) ;
+ int sym_string_valid (struct symbol*,char*) ;
+ int yes ;
 
 __attribute__((used)) static int conf_set_sym_val(struct symbol *sym, int def, int def_flags, char *p)
 {
-	char *p2;
+ char *p2;
 
-	switch (sym->type) {
-	case S_TRISTATE:
-		if (p[0] == 'm') {
-			sym->def[def].tri = mod;
-			sym->flags |= def_flags;
-			break;
-		}
-		/* fall through */
-	case S_BOOLEAN:
-		if (p[0] == 'y') {
-			sym->def[def].tri = yes;
-			sym->flags |= def_flags;
-			break;
-		}
-		if (p[0] == 'n') {
-			sym->def[def].tri = no;
-			sym->flags |= def_flags;
-			break;
-		}
-		if (def != S_DEF_AUTO)
-			conf_warning("symbol value '%s' invalid for %s",
-				     p, sym->name);
-		return 1;
-	case S_OTHER:
-		if (*p != '"') {
-			for (p2 = p; *p2 && !isspace(*p2); p2++)
-				;
-			sym->type = S_STRING;
-			goto done;
-		}
-		/* fall through */
-	case S_STRING:
-		if (*p++ != '"')
-			break;
-		for (p2 = p; (p2 = strpbrk(p2, "\"\\")); p2++) {
-			if (*p2 == '"') {
-				*p2 = 0;
-				break;
-			}
-			memmove(p2, p2 + 1, strlen(p2));
-		}
-		if (!p2) {
-			if (def != S_DEF_AUTO)
-				conf_warning("invalid string found");
-			return 1;
-		}
-		/* fall through */
-	case S_INT:
-	case S_HEX:
-	done:
-		if (sym_string_valid(sym, p)) {
-			sym->def[def].val = strdup(p);
-			sym->flags |= def_flags;
-		} else {
-			if (def != S_DEF_AUTO)
-				conf_warning("symbol value '%s' invalid for %s",
-					     p, sym->name);
-			return 1;
-		}
-		break;
-	default:
-		;
-	}
-	return 0;
+ switch (sym->type) {
+ case 128:
+  if (p[0] == 'm') {
+   sym->def[def].tri = mod;
+   sym->flags |= def_flags;
+   break;
+  }
+
+ case 133:
+  if (p[0] == 'y') {
+   sym->def[def].tri = yes;
+   sym->flags |= def_flags;
+   break;
+  }
+  if (p[0] == 'n') {
+   sym->def[def].tri = no;
+   sym->flags |= def_flags;
+   break;
+  }
+  if (def != S_DEF_AUTO)
+   conf_warning("symbol value '%s' invalid for %s",
+         p, sym->name);
+  return 1;
+ case 130:
+  if (*p != '"') {
+   for (p2 = p; *p2 && !isspace(*p2); p2++)
+    ;
+   sym->type = 129;
+   goto done;
+  }
+
+ case 129:
+  if (*p++ != '"')
+   break;
+  for (p2 = p; (p2 = strpbrk(p2, "\"\\")); p2++) {
+   if (*p2 == '"') {
+    *p2 = 0;
+    break;
+   }
+   memmove(p2, p2 + 1, strlen(p2));
+  }
+  if (!p2) {
+   if (def != S_DEF_AUTO)
+    conf_warning("invalid string found");
+   return 1;
+  }
+
+ case 131:
+ case 132:
+ done:
+  if (sym_string_valid(sym, p)) {
+   sym->def[def].val = strdup(p);
+   sym->flags |= def_flags;
+  } else {
+   if (def != S_DEF_AUTO)
+    conf_warning("symbol value '%s' invalid for %s",
+          p, sym->name);
+   return 1;
+  }
+  break;
+ default:
+  ;
+ }
+ return 0;
 }

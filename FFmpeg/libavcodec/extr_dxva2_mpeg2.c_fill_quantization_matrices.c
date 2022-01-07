@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int* idct_permutation; } ;
-struct MpegEncContext {int /*<<< orphan*/ * chroma_inter_matrix; int /*<<< orphan*/ * chroma_intra_matrix; int /*<<< orphan*/ * inter_matrix; int /*<<< orphan*/ * intra_matrix; TYPE_1__ idsp; } ;
-struct TYPE_5__ {int* bNewQmatrix; int /*<<< orphan*/ ** Qmatrix; } ;
-typedef  TYPE_2__ DXVA_QmatrixData ;
-typedef  int /*<<< orphan*/  AVDXVAContext ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
+struct MpegEncContext {int * chroma_inter_matrix; int * chroma_intra_matrix; int * inter_matrix; int * intra_matrix; TYPE_1__ idsp; } ;
+struct TYPE_5__ {int* bNewQmatrix; int ** Qmatrix; } ;
+typedef TYPE_2__ DXVA_QmatrixData ;
+typedef int AVDXVAContext ;
+typedef int AVCodecContext ;
 
-/* Variables and functions */
- size_t* ff_zigzag_direct ; 
+
+ size_t* ff_zigzag_direct ;
 
 __attribute__((used)) static void fill_quantization_matrices(AVCodecContext *avctx,
                                        AVDXVAContext *ctx,

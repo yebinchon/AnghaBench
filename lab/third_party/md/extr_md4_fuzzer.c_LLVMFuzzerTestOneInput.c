@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  MD4_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MD4Final (unsigned char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MD4Init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MD4Update (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,size_t) ; 
+
+
+
+typedef int uint8_t ;
+typedef int MD4_CTX ;
+
+
+ int MD4Final (unsigned char*,int *) ;
+ int MD4Init (int *) ;
+ int MD4Update (int *,int const*,size_t) ;
 
 int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
   unsigned char digest[16];

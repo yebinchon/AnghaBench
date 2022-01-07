@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-struct strm_array {scalar_t__ len; int /*<<< orphan*/ * ptr; int /*<<< orphan*/  headers; } ;
-typedef  scalar_t__ strm_value ;
-typedef  scalar_t__ strm_string ;
-typedef  int /*<<< orphan*/  strm_stream ;
-typedef  int /*<<< orphan*/  strm_state ;
-typedef  int /*<<< orphan*/  strm_int ;
-typedef  int /*<<< orphan*/  strm_array ;
-struct TYPE_3__ {scalar_t__ type; int /*<<< orphan*/  value; int /*<<< orphan*/  key; } ;
-typedef  TYPE_1__ node_pair ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct strm_array {scalar_t__ len; int * ptr; int headers; } ;
+typedef scalar_t__ strm_value ;
+typedef scalar_t__ strm_string ;
+typedef int strm_stream ;
+typedef int strm_state ;
+typedef int strm_int ;
+typedef int strm_array ;
+struct TYPE_3__ {scalar_t__ type; int value; int key; } ;
+typedef TYPE_1__ node_pair ;
 struct TYPE_4__ {scalar_t__ len; scalar_t__* data; } ;
-typedef  TYPE_2__ node_nodes ;
-typedef  int /*<<< orphan*/  node ;
+typedef TYPE_2__ node_nodes ;
+typedef int node ;
 
-/* Variables and functions */
- scalar_t__ NODE_PAIR ; 
- int STRM_NG ; 
- int STRM_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ node_to_sym (int /*<<< orphan*/ ) ; 
- int pmatch (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__* strm_ary_ptr (int /*<<< orphan*/ ) ; 
- struct strm_array* strm_ary_struct (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_value_ary (scalar_t__) ; 
+
+ scalar_t__ NODE_PAIR ;
+ int STRM_NG ;
+ int STRM_OK ;
+ int assert (int) ;
+ scalar_t__ node_to_sym (int ) ;
+ int pmatch (int *,int *,int ,int ) ;
+ scalar_t__* strm_ary_ptr (int ) ;
+ struct strm_array* strm_ary_struct (int ) ;
+ int strm_value_ary (scalar_t__) ;
 
 __attribute__((used)) static int
 pmatch_struct(strm_stream* strm, strm_state* state, node* pat, strm_value val, uint64_t* tbl, strm_int* len)

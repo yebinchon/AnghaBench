@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ UINT ;
-struct TYPE_3__ {struct TYPE_3__* Next; int /*<<< orphan*/  lpExeName; } ;
-typedef  TYPE_1__* PALIAS_HEADER ;
 
-/* Variables and functions */
- int wcslen (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef scalar_t__ UINT ;
+struct TYPE_3__ {struct TYPE_3__* Next; int lpExeName; } ;
+typedef TYPE_1__* PALIAS_HEADER ;
+
+
+ int wcslen (int ) ;
 
 UINT
 IntGetConsoleAliasesExesLength(PALIAS_HEADER RootHeader)
@@ -30,7 +30,7 @@ IntGetConsoleAliasesExesLength(PALIAS_HEADER RootHeader)
         RootHeader = RootHeader->Next;
     }
     if (length)
-        length += sizeof(WCHAR); // last entry entry is terminated with 2 zero bytes
+        length += sizeof(WCHAR);
 
     return length;
 }

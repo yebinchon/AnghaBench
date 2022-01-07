@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  IBackgroundCopyJob ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ ** HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IBackgroundCopyJob_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IEnumBackgroundCopyJobs_Next (int /*<<< orphan*/ ,int,int /*<<< orphan*/ **,int*) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  test_enumJobsB ; 
- int test_jobCountB ; 
+
+
+
+typedef int ULONG ;
+typedef int IBackgroundCopyJob ;
+typedef scalar_t__ HRESULT ;
+
+
+ int GetProcessHeap () ;
+ int ** HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int **) ;
+ int IBackgroundCopyJob_Release (int *) ;
+ scalar_t__ IEnumBackgroundCopyJobs_Next (int ,int,int **,int*) ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,...) ;
+ int test_enumJobsB ;
+ int test_jobCountB ;
 
 __attribute__((used)) static void test_Next_walkList_2(void)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static void test_Next_walkList_2(void)
 
     jobs = HeapAlloc(GetProcessHeap(), 0, test_jobCountB * sizeof *jobs);
     for (i = 0; i < test_jobCountB; i++)
-        jobs[i] = NULL;
+        jobs[i] = ((void*)0);
 
     fetched = 0;
     hres = IEnumBackgroundCopyJobs_Next(test_enumJobsB, test_jobCountB, jobs, &fetched);
@@ -43,7 +43,7 @@ __attribute__((used)) static void test_Next_walkList_2(void)
 
     for (i = 0; i < test_jobCountB; i++)
     {
-        ok(jobs[i] != NULL, "Next returned NULL\n");
+        ok(jobs[i] != ((void*)0), "Next returned NULL\n");
         if (jobs[i])
             IBackgroundCopyJob_Release(jobs[i]);
     }

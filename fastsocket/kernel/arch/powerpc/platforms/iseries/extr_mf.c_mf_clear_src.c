@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  signal_ce_msg_simple (int,int /*<<< orphan*/ *) ; 
+ int signal_ce_msg_simple (int,int *) ;
 
 __attribute__((used)) static void mf_clear_src(void)
 {
-	signal_ce_msg_simple(0x4b, NULL);
+ signal_ce_msg_simple(0x4b, ((void*)0));
 }

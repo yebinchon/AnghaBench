@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int type; } ;
-union hdmi_infoframe {TYPE_1__ any; int /*<<< orphan*/  vendor; int /*<<< orphan*/  audio; int /*<<< orphan*/  spd; int /*<<< orphan*/  avi; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+union hdmi_infoframe {TYPE_1__ any; int vendor; int audio; int spd; int avi; } ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
-#define  HDMI_INFOFRAME_TYPE_AUDIO 131 
-#define  HDMI_INFOFRAME_TYPE_AVI 130 
-#define  HDMI_INFOFRAME_TYPE_SPD 129 
-#define  HDMI_INFOFRAME_TYPE_VENDOR 128 
- int /*<<< orphan*/  hdmi_audio_infoframe_pack (int /*<<< orphan*/ *,void*,size_t) ; 
- int /*<<< orphan*/  hdmi_avi_infoframe_pack (int /*<<< orphan*/ *,void*,size_t) ; 
- int /*<<< orphan*/  hdmi_spd_infoframe_pack (int /*<<< orphan*/ *,void*,size_t) ; 
- int /*<<< orphan*/  hdmi_vendor_any_infoframe_pack (int /*<<< orphan*/ *,void*,size_t) ; 
- int /*<<< orphan*/  printf (char*,int) ; 
+
+ int EINVAL ;
+
+
+
+
+ int hdmi_audio_infoframe_pack (int *,void*,size_t) ;
+ int hdmi_avi_infoframe_pack (int *,void*,size_t) ;
+ int hdmi_spd_infoframe_pack (int *,void*,size_t) ;
+ int hdmi_vendor_any_infoframe_pack (int *,void*,size_t) ;
+ int printf (char*,int) ;
 
 ssize_t
 hdmi_infoframe_pack(union hdmi_infoframe *frame, void *buffer, size_t size)
 {
-	ssize_t length;
+ ssize_t length;
 
-	switch (frame->any.type) {
-	case HDMI_INFOFRAME_TYPE_AVI:
-		length = hdmi_avi_infoframe_pack(&frame->avi, buffer, size);
-		break;
-	case HDMI_INFOFRAME_TYPE_SPD:
-		length = hdmi_spd_infoframe_pack(&frame->spd, buffer, size);
-		break;
-	case HDMI_INFOFRAME_TYPE_AUDIO:
-		length = hdmi_audio_infoframe_pack(&frame->audio, buffer, size);
-		break;
-	case HDMI_INFOFRAME_TYPE_VENDOR:
-		length = hdmi_vendor_any_infoframe_pack(&frame->vendor,
-							buffer, size);
-		break;
-	default:
-		printf("Bad infoframe type %d\n", frame->any.type);
-		length = -EINVAL;
-	}
+ switch (frame->any.type) {
+ case 130:
+  length = hdmi_avi_infoframe_pack(&frame->avi, buffer, size);
+  break;
+ case 129:
+  length = hdmi_spd_infoframe_pack(&frame->spd, buffer, size);
+  break;
+ case 131:
+  length = hdmi_audio_infoframe_pack(&frame->audio, buffer, size);
+  break;
+ case 128:
+  length = hdmi_vendor_any_infoframe_pack(&frame->vendor,
+       buffer, size);
+  break;
+ default:
+  printf("Bad infoframe type %d\n", frame->any.type);
+  length = -EINVAL;
+ }
 
-	return length;
+ return length;
 }

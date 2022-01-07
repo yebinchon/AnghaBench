@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u32 ;
-struct net_device {int /*<<< orphan*/  features; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NETIF_F_IP_CSUM ; 
+
+
+
+typedef scalar_t__ u32 ;
+struct net_device {int features; } ;
+
+
+ int NETIF_F_IP_CSUM ;
 
 __attribute__((used)) static int s2io_ethtool_op_set_tx_csum(struct net_device *dev, u32 data)
 {
-	if (data)
-		dev->features |= NETIF_F_IP_CSUM;
-	else
-		dev->features &= ~NETIF_F_IP_CSUM;
+ if (data)
+  dev->features |= NETIF_F_IP_CSUM;
+ else
+  dev->features &= ~NETIF_F_IP_CSUM;
 
-	return 0;
+ return 0;
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct msg {int /*<<< orphan*/  pos; int /*<<< orphan*/  mhdr; } ;
-struct mbuf {int /*<<< orphan*/  pos; } ;
+
+
+
+
+struct msg {int pos; int mhdr; } ;
+struct mbuf {int pos; } ;
 struct context {int dummy; } ;
 struct conn {int dummy; } ;
-typedef  int /*<<< orphan*/  rstatus_t ;
+typedef int rstatus_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NC_ENOMEM ; 
- int /*<<< orphan*/  NC_OK ; 
- int /*<<< orphan*/  mbuf_insert (int /*<<< orphan*/ *,struct mbuf*) ; 
- struct mbuf* mbuf_split (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int NC_ENOMEM ;
+ int NC_OK ;
+ int mbuf_insert (int *,struct mbuf*) ;
+ struct mbuf* mbuf_split (int *,int ,int *,int *) ;
 
 __attribute__((used)) static rstatus_t
 msg_repair(struct context *ctx, struct conn *conn, struct msg *msg)
 {
     struct mbuf *nbuf;
 
-    nbuf = mbuf_split(&msg->mhdr, msg->pos, NULL, NULL);
-    if (nbuf == NULL) {
+    nbuf = mbuf_split(&msg->mhdr, msg->pos, ((void*)0), ((void*)0));
+    if (nbuf == ((void*)0)) {
         return NC_ENOMEM;
     }
     mbuf_insert(&msg->mhdr, nbuf);

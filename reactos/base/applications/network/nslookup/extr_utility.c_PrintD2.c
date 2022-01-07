@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int USHORT ;
-typedef  int UCHAR ;
-typedef  int /*<<< orphan*/ * PUSHORT ;
-typedef  int /*<<< orphan*/ * PSHORT ;
-typedef  int* PCHAR ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ClassIDtoClassName (int) ; 
- scalar_t__ ExtractName (int*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OpcodeIDtoOpcodeName (int) ; 
- int /*<<< orphan*/  RCodeIDtoRCodeName (int) ; 
- int /*<<< orphan*/  TypeIDtoTypeName (int) ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _tprintf (int /*<<< orphan*/ ,...) ; 
- int ntohs (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int USHORT ;
+typedef int UCHAR ;
+typedef int * PUSHORT ;
+typedef int * PSHORT ;
+typedef int* PCHAR ;
+typedef scalar_t__ DWORD ;
+typedef int CHAR ;
+
+
+ int ClassIDtoClassName (int) ;
+ scalar_t__ ExtractName (int*,int *,int,int ) ;
+ int OpcodeIDtoOpcodeName (int) ;
+ int RCodeIDtoRCodeName (int) ;
+ int TypeIDtoTypeName (int) ;
+ int _T (char*) ;
+ int _tprintf (int ,...) ;
+ int ntohs (int ) ;
 
 void PrintD2( PCHAR pBuffer, DWORD BufferLength )
 {

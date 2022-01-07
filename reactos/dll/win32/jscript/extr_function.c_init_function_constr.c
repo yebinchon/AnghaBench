@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/ * function_constr; } ;
-typedef  TYPE_2__ script_ctx_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  float WCHAR ;
-struct TYPE_7__ {int /*<<< orphan*/  dispex; } ;
-struct TYPE_9__ {float const* name; TYPE_1__ function; int /*<<< orphan*/  proc; } ;
-typedef  TYPE_3__ NativeFunction ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FunctionConstr_value ; 
- int /*<<< orphan*/  FunctionInst_info ; 
- int /*<<< orphan*/  FunctionProt_value ; 
- int /*<<< orphan*/  Function_info ; 
- int /*<<< orphan*/  NativeFunctionVtbl ; 
- int PROPF_CONSTR ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  create_function (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  jsdisp_define_data_property (int /*<<< orphan*/ *,float const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_obj (int /*<<< orphan*/ *) ; 
- float const* prototypeW ; 
- int /*<<< orphan*/  set_constructor_prop (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int * function_constr; } ;
+typedef TYPE_2__ script_ctx_t ;
+typedef int jsdisp_t ;
+typedef float WCHAR ;
+struct TYPE_7__ {int dispex; } ;
+struct TYPE_9__ {float const* name; TYPE_1__ function; int proc; } ;
+typedef TYPE_3__ NativeFunction ;
+typedef int HRESULT ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int FunctionConstr_value ;
+ int FunctionInst_info ;
+ int FunctionProt_value ;
+ int Function_info ;
+ int NativeFunctionVtbl ;
+ int PROPF_CONSTR ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int TRUE ;
+ int create_function (TYPE_2__*,int *,int *,int,int,int ,int *,void**) ;
+ int jsdisp_define_data_property (int *,float const*,int ,int ) ;
+ int jsdisp_release (int *) ;
+ int jsval_obj (int *) ;
+ float const* prototypeW ;
+ int set_constructor_prop (TYPE_2__*,int *,int *) ;
 
 HRESULT init_function_constr(script_ctx_t *ctx, jsdisp_t *object_prototype)
 {

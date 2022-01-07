@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pid_stat {scalar_t__ sortlist; } ;
-typedef  size_t pid_t ;
+typedef size_t pid_t ;
 
-/* Variables and functions */
- struct pid_stat** all_pids ; 
+
+ struct pid_stat** all_pids ;
 
 __attribute__((used)) static int compar_pid(const void *pid1, const void *pid2) {
 

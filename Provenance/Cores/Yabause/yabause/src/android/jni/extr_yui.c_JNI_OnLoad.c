@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int jint ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int jint ;
 struct TYPE_5__ {scalar_t__ (* GetEnv ) (TYPE_1__**,void**,int) ;} ;
-typedef  TYPE_1__* JavaVM ;
-typedef  int /*<<< orphan*/  JNIEnv ;
+typedef TYPE_1__* JavaVM ;
+typedef int JNIEnv ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG_CALLBACK ; 
- scalar_t__ JNI_OK ; 
- int JNI_VERSION_1_6 ; 
- int /*<<< orphan*/  LogChangeOutput (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  LogStart () ; 
- scalar_t__ log_callback ; 
- scalar_t__ stub1 (TYPE_1__**,void**,int) ; 
- TYPE_1__** yvm ; 
+
+ int DEBUG_CALLBACK ;
+ scalar_t__ JNI_OK ;
+ int JNI_VERSION_1_6 ;
+ int LogChangeOutput (int ,char*) ;
+ int LogStart () ;
+ scalar_t__ log_callback ;
+ scalar_t__ stub1 (TYPE_1__**,void**,int) ;
+ TYPE_1__** yvm ;
 
 jint JNI_OnLoad(JavaVM * vm, void * reserved)
 {

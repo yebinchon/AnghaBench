@@ -1,90 +1,90 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_7__ ;
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
-typedef  struct TYPE_12__   TYPE_11__ ;
 
-/* Type definitions */
-struct TYPE_17__ {void* context; int /*<<< orphan*/  visual; } ;
+
+
+typedef struct TYPE_19__ TYPE_7__ ;
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+typedef struct TYPE_12__ TYPE_11__ ;
+
+
+struct TYPE_17__ {void* context; int visual; } ;
 struct TYPE_18__ {TYPE_5__ glx; } ;
-typedef  TYPE_6__ _GLFWwindow ;
-typedef  int /*<<< orphan*/  _GLFWfbconfig ;
+typedef TYPE_6__ _GLFWwindow ;
+typedef int _GLFWfbconfig ;
 struct TYPE_19__ {scalar_t__ api; int forward; scalar_t__ profile; scalar_t__ robustness; scalar_t__ release; int major; int minor; scalar_t__ debug; TYPE_2__* share; } ;
-typedef  TYPE_7__ _GLFWctxconfig ;
-struct TYPE_16__ {scalar_t__ errorBase; void* (* CreateContextAttribsARB ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ;scalar_t__ ARB_context_flush_control; scalar_t__ ARB_create_context_robustness; scalar_t__ ARB_create_context; int /*<<< orphan*/  ARB_create_context_profile; int /*<<< orphan*/  EXT_create_context_es2_profile; } ;
-struct TYPE_15__ {scalar_t__ errorCode; int /*<<< orphan*/  display; } ;
-struct TYPE_13__ {int /*<<< orphan*/ * context; } ;
+typedef TYPE_7__ _GLFWctxconfig ;
+struct TYPE_16__ {scalar_t__ errorBase; void* (* CreateContextAttribsARB ) (int ,int *,int *,int ,int*) ;scalar_t__ ARB_context_flush_control; scalar_t__ ARB_create_context_robustness; scalar_t__ ARB_create_context; int ARB_create_context_profile; int EXT_create_context_es2_profile; } ;
+struct TYPE_15__ {scalar_t__ errorCode; int display; } ;
+struct TYPE_13__ {int * context; } ;
 struct TYPE_14__ {TYPE_1__ glx; } ;
 struct TYPE_12__ {TYPE_4__ glx; TYPE_3__ x11; } ;
-typedef  int /*<<< orphan*/ * GLXFBConfig ;
-typedef  int /*<<< orphan*/ * GLXContext ;
+typedef int * GLXFBConfig ;
+typedef int * GLXContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_API_UNAVAILABLE ; 
- int /*<<< orphan*/  GLFW_FORMAT_UNAVAILABLE ; 
- scalar_t__ GLFW_LOSE_CONTEXT_ON_RESET ; 
- scalar_t__ GLFW_NO_RESET_NOTIFICATION ; 
- scalar_t__ GLFW_OPENGL_ANY_PROFILE ; 
- scalar_t__ GLFW_OPENGL_API ; 
- scalar_t__ GLFW_OPENGL_COMPAT_PROFILE ; 
- scalar_t__ GLFW_OPENGL_CORE_PROFILE ; 
- scalar_t__ GLFW_OPENGL_ES_API ; 
- int /*<<< orphan*/  GLFW_PLATFORM_ERROR ; 
- scalar_t__ GLFW_RELEASE_BEHAVIOR_FLUSH ; 
- scalar_t__ GLFW_RELEASE_BEHAVIOR_NONE ; 
- int /*<<< orphan*/  GLFW_VERSION_UNAVAILABLE ; 
- scalar_t__ GLXBadProfileARB ; 
- int GLX_CONTEXT_COMPATIBILITY_PROFILE_BIT_ARB ; 
- int GLX_CONTEXT_CORE_PROFILE_BIT_ARB ; 
- int GLX_CONTEXT_DEBUG_BIT_ARB ; 
- int GLX_CONTEXT_ES2_PROFILE_BIT_EXT ; 
- int GLX_CONTEXT_FLAGS_ARB ; 
- int GLX_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB ; 
- int GLX_CONTEXT_MAJOR_VERSION_ARB ; 
- int GLX_CONTEXT_MINOR_VERSION_ARB ; 
- int GLX_CONTEXT_PROFILE_MASK_ARB ; 
- int GLX_CONTEXT_RELEASE_BEHAVIOR_ARB ; 
- int GLX_CONTEXT_RELEASE_BEHAVIOR_FLUSH_ARB ; 
- int GLX_CONTEXT_RELEASE_BEHAVIOR_NONE_ARB ; 
- int GLX_CONTEXT_RESET_NOTIFICATION_STRATEGY_ARB ; 
- int GLX_CONTEXT_ROBUST_ACCESS_BIT_ARB ; 
- int GLX_LOSE_CONTEXT_ON_RESET_ARB ; 
- int GLX_NO_RESET_NOTIFICATION_ARB ; 
- int GL_FALSE ; 
- int GL_TRUE ; 
- int None ; 
- int /*<<< orphan*/  True ; 
- TYPE_11__ _glfw ; 
- int /*<<< orphan*/  _glfwGrabXErrorHandler () ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  _glfwInputXError (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  _glfwReleaseXErrorHandler () ; 
- int /*<<< orphan*/  _glfw_glXGetVisualFromFBConfig (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  chooseFBConfig (int /*<<< orphan*/  const*,int /*<<< orphan*/ **) ; 
- void* createLegacyContext (TYPE_6__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  setGLXattrib (int,int) ; 
- void* stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
+
+ int GLFW_API_UNAVAILABLE ;
+ int GLFW_FORMAT_UNAVAILABLE ;
+ scalar_t__ GLFW_LOSE_CONTEXT_ON_RESET ;
+ scalar_t__ GLFW_NO_RESET_NOTIFICATION ;
+ scalar_t__ GLFW_OPENGL_ANY_PROFILE ;
+ scalar_t__ GLFW_OPENGL_API ;
+ scalar_t__ GLFW_OPENGL_COMPAT_PROFILE ;
+ scalar_t__ GLFW_OPENGL_CORE_PROFILE ;
+ scalar_t__ GLFW_OPENGL_ES_API ;
+ int GLFW_PLATFORM_ERROR ;
+ scalar_t__ GLFW_RELEASE_BEHAVIOR_FLUSH ;
+ scalar_t__ GLFW_RELEASE_BEHAVIOR_NONE ;
+ int GLFW_VERSION_UNAVAILABLE ;
+ scalar_t__ GLXBadProfileARB ;
+ int GLX_CONTEXT_COMPATIBILITY_PROFILE_BIT_ARB ;
+ int GLX_CONTEXT_CORE_PROFILE_BIT_ARB ;
+ int GLX_CONTEXT_DEBUG_BIT_ARB ;
+ int GLX_CONTEXT_ES2_PROFILE_BIT_EXT ;
+ int GLX_CONTEXT_FLAGS_ARB ;
+ int GLX_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB ;
+ int GLX_CONTEXT_MAJOR_VERSION_ARB ;
+ int GLX_CONTEXT_MINOR_VERSION_ARB ;
+ int GLX_CONTEXT_PROFILE_MASK_ARB ;
+ int GLX_CONTEXT_RELEASE_BEHAVIOR_ARB ;
+ int GLX_CONTEXT_RELEASE_BEHAVIOR_FLUSH_ARB ;
+ int GLX_CONTEXT_RELEASE_BEHAVIOR_NONE_ARB ;
+ int GLX_CONTEXT_RESET_NOTIFICATION_STRATEGY_ARB ;
+ int GLX_CONTEXT_ROBUST_ACCESS_BIT_ARB ;
+ int GLX_LOSE_CONTEXT_ON_RESET_ARB ;
+ int GLX_NO_RESET_NOTIFICATION_ARB ;
+ int GL_FALSE ;
+ int GL_TRUE ;
+ int None ;
+ int True ;
+ TYPE_11__ _glfw ;
+ int _glfwGrabXErrorHandler () ;
+ int _glfwInputError (int ,char*) ;
+ int _glfwInputXError (int ,char*) ;
+ int _glfwReleaseXErrorHandler () ;
+ int _glfw_glXGetVisualFromFBConfig (int ,int *) ;
+ int chooseFBConfig (int const*,int **) ;
+ void* createLegacyContext (TYPE_6__*,int *,int *) ;
+ int setGLXattrib (int,int) ;
+ void* stub1 (int ,int *,int *,int ,int*) ;
 
 int _glfwCreateContext(_GLFWwindow* window,
                        const _GLFWctxconfig* ctxconfig,
                        const _GLFWfbconfig* fbconfig)
 {
     int attribs[40];
-    GLXFBConfig native = NULL;
-    GLXContext share = NULL;
+    GLXFBConfig native = ((void*)0);
+    GLXContext share = ((void*)0);
 
     if (ctxconfig->share)
         share = ctxconfig->share->glx.context;
@@ -196,9 +196,9 @@ int _glfwCreateContext(_GLFWwindow* window,
             }
         }
 
-        // NOTE: Only request an explicitly versioned context when necessary, as
-        //       explicitly requesting version 1.0 does not always return the
-        //       highest version supported by the driver
+
+
+
         if (ctxconfig->major != 1 || ctxconfig->minor != 0)
         {
             setGLXattrib(GLX_CONTEXT_MAJOR_VERSION_ARB, ctxconfig->major);
@@ -220,10 +220,10 @@ int _glfwCreateContext(_GLFWwindow* window,
                                               True,
                                               attribs);
 
-        // HACK: This is a fallback for broken versions of the Mesa
-        //       implementation of GLX_ARB_create_context_profile that fail
-        //       default 1.0 context creation with a GLXBadProfileARB error in
-        //       violation of the extension spec
+
+
+
+
         if (!window->glx.context)
         {
             if (_glfw.x11.errorCode == _glfw.glx.errorBase + GLXBadProfileARB &&

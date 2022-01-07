@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int svn_wc_schedule_t ;
 
-/* Variables and functions */
-#define  svn_wc_schedule_add 131 
-#define  svn_wc_schedule_delete 130 
-#define  svn_wc_schedule_normal 129 
-#define  svn_wc_schedule_replace 128 
+
+
+
+typedef int svn_wc_schedule_t ;
+
+
+
+
+
+
 
 __attribute__((used)) static const char *
 schedule_str(svn_wc_schedule_t schedule)
 {
   switch (schedule)
     {
-    case svn_wc_schedule_normal:
+    case 129:
       return "normal";
-    case svn_wc_schedule_add:
+    case 131:
       return "add";
-    case svn_wc_schedule_delete:
+    case 130:
       return "delete";
-    case svn_wc_schedule_replace:
+    case 128:
       return "replace";
     default:
       return "none";

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gc_arena {int dummy; } ;
 struct env_set {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (struct env_set*) ; 
- int /*<<< orphan*/  M_INFO ; 
- char* construct_name_value (char const*,char const*,struct gc_arena*) ; 
- int /*<<< orphan*/  env_set_add (struct env_set*,char const*) ; 
- int /*<<< orphan*/  env_set_del (struct env_set*,char const*) ; 
- int /*<<< orphan*/  gc_free (struct gc_arena*) ; 
- struct gc_arena gc_new () ; 
- int /*<<< orphan*/  msg (int /*<<< orphan*/ ,char*,char const*) ; 
- char* string_mod_const (char const*,unsigned int const,unsigned int const,char const,struct gc_arena*) ; 
- int strlen (char const*) ; 
+
+ int ASSERT (struct env_set*) ;
+ int M_INFO ;
+ char* construct_name_value (char const*,char const*,struct gc_arena*) ;
+ int env_set_add (struct env_set*,char const*) ;
+ int env_set_del (struct env_set*,char const*) ;
+ int gc_free (struct gc_arena*) ;
+ struct gc_arena gc_new () ;
+ int msg (int ,char*,char const*) ;
+ char* string_mod_const (char const*,unsigned int const,unsigned int const,char const,struct gc_arena*) ;
+ int strlen (char const*) ;
 
 void
 setenv_str_ex(struct env_set *es,
@@ -38,7 +38,7 @@ setenv_str_ex(struct env_set *es,
 {
     struct gc_arena gc = gc_new();
     const char *name_tmp;
-    const char *val_tmp = NULL;
+    const char *val_tmp = ((void*)0);
 
     ASSERT(name && strlen(name) > 1);
 
@@ -55,9 +55,9 @@ setenv_str_ex(struct env_set *es,
     {
         const char *str = construct_name_value(name_tmp, val_tmp, &gc);
         env_set_add(es, str);
-#if DEBUG_VERBOSE_SETENV
-        msg(M_INFO, "SETENV_ES '%s'", str);
-#endif
+
+
+
     }
     else
     {

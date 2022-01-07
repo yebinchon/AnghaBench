@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_3__ {int nsubbands; scalar_t__ min_mono_subband; int /*<<< orphan*/  gb; int /*<<< orphan*/ *** grid_2_scf; } ;
-typedef  TYPE_1__ DCALbrDecoder ;
 
-/* Variables and functions */
- scalar_t__ ensure_bits (int /*<<< orphan*/ *,int) ; 
- scalar_t__* ff_dca_grid_2_to_scf ; 
- int* ff_dca_scf_to_grid_2 ; 
- int /*<<< orphan*/  ff_dca_vlc_grid_2 ; 
- scalar_t__ get_bits1 (int /*<<< orphan*/ *) ; 
- int get_bits_left (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  parse_vlc (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_3__ {int nsubbands; scalar_t__ min_mono_subband; int gb; int *** grid_2_scf; } ;
+typedef TYPE_1__ DCALbrDecoder ;
+
+
+ scalar_t__ ensure_bits (int *,int) ;
+ scalar_t__* ff_dca_grid_2_to_scf ;
+ int* ff_dca_scf_to_grid_2 ;
+ int ff_dca_vlc_grid_2 ;
+ scalar_t__ get_bits1 (int *) ;
+ int get_bits_left (int *) ;
+ int memcpy (int *,int *,int) ;
+ int memset (int *,int ,int) ;
+ int parse_vlc (int *,int *,int) ;
 
 __attribute__((used)) static int parse_grid_2(DCALbrDecoder *s, int ch1, int ch2,
                         int start_sb, int end_sb, int flag)
@@ -45,13 +45,13 @@ __attribute__((used)) static int parse_grid_2(DCALbrDecoder *s, int ch1, int ch2
                 continue;
             }
 
-            // Scale factors in groups of 8
+
             for (i = 0; i < 8; i++, g2_scf += 8) {
                 if (get_bits_left(&s->gb) < 1) {
                     memset(g2_scf, 0, 64 - i * 8);
                     break;
                 }
-                // Bit indicating if whole group has zero values
+
                 if (get_bits1(&s->gb)) {
                     for (j = 0; j < 8; j++) {
                         if (ensure_bits(&s->gb, 20))

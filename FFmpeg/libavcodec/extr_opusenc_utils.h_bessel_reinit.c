@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {float* a; float* b; } ;
-typedef  TYPE_1__ FFBesselFilter ;
+typedef TYPE_1__ FFBesselFilter ;
 
-/* Variables and functions */
- float M_PI ; 
- float pow (float,float) ; 
- float sqrtf (float) ; 
- float tanf (float) ; 
+
+ float M_PI ;
+ float pow (float,float) ;
+ float sqrtf (float) ;
+ float tanf (float) ;
 
 __attribute__((used)) static inline int bessel_reinit(FFBesselFilter *s, float n, float f0, float fs,
                                 int highpass)

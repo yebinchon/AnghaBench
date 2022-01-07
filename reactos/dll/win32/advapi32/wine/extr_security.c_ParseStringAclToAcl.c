@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int AceSize; void* AceFlags; void* AceType; } ;
-struct TYPE_7__ {int Mask; TYPE_1__ Header; int /*<<< orphan*/  SidStart; } ;
-struct TYPE_6__ {int AclSize; int AceCount; scalar_t__ Sbz2; scalar_t__ Sbz1; int /*<<< orphan*/  AclRevision; } ;
-typedef  TYPE_2__* PACL ;
-typedef  TYPE_3__* PACCESS_ALLOWED_ACE ;
-typedef  int* LPDWORD ;
-typedef  char* LPCWSTR ;
-typedef  int LPBYTE ;
-typedef  int DWORD ;
-typedef  void* BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
-typedef  int /*<<< orphan*/  ACL ;
-typedef  int /*<<< orphan*/  ACCESS_ALLOWED_ACE ;
+struct TYPE_7__ {int Mask; TYPE_1__ Header; int SidStart; } ;
+struct TYPE_6__ {int AclSize; int AceCount; scalar_t__ Sbz2; scalar_t__ Sbz1; int AclRevision; } ;
+typedef TYPE_2__* PACL ;
+typedef TYPE_3__* PACCESS_ALLOWED_ACE ;
+typedef int* LPDWORD ;
+typedef char* LPCWSTR ;
+typedef int LPBYTE ;
+typedef int DWORD ;
+typedef void* BYTE ;
+typedef int BOOL ;
+typedef int ACL ;
+typedef int ACCESS_ALLOWED_ACE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACL_REVISION ; 
- int /*<<< orphan*/  ERR (char*) ; 
- int ERROR_INVALID_ACL ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int ParseAceStringFlags (char**) ; 
- int ParseAceStringRights (char**) ; 
- int ParseAceStringType (char**) ; 
- int ParseAclStringFlags (char**) ; 
- scalar_t__ ParseStringSidToSid (char*,int /*<<< orphan*/ *,int*) ; 
- int RPC_S_INVALID_STRING_UUID ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  debugstr_w (char*) ; 
 
-__attribute__((used)) static BOOL ParseStringAclToAcl(LPCWSTR StringAcl, LPDWORD lpdwFlags, 
+ int ACL_REVISION ;
+ int ERR (char*) ;
+ int ERROR_INVALID_ACL ;
+ int FALSE ;
+ int FIXME (char*) ;
+ int ParseAceStringFlags (char**) ;
+ int ParseAceStringRights (char**) ;
+ int ParseAceStringType (char**) ;
+ int ParseAclStringFlags (char**) ;
+ scalar_t__ ParseStringSidToSid (char*,int *,int*) ;
+ int RPC_S_INVALID_STRING_UUID ;
+ int SetLastError (int) ;
+ int TRACE (char*,int ) ;
+ int TRUE ;
+ int WARN (char*) ;
+ int debugstr_w (char*) ;
+
+__attribute__((used)) static BOOL ParseStringAclToAcl(LPCWSTR StringAcl, LPDWORD lpdwFlags,
     PACL pAcl, LPDWORD cBytes)
 {
     DWORD val;
@@ -53,28 +53,28 @@ __attribute__((used)) static BOOL ParseStringAclToAcl(LPCWSTR StringAcl, LPDWORD
     DWORD length = sizeof(ACL);
     DWORD acesize = 0;
     DWORD acecount = 0;
-    PACCESS_ALLOWED_ACE pAce = NULL; /* pointer to current ACE */
+    PACCESS_ALLOWED_ACE pAce = ((void*)0);
     DWORD error = ERROR_INVALID_ACL;
 
     TRACE("%s\n", debugstr_w(StringAcl));
 
     if (!StringAcl)
-	return FALSE;
+ return FALSE;
 
-    if (pAcl) /* pAce is only useful if we're setting values */
+    if (pAcl)
         pAce = (PACCESS_ALLOWED_ACE) (pAcl + 1);
 
-    /* Parse ACL flags */
+
     *lpdwFlags = ParseAclStringFlags(&StringAcl);
 
-    /* Parse ACE */
+
     while (*StringAcl == '(')
     {
         StringAcl++;
 
-        /* Parse ACE type */
+
         val = ParseAceStringType(&StringAcl);
-	if (pAce)
+ if (pAce)
             pAce->Header.AceType = (BYTE) val;
         if (*StringAcl != ';')
         {
@@ -83,23 +83,23 @@ __attribute__((used)) static BOOL ParseStringAclToAcl(LPCWSTR StringAcl, LPDWORD
         }
         StringAcl++;
 
-        /* Parse ACE flags */
-	val = ParseAceStringFlags(&StringAcl);
-	if (pAce)
+
+ val = ParseAceStringFlags(&StringAcl);
+ if (pAce)
             pAce->Header.AceFlags = (BYTE) val;
         if (*StringAcl != ';')
             goto lerr;
         StringAcl++;
 
-        /* Parse ACE rights */
-	val = ParseAceStringRights(&StringAcl);
-	if (pAce)
+
+ val = ParseAceStringRights(&StringAcl);
+ if (pAce)
             pAce->Mask = val;
         if (*StringAcl != ';')
             goto lerr;
         StringAcl++;
 
-        /* Parse ACE object guid */
+
         while (*StringAcl == ' ')
             StringAcl++;
         if (*StringAcl != ';')
@@ -109,7 +109,7 @@ __attribute__((used)) static BOOL ParseStringAclToAcl(LPCWSTR StringAcl, LPDWORD
         }
         StringAcl++;
 
-        /* Parse ACE inherit object guid */
+
         while (*StringAcl == ' ')
             StringAcl++;
         if (*StringAcl != ';')
@@ -119,12 +119,12 @@ __attribute__((used)) static BOOL ParseStringAclToAcl(LPCWSTR StringAcl, LPDWORD
         }
         StringAcl++;
 
-        /* Parse ACE account sid */
-        if (ParseStringSidToSid(StringAcl, pAce ? &pAce->SidStart : NULL, &sidlen))
-	{
+
+        if (ParseStringSidToSid(StringAcl, pAce ? &pAce->SidStart : ((void*)0), &sidlen))
+ {
             while (*StringAcl && *StringAcl != ')')
                 StringAcl++;
-	}
+ }
 
         if (*StringAcl != ')')
             goto lerr;

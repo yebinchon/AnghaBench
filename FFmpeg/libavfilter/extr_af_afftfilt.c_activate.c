@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
-struct TYPE_10__ {int eof; scalar_t__ window_size; scalar_t__ pts; int /*<<< orphan*/  fifo; } ;
-struct TYPE_9__ {TYPE_3__* priv; int /*<<< orphan*/ ** outputs; int /*<<< orphan*/ ** inputs; } ;
-struct TYPE_8__ {scalar_t__ pts; int /*<<< orphan*/  nb_samples; scalar_t__ extended_data; } ;
-typedef  TYPE_1__ AVFrame ;
-typedef  int /*<<< orphan*/  AVFilterLink ;
-typedef  TYPE_2__ AVFilterContext ;
-typedef  TYPE_3__ AFFTFiltContext ;
 
-/* Variables and functions */
- int AVERROR_EOF ; 
- scalar_t__ AV_NOPTS_VALUE ; 
- int FFERROR_NOT_READY ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_STATUS_BACK (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_WANTED (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ av_audio_fifo_size (int /*<<< orphan*/ ) ; 
- int av_audio_fifo_write (int /*<<< orphan*/ ,void**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_1__**) ; 
- int /*<<< orphan*/  ff_filter_set_ready (TYPE_2__*,int) ; 
- scalar_t__ ff_inlink_acknowledge_status (int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *) ; 
- int ff_inlink_consume_frame (int /*<<< orphan*/ *,TYPE_1__**) ; 
- int /*<<< orphan*/  ff_outlink_set_status (int /*<<< orphan*/ *,int,scalar_t__) ; 
- int filter_frame (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+struct TYPE_10__ {int eof; scalar_t__ window_size; scalar_t__ pts; int fifo; } ;
+struct TYPE_9__ {TYPE_3__* priv; int ** outputs; int ** inputs; } ;
+struct TYPE_8__ {scalar_t__ pts; int nb_samples; scalar_t__ extended_data; } ;
+typedef TYPE_1__ AVFrame ;
+typedef int AVFilterLink ;
+typedef TYPE_2__ AVFilterContext ;
+typedef TYPE_3__ AFFTFiltContext ;
+
+
+ int AVERROR_EOF ;
+ scalar_t__ AV_NOPTS_VALUE ;
+ int FFERROR_NOT_READY ;
+ int FF_FILTER_FORWARD_STATUS_BACK (int *,int *) ;
+ int FF_FILTER_FORWARD_WANTED (int *,int *) ;
+ scalar_t__ av_audio_fifo_size (int ) ;
+ int av_audio_fifo_write (int ,void**,int ) ;
+ int av_frame_free (TYPE_1__**) ;
+ int ff_filter_set_ready (TYPE_2__*,int) ;
+ scalar_t__ ff_inlink_acknowledge_status (int *,int*,int *) ;
+ int ff_inlink_consume_frame (int *,TYPE_1__**) ;
+ int ff_outlink_set_status (int *,int,scalar_t__) ;
+ int filter_frame (int *) ;
 
 __attribute__((used)) static int activate(AVFilterContext *ctx)
 {
     AVFilterLink *inlink = ctx->inputs[0];
     AVFilterLink *outlink = ctx->outputs[0];
     AFFTFiltContext *s = ctx->priv;
-    AVFrame *in = NULL;
+    AVFrame *in = ((void*)0);
     int ret = 0, status;
     int64_t pts;
 

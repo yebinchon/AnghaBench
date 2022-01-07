@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  si_note; } ;
-struct vpollinfo {TYPE_1__ vpi_selinfo; int /*<<< orphan*/  vpi_lock; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int si_note; } ;
+struct vpollinfo {TYPE_1__ vpi_selinfo; int vpi_lock; } ;
 struct vnode {struct vpollinfo* v_pollinfo; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MTX_DEF ; 
- int M_WAITOK ; 
- int M_ZERO ; 
- int /*<<< orphan*/  VI_LOCK (struct vnode*) ; 
- int /*<<< orphan*/  VI_UNLOCK (struct vnode*) ; 
- int /*<<< orphan*/  destroy_vpollinfo_free (struct vpollinfo*) ; 
- int /*<<< orphan*/  knlist_init (int /*<<< orphan*/ *,struct vnode*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mtx_init (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct vpollinfo* uma_zalloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  vfs_knl_assert_locked ; 
- int /*<<< orphan*/  vfs_knl_assert_unlocked ; 
- int /*<<< orphan*/  vfs_knllock ; 
- int /*<<< orphan*/  vfs_knlunlock ; 
- int /*<<< orphan*/  vnodepoll_zone ; 
+
+ int MTX_DEF ;
+ int M_WAITOK ;
+ int M_ZERO ;
+ int VI_LOCK (struct vnode*) ;
+ int VI_UNLOCK (struct vnode*) ;
+ int destroy_vpollinfo_free (struct vpollinfo*) ;
+ int knlist_init (int *,struct vnode*,int ,int ,int ,int ) ;
+ int mtx_init (int *,char*,int *,int ) ;
+ struct vpollinfo* uma_zalloc (int ,int) ;
+ int vfs_knl_assert_locked ;
+ int vfs_knl_assert_unlocked ;
+ int vfs_knllock ;
+ int vfs_knlunlock ;
+ int vnodepoll_zone ;
 
 void
 v_addpollinfo(struct vnode *vp)
 {
-	struct vpollinfo *vi;
+ struct vpollinfo *vi;
 
-	if (vp->v_pollinfo != NULL)
-		return;
-	vi = uma_zalloc(vnodepoll_zone, M_WAITOK | M_ZERO);
-	mtx_init(&vi->vpi_lock, "vnode pollinfo", NULL, MTX_DEF);
-	knlist_init(&vi->vpi_selinfo.si_note, vp, vfs_knllock,
-	    vfs_knlunlock, vfs_knl_assert_locked, vfs_knl_assert_unlocked);
-	VI_LOCK(vp);
-	if (vp->v_pollinfo != NULL) {
-		VI_UNLOCK(vp);
-		destroy_vpollinfo_free(vi);
-		return;
-	}
-	vp->v_pollinfo = vi;
-	VI_UNLOCK(vp);
+ if (vp->v_pollinfo != ((void*)0))
+  return;
+ vi = uma_zalloc(vnodepoll_zone, M_WAITOK | M_ZERO);
+ mtx_init(&vi->vpi_lock, "vnode pollinfo", ((void*)0), MTX_DEF);
+ knlist_init(&vi->vpi_selinfo.si_note, vp, vfs_knllock,
+     vfs_knlunlock, vfs_knl_assert_locked, vfs_knl_assert_unlocked);
+ VI_LOCK(vp);
+ if (vp->v_pollinfo != ((void*)0)) {
+  VI_UNLOCK(vp);
+  destroy_vpollinfo_free(vi);
+  return;
+ }
+ vp->v_pollinfo = vi;
+ VI_UNLOCK(vp);
 }

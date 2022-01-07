@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VCCompareResult ;
-struct TYPE_9__ {int /*<<< orphan*/  commit_mgr; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int VCCompareResult ;
+struct TYPE_9__ {int commit_mgr; } ;
 struct TYPE_8__ {char const* commit_id; } ;
-typedef  TYPE_1__ SeafCommit ;
+typedef TYPE_1__ SeafCommit ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VC_FAST_FORWARD ; 
- int /*<<< orphan*/  VC_INDEPENDENT ; 
- int /*<<< orphan*/  VC_UP_TO_DATE ; 
- TYPE_1__* get_merge_base (TYPE_1__*,TYPE_1__*) ; 
- TYPE_4__* seaf ; 
- TYPE_1__* seaf_commit_manager_get_commit (int /*<<< orphan*/ ,char const*,int,char const*) ; 
- int /*<<< orphan*/  seaf_commit_unref (TYPE_1__*) ; 
- scalar_t__ strcmp (char const*,char const*) ; 
+
+ int VC_FAST_FORWARD ;
+ int VC_INDEPENDENT ;
+ int VC_UP_TO_DATE ;
+ TYPE_1__* get_merge_base (TYPE_1__*,TYPE_1__*) ;
+ TYPE_4__* seaf ;
+ TYPE_1__* seaf_commit_manager_get_commit (int ,char const*,int,char const*) ;
+ int seaf_commit_unref (TYPE_1__*) ;
+ scalar_t__ strcmp (char const*,char const*) ;
 
 VCCompareResult
 vc_compare_commits (const char *repo_id, int version,
@@ -34,7 +34,7 @@ vc_compare_commits (const char *repo_id, int version,
     SeafCommit *commit1, *commit2, *ca;
     VCCompareResult ret;
 
-    /* Treat the same as up-to-date. */
+
     if (strcmp (c1, c2) == 0)
         return VC_UP_TO_DATE;
 

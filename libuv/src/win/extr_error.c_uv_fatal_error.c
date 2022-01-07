@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DebugBreak () ; 
- int FORMAT_MESSAGE_ALLOCATE_BUFFER ; 
- int FORMAT_MESSAGE_FROM_SYSTEM ; 
- int FORMAT_MESSAGE_IGNORE_INSERTS ; 
- int /*<<< orphan*/  FormatMessageA (int,int /*<<< orphan*/ *,int const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LANG_NEUTRAL ; 
- int /*<<< orphan*/  LocalFree (char*) ; 
- int /*<<< orphan*/  MAKELANGID (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SUBLANG_DEFAULT ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int LPSTR ;
+
+
+ int DebugBreak () ;
+ int FORMAT_MESSAGE_ALLOCATE_BUFFER ;
+ int FORMAT_MESSAGE_FROM_SYSTEM ;
+ int FORMAT_MESSAGE_IGNORE_INSERTS ;
+ int FormatMessageA (int,int *,int const,int ,int ,int ,int *) ;
+ int LANG_NEUTRAL ;
+ int LocalFree (char*) ;
+ int MAKELANGID (int ,int ) ;
+ int SUBLANG_DEFAULT ;
+ int abort () ;
+ int fprintf (int ,char*,...) ;
+ int stderr ;
 
 void uv_fatal_error(const int errorno, const char* syscall) {
-  char* buf = NULL;
+  char* buf = ((void*)0);
   const char* errmsg;
 
   FormatMessageA(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM |
-      FORMAT_MESSAGE_IGNORE_INSERTS, NULL, errorno,
-      MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), (LPSTR)&buf, 0, NULL);
+      FORMAT_MESSAGE_IGNORE_INSERTS, ((void*)0), errorno,
+      MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), (LPSTR)&buf, 0, ((void*)0));
 
   if (buf) {
     errmsg = buf;
@@ -40,8 +40,8 @@ void uv_fatal_error(const int errorno, const char* syscall) {
     errmsg = "Unknown error";
   }
 
-  /* FormatMessage messages include a newline character already, so don't add
-   * another. */
+
+
   if (syscall) {
     fprintf(stderr, "%s: (%d) %s", syscall, errorno, errmsg);
   } else {

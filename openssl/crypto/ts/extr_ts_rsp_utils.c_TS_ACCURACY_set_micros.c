@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  const* micros; } ;
-typedef  TYPE_1__ TS_ACCURACY ;
-typedef  int /*<<< orphan*/  const ASN1_INTEGER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  const* ASN1_INTEGER_dup (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ASN1_INTEGER_free (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  TS_F_TS_ACCURACY_SET_MICROS ; 
- int /*<<< orphan*/  TSerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int const* micros; } ;
+typedef TYPE_1__ TS_ACCURACY ;
+typedef int const ASN1_INTEGER ;
+
+
+ int const* ASN1_INTEGER_dup (int const*) ;
+ int ASN1_INTEGER_free (int const*) ;
+ int ERR_R_MALLOC_FAILURE ;
+ int TS_F_TS_ACCURACY_SET_MICROS ;
+ int TSerr (int ,int ) ;
 
 int TS_ACCURACY_set_micros(TS_ACCURACY *a, const ASN1_INTEGER *micros)
 {
-    ASN1_INTEGER *new_micros = NULL;
+    ASN1_INTEGER *new_micros = ((void*)0);
 
     if (a->micros == micros)
         return 1;
-    if (micros != NULL) {
+    if (micros != ((void*)0)) {
         new_micros = ASN1_INTEGER_dup(micros);
-        if (new_micros == NULL) {
+        if (new_micros == ((void*)0)) {
             TSerr(TS_F_TS_ACCURACY_SET_MICROS, ERR_R_MALLOC_FAILURE);
             return 0;
         }

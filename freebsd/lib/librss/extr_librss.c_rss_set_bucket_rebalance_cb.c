@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rss_bucket_rebalance_cb_t ;
 
-/* Variables and functions */
+
+
+
+typedef int rss_bucket_rebalance_cb_t ;
+
+
 
 int
 rss_set_bucket_rebalance_cb(rss_bucket_rebalance_cb_t *cb, void *cbdata)
 {
 
-	(void) cb;
-	(void) cbdata;
+ (void) cb;
+ (void) cbdata;
 
-	/*
-	 * For now there's no rebalance callback, so
-	 * just return 0 and ignore it.
-	 */
-	return (0);
+
+
+
+
+ return (0);
 }

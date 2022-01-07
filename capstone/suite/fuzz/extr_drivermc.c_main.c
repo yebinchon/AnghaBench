@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LLVMFuzzerTestOneInput (int*,size_t) ; 
- int MAX_INSTR_SIZE ; 
- int MAX_LINE_SIZE ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int sscanf (char*,char*,...) ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int FILE ;
+
+
+ int LLVMFuzzerTestOneInput (int*,size_t) ;
+ int MAX_INSTR_SIZE ;
+ int MAX_LINE_SIZE ;
+ int fclose (int *) ;
+ int * fgets (char*,int,int *) ;
+ int * fopen (char*,char*) ;
+ int printf (char*,...) ;
+ int sscanf (char*,char*,...) ;
+ scalar_t__ strcmp (char*,char*) ;
 
 int main(int argc, char** argv)
 {
@@ -39,13 +39,13 @@ int main(int argc, char** argv)
         return 1;
     }
     for (i = 1; i < argc; i++) {
-        //opens the file, get its size, and reads it into a buffer
+
         fp = fopen(argv[i], "rb");
-        if (fp == NULL) {
+        if (fp == ((void*)0)) {
             return 2;
         }
         printf("Trying %s\n", argv[i]);
-        if (fgets(line, MAX_LINE_SIZE, fp) == NULL) {
+        if (fgets(line, MAX_LINE_SIZE, fp) == ((void*)0)) {
             break;
         }
         if (line[0] == '#') {
@@ -109,34 +109,34 @@ int main(int argc, char** argv)
                 Data[0] = 25;
             } else {
                 printf("Unknown mode\n");
-                //fail instead of continue
+
                 return 1;
             }
         } else {
             printf("No mode\n");
-            //fail instead of continue
+
             return 1;
         }
 
         while(1) {
-            if (fgets(line, MAX_LINE_SIZE, fp) == NULL) {
+            if (fgets(line, MAX_LINE_SIZE, fp) == ((void*)0)) {
                 break;
             }
             Size = 1;
-            // we start line at offset 0 and Data buffer at offset 1
-            // since Data[0] is option : arch + mode
+
+
             while (sscanf(line+(Size-1)*5, "0x%02x", &value) == 1) {
                 Data[Size] = value;
                 Size++;
                 if (line[(Size-1)*5-1] != ',') {
-                    //end of pattern
+
                     break;
                 } else if (MAX_LINE_SIZE < (Size-1)*5) {
                     printf("Line overflow\n");
                     return 1;
                 }
             }
-            //lauch fuzzer
+
             LLVMFuzzerTestOneInput(Data, Size);
         }
         fclose(fp);

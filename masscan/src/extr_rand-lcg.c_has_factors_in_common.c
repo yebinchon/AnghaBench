@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int* PRIMEFACTORS ;
 
-/* Variables and functions */
+
+
+
+typedef int uint64_t ;
+typedef int* PRIMEFACTORS ;
+
+
 
 __attribute__((used)) static uint64_t
 has_factors_in_common(uint64_t c, PRIMEFACTORS factors)
@@ -22,7 +22,7 @@ has_factors_in_common(uint64_t c, PRIMEFACTORS factors)
 
     for (i=0; factors[i]; i++) {
         if ((c % factors[i]) == 0)
-            return factors[i]; /* found a common factor */
+            return factors[i];
     }
-    return 0; /* no factors in common */
+    return 0;
 }

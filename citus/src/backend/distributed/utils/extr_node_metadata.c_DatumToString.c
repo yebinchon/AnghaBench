@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  Datum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  InvalidOid ; 
- char* OidOutputFunctionCall (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  getTypeOutputInfo (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
+
+
+
+typedef int Oid ;
+typedef int Datum ;
+
+
+ int InvalidOid ;
+ char* OidOutputFunctionCall (int ,int ) ;
+ int getTypeOutputInfo (int ,int *,int*) ;
 
 char *
 DatumToString(Datum datum, Oid dataType)
 {
-	char *outputString = NULL;
-	Oid typIoFunc = InvalidOid;
-	bool typIsVarlena = false;
+ char *outputString = ((void*)0);
+ Oid typIoFunc = InvalidOid;
+ bool typIsVarlena = 0;
 
-	getTypeOutputInfo(dataType, &typIoFunc, &typIsVarlena);
-	outputString = OidOutputFunctionCall(typIoFunc, datum);
+ getTypeOutputInfo(dataType, &typIoFunc, &typIsVarlena);
+ outputString = OidOutputFunctionCall(typIoFunc, datum);
 
-	return outputString;
+ return outputString;
 }

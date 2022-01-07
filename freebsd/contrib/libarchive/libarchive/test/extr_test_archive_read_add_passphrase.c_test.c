@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct archive {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARCHIVE_FAILED ; 
- int /*<<< orphan*/  ARCHIVE_OK ; 
- int /*<<< orphan*/  archive_read_add_passphrase (struct archive*,char*) ; 
- int /*<<< orphan*/  archive_read_free (struct archive*) ; 
- struct archive* archive_read_new () ; 
- int /*<<< orphan*/  archive_read_support_filter_all (struct archive*) ; 
- int /*<<< orphan*/  archive_read_support_format_all (struct archive*) ; 
- int /*<<< orphan*/  assertEqualInt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ARCHIVE_FAILED ;
+ int ARCHIVE_OK ;
+ int archive_read_add_passphrase (struct archive*,char*) ;
+ int archive_read_free (struct archive*) ;
+ struct archive* archive_read_new () ;
+ int archive_read_support_filter_all (struct archive*) ;
+ int archive_read_support_format_all (struct archive*) ;
+ int assertEqualInt (int ,int ) ;
 
 __attribute__((used)) static void
 test(int pristine)
 {
-	struct archive* a = archive_read_new();
+ struct archive* a = archive_read_new();
 
-	if (!pristine) {
-		archive_read_support_filter_all(a);
-		archive_read_support_format_all(a);
+ if (!pristine) {
+  archive_read_support_filter_all(a);
+  archive_read_support_format_all(a);
         }
 
-	assertEqualInt(ARCHIVE_OK, archive_read_add_passphrase(a, "pass1"));
-	/* An empty passphrase cannot be accepted. */
-	assertEqualInt(ARCHIVE_FAILED, archive_read_add_passphrase(a, ""));
-	/* NULL passphrases cannot be accepted. */
-	assertEqualInt(ARCHIVE_FAILED, archive_read_add_passphrase(a, NULL));
+ assertEqualInt(ARCHIVE_OK, archive_read_add_passphrase(a, "pass1"));
 
-	archive_read_free(a);
+ assertEqualInt(ARCHIVE_FAILED, archive_read_add_passphrase(a, ""));
+
+ assertEqualInt(ARCHIVE_FAILED, archive_read_add_passphrase(a, ((void*)0)));
+
+ archive_read_free(a);
 }

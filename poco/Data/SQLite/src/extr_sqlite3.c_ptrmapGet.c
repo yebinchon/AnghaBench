@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-struct TYPE_4__ {scalar_t__ usableSize; int /*<<< orphan*/  pPager; int /*<<< orphan*/  mutex; } ;
-typedef  int /*<<< orphan*/  Pgno ;
-typedef  int /*<<< orphan*/  DbPage ;
-typedef  TYPE_1__ BtShared ;
 
-/* Variables and functions */
- int PTRMAP_PAGENO (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int PTRMAP_PTROFFSET (int,int /*<<< orphan*/ ) ; 
- int SQLITE_CORRUPT_BKPT ; 
- int SQLITE_CORRUPT_PGNO (int) ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  get4byte (int*) ; 
- int sqlite3PagerGet (int /*<<< orphan*/ ,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3PagerGetData (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3PagerUnref (int /*<<< orphan*/ *) ; 
- int sqlite3_mutex_held (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct TYPE_4__ {scalar_t__ usableSize; int pPager; int mutex; } ;
+typedef int Pgno ;
+typedef int DbPage ;
+typedef TYPE_1__ BtShared ;
+
+
+ int PTRMAP_PAGENO (TYPE_1__*,int ) ;
+ int PTRMAP_PTROFFSET (int,int ) ;
+ int SQLITE_CORRUPT_BKPT ;
+ int SQLITE_CORRUPT_PGNO (int) ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int get4byte (int*) ;
+ int sqlite3PagerGet (int ,int,int **,int ) ;
+ scalar_t__ sqlite3PagerGetData (int *) ;
+ int sqlite3PagerUnref (int *) ;
+ int sqlite3_mutex_held (int ) ;
 
 __attribute__((used)) static int ptrmapGet(BtShared *pBt, Pgno key, u8 *pEType, Pgno *pPgno){
-  DbPage *pDbPage;   /* The pointer map page */
-  int iPtrmap;       /* Pointer map page index */
-  u8 *pPtrmap;       /* Pointer map page data */
-  int offset;        /* Offset of entry in pointer map */
+  DbPage *pDbPage;
+  int iPtrmap;
+  u8 *pPtrmap;
+  int offset;
   int rc;
 
   assert( sqlite3_mutex_held(pBt->mutex) );

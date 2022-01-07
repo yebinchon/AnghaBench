@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct vo {scalar_t__ dwidth; scalar_t__ dheight; int want_redraw; TYPE_4__* params; TYPE_3__* opts; struct vdpctx* priv; } ;
-struct TYPE_6__ {int /*<<< orphan*/  y1; int /*<<< orphan*/  y0; int /*<<< orphan*/  x1; int /*<<< orphan*/  x0; } ;
-struct TYPE_5__ {int /*<<< orphan*/  y1; int /*<<< orphan*/  y0; int /*<<< orphan*/  x1; int /*<<< orphan*/  x0; } ;
-struct vdpctx {long long flip_offset_us; long long flip_offset_fs; long long flip_offset_window; scalar_t__ output_surface_w; scalar_t__ output_surface_h; int rotation; int num_output_surfaces; scalar_t__* output_surfaces; scalar_t__ rotation_surface; int /*<<< orphan*/  vdp_device; TYPE_2__ src_rect_vid; TYPE_1__ out_rect_vid; int /*<<< orphan*/  osd_rect; struct vdp_functions* vdp; } ;
-struct vdp_functions {scalar_t__ (* output_surface_query_capabilities ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;scalar_t__ (* output_surface_destroy ) (scalar_t__) ;scalar_t__ (* output_surface_create ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__*) ;} ;
-struct mp_rect {int /*<<< orphan*/  y1; int /*<<< orphan*/  y0; int /*<<< orphan*/  x1; int /*<<< orphan*/  x0; } ;
-typedef  scalar_t__ VdpStatus ;
-typedef  int /*<<< orphan*/  VdpBool ;
+struct TYPE_6__ {int y1; int y0; int x1; int x0; } ;
+struct TYPE_5__ {int y1; int y0; int x1; int x0; } ;
+struct vdpctx {long long flip_offset_us; long long flip_offset_fs; long long flip_offset_window; scalar_t__ output_surface_w; scalar_t__ output_surface_h; int rotation; int num_output_surfaces; scalar_t__* output_surfaces; scalar_t__ rotation_surface; int vdp_device; TYPE_2__ src_rect_vid; TYPE_1__ out_rect_vid; int osd_rect; struct vdp_functions* vdp; } ;
+struct vdp_functions {scalar_t__ (* output_surface_query_capabilities ) (int ,int ,int *,int *,int *) ;scalar_t__ (* output_surface_destroy ) (scalar_t__) ;scalar_t__ (* output_surface_create ) (int ,int ,scalar_t__,scalar_t__,scalar_t__*) ;} ;
+struct mp_rect {int y1; int y0; int x1; int x0; } ;
+typedef scalar_t__ VdpStatus ;
+typedef int VdpBool ;
 struct TYPE_8__ {int rotate; } ;
 struct TYPE_7__ {scalar_t__ fullscreen; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_VDP_WARNING (struct vo*,char*) ; 
- int /*<<< orphan*/  MP_DBG (struct vo*,char*,scalar_t__) ; 
- int /*<<< orphan*/  OUTPUT_RGBA_FORMAT ; 
- scalar_t__ VDP_INVALID_HANDLE ; 
- scalar_t__ VDP_STATUS_OK ; 
- void* s_size (int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ stub2 (scalar_t__) ; 
- scalar_t__ stub3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__*) ; 
- scalar_t__ stub4 (scalar_t__) ; 
- scalar_t__ stub5 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__*) ; 
- scalar_t__ stub6 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  vo_get_src_dst_rects (struct vo*,struct mp_rect*,struct mp_rect*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vo_set_queue_params (struct vo*,long long,int) ; 
+
+ int CHECK_VDP_WARNING (struct vo*,char*) ;
+ int MP_DBG (struct vo*,char*,scalar_t__) ;
+ int OUTPUT_RGBA_FORMAT ;
+ scalar_t__ VDP_INVALID_HANDLE ;
+ scalar_t__ VDP_STATUS_OK ;
+ void* s_size (int ,scalar_t__,scalar_t__) ;
+ scalar_t__ stub1 (int ,int ,int *,int *,int *) ;
+ scalar_t__ stub2 (scalar_t__) ;
+ scalar_t__ stub3 (int ,int ,scalar_t__,scalar_t__,scalar_t__*) ;
+ scalar_t__ stub4 (scalar_t__) ;
+ scalar_t__ stub5 (int ,int ,scalar_t__,scalar_t__,scalar_t__*) ;
+ scalar_t__ stub6 (int ,int ,scalar_t__,scalar_t__,scalar_t__*) ;
+ int vo_get_src_dst_rects (struct vo*,struct mp_rect*,struct mp_rect*,int *) ;
+ int vo_set_queue_params (struct vo*,long long,int) ;
 
 __attribute__((used)) static void resize(struct vo *vo)
 {
@@ -84,7 +84,7 @@ __attribute__((used)) static void resize(struct vo *vo)
     {
         vc->output_surface_w = s_size(max_w, vc->output_surface_w, vo->dwidth);
         vc->output_surface_h = s_size(max_h, vc->output_surface_h, vo->dheight);
-        // Creation of output_surfaces
+
         for (int i = 0; i < vc->num_output_surfaces; i++)
             if (vc->output_surfaces[i] != VDP_INVALID_HANDLE) {
                 vdp_st = vdp->output_surface_destroy(vc->output_surfaces[i]);
@@ -125,5 +125,5 @@ __attribute__((used)) static void resize(struct vo *vo)
                vc->rotation_surface);
     }
     vc->rotation = vo->params->rotate;
-    vo->want_redraw = true;
+    vo->want_redraw = 1;
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int16_t ;
-typedef  int /*<<< orphan*/  PSRB ;
-typedef  int /*<<< orphan*/  PACB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XFERDATAIN ; 
- int /*<<< orphan*/  trm_DataIO_transfer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u_int16_t ;
+typedef int PSRB ;
+typedef int PACB ;
+
+
+ int XFERDATAIN ;
+ int trm_DataIO_transfer (int ,int ,int ) ;
 
 __attribute__((used)) static void
 trm_DataInPhase1(PACB pACB, PSRB pSRB, u_int16_t *pscsi_status)
 {
-	u_int16_t	ioDir;
-	/*
-	 * do prepare befor transfer when data in phase
-	 */
-	
-	ioDir = XFERDATAIN;
-	trm_DataIO_transfer(pACB, pSRB, ioDir);
+ u_int16_t ioDir;
+
+
+
+
+ ioDir = XFERDATAIN;
+ trm_DataIO_transfer(pACB, pSRB, ioDir);
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_13__ {int cpage_count; int cpage_use_map; int cpage_use_mask; struct TYPE_13__* cpages; } ;
-typedef  TYPE_1__ u8_t ;
-typedef  int u32_t ;
-typedef  TYPE_1__ spiffs_cache ;
+typedef TYPE_1__ u8_t ;
+typedef int u32_t ;
+typedef TYPE_1__ spiffs_cache ;
 struct TYPE_14__ {scalar_t__ cache; int cache_size; } ;
-typedef  TYPE_3__ spiffs ;
+typedef TYPE_3__ spiffs ;
 struct TYPE_15__ {int ix; } ;
 
-/* Variables and functions */
- int SPIFFS_CACHE_PAGE_SIZE (TYPE_3__*) ; 
- int /*<<< orphan*/  _SPIFFS_MEMCPY (scalar_t__,TYPE_1__*,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- TYPE_1__* spiffs_get_cache (TYPE_3__*) ; 
- TYPE_4__* spiffs_get_cache_page_hdr (TYPE_3__*,TYPE_1__*,int) ; 
+
+ int SPIFFS_CACHE_PAGE_SIZE (TYPE_3__*) ;
+ int _SPIFFS_MEMCPY (scalar_t__,TYPE_1__*,int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ TYPE_1__* spiffs_get_cache (TYPE_3__*) ;
+ TYPE_4__* spiffs_get_cache_page_hdr (TYPE_3__*,TYPE_1__*,int) ;
 
 void spiffs_cache_init(spiffs *fs) {
   if (fs->cache == 0) return;

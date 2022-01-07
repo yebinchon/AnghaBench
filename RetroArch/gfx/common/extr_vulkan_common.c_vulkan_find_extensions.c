@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  extensionName; } ;
-typedef  TYPE_1__ VkExtensionProperties ;
 
-/* Variables and functions */
- scalar_t__ string_is_equal (char const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int extensionName; } ;
+typedef TYPE_1__ VkExtensionProperties ;
+
+
+ scalar_t__ string_is_equal (char const*,int ) ;
 
 __attribute__((used)) static bool vulkan_find_extensions(const char **exts, unsigned num_exts,
       const VkExtensionProperties *properties, unsigned property_count)
@@ -24,18 +24,18 @@ __attribute__((used)) static bool vulkan_find_extensions(const char **exts, unsi
    bool found;
    for (ext = 0; ext < num_exts; ext++)
    {
-      found = false;
+      found = 0;
       for (i = 0; i < property_count; i++)
       {
          if (string_is_equal(exts[ext], properties[i].extensionName))
          {
-            found = true;
+            found = 1;
             break;
          }
       }
 
       if (!found)
-         return false;
+         return 0;
    }
-   return true;
+   return 1;
 }

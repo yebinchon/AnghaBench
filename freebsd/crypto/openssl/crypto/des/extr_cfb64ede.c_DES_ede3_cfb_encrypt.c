@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DES_key_schedule ;
-typedef  unsigned char* DES_cblock ;
-typedef  int /*<<< orphan*/  DES_LONG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DES_encrypt3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  c2l (unsigned char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  c2ln (unsigned char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  l2c (int /*<<< orphan*/ ,unsigned char*) ; 
- int /*<<< orphan*/  l2cn (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*,unsigned long) ; 
- int /*<<< orphan*/  memmove (unsigned char*,unsigned char*,int) ; 
+
+
+
+typedef int DES_key_schedule ;
+typedef unsigned char* DES_cblock ;
+typedef int DES_LONG ;
+
+
+ int DES_encrypt3 (int *,int *,int *,int *) ;
+ int c2l (unsigned char*,int ) ;
+ int c2ln (unsigned char const*,int ,int ,unsigned long) ;
+ int l2c (int ,unsigned char*) ;
+ int l2cn (int ,int ,unsigned char*,unsigned long) ;
+ int memmove (unsigned char*,unsigned char*,int) ;
 
 void DES_ede3_cfb_encrypt(const unsigned char *in, unsigned char *out,
                           int numbits, long length, DES_key_schedule *ks1,
@@ -51,10 +51,10 @@ void DES_ede3_cfb_encrypt(const unsigned char *in, unsigned char *out,
             d1 ^= ti[1];
             l2cn(d0, d1, out, n);
             out += n;
-            /*
-             * 30-08-94 - eay - changed because l>>32 and l<<32 are bad under
-             * gcc :-(
-             */
+
+
+
+
             if (num == 32) {
                 v0 = v1;
                 v1 = d0;
@@ -67,9 +67,9 @@ void DES_ede3_cfb_encrypt(const unsigned char *in, unsigned char *out,
                 l2c(v1, iv);
                 l2c(d0, iv);
                 l2c(d1, iv);
-                /* shift ovec left most of the bits... */
+
                 memmove(ovec, ovec + num / 8, 8 + (num % 8 ? 1 : 0));
-                /* now the remaining bits */
+
                 if (num % 8 != 0)
                     for (i = 0; i < 8; ++i) {
                         ovec[i] <<= num % 8;
@@ -88,10 +88,10 @@ void DES_ede3_cfb_encrypt(const unsigned char *in, unsigned char *out,
             DES_encrypt3(ti, ks1, ks2, ks3);
             c2ln(in, d0, d1, n);
             in += n;
-            /*
-             * 30-08-94 - eay - changed because l>>32 and l<<32 are bad under
-             * gcc :-(
-             */
+
+
+
+
             if (num == 32) {
                 v0 = v1;
                 v1 = d0;
@@ -104,9 +104,9 @@ void DES_ede3_cfb_encrypt(const unsigned char *in, unsigned char *out,
                 l2c(v1, iv);
                 l2c(d0, iv);
                 l2c(d1, iv);
-                /* shift ovec left most of the bits... */
+
                 memmove(ovec, ovec + num / 8, 8 + (num % 8 ? 1 : 0));
-                /* now the remaining bits */
+
                 if (num % 8 != 0)
                     for (i = 0; i < 8; ++i) {
                         ovec[i] <<= num % 8;

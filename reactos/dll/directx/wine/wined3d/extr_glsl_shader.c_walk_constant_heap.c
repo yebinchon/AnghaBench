@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_vec4 {int /*<<< orphan*/  x; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct wined3d_vec4 {int x; } ;
 struct wined3d_gl_info {int dummy; } ;
 struct constant_heap {unsigned int size; TYPE_1__* entries; } ;
 struct TYPE_2__ {scalar_t__ version; unsigned int idx; } ;
-typedef  int GLint ;
-typedef  scalar_t__ DWORD ;
+typedef int GLint ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
-#define  HEAP_NODE_POP 130 
-#define  HEAP_NODE_TRAVERSE_LEFT 129 
-#define  HEAP_NODE_TRAVERSE_RIGHT 128 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- int /*<<< orphan*/  glUniform4fv (int const,unsigned int,int /*<<< orphan*/ *) ; 
+
+ int GL_EXTCALL (int ) ;
+
+
+
+ int checkGLcall (char*) ;
+ int glUniform4fv (int const,unsigned int,int *) ;
 
 __attribute__((used)) static inline void walk_constant_heap(const struct wined3d_gl_info *gl_info, const struct wined3d_vec4 *constants,
         const GLint *constant_locations, const struct constant_heap *heap, unsigned char *stack, DWORD version)
@@ -39,14 +39,14 @@ __attribute__((used)) static inline void walk_constant_heap(const struct wined3d
     idx = heap->entries[heap_idx].idx;
     if (constant_locations[idx] != -1)
         start = end = idx;
-    stack[stack_idx] = HEAP_NODE_TRAVERSE_LEFT;
+    stack[stack_idx] = 129;
 
     while (stack_idx >= 0)
     {
-        /* Note that we fall through to the next case statement. */
+
         switch(stack[stack_idx])
         {
-            case HEAP_NODE_TRAVERSE_LEFT:
+            case 129:
             {
                 unsigned int left_idx = heap_idx << 1;
                 if (left_idx < heap->size && heap->entries[left_idx].version > version)
@@ -61,13 +61,13 @@ __attribute__((used)) static inline void walk_constant_heap(const struct wined3d
                             end = idx;
                     }
 
-                    stack[stack_idx++] = HEAP_NODE_TRAVERSE_RIGHT;
-                    stack[stack_idx] = HEAP_NODE_TRAVERSE_LEFT;
+                    stack[stack_idx++] = 128;
+                    stack[stack_idx] = 129;
                     break;
                 }
             }
 
-            case HEAP_NODE_TRAVERSE_RIGHT:
+            case 128:
             {
                 unsigned int right_idx = (heap_idx << 1) + 1;
                 if (right_idx < heap->size && heap->entries[right_idx].version > version)
@@ -82,13 +82,13 @@ __attribute__((used)) static inline void walk_constant_heap(const struct wined3d
                             end = idx;
                     }
 
-                    stack[stack_idx++] = HEAP_NODE_POP;
-                    stack[stack_idx] = HEAP_NODE_TRAVERSE_LEFT;
+                    stack[stack_idx++] = 130;
+                    stack[stack_idx] = 129;
                     break;
                 }
             }
 
-            case HEAP_NODE_POP:
+            case 130:
                 heap_idx >>= 1;
                 --stack_idx;
                 break;

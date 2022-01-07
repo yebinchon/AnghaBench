@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct yfs_acl {struct yfs_acl* vol_acl; struct yfs_acl* acl; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct yfs_acl*) ; 
+
+ int kfree (struct yfs_acl*) ;
 
 void yfs_free_opaque_acl(struct yfs_acl *yacl)
 {
-	if (yacl) {
-		kfree(yacl->acl);
-		kfree(yacl->vol_acl);
-		kfree(yacl);
-	}
+ if (yacl) {
+  kfree(yacl->acl);
+  kfree(yacl->vol_acl);
+  kfree(yacl);
+ }
 }

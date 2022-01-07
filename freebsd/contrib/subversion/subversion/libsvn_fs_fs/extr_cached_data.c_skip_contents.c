@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ svn_filesize_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_3__ {int /*<<< orphan*/  revision; } ;
-struct rep_read_baton {int /*<<< orphan*/  off; int /*<<< orphan*/  md5_checksum_ctx; int /*<<< orphan*/  pool; TYPE_2__* current_fulltext; int /*<<< orphan*/  filehandle_pool; int /*<<< orphan*/  len; TYPE_1__ fulltext_cache_key; } ;
-typedef  scalar_t__ apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ svn_filesize_t ;
+typedef int svn_error_t ;
+struct TYPE_3__ {int revision; } ;
+struct rep_read_baton {int off; int md5_checksum_ctx; int pool; TYPE_2__* current_fulltext; int filehandle_pool; int len; TYPE_1__ fulltext_cache_key; } ;
+typedef scalar_t__ apr_size_t ;
+typedef int apr_pool_t ;
 struct TYPE_4__ {scalar_t__ len; char* data; } ;
 
-/* Variables and functions */
- scalar_t__ MAX (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- scalar_t__ SVN_IS_VALID_REVNUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- scalar_t__ SVN__STREAM_CHUNK_SIZE ; 
- char* apr_palloc (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/ * get_contents_from_windows (struct rep_read_baton*,char*,scalar_t__*) ; 
- int /*<<< orphan*/  optimimal_allocation_size (scalar_t__) ; 
- int /*<<< orphan*/  svn_checksum_update (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- TYPE_2__* svn_stringbuf_create_ensure (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ MAX (scalar_t__,int ) ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int) ;
+ scalar_t__ SVN_IS_VALID_REVNUM (int ) ;
+ int * SVN_NO_ERROR ;
+ scalar_t__ SVN__STREAM_CHUNK_SIZE ;
+ char* apr_palloc (int *,scalar_t__) ;
+ int * get_contents_from_windows (struct rep_read_baton*,char*,scalar_t__*) ;
+ int optimimal_allocation_size (scalar_t__) ;
+ int svn_checksum_update (int ,char*,scalar_t__) ;
+ int * svn_error_trace (int *) ;
+ int * svn_pool_create (int ) ;
+ int svn_pool_destroy (int *) ;
+ TYPE_2__* svn_stringbuf_create_ensure (int ,int ) ;
 
 __attribute__((used)) static svn_error_t *
 skip_contents(struct rep_read_baton *baton,
@@ -42,23 +42,23 @@ skip_contents(struct rep_read_baton *baton,
 {
   svn_error_t *err = SVN_NO_ERROR;
 
-  /* Do we want to cache the reconstructed fulltext? */
+
   if (SVN_IS_VALID_REVNUM(baton->fulltext_cache_key.revision))
     {
       char *buffer;
       svn_filesize_t to_alloc = MAX(len, baton->len);
 
-      /* This should only be happening if BATON->LEN and LEN are
-       * cacheable, implying they fit into memory. */
+
+
       SVN_ERR_ASSERT((apr_size_t)to_alloc == to_alloc);
 
-      /* Allocate the fulltext buffer. */
+
       baton->current_fulltext = svn_stringbuf_create_ensure(
                         optimimal_allocation_size((apr_size_t)to_alloc),
                         baton->filehandle_pool);
 
-      /* Read LEN bytes from the window stream and store the data
-       * in the fulltext buffer (will be filled by further reads later). */
+
+
       baton->current_fulltext->len = (apr_size_t)len;
       baton->current_fulltext->data[(apr_size_t)len] = 0;
 
@@ -71,8 +71,8 @@ skip_contents(struct rep_read_baton *baton,
           buffer += to_read;
         }
 
-      /* Make the MD5 calculation catch up with the data delivered
-       * (we did not run MD5 on the data that we took from the cache). */
+
+
       if (!err)
         {
           SVN_ERR(svn_checksum_update(baton->md5_checksum_ctx,
@@ -83,7 +83,7 @@ skip_contents(struct rep_read_baton *baton,
     }
   else if (len > 0)
     {
-      /* Simply drain LEN bytes from the window stream. */
+
       apr_pool_t *subpool = svn_pool_create(baton->pool);
       char *buffer = apr_palloc(subpool, SVN__STREAM_CHUNK_SIZE);
 
@@ -96,8 +96,8 @@ skip_contents(struct rep_read_baton *baton,
           err = get_contents_from_windows(baton, buffer, &to_read);
           len -= to_read;
 
-          /* Make the MD5 calculation catch up with the data delivered
-           * (we did not run MD5 on the data that we took from the cache). */
+
+
           if (!err)
             {
               SVN_ERR(svn_checksum_update(baton->md5_checksum_ctx,

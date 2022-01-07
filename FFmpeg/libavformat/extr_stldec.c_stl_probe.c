@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {unsigned char* buf; } ;
-typedef  TYPE_1__ AVProbeData ;
+typedef TYPE_1__ AVProbeData ;
 
-/* Variables and functions */
- int AVPROBE_SCORE_MAX ; 
- int AV_RB24 (unsigned char const*) ; 
- int /*<<< orphan*/  ff_subtitles_next_line (unsigned char const*) ; 
- int sscanf (unsigned char const*,char*,char*) ; 
- int /*<<< orphan*/  strncmp (unsigned char const*,char*,int) ; 
+
+ int AVPROBE_SCORE_MAX ;
+ int AV_RB24 (unsigned char const*) ;
+ int ff_subtitles_next_line (unsigned char const*) ;
+ int sscanf (unsigned char const*,char*,char*) ;
+ int strncmp (unsigned char const*,char*,int) ;
 
 __attribute__((used)) static int stl_probe(const AVProbeData *p)
 {
@@ -27,7 +27,7 @@ __attribute__((used)) static int stl_probe(const AVProbeData *p)
     const unsigned char *ptr = p->buf;
 
     if (AV_RB24(ptr) == 0xEFBBBF)
-        ptr += 3;  /* skip UTF-8 BOM */
+        ptr += 3;
 
     while (*ptr == '\r' || *ptr == '\n' || *ptr == '$' || !strncmp(ptr, "//" , 2))
         ptr += ff_subtitles_next_line(ptr);

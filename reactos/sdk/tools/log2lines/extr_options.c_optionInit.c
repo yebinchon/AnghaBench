@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  buildrev; int /*<<< orphan*/  range; int /*<<< orphan*/  rev; } ;
 
-/* Variables and functions */
- char const* CMD_7Z ; 
- int /*<<< orphan*/  DEF_RANGE ; 
- int /*<<< orphan*/  LINESIZE ; 
- int /*<<< orphan*/  SOURCES_ENV ; 
- int /*<<< orphan*/  getRevision (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  getTBRevision (int /*<<< orphan*/ ) ; 
- char* getenv (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  l2l_dbg (int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  opt_7z ; 
- int /*<<< orphan*/  opt_Pipe ; 
- int /*<<< orphan*/  opt_SourcesPath ; 
- int /*<<< orphan*/  opt_dir ; 
- int /*<<< orphan*/  opt_help ; 
- int /*<<< orphan*/  opt_logFile ; 
- char* opt_mod ; 
- int /*<<< orphan*/  opt_scanned ; 
- TYPE_1__ revinfo ; 
- int /*<<< orphan*/  strcat (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  usage (int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int buildrev; int range; int rev; } ;
+
+
+ char const* CMD_7Z ;
+ int DEF_RANGE ;
+ int LINESIZE ;
+ int SOURCES_ENV ;
+ int getRevision (int *,int) ;
+ int getTBRevision (int ) ;
+ char* getenv (int ) ;
+ int l2l_dbg (int,char*,int ) ;
+ int malloc (int ) ;
+ int opt_7z ;
+ int opt_Pipe ;
+ int opt_SourcesPath ;
+ int opt_dir ;
+ int opt_help ;
+ int opt_logFile ;
+ char* opt_mod ;
+ int opt_scanned ;
+ TYPE_1__ revinfo ;
+ int strcat (int ,char const*) ;
+ int strcpy (int ,char const*) ;
+ int usage (int) ;
 
 int optionInit(int argc, const char **argv)
 {
@@ -48,15 +48,15 @@ int optionInit(int argc, const char **argv)
     strcpy(opt_SourcesPath, "");
     if ((s = getenv(SOURCES_ENV)))
         strcpy(opt_SourcesPath, s);
-    revinfo.rev = getRevision(NULL, 1);
+    revinfo.rev = getRevision(((void*)0), 1);
     revinfo.range = DEF_RANGE;
     revinfo.buildrev = getTBRevision(opt_dir);
     l2l_dbg(1, "Trunk build revision: %d\n", revinfo.buildrev);
 
     strcpy(opt_scanned, "");
 
-    //The user introduced "log2lines.exe" or "log2lines.exe /?"
-    //Let's help the user
+
+
     if ((argc == 1) ||
         ((argc == 2) && (argv[1][0] == '/') && (argv[1][1] == '?')))
     {
@@ -70,7 +70,7 @@ int optionInit(int argc, const char **argv)
 
         if ((argv[i][0] == '-') && (i+1 < argc))
         {
-            //Because these arguments can contain spaces we cant use getopt(), a known bug:
+
             switch (argv[i][1])
             {
             case 'd':
@@ -78,7 +78,7 @@ int optionInit(int argc, const char **argv)
                 break;
             case 'L':
                 opt_mod = "w";
-                //fall through
+
             case 'l':
                 strcpy(opt_logFile, argv[i+1]);
                 break;

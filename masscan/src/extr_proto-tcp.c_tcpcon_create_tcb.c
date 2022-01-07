@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {unsigned short port; } ;
-struct TCP_Control_Block {unsigned int ip_me; unsigned int ip_them; unsigned short port_me; unsigned short port_them; unsigned int seqno_me; unsigned int seqno_them; unsigned int ackno_me; unsigned int ackno_them; unsigned char ttl; int /*<<< orphan*/  banout; int /*<<< orphan*/  timeout; TYPE_1__ banner1_state; int /*<<< orphan*/  when_created; struct TCP_Control_Block* next; } ;
-struct TCP_ConnectionTable {unsigned int mask; int /*<<< orphan*/  active_count; struct TCP_Control_Block** entries; struct TCP_Control_Block* freed_list; int /*<<< orphan*/  entropy; } ;
+struct TCP_Control_Block {unsigned int ip_me; unsigned int ip_them; unsigned short port_me; unsigned short port_them; unsigned int seqno_me; unsigned int seqno_them; unsigned int ackno_me; unsigned int ackno_them; unsigned char ttl; int banout; int timeout; TYPE_1__ banner1_state; int when_created; struct TCP_Control_Block* next; } ;
+struct TCP_ConnectionTable {unsigned int mask; int active_count; struct TCP_Control_Block** entries; struct TCP_Control_Block* freed_list; int entropy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EQUALS (struct TCP_Control_Block*,struct TCP_Control_Block*) ; 
- struct TCP_Control_Block* MALLOC (int) ; 
- int /*<<< orphan*/  banout_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  global_now ; 
- int /*<<< orphan*/  memcpy (struct TCP_Control_Block*,struct TCP_Control_Block*,int) ; 
- int /*<<< orphan*/  memset (struct TCP_Control_Block*,int /*<<< orphan*/ ,int) ; 
- unsigned int tcb_hash (unsigned int,unsigned int,unsigned int,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timeout_init (int /*<<< orphan*/ ) ; 
+
+ int EQUALS (struct TCP_Control_Block*,struct TCP_Control_Block*) ;
+ struct TCP_Control_Block* MALLOC (int) ;
+ int banout_init (int *) ;
+ int global_now ;
+ int memcpy (struct TCP_Control_Block*,struct TCP_Control_Block*,int) ;
+ int memset (struct TCP_Control_Block*,int ,int) ;
+ unsigned int tcb_hash (unsigned int,unsigned int,unsigned int,unsigned int,int ) ;
+ int timeout_init (int ) ;
 
 struct TCP_Control_Block *
 tcpcon_create_tcb(
@@ -47,7 +47,7 @@ tcpcon_create_tcb(
     while (tcb && !EQUALS(tcb, &tmp)) {
         tcb = tcb->next;
     }
-    if (tcb == NULL) {
+    if (tcb == ((void*)0)) {
         if (tcpcon->freed_list) {
             tcb = tcpcon->freed_list;
             tcpcon->freed_list = tcb->next;

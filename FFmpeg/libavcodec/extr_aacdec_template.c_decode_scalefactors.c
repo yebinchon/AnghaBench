@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum BandType { ____Placeholder_BandType } BandType ;
-struct TYPE_8__ {int /*<<< orphan*/  table; } ;
-struct TYPE_7__ {int /*<<< orphan*/  avctx; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef enum BandType { ____Placeholder_BandType } BandType ;
+struct TYPE_8__ {int table; } ;
+struct TYPE_7__ {int avctx; } ;
 struct TYPE_6__ {int num_window_groups; int max_sfb; } ;
-typedef  TYPE_1__ IndividualChannelStream ;
-typedef  int INTFLOAT ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_2__ AACContext ;
+typedef TYPE_1__ IndividualChannelStream ;
+typedef int INTFLOAT ;
+typedef int GetBitContext ;
+typedef TYPE_2__ AACContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int FIXR (int) ; 
- int INTENSITY_BT ; 
- int INTENSITY_BT2 ; 
- int NOISE_BT ; 
- int /*<<< orphan*/  NOISE_OFFSET ; 
- scalar_t__ NOISE_PRE ; 
- int /*<<< orphan*/  NOISE_PRE_BITS ; 
- int POW_SF2_ZERO ; 
- scalar_t__ SCALE_DIFF_ZERO ; 
- int ZERO_BT ; 
- int av_clip (int,int,int) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  avpriv_request_sample (int /*<<< orphan*/ ,char*,int,int) ; 
- int* ff_aac_pow2sf_tab ; 
- scalar_t__ get_bits (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ get_vlc2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- TYPE_3__ vlc_scalefactors ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int FIXR (int) ;
+ int INTENSITY_BT ;
+ int INTENSITY_BT2 ;
+ int NOISE_BT ;
+ int NOISE_OFFSET ;
+ scalar_t__ NOISE_PRE ;
+ int NOISE_PRE_BITS ;
+ int POW_SF2_ZERO ;
+ scalar_t__ SCALE_DIFF_ZERO ;
+ int ZERO_BT ;
+ int av_clip (int,int,int) ;
+ int av_log (int ,int ,char*,int) ;
+ int avpriv_request_sample (int ,char*,int,int) ;
+ int* ff_aac_pow2sf_tab ;
+ scalar_t__ get_bits (int *,int ) ;
+ scalar_t__ get_vlc2 (int *,int ,int,int) ;
+ TYPE_3__ vlc_scalefactors ;
 
 __attribute__((used)) static int decode_scalefactors(AACContext *ac, INTFLOAT sf[120], GetBitContext *gb,
                                unsigned int global_gain,
@@ -70,11 +70,11 @@ __attribute__((used)) static int decode_scalefactors(AACContext *ac, INTFLOAT sf
                                               "Clipped intensity stereo position (%d -> %d)",
                                               offset[2], clipped_offset);
                     }
-#if USE_FIXED
-                    sf[idx] = 100 - clipped_offset;
-#else
+
+
+
                     sf[idx] = ff_aac_pow2sf_tab[-clipped_offset + POW_SF2_ZERO];
-#endif /* USE_FIXED */
+
                 }
             } else if (band_type[idx] == NOISE_BT) {
                 for (; i < run_end; i++, idx++) {
@@ -89,11 +89,11 @@ __attribute__((used)) static int decode_scalefactors(AACContext *ac, INTFLOAT sf
                                               "Clipped noise gain (%d -> %d)",
                                               offset[1], clipped_offset);
                     }
-#if USE_FIXED
-                    sf[idx] = -(100 + clipped_offset);
-#else
+
+
+
                     sf[idx] = -ff_aac_pow2sf_tab[clipped_offset + POW_SF2_ZERO];
-#endif /* USE_FIXED */
+
                 }
             } else {
                 for (; i < run_end; i++, idx++) {
@@ -103,11 +103,11 @@ __attribute__((used)) static int decode_scalefactors(AACContext *ac, INTFLOAT sf
                                "Scalefactor (%d) out of range.\n", offset[0]);
                         return AVERROR_INVALIDDATA;
                     }
-#if USE_FIXED
-                    sf[idx] = -offset[0];
-#else
+
+
+
                     sf[idx] = -ff_aac_pow2sf_tab[offset[0] - 100 + POW_SF2_ZERO];
-#endif /* USE_FIXED */
+
                 }
             }
         }

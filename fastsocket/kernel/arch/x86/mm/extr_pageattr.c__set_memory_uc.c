@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  _PAGE_CACHE_UC_MINUS ; 
- int /*<<< orphan*/  __pgprot (int /*<<< orphan*/ ) ; 
- int change_page_attr_set (unsigned long*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int _PAGE_CACHE_UC_MINUS ;
+ int __pgprot (int ) ;
+ int change_page_attr_set (unsigned long*,int,int ,int ) ;
 
 int _set_memory_uc(unsigned long addr, int numpages)
 {
-	/*
-	 * for now UC MINUS. see comments in ioremap_nocache()
-	 */
-	return change_page_attr_set(&addr, numpages,
-				    __pgprot(_PAGE_CACHE_UC_MINUS), 0);
+
+
+
+ return change_page_attr_set(&addr, numpages,
+        __pgprot(_PAGE_CACHE_UC_MINUS), 0);
 }

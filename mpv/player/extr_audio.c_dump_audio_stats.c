@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct MPContext {scalar_t__ audio_status; int audio_stat_start; double written_audio; int /*<<< orphan*/  ao; scalar_t__ paused; int /*<<< orphan*/  log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_STATS (struct MPContext*,char*,double) ; 
- int /*<<< orphan*/  MSGL_STATS ; 
- scalar_t__ STATUS_PLAYING ; 
- double ao_get_delay (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_msg_test (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int mp_time_us () ; 
+
+
+
+struct MPContext {scalar_t__ audio_status; int audio_stat_start; double written_audio; int ao; scalar_t__ paused; int log; } ;
+
+
+ int MP_STATS (struct MPContext*,char*,double) ;
+ int MSGL_STATS ;
+ scalar_t__ STATUS_PLAYING ;
+ double ao_get_delay (int ) ;
+ int mp_msg_test (int ,int ) ;
+ int mp_time_us () ;
 
 __attribute__((used)) static void dump_audio_stats(struct MPContext *mpctx)
 {

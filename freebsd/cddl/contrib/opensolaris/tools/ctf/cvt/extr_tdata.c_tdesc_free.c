@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tdesc_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  tdesc_free_cb (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int tdesc_t ;
+
+
+ int tdesc_free_cb (int *,int *) ;
 
 void
 tdesc_free(tdesc_t *tdp)
 {
-	tdesc_free_cb(tdp, NULL);
+ tdesc_free_cb(tdp, ((void*)0));
 }

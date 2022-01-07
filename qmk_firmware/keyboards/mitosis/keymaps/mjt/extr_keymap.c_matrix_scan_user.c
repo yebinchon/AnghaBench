@@ -1,53 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
-#define  _ADJUST 133 
-#define  _FUNCSHIFT 132 
-#define  _FUNCTIONMAC 131 
-#define  _FUNCTIONPC 130 
-#define  _QWERTY 129 
-#define  _SHIFTED 128 
- int biton32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_state ; 
- int /*<<< orphan*/  set_led_blue ; 
- int /*<<< orphan*/  set_led_cyan ; 
- int /*<<< orphan*/  set_led_green ; 
- int /*<<< orphan*/  set_led_off ; 
- int /*<<< orphan*/  set_led_red ; 
- int /*<<< orphan*/  set_led_white ; 
+
+
+
+typedef int uint8_t ;
+ int biton32 (int ) ;
+ int layer_state ;
+ int set_led_blue ;
+ int set_led_cyan ;
+ int set_led_green ;
+ int set_led_off ;
+ int set_led_red ;
+ int set_led_white ;
 
 void matrix_scan_user(void) {
   uint8_t layer = biton32(layer_state);
 
   switch (layer) {
-  case _QWERTY:
+  case 129:
     set_led_off;
     break;
-  case _FUNCTIONMAC:
+  case 131:
     set_led_blue;
     break;
-  case _FUNCTIONPC:
+  case 130:
     set_led_cyan;
     break;
-  case _SHIFTED:
+  case 128:
     set_led_red;
     break;
-  case _FUNCSHIFT:
+  case 132:
     set_led_green;
     break;
-  case _ADJUST:
+  case 133:
     set_led_white;
     break;
   default:

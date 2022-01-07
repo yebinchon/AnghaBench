@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  header ;
-typedef  int UInt64 ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  int /*<<< orphan*/  ISeqOutStream ;
-typedef  int /*<<< orphan*/  ISeqInStream ;
-typedef  int /*<<< orphan*/  CLzmaDec ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Decode2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int LZMA_PROPS_SIZE ; 
- int /*<<< orphan*/  LzmaDec_Allocate (int /*<<< orphan*/ *,unsigned char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LzmaDec_Construct (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LzmaDec_Free (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RINOK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SeqInStream_Read (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  g_Alloc ; 
+
+
+
+typedef int header ;
+typedef int UInt64 ;
+typedef int SRes ;
+typedef int ISeqOutStream ;
+typedef int ISeqInStream ;
+typedef int CLzmaDec ;
+
+
+ int Decode2 (int *,int *,int *,int) ;
+ int LZMA_PROPS_SIZE ;
+ int LzmaDec_Allocate (int *,unsigned char*,int,int *) ;
+ int LzmaDec_Construct (int *) ;
+ int LzmaDec_Free (int *,int *) ;
+ int RINOK (int ) ;
+ int SeqInStream_Read (int *,unsigned char*,int) ;
+ int g_Alloc ;
 
 __attribute__((used)) static SRes Decode(ISeqOutStream *outStream, ISeqInStream *inStream)
 {
@@ -35,10 +35,10 @@ __attribute__((used)) static SRes Decode(ISeqOutStream *outStream, ISeqInStream 
 
   CLzmaDec state;
 
-  /* header: 5 bytes of LZMA properties and 8 bytes of uncompressed size */
+
   unsigned char header[LZMA_PROPS_SIZE + 8];
 
-  /* Read and parse header */
+
 
   RINOK(SeqInStream_Read(inStream, header, sizeof(header)));
 

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ngx_rtmp_live_stream_t ;
-struct TYPE_6__ {int live; int nbuckets; int interleave; int wait_key; int wait_video; int publish_notify; int play_restart; int idle_streams; int /*<<< orphan*/  streams; int /*<<< orphan*/ * pool; int /*<<< orphan*/  idle_timeout; int /*<<< orphan*/  sync; int /*<<< orphan*/  buflen; } ;
-typedef  TYPE_2__ ngx_rtmp_live_app_conf_t ;
-struct TYPE_7__ {int /*<<< orphan*/  pool; TYPE_1__* cycle; } ;
-typedef  TYPE_3__ ngx_conf_t ;
-struct TYPE_5__ {int /*<<< orphan*/  new_log; } ;
 
-/* Variables and functions */
- char* NGX_CONF_ERROR ; 
- char* NGX_CONF_OK ; 
- int /*<<< orphan*/  ngx_conf_merge_msec_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ngx_conf_merge_value (int,int,int) ; 
- int /*<<< orphan*/ * ngx_create_pool (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_pcalloc (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int ngx_rtmp_live_stream_t ;
+struct TYPE_6__ {int live; int nbuckets; int interleave; int wait_key; int wait_video; int publish_notify; int play_restart; int idle_streams; int streams; int * pool; int idle_timeout; int sync; int buflen; } ;
+typedef TYPE_2__ ngx_rtmp_live_app_conf_t ;
+struct TYPE_7__ {int pool; TYPE_1__* cycle; } ;
+typedef TYPE_3__ ngx_conf_t ;
+struct TYPE_5__ {int new_log; } ;
+
+
+ char* NGX_CONF_ERROR ;
+ char* NGX_CONF_OK ;
+ int ngx_conf_merge_msec_value (int ,int ,int) ;
+ int ngx_conf_merge_value (int,int,int) ;
+ int * ngx_create_pool (int,int *) ;
+ int ngx_pcalloc (int ,int) ;
 
 __attribute__((used)) static char *
 ngx_rtmp_live_merge_app_conf(ngx_conf_t *cf, void *parent, void *child)
@@ -47,7 +47,7 @@ ngx_rtmp_live_merge_app_conf(ngx_conf_t *cf, void *parent, void *child)
     ngx_conf_merge_value(conf->idle_streams, prev->idle_streams, 1);
 
     conf->pool = ngx_create_pool(4096, &cf->cycle->new_log);
-    if (conf->pool == NULL) {
+    if (conf->pool == ((void*)0)) {
         return NGX_CONF_ERROR;
     }
 

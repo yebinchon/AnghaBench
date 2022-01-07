@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_mode; } ;
-struct sockaddr_un {int /*<<< orphan*/  sun_path; int /*<<< orphan*/  sun_family; } ;
+
+
+
+
+struct stat {int st_mode; } ;
+struct sockaddr_un {int sun_path; int sun_family; } ;
 struct sockaddr {int dummy; } ;
-typedef  int /*<<< orphan*/  name ;
+typedef int name ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_UNIX ; 
- int /*<<< orphan*/  F_GETFL ; 
- int /*<<< orphan*/  F_SETFL ; 
- int O_NONBLOCK ; 
- int /*<<< orphan*/  PF_UNIX ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  S_ISSOCK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ connect (int,struct sockaddr*,int) ; 
- int /*<<< orphan*/  errno ; 
- int fcntl (int,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,char*) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ stat (char const*,struct stat*) ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strncpy (int /*<<< orphan*/ ,char const*,int) ; 
+
+ int AF_UNIX ;
+ int F_GETFL ;
+ int F_SETFL ;
+ int O_NONBLOCK ;
+ int PF_UNIX ;
+ int SOCK_STREAM ;
+ int S_ISSOCK (int ) ;
+ int close (int) ;
+ scalar_t__ connect (int,struct sockaddr*,int) ;
+ int errno ;
+ int fcntl (int,int ,...) ;
+ int fprintf (int ,char*,char const*,char*) ;
+ int perror (char*) ;
+ int socket (int ,int ,int ) ;
+ scalar_t__ stat (char const*,struct stat*) ;
+ int stderr ;
+ char* strerror (int ) ;
+ int strncpy (int ,char const*,int) ;
 
 int sm_connect_unix(const char *filename) {
   struct sockaddr_un name;

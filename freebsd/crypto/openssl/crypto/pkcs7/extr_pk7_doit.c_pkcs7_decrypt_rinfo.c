@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_1__* enc_key; } ;
-struct TYPE_5__ {int /*<<< orphan*/  length; int /*<<< orphan*/  data; } ;
-typedef  TYPE_2__ PKCS7_RECIP_INFO ;
-typedef  int /*<<< orphan*/  EVP_PKEY_CTX ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
+struct TYPE_5__ {int length; int data; } ;
+typedef TYPE_2__ PKCS7_RECIP_INFO ;
+typedef int EVP_PKEY_CTX ;
+typedef int EVP_PKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_EVP_LIB ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  EVP_PKEY_CTRL_PKCS7_DECRYPT ; 
- scalar_t__ EVP_PKEY_CTX_ctrl (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  EVP_PKEY_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_PKEY_CTX_new (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_PKEY_OP_DECRYPT ; 
- scalar_t__ EVP_PKEY_decrypt (int /*<<< orphan*/ *,unsigned char*,size_t*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ EVP_PKEY_decrypt_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OPENSSL_clear_free (unsigned char*,int) ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- unsigned char* OPENSSL_malloc (size_t) ; 
- int /*<<< orphan*/  PKCS7_F_PKCS7_DECRYPT_RINFO ; 
- int /*<<< orphan*/  PKCS7_R_CTRL_ERROR ; 
- int /*<<< orphan*/  PKCS7err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ERR_R_EVP_LIB ;
+ int ERR_R_MALLOC_FAILURE ;
+ int EVP_PKEY_CTRL_PKCS7_DECRYPT ;
+ scalar_t__ EVP_PKEY_CTX_ctrl (int *,int,int ,int ,int ,TYPE_2__*) ;
+ int EVP_PKEY_CTX_free (int *) ;
+ int * EVP_PKEY_CTX_new (int *,int *) ;
+ int EVP_PKEY_OP_DECRYPT ;
+ scalar_t__ EVP_PKEY_decrypt (int *,unsigned char*,size_t*,int ,int ) ;
+ scalar_t__ EVP_PKEY_decrypt_init (int *) ;
+ int OPENSSL_clear_free (unsigned char*,int) ;
+ int OPENSSL_free (unsigned char*) ;
+ unsigned char* OPENSSL_malloc (size_t) ;
+ int PKCS7_F_PKCS7_DECRYPT_RINFO ;
+ int PKCS7_R_CTRL_ERROR ;
+ int PKCS7err (int ,int ) ;
 
 __attribute__((used)) static int pkcs7_decrypt_rinfo(unsigned char **pek, int *peklen,
                                PKCS7_RECIP_INFO *ri, EVP_PKEY *pkey,
                                size_t fixlen)
 {
-    EVP_PKEY_CTX *pctx = NULL;
-    unsigned char *ek = NULL;
+    EVP_PKEY_CTX *pctx = ((void*)0);
+    unsigned char *ek = ((void*)0);
     size_t eklen;
 
     int ret = -1;
 
-    pctx = EVP_PKEY_CTX_new(pkey, NULL);
+    pctx = EVP_PKEY_CTX_new(pkey, ((void*)0));
     if (!pctx)
         return -1;
 
@@ -58,13 +58,13 @@ __attribute__((used)) static int pkcs7_decrypt_rinfo(unsigned char **pek, int *p
         goto err;
     }
 
-    if (EVP_PKEY_decrypt(pctx, NULL, &eklen,
+    if (EVP_PKEY_decrypt(pctx, ((void*)0), &eklen,
                          ri->enc_key->data, ri->enc_key->length) <= 0)
         goto err;
 
     ek = OPENSSL_malloc(eklen);
 
-    if (ek == NULL) {
+    if (ek == ((void*)0)) {
         PKCS7err(PKCS7_F_PKCS7_DECRYPT_RINFO, ERR_R_MALLOC_FAILURE);
         goto err;
     }

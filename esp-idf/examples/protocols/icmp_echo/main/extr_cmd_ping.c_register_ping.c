@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {char* command; char* help; TYPE_2__* argtable; int /*<<< orphan*/ * func; int /*<<< orphan*/ * hint; } ;
-typedef  TYPE_1__ esp_console_cmd_t ;
-struct TYPE_5__ {int /*<<< orphan*/  end; int /*<<< orphan*/  host; void* tos; void* count; void* data_size; void* interval; void* timeout; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERROR_CHECK (int /*<<< orphan*/ ) ; 
- void* arg_dbl0 (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  arg_end (int) ; 
- void* arg_int0 (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  arg_str1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  do_ping_cmd ; 
- int /*<<< orphan*/  esp_console_cmd_register (TYPE_1__ const*) ; 
- TYPE_2__ ping_args ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {char* command; char* help; TYPE_2__* argtable; int * func; int * hint; } ;
+typedef TYPE_1__ esp_console_cmd_t ;
+struct TYPE_5__ {int end; int host; void* tos; void* count; void* data_size; void* interval; void* timeout; } ;
+
+
+ int ESP_ERROR_CHECK (int ) ;
+ void* arg_dbl0 (char*,char*,char*,char*) ;
+ int arg_end (int) ;
+ void* arg_int0 (char*,char*,char*,char*) ;
+ int arg_str1 (int *,int *,char*,char*) ;
+ int do_ping_cmd ;
+ int esp_console_cmd_register (TYPE_1__ const*) ;
+ TYPE_2__ ping_args ;
 
 void register_ping(void)
 {
@@ -33,12 +33,12 @@ void register_ping(void)
     ping_args.data_size = arg_int0("s", "size", "<n>", "Specify the number of data bytes to be sent");
     ping_args.count = arg_int0("c", "count", "<n>", "Stop after sending count packets");
     ping_args.tos = arg_int0("Q", "tos", "<n>", "Set Type of Service related bits in IP datagrams");
-    ping_args.host = arg_str1(NULL, NULL, "<host>", "Host address");
+    ping_args.host = arg_str1(((void*)0), ((void*)0), "<host>", "Host address");
     ping_args.end = arg_end(1);
     const esp_console_cmd_t ping_cmd = {
         .command = "ping",
         .help = "send ICMP ECHO_REQUEST to network hosts",
-        .hint = NULL,
+        .hint = ((void*)0),
         .func = &do_ping_cmd,
         .argtable = &ping_args
     };

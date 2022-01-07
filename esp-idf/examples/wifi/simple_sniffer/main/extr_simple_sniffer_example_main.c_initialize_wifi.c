@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wifi_init_config_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERROR_CHECK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WIFI_INIT_CONFIG_DEFAULT () ; 
- int /*<<< orphan*/  WIFI_MODE_NULL ; 
- int /*<<< orphan*/  WIFI_STORAGE_RAM ; 
- int /*<<< orphan*/  esp_event_loop_create_default () ; 
- int /*<<< orphan*/  esp_netif_init () ; 
- int /*<<< orphan*/  esp_wifi_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  esp_wifi_set_mode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_wifi_set_storage (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int wifi_init_config_t ;
+
+
+ int ESP_ERROR_CHECK (int ) ;
+ int WIFI_INIT_CONFIG_DEFAULT () ;
+ int WIFI_MODE_NULL ;
+ int WIFI_STORAGE_RAM ;
+ int esp_event_loop_create_default () ;
+ int esp_netif_init () ;
+ int esp_wifi_init (int *) ;
+ int esp_wifi_set_mode (int ) ;
+ int esp_wifi_set_storage (int ) ;
 
 __attribute__((used)) static void initialize_wifi(void)
 {

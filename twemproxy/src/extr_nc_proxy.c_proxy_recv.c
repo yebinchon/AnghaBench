@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct context {int dummy; } ;
-struct conn {int recv_active; int recv_ready; int /*<<< orphan*/  client; scalar_t__ proxy; } ;
-typedef  scalar_t__ rstatus_t ;
+struct conn {int recv_active; int recv_ready; int client; scalar_t__ proxy; } ;
+typedef scalar_t__ rstatus_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- scalar_t__ NC_OK ; 
- scalar_t__ proxy_accept (struct context*,struct conn*) ; 
+
+ int ASSERT (int) ;
+ scalar_t__ NC_OK ;
+ scalar_t__ proxy_accept (struct context*,struct conn*) ;
 
 rstatus_t
 proxy_recv(struct context *ctx, struct conn *conn)

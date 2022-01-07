@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  size_t uint32_t ;
-typedef  size_t int32_t ;
-struct TYPE_8__ {scalar_t__ status; int friendcon_id; scalar_t__ message_id; scalar_t__ is_typing; int /*<<< orphan*/  userstatus; scalar_t__ statusmessage_length; int /*<<< orphan*/  real_pk; scalar_t__ friendrequest_lastsent; } ;
-struct TYPE_7__ {int numfriends; int /*<<< orphan*/  fr_c; TYPE_4__* friendlist; } ;
-typedef  TYPE_1__ Messenger ;
-typedef  int /*<<< orphan*/  Friend ;
 
-/* Variables and functions */
- size_t FAERR_NOMEM ; 
- scalar_t__ FRIENDCONN_STATUS_CONNECTED ; 
- int /*<<< orphan*/  MESSENGER_CALLBACK_INDEX ; 
- scalar_t__ NOFRIEND ; 
- int /*<<< orphan*/  USERSTATUS_NONE ; 
- scalar_t__ friend_con_connected (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  friend_connection_callbacks (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,size_t) ; 
- int /*<<< orphan*/  handle_custom_lossy_packet ; 
- int /*<<< orphan*/  handle_packet ; 
- int /*<<< orphan*/  handle_status ; 
- int /*<<< orphan*/  id_copy (int /*<<< orphan*/ ,scalar_t__ const*) ; 
- int /*<<< orphan*/  memset (TYPE_4__*,int /*<<< orphan*/ ,int) ; 
- int new_friend_connection (int /*<<< orphan*/ ,scalar_t__ const*) ; 
- scalar_t__ realloc_friendlist (TYPE_1__*,int) ; 
- int /*<<< orphan*/  send_online_packet (TYPE_1__*,size_t) ; 
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef size_t uint32_t ;
+typedef size_t int32_t ;
+struct TYPE_8__ {scalar_t__ status; int friendcon_id; scalar_t__ message_id; scalar_t__ is_typing; int userstatus; scalar_t__ statusmessage_length; int real_pk; scalar_t__ friendrequest_lastsent; } ;
+struct TYPE_7__ {int numfriends; int fr_c; TYPE_4__* friendlist; } ;
+typedef TYPE_1__ Messenger ;
+typedef int Friend ;
+
+
+ size_t FAERR_NOMEM ;
+ scalar_t__ FRIENDCONN_STATUS_CONNECTED ;
+ int MESSENGER_CALLBACK_INDEX ;
+ scalar_t__ NOFRIEND ;
+ int USERSTATUS_NONE ;
+ scalar_t__ friend_con_connected (int ,int) ;
+ int friend_connection_callbacks (int ,int,int ,int *,int *,int *,TYPE_1__*,size_t) ;
+ int handle_custom_lossy_packet ;
+ int handle_packet ;
+ int handle_status ;
+ int id_copy (int ,scalar_t__ const*) ;
+ int memset (TYPE_4__*,int ,int) ;
+ int new_friend_connection (int ,scalar_t__ const*) ;
+ scalar_t__ realloc_friendlist (TYPE_1__*,int) ;
+ int send_online_packet (TYPE_1__*,size_t) ;
 
 __attribute__((used)) static int32_t init_new_friend(Messenger *m, const uint8_t *real_pk, uint8_t status)
 {
-    /* Resize the friend list if necessary. */
+
     if (realloc_friendlist(m, m->numfriends + 1) != 0)
         return FAERR_NOMEM;
 

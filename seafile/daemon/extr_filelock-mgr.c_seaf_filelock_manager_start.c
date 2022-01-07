@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* gpointer ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef void* gpointer ;
 struct TYPE_5__ {TYPE_1__* priv; } ;
-struct TYPE_4__ {int /*<<< orphan*/  hash_lock; int /*<<< orphan*/  repo_locked_files; } ;
-typedef  TYPE_2__ SeafFilelockManager ;
-typedef  int /*<<< orphan*/  GHashTableIter ;
-typedef  int /*<<< orphan*/  GHashTable ;
+struct TYPE_4__ {int hash_lock; int repo_locked_files; } ;
+typedef TYPE_2__ SeafFilelockManager ;
+typedef int GHashTableIter ;
+typedef int GHashTable ;
 
-/* Variables and functions */
- int /*<<< orphan*/  g_hash_table_foreach (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  g_hash_table_iter_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ g_hash_table_iter_next (int /*<<< orphan*/ *,void**,void**) ; 
- int /*<<< orphan*/  init_locks ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int g_hash_table_foreach (int *,int ,char*) ;
+ int g_hash_table_iter_init (int *,int ) ;
+ scalar_t__ g_hash_table_iter_next (int *,void**,void**) ;
+ int init_locks ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 int
 seaf_filelock_manager_start (SeafFilelockManager *mgr)

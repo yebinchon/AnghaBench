@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct eia608_screen {int empty; scalar_t__* row_used; scalar_t__** fonts; scalar_t__** colors; scalar_t__** characters; } ;
 
-/* Variables and functions */
- size_t CC608_SCREEN_WIDTH ; 
- char FONT_REGULAR ; 
- char default_color ; 
- int /*<<< orphan*/  memset (scalar_t__*,char,size_t) ; 
+
+ size_t CC608_SCREEN_WIDTH ;
+ char FONT_REGULAR ;
+ char default_color ;
+ int memset (scalar_t__*,char,size_t) ;
 
 __attribute__((used)) static void clear_eia608_cc_buffer (struct eia608_screen *data)
 {

@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_4__ ;
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  size_t uint64_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  int int64_t ;
-struct TYPE_24__ {scalar_t__* data; int /*<<< orphan*/  size; } ;
+
+
+typedef struct TYPE_24__ TYPE_4__ ;
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef size_t uint64_t ;
+typedef scalar_t__ uint32_t ;
+typedef int int64_t ;
+struct TYPE_24__ {scalar_t__* data; int size; } ;
 struct TYPE_23__ {int startPosAfterHeader; } ;
-struct TYPE_22__ {scalar_t__* Data; int /*<<< orphan*/  Size; } ;
-struct TYPE_21__ {int /*<<< orphan*/  (* Seek ) (TYPE_1__*,int*,int /*<<< orphan*/ ) ;} ;
-typedef  scalar_t__ SRes ;
-typedef  int /*<<< orphan*/  ISzAlloc ;
-typedef  TYPE_1__ ILookInStream ;
-typedef  TYPE_2__ CSzData ;
-typedef  TYPE_3__ CSzArEx ;
-typedef  TYPE_4__ CBuf ;
+struct TYPE_22__ {scalar_t__* Data; int Size; } ;
+struct TYPE_21__ {int (* Seek ) (TYPE_1__*,int*,int ) ;} ;
+typedef scalar_t__ SRes ;
+typedef int ISzAlloc ;
+typedef TYPE_1__ ILookInStream ;
+typedef TYPE_2__ CSzData ;
+typedef TYPE_3__ CSzArEx ;
+typedef TYPE_4__ CBuf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Buf_Create (TYPE_4__*,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Buf_Free (TYPE_4__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Buf_Init (TYPE_4__*) ; 
- scalar_t__ CrcCalc (scalar_t__*,size_t) ; 
- scalar_t__ GetUi32 (scalar_t__*) ; 
- size_t GetUi64 (scalar_t__*) ; 
- scalar_t__ LookInStream_Read (TYPE_1__*,scalar_t__*,size_t) ; 
- int /*<<< orphan*/  LookInStream_Read2 (TYPE_1__*,scalar_t__*,int,scalar_t__) ; 
- int /*<<< orphan*/  LookInStream_SeekTo (TYPE_1__*,int) ; 
- int /*<<< orphan*/  RINOK (int /*<<< orphan*/ ) ; 
- scalar_t__ SZ_ERROR_ARCHIVE ; 
- scalar_t__ SZ_ERROR_CRC ; 
- scalar_t__ SZ_ERROR_INPUT_EOF ; 
- scalar_t__ SZ_ERROR_MEM ; 
- scalar_t__ SZ_ERROR_NO_ARCHIVE ; 
- scalar_t__ SZ_ERROR_UNSUPPORTED ; 
- scalar_t__ SZ_OK ; 
- int /*<<< orphan*/  SZ_SEEK_CUR ; 
- int /*<<< orphan*/  SZ_SEEK_END ; 
- scalar_t__ SzReadAndDecodePackedStreams (TYPE_1__*,TYPE_2__*,TYPE_4__*,int,int /*<<< orphan*/ *) ; 
- scalar_t__ SzReadHeader (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ SzReadID (TYPE_2__*,size_t*) ; 
- int /*<<< orphan*/  TestSignatureCandidate (scalar_t__*) ; 
- size_t k7zIdEncodedHeader ; 
- size_t k7zIdHeader ; 
- scalar_t__ k7zMajorVersion ; 
- int k7zStartHeaderSize ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (TYPE_1__*,int*,int /*<<< orphan*/ ) ; 
+
+ int Buf_Create (TYPE_4__*,size_t,int *) ;
+ int Buf_Free (TYPE_4__*,int *) ;
+ int Buf_Init (TYPE_4__*) ;
+ scalar_t__ CrcCalc (scalar_t__*,size_t) ;
+ scalar_t__ GetUi32 (scalar_t__*) ;
+ size_t GetUi64 (scalar_t__*) ;
+ scalar_t__ LookInStream_Read (TYPE_1__*,scalar_t__*,size_t) ;
+ int LookInStream_Read2 (TYPE_1__*,scalar_t__*,int,scalar_t__) ;
+ int LookInStream_SeekTo (TYPE_1__*,int) ;
+ int RINOK (int ) ;
+ scalar_t__ SZ_ERROR_ARCHIVE ;
+ scalar_t__ SZ_ERROR_CRC ;
+ scalar_t__ SZ_ERROR_INPUT_EOF ;
+ scalar_t__ SZ_ERROR_MEM ;
+ scalar_t__ SZ_ERROR_NO_ARCHIVE ;
+ scalar_t__ SZ_ERROR_UNSUPPORTED ;
+ scalar_t__ SZ_OK ;
+ int SZ_SEEK_CUR ;
+ int SZ_SEEK_END ;
+ scalar_t__ SzReadAndDecodePackedStreams (TYPE_1__*,TYPE_2__*,TYPE_4__*,int,int *) ;
+ scalar_t__ SzReadHeader (TYPE_3__*,TYPE_2__*,int *,int *) ;
+ scalar_t__ SzReadID (TYPE_2__*,size_t*) ;
+ int TestSignatureCandidate (scalar_t__*) ;
+ size_t k7zIdEncodedHeader ;
+ size_t k7zIdHeader ;
+ scalar_t__ k7zMajorVersion ;
+ int k7zStartHeaderSize ;
+ int stub1 (TYPE_1__*,int*,int ) ;
+ int stub2 (TYPE_1__*,int*,int ) ;
 
 __attribute__((used)) static SRes SzArEx_Open2(
       CSzArEx *p,

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct i40iw_handler {int /*<<< orphan*/  list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  i40iw_handler_lock ; 
- int /*<<< orphan*/  i40iw_handlers ; 
- int /*<<< orphan*/  list_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct i40iw_handler {int list; } ;
+
+
+ int i40iw_handler_lock ;
+ int i40iw_handlers ;
+ int list_add (int *,int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void i40iw_add_handler(struct i40iw_handler *hdl)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	spin_lock_irqsave(&i40iw_handler_lock, flags);
-	list_add(&hdl->list, &i40iw_handlers);
-	spin_unlock_irqrestore(&i40iw_handler_lock, flags);
+ spin_lock_irqsave(&i40iw_handler_lock, flags);
+ list_add(&hdl->list, &i40iw_handlers);
+ spin_unlock_irqrestore(&i40iw_handler_lock, flags);
 }

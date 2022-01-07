@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_6__ {int extradata_parsed; int valid_extradata; size_t* mode_blocksize; int /*<<< orphan*/ * blocksize; int /*<<< orphan*/  previous_blocksize; int /*<<< orphan*/ * class; } ;
-typedef  TYPE_1__ AVVorbisParseContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*) ; 
- int avpriv_split_xiph_headers (int /*<<< orphan*/  const*,int,int,int /*<<< orphan*/  const**,int*) ; 
- int parse_id_header (TYPE_1__*,int /*<<< orphan*/  const*,int) ; 
- int parse_setup_header (TYPE_1__*,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  vorbis_parser_class ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_6__ {int extradata_parsed; int valid_extradata; size_t* mode_blocksize; int * blocksize; int previous_blocksize; int * class; } ;
+typedef TYPE_1__ AVVorbisParseContext ;
+
+
+ int AV_LOG_ERROR ;
+ int av_log (TYPE_1__*,int ,char*) ;
+ int avpriv_split_xiph_headers (int const*,int,int,int const**,int*) ;
+ int parse_id_header (TYPE_1__*,int const*,int) ;
+ int parse_setup_header (TYPE_1__*,int const*,int) ;
+ int vorbis_parser_class ;
 
 __attribute__((used)) static int vorbis_parse_init(AVVorbisParseContext *s,
                              const uint8_t *extradata, int extradata_size)

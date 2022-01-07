@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct labpc_private {int cmd5; int /*<<< orphan*/  (* write_byte ) (struct comedi_device*,int,int /*<<< orphan*/ ) ;} ;
+
+
+
+
+struct labpc_private {int cmd5; int (* write_byte ) (struct comedi_device*,int,int ) ;} ;
 struct comedi_device {struct labpc_private* private; } ;
 
-/* Variables and functions */
- int CMD5_CALDACLD ; 
- int CMD5_EEPROMCS ; 
- int /*<<< orphan*/  CMD5_REG ; 
- int CMD5_WRTPRT ; 
- int /*<<< orphan*/  labpc_serial_out (struct comedi_device*,unsigned int,int) ; 
- int /*<<< orphan*/  stub1 (struct comedi_device*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (struct comedi_device*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (struct comedi_device*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  udelay (int) ; 
+
+ int CMD5_CALDACLD ;
+ int CMD5_EEPROMCS ;
+ int CMD5_REG ;
+ int CMD5_WRTPRT ;
+ int labpc_serial_out (struct comedi_device*,unsigned int,int) ;
+ int stub1 (struct comedi_device*,int,int ) ;
+ int stub2 (struct comedi_device*,int,int ) ;
+ int stub3 (struct comedi_device*,int,int ) ;
+ int udelay (int) ;
 
 __attribute__((used)) static void write_caldac(struct comedi_device *dev, unsigned int channel,
-			 unsigned int value)
+    unsigned int value)
 {
-	struct labpc_private *devpriv = dev->private;
+ struct labpc_private *devpriv = dev->private;
 
-	/*  clear caldac load bit and make sure we don't write to eeprom */
-	devpriv->cmd5 &= ~(CMD5_CALDACLD | CMD5_EEPROMCS | CMD5_WRTPRT);
-	udelay(1);
-	devpriv->write_byte(dev, devpriv->cmd5, CMD5_REG);
 
-	/*  write 4 bit channel */
-	labpc_serial_out(dev, channel, 4);
-	/*  write 8 bit caldac value */
-	labpc_serial_out(dev, value, 8);
+ devpriv->cmd5 &= ~(CMD5_CALDACLD | CMD5_EEPROMCS | CMD5_WRTPRT);
+ udelay(1);
+ devpriv->write_byte(dev, devpriv->cmd5, CMD5_REG);
 
-	/*  set and clear caldac bit to load caldac value */
-	devpriv->cmd5 |= CMD5_CALDACLD;
-	udelay(1);
-	devpriv->write_byte(dev, devpriv->cmd5, CMD5_REG);
-	devpriv->cmd5 &= ~CMD5_CALDACLD;
-	udelay(1);
-	devpriv->write_byte(dev, devpriv->cmd5, CMD5_REG);
+
+ labpc_serial_out(dev, channel, 4);
+
+ labpc_serial_out(dev, value, 8);
+
+
+ devpriv->cmd5 |= CMD5_CALDACLD;
+ udelay(1);
+ devpriv->write_byte(dev, devpriv->cmd5, CMD5_REG);
+ devpriv->cmd5 &= ~CMD5_CALDACLD;
+ udelay(1);
+ devpriv->write_byte(dev, devpriv->cmd5, CMD5_REG);
 }

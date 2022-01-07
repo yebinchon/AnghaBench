@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u ;
-struct sockaddr_in {int /*<<< orphan*/  sin_port; int /*<<< orphan*/  sin_addr; } ;
-struct protocol {int /*<<< orphan*/  fd; struct interface_info* local; } ;
-struct interface_info {int errors; int dead; int /*<<< orphan*/  name; } ;
-struct iaddr {int len; int /*<<< orphan*/  iabuf; } ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u ;
+struct sockaddr_in {int sin_port; int sin_addr; } ;
+struct protocol {int fd; struct interface_info* local; } ;
+struct interface_info {int errors; int dead; int name; } ;
+struct iaddr {int len; int iabuf; } ;
 struct hardware {int dummy; } ;
-struct dhcp_packet {int /*<<< orphan*/  hlen; int /*<<< orphan*/  chaddr; } ;
-typedef  int ssize_t ;
-struct TYPE_5__ {int /*<<< orphan*/  DhclientInfo; int /*<<< orphan*/  ListEntry; } ;
-typedef  TYPE_1__* PDHCP_ADAPTER ;
+struct dhcp_packet {int hlen; int chaddr; } ;
+typedef int ssize_t ;
+struct TYPE_5__ {int DhclientInfo; int ListEntry; } ;
+typedef TYPE_1__* PDHCP_ADAPTER ;
 
-/* Variables and functions */
- TYPE_1__* AdapterFindByHardwareAddress (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* AdapterFindInfo (struct interface_info*) ; 
- int /*<<< orphan*/  RemoveEntryList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WSAGetLastError () ; 
- int /*<<< orphan*/  bootp_packet_handler (int /*<<< orphan*/ *,struct dhcp_packet*,int,int /*<<< orphan*/ ,struct iaddr,struct hardware*) ; 
- int /*<<< orphan*/  closesocket (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int receive_packet (struct interface_info*,unsigned char*,int,struct sockaddr_in*,struct hardware*) ; 
- int /*<<< orphan*/  remove_protocol (struct protocol*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,struct dhcp_packet*,int,int /*<<< orphan*/ ,struct iaddr,struct hardware*) ; 
- int /*<<< orphan*/  warning (char*,...) ; 
+
+ TYPE_1__* AdapterFindByHardwareAddress (int ,int ) ;
+ TYPE_1__* AdapterFindInfo (struct interface_info*) ;
+ int RemoveEntryList (int *) ;
+ int WSAGetLastError () ;
+ int bootp_packet_handler (int *,struct dhcp_packet*,int,int ,struct iaddr,struct hardware*) ;
+ int closesocket (int ) ;
+ int free (TYPE_1__*) ;
+ int memcpy (int ,int *,int) ;
+ int receive_packet (struct interface_info*,unsigned char*,int,struct sockaddr_in*,struct hardware*) ;
+ int remove_protocol (struct protocol*) ;
+ int stub1 (int *,struct dhcp_packet*,int,int ,struct iaddr,struct hardware*) ;
+ int warning (char*,...) ;
 
 void
 got_one(struct protocol *l)
@@ -44,10 +44,10 @@ got_one(struct protocol *l)
     struct iaddr ifrom;
     ssize_t result;
     union {
-        /*
-         * Packet input buffer.  Must be as large as largest
-         * possible MTU.
-         */
+
+
+
+
         unsigned char packbuf[4095];
         struct dhcp_packet packet;
     } u;
@@ -60,7 +60,7 @@ got_one(struct protocol *l)
                 WSAGetLastError());
         ip->errors++;
         if (ip->errors > 20) {
-            /* our interface has gone away. */
+
             warning("Interface %s no longer appears valid.",
                     ip->name);
             ip->dead = 1;
@@ -81,7 +81,7 @@ got_one(struct protocol *l)
         ifrom.len = 4;
         memcpy(ifrom.iabuf, &from.sin_addr, ifrom.len);
 
-        
+
         adapter = AdapterFindByHardwareAddress(u.packet.chaddr,
                                                u.packet.hlen);
 

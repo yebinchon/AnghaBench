@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ sqlite_int64 ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ sqlite_int64 ;
 struct TYPE_7__ {scalar_t__ iType; } ;
-typedef  int /*<<< orphan*/  DocListReader ;
-typedef  TYPE_1__ DocList ;
+typedef int DocListReader ;
+typedef TYPE_1__ DocList ;
 
-/* Variables and functions */
- scalar_t__ DL_POSITIONS ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  docListAddDocid (TYPE_1__*,scalar_t__) ; 
- scalar_t__ nextDocid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  readerInit (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+ scalar_t__ DL_POSITIONS ;
+ int assert (int) ;
+ int docListAddDocid (TYPE_1__*,scalar_t__) ;
+ scalar_t__ nextDocid (int *) ;
+ int readerInit (int *,TYPE_1__*) ;
 
 __attribute__((used)) static void docListAndMerge(
-  DocList *pLeft,    /* Doclist resulting from the words on the left */
-  DocList *pRight,   /* Doclist for the next word to the right */
-  DocList *pOut      /* Write the combined doclist here */
+  DocList *pLeft,
+  DocList *pRight,
+  DocList *pOut
 ){
   DocListReader left, right;
   sqlite_int64 docidLeft, docidRight;

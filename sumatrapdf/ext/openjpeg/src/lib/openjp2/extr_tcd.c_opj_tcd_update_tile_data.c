@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  val ;
-struct TYPE_13__ {int minimum_num_resolutions; int /*<<< orphan*/  const* data_win; int /*<<< orphan*/  const* data; TYPE_6__* resolutions; } ;
-typedef  TYPE_4__ opj_tcd_tilecomp_t ;
+
+
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int val ;
+struct TYPE_13__ {int minimum_num_resolutions; int const* data_win; int const* data; TYPE_6__* resolutions; } ;
+typedef TYPE_4__ opj_tcd_tilecomp_t ;
 struct TYPE_14__ {scalar_t__ whole_tile_decoding; TYPE_3__* image; TYPE_2__* tcd_image; } ;
-typedef  TYPE_5__ opj_tcd_t ;
+typedef TYPE_5__ opj_tcd_t ;
 struct TYPE_15__ {scalar_t__ win_x1; scalar_t__ win_x0; scalar_t__ win_y1; scalar_t__ win_y0; scalar_t__ x0; scalar_t__ x1; scalar_t__ y0; scalar_t__ y1; } ;
-typedef  TYPE_6__ opj_tcd_resolution_t ;
-struct TYPE_16__ {int prec; int resno_decoded; int /*<<< orphan*/  sgnd; } ;
-typedef  TYPE_7__ opj_image_comp_t ;
+typedef TYPE_6__ opj_tcd_resolution_t ;
+struct TYPE_16__ {int prec; int resno_decoded; int sgnd; } ;
+typedef TYPE_7__ opj_image_comp_t ;
 struct TYPE_12__ {scalar_t__ numcomps; TYPE_7__* comps; } ;
 struct TYPE_11__ {TYPE_1__* tiles; } ;
 struct TYPE_10__ {TYPE_4__* comps; } ;
-typedef  scalar_t__ OPJ_UINT32 ;
-typedef  int /*<<< orphan*/  const OPJ_INT32 ;
-typedef  int /*<<< orphan*/  const OPJ_INT16 ;
-typedef  void* OPJ_CHAR ;
-typedef  int /*<<< orphan*/  OPJ_BYTE ;
-typedef  int /*<<< orphan*/  OPJ_BOOL ;
+typedef scalar_t__ OPJ_UINT32 ;
+typedef int const OPJ_INT32 ;
+typedef int const OPJ_INT16 ;
+typedef void* OPJ_CHAR ;
+typedef int OPJ_BYTE ;
+typedef int OPJ_BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPJ_FALSE ; 
- int /*<<< orphan*/  OPJ_TRUE ; 
- scalar_t__ UINT_MAX ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,scalar_t__) ; 
- scalar_t__ opj_tcd_get_decoded_tile_size (TYPE_5__*,int /*<<< orphan*/ ) ; 
+
+ int OPJ_FALSE ;
+ int OPJ_TRUE ;
+ scalar_t__ UINT_MAX ;
+ int memcpy (int const*,int const*,scalar_t__) ;
+ scalar_t__ opj_tcd_get_decoded_tile_size (TYPE_5__*,int ) ;
 
 OPJ_BOOL opj_tcd_update_tile_data(opj_tcd_t *p_tcd,
                                   OPJ_BYTE * p_dest,
@@ -65,8 +65,8 @@ OPJ_BOOL opj_tcd_update_tile_data(opj_tcd_t *p_tcd,
 
     for (i = 0; i < p_tcd->image->numcomps; ++i) {
         const OPJ_INT32* l_src_data;
-        l_size_comp = l_img_comp->prec >> 3; /*(/ 8)*/
-        l_remaining = l_img_comp->prec & 7;  /* (%8) */
+        l_size_comp = l_img_comp->prec >> 3;
+        l_remaining = l_img_comp->prec & 7;
         l_res = l_tilec->resolutions + l_img_comp->resno_decoded;
         if (p_tcd->whole_tile_decoding) {
             l_width = (OPJ_UINT32)(l_res->x1 - l_res->x0);

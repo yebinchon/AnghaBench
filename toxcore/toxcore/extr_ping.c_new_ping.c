@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  net; } ;
-struct TYPE_8__ {TYPE_2__* dht; int /*<<< orphan*/  ping_array; } ;
-typedef  TYPE_1__ PING ;
-typedef  TYPE_2__ DHT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NET_PACKET_PING_REQUEST ; 
- int /*<<< orphan*/  NET_PACKET_PING_RESPONSE ; 
- int /*<<< orphan*/  PING_NUM_MAX ; 
- int /*<<< orphan*/  PING_TIMEOUT ; 
- TYPE_1__* calloc (int,int) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  handle_ping_request ; 
- int /*<<< orphan*/  handle_ping_response ; 
- int /*<<< orphan*/  networking_registerhandler (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__*) ; 
- scalar_t__ ping_array_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int net; } ;
+struct TYPE_8__ {TYPE_2__* dht; int ping_array; } ;
+typedef TYPE_1__ PING ;
+typedef TYPE_2__ DHT ;
+
+
+ int NET_PACKET_PING_REQUEST ;
+ int NET_PACKET_PING_RESPONSE ;
+ int PING_NUM_MAX ;
+ int PING_TIMEOUT ;
+ TYPE_1__* calloc (int,int) ;
+ int free (TYPE_1__*) ;
+ int handle_ping_request ;
+ int handle_ping_response ;
+ int networking_registerhandler (int ,int ,int *,TYPE_2__*) ;
+ scalar_t__ ping_array_init (int *,int ,int ) ;
 
 PING *new_ping(DHT *dht)
 {
     PING *ping = calloc(1, sizeof(PING));
 
-    if (ping == NULL)
-        return NULL;
+    if (ping == ((void*)0))
+        return ((void*)0);
 
     if (ping_array_init(&ping->ping_array, PING_NUM_MAX, PING_TIMEOUT) != 0) {
         free(ping);
-        return NULL;
+        return ((void*)0);
     }
 
     ping->dht = dht;

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_string_t ;
-typedef  scalar_t__ svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_serf__xml_estate_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  rev ;
-struct TYPE_2__ {int /*<<< orphan*/  pool; int /*<<< orphan*/  paths; } ;
-typedef  TYPE_1__ loc_context_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  scalar_t__ apr_int64_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int LOCATION ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  apr_hash_set (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  apr_pmemdup (int /*<<< orphan*/ ,scalar_t__*,int) ; 
- int /*<<< orphan*/  apr_pstrdup (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  svn_cstring_atoi64 (scalar_t__*,char const*) ; 
- char* svn_hash_gets (int /*<<< orphan*/ *,char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int svn_string_t ;
+typedef scalar_t__ svn_revnum_t ;
+typedef int svn_ra_serf__xml_estate_t ;
+typedef int svn_error_t ;
+typedef int rev ;
+struct TYPE_2__ {int pool; int paths; } ;
+typedef TYPE_1__ loc_context_t ;
+typedef int apr_pool_t ;
+typedef scalar_t__ apr_int64_t ;
+typedef int apr_hash_t ;
+
+
+ int LOCATION ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int) ;
+ int * SVN_NO_ERROR ;
+ int apr_hash_set (int ,int ,int,int ) ;
+ int apr_pmemdup (int ,scalar_t__*,int) ;
+ int apr_pstrdup (int ,char const*) ;
+ int svn_cstring_atoi64 (scalar_t__*,char const*) ;
+ char* svn_hash_gets (int *,char*) ;
 
 __attribute__((used)) static svn_error_t *
 getloc_closed(svn_ra_serf__xml_estate_t *xes,
@@ -49,7 +49,7 @@ getloc_closed(svn_ra_serf__xml_estate_t *xes,
 
   revstr = svn_hash_gets(attrs, "rev");
   path = svn_hash_gets(attrs, "path");
-  if (revstr != NULL && path != NULL)
+  if (revstr != ((void*)0) && path != ((void*)0))
     {
       apr_int64_t rev_val;
       svn_revnum_t rev;

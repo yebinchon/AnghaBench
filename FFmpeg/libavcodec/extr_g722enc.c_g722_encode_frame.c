@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const int16_t ;
-struct TYPE_12__ {int /*<<< orphan*/  initial_padding; int /*<<< orphan*/  trellis; int /*<<< orphan*/ * priv_data; } ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int const int16_t ;
+struct TYPE_12__ {int initial_padding; int trellis; int * priv_data; } ;
 struct TYPE_11__ {int nb_samples; scalar_t__ pts; scalar_t__* data; } ;
-struct TYPE_10__ {scalar_t__ pts; int /*<<< orphan*/ * data; } ;
-typedef  int /*<<< orphan*/  G722Context ;
-typedef  TYPE_1__ AVPacket ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVCodecContext ;
+struct TYPE_10__ {scalar_t__ pts; int * data; } ;
+typedef int G722Context ;
+typedef TYPE_1__ AVPacket ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- scalar_t__ AV_NOPTS_VALUE ; 
- int /*<<< orphan*/  encode_byte (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int ff_alloc_packet2 (TYPE_3__*,TYPE_1__*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ ff_samples_to_time_base (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g722_encode_no_trellis (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  g722_encode_trellis (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*) ; 
+
+ scalar_t__ AV_NOPTS_VALUE ;
+ int encode_byte (int *,int *,int const*) ;
+ int ff_alloc_packet2 (TYPE_3__*,TYPE_1__*,int,int ) ;
+ scalar_t__ ff_samples_to_time_base (TYPE_3__*,int ) ;
+ int g722_encode_no_trellis (int *,int *,int,int const*) ;
+ int g722_encode_trellis (int *,int ,int *,int,int const*) ;
 
 __attribute__((used)) static int g722_encode_frame(AVCodecContext *avctx, AVPacket *avpkt,
                              const AVFrame *frame, int *got_packet_ptr)
@@ -48,7 +48,7 @@ __attribute__((used)) static int g722_encode_frame(AVCodecContext *avctx, AVPack
     else
         g722_encode_no_trellis(c, avpkt->data, nb_samples, samples);
 
-    /* handle last frame with odd frame_size */
+
     if (nb_samples < frame->nb_samples) {
         int16_t last_samples[2] = { samples[nb_samples], samples[nb_samples] };
         encode_byte(c, &avpkt->data[nb_samples >> 1], last_samples);

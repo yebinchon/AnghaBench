@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int retry; unsigned char const* k; unsigned char const* v; } ;
-typedef  TYPE_1__ secp256k1_rfc6979_hmac_sha256 ;
-typedef  int /*<<< orphan*/  secp256k1_hmac_sha256 ;
+typedef TYPE_1__ secp256k1_rfc6979_hmac_sha256 ;
+typedef int secp256k1_hmac_sha256 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,int) ; 
- int /*<<< orphan*/  secp256k1_hmac_sha256_finalize (int /*<<< orphan*/ *,unsigned char const*) ; 
- int /*<<< orphan*/  secp256k1_hmac_sha256_initialize (int /*<<< orphan*/ *,unsigned char const*,int) ; 
- int /*<<< orphan*/  secp256k1_hmac_sha256_write (int /*<<< orphan*/ *,unsigned char const*,int) ; 
+
+ int memcpy (unsigned char*,unsigned char const*,int) ;
+ int secp256k1_hmac_sha256_finalize (int *,unsigned char const*) ;
+ int secp256k1_hmac_sha256_initialize (int *,unsigned char const*,int) ;
+ int secp256k1_hmac_sha256_write (int *,unsigned char const*,int) ;
 
 __attribute__((used)) static void secp256k1_rfc6979_hmac_sha256_generate(secp256k1_rfc6979_hmac_sha256 *rng, unsigned char *out, size_t outlen) {
-    /* RFC6979 3.2.h. */
+
     static const unsigned char zero[1] = {0x00};
     if (rng->retry) {
         secp256k1_hmac_sha256 hmac;

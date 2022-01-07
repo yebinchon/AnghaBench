@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsToneCurve ;
-typedef  int cmsFloat32Number ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int cmsToneCurve ;
+typedef int cmsFloat32Number ;
 struct TYPE_3__ {int Type; int* Params; float x0; int x1; int nGridPoints; int* SampledPoints; } ;
-typedef  TYPE_1__ cmsCurveSegment ;
+typedef TYPE_1__ cmsCurveSegment ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/ * cmsBuildSegmentedToneCurve (int /*<<< orphan*/ ,int,TYPE_1__*) ; 
+
+ int DbgThread () ;
+ int * cmsBuildSegmentedToneCurve (int ,int,TYPE_1__*) ;
 
 __attribute__((used)) static
 cmsToneCurve *CreateSegmentedCurve(void)

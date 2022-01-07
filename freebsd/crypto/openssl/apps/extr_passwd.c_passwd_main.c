@@ -1,161 +1,144 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  trash ;
-typedef  scalar_t__ passwd_modes ;
-typedef  int OPTION_CHOICE ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int BIO_gets (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int BUFSIZ ; 
- int /*<<< orphan*/  ERR_print_errors (int /*<<< orphan*/ ) ; 
- scalar_t__ EVP_read_pw_string (char*,size_t,char*,int) ; 
- int /*<<< orphan*/  FORMAT_TEXT ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
-#define  OPT_1 144 
-#define  OPT_5 143 
-#define  OPT_6 142 
-#define  OPT_AIXMD5 141 
-#define  OPT_APR1 140 
-#define  OPT_CRYPT 139 
-#define  OPT_EOF 138 
-#define  OPT_ERR 137 
-#define  OPT_HELP 136 
-#define  OPT_IN 135 
-#define  OPT_NOVERIFY 134 
-#define  OPT_QUIET 133 
-#define  OPT_REVERSE 132 
-#define  OPT_R_CASES 131 
-#define  OPT_SALT 130 
-#define  OPT_STDIN 129 
-#define  OPT_TABLE 128 
- char* app_malloc (size_t,char*) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/ * bio_open_default (char*,char,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bio_out ; 
- int /*<<< orphan*/  do_passwd (int,char**,char**,char*,int /*<<< orphan*/ ,int,int,int,size_t,scalar_t__) ; 
- char* opt_arg () ; 
- int /*<<< orphan*/  opt_help (int /*<<< orphan*/ ) ; 
- char* opt_init (int,char**,int /*<<< orphan*/ ) ; 
- int opt_next () ; 
- int opt_num_rest () ; 
- int /*<<< orphan*/  opt_rand (int) ; 
- char** opt_rest () ; 
- scalar_t__ passwd_aixmd5 ; 
- scalar_t__ passwd_apr1 ; 
- scalar_t__ passwd_crypt ; 
- scalar_t__ passwd_md5 ; 
- int /*<<< orphan*/  passwd_options ; 
- scalar_t__ passwd_sha256 ; 
- scalar_t__ passwd_sha512 ; 
- scalar_t__ passwd_unset ; 
- char* strchr (char*,char) ; 
+
+
+
+typedef int trash ;
+typedef scalar_t__ passwd_modes ;
+typedef int OPTION_CHOICE ;
+typedef int BIO ;
+
+
+ int BIO_free (int *) ;
+ int BIO_gets (int *,char*,int) ;
+ int BIO_printf (int ,char*,...) ;
+ int BUFSIZ ;
+ int ERR_print_errors (int ) ;
+ scalar_t__ EVP_read_pw_string (char*,size_t,char*,int) ;
+ int FORMAT_TEXT ;
+ int OPENSSL_free (char*) ;
+ char* app_malloc (size_t,char*) ;
+ int assert (int ) ;
+ int bio_err ;
+ int * bio_open_default (char*,char,int ) ;
+ int bio_out ;
+ int do_passwd (int,char**,char**,char*,int ,int,int,int,size_t,scalar_t__) ;
+ char* opt_arg () ;
+ int opt_help (int ) ;
+ char* opt_init (int,char**,int ) ;
+ int opt_next () ;
+ int opt_num_rest () ;
+ int opt_rand (int) ;
+ char** opt_rest () ;
+ scalar_t__ passwd_aixmd5 ;
+ scalar_t__ passwd_apr1 ;
+ scalar_t__ passwd_crypt ;
+ scalar_t__ passwd_md5 ;
+ int passwd_options ;
+ scalar_t__ passwd_sha256 ;
+ scalar_t__ passwd_sha512 ;
+ scalar_t__ passwd_unset ;
+ char* strchr (char*,char) ;
 
 int passwd_main(int argc, char **argv)
 {
-    BIO *in = NULL;
-    char *infile = NULL, *salt = NULL, *passwd = NULL, **passwds = NULL;
-    char *salt_malloc = NULL, *passwd_malloc = NULL, *prog;
+    BIO *in = ((void*)0);
+    char *infile = ((void*)0), *salt = ((void*)0), *passwd = ((void*)0), **passwds = ((void*)0);
+    char *salt_malloc = ((void*)0), *passwd_malloc = ((void*)0), *prog;
     OPTION_CHOICE o;
     int in_stdin = 0, pw_source_defined = 0;
-#ifndef OPENSSL_NO_UI_CONSOLE
+
     int in_noverify = 0;
-#endif
+
     int passed_salt = 0, quiet = 0, table = 0, reverse = 0;
     int ret = 1;
     passwd_modes mode = passwd_unset;
     size_t passwd_malloc_size = 0;
-    size_t pw_maxlen = 256; /* arbitrary limit, should be enough for most
-                             * passwords */
+    size_t pw_maxlen = 256;
+
 
     prog = opt_init(argc, argv, passwd_options);
-    while ((o = opt_next()) != OPT_EOF) {
+    while ((o = opt_next()) != 138) {
         switch (o) {
-        case OPT_EOF:
-        case OPT_ERR:
+        case 138:
+        case 137:
  opthelp:
             BIO_printf(bio_err, "%s: Use -help for summary.\n", prog);
             goto end;
-        case OPT_HELP:
+        case 136:
             opt_help(passwd_options);
             ret = 0;
             goto end;
-        case OPT_IN:
+        case 135:
             if (pw_source_defined)
                 goto opthelp;
             infile = opt_arg();
             pw_source_defined = 1;
             break;
-        case OPT_NOVERIFY:
-#ifndef OPENSSL_NO_UI_CONSOLE
+        case 134:
+
             in_noverify = 1;
-#endif
+
             break;
-        case OPT_QUIET:
+        case 133:
             quiet = 1;
             break;
-        case OPT_TABLE:
+        case 128:
             table = 1;
             break;
-        case OPT_REVERSE:
+        case 132:
             reverse = 1;
             break;
-        case OPT_1:
+        case 144:
             if (mode != passwd_unset)
                 goto opthelp;
             mode = passwd_md5;
             break;
-        case OPT_5:
+        case 143:
             if (mode != passwd_unset)
                 goto opthelp;
             mode = passwd_sha256;
             break;
-        case OPT_6:
+        case 142:
             if (mode != passwd_unset)
                 goto opthelp;
             mode = passwd_sha512;
             break;
-        case OPT_APR1:
+        case 140:
             if (mode != passwd_unset)
                 goto opthelp;
             mode = passwd_apr1;
             break;
-        case OPT_AIXMD5:
+        case 141:
             if (mode != passwd_unset)
                 goto opthelp;
             mode = passwd_aixmd5;
             break;
-        case OPT_CRYPT:
-#ifndef OPENSSL_NO_DES
+        case 139:
+
             if (mode != passwd_unset)
                 goto opthelp;
             mode = passwd_crypt;
-#endif
+
             break;
-        case OPT_SALT:
+        case 130:
             passed_salt = 1;
             salt = opt_arg();
             break;
-        case OPT_STDIN:
+        case 129:
             if (pw_source_defined)
                 goto opthelp;
             in_stdin = 1;
             pw_source_defined = 1;
             break;
-        case OPT_R_CASES:
+        case 131:
             if (!opt_rand(o))
                 goto end;
             break;
@@ -164,7 +147,7 @@ int passwd_main(int argc, char **argv)
     argc = opt_num_rest();
     argv = opt_rest();
 
-    if (*argv != NULL) {
+    if (*argv != ((void*)0)) {
         if (pw_source_defined)
             goto opthelp;
         pw_source_defined = 1;
@@ -172,55 +155,55 @@ int passwd_main(int argc, char **argv)
     }
 
     if (mode == passwd_unset) {
-        /* use default */
+
         mode = passwd_crypt;
     }
 
-#ifdef OPENSSL_NO_DES
-    if (mode == passwd_crypt)
-        goto opthelp;
-#endif
 
-    if (infile != NULL && in_stdin) {
+
+
+
+
+    if (infile != ((void*)0) && in_stdin) {
         BIO_printf(bio_err, "%s: Can't combine -in and -stdin\n", prog);
         goto end;
     }
 
-    if (infile != NULL || in_stdin) {
-        /*
-         * If in_stdin is true, we know that infile is NULL, and that
-         * bio_open_default() will give us back an alias for stdin.
-         */
+    if (infile != ((void*)0) || in_stdin) {
+
+
+
+
         in = bio_open_default(infile, 'r', FORMAT_TEXT);
-        if (in == NULL)
+        if (in == ((void*)0))
             goto end;
     }
 
     if (mode == passwd_crypt)
         pw_maxlen = 8;
 
-    if (passwds == NULL) {
-        /* no passwords on the command line */
+    if (passwds == ((void*)0)) {
+
 
         passwd_malloc_size = pw_maxlen + 2;
-        /* longer than necessary so that we can warn about truncation */
+
         passwd = passwd_malloc =
             app_malloc(passwd_malloc_size, "password buffer");
     }
 
-    if ((in == NULL) && (passwds == NULL)) {
-        /*
-         * we use the following method to make sure what
-         * in the 'else' section is always compiled, to
-         * avoid rot of not-frequently-used code.
-         */
+    if ((in == ((void*)0)) && (passwds == ((void*)0))) {
+
+
+
+
+
         if (1) {
-#ifndef OPENSSL_NO_UI_CONSOLE
-            /* build a null-terminated list */
-            static char *passwds_static[2] = { NULL, NULL };
+
+
+            static char *passwds_static[2] = { ((void*)0), ((void*)0) };
 
             passwds = passwds_static;
-            if (in == NULL) {
+            if (in == ((void*)0)) {
                 if (EVP_read_pw_string
                     (passwd_malloc, passwd_malloc_size, "Password: ",
                      !(passed_salt || in_noverify)) != 0)
@@ -228,35 +211,35 @@ int passwd_main(int argc, char **argv)
             }
             passwds[0] = passwd_malloc;
         } else {
-#endif
+
             BIO_printf(bio_err, "password required\n");
             goto end;
         }
     }
 
-    if (in == NULL) {
-        assert(passwds != NULL);
-        assert(*passwds != NULL);
+    if (in == ((void*)0)) {
+        assert(passwds != ((void*)0));
+        assert(*passwds != ((void*)0));
 
-        do {                    /* loop over list of passwords */
+        do {
             passwd = *passwds++;
             if (!do_passwd(passed_salt, &salt, &salt_malloc, passwd, bio_out,
                            quiet, table, reverse, pw_maxlen, mode))
                 goto end;
-        } while (*passwds != NULL);
+        } while (*passwds != ((void*)0));
     } else {
-        /* in != NULL */
+
         int done;
 
-        assert(passwd != NULL);
+        assert(passwd != ((void*)0));
         do {
             int r = BIO_gets(in, passwd, pw_maxlen + 1);
             if (r > 0) {
                 char *c = (strchr(passwd, '\n'));
-                if (c != NULL) {
-                    *c = 0;     /* truncate at newline */
+                if (c != ((void*)0)) {
+                    *c = 0;
                 } else {
-                    /* ignore rest of line */
+
                     char trash[BUFSIZ];
                     do
                         r = BIO_gets(in, trash, sizeof(trash));
@@ -274,9 +257,9 @@ int passwd_main(int argc, char **argv)
     ret = 0;
 
  end:
-#if 0
-    ERR_print_errors(bio_err);
-#endif
+
+
+
     OPENSSL_free(salt_malloc);
     OPENSSL_free(passwd_malloc);
     BIO_free(in);

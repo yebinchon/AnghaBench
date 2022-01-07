@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned int uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const* const) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strtoul (char const* const,char**,int) ; 
+
+
+
+typedef unsigned int uint32_t ;
+
+
+ int fprintf (int ,char*,char const* const) ;
+ int stderr ;
+ scalar_t__ strtoul (char const* const,char**,int) ;
 
 uint32_t ExUtilGetUInt(const char* const v, int base, int* const error) {
-  char* end = NULL;
-  const uint32_t n = (v != NULL) ? (uint32_t)strtoul(v, &end, base) : 0u;
-  if (end == v && error != NULL && !*error) {
+  char* end = ((void*)0);
+  const uint32_t n = (v != ((void*)0)) ? (uint32_t)strtoul(v, &end, base) : 0u;
+  if (end == v && error != ((void*)0) && !*error) {
     *error = 1;
     fprintf(stderr, "Error! '%s' is not an integer.\n",
-            (v != NULL) ? v : "(null)");
+            (v != ((void*)0)) ? v : "(null)");
   }
   return n;
 }

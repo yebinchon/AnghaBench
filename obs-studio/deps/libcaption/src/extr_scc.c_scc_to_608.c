@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  utf8_char_t ;
-typedef  scalar_t__ uint16_t ;
-struct TYPE_5__ {unsigned int cc_size; scalar_t__* cc_data; int /*<<< orphan*/  timestamp; } ;
-typedef  TYPE_1__ scc_t ;
 
-/* Variables and functions */
- TYPE_1__* scc_relloc (TYPE_1__*,unsigned int) ; 
- int /*<<< orphan*/  scc_time_to_timestamp (int,int,int,int) ; 
- int sscanf (int /*<<< orphan*/  const*,char*,int*,...) ; 
- size_t utf8_line_length (int /*<<< orphan*/  const*) ; 
- size_t utf8_trimmed_length (int /*<<< orphan*/  const*,size_t) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int utf8_char_t ;
+typedef scalar_t__ uint16_t ;
+struct TYPE_5__ {unsigned int cc_size; scalar_t__* cc_data; int timestamp; } ;
+typedef TYPE_1__ scc_t ;
+
+
+ TYPE_1__* scc_relloc (TYPE_1__*,unsigned int) ;
+ int scc_time_to_timestamp (int,int,int,int) ;
+ int sscanf (int const*,char*,int*,...) ;
+ size_t utf8_line_length (int const*) ;
+ size_t utf8_trimmed_length (int const*,size_t) ;
 
 size_t scc_to_608(scc_t** scc, const utf8_char_t* data)
 {
@@ -36,7 +36,7 @@ size_t scc_to_608(scc_t** scc, const utf8_char_t* data)
         (*scc)->cc_size = 0;
     }
 
-    // skip 'Scenarist_SCC V1.0' header
+
     if (2 == sscanf(data, "Scenarist_SCC V%1d.%1d", &v1, &v2)) {
         data += 18, size += 18;
 
@@ -45,7 +45,7 @@ size_t scc_to_608(scc_t** scc, const utf8_char_t* data)
         }
     }
 
-    // Skip blank lines
+
     for (;;) {
         llen = utf8_line_length(data);
 
@@ -59,7 +59,7 @@ size_t scc_to_608(scc_t** scc, const utf8_char_t* data)
 
     if (4 == sscanf(data, "%2d:%2d:%2d%*1[:;]%2d", &hh, &mm, &ss, &ff)) {
         data += 12, size += 12;
-        // Get length of the remaining charcters
+
         llen = utf8_line_length(data);
         llen = utf8_trimmed_length(data, llen);
         unsigned int max_cc_count = 1 + ((unsigned int)llen / 5);

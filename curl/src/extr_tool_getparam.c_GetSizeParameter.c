@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct GlobalConfig {int dummy; } ;
-typedef  int curl_off_t ;
-typedef  int /*<<< orphan*/  ParameterError ;
+typedef int curl_off_t ;
+typedef int ParameterError ;
 
-/* Variables and functions */
- int CURL_OFF_T_MAX ; 
- int /*<<< orphan*/  PARAM_BAD_USE ; 
- int /*<<< orphan*/  PARAM_NUMBER_TOO_LARGE ; 
- int /*<<< orphan*/  PARAM_OK ; 
- scalar_t__ curlx_strtoofft (char const*,char**,int /*<<< orphan*/ ,int*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  warnf (struct GlobalConfig*,char*,char const*) ; 
+
+ int CURL_OFF_T_MAX ;
+ int PARAM_BAD_USE ;
+ int PARAM_NUMBER_TOO_LARGE ;
+ int PARAM_OK ;
+ scalar_t__ curlx_strtoofft (char const*,char**,int ,int*) ;
+ int strlen (char*) ;
+ int warnf (struct GlobalConfig*,char*,char const*) ;
 
 __attribute__((used)) static ParameterError GetSizeParameter(struct GlobalConfig *global,
                                        const char *arg,
@@ -39,7 +39,7 @@ __attribute__((used)) static ParameterError GetSizeParameter(struct GlobalConfig
   if(!*unit)
     unit = (char *)"b";
   else if(strlen(unit) > 1)
-    unit = (char *)"w"; /* unsupported */
+    unit = (char *)"w";
 
   switch(*unit) {
   case 'G':
@@ -62,7 +62,7 @@ __attribute__((used)) static ParameterError GetSizeParameter(struct GlobalConfig
     break;
   case 'b':
   case 'B':
-    /* for plain bytes, leave as-is */
+
     break;
   default:
     warnf(global, "unsupported %s unit. Use G, M, K or B!\n", which);

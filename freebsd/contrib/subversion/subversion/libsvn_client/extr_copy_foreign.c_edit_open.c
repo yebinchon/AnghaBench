@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct edit_baton_t {int /*<<< orphan*/  anchor_abspath; int /*<<< orphan*/  pool; } ;
-struct dir_baton_t {int users; int /*<<< orphan*/  local_abspath; struct edit_baton_t* eb; int /*<<< orphan*/ * pool; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- struct dir_baton_t* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  svn_io_make_dir_recursively (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int svn_revnum_t ;
+typedef int svn_error_t ;
+struct edit_baton_t {int anchor_abspath; int pool; } ;
+struct dir_baton_t {int users; int local_abspath; struct edit_baton_t* eb; int * pool; } ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ struct dir_baton_t* apr_pcalloc (int *,int) ;
+ int svn_io_make_dir_recursively (int ,int *) ;
+ int * svn_pool_create (int ) ;
 
 __attribute__((used)) static svn_error_t *
 edit_open(void *edit_baton,

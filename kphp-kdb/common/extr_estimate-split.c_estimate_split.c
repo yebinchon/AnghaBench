@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- double exp (int) ; 
- int log (int) ; 
- int sqrt (double) ; 
+ double exp (int) ;
+ int log (int) ;
+ int sqrt (double) ;
 
 int estimate_split (int N, int K) {
   double x, a, tp, ta;
@@ -25,7 +17,7 @@ int estimate_split (int N, int K) {
   if (K == 1) {
     return N;
   }
-  if (N >= 100 && N >= 100*K) {	// if necessary, N/K >= 100 may be replaced by any value <= 500
+  if (N >= 100 && N >= 100*K) {
     x = (double) N / K;
     return (int) (x + 7*sqrt(x) + 1);
   }

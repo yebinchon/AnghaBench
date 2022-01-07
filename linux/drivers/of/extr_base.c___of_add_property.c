@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct property {struct property* next; int /*<<< orphan*/  name; } ;
+
+
+
+
+struct property {struct property* next; int name; } ;
 struct device_node {struct property* properties; } ;
 
-/* Variables and functions */
- int EEXIST ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int EEXIST ;
+ scalar_t__ strcmp (int ,int ) ;
 
 int __of_add_property(struct device_node *np, struct property *prop)
 {
-	struct property **next;
+ struct property **next;
 
-	prop->next = NULL;
-	next = &np->properties;
-	while (*next) {
-		if (strcmp(prop->name, (*next)->name) == 0)
-			/* duplicate ! don't insert it */
-			return -EEXIST;
+ prop->next = ((void*)0);
+ next = &np->properties;
+ while (*next) {
+  if (strcmp(prop->name, (*next)->name) == 0)
 
-		next = &(*next)->next;
-	}
-	*next = prop;
+   return -EEXIST;
 
-	return 0;
+  next = &(*next)->next;
+ }
+ *next = prop;
+
+ return 0;
 }

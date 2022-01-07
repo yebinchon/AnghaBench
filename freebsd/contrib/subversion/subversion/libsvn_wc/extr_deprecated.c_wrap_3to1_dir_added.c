@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_notify_state_t ;
-typedef  int /*<<< orphan*/  svn_wc_adm_access_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct diff_callbacks_wrapper_baton {int /*<<< orphan*/  baton; TYPE_1__* callbacks; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * (* dir_added ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/ * stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int svn_wc_notify_state_t ;
+typedef int svn_wc_adm_access_t ;
+typedef int svn_revnum_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+struct diff_callbacks_wrapper_baton {int baton; TYPE_1__* callbacks; } ;
+struct TYPE_2__ {int * (* dir_added ) (int *,int *,char const*,int ,int ) ;} ;
+
+
+ int FALSE ;
+ int * stub1 (int *,int *,char const*,int ,int ) ;
 
 __attribute__((used)) static svn_error_t *
 wrap_3to1_dir_added(svn_wc_adm_access_t *adm_access,

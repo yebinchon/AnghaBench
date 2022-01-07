@@ -1,48 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CATCH_EINTR (int) ; 
- scalar_t__ SIGSTOP ; 
- int /*<<< orphan*/  WIFSTOPPED (int) ; 
- scalar_t__ WSTOPSIG (int) ; 
- int /*<<< orphan*/  WUNTRACED ; 
- int /*<<< orphan*/  fatal (char*,int) ; 
- int /*<<< orphan*/  fatal_perror (char*) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int fork () ; 
- int /*<<< orphan*/  ptrace_child () ; 
- int /*<<< orphan*/  stdout ; 
- int waitpid (int,int*,int /*<<< orphan*/ ) ; 
+ int CATCH_EINTR (int) ;
+ scalar_t__ SIGSTOP ;
+ int WIFSTOPPED (int) ;
+ scalar_t__ WSTOPSIG (int) ;
+ int WUNTRACED ;
+ int fatal (char*,int) ;
+ int fatal_perror (char*) ;
+ int fflush (int ) ;
+ int fork () ;
+ int ptrace_child () ;
+ int stdout ;
+ int waitpid (int,int*,int ) ;
 
 __attribute__((used)) static int start_ptraced_child(void)
 {
-	int pid, n, status;
+ int pid, n, status;
 
-	fflush(stdout);
+ fflush(stdout);
 
-	pid = fork();
-	if (pid == 0)
-		ptrace_child();
-	else if (pid < 0)
-		fatal_perror("start_ptraced_child : fork failed");
+ pid = fork();
+ if (pid == 0)
+  ptrace_child();
+ else if (pid < 0)
+  fatal_perror("start_ptraced_child : fork failed");
 
-	CATCH_EINTR(n = waitpid(pid, &status, WUNTRACED));
-	if (n < 0)
-		fatal_perror("check_ptrace : waitpid failed");
-	if (!WIFSTOPPED(status) || (WSTOPSIG(status) != SIGSTOP))
-		fatal("check_ptrace : expected SIGSTOP, got status = %d",
-		      status);
+ CATCH_EINTR(n = waitpid(pid, &status, WUNTRACED));
+ if (n < 0)
+  fatal_perror("check_ptrace : waitpid failed");
+ if (!WIFSTOPPED(status) || (WSTOPSIG(status) != SIGSTOP))
+  fatal("check_ptrace : expected SIGSTOP, got status = %d",
+        status);
 
-	return pid;
+ return pid;
 }

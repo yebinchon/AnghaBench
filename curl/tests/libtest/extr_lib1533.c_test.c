@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cb_data {scalar_t__ remaining_bytes; } ;
-typedef  long curl_off_t ;
-typedef  scalar_t__ CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
+typedef long curl_off_t ;
+typedef scalar_t__ CURLcode ;
+typedef int CURL ;
 
-/* Variables and functions */
- scalar_t__ CURLE_FAILED_INIT ; 
- scalar_t__ CURLE_OK ; 
- int /*<<< orphan*/  CURLOPT_KEEP_SENDING_ON_ERROR ; 
- int /*<<< orphan*/  CURLOPT_POST ; 
- int /*<<< orphan*/  CURLOPT_POSTFIELDSIZE_LARGE ; 
- int /*<<< orphan*/  CURLOPT_READDATA ; 
- int /*<<< orphan*/  CURLOPT_READFUNCTION ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURLOPT_VERBOSE ; 
- int /*<<< orphan*/  CURLOPT_WRITEDATA ; 
- int /*<<< orphan*/  CURLOPT_WRITEFUNCTION ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- int TEST_ERR_MAJOR_BAD ; 
- scalar_t__ TEST_ERR_SUCCESS ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * curl_easy_init () ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- scalar_t__ curl_global_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ perform_and_check_connections (int /*<<< orphan*/ *,char*,int) ; 
- long read_callback ; 
- int /*<<< orphan*/  reset_data (struct cb_data*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  test_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- long write_callback ; 
+
+ scalar_t__ CURLE_FAILED_INIT ;
+ scalar_t__ CURLE_OK ;
+ int CURLOPT_KEEP_SENDING_ON_ERROR ;
+ int CURLOPT_POST ;
+ int CURLOPT_POSTFIELDSIZE_LARGE ;
+ int CURLOPT_READDATA ;
+ int CURLOPT_READFUNCTION ;
+ int CURLOPT_URL ;
+ int CURLOPT_VERBOSE ;
+ int CURLOPT_WRITEDATA ;
+ int CURLOPT_WRITEFUNCTION ;
+ int CURL_GLOBAL_ALL ;
+ int TEST_ERR_MAJOR_BAD ;
+ scalar_t__ TEST_ERR_SUCCESS ;
+ int curl_easy_cleanup (int *) ;
+ int * curl_easy_init () ;
+ int curl_global_cleanup () ;
+ scalar_t__ curl_global_init (int ) ;
+ int fprintf (int ,char*) ;
+ scalar_t__ perform_and_check_connections (int *,char*,int) ;
+ long read_callback ;
+ int reset_data (struct cb_data*,int *) ;
+ int stderr ;
+ int test_setopt (int *,int ,...) ;
+ long write_callback ;
 
 int test(char *URL)
 {
   struct cb_data data;
-  CURL *curl = NULL;
+  CURL *curl = ((void*)0);
   CURLcode res = CURLE_FAILED_INIT;
 
   if(curl_global_init(CURL_GLOBAL_ALL) != CURLE_OK) {
@@ -54,7 +54,7 @@ int test(char *URL)
   }
 
   curl = curl_easy_init();
-  if(curl == NULL) {
+  if(curl == ((void*)0)) {
     fprintf(stderr, "curl_easy_init() failed\n");
     curl_global_cleanup();
     return TEST_ERR_MAJOR_BAD;

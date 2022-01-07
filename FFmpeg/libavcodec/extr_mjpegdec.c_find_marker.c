@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned int uint8_t ;
 
-/* Variables and functions */
- unsigned int COM ; 
- unsigned int SOF0 ; 
- int /*<<< orphan*/  ff_dlog (int /*<<< orphan*/ *,char*,int) ; 
+
+
+
+typedef unsigned int uint8_t ;
+
+
+ unsigned int COM ;
+ unsigned int SOF0 ;
+ int ff_dlog (int *,char*,int) ;
 
 __attribute__((used)) static int find_marker(const uint8_t **pbuf_ptr, const uint8_t *buf_end)
 {
@@ -26,7 +26,7 @@ __attribute__((used)) static int find_marker(const uint8_t **pbuf_ptr, const uin
 
     buf_ptr = *pbuf_ptr;
     while (buf_end - buf_ptr > 1) {
-        v  = *buf_ptr++;
+        v = *buf_ptr++;
         v2 = *buf_ptr;
         if ((v == 0xff) && (v2 >= SOF0) && (v2 <= COM) && buf_ptr < buf_end) {
             val = *buf_ptr++;
@@ -37,7 +37,7 @@ __attribute__((used)) static int find_marker(const uint8_t **pbuf_ptr, const uin
     buf_ptr = buf_end;
     val = -1;
 found:
-    ff_dlog(NULL, "find_marker skipped %d bytes\n", skipped);
+    ff_dlog(((void*)0), "find_marker skipped %d bytes\n", skipped);
     *pbuf_ptr = buf_ptr;
     return val;
 }

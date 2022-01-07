@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct vt_mode {void* acqsig; void* relsig; int /*<<< orphan*/  mode; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct vt_mode {void* acqsig; void* relsig; int mode; } ;
 struct TYPE_7__ {int vtnr; TYPE_1__* user; } ;
-struct TYPE_6__ {int /*<<< orphan*/  uid; } ;
-typedef  TYPE_2__ Session ;
+struct TYPE_6__ {int uid; } ;
+typedef TYPE_2__ Session ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KDSETMODE ; 
- int /*<<< orphan*/  KDSKBMODE ; 
- struct vt_mode* KD_GRAPHICS ; 
- struct vt_mode* K_OFF ; 
- void* SIGRTMIN ; 
- int /*<<< orphan*/  VT_PROCESS ; 
- int /*<<< orphan*/  VT_SETMODE ; 
- int /*<<< orphan*/  errno ; 
- int fchown (int,int /*<<< orphan*/ ,int) ; 
- int ioctl (int,int /*<<< orphan*/ ,struct vt_mode*) ; 
- int log_error_errno (int /*<<< orphan*/ ,char*,int) ; 
- int session_open_vt (TYPE_2__*) ; 
- int /*<<< orphan*/  session_restore_vt (TYPE_2__*) ; 
+
+ int KDSETMODE ;
+ int KDSKBMODE ;
+ struct vt_mode* KD_GRAPHICS ;
+ struct vt_mode* K_OFF ;
+ void* SIGRTMIN ;
+ int VT_PROCESS ;
+ int VT_SETMODE ;
+ int errno ;
+ int fchown (int,int ,int) ;
+ int ioctl (int,int ,struct vt_mode*) ;
+ int log_error_errno (int ,char*,int) ;
+ int session_open_vt (TYPE_2__*) ;
+ int session_restore_vt (TYPE_2__*) ;
 
 __attribute__((used)) static int session_prepare_vt(Session *s) {
         int vt, r;
@@ -67,9 +67,9 @@ __attribute__((used)) static int session_prepare_vt(Session *s) {
                 goto error;
         }
 
-        /* Oh, thanks to the VT layer, VT_AUTO does not work with KD_GRAPHICS.
-         * So we need a dummy handler here which just acknowledges *all* VT
-         * switch requests. */
+
+
+
         mode.mode = VT_PROCESS;
         mode.relsig = SIGRTMIN;
         mode.acqsig = SIGRTMIN + 1;

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  htab_t ;
-typedef  int /*<<< orphan*/  htab_hash ;
-typedef  int /*<<< orphan*/  htab_eq ;
-typedef  int /*<<< orphan*/  htab_del ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free ; 
- int /*<<< orphan*/  htab_create_alloc (size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xcalloc ; 
+
+
+
+typedef int htab_t ;
+typedef int htab_hash ;
+typedef int htab_eq ;
+typedef int htab_del ;
+
+
+ int free ;
+ int htab_create_alloc (size_t,int ,int ,int ,int ,int ) ;
+ int xcalloc ;
 
 htab_t
 htab_create (size_t size, htab_hash hash_f, htab_eq eq_f, htab_del del_f)

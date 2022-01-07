@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int seedlen; scalar_t__ length; int /*<<< orphan*/ * counter; int /*<<< orphan*/ * seed; int /*<<< orphan*/ * j; int /*<<< orphan*/ * q; int /*<<< orphan*/ * g; int /*<<< orphan*/ * p; int /*<<< orphan*/ * pub_key; int /*<<< orphan*/ * priv_key; } ;
-typedef  TYPE_1__ DH ;
-typedef  int /*<<< orphan*/  BIO ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_bn_print (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  BIO_indent (int /*<<< orphan*/ *,int,int) ; 
- scalar_t__ BIO_printf (int /*<<< orphan*/ *,char*,...) ; 
- scalar_t__ BIO_puts (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ BIO_write (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  BN_num_bits (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DH_F_DO_DH_PRINT ; 
- int /*<<< orphan*/  DHerr (int /*<<< orphan*/ ,int) ; 
- int ERR_R_BUF_LIB ; 
- int ERR_R_PASSED_NULL_PARAMETER ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int seedlen; scalar_t__ length; int * counter; int * seed; int * j; int * q; int * g; int * p; int * pub_key; int * priv_key; } ;
+typedef TYPE_1__ DH ;
+typedef int BIO ;
+typedef int BIGNUM ;
+
+
+ int ASN1_bn_print (int *,char*,int *,int *,int) ;
+ int BIO_indent (int *,int,int) ;
+ scalar_t__ BIO_printf (int *,char*,...) ;
+ scalar_t__ BIO_puts (int *,char*) ;
+ scalar_t__ BIO_write (int *,char*,int) ;
+ int BN_num_bits (int *) ;
+ int DH_F_DO_DH_PRINT ;
+ int DHerr (int ,int) ;
+ int ERR_R_BUF_LIB ;
+ int ERR_R_PASSED_NULL_PARAMETER ;
 
 __attribute__((used)) static int do_dh_print(BIO *bp, const DH *x, int indent, int ptype)
 {
     int reason = ERR_R_BUF_LIB;
-    const char *ktype = NULL;
+    const char *ktype = ((void*)0);
     BIGNUM *priv_key, *pub_key;
 
     if (ptype == 2)
         priv_key = x->priv_key;
     else
-        priv_key = NULL;
+        priv_key = ((void*)0);
 
     if (ptype > 0)
         pub_key = x->pub_key;
     else
-        pub_key = NULL;
+        pub_key = ((void*)0);
 
-    if (x->p == NULL || (ptype == 2 && priv_key == NULL)
-            || (ptype > 0 && pub_key == NULL)) {
+    if (x->p == ((void*)0) || (ptype == 2 && priv_key == ((void*)0))
+            || (ptype > 0 && pub_key == ((void*)0))) {
         reason = ERR_R_PASSED_NULL_PARAMETER;
         goto err;
     }
@@ -62,18 +62,18 @@ __attribute__((used)) static int do_dh_print(BIO *bp, const DH *x, int indent, i
         goto err;
     indent += 4;
 
-    if (!ASN1_bn_print(bp, "private-key:", priv_key, NULL, indent))
+    if (!ASN1_bn_print(bp, "private-key:", priv_key, ((void*)0), indent))
         goto err;
-    if (!ASN1_bn_print(bp, "public-key:", pub_key, NULL, indent))
+    if (!ASN1_bn_print(bp, "public-key:", pub_key, ((void*)0), indent))
         goto err;
 
-    if (!ASN1_bn_print(bp, "prime:", x->p, NULL, indent))
+    if (!ASN1_bn_print(bp, "prime:", x->p, ((void*)0), indent))
         goto err;
-    if (!ASN1_bn_print(bp, "generator:", x->g, NULL, indent))
+    if (!ASN1_bn_print(bp, "generator:", x->g, ((void*)0), indent))
         goto err;
-    if (x->q && !ASN1_bn_print(bp, "subgroup order:", x->q, NULL, indent))
+    if (x->q && !ASN1_bn_print(bp, "subgroup order:", x->q, ((void*)0), indent))
         goto err;
-    if (x->j && !ASN1_bn_print(bp, "subgroup factor:", x->j, NULL, indent))
+    if (x->j && !ASN1_bn_print(bp, "subgroup factor:", x->j, ((void*)0), indent))
         goto err;
     if (x->seed) {
         int i;
@@ -92,7 +92,7 @@ __attribute__((used)) static int do_dh_print(BIO *bp, const DH *x, int indent, i
         if (BIO_write(bp, "\n", 1) <= 0)
             return 0;
     }
-    if (x->counter && !ASN1_bn_print(bp, "counter:", x->counter, NULL, indent))
+    if (x->counter && !ASN1_bn_print(bp, "counter:", x->counter, ((void*)0), indent))
         goto err;
     if (x->length != 0) {
         BIO_indent(bp, indent, 128);

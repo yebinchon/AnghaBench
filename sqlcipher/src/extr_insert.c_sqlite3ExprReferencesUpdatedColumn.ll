@@ -1,0 +1,100 @@
+; ModuleID = '/home/carl/AnghaBench/sqlcipher/src/extr_insert.c_sqlite3ExprReferencesUpdatedColumn.c'
+source_filename = "/home/carl/AnghaBench/sqlcipher/src/extr_insert.c_sqlite3ExprReferencesUpdatedColumn.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.TYPE_6__ = type { i32, %struct.TYPE_5__, i32 }
+%struct.TYPE_5__ = type { i32* }
+
+@checkConstraintExprNode = common dso_local global i32 0, align 4
+@CKCNSTRNT_ROWID = common dso_local global i32 0, align 4
+@CKCNSTRNT_COLUMN = common dso_local global i32 0, align 4
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local i32 @sqlite3ExprReferencesUpdatedColumn(i32* %0, i32* %1, i32 %2) #0 {
+  %4 = alloca i32*, align 8
+  %5 = alloca i32*, align 8
+  %6 = alloca i32, align 4
+  %7 = alloca %struct.TYPE_6__, align 8
+  store i32* %0, i32** %4, align 8
+  store i32* %1, i32** %5, align 8
+  store i32 %2, i32* %6, align 4
+  %8 = call i32 @memset(%struct.TYPE_6__* %7, i32 0, i32 24)
+  %9 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %7, i32 0, i32 0
+  store i32 0, i32* %9, align 8
+  %10 = load i32, i32* @checkConstraintExprNode, align 4
+  %11 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %7, i32 0, i32 2
+  store i32 %10, i32* %11, align 8
+  %12 = load i32*, i32** %5, align 8
+  %13 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %7, i32 0, i32 1
+  %14 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %13, i32 0, i32 0
+  store i32* %12, i32** %14, align 8
+  %15 = load i32*, i32** %4, align 8
+  %16 = call i32 @sqlite3WalkExpr(%struct.TYPE_6__* %7, i32* %15)
+  %17 = load i32, i32* %6, align 4
+  %18 = icmp ne i32 %17, 0
+  br i1 %18, label %32, label %19
+
+19:                                               ; preds = %3
+  %20 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %7, i32 0, i32 0
+  %21 = load i32, i32* %20, align 8
+  %22 = load i32, i32* @CKCNSTRNT_ROWID, align 4
+  %23 = and i32 %21, %22
+  %24 = icmp ne i32 %23, 0
+  %25 = zext i1 %24 to i32
+  %26 = call i32 @testcase(i32 %25)
+  %27 = load i32, i32* @CKCNSTRNT_ROWID, align 4
+  %28 = xor i32 %27, -1
+  %29 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %7, i32 0, i32 0
+  %30 = load i32, i32* %29, align 8
+  %31 = and i32 %30, %28
+  store i32 %31, i32* %29, align 8
+  br label %32
+
+32:                                               ; preds = %19, %3
+  %33 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %7, i32 0, i32 0
+  %34 = load i32, i32* %33, align 8
+  %35 = icmp eq i32 %34, 0
+  %36 = zext i1 %35 to i32
+  %37 = call i32 @testcase(i32 %36)
+  %38 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %7, i32 0, i32 0
+  %39 = load i32, i32* %38, align 8
+  %40 = load i32, i32* @CKCNSTRNT_COLUMN, align 4
+  %41 = icmp eq i32 %39, %40
+  %42 = zext i1 %41 to i32
+  %43 = call i32 @testcase(i32 %42)
+  %44 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %7, i32 0, i32 0
+  %45 = load i32, i32* %44, align 8
+  %46 = load i32, i32* @CKCNSTRNT_ROWID, align 4
+  %47 = icmp eq i32 %45, %46
+  %48 = zext i1 %47 to i32
+  %49 = call i32 @testcase(i32 %48)
+  %50 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %7, i32 0, i32 0
+  %51 = load i32, i32* %50, align 8
+  %52 = load i32, i32* @CKCNSTRNT_ROWID, align 4
+  %53 = load i32, i32* @CKCNSTRNT_COLUMN, align 4
+  %54 = or i32 %52, %53
+  %55 = icmp eq i32 %51, %54
+  %56 = zext i1 %55 to i32
+  %57 = call i32 @testcase(i32 %56)
+  %58 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %7, i32 0, i32 0
+  %59 = load i32, i32* %58, align 8
+  %60 = icmp ne i32 %59, 0
+  %61 = zext i1 %60 to i32
+  ret i32 %61
+}
+
+declare dso_local i32 @memset(%struct.TYPE_6__*, i32, i32) #1
+
+declare dso_local i32 @sqlite3WalkExpr(%struct.TYPE_6__*, i32*) #1
+
+declare dso_local i32 @testcase(i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

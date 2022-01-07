@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RAND_METHOD ;
-typedef  int /*<<< orphan*/  ENGINE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPTO_THREAD_unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CRYPTO_THREAD_write_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENGINE_finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ENGINE_get_RAND (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ENGINE_get_default_RAND () ; 
- int /*<<< orphan*/  RUN_ONCE (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  const* default_RAND_meth ; 
- int /*<<< orphan*/  do_rand_init ; 
- int /*<<< orphan*/ * funct_ref ; 
- int /*<<< orphan*/  rand_init ; 
- int /*<<< orphan*/  rand_meth ; 
- int /*<<< orphan*/  rand_meth_lock ; 
+
+
+
+typedef int RAND_METHOD ;
+typedef int ENGINE ;
+
+
+ int CRYPTO_THREAD_unlock (int ) ;
+ int CRYPTO_THREAD_write_lock (int ) ;
+ int ENGINE_finish (int *) ;
+ int * ENGINE_get_RAND (int *) ;
+ int * ENGINE_get_default_RAND () ;
+ int RUN_ONCE (int *,int ) ;
+ int const* default_RAND_meth ;
+ int do_rand_init ;
+ int * funct_ref ;
+ int rand_init ;
+ int rand_meth ;
+ int rand_meth_lock ;
 
 const RAND_METHOD *RAND_get_rand_method(void)
 {
-    const RAND_METHOD *tmp_meth = NULL;
+    const RAND_METHOD *tmp_meth = ((void*)0);
 
     if (!RUN_ONCE(&rand_init, do_rand_init))
-        return NULL;
+        return ((void*)0);
 
     CRYPTO_THREAD_write_lock(rand_meth_lock);
-    if (default_RAND_meth == NULL) {
-#ifndef OPENSSL_NO_ENGINE
+    if (default_RAND_meth == ((void*)0)) {
+
         ENGINE *e;
 
-        /* If we have an engine that can do RAND, use it. */
-        if ((e = ENGINE_get_default_RAND()) != NULL
-                && (tmp_meth = ENGINE_get_RAND(e)) != NULL) {
+
+        if ((e = ENGINE_get_default_RAND()) != ((void*)0)
+                && (tmp_meth = ENGINE_get_RAND(e)) != ((void*)0)) {
             funct_ref = e;
             default_RAND_meth = tmp_meth;
         } else {
             ENGINE_finish(e);
             default_RAND_meth = &rand_meth;
         }
-#else
-        default_RAND_meth = &rand_meth;
-#endif
+
+
+
     }
     tmp_meth = default_RAND_meth;
     CRYPTO_THREAD_unlock(rand_meth_lock);

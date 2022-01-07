@@ -1,26 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ size_t OSSL_NELEM (struct protocol_versions const*) ;
 
-/* Forward declarations */
 
-/* Type definitions */
 
-/* Variables and functions */
-#define  DTLS1_2_VERSION 134 
-#define  DTLS1_VERSION 133 
- size_t OSSL_NELEM (struct protocol_versions const*) ; 
-#define  SSL3_VERSION 132 
-#define  TLS1_1_VERSION 131 
-#define  TLS1_2_VERSION 130 
-#define  TLS1_3_VERSION 129 
-#define  TLS1_VERSION 128 
- scalar_t__ strcmp (char const*,char const*) ; 
+
+
+ scalar_t__ strcmp (char const*,char const*) ;
 
 __attribute__((used)) static int protocol_from_string(const char *value)
 {
@@ -29,13 +19,13 @@ __attribute__((used)) static int protocol_from_string(const char *value)
         int version;
     };
     static const struct protocol_versions versions[] = {
-        {"ssl3", SSL3_VERSION},
-        {"tls1", TLS1_VERSION},
-        {"tls1.1", TLS1_1_VERSION},
-        {"tls1.2", TLS1_2_VERSION},
-        {"tls1.3", TLS1_3_VERSION},
-        {"dtls1", DTLS1_VERSION},
-        {"dtls1.2", DTLS1_2_VERSION}};
+        {"ssl3", 132},
+        {"tls1", 128},
+        {"tls1.1", 131},
+        {"tls1.2", 130},
+        {"tls1.3", 129},
+        {"dtls1", 133},
+        {"dtls1.2", 134}};
     size_t i;
     size_t n = OSSL_NELEM(versions);
 

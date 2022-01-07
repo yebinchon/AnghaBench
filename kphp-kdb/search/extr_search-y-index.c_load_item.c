@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct item {int item_id; int mask; int rates_len; int extra; int* rates; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  bread (int*,int) ; 
- int popcount_short (int) ; 
- int /*<<< orphan*/  vkprintf (int,char*) ; 
- int* zzmalloc (int) ; 
+
+ int assert (int) ;
+ int bread (int*,int) ;
+ int popcount_short (int) ;
+ int vkprintf (int,char*) ;
+ int* zzmalloc (int) ;
 
 int load_item (struct item *C) {
   vkprintf (4, "loading item...");

@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ svn_wc_context_t ;
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_14__ {int /*<<< orphan*/  (* dir_closed ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__ const*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* dir_changed ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,TYPE_2__ const*,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_2__ svn_diff_tree_processor_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int svn_boolean_t ;
-struct node_state_t {int /*<<< orphan*/  pool; struct node_state_t* parent; int /*<<< orphan*/  baton; int /*<<< orphan*/  right_src; int /*<<< orphan*/  left_src; int /*<<< orphan*/  relpath; scalar_t__ propchanges; int /*<<< orphan*/  right_props; int /*<<< orphan*/  left_props; int /*<<< orphan*/  skip; } ;
-struct diff_baton {char const* anchor_abspath; int ignore_ancestry; struct node_state_t* cur; int /*<<< orphan*/ * pool; TYPE_2__ const* processor; int /*<<< orphan*/  db; int /*<<< orphan*/  member_0; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
+
+
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int db; } ;
+typedef TYPE_1__ svn_wc_context_t ;
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_error_t ;
+struct TYPE_14__ {int (* dir_closed ) (int ,int ,int ,int ,TYPE_2__ const*,int ) ;int (* dir_changed ) (int ,int ,int ,int ,int ,scalar_t__,int ,TYPE_2__ const*,int ) ;} ;
+typedef TYPE_2__ svn_diff_tree_processor_t ;
+typedef int svn_depth_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_boolean_t ;
+struct node_state_t {int pool; struct node_state_t* parent; int baton; int right_src; int left_src; int relpath; scalar_t__ propchanges; int right_props; int left_props; int skip; } ;
+struct diff_baton {char const* anchor_abspath; int ignore_ancestry; struct node_state_t* cur; int * pool; TYPE_2__ const* processor; int db; int member_0; } ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
 struct TYPE_15__ {scalar_t__ nelts; } ;
-typedef  TYPE_3__ apr_array_header_t ;
+typedef TYPE_3__ apr_array_header_t ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int TRUE ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  diff_status_callback ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,TYPE_2__ const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__ const*,int /*<<< orphan*/ ) ; 
- void* svn_dirent_dirname (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_is_absolute (char const*) ; 
- int /*<<< orphan*/  svn_dirent_skip_ancestor (char const*,char const*) ; 
- int /*<<< orphan*/  svn_hash_from_cstring_keys (int /*<<< orphan*/ **,TYPE_3__ const*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_dir ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ ) ; 
- TYPE_2__* svn_wc__changelist_filter_tree_processor_create (TYPE_2__ const*,TYPE_1__*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_is_wcroot (int*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_read_kind (scalar_t__*,int /*<<< orphan*/ ,char const*,int,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__internal_walk_status (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct diff_baton*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ char* apr_pstrdup (int *,int ) ;
+ int diff_status_callback ;
+ int stub1 (int ,int ,int ,int ,int ,scalar_t__,int ,TYPE_2__ const*,int ) ;
+ int stub2 (int ,int ,int ,int ,TYPE_2__ const*,int ) ;
+ void* svn_dirent_dirname (char const*,int *) ;
+ int svn_dirent_is_absolute (char const*) ;
+ int svn_dirent_skip_ancestor (char const*,char const*) ;
+ int svn_hash_from_cstring_keys (int **,TYPE_3__ const*,int *) ;
+ scalar_t__ svn_node_dir ;
+ int svn_pool_clear (int ) ;
+ TYPE_2__* svn_wc__changelist_filter_tree_processor_create (TYPE_2__ const*,TYPE_1__*,char const*,int *,int *) ;
+ int svn_wc__db_is_wcroot (int*,int ,char const*,int *) ;
+ int svn_wc__db_read_kind (scalar_t__*,int ,char const*,int,int,int,int *) ;
+ int svn_wc__internal_walk_status (int ,char const*,int ,int,int,int,int *,int ,struct diff_baton*,int ,void*,int *) ;
 
 svn_error_t *
 svn_wc__diff7(const char **root_relpath,
@@ -70,9 +70,9 @@ svn_wc__diff7(const char **root_relpath,
 
   SVN_ERR_ASSERT(svn_dirent_is_absolute(local_abspath));
   SVN_ERR(svn_wc__db_read_kind(&kind, wc_ctx->db, local_abspath,
-                               FALSE /* allow_missing */,
-                               TRUE /* show_deleted */,
-                               FALSE /* show_hidden */,
+                               FALSE ,
+                               TRUE ,
+                               FALSE ,
                                scratch_pool));
 
   eb.anchor_abspath = local_abspath;
@@ -97,7 +97,7 @@ svn_wc__diff7(const char **root_relpath,
   if (root_is_dir)
     *root_is_dir = (kind == svn_node_dir);
 
-  /* Apply changelist filtering to the output */
+
   if (changelist_filter && changelist_filter->nelts)
     {
       apr_hash_t *changelist_hash;
@@ -115,21 +115,21 @@ svn_wc__diff7(const char **root_relpath,
   eb.pool = scratch_pool;
 
   if (ignore_ancestry)
-    get_all = TRUE; /* We need unmodified descendants of copies */
+    get_all = TRUE;
   else
     get_all = FALSE;
 
-  /* Walk status handles files and directories */
+
   SVN_ERR(svn_wc__internal_walk_status(wc_ctx->db, local_abspath, depth,
                                        get_all,
-                                       TRUE /* no_ignore */,
-                                       FALSE /* ignore_text_mods */,
-                                       NULL /* ignore_patterns */,
+                                       TRUE ,
+                                       FALSE ,
+                                       ((void*)0) ,
                                        diff_status_callback, &eb,
                                        cancel_func, cancel_baton,
                                        scratch_pool));
 
-  /* Close the remaining open directories */
+
   while (eb.cur)
     {
       struct node_state_t *ns = eb.cur;

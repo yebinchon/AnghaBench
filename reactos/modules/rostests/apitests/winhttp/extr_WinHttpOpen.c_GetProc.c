@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * PVOID ;
-typedef  int /*<<< orphan*/  PCSTR ;
-typedef  int /*<<< orphan*/  HMODULE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetModuleHandleW (char*) ; 
- int /*<<< orphan*/ * GetProcAddress (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int * PVOID ;
+typedef int PCSTR ;
+typedef int HMODULE ;
+
+
+ int GetModuleHandleW (char*) ;
+ int * GetProcAddress (int ,int ) ;
 
 __attribute__((used)) static
 PVOID
@@ -27,6 +27,6 @@ GetProc(
 
     ModuleHandle = GetModuleHandleW(L"ws2_32");
     if (!ModuleHandle)
-        return NULL;
+        return ((void*)0);
     return GetProcAddress(ModuleHandle, FunctionName);
 }

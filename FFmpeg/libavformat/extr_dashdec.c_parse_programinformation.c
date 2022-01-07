@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* xmlNodePtr ;
-typedef  int /*<<< orphan*/  xmlChar ;
-struct TYPE_11__ {int /*<<< orphan*/  metadata; } ;
-struct TYPE_10__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_dict_set (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_strcasecmp (int /*<<< orphan*/ ,char*) ; 
- TYPE_1__* xmlFirstElementChild (TYPE_1__*) ; 
- int /*<<< orphan*/  xmlFree (int /*<<< orphan*/ *) ; 
- TYPE_1__* xmlNextElementSibling (TYPE_1__*) ; 
- int /*<<< orphan*/ * xmlNodeGetContent (TYPE_1__*) ; 
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef TYPE_1__* xmlNodePtr ;
+typedef int xmlChar ;
+struct TYPE_11__ {int metadata; } ;
+struct TYPE_10__ {int name; } ;
+typedef TYPE_2__ AVFormatContext ;
+
+
+ int av_dict_set (int *,char*,int *,int ) ;
+ int av_strcasecmp (int ,char*) ;
+ TYPE_1__* xmlFirstElementChild (TYPE_1__*) ;
+ int xmlFree (int *) ;
+ TYPE_1__* xmlNextElementSibling (TYPE_1__*) ;
+ int * xmlNodeGetContent (TYPE_1__*) ;
 
 __attribute__((used)) static int parse_programinformation(AVFormatContext *s, xmlNodePtr node)
 {
-    xmlChar *val = NULL;
+    xmlChar *val = ((void*)0);
 
     node = xmlFirstElementChild(node);
     while (node) {
@@ -50,7 +50,7 @@ __attribute__((used)) static int parse_programinformation(AVFormatContext *s, xm
         }
         node = xmlNextElementSibling(node);
         xmlFree(val);
-        val = NULL;
+        val = ((void*)0);
     }
     return 0;
 }

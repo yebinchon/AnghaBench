@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  MFGPT_REG_COUNTER ; 
- int /*<<< orphan*/  MFGPT_REG_SETUP ; 
- int /*<<< orphan*/  MFGPT_SETUP_CNTEN ; 
- int /*<<< orphan*/  cs5535_mfgpt_write (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wdt_timer ; 
+ int MFGPT_REG_COUNTER ;
+ int MFGPT_REG_SETUP ;
+ int MFGPT_SETUP_CNTEN ;
+ int cs5535_mfgpt_write (int ,int ,int ) ;
+ int wdt_timer ;
 
 __attribute__((used)) static void geodewdt_ping(void)
 {
-	/* Stop the counter */
-	cs5535_mfgpt_write(wdt_timer, MFGPT_REG_SETUP, 0);
 
-	/* Reset the counter */
-	cs5535_mfgpt_write(wdt_timer, MFGPT_REG_COUNTER, 0);
+ cs5535_mfgpt_write(wdt_timer, MFGPT_REG_SETUP, 0);
 
-	/* Enable the counter */
-	cs5535_mfgpt_write(wdt_timer, MFGPT_REG_SETUP, MFGPT_SETUP_CNTEN);
+
+ cs5535_mfgpt_write(wdt_timer, MFGPT_REG_COUNTER, 0);
+
+
+ cs5535_mfgpt_write(wdt_timer, MFGPT_REG_SETUP, MFGPT_SETUP_CNTEN);
 }

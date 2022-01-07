@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_opt_revision_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_diff_tree_processor_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_client_diff_summarize_func_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  do_diff (char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client__get_diff_summarize_callbacks (int /*<<< orphan*/  const**,char const***,int /*<<< orphan*/ ,void*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int svn_opt_revision_t ;
+typedef int svn_error_t ;
+typedef int svn_diff_tree_processor_t ;
+typedef int svn_depth_t ;
+typedef int svn_client_diff_summarize_func_t ;
+typedef int svn_client_ctx_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int do_diff (char const**,int *,int *,char const*,char const*,int const*,int const*,int const*,int ,int ,int ,int const*,int ,int const*,int *,int *,int *) ;
+ int svn_client__get_diff_summarize_callbacks (int const**,char const***,int ,void*,char const*,int *,int *) ;
+ int * svn_error_trace (int ) ;
 
 svn_error_t *
 svn_client_diff_summarize_peg2(const char *path_or_url,
@@ -48,11 +48,11 @@ svn_client_diff_summarize_peg2(const char *path_or_url,
                      summarize_func, summarize_baton,
                      path_or_url, pool, pool));
 
-  return svn_error_trace(do_diff(p_root_relpath, NULL, NULL,
+  return svn_error_trace(do_diff(p_root_relpath, ((void*)0), ((void*)0),
                                  path_or_url, path_or_url,
                                  start_revision, end_revision,
-                                 peg_revision, FALSE /* no_peg_revision */,
+                                 peg_revision, FALSE ,
                                  depth, ignore_ancestry, changelists,
-                                 FALSE /* text_deltas */,
+                                 FALSE ,
                                  diff_processor, ctx, pool, pool));
 }

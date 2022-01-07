@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  HTMLDocument ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ VT_BOOL ; 
- int /*<<< orphan*/  V_BOOL (int /*<<< orphan*/ *) ; 
- scalar_t__ V_VT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_variant (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_dirty (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int VARIANT ;
+typedef int HTMLDocument ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int FIXME (char*,int ) ;
+ int S_OK ;
+ int TRACE (char*,int *,int ,int *,int *) ;
+ scalar_t__ VT_BOOL ;
+ int V_BOOL (int *) ;
+ scalar_t__ V_VT (int *) ;
+ int debugstr_variant (int *) ;
+ int set_dirty (int *,int ) ;
 
 __attribute__((used)) static HRESULT exec_setdirty(HTMLDocument *This, DWORD cmdexecopt, VARIANT *in, VARIANT *out)
 {

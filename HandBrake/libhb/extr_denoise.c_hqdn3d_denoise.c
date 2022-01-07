@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  hqdn3d_denoise_spatial (unsigned char*,unsigned char*,unsigned short*,unsigned short*,int,int,short*,short*) ; 
- int /*<<< orphan*/  hqdn3d_denoise_temporal (unsigned char*,unsigned char*,unsigned short*,int,int,short*) ; 
- unsigned short* malloc (int) ; 
+ int hqdn3d_denoise_spatial (unsigned char*,unsigned char*,unsigned short*,unsigned short*,int,int,short*,short*) ;
+ int hqdn3d_denoise_temporal (unsigned char*,unsigned char*,unsigned short*,int,int,short*) ;
+ unsigned short* malloc (int) ;
 
 __attribute__((used)) static void hqdn3d_denoise( unsigned char * frame_src,
                             unsigned char * frame_dst,
@@ -43,7 +35,7 @@ __attribute__((used)) static void hqdn3d_denoise( unsigned char * frame_src,
         frame_ant = *frame_ant_ptr;
     }
 
-    /* If no spatial coefficients, do temporal denoise only */
+
     if( spatial[0] )
     {
         hqdn3d_denoise_spatial( frame_src,

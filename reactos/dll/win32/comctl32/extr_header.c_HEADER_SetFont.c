@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ WORD ;
-struct TYPE_6__ {int /*<<< orphan*/  hwndSelf; int /*<<< orphan*/  bRectsValid; scalar_t__ nHeight; scalar_t__ hFont; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ WORD ;
+struct TYPE_6__ {int hwndSelf; int bRectsValid; scalar_t__ nHeight; scalar_t__ hFont; } ;
 struct TYPE_5__ {scalar_t__ tmHeight; } ;
-typedef  TYPE_1__ TEXTMETRICW ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  scalar_t__ HFONT ;
-typedef  TYPE_2__ HEADER_INFO ;
-typedef  int /*<<< orphan*/  HDC ;
+typedef TYPE_1__ TEXTMETRICW ;
+typedef int LRESULT ;
+typedef scalar_t__ HFONT ;
+typedef TYPE_2__ HEADER_INFO ;
+typedef int HDC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- scalar_t__ GetStockObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetTextMetricsW (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  InvalidateRect (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SYSTEM_FONT ; 
- scalar_t__ SelectObject (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ VERT_BORDER ; 
+
+ int FALSE ;
+ int GetDC (int ) ;
+ scalar_t__ GetStockObject (int ) ;
+ int GetTextMetricsW (int ,TYPE_1__*) ;
+ int InvalidateRect (int ,int *,int ) ;
+ int ReleaseDC (int ,int ) ;
+ int SYSTEM_FONT ;
+ scalar_t__ SelectObject (int ,scalar_t__) ;
+ scalar_t__ VERT_BORDER ;
 
 __attribute__((used)) static LRESULT
 HEADER_SetFont (HEADER_INFO *infoPtr, HFONT hFont, WORD Redraw)
@@ -51,7 +51,7 @@ HEADER_SetFont (HEADER_INFO *infoPtr, HFONT hFont, WORD Redraw)
     infoPtr->bRectsValid = FALSE;
 
     if (Redraw) {
-        InvalidateRect(infoPtr->hwndSelf, NULL, FALSE);
+        InvalidateRect(infoPtr->hwndSelf, ((void*)0), FALSE);
     }
 
     return 0;

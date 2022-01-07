@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {TYPE_2__* pool; int /*<<< orphan*/ * waiter; int /*<<< orphan*/  magic; } ;
-typedef  TYPE_1__ VCOS_MSG_T ;
-struct TYPE_8__ {int /*<<< orphan*/  waiter; int /*<<< orphan*/  blockpool; int /*<<< orphan*/  sem; } ;
-typedef  TYPE_2__ VCOS_MSGQ_POOL_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAGIC ; 
- int /*<<< orphan*/  vcos_assert (TYPE_1__*) ; 
- TYPE_1__* vcos_blockpool_calloc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_semaphore_wait (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {TYPE_2__* pool; int * waiter; int magic; } ;
+typedef TYPE_1__ VCOS_MSG_T ;
+struct TYPE_8__ {int waiter; int blockpool; int sem; } ;
+typedef TYPE_2__ VCOS_MSGQ_POOL_T ;
+
+
+ int MAGIC ;
+ int vcos_assert (TYPE_1__*) ;
+ TYPE_1__* vcos_blockpool_calloc (int *) ;
+ int vcos_semaphore_wait (int *) ;
 
 VCOS_MSG_T *vcos_msgq_pool_wait(VCOS_MSGQ_POOL_T *pool)
 {

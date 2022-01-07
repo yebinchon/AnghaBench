@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_6__ {int /*<<< orphan*/  base_revision; } ;
-typedef  TYPE_1__ svn_client__mtcc_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  mtcc_add_delete (char const*,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mtcc_get_origin (char const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client__mtcc_add_copy (char const*,int /*<<< orphan*/ ,char const*,TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int svn_error_t ;
+struct TYPE_6__ {int base_revision; } ;
+typedef TYPE_1__ svn_client__mtcc_t ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int mtcc_add_delete (char const*,int ,TYPE_1__*,int *) ;
+ int mtcc_get_origin (char const**,int *,char const*,int ,TYPE_1__*,int *,int *) ;
+ int svn_client__mtcc_add_copy (char const*,int ,char const*,TYPE_1__*,int *) ;
 
 svn_error_t *
 svn_client__mtcc_add_move(const char *src_relpath,

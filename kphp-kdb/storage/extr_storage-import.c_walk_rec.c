@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct stat {scalar_t__ st_mtime; int /*<<< orphan*/  st_mode; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct stat {scalar_t__ st_mtime; int st_mode; } ;
 struct dirent {char* d_name; } ;
 struct TYPE_3__ {scalar_t__ n; scalar_t__ mtime; char** prefix; } ;
-typedef  TYPE_1__ hash_entry_t ;
-typedef  int /*<<< orphan*/  DIR ;
+typedef TYPE_1__ hash_entry_t ;
+typedef int DIR ;
 
-/* Variables and functions */
- scalar_t__ MAX_DIRS ; 
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- scalar_t__ S_ISREG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  check_depth0 (int) ; 
- int /*<<< orphan*/  check_depth1 (int) ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- scalar_t__ errno ; 
- TYPE_1__* get_str_f (scalar_t__*,int) ; 
- int /*<<< orphan*/  kprintf (char*,scalar_t__*,...) ; 
- int /*<<< orphan*/ * opendir (scalar_t__*) ; 
- struct dirent* readdir (int /*<<< orphan*/ *) ; 
- int split_modulo ; 
- int split_rem ; 
- int /*<<< orphan*/  sprintf (scalar_t__*,char*,char*) ; 
- scalar_t__ stat (scalar_t__*,struct stat*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int strlen (scalar_t__*) ; 
- int strtol (char*,int /*<<< orphan*/ *,int) ; 
- scalar_t__* walk_path ; 
- int walk_prefix_len ; 
+
+ scalar_t__ MAX_DIRS ;
+ scalar_t__ S_ISDIR (int ) ;
+ scalar_t__ S_ISREG (int ) ;
+ int assert (int) ;
+ int check_depth0 (int) ;
+ int check_depth1 (int) ;
+ int closedir (int *) ;
+ scalar_t__ errno ;
+ TYPE_1__* get_str_f (scalar_t__*,int) ;
+ int kprintf (char*,scalar_t__*,...) ;
+ int * opendir (scalar_t__*) ;
+ struct dirent* readdir (int *) ;
+ int split_modulo ;
+ int split_rem ;
+ int sprintf (scalar_t__*,char*,char*) ;
+ scalar_t__ stat (scalar_t__*,struct stat*) ;
+ int strcmp (char*,char*) ;
+ int strlen (scalar_t__*) ;
+ int strtol (char*,int *,int) ;
+ scalar_t__* walk_path ;
+ int walk_prefix_len ;
 
 __attribute__((used)) static int walk_rec (DIR *D[5], int D_ID[5], int depth, char *base_path) {
   const int l = strlen (walk_path);
   D[depth] = opendir (walk_path);
-  if (D[depth] == NULL) {
+  if (D[depth] == ((void*)0)) {
     kprintf ("opendir (%s) fail (depth = %d). %m\n", walk_path, depth);
     return -1;
   }
   struct dirent *entry;
-  while ( (entry = readdir (D[depth])) != NULL) {
+  while ( (entry = readdir (D[depth])) != ((void*)0)) {
     if (!strcmp (entry->d_name, ".") || !strcmp (entry->d_name, "..")) {
       continue;
     }
@@ -60,7 +60,7 @@ __attribute__((used)) static int walk_rec (DIR *D[5], int D_ID[5], int depth, ch
     }
     if (S_ISDIR(st.st_mode) && depth < 4) {
       errno = 0;
-      D_ID[depth + 1] = strtol (entry->d_name, NULL, 10);
+      D_ID[depth + 1] = strtol (entry->d_name, ((void*)0), 10);
       if (errno) {
         continue;
       }

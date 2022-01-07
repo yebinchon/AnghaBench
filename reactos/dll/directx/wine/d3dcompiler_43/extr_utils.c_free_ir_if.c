@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hlsl_ir_if {int /*<<< orphan*/  else_instrs; int /*<<< orphan*/  then_instrs; int /*<<< orphan*/  condition; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  d3dcompiler_free (struct hlsl_ir_if*) ; 
- int /*<<< orphan*/  free_instr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_instr_list (int /*<<< orphan*/ ) ; 
+
+
+
+struct hlsl_ir_if {int else_instrs; int then_instrs; int condition; } ;
+
+
+ int d3dcompiler_free (struct hlsl_ir_if*) ;
+ int free_instr (int ) ;
+ int free_instr_list (int ) ;
 
 __attribute__((used)) static void free_ir_if(struct hlsl_ir_if *if_node)
 {

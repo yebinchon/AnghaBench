@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  PutByteContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int const AV_RB16 (int const*) ; 
- int bytestream2_get_bytes_left_p (int /*<<< orphan*/ *) ; 
- void bytestream2_put_be16 (int /*<<< orphan*/ *,unsigned int) ; 
- void bytestream2_put_byte (int /*<<< orphan*/ *,unsigned int) ; 
- int bytestream2_tell_p (int /*<<< orphan*/ *) ; 
- int ff_rle_count_pixels (int const*,int,int,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int PutByteContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int const AV_RB16 (int const*) ;
+ int bytestream2_get_bytes_left_p (int *) ;
+ void bytestream2_put_be16 (int *,unsigned int) ;
+ void bytestream2_put_byte (int *,unsigned int) ;
+ int bytestream2_tell_p (int *) ;
+ int ff_rle_count_pixels (int const*,int,int,int) ;
 
 __attribute__((used)) static int sgi_rle_encode(PutByteContext *pbc, const uint8_t *src,
                           int w, int bpp)
@@ -34,7 +34,7 @@ __attribute__((used)) static int sgi_rle_encode(PutByteContext *pbc, const uint8
         bytestream2_put = bytestream2_put_be16;
 
     for (x = 0; x < w; x += count) {
-        /* see if we can encode the next set of pixels with RLE */
+
         count = ff_rle_count_pixels(src, w - x, bpp, 1);
         if (count > 1) {
             if (bytestream2_get_bytes_left_p(pbc) < bpp * 2)
@@ -45,7 +45,7 @@ __attribute__((used)) static int sgi_rle_encode(PutByteContext *pbc, const uint8
             bytestream2_put(pbc, val);
         } else {
             int i;
-            /* fall back on uncompressed */
+
             count = ff_rle_count_pixels(src, w - x, bpp, 0);
             if (bytestream2_get_bytes_left_p(pbc) < bpp * (count + 1))
                 return AVERROR_INVALIDDATA;

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_7__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UCHAR ;
+
+
+typedef struct TYPE_10__ TYPE_7__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef size_t UCHAR ;
 struct TYPE_10__ {scalar_t__ inUse; } ;
-struct TYPE_9__ {size_t sessionsLen; int /*<<< orphan*/  resetting; int /*<<< orphan*/  cs; TYPE_7__* sessions; int /*<<< orphan*/  cmdQueue; } ;
-struct TYPE_8__ {scalar_t__* ncb_callname; int /*<<< orphan*/  ncb_lsn; } ;
-typedef  TYPE_1__* PNCB ;
-typedef  TYPE_2__ NetBIOSAdapter ;
+struct TYPE_9__ {size_t sessionsLen; int resetting; int cs; TYPE_7__* sessions; int cmdQueue; } ;
+struct TYPE_8__ {scalar_t__* ncb_callname; int ncb_lsn; } ;
+typedef TYPE_1__* PNCB ;
+typedef TYPE_2__ NetBIOSAdapter ;
 
-/* Variables and functions */
- size_t DEFAULT_NUM_SESSIONS ; 
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InterlockedDecrement (int /*<<< orphan*/ *) ; 
- int InterlockedIncrement (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NBCmdQueueCancelAll (int /*<<< orphan*/ ) ; 
- size_t NRC_BRIDGE ; 
- size_t NRC_GOODRET ; 
- size_t NRC_INVADDRESS ; 
- size_t NRC_TOOMANY ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  nbInternalHangup (TYPE_2__*,TYPE_7__*) ; 
- size_t nbResizeAdapter (TYPE_2__*,size_t) ; 
+
+ size_t DEFAULT_NUM_SESSIONS ;
+ int EnterCriticalSection (int *) ;
+ int InterlockedDecrement (int *) ;
+ int InterlockedIncrement (int *) ;
+ int LeaveCriticalSection (int *) ;
+ int NBCmdQueueCancelAll (int ) ;
+ size_t NRC_BRIDGE ;
+ size_t NRC_GOODRET ;
+ size_t NRC_INVADDRESS ;
+ size_t NRC_TOOMANY ;
+ int TRACE (char*,...) ;
+ int nbInternalHangup (TYPE_2__*,TYPE_7__*) ;
+ size_t nbResizeAdapter (TYPE_2__*,size_t) ;
 
 __attribute__((used)) static UCHAR nbReset(NetBIOSAdapter *adapter, PNCB ncb)
 {

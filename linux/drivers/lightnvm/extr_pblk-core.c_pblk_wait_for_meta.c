@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pblk {int /*<<< orphan*/  inflight_io; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atomic_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  schedule () ; 
+
+
+
+struct pblk {int inflight_io; } ;
+
+
+ int atomic_read (int *) ;
+ int schedule () ;
 
 __attribute__((used)) static void pblk_wait_for_meta(struct pblk *pblk)
 {
-	do {
-		if (!atomic_read(&pblk->inflight_io))
-			break;
+ do {
+  if (!atomic_read(&pblk->inflight_io))
+   break;
 
-		schedule();
-	} while (1);
+  schedule();
+ } while (1);
 }

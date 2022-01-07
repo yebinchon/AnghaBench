@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  nvpair_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ERRNO_RESTORE () ; 
- int /*<<< orphan*/  ERRNO_SAVE () ; 
- int /*<<< orphan*/  ERRNO_SET (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NV_TYPE_STRING ; 
- int /*<<< orphan*/  nv_free (char*) ; 
- int /*<<< orphan*/ * nvpair_allocv (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ strlen (char*) ; 
+
+
+
+typedef int uint64_t ;
+typedef int nvpair_t ;
+
+
+ int EINVAL ;
+ int ERRNO_RESTORE () ;
+ int ERRNO_SAVE () ;
+ int ERRNO_SET (int ) ;
+ int NV_TYPE_STRING ;
+ int nv_free (char*) ;
+ int * nvpair_allocv (char const*,int ,int ,scalar_t__,int ) ;
+ scalar_t__ strlen (char*) ;
 
 nvpair_t *
 nvpair_move_string(const char *name, char *value)
 {
-	nvpair_t *nvp;
+ nvpair_t *nvp;
 
-	if (value == NULL) {
-		ERRNO_SET(EINVAL);
-		return (NULL);
-	}
+ if (value == ((void*)0)) {
+  ERRNO_SET(EINVAL);
+  return (((void*)0));
+ }
 
-	nvp = nvpair_allocv(name, NV_TYPE_STRING, (uint64_t)(uintptr_t)value,
-	    strlen(value) + 1, 0);
-	if (nvp == NULL) {
-		ERRNO_SAVE();
-		nv_free(value);
-		ERRNO_RESTORE();
-	}
+ nvp = nvpair_allocv(name, NV_TYPE_STRING, (uint64_t)(uintptr_t)value,
+     strlen(value) + 1, 0);
+ if (nvp == ((void*)0)) {
+  ERRNO_SAVE();
+  nv_free(value);
+  ERRNO_RESTORE();
+ }
 
-	return (nvp);
+ return (nvp);
 }

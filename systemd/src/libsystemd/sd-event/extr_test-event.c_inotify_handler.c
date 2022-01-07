@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct inotify_event {int mask; char const* name; } ;
 struct inotify_context {unsigned int create_overflow; unsigned int n_create_events; unsigned int* create_called; } ;
-typedef  int /*<<< orphan*/  sd_event_source ;
+typedef int sd_event_source ;
 
-/* Variables and functions */
- int IN_CREATE ; 
- int IN_DELETE ; 
- int IN_Q_OVERFLOW ; 
- int /*<<< orphan*/  assert_not_reached (char*) ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/  log_debug (char*,char const*,char const*) ; 
- int /*<<< orphan*/  log_info (char*,char const*,...) ; 
- int /*<<< orphan*/  maybe_exit (int /*<<< orphan*/ *,struct inotify_context*) ; 
- scalar_t__ safe_atou (char const*,unsigned int*) ; 
- scalar_t__ sd_event_source_get_description (int /*<<< orphan*/ *,char const**) ; 
- int streq (char const*,char*) ; 
+
+ int IN_CREATE ;
+ int IN_DELETE ;
+ int IN_Q_OVERFLOW ;
+ int assert_not_reached (char*) ;
+ int assert_se (int) ;
+ int log_debug (char*,char const*,char const*) ;
+ int log_info (char*,char const*,...) ;
+ int maybe_exit (int *,struct inotify_context*) ;
+ scalar_t__ safe_atou (char const*,unsigned int*) ;
+ scalar_t__ sd_event_source_get_description (int *,char const**) ;
+ int streq (char const*,char*) ;
 
 __attribute__((used)) static int inotify_handler(sd_event_source *s, const struct inotify_event *ev, void *userdata) {
         struct inotify_context *c = userdata;

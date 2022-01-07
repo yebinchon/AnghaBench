@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct forth_stack {int top; } ;
 struct TYPE_3__ {int x; int y; int width; int height; } ;
-typedef  TYPE_1__ RectangleInfo ;
-typedef  int /*<<< orphan*/  Image ;
+typedef TYPE_1__ RectangleInfo ;
+typedef int Image ;
 
-/* Variables and functions */
- void* FORTH_FAIL ; 
- int /*<<< orphan*/  NEXT ; 
- int /*<<< orphan*/  free_stack (struct forth_stack*,int,int) ; 
- int /*<<< orphan*/ * gm_crop_image (struct forth_stack*,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  pop_image (struct forth_stack*,int /*<<< orphan*/ **,char*) ; 
- int /*<<< orphan*/  pop_int (struct forth_stack*,int*,char*) ; 
- int /*<<< orphan*/  push_image (struct forth_stack*,int /*<<< orphan*/ *) ; 
+
+ void* FORTH_FAIL ;
+ int NEXT ;
+ int free_stack (struct forth_stack*,int,int) ;
+ int * gm_crop_image (struct forth_stack*,int *,TYPE_1__*) ;
+ int pop_image (struct forth_stack*,int **,char*) ;
+ int pop_int (struct forth_stack*,int*,char*) ;
+ int push_image (struct forth_stack*,int *) ;
 
 __attribute__((used)) static void *crop_image (void **IP, struct forth_stack *st) {
   int old_stack_top = st->top;
@@ -60,7 +60,7 @@ __attribute__((used)) static void *crop_image (void **IP, struct forth_stack *st
   rect.width = width;
   rect.height = height;
   Image *r = gm_crop_image (st, image, &rect);
-  if (r == NULL) {
+  if (r == ((void*)0)) {
     st->top = old_stack_top;
     return FORTH_FAIL;
   }

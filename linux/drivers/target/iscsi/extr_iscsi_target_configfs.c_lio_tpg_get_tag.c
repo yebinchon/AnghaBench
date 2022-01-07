@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u16 ;
 struct se_portal_group {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  tpgt; } ;
+struct TYPE_2__ {int tpgt; } ;
 
-/* Variables and functions */
- TYPE_1__* iscsi_tpg (struct se_portal_group*) ; 
+
+ TYPE_1__* iscsi_tpg (struct se_portal_group*) ;
 
 __attribute__((used)) static u16 lio_tpg_get_tag(struct se_portal_group *se_tpg)
 {
-	return iscsi_tpg(se_tpg)->tpgt;
+ return iscsi_tpg(se_tpg)->tpgt;
 }

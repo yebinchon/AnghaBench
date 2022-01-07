@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct page {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  current_memory_agp; } ;
+struct TYPE_2__ {int current_memory_agp; } ;
 
-/* Variables and functions */
- int AGP_PAGE_DESTROY_FREE ; 
- int AGP_PAGE_DESTROY_UNMAP ; 
- int /*<<< orphan*/  __free_page (struct page*) ; 
- TYPE_1__* agp_bridge ; 
- int /*<<< orphan*/  atomic_dec (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  put_page (struct page*) ; 
- int /*<<< orphan*/  unmap_page_from_agp (struct page*) ; 
+
+ int AGP_PAGE_DESTROY_FREE ;
+ int AGP_PAGE_DESTROY_UNMAP ;
+ int __free_page (struct page*) ;
+ TYPE_1__* agp_bridge ;
+ int atomic_dec (int *) ;
+ int put_page (struct page*) ;
+ int unmap_page_from_agp (struct page*) ;
 
 void agp_generic_destroy_page(struct page *page, int flags)
 {
-	if (page == NULL)
-		return;
+ if (page == ((void*)0))
+  return;
 
-	if (flags & AGP_PAGE_DESTROY_UNMAP)
-		unmap_page_from_agp(page);
+ if (flags & AGP_PAGE_DESTROY_UNMAP)
+  unmap_page_from_agp(page);
 
-	if (flags & AGP_PAGE_DESTROY_FREE) {
-		put_page(page);
-		__free_page(page);
-		atomic_dec(&agp_bridge->current_memory_agp);
-	}
+ if (flags & AGP_PAGE_DESTROY_FREE) {
+  put_page(page);
+  __free_page(page);
+  atomic_dec(&agp_bridge->current_memory_agp);
+ }
 }

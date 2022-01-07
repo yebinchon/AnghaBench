@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  opaque_t ;
-typedef  int /*<<< orphan*/  am_node ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STREQ (char*,char*) ; 
- int /*<<< orphan*/  VLOOK_CREATE ; 
- int /*<<< orphan*/  XLOG_ERROR ; 
- int /*<<< orphan*/ * amfs_generic_lookup_child (int /*<<< orphan*/ ,char*,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  amfs_generic_mount_child (int /*<<< orphan*/ *,int*) ; 
- int errno ; 
- int /*<<< orphan*/  plog (int /*<<< orphan*/ ,char*,char*) ; 
+
+
+
+typedef int opaque_t ;
+typedef int am_node ;
+
+
+ int STREQ (char*,char*) ;
+ int VLOOK_CREATE ;
+ int XLOG_ERROR ;
+ int * amfs_generic_lookup_child (int ,char*,int*,int ) ;
+ int amfs_generic_mount_child (int *,int*) ;
+ int errno ;
+ int plog (int ,char*,char*) ;
 
 __attribute__((used)) static int
 create_amfs_union_node(char *dir, opaque_t arg)
@@ -32,7 +32,7 @@ create_amfs_union_node(char *dir, opaque_t arg)
     if (am && error < 0)
       (void)amfs_generic_mount_child(am, &error);
     if (error > 0) {
-      errno = error;		/* XXX */
+      errno = error;
       plog(XLOG_ERROR, "unionfs: could not mount %s: %m", dir);
     }
     return error;

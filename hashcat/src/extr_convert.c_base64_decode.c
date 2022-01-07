@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
 
-/* Variables and functions */
+
+
+
+typedef int u8 ;
+
+
 
 size_t base64_decode (u8 (*f) (const u8), const u8 *in_buf, const size_t in_len, u8 *out_buf)
 {
@@ -36,7 +36,7 @@ size_t base64_decode (u8 (*f) (const u8), const u8 *in_buf, const size_t in_len,
     out_ptr[1] = ((out_val1 << 4) & 0xf0) | ((out_val2 >> 2) & 0x0f);
     out_ptr[2] = ((out_val2 << 6) & 0xc0) | ((out_val3 >> 0) & 0x3f);
 
-    in_ptr  += 4;
+    in_ptr += 4;
     out_ptr += 3;
   }
 

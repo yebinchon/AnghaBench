@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ nbuff; scalar_t__ tbuff; int /*<<< orphan*/ * buff; scalar_t__ nlist; scalar_t__ tlist; int /*<<< orphan*/ * list; } ;
-typedef  TYPE_1__ stringlist_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  disabled_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pintr_disabled ; 
- int /*<<< orphan*/  xfree (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ nbuff; scalar_t__ tbuff; int * buff; scalar_t__ nlist; scalar_t__ tlist; int * list; } ;
+typedef TYPE_1__ stringlist_t ;
+
+
+ int disabled_cleanup (int *) ;
+ int pintr_disabled ;
+ int xfree (int *) ;
 
 __attribute__((used)) static void
 tw_str_free(stringlist_t *sl)
 {
     pintr_disabled++;
     if (sl->list) {
-	xfree(sl->list);
-	sl->list = NULL;
-	sl->tlist = sl->nlist = 0;
+ xfree(sl->list);
+ sl->list = ((void*)0);
+ sl->tlist = sl->nlist = 0;
     }
     if (sl->buff) {
-	xfree(sl->buff);
-	sl->buff = NULL;
-	sl->tbuff = sl->nbuff = 0;
+ xfree(sl->buff);
+ sl->buff = ((void*)0);
+ sl->tbuff = sl->nbuff = 0;
     }
     disabled_cleanup(&pintr_disabled);
 }

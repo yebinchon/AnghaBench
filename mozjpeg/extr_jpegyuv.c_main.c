@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct jpeg_error_mgr {int dummy; } ;
-struct jpeg_decompress_struct {int output_width; int output_height; int output_scanline; int /*<<< orphan*/  do_fancy_upsampling; int /*<<< orphan*/  raw_data_out; int /*<<< orphan*/  err; } ;
-typedef  unsigned char* JSAMPROW ;
-typedef  unsigned char JSAMPLE ;
-typedef  int /*<<< orphan*/  FILE ;
+struct jpeg_decompress_struct {int output_width; int output_height; int output_scanline; int do_fancy_upsampling; int raw_data_out; int err; } ;
+typedef unsigned char* JSAMPROW ;
+typedef unsigned char JSAMPLE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- int fwrite (unsigned char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jpeg_create_decompress (struct jpeg_decompress_struct*) ; 
- int /*<<< orphan*/  jpeg_destroy_decompress (struct jpeg_decompress_struct*) ; 
- int /*<<< orphan*/  jpeg_finish_decompress (struct jpeg_decompress_struct*) ; 
- int /*<<< orphan*/  jpeg_read_header (struct jpeg_decompress_struct*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jpeg_read_raw_data (struct jpeg_decompress_struct*,unsigned char***,int) ; 
- int /*<<< orphan*/  jpeg_start_decompress (struct jpeg_decompress_struct*) ; 
- int /*<<< orphan*/  jpeg_std_error (struct jpeg_error_mgr*) ; 
- int /*<<< orphan*/  jpeg_stdio_src (struct jpeg_decompress_struct*,int /*<<< orphan*/ *) ; 
- unsigned char* malloc (int) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int FALSE ;
+ int TRUE ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int ,char*) ;
+ int free (unsigned char*) ;
+ int fwrite (unsigned char*,int,int,int *) ;
+ int jpeg_create_decompress (struct jpeg_decompress_struct*) ;
+ int jpeg_destroy_decompress (struct jpeg_decompress_struct*) ;
+ int jpeg_finish_decompress (struct jpeg_decompress_struct*) ;
+ int jpeg_read_header (struct jpeg_decompress_struct*,int ) ;
+ int jpeg_read_raw_data (struct jpeg_decompress_struct*,unsigned char***,int) ;
+ int jpeg_start_decompress (struct jpeg_decompress_struct*) ;
+ int jpeg_std_error (struct jpeg_error_mgr*) ;
+ int jpeg_stdio_src (struct jpeg_decompress_struct*,int *) ;
+ unsigned char* malloc (int) ;
+ int stderr ;
 
 int main(int argc, char *argv[]) {
   const char *jpg_path;
@@ -64,7 +64,7 @@ int main(int argc, char *argv[]) {
     return 1;
   }
 
-  /* Will check these for validity when opening via 'fopen'. */
+
   jpg_path = argv[1];
   yuv_path = argv[2];
 

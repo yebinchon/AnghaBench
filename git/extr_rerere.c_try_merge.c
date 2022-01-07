@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct rerere_id {int dummy; } ;
 struct index_state {int dummy; } ;
-struct TYPE_7__ {int /*<<< orphan*/  ptr; int /*<<< orphan*/  member_1; int /*<<< orphan*/ * member_0; } ;
-typedef  TYPE_1__ mmfile_t ;
-typedef  int /*<<< orphan*/  mmbuffer_t ;
+struct TYPE_7__ {int ptr; int member_1; int * member_0; } ;
+typedef TYPE_1__ mmfile_t ;
+typedef int mmbuffer_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int ll_merge (int /*<<< orphan*/ *,char const*,TYPE_1__*,int /*<<< orphan*/ *,TYPE_1__*,char*,TYPE_1__*,char*,struct index_state*,int /*<<< orphan*/ *) ; 
- scalar_t__ read_mmfile (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rerere_path (struct rerere_id const*,char*) ; 
+
+ int free (int ) ;
+ int ll_merge (int *,char const*,TYPE_1__*,int *,TYPE_1__*,char*,TYPE_1__*,char*,struct index_state*,int *) ;
+ scalar_t__ read_mmfile (TYPE_1__*,int ) ;
+ int rerere_path (struct rerere_id const*,char*) ;
 
 __attribute__((used)) static int try_merge(struct index_state *istate,
-		     const struct rerere_id *id, const char *path,
-		     mmfile_t *cur, mmbuffer_t *result)
+       const struct rerere_id *id, const char *path,
+       mmfile_t *cur, mmbuffer_t *result)
 {
-	int ret;
-	mmfile_t base = {NULL, 0}, other = {NULL, 0};
+ int ret;
+ mmfile_t base = {((void*)0), 0}, other = {((void*)0), 0};
 
-	if (read_mmfile(&base, rerere_path(id, "preimage")) ||
-	    read_mmfile(&other, rerere_path(id, "postimage")))
-		ret = 1;
-	else
-		/*
-		 * A three-way merge. Note that this honors user-customizable
-		 * low-level merge driver settings.
-		 */
-		ret = ll_merge(result, path, &base, NULL, cur, "", &other, "",
-			       istate, NULL);
+ if (read_mmfile(&base, rerere_path(id, "preimage")) ||
+     read_mmfile(&other, rerere_path(id, "postimage")))
+  ret = 1;
+ else
 
-	free(base.ptr);
-	free(other.ptr);
 
-	return ret;
+
+
+  ret = ll_merge(result, path, &base, ((void*)0), cur, "", &other, "",
+          istate, ((void*)0));
+
+ free(base.ptr);
+ free(other.ptr);
+
+ return ret;
 }

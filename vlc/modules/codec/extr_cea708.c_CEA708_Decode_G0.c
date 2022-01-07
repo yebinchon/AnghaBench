@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_5__ {TYPE_2__* p_cw; int /*<<< orphan*/  b_text_waiting; int /*<<< orphan*/  input_buffer; } ;
-typedef  TYPE_1__ cea708_t ;
-typedef  int /*<<< orphan*/  cea708_input_buffer_t ;
-struct TYPE_6__ {int /*<<< orphan*/  b_visible; int /*<<< orphan*/  b_defined; } ;
 
-/* Variables and functions */
- int CEA708_STATUS_OK ; 
- int CEA708_STATUS_OUTPUT ; 
- scalar_t__ CEA708_Window_BreaksSpace (TYPE_2__*) ; 
- int /*<<< orphan*/  CEA708_Window_Write (int*,TYPE_2__*) ; 
- int /*<<< orphan*/  POP_COMMAND () ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_5__ {TYPE_2__* p_cw; int b_text_waiting; int input_buffer; } ;
+typedef TYPE_1__ cea708_t ;
+typedef int cea708_input_buffer_t ;
+struct TYPE_6__ {int b_visible; int b_defined; } ;
+
+
+ int CEA708_STATUS_OK ;
+ int CEA708_STATUS_OUTPUT ;
+ scalar_t__ CEA708_Window_BreaksSpace (TYPE_2__*) ;
+ int CEA708_Window_Write (int*,TYPE_2__*) ;
+ int POP_COMMAND () ;
 
 __attribute__((used)) static int CEA708_Decode_G0( uint8_t code, cea708_t *p_cea708 )
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static int CEA708_Decode_G0( uint8_t code, cea708_t *p_cea
 
     uint8_t utf8[4] = {code,0x00,0x00,0x00};
 
-    if(code == 0x7F) // Music note
+    if(code == 0x7F)
     {
         utf8[0] = 0xe2;
         utf8[1] = 0x99;

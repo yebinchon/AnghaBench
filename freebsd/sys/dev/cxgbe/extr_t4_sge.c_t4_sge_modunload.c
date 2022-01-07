@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  counter_u64_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  extfree_refs ; 
- int /*<<< orphan*/  extfree_rels ; 
+ int counter_u64_free (int ) ;
+ int extfree_refs ;
+ int extfree_rels ;
 
 void
 t4_sge_modunload(void)
 {
 
-	counter_u64_free(extfree_refs);
-	counter_u64_free(extfree_rels);
+ counter_u64_free(extfree_refs);
+ counter_u64_free(extfree_rels);
 }

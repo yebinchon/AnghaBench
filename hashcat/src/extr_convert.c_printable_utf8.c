@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t u8 ;
 
-/* Variables and functions */
+
+
+
+typedef size_t u8 ;
+
+
 
 __attribute__((used)) static bool printable_utf8 (const u8 *buf, const size_t len)
 {
-  // there's 9 different code point types for utf8 and ...
+
 
   const int cp_types[256] =
   {
     -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
     -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-     0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
-     0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
-     0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
-     0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
-     0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
-     0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
     -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
     -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
     -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-    -1, -1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
-     1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
-     2,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  4,  5,  5,
-     6,  7,  7,  7,  8, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1
+    -1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+     1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+     2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 5, 5,
+     6, 7, 7, 7, 8, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1
   };
 
-  // ... they can be directly translated into a fixed length sequence of bytes
+
 
   const size_t cp_lens[9] = { 1, 2, 3, 3, 3, 3, 4, 4, 4 };
 
@@ -48,15 +48,15 @@ __attribute__((used)) static bool printable_utf8 (const u8 *buf, const size_t le
 
     const int cp_type = cp_types[c0];
 
-    if (cp_type == -1) return false;
+    if (cp_type == -1) return 0;
 
-    // make sure to not read outside the buffer
+
 
     const size_t cp_len = cp_lens[cp_type];
 
-    if ((pos + cp_len) > len) return false;
+    if ((pos + cp_len) > len) return 0;
 
-    // multibyte from here
+
 
     if (cp_len >= 2)
     {
@@ -66,11 +66,11 @@ __attribute__((used)) static bool printable_utf8 (const u8 *buf, const size_t le
 
       switch (cp_type)
       {
-        case 2:   if ((c1 < 0xa0) || (c1 > 0xbf)) return false; break;
-        case 4:   if ((c1 < 0x80) || (c1 > 0x9f)) return false; break;
-        case 6:   if ((c1 < 0x90) || (c1 > 0xbf)) return false; break;
-        case 8:   if ((c1 < 0x80) || (c1 > 0x8f)) return false; break;
-        default:  if ((c1 < 0x80) || (c1 > 0xbf)) return false; break;
+        case 2: if ((c1 < 0xa0) || (c1 > 0xbf)) return 0; break;
+        case 4: if ((c1 < 0x80) || (c1 > 0x9f)) return 0; break;
+        case 6: if ((c1 < 0x90) || (c1 > 0xbf)) return 0; break;
+        case 8: if ((c1 < 0x80) || (c1 > 0x8f)) return 0; break;
+        default: if ((c1 < 0x80) || (c1 > 0xbf)) return 0; break;
       }
 
       for (size_t j = 2; j < cp_len; j++)
@@ -79,10 +79,10 @@ __attribute__((used)) static bool printable_utf8 (const u8 *buf, const size_t le
 
         const u8 cx = buf[pos];
 
-        if ((cx < 0x80) || (cx > 0xbf)) return false;
+        if ((cx < 0x80) || (cx > 0xbf)) return 0;
       }
     }
   }
 
-  return true;
+  return 1;
 }

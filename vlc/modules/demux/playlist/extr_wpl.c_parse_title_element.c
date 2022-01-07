@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xml_reader_t ;
-struct TYPE_3__ {int /*<<< orphan*/ * p_sys; } ;
-typedef  TYPE_1__ stream_t ;
-typedef  int /*<<< orphan*/  input_item_t ;
 
-/* Variables and functions */
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- scalar_t__ XML_READER_TEXT ; 
- int /*<<< orphan*/  consume_tag (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  input_item_SetTitle (int /*<<< orphan*/ *,char const*) ; 
- scalar_t__ xml_ReaderIsEmptyElement (int /*<<< orphan*/ *) ; 
- scalar_t__ xml_ReaderNextNode (int /*<<< orphan*/ *,char const**) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int xml_reader_t ;
+struct TYPE_3__ {int * p_sys; } ;
+typedef TYPE_1__ stream_t ;
+typedef int input_item_t ;
+
+
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ scalar_t__ XML_READER_TEXT ;
+ int consume_tag (int *,char*) ;
+ int input_item_SetTitle (int *,char const*) ;
+ scalar_t__ xml_ReaderIsEmptyElement (int *) ;
+ scalar_t__ xml_ReaderNextNode (int *,char const**) ;
 
 __attribute__((used)) static int parse_title_element( stream_t* p_demux, input_item_t* p_input )
 {

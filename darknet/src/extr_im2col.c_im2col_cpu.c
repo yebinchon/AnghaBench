@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- float im2col_get_pixel (float*,int,int,int,int,int,int,int) ; 
+ float im2col_get_pixel (float*,int,int,int,int,int,int,int) ;
 
 void im2col_cpu(float* data_im,
-     int channels,  int height,  int width,
-     int ksize,  int stride, int pad, float* data_col) 
+     int channels, int height, int width,
+     int ksize, int stride, int pad, float* data_col)
 {
     int c,h,w;
     int height_col = (height + 2*pad - ksize) / stride + 1;

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mrbc_args {char* prog; char* outfile; int idx; scalar_t__ check_syntax; scalar_t__ initname; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  C_EXT ; 
- int EXIT_FAILURE ; 
- int EXIT_SUCCESS ; 
- int MRB_DUMP_OK ; 
- int /*<<< orphan*/  RITEBIN_EXT ; 
- int /*<<< orphan*/  cleanup (int /*<<< orphan*/ *,struct mrbc_args*) ; 
- int dump_file (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,struct mrbc_args*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ ) ; 
- char* get_outfilename (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  load_file (int /*<<< orphan*/ *,struct mrbc_args*) ; 
- scalar_t__ mrb_nil_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * mrb_open () ; 
- int /*<<< orphan*/  mrb_proc_ptr (int /*<<< orphan*/ ) ; 
- int parse_args (int /*<<< orphan*/ *,int,char**,struct mrbc_args*) ; 
- int /*<<< orphan*/  printf (char*,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/ * stdout ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  usage (char*) ; 
+
+ int C_EXT ;
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int MRB_DUMP_OK ;
+ int RITEBIN_EXT ;
+ int cleanup (int *,struct mrbc_args*) ;
+ int dump_file (int *,int *,char*,int ,struct mrbc_args*) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int fputs (char*,int ) ;
+ char* get_outfilename (int *,char*,int ) ;
+ int load_file (int *,struct mrbc_args*) ;
+ scalar_t__ mrb_nil_p (int ) ;
+ int * mrb_open () ;
+ int mrb_proc_ptr (int ) ;
+ int parse_args (int *,int,char**,struct mrbc_args*) ;
+ int printf (char*,char*,char*) ;
+ int stderr ;
+ int * stdout ;
+ scalar_t__ strcmp (char*,char*) ;
+ int usage (char*) ;
 
 int
 main(int argc, char **argv)
@@ -48,7 +48,7 @@ main(int argc, char **argv)
   FILE *wfp;
   mrb_value load;
 
-  if (mrb == NULL) {
+  if (mrb == ((void*)0)) {
     fputs("Invalid mrb_state, exiting mrbc\n", stderr);
     return EXIT_FAILURE;
   }
@@ -63,7 +63,7 @@ main(int argc, char **argv)
     fprintf(stderr, "%s: no program file given\n", args.prog);
     return EXIT_FAILURE;
   }
-  if (args.outfile == NULL && !args.check_syntax) {
+  if (args.outfile == ((void*)0) && !args.check_syntax) {
     if (n + 1 == argc) {
       args.outfile = get_outfilename(mrb, argv[n], args.initname ? C_EXT : RITEBIN_EXT);
     }
@@ -92,7 +92,7 @@ main(int argc, char **argv)
     if (strcmp("-", args.outfile) == 0) {
       wfp = stdout;
     }
-    else if ((wfp = fopen(args.outfile, "wb")) == NULL) {
+    else if ((wfp = fopen(args.outfile, "wb")) == ((void*)0)) {
       fprintf(stderr, "%s: cannot open output file:(%s)\n", args.prog, args.outfile);
       return EXIT_FAILURE;
     }

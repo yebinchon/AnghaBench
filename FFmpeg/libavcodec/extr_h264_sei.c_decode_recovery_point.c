@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {unsigned int recovery_frame_cnt; } ;
-typedef  TYPE_1__ H264SEIRecoveryPoint ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+typedef TYPE_1__ H264SEIRecoveryPoint ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int MAX_LOG2_MAX_FRAME_NUM ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,unsigned int) ; 
- unsigned int get_ue_golomb_long (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip_bits (int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int MAX_LOG2_MAX_FRAME_NUM ;
+ int av_log (void*,int ,char*,unsigned int) ;
+ unsigned int get_ue_golomb_long (int *) ;
+ int skip_bits (int *,int) ;
 
 __attribute__((used)) static int decode_recovery_point(H264SEIRecoveryPoint *h, GetBitContext *gb, void *logctx)
 {
@@ -33,9 +33,9 @@ __attribute__((used)) static int decode_recovery_point(H264SEIRecoveryPoint *h, 
     }
 
     h->recovery_frame_cnt = recovery_frame_cnt;
-    /* 1b exact_match_flag,
-     * 1b broken_link_flag,
-     * 2b changing_slice_group_idc */
+
+
+
     skip_bits(gb, 4);
 
     return 0;

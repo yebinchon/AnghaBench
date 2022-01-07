@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ state; scalar_t__ inotify_triggered; } ;
-typedef  scalar_t__ PathState ;
-typedef  TYPE_1__ Path ;
+typedef scalar_t__ PathState ;
+typedef TYPE_1__ Path ;
 
-/* Variables and functions */
- scalar_t__ PATH_RUNNING ; 
- scalar_t__ PATH_WAITING ; 
- int /*<<< orphan*/  UNIT (TYPE_1__*) ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  bus_unit_send_pending_change_signal (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  log_unit_debug (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  path_state_to_string (scalar_t__) ; 
- int /*<<< orphan*/  path_unwatch (TYPE_1__*) ; 
- int /*<<< orphan*/ * state_translation_table ; 
- int /*<<< orphan*/  unit_notify (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ PATH_RUNNING ;
+ scalar_t__ PATH_WAITING ;
+ int UNIT (TYPE_1__*) ;
+ int assert (TYPE_1__*) ;
+ int bus_unit_send_pending_change_signal (int ,int) ;
+ int log_unit_debug (int ,char*,int ,int ) ;
+ int path_state_to_string (scalar_t__) ;
+ int path_unwatch (TYPE_1__*) ;
+ int * state_translation_table ;
+ int unit_notify (int ,int ,int ,int ) ;
 
 __attribute__((used)) static void path_set_state(Path *p, PathState state) {
         PathState old_state;
         assert(p);
 
         if (p->state != state)
-                bus_unit_send_pending_change_signal(UNIT(p), false);
+                bus_unit_send_pending_change_signal(UNIT(p), 0);
 
         old_state = p->state;
         p->state = state;

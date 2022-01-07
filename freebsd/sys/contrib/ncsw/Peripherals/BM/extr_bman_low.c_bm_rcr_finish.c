@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-struct bm_rcr {scalar_t__ ci; int /*<<< orphan*/  cursor; int /*<<< orphan*/  busy; } ;
+
+
+
+
+typedef scalar_t__ uint8_t ;
+struct bm_rcr {scalar_t__ ci; int cursor; int busy; } ;
 struct bm_portal {struct bm_rcr rcr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_COND (int) ; 
- int BM_RCR_SIZE ; 
- int /*<<< orphan*/  E_INVALID_STATE ; 
- int /*<<< orphan*/  RCR_CI_CINH ; 
- int /*<<< orphan*/  RCR_PI_CINH ; 
- scalar_t__ RCR_PTR2IDX (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REPORT_ERROR (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  WARNING ; 
- int bm_in (int /*<<< orphan*/ ) ; 
+
+ int ASSERT_COND (int) ;
+ int BM_RCR_SIZE ;
+ int E_INVALID_STATE ;
+ int RCR_CI_CINH ;
+ int RCR_PI_CINH ;
+ scalar_t__ RCR_PTR2IDX (int ) ;
+ int REPORT_ERROR (int ,int ,char*) ;
+ int WARNING ;
+ int bm_in (int ) ;
 
 void bm_rcr_finish(struct bm_portal *portal)
 {

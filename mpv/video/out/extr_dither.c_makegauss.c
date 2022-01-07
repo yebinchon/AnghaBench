@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-struct ctx {unsigned int sizeb; int size; int size2; int gauss_radius; size_t gauss_middle; scalar_t__* gauss; int /*<<< orphan*/  avlfg; } ;
-typedef  size_t index_t ;
 
-/* Variables and functions */
- unsigned int MAX_SIZEB ; 
- double UINT64_MAX ; 
- size_t XY (struct ctx*,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  av_lfg_init (int /*<<< orphan*/ *,int) ; 
- double exp (double) ; 
- double log (double) ; 
- double sqrt (int) ; 
+
+
+
+typedef scalar_t__ uint64_t ;
+struct ctx {unsigned int sizeb; int size; int size2; int gauss_radius; size_t gauss_middle; scalar_t__* gauss; int avlfg; } ;
+typedef size_t index_t ;
+
+
+ unsigned int MAX_SIZEB ;
+ double UINT64_MAX ;
+ size_t XY (struct ctx*,unsigned int,unsigned int) ;
+ int assert (int) ;
+ int av_lfg_init (int *,int) ;
+ double exp (double) ;
+ double log (double) ;
+ double sqrt (int) ;
 
 __attribute__((used)) static void makegauss(struct ctx *k, unsigned int sizeb)
 {

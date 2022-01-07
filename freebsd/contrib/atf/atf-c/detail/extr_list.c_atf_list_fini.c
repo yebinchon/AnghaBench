@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct list_entry {struct list_entry* m_next; } ;
 struct TYPE_3__ {int m_size; scalar_t__ m_begin; } ;
-typedef  TYPE_1__ atf_list_t ;
+typedef TYPE_1__ atf_list_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INV (int) ; 
- int /*<<< orphan*/  delete_entry (struct list_entry*) ; 
+
+ int INV (int) ;
+ int delete_entry (struct list_entry*) ;
 
 void
 atf_list_fini(atf_list_t *l)
@@ -27,7 +27,7 @@ atf_list_fini(atf_list_t *l)
 
     le = (struct list_entry *)l->m_begin;
     freed = 0;
-    while (le != NULL) {
+    while (le != ((void*)0)) {
         struct list_entry *lenext;
 
         lenext = le->m_next;

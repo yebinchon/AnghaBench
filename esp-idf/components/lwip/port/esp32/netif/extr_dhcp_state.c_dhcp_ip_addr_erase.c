@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nvs_handle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DHCP_NAMESPACE ; 
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  NVS_READWRITE ; 
- scalar_t__ VALID_NETIF_ID (void*) ; 
- int /*<<< orphan*/  esp_netif_get_ifkey (void*) ; 
- int /*<<< orphan*/  nvs_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nvs_commit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nvs_erase_key (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ nvs_open (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int nvs_handle_t ;
+
+
+ int DHCP_NAMESPACE ;
+ scalar_t__ ESP_OK ;
+ int NVS_READWRITE ;
+ scalar_t__ VALID_NETIF_ID (void*) ;
+ int esp_netif_get_ifkey (void*) ;
+ int nvs_close (int ) ;
+ int nvs_commit (int ) ;
+ int nvs_erase_key (int ,int ) ;
+ scalar_t__ nvs_open (int ,int ,int *) ;
 
 void dhcp_ip_addr_erase(void *esp_netif)
 {

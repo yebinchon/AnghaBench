@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct xfs_mount {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  xfs_alert_ratelimited (struct xfs_mount*,char*) ; 
+
+ int xfs_alert_ratelimited (struct xfs_mount*,char*) ;
 
 void
 xrep_failure(
-	struct xfs_mount	*mp)
+ struct xfs_mount *mp)
 {
-	xfs_alert_ratelimited(mp,
+ xfs_alert_ratelimited(mp,
 "Corruption not fixed during online repair.  Unmount and run xfs_repair.");
 }

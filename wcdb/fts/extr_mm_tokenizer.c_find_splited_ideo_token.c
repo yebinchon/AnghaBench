@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int ideo_state; int ideo_start; int ideo_end; int /*<<< orphan*/ * in_buffer; } ;
-typedef  TYPE_1__ mm_cursor_t ;
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  UChar32 ;
 
-/* Variables and functions */
- scalar_t__ U16_IS_LEAD (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int ideo_state; int ideo_start; int ideo_end; int * in_buffer; } ;
+typedef TYPE_1__ mm_cursor_t ;
+typedef int int32_t ;
+typedef int UChar32 ;
+
+
+ scalar_t__ U16_IS_LEAD (int ) ;
 
 __attribute__((used)) static int
 find_splited_ideo_token(mm_cursor_t *cur, int32_t *start, int32_t *end)
@@ -33,7 +33,7 @@ find_splited_ideo_token(mm_cursor_t *cur, int32_t *start, int32_t *end)
         return 0;
     }
 
-    // check UTF-16 surrogates, output 2 UChars if it's a lead surrogates, otherwise 1.
+
     s = cur->ideo_start;
     e = s + 1;
     c = cur->in_buffer[s];

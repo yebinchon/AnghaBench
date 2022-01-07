@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_9__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_9__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_11__ {scalar_t__ top; } ;
-typedef  TYPE_1__ lua_State ;
-struct TYPE_12__ {int /*<<< orphan*/  tmptv2; } ;
-typedef  int /*<<< orphan*/  MMS ;
-typedef  int /*<<< orphan*/  CTState ;
-typedef  int /*<<< orphan*/  CDArith ;
+typedef TYPE_1__ lua_State ;
+struct TYPE_12__ {int tmptv2; } ;
+typedef int MMS ;
+typedef int CTState ;
+typedef int CDArith ;
 
-/* Variables and functions */
- TYPE_9__* G (TYPE_1__*) ; 
- scalar_t__ carith_checkarg (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ carith_int64 (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ carith_ptr (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  copyTV (TYPE_1__*,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/ * ctype_cts (TYPE_1__*) ; 
- int lj_carith_meta (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ TYPE_9__* G (TYPE_1__*) ;
+ scalar_t__ carith_checkarg (TYPE_1__*,int *,int *) ;
+ scalar_t__ carith_int64 (TYPE_1__*,int *,int *,int ) ;
+ scalar_t__ carith_ptr (TYPE_1__*,int *,int *,int ) ;
+ int copyTV (TYPE_1__*,int *,scalar_t__) ;
+ int * ctype_cts (TYPE_1__*) ;
+ int lj_carith_meta (TYPE_1__*,int *,int *,int ) ;
 
 int lj_carith_op(lua_State *L, MMS mm)
 {
@@ -34,7 +34,7 @@ int lj_carith_op(lua_State *L, MMS mm)
   CDArith ca;
   if (carith_checkarg(L, cts, &ca)) {
     if (carith_int64(L, cts, &ca, mm) || carith_ptr(L, cts, &ca, mm)) {
-      copyTV(L, &G(L)->tmptv2, L->top-1);  /* Remember for trace recorder. */
+      copyTV(L, &G(L)->tmptv2, L->top-1);
       return 1;
     }
   }

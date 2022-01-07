@@ -1,54 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct symbol {int dummy; } ;
 struct collection_list {int dummy; } ;
-typedef  void* bfd_signed_vma ;
+typedef void* bfd_signed_vma ;
 
-/* Variables and functions */
- unsigned long DEPRECATED_REGISTER_RAW_SIZE (unsigned int) ; 
- unsigned int DEPRECATED_SYMBOL_NAME (struct symbol*) ; 
-#define  LOC_ARG 140 
-#define  LOC_BASEREG 139 
-#define  LOC_BASEREG_ARG 138 
-#define  LOC_CONST 137 
-#define  LOC_LOCAL 136 
-#define  LOC_LOCAL_ARG 135 
-#define  LOC_OPTIMIZED_OUT 134 
-#define  LOC_REF_ARG 133 
-#define  LOC_REGISTER 132 
-#define  LOC_REGPARM 131 
-#define  LOC_REGPARM_ADDR 130 
-#define  LOC_STATIC 129 
-#define  LOC_UNRESOLVED 128 
- unsigned int SYMBOL_BASEREG (struct symbol*) ; 
- int SYMBOL_CLASS (struct symbol*) ; 
- int /*<<< orphan*/  SYMBOL_TYPE (struct symbol*) ; 
- void* SYMBOL_VALUE (struct symbol*) ; 
- void* SYMBOL_VALUE_ADDRESS (struct symbol*) ; 
- int /*<<< orphan*/  TYPE_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TYPE_CODE_FLT ; 
- unsigned long TYPE_LENGTH (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  add_memrange (struct collection_list*,unsigned int,void*,unsigned long) ; 
- int /*<<< orphan*/  add_register (struct collection_list*,unsigned int) ; 
- int /*<<< orphan*/  check_typedef (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  info_verbose ; 
- int /*<<< orphan*/  printf_filtered (char*,...) ; 
- int /*<<< orphan*/  printf_vma (void*) ; 
- int /*<<< orphan*/  sprintf_vma (char*,void*) ; 
+
+ unsigned long DEPRECATED_REGISTER_RAW_SIZE (unsigned int) ;
+ unsigned int DEPRECATED_SYMBOL_NAME (struct symbol*) ;
+ unsigned int SYMBOL_BASEREG (struct symbol*) ;
+ int SYMBOL_CLASS (struct symbol*) ;
+ int SYMBOL_TYPE (struct symbol*) ;
+ void* SYMBOL_VALUE (struct symbol*) ;
+ void* SYMBOL_VALUE_ADDRESS (struct symbol*) ;
+ int TYPE_CODE (int ) ;
+ int TYPE_CODE_FLT ;
+ unsigned long TYPE_LENGTH (int ) ;
+ int add_memrange (struct collection_list*,unsigned int,void*,unsigned long) ;
+ int add_register (struct collection_list*,unsigned int) ;
+ int check_typedef (int ) ;
+ int info_verbose ;
+ int printf_filtered (char*,...) ;
+ int printf_vma (void*) ;
+ int sprintf_vma (char*,void*) ;
 
 __attribute__((used)) static void
 collect_symbol (struct collection_list *collect, struct symbol *sym,
-		long frame_regno, long frame_offset)
+  long frame_regno, long frame_offset)
 {
   unsigned long len;
   unsigned int reg;
@@ -59,97 +46,97 @@ collect_symbol (struct collection_list *collect, struct symbol *sym,
     {
     default:
       printf_filtered ("%s: don't know symbol class %d\n",
-		       DEPRECATED_SYMBOL_NAME (sym), SYMBOL_CLASS (sym));
+         DEPRECATED_SYMBOL_NAME (sym), SYMBOL_CLASS (sym));
       break;
-    case LOC_CONST:
+    case 137:
       printf_filtered ("constant %s (value %ld) will not be collected.\n",
-		       DEPRECATED_SYMBOL_NAME (sym), SYMBOL_VALUE (sym));
+         DEPRECATED_SYMBOL_NAME (sym), SYMBOL_VALUE (sym));
       break;
-    case LOC_STATIC:
+    case 129:
       offset = SYMBOL_VALUE_ADDRESS (sym);
       if (info_verbose)
-	{
-	  char tmp[40];
+ {
+   char tmp[40];
 
-	  sprintf_vma (tmp, offset);
-	  printf_filtered ("LOC_STATIC %s: collect %ld bytes at %s.\n",
-			   DEPRECATED_SYMBOL_NAME (sym), len, tmp /* address */);
-	}
-      add_memrange (collect, -1, offset, len);	/* 0 == memory */
+   sprintf_vma (tmp, offset);
+   printf_filtered ("LOC_STATIC %s: collect %ld bytes at %s.\n",
+      DEPRECATED_SYMBOL_NAME (sym), len, tmp );
+ }
+      add_memrange (collect, -1, offset, len);
       break;
-    case LOC_REGISTER:
-    case LOC_REGPARM:
+    case 132:
+    case 131:
       reg = SYMBOL_VALUE (sym);
       if (info_verbose)
-	printf_filtered ("LOC_REG[parm] %s: ", DEPRECATED_SYMBOL_NAME (sym));
+ printf_filtered ("LOC_REG[parm] %s: ", DEPRECATED_SYMBOL_NAME (sym));
       add_register (collect, reg);
-      /* check for doubles stored in two registers */
-      /* FIXME: how about larger types stored in 3 or more regs? */
+
+
       if (TYPE_CODE (SYMBOL_TYPE (sym)) == TYPE_CODE_FLT &&
-	  len > DEPRECATED_REGISTER_RAW_SIZE (reg))
-	add_register (collect, reg + 1);
+   len > DEPRECATED_REGISTER_RAW_SIZE (reg))
+ add_register (collect, reg + 1);
       break;
-    case LOC_REF_ARG:
+    case 133:
       printf_filtered ("Sorry, don't know how to do LOC_REF_ARG yet.\n");
       printf_filtered ("       (will not collect %s)\n",
-		       DEPRECATED_SYMBOL_NAME (sym));
+         DEPRECATED_SYMBOL_NAME (sym));
       break;
-    case LOC_ARG:
+    case 140:
       reg = frame_regno;
       offset = frame_offset + SYMBOL_VALUE (sym);
       if (info_verbose)
-	{
-	  printf_filtered ("LOC_LOCAL %s: Collect %ld bytes at offset ",
-			   DEPRECATED_SYMBOL_NAME (sym), len);
-	  printf_vma (offset);
-	  printf_filtered (" from frame ptr reg %d\n", reg);
-	}
+ {
+   printf_filtered ("LOC_LOCAL %s: Collect %ld bytes at offset ",
+      DEPRECATED_SYMBOL_NAME (sym), len);
+   printf_vma (offset);
+   printf_filtered (" from frame ptr reg %d\n", reg);
+ }
       add_memrange (collect, reg, offset, len);
       break;
-    case LOC_REGPARM_ADDR:
+    case 130:
       reg = SYMBOL_VALUE (sym);
       offset = 0;
       if (info_verbose)
-	{
-	  printf_filtered ("LOC_REGPARM_ADDR %s: Collect %ld bytes at offset ",
-			   DEPRECATED_SYMBOL_NAME (sym), len);
-	  printf_vma (offset);
-	  printf_filtered (" from reg %d\n", reg);
-	}
+ {
+   printf_filtered ("LOC_REGPARM_ADDR %s: Collect %ld bytes at offset ",
+      DEPRECATED_SYMBOL_NAME (sym), len);
+   printf_vma (offset);
+   printf_filtered (" from reg %d\n", reg);
+ }
       add_memrange (collect, reg, offset, len);
       break;
-    case LOC_LOCAL:
-    case LOC_LOCAL_ARG:
+    case 136:
+    case 135:
       reg = frame_regno;
       offset = frame_offset + SYMBOL_VALUE (sym);
       if (info_verbose)
-	{
-	  printf_filtered ("LOC_LOCAL %s: Collect %ld bytes at offset ",
-			   DEPRECATED_SYMBOL_NAME (sym), len);
-	  printf_vma (offset);
-	  printf_filtered (" from frame ptr reg %d\n", reg);
-	}
+ {
+   printf_filtered ("LOC_LOCAL %s: Collect %ld bytes at offset ",
+      DEPRECATED_SYMBOL_NAME (sym), len);
+   printf_vma (offset);
+   printf_filtered (" from frame ptr reg %d\n", reg);
+ }
       add_memrange (collect, reg, offset, len);
       break;
-    case LOC_BASEREG:
-    case LOC_BASEREG_ARG:
+    case 139:
+    case 138:
       reg = SYMBOL_BASEREG (sym);
       offset = SYMBOL_VALUE (sym);
       if (info_verbose)
-	{
-	  printf_filtered ("LOC_BASEREG %s: collect %ld bytes at offset ",
-			   DEPRECATED_SYMBOL_NAME (sym), len);
-	  printf_vma (offset);
-	  printf_filtered (" from basereg %d\n", reg);
-	}
+ {
+   printf_filtered ("LOC_BASEREG %s: collect %ld bytes at offset ",
+      DEPRECATED_SYMBOL_NAME (sym), len);
+   printf_vma (offset);
+   printf_filtered (" from basereg %d\n", reg);
+ }
       add_memrange (collect, reg, offset, len);
       break;
-    case LOC_UNRESOLVED:
+    case 128:
       printf_filtered ("Don't know LOC_UNRESOLVED %s\n", DEPRECATED_SYMBOL_NAME (sym));
       break;
-    case LOC_OPTIMIZED_OUT:
+    case 134:
       printf_filtered ("%s has been optimized out of existence.\n",
-		       DEPRECATED_SYMBOL_NAME (sym));
+         DEPRECATED_SYMBOL_NAME (sym));
       break;
     }
 }

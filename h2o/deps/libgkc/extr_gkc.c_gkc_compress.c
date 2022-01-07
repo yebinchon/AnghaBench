@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
+
+
+
+
+typedef scalar_t__ uint64_t ;
 struct list {struct list* prev; } ;
 struct gkc_tuple {int delta; int g; } ;
 struct gkc_summary {int epsilon; int nr_elems; struct list head; } ;
 
-/* Variables and functions */
- scalar_t__ band (struct gkc_summary*,int) ; 
- int /*<<< orphan*/  gkc_free (struct gkc_summary*,struct gkc_tuple*) ; 
- int /*<<< orphan*/  list_del (struct list*) ; 
- struct gkc_tuple* list_to_tuple (struct list*) ; 
+
+ scalar_t__ band (struct gkc_summary*,int) ;
+ int gkc_free (struct gkc_summary*,struct gkc_tuple*) ;
+ int list_del (struct list*) ;
+ struct gkc_tuple* list_to_tuple (struct list*) ;
 
 __attribute__((used)) static void gkc_compress(struct gkc_summary *s)
 {

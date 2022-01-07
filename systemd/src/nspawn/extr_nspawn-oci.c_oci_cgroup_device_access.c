@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device_data {int r; int w; int m; } ;
-typedef  int /*<<< orphan*/  JsonVariant ;
-typedef  int /*<<< orphan*/  JsonDispatchFlags ;
+typedef int JsonVariant ;
+typedef int JsonDispatchFlags ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  SYNTHETIC_ERRNO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert_se (char const*) ; 
- int json_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char const) ; 
- char* json_variant_string (int /*<<< orphan*/ *) ; 
+
+ int EINVAL ;
+ int SYNTHETIC_ERRNO (int ) ;
+ int assert_se (char const*) ;
+ int json_log (int *,int ,int ,char*,char const) ;
+ char* json_variant_string (int *) ;
 
 __attribute__((used)) static int oci_cgroup_device_access(const char *name, JsonVariant *v, JsonDispatchFlags flags, void *userdata) {
         struct device_data *d = userdata;
-        bool r = false, w = false, m = false;
+        bool r = 0, w = 0, m = 0;
         const char *s;
         size_t i;
 
@@ -31,11 +31,11 @@ __attribute__((used)) static int oci_cgroup_device_access(const char *name, Json
 
         for (i = 0; s[i]; i++)
                 if (s[i] == 'r')
-                        r = true;
+                        r = 1;
                 else if (s[i] == 'w')
-                        w = true;
+                        w = 1;
                 else if (s[i] == 'm')
-                        m = true;
+                        m = 1;
                 else
                         return json_log(v, flags, SYNTHETIC_ERRNO(EINVAL),
                                         "Unknown device access character '%c'.", s[i]);

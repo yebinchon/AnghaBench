@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
-typedef  scalar_t__ u32 ;
-typedef  scalar_t__ ULONG ;
-struct TYPE_5__ {int /*<<< orphan*/  DeviceId; } ;
-struct TYPE_4__ {int /*<<< orphan*/  QuadPart; } ;
-typedef  TYPE_1__ LARGE_INTEGER ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
-typedef  scalar_t__ ARC_STATUS ;
 
-/* Variables and functions */
- scalar_t__ ArcRead (int /*<<< orphan*/ ,void*,scalar_t__,scalar_t__*) ; 
- scalar_t__ ArcSeek (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_2__* BtrFsInfo ; 
- int /*<<< orphan*/  ERR (char*,scalar_t__) ; 
- scalar_t__ ESUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SeekAbsolute ; 
- int /*<<< orphan*/  TRUE ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u64 ;
+typedef scalar_t__ u32 ;
+typedef scalar_t__ ULONG ;
+struct TYPE_5__ {int DeviceId; } ;
+struct TYPE_4__ {int QuadPart; } ;
+typedef TYPE_1__ LARGE_INTEGER ;
+typedef int BOOLEAN ;
+typedef scalar_t__ ARC_STATUS ;
+
+
+ scalar_t__ ArcRead (int ,void*,scalar_t__,scalar_t__*) ;
+ scalar_t__ ArcSeek (int ,TYPE_1__*,int ) ;
+ TYPE_2__* BtrFsInfo ;
+ int ERR (char*,scalar_t__) ;
+ scalar_t__ ESUCCESS ;
+ int FALSE ;
+ int SeekAbsolute ;
+ int TRUE ;
 
 __attribute__((used)) static BOOLEAN disk_read(u64 physical, void *dest, u32 count)
 {

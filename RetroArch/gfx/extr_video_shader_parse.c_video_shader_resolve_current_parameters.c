@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct video_shader_parameter {int /*<<< orphan*/  current; } ;
-struct video_shader {int /*<<< orphan*/  num_parameters; int /*<<< orphan*/  parameters; } ;
-typedef  int /*<<< orphan*/  config_file_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RARCH_WARN (char*,char const*) ; 
- int /*<<< orphan*/  config_get_array (int /*<<< orphan*/ *,char*,char*,size_t) ; 
- int /*<<< orphan*/  config_get_float (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ malloc (size_t) ; 
- char* strtok_r (char*,char*,char**) ; 
- scalar_t__ video_shader_parse_find_parameter (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
+
+
+
+struct video_shader_parameter {int current; } ;
+struct video_shader {int num_parameters; int parameters; } ;
+typedef int config_file_t ;
+
+
+ int RARCH_WARN (char*,char const*) ;
+ int config_get_array (int *,char*,char*,size_t) ;
+ int config_get_float (int *,char const*,int *) ;
+ int free (char*) ;
+ scalar_t__ malloc (size_t) ;
+ char* strtok_r (char*,char*,char**) ;
+ scalar_t__ video_shader_parse_find_parameter (int ,int ,char const*) ;
 
 bool video_shader_resolve_current_parameters(config_file_t *conf,
       struct video_shader *shader)
 {
-   size_t param_size     = 4096 * sizeof(char);
-   const char *id        = NULL;
-   char *parameters      = NULL;
-   char *save            = NULL;
+   size_t param_size = 4096 * sizeof(char);
+   const char *id = ((void*)0);
+   char *parameters = ((void*)0);
+   char *save = ((void*)0);
 
    if (!conf)
-      return false;
+      return 0;
 
-   parameters            = (char*)malloc(param_size);
+   parameters = (char*)malloc(param_size);
 
    if (!parameters)
-      return false;
+      return 0;
 
-   parameters[0]         = '\0';
+   parameters[0] = '\0';
 
-   /* Read in parameters which override the defaults. */
+
    if (!config_get_array(conf, "parameters",
             parameters, param_size))
    {
       free(parameters);
-      return true;
+      return 1;
    }
 
    for (id = strtok_r(parameters, ";", &save); id;
-         id = strtok_r(NULL, ";", &save))
+         id = strtok_r(((void*)0), ";", &save))
    {
       struct video_shader_parameter *parameter =
          (struct video_shader_parameter*)
@@ -69,5 +69,5 @@ bool video_shader_resolve_current_parameters(config_file_t *conf,
    }
 
    free(parameters);
-   return true;
+   return 1;
 }

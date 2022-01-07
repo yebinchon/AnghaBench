@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
 struct TYPE_2__ {int retries; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MELTDOWN ; 
- int /*<<< orphan*/  buf ; 
- TYPE_1__ config ; 
- scalar_t__ flush_reload (scalar_t__) ; 
- scalar_t__ mem ; 
- int /*<<< orphan*/  sched_yield () ; 
- int /*<<< orphan*/  setjmp (int /*<<< orphan*/ ) ; 
+
+ int MELTDOWN ;
+ int buf ;
+ TYPE_1__ config ;
+ scalar_t__ flush_reload (scalar_t__) ;
+ scalar_t__ mem ;
+ int sched_yield () ;
+ int setjmp (int ) ;
 
 int __attribute__((optimize("-Os"), noinline)) libkdump_read_signal_handler() {
   size_t retries = config.retries + 1;

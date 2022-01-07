@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_PURPOSE ;
-typedef  int /*<<< orphan*/  X509 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KU_TLS ; 
- int /*<<< orphan*/  NS_SSL_SERVER ; 
- int XKU_SGC ; 
- int XKU_SSL_SERVER ; 
- int check_ssl_ca (int /*<<< orphan*/  const*) ; 
- scalar_t__ ku_reject (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- scalar_t__ ns_reject (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- scalar_t__ xku_reject (int /*<<< orphan*/  const*,int) ; 
+
+
+
+typedef int X509_PURPOSE ;
+typedef int X509 ;
+
+
+ int KU_TLS ;
+ int NS_SSL_SERVER ;
+ int XKU_SGC ;
+ int XKU_SSL_SERVER ;
+ int check_ssl_ca (int const*) ;
+ scalar_t__ ku_reject (int const*,int ) ;
+ scalar_t__ ns_reject (int const*,int ) ;
+ scalar_t__ xku_reject (int const*,int) ;
 
 __attribute__((used)) static int check_purpose_ssl_server(const X509_PURPOSE *xp, const X509 *x,
                                     int ca)

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fdt32_t ;
 
-/* Variables and functions */
- int DTOVERRIDE_BOOLEAN ; 
- int DTOVERRIDE_END ; 
- int DTOVERRIDE_INTEGER ; 
- int DTOVERRIDE_OVERLAY ; 
- int DTOVERRIDE_STRING ; 
- int FDT_ERR_BADPHANDLE ; 
- int FDT_ERR_BADSTRUCTURE ; 
- int atoi (char const*) ; 
- int /*<<< orphan*/  dtoverlay_debug (char*,char const*,int,char const*,...) ; 
- int /*<<< orphan*/  dtoverlay_error (char*,char const*) ; 
- int dtoverlay_read_u32 (char const*,int /*<<< orphan*/ ) ; 
- char* memchr (char const*,int /*<<< orphan*/ ,int) ; 
- char const* strchr (char const*,char) ; 
- int strcspn (char const*,char const*) ; 
+
+
+
+typedef int fdt32_t ;
+
+
+ int DTOVERRIDE_BOOLEAN ;
+ int DTOVERRIDE_END ;
+ int DTOVERRIDE_INTEGER ;
+ int DTOVERRIDE_OVERLAY ;
+ int DTOVERRIDE_STRING ;
+ int FDT_ERR_BADPHANDLE ;
+ int FDT_ERR_BADSTRUCTURE ;
+ int atoi (char const*) ;
+ int dtoverlay_debug (char*,char const*,int,char const*,...) ;
+ int dtoverlay_error (char*,char const*) ;
+ int dtoverlay_read_u32 (char const*,int ) ;
+ char* memchr (char const*,int ,int) ;
+ char const* strchr (char const*,char) ;
+ int strcspn (char const*,char const*) ;
 
 __attribute__((used)) static int dtoverlay_extract_override(const char *override_name,
                                       int *phandle_ptr,
                                       const char **data_ptr, int *len_ptr,
                                       const char **namep, int *namelenp,
-				      int *offp, int *sizep)
+          int *offp, int *sizep)
 {
    const char *data;
    const char *prop_name, *override_end;
@@ -45,13 +45,13 @@ __attribute__((used)) static int dtoverlay_extract_override(const char *override
    if (len <= 0)
    {
       if (len < 0)
-	 return len;
+  return len;
       *phandle_ptr = 0;
-      *namep = NULL;
+      *namep = ((void*)0);
       return DTOVERRIDE_END;
    }
 
-   // Check for space for a phandle, a terminating NUL and at least one char
+
    if (len < (sizeof(fdt32_t) + 1 + 1))
    {
       dtoverlay_error("  override %s: data is truncated or mangled",
@@ -83,7 +83,7 @@ __attribute__((used)) static int dtoverlay_extract_override(const char *override
    {
       if (phandle < 0)
          return -FDT_ERR_BADPHANDLE;
-      /* This is an "overlay" override, signalled using <0> as the phandle. */
+
       *namep = prop_name;
       *namelenp = override_len;
       return DTOVERRIDE_OVERLAY;
@@ -95,11 +95,11 @@ __attribute__((used)) static int dtoverlay_extract_override(const char *override
    *namelenp = name_len;
    if (name_len < override_len)
    {
-      /* There is a separator specified */
+
       char sep = prop_name[name_len];
       if (sep == '?')
       {
-         /* The target is a boolean parameter (present->true, absent->false) */
+
          *offp = 0;
          *sizep = 0;
          type = DTOVERRIDE_BOOLEAN;
@@ -108,7 +108,7 @@ __attribute__((used)) static int dtoverlay_extract_override(const char *override
       }
       else
       {
-         /* The target is a cell/integer */
+
          *offp = atoi(prop_name + name_len + 1);
          *sizep = 1 << (strchr(offset_seps, sep) - offset_seps);
          type = DTOVERRIDE_INTEGER;

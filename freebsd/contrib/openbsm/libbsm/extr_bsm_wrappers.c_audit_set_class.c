@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  au_evclass_map_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  A_SETCLASS ; 
- int /*<<< orphan*/  EINVAL ; 
- int auditon (int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  errno ; 
+
+
+
+typedef int au_evclass_map_t ;
+
+
+ int A_SETCLASS ;
+ int EINVAL ;
+ int auditon (int ,int *,size_t) ;
+ int errno ;
 
 int
-audit_set_class(au_evclass_map_t *evc_map, size_t sz) 
+audit_set_class(au_evclass_map_t *evc_map, size_t sz)
 {
 
-	if (sizeof(*evc_map) != sz) {
-		errno = EINVAL;
-		return (-1);
-	}
+ if (sizeof(*evc_map) != sz) {
+  errno = EINVAL;
+  return (-1);
+ }
 
-	return (auditon(A_SETCLASS, evc_map, sz));
+ return (auditon(A_SETCLASS, evc_map, sz));
 }

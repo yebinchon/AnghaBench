@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct i915_perf_stream {int /*<<< orphan*/  poll_wq; } ;
+
+
+
+
+struct i915_perf_stream {int poll_wq; } ;
 struct file {int dummy; } ;
-typedef  int /*<<< orphan*/  poll_table ;
+typedef int poll_table ;
 
-/* Variables and functions */
- int /*<<< orphan*/  poll_wait (struct file*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int poll_wait (struct file*,int *,int *) ;
 
 __attribute__((used)) static void i915_oa_poll_wait(struct i915_perf_stream *stream,
-			      struct file *file,
-			      poll_table *wait)
+         struct file *file,
+         poll_table *wait)
 {
-	poll_wait(file, &stream->poll_wq, wait);
+ poll_wait(file, &stream->poll_wq, wait);
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  int32_t ;
 
-/* Variables and functions */
- scalar_t__ ERI_PERFMON_INTPC ; 
- int ERI_PERFMON_MAX ; 
- scalar_t__ ERI_PERFMON_PGM ; 
- scalar_t__ ERI_PERFMON_PM0 ; 
- scalar_t__ ERI_PERFMON_PMCTRL0 ; 
- scalar_t__ ERI_PERFMON_PMSTAT0 ; 
- int eri_read (scalar_t__) ; 
- int /*<<< orphan*/  printf (char*,int,int,...) ; 
+
+
+
+typedef int uint32_t ;
+typedef int int32_t ;
+
+
+ scalar_t__ ERI_PERFMON_INTPC ;
+ int ERI_PERFMON_MAX ;
+ scalar_t__ ERI_PERFMON_PGM ;
+ scalar_t__ ERI_PERFMON_PM0 ;
+ scalar_t__ ERI_PERFMON_PMCTRL0 ;
+ scalar_t__ ERI_PERFMON_PMSTAT0 ;
+ int eri_read (scalar_t__) ;
+ int printf (char*,int,int,...) ;
 
 void xtensa_perfmon_dump(void)
 {

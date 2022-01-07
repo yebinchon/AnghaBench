@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct item {int dummy; } ;
-struct discovery_sys {int /*<<< orphan*/  items; } ;
+struct discovery_sys {int items; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  items_release (struct discovery_sys*,struct item*) ; 
- int /*<<< orphan*/  vlc_array_clear (int /*<<< orphan*/ *) ; 
- size_t vlc_array_count (int /*<<< orphan*/ *) ; 
- struct item* vlc_array_item_at_index (int /*<<< orphan*/ *,size_t) ; 
+
+ int items_release (struct discovery_sys*,struct item*) ;
+ int vlc_array_clear (int *) ;
+ size_t vlc_array_count (int *) ;
+ struct item* vlc_array_item_at_index (int *,size_t) ;
 
 __attribute__((used)) static void
 items_clear( struct discovery_sys *p_sys )

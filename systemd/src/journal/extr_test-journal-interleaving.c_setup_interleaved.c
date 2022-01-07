@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  JournalFile ;
 
-/* Variables and functions */
- int /*<<< orphan*/  append_number (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * test_open (char*) ; 
+
+
+
+typedef int JournalFile ;
+
+
+ int append_number (int *,int,int *) ;
+ int test_close (int *) ;
+ int * test_open (char*) ;
 
 __attribute__((used)) static void setup_interleaved(void) {
         JournalFile *one, *two;
         one = test_open("one.journal");
         two = test_open("two.journal");
-        append_number(one, 1, NULL);
-        append_number(two, 2, NULL);
-        append_number(one, 3, NULL);
-        append_number(two, 4, NULL);
+        append_number(one, 1, ((void*)0));
+        append_number(two, 2, ((void*)0));
+        append_number(one, 3, ((void*)0));
+        append_number(two, 4, ((void*)0));
         test_close(one);
         test_close(two);
 }

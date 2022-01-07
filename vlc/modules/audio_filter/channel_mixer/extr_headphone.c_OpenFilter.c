@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_9__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-struct TYPE_17__ {int i_physical_channels; int i_chan_mode; int /*<<< orphan*/  i_rate; void* i_format; } ;
+
+
+typedef struct TYPE_17__ TYPE_9__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+struct TYPE_17__ {int i_physical_channels; int i_chan_mode; int i_rate; void* i_format; } ;
 struct TYPE_14__ {TYPE_9__ audio; } ;
 struct TYPE_13__ {TYPE_9__ audio; } ;
-struct TYPE_15__ {TYPE_2__ fmt_out; TYPE_1__ fmt_in; int /*<<< orphan*/  pf_audio_filter; TYPE_4__* p_sys; } ;
-typedef  TYPE_3__ filter_t ;
-struct TYPE_16__ {int /*<<< orphan*/ * p_atomic_operations; scalar_t__ i_nb_atomic_operations; int /*<<< orphan*/ * p_overflow_buffer; scalar_t__ i_overflow_buffer_size; } ;
-typedef  TYPE_4__ filter_sys_t ;
+struct TYPE_15__ {TYPE_2__ fmt_out; TYPE_1__ fmt_in; int pf_audio_filter; TYPE_4__* p_sys; } ;
+typedef TYPE_3__ filter_t ;
+struct TYPE_16__ {int * p_atomic_operations; scalar_t__ i_nb_atomic_operations; int * p_overflow_buffer; scalar_t__ i_overflow_buffer_size; } ;
+typedef TYPE_4__ filter_sys_t ;
 
-/* Variables and functions */
- int AOUT_CHANMODE_DOLBYSTEREO ; 
- scalar_t__ AOUT_CHANS_5_0 ; 
- scalar_t__ AOUT_CHANS_STEREO ; 
- int AOUT_CHAN_LEFT ; 
- int AOUT_CHAN_RIGHT ; 
- int /*<<< orphan*/  Convert ; 
- scalar_t__ Init (int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- void* VLC_CODEC_FL32 ; 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int /*<<< orphan*/  VLC_OBJECT (TYPE_3__*) ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  aout_FormatNbChannels (TYPE_9__*) ; 
- int /*<<< orphan*/  aout_FormatPrepare (TYPE_9__*) ; 
- int /*<<< orphan*/  free (TYPE_4__*) ; 
- TYPE_4__* malloc (int) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_3__*,char*) ; 
- int /*<<< orphan*/  var_InheritBool (TYPE_3__*,char*) ; 
+
+ int AOUT_CHANMODE_DOLBYSTEREO ;
+ scalar_t__ AOUT_CHANS_5_0 ;
+ scalar_t__ AOUT_CHANS_STEREO ;
+ int AOUT_CHAN_LEFT ;
+ int AOUT_CHAN_RIGHT ;
+ int Convert ;
+ scalar_t__ Init (int ,TYPE_4__*,int ,int,int ) ;
+ void* VLC_CODEC_FL32 ;
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_OBJECT (TYPE_3__*) ;
+ int VLC_SUCCESS ;
+ int aout_FormatNbChannels (TYPE_9__*) ;
+ int aout_FormatPrepare (TYPE_9__*) ;
+ int free (TYPE_4__*) ;
+ TYPE_4__* malloc (int) ;
+ int msg_Dbg (TYPE_3__*,char*) ;
+ int var_InheritBool (TYPE_3__*,char*) ;
 
 __attribute__((used)) static int OpenFilter( vlc_object_t *p_this )
 {
     filter_t *p_filter = (filter_t *)p_this;
     filter_sys_t *p_sys;
 
-    /* Activate this filter only with stereo devices */
+
     if( p_filter->fmt_out.audio.i_physical_channels
             != (AOUT_CHAN_LEFT|AOUT_CHAN_RIGHT) )
     {
@@ -57,14 +57,14 @@ __attribute__((used)) static int OpenFilter( vlc_object_t *p_this )
         return VLC_EGENERIC;
     }
 
-    /* Allocate the memory needed to store the module's structure */
+
     p_sys = p_filter->p_sys = malloc( sizeof(filter_sys_t) );
-    if( p_sys == NULL )
+    if( p_sys == ((void*)0) )
         return VLC_ENOMEM;
     p_sys->i_overflow_buffer_size = 0;
-    p_sys->p_overflow_buffer = NULL;
+    p_sys->p_overflow_buffer = ((void*)0);
     p_sys->i_nb_atomic_operations = 0;
-    p_sys->p_atomic_operations = NULL;
+    p_sys->p_atomic_operations = ((void*)0);
 
     if( Init( VLC_OBJECT(p_filter), p_sys
                 , aout_FormatNbChannels ( &(p_filter->fmt_in.audio) )
@@ -75,7 +75,7 @@ __attribute__((used)) static int OpenFilter( vlc_object_t *p_this )
         return VLC_EGENERIC;
     }
 
-    /* Request a specific format if not already compatible */
+
     p_filter->fmt_in.audio.i_format = VLC_CODEC_FL32;
     p_filter->fmt_out.audio.i_format = VLC_CODEC_FL32;
     p_filter->fmt_out.audio.i_rate = p_filter->fmt_in.audio.i_rate;

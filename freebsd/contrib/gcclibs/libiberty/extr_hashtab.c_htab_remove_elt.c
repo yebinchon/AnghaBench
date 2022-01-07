@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* htab_t ;
-struct TYPE_4__ {int /*<<< orphan*/  (* hash_f ) (int /*<<< orphan*/ ) ;} ;
-typedef  int /*<<< orphan*/  PTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  htab_remove_elt_with_hash (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef TYPE_1__* htab_t ;
+struct TYPE_4__ {int (* hash_f ) (int ) ;} ;
+typedef int PTR ;
+
+
+ int htab_remove_elt_with_hash (TYPE_1__*,int ,int ) ;
+ int stub1 (int ) ;
 
 void
 htab_remove_elt (htab_t htab, PTR element)

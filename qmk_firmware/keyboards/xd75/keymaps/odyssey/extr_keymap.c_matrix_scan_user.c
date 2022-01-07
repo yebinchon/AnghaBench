@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LED_TYPE ;
 
-/* Variables and functions */
- int col ; 
- int /*<<< orphan*/ * led ; 
- scalar_t__ rc ; 
- int rgb ; 
- int /*<<< orphan*/  rgblight_set () ; 
- int right ; 
- int /*<<< orphan*/  sethsv (int,int,int,int /*<<< orphan*/ *) ; 
- scalar_t__ speed ; 
- int t ; 
+
+
+
+typedef int LED_TYPE ;
+
+
+ int col ;
+ int * led ;
+ scalar_t__ rc ;
+ int rgb ;
+ int rgblight_set () ;
+ int right ;
+ int sethsv (int,int,int,int *) ;
+ scalar_t__ speed ;
+ int t ;
 
 void matrix_scan_user(void) {
-  if (rgb==0) return; // Do nothing each tick right away if neither of animations enabled
+  if (rgb==0) return;
   if (rgb==1) {
     if (rc == 0) {
       rc = speed;

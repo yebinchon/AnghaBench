@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  up ;
-typedef  int uint8_t ;
-struct TYPE_3__ {int /*<<< orphan*/  pre_vlc; int /*<<< orphan*/  avctx; } ;
-typedef  TYPE_1__ FourXContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACDC_VLC_BITS ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int FFMAX (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ff_free_vlc (int /*<<< orphan*/ *) ; 
- scalar_t__ init_vlc (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int*,int,int,int*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int*,int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int up ;
+typedef int uint8_t ;
+struct TYPE_3__ {int pre_vlc; int avctx; } ;
+typedef TYPE_1__ FourXContext ;
+
+
+ int ACDC_VLC_BITS ;
+ int AV_LOG_ERROR ;
+ int FFMAX (int,int ) ;
+ int av_log (int ,int ,char*) ;
+ int ff_free_vlc (int *) ;
+ scalar_t__ init_vlc (int *,int ,int,int*,int,int,int*,int,int,int ) ;
+ int memset (int*,int,int) ;
 
 __attribute__((used)) static const uint8_t *read_huffman_tables(FourXContext *f,
                                           const uint8_t * const buf,
@@ -42,13 +42,13 @@ __attribute__((used)) static const uint8_t *read_huffman_tables(FourXContext *f,
     memset(up, -1, sizeof(up));
 
     start = *ptr++;
-    end   = *ptr++;
+    end = *ptr++;
     for (;;) {
         int i;
 
         if (ptr_end - ptr < FFMAX(end - start + 1, 0) + 1) {
             av_log(f->avctx, AV_LOG_ERROR, "invalid data in read_huffman_tables\n");
-            return NULL;
+            return ((void*)0);
         }
 
         for (i = start; i <= end; i++)
@@ -62,11 +62,11 @@ __attribute__((used)) static const uint8_t *read_huffman_tables(FourXContext *f,
     frequency[256] = 1;
 
     while ((ptr - buf) & 3)
-        ptr++; // 4byte align
+        ptr++;
 
     if (ptr > ptr_end) {
         av_log(f->avctx, AV_LOG_ERROR, "ptr overflow in read_huffman_tables\n");
-        return NULL;
+        return ((void*)0);
     }
 
     for (j = 257; j < 512; j++) {
@@ -91,11 +91,11 @@ __attribute__((used)) static const uint8_t *read_huffman_tables(FourXContext *f,
         if (min_freq[1] == 256 * 256)
             break;
 
-        frequency[j]           = min_freq[0] + min_freq[1];
-        flag[smallest[0]]      = 0;
-        flag[smallest[1]]      = 1;
-        up[smallest[0]]        =
-        up[smallest[1]]        = j;
+        frequency[j] = min_freq[0] + min_freq[1];
+        flag[smallest[0]] = 0;
+        flag[smallest[1]] = 1;
+        up[smallest[0]] =
+        up[smallest[1]] = j;
         frequency[smallest[0]] = frequency[smallest[1]] = 0;
     }
 
@@ -106,19 +106,19 @@ __attribute__((used)) static const uint8_t *read_huffman_tables(FourXContext *f,
             bits += flag[node] << len;
             len++;
             if (len > 31)
-                // can this happen at all ?
+
                 av_log(f->avctx, AV_LOG_ERROR,
                        "vlc length overflow\n");
         }
 
         bits_tab[j] = bits;
-        len_tab[j]  = len;
+        len_tab[j] = len;
     }
 
     ff_free_vlc(&f->pre_vlc);
     if (init_vlc(&f->pre_vlc, ACDC_VLC_BITS, 257, len_tab, 1, 1,
                  bits_tab, 4, 4, 0))
-        return NULL;
+        return ((void*)0);
 
     return ptr;
 }

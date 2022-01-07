@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int pPg; scalar_t__ pSeg; } ;
-typedef  TYPE_1__ SegmentPtr ;
-typedef  int /*<<< orphan*/  Page ;
+typedef TYPE_1__ SegmentPtr ;
+typedef int Page ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int lsmFsDbPageNext (scalar_t__,int,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  segmentPtrSetPage (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+ int LSM_OK ;
+ int assert (int) ;
+ int lsmFsDbPageNext (scalar_t__,int,int,int **) ;
+ int segmentPtrSetPage (TYPE_1__*,int *) ;
 
 __attribute__((used)) static int segmentPtrNextPage(
-  SegmentPtr *pPtr,              /* Load page into this SegmentPtr object */
-  int eDir                       /* +1 for next(), -1 for prev() */
+  SegmentPtr *pPtr,
+  int eDir
 ){
-  Page *pNext;                   /* New page to load */
-  int rc;                        /* Return code */
+  Page *pNext;
+  int rc;
 
   assert( eDir==1 || eDir==-1 );
   assert( pPtr->pPg );

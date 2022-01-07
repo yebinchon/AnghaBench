@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-struct TYPE_3__ {int* count; unsigned char* buf; int /*<<< orphan*/  state; } ;
-typedef  TYPE_1__ crypto_hash_sha512_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SHA512_Transform (int /*<<< orphan*/ ,unsigned char const*,int*,int*) ; 
- int /*<<< orphan*/  sodium_memzero (void*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct TYPE_3__ {int* count; unsigned char* buf; int state; } ;
+typedef TYPE_1__ crypto_hash_sha512_state ;
+
+
+ int SHA512_Transform (int ,unsigned char const*,int*,int*) ;
+ int sodium_memzero (void*,int) ;
 
 int
 crypto_hash_sha512_update(crypto_hash_sha512_state *state,
                           const unsigned char *in, unsigned long long inlen)
 {
-    uint64_t           tmp64[80 + 8];
-    uint64_t           bitlen[2];
+    uint64_t tmp64[80 + 8];
+    uint64_t bitlen[2];
     unsigned long long i;
     unsigned long long r;
 
@@ -35,11 +35,11 @@ crypto_hash_sha512_update(crypto_hash_sha512_state *state,
 
     bitlen[1] = ((uint64_t) inlen) << 3;
     bitlen[0] = ((uint64_t) inlen) >> 61;
-    /* LCOV_EXCL_START */
+
     if ((state->count[1] += bitlen[1]) < bitlen[1]) {
         state->count[0]++;
     }
-    /* LCOV_EXCL_STOP */
+
     state->count[0] += bitlen[0];
     if (inlen < 128 - r) {
         for (i = 0; i < inlen; i++) {

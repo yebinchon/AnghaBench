@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
+
+
+
+
+typedef int uint64_t ;
 struct ucl_stack {int level; } ;
 
-/* Variables and functions */
- int MSGPACK_CONTAINER_BIT ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+ int MSGPACK_CONTAINER_BIT ;
+ int assert (int ) ;
 
 __attribute__((used)) static bool
 ucl_msgpack_is_container_finished (struct ucl_stack *container)
 {
-	uint64_t level;
+ uint64_t level;
 
-	assert (container != NULL);
+ assert (container != ((void*)0));
 
-	if (container->level & MSGPACK_CONTAINER_BIT) {
-		level = container->level & ~MSGPACK_CONTAINER_BIT;
+ if (container->level & MSGPACK_CONTAINER_BIT) {
+  level = container->level & ~MSGPACK_CONTAINER_BIT;
 
-		if (level == 0) {
-			return true;
-		}
-	}
+  if (level == 0) {
+   return 1;
+  }
+ }
 
-	return false;
+ return 0;
 }

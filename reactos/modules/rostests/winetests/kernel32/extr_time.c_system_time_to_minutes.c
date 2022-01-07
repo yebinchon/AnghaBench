@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int dwLowDateTime; scalar_t__ dwHighDateTime; } ;
-typedef  int /*<<< orphan*/  SYSTEMTIME ;
-typedef  int LONGLONG ;
-typedef  TYPE_1__ FILETIME ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int SYSTEMTIME ;
+typedef int LONGLONG ;
+typedef TYPE_1__ FILETIME ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  SystemTimeToFileTime (int /*<<< orphan*/  const*,TYPE_1__*) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+ int GetLastError () ;
+ int SetLastError (int) ;
+ int SystemTimeToFileTime (int const*,TYPE_1__*) ;
+ int ok (int ,char*,int ) ;
 
 __attribute__((used)) static LONGLONG system_time_to_minutes(const SYSTEMTIME *st)
 {
@@ -34,6 +34,6 @@ __attribute__((used)) static LONGLONG system_time_to_minutes(const SYSTEMTIME *s
     ok(ret, "SystemTimeToFileTime error %u\n", GetLastError());
 
     minutes = ((LONGLONG)ft.dwHighDateTime << 32) + ft.dwLowDateTime;
-    minutes /= (LONGLONG)600000000; /* convert to minutes */
+    minutes /= (LONGLONG)600000000;
     return minutes;
 }

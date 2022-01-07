@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ vlc_tick_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ vlc_tick_t ;
 struct aout_sys_common {scalar_t__ i_render_host_time; scalar_t__ i_first_render_host_time; } ;
 struct TYPE_4__ {scalar_t__ sys; } ;
-typedef  TYPE_1__ audio_output_t ;
+typedef TYPE_1__ audio_output_t ;
 
-/* Variables and functions */
- scalar_t__ HostTimeToTick (scalar_t__) ; 
- scalar_t__ const ca_GetLatencyLocked (TYPE_1__*) ; 
- int /*<<< orphan*/  lock_lock (struct aout_sys_common*) ; 
- int /*<<< orphan*/  lock_unlock (struct aout_sys_common*) ; 
- scalar_t__ const vlc_tick_now () ; 
+
+ scalar_t__ HostTimeToTick (scalar_t__) ;
+ scalar_t__ const ca_GetLatencyLocked (TYPE_1__*) ;
+ int lock_lock (struct aout_sys_common*) ;
+ int lock_unlock (struct aout_sys_common*) ;
+ scalar_t__ const vlc_tick_now () ;
 
 int
 ca_TimeGet(audio_output_t *p_aout, vlc_tick_t *delay)
@@ -32,7 +32,7 @@ ca_TimeGet(audio_output_t *p_aout, vlc_tick_t *delay)
 
     if (p_sys->i_render_host_time == 0 || p_sys->i_first_render_host_time == 0)
     {
-        /* Not yet started (or reached the first_render host time) */
+
         lock_unlock(p_sys);
         return -1;
     }

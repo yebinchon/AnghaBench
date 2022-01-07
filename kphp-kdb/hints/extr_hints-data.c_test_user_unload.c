@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int flags; } ;
-typedef  TYPE_1__ user ;
+typedef TYPE_1__ user ;
 
-/* Variables and functions */
- int USER_LOADED ; 
- TYPE_1__* conv_user_id (int) ; 
- int /*<<< orphan*/  unload_user_metafile (TYPE_1__*) ; 
+
+ int USER_LOADED ;
+ TYPE_1__* conv_user_id (int) ;
+ int unload_user_metafile (TYPE_1__*) ;
 
 void test_user_unload (int user_id) {
   user *u = conv_user_id (user_id);
-  if (u == NULL) {
+  if (u == ((void*)0)) {
     return;
   }
 

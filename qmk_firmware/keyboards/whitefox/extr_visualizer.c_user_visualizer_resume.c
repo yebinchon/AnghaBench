@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  visualizer_state_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  default_startup_animation ; 
- int initial_update ; 
- int /*<<< orphan*/  start_keyframe_animation (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int visualizer_state_t ;
+
+
+ int default_startup_animation ;
+ int initial_update ;
+ int start_keyframe_animation (int *) ;
 
 void user_visualizer_resume(visualizer_state_t* state) {
-    initial_update = true;
+    initial_update = 1;
     start_keyframe_animation(&default_startup_animation);
 }

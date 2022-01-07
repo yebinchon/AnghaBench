@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ptrdiff_t ;
-struct TYPE_5__ {int level; int src_init; TYPE_1__* capture; int /*<<< orphan*/  L; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ ptrdiff_t ;
+struct TYPE_5__ {int level; int src_init; TYPE_1__* capture; int L; } ;
 struct TYPE_4__ {char const* init; scalar_t__ len; } ;
-typedef  TYPE_2__ MatchState ;
+typedef TYPE_2__ MatchState ;
 
-/* Variables and functions */
- scalar_t__ CAP_POSITION ; 
- scalar_t__ CAP_UNFINISHED ; 
- int /*<<< orphan*/  LJ_ERR_STRCAPI ; 
- int /*<<< orphan*/  LJ_ERR_STRCAPU ; 
- int /*<<< orphan*/  lj_err_caller (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  lua_pushlstring (int /*<<< orphan*/ ,char const*,size_t) ; 
+
+ scalar_t__ CAP_POSITION ;
+ scalar_t__ CAP_UNFINISHED ;
+ int LJ_ERR_STRCAPI ;
+ int LJ_ERR_STRCAPU ;
+ int lj_err_caller (int ,int ) ;
+ int lua_pushinteger (int ,char const*) ;
+ int lua_pushlstring (int ,char const*,size_t) ;
 
 __attribute__((used)) static void push_onecapture(MatchState *ms, int i, const char *s, const char *e)
 {
   if (i >= ms->level) {
-    if (i == 0)  /* ms->level == 0, too */
-      lua_pushlstring(ms->L, s, (size_t)(e - s));  /* add whole match */
+    if (i == 0)
+      lua_pushlstring(ms->L, s, (size_t)(e - s));
     else
       lj_err_caller(ms->L, LJ_ERR_STRCAPI);
   } else {

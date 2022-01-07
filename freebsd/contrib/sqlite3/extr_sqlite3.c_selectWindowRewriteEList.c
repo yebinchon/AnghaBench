@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_2__* pRewrite; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * pSub; TYPE_1__ u; int /*<<< orphan*/  xSelectCallback; int /*<<< orphan*/  xExprCallback; int /*<<< orphan*/ * pParse; int /*<<< orphan*/ * pTab; int /*<<< orphan*/ * pSrc; int /*<<< orphan*/ * pWin; } ;
-typedef  TYPE_2__ WindowRewrite ;
-typedef  int /*<<< orphan*/  Window ;
-typedef  TYPE_2__ Walker ;
-typedef  int /*<<< orphan*/  Table ;
-typedef  int /*<<< orphan*/  SrcList ;
-typedef  int /*<<< orphan*/  Parse ;
-typedef  int /*<<< orphan*/  ExprList ;
+struct TYPE_7__ {int * pSub; TYPE_1__ u; int xSelectCallback; int xExprCallback; int * pParse; int * pTab; int * pSrc; int * pWin; } ;
+typedef TYPE_2__ WindowRewrite ;
+typedef int Window ;
+typedef TYPE_2__ Walker ;
+typedef int Table ;
+typedef int SrcList ;
+typedef int Parse ;
+typedef int ExprList ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  selectWindowRewriteExprCb ; 
- int /*<<< orphan*/  selectWindowRewriteSelectCb ; 
- int /*<<< orphan*/  sqlite3WalkExprList (TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+ int assert (int) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int selectWindowRewriteExprCb ;
+ int selectWindowRewriteSelectCb ;
+ int sqlite3WalkExprList (TYPE_2__*,int *) ;
 
 __attribute__((used)) static void selectWindowRewriteEList(
-  Parse *pParse, 
+  Parse *pParse,
   Window *pWin,
   SrcList *pSrc,
-  ExprList *pEList,               /* Rewrite expressions in this list */
+  ExprList *pEList,
   Table *pTab,
-  ExprList **ppSub                /* IN/OUT: Sub-select expression-list */
+  ExprList **ppSub
 ){
   Walker sWalker;
   WindowRewrite sRewrite;

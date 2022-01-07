@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  utime; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int utime; } ;
 struct grub_hfsplus_data {TYPE_1__ volheader; } ;
-typedef  scalar_t__ grub_int32_t ;
-typedef  int /*<<< orphan*/  grub_err_t ;
-typedef  int /*<<< orphan*/  grub_disk_t ;
-typedef  TYPE_2__* grub_device_t ;
-struct TYPE_5__ {int /*<<< orphan*/  disk; } ;
+typedef scalar_t__ grub_int32_t ;
+typedef int grub_err_t ;
+typedef int grub_disk_t ;
+typedef TYPE_2__* grub_device_t ;
+struct TYPE_5__ {int disk; } ;
 
-/* Variables and functions */
- scalar_t__ grub_be_to_cpu32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  grub_dl_ref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  grub_dl_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  grub_errno ; 
- int /*<<< orphan*/  grub_free (struct grub_hfsplus_data*) ; 
- struct grub_hfsplus_data* grub_hfsplus_mount (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  my_mod ; 
+
+ scalar_t__ grub_be_to_cpu32 (int ) ;
+ int grub_dl_ref (int ) ;
+ int grub_dl_unref (int ) ;
+ int grub_errno ;
+ int grub_free (struct grub_hfsplus_data*) ;
+ struct grub_hfsplus_data* grub_hfsplus_mount (int ) ;
+ int my_mod ;
 
 __attribute__((used)) static grub_err_t
 grub_hfsplus_mtime (grub_device_t device, grub_int32_t *tm)

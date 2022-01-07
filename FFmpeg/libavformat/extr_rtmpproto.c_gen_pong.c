@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  URLContext ;
-struct TYPE_5__ {int size; int /*<<< orphan*/ * data; scalar_t__ timestamp; } ;
-typedef  TYPE_1__ RTMPPacket ;
-typedef  int /*<<< orphan*/  RTMPContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_RB32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RTMP_NETWORK_CHANNEL ; 
- int /*<<< orphan*/  RTMP_PT_USER_CONTROL ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  bytestream_put_be16 (int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  bytestream_put_be32 (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int ff_rtmp_packet_create (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int) ; 
- int rtmp_send_packet (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int URLContext ;
+struct TYPE_5__ {int size; int * data; scalar_t__ timestamp; } ;
+typedef TYPE_1__ RTMPPacket ;
+typedef int RTMPContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_RB32 (int *) ;
+ int RTMP_NETWORK_CHANNEL ;
+ int RTMP_PT_USER_CONTROL ;
+ int av_log (int *,int ,char*,int) ;
+ int bytestream_put_be16 (int **,int) ;
+ int bytestream_put_be32 (int **,int ) ;
+ int ff_rtmp_packet_create (TYPE_1__*,int ,int ,scalar_t__,int) ;
+ int rtmp_send_packet (int *,TYPE_1__*,int ) ;
 
 __attribute__((used)) static int gen_pong(URLContext *s, RTMPContext *rt, RTMPPacket *ppkt)
 {
@@ -46,7 +46,7 @@ __attribute__((used)) static int gen_pong(URLContext *s, RTMPContext *rt, RTMPPa
         return ret;
 
     p = pkt.data;
-    bytestream_put_be16(&p, 7); // PingResponse
+    bytestream_put_be16(&p, 7);
     bytestream_put_be32(&p, AV_RB32(ppkt->data+2));
 
     return rtmp_send_packet(rt, &pkt, 0);

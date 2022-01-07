@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
+
+
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int int64_t ;
 struct TYPE_13__ {int nb_streams; TYPE_4__** streams; TYPE_5__* priv_data; } ;
 struct TYPE_12__ {int io_fsize; } ;
-struct TYPE_9__ {int num; int /*<<< orphan*/  den; } ;
+struct TYPE_9__ {int num; int den; } ;
 struct TYPE_11__ {int nb_index_entries; TYPE_3__* codecpar; TYPE_2__ time_base; TYPE_1__* index_entries; } ;
 struct TYPE_10__ {scalar_t__ bit_rate; } ;
-struct TYPE_8__ {int size; int timestamp; int /*<<< orphan*/  pos; } ;
-typedef  TYPE_4__ AVStream ;
-typedef  TYPE_5__ AVIContext ;
-typedef  TYPE_6__ AVFormatContext ;
+struct TYPE_8__ {int size; int timestamp; int pos; } ;
+typedef TYPE_4__ AVStream ;
+typedef TYPE_5__ AVIContext ;
+typedef TYPE_6__ AVFormatContext ;
 
-/* Variables and functions */
- int FFMAX (int,int /*<<< orphan*/ ) ; 
- int av_rescale (int,int /*<<< orphan*/ ,int) ; 
+
+ int FFMAX (int,int ) ;
+ int av_rescale (int,int ,int) ;
 
 __attribute__((used)) static int calculate_bitrate(AVFormatContext *s)
 {
@@ -50,9 +50,9 @@ __attribute__((used)) static int calculate_bitrate(AVFormatContext *s)
         maxpos = FFMAX(maxpos, st->index_entries[j-1].pos);
         lensum += len;
     }
-    if (maxpos < avi->io_fsize*9/10) // index does not cover the whole file
+    if (maxpos < avi->io_fsize*9/10)
         return 0;
-    if (lensum*9/10 > maxpos || lensum < maxpos*9/10) // frame sum and filesize mismatch
+    if (lensum*9/10 > maxpos || lensum < maxpos*9/10)
         return 0;
 
     for (i = 0; i<s->nb_streams; i++) {

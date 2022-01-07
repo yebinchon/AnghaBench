@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  luaL_Buffer ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+typedef int luaL_Buffer ;
 struct TYPE_3__ {scalar_t__ null_ref; } ;
-typedef  TYPE_1__ ENC_DATA ;
+typedef TYPE_1__ ENC_DATA ;
 
-/* Variables and functions */
- scalar_t__ LUA_REFNIL ; 
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
-#define  LUA_TBOOLEAN 132 
-#define  LUA_TLIGHTUSERDATA 131 
-#define  LUA_TNIL 130 
-#define  LUA_TNUMBER 129 
-#define  LUA_TSTRING 128 
- int /*<<< orphan*/  luaL_addchar (int /*<<< orphan*/ *,char const) ; 
- int /*<<< orphan*/  luaL_addstring (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  luaL_buffinit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  luaL_pushresult (int /*<<< orphan*/ *) ; 
- scalar_t__ lua_equal (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_rawgeti (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  lua_toboolean (int /*<<< orphan*/ *,int) ; 
- char* lua_tolstring (int /*<<< orphan*/ *,int,size_t*) ; 
- int lua_type (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
+
+ scalar_t__ LUA_REFNIL ;
+ int LUA_REGISTRYINDEX ;
+
+
+
+
+
+ int luaL_addchar (int *,char const) ;
+ int luaL_addstring (int *,char const*) ;
+ int luaL_buffinit (int *,int *) ;
+ int luaL_error (int *,char*,int) ;
+ int luaL_pushresult (int *) ;
+ scalar_t__ lua_equal (int *,int,int) ;
+ int lua_pop (int *,int) ;
+ int lua_pushvalue (int *,int) ;
+ int lua_rawgeti (int *,int ,scalar_t__) ;
+ int lua_toboolean (int *,int) ;
+ char* lua_tolstring (int *,int,size_t*) ;
+ int lua_type (int *,int) ;
+ int strcpy (char*,char const*) ;
 
 __attribute__((used)) static void encode_lua_object(lua_State *L, ENC_DATA *data, int argno, const char *prefix, const char *suffix) {
   luaL_Buffer b;
@@ -46,12 +46,12 @@ __attribute__((used)) static void encode_lua_object(lua_State *L, ENC_DATA *data
 
   int type = lua_type(L, argno);
 
-  if (type == LUA_TSTRING) {
-    // Check to see if it is the NULL value
+  if (type == 128) {
+
     if (data->null_ref != LUA_REFNIL) {
       lua_rawgeti(L, LUA_REGISTRYINDEX, data->null_ref);
       if (lua_equal(L, -1, -2)) {
-        type = LUA_TNIL;
+        type = 130;
       }
       lua_pop(L, 1);
     }
@@ -62,16 +62,16 @@ __attribute__((used)) static void encode_lua_object(lua_State *L, ENC_DATA *data
       luaL_error(L, "Cannot encode type %d", type);
       break;
 
-    case LUA_TLIGHTUSERDATA:
-    case LUA_TNIL:
+    case 131:
+    case 130:
       luaL_addstring(&b, "null");
       break;
 
-    case LUA_TBOOLEAN:
+    case 132:
       luaL_addstring(&b, lua_toboolean(L, argno) ? "true" : "false");
       break;
 
-    case LUA_TNUMBER:
+    case 129:
     {
       lua_pushvalue(L, argno);
       size_t len;
@@ -83,7 +83,7 @@ __attribute__((used)) static void encode_lua_object(lua_State *L, ENC_DATA *data
       break;
     }
 
-    case LUA_TSTRING:
+    case 128:
     {
       luaL_addchar(&b, '"');
       size_t len;
@@ -117,7 +117,7 @@ __attribute__((used)) static void encode_lua_object(lua_State *L, ENC_DATA *data
               *d++ = '0';
               *d++ = '0';
               *d++ = "0123456789abcdef"[(*str >> 4) & 0xf];
-              *d++ = "0123456789abcdef"[(*str     ) & 0xf];
+              *d++ = "0123456789abcdef"[(*str ) & 0xf];
               break;
 
           }

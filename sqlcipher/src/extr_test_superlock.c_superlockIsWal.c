@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-struct TYPE_3__ {int bWal; int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ Superlock ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- scalar_t__ SQLITE_ROW ; 
- scalar_t__ sqlite3_column_text (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int sqlite3_prepare (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_strnicmp (char*,char const*,int) ; 
- int strlen (char const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+struct TYPE_3__ {int bWal; int db; } ;
+typedef TYPE_1__ Superlock ;
+
+
+ int SQLITE_OK ;
+ scalar_t__ SQLITE_ROW ;
+ scalar_t__ sqlite3_column_text (int *,int ) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_prepare (int ,char*,int,int **,int ) ;
+ scalar_t__ sqlite3_step (int *) ;
+ scalar_t__ sqlite3_strnicmp (char*,char const*,int) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static int superlockIsWal(Superlock *pLock){
-  int rc;                         /* Return Code */
-  sqlite3_stmt *pStmt;            /* Compiled PRAGMA journal_mode statement */
+  int rc;
+  sqlite3_stmt *pStmt;
 
   rc = sqlite3_prepare(pLock->db, "PRAGMA main.journal_mode", -1, &pStmt, 0);
   if( rc!=SQLITE_OK ) return rc;

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum retro_sensor_action { ____Placeholder_retro_sensor_action } retro_sensor_action ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef enum retro_sensor_action { ____Placeholder_retro_sensor_action } retro_sensor_action ;
 struct TYPE_3__ {int* device_capability; } ;
-typedef  TYPE_1__ CellPadInfo2 ;
+typedef TYPE_1__ CellPadInfo2 ;
 
-/* Variables and functions */
- int CELL_PAD_CAPABILITY_SENSOR_MODE ; 
- int /*<<< orphan*/  CELL_PAD_SETTING_SENSOR_ON ; 
-#define  RETRO_SENSOR_ACCELEROMETER_DISABLE 129 
-#define  RETRO_SENSOR_ACCELEROMETER_ENABLE 128 
- int /*<<< orphan*/  cellPadGetInfo2 (TYPE_1__*) ; 
- int /*<<< orphan*/  cellPadSetPortSetting (unsigned int,int /*<<< orphan*/ ) ; 
+
+ int CELL_PAD_CAPABILITY_SENSOR_MODE ;
+ int CELL_PAD_SETTING_SENSOR_ON ;
+
+
+ int cellPadGetInfo2 (TYPE_1__*) ;
+ int cellPadSetPortSetting (unsigned int,int ) ;
 
 __attribute__((used)) static bool ps3_input_set_sensor_state(void *data, unsigned port,
       enum retro_sensor_action action, unsigned event_rate)
@@ -31,20 +31,20 @@ __attribute__((used)) static bool ps3_input_set_sensor_state(void *data, unsigne
 
    switch (action)
    {
-      case RETRO_SENSOR_ACCELEROMETER_ENABLE:
+      case 128:
          cellPadGetInfo2(&pad_info);
          if ((pad_info.device_capability[port]
                   & CELL_PAD_CAPABILITY_SENSOR_MODE)
                != CELL_PAD_CAPABILITY_SENSOR_MODE)
-            return false;
+            return 0;
 
          cellPadSetPortSetting(port, CELL_PAD_SETTING_SENSOR_ON);
-         return true;
-      case RETRO_SENSOR_ACCELEROMETER_DISABLE:
+         return 1;
+      case 129:
          cellPadSetPortSetting(port, 0);
-         return true;
+         return 1;
 
       default:
-         return false;
+         return 0;
    }
 }

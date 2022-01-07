@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct value_buffer {int /*<<< orphan*/  (* output_int ) (struct value_buffer*,int) ;int /*<<< orphan*/  (* output_char ) (struct value_buffer*,char) ;int /*<<< orphan*/  (* output_item_id ) (struct value_buffer*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* output_hash ) (struct value_buffer*,int /*<<< orphan*/ ) ;} ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct value_buffer {int (* output_int ) (struct value_buffer*,int) ;int (* output_char ) (struct value_buffer*,char) ;int (* output_item_id ) (struct value_buffer*,int ) ;int (* output_hash ) (struct value_buffer*,int ) ;} ;
 struct search_query_heap_en {double cpu_time; int res; scalar_t__* query; } ;
 struct connection {int dummy; } ;
 struct TYPE_5__ {double cpu_time; } ;
-struct TYPE_4__ {int /*<<< orphan*/  item_id; } ;
+struct TYPE_4__ {int item_id; } ;
 
-/* Variables and functions */
- int LAST_SEARCH_QUERY_BUFF_SIZE ; 
- scalar_t__ Q_hash_group_mode ; 
- scalar_t__ Q_limit ; 
- int /*<<< orphan*/  Q_raw ; 
- TYPE_1__** R ; 
- int /*<<< orphan*/ * RR ; 
- int R_cnt ; 
- int R_tot ; 
- scalar_t__ SEARCH_QUERY_HEAP_SIZE ; 
- TYPE_2__* SQH ; 
- scalar_t__ SQH_SIZE ; 
- int /*<<< orphan*/  assert (int) ; 
- int convert_rating (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  get_hash_item (TYPE_1__*) ; 
- double get_rusage_time () ; 
- scalar_t__* last_search_query ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,char const*,int) ; 
- char* parse_query (char*,int /*<<< orphan*/ *,int*) ; 
- int perform_query () ; 
- int return_one_key (struct connection*,char const*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  search_queries ; 
- int /*<<< orphan*/  search_query_heap_insert (struct search_query_heap_en*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcpy (scalar_t__*,char const*) ; 
- scalar_t__ strncmp (char const*,char*,int) ; 
- int /*<<< orphan*/  stub1 (struct value_buffer*,int) ; 
- int /*<<< orphan*/  stub10 (struct value_buffer*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub11 (struct value_buffer*,char) ; 
- int /*<<< orphan*/  stub12 (struct value_buffer*,int) ; 
- int /*<<< orphan*/  stub2 (struct value_buffer*,char) ; 
- int /*<<< orphan*/  stub3 (struct value_buffer*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (struct value_buffer*,char) ; 
- int /*<<< orphan*/  stub5 (struct value_buffer*,int) ; 
- int /*<<< orphan*/  stub6 (struct value_buffer*,char) ; 
- int /*<<< orphan*/  stub7 (struct value_buffer*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub8 (struct value_buffer*,int) ; 
- int /*<<< orphan*/  stub9 (struct value_buffer*,char) ; 
- int /*<<< orphan*/  value_buffer_flush (struct value_buffer*) ; 
- int /*<<< orphan*/  value_buffer_init (struct value_buffer*,struct connection*,char const*,int,int /*<<< orphan*/ ,int) ; 
- int value_buffer_return (struct value_buffer*) ; 
- scalar_t__ verbosity ; 
- int /*<<< orphan*/  vkprintf (int,char*,...) ; 
- scalar_t__* zzmalloc (int) ; 
+
+ int LAST_SEARCH_QUERY_BUFF_SIZE ;
+ scalar_t__ Q_hash_group_mode ;
+ scalar_t__ Q_limit ;
+ int Q_raw ;
+ TYPE_1__** R ;
+ int * RR ;
+ int R_cnt ;
+ int R_tot ;
+ scalar_t__ SEARCH_QUERY_HEAP_SIZE ;
+ TYPE_2__* SQH ;
+ scalar_t__ SQH_SIZE ;
+ int assert (int) ;
+ int convert_rating (int ) ;
+ int fprintf (int ,char*,...) ;
+ int get_hash_item (TYPE_1__*) ;
+ double get_rusage_time () ;
+ scalar_t__* last_search_query ;
+ int memcpy (scalar_t__*,char const*,int) ;
+ char* parse_query (char*,int *,int*) ;
+ int perform_query () ;
+ int return_one_key (struct connection*,char const*,char*,int ) ;
+ int search_queries ;
+ int search_query_heap_insert (struct search_query_heap_en*) ;
+ int sprintf (char*,char*,char*) ;
+ int stderr ;
+ int strcpy (scalar_t__*,char const*) ;
+ scalar_t__ strncmp (char const*,char*,int) ;
+ int stub1 (struct value_buffer*,int) ;
+ int stub10 (struct value_buffer*,int ) ;
+ int stub11 (struct value_buffer*,char) ;
+ int stub12 (struct value_buffer*,int) ;
+ int stub2 (struct value_buffer*,char) ;
+ int stub3 (struct value_buffer*,int ) ;
+ int stub4 (struct value_buffer*,char) ;
+ int stub5 (struct value_buffer*,int) ;
+ int stub6 (struct value_buffer*,char) ;
+ int stub7 (struct value_buffer*,int ) ;
+ int stub8 (struct value_buffer*,int) ;
+ int stub9 (struct value_buffer*,char) ;
+ int value_buffer_flush (struct value_buffer*) ;
+ int value_buffer_init (struct value_buffer*,struct connection*,char const*,int,int ,int) ;
+ int value_buffer_return (struct value_buffer*) ;
+ scalar_t__ verbosity ;
+ int vkprintf (int,char*,...) ;
+ scalar_t__* zzmalloc (int) ;
 
 int do_search_query (struct connection *c, const char *key, int len, int dog_len) {
   static char buff[2048];
@@ -110,15 +110,6 @@ int do_search_query (struct connection *c, const char *key, int len, int dog_len
     E.res = res;
     search_query_heap_insert (&E);
   }
-  /*
-  if (perform_query_time > max_perform_query_time) {
-    max_perform_query_time = perform_query_time;
-    strncpy (worst_search_query, key, STATS_SEARCH_QUERY_BUFFER_SIZE - 1);
-    worst_search_query[STATS_SEARCH_QUERY_BUFFER_SIZE - 1] = 0;
-    worst_search_query_res = res;
-  }
-  */
-
   if (verbosity > 0) {
     fprintf (stderr, "result = %d\n", res);
   }

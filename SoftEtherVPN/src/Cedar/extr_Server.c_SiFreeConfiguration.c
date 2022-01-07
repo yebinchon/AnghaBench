@@ -1,89 +1,89 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int NoMoreSave; int Halt; int /*<<< orphan*/ * CfgRw; int /*<<< orphan*/ * AzureClient; int /*<<< orphan*/ * DDnsClient; int /*<<< orphan*/ * OpenVpnServerUdp; int /*<<< orphan*/ * IPsecServer; int /*<<< orphan*/ * SaveThread; int /*<<< orphan*/ * SaveHaltEvent; } ;
-typedef  TYPE_1__ SERVER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreeAzureClient (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeCfgRw (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeDDNSClient (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeEth () ; 
- int /*<<< orphan*/  FreeIPsecServer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeOpenVpnServerUdp (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  ReleaseEvent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseThread (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Set (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SiWriteConfigurationFile (TYPE_1__*) ; 
- int /*<<< orphan*/  WaitThread (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int NoMoreSave; int Halt; int * CfgRw; int * AzureClient; int * DDnsClient; int * OpenVpnServerUdp; int * IPsecServer; int * SaveThread; int * SaveHaltEvent; } ;
+typedef TYPE_1__ SERVER ;
+
+
+ int FreeAzureClient (int *) ;
+ int FreeCfgRw (int *) ;
+ int FreeDDNSClient (int *) ;
+ int FreeEth () ;
+ int FreeIPsecServer (int *) ;
+ int FreeOpenVpnServerUdp (int *) ;
+ int INFINITE ;
+ int ReleaseEvent (int *) ;
+ int ReleaseThread (int *) ;
+ int Set (int *) ;
+ int SiWriteConfigurationFile (TYPE_1__*) ;
+ int WaitThread (int *,int ) ;
 
 void SiFreeConfiguration(SERVER *s)
 {
-	// Validate arguments
-	if (s == NULL)
-	{
-		return;
-	}
 
-	// Write to the configuration file
-	SiWriteConfigurationFile(s);
-
-	// Terminate the configuration file saving thread
-	s->NoMoreSave = true;
-	s->Halt = true;
-	Set(s->SaveHaltEvent);
-	WaitThread(s->SaveThread, INFINITE);
-
-	ReleaseEvent(s->SaveHaltEvent);
-	ReleaseThread(s->SaveThread);
-
-	s->SaveHaltEvent = NULL;
-	s->SaveThread = NULL;
+ if (s == ((void*)0))
+ {
+  return;
+ }
 
 
-	// Stop the IPsec server
-	if (s->IPsecServer != NULL)
-	{
-		FreeIPsecServer(s->IPsecServer);
-		s->IPsecServer = NULL;
-	}
-
-	// Terminate the OpenVPN server
-	if (s->OpenVpnServerUdp != NULL)
-	{
-		FreeOpenVpnServerUdp(s->OpenVpnServerUdp);
-		s->OpenVpnServerUdp = NULL;
-	}
+ SiWriteConfigurationFile(s);
 
 
-	// Terminate the DDNS client
-	if (s->DDnsClient != NULL)
-	{
-		FreeDDNSClient(s->DDnsClient);
-		s->DDnsClient = NULL;
-	}
+ s->NoMoreSave = 1;
+ s->Halt = 1;
+ Set(s->SaveHaltEvent);
+ WaitThread(s->SaveThread, INFINITE);
 
-	// Terminate the VPN Azure client
-	if (s->AzureClient != NULL)
-	{
-		FreeAzureClient(s->AzureClient);
-		s->AzureClient = NULL;
-	}
+ ReleaseEvent(s->SaveHaltEvent);
+ ReleaseThread(s->SaveThread);
 
-	FreeCfgRw(s->CfgRw);
-	s->CfgRw = NULL;
+ s->SaveHaltEvent = ((void*)0);
+ s->SaveThread = ((void*)0);
 
-	// Release the Ethernet 
-	FreeEth();
+
+
+ if (s->IPsecServer != ((void*)0))
+ {
+  FreeIPsecServer(s->IPsecServer);
+  s->IPsecServer = ((void*)0);
+ }
+
+
+ if (s->OpenVpnServerUdp != ((void*)0))
+ {
+  FreeOpenVpnServerUdp(s->OpenVpnServerUdp);
+  s->OpenVpnServerUdp = ((void*)0);
+ }
+
+
+
+ if (s->DDnsClient != ((void*)0))
+ {
+  FreeDDNSClient(s->DDnsClient);
+  s->DDnsClient = ((void*)0);
+ }
+
+
+ if (s->AzureClient != ((void*)0))
+ {
+  FreeAzureClient(s->AzureClient);
+  s->AzureClient = ((void*)0);
+ }
+
+ FreeCfgRw(s->CfgRw);
+ s->CfgRw = ((void*)0);
+
+
+ FreeEth();
 }

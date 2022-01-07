@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * xsltTransformFunction ;
-typedef  int /*<<< orphan*/  xsltPreComputeFunction ;
-typedef  int /*<<< orphan*/ * xsltExtElementPtr ;
-typedef  int /*<<< orphan*/  xmlChar ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * xmlHashCreate (int) ; 
- int /*<<< orphan*/  xmlHashUpdateEntry2 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xmlMutexLock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xmlMutexUnlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * xsltElementsHash ; 
- int /*<<< orphan*/  xsltExtMutex ; 
- int /*<<< orphan*/  xsltFreeExtElementEntry ; 
- int /*<<< orphan*/ * xsltNewExtElement (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * xsltTransformFunction ;
+typedef int xsltPreComputeFunction ;
+typedef int * xsltExtElementPtr ;
+typedef int xmlChar ;
+
+
+ int * xmlHashCreate (int) ;
+ int xmlHashUpdateEntry2 (int *,int const*,int const*,void*,int ) ;
+ int xmlMutexLock (int ) ;
+ int xmlMutexUnlock (int ) ;
+ int * xsltElementsHash ;
+ int xsltExtMutex ;
+ int xsltFreeExtElementEntry ;
+ int * xsltNewExtElement (int ,int *) ;
 
 int
 xsltRegisterExtModuleElement(const xmlChar * name, const xmlChar * URI,
@@ -34,18 +34,18 @@ xsltRegisterExtModuleElement(const xmlChar * name, const xmlChar * URI,
 
     xsltExtElementPtr ext;
 
-    if ((name == NULL) || (URI == NULL) || (transform == NULL))
+    if ((name == ((void*)0)) || (URI == ((void*)0)) || (transform == ((void*)0)))
         return (-1);
 
-    if (xsltElementsHash == NULL)
+    if (xsltElementsHash == ((void*)0))
         xsltElementsHash = xmlHashCreate(10);
-    if (xsltElementsHash == NULL)
+    if (xsltElementsHash == ((void*)0))
         return (-1);
 
     xmlMutexLock(xsltExtMutex);
 
     ext = xsltNewExtElement(precomp, transform);
-    if (ext == NULL) {
+    if (ext == ((void*)0)) {
         ret = -1;
         goto done;
     }

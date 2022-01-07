@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_16__ {scalar_t__ kind; scalar_t__ key; scalar_t__ ikey; scalar_t__ okey; int /*<<< orphan*/  remote; int /*<<< orphan*/  family; int /*<<< orphan*/  local; scalar_t__ assign_to_loopback; } ;
-typedef  TYPE_1__ sd_netlink_message ;
-typedef  TYPE_1__ Tunnel ;
-struct TYPE_17__ {int /*<<< orphan*/  ifindex; } ;
-typedef  TYPE_1__ NetDev ;
-typedef  TYPE_4__ Link ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IFLA_VTI_IKEY ; 
- int /*<<< orphan*/  IFLA_VTI_LINK ; 
- int /*<<< orphan*/  IFLA_VTI_LOCAL ; 
- int /*<<< orphan*/  IFLA_VTI_OKEY ; 
- int /*<<< orphan*/  IFLA_VTI_REMOTE ; 
- int /*<<< orphan*/  LOOPBACK_IFINDEX ; 
- scalar_t__ NETDEV_KIND_VTI ; 
- TYPE_1__* VTI (TYPE_1__*) ; 
- TYPE_1__* VTI6 (TYPE_1__*) ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  htobe32 (scalar_t__) ; 
- int log_netdev_error_errno (TYPE_1__*,int,char*) ; 
- int netlink_message_append_in_addr_union (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int sd_netlink_message_append_u32 (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_16__ {scalar_t__ kind; scalar_t__ key; scalar_t__ ikey; scalar_t__ okey; int remote; int family; int local; scalar_t__ assign_to_loopback; } ;
+typedef TYPE_1__ sd_netlink_message ;
+typedef TYPE_1__ Tunnel ;
+struct TYPE_17__ {int ifindex; } ;
+typedef TYPE_1__ NetDev ;
+typedef TYPE_4__ Link ;
+
+
+ int IFLA_VTI_IKEY ;
+ int IFLA_VTI_LINK ;
+ int IFLA_VTI_LOCAL ;
+ int IFLA_VTI_OKEY ;
+ int IFLA_VTI_REMOTE ;
+ int LOOPBACK_IFINDEX ;
+ scalar_t__ NETDEV_KIND_VTI ;
+ TYPE_1__* VTI (TYPE_1__*) ;
+ TYPE_1__* VTI6 (TYPE_1__*) ;
+ int assert (TYPE_1__*) ;
+ int htobe32 (scalar_t__) ;
+ int log_netdev_error_errno (TYPE_1__*,int,char*) ;
+ int netlink_message_append_in_addr_union (TYPE_1__*,int ,int ,int *) ;
+ int sd_netlink_message_append_u32 (TYPE_1__*,int ,int ) ;
 
 __attribute__((used)) static int netdev_vti_fill_message_create(NetDev *netdev, Link *link, sd_netlink_message *m) {
         uint32_t ikey, okey;

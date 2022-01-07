@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int cmsInt32Number ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Die (char*,char*) ; 
+
+
+
+typedef int cmsInt32Number ;
+
+
+ int Die (char*,char*) ;
 
 __attribute__((used)) static
 cmsInt32Number CheckEndianness(void)
@@ -27,11 +27,11 @@ cmsInt32Number CheckEndianness(void)
     u.l = 1;
     BigEndian = (u.c[sizeof (long) - 1] == 1);
 
-#ifdef CMS_USE_BIG_ENDIAN
-    IsOk = BigEndian;
-#else
+
+
+
     IsOk = !BigEndian;
-#endif
+
 
     if (!IsOk) {
         Die("\nOOOPPSS! You have CMS_USE_BIG_ENDIAN toggle misconfigured!\n\n"

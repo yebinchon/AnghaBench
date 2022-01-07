@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  windres_bfd ;
-struct bin_res_hdr {int /*<<< orphan*/  header_size; int /*<<< orphan*/  data_size; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int windres_bfd ;
+struct bin_res_hdr {int header_size; int data_size; } ;
 struct TYPE_3__ {void* header_size; void* data_size; } ;
-typedef  TYPE_1__ res_hdr ;
-typedef  scalar_t__ rc_uint_type ;
+typedef TYPE_1__ res_hdr ;
+typedef scalar_t__ rc_uint_type ;
 
-/* Variables and functions */
- scalar_t__ BIN_RES_HDR_SIZE ; 
- int /*<<< orphan*/  fatal (char*,int /*<<< orphan*/ ,long,long) ; 
- int /*<<< orphan*/  filename ; 
- int /*<<< orphan*/  get_windres_bfd_content (int /*<<< orphan*/ *,struct bin_res_hdr*,scalar_t__,scalar_t__) ; 
- void* windres_get_32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ BIN_RES_HDR_SIZE ;
+ int fatal (char*,int ,long,long) ;
+ int filename ;
+ int get_windres_bfd_content (int *,struct bin_res_hdr*,scalar_t__,scalar_t__) ;
+ void* windres_get_32 (int *,int ,int) ;
 
 __attribute__((used)) static void
 read_res_data_hdr (windres_bfd *wrbfd, rc_uint_type *off, rc_uint_type omax,
-		   res_hdr *reshdr)
+     res_hdr *reshdr)
 {
   struct bin_res_hdr brh;
 

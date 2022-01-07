@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  WARN_ON_ONCE (int) ; 
- int /*<<< orphan*/  WRITE_ONCE (unsigned long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rcu_seq_endval (unsigned long*) ; 
- int /*<<< orphan*/  rcu_seq_state (unsigned long) ; 
- int /*<<< orphan*/  smp_mb () ; 
+ int WARN_ON_ONCE (int) ;
+ int WRITE_ONCE (unsigned long,int ) ;
+ int rcu_seq_endval (unsigned long*) ;
+ int rcu_seq_state (unsigned long) ;
+ int smp_mb () ;
 
 __attribute__((used)) static inline void rcu_seq_end(unsigned long *sp)
 {
-	smp_mb(); /* Ensure update-side operation before counter increment. */
-	WARN_ON_ONCE(!rcu_seq_state(*sp));
-	WRITE_ONCE(*sp, rcu_seq_endval(sp));
+ smp_mb();
+ WARN_ON_ONCE(!rcu_seq_state(*sp));
+ WRITE_ONCE(*sp, rcu_seq_endval(sp));
 }

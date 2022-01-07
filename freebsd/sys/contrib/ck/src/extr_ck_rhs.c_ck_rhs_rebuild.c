@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ck_rhs {TYPE_1__* map; } ;
-struct TYPE_2__ {int /*<<< orphan*/  capacity; } ;
+struct TYPE_2__ {int capacity; } ;
 
-/* Variables and functions */
- int ck_rhs_grow (struct ck_rhs*,int /*<<< orphan*/ ) ; 
+
+ int ck_rhs_grow (struct ck_rhs*,int ) ;
 
 bool
 ck_rhs_rebuild(struct ck_rhs *hs)
 {
 
-	return ck_rhs_grow(hs, hs->map->capacity);
+ return ck_rhs_grow(hs, hs->map->capacity);
 }

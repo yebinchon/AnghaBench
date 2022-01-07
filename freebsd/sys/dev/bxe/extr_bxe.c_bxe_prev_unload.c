@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+
+
+typedef int uint32_t ;
 struct bxe_softc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOGD (struct bxe_softc*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  BLOGE (struct bxe_softc*,char*,...) ; 
- int BXE_PREV_WAIT_NEEDED ; 
- int /*<<< orphan*/  DBG_LOAD ; 
- int /*<<< orphan*/  DELAY (int) ; 
- int /*<<< orphan*/  DRV_MSG_CODE_UNLOAD_REQ_WOL_DIS ; 
- int FW_MSG_CODE_DRV_UNLOAD_COMMON ; 
- int HW_LOCK_RESOURCE_NVRAM ; 
- int MCPR_ACCESS_LOCK_LOCK ; 
- int MCPR_NVM_SW_ARB_ARB_REQ_CLR1 ; 
- int MCP_REG_MCPR_ACCESS_LOCK ; 
- int MCP_REG_MCPR_NVM_SW_ARB ; 
- int MISC_REG_DRIVER_CONTROL_1 ; 
- int MISC_REG_DRIVER_CONTROL_7 ; 
- int REG_RD (struct bxe_softc*,int) ; 
- int /*<<< orphan*/  REG_WR (struct bxe_softc*,int,int) ; 
- int SC_FUNC (struct bxe_softc*) ; 
- int SC_PORT (struct bxe_softc*) ; 
- int bxe_fw_command (struct bxe_softc*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bxe_prev_interrupted_dmae (struct bxe_softc*) ; 
- int bxe_prev_unload_common (struct bxe_softc*) ; 
- int bxe_prev_unload_uncommon (struct bxe_softc*) ; 
+
+ int BLOGD (struct bxe_softc*,int ,char*) ;
+ int BLOGE (struct bxe_softc*,char*,...) ;
+ int BXE_PREV_WAIT_NEEDED ;
+ int DBG_LOAD ;
+ int DELAY (int) ;
+ int DRV_MSG_CODE_UNLOAD_REQ_WOL_DIS ;
+ int FW_MSG_CODE_DRV_UNLOAD_COMMON ;
+ int HW_LOCK_RESOURCE_NVRAM ;
+ int MCPR_ACCESS_LOCK_LOCK ;
+ int MCPR_NVM_SW_ARB_ARB_REQ_CLR1 ;
+ int MCP_REG_MCPR_ACCESS_LOCK ;
+ int MCP_REG_MCPR_NVM_SW_ARB ;
+ int MISC_REG_DRIVER_CONTROL_1 ;
+ int MISC_REG_DRIVER_CONTROL_7 ;
+ int REG_RD (struct bxe_softc*,int) ;
+ int REG_WR (struct bxe_softc*,int,int) ;
+ int SC_FUNC (struct bxe_softc*) ;
+ int SC_PORT (struct bxe_softc*) ;
+ int bxe_fw_command (struct bxe_softc*,int ,int ) ;
+ int bxe_prev_interrupted_dmae (struct bxe_softc*) ;
+ int bxe_prev_unload_common (struct bxe_softc*) ;
+ int bxe_prev_unload_uncommon (struct bxe_softc*) ;
 
 __attribute__((used)) static int
 bxe_prev_unload(struct bxe_softc *sc)
@@ -44,13 +44,13 @@ bxe_prev_unload(struct bxe_softc *sc)
     uint32_t fw, hw_lock_reg, hw_lock_val;
     uint32_t rc = 0;
 
-    /*
-     * Clear HW from errors which may have resulted from an interrupted
-     * DMAE transaction.
-     */
+
+
+
+
     bxe_prev_interrupted_dmae(sc);
 
-    /* Release previously held locks */
+
     hw_lock_reg =
         (SC_FUNC(sc) <= 5) ?
             (MISC_REG_DRIVER_CONTROL_1 + SC_FUNC(sc) * 8) :
@@ -75,7 +75,7 @@ bxe_prev_unload(struct bxe_softc *sc)
     }
 
     do {
-        /* Lock MCP using an unload request */
+
         fw = bxe_fw_command(sc, DRV_MSG_CODE_UNLOAD_REQ_WOL_DIS, 0);
         if (!fw) {
             BLOGE(sc, "MCP response failure, aborting\n");
@@ -88,7 +88,7 @@ bxe_prev_unload(struct bxe_softc *sc)
             break;
         }
 
-        /* non-common reply from MCP night require looping */
+
         rc = bxe_prev_unload_uncommon(sc);
         if (rc != BXE_PREV_WAIT_NEEDED) {
             break;

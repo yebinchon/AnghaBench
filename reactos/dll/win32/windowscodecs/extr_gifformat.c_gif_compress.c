@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  suffix ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int suffix ;
 struct TYPE_2__ {scalar_t__ len; } ;
-struct output_stream {int /*<<< orphan*/ * out; TYPE_1__ gif_block; } ;
+struct output_stream {int * out; TYPE_1__ gif_block; } ;
 struct lzw_state {int dummy; } ;
-struct input_stream {int /*<<< orphan*/  len; int /*<<< orphan*/  const* in; } ;
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  BYTE ;
+struct input_stream {int len; int const* in; } ;
+typedef int ULONG ;
+typedef int IStream ;
+typedef scalar_t__ HRESULT ;
+typedef int BYTE ;
 
-/* Variables and functions */
- scalar_t__ E_FAIL ; 
- scalar_t__ IStream_Write (int /*<<< orphan*/ *,unsigned char*,int,int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- scalar_t__ flush_output_data (struct output_stream*) ; 
- int lzw_dict_add (struct lzw_state*,short,unsigned char) ; 
- short lzw_dict_lookup (struct lzw_state*,short,unsigned char) ; 
- int /*<<< orphan*/  lzw_dict_reset (struct lzw_state*) ; 
- int /*<<< orphan*/  lzw_flush_bits (struct lzw_state*) ; 
- int /*<<< orphan*/  lzw_output_clear_code (struct lzw_state*) ; 
- int /*<<< orphan*/  lzw_output_code (struct lzw_state*,short) ; 
- int /*<<< orphan*/  lzw_output_eof_code (struct lzw_state*) ; 
- int /*<<< orphan*/  lzw_state_init (struct lzw_state*,short,int /*<<< orphan*/ ,struct output_stream*) ; 
- scalar_t__ read_byte (struct input_stream*,unsigned char*) ; 
- int /*<<< orphan*/  write_data ; 
+
+ scalar_t__ E_FAIL ;
+ scalar_t__ IStream_Write (int *,unsigned char*,int,int *) ;
+ scalar_t__ S_OK ;
+ scalar_t__ flush_output_data (struct output_stream*) ;
+ int lzw_dict_add (struct lzw_state*,short,unsigned char) ;
+ short lzw_dict_lookup (struct lzw_state*,short,unsigned char) ;
+ int lzw_dict_reset (struct lzw_state*) ;
+ int lzw_flush_bits (struct lzw_state*) ;
+ int lzw_output_clear_code (struct lzw_state*) ;
+ int lzw_output_code (struct lzw_state*,short) ;
+ int lzw_output_eof_code (struct lzw_state*) ;
+ int lzw_state_init (struct lzw_state*,short,int ,struct output_stream*) ;
+ scalar_t__ read_byte (struct input_stream*,unsigned char*) ;
+ int write_data ;
 
 __attribute__((used)) static HRESULT gif_compress(IStream *out_stream, const BYTE *in_data, ULONG in_size)
 {
@@ -52,7 +52,7 @@ __attribute__((used)) static HRESULT gif_compress(IStream *out_stream, const BYT
     out.out = out_stream;
 
     init_code_bits = suffix = 8;
-    if (IStream_Write(out.out, &suffix, sizeof(suffix), NULL) != S_OK)
+    if (IStream_Write(out.out, &suffix, sizeof(suffix), ((void*)0)) != S_OK)
         return E_FAIL;
 
     lzw_state_init(&state, init_code_bits, write_data, &out);

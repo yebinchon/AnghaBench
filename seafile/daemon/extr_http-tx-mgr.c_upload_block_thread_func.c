@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* gpointer ;
-struct TYPE_8__ {int /*<<< orphan*/  finished_tasks; int /*<<< orphan*/  cpool; TYPE_1__* http_task; } ;
-struct TYPE_7__ {int result; int /*<<< orphan*/  block_size; int /*<<< orphan*/  block_id; } ;
-struct TYPE_6__ {int /*<<< orphan*/  error; int /*<<< orphan*/  host; } ;
-typedef  TYPE_1__ HttpTxTask ;
-typedef  int /*<<< orphan*/  Connection ;
-typedef  TYPE_2__ BlockUploadTask ;
-typedef  TYPE_3__ BlockUploadData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SYNC_ERROR_ID_NOT_ENOUGH_MEMORY ; 
- int /*<<< orphan*/ * connection_pool_get_connection (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  connection_pool_return_connection (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_async_queue_push (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  seaf_warning (char*,int /*<<< orphan*/ ) ; 
- int send_block (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef void* gpointer ;
+struct TYPE_8__ {int finished_tasks; int cpool; TYPE_1__* http_task; } ;
+struct TYPE_7__ {int result; int block_size; int block_id; } ;
+struct TYPE_6__ {int error; int host; } ;
+typedef TYPE_1__ HttpTxTask ;
+typedef int Connection ;
+typedef TYPE_2__ BlockUploadTask ;
+typedef TYPE_3__ BlockUploadData ;
+
+
+ int SYNC_ERROR_ID_NOT_ENOUGH_MEMORY ;
+ int * connection_pool_get_connection (int ) ;
+ int connection_pool_return_connection (int ,int *) ;
+ int g_async_queue_push (int ,TYPE_2__*) ;
+ int seaf_warning (char*,int ) ;
+ int send_block (TYPE_1__*,int *,int ,int *) ;
 
 __attribute__((used)) static void
 upload_block_thread_func (gpointer data, gpointer user_data)

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * lpszFI; int /*<<< orphan*/ * hIcon; int /*<<< orphan*/ * szExt; struct TYPE_5__* next; } ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  TYPE_1__** PPDOCBUCKET ;
-typedef  TYPE_1__* PDOCBUCKET ;
-typedef  int /*<<< orphan*/ * LPTSTR ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  DOCBUCKET ;
 
-/* Variables and functions */
- int ByteCountOf (int) ; 
- int /*<<< orphan*/  CharLower (int /*<<< orphan*/ *) ; 
- int DOCHASHFUNC (int /*<<< orphan*/ *) ; 
- scalar_t__ DocFind (TYPE_1__**,int /*<<< orphan*/ *) ; 
- int EXTSIZ ; 
- int FALSE ; 
- int /*<<< orphan*/  LPTR ; 
- scalar_t__ LocalAlloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  RemoveEndQuote (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lstrcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int lstrlen (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * lpszFI; int * hIcon; int * szExt; struct TYPE_5__* next; } ;
+typedef int TCHAR ;
+typedef TYPE_1__** PPDOCBUCKET ;
+typedef TYPE_1__* PDOCBUCKET ;
+typedef int * LPTSTR ;
+typedef int INT ;
+typedef int DOCBUCKET ;
+
+
+ int ByteCountOf (int) ;
+ int CharLower (int *) ;
+ int DOCHASHFUNC (int *) ;
+ scalar_t__ DocFind (TYPE_1__**,int *) ;
+ int EXTSIZ ;
+ int FALSE ;
+ int LPTR ;
+ scalar_t__ LocalAlloc (int ,int) ;
+ int RemoveEndQuote (int *) ;
+ int lstrcpy (int *,int *) ;
+ int lstrlen (int *) ;
 
 INT
 DocInsert(PPDOCBUCKET ppDocBucket,
@@ -42,15 +42,15 @@ DocInsert(PPDOCBUCKET ppDocBucket,
    TCHAR szExt[EXTSIZ];
 
 
-   //
-   // Only allow certain lengths; if invalid ppDocBucket, fail
-   //
+
+
+
    if (lstrlen(lpszExt) >= EXTSIZ || !ppDocBucket)
       return FALSE;
 
-   //
-   // Disallow duplicates
-   //
+
+
+
    if (DocFind(ppDocBucket, lpszExt)) {
       return -1;
    }
@@ -63,9 +63,9 @@ DocInsert(PPDOCBUCKET ppDocBucket,
 
    iBucket = DOCHASHFUNC(lpszExt);
 
-   //
-   // Set up bucket; always char lower
-   //
+
+
+
    pDocBucket->next = ppDocBucket[iBucket];
 
    CharLower(lpszExt);
@@ -73,13 +73,13 @@ DocInsert(PPDOCBUCKET ppDocBucket,
    RemoveEndQuote(szExt);
    lstrcpy(pDocBucket->szExt, szExt);
 
-   pDocBucket->hIcon = NULL;
-   pDocBucket->lpszFI = NULL;
-   
-   if (lpszFileIcon != NULL)
-	   pDocBucket->lpszFI = (LPTSTR) LocalAlloc(LPTR, ByteCountOf(lstrlen(lpszFileIcon)+1));		
-   if (pDocBucket->lpszFI != NULL)
-	  lstrcpy(pDocBucket->lpszFI, lpszFileIcon);
+   pDocBucket->hIcon = ((void*)0);
+   pDocBucket->lpszFI = ((void*)0);
+
+   if (lpszFileIcon != ((void*)0))
+    pDocBucket->lpszFI = (LPTSTR) LocalAlloc(LPTR, ByteCountOf(lstrlen(lpszFileIcon)+1));
+   if (pDocBucket->lpszFI != ((void*)0))
+   lstrcpy(pDocBucket->lpszFI, lpszFileIcon);
 
    ppDocBucket[iBucket] = pDocBucket;
 

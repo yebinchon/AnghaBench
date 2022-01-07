@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  PBYTE ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  E_UNEXPECTED ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyW (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  debugstr_w (char const*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int PBYTE ;
+typedef int LPCWSTR ;
+typedef int HRESULT ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+
+
+ int ERR (char*,int ) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int E_UNEXPECTED ;
+ int HKEY_CURRENT_USER ;
+ int HKEY_LOCAL_MACHINE ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegOpenKeyW (int ,char const*,int *) ;
+ scalar_t__ RegQueryValueExW (int ,int ,int *,int *,int ,scalar_t__*) ;
+ int S_OK ;
+ int debugstr_w (char const*) ;
 
 __attribute__((used)) static HRESULT get_zone_from_reg(LPCWSTR schema, DWORD *zone)
 {
@@ -50,7 +50,7 @@ __attribute__((used)) static HRESULT get_zone_from_reg(LPCWSTR schema, DWORD *zo
     }
 
     size = sizeof(DWORD);
-    res = RegQueryValueExW(hkey, schema, NULL, NULL, (PBYTE)zone, &size);
+    res = RegQueryValueExW(hkey, schema, ((void*)0), ((void*)0), (PBYTE)zone, &size);
     RegCloseKey(hkey);
     if(res == ERROR_SUCCESS)
         return S_OK;
@@ -62,7 +62,7 @@ __attribute__((used)) static HRESULT get_zone_from_reg(LPCWSTR schema, DWORD *zo
     }
 
     size = sizeof(DWORD);
-    res = RegQueryValueExW(hkey, schema, NULL, NULL, (PBYTE)zone, &size);
+    res = RegQueryValueExW(hkey, schema, ((void*)0), ((void*)0), (PBYTE)zone, &size);
     RegCloseKey(hkey);
     if(res == ERROR_SUCCESS)
         return S_OK;

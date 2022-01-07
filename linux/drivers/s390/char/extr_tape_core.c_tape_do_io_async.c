@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tape_request {int dummy; } ;
-struct tape_device {int /*<<< orphan*/  cdev; } ;
+struct tape_device {int cdev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DBF_LH (int,char*,struct tape_device*,struct tape_request*) ; 
- int __tape_start_request (struct tape_device*,struct tape_request*) ; 
- int /*<<< orphan*/  get_ccwdev_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ ) ; 
+
+ int DBF_LH (int,char*,struct tape_device*,struct tape_request*) ;
+ int __tape_start_request (struct tape_device*,struct tape_request*) ;
+ int get_ccwdev_lock (int ) ;
+ int spin_lock_irq (int ) ;
+ int spin_unlock_irq (int ) ;
 
 int
 tape_do_io_async(struct tape_device *device, struct tape_request *request)
 {
-	int rc;
+ int rc;
 
-	DBF_LH(6, "tape_do_io_async(%p, %p)\n", device, request);
+ DBF_LH(6, "tape_do_io_async(%p, %p)\n", device, request);
 
-	spin_lock_irq(get_ccwdev_lock(device->cdev));
-	/* Add request to request queue and try to start it. */
-	rc = __tape_start_request(device, request);
-	spin_unlock_irq(get_ccwdev_lock(device->cdev));
-	return rc;
+ spin_lock_irq(get_ccwdev_lock(device->cdev));
+
+ rc = __tape_start_request(device, request);
+ spin_unlock_irq(get_ccwdev_lock(device->cdev));
+ return rc;
 }

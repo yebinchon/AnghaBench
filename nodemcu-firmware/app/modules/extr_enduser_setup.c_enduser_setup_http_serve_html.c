@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct tcp_pcb {int dummy; } ;
-typedef  scalar_t__ err_t ;
-struct TYPE_2__ {int /*<<< orphan*/ * http_payload_data; } ;
+typedef scalar_t__ err_t ;
+struct TYPE_2__ {int * http_payload_data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENDUSER_SETUP_DEBUG (char*) ; 
- int /*<<< orphan*/  ENDUSER_SETUP_ERROR (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENDUSER_SETUP_ERR_NONFATAL ; 
- int /*<<< orphan*/  ENDUSER_SETUP_ERR_UNKOWN_ERROR ; 
- int /*<<< orphan*/  enduser_setup_http_load_payload () ; 
- TYPE_1__* state ; 
- int /*<<< orphan*/  streamout_sent ; 
- int /*<<< orphan*/  tcp_arg (struct tcp_pcb*,void*) ; 
- int /*<<< orphan*/  tcp_recv (struct tcp_pcb*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tcp_sent (struct tcp_pcb*,int /*<<< orphan*/ ) ; 
- unsigned int tcp_sndbuf (struct tcp_pcb*) ; 
- scalar_t__ tcp_write (struct tcp_pcb*,int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ ) ; 
+
+ int ENDUSER_SETUP_DEBUG (char*) ;
+ int ENDUSER_SETUP_ERROR (char*,int ,int ) ;
+ int ENDUSER_SETUP_ERR_NONFATAL ;
+ int ENDUSER_SETUP_ERR_UNKOWN_ERROR ;
+ int enduser_setup_http_load_payload () ;
+ TYPE_1__* state ;
+ int streamout_sent ;
+ int tcp_arg (struct tcp_pcb*,void*) ;
+ int tcp_recv (struct tcp_pcb*,int ) ;
+ int tcp_sent (struct tcp_pcb*,int ) ;
+ unsigned int tcp_sndbuf (struct tcp_pcb*) ;
+ scalar_t__ tcp_write (struct tcp_pcb*,int *,unsigned int,int ) ;
 
 __attribute__((used)) static int enduser_setup_http_serve_html(struct tcp_pcb *http_client)
 {
   ENDUSER_SETUP_DEBUG("enduser_setup_http_serve_html");
 
-  if (state->http_payload_data == NULL)
+  if (state->http_payload_data == ((void*)0))
   {
     enduser_setup_http_load_payload();
   }
 
   unsigned chunklen = tcp_sndbuf (http_client);
   tcp_arg (http_client, (void *)chunklen);
-  tcp_recv (http_client, 0); /* avoid confusion about the tcp_arg */
+  tcp_recv (http_client, 0);
   tcp_sent (http_client, streamout_sent);
-  /* Begin the no-copy stream-out here */
+
   err_t err = tcp_write (http_client, state->http_payload_data, chunklen, 0);
   if (err != 0)
   {

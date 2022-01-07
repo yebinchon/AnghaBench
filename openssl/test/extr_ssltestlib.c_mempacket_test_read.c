@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ num; int len; scalar_t__ type; unsigned char* data; } ;
-struct TYPE_6__ {scalar_t__ currpkt; int droprec; unsigned int epoch; unsigned int currrec; unsigned int dropepoch; scalar_t__ injected; int /*<<< orphan*/  pkts; } ;
-typedef  TYPE_1__ MEMPACKET_TEST_CTX ;
-typedef  TYPE_2__ MEMPACKET ;
-typedef  int /*<<< orphan*/  BIO ;
+struct TYPE_6__ {scalar_t__ currpkt; int droprec; unsigned int epoch; unsigned int currrec; unsigned int dropepoch; scalar_t__ injected; int pkts; } ;
+typedef TYPE_1__ MEMPACKET_TEST_CTX ;
+typedef TYPE_2__ MEMPACKET ;
+typedef int BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_clear_retry_flags (int /*<<< orphan*/ *) ; 
- TYPE_1__* BIO_get_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_set_retry_read (int /*<<< orphan*/ *) ; 
- int DTLS1_RT_HEADER_LENGTH ; 
- size_t EPOCH_HI ; 
- size_t EPOCH_LO ; 
- scalar_t__ INJECT_PACKET_IGNORE_REC_SEQ ; 
- size_t RECORD_LEN_HI ; 
- size_t RECORD_LEN_LO ; 
- unsigned int RECORD_SEQUENCE ; 
- int /*<<< orphan*/  memcpy (char*,unsigned char*,int) ; 
- int /*<<< orphan*/  memmove (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  mempacket_free (TYPE_2__*) ; 
- int /*<<< orphan*/  sk_MEMPACKET_shift (int /*<<< orphan*/ ) ; 
- TYPE_2__* sk_MEMPACKET_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int BIO_clear_retry_flags (int *) ;
+ TYPE_1__* BIO_get_data (int *) ;
+ int BIO_set_retry_read (int *) ;
+ int DTLS1_RT_HEADER_LENGTH ;
+ size_t EPOCH_HI ;
+ size_t EPOCH_LO ;
+ scalar_t__ INJECT_PACKET_IGNORE_REC_SEQ ;
+ size_t RECORD_LEN_HI ;
+ size_t RECORD_LEN_LO ;
+ unsigned int RECORD_SEQUENCE ;
+ int memcpy (char*,unsigned char*,int) ;
+ int memmove (unsigned char*,unsigned char*,int) ;
+ int mempacket_free (TYPE_2__*) ;
+ int sk_MEMPACKET_shift (int ) ;
+ TYPE_2__* sk_MEMPACKET_value (int ,int ) ;
 
 __attribute__((used)) static int mempacket_test_read(BIO *bio, char *out, int outl)
 {
@@ -45,8 +45,8 @@ __attribute__((used)) static int mempacket_test_read(BIO *bio, char *out, int ou
 
     BIO_clear_retry_flags(bio);
     thispkt = sk_MEMPACKET_value(ctx->pkts, 0);
-    if (thispkt == NULL || thispkt->num != ctx->currpkt) {
-        /* Probably run out of data */
+    if (thispkt == ((void*)0) || thispkt->num != ctx->currpkt) {
+
         BIO_set_retry_read(bio);
         return -1;
     }
@@ -58,12 +58,12 @@ __attribute__((used)) static int mempacket_test_read(BIO *bio, char *out, int ou
 
     if (thispkt->type != INJECT_PACKET_IGNORE_REC_SEQ
             && (ctx->injected || ctx->droprec >= 0)) {
-        /*
-         * Overwrite the record sequence number. We strictly number them in
-         * the order received. Since we are actually a reliable transport
-         * we know that there won't be any re-ordering. We overwrite to deal
-         * with any packets that have been injected
-         */
+
+
+
+
+
+
         for (rem = thispkt->len, rec = thispkt->data; rem > 0; rem -= len) {
             if (rem < DTLS1_RT_HEADER_LENGTH)
                 return -1;

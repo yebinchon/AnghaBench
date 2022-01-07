@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ memory_size; } ;
-struct userspace_mem_region {int /*<<< orphan*/  vpages_mapped; int /*<<< orphan*/  vpages_valid; int /*<<< orphan*/  mmap_size; int /*<<< orphan*/  mmap_start; int /*<<< orphan*/  unused_phy_pages; struct userspace_mem_region* next; struct userspace_mem_region* userspace_mem_region_head; TYPE_1__ region; int /*<<< orphan*/  fd; } ;
-struct kvm_vm {int /*<<< orphan*/  vpages_mapped; int /*<<< orphan*/  vpages_valid; int /*<<< orphan*/  mmap_size; int /*<<< orphan*/  mmap_start; int /*<<< orphan*/  unused_phy_pages; struct kvm_vm* next; struct kvm_vm* userspace_mem_region_head; TYPE_1__ region; int /*<<< orphan*/  fd; } ;
+struct userspace_mem_region {int vpages_mapped; int vpages_valid; int mmap_size; int mmap_start; int unused_phy_pages; struct userspace_mem_region* next; struct userspace_mem_region* userspace_mem_region_head; TYPE_1__ region; int fd; } ;
+struct kvm_vm {int vpages_mapped; int vpages_valid; int mmap_size; int mmap_start; int unused_phy_pages; struct kvm_vm* next; struct kvm_vm* userspace_mem_region_head; TYPE_1__ region; int fd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KVM_SET_USER_MEMORY_REGION ; 
- int /*<<< orphan*/  TEST_ASSERT (int,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  free (struct userspace_mem_region*) ; 
- int ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  kvm_vm_release (struct userspace_mem_region*) ; 
- int munmap (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sparsebit_free (int /*<<< orphan*/ *) ; 
+
+ int KVM_SET_USER_MEMORY_REGION ;
+ int TEST_ASSERT (int,char*,int,int ) ;
+ int errno ;
+ int free (struct userspace_mem_region*) ;
+ int ioctl (int ,int ,TYPE_1__*) ;
+ int kvm_vm_release (struct userspace_mem_region*) ;
+ int munmap (int ,int ) ;
+ int sparsebit_free (int *) ;
 
 void kvm_vm_free(struct kvm_vm *vmp)
 {
-	int ret;
+ int ret;
 
-	if (vmp == NULL)
-		return;
+ if (vmp == ((void*)0))
+  return;
 
-	/* Free userspace_mem_regions. */
-	while (vmp->userspace_mem_region_head) {
-		struct userspace_mem_region *region
-			= vmp->userspace_mem_region_head;
 
-		region->region.memory_size = 0;
-		ret = ioctl(vmp->fd, KVM_SET_USER_MEMORY_REGION,
-			&region->region);
-		TEST_ASSERT(ret == 0, "KVM_SET_USER_MEMORY_REGION IOCTL failed, "
-			"rc: %i errno: %i", ret, errno);
+ while (vmp->userspace_mem_region_head) {
+  struct userspace_mem_region *region
+   = vmp->userspace_mem_region_head;
 
-		vmp->userspace_mem_region_head = region->next;
-		sparsebit_free(&region->unused_phy_pages);
-		ret = munmap(region->mmap_start, region->mmap_size);
-		TEST_ASSERT(ret == 0, "munmap failed, rc: %i errno: %i",
-			    ret, errno);
+  region->region.memory_size = 0;
+  ret = ioctl(vmp->fd, KVM_SET_USER_MEMORY_REGION,
+   &region->region);
+  TEST_ASSERT(ret == 0, "KVM_SET_USER_MEMORY_REGION IOCTL failed, "
+   "rc: %i errno: %i", ret, errno);
 
-		free(region);
-	}
+  vmp->userspace_mem_region_head = region->next;
+  sparsebit_free(&region->unused_phy_pages);
+  ret = munmap(region->mmap_start, region->mmap_size);
+  TEST_ASSERT(ret == 0, "munmap failed, rc: %i errno: %i",
+       ret, errno);
 
-	/* Free sparsebit arrays. */
-	sparsebit_free(&vmp->vpages_valid);
-	sparsebit_free(&vmp->vpages_mapped);
+  free(region);
+ }
 
-	kvm_vm_release(vmp);
 
-	/* Free the structure describing the VM. */
-	free(vmp);
+ sparsebit_free(&vmp->vpages_valid);
+ sparsebit_free(&vmp->vpages_mapped);
+
+ kvm_vm_release(vmp);
+
+
+ free(vmp);
 }

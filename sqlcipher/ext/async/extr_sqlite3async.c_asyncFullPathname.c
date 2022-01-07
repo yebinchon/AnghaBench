@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int (* xFullPathname ) (TYPE_1__*,char const*,int,char*) ;scalar_t__ pAppData; } ;
-typedef  TYPE_1__ sqlite3_vfs ;
+typedef TYPE_1__ sqlite3_vfs ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- scalar_t__ strlen (char*) ; 
- int stub1 (TYPE_1__*,char const*,int,char*) ; 
+
+ int SQLITE_OK ;
+ scalar_t__ strlen (char*) ;
+ int stub1 (TYPE_1__*,char const*,int,char*) ;
 
 __attribute__((used)) static int asyncFullPathname(
-  sqlite3_vfs *pAsyncVfs, 
-  const char *zPath, 
+  sqlite3_vfs *pAsyncVfs,
+  const char *zPath,
   int nPathOut,
   char *zPathOut
 ){
@@ -29,10 +29,10 @@ __attribute__((used)) static int asyncFullPathname(
   sqlite3_vfs *pVfs = (sqlite3_vfs *)pAsyncVfs->pAppData;
   rc = pVfs->xFullPathname(pVfs, zPath, nPathOut, zPathOut);
 
-  /* Because of the way intra-process file locking works, this backend
-  ** needs to return a canonical path. The following block assumes the
-  ** file-system uses unix style paths. 
-  */
+
+
+
+
   if( rc==SQLITE_OK ){
     int i, j;
     char *z = zPathOut;

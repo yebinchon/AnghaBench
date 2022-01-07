@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  curl_mimepart ;
-typedef  int /*<<< orphan*/  curl_mime ;
-typedef  scalar_t__ CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- scalar_t__ CURLE_BAD_FUNCTION_ARGUMENT ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * curl_easy_init () ; 
- int /*<<< orphan*/ * curl_mime_addpart (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_mime_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * curl_mime_init (int /*<<< orphan*/ *) ; 
- scalar_t__ curl_mime_subparts (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int curl_mimepart ;
+typedef int curl_mime ;
+typedef scalar_t__ CURLcode ;
+typedef int CURL ;
+
+
+ scalar_t__ CURLE_BAD_FUNCTION_ARGUMENT ;
+ int curl_easy_cleanup (int *) ;
+ int * curl_easy_init () ;
+ int * curl_mime_addpart (int *) ;
+ int curl_mime_free (int *) ;
+ int * curl_mime_init (int *) ;
+ scalar_t__ curl_mime_subparts (int *,int *) ;
 
 __attribute__((used)) static int cyclic_add(void)
 {
@@ -42,7 +42,7 @@ __attribute__((used)) static int cyclic_add(void)
   curl_mime_free(mime);
   curl_easy_cleanup(easy);
   if(a1 != CURLE_BAD_FUNCTION_ARGUMENT)
-    /* that should have failed */
+
     return 1;
 
   return 0;

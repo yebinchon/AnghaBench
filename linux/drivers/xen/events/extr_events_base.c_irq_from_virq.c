@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int* per_cpu (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  virq_to_irq ; 
+ int* per_cpu (int ,unsigned int) ;
+ int virq_to_irq ;
 
 int irq_from_virq(unsigned int cpu, unsigned int virq)
 {
-	return per_cpu(virq_to_irq, cpu)[virq];
+ return per_cpu(virq_to_irq, cpu)[virq];
 }

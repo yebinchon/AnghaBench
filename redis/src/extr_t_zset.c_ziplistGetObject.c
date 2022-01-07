@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sds ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sdsfromlonglong (long long) ; 
- int /*<<< orphan*/  sdsnewlen (char*,unsigned int) ; 
- int /*<<< orphan*/  serverAssert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ziplistGet (unsigned char*,unsigned char**,unsigned int*,long long*) ; 
+
+
+
+typedef int sds ;
+
+
+ int sdsfromlonglong (long long) ;
+ int sdsnewlen (char*,unsigned int) ;
+ int serverAssert (int ) ;
+ int ziplistGet (unsigned char*,unsigned char**,unsigned int*,long long*) ;
 
 sds ziplistGetObject(unsigned char *sptr) {
     unsigned char *vstr;
     unsigned int vlen;
     long long vlong;
 
-    serverAssert(sptr != NULL);
+    serverAssert(sptr != ((void*)0));
     serverAssert(ziplistGet(sptr,&vstr,&vlen,&vlong));
 
     if (vstr) {

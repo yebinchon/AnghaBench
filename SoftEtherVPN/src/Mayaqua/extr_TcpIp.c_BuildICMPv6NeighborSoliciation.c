@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  opt ;
-typedef  int /*<<< orphan*/  link ;
-typedef  int /*<<< orphan*/  header ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  UCHAR ;
-struct TYPE_17__ {int /*<<< orphan*/  Size; int /*<<< orphan*/  Buf; } ;
-struct TYPE_16__ {int /*<<< orphan*/  TargetAddress; struct TYPE_16__* SourceLinkLayer; int /*<<< orphan*/ * Address; } ;
-typedef  int /*<<< orphan*/  IPV6_ADDR ;
-typedef  TYPE_1__ ICMPV6_OPTION_LIST ;
-typedef  TYPE_1__ ICMPV6_OPTION_LINK_LAYER ;
-typedef  TYPE_1__ ICMPV6_NEIGHBOR_SOLICIATION_HEADER ;
-typedef  TYPE_4__ BUF ;
 
-/* Variables and functions */
- TYPE_4__* BuildICMPv6 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_4__* BuildICMPv6Options (TYPE_1__*) ; 
- int /*<<< orphan*/  Copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  FreeBuf (TYPE_4__*) ; 
- int /*<<< orphan*/  ICMPV6_TYPE_NEIGHBOR_SOLICIATION ; 
- TYPE_4__* NewBuf () ; 
- int /*<<< orphan*/  WriteBuf (TYPE_4__*,TYPE_1__*,int) ; 
- int /*<<< orphan*/  WriteBufBuf (TYPE_4__*,TYPE_4__*) ; 
- int /*<<< orphan*/  Zero (TYPE_1__*,int) ; 
+
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int opt ;
+typedef int link ;
+typedef int header ;
+typedef int UINT ;
+typedef int UCHAR ;
+struct TYPE_17__ {int Size; int Buf; } ;
+struct TYPE_16__ {int TargetAddress; struct TYPE_16__* SourceLinkLayer; int * Address; } ;
+typedef int IPV6_ADDR ;
+typedef TYPE_1__ ICMPV6_OPTION_LIST ;
+typedef TYPE_1__ ICMPV6_OPTION_LINK_LAYER ;
+typedef TYPE_1__ ICMPV6_NEIGHBOR_SOLICIATION_HEADER ;
+typedef TYPE_4__ BUF ;
+
+
+ TYPE_4__* BuildICMPv6 (int *,int *,int,int ,int ,int ,int ,int ) ;
+ TYPE_4__* BuildICMPv6Options (TYPE_1__*) ;
+ int Copy (int *,int *,int) ;
+ int FreeBuf (TYPE_4__*) ;
+ int ICMPV6_TYPE_NEIGHBOR_SOLICIATION ;
+ TYPE_4__* NewBuf () ;
+ int WriteBuf (TYPE_4__*,TYPE_1__*,int) ;
+ int WriteBufBuf (TYPE_4__*,TYPE_4__*) ;
+ int Zero (TYPE_1__*,int) ;
 
 BUF *BuildICMPv6NeighborSoliciation(IPV6_ADDR *src_ip, IPV6_ADDR *target_ip, UCHAR *my_mac_address, UINT id)
 {
-	ICMPV6_OPTION_LIST opt;
-	ICMPV6_OPTION_LINK_LAYER link;
-	ICMPV6_NEIGHBOR_SOLICIATION_HEADER header;
-	BUF *b;
-	BUF *b2;
-	BUF *ret;
-	// Validate arguments
-	if (src_ip == NULL || target_ip == NULL || my_mac_address == NULL)
-	{
-		return NULL;
-	}
+ ICMPV6_OPTION_LIST opt;
+ ICMPV6_OPTION_LINK_LAYER link;
+ ICMPV6_NEIGHBOR_SOLICIATION_HEADER header;
+ BUF *b;
+ BUF *b2;
+ BUF *ret;
 
-	Zero(&link, sizeof(link));
-	Copy(link.Address, my_mac_address, 6);
+ if (src_ip == ((void*)0) || target_ip == ((void*)0) || my_mac_address == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	Zero(&opt, sizeof(opt));
-	opt.SourceLinkLayer = &link;
+ Zero(&link, sizeof(link));
+ Copy(link.Address, my_mac_address, 6);
 
-	b = BuildICMPv6Options(&opt);
+ Zero(&opt, sizeof(opt));
+ opt.SourceLinkLayer = &link;
 
-	Zero(&header, sizeof(header));
-	Copy(&header.TargetAddress, target_ip, sizeof(IPV6_ADDR));
+ b = BuildICMPv6Options(&opt);
 
-	b2 = NewBuf();
+ Zero(&header, sizeof(header));
+ Copy(&header.TargetAddress, target_ip, sizeof(IPV6_ADDR));
 
-	WriteBuf(b2, &header, sizeof(header));
-	WriteBufBuf(b2, b);
+ b2 = NewBuf();
 
-	ret = BuildICMPv6(src_ip, target_ip, 255,
-		ICMPV6_TYPE_NEIGHBOR_SOLICIATION, 0, b2->Buf, b2->Size, id);
+ WriteBuf(b2, &header, sizeof(header));
+ WriteBufBuf(b2, b);
 
-	FreeBuf(b);
-	FreeBuf(b2);
+ ret = BuildICMPv6(src_ip, target_ip, 255,
+  ICMPV6_TYPE_NEIGHBOR_SOLICIATION, 0, b2->Buf, b2->Size, id);
 
-	return ret;
+ FreeBuf(b);
+ FreeBuf(b2);
+
+ return ret;
 }

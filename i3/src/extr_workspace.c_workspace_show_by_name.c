@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Con ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * workspace_get (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  workspace_show (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int Con ;
+
+
+ int * workspace_get (char const*,int *) ;
+ int workspace_show (int *) ;
 
 void workspace_show_by_name(const char *num) {
     Con *workspace;
-    workspace = workspace_get(num, NULL);
+    workspace = workspace_get(num, ((void*)0));
     workspace_show(workspace);
 }

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_7__ ;
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct AACISError {int pass; int phase; float error; float dist1; float dist2; float ener01; int /*<<< orphan*/  member_0; } ;
+
+
+typedef struct TYPE_17__ TYPE_7__ ;
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct AACISError {int pass; int phase; float error; float dist1; float dist2; float ener01; int member_0; } ;
 struct TYPE_12__ {TYPE_1__* ch; } ;
-struct TYPE_17__ {float* scoefs; int cur_channel; float lambda; int /*<<< orphan*/  (* abs_pow34 ) (float*,float*,int) ;TYPE_2__ psy; } ;
+struct TYPE_17__ {float* scoefs; int cur_channel; float lambda; int (* abs_pow34 ) (float*,float*,int) ;TYPE_2__ psy; } ;
 struct TYPE_16__ {TYPE_4__* ch; } ;
 struct TYPE_15__ {float threshold; } ;
 struct TYPE_13__ {int* group_len; int* swb_sizes; } ;
 struct TYPE_14__ {float* pcoeffs; float* coeffs; int* sf_idx; int* band_type; TYPE_3__ ics; } ;
 struct TYPE_11__ {TYPE_5__* psy_bands; } ;
-typedef  TYPE_4__ SingleChannelElement ;
-typedef  TYPE_5__ FFPsyBand ;
-typedef  TYPE_6__ ChannelElement ;
-typedef  TYPE_7__ AACEncContext ;
+typedef TYPE_4__ SingleChannelElement ;
+typedef TYPE_5__ FFPsyBand ;
+typedef TYPE_6__ ChannelElement ;
+typedef TYPE_7__ AACEncContext ;
 
-/* Variables and functions */
- int FFMAX (int,int) ; 
- float FFMIN (float,float) ; 
- int /*<<< orphan*/  INFINITY ; 
- float find_max_val (int,int,float*) ; 
- int find_min_book (float,int) ; 
- int pos_pow34 (float) ; 
- scalar_t__ quantize_band_cost (TYPE_7__*,float*,float*,int,int,int,float,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- float sqrt (float) ; 
- int /*<<< orphan*/  stub1 (float*,float*,int) ; 
- int /*<<< orphan*/  stub2 (float*,float*,int) ; 
- int /*<<< orphan*/  stub3 (float*,float*,int) ; 
+
+ int FFMAX (int,int) ;
+ float FFMIN (float,float) ;
+ int INFINITY ;
+ float find_max_val (int,int,float*) ;
+ int find_min_book (float,int) ;
+ int pos_pow34 (float) ;
+ scalar_t__ quantize_band_cost (TYPE_7__*,float*,float*,int,int,int,float,int ,int *,int *,int ) ;
+ float sqrt (float) ;
+ int stub1 (float*,float*,int) ;
+ int stub2 (float*,float*,int) ;
+ int stub3 (float*,float*,int) ;
 
 struct AACISError ff_aac_is_encoding_err(AACEncContext *s, ChannelElement *cpe,
                                          int start, int w, int g, float ener0,
@@ -54,7 +54,7 @@ struct AACISError ff_aac_is_encoding_err(AACEncContext *s, ChannelElement *cpe,
     float *L = use_pcoeffs ? sce0->pcoeffs : sce0->coeffs;
     float *R = use_pcoeffs ? sce1->pcoeffs : sce1->coeffs;
     float *L34 = &s->scoefs[256*0], *R34 = &s->scoefs[256*1];
-    float *IS  = &s->scoefs[256*2], *I34 = &s->scoefs[256*3];
+    float *IS = &s->scoefs[256*2], *I34 = &s->scoefs[256*3];
     float dist1 = 0.0f, dist2 = 0.0f;
     struct AACISError is_error = {0};
 
@@ -74,22 +74,22 @@ struct AACISError ff_aac_is_encoding_err(AACEncContext *s, ChannelElement *cpe,
             IS[i] = (L[start+(w+w2)*128+i] + phase*R[start+(w+w2)*128+i])*sqrt(ener0/ener01);
         s->abs_pow34(L34, &L[start+(w+w2)*128], sce0->ics.swb_sizes[g]);
         s->abs_pow34(R34, &R[start+(w+w2)*128], sce0->ics.swb_sizes[g]);
-        s->abs_pow34(I34, IS,                   sce0->ics.swb_sizes[g]);
+        s->abs_pow34(I34, IS, sce0->ics.swb_sizes[g]);
         maxval = find_max_val(1, sce0->ics.swb_sizes[g], I34);
         is_band_type = find_min_book(maxval, is_sf_idx);
         dist1 += quantize_band_cost(s, &L[start + (w+w2)*128], L34,
                                     sce0->ics.swb_sizes[g],
                                     sce0->sf_idx[w*16+g],
                                     sce0->band_type[w*16+g],
-                                    s->lambda / band0->threshold, INFINITY, NULL, NULL, 0);
+                                    s->lambda / band0->threshold, INFINITY, ((void*)0), ((void*)0), 0);
         dist1 += quantize_band_cost(s, &R[start + (w+w2)*128], R34,
                                     sce1->ics.swb_sizes[g],
                                     sce1->sf_idx[w*16+g],
                                     sce1->band_type[w*16+g],
-                                    s->lambda / band1->threshold, INFINITY, NULL, NULL, 0);
+                                    s->lambda / band1->threshold, INFINITY, ((void*)0), ((void*)0), 0);
         dist2 += quantize_band_cost(s, IS, I34, sce0->ics.swb_sizes[g],
                                     is_sf_idx, is_band_type,
-                                    s->lambda / minthr, INFINITY, NULL, NULL, 0);
+                                    s->lambda / minthr, INFINITY, ((void*)0), ((void*)0), 0);
         for (i = 0; i < sce0->ics.swb_sizes[g]; i++) {
             dist_spec_err += (L34[i] - I34[i])*(L34[i] - I34[i]);
             dist_spec_err += (R34[i] - I34[i]*e01_34)*(R34[i] - I34[i]*e01_34);

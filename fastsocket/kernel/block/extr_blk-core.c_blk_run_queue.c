@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct request_queue {int /*<<< orphan*/  queue_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __blk_run_queue (struct request_queue*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ ,unsigned long) ; 
+
+
+
+struct request_queue {int queue_lock; } ;
+
+
+ int __blk_run_queue (struct request_queue*) ;
+ int spin_lock_irqsave (int ,unsigned long) ;
+ int spin_unlock_irqrestore (int ,unsigned long) ;
 
 void blk_run_queue(struct request_queue *q)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	spin_lock_irqsave(q->queue_lock, flags);
-	__blk_run_queue(q);
-	spin_unlock_irqrestore(q->queue_lock, flags);
+ spin_lock_irqsave(q->queue_lock, flags);
+ __blk_run_queue(q);
+ spin_unlock_irqrestore(q->queue_lock, flags);
 }

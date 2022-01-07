@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint64_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  Tox ;
-typedef  scalar_t__ TOX_ERR_FILE_SEND_CHUNK ;
 
-/* Variables and functions */
- scalar_t__ TOX_ERR_FILE_SEND_CHUNK_OK ; 
- int /*<<< orphan*/  ck_abort_msg (char*,...) ; 
- int file_sending_done ; 
- int m_send_reached ; 
- scalar_t__ max_sending ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  sendf_ok ; 
- int /*<<< orphan*/  sending_num ; 
- scalar_t__ sending_pos ; 
- scalar_t__ tox_file_send_chunk (int /*<<< orphan*/ *,int,int,scalar_t__,int /*<<< orphan*/ *,size_t,scalar_t__*) ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint64_t ;
+typedef int uint32_t ;
+typedef int Tox ;
+typedef scalar_t__ TOX_ERR_FILE_SEND_CHUNK ;
+
+
+ scalar_t__ TOX_ERR_FILE_SEND_CHUNK_OK ;
+ int ck_abort_msg (char*,...) ;
+ int file_sending_done ;
+ int m_send_reached ;
+ scalar_t__ max_sending ;
+ int memset (int *,int ,size_t) ;
+ int sendf_ok ;
+ int sending_num ;
+ scalar_t__ sending_pos ;
+ scalar_t__ tox_file_send_chunk (int *,int,int,scalar_t__,int *,size_t,scalar_t__*) ;
 
 void tox_file_chunk_request(Tox *tox, uint32_t friend_number, uint32_t file_number, uint64_t position, size_t length,
                             void *user_data)

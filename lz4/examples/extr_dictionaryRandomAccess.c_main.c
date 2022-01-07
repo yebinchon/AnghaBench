@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int BLOCK_BYTES ; 
- int DICTIONARY_BYTES ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int atoi (char*) ; 
- int compare (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ read_bin (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  seek_bin (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,...) ; 
- int /*<<< orphan*/  test_compress (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  test_decompress (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,int,int,int) ; 
+
+
+
+typedef int FILE ;
+
+
+ int BLOCK_BYTES ;
+ int DICTIONARY_BYTES ;
+ int SEEK_SET ;
+ int atoi (char*) ;
+ int compare (int *,int *,int) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int printf (char*,...) ;
+ scalar_t__ read_bin (int *,char*,int) ;
+ int seek_bin (int *,int,int ) ;
+ int snprintf (char*,int,char*,char*,...) ;
+ int test_compress (int *,int *,char*,int) ;
+ int test_decompress (int *,int *,char*,int,int,int) ;
 
 int main(int argc, char* argv[])
 {
@@ -57,14 +57,14 @@ int main(int argc, char* argv[])
     printf("offset = [%d]\n", offset);
     printf("length = [%d]\n", length);
 
-    /* Load dictionary */
+
     {
         FILE* dictFp = fopen(dictFilename, "rb");
         dictSize = (int)read_bin(dictFp, dict, DICTIONARY_BYTES);
         fclose(dictFp);
     }
 
-    /* compress */
+
     {
         FILE* inpFp = fopen(inpFilename, "rb");
         FILE* outFp = fopen(lz4Filename, "wb");
@@ -77,7 +77,7 @@ int main(int argc, char* argv[])
         fclose(inpFp);
     }
 
-    /* decompress */
+
     {
         FILE* inpFp = fopen(lz4Filename, "rb");
         FILE* outFp = fopen(decFilename, "wb");
@@ -90,7 +90,7 @@ int main(int argc, char* argv[])
         fclose(inpFp);
     }
 
-    /* verify */
+
     {
         FILE* inpFp = fopen(inpFilename, "rb");
         FILE* decFp = fopen(decFilename, "rb");

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct TYPE_5__ {int prereqRight; int eOperator; } ;
-typedef  TYPE_1__ WhereTerm ;
-typedef  int /*<<< orphan*/  WhereScan ;
-typedef  int /*<<< orphan*/  WhereClause ;
-typedef  int /*<<< orphan*/  Index ;
-typedef  int Bitmask ;
+typedef TYPE_1__ WhereTerm ;
+typedef int WhereScan ;
+typedef int WhereClause ;
+typedef int Index ;
+typedef int Bitmask ;
 
-/* Variables and functions */
- int WO_EQ ; 
- int WO_IS ; 
- int /*<<< orphan*/  testcase (int) ; 
- TYPE_1__* whereScanInit (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int /*<<< orphan*/ *) ; 
- TYPE_1__* whereScanNext (int /*<<< orphan*/ *) ; 
+
+ int WO_EQ ;
+ int WO_IS ;
+ int testcase (int) ;
+ TYPE_1__* whereScanInit (int *,int *,int,int,int,int *) ;
+ TYPE_1__* whereScanNext (int *) ;
 
 WhereTerm *sqlite3WhereFindTerm(
-  WhereClause *pWC,     /* The WHERE clause to be searched */
-  int iCur,             /* Cursor number of LHS */
-  int iColumn,          /* Column number of LHS */
-  Bitmask notReady,     /* RHS must not overlap with this mask */
-  u32 op,               /* Mask of WO_xx values describing operator */
-  Index *pIdx           /* Must be compatible with this index, if not NULL */
+  WhereClause *pWC,
+  int iCur,
+  int iColumn,
+  Bitmask notReady,
+  u32 op,
+  Index *pIdx
 ){
   WhereTerm *pResult = 0;
   WhereTerm *p;

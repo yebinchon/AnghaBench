@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {unsigned int layer_idx; unsigned int layer_count; int /*<<< orphan*/  level_count; int /*<<< orphan*/  level_idx; } ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {unsigned int layer_idx; unsigned int layer_count; int level_count; int level_idx; } ;
 struct TYPE_8__ {TYPE_2__ texture; } ;
 struct wined3d_view_desc {TYPE_3__ u; } ;
-struct TYPE_6__ {int /*<<< orphan*/  device; } ;
+struct TYPE_6__ {int device; } ;
 struct wined3d_texture {TYPE_1__ resource; } ;
-struct wined3d_gl_view {scalar_t__ target; int /*<<< orphan*/  name; } ;
-struct TYPE_9__ {int /*<<< orphan*/  (* p_glTexParameteri ) (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* p_glTexParameteriv ) (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ;int /*<<< orphan*/  (* p_glGenTextures ) (int,int /*<<< orphan*/ *) ;} ;
+struct wined3d_gl_view {scalar_t__ target; int name; } ;
+struct TYPE_9__ {int (* p_glTexParameteri ) (scalar_t__,int ,int ) ;int (* p_glTexParameteriv ) (scalar_t__,int ,int const*) ;int (* p_glGenTextures ) (int,int *) ;} ;
 struct TYPE_10__ {TYPE_4__ gl; } ;
-struct wined3d_gl_info {TYPE_5__ gl_ops; int /*<<< orphan*/ * supported; } ;
-struct wined3d_format {int /*<<< orphan*/  glInternal; } ;
+struct wined3d_gl_info {TYPE_5__ gl_ops; int * supported; } ;
+struct wined3d_format {int glInternal; } ;
 struct wined3d_context {struct wined3d_gl_info* gl_info; } ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  int /*<<< orphan*/  const GLint ;
-typedef  scalar_t__ GLenum ;
+typedef int GLuint ;
+typedef int const GLint ;
+typedef scalar_t__ GLenum ;
 
-/* Variables and functions */
- size_t ARB_STENCIL_TEXTURING ; 
- size_t ARB_TEXTURE_VIEW ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  GL_DEPTH_STENCIL_TEXTURE_MODE ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
-#define  GL_RED 129 
- int /*<<< orphan*/  GL_STENCIL_INDEX ; 
- scalar_t__ GL_TEXTURE_3D ; 
- int /*<<< orphan*/  GL_TEXTURE_SWIZZLE_RGBA ; 
-#define  GL_ZERO 128 
- int /*<<< orphan*/  STATE_COMPUTE_SHADER_RESOURCE_BINDING ; 
- int /*<<< orphan*/  STATE_GRAPHICS_SHADER_RESOURCE_BINDING ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- struct wined3d_context* context_acquire (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  context_bind_texture (struct wined3d_context*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  context_invalidate_compute_state (struct wined3d_context*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  context_invalidate_state (struct wined3d_context*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  context_release (struct wined3d_context*) ; 
- int /*<<< orphan*/  glTextureView (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,unsigned int) ; 
- scalar_t__ is_stencil_view_format (struct wined3d_format const*) ; 
- int /*<<< orphan*/  stub1 (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  stub3 (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wined3d_texture_get_texture_name (struct wined3d_texture*,struct wined3d_context*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wined3d_texture_prepare_texture (struct wined3d_texture*,struct wined3d_context*,int /*<<< orphan*/ ) ; 
+
+ size_t ARB_STENCIL_TEXTURING ;
+ size_t ARB_TEXTURE_VIEW ;
+ int FALSE ;
+ int FIXME (char*,...) ;
+ int GL_DEPTH_STENCIL_TEXTURE_MODE ;
+ int GL_EXTCALL (int ) ;
+
+ int GL_STENCIL_INDEX ;
+ scalar_t__ GL_TEXTURE_3D ;
+ int GL_TEXTURE_SWIZZLE_RGBA ;
+
+ int STATE_COMPUTE_SHADER_RESOURCE_BINDING ;
+ int STATE_GRAPHICS_SHADER_RESOURCE_BINDING ;
+ int checkGLcall (char*) ;
+ struct wined3d_context* context_acquire (int ,int *,int ) ;
+ int context_bind_texture (struct wined3d_context*,scalar_t__,int ) ;
+ int context_invalidate_compute_state (struct wined3d_context*,int ) ;
+ int context_invalidate_state (struct wined3d_context*,int ) ;
+ int context_release (struct wined3d_context*) ;
+ int glTextureView (int ,scalar_t__,int ,int ,int ,int ,unsigned int,unsigned int) ;
+ scalar_t__ is_stencil_view_format (struct wined3d_format const*) ;
+ int stub1 (int,int *) ;
+ int stub2 (scalar_t__,int ,int const*) ;
+ int stub3 (scalar_t__,int ,int ) ;
+ int wined3d_texture_get_texture_name (struct wined3d_texture*,struct wined3d_context*,int ) ;
+ int wined3d_texture_prepare_texture (struct wined3d_texture*,struct wined3d_context*,int ) ;
 
 __attribute__((used)) static void create_texture_view(struct wined3d_gl_view *view, GLenum view_target,
         const struct wined3d_view_desc *desc, struct wined3d_texture *texture,
@@ -69,7 +69,7 @@ __attribute__((used)) static void create_texture_view(struct wined3d_gl_view *vi
 
     view->target = view_target;
 
-    context = context_acquire(texture->resource.device, NULL, 0);
+    context = context_acquire(texture->resource.device, ((void*)0), 0);
     gl_info = context->gl_info;
 
     if (!gl_info->supported[ARB_TEXTURE_VIEW])
@@ -99,7 +99,7 @@ __attribute__((used)) static void create_texture_view(struct wined3d_gl_view *vi
 
     if (is_stencil_view_format(view_format))
     {
-        static const GLint swizzle[] = {GL_ZERO, GL_RED, GL_ZERO, GL_ZERO};
+        static const GLint swizzle[] = {128, 129, 128, 128};
 
         if (!gl_info->supported[ARB_STENCIL_TEXTURING])
         {

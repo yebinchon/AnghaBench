@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct super_block {int /*<<< orphan*/ * s_master_keys; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  key_put (int /*<<< orphan*/ *) ; 
+
+
+
+struct super_block {int * s_master_keys; } ;
+
+
+ int key_put (int *) ;
 
 void fscrypt_sb_free(struct super_block *sb)
 {
-	key_put(sb->s_master_keys);
-	sb->s_master_keys = NULL;
+ key_put(sb->s_master_keys);
+ sb->s_master_keys = ((void*)0);
 }

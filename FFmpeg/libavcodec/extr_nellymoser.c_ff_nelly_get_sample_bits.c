@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FFABS (int) ; 
- int FFMAX (int,float const) ; 
- int NELLY_BASE_OFF ; 
- short NELLY_BASE_SHIFT ; 
- int /*<<< orphan*/  NELLY_BIT_CAP ; 
- short NELLY_DETAIL_BITS ; 
- int NELLY_FILL_LEN ; 
- scalar_t__ abs (int) ; 
- int av_clip (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ headroom (int*) ; 
- void* signed_shift (float const,short) ; 
- int sum_bits (short*,short,int) ; 
+ int FFABS (int) ;
+ int FFMAX (int,float const) ;
+ int NELLY_BASE_OFF ;
+ short NELLY_BASE_SHIFT ;
+ int NELLY_BIT_CAP ;
+ short NELLY_DETAIL_BITS ;
+ int NELLY_FILL_LEN ;
+ scalar_t__ abs (int) ;
+ int av_clip (int,int ,int ) ;
+ scalar_t__ headroom (int*) ;
+ void* signed_shift (float const,short) ;
+ int sum_bits (short*,short,int) ;
 
 void ff_nelly_get_sample_bits(const float *buf, int *bits)
 {

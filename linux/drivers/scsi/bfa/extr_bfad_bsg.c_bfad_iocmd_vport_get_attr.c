@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bfad_s {int /*<<< orphan*/  bfad_lock; int /*<<< orphan*/  bfa_fcs; } ;
+
+
+
+
+struct bfad_s {int bfad_lock; int bfa_fcs; } ;
 struct bfa_fcs_vport_s {int dummy; } ;
-struct bfa_bsg_vport_attr_s {int /*<<< orphan*/  status; int /*<<< orphan*/  vport_attr; int /*<<< orphan*/  vpwwn; int /*<<< orphan*/  vf_id; } ;
+struct bfa_bsg_vport_attr_s {int status; int vport_attr; int vpwwn; int vf_id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BFA_STATUS_OK ; 
- int /*<<< orphan*/  BFA_STATUS_UNKNOWN_VWWN ; 
- int /*<<< orphan*/  bfa_fcs_vport_get_attr (struct bfa_fcs_vport_s*,int /*<<< orphan*/ *) ; 
- struct bfa_fcs_vport_s* bfa_fcs_vport_lookup (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int BFA_STATUS_OK ;
+ int BFA_STATUS_UNKNOWN_VWWN ;
+ int bfa_fcs_vport_get_attr (struct bfa_fcs_vport_s*,int *) ;
+ struct bfa_fcs_vport_s* bfa_fcs_vport_lookup (int *,int ,int ) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 int
 bfad_iocmd_vport_get_attr(struct bfad_s *bfad, void *cmd)
 {
-	struct bfa_fcs_vport_s *fcs_vport;
-	struct bfa_bsg_vport_attr_s *iocmd = (struct bfa_bsg_vport_attr_s *)cmd;
-	unsigned long	flags;
+ struct bfa_fcs_vport_s *fcs_vport;
+ struct bfa_bsg_vport_attr_s *iocmd = (struct bfa_bsg_vport_attr_s *)cmd;
+ unsigned long flags;
 
-	spin_lock_irqsave(&bfad->bfad_lock, flags);
-	fcs_vport = bfa_fcs_vport_lookup(&bfad->bfa_fcs,
-				iocmd->vf_id, iocmd->vpwwn);
-	if (fcs_vport == NULL) {
-		spin_unlock_irqrestore(&bfad->bfad_lock, flags);
-		iocmd->status = BFA_STATUS_UNKNOWN_VWWN;
-		goto out;
-	}
+ spin_lock_irqsave(&bfad->bfad_lock, flags);
+ fcs_vport = bfa_fcs_vport_lookup(&bfad->bfa_fcs,
+    iocmd->vf_id, iocmd->vpwwn);
+ if (fcs_vport == ((void*)0)) {
+  spin_unlock_irqrestore(&bfad->bfad_lock, flags);
+  iocmd->status = BFA_STATUS_UNKNOWN_VWWN;
+  goto out;
+ }
 
-	bfa_fcs_vport_get_attr(fcs_vport, &iocmd->vport_attr);
-	spin_unlock_irqrestore(&bfad->bfad_lock, flags);
-	iocmd->status = BFA_STATUS_OK;
+ bfa_fcs_vport_get_attr(fcs_vport, &iocmd->vport_attr);
+ spin_unlock_irqrestore(&bfad->bfad_lock, flags);
+ iocmd->status = BFA_STATUS_OK;
 out:
-	return 0;
+ return 0;
 }

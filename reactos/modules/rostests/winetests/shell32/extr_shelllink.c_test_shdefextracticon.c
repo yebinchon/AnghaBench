@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/ * HICON ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DestroyIcon (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MAKELONG (int,int) ; 
- int /*<<< orphan*/  SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  pSHDefExtractIconA (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int HRESULT ;
+typedef int * HICON ;
+
+
+ int DestroyIcon (int *) ;
+ int MAKELONG (int,int) ;
+ int SUCCEEDED (int ) ;
+ int ok (int ,char*,...) ;
+ int pSHDefExtractIconA (char*,int ,int ,int **,int **,int ) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_shdefextracticon(void)
 {
-    HICON hiconlarge=NULL, hiconsmall=NULL;
+    HICON hiconlarge=((void*)0), hiconsmall=((void*)0);
     HRESULT res;
 
     if (!pSHDefExtractIconA)
@@ -34,17 +34,17 @@ __attribute__((used)) static void test_shdefextracticon(void)
 
     res = pSHDefExtractIconA("shell32.dll", 0, 0, &hiconlarge, &hiconsmall, MAKELONG(16,24));
     ok(SUCCEEDED(res), "SHDefExtractIconA failed, res=%x\n", res);
-    ok(hiconlarge != NULL, "got null hiconlarge\n");
-    ok(hiconsmall != NULL, "got null hiconsmall\n");
+    ok(hiconlarge != ((void*)0), "got null hiconlarge\n");
+    ok(hiconsmall != ((void*)0), "got null hiconsmall\n");
     DestroyIcon(hiconlarge);
     DestroyIcon(hiconsmall);
 
-    hiconsmall = NULL;
-    res = pSHDefExtractIconA("shell32.dll", 0, 0, NULL, &hiconsmall, MAKELONG(16,24));
+    hiconsmall = ((void*)0);
+    res = pSHDefExtractIconA("shell32.dll", 0, 0, ((void*)0), &hiconsmall, MAKELONG(16,24));
     ok(SUCCEEDED(res), "SHDefExtractIconA failed, res=%x\n", res);
-    ok(hiconsmall != NULL, "got null hiconsmall\n");
+    ok(hiconsmall != ((void*)0), "got null hiconsmall\n");
     DestroyIcon(hiconsmall);
 
-    res = pSHDefExtractIconA("shell32.dll", 0, 0, NULL, NULL, MAKELONG(16,24));
+    res = pSHDefExtractIconA("shell32.dll", 0, 0, ((void*)0), ((void*)0), MAKELONG(16,24));
     ok(SUCCEEDED(res), "SHDefExtractIconA failed, res=%x\n", res);
 }

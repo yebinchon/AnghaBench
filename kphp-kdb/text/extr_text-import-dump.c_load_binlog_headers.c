@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct lev_start {int type; scalar_t__ schema_id; scalar_t__ split_min; scalar_t__ split_max; scalar_t__ split_mod; } ;
 struct lev_rotate_from {scalar_t__ cur_log_pos; scalar_t__ prev_log_hash; } ;
 struct kfs_file_header {int dummy; } ;
-struct TYPE_7__ {scalar_t__ magic; scalar_t__ kfs_file_type; scalar_t__ header_seq_num; scalar_t__ data_size; scalar_t__ raw_size; int finished; scalar_t__ schema_id; scalar_t__ split_min; scalar_t__ split_max; scalar_t__ split_mod; scalar_t__ log_pos; scalar_t__ prev_log_hash; int /*<<< orphan*/  data_crc32; } ;
+struct TYPE_7__ {scalar_t__ magic; scalar_t__ kfs_file_type; scalar_t__ header_seq_num; scalar_t__ data_size; scalar_t__ raw_size; int finished; scalar_t__ schema_id; scalar_t__ split_min; scalar_t__ split_max; scalar_t__ split_mod; scalar_t__ log_pos; scalar_t__ prev_log_hash; int data_crc32; } ;
 
-/* Variables and functions */
- struct lev_rotate_from* CONT ; 
- scalar_t__ KFS_MAGIC ; 
- TYPE_1__* KHDR ; 
-#define  LEV_ROTATE_FROM 129 
-#define  LEV_START 128 
- int /*<<< orphan*/  SEEK_END ; 
- struct lev_start* ST ; 
- int /*<<< orphan*/  assert (int) ; 
- int binlog_existed ; 
- int binlog_headers ; 
- scalar_t__ check_kfs_header_basic (TYPE_1__*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- TYPE_1__* kfs_Hdr ; 
- scalar_t__ kfs_binlog ; 
- scalar_t__ lseek (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcmp (TYPE_1__*,TYPE_1__*,int) ; 
- int read (int,TYPE_1__*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  tot_crc32 ; 
+
+ struct lev_rotate_from* CONT ;
+ scalar_t__ KFS_MAGIC ;
+ TYPE_1__* KHDR ;
+
+
+ int SEEK_END ;
+ struct lev_start* ST ;
+ int assert (int) ;
+ int binlog_existed ;
+ int binlog_headers ;
+ scalar_t__ check_kfs_header_basic (TYPE_1__*) ;
+ int fprintf (int ,char*,...) ;
+ TYPE_1__* kfs_Hdr ;
+ scalar_t__ kfs_binlog ;
+ scalar_t__ lseek (int,int ,int ) ;
+ int memcmp (TYPE_1__*,TYPE_1__*,int) ;
+ int read (int,TYPE_1__*,int) ;
+ int stderr ;
+ int tot_crc32 ;
 
 int load_binlog_headers (int fd) {
   int r = read (fd, kfs_Hdr, 4096 * 3);
@@ -74,11 +74,11 @@ int load_binlog_headers (int fd) {
   E = (struct lev_start *) (kfs_Hdr + binlog_headers);
 
   switch (E->type) {
-  case LEV_START:
+  case 128:
     assert (r >= sizeof (struct lev_start));
     ST = E;
     break;
-  case LEV_ROTATE_FROM:
+  case 129:
     assert (r >= sizeof (struct lev_rotate_from));
     CONT = (struct lev_rotate_from *) E;
     break;

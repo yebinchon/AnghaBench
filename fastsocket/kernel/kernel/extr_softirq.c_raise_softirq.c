@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  local_irq_restore (unsigned long) ; 
- int /*<<< orphan*/  local_irq_save (unsigned long) ; 
- int /*<<< orphan*/  raise_softirq_irqoff (unsigned int) ; 
+ int local_irq_restore (unsigned long) ;
+ int local_irq_save (unsigned long) ;
+ int raise_softirq_irqoff (unsigned int) ;
 
 void raise_softirq(unsigned int nr)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	local_irq_save(flags);
-	raise_softirq_irqoff(nr);
-	local_irq_restore(flags);
+ local_irq_save(flags);
+ raise_softirq_irqoff(nr);
+ local_irq_restore(flags);
 }

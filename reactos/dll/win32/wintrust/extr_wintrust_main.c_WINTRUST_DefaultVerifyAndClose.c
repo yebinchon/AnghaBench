@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WINTRUST_DATA ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  GUID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  WINTRUST_DefaultClose (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WINTRUST_DefaultVerify (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int WINTRUST_DATA ;
+typedef int LONG ;
+typedef int HWND ;
+typedef int GUID ;
+
+
+ int TRACE (char*,int ,...) ;
+ int WINTRUST_DefaultClose (int ,int *,int *) ;
+ int WINTRUST_DefaultVerify (int ,int *,int *) ;
+ int debugstr_guid (int *) ;
 
 __attribute__((used)) static LONG WINTRUST_DefaultVerifyAndClose(HWND hwnd, GUID *actionID,
  WINTRUST_DATA *data)

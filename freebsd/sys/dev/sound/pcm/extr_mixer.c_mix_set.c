@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_int ;
-struct snd_mixer {int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int ENXIO ; 
- int /*<<< orphan*/  KASSERT (int /*<<< orphan*/ ,char*) ; 
- int mixer_set (struct snd_mixer*,int,int) ; 
- int /*<<< orphan*/  snd_mtxlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snd_mtxunlock (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u_int ;
+struct snd_mixer {int lock; } ;
+
+
+ int ENXIO ;
+ int KASSERT (int ,char*) ;
+ int mixer_set (struct snd_mixer*,int,int) ;
+ int snd_mtxlock (int ) ;
+ int snd_mtxunlock (int ) ;
 
 int
 mix_set(struct snd_mixer *m, u_int dev, u_int left, u_int right)
 {
-	int ret;
+ int ret;
 
-	KASSERT(m != NULL, ("NULL snd_mixer"));
+ KASSERT(m != ((void*)0), ("NULL snd_mixer"));
 
-	snd_mtxlock(m->lock);
-	ret = mixer_set(m, dev, left | (right << 8));
-	snd_mtxunlock(m->lock);
+ snd_mtxlock(m->lock);
+ ret = mixer_set(m, dev, left | (right << 8));
+ snd_mtxunlock(m->lock);
 
-	return ((ret != 0) ? ENXIO : 0);
+ return ((ret != 0) ? ENXIO : 0);
 }

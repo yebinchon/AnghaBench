@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int UINT ;
-struct TYPE_12__ {int mask; int stateMask; int state; int /*<<< orphan*/  szUrl; int /*<<< orphan*/  szID; int /*<<< orphan*/  iLink; } ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int UINT ;
+struct TYPE_12__ {int mask; int stateMask; int state; int szUrl; int szID; int iLink; } ;
 struct TYPE_9__ {void* szID; void* szUrl; int state; } ;
 struct TYPE_10__ {TYPE_1__ Link; } ;
 struct TYPE_11__ {TYPE_2__ u; } ;
-typedef  int /*<<< orphan*/  SYSLINK_INFO ;
-typedef  void* PWSTR ;
-typedef  TYPE_3__* PDOC_ITEM ;
-typedef  int LRESULT ;
-typedef  TYPE_4__ LITEM ;
-typedef  int BOOL ;
+typedef int SYSLINK_INFO ;
+typedef void* PWSTR ;
+typedef TYPE_3__* PDOC_ITEM ;
+typedef int LRESULT ;
+typedef TYPE_4__ LITEM ;
+typedef int BOOL ;
 
-/* Variables and functions */
- void* Alloc (int) ; 
- int /*<<< orphan*/  ERR (char*,...) ; 
- int FALSE ; 
- int /*<<< orphan*/  Free (void*) ; 
- int LIF_FLAGSMASK ; 
- int LIF_ITEMID ; 
- int LIF_ITEMINDEX ; 
- int LIF_STATE ; 
- int LIF_URL ; 
- int LIS_FOCUSED ; 
- int LIS_MASK ; 
- scalar_t__ L_MAX_URL_LENGTH ; 
- scalar_t__ MAX_LINKID_TEXT ; 
- TYPE_3__* SYSLINK_GetLinkItemByIndex (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SYSLINK_RepaintLink (int /*<<< orphan*/  const*,TYPE_3__*) ; 
- int /*<<< orphan*/  SYSLINK_SetFocusLink (int /*<<< orphan*/  const*,TYPE_3__*) ; 
- int TRUE ; 
- int /*<<< orphan*/  lstrcpynW (void*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lstrlenW (int /*<<< orphan*/ ) ; 
- int min (int /*<<< orphan*/ ,scalar_t__) ; 
+
+ void* Alloc (int) ;
+ int ERR (char*,...) ;
+ int FALSE ;
+ int Free (void*) ;
+ int LIF_FLAGSMASK ;
+ int LIF_ITEMID ;
+ int LIF_ITEMINDEX ;
+ int LIF_STATE ;
+ int LIF_URL ;
+ int LIS_FOCUSED ;
+ int LIS_MASK ;
+ scalar_t__ L_MAX_URL_LENGTH ;
+ scalar_t__ MAX_LINKID_TEXT ;
+ TYPE_3__* SYSLINK_GetLinkItemByIndex (int const*,int ) ;
+ int SYSLINK_RepaintLink (int const*,TYPE_3__*) ;
+ int SYSLINK_SetFocusLink (int const*,TYPE_3__*) ;
+ int TRUE ;
+ int lstrcpynW (void*,int ,int) ;
+ int lstrlenW (int ) ;
+ int min (int ,scalar_t__) ;
 
 __attribute__((used)) static LRESULT SYSLINK_SetItem (const SYSLINK_INFO *infoPtr, const LITEM *Item)
 {
     PDOC_ITEM di;
     int nc;
-    PWSTR szId = NULL;
-    PWSTR szUrl = NULL;
+    PWSTR szId = ((void*)0);
+    PWSTR szUrl = ((void*)0);
     BOOL Repaint = FALSE;
 
     if(!(Item->mask & LIF_ITEMINDEX) || !(Item->mask & (LIF_FLAGSMASK)))
@@ -64,7 +64,7 @@ __attribute__((used)) static LRESULT SYSLINK_SetItem (const SYSLINK_INFO *infoPt
     }
 
     di = SYSLINK_GetLinkItemByIndex(infoPtr, Item->iLink);
-    if(di == NULL)
+    if(di == ((void*)0))
     {
         ERR("Link %d couldn't be found\n", Item->iLink);
         return FALSE;
@@ -117,20 +117,20 @@ __attribute__((used)) static LRESULT SYSLINK_SetItem (const SYSLINK_INFO *infoPt
     if(Item->mask & LIF_STATE)
     {
         UINT oldstate = di->u.Link.state;
-        /* clear the masked bits */
+
         di->u.Link.state &= ~(Item->stateMask & LIS_MASK);
-        /* copy the bits */
+
         di->u.Link.state |= (Item->state & Item->stateMask) & LIS_MASK;
         Repaint = (oldstate != di->u.Link.state);
-        
-        /* update the focus */
-        SYSLINK_SetFocusLink(infoPtr, ((di->u.Link.state & LIS_FOCUSED) ? di : NULL));
+
+
+        SYSLINK_SetFocusLink(infoPtr, ((di->u.Link.state & LIS_FOCUSED) ? di : ((void*)0)));
     }
-    
+
     if(Repaint)
     {
         SYSLINK_RepaintLink(infoPtr, di);
     }
-    
+
     return TRUE;
 }

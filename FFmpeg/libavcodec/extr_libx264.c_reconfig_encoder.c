@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_9__ ;
-typedef  struct TYPE_22__   TYPE_8__ ;
-typedef  struct TYPE_21__   TYPE_7__ ;
-typedef  struct TYPE_20__   TYPE_6__ ;
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_23__ TYPE_9__ ;
+typedef struct TYPE_22__ TYPE_8__ ;
+typedef struct TYPE_21__ TYPE_7__ ;
+typedef struct TYPE_20__ TYPE_6__ ;
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
 struct TYPE_17__ {int i_vbv_buffer_size; int i_vbv_max_bitrate; scalar_t__ i_rc_method; int i_bitrate; scalar_t__ f_rf_constant; scalar_t__ i_qp_constant; scalar_t__ f_rf_constant_max; } ;
 struct TYPE_15__ {int i_sar_height; int i_sar_width; } ;
 struct TYPE_23__ {scalar_t__ b_tff; int i_frame_packing; TYPE_3__ rc; TYPE_1__ vui; scalar_t__ b_interlaced; } ;
-struct TYPE_18__ {scalar_t__ avcintra_class; scalar_t__ crf; scalar_t__ cqp; scalar_t__ crf_max; TYPE_9__ params; int /*<<< orphan*/  enc; } ;
-typedef  TYPE_4__ X264Context ;
+struct TYPE_18__ {scalar_t__ avcintra_class; scalar_t__ crf; scalar_t__ cqp; scalar_t__ crf_max; TYPE_9__ params; int enc; } ;
+typedef TYPE_4__ X264Context ;
 struct TYPE_16__ {int num; int den; } ;
 struct TYPE_22__ {int rc_buffer_size; int rc_max_rate; int bit_rate; TYPE_2__ sample_aspect_ratio; TYPE_4__* priv_data; } ;
 struct TYPE_21__ {scalar_t__ top_field_first; } ;
 struct TYPE_20__ {scalar_t__ data; } ;
 struct TYPE_19__ {int type; int flags; } ;
-typedef  TYPE_5__ AVStereo3D ;
-typedef  TYPE_6__ AVFrameSideData ;
-typedef  TYPE_7__ AVFrame ;
-typedef  TYPE_8__ AVCodecContext ;
+typedef TYPE_5__ AVStereo3D ;
+typedef TYPE_6__ AVFrameSideData ;
+typedef TYPE_7__ AVFrame ;
+typedef TYPE_8__ AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_FRAME_DATA_STEREO3D ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
-#define  AV_STEREO3D_2D 134 
-#define  AV_STEREO3D_CHECKERBOARD 133 
-#define  AV_STEREO3D_COLUMNS 132 
- int AV_STEREO3D_FLAG_INVERT ; 
-#define  AV_STEREO3D_FRAMESEQUENCE 131 
-#define  AV_STEREO3D_LINES 130 
-#define  AV_STEREO3D_SIDEBYSIDE 129 
-#define  AV_STEREO3D_TOPBOTTOM 128 
- scalar_t__ X264_RC_ABR ; 
- scalar_t__ X264_RC_CQP ; 
- scalar_t__ X264_RC_CRF ; 
- TYPE_6__* av_frame_get_side_data (TYPE_7__ const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_8__*,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  x264_encoder_reconfig (int /*<<< orphan*/ ,TYPE_9__*) ; 
+
+ int AV_FRAME_DATA_STEREO3D ;
+ int AV_LOG_WARNING ;
+
+
+
+ int AV_STEREO3D_FLAG_INVERT ;
+
+
+
+
+ scalar_t__ X264_RC_ABR ;
+ scalar_t__ X264_RC_CQP ;
+ scalar_t__ X264_RC_CRF ;
+ TYPE_6__* av_frame_get_side_data (TYPE_7__ const*,int ) ;
+ int av_log (TYPE_8__*,int ,char*,int) ;
+ int x264_encoder_reconfig (int ,TYPE_9__*) ;
 
 __attribute__((used)) static void reconfig_encoder(AVCodecContext *ctx, const AVFrame *frame)
 {
@@ -66,14 +66,14 @@ __attribute__((used)) static void reconfig_encoder(AVCodecContext *ctx, const AV
     }
     if (x4->params.vui.i_sar_height*ctx->sample_aspect_ratio.num != ctx->sample_aspect_ratio.den * x4->params.vui.i_sar_width) {
         x4->params.vui.i_sar_height = ctx->sample_aspect_ratio.den;
-        x4->params.vui.i_sar_width  = ctx->sample_aspect_ratio.num;
+        x4->params.vui.i_sar_width = ctx->sample_aspect_ratio.num;
         x264_encoder_reconfig(x4->enc, &x4->params);
     }
 
     if (x4->params.rc.i_vbv_buffer_size != ctx->rc_buffer_size / 1000 ||
-        x4->params.rc.i_vbv_max_bitrate != ctx->rc_max_rate    / 1000) {
+        x4->params.rc.i_vbv_max_bitrate != ctx->rc_max_rate / 1000) {
         x4->params.rc.i_vbv_buffer_size = ctx->rc_buffer_size / 1000;
-        x4->params.rc.i_vbv_max_bitrate = ctx->rc_max_rate    / 1000;
+        x4->params.rc.i_vbv_max_bitrate = ctx->rc_max_rate / 1000;
         x264_encoder_reconfig(x4->enc, &x4->params);
     }
 
@@ -110,35 +110,35 @@ __attribute__((used)) static void reconfig_encoder(AVCodecContext *ctx, const AV
         int fpa_type;
 
         switch (stereo->type) {
-        case AV_STEREO3D_CHECKERBOARD:
+        case 133:
             fpa_type = 0;
             break;
-        case AV_STEREO3D_COLUMNS:
+        case 132:
             fpa_type = 1;
             break;
-        case AV_STEREO3D_LINES:
+        case 130:
             fpa_type = 2;
             break;
-        case AV_STEREO3D_SIDEBYSIDE:
+        case 129:
             fpa_type = 3;
             break;
-        case AV_STEREO3D_TOPBOTTOM:
+        case 128:
             fpa_type = 4;
             break;
-        case AV_STEREO3D_FRAMESEQUENCE:
+        case 131:
             fpa_type = 5;
             break;
-#if X264_BUILD >= 145
-        case AV_STEREO3D_2D:
-            fpa_type = 6;
-            break;
-#endif
+
+
+
+
+
         default:
             fpa_type = -1;
             break;
         }
 
-        /* Inverted mode is not supported by x264 */
+
         if (stereo->flags & AV_STEREO3D_FLAG_INVERT) {
             av_log(ctx, AV_LOG_WARNING,
                    "Ignoring unsupported inverted stereo value %d\n", fpa_type);

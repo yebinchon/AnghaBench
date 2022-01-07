@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPARAM ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int WPARAM ;
+typedef int WCHAR ;
+typedef int UINT ;
 struct TYPE_2__ {scalar_t__ ServiceList; scalar_t__ DisplayName; } ;
-typedef  TYPE_1__* PSTOP_DATA ;
-typedef  scalar_t__ LPWSTR ;
-typedef  scalar_t__ LPARAM ;
-typedef  scalar_t__ HWND ;
-typedef  int /*<<< orphan*/ * HICON ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__* PSTOP_DATA ;
+typedef scalar_t__ LPWSTR ;
+typedef scalar_t__ LPARAM ;
+typedef scalar_t__ HWND ;
+typedef int * HICON ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddServiceNamesToStop (scalar_t__,scalar_t__) ; 
- scalar_t__ AllocAndLoadString (scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DestroyIcon (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GetDlgItem (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetSystemMetrics (int /*<<< orphan*/ ) ; 
- scalar_t__ HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  ICON_SMALL ; 
- int /*<<< orphan*/  IDC_STOP_DEPENDS ; 
- int /*<<< orphan*/  IDC_STOP_DEPENDS_LB ; 
- int /*<<< orphan*/  IDI_SM_ICON ; 
- int /*<<< orphan*/  IDS_STOP_DEPENDS ; 
- int /*<<< orphan*/  IMAGE_ICON ; 
- scalar_t__ LoadImageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LocalFree (scalar_t__) ; 
- int /*<<< orphan*/  MAKEINTRESOURCE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ProcessHeap ; 
- int /*<<< orphan*/  SM_CXSMICON ; 
- int /*<<< orphan*/  SendDlgItemMessageW (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  SendMessageW (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WM_SETICON ; 
- int /*<<< orphan*/  WM_SETTEXT ; 
- int /*<<< orphan*/  _snwprintf (scalar_t__,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  hInstance ; 
- int wcslen (scalar_t__) ; 
+
+ int AddServiceNamesToStop (scalar_t__,scalar_t__) ;
+ scalar_t__ AllocAndLoadString (scalar_t__*,int ,int ) ;
+ int DestroyIcon (int *) ;
+ int FALSE ;
+ scalar_t__ GetDlgItem (scalar_t__,int ) ;
+ int GetSystemMetrics (int ) ;
+ scalar_t__ HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,scalar_t__) ;
+ int ICON_SMALL ;
+ int IDC_STOP_DEPENDS ;
+ int IDC_STOP_DEPENDS_LB ;
+ int IDI_SM_ICON ;
+ int IDS_STOP_DEPENDS ;
+ int IMAGE_ICON ;
+ scalar_t__ LoadImageW (int ,int ,int ,int ,int ,int ) ;
+ int LocalFree (scalar_t__) ;
+ int MAKEINTRESOURCE (int ) ;
+ int ProcessHeap ;
+ int SM_CXSMICON ;
+ int SendDlgItemMessageW (scalar_t__,int ,int ,int ,scalar_t__) ;
+ int SendMessageW (scalar_t__,int ,int ,scalar_t__) ;
+ int TRUE ;
+ int WM_SETICON ;
+ int WM_SETTEXT ;
+ int _snwprintf (scalar_t__,int,scalar_t__,scalar_t__) ;
+ int hInstance ;
+ int wcslen (scalar_t__) ;
 
 __attribute__((used)) static BOOL
 InitDialog(HWND hDlg,
@@ -62,13 +62,13 @@ InitDialog(HWND hDlg,
     HWND hServiceListBox;
     LPWSTR lpPartialStr, lpStr;
     DWORD fullLen;
-    HICON hIcon = NULL;
+    HICON hIcon = ((void*)0);
     BOOL bRet = FALSE;
 
     StopData = (PSTOP_DATA)lParam;
 
 
-    /* Load the icon for the window */
+
     hIcon = (HICON)LoadImageW(hInstance,
                                 MAKEINTRESOURCE(IDI_SM_ICON),
                                 IMAGE_ICON,
@@ -77,7 +77,7 @@ InitDialog(HWND hDlg,
                                 0);
     if (hIcon)
     {
-        /* Set it */
+
         SendMessageW(hDlg,
                         WM_SETICON,
                         ICON_SMALL,
@@ -85,12 +85,12 @@ InitDialog(HWND hDlg,
         DestroyIcon(hIcon);
     }
 
-    /* Load the stop depends note */
+
     if (AllocAndLoadString(&lpPartialStr,
                             hInstance,
                             IDS_STOP_DEPENDS))
     {
-        /* Get the length required */
+
         fullLen = wcslen(lpPartialStr) + wcslen(StopData->DisplayName) + 1;
 
         lpStr = HeapAlloc(ProcessHeap,
@@ -98,13 +98,13 @@ InitDialog(HWND hDlg,
                           fullLen * sizeof(WCHAR));
         if (lpStr)
         {
-            /* Add the service name to the depends note */
+
             _snwprintf(lpStr,
                         fullLen,
                         lpPartialStr,
                         StopData->DisplayName);
 
-            /* Add the string to the dialog */
+
             SendDlgItemMessageW(hDlg,
                                 IDC_STOP_DEPENDS,
                                 WM_SETTEXT,
@@ -121,13 +121,13 @@ InitDialog(HWND hDlg,
         LocalFree(lpPartialStr);
     }
 
-    /* Display the list of services which need stopping */
+
     hServiceListBox = GetDlgItem(hDlg, IDC_STOP_DEPENDS_LB);
     if (hServiceListBox)
     {
         AddServiceNamesToStop(hServiceListBox,
                               (LPWSTR)StopData->ServiceList);
     }
- 
+
     return bRet;
 }

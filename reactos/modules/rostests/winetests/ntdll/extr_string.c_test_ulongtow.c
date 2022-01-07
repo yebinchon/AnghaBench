@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int mask; int /*<<< orphan*/  value; } ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
 
-/* Variables and functions */
- int NB_ULONG2STR ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  one_itow_test (int,TYPE_1__*) ; 
- int /*<<< orphan*/  one_ltow_test (int,TYPE_1__*) ; 
- int /*<<< orphan*/  one_ultow_test (int,TYPE_1__*) ; 
- int /*<<< orphan*/ * p_itow (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * p_ltow (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * p_ultow (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- TYPE_1__* ulong2str ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int mask; int value; } ;
+typedef int * LPWSTR ;
+
+
+ int NB_ULONG2STR ;
+ int ok (int ,char*,int ,int *) ;
+ int one_itow_test (int,TYPE_1__*) ;
+ int one_ltow_test (int,TYPE_1__*) ;
+ int one_ultow_test (int,TYPE_1__*) ;
+ int * p_itow (int ,int *,int) ;
+ int * p_ltow (int ,int *,int) ;
+ int * p_ultow (int ,int *,int) ;
+ TYPE_1__* ulong2str ;
 
 __attribute__((used)) static void test_ulongtow(void)
 {
@@ -31,37 +31,37 @@ __attribute__((used)) static void test_ulongtow(void)
     LPWSTR result;
 
     for (test_num = 0; test_num < NB_ULONG2STR; test_num++) {
-	if (ulong2str[test_num].mask & 0x10) {
-	    one_itow_test(test_num, &ulong2str[test_num]);
-	} /* if */
-	if (ulong2str[test_num].mask & 0x20) {
-	    one_ltow_test(test_num, &ulong2str[test_num]);
-	} /* if */
-	if (ulong2str[test_num].mask & 0x40) {
-	    one_ultow_test(test_num, &ulong2str[test_num]);
-	} /* if */
-    } /* for */
+ if (ulong2str[test_num].mask & 0x10) {
+     one_itow_test(test_num, &ulong2str[test_num]);
+ }
+ if (ulong2str[test_num].mask & 0x20) {
+     one_ltow_test(test_num, &ulong2str[test_num]);
+ }
+ if (ulong2str[test_num].mask & 0x40) {
+     one_ultow_test(test_num, &ulong2str[test_num]);
+ }
+    }
 
     if (0) {
-        /* Crashes on XP and W2K3 */
-        result = p_itow(ulong2str[0].value, NULL, 10);
-        ok(result == NULL,
+
+        result = p_itow(ulong2str[0].value, ((void*)0), 10);
+        ok(result == ((void*)0),
            "(test a): _itow(%d, NULL, 10) has result %p, expected: NULL\n",
            ulong2str[0].value, result);
     }
 
     if (0) {
-        /* Crashes on XP and W2K3 */
-        result = p_ltow(ulong2str[0].value, NULL, 10);
-        ok(result == NULL,
+
+        result = p_ltow(ulong2str[0].value, ((void*)0), 10);
+        ok(result == ((void*)0),
            "(test b): _ltow(%d, NULL, 10) has result %p, expected: NULL\n",
            ulong2str[0].value, result);
     }
 
     if (0) {
-        /* Crashes on XP and W2K3 */
-        result = p_ultow(ulong2str[0].value, NULL, 10);
-        ok(result == NULL,
+
+        result = p_ultow(ulong2str[0].value, ((void*)0), 10);
+        ok(result == ((void*)0),
            "(test c): _ultow(%d, NULL, 10) has result %p, expected: NULL\n",
            ulong2str[0].value, result);
     }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-struct TYPE_11__ {int /*<<< orphan*/  assoc6; int /*<<< orphan*/  assoc4; int /*<<< orphan*/  public_key; } ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_11__ {int assoc6; int assoc4; int public_key; } ;
 struct TYPE_10__ {int num_friends; TYPE_1__* friends_list; } ;
-struct TYPE_9__ {int /*<<< orphan*/  port; int /*<<< orphan*/  ip; } ;
-struct TYPE_8__ {TYPE_4__* client_list; int /*<<< orphan*/  public_key; } ;
-typedef  TYPE_2__ IP_Port ;
-typedef  TYPE_3__ DHT ;
-typedef  TYPE_4__ Client_data ;
+struct TYPE_9__ {int port; int ip; } ;
+struct TYPE_8__ {TYPE_4__* client_list; int public_key; } ;
+typedef TYPE_2__ IP_Port ;
+typedef TYPE_3__ DHT ;
+typedef TYPE_4__ Client_data ;
 
-/* Variables and functions */
- int DHT_getfriendip (TYPE_3__*,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int MAX_FRIEND_CLIENTS ; 
- char* ip_ntoa (int /*<<< orphan*/ *) ; 
- int ntohs (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_assoc (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_client_id (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ public_key_cmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zeroes_cid ; 
+
+ int DHT_getfriendip (TYPE_3__*,int ,TYPE_2__*) ;
+ int MAX_FRIEND_CLIENTS ;
+ char* ip_ntoa (int *) ;
+ int ntohs (int ) ;
+ int print_assoc (int *,int ) ;
+ int print_client_id (int ) ;
+ int printf (char*,...) ;
+ scalar_t__ public_key_cmp (int ,int ) ;
+ int zeroes_cid ;
 
 void print_friendlist(DHT *dht)
 {

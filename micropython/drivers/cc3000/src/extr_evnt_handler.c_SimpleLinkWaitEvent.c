@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT16 ;
-struct TYPE_2__ {int /*<<< orphan*/  usRxEventOpcode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hci_event_handler (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__ tSLInformation ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int UINT16 ;
+struct TYPE_2__ {int usRxEventOpcode; } ;
+
+
+ int hci_event_handler (void*,int ,int ) ;
+ TYPE_1__ tSLInformation ;
 
 void SimpleLinkWaitEvent(UINT16 usOpcode, void *pRetParams)
 {
-	// In the blocking implementation the control to caller will be returned only 
-	// after the end of current transaction
-	tSLInformation.usRxEventOpcode = usOpcode;
-	hci_event_handler(pRetParams, 0, 0);
+
+
+ tSLInformation.usRxEventOpcode = usOpcode;
+ hci_event_handler(pRetParams, 0, 0);
 }

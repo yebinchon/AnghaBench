@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int rc; int /*<<< orphan*/  zErrmsg; int /*<<< orphan*/  dbMain; } ;
-typedef  TYPE_1__ sqlite3rbu ;
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-struct TYPE_9__ {char const* zIdx; int bCleanup; char const* zTbl; char const* zDataTbl; int /*<<< orphan*/ * pIdxIter; void* bUnique; void* iTnum; int /*<<< orphan*/ * pTblIter; } ;
-typedef  TYPE_2__ RbuObjIter ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int SQLITE_ROW ; 
- int /*<<< orphan*/  SQLITE_STATIC ; 
- int /*<<< orphan*/  rbuObjIterClearStatements (TYPE_2__*) ; 
- int /*<<< orphan*/  rbuObjIterFinalize (TYPE_2__*) ; 
- int /*<<< orphan*/  rbuObjIterFreeCols (TYPE_2__*) ; 
- int resetAndCollectError (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int sqlite3_bind_text (int /*<<< orphan*/ *,int,char const*,int,int /*<<< orphan*/ ) ; 
- void* sqlite3_column_int (int /*<<< orphan*/ *,int) ; 
- scalar_t__ sqlite3_column_text (int /*<<< orphan*/ *,int) ; 
- int sqlite3_exec (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int sqlite3_step (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int rc; int zErrmsg; int dbMain; } ;
+typedef TYPE_1__ sqlite3rbu ;
+typedef int sqlite3_stmt ;
+struct TYPE_9__ {char const* zIdx; int bCleanup; char const* zTbl; char const* zDataTbl; int * pIdxIter; void* bUnique; void* iTnum; int * pTblIter; } ;
+typedef TYPE_2__ RbuObjIter ;
+
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int SQLITE_ROW ;
+ int SQLITE_STATIC ;
+ int rbuObjIterClearStatements (TYPE_2__*) ;
+ int rbuObjIterFinalize (TYPE_2__*) ;
+ int rbuObjIterFreeCols (TYPE_2__*) ;
+ int resetAndCollectError (int *,int *) ;
+ int sqlite3_bind_text (int *,int,char const*,int,int ) ;
+ void* sqlite3_column_int (int *,int) ;
+ scalar_t__ sqlite3_column_text (int *,int) ;
+ int sqlite3_exec (int ,char*,int ,int ,int *) ;
+ int sqlite3_step (int *) ;
 
 __attribute__((used)) static int rbuObjIterNext(sqlite3rbu *p, RbuObjIter *pIter){
   int rc = p->rc;
   if( rc==SQLITE_OK ){
 
-    /* Free any SQLite statements used while processing the previous object */ 
+
     rbuObjIterClearStatements(pIter);
     if( pIter->zIdx==0 ){
       rc = sqlite3_exec(p->dbMain,

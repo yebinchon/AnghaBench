@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  WARN (char*) ; 
- char* heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (char*) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- char* strchr (char const*,char) ; 
- int strlen (char const*) ; 
- char* strstr (char*,char*) ; 
- char tolower (char) ; 
+ int WARN (char*) ;
+ char* heap_alloc (int) ;
+ int heap_free (char*) ;
+ int memcpy (char*,char const*,int) ;
+ char* strchr (char const*,char) ;
+ int strlen (char const*) ;
+ char* strstr (char*,char*) ;
+ char tolower (char) ;
 
 const char *get_attr(const char *node, const char *name, int *len)
 {
@@ -29,15 +21,15 @@ const char *get_attr(const char *node, const char *name, int *len)
     char *node_buf;
     int i;
 
-    /* Create a lower case copy of the node */
+
     node_len = strlen(node)+1;
     node_buf = heap_alloc(node_len*sizeof(char));
     if(!node_buf)
-        return NULL;
+        return ((void*)0);
     memcpy(node_buf, node, node_len);
     for(i=0;i<node_len;i++)
         node_buf[i] = tolower(node_buf[i]);
-    /* Create a lower case copy of the attribute name (search string) */
+
     name_len = strlen(name);
     memcpy(name_buf, name, name_len);
     for(i=0;i<name_len;i++)
@@ -50,7 +42,7 @@ const char *get_attr(const char *node, const char *name, int *len)
     if(!ptr) {
         WARN("name not found\n");
         heap_free(node_buf);
-        return NULL;
+        return ((void*)0);
     }
 
     ptr += name_len;
@@ -58,11 +50,11 @@ const char *get_attr(const char *node, const char *name, int *len)
     if(!ptr2)
     {
         heap_free(node_buf);
-        return NULL;
+        return ((void*)0);
     }
 
     *len = ptr2-ptr;
-    /* Return the pointer offset within the original string */
+
     ptr = node+(ptr-node_buf);
 
     heap_free(node_buf);

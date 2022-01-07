@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  surface_desc ;
-struct d3drm_device {int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/ * device; int /*<<< orphan*/ * render_target; int /*<<< orphan*/  d3drm; int /*<<< orphan*/ * ddraw; } ;
-typedef  int /*<<< orphan*/  desc ;
-typedef  int UINT ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int surface_desc ;
+struct d3drm_device {int height; int width; int * device; int * render_target; int d3drm; int * ddraw; } ;
+typedef int desc ;
+typedef int UINT ;
 struct TYPE_12__ {int member_0; } ;
 struct TYPE_10__ {int dwZBufferBitDepth; } ;
 struct TYPE_9__ {int dwCaps; } ;
-struct TYPE_11__ {int dwSize; int dwFlags; int /*<<< orphan*/  dwHeight; int /*<<< orphan*/  dwWidth; TYPE_2__ u2; TYPE_1__ ddsCaps; } ;
-typedef  int /*<<< orphan*/  IDirectDrawSurface ;
-typedef  int /*<<< orphan*/  IDirectDraw ;
-typedef  int /*<<< orphan*/  IDirect3DDevice2 ;
-typedef  int /*<<< orphan*/  IDirect3DDevice ;
-typedef  int /*<<< orphan*/  IDirect3D2 ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_3__ DDSURFACEDESC ;
-typedef  TYPE_4__ DDSCAPS ;
-typedef  scalar_t__ BOOL ;
+struct TYPE_11__ {int dwSize; int dwFlags; int dwHeight; int dwWidth; TYPE_2__ u2; TYPE_1__ ddsCaps; } ;
+typedef int IDirectDrawSurface ;
+typedef int IDirectDraw ;
+typedef int IDirect3DDevice2 ;
+typedef int IDirect3DDevice ;
+typedef int IDirect3D2 ;
+typedef int HRESULT ;
+typedef TYPE_3__ DDSURFACEDESC ;
+typedef TYPE_4__ DDSCAPS ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DDERR_INVALIDCAPS ; 
- int DDSCAPS_3DDEVICE ; 
- int DDSCAPS_ZBUFFER ; 
- int DDSD_CAPS ; 
- int DDSD_HEIGHT ; 
- int DDSD_WIDTH ; 
- int DDSD_ZBUFFERBITDEPTH ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  IDirect3D2_CreateDevice (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IDirect3D2_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirect3DDevice2_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IDirect3DDevice2_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirect3DRM_AddRef (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDirectDrawSurface_AddAttachedSurface (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirectDrawSurface_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirectDrawSurface_DeleteAttachedSurface (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirectDrawSurface_GetAttachedSurface (int /*<<< orphan*/ *,TYPE_4__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IDirectDrawSurface_GetSurfaceDesc (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  IDirectDrawSurface_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IDirectDrawSurface_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirectDraw_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirectDraw_CreateSurface (int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirectDraw_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IID_IDirect3D2 ; 
- int /*<<< orphan*/  IID_IDirect3DDevice ; 
- int /*<<< orphan*/  IID_IDirect3DRGBDevice ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
+
+ int DDERR_INVALIDCAPS ;
+ int DDSCAPS_3DDEVICE ;
+ int DDSCAPS_ZBUFFER ;
+ int DDSD_CAPS ;
+ int DDSD_HEIGHT ;
+ int DDSD_WIDTH ;
+ int DDSD_ZBUFFERBITDEPTH ;
+ scalar_t__ FAILED (int ) ;
+ scalar_t__ FALSE ;
+ int IDirect3D2_CreateDevice (int *,int *,int *,int **) ;
+ int IDirect3D2_Release (int *) ;
+ int IDirect3DDevice2_QueryInterface (int *,int *,void**) ;
+ int IDirect3DDevice2_Release (int *) ;
+ int IDirect3DRM_AddRef (int ) ;
+ int IDirectDrawSurface_AddAttachedSurface (int *,int *) ;
+ int IDirectDrawSurface_AddRef (int *) ;
+ int IDirectDrawSurface_DeleteAttachedSurface (int *,int ,int *) ;
+ int IDirectDrawSurface_GetAttachedSurface (int *,TYPE_4__*,int **) ;
+ int IDirectDrawSurface_GetSurfaceDesc (int *,TYPE_3__*) ;
+ int IDirectDrawSurface_QueryInterface (int *,int *,void**) ;
+ int IDirectDrawSurface_Release (int *) ;
+ int IDirectDraw_AddRef (int *) ;
+ int IDirectDraw_CreateSurface (int *,TYPE_3__*,int **,int *) ;
+ int IDirectDraw_QueryInterface (int *,int *,void**) ;
+ int IID_IDirect3D2 ;
+ int IID_IDirect3DDevice ;
+ int IID_IDirect3DRGBDevice ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int memset (TYPE_3__*,int ,int) ;
 
 HRESULT d3drm_device_init(struct d3drm_device *device, UINT version, IDirectDraw *ddraw, IDirectDrawSurface *surface,
             BOOL create_z_surface)
 {
     DDSCAPS caps = { DDSCAPS_ZBUFFER };
-    IDirectDrawSurface *ds = NULL;
-    IDirect3DDevice *device1 = NULL;
-    IDirect3DDevice2 *device2 = NULL;
-    IDirect3D2 *d3d2 = NULL;
+    IDirectDrawSurface *ds = ((void*)0);
+    IDirect3DDevice *device1 = ((void*)0);
+    IDirect3DDevice2 *device2 = ((void*)0);
+    IDirect3D2 *d3d2 = ((void*)0);
     DDSURFACEDESC desc, surface_desc;
     HRESULT hr;
 
@@ -93,7 +93,7 @@ HRESULT d3drm_device_init(struct d3drm_device *device, UINT version, IDirectDraw
     {
         create_z_surface = FALSE;
         IDirectDrawSurface_Release(ds);
-        ds = NULL;
+        ds = ((void*)0);
     }
 
     if (create_z_surface)
@@ -105,7 +105,7 @@ HRESULT d3drm_device_init(struct d3drm_device *device, UINT version, IDirectDraw
         surface_desc.u2.dwZBufferBitDepth = 16;
         surface_desc.dwWidth = desc.dwWidth;
         surface_desc.dwHeight = desc.dwHeight;
-        hr = IDirectDraw_CreateSurface(ddraw, &surface_desc, &ds, NULL);
+        hr = IDirectDraw_CreateSurface(ddraw, &surface_desc, &ds, ((void*)0));
         if (FAILED(hr))
             return hr;
 

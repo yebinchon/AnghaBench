@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-struct rite_binary_footer {int /*<<< orphan*/  section_size; int /*<<< orphan*/ * section_ident; } ;
-typedef  int /*<<< orphan*/  mrb_state ;
 
-/* Variables and functions */
- struct rite_binary_footer* RITE_BINARY_EOF ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,struct rite_binary_footer*,int) ; 
- int /*<<< orphan*/  uint32_to_bin (int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct rite_binary_footer {int section_size; int * section_ident; } ;
+typedef int mrb_state ;
+
+
+ struct rite_binary_footer* RITE_BINARY_EOF ;
+ int memcpy (int *,struct rite_binary_footer*,int) ;
+ int uint32_to_bin (int,int ) ;
 
 __attribute__((used)) static uint32_t
 write_footer(mrb_state *mrb, uint8_t *bin)

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IHTMLStyleSheetRulesCollection ;
-typedef  int /*<<< orphan*/  IHTMLStyleSheet ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/ * BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DIID_DispHTMLStyleSheet ; 
- int /*<<< orphan*/  DIID_DispHTMLStyleSheetRulesCollection ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ IDispatch_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IHTMLStyleSheetRulesCollection_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IHTMLStyleSheet_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLStyleSheet_get_href (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IHTMLStyleSheet_get_rules (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IID_IHTMLStyleSheet ; 
- int /*<<< orphan*/  IID_IHTMLStyleSheetRulesCollection ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  set_stylesheet_csstext (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_disp2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_stylesheet_csstext (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int IUnknown ;
+typedef int IHTMLStyleSheetRulesCollection ;
+typedef int IHTMLStyleSheet ;
+typedef int IDispatch ;
+typedef scalar_t__ HRESULT ;
+typedef int * BSTR ;
+
+
+ int DIID_DispHTMLStyleSheet ;
+ int DIID_DispHTMLStyleSheetRulesCollection ;
+ int FALSE ;
+ scalar_t__ IDispatch_QueryInterface (int *,int *,void**) ;
+ int IHTMLStyleSheetRulesCollection_Release (int *) ;
+ int IHTMLStyleSheet_Release (int *) ;
+ scalar_t__ IHTMLStyleSheet_get_href (int *,int **) ;
+ scalar_t__ IHTMLStyleSheet_get_rules (int *,int **) ;
+ int IID_IHTMLStyleSheet ;
+ int IID_IHTMLStyleSheetRulesCollection ;
+ scalar_t__ S_OK ;
+ int SysFreeString (int *) ;
+ int TRUE ;
+ int ok (int,char*,...) ;
+ int set_stylesheet_csstext (int *,char*,int ) ;
+ int test_disp2 (int *,int *,int *,char*) ;
+ int test_stylesheet_csstext (int *,char*,int ) ;
 
 __attribute__((used)) static void test_stylesheet(IDispatch *disp)
 {
-    IHTMLStyleSheetRulesCollection *col = NULL;
+    IHTMLStyleSheetRulesCollection *col = ((void*)0);
     IHTMLStyleSheet *stylesheet;
     HRESULT hres;
     BSTR href;
@@ -50,7 +50,7 @@ __attribute__((used)) static void test_stylesheet(IDispatch *disp)
 
     hres = IHTMLStyleSheet_get_rules(stylesheet, &col);
     ok(hres == S_OK, "get_rules failed: %08x\n", hres);
-    ok(col != NULL, "col == NULL\n");
+    ok(col != ((void*)0), "col == NULL\n");
 
     test_disp2((IUnknown*)col, &DIID_DispHTMLStyleSheetRulesCollection, &IID_IHTMLStyleSheetRulesCollection, "[object]");
     IHTMLStyleSheetRulesCollection_Release(col);
@@ -58,14 +58,14 @@ __attribute__((used)) static void test_stylesheet(IDispatch *disp)
     href = (void*)0xdeadbeef;
     hres = IHTMLStyleSheet_get_href(stylesheet, &href);
     ok(hres == S_OK, "get_href failed: %08x\n", hres);
-    ok(href == NULL, "got href != NULL\n");
+    ok(href == ((void*)0), "got href != NULL\n");
     SysFreeString(href);
 
     test_stylesheet_csstext(stylesheet, ".body {", FALSE);
     set_stylesheet_csstext(stylesheet, ".div { margin-right: 1px; }\n.body { margin-right: 2px; }", TRUE);
     test_stylesheet_csstext(stylesheet, ".div {", TRUE);
     set_stylesheet_csstext(stylesheet, "", FALSE);
-    test_stylesheet_csstext(stylesheet, NULL, FALSE);
+    test_stylesheet_csstext(stylesheet, ((void*)0), FALSE);
     set_stylesheet_csstext(stylesheet, ".div { margin-right: 1px; }", FALSE);
     test_stylesheet_csstext(stylesheet, ".div {", FALSE);
 

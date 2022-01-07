@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct scsi_cmd {int dummy; } ;
-typedef  int /*<<< orphan*/  header ;
+typedef int header ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENOMEDIUM ; 
- int /*<<< orphan*/  SYNTHETIC_ERRNO (int /*<<< orphan*/ ) ; 
- scalar_t__ cd_cd_r ; 
- int cd_media ; 
- int cd_media_cd_r ; 
- int cd_media_cd_rom ; 
- int cd_media_cd_rw ; 
- int cd_media_track_count ; 
- int cd_media_track_count_data ; 
- int /*<<< orphan*/  info_scsi_cmd_err (char*,int) ; 
- int /*<<< orphan*/  log_debug (char*) ; 
- int log_debug_errno (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  scsi_cmd_init (struct scsi_cmd*) ; 
- int scsi_cmd_run (struct scsi_cmd*,int,unsigned char*,int) ; 
- int /*<<< orphan*/  scsi_cmd_set (struct scsi_cmd*,int,int) ; 
+
+ int ENOMEDIUM ;
+ int SYNTHETIC_ERRNO (int ) ;
+ scalar_t__ cd_cd_r ;
+ int cd_media ;
+ int cd_media_cd_r ;
+ int cd_media_cd_rom ;
+ int cd_media_cd_rw ;
+ int cd_media_track_count ;
+ int cd_media_track_count_data ;
+ int info_scsi_cmd_err (char*,int) ;
+ int log_debug (char*) ;
+ int log_debug_errno (int ,char*) ;
+ int scsi_cmd_init (struct scsi_cmd*) ;
+ int scsi_cmd_run (struct scsi_cmd*,int,unsigned char*,int) ;
+ int scsi_cmd_set (struct scsi_cmd*,int,int) ;
 
 __attribute__((used)) static int cd_profiles_old_mmc(int fd) {
         struct scsi_cmd sc;

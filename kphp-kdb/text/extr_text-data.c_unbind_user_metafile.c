@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int user_id; int /*<<< orphan*/  topmsg_tree; TYPE_1__* Sublists; TYPE_3__* mf; } ;
-typedef  TYPE_2__ user_t ;
-struct TYPE_8__ {char* data; int /*<<< orphan*/  aio; } ;
-typedef  TYPE_3__ core_mf_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int user_id; int topmsg_tree; TYPE_1__* Sublists; TYPE_3__* mf; } ;
+typedef TYPE_2__ user_t ;
+struct TYPE_8__ {char* data; int aio; } ;
+typedef TYPE_3__ core_mf_t ;
 struct TYPE_6__ {scalar_t__ A; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NIL_N ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,TYPE_2__*,int,char*) ; 
- int /*<<< orphan*/  free_tree_num (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int sublists_num ; 
- int verbosity ; 
+
+ int NIL_N ;
+ int assert (int ) ;
+ int fprintf (int ,char*,TYPE_2__*,int,char*) ;
+ int free_tree_num (int ) ;
+ int stderr ;
+ int sublists_num ;
+ int verbosity ;
 
 void unbind_user_metafile (user_t *U) {
   int i;

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  encoded ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int encoded ;
 struct TYPE_9__ {char* data; int len; } ;
 struct TYPE_10__ {TYPE_2__ typdesc_seg; } ;
-typedef  TYPE_3__ WMSFT_TLBFile ;
-typedef  int VARTYPE ;
-struct TYPE_8__ {int hreftype; int /*<<< orphan*/  lpadesc; TYPE_4__* lptdesc; } ;
+typedef TYPE_3__ WMSFT_TLBFile ;
+typedef int VARTYPE ;
+struct TYPE_8__ {int hreftype; int lpadesc; TYPE_4__* lptdesc; } ;
 struct TYPE_11__ {int vt; TYPE_1__ u; } ;
-typedef  TYPE_4__ TYPEDESC ;
-typedef  int INT16 ;
-typedef  int DWORD ;
+typedef TYPE_4__ TYPEDESC ;
+typedef int INT16 ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRACE (char*,int) ; 
- int VT_BYREF ; 
- int VT_CARRAY ; 
- int VT_EMPTY ; 
- int VT_I4 ; 
-#define  VT_INT 130 
- int VT_PTR ; 
- int VT_SAFEARRAY ; 
- int VT_TYPEMASK ; 
- int VT_UI4 ; 
-#define  VT_UINT 129 
- int VT_USERDEFINED ; 
-#define  VT_VOID 128 
- int WMSFT_append_arraydesc (int /*<<< orphan*/ ,TYPE_3__*) ; 
- char* heap_alloc (int) ; 
- char* heap_realloc (char*,int) ; 
- int /*<<< orphan*/  memcmp (char*,int*,int) ; 
- int /*<<< orphan*/  memcpy (char*,int*,int) ; 
+
+ int TRACE (char*,int) ;
+ int VT_BYREF ;
+ int VT_CARRAY ;
+ int VT_EMPTY ;
+ int VT_I4 ;
+
+ int VT_PTR ;
+ int VT_SAFEARRAY ;
+ int VT_TYPEMASK ;
+ int VT_UI4 ;
+
+ int VT_USERDEFINED ;
+
+ int WMSFT_append_arraydesc (int ,TYPE_3__*) ;
+ char* heap_alloc (int) ;
+ char* heap_realloc (char*,int) ;
+ int memcmp (char*,int*,int) ;
+ int memcpy (char*,int*,int) ;
 
 __attribute__((used)) static DWORD WMSFT_append_typedesc(TYPEDESC *desc, WMSFT_TLBFile *file, DWORD *out_mix, INT16 *out_size)
 {
@@ -77,18 +77,18 @@ __attribute__((used)) static DWORD WMSFT_append_typedesc(TYPEDESC *desc, WMSFT_T
     }else if(vt == VT_USERDEFINED){
         encoded[0] = desc->vt | (0x7FFF << 16);
         encoded[1] = desc->u.hreftype;
-        *out_mix = 0x7FFF; /* FIXME: Should get TYPEKIND of the hreftype, e.g. TKIND_ENUM => VT_I4 */
+        *out_mix = 0x7FFF;
     }else{
         TRACE("Mixing in-place, VT: 0x%x\n", desc->vt);
 
         switch(vt){
-        case VT_INT:
+        case 130:
             subtype = VT_I4;
             break;
-        case VT_UINT:
+        case 129:
             subtype = VT_UI4;
             break;
-        case VT_VOID:
+        case 128:
             subtype = VT_EMPTY;
             break;
         default:

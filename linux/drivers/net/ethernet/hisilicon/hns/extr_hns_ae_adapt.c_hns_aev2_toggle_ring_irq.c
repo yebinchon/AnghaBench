@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct hnae_ring {int /*<<< orphan*/  q; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RCB_INT_FLAG_RX ; 
- int /*<<< orphan*/  RCB_INT_FLAG_TX ; 
- int /*<<< orphan*/  hns_rcbv2_int_ctrl_hw (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ is_tx_ring (struct hnae_ring*) ; 
+
+
+
+typedef int u32 ;
+struct hnae_ring {int q; } ;
+
+
+ int RCB_INT_FLAG_RX ;
+ int RCB_INT_FLAG_TX ;
+ int hns_rcbv2_int_ctrl_hw (int ,int ,int ) ;
+ scalar_t__ is_tx_ring (struct hnae_ring*) ;
 
 __attribute__((used)) static void hns_aev2_toggle_ring_irq(struct hnae_ring *ring, u32 mask)
 {
-	u32 flag;
+ u32 flag;
 
-	if (is_tx_ring(ring))
-		flag = RCB_INT_FLAG_TX;
-	else
-		flag = RCB_INT_FLAG_RX;
+ if (is_tx_ring(ring))
+  flag = RCB_INT_FLAG_TX;
+ else
+  flag = RCB_INT_FLAG_RX;
 
-	hns_rcbv2_int_ctrl_hw(ring->q, flag, mask);
+ hns_rcbv2_int_ctrl_hw(ring->q, flag, mask);
 }

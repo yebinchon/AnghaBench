@@ -1,47 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int GpDashStyle ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
-#define  DashStyleCustom 133 
-#define  DashStyleDash 132 
-#define  DashStyleDashDot 131 
-#define  DashStyleDashDotDot 130 
-#define  DashStyleDot 129 
-#define  DashStyleSolid 128 
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  PS_DASH ; 
- int /*<<< orphan*/  PS_DASHDOT ; 
- int /*<<< orphan*/  PS_DASHDOTDOT ; 
- int /*<<< orphan*/  PS_DOT ; 
- int /*<<< orphan*/  PS_SOLID ; 
- int /*<<< orphan*/  PS_USERSTYLE ; 
+
+
+
+typedef int GpDashStyle ;
+typedef int DWORD ;
+ int ERR (char*) ;
+ int PS_DASH ;
+ int PS_DASHDOT ;
+ int PS_DASHDOTDOT ;
+ int PS_DOT ;
+ int PS_SOLID ;
+ int PS_USERSTYLE ;
 
 __attribute__((used)) static DWORD gdip_to_gdi_dash(GpDashStyle dash)
 {
     switch(dash){
-        case DashStyleSolid:
+        case 128:
             return PS_SOLID;
-        case DashStyleDash:
+        case 132:
             return PS_DASH;
-        case DashStyleDot:
+        case 129:
             return PS_DOT;
-        case DashStyleDashDot:
+        case 131:
             return PS_DASHDOT;
-        case DashStyleDashDotDot:
+        case 130:
             return PS_DASHDOTDOT;
-        case DashStyleCustom:
+        case 133:
             return PS_USERSTYLE;
         default:
             ERR("Not a member of GpDashStyle enumeration\n");

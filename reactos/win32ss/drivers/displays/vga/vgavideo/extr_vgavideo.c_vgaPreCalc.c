@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int ULONG ;
 
-/* Variables and functions */
- int* PreCalcReverseByte ; 
- int SCREEN_X ; 
- int SCREEN_Y ; 
- int* UnpackPixel ; 
- int* bit8 ; 
- int* endmasks ; 
- int* maskbit ; 
- int* startmasks ; 
- int* xconv ; 
- int* y80 ; 
+
+
+
+typedef int VOID ;
+typedef int ULONG ;
+
+
+ int* PreCalcReverseByte ;
+ int SCREEN_X ;
+ int SCREEN_Y ;
+ int* UnpackPixel ;
+ int* bit8 ;
+ int* endmasks ;
+ int* maskbit ;
+ int* startmasks ;
+ int* xconv ;
+ int* y80 ;
 
 VOID vgaPreCalc()
 {
@@ -49,7 +49,7 @@ VOID vgaPreCalc()
 
     for (j = 0; j < 80; j++)
     {
-        maskbit[j*8]   = 128;
+        maskbit[j*8] = 128;
         maskbit[j*8+1] = 64;
         maskbit[j*8+2] = 32;
         maskbit[j*8+3] = 16;
@@ -58,7 +58,7 @@ VOID vgaPreCalc()
         maskbit[j*8+6] = 2;
         maskbit[j*8+7] = 1;
 
-        bit8[j*8]   = 7;
+        bit8[j*8] = 7;
         bit8[j*8+1] = 6;
         bit8[j*8+2] = 5;
         bit8[j*8+3] = 4;
@@ -68,7 +68,7 @@ VOID vgaPreCalc()
         bit8[j*8+7] = 0;
     }
     for (j = 0; j < SCREEN_Y; j++)
-        y80[j]  = j*80;
+        y80[j] = j*80;
     for (j = 0; j < SCREEN_X; j++)
         xconv[j] = j >> 3;
 

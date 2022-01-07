@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u64 ;
-typedef  int u32 ;
+
+
+
+
+typedef int u64 ;
+typedef int u32 ;
 struct wmi_dbglog_cfg_cmd {void* config_valid; void* config_enable; void* module_valid; void* module_enable; } ;
 struct sk_buff {scalar_t__ data; } ;
 struct ath10k {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATH10K_DBGLOG_CFG_LOG_LVL ; 
- int ATH10K_DBGLOG_CFG_LOG_LVL_MASK ; 
- int ATH10K_DBGLOG_LEVEL_WARN ; 
- int /*<<< orphan*/  ATH10K_DBG_WMI ; 
- int /*<<< orphan*/  ENOMEM ; 
- struct sk_buff* ERR_PTR (int /*<<< orphan*/ ) ; 
- int SM (int,int /*<<< orphan*/ ) ; 
- void* __cpu_to_le32 (int) ; 
- int /*<<< orphan*/  __le32_to_cpu (void*) ; 
- int /*<<< orphan*/  ath10k_dbg (struct ath10k*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct sk_buff* ath10k_wmi_alloc_skb (struct ath10k*,int) ; 
+
+ int ATH10K_DBGLOG_CFG_LOG_LVL ;
+ int ATH10K_DBGLOG_CFG_LOG_LVL_MASK ;
+ int ATH10K_DBGLOG_LEVEL_WARN ;
+ int ATH10K_DBG_WMI ;
+ int ENOMEM ;
+ struct sk_buff* ERR_PTR (int ) ;
+ int SM (int,int ) ;
+ void* __cpu_to_le32 (int) ;
+ int __le32_to_cpu (void*) ;
+ int ath10k_dbg (struct ath10k*,int ,char*,int ,int ,int ,int ) ;
+ struct sk_buff* ath10k_wmi_alloc_skb (struct ath10k*,int) ;
 
 __attribute__((used)) static struct sk_buff *
 ath10k_wmi_op_gen_dbglog_cfg(struct ath10k *ar, u64 module_enable,
-			     u32 log_level)
+        u32 log_level)
 {
-	struct wmi_dbglog_cfg_cmd *cmd;
-	struct sk_buff *skb;
-	u32 cfg;
+ struct wmi_dbglog_cfg_cmd *cmd;
+ struct sk_buff *skb;
+ u32 cfg;
 
-	skb = ath10k_wmi_alloc_skb(ar, sizeof(*cmd));
-	if (!skb)
-		return ERR_PTR(-ENOMEM);
+ skb = ath10k_wmi_alloc_skb(ar, sizeof(*cmd));
+ if (!skb)
+  return ERR_PTR(-ENOMEM);
 
-	cmd = (struct wmi_dbglog_cfg_cmd *)skb->data;
+ cmd = (struct wmi_dbglog_cfg_cmd *)skb->data;
 
-	if (module_enable) {
-		cfg = SM(log_level,
-			 ATH10K_DBGLOG_CFG_LOG_LVL);
-	} else {
-		/* set back defaults, all modules with WARN level */
-		cfg = SM(ATH10K_DBGLOG_LEVEL_WARN,
-			 ATH10K_DBGLOG_CFG_LOG_LVL);
-		module_enable = ~0;
-	}
+ if (module_enable) {
+  cfg = SM(log_level,
+    ATH10K_DBGLOG_CFG_LOG_LVL);
+ } else {
 
-	cmd->module_enable = __cpu_to_le32(module_enable);
-	cmd->module_valid = __cpu_to_le32(~0);
-	cmd->config_enable = __cpu_to_le32(cfg);
-	cmd->config_valid = __cpu_to_le32(ATH10K_DBGLOG_CFG_LOG_LVL_MASK);
+  cfg = SM(ATH10K_DBGLOG_LEVEL_WARN,
+    ATH10K_DBGLOG_CFG_LOG_LVL);
+  module_enable = ~0;
+ }
 
-	ath10k_dbg(ar, ATH10K_DBG_WMI,
-		   "wmi dbglog cfg modules %08x %08x config %08x %08x\n",
-		   __le32_to_cpu(cmd->module_enable),
-		   __le32_to_cpu(cmd->module_valid),
-		   __le32_to_cpu(cmd->config_enable),
-		   __le32_to_cpu(cmd->config_valid));
-	return skb;
+ cmd->module_enable = __cpu_to_le32(module_enable);
+ cmd->module_valid = __cpu_to_le32(~0);
+ cmd->config_enable = __cpu_to_le32(cfg);
+ cmd->config_valid = __cpu_to_le32(ATH10K_DBGLOG_CFG_LOG_LVL_MASK);
+
+ ath10k_dbg(ar, ATH10K_DBG_WMI,
+     "wmi dbglog cfg modules %08x %08x config %08x %08x\n",
+     __le32_to_cpu(cmd->module_enable),
+     __le32_to_cpu(cmd->module_valid),
+     __le32_to_cpu(cmd->config_enable),
+     __le32_to_cpu(cmd->config_valid));
+ return skb;
 }

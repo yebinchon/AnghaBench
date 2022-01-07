@@ -1,84 +1,84 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mtd_partition {char const* name; long long size; long long offset; } ;
-struct mtd_part {int /*<<< orphan*/  list; int /*<<< orphan*/  mtd; } ;
+struct mtd_part {int list; int mtd; } ;
 struct mtd_info {long long size; } ;
-typedef  int /*<<< orphan*/  part ;
+typedef int part ;
 
-/* Variables and functions */
- int EINVAL ; 
- scalar_t__ IS_ERR (struct mtd_part*) ; 
- long long MTDPART_OFS_APPEND ; 
- long long MTDPART_OFS_NXTBLK ; 
- long long MTDPART_SIZ_FULL ; 
- int PTR_ERR (struct mtd_part*) ; 
- int add_mtd_device (int /*<<< orphan*/ *) ; 
- struct mtd_part* allocate_partition (struct mtd_info*,struct mtd_partition*,int,long long) ; 
- int /*<<< orphan*/  free_partition (struct mtd_part*) ; 
- int /*<<< orphan*/  list_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (struct mtd_partition*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mtd_add_partition_attrs (struct mtd_part*) ; 
- int /*<<< orphan*/  mtd_partitions ; 
- int /*<<< orphan*/  mtd_partitions_mutex ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int EINVAL ;
+ scalar_t__ IS_ERR (struct mtd_part*) ;
+ long long MTDPART_OFS_APPEND ;
+ long long MTDPART_OFS_NXTBLK ;
+ long long MTDPART_SIZ_FULL ;
+ int PTR_ERR (struct mtd_part*) ;
+ int add_mtd_device (int *) ;
+ struct mtd_part* allocate_partition (struct mtd_info*,struct mtd_partition*,int,long long) ;
+ int free_partition (struct mtd_part*) ;
+ int list_add (int *,int *) ;
+ int list_del (int *) ;
+ int memset (struct mtd_partition*,int ,int) ;
+ int mtd_add_partition_attrs (struct mtd_part*) ;
+ int mtd_partitions ;
+ int mtd_partitions_mutex ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 int mtd_add_partition(struct mtd_info *parent, const char *name,
-		      long long offset, long long length)
+        long long offset, long long length)
 {
-	struct mtd_partition part;
-	struct mtd_part *new;
-	int ret = 0;
+ struct mtd_partition part;
+ struct mtd_part *new;
+ int ret = 0;
 
-	/* the direct offset is expected */
-	if (offset == MTDPART_OFS_APPEND ||
-	    offset == MTDPART_OFS_NXTBLK)
-		return -EINVAL;
 
-	if (length == MTDPART_SIZ_FULL)
-		length = parent->size - offset;
+ if (offset == MTDPART_OFS_APPEND ||
+     offset == MTDPART_OFS_NXTBLK)
+  return -EINVAL;
 
-	if (length <= 0)
-		return -EINVAL;
+ if (length == MTDPART_SIZ_FULL)
+  length = parent->size - offset;
 
-	memset(&part, 0, sizeof(part));
-	part.name = name;
-	part.size = length;
-	part.offset = offset;
+ if (length <= 0)
+  return -EINVAL;
 
-	new = allocate_partition(parent, &part, -1, offset);
-	if (IS_ERR(new))
-		return PTR_ERR(new);
+ memset(&part, 0, sizeof(part));
+ part.name = name;
+ part.size = length;
+ part.offset = offset;
 
-	mutex_lock(&mtd_partitions_mutex);
-	list_add(&new->list, &mtd_partitions);
-	mutex_unlock(&mtd_partitions_mutex);
+ new = allocate_partition(parent, &part, -1, offset);
+ if (IS_ERR(new))
+  return PTR_ERR(new);
 
-	ret = add_mtd_device(&new->mtd);
-	if (ret)
-		goto err_remove_part;
+ mutex_lock(&mtd_partitions_mutex);
+ list_add(&new->list, &mtd_partitions);
+ mutex_unlock(&mtd_partitions_mutex);
 
-	mtd_add_partition_attrs(new);
+ ret = add_mtd_device(&new->mtd);
+ if (ret)
+  goto err_remove_part;
 
-	return 0;
+ mtd_add_partition_attrs(new);
+
+ return 0;
 
 err_remove_part:
-	mutex_lock(&mtd_partitions_mutex);
-	list_del(&new->list);
-	mutex_unlock(&mtd_partitions_mutex);
+ mutex_lock(&mtd_partitions_mutex);
+ list_del(&new->list);
+ mutex_unlock(&mtd_partitions_mutex);
 
-	free_partition(new);
+ free_partition(new);
 
-	return ret;
+ return ret;
 }

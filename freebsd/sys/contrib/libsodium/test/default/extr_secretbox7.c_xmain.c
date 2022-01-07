@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  c ; 
- int /*<<< orphan*/  crypto_secretbox (int /*<<< orphan*/ ,scalar_t__*,size_t,scalar_t__*,int /*<<< orphan*/ ) ; 
- size_t crypto_secretbox_NONCEBYTES ; 
- size_t crypto_secretbox_ZEROBYTES ; 
- int /*<<< orphan*/  crypto_secretbox_keygen (int /*<<< orphan*/ ) ; 
- scalar_t__ crypto_secretbox_open (scalar_t__*,int /*<<< orphan*/ ,size_t,scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  k ; 
- scalar_t__* m ; 
- scalar_t__* m2 ; 
- scalar_t__* n ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  randombytes_buf (scalar_t__*,size_t) ; 
+ int c ;
+ int crypto_secretbox (int ,scalar_t__*,size_t,scalar_t__*,int ) ;
+ size_t crypto_secretbox_NONCEBYTES ;
+ size_t crypto_secretbox_ZEROBYTES ;
+ int crypto_secretbox_keygen (int ) ;
+ scalar_t__ crypto_secretbox_open (scalar_t__*,int ,size_t,scalar_t__*,int ) ;
+ int k ;
+ scalar_t__* m ;
+ scalar_t__* m2 ;
+ scalar_t__* n ;
+ int printf (char*) ;
+ int randombytes_buf (scalar_t__*,size_t) ;
 
 int
 main(void)

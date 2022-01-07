@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sctp_packet {int /*<<< orphan*/  transport; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sctp_transport_free (int /*<<< orphan*/ ) ; 
+
+
+
+struct sctp_packet {int transport; } ;
+
+
+ int sctp_transport_free (int ) ;
 
 void sctp_ootb_pkt_free(struct sctp_packet *packet)
 {
-	sctp_transport_free(packet->transport);
+ sctp_transport_free(packet->transport);
 }

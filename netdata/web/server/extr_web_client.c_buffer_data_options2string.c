@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  BUFFER ;
 
-/* Variables and functions */
- int RRDR_OPTION_ABSOLUTE ; 
- int RRDR_OPTION_GOOGLE_JSON ; 
- int RRDR_OPTION_JSON_WRAP ; 
- int RRDR_OPTION_MILLISECONDS ; 
- int RRDR_OPTION_MIN2MAX ; 
- int RRDR_OPTION_NONZERO ; 
- int RRDR_OPTION_NOT_ALIGNED ; 
- int RRDR_OPTION_NULL2ZERO ; 
- int RRDR_OPTION_OBJECTSROWS ; 
- int RRDR_OPTION_PERCENTAGE ; 
- int RRDR_OPTION_REVERSED ; 
- int RRDR_OPTION_SECONDS ; 
- int /*<<< orphan*/  buffer_strcat (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int uint32_t ;
+typedef int BUFFER ;
+
+
+ int RRDR_OPTION_ABSOLUTE ;
+ int RRDR_OPTION_GOOGLE_JSON ;
+ int RRDR_OPTION_JSON_WRAP ;
+ int RRDR_OPTION_MILLISECONDS ;
+ int RRDR_OPTION_MIN2MAX ;
+ int RRDR_OPTION_NONZERO ;
+ int RRDR_OPTION_NOT_ALIGNED ;
+ int RRDR_OPTION_NULL2ZERO ;
+ int RRDR_OPTION_OBJECTSROWS ;
+ int RRDR_OPTION_PERCENTAGE ;
+ int RRDR_OPTION_REVERSED ;
+ int RRDR_OPTION_SECONDS ;
+ int buffer_strcat (int *,char*) ;
 
 void buffer_data_options2string(BUFFER *wb, uint32_t options) {
     int count = 0;

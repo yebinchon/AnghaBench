@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_fourcc_t ;
-struct TYPE_5__ {unsigned int i_codec; int /*<<< orphan*/  i_fourcc; } ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (TYPE_1__*) ; 
- unsigned int AV_CODEC_ID_RAWVIDEO ; 
- int /*<<< orphan*/  VLC_CODEC_UNKNOWN ; 
- TYPE_1__* audio_codecs ; 
- TYPE_1__* spu_codecs ; 
- TYPE_1__* video_codecs ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int vlc_fourcc_t ;
+struct TYPE_5__ {unsigned int i_codec; int i_fourcc; } ;
+
+
+ size_t ARRAY_SIZE (TYPE_1__*) ;
+ unsigned int AV_CODEC_ID_RAWVIDEO ;
+ int VLC_CODEC_UNKNOWN ;
+ TYPE_1__* audio_codecs ;
+ TYPE_1__* spu_codecs ;
+ TYPE_1__* video_codecs ;
 
 vlc_fourcc_t GetVlcFourcc( unsigned i_ffmpeg_codec )
 {

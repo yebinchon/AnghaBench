@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jerry_value_t ;
-typedef  int /*<<< orphan*/  jerry_char_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JERRY_ERROR_COMMON ; 
- int /*<<< orphan*/  JERRY_INIT_EMPTY ; 
- int /*<<< orphan*/  JERRY_LOG_LEVEL_ERROR ; 
- int /*<<< orphan*/  JERRY_PARSE_NO_OPTS ; 
- int JERRY_STANDALONE_EXIT_CODE_FAIL ; 
- int JERRY_STANDALONE_EXIT_CODE_OK ; 
- int /*<<< orphan*/  jerry_cleanup () ; 
- int /*<<< orphan*/  jerry_create_error (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jerry_create_undefined () ; 
- int /*<<< orphan*/  jerry_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_parse (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,size_t,int /*<<< orphan*/ ) ; 
- scalar_t__ jerry_port_get_current_time () ; 
- int /*<<< orphan*/  jerry_port_log (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_run (int /*<<< orphan*/ ) ; 
- scalar_t__ jerry_value_is_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_help (char*) ; 
- int /*<<< orphan*/ * read_file (char const*,size_t*) ; 
- int /*<<< orphan*/  srand (unsigned int) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
+
+
+
+typedef int jerry_value_t ;
+typedef int jerry_char_t ;
+
+
+ int JERRY_ERROR_COMMON ;
+ int JERRY_INIT_EMPTY ;
+ int JERRY_LOG_LEVEL_ERROR ;
+ int JERRY_PARSE_NO_OPTS ;
+ int JERRY_STANDALONE_EXIT_CODE_FAIL ;
+ int JERRY_STANDALONE_EXIT_CODE_OK ;
+ int jerry_cleanup () ;
+ int jerry_create_error (int ,int *) ;
+ int jerry_create_undefined () ;
+ int jerry_init (int ) ;
+ int jerry_parse (int *,int ,int const*,size_t,int ) ;
+ scalar_t__ jerry_port_get_current_time () ;
+ int jerry_port_log (int ,char*) ;
+ int jerry_release_value (int ) ;
+ int jerry_run (int ) ;
+ scalar_t__ jerry_value_is_error (int ) ;
+ int print_help (char*) ;
+ int * read_file (char const*,size_t*) ;
+ int srand (unsigned int) ;
+ int strcmp (char*,char*) ;
 
 int
 main (int argc,
@@ -56,14 +56,14 @@ main (int argc,
 
     const jerry_char_t *source_p = read_file (file_name, &source_size);
 
-    if (source_p == NULL)
+    if (source_p == ((void*)0))
     {
       ret_value = jerry_create_error (JERRY_ERROR_COMMON, (jerry_char_t *) "");
       break;
     }
     else
     {
-      ret_value = jerry_parse (NULL, 0, source_p, source_size, JERRY_PARSE_NO_OPTS);
+      ret_value = jerry_parse (((void*)0), 0, source_p, source_size, JERRY_PARSE_NO_OPTS);
 
       if (!jerry_value_is_error (ret_value))
       {

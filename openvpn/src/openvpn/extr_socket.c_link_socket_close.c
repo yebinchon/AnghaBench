@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct link_socket {int /*<<< orphan*/  stream_buf_data; int /*<<< orphan*/  stream_buf; void* ctrl_sd; int /*<<< orphan*/  writes; int /*<<< orphan*/  reads; void* sd; int /*<<< orphan*/  listen_handle; int /*<<< orphan*/  gremlin; } ;
 
-/* Variables and functions */
- int D_LOW ; 
- int GREMLIN_CONNECTION_FLOOD_LEVEL (int /*<<< orphan*/ ) ; 
- int M_ERRNO ; 
- int M_WARN ; 
- void* SOCKET_UNDEFINED ; 
- int /*<<< orphan*/  close_net_event_win32 (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (struct link_socket*) ; 
- int /*<<< orphan*/  free_buf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg (int,char*) ; 
- scalar_t__ openvpn_close_socket (void*) ; 
- int /*<<< orphan*/  overlapped_io_close (int /*<<< orphan*/ *) ; 
- scalar_t__ socket_defined (void*) ; 
- int /*<<< orphan*/  stream_buf_close (int /*<<< orphan*/ *) ; 
+
+
+
+struct link_socket {int stream_buf_data; int stream_buf; void* ctrl_sd; int writes; int reads; void* sd; int listen_handle; int gremlin; } ;
+
+
+ int D_LOW ;
+ int GREMLIN_CONNECTION_FLOOD_LEVEL (int ) ;
+ int M_ERRNO ;
+ int M_WARN ;
+ void* SOCKET_UNDEFINED ;
+ int close_net_event_win32 (int *,void*,int ) ;
+ int free (struct link_socket*) ;
+ int free_buf (int *) ;
+ int msg (int,char*) ;
+ scalar_t__ openvpn_close_socket (void*) ;
+ int overlapped_io_close (int *) ;
+ scalar_t__ socket_defined (void*) ;
+ int stream_buf_close (int *) ;
 
 void
 link_socket_close(struct link_socket *sock)
 {
     if (sock)
     {
-#ifdef ENABLE_DEBUG
-        const int gremlin = GREMLIN_CONNECTION_FLOOD_LEVEL(sock->gremlin);
-#else
+
+
+
         const int gremlin = 0;
-#endif
+
 
         if (socket_defined(sock->sd))
         {
-#ifdef _WIN32
-            close_net_event_win32(&sock->listen_handle, sock->sd, 0);
-#endif
+
+
+
             if (!gremlin)
             {
                 msg(D_LOW, "TCP/UDP: Closing socket");
@@ -52,13 +52,13 @@ link_socket_close(struct link_socket *sock)
                 }
             }
             sock->sd = SOCKET_UNDEFINED;
-#ifdef _WIN32
-            if (!gremlin)
-            {
-                overlapped_io_close(&sock->reads);
-                overlapped_io_close(&sock->writes);
-            }
-#endif
+
+
+
+
+
+
+
         }
 
         if (socket_defined(sock->ctrl_sd))

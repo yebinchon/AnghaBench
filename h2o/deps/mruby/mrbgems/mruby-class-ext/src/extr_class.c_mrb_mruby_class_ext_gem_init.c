@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct RClass {int dummy; } ;
 struct TYPE_4__ {struct RClass* module_class; } ;
-typedef  TYPE_1__ mrb_state ;
+typedef TYPE_1__ mrb_state ;
 
-/* Variables and functions */
- int MRB_ARGS_ANY () ; 
- int MRB_ARGS_BLOCK () ; 
- int MRB_ARGS_NONE () ; 
- int /*<<< orphan*/  mrb_define_method (TYPE_1__*,struct RClass*,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mrb_mod_module_exec ; 
- int /*<<< orphan*/  mrb_mod_name ; 
- int /*<<< orphan*/  mrb_mod_singleton_class_p ; 
+
+ int MRB_ARGS_ANY () ;
+ int MRB_ARGS_BLOCK () ;
+ int MRB_ARGS_NONE () ;
+ int mrb_define_method (TYPE_1__*,struct RClass*,char*,int ,int) ;
+ int mrb_mod_module_exec ;
+ int mrb_mod_name ;
+ int mrb_mod_singleton_class_p ;
 
 void
 mrb_mruby_class_ext_gem_init(mrb_state *mrb)

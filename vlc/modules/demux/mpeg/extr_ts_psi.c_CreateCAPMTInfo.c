@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  en50221_capmt_info_t ;
-typedef  int /*<<< orphan*/  en50221_capmt_es_info_t ;
-struct TYPE_5__ {TYPE_2__* p_first_es; TYPE_3__* p_first_descriptor; int /*<<< orphan*/  i_program_number; int /*<<< orphan*/  i_version; } ;
-typedef  TYPE_1__ dvbpsi_pmt_t ;
-struct TYPE_6__ {TYPE_3__* p_first_descriptor; int /*<<< orphan*/  i_pid; int /*<<< orphan*/  i_type; struct TYPE_6__* p_next; } ;
-typedef  TYPE_2__ dvbpsi_pmt_es_t ;
-struct TYPE_7__ {int i_tag; int /*<<< orphan*/  i_length; int /*<<< orphan*/  p_data; struct TYPE_7__* p_next; } ;
-typedef  TYPE_3__ dvbpsi_descriptor_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  en50221_capmt_AddCADescriptor (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  en50221_capmt_AddESCADescriptor (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * en50221_capmt_EsAdd (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * en50221_capmt_New (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ likely (int /*<<< orphan*/ *) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int en50221_capmt_info_t ;
+typedef int en50221_capmt_es_info_t ;
+struct TYPE_5__ {TYPE_2__* p_first_es; TYPE_3__* p_first_descriptor; int i_program_number; int i_version; } ;
+typedef TYPE_1__ dvbpsi_pmt_t ;
+struct TYPE_6__ {TYPE_3__* p_first_descriptor; int i_pid; int i_type; struct TYPE_6__* p_next; } ;
+typedef TYPE_2__ dvbpsi_pmt_es_t ;
+struct TYPE_7__ {int i_tag; int i_length; int p_data; struct TYPE_7__* p_next; } ;
+typedef TYPE_3__ dvbpsi_descriptor_t ;
+
+
+ int en50221_capmt_AddCADescriptor (int *,int ,int ) ;
+ int en50221_capmt_AddESCADescriptor (int *,int ,int ) ;
+ int * en50221_capmt_EsAdd (int *,int ,int ) ;
+ int * en50221_capmt_New (int ,int ) ;
+ scalar_t__ likely (int *) ;
+ scalar_t__ unlikely (int ) ;
 
 __attribute__((used)) static en50221_capmt_info_t * CreateCAPMTInfo( const dvbpsi_pmt_t *p_pmt )
 {
     en50221_capmt_info_t *p_en = en50221_capmt_New( p_pmt->i_version,
                                                     p_pmt->i_program_number );
-    if( unlikely(p_en == NULL) )
+    if( unlikely(p_en == ((void*)0)) )
         return p_en;
 
     for( const dvbpsi_descriptor_t *p_dr = p_pmt->p_first_descriptor;

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct prog_found_pair {char const* prog; int found; } ;
 struct context {int dummy; } ;
-typedef  int /*<<< orphan*/  atf_fs_path_t ;
-typedef  int /*<<< orphan*/  atf_error_t ;
-typedef  int /*<<< orphan*/  atf_dynstr_t ;
+typedef int atf_fs_path_t ;
+typedef int atf_error_t ;
+typedef int atf_dynstr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UNREACHABLE ; 
- char* atf_env_get (char*) ; 
- int /*<<< orphan*/  atf_error_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atf_fs_access_x ; 
- int /*<<< orphan*/  atf_fs_eaccess (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atf_fs_path_branch_path (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atf_fs_path_cstring (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atf_fs_path_fini (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atf_fs_path_init_fmt (int /*<<< orphan*/ *,char*,char const*) ; 
- scalar_t__ atf_fs_path_is_absolute (int /*<<< orphan*/ *) ; 
- scalar_t__ atf_is_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atf_text_for_each_word (char const*,char*,int /*<<< orphan*/ ,struct prog_found_pair*) ; 
- int /*<<< orphan*/  check_prog_in_dir ; 
- int /*<<< orphan*/  fail_requirement (struct context*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  format_reason_fmt (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  report_fatal_error (char*,char const*) ; 
- int /*<<< orphan*/  skip (struct context*,int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
+
+ int UNREACHABLE ;
+ char* atf_env_get (char*) ;
+ int atf_error_free (int ) ;
+ int atf_fs_access_x ;
+ int atf_fs_eaccess (int *,int ) ;
+ int atf_fs_path_branch_path (int *,int *) ;
+ int atf_fs_path_cstring (int *) ;
+ int atf_fs_path_fini (int *) ;
+ int atf_fs_path_init_fmt (int *,char*,char const*) ;
+ scalar_t__ atf_fs_path_is_absolute (int *) ;
+ scalar_t__ atf_is_error (int ) ;
+ int atf_text_for_each_word (char const*,char*,int ,struct prog_found_pair*) ;
+ int check_prog_in_dir ;
+ int fail_requirement (struct context*,int *) ;
+ int format_reason_fmt (int *,int *,int ,char*,char const*) ;
+ int report_fatal_error (char*,char const*) ;
+ int skip (struct context*,int *) ;
+ scalar_t__ strcmp (int ,char*) ;
 
 __attribute__((used)) static atf_error_t
 check_prog(struct context *ctx, const char *prog)
@@ -53,7 +53,7 @@ check_prog(struct context *ctx, const char *prog)
 
             atf_error_free(err);
             atf_fs_path_fini(&p);
-            format_reason_fmt(&reason, NULL, 0, "The required program %s could "
+            format_reason_fmt(&reason, ((void*)0), 0, "The required program %s could "
                 "not be found", prog);
             skip(ctx, &reason);
         }
@@ -76,7 +76,7 @@ check_prog(struct context *ctx, const char *prog)
         }
 
         pf.prog = prog;
-        pf.found = false;
+        pf.found = 0;
         err = atf_text_for_each_word(path, ":", check_prog_in_dir, &pf);
         if (atf_is_error(err))
             goto out_bp;
@@ -86,7 +86,7 @@ check_prog(struct context *ctx, const char *prog)
 
             atf_fs_path_fini(&bp);
             atf_fs_path_fini(&p);
-            format_reason_fmt(&reason, NULL, 0, "The required program %s could "
+            format_reason_fmt(&reason, ((void*)0), 0, "The required program %s could "
                 "not be found in the PATH", prog);
             fail_requirement(ctx, &reason);
         }

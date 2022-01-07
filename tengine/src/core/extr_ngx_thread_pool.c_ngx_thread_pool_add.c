@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_8__ ;
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_16__ {int /*<<< orphan*/  line; int /*<<< orphan*/  file; int /*<<< orphan*/  name; } ;
-typedef  TYPE_4__ ngx_thread_pool_t ;
-struct TYPE_17__ {int /*<<< orphan*/  pools; } ;
-typedef  TYPE_5__ ngx_thread_pool_conf_t ;
-typedef  int /*<<< orphan*/  ngx_str_t ;
-struct TYPE_18__ {TYPE_8__* cycle; TYPE_3__* conf_file; int /*<<< orphan*/  pool; } ;
-typedef  TYPE_6__ ngx_conf_t ;
-struct TYPE_19__ {int /*<<< orphan*/  conf_ctx; } ;
-struct TYPE_13__ {int /*<<< orphan*/  data; } ;
+
+
+typedef struct TYPE_19__ TYPE_8__ ;
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_16__ {int line; int file; int name; } ;
+typedef TYPE_4__ ngx_thread_pool_t ;
+struct TYPE_17__ {int pools; } ;
+typedef TYPE_5__ ngx_thread_pool_conf_t ;
+typedef int ngx_str_t ;
+struct TYPE_18__ {TYPE_8__* cycle; TYPE_3__* conf_file; int pool; } ;
+typedef TYPE_6__ ngx_conf_t ;
+struct TYPE_19__ {int conf_ctx; } ;
+struct TYPE_13__ {int data; } ;
 struct TYPE_14__ {TYPE_1__ name; } ;
-struct TYPE_15__ {int /*<<< orphan*/  line; TYPE_2__ file; } ;
+struct TYPE_15__ {int line; TYPE_2__ file; } ;
 
-/* Variables and functions */
- TYPE_4__** ngx_array_push (int /*<<< orphan*/ *) ; 
- scalar_t__ ngx_get_conf (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_4__* ngx_pcalloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ngx_thread_pool_default ; 
- TYPE_4__* ngx_thread_pool_get (TYPE_8__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_thread_pool_module ; 
+
+ TYPE_4__** ngx_array_push (int *) ;
+ scalar_t__ ngx_get_conf (int ,int ) ;
+ TYPE_4__* ngx_pcalloc (int ,int) ;
+ int ngx_thread_pool_default ;
+ TYPE_4__* ngx_thread_pool_get (TYPE_8__*,int *) ;
+ int ngx_thread_pool_module ;
 
 ngx_thread_pool_t *
 ngx_thread_pool_add(ngx_conf_t *cf, ngx_str_t *name)
 {
-    ngx_thread_pool_t       *tp, **tpp;
-    ngx_thread_pool_conf_t  *tcf;
+    ngx_thread_pool_t *tp, **tpp;
+    ngx_thread_pool_conf_t *tcf;
 
-    if (name == NULL) {
+    if (name == ((void*)0)) {
         name = &ngx_thread_pool_default;
     }
 
@@ -54,8 +54,8 @@ ngx_thread_pool_add(ngx_conf_t *cf, ngx_str_t *name)
     }
 
     tp = ngx_pcalloc(cf->pool, sizeof(ngx_thread_pool_t));
-    if (tp == NULL) {
-        return NULL;
+    if (tp == ((void*)0)) {
+        return ((void*)0);
     }
 
     tp->name = *name;
@@ -66,8 +66,8 @@ ngx_thread_pool_add(ngx_conf_t *cf, ngx_str_t *name)
                                                   ngx_thread_pool_module);
 
     tpp = ngx_array_push(&tcf->pools);
-    if (tpp == NULL) {
-        return NULL;
+    if (tpp == ((void*)0)) {
+        return ((void*)0);
     }
 
     *tpp = tp;

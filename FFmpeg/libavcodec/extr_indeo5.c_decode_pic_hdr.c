@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int prev_frame_type; int frame_type; int frame_num; int gop_invalid; int frame_flags; int checksum; int /*<<< orphan*/  gb; int /*<<< orphan*/  mb_vlc; int /*<<< orphan*/  pic_hdr_size; int /*<<< orphan*/  is_scalable; } ;
-typedef  TYPE_1__ IVI45DecContext ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int FRAMETYPE_INTER ; 
- int FRAMETYPE_INTER_SCAL ; 
- int FRAMETYPE_INTRA ; 
- int FRAMETYPE_NULL ; 
- int /*<<< orphan*/  IVI_MB_HUFF ; 
- int /*<<< orphan*/  align_get_bits (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,...) ; 
- int decode_gop_header (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int ff_ivi_dec_huff_desc (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  get_bits_long (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  skip_bits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  skip_hdr_extension (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int prev_frame_type; int frame_type; int frame_num; int gop_invalid; int frame_flags; int checksum; int gb; int mb_vlc; int pic_hdr_size; int is_scalable; } ;
+typedef TYPE_1__ IVI45DecContext ;
+typedef int AVCodecContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int FRAMETYPE_INTER ;
+ int FRAMETYPE_INTER_SCAL ;
+ int FRAMETYPE_INTRA ;
+ int FRAMETYPE_NULL ;
+ int IVI_MB_HUFF ;
+ int align_get_bits (int *) ;
+ int av_log (int *,int ,char*,...) ;
+ int decode_gop_header (TYPE_1__*,int *) ;
+ int ff_ivi_dec_huff_desc (int *,int,int ,int *,int *) ;
+ int get_bits (int *,int) ;
+ int get_bits_long (int *,int) ;
+ int skip_bits (int *,int) ;
+ int skip_hdr_extension (int *) ;
 
 __attribute__((used)) static int decode_pic_hdr(IVI45DecContext *ctx, AVCodecContext *avctx)
 {
@@ -42,7 +42,7 @@ __attribute__((used)) static int decode_pic_hdr(IVI45DecContext *ctx, AVCodecCon
     }
 
     ctx->prev_frame_type = ctx->frame_type;
-    ctx->frame_type      = get_bits(&ctx->gb, 3);
+    ctx->frame_type = get_bits(&ctx->gb, 3);
     if (ctx->frame_type >= 5) {
         av_log(avctx, AV_LOG_ERROR, "Invalid frame type: %d \n", ctx->frame_type);
         ctx->frame_type = FRAMETYPE_INTRA;
@@ -73,17 +73,17 @@ __attribute__((used)) static int decode_pic_hdr(IVI45DecContext *ctx, AVCodecCon
 
         ctx->checksum = (ctx->frame_flags & 0x10) ? get_bits(&ctx->gb, 16) : 0;
 
-        /* skip unknown extension if any */
-        if (ctx->frame_flags & 0x20)
-            skip_hdr_extension(&ctx->gb); /* XXX: untested */
 
-        /* decode macroblock huffman codebook */
+        if (ctx->frame_flags & 0x20)
+            skip_hdr_extension(&ctx->gb);
+
+
         ret = ff_ivi_dec_huff_desc(&ctx->gb, ctx->frame_flags & 0x40,
                                    IVI_MB_HUFF, &ctx->mb_vlc, avctx);
         if (ret < 0)
             return ret;
 
-        skip_bits(&ctx->gb, 3); /* FIXME: unknown meaning! */
+        skip_bits(&ctx->gb, 3);
     }
 
     align_get_bits(&ctx->gb);

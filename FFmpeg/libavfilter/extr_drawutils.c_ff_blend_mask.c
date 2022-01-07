@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_14__ {int* rgba; TYPE_3__* comp; } ;
 struct TYPE_13__ {int nb_planes; int flags; unsigned int* pixelstep; int* hsub; int* vsub; TYPE_2__* desc; } ;
-struct TYPE_12__ {int /*<<< orphan*/ * u16; int /*<<< orphan*/ * u8; } ;
+struct TYPE_12__ {int * u16; int * u8; } ;
 struct TYPE_11__ {int flags; TYPE_1__* comp; } ;
 struct TYPE_10__ {int depth; } ;
-typedef  TYPE_4__ FFDrawContext ;
-typedef  TYPE_5__ FFDrawColor ;
+typedef TYPE_4__ FFDrawContext ;
+typedef TYPE_5__ FFDrawColor ;
 
-/* Variables and functions */
- int AV_PIX_FMT_FLAG_ALPHA ; 
- int FF_DRAW_PROCESS_ALPHA ; 
- int /*<<< orphan*/  blend_line_hv (int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/  const*,int,int,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  blend_line_hv16 (int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/  const*,int,int,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  clip_interval (int,int*,int*,int*) ; 
- int /*<<< orphan*/  component_used (TYPE_4__*,unsigned int,unsigned int) ; 
- int /*<<< orphan*/ * pointer_at (TYPE_4__*,int /*<<< orphan*/ **,int*,unsigned int,int,int) ; 
- int /*<<< orphan*/  subsampling_bounds (int,int*,int*,int*,int*) ; 
+
+ int AV_PIX_FMT_FLAG_ALPHA ;
+ int FF_DRAW_PROCESS_ALPHA ;
+ int blend_line_hv (int *,unsigned int,int ,unsigned int,int const*,int,int,int,int,int,int,int,int,int) ;
+ int blend_line_hv16 (int *,unsigned int,int ,unsigned int,int const*,int,int,int,int,int,int,int,int,int) ;
+ int clip_interval (int,int*,int*,int*) ;
+ int component_used (TYPE_4__*,unsigned int,unsigned int) ;
+ int * pointer_at (TYPE_4__*,int **,int*,unsigned int,int,int) ;
+ int subsampling_bounds (int,int*,int*,int*,int*) ;
 
 void ff_blend_mask(FFDrawContext *draw, FFDrawColor *color,
                    uint8_t *dst[], int dst_linesize[], int dst_w, int dst_h,
-                   const uint8_t *mask,  int mask_linesize, int mask_w, int mask_h,
+                   const uint8_t *mask, int mask_linesize, int mask_w, int mask_h,
                    int l2depth, unsigned endianness, int x0, int y0)
 {
     unsigned alpha, nb_planes, nb_comp, plane, comp;
@@ -50,8 +50,8 @@ void ff_blend_mask(FFDrawContext *draw, FFDrawColor *color,
     if (mask_w <= 0 || mask_h <= 0 || !color->rgba[3])
         return;
     if (draw->desc->comp[0].depth <= 8) {
-        /* alpha is in the [ 0 ; 0x10203 ] range,
-           alpha * mask is in the [ 0 ; 0x1010101 - 4 ] range */
+
+
         alpha = (0x10307 * color->rgba[3] + 0x3) >> 8;
     } else {
         alpha = (0x101 * color->rgba[3] + 0x2) >> 8;

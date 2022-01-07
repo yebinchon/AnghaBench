@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_2__ {int /*<<< orphan*/ * db; } ;
-typedef  TYPE_1__ Vdbe ;
 
-/* Variables and functions */
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
+struct TYPE_2__ {int * db; } ;
+typedef TYPE_1__ Vdbe ;
+
+
 
 sqlite3 *sqlite3_db_handle(sqlite3_stmt *pStmt){
   return pStmt ? ((Vdbe*)pStmt)->db : 0;

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int LUA_GLOBALSINDEX ; 
- char* LUA_VERSION ; 
- int /*<<< orphan*/  auxopen (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  base_funcs ; 
- int /*<<< orphan*/  ipairsaux ; 
- int /*<<< orphan*/  luaB_ipairs ; 
- int /*<<< orphan*/  luaB_newproxy ; 
- int /*<<< orphan*/  luaB_next ; 
- int /*<<< orphan*/  luaB_pairs ; 
- int /*<<< orphan*/  luaL_register (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_createtable (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lua_pushcclosure (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lua_pushliteral (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_setglobal (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_setmetatable (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int LUA_GLOBALSINDEX ;
+ char* LUA_VERSION ;
+ int auxopen (int *,char*,int ,int ) ;
+ int base_funcs ;
+ int ipairsaux ;
+ int luaB_ipairs ;
+ int luaB_newproxy ;
+ int luaB_next ;
+ int luaB_pairs ;
+ int luaL_register (int *,char*,int ) ;
+ int lua_createtable (int *,int ,int) ;
+ int lua_pushcclosure (int *,int ,int) ;
+ int lua_pushliteral (int *,char*) ;
+ int lua_pushvalue (int *,int) ;
+ int lua_setfield (int *,int,char*) ;
+ int lua_setglobal (int *,char*) ;
+ int lua_setmetatable (int *,int) ;
 
 __attribute__((used)) static void base_open (lua_State *L) {
-  /* set global _G */
+
   lua_pushvalue(L, LUA_GLOBALSINDEX);
   lua_setglobal(L, "_G");
-  /* open lib into global table */
+
   luaL_register(L, "_G", base_funcs);
   lua_pushliteral(L, LUA_VERSION);
-  lua_setglobal(L, "_VERSION");  /* set global _VERSION */
-  /* `ipairs' and `pairs' need auxiliary functions as upvalues */
+  lua_setglobal(L, "_VERSION");
+
   auxopen(L, "ipairs", luaB_ipairs, ipairsaux);
   auxopen(L, "pairs", luaB_pairs, luaB_next);
-  /* `newproxy' needs a weaktable as upvalue */
-  lua_createtable(L, 0, 1);  /* new table `w' */
-  lua_pushvalue(L, -1);  /* `w' will be its own metatable */
+
+  lua_createtable(L, 0, 1);
+  lua_pushvalue(L, -1);
   lua_setmetatable(L, -2);
   lua_pushliteral(L, "kv");
-  lua_setfield(L, -2, "__mode");  /* metatable(w).__mode = "kv" */
+  lua_setfield(L, -2, "__mode");
   lua_pushcclosure(L, luaB_newproxy, 1);
-  lua_setglobal(L, "newproxy");  /* set global `newproxy' */
+  lua_setglobal(L, "newproxy");
 }

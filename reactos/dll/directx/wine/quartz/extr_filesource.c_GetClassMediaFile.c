@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wszValueName ;
-typedef  int /*<<< orphan*/  wszSourceFilterKeyName ;
-typedef  int /*<<< orphan*/  wszMinorKeyName ;
-typedef  int /*<<< orphan*/  wszMajorKeyName ;
-typedef  char WCHAR ;
-typedef  scalar_t__ LPWSTR ;
-typedef  char* LPCOLESTR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  IAsyncReader ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  int DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int CHARS_IN_GUID ; 
- int /*<<< orphan*/  CLSIDFromString (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERR (char*) ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ E_FAIL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GUID_NULL ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * HKEY_CLASSES_ROOT ; 
- scalar_t__ HRESULT_FROM_WIN32 (scalar_t__) ; 
- scalar_t__ HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  KEY_READ ; 
- scalar_t__ RegEnumKeyExW (int /*<<< orphan*/ *,int,char*,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegEnumValueW (int /*<<< orphan*/ *,int,char*,int*,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ,int*) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ RegQueryInfoKeyW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueExW (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  debugstr_w (char*) ; 
- scalar_t__ process_extensions (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ process_pattern_string (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  qzdebugstr_guid (int /*<<< orphan*/ *) ; 
- char* source_filter_name ; 
- scalar_t__ strcmpW (char const*,char*) ; 
+
+
+
+typedef int wszValueName ;
+typedef int wszSourceFilterKeyName ;
+typedef int wszMinorKeyName ;
+typedef int wszMajorKeyName ;
+typedef char WCHAR ;
+typedef scalar_t__ LPWSTR ;
+typedef char* LPCOLESTR ;
+typedef int LPBYTE ;
+typedef scalar_t__ LONG ;
+typedef int IAsyncReader ;
+typedef scalar_t__ HRESULT ;
+typedef int * HKEY ;
+typedef int GUID ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ int CHARS_IN_GUID ;
+ int CLSIDFromString (char*,int *) ;
+ int CloseHandle (int *) ;
+ int ERR (char*) ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ E_FAIL ;
+ scalar_t__ FAILED (int ) ;
+ scalar_t__ FALSE ;
+ int GUID_NULL ;
+ int GetProcessHeap () ;
+ int * HKEY_CLASSES_ROOT ;
+ scalar_t__ HRESULT_FROM_WIN32 (scalar_t__) ;
+ scalar_t__ HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,scalar_t__) ;
+ int KEY_READ ;
+ scalar_t__ RegEnumKeyExW (int *,int,char*,int*,int *,int *,int *,int *) ;
+ scalar_t__ RegEnumValueW (int *,int,char*,int*,int *,int*,int ,int*) ;
+ scalar_t__ RegOpenKeyExW (int *,char const*,int ,int ,int **) ;
+ scalar_t__ RegQueryInfoKeyW (int *,int *,int *,int *,int *,int *,int *,int *,int *,int*,int *,int *) ;
+ scalar_t__ RegQueryValueExW (int *,char*,int *,int *,int ,int*) ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_OK ;
+ int TRACE (char*,...) ;
+ scalar_t__ TRUE ;
+ int debugstr_w (char*) ;
+ scalar_t__ process_extensions (int *,char*,int *,int *,int *) ;
+ scalar_t__ process_pattern_string (scalar_t__,int *) ;
+ int qzdebugstr_guid (int *) ;
+ char* source_filter_name ;
+ scalar_t__ strcmpW (char const*,char*) ;
 
 HRESULT GetClassMediaFile(IAsyncReader * pReader, LPCOLESTR pszFileName, GUID * majorType, GUID * minorType, GUID * sourceFilter)
 {
-    HKEY hkeyMediaType = NULL;
+    HKEY hkeyMediaType = ((void*)0);
     LONG lRet;
     HRESULT hr = S_OK;
     BOOL bFound = FALSE;
@@ -89,7 +89,7 @@ HRESULT GetClassMediaFile(IAsyncReader * pReader, LPCOLESTR pszFileName, GUID * 
             DWORD dwKeyNameLength = sizeof(wszMajorKeyName) / sizeof(wszMajorKeyName[0]);
             static const WCHAR wszExtensions[] = {'E','x','t','e','n','s','i','o','n','s',0};
 
-            if (RegEnumKeyExW(hkeyMediaType, indexMajor, wszMajorKeyName, &dwKeyNameLength, NULL, NULL, NULL, NULL) != ERROR_SUCCESS)
+            if (RegEnumKeyExW(hkeyMediaType, indexMajor, wszMajorKeyName, &dwKeyNameLength, ((void*)0), ((void*)0), ((void*)0), ((void*)0)) != ERROR_SUCCESS)
                 break;
             if (RegOpenKeyExW(hkeyMediaType, wszMajorKeyName, 0, KEY_READ, &hkeyMajor) != ERROR_SUCCESS)
                 break;
@@ -99,7 +99,7 @@ HRESULT GetClassMediaFile(IAsyncReader * pReader, LPCOLESTR pszFileName, GUID * 
                 if (process_extensions(hkeyMajor, pszFileName, majorType, minorType, sourceFilter) == S_OK)
                     bFound = TRUE;
             }
-            /* We need a reader interface to check bytes */
+
             else if (pReader)
             {
                 DWORD indexMinor;
@@ -114,26 +114,26 @@ HRESULT GetClassMediaFile(IAsyncReader * pReader, LPCOLESTR pszFileName, GUID * 
                     DWORD maxValueLen;
                     DWORD indexValue;
 
-                    if (RegEnumKeyExW(hkeyMajor, indexMinor, wszMinorKeyName, &dwMinorKeyNameLen, NULL, NULL, NULL, NULL) != ERROR_SUCCESS)
+                    if (RegEnumKeyExW(hkeyMajor, indexMinor, wszMinorKeyName, &dwMinorKeyNameLen, ((void*)0), ((void*)0), ((void*)0), ((void*)0)) != ERROR_SUCCESS)
                         break;
 
                     if (RegOpenKeyExW(hkeyMajor, wszMinorKeyName, 0, KEY_READ, &hkeyMinor) != ERROR_SUCCESS)
                         break;
 
                     TRACE("\t%s\n", debugstr_w(wszMinorKeyName));
-        
-                    if (RegQueryInfoKeyW(hkeyMinor, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, &maxValueLen, NULL, NULL) != ERROR_SUCCESS)
+
+                    if (RegQueryInfoKeyW(hkeyMinor, ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), &maxValueLen, ((void*)0), ((void*)0)) != ERROR_SUCCESS)
                         break;
 
                     for (indexValue = 0; !bFound; indexValue++)
                     {
                         DWORD dwType;
-                        WCHAR wszValueName[14]; /* longest name we should encounter will be "Source Filter" */
+                        WCHAR wszValueName[14];
                         LPWSTR wszPatternString = HeapAlloc(GetProcessHeap(), 0, maxValueLen);
-                        DWORD dwValueNameLen = sizeof(wszValueName) / sizeof(wszValueName[0]); /* remember this is in chars */
-                        DWORD dwDataLen = maxValueLen; /* remember this is in bytes */
+                        DWORD dwValueNameLen = sizeof(wszValueName) / sizeof(wszValueName[0]);
+                        DWORD dwDataLen = maxValueLen;
 
-                        if (RegEnumValueW(hkeyMinor, indexValue, wszValueName, &dwValueNameLen, NULL, &dwType, (LPBYTE)wszPatternString, &dwDataLen) != ERROR_SUCCESS)
+                        if (RegEnumValueW(hkeyMinor, indexValue, wszValueName, &dwValueNameLen, ((void*)0), &dwType, (LPBYTE)wszPatternString, &dwDataLen) != ERROR_SUCCESS)
                         {
                             HeapFree(GetProcessHeap(), 0, wszPatternString);
                             break;
@@ -144,7 +144,7 @@ HRESULT GetClassMediaFile(IAsyncReader * pReader, LPCOLESTR pszFileName, GUID * 
                             continue;
                         }
 
-                        /* if it is not the source filter value */
+
                         if (process_pattern_string(wszPatternString, pReader) == S_OK)
                         {
                             HeapFree(GetProcessHeap(), 0, wszPatternString);
@@ -154,8 +154,8 @@ HRESULT GetClassMediaFile(IAsyncReader * pReader, LPCOLESTR pszFileName, GUID * 
                                 break;
                             if (sourceFilter)
                             {
-                                /* Look up the source filter key */
-                                if (RegQueryValueExW(hkeyMinor, source_filter_name, NULL, NULL, (LPBYTE)wszSourceFilterKeyName, &dwSourceFilterKeyNameLen))
+
+                                if (RegQueryValueExW(hkeyMinor, source_filter_name, ((void*)0), ((void*)0), (LPBYTE)wszSourceFilterKeyName, &dwSourceFilterKeyNameLen))
                                     break;
                                 if (FAILED(CLSIDFromString(wszSourceFilterKeyName, sourceFilter)))
                                     break;
@@ -180,12 +180,12 @@ HRESULT GetClassMediaFile(IAsyncReader * pReader, LPCOLESTR pszFileName, GUID * 
     else if (bFound)
     {
         TRACE("Found file's class:\n");
-	if(majorType)
-		TRACE("\tmajor = %s\n", qzdebugstr_guid(majorType));
-	if(minorType)
-		TRACE("\tsubtype = %s\n", qzdebugstr_guid(minorType));
-	if(sourceFilter)
-		TRACE("\tsource filter = %s\n", qzdebugstr_guid(sourceFilter));
+ if(majorType)
+  TRACE("\tmajor = %s\n", qzdebugstr_guid(majorType));
+ if(minorType)
+  TRACE("\tsubtype = %s\n", qzdebugstr_guid(minorType));
+ if(sourceFilter)
+  TRACE("\tsource filter = %s\n", qzdebugstr_guid(sourceFilter));
     }
 
     return hr;

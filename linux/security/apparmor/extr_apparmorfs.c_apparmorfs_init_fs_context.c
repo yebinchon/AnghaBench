@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fs_context {int /*<<< orphan*/ * ops; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  apparmorfs_context_ops ; 
+
+
+
+struct fs_context {int * ops; } ;
+
+
+ int apparmorfs_context_ops ;
 
 __attribute__((used)) static int apparmorfs_init_fs_context(struct fs_context *fc)
 {
-	fc->ops = &apparmorfs_context_ops;
-	return 0;
+ fc->ops = &apparmorfs_context_ops;
+ return 0;
 }

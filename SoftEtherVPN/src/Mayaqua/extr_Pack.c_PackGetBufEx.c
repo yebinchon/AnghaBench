@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Free (void*) ; 
- void* MallocEx (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * NewBuf () ; 
- int PackGetDataEx (int /*<<< orphan*/ *,char*,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PackGetDataSizeEx (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SeekBuf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WriteBuf (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT ;
+typedef int PACK ;
+typedef int BUF ;
+
+
+ int Free (void*) ;
+ void* MallocEx (int ,int) ;
+ int * NewBuf () ;
+ int PackGetDataEx (int *,char*,void*,int ) ;
+ int PackGetDataSizeEx (int *,char*,int ) ;
+ int SeekBuf (int *,int ,int ) ;
+ int WriteBuf (int *,void*,int ) ;
 
 BUF *PackGetBufEx(PACK *p, char *name, UINT index)
 {
-	UINT size;
-	void *tmp;
-	BUF *b;
-	// Validate arguments
-	if (p == NULL || name == NULL)
-	{
-		return NULL;
-	}
+ UINT size;
+ void *tmp;
+ BUF *b;
 
-	size = PackGetDataSizeEx(p, name, index);
-	tmp = MallocEx(size, true);
-	if (PackGetDataEx(p, name, tmp, index) == false)
-	{
-		Free(tmp);
-		return NULL;
-	}
+ if (p == ((void*)0) || name == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	b = NewBuf();
-	WriteBuf(b, tmp, size);
-	SeekBuf(b, 0, 0);
+ size = PackGetDataSizeEx(p, name, index);
+ tmp = MallocEx(size, 1);
+ if (PackGetDataEx(p, name, tmp, index) == 0)
+ {
+  Free(tmp);
+  return ((void*)0);
+ }
 
-	Free(tmp);
+ b = NewBuf();
+ WriteBuf(b, tmp, size);
+ SeekBuf(b, 0, 0);
 
-	return b;
+ Free(tmp);
+
+ return b;
 }

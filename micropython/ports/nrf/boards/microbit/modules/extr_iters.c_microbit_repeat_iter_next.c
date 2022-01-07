@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {scalar_t__ index; int /*<<< orphan*/  iterable; } ;
-typedef  TYPE_1__ repeat_iterator_t ;
-typedef  scalar_t__ mp_obj_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_OBJ_NEW_SMALL_INT (scalar_t__) ; 
- int /*<<< orphan*/  MP_OBJ_SENTINEL ; 
- scalar_t__ mp_obj_get_int (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_obj_len (int /*<<< orphan*/ ) ; 
- scalar_t__ mp_obj_subscr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {scalar_t__ index; int iterable; } ;
+typedef TYPE_1__ repeat_iterator_t ;
+typedef scalar_t__ mp_obj_t ;
+
+
+ int MP_OBJ_NEW_SMALL_INT (scalar_t__) ;
+ int MP_OBJ_SENTINEL ;
+ scalar_t__ mp_obj_get_int (int ) ;
+ int mp_obj_len (int ) ;
+ scalar_t__ mp_obj_subscr (int ,int ,int ) ;
 
 __attribute__((used)) static mp_obj_t microbit_repeat_iter_next(mp_obj_t iter_in) {
     repeat_iterator_t *iter = (repeat_iterator_t *)iter_in;

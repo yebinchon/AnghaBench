@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT8 ;
-typedef  int /*<<< orphan*/  UINT16 ;
-struct TYPE_3__ {int /*<<< orphan*/  delay_variation; int /*<<< orphan*/  latency; int /*<<< orphan*/  peak_bandwidth; int /*<<< orphan*/  token_rate; int /*<<< orphan*/  service_type; int /*<<< orphan*/  qos_flags; } ;
-typedef  TYPE_1__ FLOW_SPEC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STREAM_TO_UINT16 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  STREAM_TO_UINT32 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  STREAM_TO_UINT8 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  btm_qos_setup_complete (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UINT8 ;
+typedef int UINT16 ;
+struct TYPE_3__ {int delay_variation; int latency; int peak_bandwidth; int token_rate; int service_type; int qos_flags; } ;
+typedef TYPE_1__ FLOW_SPEC ;
+
+
+ int STREAM_TO_UINT16 (int ,int *) ;
+ int STREAM_TO_UINT32 (int ,int *) ;
+ int STREAM_TO_UINT8 (int ,int *) ;
+ int btm_qos_setup_complete (int ,int ,TYPE_1__*) ;
 
 __attribute__((used)) static void btu_hcif_qos_setup_comp_evt (UINT8 *p)
 {

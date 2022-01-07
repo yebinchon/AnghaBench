@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  binlog_check_mode ; 
- int /*<<< orphan*/  delay_targeting ; 
- long long dynamic_data_buffer_size ; 
- int index_mode ; 
- void* optarg ; 
- void* read_stats_filename ; 
- int sscanf (void*,char*,long long*,char*) ; 
- int targeting_disabled ; 
- int use_stemmer ; 
- void* write_stats_filename ; 
+ int assert (int) ;
+ int binlog_check_mode ;
+ int delay_targeting ;
+ long long dynamic_data_buffer_size ;
+ int index_mode ;
+ void* optarg ;
+ void* read_stats_filename ;
+ int sscanf (void*,char*,long long*,char*) ;
+ int targeting_disabled ;
+ int use_stemmer ;
+ void* write_stats_filename ;
 
 int f_parse_option (int val) {
   long long x;
@@ -53,10 +45,10 @@ int f_parse_option (int val) {
     c = 0;
     assert (sscanf (optarg, "%lld%c", &x, &c) >= 1);
     switch (c | 0x20) {
-      case 'k':  x <<= 10; break;
-      case 'm':  x <<= 20; break;
-      case 'g':  x <<= 30; break;
-      case 't':  x <<= 40; break;
+      case 'k': x <<= 10; break;
+      case 'm': x <<= 20; break;
+      case 'g': x <<= 30; break;
+      case 't': x <<= 40; break;
       default: assert (c == 0x20);
     }
     if (val == 'H' && x >= (1LL << 20) && x <= (sizeof(long) == 4 ? (3LL << 30) : (100LL << 30))) {

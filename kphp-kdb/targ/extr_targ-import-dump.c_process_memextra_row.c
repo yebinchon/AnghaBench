@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lev_interests {int user_id; int /*<<< orphan*/  text; scalar_t__ len; scalar_t__ type; } ;
 
-/* Variables and functions */
- int* I ; 
- scalar_t__* L ; 
- scalar_t__ LEV_TARG_INTERESTS ; 
- char** S ; 
- int /*<<< orphan*/  adj_rec ; 
- int /*<<< orphan*/ * allowed ; 
- int /*<<< orphan*/  fits (int) ; 
- int /*<<< orphan*/  keep_word (char*,int) ; 
- size_t me_id ; 
- size_t me_text ; 
- int output_format ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char*) ; 
- int strtol (char*,char**,int) ; 
- int user_id ; 
- struct lev_interests* write_alloc (scalar_t__) ; 
+
+
+
+struct lev_interests {int user_id; int text; scalar_t__ len; scalar_t__ type; } ;
+
+
+ int* I ;
+ scalar_t__* L ;
+ scalar_t__ LEV_TARG_INTERESTS ;
+ char** S ;
+ int adj_rec ;
+ int * allowed ;
+ int fits (int) ;
+ int keep_word (char*,int) ;
+ size_t me_id ;
+ size_t me_text ;
+ int output_format ;
+ int strcpy (int ,char*) ;
+ int strtol (char*,char**,int) ;
+ int user_id ;
+ struct lev_interests* write_alloc (scalar_t__) ;
 
 void process_memextra_row (void) {
   int uid = I[me_id] / 1000;
@@ -42,7 +42,7 @@ void process_memextra_row (void) {
   if (type <= 0 || type > 7) {
     return;
   }
-//  fprintf (stderr, "orig: '%s'\n", S[me_text]);
+
 
   if (output_format != 1) {
     struct lev_interests *D = write_alloc (11+L[me_text]);
@@ -68,7 +68,7 @@ void process_memextra_row (void) {
             *q++ = ' ';
             continue;
           }
-          while (p <= r) { 
+          while (p <= r) {
             *q++ = *p++;
           }
           continue;
@@ -107,7 +107,7 @@ void process_memextra_row (void) {
     if (c < 128 && !allowed[c]) { c = ' '; }
     if (c == 0xa8) { c = 0xc5; }
     if (c == 0xb8) { c = 0xe5; }
-//    if (c == '>' || c < ' ') { c = ' '; }
+
     *q++ = c;
     p++;
   }
@@ -115,17 +115,17 @@ void process_memextra_row (void) {
 
   c = 0;
   for (p = q = S[me_text]; *p; p++) {
-    if (*p != c) { 
+    if (*p != c) {
       *q++ = c = *p;
       if (c != ' ') { c = 0; }
     }
   }
 
   q[0] = q[1] = 0;
-        
+
   p = S[me_text];
 
-//  fprintf (stderr, "text: '%s'\n", p);
+
 
   do {
     while ((unsigned char) *p <= ' ' && *p) { p++; }

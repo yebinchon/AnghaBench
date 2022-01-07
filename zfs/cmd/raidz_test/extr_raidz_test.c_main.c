@@ -1,101 +1,101 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct sigaction {scalar_t__ sa_flags; int /*<<< orphan*/  sa_mask; int /*<<< orphan*/  sa_handler; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct sigaction {scalar_t__ sa_flags; int sa_mask; int sa_handler; } ;
 struct TYPE_2__ {scalar_t__ rto_sweep; scalar_t__ rto_benchmark; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  FREAD ; 
- int /*<<< orphan*/  PROT_READ ; 
- int /*<<< orphan*/  SIGSEGV ; 
- int SPA_MAXBLOCKSIZE ; 
- int /*<<< orphan*/  UMEM_NOFAIL ; 
- int /*<<< orphan*/  _IOLBF ; 
- int /*<<< orphan*/  dprintf_setup (int*,char**) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gdb ; 
- char* gdb_tmpl ; 
- unsigned int getpid () ; 
- int /*<<< orphan*/  kernel_fini () ; 
- int /*<<< orphan*/  kernel_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mprotect (int*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  process_options (int,char**) ; 
- int rand () ; 
- int* rand_data ; 
- TYPE_1__ rto_opts ; 
- int /*<<< orphan*/  run_raidz_benchmark () ; 
- int run_sweep () ; 
- int run_test (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  setvbuf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sig_handler ; 
- scalar_t__ sigaction (int /*<<< orphan*/ ,struct sigaction*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sigemptyset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sprintf (int /*<<< orphan*/ ,char*,unsigned int) ; 
- int /*<<< orphan*/  srand (unsigned int) ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- scalar_t__ time (int /*<<< orphan*/ *) ; 
- scalar_t__ umem_alloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  umem_free (int*,int) ; 
+
+ int ERR (char*,int ) ;
+ int EXIT_FAILURE ;
+ int FREAD ;
+ int PROT_READ ;
+ int SIGSEGV ;
+ int SPA_MAXBLOCKSIZE ;
+ int UMEM_NOFAIL ;
+ int _IOLBF ;
+ int dprintf_setup (int*,char**) ;
+ int errno ;
+ int exit (int ) ;
+ int gdb ;
+ char* gdb_tmpl ;
+ unsigned int getpid () ;
+ int kernel_fini () ;
+ int kernel_init (int ) ;
+ int mprotect (int*,int,int ) ;
+ int process_options (int,char**) ;
+ int rand () ;
+ int* rand_data ;
+ TYPE_1__ rto_opts ;
+ int run_raidz_benchmark () ;
+ int run_sweep () ;
+ int run_test (int *) ;
+ int setvbuf (int ,int *,int ,int ) ;
+ int sig_handler ;
+ scalar_t__ sigaction (int ,struct sigaction*,int *) ;
+ int sigemptyset (int *) ;
+ int sprintf (int ,char*,unsigned int) ;
+ int srand (unsigned int) ;
+ int stdout ;
+ int strerror (int ) ;
+ scalar_t__ time (int *) ;
+ scalar_t__ umem_alloc (int,int ) ;
+ int umem_free (int*,int) ;
 
 int
 main(int argc, char **argv)
 {
-	size_t i;
-	struct sigaction action;
-	int err = 0;
+ size_t i;
+ struct sigaction action;
+ int err = 0;
 
-	/* init gdb string early */
-	(void) sprintf(gdb, gdb_tmpl, getpid());
 
-	action.sa_handler = sig_handler;
-	sigemptyset(&action.sa_mask);
-	action.sa_flags = 0;
+ (void) sprintf(gdb, gdb_tmpl, getpid());
 
-	if (sigaction(SIGSEGV, &action, NULL) < 0) {
-		ERR("raidz_test: cannot catch SIGSEGV: %s.\n", strerror(errno));
-		exit(EXIT_FAILURE);
-	}
+ action.sa_handler = sig_handler;
+ sigemptyset(&action.sa_mask);
+ action.sa_flags = 0;
 
-	(void) setvbuf(stdout, NULL, _IOLBF, 0);
+ if (sigaction(SIGSEGV, &action, ((void*)0)) < 0) {
+  ERR("raidz_test: cannot catch SIGSEGV: %s.\n", strerror(errno));
+  exit(EXIT_FAILURE);
+ }
 
-	dprintf_setup(&argc, argv);
+ (void) setvbuf(stdout, ((void*)0), _IOLBF, 0);
 
-	process_options(argc, argv);
+ dprintf_setup(&argc, argv);
 
-	kernel_init(FREAD);
+ process_options(argc, argv);
 
-	/* setup random data because rand() is not reentrant */
-	rand_data = (int *)umem_alloc(SPA_MAXBLOCKSIZE, UMEM_NOFAIL);
-	srand((unsigned)time(NULL) * getpid());
-	for (i = 0; i < SPA_MAXBLOCKSIZE / sizeof (int); i++)
-		rand_data[i] = rand();
+ kernel_init(FREAD);
 
-	mprotect(rand_data, SPA_MAXBLOCKSIZE, PROT_READ);
 
-	if (rto_opts.rto_benchmark) {
-		run_raidz_benchmark();
-	} else if (rto_opts.rto_sweep) {
-		err = run_sweep();
-	} else {
-		err = run_test(NULL);
-	}
+ rand_data = (int *)umem_alloc(SPA_MAXBLOCKSIZE, UMEM_NOFAIL);
+ srand((unsigned)time(((void*)0)) * getpid());
+ for (i = 0; i < SPA_MAXBLOCKSIZE / sizeof (int); i++)
+  rand_data[i] = rand();
 
-	umem_free(rand_data, SPA_MAXBLOCKSIZE);
-	kernel_fini();
+ mprotect(rand_data, SPA_MAXBLOCKSIZE, PROT_READ);
 
-	return (err);
+ if (rto_opts.rto_benchmark) {
+  run_raidz_benchmark();
+ } else if (rto_opts.rto_sweep) {
+  err = run_sweep();
+ } else {
+  err = run_test(((void*)0));
+ }
+
+ umem_free(rand_data, SPA_MAXBLOCKSIZE);
+ kernel_fini();
+
+ return (err);
 }

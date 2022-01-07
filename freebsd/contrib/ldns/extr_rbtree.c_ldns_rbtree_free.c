@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ldns_rbtree_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LDNS_FREE (int /*<<< orphan*/ *) ; 
 
-void 
+
+
+typedef int ldns_rbtree_t ;
+
+
+ int LDNS_FREE (int *) ;
+
+void
 ldns_rbtree_free(ldns_rbtree_t *rbtree)
 {
-	LDNS_FREE(rbtree);
+ LDNS_FREE(rbtree);
 }

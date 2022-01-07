@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- scalar_t__ LAYER_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAC ; 
- int /*<<< orphan*/  NUM ; 
- int /*<<< orphan*/  QWERTY ; 
- int /*<<< orphan*/  current_layer_state ; 
- scalar_t__ is_macro1_recording ; 
- int /*<<< orphan*/  led_1_off () ; 
- int /*<<< orphan*/  led_1_on () ; 
- int /*<<< orphan*/  led_2_off () ; 
- int /*<<< orphan*/  led_2_on () ; 
- int /*<<< orphan*/  led_3_off () ; 
- int /*<<< orphan*/  led_3_on () ; 
+
+
+
+typedef int uint32_t ;
+
+
+ scalar_t__ LAYER_ON (int ) ;
+ int MAC ;
+ int NUM ;
+ int QWERTY ;
+ int current_layer_state ;
+ scalar_t__ is_macro1_recording ;
+ int led_1_off () ;
+ int led_1_on () ;
+ int led_2_off () ;
+ int led_2_on () ;
+ int led_3_off () ;
+ int led_3_on () ;
 
 uint32_t layer_state_set_user(uint32_t state) {
   current_layer_state = state;

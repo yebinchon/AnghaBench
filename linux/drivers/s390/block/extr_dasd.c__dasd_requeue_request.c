@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct request {int dummy; } ;
 struct dasd_ccw_req {TYPE_1__* dq; scalar_t__ callback_data; struct dasd_block* block; } ;
 struct dasd_block {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  lock; } ;
+struct TYPE_2__ {int lock; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  blk_mq_requeue_request (struct request*,int) ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
+
+ int EINVAL ;
+ int blk_mq_requeue_request (struct request*,int) ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
 
 __attribute__((used)) static int _dasd_requeue_request(struct dasd_ccw_req *cqr)
 {
-	struct dasd_block *block = cqr->block;
-	struct request *req;
+ struct dasd_block *block = cqr->block;
+ struct request *req;
 
-	if (!block)
-		return -EINVAL;
-	spin_lock_irq(&cqr->dq->lock);
-	req = (struct request *) cqr->callback_data;
-	blk_mq_requeue_request(req, false);
-	spin_unlock_irq(&cqr->dq->lock);
+ if (!block)
+  return -EINVAL;
+ spin_lock_irq(&cqr->dq->lock);
+ req = (struct request *) cqr->callback_data;
+ blk_mq_requeue_request(req, 0);
+ spin_unlock_irq(&cqr->dq->lock);
 
-	return 0;
+ return 0;
 }

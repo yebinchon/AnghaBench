@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVHWDeviceContext ;
-typedef  int /*<<< orphan*/  AVDictionary ;
 
-/* Variables and functions */
- int AVERROR_UNKNOWN ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int AVHWDeviceContext ;
+typedef int AVDictionary ;
+
+
+ int AVERROR_UNKNOWN ;
+ int AV_LOG_ERROR ;
+ int av_log (int *,int ,char*) ;
 
 __attribute__((used)) static int vt_device_create(AVHWDeviceContext *ctx, const char *device,
                             AVDictionary *opts, int flags)

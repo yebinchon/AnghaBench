@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int OCD_FLAG_CABLE_DISC ; 
- int OCD_FLAG_PWF ; 
- unsigned char OCD_LOG_FILE ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  ocd_error (char*,int) ; 
- unsigned char* ocd_get_packet (unsigned char,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ocd_put_packet (unsigned char*,int) ; 
- int /*<<< orphan*/  remote_timeout ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
+ int OCD_FLAG_CABLE_DISC ;
+ int OCD_FLAG_PWF ;
+ unsigned char OCD_LOG_FILE ;
+ int error (char*) ;
+ int ocd_error (char*,int) ;
+ unsigned char* ocd_get_packet (unsigned char,int*,int ) ;
+ int ocd_put_packet (unsigned char*,int) ;
+ int remote_timeout ;
+ int sprintf (char*,char*,int) ;
 
 __attribute__((used)) static unsigned char *
 ocd_do_command (int cmd, int *statusp, int *lenp)
@@ -33,7 +25,7 @@ ocd_do_command (int cmd, int *statusp, int *lenp)
   int logpktlen;
 
   buf[0] = cmd;
-  ocd_put_packet (buf, 1);	/* Send command */
+  ocd_put_packet (buf, 1);
   p = ocd_get_packet (*buf, lenp, remote_timeout);
 
   if (*lenp < 3)
@@ -56,12 +48,12 @@ ocd_do_command (int cmd, int *statusp, int *lenp)
   *statusp = status;
 
   logbuf[0] = OCD_LOG_FILE;
-  logbuf[1] = 3;		/* close existing WIGGLERS.LOG */
+  logbuf[1] = 3;
   ocd_put_packet (logbuf, 2);
   ocd_get_packet (logbuf[0], &logpktlen, remote_timeout);
 
   logbuf[0] = OCD_LOG_FILE;
-  logbuf[1] = 2;		/* append to existing WIGGLERS.LOG */
+  logbuf[1] = 2;
   ocd_put_packet (logbuf, 2);
   ocd_get_packet (logbuf[0], &logpktlen, remote_timeout);
 

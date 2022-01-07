@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ len; } ;
-struct TYPE_5__ {int /*<<< orphan*/  spaces; } ;
-typedef  TYPE_1__ RSpaces ;
-typedef  TYPE_2__ RBIter ;
+struct TYPE_5__ {int spaces; } ;
+typedef TYPE_1__ RSpaces ;
+typedef TYPE_2__ RBIter ;
 
-/* Variables and functions */
- TYPE_2__ r_rbtree_first (int /*<<< orphan*/ ) ; 
+
+ TYPE_2__ r_rbtree_first (int ) ;
 
 __attribute__((used)) static inline bool r_spaces_is_empty(RSpaces *sp) {
-	RBIter it = r_rbtree_first (sp->spaces);
-	return it.len == 0;
+ RBIter it = r_rbtree_first (sp->spaces);
+ return it.len == 0;
 }

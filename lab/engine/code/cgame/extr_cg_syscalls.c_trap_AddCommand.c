@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int CG_ADDCOMMAND ;
+ int syscall (int ,char const*) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CG_ADDCOMMAND ; 
- int /*<<< orphan*/  syscall (int /*<<< orphan*/ ,char const*) ; 
-
-void	trap_AddCommand( const char *cmdName ) {
-	syscall( CG_ADDCOMMAND, cmdName );
+void trap_AddCommand( const char *cmdName ) {
+ syscall( CG_ADDCOMMAND, cmdName );
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct rtp_pkt {scalar_t__ fd_out; scalar_t__ fd_rtcp; scalar_t__ fd_rtcp_m; struct rtp_pkt* buffer; } ;
 struct TYPE_4__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ sout_access_out_t ;
-struct TYPE_5__ {struct rtp_pkt* p_pktbuffer; int /*<<< orphan*/  fd_lock; int /*<<< orphan*/  lock; struct rtp_pkt* flow; int /*<<< orphan*/ * p_fifo; } ;
-typedef  TYPE_2__ sout_access_out_sys_t ;
+typedef TYPE_1__ sout_access_out_t ;
+struct TYPE_5__ {struct rtp_pkt* p_pktbuffer; int fd_lock; int lock; struct rtp_pkt* flow; int * p_fifo; } ;
+typedef TYPE_2__ sout_access_out_sys_t ;
 
-/* Variables and functions */
- int RIST_QUEUE_SIZE ; 
- int /*<<< orphan*/  block_FifoRelease (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  block_Release (struct rtp_pkt*) ; 
- int /*<<< orphan*/  free (struct rtp_pkt*) ; 
- scalar_t__ likely (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  net_Close (scalar_t__) ; 
- int /*<<< orphan*/  vlc_mutex_destroy (int /*<<< orphan*/ *) ; 
+
+ int RIST_QUEUE_SIZE ;
+ int block_FifoRelease (int *) ;
+ int block_Release (struct rtp_pkt*) ;
+ int free (struct rtp_pkt*) ;
+ scalar_t__ likely (int ) ;
+ int net_Close (scalar_t__) ;
+ int vlc_mutex_destroy (int *) ;
 
 __attribute__((used)) static void Clean( sout_access_out_t *p_access )
 {
     sout_access_out_sys_t *p_sys = p_access->p_sys;
 
-    if( likely(p_sys->p_fifo != NULL) )
+    if( likely(p_sys->p_fifo != ((void*)0)) )
         block_FifoRelease( p_sys->p_fifo );
 
     if ( p_sys->flow )
@@ -50,7 +50,7 @@ __attribute__((used)) static void Clean( sout_access_out_t *p_access )
             if (pkt->buffer)
             {
                 block_Release(pkt->buffer);
-                pkt->buffer = NULL;
+                pkt->buffer = ((void*)0);
             }
         }
         free(p_sys->flow->buffer);

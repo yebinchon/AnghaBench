@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int nDb; int /*<<< orphan*/  mutex; TYPE_1__* aDb; } ;
-typedef  TYPE_2__ sqlite3 ;
-struct TYPE_6__ {int /*<<< orphan*/ * pBt; } ;
-typedef  int /*<<< orphan*/  Pager ;
-typedef  int /*<<< orphan*/  Btree ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int /*<<< orphan*/  sqlite3BtreeEnterAll (TYPE_2__*) ; 
- int /*<<< orphan*/  sqlite3BtreeLeaveAll (TYPE_2__*) ; 
- int /*<<< orphan*/ * sqlite3BtreePager (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3PagerShrink (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_mutex_enter (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_mutex_leave (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int nDb; int mutex; TYPE_1__* aDb; } ;
+typedef TYPE_2__ sqlite3 ;
+struct TYPE_6__ {int * pBt; } ;
+typedef int Pager ;
+typedef int Btree ;
+
+
+ int SQLITE_OK ;
+ int sqlite3BtreeEnterAll (TYPE_2__*) ;
+ int sqlite3BtreeLeaveAll (TYPE_2__*) ;
+ int * sqlite3BtreePager (int *) ;
+ int sqlite3PagerShrink (int *) ;
+ int sqlite3_mutex_enter (int ) ;
+ int sqlite3_mutex_leave (int ) ;
 
 int sqlite3_db_release_memory(sqlite3 *db){
   int i;

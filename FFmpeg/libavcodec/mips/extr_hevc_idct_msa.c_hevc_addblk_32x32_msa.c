@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ v8i16 ;
-typedef  int /*<<< orphan*/  v16u8 ;
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  int32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLIP_SH8_0_255 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  LD_SH4 (int /*<<< orphan*/ *,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  LD_UB2 (int*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PCKEV_B4_UB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ST_UB2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  UNPCK_UB_SH (int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
+
+
+
+typedef scalar_t__ v8i16 ;
+typedef int v16u8 ;
+typedef int uint8_t ;
+typedef int int32_t ;
+typedef int int16_t ;
+
+
+ int CLIP_SH8_0_255 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int LD_SH4 (int *,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int LD_UB2 (int*,int,int ,int ) ;
+ int PCKEV_B4_UB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int ,int ,int ,int ) ;
+ int ST_UB2 (int ,int ,int*,int) ;
+ int UNPCK_UB_SH (int ,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static void hevc_addblk_32x32_msa(int16_t *coeffs, uint8_t *dst, int32_t stride)
 {
@@ -32,7 +32,7 @@ __attribute__((used)) static void hevc_addblk_32x32_msa(int16_t *coeffs, uint8_t
     v8i16 dst_r0, dst_l0, dst_r1, dst_l1, dst_r2, dst_l2, dst_r3, dst_l3;
     v8i16 in0, in1, in2, in3, in4, in5, in6, in7;
 
-    /* Pre-load for next iteration */
+
     LD_UB2(temp_dst, 16, dst4, dst5);
     temp_dst += stride;
     LD_UB2(temp_dst, 16, dst6, dst7);
@@ -56,7 +56,7 @@ __attribute__((used)) static void hevc_addblk_32x32_msa(int16_t *coeffs, uint8_t
         dst_r3 += in6;
         dst_l3 += in7;
 
-        /* Pre-load for next iteration */
+
         LD_UB2(temp_dst, 16, dst4, dst5);
         temp_dst += stride;
         LD_UB2(temp_dst, 16, dst6, dst7);
@@ -89,7 +89,7 @@ __attribute__((used)) static void hevc_addblk_32x32_msa(int16_t *coeffs, uint8_t
     dst_r3 += in6;
     dst_l3 += in7;
 
-    /* Pre-load for next iteration */
+
     LD_UB2(temp_dst, 16, dst4, dst5);
     temp_dst += stride;
     LD_UB2(temp_dst, 16, dst6, dst7);

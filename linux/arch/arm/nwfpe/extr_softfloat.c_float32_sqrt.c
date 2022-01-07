@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct roundingData {int /*<<< orphan*/  exception; } ;
-typedef  scalar_t__ sbits64 ;
-typedef  int int16 ;
-typedef  int /*<<< orphan*/  float32 ;
-typedef  scalar_t__ flag ;
-typedef  int bits64 ;
-typedef  int bits32 ;
 
-/* Variables and functions */
- int estimateSqrt32 (int,int) ; 
- int extractFloat32Exp (int /*<<< orphan*/ ) ; 
- int extractFloat32Frac (int /*<<< orphan*/ ) ; 
- scalar_t__ extractFloat32Sign (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  float32_default_nan ; 
- int /*<<< orphan*/  float_flag_invalid ; 
- int /*<<< orphan*/  normalizeFloat32Subnormal (int,int*,int*) ; 
- int /*<<< orphan*/  propagateFloat32NaN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  roundAndPackFloat32 (struct roundingData*,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  shift32RightJamming (int,int,int*) ; 
+
+
+
+struct roundingData {int exception; } ;
+typedef scalar_t__ sbits64 ;
+typedef int int16 ;
+typedef int float32 ;
+typedef scalar_t__ flag ;
+typedef int bits64 ;
+typedef int bits32 ;
+
+
+ int estimateSqrt32 (int,int) ;
+ int extractFloat32Exp (int ) ;
+ int extractFloat32Frac (int ) ;
+ scalar_t__ extractFloat32Sign (int ) ;
+ int float32_default_nan ;
+ int float_flag_invalid ;
+ int normalizeFloat32Subnormal (int,int*,int*) ;
+ int propagateFloat32NaN (int ,int ) ;
+ int roundAndPackFloat32 (struct roundingData*,int ,int,int) ;
+ int shift32RightJamming (int,int,int*) ;
 
 float32 float32_sqrt( struct roundingData *roundData, float32 a )
 {

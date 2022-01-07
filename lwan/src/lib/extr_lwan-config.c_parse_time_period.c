@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int ONE_DAY ; 
- unsigned int ONE_HOUR ; 
- unsigned int ONE_MINUTE ; 
- unsigned int ONE_MONTH ; 
- unsigned int ONE_WEEK ; 
- unsigned int ONE_YEAR ; 
- int /*<<< orphan*/  lwan_status_warning (char*,char) ; 
- scalar_t__ rawmemchr (char const*,char) ; 
- int sscanf (char const*,char*,unsigned int*,char*) ; 
+ unsigned int ONE_DAY ;
+ unsigned int ONE_HOUR ;
+ unsigned int ONE_MINUTE ;
+ unsigned int ONE_MONTH ;
+ unsigned int ONE_WEEK ;
+ unsigned int ONE_YEAR ;
+ int lwan_status_warning (char*,char) ;
+ scalar_t__ rawmemchr (char const*,char) ;
+ int sscanf (char const*,char*,unsigned int*,char*) ;
 
 unsigned int parse_time_period(const char *str, unsigned int default_value)
 {

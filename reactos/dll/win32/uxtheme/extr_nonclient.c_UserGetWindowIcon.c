@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int dwExStyle; } ;
-struct TYPE_5__ {TYPE_1__ wi; int /*<<< orphan*/  hWnd; } ;
-typedef  int /*<<< orphan*/  PDWORD_PTR ;
-typedef  TYPE_2__* PDRAW_CONTEXT ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/ * HICON ;
+struct TYPE_5__ {TYPE_1__ wi; int hWnd; } ;
+typedef int PDWORD_PTR ;
+typedef TYPE_2__* PDRAW_CONTEXT ;
+typedef int LPCWSTR ;
+typedef int * HICON ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GCLP_HICON ; 
- int /*<<< orphan*/  GCLP_HICONSM ; 
- scalar_t__ GetClassLongPtr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ICON_BIG ; 
- int /*<<< orphan*/  ICON_SMALL ; 
- int /*<<< orphan*/  ICON_SMALL2 ; 
- scalar_t__ IDI_WINLOGO ; 
- int /*<<< orphan*/ * LoadIconW (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SMTO_ABORTIFHUNG ; 
- int /*<<< orphan*/  SendMessageTimeout (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WM_GETICON ; 
- int WS_EX_DLGMODALFRAME ; 
+
+ int GCLP_HICON ;
+ int GCLP_HICONSM ;
+ scalar_t__ GetClassLongPtr (int ,int ) ;
+ int ICON_BIG ;
+ int ICON_SMALL ;
+ int ICON_SMALL2 ;
+ scalar_t__ IDI_WINLOGO ;
+ int * LoadIconW (int *,int ) ;
+ int SMTO_ABORTIFHUNG ;
+ int SendMessageTimeout (int ,int ,int ,int ,int ,int,int ) ;
+ int WM_GETICON ;
+ int WS_EX_DLGMODALFRAME ;
 
 __attribute__((used)) static HICON
 UserGetWindowIcon(PDRAW_CONTEXT pcontext)
 {
-    HICON hIcon = NULL;
+    HICON hIcon = ((void*)0);
 
     SendMessageTimeout(pcontext->hWnd, WM_GETICON, ICON_SMALL2, 0, SMTO_ABORTIFHUNG, 1000, (PDWORD_PTR)&hIcon);
 
@@ -52,9 +52,9 @@ UserGetWindowIcon(PDRAW_CONTEXT pcontext)
     if (!hIcon)
         hIcon = (HICON)GetClassLongPtr(pcontext->hWnd, GCLP_HICON);
 
-    // See also win32ss/user/ntuser/nonclient.c!NC_IconForWindow
+
     if (!hIcon && !(pcontext->wi.dwExStyle & WS_EX_DLGMODALFRAME))
-        hIcon = LoadIconW(NULL, (LPCWSTR)IDI_WINLOGO);
+        hIcon = LoadIconW(((void*)0), (LPCWSTR)IDI_WINLOGO);
 
     return hIcon;
 }

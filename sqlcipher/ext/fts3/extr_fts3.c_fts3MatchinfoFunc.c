@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  Fts3Cursor ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ fts3FunctionArg (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  sqlite3Fts3Matchinfo (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+typedef int Fts3Cursor ;
+
+
+ scalar_t__ SQLITE_OK ;
+ int assert (int) ;
+ scalar_t__ fts3FunctionArg (int *,char*,int *,int **) ;
+ int sqlite3Fts3Matchinfo (int *,int *,char const*) ;
+ scalar_t__ sqlite3_value_text (int *) ;
 
 __attribute__((used)) static void fts3MatchinfoFunc(
-  sqlite3_context *pContext,      /* SQLite function call context */
-  int nVal,                       /* Size of argument array */
-  sqlite3_value **apVal           /* Array of arguments */
+  sqlite3_context *pContext,
+  int nVal,
+  sqlite3_value **apVal
 ){
-  Fts3Cursor *pCsr;               /* Cursor handle passed through apVal[0] */
+  Fts3Cursor *pCsr;
   assert( nVal==1 || nVal==2 );
   if( SQLITE_OK==fts3FunctionArg(pContext, "matchinfo", apVal[0], &pCsr) ){
     const char *zArg = 0;

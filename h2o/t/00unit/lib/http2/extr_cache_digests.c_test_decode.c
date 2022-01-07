@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_8__ ;
-typedef  struct TYPE_18__   TYPE_7__ ;
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_19__ TYPE_8__ ;
+typedef struct TYPE_18__ TYPE_7__ ;
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_17__ {int size; TYPE_5__* entries; } ;
 struct TYPE_14__ {int size; TYPE_2__* entries; } ;
 struct TYPE_18__ {int complete; TYPE_6__ url_only; TYPE_3__ url_and_etag; } ;
 struct TYPE_19__ {TYPE_7__ fresh; } ;
-typedef  TYPE_8__ h2o_cache_digests_t ;
+typedef TYPE_8__ h2o_cache_digests_t ;
 struct TYPE_15__ {int size; int* entries; } ;
 struct TYPE_16__ {int capacity_bits; TYPE_4__ keys; } ;
 struct TYPE_12__ {scalar_t__ size; } ;
 struct TYPE_13__ {int capacity_bits; TYPE_1__ keys; } ;
 
-/* Variables and functions */
- scalar_t__ H2O_CACHE_DIGESTS_STATE_FRESH ; 
- scalar_t__ H2O_CACHE_DIGESTS_STATE_NOT_CACHED ; 
- scalar_t__ H2O_CACHE_DIGESTS_STATE_UNKNOWN ; 
- int /*<<< orphan*/  H2O_STRLIT (char*) ; 
- int /*<<< orphan*/  h2o_cache_digests_destroy (TYPE_8__*) ; 
- int /*<<< orphan*/  h2o_cache_digests_load_header (TYPE_8__**,int /*<<< orphan*/ ) ; 
- scalar_t__ h2o_cache_digests_lookup_by_url (TYPE_8__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int) ; 
+
+ scalar_t__ H2O_CACHE_DIGESTS_STATE_FRESH ;
+ scalar_t__ H2O_CACHE_DIGESTS_STATE_NOT_CACHED ;
+ scalar_t__ H2O_CACHE_DIGESTS_STATE_UNKNOWN ;
+ int H2O_STRLIT (char*) ;
+ int h2o_cache_digests_destroy (TYPE_8__*) ;
+ int h2o_cache_digests_load_header (TYPE_8__**,int ) ;
+ scalar_t__ h2o_cache_digests_lookup_by_url (TYPE_8__*,int ) ;
+ int ok (int) ;
 
 __attribute__((used)) static void test_decode(void)
 {
-    h2o_cache_digests_t *digests = NULL;
+    h2o_cache_digests_t *digests = ((void*)0);
 
     h2o_cache_digests_load_header(&digests, H2O_STRLIT("AeLA"));
-    ok(digests != NULL);
-    if (digests == NULL)
+    ok(digests != ((void*)0));
+    if (digests == ((void*)0))
         return;
     ok(digests->fresh.url_only.size == 1);
     ok(digests->fresh.url_and_etag.size == 0);

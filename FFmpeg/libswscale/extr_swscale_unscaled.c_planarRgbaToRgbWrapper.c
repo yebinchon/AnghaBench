@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_4__ {scalar_t__ srcFormat; int dstFormat; int /*<<< orphan*/  srcW; } ;
-typedef  TYPE_1__ SwsContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
-#define  AV_PIX_FMT_ABGR 133 
-#define  AV_PIX_FMT_ARGB 132 
-#define  AV_PIX_FMT_BGR24 131 
-#define  AV_PIX_FMT_BGRA 130 
- scalar_t__ AV_PIX_FMT_GBRAP ; 
-#define  AV_PIX_FMT_RGB24 129 
-#define  AV_PIX_FMT_RGBA 128 
- int /*<<< orphan*/  av_get_pix_fmt_name (int) ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gbr24ptopacked24 (int /*<<< orphan*/  const**,int*,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gbraptopacked32 (int /*<<< orphan*/  const**,int*,int /*<<< orphan*/ *,int,int,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_4__ {scalar_t__ srcFormat; int dstFormat; int srcW; } ;
+typedef TYPE_1__ SwsContext ;
+
+
+ int AV_LOG_ERROR ;
+
+
+
+
+ scalar_t__ AV_PIX_FMT_GBRAP ;
+
+
+ int av_get_pix_fmt_name (int) ;
+ int av_log (TYPE_1__*,int ,char*,int ,int ) ;
+ int gbr24ptopacked24 (int const**,int*,int *,int,int,int ) ;
+ int gbraptopacked32 (int const**,int*,int *,int,int,int,int ) ;
 
 __attribute__((used)) static int planarRgbaToRgbWrapper(SwsContext *c, const uint8_t *src[],
                                   int srcStride[], int srcSliceY, int srcSliceH,
@@ -47,29 +47,29 @@ __attribute__((used)) static int planarRgbaToRgbWrapper(SwsContext *c, const uin
     }
 
     switch (c->dstFormat) {
-    case AV_PIX_FMT_BGR24:
+    case 131:
         gbr24ptopacked24(src102, stride102,
                          dst[0] + srcSliceY * dstStride[0], dstStride[0],
                          srcSliceH, c->srcW);
         break;
 
-    case AV_PIX_FMT_RGB24:
+    case 129:
         gbr24ptopacked24(src201, stride201,
                          dst[0] + srcSliceY * dstStride[0], dstStride[0],
                          srcSliceH, c->srcW);
         break;
 
-    case AV_PIX_FMT_ARGB:
+    case 132:
         alpha_first = 1;
-    case AV_PIX_FMT_RGBA:
+    case 128:
         gbraptopacked32(src201, stride201,
                         dst[0] + srcSliceY * dstStride[0], dstStride[0],
                         srcSliceH, alpha_first, c->srcW);
         break;
 
-    case AV_PIX_FMT_ABGR:
+    case 133:
         alpha_first = 1;
-    case AV_PIX_FMT_BGRA:
+    case 130:
         gbraptopacked32(src102, stride102,
                         dst[0] + srcSliceY * dstStride[0], dstStride[0],
                         srcSliceH, alpha_first, c->srcW);

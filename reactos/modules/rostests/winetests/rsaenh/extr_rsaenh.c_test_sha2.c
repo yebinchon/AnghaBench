@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pbData ;
-typedef  int /*<<< orphan*/  HCRYPTHASH ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CALG_SHA_256 ; 
- int /*<<< orphan*/  CALG_SHA_384 ; 
- int /*<<< orphan*/  CALG_SHA_512 ; 
- int CryptCreateHash (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int CryptDestroyHash (int /*<<< orphan*/ ) ; 
- int CryptGetHashParam (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ) ; 
- int CryptHashData (int /*<<< orphan*/ ,unsigned char*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  HP_HASHSIZE ; 
- int /*<<< orphan*/  HP_HASHVAL ; 
- scalar_t__ NTE_BAD_ALGID ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  hProv ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ *,unsigned char const*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int pbData ;
+typedef int HCRYPTHASH ;
+typedef int DWORD ;
+typedef int BYTE ;
+typedef int BOOL ;
+
+
+ int CALG_SHA_256 ;
+ int CALG_SHA_384 ;
+ int CALG_SHA_512 ;
+ int CryptCreateHash (int ,int ,int ,int ,int *) ;
+ int CryptDestroyHash (int ) ;
+ int CryptGetHashParam (int ,int ,int *,int*,int ) ;
+ int CryptHashData (int ,unsigned char*,int,int ) ;
+ scalar_t__ GetLastError () ;
+ int HP_HASHSIZE ;
+ int HP_HASHVAL ;
+ scalar_t__ NTE_BAD_ALGID ;
+ int SetLastError (int) ;
+ int hProv ;
+ int memcmp (int *,unsigned char const*,int) ;
+ int ok (int,char*,...) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_sha2(void)
 {
@@ -67,7 +67,7 @@ __attribute__((used)) static void test_sha2(void)
 
     for (i=0; i<2048; i++) pbData[i] = (unsigned char)i;
 
-    /* SHA-256 hash */
+
     SetLastError(0xdeadbeef);
     result = CryptCreateHash(hProv, CALG_SHA_256, 0, 0, &hHash);
     if (!result && GetLastError() == NTE_BAD_ALGID) {
@@ -93,7 +93,7 @@ __attribute__((used)) static void test_sha2(void)
         ok(result, "%08x\n", GetLastError());
     }
 
-    /* SHA-384 hash */
+
     result = CryptCreateHash(hProv, CALG_SHA_384, 0, 0, &hHash);
     ok(result, "%08x\n", GetLastError());
     if (result) {
@@ -114,7 +114,7 @@ __attribute__((used)) static void test_sha2(void)
         ok(result, "%08x\n", GetLastError());
     }
 
-    /* SHA-512 hash */
+
     result = CryptCreateHash(hProv, CALG_SHA_512, 0, 0, &hHash);
     ok(result, "%08x\n", GetLastError());
     if (result) {

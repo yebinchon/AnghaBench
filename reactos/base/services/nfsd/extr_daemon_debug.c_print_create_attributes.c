@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int DWORD ;
 
-/* Variables and functions */
- int FILE_COMPLETE_IF_OPLOCKED ; 
- int FILE_CREATE_TREE_CONNECTION ; 
- int FILE_DELETE_ON_CLOSE ; 
- int FILE_DIRECTORY_FILE ; 
- int FILE_NON_DIRECTORY_FILE ; 
- int FILE_NO_EA_KNOWLEDGE ; 
- int FILE_NO_INTERMEDIATE_BUFFERING ; 
- int FILE_OPEN_BY_FILE_ID ; 
- int FILE_OPEN_FOR_BACKUP_INTENT ; 
- int FILE_OPEN_REPARSE_POINT ; 
- int FILE_RANDOM_ACCESS ; 
- int FILE_RESERVE_OPFILTER ; 
- int FILE_SEQUENTIAL_ONLY ; 
- int FILE_SYNCHRONOUS_IO_ALERT ; 
- int FILE_SYNCHRONOUS_IO_NONALERT ; 
- int FILE_WRITE_THROUGH ; 
- int /*<<< orphan*/  dlog_file ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int g_debug_level ; 
+
+
+
+typedef int DWORD ;
+
+
+ int FILE_COMPLETE_IF_OPLOCKED ;
+ int FILE_CREATE_TREE_CONNECTION ;
+ int FILE_DELETE_ON_CLOSE ;
+ int FILE_DIRECTORY_FILE ;
+ int FILE_NON_DIRECTORY_FILE ;
+ int FILE_NO_EA_KNOWLEDGE ;
+ int FILE_NO_INTERMEDIATE_BUFFERING ;
+ int FILE_OPEN_BY_FILE_ID ;
+ int FILE_OPEN_FOR_BACKUP_INTENT ;
+ int FILE_OPEN_REPARSE_POINT ;
+ int FILE_RANDOM_ACCESS ;
+ int FILE_RESERVE_OPFILTER ;
+ int FILE_SEQUENTIAL_ONLY ;
+ int FILE_SYNCHRONOUS_IO_ALERT ;
+ int FILE_SYNCHRONOUS_IO_NONALERT ;
+ int FILE_WRITE_THROUGH ;
+ int dlog_file ;
+ int fprintf (int ,char*) ;
+ int g_debug_level ;
 
 void print_create_attributes(int level, DWORD create_opts) {
     if (level > g_debug_level) return;

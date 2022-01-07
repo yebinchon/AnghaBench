@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {scalar_t__ def; int /*<<< orphan*/  tok; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  err (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  errx (int,char*,char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int nopt ; 
- TYPE_1__* opttbl ; 
- int /*<<< orphan*/  strcmp (char const*,int /*<<< orphan*/ ) ; 
- char* strdup (char const*) ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int) ; 
- char* strtok (char*,char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {scalar_t__ def; int tok; } ;
+
+
+ int err (int,int *) ;
+ int errx (int,char*,char const*) ;
+ int free (char*) ;
+ int nopt ;
+ TYPE_1__* opttbl ;
+ int strcmp (char const*,int ) ;
+ char* strdup (char const*) ;
+ int strncmp (char const*,char*,int) ;
+ char* strtok (char*,char*) ;
 
 __attribute__((used)) static void
 stropt(const char *arg, int *xa, int *xo)
@@ -32,8 +32,8 @@ stropt(const char *arg, int *xa, int *xo)
     int inv, i, x;
 
     if (!(s = strdup(arg)))
-        err(1, NULL);
-    for (s1 = s; (q = strtok(s1, ",")); s1 = NULL) {
+        err(1, ((void*)0));
+    for (s1 = s; (q = strtok(s1, ",")); s1 = ((void*)0)) {
         if ((inv = !strncmp(q, "no", 2)))
             q += 2;
         for (i = 0; i < nopt; i++)

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_8__ ;
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_8__ ;
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {TYPE_2__* sys; } ;
-typedef  TYPE_1__ vout_window_t ;
+typedef TYPE_1__ vout_window_t ;
 struct TYPE_14__ {int length; } ;
-struct TYPE_11__ {int /*<<< orphan*/  hwnd; int /*<<< orphan*/  i_window_style; TYPE_8__ window_placement; } ;
-typedef  TYPE_2__ vout_window_sys_t ;
-typedef  int /*<<< orphan*/  WINDOWPLACEMENT ;
-struct TYPE_13__ {int /*<<< orphan*/  top; int /*<<< orphan*/  left; } ;
+struct TYPE_11__ {int hwnd; int i_window_style; TYPE_8__ window_placement; } ;
+typedef TYPE_2__ vout_window_sys_t ;
+typedef int WINDOWPLACEMENT ;
+struct TYPE_13__ {int top; int left; } ;
 struct TYPE_12__ {int cbSize; TYPE_6__ rcMonitor; } ;
-typedef  TYPE_3__ MONITORINFO ;
-typedef  int /*<<< orphan*/  HMONITOR ;
+typedef TYPE_3__ MONITORINFO ;
+typedef int HMONITOR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GWL_STYLE ; 
- scalar_t__ GetMonitorInfo (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  GetWindowLong (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetWindowPlacement (int /*<<< orphan*/ ,TYPE_8__*) ; 
- int /*<<< orphan*/  MONITOR_DEFAULTTONEAREST ; 
- int /*<<< orphan*/  MonitorFromWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RECTHeight (TYPE_6__) ; 
- int /*<<< orphan*/  RECTWidth (TYPE_6__) ; 
- int SWP_FRAMECHANGED ; 
- int SWP_NOZORDER ; 
- int /*<<< orphan*/  SetWindowLong (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SetWindowPos (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  VLC_UNUSED (char const*) ; 
- int WS_CLIPCHILDREN ; 
- int WS_VISIBLE ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_1__*,char*) ; 
+
+ int GWL_STYLE ;
+ scalar_t__ GetMonitorInfo (int ,TYPE_3__*) ;
+ int GetWindowLong (int ,int ) ;
+ int GetWindowPlacement (int ,TYPE_8__*) ;
+ int MONITOR_DEFAULTTONEAREST ;
+ int MonitorFromWindow (int ,int ) ;
+ int RECTHeight (TYPE_6__) ;
+ int RECTWidth (TYPE_6__) ;
+ int SWP_FRAMECHANGED ;
+ int SWP_NOZORDER ;
+ int SetWindowLong (int ,int ,int) ;
+ int SetWindowPos (int ,int ,int ,int ,int ,int ,int) ;
+ int VLC_UNUSED (char const*) ;
+ int WS_CLIPCHILDREN ;
+ int WS_VISIBLE ;
+ int msg_Dbg (TYPE_1__*,char*) ;
 
 __attribute__((used)) static void SetFullscreen(vout_window_t *wnd, const char *id)
 {
@@ -55,11 +55,11 @@ __attribute__((used)) static void SetFullscreen(vout_window_t *wnd, const char *
 
     sys->i_window_style = GetWindowLong(sys->hwnd, GWL_STYLE);
 
-    /* Change window style, no borders and no title bar */
+
     SetWindowLong(sys->hwnd, GWL_STYLE, WS_CLIPCHILDREN | WS_VISIBLE);
 
-    /* Retrieve current window position so fullscreen will happen
-     * on the right screen */
+
+
     HMONITOR hmon = MonitorFromWindow(sys->hwnd, MONITOR_DEFAULTTONEAREST);
     MONITORINFO mi;
     mi.cbSize = sizeof(MONITORINFO);

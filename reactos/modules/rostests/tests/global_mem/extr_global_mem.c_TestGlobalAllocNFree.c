@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  TEST_STATUS ;
-typedef  scalar_t__ HGLOBAL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FAILED ; 
- scalar_t__ GlobalAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ GlobalFree (scalar_t__) ; 
- int /*<<< orphan*/  MEM_BLOCK_SIZE ; 
- int /*<<< orphan*/  OUTPUT_Banner (char*) ; 
- int /*<<< orphan*/  OUTPUT_Line (char*) ; 
- int /*<<< orphan*/  OUTPUT_Result (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OutputAllocFlags (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PASSED ; 
- int /*<<< orphan*/  SKIPPED ; 
+
+
+
+typedef int UINT ;
+typedef int TEST_STATUS ;
+typedef scalar_t__ HGLOBAL ;
+
+
+ int FAILED ;
+ scalar_t__ GlobalAlloc (int ,int ) ;
+ scalar_t__ GlobalFree (scalar_t__) ;
+ int MEM_BLOCK_SIZE ;
+ int OUTPUT_Banner (char*) ;
+ int OUTPUT_Line (char*) ;
+ int OUTPUT_Result (int ) ;
+ int OutputAllocFlags (int ) ;
+ int PASSED ;
+ int SKIPPED ;
 
 TEST_STATUS TestGlobalAllocNFree(UINT allocFlags)
 {

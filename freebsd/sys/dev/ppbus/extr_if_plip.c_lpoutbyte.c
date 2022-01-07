@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t u_char ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int LPIP_SHAKE ; 
- int ppb_rstr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ppb_wdtr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * txmith ; 
- int /*<<< orphan*/ * txmitl ; 
+
+
+
+typedef size_t u_char ;
+typedef int device_t ;
+
+
+ int LPIP_SHAKE ;
+ int ppb_rstr (int ) ;
+ int ppb_wdtr (int ,int ) ;
+ int * txmith ;
+ int * txmitl ;
 
 __attribute__((used)) static __inline int
 lpoutbyte(u_char byte, int spin, device_t ppbus)
 {
 
-	ppb_wdtr(ppbus, txmith[byte]);
-	while (!(ppb_rstr(ppbus) & LPIP_SHAKE))
-		if (--spin == 0)
-			return (1);
-	ppb_wdtr(ppbus, txmitl[byte]);
-	while (ppb_rstr(ppbus) & LPIP_SHAKE)
-		if (--spin == 0)
-			return (1);
-	return (0);
+ ppb_wdtr(ppbus, txmith[byte]);
+ while (!(ppb_rstr(ppbus) & LPIP_SHAKE))
+  if (--spin == 0)
+   return (1);
+ ppb_wdtr(ppbus, txmitl[byte]);
+ while (ppb_rstr(ppbus) & LPIP_SHAKE)
+  if (--spin == 0)
+   return (1);
+ return (0);
 }

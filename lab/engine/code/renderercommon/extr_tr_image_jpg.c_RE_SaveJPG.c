@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  byte ;
-struct TYPE_2__ {int /*<<< orphan*/  (* Hunk_FreeTempMemory ) (int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* FS_WriteFile ) (char*,int /*<<< orphan*/ *,size_t) ;int /*<<< orphan*/ * (* Hunk_AllocateTempMemory ) (size_t) ;} ;
 
-/* Variables and functions */
- size_t RE_SaveJPGToBuffer (int /*<<< orphan*/ *,size_t,int,int,int,int /*<<< orphan*/ *,int) ; 
- TYPE_1__ ri ; 
- int /*<<< orphan*/ * stub1 (size_t) ; 
- int /*<<< orphan*/  stub2 (char*,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int byte ;
+struct TYPE_2__ {int (* Hunk_FreeTempMemory ) (int *) ;int (* FS_WriteFile ) (char*,int *,size_t) ;int * (* Hunk_AllocateTempMemory ) (size_t) ;} ;
+
+
+ size_t RE_SaveJPGToBuffer (int *,size_t,int,int,int,int *,int) ;
+ TYPE_1__ ri ;
+ int * stub1 (size_t) ;
+ int stub2 (char*,int *,size_t) ;
+ int stub3 (int *) ;
 
 void RE_SaveJPG(char * filename, int quality, int image_width, int image_height, byte *image_buffer, int padding)
 {

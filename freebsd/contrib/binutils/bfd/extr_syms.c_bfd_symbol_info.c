@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  name; scalar_t__ value; int /*<<< orphan*/  type; } ;
-typedef  TYPE_2__ symbol_info ;
-struct TYPE_9__ {int /*<<< orphan*/  name; TYPE_1__* section; scalar_t__ value; } ;
-typedef  TYPE_3__ asymbol ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int name; scalar_t__ value; int type; } ;
+typedef TYPE_2__ symbol_info ;
+struct TYPE_9__ {int name; TYPE_1__* section; scalar_t__ value; } ;
+typedef TYPE_3__ asymbol ;
 struct TYPE_7__ {scalar_t__ vma; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bfd_decode_symclass (TYPE_3__*) ; 
- scalar_t__ bfd_is_undefined_symclass (int /*<<< orphan*/ ) ; 
+
+ int bfd_decode_symclass (TYPE_3__*) ;
+ scalar_t__ bfd_is_undefined_symclass (int ) ;
 
 void
 bfd_symbol_info (asymbol *symbol, symbol_info *ret)

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  MSIHANDLE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileA (int /*<<< orphan*/ ) ; 
- scalar_t__ ERROR_INSTALL_PACKAGE_REJECTED ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  INSTALLUILEVEL_NONE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MsiCloseHandle (int /*<<< orphan*/ ) ; 
- scalar_t__ MsiDoActionA (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ MsiGetPropertyA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  MsiSetInternalUI (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  add_ccpsearch_entry (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  add_drlocator_entry (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  add_reglocator_entry (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char*,char*,int) ; 
- int /*<<< orphan*/  create_ccpsearch_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_drlocator_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_package_db () ; 
- int /*<<< orphan*/  create_reglocator_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_signature_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lstrcmpA (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  msifile ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ package_from_db (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int MSIHANDLE ;
+typedef int DWORD ;
+typedef int CHAR ;
+
+
+ int DeleteFileA (int ) ;
+ scalar_t__ ERROR_INSTALL_PACKAGE_REJECTED ;
+ scalar_t__ ERROR_SUCCESS ;
+ int INSTALLUILEVEL_NONE ;
+ int MAX_PATH ;
+ int MsiCloseHandle (int ) ;
+ scalar_t__ MsiDoActionA (int ,char*) ;
+ scalar_t__ MsiGetPropertyA (int ,char*,int *,int*) ;
+ int MsiSetInternalUI (int ,int *) ;
+ int add_ccpsearch_entry (int ,char*) ;
+ int add_drlocator_entry (int ,char*) ;
+ int add_reglocator_entry (int ,char*,int ,char*,char*,int) ;
+ int create_ccpsearch_table (int ) ;
+ int create_drlocator_table (int ) ;
+ int create_package_db () ;
+ int create_reglocator_table (int ) ;
+ int create_signature_table (int ) ;
+ int lstrcmpA (int *,char*) ;
+ int msifile ;
+ int ok (int,char*,...) ;
+ scalar_t__ package_from_db (int ,int *) ;
+ int skip (char*) ;
 
 __attribute__((used)) static void test_ccpsearch(void)
 {
@@ -72,7 +72,7 @@ __attribute__((used)) static void test_ccpsearch(void)
 
     MsiCloseHandle(hdb);
 
-    MsiSetInternalUI(INSTALLUILEVEL_NONE, NULL);
+    MsiSetInternalUI(INSTALLUILEVEL_NONE, ((void*)0));
 
     r = MsiDoActionA(hpkg, "CCPSearch");
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);

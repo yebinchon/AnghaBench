@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsInt32Number ;
-typedef  int /*<<< orphan*/  cmsHTRANSFORM ;
-typedef  int /*<<< orphan*/  cmsHPROFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CheckSeveralLab (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  INTENT_RELATIVE_COLORIMETRIC ; 
- int /*<<< orphan*/  SubTest (char const*) ; 
- int /*<<< orphan*/  TYPE_Lab_DBL ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsCreateTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDeleteTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int cmsInt32Number ;
+typedef int cmsHTRANSFORM ;
+typedef int cmsHPROFILE ;
+
+
+ int CheckSeveralLab (int ) ;
+ int DbgThread () ;
+ int INTENT_RELATIVE_COLORIMETRIC ;
+ int SubTest (char const*) ;
+ int TYPE_Lab_DBL ;
+ int cmsCloseProfile (int ,int ) ;
+ int cmsCreateTransform (int ,int ,int ,int ,int ,int ,int ) ;
+ int cmsDeleteTransform (int ,int ) ;
 
 __attribute__((used)) static
 cmsInt32Number OneTrivialLab(cmsHPROFILE hLab1, cmsHPROFILE hLab2, const char* txt)

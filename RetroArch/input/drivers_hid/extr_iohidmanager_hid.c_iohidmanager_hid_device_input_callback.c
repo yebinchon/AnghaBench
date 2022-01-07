@@ -1,84 +1,84 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  scalar_t__ uint32_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef scalar_t__ uint32_t ;
 struct iohidmanager_hid_adapter {size_t slot; TYPE_2__* buttons; TYPE_2__* axes; TYPE_2__* hats; } ;
-struct TYPE_3__ {int** hats; float** axes; int /*<<< orphan*/ * buttons; } ;
-typedef  TYPE_1__ iohidmanager_hid_t ;
+struct TYPE_3__ {int** hats; float** axes; int * buttons; } ;
+typedef TYPE_1__ iohidmanager_hid_t ;
 struct TYPE_4__ {scalar_t__ cookie; size_t id; struct TYPE_4__* next; } ;
-typedef  TYPE_2__ apple_input_rec_t ;
-typedef  int /*<<< orphan*/  IOReturn ;
-typedef  int /*<<< orphan*/  IOHIDValueRef ;
-typedef  int /*<<< orphan*/  IOHIDElementRef ;
-typedef  scalar_t__ IOHIDElementCookie ;
-typedef  int CFIndex ;
+typedef TYPE_2__ apple_input_rec_t ;
+typedef int IOReturn ;
+typedef int IOHIDValueRef ;
+typedef int IOHIDElementRef ;
+typedef scalar_t__ IOHIDElementCookie ;
+typedef int CFIndex ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIT64_CLEAR (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  BIT64_SET (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  IOHIDElementGetCookie (int /*<<< orphan*/ ) ; 
- int IOHIDElementGetLogicalMax (int /*<<< orphan*/ ) ; 
- int IOHIDElementGetLogicalMin (int /*<<< orphan*/ ) ; 
- int IOHIDElementGetPhysicalMax (int /*<<< orphan*/ ) ; 
- int IOHIDElementGetPhysicalMin (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IOHIDElementGetType (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IOHIDElementGetUsage (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IOHIDElementGetUsagePage (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IOHIDValueGetElement (int /*<<< orphan*/ ) ; 
- int IOHIDValueGetIntegerValue (int /*<<< orphan*/ ) ; 
- scalar_t__ hid_driver_get_data () ; 
-#define  kHIDPage_Button 134 
-#define  kHIDPage_Consumer 133 
-#define  kHIDPage_GenericDesktop 132 
-#define  kHIDPage_Simulation 131 
-#define  kHIDUsage_GD_Hatswitch 130 
- scalar_t__ kIOHIDElementTypeInput_Axis ; 
-#define  kIOHIDElementTypeInput_Button 129 
-#define  kIOHIDElementTypeInput_Misc 128 
+
+ int BIT64_CLEAR (int ,scalar_t__) ;
+ int BIT64_SET (int ,scalar_t__) ;
+ int IOHIDElementGetCookie (int ) ;
+ int IOHIDElementGetLogicalMax (int ) ;
+ int IOHIDElementGetLogicalMin (int ) ;
+ int IOHIDElementGetPhysicalMax (int ) ;
+ int IOHIDElementGetPhysicalMin (int ) ;
+ int IOHIDElementGetType (int ) ;
+ int IOHIDElementGetUsage (int ) ;
+ int IOHIDElementGetUsagePage (int ) ;
+ int IOHIDValueGetElement (int ) ;
+ int IOHIDValueGetIntegerValue (int ) ;
+ scalar_t__ hid_driver_get_data () ;
+
+
+
+
+
+ scalar_t__ kIOHIDElementTypeInput_Axis ;
+
+
 
 __attribute__((used)) static void iohidmanager_hid_device_input_callback(void *data, IOReturn result,
       void* sender, IOHIDValueRef value)
 {
-   iohidmanager_hid_t *hid                  = (iohidmanager_hid_t*)hid_driver_get_data();
+   iohidmanager_hid_t *hid = (iohidmanager_hid_t*)hid_driver_get_data();
    struct iohidmanager_hid_adapter *adapter = (struct iohidmanager_hid_adapter*)data;
-   IOHIDElementRef element                  = IOHIDValueGetElement(value);
-   uint32_t type                            = (uint32_t)IOHIDElementGetType(element);
-   uint32_t page                            = (uint32_t)IOHIDElementGetUsagePage(element);
-   uint32_t use                             = (uint32_t)IOHIDElementGetUsage(element);
-   uint32_t cookie                          = (uint32_t)IOHIDElementGetCookie(element);
-   apple_input_rec_t *tmp                   = NULL;
+   IOHIDElementRef element = IOHIDValueGetElement(value);
+   uint32_t type = (uint32_t)IOHIDElementGetType(element);
+   uint32_t page = (uint32_t)IOHIDElementGetUsagePage(element);
+   uint32_t use = (uint32_t)IOHIDElementGetUsage(element);
+   uint32_t cookie = (uint32_t)IOHIDElementGetCookie(element);
+   apple_input_rec_t *tmp = ((void*)0);
 
-   if (type != kIOHIDElementTypeInput_Misc)
-      if (type != kIOHIDElementTypeInput_Button)
+   if (type != 128)
+      if (type != 129)
          if (type != kIOHIDElementTypeInput_Axis)
             return;
 
-   /* Joystick handler.
-    * TODO: Can GamePad work the same? */
+
+
 
    int pushed_button = 0;
 
    switch (page)
    {
-      case kHIDPage_GenericDesktop:
+      case 132:
          switch (type)
          {
-            case kIOHIDElementTypeInput_Misc:
+            case 128:
                switch (use)
                {
-                  case kHIDUsage_GD_Hatswitch:
+                  case 130:
                      {
                         tmp = adapter->hats;
 
@@ -89,7 +89,7 @@ __attribute__((used)) static void iohidmanager_hid_device_input_callback(void *d
                         {
                            CFIndex min = IOHIDElementGetLogicalMin(element);
                            CFIndex range = IOHIDElementGetLogicalMax(element) - min;
-                           CFIndex val   = IOHIDValueGetIntegerValue(value);
+                           CFIndex val = IOHIDValueGetIntegerValue(value);
 
                            if (range == 3)
                               val *= 2;
@@ -100,47 +100,47 @@ __attribute__((used)) static void iohidmanager_hid_device_input_callback(void *d
                            switch(val)
                            {
                               case 0:
-                                 /* pos = up */
+
                                  hid->hats[adapter->slot][0] = 0;
                                  hid->hats[adapter->slot][1] = -1;
                                  break;
                               case 1:
-                                 /* pos = up+right */
+
                                  hid->hats[adapter->slot][0] = 1;
                                  hid->hats[adapter->slot][1] = -1;
                                  break;
                               case 2:
-                                 /* pos = right */
+
                                  hid->hats[adapter->slot][0] = 1;
                                  hid->hats[adapter->slot][1] = 0;
                                  break;
                               case 3:
-                                 /* pos = down+right */
+
                                  hid->hats[adapter->slot][0] = 1;
                                  hid->hats[adapter->slot][1] = 1;
                                  break;
                               case 4:
-                                 /* pos = down */
+
                                  hid->hats[adapter->slot][0] = 0;
                                  hid->hats[adapter->slot][1] = 1;
                                  break;
                               case 5:
-                                 /* pos = down+left */
+
                                  hid->hats[adapter->slot][0] = -1;
                                  hid->hats[adapter->slot][1] = 1;
                                  break;
                               case 6:
-                                 /* pos = left */
+
                                  hid->hats[adapter->slot][0] = -1;
                                  hid->hats[adapter->slot][1] = 0;
                                  break;
                               case 7:
-                                 /* pos = up_left */
+
                                  hid->hats[adapter->slot][0] = -1;
                                  hid->hats[adapter->slot][1] = -1;
                                  break;
                               default:
-                                 /* pos = centered */
+
                                  hid->hats[adapter->slot][0] = 0;
                                  hid->hats[adapter->slot][1] = 0;
                                  break;
@@ -158,10 +158,10 @@ __attribute__((used)) static void iohidmanager_hid_device_input_callback(void *d
                      {
                         if (tmp->cookie == (IOHIDElementCookie)cookie)
                         {
-                           CFIndex min   = IOHIDElementGetPhysicalMin(element);
+                           CFIndex min = IOHIDElementGetPhysicalMin(element);
                            CFIndex state = IOHIDValueGetIntegerValue(value) - min;
-                           CFIndex max   = IOHIDElementGetPhysicalMax(element) - min;
-                           float val     = (float)state / (float)max;
+                           CFIndex max = IOHIDElementGetPhysicalMax(element) - min;
+                           float val = (float)state / (float)max;
 
                            hid->axes[adapter->slot][tmp->id] =
                               ((val * 2.0f) - 1.0f) * 32767.0f;
@@ -174,20 +174,20 @@ __attribute__((used)) static void iohidmanager_hid_device_input_callback(void *d
                break;
          }
          break;
-      case kHIDPage_Consumer:
-      case kHIDPage_Button:
+      case 133:
+      case 134:
          switch (type)
          {
-            case kIOHIDElementTypeInput_Misc:
-            case kIOHIDElementTypeInput_Button:
+            case 128:
+            case 129:
                pushed_button = 1;
                break;
          }
          break;
-      case kHIDPage_Simulation:
+      case 131:
           switch (type)
           {
-             case kIOHIDElementTypeInput_Misc:
+             case 128:
                  switch (use)
                  {
                  default:
@@ -201,10 +201,10 @@ __attribute__((used)) static void iohidmanager_hid_device_input_callback(void *d
                      {
                         if (tmp->cookie == (IOHIDElementCookie)cookie)
                         {
-                           CFIndex min   = IOHIDElementGetPhysicalMin(element);
+                           CFIndex min = IOHIDElementGetPhysicalMin(element);
                            CFIndex state = IOHIDValueGetIntegerValue(value) - min;
-                           CFIndex max   = IOHIDElementGetPhysicalMax(element) - min;
-                           float val     = (float)state / (float)max;
+                           CFIndex max = IOHIDElementGetPhysicalMax(element) - min;
+                           float val = (float)state / (float)max;
 
                            hid->axes[adapter->slot][tmp->id] =
                               ((val * 2.0f) - 1.0f) * 32767.0f;
@@ -223,7 +223,7 @@ __attribute__((used)) static void iohidmanager_hid_device_input_callback(void *d
    {
       uint8_t bit = 0;
 
-      tmp         = adapter->buttons;
+      tmp = adapter->buttons;
 
       while (tmp && tmp->cookie != (IOHIDElementCookie)cookie)
       {

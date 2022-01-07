@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct decoder_owner {TYPE_1__* p_image; } ;
-typedef  int /*<<< orphan*/  picture_t ;
-typedef  int /*<<< orphan*/  decoder_t ;
-struct TYPE_2__ {int /*<<< orphan*/  outfifo; } ;
+typedef int picture_t ;
+typedef int decoder_t ;
+struct TYPE_2__ {int outfifo; } ;
 
-/* Variables and functions */
- struct decoder_owner* dec_get_owner (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  picture_fifo_Push (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ struct decoder_owner* dec_get_owner (int *) ;
+ int picture_fifo_Push (int ,int *) ;
 
 __attribute__((used)) static void ImageQueueVideo( decoder_t *p_dec, picture_t *p_pic )
 {

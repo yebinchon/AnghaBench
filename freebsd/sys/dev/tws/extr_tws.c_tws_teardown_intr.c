@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tws_softc {int irqs; int /*<<< orphan*/ ** intr_handle; int /*<<< orphan*/ * irq_res; int /*<<< orphan*/  tws_dev; } ;
 
-/* Variables and functions */
- int SUCCESS ; 
- int bus_teardown_intr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct tws_softc {int irqs; int ** intr_handle; int * irq_res; int tws_dev; } ;
+
+
+ int SUCCESS ;
+ int bus_teardown_intr (int ,int ,int *) ;
 
 int
 tws_teardown_intr(struct tws_softc *sc)
@@ -25,7 +25,7 @@ tws_teardown_intr(struct tws_softc *sc)
         if (sc->intr_handle[i]) {
             error = bus_teardown_intr(sc->tws_dev,
                                       sc->irq_res[i], sc->intr_handle[i]);
-            sc->intr_handle[i] = NULL;
+            sc->intr_handle[i] = ((void*)0);
         }
     }
     return(SUCCESS);

@@ -1,63 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  errno ; 
- char* getenv (char const*) ; 
- char* malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
- int putenv (char*) ; 
- int /*<<< orphan*/  st_add3 (size_t,size_t,int) ; 
- scalar_t__ strchr (char const*,char) ; 
- size_t strlen (char const*) ; 
+ int EINVAL ;
+ int ENOMEM ;
+ int errno ;
+ char* getenv (char const*) ;
+ char* malloc (int ) ;
+ int memcpy (char*,char const*,size_t) ;
+ int putenv (char*) ;
+ int st_add3 (size_t,size_t,int) ;
+ scalar_t__ strchr (char const*,char) ;
+ size_t strlen (char const*) ;
 
 int gitsetenv(const char *name, const char *value, int replace)
 {
-	int out;
-	size_t namelen, valuelen;
-	char *envstr;
+ int out;
+ size_t namelen, valuelen;
+ char *envstr;
 
-	if (!name || strchr(name, '=') || !value) {
-		errno = EINVAL;
-		return -1;
-	}
-	if (!replace) {
-		char *oldval = NULL;
-		oldval = getenv(name);
-		if (oldval) return 0;
-	}
+ if (!name || strchr(name, '=') || !value) {
+  errno = EINVAL;
+  return -1;
+ }
+ if (!replace) {
+  char *oldval = ((void*)0);
+  oldval = getenv(name);
+  if (oldval) return 0;
+ }
 
-	namelen = strlen(name);
-	valuelen = strlen(value);
-	envstr = malloc(st_add3(namelen, valuelen, 2));
-	if (!envstr) {
-		errno = ENOMEM;
-		return -1;
-	}
+ namelen = strlen(name);
+ valuelen = strlen(value);
+ envstr = malloc(st_add3(namelen, valuelen, 2));
+ if (!envstr) {
+  errno = ENOMEM;
+  return -1;
+ }
 
-	memcpy(envstr, name, namelen);
-	envstr[namelen] = '=';
-	memcpy(envstr + namelen + 1, value, valuelen);
-	envstr[namelen + valuelen + 1] = 0;
+ memcpy(envstr, name, namelen);
+ envstr[namelen] = '=';
+ memcpy(envstr + namelen + 1, value, valuelen);
+ envstr[namelen + valuelen + 1] = 0;
 
-	out = putenv(envstr);
-	/* putenv(3) makes the argument string part of the environment,
-	 * and changing that string modifies the environment --- which
-	 * means we do not own that storage anymore.  Do not free
-	 * envstr.
-	 */
+ out = putenv(envstr);
 
-	return out;
+
+
+
+
+
+ return out;
 }

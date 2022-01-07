@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  commit_mgr; int /*<<< orphan*/  repo_mgr; } ;
-struct TYPE_6__ {TYPE_1__* head; int /*<<< orphan*/  version; } ;
-struct TYPE_5__ {int /*<<< orphan*/  commit_id; } ;
-typedef  TYPE_2__ SeafRepo ;
-typedef  int /*<<< orphan*/  SeafCommit ;
 
-/* Variables and functions */
- TYPE_4__* seaf ; 
- int /*<<< orphan*/ * seaf_commit_manager_get_commit (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__* seaf_repo_manager_get_repo (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  seaf_warning (char*,char const*) ; 
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int commit_mgr; int repo_mgr; } ;
+struct TYPE_6__ {TYPE_1__* head; int version; } ;
+struct TYPE_5__ {int commit_id; } ;
+typedef TYPE_2__ SeafRepo ;
+typedef int SeafCommit ;
+
+
+ TYPE_4__* seaf ;
+ int * seaf_commit_manager_get_commit (int ,char const*,int ,int ) ;
+ TYPE_2__* seaf_repo_manager_get_repo (int ,char const*) ;
+ int seaf_warning (char*,char const*) ;
 
 SeafCommit *
 seaf_repo_get_head_commit (const char *repo_id)
@@ -34,7 +34,7 @@ seaf_repo_get_head_commit (const char *repo_id)
     repo = seaf_repo_manager_get_repo (seaf->repo_mgr, repo_id);
     if (!repo) {
         seaf_warning ("Failed to get repo %s.\n", repo_id);
-        return NULL;
+        return ((void*)0);
     }
 
     head = seaf_commit_manager_get_commit (seaf->commit_mgr,
@@ -42,7 +42,7 @@ seaf_repo_get_head_commit (const char *repo_id)
                                            repo->head->commit_id);
     if (!head) {
         seaf_warning ("Failed to get head for repo %s.\n", repo_id);
-        return NULL;
+        return ((void*)0);
     }
 
     return head;

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int rounds; int* data; } ;
-typedef  TYPE_1__ RC5_32_KEY ;
-typedef  int RC5_32_INT ;
+typedef TYPE_1__ RC5_32_KEY ;
+typedef int RC5_32_INT ;
 
-/* Variables and functions */
- int RC5_12_ROUNDS ; 
- int RC5_16_ROUNDS ; 
- int RC5_32_MASK ; 
- int RC5_32_P ; 
- int RC5_32_Q ; 
- int RC5_8_ROUNDS ; 
- int ROTATE_l32 (int,int) ; 
- int /*<<< orphan*/  c2l (unsigned char const*,int) ; 
- int /*<<< orphan*/  c2ln (unsigned char const*,int,int,int) ; 
+
+ int RC5_12_ROUNDS ;
+ int RC5_16_ROUNDS ;
+ int RC5_32_MASK ;
+ int RC5_32_P ;
+ int RC5_32_Q ;
+ int RC5_8_ROUNDS ;
+ int ROTATE_l32 (int,int) ;
+ int c2l (unsigned char const*,int) ;
+ int c2ln (unsigned char const*,int,int,int) ;
 
 void RC5_32_set_key(RC5_32_KEY *key, int len, const unsigned char *data,
                     int rounds)

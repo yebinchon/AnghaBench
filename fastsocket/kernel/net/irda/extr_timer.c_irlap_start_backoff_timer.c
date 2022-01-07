@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct irlap_cb {int /*<<< orphan*/  backoff_timer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  irda_start_timer (int /*<<< orphan*/ *,int,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  irlap_backoff_timer_expired ; 
+
+
+
+struct irlap_cb {int backoff_timer; } ;
+
+
+ int irda_start_timer (int *,int,void*,int ) ;
+ int irlap_backoff_timer_expired ;
 
 void irlap_start_backoff_timer(struct irlap_cb *self, int timeout)
 {
-	irda_start_timer(&self->backoff_timer, timeout, (void *) self,
-			 irlap_backoff_timer_expired);
+ irda_start_timer(&self->backoff_timer, timeout, (void *) self,
+    irlap_backoff_timer_expired);
 }

@@ -1,56 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  s5_err ;
-struct TYPE_3__ {int state; int arg0; int arg1; int userlen; int* username; int passlen; int* password; int* daddr; int dport; int /*<<< orphan*/  atyp; int /*<<< orphan*/  cmd; int /*<<< orphan*/  methods; } ;
-typedef  TYPE_1__ s5_ctx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  S5_AUTH_GSSAPI ; 
- int /*<<< orphan*/  S5_AUTH_NONE ; 
- int /*<<< orphan*/  S5_AUTH_PASSWD ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  s5_atyp_host ; 
- int /*<<< orphan*/  s5_atyp_ipv4 ; 
- int /*<<< orphan*/  s5_atyp_ipv6 ; 
-#define  s5_auth_pw_passlen 144 
-#define  s5_auth_pw_password 143 
-#define  s5_auth_pw_userlen 142 
-#define  s5_auth_pw_username 141 
-#define  s5_auth_pw_version 140 
- int /*<<< orphan*/  s5_auth_select ; 
- int /*<<< orphan*/  s5_auth_verify ; 
- int /*<<< orphan*/  s5_bad_atyp ; 
- int /*<<< orphan*/  s5_bad_cmd ; 
- int /*<<< orphan*/  s5_bad_version ; 
- int /*<<< orphan*/  s5_cmd_tcp_connect ; 
- int /*<<< orphan*/  s5_cmd_udp_assoc ; 
-#define  s5_dead 139 
- int /*<<< orphan*/  s5_exec_cmd ; 
-#define  s5_methods 138 
-#define  s5_nmethods 137 
- int /*<<< orphan*/  s5_ok ; 
-#define  s5_req_atyp 136 
-#define  s5_req_atyp_host 135 
-#define  s5_req_cmd 134 
-#define  s5_req_daddr 133 
-#define  s5_req_dport0 132 
-#define  s5_req_dport1 131 
-#define  s5_req_reserved 130 
-#define  s5_req_version 129 
-#define  s5_version 128 
 
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int s5_err ;
+struct TYPE_3__ {int state; int arg0; int arg1; int userlen; int* username; int passlen; int* password; int* daddr; int dport; int atyp; int cmd; int methods; } ;
+typedef TYPE_1__ s5_ctx ;
+
+
+ int S5_AUTH_GSSAPI ;
+ int S5_AUTH_NONE ;
+ int S5_AUTH_PASSWD ;
+ int abort () ;
+ int s5_atyp_host ;
+ int s5_atyp_ipv4 ;
+ int s5_atyp_ipv6 ;
+
+
+
+
+
+ int s5_auth_select ;
+ int s5_auth_verify ;
+ int s5_bad_atyp ;
+ int s5_bad_cmd ;
+ int s5_bad_version ;
+ int s5_cmd_tcp_connect ;
+ int s5_cmd_udp_assoc ;
+
+ int s5_exec_cmd ;
+
+
+ int s5_ok ;
 s5_err s5_parse(s5_ctx *cx, uint8_t **data, size_t *size) {
   s5_err err;
   uint8_t *p;
@@ -66,21 +56,21 @@ s5_err s5_parse(s5_ctx *cx, uint8_t **data, size_t *size) {
     c = p[i];
     i += 1;
     switch (cx->state) {
-      case s5_version:
+      case 128:
         if (c != 5) {
           err = s5_bad_version;
           goto out;
         }
-        cx->state = s5_nmethods;
+        cx->state = 137;
         break;
 
-      case s5_nmethods:
+      case 137:
         cx->arg0 = 0;
-        cx->arg1 = c;  /* Number of bytes to read. */
-        cx->state = s5_methods;
+        cx->arg1 = c;
+        cx->state = 138;
         break;
 
-      case s5_methods:
+      case 138:
         if (cx->arg0 < cx->arg1) {
           switch (c) {
             case 0:
@@ -92,7 +82,7 @@ s5_err s5_parse(s5_ctx *cx, uint8_t **data, size_t *size) {
             case 2:
               cx->methods |= S5_AUTH_PASSWD;
               break;
-            /* Ignore everything we don't understand. */
+
           }
           cx->arg0 += 1;
         }
@@ -102,92 +92,92 @@ s5_err s5_parse(s5_ctx *cx, uint8_t **data, size_t *size) {
         }
         break;
 
-      case s5_auth_pw_version:
+      case 140:
         if (c != 1) {
           err = s5_bad_version;
           goto out;
         }
-        cx->state = s5_auth_pw_userlen;
+        cx->state = 142;
         break;
 
-      case s5_auth_pw_userlen:
+      case 142:
         cx->arg0 = 0;
         cx->userlen = c;
-        cx->state = s5_auth_pw_username;
+        cx->state = 141;
         break;
 
-      case s5_auth_pw_username:
+      case 141:
         if (cx->arg0 < cx->userlen) {
           cx->username[cx->arg0] = c;
           cx->arg0 += 1;
         }
         if (cx->arg0 == cx->userlen) {
           cx->username[cx->userlen] = '\0';
-          cx->state = s5_auth_pw_passlen;
+          cx->state = 144;
         }
         break;
 
-      case s5_auth_pw_passlen:
+      case 144:
         cx->arg0 = 0;
         cx->passlen = c;
-        cx->state = s5_auth_pw_password;
+        cx->state = 143;
         break;
 
-      case s5_auth_pw_password:
+      case 143:
         if (cx->arg0 < cx->passlen) {
           cx->password[cx->arg0] = c;
           cx->arg0 += 1;
         }
         if (cx->arg0 == cx->passlen) {
           cx->password[cx->passlen] = '\0';
-          cx->state = s5_req_version;
+          cx->state = 129;
           err = s5_auth_verify;
           goto out;
         }
         break;
 
-      case s5_req_version:
+      case 129:
         if (c != 5) {
           err = s5_bad_version;
           goto out;
         }
-        cx->state = s5_req_cmd;
+        cx->state = 134;
         break;
 
-      case s5_req_cmd:
+      case 134:
         switch (c) {
-          case 1:  /* TCP connect */
+          case 1:
             cx->cmd = s5_cmd_tcp_connect;
             break;
-          case 3:  /* UDP associate */
+          case 3:
             cx->cmd = s5_cmd_udp_assoc;
             break;
           default:
             err = s5_bad_cmd;
             goto out;
         }
-        cx->state = s5_req_reserved;
+        cx->state = 130;
         break;
 
-      case s5_req_reserved:
-        cx->state = s5_req_atyp;
+      case 130:
+        cx->state = 136;
         break;
 
-      case s5_req_atyp:
+      case 136:
         cx->arg0 = 0;
         switch (c) {
-          case 1:  /* IPv4, four octets. */
-            cx->state = s5_req_daddr;
+          case 1:
+            cx->state = 133;
             cx->atyp = s5_atyp_ipv4;
             cx->arg1 = 4;
             break;
-          case 3:  /* Hostname.  First byte is length. */
-            cx->state = s5_req_atyp_host;
+          case 3:
+            cx->state = 135;
             cx->atyp = s5_atyp_host;
             cx->arg1 = 0;
             break;
-          case 4:  /* IPv6, sixteen octets. */
-            cx->state = s5_req_daddr;
+          case 4:
+            cx->state = 133;
             cx->atyp = s5_atyp_ipv6;
             cx->arg1 = 16;
             break;
@@ -197,34 +187,34 @@ s5_err s5_parse(s5_ctx *cx, uint8_t **data, size_t *size) {
         }
         break;
 
-      case s5_req_atyp_host:
+      case 135:
         cx->arg1 = c;
-        cx->state = s5_req_daddr;
+        cx->state = 133;
         break;
 
-      case s5_req_daddr:
+      case 133:
         if (cx->arg0 < cx->arg1) {
           cx->daddr[cx->arg0] = c;
           cx->arg0 += 1;
         }
         if (cx->arg0 == cx->arg1) {
           cx->daddr[cx->arg1] = '\0';
-          cx->state = s5_req_dport0;
+          cx->state = 132;
         }
         break;
 
-      case s5_req_dport0:
+      case 132:
         cx->dport = c << 8;
-        cx->state = s5_req_dport1;
+        cx->state = 131;
         break;
 
-      case s5_req_dport1:
+      case 131:
         cx->dport |= c;
-        cx->state = s5_dead;
+        cx->state = 139;
         err = s5_exec_cmd;
         goto out;
 
-      case s5_dead:
+      case 139:
         break;
 
       default:

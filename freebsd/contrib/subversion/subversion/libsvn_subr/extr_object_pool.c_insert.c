@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  objects; int /*<<< orphan*/  unused_count; int /*<<< orphan*/  object_count; } ;
-typedef  TYPE_1__ svn_object_pool__t ;
-struct TYPE_13__ {int /*<<< orphan*/  size; int /*<<< orphan*/  data; } ;
-typedef  TYPE_2__ svn_membuf_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_15__ {int /*<<< orphan*/  size; int /*<<< orphan*/  data; } ;
-struct TYPE_14__ {void* object; TYPE_1__* object_pool; TYPE_4__ key; int /*<<< orphan*/ * pool; } ;
-typedef  TYPE_3__ object_ref_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  add_object_ref (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int apr_hash_count (int /*<<< orphan*/ ) ; 
- TYPE_3__* apr_hash_get (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  apr_hash_set (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- TYPE_3__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  remove_unused_objects (TYPE_1__*) ; 
- int /*<<< orphan*/  svn_atomic_inc (int /*<<< orphan*/ *) ; 
- int svn_atomic_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_membuf__create (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int objects; int unused_count; int object_count; } ;
+typedef TYPE_1__ svn_object_pool__t ;
+struct TYPE_13__ {int size; int data; } ;
+typedef TYPE_2__ svn_membuf_t ;
+typedef int svn_error_t ;
+struct TYPE_15__ {int size; int data; } ;
+struct TYPE_14__ {void* object; TYPE_1__* object_pool; TYPE_4__ key; int * pool; } ;
+typedef TYPE_3__ object_ref_t ;
+typedef int apr_pool_t ;
+
+
+ int * SVN_NO_ERROR ;
+ int add_object_ref (TYPE_3__*,int *) ;
+ int apr_hash_count (int ) ;
+ TYPE_3__* apr_hash_get (int ,int ,int ) ;
+ int apr_hash_set (int ,int ,int ,TYPE_3__*) ;
+ TYPE_3__* apr_pcalloc (int *,int) ;
+ int memcpy (int ,int ,int ) ;
+ int remove_unused_objects (TYPE_1__*) ;
+ int svn_atomic_inc (int *) ;
+ int svn_atomic_read (int *) ;
+ int svn_membuf__create (TYPE_4__*,int ,int *) ;
+ int svn_pool_destroy (int *) ;
 
 __attribute__((used)) static svn_error_t *
 insert(void **object,
@@ -50,14 +50,14 @@ insert(void **object,
     = apr_hash_get(object_pool->objects, key->data, key->size);
   if (object_ref)
     {
-      /* Destroy the new one and return a reference to the existing one
-       * because the existing one may already have references on it.
-       */
+
+
+
       svn_pool_destroy(item_pool);
     }
   else
     {
-      /* add new index entry */
+
       object_ref = apr_pcalloc(item_pool, sizeof(*object_ref));
       object_ref->object_pool = object_pool;
       object_ref->object = item;
@@ -71,17 +71,17 @@ insert(void **object,
                    object_ref->key.size, object_ref);
       svn_atomic_inc(&object_pool->object_count);
 
-      /* the new entry is *not* in use yet.
-       * add_object_ref will update counters again.
-       */
+
+
+
       svn_atomic_inc(&object_ref->object_pool->unused_count);
     }
 
-  /* return a reference to the object we just added */
+
   *object = object_ref->object;
   add_object_ref(object_ref, result_pool);
 
-  /* limit memory usage */
+
   if (svn_atomic_read(&object_pool->unused_count) * 2
       > apr_hash_count(object_pool->objects) + 2)
     remove_unused_objects(object_pool);

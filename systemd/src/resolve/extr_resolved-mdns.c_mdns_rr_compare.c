@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_10__ {TYPE_1__* key; } ;
-struct TYPE_9__ {int /*<<< orphan*/  type; int /*<<< orphan*/  class; } ;
-typedef  TYPE_2__ DnsResourceRecord ;
+struct TYPE_9__ {int type; int class; } ;
+typedef TYPE_2__ DnsResourceRecord ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLEAR_CACHE_FLUSH (int /*<<< orphan*/ ) ; 
- int CMP (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DNS_RESOURCE_RECORD_RDATA (TYPE_2__*) ; 
- int /*<<< orphan*/  DNS_RESOURCE_RECORD_RDATA_SIZE (TYPE_2__*) ; 
- size_t MIN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int dns_resource_record_to_wire_format (TYPE_2__*,int) ; 
- int /*<<< orphan*/  log_warning_errno (int,char*) ; 
- int memcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
+
+ int CLEAR_CACHE_FLUSH (int ) ;
+ int CMP (int ,int ) ;
+ int DNS_RESOURCE_RECORD_RDATA (TYPE_2__*) ;
+ int DNS_RESOURCE_RECORD_RDATA_SIZE (TYPE_2__*) ;
+ size_t MIN (int ,int ) ;
+ int assert (TYPE_2__*) ;
+ int dns_resource_record_to_wire_format (TYPE_2__*,int) ;
+ int log_warning_errno (int,char*) ;
+ int memcmp (int ,int ,size_t) ;
 
 __attribute__((used)) static int mdns_rr_compare(DnsResourceRecord * const *a, DnsResourceRecord * const *b) {
         DnsResourceRecord *x = *(DnsResourceRecord **) a, *y = *(DnsResourceRecord **) b;
@@ -43,13 +43,13 @@ __attribute__((used)) static int mdns_rr_compare(DnsResourceRecord * const *a, D
         if (r != 0)
                 return r;
 
-        r = dns_resource_record_to_wire_format(x, false);
+        r = dns_resource_record_to_wire_format(x, 0);
         if (r < 0) {
                 log_warning_errno(r, "Can't wire-format RR: %m");
                 return 0;
         }
 
-        r = dns_resource_record_to_wire_format(y, false);
+        r = dns_resource_record_to_wire_format(y, 0);
         if (r < 0) {
                 log_warning_errno(r, "Can't wire-format RR: %m");
                 return 0;

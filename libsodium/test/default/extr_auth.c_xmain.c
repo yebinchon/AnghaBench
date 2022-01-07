@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  crypto_auth_hmacsha512_state ;
-typedef  int /*<<< orphan*/  crypto_auth_hmacsha512256_state ;
-typedef  int /*<<< orphan*/  crypto_auth_hmacsha256_state ;
 
-/* Variables and functions */
- scalar_t__* a ; 
- scalar_t__* a2 ; 
- scalar_t__* a3 ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__* c ; 
- int /*<<< orphan*/  crypto_auth (scalar_t__*,scalar_t__*,int,int /*<<< orphan*/ ) ; 
- unsigned int crypto_auth_bytes () ; 
- unsigned int crypto_auth_hmacsha256_bytes () ; 
- int /*<<< orphan*/  crypto_auth_hmacsha256_final (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  crypto_auth_hmacsha256_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- unsigned int crypto_auth_hmacsha256_keybytes () ; 
- int crypto_auth_hmacsha256_statebytes () ; 
- int /*<<< orphan*/  crypto_auth_hmacsha256_update (int /*<<< orphan*/ *,scalar_t__*,unsigned int) ; 
- unsigned int crypto_auth_hmacsha512256_bytes () ; 
- int /*<<< orphan*/  crypto_auth_hmacsha512256_final (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  crypto_auth_hmacsha512256_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- unsigned int crypto_auth_hmacsha512256_keybytes () ; 
- unsigned int crypto_auth_hmacsha512256_statebytes () ; 
- int /*<<< orphan*/  crypto_auth_hmacsha512256_update (int /*<<< orphan*/ *,scalar_t__*,unsigned int) ; 
- unsigned int crypto_auth_hmacsha512_bytes () ; 
- int /*<<< orphan*/  crypto_auth_hmacsha512_final (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  crypto_auth_hmacsha512_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- unsigned int crypto_auth_hmacsha512_keybytes () ; 
- int crypto_auth_hmacsha512_statebytes () ; 
- int /*<<< orphan*/  crypto_auth_hmacsha512_update (int /*<<< orphan*/ *,scalar_t__*,unsigned int) ; 
- unsigned int crypto_auth_keybytes () ; 
- int /*<<< orphan*/  crypto_auth_primitive () ; 
- scalar_t__* guard_page ; 
- int /*<<< orphan*/  key ; 
- int /*<<< orphan*/  key2 ; 
- int /*<<< orphan*/  memset (scalar_t__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ sodium_memcmp (scalar_t__*,scalar_t__*,int) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int crypto_auth_hmacsha512_state ;
+typedef int crypto_auth_hmacsha512256_state ;
+typedef int crypto_auth_hmacsha256_state ;
+
+
+ scalar_t__* a ;
+ scalar_t__* a2 ;
+ scalar_t__* a3 ;
+ int assert (int) ;
+ scalar_t__* c ;
+ int crypto_auth (scalar_t__*,scalar_t__*,int,int ) ;
+ unsigned int crypto_auth_bytes () ;
+ unsigned int crypto_auth_hmacsha256_bytes () ;
+ int crypto_auth_hmacsha256_final (int *,scalar_t__*) ;
+ int crypto_auth_hmacsha256_init (int *,int ,int) ;
+ unsigned int crypto_auth_hmacsha256_keybytes () ;
+ int crypto_auth_hmacsha256_statebytes () ;
+ int crypto_auth_hmacsha256_update (int *,scalar_t__*,unsigned int) ;
+ unsigned int crypto_auth_hmacsha512256_bytes () ;
+ int crypto_auth_hmacsha512256_final (int *,scalar_t__*) ;
+ int crypto_auth_hmacsha512256_init (int *,int ,int) ;
+ unsigned int crypto_auth_hmacsha512256_keybytes () ;
+ unsigned int crypto_auth_hmacsha512256_statebytes () ;
+ int crypto_auth_hmacsha512256_update (int *,scalar_t__*,unsigned int) ;
+ unsigned int crypto_auth_hmacsha512_bytes () ;
+ int crypto_auth_hmacsha512_final (int *,scalar_t__*) ;
+ int crypto_auth_hmacsha512_init (int *,int ,int) ;
+ unsigned int crypto_auth_hmacsha512_keybytes () ;
+ int crypto_auth_hmacsha512_statebytes () ;
+ int crypto_auth_hmacsha512_update (int *,scalar_t__*,unsigned int) ;
+ unsigned int crypto_auth_keybytes () ;
+ int crypto_auth_primitive () ;
+ scalar_t__* guard_page ;
+ int key ;
+ int key2 ;
+ int memset (scalar_t__*,int ,int) ;
+ int printf (char*,...) ;
+ scalar_t__ sodium_memcmp (scalar_t__*,scalar_t__*,int) ;
+ scalar_t__ strcmp (int ,char*) ;
 
 int
 main(void)
@@ -56,7 +56,7 @@ main(void)
     crypto_auth_hmacsha512_state st;
     crypto_auth_hmacsha256_state st256;
     crypto_auth_hmacsha512256_state st512_256;
-    size_t                       i;
+    size_t i;
 
     assert(crypto_auth_hmacsha512_statebytes() ==
            sizeof(crypto_auth_hmacsha512_state));
@@ -101,7 +101,7 @@ main(void)
             printf("\n");
     }
 
-    /* Empty message tests: HMAC-SHA512 */
+
     memset(a2, 0, sizeof a2);
     crypto_auth_hmacsha512_init(&st, key, sizeof key);
     crypto_auth_hmacsha512_final(&st, a2);
@@ -118,7 +118,7 @@ main(void)
     crypto_auth_hmacsha512_final(&st, a3);
     assert(sodium_memcmp(a2, a3, sizeof a2) == 0);
 
-    /* Empty message tests: HMAC-SHA512-256 */
+
     memset(a2, 0, sizeof a2);
     crypto_auth_hmacsha512256_init(&st512_256, key, sizeof key);
     crypto_auth_hmacsha512256_final(&st512_256, a2);
@@ -135,7 +135,7 @@ main(void)
     crypto_auth_hmacsha512256_final(&st512_256, a3);
     assert(sodium_memcmp(a2, a3, sizeof a2) == 0);
 
-    /* Empty message tests: HMAC-SHA256 */
+
 
     memset(a2, 0, sizeof a2);
     crypto_auth_hmacsha256_init(&st256, key, sizeof key);
@@ -153,7 +153,7 @@ main(void)
     crypto_auth_hmacsha256_final(&st256, a3);
     assert(sodium_memcmp(a2, a3, sizeof a2) == 0);
 
-    /* --- */
+
 
     assert(crypto_auth_bytes() > 0U);
     assert(crypto_auth_keybytes() > 0U);

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-struct TYPE_5__ {int /*<<< orphan*/  value; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ VC_URI_QUERY_T ;
-struct TYPE_6__ {size_t num_queries; TYPE_1__* queries; int /*<<< orphan*/  fragment; int /*<<< orphan*/  path; int /*<<< orphan*/  port; int /*<<< orphan*/  host; int /*<<< orphan*/  userinfo; int /*<<< orphan*/  scheme; } ;
-typedef  TYPE_2__ VC_URI_PARTS_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  release_string (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
+struct TYPE_5__ {int value; int name; } ;
+typedef TYPE_1__ VC_URI_QUERY_T ;
+struct TYPE_6__ {size_t num_queries; TYPE_1__* queries; int fragment; int path; int port; int host; int userinfo; int scheme; } ;
+typedef TYPE_2__ VC_URI_PARTS_T ;
+
+
+ int free (TYPE_1__*) ;
+ int release_string (int *) ;
 
 void vc_uri_clear( VC_URI_PARTS_T *p_uri )
 {
@@ -46,7 +46,7 @@ void vc_uri_clear( VC_URI_PARTS_T *p_uri )
       }
 
       free(queries);
-      p_uri->queries = NULL;
+      p_uri->queries = ((void*)0);
       p_uri->num_queries = 0;
    }
 }

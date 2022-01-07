@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {float y; float u; float v; } ;
 struct TYPE_8__ {TYPE_1__ yuv; } ;
 struct TYPE_7__ {float re; float im; } ;
-typedef  TYPE_2__ FFTComplex ;
-typedef  TYPE_3__ ColorFloat ;
+typedef TYPE_2__ FFTComplex ;
+typedef TYPE_3__ ColorFloat ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FFMIN (float,float) ; 
- float calculate_gamma (int /*<<< orphan*/ ,float) ; 
+
+ int FFMIN (float,float) ;
+ float calculate_gamma (int ,float) ;
 
 __attribute__((used)) static void yuv_from_cqt(ColorFloat *c, const FFTComplex *v, float gamma, int len, float cm[3][3], float cscheme[6])
 {

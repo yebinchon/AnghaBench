@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ t_Handle ;
-struct TYPE_2__ {int /*<<< orphan*/  lock; int /*<<< orphan*/  hardwarePortId; int /*<<< orphan*/  h_FmPcd; int /*<<< orphan*/  h_Spinlock; } ;
-typedef  TYPE_1__ t_FmPort ;
-typedef  scalar_t__ t_Error ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DBG (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ ERROR_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_BUSY ; 
- scalar_t__ E_OK ; 
- scalar_t__ FmPcdPlcrFreeProfiles (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAJOR ; 
- int /*<<< orphan*/  NO_MSG ; 
- int /*<<< orphan*/  RELEASE_LOCK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RETURN_ERROR (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE ; 
- int /*<<< orphan*/  TRY_LOCK (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ t_Handle ;
+struct TYPE_2__ {int lock; int hardwarePortId; int h_FmPcd; int h_Spinlock; } ;
+typedef TYPE_1__ t_FmPort ;
+typedef scalar_t__ t_Error ;
+
+
+ int DBG (int ,char*) ;
+ scalar_t__ ERROR_CODE (int ) ;
+ int E_BUSY ;
+ scalar_t__ E_OK ;
+ scalar_t__ FmPcdPlcrFreeProfiles (int ,int ) ;
+ int MAJOR ;
+ int NO_MSG ;
+ int RELEASE_LOCK (int ) ;
+ int RETURN_ERROR (int ,scalar_t__,int ) ;
+ int TRACE ;
+ int TRY_LOCK (int ,int *) ;
 
 t_Error FM_PORT_PcdPlcrFreeProfiles(t_Handle h_FmPort)
 {

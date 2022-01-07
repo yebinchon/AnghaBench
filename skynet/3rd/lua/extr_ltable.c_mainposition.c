@@ -1,61 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Table ;
-typedef  int /*<<< orphan*/  TValue ;
-typedef  int /*<<< orphan*/  Node ;
 
-/* Variables and functions */
-#define  LUA_TBOOLEAN 134 
-#define  LUA_TLCF 133 
-#define  LUA_TLIGHTUSERDATA 132 
-#define  LUA_TLNGSTR 131 
-#define  LUA_TNUMFLT 130 
-#define  LUA_TNUMINT 129 
-#define  LUA_TSHRSTR 128 
- int /*<<< orphan*/  bvalue (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  fltvalue (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  fvalue (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  gcvalue (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * hashboolean (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * hashint (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * hashmod (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * hashpointer (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * hashpow2 (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * hashstr (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ivalue (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  l_hashfloat (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaS_hashlongstr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_assert (int) ; 
- int /*<<< orphan*/  pvalue (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  tsvalue (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ttisdeadkey (int /*<<< orphan*/  const*) ; 
- int ttype (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int Table ;
+typedef int TValue ;
+typedef int Node ;
+ int bvalue (int const*) ;
+ int fltvalue (int const*) ;
+ int fvalue (int const*) ;
+ int gcvalue (int const*) ;
+ int * hashboolean (int const*,int ) ;
+ int * hashint (int const*,int ) ;
+ int * hashmod (int const*,int ) ;
+ int * hashpointer (int const*,int ) ;
+ int * hashpow2 (int const*,int ) ;
+ int * hashstr (int const*,int ) ;
+ int ivalue (int const*) ;
+ int l_hashfloat (int ) ;
+ int luaS_hashlongstr (int ) ;
+ int lua_assert (int) ;
+ int pvalue (int const*) ;
+ int tsvalue (int const*) ;
+ int ttisdeadkey (int const*) ;
+ int ttype (int const*) ;
 
 __attribute__((used)) static Node *mainposition (const Table *t, const TValue *key) {
   switch (ttype(key)) {
-    case LUA_TNUMINT:
+    case 129:
       return hashint(t, ivalue(key));
-    case LUA_TNUMFLT:
+    case 130:
       return hashmod(t, l_hashfloat(fltvalue(key)));
-    case LUA_TSHRSTR:
+    case 128:
       return hashstr(t, tsvalue(key));
-    case LUA_TLNGSTR:
+    case 131:
       return hashpow2(t, luaS_hashlongstr(tsvalue(key)));
-    case LUA_TBOOLEAN:
+    case 134:
       return hashboolean(t, bvalue(key));
-    case LUA_TLIGHTUSERDATA:
+    case 132:
       return hashpointer(t, pvalue(key));
-    case LUA_TLCF:
+    case 133:
       return hashpointer(t, fvalue(key));
     default:
       lua_assert(!ttisdeadkey(key));

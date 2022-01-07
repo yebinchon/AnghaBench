@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  parse_param ; 
- int /*<<< orphan*/  putc_code (int /*<<< orphan*/ *,char) ; 
- int /*<<< orphan*/  putl_code (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  puts_code (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  puts_param_types (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int FILE ;
+
+
+ int parse_param ;
+ int putc_code (int *,char) ;
+ int putl_code (int *,char*) ;
+ int puts_code (int *,char*) ;
+ int puts_param_types (int *,int ,int ) ;
 
 __attribute__((used)) static void
 output_parse_decl(FILE * fp)
@@ -28,7 +28,7 @@ output_parse_decl(FILE * fp)
     putl_code(fp, "/* compatibility with FreeBSD */\n");
     putl_code(fp, "# ifdef YYPARSE_PARAM_TYPE\n");
     putl_code(fp,
-	      "#  define YYPARSE_DECL() yyparse(YYPARSE_PARAM_TYPE YYPARSE_PARAM)\n");
+       "#  define YYPARSE_DECL() yyparse(YYPARSE_PARAM_TYPE YYPARSE_PARAM)\n");
     putl_code(fp, "# else\n");
     putl_code(fp, "#  define YYPARSE_DECL() yyparse(void *YYPARSE_PARAM)\n");
     putl_code(fp, "# endif\n");

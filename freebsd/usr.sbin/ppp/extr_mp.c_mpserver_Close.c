@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  sun_path; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * dl; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int sun_path; } ;
+struct TYPE_4__ {int * dl; } ;
 struct mpserver {int fd; TYPE_2__ socket; TYPE_1__ send; } ;
 
-/* Variables and functions */
- int ID0unlink (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LogERROR ; 
- int /*<<< orphan*/  bundle_SendDatalink (int /*<<< orphan*/ *,int,TYPE_2__*) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,char,int) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+ int ID0unlink (int ) ;
+ int LogERROR ;
+ int bundle_SendDatalink (int *,int,TYPE_2__*) ;
+ int close (int) ;
+ int errno ;
+ int log_Printf (int ,char*,int ,int ) ;
+ int memset (TYPE_2__*,char,int) ;
+ int strerror (int ) ;
 
 void
 mpserver_Close(struct mpserver *s)
 {
-  if (s->send.dl != NULL) {
+  if (s->send.dl != ((void*)0)) {
     bundle_SendDatalink(s->send.dl, s->fd, &s->socket);
-    s->send.dl = NULL;
+    s->send.dl = ((void*)0);
     s->fd = -1;
   } else if (s->fd >= 0) {
     close(s->fd);

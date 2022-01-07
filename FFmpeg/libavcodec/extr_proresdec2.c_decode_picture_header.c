@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_10__ {int width; int height; TYPE_2__* priv_data; } ;
 struct TYPE_9__ {int mb_width; int mb_height; int slice_count; TYPE_1__* slices; scalar_t__ frame_type; } ;
 struct TYPE_8__ {int const* data; int mb_x; int mb_y; int mb_count; int data_size; } ;
-typedef  TYPE_1__ SliceContext ;
-typedef  TYPE_2__ ProresContext ;
-typedef  TYPE_3__ AVCodecContext ;
+typedef TYPE_1__ SliceContext ;
+typedef TYPE_2__ ProresContext ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_RB16 (int const*) ; 
- unsigned int AV_RB32 (int const*) ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_freep (TYPE_1__**) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,...) ; 
- TYPE_1__* av_mallocz_array (int,int) ; 
- int av_popcount (int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_RB16 (int const*) ;
+ unsigned int AV_RB32 (int const*) ;
+ int EINVAL ;
+ int ENOMEM ;
+ int av_freep (TYPE_1__**) ;
+ int av_log (TYPE_3__*,int ,char*,...) ;
+ TYPE_1__* av_mallocz_array (int,int) ;
+ int av_popcount (int) ;
 
 __attribute__((used)) static int decode_picture_header(AVCodecContext *avctx, const uint8_t *buf, const int buf_size)
 {
@@ -55,7 +55,7 @@ __attribute__((used)) static int decode_picture_header(AVCodecContext *avctx, co
         return AVERROR_INVALIDDATA;
     }
 
-    log2_slice_mb_width  = buf[7] >> 4;
+    log2_slice_mb_width = buf[7] >> 4;
     log2_slice_mb_height = buf[7] & 0xF;
     if (log2_slice_mb_width > 3 || log2_slice_mb_height) {
         av_log(avctx, AV_LOG_ERROR, "unsupported slice resolution: %dx%d\n",
@@ -63,14 +63,14 @@ __attribute__((used)) static int decode_picture_header(AVCodecContext *avctx, co
         return AVERROR_INVALIDDATA;
     }
 
-    ctx->mb_width  = (avctx->width  + 15) >> 4;
+    ctx->mb_width = (avctx->width + 15) >> 4;
     if (ctx->frame_type)
         ctx->mb_height = (avctx->height + 31) >> 5;
     else
         ctx->mb_height = (avctx->height + 15) >> 4;
 
-    // QT ignores the written value
-    // slice_count = AV_RB16(buf + 5);
+
+
     slice_count = ctx->mb_height * ((ctx->mb_width >> log2_slice_mb_width) +
                                     av_popcount(ctx->mb_width & (1 << log2_slice_mb_width) - 1));
 
@@ -91,9 +91,9 @@ __attribute__((used)) static int decode_picture_header(AVCodecContext *avctx, co
         return AVERROR_INVALIDDATA;
     }
 
-    // parse slice information
+
     index_ptr = buf + hdr_size;
-    data_ptr  = index_ptr + slice_count*2;
+    data_ptr = index_ptr + slice_count*2;
 
     slice_mb_count = 1 << log2_slice_mb_width;
     mb_x = 0;

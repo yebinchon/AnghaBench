@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  yes ;
-typedef  int /*<<< orphan*/  rcvlatency ;
-typedef  int /*<<< orphan*/  peerlatency ;
-typedef  int /*<<< orphan*/  latency ;
-typedef  int /*<<< orphan*/  connect_timeout ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int yes ;
+typedef int rcvlatency ;
+typedef int peerlatency ;
+typedef int latency ;
+typedef int connect_timeout ;
 struct TYPE_5__ {int flags; TYPE_2__* priv_data; } ;
-typedef  TYPE_1__ URLContext ;
+typedef TYPE_1__ URLContext ;
 struct TYPE_6__ {int latency; int rcvlatency; int peerlatency; int connect_timeout; scalar_t__ mode; scalar_t__ transtype; scalar_t__ maxbw; scalar_t__ pbkeylen; int* passphrase; scalar_t__ mss; scalar_t__ ffs; scalar_t__ ipttl; scalar_t__ iptos; scalar_t__ tlpktdrop; scalar_t__ nakreport; scalar_t__ sndbuf; scalar_t__ rcvbuf; scalar_t__ lossmaxttl; scalar_t__ minversion; int* streamid; int* smoother; scalar_t__ messageapi; scalar_t__ payload_size; } ;
-typedef  TYPE_2__ SRTContext ;
+typedef TYPE_2__ SRTContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVIO_FLAG_WRITE ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  SRTO_CONNTIMEO ; 
- int /*<<< orphan*/  SRTO_FC ; 
- int /*<<< orphan*/  SRTO_IPTOS ; 
- int /*<<< orphan*/  SRTO_IPTTL ; 
- int /*<<< orphan*/  SRTO_LATENCY ; 
- int /*<<< orphan*/  SRTO_LOSSMAXTTL ; 
- int /*<<< orphan*/  SRTO_MAXBW ; 
- int /*<<< orphan*/  SRTO_MESSAGEAPI ; 
- int /*<<< orphan*/  SRTO_MINVERSION ; 
- int /*<<< orphan*/  SRTO_MSS ; 
- int /*<<< orphan*/  SRTO_NAKREPORT ; 
- int /*<<< orphan*/  SRTO_PASSPHRASE ; 
- int /*<<< orphan*/  SRTO_PAYLOADSIZE ; 
- int /*<<< orphan*/  SRTO_PBKEYLEN ; 
- int /*<<< orphan*/  SRTO_PEERLATENCY ; 
- int /*<<< orphan*/  SRTO_RCVBUF ; 
- int /*<<< orphan*/  SRTO_RCVLATENCY ; 
- int /*<<< orphan*/  SRTO_RENDEZVOUS ; 
- int /*<<< orphan*/  SRTO_SENDER ; 
- int /*<<< orphan*/  SRTO_SMOOTHER ; 
- int /*<<< orphan*/  SRTO_SNDBUF ; 
- int /*<<< orphan*/  SRTO_STREAMID ; 
- int /*<<< orphan*/  SRTO_TLPKTDROP ; 
- int /*<<< orphan*/  SRTO_TRANSTYPE ; 
- scalar_t__ SRTT_INVALID ; 
- scalar_t__ SRT_MODE_RENDEZVOUS ; 
- scalar_t__ libsrt_setsockopt (TYPE_1__*,int,int /*<<< orphan*/ ,char*,int*,int) ; 
- int strlen (int*) ; 
+
+ int AVERROR (int ) ;
+ int AVIO_FLAG_WRITE ;
+ int EIO ;
+ int SRTO_CONNTIMEO ;
+ int SRTO_FC ;
+ int SRTO_IPTOS ;
+ int SRTO_IPTTL ;
+ int SRTO_LATENCY ;
+ int SRTO_LOSSMAXTTL ;
+ int SRTO_MAXBW ;
+ int SRTO_MESSAGEAPI ;
+ int SRTO_MINVERSION ;
+ int SRTO_MSS ;
+ int SRTO_NAKREPORT ;
+ int SRTO_PASSPHRASE ;
+ int SRTO_PAYLOADSIZE ;
+ int SRTO_PBKEYLEN ;
+ int SRTO_PEERLATENCY ;
+ int SRTO_RCVBUF ;
+ int SRTO_RCVLATENCY ;
+ int SRTO_RENDEZVOUS ;
+ int SRTO_SENDER ;
+ int SRTO_SMOOTHER ;
+ int SRTO_SNDBUF ;
+ int SRTO_STREAMID ;
+ int SRTO_TLPKTDROP ;
+ int SRTO_TRANSTYPE ;
+ scalar_t__ SRTT_INVALID ;
+ scalar_t__ SRT_MODE_RENDEZVOUS ;
+ scalar_t__ libsrt_setsockopt (TYPE_1__*,int,int ,char*,int*,int) ;
+ int strlen (int*) ;
 
 __attribute__((used)) static int libsrt_set_options_pre(URLContext *h, int fd)
 {

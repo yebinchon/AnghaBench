@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int EOF ; 
- scalar_t__ feof (int /*<<< orphan*/ *) ; 
- int getc (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int FILE ;
+
+
+ int EOF ;
+ scalar_t__ feof (int *) ;
+ int getc (int *) ;
 
 __attribute__((used)) static int
 get_line(char *line, int size, FILE * f)
@@ -24,9 +24,9 @@ get_line(char *line, int size, FILE * f)
     int c;
 
     if (feof(f))
-	return -1;
+ return -1;
     while (size-- && ((c = getc(f)) != EOF) && (c != '\n'))
-	*ptr++ = c;
+ *ptr++ = c;
     *ptr++ = '\0';
     return (int) (ptr - line);
 }

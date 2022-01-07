@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  A ; 
- int /*<<< orphan*/  ALIGNED ; 
- int /*<<< orphan*/  C ; 
- int /*<<< orphan*/  CONTIGUOUS ; 
- int /*<<< orphan*/  C_CONTIGUOUS ; 
- int /*<<< orphan*/  F ; 
- int /*<<< orphan*/  FORTRAN ; 
- int /*<<< orphan*/  F_CONTIGUOUS ; 
- int /*<<< orphan*/  NPY_ARRAY_ALIGNED ; 
- int /*<<< orphan*/  NPY_ARRAY_C_CONTIGUOUS ; 
- int /*<<< orphan*/  NPY_ARRAY_F_CONTIGUOUS ; 
- int /*<<< orphan*/  NPY_ARRAY_OWNDATA ; 
- int /*<<< orphan*/  NPY_ARRAY_UPDATEIFCOPY ; 
- int /*<<< orphan*/  NPY_ARRAY_WRITEABLE ; 
- int /*<<< orphan*/  NPY_ARRAY_WRITEBACKIFCOPY ; 
- int /*<<< orphan*/  O ; 
- int /*<<< orphan*/  OWNDATA ; 
- int /*<<< orphan*/ * PyDict_New () ; 
- int /*<<< orphan*/  PyDict_SetItemString (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  U ; 
- int /*<<< orphan*/  UPDATEIFCOPY ; 
- int /*<<< orphan*/  W ; 
- int /*<<< orphan*/  WRITEABLE ; 
- int /*<<< orphan*/  WRITEBACKIFCOPY ; 
- int /*<<< orphan*/  X ; 
- int /*<<< orphan*/  _addnew (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _addone (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int PyObject ;
+
+
+ int A ;
+ int ALIGNED ;
+ int C ;
+ int CONTIGUOUS ;
+ int C_CONTIGUOUS ;
+ int F ;
+ int FORTRAN ;
+ int F_CONTIGUOUS ;
+ int NPY_ARRAY_ALIGNED ;
+ int NPY_ARRAY_C_CONTIGUOUS ;
+ int NPY_ARRAY_F_CONTIGUOUS ;
+ int NPY_ARRAY_OWNDATA ;
+ int NPY_ARRAY_UPDATEIFCOPY ;
+ int NPY_ARRAY_WRITEABLE ;
+ int NPY_ARRAY_WRITEBACKIFCOPY ;
+ int O ;
+ int OWNDATA ;
+ int * PyDict_New () ;
+ int PyDict_SetItemString (int *,char*,int *) ;
+ int Py_DECREF (int *) ;
+ int U ;
+ int UPDATEIFCOPY ;
+ int W ;
+ int WRITEABLE ;
+ int WRITEBACKIFCOPY ;
+ int X ;
+ int _addnew (int ,int ,int ) ;
+ int _addone (int ,int ) ;
 
 __attribute__((used)) static void
 set_flaginfo(PyObject *d)
@@ -49,29 +49,18 @@ set_flaginfo(PyObject *d)
     PyObject *newd;
 
     newd = PyDict_New();
+    PyDict_SetItemString(newd, "OWNDATA", s=PyInt_FromLong(NPY_ARRAY_OWNDATA)); Py_DECREF(s); PyDict_SetItemString(newd, "O", s=PyInt_FromLong(NPY_ARRAY_OWNDATA)); Py_DECREF(s);
+    PyDict_SetItemString(newd, "FORTRAN", s=PyInt_FromLong(NPY_ARRAY_F_CONTIGUOUS)); Py_DECREF(s); PyDict_SetItemString(newd, "F", s=PyInt_FromLong(NPY_ARRAY_F_CONTIGUOUS)); Py_DECREF(s);
+    PyDict_SetItemString(newd, "CONTIGUOUS", s=PyInt_FromLong(NPY_ARRAY_C_CONTIGUOUS)); Py_DECREF(s); PyDict_SetItemString(newd, "C", s=PyInt_FromLong(NPY_ARRAY_C_CONTIGUOUS)); Py_DECREF(s);
+    PyDict_SetItemString(newd, "ALIGNED", s=PyInt_FromLong(NPY_ARRAY_ALIGNED)); Py_DECREF(s); PyDict_SetItemString(newd, "A", s=PyInt_FromLong(NPY_ARRAY_ALIGNED)); Py_DECREF(s);
+    PyDict_SetItemString(newd, "UPDATEIFCOPY", s=PyInt_FromLong(NPY_ARRAY_UPDATEIFCOPY)); Py_DECREF(s); PyDict_SetItemString(newd, "U", s=PyInt_FromLong(NPY_ARRAY_UPDATEIFCOPY)); Py_DECREF(s);
+    PyDict_SetItemString(newd, "WRITEBACKIFCOPY", s=PyInt_FromLong(NPY_ARRAY_WRITEBACKIFCOPY)); Py_DECREF(s); PyDict_SetItemString(newd, "X", s=PyInt_FromLong(NPY_ARRAY_WRITEBACKIFCOPY)); Py_DECREF(s);
+    PyDict_SetItemString(newd, "WRITEABLE", s=PyInt_FromLong(NPY_ARRAY_WRITEABLE)); Py_DECREF(s); PyDict_SetItemString(newd, "W", s=PyInt_FromLong(NPY_ARRAY_WRITEABLE)); Py_DECREF(s);
+    PyDict_SetItemString(newd, "C_CONTIGUOUS", s=PyInt_FromLong(NPY_ARRAY_C_CONTIGUOUS)); Py_DECREF(s);
+    PyDict_SetItemString(newd, "F_CONTIGUOUS", s=PyInt_FromLong(NPY_ARRAY_F_CONTIGUOUS)); Py_DECREF(s);
 
-#define _addnew(key, val, one)                                       \
-    PyDict_SetItemString(newd, #key, s=PyInt_FromLong(val));    \
-    Py_DECREF(s);                                               \
-    PyDict_SetItemString(newd, #one, s=PyInt_FromLong(val));    \
-    Py_DECREF(s)
 
-#define _addone(key, val)                                            \
-    PyDict_SetItemString(newd, #key, s=PyInt_FromLong(val));    \
-    Py_DECREF(s)
 
-    _addnew(OWNDATA, NPY_ARRAY_OWNDATA, O);
-    _addnew(FORTRAN, NPY_ARRAY_F_CONTIGUOUS, F);
-    _addnew(CONTIGUOUS, NPY_ARRAY_C_CONTIGUOUS, C);
-    _addnew(ALIGNED, NPY_ARRAY_ALIGNED, A);
-    _addnew(UPDATEIFCOPY, NPY_ARRAY_UPDATEIFCOPY, U);
-    _addnew(WRITEBACKIFCOPY, NPY_ARRAY_WRITEBACKIFCOPY, X);
-    _addnew(WRITEABLE, NPY_ARRAY_WRITEABLE, W);
-    _addone(C_CONTIGUOUS, NPY_ARRAY_C_CONTIGUOUS);
-    _addone(F_CONTIGUOUS, NPY_ARRAY_F_CONTIGUOUS);
-
-#undef _addone
-#undef _addnew
 
     PyDict_SetItemString(d, "_flagdict", newd);
     Py_DECREF(newd);

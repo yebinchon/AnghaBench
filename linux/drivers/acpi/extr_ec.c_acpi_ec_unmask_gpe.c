@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct acpi_ec {int /*<<< orphan*/  flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EC_FLAGS_GPE_MASKED ; 
- int /*<<< orphan*/  acpi_ec_enable_gpe (struct acpi_ec*,int) ; 
- int /*<<< orphan*/  clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ec_dbg_drv (char*) ; 
- scalar_t__ test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct acpi_ec {int flags; } ;
+
+
+ int EC_FLAGS_GPE_MASKED ;
+ int acpi_ec_enable_gpe (struct acpi_ec*,int) ;
+ int clear_bit (int ,int *) ;
+ int ec_dbg_drv (char*) ;
+ scalar_t__ test_bit (int ,int *) ;
 
 __attribute__((used)) static void acpi_ec_unmask_gpe(struct acpi_ec *ec)
 {
-	if (test_bit(EC_FLAGS_GPE_MASKED, &ec->flags)) {
-		clear_bit(EC_FLAGS_GPE_MASKED, &ec->flags);
-		acpi_ec_enable_gpe(ec, false);
-		ec_dbg_drv("Polling disabled");
-	}
+ if (test_bit(EC_FLAGS_GPE_MASKED, &ec->flags)) {
+  clear_bit(EC_FLAGS_GPE_MASKED, &ec->flags);
+  acpi_ec_enable_gpe(ec, 0);
+  ec_dbg_drv("Polling disabled");
+ }
 }

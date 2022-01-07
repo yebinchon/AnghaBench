@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_bn2lebinpad (int /*<<< orphan*/  const*,unsigned char*,int) ; 
+
+
+
+typedef int BIGNUM ;
+
+
+ int BN_bn2lebinpad (int const*,unsigned char*,int) ;
 
 __attribute__((used)) static void write_lebn(unsigned char **out, const BIGNUM *bn, int len)
 {

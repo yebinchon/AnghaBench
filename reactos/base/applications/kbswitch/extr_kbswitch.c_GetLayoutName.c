@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  szDispName ;
-typedef  size_t UINT ;
-typedef  char TCHAR ;
-typedef  int SIZE_T ;
-typedef  scalar_t__ LPTSTR ;
-typedef  int /*<<< orphan*/  LPCTSTR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ HANDLE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAYSIZE (char*) ; 
- int /*<<< orphan*/  CCH_LAYOUT_ID ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ ExpandEnvironmentStrings (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FreeLibrary (scalar_t__) ; 
- int /*<<< orphan*/  GetLayoutID (scalar_t__,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  KEY_QUERY_VALUE ; 
- scalar_t__ LoadLibrary (char*) ; 
- scalar_t__ LoadString (scalar_t__,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  StringCchCopy (scalar_t__,int,char*) ; 
- int /*<<< orphan*/  StringCchPrintf (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _T (char*) ; 
- int _tcslen (char*) ; 
- int /*<<< orphan*/  _ttoi (char*) ; 
+
+
+
+typedef int szDispName ;
+typedef size_t UINT ;
+typedef char TCHAR ;
+typedef int SIZE_T ;
+typedef scalar_t__ LPTSTR ;
+typedef int LPCTSTR ;
+typedef int LPBYTE ;
+typedef int HKEY ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int ARRAYSIZE (char*) ;
+ int CCH_LAYOUT_ID ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ ExpandEnvironmentStrings (char*,char*,int ) ;
+ int FALSE ;
+ int FreeLibrary (scalar_t__) ;
+ int GetLayoutID (scalar_t__,char*,int ) ;
+ int HKEY_LOCAL_MACHINE ;
+ int KEY_QUERY_VALUE ;
+ scalar_t__ LoadLibrary (char*) ;
+ scalar_t__ LoadString (scalar_t__,int ,char*,int ) ;
+ int MAX_PATH ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegOpenKeyEx (int ,int ,int ,int ,int *) ;
+ scalar_t__ RegQueryValueEx (int ,int ,int *,int *,int ,int*) ;
+ int StringCchCopy (scalar_t__,int,char*) ;
+ int StringCchPrintf (char*,int ,int ,char*) ;
+ int TRUE ;
+ int _T (char*) ;
+ int _tcslen (char*) ;
+ int _ttoi (char*) ;
 
 __attribute__((used)) static BOOL
 GetLayoutName(LPTSTR szLayoutNum, LPTSTR szName, SIZE_T NameLength)
@@ -64,7 +64,7 @@ GetLayoutName(LPTSTR szLayoutNum, LPTSTR szName, SIZE_T NameLength)
     {
         dwBufLen = sizeof(szDispName);
 
-        if (RegQueryValueEx(hKey, _T("Layout Display Name"), NULL, NULL, (LPBYTE)szDispName, &dwBufLen) == ERROR_SUCCESS)
+        if (RegQueryValueEx(hKey, _T("Layout Display Name"), ((void*)0), ((void*)0), (LPBYTE)szDispName, &dwBufLen) == ERROR_SUCCESS)
         {
             if (szDispName[0] == '@')
             {
@@ -104,7 +104,7 @@ GetLayoutName(LPTSTR szLayoutNum, LPTSTR szName, SIZE_T NameLength)
 
         dwBufLen = NameLength * sizeof(TCHAR);
 
-        if (RegQueryValueEx(hKey, _T("Layout Text"), NULL, NULL, (LPBYTE)szName, &dwBufLen) == ERROR_SUCCESS)
+        if (RegQueryValueEx(hKey, _T("Layout Text"), ((void*)0), ((void*)0), (LPBYTE)szName, &dwBufLen) == ERROR_SUCCESS)
         {
             RegCloseKey(hKey);
             return TRUE;

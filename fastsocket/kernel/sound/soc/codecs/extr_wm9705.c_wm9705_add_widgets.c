@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct snd_soc_codec {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  audio_map ; 
- int /*<<< orphan*/  snd_soc_dapm_add_routes (struct snd_soc_codec*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snd_soc_dapm_new_controls (struct snd_soc_codec*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snd_soc_dapm_new_widgets (struct snd_soc_codec*) ; 
- int /*<<< orphan*/  wm9705_dapm_widgets ; 
+
+ int ARRAY_SIZE (int ) ;
+ int audio_map ;
+ int snd_soc_dapm_add_routes (struct snd_soc_codec*,int ,int ) ;
+ int snd_soc_dapm_new_controls (struct snd_soc_codec*,int ,int ) ;
+ int snd_soc_dapm_new_widgets (struct snd_soc_codec*) ;
+ int wm9705_dapm_widgets ;
 
 __attribute__((used)) static int wm9705_add_widgets(struct snd_soc_codec *codec)
 {
-	snd_soc_dapm_new_controls(codec, wm9705_dapm_widgets,
-					ARRAY_SIZE(wm9705_dapm_widgets));
-	snd_soc_dapm_add_routes(codec, audio_map, ARRAY_SIZE(audio_map));
-	snd_soc_dapm_new_widgets(codec);
+ snd_soc_dapm_new_controls(codec, wm9705_dapm_widgets,
+     ARRAY_SIZE(wm9705_dapm_widgets));
+ snd_soc_dapm_add_routes(codec, audio_map, ARRAY_SIZE(audio_map));
+ snd_soc_dapm_new_widgets(codec);
 
-	return 0;
+ return 0;
 }

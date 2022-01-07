@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-struct TYPE_4__ {char* psz_algorithm; char* psz_qop; char* psz_cnonce; char* psz_opaque; scalar_t__ i_nonce; int /*<<< orphan*/  psz_nonce; int /*<<< orphan*/  psz_realm; } ;
-typedef  TYPE_1__ vlc_http_auth_t ;
 
-/* Variables and functions */
- char* AuthDigest (int /*<<< orphan*/ *,TYPE_1__*,char const*,char const*,char const*,char const*) ; 
- char* GenerateCnonce () ; 
- int asprintf (char**,char*,char const*,...) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*,char*) ; 
- scalar_t__ strcmp (char*,char*) ; 
- char* vlc_b64_encode (char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+struct TYPE_4__ {char* psz_algorithm; char* psz_qop; char* psz_cnonce; char* psz_opaque; scalar_t__ i_nonce; int psz_nonce; int psz_realm; } ;
+typedef TYPE_1__ vlc_http_auth_t ;
+
+
+ char* AuthDigest (int *,TYPE_1__*,char const*,char const*,char const*,char const*) ;
+ char* GenerateCnonce () ;
+ int asprintf (char**,char*,char const*,...) ;
+ int free (char*) ;
+ int msg_Err (int *,char*,char*) ;
+ scalar_t__ strcmp (char*,char*) ;
+ char* vlc_b64_encode (char*) ;
 
 char *vlc_http_auth_FormatAuthorizationHeader(
         vlc_object_t *p_this, vlc_http_auth_t *p_auth,
         const char *psz_method, const char *psz_path,
         const char *psz_username, const char *psz_password )
 {
-    char *psz_result = NULL;
-    char *psz_buffer = NULL;
-    char *psz_base64 = NULL;
+    char *psz_result = ((void*)0);
+    char *psz_buffer = ((void*)0);
+    char *psz_base64 = ((void*)0);
     int i_rc;
 
     if ( p_auth->psz_nonce )
     {
-        /* Digest Access Authentication */
+
         if ( p_auth->psz_algorithm &&
              strcmp( p_auth->psz_algorithm, "MD5" ) != 0 &&
              strcmp( p_auth->psz_algorithm, "MD5-sess" ) != 0 )
@@ -46,12 +46,12 @@ char *vlc_http_auth_FormatAuthorizationHeader(
             goto error;
         }
 
-        if ( p_auth->psz_qop != NULL || p_auth->psz_cnonce == NULL )
+        if ( p_auth->psz_qop != ((void*)0) || p_auth->psz_cnonce == ((void*)0) )
         {
             free( p_auth->psz_cnonce );
 
             p_auth->psz_cnonce = GenerateCnonce();
-            if ( p_auth->psz_cnonce == NULL )
+            if ( p_auth->psz_cnonce == ((void*)0) )
                 goto error;
         }
 
@@ -59,30 +59,30 @@ char *vlc_http_auth_FormatAuthorizationHeader(
 
         psz_buffer = AuthDigest( p_this, p_auth, psz_method, psz_path,
                                  psz_username, psz_password );
-        if ( psz_buffer == NULL )
+        if ( psz_buffer == ((void*)0) )
             goto error;
 
         i_rc = asprintf( &psz_result,
             "Digest "
-            /* Mandatory parameters */
+
             "username=\"%s\", "
             "realm=\"%s\", "
             "nonce=\"%s\", "
             "uri=\"%s\", "
             "response=\"%s\", "
-            /* Optional parameters */
-            "%s%s%s" /* algorithm */
-            "%s%s%s" /* cnonce */
-            "%s%s%s" /* opaque */
-            "%s%s%s" /* message qop */
-            "%s=\"%08x\"", /* nonce count */
-            /* Mandatory parameters */
+
+            "%s%s%s"
+            "%s%s%s"
+            "%s%s%s"
+            "%s%s%s"
+            "%s=\"%08x\"",
+
             psz_username,
             p_auth->psz_realm,
             p_auth->psz_nonce,
             psz_path ? psz_path : "/",
             psz_buffer,
-            /* Optional parameters */
+
             p_auth->psz_algorithm ? "algorithm=\"" : "",
             p_auth->psz_algorithm ? p_auth->psz_algorithm : "",
             p_auth->psz_algorithm ? "\", " : "",
@@ -95,7 +95,7 @@ char *vlc_http_auth_FormatAuthorizationHeader(
             p_auth->psz_qop ? "qop=\"" : "",
             p_auth->psz_qop ? p_auth->psz_qop : "",
             p_auth->psz_qop ? "\", " : "",
-            /* "uglyhack" will be parsed as an unhandled extension */
+
             p_auth->i_nonce ? "nc" : "uglyhack",
             p_auth->i_nonce
         );
@@ -104,13 +104,13 @@ char *vlc_http_auth_FormatAuthorizationHeader(
     }
     else
     {
-        /* Basic Access Authentication */
+
         i_rc = asprintf( &psz_buffer, "%s:%s", psz_username, psz_password );
         if ( i_rc < 0 )
             goto error;
 
         psz_base64 = vlc_b64_encode( psz_buffer );
-        if ( psz_base64 == NULL )
+        if ( psz_base64 == ((void*)0) )
             goto error;
 
         i_rc = asprintf( &psz_result, "Basic %s", psz_base64 );

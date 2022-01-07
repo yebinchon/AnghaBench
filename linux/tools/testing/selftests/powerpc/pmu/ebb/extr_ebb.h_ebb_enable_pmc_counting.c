@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int* pmc_enable; } ;
 
-/* Variables and functions */
- size_t PMC_INDEX (int) ; 
- TYPE_1__ ebb_state ; 
+
+ size_t PMC_INDEX (int) ;
+ TYPE_1__ ebb_state ;
 
 __attribute__((used)) static inline void ebb_enable_pmc_counting(int pmc)
 {
-	ebb_state.pmc_enable[PMC_INDEX(pmc)] = true;
+ ebb_state.pmc_enable[PMC_INDEX(pmc)] = 1;
 }

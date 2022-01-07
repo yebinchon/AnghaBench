@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int* filter; int* mask; } ;
 struct dmx_sct_filter_params {int flags; scalar_t__ timeout; TYPE_1__ filter; scalar_t__ pid; } ;
-typedef  int /*<<< orphan*/  fparams ;
-typedef  int /*<<< orphan*/  dvb_priv_t ;
-typedef  int /*<<< orphan*/  demux_dev ;
-typedef  int /*<<< orphan*/  buft ;
+typedef int fparams ;
+typedef int dvb_priv_t ;
+typedef int demux_dev ;
+typedef int buft ;
 
-/* Variables and functions */
- int DMX_CHECK_CRC ; 
- int DMX_IMMEDIATE_START ; 
- int /*<<< orphan*/  DMX_SET_FILTER ; 
- scalar_t__ EOVERFLOW ; 
- int /*<<< orphan*/  MP_ERR (int /*<<< orphan*/ *,char*,scalar_t__) ; 
- int /*<<< orphan*/  O_RDWR ; 
- int PATH_MAX ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ errno ; 
- scalar_t__ ioctl (int,int /*<<< orphan*/ ,struct dmx_sct_filter_params*) ; 
- int /*<<< orphan*/  memset (struct dmx_sct_filter_params*,int,int) ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int read (int,unsigned char*,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
+
+ int DMX_CHECK_CRC ;
+ int DMX_IMMEDIATE_START ;
+ int DMX_SET_FILTER ;
+ scalar_t__ EOVERFLOW ;
+ int MP_ERR (int *,char*,scalar_t__) ;
+ int O_RDWR ;
+ int PATH_MAX ;
+ int close (int) ;
+ scalar_t__ errno ;
+ scalar_t__ ioctl (int,int ,struct dmx_sct_filter_params*) ;
+ int memset (struct dmx_sct_filter_params*,int,int) ;
+ int open (char*,int ) ;
+ int read (int,unsigned char*,int) ;
+ int snprintf (char*,int,char*,int) ;
 
 int dvb_get_pmt_pid(dvb_priv_t *priv, int devno, int service_id)
 {
-    /* We need special filters on the demux,
-       so open one locally, and close also here. */
+
+
     char demux_dev[PATH_MAX];
     snprintf(demux_dev, sizeof(demux_dev), "/dev/dvb/adapter%d/demux0", devno);
 
@@ -69,7 +69,7 @@ int dvb_get_pmt_pid(dvb_priv_t *priv, int devno, int service_id)
 
     int pmt_pid = -1;
 
-    bool pat_read = false;
+    bool pat_read = 0;
     while (!pat_read) {
         if (((bytes_read =
                   read(pat_fd, bufptr,
@@ -88,8 +88,8 @@ int dvb_get_pmt_pid(dvb_priv_t *priv, int devno, int service_id)
         bufptr += 8;
         section_length -= 8;
 
-        /* assumes one section contains the whole pat */
-        pat_read = true;
+
+        pat_read = 1;
         while (section_length > 0) {
             int this_service_id = (bufptr[0] << 8) | bufptr[1];
             if (this_service_id == service_id) {

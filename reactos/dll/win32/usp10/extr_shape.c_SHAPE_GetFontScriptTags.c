@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int scriptTag; } ;
 struct TYPE_4__ {size_t eScript; } ;
-typedef  int /*<<< orphan*/  ScriptCache ;
-typedef  TYPE_1__ SCRIPT_ANALYSIS ;
-typedef  int OPENTYPE_TAG ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HDC ;
+typedef int ScriptCache ;
+typedef TYPE_1__ SCRIPT_ANALYSIS ;
+typedef int OPENTYPE_TAG ;
+typedef int HRESULT ;
+typedef int HDC ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OpenType_GetFontScriptTags (int /*<<< orphan*/ *,int,int,int*,int*) ; 
- int /*<<< orphan*/  load_ot_tables (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_2__* scriptInformation ; 
+
+ scalar_t__ FAILED (int ) ;
+ int OpenType_GetFontScriptTags (int *,int,int,int*,int*) ;
+ int load_ot_tables (int ,int *) ;
+ TYPE_2__* scriptInformation ;
 
 HRESULT SHAPE_GetFontScriptTags( HDC hdc, ScriptCache *psc,
                                  SCRIPT_ANALYSIS *psa, int cMaxTags,

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  (* onEndParseBtree ) (int /*<<< orphan*/ ,TYPE_2__*,int) ;int /*<<< orphan*/  (* onBeginParseBtree ) (int /*<<< orphan*/ ,TYPE_2__*) ;} ;
-struct TYPE_8__ {int /*<<< orphan*/  rk; TYPE_1__ notify; int /*<<< orphan*/  rootpage; } ;
-typedef  TYPE_2__ sqliterk_btree ;
 
-/* Variables and functions */
- int SQLITERK_MISUSE ; 
- int sqliterkBtreeParsePage (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqliterkPageGetPageno (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,TYPE_2__*,int) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int (* onEndParseBtree ) (int ,TYPE_2__*,int) ;int (* onBeginParseBtree ) (int ,TYPE_2__*) ;} ;
+struct TYPE_8__ {int rk; TYPE_1__ notify; int rootpage; } ;
+typedef TYPE_2__ sqliterk_btree ;
+
+
+ int SQLITERK_MISUSE ;
+ int sqliterkBtreeParsePage (TYPE_2__*,int ) ;
+ int sqliterkPageGetPageno (int ) ;
+ int stub1 (int ,TYPE_2__*) ;
+ int stub2 (int ,TYPE_2__*,int) ;
 
 int sqliterkBtreeParse(sqliterk_btree *btree)
 {

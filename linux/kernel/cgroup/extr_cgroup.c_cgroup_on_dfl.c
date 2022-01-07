@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cgroup {int /*<<< orphan*/ * root; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cgrp_dfl_root ; 
+
+
+
+struct cgroup {int * root; } ;
+
+
+ int cgrp_dfl_root ;
 
 bool cgroup_on_dfl(const struct cgroup *cgrp)
 {
-	return cgrp->root == &cgrp_dfl_root;
+ return cgrp->root == &cgrp_dfl_root;
 }

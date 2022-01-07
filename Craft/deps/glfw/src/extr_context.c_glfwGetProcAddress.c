@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * GLFWglproc ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_NO_CURRENT_CONTEXT ; 
- int /*<<< orphan*/  _GLFW_REQUIRE_INIT_OR_RETURN (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _glfwPlatformGetCurrentContext () ; 
- int /*<<< orphan*/ * _glfwPlatformGetProcAddress (char const*) ; 
+
+
+
+typedef int * GLFWglproc ;
+
+
+ int GLFW_NO_CURRENT_CONTEXT ;
+ int _GLFW_REQUIRE_INIT_OR_RETURN (int *) ;
+ int _glfwInputError (int ,int *) ;
+ int _glfwPlatformGetCurrentContext () ;
+ int * _glfwPlatformGetProcAddress (char const*) ;
 
 GLFWglproc glfwGetProcAddress(const char* procname)
 {
-    _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
+    _GLFW_REQUIRE_INIT_OR_RETURN(((void*)0));
 
     if (!_glfwPlatformGetCurrentContext())
     {
-        _glfwInputError(GLFW_NO_CURRENT_CONTEXT, NULL);
-        return NULL;
+        _glfwInputError(GLFW_NO_CURRENT_CONTEXT, ((void*)0));
+        return ((void*)0);
     }
 
     return _glfwPlatformGetProcAddress(procname);

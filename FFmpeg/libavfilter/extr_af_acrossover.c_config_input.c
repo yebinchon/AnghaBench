@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/ ** hp; int /*<<< orphan*/ ** lp; } ;
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int ** hp; int ** lp; } ;
 struct TYPE_8__ {TYPE_1__* priv; } ;
 struct TYPE_7__ {int sample_rate; int channels; TYPE_3__* dst; } ;
-struct TYPE_6__ {int order; int filter_count; int nb_splits; int /*<<< orphan*/ * splits; TYPE_5__* xover; } ;
-typedef  TYPE_1__ AudioCrossoverContext ;
-typedef  TYPE_2__ AVFilterLink ;
-typedef  TYPE_3__ AVFilterContext ;
+struct TYPE_6__ {int order; int filter_count; int nb_splits; int * splits; TYPE_5__* xover; } ;
+typedef TYPE_1__ AudioCrossoverContext ;
+typedef TYPE_2__ AVFilterLink ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- double M_SQRT1_2 ; 
- TYPE_5__* av_calloc (int,int) ; 
- int /*<<< orphan*/  set_hp (int /*<<< orphan*/ *,int /*<<< orphan*/ ,double,int) ; 
- int /*<<< orphan*/  set_lp (int /*<<< orphan*/ *,int /*<<< orphan*/ ,double,int) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ double M_SQRT1_2 ;
+ TYPE_5__* av_calloc (int,int) ;
+ int set_hp (int *,int ,double,int) ;
+ int set_lp (int *,int ,double,int) ;
 
 __attribute__((used)) static int config_input(AVFilterLink *inlink)
 {
@@ -64,8 +64,8 @@ __attribute__((used)) static int config_input(AVFilterLink *inlink)
             if (s->order > 1) {
                 set_lp(&s->xover[ch].lp[band][1], s->splits[band], 1.34, sample_rate);
                 set_hp(&s->xover[ch].hp[band][1], s->splits[band], 1.34, sample_rate);
-                set_lp(&s->xover[ch].lp[band][2], s->splits[band],    q, sample_rate);
-                set_hp(&s->xover[ch].hp[band][2], s->splits[band],    q, sample_rate);
+                set_lp(&s->xover[ch].lp[band][2], s->splits[band], q, sample_rate);
+                set_hp(&s->xover[ch].hp[band][2], s->splits[band], q, sample_rate);
                 set_lp(&s->xover[ch].lp[band][3], s->splits[band], 1.34, sample_rate);
                 set_hp(&s->xover[ch].hp[band][3], s->splits[band], 1.34, sample_rate);
             } else {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  scalar_t__ netutils_endian_t ;
-typedef  int /*<<< orphan*/  mp_uint_t ;
-typedef  int /*<<< orphan*/  mp_obj_t ;
 
-/* Variables and functions */
- scalar_t__ NETUTILS_LITTLE ; 
- int /*<<< orphan*/  mp_obj_new_str (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int,int,int,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ netutils_endian_t ;
+typedef int mp_uint_t ;
+typedef int mp_obj_t ;
+
+
+ scalar_t__ NETUTILS_LITTLE ;
+ int mp_obj_new_str (char*,int ) ;
+ int snprintf (char*,int,char*,int,int,int,int) ;
 
 mp_obj_t netutils_format_ipv4_addr(uint8_t *ip, netutils_endian_t endian) {
     char ip_str[16];

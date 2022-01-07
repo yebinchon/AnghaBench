@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {void* mcode; } ;
-struct TYPE_5__ {int /*<<< orphan*/  g; TYPE_1__ cb; } ;
-typedef  TYPE_2__ CTState ;
+struct TYPE_5__ {int g; TYPE_1__ cb; } ;
+typedef TYPE_2__ CTState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CALLBACK_MCODE_SIZE ; 
- int /*<<< orphan*/  MEM_RELEASE ; 
- int /*<<< orphan*/  UNUSED (size_t) ; 
- int /*<<< orphan*/  VirtualFree (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lj_mem_free (int /*<<< orphan*/ ,void*,size_t) ; 
- int /*<<< orphan*/  munmap (void*,size_t) ; 
+
+ int CALLBACK_MCODE_SIZE ;
+ int MEM_RELEASE ;
+ int UNUSED (size_t) ;
+ int VirtualFree (void*,int ,int ) ;
+ int lj_mem_free (int ,void*,size_t) ;
+ int munmap (void*,size_t) ;
 
 void lj_ccallback_mcode_free(CTState *cts)
 {
   size_t sz = (size_t)CALLBACK_MCODE_SIZE;
   void *p = cts->cb.mcode;
-  if (p == NULL) return;
-#if LJ_TARGET_WINDOWS
-  VirtualFree(p, 0, MEM_RELEASE);
-  UNUSED(sz);
-#elif LJ_TARGET_POSIX
-  munmap(p, sz);
-#else
+  if (p == ((void*)0)) return;
+
+
+
+
+
+
   lj_mem_free(cts->g, p, sz);
-#endif
+
 }

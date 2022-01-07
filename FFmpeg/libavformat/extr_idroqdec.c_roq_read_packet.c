@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
-struct TYPE_19__ {int /*<<< orphan*/ * pb; TYPE_2__* priv_data; } ;
-struct TYPE_18__ {int stream_index; unsigned int pts; int /*<<< orphan*/  data; int /*<<< orphan*/  pos; } ;
+
+
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+struct TYPE_19__ {int * pb; TYPE_2__* priv_data; } ;
+struct TYPE_18__ {int stream_index; unsigned int pts; int data; int pos; } ;
 struct TYPE_17__ {int index; TYPE_1__* codecpar; } ;
-struct TYPE_16__ {int video_stream_index; int frame_rate; int audio_stream_index; unsigned int audio_channels; unsigned int audio_frame_count; int /*<<< orphan*/  video_pts; void* height; void* width; } ;
-struct TYPE_15__ {int channels; int sample_rate; int bits_per_coded_sample; int bit_rate; int block_align; int /*<<< orphan*/  channel_layout; int /*<<< orphan*/  codec_tag; int /*<<< orphan*/  codec_id; int /*<<< orphan*/  codec_type; void* height; void* width; } ;
-typedef  TYPE_2__ RoqDemuxContext ;
-typedef  TYPE_3__ AVStream ;
-typedef  TYPE_4__ AVPacket ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_5__ AVFormatContext ;
+struct TYPE_16__ {int video_stream_index; int frame_rate; int audio_stream_index; unsigned int audio_channels; unsigned int audio_frame_count; int video_pts; void* height; void* width; } ;
+struct TYPE_15__ {int channels; int sample_rate; int bits_per_coded_sample; int bit_rate; int block_align; int channel_layout; int codec_tag; int codec_id; int codec_type; void* height; void* width; } ;
+typedef TYPE_2__ RoqDemuxContext ;
+typedef TYPE_3__ AVStream ;
+typedef TYPE_4__ AVPacket ;
+typedef int AVIOContext ;
+typedef TYPE_5__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_AUDIO ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_VIDEO ; 
- int /*<<< orphan*/  AV_CH_LAYOUT_MONO ; 
- int /*<<< orphan*/  AV_CH_LAYOUT_STEREO ; 
- int /*<<< orphan*/  AV_CODEC_ID_ROQ ; 
- int /*<<< orphan*/  AV_CODEC_ID_ROQ_DPCM ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- void* AV_RL16 (unsigned char*) ; 
- int AV_RL32 (unsigned char*) ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  ENOMEM ; 
- unsigned int INT_MAX ; 
- int RoQ_AUDIO_SAMPLE_RATE ; 
- int RoQ_CHUNK_PREAMBLE_SIZE ; 
-#define  RoQ_INFO 132 
-#define  RoQ_QUAD_CODEBOOK 131 
-#define  RoQ_QUAD_VQ 130 
-#define  RoQ_SOUND_MONO 129 
-#define  RoQ_SOUND_STEREO 128 
- int /*<<< orphan*/  SEEK_SET ; 
- int av_get_packet (int /*<<< orphan*/ *,TYPE_4__*,unsigned int) ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*,unsigned int) ; 
- int /*<<< orphan*/  av_new_packet (TYPE_4__*,unsigned int) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_4__*) ; 
- TYPE_3__* avformat_new_stream (TYPE_5__*,int /*<<< orphan*/ *) ; 
- scalar_t__ avio_feof (int /*<<< orphan*/ *) ; 
- int avio_read (int /*<<< orphan*/ *,unsigned char*,unsigned int) ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avpriv_set_pts_info (TYPE_3__*,int,int,int) ; 
- unsigned int ffio_limit (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,unsigned char*,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVMEDIA_TYPE_AUDIO ;
+ int AVMEDIA_TYPE_VIDEO ;
+ int AV_CH_LAYOUT_MONO ;
+ int AV_CH_LAYOUT_STEREO ;
+ int AV_CODEC_ID_ROQ ;
+ int AV_CODEC_ID_ROQ_DPCM ;
+ int AV_LOG_ERROR ;
+ void* AV_RL16 (unsigned char*) ;
+ int AV_RL32 (unsigned char*) ;
+ int EIO ;
+ int ENOMEM ;
+ unsigned int INT_MAX ;
+ int RoQ_AUDIO_SAMPLE_RATE ;
+ int RoQ_CHUNK_PREAMBLE_SIZE ;
+
+
+
+
+
+ int SEEK_SET ;
+ int av_get_packet (int *,TYPE_4__*,unsigned int) ;
+ int av_log (TYPE_5__*,int ,char*,unsigned int) ;
+ int av_new_packet (TYPE_4__*,unsigned int) ;
+ int av_packet_unref (TYPE_4__*) ;
+ TYPE_3__* avformat_new_stream (TYPE_5__*,int *) ;
+ scalar_t__ avio_feof (int *) ;
+ int avio_read (int *,unsigned char*,unsigned int) ;
+ int avio_seek (int *,int ,int ) ;
+ int avio_skip (int *,unsigned int) ;
+ int avio_tell (int *) ;
+ int avpriv_set_pts_info (TYPE_3__*,int,int,int) ;
+ unsigned int ffio_limit (int *,unsigned int) ;
+ int memcpy (int ,unsigned char*,int) ;
 
 __attribute__((used)) static int roq_read_packet(AVFormatContext *s,
                            AVPacket *pkt)
@@ -82,7 +82,7 @@ __attribute__((used)) static int roq_read_packet(AVFormatContext *s,
         if (avio_feof(s->pb))
             return AVERROR(EIO);
 
-        /* get the next chunk preamble */
+
         if ((ret = avio_read(pb, preamble, RoQ_CHUNK_PREAMBLE_SIZE)) !=
             RoQ_CHUNK_PREAMBLE_SIZE)
             return AVERROR(EIO);
@@ -96,31 +96,31 @@ __attribute__((used)) static int roq_read_packet(AVFormatContext *s,
 
         switch (chunk_type) {
 
-        case RoQ_INFO:
+        case 132:
             if (roq->video_stream_index == -1) {
-                AVStream *st = avformat_new_stream(s, NULL);
+                AVStream *st = avformat_new_stream(s, ((void*)0));
                 if (!st)
                     return AVERROR(ENOMEM);
                 avpriv_set_pts_info(st, 63, 1, roq->frame_rate);
                 roq->video_stream_index = st->index;
-                st->codecpar->codec_type   = AVMEDIA_TYPE_VIDEO;
-                st->codecpar->codec_id     = AV_CODEC_ID_ROQ;
-                st->codecpar->codec_tag    = 0;  /* no fourcc */
+                st->codecpar->codec_type = AVMEDIA_TYPE_VIDEO;
+                st->codecpar->codec_id = AV_CODEC_ID_ROQ;
+                st->codecpar->codec_tag = 0;
 
                 if (avio_read(pb, preamble, RoQ_CHUNK_PREAMBLE_SIZE) != RoQ_CHUNK_PREAMBLE_SIZE)
                     return AVERROR(EIO);
-                st->codecpar->width  = roq->width  = AV_RL16(preamble);
+                st->codecpar->width = roq->width = AV_RL16(preamble);
                 st->codecpar->height = roq->height = AV_RL16(preamble + 2);
                 break;
             }
-            /* don't care about this chunk anymore */
+
             avio_skip(pb, RoQ_CHUNK_PREAMBLE_SIZE);
             break;
 
-        case RoQ_QUAD_CODEBOOK:
+        case 131:
             if (roq->video_stream_index < 0)
                 return AVERROR_INVALIDDATA;
-            /* packet needs to contain both this codebook and next VQ chunk */
+
             codebook_offset = avio_tell(pb) - RoQ_CHUNK_PREAMBLE_SIZE;
             codebook_size = chunk_size;
             avio_skip(pb, codebook_size);
@@ -133,10 +133,10 @@ __attribute__((used)) static int roq_read_packet(AVFormatContext *s,
             if (chunk_size > INT_MAX)
                 return AVERROR_INVALIDDATA;
 
-            /* rewind */
+
             avio_seek(pb, codebook_offset, SEEK_SET);
 
-            /* load up the packet */
+
             ret= av_get_packet(pb, pkt, chunk_size);
             if (ret != chunk_size)
                 return AVERROR(EIO);
@@ -146,44 +146,44 @@ __attribute__((used)) static int roq_read_packet(AVFormatContext *s,
             packet_read = 1;
             break;
 
-        case RoQ_SOUND_MONO:
-        case RoQ_SOUND_STEREO:
+        case 129:
+        case 128:
             if (roq->audio_stream_index == -1) {
-                AVStream *st = avformat_new_stream(s, NULL);
+                AVStream *st = avformat_new_stream(s, ((void*)0));
                 if (!st)
                     return AVERROR(ENOMEM);
                 avpriv_set_pts_info(st, 32, 1, RoQ_AUDIO_SAMPLE_RATE);
                 roq->audio_stream_index = st->index;
                 st->codecpar->codec_type = AVMEDIA_TYPE_AUDIO;
                 st->codecpar->codec_id = AV_CODEC_ID_ROQ_DPCM;
-                st->codecpar->codec_tag = 0;  /* no tag */
-                if (chunk_type == RoQ_SOUND_STEREO) {
-                    st->codecpar->channels       = 2;
+                st->codecpar->codec_tag = 0;
+                if (chunk_type == 128) {
+                    st->codecpar->channels = 2;
                     st->codecpar->channel_layout = AV_CH_LAYOUT_STEREO;
                 } else {
-                    st->codecpar->channels       = 1;
+                    st->codecpar->channels = 1;
                     st->codecpar->channel_layout = AV_CH_LAYOUT_MONO;
                 }
-                roq->audio_channels    = st->codecpar->channels;
+                roq->audio_channels = st->codecpar->channels;
                 st->codecpar->sample_rate = RoQ_AUDIO_SAMPLE_RATE;
                 st->codecpar->bits_per_coded_sample = 16;
                 st->codecpar->bit_rate = st->codecpar->channels * st->codecpar->sample_rate *
                     st->codecpar->bits_per_coded_sample;
                 st->codecpar->block_align = st->codecpar->channels * st->codecpar->bits_per_coded_sample;
             }
-        case RoQ_QUAD_VQ:
-            if (chunk_type == RoQ_QUAD_VQ) {
+        case 130:
+            if (chunk_type == 130) {
                 if (roq->video_stream_index < 0)
                     return AVERROR_INVALIDDATA;
             }
 
-            /* load up the packet */
+
             if (av_new_packet(pkt, chunk_size + RoQ_CHUNK_PREAMBLE_SIZE))
                 return AVERROR(EIO);
-            /* copy over preamble */
+
             memcpy(pkt->data, preamble, RoQ_CHUNK_PREAMBLE_SIZE);
 
-            if (chunk_type == RoQ_QUAD_VQ) {
+            if (chunk_type == 130) {
                 pkt->stream_index = roq->video_stream_index;
                 pkt->pts = roq->video_pts++;
             } else {

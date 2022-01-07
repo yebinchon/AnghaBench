@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct sk_buff {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  common; } ;
-struct ncsi_cmd_ev_pkt {TYPE_1__ cmd; int /*<<< orphan*/  mode; } ;
-struct ncsi_cmd_arg {int /*<<< orphan*/ * bytes; } ;
+struct TYPE_2__ {int common; } ;
+struct ncsi_cmd_ev_pkt {TYPE_1__ cmd; int mode; } ;
+struct ncsi_cmd_arg {int * bytes; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ncsi_cmd_build_header (int /*<<< orphan*/ *,struct ncsi_cmd_arg*) ; 
- struct ncsi_cmd_ev_pkt* skb_put_zero (struct sk_buff*,int) ; 
+
+ int ncsi_cmd_build_header (int *,struct ncsi_cmd_arg*) ;
+ struct ncsi_cmd_ev_pkt* skb_put_zero (struct sk_buff*,int) ;
 
 __attribute__((used)) static int ncsi_cmd_handler_ev(struct sk_buff *skb,
-			       struct ncsi_cmd_arg *nca)
+          struct ncsi_cmd_arg *nca)
 {
-	struct ncsi_cmd_ev_pkt *cmd;
+ struct ncsi_cmd_ev_pkt *cmd;
 
-	cmd = skb_put_zero(skb, sizeof(*cmd));
-	cmd->mode = nca->bytes[3];
-	ncsi_cmd_build_header(&cmd->cmd.common, nca);
+ cmd = skb_put_zero(skb, sizeof(*cmd));
+ cmd->mode = nca->bytes[3];
+ ncsi_cmd_build_header(&cmd->cmd.common, nca);
 
-	return 0;
+ return 0;
 }

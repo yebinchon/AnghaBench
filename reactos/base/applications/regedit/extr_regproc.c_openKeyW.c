@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  GetMultiByteString (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KEY_ALL_ACCESS ; 
- int /*<<< orphan*/  REG_OPTION_NON_VOLATILE ; 
- scalar_t__ RegCreateKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * currentKeyHandle ; 
- int /*<<< orphan*/  currentKeyName ; 
- int /*<<< orphan*/  parseKeyName (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int WCHAR ;
+typedef scalar_t__ LONG ;
+typedef int HKEY ;
+typedef int DWORD ;
+
+
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ scalar_t__ ERROR_SUCCESS ;
+ int GetMultiByteString (int *) ;
+ int KEY_ALL_ACCESS ;
+ int REG_OPTION_NON_VOLATILE ;
+ scalar_t__ RegCreateKeyExW (int ,int *,int ,int *,int ,int ,int *,int **,int *) ;
+ int * currentKeyHandle ;
+ int currentKeyName ;
+ int parseKeyName (int *,int *,int **) ;
 
 __attribute__((used)) static LONG openKeyW(WCHAR* stdInput)
 {
@@ -33,30 +33,30 @@ __attribute__((used)) static LONG openKeyW(WCHAR* stdInput)
     DWORD dwDisp;
     LONG res;
 
-    /* Sanity checks */
-    if (stdInput == NULL)
+
+    if (stdInput == ((void*)0))
         return ERROR_INVALID_PARAMETER;
 
-    /* Get the registry class */
+
     if (!parseKeyName(stdInput, &keyClass, &keyPath))
         return ERROR_INVALID_PARAMETER;
 
     res = RegCreateKeyExW(
-               keyClass,                 /* Class     */
-               keyPath,                  /* Sub Key   */
-               0,                        /* MUST BE 0 */
-               NULL,                     /* object type */
-               REG_OPTION_NON_VOLATILE,  /* option, REG_OPTION_NON_VOLATILE ... */
-               KEY_ALL_ACCESS,           /* access mask, KEY_ALL_ACCESS */
-               NULL,                     /* security attribute */
-               &currentKeyHandle,        /* result */
-               &dwDisp);                 /* disposition, REG_CREATED_NEW_KEY or
-                                                        REG_OPENED_EXISTING_KEY */
+               keyClass,
+               keyPath,
+               0,
+               ((void*)0),
+               REG_OPTION_NON_VOLATILE,
+               KEY_ALL_ACCESS,
+               ((void*)0),
+               &currentKeyHandle,
+               &dwDisp);
+
 
     if (res == ERROR_SUCCESS)
         currentKeyName = GetMultiByteString(stdInput);
     else
-        currentKeyHandle = NULL;
+        currentKeyHandle = ((void*)0);
 
     return res;
 

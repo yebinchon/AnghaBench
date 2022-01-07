@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int clocks_off; } ;
-struct atmegadci_softc {TYPE_1__ sc_flags; int /*<<< orphan*/  sc_bus; int /*<<< orphan*/  (* sc_clocks_off ) (int /*<<< orphan*/ *) ;} ;
+struct atmegadci_softc {TYPE_1__ sc_flags; int sc_bus; int (* sc_clocks_off ) (int *) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATMEGA_USBCON ; 
- int ATMEGA_USBCON_FRZCLK ; 
- int ATMEGA_USBCON_OTGPADE ; 
- int ATMEGA_USBCON_USBE ; 
- int ATMEGA_USBCON_VBUSTE ; 
- int /*<<< orphan*/  ATMEGA_WRITE_1 (struct atmegadci_softc*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  DPRINTFN (int,char*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *) ; 
+
+ int ATMEGA_USBCON ;
+ int ATMEGA_USBCON_FRZCLK ;
+ int ATMEGA_USBCON_OTGPADE ;
+ int ATMEGA_USBCON_USBE ;
+ int ATMEGA_USBCON_VBUSTE ;
+ int ATMEGA_WRITE_1 (struct atmegadci_softc*,int ,int) ;
+ int DPRINTFN (int,char*) ;
+ int stub1 (int *) ;
 
 __attribute__((used)) static void
 atmegadci_clocks_off(struct atmegadci_softc *sc)
 {
-	if (!sc->sc_flags.clocks_off) {
+ if (!sc->sc_flags.clocks_off) {
 
-		DPRINTFN(5, "\n");
+  DPRINTFN(5, "\n");
 
-		/* disable Transceiver ? */
 
-		ATMEGA_WRITE_1(sc, ATMEGA_USBCON,
-		    ATMEGA_USBCON_USBE |
-		    ATMEGA_USBCON_OTGPADE |
-		    ATMEGA_USBCON_FRZCLK |
-		    ATMEGA_USBCON_VBUSTE);
 
-		/* turn clocks off */
-		(sc->sc_clocks_off) (&sc->sc_bus);
+  ATMEGA_WRITE_1(sc, ATMEGA_USBCON,
+      ATMEGA_USBCON_USBE |
+      ATMEGA_USBCON_OTGPADE |
+      ATMEGA_USBCON_FRZCLK |
+      ATMEGA_USBCON_VBUSTE);
 
-		sc->sc_flags.clocks_off = 1;
-	}
+
+  (sc->sc_clocks_off) (&sc->sc_bus);
+
+  sc->sc_flags.clocks_off = 1;
+ }
 }

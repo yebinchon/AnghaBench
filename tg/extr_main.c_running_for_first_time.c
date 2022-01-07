@@ -1,47 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CONFIG_DIRECTORY_MODE ; 
- int /*<<< orphan*/  CONFIG_FILE ; 
- int /*<<< orphan*/  DEFAULT_CONFIG_CONTENTS ; 
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int O_CREAT ; 
- int O_RDWR ; 
- int /*<<< orphan*/  R_OK ; 
- scalar_t__ access (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  check_type_sizes () ; 
- int /*<<< orphan*/  close (int) ; 
- char* config_directory ; 
- char* config_filename ; 
- int /*<<< orphan*/  disable_output ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- char* get_config_directory () ; 
- char* make_full_path (char*) ; 
- int /*<<< orphan*/  mkdir (char*,int /*<<< orphan*/ ) ; 
- int open (char*,int,int) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- scalar_t__ str_empty (char*) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tasprintf (char**,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tfree_str (char*) ; 
- scalar_t__ write (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int CONFIG_DIRECTORY_MODE ;
+ int CONFIG_FILE ;
+ int DEFAULT_CONFIG_CONTENTS ;
+ int EXIT_FAILURE ;
+ int O_CREAT ;
+ int O_RDWR ;
+ int R_OK ;
+ scalar_t__ access (char*,int ) ;
+ int check_type_sizes () ;
+ int close (int) ;
+ char* config_directory ;
+ char* config_filename ;
+ int disable_output ;
+ int exit (int ) ;
+ char* get_config_directory () ;
+ char* make_full_path (char*) ;
+ int mkdir (char*,int ) ;
+ int open (char*,int,int) ;
+ int perror (char*) ;
+ int printf (char*,char*) ;
+ scalar_t__ str_empty (char*) ;
+ int strlen (int ) ;
+ int tasprintf (char**,char*,char*,int ) ;
+ int tfree_str (char*) ;
+ scalar_t__ write (int,int ,int ) ;
 
 void running_for_first_time (void) {
   check_type_sizes ();
   if (!str_empty (config_filename)) {
-    return; // Do not create custom config file
+    return;
   }
   if (str_empty (config_directory)) {
     config_directory = get_config_directory ();
@@ -51,11 +43,11 @@ void running_for_first_time (void) {
   if (!disable_output) {
     printf ("I: config dir=[%s]\n", config_directory);
   }
-  // printf ("I: config file=[%s]\n", config_filename);
+
 
   int config_file_fd;
-  //char *config_directory = get_config_directory ();
-  //char *downloads_directory = get_downloads_directory ();
+
+
 
   if (!mkdir (config_directory, CONFIG_DIRECTORY_MODE)) {
     if (!disable_output) {
@@ -64,12 +56,12 @@ void running_for_first_time (void) {
   }
 
   tfree_str (config_directory);
-  config_directory = NULL;
-  // see if config file is there
+  config_directory = ((void*)0);
+
   if (access (config_filename, R_OK) != 0) {
-    // config file missing, so touch it
+
     config_file_fd = open (config_filename, O_CREAT | O_RDWR, 0600);
-    if (config_file_fd == -1)  {
+    if (config_file_fd == -1) {
       perror ("open[config_file]");
       printf ("I: config_file=[%s]\n", config_filename);
       exit (EXIT_FAILURE);

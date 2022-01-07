@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct chap {int /*<<< orphan*/  chap_id; int /*<<< orphan*/ * chap_challenge; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  arc4random_buf (int /*<<< orphan*/ *,int) ; 
- struct chap* calloc (int,int) ; 
- int /*<<< orphan*/  log_err (int,char*) ; 
+
+
+
+struct chap {int chap_id; int * chap_challenge; } ;
+
+
+ int arc4random_buf (int *,int) ;
+ struct chap* calloc (int,int) ;
+ int log_err (int,char*) ;
 
 struct chap *
 chap_new(void)
 {
-	struct chap *chap;
+ struct chap *chap;
 
-	chap = calloc(1, sizeof(*chap));
-	if (chap == NULL)
-		log_err(1, "calloc");
+ chap = calloc(1, sizeof(*chap));
+ if (chap == ((void*)0))
+  log_err(1, "calloc");
 
-	/*
-	 * Generate the challenge.
-	 */
-	arc4random_buf(chap->chap_challenge, sizeof(chap->chap_challenge));
-	arc4random_buf(&chap->chap_id, sizeof(chap->chap_id));
 
-	return (chap);
+
+
+ arc4random_buf(chap->chap_challenge, sizeof(chap->chap_challenge));
+ arc4random_buf(&chap->chap_id, sizeof(chap->chap_id));
+
+ return (chap);
 }

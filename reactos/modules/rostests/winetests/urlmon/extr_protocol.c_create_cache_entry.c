@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  content ;
-typedef  int /*<<< orphan*/  cache_headers ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_7__ {int /*<<< orphan*/  LowPart; int /*<<< orphan*/  HighPart; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int content ;
+typedef int cache_headers ;
+typedef int WCHAR ;
+struct TYPE_7__ {int LowPart; int HighPart; } ;
 struct TYPE_8__ {int QuadPart; TYPE_1__ u; } ;
-typedef  TYPE_2__ ULARGE_INTEGER ;
-struct TYPE_9__ {int /*<<< orphan*/  dwLowDateTime; int /*<<< orphan*/  dwHighDateTime; } ;
-typedef  int LONGLONG ;
-typedef  scalar_t__ HANDLE ;
-typedef  TYPE_3__ FILETIME ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  char BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_2__ ULARGE_INTEGER ;
+struct TYPE_9__ {int dwLowDateTime; int dwHighDateTime; } ;
+typedef int LONGLONG ;
+typedef scalar_t__ HANDLE ;
+typedef TYPE_3__ FILETIME ;
+typedef int DWORD ;
+typedef char BYTE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CREATE_ALWAYS ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- int /*<<< orphan*/  CommitUrlCacheEntryA (char const*,char*,TYPE_3__,TYPE_3__,int /*<<< orphan*/ ,char*,int,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ CreateFileA (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CreateUrlCacheEntryA (char const*,int,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_NORMAL ; 
- int /*<<< orphan*/  GENERIC_WRITE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  GetSystemTimeAsFileTime (TYPE_3__*) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  NORMAL_CACHE_ENTRY ; 
- int /*<<< orphan*/  WriteFile (scalar_t__,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  trace (char*) ; 
- char* w2a (int /*<<< orphan*/  const*) ; 
+
+ int CREATE_ALWAYS ;
+ int CloseHandle (scalar_t__) ;
+ int CommitUrlCacheEntryA (char const*,char*,TYPE_3__,TYPE_3__,int ,char*,int,char*,int ) ;
+ scalar_t__ CreateFileA (char*,int ,int ,int *,int ,int ,int *) ;
+ int CreateUrlCacheEntryA (char const*,int,char*,char*,int ) ;
+ int FILE_ATTRIBUTE_NORMAL ;
+ int GENERIC_WRITE ;
+ int GetLastError () ;
+ int GetSystemTimeAsFileTime (TYPE_3__*) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int MAX_PATH ;
+ int NORMAL_CACHE_ENTRY ;
+ int WriteFile (scalar_t__,char*,int,int *,int *) ;
+ int ok (int,char*,...) ;
+ int trace (char*) ;
+ char* w2a (int const*) ;
 
 __attribute__((used)) static void create_cache_entry(const WCHAR *urlw)
 {
@@ -79,10 +79,10 @@ __attribute__((used)) static void create_cache_entry(const WCHAR *urlw)
     res = CreateUrlCacheEntryA(url, sizeof(content), "", file_path, 0);
     ok(res, "CreateUrlCacheEntryA failed: %u\n", GetLastError());
 
-    file = CreateFileA(file_path, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+    file = CreateFileA(file_path, GENERIC_WRITE, 0, ((void*)0), CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, ((void*)0));
     ok(file != INVALID_HANDLE_VALUE, "CreateFile failed\n");
 
-    WriteFile(file, content, sizeof(content), &size, NULL);
+    WriteFile(file, content, sizeof(content), &size, ((void*)0));
     CloseHandle(file);
 
     res = CommitUrlCacheEntryA(url, file_path, tomorrow, yesterday, NORMAL_CACHE_ENTRY,

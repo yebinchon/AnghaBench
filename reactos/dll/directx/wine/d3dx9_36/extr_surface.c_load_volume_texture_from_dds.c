@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct dds_header {int dummy; } ;
-typedef  scalar_t__ UINT ;
+typedef scalar_t__ UINT ;
 struct TYPE_6__ {scalar_t__ Back; scalar_t__ Front; scalar_t__ Bottom; scalar_t__ Right; scalar_t__ Top; scalar_t__ Left; } ;
-struct TYPE_5__ {scalar_t__ ResourceType; scalar_t__ Width; scalar_t__ Height; scalar_t__ Depth; int /*<<< orphan*/  Format; int /*<<< orphan*/  MipLevels; } ;
-typedef  int /*<<< orphan*/  PALETTEENTRY ;
-typedef  int /*<<< orphan*/  IDirect3DVolumeTexture9 ;
-typedef  int /*<<< orphan*/  IDirect3DVolume9 ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  TYPE_1__ D3DXIMAGE_INFO ;
-typedef  TYPE_2__ D3DBOX ;
-typedef  int /*<<< orphan*/  BYTE ;
+struct TYPE_5__ {scalar_t__ ResourceType; scalar_t__ Width; scalar_t__ Height; scalar_t__ Depth; int Format; int MipLevels; } ;
+typedef int PALETTEENTRY ;
+typedef int IDirect3DVolumeTexture9 ;
+typedef int IDirect3DVolume9 ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef TYPE_1__ D3DXIMAGE_INFO ;
+typedef TYPE_2__ D3DBOX ;
+typedef int BYTE ;
 
-/* Variables and functions */
- scalar_t__ D3DRTYPE_VOLUMETEXTURE ; 
- int /*<<< orphan*/  D3DXERR_INVALIDDATA ; 
- int /*<<< orphan*/  D3DXLoadVolumeFromMemory (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,scalar_t__,scalar_t__,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  D3D_OK ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDirect3DVolume9_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirect3DVolumeTexture9_GetLevelCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirect3DVolumeTexture9_GetVolumeLevel (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  calculate_dds_surface_size (int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__*,scalar_t__*) ; 
- scalar_t__ max (int,scalar_t__) ; 
- scalar_t__ min (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ D3DRTYPE_VOLUMETEXTURE ;
+ int D3DXERR_INVALIDDATA ;
+ int D3DXLoadVolumeFromMemory (int *,int const*,int *,int const*,int ,scalar_t__,scalar_t__,int *,TYPE_2__*,int ,int ) ;
+ int D3D_OK ;
+ scalar_t__ FAILED (int ) ;
+ int IDirect3DVolume9_Release (int *) ;
+ int IDirect3DVolumeTexture9_GetLevelCount (int *) ;
+ int IDirect3DVolumeTexture9_GetVolumeLevel (int *,scalar_t__,int **) ;
+ int calculate_dds_surface_size (int ,scalar_t__,scalar_t__,scalar_t__*,scalar_t__*) ;
+ scalar_t__ max (int,scalar_t__) ;
+ scalar_t__ min (int ,int ) ;
 
 HRESULT load_volume_texture_from_dds(IDirect3DVolumeTexture9 *volume_texture, const void *src_data,
     const PALETTEENTRY *palette, DWORD filter, DWORD color_key, const D3DXIMAGE_INFO *src_info)
@@ -75,8 +75,8 @@ HRESULT load_volume_texture_from_dds(IDirect3DVolumeTexture9 *volume_texture, co
         src_box.Front = 0;
         src_box.Back = depth;
 
-        hr = D3DXLoadVolumeFromMemory(volume, palette, NULL, pixels, src_info->Format,
-            src_row_pitch, src_slice_pitch, NULL, &src_box, filter, color_key);
+        hr = D3DXLoadVolumeFromMemory(volume, palette, ((void*)0), pixels, src_info->Format,
+            src_row_pitch, src_slice_pitch, ((void*)0), &src_box, filter, color_key);
 
         IDirect3DVolume9_Release(volume);
         if (FAILED(hr)) return hr;

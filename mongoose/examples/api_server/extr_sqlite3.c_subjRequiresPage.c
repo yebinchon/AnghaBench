@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int nSavepoint; TYPE_2__* aSavepoint; } ;
-struct TYPE_6__ {int /*<<< orphan*/  pInSavepoint; int /*<<< orphan*/  nOrig; } ;
-struct TYPE_5__ {TYPE_3__* pPager; int /*<<< orphan*/  pgno; } ;
-typedef  int /*<<< orphan*/  Pgno ;
-typedef  TYPE_1__ PgHdr ;
-typedef  TYPE_2__ PagerSavepoint ;
-typedef  TYPE_3__ Pager ;
+struct TYPE_6__ {int pInSavepoint; int nOrig; } ;
+struct TYPE_5__ {TYPE_3__* pPager; int pgno; } ;
+typedef int Pgno ;
+typedef TYPE_1__ PgHdr ;
+typedef TYPE_2__ PagerSavepoint ;
+typedef TYPE_3__ Pager ;
 
-/* Variables and functions */
- scalar_t__ sqlite3BitvecTest (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ sqlite3BitvecTest (int ,int ) ;
 
 __attribute__((used)) static int subjRequiresPage(PgHdr *pPg){
   Pgno pgno = pPg->pgno;

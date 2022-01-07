@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  userplace_t ;
-struct TYPE_8__ {int priv_mask; int user_id; int /*<<< orphan*/ * last; int /*<<< orphan*/ * first; } ;
-typedef  TYPE_1__ user_t ;
-struct TYPE_9__ {int user_id; int /*<<< orphan*/ * last; int /*<<< orphan*/ * first; } ;
-typedef  TYPE_2__ recommend_user_t ;
-typedef  int /*<<< orphan*/  recommend_item_t ;
-struct TYPE_10__ {int user_id; int /*<<< orphan*/ * last; int /*<<< orphan*/ * first; } ;
-typedef  TYPE_3__ notify_user_t ;
-typedef  int /*<<< orphan*/  item_t ;
 
-/* Variables and functions */
- scalar_t__ NOTIFY_MODE ; 
- int /*<<< orphan*/  RECOMMEND_MODE ; 
- scalar_t__ UG_MODE ; 
- TYPE_1__** User ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int conv_uid (int) ; 
- TYPE_1__* get_user (int) ; 
- int max_uid ; 
- int /*<<< orphan*/  tot_users ; 
- int /*<<< orphan*/  vkprintf (int,char*,...) ; 
- TYPE_1__* zmalloc0 (int) ; 
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int userplace_t ;
+struct TYPE_8__ {int priv_mask; int user_id; int * last; int * first; } ;
+typedef TYPE_1__ user_t ;
+struct TYPE_9__ {int user_id; int * last; int * first; } ;
+typedef TYPE_2__ recommend_user_t ;
+typedef int recommend_item_t ;
+struct TYPE_10__ {int user_id; int * last; int * first; } ;
+typedef TYPE_3__ notify_user_t ;
+typedef int item_t ;
+
+
+ scalar_t__ NOTIFY_MODE ;
+ int RECOMMEND_MODE ;
+ scalar_t__ UG_MODE ;
+ TYPE_1__** User ;
+ int assert (int ) ;
+ int conv_uid (int) ;
+ TYPE_1__* get_user (int) ;
+ int max_uid ;
+ int tot_users ;
+ int vkprintf (int,char*,...) ;
+ TYPE_1__* zmalloc0 (int) ;
 
 __attribute__((used)) static user_t *get_user_f (int user_id, int force) {
   vkprintf (5, "get_user_f: user_id = %d, force = %d\n", user_id, force);

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Decls ;
-typedef  int /*<<< orphan*/  Decl ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TOKEN_EOF ; 
- int /*<<< orphan*/  buf_len (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  buf_push (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_token (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * new_decls (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_decl () ; 
+
+
+
+typedef int Decls ;
+typedef int Decl ;
+
+
+ int TOKEN_EOF ;
+ int buf_len (int **) ;
+ int buf_push (int **,int ) ;
+ int is_token (int ) ;
+ int * new_decls (int **,int ) ;
+ int parse_decl () ;
 
 Decls *parse_decls(void) {
-    Decl **decls = NULL;
+    Decl **decls = ((void*)0);
     while (!is_token(TOKEN_EOF)) {
         buf_push(decls, parse_decl());
     }

@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_5__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_5__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct tl_scheme_object {int dummy; } ;
-struct connection {int /*<<< orphan*/  In; } ;
-struct TYPE_7__ {int tabsize; int /*<<< orphan*/  indentation; } ;
+struct connection {int In; } ;
+struct TYPE_7__ {int tabsize; int indentation; } ;
 struct TYPE_6__ {char* buff; } ;
 
-/* Variables and functions */
- long long* P ; 
- int PACKET_BUFFER_SIZE ; 
- int RPC_REQ_ERROR ; 
- int RPC_REQ_RESULT ; 
- int SKIP_ALL_BYTES ; 
- int TL_SECTION_TYPES ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  compiler ; 
- int /*<<< orphan*/  cstr_free (int /*<<< orphan*/ *) ; 
- int expect_input ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,char*) ; 
- char* get_raw_scheme (struct tl_scheme_object*) ; 
- int /*<<< orphan*/  kprintf (char*,long long,long long) ; 
- int /*<<< orphan*/  log_char (char) ; 
- int /*<<< orphan*/  log_errors () ; 
- int /*<<< orphan*/  log_str (char*) ; 
- int /*<<< orphan*/  memcpy (long long*,...) ; 
- TYPE_5__ params ; 
- int read_in (int /*<<< orphan*/ *,long long*,int) ; 
- long long req_id ; 
- int /*<<< orphan*/  rpcc_log_error (int) ; 
- int /*<<< orphan*/ * scheme_filename ; 
- int /*<<< orphan*/  tl_compiler_clear_errors (int /*<<< orphan*/ *) ; 
- int tl_expression_unserialize (int /*<<< orphan*/ *,int*,int,int,int /*<<< orphan*/ ,struct tl_scheme_object**) ; 
- int /*<<< orphan*/  tl_scheme_object_free (struct tl_scheme_object*) ; 
- int /*<<< orphan*/  tl_string_buffer_append_char (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tl_string_buffer_clear (TYPE_1__*) ; 
- int tl_unserialize_rpc_function_result (int /*<<< orphan*/ *,TYPE_1__*,int*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  typename ; 
- scalar_t__ unpack_packet (int /*<<< orphan*/ *,int,int**,int*) ; 
- TYPE_1__ unserialize_buff ; 
+
+ long long* P ;
+ int PACKET_BUFFER_SIZE ;
+ int RPC_REQ_ERROR ;
+ int RPC_REQ_RESULT ;
+ int SKIP_ALL_BYTES ;
+ int TL_SECTION_TYPES ;
+ int assert (int) ;
+ int compiler ;
+ int cstr_free (int *) ;
+ int expect_input ;
+ int fclose (int *) ;
+ int fprintf (int *,char*,char*) ;
+ char* get_raw_scheme (struct tl_scheme_object*) ;
+ int kprintf (char*,long long,long long) ;
+ int log_char (char) ;
+ int log_errors () ;
+ int log_str (char*) ;
+ int memcpy (long long*,...) ;
+ TYPE_5__ params ;
+ int read_in (int *,long long*,int) ;
+ long long req_id ;
+ int rpcc_log_error (int) ;
+ int * scheme_filename ;
+ int tl_compiler_clear_errors (int *) ;
+ int tl_expression_unserialize (int *,int*,int,int,int ,struct tl_scheme_object**) ;
+ int tl_scheme_object_free (struct tl_scheme_object*) ;
+ int tl_string_buffer_append_char (TYPE_1__*,int ) ;
+ int tl_string_buffer_clear (TYPE_1__*) ;
+ int tl_unserialize_rpc_function_result (int *,TYPE_1__*,int*,int,int ,int ) ;
+ int typename ;
+ scalar_t__ unpack_packet (int *,int,int**,int*) ;
+ TYPE_1__ unserialize_buff ;
 
 int rpcc_execute (struct connection *c, int op, int len) {
   if (len > PACKET_BUFFER_SIZE) {
@@ -72,11 +72,11 @@ int rpcc_execute (struct connection *c, int op, int len) {
         log_str ("unpack packet fail\n");
       } else {
         if (scheme_filename) {
-          struct tl_scheme_object *O = NULL;
+          struct tl_scheme_object *O = ((void*)0);
           tl_compiler_clear_errors (&compiler);
           int r = tl_expression_unserialize (&compiler, Q, qlen, 1 << TL_SECTION_TYPES, typename, &O);
-          if (r >= 0 && O != NULL) {
-            //tl_scheme_object_sbdump (b, O);
+          if (r >= 0 && O != ((void*)0)) {
+
             char *s = get_raw_scheme (O);
             if (s) {
               fprintf (scheme_filename, "%s", s);
@@ -84,7 +84,7 @@ int rpcc_execute (struct connection *c, int op, int len) {
             tl_scheme_object_free (O);
           }
           fclose (scheme_filename);
-          scheme_filename = NULL;
+          scheme_filename = ((void*)0);
         } else {
           if (qlen && Q[0] == RPC_REQ_ERROR) {
             int o = 4 * (qlen - 1);

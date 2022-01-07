@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GR_EVENT_KEYSTROKE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RDP_INPUT_SCANCODE ; 
- int /*<<< orphan*/  RDP_KEYPRESS ; 
- int /*<<< orphan*/  RDP_KEYRELEASE ; 
- scalar_t__ get_sc (int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  rdp_send_input (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
+
+
+
+typedef int GR_EVENT_KEYSTROKE ;
+
+
+ int RDP_INPUT_SCANCODE ;
+ int RDP_KEYPRESS ;
+ int RDP_KEYRELEASE ;
+ scalar_t__ get_sc (int *,int*,int*) ;
+ int rdp_send_input (int ,int ,int ,int,int) ;
 
 __attribute__((used)) void static process_keystroke(GR_EVENT_KEYSTROKE * event_keystroke, int down)
 {

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  IWICBitmapDecoder ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  HGLOBAL ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- scalar_t__ CreateStreamOnHGlobal (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GUID_ContainerFormatTiff ; 
- int /*<<< orphan*/  GlobalAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * GlobalLock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GlobalUnlock (int /*<<< orphan*/ ) ; 
- scalar_t__ IStream_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IWICBitmapDecoder_GetContainerFormat (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IWICImagingFactory_CreateDecoderFromStream (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  factory ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,void const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  wine_dbgstr_guid (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int UINT ;
+typedef scalar_t__ LONG ;
+typedef int IWICBitmapDecoder ;
+typedef int IStream ;
+typedef scalar_t__ HRESULT ;
+typedef int HGLOBAL ;
+typedef int GUID ;
+typedef int BYTE ;
+
+
+ scalar_t__ CreateStreamOnHGlobal (int ,int ,int **) ;
+ int GUID_ContainerFormatTiff ;
+ int GlobalAlloc (int ,int ) ;
+ int * GlobalLock (int ) ;
+ int GlobalUnlock (int ) ;
+ scalar_t__ IStream_Release (int *) ;
+ scalar_t__ IWICBitmapDecoder_GetContainerFormat (int *,int *) ;
+ scalar_t__ IWICImagingFactory_CreateDecoderFromStream (int ,int *,int *,int ,int **) ;
+ int IsEqualGUID (int *,int *) ;
+ scalar_t__ S_OK ;
+ int TRUE ;
+ int factory ;
+ int memcpy (int *,void const*,int ) ;
+ int ok (int,char*,...) ;
+ int wine_dbgstr_guid (int *) ;
 
 __attribute__((used)) static HRESULT create_decoder(const void *image_data, UINT image_size, IWICBitmapDecoder **decoder)
 {
@@ -45,7 +45,7 @@ __attribute__((used)) static HRESULT create_decoder(const void *image_data, UINT
     GUID format;
     LONG refcount;
 
-    *decoder = NULL;
+    *decoder = ((void*)0);
 
     hmem = GlobalAlloc(0, image_size);
     data = GlobalLock(hmem);
@@ -55,7 +55,7 @@ __attribute__((used)) static HRESULT create_decoder(const void *image_data, UINT
     hr = CreateStreamOnHGlobal(hmem, TRUE, &stream);
     ok(hr == S_OK, "CreateStreamOnHGlobal error %#x\n", hr);
 
-    hr = IWICImagingFactory_CreateDecoderFromStream(factory, stream, NULL, 0, decoder);
+    hr = IWICImagingFactory_CreateDecoderFromStream(factory, stream, ((void*)0), 0, decoder);
     if (hr == S_OK)
     {
         hr = IWICBitmapDecoder_GetContainerFormat(*decoder, &format);

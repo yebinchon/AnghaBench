@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  yajl_gen ;
-typedef  int /*<<< orphan*/  Con ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LC_NUMERIC ; 
- int /*<<< orphan*/  dump_node (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  map_close ; 
- int /*<<< orphan*/  map_open ; 
- int /*<<< orphan*/  null ; 
- int /*<<< orphan*/  setlocale (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  y (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ygenalloc () ; 
- int /*<<< orphan*/  ystr (char const*) ; 
+
+
+
+typedef int yajl_gen ;
+typedef int Con ;
+
+
+ int LC_NUMERIC ;
+ int dump_node (int ,int *,int) ;
+ int map_close ;
+ int map_open ;
+ int null ;
+ int setlocale (int ,char*) ;
+ int y (int ) ;
+ int ygenalloc () ;
+ int ystr (char const*) ;
 
 yajl_gen ipc_marshal_workspace_event(const char *change, Con *current, Con *old) {
     setlocale(LC_NUMERIC, "C");
@@ -34,16 +34,16 @@ yajl_gen ipc_marshal_workspace_event(const char *change, Con *current, Con *old)
     ystr(change);
 
     ystr("current");
-    if (current == NULL)
+    if (current == ((void*)0))
         y(null);
     else
-        dump_node(gen, current, false);
+        dump_node(gen, current, 0);
 
     ystr("old");
-    if (old == NULL)
+    if (old == ((void*)0))
         y(null);
     else
-        dump_node(gen, old, false);
+        dump_node(gen, old, 0);
 
     y(map_close);
 

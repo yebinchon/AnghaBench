@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  frontend_dev ;
-typedef  int /*<<< orphan*/  dvr_dev ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int frontend_dev ;
+typedef int dvr_dev ;
 struct TYPE_6__ {scalar_t__ fe_fd; scalar_t__* demux_fds; scalar_t__ dvr_fd; scalar_t__ demux_fds_cnt; } ;
-typedef  TYPE_1__ dvb_state_t ;
+typedef TYPE_1__ dvb_state_t ;
 struct TYPE_7__ {TYPE_1__* state; } ;
-typedef  TYPE_2__ dvb_priv_t ;
-typedef  int /*<<< orphan*/  demux_dev ;
+typedef TYPE_2__ dvb_priv_t ;
+typedef int demux_dev ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_ERR (TYPE_2__*,char*,char*,...) ; 
- int /*<<< orphan*/  MP_VERBOSE (TYPE_2__*,char*,...) ; 
- int O_CLOEXEC ; 
- int O_NONBLOCK ; 
- int O_RDONLY ; 
- int O_RDWR ; 
- int PATH_MAX ; 
- int /*<<< orphan*/  errno ; 
- void* open (char*,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,unsigned int,...) ; 
+
+ int MP_ERR (TYPE_2__*,char*,char*,...) ;
+ int MP_VERBOSE (TYPE_2__*,char*,...) ;
+ int O_CLOEXEC ;
+ int O_NONBLOCK ;
+ int O_RDONLY ;
+ int O_RDWR ;
+ int PATH_MAX ;
+ int errno ;
+ void* open (char*,int) ;
+ int snprintf (char*,int,char*,unsigned int,...) ;
 
 int dvb_open_devices(dvb_priv_t *priv, unsigned int adapter,
     unsigned int frontend, unsigned int demux_cnt)

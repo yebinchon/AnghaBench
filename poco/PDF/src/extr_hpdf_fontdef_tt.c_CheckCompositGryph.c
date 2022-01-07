@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  attr; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int attr; } ;
 struct TYPE_7__ {int* offsets; int* flgs; scalar_t__ base_offset; } ;
 struct TYPE_6__ {scalar_t__ index_to_loc_format; } ;
-struct TYPE_8__ {int num_glyphs; TYPE_2__ glyph_tbl; int /*<<< orphan*/  stream; TYPE_1__ header; } ;
-typedef  size_t HPDF_UINT16 ;
-typedef  int HPDF_UINT ;
-typedef  TYPE_3__* HPDF_TTFontDefAttr ;
-typedef  int /*<<< orphan*/  HPDF_STATUS ;
-typedef  int HPDF_INT16 ;
-typedef  TYPE_4__* HPDF_FontDef ;
+struct TYPE_8__ {int num_glyphs; TYPE_2__ glyph_tbl; int stream; TYPE_1__ header; } ;
+typedef size_t HPDF_UINT16 ;
+typedef int HPDF_UINT ;
+typedef TYPE_3__* HPDF_TTFontDefAttr ;
+typedef int HPDF_STATUS ;
+typedef int HPDF_INT16 ;
+typedef TYPE_4__* HPDF_FontDef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetINT16 (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  HPDF_OK ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- int /*<<< orphan*/  HPDF_SEEK_CUR ; 
- int /*<<< orphan*/  HPDF_SEEK_SET ; 
- int /*<<< orphan*/  HPDF_Stream_Seek (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+ int GetINT16 (int ,int*) ;
+ int HPDF_OK ;
+ int HPDF_PTRACE (char*) ;
+ int HPDF_SEEK_CUR ;
+ int HPDF_SEEK_SET ;
+ int HPDF_Stream_Seek (int ,int,int ) ;
 
 __attribute__((used)) static HPDF_STATUS
-CheckCompositGryph  (HPDF_FontDef   fontdef,
-                     HPDF_UINT16    gid)
+CheckCompositGryph (HPDF_FontDef fontdef,
+                     HPDF_UINT16 gid)
 {
     HPDF_TTFontDefAttr attr = (HPDF_TTFontDefAttr)fontdef->attr;
     HPDF_UINT offset = attr->glyph_tbl.offsets[gid];
-    /* HPDF_UINT len = attr->glyph_tbl.offsets[gid + 1] - offset; */
+
     HPDF_STATUS ret;
 
     HPDF_PTRACE ((" CheckCompositGryph\n"));
@@ -57,7 +57,7 @@ CheckCompositGryph  (HPDF_FontDef   fontdef,
         HPDF_INT16 flags;
         HPDF_INT16 glyph_index;
         const HPDF_UINT16 ARG_1_AND_2_ARE_WORDS = 1;
-        const HPDF_UINT16 WE_HAVE_A_SCALE  = 8;
+        const HPDF_UINT16 WE_HAVE_A_SCALE = 8;
         const HPDF_UINT16 MORE_COMPONENTS = 32;
         const HPDF_UINT16 WE_HAVE_AN_X_AND_Y_SCALE = 64;
         const HPDF_UINT16 WE_HAVE_A_TWO_BY_TWO = 128;

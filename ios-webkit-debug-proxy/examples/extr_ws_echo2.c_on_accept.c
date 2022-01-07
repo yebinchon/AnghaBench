@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sm_t ;
-typedef  int /*<<< orphan*/  sm_status ;
-typedef  TYPE_1__* my_sm_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sm_t ;
+typedef int sm_status ;
+typedef TYPE_1__* my_sm_t ;
 struct TYPE_2__ {int port; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SM_ERROR ; 
- int /*<<< orphan*/  SM_SUCCESS ; 
- void* my_new (int,int) ; 
+
+ int SM_ERROR ;
+ int SM_SUCCESS ;
+ void* my_new (int,int) ;
 
 sm_status on_accept(sm_t sm, int server_fd, void *server_value,
     int fd, void **to_value) {

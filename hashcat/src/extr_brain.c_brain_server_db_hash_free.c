@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int write_hashes; scalar_t__ brain_session; scalar_t__ long_alloc; int /*<<< orphan*/ * long_buf; scalar_t__ long_cnt; scalar_t__ hb; int /*<<< orphan*/  mux_hr; int /*<<< orphan*/  mux_hg; } ;
-typedef  TYPE_1__ brain_server_db_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hc_thread_mutex_delete (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hcfree (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int write_hashes; scalar_t__ brain_session; scalar_t__ long_alloc; int * long_buf; scalar_t__ long_cnt; scalar_t__ hb; int mux_hr; int mux_hg; } ;
+typedef TYPE_1__ brain_server_db_hash_t ;
+
+
+ int hc_thread_mutex_delete (int ) ;
+ int hcfree (int *) ;
 
 void brain_server_db_hash_free (brain_server_db_hash_t *brain_server_db_hash)
 {
@@ -25,10 +25,10 @@ void brain_server_db_hash_free (brain_server_db_hash_t *brain_server_db_hash)
 
   hcfree (brain_server_db_hash->long_buf);
 
-  brain_server_db_hash->hb            = 0;
-  brain_server_db_hash->long_cnt      = 0;
-  brain_server_db_hash->long_buf      = NULL;
-  brain_server_db_hash->long_alloc    = 0;
-  brain_server_db_hash->write_hashes  = false;
+  brain_server_db_hash->hb = 0;
+  brain_server_db_hash->long_cnt = 0;
+  brain_server_db_hash->long_buf = ((void*)0);
+  brain_server_db_hash->long_alloc = 0;
+  brain_server_db_hash->write_hashes = 0;
   brain_server_db_hash->brain_session = 0;
 }

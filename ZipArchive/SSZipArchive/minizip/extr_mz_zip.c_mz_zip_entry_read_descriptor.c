@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ int64_t ;
-typedef  scalar_t__ int32_t ;
 
-/* Variables and functions */
- scalar_t__ MZ_FORMAT_ERROR ; 
- scalar_t__ MZ_OK ; 
- scalar_t__ MZ_ZIP_MAGIC_DATADESCRIPTOR ; 
- scalar_t__ mz_stream_read_int64 (void*,scalar_t__*) ; 
- scalar_t__ mz_stream_read_uint32 (void*,scalar_t__*) ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ int64_t ;
+typedef scalar_t__ int32_t ;
+
+
+ scalar_t__ MZ_FORMAT_ERROR ;
+ scalar_t__ MZ_OK ;
+ scalar_t__ MZ_ZIP_MAGIC_DATADESCRIPTOR ;
+ scalar_t__ mz_stream_read_int64 (void*,scalar_t__*) ;
+ scalar_t__ mz_stream_read_uint32 (void*,scalar_t__*) ;
 
 __attribute__((used)) static int32_t mz_zip_entry_read_descriptor(void *stream, uint8_t zip64, uint32_t *crc32, int64_t *compressed_size, int64_t *uncompressed_size)
 {
@@ -34,11 +34,11 @@ __attribute__((used)) static int32_t mz_zip_entry_read_descriptor(void *stream, 
         err = MZ_FORMAT_ERROR;
     if (err == MZ_OK)
         err = mz_stream_read_uint32(stream, &value32);
-    if ((err == MZ_OK) && (crc32 != NULL))
+    if ((err == MZ_OK) && (crc32 != ((void*)0)))
         *crc32 = value32;
     if (err == MZ_OK)
     {
-        /* If zip 64 extension is enabled then read as 8 byte */
+
         if (!zip64)
         {
             err = mz_stream_read_uint32(stream, &value32);
@@ -50,7 +50,7 @@ __attribute__((used)) static int32_t mz_zip_entry_read_descriptor(void *stream, 
             if (value64 < 0)
                 err = MZ_FORMAT_ERROR;
         }
-        if ((err == MZ_OK) && (compressed_size != NULL))
+        if ((err == MZ_OK) && (compressed_size != ((void*)0)))
             *compressed_size = value64;
     }
     if (err == MZ_OK)
@@ -66,7 +66,7 @@ __attribute__((used)) static int32_t mz_zip_entry_read_descriptor(void *stream, 
             if (value64 < 0)
                 err = MZ_FORMAT_ERROR;
         }
-        if ((err == MZ_OK) && (uncompressed_size != NULL))
+        if ((err == MZ_OK) && (uncompressed_size != ((void*)0)))
             *uncompressed_size = value64;
     }
 

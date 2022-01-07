@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct wmi_add_krk_cmd {int /*<<< orphan*/  krk; } ;
+
+
+
+
+typedef int u8 ;
+struct wmi_add_krk_cmd {int krk; } ;
 struct wmi {int dummy; } ;
 struct sk_buff {scalar_t__ data; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  NO_SYNC_WMIFLAG ; 
- int /*<<< orphan*/  WMI_ADD_KRK_CMDID ; 
- int /*<<< orphan*/  WMI_KRK_LEN ; 
- int ath6kl_wmi_cmd_send (struct wmi*,int /*<<< orphan*/ ,struct sk_buff*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct sk_buff* ath6kl_wmi_get_new_buf (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+ int ENOMEM ;
+ int NO_SYNC_WMIFLAG ;
+ int WMI_ADD_KRK_CMDID ;
+ int WMI_KRK_LEN ;
+ int ath6kl_wmi_cmd_send (struct wmi*,int ,struct sk_buff*,int ,int ) ;
+ struct sk_buff* ath6kl_wmi_get_new_buf (int) ;
+ int memcpy (int ,int const*,int ) ;
 
 int ath6kl_wmi_add_krk_cmd(struct wmi *wmi, u8 if_idx, const u8 *krk)
 {
-	struct sk_buff *skb;
-	struct wmi_add_krk_cmd *cmd;
-	int ret;
+ struct sk_buff *skb;
+ struct wmi_add_krk_cmd *cmd;
+ int ret;
 
-	skb = ath6kl_wmi_get_new_buf(sizeof(*cmd));
-	if (!skb)
-		return -ENOMEM;
+ skb = ath6kl_wmi_get_new_buf(sizeof(*cmd));
+ if (!skb)
+  return -ENOMEM;
 
-	cmd = (struct wmi_add_krk_cmd *) skb->data;
-	memcpy(cmd->krk, krk, WMI_KRK_LEN);
+ cmd = (struct wmi_add_krk_cmd *) skb->data;
+ memcpy(cmd->krk, krk, WMI_KRK_LEN);
 
-	ret = ath6kl_wmi_cmd_send(wmi, if_idx, skb, WMI_ADD_KRK_CMDID,
-				  NO_SYNC_WMIFLAG);
+ ret = ath6kl_wmi_cmd_send(wmi, if_idx, skb, WMI_ADD_KRK_CMDID,
+      NO_SYNC_WMIFLAG);
 
-	return ret;
+ return ret;
 }

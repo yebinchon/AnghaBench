@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const uint8_t ;
-typedef  int /*<<< orphan*/  cf_poly1305 ;
-typedef  int /*<<< orphan*/  const cf_chacha20_ctx ;
 
-/* Variables and functions */
- int ENCRYPT ; 
- int FAILURE ; 
- int PADLEN (size_t) ; 
- int SUCCESS ; 
- int /*<<< orphan*/  cf_chacha20_cipher (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  cf_chacha20_init_custom (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  cf_poly1305_finish (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  cf_poly1305_init (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  cf_poly1305_update (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  mem_clean (int /*<<< orphan*/  const*,int) ; 
- scalar_t__ mem_eq (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  write64_le (size_t,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int const uint8_t ;
+typedef int cf_poly1305 ;
+typedef int const cf_chacha20_ctx ;
+
+
+ int ENCRYPT ;
+ int FAILURE ;
+ int PADLEN (size_t) ;
+ int SUCCESS ;
+ int cf_chacha20_cipher (int const*,int const*,int const*,size_t) ;
+ int cf_chacha20_init_custom (int const*,int const*,int,int const*,int) ;
+ int cf_poly1305_finish (int *,int const*) ;
+ int cf_poly1305_init (int *,int const*,int const*) ;
+ int cf_poly1305_update (int *,int const*,int) ;
+ int mem_clean (int const*,int) ;
+ scalar_t__ mem_eq (int const*,int const*,int) ;
+ int memcpy (int const*,int const*,int) ;
+ int write64_le (size_t,int const*) ;
 
 __attribute__((used)) static int process(const uint8_t key[32],
                    const uint8_t nonce[12],
@@ -37,9 +37,9 @@ __attribute__((used)) static int process(const uint8_t key[32],
                    int mode,
                    uint8_t tag[16])
 {
-  /* First, generate the Poly1305 key by running ChaCha20 with the
-   * given key and a zero counter.  The first half of the
-   * 64-byte output is the key. */
+
+
+
   uint8_t fullnonce[16] = { 0 };
   memcpy(fullnonce + 4, nonce, 12);
 
@@ -48,47 +48,47 @@ __attribute__((used)) static int process(const uint8_t key[32],
   cf_chacha20_init_custom(&chacha, key, 32, fullnonce, 4);
   cf_chacha20_cipher(&chacha, polykey, polykey, sizeof polykey);
 
-  /* Now initialise Poly1305. */
+
   cf_poly1305 poly;
   cf_poly1305_init(&poly, polykey, polykey + 16);
   mem_clean(polykey, sizeof polykey);
 
-  /* Discard next 32 bytes of chacha20 key stream. */
+
   cf_chacha20_cipher(&chacha, polykey, polykey, sizeof polykey);
   mem_clean(polykey, sizeof polykey);
 
-  /* The input to Poly1305 is:
-   * AAD || pad(AAD) || cipher || pad(cipher) || len_64(aad) || len_64(cipher) */
+
+
   uint8_t padbuf[16] = { 0 };
 
-#define PADLEN(x) (16 - ((x) & 0xf))
 
-  /* AAD || pad(AAD) */
+
+
   cf_poly1305_update(&poly, header, nheader);
-  cf_poly1305_update(&poly, padbuf, PADLEN(nheader));
+  cf_poly1305_update(&poly, padbuf, (16 - ((nheader) & 0xf)));
 
-  /* || cipher */
+
   if (mode == ENCRYPT)
   {
-    /* If we're encrypting, we compute the ciphertext
-     * before inputting it into the MAC. */
+
+
     cf_chacha20_cipher(&chacha, input, output, nbytes);
     cf_poly1305_update(&poly, output, nbytes);
   } else {
-    /* Otherwise: decryption -- input the ciphertext.
-     * Delay actual decryption until we checked the MAC. */
+
+
     cf_poly1305_update(&poly, input, nbytes);
   }
 
-  /* || pad(cipher) */
-  cf_poly1305_update(&poly, padbuf, PADLEN(nbytes));
 
-  /* || len_64(aad) || len_64(cipher) */
+  cf_poly1305_update(&poly, padbuf, (16 - ((nbytes) & 0xf)));
+
+
   write64_le(nheader, padbuf);
   write64_le(nbytes, padbuf + 8);
   cf_poly1305_update(&poly, padbuf, sizeof padbuf);
 
-  /* MAC computation is now complete. */
+
 
   if (mode == ENCRYPT)
   {
@@ -97,8 +97,8 @@ __attribute__((used)) static int process(const uint8_t key[32],
     return SUCCESS;
   }
 
-  /* Decrypt mode: calculate tag, and check it.
-   * If it's correct, proceed with decryption. */
+
+
   uint8_t checktag[16];
   cf_poly1305_finish(&poly, checktag);
 

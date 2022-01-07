@@ -1,39 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsNAMEDCOLORLIST ;
-typedef  int /*<<< orphan*/  cmsContext ;
-typedef  int cmsColorSpaceSignature ;
-typedef  int /*<<< orphan*/  cmsBool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SetRange (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * cmsAllocNamedColorList (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  cmsAppendNamedColor (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int cmsChannelsOf (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  cmsMAXCHANNELS ; 
- int cmsMAX_PATH ; 
-#define  cmsSigCmyData 138 
-#define  cmsSigCmykData 137 
-#define  cmsSigGrayData 136 
-#define  cmsSigHlsData 135 
-#define  cmsSigHsvData 134 
-#define  cmsSigLabData 133 
-#define  cmsSigLuvData 132 
-#define  cmsSigRgbData 131 
-#define  cmsSigXYZData 130 
-#define  cmsSigYCbCrData 129 
-#define  cmsSigYxyData 128 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
+
+
+
+typedef int cmsNAMEDCOLORLIST ;
+typedef int cmsContext ;
+typedef int cmsColorSpaceSignature ;
+typedef int cmsBool ;
+
+
+ int SetRange (int,int ) ;
+ int * cmsAllocNamedColorList (int ,int,int ,char*,char*) ;
+ int cmsAppendNamedColor (int ,int *,char*,int *,int *) ;
+ int cmsChannelsOf (int ,int) ;
+ int cmsMAXCHANNELS ;
+ int cmsMAX_PATH ;
+ int sprintf (char*,char*,int) ;
 
 __attribute__((used)) static
 cmsNAMEDCOLORLIST* ComponentNames(cmsContext ContextID, cmsColorSpaceSignature space, cmsBool IsInput)
@@ -43,85 +32,85 @@ cmsNAMEDCOLORLIST* ComponentNames(cmsContext ContextID, cmsColorSpaceSignature s
     char Buffer[cmsMAX_PATH];
 
     out = cmsAllocNamedColorList(0, 12, cmsMAXCHANNELS, "", "");
-    if (out == NULL) return NULL;
+    if (out == ((void*)0)) return ((void*)0);
 
     switch (space) {
 
-    case cmsSigXYZData:
+    case 130:
         SetRange(100, IsInput);
-        cmsAppendNamedColor(ContextID, out, "X", NULL, NULL);
-        cmsAppendNamedColor(ContextID, out, "Y", NULL, NULL);
-        cmsAppendNamedColor(ContextID, out, "Z", NULL, NULL);
+        cmsAppendNamedColor(ContextID, out, "X", ((void*)0), ((void*)0));
+        cmsAppendNamedColor(ContextID, out, "Y", ((void*)0), ((void*)0));
+        cmsAppendNamedColor(ContextID, out, "Z", ((void*)0), ((void*)0));
         break;
 
-    case cmsSigLabData:
+    case 133:
         SetRange(1, IsInput);
-        cmsAppendNamedColor(ContextID, out, "L*", NULL, NULL);
-        cmsAppendNamedColor(ContextID, out, "a*", NULL, NULL);
-        cmsAppendNamedColor(ContextID, out, "b*", NULL, NULL);
+        cmsAppendNamedColor(ContextID, out, "L*", ((void*)0), ((void*)0));
+        cmsAppendNamedColor(ContextID, out, "a*", ((void*)0), ((void*)0));
+        cmsAppendNamedColor(ContextID, out, "b*", ((void*)0), ((void*)0));
         break;
 
-    case cmsSigLuvData:
+    case 132:
         SetRange(1, IsInput);
-        cmsAppendNamedColor(ContextID, out, "L", NULL, NULL);
-        cmsAppendNamedColor(ContextID, out, "u", NULL, NULL);
-        cmsAppendNamedColor(ContextID, out, "v", NULL, NULL);
+        cmsAppendNamedColor(ContextID, out, "L", ((void*)0), ((void*)0));
+        cmsAppendNamedColor(ContextID, out, "u", ((void*)0), ((void*)0));
+        cmsAppendNamedColor(ContextID, out, "v", ((void*)0), ((void*)0));
         break;
 
-    case cmsSigYCbCrData:
+    case 129:
         SetRange(255, IsInput);
-        cmsAppendNamedColor(ContextID, out, "Y", NULL, NULL );
-        cmsAppendNamedColor(ContextID, out, "Cb", NULL, NULL);
-        cmsAppendNamedColor(ContextID, out, "Cr", NULL, NULL);
+        cmsAppendNamedColor(ContextID, out, "Y", ((void*)0), ((void*)0) );
+        cmsAppendNamedColor(ContextID, out, "Cb", ((void*)0), ((void*)0));
+        cmsAppendNamedColor(ContextID, out, "Cr", ((void*)0), ((void*)0));
         break;
 
 
-    case cmsSigYxyData:
+    case 128:
         SetRange(1, IsInput);
-        cmsAppendNamedColor(ContextID, out, "Y", NULL, NULL);
-        cmsAppendNamedColor(ContextID, out, "x", NULL, NULL);
-        cmsAppendNamedColor(ContextID, out, "y", NULL, NULL);
+        cmsAppendNamedColor(ContextID, out, "Y", ((void*)0), ((void*)0));
+        cmsAppendNamedColor(ContextID, out, "x", ((void*)0), ((void*)0));
+        cmsAppendNamedColor(ContextID, out, "y", ((void*)0), ((void*)0));
         break;
 
-    case cmsSigRgbData:
+    case 131:
         SetRange(255, IsInput);
-        cmsAppendNamedColor(ContextID, out, "R", NULL, NULL);
-        cmsAppendNamedColor(ContextID, out, "G", NULL, NULL);
-        cmsAppendNamedColor(ContextID, out, "B", NULL, NULL);
+        cmsAppendNamedColor(ContextID, out, "R", ((void*)0), ((void*)0));
+        cmsAppendNamedColor(ContextID, out, "G", ((void*)0), ((void*)0));
+        cmsAppendNamedColor(ContextID, out, "B", ((void*)0), ((void*)0));
         break;
 
-    case cmsSigGrayData:
+    case 136:
         SetRange(255, IsInput);
-        cmsAppendNamedColor(ContextID, out, "G", NULL, NULL);
+        cmsAppendNamedColor(ContextID, out, "G", ((void*)0), ((void*)0));
         break;
 
-    case cmsSigHsvData:
+    case 134:
         SetRange(255, IsInput);
-        cmsAppendNamedColor(ContextID, out, "H", NULL, NULL);
-        cmsAppendNamedColor(ContextID, out, "s", NULL, NULL);
-        cmsAppendNamedColor(ContextID, out, "v", NULL, NULL);
+        cmsAppendNamedColor(ContextID, out, "H", ((void*)0), ((void*)0));
+        cmsAppendNamedColor(ContextID, out, "s", ((void*)0), ((void*)0));
+        cmsAppendNamedColor(ContextID, out, "v", ((void*)0), ((void*)0));
         break;
 
-    case cmsSigHlsData:
+    case 135:
         SetRange(255, IsInput);
-        cmsAppendNamedColor(ContextID, out, "H", NULL, NULL);
-        cmsAppendNamedColor(ContextID, out, "l", NULL, NULL);
-        cmsAppendNamedColor(ContextID, out, "s", NULL, NULL);
+        cmsAppendNamedColor(ContextID, out, "H", ((void*)0), ((void*)0));
+        cmsAppendNamedColor(ContextID, out, "l", ((void*)0), ((void*)0));
+        cmsAppendNamedColor(ContextID, out, "s", ((void*)0), ((void*)0));
         break;
 
-    case cmsSigCmykData:
+    case 137:
         SetRange(1, IsInput);
-        cmsAppendNamedColor(ContextID, out, "C", NULL, NULL);
-        cmsAppendNamedColor(ContextID, out, "M", NULL, NULL);
-        cmsAppendNamedColor(ContextID, out, "Y", NULL, NULL);
-        cmsAppendNamedColor(ContextID, out, "K", NULL, NULL);
+        cmsAppendNamedColor(ContextID, out, "C", ((void*)0), ((void*)0));
+        cmsAppendNamedColor(ContextID, out, "M", ((void*)0), ((void*)0));
+        cmsAppendNamedColor(ContextID, out, "Y", ((void*)0), ((void*)0));
+        cmsAppendNamedColor(ContextID, out, "K", ((void*)0), ((void*)0));
         break;
 
-    case cmsSigCmyData:
+    case 138:
         SetRange(1, IsInput);
-        cmsAppendNamedColor(ContextID, out, "C", NULL, NULL);
-        cmsAppendNamedColor(ContextID, out, "M", NULL, NULL);
-        cmsAppendNamedColor(ContextID, out, "Y", NULL, NULL);
+        cmsAppendNamedColor(ContextID, out, "C", ((void*)0), ((void*)0));
+        cmsAppendNamedColor(ContextID, out, "M", ((void*)0), ((void*)0));
+        cmsAppendNamedColor(ContextID, out, "Y", ((void*)0), ((void*)0));
         break;
 
     default:
@@ -133,7 +122,7 @@ cmsNAMEDCOLORLIST* ComponentNames(cmsContext ContextID, cmsColorSpaceSignature s
         for (i=0; i < n; i++) {
 
             sprintf(Buffer, "Channel #%d", i + 1);
-            cmsAppendNamedColor(ContextID, out, Buffer, NULL, NULL);
+            cmsAppendNamedColor(ContextID, out, Buffer, ((void*)0), ((void*)0));
         }
     }
 

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT ;
-struct TYPE_4__ {int NumAccess; int /*<<< orphan*/ * Accesses; int /*<<< orphan*/  HubName; } ;
-typedef  TYPE_1__ RPC_ENUM_ACCESS_LIST ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  int /*<<< orphan*/  ACCESS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  InRpcAccessEx (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
- int PackGetIndexCount (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  PackGetStr (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  Zero (TYPE_1__*,int) ; 
- int /*<<< orphan*/ * ZeroMalloc (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t UINT ;
+struct TYPE_4__ {int NumAccess; int * Accesses; int HubName; } ;
+typedef TYPE_1__ RPC_ENUM_ACCESS_LIST ;
+typedef int PACK ;
+typedef int ACCESS ;
+
+
+ int InRpcAccessEx (int *,int *,size_t) ;
+ int PackGetIndexCount (int *,char*) ;
+ int PackGetStr (int *,char*,int ,int) ;
+ int Zero (TYPE_1__*,int) ;
+ int * ZeroMalloc (int) ;
 
 void InRpcEnumAccessList(RPC_ENUM_ACCESS_LIST *a, PACK *p)
 {
-	UINT i;
-	// Validate arguments
-	if (a == NULL || p == NULL)
-	{
-		return;
-	}
+ UINT i;
 
-	Zero(a, sizeof(RPC_ENUM_ACCESS_LIST));
-	PackGetStr(p, "HubName", a->HubName, sizeof(a->HubName));
-	a->NumAccess = PackGetIndexCount(p, "Protocol");
-	a->Accesses = ZeroMalloc(sizeof(ACCESS) * a->NumAccess);
+ if (a == ((void*)0) || p == ((void*)0))
+ {
+  return;
+ }
 
-	for (i = 0;i < a->NumAccess;i++)
-	{
-		ACCESS *e = &a->Accesses[i];
+ Zero(a, sizeof(RPC_ENUM_ACCESS_LIST));
+ PackGetStr(p, "HubName", a->HubName, sizeof(a->HubName));
+ a->NumAccess = PackGetIndexCount(p, "Protocol");
+ a->Accesses = ZeroMalloc(sizeof(ACCESS) * a->NumAccess);
 
-		InRpcAccessEx(e, p, i);
-	}
+ for (i = 0;i < a->NumAccess;i++)
+ {
+  ACCESS *e = &a->Accesses[i];
+
+  InRpcAccessEx(e, p, i);
+ }
 }

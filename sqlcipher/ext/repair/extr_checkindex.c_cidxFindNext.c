@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int CIDX_PARSE_CLOSE ; 
- int CIDX_PARSE_COMMA ; 
- int CIDX_PARSE_EOF ; 
- int CIDX_PARSE_OPEN ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- scalar_t__ cidx_isspace (char const) ; 
+ int CIDX_PARSE_CLOSE ;
+ int CIDX_PARSE_COMMA ;
+ int CIDX_PARSE_EOF ;
+ int CIDX_PARSE_OPEN ;
+ int assert (int ) ;
+ scalar_t__ cidx_isspace (char const) ;
 
 __attribute__((used)) static int cidxFindNext(
-  const char *zIn, 
+  const char *zIn,
   const char **pzOut,
-  int *pbDoNotTrim                /* OUT: True if prev is -- comment */
+  int *pbDoNotTrim
 ){
   const char *z = zIn;
 
@@ -56,9 +48,9 @@ __attribute__((used)) static int cidxFindNext(
           return CIDX_PARSE_CLOSE;
         case ',':
           return CIDX_PARSE_COMMA;
-  
-        case '"': 
-        case '\'': 
+
+        case '"':
+        case '\'':
         case '`': {
           char q = *z;
           z++;
@@ -71,11 +63,11 @@ __attribute__((used)) static int cidxFindNext(
           }
           break;
         }
-  
+
         case '[':
           while( *z++!=']' );
           break;
-  
+
         default:
           z++;
           break;

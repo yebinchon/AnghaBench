@@ -1,84 +1,84 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  int uint16_t ;
-struct TYPE_6__ {int configured; int tx_buf_size; int TX_active; char* tx_buf; int /*<<< orphan*/  DMA_stream; int /*<<< orphan*/  USARTx; int /*<<< orphan*/  DR_ADDR; int /*<<< orphan*/  DMA_channel; int /*<<< orphan*/  DMA_IntFlags; } ;
-struct TYPE_5__ {int DMA_BufferSize; int /*<<< orphan*/  DMA_PeripheralBurst; int /*<<< orphan*/  DMA_MemoryBurst; int /*<<< orphan*/  DMA_FIFOThreshold; int /*<<< orphan*/  DMA_FIFOMode; int /*<<< orphan*/  DMA_Priority; int /*<<< orphan*/  DMA_Mode; int /*<<< orphan*/  DMA_MemoryDataSize; int /*<<< orphan*/  DMA_PeripheralDataSize; int /*<<< orphan*/  DMA_MemoryInc; int /*<<< orphan*/  DMA_PeripheralInc; int /*<<< orphan*/  DMA_DIR; scalar_t__ DMA_Memory0BaseAddr; int /*<<< orphan*/  DMA_PeripheralBaseAddr; int /*<<< orphan*/  DMA_Channel; } ;
-typedef  TYPE_1__ DMA_InitTypeDef ;
-typedef  TYPE_2__ CONFIG_USART_ConfigState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUGPIN_CLR (int) ; 
- int /*<<< orphan*/  DEBUGPIN_SET (int) ; 
- int /*<<< orphan*/  DEBUGPIN_TGL (int) ; 
- int /*<<< orphan*/  DMA_ClearITPendingBit (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DMA_Cmd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DMA_DIR_MemoryToPeripheral ; 
- int /*<<< orphan*/  DMA_DeInit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DMA_FIFOMode_Disable ; 
- int /*<<< orphan*/  DMA_FIFOThreshold_3QuartersFull ; 
- int /*<<< orphan*/  DMA_Init (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  DMA_MemoryBurst_Single ; 
- int /*<<< orphan*/  DMA_MemoryDataSize_Byte ; 
- int /*<<< orphan*/  DMA_MemoryInc_Enable ; 
- int /*<<< orphan*/  DMA_Mode_Normal ; 
- int /*<<< orphan*/  DMA_PeripheralBurst_Single ; 
- int /*<<< orphan*/  DMA_PeripheralDataSize_Byte ; 
- int /*<<< orphan*/  DMA_PeripheralInc_Disable ; 
- int /*<<< orphan*/  DMA_Priority_VeryHigh ; 
- int /*<<< orphan*/  ENABLE ; 
- int /*<<< orphan*/  USART_ClearFlag (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  USART_DMACmd (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  USART_DMAReq_Tx ; 
- int /*<<< orphan*/  USART_FLAG_TC ; 
- int /*<<< orphan*/  USART_ITConfig (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  USART_IT_TC ; 
- int /*<<< orphan*/  assert (int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+typedef int uint16_t ;
+struct TYPE_6__ {int configured; int tx_buf_size; int TX_active; char* tx_buf; int DMA_stream; int USARTx; int DR_ADDR; int DMA_channel; int DMA_IntFlags; } ;
+struct TYPE_5__ {int DMA_BufferSize; int DMA_PeripheralBurst; int DMA_MemoryBurst; int DMA_FIFOThreshold; int DMA_FIFOMode; int DMA_Priority; int DMA_Mode; int DMA_MemoryDataSize; int DMA_PeripheralDataSize; int DMA_MemoryInc; int DMA_PeripheralInc; int DMA_DIR; scalar_t__ DMA_Memory0BaseAddr; int DMA_PeripheralBaseAddr; int DMA_Channel; } ;
+typedef TYPE_1__ DMA_InitTypeDef ;
+typedef TYPE_2__ CONFIG_USART_ConfigState ;
+
+
+ int DEBUGPIN_CLR (int) ;
+ int DEBUGPIN_SET (int) ;
+ int DEBUGPIN_TGL (int) ;
+ int DMA_ClearITPendingBit (int ,int ) ;
+ int DMA_Cmd (int ,int ) ;
+ int DMA_DIR_MemoryToPeripheral ;
+ int DMA_DeInit (int ) ;
+ int DMA_FIFOMode_Disable ;
+ int DMA_FIFOThreshold_3QuartersFull ;
+ int DMA_Init (int ,TYPE_1__*) ;
+ int DMA_MemoryBurst_Single ;
+ int DMA_MemoryDataSize_Byte ;
+ int DMA_MemoryInc_Enable ;
+ int DMA_Mode_Normal ;
+ int DMA_PeripheralBurst_Single ;
+ int DMA_PeripheralDataSize_Byte ;
+ int DMA_PeripheralInc_Disable ;
+ int DMA_Priority_VeryHigh ;
+ int ENABLE ;
+ int USART_ClearFlag (int ,int ) ;
+ int USART_DMACmd (int ,int ,int ) ;
+ int USART_DMAReq_Tx ;
+ int USART_FLAG_TC ;
+ int USART_ITConfig (int ,int ,int ) ;
+ int USART_IT_TC ;
+ int assert (int) ;
 
 bool UART_SendBytes(CONFIG_USART_ConfigState *cfg, const char *buf, uint16_t length) {
-	DMA_InitTypeDef DMA_InitStructure;
-	int i;
+ DMA_InitTypeDef DMA_InitStructure;
+ int i;
 
-	assert(cfg->configured == true);
-	assert(buf != NULL);
-	assert(length <= cfg->tx_buf_size);
+ assert(cfg->configured == 1);
+ assert(buf != ((void*)0));
+ assert(length <= cfg->tx_buf_size);
 
     DEBUGPIN_SET(2);
 
-	if(cfg->TX_active) {
+ if(cfg->TX_active) {
         DEBUGPIN_CLR(2);
         DEBUGPIN_TGL(9);
-		return false;
-	}
+  return 0;
+ }
 
-	for(i = 0; i < length; i++)
-		cfg->tx_buf[i] = buf[i];
+ for(i = 0; i < length; i++)
+  cfg->tx_buf[i] = buf[i];
 
-	// clear transmission complete flag and enable TC interrupt to
-	// allow fast response to switch back to RX mode
-	USART_ClearFlag(cfg->USARTx, USART_FLAG_TC);
-	USART_ITConfig(cfg->USARTx, USART_IT_TC, ENABLE);
-	DMA_ClearITPendingBit(cfg->DMA_stream, cfg->DMA_IntFlags);
 
-	// configure DMA
+
+ USART_ClearFlag(cfg->USARTx, USART_FLAG_TC);
+ USART_ITConfig(cfg->USARTx, USART_IT_TC, ENABLE);
+ DMA_ClearITPendingBit(cfg->DMA_stream, cfg->DMA_IntFlags);
+
+
     DMA_DeInit(cfg->DMA_stream);
-	DMA_InitStructure.DMA_Channel = cfg->DMA_channel;
-	DMA_InitStructure.DMA_PeripheralBaseAddr = cfg->DR_ADDR;
-	DMA_InitStructure.DMA_Memory0BaseAddr = (uint32_t)cfg->tx_buf;
-	DMA_InitStructure.DMA_DIR = DMA_DIR_MemoryToPeripheral;
-	DMA_InitStructure.DMA_BufferSize = length;
+ DMA_InitStructure.DMA_Channel = cfg->DMA_channel;
+ DMA_InitStructure.DMA_PeripheralBaseAddr = cfg->DR_ADDR;
+ DMA_InitStructure.DMA_Memory0BaseAddr = (uint32_t)cfg->tx_buf;
+ DMA_InitStructure.DMA_DIR = DMA_DIR_MemoryToPeripheral;
+ DMA_InitStructure.DMA_BufferSize = length;
     DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
     DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;
     DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
@@ -89,14 +89,14 @@ bool UART_SendBytes(CONFIG_USART_ConfigState *cfg, const char *buf, uint16_t len
     DMA_InitStructure.DMA_FIFOThreshold = DMA_FIFOThreshold_3QuartersFull;
     DMA_InitStructure.DMA_MemoryBurst = DMA_MemoryBurst_Single;
     DMA_InitStructure.DMA_PeripheralBurst = DMA_PeripheralBurst_Single;
-	DMA_Init(cfg->DMA_stream, &DMA_InitStructure);
+ DMA_Init(cfg->DMA_stream, &DMA_InitStructure);
 
-	// start the transfer
-	USART_DMACmd(cfg->USARTx, USART_DMAReq_Tx, ENABLE);
-	DMA_Cmd(cfg->DMA_stream, ENABLE);
 
-    cfg->TX_active = true;
+ USART_DMACmd(cfg->USARTx, USART_DMAReq_Tx, ENABLE);
+ DMA_Cmd(cfg->DMA_stream, ENABLE);
+
+    cfg->TX_active = 1;
 
     DEBUGPIN_CLR(2);
-	return true;
+ return 1;
 }

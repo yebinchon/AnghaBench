@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
-struct TYPE_3__ {int /*<<< orphan*/  IpAddress; } ;
-typedef  int /*<<< orphan*/  IP ;
-typedef  TYPE_1__ DNSCACHE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- TYPE_1__* FindDnsCache (char*) ; 
- int /*<<< orphan*/  GenDnsCacheKeyName (char*,int,char*,int) ; 
- int MAX_SIZE ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int tmp ;
+struct TYPE_3__ {int IpAddress; } ;
+typedef int IP ;
+typedef TYPE_1__ DNSCACHE ;
+
+
+ int Copy (int *,int *,int) ;
+ TYPE_1__* FindDnsCache (char*) ;
+ int GenDnsCacheKeyName (char*,int,char*,int) ;
+ int MAX_SIZE ;
 
 bool QueryDnsCacheEx(IP *ip, char *hostname, bool ipv6)
 {
-	DNSCACHE *c;
-	char tmp[MAX_SIZE];
-	// Validate arguments
-	if (ip == NULL || hostname == NULL)
-	{
-		return false;
-	}
+ DNSCACHE *c;
+ char tmp[MAX_SIZE];
 
-	GenDnsCacheKeyName(tmp, sizeof(tmp), hostname, ipv6);
+ if (ip == ((void*)0) || hostname == ((void*)0))
+ {
+  return 0;
+ }
 
-	c = FindDnsCache(tmp);
-	if (c == NULL)
-	{
-		return false;
-	}
+ GenDnsCacheKeyName(tmp, sizeof(tmp), hostname, ipv6);
 
-	Copy(ip, &c->IpAddress, sizeof(IP));
+ c = FindDnsCache(tmp);
+ if (c == ((void*)0))
+ {
+  return 0;
+ }
 
-	return true;
+ Copy(ip, &c->IpAddress, sizeof(IP));
+
+ return 1;
 }

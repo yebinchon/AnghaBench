@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  aModule; } ;
-typedef  TYPE_1__ sqlite3 ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int aModule; } ;
+typedef TYPE_1__ sqlite3 ;
 struct TYPE_7__ {int mPragFlg; } ;
-typedef  TYPE_2__ PragmaName ;
-typedef  int /*<<< orphan*/  Module ;
+typedef TYPE_2__ PragmaName ;
+typedef int Module ;
 
-/* Variables and functions */
- int PragFlg_Result0 ; 
- int PragFlg_Result1 ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_2__* pragmaLocate (char const*) ; 
- int /*<<< orphan*/  pragmaVtabModule ; 
- scalar_t__ sqlite3HashFind (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/ * sqlite3VtabCreateModule (TYPE_1__*,char const*,int /*<<< orphan*/ *,void*,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_strnicmp (char const*,char*,int) ; 
+
+ int PragFlg_Result0 ;
+ int PragFlg_Result1 ;
+ int assert (int) ;
+ TYPE_2__* pragmaLocate (char const*) ;
+ int pragmaVtabModule ;
+ scalar_t__ sqlite3HashFind (int *,char const*) ;
+ int * sqlite3VtabCreateModule (TYPE_1__*,char const*,int *,void*,int ) ;
+ scalar_t__ sqlite3_strnicmp (char const*,char*,int) ;
 
 Module *sqlite3PragmaVtabRegister(sqlite3 *db, const char *zName){
   const PragmaName *pName;

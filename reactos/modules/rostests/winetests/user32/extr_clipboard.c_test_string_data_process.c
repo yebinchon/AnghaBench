@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int UINT ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+typedef int UINT ;
 struct TYPE_2__ {int len; scalar_t__* strW; scalar_t__* strA; } ;
-typedef  scalar_t__ HANDLE ;
-typedef  int BOOL ;
+typedef scalar_t__ HANDLE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CF_TEXT ; 
- int /*<<< orphan*/  CF_UNICODETEXT ; 
- int /*<<< orphan*/  CP_ACP ; 
- int CloseClipboard () ; 
- scalar_t__ GetClipboardData (int /*<<< orphan*/ ) ; 
- int GetLastError () ; 
- int GlobalSize (scalar_t__) ; 
- int IsClipboardFormatAvailable (int /*<<< orphan*/ ) ; 
- int MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,char*,int) ; 
- int OpenClipboard (int /*<<< orphan*/ ) ; 
- int WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcmp (scalar_t__,char*,int) ; 
- int /*<<< orphan*/  memcpy (char*,scalar_t__*,int) ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
- TYPE_1__* test_data ; 
- int /*<<< orphan*/  wine_dbgstr_wn (scalar_t__,int) ; 
+
+ int CF_TEXT ;
+ int CF_UNICODETEXT ;
+ int CP_ACP ;
+ int CloseClipboard () ;
+ scalar_t__ GetClipboardData (int ) ;
+ int GetLastError () ;
+ int GlobalSize (scalar_t__) ;
+ int IsClipboardFormatAvailable (int ) ;
+ int MultiByteToWideChar (int ,int ,char*,int,char*,int) ;
+ int OpenClipboard (int ) ;
+ int WideCharToMultiByte (int ,int ,char*,int,char*,int,int *,int *) ;
+ int memcmp (scalar_t__,char*,int) ;
+ int memcpy (char*,scalar_t__*,int) ;
+ int ok (int,char*,int,...) ;
+ TYPE_1__* test_data ;
+ int wine_dbgstr_wn (scalar_t__,int) ;
 
 __attribute__((used)) static void test_string_data_process( int i )
 {
@@ -77,7 +77,7 @@ __attribute__((used)) static void test_string_data_process( int i )
             ok( data != 0, "%u: could not get data\n", i );
             len = GlobalSize( data );
             len2 = WideCharToMultiByte( CP_ACP, 0, bufferW, test_data[i].len / sizeof(WCHAR),
-                                        bufferA, 12, NULL, NULL );
+                                        bufferA, 12, ((void*)0), ((void*)0) );
             bufferA[len2 - 1] = 0;
             ok( len == len2, "%u: wrong size %u / %u\n", i, len, len2 );
             ok( !memcmp( data, bufferA, len ), "%u: wrong data %.*s\n", i, len, (char *)data );

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
- size_t hpack_encode_str_raw (int /*<<< orphan*/ *,size_t,char const*) ; 
- size_t hpack_encode_str_raw_lower (int /*<<< orphan*/ *,size_t,char const*) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ size_t hpack_encode_str_raw (int *,size_t,char const*) ;
+ size_t hpack_encode_str_raw_lower (int *,size_t,char const*) ;
 
 size_t hpack_encode_hdr_neverindex(uint8_t *restrict buf, size_t size,
                                    const char *name, const char *value)

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sched_param {int sched_priority; } ;
-typedef  int /*<<< orphan*/  pthread_t ;
-typedef  scalar_t__ SDL_ThreadPriority ;
+typedef int pthread_t ;
+typedef scalar_t__ SDL_ThreadPriority ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALOGE (char*) ; 
- scalar_t__ SDL_THREAD_PRIORITY_HIGH ; 
- scalar_t__ SDL_THREAD_PRIORITY_LOW ; 
- scalar_t__ pthread_getschedparam (int /*<<< orphan*/ ,int*,struct sched_param*) ; 
- int /*<<< orphan*/  pthread_self () ; 
- scalar_t__ pthread_setschedparam (int /*<<< orphan*/ ,int,struct sched_param*) ; 
- void* sched_get_priority_max (int) ; 
- void* sched_get_priority_min (int) ; 
+
+ int ALOGE (char*) ;
+ scalar_t__ SDL_THREAD_PRIORITY_HIGH ;
+ scalar_t__ SDL_THREAD_PRIORITY_LOW ;
+ scalar_t__ pthread_getschedparam (int ,int*,struct sched_param*) ;
+ int pthread_self () ;
+ scalar_t__ pthread_setschedparam (int ,int,struct sched_param*) ;
+ void* sched_get_priority_max (int) ;
+ void* sched_get_priority_min (int) ;
 
 int SDL_SetThreadPriority(SDL_ThreadPriority priority)
 {

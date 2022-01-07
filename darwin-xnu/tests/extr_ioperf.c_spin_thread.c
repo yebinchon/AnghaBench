@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  name ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SPIN_SECS ; 
- int /*<<< orphan*/  T_ASSERT_MACH_SUCCESS (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  pthread_setname_np (char*) ; 
- int /*<<< orphan*/  semaphore ; 
- int /*<<< orphan*/  semaphore_wait_signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
- int /*<<< orphan*/  spin_for_duration (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  worker_sem ; 
+
+
+
+typedef int uint32_t ;
+typedef int name ;
+
+
+ int SPIN_SECS ;
+ int T_ASSERT_MACH_SUCCESS (int ,char*) ;
+ int pthread_setname_np (char*) ;
+ int semaphore ;
+ int semaphore_wait_signal (int ,int ) ;
+ int snprintf (char*,int,char*,int) ;
+ int spin_for_duration (int ) ;
+ int worker_sem ;
 
 __attribute__((used)) static void *
 spin_thread(void *arg)
@@ -34,5 +34,5 @@ spin_thread(void *arg)
     T_ASSERT_MACH_SUCCESS(semaphore_wait_signal(semaphore, worker_sem),
             "semaphore_wait_signal");
     spin_for_duration(SPIN_SECS);
-    return NULL;
+    return ((void*)0);
 }

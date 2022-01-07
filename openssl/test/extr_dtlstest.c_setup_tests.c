@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ADD_ALL_TESTS (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ADD_TEST (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NUM_TESTS ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TOTAL_RECORDS ; 
- int /*<<< orphan*/  cert ; 
- int /*<<< orphan*/  privkey ; 
- int /*<<< orphan*/  test_cookie ; 
- int /*<<< orphan*/  test_dtls_drop_records ; 
- int /*<<< orphan*/  test_dtls_duplicate_records ; 
- int /*<<< orphan*/  test_dtls_unprocessed ; 
- int /*<<< orphan*/  test_get_argument (int) ; 
+ int ADD_ALL_TESTS (int ,int ) ;
+ int ADD_TEST (int ) ;
+ int NUM_TESTS ;
+ int TEST_ptr (int ) ;
+ int TOTAL_RECORDS ;
+ int cert ;
+ int privkey ;
+ int test_cookie ;
+ int test_dtls_drop_records ;
+ int test_dtls_duplicate_records ;
+ int test_dtls_unprocessed ;
+ int test_get_argument (int) ;
 
 int setup_tests(void)
 {

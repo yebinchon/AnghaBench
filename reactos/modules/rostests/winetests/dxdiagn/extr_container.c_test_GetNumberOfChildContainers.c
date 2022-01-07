@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ E_INVALIDARG ; 
- scalar_t__ IDxDiagContainer_GetNumberOfChildContainers (int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  IDxDiagContainer_Release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDxDiagProvider_Release (int /*<<< orphan*/ ) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  create_root_IDxDiagContainer () ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  pddc ; 
- int /*<<< orphan*/  pddp ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+
+
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ E_INVALIDARG ;
+ scalar_t__ IDxDiagContainer_GetNumberOfChildContainers (int ,scalar_t__*) ;
+ int IDxDiagContainer_Release (int ) ;
+ int IDxDiagProvider_Release (int ) ;
+ scalar_t__ S_OK ;
+ int create_root_IDxDiagContainer () ;
+ int ok (int,char*,...) ;
+ int pddc ;
+ int pddp ;
+ int skip (char*) ;
 
 __attribute__((used)) static void test_GetNumberOfChildContainers(void)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static void test_GetNumberOfChildContainers(void)
         return;
     }
 
-    hr = IDxDiagContainer_GetNumberOfChildContainers(pddc, NULL);
+    hr = IDxDiagContainer_GetNumberOfChildContainers(pddc, ((void*)0));
     ok(hr == E_INVALIDARG,
        "Expected IDxDiagContainer::GetNumberOfChildContainers to return E_INVALIDARG, got 0x%08x\n", hr);
 

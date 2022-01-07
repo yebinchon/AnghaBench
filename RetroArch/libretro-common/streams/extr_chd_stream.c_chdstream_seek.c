@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int int64_t ;
 struct TYPE_3__ {int offset; int track_end; } ;
-typedef  TYPE_1__ chdstream_t ;
+typedef TYPE_1__ chdstream_t ;
 
-/* Variables and functions */
-#define  SEEK_CUR 130 
-#define  SEEK_END 129 
-#define  SEEK_SET 128 
+
+
+
+
 
 int64_t chdstream_seek(chdstream_t *stream, int64_t offset, int whence)
 {
@@ -26,13 +26,13 @@ int64_t chdstream_seek(chdstream_t *stream, int64_t offset, int whence)
 
    switch (whence)
    {
-      case SEEK_SET:
+      case 128:
          new_offset = offset;
          break;
-      case SEEK_CUR:
+      case 130:
          new_offset = stream->offset + offset;
          break;
-      case SEEK_END:
+      case 129:
          new_offset = stream->track_end + offset;
          break;
       default:

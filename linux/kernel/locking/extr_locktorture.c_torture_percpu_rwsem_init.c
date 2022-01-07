@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pcpu_rwsem ; 
- int /*<<< orphan*/  percpu_init_rwsem (int /*<<< orphan*/ *) ; 
+ int BUG_ON (int ) ;
+ int pcpu_rwsem ;
+ int percpu_init_rwsem (int *) ;
 
 void torture_percpu_rwsem_init(void)
 {
-	BUG_ON(percpu_init_rwsem(&pcpu_rwsem));
+ BUG_ON(percpu_init_rwsem(&pcpu_rwsem));
 }

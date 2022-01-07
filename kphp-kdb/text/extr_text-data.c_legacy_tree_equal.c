@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {long long x; int z; } ;
-typedef  TYPE_1__ ltree_t ;
+typedef TYPE_1__ ltree_t ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static inline int legacy_tree_equal (ltree_t *T, long long x, int z) {
-  return x == T->x && z == T->z; 
+  return x == T->x && z == T->z;
 }

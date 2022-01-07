@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dstr {scalar_t__ len; int /*<<< orphan*/  array; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gzwrite (void*,int /*<<< orphan*/ ,unsigned int) ; 
+
+
+
+struct dstr {scalar_t__ len; int array; } ;
+
+
+ int gzwrite (void*,int ,unsigned int) ;
 
 __attribute__((used)) static void dump_csv_gzwrite(void *data, struct dstr *buffer)
 {
-	gzwrite(data, buffer->array, (unsigned)buffer->len);
+ gzwrite(data, buffer->array, (unsigned)buffer->len);
 }

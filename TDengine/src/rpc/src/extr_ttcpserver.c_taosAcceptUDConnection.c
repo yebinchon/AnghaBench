@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_4__* ptr; } ;
 struct epoll_event {int events; TYPE_1__ data; } ;
 struct TYPE_10__ {int fd; struct TYPE_10__* prev; struct TYPE_10__* next; TYPE_2__* pThreadObj; } ;
-struct TYPE_9__ {int numOfThreads; int /*<<< orphan*/  label; TYPE_2__* pThreadObj; int /*<<< orphan*/  port; int /*<<< orphan*/  ip; } ;
-struct TYPE_8__ {int /*<<< orphan*/  numOfFds; int /*<<< orphan*/  threadId; int /*<<< orphan*/  threadMutex; int /*<<< orphan*/  fdReady; TYPE_4__* pHead; int /*<<< orphan*/  pollFd; } ;
-typedef  TYPE_2__ SThreadObj ;
-typedef  TYPE_3__ SServerObj ;
-typedef  TYPE_4__ SFdObj ;
+struct TYPE_9__ {int numOfThreads; int label; TYPE_2__* pThreadObj; int port; int ip; } ;
+struct TYPE_8__ {int numOfFds; int threadId; int threadMutex; int fdReady; TYPE_4__* pHead; int pollFd; } ;
+typedef TYPE_2__ SThreadObj ;
+typedef TYPE_3__ SServerObj ;
+typedef TYPE_4__ SFdObj ;
 
-/* Variables and functions */
- int EPOLLIN ; 
- int EPOLLPRI ; 
- int EPOLLWAKEUP ; 
- int /*<<< orphan*/  EPOLL_CTL_ADD ; 
- int accept (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ epoll_ctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,struct epoll_event*) ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memset (TYPE_4__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pthread_cond_signal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tError (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  tTrace (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int taosOpenUDServerSocket (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tfree (TYPE_4__*) ; 
+
+ int EPOLLIN ;
+ int EPOLLPRI ;
+ int EPOLLWAKEUP ;
+ int EPOLL_CTL_ADD ;
+ int accept (int,int *,int *) ;
+ int close (int) ;
+ scalar_t__ epoll_ctl (int ,int ,int,struct epoll_event*) ;
+ int errno ;
+ scalar_t__ malloc (int) ;
+ int memset (TYPE_4__*,int ,int) ;
+ int pthread_cond_signal (int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int strerror (int ) ;
+ int tError (char*,int ,...) ;
+ int tTrace (char*,int ,int ,int ) ;
+ int taosOpenUDServerSocket (int ,int ) ;
+ int tfree (TYPE_4__*) ;
 
 void taosAcceptUDConnection(void *arg) {
-  int                connFd = -1;
-  int                sockFd;
-  int                threadId = 0;
-  SThreadObj *       pThreadObj;
-  SServerObj *       pServerObj;
-  SFdObj *           pFdObj;
+  int connFd = -1;
+  int sockFd;
+  int threadId = 0;
+  SThreadObj * pThreadObj;
+  SServerObj * pServerObj;
+  SFdObj * pFdObj;
   struct epoll_event event;
 
   pServerObj = (SServerObj *)arg;
@@ -63,18 +63,18 @@ void taosAcceptUDConnection(void *arg) {
   }
 
   while (1) {
-    connFd = accept(sockFd, NULL, NULL);
+    connFd = accept(sockFd, ((void*)0), ((void*)0));
 
     if (connFd < 0) {
       tError("%s UD accept failure, errno:%d, reason:%s", pServerObj->label, errno, strerror(errno));
       continue;
     }
 
-    // pick up the thread to handle this connection
+
     pThreadObj = pServerObj->pThreadObj + threadId;
 
     pFdObj = (SFdObj *)malloc(sizeof(SFdObj));
-    if (pFdObj == NULL) {
+    if (pFdObj == ((void*)0)) {
       tError("%s no enough resource to allocate TCP FD IDs", pServerObj->label);
       close(connFd);
       continue;
@@ -93,7 +93,7 @@ void taosAcceptUDConnection(void *arg) {
       continue;
     }
 
-    // notify the data process, add into the FdObj list
+
     pthread_mutex_lock(&(pThreadObj->threadMutex));
 
     pFdObj->next = pThreadObj->pHead;
@@ -110,7 +110,7 @@ void taosAcceptUDConnection(void *arg) {
     tTrace("%s UD thread:%d, a new connection, numOfFds:%d", pServerObj->label, pThreadObj->threadId,
            pThreadObj->numOfFds);
 
-    // pick up next thread for next connection
+
     threadId++;
     threadId = threadId % pServerObj->numOfThreads;
   }

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  List ;
-typedef  int /*<<< orphan*/  HeapTuple ;
-typedef  int /*<<< orphan*/  Datum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Anum_pg_class_reloptions ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  HeapTupleIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ObjectIdGetDatum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RELOID ; 
- int /*<<< orphan*/  ReleaseSysCache (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SearchSysCache1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SysCacheGetAttr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * untransformRelOptions (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Oid ;
+typedef int List ;
+typedef int HeapTuple ;
+typedef int Datum ;
+
+
+ int Anum_pg_class_reloptions ;
+ int ERROR ;
+ int HeapTupleIsValid (int ) ;
+ int ObjectIdGetDatum (int ) ;
+ int RELOID ;
+ int ReleaseSysCache (int ) ;
+ int SearchSysCache1 (int ,int ) ;
+ int SysCacheGetAttr (int ,int ,int ,int*) ;
+ int elog (int ,char*,int ) ;
+ int * untransformRelOptions (int ) ;
 
 __attribute__((used)) static List *
 get_reloptions(Oid relid)
 {
-	HeapTuple tuple;
-	Datum datum;
-	bool isnull;
-	List *options;
+ HeapTuple tuple;
+ Datum datum;
+ bool isnull;
+ List *options;
 
-	tuple = SearchSysCache1(RELOID, ObjectIdGetDatum(relid));
+ tuple = SearchSysCache1(RELOID, ObjectIdGetDatum(relid));
 
-	if (!HeapTupleIsValid(tuple))
-		elog(ERROR, "cache lookup failed for relation %u", relid);
+ if (!HeapTupleIsValid(tuple))
+  elog(ERROR, "cache lookup failed for relation %u", relid);
 
-	datum = SysCacheGetAttr(RELOID, tuple, Anum_pg_class_reloptions, &isnull);
+ datum = SysCacheGetAttr(RELOID, tuple, Anum_pg_class_reloptions, &isnull);
 
-	options = untransformRelOptions(datum);
+ options = untransformRelOptions(datum);
 
-	ReleaseSysCache(tuple);
+ ReleaseSysCache(tuple);
 
-	return options;
+ return options;
 }

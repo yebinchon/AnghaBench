@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int ;
-struct acpi_ec_softc {int /*<<< orphan*/  ec_dev; int /*<<< orphan*/  ec_gencount; } ;
-typedef  int /*<<< orphan*/  UINT8 ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
 
-/* Variables and functions */
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_SERIAL_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  CTR2 (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EC_COMMAND_WRITE ; 
- int /*<<< orphan*/  EC_EVENT_INPUT_BUFFER_EMPTY ; 
- int /*<<< orphan*/  EC_SET_DATA (struct acpi_ec_softc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EcCommand (struct acpi_ec_softc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EcWaitEvent (struct acpi_ec_softc*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  KTR_ACPI ; 
- int /*<<< orphan*/  device_printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ec ; 
+
+
+
+typedef int u_int ;
+struct acpi_ec_softc {int ec_dev; int ec_gencount; } ;
+typedef int UINT8 ;
+typedef int ACPI_STATUS ;
+
+
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int ACPI_SERIAL_ASSERT (int ) ;
+ int AE_OK ;
+ int CTR2 (int ,char*,int ,int ) ;
+ int EC_COMMAND_WRITE ;
+ int EC_EVENT_INPUT_BUFFER_EMPTY ;
+ int EC_SET_DATA (struct acpi_ec_softc*,int ) ;
+ int EcCommand (struct acpi_ec_softc*,int ) ;
+ int EcWaitEvent (struct acpi_ec_softc*,int ,int ) ;
+ int KTR_ACPI ;
+ int device_printf (int ,char*) ;
+ int ec ;
 
 __attribute__((used)) static ACPI_STATUS
 EcWrite(struct acpi_ec_softc *sc, UINT8 Address, UINT8 Data)
 {
-    ACPI_STATUS	status;
+    ACPI_STATUS status;
     u_int gen_count;
 
     ACPI_SERIAL_ASSERT(ec);
@@ -40,22 +40,22 @@ EcWrite(struct acpi_ec_softc *sc, UINT8 Address, UINT8 Data)
 
     status = EcCommand(sc, EC_COMMAND_WRITE);
     if (ACPI_FAILURE(status))
-	return (status);
+ return (status);
 
     gen_count = sc->ec_gencount;
     EC_SET_DATA(sc, Address);
     status = EcWaitEvent(sc, EC_EVENT_INPUT_BUFFER_EMPTY, gen_count);
     if (ACPI_FAILURE(status)) {
-	device_printf(sc->ec_dev, "EcWrite: failed waiting for sent address\n");
-	return (status);
+ device_printf(sc->ec_dev, "EcWrite: failed waiting for sent address\n");
+ return (status);
     }
 
     gen_count = sc->ec_gencount;
     EC_SET_DATA(sc, Data);
     status = EcWaitEvent(sc, EC_EVENT_INPUT_BUFFER_EMPTY, gen_count);
     if (ACPI_FAILURE(status)) {
-	device_printf(sc->ec_dev, "EcWrite: failed waiting for sent data\n");
-	return (status);
+ device_printf(sc->ec_dev, "EcWrite: failed waiting for sent data\n");
+ return (status);
     }
 
     return (AE_OK);

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct pxa25x_ep {int /*<<< orphan*/  regoff_udccs; int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  udc_set_reg (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u32 ;
+struct pxa25x_ep {int regoff_udccs; int dev; } ;
+
+
+ int udc_set_reg (int ,int ,int ) ;
 
 __attribute__((used)) static inline void udc_ep_set_UDCCS(struct pxa25x_ep *ep, u32 data)
 {
-	udc_set_reg(ep->dev, data, ep->regoff_udccs);
+ udc_set_reg(ep->dev, data, ep->regoff_udccs);
 }

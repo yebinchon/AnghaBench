@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int lua_State ;
 struct TYPE_11__ {size_t idx; scalar_t__ instack; } ;
-typedef  TYPE_1__ Upvaldesc ;
-struct TYPE_12__ {int /*<<< orphan*/  refcount; } ;
-typedef  TYPE_2__ UpVal ;
+typedef TYPE_1__ Upvaldesc ;
+struct TYPE_12__ {int refcount; } ;
+typedef TYPE_2__ UpVal ;
 struct TYPE_14__ {TYPE_2__** upvals; TYPE_3__* p; } ;
 struct TYPE_13__ {int sizeupvalues; TYPE_4__* cache; TYPE_1__* upvalues; } ;
-typedef  scalar_t__ StkId ;
-typedef  TYPE_3__ Proto ;
-typedef  TYPE_4__ LClosure ;
+typedef scalar_t__ StkId ;
+typedef TYPE_3__ Proto ;
+typedef TYPE_4__ LClosure ;
 
-/* Variables and functions */
- int /*<<< orphan*/  isblack (TYPE_3__*) ; 
- TYPE_2__* luaF_findupval (int /*<<< orphan*/ *,scalar_t__) ; 
- TYPE_4__* luaF_newLclosure (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  setclLvalue (int /*<<< orphan*/ *,scalar_t__,TYPE_4__*) ; 
+
+ int isblack (TYPE_3__*) ;
+ TYPE_2__* luaF_findupval (int *,scalar_t__) ;
+ TYPE_4__* luaF_newLclosure (int *,int) ;
+ int setclLvalue (int *,scalar_t__,TYPE_4__*) ;
 
 __attribute__((used)) static void pushclosure (lua_State *L, Proto *p, UpVal **encup, StkId base,
                          StkId ra) {
@@ -38,15 +38,15 @@ __attribute__((used)) static void pushclosure (lua_State *L, Proto *p, UpVal **e
   int i;
   LClosure *ncl = luaF_newLclosure(L, nup);
   ncl->p = p;
-  setclLvalue(L, ra, ncl);  /* anchor new closure in stack */
-  for (i = 0; i < nup; i++) {  /* fill in its upvalues */
-    if (uv[i].instack)  /* upvalue refers to local variable? */
+  setclLvalue(L, ra, ncl);
+  for (i = 0; i < nup; i++) {
+    if (uv[i].instack)
       ncl->upvals[i] = luaF_findupval(L, base + uv[i].idx);
-    else  /* get upvalue from enclosing function */
+    else
       ncl->upvals[i] = encup[uv[i].idx];
     ncl->upvals[i]->refcount++;
-    /* new closure is white, so we do not need a barrier here */
+
   }
-  if (!isblack(p))  /* cache will not break GC invariant? */
-    p->cache = ncl;  /* save it on cache for reuse */
+  if (!isblack(p))
+    p->cache = ncl;
 }

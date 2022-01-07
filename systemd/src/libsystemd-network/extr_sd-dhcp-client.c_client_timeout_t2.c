@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  sd_event_source ;
-struct TYPE_6__ {int fd; int /*<<< orphan*/  port; int /*<<< orphan*/  arp_type; int /*<<< orphan*/  mac_addr_len; int /*<<< orphan*/  mac_addr; int /*<<< orphan*/  xid; int /*<<< orphan*/  link; int /*<<< orphan*/  ifindex; scalar_t__ attempt; int /*<<< orphan*/  state; int /*<<< orphan*/  receive_message; } ;
-typedef  TYPE_1__ sd_dhcp_client ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DHCP_CLIENT_DONT_DESTROY (TYPE_1__*) ; 
- int /*<<< orphan*/  DHCP_STATE_REBINDING ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int asynchronous_close (int) ; 
- int client_initialize_events (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  client_receive_message_raw ; 
- int /*<<< orphan*/  client_stop (TYPE_1__*,int) ; 
- int dhcp_network_bind_raw_socket (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_event_source_unref (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int sd_event_source ;
+struct TYPE_6__ {int fd; int port; int arp_type; int mac_addr_len; int mac_addr; int xid; int link; int ifindex; scalar_t__ attempt; int state; int receive_message; } ;
+typedef TYPE_1__ sd_dhcp_client ;
+
+
+ int DHCP_CLIENT_DONT_DESTROY (TYPE_1__*) ;
+ int DHCP_STATE_REBINDING ;
+ int assert (TYPE_1__*) ;
+ int asynchronous_close (int) ;
+ int client_initialize_events (TYPE_1__*,int ) ;
+ int client_receive_message_raw ;
+ int client_stop (TYPE_1__*,int) ;
+ int dhcp_network_bind_raw_socket (int ,int *,int ,int ,int ,int ,int ) ;
+ int sd_event_source_unref (int ) ;
 
 __attribute__((used)) static int client_timeout_t2(sd_event_source *s, uint64_t usec, void *userdata) {
         sd_dhcp_client *client = userdata;

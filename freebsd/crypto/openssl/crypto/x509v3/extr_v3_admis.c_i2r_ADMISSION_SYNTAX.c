@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct v3_ext_method {int dummy; } ;
-typedef  int /*<<< orphan*/  objbuf ;
-struct TYPE_8__ {int /*<<< orphan*/  professionInfos; int /*<<< orphan*/ * namingAuthority; int /*<<< orphan*/ * admissionAuthority; } ;
-struct TYPE_7__ {int /*<<< orphan*/  contentsOfAdmissions; int /*<<< orphan*/ * admissionAuthority; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * professionOIDs; int /*<<< orphan*/ * professionItems; int /*<<< orphan*/ * namingAuthority; int /*<<< orphan*/ * registrationNumber; } ;
-typedef  TYPE_1__ PROFESSION_INFO ;
-typedef  int /*<<< orphan*/  BIO ;
-typedef  int /*<<< orphan*/  ASN1_STRING ;
-typedef  int /*<<< orphan*/  ASN1_OBJECT ;
-typedef  TYPE_2__ ADMISSION_SYNTAX ;
-typedef  TYPE_3__ ADMISSIONS ;
+typedef int objbuf ;
+struct TYPE_8__ {int professionInfos; int * namingAuthority; int * admissionAuthority; } ;
+struct TYPE_7__ {int contentsOfAdmissions; int * admissionAuthority; } ;
+struct TYPE_6__ {int * professionOIDs; int * professionItems; int * namingAuthority; int * registrationNumber; } ;
+typedef TYPE_1__ PROFESSION_INFO ;
+typedef int BIO ;
+typedef int ASN1_STRING ;
+typedef int ASN1_OBJECT ;
+typedef TYPE_2__ ADMISSION_SYNTAX ;
+typedef TYPE_3__ ADMISSIONS ;
 
-/* Variables and functions */
- scalar_t__ ASN1_STRING_print (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ BIO_printf (int /*<<< orphan*/ *,char*,...) ; 
- scalar_t__ GENERAL_NAME_print (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* OBJ_nid2ln (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OBJ_obj2nid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OBJ_obj2txt (char*,int,int /*<<< orphan*/ *,int) ; 
- scalar_t__ i2r_NAMING_AUTHORITY (struct v3_ext_method const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int sk_ADMISSIONS_num (int /*<<< orphan*/ ) ; 
- TYPE_3__* sk_ADMISSIONS_value (int /*<<< orphan*/ ,int) ; 
- int sk_ASN1_OBJECT_num (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sk_ASN1_OBJECT_value (int /*<<< orphan*/ *,int) ; 
- int sk_ASN1_STRING_num (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sk_ASN1_STRING_value (int /*<<< orphan*/ *,int) ; 
- int sk_PROFESSION_INFO_num (int /*<<< orphan*/ ) ; 
- TYPE_1__* sk_PROFESSION_INFO_value (int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ ASN1_STRING_print (int *,int *) ;
+ scalar_t__ BIO_printf (int *,char*,...) ;
+ scalar_t__ GENERAL_NAME_print (int *,int *) ;
+ char* OBJ_nid2ln (int ) ;
+ int OBJ_obj2nid (int *) ;
+ int OBJ_obj2txt (char*,int,int *,int) ;
+ scalar_t__ i2r_NAMING_AUTHORITY (struct v3_ext_method const*,int *,int *,int) ;
+ int sk_ADMISSIONS_num (int ) ;
+ TYPE_3__* sk_ADMISSIONS_value (int ,int) ;
+ int sk_ASN1_OBJECT_num (int *) ;
+ int * sk_ASN1_OBJECT_value (int *,int) ;
+ int sk_ASN1_STRING_num (int *) ;
+ int * sk_ASN1_STRING_value (int *,int) ;
+ int sk_PROFESSION_INFO_num (int ) ;
+ TYPE_1__* sk_PROFESSION_INFO_value (int ,int) ;
 
 __attribute__((used)) static int i2r_ADMISSION_SYNTAX(const struct v3_ext_method *method, void *in,
                                 BIO *bp, int ind)
@@ -48,7 +48,7 @@ __attribute__((used)) static int i2r_ADMISSION_SYNTAX(const struct v3_ext_method
     ADMISSION_SYNTAX * admission = (ADMISSION_SYNTAX *)in;
     int i, j, k;
 
-    if (admission->admissionAuthority != NULL) {
+    if (admission->admissionAuthority != ((void*)0)) {
         if (BIO_printf(bp, "%*sadmissionAuthority:\n", ind, "") <= 0
             || BIO_printf(bp, "%*s  ", ind, "") <= 0
             || GENERAL_NAME_print(bp, admission->admissionAuthority) <= 0
@@ -61,7 +61,7 @@ __attribute__((used)) static int i2r_ADMISSION_SYNTAX(const struct v3_ext_method
 
         if (BIO_printf(bp, "%*sEntry %0d:\n", ind, "", 1 + i) <= 0) goto err;
 
-        if (entry->admissionAuthority != NULL) {
+        if (entry->admissionAuthority != ((void*)0)) {
             if (BIO_printf(bp, "%*s  admissionAuthority:\n", ind, "") <= 0
                 || BIO_printf(bp, "%*s    ", ind, "") <= 0
                 || GENERAL_NAME_print(bp, entry->admissionAuthority) <= 0
@@ -69,7 +69,7 @@ __attribute__((used)) static int i2r_ADMISSION_SYNTAX(const struct v3_ext_method
                 goto err;
         }
 
-        if (entry->namingAuthority != NULL) {
+        if (entry->namingAuthority != ((void*)0)) {
             if (i2r_NAMING_AUTHORITY(method, entry->namingAuthority, bp, ind) <= 0)
                 goto err;
         }
@@ -80,19 +80,19 @@ __attribute__((used)) static int i2r_ADMISSION_SYNTAX(const struct v3_ext_method
             if (BIO_printf(bp, "%*s  Profession Info Entry %0d:\n", ind, "", 1 + j) <= 0)
                 goto err;
 
-            if (pinfo->registrationNumber != NULL) {
+            if (pinfo->registrationNumber != ((void*)0)) {
                 if (BIO_printf(bp, "%*s    registrationNumber: ", ind, "") <= 0
                     || ASN1_STRING_print(bp, pinfo->registrationNumber) <= 0
                     || BIO_printf(bp, "\n") <= 0)
                     goto err;
             }
 
-            if (pinfo->namingAuthority != NULL) {
+            if (pinfo->namingAuthority != ((void*)0)) {
                 if (i2r_NAMING_AUTHORITY(method, pinfo->namingAuthority, bp, ind + 2) <= 0)
                     goto err;
             }
 
-            if (pinfo->professionItems != NULL) {
+            if (pinfo->professionItems != ((void*)0)) {
 
                 if (BIO_printf(bp, "%*s    Info Entries:\n", ind, "") <= 0)
                     goto err;
@@ -106,7 +106,7 @@ __attribute__((used)) static int i2r_ADMISSION_SYNTAX(const struct v3_ext_method
                 }
             }
 
-            if (pinfo->professionOIDs != NULL) {
+            if (pinfo->professionOIDs != ((void*)0)) {
                 if (BIO_printf(bp, "%*s    Profession OIDs:\n", ind, "") <= 0)
                     goto err;
                 for (k = 0; k < sk_ASN1_OBJECT_num(pinfo->professionOIDs); k++) {

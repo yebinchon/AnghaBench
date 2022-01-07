@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ s32 ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ s32 ;
 struct TYPE_3__ {int sr; int octave_shift; int krs_shift; int dr; int ar; int rr; scalar_t__ env_step_r; scalar_t__ env_step_a; scalar_t__ env_step_d; scalar_t__ env_step_s; } ;
-typedef  TYPE_1__ SlotState ;
+typedef TYPE_1__ SlotState ;
 
-/* Variables and functions */
- scalar_t__* scsp_attack_rate ; 
- scalar_t__* scsp_decay_rate ; 
+
+ scalar_t__* scsp_attack_rate ;
+ scalar_t__* scsp_decay_rate ;
 
 __attribute__((used)) static void ScspUpdateSlotEnv(SlotState *slot)
 {

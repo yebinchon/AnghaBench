@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct timeval {int tv_sec; int tv_usec; } ;
-struct TYPE_6__ {int /*<<< orphan*/  fd; } ;
+struct TYPE_6__ {int fd; } ;
 struct epoll_event {int events; TYPE_1__ data; } ;
-struct TYPE_8__ {TYPE_2__* fired; int /*<<< orphan*/  setsize; TYPE_4__* apidata; } ;
-typedef  TYPE_3__ aeEventLoop ;
-struct TYPE_9__ {struct epoll_event* events; int /*<<< orphan*/  epfd; } ;
-typedef  TYPE_4__ aeApiState ;
-struct TYPE_7__ {int mask; int /*<<< orphan*/  fd; } ;
+struct TYPE_8__ {TYPE_2__* fired; int setsize; TYPE_4__* apidata; } ;
+typedef TYPE_3__ aeEventLoop ;
+struct TYPE_9__ {struct epoll_event* events; int epfd; } ;
+typedef TYPE_4__ aeApiState ;
+struct TYPE_7__ {int mask; int fd; } ;
 
-/* Variables and functions */
- int AE_READABLE ; 
- int AE_WRITABLE ; 
- int EPOLLERR ; 
- int EPOLLHUP ; 
- int EPOLLIN ; 
- int EPOLLOUT ; 
- int epoll_wait (int /*<<< orphan*/ ,struct epoll_event*,int /*<<< orphan*/ ,int) ; 
+
+ int AE_READABLE ;
+ int AE_WRITABLE ;
+ int EPOLLERR ;
+ int EPOLLHUP ;
+ int EPOLLIN ;
+ int EPOLLOUT ;
+ int epoll_wait (int ,struct epoll_event*,int ,int) ;
 
 __attribute__((used)) static int aeApiPoll(aeEventLoop *eventLoop, struct timeval *tvp) {
     aeApiState *state = eventLoop->apidata;

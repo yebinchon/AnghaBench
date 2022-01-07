@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct view {size_t* result; TYPE_2__* table; int /*<<< orphan*/  count; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct view {size_t* result; TYPE_2__* table; int count; } ;
 struct array {int dummy; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int VARTYPE ;
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  size_t UINT ;
+typedef int WCHAR ;
+typedef int VARTYPE ;
+typedef int VARIANT ;
+typedef size_t UINT ;
 struct TYPE_7__ {TYPE_1__* columns; } ;
 struct TYPE_6__ {int type; int vartype; } ;
-typedef  scalar_t__ LONGLONG ;
-typedef  scalar_t__ LONG ;
-typedef  scalar_t__ INT_PTR ;
-typedef  scalar_t__ HRESULT ;
-typedef  int CIMTYPE ;
+typedef scalar_t__ LONGLONG ;
+typedef scalar_t__ LONG ;
+typedef scalar_t__ INT_PTR ;
+typedef scalar_t__ HRESULT ;
+typedef int CIMTYPE ;
 
-/* Variables and functions */
-#define  CIM_BOOLEAN 138 
-#define  CIM_DATETIME 137 
- int CIM_FLAG_ARRAY ; 
-#define  CIM_SINT16 136 
-#define  CIM_SINT32 135 
-#define  CIM_SINT64 134 
-#define  CIM_SINT8 133 
-#define  CIM_STRING 132 
- int CIM_TYPE_MASK ; 
-#define  CIM_UINT16 131 
-#define  CIM_UINT32 130 
-#define  CIM_UINT64 129 
-#define  CIM_UINT8 128 
- int COL_TYPE_MASK ; 
- int /*<<< orphan*/  ERR (char*,int) ; 
- scalar_t__ S_OK ; 
- void* SysAllocString (int /*<<< orphan*/  const*) ; 
- int VT_ARRAY ; 
- int VT_BOOL ; 
- int VT_BSTR ; 
- int VT_I1 ; 
- int VT_I2 ; 
- int VT_I4 ; 
- int VT_NULL ; 
- int VT_UI1 ; 
- int VT_UI2 ; 
- int VT_UI4 ; 
- scalar_t__ WBEM_E_FAILED ; 
- scalar_t__ WBEM_E_NOT_FOUND ; 
- scalar_t__ get_column_index (TYPE_2__*,int /*<<< orphan*/  const*,size_t*) ; 
- scalar_t__ get_system_propval (struct view const*,size_t,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int*,scalar_t__*) ; 
- scalar_t__ get_value (TYPE_2__*,size_t,size_t,scalar_t__*) ; 
- void* get_value_bstr (TYPE_2__*,size_t,size_t) ; 
- scalar_t__ is_method (TYPE_2__*,size_t) ; 
- int /*<<< orphan*/  is_selected_prop (struct view const*,int /*<<< orphan*/  const*) ; 
- scalar_t__ is_system_prop (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  set_variant (int,scalar_t__,void*,int /*<<< orphan*/ *) ; 
- void* to_safearray (struct array const*,int) ; 
- int to_vartype (int) ; 
+
+
+
+ int CIM_FLAG_ARRAY ;
+
+
+
+
+
+ int CIM_TYPE_MASK ;
+
+
+
+
+ int COL_TYPE_MASK ;
+ int ERR (char*,int) ;
+ scalar_t__ S_OK ;
+ void* SysAllocString (int const*) ;
+ int VT_ARRAY ;
+ int VT_BOOL ;
+ int VT_BSTR ;
+ int VT_I1 ;
+ int VT_I2 ;
+ int VT_I4 ;
+ int VT_NULL ;
+ int VT_UI1 ;
+ int VT_UI2 ;
+ int VT_UI4 ;
+ scalar_t__ WBEM_E_FAILED ;
+ scalar_t__ WBEM_E_NOT_FOUND ;
+ scalar_t__ get_column_index (TYPE_2__*,int const*,size_t*) ;
+ scalar_t__ get_system_propval (struct view const*,size_t,int const*,int *,int*,scalar_t__*) ;
+ scalar_t__ get_value (TYPE_2__*,size_t,size_t,scalar_t__*) ;
+ void* get_value_bstr (TYPE_2__*,size_t,size_t) ;
+ scalar_t__ is_method (TYPE_2__*,size_t) ;
+ int is_selected_prop (struct view const*,int const*) ;
+ scalar_t__ is_system_prop (int const*) ;
+ int set_variant (int,scalar_t__,void*,int *) ;
+ void* to_safearray (struct array const*,int) ;
+ int to_vartype (int) ;
 
 HRESULT get_propval( const struct view *view, UINT index, const WCHAR *name, VARIANT *ret,
                      CIMTYPE *type, LONG *flavor )
@@ -73,7 +73,7 @@ HRESULT get_propval( const struct view *view, UINT index, const WCHAR *name, VAR
     HRESULT hr;
     UINT column, row;
     VARTYPE vartype;
-    void *val_ptr = NULL;
+    void *val_ptr = ((void*)0);
     LONGLONG val;
 
     if (is_system_prop( name )) return get_system_propval( view, index, name, ret, type, flavor );
@@ -105,11 +105,11 @@ HRESULT get_propval( const struct view *view, UINT index, const WCHAR *name, VAR
 
     switch (view->table->columns[column].type & COL_TYPE_MASK)
     {
-    case CIM_BOOLEAN:
+    case 138:
         if (!vartype) vartype = VT_BOOL;
         break;
-    case CIM_STRING:
-    case CIM_DATETIME:
+    case 132:
+    case 137:
         if (val)
         {
             vartype = VT_BSTR;
@@ -118,29 +118,29 @@ HRESULT get_propval( const struct view *view, UINT index, const WCHAR *name, VAR
         else
             vartype = VT_NULL;
         break;
-    case CIM_SINT8:
+    case 133:
         if (!vartype) vartype = VT_I1;
         break;
-    case CIM_UINT8:
+    case 128:
         if (!vartype) vartype = VT_UI1;
         break;
-    case CIM_SINT16:
+    case 136:
         if (!vartype) vartype = VT_I2;
         break;
-    case CIM_UINT16:
+    case 131:
         if (!vartype) vartype = VT_UI2;
         break;
-    case CIM_SINT32:
+    case 135:
         if (!vartype) vartype = VT_I4;
         break;
-    case CIM_UINT32:
+    case 130:
         if (!vartype) vartype = VT_UI4;
         break;
-    case CIM_SINT64:
+    case 134:
         vartype = VT_BSTR;
         val_ptr = get_value_bstr( view->table, row, column );
         break;
-    case CIM_UINT64:
+    case 129:
         vartype = VT_BSTR;
         val_ptr = get_value_bstr( view->table, row, column );
         break;

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_3__ {int /*<<< orphan*/  name; int /*<<< orphan*/  max; int /*<<< orphan*/  min; } ;
-typedef  TYPE_1__ AVOption ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ERANGE ; 
- int FFMAX (int /*<<< orphan*/ ,int) ; 
- int FFMIN (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- int strtol (char const*,char**,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_3__ {int name; int max; int min; } ;
+typedef TYPE_1__ AVOption ;
+
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int ERANGE ;
+ int FFMAX (int ,int) ;
+ int FFMIN (int ,int) ;
+ int av_log (void*,int ,char*,...) ;
+ int strcmp (char const*,char*) ;
+ int strtol (char const*,char**,int ) ;
 
 __attribute__((used)) static int set_string_fmt(void *obj, const AVOption *o, const char *val, uint8_t *dst,
                           int fmt_nb, int ((*get_fmt)(const char *)), const char *desc)
@@ -49,7 +49,7 @@ __attribute__((used)) static int set_string_fmt(void *obj, const AVOption *o, co
     min = FFMAX(o->min, -1);
     max = FFMIN(o->max, fmt_nb-1);
 
-    // hack for compatibility with old ffmpeg
+
     if(min == 0 && max == 0) {
         min = -1;
         max = fmt_nb-1;

@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct index_state {int dummy; } ;
 struct cache_entry {unsigned char* sha1; } ;
-typedef  scalar_t__ gint64 ;
-typedef  scalar_t__ gboolean ;
-struct TYPE_11__ {int /*<<< orphan*/  sync_mgr; } ;
-struct TYPE_10__ {int /*<<< orphan*/  changeset; int /*<<< orphan*/  id; int /*<<< orphan*/ * email; int /*<<< orphan*/  version; int /*<<< orphan*/  worktree; } ;
-struct TYPE_9__ {int /*<<< orphan*/  st_mode; scalar_t__ st_size; } ;
-typedef  int /*<<< orphan*/  SeafileCrypt ;
-typedef  TYPE_1__ SeafStat ;
-typedef  TYPE_2__ SeafRepo ;
-typedef  int /*<<< orphan*/  GQueue ;
-typedef  int /*<<< orphan*/  GList ;
+typedef scalar_t__ gint64 ;
+typedef scalar_t__ gboolean ;
+struct TYPE_11__ {int sync_mgr; } ;
+struct TYPE_10__ {int changeset; int id; int * email; int version; int worktree; } ;
+struct TYPE_9__ {int st_mode; scalar_t__ st_size; } ;
+typedef int SeafileCrypt ;
+typedef TYPE_1__ SeafStat ;
+typedef TYPE_2__ SeafRepo ;
+typedef int GQueue ;
+typedef int GList ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DIFF_STATUS_ADDED ; 
- int /*<<< orphan*/  DIFF_STATUS_DIR_ADDED ; 
- scalar_t__ FALSE ; 
- scalar_t__ MAX_COMMIT_SIZE ; 
- int /*<<< orphan*/  SYNC_ERROR_ID_INDEX_ERROR ; 
- int /*<<< orphan*/  SYNC_STATUS_ERROR ; 
- int /*<<< orphan*/  SYNC_STATUS_SYNCED ; 
- int /*<<< orphan*/  S_IFREG ; 
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- scalar_t__ S_ISREG (int /*<<< orphan*/ ) ; 
- int add_empty_dir_to_index (struct index_state*,char*,TYPE_1__*) ; 
- int /*<<< orphan*/  add_to_changeset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*,TYPE_1__*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int add_to_index (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct index_state*,char*,char*,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  errno ; 
- char* g_build_filename (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- char* g_queue_pop_head (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  index_cb ; 
- struct cache_entry* index_name_exists (struct index_state*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ is_empty_dir (char*,int /*<<< orphan*/ *) ; 
- TYPE_4__* seaf ; 
- scalar_t__ seaf_stat (char*,TYPE_1__*) ; 
- int /*<<< orphan*/  seaf_sync_manager_update_active_path (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seaf_warning (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  send_file_sync_error_notification (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+ int DIFF_STATUS_ADDED ;
+ int DIFF_STATUS_DIR_ADDED ;
+ scalar_t__ FALSE ;
+ scalar_t__ MAX_COMMIT_SIZE ;
+ int SYNC_ERROR_ID_INDEX_ERROR ;
+ int SYNC_STATUS_ERROR ;
+ int SYNC_STATUS_SYNCED ;
+ int S_IFREG ;
+ scalar_t__ S_ISDIR (int ) ;
+ scalar_t__ S_ISREG (int ) ;
+ int add_empty_dir_to_index (struct index_state*,char*,TYPE_1__*) ;
+ int add_to_changeset (int ,int ,unsigned char*,TYPE_1__*,int *,char*,int *) ;
+ int add_to_index (int ,int ,struct index_state*,char*,char*,TYPE_1__*,int ,int *,int ,int *,scalar_t__*) ;
+ int errno ;
+ char* g_build_filename (int ,char*,int *) ;
+ int g_free (char*) ;
+ char* g_queue_pop_head (int *) ;
+ int index_cb ;
+ struct cache_entry* index_name_exists (struct index_state*,char*,int ,int ) ;
+ scalar_t__ is_empty_dir (char*,int *) ;
+ TYPE_4__* seaf ;
+ scalar_t__ seaf_stat (char*,TYPE_1__*) ;
+ int seaf_sync_manager_update_active_path (int ,int ,char*,int ,int ) ;
+ int seaf_warning (char*,char*,int ) ;
+ int send_file_sync_error_notification (int ,int *,char*,int ) ;
+ int strerror (int ) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static int
 add_remain_files (SeafRepo *repo, struct index_state *istate,
@@ -65,8 +65,8 @@ add_remain_files (SeafRepo *repo, struct index_state *istate,
     SeafStat st;
     struct cache_entry *ce;
 
-    while ((path = g_queue_pop_head (remain_files)) != NULL) {
-        full_path = g_build_filename (repo->worktree, path, NULL);
+    while ((path = g_queue_pop_head (remain_files)) != ((void*)0)) {
+        full_path = g_build_filename (repo->worktree, path, ((void*)0));
         if (seaf_stat (full_path, &st) < 0) {
             seaf_warning ("Failed to stat %s: %s.\n", full_path, strerror(errno));
             g_free (path);
@@ -87,7 +87,7 @@ add_remain_files (SeafRepo *repo, struct index_state *istate,
                                   &st,
                                   repo->email,
                                   path,
-                                  NULL);
+                                  ((void*)0));
 
                 *total_size += (gint64)(st.st_size);
                 if (*total_size >= MAX_COMMIT_SIZE) {
@@ -108,7 +108,7 @@ add_remain_files (SeafRepo *repo, struct index_state *istate,
                                                       path,
                                                       S_IFREG,
                                                       SYNC_STATUS_ERROR);
-                send_file_sync_error_notification (repo->id, NULL, path,
+                send_file_sync_error_notification (repo->id, ((void*)0), path,
                                                    SYNC_ERROR_ID_INDEX_ERROR);
             }
         } else if (S_ISDIR(st.st_mode)) {
@@ -120,9 +120,9 @@ add_remain_files (SeafRepo *repo, struct index_state *istate,
                                       DIFF_STATUS_DIR_ADDED,
                                       allzero,
                                       &st,
-                                      NULL,
+                                      ((void*)0),
                                       path,
-                                      NULL);
+                                      ((void*)0));
                 }
             }
         }

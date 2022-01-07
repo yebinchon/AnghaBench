@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {scalar_t__ expr; } ;
-typedef  TYPE_1__ expression_statement_t ;
+typedef TYPE_1__ expression_statement_t ;
 struct TYPE_10__ {scalar_t__ from_eval; } ;
-typedef  TYPE_2__ compiler_ctx_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_2__ compiler_ctx_t ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JS_E_MISPLACED_RETURN ; 
- int /*<<< orphan*/  OP_ret ; 
- int /*<<< orphan*/  OP_setret ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  compile_expression (TYPE_2__*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pop_to_stat (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  push_instr (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  push_instr_uint (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
+
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int JS_E_MISPLACED_RETURN ;
+ int OP_ret ;
+ int OP_setret ;
+ int TRUE ;
+ int WARN (char*) ;
+ int compile_expression (TYPE_2__*,scalar_t__,int ) ;
+ int pop_to_stat (TYPE_2__*,int *) ;
+ int push_instr (TYPE_2__*,int ) ;
+ int push_instr_uint (TYPE_2__*,int ,int) ;
 
 __attribute__((used)) static HRESULT compile_return_statement(compiler_ctx_t *ctx, expression_statement_t *stat)
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static HRESULT compile_return_statement(compiler_ctx_t *ct
             return E_OUTOFMEMORY;
     }
 
-    hres = pop_to_stat(ctx, NULL);
+    hres = pop_to_stat(ctx, ((void*)0));
     if(FAILED(hres))
         return hres;
 

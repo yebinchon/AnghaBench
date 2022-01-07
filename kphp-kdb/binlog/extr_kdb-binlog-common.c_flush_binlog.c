@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
-typedef  struct TYPE_13__   TYPE_11__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+typedef struct TYPE_13__ TYPE_11__ ;
+
+
 struct aiocb {int dummy; } ;
 struct TYPE_18__ {int aio_fildes; } ;
 struct TYPE_17__ {TYPE_1__* info; } ;
-struct TYPE_15__ {int /*<<< orphan*/  sigev_notify; } ;
+struct TYPE_15__ {int sigev_notify; } ;
 struct TYPE_16__ {int aio_fildes; int aio_nbytes; long long aio_offset; int aio_buf; TYPE_2__ aio_sigevent; } ;
 struct TYPE_14__ {int file_size; } ;
 struct TYPE_13__ {int log_rptr; int log_endw; int log_wptr; int log_start; int log_wcrypt_ptr; } ;
 
-/* Variables and functions */
- TYPE_4__* Binlog ; 
- int EINPROGRESS ; 
- int /*<<< orphan*/  SIGEV_NONE ; 
- TYPE_11__ W ; 
- int /*<<< orphan*/  aio_cancel (int,TYPE_3__*) ; 
- int aio_error (TYPE_3__*) ; 
- int aio_return (TYPE_3__*) ; 
- scalar_t__ aio_write (TYPE_3__*) ; 
- int aio_write_start ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  binlog_cyclic_mode ; 
- scalar_t__ binlog_disabled ; 
- int binlog_fd ; 
- TYPE_6__ binlog_sync_aiocb ; 
- scalar_t__ binlog_write_active ; 
- TYPE_3__ binlog_write_aiocb ; 
- scalar_t__ binlog_write_last ; 
- char* binlogname ; 
- int /*<<< orphan*/  close (int) ; 
- int errno ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  flush_binlog_forced (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,scalar_t__,...) ; 
- int /*<<< orphan*/  kfs_buffer_crypt (TYPE_4__*,int,int,int) ; 
- long long log_headers_size ; 
- long long log_pos ; 
- long long log_start_pos ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ now ; 
- int /*<<< orphan*/  relax_write_log_crc32 () ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  sync_binlog (int) ; 
- int verbosity ; 
+
+ TYPE_4__* Binlog ;
+ int EINPROGRESS ;
+ int SIGEV_NONE ;
+ TYPE_11__ W ;
+ int aio_cancel (int,TYPE_3__*) ;
+ int aio_error (TYPE_3__*) ;
+ int aio_return (TYPE_3__*) ;
+ scalar_t__ aio_write (TYPE_3__*) ;
+ int aio_write_start ;
+ int assert (int) ;
+ int binlog_cyclic_mode ;
+ scalar_t__ binlog_disabled ;
+ int binlog_fd ;
+ TYPE_6__ binlog_sync_aiocb ;
+ scalar_t__ binlog_write_active ;
+ TYPE_3__ binlog_write_aiocb ;
+ scalar_t__ binlog_write_last ;
+ char* binlogname ;
+ int close (int) ;
+ int errno ;
+ int exit (int) ;
+ int flush_binlog_forced (int) ;
+ int fprintf (int ,char*,scalar_t__,...) ;
+ int kfs_buffer_crypt (TYPE_4__*,int,int,int) ;
+ long long log_headers_size ;
+ long long log_pos ;
+ long long log_start_pos ;
+ int memset (TYPE_3__*,int ,int) ;
+ scalar_t__ now ;
+ int relax_write_log_crc32 () ;
+ int stderr ;
+ int sync_binlog (int) ;
+ int verbosity ;
 
 void flush_binlog (void) {
   int res, err;
@@ -89,7 +89,7 @@ void flush_binlog (void) {
           log_pos += res;
           W.log_rptr += res;
           if (Binlog && !binlog_cyclic_mode) {
-            //Binlog->info->log_pos += res;
+
             Binlog->info->file_size += res;
           }
           assert ((!W.log_endw && W.log_rptr <= W.log_wptr) || W.log_rptr <= W.log_endw);
@@ -116,12 +116,12 @@ void flush_binlog (void) {
   if (!binlog_write_active && W.log_rptr != W.log_wptr) {
     long long log_file_pos = log_pos - log_start_pos + log_headers_size;
     int w, t;
-    // assert (lseek (binlog_fd, log_file_pos, SEEK_SET) == log_file_pos);
+
 
     if (W.log_endw) {
       if (W.log_rptr <= W.log_wcrypt_ptr && W.log_wcrypt_ptr < W.log_endw) {
         t = W.log_endw - W.log_wcrypt_ptr;
-        relax_write_log_crc32 (); /* relax crc32 before encryption */
+        relax_write_log_crc32 ();
         kfs_buffer_crypt (Binlog, W.log_wcrypt_ptr, t, log_file_pos + (W.log_wcrypt_ptr - W.log_rptr));
         W.log_wcrypt_ptr = W.log_start;
       }
@@ -134,7 +134,7 @@ void flush_binlog (void) {
     if (!W.log_endw) {
       if (W.log_rptr <= W.log_wcrypt_ptr && W.log_wcrypt_ptr < W.log_wptr) {
         t = W.log_wptr - W.log_wcrypt_ptr;
-        relax_write_log_crc32 (); /* relax crc32 before encryption */
+        relax_write_log_crc32 ();
         kfs_buffer_crypt (Binlog, W.log_wcrypt_ptr, t, log_file_pos + (W.log_wcrypt_ptr - W.log_rptr));
         W.log_wcrypt_ptr = W.log_wptr;
       }

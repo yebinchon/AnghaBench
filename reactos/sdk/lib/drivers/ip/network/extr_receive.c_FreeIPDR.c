@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int VOID ;
 struct TYPE_10__ {struct TYPE_10__* Flink; } ;
-struct TYPE_11__ {scalar_t__ IPv4Header; int /*<<< orphan*/  Packet; scalar_t__ ReturnPacket; TYPE_1__ FragmentListHead; TYPE_1__ HoleListHead; } ;
-typedef  TYPE_1__* PLIST_ENTRY ;
-typedef  TYPE_2__* PIP_FRAGMENT ;
-typedef  TYPE_2__* PIPDATAGRAM_REASSEMBLY ;
-typedef  TYPE_2__* PIPDATAGRAM_HOLE ;
+struct TYPE_11__ {scalar_t__ IPv4Header; int Packet; scalar_t__ ReturnPacket; TYPE_1__ FragmentListHead; TYPE_1__ HoleListHead; } ;
+typedef TYPE_1__* PLIST_ENTRY ;
+typedef TYPE_2__* PIP_FRAGMENT ;
+typedef TYPE_2__* PIPDATAGRAM_REASSEMBLY ;
+typedef TYPE_2__* PIPDATAGRAM_HOLE ;
 
-/* Variables and functions */
- TYPE_2__* CONTAINING_RECORD (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DEBUG_IP ; 
- int /*<<< orphan*/  ExFreePoolWithTag (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExFreeToNPagedLookasideList (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  FreeNdisPacket (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IPDATAGRAM_HOLE ; 
- int /*<<< orphan*/  IPDRList ; 
- int /*<<< orphan*/  IPFragmentList ; 
- int /*<<< orphan*/  IPHoleList ; 
- int /*<<< orphan*/  IP_FRAGMENT ; 
- int /*<<< orphan*/  ListEntry ; 
- int /*<<< orphan*/  NdisReturnPackets (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  PACKET_BUFFER_TAG ; 
- int /*<<< orphan*/  RemoveEntryList (TYPE_1__*) ; 
- int /*<<< orphan*/  TI_DbgPrint (int /*<<< orphan*/ ,char*) ; 
+
+ TYPE_2__* CONTAINING_RECORD (TYPE_1__*,int ,int ) ;
+ int DEBUG_IP ;
+ int ExFreePoolWithTag (scalar_t__,int ) ;
+ int ExFreeToNPagedLookasideList (int *,TYPE_2__*) ;
+ int FreeNdisPacket (int ) ;
+ int IPDATAGRAM_HOLE ;
+ int IPDRList ;
+ int IPFragmentList ;
+ int IPHoleList ;
+ int IP_FRAGMENT ;
+ int ListEntry ;
+ int NdisReturnPackets (int *,int) ;
+ int PACKET_BUFFER_TAG ;
+ int RemoveEntryList (TYPE_1__*) ;
+ int TI_DbgPrint (int ,char*) ;
 
 VOID FreeIPDR(
   PIPDATAGRAM_REASSEMBLY IPDR)
-/*
- * FUNCTION: Frees an IP datagram reassembly structure
- * ARGUMENTS:
- *     IPDR = Pointer to IP datagram reassembly structure
- */
+
+
+
+
+
 {
   PLIST_ENTRY CurrentEntry;
   PLIST_ENTRY NextEntry;
@@ -52,33 +52,33 @@ VOID FreeIPDR(
 
   TI_DbgPrint(DEBUG_IP, ("Freeing IP datagram reassembly descriptor (0x%X).\n", IPDR));
 
-  /* Free all descriptors */
+
   CurrentEntry = IPDR->HoleListHead.Flink;
   while (CurrentEntry != &IPDR->HoleListHead) {
     NextEntry = CurrentEntry->Flink;
-	  CurrentH = CONTAINING_RECORD(CurrentEntry, IPDATAGRAM_HOLE, ListEntry);
-    /* Unlink it from the list */
+   CurrentH = CONTAINING_RECORD(CurrentEntry, IPDATAGRAM_HOLE, ListEntry);
+
     RemoveEntryList(CurrentEntry);
 
     TI_DbgPrint(DEBUG_IP, ("Freeing hole descriptor at (0x%X).\n", CurrentH));
 
-    /* And free the hole descriptor */
+
     ExFreeToNPagedLookasideList(&IPHoleList, CurrentH);
 
     CurrentEntry = NextEntry;
   }
 
-  /* Free all fragments */
+
   CurrentEntry = IPDR->FragmentListHead.Flink;
   while (CurrentEntry != &IPDR->FragmentListHead) {
     NextEntry = CurrentEntry->Flink;
-	  CurrentF = CONTAINING_RECORD(CurrentEntry, IP_FRAGMENT, ListEntry);
-    /* Unlink it from the list */
+   CurrentF = CONTAINING_RECORD(CurrentEntry, IP_FRAGMENT, ListEntry);
+
     RemoveEntryList(CurrentEntry);
 
     TI_DbgPrint(DEBUG_IP, ("Freeing fragment packet at (0x%X).\n", CurrentF->Packet));
 
-    /* Free the fragment data buffer */
+
     if (CurrentF->ReturnPacket)
     {
         NdisReturnPackets(&CurrentF->Packet, 1);
@@ -90,7 +90,7 @@ VOID FreeIPDR(
 
     TI_DbgPrint(DEBUG_IP, ("Freeing fragment at (0x%X).\n", CurrentF));
 
-    /* And free the fragment descriptor */
+
     ExFreeToNPagedLookasideList(&IPFragmentList, CurrentF);
     CurrentEntry = NextEntry;
   }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_2__* Key; TYPE_1__* Section; } ;
-struct TYPE_7__ {int /*<<< orphan*/  Data; int /*<<< orphan*/  Name; } ;
+struct TYPE_7__ {int Data; int Name; } ;
 struct TYPE_6__ {TYPE_2__* FirstKey; } ;
-typedef  int /*<<< orphan*/  PWCHAR ;
-typedef  TYPE_1__* PINICACHESECTION ;
-typedef  TYPE_2__* PINICACHEKEY ;
-typedef  TYPE_3__* PINICACHEITERATOR ;
-typedef  int /*<<< orphan*/  INICACHEITERATOR ;
+typedef int PWCHAR ;
+typedef TYPE_1__* PINICACHESECTION ;
+typedef TYPE_2__* PINICACHEKEY ;
+typedef TYPE_3__* PINICACHEITERATOR ;
+typedef int INICACHEITERATOR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*) ; 
- int /*<<< orphan*/  ProcessHeap ; 
- scalar_t__ RtlAllocateHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int DPRINT (char*) ;
+ int ProcessHeap ;
+ scalar_t__ RtlAllocateHeap (int ,int ,int) ;
 
 PINICACHEITERATOR
 IniCacheFindFirstValue(
@@ -36,17 +36,17 @@ IniCacheFindFirstValue(
     PINICACHEITERATOR Iterator;
     PINICACHEKEY Key;
 
-    if (Section == NULL || KeyName == NULL || KeyData == NULL)
+    if (Section == ((void*)0) || KeyName == ((void*)0) || KeyData == ((void*)0))
     {
         DPRINT("Invalid parameter\n");
-        return NULL;
+        return ((void*)0);
     }
 
     Key = Section->FirstKey;
-    if (Key == NULL)
+    if (Key == ((void*)0))
     {
         DPRINT("Invalid parameter\n");
-        return NULL;
+        return ((void*)0);
     }
 
     *KeyName = Key->Name;
@@ -55,10 +55,10 @@ IniCacheFindFirstValue(
     Iterator = (PINICACHEITERATOR)RtlAllocateHeap(ProcessHeap,
                                                   0,
                                                   sizeof(INICACHEITERATOR));
-    if (Iterator == NULL)
+    if (Iterator == ((void*)0))
     {
         DPRINT("RtlAllocateHeap() failed\n");
-        return NULL;
+        return ((void*)0);
     }
 
     Iterator->Section = Section;

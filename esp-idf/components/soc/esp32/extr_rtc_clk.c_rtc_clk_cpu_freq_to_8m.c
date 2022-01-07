@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  APB_CTRL_PRE_DIV_CNT ; 
- int /*<<< orphan*/  APB_CTRL_SYSCLK_CONF_REG ; 
- int /*<<< orphan*/  DIG_DBIAS_XTAL ; 
- int /*<<< orphan*/  REG_SET_FIELD (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RTC_CNTL_CLK_CONF_REG ; 
- int /*<<< orphan*/  RTC_CNTL_DIG_DBIAS_WAK ; 
- int /*<<< orphan*/  RTC_CNTL_REG ; 
- int /*<<< orphan*/  RTC_CNTL_SOC_CLK_SEL ; 
- int /*<<< orphan*/  RTC_CNTL_SOC_CLK_SEL_8M ; 
- int /*<<< orphan*/  RTC_FAST_CLK_FREQ_8M ; 
- int /*<<< orphan*/  ets_update_cpu_frequency (int) ; 
- int /*<<< orphan*/  rtc_clk_apb_freq_update (int /*<<< orphan*/ ) ; 
+ int APB_CTRL_PRE_DIV_CNT ;
+ int APB_CTRL_SYSCLK_CONF_REG ;
+ int DIG_DBIAS_XTAL ;
+ int REG_SET_FIELD (int ,int ,int ) ;
+ int RTC_CNTL_CLK_CONF_REG ;
+ int RTC_CNTL_DIG_DBIAS_WAK ;
+ int RTC_CNTL_REG ;
+ int RTC_CNTL_SOC_CLK_SEL ;
+ int RTC_CNTL_SOC_CLK_SEL_8M ;
+ int RTC_FAST_CLK_FREQ_8M ;
+ int ets_update_cpu_frequency (int) ;
+ int rtc_clk_apb_freq_update (int ) ;
 
 __attribute__((used)) static void rtc_clk_cpu_freq_to_8m(void)
 {

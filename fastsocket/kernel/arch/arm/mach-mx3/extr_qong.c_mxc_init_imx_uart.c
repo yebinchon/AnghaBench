@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mxc_iomux_setup_multiple_pins (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mxc_register_device (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mxc_uart_device0 ; 
- int /*<<< orphan*/  uart_pdata ; 
- int /*<<< orphan*/  uart_pins ; 
+ int ARRAY_SIZE (int ) ;
+ int mxc_iomux_setup_multiple_pins (int ,int ,char*) ;
+ int mxc_register_device (int *,int *) ;
+ int mxc_uart_device0 ;
+ int uart_pdata ;
+ int uart_pins ;
 
 __attribute__((used)) static inline void mxc_init_imx_uart(void)
 {
-	mxc_iomux_setup_multiple_pins(uart_pins, ARRAY_SIZE(uart_pins),
-			"uart-0");
-	mxc_register_device(&mxc_uart_device0, &uart_pdata);
+ mxc_iomux_setup_multiple_pins(uart_pins, ARRAY_SIZE(uart_pins),
+   "uart-0");
+ mxc_register_device(&mxc_uart_device0, &uart_pdata);
 }

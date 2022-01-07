@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_20__ {int flags; int /*<<< orphan*/  bssid; int /*<<< orphan*/  ssid; int /*<<< orphan*/  wlan_iftype; int /*<<< orphan*/  mac; struct TYPE_20__* ifname; int /*<<< orphan*/  sd_device; struct TYPE_20__* manager; int /*<<< orphan*/  network; int /*<<< orphan*/  state; } ;
+
+
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
+struct TYPE_20__ {int flags; int bssid; int ssid; int wlan_iftype; int mac; struct TYPE_20__* ifname; int sd_device; struct TYPE_20__* manager; int network; int state; } ;
 struct TYPE_19__ {scalar_t__ link_local; scalar_t__ dhcp; scalar_t__ dhcp_server; scalar_t__ unmanaged; } ;
-typedef  TYPE_1__ Network ;
-typedef  TYPE_2__ Link ;
+typedef TYPE_1__ Network ;
+typedef TYPE_2__ Link ;
 
-/* Variables and functions */
- scalar_t__ ADDRESS_FAMILY_NO ; 
- int ENOENT ; 
- int IFF_LOOPBACK ; 
- int /*<<< orphan*/  IN_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LINK_STATE_INITIALIZED ; 
- int /*<<< orphan*/  LINK_STATE_PENDING ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int link_configure (TYPE_2__*) ; 
- int link_configure_duid (TYPE_2__*) ; 
- int /*<<< orphan*/  link_enter_unmanaged (TYPE_2__*) ; 
- int link_handle_bound_by_list (TYPE_2__*) ; 
- int link_new_bound_by_list (TYPE_2__*) ; 
- int link_new_bound_to_list (TYPE_2__*) ; 
- int /*<<< orphan*/  link_set_state (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_link_debug (TYPE_2__*,char*) ; 
- int network_apply (TYPE_1__*,TYPE_2__*) ; 
- int network_get (TYPE_2__*,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__**) ; 
- int wifi_get_info (TYPE_2__*) ; 
+
+ scalar_t__ ADDRESS_FAMILY_NO ;
+ int ENOENT ;
+ int IFF_LOOPBACK ;
+ int IN_SET (int ,int ,int ) ;
+ int LINK_STATE_INITIALIZED ;
+ int LINK_STATE_PENDING ;
+ int assert (TYPE_2__*) ;
+ int link_configure (TYPE_2__*) ;
+ int link_configure_duid (TYPE_2__*) ;
+ int link_enter_unmanaged (TYPE_2__*) ;
+ int link_handle_bound_by_list (TYPE_2__*) ;
+ int link_new_bound_by_list (TYPE_2__*) ;
+ int link_new_bound_to_list (TYPE_2__*) ;
+ int link_set_state (TYPE_2__*,int ) ;
+ int log_link_debug (TYPE_2__*,char*) ;
+ int network_apply (TYPE_1__*,TYPE_2__*) ;
+ int network_get (TYPE_2__*,int ,TYPE_2__*,int *,int ,int ,int *,TYPE_1__**) ;
+ int wifi_get_info (TYPE_2__*) ;
 
 __attribute__((used)) static int link_initialized_and_synced(Link *link) {
         Network *network;
@@ -45,8 +45,8 @@ __attribute__((used)) static int link_initialized_and_synced(Link *link) {
         assert(link->ifname);
         assert(link->manager);
 
-        /* We may get called either from the asynchronous netlink callback,
-         * or directly for link_add() if running in a container. See link_add(). */
+
+
         if (!IN_SET(link->state, LINK_STATE_PENDING, LINK_STATE_INITIALIZED))
                 return 0;
 
@@ -97,8 +97,8 @@ __attribute__((used)) static int link_initialized_and_synced(Link *link) {
         if (r < 0)
                 return r;
 
-        /* link_configure_duid() returns 0 if it requests product UUID. In that case,
-         * link_configure() is called later asynchronously. */
+
+
         r = link_configure_duid(link);
         if (r <= 0)
                 return r;

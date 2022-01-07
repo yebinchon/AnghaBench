@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct zynq_fpga_priv {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INT_MASK_OFFSET ; 
- int /*<<< orphan*/  zynq_fpga_write (struct zynq_fpga_priv*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int INT_MASK_OFFSET ;
+ int zynq_fpga_write (struct zynq_fpga_priv*,int ,int ) ;
 
 __attribute__((used)) static inline void zynq_fpga_set_irq(struct zynq_fpga_priv *priv, u32 enable)
 {
-	zynq_fpga_write(priv, INT_MASK_OFFSET, ~enable);
+ zynq_fpga_write(priv, INT_MASK_OFFSET, ~enable);
 }

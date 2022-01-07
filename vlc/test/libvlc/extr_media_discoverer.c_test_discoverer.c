@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  libvlc_media_list_t ;
-typedef  int /*<<< orphan*/  libvlc_media_discoverer_t ;
-typedef  int /*<<< orphan*/  libvlc_instance_t ;
-typedef  int /*<<< orphan*/  libvlc_event_manager_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  getchar () ; 
- int /*<<< orphan*/  libvlc_MediaListItemAdded ; 
- int /*<<< orphan*/  libvlc_MediaListItemDeleted ; 
- int libvlc_event_attach (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_event_detach (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int libvlc_media_discoverer_is_running (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * libvlc_media_discoverer_media_list (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * libvlc_media_discoverer_new (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  libvlc_media_discoverer_release (int /*<<< orphan*/ *) ; 
- int libvlc_media_discoverer_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_media_discoverer_stop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * libvlc_media_list_event_manager (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_media_list_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ml_item_added ; 
- int /*<<< orphan*/  ml_item_deleted ; 
- int /*<<< orphan*/  test_log (char*,...) ; 
+
+
+
+typedef int libvlc_media_list_t ;
+typedef int libvlc_media_discoverer_t ;
+typedef int libvlc_instance_t ;
+typedef int libvlc_event_manager_t ;
+
+
+ int assert (int) ;
+ int getchar () ;
+ int libvlc_MediaListItemAdded ;
+ int libvlc_MediaListItemDeleted ;
+ int libvlc_event_attach (int *,int ,int ,int *) ;
+ int libvlc_event_detach (int *,int ,int ,int *) ;
+ int libvlc_media_discoverer_is_running (int *) ;
+ int * libvlc_media_discoverer_media_list (int *) ;
+ int * libvlc_media_discoverer_new (int *,char const*) ;
+ int libvlc_media_discoverer_release (int *) ;
+ int libvlc_media_discoverer_start (int *) ;
+ int libvlc_media_discoverer_stop (int *) ;
+ int * libvlc_media_list_event_manager (int *) ;
+ int libvlc_media_list_release (int *) ;
+ int ml_item_added ;
+ int ml_item_deleted ;
+ int test_log (char*,...) ;
 
 __attribute__((used)) static void
 test_discoverer(libvlc_instance_t *p_vlc, const char *psz_name, bool b_wait)
@@ -41,20 +41,20 @@ test_discoverer(libvlc_instance_t *p_vlc, const char *psz_name, bool b_wait)
 
     libvlc_media_discoverer_t *p_md =
         libvlc_media_discoverer_new(p_vlc, psz_name);
-    assert(p_md != NULL);
+    assert(p_md != ((void*)0));
 
     libvlc_media_list_t *p_ml = libvlc_media_discoverer_media_list(p_md);
-    assert(p_ml != NULL);
+    assert(p_ml != ((void*)0));
 
     libvlc_event_manager_t *p_evm = libvlc_media_list_event_manager(p_ml);
     assert(p_evm);
 
     int i_ret;
     i_ret = libvlc_event_attach(p_evm, libvlc_MediaListItemAdded,
-                                ml_item_added, NULL);
+                                ml_item_added, ((void*)0));
     assert(i_ret == 0);
     i_ret = libvlc_event_attach(p_evm, libvlc_MediaListItemDeleted,
-                                ml_item_deleted, NULL);
+                                ml_item_deleted, ((void*)0));
     assert(i_ret == 0);
 
     if (libvlc_media_discoverer_start(p_md) == -1)
@@ -73,9 +73,9 @@ test_discoverer(libvlc_instance_t *p_vlc, const char *psz_name, bool b_wait)
     }
 
     libvlc_event_detach(p_evm, libvlc_MediaListItemAdded,
-                        ml_item_added, NULL);
+                        ml_item_added, ((void*)0));
     libvlc_event_detach(p_evm, libvlc_MediaListItemDeleted,
-                        ml_item_deleted, NULL);
+                        ml_item_deleted, ((void*)0));
 
     libvlc_media_list_release(p_ml);
     libvlc_media_discoverer_release(p_md);

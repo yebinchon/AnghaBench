@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEFAULT_PASSWD ; 
- int /*<<< orphan*/  FILE_NIS ; 
- TYPE_1__* syspw ; 
- TYPE_1__* t_openpwbyname (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int state; } ;
+
+
+ int DEFAULT_PASSWD ;
+ int FILE_NIS ;
+ TYPE_1__* syspw ;
+ TYPE_1__* t_openpwbyname (int ) ;
 
 __attribute__((used)) static int
 pwinit()
 {
-  if(syspw == NULL) {
-    if((syspw = t_openpwbyname(DEFAULT_PASSWD)) == NULL)
+  if(syspw == ((void*)0)) {
+    if((syspw = t_openpwbyname(DEFAULT_PASSWD)) == ((void*)0))
       return -1;
     syspw->state = FILE_NIS;
   }

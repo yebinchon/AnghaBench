@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct user_regs_struct {long rip; int rax; int rbx; } ;
 
-/* Variables and functions */
- int errno ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  getregs (int,struct user_regs_struct*) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  setregs (int,struct user_regs_struct*) ; 
- int /*<<< orphan*/  step (int) ; 
+
+ int errno ;
+ int exit (int) ;
+ int getregs (int,struct user_regs_struct*) ;
+ int perror (char*) ;
+ int setregs (int,struct user_regs_struct*) ;
+ int step (int) ;
 
 __attribute__((used)) static void remote_close_fd(int pid, int fd, long int80_ip) {
-    // lettuce spray
+
     struct user_regs_struct saved_regs;
     getregs(pid, &saved_regs);
     struct user_regs_struct regs = saved_regs;

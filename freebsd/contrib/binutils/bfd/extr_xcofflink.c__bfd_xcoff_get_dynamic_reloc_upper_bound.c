@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct internal_ldhdr {int l_nreloc; } ;
 struct external_ldhdr {int dummy; } ;
-typedef  int /*<<< orphan*/  bfd_byte ;
+typedef int bfd_byte ;
 struct TYPE_8__ {int flags; } ;
-typedef  TYPE_1__ bfd ;
-typedef  int /*<<< orphan*/  asection ;
-typedef  int /*<<< orphan*/  arelent ;
-struct TYPE_9__ {int /*<<< orphan*/ * contents; } ;
+typedef TYPE_1__ bfd ;
+typedef int asection ;
+typedef int arelent ;
+struct TYPE_9__ {int * contents; } ;
 
-/* Variables and functions */
- int DYNAMIC ; 
- int /*<<< orphan*/  bfd_error_invalid_operation ; 
- int /*<<< orphan*/  bfd_error_no_symbols ; 
- int /*<<< orphan*/ * bfd_get_section_by_name (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  bfd_set_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bfd_xcoff_swap_ldhdr_in (TYPE_1__*,struct external_ldhdr*,struct internal_ldhdr*) ; 
- TYPE_3__* coff_section_data (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xcoff_get_section_contents (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+ int DYNAMIC ;
+ int bfd_error_invalid_operation ;
+ int bfd_error_no_symbols ;
+ int * bfd_get_section_by_name (TYPE_1__*,char*) ;
+ int bfd_set_error (int ) ;
+ int bfd_xcoff_swap_ldhdr_in (TYPE_1__*,struct external_ldhdr*,struct internal_ldhdr*) ;
+ TYPE_3__* coff_section_data (TYPE_1__*,int *) ;
+ int xcoff_get_section_contents (TYPE_1__*,int *) ;
 
 long
 _bfd_xcoff_get_dynamic_reloc_upper_bound (bfd *abfd)
@@ -45,7 +45,7 @@ _bfd_xcoff_get_dynamic_reloc_upper_bound (bfd *abfd)
     }
 
   lsec = bfd_get_section_by_name (abfd, ".loader");
-  if (lsec == NULL)
+  if (lsec == ((void*)0))
     {
       bfd_set_error (bfd_error_no_symbols);
       return -1;

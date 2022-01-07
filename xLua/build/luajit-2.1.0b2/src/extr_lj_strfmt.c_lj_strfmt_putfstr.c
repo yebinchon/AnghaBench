@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ len; } ;
-typedef  int SFormat ;
-typedef  int /*<<< orphan*/  SBuf ;
-typedef  scalar_t__ MSize ;
-typedef  TYPE_1__ GCstr ;
+typedef int SFormat ;
+typedef int SBuf ;
+typedef scalar_t__ MSize ;
+typedef TYPE_1__ GCstr ;
 
-/* Variables and functions */
- int STRFMT_F_LEFT ; 
- scalar_t__ STRFMT_PREC (int) ; 
- scalar_t__ STRFMT_WIDTH (int) ; 
- char* lj_buf_more (int /*<<< orphan*/ *,scalar_t__) ; 
- char* lj_buf_wmem (char*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  setsbufP (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  strdata (TYPE_1__*) ; 
+
+ int STRFMT_F_LEFT ;
+ scalar_t__ STRFMT_PREC (int) ;
+ scalar_t__ STRFMT_WIDTH (int) ;
+ char* lj_buf_more (int *,scalar_t__) ;
+ char* lj_buf_wmem (char*,int ,scalar_t__) ;
+ int setsbufP (int *,char*) ;
+ int strdata (TYPE_1__*) ;
 
 SBuf *lj_strfmt_putfstr(SBuf *sb, SFormat sf, GCstr *str)
 {

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int s16 ;
 
-/* Variables and functions */
+
+
+
+typedef int u8 ;
+typedef int s16 ;
+
+
 
 __attribute__((used)) static inline s16 U8_TO_S16(u8 ch)
 {
-	return (s16) (ch - 0x80) << 8;
+ return (s16) (ch - 0x80) << 8;
 }

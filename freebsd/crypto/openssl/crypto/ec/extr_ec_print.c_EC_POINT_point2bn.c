@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  point_conversion_form_t ;
-typedef  int /*<<< orphan*/  EC_POINT ;
-typedef  int /*<<< orphan*/  EC_GROUP ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BN_bin2bn (unsigned char*,size_t,int /*<<< orphan*/ *) ; 
- size_t EC_POINT_point2buf (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,unsigned char**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
+
+
+
+typedef int point_conversion_form_t ;
+typedef int EC_POINT ;
+typedef int EC_GROUP ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int * BN_bin2bn (unsigned char*,size_t,int *) ;
+ size_t EC_POINT_point2buf (int const*,int const*,int ,unsigned char**,int *) ;
+ int OPENSSL_free (unsigned char*) ;
 
 BIGNUM *EC_POINT_point2bn(const EC_GROUP *group,
                           const EC_POINT *point,
@@ -32,7 +32,7 @@ BIGNUM *EC_POINT_point2bn(const EC_GROUP *group,
     buf_len = EC_POINT_point2buf(group, point, form, &buf, ctx);
 
     if (buf_len == 0)
-        return NULL;
+        return ((void*)0);
 
     ret = BN_bin2bn(buf, buf_len, ret);
 

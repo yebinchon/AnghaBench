@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {void* dbnum; int /*<<< orphan*/  hostip; void* hostport; int /*<<< orphan*/  auth; } ;
 
-/* Variables and functions */
- void* atoi (char const*) ; 
- TYPE_1__ config ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  percentDecode (char const*,int) ; 
- int /*<<< orphan*/  sdsnewlen (char const*,int) ; 
- int /*<<< orphan*/  stderr ; 
- char* strchr (char const*,char) ; 
- int strlen (char const*) ; 
- scalar_t__ strncasecmp (char const*,char const*,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {void* dbnum; int hostip; void* hostport; int auth; } ;
+
+
+ void* atoi (char const*) ;
+ TYPE_1__ config ;
+ int exit (int) ;
+ int fprintf (int ,char*) ;
+ int percentDecode (char const*,int) ;
+ int sdsnewlen (char const*,int) ;
+ int stderr ;
+ char* strchr (char const*,char) ;
+ int strlen (char const*) ;
+ scalar_t__ strncasecmp (char const*,char const*,int) ;
 
 __attribute__((used)) static void parseRedisUri(const char *uri) {
 
@@ -32,7 +32,7 @@ __attribute__((used)) static void parseRedisUri(const char *uri) {
     const char *end = uri + strlen(uri);
     const char *userinfo, *username, *port, *host, *path;
 
-    /* URI must start with a valid scheme. */
+
     if (strncasecmp(scheme, curr, strlen(scheme))) {
         fprintf(stderr,"Invalid URI scheme\n");
         exit(1);
@@ -40,10 +40,10 @@ __attribute__((used)) static void parseRedisUri(const char *uri) {
     curr += strlen(scheme);
     if (curr == end) return;
 
-    /* Extract user info. */
+
     if ((userinfo = strchr(curr,'@'))) {
         if ((username = strchr(curr, ':')) && username < userinfo) {
-            /* If provided, username is ignored. */
+
             curr = username + 1;
         }
 
@@ -52,7 +52,7 @@ __attribute__((used)) static void parseRedisUri(const char *uri) {
     }
     if (curr == end) return;
 
-    /* Extract host and port. */
+
     path = strchr(curr, '/');
     if (*curr != '/') {
         host = path ? path - 1 : end;
@@ -65,6 +65,6 @@ __attribute__((used)) static void parseRedisUri(const char *uri) {
     curr = path ? path + 1 : end;
     if (curr == end) return;
 
-    /* Extract database number. */
+
     config.dbnum = atoi(curr);
 }

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {char* name; char* runid; int flags; int role_reported; char* notification_script; char* client_reconfig_script; scalar_t__ slave_master_link_status; char* slave_master_host; char* leader; scalar_t__ leader_epoch; scalar_t__ last_hello_time; scalar_t__ slave_repl_offset; scalar_t__ slave_priority; scalar_t__ slave_master_port; scalar_t__ master_link_down_time; scalar_t__ parallel_syncs; scalar_t__ failover_timeout; scalar_t__ quorum; int /*<<< orphan*/  sentinels; int /*<<< orphan*/  slaves; scalar_t__ config_epoch; scalar_t__ role_reported_time; scalar_t__ info_refresh; scalar_t__ down_after_period; scalar_t__ o_down_since_time; scalar_t__ s_down_since_time; TYPE_2__* link; int /*<<< orphan*/  failover_state; TYPE_1__* addr; } ;
-typedef  TYPE_3__ sentinelRedisInstance ;
-typedef  int /*<<< orphan*/  client ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_7__ {char* name; char* runid; int flags; int role_reported; char* notification_script; char* client_reconfig_script; scalar_t__ slave_master_link_status; char* slave_master_host; char* leader; scalar_t__ leader_epoch; scalar_t__ last_hello_time; scalar_t__ slave_repl_offset; scalar_t__ slave_priority; scalar_t__ slave_master_port; scalar_t__ master_link_down_time; scalar_t__ parallel_syncs; scalar_t__ failover_timeout; scalar_t__ quorum; int sentinels; int slaves; scalar_t__ config_epoch; scalar_t__ role_reported_time; scalar_t__ info_refresh; scalar_t__ down_after_period; scalar_t__ o_down_since_time; scalar_t__ s_down_since_time; TYPE_2__* link; int failover_state; TYPE_1__* addr; } ;
+typedef TYPE_3__ sentinelRedisInstance ;
+typedef int client ;
 struct TYPE_6__ {scalar_t__ last_pong_time; scalar_t__ last_avail_time; scalar_t__ act_ping_time; scalar_t__ refcount; scalar_t__ pending_commands; scalar_t__ disconnected; } ;
 struct TYPE_5__ {char* ip; scalar_t__ port; } ;
 
-/* Variables and functions */
- scalar_t__ SENTINEL_MASTER_LINK_STATUS_UP ; 
- int SRI_FAILOVER_IN_PROGRESS ; 
- int SRI_MASTER ; 
- int SRI_MASTER_DOWN ; 
- int SRI_O_DOWN ; 
- int SRI_PROMOTED ; 
- int SRI_RECONF_DONE ; 
- int SRI_RECONF_INPROG ; 
- int SRI_RECONF_SENT ; 
- int SRI_SENTINEL ; 
- int SRI_SLAVE ; 
- int SRI_S_DOWN ; 
- int /*<<< orphan*/  addReplyBulkCString (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  addReplyBulkLongLong (int /*<<< orphan*/ *,scalar_t__) ; 
- void* addReplyDeferredLen (int /*<<< orphan*/ *) ; 
- scalar_t__ dictSize (int /*<<< orphan*/ ) ; 
- scalar_t__ mstime () ; 
- char* sdscat (char*,char*) ; 
- char* sdsempty () ; 
- int /*<<< orphan*/  sdsfree (char*) ; 
- scalar_t__ sdslen (char*) ; 
- int /*<<< orphan*/  sdsrange (char*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ sentinelFailoverStateStr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setDeferredMapLen (int /*<<< orphan*/ *,void*,int) ; 
+
+ scalar_t__ SENTINEL_MASTER_LINK_STATUS_UP ;
+ int SRI_FAILOVER_IN_PROGRESS ;
+ int SRI_MASTER ;
+ int SRI_MASTER_DOWN ;
+ int SRI_O_DOWN ;
+ int SRI_PROMOTED ;
+ int SRI_RECONF_DONE ;
+ int SRI_RECONF_INPROG ;
+ int SRI_RECONF_SENT ;
+ int SRI_SENTINEL ;
+ int SRI_SLAVE ;
+ int SRI_S_DOWN ;
+ int addReplyBulkCString (int *,char*) ;
+ int addReplyBulkLongLong (int *,scalar_t__) ;
+ void* addReplyDeferredLen (int *) ;
+ scalar_t__ dictSize (int ) ;
+ scalar_t__ mstime () ;
+ char* sdscat (char*,char*) ;
+ char* sdsempty () ;
+ int sdsfree (char*) ;
+ scalar_t__ sdslen (char*) ;
+ int sdsrange (char*,int ,int) ;
+ scalar_t__ sentinelFailoverStateStr (int ) ;
+ int setDeferredMapLen (int *,void*,int) ;
 
 void addReplySentinelRedisInstance(client *c, sentinelRedisInstance *ri) {
     char *flags = sdsempty();
@@ -83,7 +83,7 @@ void addReplySentinelRedisInstance(client *c, sentinelRedisInstance *ri) {
     if (ri->flags & SRI_RECONF_INPROG) flags = sdscat(flags,"reconf_inprog,");
     if (ri->flags & SRI_RECONF_DONE) flags = sdscat(flags,"reconf_done,");
 
-    if (sdslen(flags) != 0) sdsrange(flags,0,-2); /* remove last "," */
+    if (sdslen(flags) != 0) sdsrange(flags,0,-2);
     addReplyBulkCString(c,flags);
     sdsfree(flags);
     fields++;
@@ -131,7 +131,7 @@ void addReplySentinelRedisInstance(client *c, sentinelRedisInstance *ri) {
     addReplyBulkLongLong(c,ri->down_after_period);
     fields++;
 
-    /* Masters and Slaves */
+
     if (ri->flags & (SRI_MASTER|SRI_SLAVE)) {
         addReplyBulkCString(c,"info-refresh");
         addReplyBulkLongLong(c,mstime() - ri->info_refresh);
@@ -147,7 +147,7 @@ void addReplySentinelRedisInstance(client *c, sentinelRedisInstance *ri) {
         fields++;
     }
 
-    /* Only masters */
+
     if (ri->flags & SRI_MASTER) {
         addReplyBulkCString(c,"config-epoch");
         addReplyBulkLongLong(c,ri->config_epoch);
@@ -186,7 +186,7 @@ void addReplySentinelRedisInstance(client *c, sentinelRedisInstance *ri) {
         }
     }
 
-    /* Only slaves */
+
     if (ri->flags & SRI_SLAVE) {
         addReplyBulkCString(c,"master-link-down-time");
         addReplyBulkLongLong(c,ri->master_link_down_time);
@@ -216,7 +216,7 @@ void addReplySentinelRedisInstance(client *c, sentinelRedisInstance *ri) {
         fields++;
     }
 
-    /* Only sentinels */
+
     if (ri->flags & SRI_SENTINEL) {
         addReplyBulkCString(c,"last-hello-message");
         addReplyBulkLongLong(c,mstime() - ri->last_hello_time);

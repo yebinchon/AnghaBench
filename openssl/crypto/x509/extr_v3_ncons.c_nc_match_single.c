@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  iPAddress; int /*<<< orphan*/  uniformResourceIdentifier; int /*<<< orphan*/  rfc822Name; int /*<<< orphan*/  dNSName; int /*<<< orphan*/  directoryName; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int iPAddress; int uniformResourceIdentifier; int rfc822Name; int dNSName; int directoryName; } ;
 struct TYPE_6__ {int type; TYPE_1__ d; } ;
-typedef  TYPE_2__ GENERAL_NAME ;
+typedef TYPE_2__ GENERAL_NAME ;
 
-/* Variables and functions */
-#define  GEN_DIRNAME 132 
-#define  GEN_DNS 131 
-#define  GEN_EMAIL 130 
-#define  GEN_IPADD 129 
-#define  GEN_URI 128 
- int X509_V_ERR_UNSUPPORTED_CONSTRAINT_TYPE ; 
- int nc_dn (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int nc_dns (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int nc_email (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int nc_ip (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int nc_uri (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+
+
+
+ int X509_V_ERR_UNSUPPORTED_CONSTRAINT_TYPE ;
+ int nc_dn (int ,int ) ;
+ int nc_dns (int ,int ) ;
+ int nc_email (int ,int ) ;
+ int nc_ip (int ,int ) ;
+ int nc_uri (int ,int ) ;
 
 __attribute__((used)) static int nc_match_single(GENERAL_NAME *gen, GENERAL_NAME *base)
 {
     switch (base->type) {
-    case GEN_DIRNAME:
+    case 132:
         return nc_dn(gen->d.directoryName, base->d.directoryName);
 
-    case GEN_DNS:
+    case 131:
         return nc_dns(gen->d.dNSName, base->d.dNSName);
 
-    case GEN_EMAIL:
+    case 130:
         return nc_email(gen->d.rfc822Name, base->d.rfc822Name);
 
-    case GEN_URI:
+    case 128:
         return nc_uri(gen->d.uniformResourceIdentifier,
                       base->d.uniformResourceIdentifier);
 
-    case GEN_IPADD:
+    case 129:
         return nc_ip(gen->d.iPAddress, base->d.iPAddress);
 
     default:

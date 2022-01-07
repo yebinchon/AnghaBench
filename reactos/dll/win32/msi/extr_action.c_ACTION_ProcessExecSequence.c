@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ UINT ;
-struct TYPE_8__ {int /*<<< orphan*/  db; scalar_t__ ExecuteSequenceRun; } ;
-struct TYPE_7__ {int /*<<< orphan*/  hdr; } ;
-typedef  TYPE_1__ MSIQUERY ;
-typedef  TYPE_2__ MSIPACKAGE ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  ITERATE_Actions ; 
- scalar_t__ MSI_IterateRecords (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*) ; 
- scalar_t__ MSI_OpenQuery (int /*<<< orphan*/ ,TYPE_1__**,char const*) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  msi_set_property (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  szSourceDir ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+typedef scalar_t__ UINT ;
+struct TYPE_8__ {int db; scalar_t__ ExecuteSequenceRun; } ;
+struct TYPE_7__ {int hdr; } ;
+typedef TYPE_1__ MSIQUERY ;
+typedef TYPE_2__ MSIPACKAGE ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int ITERATE_Actions ;
+ scalar_t__ MSI_IterateRecords (TYPE_1__*,int *,int ,TYPE_2__*) ;
+ scalar_t__ MSI_OpenQuery (int ,TYPE_1__**,char const*) ;
+ int TRACE (char*) ;
+ scalar_t__ TRUE ;
+ int msi_set_property (int ,int ,int *,int) ;
+ int msiobj_release (int *) ;
+ int szSourceDir ;
 
 __attribute__((used)) static UINT ACTION_ProcessExecSequence(MSIPACKAGE *package)
 {
@@ -54,8 +54,8 @@ __attribute__((used)) static UINT ACTION_ProcessExecSequence(MSIPACKAGE *package
     {
         TRACE("Running the actions\n");
 
-        msi_set_property( package->db, szSourceDir, NULL, -1 );
-        rc = MSI_IterateRecords(view, NULL, ITERATE_Actions, package);
+        msi_set_property( package->db, szSourceDir, ((void*)0), -1 );
+        rc = MSI_IterateRecords(view, ((void*)0), ITERATE_Actions, package);
         msiobj_release(&view->hdr);
     }
     return rc;

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int prime_t ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mul_word (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * BN_new () ; 
- int /*<<< orphan*/  BN_set_word (int /*<<< orphan*/ *,int) ; 
- int NUMPRIMES ; 
- int TEST_BN_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ TEST_ptr (int /*<<< orphan*/ *) ; 
- scalar_t__ TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bn_get0_small_factors () ; 
- int* primes ; 
+
+
+
+typedef int prime_t ;
+typedef int BIGNUM ;
+
+
+ int BN_free (int *) ;
+ int BN_mul_word (int *,int) ;
+ int * BN_new () ;
+ int BN_set_word (int *,int) ;
+ int NUMPRIMES ;
+ int TEST_BN_eq (int ,int *) ;
+ scalar_t__ TEST_ptr (int *) ;
+ scalar_t__ TEST_true (int ) ;
+ int bn_get0_small_factors () ;
+ int* primes ;
 
 __attribute__((used)) static int test_bn_small_factors(void)
 {
     int ret = 0, i;
-    BIGNUM *b = NULL;
+    BIGNUM *b = ((void*)0);
 
     if (!(TEST_ptr(b = BN_new()) && TEST_true(BN_set_word(b, 3))))
         goto err;

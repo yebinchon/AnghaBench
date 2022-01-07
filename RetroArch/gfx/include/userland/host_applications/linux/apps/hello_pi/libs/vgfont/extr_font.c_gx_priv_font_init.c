@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VCOS_STATUS_T ;
-struct TYPE_2__ {char* file; size_t len; int /*<<< orphan*/  mem; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GX_ERROR (char*,char*) ; 
- int /*<<< orphan*/  GX_TRACE (char*,char*) ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  VCOS_EINVAL ; 
- int /*<<< orphan*/  VCOS_ENOENT ; 
- int /*<<< orphan*/  VCOS_ENOMEM ; 
- int /*<<< orphan*/  VCOS_SUCCESS ; 
- int /*<<< orphan*/  close (int) ; 
- TYPE_1__ default_font ; 
- char* fname ; 
- int inited ; 
- size_t lseek (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int read (int,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char const*,char*) ; 
- int /*<<< orphan*/  vcos_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_malloc (size_t,char*) ; 
- scalar_t__ vgft_init () ; 
- int /*<<< orphan*/  vgft_term () ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int VCOS_STATUS_T ;
+struct TYPE_2__ {char* file; size_t len; int mem; } ;
+
+
+ int GX_ERROR (char*,char*) ;
+ int GX_TRACE (char*,char*) ;
+ int O_RDONLY ;
+ int SEEK_END ;
+ int SEEK_SET ;
+ int VCOS_EINVAL ;
+ int VCOS_ENOENT ;
+ int VCOS_ENOMEM ;
+ int VCOS_SUCCESS ;
+ int close (int) ;
+ TYPE_1__ default_font ;
+ char* fname ;
+ int inited ;
+ size_t lseek (int,int ,int ) ;
+ int open (char*,int ) ;
+ int read (int,int ,size_t) ;
+ int sprintf (char*,char*,char const*,char*) ;
+ int vcos_free (int ) ;
+ int vcos_malloc (size_t,char*) ;
+ scalar_t__ vgft_init () ;
+ int vgft_term () ;
 
 VCOS_STATUS_T gx_priv_font_init(const char *font_dir)
 {
@@ -49,7 +49,7 @@ VCOS_STATUS_T gx_priv_font_init(const char *font_dir)
    }
 
    int fd = -1;
-   // search for the font
+
    sprintf(fname, "%s/%s", font_dir, default_font.file);
    fd = open(fname, O_RDONLY);
 

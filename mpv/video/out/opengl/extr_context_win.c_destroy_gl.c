@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ra_ctx {int /*<<< orphan*/  vo; struct priv* priv; } ;
-struct priv {int /*<<< orphan*/ * hdc; scalar_t__ context; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * current_wgl_context ; 
- int /*<<< orphan*/  vo_w32_hwnd (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wglDeleteContext (scalar_t__) ; 
+
+
+
+struct ra_ctx {int vo; struct priv* priv; } ;
+struct priv {int * hdc; scalar_t__ context; } ;
+
+
+ int ReleaseDC (int ,int *) ;
+ int * current_wgl_context ;
+ int vo_w32_hwnd (int ) ;
+ int wglDeleteContext (scalar_t__) ;
 
 __attribute__((used)) static void destroy_gl(void *ptr)
 {
@@ -28,6 +28,6 @@ __attribute__((used)) static void destroy_gl(void *ptr)
     p->context = 0;
     if (p->hdc)
         ReleaseDC(vo_w32_hwnd(ctx->vo), p->hdc);
-    p->hdc = NULL;
-    current_wgl_context = NULL;
+    p->hdc = ((void*)0);
+    current_wgl_context = ((void*)0);
 }

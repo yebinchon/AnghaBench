@@ -1,88 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ALLOCSET_DEFAULT_SIZES ; 
- int /*<<< orphan*/ * AllocSetContextCreate (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * CacheMemoryContext ; 
- int /*<<< orphan*/  CreateCacheMemoryContext () ; 
- int /*<<< orphan*/ * DistShardCacheHash ; 
- int /*<<< orphan*/ * DistTableCacheHash ; 
- int /*<<< orphan*/  InitializeDistCache () ; 
- int /*<<< orphan*/  MemoryContextDelete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * MetadataCacheMemoryContext ; 
- int /*<<< orphan*/  PG_CATCH () ; 
- int /*<<< orphan*/  PG_END_TRY () ; 
- int /*<<< orphan*/  PG_RE_THROW () ; 
- int /*<<< orphan*/  PG_TRY () ; 
- int /*<<< orphan*/  RegisterForeignKeyGraphCacheCallbacks () ; 
- int /*<<< orphan*/  RegisterLocalGroupIdCacheCallbacks () ; 
- int /*<<< orphan*/  RegisterWorkerNodeCacheCallbacks () ; 
+ int ALLOCSET_DEFAULT_SIZES ;
+ int * AllocSetContextCreate (int *,char*,int ) ;
+ int * CacheMemoryContext ;
+ int CreateCacheMemoryContext () ;
+ int * DistShardCacheHash ;
+ int * DistTableCacheHash ;
+ int InitializeDistCache () ;
+ int MemoryContextDelete (int *) ;
+ int * MetadataCacheMemoryContext ;
+ int PG_CATCH () ;
+ int PG_END_TRY () ;
+ int PG_RE_THROW () ;
+ int PG_TRY () ;
+ int RegisterForeignKeyGraphCacheCallbacks () ;
+ int RegisterLocalGroupIdCacheCallbacks () ;
+ int RegisterWorkerNodeCacheCallbacks () ;
 
 __attribute__((used)) static void
 InitializeCaches(void)
 {
-	static bool performedInitialization = false;
+ static bool performedInitialization = 0;
 
-	if (!performedInitialization)
-	{
-		MetadataCacheMemoryContext = NULL;
+ if (!performedInitialization)
+ {
+  MetadataCacheMemoryContext = ((void*)0);
+  PG_TRY();
+  {
 
-		/*
-		 * If either of dist table cache or shard cache
-		 * allocation and initializations fail due to an exception
-		 * that is caused by OOM or any other reason,
-		 * we reset the flag, and delete the shard cache memory
-		 * context to reclaim partially allocated memory.
-		 *
-		 * Command will continue to fail since we re-throw the exception.
-		 */
-		PG_TRY();
-		{
-			/* set first, to avoid recursion dangers */
-			performedInitialization = true;
+   performedInitialization = 1;
 
-			/* make sure we've initialized CacheMemoryContext */
-			if (CacheMemoryContext == NULL)
-			{
-				CreateCacheMemoryContext();
-			}
 
-			MetadataCacheMemoryContext = AllocSetContextCreate(
-				CacheMemoryContext,
-				"MetadataCacheMemoryContext",
-				ALLOCSET_DEFAULT_SIZES);
+   if (CacheMemoryContext == ((void*)0))
+   {
+    CreateCacheMemoryContext();
+   }
 
-			InitializeDistCache();
-			RegisterForeignKeyGraphCacheCallbacks();
-			RegisterWorkerNodeCacheCallbacks();
-			RegisterLocalGroupIdCacheCallbacks();
-		}
-		PG_CATCH();
-		{
-			performedInitialization = false;
+   MetadataCacheMemoryContext = AllocSetContextCreate(
+    CacheMemoryContext,
+    "MetadataCacheMemoryContext",
+    ALLOCSET_DEFAULT_SIZES);
 
-			if (MetadataCacheMemoryContext != NULL)
-			{
-				MemoryContextDelete(MetadataCacheMemoryContext);
-			}
+   InitializeDistCache();
+   RegisterForeignKeyGraphCacheCallbacks();
+   RegisterWorkerNodeCacheCallbacks();
+   RegisterLocalGroupIdCacheCallbacks();
+  }
+  PG_CATCH();
+  {
+   performedInitialization = 0;
 
-			MetadataCacheMemoryContext = NULL;
-			DistTableCacheHash = NULL;
-			DistShardCacheHash = NULL;
+   if (MetadataCacheMemoryContext != ((void*)0))
+   {
+    MemoryContextDelete(MetadataCacheMemoryContext);
+   }
 
-			PG_RE_THROW();
-		}
-		PG_END_TRY();
-	}
+   MetadataCacheMemoryContext = ((void*)0);
+   DistTableCacheHash = ((void*)0);
+   DistShardCacheHash = ((void*)0);
+
+   PG_RE_THROW();
+  }
+  PG_END_TRY();
+ }
 }

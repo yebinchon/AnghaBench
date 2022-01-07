@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UInt32 ;
-struct TYPE_6__ {scalar_t__* (* GetPointerToCurrentPos ) (int /*<<< orphan*/ ) ;} ;
-struct TYPE_7__ {scalar_t__ additionalOffset; int longestMatchLength; int numPairs; int numAvail; scalar_t__ const** reps; int numFastBytes; int* matches; int /*<<< orphan*/  matchFinderObj; TYPE_1__ matchFinder; } ;
-typedef  TYPE_2__ CLzmaEnc ;
-typedef  scalar_t__ Byte ;
 
-/* Variables and functions */
- scalar_t__ ChangePair (int const,int) ; 
- int LZMA_MATCH_LEN_MAX ; 
- int LZMA_NUM_REPS ; 
- int /*<<< orphan*/  MovePos (TYPE_2__*,int) ; 
- void* ReadMatchDistances (TYPE_2__*,int*) ; 
- scalar_t__* stub1 (int /*<<< orphan*/ ) ; 
- scalar_t__* stub2 (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int UInt32 ;
+struct TYPE_6__ {scalar_t__* (* GetPointerToCurrentPos ) (int ) ;} ;
+struct TYPE_7__ {scalar_t__ additionalOffset; int longestMatchLength; int numPairs; int numAvail; scalar_t__ const** reps; int numFastBytes; int* matches; int matchFinderObj; TYPE_1__ matchFinder; } ;
+typedef TYPE_2__ CLzmaEnc ;
+typedef scalar_t__ Byte ;
+
+
+ scalar_t__ ChangePair (int const,int) ;
+ int LZMA_MATCH_LEN_MAX ;
+ int LZMA_NUM_REPS ;
+ int MovePos (TYPE_2__*,int) ;
+ void* ReadMatchDistances (TYPE_2__*,int*) ;
+ scalar_t__* stub1 (int ) ;
+ scalar_t__* stub2 (int ) ;
 
 __attribute__((used)) static UInt32 GetOptimumFast(CLzmaEnc *p, UInt32 *backRes)
 {
@@ -78,7 +78,7 @@ __attribute__((used)) static UInt32 GetOptimumFast(CLzmaEnc *p, UInt32 *backRes)
     return mainLen;
   }
 
-  mainDist = 0; /* for GCC */
+  mainDist = 0;
   if (mainLen >= 2)
   {
     mainDist = matches[numPairs - 1];
@@ -103,7 +103,7 @@ __attribute__((used)) static UInt32 GetOptimumFast(CLzmaEnc *p, UInt32 *backRes)
     MovePos(p, repLen - 1);
     return repLen;
   }
-  
+
   if (mainLen < 2 || numAvail <= 2)
     return 1;
 
@@ -117,7 +117,7 @@ __attribute__((used)) static UInt32 GetOptimumFast(CLzmaEnc *p, UInt32 *backRes)
         (p->longestMatchLength + 1 >= mainLen && mainLen >= 3 && ChangePair(newDistance, mainDist)))
       return 1;
   }
-  
+
   data = p->matchFinder.GetPointerToCurrentPos(p->matchFinderObj) - 1;
   for (i = 0; i < LZMA_NUM_REPS; i++)
   {

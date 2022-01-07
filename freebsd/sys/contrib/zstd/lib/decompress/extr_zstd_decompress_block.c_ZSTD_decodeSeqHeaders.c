@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  symbolEncodingType_e ;
-struct TYPE_4__ {int /*<<< orphan*/  MLTable; int /*<<< orphan*/  OFTable; int /*<<< orphan*/  LLTable; } ;
-struct TYPE_5__ {int /*<<< orphan*/  ddictIsCold; int /*<<< orphan*/  fseEntropy; int /*<<< orphan*/  MLTptr; TYPE_1__ entropy; int /*<<< orphan*/  OFTptr; int /*<<< orphan*/  LLTptr; } ;
-typedef  TYPE_2__ ZSTD_DCtx ;
-typedef  int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUGLOG (int,char*) ; 
- int /*<<< orphan*/  LLFSELog ; 
- int /*<<< orphan*/  LL_base ; 
- int /*<<< orphan*/  LL_bits ; 
- int /*<<< orphan*/  LL_defaultDTable ; 
- int LONGNBSEQ ; 
- int MEM_readLE16 (int const*) ; 
- size_t MIN_SEQUENCES_SIZE ; 
- int /*<<< orphan*/  MLFSELog ; 
- int /*<<< orphan*/  ML_base ; 
- int /*<<< orphan*/  ML_bits ; 
- int /*<<< orphan*/  ML_defaultDTable ; 
- int /*<<< orphan*/  MaxLL ; 
- int /*<<< orphan*/  MaxML ; 
- int /*<<< orphan*/  MaxOff ; 
- int /*<<< orphan*/  OF_base ; 
- int /*<<< orphan*/  OF_bits ; 
- int /*<<< orphan*/  OF_defaultDTable ; 
- int /*<<< orphan*/  OffFSELog ; 
- int /*<<< orphan*/  RETURN_ERROR_IF (int,int /*<<< orphan*/ ) ; 
- size_t ZSTD_buildSeqTable (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/  const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int ZSTD_isError (size_t const) ; 
- int /*<<< orphan*/  corruption_detected ; 
- int /*<<< orphan*/  srcSize_wrong ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int symbolEncodingType_e ;
+struct TYPE_4__ {int MLTable; int OFTable; int LLTable; } ;
+struct TYPE_5__ {int ddictIsCold; int fseEntropy; int MLTptr; TYPE_1__ entropy; int OFTptr; int LLTptr; } ;
+typedef TYPE_2__ ZSTD_DCtx ;
+typedef int BYTE ;
+
+
+ int DEBUGLOG (int,char*) ;
+ int LLFSELog ;
+ int LL_base ;
+ int LL_bits ;
+ int LL_defaultDTable ;
+ int LONGNBSEQ ;
+ int MEM_readLE16 (int const*) ;
+ size_t MIN_SEQUENCES_SIZE ;
+ int MLFSELog ;
+ int ML_base ;
+ int ML_bits ;
+ int ML_defaultDTable ;
+ int MaxLL ;
+ int MaxML ;
+ int MaxOff ;
+ int OF_base ;
+ int OF_bits ;
+ int OF_defaultDTable ;
+ int OffFSELog ;
+ int RETURN_ERROR_IF (int,int ) ;
+ size_t ZSTD_buildSeqTable (int ,int *,int const,int ,int ,int const*,int,int ,int ,int ,int ,int ,int) ;
+ int ZSTD_isError (size_t const) ;
+ int corruption_detected ;
+ int srcSize_wrong ;
 
 size_t ZSTD_decodeSeqHeaders(ZSTD_DCtx* dctx, int* nbSeqPtr,
                              const void* src, size_t srcSize)
@@ -53,10 +53,10 @@ size_t ZSTD_decodeSeqHeaders(ZSTD_DCtx* dctx, int* nbSeqPtr,
     int nbSeq;
     DEBUGLOG(5, "ZSTD_decodeSeqHeaders");
 
-    /* check */
+
     RETURN_ERROR_IF(srcSize < MIN_SEQUENCES_SIZE, srcSize_wrong);
 
-    /* SeqHead */
+
     nbSeq = *ip++;
     if (!nbSeq) {
         *nbSeqPtr=0;
@@ -74,15 +74,15 @@ size_t ZSTD_decodeSeqHeaders(ZSTD_DCtx* dctx, int* nbSeqPtr,
     }
     *nbSeqPtr = nbSeq;
 
-    /* FSE table descriptors */
-    RETURN_ERROR_IF(ip+1 > iend, srcSize_wrong); /* minimum possible size: 1 byte for symbol encoding types */
-    {   symbolEncodingType_e const LLtype = (symbolEncodingType_e)(*ip >> 6);
+
+    RETURN_ERROR_IF(ip+1 > iend, srcSize_wrong);
+    { symbolEncodingType_e const LLtype = (symbolEncodingType_e)(*ip >> 6);
         symbolEncodingType_e const OFtype = (symbolEncodingType_e)((*ip >> 4) & 3);
         symbolEncodingType_e const MLtype = (symbolEncodingType_e)((*ip >> 2) & 3);
         ip++;
 
-        /* Build DTables */
-        {   size_t const llhSize = ZSTD_buildSeqTable(dctx->entropy.LLTable, &dctx->LLTptr,
+
+        { size_t const llhSize = ZSTD_buildSeqTable(dctx->entropy.LLTable, &dctx->LLTptr,
                                                       LLtype, MaxLL, LLFSELog,
                                                       ip, iend-ip,
                                                       LL_base, LL_bits,
@@ -92,7 +92,7 @@ size_t ZSTD_decodeSeqHeaders(ZSTD_DCtx* dctx, int* nbSeqPtr,
             ip += llhSize;
         }
 
-        {   size_t const ofhSize = ZSTD_buildSeqTable(dctx->entropy.OFTable, &dctx->OFTptr,
+        { size_t const ofhSize = ZSTD_buildSeqTable(dctx->entropy.OFTable, &dctx->OFTptr,
                                                       OFtype, MaxOff, OffFSELog,
                                                       ip, iend-ip,
                                                       OF_base, OF_bits,
@@ -102,7 +102,7 @@ size_t ZSTD_decodeSeqHeaders(ZSTD_DCtx* dctx, int* nbSeqPtr,
             ip += ofhSize;
         }
 
-        {   size_t const mlhSize = ZSTD_buildSeqTable(dctx->entropy.MLTable, &dctx->MLTptr,
+        { size_t const mlhSize = ZSTD_buildSeqTable(dctx->entropy.MLTable, &dctx->MLTptr,
                                                       MLtype, MaxML, MLFSELog,
                                                       ip, iend-ip,
                                                       ML_base, ML_bits,

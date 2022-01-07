@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  UDPPACKET ;
-struct TYPE_3__ {int /*<<< orphan*/  Event; int /*<<< orphan*/  SendPacketList; } ;
-typedef  TYPE_1__ UDPLISTENER ;
-typedef  int /*<<< orphan*/  LIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Add (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetSockEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+typedef int UDPPACKET ;
+struct TYPE_3__ {int Event; int SendPacketList; } ;
+typedef TYPE_1__ UDPLISTENER ;
+typedef int LIST ;
+
+
+ int Add (int ,int *) ;
+ int * LIST_DATA (int *,scalar_t__) ;
+ scalar_t__ LIST_NUM (int *) ;
+ int LockList (int ) ;
+ int SetSockEvent (int ) ;
+ int UnlockList (int ) ;
 
 void UdpListenerSendPackets(UDPLISTENER *u, LIST *packet_list)
 {
-	UINT num = 0;
-	// Validate arguments
-	if (u == NULL || packet_list == NULL)
-	{
-		return;
-	}
+ UINT num = 0;
 
-	LockList(u->SendPacketList);
-	{
-		UINT i;
+ if (u == ((void*)0) || packet_list == ((void*)0))
+ {
+  return;
+ }
 
-		num = LIST_NUM(packet_list);
+ LockList(u->SendPacketList);
+ {
+  UINT i;
 
-		for (i = 0;i < LIST_NUM(packet_list);i++)
-		{
-			UDPPACKET *p = LIST_DATA(packet_list, i);
+  num = LIST_NUM(packet_list);
 
-			Add(u->SendPacketList, p);
-		}
-	}
-	UnlockList(u->SendPacketList);
+  for (i = 0;i < LIST_NUM(packet_list);i++)
+  {
+   UDPPACKET *p = LIST_DATA(packet_list, i);
 
-	if (num >= 1)
-	{
-		SetSockEvent(u->Event);
-	}
+   Add(u->SendPacketList, p);
+  }
+ }
+ UnlockList(u->SendPacketList);
+
+ if (num >= 1)
+ {
+  SetSockEvent(u->Event);
+ }
 }

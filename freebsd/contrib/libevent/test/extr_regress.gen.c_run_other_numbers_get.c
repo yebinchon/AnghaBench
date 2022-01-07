@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct run {int other_numbers_length; int /*<<< orphan*/ * other_numbers_data; int /*<<< orphan*/  other_numbers_set; } ;
-typedef  int /*<<< orphan*/  ev_uint32_t ;
 
-/* Variables and functions */
+
+
+
+struct run {int other_numbers_length; int * other_numbers_data; int other_numbers_set; } ;
+typedef int ev_uint32_t ;
+
+
 
 int
 run_other_numbers_get(struct run *msg, int offset,

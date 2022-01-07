@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ sendkey; scalar_t__ recvkey; int /*<<< orphan*/  types; int /*<<< orphan*/  policy; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ sendkey; scalar_t__ recvkey; int types; int policy; } ;
 struct TYPE_3__ {char* file; } ;
-struct radius {char* repstr; char* msrepstr; char* errstr; scalar_t__ ipv6routes; scalar_t__ routes; TYPE_2__ mppe; scalar_t__ vj; int /*<<< orphan*/  mtu; int /*<<< orphan*/  mask; int /*<<< orphan*/  ip; scalar_t__ valid; TYPE_1__ cfg; } ;
+struct radius {char* repstr; char* msrepstr; char* errstr; scalar_t__ ipv6routes; scalar_t__ routes; TYPE_2__ mppe; scalar_t__ vj; int mtu; int mask; int ip; scalar_t__ valid; TYPE_1__ cfg; } ;
 struct prompt {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  inet_ntoa (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  prompt_Printf (struct prompt*,char*,...) ; 
- int /*<<< orphan*/  radius_policyname (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  radius_typesname (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  route_ShowSticky (struct prompt*,scalar_t__,char*,int) ; 
+
+ int inet_ntoa (int ) ;
+ int prompt_Printf (struct prompt*,char*,...) ;
+ int radius_policyname (int ) ;
+ int radius_typesname (int ) ;
+ int route_ShowSticky (struct prompt*,scalar_t__,char*,int) ;
 
 void
 radius_Show(struct radius *r, struct prompt *p)
@@ -48,10 +48,10 @@ radius_Show(struct radius *r, struct prompt *p)
     prompt_Printf(p, "     Error Message: %s\n", r->errstr ? r->errstr : "");
     if (r->routes)
       route_ShowSticky(p, r->routes, "            Routes", 16);
-#ifndef NOINET6
+
     if (r->ipv6routes)
       route_ShowSticky(p, r->ipv6routes, "            IPv6 Routes", 16);
-#endif
+
   } else
     prompt_Printf(p, " (not authenticated)\n");
 }

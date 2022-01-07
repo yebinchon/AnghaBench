@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {unsigned char const* hash; } ;
 struct tip_table_entry {TYPE_1__ oid; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static const unsigned char *nth_tip_table_ent(size_t ix, void *table_)
 {
-	struct tip_table_entry *table = table_;
-	return table[ix].oid.hash;
+ struct tip_table_entry *table = table_;
+ return table[ix].oid.hash;
 }

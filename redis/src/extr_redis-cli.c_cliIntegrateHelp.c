@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct commandHelp {char* summary; char* since; scalar_t__ group; void* params; int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  sds ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct commandHelp {char* summary; char* since; scalar_t__ group; void* params; int name; } ;
+typedef int sds ;
 struct TYPE_8__ {scalar_t__ type; size_t elements; char* str; int integer; struct TYPE_8__** element; } ;
-typedef  TYPE_1__ redisReply ;
-struct TYPE_9__ {int argc; struct commandHelp* org; int /*<<< orphan*/ * argv; int /*<<< orphan*/  type; int /*<<< orphan*/  full; } ;
-typedef  TYPE_2__ helpEntry ;
+typedef TYPE_1__ redisReply ;
+struct TYPE_9__ {int argc; struct commandHelp* org; int * argv; int type; int full; } ;
+typedef TYPE_2__ helpEntry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CC_QUIET ; 
- int /*<<< orphan*/  CLI_HELP_COMMAND ; 
- scalar_t__ REDIS_ERR ; 
- scalar_t__ REDIS_REPLY_ARRAY ; 
- scalar_t__ REDIS_REPLY_INTEGER ; 
- scalar_t__ REDIS_REPLY_STRING ; 
- scalar_t__ cliConnect (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  context ; 
- int /*<<< orphan*/  freeReplyObject (TYPE_1__*) ; 
- TYPE_2__* helpEntries ; 
- int helpEntriesLen ; 
- int llabs (int) ; 
- TYPE_1__* redisCommand (int /*<<< orphan*/ ,char*) ; 
- void* sdscat (void*,char*) ; 
- void* sdsempty () ; 
- int /*<<< orphan*/  sdsnew (char*) ; 
- int /*<<< orphan*/  sdstoupper (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcasecmp (int /*<<< orphan*/ ,char*) ; 
- void* zmalloc (int) ; 
- TYPE_2__* zrealloc (TYPE_2__*,int) ; 
+
+ int CC_QUIET ;
+ int CLI_HELP_COMMAND ;
+ scalar_t__ REDIS_ERR ;
+ scalar_t__ REDIS_REPLY_ARRAY ;
+ scalar_t__ REDIS_REPLY_INTEGER ;
+ scalar_t__ REDIS_REPLY_STRING ;
+ scalar_t__ cliConnect (int ) ;
+ int context ;
+ int freeReplyObject (TYPE_1__*) ;
+ TYPE_2__* helpEntries ;
+ int helpEntriesLen ;
+ int llabs (int) ;
+ TYPE_1__* redisCommand (int ,char*) ;
+ void* sdscat (void*,char*) ;
+ void* sdsempty () ;
+ int sdsnew (char*) ;
+ int sdstoupper (int ) ;
+ int strcasecmp (int ,char*) ;
+ void* zmalloc (int) ;
+ TYPE_2__* zrealloc (TYPE_2__*,int) ;
 
 __attribute__((used)) static void cliIntegrateHelp(void) {
     if (cliConnect(CC_QUIET) == REDIS_ERR) return;
 
     redisReply *reply = redisCommand(context, "COMMAND");
-    if(reply == NULL || reply->type != REDIS_REPLY_ARRAY) return;
+    if(reply == ((void*)0) || reply->type != REDIS_REPLY_ARRAY) return;
 
-    /* Scan the array reported by COMMAND and fill only the entries that
-     * don't already match what we have. */
+
+
     for (size_t j = 0; j < reply->elements; j++) {
         redisReply *entry = reply->element[j];
         if (entry->type != REDIS_REPLY_ARRAY || entry->elements < 4 ||
@@ -80,7 +80,7 @@ __attribute__((used)) static void cliIntegrateHelp(void) {
         ch->name = new->argv[0];
         ch->params = sdsempty();
         int args = llabs(entry->element[1]->integer);
-        args--; /* Remove the command name itself. */
+        args--;
         if (entry->element[3]->integer == 1) {
             ch->params = sdscat(ch->params,"key ");
             args--;

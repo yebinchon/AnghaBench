@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  char_type_node ; 
- scalar_t__ same_type_p (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  signed_char_type_node ; 
- int /*<<< orphan*/  unsigned_char_type_node ; 
- int /*<<< orphan*/  wchar_type_node ; 
+
+
+
+typedef int tree ;
+
+
+ int char_type_node ;
+ scalar_t__ same_type_p (int ,int ) ;
+ int signed_char_type_node ;
+ int unsigned_char_type_node ;
+ int wchar_type_node ;
 
 int
 char_type_p (tree type)
 {
   return (same_type_p (type, char_type_node)
-	  || same_type_p (type, unsigned_char_type_node)
-	  || same_type_p (type, signed_char_type_node)
-	  || same_type_p (type, wchar_type_node));
+   || same_type_p (type, unsigned_char_type_node)
+   || same_type_p (type, signed_char_type_node)
+   || same_type_p (type, wchar_type_node));
 }

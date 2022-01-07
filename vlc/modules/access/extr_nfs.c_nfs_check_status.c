@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ stream_t ;
+typedef TYPE_1__ stream_t ;
 struct TYPE_8__ {int b_error; } ;
-typedef  TYPE_2__ access_sys_t ;
+typedef TYPE_2__ access_sys_t ;
 
-/* Variables and functions */
- int EINTR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  msg_Err (TYPE_1__*,char*,char const*,int,char const*) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_1__*,char*,char const*) ; 
- int /*<<< orphan*/  vlc_dialog_display_error (TYPE_1__*,int /*<<< orphan*/ ,char*,char const*) ; 
+
+ int EINTR ;
+ int _ (char*) ;
+ int msg_Err (TYPE_1__*,char*,char const*,int,char const*) ;
+ int msg_Warn (TYPE_1__*,char*,char const*) ;
+ int vlc_dialog_display_error (TYPE_1__*,int ,char*,char const*) ;
 
 __attribute__((used)) static bool
 nfs_check_status(stream_t *p_access, int i_status, const char *psz_error,
@@ -43,9 +43,9 @@ nfs_check_status(stream_t *p_access, int i_status, const char *psz_error,
         }
         else
             msg_Warn(p_access, "%s interrupted", psz_func);
-        sys->b_error = true;
-        return true;
+        sys->b_error = 1;
+        return 1;
     }
     else
-        return false;
+        return 0;
 }

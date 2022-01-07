@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int v8i16 ;
-typedef  int /*<<< orphan*/  v4i32 ;
-struct TYPE_15__ {int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ v16u8 ;
-typedef  scalar_t__ v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int int32_t ;
-typedef  int int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ILVR_B4_SH (TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,int,int,int,int) ; 
- int /*<<< orphan*/  ILVR_D2_SH (int,int,int,int,int,int) ; 
- int /*<<< orphan*/  LD (int /*<<< orphan*/  const*) ; 
- TYPE_1__ LD_UB (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  MUL2 (int,int,int,int,int,int) ; 
- int /*<<< orphan*/  PCKEV_B2_SB (int,int,int,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  SD (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SLDI_B4_SH (TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  SRARI_H2_SH (int,int,int) ; 
- int /*<<< orphan*/  ST_W2 (scalar_t__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- int __msa_fill_h (int) ; 
- scalar_t__ __msa_pckev_b (scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_pckev_w (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ __msa_pckod_b (scalar_t__,scalar_t__) ; 
- int* intra_pred_angle_low ; 
+
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef int v8i16 ;
+typedef int v4i32 ;
+struct TYPE_15__ {int member_0; } ;
+typedef TYPE_1__ v16u8 ;
+typedef scalar_t__ v16i8 ;
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int int32_t ;
+typedef int int16_t ;
+
+
+ int ILVR_B4_SH (TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,int,int,int,int) ;
+ int ILVR_D2_SH (int,int,int,int,int,int) ;
+ int LD (int const*) ;
+ TYPE_1__ LD_UB (int const*) ;
+ int MUL2 (int,int,int,int,int,int) ;
+ int PCKEV_B2_SB (int,int,int,int,scalar_t__,scalar_t__) ;
+ int SD (int ,int *) ;
+ int SLDI_B4_SH (TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,int,int,int,int,int) ;
+ int SRARI_H2_SH (int,int,int) ;
+ int ST_W2 (scalar_t__,int ,int,int *,int) ;
+ int __msa_fill_h (int) ;
+ scalar_t__ __msa_pckev_b (scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_pckev_w (int ,int ) ;
+ scalar_t__ __msa_pckod_b (scalar_t__,scalar_t__) ;
+ int* intra_pred_angle_low ;
 
 __attribute__((used)) static void hevc_intra_pred_angular_lower_4width_msa(const uint8_t *src_top,
                                                      const uint8_t *src_left,

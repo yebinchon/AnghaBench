@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {void* socket; int events; int revents; int /*<<< orphan*/  fd; } ;
-typedef  TYPE_1__ zmq_pollitem_t ;
-typedef  int /*<<< orphan*/  URLContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EXTERNAL ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/  POLLING_TIME ; 
- int ZMQ_POLLIN ; 
- int ZMQ_POLLOUT ; 
- int /*<<< orphan*/  ZMQ_STRERROR ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int zmq_poll (TYPE_1__*,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {void* socket; int events; int revents; int fd; } ;
+typedef TYPE_1__ zmq_pollitem_t ;
+typedef int URLContext ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_EXTERNAL ;
+ int AV_LOG_ERROR ;
+ int EAGAIN ;
+ int POLLING_TIME ;
+ int ZMQ_POLLIN ;
+ int ZMQ_POLLOUT ;
+ int ZMQ_STRERROR ;
+ int av_log (int *,int ,char*,int ) ;
+ int zmq_poll (TYPE_1__*,int,int ) ;
 
 __attribute__((used)) static int zmq_proto_wait(URLContext *h, void *socket, int write)
 {

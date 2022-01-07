@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  jsdisp; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int jsdisp; } ;
 struct TYPE_8__ {TYPE_1__ u; } ;
-typedef  TYPE_2__ vdisp_t ;
-typedef  int /*<<< orphan*/  script_ctx_t ;
+typedef TYPE_2__ vdisp_t ;
+typedef int script_ctx_t ;
 struct TYPE_9__ {int flags; } ;
-typedef  TYPE_3__ property_desc_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ HRESULT ;
+typedef TYPE_3__ property_desc_t ;
+typedef int jsval_t ;
+typedef int jsstr_t ;
+typedef int WORD ;
+typedef int WCHAR ;
+typedef scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ DISP_E_UNKNOWNNAME ; 
- scalar_t__ E_FAIL ; 
- scalar_t__ E_NOTIMPL ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int PROPF_ENUMERABLE ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  is_jsdisp (TYPE_2__*) ; 
- scalar_t__ jsdisp_get_own_property (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  jsstr_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_bool (int) ; 
- scalar_t__ to_flat_string (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/  const**) ; 
+
+ scalar_t__ DISP_E_UNKNOWNNAME ;
+ scalar_t__ E_FAIL ;
+ scalar_t__ E_NOTIMPL ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int FIXME (char*,...) ;
+ int PROPF_ENUMERABLE ;
+ scalar_t__ S_OK ;
+ int TRACE (char*) ;
+ int TRUE ;
+ int is_jsdisp (TYPE_2__*) ;
+ scalar_t__ jsdisp_get_own_property (int ,int const*,int ,TYPE_3__*) ;
+ int jsstr_release (int *) ;
+ int jsval_bool (int) ;
+ scalar_t__ to_flat_string (int *,int ,int **,int const**) ;
 
 __attribute__((used)) static HRESULT Object_propertyIsEnumerable(script_ctx_t *ctx, vdisp_t *jsthis, WORD flags, unsigned argc, jsval_t *argv,
         jsval_t *r)

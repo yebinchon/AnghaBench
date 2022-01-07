@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {scalar_t__ base; scalar_t__ idx; int /*<<< orphan*/  ofs; } ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {scalar_t__ base; scalar_t__ idx; int ofs; } ;
 struct TYPE_10__ {TYPE_1__ mrm; } ;
-typedef  int Reg ;
-typedef  int /*<<< orphan*/  IRIns ;
-typedef  TYPE_2__ ASMState ;
+typedef int Reg ;
+typedef int IRIns ;
+typedef TYPE_2__ ASMState ;
 
-/* Variables and functions */
- int REX_GC64 ; 
- int /*<<< orphan*/  RID_MRM ; 
- scalar_t__ RID_NONE ; 
- int /*<<< orphan*/  RSET_GPR ; 
- int /*<<< orphan*/  XG_ARITHi (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XO_LEA ; 
- int /*<<< orphan*/  XOg_ADD ; 
- int /*<<< orphan*/  asm_fusestrref (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_gri (TYPE_2__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_loadi (TYPE_2__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_mrm (TYPE_2__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int ra_dest (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int REX_GC64 ;
+ int RID_MRM ;
+ scalar_t__ RID_NONE ;
+ int RSET_GPR ;
+ int XG_ARITHi (int ) ;
+ int XO_LEA ;
+ int XOg_ADD ;
+ int asm_fusestrref (TYPE_2__*,int *,int ) ;
+ int emit_gri (TYPE_2__*,int ,int,int ) ;
+ int emit_loadi (TYPE_2__*,int,int ) ;
+ int emit_mrm (TYPE_2__*,int ,int,int ) ;
+ int ra_dest (TYPE_2__*,int *,int ) ;
 
 __attribute__((used)) static void asm_strref(ASMState *as, IRIns *ir)
 {

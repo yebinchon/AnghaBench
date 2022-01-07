@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct w5100_priv {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IR_S0 ; 
- int /*<<< orphan*/  w5100_socket_intr_mask (struct w5100_priv*,int /*<<< orphan*/ ) ; 
+
+ int IR_S0 ;
+ int w5100_socket_intr_mask (struct w5100_priv*,int ) ;
 
 __attribute__((used)) static void w5100_enable_intr(struct w5100_priv *priv)
 {
-	w5100_socket_intr_mask(priv, IR_S0);
+ w5100_socket_intr_mask(priv, IR_S0);
 }

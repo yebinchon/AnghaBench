@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-struct pt_retstack {int top; int bottom; int /*<<< orphan*/ * stack; } ;
 
-/* Variables and functions */
- int pt_retstack_size ; 
- int pte_invalid ; 
- int pte_retstack_empty ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+struct pt_retstack {int top; int bottom; int * stack; } ;
+
+
+ int pt_retstack_size ;
+ int pte_invalid ;
+ int pte_retstack_empty ;
 
 int pt_retstack_pop(struct pt_retstack *retstack, uint64_t *ip)
 {
-	uint8_t top;
+ uint8_t top;
 
-	if (!retstack)
-		return -pte_invalid;
+ if (!retstack)
+  return -pte_invalid;
 
-	top = retstack->top;
+ top = retstack->top;
 
-	if (top == retstack->bottom)
-		return -pte_retstack_empty;
+ if (top == retstack->bottom)
+  return -pte_retstack_empty;
 
-	top = (!top ? pt_retstack_size : top - 1);
+ top = (!top ? pt_retstack_size : top - 1);
 
-	retstack->top = top;
+ retstack->top = top;
 
-	if (ip)
-		*ip = retstack->stack[top];
+ if (ip)
+  *ip = retstack->stack[top];
 
-	return 0;
+ return 0;
 }

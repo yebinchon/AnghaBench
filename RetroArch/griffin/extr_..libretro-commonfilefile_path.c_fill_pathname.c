@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp_path ;
 
-/* Variables and functions */
- int PATH_MAX_LENGTH ; 
- int /*<<< orphan*/  fill_pathname_noext (char*,char*,char const*,size_t) ; 
- int /*<<< orphan*/  path_basename (char*) ; 
- int /*<<< orphan*/  strlcpy (char*,char const*,int) ; 
- scalar_t__ strrchr (int /*<<< orphan*/ ,char) ; 
+
+
+
+typedef int tmp_path ;
+
+
+ int PATH_MAX_LENGTH ;
+ int fill_pathname_noext (char*,char*,char const*,size_t) ;
+ int path_basename (char*) ;
+ int strlcpy (char*,char const*,int) ;
+ scalar_t__ strrchr (int ,char) ;
 
 void fill_pathname(char *out_path, const char *in_path,
       const char *replace, size_t size)
 {
    char tmp_path[PATH_MAX_LENGTH];
-   char *tok                      = NULL;
+   char *tok = ((void*)0);
 
    tmp_path[0] = '\0';
 

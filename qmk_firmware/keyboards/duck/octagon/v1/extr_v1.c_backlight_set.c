@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int BACKLIGHT_ALPHA ; 
- int BACKLIGHT_EXTRA ; 
- int BACKLIGHT_FROW ; 
- int BACKLIGHT_MODNUM ; 
- int BACKLIGHT_RGBBLUE ; 
- int BACKLIGHT_RGBGREEN ; 
- int BACKLIGHT_RGBRED ; 
- int PORTB ; 
- int PORTD ; 
- int PORTE ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int BACKLIGHT_ALPHA ;
+ int BACKLIGHT_EXTRA ;
+ int BACKLIGHT_FROW ;
+ int BACKLIGHT_MODNUM ;
+ int BACKLIGHT_RGBBLUE ;
+ int BACKLIGHT_RGBGREEN ;
+ int BACKLIGHT_RGBRED ;
+ int PORTB ;
+ int PORTD ;
+ int PORTE ;
 
 void backlight_set(uint8_t level) {
   level & BACKLIGHT_ALPHA ? (PORTB |= 0b00000010) : (PORTB &= ~0b00000010);

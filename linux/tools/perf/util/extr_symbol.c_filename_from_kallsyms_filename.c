@@ -1,38 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- char* strrchr (char*,char) ; 
+ int strcmp (char*,char*) ;
+ int strcpy (char*,char const*) ;
+ char* strrchr (char*,char) ;
 
 __attribute__((used)) static bool filename_from_kallsyms_filename(char *filename,
-					    const char *base_name,
-					    const char *kallsyms_filename)
+         const char *base_name,
+         const char *kallsyms_filename)
 {
-	char *name;
+ char *name;
 
-	strcpy(filename, kallsyms_filename);
-	name = strrchr(filename, '/');
-	if (!name)
-		return false;
+ strcpy(filename, kallsyms_filename);
+ name = strrchr(filename, '/');
+ if (!name)
+  return 0;
 
-	name += 1;
+ name += 1;
 
-	if (!strcmp(name, "kallsyms")) {
-		strcpy(name, base_name);
-		return true;
-	}
+ if (!strcmp(name, "kallsyms")) {
+  strcpy(name, base_name);
+  return 1;
+ }
 
-	return false;
+ return 0;
 }

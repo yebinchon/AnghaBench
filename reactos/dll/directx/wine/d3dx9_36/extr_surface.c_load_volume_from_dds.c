@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct dds_header {int dummy; } ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_3__ {scalar_t__ ResourceType; int /*<<< orphan*/  Format; int /*<<< orphan*/  Height; int /*<<< orphan*/  Width; } ;
-typedef  int /*<<< orphan*/  PALETTEENTRY ;
-typedef  int /*<<< orphan*/  IDirect3DVolume9 ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  TYPE_1__ D3DXIMAGE_INFO ;
-typedef  int /*<<< orphan*/  D3DCOLOR ;
-typedef  int /*<<< orphan*/  D3DBOX ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef int UINT ;
+struct TYPE_3__ {scalar_t__ ResourceType; int Format; int Height; int Width; } ;
+typedef int PALETTEENTRY ;
+typedef int IDirect3DVolume9 ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef TYPE_1__ D3DXIMAGE_INFO ;
+typedef int D3DCOLOR ;
+typedef int D3DBOX ;
+typedef int BYTE ;
 
-/* Variables and functions */
- scalar_t__ D3DRTYPE_VOLUMETEXTURE ; 
- int /*<<< orphan*/  D3DXERR_INVALIDDATA ; 
- int /*<<< orphan*/  D3DXLoadVolumeFromMemory (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_NOTIMPL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  calculate_dds_surface_size (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ D3DRTYPE_VOLUMETEXTURE ;
+ int D3DXERR_INVALIDDATA ;
+ int D3DXLoadVolumeFromMemory (int *,int const*,int const*,int const*,int ,int ,int ,int *,int const*,int ,int ) ;
+ int E_NOTIMPL ;
+ scalar_t__ FAILED (int ) ;
+ int calculate_dds_surface_size (int ,int ,int ,int *,int *) ;
 
 HRESULT load_volume_from_dds(IDirect3DVolume9 *dst_volume, const PALETTEENTRY *dst_palette,
     const D3DBOX *dst_box, const void *src_data, const D3DBOX *src_box, DWORD filter, D3DCOLOR color_key,
@@ -46,5 +46,5 @@ HRESULT load_volume_from_dds(IDirect3DVolume9 *dst_volume, const PALETTEENTRY *d
         return E_NOTIMPL;
 
     return D3DXLoadVolumeFromMemory(dst_volume, dst_palette, dst_box, pixels, src_info->Format,
-        row_pitch, slice_pitch, NULL, src_box, filter, color_key);
+        row_pitch, slice_pitch, ((void*)0), src_box, filter, color_key);
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct sk_buff {int dummy; } ;
-struct net_device {int /*<<< orphan*/  dev_addr; } ;
-struct lowpan_peer {int /*<<< orphan*/ * lladdr; } ;
+struct net_device {int dev_addr; } ;
+struct lowpan_peer {int * lladdr; } ;
 
-/* Variables and functions */
- int lowpan_header_decompress (struct sk_buff*,struct net_device*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
+
+ int lowpan_header_decompress (struct sk_buff*,struct net_device*,int ,int const*) ;
 
 __attribute__((used)) static int iphc_decompress(struct sk_buff *skb, struct net_device *netdev,
-			   struct lowpan_peer *peer)
+      struct lowpan_peer *peer)
 {
-	const u8 *saddr;
+ const u8 *saddr;
 
-	saddr = peer->lladdr;
+ saddr = peer->lladdr;
 
-	return lowpan_header_decompress(skb, netdev, netdev->dev_addr, saddr);
+ return lowpan_header_decompress(skb, netdev, netdev->dev_addr, saddr);
 }

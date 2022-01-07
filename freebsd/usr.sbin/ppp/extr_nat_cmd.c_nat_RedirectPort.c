@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u_short ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ u_short ;
 struct in_addr {void* s_addr; } ;
-struct cmdargs {int argc; int argn; char** argv; int /*<<< orphan*/  prompt; TYPE_1__* bundle; } ;
+struct cmdargs {int argc; int argn; char** argv; int prompt; TYPE_1__* bundle; } ;
 struct alias_link {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  NatEnabled; } ;
+struct TYPE_2__ {int NatEnabled; } ;
 
-/* Variables and functions */
- void* INADDR_ANY ; 
- char IPPROTO_TCP ; 
- char IPPROTO_UDP ; 
- struct alias_link* LibAliasRedirectPort (int /*<<< orphan*/ ,struct in_addr,int /*<<< orphan*/ ,struct in_addr,int /*<<< orphan*/ ,struct in_addr,int /*<<< orphan*/ ,char) ; 
- int StrToAddrAndPort (char*,struct in_addr*,scalar_t__*,scalar_t__*,char const*) ; 
- int StrToPortRange (char*,scalar_t__*,scalar_t__*,char const*) ; 
- int /*<<< orphan*/  htons (scalar_t__) ; 
- int /*<<< orphan*/  la ; 
- int /*<<< orphan*/  lowhigh (scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  prompt_Printf (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ strcmp (char const*,char*) ; 
+
+ void* INADDR_ANY ;
+ char IPPROTO_TCP ;
+ char IPPROTO_UDP ;
+ struct alias_link* LibAliasRedirectPort (int ,struct in_addr,int ,struct in_addr,int ,struct in_addr,int ,char) ;
+ int StrToAddrAndPort (char*,struct in_addr*,scalar_t__*,scalar_t__*,char const*) ;
+ int StrToPortRange (char*,scalar_t__*,scalar_t__*,char const*) ;
+ int htons (scalar_t__) ;
+ int la ;
+ int lowhigh (scalar_t__*,scalar_t__*) ;
+ int prompt_Printf (int ,char*,...) ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 int
 nat_RedirectPort(struct cmdargs const *arg)
@@ -105,11 +105,11 @@ nat_RedirectPort(struct cmdargs const *arg)
 
     do {
       link = LibAliasRedirectPort(la, localaddr, htons(llocalport),
-				     remoteaddr, htons(lremoteport),
+         remoteaddr, htons(lremoteport),
                                      aliasaddr, htons(laliasport),
-				     proto_constant);
+         proto_constant);
 
-      if (link == NULL) {
+      if (link == ((void*)0)) {
         prompt_Printf(arg->prompt, "nat port: %d: error %d\n", laliasport,
                       error);
         return 1;

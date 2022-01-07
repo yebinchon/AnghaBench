@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mntfs ;
-typedef  int /*<<< orphan*/  am_opts ;
-typedef  int /*<<< orphan*/  am_ops ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * alloc_mntfs (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,char*,char*,char*,char*) ; 
- int /*<<< orphan*/ * locate_mntfs (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,char*,char*,char*,char*) ; 
+
+
+
+typedef int mntfs ;
+typedef int am_opts ;
+typedef int am_ops ;
+
+
+ int * alloc_mntfs (int *,int *,char*,char*,char*,char*,char*) ;
+ int * locate_mntfs (int *,int *,char*,char*,char*,char*,char*) ;
 
 mntfs *
 find_mntfs(am_ops *ops, am_opts *mo, char *mp, char *info, char *auto_opts, char *mopts, char *remopts)

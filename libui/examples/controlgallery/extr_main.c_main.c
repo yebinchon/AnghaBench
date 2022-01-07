@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uiTab ;
-typedef  int /*<<< orphan*/  uiInitOptions ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/ * mainwin ; 
- int /*<<< orphan*/  makeBasicControlsPage () ; 
- int /*<<< orphan*/  makeDataChoosersPage () ; 
- int /*<<< orphan*/  makeNumbersPage () ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  onClosing ; 
- int /*<<< orphan*/  onShouldQuit ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  uiControl (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uiControlShow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uiFreeInitError (char const*) ; 
- char* uiInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uiMain () ; 
- int /*<<< orphan*/ * uiNewTab () ; 
- int /*<<< orphan*/ * uiNewWindow (char*,int,int,int) ; 
- int /*<<< orphan*/  uiOnShouldQuit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uiTabAppend (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uiTabSetMargined (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  uiWindowOnClosing (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uiWindowSetChild (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uiWindowSetMargined (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uiTab ;
+typedef int uiInitOptions ;
+
+
+ int fprintf (int ,char*,char const*) ;
+ int * mainwin ;
+ int makeBasicControlsPage () ;
+ int makeDataChoosersPage () ;
+ int makeNumbersPage () ;
+ int memset (int *,int ,int) ;
+ int onClosing ;
+ int onShouldQuit ;
+ int stderr ;
+ int uiControl (int *) ;
+ int uiControlShow (int ) ;
+ int uiFreeInitError (char const*) ;
+ char* uiInit (int *) ;
+ int uiMain () ;
+ int * uiNewTab () ;
+ int * uiNewWindow (char*,int,int,int) ;
+ int uiOnShouldQuit (int ,int *) ;
+ int uiTabAppend (int *,char*,int ) ;
+ int uiTabSetMargined (int *,int,int) ;
+ int uiWindowOnClosing (int *,int ,int *) ;
+ int uiWindowSetChild (int *,int ) ;
+ int uiWindowSetMargined (int *,int) ;
 
 int main(void)
 {
-	uiInitOptions options;
-	const char *err;
-	uiTab *tab;
+ uiInitOptions options;
+ const char *err;
+ uiTab *tab;
 
-	memset(&options, 0, sizeof (uiInitOptions));
-	err = uiInit(&options);
-	if (err != NULL) {
-		fprintf(stderr, "error initializing libui: %s", err);
-		uiFreeInitError(err);
-		return 1;
-	}
+ memset(&options, 0, sizeof (uiInitOptions));
+ err = uiInit(&options);
+ if (err != ((void*)0)) {
+  fprintf(stderr, "error initializing libui: %s", err);
+  uiFreeInitError(err);
+  return 1;
+ }
 
-	mainwin = uiNewWindow("libui Control Gallery", 640, 480, 1);
-	uiWindowOnClosing(mainwin, onClosing, NULL);
-	uiOnShouldQuit(onShouldQuit, mainwin);
+ mainwin = uiNewWindow("libui Control Gallery", 640, 480, 1);
+ uiWindowOnClosing(mainwin, onClosing, ((void*)0));
+ uiOnShouldQuit(onShouldQuit, mainwin);
 
-	tab = uiNewTab();
-	uiWindowSetChild(mainwin, uiControl(tab));
-	uiWindowSetMargined(mainwin, 1);
+ tab = uiNewTab();
+ uiWindowSetChild(mainwin, uiControl(tab));
+ uiWindowSetMargined(mainwin, 1);
 
-	uiTabAppend(tab, "Basic Controls", makeBasicControlsPage());
-	uiTabSetMargined(tab, 0, 1);
+ uiTabAppend(tab, "Basic Controls", makeBasicControlsPage());
+ uiTabSetMargined(tab, 0, 1);
 
-	uiTabAppend(tab, "Numbers and Lists", makeNumbersPage());
-	uiTabSetMargined(tab, 1, 1);
+ uiTabAppend(tab, "Numbers and Lists", makeNumbersPage());
+ uiTabSetMargined(tab, 1, 1);
 
-	uiTabAppend(tab, "Data Choosers", makeDataChoosersPage());
-	uiTabSetMargined(tab, 2, 1);
+ uiTabAppend(tab, "Data Choosers", makeDataChoosersPage());
+ uiTabSetMargined(tab, 2, 1);
 
-	uiControlShow(uiControl(mainwin));
-	uiMain();
-	return 0;
+ uiControlShow(uiControl(mainwin));
+ uiMain();
+ return 0;
 }

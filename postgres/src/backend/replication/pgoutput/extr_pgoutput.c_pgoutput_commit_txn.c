@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  XLogRecPtr ;
-struct TYPE_6__ {int /*<<< orphan*/  out; } ;
-typedef  int /*<<< orphan*/  ReorderBufferTXN ;
-typedef  TYPE_1__ LogicalDecodingContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OutputPluginPrepareWrite (TYPE_1__*,int) ; 
- int /*<<< orphan*/  OutputPluginUpdateProgress (TYPE_1__*) ; 
- int /*<<< orphan*/  OutputPluginWrite (TYPE_1__*,int) ; 
- int /*<<< orphan*/  logicalrep_write_commit (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int XLogRecPtr ;
+struct TYPE_6__ {int out; } ;
+typedef int ReorderBufferTXN ;
+typedef TYPE_1__ LogicalDecodingContext ;
+
+
+ int OutputPluginPrepareWrite (TYPE_1__*,int) ;
+ int OutputPluginUpdateProgress (TYPE_1__*) ;
+ int OutputPluginWrite (TYPE_1__*,int) ;
+ int logicalrep_write_commit (int ,int *,int ) ;
 
 __attribute__((used)) static void
 pgoutput_commit_txn(LogicalDecodingContext *ctx, ReorderBufferTXN *txn,
-					XLogRecPtr commit_lsn)
+     XLogRecPtr commit_lsn)
 {
-	OutputPluginUpdateProgress(ctx);
+ OutputPluginUpdateProgress(ctx);
 
-	OutputPluginPrepareWrite(ctx, true);
-	logicalrep_write_commit(ctx->out, txn, commit_lsn);
-	OutputPluginWrite(ctx, true);
+ OutputPluginPrepareWrite(ctx, 1);
+ logicalrep_write_commit(ctx->out, txn, commit_lsn);
+ OutputPluginWrite(ctx, 1);
 }

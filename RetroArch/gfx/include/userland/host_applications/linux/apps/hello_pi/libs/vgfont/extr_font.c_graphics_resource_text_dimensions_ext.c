@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  VGfloat ;
-typedef  int /*<<< orphan*/  VGFT_FONT_T ;
-typedef  int /*<<< orphan*/  GX_CLIENT_STATE_T ;
-typedef  int /*<<< orphan*/  GRAPHICS_RESOURCE_HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * find_font (char const*,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  gx_priv_restore (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gx_priv_save (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vgft_get_text_extents (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/  const,double,double,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint32_t ;
+typedef int int32_t ;
+typedef int VGfloat ;
+typedef int VGFT_FONT_T ;
+typedef int GX_CLIENT_STATE_T ;
+typedef int GRAPHICS_RESOURCE_HANDLE ;
+
+
+ int * find_font (char const*,int const) ;
+ int gx_priv_restore (int *) ;
+ int gx_priv_save (int *,int ) ;
+ int vgft_get_text_extents (int *,char const*,int const,double,double,int *,int *) ;
 
 int32_t graphics_resource_text_dimensions_ext(GRAPHICS_RESOURCE_HANDLE res,
                                               const char *text,

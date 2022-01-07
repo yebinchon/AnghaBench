@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  pkey; int /*<<< orphan*/  pkeyalg; int /*<<< orphan*/  version; } ;
-typedef  TYPE_1__ PKCS8_PRIV_KEY_INFO ;
-typedef  int /*<<< orphan*/  ASN1_OBJECT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_INTEGER_set (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ASN1_STRING_set0 (int /*<<< orphan*/ ,unsigned char*,int) ; 
- int /*<<< orphan*/  X509_ALGOR_set0 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,void*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int pkey; int pkeyalg; int version; } ;
+typedef TYPE_1__ PKCS8_PRIV_KEY_INFO ;
+typedef int ASN1_OBJECT ;
+
+
+ int ASN1_INTEGER_set (int ,int) ;
+ int ASN1_STRING_set0 (int ,unsigned char*,int) ;
+ int X509_ALGOR_set0 (int ,int *,int,void*) ;
 
 int PKCS8_pkey_set0(PKCS8_PRIV_KEY_INFO *priv, ASN1_OBJECT *aobj,
                     int version,

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tBTA_GATTC_DATA ;
-struct TYPE_4__ {int /*<<< orphan*/  transport; int /*<<< orphan*/  bta_conn_id; int /*<<< orphan*/  bda; int /*<<< orphan*/  p_rcb; } ;
-typedef  TYPE_1__ tBTA_GATTC_CLCB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BTA_GATT_ERROR ; 
- int /*<<< orphan*/  UNUSED (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bta_gattc_clcb_dealloc (TYPE_1__*) ; 
- int /*<<< orphan*/  bta_gattc_send_open_cback (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int tBTA_GATTC_DATA ;
+struct TYPE_4__ {int transport; int bta_conn_id; int bda; int p_rcb; } ;
+typedef TYPE_1__ tBTA_GATTC_CLCB ;
+
+
+ int BTA_GATT_ERROR ;
+ int UNUSED (int *) ;
+ int bta_gattc_clcb_dealloc (TYPE_1__*) ;
+ int bta_gattc_send_open_cback (int ,int ,int ,int ,int ,int ) ;
 
 void bta_gattc_open_fail(tBTA_GATTC_CLCB *p_clcb, tBTA_GATTC_DATA *p_data)
 {
@@ -31,6 +31,6 @@ void bta_gattc_open_fail(tBTA_GATTC_CLCB *p_clcb, tBTA_GATTC_DATA *p_data)
                               p_clcb->bta_conn_id,
                               p_clcb->transport,
                               0);
-    /* open failure, remove clcb */
+
     bta_gattc_clcb_dealloc(p_clcb);
 }

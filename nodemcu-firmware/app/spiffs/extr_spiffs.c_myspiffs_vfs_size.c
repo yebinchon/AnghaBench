@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+
+
+typedef int uint32_t ;
 struct vfs_file {int dummy; } ;
-typedef  int /*<<< orphan*/  int32_t ;
+typedef int int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GET_FILE_FH (struct vfs_file const*) ; 
- int /*<<< orphan*/  SPIFFS_SEEK_END ; 
- int /*<<< orphan*/  SPIFFS_SEEK_SET ; 
- int /*<<< orphan*/  SPIFFS_lseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SPIFFS_tell (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fh ; 
- int /*<<< orphan*/  fs ; 
+
+ int GET_FILE_FH (struct vfs_file const*) ;
+ int SPIFFS_SEEK_END ;
+ int SPIFFS_SEEK_SET ;
+ int SPIFFS_lseek (int *,int ,int ,int ) ;
+ int SPIFFS_tell (int *,int ) ;
+ int fh ;
+ int fs ;
 
 __attribute__((used)) static uint32_t myspiffs_vfs_size( const struct vfs_file *fd ) {
   GET_FILE_FH(fd);

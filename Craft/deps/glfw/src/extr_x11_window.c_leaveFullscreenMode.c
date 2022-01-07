@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  monitor; } ;
-typedef  TYPE_3__ _GLFWwindow ;
-struct TYPE_7__ {scalar_t__ count; int /*<<< orphan*/  exposure; int /*<<< orphan*/  blanking; int /*<<< orphan*/  interval; int /*<<< orphan*/  timeout; } ;
-struct TYPE_6__ {TYPE_2__ saver; int /*<<< orphan*/  display; } ;
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int monitor; } ;
+typedef TYPE_3__ _GLFWwindow ;
+struct TYPE_7__ {scalar_t__ count; int exposure; int blanking; int interval; int timeout; } ;
+struct TYPE_6__ {TYPE_2__ saver; int display; } ;
 struct TYPE_9__ {TYPE_1__ x11; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XSetScreenSaver (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_5__ _glfw ; 
- int /*<<< orphan*/  _glfwRestoreVideoMode (int /*<<< orphan*/ ) ; 
+
+ int XSetScreenSaver (int ,int ,int ,int ,int ) ;
+ TYPE_5__ _glfw ;
+ int _glfwRestoreVideoMode (int ) ;
 
 __attribute__((used)) static void leaveFullscreenMode(_GLFWwindow* window)
 {
@@ -33,7 +33,7 @@ __attribute__((used)) static void leaveFullscreenMode(_GLFWwindow* window)
 
     if (_glfw.x11.saver.count == 0)
     {
-        // Restore old screen saver settings
+
         XSetScreenSaver(_glfw.x11.display,
                         _glfw.x11.saver.timeout,
                         _glfw.x11.saver.interval,

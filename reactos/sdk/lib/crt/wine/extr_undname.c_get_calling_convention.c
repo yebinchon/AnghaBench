@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,char) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- unsigned int UNDNAME_NO_ALLOCATION_LANGUAGE ; 
- unsigned int UNDNAME_NO_LEADING_UNDERSCORES ; 
- unsigned int UNDNAME_NO_MS_KEYWORDS ; 
+
+
+
+typedef int BOOL ;
+
+
+ int ERR (char*,char) ;
+ int FALSE ;
+ int TRUE ;
+ unsigned int UNDNAME_NO_ALLOCATION_LANGUAGE ;
+ unsigned int UNDNAME_NO_LEADING_UNDERSCORES ;
+ unsigned int UNDNAME_NO_MS_KEYWORDS ;
 
 __attribute__((used)) static BOOL get_calling_convention(char ch, const char** call_conv,
                                    const char** exported, unsigned flags)
 {
-    *call_conv = *exported = NULL;
+    *call_conv = *exported = ((void*)0);
 
     if (!(flags & (UNDNAME_NO_MS_KEYWORDS | UNDNAME_NO_ALLOCATION_LANGUAGE)))
     {

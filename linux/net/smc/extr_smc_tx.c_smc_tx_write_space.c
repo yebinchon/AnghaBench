@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct socket_wq {scalar_t__ fasync_list; int /*<<< orphan*/  wait; } ;
-struct socket {int /*<<< orphan*/  flags; } ;
-struct sock {int sk_shutdown; int /*<<< orphan*/  sk_wq; struct socket* sk_socket; } ;
-struct TYPE_2__ {int /*<<< orphan*/  sndbuf_space; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct socket_wq {scalar_t__ fasync_list; int wait; } ;
+struct socket {int flags; } ;
+struct sock {int sk_shutdown; int sk_wq; struct socket* sk_socket; } ;
+struct TYPE_2__ {int sndbuf_space; } ;
 struct smc_sock {TYPE_1__ conn; } ;
 
-/* Variables and functions */
- int EPOLLOUT ; 
- int EPOLLWRBAND ; 
- int EPOLLWRNORM ; 
- int /*<<< orphan*/  POLL_OUT ; 
- int SEND_SHUTDOWN ; 
- int /*<<< orphan*/  SOCK_NOSPACE ; 
- int /*<<< orphan*/  SOCK_WAKE_SPACE ; 
- scalar_t__ atomic_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- struct socket_wq* rcu_dereference (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rcu_read_lock () ; 
- int /*<<< orphan*/  rcu_read_unlock () ; 
- scalar_t__ skwq_has_sleeper (struct socket_wq*) ; 
- struct smc_sock* smc_sk (struct sock*) ; 
- int /*<<< orphan*/  sock_wake_async (struct socket_wq*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wake_up_interruptible_poll (int /*<<< orphan*/ *,int) ; 
+
+ int EPOLLOUT ;
+ int EPOLLWRBAND ;
+ int EPOLLWRNORM ;
+ int POLL_OUT ;
+ int SEND_SHUTDOWN ;
+ int SOCK_NOSPACE ;
+ int SOCK_WAKE_SPACE ;
+ scalar_t__ atomic_read (int *) ;
+ int clear_bit (int ,int *) ;
+ struct socket_wq* rcu_dereference (int ) ;
+ int rcu_read_lock () ;
+ int rcu_read_unlock () ;
+ scalar_t__ skwq_has_sleeper (struct socket_wq*) ;
+ struct smc_sock* smc_sk (struct sock*) ;
+ int sock_wake_async (struct socket_wq*,int ,int ) ;
+ int wake_up_interruptible_poll (int *,int) ;
 
 __attribute__((used)) static void smc_tx_write_space(struct sock *sk)
 {
-	struct socket *sock = sk->sk_socket;
-	struct smc_sock *smc = smc_sk(sk);
-	struct socket_wq *wq;
+ struct socket *sock = sk->sk_socket;
+ struct smc_sock *smc = smc_sk(sk);
+ struct socket_wq *wq;
 
-	/* similar to sk_stream_write_space */
-	if (atomic_read(&smc->conn.sndbuf_space) && sock) {
-		clear_bit(SOCK_NOSPACE, &sock->flags);
-		rcu_read_lock();
-		wq = rcu_dereference(sk->sk_wq);
-		if (skwq_has_sleeper(wq))
-			wake_up_interruptible_poll(&wq->wait,
-						   EPOLLOUT | EPOLLWRNORM |
-						   EPOLLWRBAND);
-		if (wq && wq->fasync_list && !(sk->sk_shutdown & SEND_SHUTDOWN))
-			sock_wake_async(wq, SOCK_WAKE_SPACE, POLL_OUT);
-		rcu_read_unlock();
-	}
+
+ if (atomic_read(&smc->conn.sndbuf_space) && sock) {
+  clear_bit(SOCK_NOSPACE, &sock->flags);
+  rcu_read_lock();
+  wq = rcu_dereference(sk->sk_wq);
+  if (skwq_has_sleeper(wq))
+   wake_up_interruptible_poll(&wq->wait,
+         EPOLLOUT | EPOLLWRNORM |
+         EPOLLWRBAND);
+  if (wq && wq->fasync_list && !(sk->sk_shutdown & SEND_SHUTDOWN))
+   sock_wake_async(wq, SOCK_WAKE_SPACE, POLL_OUT);
+  rcu_read_unlock();
+ }
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ cmsUInt32Number ;
-typedef  scalar_t__ cmsUInt16Number ;
-typedef  int /*<<< orphan*/  cmsNAMEDCOLORLIST ;
-typedef  int /*<<< orphan*/  cmsIOHANDLER ;
-typedef  int /*<<< orphan*/ * cmsHTRANSFORM ;
-typedef  int /*<<< orphan*/  cmsHPROFILE ;
-typedef  int /*<<< orphan*/  cmsContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BuildColorantList (char*,scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TYPE_NAMED_COLOR_INDEX ; 
- scalar_t__ T_CHANNELS (scalar_t__) ; 
- int /*<<< orphan*/  _cmsIOPrintf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/ * cmsCreateTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  cmsDeleteTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsDoTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__*,scalar_t__*,int) ; 
- scalar_t__ cmsFLAGS_NODEFAULTRESOURCEDEF ; 
- scalar_t__ cmsFormatterForColorspaceOfProfile (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * cmsGetNamedColorList (int /*<<< orphan*/ *) ; 
- int cmsMAXCHANNELS ; 
- int cmsMAX_PATH ; 
- scalar_t__ cmsNamedColorCount (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsNamedColorInfo (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ cmsUInt32Number ;
+typedef scalar_t__ cmsUInt16Number ;
+typedef int cmsNAMEDCOLORLIST ;
+typedef int cmsIOHANDLER ;
+typedef int * cmsHTRANSFORM ;
+typedef int cmsHPROFILE ;
+typedef int cmsContext ;
+
+
+ int BuildColorantList (char*,scalar_t__,scalar_t__*) ;
+ int FALSE ;
+ int TYPE_NAMED_COLOR_INDEX ;
+ scalar_t__ T_CHANNELS (scalar_t__) ;
+ int _cmsIOPrintf (int ,int *,char*,...) ;
+ int * cmsCreateTransform (int ,int ,int ,int *,scalar_t__,scalar_t__,scalar_t__) ;
+ int cmsDeleteTransform (int ,int *) ;
+ int cmsDoTransform (int ,int *,scalar_t__*,scalar_t__*,int) ;
+ scalar_t__ cmsFLAGS_NODEFAULTRESOURCEDEF ;
+ scalar_t__ cmsFormatterForColorspaceOfProfile (int ,int ,int,int ) ;
+ int * cmsGetNamedColorList (int *) ;
+ int cmsMAXCHANNELS ;
+ int cmsMAX_PATH ;
+ scalar_t__ cmsNamedColorCount (int ,int *) ;
+ int cmsNamedColorInfo (int ,int *,scalar_t__,char*,int *,int *,int *,int *) ;
 
 __attribute__((used)) static
 int WriteNamedColorCRD(cmsContext ContextID, cmsIOHANDLER* m, cmsHPROFILE hNamedColor, cmsUInt32Number Intent, cmsUInt32Number dwFlags)
@@ -47,22 +47,22 @@ int WriteNamedColorCRD(cmsContext ContextID, cmsIOHANDLER* m, cmsHPROFILE hNamed
 
 
     OutputFormat = cmsFormatterForColorspaceOfProfile(ContextID, hNamedColor, 2, FALSE);
-    nColorant    = T_CHANNELS(OutputFormat);
+    nColorant = T_CHANNELS(OutputFormat);
 
 
-    xform = cmsCreateTransform(ContextID, hNamedColor, TYPE_NAMED_COLOR_INDEX, NULL, OutputFormat, Intent, dwFlags);
-    if (xform == NULL) return 0;
+    xform = cmsCreateTransform(ContextID, hNamedColor, TYPE_NAMED_COLOR_INDEX, ((void*)0), OutputFormat, Intent, dwFlags);
+    if (xform == ((void*)0)) return 0;
 
 
     NamedColorList = cmsGetNamedColorList(xform);
-    if (NamedColorList == NULL) return 0;
+    if (NamedColorList == ((void*)0)) return 0;
 
     _cmsIOPrintf(ContextID, m, "<<\n");
     _cmsIOPrintf(ContextID, m, "(colorlistcomment) (%s) \n", "Named profile");
     _cmsIOPrintf(ContextID, m, "(Prefix) [ (Pantone ) (PANTONE ) ]\n");
     _cmsIOPrintf(ContextID, m, "(Suffix) [ ( CV) ( CVC) ( C) ]\n");
 
-    nColors   = cmsNamedColorCount(ContextID, NamedColorList);
+    nColors = cmsNamedColorCount(ContextID, NamedColorList);
 
     for (i=0; i < nColors; i++) {
 
@@ -71,7 +71,7 @@ int WriteNamedColorCRD(cmsContext ContextID, cmsIOHANDLER* m, cmsHPROFILE hNamed
 
         In[0] = (cmsUInt16Number) i;
 
-        if (!cmsNamedColorInfo(ContextID, NamedColorList, i, ColorName, NULL, NULL, NULL, NULL))
+        if (!cmsNamedColorInfo(ContextID, NamedColorList, i, ColorName, ((void*)0), ((void*)0), ((void*)0), ((void*)0)))
                 continue;
 
         cmsDoTransform(ContextID, xform, In, Out, 1);

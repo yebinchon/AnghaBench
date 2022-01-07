@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  user_t ;
 
-/* Variables and functions */
- int adjust_message_intermediate (int,int,int,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ conv_uid (int) ; 
- int /*<<< orphan*/ * get_user_f (int) ; 
- int /*<<< orphan*/  update_history_persistent (int /*<<< orphan*/ *,int,int,int) ; 
- scalar_t__ write_all_events ; 
+
+
+
+typedef int user_t ;
+
+
+ int adjust_message_intermediate (int,int,int,int) ;
+ int assert (int) ;
+ scalar_t__ conv_uid (int) ;
+ int * get_user_f (int) ;
+ int update_history_persistent (int *,int,int,int) ;
+ scalar_t__ write_all_events ;
 
 int adjust_message (int user_id, int local_id, int clear_mask, int set_mask, int from_binlog) {
   if (clear_mask != -1 || set_mask != -1) {
@@ -41,11 +41,11 @@ int adjust_message (int user_id, int local_id, int clear_mask, int set_mask, int
       update_history_persistent (U, local_id, set_mask, 1);
     } else {
       if (clear_mask) {
-	assert (!set_mask);
-	update_history_persistent (U, local_id, clear_mask, 3);
+ assert (!set_mask);
+ update_history_persistent (U, local_id, clear_mask, 3);
       } else {
-	assert (!clear_mask);
-	update_history_persistent (U, local_id, set_mask, 2);
+ assert (!clear_mask);
+ update_history_persistent (U, local_id, set_mask, 2);
       }
     }
   }

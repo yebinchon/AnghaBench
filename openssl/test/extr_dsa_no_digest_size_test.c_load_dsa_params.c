@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dsaq_2048 ;
-typedef  int /*<<< orphan*/  dsap_2048 ;
-typedef  int /*<<< orphan*/  dsag_2048 ;
-typedef  int /*<<< orphan*/  DSA ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BN_bin2bn (unsigned char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DSA_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * DSA_new () ; 
- int /*<<< orphan*/  DSA_set0_pqg (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int dsaq_2048 ;
+typedef int dsap_2048 ;
+typedef int dsag_2048 ;
+typedef int DSA ;
+typedef int BIGNUM ;
+
+
+ int * BN_bin2bn (unsigned char*,int,int *) ;
+ int BN_free (int *) ;
+ int DSA_free (int *) ;
+ int * DSA_new () ;
+ int DSA_set0_pqg (int *,int *,int *,int *) ;
 
 __attribute__((used)) static DSA *load_dsa_params(void)
 {
@@ -90,16 +90,16 @@ __attribute__((used)) static DSA *load_dsa_params(void)
     DSA *dsa = DSA_new();
     BIGNUM *p, *q, *g;
 
-    if (dsa == NULL)
-        return NULL;
-    if (!DSA_set0_pqg(dsa, p = BN_bin2bn(dsap_2048, sizeof(dsap_2048), NULL),
-                           q = BN_bin2bn(dsaq_2048, sizeof(dsaq_2048), NULL),
-                           g = BN_bin2bn(dsag_2048, sizeof(dsag_2048), NULL))) {
+    if (dsa == ((void*)0))
+        return ((void*)0);
+    if (!DSA_set0_pqg(dsa, p = BN_bin2bn(dsap_2048, sizeof(dsap_2048), ((void*)0)),
+                           q = BN_bin2bn(dsaq_2048, sizeof(dsaq_2048), ((void*)0)),
+                           g = BN_bin2bn(dsag_2048, sizeof(dsag_2048), ((void*)0)))) {
         DSA_free(dsa);
         BN_free(p);
         BN_free(q);
         BN_free(g);
-        return NULL;
+        return ((void*)0);
     }
     return dsa;
 }

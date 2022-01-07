@@ -1,67 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_shader_register {int type; int /*<<< orphan*/  immconst_type; TYPE_1__* idx; } ;
-struct TYPE_2__ {int /*<<< orphan*/  offset; } ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int FALSE ; 
- int TRUE ; 
-#define  WINED3DSPR_CONSTBOOL 137 
-#define  WINED3DSPR_DEPTHOUT 136 
-#define  WINED3DSPR_DEPTHOUTGE 135 
-#define  WINED3DSPR_DEPTHOUTLE 134 
-#define  WINED3DSPR_IMMCONST 133 
-#define  WINED3DSPR_LOOP 132 
-#define  WINED3DSPR_MISCTYPE 131 
-#define  WINED3DSPR_PREDICATE 130 
-#define  WINED3DSPR_PRIMID 129 
-#define  WINED3DSPR_RASTOUT 128 
- int /*<<< orphan*/  WINED3D_IMMCONST_SCALAR ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct wined3d_shader_register {int type; int immconst_type; TYPE_1__* idx; } ;
+struct TYPE_2__ {int offset; } ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int WINED3D_IMMCONST_SCALAR ;
 
 __attribute__((used)) static inline BOOL shader_is_scalar(const struct wined3d_shader_register *reg)
 {
     switch (reg->type)
     {
-        case WINED3DSPR_RASTOUT:
-            /* oFog & oPts */
+        case 128:
+
             if (reg->idx[0].offset)
                 return TRUE;
-            /* oPos */
+
             return FALSE;
 
-        case WINED3DSPR_DEPTHOUT:   /* oDepth */
-        case WINED3DSPR_DEPTHOUTGE:
-        case WINED3DSPR_DEPTHOUTLE:
-        case WINED3DSPR_CONSTBOOL:  /* b# */
-        case WINED3DSPR_LOOP:       /* aL */
-        case WINED3DSPR_PREDICATE:  /* p0 */
-        case WINED3DSPR_PRIMID:     /* primID */
+        case 136:
+        case 135:
+        case 134:
+        case 137:
+        case 132:
+        case 130:
+        case 129:
             return TRUE;
 
-        case WINED3DSPR_MISCTYPE:
+        case 131:
             switch (reg->idx[0].offset)
             {
-                case 0: /* vPos */
+                case 0:
                     return FALSE;
-                case 1: /* vFace */
+                case 1:
                     return TRUE;
                 default:
                     return FALSE;
             }
 
-        case WINED3DSPR_IMMCONST:
+        case 133:
             return reg->immconst_type == WINED3D_IMMCONST_SCALAR;
 
         default:

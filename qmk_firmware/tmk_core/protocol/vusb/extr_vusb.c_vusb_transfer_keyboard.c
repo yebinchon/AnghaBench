@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  report_keyboard_t ;
 
-/* Variables and functions */
- size_t KBUF_SIZE ; 
- int VUSB_TRANSFER_KEYBOARD_MAX_TRIES ; 
- int /*<<< orphan*/  _delay_ms (int) ; 
- scalar_t__ debug_keyboard ; 
- int /*<<< orphan*/ * kbuf ; 
- size_t kbuf_head ; 
- size_t kbuf_tail ; 
- int /*<<< orphan*/  pdec (size_t) ; 
- int /*<<< orphan*/  phex (size_t) ; 
- int /*<<< orphan*/  print (char*) ; 
- scalar_t__ usbInterruptIsReady () ; 
- int /*<<< orphan*/  usbPoll () ; 
- int /*<<< orphan*/  usbSetInterrupt (void*,int) ; 
+
+
+
+typedef int report_keyboard_t ;
+
+
+ size_t KBUF_SIZE ;
+ int VUSB_TRANSFER_KEYBOARD_MAX_TRIES ;
+ int _delay_ms (int) ;
+ scalar_t__ debug_keyboard ;
+ int * kbuf ;
+ size_t kbuf_head ;
+ size_t kbuf_tail ;
+ int pdec (size_t) ;
+ int phex (size_t) ;
+ int print (char*) ;
+ scalar_t__ usbInterruptIsReady () ;
+ int usbPoll () ;
+ int usbSetInterrupt (void*,int) ;
 
 void vusb_transfer_keyboard(void) {
     for (int i = 0; i < VUSB_TRANSFER_KEYBOARD_MAX_TRIES; i++) {

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const uint8_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int const uint8_t ;
 struct TYPE_5__ {size_t blocksz; } ;
-typedef  TYPE_1__ cf_prp ;
-typedef  int /*<<< orphan*/  cf_ctr ;
-typedef  int /*<<< orphan*/  cf_cbcmac_stream ;
+typedef TYPE_1__ cf_prp ;
+typedef int cf_ctr ;
+typedef int cf_cbcmac_stream ;
 
-/* Variables and functions */
- int CF_MAXBLOCK ; 
- int /*<<< orphan*/  add_aad (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  add_block0 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,size_t,int /*<<< orphan*/  const*,size_t,size_t,size_t,size_t,size_t) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  build_ctr_nonce (int /*<<< orphan*/  const*,size_t,int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  cf_cbcmac_stream_init (int /*<<< orphan*/ *,TYPE_1__ const*,void*) ; 
- int /*<<< orphan*/  cf_cbcmac_stream_nopad_final (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  cf_cbcmac_stream_update (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  cf_ctr_cipher (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  cf_ctr_custom_counter (int /*<<< orphan*/ *,size_t,size_t) ; 
- int /*<<< orphan*/  cf_ctr_init (int /*<<< orphan*/ *,TYPE_1__ const*,void*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  zero_pad (int /*<<< orphan*/ *) ; 
+
+ int CF_MAXBLOCK ;
+ int add_aad (int *,int const*,int const*,size_t) ;
+ int add_block0 (int *,int const*,size_t,int const*,size_t,size_t,size_t,size_t,size_t) ;
+ int assert (int) ;
+ int build_ctr_nonce (int const*,size_t,int const*,size_t) ;
+ int cf_cbcmac_stream_init (int *,TYPE_1__ const*,void*) ;
+ int cf_cbcmac_stream_nopad_final (int *,int const*) ;
+ int cf_cbcmac_stream_update (int *,int const*,size_t) ;
+ int cf_ctr_cipher (int *,int const*,int const*,size_t) ;
+ int cf_ctr_custom_counter (int *,size_t,size_t) ;
+ int cf_ctr_init (int *,TYPE_1__ const*,void*,int const*) ;
+ int memcpy (int const*,int const*,size_t) ;
+ int zero_pad (int *) ;
 
 void cf_ccm_encrypt(const cf_prp *prp, void *prpctx,
                     const uint8_t *plain, size_t nplain, size_t L,
@@ -48,24 +48,24 @@ void cf_ccm_encrypt(const cf_prp *prp, void *prpctx,
   cf_cbcmac_stream cm;
   cf_cbcmac_stream_init(&cm, prp, prpctx);
 
-  /* Add first block. */
+
   add_block0(&cm, block, prp->blocksz,
              nonce, nnonce,
              L, nplain, nheader, ntag);
 
-  /* Add AAD with length prefix, if present. */
+
   if (nheader)
     add_aad(&cm, block, header, nheader);
 
-  /* Add message. */
+
   cf_cbcmac_stream_update(&cm, plain, nplain);
   zero_pad(&cm);
 
-  /* Finish tag. */
+
   cf_cbcmac_stream_nopad_final(&cm, block);
 
-  /* Start encryption. */
-  /* Construct A_0 */
+
+
   uint8_t ctr_nonce[CF_MAXBLOCK];
   build_ctr_nonce(ctr_nonce, L, nonce, nnonce);
 
@@ -73,10 +73,10 @@ void cf_ccm_encrypt(const cf_prp *prp, void *prpctx,
   cf_ctr_init(&ctr, prp, prpctx, ctr_nonce);
   cf_ctr_custom_counter(&ctr, prp->blocksz - L, L);
 
-  /* Encrypt tag first. */
+
   cf_ctr_cipher(&ctr, block, block, prp->blocksz);
   memcpy(tag, block, ntag);
 
-  /* Then encrypt message. */
+
   cf_ctr_cipher(&ctr, plain, cipher, nplain);
 }

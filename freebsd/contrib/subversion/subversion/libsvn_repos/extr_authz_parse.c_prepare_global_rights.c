@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_10__ {TYPE_1__* authz; } ;
-typedef  TYPE_2__ ctor_baton_t ;
-struct TYPE_11__ {int /*<<< orphan*/  user; } ;
-typedef  TYPE_3__ authz_global_rights_t ;
-struct TYPE_9__ {int /*<<< orphan*/  user_rights; int /*<<< orphan*/  pool; } ;
+typedef TYPE_2__ ctor_baton_t ;
+struct TYPE_11__ {int user; } ;
+typedef TYPE_3__ authz_global_rights_t ;
+struct TYPE_9__ {int user_rights; int pool; } ;
 
-/* Variables and functions */
- TYPE_3__* apr_palloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  init_global_rights (TYPE_3__*,char const*,int /*<<< orphan*/ ) ; 
- TYPE_3__* svn_hash_gets (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
+
+ TYPE_3__* apr_palloc (int ,int) ;
+ int init_global_rights (TYPE_3__*,char const*,int ) ;
+ TYPE_3__* svn_hash_gets (int ,char const*) ;
+ int svn_hash_sets (int ,int ,TYPE_3__*) ;
 
 __attribute__((used)) static void
 prepare_global_rights(ctor_baton_t *cb, const char *user)

@@ -1,66 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mode_info {int mode; int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
 
-/* Variables and functions */
-#define  VIDEO_80x25 134 
-#define  VIDEO_80x28 133 
-#define  VIDEO_80x30 132 
-#define  VIDEO_80x34 131 
-#define  VIDEO_80x43 130 
-#define  VIDEO_80x60 129 
-#define  VIDEO_8POINT 128 
- int /*<<< orphan*/  force_x ; 
- int /*<<< orphan*/  force_y ; 
- int /*<<< orphan*/  vga_set_14font () ; 
- int /*<<< orphan*/  vga_set_80x30 () ; 
- int /*<<< orphan*/  vga_set_80x34 () ; 
- int /*<<< orphan*/  vga_set_80x43 () ; 
- int /*<<< orphan*/  vga_set_80x60 () ; 
- int /*<<< orphan*/  vga_set_8font () ; 
- int /*<<< orphan*/  vga_set_basic_mode () ; 
+
+
+
+struct mode_info {int mode; int y; int x; } ;
+ int force_x ;
+ int force_y ;
+ int vga_set_14font () ;
+ int vga_set_80x30 () ;
+ int vga_set_80x34 () ;
+ int vga_set_80x43 () ;
+ int vga_set_80x60 () ;
+ int vga_set_8font () ;
+ int vga_set_basic_mode () ;
 
 __attribute__((used)) static int vga_set_mode(struct mode_info *mode)
 {
-	/* Set the basic mode */
-	vga_set_basic_mode();
 
-	/* Override a possibly broken BIOS */
-	force_x = mode->x;
-	force_y = mode->y;
+ vga_set_basic_mode();
 
-	switch (mode->mode) {
-	case VIDEO_80x25:
-		break;
-	case VIDEO_8POINT:
-		vga_set_8font();
-		break;
-	case VIDEO_80x43:
-		vga_set_80x43();
-		break;
-	case VIDEO_80x28:
-		vga_set_14font();
-		break;
-	case VIDEO_80x30:
-		vga_set_80x30();
-		break;
-	case VIDEO_80x34:
-		vga_set_80x34();
-		break;
-	case VIDEO_80x60:
-		vga_set_80x60();
-		break;
-	}
 
-	return 0;
+ force_x = mode->x;
+ force_y = mode->y;
+
+ switch (mode->mode) {
+ case 134:
+  break;
+ case 128:
+  vga_set_8font();
+  break;
+ case 130:
+  vga_set_80x43();
+  break;
+ case 133:
+  vga_set_14font();
+  break;
+ case 132:
+  vga_set_80x30();
+  break;
+ case 131:
+  vga_set_80x34();
+  break;
+ case 129:
+  vga_set_80x60();
+  break;
+ }
+
+ return 0;
 }

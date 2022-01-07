@@ -1,52 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wireless_dev {int iftype; int /*<<< orphan*/  sme_state; int /*<<< orphan*/  current_bss; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_WDEV_LOCK (struct wireless_dev*) ; 
- int /*<<< orphan*/  CFG80211_SME_CONNECTED ; 
- int EINVAL ; 
- int ENOLINK ; 
-#define  NL80211_IFTYPE_ADHOC 134 
-#define  NL80211_IFTYPE_AP 133 
-#define  NL80211_IFTYPE_AP_VLAN 132 
-#define  NL80211_IFTYPE_MESH_POINT 131 
-#define  NL80211_IFTYPE_P2P_CLIENT 130 
-#define  NL80211_IFTYPE_P2P_GO 129 
-#define  NL80211_IFTYPE_STATION 128 
 
+
+
+struct wireless_dev {int iftype; int sme_state; int current_bss; } ;
+
+
+ int ASSERT_WDEV_LOCK (struct wireless_dev*) ;
+ int CFG80211_SME_CONNECTED ;
+ int EINVAL ;
+ int ENOLINK ;
 __attribute__((used)) static int nl80211_key_allowed(struct wireless_dev *wdev)
 {
-	ASSERT_WDEV_LOCK(wdev);
+ ASSERT_WDEV_LOCK(wdev);
 
-	switch (wdev->iftype) {
-	case NL80211_IFTYPE_AP:
-	case NL80211_IFTYPE_AP_VLAN:
-	case NL80211_IFTYPE_P2P_GO:
-	case NL80211_IFTYPE_MESH_POINT:
-		break;
-	case NL80211_IFTYPE_ADHOC:
-		if (!wdev->current_bss)
-			return -ENOLINK;
-		break;
-	case NL80211_IFTYPE_STATION:
-	case NL80211_IFTYPE_P2P_CLIENT:
-		if (wdev->sme_state != CFG80211_SME_CONNECTED)
-			return -ENOLINK;
-		break;
-	default:
-		return -EINVAL;
-	}
+ switch (wdev->iftype) {
+ case 133:
+ case 132:
+ case 129:
+ case 131:
+  break;
+ case 134:
+  if (!wdev->current_bss)
+   return -ENOLINK;
+  break;
+ case 128:
+ case 130:
+  if (wdev->sme_state != CFG80211_SME_CONNECTED)
+   return -ENOLINK;
+  break;
+ default:
+  return -EINVAL;
+ }
 
-	return 0;
+ return 0;
 }

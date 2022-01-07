@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  mac ;
-typedef  int /*<<< orphan*/  device_desc_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_EFUSE_MAC_FACTORY ; 
- int /*<<< orphan*/  ESP_EFUSE_SECURE_VERSION ; 
- int /*<<< orphan*/  ESP_ERROR_CHECK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  esp_efuse_read_field_blob (int /*<<< orphan*/ ,int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  esp_efuse_read_field_cnt (int /*<<< orphan*/ ,size_t*) ; 
- int /*<<< orphan*/  read_device_desc_efuse_fields (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+typedef int mac ;
+typedef int device_desc_t ;
+
+
+ int ESP_EFUSE_MAC_FACTORY ;
+ int ESP_EFUSE_SECURE_VERSION ;
+ int ESP_ERROR_CHECK (int ) ;
+ int ESP_LOGI (int ,char*,...) ;
+ int TAG ;
+ int esp_efuse_read_field_blob (int ,int **,int) ;
+ int esp_efuse_read_field_cnt (int ,size_t*) ;
+ int read_device_desc_efuse_fields (int *) ;
 
 __attribute__((used)) static void read_efuse_fields(device_desc_t *desc)
 {
@@ -37,5 +37,5 @@ __attribute__((used)) static void read_efuse_fields(device_desc_t *desc)
     ESP_LOGI(TAG, "2. read secure_version: %d", secure_version);
 
     ESP_LOGI(TAG, "3. read custom fields");
-    read_device_desc_efuse_fields(desc);   
+    read_device_desc_efuse_fields(desc);
 }

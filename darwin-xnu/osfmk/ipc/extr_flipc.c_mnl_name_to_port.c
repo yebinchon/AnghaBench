@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mnl_name_t ;
-typedef  int /*<<< orphan*/  ipc_port_t ;
-typedef  TYPE_1__* flipc_port_t ;
-struct TYPE_3__ {int /*<<< orphan*/  lport; } ;
 
-/* Variables and functions */
- scalar_t__ FPORT_VALID (TYPE_1__*) ; 
- int /*<<< orphan*/  IP_NULL ; 
- scalar_t__ MNL_NAME_VALID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mnl_obj_lookup (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int mnl_name_t ;
+typedef int ipc_port_t ;
+typedef TYPE_1__* flipc_port_t ;
+struct TYPE_3__ {int lport; } ;
+
+
+ scalar_t__ FPORT_VALID (TYPE_1__*) ;
+ int IP_NULL ;
+ scalar_t__ MNL_NAME_VALID (int ) ;
+ int mnl_obj_lookup (int ) ;
 
 __attribute__((used)) static inline ipc_port_t mnl_name_to_port(mnl_name_t name)
 {

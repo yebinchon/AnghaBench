@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_5__ {int /*<<< orphan*/  metatable; } ;
-typedef  TYPE_1__ Table ;
-struct TYPE_6__ {int /*<<< orphan*/  len; } ;
-typedef  int /*<<< orphan*/  TValue ;
-typedef  int /*<<< orphan*/  StkId ;
 
-/* Variables and functions */
-#define  LUA_TSTRING 129 
-#define  LUA_TTABLE 128 
- int /*<<< orphan*/  TM_LEN ; 
- int /*<<< orphan*/  callTM (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  cast_num (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * fasttm (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* hvalue (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  luaG_typeerror (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,char*) ; 
- int /*<<< orphan*/  luaH_getn (TYPE_1__*) ; 
- int /*<<< orphan*/ * luaT_gettmbyobj (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setnvalue (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__* tsvalue (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ttisnil (int /*<<< orphan*/  const*) ; 
- int ttypenv (int /*<<< orphan*/  const*) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+struct TYPE_5__ {int metatable; } ;
+typedef TYPE_1__ Table ;
+struct TYPE_6__ {int len; } ;
+typedef int TValue ;
+typedef int StkId ;
+
+
+
+
+ int TM_LEN ;
+ int callTM (int *,int const*,int const*,int const*,int ,int) ;
+ int cast_num (int ) ;
+ int * fasttm (int *,int ,int ) ;
+ TYPE_1__* hvalue (int const*) ;
+ int luaG_typeerror (int *,int const*,char*) ;
+ int luaH_getn (TYPE_1__*) ;
+ int * luaT_gettmbyobj (int *,int const*,int ) ;
+ int setnvalue (int ,int ) ;
+ TYPE_2__* tsvalue (int const*) ;
+ int ttisnil (int const*) ;
+ int ttypenv (int const*) ;
 
 void luaV_objlen (lua_State *L, StkId ra, const TValue *rb) {
   const TValue *tm;
   switch (ttypenv(rb)) {
-    case LUA_TTABLE: {
+    case 128: {
       Table *h = hvalue(rb);
       tm = fasttm(L, h->metatable, TM_LEN);
-      if (tm) break;  /* metamethod? break switch to call it */
-      setnvalue(ra, cast_num(luaH_getn(h)));  /* else primitive len */
+      if (tm) break;
+      setnvalue(ra, cast_num(luaH_getn(h)));
       return;
     }
-    case LUA_TSTRING: {
+    case 129: {
       setnvalue(ra, cast_num(tsvalue(rb)->len));
       return;
     }
-    default: {  /* try metamethod */
+    default: {
       tm = luaT_gettmbyobj(L, rb, TM_LEN);
-      if (ttisnil(tm))  /* no metamethod? */
+      if (ttisnil(tm))
         luaG_typeerror(L, rb, "get length of");
       break;
     }

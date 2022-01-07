@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IMimeInternational ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ HCHARSET ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHARSET_BODY ; 
- int /*<<< orphan*/  GetACP () ; 
- scalar_t__ IMimeInternational_FindCharset (int /*<<< orphan*/ *,char*,scalar_t__*) ; 
- scalar_t__ IMimeInternational_GetCodePageCharset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ IMimeInternational_GetDefaultCharset (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  IMimeInternational_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IMimeInternational_SetDefaultCharset (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ MimeOleGetInternat (int /*<<< orphan*/ **) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int IMimeInternational ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ HCHARSET ;
+
+
+ int CHARSET_BODY ;
+ int GetACP () ;
+ scalar_t__ IMimeInternational_FindCharset (int *,char*,scalar_t__*) ;
+ scalar_t__ IMimeInternational_GetCodePageCharset (int *,int ,int ,scalar_t__*) ;
+ scalar_t__ IMimeInternational_GetDefaultCharset (int *,scalar_t__*) ;
+ int IMimeInternational_Release (int *) ;
+ scalar_t__ IMimeInternational_SetDefaultCharset (int *,scalar_t__) ;
+ scalar_t__ MimeOleGetInternat (int **) ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_defaultcharset(void)
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static void test_defaultcharset(void)
     hr = IMimeInternational_GetDefaultCharset(internat, &hcs);
     ok(hr == S_OK, "ret %08x\n", hr);
     ok(hcs == hcs_windows_1251, "didn't retrieve recently set default\n");
-    /* Set the old default back again */
+
     hr = IMimeInternational_SetDefaultCharset(internat, hcs_default);
     ok(hr == S_OK, "ret %08x\n", hr);
 

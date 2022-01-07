@@ -1,77 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  err ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E (int) ; 
- int EXIT_SUCCESS ; 
- int WSAEACCES ; 
- int WSAEADDRINUSE ; 
- int WSAEADDRNOTAVAIL ; 
- int WSAEAFNOSUPPORT ; 
- int WSAEALREADY ; 
- int WSAECONNABORTED ; 
- int WSAECONNREFUSED ; 
- int WSAECONNRESET ; 
- int WSAEDESTADDRREQ ; 
- int WSAEDISCON ; 
- int WSAEFAULT ; 
- int WSAEHOSTDOWN ; 
- int WSAEHOSTUNREACH ; 
- int WSAEINPROGRESS ; 
- int WSAEINTR ; 
- int WSAEINVAL ; 
- int WSAEISCONN ; 
- int WSAEMFILE ; 
- int WSAEMSGSIZE ; 
- int WSAENETDOWN ; 
- int WSAENETRESET ; 
- int WSAENETUNREACH ; 
- int WSAENOBUFS ; 
- int WSAENOPROTOOPT ; 
- int WSAENOTCONN ; 
- int WSAENOTSOCK ; 
- int WSAEOPNOTSUPP ; 
- int WSAEPFNOSUPPORT ; 
- int WSAEPROCLIM ; 
- int WSAEPROTONOSUPPORT ; 
- int WSAEPROTOTYPE ; 
- int WSAESHUTDOWN ; 
- int WSAESOCKTNOSUPPORT ; 
- int WSAETIMEDOUT ; 
- int WSAEWOULDBLOCK ; 
- int WSAHOST_NOT_FOUND ; 
- int WSANOTINITIALISED ; 
- int WSANO_DATA ; 
- int WSANO_RECOVERY ; 
- int WSASYSNOTREADY ; 
- int WSATRY_AGAIN ; 
- int WSATYPE_NOT_FOUND ; 
- int WSAVERNOTSUPPORTED ; 
- int /*<<< orphan*/  evthread_use_windows_threads () ; 
- int /*<<< orphan*/  evutil_secure_rng_get_bytes (int*,int) ; 
- char* evutil_socket_error_to_string (int) ; 
- int /*<<< orphan*/  libevent_global_shutdown () ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+
+
+typedef int err ;
+
+
+ int E (int) ;
+ int EXIT_SUCCESS ;
+ int WSAEACCES ;
+ int WSAEADDRINUSE ;
+ int WSAEADDRNOTAVAIL ;
+ int WSAEAFNOSUPPORT ;
+ int WSAEALREADY ;
+ int WSAECONNABORTED ;
+ int WSAECONNREFUSED ;
+ int WSAECONNRESET ;
+ int WSAEDESTADDRREQ ;
+ int WSAEDISCON ;
+ int WSAEFAULT ;
+ int WSAEHOSTDOWN ;
+ int WSAEHOSTUNREACH ;
+ int WSAEINPROGRESS ;
+ int WSAEINTR ;
+ int WSAEINVAL ;
+ int WSAEISCONN ;
+ int WSAEMFILE ;
+ int WSAEMSGSIZE ;
+ int WSAENETDOWN ;
+ int WSAENETRESET ;
+ int WSAENETUNREACH ;
+ int WSAENOBUFS ;
+ int WSAENOPROTOOPT ;
+ int WSAENOTCONN ;
+ int WSAENOTSOCK ;
+ int WSAEOPNOTSUPP ;
+ int WSAEPFNOSUPPORT ;
+ int WSAEPROCLIM ;
+ int WSAEPROTONOSUPPORT ;
+ int WSAEPROTOTYPE ;
+ int WSAESHUTDOWN ;
+ int WSAESOCKTNOSUPPORT ;
+ int WSAETIMEDOUT ;
+ int WSAEWOULDBLOCK ;
+ int WSAHOST_NOT_FOUND ;
+ int WSANOTINITIALISED ;
+ int WSANO_DATA ;
+ int WSANO_RECOVERY ;
+ int WSASYSNOTREADY ;
+ int WSATRY_AGAIN ;
+ int WSATYPE_NOT_FOUND ;
+ int WSAVERNOTSUPPORTED ;
+ int evthread_use_windows_threads () ;
+ int evutil_secure_rng_get_bytes (int*,int) ;
+ char* evutil_socket_error_to_string (int) ;
+ int libevent_global_shutdown () ;
+ int printf (char*,...) ;
 
 int main (int argc, char **argv)
 {
   int i, j;
   const char *s1, *s2;
 
-#ifdef EVTHREAD_USE_WINDOWS_THREADS_IMPLEMENTED
-  evthread_use_windows_threads ();
-#endif
+
+
+
 
   s1 = evutil_socket_error_to_string (WSAEINTR);
 
@@ -120,9 +120,9 @@ int main (int argc, char **argv)
     E(WSATRY_AGAIN);
     E(WSANO_RECOVERY);
     E(WSANO_DATA);
-    E(0xdeadbeef); /* test the case where no message is available */
+    E(0xdeadbeef);
 
-    /* fill up the hash table a bit to make sure it grows properly */
+
     for (j = 0; j < 50; j++) {
       int err;
       evutil_secure_rng_get_bytes(&err, sizeof(err));

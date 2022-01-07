@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int BOTLIB_EA_GET_INPUT ;
+ int PASSFLOAT (float) ;
+ int syscall (int ,int,int ,void*) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BOTLIB_EA_GET_INPUT ; 
- int /*<<< orphan*/  PASSFLOAT (float) ; 
- int /*<<< orphan*/  syscall (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,void*) ; 
-
-void trap_EA_GetInput(int client, float thinktime, void /* struct bot_input_s */ *input) {
-	syscall( BOTLIB_EA_GET_INPUT, client, PASSFLOAT(thinktime), input );
+void trap_EA_GetInput(int client, float thinktime, void *input) {
+ syscall( BOTLIB_EA_GET_INPUT, client, PASSFLOAT(thinktime), input );
 }

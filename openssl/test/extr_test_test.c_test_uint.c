@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TEST (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_uint_eq (unsigned int,unsigned int) ; 
- int /*<<< orphan*/  TEST_uint_ge (unsigned int,unsigned int) ; 
- int /*<<< orphan*/  TEST_uint_gt (unsigned int,unsigned int) ; 
- int /*<<< orphan*/  TEST_uint_le (unsigned int,unsigned int) ; 
- int /*<<< orphan*/  TEST_uint_lt (unsigned int,unsigned int) ; 
- int /*<<< orphan*/  TEST_uint_ne (unsigned int,unsigned int) ; 
+ int TEST (int,int ) ;
+ int TEST_uint_eq (unsigned int,unsigned int) ;
+ int TEST_uint_ge (unsigned int,unsigned int) ;
+ int TEST_uint_gt (unsigned int,unsigned int) ;
+ int TEST_uint_le (unsigned int,unsigned int) ;
+ int TEST_uint_lt (unsigned int,unsigned int) ;
+ int TEST_uint_ne (unsigned int,unsigned int) ;
 
 __attribute__((used)) static int test_uint(void)
 {

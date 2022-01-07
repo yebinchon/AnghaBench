@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t int32_t ;
-struct TYPE_5__ {size_t** diff_peak_cb; size_t** scale_factor; int /*<<< orphan*/ * cb_to_level; int /*<<< orphan*/ ** quantized; scalar_t__** adpcm_history; int /*<<< orphan*/ ** subband; int /*<<< orphan*/ ** quant; int /*<<< orphan*/ ** prediction_mode; int /*<<< orphan*/ ** abits; } ;
-typedef  TYPE_1__ DCAEncContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SUBBAND_SAMPLES ; 
- size_t calc_one_scale (TYPE_1__*,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ff_dca_scale_factor_quant7 ; 
- int /*<<< orphan*/  ff_dcaadpcm_do_real (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t,scalar_t__,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t get_step_size (TYPE_1__*,int,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef size_t int32_t ;
+struct TYPE_5__ {size_t** diff_peak_cb; size_t** scale_factor; int * cb_to_level; int ** quantized; scalar_t__** adpcm_history; int ** subband; int ** quant; int ** prediction_mode; int ** abits; } ;
+typedef TYPE_1__ DCAEncContext ;
+
+
+ int SUBBAND_SAMPLES ;
+ size_t calc_one_scale (TYPE_1__*,size_t,int ,int *) ;
+ int * ff_dca_scale_factor_quant7 ;
+ int ff_dcaadpcm_do_real (int ,int ,int ,size_t,scalar_t__,int ,scalar_t__,int ,int ,int ) ;
+ size_t get_step_size (TYPE_1__*,int,int) ;
 
 __attribute__((used)) static inline void quantize_adpcm_subband(DCAEncContext *c, int ch, int band)
 {

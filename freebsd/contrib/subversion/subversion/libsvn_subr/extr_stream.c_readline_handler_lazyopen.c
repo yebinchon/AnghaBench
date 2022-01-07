@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stringbuf_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct TYPE_3__ {int /*<<< orphan*/  real_stream; } ;
-typedef  TYPE_1__ lazyopen_baton_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lazyopen_if_unopened (TYPE_1__*) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stream_readline (int /*<<< orphan*/ ,int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_stringbuf_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+struct TYPE_3__ {int real_stream; } ;
+typedef TYPE_1__ lazyopen_baton_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int lazyopen_if_unopened (TYPE_1__*) ;
+ int * svn_error_trace (int ) ;
+ int svn_stream_readline (int ,int **,char const*,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 readline_handler_lazyopen(void *baton,

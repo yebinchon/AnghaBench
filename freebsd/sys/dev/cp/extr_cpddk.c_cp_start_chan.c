@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
 struct TYPE_17__ {scalar_t__* l589; scalar_t__* l751; TYPE_2__* l42; TYPE_1__* l32; } ;
-typedef  TYPE_3__ l211 ;
-struct TYPE_18__ {int f; unsigned long* l67; unsigned long* l154; int l35; int l43; unsigned long* l207; unsigned long* l197; size_t l28; int l70; int l36; unsigned long* l130; int* l82; scalar_t__ x; TYPE_6__* d; int /*<<< orphan*/  l44; int /*<<< orphan*/  l144; TYPE_1__* l32; scalar_t__ l51; scalar_t__ l45; scalar_t__* l79; TYPE_2__* l42; scalar_t__* l151; scalar_t__* l136; scalar_t__* l75; int /*<<< orphan*/  y; int /*<<< orphan*/  v; int /*<<< orphan*/  l145; int /*<<< orphan*/  l52; } ;
-typedef  TYPE_4__ e ;
+typedef TYPE_3__ l211 ;
+struct TYPE_18__ {int f; unsigned long* l67; unsigned long* l154; int l35; int l43; unsigned long* l207; unsigned long* l197; size_t l28; int l70; int l36; unsigned long* l130; int* l82; scalar_t__ x; TYPE_6__* d; int l44; int l144; TYPE_1__* l32; scalar_t__ l51; scalar_t__ l45; scalar_t__* l79; TYPE_2__* l42; scalar_t__* l151; scalar_t__* l136; scalar_t__* l75; int y; int v; int l145; int l52; } ;
+typedef TYPE_4__ e ;
 struct TYPE_19__ {int f; scalar_t__ g; } ;
-struct TYPE_16__ {int /*<<< orphan*/  t; int /*<<< orphan*/  l99; int /*<<< orphan*/  w; int /*<<< orphan*/  l88; } ;
-struct TYPE_15__ {int /*<<< orphan*/  l88; int /*<<< orphan*/  t; int /*<<< orphan*/  l99; int /*<<< orphan*/  w; } ;
+struct TYPE_16__ {int t; int l99; int w; int l88; } ;
+struct TYPE_15__ {int l88; int t; int l99; int w; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cp_set_baud (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cp_set_dir (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cp_set_dtr (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cp_set_nrzi (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cp_set_phony (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cp_set_rts (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  l (TYPE_6__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  l165 (TYPE_4__*) ; 
+
+ int cp_set_baud (TYPE_4__*,int ) ;
+ int cp_set_dir (TYPE_4__*,int ) ;
+ int cp_set_dtr (TYPE_4__*,int ) ;
+ int cp_set_nrzi (TYPE_4__*,int ) ;
+ int cp_set_phony (TYPE_4__*,int ) ;
+ int cp_set_rts (TYPE_4__*,int ) ;
+ int l (TYPE_6__*,int ,int) ;
+ int l165 (TYPE_4__*) ;
 
 void
 cp_start_chan(e*a,int l208,int l191,l211*l49,unsigned long l69){int c

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  Type; int /*<<< orphan*/  Private; int /*<<< orphan*/  Object; int /*<<< orphan*/  Name; } ;
-typedef  TYPE_1__ SEC_OBJ ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CopyStr (int /*<<< orphan*/ ) ; 
- TYPE_1__* ZeroMalloc (int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int Type; int Private; int Object; int Name; } ;
+typedef TYPE_1__ SEC_OBJ ;
+
+
+ int CopyStr (int ) ;
+ TYPE_1__* ZeroMalloc (int) ;
 
 SEC_OBJ *CloneSecObject(SEC_OBJ *obj)
 {
-	SEC_OBJ *ret;
-	// Validate arguments
-	if (obj == NULL)
-	{
-		return NULL;
-	}
+ SEC_OBJ *ret;
 
-	ret = ZeroMalloc(sizeof(SEC_OBJ));
-	ret->Name = CopyStr(obj->Name);
-	ret->Object = obj->Object;
-	ret->Private = obj->Private;
-	ret->Type = obj->Type;
+ if (obj == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	return ret;
+ ret = ZeroMalloc(sizeof(SEC_OBJ));
+ ret->Name = CopyStr(obj->Name);
+ ret->Object = obj->Object;
+ ret->Private = obj->Private;
+ ret->Type = obj->Type;
+
+ return ret;
 }

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  attr ;
-typedef  char WCHAR ;
-struct TYPE_3__ {char* lfFaceName; int lfHeight; void* lfStrikeOut; void* lfUnderline; void* lfItalic; int /*<<< orphan*/  lfWeight; int /*<<< orphan*/  lfCharSet; } ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  TYPE_1__ LOGFONTW ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HDC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEFAULT_CHARSET ; 
- int /*<<< orphan*/  E_PROP_ID_UNSUPPORTED ; 
- int /*<<< orphan*/  FW_BOLD ; 
- int /*<<< orphan*/  FW_REGULAR ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDeviceCaps (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int LF_FACESIZE ; 
- int /*<<< orphan*/  LOGPIXELSY ; 
- int /*<<< orphan*/  MSSTYLES_GetNextInteger (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- scalar_t__ MSSTYLES_GetNextToken (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,int) ; 
- int MulDiv (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- void* TRUE ; 
- int /*<<< orphan*/  lstrcmpiW (char const*,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int attr ;
+typedef char WCHAR ;
+struct TYPE_3__ {char* lfFaceName; int lfHeight; void* lfStrikeOut; void* lfUnderline; void* lfItalic; int lfWeight; int lfCharSet; } ;
+typedef int LPCWSTR ;
+typedef TYPE_1__ LOGFONTW ;
+typedef int HRESULT ;
+typedef int HDC ;
+
+
+ int DEFAULT_CHARSET ;
+ int E_PROP_ID_UNSUPPORTED ;
+ int FW_BOLD ;
+ int FW_REGULAR ;
+ int GetDC (int ) ;
+ int GetDeviceCaps (int ,int ) ;
+ int LF_FACESIZE ;
+ int LOGPIXELSY ;
+ int MSSTYLES_GetNextInteger (int ,int ,int *,int*) ;
+ scalar_t__ MSSTYLES_GetNextToken (int ,int ,int *,char*,int) ;
+ int MulDiv (int,int ,int) ;
+ int ReleaseDC (int ,int ) ;
+ int S_OK ;
+ int TRACE (char*) ;
+ void* TRUE ;
+ int lstrcmpiW (char const*,char*) ;
 
 __attribute__((used)) static HRESULT MSSTYLES_GetFont (LPCWSTR lpCur, LPCWSTR lpEnd,
                                  LPCWSTR *lpValEnd, LOGFONTW* pFont)

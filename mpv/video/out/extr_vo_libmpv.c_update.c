@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mpv_render_context {int /*<<< orphan*/  update_lock; int /*<<< orphan*/  update_cond; int /*<<< orphan*/  update_cb_ctx; int /*<<< orphan*/  (* update_cb ) (int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pthread_cond_broadcast (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
+
+
+
+struct mpv_render_context {int update_lock; int update_cond; int update_cb_ctx; int (* update_cb ) (int ) ;} ;
+
+
+ int pthread_cond_broadcast (int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int stub1 (int ) ;
 
 __attribute__((used)) static void update(struct mpv_render_context *ctx)
 {

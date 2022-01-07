@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_18__ {int /*<<< orphan*/  (* execute ) (TYPE_4__* const,int (*) (TYPE_4__* const,TYPE_2__*),TYPE_2__*,int /*<<< orphan*/ *,int,int) ;scalar_t__ hwaccel; } ;
+
+
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+struct TYPE_18__ {int (* execute ) (TYPE_4__* const,int (*) (TYPE_4__* const,TYPE_2__*),TYPE_2__*,int *,int,int) ;scalar_t__ hwaccel; } ;
 struct TYPE_17__ {int nb_slice_ctx_queued; int mb_height; int mb_width; int mb_y; TYPE_2__* slice_ctx; scalar_t__ postpone_filter; TYPE_4__* avctx; } ;
 struct TYPE_15__ {scalar_t__ error_count; } ;
-struct TYPE_16__ {int next_slice_idx; int mb_y; int mb_x; int resync_mb_y; int /*<<< orphan*/  resync_mb_x; TYPE_1__ er; } ;
-typedef  TYPE_2__ H264SliceContext ;
-typedef  TYPE_3__ H264Context ;
-typedef  TYPE_4__ AVCodecContext ;
+struct TYPE_16__ {int next_slice_idx; int mb_y; int mb_x; int resync_mb_y; int resync_mb_x; TYPE_1__ er; } ;
+typedef TYPE_2__ H264SliceContext ;
+typedef TYPE_3__ H264Context ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- scalar_t__ CONFIG_ERROR_RESILIENCE ; 
- int FFMIN (int,int) ; 
- scalar_t__ FIELD_OR_MBAFF_PICTURE (TYPE_3__*) ; 
- int INT_MAX ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int decode_slice (TYPE_4__* const,TYPE_2__*) ; 
- int /*<<< orphan*/  loop_filter (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub1 (TYPE_4__* const,int (*) (TYPE_4__* const,TYPE_2__*),TYPE_2__*,int /*<<< orphan*/ *,int,int) ; 
+
+ scalar_t__ CONFIG_ERROR_RESILIENCE ;
+ int FFMIN (int,int) ;
+ scalar_t__ FIELD_OR_MBAFF_PICTURE (TYPE_3__*) ;
+ int INT_MAX ;
+ int av_assert0 (int) ;
+ int decode_slice (TYPE_4__* const,TYPE_2__*) ;
+ int loop_filter (TYPE_3__*,TYPE_2__*,int ,int) ;
+ int stub1 (TYPE_4__* const,int (*) (TYPE_4__* const,TYPE_2__*),TYPE_2__*,int *,int,int) ;
 
 int ff_h264_execute_decode_slices(H264Context *h)
 {
@@ -62,16 +62,16 @@ int ff_h264_execute_decode_slices(H264Context *h)
             int next_slice_idx = h->mb_width * h->mb_height;
             int slice_idx;
 
-            sl                 = &h->slice_ctx[i];
+            sl = &h->slice_ctx[i];
             if (CONFIG_ERROR_RESILIENCE) {
                 sl->er.error_count = 0;
             }
 
-            /* make sure none of those slices overlap */
+
             slice_idx = sl->mb_y * h->mb_width + sl->mb_x;
             for (j = 0; j < context_count; j++) {
                 H264SliceContext *sl2 = &h->slice_ctx[j];
-                int        slice_idx2 = sl2->mb_y * h->mb_width + sl2->mb_x;
+                int slice_idx2 = sl2->mb_y * h->mb_width + sl2->mb_x;
 
                 if (i == j || slice_idx2 < slice_idx)
                     continue;
@@ -81,11 +81,11 @@ int ff_h264_execute_decode_slices(H264Context *h)
         }
 
         avctx->execute(avctx, decode_slice, h->slice_ctx,
-                       NULL, context_count, sizeof(h->slice_ctx[0]));
+                       ((void*)0), context_count, sizeof(h->slice_ctx[0]));
 
-        /* pull back stuff from slices to master context */
-        sl                   = &h->slice_ctx[context_count - 1];
-        h->mb_y              = sl->mb_y;
+
+        sl = &h->slice_ctx[context_count - 1];
+        h->mb_y = sl->mb_y;
         if (CONFIG_ERROR_RESILIENCE) {
             for (i = 1; i < context_count; i++)
                 h->slice_ctx[0].er.error_count += h->slice_ctx[i].er.error_count;

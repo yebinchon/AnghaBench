@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int limb ;
-typedef  int /*<<< orphan*/ * largefelem ;
-typedef  int const* felem ;
 
-/* Variables and functions */
+
+
+
+typedef int limb ;
+typedef int * largefelem ;
+typedef int const* felem ;
+
+
 
 __attribute__((used)) static void felem_diff_128_64(largefelem out, const felem in)
 {
-    /*
-     * In order to prevent underflow, we add 64p mod p (which is equivalent
-     * to 0 mod p) before subtracting. p is 2^521 - 1, i.e. in binary a 521
-     * digit number with all bits set to 1. See "The representation of field
-     * elements" comment above for a description of how limbs are used to
-     * represent a number. 64p is represented with 8 limbs containing a number
-     * with 58 bits set and one limb with a number with 57 bits set.
-     */
     static const limb two63m6 = (((limb) 1) << 63) - (((limb) 1) << 6);
     static const limb two63m5 = (((limb) 1) << 63) - (((limb) 1) << 5);
 

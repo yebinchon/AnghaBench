@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int style; int page_size; int top_item; int column_width; int item_height; int /*<<< orphan*/  self; TYPE_1__* items; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int style; int page_size; int top_item; int column_width; int item_height; int self; TYPE_1__* items; } ;
 struct TYPE_6__ {scalar_t__ height; } ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  TYPE_2__ LB_DESCR ;
-typedef  int INT ;
-typedef  scalar_t__ BOOL ;
+typedef int LRESULT ;
+typedef TYPE_2__ LB_DESCR ;
+typedef int INT ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  InvalidateRect (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int LBS_MULTICOLUMN ; 
- int LBS_OWNERDRAWVARIABLE ; 
- int /*<<< orphan*/  LB_OKAY ; 
- int LISTBOX_GetMaxTopIndex (TYPE_2__*) ; 
- int /*<<< orphan*/  LISTBOX_UpdateScroll (TYPE_2__*) ; 
- int SW_ERASE ; 
- int SW_INVALIDATE ; 
- int SW_SCROLLCHILDREN ; 
- int /*<<< orphan*/  ScrollWindowEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TRACE (char*,int,scalar_t__) ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int InvalidateRect (int ,int *,int ) ;
+ int LBS_MULTICOLUMN ;
+ int LBS_OWNERDRAWVARIABLE ;
+ int LB_OKAY ;
+ int LISTBOX_GetMaxTopIndex (TYPE_2__*) ;
+ int LISTBOX_UpdateScroll (TYPE_2__*) ;
+ int SW_ERASE ;
+ int SW_INVALIDATE ;
+ int SW_SCROLLCHILDREN ;
+ int ScrollWindowEx (int ,int ,int,int *,int *,int ,int *,int) ;
+ int TRACE (char*,int,scalar_t__) ;
+ int TRUE ;
 
 __attribute__((used)) static LRESULT LISTBOX_SetTopItem( LB_DESCR *descr, INT index, BOOL scroll )
 {
@@ -66,11 +66,11 @@ __attribute__((used)) static LRESULT LISTBOX_SetTopItem( LB_DESCR *descr, INT in
         else
             diff = (descr->top_item - index) * descr->item_height;
 
-        ScrollWindowEx( descr->self, 0, diff, NULL, NULL, 0, NULL,
+        ScrollWindowEx( descr->self, 0, diff, ((void*)0), ((void*)0), 0, ((void*)0),
                         SW_INVALIDATE | SW_ERASE | SW_SCROLLCHILDREN );
     }
     else
-        InvalidateRect( descr->self, NULL, TRUE );
+        InvalidateRect( descr->self, ((void*)0), TRUE );
     descr->top_item = index;
     LISTBOX_UpdateScroll( descr );
     return LB_OKAY;

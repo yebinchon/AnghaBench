@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  InterleveBlock (unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
+ int InterleveBlock (unsigned char*,unsigned char*) ;
+ int free (unsigned char*) ;
+ scalar_t__ malloc (int) ;
+ int memcpy (unsigned char*,unsigned char*,int) ;
+ int memset (unsigned char*,int ,int) ;
 
 __attribute__((used)) static int DecodeSmd(unsigned char *data,int len)
 {
-  unsigned char *temp=NULL;
+  unsigned char *temp=((void*)0);
   int i=0;
 
   temp=(unsigned char *)malloc(0x4000);
-  if (temp==NULL) return 1;
+  if (temp==((void*)0)) return 1;
   memset(temp,0,0x4000);
 
-  // Interleve each 16k block and shift down by 0x200:
+
   for (i=0; i+0x4200<=len; i+=0x4000)
   {
-    InterleveBlock(temp,data+0x200+i); // Interleve 16k to temporary buffer
-    memcpy(data+i,temp,0x4000); // Copy back in
+    InterleveBlock(temp,data+0x200+i);
+    memcpy(data+i,temp,0x4000);
   }
 
   free(temp);

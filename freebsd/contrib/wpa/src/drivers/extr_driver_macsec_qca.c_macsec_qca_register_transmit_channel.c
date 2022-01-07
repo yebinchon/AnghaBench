@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct transmit_sc {int /*<<< orphan*/  sci; } ;
-struct macsec_qca_data {int /*<<< orphan*/  transmit_channel_map; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  macsec_qca_register_channel (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u32 ;
+struct transmit_sc {int sci; } ;
+struct macsec_qca_data {int transmit_channel_map; } ;
+
+
+ int macsec_qca_register_channel (int ,int *,int ) ;
 
 __attribute__((used)) static void macsec_qca_register_transmit_channel(struct macsec_qca_data *drv,
-						 struct transmit_sc *sc,
-						 u32 channel)
+       struct transmit_sc *sc,
+       u32 channel)
 {
-	macsec_qca_register_channel(drv->transmit_channel_map, &sc->sci,
-				    channel);
+ macsec_qca_register_channel(drv->transmit_channel_map, &sc->sci,
+        channel);
 }

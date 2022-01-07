@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* xmlParserCtxtPtr ;
-typedef  int /*<<< orphan*/  xmlChar ;
-typedef  scalar_t__ ptrdiff_t ;
-struct TYPE_4__ {int /*<<< orphan*/ * attsSpecial; int /*<<< orphan*/  dict; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  xmlErrMemory (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xmlHashAddEntry2 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,void*) ; 
- int /*<<< orphan*/ * xmlHashCreateDict (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * xmlHashLookup2 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef TYPE_1__* xmlParserCtxtPtr ;
+typedef int xmlChar ;
+typedef scalar_t__ ptrdiff_t ;
+struct TYPE_4__ {int * attsSpecial; int dict; } ;
+
+
+ int xmlErrMemory (TYPE_1__*,int *) ;
+ int xmlHashAddEntry2 (int *,int const*,int const*,void*) ;
+ int * xmlHashCreateDict (int,int ) ;
+ int * xmlHashLookup2 (int *,int const*,int const*) ;
 
 __attribute__((used)) static void
 xmlAddSpecialAttr(xmlParserCtxtPtr ctxt,
-		  const xmlChar *fullname,
-		  const xmlChar *fullattr,
-		  int type)
+    const xmlChar *fullname,
+    const xmlChar *fullattr,
+    int type)
 {
-    if (ctxt->attsSpecial == NULL) {
+    if (ctxt->attsSpecial == ((void*)0)) {
         ctxt->attsSpecial = xmlHashCreateDict(10, ctxt->dict);
-	if (ctxt->attsSpecial == NULL)
-	    goto mem_error;
+ if (ctxt->attsSpecial == ((void*)0))
+     goto mem_error;
     }
 
-    if (xmlHashLookup2(ctxt->attsSpecial, fullname, fullattr) != NULL)
+    if (xmlHashLookup2(ctxt->attsSpecial, fullname, fullattr) != ((void*)0))
         return;
 
     xmlHashAddEntry2(ctxt->attsSpecial, fullname, fullattr,
@@ -42,6 +42,6 @@ xmlAddSpecialAttr(xmlParserCtxtPtr ctxt,
     return;
 
 mem_error:
-    xmlErrMemory(ctxt, NULL);
+    xmlErrMemory(ctxt, ((void*)0));
     return;
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  types; int /*<<< orphan*/  types_keys; int /*<<< orphan*/  value_len; int /*<<< orphan*/  min_file_chunk; int /*<<< orphan*/  last_modified; int /*<<< orphan*/  ignore_recycled_buffers; int /*<<< orphan*/  silent_errors; int /*<<< orphan*/  enable; } ;
-typedef  TYPE_1__ ngx_http_ssi_loc_conf_t ;
-typedef  int /*<<< orphan*/  ngx_conf_t ;
 
-/* Variables and functions */
- char* NGX_CONF_ERROR ; 
- char* NGX_CONF_OK ; 
- scalar_t__ NGX_OK ; 
- int /*<<< orphan*/  ngx_conf_merge_size_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ngx_conf_merge_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_html_default_types ; 
- scalar_t__ ngx_http_merge_types (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int types; int types_keys; int value_len; int min_file_chunk; int last_modified; int ignore_recycled_buffers; int silent_errors; int enable; } ;
+typedef TYPE_1__ ngx_http_ssi_loc_conf_t ;
+typedef int ngx_conf_t ;
+
+
+ char* NGX_CONF_ERROR ;
+ char* NGX_CONF_OK ;
+ scalar_t__ NGX_OK ;
+ int ngx_conf_merge_size_value (int ,int ,int) ;
+ int ngx_conf_merge_value (int ,int ,int ) ;
+ int ngx_http_html_default_types ;
+ scalar_t__ ngx_http_merge_types (int *,int *,int *,int *,int *,int ) ;
 
 __attribute__((used)) static char *
 ngx_http_ssi_merge_loc_conf(ngx_conf_t *cf, void *parent, void *child)

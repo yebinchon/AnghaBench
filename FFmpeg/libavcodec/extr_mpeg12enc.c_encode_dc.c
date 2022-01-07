@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  pb; } ;
-typedef  TYPE_1__ MpegEncContext ;
 
-/* Variables and functions */
- int av_log2_16bit (int) ; 
- int av_mod_uintp2 (int,int) ; 
- int* ff_mpeg12_vlc_dc_chroma_bits ; 
- int* ff_mpeg12_vlc_dc_chroma_code ; 
- int* ff_mpeg12_vlc_dc_lum_bits ; 
- int* ff_mpeg12_vlc_dc_lum_code ; 
- int* mpeg1_chr_dc_uni ; 
- int* mpeg1_lum_dc_uni ; 
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int pb; } ;
+typedef TYPE_1__ MpegEncContext ;
+
+
+ int av_log2_16bit (int) ;
+ int av_mod_uintp2 (int,int) ;
+ int* ff_mpeg12_vlc_dc_chroma_bits ;
+ int* ff_mpeg12_vlc_dc_chroma_code ;
+ int* ff_mpeg12_vlc_dc_lum_bits ;
+ int* ff_mpeg12_vlc_dc_lum_code ;
+ int* mpeg1_chr_dc_uni ;
+ int* mpeg1_lum_dc_uni ;
+ int put_bits (int *,int,int) ;
 
 __attribute__((used)) static inline void encode_dc(MpegEncContext *s, int diff, int component)
 {

@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_6__ ;
-typedef  struct TYPE_23__   TYPE_4__ ;
-typedef  struct TYPE_22__   TYPE_3__ ;
-typedef  struct TYPE_21__   TYPE_2__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
-typedef  struct TYPE_19__   TYPE_14__ ;
-typedef  struct TYPE_18__   TYPE_12__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_24__ TYPE_6__ ;
+typedef struct TYPE_23__ TYPE_4__ ;
+typedef struct TYPE_22__ TYPE_3__ ;
+typedef struct TYPE_21__ TYPE_2__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+typedef struct TYPE_19__ TYPE_14__ ;
+typedef struct TYPE_18__ TYPE_12__ ;
+
+
 struct TYPE_24__ {TYPE_12__* f; } ;
-struct TYPE_23__ {scalar_t__ codec_id; TYPE_1__* hwaccel; scalar_t__ height; scalar_t__ width; int /*<<< orphan*/  pix_fmt; int /*<<< orphan*/  codec; } ;
+struct TYPE_23__ {scalar_t__ codec_id; TYPE_1__* hwaccel; scalar_t__ height; scalar_t__ width; int pix_fmt; int codec; } ;
 struct TYPE_22__ {TYPE_12__* f; TYPE_14__* hwaccel_priv_buf; scalar_t__ hwaccel_picture_private; scalar_t__ reference; TYPE_6__ tf; } ;
-struct TYPE_21__ {int /*<<< orphan*/  edge_emu_buffer; } ;
+struct TYPE_21__ {int edge_emu_buffer; } ;
 struct TYPE_20__ {scalar_t__ frame_priv_data_size; } ;
 struct TYPE_19__ {scalar_t__ data; } ;
-struct TYPE_18__ {int* linesize; int /*<<< orphan*/  format; scalar_t__ height; scalar_t__ width; scalar_t__* data; int /*<<< orphan*/ * buf; } ;
-typedef  TYPE_2__ ScratchpadContext ;
-typedef  TYPE_3__ Picture ;
-typedef  int /*<<< orphan*/  MotionEstContext ;
-typedef  TYPE_4__ AVCodecContext ;
+struct TYPE_18__ {int* linesize; int format; scalar_t__ height; scalar_t__ width; scalar_t__* data; int * buf; } ;
+typedef TYPE_2__ ScratchpadContext ;
+typedef TYPE_3__ Picture ;
+typedef int MotionEstContext ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- scalar_t__ AV_CODEC_ID_MSS2 ; 
- scalar_t__ AV_CODEC_ID_VC1IMAGE ; 
- scalar_t__ AV_CODEC_ID_WMV3IMAGE ; 
- int /*<<< orphan*/  AV_GET_BUFFER_FLAG_REF ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int EDGE_WIDTH ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_14__* av_buffer_allocz (scalar_t__) ; 
- int av_codec_is_encoder (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,...) ; 
- int av_pix_fmt_count_planes (int /*<<< orphan*/ ) ; 
- int avcodec_default_get_buffer2 (TYPE_4__*,TYPE_12__*,int /*<<< orphan*/ ) ; 
- int ff_mpeg_framesize_alloc (TYPE_4__*,int /*<<< orphan*/ *,TYPE_2__*,int) ; 
- int /*<<< orphan*/  ff_mpeg_unref_picture (TYPE_4__*,TYPE_3__*) ; 
- int ff_thread_get_buffer (TYPE_4__*,TYPE_6__*,int /*<<< orphan*/ ) ; 
 
-__attribute__((used)) static int alloc_frame_buffer(AVCodecContext *avctx,  Picture *pic,
+ scalar_t__ AV_CODEC_ID_MSS2 ;
+ scalar_t__ AV_CODEC_ID_VC1IMAGE ;
+ scalar_t__ AV_CODEC_ID_WMV3IMAGE ;
+ int AV_GET_BUFFER_FLAG_REF ;
+ int AV_LOG_ERROR ;
+ int EDGE_WIDTH ;
+ int assert (int) ;
+ TYPE_14__* av_buffer_allocz (scalar_t__) ;
+ int av_codec_is_encoder (int ) ;
+ int av_log (TYPE_4__*,int ,char*,...) ;
+ int av_pix_fmt_count_planes (int ) ;
+ int avcodec_default_get_buffer2 (TYPE_4__*,TYPE_12__*,int ) ;
+ int ff_mpeg_framesize_alloc (TYPE_4__*,int *,TYPE_2__*,int) ;
+ int ff_mpeg_unref_picture (TYPE_4__*,TYPE_3__*) ;
+ int ff_thread_get_buffer (TYPE_4__*,TYPE_6__*,int ) ;
+
+__attribute__((used)) static int alloc_frame_buffer(AVCodecContext *avctx, Picture *pic,
                               MotionEstContext *me, ScratchpadContext *sc,
                               int chroma_x_shift, int chroma_y_shift,
                               int linesize, int uvlinesize)
@@ -56,17 +56,17 @@ __attribute__((used)) static int alloc_frame_buffer(AVCodecContext *avctx,  Pict
 
     pic->tf.f = pic->f;
     if (avctx->codec_id != AV_CODEC_ID_WMV3IMAGE &&
-        avctx->codec_id != AV_CODEC_ID_VC1IMAGE  &&
+        avctx->codec_id != AV_CODEC_ID_VC1IMAGE &&
         avctx->codec_id != AV_CODEC_ID_MSS2) {
         if (edges_needed) {
-            pic->f->width  = avctx->width  + 2 * EDGE_WIDTH;
+            pic->f->width = avctx->width + 2 * EDGE_WIDTH;
             pic->f->height = avctx->height + 2 * EDGE_WIDTH;
         }
 
         r = ff_thread_get_buffer(avctx, &pic->tf,
                                  pic->reference ? AV_GET_BUFFER_FLAG_REF : 0);
     } else {
-        pic->f->width  = avctx->width;
+        pic->f->width = avctx->width;
         pic->f->height = avctx->height;
         pic->f->format = avctx->pix_fmt;
         r = avcodec_default_get_buffer2(avctx, pic->f, 0);
@@ -86,7 +86,7 @@ __attribute__((used)) static int alloc_frame_buffer(AVCodecContext *avctx,  Pict
                          (EDGE_WIDTH >> (i ? chroma_x_shift : 0));
             pic->f->data[i] += offset;
         }
-        pic->f->width  = avctx->width;
+        pic->f->width = avctx->width;
         pic->f->height = avctx->height;
     }
 
@@ -102,11 +102,11 @@ __attribute__((used)) static int alloc_frame_buffer(AVCodecContext *avctx,  Pict
         }
     }
 
-    if ((linesize   &&   linesize != pic->f->linesize[0]) ||
+    if ((linesize && linesize != pic->f->linesize[0]) ||
         (uvlinesize && uvlinesize != pic->f->linesize[1])) {
         av_log(avctx, AV_LOG_ERROR,
                "get_buffer() failed (stride changed: linesize=%d/%d uvlinesize=%d/%d)\n",
-               linesize,   pic->f->linesize[0],
+               linesize, pic->f->linesize[0],
                uvlinesize, pic->f->linesize[1]);
         ff_mpeg_unref_picture(avctx, pic);
         return -1;

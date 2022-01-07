@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mpv_global {int dummy; } ;
 struct mp_log {int dummy; } ;
 struct m_obj_desc {int dummy; } ;
 struct m_config {int dummy; } ;
-typedef  int /*<<< orphan*/  bstr ;
+typedef int bstr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bstr0 (char*) ; 
- scalar_t__ m_config_set_option_cli (struct m_config*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int bstr0 (char*) ;
+ scalar_t__ m_config_set_option_cli (struct m_config*,int ,int ,int ) ;
 
 __attribute__((used)) static int m_config_set_obj_params(struct m_config *config, struct mp_log *log,
                                    struct mpv_global *global,

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  TYPE_1__ POINT ;
-typedef  int /*<<< orphan*/  LISTVIEW_INFO ;
-typedef  int /*<<< orphan*/  ITERATOR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LISTVIEW_GetOrigin (int /*<<< orphan*/  const*,TYPE_1__*) ; 
- int /*<<< orphan*/  OffsetRect (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  iterator_frameditems_absolute (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wine_dbgstr_rect (int /*<<< orphan*/  const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int y; int x; } ;
+typedef int RECT ;
+typedef TYPE_1__ POINT ;
+typedef int LISTVIEW_INFO ;
+typedef int ITERATOR ;
+typedef int BOOL ;
+
+
+ int LISTVIEW_GetOrigin (int const*,TYPE_1__*) ;
+ int OffsetRect (int *,int ,int ) ;
+ int TRACE (char*,int ) ;
+ int iterator_frameditems_absolute (int *,int const*,int *) ;
+ int wine_dbgstr_rect (int const*) ;
 
 __attribute__((used)) static BOOL iterator_frameditems(ITERATOR* i, const LISTVIEW_INFO* infoPtr, const RECT *lprc)
 {

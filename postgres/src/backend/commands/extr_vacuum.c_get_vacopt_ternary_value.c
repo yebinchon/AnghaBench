@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VacOptTernaryValue ;
-typedef  int /*<<< orphan*/  DefElem ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VACOPT_TERNARY_DISABLED ; 
- int /*<<< orphan*/  VACOPT_TERNARY_ENABLED ; 
- scalar_t__ defGetBoolean (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int VacOptTernaryValue ;
+typedef int DefElem ;
+
+
+ int VACOPT_TERNARY_DISABLED ;
+ int VACOPT_TERNARY_ENABLED ;
+ scalar_t__ defGetBoolean (int *) ;
 
 __attribute__((used)) static VacOptTernaryValue
 get_vacopt_ternary_value(DefElem *def)
 {
-	return defGetBoolean(def) ? VACOPT_TERNARY_ENABLED : VACOPT_TERNARY_DISABLED;
+ return defGetBoolean(def) ? VACOPT_TERNARY_ENABLED : VACOPT_TERNARY_DISABLED;
 }

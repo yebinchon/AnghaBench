@@ -1,76 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_4__ {int pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
-
-/* Variables and functions */
-#define  AEOLIAN 134 
-#define  DORIAN 133 
-#define  IONIAN 132 
-#define  LOCRIAN 131 
-#define  LYDIAN 130 
-#define  MIXOLYDIAN 129 
-#define  PHRYGIAN 128 
- int /*<<< orphan*/  _AEOLIAN ; 
- int /*<<< orphan*/  _DORIAN ; 
- int /*<<< orphan*/  _IONIAN ; 
- int /*<<< orphan*/  _LOCRIAN ; 
- int /*<<< orphan*/  _LYDIAN ; 
- int /*<<< orphan*/  _MIXOLYDIAN ; 
- int /*<<< orphan*/  _PHRYGIAN ; 
- int /*<<< orphan*/  set_single_persistent_default_layer (int /*<<< orphan*/ ) ; 
+typedef TYPE_2__ keyrecord_t ;
+ int _AEOLIAN ;
+ int _DORIAN ;
+ int _IONIAN ;
+ int _LOCRIAN ;
+ int _LYDIAN ;
+ int _MIXOLYDIAN ;
+ int _PHRYGIAN ;
+ int set_single_persistent_default_layer (int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case IONIAN:
+    case 132:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_IONIAN);
       }
       break;
-    case DORIAN:
+    case 133:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_DORIAN);
       }
       break;
-    case PHRYGIAN:
+    case 128:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_PHRYGIAN);
       }
       break;
-    case LYDIAN:
+    case 130:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_LYDIAN);
       }
       break;
-    case MIXOLYDIAN:
+    case 129:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_MIXOLYDIAN);
       }
       break;
-    case AEOLIAN:
+    case 134:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_AEOLIAN);
       }
       break;
-    case LOCRIAN:
+    case 131:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_LOCRIAN);
       }
       break;
   }
-  return true;
+  return 1;
 }

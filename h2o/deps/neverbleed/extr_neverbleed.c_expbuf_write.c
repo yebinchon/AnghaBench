@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vecs ;
-struct iovec {size_t* iov_base; int iov_len; int /*<<< orphan*/ * member_0; } ;
+
+
+
+
+typedef int vecs ;
+struct iovec {size_t* iov_base; int iov_len; int * member_0; } ;
 struct expbuf_t {size_t* start; } ;
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  bufsz ;
+typedef int ssize_t ;
+typedef int bufsz ;
 
-/* Variables and functions */
- scalar_t__ EINTR ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ errno ; 
- size_t expbuf_size (struct expbuf_t*) ; 
- int writev (int,struct iovec*,int) ; 
+
+ scalar_t__ EINTR ;
+ int assert (int) ;
+ scalar_t__ errno ;
+ size_t expbuf_size (struct expbuf_t*) ;
+ int writev (int,struct iovec*,int) ;
 
 __attribute__((used)) static int expbuf_write(struct expbuf_t *buf, int fd)
 {
-    struct iovec vecs[2] = {{NULL}};
+    struct iovec vecs[2] = {{((void*)0)}};
     size_t bufsz = expbuf_size(buf);
     int vecindex;
     ssize_t r;

@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MKFOURCC (char const,char const,char const,char const) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int MKFOURCC (char const,char const,char const,char const) ;
 
 uint32_t ChunkGetTagFromFourCC(const char fourcc[4]) {
   return MKFOURCC(fourcc[0], fourcc[1], fourcc[2], fourcc[3]);

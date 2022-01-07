@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAYCOUNT (int const*) ; 
- int /*<<< orphan*/  test_expand (int const*,int,int const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+
+
+ int ARRAYCOUNT (int const*) ;
+ int test_expand (int const*,int,int const*,int ) ;
 
 __attribute__((used)) static void test_expand_256(void)
 {
-  /* And this is A.3. */
+
   const uint8_t key[] = {
     0x60, 0x3d, 0xeb, 0x10, 0x15, 0xca, 0x71, 0xbe, 0x2b, 0x73, 0xae, 0xf0,
     0x85, 0x7d, 0x77, 0x81, 0x1f, 0x35, 0x2c, 0x07, 0x3b, 0x61, 0x08, 0xd7,

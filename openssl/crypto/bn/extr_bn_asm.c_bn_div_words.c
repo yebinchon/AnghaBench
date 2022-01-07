@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int BN_ULONG ;
 
-/* Variables and functions */
- int BN_BITS2 ; 
- int BN_BITS4 ; 
- int BN_MASK2 ; 
- int BN_MASK2h ; 
- int BN_MASK2l ; 
- int BN_num_bits_word (int) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+
+
+typedef int BN_ULONG ;
+
+
+ int BN_BITS2 ;
+ int BN_BITS4 ;
+ int BN_MASK2 ;
+ int BN_MASK2h ;
+ int BN_MASK2l ;
+ int BN_num_bits_word (int) ;
+ int assert (int) ;
 
 BN_ULONG bn_div_words(BN_ULONG h, BN_ULONG l, BN_ULONG d)
 {

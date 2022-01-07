@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {unsigned short* red; unsigned short* green; unsigned short* blue; int size; } ;
-typedef  int /*<<< orphan*/  GLFWmonitor ;
-typedef  TYPE_1__ GLFWgammaramp ;
+typedef int GLFWmonitor ;
+typedef TYPE_1__ GLFWgammaramp ;
 
-/* Variables and functions */
- float FLT_MAX ; 
- int /*<<< orphan*/  GLFW_INVALID_VALUE ; 
- int /*<<< orphan*/  _GLFW_REQUIRE_INIT () ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  glfwSetGammaRamp (int /*<<< orphan*/ *,TYPE_1__*) ; 
- double pow (double,double) ; 
+
+ float FLT_MAX ;
+ int GLFW_INVALID_VALUE ;
+ int _GLFW_REQUIRE_INIT () ;
+ int _glfwInputError (int ,char*) ;
+ int glfwSetGammaRamp (int *,TYPE_1__*) ;
+ double pow (double,double) ;
 
 void glfwSetGamma(GLFWmonitor* handle, float gamma)
 {
@@ -37,16 +37,16 @@ void glfwSetGamma(GLFWmonitor* handle, float gamma)
         return;
     }
 
-    for (i = 0;  i < 256;  i++)
+    for (i = 0; i < 256; i++)
     {
         double value;
 
-        // Calculate intensity
+
         value = i / 255.0;
-        // Apply gamma curve
+
         value = pow(value, 1.0 / gamma) * 65535.0 + 0.5;
 
-        // Clamp to value range
+
         if (value > 65535.0)
             value = 65535.0;
 

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int prefmech; int /*<<< orphan*/  resetprefs; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int prefmech; int resetprefs; } ;
 struct pop3_conn {scalar_t__ preftype; TYPE_2__ sasl; } ;
 struct TYPE_3__ {struct pop3_conn pop3c; } ;
 struct connectdata {char* options; TYPE_1__ proto; } ;
-typedef  scalar_t__ CURLcode ;
+typedef scalar_t__ CURLcode ;
 
-/* Variables and functions */
- scalar_t__ CURLE_OK ; 
- scalar_t__ CURLE_URL_MALFORMAT ; 
- scalar_t__ Curl_sasl_parse_url_auth_option (TYPE_2__*,char const*,int) ; 
- scalar_t__ POP3_TYPE_ANY ; 
- scalar_t__ POP3_TYPE_APOP ; 
- scalar_t__ POP3_TYPE_NONE ; 
- scalar_t__ POP3_TYPE_SASL ; 
-#define  SASL_AUTH_DEFAULT 129 
-#define  SASL_AUTH_NONE 128 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ strncasecompare (char const*,char*,int) ; 
+
+ scalar_t__ CURLE_OK ;
+ scalar_t__ CURLE_URL_MALFORMAT ;
+ scalar_t__ Curl_sasl_parse_url_auth_option (TYPE_2__*,char const*,int) ;
+ scalar_t__ POP3_TYPE_ANY ;
+ scalar_t__ POP3_TYPE_APOP ;
+ scalar_t__ POP3_TYPE_NONE ;
+ scalar_t__ POP3_TYPE_SASL ;
+
+
+ int TRUE ;
+ scalar_t__ strncasecompare (char const*,char*,int) ;
 
 __attribute__((used)) static CURLcode pop3_parse_url_options(struct connectdata *conn)
 {
@@ -57,7 +57,7 @@ __attribute__((used)) static CURLcode pop3_parse_url_options(struct connectdata 
 
       if(result && strncasecompare(value, "+APOP", ptr - value)) {
         pop3c->preftype = POP3_TYPE_APOP;
-        pop3c->sasl.prefmech = SASL_AUTH_NONE;
+        pop3c->sasl.prefmech = 128;
         result = CURLE_OK;
       }
     }
@@ -70,10 +70,10 @@ __attribute__((used)) static CURLcode pop3_parse_url_options(struct connectdata 
 
   if(pop3c->preftype != POP3_TYPE_APOP)
     switch(pop3c->sasl.prefmech) {
-    case SASL_AUTH_NONE:
+    case 128:
       pop3c->preftype = POP3_TYPE_NONE;
       break;
-    case SASL_AUTH_DEFAULT:
+    case 129:
       pop3c->preftype = POP3_TYPE_ANY;
       break;
     default:

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  StringTrimming ;
-typedef  int /*<<< orphan*/  StringDigitSubstitute ;
-typedef  int /*<<< orphan*/  StringAlignment ;
-typedef  int /*<<< orphan*/  LANGID ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  GpStringFormat ;
-typedef  int /*<<< orphan*/  GpStatus ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GdipDeleteStringFormat (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetStringFormatAlign (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetStringFormatDigitSubstitution (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetStringFormatFlags (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetStringFormatHotkeyPrefix (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetStringFormatLineAlign (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetStringFormatTabStopCount (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetStringFormatTrimming (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipSetStringFormatFlags (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GdipStringFormatGetGenericDefault (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  HotkeyPrefixNone ; 
- int /*<<< orphan*/  InvalidParameter ; 
- int /*<<< orphan*/  LANG_NEUTRAL ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  StringAlignmentNear ; 
- int /*<<< orphan*/  StringDigitSubstituteUser ; 
- int /*<<< orphan*/  StringFormatFlagsNoWrap ; 
- int /*<<< orphan*/  StringTrimmingCharacter ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
+
+
+
+typedef int StringTrimming ;
+typedef int StringDigitSubstitute ;
+typedef int StringAlignment ;
+typedef int LANGID ;
+typedef int INT ;
+typedef int GpStringFormat ;
+typedef int GpStatus ;
+
+
+ int GdipDeleteStringFormat (int *) ;
+ int GdipGetStringFormatAlign (int *,int *) ;
+ int GdipGetStringFormatDigitSubstitution (int *,int *,int *) ;
+ int GdipGetStringFormatFlags (int *,int *) ;
+ int GdipGetStringFormatHotkeyPrefix (int *,int *) ;
+ int GdipGetStringFormatLineAlign (int *,int *) ;
+ int GdipGetStringFormatTabStopCount (int *,int *) ;
+ int GdipGetStringFormatTrimming (int *,int *) ;
+ int GdipSetStringFormatFlags (int *,int ) ;
+ int GdipStringFormatGetGenericDefault (int **) ;
+ int HotkeyPrefixNone ;
+ int InvalidParameter ;
+ int LANG_NEUTRAL ;
+ int Ok ;
+ int StringAlignmentNear ;
+ int StringDigitSubstituteUser ;
+ int StringFormatFlagsNoWrap ;
+ int StringTrimmingCharacter ;
+ int expect (int ,int ) ;
+ int ok (int,char*) ;
 
 __attribute__((used)) static void test_getgenericdefault(void)
 {
@@ -53,8 +53,8 @@ __attribute__((used)) static void test_getgenericdefault(void)
     LANGID digitlang;
     INT tabcount;
 
-    /* NULL arg */
-    stat = GdipStringFormatGetGenericDefault(NULL);
+
+    stat = GdipStringFormatGetGenericDefault(((void*)0));
     expect(InvalidParameter, stat);
 
     stat = GdipStringFormatGetGenericDefault(&format);
@@ -83,7 +83,7 @@ __attribute__((used)) static void test_getgenericdefault(void)
     expect(LANG_NEUTRAL, digitlang);
     expect(0, tabcount);
 
-    /* Change default format parameters, release, get format object again. */
+
     stat = GdipSetStringFormatFlags(format, StringFormatFlagsNoWrap);
     expect(Ok, stat);
 

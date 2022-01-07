@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ write; scalar_t__ read; scalar_t__ size; } ;
-typedef  TYPE_1__ VCHIU_QUEUE_T ;
+typedef TYPE_1__ VCHIU_QUEUE_T ;
 
-/* Variables and functions */
+
 
 int vchiu_queue_is_full(VCHIU_QUEUE_T *queue)
 {
-	return queue->write == queue->read + queue->size;
+ return queue->write == queue->read + queue->size;
 }

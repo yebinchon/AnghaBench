@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_4__ {scalar_t__ pUpsertIdx; int /*<<< orphan*/ * pUpsertWhere; int /*<<< orphan*/ * pUpsertSet; int /*<<< orphan*/ * pUpsertTargetWhere; int /*<<< orphan*/ * pUpsertTarget; } ;
-typedef  TYPE_1__ Upsert ;
-typedef  int /*<<< orphan*/  ExprList ;
-typedef  int /*<<< orphan*/  Expr ;
 
-/* Variables and functions */
- TYPE_1__* sqlite3DbMallocRaw (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3ExprDelete (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3ExprListDelete (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sqlite3 ;
+struct TYPE_4__ {scalar_t__ pUpsertIdx; int * pUpsertWhere; int * pUpsertSet; int * pUpsertTargetWhere; int * pUpsertTarget; } ;
+typedef TYPE_1__ Upsert ;
+typedef int ExprList ;
+typedef int Expr ;
+
+
+ TYPE_1__* sqlite3DbMallocRaw (int *,int) ;
+ int sqlite3ExprDelete (int *,int *) ;
+ int sqlite3ExprListDelete (int *,int *) ;
 
 Upsert *sqlite3UpsertNew(
-  sqlite3 *db,           /* Determines which memory allocator to use */
-  ExprList *pTarget,     /* Target argument to ON CONFLICT, or NULL */
-  Expr *pTargetWhere,    /* Optional WHERE clause on the target */
-  ExprList *pSet,        /* UPDATE columns, or NULL for a DO NOTHING */
-  Expr *pWhere           /* WHERE clause for the ON CONFLICT UPDATE */
+  sqlite3 *db,
+  ExprList *pTarget,
+  Expr *pTargetWhere,
+  ExprList *pSet,
+  Expr *pWhere
 ){
   Upsert *pNew;
   pNew = sqlite3DbMallocRaw(db, sizeof(Upsert));

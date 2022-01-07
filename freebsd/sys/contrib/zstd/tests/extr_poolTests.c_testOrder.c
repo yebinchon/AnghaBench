@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct data {size_t i; size_t* data; int /*<<< orphan*/  mutex; } ;
-typedef  int /*<<< orphan*/  POOL_ctx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_EQ (size_t,size_t) ; 
- int /*<<< orphan*/  ASSERT_FALSE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ASSERT_TRUE (int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  POOL_add (int /*<<< orphan*/ * const,int /*<<< orphan*/ *,struct data*) ; 
- int /*<<< orphan*/ * POOL_create (size_t,size_t) ; 
- int /*<<< orphan*/  POOL_free (int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  ZSTD_pthread_mutex_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ZSTD_pthread_mutex_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fn ; 
+
+
+
+struct data {size_t i; size_t* data; int mutex; } ;
+typedef int POOL_ctx ;
+
+
+ int ASSERT_EQ (size_t,size_t) ;
+ int ASSERT_FALSE (int ) ;
+ int ASSERT_TRUE (int * const) ;
+ int POOL_add (int * const,int *,struct data*) ;
+ int * POOL_create (size_t,size_t) ;
+ int POOL_free (int * const) ;
+ int ZSTD_pthread_mutex_destroy (int *) ;
+ int ZSTD_pthread_mutex_init (int *,int *) ;
+ int fn ;
 
 __attribute__((used)) static int testOrder(size_t numThreads, size_t queueSize)
 {
@@ -30,7 +30,7 @@ __attribute__((used)) static int testOrder(size_t numThreads, size_t queueSize)
   POOL_ctx* const ctx = POOL_create(numThreads, queueSize);
   ASSERT_TRUE(ctx);
   data.i = 0;
-  ASSERT_FALSE(ZSTD_pthread_mutex_init(&data.mutex, NULL));
+  ASSERT_FALSE(ZSTD_pthread_mutex_init(&data.mutex, ((void*)0)));
   { size_t i;
     for (i = 0; i < 16; ++i) {
       POOL_add(ctx, &fn, &data);

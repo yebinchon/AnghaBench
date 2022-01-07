@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  double REAL ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/ * HDC ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpGraphics ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CombineModeReplace ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GdipCreateFromHDC (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipIsVisiblePoint (int /*<<< orphan*/ *,double,double,scalar_t__*) ; 
- int /*<<< orphan*/  GdipIsVisiblePointI (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  GdipSetClipRect (int /*<<< orphan*/ *,int,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GdipTranslateWorldTransform (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * GetDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InvalidParameter ; 
- int /*<<< orphan*/  MatrixOrderAppend ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hwnd ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef double REAL ;
+typedef int INT ;
+typedef int * HDC ;
+typedef int GpStatus ;
+typedef int GpGraphics ;
+typedef scalar_t__ BOOL ;
+
+
+ int CombineModeReplace ;
+ scalar_t__ FALSE ;
+ int GdipCreateFromHDC (int *,int **) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipIsVisiblePoint (int *,double,double,scalar_t__*) ;
+ int GdipIsVisiblePointI (int *,int ,int ,scalar_t__*) ;
+ int GdipSetClipRect (int *,int,int,int,int,int ) ;
+ int GdipTranslateWorldTransform (int *,int,int,int ) ;
+ int * GetDC (int ) ;
+ int InvalidParameter ;
+ int MatrixOrderAppend ;
+ int Ok ;
+ int ReleaseDC (int ,int *) ;
+ scalar_t__ TRUE ;
+ int expect (int ,int ) ;
+ int hwnd ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_GdipIsVisiblePoint(void)
 {
     GpStatus status;
-    GpGraphics *graphics = NULL;
+    GpGraphics *graphics = ((void*)0);
     HDC hdc = GetDC( hwnd );
     REAL x, y;
     BOOL val;
 
-    ok(hdc != NULL, "Expected HDC to be initialized\n");
+    ok(hdc != ((void*)0), "Expected HDC to be initialized\n");
 
     status = GdipCreateFromHDC(hdc, &graphics);
     expect(Ok, status);
-    ok(graphics != NULL, "Expected graphics to be initialized\n");
+    ok(graphics != ((void*)0), "Expected graphics to be initialized\n");
 
-    /* null parameters */
-    status = GdipIsVisiblePoint(NULL, 0, 0, &val);
+
+    status = GdipIsVisiblePoint(((void*)0), 0, 0, &val);
     expect(InvalidParameter, status);
 
-    status = GdipIsVisiblePoint(graphics, 0, 0, NULL);
+    status = GdipIsVisiblePoint(graphics, 0, 0, ((void*)0));
     expect(InvalidParameter, status);
 
-    status = GdipIsVisiblePointI(NULL, 0, 0, &val);
+    status = GdipIsVisiblePointI(((void*)0), 0, 0, &val);
     expect(InvalidParameter, status);
 
-    status = GdipIsVisiblePointI(graphics, 0, 0, NULL);
+    status = GdipIsVisiblePointI(graphics, 0, 0, ((void*)0));
     expect(InvalidParameter, status);
 
     x = 0;
@@ -102,7 +102,7 @@ __attribute__((used)) static void test_GdipIsVisiblePoint(void)
     expect(Ok, status);
     ok(val == TRUE, "After clipping, expected (%.2f, %.2f) to be visible\n", x, y);
 
-    /* translate into the center of the rect */
+
     GdipTranslateWorldTransform(graphics, 25, 40, MatrixOrderAppend);
 
     x = 0;
@@ -119,7 +119,7 @@ __attribute__((used)) static void test_GdipIsVisiblePoint(void)
 
     GdipTranslateWorldTransform(graphics, -25, -40, MatrixOrderAppend);
 
-    /* corner cases */
+
     x = 9;
     y = 19;
     status = GdipIsVisiblePoint(graphics, x, y, &val);
@@ -198,7 +198,7 @@ __attribute__((used)) static void test_GdipIsVisiblePoint(void)
     expect(Ok, status);
     ok(val == FALSE, "After clipping, expected (%.2f, %.2f) not to be visible\n", x, y);
 
-    /* integer version */
+
     x = 25;
     y = 30;
     status = GdipIsVisiblePointI(graphics, (INT)x, (INT)y, &val);

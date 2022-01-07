@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {unsigned char* y; int n; int /*<<< orphan*/  p; } ;
-typedef  TYPE_1__ suffix_array_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  malloc (int) ; 
- int /*<<< orphan*/  suffix_array_lcp_init (TYPE_1__*) ; 
- int /*<<< orphan*/  suffix_array_sort (TYPE_1__*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int,unsigned char*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {unsigned char* y; int n; int p; } ;
+typedef TYPE_1__ suffix_array_t ;
+
+
+ int malloc (int) ;
+ int suffix_array_lcp_init (TYPE_1__*) ;
+ int suffix_array_sort (TYPE_1__*) ;
+ int vkprintf (int,char*,int,unsigned char*) ;
 
 void suffix_array_init (suffix_array_t *A, unsigned char *y, int n) {
   vkprintf (3, "suffix_array_init (%.*s)\n", n, y);

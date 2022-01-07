@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ nsresult ;
-typedef  int /*<<< orphan*/  nsIDOMEventTarget ;
-typedef  int /*<<< orphan*/  nsAString ;
-struct TYPE_5__ {int /*<<< orphan*/  nsIDOMEventListener_iface; TYPE_1__* xhr; } ;
-typedef  TYPE_2__ XMLHttpReqEventListener ;
-typedef  char WCHAR ;
-struct TYPE_4__ {int /*<<< orphan*/ * event_listener; int /*<<< orphan*/  nsxhr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IID_nsIDOMEventTarget ; 
- scalar_t__ NS_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_InitDepend (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  nsIDOMEventListener_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMEventTarget_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ nsIDOMEventTarget_RemoveEventListener (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ nsIXMLHttpRequest_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ nsresult ;
+typedef int nsIDOMEventTarget ;
+typedef int nsAString ;
+struct TYPE_5__ {int nsIDOMEventListener_iface; TYPE_1__* xhr; } ;
+typedef TYPE_2__ XMLHttpReqEventListener ;
+typedef char WCHAR ;
+struct TYPE_4__ {int * event_listener; int nsxhr; } ;
+
+
+ int FALSE ;
+ int IID_nsIDOMEventTarget ;
+ scalar_t__ NS_OK ;
+ int assert (int) ;
+ int nsAString_Finish (int *) ;
+ int nsAString_InitDepend (int *,char const*) ;
+ int nsIDOMEventListener_Release (int *) ;
+ int nsIDOMEventTarget_Release (int *) ;
+ scalar_t__ nsIDOMEventTarget_RemoveEventListener (int *,int *,int *,int ) ;
+ scalar_t__ nsIXMLHttpRequest_QueryInterface (int ,int *,void**) ;
 
 __attribute__((used)) static void detach_xhr_event_listener(XMLHttpReqEventListener *event_listener)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static void detach_xhr_event_listener(XMLHttpReqEventListe
     nsAString_Finish(&str);
     nsIDOMEventTarget_Release(event_target);
 
-    event_listener->xhr->event_listener = NULL;
-    event_listener->xhr = NULL;
+    event_listener->xhr->event_listener = ((void*)0);
+    event_listener->xhr = ((void*)0);
     nsIDOMEventListener_Release(&event_listener->nsIDOMEventListener_iface);
 }

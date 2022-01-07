@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  fs; int /*<<< orphan*/  is_txn_root; } ;
-typedef  TYPE_1__ svn_fs_root_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int fs; int is_txn_root; } ;
+typedef TYPE_1__ svn_fs_root_t ;
+typedef int svn_error_t ;
 struct make_dir_args {char const* path; TYPE_1__* root; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * SVN_FS__NOT_TXN (TYPE_1__*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * svn_fs_base__retry_txn (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct make_dir_args*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  txn_body_make_dir ; 
+
+ int * SVN_FS__NOT_TXN (TYPE_1__*) ;
+ int TRUE ;
+ int * svn_fs_base__retry_txn (int ,int ,struct make_dir_args*,int ,int *) ;
+ int txn_body_make_dir ;
 
 __attribute__((used)) static svn_error_t *
 base_make_dir(svn_fs_root_t *root,

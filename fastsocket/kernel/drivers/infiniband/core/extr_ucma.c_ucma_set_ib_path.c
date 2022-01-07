@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ucma_context {int /*<<< orphan*/  cm_id; } ;
-struct rdma_cm_event {int /*<<< orphan*/  event; } ;
+
+
+
+
+struct ucma_context {int cm_id; } ;
+struct rdma_cm_event {int event; } ;
 struct ib_sa_path_rec {int dummy; } ;
-struct ib_path_rec_data {int flags; int /*<<< orphan*/  path_rec; } ;
+struct ib_path_rec_data {int flags; int path_rec; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int IB_PATH_BIDIRECTIONAL ; 
- int IB_PATH_GMP ; 
- int IB_PATH_PRIMARY ; 
- int /*<<< orphan*/  RDMA_CM_EVENT_ROUTE_RESOLVED ; 
- int /*<<< orphan*/  ib_sa_unpack_path (int /*<<< orphan*/ ,struct ib_sa_path_rec*) ; 
- int /*<<< orphan*/  memset (struct rdma_cm_event*,int /*<<< orphan*/ ,int) ; 
- int rdma_set_ib_paths (int /*<<< orphan*/ ,struct ib_sa_path_rec*,int) ; 
- int ucma_event_handler (int /*<<< orphan*/ ,struct rdma_cm_event*) ; 
+
+ int EINVAL ;
+ int IB_PATH_BIDIRECTIONAL ;
+ int IB_PATH_GMP ;
+ int IB_PATH_PRIMARY ;
+ int RDMA_CM_EVENT_ROUTE_RESOLVED ;
+ int ib_sa_unpack_path (int ,struct ib_sa_path_rec*) ;
+ int memset (struct rdma_cm_event*,int ,int) ;
+ int rdma_set_ib_paths (int ,struct ib_sa_path_rec*,int) ;
+ int ucma_event_handler (int ,struct rdma_cm_event*) ;
 
 __attribute__((used)) static int ucma_set_ib_path(struct ucma_context *ctx,
-			    struct ib_path_rec_data *path_data, size_t optlen)
+       struct ib_path_rec_data *path_data, size_t optlen)
 {
-	struct ib_sa_path_rec sa_path;
-	struct rdma_cm_event event;
-	int ret;
+ struct ib_sa_path_rec sa_path;
+ struct rdma_cm_event event;
+ int ret;
 
-	if (optlen % sizeof(*path_data))
-		return -EINVAL;
+ if (optlen % sizeof(*path_data))
+  return -EINVAL;
 
-	for (; optlen; optlen -= sizeof(*path_data), path_data++) {
-		if (path_data->flags == (IB_PATH_GMP | IB_PATH_PRIMARY |
-					 IB_PATH_BIDIRECTIONAL))
-			break;
-	}
+ for (; optlen; optlen -= sizeof(*path_data), path_data++) {
+  if (path_data->flags == (IB_PATH_GMP | IB_PATH_PRIMARY |
+      IB_PATH_BIDIRECTIONAL))
+   break;
+ }
 
-	if (!optlen)
-		return -EINVAL;
+ if (!optlen)
+  return -EINVAL;
 
-	ib_sa_unpack_path(path_data->path_rec, &sa_path);
-	ret = rdma_set_ib_paths(ctx->cm_id, &sa_path, 1);
-	if (ret)
-		return ret;
+ ib_sa_unpack_path(path_data->path_rec, &sa_path);
+ ret = rdma_set_ib_paths(ctx->cm_id, &sa_path, 1);
+ if (ret)
+  return ret;
 
-	memset(&event, 0, sizeof event);
-	event.event = RDMA_CM_EVENT_ROUTE_RESOLVED;
-	return ucma_event_handler(ctx->cm_id, &event);
+ memset(&event, 0, sizeof event);
+ event.event = RDMA_CM_EVENT_ROUTE_RESOLVED;
+ return ucma_event_handler(ctx->cm_id, &event);
 }

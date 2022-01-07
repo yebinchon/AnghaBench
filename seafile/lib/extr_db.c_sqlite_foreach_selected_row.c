@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-typedef  char gchar ;
-typedef  int /*<<< orphan*/  (* SqliteRowFunc ) (int /*<<< orphan*/ *,void*) ;
 
-/* Variables and functions */
- int SQLITE_ERROR ; 
- int SQLITE_ROW ; 
- int /*<<< orphan*/  g_warning (char*,int,char const*) ; 
- char* sqlite3_errmsg (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int sqlite3_step (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sqlite_query_prepare (int /*<<< orphan*/ *,char const*) ; 
+
+
+
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
+typedef char gchar ;
+typedef int (* SqliteRowFunc ) (int *,void*) ;
+
+
+ int SQLITE_ERROR ;
+ int SQLITE_ROW ;
+ int g_warning (char*,int,char const*) ;
+ char* sqlite3_errmsg (int *) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_step (int *) ;
+ int * sqlite_query_prepare (int *,char const*) ;
 
 int
-sqlite_foreach_selected_row (sqlite3 *db, const char *sql, 
+sqlite_foreach_selected_row (sqlite3 *db, const char *sql,
                              SqliteRowFunc callback, void *data)
 {
     sqlite3_stmt *stmt;

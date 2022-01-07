@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uuid_t ;
-struct rrdengine_journalfile {int /*<<< orphan*/  datafile; } ;
-struct TYPE_3__ {int /*<<< orphan*/  lock; struct pg_cache_page_index* last_page_index; int /*<<< orphan*/  JudyHS_array; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uuid_t ;
+struct rrdengine_journalfile {int datafile; } ;
+struct TYPE_3__ {int lock; struct pg_cache_page_index* last_page_index; int JudyHS_array; } ;
 struct page_cache {TYPE_1__ metrics_index; } ;
 struct rrdengine_instance {struct page_cache pg_cache; } ;
-struct rrdeng_page_descr {struct extent_info* extent; int /*<<< orphan*/ * id; int /*<<< orphan*/  end_time; int /*<<< orphan*/  start_time; int /*<<< orphan*/  page_length; } ;
-struct rrdeng_jf_store_data {unsigned int number_of_pages; TYPE_2__* descr; int /*<<< orphan*/  extent_size; int /*<<< orphan*/  extent_offset; } ;
-struct pg_cache_page_index {int /*<<< orphan*/  id; struct pg_cache_page_index* prev; } ;
-struct extent_info {unsigned int number_of_pages; struct rrdeng_page_descr** pages; int /*<<< orphan*/ * next; int /*<<< orphan*/  datafile; int /*<<< orphan*/  size; int /*<<< orphan*/  offset; } ;
-struct TYPE_4__ {scalar_t__ type; int /*<<< orphan*/  end_time; int /*<<< orphan*/  start_time; int /*<<< orphan*/  page_length; scalar_t__ uuid; } ;
-typedef  struct pg_cache_page_index* Pvoid_t ;
+struct rrdeng_page_descr {struct extent_info* extent; int * id; int end_time; int start_time; int page_length; } ;
+struct rrdeng_jf_store_data {unsigned int number_of_pages; TYPE_2__* descr; int extent_size; int extent_offset; } ;
+struct pg_cache_page_index {int id; struct pg_cache_page_index* prev; } ;
+struct extent_info {unsigned int number_of_pages; struct rrdeng_page_descr** pages; int * next; int datafile; int size; int offset; } ;
+struct TYPE_4__ {scalar_t__ type; int end_time; int start_time; int page_length; scalar_t__ uuid; } ;
+typedef struct pg_cache_page_index* Pvoid_t ;
 
-/* Variables and functions */
- struct pg_cache_page_index** JudyHSGet (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- struct pg_cache_page_index** JudyHSIns (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- scalar_t__ PAGE_METRICS ; 
- int /*<<< orphan*/  PJE0 ; 
- int /*<<< orphan*/  assert (int) ; 
- struct pg_cache_page_index* create_page_index (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  df_extent_insert (struct extent_info*) ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  freez (struct extent_info*) ; 
- scalar_t__ likely (unsigned int) ; 
- struct extent_info* mallocz (int) ; 
- struct rrdeng_page_descr* pg_cache_create_descr () ; 
- int /*<<< orphan*/  pg_cache_insert (struct rrdengine_instance*,struct pg_cache_page_index*,struct rrdeng_page_descr*) ; 
- int /*<<< orphan*/  uv_rwlock_rdlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_rwlock_rdunlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_rwlock_wrlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_rwlock_wrunlock (int /*<<< orphan*/ *) ; 
+
+ struct pg_cache_page_index** JudyHSGet (int ,int *,int) ;
+ struct pg_cache_page_index** JudyHSIns (int *,int *,int,int ) ;
+ scalar_t__ PAGE_METRICS ;
+ int PJE0 ;
+ int assert (int) ;
+ struct pg_cache_page_index* create_page_index (int *) ;
+ int df_extent_insert (struct extent_info*) ;
+ int error (char*) ;
+ int freez (struct extent_info*) ;
+ scalar_t__ likely (unsigned int) ;
+ struct extent_info* mallocz (int) ;
+ struct rrdeng_page_descr* pg_cache_create_descr () ;
+ int pg_cache_insert (struct rrdengine_instance*,struct pg_cache_page_index*,struct rrdeng_page_descr*) ;
+ int uv_rwlock_rdlock (int *) ;
+ int uv_rwlock_rdunlock (int *) ;
+ int uv_rwlock_wrlock (int *) ;
+ int uv_rwlock_wrunlock (int *) ;
 
 __attribute__((used)) static void restore_extent_metadata(struct rrdengine_instance *ctx, struct rrdengine_journalfile *journalfile,
                                     void *buf, unsigned max_size)
@@ -50,7 +50,7 @@ __attribute__((used)) static void restore_extent_metadata(struct rrdengine_insta
     unsigned i, count, payload_length, descr_size, valid_pages;
     struct rrdeng_page_descr *descr;
     struct extent_info *extent;
-    /* persistent structures */
+
     struct rrdeng_jf_store_data *jf_metric_data;
 
     jf_metric_data = buf;
@@ -66,7 +66,7 @@ __attribute__((used)) static void restore_extent_metadata(struct rrdengine_insta
     extent->offset = jf_metric_data->extent_offset;
     extent->size = jf_metric_data->extent_size;
     extent->datafile = journalfile->datafile;
-    extent->next = NULL;
+    extent->next = ((void*)0);
 
     for (i = 0, valid_pages = 0 ; i < count ; ++i) {
         uuid_t *temp_id;
@@ -81,15 +81,15 @@ __attribute__((used)) static void restore_extent_metadata(struct rrdengine_insta
 
         uv_rwlock_rdlock(&pg_cache->metrics_index.lock);
         PValue = JudyHSGet(pg_cache->metrics_index.JudyHS_array, temp_id, sizeof(uuid_t));
-        if (likely(NULL != PValue)) {
+        if (likely(((void*)0) != PValue)) {
             page_index = *PValue;
         }
         uv_rwlock_rdunlock(&pg_cache->metrics_index.lock);
-        if (NULL == PValue) {
-            /* First time we see the UUID */
+        if (((void*)0) == PValue) {
+
             uv_rwlock_wrlock(&pg_cache->metrics_index.lock);
             PValue = JudyHSIns(&pg_cache->metrics_index.JudyHS_array, temp_id, sizeof(uuid_t), PJE0);
-            assert(NULL == *PValue); /* TODO: figure out concurrency model */
+            assert(((void*)0) == *PValue);
             *PValue = page_index = create_page_index(temp_id);
             page_index->prev = pg_cache->metrics_index.last_page_index;
             pg_cache->metrics_index.last_page_index = page_index;

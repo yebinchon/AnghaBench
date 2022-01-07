@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  v8u16 ;
-typedef  scalar_t__ v4u32 ;
-typedef  int /*<<< orphan*/  v4i32 ;
-typedef  scalar_t__ v16u8 ;
-typedef  int uint8_t ;
-typedef  int uint64_t ;
-typedef  int uint32_t ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- scalar_t__ LD_UB (int*) ; 
- int /*<<< orphan*/  SD4 (int,int,int,int,int*,int) ; 
- int __msa_copy_u_w (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  __msa_hadd_u_h (scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_hadd_u_w (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int v8u16 ;
+typedef scalar_t__ v4u32 ;
+typedef int v4i32 ;
+typedef scalar_t__ v16u8 ;
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int int32_t ;
+
+
+ scalar_t__ LD_UB (int*) ;
+ int SD4 (int,int,int,int,int*,int) ;
+ int __msa_copy_u_w (int ,int) ;
+ int __msa_hadd_u_h (scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_hadd_u_w (int ,int ) ;
 
 __attribute__((used)) static void intra_predict_dc_4blk_8x8_msa(uint8_t *src, int32_t stride)
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static void intra_predict_dc_4blk_8x8_msa(uint8_t *src, in
     src0 += src[1 * stride - 1];
     src0 += src[2 * stride - 1];
     src0 += src[3 * stride - 1];
-    src2  = src[4 * stride - 1];
+    src2 = src[4 * stride - 1];
     src2 += src[5 * stride - 1];
     src2 += src[6 * stride - 1];
     src2 += src[7 * stride - 1];

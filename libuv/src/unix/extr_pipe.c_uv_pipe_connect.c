@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_7__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_stream_t ;
+
+
+typedef struct TYPE_11__ TYPE_7__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uv_stream_t ;
 struct TYPE_11__ {int fd; } ;
-struct TYPE_9__ {int delayed_error; TYPE_7__ io_watcher; int /*<<< orphan*/  loop; TYPE_2__* connect_req; } ;
-typedef  TYPE_1__ uv_pipe_t ;
-struct TYPE_10__ {int /*<<< orphan*/  queue; int /*<<< orphan*/  cb; int /*<<< orphan*/ * handle; } ;
-typedef  TYPE_2__ uv_connect_t ;
-typedef  int /*<<< orphan*/  uv_connect_cb ;
-struct sockaddr_un {int /*<<< orphan*/  sun_family; int /*<<< orphan*/  sun_path; } ;
+struct TYPE_9__ {int delayed_error; TYPE_7__ io_watcher; int loop; TYPE_2__* connect_req; } ;
+typedef TYPE_1__ uv_pipe_t ;
+struct TYPE_10__ {int queue; int cb; int * handle; } ;
+typedef TYPE_2__ uv_connect_t ;
+typedef int uv_connect_cb ;
+struct sockaddr_un {int sun_family; int sun_path; } ;
 struct sockaddr {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_UNIX ; 
- scalar_t__ EINPROGRESS ; 
- scalar_t__ EINTR ; 
- int /*<<< orphan*/  POLLOUT ; 
- int /*<<< orphan*/  QUEUE_INIT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  UV_CONNECT ; 
- int UV_EBADF ; 
- int UV_ENOTSOCK ; 
- int UV_HANDLE_READABLE ; 
- int UV_HANDLE_WRITABLE ; 
- int UV__ERR (scalar_t__) ; 
- int connect (int,struct sockaddr*,int) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  memset (struct sockaddr_un*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  uv__io_feed (int /*<<< orphan*/ ,TYPE_7__*) ; 
- int /*<<< orphan*/  uv__io_start (int /*<<< orphan*/ ,TYPE_7__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv__req_init (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int uv__socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int uv__stream_fd (TYPE_1__*) ; 
- int uv__stream_open (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  uv__strscpy (int /*<<< orphan*/ ,char const*,int) ; 
+
+ int AF_UNIX ;
+ scalar_t__ EINPROGRESS ;
+ scalar_t__ EINTR ;
+ int POLLOUT ;
+ int QUEUE_INIT (int *) ;
+ int SOCK_STREAM ;
+ int UV_CONNECT ;
+ int UV_EBADF ;
+ int UV_ENOTSOCK ;
+ int UV_HANDLE_READABLE ;
+ int UV_HANDLE_WRITABLE ;
+ int UV__ERR (scalar_t__) ;
+ int connect (int,struct sockaddr*,int) ;
+ scalar_t__ errno ;
+ int memset (struct sockaddr_un*,int ,int) ;
+ int uv__io_feed (int ,TYPE_7__*) ;
+ int uv__io_start (int ,TYPE_7__*,int ) ;
+ int uv__req_init (int ,TYPE_2__*,int ) ;
+ int uv__socket (int ,int ,int ) ;
+ int uv__stream_fd (TYPE_1__*) ;
+ int uv__stream_open (int *,int,int) ;
+ int uv__strscpy (int ,char const*,int) ;
 
 void uv_pipe_connect(uv_connect_t* req,
                     uv_pipe_t* handle,
@@ -77,14 +77,6 @@ void uv_pipe_connect(uv_connect_t* req,
 
   if (r == -1 && errno != EINPROGRESS) {
     err = UV__ERR(errno);
-#if defined(__CYGWIN__) || defined(__MSYS__)
-    /* EBADF is supposed to mean that the socket fd is bad, but
-       Cygwin reports EBADF instead of ENOTSOCK when the file is
-       not a socket.  We do not expect to see a bad fd here
-       (e.g. due to new_sock), so translate the error.  */
-    if (err == UV_EBADF)
-      err = UV_ENOTSOCK;
-#endif
     goto out;
   }
 
@@ -107,7 +99,7 @@ out:
   req->cb = cb;
   QUEUE_INIT(&req->queue);
 
-  /* Force callback to run on next tick in case of error. */
+
   if (err)
     uv__io_feed(handle->loop, &handle->io_watcher);
 

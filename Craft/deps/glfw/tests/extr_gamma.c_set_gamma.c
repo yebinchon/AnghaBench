@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GLFWwindow ;
-typedef  int /*<<< orphan*/  GLFWmonitor ;
 
-/* Variables and functions */
- double gamma_value ; 
- int /*<<< orphan*/ * glfwGetPrimaryMonitor () ; 
- int /*<<< orphan*/ * glfwGetWindowMonitor (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwSetGamma (int /*<<< orphan*/ *,double) ; 
- int /*<<< orphan*/  printf (char*,double) ; 
+
+
+
+typedef int GLFWwindow ;
+typedef int GLFWmonitor ;
+
+
+ double gamma_value ;
+ int * glfwGetPrimaryMonitor () ;
+ int * glfwGetWindowMonitor (int *) ;
+ int glfwSetGamma (int *,double) ;
+ int printf (char*,double) ;
 
 __attribute__((used)) static void set_gamma(GLFWwindow* window, float value)
 {

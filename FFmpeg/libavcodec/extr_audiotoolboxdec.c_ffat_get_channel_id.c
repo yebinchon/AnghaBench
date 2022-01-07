@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ AudioChannelLabel ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_CH_FRONT_CENTER ; 
- int /*<<< orphan*/  AV_CH_LOW_FREQUENCY_2 ; 
- int ff_ctzll (int /*<<< orphan*/ ) ; 
- scalar_t__ kAudioChannelLabel_CenterSurround ; 
- scalar_t__ kAudioChannelLabel_LFE2 ; 
- scalar_t__ kAudioChannelLabel_LFEScreen ; 
- scalar_t__ kAudioChannelLabel_Mono ; 
- scalar_t__ kAudioChannelLabel_RearSurroundLeft ; 
- scalar_t__ kAudioChannelLabel_RearSurroundRight ; 
- scalar_t__ kAudioChannelLabel_RightSurround ; 
- scalar_t__ kAudioChannelLabel_RightSurroundDirect ; 
- scalar_t__ kAudioChannelLabel_RightWide ; 
- scalar_t__ kAudioChannelLabel_TopBackRight ; 
+
+
+
+typedef scalar_t__ AudioChannelLabel ;
+
+
+ int AV_CH_FRONT_CENTER ;
+ int AV_CH_LOW_FREQUENCY_2 ;
+ int ff_ctzll (int ) ;
+ scalar_t__ kAudioChannelLabel_CenterSurround ;
+ scalar_t__ kAudioChannelLabel_LFE2 ;
+ scalar_t__ kAudioChannelLabel_LFEScreen ;
+ scalar_t__ kAudioChannelLabel_Mono ;
+ scalar_t__ kAudioChannelLabel_RearSurroundLeft ;
+ scalar_t__ kAudioChannelLabel_RearSurroundRight ;
+ scalar_t__ kAudioChannelLabel_RightSurround ;
+ scalar_t__ kAudioChannelLabel_RightSurroundDirect ;
+ scalar_t__ kAudioChannelLabel_RightWide ;
+ scalar_t__ kAudioChannelLabel_TopBackRight ;
 
 __attribute__((used)) static int ffat_get_channel_id(AudioChannelLabel label)
 {

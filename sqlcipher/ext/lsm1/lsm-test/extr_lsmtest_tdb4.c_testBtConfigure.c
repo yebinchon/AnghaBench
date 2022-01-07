@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct CfgParam   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct CfgParam TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct CfgParam {char const* zParam; int eParam; } ;
-struct TYPE_4__ {int bFastInsert; int /*<<< orphan*/  pBt; } ;
-typedef  TYPE_1__ BtDb ;
+struct TYPE_4__ {int bFastInsert; int pBt; } ;
+typedef TYPE_1__ BtDb ;
 
-/* Variables and functions */
- int BT_CONTROL_AUTOCKPT ; 
- int BT_CONTROL_BLKSZ ; 
- int BT_CONTROL_MULTIPROC ; 
- int BT_CONTROL_PAGESZ ; 
- int BT_CONTROL_SAFETY ; 
- int SQLITE4_OK ; 
- int sqlite4BtControl (int /*<<< orphan*/ ,int,void*) ; 
- int strlen (char const*) ; 
- int testArgSelect (TYPE_3__*,char*,char const*,int*) ; 
- int /*<<< orphan*/  testFree (char*) ; 
- scalar_t__ testMalloc (int) ; 
- int testParseInt (char const*,int*) ; 
- scalar_t__ testParseOption (char const**,char const**,char const**,char*) ; 
+
+ int BT_CONTROL_AUTOCKPT ;
+ int BT_CONTROL_BLKSZ ;
+ int BT_CONTROL_MULTIPROC ;
+ int BT_CONTROL_PAGESZ ;
+ int BT_CONTROL_SAFETY ;
+ int SQLITE4_OK ;
+ int sqlite4BtControl (int ,int,void*) ;
+ int strlen (char const*) ;
+ int testArgSelect (TYPE_3__*,char*,char const*,int*) ;
+ int testFree (char*) ;
+ scalar_t__ testMalloc (int) ;
+ int testParseInt (char const*,int*) ;
+ scalar_t__ testParseOption (char const**,char const**,char const**,char*) ;
 
 __attribute__((used)) static int testBtConfigure(BtDb *pDb, const char *zCfg, int *pbMt){
   int rc = SQLITE4_OK;
@@ -39,13 +39,13 @@ __attribute__((used)) static int testBtConfigure(BtDb *pDb, const char *zCfg, in
       const char *zParam;
       int eParam;
     } aParam[] = {
-      { "safety",         BT_CONTROL_SAFETY },
-      { "autockpt",       BT_CONTROL_AUTOCKPT },
-      { "multiproc",      BT_CONTROL_MULTIPROC },
-      { "blksz",          BT_CONTROL_BLKSZ },
-      { "pagesz",         BT_CONTROL_PAGESZ },
-      { "mt",             -1 },
-      { "fastinsert",     -2 },
+      { "safety", BT_CONTROL_SAFETY },
+      { "autockpt", BT_CONTROL_AUTOCKPT },
+      { "multiproc", BT_CONTROL_MULTIPROC },
+      { "blksz", BT_CONTROL_BLKSZ },
+      { "pagesz", BT_CONTROL_PAGESZ },
+      { "mt", -1 },
+      { "fastinsert", -2 },
       { 0, 0 }
     };
     const char *z = zCfg;

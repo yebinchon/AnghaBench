@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct termios {int c_lflag; int* c_cc; int /*<<< orphan*/  c_cflag; int /*<<< orphan*/  c_oflag; scalar_t__ c_iflag; } ;
+
+
+
+
+struct termios {int c_lflag; int* c_cc; int c_cflag; int c_oflag; scalar_t__ c_iflag; } ;
 struct prompt {int fd_in; struct termios comtio; struct termios oldtio; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CS8 ; 
- int ECHO ; 
- int /*<<< orphan*/  F_GETFL ; 
- int /*<<< orphan*/  F_SETFL ; 
- int ICANON ; 
- int ISIG ; 
- int /*<<< orphan*/  OPOST ; 
- int O_NONBLOCK ; 
- int STDIN_FILENO ; 
- int /*<<< orphan*/  TCSANOW ; 
- size_t VINTR ; 
- size_t VMIN ; 
- size_t VTIME ; 
- int _POSIX_VDISABLE ; 
- int fcntl (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  tcgetattr (int,struct termios*) ; 
- int /*<<< orphan*/  tcsetattr (int,int /*<<< orphan*/ ,struct termios*) ; 
+
+ int CS8 ;
+ int ECHO ;
+ int F_GETFL ;
+ int F_SETFL ;
+ int ICANON ;
+ int ISIG ;
+ int OPOST ;
+ int O_NONBLOCK ;
+ int STDIN_FILENO ;
+ int TCSANOW ;
+ size_t VINTR ;
+ size_t VMIN ;
+ size_t VTIME ;
+ int _POSIX_VDISABLE ;
+ int fcntl (int,int ,int) ;
+ int tcgetattr (int,struct termios*) ;
+ int tcsetattr (int,int ,struct termios*) ;
 
 void
 prompt_TtyInit(struct prompt *p)

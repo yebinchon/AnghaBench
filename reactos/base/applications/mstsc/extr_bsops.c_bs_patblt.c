@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ bs_is_pixel_on (char*,int,int,int,int) ; 
- int /*<<< orphan*/  bs_rect (int,int,int,int,int,int) ; 
- int /*<<< orphan*/  bs_set_pixel (int,int,int,int,int) ; 
- int /*<<< orphan*/  g_hatch_patterns ; 
+ scalar_t__ bs_is_pixel_on (char*,int,int,int,int) ;
+ int bs_rect (int,int,int,int,int,int) ;
+ int bs_set_pixel (int,int,int,int,int) ;
+ int g_hatch_patterns ;
 
 void
 bs_patblt(int opcode, int x, int y, int cx, int cy,
@@ -34,7 +26,7 @@ bs_patblt(int opcode, int x, int y, int cx, int cy,
     case 0:
       bs_rect(x, y, cx, cy, fgcolour, opcode);
       break;
-    case 2: /* Hatch */
+    case 2:
       b = g_hatch_patterns + brush_pattern[0] * 8;
       break;
     case 3:

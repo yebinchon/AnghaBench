@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  U32 ;
-typedef  int /*<<< orphan*/  SCIC_SDS_CONTROLLER_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCIC_LOG_INFO (int /*<<< orphan*/ ) ; 
- int SCIC_LOG_OBJECT_COMPLETION_QUEUE ; 
- int SCIC_LOG_OBJECT_CONTROLLER ; 
- int /*<<< orphan*/  SMU_PCP_WRITE (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sci_base_object_get_logger (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int U32 ;
+typedef int SCIC_SDS_CONTROLLER_T ;
+
+
+ int SCIC_LOG_INFO (int ) ;
+ int SCIC_LOG_OBJECT_COMPLETION_QUEUE ;
+ int SCIC_LOG_OBJECT_CONTROLLER ;
+ int SMU_PCP_WRITE (int *,int ) ;
+ int sci_base_object_get_logger (int *) ;
 
 void scic_sds_controller_post_request(
    SCIC_SDS_CONTROLLER_T *this_controller,
-   U32                    request
+   U32 request
 )
 {
    SCIC_LOG_INFO((

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ slave_priority; scalar_t__ slave_repl_offset; char* runid; } ;
-typedef  TYPE_1__ sentinelRedisInstance ;
+typedef TYPE_1__ sentinelRedisInstance ;
 
-/* Variables and functions */
- int strcasecmp (char*,char*) ; 
+
+ int strcasecmp (char*,char*) ;
 
 int compareSlavesForPromotion(const void *a, const void *b) {
     sentinelRedisInstance **sa = (sentinelRedisInstance **)a,
@@ -25,22 +25,22 @@ int compareSlavesForPromotion(const void *a, const void *b) {
     if ((*sa)->slave_priority != (*sb)->slave_priority)
         return (*sa)->slave_priority - (*sb)->slave_priority;
 
-    /* If priority is the same, select the slave with greater replication
-     * offset (processed more data from the master). */
+
+
     if ((*sa)->slave_repl_offset > (*sb)->slave_repl_offset) {
-        return -1; /* a < b */
+        return -1;
     } else if ((*sa)->slave_repl_offset < (*sb)->slave_repl_offset) {
-        return 1; /* a > b */
+        return 1;
     }
 
-    /* If the replication offset is the same select the slave with that has
-     * the lexicographically smaller runid. Note that we try to handle runid
-     * == NULL as there are old Redis versions that don't publish runid in
-     * INFO. A NULL runid is considered bigger than any other runid. */
+
+
+
+
     sa_runid = (*sa)->runid;
     sb_runid = (*sb)->runid;
-    if (sa_runid == NULL && sb_runid == NULL) return 0;
-    else if (sa_runid == NULL) return 1;  /* a > b */
-    else if (sb_runid == NULL) return -1; /* a < b */
+    if (sa_runid == ((void*)0) && sb_runid == ((void*)0)) return 0;
+    else if (sa_runid == ((void*)0)) return 1;
+    else if (sb_runid == ((void*)0)) return -1;
     return strcasecmp(sa_runid, sb_runid);
 }

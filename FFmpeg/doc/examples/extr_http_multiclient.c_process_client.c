@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  AVIOContext ;
 
-/* Variables and functions */
- int AVERROR_EOF ; 
- int AVERROR_HTTP_NOT_FOUND ; 
- int /*<<< orphan*/  AVIO_FLAG_READ ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_TRACE ; 
- int /*<<< orphan*/  AV_OPT_SEARCH_CHILDREN ; 
- int av_err2str (int) ; 
- int /*<<< orphan*/  av_freep (char**) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  av_opt_get (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char**) ; 
- int av_opt_set_int (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_flush (int /*<<< orphan*/ *) ; 
- int avio_handshake (int /*<<< orphan*/ *) ; 
- int avio_open2 (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int avio_read (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char*,char const*) ; 
- scalar_t__ strlen (char*) ; 
+
+
+
+typedef char uint8_t ;
+typedef int buf ;
+typedef int AVIOContext ;
+
+
+ int AVERROR_EOF ;
+ int AVERROR_HTTP_NOT_FOUND ;
+ int AVIO_FLAG_READ ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_TRACE ;
+ int AV_OPT_SEARCH_CHILDREN ;
+ int av_err2str (int) ;
+ int av_freep (char**) ;
+ int av_log (int *,int ,char*,...) ;
+ int av_opt_get (int *,char*,int ,char**) ;
+ int av_opt_set_int (int *,char*,int,int ) ;
+ int avio_close (int *) ;
+ int avio_flush (int *) ;
+ int avio_handshake (int *) ;
+ int avio_open2 (int **,char const*,int ,int *,int *) ;
+ int avio_read (int *,char*,int) ;
+ int avio_write (int *,char*,int) ;
+ int fprintf (int ,char*) ;
+ int stderr ;
+ int strcmp (char*,char const*) ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static void process_client(AVIOContext *client, const char *in_uri)
 {
-    AVIOContext *input = NULL;
+    AVIOContext *input = ((void*)0);
     uint8_t buf[1024];
     int ret, n, reply_code;
-    uint8_t *resource = NULL;
+    uint8_t *resource = ((void*)0);
     while ((ret = avio_handshake(client)) > 0) {
         av_opt_get(client, "resource", AV_OPT_SEARCH_CHILDREN, &resource);
-        // check for strlen(resource) is necessary, because av_opt_get()
-        // may return empty string.
+
+
         if (resource && strlen(resource))
             break;
         av_freep(&resource);
@@ -74,7 +74,7 @@ __attribute__((used)) static void process_client(AVIOContext *client, const char
     if (reply_code != 200)
         goto end;
     fprintf(stderr, "Opening input file.\n");
-    if ((ret = avio_open2(&input, in_uri, AVIO_FLAG_READ, NULL, NULL)) < 0) {
+    if ((ret = avio_open2(&input, in_uri, AVIO_FLAG_READ, ((void*)0), ((void*)0))) < 0) {
         av_log(input, AV_LOG_ERROR, "Failed to open input: %s: %s.\n", in_uri,
                av_err2str(ret));
         goto end;

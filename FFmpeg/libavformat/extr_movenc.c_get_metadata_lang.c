@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tag2 ;
-struct TYPE_8__ {int /*<<< orphan*/ * key; int /*<<< orphan*/  value; } ;
-struct TYPE_7__ {int /*<<< orphan*/  metadata; } ;
-typedef  TYPE_1__ AVFormatContext ;
-typedef  TYPE_2__ AVDictionaryEntry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_DICT_IGNORE_SUFFIX ; 
- TYPE_2__* av_dict_get (int /*<<< orphan*/ ,char const*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int ff_mov_iso639_to_lang (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int strlen (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int tag2 ;
+struct TYPE_8__ {int * key; int value; } ;
+struct TYPE_7__ {int metadata; } ;
+typedef TYPE_1__ AVFormatContext ;
+typedef TYPE_2__ AVDictionaryEntry ;
+
+
+ int AV_DICT_IGNORE_SUFFIX ;
+ TYPE_2__* av_dict_get (int ,char const*,TYPE_2__*,int ) ;
+ int ff_mov_iso639_to_lang (int *,int) ;
+ int snprintf (char*,int,char*,char const*) ;
+ int strcmp (int ,int ) ;
+ int strlen (int *) ;
 
 __attribute__((used)) static AVDictionaryEntry *get_metadata_lang(AVFormatContext *s,
                                             const char *tag, int *lang)
 {
     int l, len, len2;
-    AVDictionaryEntry *t, *t2 = NULL;
+    AVDictionaryEntry *t, *t2 = ((void*)0);
     char tag2[16];
 
     *lang = 0;
 
-    if (!(t = av_dict_get(s->metadata, tag, NULL, 0)))
-        return NULL;
+    if (!(t = av_dict_get(s->metadata, tag, ((void*)0), 0)))
+        return ((void*)0);
 
     len = strlen(t->key);
     snprintf(tag2, sizeof(tag2), "%s-", tag);

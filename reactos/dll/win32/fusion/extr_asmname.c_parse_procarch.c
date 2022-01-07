@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-struct TYPE_3__ {int /*<<< orphan*/  pekind; } ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  TYPE_1__ IAssemblyNameImpl ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FUSION_E_INVALID_NAME ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  lstrcmpiW (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  peAMD64 ; 
- int /*<<< orphan*/  peI386 ; 
- int /*<<< orphan*/  peIA64 ; 
- int /*<<< orphan*/  peMSIL ; 
- int /*<<< orphan*/  wine_dbgstr_w (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+struct TYPE_3__ {int pekind; } ;
+typedef int LPCWSTR ;
+typedef TYPE_1__ IAssemblyNameImpl ;
+typedef int HRESULT ;
+
+
+ int ERR (char*,int ) ;
+ int FUSION_E_INVALID_NAME ;
+ int S_OK ;
+ int lstrcmpiW (int ,char const*) ;
+ int peAMD64 ;
+ int peI386 ;
+ int peIA64 ;
+ int peMSIL ;
+ int wine_dbgstr_w (int ) ;
 
 __attribute__((used)) static HRESULT parse_procarch(IAssemblyNameImpl *name, LPCWSTR procarch)
 {

@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int strcat (void*,char const*) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  strcat (void*,char const*) ; 
-
-__attribute__((used)) static void firebird_info_cb(void *arg, char const *s) /* {{{ */
+__attribute__((used)) static void firebird_info_cb(void *arg, char const *s)
 {
-	if (arg) {
-		if (*(char*)arg) { /* second call */
-			strcat(arg, " ");
-		}
-		strcat(arg, s);
-	}
+ if (arg) {
+  if (*(char*)arg) {
+   strcat(arg, " ");
+  }
+  strcat(arg, s);
+ }
 }

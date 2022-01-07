@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite_int64 ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int sqlite_int64 ;
 struct TYPE_5__ {scalar_t__ iType; } ;
-typedef  int /*<<< orphan*/  DocListReader ;
-typedef  TYPE_1__ DocList ;
+typedef int DocListReader ;
+typedef TYPE_1__ DocList ;
 
-/* Variables and functions */
- scalar_t__ DL_POSITIONS ; 
- int /*<<< orphan*/  docListAddDocid (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  docListAddPos (TYPE_1__*,int,int) ; 
- int readPosition (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  skipPositionList (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ DL_POSITIONS ;
+ int docListAddDocid (TYPE_1__*,int ) ;
+ int docListAddPos (TYPE_1__*,int,int) ;
+ int readPosition (int *,int*) ;
+ int skipPositionList (int *) ;
 
 __attribute__((used)) static void mergePosList(
-  DocListReader *pLeft,    /* Left position list */
-  DocListReader *pRight,   /* Right position list */
-  sqlite_int64 iDocid,     /* The docid from pLeft and pRight */
-  DocList *pOut            /* Write the merged document record here */
+  DocListReader *pLeft,
+  DocListReader *pRight,
+  sqlite_int64 iDocid,
+  DocList *pOut
 ){
   int iLeftCol, iLeftPos = readPosition(pLeft, &iLeftCol);
   int iRightCol, iRightPos = readPosition(pRight, &iRightCol);
   int match = 0;
 
-  /* Loop until we've reached the end of both position lists. */
+
   while( iLeftPos!=-1 && iRightPos!=-1 ){
     if( iLeftCol==iRightCol && iLeftPos+1==iRightPos ){
       if( !match ){

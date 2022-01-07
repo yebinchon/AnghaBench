@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  IWebBrowserPriv2IE9_iface; int /*<<< orphan*/  ITargetFramePriv2_iface; int /*<<< orphan*/  ITargetFrame2_iface; int /*<<< orphan*/  ITargetFrame_iface; int /*<<< orphan*/  IHlinkFrame_iface; } ;
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  TYPE_1__ HlinkFrame ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IID_IHlinkFrame ; 
- int /*<<< orphan*/  IID_ITargetFrame ; 
- int /*<<< orphan*/  IID_ITargetFrame2 ; 
- int /*<<< orphan*/  IID_ITargetFramePriv ; 
- int /*<<< orphan*/  IID_ITargetFramePriv2 ; 
- int /*<<< orphan*/  IID_IWebBrowserPriv2IE9 ; 
- int /*<<< orphan*/  IUnknown_AddRef (int /*<<< orphan*/ *) ; 
- scalar_t__ IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__*,void**) ; 
- int /*<<< orphan*/  TRUE ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int IWebBrowserPriv2IE9_iface; int ITargetFramePriv2_iface; int ITargetFrame2_iface; int ITargetFrame_iface; int IHlinkFrame_iface; } ;
+typedef int REFIID ;
+typedef int IUnknown ;
+typedef TYPE_1__ HlinkFrame ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int IID_IHlinkFrame ;
+ int IID_ITargetFrame ;
+ int IID_ITargetFrame2 ;
+ int IID_ITargetFramePriv ;
+ int IID_ITargetFramePriv2 ;
+ int IID_IWebBrowserPriv2IE9 ;
+ int IUnknown_AddRef (int *) ;
+ scalar_t__ IsEqualGUID (int *,int ) ;
+ int TRACE (char*,TYPE_1__*,void**) ;
+ int TRUE ;
 
 BOOL HlinkFrame_QI(HlinkFrame *This, REFIID riid, void **ppv)
 {

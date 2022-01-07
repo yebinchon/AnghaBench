@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int use_dma ; 
+ int use_dma ;
 
 __attribute__((used)) static inline char *dmastr(void)
 {
-	if (use_dma == 0)
-		return "(dma disabled)";
-	else if (use_dma == 2)
-		return "(dma IN and OUT)";
-	else
-		return "(dma IN)";
+ if (use_dma == 0)
+  return "(dma disabled)";
+ else if (use_dma == 2)
+  return "(dma IN and OUT)";
+ else
+  return "(dma IN)";
 }

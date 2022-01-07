@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_8__ ;
-typedef  struct TYPE_18__   TYPE_7__ ;
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
+
+
+typedef struct TYPE_19__ TYPE_8__ ;
+typedef struct TYPE_18__ TYPE_7__ ;
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int int64_t ;
 struct TYPE_19__ {scalar_t__ i_stepsize; TYPE_3__* prec; } ;
-struct TYPE_18__ {int /*<<< orphan*/  ninclpasses; } ;
+struct TYPE_18__ {int ninclpasses; } ;
 struct TYPE_17__ {int nreslevels; scalar_t__ transform; } ;
 struct TYPE_16__ {TYPE_2__* reslevel; } ;
-struct TYPE_15__ {int ncomponents; int /*<<< orphan*/  lambda; TYPE_6__ codsty; } ;
+struct TYPE_15__ {int ncomponents; int lambda; TYPE_6__ codsty; } ;
 struct TYPE_14__ {int nb_codeblocks_height; int nb_codeblocks_width; TYPE_7__* cblk; } ;
 struct TYPE_13__ {int num_precincts_x; int num_precincts_y; int nbands; TYPE_8__* band; } ;
 struct TYPE_12__ {TYPE_5__* comp; } ;
-typedef  TYPE_1__ Jpeg2000Tile ;
-typedef  TYPE_2__ Jpeg2000ResLevel ;
-typedef  TYPE_3__ Jpeg2000Prec ;
-typedef  TYPE_4__ Jpeg2000EncoderContext ;
-typedef  TYPE_5__ Jpeg2000Component ;
-typedef  TYPE_6__ Jpeg2000CodingStyle ;
-typedef  TYPE_7__ Jpeg2000Cblk ;
-typedef  TYPE_8__ Jpeg2000Band ;
+typedef TYPE_1__ Jpeg2000Tile ;
+typedef TYPE_2__ Jpeg2000ResLevel ;
+typedef TYPE_3__ Jpeg2000Prec ;
+typedef TYPE_4__ Jpeg2000EncoderContext ;
+typedef TYPE_5__ Jpeg2000Component ;
+typedef TYPE_6__ Jpeg2000CodingStyle ;
+typedef TYPE_7__ Jpeg2000Cblk ;
+typedef TYPE_8__ Jpeg2000Band ;
 
-/* Variables and functions */
- scalar_t__ FF_DWT53 ; 
- scalar_t__*** dwt_norms ; 
- int /*<<< orphan*/  getcut (TYPE_7__*,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ FF_DWT53 ;
+ scalar_t__*** dwt_norms ;
+ int getcut (TYPE_7__*,int ,int) ;
 
 __attribute__((used)) static void truncpasses(Jpeg2000EncoderContext *s, Jpeg2000Tile *tile)
 {

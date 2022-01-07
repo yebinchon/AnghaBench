@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* _ (char*) ; 
- int print_width ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ undefined_only ; 
+ char* _ (char*) ;
+ int print_width ;
+ int printf (char*,...) ;
+ scalar_t__ undefined_only ;
 
 __attribute__((used)) static void
 print_archive_member_sysv (char *archive, const char *filename)
@@ -25,9 +17,9 @@ print_archive_member_sysv (char *archive, const char *filename)
   else
     printf (_("\n\nSymbols from %s[%s]:\n\n"), archive, filename);
   if (print_width == 32)
-    printf (_("\
-Name                  Value   Class        Type         Size     Line  Section\n\n"));
+    printf (_("Name                  Value   Class        Type         Size     Line  Section\n\n"));
+
   else
-    printf (_("\
-Name                  Value           Class        Type         Size             Line  Section\n\n"));
+    printf (_("Name                  Value           Class        Type         Size             Line  Section\n\n"));
+
 }

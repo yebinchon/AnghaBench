@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int COEFF_0 ; 
- int COEFF_1 ; 
- int COEFF_2 ; 
+ int COEFF_0 ;
+ int COEFF_1 ;
+ int COEFF_2 ;
 
 __attribute__((used)) static void idct6(int pre_mant[6])
 {
@@ -23,9 +15,9 @@ __attribute__((used)) static void idct6(int pre_mant[6])
 
     odd1 = pre_mant[1] - pre_mant[3] - pre_mant[5];
 
-    even2 = ( pre_mant[2]                * COEFF_0) >> 23;
-    tmp   = ( pre_mant[4]                * COEFF_1) >> 23;
-    odd0  = ((pre_mant[1] + pre_mant[5]) * COEFF_2) >> 23;
+    even2 = ( pre_mant[2] * COEFF_0) >> 23;
+    tmp = ( pre_mant[4] * COEFF_1) >> 23;
+    odd0 = ((pre_mant[1] + pre_mant[5]) * COEFF_2) >> 23;
 
     even0 = pre_mant[0] + (tmp >> 1);
     even1 = pre_mant[0] - tmp;

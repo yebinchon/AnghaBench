@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int wState; } ;
-typedef  TYPE_1__* LPHEADCOMBO ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__* LPHEADCOMBO ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CBDropDown (TYPE_1__*) ; 
- int CBF_DROPPED ; 
- int /*<<< orphan*/  CBRollUp (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int CBDropDown (TYPE_1__*) ;
+ int CBF_DROPPED ;
+ int CBRollUp (TYPE_1__*,int ,int ) ;
+ int FALSE ;
+ int TRUE ;
 
 BOOL COMBO_FlipListbox( LPHEADCOMBO lphc, BOOL ok, BOOL bRedrawButton )
 {

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int int8_t ;
-typedef  int* cvid_codebook ;
 
-/* Variables and functions */
- int AV_RB32 (int const*) ; 
- void* av_clip_uint8 (int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int int8_t ;
+typedef int* cvid_codebook ;
+
+
+ int AV_RB32 (int const*) ;
+ void* av_clip_uint8 (int) ;
 
 __attribute__((used)) static void cinepak_decode_codebook (cvid_codebook *codebook,
                                      int chunk_id, int size, const uint8_t *data)
 {
     const uint8_t *eod = (data + size);
     uint32_t flag, mask;
-    int      i, n;
+    int i, n;
     uint8_t *p;
 
-    /* check if this chunk contains 4- or 6-element vectors */
-    n    = (chunk_id & 0x04) ? 4 : 6;
+
+    n = (chunk_id & 0x04) ? 4 : 6;
     flag = 0;
     mask = 0;
 
@@ -38,9 +38,9 @@ __attribute__((used)) static void cinepak_decode_codebook (cvid_codebook *codebo
             if ((data + 4) > eod)
                 break;
 
-            flag  = AV_RB32 (data);
+            flag = AV_RB32 (data);
             data += 4;
-            mask  = 0x80000000;
+            mask = 0x80000000;
         }
 
         if (!(chunk_id & 0x01) || (flag & mask)) {
@@ -62,7 +62,7 @@ __attribute__((used)) static void cinepak_decode_codebook (cvid_codebook *codebo
                 for(k=0; k<4; ++k) {
                     r = *p++ + v*2;
                     g = *p++ - (u/2) - v;
-                    b = *p   + u*2;
+                    b = *p + u*2;
                     p -= 2;
                     *p++ = av_clip_uint8(r);
                     *p++ = av_clip_uint8(g);

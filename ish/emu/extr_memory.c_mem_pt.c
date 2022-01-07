@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pt_entry {int /*<<< orphan*/ * data; } ;
+
+
+
+
+struct pt_entry {int * data; } ;
 struct mem {struct pt_entry** pgdir; } ;
-typedef  int /*<<< orphan*/  page_t ;
+typedef int page_t ;
 
-/* Variables and functions */
- size_t PGDIR_BOTTOM (int /*<<< orphan*/ ) ; 
- size_t PGDIR_TOP (int /*<<< orphan*/ ) ; 
+
+ size_t PGDIR_BOTTOM (int ) ;
+ size_t PGDIR_TOP (int ) ;
 
 struct pt_entry *mem_pt(struct mem *mem, page_t page) {
     struct pt_entry *pgdir = mem->pgdir[PGDIR_TOP(page)];
-    if (pgdir == NULL)
-        return NULL;
+    if (pgdir == ((void*)0))
+        return ((void*)0);
     struct pt_entry *entry = &pgdir[PGDIR_BOTTOM(page)];
-    if (entry->data == NULL)
-        return NULL;
+    if (entry->data == ((void*)0))
+        return ((void*)0);
     return entry;
 }

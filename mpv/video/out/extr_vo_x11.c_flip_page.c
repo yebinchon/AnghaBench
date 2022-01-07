@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vo {struct priv* priv; } ;
-struct priv {size_t current_buf; int /*<<< orphan*/ * myximage; } ;
+struct priv {size_t current_buf; int * myximage; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Display_Image (struct priv*,int /*<<< orphan*/ ) ; 
+
+ int Display_Image (struct priv*,int ) ;
 
 __attribute__((used)) static void flip_page(struct vo *vo)
 {

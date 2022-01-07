@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  buffer; int /*<<< orphan*/  node; int /*<<< orphan*/  offnum; int /*<<< orphan*/  page; } ;
-typedef  scalar_t__ SpGistInnerTuple ;
-typedef  TYPE_1__ SPPageDesc ;
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  OffsetNumber ;
-typedef  int /*<<< orphan*/  BlockNumber ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MarkBufferDirty (int /*<<< orphan*/ ) ; 
- scalar_t__ PageGetItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PageGetItemId (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spgUpdateNodeLink (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int buffer; int node; int offnum; int page; } ;
+typedef scalar_t__ SpGistInnerTuple ;
+typedef TYPE_1__ SPPageDesc ;
+typedef int Relation ;
+typedef int OffsetNumber ;
+typedef int BlockNumber ;
+
+
+ int MarkBufferDirty (int ) ;
+ scalar_t__ PageGetItem (int ,int ) ;
+ int PageGetItemId (int ,int ) ;
+ int spgUpdateNodeLink (scalar_t__,int ,int ,int ) ;
 
 __attribute__((used)) static void
 saveNodeLink(Relation index, SPPageDesc *parent,
-			 BlockNumber blkno, OffsetNumber offnum)
+    BlockNumber blkno, OffsetNumber offnum)
 {
-	SpGistInnerTuple innerTuple;
+ SpGistInnerTuple innerTuple;
 
-	innerTuple = (SpGistInnerTuple) PageGetItem(parent->page,
-												PageGetItemId(parent->page, parent->offnum));
+ innerTuple = (SpGistInnerTuple) PageGetItem(parent->page,
+            PageGetItemId(parent->page, parent->offnum));
 
-	spgUpdateNodeLink(innerTuple, parent->node, blkno, offnum);
+ spgUpdateNodeLink(innerTuple, parent->node, blkno, offnum);
 
-	MarkBufferDirty(parent->buffer);
+ MarkBufferDirty(parent->buffer);
 }

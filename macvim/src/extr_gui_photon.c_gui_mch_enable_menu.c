@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  vimMenuBar; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PtRealizeWidget (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PtUnrealizeWidget (int /*<<< orphan*/ ) ; 
- TYPE_1__ gui ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int vimMenuBar; } ;
+
+
+ int PtRealizeWidget (int ) ;
+ int PtUnrealizeWidget (int ) ;
+ TYPE_1__ gui ;
 
 void
 gui_mch_enable_menu(int flag)
 {
     if (flag != 0)
-	PtRealizeWidget(gui.vimMenuBar);
+ PtRealizeWidget(gui.vimMenuBar);
     else
-	PtUnrealizeWidget(gui.vimMenuBar);
+ PtUnrealizeWidget(gui.vimMenuBar);
 }

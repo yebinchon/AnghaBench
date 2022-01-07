@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int hw_render_enable; scalar_t__ hw_render_texture; scalar_t__ hw_render_rb_ds; scalar_t__ hw_render_fbo; } ;
-typedef  TYPE_1__ gl_core_t ;
+typedef TYPE_1__ gl_core_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  glDeleteFramebuffers (int,scalar_t__*) ; 
- int /*<<< orphan*/  glDeleteRenderbuffers (int,scalar_t__*) ; 
- int /*<<< orphan*/  glDeleteTextures (int,scalar_t__*) ; 
- int /*<<< orphan*/  gl_core_context_bind_hw_render (TYPE_1__*,int) ; 
+
+ int glDeleteFramebuffers (int,scalar_t__*) ;
+ int glDeleteRenderbuffers (int,scalar_t__*) ;
+ int glDeleteTextures (int,scalar_t__*) ;
+ int gl_core_context_bind_hw_render (TYPE_1__*,int) ;
 
 __attribute__((used)) static void gl_core_deinit_hw_render(gl_core_t *gl)
 {
-   gl_core_context_bind_hw_render(gl, true);
+   gl_core_context_bind_hw_render(gl, 1);
 
    if (gl->hw_render_fbo)
       glDeleteFramebuffers(1, &gl->hw_render_fbo);
@@ -34,6 +34,6 @@ __attribute__((used)) static void gl_core_deinit_hw_render(gl_core_t *gl)
    gl->hw_render_fbo = 0;
    gl->hw_render_rb_ds = 0;
    gl->hw_render_texture = 0;
-   gl_core_context_bind_hw_render(gl, false);
-   gl->hw_render_enable = false;
+   gl_core_context_bind_hw_render(gl, 0);
+   gl->hw_render_enable = 0;
 }

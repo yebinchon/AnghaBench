@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct omap_hdmi {int /*<<< orphan*/  wp; int /*<<< orphan*/  core; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hdmi4_audio_start (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hdmi_wp_audio_enable (int /*<<< orphan*/ *,int) ; 
+
+
+
+struct omap_hdmi {int wp; int core; } ;
+
+
+ int hdmi4_audio_start (int *,int *) ;
+ int hdmi_wp_audio_enable (int *,int) ;
 
 __attribute__((used)) static void hdmi_start_audio_stream(struct omap_hdmi *hd)
 {
-	hdmi_wp_audio_enable(&hd->wp, true);
-	hdmi4_audio_start(&hd->core, &hd->wp);
+ hdmi_wp_audio_enable(&hd->wp, 1);
+ hdmi4_audio_start(&hd->core, &hd->wp);
 }

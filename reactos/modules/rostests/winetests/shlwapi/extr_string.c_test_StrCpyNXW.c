@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lpInit ;
-typedef  int /*<<< orphan*/  dest ;
-typedef  char WCHAR ;
-typedef  char* LPWSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (char*) ; 
- int /*<<< orphan*/  memcmp (char*,char const*,int) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int /*<<< orphan*/  ok (int,char*,char*,char*,char,char,char,char,char,char,char,char) ; 
- char* pStrCpyNXW (char*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int lpInit ;
+typedef int dest ;
+typedef char WCHAR ;
+typedef char* LPWSTR ;
+
+
+ int ARRAY_SIZE (char*) ;
+ int memcmp (char*,char const*,int) ;
+ int memcpy (char*,char const*,int) ;
+ int ok (int,char*,char*,char*,char,char,char,char,char,char,char,char) ;
+ char* pStrCpyNXW (char*,char const*,int ) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_StrCpyNXW(void)
 {

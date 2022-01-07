@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {size_t _size; } ;
-typedef  TYPE_1__ ldns_rdf ;
+typedef TYPE_1__ ldns_rdf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+ int assert (int ) ;
 
 void
 ldns_rdf_set_size(ldns_rdf *rd, size_t size)
 {
-	assert(rd != NULL);
-	rd->_size = size;
+ assert(rd != ((void*)0));
+ rd->_size = size;
 }

@@ -1,58 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct ath10k {int hw_rev; } ;
-
-/* Variables and functions */
-#define  ATH10K_HW_QCA4019 136 
-#define  ATH10K_HW_QCA6174 135 
-#define  ATH10K_HW_QCA9377 134 
-#define  ATH10K_HW_QCA9887 133 
-#define  ATH10K_HW_QCA9888 132 
-#define  ATH10K_HW_QCA988X 131 
-#define  ATH10K_HW_QCA9984 130 
-#define  ATH10K_HW_QCA99X0 129 
-#define  ATH10K_HW_WCN3990 128 
- scalar_t__ CORE_CTRL_ADDRESS ; 
- int /*<<< orphan*/  CORE_CTRL_PCIE_REG_31_MASK ; 
- scalar_t__ SOC_CORE_BASE_ADDRESS ; 
- int /*<<< orphan*/  ath10k_pci_read32 (struct ath10k*,scalar_t__) ; 
- int /*<<< orphan*/  ath10k_pci_write32 (struct ath10k*,scalar_t__,int /*<<< orphan*/ ) ; 
+ scalar_t__ CORE_CTRL_ADDRESS ;
+ int CORE_CTRL_PCIE_REG_31_MASK ;
+ scalar_t__ SOC_CORE_BASE_ADDRESS ;
+ int ath10k_pci_read32 (struct ath10k*,scalar_t__) ;
+ int ath10k_pci_write32 (struct ath10k*,scalar_t__,int ) ;
 
 __attribute__((used)) static void ath10k_pci_irq_msi_fw_unmask(struct ath10k *ar)
 {
-	u32 val;
+ u32 val;
 
-	switch (ar->hw_rev) {
-	case ATH10K_HW_QCA988X:
-	case ATH10K_HW_QCA9887:
-	case ATH10K_HW_QCA6174:
-	case ATH10K_HW_QCA9377:
-		val = ath10k_pci_read32(ar, SOC_CORE_BASE_ADDRESS +
-					CORE_CTRL_ADDRESS);
-		val |= CORE_CTRL_PCIE_REG_31_MASK;
-		ath10k_pci_write32(ar, SOC_CORE_BASE_ADDRESS +
-				   CORE_CTRL_ADDRESS, val);
-		break;
-	case ATH10K_HW_QCA99X0:
-	case ATH10K_HW_QCA9984:
-	case ATH10K_HW_QCA9888:
-	case ATH10K_HW_QCA4019:
-		/* TODO: Find appropriate register configuration for QCA99X0
-		 *  to unmask irq/MSI.
-		 */
-		break;
-	case ATH10K_HW_WCN3990:
-		break;
-	}
+ switch (ar->hw_rev) {
+ case 131:
+ case 133:
+ case 135:
+ case 134:
+  val = ath10k_pci_read32(ar, SOC_CORE_BASE_ADDRESS +
+     CORE_CTRL_ADDRESS);
+  val |= CORE_CTRL_PCIE_REG_31_MASK;
+  ath10k_pci_write32(ar, SOC_CORE_BASE_ADDRESS +
+       CORE_CTRL_ADDRESS, val);
+  break;
+ case 129:
+ case 130:
+ case 132:
+ case 136:
+
+
+
+  break;
+ case 128:
+  break;
+ }
 }

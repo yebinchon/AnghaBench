@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int reached; TYPE_1__* rules; } ;
-struct TYPE_4__ {int /*<<< orphan*/  pattern; struct TYPE_4__* decode; } ;
-typedef  TYPE_1__* Rule ;
-typedef  TYPE_2__* Nonterm ;
+struct TYPE_4__ {int pattern; struct TYPE_4__* decode; } ;
+typedef TYPE_1__* Rule ;
+typedef TYPE_2__* Nonterm ;
 
-/* Variables and functions */
- int /*<<< orphan*/  reach (int /*<<< orphan*/ ) ; 
+
+ int reach (int ) ;
 
 __attribute__((used)) static void ckreach(Nonterm p) {
-	Rule r;
+ Rule r;
 
         p->reached = 1;
-	for (r = p->rules; r; r = r->decode)
-		reach(r->pattern);
+ for (r = p->rules; r; r = r->decode)
+  reach(r->pattern);
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wksp ;
-typedef  int /*<<< orphan*/  U32 ;
-typedef  int /*<<< orphan*/  S16 ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_F (int /*<<< orphan*/ ) ; 
- int FSE_NCOUNTBOUND ; 
- int /*<<< orphan*/  FSE_normalizeCount (int /*<<< orphan*/ *,int /*<<< orphan*/  const,unsigned int const*,size_t const,unsigned int const) ; 
- int /*<<< orphan*/  FSE_optimalTableLog (unsigned int const,size_t const,unsigned int const) ; 
- size_t FSE_writeNCount (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,unsigned int const,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  MaxSeq ; 
+
+
+
+typedef int wksp ;
+typedef int U32 ;
+typedef int S16 ;
+typedef int BYTE ;
+
+
+ int CHECK_F (int ) ;
+ int FSE_NCOUNTBOUND ;
+ int FSE_normalizeCount (int *,int const,unsigned int const*,size_t const,unsigned int const) ;
+ int FSE_optimalTableLog (unsigned int const,size_t const,unsigned int const) ;
+ size_t FSE_writeNCount (int *,int,int *,unsigned int const,int const) ;
+ int MaxSeq ;
 
 __attribute__((used)) static size_t ZSTD_NCountCost(unsigned const* count, unsigned const max,
                               size_t const nbSeq, unsigned const FSELog)

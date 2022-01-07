@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TDIEntityID ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FILE_READ_DATA ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  closeTcpFile (int /*<<< orphan*/ ) ; 
- scalar_t__ isInterface (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  isLoopback (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  openTcpFile (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tdiFreeThingSet (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tdiGetEntityIDSet (int /*<<< orphan*/ ,int /*<<< orphan*/ **,int*) ; 
+
+
+
+typedef int TDIEntityID ;
+typedef int NTSTATUS ;
+typedef int HANDLE ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ int FILE_READ_DATA ;
+ int NT_SUCCESS (int ) ;
+ int TRACE (char*,scalar_t__,int,int ) ;
+ int WARN (char*,int ) ;
+ int closeTcpFile (int ) ;
+ scalar_t__ isInterface (int *) ;
+ int isLoopback (int ,int *) ;
+ int openTcpFile (int *,int ) ;
+ int tdiFreeThingSet (int *) ;
+ int tdiGetEntityIDSet (int ,int **,int*) ;
 
 __attribute__((used)) static DWORD getNumInterfacesInt(BOOL onlyNonLoopback)
 {

@@ -1,0 +1,250 @@
+; ModuleID = '/home/carl/AnghaBench/sqlcipher/ext/rbu/extr_sqlite3rbu.c_rbuDeltaApply.c'
+source_filename = "/home/carl/AnghaBench/sqlcipher/ext/rbu/extr_sqlite3rbu.c_rbuDeltaApply.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (i8*, i32, i8*, i32, i8*)* @rbuDeltaApply to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @rbuDeltaApply(i8* %0, i32 %1, i8* %2, i32 %3, i8* %4) #0 {
+  %6 = alloca i32, align 4
+  %7 = alloca i8*, align 8
+  %8 = alloca i32, align 4
+  %9 = alloca i8*, align 8
+  %10 = alloca i32, align 4
+  %11 = alloca i8*, align 8
+  %12 = alloca i32, align 4
+  %13 = alloca i32, align 4
+  %14 = alloca i32, align 4
+  %15 = alloca i32, align 4
+  store i8* %0, i8** %7, align 8
+  store i32 %1, i32* %8, align 4
+  store i8* %2, i8** %9, align 8
+  store i32 %3, i32* %10, align 4
+  store i8* %4, i8** %11, align 8
+  store i32 0, i32* %13, align 4
+  %16 = call i32 @rbuDeltaGetInt(i8** %9, i32* %10)
+  store i32 %16, i32* %12, align 4
+  %17 = load i8*, i8** %9, align 8
+  %18 = load i8, i8* %17, align 1
+  %19 = sext i8 %18 to i32
+  %20 = icmp ne i32 %19, 10
+  br i1 %20, label %21, label %22
+
+21:                                               ; preds = %5
+  store i32 -1, i32* %6, align 4
+  br label %138
+
+22:                                               ; preds = %5
+  %23 = load i8*, i8** %9, align 8
+  %24 = getelementptr inbounds i8, i8* %23, i32 1
+  store i8* %24, i8** %9, align 8
+  %25 = load i32, i32* %10, align 4
+  %26 = add nsw i32 %25, -1
+  store i32 %26, i32* %10, align 4
+  br label %27
+
+27:                                               ; preds = %136, %22
+  %28 = load i8*, i8** %9, align 8
+  %29 = load i8, i8* %28, align 1
+  %30 = sext i8 %29 to i32
+  %31 = icmp ne i32 %30, 0
+  br i1 %31, label %32, label %35
+
+32:                                               ; preds = %27
+  %33 = load i32, i32* %10, align 4
+  %34 = icmp sgt i32 %33, 0
+  br label %35
+
+35:                                               ; preds = %32, %27
+  %36 = phi i1 [ false, %27 ], [ %34, %32 ]
+  br i1 %36, label %37, label %137
+
+37:                                               ; preds = %35
+  %38 = call i32 @rbuDeltaGetInt(i8** %9, i32* %10)
+  store i32 %38, i32* %14, align 4
+  %39 = load i8*, i8** %9, align 8
+  %40 = getelementptr inbounds i8, i8* %39, i64 0
+  %41 = load i8, i8* %40, align 1
+  %42 = sext i8 %41 to i32
+  switch i32 %42, label %135 [
+    i32 64, label %43
+    i32 58, label %89
+    i32 59, label %122
+  ]
+
+43:                                               ; preds = %37
+  %44 = load i8*, i8** %9, align 8
+  %45 = getelementptr inbounds i8, i8* %44, i32 1
+  store i8* %45, i8** %9, align 8
+  %46 = load i32, i32* %10, align 4
+  %47 = add nsw i32 %46, -1
+  store i32 %47, i32* %10, align 4
+  %48 = call i32 @rbuDeltaGetInt(i8** %9, i32* %10)
+  store i32 %48, i32* %15, align 4
+  %49 = load i32, i32* %10, align 4
+  %50 = icmp sgt i32 %49, 0
+  br i1 %50, label %51, label %58
+
+51:                                               ; preds = %43
+  %52 = load i8*, i8** %9, align 8
+  %53 = getelementptr inbounds i8, i8* %52, i64 0
+  %54 = load i8, i8* %53, align 1
+  %55 = sext i8 %54 to i32
+  %56 = icmp ne i32 %55, 44
+  br i1 %56, label %57, label %58
+
+57:                                               ; preds = %51
+  store i32 -1, i32* %6, align 4
+  br label %138
+
+58:                                               ; preds = %51, %43
+  %59 = load i8*, i8** %9, align 8
+  %60 = getelementptr inbounds i8, i8* %59, i32 1
+  store i8* %60, i8** %9, align 8
+  %61 = load i32, i32* %10, align 4
+  %62 = add nsw i32 %61, -1
+  store i32 %62, i32* %10, align 4
+  %63 = load i32, i32* %14, align 4
+  %64 = load i32, i32* %13, align 4
+  %65 = add i32 %64, %63
+  store i32 %65, i32* %13, align 4
+  %66 = load i32, i32* %13, align 4
+  %67 = load i32, i32* %12, align 4
+  %68 = icmp ugt i32 %66, %67
+  br i1 %68, label %69, label %70
+
+69:                                               ; preds = %58
+  store i32 -1, i32* %6, align 4
+  br label %138
+
+70:                                               ; preds = %58
+  %71 = load i32, i32* %15, align 4
+  %72 = load i32, i32* %14, align 4
+  %73 = add i32 %71, %72
+  %74 = load i32, i32* %8, align 4
+  %75 = icmp sgt i32 %73, %74
+  br i1 %75, label %76, label %77
+
+76:                                               ; preds = %70
+  store i32 -1, i32* %6, align 4
+  br label %138
+
+77:                                               ; preds = %70
+  %78 = load i8*, i8** %11, align 8
+  %79 = load i8*, i8** %7, align 8
+  %80 = load i32, i32* %15, align 4
+  %81 = zext i32 %80 to i64
+  %82 = getelementptr inbounds i8, i8* %79, i64 %81
+  %83 = load i32, i32* %14, align 4
+  %84 = call i32 @memcpy(i8* %78, i8* %82, i32 %83)
+  %85 = load i32, i32* %14, align 4
+  %86 = load i8*, i8** %11, align 8
+  %87 = zext i32 %85 to i64
+  %88 = getelementptr inbounds i8, i8* %86, i64 %87
+  store i8* %88, i8** %11, align 8
+  br label %136
+
+89:                                               ; preds = %37
+  %90 = load i8*, i8** %9, align 8
+  %91 = getelementptr inbounds i8, i8* %90, i32 1
+  store i8* %91, i8** %9, align 8
+  %92 = load i32, i32* %10, align 4
+  %93 = add nsw i32 %92, -1
+  store i32 %93, i32* %10, align 4
+  %94 = load i32, i32* %14, align 4
+  %95 = load i32, i32* %13, align 4
+  %96 = add i32 %95, %94
+  store i32 %96, i32* %13, align 4
+  %97 = load i32, i32* %13, align 4
+  %98 = load i32, i32* %12, align 4
+  %99 = icmp ugt i32 %97, %98
+  br i1 %99, label %100, label %101
+
+100:                                              ; preds = %89
+  store i32 -1, i32* %6, align 4
+  br label %138
+
+101:                                              ; preds = %89
+  %102 = load i32, i32* %14, align 4
+  %103 = load i32, i32* %10, align 4
+  %104 = icmp sgt i32 %102, %103
+  br i1 %104, label %105, label %106
+
+105:                                              ; preds = %101
+  store i32 -1, i32* %6, align 4
+  br label %138
+
+106:                                              ; preds = %101
+  %107 = load i8*, i8** %11, align 8
+  %108 = load i8*, i8** %9, align 8
+  %109 = load i32, i32* %14, align 4
+  %110 = call i32 @memcpy(i8* %107, i8* %108, i32 %109)
+  %111 = load i32, i32* %14, align 4
+  %112 = load i8*, i8** %11, align 8
+  %113 = zext i32 %111 to i64
+  %114 = getelementptr inbounds i8, i8* %112, i64 %113
+  store i8* %114, i8** %11, align 8
+  %115 = load i32, i32* %14, align 4
+  %116 = load i8*, i8** %9, align 8
+  %117 = zext i32 %115 to i64
+  %118 = getelementptr inbounds i8, i8* %116, i64 %117
+  store i8* %118, i8** %9, align 8
+  %119 = load i32, i32* %14, align 4
+  %120 = load i32, i32* %10, align 4
+  %121 = sub i32 %120, %119
+  store i32 %121, i32* %10, align 4
+  br label %136
+
+122:                                              ; preds = %37
+  %123 = load i8*, i8** %9, align 8
+  %124 = getelementptr inbounds i8, i8* %123, i32 1
+  store i8* %124, i8** %9, align 8
+  %125 = load i32, i32* %10, align 4
+  %126 = add nsw i32 %125, -1
+  store i32 %126, i32* %10, align 4
+  %127 = load i8*, i8** %11, align 8
+  %128 = getelementptr inbounds i8, i8* %127, i64 0
+  store i8 0, i8* %128, align 1
+  %129 = load i32, i32* %13, align 4
+  %130 = load i32, i32* %12, align 4
+  %131 = icmp ne i32 %129, %130
+  br i1 %131, label %132, label %133
+
+132:                                              ; preds = %122
+  store i32 -1, i32* %6, align 4
+  br label %138
+
+133:                                              ; preds = %122
+  %134 = load i32, i32* %13, align 4
+  store i32 %134, i32* %6, align 4
+  br label %138
+
+135:                                              ; preds = %37
+  store i32 -1, i32* %6, align 4
+  br label %138
+
+136:                                              ; preds = %106, %77
+  br label %27
+
+137:                                              ; preds = %35
+  store i32 -1, i32* %6, align 4
+  br label %138
+
+138:                                              ; preds = %137, %135, %133, %132, %105, %100, %76, %69, %57, %21
+  %139 = load i32, i32* %6, align 4
+  ret i32 %139
+}
+
+declare dso_local i32 @rbuDeltaGetInt(i8**, i32*) #1
+
+declare dso_local i32 @memcpy(i8*, i8*, i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

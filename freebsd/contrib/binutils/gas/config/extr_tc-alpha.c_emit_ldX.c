@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  expressionS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assemble_tokens (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int,int) ; 
- int /*<<< orphan*/  emit_ldXu (int /*<<< orphan*/  const*,int,void const*) ; 
- int /*<<< orphan*/ * sextX_op ; 
+
+
+
+typedef int expressionS ;
+
+
+ int assemble_tokens (int ,int const*,int,int) ;
+ int emit_ldXu (int const*,int,void const*) ;
+ int * sextX_op ;
 
 __attribute__((used)) static void
 emit_ldX (const expressionS *tok,
-	  int ntok,
-	  const void * vlgsize)
+   int ntok,
+   const void * vlgsize)
 {
   emit_ldXu (tok, ntok, vlgsize);
   assemble_tokens (sextX_op[(long) vlgsize], tok, 1, 1);

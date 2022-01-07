@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mei_me_client {int /*<<< orphan*/  refcnt; int /*<<< orphan*/  list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kref_init (int /*<<< orphan*/ *) ; 
+
+
+
+struct mei_me_client {int refcnt; int list; } ;
+
+
+ int INIT_LIST_HEAD (int *) ;
+ int kref_init (int *) ;
 
 void mei_me_cl_init(struct mei_me_client *me_cl)
 {
-	INIT_LIST_HEAD(&me_cl->list);
-	kref_init(&me_cl->refcnt);
+ INIT_LIST_HEAD(&me_cl->list);
+ kref_init(&me_cl->refcnt);
 }

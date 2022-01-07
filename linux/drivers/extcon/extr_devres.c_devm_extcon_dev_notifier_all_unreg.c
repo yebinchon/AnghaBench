@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct extcon_dev_notifier_devres {int /*<<< orphan*/  nb; int /*<<< orphan*/  edev; } ;
+
+
+
+
+struct extcon_dev_notifier_devres {int nb; int edev; } ;
 struct device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  extcon_unregister_notifier_all (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int extcon_unregister_notifier_all (int ,int ) ;
 
 __attribute__((used)) static void devm_extcon_dev_notifier_all_unreg(struct device *dev, void *res)
 {
-	struct extcon_dev_notifier_devres *this = res;
+ struct extcon_dev_notifier_devres *this = res;
 
-	extcon_unregister_notifier_all(this->edev, this->nb);
+ extcon_unregister_notifier_all(this->edev, this->nb);
 }

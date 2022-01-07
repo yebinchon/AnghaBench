@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/ * pWorker; int /*<<< orphan*/ * pFS; } ;
-typedef  TYPE_1__ lsm_db ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int * pWorker; int * pFS; } ;
+typedef TYPE_1__ lsm_db ;
 struct TYPE_10__ {scalar_t__ nSize; scalar_t__ iFirst; } ;
-typedef  int /*<<< orphan*/  Snapshot ;
-typedef  TYPE_2__ Segment ;
-typedef  scalar_t__ LsmPgno ;
-typedef  int /*<<< orphan*/  FileSystem ;
+typedef int Snapshot ;
+typedef TYPE_2__ Segment ;
+typedef scalar_t__ LsmPgno ;
+typedef int FileSystem ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ firstOnBlock (int /*<<< orphan*/ *,int,scalar_t__*,int) ; 
- int fsBlockNext (int /*<<< orphan*/ *,TYPE_2__*,int,int*) ; 
- scalar_t__ fsFirstPageOnBlock (int /*<<< orphan*/ *,int) ; 
- int fsFreeBlock (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*,int) ; 
- scalar_t__ fsLastPageOnBlock (int /*<<< orphan*/ *,int) ; 
- scalar_t__ fsPageRedirects (int /*<<< orphan*/ *,TYPE_2__*,scalar_t__) ; 
- int fsPageToBlock (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ fsSegmentRedirects (int /*<<< orphan*/ *,TYPE_2__*) ; 
+
+ int LSM_OK ;
+ int assert (int) ;
+ scalar_t__ firstOnBlock (int *,int,scalar_t__*,int) ;
+ int fsBlockNext (int *,TYPE_2__*,int,int*) ;
+ scalar_t__ fsFirstPageOnBlock (int *,int) ;
+ int fsFreeBlock (int *,int *,TYPE_2__*,int) ;
+ scalar_t__ fsLastPageOnBlock (int *,int) ;
+ scalar_t__ fsPageRedirects (int *,TYPE_2__*,scalar_t__) ;
+ int fsPageToBlock (int *,scalar_t__) ;
+ scalar_t__ fsSegmentRedirects (int *,TYPE_2__*) ;
 
 void lsmFsGobble(
   lsm_db *pDb,
-  Segment *pRun, 
+  Segment *pRun,
   LsmPgno *aPgno,
   int nPgno
 ){

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR_REPOS_HOOK_FAILURE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
+
+
+
+typedef int svn_error_t ;
+
+
+ int SVN_ERR_REPOS_HOOK_FAILURE ;
+ int _ (char*) ;
+ int * svn_error_createf (int ,int *,int ,char const*) ;
 
 __attribute__((used)) static svn_error_t *
 hook_symlink_error(const char *hook)
 {
   return svn_error_createf
-    (SVN_ERR_REPOS_HOOK_FAILURE, NULL,
+    (SVN_ERR_REPOS_HOOK_FAILURE, ((void*)0),
      _("Failed to run '%s' hook; broken symlink"), hook);
 }

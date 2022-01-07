@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  ptr; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int ptr; } ;
 struct epoll_event {int events; TYPE_1__ data; } ;
-typedef  int /*<<< orphan*/  strm_stream ;
-typedef  int /*<<< orphan*/  strm_callback ;
+typedef int strm_stream ;
+typedef int strm_callback ;
 
-/* Variables and functions */
- int EPOLLIN ; 
- int EPOLLONESHOT ; 
- int /*<<< orphan*/  EPOLL_CTL_MOD ; 
- int epoll_ctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,struct epoll_event*) ; 
- int /*<<< orphan*/  epoll_fd ; 
- int /*<<< orphan*/  io_task (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int EPOLLIN ;
+ int EPOLLONESHOT ;
+ int EPOLL_CTL_MOD ;
+ int epoll_ctl (int ,int ,int,struct epoll_event*) ;
+ int epoll_fd ;
+ int io_task (int *,int ) ;
 
 __attribute__((used)) static int
 io_kick(int fd, strm_stream* strm, strm_callback cb)

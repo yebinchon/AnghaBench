@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ULONG ;
-struct TYPE_5__ {int /*<<< orphan*/ * lpVtbl; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int ULONG ;
+struct TYPE_5__ {int * lpVtbl; } ;
 struct TYPE_6__ {int ref; int nMonikerCount; TYPE_1__ IEnumMoniker_iface; scalar_t__ index; void* ppMoniker; } ;
-typedef  int /*<<< orphan*/  IMoniker ;
-typedef  TYPE_1__ IEnumMoniker ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_2__ EnumMonikerImpl ;
+typedef int IMoniker ;
+typedef TYPE_1__ IEnumMoniker ;
+typedef int HRESULT ;
+typedef TYPE_2__ EnumMonikerImpl ;
 
-/* Variables and functions */
- void* CoTaskMemAlloc (int) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  EnumMonikerImpl_Vtbl ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ **,int,TYPE_1__**) ; 
- int /*<<< orphan*/  memcpy (void*,int /*<<< orphan*/ **,int) ; 
+
+ void* CoTaskMemAlloc (int) ;
+ int E_OUTOFMEMORY ;
+ int EnumMonikerImpl_Vtbl ;
+ int S_OK ;
+ int TRACE (char*,int **,int,TYPE_1__**) ;
+ int memcpy (void*,int **,int) ;
 
 HRESULT EnumMonikerImpl_Create(IMoniker ** ppMoniker, ULONG nMonikerCount, IEnumMoniker ** ppEnum)
 {
-    /* NOTE: assumes that array of IMonikers has already been AddRef'd
-     * I.e. this function does not AddRef the array of incoming
-     * IMonikers */
+
+
+
     EnumMonikerImpl * pemi = CoTaskMemAlloc(sizeof(EnumMonikerImpl));
 
     TRACE("(%p, %d, %p)\n", ppMoniker, nMonikerCount, ppEnum);
 
-    *ppEnum = NULL;
+    *ppEnum = ((void*)0);
 
     if (!pemi)
         return E_OUTOFMEMORY;

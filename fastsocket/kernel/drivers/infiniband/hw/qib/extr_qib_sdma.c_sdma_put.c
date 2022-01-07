@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct qib_sdma_state {int /*<<< orphan*/  kref; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kref_put (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdma_complete ; 
+
+
+
+struct qib_sdma_state {int kref; } ;
+
+
+ int kref_put (int *,int ) ;
+ int sdma_complete ;
 
 __attribute__((used)) static void sdma_put(struct qib_sdma_state *ss)
 {
-	kref_put(&ss->kref, sdma_complete);
+ kref_put(&ss->kref, sdma_complete);
 }

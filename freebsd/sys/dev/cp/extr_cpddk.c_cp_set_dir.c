@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ l30; TYPE_2__* k; } ;
-typedef  TYPE_1__ s ;
-struct TYPE_9__ {int f; int v; int p; int j; int /*<<< orphan*/  l34; TYPE_1__* d; int /*<<< orphan*/  l31; } ;
-typedef  TYPE_2__ e ;
+typedef TYPE_1__ s ;
+struct TYPE_9__ {int f; int v; int p; int j; int l34; TYPE_1__* d; int l31; } ;
+typedef TYPE_2__ e ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cp_set_ts (TYPE_2__*,int) ; 
- int /*<<< orphan*/  l157 (TYPE_2__*) ; 
- scalar_t__ l198 (TYPE_2__*,int) ; 
- scalar_t__ l586 (TYPE_2__*,int) ; 
+
+ int cp_set_ts (TYPE_2__*,int) ;
+ int l157 (TYPE_2__*) ;
+ scalar_t__ l198 (TYPE_2__*,int) ;
+ scalar_t__ l586 (TYPE_2__*,int) ;
 
 void cp_set_dir(e*a,int v){s*b=a->d;e*h;int c;{
 if(!(a->f!=3&&a->f!=6))goto l661;{a->v=a->p;l157(a);return;}l661:;}{

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint_t ;
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_5__ {scalar_t__ avail_out; int avail_in; char* msg; int /*<<< orphan*/  next_in; int /*<<< orphan*/ * next_out; } ;
-struct TYPE_4__ {int sec_size; int flags; TYPE_2__ zstrm; int /*<<< orphan*/  in_buf; int /*<<< orphan*/  rc4_key; int /*<<< orphan*/  fp; } ;
-typedef  TYPE_1__ mm_recover_ctx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_AND_FAIL (char*,char*) ; 
- int MMBAK_FLAG_NO_CIPHER ; 
- int MMBAK_RET_FAILED ; 
- int /*<<< orphan*/  RC4 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Z_NO_FLUSH ; 
- int Z_OK ; 
- int Z_STREAM_END ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ ferror (int /*<<< orphan*/ ) ; 
- int fread (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- int inflate (TYPE_2__*,int /*<<< orphan*/ ) ; 
- char* strerror (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint_t ;
+typedef int uint8_t ;
+struct TYPE_5__ {scalar_t__ avail_out; int avail_in; char* msg; int next_in; int * next_out; } ;
+struct TYPE_4__ {int sec_size; int flags; TYPE_2__ zstrm; int in_buf; int rc4_key; int fp; } ;
+typedef TYPE_1__ mm_recover_ctx ;
+
+
+ int LOG_AND_FAIL (char*,char*) ;
+ int MMBAK_FLAG_NO_CIPHER ;
+ int MMBAK_RET_FAILED ;
+ int RC4 (int *,int,int ,int ) ;
+ int Z_NO_FLUSH ;
+ int Z_OK ;
+ int Z_STREAM_END ;
+ int errno ;
+ scalar_t__ ferror (int ) ;
+ int fread (int ,int,int,int ) ;
+ int inflate (TYPE_2__*,int ) ;
+ char* strerror (int ) ;
 
 __attribute__((used)) static int dump_read_stream(mm_recover_ctx *ctx, void *buf, uint_t size)
 {

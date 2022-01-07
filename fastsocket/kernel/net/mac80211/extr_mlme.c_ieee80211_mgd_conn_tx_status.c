@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int status_acked; int status_received; int /*<<< orphan*/  status_fc; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int status_acked; int status_received; int status_fc; } ;
 struct TYPE_4__ {TYPE_1__ mgd; } ;
-struct ieee80211_sub_if_data {int /*<<< orphan*/  work; TYPE_2__ u; struct ieee80211_local* local; } ;
-struct ieee80211_local {int /*<<< orphan*/  hw; } ;
-typedef  int /*<<< orphan*/  __le16 ;
+struct ieee80211_sub_if_data {int work; TYPE_2__ u; struct ieee80211_local* local; } ;
+struct ieee80211_local {int hw; } ;
+typedef int __le16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ieee80211_queue_work (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int ieee80211_queue_work (int *,int *) ;
 
 void ieee80211_mgd_conn_tx_status(struct ieee80211_sub_if_data *sdata,
-				  __le16 fc, bool acked)
+      __le16 fc, bool acked)
 {
-	struct ieee80211_local *local = sdata->local;
+ struct ieee80211_local *local = sdata->local;
 
-	sdata->u.mgd.status_fc = fc;
-	sdata->u.mgd.status_acked = acked;
-	sdata->u.mgd.status_received = true;
+ sdata->u.mgd.status_fc = fc;
+ sdata->u.mgd.status_acked = acked;
+ sdata->u.mgd.status_received = 1;
 
-	ieee80211_queue_work(&local->hw, &sdata->work);
+ ieee80211_queue_work(&local->hw, &sdata->work);
 }

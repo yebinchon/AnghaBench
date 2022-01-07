@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  i64 ;
-struct TYPE_9__ {int /*<<< orphan*/  n; int /*<<< orphan*/  p; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+typedef int i64 ;
+struct TYPE_9__ {int n; int p; } ;
 struct TYPE_8__ {TYPE_1__* pConfig; } ;
 struct TYPE_7__ {scalar_t__ bColumnsize; } ;
-typedef  TYPE_2__ Fts5Storage ;
-typedef  TYPE_3__ Fts5Buffer ;
+typedef TYPE_2__ Fts5Storage ;
+typedef TYPE_3__ Fts5Buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FTS5_STMT_REPLACE_DOCSIZE ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  SQLITE_STATIC ; 
- int fts5StorageGetStmt (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_bind_blob (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_bind_int64 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_bind_null (int /*<<< orphan*/ *,int) ; 
- int sqlite3_reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_step (int /*<<< orphan*/ *) ; 
+
+ int FTS5_STMT_REPLACE_DOCSIZE ;
+ int SQLITE_OK ;
+ int SQLITE_STATIC ;
+ int fts5StorageGetStmt (TYPE_2__*,int ,int **,int ) ;
+ int sqlite3_bind_blob (int *,int,int ,int ,int ) ;
+ int sqlite3_bind_int64 (int *,int,int ) ;
+ int sqlite3_bind_null (int *,int) ;
+ int sqlite3_reset (int *) ;
+ int sqlite3_step (int *) ;
 
 __attribute__((used)) static int fts5StorageInsertDocsize(
-  Fts5Storage *p,                 /* Storage module to write to */
-  i64 iRowid,                     /* id value */
-  Fts5Buffer *pBuf                /* sz value */
+  Fts5Storage *p,
+  i64 iRowid,
+  Fts5Buffer *pBuf
 ){
   int rc = SQLITE_OK;
   if( p->pConfig->bColumnsize ){

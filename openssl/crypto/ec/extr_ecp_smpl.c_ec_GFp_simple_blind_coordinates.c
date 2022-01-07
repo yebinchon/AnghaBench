@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {TYPE_1__* meth; int /*<<< orphan*/  field; } ;
-struct TYPE_13__ {scalar_t__ Z_is_one; int /*<<< orphan*/ * Y; int /*<<< orphan*/ * X; int /*<<< orphan*/ * Z; } ;
-struct TYPE_12__ {int /*<<< orphan*/  (* field_mul ) (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* field_sqr ) (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* field_encode ) (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_2__ EC_POINT ;
-typedef  TYPE_3__ EC_GROUP ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- scalar_t__ BN_is_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_priv_rand_range_ex (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_F_EC_GFP_SIMPLE_BLIND_COORDINATES ; 
- int /*<<< orphan*/  ECerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_BN_LIB ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  stub1 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub3 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub4 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub5 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub6 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_14__ {TYPE_1__* meth; int field; } ;
+struct TYPE_13__ {scalar_t__ Z_is_one; int * Y; int * X; int * Z; } ;
+struct TYPE_12__ {int (* field_mul ) (TYPE_3__ const*,int *,int *,int *,int *) ;int (* field_sqr ) (TYPE_3__ const*,int *,int *,int *) ;int (* field_encode ) (TYPE_3__ const*,int *,int *,int *) ;} ;
+typedef TYPE_2__ EC_POINT ;
+typedef TYPE_3__ EC_GROUP ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_CTX_end (int *) ;
+ int * BN_CTX_get (int *) ;
+ int BN_CTX_start (int *) ;
+ scalar_t__ BN_is_zero (int *) ;
+ int BN_priv_rand_range_ex (int *,int ,int *) ;
+ int EC_F_EC_GFP_SIMPLE_BLIND_COORDINATES ;
+ int ECerr (int ,int ) ;
+ int ERR_R_BN_LIB ;
+ int ERR_R_MALLOC_FAILURE ;
+ int stub1 (TYPE_3__ const*,int *,int *,int *) ;
+ int stub2 (TYPE_3__ const*,int *,int *,int *,int *) ;
+ int stub3 (TYPE_3__ const*,int *,int *,int *) ;
+ int stub4 (TYPE_3__ const*,int *,int *,int *,int *) ;
+ int stub5 (TYPE_3__ const*,int *,int *,int *,int *) ;
+ int stub6 (TYPE_3__ const*,int *,int *,int *,int *) ;
 
 int ec_GFp_simple_blind_coordinates(const EC_GROUP *group, EC_POINT *p,
                                     BN_CTX *ctx)
 {
     int ret = 0;
-    BIGNUM *lambda = NULL;
-    BIGNUM *temp = NULL;
+    BIGNUM *lambda = ((void*)0);
+    BIGNUM *temp = ((void*)0);
 
     BN_CTX_start(ctx);
     lambda = BN_CTX_get(ctx);
     temp = BN_CTX_get(ctx);
-    if (temp == NULL) {
+    if (temp == ((void*)0)) {
         ECerr(EC_F_EC_GFP_SIMPLE_BLIND_COORDINATES, ERR_R_MALLOC_FAILURE);
         goto err;
     }
 
-    /* make sure lambda is not zero */
+
     do {
         if (!BN_priv_rand_range_ex(lambda, group->field, ctx)) {
             ECerr(EC_F_EC_GFP_SIMPLE_BLIND_COORDINATES, ERR_R_BN_LIB);
@@ -61,8 +61,8 @@ int ec_GFp_simple_blind_coordinates(const EC_GROUP *group, EC_POINT *p,
         }
     } while (BN_is_zero(lambda));
 
-    /* if field_encode defined convert between representations */
-    if (group->meth->field_encode != NULL
+
+    if (group->meth->field_encode != ((void*)0)
         && !group->meth->field_encode(group, lambda, lambda, ctx))
         goto err;
     if (!group->meth->field_mul(group, p->Z, p->Z, lambda, ctx))

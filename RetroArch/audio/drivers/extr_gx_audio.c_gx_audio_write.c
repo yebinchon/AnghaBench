@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  size_t ssize_t ;
-struct TYPE_2__ {scalar_t__ write_ptr; size_t dma_write; size_t dma_next; size_t dma_busy; scalar_t__* data; int /*<<< orphan*/  nonblock; } ;
-typedef  TYPE_1__ gx_audio_t ;
 
-/* Variables and functions */
- int BLOCKS ; 
- scalar_t__ CHUNK_FRAMES ; 
- int /*<<< orphan*/  copy_swapped (scalar_t__,int /*<<< orphan*/  const*,size_t) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef size_t ssize_t ;
+struct TYPE_2__ {scalar_t__ write_ptr; size_t dma_write; size_t dma_next; size_t dma_busy; scalar_t__* data; int nonblock; } ;
+typedef TYPE_1__ gx_audio_t ;
+
+
+ int BLOCKS ;
+ scalar_t__ CHUNK_FRAMES ;
+ int copy_swapped (scalar_t__,int const*,size_t) ;
 
 __attribute__((used)) static ssize_t gx_audio_write(void *data, const void *buf_, size_t size)
 {
-   size_t       frames = size >> 2;
+   size_t frames = size >> 2;
    const uint32_t *buf = buf_;
-   gx_audio_t      *wa = data;
+   gx_audio_t *wa = data;
 
    while (frames)
    {
@@ -34,8 +34,8 @@ __attribute__((used)) static ssize_t gx_audio_write(void *data, const void *buf_
       if (frames < to_write)
          to_write = frames;
 
-      /* FIXME: Nonblocking audio should break out of loop
-       * when it has nothing to write. */
+
+
       while ((wa->dma_write == wa->dma_next ||
                wa->dma_write == wa->dma_busy) && !wa->nonblock);
 

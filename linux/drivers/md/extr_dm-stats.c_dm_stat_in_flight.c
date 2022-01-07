@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dm_stat_shared {int /*<<< orphan*/ * in_flight; } ;
 
-/* Variables and functions */
- size_t READ ; 
- size_t WRITE ; 
- int atomic_read (int /*<<< orphan*/ *) ; 
+
+
+
+struct dm_stat_shared {int * in_flight; } ;
+
+
+ size_t READ ;
+ size_t WRITE ;
+ int atomic_read (int *) ;
 
 __attribute__((used)) static int dm_stat_in_flight(struct dm_stat_shared *shared)
 {
-	return atomic_read(&shared->in_flight[READ]) +
-	       atomic_read(&shared->in_flight[WRITE]);
+ return atomic_read(&shared->in_flight[READ]) +
+        atomic_read(&shared->in_flight[WRITE]);
 }

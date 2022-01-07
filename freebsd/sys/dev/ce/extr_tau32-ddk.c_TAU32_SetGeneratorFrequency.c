@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {unsigned long hBew43; int /*<<< orphan*/  h2LrH3; TYPE_1__* fV7o35; } ;
-typedef  TYPE_2__ kWMzp1 ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {unsigned long hBew43; int h2LrH3; TYPE_1__* fV7o35; } ;
+typedef TYPE_2__ kWMzp1 ;
 struct TYPE_4__ {unsigned long UyRVB4; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LzuvP2 (unsigned long volatile*,unsigned long) ; 
- int /*<<< orphan*/  h2LrH3 (int /*<<< orphan*/ *) ; 
- unsigned long long kD2ag4 (unsigned long,int) ; 
- int /*<<< orphan*/  uYS5N2 (int /*<<< orphan*/ *) ; 
+
+ int LzuvP2 (unsigned long volatile*,unsigned long) ;
+ int h2LrH3 (int *) ;
+ unsigned long long kD2ag4 (unsigned long,int) ;
+ int uYS5N2 (int *) ;
 
 unsigned long long
 __attribute__((cdecl))TAU32_SetGeneratorFrequency(kWMzp1*J7Iki4,

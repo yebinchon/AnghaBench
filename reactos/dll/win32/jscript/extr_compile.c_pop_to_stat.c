@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ stack_use; scalar_t__ using_except; scalar_t__ using_scope; struct TYPE_7__* next; } ;
-typedef  TYPE_1__ statement_ctx_t ;
+typedef TYPE_1__ statement_ctx_t ;
 struct TYPE_8__ {int code_off; TYPE_1__* stat_ctx; } ;
-typedef  TYPE_2__ compiler_ctx_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_2__ compiler_ctx_t ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OP_pop ; 
- int /*<<< orphan*/  OP_pop_except ; 
- int /*<<< orphan*/  OP_pop_scope ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  push_instr (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  push_instr_uint (TYPE_2__*,int /*<<< orphan*/ ,unsigned int) ; 
+
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int OP_pop ;
+ int OP_pop_except ;
+ int OP_pop_scope ;
+ int S_OK ;
+ int push_instr (TYPE_2__*,int ) ;
+ int push_instr_uint (TYPE_2__*,int ,unsigned int) ;
 
 __attribute__((used)) static HRESULT pop_to_stat(compiler_ctx_t *ctx, statement_ctx_t *stat_ctx)
 {

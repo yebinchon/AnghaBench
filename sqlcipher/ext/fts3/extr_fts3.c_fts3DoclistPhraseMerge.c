@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ sqlite3_int64 ;
 
-/* Variables and functions */
- scalar_t__ DOCID_CMP (scalar_t__,scalar_t__) ; 
- scalar_t__ FTS3_VARINT_MAX ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fts3GetDeltaVarint3 (char**,char*,int,scalar_t__*) ; 
- int /*<<< orphan*/  fts3PoslistCopy (int /*<<< orphan*/ ,char**) ; 
- scalar_t__ fts3PoslistPhraseMerge (char**,int,int /*<<< orphan*/ ,int,char**,char**) ; 
- int /*<<< orphan*/  fts3PutDeltaVarint3 (char**,int,scalar_t__*,int*,scalar_t__) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_malloc64 (scalar_t__) ; 
+
+
+
+typedef scalar_t__ sqlite3_int64 ;
+
+
+ scalar_t__ DOCID_CMP (scalar_t__,scalar_t__) ;
+ scalar_t__ FTS3_VARINT_MAX ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int fts3GetDeltaVarint3 (char**,char*,int,scalar_t__*) ;
+ int fts3PoslistCopy (int ,char**) ;
+ scalar_t__ fts3PoslistPhraseMerge (char**,int,int ,int,char**,char**) ;
+ int fts3PutDeltaVarint3 (char**,int,scalar_t__*,int*,scalar_t__) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_malloc64 (scalar_t__) ;
 
 __attribute__((used)) static int fts3DoclistPhraseMerge(
-  int bDescDoclist,               /* True if arguments are desc */
-  int nDist,                      /* Distance from left to right (1=adjacent) */
-  char *aLeft, int nLeft,         /* Left doclist */
-  char **paRight, int *pnRight    /* IN/OUT: Right/output doclist */
+  int bDescDoclist,
+  int nDist,
+  char *aLeft, int nLeft,
+  char **paRight, int *pnRight
 ){
   sqlite3_int64 i1 = 0;
   sqlite3_int64 i2 = 0;

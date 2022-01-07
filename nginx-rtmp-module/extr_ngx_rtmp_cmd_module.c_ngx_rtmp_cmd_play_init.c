@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  v ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int v ;
 struct TYPE_12__ {TYPE_1__* connection; } ;
-typedef  TYPE_2__ ngx_rtmp_session_t ;
-struct TYPE_13__ {scalar_t__ silent; scalar_t__ reset; scalar_t__ duration; scalar_t__ start; int /*<<< orphan*/  args; scalar_t__ name; } ;
-typedef  TYPE_3__ ngx_rtmp_play_t ;
-typedef  int /*<<< orphan*/  ngx_rtmp_header_t ;
-struct TYPE_14__ {int member_0; int member_3; scalar_t__* member_2; int /*<<< orphan*/  const member_1; } ;
-typedef  TYPE_4__ ngx_rtmp_amf_elt_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-typedef  int /*<<< orphan*/  ngx_chain_t ;
-typedef  int /*<<< orphan*/  in_elts ;
-struct TYPE_11__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_2__ ngx_rtmp_session_t ;
+struct TYPE_13__ {scalar_t__ silent; scalar_t__ reset; scalar_t__ duration; scalar_t__ start; int args; scalar_t__ name; } ;
+typedef TYPE_3__ ngx_rtmp_play_t ;
+typedef int ngx_rtmp_header_t ;
+struct TYPE_14__ {int member_0; int member_3; scalar_t__* member_2; int const member_1; } ;
+typedef TYPE_4__ ngx_rtmp_amf_elt_t ;
+typedef int ngx_int_t ;
+typedef int ngx_chain_t ;
+typedef int in_elts ;
+struct TYPE_11__ {int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_INFO ; 
-#define  NGX_RTMP_AMF_BOOLEAN 133 
-#define  NGX_RTMP_AMF_NULL 132 
-#define  NGX_RTMP_AMF_NUMBER 131 
-#define  NGX_RTMP_AMF_OPTIONAL 130 
-#define  NGX_RTMP_AMF_STRING 129 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_memzero (TYPE_3__ const*,int) ; 
-#define  ngx_null_string 128 
- int /*<<< orphan*/  ngx_rtmp_cmd_fill_args (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_rtmp_play (TYPE_2__*,TYPE_3__ const*) ; 
- scalar_t__ ngx_rtmp_receive_amf (TYPE_2__*,int /*<<< orphan*/ *,TYPE_4__*,int) ; 
+
+ int NGX_ERROR ;
+ int NGX_LOG_INFO ;
+
+
+
+
+
+ int ngx_log_error (int ,int ,int ,char*,scalar_t__,int ,int ,int ,int ,int ) ;
+ int ngx_memzero (TYPE_3__ const*,int) ;
+
+ int ngx_rtmp_cmd_fill_args (scalar_t__,int ) ;
+ int ngx_rtmp_play (TYPE_2__*,TYPE_3__ const*) ;
+ scalar_t__ ngx_rtmp_receive_amf (TYPE_2__*,int *,TYPE_4__*,int) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_rtmp_cmd_play_init(ngx_rtmp_session_t *s, ngx_rtmp_header_t *h,
         ngx_chain_t *in)
 {
-    static ngx_rtmp_play_t          v;
+    static ngx_rtmp_play_t v;
 
-    static ngx_rtmp_amf_elt_t       in_elts[] = {
+    static ngx_rtmp_amf_elt_t in_elts[] = {
 
-        /* transaction is always 0 */
-        { NGX_RTMP_AMF_NUMBER,
-          ngx_null_string,
-          NULL, 0 },
 
-        { NGX_RTMP_AMF_NULL,
-          ngx_null_string,
-          NULL, 0 },
+        { 131,
+          128,
+          ((void*)0), 0 },
 
-        { NGX_RTMP_AMF_STRING,
-          ngx_null_string,
+        { 132,
+          128,
+          ((void*)0), 0 },
+
+        { 129,
+          128,
           &v.name, sizeof(v.name) },
 
-        { NGX_RTMP_AMF_OPTIONAL | NGX_RTMP_AMF_NUMBER,
-          ngx_null_string,
+        { 130 | 131,
+          128,
           &v.start, 0 },
 
-        { NGX_RTMP_AMF_OPTIONAL | NGX_RTMP_AMF_NUMBER,
-          ngx_null_string,
+        { 130 | 131,
+          128,
           &v.duration, 0 },
 
-        { NGX_RTMP_AMF_OPTIONAL | NGX_RTMP_AMF_BOOLEAN,
-          ngx_null_string,
+        { 130 | 133,
+          128,
           &v.reset, 0 }
     };
 

@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-struct TYPE_12__ {int /*<<< orphan*/  nsIFileURL_iface; } ;
-typedef  TYPE_3__ nsWineURI ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int nsresult ;
+struct TYPE_12__ {int nsIFileURL_iface; } ;
+typedef TYPE_3__ nsWineURI ;
 struct TYPE_13__ {int load_flags; scalar_t__ request_method; scalar_t__ referrer; scalar_t__ original_uri; scalar_t__ notif_callback; scalar_t__ load_group; TYPE_2__* uri; } ;
-typedef  TYPE_4__ nsChannel ;
-typedef  int /*<<< orphan*/  WCHAR ;
+typedef TYPE_4__ nsChannel ;
+typedef int WCHAR ;
 struct TYPE_11__ {TYPE_1__* window_ref; } ;
-struct TYPE_10__ {int /*<<< orphan*/ * window; } ;
-typedef  int /*<<< orphan*/  IUri ;
-typedef  int /*<<< orphan*/  HTMLOuterWindow ;
-typedef  int /*<<< orphan*/  HRESULT ;
+struct TYPE_10__ {int * window; } ;
+typedef int IUri ;
+typedef int HTMLOuterWindow ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_FAIL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  IUri_Release (int /*<<< orphan*/ *) ; 
- int LOAD_REPLACE ; 
- scalar_t__ METHOD_POST ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  create_nschannel (TYPE_3__*,TYPE_4__**) ; 
- int /*<<< orphan*/  create_nsuri (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_3__**) ; 
- int /*<<< orphan*/  create_uri (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  nsIFileURL_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIInterfaceRequestor_AddRef (scalar_t__) ; 
- int /*<<< orphan*/  nsILoadGroup_AddRef (scalar_t__) ; 
- int /*<<< orphan*/  nsIURI_AddRef (scalar_t__) ; 
+
+ int E_FAIL ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*) ;
+ int IUri_Release (int *) ;
+ int LOAD_REPLACE ;
+ scalar_t__ METHOD_POST ;
+ scalar_t__ NS_FAILED (int ) ;
+ int S_OK ;
+ int create_nschannel (TYPE_3__*,TYPE_4__**) ;
+ int create_nsuri (int *,int *,int *,int *,TYPE_3__**) ;
+ int create_uri (int const*,int ,int **) ;
+ int nsIFileURL_Release (int *) ;
+ int nsIInterfaceRequestor_AddRef (scalar_t__) ;
+ int nsILoadGroup_AddRef (scalar_t__) ;
+ int nsIURI_AddRef (scalar_t__) ;
 
 HRESULT create_redirect_nschannel(const WCHAR *url, nsChannel *orig_channel, nsChannel **ret)
 {
-    HTMLOuterWindow *window = NULL;
+    HTMLOuterWindow *window = ((void*)0);
     nsChannel *channel;
     nsWineURI *uri;
     IUri *iuri;
@@ -58,7 +58,7 @@ HRESULT create_redirect_nschannel(const WCHAR *url, nsChannel *orig_channel, nsC
 
     if(orig_channel->uri->window_ref)
         window = orig_channel->uri->window_ref->window;
-    nsres = create_nsuri(iuri, window, NULL, NULL, &uri);
+    nsres = create_nsuri(iuri, window, ((void*)0), ((void*)0), &uri);
     IUri_Release(iuri);
     if(NS_FAILED(nsres))
         return E_FAIL;

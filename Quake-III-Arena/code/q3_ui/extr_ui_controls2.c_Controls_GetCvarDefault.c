@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {float defaultvalue; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ configcvar_t ;
 
-/* Variables and functions */
- TYPE_1__* g_configcvars ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {float defaultvalue; int name; } ;
+typedef TYPE_1__ configcvar_t ;
+
+
+ TYPE_1__* g_configcvars ;
+ int strcmp (int ,char*) ;
 
 __attribute__((used)) static float Controls_GetCvarDefault( char* name )
 {
-	configcvar_t*	cvarptr;
-	int				i;
+ configcvar_t* cvarptr;
+ int i;
 
-	cvarptr = g_configcvars;
-	for (i=0; ;i++,cvarptr++)
-	{
-		if (!cvarptr->name)
-			return (0);
+ cvarptr = g_configcvars;
+ for (i=0; ;i++,cvarptr++)
+ {
+  if (!cvarptr->name)
+   return (0);
 
-		if (!strcmp(cvarptr->name,name))
-			break;
-	}
+  if (!strcmp(cvarptr->name,name))
+   break;
+ }
 
-	return (cvarptr->defaultvalue);
+ return (cvarptr->defaultvalue);
 }

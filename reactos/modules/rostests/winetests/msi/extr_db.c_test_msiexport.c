@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  MSIHANDLE ;
-typedef  scalar_t__ HANDLE ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFileA (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteFileA (char*) ; 
- int /*<<< orphan*/  DeleteFileW (int /*<<< orphan*/ ) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  GENERIC_READ ; 
- int /*<<< orphan*/  GetCurrentDirectoryA (int,char*) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MSIDBOPEN_CREATE ; 
- scalar_t__ MsiCloseHandle (int /*<<< orphan*/ ) ; 
- scalar_t__ MsiDatabaseExportA (int /*<<< orphan*/ ,char*,char*,char const*) ; 
- scalar_t__ MsiDatabaseOpenViewA (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ MsiOpenDatabaseW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ MsiViewClose (int /*<<< orphan*/ ) ; 
- scalar_t__ MsiViewExecute (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- int /*<<< orphan*/  ReadFile (scalar_t__,char*,int,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lstrcatA (char*,char const*) ; 
- int /*<<< orphan*/  lstrcmpA (char*,char const*) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- char* msifile ; 
- int /*<<< orphan*/  msifileW ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ strlen (char const*) ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int MSIHANDLE ;
+typedef scalar_t__ HANDLE ;
+typedef scalar_t__ DWORD ;
+
+
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFileA (char*,int ,int ,int *,int ,int ,int *) ;
+ int DeleteFileA (char*) ;
+ int DeleteFileW (int ) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int GENERIC_READ ;
+ int GetCurrentDirectoryA (int,char*) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int MAX_PATH ;
+ int MSIDBOPEN_CREATE ;
+ scalar_t__ MsiCloseHandle (int ) ;
+ scalar_t__ MsiDatabaseExportA (int ,char*,char*,char const*) ;
+ scalar_t__ MsiDatabaseOpenViewA (int ,char const*,int *) ;
+ scalar_t__ MsiOpenDatabaseW (int ,int ,int *) ;
+ scalar_t__ MsiViewClose (int ) ;
+ scalar_t__ MsiViewExecute (int ,int ) ;
+ int OPEN_EXISTING ;
+ int ReadFile (scalar_t__,char*,int,scalar_t__*,int *) ;
+ int lstrcatA (char*,char const*) ;
+ int lstrcmpA (char*,char const*) ;
+ int memset (char*,int ,int) ;
+ char* msifile ;
+ int msifileW ;
+ int ok (int,char*,...) ;
+ scalar_t__ strlen (char const*) ;
 
 __attribute__((used)) static void test_msiexport(void)
 {
@@ -60,11 +60,11 @@ __attribute__((used)) static void test_msiexport(void)
 
     DeleteFileW(msifileW);
 
-    /* just MsiOpenDatabase should not create a file */
+
     r = MsiOpenDatabaseW(msifileW, MSIDBOPEN_CREATE, &hdb);
     ok(r == ERROR_SUCCESS, "MsiOpenDatabase failed\n");
 
-    /* create a table */
+
     query = "CREATE TABLE `phone` ( "
             "`id` INT, `name` CHAR(32), `number` CHAR(32) "
             "PRIMARY KEY `id`)";
@@ -77,7 +77,7 @@ __attribute__((used)) static void test_msiexport(void)
     r = MsiCloseHandle(hview);
     ok(r == ERROR_SUCCESS, "MsiCloseHandle failed\n");
 
-    /* insert a value into it */
+
     query = "INSERT INTO `phone` ( `id`, `name`, `number` )"
         "VALUES('1', 'Abe', '8675309')";
     r = MsiDatabaseOpenViewA(hdb, query, &hview);
@@ -99,13 +99,13 @@ __attribute__((used)) static void test_msiexport(void)
     lstrcatA(path, "\\");
     lstrcatA(path, file);
 
-    /* check the data that was written */
+
     length = 0;
     memset(buffer, 0, sizeof buffer);
-    handle = CreateFileA(path, GENERIC_READ, 0, NULL, OPEN_EXISTING, 0, NULL);
+    handle = CreateFileA(path, GENERIC_READ, 0, ((void*)0), OPEN_EXISTING, 0, ((void*)0));
     if (handle != INVALID_HANDLE_VALUE)
     {
-        ReadFile(handle, buffer, sizeof buffer, &length, NULL);
+        ReadFile(handle, buffer, sizeof buffer, &length, ((void*)0));
         CloseHandle(handle);
         DeleteFileA(path);
     }

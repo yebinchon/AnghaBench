@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * device_t ;
 
-/* Variables and functions */
- int PCI_FUNCMAX ; 
- int /*<<< orphan*/  T4_ATTACH_CHILD (int /*<<< orphan*/ *) ; 
- int T4_DETACH_CHILD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  device_is_attached (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * pci_find_dbsf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pci_get_bus (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pci_get_domain (int /*<<< orphan*/ *) ; 
- int pci_get_function (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pci_get_slot (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * device_t ;
+
+
+ int PCI_FUNCMAX ;
+ int T4_ATTACH_CHILD (int *) ;
+ int T4_DETACH_CHILD (int *) ;
+ int device_is_attached (int *) ;
+ int * pci_find_dbsf (int ,int ,int ,int) ;
+ int pci_get_bus (int *) ;
+ int pci_get_domain (int *) ;
+ int pci_get_function (int *) ;
+ int pci_get_slot (int *) ;
 
 __attribute__((used)) static int
 notify_siblings(device_t dev, int detaching)
 {
-	device_t sibling;
-	int error, i;
+ device_t sibling;
+ int error, i;
 
-	error = 0;
-	for (i = 0; i < PCI_FUNCMAX; i++) {
-		if (i == pci_get_function(dev))
-			continue;
-		sibling = pci_find_dbsf(pci_get_domain(dev), pci_get_bus(dev),
-		    pci_get_slot(dev), i);
-		if (sibling == NULL || !device_is_attached(sibling))
-			continue;
-		if (detaching)
-			error = T4_DETACH_CHILD(sibling);
-		else
-			(void)T4_ATTACH_CHILD(sibling);
-		if (error)
-			break;
-	}
-	return (error);
+ error = 0;
+ for (i = 0; i < PCI_FUNCMAX; i++) {
+  if (i == pci_get_function(dev))
+   continue;
+  sibling = pci_find_dbsf(pci_get_domain(dev), pci_get_bus(dev),
+      pci_get_slot(dev), i);
+  if (sibling == ((void*)0) || !device_is_attached(sibling))
+   continue;
+  if (detaching)
+   error = T4_DETACH_CHILD(sibling);
+  else
+   (void)T4_ATTACH_CHILD(sibling);
+  if (error)
+   break;
+ }
+ return (error);
 }

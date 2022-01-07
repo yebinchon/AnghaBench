@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct drm_connector_state {int dummy; } ;
-struct drm_connector {int /*<<< orphan*/  state; } ;
+struct drm_connector {int state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- scalar_t__ WARN_ON (int) ; 
- int /*<<< orphan*/  __drm_atomic_helper_connector_duplicate_state (struct drm_connector*,struct drm_connector_state*) ; 
- struct drm_connector_state* kmalloc (int,int /*<<< orphan*/ ) ; 
+
+ int GFP_KERNEL ;
+ scalar_t__ WARN_ON (int) ;
+ int __drm_atomic_helper_connector_duplicate_state (struct drm_connector*,struct drm_connector_state*) ;
+ struct drm_connector_state* kmalloc (int,int ) ;
 
 struct drm_connector_state *
 drm_atomic_helper_connector_duplicate_state(struct drm_connector *connector)
 {
-	struct drm_connector_state *state;
+ struct drm_connector_state *state;
 
-	if (WARN_ON(!connector->state))
-		return NULL;
+ if (WARN_ON(!connector->state))
+  return ((void*)0);
 
-	state = kmalloc(sizeof(*state), GFP_KERNEL);
-	if (state)
-		__drm_atomic_helper_connector_duplicate_state(connector, state);
+ state = kmalloc(sizeof(*state), GFP_KERNEL);
+ if (state)
+  __drm_atomic_helper_connector_duplicate_state(connector, state);
 
-	return state;
+ return state;
 }

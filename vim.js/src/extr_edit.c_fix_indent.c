@@ -1,40 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ b_p_ai; scalar_t__ b_p_lisp; } ;
 
-/* Variables and functions */
- scalar_t__ cindent_on () ; 
- TYPE_1__* curbuf ; 
- int /*<<< orphan*/  do_c_expr_indent () ; 
- int /*<<< orphan*/  fixthisline (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_lisp_indent ; 
- scalar_t__ p_paste ; 
+
+ scalar_t__ cindent_on () ;
+ TYPE_1__* curbuf ;
+ int do_c_expr_indent () ;
+ int fixthisline (int ) ;
+ int get_lisp_indent ;
+ scalar_t__ p_paste ;
 
 void
 fix_indent()
 {
     if (p_paste)
-	return;
-# ifdef FEAT_LISP
-    if (curbuf->b_p_lisp && curbuf->b_p_ai)
-	fixthisline(get_lisp_indent);
-# endif
-# if defined(FEAT_LISP) && defined(FEAT_CINDENT)
-    else
-# endif
-# ifdef FEAT_CINDENT
-	if (cindent_on())
-	    do_c_expr_indent();
-# endif
+ return;
 }

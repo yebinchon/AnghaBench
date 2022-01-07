@@ -1,61 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  p_isEOF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  p_isalnum (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  p_isalpha (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  p_isdigit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  p_iseqC (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  p_islower (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  p_isneC (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  p_isnotalnum (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  p_isnotalpha (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  p_isnotdigit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  p_isnotlower (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  p_isnotprint (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  p_isnotpunct (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  p_isnotspace (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  p_isnotupper (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  p_isnotxdigit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  p_isprint (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  p_ispunct (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  p_isspace (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  p_isupper (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  p_isxdigit (int /*<<< orphan*/ *) ; 
+ int p_isEOF (int *) ;
+ int p_isalnum (int *) ;
+ int p_isalpha (int *) ;
+ int p_isdigit (int *) ;
+ int p_iseqC (int *) ;
+ int p_islower (int *) ;
+ int p_isneC (int *) ;
+ int p_isnotalnum (int *) ;
+ int p_isnotalpha (int *) ;
+ int p_isnotdigit (int *) ;
+ int p_isnotlower (int *) ;
+ int p_isnotprint (int *) ;
+ int p_isnotpunct (int *) ;
+ int p_isnotspace (int *) ;
+ int p_isnotupper (int *) ;
+ int p_isnotxdigit (int *) ;
+ int p_isprint (int *) ;
+ int p_ispunct (int *) ;
+ int p_isspace (int *) ;
+ int p_isupper (int *) ;
+ int p_isxdigit (int *) ;
 
 void
 _make_compiler_happy(void)
 {
-	p_isalnum(NULL);
-	p_isnotalnum(NULL);
-	p_isalpha(NULL);
-	p_isnotalpha(NULL);
-	p_isdigit(NULL);
-	p_isnotdigit(NULL);
-	p_islower(NULL);
-	p_isnotlower(NULL);
-	p_isprint(NULL);
-	p_isnotprint(NULL);
-	p_ispunct(NULL);
-	p_isnotpunct(NULL);
-	p_isspace(NULL);
-	p_isnotspace(NULL);
-	p_isupper(NULL);
-	p_isnotupper(NULL);
-	p_isxdigit(NULL);
-	p_isnotxdigit(NULL);
-	p_isEOF(NULL);
-	p_iseqC(NULL);
-	p_isneC(NULL);
+ p_isalnum(((void*)0));
+ p_isnotalnum(((void*)0));
+ p_isalpha(((void*)0));
+ p_isnotalpha(((void*)0));
+ p_isdigit(((void*)0));
+ p_isnotdigit(((void*)0));
+ p_islower(((void*)0));
+ p_isnotlower(((void*)0));
+ p_isprint(((void*)0));
+ p_isnotprint(((void*)0));
+ p_ispunct(((void*)0));
+ p_isnotpunct(((void*)0));
+ p_isspace(((void*)0));
+ p_isnotspace(((void*)0));
+ p_isupper(((void*)0));
+ p_isnotupper(((void*)0));
+ p_isxdigit(((void*)0));
+ p_isnotxdigit(((void*)0));
+ p_isEOF(((void*)0));
+ p_iseqC(((void*)0));
+ p_isneC(((void*)0));
 }

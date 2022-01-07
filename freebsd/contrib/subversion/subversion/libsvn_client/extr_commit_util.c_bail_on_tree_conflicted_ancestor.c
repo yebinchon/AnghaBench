@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  (* svn_wc_notify_func2_t ) (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;
-typedef  int /*<<< orphan*/  svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_WC_FOUND_CONFLICT ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- char* svn_dirent_dirname (char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_dirent_is_ancestor (char const*,char const*) ; 
- scalar_t__ svn_dirent_is_root (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_wc__get_wcroot (char const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_conflicted_p3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_create_notify (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_notify_failed_conflict ; 
+
+
+
+typedef int (* svn_wc_notify_func2_t ) (void*,int ,int *) ;
+typedef int svn_wc_context_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_WC_FOUND_CONFLICT ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int strlen (char const*) ;
+ char* svn_dirent_dirname (char const*,int *) ;
+ scalar_t__ svn_dirent_is_ancestor (char const*,char const*) ;
+ scalar_t__ svn_dirent_is_root (char const*,int ) ;
+ int svn_dirent_local_style (char const*,int *) ;
+ int * svn_error_createf (int ,int *,int ,int ) ;
+ int svn_wc__get_wcroot (char const**,int *,char const*,int *,int *) ;
+ int svn_wc_conflicted_p3 (int *,int *,scalar_t__*,int *,char const*,int *) ;
+ int svn_wc_create_notify (char const*,int ,int *) ;
+ int svn_wc_notify_failed_conflict ;
 
 __attribute__((used)) static svn_error_t *
 bail_on_tree_conflicted_ancestor(svn_wc_context_t *wc_ctx,
@@ -50,12 +50,12 @@ bail_on_tree_conflicted_ancestor(svn_wc_context_t *wc_ctx,
     {
       svn_boolean_t tree_conflicted;
 
-      /* Check if the parent has tree conflicts */
-      SVN_ERR(svn_wc_conflicted_p3(NULL, NULL, &tree_conflicted,
+
+      SVN_ERR(svn_wc_conflicted_p3(((void*)0), ((void*)0), &tree_conflicted,
                                    wc_ctx, local_abspath, scratch_pool));
       if (tree_conflicted)
         {
-          if (notify_func != NULL)
+          if (notify_func != ((void*)0))
             {
               notify_func(notify_baton,
                           svn_wc_create_notify(local_abspath,
@@ -65,12 +65,12 @@ bail_on_tree_conflicted_ancestor(svn_wc_context_t *wc_ctx,
             }
 
           return svn_error_createf(
-                   SVN_ERR_WC_FOUND_CONFLICT, NULL,
+                   SVN_ERR_WC_FOUND_CONFLICT, ((void*)0),
                    _("Aborting commit: '%s' remains in tree-conflict"),
                    svn_dirent_local_style(local_abspath, scratch_pool));
         }
 
-      /* Step outwards */
+
       if (svn_dirent_is_root(local_abspath, strlen(local_abspath)))
         break;
       else

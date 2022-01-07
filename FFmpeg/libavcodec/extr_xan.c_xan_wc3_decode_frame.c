@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_5__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_7__ TYPE_5__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_6__ {int* buffer1; int buffer1_size; int* buffer2; int size; int* buf; int buffer2_size; TYPE_5__* avctx; } ;
-typedef  TYPE_1__ XanContext ;
+typedef TYPE_1__ XanContext ;
 struct TYPE_7__ {int width; int height; } ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  int /*<<< orphan*/  AVFrame ;
+typedef int GetByteContext ;
+typedef int AVFrame ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int AV_RL16 (int*) ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*) ; 
- int bytestream2_get_be16 (int /*<<< orphan*/ *) ; 
- int bytestream2_get_be24 (int /*<<< orphan*/ *) ; 
- int bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- scalar_t__ bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,int*,int) ; 
- int sign_extend (int,int) ; 
- int xan_huffman_decode (int*,int,int const*,int) ; 
- int /*<<< orphan*/  xan_unpack (int*,int,int const*,int) ; 
- int /*<<< orphan*/  xan_wc3_copy_pixel_run (TYPE_1__*,int /*<<< orphan*/ *,int,int,int,int,int) ; 
- int /*<<< orphan*/  xan_wc3_output_pixel_run (TYPE_1__*,int /*<<< orphan*/ *,int const*,int,int,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_RL16 (int*) ;
+ int av_log (TYPE_5__*,int ,char*) ;
+ int bytestream2_get_be16 (int *) ;
+ int bytestream2_get_be24 (int *) ;
+ int bytestream2_get_byte (int *) ;
+ scalar_t__ bytestream2_get_bytes_left (int *) ;
+ int bytestream2_init (int *,int*,int) ;
+ int sign_extend (int,int) ;
+ int xan_huffman_decode (int*,int,int const*,int) ;
+ int xan_unpack (int*,int,int const*,int) ;
+ int xan_wc3_copy_pixel_run (TYPE_1__*,int *,int,int,int,int,int) ;
+ int xan_wc3_output_pixel_run (TYPE_1__*,int *,int const*,int,int,int) ;
 
 __attribute__((used)) static int xan_wc3_decode_frame(XanContext *s, AVFrame *frame)
 {
 
-    int width  = s->avctx->width;
+    int width = s->avctx->width;
     int height = s->avctx->height;
     int total_pixels = width * height;
     uint8_t opcode;
@@ -52,10 +52,10 @@ __attribute__((used)) static int xan_wc3_decode_frame(XanContext *s, AVFrame *fr
     int opcode_buffer_size = s->buffer1_size;
     const uint8_t *imagedata_buffer = s->buffer2;
 
-    /* pointers to segments inside the compressed chunk */
+
     const uint8_t *huffman_segment;
-    GetByteContext       size_segment;
-    GetByteContext       vector_segment;
+    GetByteContext size_segment;
+    GetByteContext vector_segment;
     const uint8_t *imagedata_segment;
     int huffman_offset, size_offset, vector_offset, imagedata_offset,
         imagedata_size;
@@ -63,19 +63,19 @@ __attribute__((used)) static int xan_wc3_decode_frame(XanContext *s, AVFrame *fr
     if (s->size < 8)
         return AVERROR_INVALIDDATA;
 
-    huffman_offset    = AV_RL16(&s->buf[0]);
-    size_offset       = AV_RL16(&s->buf[2]);
-    vector_offset     = AV_RL16(&s->buf[4]);
-    imagedata_offset  = AV_RL16(&s->buf[6]);
+    huffman_offset = AV_RL16(&s->buf[0]);
+    size_offset = AV_RL16(&s->buf[2]);
+    vector_offset = AV_RL16(&s->buf[4]);
+    imagedata_offset = AV_RL16(&s->buf[6]);
 
-    if (huffman_offset   >= s->size ||
-        size_offset      >= s->size ||
-        vector_offset    >= s->size ||
+    if (huffman_offset >= s->size ||
+        size_offset >= s->size ||
+        vector_offset >= s->size ||
         imagedata_offset >= s->size)
         return AVERROR_INVALIDDATA;
 
-    huffman_segment   = s->buf + huffman_offset;
-    bytestream2_init(&size_segment,   s->buf + size_offset,   s->size - size_offset);
+    huffman_segment = s->buf + huffman_offset;
+    bytestream2_init(&size_segment, s->buf + size_offset, s->size - size_offset);
     bytestream2_init(&vector_segment, s->buf + vector_offset, s->size - vector_offset);
     imagedata_segment = s->buf + imagedata_offset;
 
@@ -93,7 +93,7 @@ __attribute__((used)) static int xan_wc3_decode_frame(XanContext *s, AVFrame *fr
         imagedata_buffer = &imagedata_segment[1];
     }
 
-    /* use the decoded data segments to build the frame */
+
     x = y = 0;
     while (total_pixels && opcode_buffer < opcode_buffer_end) {
 
@@ -161,10 +161,10 @@ __attribute__((used)) static int xan_wc3_decode_frame(XanContext *s, AVFrame *fr
         if (opcode < 12) {
             flag ^= 1;
             if (flag) {
-                /* run of (size) pixels is unchanged from last frame */
+
                 xan_wc3_copy_pixel_run(s, frame, x, y, size, 0, 0);
             } else {
-                /* output a run of pixels from imagedata_buffer */
+
                 if (imagedata_size < size)
                     break;
                 xan_wc3_output_pixel_run(s, frame, imagedata_buffer, x, y, size);
@@ -177,21 +177,21 @@ __attribute__((used)) static int xan_wc3_decode_frame(XanContext *s, AVFrame *fr
                 av_log(s->avctx, AV_LOG_ERROR, "vector_segment overread\n");
                 return AVERROR_INVALIDDATA;
             }
-            /* run-based motion compensation from last frame */
+
             vector = bytestream2_get_byte(&vector_segment);
-            motion_x = sign_extend(vector >> 4,  4);
+            motion_x = sign_extend(vector >> 4, 4);
             motion_y = sign_extend(vector & 0xF, 4);
 
-            /* copy a run of pixels from the previous frame */
+
             xan_wc3_copy_pixel_run(s, frame, x, y, size, motion_x, motion_y);
 
             flag = 0;
         }
 
-        /* coordinate accounting */
+
         total_pixels -= size;
         y += (x + size) / width;
-        x  = (x + size) % width;
+        x = (x + size) % width;
     }
     return 0;
 }

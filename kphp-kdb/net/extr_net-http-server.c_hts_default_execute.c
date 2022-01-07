@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hts_data {int header_size; scalar_t__ data_size; int /*<<< orphan*/  query_flags; } ;
-struct connection {int /*<<< orphan*/  In; } ;
 
-/* Variables and functions */
- struct hts_data* HTS_DATA (struct connection*) ; 
- int /*<<< orphan*/  QF_ERROR ; 
- scalar_t__ advance_skip_read_ptr (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int) ; 
-#define  htqt_empty 131 
-#define  htqt_get 130 
-#define  htqt_head 129 
-#define  htqt_post 128 
- int /*<<< orphan*/  netw_queries ; 
- int /*<<< orphan*/  netw_update_queries ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbosity ; 
+
+
+
+struct hts_data {int header_size; scalar_t__ data_size; int query_flags; } ;
+struct connection {int In; } ;
+
+
+ struct hts_data* HTS_DATA (struct connection*) ;
+ int QF_ERROR ;
+ scalar_t__ advance_skip_read_ptr (int *,int) ;
+ int assert (int) ;
+ int fprintf (int ,char*,int,int) ;
+
+
+
+
+ int netw_queries ;
+ int netw_update_queries ;
+ int stderr ;
+ scalar_t__ verbosity ;
 
 int hts_default_execute (struct connection *c, int op) {
   struct hts_data *D = HTS_DATA(c);
@@ -35,21 +35,21 @@ int hts_default_execute (struct connection *c, int op) {
     fprintf (stderr, "http_server: op=%d, header_size=%d\n", op, D->header_size);
   }
 
-  if (op != htqt_empty) {
+  if (op != 131) {
     netw_queries++;
-    if (op != htqt_get) {
+    if (op != 130) {
       netw_update_queries++;
     }
   }
 
   switch (op) {
 
-    case htqt_empty:
+    case 131:
       break;
 
-    case htqt_get:
-    case htqt_post:
-    case htqt_head:
+    case 130:
+    case 128:
+    case 129:
 
     default:
       D->query_flags |= QF_ERROR;

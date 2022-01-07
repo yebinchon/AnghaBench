@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ input; } ;
-typedef  TYPE_1__ network ;
-struct TYPE_6__ {int outputs; int batch; int w; int h; int inputs; scalar_t__ output; int /*<<< orphan*/  stride; int /*<<< orphan*/  c; scalar_t__ reverse; scalar_t__ extra; scalar_t__ flatten; } ;
-typedef  TYPE_2__ layer ;
+typedef TYPE_1__ network ;
+struct TYPE_6__ {int outputs; int batch; int w; int h; int inputs; scalar_t__ output; int stride; int c; scalar_t__ reverse; scalar_t__ extra; scalar_t__ flatten; } ;
+typedef TYPE_2__ layer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  copy_cpu (int,scalar_t__,int,scalar_t__,int) ; 
- int /*<<< orphan*/  flatten (scalar_t__,int,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  reorg_cpu (scalar_t__,int,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,scalar_t__) ; 
+
+ int copy_cpu (int,scalar_t__,int,scalar_t__,int) ;
+ int flatten (scalar_t__,int,int ,int,int) ;
+ int memcpy (scalar_t__,scalar_t__,int) ;
+ int reorg_cpu (scalar_t__,int,int,int ,int,int ,int,scalar_t__) ;
 
 void forward_reorg_layer(const layer l, network net)
 {

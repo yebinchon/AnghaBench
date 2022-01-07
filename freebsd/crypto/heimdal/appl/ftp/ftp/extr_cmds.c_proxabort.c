@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RETSIGTYPE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  abortprox ; 
- scalar_t__ connected ; 
- int /*<<< orphan*/  longjmp (int /*<<< orphan*/ ,int) ; 
- int proxflag ; 
- int /*<<< orphan*/  proxy ; 
- int /*<<< orphan*/  pswitch (int) ; 
+
+
+
+typedef int RETSIGTYPE ;
+
+
+ int abortprox ;
+ scalar_t__ connected ;
+ int longjmp (int ,int) ;
+ int proxflag ;
+ int proxy ;
+ int pswitch (int) ;
 
 __attribute__((used)) static RETSIGTYPE
 proxabort(int sig)
 {
 
-	if (!proxy) {
-		pswitch(1);
-	}
-	if (connected) {
-		proxflag = 1;
-	}
-	else {
-		proxflag = 0;
-	}
-	pswitch(0);
-	longjmp(abortprox,1);
+ if (!proxy) {
+  pswitch(1);
+ }
+ if (connected) {
+  proxflag = 1;
+ }
+ else {
+  proxflag = 0;
+ }
+ pswitch(0);
+ longjmp(abortprox,1);
 }

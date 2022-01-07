@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct usb_interface {int dummy; } ;
-struct most_dev {struct most_dev* ep_address; struct most_dev* conf; struct most_dev* cap; struct most_dev* busy_urbs; int /*<<< orphan*/  iface; TYPE_1__* dci; int /*<<< orphan*/  poll_work_obj; int /*<<< orphan*/  link_stat_timer; int /*<<< orphan*/  io_mutex; int /*<<< orphan*/ * usb_device; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dev; } ;
+struct most_dev {struct most_dev* ep_address; struct most_dev* conf; struct most_dev* cap; struct most_dev* busy_urbs; int iface; TYPE_1__* dci; int poll_work_obj; int link_stat_timer; int io_mutex; int * usb_device; } ;
+struct TYPE_2__ {int dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cancel_work_sync (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  del_timer_sync (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  device_unregister (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (struct most_dev*) ; 
- int /*<<< orphan*/  most_deregister_interface (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- struct most_dev* usb_get_intfdata (struct usb_interface*) ; 
- int /*<<< orphan*/  usb_set_intfdata (struct usb_interface*,int /*<<< orphan*/ *) ; 
+
+ int cancel_work_sync (int *) ;
+ int del_timer_sync (int *) ;
+ int device_unregister (int *) ;
+ int kfree (struct most_dev*) ;
+ int most_deregister_interface (int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ struct most_dev* usb_get_intfdata (struct usb_interface*) ;
+ int usb_set_intfdata (struct usb_interface*,int *) ;
 
 __attribute__((used)) static void hdm_disconnect(struct usb_interface *interface)
 {
-	struct most_dev *mdev = usb_get_intfdata(interface);
+ struct most_dev *mdev = usb_get_intfdata(interface);
 
-	mutex_lock(&mdev->io_mutex);
-	usb_set_intfdata(interface, NULL);
-	mdev->usb_device = NULL;
-	mutex_unlock(&mdev->io_mutex);
+ mutex_lock(&mdev->io_mutex);
+ usb_set_intfdata(interface, ((void*)0));
+ mdev->usb_device = ((void*)0);
+ mutex_unlock(&mdev->io_mutex);
 
-	del_timer_sync(&mdev->link_stat_timer);
-	cancel_work_sync(&mdev->poll_work_obj);
+ del_timer_sync(&mdev->link_stat_timer);
+ cancel_work_sync(&mdev->poll_work_obj);
 
-	device_unregister(&mdev->dci->dev);
-	most_deregister_interface(&mdev->iface);
+ device_unregister(&mdev->dci->dev);
+ most_deregister_interface(&mdev->iface);
 
-	kfree(mdev->busy_urbs);
-	kfree(mdev->cap);
-	kfree(mdev->conf);
-	kfree(mdev->ep_address);
-	kfree(mdev);
+ kfree(mdev->busy_urbs);
+ kfree(mdev->cap);
+ kfree(mdev->conf);
+ kfree(mdev->ep_address);
+ kfree(mdev);
 }

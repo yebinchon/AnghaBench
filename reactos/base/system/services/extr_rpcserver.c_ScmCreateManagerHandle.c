@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  Tag; } ;
-struct TYPE_5__ {int /*<<< orphan*/  DatabaseName; TYPE_1__ Handle; } ;
-typedef  scalar_t__ SC_HANDLE ;
-typedef  TYPE_2__* PMANAGER_HANDLE ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * DatabaseName ; 
- int /*<<< orphan*/  ERROR_DATABASE_DOES_NOT_EXIST ; 
- int /*<<< orphan*/  ERROR_INVALID_NAME ; 
- int /*<<< orphan*/  ERROR_NOT_ENOUGH_MEMORY ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  FIELD_OFFSET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_2__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MANAGER_HANDLE ; 
- int /*<<< orphan*/  MANAGER_TAG ; 
- int /*<<< orphan*/ * SERVICES_ACTIVE_DATABASEW ; 
- int /*<<< orphan*/ * SERVICES_FAILED_DATABASEW ; 
- scalar_t__ _wcsicmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wcscpy (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int wcslen (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int Tag; } ;
+struct TYPE_5__ {int DatabaseName; TYPE_1__ Handle; } ;
+typedef scalar_t__ SC_HANDLE ;
+typedef TYPE_2__* PMANAGER_HANDLE ;
+typedef int * LPWSTR ;
+typedef int DWORD ;
+
+
+ int DPRINT (char*,int *) ;
+ int * DatabaseName ;
+ int ERROR_DATABASE_DOES_NOT_EXIST ;
+ int ERROR_INVALID_NAME ;
+ int ERROR_NOT_ENOUGH_MEMORY ;
+ int ERROR_SUCCESS ;
+ int FIELD_OFFSET (int ,int ) ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_2__* HeapAlloc (int ,int ,int ) ;
+ int MANAGER_HANDLE ;
+ int MANAGER_TAG ;
+ int * SERVICES_ACTIVE_DATABASEW ;
+ int * SERVICES_FAILED_DATABASEW ;
+ scalar_t__ _wcsicmp (int *,int *) ;
+ int wcscpy (int ,int *) ;
+ int wcslen (int *) ;
 
 __attribute__((used)) static DWORD
 ScmCreateManagerHandle(LPWSTR lpDatabaseName,
@@ -44,7 +44,7 @@ ScmCreateManagerHandle(LPWSTR lpDatabaseName,
 {
     PMANAGER_HANDLE Ptr;
 
-    if (lpDatabaseName == NULL)
+    if (lpDatabaseName == ((void*)0))
         lpDatabaseName = SERVICES_ACTIVE_DATABASEW;
 
     if (_wcsicmp(lpDatabaseName, SERVICES_FAILED_DATABASEW) == 0)
@@ -61,7 +61,7 @@ ScmCreateManagerHandle(LPWSTR lpDatabaseName,
     Ptr = HeapAlloc(GetProcessHeap(),
                     HEAP_ZERO_MEMORY,
                     FIELD_OFFSET(MANAGER_HANDLE, DatabaseName[wcslen(lpDatabaseName) + 1]));
-    if (Ptr == NULL)
+    if (Ptr == ((void*)0))
         return ERROR_NOT_ENOUGH_MEMORY;
 
     Ptr->Handle.Tag = MANAGER_TAG;

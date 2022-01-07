@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ sqlite_int64 ;
-typedef  int /*<<< orphan*/  DocListReader ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atEnd (int /*<<< orphan*/ *) ; 
- scalar_t__ peekDocid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skipDocument (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ sqlite_int64 ;
+typedef int DocListReader ;
+
+
+ int atEnd (int *) ;
+ scalar_t__ peekDocid (int *) ;
+ int skipDocument (int *) ;
 
 __attribute__((used)) static int skipToDocid(DocListReader *pReader, sqlite_int64 iDocid){
   sqlite_int64 d = 0;

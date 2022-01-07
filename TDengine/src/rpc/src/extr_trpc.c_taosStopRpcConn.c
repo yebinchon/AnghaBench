@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  mutex; int /*<<< orphan*/  qhandle; } ;
-struct TYPE_10__ {int chann; int rspReceived; int /*<<< orphan*/  ahandle; scalar_t__ outType; int /*<<< orphan*/  meterId; int /*<<< orphan*/  sid; TYPE_1__* pServer; } ;
-struct TYPE_9__ {TYPE_3__* thandle; int /*<<< orphan*/  ahandle; int /*<<< orphan*/ * msg; int /*<<< orphan*/  fp; } ;
-struct TYPE_8__ {int /*<<< orphan*/  label; TYPE_4__* channList; } ;
-typedef  TYPE_1__ STaosRpc ;
-typedef  TYPE_2__ SSchedMsg ;
-typedef  TYPE_3__ SRpcConn ;
-typedef  TYPE_4__ SRpcChann ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tTrace (char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  taosCloseRpcConn (TYPE_3__*) ; 
- int /*<<< orphan*/  taosProcessSchedMsg ; 
- int /*<<< orphan*/  taosScheduleTask (int /*<<< orphan*/ ,TYPE_2__*) ; 
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int mutex; int qhandle; } ;
+struct TYPE_10__ {int chann; int rspReceived; int ahandle; scalar_t__ outType; int meterId; int sid; TYPE_1__* pServer; } ;
+struct TYPE_9__ {TYPE_3__* thandle; int ahandle; int * msg; int fp; } ;
+struct TYPE_8__ {int label; TYPE_4__* channList; } ;
+typedef TYPE_1__ STaosRpc ;
+typedef TYPE_2__ SSchedMsg ;
+typedef TYPE_3__ SRpcConn ;
+typedef TYPE_4__ SRpcChann ;
+
+
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int tTrace (char*,int ,int,int ,int ,TYPE_3__*) ;
+ int taosCloseRpcConn (TYPE_3__*) ;
+ int taosProcessSchedMsg ;
+ int taosScheduleTask (int ,TYPE_2__*) ;
 
 void taosStopRpcConn(void *thandle) {
   SRpcConn * pConn = (SRpcConn *)thandle;
@@ -45,7 +45,7 @@ void taosStopRpcConn(void *thandle) {
     pConn->rspReceived = 1;
     SSchedMsg schedMsg;
     schedMsg.fp = taosProcessSchedMsg;
-    schedMsg.msg = NULL;
+    schedMsg.msg = ((void*)0);
     schedMsg.ahandle = pConn->ahandle;
     schedMsg.thandle = pConn;
     pthread_mutex_unlock(&pChann->mutex);

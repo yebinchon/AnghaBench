@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tWriteWlanPin ;
-typedef  int /*<<< orphan*/  tWlanReadInteruptPin ;
-typedef  int /*<<< orphan*/  tWlanInterruptEnable ;
-typedef  int /*<<< orphan*/  tWlanInterruptDisable ;
-typedef  int /*<<< orphan*/  tWlanCB ;
-typedef  int /*<<< orphan*/  tFWPatches ;
-typedef  int /*<<< orphan*/  tDriverPatches ;
-typedef  int /*<<< orphan*/  tBootLoaderPatches ;
-struct TYPE_2__ {int InformHostOnTxComplete; int /*<<< orphan*/  sWlanCB; int /*<<< orphan*/  WriteWlanPin; int /*<<< orphan*/  WlanInterruptDisable; int /*<<< orphan*/  WlanInterruptEnable; int /*<<< orphan*/  ReadWlanInterruptPin; int /*<<< orphan*/  sBootLoaderPatches; int /*<<< orphan*/  sDriverPatches; int /*<<< orphan*/  sFWPatches; } ;
 
-/* Variables and functions */
- TYPE_1__ tSLInformation ; 
 
-void wlan_init(		tWlanCB	 	sWlanCB,
-	tFWPatches sFWPatches,
-	tDriverPatches sDriverPatches,
-	tBootLoaderPatches sBootLoaderPatches,
-	tWlanReadInteruptPin  sReadWlanInterruptPin,
-	tWlanInterruptEnable  sWlanInterruptEnable,
-	tWlanInterruptDisable sWlanInterruptDisable,
-	tWriteWlanPin         sWriteWlanPin)
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int tWriteWlanPin ;
+typedef int tWlanReadInteruptPin ;
+typedef int tWlanInterruptEnable ;
+typedef int tWlanInterruptDisable ;
+typedef int tWlanCB ;
+typedef int tFWPatches ;
+typedef int tDriverPatches ;
+typedef int tBootLoaderPatches ;
+struct TYPE_2__ {int InformHostOnTxComplete; int sWlanCB; int WriteWlanPin; int WlanInterruptDisable; int WlanInterruptEnable; int ReadWlanInterruptPin; int sBootLoaderPatches; int sDriverPatches; int sFWPatches; } ;
+
+
+ TYPE_1__ tSLInformation ;
+
+void wlan_init( tWlanCB sWlanCB,
+ tFWPatches sFWPatches,
+ tDriverPatches sDriverPatches,
+ tBootLoaderPatches sBootLoaderPatches,
+ tWlanReadInteruptPin sReadWlanInterruptPin,
+ tWlanInterruptEnable sWlanInterruptEnable,
+ tWlanInterruptDisable sWlanInterruptDisable,
+ tWriteWlanPin sWriteWlanPin)
 {
 
-	tSLInformation.sFWPatches = sFWPatches;
-	tSLInformation.sDriverPatches = sDriverPatches;
-	tSLInformation.sBootLoaderPatches = sBootLoaderPatches;
+ tSLInformation.sFWPatches = sFWPatches;
+ tSLInformation.sDriverPatches = sDriverPatches;
+ tSLInformation.sBootLoaderPatches = sBootLoaderPatches;
 
-	// init io callback
-	tSLInformation.ReadWlanInterruptPin = sReadWlanInterruptPin;
-	tSLInformation.WlanInterruptEnable  = sWlanInterruptEnable;
-	tSLInformation.WlanInterruptDisable = sWlanInterruptDisable;
-	tSLInformation.WriteWlanPin = sWriteWlanPin;
 
-	//init asynchronous events callback
-	tSLInformation.sWlanCB= sWlanCB;
+ tSLInformation.ReadWlanInterruptPin = sReadWlanInterruptPin;
+ tSLInformation.WlanInterruptEnable = sWlanInterruptEnable;
+ tSLInformation.WlanInterruptDisable = sWlanInterruptDisable;
+ tSLInformation.WriteWlanPin = sWriteWlanPin;
 
-	// By default TX Complete events are routed to host too
-	tSLInformation.InformHostOnTxComplete = 1;
+
+ tSLInformation.sWlanCB= sWlanCB;
+
+
+ tSLInformation.InformHostOnTxComplete = 1;
 }

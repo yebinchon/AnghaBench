@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  usec_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int /*<<< orphan*/  sd_bus ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert_cc (int) ; 
- int sd_bus_message_read (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int watchdog_set_timeout (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int usec_t ;
+typedef int uint64_t ;
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
+typedef int sd_bus ;
+
+
+ int assert (int *) ;
+ int assert_cc (int) ;
+ int sd_bus_message_read (int *,char*,int *) ;
+ int watchdog_set_timeout (int *) ;
 
 __attribute__((used)) static int property_set_runtime_watchdog(
                 sd_bus *bus,

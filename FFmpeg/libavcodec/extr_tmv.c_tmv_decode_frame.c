@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_11__ {int width; int height; } ;
-struct TYPE_10__ {int key_frame; int** data; int palette_has_changed; int* linesize; int /*<<< orphan*/  pict_type; } ;
+struct TYPE_10__ {int key_frame; int** data; int palette_has_changed; int* linesize; int pict_type; } ;
 struct TYPE_9__ {int* data; int size; } ;
-typedef  TYPE_1__ AVPacket ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVCodecContext ;
+typedef TYPE_1__ AVPacket ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- scalar_t__ AVPALETTE_SIZE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_I ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  avpriv_cga_font ; 
- int /*<<< orphan*/  ff_cga_palette ; 
- int /*<<< orphan*/  ff_draw_pc_font (int*,int,int /*<<< orphan*/ ,int,unsigned int,unsigned int,unsigned int) ; 
- int ff_get_buffer (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int AVERROR_INVALIDDATA ;
+ scalar_t__ AVPALETTE_SIZE ;
+ int AV_LOG_ERROR ;
+ int AV_PICTURE_TYPE_I ;
+ int av_log (TYPE_3__*,int ,char*) ;
+ int avpriv_cga_font ;
+ int ff_cga_palette ;
+ int ff_draw_pc_font (int*,int,int ,int,unsigned int,unsigned int,unsigned int) ;
+ int ff_get_buffer (TYPE_3__*,TYPE_2__*,int ) ;
+ int memcpy (int*,int ,int) ;
+ int memset (int*,int ,scalar_t__) ;
 
 __attribute__((used)) static int tmv_decode_frame(AVCodecContext *avctx, void *data,
                             int *got_frame, AVPacket *avpkt)
 {
-    AVFrame *frame     = data;
+    AVFrame *frame = data;
     const uint8_t *src = avpkt->data;
     uint8_t *dst;
     unsigned char_cols = avctx->width >> 3;
@@ -57,7 +57,7 @@ __attribute__((used)) static int tmv_decode_frame(AVCodecContext *avctx, void *d
 
     frame->pict_type = AV_PICTURE_TYPE_I;
     frame->key_frame = 1;
-    dst              = frame->data[0];
+    dst = frame->data[0];
 
     frame->palette_has_changed = 1;
     memcpy(frame->data[1], ff_cga_palette, 16 * 4);
@@ -65,8 +65,8 @@ __attribute__((used)) static int tmv_decode_frame(AVCodecContext *avctx, void *d
 
     for (y = 0; y < char_rows; y++) {
         for (x = 0; x < char_cols; x++) {
-            c  = *src++;
-            bg = *src  >> 4;
+            c = *src++;
+            bg = *src >> 4;
             fg = *src++ & 0xF;
             ff_draw_pc_font(dst + x * 8, frame->linesize[0],
                             avpriv_cga_font, 8, c, fg, bg);

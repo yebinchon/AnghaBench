@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ EEXIST ; 
- int /*<<< orphan*/  False ; 
- int /*<<< orphan*/  S_IRWXU ; 
- int /*<<< orphan*/  True ; 
- scalar_t__ errno ; 
- char* getenv (char*) ; 
- int mkdir (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,char*) ; 
+
+
+
+typedef int BOOL ;
+
+
+ scalar_t__ EEXIST ;
+ int False ;
+ int S_IRWXU ;
+ int True ;
+ scalar_t__ errno ;
+ char* getenv (char*) ;
+ int mkdir (char*,int ) ;
+ int perror (char*) ;
+ int sprintf (char*,char*,char*,char*) ;
 
 BOOL
 rd_pstcache_mkdir(void)
 {
-	char *home;
-	char bmpcache_dir[256];
+ char *home;
+ char bmpcache_dir[256];
 
-	home = getenv("HOME");
+ home = getenv("HOME");
 
-	if (home == NULL)
-		return False;
+ if (home == ((void*)0))
+  return False;
 
-	sprintf(bmpcache_dir, "%s/%s", home, ".rdesktop");
+ sprintf(bmpcache_dir, "%s/%s", home, ".rdesktop");
 
-	if ((mkdir(bmpcache_dir, S_IRWXU) == -1) && errno != EEXIST)
-	{
-		perror(bmpcache_dir);
-		return False;
-	}
+ if ((mkdir(bmpcache_dir, S_IRWXU) == -1) && errno != EEXIST)
+ {
+  perror(bmpcache_dir);
+  return False;
+ }
 
-	sprintf(bmpcache_dir, "%s/%s", home, ".rdesktop/cache");
+ sprintf(bmpcache_dir, "%s/%s", home, ".rdesktop/cache");
 
-	if ((mkdir(bmpcache_dir, S_IRWXU) == -1) && errno != EEXIST)
-	{
-		perror(bmpcache_dir);
-		return False;
-	}
+ if ((mkdir(bmpcache_dir, S_IRWXU) == -1) && errno != EEXIST)
+ {
+  perror(bmpcache_dir);
+  return False;
+ }
 
-	return True;
+ return True;
 }

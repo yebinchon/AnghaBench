@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  size_t uint32_t ;
-struct TYPE_10__ {int /*<<< orphan*/ * v; } ;
-typedef  TYPE_1__ block ;
-struct TYPE_11__ {int /*<<< orphan*/  slice; int /*<<< orphan*/  lane; int /*<<< orphan*/  pass; } ;
-typedef  TYPE_2__ argon2_position_t ;
-struct TYPE_12__ {size_t segment_length; int /*<<< orphan*/  type; int /*<<< orphan*/  passes; int /*<<< orphan*/  memory_blocks; } ;
-typedef  TYPE_3__ argon2_instance_t ;
 
-/* Variables and functions */
- size_t ARGON2_ADDRESSES_IN_BLOCK ; 
- int /*<<< orphan*/  fill_block_with_xor (TYPE_1__*,TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  init_block_value (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef size_t uint32_t ;
+struct TYPE_10__ {int * v; } ;
+typedef TYPE_1__ block ;
+struct TYPE_11__ {int slice; int lane; int pass; } ;
+typedef TYPE_2__ argon2_position_t ;
+struct TYPE_12__ {size_t segment_length; int type; int passes; int memory_blocks; } ;
+typedef TYPE_3__ argon2_instance_t ;
+
+
+ size_t ARGON2_ADDRESSES_IN_BLOCK ;
+ int fill_block_with_xor (TYPE_1__*,TYPE_1__*,TYPE_1__*) ;
+ int init_block_value (TYPE_1__*,int ) ;
 
 __attribute__((used)) static void
 generate_addresses(const argon2_instance_t *instance,
                    const argon2_position_t *position, uint64_t *pseudo_rands)
 {
-    block    zero_block, input_block, address_block, tmp_block;
+    block zero_block, input_block, address_block, tmp_block;
     uint32_t i;
 
     init_block_value(&zero_block, 0);
     init_block_value(&input_block, 0);
 
-    if (instance != NULL && position != NULL) {
+    if (instance != ((void*)0) && position != ((void*)0)) {
         input_block.v[0] = position->pass;
         input_block.v[1] = position->lane;
         input_block.v[2] = position->slice;

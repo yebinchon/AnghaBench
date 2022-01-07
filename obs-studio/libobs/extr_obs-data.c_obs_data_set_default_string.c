@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  obs_data_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  obs_set_string (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_item_def ; 
+
+
+
+typedef int obs_data_t ;
+
+
+ int obs_set_string (int *,int *,char const*,char const*,int ) ;
+ int set_item_def ;
 
 void obs_data_set_default_string(obs_data_t *data, const char *name,
-				 const char *val)
+     const char *val)
 {
-	obs_set_string(data, NULL, name, val, set_item_def);
+ obs_set_string(data, ((void*)0), name, val, set_item_def);
 }

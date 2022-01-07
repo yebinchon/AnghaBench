@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RedisModuleString ;
-typedef  int /*<<< orphan*/  RedisModuleKey ;
-typedef  int /*<<< orphan*/  RedisModuleCtx ;
 
-/* Variables and functions */
- char* REDISMODULE_ERRORMSG_WRONGTYPE ; 
- scalar_t__ REDISMODULE_KEYTYPE_ZSET ; 
- scalar_t__ REDISMODULE_OK ; 
- int REDISMODULE_READ ; 
- int REDISMODULE_WRITE ; 
- int /*<<< orphan*/  RedisModule_CloseKey (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_FreeString (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RedisModule_KeyType (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * RedisModule_OpenKey (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  RedisModule_ReplyWithArray (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  RedisModule_ReplyWithDouble (int /*<<< orphan*/ *,double) ; 
- int RedisModule_ReplyWithError (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ RedisModule_StringToDouble (int /*<<< orphan*/ *,double*) ; 
- int RedisModule_WrongArity (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_ZsetFirstInScoreRange (int /*<<< orphan*/ *,double,double,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RedisModule_ZsetLastInScoreRange (int /*<<< orphan*/ *,double,double,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * RedisModule_ZsetRangeCurrentElement (int /*<<< orphan*/ *,double*) ; 
- int /*<<< orphan*/  RedisModule_ZsetRangeEndReached (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_ZsetRangeNext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_ZsetRangePrev (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_ZsetRangeStop (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int RedisModuleString ;
+typedef int RedisModuleKey ;
+typedef int RedisModuleCtx ;
+
+
+ char* REDISMODULE_ERRORMSG_WRONGTYPE ;
+ scalar_t__ REDISMODULE_KEYTYPE_ZSET ;
+ scalar_t__ REDISMODULE_OK ;
+ int REDISMODULE_READ ;
+ int REDISMODULE_WRITE ;
+ int RedisModule_CloseKey (int *) ;
+ int RedisModule_FreeString (int *,int *) ;
+ scalar_t__ RedisModule_KeyType (int *) ;
+ int * RedisModule_OpenKey (int *,int *,int) ;
+ int RedisModule_ReplyWithArray (int *,int) ;
+ int RedisModule_ReplyWithDouble (int *,double) ;
+ int RedisModule_ReplyWithError (int *,char*) ;
+ scalar_t__ RedisModule_StringToDouble (int *,double*) ;
+ int RedisModule_WrongArity (int *) ;
+ int RedisModule_ZsetFirstInScoreRange (int *,double,double,int ,int ) ;
+ int RedisModule_ZsetLastInScoreRange (int *,double,double,int ,int ) ;
+ int * RedisModule_ZsetRangeCurrentElement (int *,double*) ;
+ int RedisModule_ZsetRangeEndReached (int *) ;
+ int RedisModule_ZsetRangeNext (int *) ;
+ int RedisModule_ZsetRangePrev (int *) ;
+ int RedisModule_ZsetRangeStop (int *) ;
 
 int HelloZsumRange_RedisCommand(RedisModuleCtx *ctx, RedisModuleString **argv, int argc) {
     double score_start, score_end;

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  struct Mutex* var ;
-struct Mutex {int /*<<< orphan*/  mutex; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pthread_mutex_destroy (int /*<<< orphan*/ *) ; 
+
+
+
+typedef struct Mutex* var ;
+struct Mutex {int mutex; } ;
+
+
+ int CloseHandle (int ) ;
+ int pthread_mutex_destroy (int *) ;
 
 __attribute__((used)) static void Mutex_Del(var self) {
   struct Mutex* m = self;
-#if defined(CELLO_UNIX)
-  pthread_mutex_destroy(&m->mutex);
-#elif defined(CELLO_WINDOWS)
-  CloseHandle(m->mutex);
-#endif
+
+
+
+
+
 }

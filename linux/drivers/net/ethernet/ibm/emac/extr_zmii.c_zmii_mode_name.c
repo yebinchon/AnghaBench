@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int BUG () ;
 
-/* Forward declarations */
 
-/* Type definitions */
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG () ; 
-#define  PHY_INTERFACE_MODE_MII 130 
-#define  PHY_INTERFACE_MODE_RMII 129 
-#define  PHY_INTERFACE_MODE_SMII 128 
 
 __attribute__((used)) static inline const char *zmii_mode_name(int mode)
 {
-	switch (mode) {
-	case PHY_INTERFACE_MODE_MII:
-		return "MII";
-	case PHY_INTERFACE_MODE_RMII:
-		return "RMII";
-	case PHY_INTERFACE_MODE_SMII:
-		return "SMII";
-	default:
-		BUG();
-	}
+ switch (mode) {
+ case 130:
+  return "MII";
+ case 129:
+  return "RMII";
+ case 128:
+  return "SMII";
+ default:
+  BUG();
+ }
 }

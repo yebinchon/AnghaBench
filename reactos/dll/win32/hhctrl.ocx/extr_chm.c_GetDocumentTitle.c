@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stream_t ;
-struct TYPE_11__ {int len; int /*<<< orphan*/ * buf; } ;
-typedef  TYPE_1__ strbuf_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_12__ {int /*<<< orphan*/ * pStorage; } ;
-typedef  int /*<<< orphan*/ * LPCWSTR ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  IStorage ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_2__ CHMInfo ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStorage_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStorage_OpenStream (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IStorage_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  STGM_READ ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
- int /*<<< orphan*/  _strnicmp (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/ * debugstr_w (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_node_name (TYPE_1__*,TYPE_1__*) ; 
- scalar_t__ next_content (int /*<<< orphan*/ *,TYPE_1__*) ; 
- scalar_t__ next_node (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  strbuf_free (TYPE_1__*) ; 
- int /*<<< orphan*/  strbuf_init (TYPE_1__*) ; 
- int /*<<< orphan*/  strbuf_zero (TYPE_1__*) ; 
- int /*<<< orphan*/ * strdupnAtoW (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stream_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int stream_t ;
+struct TYPE_11__ {int len; int * buf; } ;
+typedef TYPE_1__ strbuf_t ;
+typedef int WCHAR ;
+struct TYPE_12__ {int * pStorage; } ;
+typedef int * LPCWSTR ;
+typedef int IStream ;
+typedef int IStorage ;
+typedef int HRESULT ;
+typedef TYPE_2__ CHMInfo ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,int *) ;
+ int IStorage_AddRef (int *) ;
+ int IStorage_OpenStream (int *,int *,int *,int ,int ,int **) ;
+ int IStorage_Release (int *) ;
+ int IStream_Release (int *) ;
+ int STGM_READ ;
+ int TRACE (char*,int *) ;
+ int WARN (char*,...) ;
+ int _strnicmp (int *,char*,int) ;
+ int * debugstr_w (int *) ;
+ int get_node_name (TYPE_1__*,TYPE_1__*) ;
+ scalar_t__ next_content (int *,TYPE_1__*) ;
+ scalar_t__ next_node (int *,TYPE_1__*) ;
+ int strbuf_free (TYPE_1__*) ;
+ int strbuf_init (TYPE_1__*) ;
+ int strbuf_zero (TYPE_1__*) ;
+ int * strdupnAtoW (int *,int) ;
+ int stream_init (int *,int *) ;
 
 WCHAR *GetDocumentTitle(CHMInfo *info, LPCWSTR document)
 {
     strbuf_t node, node_name, content;
-    WCHAR *document_title = NULL;
-    IStream *str = NULL;
+    WCHAR *document_title = ((void*)0);
+    IStream *str = ((void*)0);
     IStorage *storage;
     stream_t stream;
     HRESULT hres;
@@ -58,11 +58,11 @@ WCHAR *GetDocumentTitle(CHMInfo *info, LPCWSTR document)
     storage = info->pStorage;
     if(!storage) {
         WARN("Could not open storage to obtain the title for a document.\n");
-        return NULL;
+        return ((void*)0);
     }
     IStorage_AddRef(storage);
 
-    hres = IStorage_OpenStream(storage, document, NULL, STGM_READ, 0, &str);
+    hres = IStorage_OpenStream(storage, document, ((void*)0), STGM_READ, 0, &str);
     IStorage_Release(storage);
     if(FAILED(hres))
         WARN("Could not open stream: %08x\n", hres);

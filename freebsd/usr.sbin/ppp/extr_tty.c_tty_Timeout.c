@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_7__ ;
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {int /*<<< orphan*/  load; } ;
+
+
+typedef struct TYPE_15__ TYPE_7__ ;
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_15__ {int load; } ;
 struct TYPE_12__ {scalar_t__ delay; scalar_t__ necessity; } ;
 struct TYPE_13__ {TYPE_4__ cd; } ;
 struct ttydevice {int mbits; scalar_t__ carrier_seconds; TYPE_7__ Timer; TYPE_5__ dev; } ;
-struct TYPE_14__ {int /*<<< orphan*/  name; } ;
+struct TYPE_14__ {int name; } ;
 struct TYPE_11__ {char* full; } ;
 struct TYPE_9__ {scalar_t__ necessity; } ;
 struct TYPE_10__ {TYPE_1__ cd; } ;
-struct physical {scalar_t__ fd; TYPE_6__ link; int /*<<< orphan*/  dl; TYPE_3__ name; TYPE_2__ cfg; int /*<<< orphan*/  handler; } ;
+struct physical {scalar_t__ fd; TYPE_6__ link; int dl; TYPE_3__ name; TYPE_2__ cfg; int handler; } ;
 
-/* Variables and functions */
- scalar_t__ CD_DEFAULT ; 
- scalar_t__ CD_REQUIRED ; 
- int /*<<< orphan*/  CLOSE_NORMAL ; 
- int /*<<< orphan*/  LogDEBUG ; 
- int /*<<< orphan*/  LogPHASE ; 
- int /*<<< orphan*/  LogWARN ; 
- scalar_t__ Online (struct ttydevice*) ; 
- int /*<<< orphan*/  SECTICKS ; 
- int /*<<< orphan*/  TIOCMGET ; 
- int TIOCM_CD ; 
- int /*<<< orphan*/  datalink_Down (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct ttydevice* device2tty (int /*<<< orphan*/ ) ; 
- scalar_t__ ioctl (scalar_t__,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  timer_Start (TYPE_7__*) ; 
- int /*<<< orphan*/  timer_Stop (TYPE_7__*) ; 
+
+ scalar_t__ CD_DEFAULT ;
+ scalar_t__ CD_REQUIRED ;
+ int CLOSE_NORMAL ;
+ int LogDEBUG ;
+ int LogPHASE ;
+ int LogWARN ;
+ scalar_t__ Online (struct ttydevice*) ;
+ int SECTICKS ;
+ int TIOCMGET ;
+ int TIOCM_CD ;
+ int datalink_Down (int ,int ) ;
+ struct ttydevice* device2tty (int ) ;
+ scalar_t__ ioctl (scalar_t__,int ,int*) ;
+ int log_Printf (int ,char*,int ,...) ;
+ int timer_Start (TYPE_7__*) ;
+ int timer_Stop (TYPE_7__*) ;
 
 __attribute__((used)) static void
 tty_Timeout(void *data)
@@ -53,13 +53,13 @@ tty_Timeout(void *data)
   int ombits, change;
 
   timer_Stop(&dev->Timer);
-  dev->Timer.load = SECTICKS;		/* Once a second please */
+  dev->Timer.load = SECTICKS;
   timer_Start(&dev->Timer);
   ombits = dev->mbits;
 
   if (p->fd >= 0) {
     if (ioctl(p->fd, TIOCMGET, &dev->mbits) < 0) {
-      /* we must be a pty ? */
+
       if (p->cfg.cd.necessity != CD_DEFAULT)
         log_Printf(LogWARN, "%s: Carrier ioctl not supported, "
                    "using ``set cd off''\n", p->link.name);
@@ -71,7 +71,7 @@ tty_Timeout(void *data)
     dev->mbits = 0;
 
   if (ombits == -1) {
-    /* First time looking for carrier */
+
     if (Online(dev))
       log_Printf(LogPHASE, "%s: %s: CD detected\n", p->link.name, p->name.full);
     else if (++dev->carrier_seconds >= dev->dev.cd.delay) {
@@ -81,12 +81,12 @@ tty_Timeout(void *data)
       else {
         log_Printf(LogPHASE, "%s: %s doesn't support CD\n",
                    p->link.name, p->name.full);
-        dev->mbits = TIOCM_CD;		/* Dodgy null-modem cable ? */
+        dev->mbits = TIOCM_CD;
       }
       timer_Stop(&dev->Timer);
-      /* tty_AwaitCarrier() will notice */
+
     } else {
-      /* Keep waiting */
+
       log_Printf(LogDEBUG, "%s: %s: Still no carrier (%d/%d)\n",
                  p->link.name, p->name.full, dev->carrier_seconds,
                  dev->dev.cd.delay);

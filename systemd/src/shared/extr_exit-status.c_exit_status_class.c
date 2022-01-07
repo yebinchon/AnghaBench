@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int class; } ;
 
-/* Variables and functions */
- size_t ELEMENTSOF (TYPE_1__*) ; 
-#define  EXIT_STATUS_BSD 131 
-#define  EXIT_STATUS_LIBC 130 
-#define  EXIT_STATUS_LSB 129 
-#define  EXIT_STATUS_SYSTEMD 128 
- TYPE_1__* exit_status_mappings ; 
+
+ size_t ELEMENTSOF (TYPE_1__*) ;
+
+
+
+
+ TYPE_1__* exit_status_mappings ;
 
 const char* exit_status_class(int code) {
         if (code < 0 || (size_t) code >= ELEMENTSOF(exit_status_mappings))
-                return NULL;
+                return ((void*)0);
 
         switch (exit_status_mappings[code].class) {
-        case EXIT_STATUS_LIBC:
+        case 130:
                 return "libc";
-        case EXIT_STATUS_SYSTEMD:
+        case 128:
                 return "systemd";
-        case EXIT_STATUS_LSB:
+        case 129:
                 return "LSB";
-        case EXIT_STATUS_BSD:
+        case 131:
                 return "BSD";
-        default: return NULL;
+        default: return ((void*)0);
         }
 }

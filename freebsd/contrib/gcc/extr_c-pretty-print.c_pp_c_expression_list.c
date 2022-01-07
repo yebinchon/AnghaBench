@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ tree ;
-typedef  int /*<<< orphan*/  c_pretty_printer ;
 
-/* Variables and functions */
- scalar_t__ NULL_TREE ; 
- scalar_t__ TREE_CHAIN (scalar_t__) ; 
- int /*<<< orphan*/  TREE_VALUE (scalar_t__) ; 
- int /*<<< orphan*/  pp_expression (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pp_separate_with (int /*<<< orphan*/ *,char) ; 
+
+
+
+typedef scalar_t__ tree ;
+typedef int c_pretty_printer ;
+
+
+ scalar_t__ NULL_TREE ;
+ scalar_t__ TREE_CHAIN (scalar_t__) ;
+ int TREE_VALUE (scalar_t__) ;
+ int pp_expression (int *,int ) ;
+ int pp_separate_with (int *,char) ;
 
 void
 pp_c_expression_list (c_pretty_printer *pp, tree e)
@@ -27,6 +27,6 @@ pp_c_expression_list (c_pretty_printer *pp, tree e)
     {
       pp_expression (pp, TREE_VALUE (e));
       if (TREE_CHAIN (e))
-	pp_separate_with (pp, ',');
+ pp_separate_with (pp, ',');
     }
 }

@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  MCMP (char*) ; 
- int /*<<< orphan*/  ZERO (int) ; 
- int /*<<< orphan*/  pRtlZeroMemory ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+ int MCMP (char*) ;
+ int ZERO (int) ;
+ int pRtlZeroMemory ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_RtlZeroMemory(void)
 {
@@ -25,7 +17,7 @@ __attribute__((used)) static void test_RtlZeroMemory(void)
     return;
   }
 
-  /* Length should be in bytes and not rounded. */
+
   ZERO(0); MCMP("This is a test!");
   ZERO(1); MCMP("\0his is a test!");
   ZERO(2); MCMP("\0\0is is a test!");

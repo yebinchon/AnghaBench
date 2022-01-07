@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct HttpAuthInfo {char const* scheme; char* auth_data; scalar_t__ auth_data_len; } ;
-typedef  int /*<<< orphan*/  http_request_t ;
-typedef  char WCHAR ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int http_request_t ;
+typedef char WCHAR ;
+typedef scalar_t__ UINT ;
+typedef int LPCWSTR ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int HTTP_ADDHDR_FLAG_ADD ; 
- int HTTP_ADDHDR_FLAG_REPLACE ; 
- int HTTP_ADDHDR_FLAG_REQ ; 
- int HTTP_ADDREQ_FLAG_ADD ; 
- int /*<<< orphan*/  HTTP_ProcessHeader (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  debugstr_w (char*) ; 
- char* encode_auth_data (char const*,char*,scalar_t__) ; 
- char* get_host_header (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  heap_free (char*) ; 
- scalar_t__ retrieve_cached_basic_authorization (char*,int /*<<< orphan*/ *,char**) ; 
- int /*<<< orphan*/  strcmpW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmpiW (char const*,char const*) ; 
- int /*<<< orphan*/  szAuthorization ; 
+
+ int FALSE ;
+ int HTTP_ADDHDR_FLAG_ADD ;
+ int HTTP_ADDHDR_FLAG_REPLACE ;
+ int HTTP_ADDHDR_FLAG_REQ ;
+ int HTTP_ADDREQ_FLAG_ADD ;
+ int HTTP_ProcessHeader (int *,int ,char*,int) ;
+ int TRACE (char*,int ) ;
+ int TRUE ;
+ int debugstr_w (char*) ;
+ char* encode_auth_data (char const*,char*,scalar_t__) ;
+ char* get_host_header (int *) ;
+ int heap_free (char*) ;
+ scalar_t__ retrieve_cached_basic_authorization (char*,int *,char**) ;
+ int strcmpW (int ,int ) ;
+ scalar_t__ strcmpiW (char const*,char const*) ;
+ int szAuthorization ;
 
 __attribute__((used)) static BOOL HTTP_InsertAuthorization( http_request_t *request, struct HttpAuthInfo *pAuthInfo, LPCWSTR header )
 {
     static const WCHAR wszBasic[] = {'B','a','s','i','c',0};
-    WCHAR *host, *authorization = NULL;
+    WCHAR *host, *authorization = ((void*)0);
 
     if (pAuthInfo)
     {
@@ -47,13 +47,13 @@ __attribute__((used)) static BOOL HTTP_InsertAuthorization( http_request_t *requ
             if (!(authorization = encode_auth_data(pAuthInfo->scheme, pAuthInfo->auth_data, pAuthInfo->auth_data_len)))
                 return FALSE;
 
-            /* clear the data as it isn't valid now that it has been sent to the
-             * server, unless it's Basic authentication which doesn't do
-             * connection tracking */
+
+
+
             if (strcmpiW(pAuthInfo->scheme, wszBasic))
             {
                 heap_free(pAuthInfo->auth_data);
-                pAuthInfo->auth_data = NULL;
+                pAuthInfo->auth_data = ((void*)0);
                 pAuthInfo->auth_data_len = 0;
             }
         }
@@ -69,7 +69,7 @@ __attribute__((used)) static BOOL HTTP_InsertAuthorization( http_request_t *requ
         UINT data_len;
         char *data;
 
-        if ((data_len = retrieve_cached_basic_authorization(host, NULL, &data)))
+        if ((data_len = retrieve_cached_basic_authorization(host, ((void*)0), &data)))
         {
             TRACE("Found cached basic authorization for %s\n", debugstr_w(host));
 

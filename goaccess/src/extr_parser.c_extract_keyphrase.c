@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* char_replace (char*,char,char) ; 
- char* decode_url (char*) ; 
- char* strchr (char*,char) ; 
- char* strstr (char*,char*) ; 
- char* trim_str (char*) ; 
+ char* char_replace (char*,char,char) ;
+ char* decode_url (char*) ;
+ char* strchr (char*,char) ;
+ char* strstr (char*,char*) ;
+ char* trim_str (char*) ;
 
 __attribute__((used)) static int
 extract_keyphrase (char *ref, char **keyphrase)
@@ -32,35 +24,35 @@ extract_keyphrase (char *ref, char **keyphrase)
       !(strstr (ref, "https://translate.googleusercontent.com/")))
     return 1;
 
-  /* webcache.googleusercontent */
-  if ((r = strstr (ref, "/+&")) != NULL)
+
+  if ((r = strstr (ref, "/+&")) != ((void*)0))
     return 1;
-  /* webcache.googleusercontent */
-  else if ((r = strstr (ref, "/+")) != NULL)
+
+  else if ((r = strstr (ref, "/+")) != ((void*)0))
     r += 2;
-  /* webcache.googleusercontent */
-  else if ((r = strstr (ref, "q=cache:")) != NULL) {
+
+  else if ((r = strstr (ref, "q=cache:")) != ((void*)0)) {
     pch = strchr (r, '+');
     if (pch)
       r += pch - r + 1;
   }
-  /* www.google.* or translate.googleusercontent */
-  else if ((r = strstr (ref, "&q=")) != NULL ||
-           (r = strstr (ref, "?q=")) != NULL)
+
+  else if ((r = strstr (ref, "&q=")) != ((void*)0) ||
+           (r = strstr (ref, "?q=")) != ((void*)0))
     r += 3;
-  else if ((r = strstr (ref, "%26q%3D")) != NULL ||
-           (r = strstr (ref, "%3Fq%3D")) != NULL)
+  else if ((r = strstr (ref, "%26q%3D")) != ((void*)0) ||
+           (r = strstr (ref, "%3Fq%3D")) != ((void*)0))
     encoded = 1, r += 7;
   else
     return 1;
 
-  if (!encoded && (ptr = strchr (r, '&')) != NULL)
+  if (!encoded && (ptr = strchr (r, '&')) != ((void*)0))
     *ptr = '\0';
-  else if (encoded && (ptr = strstr (r, "%26")) != NULL)
+  else if (encoded && (ptr = strstr (r, "%26")) != ((void*)0))
     *ptr = '\0';
 
   referer = decode_url (r);
-  if (referer == NULL || *referer == '\0')
+  if (referer == ((void*)0) || *referer == '\0')
     return 1;
 
   referer = char_replace (referer, '+', ' ');

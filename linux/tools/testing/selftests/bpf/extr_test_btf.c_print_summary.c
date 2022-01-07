@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int error_cnt ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,int) ; 
- int pass_cnt ; 
- int skip_cnt ; 
- int /*<<< orphan*/  stderr ; 
+ int error_cnt ;
+ int fprintf (int ,char*,int,int,int) ;
+ int pass_cnt ;
+ int skip_cnt ;
+ int stderr ;
 
 __attribute__((used)) static void print_summary(void)
 {
-	fprintf(stderr, "PASS:%u SKIP:%u FAIL:%u\n",
-		pass_cnt - skip_cnt, skip_cnt, error_cnt);
+ fprintf(stderr, "PASS:%u SKIP:%u FAIL:%u\n",
+  pass_cnt - skip_cnt, skip_cnt, error_cnt);
 }

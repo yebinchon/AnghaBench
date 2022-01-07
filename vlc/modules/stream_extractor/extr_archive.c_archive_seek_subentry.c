@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct archive_entry {int dummy; } ;
-struct TYPE_3__ {int b_seekable_archive; int /*<<< orphan*/ * p_archive; scalar_t__ b_seekable_source; int /*<<< orphan*/  p_obj; int /*<<< orphan*/  p_entry; } ;
-typedef  TYPE_1__ private_sys_t ;
-typedef  int /*<<< orphan*/  libarchive_t ;
+struct TYPE_3__ {int b_seekable_archive; int * p_archive; scalar_t__ b_seekable_source; int p_obj; int p_entry; } ;
+typedef TYPE_1__ private_sys_t ;
+typedef int libarchive_t ;
 
-/* Variables and functions */
-#define  ARCHIVE_EOF 131 
-#define  ARCHIVE_FATAL 130 
-#define  ARCHIVE_RETRY 129 
-#define  ARCHIVE_WARN 128 
- int /*<<< orphan*/  SEEK_CUR ; 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  archive_entry_clone (struct archive_entry*) ; 
- char* archive_entry_pathname (struct archive_entry*) ; 
- int /*<<< orphan*/  archive_error_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  archive_read_data_skip (int /*<<< orphan*/ *) ; 
- int archive_read_next_header (int /*<<< orphan*/ *,struct archive_entry**) ; 
- scalar_t__ archive_seek_data (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  archive_set_error (int /*<<< orphan*/ *,int const,char*,char const*) ; 
- int /*<<< orphan*/  msg_Warn (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (char const*,char const*) ; 
- scalar_t__ unlikely (int) ; 
+
+
+
+
+
+ int SEEK_CUR ;
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int archive_entry_clone (struct archive_entry*) ;
+ char* archive_entry_pathname (struct archive_entry*) ;
+ int archive_error_string (int *) ;
+ int archive_read_data_skip (int *) ;
+ int archive_read_next_header (int *,struct archive_entry**) ;
+ scalar_t__ archive_seek_data (int *,int ,int ) ;
+ int archive_set_error (int *,int const,char*,char const*) ;
+ int msg_Warn (int ,char*,int ) ;
+ scalar_t__ strcmp (char const*,char const*) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static int archive_seek_subentry( private_sys_t* p_sys, char const* psz_subentry )
 {
@@ -62,25 +62,25 @@ __attribute__((used)) static int archive_seek_subentry( private_sys_t* p_sys, ch
 
     switch( archive_status )
     {
-        case ARCHIVE_WARN:
+        case 128:
             msg_Warn( p_sys->p_obj,
               "libarchive: %s", archive_error_string( p_arc ) );
-            /* fall through */
-        case ARCHIVE_EOF:
-        case ARCHIVE_FATAL:
-        case ARCHIVE_RETRY:
-            archive_set_error( p_arc, ARCHIVE_FATAL,
+
+        case 131:
+        case 130:
+        case 129:
+            archive_set_error( p_arc, 130,
                 "archive does not contain >>> %s <<<", psz_subentry );
 
             return VLC_EGENERIC;
     }
 
-    /* check if seeking is supported */
+
 
     if( p_sys->b_seekable_source )
     {
         if( archive_seek_data( p_sys->p_archive, 0, SEEK_CUR ) >= 0 )
-            p_sys->b_seekable_archive = true;
+            p_sys->b_seekable_archive = 1;
     }
 
     return VLC_SUCCESS;

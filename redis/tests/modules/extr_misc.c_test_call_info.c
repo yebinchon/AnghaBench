@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RedisModuleString ;
-typedef  int /*<<< orphan*/  RedisModuleCtx ;
-typedef  int /*<<< orphan*/  RedisModuleCallReply ;
 
-/* Variables and functions */
- int REDISMODULE_OK ; 
- int /*<<< orphan*/ * RedisModule_Call (int /*<<< orphan*/ *,char*,char*,...) ; 
- int /*<<< orphan*/  RedisModule_FreeCallReply (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_ReplyWithCallReply (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_ReplyWithError (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int RedisModuleString ;
+typedef int RedisModuleCtx ;
+typedef int RedisModuleCallReply ;
+
+
+ int REDISMODULE_OK ;
+ int * RedisModule_Call (int *,char*,char*,...) ;
+ int RedisModule_FreeCallReply (int *) ;
+ int RedisModule_ReplyWithCallReply (int *,int *) ;
+ int RedisModule_ReplyWithError (int *,int ) ;
+ int errno ;
+ int strerror (int ) ;
 
 int test_call_info(RedisModuleCtx *ctx, RedisModuleString **argv, int argc)
 {

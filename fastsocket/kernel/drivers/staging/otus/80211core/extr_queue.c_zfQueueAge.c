@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zdev_t ;
-typedef  int /*<<< orphan*/  zbuf_t ;
-typedef  int u32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int zdev_t ;
+typedef int zbuf_t ;
+typedef int u32_t ;
 struct zsQueue {size_t head; size_t tail; int sizeMask; TYPE_1__* cell; } ;
-struct TYPE_2__ {int tick; int /*<<< orphan*/ * buf; } ;
+struct TYPE_2__ {int tick; int * buf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZM_LV_0 ; 
- int ZM_MS_PER_TICK ; 
- int /*<<< orphan*/  zfwBufFree (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zm_msg0_mm (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  zmw_declare_for_critical_section () ; 
- int /*<<< orphan*/  zmw_enter_critical_section (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zmw_leave_critical_section (int /*<<< orphan*/ *) ; 
+
+ int ZM_LV_0 ;
+ int ZM_MS_PER_TICK ;
+ int zfwBufFree (int *,int *,int ) ;
+ int zm_msg0_mm (int ,char*) ;
+ int zmw_declare_for_critical_section () ;
+ int zmw_enter_critical_section (int *) ;
+ int zmw_leave_critical_section (int *) ;
 
 void zfQueueAge(zdev_t* dev, struct zsQueue* q, u32_t tick, u32_t msAge)
 {
     zbuf_t* buf;
-    u32_t   buftick;
+    u32_t buftick;
     zmw_declare_for_critical_section();
 
     while (1)
     {
-        buf = NULL;
+        buf = ((void*)0);
         zmw_enter_critical_section(dev);
 
         if (q->head != q->tail)
@@ -49,7 +49,7 @@ void zfQueueAge(zdev_t* dev, struct zsQueue* q, u32_t tick, u32_t msAge)
 
         zmw_leave_critical_section(dev);
 
-        if (buf != NULL)
+        if (buf != ((void*)0))
         {
             zm_msg0_mm(ZM_LV_0, "Age frame in queue!");
             zfwBufFree(dev, buf, 0);

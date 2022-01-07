@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsUInt32Number ;
-typedef  int /*<<< orphan*/ * cmsHPROFILE ;
-typedef  int /*<<< orphan*/  cmsContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Intent ; 
- int /*<<< orphan*/ * OpenStockProfile (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OutFile ; 
- int /*<<< orphan*/  cInProf ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- size_t cmsGetPostScriptCSA (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ malloc (size_t) ; 
+
+
+
+typedef int cmsUInt32Number ;
+typedef int * cmsHPROFILE ;
+typedef int cmsContext ;
+
+
+ int Intent ;
+ int * OpenStockProfile (int ,int ) ;
+ int OutFile ;
+ int cInProf ;
+ int cmsCloseProfile (int ,int *) ;
+ size_t cmsGetPostScriptCSA (int ,int *,int ,int ,char*,int ) ;
+ int fprintf (int ,char*,char*) ;
+ int free (char*) ;
+ scalar_t__ malloc (size_t) ;
 
 __attribute__((used)) static
 void GenerateCSA(cmsContext ContextID)
 {
-	cmsHPROFILE hProfile = OpenStockProfile(ContextID, cInProf);
-	size_t n;
-	char* Buffer;
+ cmsHPROFILE hProfile = OpenStockProfile(ContextID, cInProf);
+ size_t n;
+ char* Buffer;
 
-	if (hProfile == NULL) return;
+ if (hProfile == ((void*)0)) return;
 
-	n = cmsGetPostScriptCSA(ContextID, hProfile, Intent, 0, NULL, 0);
-	if (n == 0) return;
+ n = cmsGetPostScriptCSA(ContextID, hProfile, Intent, 0, ((void*)0), 0);
+ if (n == 0) return;
 
     Buffer = (char*) malloc(n + 1);
-    if (Buffer != NULL) {
+    if (Buffer != ((void*)0)) {
 
         cmsGetPostScriptCSA(ContextID, hProfile, Intent, 0, Buffer, (cmsUInt32Number) n);
         Buffer[n] = 0;
@@ -48,5 +48,5 @@ void GenerateCSA(cmsContext ContextID)
         free(Buffer);
     }
 
-	cmsCloseProfile(ContextID, hProfile);
+ cmsCloseProfile(ContextID, hProfile);
 }

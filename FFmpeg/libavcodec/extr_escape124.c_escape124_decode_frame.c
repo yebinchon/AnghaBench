@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_22__ {int /*<<< orphan*/  blocks; } ;
+
+
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_22__ {int blocks; } ;
 struct TYPE_21__ {int width; TYPE_2__* priv_data; } ;
 struct TYPE_20__ {int* linesize; scalar_t__* data; } ;
-struct TYPE_19__ {int size; int /*<<< orphan*/  data; } ;
+struct TYPE_19__ {int size; int data; } ;
 struct TYPE_18__ {long long num_superblocks; TYPE_4__* frame; TYPE_6__* codebooks; } ;
-struct TYPE_17__ {int /*<<< orphan*/ * pixels; } ;
-typedef  TYPE_1__ SuperBlock ;
-typedef  int /*<<< orphan*/  MacroBlock ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_2__ Escape124Context ;
-typedef  TYPE_3__ AVPacket ;
-typedef  TYPE_4__ AVFrame ;
-typedef  TYPE_5__ AVCodecContext ;
+struct TYPE_17__ {int * pixels; } ;
+typedef TYPE_1__ SuperBlock ;
+typedef int MacroBlock ;
+typedef int GetBitContext ;
+typedef TYPE_2__ Escape124Context ;
+typedef TYPE_3__ AVPacket ;
+typedef TYPE_4__ AVFrame ;
+typedef TYPE_5__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_GET_BUFFER_FLAG_REF ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- unsigned int INT_MAX ; 
- int av_frame_ref (TYPE_4__*,TYPE_4__*) ; 
- int /*<<< orphan*/  av_frame_unref (TYPE_4__*) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*,...) ; 
- int av_log2 (unsigned int) ; 
- int /*<<< orphan*/  copy_superblock (int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  decode_macroblock (TYPE_2__*,int /*<<< orphan*/ *,unsigned int*,unsigned int) ; 
- unsigned int decode_skip_count (int /*<<< orphan*/ *) ; 
- int ff_get_buffer (TYPE_5__*,TYPE_4__*,int /*<<< orphan*/ ) ; 
- unsigned int get_bits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  get_bits1 (int /*<<< orphan*/ *) ; 
- int get_bits_count (int /*<<< orphan*/ *) ; 
- int get_bits_left (int /*<<< orphan*/ *) ; 
- unsigned int get_bits_long (int /*<<< orphan*/ *,int) ; 
- int init_get_bits8 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  insert_mb_into_sb (TYPE_1__*,int /*<<< orphan*/ ,unsigned int) ; 
- unsigned int* mask_matrix ; 
- TYPE_6__ unpack_codebook (int /*<<< orphan*/ *,unsigned int,unsigned int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_GET_BUFFER_FLAG_REF ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ unsigned int INT_MAX ;
+ int av_frame_ref (TYPE_4__*,TYPE_4__*) ;
+ int av_frame_unref (TYPE_4__*) ;
+ int av_freep (int *) ;
+ int av_log (TYPE_5__*,int ,char*,...) ;
+ int av_log2 (unsigned int) ;
+ int copy_superblock (int *,unsigned int,int *,int) ;
+ int decode_macroblock (TYPE_2__*,int *,unsigned int*,unsigned int) ;
+ unsigned int decode_skip_count (int *) ;
+ int ff_get_buffer (TYPE_5__*,TYPE_4__*,int ) ;
+ unsigned int get_bits (int *,int) ;
+ int get_bits1 (int *) ;
+ int get_bits_count (int *) ;
+ int get_bits_left (int *) ;
+ unsigned int get_bits_long (int *,int) ;
+ int init_get_bits8 (int *,int ,int) ;
+ int insert_mb_into_sb (TYPE_1__*,int ,unsigned int) ;
+ unsigned int* mask_matrix ;
+ TYPE_6__ unpack_codebook (int *,unsigned int,unsigned int) ;
 
 __attribute__((used)) static int escape124_decode_frame(AVCodecContext *avctx,
                                   void *data, int *got_frame,
@@ -80,20 +80,20 @@ __attribute__((used)) static int escape124_decode_frame(AVCodecContext *avctx,
     if ((ret = init_get_bits8(&gb, avpkt->data, avpkt->size)) < 0)
         return ret;
 
-    // This call also guards the potential depth reads for the
-    // codebook unpacking.
-    // Check if the amount we will read minimally is available on input.
-    // The 64 represent the immediately next 2 frame_* elements read, the 23/4320
-    // represent a lower bound of the space needed for skipped superblocks. Non
-    // skipped SBs need more space.
+
+
+
+
+
+
     if (get_bits_left(&gb) < 64 + s->num_superblocks * 23LL / 4320)
         return -1;
 
     frame_flags = get_bits_long(&gb, 32);
-    frame_size  = get_bits_long(&gb, 32);
+    frame_size = get_bits_long(&gb, 32);
 
-    // Leave last frame unchanged
-    // FIXME: Is this necessary?  I haven't seen it in any real samples
+
+
     if (!(frame_flags & 0x114) || !(frame_flags & 0x7800000)) {
         if (!s->frame->data[0])
             return AVERROR_INVALIDDATA;
@@ -111,8 +111,8 @@ __attribute__((used)) static int escape124_decode_frame(AVCodecContext *avctx,
         if (frame_flags & (1 << (17 + i))) {
             unsigned cb_depth, cb_size;
             if (i == 2) {
-                // This codebook can be cut off at places other than
-                // powers of 2, leaving some of the entries undefined.
+
+
                 cb_size = get_bits_long(&gb, 20);
                 if (!cb_size) {
                     av_log(avctx, AV_LOG_ERROR, "Invalid codebook size 0.\n");
@@ -122,13 +122,13 @@ __attribute__((used)) static int escape124_decode_frame(AVCodecContext *avctx,
             } else {
                 cb_depth = get_bits(&gb, 4);
                 if (i == 0) {
-                    // This is the most basic codebook: pow(2,depth) entries
-                    // for a depth-length key
+
+
                     cb_size = 1 << cb_depth;
                 } else {
-                    // This codebook varies per superblock
-                    // FIXME: I don't think this handles integer overflow
-                    // properly
+
+
+
                     cb_size = s->num_superblocks << cb_depth;
                 }
             }
@@ -159,8 +159,8 @@ __attribute__((used)) static int escape124_decode_frame(AVCodecContext *avctx,
         unsigned multi_mask = 0;
 
         if (skip == -1) {
-            // Note that this call will make us skip the rest of the blocks
-            // if the frame prematurely ends
+
+
             skip = decode_skip_count(&gb);
         }
 

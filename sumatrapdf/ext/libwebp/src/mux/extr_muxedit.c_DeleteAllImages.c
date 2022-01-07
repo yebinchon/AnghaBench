@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WebPMuxImage ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * MuxImageDelete (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int WebPMuxImage ;
+
+
+ int * MuxImageDelete (int *) ;
 
 __attribute__((used)) static void DeleteAllImages(WebPMuxImage** const wpi_list) {
-  while (*wpi_list != NULL) {
+  while (*wpi_list != ((void*)0)) {
     *wpi_list = MuxImageDelete(*wpi_list);
   }
 }

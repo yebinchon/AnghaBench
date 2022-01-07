@@ -1,144 +1,109 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t u32 ;
+
+
+
+
+typedef size_t u32 ;
 struct radeon_device {int dummy; } ;
-struct radeon_cs_packet {size_t idx; int opcode; int /*<<< orphan*/  count; } ;
+struct radeon_cs_packet {size_t idx; int opcode; int count; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DRM_ERROR (char*,int) ; 
- int EINVAL ; 
-#define  PACKET3_ALLOC_GDS 162 
-#define  PACKET3_ATOMIC 161 
-#define  PACKET3_ATOMIC_GDS 160 
-#define  PACKET3_CLEAR_STATE 159 
-#define  PACKET3_COND_EXEC 158 
-#define  PACKET3_COND_WRITE 157 
-#define  PACKET3_CONTEXT_CONTROL 156 
-#define  PACKET3_COPY_DATA 155 
-#define  PACKET3_COPY_DW 154 
-#define  PACKET3_CP_DMA 153 
-#define  PACKET3_DISPATCH_DIRECT 152 
-#define  PACKET3_DISPATCH_INDIRECT 151 
-#define  PACKET3_EVENT_WRITE 150 
-#define  PACKET3_EVENT_WRITE_EOP 149 
-#define  PACKET3_EVENT_WRITE_EOS 148 
-#define  PACKET3_INCREMENT_DE_COUNTER 147 
-#define  PACKET3_MEM_WRITE 146 
-#define  PACKET3_ME_WRITE 145 
-#define  PACKET3_NOP 144 
-#define  PACKET3_OCCLUSION_QUERY 143 
-#define  PACKET3_PFP_SYNC_ME 142 
-#define  PACKET3_PRED_EXEC 141 
-#define  PACKET3_SET_BASE 140 
-#define  PACKET3_SET_CONTEXT_REG 139 
-#define  PACKET3_SET_CONTEXT_REG_INDIRECT 138 
-#define  PACKET3_SET_PREDICATION 137 
-#define  PACKET3_SET_SH_REG 136 
-#define  PACKET3_SET_SH_REG_OFFSET 135 
-#define  PACKET3_STRMOUT_BUFFER_UPDATE 134 
-#define  PACKET3_SURFACE_SYNC 133 
-#define  PACKET3_WAIT_ON_AVAIL_BUFFER 132 
-#define  PACKET3_WAIT_ON_CE_COUNTER 131 
-#define  PACKET3_WAIT_REG_MEM 130 
-#define  PACKET3_WRITE_DATA 129 
-#define  PACKET3_WRITE_GDS_RAM 128 
- int si_vm_packet3_cp_dma_check (size_t*,size_t) ; 
- int /*<<< orphan*/  si_vm_reg_valid (size_t) ; 
+
+ int DRM_ERROR (char*,int) ;
+ int EINVAL ;
+ int si_vm_packet3_cp_dma_check (size_t*,size_t) ;
+ int si_vm_reg_valid (size_t) ;
 
 __attribute__((used)) static int si_vm_packet3_compute_check(struct radeon_device *rdev,
-				       u32 *ib, struct radeon_cs_packet *pkt)
+           u32 *ib, struct radeon_cs_packet *pkt)
 {
-	int r;
-	u32 idx = pkt->idx + 1;
-	u32 idx_value = ib[idx];
-	u32 start_reg, reg, i;
+ int r;
+ u32 idx = pkt->idx + 1;
+ u32 idx_value = ib[idx];
+ u32 start_reg, reg, i;
 
-	switch (pkt->opcode) {
-	case PACKET3_NOP:
-	case PACKET3_SET_BASE:
-	case PACKET3_CLEAR_STATE:
-	case PACKET3_DISPATCH_DIRECT:
-	case PACKET3_DISPATCH_INDIRECT:
-	case PACKET3_ALLOC_GDS:
-	case PACKET3_WRITE_GDS_RAM:
-	case PACKET3_ATOMIC_GDS:
-	case PACKET3_ATOMIC:
-	case PACKET3_OCCLUSION_QUERY:
-	case PACKET3_SET_PREDICATION:
-	case PACKET3_COND_EXEC:
-	case PACKET3_PRED_EXEC:
-	case PACKET3_CONTEXT_CONTROL:
-	case PACKET3_STRMOUT_BUFFER_UPDATE:
-	case PACKET3_WAIT_REG_MEM:
-	case PACKET3_MEM_WRITE:
-	case PACKET3_PFP_SYNC_ME:
-	case PACKET3_SURFACE_SYNC:
-	case PACKET3_EVENT_WRITE:
-	case PACKET3_EVENT_WRITE_EOP:
-	case PACKET3_EVENT_WRITE_EOS:
-	case PACKET3_SET_CONTEXT_REG:
-	case PACKET3_SET_CONTEXT_REG_INDIRECT:
-	case PACKET3_SET_SH_REG:
-	case PACKET3_SET_SH_REG_OFFSET:
-	case PACKET3_INCREMENT_DE_COUNTER:
-	case PACKET3_WAIT_ON_CE_COUNTER:
-	case PACKET3_WAIT_ON_AVAIL_BUFFER:
-	case PACKET3_ME_WRITE:
-		break;
-	case PACKET3_COPY_DATA:
-		if ((idx_value & 0xf00) == 0) {
-			reg = ib[idx + 3] * 4;
-			if (!si_vm_reg_valid(reg))
-				return -EINVAL;
-		}
-		break;
-	case PACKET3_WRITE_DATA:
-		if ((idx_value & 0xf00) == 0) {
-			start_reg = ib[idx + 1] * 4;
-			if (idx_value & 0x10000) {
-				if (!si_vm_reg_valid(start_reg))
-					return -EINVAL;
-			} else {
-				for (i = 0; i < (pkt->count - 2); i++) {
-					reg = start_reg + (4 * i);
-					if (!si_vm_reg_valid(reg))
-						return -EINVAL;
-				}
-			}
-		}
-		break;
-	case PACKET3_COND_WRITE:
-		if (idx_value & 0x100) {
-			reg = ib[idx + 5] * 4;
-			if (!si_vm_reg_valid(reg))
-				return -EINVAL;
-		}
-		break;
-	case PACKET3_COPY_DW:
-		if (idx_value & 0x2) {
-			reg = ib[idx + 3] * 4;
-			if (!si_vm_reg_valid(reg))
-				return -EINVAL;
-		}
-		break;
-	case PACKET3_CP_DMA:
-		r = si_vm_packet3_cp_dma_check(ib, idx);
-		if (r)
-			return r;
-		break;
-	default:
-		DRM_ERROR("Invalid Compute packet3: 0x%x\n", pkt->opcode);
-		return -EINVAL;
-	}
-	return 0;
+ switch (pkt->opcode) {
+ case 144:
+ case 140:
+ case 159:
+ case 152:
+ case 151:
+ case 162:
+ case 128:
+ case 160:
+ case 161:
+ case 143:
+ case 137:
+ case 158:
+ case 141:
+ case 156:
+ case 134:
+ case 130:
+ case 146:
+ case 142:
+ case 133:
+ case 150:
+ case 149:
+ case 148:
+ case 139:
+ case 138:
+ case 136:
+ case 135:
+ case 147:
+ case 131:
+ case 132:
+ case 145:
+  break;
+ case 155:
+  if ((idx_value & 0xf00) == 0) {
+   reg = ib[idx + 3] * 4;
+   if (!si_vm_reg_valid(reg))
+    return -EINVAL;
+  }
+  break;
+ case 129:
+  if ((idx_value & 0xf00) == 0) {
+   start_reg = ib[idx + 1] * 4;
+   if (idx_value & 0x10000) {
+    if (!si_vm_reg_valid(start_reg))
+     return -EINVAL;
+   } else {
+    for (i = 0; i < (pkt->count - 2); i++) {
+     reg = start_reg + (4 * i);
+     if (!si_vm_reg_valid(reg))
+      return -EINVAL;
+    }
+   }
+  }
+  break;
+ case 157:
+  if (idx_value & 0x100) {
+   reg = ib[idx + 5] * 4;
+   if (!si_vm_reg_valid(reg))
+    return -EINVAL;
+  }
+  break;
+ case 154:
+  if (idx_value & 0x2) {
+   reg = ib[idx + 3] * 4;
+   if (!si_vm_reg_valid(reg))
+    return -EINVAL;
+  }
+  break;
+ case 153:
+  r = si_vm_packet3_cp_dma_check(ib, idx);
+  if (r)
+   return r;
+  break;
+ default:
+  DRM_ERROR("Invalid Compute packet3: 0x%x\n", pkt->opcode);
+  return -EINVAL;
+ }
+ return 0;
 }

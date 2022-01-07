@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint64_t ;
-typedef  int uint32_t ;
-typedef  enum patch_error { ____Placeholder_patch_error } patch_error ;
 
-/* Variables and functions */
- int PATCH_PATCH_INVALID ; 
- int PATCH_SUCCESS ; 
- int PATCH_TARGET_ALLOC_FAILED ; 
- int /*<<< orphan*/  free (int*) ; 
- scalar_t__ malloc (size_t) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef enum patch_error { ____Placeholder_patch_error } patch_error ;
+
+
+ int PATCH_PATCH_INVALID ;
+ int PATCH_SUCCESS ;
+ int PATCH_TARGET_ALLOC_FAILED ;
+ int free (int*) ;
+ scalar_t__ malloc (size_t) ;
 
 __attribute__((used)) static enum patch_error ips_alloc_targetdata(
       const uint8_t *patchdata, uint64_t patchlen,
@@ -39,11 +39,11 @@ __attribute__((used)) static enum patch_error ips_alloc_targetdata(
       if (offset > patchlen - 3)
          break;
 
-      address  = patchdata[offset++] << 16;
+      address = patchdata[offset++] << 16;
       address |= patchdata[offset++] << 8;
       address |= patchdata[offset++] << 0;
 
-      if (address == 0x454f46) /* EOF */
+      if (address == 0x454f46)
       {
          if (offset == patchlen)
          {
@@ -72,10 +72,10 @@ __attribute__((used)) static enum patch_error ips_alloc_targetdata(
       if (offset > patchlen - 2)
          break;
 
-      length  = patchdata[offset++] << 8;
+      length = patchdata[offset++] << 8;
       length |= patchdata[offset++] << 0;
 
-      if (length) /* Copy */
+      if (length)
       {
          if (offset > patchlen - length)
             break;
@@ -86,15 +86,15 @@ __attribute__((used)) static enum patch_error ips_alloc_targetdata(
             offset++;
          }
       }
-      else /* RLE */
+      else
       {
          if (offset > patchlen - 3)
             break;
 
-         length  = patchdata[offset++] << 8;
+         length = patchdata[offset++] << 8;
          length |= patchdata[offset++] << 0;
 
-         if (length == 0) /* Illegal */
+         if (length == 0)
             break;
 
          while (length--)

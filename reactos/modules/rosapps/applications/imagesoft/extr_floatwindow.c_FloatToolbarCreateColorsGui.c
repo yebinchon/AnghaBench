@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_1__* fltColors; } ;
 struct TYPE_7__ {double right; int bottom; } ;
-struct TYPE_6__ {int /*<<< orphan*/  hSelf; } ;
-typedef  TYPE_2__ RECT ;
-typedef  TYPE_3__* PMAIN_WND_INFO ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/ * HWND ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/ * HBITMAP ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct TYPE_6__ {int hSelf; } ;
+typedef TYPE_2__ RECT ;
+typedef TYPE_3__* PMAIN_WND_INFO ;
+typedef int LPARAM ;
+typedef int * HWND ;
+typedef int HDC ;
+typedef int * HBITMAP ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BM_SETIMAGE ; 
- int BS_BITMAP ; 
- int CBS_DROPDOWN ; 
- int /*<<< orphan*/  CB_ADDSTRING ; 
- int /*<<< orphan*/  CB_SETCURSEL ; 
- int /*<<< orphan*/ * CreateWindowEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FloatWindowPaintColorPicker (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FloatWindowPaintHueSlider (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetClientRect (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDB_COLORSMORE ; 
- int /*<<< orphan*/  IMAGE_BITMAP ; 
- int LR_LOADMAP3DCOLORS ; 
- int LR_LOADTRANSPARENT ; 
- scalar_t__ LoadImage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  MAKEINTRESOURCE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MakeFlatCombo (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SendMessage (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  TextOut (int /*<<< orphan*/ ,int,int,scalar_t__,int) ; 
- int /*<<< orphan*/  WC_BUTTON ; 
- int /*<<< orphan*/  WC_COMBOBOX ; 
- int /*<<< orphan*/  WC_STATIC ; 
- int WS_CHILD ; 
- int /*<<< orphan*/  WS_EX_STATICEDGE ; 
- int WS_VISIBLE ; 
- scalar_t__ _T (char*) ; 
- int /*<<< orphan*/  hInstance ; 
+
+ int BM_SETIMAGE ;
+ int BS_BITMAP ;
+ int CBS_DROPDOWN ;
+ int CB_ADDSTRING ;
+ int CB_SETCURSEL ;
+ int * CreateWindowEx (int ,int ,int *,int,int,int,int,int,int ,int *,int ,int *) ;
+ int FALSE ;
+ int FloatWindowPaintColorPicker (int *) ;
+ int FloatWindowPaintHueSlider (int *) ;
+ int GetClientRect (int ,TYPE_2__*) ;
+ int GetDC (int *) ;
+ int IDB_COLORSMORE ;
+ int IMAGE_BITMAP ;
+ int LR_LOADMAP3DCOLORS ;
+ int LR_LOADTRANSPARENT ;
+ scalar_t__ LoadImage (int ,int ,int ,int,int,int) ;
+ int MAKEINTRESOURCE (int ) ;
+ int MakeFlatCombo (int *) ;
+ int ReleaseDC (int *,int ) ;
+ int SendMessage (int *,int ,int ,int ) ;
+ int TRUE ;
+ int TextOut (int ,int,int,scalar_t__,int) ;
+ int WC_BUTTON ;
+ int WC_COMBOBOX ;
+ int WC_STATIC ;
+ int WS_CHILD ;
+ int WS_EX_STATICEDGE ;
+ int WS_VISIBLE ;
+ scalar_t__ _T (char*) ;
+ int hInstance ;
 
 BOOL
 FloatToolbarCreateColorsGui(PMAIN_WND_INFO Info)
@@ -71,49 +71,49 @@ FloatToolbarCreateColorsGui(PMAIN_WND_INFO Info)
 
     hColorPicker = CreateWindowEx(0,
                                   WC_STATIC,
-                                  NULL,
+                                  ((void*)0),
                                   WS_CHILD | WS_VISIBLE | CBS_DROPDOWN,
                                   2,
                                   2,
                                   (int) (rect.right * 0.65),
                                   rect.bottom - 2,
                                   Info->fltColors->hSelf,
-                                  NULL,
+                                  ((void*)0),
                                   hInstance,
-                                  NULL);
-    if (hColorPicker == NULL)
+                                  ((void*)0));
+    if (hColorPicker == ((void*)0))
         return FALSE;
 
     hHueSlider = CreateWindowEx(0,
                                 WC_STATIC,
-                                NULL,
+                                ((void*)0),
                                 WS_CHILD | WS_VISIBLE | CBS_DROPDOWN,
                                 145,
                                 35,
                                 25,
                                 135,
                                 Info->fltColors->hSelf,
-                                NULL,
+                                ((void*)0),
                                 hInstance,
-                                NULL);
-    if (hHueSlider == NULL)
+                                ((void*)0));
+    if (hHueSlider == ((void*)0))
         return FALSE;
 
     hMouseButton = CreateWindowEx(0,
                                   WC_COMBOBOX,
-                                  NULL,
+                                  ((void*)0),
                                   WS_CHILD | WS_VISIBLE | CBS_DROPDOWN,
                                   118, 5, 75, 25,
                                   Info->fltColors->hSelf,
-                                  NULL,
+                                  ((void*)0),
                                   hInstance,
-                                  NULL);
-    if (hMouseButton == NULL)
+                                  ((void*)0));
+    if (hMouseButton == ((void*)0))
         return FALSE;
 
     MakeFlatCombo(hMouseButton);
 
-    /* temp, just testing */
+
     SendMessage(hMouseButton, CB_ADDSTRING, 0, (LPARAM)_T("Primary"));
     SendMessage(hMouseButton, CB_ADDSTRING, 0, (LPARAM)_T("Secondary"));
     SendMessage(hMouseButton, CB_SETCURSEL, 0, 0);
@@ -121,16 +121,16 @@ FloatToolbarCreateColorsGui(PMAIN_WND_INFO Info)
 
     hMore = CreateWindowEx(WS_EX_STATICEDGE,
                            WC_BUTTON,
-                           NULL,
+                           ((void*)0),
                            WS_CHILD | WS_VISIBLE | BS_BITMAP,
                            rect.right - 15,
                            rect.bottom - 15,
                            15, 15,
                            Info->fltColors->hSelf,
-                           NULL,
+                           ((void*)0),
                            hInstance,
-                           NULL);
-    if (hMore == NULL)
+                           ((void*)0));
+    if (hMore == ((void*)0))
         return FALSE;
 
     hMoreBitmap = (HBITMAP)LoadImage(hInstance,
@@ -139,7 +139,7 @@ FloatToolbarCreateColorsGui(PMAIN_WND_INFO Info)
                                      12,
                                      11,
                                      LR_LOADTRANSPARENT | LR_LOADMAP3DCOLORS);
-    if (hMoreBitmap != NULL)
+    if (hMoreBitmap != ((void*)0))
     {
         SendMessage(hMore,
                     BM_SETIMAGE,
@@ -148,11 +148,11 @@ FloatToolbarCreateColorsGui(PMAIN_WND_INFO Info)
     }
 
 
-    /* temp functions for playing about with possible layouts */
+
     FloatWindowPaintHueSlider(hHueSlider);
     FloatWindowPaintColorPicker(hColorPicker);
 
-    if (hColorPicker != NULL)
+    if (hColorPicker != ((void*)0))
     {
         HDC hDc = GetDC(hColorPicker);
         TextOut(hDc, 8, 75, _T("Possible layout?"), 16);

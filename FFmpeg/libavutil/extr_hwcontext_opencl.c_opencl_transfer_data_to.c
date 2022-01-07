@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cl_mem ;
-typedef  scalar_t__ cl_int ;
-typedef  int /*<<< orphan*/  cl_image_format ;
+
+
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int cl_mem ;
+typedef scalar_t__ cl_int ;
+typedef int cl_image_format ;
 struct TYPE_13__ {size_t image_width; size_t image_height; } ;
-typedef  TYPE_2__ cl_image_desc ;
-typedef  int /*<<< orphan*/  cl_event ;
-struct TYPE_16__ {scalar_t__ format; scalar_t__* data; int /*<<< orphan*/ * linesize; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
+typedef TYPE_2__ cl_image_desc ;
+typedef int cl_event ;
+struct TYPE_16__ {scalar_t__ format; scalar_t__* data; int * linesize; int height; int width; } ;
 struct TYPE_15__ {scalar_t__ sw_format; TYPE_1__* internal; } ;
-struct TYPE_14__ {int /*<<< orphan*/  command_queue; } ;
+struct TYPE_14__ {int command_queue; } ;
 struct TYPE_12__ {TYPE_3__* priv; } ;
-typedef  TYPE_3__ OpenCLFramesContext ;
-typedef  TYPE_4__ AVHWFramesContext ;
-typedef  TYPE_5__ AVFrame ;
+typedef TYPE_3__ OpenCLFramesContext ;
+typedef TYPE_4__ AVHWFramesContext ;
+typedef TYPE_5__ AVFrame ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int AV_NUM_DATA_POINTERS ; 
- int /*<<< orphan*/  CL_FALSE ; 
- scalar_t__ CL_SUCCESS ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  ENOENT ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,int,...) ; 
- scalar_t__ clEnqueueWriteImage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t*,size_t*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int opencl_get_plane_format (scalar_t__,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  opencl_wait_events (TYPE_4__*,int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int AV_NUM_DATA_POINTERS ;
+ int CL_FALSE ;
+ scalar_t__ CL_SUCCESS ;
+ int EINVAL ;
+ int EIO ;
+ int ENOENT ;
+ int av_log (TYPE_4__*,int ,char*,int,...) ;
+ scalar_t__ clEnqueueWriteImage (int ,int ,int ,size_t*,size_t*,int ,int ,scalar_t__,int ,int *,int *) ;
+ int opencl_get_plane_format (scalar_t__,int,int ,int ,int *,TYPE_2__*) ;
+ int opencl_wait_events (TYPE_4__*,int *,int) ;
 
 __attribute__((used)) static int opencl_transfer_data_to(AVHWFramesContext *hwfc,
                                    AVFrame *dst, const AVFrame *src)
@@ -84,7 +84,7 @@ __attribute__((used)) static int opencl_transfer_data_to(AVHWFramesContext *hwfc
                                   CL_FALSE, origin, region,
                                   src->linesize[p], 0,
                                   src->data[p],
-                                  0, NULL, &events[p]);
+                                  0, ((void*)0), &events[p]);
         if (cle != CL_SUCCESS) {
             av_log(hwfc, AV_LOG_ERROR, "Failed to enqueue write of "
                    "OpenCL image plane %d: %d.\n", p, cle);

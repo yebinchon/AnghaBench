@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  compute_freq_for_midi_note (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  play_note (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int compute_freq_for_midi_note (int ) ;
+ int play_note (int ,int) ;
 
 void process_audio_noteon(uint8_t note) { play_note(compute_freq_for_midi_note(note), 0xF); }

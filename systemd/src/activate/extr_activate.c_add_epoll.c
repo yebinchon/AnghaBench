@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int fd; } ;
-struct epoll_event {TYPE_1__ data; int /*<<< orphan*/  events; } ;
+struct epoll_event {TYPE_1__ data; int events; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EPOLLIN ; 
- int /*<<< orphan*/  EPOLL_CTL_ADD ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ epoll_ctl (int,int /*<<< orphan*/ ,int,struct epoll_event*) ; 
- int /*<<< orphan*/  errno ; 
- int log_error_errno (int /*<<< orphan*/ ,char*,int,int) ; 
+
+ int EPOLLIN ;
+ int EPOLL_CTL_ADD ;
+ int assert (int) ;
+ scalar_t__ epoll_ctl (int,int ,int,struct epoll_event*) ;
+ int errno ;
+ int log_error_errno (int ,char*,int,int) ;
 
 __attribute__((used)) static int add_epoll(int epoll_fd, int fd) {
         struct epoll_event ev = {

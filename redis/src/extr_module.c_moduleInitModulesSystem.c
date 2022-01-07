@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * user; int /*<<< orphan*/  flags; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * module_blocked_pipe; void* loadmodule_queue; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLIENT_MODULE ; 
- int /*<<< orphan*/  LL_WARNING ; 
- void* RedisModule_EventListeners ; 
- int /*<<< orphan*/  Timers ; 
- int /*<<< orphan*/  anetNonBlock (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_2__* createClient (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dictCreate (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  exit (int) ; 
- void* listCreate () ; 
- void* moduleCommandFilters ; 
- TYPE_2__* moduleFreeContextReusedClient ; 
- int /*<<< orphan*/  moduleGIL ; 
- void* moduleKeyspaceSubscribers ; 
- int /*<<< orphan*/  moduleRegisterCoreAPI () ; 
- void* moduleUnblockedClients ; 
- int /*<<< orphan*/  modules ; 
- int /*<<< orphan*/  modulesDictType ; 
- int pipe (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  raxNew () ; 
- TYPE_1__ server ; 
- int /*<<< orphan*/  serverLog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * user; int flags; } ;
+struct TYPE_4__ {int * module_blocked_pipe; void* loadmodule_queue; } ;
+
+
+ int CLIENT_MODULE ;
+ int LL_WARNING ;
+ void* RedisModule_EventListeners ;
+ int Timers ;
+ int anetNonBlock (int *,int ) ;
+ TYPE_2__* createClient (int *) ;
+ int dictCreate (int *,int *) ;
+ int errno ;
+ int exit (int) ;
+ void* listCreate () ;
+ void* moduleCommandFilters ;
+ TYPE_2__* moduleFreeContextReusedClient ;
+ int moduleGIL ;
+ void* moduleKeyspaceSubscribers ;
+ int moduleRegisterCoreAPI () ;
+ void* moduleUnblockedClients ;
+ int modules ;
+ int modulesDictType ;
+ int pipe (int *) ;
+ int pthread_mutex_lock (int *) ;
+ int raxNew () ;
+ TYPE_1__ server ;
+ int serverLog (int ,char*,int ) ;
+ int strerror (int ) ;
 
 void moduleInitModulesSystem(void) {
     moduleUnblockedClients = listCreate();
     server.loadmodule_queue = listCreate();
-    modules = dictCreate(&modulesDictType,NULL);
+    modules = dictCreate(&modulesDictType,((void*)0));
 
-    /* Set up the keyspace notification susbscriber list and static client */
+
     moduleKeyspaceSubscribers = listCreate();
-    moduleFreeContextReusedClient = createClient(NULL);
+    moduleFreeContextReusedClient = createClient(((void*)0));
     moduleFreeContextReusedClient->flags |= CLIENT_MODULE;
-    moduleFreeContextReusedClient->user = NULL; /* root user. */
+    moduleFreeContextReusedClient->user = ((void*)0);
 
-    /* Set up filter list */
+
     moduleCommandFilters = listCreate();
 
     moduleRegisterCoreAPI();
@@ -62,18 +62,18 @@ void moduleInitModulesSystem(void) {
             strerror(errno));
         exit(1);
     }
-    /* Make the pipe non blocking. This is just a best effort aware mechanism
-     * and we do not want to block not in the read nor in the write half. */
-    anetNonBlock(NULL,server.module_blocked_pipe[0]);
-    anetNonBlock(NULL,server.module_blocked_pipe[1]);
 
-    /* Create the timers radix tree. */
+
+    anetNonBlock(((void*)0),server.module_blocked_pipe[0]);
+    anetNonBlock(((void*)0),server.module_blocked_pipe[1]);
+
+
     Timers = raxNew();
 
-    /* Setup the event listeners data structures. */
+
     RedisModule_EventListeners = listCreate();
 
-    /* Our thread-safe contexts GIL must start with already locked:
-     * it is just unlocked when it's safe. */
+
+
     pthread_mutex_lock(&moduleGIL);
 }

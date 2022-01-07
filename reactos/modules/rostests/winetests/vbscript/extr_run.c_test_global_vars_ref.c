@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  IActiveScriptParse ;
-typedef  int /*<<< orphan*/  IActiveScript ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ActiveScriptSite ; 
- scalar_t__ FAILED (scalar_t__) ; 
- scalar_t__ IActiveScriptParse_InitNew (int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScriptParse_ParseScriptText (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScriptParse_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScript_AddNamedItem (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ IActiveScript_Close (int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScript_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IActiveScript_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScript_SetScriptSite (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScript_SetScriptState (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_IActiveScriptParse ; 
- int SCRIPTITEM_GLOBALMEMBERS ; 
- int SCRIPTITEM_ISSOURCE ; 
- int SCRIPTITEM_ISVISIBLE ; 
- int /*<<< orphan*/  SCRIPTSTATE_STARTED ; 
- int /*<<< orphan*/  SCRIPTSTATE_UNINITIALIZED ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  a2bstr (char*) ; 
- int /*<<< orphan*/ * create_script () ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ refobj_ref ; 
- int /*<<< orphan*/  testW ; 
+
+
+
+typedef scalar_t__ LONG ;
+typedef int IActiveScriptParse ;
+typedef int IActiveScript ;
+typedef scalar_t__ HRESULT ;
+typedef int BSTR ;
+typedef scalar_t__ BOOL ;
+
+
+ int ActiveScriptSite ;
+ scalar_t__ FAILED (scalar_t__) ;
+ scalar_t__ IActiveScriptParse_InitNew (int *) ;
+ scalar_t__ IActiveScriptParse_ParseScriptText (int *,int ,int *,int *,int *,int ,int ,int ,int *,int *) ;
+ scalar_t__ IActiveScriptParse_Release (int *) ;
+ scalar_t__ IActiveScript_AddNamedItem (int *,int ,int) ;
+ scalar_t__ IActiveScript_Close (int *) ;
+ scalar_t__ IActiveScript_QueryInterface (int *,int *,void**) ;
+ int IActiveScript_Release (int *) ;
+ scalar_t__ IActiveScript_SetScriptSite (int *,int *) ;
+ scalar_t__ IActiveScript_SetScriptState (int *,int ) ;
+ int IID_IActiveScriptParse ;
+ int SCRIPTITEM_GLOBALMEMBERS ;
+ int SCRIPTITEM_ISSOURCE ;
+ int SCRIPTITEM_ISVISIBLE ;
+ int SCRIPTSTATE_STARTED ;
+ int SCRIPTSTATE_UNINITIALIZED ;
+ scalar_t__ S_OK ;
+ int SysFreeString (int ) ;
+ int a2bstr (char*) ;
+ int * create_script () ;
+ int ok (int,char*,...) ;
+ scalar_t__ refobj_ref ;
+ int testW ;
 
 __attribute__((used)) static HRESULT test_global_vars_ref(BOOL use_close)
 {
@@ -78,7 +78,7 @@ __attribute__((used)) static HRESULT test_global_vars_ref(BOOL use_close)
     refobj_ref = 0;
 
     script_str = a2bstr("Dim x\nset x = RefObj\n");
-    hres = IActiveScriptParse_ParseScriptText(parser, script_str, NULL, NULL, NULL, 0, 0, 0, NULL, NULL);
+    hres = IActiveScriptParse_ParseScriptText(parser, script_str, ((void*)0), ((void*)0), ((void*)0), 0, 0, 0, ((void*)0), ((void*)0));
     SysFreeString(script_str);
 
     ok(refobj_ref, "refobj_ref = 0\n");

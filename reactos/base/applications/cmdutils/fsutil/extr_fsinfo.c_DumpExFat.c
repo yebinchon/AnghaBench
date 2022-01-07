@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void* PVOID ;
-typedef  void* PFILESYSTEM_STATISTICS ;
-typedef  void* PEXFAT_STATISTICS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateHits ; 
- int /*<<< orphan*/  DUMP_VALUE (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DumpBase (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FailedCreates ; 
- int /*<<< orphan*/  NonCachedDiskReads ; 
- int /*<<< orphan*/  NonCachedDiskWrites ; 
- int /*<<< orphan*/  NonCachedReadBytes ; 
- int /*<<< orphan*/  NonCachedReads ; 
- int /*<<< orphan*/  NonCachedWriteBytes ; 
- int /*<<< orphan*/  NonCachedWrites ; 
- int /*<<< orphan*/  SuccessfulCreates ; 
- int /*<<< orphan*/  _T (char*) ; 
+
+
+
+typedef void* PVOID ;
+typedef void* PFILESYSTEM_STATISTICS ;
+typedef void* PEXFAT_STATISTICS ;
+
+
+ int CreateHits ;
+ int DUMP_VALUE (void*,int ) ;
+ int DumpBase (void*,int ) ;
+ int FailedCreates ;
+ int NonCachedDiskReads ;
+ int NonCachedDiskWrites ;
+ int NonCachedReadBytes ;
+ int NonCachedReads ;
+ int NonCachedWriteBytes ;
+ int NonCachedWrites ;
+ int SuccessfulCreates ;
+ int _T (char*) ;
 
 __attribute__((used)) static void
 DumpExFat(PVOID Statistics, PVOID Specific)
@@ -37,10 +37,10 @@ DumpExFat(PVOID Statistics, PVOID Specific)
     Base = Statistics;
     ExFat = Specific;
 
-    /* First, display the generic stats */
+
     DumpBase(Base, _T("EXFAT"));
 
-    /* Then, display the EXFAT specific ones */
+
     DUMP_VALUE(ExFat, CreateHits);
     DUMP_VALUE(ExFat, SuccessfulCreates);
     DUMP_VALUE(ExFat, FailedCreates);

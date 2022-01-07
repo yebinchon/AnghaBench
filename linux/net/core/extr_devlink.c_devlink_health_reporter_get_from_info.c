@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct genl_info {int /*<<< orphan*/  attrs; } ;
+
+
+
+
+struct genl_info {int attrs; } ;
 struct devlink_health_reporter {int dummy; } ;
 struct devlink {int dummy; } ;
 
-/* Variables and functions */
- struct devlink_health_reporter* devlink_health_reporter_get_from_attrs (struct devlink*,int /*<<< orphan*/ ) ; 
+
+ struct devlink_health_reporter* devlink_health_reporter_get_from_attrs (struct devlink*,int ) ;
 
 __attribute__((used)) static struct devlink_health_reporter *
 devlink_health_reporter_get_from_info(struct devlink *devlink,
-				      struct genl_info *info)
+          struct genl_info *info)
 {
-	return devlink_health_reporter_get_from_attrs(devlink, info->attrs);
+ return devlink_health_reporter_get_from_attrs(devlink, info->attrs);
 }

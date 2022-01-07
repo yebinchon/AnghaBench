@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
-typedef  int /*<<< orphan*/  AVDictionary ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- char* av_asprintf (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  av_dict_set (int /*<<< orphan*/ **,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_free (char*) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int avio_r8 (int /*<<< orphan*/ *) ; 
- int avio_read (int /*<<< orphan*/ *,char*,int) ; 
- scalar_t__ decode_str (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,char**,int*) ; 
+
+
+
+typedef char uint8_t ;
+typedef int AVIOContext ;
+typedef int AVFormatContext ;
+typedef int AVDictionary ;
+
+
+ int AV_LOG_ERROR ;
+ char* av_asprintf (char*,char*,char*,char*) ;
+ int av_dict_set (int **,char*,char*,int ) ;
+ int av_free (char*) ;
+ int av_log (int *,int ,char*) ;
+ int avio_r8 (int *) ;
+ int avio_read (int *,char*,int) ;
+ scalar_t__ decode_str (int *,int *,int,char**,int*) ;
 
 __attribute__((used)) static void read_uslt(AVFormatContext *s, AVIOContext *pb, int taglen,
                       AVDictionary **metadata)
 {
     uint8_t lang[4];
-    uint8_t *descriptor = NULL; // 'Content descriptor'
-    uint8_t *text = NULL;
-    char *key = NULL;
+    uint8_t *descriptor = ((void*)0);
+    uint8_t *text = ((void*)0);
+    char *key = ((void*)0);
     int encoding;
     int ok = 0;
 
@@ -52,7 +52,7 @@ __attribute__((used)) static void read_uslt(AVFormatContext *s, AVIOContext *pb,
     if (decode_str(s, pb, encoding, &text, &taglen) < 0)
         goto error;
 
-    // FFmpeg does not support hierarchical metadata, so concatenate the keys.
+
     key = av_asprintf("lyrics-%s%s%s", descriptor[0] ? (char *)descriptor : "",
                                        descriptor[0] ? "-" : "",
                                        lang);

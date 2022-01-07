@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  MSG ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMPARE_CACHE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ClipTestProc ; 
- int /*<<< orphan*/  ClipThread ; 
- int /*<<< orphan*/  CloseClipboard () ; 
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateThread (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CreateWindowW (char*,char*,int /*<<< orphan*/ ,int,int,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CritSect ; 
- int /*<<< orphan*/  EMPTY_CACHE () ; 
- int /*<<< orphan*/  EmptyClipboard () ; 
- int /*<<< orphan*/  EmptyClipboard_chain ; 
- int /*<<< orphan*/  FlushMessages () ; 
- scalar_t__ GetMessage (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InitializeCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OpenClipboard (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RecordAndDispatch (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegisterSimpleClass (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  WS_OVERLAPPEDWINDOW ; 
- int /*<<< orphan*/  empty_chain ; 
- int /*<<< orphan*/ * hWnd1 ; 
- int /*<<< orphan*/ * hWnd2 ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int MSG ;
+typedef int HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int COMPARE_CACHE (int ) ;
+ int ClipTestProc ;
+ int ClipThread ;
+ int CloseClipboard () ;
+ int CloseHandle (int ) ;
+ int CreateThread (int *,int ,int ,int *,int ,int *) ;
+ int * CreateWindowW (char*,char*,int ,int,int,int,int,int *,int *,int ,int *) ;
+ int CritSect ;
+ int EMPTY_CACHE () ;
+ int EmptyClipboard () ;
+ int EmptyClipboard_chain ;
+ int FlushMessages () ;
+ scalar_t__ GetMessage (int *,int ,int ,int ) ;
+ int InitializeCriticalSection (int *) ;
+ int OpenClipboard (int *) ;
+ int RecordAndDispatch (int *) ;
+ int RegisterSimpleClass (int ,char*) ;
+ int WS_OVERLAPPEDWINDOW ;
+ int empty_chain ;
+ int * hWnd1 ;
+ int * hWnd2 ;
+ int ok (int ,char*) ;
 
 void TestMessages()
 {
@@ -46,19 +46,19 @@ void TestMessages()
     BOOL ret;
     MSG msg;
 
-    /* Initialize the test */
+
     InitializeCriticalSection(&CritSect);
 
     RegisterSimpleClass(ClipTestProc, L"clipstest");
 
-    hWnd2 = NULL;
+    hWnd2 = ((void*)0);
     hWnd1 = CreateWindowW(L"clipstest", L"clipstest", WS_OVERLAPPEDWINDOW,
-                        20, 20, 300, 300, NULL, NULL, 0, NULL);
-    ok (hWnd1 != NULL, "CreateWindowW failed\n");
+                        20, 20, 300, 300, ((void*)0), ((void*)0), 0, ((void*)0));
+    ok (hWnd1 != ((void*)0), "CreateWindowW failed\n");
 
     EMPTY_CACHE();
 
-    /* Get ownership of the clipboard and record the messages we get */
+
     ret = OpenClipboard(hWnd1);
     ok (ret, "OpenClipboard failed\n");
 
@@ -68,12 +68,12 @@ void TestMessages()
     ret = CloseClipboard();
     ok (ret, "CloseClipboard failed\n");
 
-    /* Record posted messages */
+
     FlushMessages();
     COMPARE_CACHE(empty_chain);
 
-    /* Create the child thread and record messages till we get the WM_QUIT */
-    hThread = CreateThread(NULL, 0, ClipThread, NULL, 0, &dwThread);
+
+    hThread = CreateThread(((void*)0), 0, ClipThread, ((void*)0), 0, &dwThread);
 
     while (GetMessage(&msg, 0, 0 ,0))
         RecordAndDispatch(&msg);

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Copy (char*,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Free (char*) ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  SearchStrEx (char*,char*,int /*<<< orphan*/ ,int) ; 
- char* ZeroMalloc (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT ;
+
+
+ int Copy (char*,void*,int ) ;
+ int Free (char*) ;
+ int INFINITE ;
+ int SearchStrEx (char*,char*,int ,int) ;
+ char* ZeroMalloc (int ) ;
 
 UINT SearchAsciiInBinary(void *data, UINT size, char *str, bool case_sensitive)
 {
-	UINT ret = INFINITE;
-	char *tmp;
-	// Validate arguments
-	if (data == NULL || size == 0 || str == NULL)
-	{
-		return INFINITE;
-	}
+ UINT ret = INFINITE;
+ char *tmp;
 
-	tmp = ZeroMalloc(size + 1);
-	Copy(tmp, data, size);
+ if (data == ((void*)0) || size == 0 || str == ((void*)0))
+ {
+  return INFINITE;
+ }
 
-	ret = SearchStrEx(tmp, str, 0, case_sensitive);
+ tmp = ZeroMalloc(size + 1);
+ Copy(tmp, data, size);
 
-	Free(tmp);
+ ret = SearchStrEx(tmp, str, 0, case_sensitive);
 
-	return ret;
+ Free(tmp);
+
+ return ret;
 }

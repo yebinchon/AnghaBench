@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct pl_plane_data {scalar_t__ height; uintptr_t buf_offset; scalar_t__ pixels; struct pl_buf const* buf; int /*<<< orphan*/  row_stride; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct pl_plane_data {scalar_t__ height; uintptr_t buf_offset; scalar_t__ pixels; struct pl_buf const* buf; int row_stride; } ;
 struct TYPE_5__ {scalar_t__ size; } ;
 struct pl_buf {int data; TYPE_1__ params; } ;
-typedef  uintptr_t ptrdiff_t ;
-struct TYPE_7__ {int i_planes; TYPE_2__* p; int /*<<< orphan*/  format; } ;
-typedef  TYPE_3__ picture_t ;
-struct TYPE_6__ {scalar_t__ i_visible_lines; scalar_t__ p_pixels; int /*<<< orphan*/  i_pitch; } ;
+typedef uintptr_t ptrdiff_t ;
+struct TYPE_7__ {int i_planes; TYPE_2__* p; int format; } ;
+typedef TYPE_3__ picture_t ;
+struct TYPE_6__ {scalar_t__ i_visible_lines; scalar_t__ p_pixels; int i_pitch; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int vlc_placebo_PlaneFormat (int /*<<< orphan*/ *,struct pl_plane_data*) ; 
+
+ int assert (int) ;
+ int vlc_placebo_PlaneFormat (int *,struct pl_plane_data*) ;
 
 int vlc_placebo_PlaneData(const picture_t *pic, struct pl_plane_data data[4],
                           const struct pl_buf *buf)

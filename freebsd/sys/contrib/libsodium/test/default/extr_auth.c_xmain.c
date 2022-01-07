@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  crypto_auth_hmacsha512_state ;
-typedef  int /*<<< orphan*/  crypto_auth_hmacsha256_state ;
 
-/* Variables and functions */
- scalar_t__* a ; 
- scalar_t__* a2 ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * c ; 
- int /*<<< orphan*/  crypto_auth (scalar_t__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- unsigned int crypto_auth_bytes () ; 
- unsigned int crypto_auth_hmacsha256_bytes () ; 
- int /*<<< orphan*/  crypto_auth_hmacsha256_final (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  crypto_auth_hmacsha256_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- unsigned int crypto_auth_hmacsha256_keybytes () ; 
- int crypto_auth_hmacsha256_statebytes () ; 
- int /*<<< orphan*/  crypto_auth_hmacsha256_update (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- unsigned int crypto_auth_hmacsha512256_bytes () ; 
- unsigned int crypto_auth_hmacsha512256_keybytes () ; 
- unsigned int crypto_auth_hmacsha512256_statebytes () ; 
- unsigned int crypto_auth_hmacsha512_bytes () ; 
- int /*<<< orphan*/  crypto_auth_hmacsha512_final (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  crypto_auth_hmacsha512_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- unsigned int crypto_auth_hmacsha512_keybytes () ; 
- int crypto_auth_hmacsha512_statebytes () ; 
- int /*<<< orphan*/  crypto_auth_hmacsha512_update (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- unsigned int crypto_auth_keybytes () ; 
- int /*<<< orphan*/  crypto_auth_primitive () ; 
- int /*<<< orphan*/  key ; 
- int /*<<< orphan*/  key2 ; 
- int /*<<< orphan*/  memset (scalar_t__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int crypto_auth_hmacsha512_state ;
+typedef int crypto_auth_hmacsha256_state ;
+
+
+ scalar_t__* a ;
+ scalar_t__* a2 ;
+ int assert (int) ;
+ int * c ;
+ int crypto_auth (scalar_t__*,int *,int,int ) ;
+ unsigned int crypto_auth_bytes () ;
+ unsigned int crypto_auth_hmacsha256_bytes () ;
+ int crypto_auth_hmacsha256_final (int *,scalar_t__*) ;
+ int crypto_auth_hmacsha256_init (int *,int ,int) ;
+ unsigned int crypto_auth_hmacsha256_keybytes () ;
+ int crypto_auth_hmacsha256_statebytes () ;
+ int crypto_auth_hmacsha256_update (int *,int *,int) ;
+ unsigned int crypto_auth_hmacsha512256_bytes () ;
+ unsigned int crypto_auth_hmacsha512256_keybytes () ;
+ unsigned int crypto_auth_hmacsha512256_statebytes () ;
+ unsigned int crypto_auth_hmacsha512_bytes () ;
+ int crypto_auth_hmacsha512_final (int *,scalar_t__*) ;
+ int crypto_auth_hmacsha512_init (int *,int ,int) ;
+ unsigned int crypto_auth_hmacsha512_keybytes () ;
+ int crypto_auth_hmacsha512_statebytes () ;
+ int crypto_auth_hmacsha512_update (int *,int *,int) ;
+ unsigned int crypto_auth_keybytes () ;
+ int crypto_auth_primitive () ;
+ int key ;
+ int key2 ;
+ int memset (scalar_t__*,int ,int) ;
+ int printf (char*,...) ;
+ scalar_t__ strcmp (int ,char*) ;
 
 int
 main(void)
 {
     crypto_auth_hmacsha512_state st;
     crypto_auth_hmacsha256_state st256;
-    size_t                       i;
+    size_t i;
 
     assert(crypto_auth_hmacsha512_statebytes() ==
            sizeof(crypto_auth_hmacsha512_state));
@@ -83,7 +83,7 @@ main(void)
 
     memset(a2, 0, sizeof a2);
     crypto_auth_hmacsha256_init(&st256, key2, sizeof key2);
-    crypto_auth_hmacsha256_update(&st256, NULL, 0U);
+    crypto_auth_hmacsha256_update(&st256, ((void*)0), 0U);
     crypto_auth_hmacsha256_update(&st256, c, 1U);
     crypto_auth_hmacsha256_update(&st256, c, sizeof c - 2U);
     crypto_auth_hmacsha256_final(&st256, a2);

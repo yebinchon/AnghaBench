@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
 
-/* Variables and functions */
- size_t PSCI_FN_MIGRATE ; 
- int invoke_psci_fn (int /*<<< orphan*/ ,unsigned long,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * psci_function_id ; 
- int psci_to_linux_errno (int) ; 
+
+
+
+typedef int u32 ;
+
+
+ size_t PSCI_FN_MIGRATE ;
+ int invoke_psci_fn (int ,unsigned long,int ,int ) ;
+ int * psci_function_id ;
+ int psci_to_linux_errno (int) ;
 
 __attribute__((used)) static int psci_migrate(unsigned long cpuid)
 {
-	int err;
-	u32 fn;
+ int err;
+ u32 fn;
 
-	fn = psci_function_id[PSCI_FN_MIGRATE];
-	err = invoke_psci_fn(fn, cpuid, 0, 0);
-	return psci_to_linux_errno(err);
+ fn = psci_function_id[PSCI_FN_MIGRATE];
+ err = invoke_psci_fn(fn, cpuid, 0, 0);
+ return psci_to_linux_errno(err);
 }

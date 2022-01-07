@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ UINT ;
-struct TYPE_10__ {int /*<<< orphan*/  hdr; } ;
-struct TYPE_9__ {int /*<<< orphan*/  hdr; } ;
-typedef  TYPE_1__ MSIRECORD ;
-typedef  TYPE_2__ MSIQUERY ;
-typedef  int /*<<< orphan*/  MSIDATABASE ;
-typedef  int /*<<< orphan*/  IStream ;
 
-/* Variables and functions */
- scalar_t__ ERROR_OUTOFMEMORY ; 
- scalar_t__ ERROR_SUCCESS ; 
- TYPE_1__* MSI_CreateRecord (int) ; 
- scalar_t__ MSI_DatabaseOpenViewW (int /*<<< orphan*/ *,char const*,TYPE_2__**) ; 
- scalar_t__ MSI_RecordSetIStream (TYPE_1__*,int,int /*<<< orphan*/ *) ; 
- scalar_t__ MSI_RecordSetStringW (TYPE_1__*,int,char const*) ; 
- scalar_t__ MSI_ViewExecute (TYPE_2__*,TYPE_1__*) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_w (char const*) ; 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+typedef scalar_t__ UINT ;
+struct TYPE_10__ {int hdr; } ;
+struct TYPE_9__ {int hdr; } ;
+typedef TYPE_1__ MSIRECORD ;
+typedef TYPE_2__ MSIQUERY ;
+typedef int MSIDATABASE ;
+typedef int IStream ;
+
+
+ scalar_t__ ERROR_OUTOFMEMORY ;
+ scalar_t__ ERROR_SUCCESS ;
+ TYPE_1__* MSI_CreateRecord (int) ;
+ scalar_t__ MSI_DatabaseOpenViewW (int *,char const*,TYPE_2__**) ;
+ scalar_t__ MSI_RecordSetIStream (TYPE_1__*,int,int *) ;
+ scalar_t__ MSI_RecordSetStringW (TYPE_1__*,int,char const*) ;
+ scalar_t__ MSI_ViewExecute (TYPE_2__*,TYPE_1__*) ;
+ int TRACE (char*,int *,int ,int *) ;
+ int debugstr_w (char const*) ;
+ int msiobj_release (int *) ;
 
 __attribute__((used)) static UINT add_stream( MSIDATABASE *db, const WCHAR *name, IStream *data )
 {

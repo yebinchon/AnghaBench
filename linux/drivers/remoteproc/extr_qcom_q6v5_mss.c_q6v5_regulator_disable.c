@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct reg_info {scalar_t__ uV; scalar_t__ uA; int /*<<< orphan*/  reg; } ;
+
+
+
+
+struct reg_info {scalar_t__ uV; scalar_t__ uA; int reg; } ;
 struct q6v5 {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INT_MAX ; 
- int /*<<< orphan*/  regulator_disable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  regulator_set_load (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  regulator_set_voltage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int INT_MAX ;
+ int regulator_disable (int ) ;
+ int regulator_set_load (int ,int ) ;
+ int regulator_set_voltage (int ,int ,int ) ;
 
 __attribute__((used)) static void q6v5_regulator_disable(struct q6v5 *qproc,
-				   struct reg_info *regs, int count)
+       struct reg_info *regs, int count)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < count; i++) {
-		if (regs[i].uV > 0)
-			regulator_set_voltage(regs[i].reg, 0, INT_MAX);
+ for (i = 0; i < count; i++) {
+  if (regs[i].uV > 0)
+   regulator_set_voltage(regs[i].reg, 0, INT_MAX);
 
-		if (regs[i].uA > 0)
-			regulator_set_load(regs[i].reg, 0);
+  if (regs[i].uA > 0)
+   regulator_set_load(regs[i].reg, 0);
 
-		regulator_disable(regs[i].reg);
-	}
+  regulator_disable(regs[i].reg);
+ }
 }

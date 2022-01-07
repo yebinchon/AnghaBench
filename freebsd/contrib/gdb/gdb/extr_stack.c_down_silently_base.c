@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct frame_info {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ deprecated_selected_frame ; 
- int /*<<< orphan*/  error (char*) ; 
- struct frame_info* find_relative_frame (scalar_t__,int*) ; 
- int /*<<< orphan*/  frame_relative_level (scalar_t__) ; 
- int parse_and_eval_long (char*) ; 
- int /*<<< orphan*/  select_frame (struct frame_info*) ; 
- int /*<<< orphan*/  selected_frame_level_changed_event (int /*<<< orphan*/ ) ; 
- scalar_t__ target_has_stack ; 
+
+ scalar_t__ deprecated_selected_frame ;
+ int error (char*) ;
+ struct frame_info* find_relative_frame (scalar_t__,int*) ;
+ int frame_relative_level (scalar_t__) ;
+ int parse_and_eval_long (char*) ;
+ int select_frame (struct frame_info*) ;
+ int selected_frame_level_changed_event (int ) ;
+ scalar_t__ target_has_stack ;
 
 __attribute__((used)) static void
 down_silently_base (char *count_exp)
@@ -38,10 +38,10 @@ down_silently_base (char *count_exp)
   if (count1 != 0 && count_exp == 0)
     {
 
-      /* We only do this if count_exp is not specified.  That way "down"
-         means to really go down (and let me know if that is
-         impossible), but "down 9999" can be used to mean go all the way
-         down without getting an error.  */
+
+
+
+
 
       error ("Bottom (i.e., innermost) frame selected; you cannot go down.");
     }

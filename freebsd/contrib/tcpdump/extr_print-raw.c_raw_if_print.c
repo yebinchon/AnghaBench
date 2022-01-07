@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int ;
-typedef  int /*<<< orphan*/  u_char ;
-struct pcap_pkthdr {int /*<<< orphan*/  len; } ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u_int ;
+typedef int u_char ;
+struct pcap_pkthdr {int len; } ;
 struct TYPE_5__ {scalar_t__ ndo_eflag; } ;
-typedef  TYPE_1__ netdissect_options ;
+typedef TYPE_1__ netdissect_options ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ND_PRINT (TYPE_1__*) ; 
- int /*<<< orphan*/  ipN_print (TYPE_1__*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+ int ND_PRINT (TYPE_1__*) ;
+ int ipN_print (TYPE_1__*,int const*,int ) ;
 
 u_int
 raw_if_print(netdissect_options *ndo, const struct pcap_pkthdr *h, const u_char *p)
 {
-	if (ndo->ndo_eflag)
-		ND_PRINT((ndo, "ip: "));
+ if (ndo->ndo_eflag)
+  ND_PRINT((ndo, "ip: "));
 
-	ipN_print(ndo, p, h->len);
+ ipN_print(ndo, p, h->len);
 
-	return (0);
+ return (0);
 }

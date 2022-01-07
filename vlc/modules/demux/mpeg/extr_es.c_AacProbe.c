@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-struct TYPE_7__ {int /*<<< orphan*/  s; } ;
-typedef  TYPE_1__ demux_t ;
 
-/* Variables and functions */
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- scalar_t__ demux_IsForced (TYPE_1__*,char*) ; 
- scalar_t__ demux_IsPathExtension (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  msg_Err (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- int vlc_stream_Peek (int /*<<< orphan*/ ,int /*<<< orphan*/  const**,int) ; 
- int /*<<< orphan*/  vlc_stream_Tell (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+struct TYPE_7__ {int s; } ;
+typedef TYPE_1__ demux_t ;
+
+
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ scalar_t__ demux_IsForced (TYPE_1__*,char*) ;
+ scalar_t__ demux_IsPathExtension (TYPE_1__*,char*) ;
+ int msg_Dbg (TYPE_1__*,char*) ;
+ int msg_Err (TYPE_1__*,char*) ;
+ int strncmp (char*,char*,int) ;
+ int vlc_stream_Peek (int ,int const**,int) ;
+ int vlc_stream_Tell (int ) ;
 
 __attribute__((used)) static int AacProbe( demux_t *p_demux, uint64_t *pi_offset )
 {
-    bool   b_forced;
-    bool   b_forced_demux;
+    bool b_forced;
+    bool b_forced_demux;
 
     uint64_t i_offset;
     const uint8_t *p_peek;
@@ -46,7 +46,7 @@ __attribute__((used)) static int AacProbe( demux_t *p_demux, uint64_t *pi_offset
 
     i_offset = vlc_stream_Tell( p_demux->s );
 
-    /* peek the begining (10 is for adts header) */
+
     if( vlc_stream_Peek( p_demux->s, &p_peek, 10 ) < 10 )
     {
         msg_Dbg( p_demux, "cannot peek" );

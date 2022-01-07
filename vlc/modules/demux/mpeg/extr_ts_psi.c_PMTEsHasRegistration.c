@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dvbpsi_pmt_es_t ;
-struct TYPE_3__ {int i_length; int /*<<< orphan*/  p_data; } ;
-typedef  TYPE_1__ dvbpsi_descriptor_t ;
-typedef  int /*<<< orphan*/  demux_t ;
 
-/* Variables and functions */
- TYPE_1__* PMTEsFindDescriptor (int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  msg_Warn (int /*<<< orphan*/ *,char*) ; 
- int strlen (char const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int dvbpsi_pmt_es_t ;
+struct TYPE_3__ {int i_length; int p_data; } ;
+typedef TYPE_1__ dvbpsi_descriptor_t ;
+typedef int demux_t ;
+
+
+ TYPE_1__* PMTEsFindDescriptor (int const*,int) ;
+ int assert (int) ;
+ int memcmp (int ,char const*,int) ;
+ int msg_Warn (int *,char*) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static bool PMTEsHasRegistration( demux_t *p_demux,
                                   const dvbpsi_pmt_es_t *p_es,
@@ -29,12 +29,12 @@ __attribute__((used)) static bool PMTEsHasRegistration( demux_t *p_demux,
 {
     dvbpsi_descriptor_t *p_dr = PMTEsFindDescriptor( p_es, 0x05 );
     if( !p_dr )
-        return false;
+        return 0;
 
     if( p_dr->i_length < 4 )
     {
         msg_Warn( p_demux, "invalid Registration Descriptor" );
-        return false;
+        return 0;
     }
 
     assert( strlen(psz_tag) == 4 );

@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ELOG (char*,char const*) ; 
- char* getenv (char*) ; 
- int /*<<< orphan*/  parse_long (char const*,long*,int) ; 
+ int ELOG (char*,char const*) ;
+ char* getenv (char*) ;
+ int parse_long (char const*,long*,int) ;
 
 __attribute__((used)) static int parse_restart_fd(void) {
     const char *restart_fd = getenv("_I3_RESTART_FD");
-    if (restart_fd == NULL) {
+    if (restart_fd == ((void*)0)) {
         return -1;
     }
 

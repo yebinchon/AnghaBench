@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct msg {int request; } ;
 struct context {int dummy; } ;
-struct conn {int /*<<< orphan*/  omsg_q; int /*<<< orphan*/  proxy; scalar_t__ client; } ;
+struct conn {int omsg_q; int proxy; scalar_t__ client; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  TAILQ_INSERT_TAIL (int /*<<< orphan*/ *,struct msg*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  c_tqe ; 
+
+ int ASSERT (int) ;
+ int TAILQ_INSERT_TAIL (int *,struct msg*,int ) ;
+ int c_tqe ;
 
 void
 req_client_enqueue_omsgq(struct context *ctx, struct conn *conn, struct msg *msg)

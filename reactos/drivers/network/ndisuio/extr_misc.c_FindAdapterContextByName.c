@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {struct TYPE_8__* Flink; } ;
-struct TYPE_7__ {int /*<<< orphan*/  DeviceName; } ;
-typedef  int /*<<< orphan*/  PNDIS_STRING ;
-typedef  TYPE_1__* PNDISUIO_ADAPTER_CONTEXT ;
-typedef  TYPE_2__* PLIST_ENTRY ;
-typedef  int /*<<< orphan*/  KIRQL ;
+struct TYPE_7__ {int DeviceName; } ;
+typedef int PNDIS_STRING ;
+typedef TYPE_1__* PNDISUIO_ADAPTER_CONTEXT ;
+typedef TYPE_2__* PLIST_ENTRY ;
+typedef int KIRQL ;
 
-/* Variables and functions */
- TYPE_1__* CONTAINING_RECORD (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__ GlobalAdapterList ; 
- int /*<<< orphan*/  GlobalAdapterListLock ; 
- int /*<<< orphan*/  KeAcquireSpinLock (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KeReleaseSpinLock (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ListEntry ; 
- int /*<<< orphan*/  NDISUIO_ADAPTER_CONTEXT ; 
- scalar_t__ RtlEqualUnicodeString (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
+
+ TYPE_1__* CONTAINING_RECORD (TYPE_2__*,int ,int ) ;
+ TYPE_2__ GlobalAdapterList ;
+ int GlobalAdapterListLock ;
+ int KeAcquireSpinLock (int *,int *) ;
+ int KeReleaseSpinLock (int *,int ) ;
+ int ListEntry ;
+ int NDISUIO_ADAPTER_CONTEXT ;
+ scalar_t__ RtlEqualUnicodeString (int *,int ,int ) ;
+ int TRUE ;
 
 PNDISUIO_ADAPTER_CONTEXT
 FindAdapterContextByName(PNDIS_STRING DeviceName)
@@ -42,17 +42,17 @@ FindAdapterContextByName(PNDIS_STRING DeviceName)
     while (CurrentEntry != &GlobalAdapterList)
     {
         AdapterContext = CONTAINING_RECORD(CurrentEntry, NDISUIO_ADAPTER_CONTEXT, ListEntry);
-        
-        /* Check if the device name matches */
+
+
         if (RtlEqualUnicodeString(&AdapterContext->DeviceName, DeviceName, TRUE))
         {
             KeReleaseSpinLock(&GlobalAdapterListLock, OldIrql);
             return AdapterContext;
         }
-        
+
         CurrentEntry = CurrentEntry->Flink;
     }
     KeReleaseSpinLock(&GlobalAdapterListLock, OldIrql);
-    
-    return NULL;
+
+    return ((void*)0);
 }

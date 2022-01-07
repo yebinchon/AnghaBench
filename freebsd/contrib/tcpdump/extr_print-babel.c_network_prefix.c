@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- unsigned char* v4prefix ; 
+ int memcpy (unsigned char*,unsigned char const*,int) ;
+ int memset (unsigned char*,int ,int) ;
+ unsigned char* v4prefix ;
 
 __attribute__((used)) static int
 network_prefix(int ae, int plen, unsigned int omitted,
@@ -44,7 +36,7 @@ network_prefix(int ae, int plen, unsigned int omitted,
             return -1;
         memcpy(prefix, v4prefix, 12);
         if(omitted) {
-            if (dp == NULL) return -1;
+            if (dp == ((void*)0)) return -1;
             memcpy(prefix, dp, 12 + omitted);
         }
         if(pb > omitted) {
@@ -56,7 +48,7 @@ network_prefix(int ae, int plen, unsigned int omitted,
         if(omitted > 16 || (pb > omitted && len < pb - omitted))
             return -1;
         if(omitted) {
-            if (dp == NULL) return -1;
+            if (dp == ((void*)0)) return -1;
             memcpy(prefix, dp, omitted);
         }
         if(pb > omitted) {

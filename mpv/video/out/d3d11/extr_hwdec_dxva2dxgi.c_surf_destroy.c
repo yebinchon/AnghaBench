@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ra_hwdec_mapper {int /*<<< orphan*/  ra; } ;
-struct queue_surf {int /*<<< orphan*/  tex; int /*<<< orphan*/  stage9; int /*<<< orphan*/  surf9; int /*<<< orphan*/  tex9; int /*<<< orphan*/  stage11; int /*<<< orphan*/  idle11; int /*<<< orphan*/  tex11; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SAFE_RELEASE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ra_tex_free (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  talloc_free (struct queue_surf*) ; 
+
+
+
+struct ra_hwdec_mapper {int ra; } ;
+struct queue_surf {int tex; int stage9; int surf9; int tex9; int stage11; int idle11; int tex11; } ;
+
+
+ int SAFE_RELEASE (int ) ;
+ int ra_tex_free (int ,int *) ;
+ int talloc_free (struct queue_surf*) ;
 
 __attribute__((used)) static void surf_destroy(struct ra_hwdec_mapper *mapper,
                          struct queue_surf *surf)

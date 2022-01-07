@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct rdma_id_private {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  event; } ;
-struct cma_work {int /*<<< orphan*/  work; TYPE_1__ event; int /*<<< orphan*/  new_state; int /*<<< orphan*/  old_state; struct rdma_id_private* id; } ;
+struct TYPE_2__ {int event; } ;
+struct cma_work {int work; TYPE_1__ event; int new_state; int old_state; struct rdma_id_private* id; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_WORK (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RDMA_CM_EVENT_ROUTE_RESOLVED ; 
- int /*<<< orphan*/  RDMA_CM_ROUTE_QUERY ; 
- int /*<<< orphan*/  RDMA_CM_ROUTE_RESOLVED ; 
- int /*<<< orphan*/  cma_work_handler ; 
- int /*<<< orphan*/  cma_wq ; 
- struct cma_work* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  queue_work (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int INIT_WORK (int *,int ) ;
+ int RDMA_CM_EVENT_ROUTE_RESOLVED ;
+ int RDMA_CM_ROUTE_QUERY ;
+ int RDMA_CM_ROUTE_RESOLVED ;
+ int cma_work_handler ;
+ int cma_wq ;
+ struct cma_work* kzalloc (int,int ) ;
+ int queue_work (int ,int *) ;
 
 __attribute__((used)) static int cma_resolve_iw_route(struct rdma_id_private *id_priv, int timeout_ms)
 {
-	struct cma_work *work;
+ struct cma_work *work;
 
-	work = kzalloc(sizeof *work, GFP_KERNEL);
-	if (!work)
-		return -ENOMEM;
+ work = kzalloc(sizeof *work, GFP_KERNEL);
+ if (!work)
+  return -ENOMEM;
 
-	work->id = id_priv;
-	INIT_WORK(&work->work, cma_work_handler);
-	work->old_state = RDMA_CM_ROUTE_QUERY;
-	work->new_state = RDMA_CM_ROUTE_RESOLVED;
-	work->event.event = RDMA_CM_EVENT_ROUTE_RESOLVED;
-	queue_work(cma_wq, &work->work);
-	return 0;
+ work->id = id_priv;
+ INIT_WORK(&work->work, cma_work_handler);
+ work->old_state = RDMA_CM_ROUTE_QUERY;
+ work->new_state = RDMA_CM_ROUTE_RESOLVED;
+ work->event.event = RDMA_CM_EVENT_ROUTE_RESOLVED;
+ queue_work(cma_wq, &work->work);
+ return 0;
 }

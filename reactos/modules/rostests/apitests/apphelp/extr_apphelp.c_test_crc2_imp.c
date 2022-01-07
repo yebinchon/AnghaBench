@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ PATTRINFO ;
-typedef  size_t DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  TAG_CHECKSUM ; 
- int /*<<< orphan*/  TAG_SIZE ; 
- int /*<<< orphan*/  expect_tag_dword_imp (scalar_t__,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  free (char*) ; 
- size_t g_AttrInfoSize ; 
- char* malloc (size_t) ; 
- int /*<<< orphan*/  pSdbFreeFileAttributes (scalar_t__) ; 
- scalar_t__ pSdbGetFileAttributes (char const*,scalar_t__*,size_t*) ; 
- int /*<<< orphan*/  test_create_file_imp (char*,char*,size_t) ; 
- int /*<<< orphan*/  winetest_ok (int,char*,...) ; 
+
+
+
+typedef char WCHAR ;
+typedef scalar_t__ PATTRINFO ;
+typedef size_t DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ FALSE ;
+ int TAG_CHECKSUM ;
+ int TAG_SIZE ;
+ int expect_tag_dword_imp (scalar_t__,int ,size_t) ;
+ int free (char*) ;
+ size_t g_AttrInfoSize ;
+ char* malloc (size_t) ;
+ int pSdbFreeFileAttributes (scalar_t__) ;
+ scalar_t__ pSdbGetFileAttributes (char const*,scalar_t__*,size_t*) ;
+ int test_create_file_imp (char*,char*,size_t) ;
+ int winetest_ok (int,char*,...) ;
 
 __attribute__((used)) static void test_crc2_imp(DWORD len, int fill, DWORD expected)
 {

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int wParamFlags; int /*<<< orphan*/  pparamdescex; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int wParamFlags; int pparamdescex; } ;
 struct TYPE_6__ {TYPE_1__ paramdesc; } ;
-struct TYPE_7__ {TYPE_2__ u; int /*<<< orphan*/  tdesc; } ;
-typedef  TYPE_3__ ELEMDESC ;
+struct TYPE_7__ {TYPE_2__ u; int tdesc; } ;
+typedef TYPE_3__ ELEMDESC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CoTaskMemFree (int /*<<< orphan*/ ) ; 
- int PARAMFLAG_FHASDEFAULT ; 
- int /*<<< orphan*/  free_embedded_typedesc (int /*<<< orphan*/ *) ; 
+
+ int CoTaskMemFree (int ) ;
+ int PARAMFLAG_FHASDEFAULT ;
+ int free_embedded_typedesc (int *) ;
 
 __attribute__((used)) static void free_embedded_elemdesc(ELEMDESC *edesc)
 {

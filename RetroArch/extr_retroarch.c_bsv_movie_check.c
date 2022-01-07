@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int movie_playback; int movie_end; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MESSAGE_QUEUE_CATEGORY_INFO ; 
- int /*<<< orphan*/  MESSAGE_QUEUE_ICON_DEFAULT ; 
- int /*<<< orphan*/  MSG_MOVIE_PLAYBACK_ENDED ; 
- int /*<<< orphan*/  MSG_MOVIE_RECORD_STOPPED ; 
- int /*<<< orphan*/  RARCH_LOG (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bsv_movie_deinit () ; 
- TYPE_1__ bsv_movie_state ; 
- int /*<<< orphan*/  bsv_movie_state_handle ; 
- int /*<<< orphan*/  msg_hash_to_str (int /*<<< orphan*/ ) ; 
- int runloop_check_movie_init () ; 
- int /*<<< orphan*/  runloop_msg_queue_push (int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int MESSAGE_QUEUE_CATEGORY_INFO ;
+ int MESSAGE_QUEUE_ICON_DEFAULT ;
+ int MSG_MOVIE_PLAYBACK_ENDED ;
+ int MSG_MOVIE_RECORD_STOPPED ;
+ int RARCH_LOG (char*,int ) ;
+ int bsv_movie_deinit () ;
+ TYPE_1__ bsv_movie_state ;
+ int bsv_movie_state_handle ;
+ int msg_hash_to_str (int ) ;
+ int runloop_check_movie_init () ;
+ int runloop_msg_queue_push (int ,int,int,int,int *,int ,int ) ;
 
 __attribute__((used)) static bool bsv_movie_check(void)
 {
@@ -33,32 +33,32 @@ __attribute__((used)) static bool bsv_movie_check(void)
 
    if (bsv_movie_state.movie_playback)
    {
-      /* Checks if movie is being played back. */
+
       if (!bsv_movie_state.movie_end)
-         return false;
+         return 0;
       runloop_msg_queue_push(
-            msg_hash_to_str(MSG_MOVIE_PLAYBACK_ENDED), 2, 180, false,
-            NULL, MESSAGE_QUEUE_ICON_DEFAULT, MESSAGE_QUEUE_CATEGORY_INFO);
+            msg_hash_to_str(MSG_MOVIE_PLAYBACK_ENDED), 2, 180, 0,
+            ((void*)0), MESSAGE_QUEUE_ICON_DEFAULT, MESSAGE_QUEUE_CATEGORY_INFO);
       RARCH_LOG("%s\n", msg_hash_to_str(MSG_MOVIE_PLAYBACK_ENDED));
 
       bsv_movie_deinit();
 
-      bsv_movie_state.movie_end      = false;
-      bsv_movie_state.movie_playback = false;
+      bsv_movie_state.movie_end = 0;
+      bsv_movie_state.movie_playback = 0;
 
-      return true;
+      return 1;
    }
 
-   /* Checks if movie is being recorded. */
+
    if (!bsv_movie_state_handle)
-      return false;
+      return 0;
 
    runloop_msg_queue_push(
-         msg_hash_to_str(MSG_MOVIE_RECORD_STOPPED), 2, 180, true,
-         NULL, MESSAGE_QUEUE_ICON_DEFAULT, MESSAGE_QUEUE_CATEGORY_INFO);
+         msg_hash_to_str(MSG_MOVIE_RECORD_STOPPED), 2, 180, 1,
+         ((void*)0), MESSAGE_QUEUE_ICON_DEFAULT, MESSAGE_QUEUE_CATEGORY_INFO);
    RARCH_LOG("%s\n", msg_hash_to_str(MSG_MOVIE_RECORD_STOPPED));
 
    bsv_movie_deinit();
 
-   return true;
+   return 1;
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bxe_softc {int dummy; } ;
-struct bxe_dma {scalar_t__ size; int /*<<< orphan*/ * tag; int /*<<< orphan*/  map; int /*<<< orphan*/  vaddr; } ;
+struct bxe_dma {scalar_t__ size; int * tag; int map; int vaddr; } ;
 
-/* Variables and functions */
- int BUS_DMASYNC_POSTREAD ; 
- int BUS_DMASYNC_POSTWRITE ; 
- int /*<<< orphan*/  DBASSERT (struct bxe_softc*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  bus_dma_tag_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bus_dmamap_sync (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  bus_dmamap_unload (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bus_dmamem_free (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct bxe_dma*,int /*<<< orphan*/ ,int) ; 
+
+ int BUS_DMASYNC_POSTREAD ;
+ int BUS_DMASYNC_POSTWRITE ;
+ int DBASSERT (struct bxe_softc*,int ,char*) ;
+ int bus_dma_tag_destroy (int *) ;
+ int bus_dmamap_sync (int *,int ,int) ;
+ int bus_dmamap_unload (int *,int ) ;
+ int bus_dmamem_free (int *,int ,int ) ;
+ int memset (struct bxe_dma*,int ,int) ;
 
 void
 bxe_dma_free(struct bxe_softc *sc,
-             struct bxe_dma   *dma)
+             struct bxe_dma *dma)
 {
     if (dma->size > 0) {
-        DBASSERT(sc, (dma->tag != NULL), ("dma tag is NULL"));
+        DBASSERT(sc, (dma->tag != ((void*)0)), ("dma tag is NULL"));
 
         bus_dmamap_sync(dma->tag, dma->map,
                         (BUS_DMASYNC_POSTREAD | BUS_DMASYNC_POSTWRITE));

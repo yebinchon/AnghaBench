@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
 
-/* Variables and functions */
- size_t GETBYTE (int,int) ; 
- int* sbox ; 
+
+
+
+typedef int uint64_t ;
+
+
+ size_t GETBYTE (int,int) ;
+ int* sbox ;
 
 __attribute__((used)) static inline uint64_t
 READ(uint64_t r, uint64_t R, uint64_t seed)
 {
     uint64_t r0, r1, r2, r3;
 
-#define GETBYTE(R,n) ((((R)>>(n*8))^seed^r)&0xFF)
+
 
     R ^= (seed << r) ^ (seed >> (64 - r));
 
-    r0 = sbox[GETBYTE(R,0)]<< 0 | sbox[GETBYTE(R,1)]<< 8;
-    r1 = (sbox[GETBYTE(R,2)]<<16UL | sbox[GETBYTE(R,3)]<<24UL)&0x0ffffFFFFUL;
-    r2 = sbox[GETBYTE(R,4)]<< 0 | sbox[GETBYTE(R,5)]<< 8;
-    r3 = (sbox[GETBYTE(R,6)]<<16UL | sbox[GETBYTE(R,7)]<<24UL)&0x0ffffFFFFUL;
+    r0 = sbox[((((R)>>(0*8))^seed^r)&0xFF)]<< 0 | sbox[((((R)>>(1*8))^seed^r)&0xFF)]<< 8;
+    r1 = (sbox[((((R)>>(2*8))^seed^r)&0xFF)]<<16UL | sbox[((((R)>>(3*8))^seed^r)&0xFF)]<<24UL)&0x0ffffFFFFUL;
+    r2 = sbox[((((R)>>(4*8))^seed^r)&0xFF)]<< 0 | sbox[((((R)>>(5*8))^seed^r)&0xFF)]<< 8;
+    r3 = (sbox[((((R)>>(6*8))^seed^r)&0xFF)]<<16UL | sbox[((((R)>>(7*8))^seed^r)&0xFF)]<<24UL)&0x0ffffFFFFUL;
 
     R = r0 ^ r1 ^ r2<<23UL ^ r3<<33UL;
 

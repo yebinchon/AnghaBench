@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bpf_offloaded_map {int /*<<< orphan*/  dev_priv; } ;
 
-/* Variables and functions */
- int nfp_bpf_ctrl_lookup_entry (struct bpf_offloaded_map*,void*,void*) ; 
- int /*<<< orphan*/  nfp_map_bpf_byte_swap (int /*<<< orphan*/ ,void*) ; 
+
+
+
+struct bpf_offloaded_map {int dev_priv; } ;
+
+
+ int nfp_bpf_ctrl_lookup_entry (struct bpf_offloaded_map*,void*,void*) ;
+ int nfp_map_bpf_byte_swap (int ,void*) ;
 
 __attribute__((used)) static int
 nfp_bpf_map_lookup_entry(struct bpf_offloaded_map *offmap,
-			 void *key, void *value)
+    void *key, void *value)
 {
-	int err;
+ int err;
 
-	err = nfp_bpf_ctrl_lookup_entry(offmap, key, value);
-	if (err)
-		return err;
+ err = nfp_bpf_ctrl_lookup_entry(offmap, key, value);
+ if (err)
+  return err;
 
-	nfp_map_bpf_byte_swap(offmap->dev_priv, value);
-	return 0;
+ nfp_map_bpf_byte_swap(offmap->dev_priv, value);
+ return 0;
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  char* INT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  char* BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- char* FALSE ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  MMDRV_Install (char*,char*,char*) ; 
- scalar_t__ REG_SZ ; 
- scalar_t__ RegEnumValue (int /*<<< orphan*/ ,char*,char*,scalar_t__*,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ RegOpenKeyA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- char* TRUE ; 
- int /*<<< orphan*/  _strnicmp (char*,char*,int) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int /*<<< orphan*/  stricmp (char*,char*) ; 
+
+
+
+typedef int LPBYTE ;
+typedef char* INT ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+typedef char* BOOL ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ char* FALSE ;
+ int HKEY_LOCAL_MACHINE ;
+ int MMDRV_Install (char*,char*,char*) ;
+ scalar_t__ REG_SZ ;
+ scalar_t__ RegEnumValue (int ,char*,char*,scalar_t__*,int *,scalar_t__*,int ,scalar_t__*) ;
+ scalar_t__ RegOpenKeyA (int ,char*,int *) ;
+ int TRACE (char*,...) ;
+ char* TRUE ;
+ int _strnicmp (char*,char*,int) ;
+ int memset (char*,int ,scalar_t__) ;
+ int strcpy (char*,char*) ;
+ int stricmp (char*,char*) ;
 
 BOOL LoadRegistryMMEDrivers(char* key)
 {
@@ -58,7 +58,7 @@ BOOL LoadRegistryMMEDrivers(char* key)
                          driver_index,
                          value_name,
                          &value_name_length,
-                         NULL,
+                         ((void*)0),
                          &value_type,
                          (LPBYTE)value_data,
                          &value_data_length) == ERROR_SUCCESS )
@@ -68,13 +68,13 @@ BOOL LoadRegistryMMEDrivers(char* key)
 
         if ( value_type == REG_SZ )
         {
-            /* We look for mappers first so they don't match
-               something else later on! */
+
+
 
             if ( ! stricmp("wavemapper", value_name) )
             {
                 TRACE("Found a Wave-mapper: %s\n", value_data);
-                /* Delay loading Wave mapper driver */
+
                 strcpy(wavemapper, value_data);
                 is_mapper = TRUE;
                 driver_count ++;
@@ -82,7 +82,7 @@ BOOL LoadRegistryMMEDrivers(char* key)
             else if ( ! stricmp("midimapper", value_name) )
             {
                 TRACE("Found a MIDI-mapper: %s\n", value_data);
-                /* Delay loading MIDI mapper driver */
+
                 strcpy(midimapper, value_data);
                 is_mapper = TRUE;
                 driver_count ++;
@@ -116,8 +116,8 @@ BOOL LoadRegistryMMEDrivers(char* key)
                 TRACE("Not supported: %s\n", value_data);
             }
 
-            /* If we have a valid driver now, we get it "installed" in
-               winmm itself so it can be used */
+
+
 
             if ( valid_driver )
             {
@@ -132,7 +132,7 @@ BOOL LoadRegistryMMEDrivers(char* key)
             TRACE("Invalid data format\n");
         }
 
-        /* Reinitialize */
+
         value_name_length = 256;
         value_data_length = 256;
         memset(value_name, 0, value_name_length);
@@ -141,7 +141,7 @@ BOOL LoadRegistryMMEDrivers(char* key)
         driver_index ++;
     }
 
-    /* Finally load mapper drivers, since they expect device drivers already loaded */
+
     if (*wavemapper)
     {
         if (!MMDRV_Install("wavemapper", wavemapper, TRUE))

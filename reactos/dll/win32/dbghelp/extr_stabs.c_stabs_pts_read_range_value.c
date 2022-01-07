@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pts_range_value {int sign; int val; } ;
 struct ParseTypedefData {int* ptr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PTS_ABORTIF (struct ParseTypedefData*,int) ; 
- int /*<<< orphan*/  isdigit (char) ; 
- void* strtoull (char*,char**,int) ; 
+
+ int PTS_ABORTIF (struct ParseTypedefData*,int) ;
+ int isdigit (char) ;
+ void* strtoull (char*,char**,int) ;
 
 __attribute__((used)) static int stabs_pts_read_range_value(struct ParseTypedefData* ptd, struct pts_range_value* prv)
 {
-    char*	last;
+    char* last;
 
     switch (*ptd->ptr)
     {
@@ -30,7 +30,7 @@ __attribute__((used)) static int stabs_pts_read_range_value(struct ParseTypedefD
         {
             switch (ptd->ptr[1])
             {
-            case '0': 
+            case '0':
                 PTS_ABORTIF(ptd, ptd->ptr[0] != '1');
                 prv->sign = -1;
                 prv->val = 0;
@@ -51,7 +51,7 @@ __attribute__((used)) static int stabs_pts_read_range_value(struct ParseTypedefD
         ptd->ptr = last;
         break;
     case '+':
-    default:    
+    default:
         prv->sign = 1;
         prv->val = strtoull(ptd->ptr, &last, 10);
         ptd->ptr = last;

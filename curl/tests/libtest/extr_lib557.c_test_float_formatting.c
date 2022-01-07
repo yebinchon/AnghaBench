@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INT_MIN ; 
- double MAXIMIZE ; 
- int /*<<< orphan*/  curl_msnprintf (char*,int,char*,double,...) ; 
- int /*<<< orphan*/  printf (char*) ; 
- scalar_t__ string_check (char*,char*) ; 
- scalar_t__ strlen_check (char*,int) ; 
+
+
+
+typedef int buf ;
+
+
+ int INT_MIN ;
+ double MAXIMIZE ;
+ int curl_msnprintf (char*,int,char*,double,...) ;
+ int printf (char*) ;
+ scalar_t__ string_check (char*,char*) ;
+ scalar_t__ strlen_check (char*,int) ;
 
 __attribute__((used)) static int test_float_formatting(void)
 {
   int errors = 0;
-  char buf[512]; /* larger than max float size */
+  char buf[512];
   curl_msnprintf(buf, sizeof(buf), "%f", 9.0);
   errors += string_check(buf, "9.000000");
 
@@ -84,8 +84,8 @@ __attribute__((used)) static int test_float_formatting(void)
   curl_msnprintf(buf, sizeof(buf), "%.*f", 0, 9.2987654);
   errors += string_check(buf, "9");
 
-  /* very large precisions easily turn into system specific outputs so we only
-     check the output buffer length here as we know the internal limit */
+
+
 
   curl_msnprintf(buf, sizeof(buf), "%.*f", (1<<30), 9.2987654);
   errors += strlen_check(buf, 325);
@@ -97,12 +97,12 @@ __attribute__((used)) static int test_float_formatting(void)
                  123456789123456789123456789.2987654);
   errors += strlen_check(buf, 325);
 
-  /* check negative when used signed */
+
   curl_msnprintf(buf, sizeof(buf), "%*f", INT_MIN, 9.1);
   errors += string_check(buf, "9.100000");
 
-  /* curl_msnprintf() limits a single float output to 325 bytes maximum
-     width */
+
+
   curl_msnprintf(buf, sizeof(buf), "%*f", (1<<30), 9.1);
   errors += string_check(buf, "                                                                                                                                                                                                                                                                                                                             9.100000");
   curl_msnprintf(buf, sizeof(buf), "%100000f", 9.1);

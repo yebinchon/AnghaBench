@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int32_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  bdb_env_baton_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_MUTEX__WITH_LOCK (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  bdb_cache_lock ; 
- int /*<<< orphan*/  svn_fs_bdb__open_internal (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int u_int32_t ;
+typedef int svn_error_t ;
+typedef int bdb_env_baton_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_MUTEX__WITH_LOCK (int ,int ) ;
+ int * SVN_NO_ERROR ;
+ int bdb_cache_lock ;
+ int svn_fs_bdb__open_internal (int **,char const*,int ,int,int *) ;
 
 svn_error_t *
 svn_fs_bdb__open(bdb_env_baton_t **bdb_batonp, const char *path,

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  pipe; } ;
-struct TYPE_4__ {int /*<<< orphan*/  pipe; } ;
-struct TYPE_6__ {TYPE_2__ send2; TYPE_1__ send; int /*<<< orphan*/  expected_type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  MAKE_VALGRIND_HAPPY () ; 
- int /*<<< orphan*/  TEST_PIPENAME ; 
- int /*<<< orphan*/  TEST_PIPENAME_2 ; 
- int /*<<< orphan*/  UV_NAMED_PIPE ; 
- TYPE_3__ ctx ; 
- int run_test (int) ; 
- int /*<<< orphan*/  uv_default_loop () ; 
- int uv_pipe_bind (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int uv_pipe_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int pipe; } ;
+struct TYPE_4__ {int pipe; } ;
+struct TYPE_6__ {TYPE_2__ send2; TYPE_1__ send; int expected_type; } ;
+
+
+ int ASSERT (int) ;
+ int MAKE_VALGRIND_HAPPY () ;
+ int TEST_PIPENAME ;
+ int TEST_PIPENAME_2 ;
+ int UV_NAMED_PIPE ;
+ TYPE_3__ ctx ;
+ int run_test (int) ;
+ int uv_default_loop () ;
+ int uv_pipe_bind (int *,int ) ;
+ int uv_pipe_init (int ,int *,int) ;
 
 __attribute__((used)) static int run_ipc_send_recv_pipe(int inprocess) {
   int r;

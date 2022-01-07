@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int len; } ;
 struct property {TYPE_1__ val; } ;
-struct node {int /*<<< orphan*/  fullpath; } ;
+struct node {int fullpath; } ;
 struct check {char* data; } ;
-typedef  int /*<<< orphan*/  cell_t ;
+typedef int cell_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FAIL (struct check*,char*,char*,int /*<<< orphan*/ ) ; 
- struct property* get_property (struct node*,char*) ; 
+
+ int FAIL (struct check*,char*,char*,int ) ;
+ struct property* get_property (struct node*,char*) ;
 
 __attribute__((used)) static void check_is_cell(struct check *c, struct node *root,
-			  struct node *node)
+     struct node *node)
 {
-	struct property *prop;
-	char *propname = c->data;
+ struct property *prop;
+ char *propname = c->data;
 
-	prop = get_property(node, propname);
-	if (!prop)
-		return; /* Not present, assumed ok */
+ prop = get_property(node, propname);
+ if (!prop)
+  return;
 
-	if (prop->val.len != sizeof(cell_t))
-		FAIL(c, "\"%s\" property in %s is not a single cell",
-		     propname, node->fullpath);
+ if (prop->val.len != sizeof(cell_t))
+  FAIL(c, "\"%s\" property in %s is not a single cell",
+       propname, node->fullpath);
 }

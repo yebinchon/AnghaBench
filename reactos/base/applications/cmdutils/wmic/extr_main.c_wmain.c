@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STRING_ALIAS_NOT_FOUND ; 
- int /*<<< orphan*/  STRING_CMDLINE_NOT_SUPPORTED ; 
- int /*<<< orphan*/  STRING_INVALID_PATH ; 
- int /*<<< orphan*/  WINE_FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (char*) ; 
- char* find_class (char*) ; 
- int /*<<< orphan*/  output_error (int /*<<< orphan*/ ) ; 
- int query_prop (char const*,char const*) ; 
- int /*<<< orphan*/  strcmpiW (char*,char const*) ; 
+
+
+
+typedef char WCHAR ;
+
+
+ int STRING_ALIAS_NOT_FOUND ;
+ int STRING_CMDLINE_NOT_SUPPORTED ;
+ int STRING_INVALID_PATH ;
+ int WINE_FIXME (char*,int ) ;
+ int debugstr_w (char*) ;
+ char* find_class (char*) ;
+ int output_error (int ) ;
+ int query_prop (char const*,char const*) ;
+ int strcmpiW (char*,char const*) ;
 
 int wmain(int argc, WCHAR *argv[])
 {

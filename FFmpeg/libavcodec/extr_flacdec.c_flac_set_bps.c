@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum AVSampleFormat { ____Placeholder_AVSampleFormat } AVSampleFormat ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef enum AVSampleFormat { ____Placeholder_AVSampleFormat } AVSampleFormat ;
 struct TYPE_6__ {int bps; } ;
 struct TYPE_7__ {int sample_shift; TYPE_2__ flac_stream_info; TYPE_1__* avctx; } ;
-struct TYPE_5__ {int request_sample_fmt; int /*<<< orphan*/  sample_fmt; } ;
-typedef  TYPE_3__ FLACContext ;
+struct TYPE_5__ {int request_sample_fmt; int sample_fmt; } ;
+typedef TYPE_3__ FLACContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_SAMPLE_FMT_S16 ; 
- int /*<<< orphan*/  AV_SAMPLE_FMT_S16P ; 
- int /*<<< orphan*/  AV_SAMPLE_FMT_S32 ; 
- int /*<<< orphan*/  AV_SAMPLE_FMT_S32P ; 
- int av_get_bytes_per_sample (int) ; 
- int av_sample_fmt_is_planar (int) ; 
+
+ int AV_SAMPLE_FMT_S16 ;
+ int AV_SAMPLE_FMT_S16P ;
+ int AV_SAMPLE_FMT_S32 ;
+ int AV_SAMPLE_FMT_S32P ;
+ int av_get_bytes_per_sample (int) ;
+ int av_sample_fmt_is_planar (int) ;
 
 __attribute__((used)) static void flac_set_bps(FLACContext *s)
 {

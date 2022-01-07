@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int memcpy (int*,int*,int) ;
 
 __attribute__((used)) static inline void XDeintNxNFrame( uint8_t *dst, int i_dst,
                                    uint8_t *src, int i_src,
@@ -21,7 +21,7 @@ __attribute__((used)) static inline void XDeintNxNFrame( uint8_t *dst, int i_dst
 {
     int y, x;
 
-    /* Progressive */
+
     for( y = 0; y < i_height; y += 2 )
     {
         memcpy( dst, src, i_width );
@@ -34,7 +34,7 @@ __attribute__((used)) static inline void XDeintNxNFrame( uint8_t *dst, int i_dst
         }
         else
         {
-            /* Blend last line */
+
             for( x = 0; x < i_width; x++ )
                 dst[x] = (src[x] + src[1*i_src+x] ) >> 1;
         }

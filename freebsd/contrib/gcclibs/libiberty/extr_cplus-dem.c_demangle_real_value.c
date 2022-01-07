@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct work_stuff {int dummy; } ;
-typedef  int /*<<< orphan*/  string ;
+typedef int string ;
 
-/* Variables and functions */
- scalar_t__ ISDIGIT (unsigned char) ; 
- int demangle_expression (struct work_stuff*,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  string_appendn (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  tk_real ; 
+
+ scalar_t__ ISDIGIT (unsigned char) ;
+ int demangle_expression (struct work_stuff*,char const**,int *,int ) ;
+ int string_appendn (int *,char const*,int) ;
+ int tk_real ;
 
 __attribute__((used)) static int
 demangle_real_value (struct work_stuff *work,
@@ -36,25 +36,25 @@ demangle_real_value (struct work_stuff *work,
       string_appendn (s, *mangled, 1);
       (*mangled)++;
     }
-  if (**mangled == '.') /* fraction */
+  if (**mangled == '.')
     {
       string_appendn (s, ".", 1);
       (*mangled)++;
       while (ISDIGIT ((unsigned char)**mangled))
-	{
-	  string_appendn (s, *mangled, 1);
-	  (*mangled)++;
-	}
+ {
+   string_appendn (s, *mangled, 1);
+   (*mangled)++;
+ }
     }
-  if (**mangled == 'e') /* exponent */
+  if (**mangled == 'e')
     {
       string_appendn (s, "e", 1);
       (*mangled)++;
       while (ISDIGIT ((unsigned char)**mangled))
-	{
-	  string_appendn (s, *mangled, 1);
-	  (*mangled)++;
-	}
+ {
+   string_appendn (s, *mangled, 1);
+   (*mangled)++;
+ }
     }
 
   return 1;

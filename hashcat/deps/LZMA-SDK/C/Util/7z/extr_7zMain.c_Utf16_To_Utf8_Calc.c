@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UInt32 ;
-typedef  int UInt16 ;
 
-/* Variables and functions */
- int _UTF8_RANGE (int) ; 
+
+
+
+typedef int UInt32 ;
+typedef int UInt16 ;
+
+
+ int _UTF8_RANGE (int) ;
 
 __attribute__((used)) static size_t Utf16_To_Utf8_Calc(const UInt16 *src, const UInt16 *srcLim)
 {
@@ -24,10 +24,10 @@ __attribute__((used)) static size_t Utf16_To_Utf8_Calc(const UInt16 *src, const 
     UInt32 val;
     if (src == srcLim)
       return size;
-    
+
     size++;
     val = *src++;
-   
+
     if (val < 0x80)
       continue;
 

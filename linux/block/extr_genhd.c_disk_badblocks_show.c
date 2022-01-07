@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gendisk {int /*<<< orphan*/  bb; } ;
+
+
+
+
+struct gendisk {int bb; } ;
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  badblocks_show (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- struct gendisk* dev_to_disk (struct device*) ; 
- int /*<<< orphan*/  sprintf (char*,char*) ; 
+
+ int badblocks_show (int ,char*,int ) ;
+ struct gendisk* dev_to_disk (struct device*) ;
+ int sprintf (char*,char*) ;
 
 __attribute__((used)) static ssize_t disk_badblocks_show(struct device *dev,
-					struct device_attribute *attr,
-					char *page)
+     struct device_attribute *attr,
+     char *page)
 {
-	struct gendisk *disk = dev_to_disk(dev);
+ struct gendisk *disk = dev_to_disk(dev);
 
-	if (!disk->bb)
-		return sprintf(page, "\n");
+ if (!disk->bb)
+  return sprintf(page, "\n");
 
-	return badblocks_show(disk->bb, page, 0);
+ return badblocks_show(disk->bb, page, 0);
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fw_event_work {int /*<<< orphan*/  refcount; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fw_event_work_free ; 
- int /*<<< orphan*/  kref_put (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct fw_event_work {int refcount; } ;
+
+
+ int fw_event_work_free ;
+ int kref_put (int *,int ) ;
 
 __attribute__((used)) static void fw_event_work_put(struct fw_event_work *fw_work)
 {
-	kref_put(&fw_work->refcount, fw_event_work_free);
+ kref_put(&fw_work->refcount, fw_event_work_free);
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  TYPE_1__* gf ;
-typedef  unsigned int dword_t ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef TYPE_1__* gf ;
+typedef unsigned int dword_t ;
 struct TYPE_7__ {scalar_t__* limb; } ;
 
-/* Variables and functions */
- size_t LIMBPERM (unsigned int) ; 
- scalar_t__ LIMB_PLACE_VALUE (size_t) ; 
- unsigned int NLIMBS ; 
- int SER_BYTES ; 
- int X_SER_BYTES ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  gf_copy (TYPE_1__*,TYPE_1__* const) ; 
- scalar_t__ gf_hibit (TYPE_1__*) ; 
- int /*<<< orphan*/  gf_strong_reduce (TYPE_1__*) ; 
+
+ size_t LIMBPERM (unsigned int) ;
+ scalar_t__ LIMB_PLACE_VALUE (size_t) ;
+ unsigned int NLIMBS ;
+ int SER_BYTES ;
+ int X_SER_BYTES ;
+ int assert (int) ;
+ int gf_copy (TYPE_1__*,TYPE_1__* const) ;
+ scalar_t__ gf_hibit (TYPE_1__*) ;
+ int gf_strong_reduce (TYPE_1__*) ;
 
 void gf_serialize(uint8_t serial[SER_BYTES], const gf x, int with_hibit)
 {

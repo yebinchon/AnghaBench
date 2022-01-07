@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int UINT ;
-struct TYPE_3__ {struct TYPE_3__* Next; int /*<<< orphan*/  lpExeName; } ;
-typedef  TYPE_1__* PALIAS_HEADER ;
-typedef  int* LPWSTR ;
 
-/* Variables and functions */
- int min (int,int) ; 
- int /*<<< orphan*/  wcscpy (int*,int /*<<< orphan*/ ) ; 
- int wcslen (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int UINT ;
+struct TYPE_3__ {struct TYPE_3__* Next; int lpExeName; } ;
+typedef TYPE_1__* PALIAS_HEADER ;
+typedef int* LPWSTR ;
+
+
+ int min (int,int) ;
+ int wcscpy (int*,int ) ;
+ int wcslen (int ) ;
 
 UINT
 IntGetConsoleAliasesExes(PALIAS_HEADER RootHeader, LPWSTR TargetBuffer, UINT TargetBufferSize)

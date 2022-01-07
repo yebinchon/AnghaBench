@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  UC_TO_MB_FLAG ; 
- int /*<<< orphan*/  fb_flags ; 
+ int UC_TO_MB_FLAG ;
+ int fb_flags ;
 
 void
 uc_to_mb_fb(unsigned int code,
@@ -21,5 +13,5 @@ uc_to_mb_fb(unsigned int code,
        void* callback_arg), void* callback_arg, void* data)
 {
 
-	fb_flags |= UC_TO_MB_FLAG;
+ fb_flags |= UC_TO_MB_FLAG;
 }

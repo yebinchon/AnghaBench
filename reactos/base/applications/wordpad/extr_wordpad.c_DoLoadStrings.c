@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  char* LPWSTR ;
-typedef  int /*<<< orphan*/  HINSTANCE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetModuleHandleW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LoadStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAX_STRING_LEN ; 
- int /*<<< orphan*/  STRING_ALL_FILES ; 
- int /*<<< orphan*/  STRING_DEFAULT_FILENAME ; 
- int /*<<< orphan*/  STRING_PROMPT_SAVE_CHANGES ; 
- int /*<<< orphan*/  STRING_RICHTEXT_FILES_RTF ; 
- int /*<<< orphan*/  STRING_TEXT_FILES_TXT ; 
- int /*<<< orphan*/  STRING_TEXT_FILES_UNICODE_TXT ; 
- int /*<<< orphan*/  STRING_UNITS_CM ; 
- int /*<<< orphan*/  STRING_UNITS_IN ; 
- int /*<<< orphan*/  STRING_UNITS_INCH ; 
- int /*<<< orphan*/  STRING_UNITS_PT ; 
- int /*<<< orphan*/  lstrcpyW (char*,char const*) ; 
- scalar_t__ lstrlenW (char*) ; 
- char* units_cmW ; 
- char* units_inW ; 
- char* units_inchW ; 
- char* units_ptW ; 
- char* wszDefaultFileName ; 
- char* wszFilter ; 
- char* wszSaveChanges ; 
+
+
+
+typedef char WCHAR ;
+typedef char* LPWSTR ;
+typedef int HINSTANCE ;
+
+
+ int GetModuleHandleW (int ) ;
+ int LoadStringW (int ,int ,char*,int ) ;
+ int MAX_STRING_LEN ;
+ int STRING_ALL_FILES ;
+ int STRING_DEFAULT_FILENAME ;
+ int STRING_PROMPT_SAVE_CHANGES ;
+ int STRING_RICHTEXT_FILES_RTF ;
+ int STRING_TEXT_FILES_TXT ;
+ int STRING_TEXT_FILES_UNICODE_TXT ;
+ int STRING_UNITS_CM ;
+ int STRING_UNITS_IN ;
+ int STRING_UNITS_INCH ;
+ int STRING_UNITS_PT ;
+ int lstrcpyW (char*,char const*) ;
+ scalar_t__ lstrlenW (char*) ;
+ char* units_cmW ;
+ char* units_inW ;
+ char* units_inchW ;
+ char* units_ptW ;
+ char* wszDefaultFileName ;
+ char* wszFilter ;
+ char* wszSaveChanges ;
 
 __attribute__((used)) static void DoLoadStrings(void)
 {

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  geo_db; int /*<<< orphan*/ * geoip_database; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GeoIP_new (int /*<<< orphan*/ ) ; 
- TYPE_1__ conf ; 
- int /*<<< orphan*/  geo_location_data ; 
- int /*<<< orphan*/  geoip_open_db (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int geo_db; int * geoip_database; } ;
+
+
+ int GeoIP_new (int ) ;
+ TYPE_1__ conf ;
+ int geo_location_data ;
+ int geoip_open_db (int *) ;
 
 void
 init_geoip (void)
 {
-  /* open custom city GeoIP database */
-  if (conf.geoip_database != NULL)
+
+  if (conf.geoip_database != ((void*)0))
     geo_location_data = geoip_open_db (conf.geoip_database);
-  /* fall back to legacy GeoIP database */
+
   else
     geo_location_data = GeoIP_new (conf.geo_db);
 }

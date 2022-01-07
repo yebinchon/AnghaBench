@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int* sds ;
-struct TYPE_4__ {int* proto; int /*<<< orphan*/  type; int /*<<< orphan*/  flags; int /*<<< orphan*/  protolen; int /*<<< orphan*/ * ctx; } ;
-typedef  int /*<<< orphan*/  RedisModuleCtx ;
-typedef  TYPE_1__ RedisModuleCallReply ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REDISMODULE_REPLYFLAG_TOPARSE ; 
- int /*<<< orphan*/  REDISMODULE_REPLY_ARRAY ; 
- int /*<<< orphan*/  REDISMODULE_REPLY_ERROR ; 
- int /*<<< orphan*/  REDISMODULE_REPLY_INTEGER ; 
- int /*<<< orphan*/  REDISMODULE_REPLY_NULL ; 
- int /*<<< orphan*/  REDISMODULE_REPLY_STRING ; 
- int /*<<< orphan*/  REDISMODULE_REPLY_UNKNOWN ; 
- int /*<<< orphan*/  sdslen (int*) ; 
- TYPE_1__* zmalloc (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int* sds ;
+struct TYPE_4__ {int* proto; int type; int flags; int protolen; int * ctx; } ;
+typedef int RedisModuleCtx ;
+typedef TYPE_1__ RedisModuleCallReply ;
+
+
+ int REDISMODULE_REPLYFLAG_TOPARSE ;
+ int REDISMODULE_REPLY_ARRAY ;
+ int REDISMODULE_REPLY_ERROR ;
+ int REDISMODULE_REPLY_INTEGER ;
+ int REDISMODULE_REPLY_NULL ;
+ int REDISMODULE_REPLY_STRING ;
+ int REDISMODULE_REPLY_UNKNOWN ;
+ int sdslen (int*) ;
+ TYPE_1__* zmalloc (int) ;
 
 RedisModuleCallReply *moduleCreateCallReplyFromProto(RedisModuleCtx *ctx, sds proto) {
     RedisModuleCallReply *reply = zmalloc(sizeof(*reply));
     reply->ctx = ctx;
     reply->proto = proto;
     reply->protolen = sdslen(proto);
-    reply->flags = REDISMODULE_REPLYFLAG_TOPARSE; /* Lazy parsing. */
+    reply->flags = REDISMODULE_REPLYFLAG_TOPARSE;
     switch(proto[0]) {
     case '$':
     case '+': reply->type = REDISMODULE_REPLY_STRING; break;

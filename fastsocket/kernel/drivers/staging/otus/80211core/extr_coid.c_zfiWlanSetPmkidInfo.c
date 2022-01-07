@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zdev_t ;
-typedef  int /*<<< orphan*/  u8_t ;
-typedef  size_t u32_t ;
-typedef  void* u16_t ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int zdev_t ;
+typedef int u8_t ;
+typedef size_t u32_t ;
+typedef void* u16_t ;
 struct TYPE_6__ {size_t bssidCount; TYPE_1__* bssidInfo; } ;
 struct TYPE_7__ {TYPE_2__ pmkidInfo; } ;
 struct TYPE_8__ {TYPE_3__ sta; } ;
-struct TYPE_5__ {int /*<<< orphan*/  pmkid; void** bssid; } ;
+struct TYPE_5__ {int pmkid; void** bssid; } ;
 
-/* Variables and functions */
- size_t ZM_PMKID_MAX_BSS_CNT ; 
- TYPE_4__* wd ; 
- int /*<<< orphan*/  zfMemoryCopy (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- scalar_t__ zfMemoryIsEqual (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  zmw_get_wlan_dev (int /*<<< orphan*/ *) ; 
+
+ size_t ZM_PMKID_MAX_BSS_CNT ;
+ TYPE_4__* wd ;
+ int zfMemoryCopy (int ,int *,int) ;
+ scalar_t__ zfMemoryIsEqual (int *,int *,int) ;
+ int zmw_get_wlan_dev (int *) ;
 
 u8_t zfiWlanSetPmkidInfo(zdev_t* dev, u16_t* bssid, u8_t* pmkid)
 {
-    u32_t  i;
+    u32_t i;
 
     zmw_get_wlan_dev(dev);
 
@@ -41,14 +41,14 @@ u8_t zfiWlanSetPmkidInfo(zdev_t* dev, u16_t* bssid, u8_t* pmkid)
         if ( zfMemoryIsEqual((u8_t*) wd->sta.pmkidInfo.bssidInfo[i].bssid,
                              (u8_t*) bssid, 6) )
         {
-            /* matched */
+
             break;
         }
     }
 
     if ( i < wd->sta.pmkidInfo.bssidCount )
     {
-        /* overwrite the original one */
+
         zfMemoryCopy(wd->sta.pmkidInfo.bssidInfo[i].pmkid, pmkid, 16);
     }
     else

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsUInt8Number ;
-typedef  int cmsUInt32Number ;
-typedef  scalar_t__ cmsHANDLE ;
-struct TYPE_2__ {int* bits; int /*<<< orphan*/ * in; int /*<<< orphan*/  buf; } ;
-typedef  TYPE_1__ _cmsMD5 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MD5_Transform (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  byteReverse (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memmove (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int cmsUInt8Number ;
+typedef int cmsUInt32Number ;
+typedef scalar_t__ cmsHANDLE ;
+struct TYPE_2__ {int* bits; int * in; int buf; } ;
+typedef TYPE_1__ _cmsMD5 ;
+
+
+ int MD5_Transform (int ,int*) ;
+ int byteReverse (int *,int) ;
+ int memmove (int *,int *,int) ;
 
 __attribute__((used)) static
 void MD5add(cmsHANDLE Handle, cmsUInt8Number* buf, cmsUInt32Number len)

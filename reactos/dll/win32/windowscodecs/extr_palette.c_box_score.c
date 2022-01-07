@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct box {unsigned int r_max; unsigned int r_min; unsigned int g_max; unsigned int g_min; unsigned int b_max; unsigned int b_min; } ;
 
-/* Variables and functions */
- unsigned int B_SCALE ; 
- unsigned int B_SHIFT ; 
- unsigned int G_SCALE ; 
- unsigned int G_SHIFT ; 
- unsigned int R_SCALE ; 
- unsigned int R_SHIFT ; 
+
+ unsigned int B_SCALE ;
+ unsigned int B_SHIFT ;
+ unsigned int G_SCALE ;
+ unsigned int G_SHIFT ;
+ unsigned int R_SCALE ;
+ unsigned int R_SHIFT ;
 
 __attribute__((used)) static inline unsigned int box_score(struct box *b)
 {

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct aio_suspend_nocancel_args {int dummy; } ;
 struct aio_suspend_args {int dummy; } ;
-typedef  int /*<<< orphan*/  proc_t ;
+typedef int proc_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __pthread_testcancel (int) ; 
- int aio_suspend_nocancel (int /*<<< orphan*/ ,struct aio_suspend_nocancel_args*,int*) ; 
+
+ int __pthread_testcancel (int) ;
+ int aio_suspend_nocancel (int ,struct aio_suspend_nocancel_args*,int*) ;
 
 int
 aio_suspend(proc_t p, struct aio_suspend_args *uap, int *retval )
 {
-	__pthread_testcancel(1);
-	return(aio_suspend_nocancel(p, (struct aio_suspend_nocancel_args *)uap, retval));
+ __pthread_testcancel(1);
+ return(aio_suspend_nocancel(p, (struct aio_suspend_nocancel_args *)uap, retval));
 }

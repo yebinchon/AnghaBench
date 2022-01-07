@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u64 ;
-typedef  int i64 ;
-typedef  int /*<<< orphan*/  filter ;
-typedef  int /*<<< orphan*/  csr ;
-struct TYPE_9__ {int flags; char* aDoclist; size_t nDoclist; int /*<<< orphan*/  nTerm; int /*<<< orphan*/  zTerm; } ;
-typedef  int /*<<< orphan*/  Fts3Table ;
-typedef  TYPE_1__ Fts3SegFilter ;
-typedef  TYPE_1__ Fts3MultiSegReader ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FTS3_SEGCURSOR_ALL ; 
- int FTS3_SEGMENT_IGNORE_EMPTY ; 
- int FTS3_SEGMENT_REQUIRE_POS ; 
- int FTS3_SEGMENT_SCAN ; 
- int SQLITE_OK ; 
- int SQLITE_ROW ; 
- int /*<<< orphan*/  assert (int) ; 
- int fts3ChecksumEntry (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3Fts3GetVarint (char*,int*) ; 
- int sqlite3Fts3SegReaderCursor (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3Fts3SegReaderFinish (TYPE_1__*) ; 
- int sqlite3Fts3SegReaderStart (int /*<<< orphan*/ *,TYPE_1__*,TYPE_1__*) ; 
- int sqlite3Fts3SegReaderStep (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int u64 ;
+typedef int i64 ;
+typedef int filter ;
+typedef int csr ;
+struct TYPE_9__ {int flags; char* aDoclist; size_t nDoclist; int nTerm; int zTerm; } ;
+typedef int Fts3Table ;
+typedef TYPE_1__ Fts3SegFilter ;
+typedef TYPE_1__ Fts3MultiSegReader ;
+
+
+ int FTS3_SEGCURSOR_ALL ;
+ int FTS3_SEGMENT_IGNORE_EMPTY ;
+ int FTS3_SEGMENT_REQUIRE_POS ;
+ int FTS3_SEGMENT_SCAN ;
+ int SQLITE_OK ;
+ int SQLITE_ROW ;
+ int assert (int) ;
+ int fts3ChecksumEntry (int ,int ,int,int,int,int,int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int sqlite3Fts3GetVarint (char*,int*) ;
+ int sqlite3Fts3SegReaderCursor (int *,int,int,int ,int ,int ,int ,int,TYPE_1__*) ;
+ int sqlite3Fts3SegReaderFinish (TYPE_1__*) ;
+ int sqlite3Fts3SegReaderStart (int *,TYPE_1__*,TYPE_1__*) ;
+ int sqlite3Fts3SegReaderStep (int *,TYPE_1__*) ;
 
 __attribute__((used)) static u64 fts3ChecksumIndex(
-  Fts3Table *p,                   /* FTS3 table handle */
-  int iLangid,                    /* Language id to return cksum for */
-  int iIndex,                     /* Index to cksum (0..p->nIndex-1) */
-  int *pRc                        /* OUT: Return code */
+  Fts3Table *p,
+  int iLangid,
+  int iIndex,
+  int *pRc
 ){
   Fts3SegFilter filter;
   Fts3MultiSegReader csr;
@@ -51,7 +51,7 @@ __attribute__((used)) static u64 fts3ChecksumIndex(
 
   memset(&filter, 0, sizeof(filter));
   memset(&csr, 0, sizeof(csr));
-  filter.flags =  FTS3_SEGMENT_REQUIRE_POS|FTS3_SEGMENT_IGNORE_EMPTY;
+  filter.flags = FTS3_SEGMENT_REQUIRE_POS|FTS3_SEGMENT_IGNORE_EMPTY;
   filter.flags |= FTS3_SEGMENT_SCAN;
 
   rc = sqlite3Fts3SegReaderCursor(

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int jsdisp_t ;
 struct TYPE_4__ {scalar_t__ type; } ;
-typedef  TYPE_1__ dispex_prop_t ;
-typedef  int /*<<< orphan*/  builtin_info_t ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ dispex_prop_t ;
+typedef int builtin_info_t ;
+typedef char WCHAR ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ PROP_DELETED ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  find_prop_name_prot (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,TYPE_1__**) ; 
- int /*<<< orphan*/  get_object (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * iface_to_jsdisp (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_dispex (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- scalar_t__ is_object_instance (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  prop_get (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  string_hash (char const*) ; 
+
+ int ERR (char*) ;
+ scalar_t__ FAILED (int ) ;
+ scalar_t__ PROP_DELETED ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int find_prop_name_prot (int *,int ,char const*,TYPE_1__**) ;
+ int get_object (int ) ;
+ int * iface_to_jsdisp (int ) ;
+ int init_dispex (int *,int *,int const*,int *) ;
+ scalar_t__ is_object_instance (int ) ;
+ int jsdisp_release (int *) ;
+ int jsval_release (int ) ;
+ int prop_get (int *,TYPE_1__*,int *) ;
+ int string_hash (char const*) ;
 
 HRESULT init_dispex_from_constr(jsdisp_t *dispex, script_ctx_t *ctx, const builtin_info_t *builtin_info, jsdisp_t *constr)
 {
-    jsdisp_t *prot = NULL;
+    jsdisp_t *prot = ((void*)0);
     dispex_prop_t *prop;
     HRESULT hres;
 

@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int ESgetpars ;
+ int MAXPARS ;
+ scalar_t__ gc_numpars ;
+ scalar_t__* gc_par ;
+ int gc_putc_getpars (unsigned char) ;
+ int gc_vt100state ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ESgetpars ; 
- int MAXPARS ; 
- scalar_t__ gc_numpars ; 
- scalar_t__* gc_par ; 
- int /*<<< orphan*/  gc_putc_getpars (unsigned char) ; 
- int /*<<< orphan*/  gc_vt100state ; 
-
-__attribute__((used)) static void 
+__attribute__((used)) static void
 gc_putc_square(unsigned char ch)
 {
-	int     i;
+ int i;
 
-	for (i = 0; i < MAXPARS; i++) {
-		gc_par[i] = 0;
-	}
+ for (i = 0; i < MAXPARS; i++) {
+  gc_par[i] = 0;
+ }
 
-	gc_numpars = 0;
-	gc_vt100state = ESgetpars;
+ gc_numpars = 0;
+ gc_vt100state = ESgetpars;
 
-	gc_putc_getpars(ch);
+ gc_putc_getpars(ch);
 
 }

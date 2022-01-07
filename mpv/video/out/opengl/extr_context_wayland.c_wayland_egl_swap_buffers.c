@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct vo_wayland_state {int user_sbc; int frame_wait; scalar_t__ presentation; TYPE_2__* opts; int /*<<< orphan*/  feedback; int /*<<< orphan*/  surface; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct vo_wayland_state {int user_sbc; int frame_wait; scalar_t__ presentation; TYPE_2__* opts; int feedback; int surface; } ;
 struct ra_ctx {TYPE_1__* vo; struct priv* priv; } ;
-struct priv {int /*<<< orphan*/  egl_surface; int /*<<< orphan*/  egl_display; } ;
-struct TYPE_4__ {int /*<<< orphan*/  frame_offset; int /*<<< orphan*/  disable_vsync; } ;
+struct priv {int egl_surface; int egl_display; } ;
+struct TYPE_4__ {int frame_offset; int disable_vsync; } ;
 struct TYPE_3__ {struct vo_wayland_state* wl; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  eglSwapBuffers (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  feedback_listener ; 
- int last_available_sync (struct vo_wayland_state*) ; 
- int /*<<< orphan*/  queue_new_sync (struct vo_wayland_state*) ; 
- int /*<<< orphan*/  vo_wayland_wait_frame (struct vo_wayland_state*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wayland_sync_swap (struct vo_wayland_state*) ; 
- int /*<<< orphan*/  wp_presentation_feedback (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wp_presentation_feedback_add_listener (int /*<<< orphan*/ ,int /*<<< orphan*/ *,struct vo_wayland_state*) ; 
+
+ int eglSwapBuffers (int ,int ) ;
+ int feedback_listener ;
+ int last_available_sync (struct vo_wayland_state*) ;
+ int queue_new_sync (struct vo_wayland_state*) ;
+ int vo_wayland_wait_frame (struct vo_wayland_state*,int ) ;
+ int wayland_sync_swap (struct vo_wayland_state*) ;
+ int wp_presentation_feedback (scalar_t__,int ) ;
+ int wp_presentation_feedback_add_listener (int ,int *,struct vo_wayland_state*) ;
 
 __attribute__((used)) static void wayland_egl_swap_buffers(struct ra_ctx *ctx)
 {
@@ -49,5 +49,5 @@ __attribute__((used)) static void wayland_egl_swap_buffers(struct ra_ctx *ctx)
     if (wl->presentation)
         wayland_sync_swap(wl);
 
-    wl->frame_wait = true;
+    wl->frame_wait = 1;
 }

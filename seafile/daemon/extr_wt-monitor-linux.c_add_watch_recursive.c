@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct dirent {char const* d_name; scalar_t__ d_type; } ;
-typedef  scalar_t__ gboolean ;
-struct TYPE_6__ {int /*<<< orphan*/  status; int /*<<< orphan*/  mapping; } ;
-struct TYPE_5__ {int /*<<< orphan*/  st_mode; } ;
-typedef  TYPE_1__ SeafStat ;
-typedef  TYPE_2__ RepoWatchInfo ;
-typedef  int /*<<< orphan*/  DIR ;
+typedef scalar_t__ gboolean ;
+struct TYPE_6__ {int status; int mapping; } ;
+struct TYPE_5__ {int st_mode; } ;
+typedef TYPE_1__ SeafStat ;
+typedef TYPE_2__ RepoWatchInfo ;
+typedef int DIR ;
 
-/* Variables and functions */
- scalar_t__ DT_DIR ; 
- scalar_t__ DT_LNK ; 
- scalar_t__ DT_REG ; 
- scalar_t__ DT_UNKNOWN ; 
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- scalar_t__ WATCH_MASK ; 
- int /*<<< orphan*/  WT_EVENT_CREATE_OR_UPDATE ; 
- int /*<<< orphan*/  add_event_to_queue (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  add_mapping (int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  errno ; 
- char* g_build_filename (char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- int inotify_add_watch (int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * opendir (char*) ; 
- struct dirent* readdir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  seaf_debug (char*,char*) ; 
- int /*<<< orphan*/  seaf_warning (char*,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ stat (char*,TYPE_1__*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ DT_DIR ;
+ scalar_t__ DT_LNK ;
+ scalar_t__ DT_REG ;
+ scalar_t__ DT_UNKNOWN ;
+ scalar_t__ S_ISDIR (int ) ;
+ scalar_t__ WATCH_MASK ;
+ int WT_EVENT_CREATE_OR_UPDATE ;
+ int add_event_to_queue (int ,int ,char const*,int *) ;
+ int add_mapping (int ,char const*,int) ;
+ int closedir (int *) ;
+ int errno ;
+ char* g_build_filename (char const*,char const*,int *) ;
+ int g_free (char*) ;
+ int inotify_add_watch (int,char*,int ) ;
+ int * opendir (char*) ;
+ struct dirent* readdir (int *) ;
+ int seaf_debug (char*,char*) ;
+ int seaf_warning (char*,char*,int ) ;
+ scalar_t__ stat (char*,TYPE_1__*) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int strerror (int ) ;
 
 __attribute__((used)) static int
 add_watch_recursive (RepoWatchInfo *info,
@@ -57,7 +57,7 @@ add_watch_recursive (RepoWatchInfo *info,
     struct dirent *dent;
     int wd;
 
-    full_path = g_build_filename (worktree, path, NULL);
+    full_path = g_build_filename (worktree, path, ((void*)0));
 
     if (stat (full_path, &st) < 0) {
         seaf_warning ("[wt mon] fail to stat %s: %s\n", full_path, strerror(errno));
@@ -66,7 +66,7 @@ add_watch_recursive (RepoWatchInfo *info,
 
     if (add_events && path[0] != 0)
         add_event_to_queue (info->status, WT_EVENT_CREATE_OR_UPDATE,
-                            path, NULL);
+                            path, ((void*)0));
 
     if (S_ISDIR (st.st_mode)) {
         seaf_debug ("Watching %s.\n", full_path);
@@ -95,19 +95,19 @@ add_watch_recursive (RepoWatchInfo *info,
                 strcmp (dent->d_name, "..") == 0)
                 continue;
 
-            char *sub_path = g_build_filename (path, dent->d_name, NULL);
+            char *sub_path = g_build_filename (path, dent->d_name, ((void*)0));
 
-            /* Check d_type to avoid stating every files under this dir.
-             * Note that d_type may not be supported in some file systems,
-             * in this case DT_UNKNOWN is returned.
-             */
+
+
+
+
             if (dent->d_type == DT_DIR || dent->d_type == DT_LNK ||
                 dent->d_type == DT_UNKNOWN)
                 add_watch_recursive (info, in_fd, worktree, sub_path, add_events);
 
             if (dent->d_type == DT_REG && add_events)
                 add_event_to_queue (info->status, WT_EVENT_CREATE_OR_UPDATE,
-                                    sub_path, NULL);
+                                    sub_path, ((void*)0));
             g_free (sub_path);
         }
 

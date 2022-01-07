@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* int64_t ;
-struct TYPE_3__ {int seek_req; int /*<<< orphan*/  continue_read_thread; int /*<<< orphan*/  seek_flags; void* seek_rel; void* seek_pos; } ;
-typedef  TYPE_1__ VideoState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVSEEK_FLAG_BYTE ; 
- int /*<<< orphan*/  SDL_CondSignal (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef void* int64_t ;
+struct TYPE_3__ {int seek_req; int continue_read_thread; int seek_flags; void* seek_rel; void* seek_pos; } ;
+typedef TYPE_1__ VideoState ;
+
+
+ int AVSEEK_FLAG_BYTE ;
+ int SDL_CondSignal (int ) ;
 
 __attribute__((used)) static void stream_seek(VideoState *is, int64_t pos, int64_t rel, int seek_by_bytes)
 {

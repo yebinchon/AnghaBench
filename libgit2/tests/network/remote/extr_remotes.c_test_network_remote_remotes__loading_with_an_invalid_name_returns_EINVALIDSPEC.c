@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GIT_EINVALIDSPEC ; 
- int /*<<< orphan*/ * _remote ; 
- int /*<<< orphan*/  _repo ; 
- int /*<<< orphan*/  cl_assert_equal_i (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_remote_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_remote_lookup (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char*) ; 
+ int GIT_EINVALIDSPEC ;
+ int * _remote ;
+ int _repo ;
+ int cl_assert_equal_i (int ,int ) ;
+ int git_remote_free (int *) ;
+ int git_remote_lookup (int **,int ,char*) ;
 
 void test_network_remote_remotes__loading_with_an_invalid_name_returns_EINVALIDSPEC(void)
 {
-	git_remote_free(_remote);
-	_remote = NULL;
+ git_remote_free(_remote);
+ _remote = ((void*)0);
 
-	cl_assert_equal_i(GIT_EINVALIDSPEC, git_remote_lookup(&_remote, _repo, "Inv@{id"));
+ cl_assert_equal_i(GIT_EINVALIDSPEC, git_remote_lookup(&_remote, _repo, "Inv@{id"));
 }

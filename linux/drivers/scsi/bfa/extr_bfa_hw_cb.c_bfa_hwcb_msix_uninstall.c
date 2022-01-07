@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * handler; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * handler; } ;
 struct bfa_s {TYPE_1__ msix; } ;
 
-/* Variables and functions */
- int BFI_MSIX_CB_MAX ; 
- int /*<<< orphan*/  bfa_hwcb_msix_dummy ; 
+
+ int BFI_MSIX_CB_MAX ;
+ int bfa_hwcb_msix_dummy ;
 
 void
 bfa_hwcb_msix_uninstall(struct bfa_s *bfa)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < BFI_MSIX_CB_MAX; i++)
-		bfa->msix.handler[i] = bfa_hwcb_msix_dummy;
+ for (i = 0; i < BFI_MSIX_CB_MAX; i++)
+  bfa->msix.handler[i] = bfa_hwcb_msix_dummy;
 }

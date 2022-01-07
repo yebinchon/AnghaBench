@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {struct TYPE_6__* file; } ;
-typedef  TYPE_1__ save_task_state_t ;
-typedef  int /*<<< orphan*/  retro_task_t ;
-typedef  int /*<<< orphan*/  load_task_data_t ;
+typedef TYPE_1__ save_task_state_t ;
+typedef int retro_task_t ;
+typedef int load_task_data_t ;
 
-/* Variables and functions */
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  intfstream_close (TYPE_1__*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,TYPE_1__*,int) ; 
- int /*<<< orphan*/  strdup (char*) ; 
- scalar_t__ task_get_cancelled (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  task_get_error (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  task_set_data (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  task_set_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  task_set_finished (int /*<<< orphan*/ *,int) ; 
+
+ scalar_t__ calloc (int,int) ;
+ int free (TYPE_1__*) ;
+ int intfstream_close (TYPE_1__*) ;
+ int memcpy (int *,TYPE_1__*,int) ;
+ int strdup (char*) ;
+ scalar_t__ task_get_cancelled (int *) ;
+ int task_get_error (int *) ;
+ int task_set_data (int *,int *) ;
+ int task_set_error (int *,int ) ;
+ int task_set_finished (int *,int) ;
 
 __attribute__((used)) static void task_load_handler_finished(retro_task_t *task,
       save_task_state_t *state)
 {
-   load_task_data_t *task_data = NULL;
+   load_task_data_t *task_data = ((void*)0);
 
-   task_set_finished(task, true);
+   task_set_finished(task, 1);
 
    if (state->file)
    {

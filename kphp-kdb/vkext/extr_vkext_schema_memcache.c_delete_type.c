@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tl_type {int constructors_num; int extra; struct tl_type* constructors; scalar_t__ id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD_PFREE (int) ; 
- int /*<<< orphan*/  delete_combinator (struct tl_type) ; 
- int strlen (scalar_t__) ; 
- int /*<<< orphan*/  tl_types ; 
- int /*<<< orphan*/  zzfree (struct tl_type*,int) ; 
- int /*<<< orphan*/  zzstrfree (scalar_t__) ; 
+
+ int ADD_PFREE (int) ;
+ int delete_combinator (struct tl_type) ;
+ int strlen (scalar_t__) ;
+ int tl_types ;
+ int zzfree (struct tl_type*,int) ;
+ int zzstrfree (scalar_t__) ;
 
 void delete_type (struct tl_type *t) {
   if (!t) { return; }

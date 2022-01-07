@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_26__   TYPE_2__ ;
-typedef  struct TYPE_25__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  chf ;
-typedef  int WORD ;
+
+
+typedef struct TYPE_26__ TYPE_2__ ;
+typedef struct TYPE_25__ TYPE_1__ ;
+
+
+typedef int chf ;
+typedef int WORD ;
 struct TYPE_26__ {int cbSize; } ;
-struct TYPE_25__ {int nUDArrowX; int styleFlags; int /*<<< orphan*/  hwndParent; int /*<<< orphan*/  bDialogMode; int /*<<< orphan*/  bEmulateVersion10; int /*<<< orphan*/  nSelectionType; scalar_t__ bMouseCaptured; } ;
-typedef  TYPE_1__ ME_TextEditor ;
-typedef  TYPE_2__ CHARFORMAT2W ;
-typedef  int BOOL ;
+struct TYPE_25__ {int nUDArrowX; int styleFlags; int hwndParent; int bDialogMode; int bEmulateVersion10; int nSelectionType; scalar_t__ bMouseCaptured; } ;
+typedef TYPE_1__ ME_TextEditor ;
+typedef TYPE_2__ CHARFORMAT2W ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int ES_READONLY ; 
- int FALSE ; 
- int GetKeyState (int) ; 
- int /*<<< orphan*/  MB_OK ; 
- int /*<<< orphan*/  ME_ArrowKey (TYPE_1__*,int const,int,int) ; 
- int /*<<< orphan*/  ME_CheckCharOffsets (TYPE_1__*) ; 
- int /*<<< orphan*/  ME_CommitCoalescingUndo (TYPE_1__*) ; 
- int /*<<< orphan*/  ME_CommitUndo (TYPE_1__*) ; 
- int /*<<< orphan*/  ME_ContinueCoalescingTransaction (TYPE_1__*) ; 
- int /*<<< orphan*/  ME_DeleteSelection (TYPE_1__*) ; 
- int ME_DeleteTextAtCursor (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  ME_DumpStyleToBuf (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  ME_GetSelectionCharFormat (TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  ME_IsSelection (TYPE_1__*) ; 
- int /*<<< orphan*/  ME_MoveCursorFromTableRowStartParagraph (TYPE_1__*) ; 
- int /*<<< orphan*/  ME_Redo (TYPE_1__*) ; 
- int /*<<< orphan*/  ME_SendRequestResize (TYPE_1__*,int) ; 
- int /*<<< orphan*/  ME_Undo (TYPE_1__*) ; 
- int /*<<< orphan*/  ME_UpdateRepaint (TYPE_1__*,int) ; 
- int /*<<< orphan*/  ME_UpdateSelectionLinkAttribute (TYPE_1__*) ; 
- int /*<<< orphan*/  MessageBoxA (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PostMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int TRUE ; 
-#define  VK_BACK 140 
- int VK_CONTROL ; 
-#define  VK_DELETE 139 
-#define  VK_DOWN 138 
-#define  VK_END 137 
-#define  VK_ESCAPE 136 
-#define  VK_HOME 135 
-#define  VK_LEFT 134 
- int VK_MENU ; 
-#define  VK_NEXT 133 
-#define  VK_PRIOR 132 
-#define  VK_RETURN 131 
-#define  VK_RIGHT 130 
- int VK_SHIFT ; 
-#define  VK_TAB 129 
-#define  VK_UP 128 
- int /*<<< orphan*/  WM_CLOSE ; 
- int /*<<< orphan*/  WM_NEXTDLGCTL ; 
- int copy_or_cut (TYPE_1__*,int) ; 
- int /*<<< orphan*/  handle_EM_EXSETSEL (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int handle_enter (TYPE_1__*) ; 
- int paste_special (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stPosition ; 
+
+ int ES_READONLY ;
+ int FALSE ;
+ int GetKeyState (int) ;
+ int MB_OK ;
+ int ME_ArrowKey (TYPE_1__*,int const,int,int) ;
+ int ME_CheckCharOffsets (TYPE_1__*) ;
+ int ME_CommitCoalescingUndo (TYPE_1__*) ;
+ int ME_CommitUndo (TYPE_1__*) ;
+ int ME_ContinueCoalescingTransaction (TYPE_1__*) ;
+ int ME_DeleteSelection (TYPE_1__*) ;
+ int ME_DeleteTextAtCursor (TYPE_1__*,int,int) ;
+ int ME_DumpStyleToBuf (TYPE_2__*,char*) ;
+ int ME_GetSelectionCharFormat (TYPE_1__*,TYPE_2__*) ;
+ int ME_IsSelection (TYPE_1__*) ;
+ int ME_MoveCursorFromTableRowStartParagraph (TYPE_1__*) ;
+ int ME_Redo (TYPE_1__*) ;
+ int ME_SendRequestResize (TYPE_1__*,int) ;
+ int ME_Undo (TYPE_1__*) ;
+ int ME_UpdateRepaint (TYPE_1__*,int) ;
+ int ME_UpdateSelectionLinkAttribute (TYPE_1__*) ;
+ int MessageBoxA (int *,char*,char*,int ) ;
+ int PostMessageW (int ,int ,int ,int ) ;
+ int SendMessageW (int ,int ,int,int ) ;
+ int TRUE ;
+
+ int VK_CONTROL ;
+
+
+
+
+
+
+ int VK_MENU ;
+
+
+
+
+ int VK_SHIFT ;
+
+
+ int WM_CLOSE ;
+ int WM_NEXTDLGCTL ;
+ int copy_or_cut (TYPE_1__*,int) ;
+ int handle_EM_EXSETSEL (TYPE_1__*,int ,int) ;
+ int handle_enter (TYPE_1__*) ;
+ int paste_special (TYPE_1__*,int ,int *,int) ;
+ int stPosition ;
 
 __attribute__((used)) static BOOL
 ME_KeyDown(ME_TextEditor *editor, WORD nKey)
@@ -82,23 +82,23 @@ ME_KeyDown(ME_TextEditor *editor, WORD nKey)
 
   switch (nKey)
   {
-    case VK_LEFT:
-    case VK_RIGHT:
-    case VK_HOME:
-    case VK_END:
+    case 134:
+    case 130:
+    case 135:
+    case 137:
         editor->nUDArrowX = -1;
-        /* fall through */
-    case VK_UP:
-    case VK_DOWN:
-    case VK_PRIOR:
-    case VK_NEXT:
-      ME_CommitUndo(editor); /* End coalesced undos for typed characters */
+
+    case 128:
+    case 138:
+    case 132:
+    case 133:
+      ME_CommitUndo(editor);
       ME_ArrowKey(editor, nKey, shift_is_down, ctrl_is_down);
       return TRUE;
-    case VK_BACK:
-    case VK_DELETE:
+    case 140:
+    case 139:
       editor->nUDArrowX = -1;
-      /* FIXME backspace and delete aren't the same, they act different wrt paragraph style of the merged paragraph */
+
       if (editor->styleFlags & ES_READONLY)
         return FALSE;
       if (ME_IsSelection(editor))
@@ -106,24 +106,24 @@ ME_KeyDown(ME_TextEditor *editor, WORD nKey)
         ME_DeleteSelection(editor);
         ME_CommitUndo(editor);
       }
-      else if (nKey == VK_DELETE)
+      else if (nKey == 139)
       {
-        /* Delete stops group typing.
-         * (See MSDN remarks on EM_STOPGROUPTYPING message) */
+
+
         ME_DeleteTextAtCursor(editor, 1, 1);
         ME_CommitUndo(editor);
       }
-      else if (ME_ArrowKey(editor, VK_LEFT, FALSE, FALSE))
+      else if (ME_ArrowKey(editor, 134, FALSE, FALSE))
       {
         BOOL bDeletionSucceeded;
-        /* Backspace can be grouped for a single undo */
+
         ME_ContinueCoalescingTransaction(editor);
         bDeletionSucceeded = ME_DeleteTextAtCursor(editor, 1, 1);
-        if (!bDeletionSucceeded && !editor->bEmulateVersion10) { /* v4.1 */
-          /* Deletion was prevented so the cursor is moved back to where it was.
-           * (e.g. this happens when trying to delete cell boundaries)
-           */
-          ME_ArrowKey(editor, VK_RIGHT, FALSE, FALSE);
+        if (!bDeletionSucceeded && !editor->bEmulateVersion10) {
+
+
+
+          ME_ArrowKey(editor, 130, FALSE, FALSE);
         }
         ME_CommitCoalescingUndo(editor);
       }
@@ -134,15 +134,15 @@ ME_KeyDown(ME_TextEditor *editor, WORD nKey)
       ME_UpdateRepaint(editor, FALSE);
       ME_SendRequestResize(editor, FALSE);
       return TRUE;
-    case VK_RETURN:
+    case 131:
       if (!editor->bEmulateVersion10)
           return handle_enter(editor);
       break;
-    case VK_ESCAPE:
+    case 136:
       if (editor->bDialogMode && editor->hwndParent)
         PostMessageW(editor->hwndParent, WM_CLOSE, 0, 0);
       return TRUE;
-    case VK_TAB:
+    case 129:
       if (editor->bDialogMode && editor->hwndParent)
         SendMessageW(editor->hwndParent, WM_NEXTDLGCTL, shift_is_down, 0);
       return TRUE;
@@ -155,7 +155,7 @@ ME_KeyDown(ME_TextEditor *editor, WORD nKey)
       break;
     case 'V':
       if (ctrl_is_down)
-        return paste_special( editor, 0, NULL, FALSE );
+        return paste_special( editor, 0, ((void*)0), FALSE );
       break;
     case 'C':
     case 'X':
@@ -187,10 +187,10 @@ ME_KeyDown(ME_TextEditor *editor, WORD nKey)
           CHARFORMAT2W chf;
           char buf[2048];
           chf.cbSize = sizeof(chf);
-          
+
           ME_GetSelectionCharFormat(editor, &chf);
           ME_DumpStyleToBuf(&chf, buf);
-          MessageBoxA(NULL, buf, "Style dump", MB_OK);
+          MessageBoxA(((void*)0), buf, "Style dump", MB_OK);
         }
         if (nKey == 'Q')
         {

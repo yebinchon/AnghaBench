@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct tipc_conn {TYPE_1__* sock; int /*<<< orphan*/  flags; } ;
-struct sock {int /*<<< orphan*/  sk_callback_lock; int /*<<< orphan*/ * sk_user_data; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct tipc_conn {TYPE_1__* sock; int flags; } ;
+struct sock {int sk_callback_lock; int * sk_user_data; } ;
 struct TYPE_2__ {struct sock* sk; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CF_CONNECTED ; 
- int /*<<< orphan*/  SHUT_RDWR ; 
- int /*<<< orphan*/  conn_put (struct tipc_conn*) ; 
- int /*<<< orphan*/  kernel_sock_shutdown (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int test_and_clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tipc_conn_delete_sub (struct tipc_conn*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_lock_bh (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_unlock_bh (int /*<<< orphan*/ *) ; 
+
+ int CF_CONNECTED ;
+ int SHUT_RDWR ;
+ int conn_put (struct tipc_conn*) ;
+ int kernel_sock_shutdown (TYPE_1__*,int ) ;
+ int test_and_clear_bit (int ,int *) ;
+ int tipc_conn_delete_sub (struct tipc_conn*,int *) ;
+ int write_lock_bh (int *) ;
+ int write_unlock_bh (int *) ;
 
 __attribute__((used)) static void tipc_conn_close(struct tipc_conn *con)
 {
-	struct sock *sk = con->sock->sk;
-	bool disconnect = false;
+ struct sock *sk = con->sock->sk;
+ bool disconnect = 0;
 
-	write_lock_bh(&sk->sk_callback_lock);
-	disconnect = test_and_clear_bit(CF_CONNECTED, &con->flags);
+ write_lock_bh(&sk->sk_callback_lock);
+ disconnect = test_and_clear_bit(CF_CONNECTED, &con->flags);
 
-	if (disconnect) {
-		sk->sk_user_data = NULL;
-		tipc_conn_delete_sub(con, NULL);
-	}
-	write_unlock_bh(&sk->sk_callback_lock);
+ if (disconnect) {
+  sk->sk_user_data = ((void*)0);
+  tipc_conn_delete_sub(con, ((void*)0));
+ }
+ write_unlock_bh(&sk->sk_callback_lock);
 
-	/* Handle concurrent calls from sending and receiving threads */
-	if (!disconnect)
-		return;
 
-	/* Don't flush pending works, -just let them expire */
-	kernel_sock_shutdown(con->sock, SHUT_RDWR);
+ if (!disconnect)
+  return;
 
-	conn_put(con);
+
+ kernel_sock_shutdown(con->sock, SHUT_RDWR);
+
+ conn_put(con);
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ valid; TYPE_2__* fc; } ;
-typedef  TYPE_1__ cached_converted_chunk ;
+typedef TYPE_1__ cached_converted_chunk ;
 struct TYPE_5__ {struct TYPE_5__* pointer_to_free; } ;
 
-/* Variables and functions */
- int cache_size ; 
- TYPE_1__** chunk_cache ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
+
+ int cache_size ;
+ TYPE_1__** chunk_cache ;
+ int free (TYPE_2__*) ;
 
 void reset_cache_size(int size)
 {
@@ -31,7 +31,7 @@ void reset_cache_size(int size)
             if (ccc->fc) {
                free(ccc->fc->pointer_to_free);
                free(ccc->fc);
-               ccc->fc = NULL;
+               ccc->fc = ((void*)0);
             }
             ccc->valid = 0;
          }

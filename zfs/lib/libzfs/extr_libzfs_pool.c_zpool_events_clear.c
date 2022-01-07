@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* member_0; scalar_t__ zc_cookie; } ;
-typedef  TYPE_1__ zfs_cmd_t ;
-typedef  int /*<<< orphan*/  msg ;
-typedef  int /*<<< orphan*/  libzfs_handle_t ;
+typedef TYPE_1__ zfs_cmd_t ;
+typedef int msg ;
+typedef int libzfs_handle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEXT_DOMAIN ; 
- int /*<<< orphan*/  ZFS_IOC_EVENTS_CLEAR ; 
- char* dgettext (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  snprintf (char*,int,char*) ; 
- scalar_t__ zfs_ioctl (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int zpool_standard_error_fmt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
+
+ int TEXT_DOMAIN ;
+ int ZFS_IOC_EVENTS_CLEAR ;
+ char* dgettext (int ,char*) ;
+ int errno ;
+ int snprintf (char*,int,char*) ;
+ scalar_t__ zfs_ioctl (int *,int ,TYPE_1__*) ;
+ int zpool_standard_error_fmt (int *,int ,char*) ;
 
 int
 zpool_events_clear(libzfs_handle_t *hdl, int *count)
 {
-	zfs_cmd_t zc = {"\0"};
-	char msg[1024];
+ zfs_cmd_t zc = {"\0"};
+ char msg[1024];
 
-	(void) snprintf(msg, sizeof (msg), dgettext(TEXT_DOMAIN,
-	    "cannot clear events"));
+ (void) snprintf(msg, sizeof (msg), dgettext(TEXT_DOMAIN,
+     "cannot clear events"));
 
-	if (zfs_ioctl(hdl, ZFS_IOC_EVENTS_CLEAR, &zc) != 0)
-		return (zpool_standard_error_fmt(hdl, errno, msg));
+ if (zfs_ioctl(hdl, ZFS_IOC_EVENTS_CLEAR, &zc) != 0)
+  return (zpool_standard_error_fmt(hdl, errno, msg));
 
-	if (count != NULL)
-		*count = (int)zc.zc_cookie; /* # of events cleared */
+ if (count != ((void*)0))
+  *count = (int)zc.zc_cookie;
 
-	return (0);
+ return (0);
 }

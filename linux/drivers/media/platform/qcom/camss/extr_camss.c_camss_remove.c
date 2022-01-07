@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct platform_device {int dummy; } ;
-struct camss {unsigned int vfe_num; int /*<<< orphan*/  ref_count; int /*<<< orphan*/  notifier; int /*<<< orphan*/ * vfe; } ;
+struct camss {unsigned int vfe_num; int ref_count; int notifier; int * vfe; } ;
 
-/* Variables and functions */
- scalar_t__ atomic_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  camss_delete (struct camss*) ; 
- int /*<<< orphan*/  camss_unregister_entities (struct camss*) ; 
- int /*<<< orphan*/  msm_vfe_stop_streaming (int /*<<< orphan*/ *) ; 
- struct camss* platform_get_drvdata (struct platform_device*) ; 
- int /*<<< orphan*/  v4l2_async_notifier_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  v4l2_async_notifier_unregister (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ atomic_read (int *) ;
+ int camss_delete (struct camss*) ;
+ int camss_unregister_entities (struct camss*) ;
+ int msm_vfe_stop_streaming (int *) ;
+ struct camss* platform_get_drvdata (struct platform_device*) ;
+ int v4l2_async_notifier_cleanup (int *) ;
+ int v4l2_async_notifier_unregister (int *) ;
 
 __attribute__((used)) static int camss_remove(struct platform_device *pdev)
 {
-	unsigned int i;
+ unsigned int i;
 
-	struct camss *camss = platform_get_drvdata(pdev);
+ struct camss *camss = platform_get_drvdata(pdev);
 
-	for (i = 0; i < camss->vfe_num; i++)
-		msm_vfe_stop_streaming(&camss->vfe[i]);
+ for (i = 0; i < camss->vfe_num; i++)
+  msm_vfe_stop_streaming(&camss->vfe[i]);
 
-	v4l2_async_notifier_unregister(&camss->notifier);
-	v4l2_async_notifier_cleanup(&camss->notifier);
-	camss_unregister_entities(camss);
+ v4l2_async_notifier_unregister(&camss->notifier);
+ v4l2_async_notifier_cleanup(&camss->notifier);
+ camss_unregister_entities(camss);
 
-	if (atomic_read(&camss->ref_count) == 0)
-		camss_delete(camss);
+ if (atomic_read(&camss->ref_count) == 0)
+  camss_delete(camss);
 
-	return 0;
+ return 0;
 }

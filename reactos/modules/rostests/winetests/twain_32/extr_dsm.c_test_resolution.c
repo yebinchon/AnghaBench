@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  orig_value ;
-typedef  int /*<<< orphan*/  default_value ;
-typedef  int /*<<< orphan*/  cap ;
-struct TYPE_13__ {int Cap; int /*<<< orphan*/  hContainer; void* ConType; } ;
-struct TYPE_12__ {int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-struct TYPE_11__ {scalar_t__ MinValue; scalar_t__ MaxValue; scalar_t__ StepSize; scalar_t__ CurrentValue; int /*<<< orphan*/  DefaultValue; int /*<<< orphan*/  ItemType; } ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int orig_value ;
+typedef int default_value ;
+typedef int cap ;
+struct TYPE_13__ {int Cap; int hContainer; void* ConType; } ;
+struct TYPE_12__ {int member_1; int member_0; } ;
+struct TYPE_11__ {scalar_t__ MinValue; scalar_t__ MaxValue; scalar_t__ StepSize; scalar_t__ CurrentValue; int DefaultValue; int ItemType; } ;
 struct TYPE_10__ {scalar_t__ ConditionCode; } ;
-typedef  scalar_t__ TW_UINT32 ;
-typedef  int TW_UINT16 ;
-typedef  TYPE_1__ TW_STATUS ;
-typedef  TYPE_2__ TW_RANGE ;
-typedef  int TW_INT32 ;
-typedef  int /*<<< orphan*/  TW_IDENTITY ;
-typedef  TYPE_3__ TW_FIX32 ;
-typedef  TYPE_4__ TW_CAPABILITY ;
+typedef scalar_t__ TW_UINT32 ;
+typedef int TW_UINT16 ;
+typedef TYPE_1__ TW_STATUS ;
+typedef TYPE_2__ TW_RANGE ;
+typedef int TW_INT32 ;
+typedef int TW_IDENTITY ;
+typedef TYPE_3__ TW_FIX32 ;
+typedef TYPE_4__ TW_CAPABILITY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DAT_CAPABILITY ; 
- int /*<<< orphan*/  DG_CONTROL ; 
- int /*<<< orphan*/  GlobalFree (int /*<<< orphan*/ ) ; 
- TYPE_2__* GlobalLock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GlobalUnlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MSG_GET ; 
- int /*<<< orphan*/  MSG_GETCURRENT ; 
- int /*<<< orphan*/  MSG_GETDEFAULT ; 
- int /*<<< orphan*/  MSG_QUERYSUPPORT ; 
- int /*<<< orphan*/  MSG_RESET ; 
- int /*<<< orphan*/  MSG_SET ; 
- scalar_t__ TWCC_SUCCESS ; 
- void* TWON_DONTCARE16 ; 
- void* TWON_ONEVALUE ; 
- void* TWON_RANGE ; 
- int TWQC_GET ; 
- int TWQC_GETCURRENT ; 
- int TWQC_GETDEFAULT ; 
- int TWQC_RESET ; 
- int TWQC_SET ; 
- int TWRC_SUCCESS ; 
- int TWTY_FIX32 ; 
- int /*<<< orphan*/  alloc_and_set_onevalue (scalar_t__,int) ; 
- int /*<<< orphan*/  get_condition_code (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  get_onevalue (int /*<<< orphan*/ ,scalar_t__*,int*) ; 
- int /*<<< orphan*/  memcpy (TYPE_3__*,scalar_t__*,int) ; 
- int /*<<< orphan*/  memset (TYPE_4__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
- int pDSM_Entry (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_4__*) ; 
- int /*<<< orphan*/  trace (char*,int,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int DAT_CAPABILITY ;
+ int DG_CONTROL ;
+ int GlobalFree (int ) ;
+ TYPE_2__* GlobalLock (int ) ;
+ int GlobalUnlock (int ) ;
+ int MSG_GET ;
+ int MSG_GETCURRENT ;
+ int MSG_GETDEFAULT ;
+ int MSG_QUERYSUPPORT ;
+ int MSG_RESET ;
+ int MSG_SET ;
+ scalar_t__ TWCC_SUCCESS ;
+ void* TWON_DONTCARE16 ;
+ void* TWON_ONEVALUE ;
+ void* TWON_RANGE ;
+ int TWQC_GET ;
+ int TWQC_GETCURRENT ;
+ int TWQC_GETDEFAULT ;
+ int TWQC_RESET ;
+ int TWQC_SET ;
+ int TWRC_SUCCESS ;
+ int TWTY_FIX32 ;
+ int alloc_and_set_onevalue (scalar_t__,int) ;
+ int get_condition_code (int *,int *,TYPE_1__*) ;
+ int get_onevalue (int ,scalar_t__*,int*) ;
+ int memcpy (TYPE_3__*,scalar_t__*,int) ;
+ int memset (TYPE_4__*,int ,int) ;
+ int ok (int,char*,int,...) ;
+ int pDSM_Entry (int *,int *,int ,int ,int ,TYPE_4__*) ;
+ int trace (char*,int,int ,scalar_t__,scalar_t__,scalar_t__,int ,scalar_t__) ;
 
 __attribute__((used)) static void test_resolution(TW_IDENTITY *appid, TW_IDENTITY *source, TW_UINT16 captype, TW_INT32 minimum_support)
 {
@@ -84,7 +84,7 @@ __attribute__((used)) static void test_resolution(TW_IDENTITY *appid, TW_IDENTIT
             "Error [rc %d|cc %d] doing MSG_QUERYSUPPORT for type 0x%x\n", rc, status.ConditionCode, captype);
     if (rc != TWRC_SUCCESS)
         return;
-    ok(get_onevalue(cap.hContainer, (TW_UINT32 *) &actual_support, NULL), "Returned cap.hContainer invalid for QuerySupport on type 0x%x\n", captype);
+    ok(get_onevalue(cap.hContainer, (TW_UINT32 *) &actual_support, ((void*)0)), "Returned cap.hContainer invalid for QuerySupport on type 0x%x\n", captype);
     ok((actual_support & minimum_support) == minimum_support,
             "Error:  minimum support 0x%x for type 0x%x, got 0x%x\n", minimum_support,
             captype, actual_support);

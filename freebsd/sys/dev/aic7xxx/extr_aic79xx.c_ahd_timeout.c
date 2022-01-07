@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct scb {int flags; struct ahd_softc* ahd_softc; } ;
-struct ahd_softc {int /*<<< orphan*/  timedout_scbs; } ;
+struct ahd_softc {int timedout_scbs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIST_INSERT_HEAD (int /*<<< orphan*/ *,struct scb*,int /*<<< orphan*/ ) ; 
- int SCB_ACTIVE ; 
- int SCB_TIMEDOUT ; 
- int /*<<< orphan*/  ahd_wakeup_recovery_thread (struct ahd_softc*) ; 
- int /*<<< orphan*/  timedout_links ; 
+
+ int LIST_INSERT_HEAD (int *,struct scb*,int ) ;
+ int SCB_ACTIVE ;
+ int SCB_TIMEDOUT ;
+ int ahd_wakeup_recovery_thread (struct ahd_softc*) ;
+ int timedout_links ;
 
 void
 ahd_timeout(struct scb *scb)
 {
-	struct ahd_softc *ahd;
+ struct ahd_softc *ahd;
 
-	ahd = scb->ahd_softc;
-	if ((scb->flags & SCB_ACTIVE) != 0) {
-		if ((scb->flags & SCB_TIMEDOUT) == 0) {
-			LIST_INSERT_HEAD(&ahd->timedout_scbs, scb,
-					 timedout_links);
-			scb->flags |= SCB_TIMEDOUT;
-		}
-		ahd_wakeup_recovery_thread(ahd);
-	}
+ ahd = scb->ahd_softc;
+ if ((scb->flags & SCB_ACTIVE) != 0) {
+  if ((scb->flags & SCB_TIMEDOUT) == 0) {
+   LIST_INSERT_HEAD(&ahd->timedout_scbs, scb,
+      timedout_links);
+   scb->flags |= SCB_TIMEDOUT;
+  }
+  ahd_wakeup_recovery_thread(ahd);
+ }
 }

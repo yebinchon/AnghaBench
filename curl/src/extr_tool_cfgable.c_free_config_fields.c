@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct getout {struct getout* infile; struct getout* outfile; struct getout* url; struct getout* next; } ;
-struct OperationConfig {struct getout* ftp_alternative_to_user; struct getout* ftp_account; struct getout* service_name; struct getout* proxy_service_name; struct getout* preproxy; int /*<<< orphan*/  connect_to; int /*<<< orphan*/  resolve; int /*<<< orphan*/  telnet_options; int /*<<< orphan*/ * mimecurrent; int /*<<< orphan*/ * mimeroot; int /*<<< orphan*/ * mimepost; int /*<<< orphan*/  proxyheaders; int /*<<< orphan*/  headers; int /*<<< orphan*/  prequote; int /*<<< orphan*/  postquote; int /*<<< orphan*/  quote; struct getout* proto_default; struct getout* writeout; struct getout* unix_socket_path; struct getout* sasl_authzid; struct getout* oauth_bearer; struct getout* krblevel; struct getout* customrequest; struct getout* request_target; struct getout* engine; struct getout* hostpubmd5; struct getout* pubkey; struct getout* proxy_key_passwd; struct getout* key_passwd; struct getout* proxy_key_type; struct getout* key_type; struct getout* proxy_key; struct getout* key; struct getout* proxy_crlfile; struct getout* proxy_pinnedpubkey; struct getout* pinnedpubkey; struct getout* crlfile; struct getout* proxy_capath; struct getout* capath; struct getout* proxy_cacert; struct getout* cacert; struct getout* proxy_cert_type; struct getout* cert_type; struct getout* proxy_cert; struct getout* cert; struct getout* proxy_cipher_list; struct getout* cipher_list; struct getout* doh_url; int /*<<< orphan*/ * url_out; int /*<<< orphan*/ * url_get; int /*<<< orphan*/ * url_last; struct getout* url_list; struct getout* netrc_file; struct getout* mail_auth; int /*<<< orphan*/  mail_rcpt; struct getout* mail_from; struct getout* noproxy; struct getout* dns_servers; struct getout* dns_interface; struct getout* dns_ipv4_addr; struct getout* dns_ipv6_addr; struct getout* proxy; struct getout* proxyuserpwd; struct getout* proxy_tls_authtype; struct getout* proxy_tls_password; struct getout* proxy_tls_username; struct getout* tls_authtype; struct getout* tls_password; struct getout* tls_username; struct getout* userpwd; struct getout* range; struct getout* iface; struct getout* ftpport; struct getout* headerfile; struct getout* referer; struct getout* postfields; struct getout* cookiefile; struct getout* cookiejar; struct getout* cookie; struct getout* altsvc; struct getout* useragent; struct getout* egd_file; struct getout* random_file; } ;
+struct OperationConfig {struct getout* ftp_alternative_to_user; struct getout* ftp_account; struct getout* service_name; struct getout* proxy_service_name; struct getout* preproxy; int connect_to; int resolve; int telnet_options; int * mimecurrent; int * mimeroot; int * mimepost; int proxyheaders; int headers; int prequote; int postquote; int quote; struct getout* proto_default; struct getout* writeout; struct getout* unix_socket_path; struct getout* sasl_authzid; struct getout* oauth_bearer; struct getout* krblevel; struct getout* customrequest; struct getout* request_target; struct getout* engine; struct getout* hostpubmd5; struct getout* pubkey; struct getout* proxy_key_passwd; struct getout* key_passwd; struct getout* proxy_key_type; struct getout* key_type; struct getout* proxy_key; struct getout* key; struct getout* proxy_crlfile; struct getout* proxy_pinnedpubkey; struct getout* pinnedpubkey; struct getout* crlfile; struct getout* proxy_capath; struct getout* capath; struct getout* proxy_cacert; struct getout* cacert; struct getout* proxy_cert_type; struct getout* cert_type; struct getout* proxy_cert; struct getout* cert; struct getout* proxy_cipher_list; struct getout* cipher_list; struct getout* doh_url; int * url_out; int * url_get; int * url_last; struct getout* url_list; struct getout* netrc_file; struct getout* mail_auth; int mail_rcpt; struct getout* mail_from; struct getout* noproxy; struct getout* dns_servers; struct getout* dns_interface; struct getout* dns_ipv4_addr; struct getout* dns_ipv6_addr; struct getout* proxy; struct getout* proxyuserpwd; struct getout* proxy_tls_authtype; struct getout* proxy_tls_password; struct getout* proxy_tls_username; struct getout* tls_authtype; struct getout* tls_password; struct getout* tls_username; struct getout* userpwd; struct getout* range; struct getout* iface; struct getout* ftpport; struct getout* headerfile; struct getout* referer; struct getout* postfields; struct getout* cookiefile; struct getout* cookiejar; struct getout* cookie; struct getout* altsvc; struct getout* useragent; struct getout* egd_file; struct getout* random_file; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Curl_safefree (struct getout*) ; 
- int /*<<< orphan*/  curl_mime_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_slist_free_all (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tool_mime_free (int /*<<< orphan*/ *) ; 
+
+ int Curl_safefree (struct getout*) ;
+ int curl_mime_free (int *) ;
+ int curl_slist_free_all (int ) ;
+ int tool_mime_free (int *) ;
 
 __attribute__((used)) static void free_config_fields(struct OperationConfig *config)
 {
@@ -72,10 +72,10 @@ __attribute__((used)) static void free_config_fields(struct OperationConfig *con
     Curl_safefree(urlnode);
     urlnode = next;
   }
-  config->url_list = NULL;
-  config->url_last = NULL;
-  config->url_get = NULL;
-  config->url_out = NULL;
+  config->url_list = ((void*)0);
+  config->url_last = ((void*)0);
+  config->url_get = ((void*)0);
+  config->url_out = ((void*)0);
 
   Curl_safefree(config->doh_url);
   Curl_safefree(config->cipher_list);
@@ -120,10 +120,10 @@ __attribute__((used)) static void free_config_fields(struct OperationConfig *con
   curl_slist_free_all(config->proxyheaders);
 
   curl_mime_free(config->mimepost);
-  config->mimepost = NULL;
+  config->mimepost = ((void*)0);
   tool_mime_free(config->mimeroot);
-  config->mimeroot = NULL;
-  config->mimecurrent = NULL;
+  config->mimeroot = ((void*)0);
+  config->mimecurrent = ((void*)0);
 
   curl_slist_free_all(config->telnet_options);
   curl_slist_free_all(config->resolve);

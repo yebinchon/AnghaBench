@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct trf7970a {int /*<<< orphan*/  lock; int /*<<< orphan*/  regulator; int /*<<< orphan*/  ddev; } ;
+
+
+
+
+struct trf7970a {int lock; int regulator; int ddev; } ;
 struct spi_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mutex_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nfc_digital_free_device (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nfc_digital_unregister_device (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  regulator_disable (int /*<<< orphan*/ ) ; 
- struct trf7970a* spi_get_drvdata (struct spi_device*) ; 
- int /*<<< orphan*/  trf7970a_shutdown (struct trf7970a*) ; 
+
+ int mutex_destroy (int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int nfc_digital_free_device (int ) ;
+ int nfc_digital_unregister_device (int ) ;
+ int regulator_disable (int ) ;
+ struct trf7970a* spi_get_drvdata (struct spi_device*) ;
+ int trf7970a_shutdown (struct trf7970a*) ;
 
 __attribute__((used)) static int trf7970a_remove(struct spi_device *spi)
 {
-	struct trf7970a *trf = spi_get_drvdata(spi);
+ struct trf7970a *trf = spi_get_drvdata(spi);
 
-	mutex_lock(&trf->lock);
+ mutex_lock(&trf->lock);
 
-	trf7970a_shutdown(trf);
+ trf7970a_shutdown(trf);
 
-	mutex_unlock(&trf->lock);
+ mutex_unlock(&trf->lock);
 
-	nfc_digital_unregister_device(trf->ddev);
-	nfc_digital_free_device(trf->ddev);
+ nfc_digital_unregister_device(trf->ddev);
+ nfc_digital_free_device(trf->ddev);
 
-	regulator_disable(trf->regulator);
+ regulator_disable(trf->regulator);
 
-	mutex_destroy(&trf->lock);
+ mutex_destroy(&trf->lock);
 
-	return 0;
+ return 0;
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  lock_out; int /*<<< orphan*/  cond; int /*<<< orphan*/  pp_pics; int /*<<< orphan*/  picture_pool_has_room; TYPE_3__* p_encoder; int /*<<< orphan*/  b_threaded; } ;
-typedef  TYPE_1__ transcode_encoder_t ;
-typedef  int /*<<< orphan*/  picture_t ;
-typedef  int /*<<< orphan*/  block_t ;
-struct TYPE_5__ {int /*<<< orphan*/ * (* pf_encode_video ) (TYPE_3__*,int /*<<< orphan*/ *) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  picture_Hold (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  picture_fifo_Push (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stub1 (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_cond_signal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_sem_wait (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int lock_out; int cond; int pp_pics; int picture_pool_has_room; TYPE_3__* p_encoder; int b_threaded; } ;
+typedef TYPE_1__ transcode_encoder_t ;
+typedef int picture_t ;
+typedef int block_t ;
+struct TYPE_5__ {int * (* pf_encode_video ) (TYPE_3__*,int *) ;} ;
+
+
+ int picture_Hold (int *) ;
+ int picture_fifo_Push (int ,int *) ;
+ int * stub1 (TYPE_3__*,int *) ;
+ int vlc_cond_signal (int *) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
+ int vlc_sem_wait (int *) ;
 
 block_t * transcode_encoder_video_encode( transcode_encoder_t *p_enc, picture_t *p_pic )
 {
@@ -41,6 +41,6 @@ block_t * transcode_encoder_video_encode( transcode_encoder_t *p_enc, picture_t 
         picture_fifo_Push( p_enc->pp_pics, p_pic );
         vlc_cond_signal( &p_enc->cond );
         vlc_mutex_unlock( &p_enc->lock_out );
-        return NULL;
+        return ((void*)0);
     }
 }

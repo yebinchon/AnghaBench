@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {size_t* run_index; } ;
-typedef  int /*<<< orphan*/  PutBitContext ;
-typedef  TYPE_1__ JLSState ;
+typedef int PutBitContext ;
+typedef TYPE_1__ JLSState ;
 
-/* Variables and functions */
- int* ff_log2_run ; 
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int,int) ; 
+
+ int* ff_log2_run ;
+ int put_bits (int *,int,int) ;
 
 __attribute__((used)) static inline void ls_encode_run(JLSState *state, PutBitContext *pb, int run,
                                  int comp, int trail)
@@ -28,7 +28,7 @@ __attribute__((used)) static inline void ls_encode_run(JLSState *state, PutBitCo
         if (state->run_index[comp] < 31)
             state->run_index[comp]++;
     }
-    /* if hit EOL, encode another full run, else encode aborted run */
+
     if (!trail && run) {
         put_bits(pb, 1, 1);
     } else if (trail) {

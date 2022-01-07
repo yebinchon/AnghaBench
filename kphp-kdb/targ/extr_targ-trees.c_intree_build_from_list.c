@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  treespace_t ;
-typedef  void* treeref_t ;
-struct intree_node {int left; void* right; int /*<<< orphan*/  z; int /*<<< orphan*/  x; } ;
 
-/* Variables and functions */
- unsigned int NODE_Y (struct intree_node*,void*) ; 
- struct intree_node* TS_NODE (void*) ; 
- int /*<<< orphan*/  assert (int) ; 
- void* new_intree_node (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int treespace_t ;
+typedef void* treeref_t ;
+struct intree_node {int left; void* right; int z; int x; } ;
+
+
+ unsigned int NODE_Y (struct intree_node*,void*) ;
+ struct intree_node* TS_NODE (void*) ;
+ int assert (int) ;
+ void* new_intree_node (int ) ;
 
 treeref_t intree_build_from_list (treespace_t TS, int *A, int nodes) {
   if (!nodes) {
@@ -38,9 +38,9 @@ treeref_t intree_build_from_list (treespace_t TS, int *A, int nodes) {
     int last = 0;
     while (sp) {
       if (NY <= sty[sp - 1]) {
-	struct intree_node *TC = TS_NODE (st[sp - 1]);
-	TC->right = N;
-	break;
+ struct intree_node *TC = TS_NODE (st[sp - 1]);
+ TC->right = N;
+ break;
       }
       last = st[--sp];
     }

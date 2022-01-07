@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct target_waitstatus {int dummy; } ;
-typedef  int /*<<< orphan*/  s ;
-typedef  int /*<<< orphan*/  p ;
-typedef  int gdb_wince_len ;
-struct TYPE_4__ {int nDebugStringLength; int /*<<< orphan*/  lpDebugStringData; } ;
+typedef int s ;
+typedef int p ;
+typedef int gdb_wince_len ;
+struct TYPE_4__ {int nDebugStringLength; int lpDebugStringData; } ;
 struct TYPE_5__ {TYPE_1__ DebugString; } ;
 struct TYPE_6__ {TYPE_2__ u; } ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
+typedef int LPCWSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_3__ current_event ; 
- int /*<<< orphan*/  current_process_handle ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  read_process_memory (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char**,int,int*) ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  warning (char*) ; 
+
+ int CP_ACP ;
+ int WideCharToMultiByte (int ,int ,int ,int,char*,int,int *,int *) ;
+ TYPE_3__ current_event ;
+ int current_process_handle ;
+ int memset (char*,int ,int) ;
+ int read_process_memory (int ,int ,char**,int,int*) ;
+ char* strchr (char*,char) ;
+ int warning (char*) ;
 
 __attribute__((used)) static void
 handle_output_debug_string (struct target_waitstatus *ourstatus)
@@ -46,20 +46,20 @@ handle_output_debug_string (struct target_waitstatus *ourstatus)
 
   memset (p, 0, sizeof (p));
   if (!read_process_memory (current_process_handle,
-			    current_event.u.DebugString.lpDebugStringData,
-			    &p, nbytes, &nbytes_read)
+       current_event.u.DebugString.lpDebugStringData,
+       &p, nbytes, &nbytes_read)
       || !*p)
     return;
 
   memset (s, 0, sizeof (s));
   WideCharToMultiByte (CP_ACP, 0, (LPCWSTR) p, (int) nbytes_read, s,
-		       sizeof (s) - 1, NULL, NULL);
+         sizeof (s) - 1, ((void*)0), ((void*)0));
   q = strchr (s, '\n');
-  if (q != NULL)
+  if (q != ((void*)0))
     {
       *q = '\0';
       if (*--q = '\r')
-	*q = '\0';
+ *q = '\0';
     }
 
   warning (s);

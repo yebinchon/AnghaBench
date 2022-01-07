@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT32 ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UINT32 ;
 struct TYPE_4__ {struct TYPE_4__* Next; } ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  size_t ACPI_SIZE ;
+typedef int ACPI_STATUS ;
+typedef size_t ACPI_SIZE ;
 
-/* Variables and functions */
- int ACPI_ARRAY_LENGTH (TYPE_1__*) ; 
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_WAIT_FOREVER ; 
- int /*<<< orphan*/  AE_OK ; 
- TYPE_1__* AcpiDefaultSupportedInterfaces ; 
- int /*<<< orphan*/  AcpiGbl_OsiMutex ; 
- TYPE_1__* AcpiGbl_SupportedInterfaces ; 
- int /*<<< orphan*/  AcpiOsAcquireMutex (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiOsReleaseMutex (int /*<<< orphan*/ ) ; 
+
+ int ACPI_ARRAY_LENGTH (TYPE_1__*) ;
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int ACPI_WAIT_FOREVER ;
+ int AE_OK ;
+ TYPE_1__* AcpiDefaultSupportedInterfaces ;
+ int AcpiGbl_OsiMutex ;
+ TYPE_1__* AcpiGbl_SupportedInterfaces ;
+ int AcpiOsAcquireMutex (int ,int ) ;
+ int AcpiOsReleaseMutex (int ) ;
 
 ACPI_STATUS
 AcpiUtInitializeInterfaces (
     void)
 {
-    ACPI_STATUS             Status;
-    UINT32                  i;
+    ACPI_STATUS Status;
+    UINT32 i;
 
 
     Status = AcpiOsAcquireMutex (AcpiGbl_OsiMutex, ACPI_WAIT_FOREVER);
@@ -43,7 +43,7 @@ AcpiUtInitializeInterfaces (
 
     AcpiGbl_SupportedInterfaces = AcpiDefaultSupportedInterfaces;
 
-    /* Link the static list of supported interfaces */
+
 
     for (i = 0;
         i < (ACPI_ARRAY_LENGTH (AcpiDefaultSupportedInterfaces) - 1);

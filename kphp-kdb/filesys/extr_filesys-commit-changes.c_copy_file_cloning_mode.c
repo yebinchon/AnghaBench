@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_mode; } ;
 
-/* Variables and functions */
- int O_CREAT ; 
- int O_TRUNC ; 
- int O_WRONLY ; 
- int PATH_MAX ; 
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- scalar_t__ S_ISLNK (int /*<<< orphan*/ ) ; 
- scalar_t__ close (int) ; 
- int lcopy_attrs (char*,struct stat*) ; 
- scalar_t__ mkdir (char*,int /*<<< orphan*/ ) ; 
- int open (char*,int const,int /*<<< orphan*/ ) ; 
- int snprintf (char*,int,char*,char*,char*) ; 
- scalar_t__ symlink (char*,char*) ; 
- char* tmp_dir ; 
- int /*<<< orphan*/  unlink (char*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,...) ; 
- int write (int,unsigned char*,int) ; 
+
+
+
+struct stat {int st_mode; } ;
+
+
+ int O_CREAT ;
+ int O_TRUNC ;
+ int O_WRONLY ;
+ int PATH_MAX ;
+ scalar_t__ S_ISDIR (int ) ;
+ scalar_t__ S_ISLNK (int ) ;
+ scalar_t__ close (int) ;
+ int lcopy_attrs (char*,struct stat*) ;
+ scalar_t__ mkdir (char*,int ) ;
+ int open (char*,int const,int ) ;
+ int snprintf (char*,int,char*,char*,char*) ;
+ scalar_t__ symlink (char*,char*) ;
+ char* tmp_dir ;
+ int unlink (char*) ;
+ int vkprintf (int,char*,...) ;
+ int write (int,unsigned char*,int) ;
 
 __attribute__((used)) static int copy_file_cloning_mode (struct stat *S, char *name, unsigned char *buf, int l, int same) {
   char a[PATH_MAX];

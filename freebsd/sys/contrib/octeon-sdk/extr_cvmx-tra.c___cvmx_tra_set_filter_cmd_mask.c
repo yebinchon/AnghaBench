@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned long long uint64_t ;
-typedef  unsigned long long cvmx_tra_filt_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef unsigned long long uint64_t ;
+typedef unsigned long long cvmx_tra_filt_t ;
 struct TYPE_3__ {scalar_t__ reserved_6_7; scalar_t__ reserved_10_14; scalar_t__ reserved_27_27; scalar_t__ reserved_56_57; scalar_t__ reserved_60_61; } ;
 struct TYPE_4__ {unsigned long long u64; TYPE_1__ cn63xx; } ;
-typedef  TYPE_2__ cvmx_tra_filt_cmd_t ;
+typedef TYPE_2__ cvmx_tra_filt_cmd_t ;
 
-/* Variables and functions */
- unsigned long long CVMX_TRA_FILT_ALL ; 
- unsigned long long CVMX_TRA_FILT_DWB ; 
- unsigned long long CVMX_TRA_FILT_IOBDMA ; 
- unsigned long long CVMX_TRA_FILT_IOBLD16 ; 
- unsigned long long CVMX_TRA_FILT_IOBLD32 ; 
- unsigned long long CVMX_TRA_FILT_IOBLD64 ; 
- unsigned long long CVMX_TRA_FILT_IOBLD8 ; 
- unsigned long long CVMX_TRA_FILT_IOBST ; 
- unsigned long long CVMX_TRA_FILT_LDD ; 
- unsigned long long CVMX_TRA_FILT_LDI ; 
- unsigned long long CVMX_TRA_FILT_LDT ; 
- unsigned long long CVMX_TRA_FILT_PL2 ; 
- unsigned long long CVMX_TRA_FILT_PSL1 ; 
- unsigned long long CVMX_TRA_FILT_SAA ; 
- unsigned long long CVMX_TRA_FILT_STC ; 
- unsigned long long CVMX_TRA_FILT_STF ; 
- unsigned long long CVMX_TRA_FILT_STP ; 
- unsigned long long CVMX_TRA_FILT_STT ; 
- int /*<<< orphan*/  OCTEON_CN3XXX ; 
- int /*<<< orphan*/  OCTEON_CN5XXX ; 
- scalar_t__ OCTEON_IS_MODEL (int /*<<< orphan*/ ) ; 
+
+ unsigned long long CVMX_TRA_FILT_ALL ;
+ unsigned long long CVMX_TRA_FILT_DWB ;
+ unsigned long long CVMX_TRA_FILT_IOBDMA ;
+ unsigned long long CVMX_TRA_FILT_IOBLD16 ;
+ unsigned long long CVMX_TRA_FILT_IOBLD32 ;
+ unsigned long long CVMX_TRA_FILT_IOBLD64 ;
+ unsigned long long CVMX_TRA_FILT_IOBLD8 ;
+ unsigned long long CVMX_TRA_FILT_IOBST ;
+ unsigned long long CVMX_TRA_FILT_LDD ;
+ unsigned long long CVMX_TRA_FILT_LDI ;
+ unsigned long long CVMX_TRA_FILT_LDT ;
+ unsigned long long CVMX_TRA_FILT_PL2 ;
+ unsigned long long CVMX_TRA_FILT_PSL1 ;
+ unsigned long long CVMX_TRA_FILT_SAA ;
+ unsigned long long CVMX_TRA_FILT_STC ;
+ unsigned long long CVMX_TRA_FILT_STF ;
+ unsigned long long CVMX_TRA_FILT_STP ;
+ unsigned long long CVMX_TRA_FILT_STT ;
+ int OCTEON_CN3XXX ;
+ int OCTEON_CN5XXX ;
+ scalar_t__ OCTEON_IS_MODEL (int ) ;
 
 __attribute__((used)) static uint64_t __cvmx_tra_set_filter_cmd_mask(cvmx_tra_filt_t filter)
 {
@@ -47,7 +47,7 @@ __attribute__((used)) static uint64_t __cvmx_tra_set_filter_cmd_mask(cvmx_tra_fi
 
     if (OCTEON_IS_MODEL(OCTEON_CN3XXX) || OCTEON_IS_MODEL(OCTEON_CN5XXX))
     {
-        /* Bit positions of filter commands are different, map it accordingly */
+
         uint64_t cmd = 0;
         if ((filter & CVMX_TRA_FILT_ALL) == -1ull)
         {

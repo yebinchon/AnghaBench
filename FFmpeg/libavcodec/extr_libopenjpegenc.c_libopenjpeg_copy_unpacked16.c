@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
 struct TYPE_10__ {int numcomps; TYPE_1__* comps; } ;
-typedef  TYPE_2__ opj_image_t ;
+typedef TYPE_2__ opj_image_t ;
 struct TYPE_12__ {int width; int height; } ;
 struct TYPE_11__ {int* linesize; scalar_t__* data; } ;
 struct TYPE_9__ {int w; int dx; int dy; int* data; int h; } ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVCodecContext ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*) ; 
+
+ int AV_LOG_ERROR ;
+ int av_log (TYPE_4__*,int ,char*) ;
 
 __attribute__((used)) static int libopenjpeg_copy_unpacked16(AVCodecContext *avctx, const AVFrame *frame, opj_image_t *image)
 {
@@ -47,8 +47,8 @@ __attribute__((used)) static int libopenjpeg_copy_unpacked16(AVCodecContext *avc
     }
 
     for (compno = 0; compno < numcomps; ++compno) {
-        width     = (avctx->width + image->comps[compno].dx - 1) / image->comps[compno].dx;
-        height    = (avctx->height + image->comps[compno].dy - 1) / image->comps[compno].dy;
+        width = (avctx->width + image->comps[compno].dx - 1) / image->comps[compno].dx;
+        height = (avctx->height + image->comps[compno].dy - 1) / image->comps[compno].dy;
         frame_ptr = (uint16_t *)frame->data[compno];
         for (y = 0; y < height; ++y) {
             image_line = image->comps[compno].data + y * image->comps[compno].w;

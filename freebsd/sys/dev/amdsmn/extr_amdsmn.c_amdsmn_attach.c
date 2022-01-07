@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct amdsmn_softc {int /*<<< orphan*/  smn_lock; int /*<<< orphan*/  smn_pciid; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int ENXIO ; 
- int /*<<< orphan*/  MTX_DEF ; 
- int /*<<< orphan*/  amdsmn_match (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  device_get_parent (int /*<<< orphan*/ ) ; 
- struct amdsmn_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mtx_init (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ) ; 
+
+
+
+struct amdsmn_softc {int smn_lock; int smn_pciid; } ;
+typedef int device_t ;
+
+
+ int ENXIO ;
+ int MTX_DEF ;
+ int amdsmn_match (int ,int *) ;
+ int device_get_parent (int ) ;
+ struct amdsmn_softc* device_get_softc (int ) ;
+ int mtx_init (int *,char*,char*,int ) ;
 
 __attribute__((used)) static int
 amdsmn_attach(device_t dev)
 {
-	struct amdsmn_softc *sc = device_get_softc(dev);
+ struct amdsmn_softc *sc = device_get_softc(dev);
 
-	if (!amdsmn_match(device_get_parent(dev), &sc->smn_pciid))
-		return (ENXIO);
+ if (!amdsmn_match(device_get_parent(dev), &sc->smn_pciid))
+  return (ENXIO);
 
-	mtx_init(&sc->smn_lock, "SMN mtx", "SMN", MTX_DEF);
-	return (0);
+ mtx_init(&sc->smn_lock, "SMN mtx", "SMN", MTX_DEF);
+ return (0);
 }

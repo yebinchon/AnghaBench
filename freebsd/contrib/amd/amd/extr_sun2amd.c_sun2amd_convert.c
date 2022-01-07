@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  line_buff ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int INFO_MAX_LINE_LEN ; 
- int /*<<< orphan*/  XLOG_ERROR ; 
- int /*<<< orphan*/  errno ; 
- int file_read_line (char*,int,int /*<<< orphan*/ *) ; 
- scalar_t__ fprintf (int /*<<< orphan*/ *,char*,char*,char*) ; 
- scalar_t__ isspace (unsigned char) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  plog (int /*<<< orphan*/ ,char*,int) ; 
- char* strchr (char*,char) ; 
- int strerror (int /*<<< orphan*/ ) ; 
- char* sun_entry2amd (char*,char*) ; 
+
+
+
+typedef int line_buff ;
+typedef int FILE ;
+
+
+ int INFO_MAX_LINE_LEN ;
+ int XLOG_ERROR ;
+ int errno ;
+ int file_read_line (char*,int,int *) ;
+ scalar_t__ fprintf (int *,char*,char*,char*) ;
+ scalar_t__ isspace (unsigned char) ;
+ int memset (char*,int ,int) ;
+ int plog (int ,char*,int) ;
+ char* strchr (char*,char) ;
+ int strerror (int ) ;
+ char* sun_entry2amd (char*,char*) ;
 
 __attribute__((used)) static int
 sun2amd_convert(FILE *sun_in, FILE *amd_out)
@@ -32,31 +32,31 @@ sun2amd_convert(FILE *sun_in, FILE *amd_out)
   char line_buff[INFO_MAX_LINE_LEN], *tmp, *key, *entry;
   int pos, line = 0, retval = 1;
 
-  /* just to be safe */
+
   memset(line_buff, 0, sizeof(line_buff));
 
-  /* Read the input line by line and do the conversion. */
+
   while ((pos = file_read_line(line_buff, sizeof(line_buff), sun_in))) {
     line++;
     line_buff[pos - 1] = '\0';
 
-    /* remove comments */
-    if ((tmp = strchr(line_buff, '#')) != NULL) {
+
+    if ((tmp = strchr(line_buff, '#')) != ((void*)0)) {
       *tmp = '\0';
     }
 
-    /* find start of key */
+
     key = line_buff;
     while (*key != '\0' && isspace((unsigned char)*key)) {
       key++;
     }
 
-    /* ignore blank lines */
+
     if (*key == '\0') {
       continue;
     }
 
-    /* find the end of the key and NULL terminate */
+
     tmp = key;
     while (*tmp != '\0' && isspace((unsigned char)*tmp) == 0) {
       tmp++;
@@ -72,8 +72,8 @@ sun2amd_convert(FILE *sun_in, FILE *amd_out)
     }
     entry = tmp;
 
-    /* convert the sun entry to an amd entry */
-    if ((tmp = sun_entry2amd(key, entry)) == NULL) {
+
+    if ((tmp = sun_entry2amd(key, entry)) == ((void*)0)) {
       plog(XLOG_ERROR, "parse error on line %d", line);
       goto err;
     }
@@ -83,11 +83,11 @@ sun2amd_convert(FILE *sun_in, FILE *amd_out)
       goto err;
     }
 
-    /* just to be safe */
+
     memset(line_buff, 0, sizeof(line_buff));
   }
 
-  /* success */
+
   retval = 0;
 
  err:

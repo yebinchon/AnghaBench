@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int /*<<< orphan*/  PNMMCCAUTOUPDATE ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FillMonthsComboBox (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_MONTHCB ; 
- int /*<<< orphan*/  UNREFERENCED_PARAMETER (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int VOID ;
+typedef int PNMMCCAUTOUPDATE ;
+typedef int HWND ;
+
+
+ int FillMonthsComboBox (int ) ;
+ int GetDlgItem (int ,int ) ;
+ int IDC_MONTHCB ;
+ int UNREFERENCED_PARAMETER (int ) ;
 
 __attribute__((used)) static VOID
 AutoUpdateMonthCal(HWND hwndDlg,
@@ -26,7 +26,7 @@ AutoUpdateMonthCal(HWND hwndDlg,
 {
     UNREFERENCED_PARAMETER(lpAutoUpdate);
 
-    /* Update the controls */
+
     FillMonthsComboBox(GetDlgItem(hwndDlg,
                                   IDC_MONTHCB));
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  StrLen (char*) ; 
- int /*<<< orphan*/  WriteBuf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int BUF ;
+
+
+ int StrLen (char*) ;
+ int WriteBuf (int *,char*,int ) ;
 
 void WriteBufLine(BUF *b, char *str)
 {
-	char *crlf = "\r\n";
-	// Validate arguments
-	if (b == NULL || str == NULL)
-	{
-		return;
-	}
+ char *crlf = "\r\n";
 
-	WriteBuf(b, str, StrLen(str));
-	WriteBuf(b, crlf, StrLen(crlf));
+ if (b == ((void*)0) || str == ((void*)0))
+ {
+  return;
+ }
+
+ WriteBuf(b, str, StrLen(str));
+ WriteBuf(b, crlf, StrLen(crlf));
 }

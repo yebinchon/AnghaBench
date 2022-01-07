@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  func_uploadTexture; int /*<<< orphan*/  func_getBufferWidth; int /*<<< orphan*/  func_use; int /*<<< orphan*/  program; void* um3_color_conversion; void** us2_sampler; } ;
-typedef  TYPE_1__ IJK_GLES2_Renderer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALOGI (char*) ; 
- TYPE_1__* IJK_GLES2_Renderer_create_base (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IJK_GLES2_Renderer_free (TYPE_1__*) ; 
- int /*<<< orphan*/  IJK_GLES2_checkError_TRACE (char*) ; 
- int /*<<< orphan*/  IJK_GLES2_getFragmentShader_yuv420p () ; 
- void* glGetUniformLocation (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  yuv420p_getBufferWidth ; 
- int /*<<< orphan*/  yuv420p_uploadTexture ; 
- int /*<<< orphan*/  yuv420p_use ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int func_uploadTexture; int func_getBufferWidth; int func_use; int program; void* um3_color_conversion; void** us2_sampler; } ;
+typedef TYPE_1__ IJK_GLES2_Renderer ;
+
+
+ int ALOGI (char*) ;
+ TYPE_1__* IJK_GLES2_Renderer_create_base (int ) ;
+ int IJK_GLES2_Renderer_free (TYPE_1__*) ;
+ int IJK_GLES2_checkError_TRACE (char*) ;
+ int IJK_GLES2_getFragmentShader_yuv420p () ;
+ void* glGetUniformLocation (int ,char*) ;
+ int yuv420p_getBufferWidth ;
+ int yuv420p_uploadTexture ;
+ int yuv420p_use ;
 
 IJK_GLES2_Renderer *IJK_GLES2_Renderer_create_yuv420p()
 {
@@ -38,12 +38,12 @@ IJK_GLES2_Renderer *IJK_GLES2_Renderer_create_yuv420p()
 
     renderer->um3_color_conversion = glGetUniformLocation(renderer->program, "um3_ColorConversion"); IJK_GLES2_checkError_TRACE("glGetUniformLocation(um3_ColorConversionMatrix)");
 
-    renderer->func_use            = yuv420p_use;
+    renderer->func_use = yuv420p_use;
     renderer->func_getBufferWidth = yuv420p_getBufferWidth;
-    renderer->func_uploadTexture  = yuv420p_uploadTexture;
+    renderer->func_uploadTexture = yuv420p_uploadTexture;
 
     return renderer;
 fail:
     IJK_GLES2_Renderer_free(renderer);
-    return NULL;
+    return ((void*)0);
 }

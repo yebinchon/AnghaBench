@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int int64_t ;
 struct TYPE_3__ {int* zero_state; int* one_state; } ;
-typedef  TYPE_1__ RangeCoder ;
+typedef TYPE_1__ RangeCoder ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
+
+ int memset (int*,int ,int) ;
 
 void ff_build_rac_states(RangeCoder *c, int factor, int max_p)
 {
@@ -28,15 +28,15 @@ void ff_build_rac_states(RangeCoder *c, int factor, int max_p)
     memset(c->one_state, 0, sizeof(c->one_state));
 
     last_p8 = 0;
-    p       = one / 2;
+    p = one / 2;
     for (i = 0; i < 128; i++) {
-        p8 = (256 * p + one / 2) >> 32; // FIXME: try without the one
+        p8 = (256 * p + one / 2) >> 32;
         if (p8 <= last_p8)
             p8 = last_p8 + 1;
         if (last_p8 && last_p8 < 256 && p8 <= max_p)
             c->one_state[last_p8] = p8;
 
-        p      += ((one - p) * factor + one / 2) >> 32;
+        p += ((one - p) * factor + one / 2) >> 32;
         last_p8 = p8;
     }
 
@@ -44,9 +44,9 @@ void ff_build_rac_states(RangeCoder *c, int factor, int max_p)
         if (c->one_state[i])
             continue;
 
-        p  = (i * one + 128) >> 8;
+        p = (i * one + 128) >> 8;
         p += ((one - p) * factor + one / 2) >> 32;
-        p8 = (256 * p + one / 2) >> 32; // FIXME: try without the one
+        p8 = (256 * p + one / 2) >> 32;
         if (p8 <= i)
             p8 = i + 1;
         if (p8 > max_p)

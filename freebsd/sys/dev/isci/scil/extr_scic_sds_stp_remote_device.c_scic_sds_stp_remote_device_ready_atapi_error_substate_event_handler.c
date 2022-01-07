@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  U32 ;
-struct TYPE_10__ {TYPE_3__* working_request; int /*<<< orphan*/  rnc; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int U32 ;
+struct TYPE_10__ {TYPE_3__* working_request; int rnc; } ;
 struct TYPE_9__ {TYPE_2__* state_handlers; } ;
 struct TYPE_7__ {scalar_t__ complete_handler; } ;
 struct TYPE_8__ {TYPE_1__ parent; } ;
-typedef  scalar_t__ SCI_STATUS ;
-typedef  int /*<<< orphan*/  SCIC_SDS_REMOTE_NODE_CONTEXT_CALLBACK ;
-typedef  TYPE_4__ SCIC_SDS_REMOTE_DEVICE_T ;
+typedef scalar_t__ SCI_STATUS ;
+typedef int SCIC_SDS_REMOTE_NODE_CONTEXT_CALLBACK ;
+typedef TYPE_4__ SCIC_SDS_REMOTE_DEVICE_T ;
 
-/* Variables and functions */
- scalar_t__ SCI_SUCCESS ; 
- scalar_t__ SCU_EVENT_TYPE_RNC_SUSPEND_TX ; 
- scalar_t__ SCU_EVENT_TYPE_RNC_SUSPEND_TX_RX ; 
- scalar_t__ scic_sds_remote_device_general_event_handler (TYPE_4__*,int /*<<< orphan*/ ) ; 
- scalar_t__ scic_sds_remote_node_context_resume (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- scalar_t__ scu_get_event_type (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ SCI_SUCCESS ;
+ scalar_t__ SCU_EVENT_TYPE_RNC_SUSPEND_TX ;
+ scalar_t__ SCU_EVENT_TYPE_RNC_SUSPEND_TX_RX ;
+ scalar_t__ scic_sds_remote_device_general_event_handler (TYPE_4__*,int ) ;
+ scalar_t__ scic_sds_remote_node_context_resume (int ,int ,void*) ;
+ scalar_t__ scu_get_event_type (int ) ;
 
 __attribute__((used)) static
 SCI_STATUS scic_sds_stp_remote_device_ready_atapi_error_substate_event_handler(
    SCIC_SDS_REMOTE_DEVICE_T * this_device,
-   U32                        event_code
+   U32 event_code
 )
 {
    SCI_STATUS status;

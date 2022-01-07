@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
 struct TYPE_4__ {int Deny; } ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  int /*<<< orphan*/  IP ;
-typedef  TYPE_1__ AC ;
+typedef int LIST ;
+typedef int IP ;
+typedef TYPE_1__ AC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GSF_DISABLE_AC ; 
- scalar_t__ GetGlobalServerFlag (int /*<<< orphan*/ ) ; 
- scalar_t__ IsIpMaskedByAc (int /*<<< orphan*/ *,TYPE_1__*) ; 
- TYPE_1__* LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
+
+ int GSF_DISABLE_AC ;
+ scalar_t__ GetGlobalServerFlag (int ) ;
+ scalar_t__ IsIpMaskedByAc (int *,TYPE_1__*) ;
+ TYPE_1__* LIST_DATA (int *,scalar_t__) ;
+ scalar_t__ LIST_NUM (int *) ;
 
 bool IsIpDeniedByAcList(IP *ip, LIST *o)
 {
-	UINT i;
-	// Validate arguments
-	if (ip == NULL || o == NULL)
-	{
-		return false;
-	}
+ UINT i;
 
-	if (GetGlobalServerFlag(GSF_DISABLE_AC) != 0)
-	{
-		return false;
-	}
+ if (ip == ((void*)0) || o == ((void*)0))
+ {
+  return 0;
+ }
 
-	for (i = 0;i < LIST_NUM(o);i++)
-	{
-		AC *ac = LIST_DATA(o, i);
+ if (GetGlobalServerFlag(GSF_DISABLE_AC) != 0)
+ {
+  return 0;
+ }
 
-		if (IsIpMaskedByAc(ip, ac))
-		{
-			if (ac->Deny == false)
-			{
-				return false;
-			}
-			else
-			{
-				return true;
-			}
-		}
-	}
+ for (i = 0;i < LIST_NUM(o);i++)
+ {
+  AC *ac = LIST_DATA(o, i);
 
-	return false;
+  if (IsIpMaskedByAc(ip, ac))
+  {
+   if (ac->Deny == 0)
+   {
+    return 0;
+   }
+   else
+   {
+    return 1;
+   }
+  }
+ }
+
+ return 0;
 }

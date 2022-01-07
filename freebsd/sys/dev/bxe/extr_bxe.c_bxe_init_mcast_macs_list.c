@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ecore_mcast_ramrod_params {int mcast_list_len; int /*<<< orphan*/  mcast_list; } ;
-struct ecore_mcast_list_elem {int /*<<< orphan*/ * mac; int /*<<< orphan*/  link; } ;
-struct bxe_softc {int /*<<< orphan*/  ifp; } ;
-typedef  int /*<<< orphan*/  if_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOGD (struct bxe_softc*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  BLOGE (struct bxe_softc*,char*) ; 
- int /*<<< orphan*/  DBG_LOAD ; 
- int /*<<< orphan*/  ECORE_LIST_INIT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ECORE_LIST_PUSH_TAIL (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  M_DEVBUF ; 
- int M_NOWAIT ; 
- int M_ZERO ; 
- int /*<<< orphan*/  bxe_push_maddr ; 
- int /*<<< orphan*/  bzero (struct ecore_mcast_list_elem*,int) ; 
- int /*<<< orphan*/  if_foreach_llmaddr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct ecore_mcast_list_elem*) ; 
- int if_llmaddr_count (int /*<<< orphan*/ ) ; 
- struct ecore_mcast_list_elem* malloc (int,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct ecore_mcast_ramrod_params {int mcast_list_len; int mcast_list; } ;
+struct ecore_mcast_list_elem {int * mac; int link; } ;
+struct bxe_softc {int ifp; } ;
+typedef int if_t ;
+
+
+ int BLOGD (struct bxe_softc*,int ,char*,int ,int ,int ,int ,int ,int ,int) ;
+ int BLOGE (struct bxe_softc*,char*) ;
+ int DBG_LOAD ;
+ int ECORE_LIST_INIT (int *) ;
+ int ECORE_LIST_PUSH_TAIL (int *,int *) ;
+ int M_DEVBUF ;
+ int M_NOWAIT ;
+ int M_ZERO ;
+ int bxe_push_maddr ;
+ int bzero (struct ecore_mcast_list_elem*,int) ;
+ int if_foreach_llmaddr (int ,int ,struct ecore_mcast_list_elem*) ;
+ int if_llmaddr_count (int ) ;
+ struct ecore_mcast_list_elem* malloc (int,int ,int) ;
 
 __attribute__((used)) static int
-bxe_init_mcast_macs_list(struct bxe_softc                 *sc,
+bxe_init_mcast_macs_list(struct bxe_softc *sc,
                          struct ecore_mcast_ramrod_params *p)
 {
     if_t ifp = sc->ifp;
@@ -41,7 +41,7 @@ bxe_init_mcast_macs_list(struct bxe_softc                 *sc,
     ECORE_LIST_INIT(&p->mcast_list);
     p->mcast_list_len = 0;
 
-    /* XXXGL: multicast count may change later */
+
     mc_count = if_llmaddr_count(ifp);
 
     if (!mc_count) {

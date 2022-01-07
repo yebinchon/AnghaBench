@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct mrb_irep {scalar_t__* iseq; int nlocals; TYPE_2__* lv; } ;
 struct TYPE_3__ {struct mrb_irep* irep; } ;
 struct RProc {TYPE_1__ body; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_sym ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int /*<<< orphan*/  mrb_aspec ;
-struct TYPE_4__ {int /*<<< orphan*/  name; } ;
+typedef int mrb_value ;
+typedef int mrb_sym ;
+typedef int mrb_state ;
+typedef int mrb_aspec ;
+struct TYPE_4__ {int name; } ;
 
-/* Variables and functions */
- int MRB_ASPEC_BLOCK (int /*<<< orphan*/ ) ; 
- int MRB_ASPEC_OPT (int /*<<< orphan*/ ) ; 
- int MRB_ASPEC_POST (int /*<<< orphan*/ ) ; 
- int MRB_ASPEC_REQ (int /*<<< orphan*/ ) ; 
- int MRB_ASPEC_REST (int /*<<< orphan*/ ) ; 
- scalar_t__ MRB_PROC_CFUNC_P (struct RProc const*) ; 
- int /*<<< orphan*/  MRB_PROC_STRICT_P (struct RProc const*) ; 
- scalar_t__ OP_ENTER ; 
- int /*<<< orphan*/  PEEK_W (scalar_t__*) ; 
- int /*<<< orphan*/  mrb_ary_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_ary_new_capa (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mrb_ary_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_intern_static (int /*<<< orphan*/ *,char*,int) ; 
- struct RProc* mrb_proc_ptr (int /*<<< orphan*/ ) ; 
- char* mrb_sym2name (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_symbol_value (int /*<<< orphan*/ ) ; 
+
+ int MRB_ASPEC_BLOCK (int ) ;
+ int MRB_ASPEC_OPT (int ) ;
+ int MRB_ASPEC_POST (int ) ;
+ int MRB_ASPEC_REQ (int ) ;
+ int MRB_ASPEC_REST (int ) ;
+ scalar_t__ MRB_PROC_CFUNC_P (struct RProc const*) ;
+ int MRB_PROC_STRICT_P (struct RProc const*) ;
+ scalar_t__ OP_ENTER ;
+ int PEEK_W (scalar_t__*) ;
+ int mrb_ary_new (int *) ;
+ int mrb_ary_new_capa (int *,int) ;
+ int mrb_ary_push (int *,int ,int ) ;
+ int mrb_intern_static (int *,char*,int) ;
+ struct RProc* mrb_proc_ptr (int ) ;
+ char* mrb_sym2name (int *,int ) ;
+ int mrb_symbol_value (int ) ;
 
 __attribute__((used)) static mrb_value
 mrb_proc_parameters(mrb_state *mrb, mrb_value self)
@@ -47,12 +47,12 @@ mrb_proc_parameters(mrb_state *mrb, mrb_value self)
     const char *name;
     int size;
   } *p, parameters_list [] = {
-    {sizeof("req")   - 1, "req",   0},
-    {sizeof("opt")   - 1, "opt",   0},
-    {sizeof("rest")  - 1, "rest",  0},
-    {sizeof("req")   - 1, "req",   0},
+    {sizeof("req") - 1, "req", 0},
+    {sizeof("opt") - 1, "opt", 0},
+    {sizeof("rest") - 1, "rest", 0},
+    {sizeof("req") - 1, "req", 0},
     {sizeof("block") - 1, "block", 0},
-    {0, NULL, 0}
+    {0, ((void*)0), 0}
   };
   const struct RProc *proc = mrb_proc_ptr(self);
   const struct mrb_irep *irep = proc->body.irep;
@@ -62,7 +62,7 @@ mrb_proc_parameters(mrb_state *mrb, mrb_value self)
   int max = -1;
 
   if (MRB_PROC_CFUNC_P(proc)) {
-    // TODO cfunc aspec is not implemented yet
+
     return mrb_ary_new(mrb);
   }
   if (!irep) {

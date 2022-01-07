@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * node; } ;
-struct watch_adapter {int /*<<< orphan*/ * token; TYPE_1__ watch; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  free_watch_adapter (struct watch_adapter*) ; 
- void* kstrdup (char const*,int /*<<< orphan*/ ) ; 
- struct watch_adapter* kzalloc (int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * node; } ;
+struct watch_adapter {int * token; TYPE_1__ watch; } ;
+
+
+ int GFP_KERNEL ;
+ int free_watch_adapter (struct watch_adapter*) ;
+ void* kstrdup (char const*,int ) ;
+ struct watch_adapter* kzalloc (int,int ) ;
 
 __attribute__((used)) static struct watch_adapter *alloc_watch_adapter(const char *path,
-						 const char *token)
+       const char *token)
 {
-	struct watch_adapter *watch;
+ struct watch_adapter *watch;
 
-	watch = kzalloc(sizeof(*watch), GFP_KERNEL);
-	if (watch == NULL)
-		goto out_fail;
+ watch = kzalloc(sizeof(*watch), GFP_KERNEL);
+ if (watch == ((void*)0))
+  goto out_fail;
 
-	watch->watch.node = kstrdup(path, GFP_KERNEL);
-	if (watch->watch.node == NULL)
-		goto out_free;
+ watch->watch.node = kstrdup(path, GFP_KERNEL);
+ if (watch->watch.node == ((void*)0))
+  goto out_free;
 
-	watch->token = kstrdup(token, GFP_KERNEL);
-	if (watch->token == NULL)
-		goto out_free;
+ watch->token = kstrdup(token, GFP_KERNEL);
+ if (watch->token == ((void*)0))
+  goto out_free;
 
-	return watch;
+ return watch;
 
 out_free:
-	free_watch_adapter(watch);
+ free_watch_adapter(watch);
 
 out_fail:
-	return NULL;
+ return ((void*)0);
 }

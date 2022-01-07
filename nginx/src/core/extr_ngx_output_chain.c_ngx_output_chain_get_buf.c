@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ off_t ;
-typedef  int ngx_uint_t ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ off_t ;
+typedef int ngx_uint_t ;
 struct TYPE_8__ {size_t size; int num; } ;
-struct TYPE_9__ {int /*<<< orphan*/  allocated; TYPE_4__* buf; int /*<<< orphan*/  tag; int /*<<< orphan*/  pool; scalar_t__ alignment; scalar_t__ directio; TYPE_2__ bufs; TYPE_1__* in; } ;
-typedef  TYPE_3__ ngx_output_chain_ctx_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-struct TYPE_10__ {int temporary; int recycled; int /*<<< orphan*/  tag; int /*<<< orphan*/ * last; int /*<<< orphan*/ * end; int /*<<< orphan*/ * start; int /*<<< orphan*/ * pos; scalar_t__ last_in_chain; } ;
-typedef  TYPE_4__ ngx_buf_t ;
+struct TYPE_9__ {int allocated; TYPE_4__* buf; int tag; int pool; scalar_t__ alignment; scalar_t__ directio; TYPE_2__ bufs; TYPE_1__* in; } ;
+typedef TYPE_3__ ngx_output_chain_ctx_t ;
+typedef int ngx_int_t ;
+struct TYPE_10__ {int temporary; int recycled; int tag; int * last; int * end; int * start; int * pos; scalar_t__ last_in_chain; } ;
+typedef TYPE_4__ ngx_buf_t ;
 struct TYPE_7__ {TYPE_4__* buf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_OK ; 
- TYPE_4__* ngx_calloc_buf (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ngx_palloc (int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/ * ngx_pmemalign (int /*<<< orphan*/ ,size_t,size_t) ; 
+
+ int NGX_ERROR ;
+ int NGX_OK ;
+ TYPE_4__* ngx_calloc_buf (int ) ;
+ int * ngx_palloc (int ,size_t) ;
+ int * ngx_pmemalign (int ,size_t,size_t) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_output_chain_get_buf(ngx_output_chain_ctx_t *ctx, off_t bsize)
 {
-    size_t       size;
-    ngx_buf_t   *b, *in;
-    ngx_uint_t   recycled;
+    size_t size;
+    ngx_buf_t *b, *in;
+    ngx_uint_t recycled;
 
     in = ctx->in->buf;
     size = ctx->bufs.size;
@@ -46,10 +46,10 @@ ngx_output_chain_get_buf(ngx_output_chain_ctx_t *ctx, off_t bsize)
 
         if (bsize < (off_t) size) {
 
-            /*
-             * allocate a small temp buf for a small last buf
-             * or its small last part
-             */
+
+
+
+
 
             size = (size_t) bsize;
             recycled = 0;
@@ -58,11 +58,11 @@ ngx_output_chain_get_buf(ngx_output_chain_ctx_t *ctx, off_t bsize)
                    && ctx->bufs.num == 1
                    && (bsize < (off_t) (size + size / 4)))
         {
-            /*
-             * allocate a temp buf that equals to a last buf,
-             * if there is no directio, the last buf size is lesser
-             * than 1.25 of bufs.size and the temp buf is single
-             */
+
+
+
+
+
 
             size = (size_t) bsize;
             recycled = 0;
@@ -70,25 +70,25 @@ ngx_output_chain_get_buf(ngx_output_chain_ctx_t *ctx, off_t bsize)
     }
 
     b = ngx_calloc_buf(ctx->pool);
-    if (b == NULL) {
+    if (b == ((void*)0)) {
         return NGX_ERROR;
     }
 
     if (ctx->directio) {
 
-        /*
-         * allocate block aligned to a disk sector size to enable
-         * userland buffer direct usage conjunctly with directio
-         */
+
+
+
+
 
         b->start = ngx_pmemalign(ctx->pool, size, (size_t) ctx->alignment);
-        if (b->start == NULL) {
+        if (b->start == ((void*)0)) {
             return NGX_ERROR;
         }
 
     } else {
         b->start = ngx_palloc(ctx->pool, size);
-        if (b->start == NULL) {
+        if (b->start == ((void*)0)) {
             return NGX_ERROR;
         }
     }

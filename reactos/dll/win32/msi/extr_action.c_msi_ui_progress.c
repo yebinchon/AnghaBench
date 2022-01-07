@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  hdr; } ;
-typedef  TYPE_1__ MSIRECORD ;
-typedef  int /*<<< orphan*/  MSIPACKAGE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INSTALLMESSAGE_PROGRESS ; 
- TYPE_1__* MSI_CreateRecord (int) ; 
- int /*<<< orphan*/  MSI_ProcessMessage (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  MSI_RecordSetInteger (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  msi_dialog_check_messages (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int hdr; } ;
+typedef TYPE_1__ MSIRECORD ;
+typedef int MSIPACKAGE ;
+
+
+ int INSTALLMESSAGE_PROGRESS ;
+ TYPE_1__* MSI_CreateRecord (int) ;
+ int MSI_ProcessMessage (int *,int ,TYPE_1__*) ;
+ int MSI_RecordSetInteger (TYPE_1__*,int,int) ;
+ int msi_dialog_check_messages (int *) ;
+ int msiobj_release (int *) ;
 
 void msi_ui_progress( MSIPACKAGE *package, int a, int b, int c, int d )
 {
@@ -35,5 +35,5 @@ void msi_ui_progress( MSIPACKAGE *package, int a, int b, int c, int d )
     MSI_ProcessMessage( package, INSTALLMESSAGE_PROGRESS, row );
     msiobj_release( &row->hdr );
 
-    msi_dialog_check_messages( NULL );
+    msi_dialog_check_messages( ((void*)0) );
 }

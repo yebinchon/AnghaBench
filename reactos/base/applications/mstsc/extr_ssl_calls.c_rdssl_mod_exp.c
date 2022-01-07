@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int DIGIT_T ;
 
-/* Variables and functions */
- int HIBITMASK ; 
- int /*<<< orphan*/  g_free (char*) ; 
- scalar_t__ g_malloc (int,int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  mpModMult (int*,int*,int*,int*,int) ; 
- int /*<<< orphan*/  mpNEXTBITMASK (int,unsigned int) ; 
- int /*<<< orphan*/  mpSetEqual (int*,int*,int) ; 
- unsigned int mpSizeof (int*,int) ; 
+
+
+
+typedef int DIGIT_T ;
+
+
+ int HIBITMASK ;
+ int g_free (char*) ;
+ scalar_t__ g_malloc (int,int) ;
+ int memcpy (char*,char*,int) ;
+ int mpModMult (int*,int*,int*,int*,int) ;
+ int mpNEXTBITMASK (int,unsigned int) ;
+ int mpSetEqual (int*,int*,int) ;
+ unsigned int mpSizeof (int*,int) ;
 
 int
 rdssl_mod_exp(char* out, int out_len, char* in, int in_len,
               char* mod, int mod_len, char* exp, int exp_len)
 {
-  /* Computes y = x ^ e mod m */
-  /* Binary left-to-right method */
+
+
   DIGIT_T mask;
   DIGIT_T* e;
   DIGIT_T* x;
@@ -69,7 +69,7 @@ rdssl_mod_exp(char* out, int out_len, char* in, int in_len,
   x = (DIGIT_T*)l_in;
   y = (DIGIT_T*)l_out;
   m = (DIGIT_T*)l_mod;
-  /* Find second-most significant bit in e */
+
   n = mpSizeof(e, max_size / 4);
   for (mask = HIBITMASK; mask > 0; mask >>= 1)
   {
@@ -79,17 +79,17 @@ rdssl_mod_exp(char* out, int out_len, char* in, int in_len,
     }
   }
   mpNEXTBITMASK(mask, n);
-  /* Set y = x */
+
   mpSetEqual(y, x, max_size / 4);
-  /* For bit j = k - 2 downto 0 step -1 */
+
   while (n)
   {
-    mpModMult(y, y, y, m, max_size / 4); /* Square */
+    mpModMult(y, y, y, m, max_size / 4);
     if (e[n - 1] & mask)
     {
-      mpModMult(y, y, x, m, max_size / 4); /* Multiply */
+      mpModMult(y, y, x, m, max_size / 4);
     }
-    /* Move to next bit */
+
     mpNEXTBITMASK(mask, n);
   }
   memcpy(out, l_out, out_len);

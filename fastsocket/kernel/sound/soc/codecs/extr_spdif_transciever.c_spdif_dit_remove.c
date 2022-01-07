@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct platform_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dit_stub_dai ; 
- int /*<<< orphan*/  snd_soc_unregister_dai (int /*<<< orphan*/ *) ; 
+
+ int dit_stub_dai ;
+ int snd_soc_unregister_dai (int *) ;
 
 __attribute__((used)) static int spdif_dit_remove(struct platform_device *pdev)
 {
-	snd_soc_unregister_dai(&dit_stub_dai);
-	return 0;
+ snd_soc_unregister_dai(&dit_stub_dai);
+ return 0;
 }

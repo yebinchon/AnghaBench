@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
 struct TYPE_2__ {char const* name; void* base; scalar_t__ starting_element_count; scalar_t__ size; } ;
 
-/* Variables and functions */
- int CVMX_FPA_ALIGNMENT ; 
- scalar_t__ CVMX_FPA_MIN_BLOCK_SIZE ; 
- scalar_t__ CVMX_FPA_NUM_POOLS ; 
- int /*<<< orphan*/  cvmx_dprintf (char*) ; 
- int /*<<< orphan*/  cvmx_fpa_free (char*,scalar_t__,int /*<<< orphan*/ ) ; 
- TYPE_1__* cvmx_fpa_pool_info ; 
+
+ int CVMX_FPA_ALIGNMENT ;
+ scalar_t__ CVMX_FPA_MIN_BLOCK_SIZE ;
+ scalar_t__ CVMX_FPA_NUM_POOLS ;
+ int cvmx_dprintf (char*) ;
+ int cvmx_fpa_free (char*,scalar_t__,int ) ;
+ TYPE_1__* cvmx_fpa_pool_info ;
 
 int cvmx_fpa_setup_pool(uint64_t pool, const char *name, void *buffer,
                          uint64_t block_size, uint64_t num_blocks)

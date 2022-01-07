@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ uint16_t ;
-typedef  int /*<<< orphan*/  plain ;
-typedef  int /*<<< orphan*/  ping_id ;
-typedef  int /*<<< orphan*/  Node_format ;
-typedef  int /*<<< orphan*/  IP_Port ;
-typedef  int /*<<< orphan*/  DHT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DHT_get_shared_key_sent (int /*<<< orphan*/ *,scalar_t__*,scalar_t__ const*) ; 
- int MAX_SENT_NODES ; 
- int /*<<< orphan*/  addto_lists (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__ const*) ; 
- int crypto_box_BEFORENMBYTES ; 
- int crypto_box_MACBYTES ; 
- int crypto_box_NONCEBYTES ; 
- int crypto_box_PUBLICKEYBYTES ; 
- int decrypt_data_symmetric (scalar_t__*,scalar_t__ const*,scalar_t__ const*,int,scalar_t__*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,scalar_t__*,int) ; 
- int /*<<< orphan*/  send_hardening_getnode_res (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__ const*,scalar_t__*,scalar_t__) ; 
- int /*<<< orphan*/  sent_getnode_to_node (int /*<<< orphan*/ *,scalar_t__ const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int unpack_nodes (int /*<<< orphan*/ *,scalar_t__,scalar_t__*,scalar_t__*,scalar_t__,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint64_t ;
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ uint16_t ;
+typedef int plain ;
+typedef int ping_id ;
+typedef int Node_format ;
+typedef int IP_Port ;
+typedef int DHT ;
+
+
+ int DHT_get_shared_key_sent (int *,scalar_t__*,scalar_t__ const*) ;
+ int MAX_SENT_NODES ;
+ int addto_lists (int *,int ,scalar_t__ const*) ;
+ int crypto_box_BEFORENMBYTES ;
+ int crypto_box_MACBYTES ;
+ int crypto_box_NONCEBYTES ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int decrypt_data_symmetric (scalar_t__*,scalar_t__ const*,scalar_t__ const*,int,scalar_t__*) ;
+ int memcpy (int *,scalar_t__*,int) ;
+ int send_hardening_getnode_res (int *,int *,scalar_t__ const*,scalar_t__*,scalar_t__) ;
+ int sent_getnode_to_node (int *,scalar_t__ const*,int ,int ,int *) ;
+ int unpack_nodes (int *,scalar_t__,scalar_t__*,scalar_t__*,scalar_t__,int ) ;
 
 __attribute__((used)) static int handle_sendnodes_core(void *object, IP_Port source, const uint8_t *packet, uint16_t length,
                                  Node_format *plain_nodes, uint16_t size_plain_nodes, uint32_t *num_nodes_out)
@@ -40,7 +40,7 @@ __attribute__((used)) static int handle_sendnodes_core(void *object, IP_Port sou
     DHT *dht = object;
     uint32_t cid_size = 1 + crypto_box_PUBLICKEYBYTES + crypto_box_NONCEBYTES + 1 + sizeof(uint64_t) + crypto_box_MACBYTES;
 
-    if (length < cid_size) /* too short */
+    if (length < cid_size)
         return 1;
 
     uint32_t data_size = length - cid_size;
@@ -48,7 +48,7 @@ __attribute__((used)) static int handle_sendnodes_core(void *object, IP_Port sou
     if (data_size == 0)
         return 1;
 
-    if (data_size > sizeof(Node_format) * MAX_SENT_NODES) /* invalid length */
+    if (data_size > sizeof(Node_format) * MAX_SENT_NODES)
         return 1;
 
     uint8_t plain[1 + data_size + sizeof(uint64_t)];
@@ -87,7 +87,7 @@ __attribute__((used)) static int handle_sendnodes_core(void *object, IP_Port sou
     if (num_nodes < 0)
         return 1;
 
-    /* store the address the *request* was sent to */
+
     addto_lists(dht, source, packet + 1);
 
     *num_nodes_out = num_nodes;

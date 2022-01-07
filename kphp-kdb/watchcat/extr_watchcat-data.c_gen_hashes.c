@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MAX_NAME_SIZE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  dl_qsort_ll (long long*,int) ; 
- int dl_unique_ll (long long*,int) ; 
- long long* prep_lbuf_res ; 
- char* prepare_watchcat_str (char*,int /*<<< orphan*/ ) ; 
+ int MAX_NAME_SIZE ;
+ int assert (int) ;
+ int dl_qsort_ll (long long*,int) ;
+ int dl_unique_ll (long long*,int) ;
+ long long* prep_lbuf_res ;
+ char* prepare_watchcat_str (char*,int ) ;
 
 int gen_hashes (char *x) {
   char *v = prepare_watchcat_str (x, 0);
-  if (v == NULL) {
+  if (v == ((void*)0)) {
     prep_lbuf_res[0] = 0;
     return 0;
   }

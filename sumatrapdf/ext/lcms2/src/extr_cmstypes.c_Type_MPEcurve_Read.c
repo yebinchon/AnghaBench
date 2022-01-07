@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct _cms_typehandler_struct {int dummy; } ;
-typedef  scalar_t__ cmsUInt32Number ;
-typedef  scalar_t__ cmsUInt16Number ;
-typedef  int /*<<< orphan*/  cmsToneCurve ;
-typedef  void cmsStage ;
-struct TYPE_6__ {scalar_t__ (* Tell ) (int /*<<< orphan*/ ,TYPE_1__*) ;} ;
-typedef  TYPE_1__ cmsIOHANDLER ;
-typedef  int /*<<< orphan*/  cmsContext ;
-typedef  int /*<<< orphan*/  _cmsTagBase ;
+typedef scalar_t__ cmsUInt32Number ;
+typedef scalar_t__ cmsUInt16Number ;
+typedef int cmsToneCurve ;
+typedef void cmsStage ;
+struct TYPE_6__ {scalar_t__ (* Tell ) (int ,TYPE_1__*) ;} ;
+typedef TYPE_1__ cmsIOHANDLER ;
+typedef int cmsContext ;
+typedef int _cmsTagBase ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ReadMPECurve ; 
- scalar_t__ ReadPositionTable (int /*<<< orphan*/ ,struct _cms_typehandler_struct*,TYPE_1__*,scalar_t__,scalar_t__,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- scalar_t__ _cmsCalloc (int /*<<< orphan*/ ,scalar_t__,int) ; 
- int /*<<< orphan*/  _cmsFree (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  _cmsReadUInt16Number (int /*<<< orphan*/ ,TYPE_1__*,scalar_t__*) ; 
- int /*<<< orphan*/  cmsFreeToneCurve (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- void* cmsStageAllocToneCurves (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  cmsUNUSED_PARAMETER (scalar_t__) ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+ int ReadMPECurve ;
+ scalar_t__ ReadPositionTable (int ,struct _cms_typehandler_struct*,TYPE_1__*,scalar_t__,scalar_t__,int **,int ) ;
+ scalar_t__ _cmsCalloc (int ,scalar_t__,int) ;
+ int _cmsFree (int ,int **) ;
+ int _cmsReadUInt16Number (int ,TYPE_1__*,scalar_t__*) ;
+ int cmsFreeToneCurve (int ,int *) ;
+ void* cmsStageAllocToneCurves (int ,scalar_t__,int **) ;
+ int cmsUNUSED_PARAMETER (scalar_t__) ;
+ scalar_t__ stub1 (int ,TYPE_1__*) ;
 
 __attribute__((used)) static
 void *Type_MPEcurve_Read(cmsContext ContextID, struct _cms_typehandler_struct* self, cmsIOHANDLER* io, cmsUInt32Number* nItems, cmsUInt32Number SizeOfTag)
 {
-    cmsStage* mpe = NULL;
+    cmsStage* mpe = ((void*)0);
     cmsUInt16Number InputChans, OutputChans;
     cmsUInt32Number i, BaseOffset;
     cmsToneCurve** GammaTables;
 
     *nItems = 0;
 
-    // Get actual position as a basis for element offsets
+
     BaseOffset = io ->Tell(ContextID, io) - sizeof(_cmsTagBase);
 
-    if (!_cmsReadUInt16Number(ContextID, io, &InputChans)) return NULL;
-    if (!_cmsReadUInt16Number(ContextID, io, &OutputChans)) return NULL;
+    if (!_cmsReadUInt16Number(ContextID, io, &InputChans)) return ((void*)0);
+    if (!_cmsReadUInt16Number(ContextID, io, &OutputChans)) return ((void*)0);
 
-    if (InputChans != OutputChans) return NULL;
+    if (InputChans != OutputChans) return ((void*)0);
 
     GammaTables = (cmsToneCurve**) _cmsCalloc(ContextID, InputChans, sizeof(cmsToneCurve*));
-    if (GammaTables == NULL) return NULL;
+    if (GammaTables == ((void*)0)) return ((void*)0);
 
     if (ReadPositionTable(ContextID, self, io, InputChans, BaseOffset, GammaTables, ReadMPECurve)) {
 
         mpe = cmsStageAllocToneCurves(ContextID, InputChans, GammaTables);
     }
     else {
-        mpe = NULL;
+        mpe = ((void*)0);
     }
 
     for (i=0; i < InputChans; i++) {
@@ -66,7 +66,7 @@ void *Type_MPEcurve_Read(cmsContext ContextID, struct _cms_typehandler_struct* s
     }
 
     _cmsFree(ContextID, GammaTables);
-    *nItems = (mpe != NULL) ? 1U : 0;
+    *nItems = (mpe != ((void*)0)) ? 1U : 0;
     return mpe;
 
     cmsUNUSED_PARAMETER(SizeOfTag);

@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int elems; int /*<<< orphan*/  ibo; int /*<<< orphan*/  vao; int /*<<< orphan*/  vbo; int /*<<< orphan*/  prog; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int elems; int ibo; int vao; int vbo; int prog; } ;
 struct TYPE_6__ {int block_size; int depth; TYPE_1__ block; } ;
-typedef  TYPE_2__ fft_t ;
-typedef  unsigned int GLushort ;
-typedef  unsigned int GLuint ;
+typedef TYPE_2__ fft_t ;
+typedef unsigned int GLushort ;
+typedef unsigned int GLuint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_ARRAY_BUFFER ; 
- int /*<<< orphan*/  GL_ELEMENT_ARRAY_BUFFER ; 
- int /*<<< orphan*/  GL_FALSE ; 
- int /*<<< orphan*/  GL_STATIC_DRAW ; 
- int /*<<< orphan*/  GL_UNSIGNED_SHORT ; 
- scalar_t__ calloc (unsigned int,int) ; 
- int /*<<< orphan*/  fft_compile_program (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fft_fragment_program_heightmap ; 
- int /*<<< orphan*/  fft_vertex_program_heightmap ; 
- int /*<<< orphan*/  free (unsigned int*) ; 
- int /*<<< orphan*/  glBindBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glBindVertexArray (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glBufferData (int /*<<< orphan*/ ,unsigned int,unsigned int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glEnableVertexAttribArray (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glGenBuffers (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glGenVertexArrays (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glGetUniformLocation (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  glUniform1i (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glUseProgram (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glVertexAttribPointer (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int GL_ARRAY_BUFFER ;
+ int GL_ELEMENT_ARRAY_BUFFER ;
+ int GL_FALSE ;
+ int GL_STATIC_DRAW ;
+ int GL_UNSIGNED_SHORT ;
+ scalar_t__ calloc (unsigned int,int) ;
+ int fft_compile_program (TYPE_2__*,int ,int ) ;
+ int fft_fragment_program_heightmap ;
+ int fft_vertex_program_heightmap ;
+ int free (unsigned int*) ;
+ int glBindBuffer (int ,int ) ;
+ int glBindVertexArray (int ) ;
+ int glBufferData (int ,unsigned int,unsigned int*,int ) ;
+ int glEnableVertexAttribArray (int ) ;
+ int glGenBuffers (int,int *) ;
+ int glGenVertexArrays (int,int *) ;
+ int glGetUniformLocation (int ,char*) ;
+ int glUniform1i (int ,int ) ;
+ int glUseProgram (int ) ;
+ int glVertexAttribPointer (int ,int,int ,int ,int ,int ) ;
 
 __attribute__((used)) static void fft_init_block(fft_t *fft)
 {
    unsigned x, y;
    unsigned block_vertices_size = 0;
-   unsigned block_indices_size  = 0;
-   int pos                      = 0;
-   GLuint *bp                   = NULL;
-   GLushort *block_vertices     = NULL;
-   GLuint   *block_indices      = NULL;
+   unsigned block_indices_size = 0;
+   int pos = 0;
+   GLuint *bp = ((void*)0);
+   GLushort *block_vertices = ((void*)0);
+   GLuint *block_indices = ((void*)0);
 
-   fft->block.prog              = fft_compile_program(fft,
+   fft->block.prog = fft_compile_program(fft,
          fft_vertex_program_heightmap, fft_fragment_program_heightmap);
 
    glUseProgram(fft->block.prog);
    glUniform1i(glGetUniformLocation(fft->block.prog, "sHeight"), 0);
 
    block_vertices_size = 2 * fft->block_size * fft->depth;
-   block_vertices      = (GLushort*)calloc(block_vertices_size, sizeof(GLushort));
+   block_vertices = (GLushort*)calloc(block_vertices_size, sizeof(GLushort));
 
    for (y = 0; y < fft->depth; y++)
    {
@@ -83,7 +83,7 @@ __attribute__((used)) static void fft_init_block(fft_t *fft)
    for (y = 0; y < fft->depth - 1; y++)
    {
       int x;
-      int step_odd  = (-(int)(fft->block_size)) + ((y & 1) ? -1 : 1);
+      int step_odd = (-(int)(fft->block_size)) + ((y & 1) ? -1 : 1);
       int step_even = fft->block_size;
 
       for (x = 0; x < 2 * (int)(fft->block_size) - 1; x++)

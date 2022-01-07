@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * tree ;
-struct edge_to_cases_elt {int /*<<< orphan*/ * case_labels; TYPE_1__* e; } ;
-typedef  TYPE_1__* edge ;
-typedef  int /*<<< orphan*/  basic_block ;
-struct TYPE_3__ {int /*<<< orphan*/  src; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CASE_LABEL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NO_INSERT ; 
- int /*<<< orphan*/ * SWITCH_LABELS (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TREE_VEC_ELT (int /*<<< orphan*/ *,size_t) ; 
- size_t TREE_VEC_LENGTH (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  edge_to_cases ; 
- int /*<<< orphan*/  find_edge (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void** htab_find_slot (int /*<<< orphan*/ ,struct edge_to_cases_elt*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  label_to_block (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  record_switch_edge (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  recording_case_labels_p () ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int * tree ;
+struct edge_to_cases_elt {int * case_labels; TYPE_1__* e; } ;
+typedef TYPE_1__* edge ;
+typedef int basic_block ;
+struct TYPE_3__ {int src; } ;
+
+
+ int * CASE_LABEL (int ) ;
+ int NO_INSERT ;
+ int * SWITCH_LABELS (int *) ;
+ int TREE_VEC_ELT (int *,size_t) ;
+ size_t TREE_VEC_LENGTH (int *) ;
+ int edge_to_cases ;
+ int find_edge (int ,int ) ;
+ void** htab_find_slot (int ,struct edge_to_cases_elt*,int ) ;
+ int label_to_block (int *) ;
+ int record_switch_edge (int ,int ) ;
+ int recording_case_labels_p () ;
 
 __attribute__((used)) static tree
 get_cases_for_edge (edge e, tree t)
@@ -38,14 +38,14 @@ get_cases_for_edge (edge e, tree t)
   size_t i, n;
   tree vec;
 
-  /* If we are not recording cases, then we do not have CASE_LABEL_EXPR
-     chains available.  Return NULL so the caller can detect this case.  */
+
+
   if (!recording_case_labels_p ())
-    return NULL;
+    return ((void*)0);
 
 restart:
   elt.e = e;
-  elt.case_labels = NULL;
+  elt.case_labels = ((void*)0);
   slot = htab_find_slot (edge_to_cases, &elt, NO_INSERT);
 
   if (slot)
@@ -54,9 +54,9 @@ restart:
       return elt_p->case_labels;
     }
 
-  /* If we did not find E in the hash table, then this must be the first
-     time we have been queried for information about E & T.  Add all the
-     elements from T to the hash table then perform the query again.  */
+
+
+
 
   vec = SWITCH_LABELS (t);
   n = TREE_VEC_LENGTH (vec);

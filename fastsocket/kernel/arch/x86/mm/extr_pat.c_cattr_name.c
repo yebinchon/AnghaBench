@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ unsigned long _PAGE_CACHE_MASK ;
 
-/* Forward declarations */
 
-/* Type definitions */
 
-/* Variables and functions */
- unsigned long _PAGE_CACHE_MASK ; 
-#define  _PAGE_CACHE_UC 131 
-#define  _PAGE_CACHE_UC_MINUS 130 
-#define  _PAGE_CACHE_WB 129 
-#define  _PAGE_CACHE_WC 128 
+
 
 __attribute__((used)) static char *cattr_name(unsigned long flags)
 {
-	switch (flags & _PAGE_CACHE_MASK) {
-	case _PAGE_CACHE_UC:		return "uncached";
-	case _PAGE_CACHE_UC_MINUS:	return "uncached-minus";
-	case _PAGE_CACHE_WB:		return "write-back";
-	case _PAGE_CACHE_WC:		return "write-combining";
-	default:			return "broken";
-	}
+ switch (flags & _PAGE_CACHE_MASK) {
+ case 131: return "uncached";
+ case 130: return "uncached-minus";
+ case 129: return "write-back";
+ case 128: return "write-combining";
+ default: return "broken";
+ }
 }

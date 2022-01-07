@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtc_fast_freq_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REG_GET_FIELD (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RTC_CNTL_CLK_CONF_REG ; 
- int /*<<< orphan*/  RTC_CNTL_FAST_CLK_RTC_SEL ; 
+
+
+
+typedef int rtc_fast_freq_t ;
+
+
+ int REG_GET_FIELD (int ,int ) ;
+ int RTC_CNTL_CLK_CONF_REG ;
+ int RTC_CNTL_FAST_CLK_RTC_SEL ;
 
 rtc_fast_freq_t rtc_clk_fast_freq_get(void)
 {

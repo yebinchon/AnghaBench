@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ mat4x4 ;
-typedef  int /*<<< orphan*/  GLfloat ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_BACK ; 
- int /*<<< orphan*/  GL_CCW ; 
- int GL_COLOR_BUFFER_BIT ; 
- int /*<<< orphan*/  GL_CULL_FACE ; 
- int GL_DEPTH_BUFFER_BIT ; 
- int /*<<< orphan*/  GL_DEPTH_TEST ; 
- int /*<<< orphan*/  GL_EXP ; 
- int /*<<< orphan*/  GL_FOG ; 
- int /*<<< orphan*/  GL_FOG_COLOR ; 
- int /*<<< orphan*/  GL_FOG_DENSITY ; 
- int /*<<< orphan*/  GL_FOG_MODE ; 
- int /*<<< orphan*/  GL_LEQUAL ; 
- int /*<<< orphan*/  GL_LIGHTING ; 
- int /*<<< orphan*/  GL_MODELVIEW ; 
- int /*<<< orphan*/  GL_PROJECTION ; 
- int /*<<< orphan*/  GL_TRUE ; 
- double M_PI ; 
- int /*<<< orphan*/  aspect_ratio ; 
- double cos (double) ; 
- int /*<<< orphan*/  draw_floor () ; 
- int /*<<< orphan*/  draw_fountain () ; 
- int /*<<< orphan*/  draw_particles (int /*<<< orphan*/ *,double,float) ; 
- int /*<<< orphan*/  fog_color ; 
- int /*<<< orphan*/  glClear (int) ; 
- int /*<<< orphan*/  glClearColor (float,float,float,float) ; 
- int /*<<< orphan*/  glCullFace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDepthFunc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDepthMask (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDisable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glEnable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glFogf (int /*<<< orphan*/ ,float) ; 
- int /*<<< orphan*/  glFogfv (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glFogi (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glFrontFace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glLoadIdentity () ; 
- int /*<<< orphan*/  glLoadMatrixf (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  glMatrixMode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glRotated (double,double,double,double) ; 
- int /*<<< orphan*/  glTranslated (double,double,double) ; 
- int /*<<< orphan*/  mat4x4_perspective (scalar_t__,float,int /*<<< orphan*/ ,double,double) ; 
- int /*<<< orphan*/  setup_lights () ; 
- double sin (double) ; 
+
+
+
+typedef scalar_t__ mat4x4 ;
+typedef int GLfloat ;
+typedef int GLFWwindow ;
+
+
+ int GL_BACK ;
+ int GL_CCW ;
+ int GL_COLOR_BUFFER_BIT ;
+ int GL_CULL_FACE ;
+ int GL_DEPTH_BUFFER_BIT ;
+ int GL_DEPTH_TEST ;
+ int GL_EXP ;
+ int GL_FOG ;
+ int GL_FOG_COLOR ;
+ int GL_FOG_DENSITY ;
+ int GL_FOG_MODE ;
+ int GL_LEQUAL ;
+ int GL_LIGHTING ;
+ int GL_MODELVIEW ;
+ int GL_PROJECTION ;
+ int GL_TRUE ;
+ double M_PI ;
+ int aspect_ratio ;
+ double cos (double) ;
+ int draw_floor () ;
+ int draw_fountain () ;
+ int draw_particles (int *,double,float) ;
+ int fog_color ;
+ int glClear (int) ;
+ int glClearColor (float,float,float,float) ;
+ int glCullFace (int ) ;
+ int glDepthFunc (int ) ;
+ int glDepthMask (int ) ;
+ int glDisable (int ) ;
+ int glEnable (int ) ;
+ int glFogf (int ,float) ;
+ int glFogfv (int ,int ) ;
+ int glFogi (int ,int ) ;
+ int glFrontFace (int ) ;
+ int glLoadIdentity () ;
+ int glLoadMatrixf (int const*) ;
+ int glMatrixMode (int ) ;
+ int glRotated (double,double,double,double) ;
+ int glTranslated (double,double,double) ;
+ int mat4x4_perspective (scalar_t__,float,int ,double,double) ;
+ int setup_lights () ;
+ double sin (double) ;
 
 __attribute__((used)) static void draw_scene(GLFWwindow* window, double t)
 {
@@ -65,7 +65,7 @@ __attribute__((used)) static void draw_scene(GLFWwindow* window, double t)
     float dt;
     mat4x4 projection;
 
-    // Calculate frame-to-frame delta time
+
     dt = (float) (t - t_old);
     t_old = t;
 
@@ -80,11 +80,11 @@ __attribute__((used)) static void draw_scene(GLFWwindow* window, double t)
     glMatrixMode(GL_PROJECTION);
     glLoadMatrixf((const GLfloat*) projection);
 
-    // Setup camera
+
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-    // Rotate camera
+
     angle_x = 90.0 - 10.0;
     angle_y = 10.0 * sin(0.3 * t);
     angle_z = 10.0 * t;
@@ -92,8 +92,8 @@ __attribute__((used)) static void draw_scene(GLFWwindow* window, double t)
     glRotated(-angle_y, 0.0, 1.0, 0.0);
     glRotated(-angle_z, 0.0, 0.0, 1.0);
 
-    // Translate camera
-    xpos =  15.0 * sin((M_PI / 180.0) * angle_z) +
+
+    xpos = 15.0 * sin((M_PI / 180.0) * angle_z) +
              2.0 * sin((M_PI / 180.0) * 3.1 * t);
     ypos = -15.0 * cos((M_PI / 180.0) * angle_z) +
              2.0 * cos((M_PI / 180.0) * 2.9 * t);
@@ -123,9 +123,9 @@ __attribute__((used)) static void draw_scene(GLFWwindow* window, double t)
     glDisable(GL_LIGHTING);
     glDisable(GL_FOG);
 
-    // Particles must be drawn after all solid objects have been drawn
+
     draw_particles(window, t, dt);
 
-    // Z-buffer not needed anymore
+
     glDisable(GL_DEPTH_TEST);
 }

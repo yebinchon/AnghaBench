@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  string_data ;
-typedef  char lit_utf8_byte_t ;
-typedef  int /*<<< orphan*/  expected_data ;
-typedef  int /*<<< orphan*/  ecma_stringbuilder_t ;
-typedef  int /*<<< orphan*/  ecma_string_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIT_CHAR_1 ; 
- int /*<<< orphan*/  LIT_CHAR_2 ; 
- int /*<<< orphan*/  LIT_CHAR_3 ; 
- int /*<<< orphan*/  LIT_CHAR_LOWERCASE_A ; 
- int /*<<< orphan*/  LIT_CHAR_LOWERCASE_B ; 
- int /*<<< orphan*/  LIT_CHAR_LOWERCASE_C ; 
- int /*<<< orphan*/  LIT_MAGIC_STRING_STRING ; 
- int /*<<< orphan*/  LIT_MAGIC_STRING__EMPTY ; 
- int /*<<< orphan*/  TEST_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_INIT () ; 
- int UINT16_MAX ; 
- int /*<<< orphan*/ * ecma_append_chars_to_string (int /*<<< orphan*/ *,char const*,int,int) ; 
- int /*<<< orphan*/  ecma_compare_ecma_strings (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ecma_deref_ecma_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ecma_finalize () ; 
- int /*<<< orphan*/ * ecma_get_magic_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ecma_init () ; 
- int /*<<< orphan*/ * ecma_new_ecma_string_from_uint32 (int) ; 
- int /*<<< orphan*/ * ecma_new_ecma_string_from_utf8 (char const*,int) ; 
- int /*<<< orphan*/  ecma_stringbuilder_append (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ecma_stringbuilder_append_char (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ecma_stringbuilder_append_magic (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ecma_stringbuilder_append_raw (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  ecma_stringbuilder_create () ; 
- int /*<<< orphan*/  ecma_stringbuilder_create_from (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ecma_stringbuilder_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ecma_stringbuilder_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jmem_finalize () ; 
- int /*<<< orphan*/  jmem_init () ; 
+
+
+
+typedef int string_data ;
+typedef char lit_utf8_byte_t ;
+typedef int expected_data ;
+typedef int ecma_stringbuilder_t ;
+typedef int ecma_string_t ;
+
+
+ int LIT_CHAR_1 ;
+ int LIT_CHAR_2 ;
+ int LIT_CHAR_3 ;
+ int LIT_CHAR_LOWERCASE_A ;
+ int LIT_CHAR_LOWERCASE_B ;
+ int LIT_CHAR_LOWERCASE_C ;
+ int LIT_MAGIC_STRING_STRING ;
+ int LIT_MAGIC_STRING__EMPTY ;
+ int TEST_ASSERT (int ) ;
+ int TEST_INIT () ;
+ int UINT16_MAX ;
+ int * ecma_append_chars_to_string (int *,char const*,int,int) ;
+ int ecma_compare_ecma_strings (int *,int *) ;
+ int ecma_deref_ecma_string (int *) ;
+ int ecma_finalize () ;
+ int * ecma_get_magic_string (int ) ;
+ int ecma_init () ;
+ int * ecma_new_ecma_string_from_uint32 (int) ;
+ int * ecma_new_ecma_string_from_utf8 (char const*,int) ;
+ int ecma_stringbuilder_append (int *,int *) ;
+ int ecma_stringbuilder_append_char (int *,int ) ;
+ int ecma_stringbuilder_append_magic (int *,int ) ;
+ int ecma_stringbuilder_append_raw (int *,char const*,int) ;
+ int ecma_stringbuilder_create () ;
+ int ecma_stringbuilder_create_from (int *) ;
+ int ecma_stringbuilder_destroy (int *) ;
+ int * ecma_stringbuilder_finalize (int *) ;
+ int jmem_finalize () ;
+ int jmem_init () ;
 
 int
 main (void)
@@ -167,7 +167,7 @@ main (void)
     ecma_stringbuilder_append_raw (&builder, string_data, sizeof (string_data) - 1);
     ecma_stringbuilder_append (&builder, uint_str_p);
     ecma_stringbuilder_append_magic (&builder, LIT_MAGIC_STRING_STRING);
-    /* Test that we do not leak. */
+
     ecma_stringbuilder_destroy (&builder);
   }
 

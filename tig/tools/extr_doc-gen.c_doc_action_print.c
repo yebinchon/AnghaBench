@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct request_info {char* help; int /*<<< orphan*/  name; } ;
+
+
+
+
+struct request_info {char* help; int name; } ;
 struct doc_action_iterator {char const* group; int end_group; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  doc_action_group_name_print (char const*) ; 
- int /*<<< orphan*/  doc_action_table_print (int) ; 
- char* enum_name (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+ int doc_action_group_name_print (char const*) ;
+ int doc_action_table_print (int) ;
+ char* enum_name (int ) ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static bool
 doc_action_print(void *data, const struct request_info *req_info, const char *group)
 {
-	struct doc_action_iterator *iterator = data;
+ struct doc_action_iterator *iterator = data;
 
-	if (iterator->group != group) {
-		if (iterator->end_group) {
-			doc_action_table_print(false);
-			printf("\n");
-		}
+ if (iterator->group != group) {
+  if (iterator->end_group) {
+   doc_action_table_print(0);
+   printf("\n");
+  }
 
-		doc_action_group_name_print(group);
-		doc_action_table_print(true);
+  doc_action_group_name_print(group);
+  doc_action_table_print(1);
 
-		iterator->group = group;
-		iterator->end_group = true;
-	}
+  iterator->group = group;
+  iterator->end_group = 1;
+ }
 
-	printf("|%-24s|%s\n", enum_name(req_info->name), req_info->help);
-	return true;
+ printf("|%-24s|%s\n", enum_name(req_info->name), req_info->help);
+ return 1;
 }

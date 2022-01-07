@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
-typedef  int /*<<< orphan*/  VSMap ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+typedef int VSMap ;
 struct TYPE_6__ {TYPE_1__* vsapi; } ;
-typedef  TYPE_2__ VSContext ;
+typedef TYPE_2__ VSContext ;
 struct TYPE_7__ {TYPE_2__* priv_data; } ;
-struct TYPE_5__ {int (* propGetInt ) (int /*<<< orphan*/  const*,char const*,int /*<<< orphan*/ ,int*) ;} ;
-typedef  TYPE_3__ AVFormatContext ;
+struct TYPE_5__ {int (* propGetInt ) (int const*,char const*,int ,int*) ;} ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int INT_MAX ; 
- int INT_MIN ; 
- int stub1 (int /*<<< orphan*/  const*,char const*,int /*<<< orphan*/ ,int*) ; 
+
+ int INT_MAX ;
+ int INT_MIN ;
+ int stub1 (int const*,char const*,int ,int*) ;
 
 __attribute__((used)) static int get_vs_prop_int(AVFormatContext *s, const VSMap *map, const char *name, int def)
 {

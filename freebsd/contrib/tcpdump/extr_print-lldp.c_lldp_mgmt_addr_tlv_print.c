@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int u_int ;
-typedef  int u_char ;
-typedef  int /*<<< orphan*/  netdissect_options ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXTRACT_32BITS (int const*) ; 
- int LLDP_INTF_NUM_LEN ; 
- int /*<<< orphan*/  ND_PRINT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lldp_intf_numb_subtype_values ; 
- char* lldp_network_addr_print (int /*<<< orphan*/ *,int const*,int) ; 
- int /*<<< orphan*/  safeputs (int /*<<< orphan*/ *,int const*,int) ; 
- int /*<<< orphan*/  tok2str (int /*<<< orphan*/ ,char*,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int u_int ;
+typedef int u_char ;
+typedef int netdissect_options ;
+
+
+ int EXTRACT_32BITS (int const*) ;
+ int LLDP_INTF_NUM_LEN ;
+ int ND_PRINT (int *) ;
+ int lldp_intf_numb_subtype_values ;
+ char* lldp_network_addr_print (int *,int const*,int) ;
+ int safeputs (int *,int const*,int) ;
+ int tok2str (int ,char*,int) ;
 
 __attribute__((used)) static int
 lldp_mgmt_addr_tlv_print(netdissect_options *ndo,
@@ -47,7 +47,7 @@ lldp_mgmt_addr_tlv_print(netdissect_options *ndo,
     }
 
     mgmt_addr = lldp_network_addr_print(ndo, tptr, mgmt_addr_len);
-    if (mgmt_addr == NULL) {
+    if (mgmt_addr == ((void*)0)) {
         return 0;
     }
     ND_PRINT((ndo, "\n\t  Management Address length %u, %s",
@@ -68,9 +68,9 @@ lldp_mgmt_addr_tlv_print(netdissect_options *ndo,
     tptr += LLDP_INTF_NUM_LEN;
     tlen -= LLDP_INTF_NUM_LEN;
 
-    /*
-     * The OID is optional.
-     */
+
+
+
     if (tlen) {
         oid_len = *tptr;
 

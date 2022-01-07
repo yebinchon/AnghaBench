@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct kfd_process {int /*<<< orphan*/  mutex; int /*<<< orphan*/  pqm; int /*<<< orphan*/  pasid; } ;
-struct kfd_ioctl_destroy_queue_args {int /*<<< orphan*/  queue_id; } ;
+
+
+
+
+struct kfd_process {int mutex; int pqm; int pasid; } ;
+struct kfd_ioctl_destroy_queue_args {int queue_id; } ;
 struct file {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int pqm_destroy_queue (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pr_debug (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int pqm_destroy_queue (int *,int ) ;
+ int pr_debug (char*,int ,int ) ;
 
 __attribute__((used)) static int kfd_ioctl_destroy_queue(struct file *filp, struct kfd_process *p,
-					void *data)
+     void *data)
 {
-	int retval;
-	struct kfd_ioctl_destroy_queue_args *args = data;
+ int retval;
+ struct kfd_ioctl_destroy_queue_args *args = data;
 
-	pr_debug("Destroying queue id %d for pasid %d\n",
-				args->queue_id,
-				p->pasid);
+ pr_debug("Destroying queue id %d for pasid %d\n",
+    args->queue_id,
+    p->pasid);
 
-	mutex_lock(&p->mutex);
+ mutex_lock(&p->mutex);
 
-	retval = pqm_destroy_queue(&p->pqm, args->queue_id);
+ retval = pqm_destroy_queue(&p->pqm, args->queue_id);
 
-	mutex_unlock(&p->mutex);
-	return retval;
+ mutex_unlock(&p->mutex);
+ return retval;
 }

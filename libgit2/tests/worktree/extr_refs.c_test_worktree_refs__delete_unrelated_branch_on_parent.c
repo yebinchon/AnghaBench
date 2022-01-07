@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_reference ;
-struct TYPE_2__ {int /*<<< orphan*/  repo; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GIT_BRANCH_LOCAL ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- TYPE_1__ fixture ; 
- int /*<<< orphan*/  git_branch_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_branch_lookup (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_reference_free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int git_reference ;
+struct TYPE_2__ {int repo; } ;
+
+
+ int GIT_BRANCH_LOCAL ;
+ int cl_git_pass (int ) ;
+ TYPE_1__ fixture ;
+ int git_branch_delete (int *) ;
+ int git_branch_lookup (int **,int ,char*,int ) ;
+ int git_reference_free (int *) ;
 
 void test_worktree_refs__delete_unrelated_branch_on_parent(void)
 {
-	git_reference *branch;
+ git_reference *branch;
 
-	cl_git_pass(git_branch_lookup(&branch, fixture.repo,
-		    "merge-conflict", GIT_BRANCH_LOCAL));
-	cl_git_pass(git_branch_delete(branch));
+ cl_git_pass(git_branch_lookup(&branch, fixture.repo,
+      "merge-conflict", GIT_BRANCH_LOCAL));
+ cl_git_pass(git_branch_delete(branch));
 
-	git_reference_free(branch);
+ git_reference_free(branch);
 }

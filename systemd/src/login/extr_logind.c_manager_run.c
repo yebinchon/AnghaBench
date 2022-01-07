@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-struct TYPE_6__ {int /*<<< orphan*/  event; } ;
-typedef  TYPE_1__ Manager ;
 
-/* Variables and functions */
- int SD_EVENT_FINISHED ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int manager_dispatch_delayed (TYPE_1__*,int) ; 
- int /*<<< orphan*/  manager_gc (TYPE_1__*,int) ; 
- int sd_event_get_state (int /*<<< orphan*/ ) ; 
- int sd_event_run (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct TYPE_6__ {int event; } ;
+typedef TYPE_1__ Manager ;
+
+
+ int SD_EVENT_FINISHED ;
+ int assert (TYPE_1__*) ;
+ int manager_dispatch_delayed (TYPE_1__*,int) ;
+ int manager_gc (TYPE_1__*,int) ;
+ int sd_event_get_state (int ) ;
+ int sd_event_run (int ,int ) ;
 
 __attribute__((used)) static int manager_run(Manager *m) {
         int r;
@@ -35,9 +35,9 @@ __attribute__((used)) static int manager_run(Manager *m) {
                 if (r == SD_EVENT_FINISHED)
                         return 0;
 
-                manager_gc(m, true);
+                manager_gc(m, 1);
 
-                r = manager_dispatch_delayed(m, false);
+                r = manager_dispatch_delayed(m, 0);
                 if (r < 0)
                         return r;
                 if (r > 0)

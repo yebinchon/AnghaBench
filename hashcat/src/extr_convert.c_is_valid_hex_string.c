@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
 
-/* Variables and functions */
- int is_valid_hex_char (int /*<<< orphan*/  const) ; 
+
+
+
+typedef int u8 ;
+
+
+ int is_valid_hex_char (int const) ;
 
 bool is_valid_hex_string (const u8 *s, const size_t len)
 {
@@ -21,8 +21,8 @@ bool is_valid_hex_string (const u8 *s, const size_t len)
   {
     const u8 c = s[i];
 
-    if (is_valid_hex_char (c) == false) return false;
+    if (is_valid_hex_char (c) == 0) return 0;
   }
 
-  return true;
+  return 1;
 }

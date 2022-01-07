@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct radix_tree_root {int dummy; } ;
 struct item {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- struct item* radix_tree_lookup (struct radix_tree_root*,unsigned long) ; 
+
+ int assert (int ) ;
+ struct item* radix_tree_lookup (struct radix_tree_root*,unsigned long) ;
 
 void item_check_absent(struct radix_tree_root *root, unsigned long index)
 {
-	struct item *item;
+ struct item *item;
 
-	item = radix_tree_lookup(root, index);
-	assert(item == NULL);
+ item = radix_tree_lookup(root, index);
+ assert(item == ((void*)0));
 }

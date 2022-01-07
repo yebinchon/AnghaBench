@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3rbu ;
 
-/* Variables and functions */
- scalar_t__ memcmp (char*,char const*,int) ; 
- int /*<<< orphan*/ * openRbuHandle (int /*<<< orphan*/ ,char const*,char const*) ; 
- int /*<<< orphan*/ * rbuMisuseError () ; 
- int strlen (char const*) ; 
+
+
+
+typedef int sqlite3rbu ;
+
+
+ scalar_t__ memcmp (char*,char const*,int) ;
+ int * openRbuHandle (int ,char const*,char const*) ;
+ int * rbuMisuseError () ;
+ int strlen (char const*) ;
 
 sqlite3rbu *sqlite3rbu_vacuum(
-  const char *zTarget, 
+  const char *zTarget,
   const char *zState
 ){
   if( zTarget==0 ){ return rbuMisuseError(); }
@@ -29,6 +29,6 @@ sqlite3rbu *sqlite3rbu_vacuum(
       return rbuMisuseError();
     }
   }
-  /* TODO: Check that both arguments are non-NULL */
+
   return openRbuHandle(0, zTarget, zState);
 }

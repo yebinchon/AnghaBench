@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int ULONG_PTR ;
-typedef  int ULONG ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int VOID ;
+typedef int ULONG_PTR ;
+typedef int ULONG ;
 struct TYPE_3__ {int lDelta; scalar_t__ pvScan0; } ;
-typedef  TYPE_1__ SURFOBJ ;
-typedef  int* PUSHORT ;
-typedef  int* PULONG ;
-typedef  int* PBYTE ;
-typedef  int LONG ;
+typedef TYPE_1__ SURFOBJ ;
+typedef int* PUSHORT ;
+typedef int* PULONG ;
+typedef int* PBYTE ;
+typedef int LONG ;
 
-/* Variables and functions */
+
 
 VOID
 DIB_24BPP_HLine(SURFOBJ *SurfObj, LONG x1, LONG x2, LONG y, ULONG c)
@@ -31,7 +31,7 @@ DIB_24BPP_HLine(SURFOBJ *SurfObj, LONG x1, LONG x2, LONG y, ULONG c)
 
   if (Count < 8)
   {
-    /* For small fills, don't bother doing anything fancy */
+
     while (Count--)
     {
       *(PUSHORT)(addr) = c;
@@ -45,7 +45,7 @@ DIB_24BPP_HLine(SURFOBJ *SurfObj, LONG x1, LONG x2, LONG y, ULONG c)
     ULONG Fill[3];
     ULONG MultiCount;
 
-    /* Align to 4-byte address */
+
     while (0 != ((ULONG_PTR) addr & 0x3))
     {
       *(PUSHORT)(addr) = c;
@@ -54,19 +54,10 @@ DIB_24BPP_HLine(SURFOBJ *SurfObj, LONG x1, LONG x2, LONG y, ULONG c)
       addr += 1;
       Count--;
     }
-    /* If the color we need to fill with is 0ABC, then the final mem pattern
-    * (note little-endianness) would be:
-    *
-    * |C.B.A|C.B.A|C.B.A|C.B.A|   <- pixel borders
-    * |C.B.A.C|B.A.C.B|A.C.B.A|   <- ULONG borders
-    *
-    * So, taking endianness into account again, we need to fill with these
-    * ULONGs: CABC BCAB ABCA */
-
-    c = c & 0xffffff;                /* 0ABC */
-    Fill[0] = c | (c << 24);         /* CABC */
-    Fill[1] = (c >> 8) | (c << 16);  /* BCAB */
-    Fill[2] = (c << 8) | (c >> 16);  /* ABCA */
+    c = c & 0xffffff;
+    Fill[0] = c | (c << 24);
+    Fill[1] = (c >> 8) | (c << 16);
+    Fill[2] = (c << 8) | (c >> 16);
     MultiCount = Count / 4;
     do
     {

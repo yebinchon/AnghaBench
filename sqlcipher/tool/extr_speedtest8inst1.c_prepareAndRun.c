@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vfs ;
-typedef  scalar_t__ sqlite3_uint64 ;
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BINARYLOG_FINALIZE ; 
- int /*<<< orphan*/  BINARYLOG_PREPARE_V2 ; 
- int /*<<< orphan*/  BINARYLOG_STEP ; 
- int SQLITE_OK ; 
- int SQLITE_ROW ; 
- scalar_t__ sqlite3Hwtime () ; 
- int sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_instvfs_binarylog_call (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,int,char const*) ; 
- int /*<<< orphan*/  sqlite3_instvfs_binarylog_marker (int /*<<< orphan*/ *,char*) ; 
- int sqlite3_prepare_v2 (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ **,char const**) ; 
- int /*<<< orphan*/  sqlite3_snprintf (int,char*,char*,char const*) ; 
- int sqlite3_step (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_vfs ;
+typedef scalar_t__ sqlite3_uint64 ;
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
+
+
+ int BINARYLOG_FINALIZE ;
+ int BINARYLOG_PREPARE_V2 ;
+ int BINARYLOG_STEP ;
+ int SQLITE_OK ;
+ int SQLITE_ROW ;
+ scalar_t__ sqlite3Hwtime () ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_instvfs_binarylog_call (int *,int ,scalar_t__,int,char const*) ;
+ int sqlite3_instvfs_binarylog_marker (int *,char*) ;
+ int sqlite3_prepare_v2 (int *,char const*,int,int **,char const**) ;
+ int sqlite3_snprintf (int,char*,char*,char const*) ;
+ int sqlite3_step (int *) ;
 
 __attribute__((used)) static void prepareAndRun(sqlite3_vfs *pInstVfs, sqlite3 *db, const char *zSql){
   sqlite3_stmt *pStmt;

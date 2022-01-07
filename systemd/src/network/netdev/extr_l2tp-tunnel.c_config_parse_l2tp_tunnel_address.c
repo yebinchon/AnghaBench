@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  union in_addr_union {int dummy; } in_addr_union ;
-struct TYPE_2__ {scalar_t__ family; scalar_t__ local_address_type; int /*<<< orphan*/  local; int /*<<< orphan*/  remote; } ;
-typedef  TYPE_1__ L2tpTunnel ;
-typedef  scalar_t__ L2tpLocalAddressType ;
 
-/* Variables and functions */
- scalar_t__ AF_UNSPEC ; 
- int /*<<< orphan*/  IN_ADDR_NULL ; 
- int /*<<< orphan*/  LOG_ERR ; 
- scalar_t__ NETDEV_L2TP_LOCAL_ADDRESS_AUTO ; 
- int /*<<< orphan*/  assert (void*) ; 
- int in_addr_from_string (scalar_t__,char const*,union in_addr_union*) ; 
- int in_addr_from_string_auto (char const*,scalar_t__*,union in_addr_union*) ; 
- scalar_t__ in_addr_is_null (scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ isempty (char const*) ; 
- scalar_t__ l2tp_local_address_type_from_string (char const*) ; 
- int /*<<< orphan*/  log_syntax (char const*,int /*<<< orphan*/ ,char const*,unsigned int,int,char*,char const*,char const*) ; 
- scalar_t__ streq (char const*,char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef union in_addr_union {int dummy; } in_addr_union ;
+struct TYPE_2__ {scalar_t__ family; scalar_t__ local_address_type; int local; int remote; } ;
+typedef TYPE_1__ L2tpTunnel ;
+typedef scalar_t__ L2tpLocalAddressType ;
+
+
+ scalar_t__ AF_UNSPEC ;
+ int IN_ADDR_NULL ;
+ int LOG_ERR ;
+ scalar_t__ NETDEV_L2TP_LOCAL_ADDRESS_AUTO ;
+ int assert (void*) ;
+ int in_addr_from_string (scalar_t__,char const*,union in_addr_union*) ;
+ int in_addr_from_string_auto (char const*,scalar_t__*,union in_addr_union*) ;
+ scalar_t__ in_addr_is_null (scalar_t__,int *) ;
+ scalar_t__ isempty (char const*) ;
+ scalar_t__ l2tp_local_address_type_from_string (char const*) ;
+ int log_syntax (char const*,int ,char const*,unsigned int,int,char*,char const*,char const*) ;
+ scalar_t__ streq (char const*,char*) ;
 
 int config_parse_l2tp_tunnel_address(
                 const char *unit,
@@ -61,7 +61,7 @@ int config_parse_l2tp_tunnel_address(
 
                 if (addr_type >= 0) {
                         if (in_addr_is_null(t->family, &t->remote) != 0)
-                                /* If Remote= is not specified yet, then also clear family. */
+
                                 t->family = AF_UNSPEC;
 
                         t->local = IN_ADDR_NULL;

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct usb_hcd {int dummy; } ;
-struct s3c2410_hcd_info {int /*<<< orphan*/  (* enable_oc ) (struct s3c2410_hcd_info*,int) ;int /*<<< orphan*/  report_oc; struct usb_hcd* hcd; } ;
+struct s3c2410_hcd_info {int (* enable_oc ) (struct s3c2410_hcd_info*,int) ;int report_oc; struct usb_hcd* hcd; } ;
 struct TYPE_2__ {struct s3c2410_hcd_info* platform_data; } ;
 struct platform_device {TYPE_1__ dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clk ; 
- int /*<<< orphan*/  clk_enable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dev_dbg (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  mdelay (int) ; 
- int /*<<< orphan*/  s3c2410_hcd_oc ; 
- int /*<<< orphan*/  stub1 (struct s3c2410_hcd_info*,int) ; 
- int /*<<< orphan*/  usb_clk ; 
+
+ int clk ;
+ int clk_enable (int ) ;
+ int dev_dbg (TYPE_1__*,char*) ;
+ int mdelay (int) ;
+ int s3c2410_hcd_oc ;
+ int stub1 (struct s3c2410_hcd_info*,int) ;
+ int usb_clk ;
 
 __attribute__((used)) static void s3c2410_start_hc(struct platform_device *dev, struct usb_hcd *hcd)
 {
-	struct s3c2410_hcd_info *info = dev->dev.platform_data;
+ struct s3c2410_hcd_info *info = dev->dev.platform_data;
 
-	dev_dbg(&dev->dev, "s3c2410_start_hc:\n");
+ dev_dbg(&dev->dev, "s3c2410_start_hc:\n");
 
-	clk_enable(usb_clk);
-	mdelay(2);			/* let the bus clock stabilise */
+ clk_enable(usb_clk);
+ mdelay(2);
 
-	clk_enable(clk);
+ clk_enable(clk);
 
-	if (info != NULL) {
-		info->hcd	= hcd;
-		info->report_oc = s3c2410_hcd_oc;
+ if (info != ((void*)0)) {
+  info->hcd = hcd;
+  info->report_oc = s3c2410_hcd_oc;
 
-		if (info->enable_oc != NULL) {
-			(info->enable_oc)(info, 1);
-		}
-	}
+  if (info->enable_oc != ((void*)0)) {
+   (info->enable_oc)(info, 1);
+  }
+ }
 }

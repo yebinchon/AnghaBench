@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONGLONG ;
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GUID_NULL ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ ** objects ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  pApphelpCheckShellObject (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  trace (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
- int /*<<< orphan*/  wine_dbgstr_guid (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int ULONGLONG ;
+typedef int ULONG ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int GUID_NULL ;
+ int GetLastError () ;
+ int SetLastError (int) ;
+ int TRUE ;
+ int ** objects ;
+ int ok (int,char*,int ,int ,int ,...) ;
+ int pApphelpCheckShellObject (int *,int ,int*) ;
+ int trace (char*,int ,int ,int ,int ) ;
+ int win_skip (char*) ;
+ int wine_dbgstr_guid (int *) ;
 
 __attribute__((used)) static void test_ApphelpCheckShellObject(void)
 {
@@ -55,17 +55,17 @@ __attribute__((used)) static void test_ApphelpCheckShellObject(void)
 
     }
 
-    /* NULL as pointer to flags is checked */
+
     SetLastError(0xdeadbeef);
-    res = pApphelpCheckShellObject(&GUID_NULL, FALSE, NULL);
+    res = pApphelpCheckShellObject(&GUID_NULL, FALSE, ((void*)0));
     ok(res, "%s 0: got %d with 0x%x (expected != FALSE)\n", wine_dbgstr_guid(&GUID_NULL), res, GetLastError());
 
-    /* NULL as CLSID* crash on Windows */
+
     if (0)
     {
         flags = 0xdeadbeef;
         SetLastError(0xdeadbeef);
-        res = pApphelpCheckShellObject(NULL, FALSE, &flags);
+        res = pApphelpCheckShellObject(((void*)0), FALSE, &flags);
         trace("NULL as CLSID*: got %d and 0x%x%08x with 0x%x\n", res, (ULONG)(flags >> 32), (ULONG)flags, GetLastError());
     }
 }

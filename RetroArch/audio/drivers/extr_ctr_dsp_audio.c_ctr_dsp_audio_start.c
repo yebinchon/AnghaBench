@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int playing; } ;
-typedef  TYPE_1__ ctr_dsp_audio_t ;
+typedef TYPE_1__ ctr_dsp_audio_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ndspSetMasterVol (double) ; 
+
+ int ndspSetMasterVol (double) ;
 
 __attribute__((used)) static bool ctr_dsp_audio_start(void *data, bool is_shutdown)
 {
    ctr_dsp_audio_t* ctr = (ctr_dsp_audio_t*)data;
 
-   /* Prevents restarting audio when the menu
-    * is toggled off on shutdown */
+
+
    if (is_shutdown)
-      return true;
+      return 1;
 
    ndspSetMasterVol(1.0);
-   ctr->playing = true;
+   ctr->playing = 1;
 
-   return true;
+   return 1;
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct led_classdev_flash {int dummy; } ;
-struct as3645a {int /*<<< orphan*/  timeout; } ;
+struct as3645a {int timeout; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AS_TIMER_US_TO_CODE (int /*<<< orphan*/ ) ; 
- int as3645a_set_timeout (struct as3645a*) ; 
- struct as3645a* fled_to_as3645a (struct led_classdev_flash*) ; 
+
+ int AS_TIMER_US_TO_CODE (int ) ;
+ int as3645a_set_timeout (struct as3645a*) ;
+ struct as3645a* fled_to_as3645a (struct led_classdev_flash*) ;
 
 __attribute__((used)) static int as3645a_set_flash_timeout(struct led_classdev_flash *fled,
-				     u32 timeout_us)
+         u32 timeout_us)
 {
-	struct as3645a *flash = fled_to_as3645a(fled);
+ struct as3645a *flash = fled_to_as3645a(fled);
 
-	flash->timeout = AS_TIMER_US_TO_CODE(timeout_us);
+ flash->timeout = AS_TIMER_US_TO_CODE(timeout_us);
 
-	return as3645a_set_timeout(flash);
+ return as3645a_set_timeout(flash);
 }

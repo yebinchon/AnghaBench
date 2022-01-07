@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ge25519_p3 ;
-typedef  int /*<<< orphan*/  ge25519_p2 ;
-typedef  int /*<<< orphan*/  ge25519_p1p1 ;
-typedef  int /*<<< orphan*/ * fe25519 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  chi25519 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * curve25519_A ; 
- int /*<<< orphan*/  fe25519_0 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fe25519_1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fe25519_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fe25519_cmov (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  fe25519_invert (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fe25519_mul (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fe25519_neg (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fe25519_sq (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fe25519_sq2 (int /*<<< orphan*/ *,int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  fe25519_sub (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fe25519_tobytes (unsigned char*,int /*<<< orphan*/ *) ; 
- scalar_t__ ge25519_frombytes (int /*<<< orphan*/ *,unsigned char*) ; 
- int /*<<< orphan*/  ge25519_p1p1_to_p2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ge25519_p1p1_to_p3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ge25519_p2_dbl (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ge25519_p3_dbl (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ge25519_p3_tobytes (unsigned char*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int ge25519_p3 ;
+typedef int ge25519_p2 ;
+typedef int ge25519_p1p1 ;
+typedef int * fe25519 ;
+
+
+ int abort () ;
+ int chi25519 (int *,int *) ;
+ int * curve25519_A ;
+ int fe25519_0 (int *) ;
+ int fe25519_1 (int *) ;
+ int fe25519_add (int *,int *,int *) ;
+ int fe25519_cmov (int *,int *,unsigned int) ;
+ int fe25519_invert (int *,int *) ;
+ int fe25519_mul (int *,int *,int *) ;
+ int fe25519_neg (int *,int *) ;
+ int fe25519_sq (int *,int *) ;
+ int fe25519_sq2 (int *,int * const) ;
+ int fe25519_sub (int *,int *,int *) ;
+ int fe25519_tobytes (unsigned char*,int *) ;
+ scalar_t__ ge25519_frombytes (int *,unsigned char*) ;
+ int ge25519_p1p1_to_p2 (int *,int *) ;
+ int ge25519_p1p1_to_p3 (int *,int *) ;
+ int ge25519_p2_dbl (int *,int *) ;
+ int ge25519_p3_dbl (int *,int *) ;
+ int ge25519_p3_tobytes (unsigned char*,int *) ;
 
 __attribute__((used)) static void
 ge25519_elligator2(unsigned char s[32], const fe25519 r, const unsigned char x_sign)
 {
-    fe25519      e;
-    fe25519      negx;
-    fe25519      rr2;
-    fe25519      x, x2, x3;
-    ge25519_p3   p3;
+    fe25519 e;
+    fe25519 negx;
+    fe25519 rr2;
+    fe25519 x, x2, x3;
+    ge25519_p3 p3;
     ge25519_p1p1 p1;
-    ge25519_p2   p2;
+    ge25519_p2 p2;
     unsigned int e_is_minus_1;
 
     fe25519_sq2(rr2, r);
@@ -71,7 +71,7 @@ ge25519_elligator2(unsigned char s[32], const fe25519 r, const unsigned char x_s
     fe25519_cmov(x2, curve25519_A, e_is_minus_1);
     fe25519_sub(x, x, x2);
 
-    /* yed = (x-1)/(x+1) */
+
     {
         fe25519 one;
         fe25519 x_plus_one;
@@ -87,13 +87,13 @@ ge25519_elligator2(unsigned char s[32], const fe25519 r, const unsigned char x_s
         fe25519_tobytes(s, yed);
     }
 
-    /* recover x */
+
     s[31] |= x_sign;
     if (ge25519_frombytes(&p3, s) != 0) {
-        abort(); /* LCOV_EXCL_LINE */
+        abort();
     }
 
-    /* multiply by the cofactor */
+
     ge25519_p3_dbl(&p1, &p3);
     ge25519_p1p1_to_p2(&p2, &p1);
     ge25519_p2_dbl(&p1, &p2);

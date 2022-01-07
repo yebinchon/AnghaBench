@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ngx_int_t ;
-struct TYPE_15__ {int post_action; scalar_t__ uri_changes; int header_only; int /*<<< orphan*/  read_event_handler; int /*<<< orphan*/  http_version; TYPE_2__* main; TYPE_1__* connection; } ;
-typedef  TYPE_3__ ngx_http_request_t ;
+
+
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int ngx_int_t ;
+struct TYPE_15__ {int post_action; scalar_t__ uri_changes; int header_only; int read_event_handler; int http_version; TYPE_2__* main; TYPE_1__* connection; } ;
+typedef TYPE_3__ ngx_http_request_t ;
 struct TYPE_17__ {char* data; } ;
 struct TYPE_16__ {TYPE_5__ post_action; } ;
-typedef  TYPE_4__ ngx_http_core_loc_conf_t ;
-struct TYPE_14__ {int /*<<< orphan*/  count; } ;
-struct TYPE_13__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_4__ ngx_http_core_loc_conf_t ;
+struct TYPE_14__ {int count; } ;
+struct TYPE_13__ {int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_DECLINED ; 
- int /*<<< orphan*/  NGX_HTTP_VERSION_9 ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/  ngx_http_block_reading ; 
- int /*<<< orphan*/  ngx_http_core_module ; 
- TYPE_4__* ngx_http_get_module_loc_conf (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_internal_redirect (TYPE_3__*,TYPE_5__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_http_named_location (TYPE_3__*,TYPE_5__*) ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,TYPE_5__*) ; 
+
+ int NGX_DECLINED ;
+ int NGX_HTTP_VERSION_9 ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_OK ;
+ int ngx_http_block_reading ;
+ int ngx_http_core_module ;
+ TYPE_4__* ngx_http_get_module_loc_conf (TYPE_3__*,int ) ;
+ int ngx_http_internal_redirect (TYPE_3__*,TYPE_5__*,int *) ;
+ int ngx_http_named_location (TYPE_3__*,TYPE_5__*) ;
+ int ngx_log_debug1 (int ,int ,int ,char*,TYPE_5__*) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_post_action(ngx_http_request_t *r)
 {
-    ngx_http_core_loc_conf_t  *clcf;
+    ngx_http_core_loc_conf_t *clcf;
 
     clcf = ngx_http_get_module_loc_conf(r, ngx_http_core_module);
 
-    if (clcf->post_action.data == NULL) {
+    if (clcf->post_action.data == ((void*)0)) {
         return NGX_DECLINED;
     }
 
@@ -63,7 +63,7 @@ ngx_http_post_action(ngx_http_request_t *r)
     r->read_event_handler = ngx_http_block_reading;
 
     if (clcf->post_action.data[0] == '/') {
-        ngx_http_internal_redirect(r, &clcf->post_action, NULL);
+        ngx_http_internal_redirect(r, &clcf->post_action, ((void*)0));
 
     } else {
         ngx_http_named_location(r, &clcf->post_action);

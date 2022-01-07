@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_8__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_17__ TYPE_8__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
 struct TYPE_15__ {scalar_t__ numcomps; scalar_t__ resolutions_size; int incltree; int imsbtree; int data; int data_win; struct TYPE_15__* comps; scalar_t__ data_size_needed; scalar_t__ data_size; scalar_t__ ownsData; struct TYPE_15__* resolutions; TYPE_8__* bands; } ;
-typedef  TYPE_2__ opj_tcd_tilecomp_t ;
-typedef  TYPE_2__ opj_tcd_tile_t ;
+typedef TYPE_2__ opj_tcd_tilecomp_t ;
+typedef TYPE_2__ opj_tcd_tile_t ;
 struct TYPE_16__ {TYPE_1__* tcd_image; scalar_t__ m_is_decoder; } ;
-typedef  TYPE_5__ opj_tcd_t ;
-typedef  TYPE_2__ opj_tcd_resolution_t ;
-typedef  TYPE_2__ opj_tcd_precinct_t ;
+typedef TYPE_5__ opj_tcd_t ;
+typedef TYPE_2__ opj_tcd_resolution_t ;
+typedef TYPE_2__ opj_tcd_precinct_t ;
 struct TYPE_17__ {scalar_t__ precincts_data_size; TYPE_2__* precincts; } ;
-typedef  TYPE_8__ opj_tcd_band_t ;
+typedef TYPE_8__ opj_tcd_band_t ;
 struct TYPE_14__ {TYPE_2__* tiles; } ;
-typedef  scalar_t__ OPJ_UINT32 ;
+typedef scalar_t__ OPJ_UINT32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  opj_free (TYPE_2__*) ; 
- int /*<<< orphan*/  opj_image_data_free (int) ; 
- void opj_tcd_code_block_dec_deallocate (TYPE_2__*) ; 
- void opj_tcd_code_block_enc_deallocate (TYPE_2__*) ; 
- int /*<<< orphan*/  opj_tgt_destroy (int) ; 
- void stub1 (TYPE_2__*) ; 
+
+ int opj_free (TYPE_2__*) ;
+ int opj_image_data_free (int) ;
+ void opj_tcd_code_block_dec_deallocate (TYPE_2__*) ;
+ void opj_tcd_code_block_enc_deallocate (TYPE_2__*) ;
+ int opj_tgt_destroy (int) ;
+ void stub1 (TYPE_2__*) ;
 
 __attribute__((used)) static void opj_tcd_free_tile(opj_tcd_t *p_tcd)
 {
@@ -93,7 +93,7 @@ __attribute__((used)) static void opj_tcd_free_tile(opj_tcd_t *p_tcd)
                         l_band->precincts = 00;
                     }
                     ++l_band;
-                } /* for (resno */
+                }
                 ++l_res;
             }
 

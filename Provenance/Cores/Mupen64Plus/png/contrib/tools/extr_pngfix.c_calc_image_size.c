@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  udigit ;
-struct file {int bit_depth; int color_type; int width; int height; scalar_t__ compression_method; scalar_t__ filter_method; int interlace_method; int image_digits; int /*<<< orphan*/  image_bytes; } ;
-typedef  int png_uint_32 ;
-typedef  int png_uint_16 ;
 
-/* Variables and functions */
-#define  PNG_INTERLACE_ADAM7 129 
-#define  PNG_INTERLACE_NONE 128 
- int PNG_PASS_COLS (int,int) ; 
- int PNG_PASS_ROWS (int,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  stop_invalid (struct file*,char*) ; 
- int uarb_inc (int /*<<< orphan*/ *,int,int) ; 
- void* uarb_mult32 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int,int) ; 
- int uarb_mult_digit (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  uarb_set (int /*<<< orphan*/ *,int) ; 
- int uarb_shift (int /*<<< orphan*/ *,int,int) ; 
+
+
+
+typedef int udigit ;
+struct file {int bit_depth; int color_type; int width; int height; scalar_t__ compression_method; scalar_t__ filter_method; int interlace_method; int image_digits; int image_bytes; } ;
+typedef int png_uint_32 ;
+typedef int png_uint_16 ;
+
+
+
+
+ int PNG_PASS_COLS (int,int) ;
+ int PNG_PASS_ROWS (int,int) ;
+ int assert (int) ;
+ int stop_invalid (struct file*,char*) ;
+ int uarb_inc (int *,int,int) ;
+ void* uarb_mult32 (int ,int,int *,int,int) ;
+ int uarb_mult_digit (int *,int ,int *,int ,int) ;
+ int uarb_set (int *,int) ;
+ int uarb_shift (int *,int,int) ;
 
 __attribute__((used)) static int
 calc_image_size(struct file *file)
-   /* Fill in the image_bytes field given the IHDR information, calls stop on
-    * error.
-    */
+
+
+
 {
    png_uint_16 pd = file->bit_depth;
 
@@ -44,7 +44,7 @@ calc_image_size(struct file *file)
       invalid_bit_depth:
          stop_invalid(file, "IHDR: bit depth");
 
-      case 0: /* g */
+      case 0:
          if (pd != 1 && pd != 2 && pd != 4 && pd != 8 && pd != 16)
             goto invalid_bit_depth;
          break;
@@ -54,21 +54,21 @@ calc_image_size(struct file *file)
             goto invalid_bit_depth;
          break;
 
-      case 2: /* rgb */
+      case 2:
          if (pd != 8 && pd != 16)
             goto invalid_bit_depth;
 
          pd = (png_uint_16)(pd * 3);
          break;
 
-      case 4: /* ga */
+      case 4:
          if (pd != 8 && pd != 16)
             goto invalid_bit_depth;
 
          pd = (png_uint_16)(pd * 2);
          break;
 
-      case 6: /* rgba */
+      case 6:
          if (pd != 8 && pd != 16)
             goto invalid_bit_depth;
 
@@ -90,10 +90,10 @@ calc_image_size(struct file *file)
 
    else switch (file->interlace_method)
    {
-      case PNG_INTERLACE_ADAM7:
-         /* Interlacing makes the image larger because of the replication of
-          * both the filter byte and the padding to a byte boundary.
-          */
+      case 129:
+
+
+
          {
             int pass;
             int image_digits = 0;
@@ -105,16 +105,16 @@ calc_image_size(struct file *file)
 
                if (pw > 0)
                {
-                  int  digits;
+                  int digits;
 
-                  /* calculate 1+((pw*pd+7)>>3) in row_bytes */
+
                   digits = uarb_mult_digit(row_bytes, uarb_set(row_bytes, 7),
                      row_width, uarb_set(row_width, pw), pd);
                   digits = uarb_shift(row_bytes, digits, 3);
                   digits = uarb_inc(row_bytes, digits, 1);
 
-                  /* Add row_bytes * pass-height to the file image_bytes field
-                   */
+
+
                   image_digits = uarb_mult32(file->image_bytes, image_digits,
                      row_bytes, digits,
                      PNG_PASS_ROWS(file->height, pass));
@@ -125,18 +125,18 @@ calc_image_size(struct file *file)
          }
          break;
 
-      case PNG_INTERLACE_NONE:
+      case 128:
          {
-            int  digits;
+            int digits;
             udigit row_width[2], row_bytes[3];
 
-            /* As above, but use image_width in place of the pass width: */
+
             digits = uarb_mult_digit(row_bytes, uarb_set(row_bytes, 7),
                row_width, uarb_set(row_width, file->width), pd);
             digits = uarb_shift(row_bytes, digits, 3);
             digits = uarb_inc(row_bytes, digits, 1);
 
-            /* Set row_bytes * image-height to the file image_bytes field */
+
             file->image_digits = uarb_mult32(file->image_bytes, 0,
                row_bytes, digits, file->height);
          }

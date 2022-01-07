@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_33__   TYPE_3__ ;
-typedef  struct TYPE_32__   TYPE_2__ ;
-typedef  struct TYPE_31__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_33__ TYPE_3__ ;
+typedef struct TYPE_32__ TYPE_2__ ;
+typedef struct TYPE_31__ TYPE_1__ ;
+
+
 struct loopinfo {void* pc0; } ;
 struct TYPE_32__ {struct TYPE_32__* car; struct TYPE_32__* cdr; } ;
-typedef  TYPE_2__ node ;
-typedef  int /*<<< orphan*/  mrb_sym ;
-typedef  int mrb_aspec ;
-struct TYPE_33__ {int mscope; int ainfo; scalar_t__ pc; TYPE_1__* irep; int /*<<< orphan*/  mrb; } ;
-typedef  TYPE_3__ codegen_scope ;
+typedef TYPE_2__ node ;
+typedef int mrb_sym ;
+typedef int mrb_aspec ;
+struct TYPE_33__ {int mscope; int ainfo; scalar_t__ pc; TYPE_1__* irep; int mrb; } ;
+typedef TYPE_3__ codegen_scope ;
 struct TYPE_31__ {int rlen; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOOP_BLOCK ; 
- int MRB_ARGS_BLOCK () ; 
- int MRB_ARGS_KEY (int,int) ; 
- int MRB_ARGS_OPT (int) ; 
- int MRB_ARGS_POST (int) ; 
- int MRB_ARGS_REQ (int) ; 
- int MRB_ARGS_REST () ; 
- scalar_t__ NODE_ARGS_TAIL ; 
- scalar_t__ NODE_KW_ARG ; 
- scalar_t__ NODE_MASGN ; 
- int /*<<< orphan*/  NOVAL ; 
- int /*<<< orphan*/  OP_ENTER ; 
- int /*<<< orphan*/  OP_JMP ; 
- int /*<<< orphan*/  OP_JMPIF ; 
- int /*<<< orphan*/  OP_KARG ; 
- int /*<<< orphan*/  OP_KEYEND ; 
- int /*<<< orphan*/  OP_KEY_P ; 
- int /*<<< orphan*/  OP_RETURN ; 
- int /*<<< orphan*/  VAL ; 
- int /*<<< orphan*/  codegen (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  codegen_error (TYPE_3__*,char*) ; 
- int /*<<< orphan*/  cursp () ; 
- int /*<<< orphan*/  dispatch (TYPE_3__*,int) ; 
- int /*<<< orphan*/  gen_move (TYPE_3__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_return (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_vmassignment (TYPE_3__*,TYPE_2__*,int,int /*<<< orphan*/ ) ; 
- int genjmp (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int genjmp2 (TYPE_3__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  genop_0 (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  genop_2 (TYPE_3__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  genop_W (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  loop_pop (TYPE_3__*,int /*<<< orphan*/ ) ; 
- struct loopinfo* loop_push (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int lv_idx (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_assert (int) ; 
- void* new_label (TYPE_3__*) ; 
- int /*<<< orphan*/  new_sym (TYPE_3__*,int /*<<< orphan*/ ) ; 
- scalar_t__ nint (TYPE_2__*) ; 
- int node_len (TYPE_2__*) ; 
- int /*<<< orphan*/  nsym (TYPE_2__*) ; 
- int /*<<< orphan*/  pop () ; 
- int /*<<< orphan*/  scope_finish (TYPE_3__*) ; 
- TYPE_3__* scope_new (int /*<<< orphan*/ ,TYPE_3__*,TYPE_2__*) ; 
+
+ int LOOP_BLOCK ;
+ int MRB_ARGS_BLOCK () ;
+ int MRB_ARGS_KEY (int,int) ;
+ int MRB_ARGS_OPT (int) ;
+ int MRB_ARGS_POST (int) ;
+ int MRB_ARGS_REQ (int) ;
+ int MRB_ARGS_REST () ;
+ scalar_t__ NODE_ARGS_TAIL ;
+ scalar_t__ NODE_KW_ARG ;
+ scalar_t__ NODE_MASGN ;
+ int NOVAL ;
+ int OP_ENTER ;
+ int OP_JMP ;
+ int OP_JMPIF ;
+ int OP_KARG ;
+ int OP_KEYEND ;
+ int OP_KEY_P ;
+ int OP_RETURN ;
+ int VAL ;
+ int codegen (TYPE_3__*,TYPE_2__*,int ) ;
+ int codegen_error (TYPE_3__*,char*) ;
+ int cursp () ;
+ int dispatch (TYPE_3__*,int) ;
+ int gen_move (TYPE_3__*,int,int ,int ) ;
+ int gen_return (TYPE_3__*,int ,int ) ;
+ int gen_vmassignment (TYPE_3__*,TYPE_2__*,int,int ) ;
+ int genjmp (TYPE_3__*,int ,int ) ;
+ int genjmp2 (TYPE_3__*,int ,int,int ,int ) ;
+ int genop_0 (TYPE_3__*,int ) ;
+ int genop_2 (TYPE_3__*,int ,int,int ) ;
+ int genop_W (TYPE_3__*,int ,int) ;
+ int loop_pop (TYPE_3__*,int ) ;
+ struct loopinfo* loop_push (TYPE_3__*,int ) ;
+ int lv_idx (TYPE_3__*,int ) ;
+ int mrb_assert (int) ;
+ void* new_label (TYPE_3__*) ;
+ int new_sym (TYPE_3__*,int ) ;
+ scalar_t__ nint (TYPE_2__*) ;
+ int node_len (TYPE_2__*) ;
+ int nsym (TYPE_2__*) ;
+ int pop () ;
+ int scope_finish (TYPE_3__*) ;
+ TYPE_3__* scope_new (int ,TYPE_3__*,TYPE_2__*) ;
 
 __attribute__((used)) static int
 lambda_body(codegen_scope *s, node *tree, int blk)
@@ -80,7 +80,7 @@ lambda_body(codegen_scope *s, node *tree, int blk)
     lp->pc0 = new_label(s);
   }
   tree = tree->cdr;
-  if (tree->car == NULL) {
+  if (tree->car == ((void*)0)) {
     genop_W(s, OP_ENTER, 0);
   }
   else {
@@ -91,23 +91,23 @@ lambda_body(codegen_scope *s, node *tree, int blk)
     node *margs, *pargs;
     node *tail;
 
-    /* mandatory arguments */
+
     ma = node_len(tree->car->car);
     margs = tree->car->car;
     tail = tree->car->cdr->cdr->cdr->cdr;
 
-    /* optional arguments */
+
     oa = node_len(tree->car->cdr->car);
-    /* rest argument? */
+
     ra = tree->car->cdr->cdr->car ? 1 : 0;
-    /* mandatory arugments after rest argument */
+
     pa = node_len(tree->car->cdr->cdr->cdr->car);
     pargs = tree->car->cdr->cdr->cdr->car;
-    /* keyword arguments */
+
     ka = tail? node_len(tail->cdr->car) : 0;
-    /* keyword dictionary? */
+
     kd = tail && tail->cdr->cdr->car? 1 : 0;
-    /* block argument? */
+
     ba = tail && tail->cdr->cdr->cdr->car ? 1 : 0;
 
     if (ma > 0x1f || oa > 0x1f || pa > 0x1f || ka > 0x1f) {
@@ -119,12 +119,12 @@ lambda_body(codegen_scope *s, node *tree, int blk)
       | MRB_ARGS_POST(pa)
       | MRB_ARGS_KEY(ka, kd)
       | (ba? MRB_ARGS_BLOCK() : 0);
-    s->ainfo = (((ma+oa) & 0x3f) << 7) /* (12bits = 5:1:5:1) */
+    s->ainfo = (((ma+oa) & 0x3f) << 7)
       | ((ra & 0x1) << 6)
       | ((pa & 0x1f) << 1)
       | (kd & 0x1);
     genop_W(s, OP_ENTER, a);
-    /* generate jump table for optional arguments initializer */
+
     pos = new_label(s);
     for (i=0; i<oa; i++) {
       new_label(s);
@@ -150,7 +150,7 @@ lambda_body(codegen_scope *s, node *tree, int blk)
       dispatch(s, pos+i*3+1);
     }
 
-    /* keyword arguments */
+
     if (tail) {
       node *kwds = tail->cdr->car;
       int kwrest = 0;
@@ -190,7 +190,7 @@ lambda_body(codegen_scope *s, node *tree, int blk)
       }
     }
 
-    /* argument destructuring */
+
     if (margs) {
       node *n = margs;
 

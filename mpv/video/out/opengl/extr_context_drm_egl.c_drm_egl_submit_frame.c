@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vo_frame {int /*<<< orphan*/  still; } ;
+
+
+
+
+struct vo_frame {int still; } ;
 struct ra_swapchain {struct ra_ctx* ctx; } ;
 struct ra_ctx {struct priv* priv; } ;
-struct priv {int /*<<< orphan*/  still; } ;
+struct priv {int still; } ;
 
-/* Variables and functions */
- int ra_gl_ctx_submit_frame (struct ra_swapchain*,struct vo_frame const*) ; 
+
+ int ra_gl_ctx_submit_frame (struct ra_swapchain*,struct vo_frame const*) ;
 
 __attribute__((used)) static bool drm_egl_submit_frame(struct ra_swapchain *sw, const struct vo_frame *frame)
 {

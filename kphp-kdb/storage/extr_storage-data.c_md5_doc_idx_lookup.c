@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int idx_docs; unsigned long long* Md5_Pos; scalar_t__ Md5_Docs; } ;
-typedef  TYPE_1__ volume_t ;
+typedef TYPE_1__ volume_t ;
 
-/* Variables and functions */
- unsigned long long const FILE_OFFSET_MASK ; 
- int STORAGE_ERR_DOC_NOT_FOUND ; 
- int STORAGE_ERR_WRONG_SECRET ; 
- unsigned long long STORAGE_SECRET_MASK ; 
- scalar_t__ memcmp (scalar_t__,unsigned char*,int) ; 
+
+ unsigned long long const FILE_OFFSET_MASK ;
+ int STORAGE_ERR_DOC_NOT_FOUND ;
+ int STORAGE_ERR_WRONG_SECRET ;
+ unsigned long long STORAGE_SECRET_MASK ;
+ scalar_t__ memcmp (scalar_t__,unsigned char*,int) ;
 
 __attribute__((used)) static int md5_doc_idx_lookup (volume_t *V, unsigned char md5[16], unsigned long long secret, unsigned long long *file_pos) {
   int a, b, c;

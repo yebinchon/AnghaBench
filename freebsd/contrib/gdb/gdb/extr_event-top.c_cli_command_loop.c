@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* PREFIX (int /*<<< orphan*/ ) ; 
- char* SUFFIX (int /*<<< orphan*/ ) ; 
- scalar_t__ async_command_editing_p ; 
- int /*<<< orphan*/  display_gdb_prompt (int /*<<< orphan*/ ) ; 
- char* get_prompt () ; 
- int /*<<< orphan*/  input_handler ; 
- int /*<<< orphan*/  rl_callback_handler_install (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  start_event_loop () ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int strlen (char*) ; 
- scalar_t__ xmalloc (int) ; 
+ char* PREFIX (int ) ;
+ char* SUFFIX (int ) ;
+ scalar_t__ async_command_editing_p ;
+ int display_gdb_prompt (int ) ;
+ char* get_prompt () ;
+ int input_handler ;
+ int rl_callback_handler_install (char*,int ) ;
+ int start_event_loop () ;
+ int strcat (char*,char*) ;
+ int strcpy (char*,char*) ;
+ int strlen (char*) ;
+ scalar_t__ xmalloc (int) ;
 
 void
 cli_command_loop (void)
@@ -32,13 +24,13 @@ cli_command_loop (void)
   char *a_prompt;
   char *gdb_prompt = get_prompt ();
 
-  /* If we are using readline, set things up and display the first
-     prompt, otherwise just print the prompt. */
+
+
   if (async_command_editing_p)
     {
-      /* Tell readline what the prompt to display is and what function it
-         will need to call after a whole line is read. This also displays
-         the first prompt. */
+
+
+
       length = strlen (PREFIX (0)) + strlen (gdb_prompt) + strlen (SUFFIX (0)) + 1;
       a_prompt = (char *) xmalloc (length);
       strcpy (a_prompt, PREFIX (0));
@@ -49,6 +41,6 @@ cli_command_loop (void)
   else
     display_gdb_prompt (0);
 
-  /* Now it's time to start the event loop. */
+
   start_event_loop ();
 }

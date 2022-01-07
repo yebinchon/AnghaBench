@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
 struct TYPE_2__ {scalar_t__ iTimeout; } ;
 
-/* Variables and functions */
- scalar_t__ DEFAULT_TIMEOUT ; 
- int SQLITE_BUSY ; 
- int SQLITE_DONE ; 
- int SQLITE_ROW ; 
- int /*<<< orphan*/  errorMessage (char*,char*,...) ; 
- TYPE_1__ g ; 
- int /*<<< orphan*/ * prepareSql (char*,...) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_sleep (int) ; 
- int sqlite3_step (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ DEFAULT_TIMEOUT ;
+ int SQLITE_BUSY ;
+ int SQLITE_DONE ;
+ int SQLITE_ROW ;
+ int errorMessage (char*,char*,...) ;
+ TYPE_1__ g ;
+ int * prepareSql (char*,...) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_reset (int *) ;
+ int sqlite3_sleep (int) ;
+ int sqlite3_step (int *) ;
 
 __attribute__((used)) static void waitForClient(int iClient, int iTimeout, char *zErrPrefix){
   sqlite3_stmt *pStmt;

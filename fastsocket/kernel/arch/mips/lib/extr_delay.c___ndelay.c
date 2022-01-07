@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {unsigned int udelay_val; } ;
 
-/* Variables and functions */
- unsigned long HZ ; 
- int /*<<< orphan*/  __delay (unsigned long) ; 
- TYPE_1__ current_cpu_data ; 
+
+ unsigned long HZ ;
+ int __delay (unsigned long) ;
+ TYPE_1__ current_cpu_data ;
 
 void __ndelay(unsigned long ns)
 {
-	unsigned int lpj = current_cpu_data.udelay_val;
+ unsigned int lpj = current_cpu_data.udelay_val;
 
-	__delay((ns * 0x00000005ull * HZ * lpj) >> 32);
+ __delay((ns * 0x00000005ull * HZ * lpj) >> 32);
 }

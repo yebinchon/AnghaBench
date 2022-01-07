@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct svga3d_surface_desc {int block_desc; } ;
 
-/* Variables and functions */
- int SVGA3DBLOCKDESC_PLANAR_YUV ; 
+
+ int SVGA3DBLOCKDESC_PLANAR_YUV ;
 
 __attribute__((used)) static inline bool
 svga3dsurface_is_planar_surface(const struct svga3d_surface_desc *desc)
 {
-	return (desc->block_desc & SVGA3DBLOCKDESC_PLANAR_YUV) != 0;
+ return (desc->block_desc & SVGA3DBLOCKDESC_PLANAR_YUV) != 0;
 }

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct FilePage {int nData; int /*<<< orphan*/ * aData; } ;
-typedef  int /*<<< orphan*/  Page ;
 
-/* Variables and functions */
+
+
+
+typedef int u8 ;
+struct FilePage {int nData; int * aData; } ;
+typedef int Page ;
+
+
 
 __attribute__((used)) static u8 *fsPageData(Page *pPg, int *pnData){
   *pnData = ((struct FilePage *)(pPg))->nData;

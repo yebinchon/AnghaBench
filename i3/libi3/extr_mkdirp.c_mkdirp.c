@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_mode; } ;
-typedef  int /*<<< orphan*/  mode_t ;
 
-/* Variables and functions */
- scalar_t__ EEXIST ; 
- int /*<<< orphan*/  ELOG (char*,char const*,int /*<<< orphan*/ ) ; 
- scalar_t__ ENOENT ; 
- scalar_t__ ENOTDIR ; 
- int /*<<< orphan*/  S_ISDIR (int /*<<< orphan*/ ) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ mkdir (char const*,int /*<<< orphan*/ ) ; 
- char* sstrdup (char const*) ; 
- scalar_t__ stat (char const*,struct stat*) ; 
- int /*<<< orphan*/  strerror (scalar_t__) ; 
- int strlen (char*) ; 
- char* strrchr (char*,char) ; 
+
+
+
+struct stat {int st_mode; } ;
+typedef int mode_t ;
+
+
+ scalar_t__ EEXIST ;
+ int ELOG (char*,char const*,int ) ;
+ scalar_t__ ENOENT ;
+ scalar_t__ ENOTDIR ;
+ int S_ISDIR (int ) ;
+ scalar_t__ errno ;
+ int free (char*) ;
+ scalar_t__ mkdir (char const*,int ) ;
+ char* sstrdup (char const*) ;
+ scalar_t__ stat (char const*,struct stat*) ;
+ int strerror (scalar_t__) ;
+ int strlen (char*) ;
+ char* strrchr (char*,char) ;
 
 int mkdirp(const char *path, mode_t mode) {
     if (mkdir(path, mode) == 0)
         return 0;
     if (errno == EEXIST) {
         struct stat st;
-        /* Check that the named file actually is a directory. */
+
         if (stat(path, &st)) {
             ELOG("stat(%s) failed: %s\n", path, strerror(errno));
             return -1;
@@ -48,12 +48,12 @@ int mkdirp(const char *path, mode_t mode) {
         return -1;
     }
     char *copy = sstrdup(path);
-    /* strip trailing slashes, if any */
+
     while (copy[strlen(copy) - 1] == '/')
         copy[strlen(copy) - 1] = '\0';
 
     char *sep = strrchr(copy, '/');
-    if (sep == NULL) {
+    if (sep == ((void*)0)) {
         free(copy);
         return -1;
     }

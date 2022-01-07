@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct server_pool {int /*<<< orphan*/  ctx; } ;
-struct TYPE_2__ {int /*<<< orphan*/  data; int /*<<< orphan*/  len; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct server_pool {int ctx; } ;
+struct TYPE_2__ {int data; int len; } ;
 struct server {TYPE_1__ pname; struct server_pool* owner; } ;
 struct conn {int dummy; } ;
-typedef  scalar_t__ rstatus_t ;
+typedef scalar_t__ rstatus_t ;
 
-/* Variables and functions */
- scalar_t__ NC_ENOMEM ; 
- scalar_t__ NC_OK ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  log_warn (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  server_close (int /*<<< orphan*/ ,struct conn*) ; 
- struct conn* server_conn (struct server*) ; 
- scalar_t__ server_connect (int /*<<< orphan*/ ,struct server*,struct conn*) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ NC_ENOMEM ;
+ scalar_t__ NC_OK ;
+ int errno ;
+ int log_warn (char*,int ,int ,int ) ;
+ int server_close (int ,struct conn*) ;
+ struct conn* server_conn (struct server*) ;
+ scalar_t__ server_connect (int ,struct server*,struct conn*) ;
+ int strerror (int ) ;
 
 __attribute__((used)) static rstatus_t
 server_each_preconnect(void *elem, void *data)
@@ -39,7 +39,7 @@ server_each_preconnect(void *elem, void *data)
     pool = server->owner;
 
     conn = server_conn(server);
-    if (conn == NULL) {
+    if (conn == ((void*)0)) {
         return NC_ENOMEM;
     }
 

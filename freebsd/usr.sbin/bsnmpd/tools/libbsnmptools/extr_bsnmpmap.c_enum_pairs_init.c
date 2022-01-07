@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct enum_pairs {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  STAILQ_INIT (struct enum_pairs*) ; 
- int /*<<< orphan*/  errno ; 
- struct enum_pairs* malloc (int) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  syslog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+ int LOG_ERR ;
+ int STAILQ_INIT (struct enum_pairs*) ;
+ int errno ;
+ struct enum_pairs* malloc (int) ;
+ int strerror (int ) ;
+ int syslog (int ,char*,int ) ;
 
 struct enum_pairs *
 enum_pairs_init(void)
 {
-	struct enum_pairs *snmp_enum;
+ struct enum_pairs *snmp_enum;
 
-	if ((snmp_enum = malloc(sizeof(struct enum_pairs))) == NULL) {
-		syslog(LOG_ERR, "malloc() failed: %s", strerror(errno));
-		return (NULL);
-	}
+ if ((snmp_enum = malloc(sizeof(struct enum_pairs))) == ((void*)0)) {
+  syslog(LOG_ERR, "malloc() failed: %s", strerror(errno));
+  return (((void*)0));
+ }
 
-	STAILQ_INIT(snmp_enum);
-	return (snmp_enum);
+ STAILQ_INIT(snmp_enum);
+ return (snmp_enum);
 }

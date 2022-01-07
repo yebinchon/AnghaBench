@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int8_t ;
-typedef  int int64_t ;
-struct TYPE_2__ {int /*<<< orphan*/  conn; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dnodeMontiorInsertAcctCallback ; 
- TYPE_1__* monitor ; 
- int /*<<< orphan*/  monitorTrace (char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,char*,char*,char*,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  taos_query_a (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char*) ; 
- char* tsMonitorDbName ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int int8_t ;
+typedef int int64_t ;
+struct TYPE_2__ {int conn; } ;
+
+
+ int dnodeMontiorInsertAcctCallback ;
+ TYPE_1__* monitor ;
+ int monitorTrace (char*,int ,char*) ;
+ int sprintf (char*,char*,char*,char*,char*,char*,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int ) ;
+ int taos_query_a (int ,char*,int ,char*) ;
+ char* tsMonitorDbName ;
 
 void monitorSaveAcctLog(char *acctId, int64_t currentPointsPerSecond, int64_t maxPointsPerSecond,
                         int64_t totalTimeSeries, int64_t maxTimeSeries, int64_t totalStorage, int64_t maxStorage,

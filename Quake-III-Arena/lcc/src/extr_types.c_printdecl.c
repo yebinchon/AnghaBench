@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Type ;
-struct TYPE_3__ {int sclass; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__* Symbol ;
 
-/* Variables and functions */
-#define  AUTO 132 
-#define  ENUM 131 
-#define  EXTERN 130 
-#define  STATIC 129 
-#define  TYPEDEF 128 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprint (int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  typestring (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int Type ;
+struct TYPE_3__ {int sclass; int name; } ;
+typedef TYPE_1__* Symbol ;
+
+
+
+
+
+
+
+ int assert (int ) ;
+ int fprint (int ,char*,int,...) ;
+ int stderr ;
+ int typestring (int ,int ) ;
 
 void printdecl(Symbol p, Type ty) {
-	switch (p->sclass) {
-	case AUTO:
-		fprint(stderr, "%s;\n", typestring(ty, p->name));
-		break;
-	case STATIC: case EXTERN:
-		fprint(stderr, "%k %s;\n", p->sclass, typestring(ty, p->name));
-		break;
-	case TYPEDEF: case ENUM:
-		break;
-	default: assert(0);
-	}
+ switch (p->sclass) {
+ case 132:
+  fprint(stderr, "%s;\n", typestring(ty, p->name));
+  break;
+ case 129: case 130:
+  fprint(stderr, "%k %s;\n", p->sclass, typestring(ty, p->name));
+  break;
+ case 128: case 131:
+  break;
+ default: assert(0);
+ }
 }

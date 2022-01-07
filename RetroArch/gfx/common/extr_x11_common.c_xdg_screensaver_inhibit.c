@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmd ;
-typedef  scalar_t__ Window ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RARCH_LOG (char*) ; 
- int /*<<< orphan*/  RARCH_WARN (char*) ; 
- scalar_t__ WEXITSTATUS (int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
- int system (char*) ; 
- int xdg_screensaver_available ; 
+
+
+
+typedef int cmd ;
+typedef scalar_t__ Window ;
+
+
+ int RARCH_LOG (char*) ;
+ int RARCH_WARN (char*) ;
+ scalar_t__ WEXITSTATUS (int) ;
+ int snprintf (char*,int,char*,int) ;
+ int system (char*) ;
+ int xdg_screensaver_available ;
 
 __attribute__((used)) static void xdg_screensaver_inhibit(Window wnd)
 {
-   int  ret;
+   int ret;
    char cmd[64];
 
    cmd[0] = '\0';
@@ -35,12 +35,12 @@ __attribute__((used)) static void xdg_screensaver_inhibit(Window wnd)
    ret = system(cmd);
    if (ret == -1)
    {
-      xdg_screensaver_available = false;
+      xdg_screensaver_available = 0;
       RARCH_WARN("Failed to launch xdg-screensaver.\n");
    }
    else if (WEXITSTATUS(ret))
    {
-      xdg_screensaver_available = false;
+      xdg_screensaver_available = 0;
       RARCH_WARN("Could not suspend screen saver.\n");
    }
 }

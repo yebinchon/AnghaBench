@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RedisModuleString ;
-typedef  int /*<<< orphan*/  RedisModuleCtx ;
 
-/* Variables and functions */
- scalar_t__ REDISMODULE_OK ; 
- scalar_t__ RedisModule_KillForkChild (int) ; 
- int /*<<< orphan*/  RedisModule_ReplyWithError (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  RedisModule_ReplyWithLongLong (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  UNUSED (int) ; 
- int child_pid ; 
+
+
+
+typedef int RedisModuleString ;
+typedef int RedisModuleCtx ;
+
+
+ scalar_t__ REDISMODULE_OK ;
+ scalar_t__ RedisModule_KillForkChild (int) ;
+ int RedisModule_ReplyWithError (int *,char*) ;
+ int RedisModule_ReplyWithLongLong (int *,int) ;
+ int UNUSED (int) ;
+ int child_pid ;
 
 int fork_kill(RedisModuleCtx *ctx, RedisModuleString **argv, int argc)
 {

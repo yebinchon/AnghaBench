@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  filename ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_DATA_PATH ; 
- int /*<<< orphan*/  msnprintf (char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,long) ; 
- int /*<<< orphan*/  path ; 
+
+
+
+typedef int filename ;
+
+
+ int TEST_DATA_PATH ;
+ int msnprintf (char*,int,int ,int ,long) ;
+ int path ;
 
 char *test2file(long testno)
 {

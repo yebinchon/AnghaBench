@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_18__ {TYPE_1__* priv; TYPE_3__** outputs; } ;
-struct TYPE_17__ {int /*<<< orphan*/  h; int /*<<< orphan*/  w; TYPE_4__* dst; } ;
+struct TYPE_17__ {int h; int w; TYPE_4__* dst; } ;
 struct TYPE_16__ {int const* linesize; scalar_t__* data; } ;
-struct TYPE_15__ {int block; int nb_planes; int* planewidth; int* planeheight; int const bpc; int planes; int /*<<< orphan*/  max; int /*<<< orphan*/  dth; int /*<<< orphan*/  gth; int /*<<< orphan*/  bth; int /*<<< orphan*/  ath; int /*<<< orphan*/  (* deblockv ) (int /*<<< orphan*/ *,int const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* deblockh ) (int /*<<< orphan*/ *,int const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_1__ DeblockContext ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
+struct TYPE_15__ {int block; int nb_planes; int* planewidth; int* planeheight; int const bpc; int planes; int max; int dth; int gth; int bth; int ath; int (* deblockv ) (int *,int const,int ,int ,int ,int ,int ,int ) ;int (* deblockh ) (int *,int const,int ,int ,int ,int ,int ,int ) ;} ;
+typedef TYPE_1__ DeblockContext ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  FFMIN (int const,int const) ; 
- int /*<<< orphan*/  av_frame_copy_props (TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_2__**) ; 
- scalar_t__ av_frame_is_writable (TYPE_2__*) ; 
- int /*<<< orphan*/  av_image_copy_plane (int /*<<< orphan*/ *,int const,int /*<<< orphan*/  const*,int const,int const,int const) ; 
- int ff_filter_frame (TYPE_3__*,TYPE_2__*) ; 
- TYPE_2__* ff_get_video_buffer (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *,int const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ *,int const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ *,int const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int FFMIN (int const,int const) ;
+ int av_frame_copy_props (TYPE_2__*,TYPE_2__*) ;
+ int av_frame_free (TYPE_2__**) ;
+ scalar_t__ av_frame_is_writable (TYPE_2__*) ;
+ int av_image_copy_plane (int *,int const,int const*,int const,int const,int const) ;
+ int ff_filter_frame (TYPE_3__*,TYPE_2__*) ;
+ TYPE_2__* ff_get_video_buffer (TYPE_3__*,int ,int ) ;
+ int stub1 (int *,int const,int ,int ,int ,int ,int ,int ) ;
+ int stub2 (int *,int const,int ,int ,int ,int ,int ,int ) ;
+ int stub3 (int *,int const,int ,int ,int ,int ,int ,int ) ;
+ int stub4 (int *,int const,int ,int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
 {

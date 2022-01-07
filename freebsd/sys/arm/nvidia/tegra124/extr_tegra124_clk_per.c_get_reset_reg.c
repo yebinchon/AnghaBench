@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KASSERT (int,char*) ; 
- int /*<<< orphan*/ * clk_reset_reg ; 
- int nitems (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int KASSERT (int,char*) ;
+ int * clk_reset_reg ;
+ int nitems (int *) ;
 
 __attribute__((used)) static uint32_t
 get_reset_reg(int idx)
 {
-	KASSERT(idx / 32 < nitems(clk_reset_reg),
-	    ("Invalid clock index for reset: %d", idx));
-	return (clk_reset_reg[idx / 32]);
+ KASSERT(idx / 32 < nitems(clk_reset_reg),
+     ("Invalid clock index for reset: %d", idx));
+ return (clk_reset_reg[idx / 32]);
 }

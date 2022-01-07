@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_4__ {scalar_t__ trace_enable; } ;
-typedef  int /*<<< orphan*/  PutBitContext ;
-typedef  TYPE_1__ CodedBitstreamContext ;
+typedef int PutBitContext ;
+typedef TYPE_1__ CodedBitstreamContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOSPC ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  ff_cbs_trace_syntax_element (TYPE_1__*,int /*<<< orphan*/ ,char const*,int const*,char*,int) ; 
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  put_bits_count (int /*<<< orphan*/ *) ; 
- int put_bits_left (int /*<<< orphan*/ *) ; 
+
+ int AVERROR (int ) ;
+ int ENOSPC ;
+ int av_assert0 (int) ;
+ int ff_cbs_trace_syntax_element (TYPE_1__*,int ,char const*,int const*,char*,int) ;
+ int put_bits (int *,int,int) ;
+ int put_bits_count (int *) ;
+ int put_bits_left (int *) ;
 
 __attribute__((used)) static int cbs_vp9_write_le(CodedBitstreamContext *ctx, PutBitContext *pbc,
                             int width, const char *name,

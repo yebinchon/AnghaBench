@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  OPENSSL_atexit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  file_loader ; 
- int ossl_store_register_loader_int (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  store_file_loader_deinit ; 
+ int OPENSSL_atexit (int ) ;
+ int file_loader ;
+ int ossl_store_register_loader_int (int *) ;
+ int store_file_loader_deinit ;
 
 int ossl_store_file_loader_init(void)
 {

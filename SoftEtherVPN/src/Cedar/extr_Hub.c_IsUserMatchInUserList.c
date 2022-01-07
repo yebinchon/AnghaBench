@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  UserHashList; } ;
-typedef  TYPE_1__ USERLIST ;
-typedef  scalar_t__ UINT64 ;
-typedef  int /*<<< orphan*/  LIST ;
 
-/* Variables and functions */
- TYPE_1__* FindUserList (int /*<<< orphan*/ *,char*) ; 
- int IsInt64InList (int /*<<< orphan*/ ,scalar_t__) ; 
- TYPE_1__* LoadUserList (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int UserHashList; } ;
+typedef TYPE_1__ USERLIST ;
+typedef scalar_t__ UINT64 ;
+typedef int LIST ;
+
+
+ TYPE_1__* FindUserList (int *,char*) ;
+ int IsInt64InList (int ,scalar_t__) ;
+ TYPE_1__* LoadUserList (int *,char*) ;
+ int LockList (int *) ;
+ int UnlockList (int *) ;
 
 bool IsUserMatchInUserList(LIST *o, char *filename, UINT64 user_hash)
 {
-	USERLIST *u;
-	bool ret = false;
-	// Validate arguments
-	if (o == NULL || filename == NULL || user_hash == 0)
-	{
-		return false;
-	}
+ USERLIST *u;
+ bool ret = 0;
 
-	LockList(o);
-	{
-		u = FindUserList(o, filename);
-		if (u == NULL)
-		{
-			u = LoadUserList(o, filename);
-		}
+ if (o == ((void*)0) || filename == ((void*)0) || user_hash == 0)
+ {
+  return 0;
+ }
 
-		if (u != NULL)
-		{
-			ret = IsInt64InList(u->UserHashList, user_hash);
-		}
-	}
-	UnlockList(o);
+ LockList(o);
+ {
+  u = FindUserList(o, filename);
+  if (u == ((void*)0))
+  {
+   u = LoadUserList(o, filename);
+  }
 
-	return ret;
+  if (u != ((void*)0))
+  {
+   ret = IsInt64InList(u->UserHashList, user_hash);
+  }
+ }
+ UnlockList(o);
+
+ return ret;
 }

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_6__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ mstime_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_7__ {scalar_t__ event; int /*<<< orphan*/  short_src; int /*<<< orphan*/  currentline; } ;
-typedef  TYPE_1__ lua_Debug ;
-struct TYPE_9__ {int step; int /*<<< orphan*/  currentline; scalar_t__ luabp; } ;
+
+
+typedef struct TYPE_9__ TYPE_6__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ mstime_t ;
+typedef int lua_State ;
+struct TYPE_7__ {scalar_t__ event; int short_src; int currentline; } ;
+typedef TYPE_1__ lua_Debug ;
+struct TYPE_9__ {int step; int currentline; scalar_t__ luabp; } ;
 struct TYPE_8__ {scalar_t__ lua_time_start; int lua_time_limit; } ;
 
-/* Variables and functions */
- scalar_t__ C_ERR ; 
- scalar_t__ LUA_HOOKCOUNT ; 
- TYPE_6__ ldb ; 
- scalar_t__ ldbIsBreakpoint (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ldbLog (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ldbLogSourceLine (int /*<<< orphan*/ ) ; 
- scalar_t__ ldbRepl (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ldbSendLogs () ; 
- int /*<<< orphan*/  lua_error (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_getinfo (int /*<<< orphan*/ *,char*,TYPE_1__*) ; 
- int /*<<< orphan*/  lua_getstack (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ mstime () ; 
- int /*<<< orphan*/  sdscatprintf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  sdsempty () ; 
- TYPE_2__ server ; 
- int /*<<< orphan*/ * strstr (int /*<<< orphan*/ ,char*) ; 
+
+ scalar_t__ C_ERR ;
+ scalar_t__ LUA_HOOKCOUNT ;
+ TYPE_6__ ldb ;
+ scalar_t__ ldbIsBreakpoint (int ) ;
+ int ldbLog (int ) ;
+ int ldbLogSourceLine (int ) ;
+ scalar_t__ ldbRepl (int *) ;
+ int ldbSendLogs () ;
+ int lua_error (int *) ;
+ int lua_getinfo (int *,char*,TYPE_1__*) ;
+ int lua_getstack (int *,int ,TYPE_1__*) ;
+ int lua_pushstring (int *,char*) ;
+ scalar_t__ mstime () ;
+ int sdscatprintf (int ,char*,int ,char*) ;
+ int sdsempty () ;
+ TYPE_2__ server ;
+ int * strstr (int ,char*) ;
 
 void luaLdbLineHook(lua_State *lua, lua_Debug *ar) {
     lua_getstack(lua,0,ar);
@@ -47,10 +47,10 @@ void luaLdbLineHook(lua_State *lua, lua_Debug *ar) {
     int bp = ldbIsBreakpoint(ldb.currentline) || ldb.luabp;
     int timeout = 0;
 
-    /* Events outside our script are not interesting. */
-    if(strstr(ar->short_src,"user_script") == NULL) return;
 
-    /* Check if a timeout occurred. */
+    if(strstr(ar->short_src,"user_script") == ((void*)0)) return;
+
+
     if (ar->event == LUA_HOOKCOUNT && ldb.step == 0 && bp == 0) {
         mstime_t elapsed = mstime() - server.lua_time_start;
         mstime_t timelimit = server.lua_time_limit ?
@@ -59,7 +59,7 @@ void luaLdbLineHook(lua_State *lua, lua_Debug *ar) {
             timeout = 1;
             ldb.step = 1;
         } else {
-            return; /* No timeout, ignore the COUNT event. */
+            return;
         }
     }
 
@@ -76,9 +76,9 @@ void luaLdbLineHook(lua_State *lua, lua_Debug *ar) {
         ldbLogSourceLine(ldb.currentline);
         ldbSendLogs();
         if (ldbRepl(lua) == C_ERR && timeout) {
-            /* If the client closed the connection and we have a timeout
-             * connection, let's kill the script otherwise the process
-             * will remain blocked indefinitely. */
+
+
+
             lua_pushstring(lua, "timeout during Lua debugging with client closing connection");
             lua_error(lua);
         }

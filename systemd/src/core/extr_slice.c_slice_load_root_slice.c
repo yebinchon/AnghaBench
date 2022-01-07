@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int perpetual; int default_dependencies; scalar_t__ documentation; scalar_t__ description; } ;
-typedef  TYPE_1__ Unit ;
+typedef TYPE_1__ Unit ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SPECIAL_ROOT_SLICE ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- scalar_t__ strdup (char*) ; 
- scalar_t__ strv_new (char*) ; 
- int /*<<< orphan*/  unit_has_name (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ int SPECIAL_ROOT_SLICE ;
+ int assert (TYPE_1__*) ;
+ scalar_t__ strdup (char*) ;
+ scalar_t__ strv_new (char*) ;
+ int unit_has_name (TYPE_1__*,int ) ;
 
 __attribute__((used)) static int slice_load_root_slice(Unit *u) {
         assert(u);
@@ -27,12 +27,12 @@ __attribute__((used)) static int slice_load_root_slice(Unit *u) {
         if (!unit_has_name(u, SPECIAL_ROOT_SLICE))
                 return 0;
 
-        u->perpetual = true;
+        u->perpetual = 1;
 
-        /* The root slice is a bit special. For example it is always running and cannot be terminated. Because of its
-         * special semantics we synthesize it here, instead of relying on the unit file on disk. */
 
-        u->default_dependencies = false;
+
+
+        u->default_dependencies = 0;
 
         if (!u->description)
                 u->description = strdup("Root Slice");

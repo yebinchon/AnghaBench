@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hash_entry_vct ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int hash_entry_vct ;
 struct TYPE_3__ {struct TYPE_3__* next_entry; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ dl_get_memory_used () ; 
- TYPE_1__* dl_malloc (int) ; 
- int htbl_vct_allocated_cnt ; 
- TYPE_1__* htbl_vct_free_entries ; 
- int /*<<< orphan*/  htbl_vct_memory ; 
+
+ int assert (int) ;
+ scalar_t__ dl_get_memory_used () ;
+ TYPE_1__* dl_malloc (int) ;
+ int htbl_vct_allocated_cnt ;
+ TYPE_1__* htbl_vct_free_entries ;
+ int htbl_vct_memory ;
 
 void htbl_vct_init_mem (int n) {
-  assert (htbl_vct_free_entries == NULL);
+  assert (htbl_vct_free_entries == ((void*)0));
   assert (n > 0);
 
   htbl_vct_memory -= dl_get_memory_used();
   htbl_vct_free_entries = dl_malloc (sizeof (hash_entry_vct) * n);
-  assert (htbl_vct_free_entries != NULL);
+  assert (htbl_vct_free_entries != ((void*)0));
   htbl_vct_memory += dl_get_memory_used();
 
   htbl_vct_allocated_cnt += n;
@@ -37,5 +37,5 @@ void htbl_vct_init_mem (int n) {
   for (i = 0; i + 1 < n; i++) {
     htbl_vct_free_entries[i].next_entry = &htbl_vct_free_entries[i + 1];
   }
-  htbl_vct_free_entries[n - 1].next_entry = NULL;
+  htbl_vct_free_entries[n - 1].next_entry = ((void*)0);
 }

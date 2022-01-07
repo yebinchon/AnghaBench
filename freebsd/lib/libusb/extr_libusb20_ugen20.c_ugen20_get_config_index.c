@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct libusb20_device {int /*<<< orphan*/  file_ctrl; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IOUSB (int /*<<< orphan*/ ) ; 
- int LIBUSB20_ERROR_OTHER ; 
- int /*<<< orphan*/  USB_GET_CONFIG ; 
- scalar_t__ ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
+
+
+
+typedef int uint8_t ;
+struct libusb20_device {int file_ctrl; } ;
+
+
+ int IOUSB (int ) ;
+ int LIBUSB20_ERROR_OTHER ;
+ int USB_GET_CONFIG ;
+ scalar_t__ ioctl (int ,int ,int*) ;
 
 __attribute__((used)) static int
 ugen20_get_config_index(struct libusb20_device *pdev, uint8_t *pindex)
 {
-	int temp;
+ int temp;
 
-	if (ioctl(pdev->file_ctrl, IOUSB(USB_GET_CONFIG), &temp)) {
-		return (LIBUSB20_ERROR_OTHER);
-	}
-	*pindex = temp;
+ if (ioctl(pdev->file_ctrl, IOUSB(USB_GET_CONFIG), &temp)) {
+  return (LIBUSB20_ERROR_OTHER);
+ }
+ *pindex = temp;
 
-	return (0);
+ return (0);
 }

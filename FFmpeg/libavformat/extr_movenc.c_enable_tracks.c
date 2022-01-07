@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_12__ {int nb_streams; TYPE_4__** streams; TYPE_3__* priv_data; } ;
 struct TYPE_11__ {int disposition; TYPE_1__* codecpar; } ;
 struct TYPE_10__ {int per_stream_grouping; TYPE_2__* tracks; } ;
-struct TYPE_9__ {int /*<<< orphan*/  flags; } ;
+struct TYPE_9__ {int flags; } ;
 struct TYPE_8__ {int codec_type; } ;
-typedef  TYPE_3__ MOVMuxContext ;
-typedef  TYPE_4__ AVStream ;
-typedef  TYPE_5__ AVFormatContext ;
+typedef TYPE_3__ MOVMuxContext ;
+typedef TYPE_4__ AVStream ;
+typedef TYPE_5__ AVFormatContext ;
 
-/* Variables and functions */
-#define  AVMEDIA_TYPE_AUDIO 130 
- int AVMEDIA_TYPE_NB ; 
-#define  AVMEDIA_TYPE_SUBTITLE 129 
- int AVMEDIA_TYPE_UNKNOWN ; 
-#define  AVMEDIA_TYPE_VIDEO 128 
- int AV_DISPOSITION_DEFAULT ; 
- int /*<<< orphan*/  MOV_TRACK_ENABLED ; 
- scalar_t__ is_cover_image (TYPE_4__*) ; 
+
+
+ int AVMEDIA_TYPE_NB ;
+
+ int AVMEDIA_TYPE_UNKNOWN ;
+
+ int AV_DISPOSITION_DEFAULT ;
+ int MOV_TRACK_ENABLED ;
+ scalar_t__ is_cover_image (TYPE_4__*) ;
 
 __attribute__((used)) static void enable_tracks(AVFormatContext *s)
 {
@@ -64,9 +64,9 @@ __attribute__((used)) static void enable_tracks(AVFormatContext *s)
 
     for (i = 0; i < AVMEDIA_TYPE_NB; i++) {
         switch (i) {
-        case AVMEDIA_TYPE_VIDEO:
-        case AVMEDIA_TYPE_AUDIO:
-        case AVMEDIA_TYPE_SUBTITLE:
+        case 128:
+        case 130:
+        case 129:
             if (enabled[i] > 1)
                 mov->per_stream_grouping = 1;
             if (!enabled[i] && first[i] >= 0)

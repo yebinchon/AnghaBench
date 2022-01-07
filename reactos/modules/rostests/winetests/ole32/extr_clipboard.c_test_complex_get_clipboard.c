@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  STGMEDIUM ;
-typedef  int /*<<< orphan*/  IDataObject ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  FORMATETC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CF_ENHMETAFILE ; 
- int /*<<< orphan*/  CF_METAFILEPICT ; 
- scalar_t__ DV_E_TYMED ; 
- int DataObjectImpl_GetData_calls ; 
- scalar_t__ IDataObject_GetData (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDataObject_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InitFormatEtc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ OleGetClipboard (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ReleaseStgMedium (int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TYMED_ENHMF ; 
- int /*<<< orphan*/  TYMED_HGLOBAL ; 
- int /*<<< orphan*/  TYMED_MFPICT ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
+
+
+
+typedef int STGMEDIUM ;
+typedef int IDataObject ;
+typedef scalar_t__ HRESULT ;
+typedef int FORMATETC ;
+
+
+ int CF_ENHMETAFILE ;
+ int CF_METAFILEPICT ;
+ scalar_t__ DV_E_TYMED ;
+ int DataObjectImpl_GetData_calls ;
+ scalar_t__ IDataObject_GetData (int *,int *,int *) ;
+ int IDataObject_Release (int *) ;
+ int InitFormatEtc (int ,int ,int ) ;
+ scalar_t__ OleGetClipboard (int **) ;
+ int ReleaseStgMedium (int *) ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_OK ;
+ int TYMED_ENHMF ;
+ int TYMED_HGLOBAL ;
+ int TYMED_MFPICT ;
+ int ok (int,char*,int) ;
 
 __attribute__((used)) static void test_complex_get_clipboard(void)
 {

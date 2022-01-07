@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_6__ {int /*<<< orphan*/  revision; } ;
-typedef  TYPE_1__ svn_diff_source_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+struct TYPE_6__ {int revision; } ;
+typedef TYPE_1__ svn_diff_source_t ;
 struct svn_diff_tree_processor_t {TYPE_2__* baton; } ;
-struct TYPE_7__ {int /*<<< orphan*/  show_copies_as_adds; scalar_t__ no_diff_added; } ;
-typedef  TYPE_2__ diff_writer_info_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
+struct TYPE_7__ {int show_copies_as_adds; scalar_t__ no_diff_added; } ;
+typedef TYPE_2__ diff_writer_info_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DIFF_REVNUM_NONEXISTENT ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  diff_props_changed (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_prop_diffs (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int DIFF_REVNUM_NONEXISTENT ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int * apr_hash_make (int *) ;
+ int diff_props_changed (char const*,int ,int ,int *,int *,int *,int ,TYPE_2__*,int *) ;
+ int * svn_error_trace (int ) ;
+ int svn_prop_diffs (int **,int *,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 diff_dir_added(const char *relpath,
                const svn_diff_source_t *copyfrom_source,
                const svn_diff_source_t *right_source,
-               /*const*/ apr_hash_t *copyfrom_props,
-               /*const*/ apr_hash_t *right_props,
+                         apr_hash_t *copyfrom_props,
+                         apr_hash_t *right_props,
                void *dir_baton,
                const struct svn_diff_tree_processor_t *processor,
                apr_pool_t *scratch_pool)
@@ -57,7 +57,7 @@ diff_dir_added(const char *relpath,
   else
     {
       left_props = apr_hash_make(scratch_pool);
-      copyfrom_source = NULL;
+      copyfrom_source = ((void*)0);
     }
 
   SVN_ERR(svn_prop_diffs(&prop_changes, right_props, left_props,
@@ -69,7 +69,7 @@ diff_dir_added(const char *relpath,
                                             right_source->revision,
                                             prop_changes,
                                             left_props, right_props,
-                                            TRUE /* show_diff_header */,
+                                            TRUE ,
                                             dwi,
                                             scratch_pool));
 }

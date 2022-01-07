@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct nouveau_object {int dummy; } ;
-struct nouveau_fifo_chan {size_t chid; int /*<<< orphan*/  base; int /*<<< orphan*/  pushdma; int /*<<< orphan*/  pushgpu; int /*<<< orphan*/  user; } ;
-struct nouveau_fifo {int /*<<< orphan*/  lock; int /*<<< orphan*/ ** channel; } ;
+struct nouveau_fifo_chan {size_t chid; int base; int pushdma; int pushgpu; int user; } ;
+struct nouveau_fifo {int lock; int ** channel; } ;
 struct TYPE_2__ {scalar_t__ engine; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  iounmap (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nouveau_gpuobj_ref (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nouveau_namedb_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nouveau_object_ref (int /*<<< orphan*/ *,struct nouveau_object**) ; 
- TYPE_1__* nv_object (struct nouveau_fifo_chan*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int iounmap (int ) ;
+ int nouveau_gpuobj_ref (int *,int *) ;
+ int nouveau_namedb_destroy (int *) ;
+ int nouveau_object_ref (int *,struct nouveau_object**) ;
+ TYPE_1__* nv_object (struct nouveau_fifo_chan*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 void
 nouveau_fifo_channel_destroy(struct nouveau_fifo_chan *chan)
 {
-	struct nouveau_fifo *priv = (void *)nv_object(chan)->engine;
-	unsigned long flags;
+ struct nouveau_fifo *priv = (void *)nv_object(chan)->engine;
+ unsigned long flags;
 
-	iounmap(chan->user);
+ iounmap(chan->user);
 
-	spin_lock_irqsave(&priv->lock, flags);
-	priv->channel[chan->chid] = NULL;
-	spin_unlock_irqrestore(&priv->lock, flags);
+ spin_lock_irqsave(&priv->lock, flags);
+ priv->channel[chan->chid] = ((void*)0);
+ spin_unlock_irqrestore(&priv->lock, flags);
 
-	nouveau_gpuobj_ref(NULL, &chan->pushgpu);
-	nouveau_object_ref(NULL, (struct nouveau_object **)&chan->pushdma);
-	nouveau_namedb_destroy(&chan->base);
+ nouveau_gpuobj_ref(((void*)0), &chan->pushgpu);
+ nouveau_object_ref(((void*)0), (struct nouveau_object **)&chan->pushdma);
+ nouveau_namedb_destroy(&chan->base);
 }

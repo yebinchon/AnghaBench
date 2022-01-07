@@ -1,140 +1,140 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char wchar_t ;
-typedef  int /*<<< orphan*/  tmp ;
-typedef  size_t UINT ;
-struct TYPE_6__ {int (* GetWidth ) (TYPE_1__*) ;int /*<<< orphan*/  (* Write ) (TYPE_1__*,char*) ;} ;
-typedef  TYPE_1__ CONSOLE ;
 
-/* Variables and functions */
- char* CopyStrToUni (char*) ; 
- int /*<<< orphan*/  Free (char*) ; 
- char* MakeCharArray (char,size_t) ; 
- int /*<<< orphan*/  StrToUni (char*,int,char*) ; 
- int /*<<< orphan*/  UniStrCat (char*,size_t,char*) ; 
- scalar_t__ UniStrCmpi (char*,char*) ; 
- int UniStrLen (char*) ; 
- size_t UniStrWidth (char*) ; 
- int /*<<< orphan*/  UniTrimRight (char*) ; 
- char* ZeroMalloc (size_t) ; 
- int stub1 (TYPE_1__*) ; 
- int stub2 (TYPE_1__*) ; 
- int /*<<< orphan*/  stub3 (TYPE_1__*,char*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef char wchar_t ;
+typedef int tmp ;
+typedef size_t UINT ;
+struct TYPE_6__ {int (* GetWidth ) (TYPE_1__*) ;int (* Write ) (TYPE_1__*,char*) ;} ;
+typedef TYPE_1__ CONSOLE ;
+
+
+ char* CopyStrToUni (char*) ;
+ int Free (char*) ;
+ char* MakeCharArray (char,size_t) ;
+ int StrToUni (char*,int,char*) ;
+ int UniStrCat (char*,size_t,char*) ;
+ scalar_t__ UniStrCmpi (char*,char*) ;
+ int UniStrLen (char*) ;
+ size_t UniStrWidth (char*) ;
+ int UniTrimRight (char*) ;
+ char* ZeroMalloc (size_t) ;
+ int stub1 (TYPE_1__*) ;
+ int stub2 (TYPE_1__*) ;
+ int stub3 (TYPE_1__*,char*) ;
 
 void CtPrintRow(CONSOLE *c, UINT num, UINT *widths, wchar_t **strings, bool *rights, char separate_char)
 {
-	UINT i;
-	wchar_t *buf;
-	UINT buf_size;
-	bool is_sep_line = true;
-	// Validate arguments
-	if (c == NULL || num == 0 || widths == NULL || strings == NULL || rights == NULL)
-	{
-		return;
-	}
+ UINT i;
+ wchar_t *buf;
+ UINT buf_size;
+ bool is_sep_line = 1;
 
-	buf_size = 32;
-	for (i = 0;i < num;i++)
-	{
-		buf_size += sizeof(wchar_t) * widths[i] + 6;
-	}
+ if (c == ((void*)0) || num == 0 || widths == ((void*)0) || strings == ((void*)0) || rights == ((void*)0))
+ {
+  return;
+ }
 
-	buf = ZeroMalloc(buf_size);
+ buf_size = 32;
+ for (i = 0;i < num;i++)
+ {
+  buf_size += sizeof(wchar_t) * widths[i] + 6;
+ }
 
-	for (i = 0;i < num;i++)
-	{
-		char *tmp;
-		wchar_t *space_string;
-		UINT w;
-		UINT space = 0;
-		wchar_t *string = strings[i];
-		wchar_t *tmp_line = NULL;
+ buf = ZeroMalloc(buf_size);
 
-		if (UniStrCmpi(string, L"---") == 0)
-		{
-			char *s = MakeCharArray('-', widths[i]);
-			tmp_line = string = CopyStrToUni(s);
+ for (i = 0;i < num;i++)
+ {
+  char *tmp;
+  wchar_t *space_string;
+  UINT w;
+  UINT space = 0;
+  wchar_t *string = strings[i];
+  wchar_t *tmp_line = ((void*)0);
 
-			Free(s);
-		}
-		else
-		{
-			is_sep_line = false;
-		}
+  if (UniStrCmpi(string, L"---") == 0)
+  {
+   char *s = MakeCharArray('-', widths[i]);
+   tmp_line = string = CopyStrToUni(s);
 
-		w = UniStrWidth(string);
+   Free(s);
+  }
+  else
+  {
+   is_sep_line = 0;
+  }
 
-		if (widths[i] >= w)
-		{
-			space = widths[i] - w;
-		}
+  w = UniStrWidth(string);
 
-		tmp = MakeCharArray(' ', space);
-		space_string = CopyStrToUni(tmp);
+  if (widths[i] >= w)
+  {
+   space = widths[i] - w;
+  }
 
-		if (rights[i] != false)
-		{
-			UniStrCat(buf, buf_size, space_string);
-		}
+  tmp = MakeCharArray(' ', space);
+  space_string = CopyStrToUni(tmp);
 
-		UniStrCat(buf, buf_size, string);
+  if (rights[i] != 0)
+  {
+   UniStrCat(buf, buf_size, space_string);
+  }
 
-		if (rights[i] == false)
-		{
-			UniStrCat(buf, buf_size, space_string);
-		}
+  UniStrCat(buf, buf_size, string);
 
-		Free(space_string);
-		Free(tmp);
+  if (rights[i] == 0)
+  {
+   UniStrCat(buf, buf_size, space_string);
+  }
 
-		if (i < (num - 1))
-		{
-			wchar_t tmp[4];
-			char str[2];
+  Free(space_string);
+  Free(tmp);
 
-			if (UniStrCmpi(strings[i], L"---") == 0)
-			{
-				str[0] = '+';
-			}
-			else
-			{
-				str[0] = separate_char;
-			}
-			str[1] = 0;
+  if (i < (num - 1))
+  {
+   wchar_t tmp[4];
+   char str[2];
 
-			StrToUni(tmp, sizeof(tmp), str);
+   if (UniStrCmpi(strings[i], L"---") == 0)
+   {
+    str[0] = '+';
+   }
+   else
+   {
+    str[0] = separate_char;
+   }
+   str[1] = 0;
 
-			UniStrCat(buf, buf_size, tmp);
-		}
+   StrToUni(tmp, sizeof(tmp), str);
 
-		if (tmp_line != NULL)
-		{
-			Free(tmp_line);
-		}
-	}
+   UniStrCat(buf, buf_size, tmp);
+  }
 
-	UniTrimRight(buf);
+  if (tmp_line != ((void*)0))
+  {
+   Free(tmp_line);
+  }
+ }
 
-	if (is_sep_line)
-	{
-		if (UniStrLen(buf) > (c->GetWidth(c) - 1))
-		{
-			buf[c->GetWidth(c) - 1] = 0;
-		}
-	}
+ UniTrimRight(buf);
 
-	c->Write(c, buf);
+ if (is_sep_line)
+ {
+  if (UniStrLen(buf) > (c->GetWidth(c) - 1))
+  {
+   buf[c->GetWidth(c) - 1] = 0;
+  }
+ }
 
-	Free(buf);
+ c->Write(c, buf);
+
+ Free(buf);
 }

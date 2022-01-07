@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct RObject {int /*<<< orphan*/  tt; } ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct RObject {int tt; } ;
 struct RClass {int dummy; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_sym ;
+typedef int mrb_value ;
+typedef int mrb_sym ;
 struct TYPE_7__ {struct RClass* object_class; } ;
-typedef  TYPE_1__ mrb_state ;
+typedef TYPE_1__ mrb_state ;
 
-/* Variables and functions */
- scalar_t__ ISUPPER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_intern_lit (TYPE_1__*,char*) ; 
- scalar_t__ mrb_nil_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_obj_iv_get (TYPE_1__*,struct RObject*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_obj_iv_set (TYPE_1__*,struct RObject*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct RObject* mrb_obj_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_obj_value (struct RObject*) ; 
- int /*<<< orphan*/ * mrb_sym2name (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_symbol_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_type (int /*<<< orphan*/ ) ; 
- scalar_t__ namespace_p (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ISUPPER (int ) ;
+ int mrb_intern_lit (TYPE_1__*,char*) ;
+ scalar_t__ mrb_nil_p (int ) ;
+ int mrb_obj_iv_get (TYPE_1__*,struct RObject*,int ) ;
+ int mrb_obj_iv_set (TYPE_1__*,struct RObject*,int ,int ) ;
+ struct RObject* mrb_obj_ptr (int ) ;
+ int mrb_obj_value (struct RObject*) ;
+ int * mrb_sym2name (TYPE_1__*,int ) ;
+ int mrb_symbol_value (int ) ;
+ int mrb_type (int ) ;
+ scalar_t__ namespace_p (int ) ;
 
 __attribute__((used)) static inline void
 assign_class_name(mrb_state *mrb, struct RObject *obj, mrb_sym sym, mrb_value v)

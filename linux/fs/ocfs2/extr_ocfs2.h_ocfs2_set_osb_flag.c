@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ocfs2_super {unsigned long osb_flags; int /*<<< orphan*/  osb_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct ocfs2_super {unsigned long osb_flags; int osb_lock; } ;
+
+
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 __attribute__((used)) static inline void ocfs2_set_osb_flag(struct ocfs2_super *osb,
-				      unsigned long flag)
+          unsigned long flag)
 {
-	spin_lock(&osb->osb_lock);
-	osb->osb_flags |= flag;
-	spin_unlock(&osb->osb_lock);
+ spin_lock(&osb->osb_lock);
+ osb->osb_flags |= flag;
+ spin_unlock(&osb->osb_lock);
 }

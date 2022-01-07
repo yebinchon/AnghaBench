@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DRV_GO ; 
- int /*<<< orphan*/  DRV_WAVEFORM_SEQ_1 ; 
- int /*<<< orphan*/  DRV_write (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int DRV_GO ;
+ int DRV_WAVEFORM_SEQ_1 ;
+ int DRV_write (int ,int) ;
 
 void DRV_pulse(uint8_t sequence) {
     DRV_write(DRV_GO, 0x00);

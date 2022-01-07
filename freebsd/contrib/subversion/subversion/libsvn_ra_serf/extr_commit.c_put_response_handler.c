@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  serf_request_t ;
-typedef  int /*<<< orphan*/  serf_bucket_t ;
-struct TYPE_4__ {int /*<<< orphan*/  handler; TYPE_1__* file_ctx; } ;
-typedef  TYPE_2__ put_response_ctx_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_3__ {int /*<<< orphan*/  pool; int /*<<< orphan*/  remote_result_checksum; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_DAV_RESULT_FULLTEXT_MD5_HEADER ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- char* serf_bucket_headers_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * serf_bucket_response_get_headers (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_checksum_md5 ; 
- int /*<<< orphan*/  svn_checksum_parse_hex (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_ra_serf__expect_empty_body (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+typedef int serf_request_t ;
+typedef int serf_bucket_t ;
+struct TYPE_4__ {int handler; TYPE_1__* file_ctx; } ;
+typedef TYPE_2__ put_response_ctx_t ;
+typedef int apr_pool_t ;
+struct TYPE_3__ {int pool; int remote_result_checksum; } ;
+
+
+ int SVN_DAV_RESULT_FULLTEXT_MD5_HEADER ;
+ int SVN_ERR (int ) ;
+ char* serf_bucket_headers_get (int *,int ) ;
+ int * serf_bucket_response_get_headers (int *) ;
+ int svn_checksum_md5 ;
+ int svn_checksum_parse_hex (int *,int ,char const*,int ) ;
+ int * svn_error_trace (int ) ;
+ int svn_ra_serf__expect_empty_body (int *,int *,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 put_response_handler(serf_request_t *request,

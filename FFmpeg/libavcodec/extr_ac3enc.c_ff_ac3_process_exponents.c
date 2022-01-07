@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AC3EncodeContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  compute_exp_strategy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  emms_c () ; 
- int /*<<< orphan*/  encode_exponents (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  extract_exponents (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int AC3EncodeContext ;
+
+
+ int compute_exp_strategy (int *) ;
+ int emms_c () ;
+ int encode_exponents (int *) ;
+ int extract_exponents (int *) ;
 
 void ff_ac3_process_exponents(AC3EncodeContext *s)
 {

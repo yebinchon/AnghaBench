@@ -1,77 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ACTIVATION ;
 
-/* Variables and functions */
-#define  ELU 141 
-#define  HARDTAN 140 
-#define  LEAKY 139 
-#define  LHTAN 138 
-#define  LINEAR 137 
-#define  LOGGY 136 
-#define  LOGISTIC 135 
-#define  PLSE 134 
-#define  RAMP 133 
-#define  RELIE 132 
-#define  RELU 131 
-#define  SELU 130 
-#define  STAIR 129 
-#define  TANH 128 
- float elu_gradient (float) ; 
- float hardtan_gradient (float) ; 
- float leaky_gradient (float) ; 
- float lhtan_gradient (float) ; 
- float linear_gradient (float) ; 
- float loggy_gradient (float) ; 
- float logistic_gradient (float) ; 
- float plse_gradient (float) ; 
- float ramp_gradient (float) ; 
- float relie_gradient (float) ; 
- float relu_gradient (float) ; 
- float selu_gradient (float) ; 
- float stair_gradient (float) ; 
- float tanh_gradient (float) ; 
+
+
+
+typedef int ACTIVATION ;
+ float elu_gradient (float) ;
+ float hardtan_gradient (float) ;
+ float leaky_gradient (float) ;
+ float lhtan_gradient (float) ;
+ float linear_gradient (float) ;
+ float loggy_gradient (float) ;
+ float logistic_gradient (float) ;
+ float plse_gradient (float) ;
+ float ramp_gradient (float) ;
+ float relie_gradient (float) ;
+ float relu_gradient (float) ;
+ float selu_gradient (float) ;
+ float stair_gradient (float) ;
+ float tanh_gradient (float) ;
 
 float gradient(float x, ACTIVATION a)
 {
     switch(a){
-        case LINEAR:
+        case 137:
             return linear_gradient(x);
-        case LOGISTIC:
+        case 135:
             return logistic_gradient(x);
-        case LOGGY:
+        case 136:
             return loggy_gradient(x);
-        case RELU:
+        case 131:
             return relu_gradient(x);
-        case ELU:
+        case 141:
             return elu_gradient(x);
-        case SELU:
+        case 130:
             return selu_gradient(x);
-        case RELIE:
+        case 132:
             return relie_gradient(x);
-        case RAMP:
+        case 133:
             return ramp_gradient(x);
-        case LEAKY:
+        case 139:
             return leaky_gradient(x);
-        case TANH:
+        case 128:
             return tanh_gradient(x);
-        case PLSE:
+        case 134:
             return plse_gradient(x);
-        case STAIR:
+        case 129:
             return stair_gradient(x);
-        case HARDTAN:
+        case 140:
             return hardtan_gradient(x);
-        case LHTAN:
+        case 138:
             return lhtan_gradient(x);
     }
     return 0;

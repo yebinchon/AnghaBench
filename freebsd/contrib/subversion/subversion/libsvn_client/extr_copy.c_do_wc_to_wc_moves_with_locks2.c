@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_5__ {int /*<<< orphan*/  notify_baton2; int /*<<< orphan*/  notify_func2; int /*<<< orphan*/  cancel_baton; int /*<<< orphan*/  cancel_func; int /*<<< orphan*/  wc_ctx; } ;
-typedef  TYPE_1__ svn_client_ctx_t ;
-struct TYPE_6__ {int /*<<< orphan*/  src_abspath_or_url; int /*<<< orphan*/  base_name; } ;
-typedef  TYPE_2__ svn_client__copy_pair_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- char* svn_dirent_join (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__move2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+struct TYPE_5__ {int notify_baton2; int notify_func2; int cancel_baton; int cancel_func; int wc_ctx; } ;
+typedef TYPE_1__ svn_client_ctx_t ;
+struct TYPE_6__ {int src_abspath_or_url; int base_name; } ;
+typedef TYPE_2__ svn_client__copy_pair_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ char* svn_dirent_join (char const*,int ,int *) ;
+ int svn_wc__move2 (int ,int ,char const*,int ,int ,int ,int ,int ,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 do_wc_to_wc_moves_with_locks2(svn_client__copy_pair_t *pair,

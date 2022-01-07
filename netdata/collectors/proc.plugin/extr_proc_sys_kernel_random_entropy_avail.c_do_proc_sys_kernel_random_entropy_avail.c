@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  usec_t ;
-typedef  int /*<<< orphan*/  procfile ;
-typedef  int /*<<< orphan*/  RRDSET ;
-typedef  int /*<<< orphan*/  RRDDIM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FILENAME_MAX ; 
- int /*<<< orphan*/  NETDATA_CHART_PRIO_SYSTEM_ENTROPY ; 
- int /*<<< orphan*/  PLUGIN_PROC_NAME ; 
- int /*<<< orphan*/  PROCFILE_FLAG_DEFAULT ; 
- int /*<<< orphan*/  RRDSET_TYPE_LINE ; 
- int /*<<< orphan*/  RRD_ALGORITHM_ABSOLUTE ; 
- int /*<<< orphan*/  config_get (char*,char*,char*) ; 
- int /*<<< orphan*/  netdata_configured_host_prefix ; 
- int /*<<< orphan*/  procfile_lineword (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * procfile_open (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * procfile_readall (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * rrddim_add (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrddim_set_by_pointer (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned long long) ; 
- int /*<<< orphan*/ * rrdset_create_localhost (char*,char*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrdset_done (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rrdset_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  snprintfz (char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char*) ; 
- unsigned long long str2ull (int /*<<< orphan*/ ) ; 
- scalar_t__ unlikely (int) ; 
+
+
+
+typedef int usec_t ;
+typedef int procfile ;
+typedef int RRDSET ;
+typedef int RRDDIM ;
+
+
+ int FILENAME_MAX ;
+ int NETDATA_CHART_PRIO_SYSTEM_ENTROPY ;
+ int PLUGIN_PROC_NAME ;
+ int PROCFILE_FLAG_DEFAULT ;
+ int RRDSET_TYPE_LINE ;
+ int RRD_ALGORITHM_ABSOLUTE ;
+ int config_get (char*,char*,char*) ;
+ int netdata_configured_host_prefix ;
+ int procfile_lineword (int *,int ,int ) ;
+ int * procfile_open (int ,char*,int ) ;
+ int * procfile_readall (int *) ;
+ int * rrddim_add (int *,char*,int *,int,int,int ) ;
+ int rrddim_set_by_pointer (int *,int *,unsigned long long) ;
+ int * rrdset_create_localhost (char*,char*,int *,char*,int *,char*,char*,int ,char*,int ,int,int ) ;
+ int rrdset_done (int *) ;
+ int rrdset_next (int *) ;
+ int snprintfz (char*,int ,char*,int ,char*) ;
+ unsigned long long str2ull (int ) ;
+ scalar_t__ unlikely (int) ;
 
 int do_proc_sys_kernel_random_entropy_avail(int update_every, usec_t dt) {
     (void)dt;
 
-    static procfile *ff = NULL;
+    static procfile *ff = ((void*)0);
 
     if(unlikely(!ff)) {
         char filename[FILENAME_MAX + 1];
@@ -49,20 +49,20 @@ int do_proc_sys_kernel_random_entropy_avail(int update_every, usec_t dt) {
     }
 
     ff = procfile_readall(ff);
-    if(unlikely(!ff)) return 0; // we return 0, so that we will retry to open it next time
+    if(unlikely(!ff)) return 0;
 
     unsigned long long entropy = str2ull(procfile_lineword(ff, 0, 0));
 
-    static RRDSET *st = NULL;
-    static RRDDIM *rd = NULL;
+    static RRDSET *st = ((void*)0);
+    static RRDDIM *rd = ((void*)0);
 
     if(unlikely(!st)) {
         st = rrdset_create_localhost(
                 "system"
                 , "entropy"
-                , NULL
+                , ((void*)0)
                 , "entropy"
-                , NULL
+                , ((void*)0)
                 , "Available Entropy"
                 , "entropy"
                 , PLUGIN_PROC_NAME
@@ -72,7 +72,7 @@ int do_proc_sys_kernel_random_entropy_avail(int update_every, usec_t dt) {
                 , RRDSET_TYPE_LINE
         );
 
-        rd = rrddim_add(st, "entropy", NULL, 1, 1, RRD_ALGORITHM_ABSOLUTE);
+        rd = rrddim_add(st, "entropy", ((void*)0), 1, 1, RRD_ALGORITHM_ABSOLUTE);
     }
     else rrdset_next(st);
 

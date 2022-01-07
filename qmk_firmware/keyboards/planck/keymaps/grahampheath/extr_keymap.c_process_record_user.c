@@ -1,100 +1,84 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_5__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_5__ {int pressed; } ;
 struct TYPE_6__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
-struct TYPE_7__ {int nkro; int /*<<< orphan*/  raw; } ;
+typedef TYPE_2__ keyrecord_t ;
+struct TYPE_7__ {int nkro; int raw; } ;
+ int KC_RSFT ;
 
-/* Variables and functions */
-#define  ABOVE 152 
-#define  BACKLIT 151 
-#define  COLEMAK 150 
-#define  CONFUSED 149 
-#define  CRY 148 
-#define  DVORAK 147 
-#define  EXT_PLV 146 
-#define  FLIP 145 
-#define  FNGLEFT 144 
-#define  FNGRIGHT 143 
-#define  FROWN 142 
-#define  GRIN 141 
-#define  HEART 140 
-#define  JOY 139 
- int /*<<< orphan*/  KC_RSFT ; 
-#define  LLAP 138 
-#define  LOWER 137 
- int /*<<< orphan*/  PLAY_SONG (int /*<<< orphan*/ ) ; 
-#define  PLOVER 136 
-#define  QWERTY 135 
-#define  RAISE 134 
- int /*<<< orphan*/  SEND_STRING (char*) ; 
-#define  SHIT 133 
-#define  SHRUG 132 
-#define  THMBDN 131 
-#define  THMBUP 130 
-#define  TOUNGE 129 
-#define  WINK 128 
- int /*<<< orphan*/  _ADJUST ; 
- int /*<<< orphan*/  _COLEMAK ; 
- int /*<<< orphan*/  _DVORAK ; 
- int /*<<< orphan*/  _EMOJI ; 
- int /*<<< orphan*/  _LOWER ; 
- int /*<<< orphan*/  _PLOVER ; 
- int /*<<< orphan*/  _QWERTY ; 
- int /*<<< orphan*/  _RAISE ; 
- int /*<<< orphan*/  backlight_step () ; 
- int /*<<< orphan*/  eeconfig_init () ; 
- int /*<<< orphan*/  eeconfig_is_enabled () ; 
- int /*<<< orphan*/  eeconfig_read_keymap () ; 
- int /*<<< orphan*/  eeconfig_update_keymap (int /*<<< orphan*/ ) ; 
- TYPE_4__ keymap_config ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  plover_gb_song ; 
- int /*<<< orphan*/  plover_song ; 
- int /*<<< orphan*/  print (char*) ; 
- int /*<<< orphan*/  register_code (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_single_persistent_default_layer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stop_all_notes () ; 
- int /*<<< orphan*/  unregister_code (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_tri_layer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int PLAY_SONG (int ) ;
+
+
+
+ int SEND_STRING (char*) ;
+
+
+
+
+
+
+ int _ADJUST ;
+ int _COLEMAK ;
+ int _DVORAK ;
+ int _EMOJI ;
+ int _LOWER ;
+ int _PLOVER ;
+ int _QWERTY ;
+ int _RAISE ;
+ int backlight_step () ;
+ int eeconfig_init () ;
+ int eeconfig_is_enabled () ;
+ int eeconfig_read_keymap () ;
+ int eeconfig_update_keymap (int ) ;
+ TYPE_4__ keymap_config ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ int plover_gb_song ;
+ int plover_song ;
+ int print (char*) ;
+ int register_code (int ) ;
+ int set_single_persistent_default_layer (int ) ;
+ int stop_all_notes () ;
+ int unregister_code (int ) ;
+ int update_tri_layer (int ,int ,int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case QWERTY:
+    case 135:
       if (record->event.pressed) {
         print("mode just switched to qwerty and this is a huge string\n");
         set_single_persistent_default_layer(_QWERTY);
       }
-      return false;
+      return 0;
       break;
-    case COLEMAK:
+    case 150:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_COLEMAK);
       }
-      return false;
+      return 0;
       break;
-    case DVORAK:
+    case 147:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_DVORAK);
       }
-      return false;
+      return 0;
       break;
-    case LOWER:
+    case 137:
       if (record->event.pressed) {
         layer_on(_LOWER);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
@@ -102,9 +86,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_off(_LOWER);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
       }
-      return false;
+      return 0;
       break;
-    case RAISE:
+    case 134:
       if (record->event.pressed) {
         layer_on(_RAISE);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
@@ -112,25 +96,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_off(_RAISE);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
       }
-      return false;
+      return 0;
       break;
-    case BACKLIT:
+    case 151:
       if (record->event.pressed) {
         register_code(KC_RSFT);
-        #ifdef BACKLIGHT_ENABLE
-          backlight_step();
-        #endif
+
+
+
       } else {
         unregister_code(KC_RSFT);
       }
-      return false;
+      return 0;
       break;
-    case PLOVER:
+    case 136:
       if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          stop_all_notes();
-          PLAY_SONG(plover_song);
-        #endif
+
+
+
+
         layer_off(_RAISE);
         layer_off(_LOWER);
         layer_off(_ADJUST);
@@ -143,119 +127,119 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         keymap_config.nkro = 1;
         eeconfig_update_keymap(keymap_config.raw);
       }
-      return false;
+      return 0;
       break;
-    case EXT_PLV:
+    case 146:
       if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(plover_gb_song);
-        #endif
+
+
+
         layer_off(_PLOVER);
       }
-      return false;
+      return 0;
       break;
-    case FLIP:
+    case 145:
       if (record->event.pressed) {
         SEND_STRING("&fliptable;");
       }
-      return false;
+      return 0;
       break;
-    case CONFUSED:
+    case 149:
       if (record->event.pressed) {
         SEND_STRING(":-\\");
       }
-      return false;
+      return 0;
       break;
-    case SHIT:
+    case 133:
       if (record->event.pressed) {
         SEND_STRING("&shit; ");
       }
-      return false;
+      return 0;
       break;
-    case CRY:
+    case 148:
       if (record->event.pressed) {
         SEND_STRING(":'-( ");
       }
-      return false;
+      return 0;
       break;
-    case LLAP:
+    case 138:
       if (record->event.pressed) {
         SEND_STRING("&llap; ");
       }
-      return false;
+      return 0;
       break;
-    case GRIN:
+    case 141:
       if (record->event.pressed) {
         SEND_STRING(":-D ");
       }
-      return false;
+      return 0;
       break;
-    case TOUNGE:
+    case 129:
       if (record->event.pressed) {
         SEND_STRING(":-P ");
       }
-      return false;
+      return 0;
       break;
-    case JOY:
+    case 139:
       if (record->event.pressed) {
         SEND_STRING(":-) ");
       }
-      return false;
+      return 0;
       break;
-    case FROWN:
+    case 142:
       if (record->event.pressed) {
         SEND_STRING(":-( ");
       }
-      return false;
+      return 0;
       break;
-    case HEART:
+    case 140:
       if (record->event.pressed) {
         SEND_STRING("<3 ");
       }
-      return false;
+      return 0;
       break;
-    case SHRUG:
+    case 132:
       if (record->event.pressed) {
         SEND_STRING("&shrug; ");
       }
-      return false;
+      return 0;
       break;
-    case THMBUP:
+    case 130:
       if (record->event.pressed) {
         SEND_STRING("&thumbup; ");
       }
-      return false;
+      return 0;
       break;
-    case THMBDN:
+    case 131:
       if (record->event.pressed) {
         SEND_STRING("&thumbdown; ");
       }
-      return false;
+      return 0;
       break;
-    case FNGLEFT:
+    case 144:
       if (record->event.pressed) {
         SEND_STRING("&fingerleft; ");
       }
-      return false;
+      return 0;
       break;
-    case FNGRIGHT:
+    case 143:
       if (record->event.pressed) {
         SEND_STRING("&fingerright; ");
       }
-      return false;
+      return 0;
       break;
-    case WINK:
+    case 128:
       if (record->event.pressed) {
         SEND_STRING(";-) ");
       }
-      return false;
+      return 0;
       break;
-    case ABOVE:
+    case 152:
       if (record->event.pressed) {
         SEND_STRING("&above; ");
       }
-      return false;
+      return 0;
       break;
   }
-  return true;
+  return 1;
 }

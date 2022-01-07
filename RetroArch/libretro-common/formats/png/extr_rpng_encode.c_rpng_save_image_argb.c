@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  intfstream_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RETRO_VFS_FILE_ACCESS_HINT_NONE ; 
- int /*<<< orphan*/  RETRO_VFS_FILE_ACCESS_WRITE ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  intfstream_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * intfstream_open_file (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int rpng_save_image_stream (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,unsigned int,unsigned int,int,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int intfstream_t ;
+
+
+ int RETRO_VFS_FILE_ACCESS_HINT_NONE ;
+ int RETRO_VFS_FILE_ACCESS_WRITE ;
+ int free (int *) ;
+ int intfstream_close (int *) ;
+ int * intfstream_open_file (char const*,int ,int ) ;
+ int rpng_save_image_stream (int const*,int *,unsigned int,unsigned int,int,int) ;
 
 bool rpng_save_image_argb(const char *path, const uint32_t *data,
       unsigned width, unsigned height, unsigned pitch)
 {
-   bool ret                      = false;
-   intfstream_t* intf_s          = NULL;
-   
-   intf_s = intfstream_open_file(path, 
+   bool ret = 0;
+   intfstream_t* intf_s = ((void*)0);
+
+   intf_s = intfstream_open_file(path,
          RETRO_VFS_FILE_ACCESS_WRITE,
          RETRO_VFS_FILE_ACCESS_HINT_NONE);
 

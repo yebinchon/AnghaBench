@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rawfb_context {int dummy; } ;
 struct nk_vec2i {float x; float y; } ;
 struct nk_color {int dummy; } ;
 
-/* Variables and functions */
- unsigned int MAX (unsigned int const,int) ; 
- int /*<<< orphan*/  nk_rawfb_stroke_line (struct rawfb_context const*,float,float,short,short,unsigned short const,struct nk_color const) ; 
+
+ unsigned int MAX (unsigned int const,int) ;
+ int nk_rawfb_stroke_line (struct rawfb_context const*,float,float,short,short,unsigned short const,struct nk_color const) ;
 
 __attribute__((used)) static void
 nk_rawfb_stroke_curve(const struct rawfb_context *rawfb,

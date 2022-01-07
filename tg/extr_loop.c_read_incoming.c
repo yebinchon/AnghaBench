@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct in_ev {int in_buf_pos; char* in_buf; int error; struct bufferevent* bev; } ;
 struct bufferevent {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_WARNING ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ bufferevent_read (struct bufferevent*,char*,int) ; 
- int /*<<< orphan*/  interpreter_ex (char*,struct in_ev*) ; 
- int /*<<< orphan*/  memmove (char*,char*,int) ; 
- int /*<<< orphan*/  vlogprintf (int /*<<< orphan*/ ,char*) ; 
+
+ int E_WARNING ;
+ int assert (int) ;
+ scalar_t__ bufferevent_read (struct bufferevent*,char*,int) ;
+ int interpreter_ex (char*,struct in_ev*) ;
+ int memmove (char*,char*,int) ;
+ int vlogprintf (int ,char*) ;
 
 __attribute__((used)) static void read_incoming (struct bufferevent *bev, void *_arg) {
   vlogprintf (E_WARNING, "Read from incoming connection\n");

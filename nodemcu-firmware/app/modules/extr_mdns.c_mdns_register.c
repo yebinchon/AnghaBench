@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct nodemcu_mdns_info {char* service_name; int service_port; char** txt_data; void* host_desc; void* host_name; } ;
-struct TYPE_2__ {int /*<<< orphan*/  addr; } ;
+struct TYPE_2__ {int addr; } ;
 struct ip_info {TYPE_1__ ip; } ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  info ;
+typedef int lua_State ;
+typedef int info ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_TSTRING ; 
- int /*<<< orphan*/  LUA_TTABLE ; 
- int /*<<< orphan*/  SOFTAP_IF ; 
- int /*<<< orphan*/  STATION_IF ; 
- char* alloca (int) ; 
- int luaL_checknumber (int /*<<< orphan*/ *,int) ; 
- void* luaL_checkstring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaL_checktype (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- scalar_t__ lua_next (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mdns_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (struct nodemcu_mdns_info*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  nodemcu_mdns_init (struct nodemcu_mdns_info*) ; 
- int /*<<< orphan*/  strcat (char*,char const*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  wifi_get_ip_info (int /*<<< orphan*/ ,struct ip_info*) ; 
- int wifi_get_opmode () ; 
+
+ int LUA_TSTRING ;
+ int LUA_TTABLE ;
+ int SOFTAP_IF ;
+ int STATION_IF ;
+ char* alloca (int) ;
+ int luaL_checknumber (int *,int) ;
+ void* luaL_checkstring (int *,int) ;
+ int luaL_checktype (int *,int,int ) ;
+ int luaL_error (int *,char*) ;
+ int lua_gettop (int *) ;
+ scalar_t__ lua_next (int *,int) ;
+ int lua_pop (int *,int) ;
+ int lua_pushnil (int *) ;
+ int mdns_close (int *) ;
+ int memset (struct nodemcu_mdns_info*,int ,int) ;
+ int nodemcu_mdns_init (struct nodemcu_mdns_info*) ;
+ int strcat (char*,char const*) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int strcpy (char*,char const*) ;
+ int strlen (char const*) ;
+ int wifi_get_ip_info (int ,struct ip_info*) ;
+ int wifi_get_opmode () ;
 
 __attribute__((used)) static int mdns_register(lua_State *L)
 {
@@ -55,26 +55,26 @@ __attribute__((used)) static int mdns_register(lua_State *L)
 
   if (lua_gettop(L) >= 2) {
     luaL_checktype(L, 2, LUA_TTABLE);
-    lua_pushnil(L); // first key
+    lua_pushnil(L);
     int slot = 0;
     while (lua_next(L, 2) != 0 && slot < sizeof(info.txt_data) / sizeof(info.txt_data[0])) {
       luaL_checktype(L, -2, LUA_TSTRING);
       const char *key = luaL_checkstring(L, -2);
 
       if (strcmp(key, "port") == 0) {
-	info.service_port = luaL_checknumber(L, -1);
+ info.service_port = luaL_checknumber(L, -1);
       } else if (strcmp(key, "service") == 0) {
-	info.service_name = luaL_checkstring(L, -1);
+ info.service_name = luaL_checkstring(L, -1);
       } else if (strcmp(key, "description") == 0) {
-	info.host_desc = luaL_checkstring(L, -1);
+ info.host_desc = luaL_checkstring(L, -1);
       } else {
-	int len = strlen(key) + 1;
-	const char *value = luaL_checkstring(L, -1);
-	char *p = alloca(len + strlen(value) + 1);
-	strcpy(p, key);
-	strcat(p, "=");
-	strcat(p, value);
-	info.txt_data[slot++] = p;
+ int len = strlen(key) + 1;
+ const char *value = luaL_checkstring(L, -1);
+ char *p = alloca(len + strlen(value) + 1);
+ strcpy(p, key);
+ strcat(p, "=");
+ strcat(p, value);
+ info.txt_data[slot++] = p;
       }
       lua_pop(L, 1);
     }
@@ -89,13 +89,13 @@ __attribute__((used)) static int mdns_register(lua_State *L)
     return luaL_error(L, "No network connection");
   }
 
-  // Close up the old session (if any). This cannot fail
-  // so no chance of losing the memory in 'result'
+
+
 
   mdns_close(L);
 
-  // Save the result as it appears that nodemcu_mdns_init needs
-  // to have the data valid while it is running.
+
+
 
   if (!nodemcu_mdns_init(&info)) {
     mdns_close(L);

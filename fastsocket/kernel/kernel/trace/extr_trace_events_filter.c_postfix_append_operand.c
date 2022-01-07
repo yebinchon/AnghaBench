@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct postfix_elt {int /*<<< orphan*/  list; int /*<<< orphan*/  operand; int /*<<< orphan*/  op; } ;
-struct filter_parse_state {int /*<<< orphan*/  postfix; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  OP_NONE ; 
- int /*<<< orphan*/  kfree (struct postfix_elt*) ; 
- struct postfix_elt* kmalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kstrdup (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct postfix_elt {int list; int operand; int op; } ;
+struct filter_parse_state {int postfix; } ;
+
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int OP_NONE ;
+ int kfree (struct postfix_elt*) ;
+ struct postfix_elt* kmalloc (int,int ) ;
+ int kstrdup (char*,int ) ;
+ int list_add_tail (int *,int *) ;
 
 __attribute__((used)) static int postfix_append_operand(struct filter_parse_state *ps, char *operand)
 {
-	struct postfix_elt *elt;
+ struct postfix_elt *elt;
 
-	elt = kmalloc(sizeof(*elt), GFP_KERNEL);
-	if (!elt)
-		return -ENOMEM;
+ elt = kmalloc(sizeof(*elt), GFP_KERNEL);
+ if (!elt)
+  return -ENOMEM;
 
-	elt->op = OP_NONE;
-	elt->operand = kstrdup(operand, GFP_KERNEL);
-	if (!elt->operand) {
-		kfree(elt);
-		return -ENOMEM;
-	}
+ elt->op = OP_NONE;
+ elt->operand = kstrdup(operand, GFP_KERNEL);
+ if (!elt->operand) {
+  kfree(elt);
+  return -ENOMEM;
+ }
 
-	list_add_tail(&elt->list, &ps->postfix);
+ list_add_tail(&elt->list, &ps->postfix);
 
-	return 0;
+ return 0;
 }

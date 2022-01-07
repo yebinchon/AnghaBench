@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  subtest (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_aes128ctr ; 
- int /*<<< orphan*/  test_aes128ecb ; 
- int /*<<< orphan*/  test_aes128gcm ; 
- int /*<<< orphan*/  test_aes256ecb ; 
- int /*<<< orphan*/  test_aes256gcm ; 
- int /*<<< orphan*/  test_all_handshakes ; 
- int /*<<< orphan*/  test_base64_decode ; 
- int /*<<< orphan*/  test_chacha20 ; 
- int /*<<< orphan*/  test_chacha20poly1305 ; 
- int /*<<< orphan*/  test_ffx ; 
- int /*<<< orphan*/  test_fragmented_message ; 
- int /*<<< orphan*/  test_hkdf ; 
- int /*<<< orphan*/  test_hmac_sha256 ; 
- int /*<<< orphan*/  test_is_ipaddr ; 
- int /*<<< orphan*/  test_sha256 ; 
- int /*<<< orphan*/  test_sha384 ; 
+ int subtest (char*,int ) ;
+ int test_aes128ctr ;
+ int test_aes128ecb ;
+ int test_aes128gcm ;
+ int test_aes256ecb ;
+ int test_aes256gcm ;
+ int test_all_handshakes ;
+ int test_base64_decode ;
+ int test_chacha20 ;
+ int test_chacha20poly1305 ;
+ int test_ffx ;
+ int test_fragmented_message ;
+ int test_hkdf ;
+ int test_hmac_sha256 ;
+ int test_is_ipaddr ;
+ int test_sha256 ;
+ int test_sha384 ;
 
 void test_picotls(void)
 {

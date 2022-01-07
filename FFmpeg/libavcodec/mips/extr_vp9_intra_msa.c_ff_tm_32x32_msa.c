@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ v8u16 ;
-typedef  int /*<<< orphan*/  v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  ptrdiff_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HADD_UB4_UH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ILVL_B2_UH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ILVR_B2_UH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  IPRED_SUBS_UH2_UH (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  LD_SB (int /*<<< orphan*/  const*) ; 
- int LW (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  PCKEV_ST_SB (scalar_t__,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SAT_UH4_UH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  __msa_fill_b (int) ; 
- scalar_t__ __msa_fill_h (int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ v8u16 ;
+typedef int v16i8 ;
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int ptrdiff_t ;
+
+
+ int HADD_UB4_UH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ILVL_B2_UH (int ,int ,int ,int ,scalar_t__,scalar_t__) ;
+ int ILVR_B2_UH (int ,int ,int ,int ,scalar_t__,scalar_t__) ;
+ int IPRED_SUBS_UH2_UH (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int LD_SB (int const*) ;
+ int LW (int const*) ;
+ int PCKEV_ST_SB (scalar_t__,scalar_t__,int *) ;
+ int SAT_UH4_UH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ;
+ int __msa_fill_b (int) ;
+ scalar_t__ __msa_fill_h (int ) ;
 
 void ff_tm_32x32_msa(uint8_t *dst, ptrdiff_t dst_stride,
                      const uint8_t *src_left, const uint8_t *src_top_ptr)

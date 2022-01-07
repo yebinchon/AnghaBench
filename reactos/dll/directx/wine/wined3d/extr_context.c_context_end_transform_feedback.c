@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_gl_info {int dummy; } ;
 struct wined3d_context {scalar_t__ transform_feedback_paused; scalar_t__ transform_feedback_active; struct wined3d_gl_info* gl_info; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- int /*<<< orphan*/  glEndTransformFeedback () ; 
+
+ int GL_EXTCALL (int ) ;
+ int checkGLcall (char*) ;
+ int glEndTransformFeedback () ;
 
 void context_end_transform_feedback(struct wined3d_context *context)
 {

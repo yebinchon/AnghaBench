@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct lev_news_comment {int type; int /*<<< orphan*/  item; int /*<<< orphan*/  group; int /*<<< orphan*/  user; int /*<<< orphan*/  place; int /*<<< orphan*/  owner; } ;
-struct TYPE_6__ {int /*<<< orphan*/  place; int /*<<< orphan*/  owner; int /*<<< orphan*/  type; int /*<<< orphan*/  tot_comments; TYPE_2__* first; } ;
-typedef  TYPE_1__ place_t ;
-struct TYPE_7__ {int random_tag; scalar_t__ date; int /*<<< orphan*/  item; int /*<<< orphan*/  group; int /*<<< orphan*/  user; struct TYPE_7__* prev; struct TYPE_7__* next; } ;
-typedef  TYPE_2__ comment_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMM_MODE ; 
- int /*<<< orphan*/  check_obj (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* get_place_f (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ index_mode ; 
- int /*<<< orphan*/  items_removed_in_process_new ; 
- int lrand48 () ; 
- scalar_t__ min_logevent_time ; 
- TYPE_2__* new_comment () ; 
- scalar_t__ now ; 
- scalar_t__ remove_old_comments (TYPE_1__*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct lev_news_comment {int type; int item; int group; int user; int place; int owner; } ;
+struct TYPE_6__ {int place; int owner; int type; int tot_comments; TYPE_2__* first; } ;
+typedef TYPE_1__ place_t ;
+struct TYPE_7__ {int random_tag; scalar_t__ date; int item; int group; int user; struct TYPE_7__* prev; struct TYPE_7__* next; } ;
+typedef TYPE_2__ comment_t ;
+
+
+ int COMM_MODE ;
+ int check_obj (int,int ,int ) ;
+ TYPE_1__* get_place_f (int,int ,int ,int) ;
+ scalar_t__ index_mode ;
+ int items_removed_in_process_new ;
+ int lrand48 () ;
+ scalar_t__ min_logevent_time ;
+ TYPE_2__* new_comment () ;
+ scalar_t__ now ;
+ scalar_t__ remove_old_comments (TYPE_1__*) ;
+ int vkprintf (int,char*,int ,int ,int ,int ,scalar_t__,int) ;
 
 __attribute__((used)) static int process_news_comment (struct lev_news_comment *E) {
   if (now < min_logevent_time) {

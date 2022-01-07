@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT ;
-struct TYPE_16__ {int ref; int sizeCalled; int clearCalled; int recordcopy; int /*<<< orphan*/  IRecordInfo_iface; } ;
+
+
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef size_t UINT ;
+struct TYPE_16__ {int ref; int sizeCalled; int clearCalled; int recordcopy; int IRecordInfo_iface; } ;
 struct TYPE_15__ {int cbElements; } ;
 struct TYPE_14__ {int cElements; scalar_t__ lLbound; } ;
-typedef  TYPE_1__ SAFEARRAYBOUND ;
-typedef  TYPE_2__ SAFEARRAY ;
-typedef  int /*<<< orphan*/ * PVOID ;
-typedef  TYPE_3__ IRecordInfoImpl ;
-typedef  int /*<<< orphan*/  IRecordInfo ;
-typedef  int HRESULT ;
-typedef  int /*<<< orphan*/  GUID ;
+typedef TYPE_1__ SAFEARRAYBOUND ;
+typedef TYPE_2__ SAFEARRAY ;
+typedef int * PVOID ;
+typedef TYPE_3__ IRecordInfoImpl ;
+typedef int IRecordInfo ;
+typedef int HRESULT ;
+typedef int GUID ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (TYPE_1__*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IID_IDispatch ; 
- int /*<<< orphan*/  IID_ITypeInfo ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- TYPE_3__* IRecordInfoImpl_Construct () ; 
- int /*<<< orphan*/  IRecordInfo_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int RECORD_SIZE ; 
- int RECORD_SIZE_FAIL ; 
- int START_REF_COUNT ; 
- int S_OK ; 
- int SafeArrayCopyData (TYPE_2__*,TYPE_2__*) ; 
- int SafeArrayDestroy (TYPE_2__*) ; 
- int SafeArrayGetIID (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int SafeArraySetIID (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  VT_DISPATCH ; 
- int /*<<< orphan*/  VT_RECORD ; 
- int /*<<< orphan*/  VT_UI1 ; 
- int /*<<< orphan*/  VT_UNKNOWN ; 
- int /*<<< orphan*/  fail_GetSize ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- TYPE_2__* pSafeArrayCreateEx (int /*<<< orphan*/ ,int,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int pSafeArrayGetRecordInfo (TYPE_2__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+ size_t ARRAY_SIZE (TYPE_1__*) ;
+ int FALSE ;
+ int IID_IDispatch ;
+ int IID_ITypeInfo ;
+ int IID_IUnknown ;
+ TYPE_3__* IRecordInfoImpl_Construct () ;
+ int IRecordInfo_Release (int *) ;
+ int IsEqualGUID (int *,int *) ;
+ int RECORD_SIZE ;
+ int RECORD_SIZE_FAIL ;
+ int START_REF_COUNT ;
+ int S_OK ;
+ int SafeArrayCopyData (TYPE_2__*,TYPE_2__*) ;
+ int SafeArrayDestroy (TYPE_2__*) ;
+ int SafeArrayGetIID (TYPE_2__*,int *) ;
+ int SafeArraySetIID (TYPE_2__*,int *) ;
+ int TRUE ;
+ int VT_DISPATCH ;
+ int VT_RECORD ;
+ int VT_UI1 ;
+ int VT_UNKNOWN ;
+ int fail_GetSize ;
+ int ok (int,char*,...) ;
+ TYPE_2__* pSafeArrayCreateEx (int ,int,TYPE_1__*,int *) ;
+ int pSafeArrayGetRecordInfo (TYPE_2__*,int **) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_SafeArrayCreateEx(void)
 {
@@ -73,13 +73,13 @@ __attribute__((used)) static void test_SafeArrayCreateEx(void)
     sab[dimension].cElements = 8;
   }
 
-  /* Failure cases */
-  sa = pSafeArrayCreateEx(VT_UI1, 1, NULL, NULL);
-  ok(sa == NULL, "CreateEx NULL bounds didn't fail\n");
 
-  /* test IID storage & defaulting */
+  sa = pSafeArrayCreateEx(VT_UI1, 1, ((void*)0), ((void*)0));
+  ok(sa == ((void*)0), "CreateEx NULL bounds didn't fail\n");
+
+
   sa = pSafeArrayCreateEx(VT_DISPATCH, 1, sab, (PVOID)&IID_ITypeInfo);
-  ok(sa != NULL, "CreateEx (ITypeInfo) failed\n");
+  ok(sa != ((void*)0), "CreateEx (ITypeInfo) failed\n");
 
   if (sa)
   {
@@ -96,8 +96,8 @@ __attribute__((used)) static void test_SafeArrayCreateEx(void)
     ok(hres == S_OK, "got 0x%08x\n", hres);
   }
 
-  sa = pSafeArrayCreateEx(VT_DISPATCH, 1, sab, NULL);
-  ok(sa != NULL, "CreateEx (NULL) failed\n");
+  sa = pSafeArrayCreateEx(VT_DISPATCH, 1, sab, ((void*)0));
+  ok(sa != ((void*)0), "CreateEx (NULL) failed\n");
 
   if (sa)
   {
@@ -110,8 +110,8 @@ __attribute__((used)) static void test_SafeArrayCreateEx(void)
     ok(hres == S_OK, "got 0x%08x\n", hres);
   }
 
-  sa = pSafeArrayCreateEx(VT_UNKNOWN, 1, sab, NULL);
-  ok(sa != NULL, "CreateEx (NULL-Unk) failed\n");
+  sa = pSafeArrayCreateEx(VT_UNKNOWN, 1, sab, ((void*)0));
+  ok(sa != ((void*)0), "CreateEx (NULL-Unk) failed\n");
 
   if (sa)
   {
@@ -124,16 +124,16 @@ __attribute__((used)) static void test_SafeArrayCreateEx(void)
     ok(hres == S_OK, "got 0x%08x\n", hres);
   }
 
-  /* VT_RECORD failure case */
-  sa = pSafeArrayCreateEx(VT_RECORD, 1, sab, NULL);
-  ok(sa == NULL, "CreateEx (NULL-Rec) succeeded\n");
+
+  sa = pSafeArrayCreateEx(VT_RECORD, 1, sab, ((void*)0));
+  ok(sa == ((void*)0), "CreateEx (NULL-Rec) succeeded\n");
 
   iRec = IRecordInfoImpl_Construct();
 
-  /* Win32 doesn't care if GetSize fails */
+
   fail_GetSize = TRUE;
   sa = pSafeArrayCreateEx(VT_RECORD, 1, sab, &iRec->IRecordInfo_iface);
-  ok(sa != NULL, "CreateEx (Fail Size) failed\n");
+  ok(sa != ((void*)0), "CreateEx (Fail Size) failed\n");
   ok(iRec->ref == START_REF_COUNT + 1, "Wrong iRec refcount %d\n", iRec->ref);
   ok(iRec->sizeCalled == 1, "GetSize called %d times\n", iRec->sizeCalled);
   ok(iRec->clearCalled == 0, "Clear called %d times\n", iRec->clearCalled);
@@ -146,19 +146,19 @@ __attribute__((used)) static void test_SafeArrayCreateEx(void)
     ok(iRec->ref == START_REF_COUNT, "got %d, expected %d\n", iRec->ref, START_REF_COUNT);
   }
 
-  /* Test VT_RECORD array */
+
   fail_GetSize = FALSE;
   iRec->ref = START_REF_COUNT;
   iRec->sizeCalled = 0;
   iRec->clearCalled = 0;
   sa = pSafeArrayCreateEx(VT_RECORD, 1, sab, &iRec->IRecordInfo_iface);
-  ok(sa != NULL, "CreateEx (Rec) failed\n");
+  ok(sa != ((void*)0), "CreateEx (Rec) failed\n");
   ok(iRec->ref == START_REF_COUNT + 1, "Wrong iRec refcount %d\n", iRec->ref);
   ok(iRec->sizeCalled == 1, "GetSize called %d times\n", iRec->sizeCalled);
   ok(iRec->clearCalled == 0, "Clear called %d times\n", iRec->clearCalled);
   if (sa && pSafeArrayGetRecordInfo)
   {
-    IRecordInfo* saRec = NULL;
+    IRecordInfo* saRec = ((void*)0);
     SAFEARRAY *sacopy;
 
     hres = pSafeArrayGetRecordInfo(sa, &saRec);
@@ -169,11 +169,11 @@ __attribute__((used)) static void test_SafeArrayCreateEx(void)
 
     ok(sa->cbElements == RECORD_SIZE,"Elemsize is %d\n", sa->cbElements);
 
-    /* try to copy record based arrays */
+
     sacopy = pSafeArrayCreateEx(VT_RECORD, 1, sab, &iRec->IRecordInfo_iface);
     iRec->recordcopy = 0;
     iRec->clearCalled = 0;
-    /* array copy code doesn't explicitly clear a record */
+
     hres = SafeArrayCopyData(sa, sacopy);
     ok(hres == S_OK, "got 0x%08x\n", hres);
     ok(iRec->recordcopy == sab[0].cElements, "got %d\n", iRec->recordcopy);

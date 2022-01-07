@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- scalar_t__ irq0 ; 
- scalar_t__ irq1 ; 
- scalar_t__ irq10 ; 
- scalar_t__ irq11 ; 
- scalar_t__ irq12 ; 
- scalar_t__ irq13 ; 
- scalar_t__ irq14 ; 
- scalar_t__ irq15 ; 
- scalar_t__ irq2 ; 
- scalar_t__ irq3 ; 
- scalar_t__ irq4 ; 
- scalar_t__ irq5 ; 
- scalar_t__ irq6 ; 
- scalar_t__ irq7 ; 
- scalar_t__ irq8 ; 
- scalar_t__ irq9 ; 
- scalar_t__ isr0 ; 
- scalar_t__ isr1 ; 
- scalar_t__ isr10 ; 
- scalar_t__ isr11 ; 
- scalar_t__ isr12 ; 
- scalar_t__ isr13 ; 
- scalar_t__ isr14 ; 
- scalar_t__ isr15 ; 
- scalar_t__ isr16 ; 
- scalar_t__ isr17 ; 
- scalar_t__ isr18 ; 
- scalar_t__ isr19 ; 
- scalar_t__ isr2 ; 
- scalar_t__ isr20 ; 
- scalar_t__ isr21 ; 
- scalar_t__ isr22 ; 
- scalar_t__ isr23 ; 
- scalar_t__ isr24 ; 
- scalar_t__ isr25 ; 
- scalar_t__ isr26 ; 
- scalar_t__ isr27 ; 
- scalar_t__ isr28 ; 
- scalar_t__ isr29 ; 
- scalar_t__ isr3 ; 
- scalar_t__ isr30 ; 
- scalar_t__ isr31 ; 
- scalar_t__ isr4 ; 
- scalar_t__ isr5 ; 
- scalar_t__ isr6 ; 
- scalar_t__ isr7 ; 
- scalar_t__ isr8 ; 
- scalar_t__ isr9 ; 
- int /*<<< orphan*/  port_byte_out (int,int) ; 
- int /*<<< orphan*/  set_idt () ; 
- int /*<<< orphan*/  set_idt_gate (int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ scalar_t__ irq0 ;
+ scalar_t__ irq1 ;
+ scalar_t__ irq10 ;
+ scalar_t__ irq11 ;
+ scalar_t__ irq12 ;
+ scalar_t__ irq13 ;
+ scalar_t__ irq14 ;
+ scalar_t__ irq15 ;
+ scalar_t__ irq2 ;
+ scalar_t__ irq3 ;
+ scalar_t__ irq4 ;
+ scalar_t__ irq5 ;
+ scalar_t__ irq6 ;
+ scalar_t__ irq7 ;
+ scalar_t__ irq8 ;
+ scalar_t__ irq9 ;
+ scalar_t__ isr0 ;
+ scalar_t__ isr1 ;
+ scalar_t__ isr10 ;
+ scalar_t__ isr11 ;
+ scalar_t__ isr12 ;
+ scalar_t__ isr13 ;
+ scalar_t__ isr14 ;
+ scalar_t__ isr15 ;
+ scalar_t__ isr16 ;
+ scalar_t__ isr17 ;
+ scalar_t__ isr18 ;
+ scalar_t__ isr19 ;
+ scalar_t__ isr2 ;
+ scalar_t__ isr20 ;
+ scalar_t__ isr21 ;
+ scalar_t__ isr22 ;
+ scalar_t__ isr23 ;
+ scalar_t__ isr24 ;
+ scalar_t__ isr25 ;
+ scalar_t__ isr26 ;
+ scalar_t__ isr27 ;
+ scalar_t__ isr28 ;
+ scalar_t__ isr29 ;
+ scalar_t__ isr3 ;
+ scalar_t__ isr30 ;
+ scalar_t__ isr31 ;
+ scalar_t__ isr4 ;
+ scalar_t__ isr5 ;
+ scalar_t__ isr6 ;
+ scalar_t__ isr7 ;
+ scalar_t__ isr8 ;
+ scalar_t__ isr9 ;
+ int port_byte_out (int,int) ;
+ int set_idt () ;
+ int set_idt_gate (int,int ) ;
 
 void isr_install() {
     set_idt_gate(0, (uint32_t)isr0);
@@ -99,7 +99,7 @@ void isr_install() {
     set_idt_gate(30, (uint32_t)isr30);
     set_idt_gate(31, (uint32_t)isr31);
 
-    // Remap the PIC
+
     port_byte_out(0x20, 0x11);
     port_byte_out(0xA0, 0x11);
     port_byte_out(0x21, 0x20);
@@ -109,9 +109,9 @@ void isr_install() {
     port_byte_out(0x21, 0x01);
     port_byte_out(0xA1, 0x01);
     port_byte_out(0x21, 0x0);
-    port_byte_out(0xA1, 0x0); 
+    port_byte_out(0xA1, 0x0);
 
-    // Install the IRQs
+
     set_idt_gate(32, (uint32_t)irq0);
     set_idt_gate(33, (uint32_t)irq1);
     set_idt_gate(34, (uint32_t)irq2);
@@ -129,5 +129,5 @@ void isr_install() {
     set_idt_gate(46, (uint32_t)irq14);
     set_idt_gate(47, (uint32_t)irq15);
 
-    set_idt(); // Load with ASM
+    set_idt();
 }

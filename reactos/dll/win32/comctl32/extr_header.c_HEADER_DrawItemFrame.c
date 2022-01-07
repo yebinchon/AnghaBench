@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int dwStyle; int /*<<< orphan*/  hwndSelf; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int dwStyle; int hwndSelf; } ;
 struct TYPE_5__ {scalar_t__ bDown; } ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  TYPE_1__ HEADER_ITEM ;
-typedef  TYPE_2__ HEADER_INFO ;
-typedef  int /*<<< orphan*/  HDC ;
+typedef int RECT ;
+typedef TYPE_1__ HEADER_ITEM ;
+typedef TYPE_2__ HEADER_INFO ;
+typedef int HDC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BDR_RAISEDOUTER ; 
- int BF_ADJUST ; 
- int BF_BOTTOM ; 
- int BF_FLAT ; 
- int BF_RECT ; 
- int BF_RIGHT ; 
- int BF_SOFT ; 
- int /*<<< orphan*/  DrawEdge (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  EDGE_ETCHED ; 
- int /*<<< orphan*/  EDGE_RAISED ; 
- scalar_t__ GetWindowTheme (int /*<<< orphan*/ ) ; 
- int HDS_BUTTONS ; 
- int HDS_FLAT ; 
+
+ int BDR_RAISEDOUTER ;
+ int BF_ADJUST ;
+ int BF_BOTTOM ;
+ int BF_FLAT ;
+ int BF_RECT ;
+ int BF_RIGHT ;
+ int BF_SOFT ;
+ int DrawEdge (int ,int *,int ,int) ;
+ int EDGE_ETCHED ;
+ int EDGE_RAISED ;
+ scalar_t__ GetWindowTheme (int ) ;
+ int HDS_BUTTONS ;
+ int HDS_FLAT ;
 
 __attribute__((used)) static void
 HEADER_DrawItemFrame(HEADER_INFO *infoPtr, HDC hdc, RECT *r, const HEADER_ITEM *item)

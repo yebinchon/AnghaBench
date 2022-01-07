@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ cursorMode; double virtualCursorPosX; double virtualCursorPosY; } ;
-typedef  TYPE_1__ _GLFWwindow ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
+typedef TYPE_1__ _GLFWwindow ;
+typedef int GLFWwindow ;
 
-/* Variables and functions */
- scalar_t__ GLFW_CURSOR_DISABLED ; 
- int /*<<< orphan*/  _GLFW_REQUIRE_INIT () ; 
- int /*<<< orphan*/  _glfwPlatformGetCursorPos (TYPE_1__*,double*,double*) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ GLFW_CURSOR_DISABLED ;
+ int _GLFW_REQUIRE_INIT () ;
+ int _glfwPlatformGetCursorPos (TYPE_1__*,double*,double*) ;
+ int assert (int ) ;
 
 void glfwGetCursorPos(GLFWwindow* handle, double* xpos, double* ypos)
 {
     _GLFWwindow* window = (_GLFWwindow*) handle;
-    assert(window != NULL);
+    assert(window != ((void*)0));
 
     if (xpos)
         *xpos = 0;

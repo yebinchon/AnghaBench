@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * MyReplicationSlot ; 
- int /*<<< orphan*/  ReplicationSlotAcquire (char const*,int) ; 
- int /*<<< orphan*/  ReplicationSlotDropAcquired () ; 
+ int Assert (int ) ;
+ int * MyReplicationSlot ;
+ int ReplicationSlotAcquire (char const*,int) ;
+ int ReplicationSlotDropAcquired () ;
 
 void
 ReplicationSlotDrop(const char *name, bool nowait)
 {
-	Assert(MyReplicationSlot == NULL);
+ Assert(MyReplicationSlot == ((void*)0));
 
-	ReplicationSlotAcquire(name, nowait);
+ ReplicationSlotAcquire(name, nowait);
 
-	ReplicationSlotDropAcquired();
+ ReplicationSlotDropAcquired();
 }

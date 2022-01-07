@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int ;
-typedef  int u_char ;
-typedef  int /*<<< orphan*/  netdissect_options ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ip6_print (int /*<<< orphan*/ *,int const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ip_print (int /*<<< orphan*/ *,int const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u_int ;
+typedef int u_char ;
+typedef int netdissect_options ;
+
+
+ int ip6_print (int *,int const*,int ) ;
+ int ip_print (int *,int const*,int ) ;
 
 __attribute__((used)) static int
 ip_heuristic_guess(netdissect_options *ndo,
@@ -34,8 +34,8 @@ ip_heuristic_guess(netdissect_options *ndo,
     case 0x4d:
     case 0x4e:
     case 0x4f:
-	    ip_print(ndo, p, length);
-	    break;
+     ip_print(ndo, p, length);
+     break;
     case 0x60:
     case 0x61:
     case 0x62:
@@ -55,8 +55,8 @@ ip_heuristic_guess(netdissect_options *ndo,
         ip6_print(ndo, p, length);
         break;
     default:
-        return 0; /* did not find a ip header */
+        return 0;
         break;
     }
-    return 1; /* we printed an v4/v6 packet */
+    return 1;
 }

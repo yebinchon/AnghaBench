@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ber_element {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BER_TYPE_NULL ; 
- struct ber_element* ber_get_element (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ber_link_elements (struct ber_element*,struct ber_element*) ; 
+
+ int BER_TYPE_NULL ;
+ struct ber_element* ber_get_element (int ) ;
+ int ber_link_elements (struct ber_element*,struct ber_element*) ;
 
 struct ber_element *
 ber_add_null(struct ber_element *prev)
 {
-	struct ber_element *elm;
+ struct ber_element *elm;
 
-	if ((elm = ber_get_element(BER_TYPE_NULL)) == NULL)
-		return NULL;
+ if ((elm = ber_get_element(BER_TYPE_NULL)) == ((void*)0))
+  return ((void*)0);
 
-	ber_link_elements(prev, elm);
+ ber_link_elements(prev, elm);
 
-	return elm;
+ return elm;
 }

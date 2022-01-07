@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct sockaddr_in {int /*<<< orphan*/  sin_port; } ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct sockaddr_in {int sin_port; } ;
 struct sockaddr {scalar_t__ sa_family; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * data; } ;
+struct TYPE_5__ {int * data; } ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- int /*<<< orphan*/  ASSERT (int) ; 
- scalar_t__ connect_port ; 
- int /*<<< orphan*/  connect_req ; 
- int /*<<< orphan*/  loop ; 
- scalar_t__ ntohs (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  on_connect ; 
- int /*<<< orphan*/  server_port ; 
- TYPE_1__ tcp ; 
- scalar_t__ uv_ip4_addr (char*,int /*<<< orphan*/ ,struct sockaddr_in*) ; 
- int uv_tcp_connect (int /*<<< orphan*/ *,TYPE_1__*,struct sockaddr const*,int /*<<< orphan*/ ) ; 
- int uv_tcp_getsockname (TYPE_1__*,struct sockaddr*,int*) ; 
- int uv_tcp_init (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+ scalar_t__ AF_INET ;
+ int ASSERT (int) ;
+ scalar_t__ connect_port ;
+ int connect_req ;
+ int loop ;
+ scalar_t__ ntohs (int ) ;
+ int on_connect ;
+ int server_port ;
+ TYPE_1__ tcp ;
+ scalar_t__ uv_ip4_addr (char*,int ,struct sockaddr_in*) ;
+ int uv_tcp_connect (int *,TYPE_1__*,struct sockaddr const*,int ) ;
+ int uv_tcp_getsockname (TYPE_1__*,struct sockaddr*,int*) ;
+ int uv_tcp_init (int ,TYPE_1__*) ;
 
 __attribute__((used)) static void tcp_connector(void) {
   struct sockaddr_in server_addr;
@@ -47,7 +47,7 @@ __attribute__((used)) static void tcp_connector(void) {
                      on_connect);
   ASSERT(!r);
 
-  /* Fetch the actual port used by the connecting socket. */
+
   namelen = sizeof sockname;
   r = uv_tcp_getsockname(&tcp, &sockname, &namelen);
   ASSERT(!r);

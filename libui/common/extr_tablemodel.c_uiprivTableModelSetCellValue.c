@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uiTableValue ;
-struct TYPE_4__ {int /*<<< orphan*/  (* SetCellValue ) (TYPE_1__*,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/  const*) ;} ;
-typedef  TYPE_1__ uiTableModelHandler ;
-typedef  int /*<<< orphan*/  uiTableModel ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (TYPE_1__*,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/  const*) ; 
- TYPE_1__* uiprivTableModelHandler (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uiTableValue ;
+struct TYPE_4__ {int (* SetCellValue ) (TYPE_1__*,int *,int,int,int const*) ;} ;
+typedef TYPE_1__ uiTableModelHandler ;
+typedef int uiTableModel ;
+
+
+ int stub1 (TYPE_1__*,int *,int,int,int const*) ;
+ TYPE_1__* uiprivTableModelHandler (int *) ;
 
 void uiprivTableModelSetCellValue(uiTableModel *m, int row, int column, const uiTableValue *value)
 {
-	uiTableModelHandler *mh;
+ uiTableModelHandler *mh;
 
-	mh = uiprivTableModelHandler(m);
-	(*(mh->SetCellValue))(mh, m, row, column, value);
+ mh = uiprivTableModelHandler(m);
+ (*(mh->SetCellValue))(mh, m, row, column, value);
 }

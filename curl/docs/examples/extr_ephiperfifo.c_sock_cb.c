@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int curl_socket_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int curl_socket_t ;
 struct TYPE_4__ {size_t action; } ;
-typedef  TYPE_1__ SockInfo ;
-typedef  int /*<<< orphan*/  GlobalInfo ;
-typedef  int /*<<< orphan*/  CURL ;
+typedef TYPE_1__ SockInfo ;
+typedef int GlobalInfo ;
+typedef int CURL ;
 
-/* Variables and functions */
- int CURL_POLL_REMOVE ; 
- int /*<<< orphan*/  MSG_OUT ; 
- int /*<<< orphan*/  addsock (int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  remsock (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  setsock (TYPE_1__*,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
+
+ int CURL_POLL_REMOVE ;
+ int MSG_OUT ;
+ int addsock (int,int *,int,int *) ;
+ int fprintf (int ,char*,...) ;
+ int remsock (TYPE_1__*,int *) ;
+ int setsock (TYPE_1__*,int,int *,int,int *) ;
 
 __attribute__((used)) static int sock_cb(CURL *e, curl_socket_t s, int what, void *cbp, void *sockp)
 {

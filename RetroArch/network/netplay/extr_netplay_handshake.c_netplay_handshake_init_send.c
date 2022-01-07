@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-struct netplay_connection {int salt; int /*<<< orphan*/  fd; int /*<<< orphan*/  send_packet_buffer; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+struct netplay_connection {int salt; int fd; int send_packet_buffer; } ;
 struct TYPE_6__ {scalar_t__* netplay_spectate_password; scalar_t__* netplay_password; } ;
 struct TYPE_7__ {TYPE_1__ paths; } ;
-typedef  TYPE_2__ settings_t ;
+typedef TYPE_2__ settings_t ;
 struct TYPE_8__ {scalar_t__ is_server; } ;
-typedef  TYPE_3__ netplay_t ;
-typedef  int /*<<< orphan*/  header ;
+typedef TYPE_3__ netplay_t ;
+typedef int header ;
 
-/* Variables and functions */
- int NETPLAY_COMPRESSION_SUPPORTED ; 
- int NETPLAY_PROTOCOL_VERSION ; 
- TYPE_2__* config_get_ptr () ; 
- scalar_t__ htonl (int) ; 
- int netplay_impl_magic () ; 
- int netplay_magic ; 
- int netplay_platform_magic () ; 
- int /*<<< orphan*/  netplay_send (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__*,int) ; 
- int /*<<< orphan*/  netplay_send_flush (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int simple_rand_next ; 
- int simple_rand_uint32 () ; 
- int /*<<< orphan*/  simple_srand (unsigned int) ; 
- scalar_t__ time (int /*<<< orphan*/ *) ; 
+
+ int NETPLAY_COMPRESSION_SUPPORTED ;
+ int NETPLAY_PROTOCOL_VERSION ;
+ TYPE_2__* config_get_ptr () ;
+ scalar_t__ htonl (int) ;
+ int netplay_impl_magic () ;
+ int netplay_magic ;
+ int netplay_platform_magic () ;
+ int netplay_send (int *,int ,scalar_t__*,int) ;
+ int netplay_send_flush (int *,int ,int) ;
+ int simple_rand_next ;
+ int simple_rand_uint32 () ;
+ int simple_srand (unsigned int) ;
+ scalar_t__ time (int *) ;
 
 bool netplay_handshake_init_send(netplay_t *netplay,
    struct netplay_connection *connection)
@@ -54,9 +54,9 @@ bool netplay_handshake_init_send(netplay_t *netplay,
        (settings->paths.netplay_password[0] ||
         settings->paths.netplay_spectate_password[0]))
    {
-      /* Demand a password */
+
       if (simple_rand_next == 1)
-         simple_srand((unsigned int) time(NULL));
+         simple_srand((unsigned int) time(((void*)0)));
       connection->salt = simple_rand_uint32();
       if (connection->salt == 0)
          connection->salt = 1;
@@ -69,8 +69,8 @@ bool netplay_handshake_init_send(netplay_t *netplay,
 
    if (!netplay_send(&connection->send_packet_buffer, connection->fd, header,
          sizeof(header)) ||
-       !netplay_send_flush(&connection->send_packet_buffer, connection->fd, false))
-      return false;
+       !netplay_send_flush(&connection->send_packet_buffer, connection->fd, 0))
+      return 0;
 
-   return true;
+   return 1;
 }

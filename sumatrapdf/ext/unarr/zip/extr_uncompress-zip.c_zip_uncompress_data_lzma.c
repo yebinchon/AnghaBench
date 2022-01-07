@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ uint16_t ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ uint16_t ;
 struct TYPE_9__ {int bytes_left; scalar_t__* data; int offset; scalar_t__ at_eof; } ;
-struct TYPE_10__ {int /*<<< orphan*/  dic; } ;
-struct TYPE_7__ {TYPE_4__ dec; int /*<<< orphan*/  finish; int /*<<< orphan*/  alloc; } ;
+struct TYPE_10__ {int dic; } ;
+struct TYPE_7__ {TYPE_4__ dec; int finish; int alloc; } ;
 struct TYPE_8__ {TYPE_1__ lzma; } ;
 struct ar_archive_zip_uncomp {TYPE_3__ input; TYPE_2__ state; } ;
-typedef  scalar_t__ SizeT ;
-typedef  scalar_t__ SRes ;
-typedef  scalar_t__ ELzmaStatus ;
-typedef  int /*<<< orphan*/  ELzmaFinishMode ;
+typedef scalar_t__ SizeT ;
+typedef scalar_t__ SRes ;
+typedef scalar_t__ ELzmaStatus ;
+typedef int ELzmaFinishMode ;
 
-/* Variables and functions */
- scalar_t__ ERR_UNCOMP ; 
- int /*<<< orphan*/  LZMA_FINISH_ANY ; 
- scalar_t__ LZMA_STATUS_FINISHED_WITH_MARK ; 
- scalar_t__ LzmaDec_Allocate (TYPE_4__*,scalar_t__*,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ LzmaDec_DecodeToBuf (TYPE_4__*,void*,scalar_t__*,scalar_t__*,scalar_t__*,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  LzmaDec_Init (TYPE_4__*) ; 
- scalar_t__ SZ_OK ; 
- int /*<<< orphan*/  warn (char*,...) ; 
+
+ scalar_t__ ERR_UNCOMP ;
+ int LZMA_FINISH_ANY ;
+ scalar_t__ LZMA_STATUS_FINISHED_WITH_MARK ;
+ scalar_t__ LzmaDec_Allocate (TYPE_4__*,scalar_t__*,scalar_t__,int *) ;
+ scalar_t__ LzmaDec_DecodeToBuf (TYPE_4__*,void*,scalar_t__*,scalar_t__*,scalar_t__*,int ,scalar_t__*) ;
+ int LzmaDec_Init (TYPE_4__*) ;
+ scalar_t__ SZ_OK ;
+ int warn (char*,...) ;
 
 __attribute__((used)) static uint32_t zip_uncompress_data_lzma(struct ar_archive_zip_uncomp *uncomp, void *buffer, uint32_t buffer_size, bool is_last_chunk)
 {

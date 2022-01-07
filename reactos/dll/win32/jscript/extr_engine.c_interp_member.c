@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  DISPID ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- scalar_t__ DISP_E_UNKNOWNNAME ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  IDispatch_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- scalar_t__ disp_get_id (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const,int /*<<< orphan*/  const,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ disp_propget (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_op_bstr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_undefined () ; 
- scalar_t__ stack_pop_object (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ stack_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int IDispatch ;
+typedef scalar_t__ HRESULT ;
+typedef int DISPID ;
+typedef int BSTR ;
+
+
+ scalar_t__ DISP_E_UNKNOWNNAME ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int IDispatch_Release (int *) ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_OK ;
+ int TRACE (char*) ;
+ scalar_t__ disp_get_id (int *,int *,int const,int const,int ,int *) ;
+ scalar_t__ disp_propget (int *,int *,int ,int *) ;
+ int get_op_bstr (int *,int ) ;
+ int jsval_undefined () ;
+ scalar_t__ stack_pop_object (int *,int **) ;
+ scalar_t__ stack_push (int *,int ) ;
 
 __attribute__((used)) static HRESULT interp_member(script_ctx_t *ctx)
 {

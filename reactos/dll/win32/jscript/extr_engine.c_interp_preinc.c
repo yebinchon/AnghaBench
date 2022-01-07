@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  exprval_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JS_E_OBJECT_EXPECTED ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int const) ; 
- int /*<<< orphan*/  exprval_propget (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  exprval_propput (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exprval_release (int /*<<< orphan*/ *) ; 
- int get_op_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_number (double) ; 
- int /*<<< orphan*/  jsval_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stack_pop_exprval (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stack_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  throw_type_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  to_number (int /*<<< orphan*/ *,int /*<<< orphan*/ ,double*) ; 
+
+
+
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int exprval_t ;
+typedef int HRESULT ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int JS_E_OBJECT_EXPECTED ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int TRACE (char*,int const) ;
+ int exprval_propget (int *,int *,int *) ;
+ int exprval_propput (int *,int *,int ) ;
+ int exprval_release (int *) ;
+ int get_op_int (int *,int ) ;
+ int jsval_number (double) ;
+ int jsval_release (int ) ;
+ int stack_pop_exprval (int *,int *) ;
+ int stack_push (int *,int ) ;
+ int throw_type_error (int *,int ,int *) ;
+ int to_number (int *,int ,double*) ;
 
 __attribute__((used)) static HRESULT interp_preinc(script_ctx_t *ctx)
 {
@@ -42,7 +42,7 @@ __attribute__((used)) static HRESULT interp_preinc(script_ctx_t *ctx)
     TRACE("%d\n", arg);
 
     if(!stack_pop_exprval(ctx, &ref))
-        return throw_type_error(ctx, JS_E_OBJECT_EXPECTED, NULL);
+        return throw_type_error(ctx, JS_E_OBJECT_EXPECTED, ((void*)0));
 
     hres = exprval_propget(ctx, &ref, &v);
     if(SUCCEEDED(hres)) {

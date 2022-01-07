@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  oob; scalar_t__ bit; scalar_t__ readcount; } ;
-typedef  TYPE_1__ msg_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  qtrue ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int oob; scalar_t__ bit; scalar_t__ readcount; } ;
+typedef TYPE_1__ msg_t ;
+
+
+ int qtrue ;
 
 void MSG_BeginReadingOOB( msg_t *msg ) {
-	msg->readcount = 0;
-	msg->bit = 0;
-	msg->oob = qtrue;
+ msg->readcount = 0;
+ msg->bit = 0;
+ msg->oob = qtrue;
 }

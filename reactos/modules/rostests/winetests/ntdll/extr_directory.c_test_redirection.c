@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONG ;
-typedef  int NTSTATUS ;
 
-/* Variables and functions */
- int FALSE ; 
- int STATUS_ACCESS_VIOLATION ; 
- int STATUS_NOT_IMPLEMENTED ; 
- int TRUE ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int pRtlWow64EnableFsRedirection (int) ; 
- int pRtlWow64EnableFsRedirectionEx (int,int*) ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+
+
+typedef int ULONG ;
+typedef int NTSTATUS ;
+
+
+ int FALSE ;
+ int STATUS_ACCESS_VIOLATION ;
+ int STATUS_NOT_IMPLEMENTED ;
+ int TRUE ;
+ int ok (int,char*,int) ;
+ int pRtlWow64EnableFsRedirection (int) ;
+ int pRtlWow64EnableFsRedirectionEx (int,int*) ;
+ int skip (char*) ;
 
 __attribute__((used)) static void test_redirection(void)
 {
@@ -57,7 +57,7 @@ __attribute__((used)) static void test_redirection(void)
     ok( !status, "RtlWow64EnableFsRedirectionEx failed status %x\n", status );
     ok( !cur, "RtlWow64EnableFsRedirectionEx got %u\n", cur );
 
-    status = pRtlWow64EnableFsRedirectionEx( TRUE, NULL );
+    status = pRtlWow64EnableFsRedirectionEx( TRUE, ((void*)0) );
     ok( status == STATUS_ACCESS_VIOLATION, "RtlWow64EnableFsRedirectionEx failed with status %x\n", status );
     status = pRtlWow64EnableFsRedirectionEx( TRUE, (void*)1 );
     ok( status == STATUS_ACCESS_VIOLATION, "RtlWow64EnableFsRedirectionEx failed with status %x\n", status );

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mpc_err_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* mpc_err_string (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int mpc_err_t ;
+typedef int FILE ;
+
+
+ int fprintf (int *,char*,char*) ;
+ int free (char*) ;
+ char* mpc_err_string (int *) ;
 
 void mpc_err_print_to(mpc_err_t *x, FILE *f) {
   char *str = mpc_err_string(x);

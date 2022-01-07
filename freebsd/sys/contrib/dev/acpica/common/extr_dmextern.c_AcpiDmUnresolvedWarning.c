@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT8 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AcpiGbl_ExternalFileList ; 
- int AcpiGbl_NumExternalMethods ; 
- int AcpiGbl_ResolvedExternalMethods ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*,char*,char*,char*,...) ; 
- char* ExternalWarningPart1 ; 
- char* ExternalWarningPart2 ; 
- char* ExternalWarningPart3 ; 
- int /*<<< orphan*/  ExternalWarningPart4 ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*,...) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef scalar_t__ UINT8 ;
+
+
+ int AcpiGbl_ExternalFileList ;
+ int AcpiGbl_NumExternalMethods ;
+ int AcpiGbl_ResolvedExternalMethods ;
+ int AcpiOsPrintf (char*,char*,char*,char*,...) ;
+ char* ExternalWarningPart1 ;
+ char* ExternalWarningPart2 ;
+ char* ExternalWarningPart3 ;
+ int ExternalWarningPart4 ;
+ int fprintf (int ,char*,char*,char*,...) ;
+ int sprintf (char*,char*,char*,char*,...) ;
+ int stderr ;
 
 void
 AcpiDmUnresolvedWarning (
-    UINT8                   Type)
+    UINT8 Type)
 {
-    char                    *Format;
-    char                    Pad[] = "     *";
-    char                    NoPad[] = "";
+    char *Format;
+    char Pad[] = "     *";
+    char NoPad[] = "";
 
 
     if (!AcpiGbl_NumExternalMethods)
@@ -89,7 +89,7 @@ AcpiDmUnresolvedWarning (
     {
         if (!AcpiGbl_ExternalFileList)
         {
-            /* The -e option was not specified */
+
 
            AcpiOsPrintf ("    /*\n%s     *\n%s     *\n%s     *\n%s     */\n",
                ExternalWarningPart1, ExternalWarningPart2, ExternalWarningPart3,
@@ -97,7 +97,7 @@ AcpiDmUnresolvedWarning (
         }
         else
         {
-            /* The -e option was specified, but there are still some unresolved externals */
+
 
             AcpiOsPrintf ("    /*\n%s     *\n%s     *\n%s     */\n",
                ExternalWarningPart1, ExternalWarningPart3, ExternalWarningPart4);
@@ -107,14 +107,14 @@ AcpiDmUnresolvedWarning (
     {
         if (!AcpiGbl_ExternalFileList)
         {
-            /* The -e option was not specified */
+
 
             fprintf (stderr, "\n%s\n%s\n%s\n",
                ExternalWarningPart1, ExternalWarningPart2, ExternalWarningPart3);
         }
         else
         {
-            /* The -e option was specified, but there are still some unresolved externals */
+
 
             fprintf (stderr, "\n%s\n%s\n",
                ExternalWarningPart1, ExternalWarningPart3);

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct uwb_pal {int /*<<< orphan*/  node; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
+
+
+
+struct uwb_pal {int node; } ;
+
+
+ int INIT_LIST_HEAD (int *) ;
 
 void uwb_pal_init(struct uwb_pal *pal)
 {
-	INIT_LIST_HEAD(&pal->node);
+ INIT_LIST_HEAD(&pal->node);
 }

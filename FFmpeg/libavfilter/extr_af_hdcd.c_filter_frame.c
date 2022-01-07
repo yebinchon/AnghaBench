@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int32_t ;
-typedef  int int16_t ;
+
+
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int int32_t ;
+typedef int int16_t ;
 struct TYPE_19__ {TYPE_3__** outputs; TYPE_1__* priv; } ;
 struct TYPE_18__ {int format; TYPE_4__* dst; } ;
 struct TYPE_17__ {int nb_samples; int format; int channels; scalar_t__* data; scalar_t__* extended_data; } ;
-struct TYPE_16__ {int bits_per_sample; int sample_count; int /*<<< orphan*/  detect; int /*<<< orphan*/ * state; scalar_t__ process_stereo; } ;
-typedef  TYPE_1__ HDCDContext ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
+struct TYPE_16__ {int bits_per_sample; int sample_count; int detect; int * state; scalar_t__ process_stereo; } ;
+typedef TYPE_1__ HDCDContext ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
-#define  AV_SAMPLE_FMT_S16 131 
-#define  AV_SAMPLE_FMT_S16P 130 
-#define  AV_SAMPLE_FMT_S32 129 
-#define  AV_SAMPLE_FMT_S32P 128 
- int /*<<< orphan*/  ENOMEM ; 
- int av_frame_copy_props (TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_2__**) ; 
- int ff_filter_frame (TYPE_3__*,TYPE_2__*) ; 
- TYPE_2__* ff_get_audio_buffer (TYPE_3__*,int) ; 
- int /*<<< orphan*/  hdcd_detect_end (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  hdcd_detect_onech (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hdcd_detect_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hdcd_process (TYPE_1__*,int /*<<< orphan*/ *,int*,int,int) ; 
- int /*<<< orphan*/  hdcd_process_stereo (TYPE_1__*,int*,int) ; 
+
+ int AVERROR (int ) ;
+
+
+
+
+ int ENOMEM ;
+ int av_frame_copy_props (TYPE_2__*,TYPE_2__*) ;
+ int av_frame_free (TYPE_2__**) ;
+ int ff_filter_frame (TYPE_3__*,TYPE_2__*) ;
+ TYPE_2__* ff_get_audio_buffer (TYPE_3__*,int) ;
+ int hdcd_detect_end (int *,int) ;
+ int hdcd_detect_onech (int *,int *) ;
+ int hdcd_detect_start (int *) ;
+ int hdcd_process (TYPE_1__*,int *,int*,int,int) ;
+ int hdcd_process_stereo (TYPE_1__*,int*,int) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
 {
@@ -65,32 +65,32 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
         av_frame_free(&in);
         return result;
     }
-    out->format = outlink->format; // is this needed?
+    out->format = outlink->format;
 
     out_data = (int32_t*)out->data[0];
     switch (inlink->format) {
-        case AV_SAMPLE_FMT_S16P:
+        case 130:
             for (n = 0; n < in->nb_samples; n++)
                 for (c = 0; c < in->channels; c++) {
                     in_data = (int16_t*)in->extended_data[c];
                     out_data[(n * in->channels) + c] = in_data[n];
                 }
             break;
-        case AV_SAMPLE_FMT_S16:
-            in_data  = (int16_t*)in->data[0];
+        case 131:
+            in_data = (int16_t*)in->data[0];
             for (n = 0; n < in->nb_samples * in->channels; n++)
                 out_data[n] = in_data[n];
             break;
 
-        case AV_SAMPLE_FMT_S32P:
+        case 128:
             for (n = 0; n < in->nb_samples; n++)
                 for (c = 0; c < in->channels; c++) {
                     in_data32 = (int32_t*)in->extended_data[c];
                     out_data[(n * in->channels) + c] = in_data32[n] >> a;
                 }
             break;
-        case AV_SAMPLE_FMT_S32:
-            in_data32  = (int32_t*)in->data[0];
+        case 129:
+            in_data32 = (int32_t*)in->data[0];
             for (n = 0; n < in->nb_samples * in->channels; n++)
                 out_data[n] = in_data32[n] >> a;
             break;

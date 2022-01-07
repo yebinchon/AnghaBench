@@ -1,53 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ENODEV ; 
- int /*<<< orphan*/  GPIO_FN_PDSTATUS ; 
- int /*<<< orphan*/  GPIO_PTN4 ; 
- int /*<<< orphan*/  GPIO_PTV6 ; 
- int PORT_MSELCRB ; 
- int /*<<< orphan*/  clk_enable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  clk_get (int /*<<< orphan*/ *,char*) ; 
- int ctrl_inw (int) ; 
- int /*<<< orphan*/  ctrl_outw (int,int) ; 
- int /*<<< orphan*/  gpio_direction_input (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gpio_direction_output (int /*<<< orphan*/ ,int) ; 
- int gpio_get_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gpio_request (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ kfr2r09_usb0_gadget_i2c_setup () ; 
- int /*<<< orphan*/  msleep (int) ; 
+ int ENODEV ;
+ int GPIO_FN_PDSTATUS ;
+ int GPIO_PTN4 ;
+ int GPIO_PTV6 ;
+ int PORT_MSELCRB ;
+ int clk_enable (int ) ;
+ int clk_get (int *,char*) ;
+ int ctrl_inw (int) ;
+ int ctrl_outw (int,int) ;
+ int gpio_direction_input (int ) ;
+ int gpio_direction_output (int ,int) ;
+ int gpio_get_value (int ) ;
+ int gpio_request (int ,int *) ;
+ scalar_t__ kfr2r09_usb0_gadget_i2c_setup () ;
+ int msleep (int) ;
 
 __attribute__((used)) static int kfr2r09_usb0_gadget_setup(void)
 {
-	int plugged_in;
+ int plugged_in;
 
-	gpio_request(GPIO_PTN4, NULL); /* USB_DET */
-	gpio_direction_input(GPIO_PTN4);
-	plugged_in = gpio_get_value(GPIO_PTN4);
-	if (!plugged_in)
-		return -ENODEV; /* no cable plugged in */
+ gpio_request(GPIO_PTN4, ((void*)0));
+ gpio_direction_input(GPIO_PTN4);
+ plugged_in = gpio_get_value(GPIO_PTN4);
+ if (!plugged_in)
+  return -ENODEV;
 
-	if (kfr2r09_usb0_gadget_i2c_setup() != 0)
-		return -ENODEV; /* unable to configure using i2c */
+ if (kfr2r09_usb0_gadget_i2c_setup() != 0)
+  return -ENODEV;
 
-	ctrl_outw((ctrl_inw(PORT_MSELCRB) & ~0xc000) | 0x8000, PORT_MSELCRB);
-	gpio_request(GPIO_FN_PDSTATUS, NULL); /* R-standby disables USB clock */
-	gpio_request(GPIO_PTV6, NULL); /* USBCLK_ON */
-	gpio_direction_output(GPIO_PTV6, 1); /* USBCLK_ON = H */
-	msleep(20); /* wait 20ms to let the clock settle */
-	clk_enable(clk_get(NULL, "usb0"));
-	ctrl_outw(0x0600, 0xa40501d4);
+ ctrl_outw((ctrl_inw(PORT_MSELCRB) & ~0xc000) | 0x8000, PORT_MSELCRB);
+ gpio_request(GPIO_FN_PDSTATUS, ((void*)0));
+ gpio_request(GPIO_PTV6, ((void*)0));
+ gpio_direction_output(GPIO_PTV6, 1);
+ msleep(20);
+ clk_enable(clk_get(((void*)0), "usb0"));
+ ctrl_outw(0x0600, 0xa40501d4);
 
-	return 0;
+ return 0;
 }

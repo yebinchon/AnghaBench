@@ -1,74 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int CURLMcode ;
 
-/* Variables and functions */
-#define  CURLM_ADDED_ALREADY 138 
-#define  CURLM_BAD_EASY_HANDLE 137 
-#define  CURLM_BAD_HANDLE 136 
-#define  CURLM_BAD_SOCKET 135 
-#define  CURLM_CALL_MULTI_PERFORM 134 
-#define  CURLM_INTERNAL_ERROR 133 
-#define  CURLM_LAST 132 
-#define  CURLM_OK 131 
-#define  CURLM_OUT_OF_MEMORY 130 
-#define  CURLM_RECURSIVE_API_CALL 129 
-#define  CURLM_UNKNOWN_OPTION 128 
 
+
+
+typedef int CURLMcode ;
 const char *
 curl_multi_strerror(CURLMcode error)
 {
-#ifndef CURL_DISABLE_VERBOSE_STRINGS
+
   switch(error) {
-  case CURLM_CALL_MULTI_PERFORM:
+  case 134:
     return "Please call curl_multi_perform() soon";
 
-  case CURLM_OK:
+  case 131:
     return "No error";
 
-  case CURLM_BAD_HANDLE:
+  case 136:
     return "Invalid multi handle";
 
-  case CURLM_BAD_EASY_HANDLE:
+  case 137:
     return "Invalid easy handle";
 
-  case CURLM_OUT_OF_MEMORY:
+  case 130:
     return "Out of memory";
 
-  case CURLM_INTERNAL_ERROR:
+  case 133:
     return "Internal error";
 
-  case CURLM_BAD_SOCKET:
+  case 135:
     return "Invalid socket argument";
 
-  case CURLM_UNKNOWN_OPTION:
+  case 128:
     return "Unknown option";
 
-  case CURLM_ADDED_ALREADY:
+  case 138:
     return "The easy handle is already added to a multi handle";
 
-  case CURLM_RECURSIVE_API_CALL:
+  case 129:
     return "API function called from within callback";
 
-  case CURLM_LAST:
+  case 132:
     break;
   }
 
   return "Unknown error";
-#else
-  if(error == CURLM_OK)
-    return "No error";
-  else
-    return "Error";
-#endif
+
+
+
+
+
+
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ushort ;
-typedef  int /*<<< orphan*/  PortAddr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AscGetChipLramData (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AscSetChipLramAddr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ushort ;
+typedef int PortAddr ;
+
+
+ int AscGetChipLramData (int ) ;
+ int AscSetChipLramAddr (int ,int ) ;
 
 __attribute__((used)) static ushort AscReadLramWord(PortAddr iop_base, ushort addr)
 {
-	ushort word_data;
+ ushort word_data;
 
-	AscSetChipLramAddr(iop_base, addr);
-	word_data = AscGetChipLramData(iop_base);
-	return (word_data);
+ AscSetChipLramAddr(iop_base, addr);
+ word_data = AscGetChipLramData(iop_base);
+ return (word_data);
 }

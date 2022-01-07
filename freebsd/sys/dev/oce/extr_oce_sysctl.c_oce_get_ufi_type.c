@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct flash_file_hdr {char* build; int asic_type_rev; } ;
-struct TYPE_6__ {int /*<<< orphan*/  dev; } ;
-typedef  TYPE_1__* POCE_SOFTC ;
+struct TYPE_6__ {int dev; } ;
+typedef TYPE_1__* POCE_SOFTC ;
 
-/* Variables and functions */
- scalar_t__ IS_BE2 (TYPE_1__*) ; 
- scalar_t__ IS_BE3 (TYPE_1__*) ; 
- scalar_t__ IS_SH (TYPE_1__*) ; 
- int UFI_TYPE2 ; 
- int UFI_TYPE3 ; 
- int UFI_TYPE3R ; 
- int UFI_TYPE4 ; 
- int UFI_TYPE4R ; 
- int /*<<< orphan*/  device_printf (int /*<<< orphan*/ ,char*) ; 
+
+ scalar_t__ IS_BE2 (TYPE_1__*) ;
+ scalar_t__ IS_BE3 (TYPE_1__*) ;
+ scalar_t__ IS_SH (TYPE_1__*) ;
+ int UFI_TYPE2 ;
+ int UFI_TYPE3 ;
+ int UFI_TYPE3R ;
+ int UFI_TYPE4 ;
+ int UFI_TYPE4R ;
+ int device_printf (int ,char*) ;
 
 __attribute__((used)) static int oce_get_ufi_type(POCE_SOFTC sc,
                            const struct flash_file_hdr *fhdr)
 {
-        if (fhdr == NULL)
+        if (fhdr == ((void*)0))
                 goto be_get_ufi_exit;
 
         if (IS_SH(sc) && fhdr->build[0] == '4') {

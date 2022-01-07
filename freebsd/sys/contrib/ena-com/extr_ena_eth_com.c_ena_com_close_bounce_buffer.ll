@@ -1,0 +1,118 @@
+; ModuleID = '/home/carl/AnghaBench/freebsd/sys/contrib/ena-com/extr_ena_eth_com.c_ena_com_close_bounce_buffer.c'
+source_filename = "/home/carl/AnghaBench/freebsd/sys/contrib/ena-com/extr_ena_eth_com.c_ena_com_close_bounce_buffer.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.ena_com_io_sq = type { i64, %struct.ena_com_llq_pkt_ctrl, i32, %struct.ena_com_llq_info }
+%struct.ena_com_llq_pkt_ctrl = type { i32, i64, i32 }
+%struct.ena_com_llq_info = type { i32, i32 }
+
+@ENA_ADMIN_PLACEMENT_POLICY_HOST = common dso_local global i64 0, align 8
+@ENA_COM_OK = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.ena_com_io_sq*)* @ena_com_close_bounce_buffer to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @ena_com_close_bounce_buffer(%struct.ena_com_io_sq* %0) #0 {
+  %2 = alloca i32, align 4
+  %3 = alloca %struct.ena_com_io_sq*, align 8
+  %4 = alloca %struct.ena_com_llq_pkt_ctrl*, align 8
+  %5 = alloca %struct.ena_com_llq_info*, align 8
+  %6 = alloca i32, align 4
+  store %struct.ena_com_io_sq* %0, %struct.ena_com_io_sq** %3, align 8
+  %7 = load %struct.ena_com_io_sq*, %struct.ena_com_io_sq** %3, align 8
+  %8 = getelementptr inbounds %struct.ena_com_io_sq, %struct.ena_com_io_sq* %7, i32 0, i32 1
+  store %struct.ena_com_llq_pkt_ctrl* %8, %struct.ena_com_llq_pkt_ctrl** %4, align 8
+  %9 = load %struct.ena_com_io_sq*, %struct.ena_com_io_sq** %3, align 8
+  %10 = getelementptr inbounds %struct.ena_com_io_sq, %struct.ena_com_io_sq* %9, i32 0, i32 3
+  store %struct.ena_com_llq_info* %10, %struct.ena_com_llq_info** %5, align 8
+  %11 = load %struct.ena_com_io_sq*, %struct.ena_com_io_sq** %3, align 8
+  %12 = getelementptr inbounds %struct.ena_com_io_sq, %struct.ena_com_io_sq* %11, i32 0, i32 0
+  %13 = load i64, i64* %12, align 8
+  %14 = load i64, i64* @ENA_ADMIN_PLACEMENT_POLICY_HOST, align 8
+  %15 = icmp eq i64 %13, %14
+  %16 = zext i1 %15 to i32
+  %17 = call i64 @unlikely(i32 %16)
+  %18 = icmp ne i64 %17, 0
+  br i1 %18, label %19, label %21
+
+19:                                               ; preds = %1
+  %20 = load i32, i32* @ENA_COM_OK, align 4
+  store i32 %20, i32* %2, align 4
+  br label %60
+
+21:                                               ; preds = %1
+  %22 = load %struct.ena_com_llq_pkt_ctrl*, %struct.ena_com_llq_pkt_ctrl** %4, align 8
+  %23 = getelementptr inbounds %struct.ena_com_llq_pkt_ctrl, %struct.ena_com_llq_pkt_ctrl* %22, i32 0, i32 1
+  %24 = load i64, i64* %23, align 8
+  %25 = icmp ne i64 %24, 0
+  br i1 %25, label %26, label %51
+
+26:                                               ; preds = %21
+  %27 = load %struct.ena_com_io_sq*, %struct.ena_com_io_sq** %3, align 8
+  %28 = load %struct.ena_com_llq_pkt_ctrl*, %struct.ena_com_llq_pkt_ctrl** %4, align 8
+  %29 = getelementptr inbounds %struct.ena_com_llq_pkt_ctrl, %struct.ena_com_llq_pkt_ctrl* %28, i32 0, i32 2
+  %30 = load i32, i32* %29, align 8
+  %31 = call i32 @ena_com_write_bounce_buffer_to_dev(%struct.ena_com_io_sq* %27, i32 %30)
+  store i32 %31, i32* %6, align 4
+  %32 = load i32, i32* %6, align 4
+  %33 = call i64 @unlikely(i32 %32)
+  %34 = icmp ne i64 %33, 0
+  br i1 %34, label %35, label %37
+
+35:                                               ; preds = %26
+  %36 = load i32, i32* %6, align 4
+  store i32 %36, i32* %2, align 4
+  br label %60
+
+37:                                               ; preds = %26
+  %38 = load %struct.ena_com_io_sq*, %struct.ena_com_io_sq** %3, align 8
+  %39 = getelementptr inbounds %struct.ena_com_io_sq, %struct.ena_com_io_sq* %38, i32 0, i32 2
+  %40 = call i32 @ena_com_get_next_bounce_buffer(i32* %39)
+  %41 = load %struct.ena_com_llq_pkt_ctrl*, %struct.ena_com_llq_pkt_ctrl** %4, align 8
+  %42 = getelementptr inbounds %struct.ena_com_llq_pkt_ctrl, %struct.ena_com_llq_pkt_ctrl* %41, i32 0, i32 2
+  store i32 %40, i32* %42, align 8
+  %43 = load %struct.ena_com_io_sq*, %struct.ena_com_io_sq** %3, align 8
+  %44 = getelementptr inbounds %struct.ena_com_io_sq, %struct.ena_com_io_sq* %43, i32 0, i32 1
+  %45 = getelementptr inbounds %struct.ena_com_llq_pkt_ctrl, %struct.ena_com_llq_pkt_ctrl* %44, i32 0, i32 2
+  %46 = load i32, i32* %45, align 8
+  %47 = load %struct.ena_com_llq_info*, %struct.ena_com_llq_info** %5, align 8
+  %48 = getelementptr inbounds %struct.ena_com_llq_info, %struct.ena_com_llq_info* %47, i32 0, i32 1
+  %49 = load i32, i32* %48, align 4
+  %50 = call i32 @memset(i32 %46, i32 0, i32 %49)
+  br label %51
+
+51:                                               ; preds = %37, %21
+  %52 = load %struct.ena_com_llq_pkt_ctrl*, %struct.ena_com_llq_pkt_ctrl** %4, align 8
+  %53 = getelementptr inbounds %struct.ena_com_llq_pkt_ctrl, %struct.ena_com_llq_pkt_ctrl* %52, i32 0, i32 1
+  store i64 0, i64* %53, align 8
+  %54 = load %struct.ena_com_llq_info*, %struct.ena_com_llq_info** %5, align 8
+  %55 = getelementptr inbounds %struct.ena_com_llq_info, %struct.ena_com_llq_info* %54, i32 0, i32 0
+  %56 = load i32, i32* %55, align 4
+  %57 = load %struct.ena_com_llq_pkt_ctrl*, %struct.ena_com_llq_pkt_ctrl** %4, align 8
+  %58 = getelementptr inbounds %struct.ena_com_llq_pkt_ctrl, %struct.ena_com_llq_pkt_ctrl* %57, i32 0, i32 0
+  store i32 %56, i32* %58, align 8
+  %59 = load i32, i32* @ENA_COM_OK, align 4
+  store i32 %59, i32* %2, align 4
+  br label %60
+
+60:                                               ; preds = %51, %35, %19
+  %61 = load i32, i32* %2, align 4
+  ret i32 %61
+}
+
+declare dso_local i64 @unlikely(i32) #1
+
+declare dso_local i32 @ena_com_write_bounce_buffer_to_dev(%struct.ena_com_io_sq*, i32) #1
+
+declare dso_local i32 @ena_com_get_next_bounce_buffer(i32*) #1
+
+declare dso_local i32 @memset(i32, i32, i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

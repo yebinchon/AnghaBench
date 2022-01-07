@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zInt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int lemonStrlen (char const*) ; 
- int /*<<< orphan*/  lemon_sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  lemon_strcpy (char*,char*) ; 
- scalar_t__ realloc (char*,int) ; 
+
+
+
+typedef int zInt ;
+
+
+ int assert (int) ;
+ int lemonStrlen (char const*) ;
+ int lemon_sprintf (char*,char*,int) ;
+ int lemon_strcpy (char*,char*) ;
+ scalar_t__ realloc (char*,int) ;
 
 char *append_str(const char *zText, int n, int p1, int p2){
   static char empty[1] = { 0 };
@@ -40,7 +40,7 @@ char *append_str(const char *zText, int n, int p1, int p2){
   }
   if( (int) (n+sizeof(zInt)*2+used) >= alloced ){
     alloced = n + sizeof(zInt)*2 + used + 200;
-    z = (char *) realloc(z,  alloced);
+    z = (char *) realloc(z, alloced);
   }
   if( z==0 ) return empty;
   while( n-- > 0 ){

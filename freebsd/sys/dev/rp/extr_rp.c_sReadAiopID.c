@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CONTROLLER_T ;
-typedef  int Byte_t ;
 
-/* Variables and functions */
- int RESET_ALL ; 
- int /*<<< orphan*/  _CHN_STAT0 ; 
- int /*<<< orphan*/  _CMD_REG ; 
- int rp_readaiop1 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rp_writeaiop1 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int CONTROLLER_T ;
+typedef int Byte_t ;
+
+
+ int RESET_ALL ;
+ int _CHN_STAT0 ;
+ int _CMD_REG ;
+ int rp_readaiop1 (int *,int,int ) ;
+ int rp_writeaiop1 (int *,int,int ,int) ;
 
 int sReadAiopID(CONTROLLER_T *CtlP, int aiop)
 {
-   Byte_t AiopID;		/* ID byte from AIOP */
+   Byte_t AiopID;
 
-   rp_writeaiop1(CtlP, aiop, _CMD_REG, RESET_ALL);     /* reset AIOP */
+   rp_writeaiop1(CtlP, aiop, _CMD_REG, RESET_ALL);
    rp_writeaiop1(CtlP, aiop, _CMD_REG, 0x0);
    AiopID = rp_readaiop1(CtlP, aiop, _CHN_STAT0) & 0x07;
    if(AiopID == 0x06)
       return(1);
-   else 			       /* AIOP does not exist */
+   else
       return(-1);
 }

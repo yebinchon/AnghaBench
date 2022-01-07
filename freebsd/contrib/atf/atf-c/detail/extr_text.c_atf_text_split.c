@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  atf_list_t ;
-typedef  int /*<<< orphan*/  atf_error_t ;
-typedef  int /*<<< orphan*/  atf_dynstr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INV (int) ; 
- int /*<<< orphan*/  atf_dynstr_fini_disown (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atf_dynstr_init_raw (int /*<<< orphan*/ *,char const*,int) ; 
- scalar_t__ atf_is_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atf_list_append (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  atf_list_fini (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atf_list_init (int /*<<< orphan*/ *) ; 
- int strlen (char const*) ; 
- char* strstr (char const*,char const*) ; 
+
+
+
+typedef int atf_list_t ;
+typedef int atf_error_t ;
+typedef int atf_dynstr_t ;
+
+
+ int INV (int) ;
+ int atf_dynstr_fini_disown (int *) ;
+ int atf_dynstr_init_raw (int *,char const*,int) ;
+ scalar_t__ atf_is_error (int ) ;
+ int atf_list_append (int *,int ,int) ;
+ int atf_list_fini (int *) ;
+ int atf_list_init (int *) ;
+ int strlen (char const*) ;
+ char* strstr (char const*,char const*) ;
 
 atf_error_t
 atf_text_split(const char *str, const char *delim, atf_list_t *words)
@@ -42,9 +42,9 @@ atf_text_split(const char *str, const char *delim, atf_list_t *words)
     while (iter < end) {
         const char *ptr;
 
-        INV(iter != NULL);
+        INV(iter != ((void*)0));
         ptr = strstr(iter, delim);
-        if (ptr == NULL)
+        if (ptr == ((void*)0))
             ptr = end;
 
         INV(ptr >= iter);
@@ -55,7 +55,7 @@ atf_text_split(const char *str, const char *delim, atf_list_t *words)
             if (atf_is_error(err))
                 goto err_list;
 
-            err = atf_list_append(words, atf_dynstr_fini_disown(&word), true);
+            err = atf_list_append(words, atf_dynstr_fini_disown(&word), 1);
             if (atf_is_error(err))
                 goto err_list;
         }

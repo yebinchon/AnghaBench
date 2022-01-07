@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * lgrpi1_comment; int /*<<< orphan*/ * lgrpi1_name; int /*<<< orphan*/ * lgrmi3_domainandname; int /*<<< orphan*/  sv100_name; } ;
-typedef  TYPE_1__* PSERVER_INFO_100 ;
-typedef  TYPE_1__* PLOCALGROUP_MEMBERS_INFO_3 ;
-typedef  TYPE_1__* PLOCALGROUP_INFO_1 ;
-typedef  scalar_t__ NET_API_STATUS ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  DWORD_PTR ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConPrintf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ConPuts (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ ERROR_OUTOFMEMORY ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- int /*<<< orphan*/  MAX_PREFERRED_LENGTH ; 
- scalar_t__ NERR_Success ; 
- int /*<<< orphan*/  NetApiBufferFree (TYPE_1__*) ; 
- scalar_t__ NetLocalGroupGetInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- scalar_t__ NetLocalGroupGetMembers (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*,int*,int /*<<< orphan*/ *) ; 
- scalar_t__ NetServerGetInfo (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PrintMessageString (int) ; 
- int /*<<< orphan*/  PrintPaddedMessageString (int,int) ; 
- int /*<<< orphan*/  PrintPadding (int,int) ; 
- int /*<<< orphan*/ ** RtlAllocateHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  RtlFreeHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  RtlGetProcessHeap () ; 
- int /*<<< orphan*/  StdOut ; 
- int wcslen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wcsncmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * lgrpi1_comment; int * lgrpi1_name; int * lgrmi3_domainandname; int sv100_name; } ;
+typedef TYPE_1__* PSERVER_INFO_100 ;
+typedef TYPE_1__* PLOCALGROUP_MEMBERS_INFO_3 ;
+typedef TYPE_1__* PLOCALGROUP_INFO_1 ;
+typedef scalar_t__ NET_API_STATUS ;
+typedef int * LPWSTR ;
+typedef int LPBYTE ;
+typedef int INT ;
+typedef int DWORD_PTR ;
+typedef int DWORD ;
+
+
+ int ConPrintf (int ,char*,int *) ;
+ int ConPuts (int ,char*) ;
+ scalar_t__ ERROR_OUTOFMEMORY ;
+ int HEAP_ZERO_MEMORY ;
+ int MAX_PREFERRED_LENGTH ;
+ scalar_t__ NERR_Success ;
+ int NetApiBufferFree (TYPE_1__*) ;
+ scalar_t__ NetLocalGroupGetInfo (int *,int *,int,int *) ;
+ scalar_t__ NetLocalGroupGetMembers (int *,int *,int,int *,int ,int*,int*,int *) ;
+ scalar_t__ NetServerGetInfo (int *,int,int *) ;
+ int PrintMessageString (int) ;
+ int PrintPaddedMessageString (int,int) ;
+ int PrintPadding (int,int) ;
+ int ** RtlAllocateHeap (int ,int ,int) ;
+ int RtlFreeHeap (int ,int ,int **) ;
+ int RtlGetProcessHeap () ;
+ int StdOut ;
+ int wcslen (int ) ;
+ int wcsncmp (int *,int ,int) ;
 
 __attribute__((used)) static
 NET_API_STATUS
 DisplayLocalGroup(LPWSTR lpGroupName)
 {
-    PLOCALGROUP_INFO_1 pGroupInfo = NULL;
-    PLOCALGROUP_MEMBERS_INFO_3 pMembers = NULL;
-    PSERVER_INFO_100 pServer = NULL;
-    LPWSTR *pNames = NULL;
+    PLOCALGROUP_INFO_1 pGroupInfo = ((void*)0);
+    PLOCALGROUP_MEMBERS_INFO_3 pMembers = ((void*)0);
+    PSERVER_INFO_100 pServer = ((void*)0);
+    LPWSTR *pNames = ((void*)0);
     DWORD dwRead = 0;
     DWORD dwTotal = 0;
     DWORD_PTR ResumeHandle = 0;
@@ -59,14 +59,14 @@ DisplayLocalGroup(LPWSTR lpGroupName)
     INT nPaddedLength = 18;
     NET_API_STATUS Status;
 
-    Status = NetLocalGroupGetInfo(NULL,
+    Status = NetLocalGroupGetInfo(((void*)0),
                                   lpGroupName,
                                   1,
                                   (LPBYTE*)&pGroupInfo);
     if (Status != NERR_Success)
         return Status;
 
-    Status = NetLocalGroupGetMembers(NULL,
+    Status = NetLocalGroupGetMembers(((void*)0),
                                      lpGroupName,
                                      3,
                                      (LPBYTE*)&pMembers,
@@ -77,7 +77,7 @@ DisplayLocalGroup(LPWSTR lpGroupName)
     if (Status != NERR_Success)
         goto done;
 
-    Status = NetServerGetInfo(NULL,
+    Status = NetServerGetInfo(((void*)0),
                               100,
                               (LPBYTE*)&pServer);
     if (Status != NERR_Success)
@@ -86,7 +86,7 @@ DisplayLocalGroup(LPWSTR lpGroupName)
     pNames = RtlAllocateHeap(RtlGetProcessHeap(),
                              HEAP_ZERO_MEMORY,
                              dwRead * sizeof(LPWSTR));
-    if (pNames == NULL)
+    if (pNames == ((void*)0))
     {
         Status = ERROR_OUTOFMEMORY;
         goto done;
@@ -122,16 +122,16 @@ DisplayLocalGroup(LPWSTR lpGroupName)
     }
 
 done:
-    if (pNames != NULL)
+    if (pNames != ((void*)0))
         RtlFreeHeap(RtlGetProcessHeap(), 0, pNames);
 
-    if (pServer != NULL)
+    if (pServer != ((void*)0))
         NetApiBufferFree(pServer);
 
-    if (pMembers != NULL)
+    if (pMembers != ((void*)0))
         NetApiBufferFree(pMembers);
 
-    if (pGroupInfo != NULL)
+    if (pGroupInfo != ((void*)0))
         NetApiBufferFree(pGroupInfo);
 
     return Status;

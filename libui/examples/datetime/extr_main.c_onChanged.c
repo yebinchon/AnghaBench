@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uiDateTimePicker ;
+
+
+
+
+typedef int uiDateTimePicker ;
 struct tm {int dummy; } ;
-typedef  int /*<<< orphan*/  buf ;
+typedef int buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  strftime (char*,int,int /*<<< orphan*/ ,struct tm*) ; 
- int /*<<< orphan*/  timeFormat (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uiDateTimePickerTime (int /*<<< orphan*/ *,struct tm*) ; 
- int /*<<< orphan*/  uiLabel (void*) ; 
- int /*<<< orphan*/  uiLabelSetText (int /*<<< orphan*/ ,char*) ; 
+
+ int strftime (char*,int,int ,struct tm*) ;
+ int timeFormat (int *) ;
+ int uiDateTimePickerTime (int *,struct tm*) ;
+ int uiLabel (void*) ;
+ int uiLabelSetText (int ,char*) ;
 
 void onChanged(uiDateTimePicker *d, void *data)
 {
-	struct tm time;
-	char buf[64];
+ struct tm time;
+ char buf[64];
 
-	uiDateTimePickerTime(d, &time);
-	strftime(buf, sizeof (buf), timeFormat(d), &time);
-	uiLabelSetText(uiLabel(data), buf);
+ uiDateTimePickerTime(d, &time);
+ strftime(buf, sizeof (buf), timeFormat(d), &time);
+ uiLabelSetText(uiLabel(data), buf);
 }

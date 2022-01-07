@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  size_t u32 ;
-typedef  scalar_t__ s32 ;
-struct TYPE_2__ {void (* sintf ) (u32) ;void (* mintf ) () ;int /*<<< orphan*/ * scsp_ram; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCSPLOG (char*,size_t,size_t,size_t) ; 
- scalar_t__ SCSP_ATTACK_R ; 
- scalar_t__ SCSP_DECAY_R ; 
- size_t SCSP_ENV_AE ; 
- size_t SCSP_ENV_LB ; 
- size_t SCSP_ENV_LEN ; 
- scalar_t__ SCSP_ENV_MASK ; 
- double SCSP_FREQ ; 
- int SCSP_LFO_LB ; 
- size_t SCSP_LFO_LEN ; 
- size_t SCSP_LFO_MASK ; 
- double pow (int,double) ; 
- size_t rand () ; 
- TYPE_1__ scsp ; 
- size_t* scsp_attack_rate ; 
- int /*<<< orphan*/ * scsp_ccr ; 
- int /*<<< orphan*/ * scsp_dcr ; 
- size_t* scsp_decay_rate ; 
- scalar_t__* scsp_env_table ; 
- int /*<<< orphan*/ * scsp_isr ; 
- size_t* scsp_lfo_noi_e ; 
- size_t* scsp_lfo_noi_f ; 
- size_t* scsp_lfo_sawt_e ; 
- size_t* scsp_lfo_sawt_f ; 
- size_t* scsp_lfo_squa_e ; 
- int* scsp_lfo_squa_f ; 
- void** scsp_lfo_step ; 
- size_t* scsp_lfo_tri_e ; 
- size_t* scsp_lfo_tri_f ; 
- scalar_t__* scsp_null_rate ; 
- int /*<<< orphan*/ * scsp_reg ; 
- int /*<<< orphan*/  scsp_reset () ; 
- void* scsp_round (double) ; 
- int /*<<< orphan*/  scsp_shutdown () ; 
- void** scsp_tl_table ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef size_t u32 ;
+typedef scalar_t__ s32 ;
+struct TYPE_2__ {void (* sintf ) (u32) ;void (* mintf ) () ;int * scsp_ram; } ;
+
+
+ int SCSPLOG (char*,size_t,size_t,size_t) ;
+ scalar_t__ SCSP_ATTACK_R ;
+ scalar_t__ SCSP_DECAY_R ;
+ size_t SCSP_ENV_AE ;
+ size_t SCSP_ENV_LB ;
+ size_t SCSP_ENV_LEN ;
+ scalar_t__ SCSP_ENV_MASK ;
+ double SCSP_FREQ ;
+ int SCSP_LFO_LB ;
+ size_t SCSP_LFO_LEN ;
+ size_t SCSP_LFO_MASK ;
+ double pow (int,double) ;
+ size_t rand () ;
+ TYPE_1__ scsp ;
+ size_t* scsp_attack_rate ;
+ int * scsp_ccr ;
+ int * scsp_dcr ;
+ size_t* scsp_decay_rate ;
+ scalar_t__* scsp_env_table ;
+ int * scsp_isr ;
+ size_t* scsp_lfo_noi_e ;
+ size_t* scsp_lfo_noi_f ;
+ size_t* scsp_lfo_sawt_e ;
+ size_t* scsp_lfo_sawt_f ;
+ size_t* scsp_lfo_squa_e ;
+ int* scsp_lfo_squa_f ;
+ void** scsp_lfo_step ;
+ size_t* scsp_lfo_tri_e ;
+ size_t* scsp_lfo_tri_f ;
+ scalar_t__* scsp_null_rate ;
+ int * scsp_reg ;
+ int scsp_reset () ;
+ void* scsp_round (double) ;
+ int scsp_shutdown () ;
+ void** scsp_tl_table ;
 
 void
 scsp_init (u8 *scsp_ram, void (*sint_hand)(u32), void (*mint_hand)(void))
@@ -71,12 +71,12 @@ scsp_init (u8 *scsp_ram, void (*sint_hand)(u32), void (*mint_hand)(void))
 
   for (i = 0; i < SCSP_ENV_LEN; i++)
     {
-      // Attack Curve (x^7 ?)
+
       x = pow (((double)(SCSP_ENV_MASK - i) / (double)SCSP_ENV_LEN), 7);
       x *= (double)SCSP_ENV_LEN;
       scsp_env_table[i] = SCSP_ENV_MASK - (s32)x;
 
-      // Decay curve (x = linear)
+
       x = pow (((double)i / (double)SCSP_ENV_LEN), 1);
       x *= (double)SCSP_ENV_LEN;
       scsp_env_table[i + SCSP_ENV_LEN] = SCSP_ENV_MASK - (s32)x;
@@ -86,19 +86,19 @@ scsp_init (u8 *scsp_ram, void (*sint_hand)(u32), void (*mint_hand)(void))
     {
       j += 1 << (i >> 2);
 
-      // lfo freq
+
       x = (SCSP_FREQ / 256.0) / (double)j;
 
-      // converting lfo freq in lfo step
+
       scsp_lfo_step[31 - i] = scsp_round(x * ((double)SCSP_LFO_LEN /
                                               (double)SCSP_FREQ) *
                                          (double)(1 << SCSP_LFO_LB));
     }
 
-  // Calculate LFO (modulation) values
+
   for (i = 0; i < SCSP_LFO_LEN; i++)
     {
-      // Envelope modulation
+
       scsp_lfo_sawt_e[i] = SCSP_LFO_MASK - i;
 
       if (i < (SCSP_LFO_LEN / 2))
@@ -113,7 +113,7 @@ scsp_init (u8 *scsp_ram, void (*sint_hand)(u32), void (*mint_hand)(void))
 
       scsp_lfo_noi_e[i] = rand() & SCSP_LFO_MASK;
 
-      // Frequency modulation
+
       scsp_lfo_sawt_f[(i + 512) & SCSP_LFO_MASK] = i - (SCSP_LFO_LEN / 2);
 
       if (i < (SCSP_LFO_LEN / 2))
@@ -140,9 +140,9 @@ scsp_init (u8 *scsp_ram, void (*sint_hand)(u32), void (*mint_hand)(void))
 
   for(i = 0; i < 60; i++)
     {
-      x = 1.0 + ((i & 3) * 0.25);                  // bits 0-1 : x1.00, x1.25, x1.50, x1.75
-      x *= (double)(1 << ((i >> 2)));              // bits 2-5 : shift bits (x2^0 - x2^15)
-      x *= (double)(SCSP_ENV_LEN << SCSP_ENV_LB);  // adjust for table scsp_env_table
+      x = 1.0 + ((i & 3) * 0.25);
+      x *= (double)(1 << ((i >> 2)));
+      x *= (double)(SCSP_ENV_LEN << SCSP_ENV_LB);
 
       scsp_attack_rate[i + 4] = scsp_round(x / (double)SCSP_ATTACK_R);
       scsp_decay_rate[i + 4] = scsp_round(x / (double)SCSP_DECAY_R);

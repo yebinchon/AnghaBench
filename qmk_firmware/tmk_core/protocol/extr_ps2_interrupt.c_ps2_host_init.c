@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PS2_INT_INIT () ; 
- int /*<<< orphan*/  PS2_INT_ON () ; 
- int /*<<< orphan*/  idle () ; 
+ int PS2_INT_INIT () ;
+ int PS2_INT_ON () ;
+ int idle () ;
 
 void ps2_host_init(void) {
     idle();
     PS2_INT_INIT();
     PS2_INT_ON();
-    // POR(150-2000ms) plus BAT(300-500ms) may take 2.5sec([3]p.20)
-    //_delay_ms(2500);
+
+
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int /*<<< orphan*/  Unit ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUS_ERROR_NOT_REFERENCED ; 
- int EUNATCH ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int bus_unit_track_remove_sender (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int sd_bus_error_setf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int sd_bus_reply_method_return (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
+typedef int Unit ;
+
+
+ int BUS_ERROR_NOT_REFERENCED ;
+ int EUNATCH ;
+ int assert (int *) ;
+ int bus_unit_track_remove_sender (int *,int *) ;
+ int sd_bus_error_setf (int *,int ,char*) ;
+ int sd_bus_reply_method_return (int *,int *) ;
 
 int bus_unit_method_unref(sd_bus_message *message, void *userdata, sd_bus_error *error) {
         Unit *u = userdata;
@@ -35,5 +35,5 @@ int bus_unit_method_unref(sd_bus_message *message, void *userdata, sd_bus_error 
         if (r < 0)
                 return r;
 
-        return sd_bus_reply_method_return(message, NULL);
+        return sd_bus_reply_method_return(message, ((void*)0));
 }

@@ -1,37 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct IFD_entry {int type; int count; size_t value; scalar_t__ id; } ;
-typedef  scalar_t__ USHORT ;
-typedef  int /*<<< orphan*/  ULONGLONG ;
-typedef  size_t ULONG ;
-
-/* Variables and functions */
-#define  IFD_ASCII 139 
-#define  IFD_BYTE 138 
-#define  IFD_DOUBLE 137 
-#define  IFD_FLOAT 136 
-#define  IFD_LONG 135 
-#define  IFD_RATIONAL 134 
-#define  IFD_SBYTE 133 
-#define  IFD_SHORT 132 
-#define  IFD_SLONG 131 
-#define  IFD_SRATIONAL 130 
-#define  IFD_SSHORT 129 
-#define  IFD_UNDEFINED 128 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- void* ulong_bswap (size_t) ; 
- int /*<<< orphan*/  ulonglong_bswap (int /*<<< orphan*/ ) ; 
- void* ushort_bswap (scalar_t__) ; 
+typedef scalar_t__ USHORT ;
+typedef int ULONGLONG ;
+typedef size_t ULONG ;
+ int assert (int ) ;
+ void* ulong_bswap (size_t) ;
+ int ulonglong_bswap (int ) ;
+ void* ushort_bswap (scalar_t__) ;
 
 __attribute__((used)) static void byte_swap_ifd_data(char *data)
 {
@@ -49,16 +35,16 @@ __attribute__((used)) static void byte_swap_ifd_data(char *data)
 
         switch (entry->type)
         {
-        case IFD_BYTE:
-        case IFD_SBYTE:
-        case IFD_ASCII:
-        case IFD_UNDEFINED:
+        case 138:
+        case 133:
+        case 139:
+        case 128:
             if (entry->count > 4)
                 entry->value = ulong_bswap(entry->value);
             break;
 
-        case IFD_SHORT:
-        case IFD_SSHORT:
+        case 132:
+        case 129:
             if (entry->count > 2)
             {
                 ULONG j, count = entry->count;
@@ -79,9 +65,9 @@ __attribute__((used)) static void byte_swap_ifd_data(char *data)
             }
             break;
 
-        case IFD_LONG:
-        case IFD_SLONG:
-        case IFD_FLOAT:
+        case 135:
+        case 131:
+        case 136:
             if (entry->count > 1)
             {
                 ULONG j, count = entry->count;
@@ -93,8 +79,8 @@ __attribute__((used)) static void byte_swap_ifd_data(char *data)
             entry->value = ulong_bswap(entry->value);
             break;
 
-        case IFD_RATIONAL:
-        case IFD_SRATIONAL:
+        case 134:
+        case 130:
             {
                 ULONG j;
                 ULONG *ul = (ULONG *)(data_start + entry->value);
@@ -104,7 +90,7 @@ __attribute__((used)) static void byte_swap_ifd_data(char *data)
             entry->value = ulong_bswap(entry->value);
             break;
 
-        case IFD_DOUBLE:
+        case 137:
             {
                 ULONG j;
                 ULONGLONG *ull = (ULONGLONG *)(data_start + entry->value);

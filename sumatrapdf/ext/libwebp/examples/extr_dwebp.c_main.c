@@ -1,107 +1,107 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int WebPOutputFileFormat ;
+
+
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int WebPOutputFileFormat ;
 struct TYPE_12__ {int no_fancy_upsampling; int bypass_filtering; int use_threads; int alpha_dithering_strength; int use_cropping; int use_scaling; int flip; void* scaled_height; void* scaled_width; void* crop_height; void* crop_width; void* crop_top; void* crop_left; void* dithering_strength; } ;
 struct TYPE_15__ {size_t format; scalar_t__ has_alpha; } ;
 struct TYPE_14__ {int width; int height; void* colorspace; } ;
 struct TYPE_13__ {TYPE_1__ options; TYPE_4__ input; TYPE_3__ output; } ;
-typedef  TYPE_2__ WebPDecoderConfig ;
-typedef  TYPE_3__ WebPDecBuffer ;
-typedef  TYPE_4__ WebPBitstreamFeatures ;
-typedef  int /*<<< orphan*/  W_CHAR ;
-typedef  scalar_t__ VP8StatusCode ;
-typedef  int /*<<< orphan*/  Stopwatch ;
+typedef TYPE_2__ WebPDecoderConfig ;
+typedef TYPE_3__ WebPDecBuffer ;
+typedef TYPE_4__ WebPBitstreamFeatures ;
+typedef int W_CHAR ;
+typedef scalar_t__ VP8StatusCode ;
+typedef int Stopwatch ;
 
-/* Variables and functions */
-#define  ALPHA_PLANE_ONLY 148 
-#define  ARGB 147 
- int /*<<< orphan*/ * AllocateExternalBuffer (TYPE_2__*,int,int) ; 
-#define  Argb 146 
-#define  BGR 145 
-#define  BGRA 144 
-#define  BMP 143 
- scalar_t__ DecodeWebP (int /*<<< orphan*/  const*,size_t,TYPE_2__*) ; 
- scalar_t__ DecodeWebPIncremental (int /*<<< orphan*/  const*,size_t,TYPE_2__*) ; 
- void* ExUtilGetInt (char const*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  FREE_WARGV_AND_RETURN (int) ; 
- scalar_t__ GET_WARGV (char const**,int) ; 
- int /*<<< orphan*/  Help () ; 
- int /*<<< orphan*/  INIT_WARGV (int,char const**) ; 
- int /*<<< orphan*/  LoadWebP (char const*,int /*<<< orphan*/  const**,size_t*,TYPE_4__* const) ; 
- void* MODE_ARGB ; 
- void* MODE_Argb ; 
- void* MODE_BGR ; 
- void* MODE_BGRA ; 
- void* MODE_RGB ; 
- void* MODE_RGBA ; 
- void* MODE_RGBA_4444 ; 
- void* MODE_RGB_565 ; 
- void* MODE_YUV ; 
- void* MODE_YUVA ; 
- void* MODE_bgrA ; 
- void* MODE_rgbA ; 
- void* MODE_rgbA_4444 ; 
-#define  PAM 142 
-#define  PGM 141 
-#define  PNG 140 
-#define  PPM 139 
- int /*<<< orphan*/  PrintWebPError (char const*,scalar_t__) ; 
-#define  RAW_YUV 138 
-#define  RGB 137 
-#define  RGBA 136 
-#define  RGBA_4444 135 
-#define  RGB_565 134 
- int SaveOutput (TYPE_3__* const,int,char const*) ; 
- double StopwatchReadAndReset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  StopwatchReset (int /*<<< orphan*/ *) ; 
-#define  TIFF 133 
- int /*<<< orphan*/ * VP8GetCPUInfo ; 
- scalar_t__ VP8_STATUS_OK ; 
- int /*<<< orphan*/  WFPRINTF (int /*<<< orphan*/ ,char*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  WebPFree (void*) ; 
- int /*<<< orphan*/  WebPFreeDecBuffer (TYPE_3__* const) ; 
- int WebPGetDecoderVersion () ; 
- int /*<<< orphan*/  WebPInitDecoderConfig (TYPE_2__*) ; 
-#define  YUV 132 
-#define  YUVA 131 
-#define  bgrA 130 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- char** kFormatType ; 
- int /*<<< orphan*/  printf (char*,int const,int const,int const) ; 
- int quiet ; 
-#define  rgbA 129 
-#define  rgbA_4444 128 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- int verbose ; 
+
+
+
+ int * AllocateExternalBuffer (TYPE_2__*,int,int) ;
+
+
+
+
+ scalar_t__ DecodeWebP (int const*,size_t,TYPE_2__*) ;
+ scalar_t__ DecodeWebPIncremental (int const*,size_t,TYPE_2__*) ;
+ void* ExUtilGetInt (char const*,int ,int*) ;
+ int FREE_WARGV_AND_RETURN (int) ;
+ scalar_t__ GET_WARGV (char const**,int) ;
+ int Help () ;
+ int INIT_WARGV (int,char const**) ;
+ int LoadWebP (char const*,int const**,size_t*,TYPE_4__* const) ;
+ void* MODE_ARGB ;
+ void* MODE_Argb ;
+ void* MODE_BGR ;
+ void* MODE_BGRA ;
+ void* MODE_RGB ;
+ void* MODE_RGBA ;
+ void* MODE_RGBA_4444 ;
+ void* MODE_RGB_565 ;
+ void* MODE_YUV ;
+ void* MODE_YUVA ;
+ void* MODE_bgrA ;
+ void* MODE_rgbA ;
+ void* MODE_rgbA_4444 ;
+
+
+
+
+ int PrintWebPError (char const*,scalar_t__) ;
+
+
+
+
+
+ int SaveOutput (TYPE_3__* const,int,char const*) ;
+ double StopwatchReadAndReset (int *) ;
+ int StopwatchReset (int *) ;
+
+ int * VP8GetCPUInfo ;
+ scalar_t__ VP8_STATUS_OK ;
+ int WFPRINTF (int ,char*,int const*) ;
+ int WebPFree (void*) ;
+ int WebPFreeDecBuffer (TYPE_3__* const) ;
+ int WebPGetDecoderVersion () ;
+ int WebPInitDecoderConfig (TYPE_2__*) ;
+
+
+
+ int fprintf (int ,char*,...) ;
+ char** kFormatType ;
+ int printf (char*,int const,int const,int const) ;
+ int quiet ;
+
+
+ int stderr ;
+ int strcmp (char const*,char*) ;
+ int verbose ;
 
 int main(int argc, const char* argv[]) {
   int ok = 0;
-  const char* in_file = NULL;
-  const char* out_file = NULL;
+  const char* in_file = ((void*)0);
+  const char* out_file = ((void*)0);
 
   WebPDecoderConfig config;
   WebPDecBuffer* const output_buffer = &config.output;
   WebPBitstreamFeatures* const bitstream = &config.input;
-  WebPOutputFileFormat format = PNG;
-  uint8_t* external_buffer = NULL;
+  WebPOutputFileFormat format = 140;
+  uint8_t* external_buffer = ((void*)0);
   int use_external_memory = 0;
-  const uint8_t* data = NULL;
+  const uint8_t* data = ((void*)0);
 
   int incremental = 0;
   int c;
@@ -121,19 +121,19 @@ int main(int argc, const char* argv[]) {
     } else if (!strcmp(argv[c], "-o") && c < argc - 1) {
       out_file = (const char*)GET_WARGV(argv, ++c);
     } else if (!strcmp(argv[c], "-alpha")) {
-      format = ALPHA_PLANE_ONLY;
+      format = 148;
     } else if (!strcmp(argv[c], "-nofancy")) {
       config.options.no_fancy_upsampling = 1;
     } else if (!strcmp(argv[c], "-nofilter")) {
       config.options.bypass_filtering = 1;
     } else if (!strcmp(argv[c], "-pam")) {
-      format = PAM;
+      format = 142;
     } else if (!strcmp(argv[c], "-ppm")) {
-      format = PPM;
+      format = 139;
     } else if (!strcmp(argv[c], "-bmp")) {
-      format = BMP;
+      format = 143;
     } else if (!strcmp(argv[c], "-tiff")) {
-      format = TIFF;
+      format = 133;
     } else if (!strcmp(argv[c], "-quiet")) {
       quiet = 1;
     } else if (!strcmp(argv[c], "-version")) {
@@ -142,24 +142,24 @@ int main(int argc, const char* argv[]) {
              (version >> 16) & 0xff, (version >> 8) & 0xff, version & 0xff);
       FREE_WARGV_AND_RETURN(0);
     } else if (!strcmp(argv[c], "-pgm")) {
-      format = PGM;
+      format = 141;
     } else if (!strcmp(argv[c], "-yuv")) {
-      format = RAW_YUV;
+      format = 138;
     } else if (!strcmp(argv[c], "-pixel_format") && c < argc - 1) {
       const char* const fmt = argv[++c];
-      if      (!strcmp(fmt, "RGB"))  format = RGB;
-      else if (!strcmp(fmt, "RGBA")) format = RGBA;
-      else if (!strcmp(fmt, "BGR"))  format = BGR;
-      else if (!strcmp(fmt, "BGRA")) format = BGRA;
-      else if (!strcmp(fmt, "ARGB")) format = ARGB;
-      else if (!strcmp(fmt, "RGBA_4444")) format = RGBA_4444;
-      else if (!strcmp(fmt, "RGB_565")) format = RGB_565;
-      else if (!strcmp(fmt, "rgbA")) format = rgbA;
-      else if (!strcmp(fmt, "bgrA")) format = bgrA;
-      else if (!strcmp(fmt, "Argb")) format = Argb;
-      else if (!strcmp(fmt, "rgbA_4444")) format = rgbA_4444;
-      else if (!strcmp(fmt, "YUV"))  format = YUV;
-      else if (!strcmp(fmt, "YUVA")) format = YUVA;
+      if (!strcmp(fmt, "RGB")) format = 137;
+      else if (!strcmp(fmt, "RGBA")) format = 136;
+      else if (!strcmp(fmt, "BGR")) format = 145;
+      else if (!strcmp(fmt, "BGRA")) format = 144;
+      else if (!strcmp(fmt, "ARGB")) format = 147;
+      else if (!strcmp(fmt, "RGBA_4444")) format = 135;
+      else if (!strcmp(fmt, "RGB_565")) format = 134;
+      else if (!strcmp(fmt, "rgbA")) format = 129;
+      else if (!strcmp(fmt, "bgrA")) format = 130;
+      else if (!strcmp(fmt, "Argb")) format = 146;
+      else if (!strcmp(fmt, "rgbA_4444")) format = 128;
+      else if (!strcmp(fmt, "YUV")) format = 132;
+      else if (!strcmp(fmt, "YUVA")) format = 131;
       else {
         fprintf(stderr, "Can't parse pixel_format %s\n", fmt);
         parse_error = 1;
@@ -181,23 +181,23 @@ int main(int argc, const char* argv[]) {
           ExUtilGetInt(argv[++c], 0, &parse_error);
     } else if (!strcmp(argv[c], "-crop") && c < argc - 4) {
       config.options.use_cropping = 1;
-      config.options.crop_left   = ExUtilGetInt(argv[++c], 0, &parse_error);
-      config.options.crop_top    = ExUtilGetInt(argv[++c], 0, &parse_error);
-      config.options.crop_width  = ExUtilGetInt(argv[++c], 0, &parse_error);
+      config.options.crop_left = ExUtilGetInt(argv[++c], 0, &parse_error);
+      config.options.crop_top = ExUtilGetInt(argv[++c], 0, &parse_error);
+      config.options.crop_width = ExUtilGetInt(argv[++c], 0, &parse_error);
       config.options.crop_height = ExUtilGetInt(argv[++c], 0, &parse_error);
     } else if ((!strcmp(argv[c], "-scale") || !strcmp(argv[c], "-resize")) &&
-               c < argc - 2) {  // '-scale' is left for compatibility
+               c < argc - 2) {
       config.options.use_scaling = 1;
-      config.options.scaled_width  = ExUtilGetInt(argv[++c], 0, &parse_error);
+      config.options.scaled_width = ExUtilGetInt(argv[++c], 0, &parse_error);
       config.options.scaled_height = ExUtilGetInt(argv[++c], 0, &parse_error);
     } else if (!strcmp(argv[c], "-flip")) {
       config.options.flip = 1;
     } else if (!strcmp(argv[c], "-v")) {
       verbose = 1;
-#ifndef WEBP_DLL
+
     } else if (!strcmp(argv[c], "-noasm")) {
-      VP8GetCPUInfo = NULL;
-#endif
+      VP8GetCPUInfo = ((void*)0);
+
     } else if (!strcmp(argv[c], "-incremental")) {
       incremental = 1;
     } else if (!strcmp(argv[c], "--")) {
@@ -217,7 +217,7 @@ int main(int argc, const char* argv[]) {
     }
   }
 
-  if (in_file == NULL) {
+  if (in_file == ((void*)0)) {
     fprintf(stderr, "missing input file!!\n");
     Help();
     FREE_WARGV_AND_RETURN(-1);
@@ -233,53 +233,53 @@ int main(int argc, const char* argv[]) {
     }
 
     switch (format) {
-      case PNG:
-#ifdef HAVE_WINCODEC_H
-        output_buffer->colorspace = bitstream->has_alpha ? MODE_BGRA : MODE_BGR;
-#else
+      case 140:
+
+
+
         output_buffer->colorspace = bitstream->has_alpha ? MODE_RGBA : MODE_RGB;
-#endif
+
         break;
-      case PAM:
+      case 142:
         output_buffer->colorspace = MODE_RGBA;
         break;
-      case PPM:
-        output_buffer->colorspace = MODE_RGB;  // drops alpha for PPM
+      case 139:
+        output_buffer->colorspace = MODE_RGB;
         break;
-      case BMP:
+      case 143:
         output_buffer->colorspace = bitstream->has_alpha ? MODE_BGRA : MODE_BGR;
         break;
-      case TIFF:
+      case 133:
         output_buffer->colorspace = bitstream->has_alpha ? MODE_RGBA : MODE_RGB;
         break;
-      case PGM:
-      case RAW_YUV:
+      case 141:
+      case 138:
         output_buffer->colorspace = bitstream->has_alpha ? MODE_YUVA : MODE_YUV;
         break;
-      case ALPHA_PLANE_ONLY:
+      case 148:
         output_buffer->colorspace = MODE_YUVA;
         break;
-      // forced modes:
-      case RGB: output_buffer->colorspace = MODE_RGB; break;
-      case RGBA: output_buffer->colorspace = MODE_RGBA; break;
-      case BGR: output_buffer->colorspace = MODE_BGR; break;
-      case BGRA: output_buffer->colorspace = MODE_BGRA; break;
-      case ARGB: output_buffer->colorspace = MODE_ARGB; break;
-      case RGBA_4444: output_buffer->colorspace = MODE_RGBA_4444; break;
-      case RGB_565: output_buffer->colorspace = MODE_RGB_565; break;
-      case rgbA: output_buffer->colorspace = MODE_rgbA; break;
-      case bgrA: output_buffer->colorspace = MODE_bgrA; break;
-      case Argb: output_buffer->colorspace = MODE_Argb; break;
-      case rgbA_4444: output_buffer->colorspace = MODE_rgbA_4444; break;
-      case YUV: output_buffer->colorspace = MODE_YUV; break;
-      case YUVA: output_buffer->colorspace = MODE_YUVA; break;
+
+      case 137: output_buffer->colorspace = MODE_RGB; break;
+      case 136: output_buffer->colorspace = MODE_RGBA; break;
+      case 145: output_buffer->colorspace = MODE_BGR; break;
+      case 144: output_buffer->colorspace = MODE_BGRA; break;
+      case 147: output_buffer->colorspace = MODE_ARGB; break;
+      case 135: output_buffer->colorspace = MODE_RGBA_4444; break;
+      case 134: output_buffer->colorspace = MODE_RGB_565; break;
+      case 129: output_buffer->colorspace = MODE_rgbA; break;
+      case 130: output_buffer->colorspace = MODE_bgrA; break;
+      case 146: output_buffer->colorspace = MODE_Argb; break;
+      case 128: output_buffer->colorspace = MODE_rgbA_4444; break;
+      case 132: output_buffer->colorspace = MODE_YUV; break;
+      case 131: output_buffer->colorspace = MODE_YUVA; break;
       default: goto Exit;
     }
 
-    if (use_external_memory > 0 && format >= RGB) {
+    if (use_external_memory > 0 && format >= 137) {
       external_buffer = AllocateExternalBuffer(&config, format,
                                                use_external_memory);
-      if (external_buffer == NULL) goto Exit;
+      if (external_buffer == ((void*)0)) goto Exit;
     }
 
     {
@@ -304,7 +304,7 @@ int main(int argc, const char* argv[]) {
     }
   }
 
-  if (out_file != NULL) {
+  if (out_file != ((void*)0)) {
     if (!quiet) {
       WFPRINTF(stderr, "Decoded %s.", (const W_CHAR*)in_file);
       fprintf(stderr, " Dimensions: %d x %d %s. Format: %s. Now saving...\n",

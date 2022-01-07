@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SIG_DFL ; 
- int /*<<< orphan*/  kwrite (int,char*,int) ; 
- int /*<<< orphan*/  print_backtrace () ; 
- int /*<<< orphan*/  raise (int const) ; 
- int /*<<< orphan*/  signal (int const,int /*<<< orphan*/ ) ; 
+ int SIG_DFL ;
+ int kwrite (int,char*,int) ;
+ int print_backtrace () ;
+ int raise (int const) ;
+ int signal (int const,int ) ;
 
 void sigabrt_child_handler (const int sig) {
   kwrite (2, "SIGABRT caught, terminating program\n", 36);

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
-struct TYPE_6__ {int /*<<< orphan*/  Height; int /*<<< orphan*/  Width; int /*<<< orphan*/  Y; int /*<<< orphan*/  X; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_6__ {int Height; int Width; int Y; int X; } ;
 struct TYPE_5__ {double member_0; double member_1; double member_2; double member_3; } ;
-typedef  TYPE_1__ RectF ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int GpStatus ;
-typedef  int /*<<< orphan*/  GpRegion ;
-typedef  TYPE_2__ GpRectF ;
-typedef  int /*<<< orphan*/  GpMatrix ;
+typedef TYPE_1__ RectF ;
+typedef int INT ;
+typedef int GpStatus ;
+typedef int GpRegion ;
+typedef TYPE_2__ GpRectF ;
+typedef int GpMatrix ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CombineModeExclude ; 
- int GdipCombineRegionRect (int /*<<< orphan*/ *,TYPE_1__ const*,int /*<<< orphan*/ ) ; 
- int GdipCreateMatrix (int /*<<< orphan*/ **) ; 
- int GdipCreateRegion (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteMatrix (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeleteRegion (int /*<<< orphan*/ *) ; 
- int GdipGetRegionScans (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int GdipGetRegionScansCount (int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *) ; 
- int Ok ; 
- int /*<<< orphan*/  expect (int,int) ; 
- int /*<<< orphan*/  expectf (double,int /*<<< orphan*/ ) ; 
+
+ int CombineModeExclude ;
+ int GdipCombineRegionRect (int *,TYPE_1__ const*,int ) ;
+ int GdipCreateMatrix (int **) ;
+ int GdipCreateRegion (int **) ;
+ int GdipDeleteMatrix (int *) ;
+ int GdipDeleteRegion (int *) ;
+ int GdipGetRegionScans (int *,TYPE_2__*,int *,int *) ;
+ int GdipGetRegionScansCount (int *,int*,int *) ;
+ int Ok ;
+ int expect (int,int) ;
+ int expectf (double,int ) ;
 
 __attribute__((used)) static void test_excludeinfinite(void)
 {

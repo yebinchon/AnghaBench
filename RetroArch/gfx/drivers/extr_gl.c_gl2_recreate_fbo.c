@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct video_fbo_rect {int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
-typedef  int /*<<< orphan*/  GLuint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  RARCH_GL_COLOR_ATTACHMENT0 ; 
- int /*<<< orphan*/  RARCH_GL_FORMAT32 ; 
- int /*<<< orphan*/  RARCH_GL_FRAMEBUFFER ; 
- scalar_t__ RARCH_GL_FRAMEBUFFER_COMPLETE ; 
- int /*<<< orphan*/  RARCH_GL_INTERNAL_FORMAT32 ; 
- int /*<<< orphan*/  RARCH_GL_TEXTURE_TYPE32 ; 
- int /*<<< orphan*/  RARCH_WARN (char*) ; 
- int /*<<< orphan*/  gl2_bind_fb (int /*<<< orphan*/ ) ; 
- scalar_t__ gl2_check_fb_status (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gl2_fb_texture_2d (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gl2_load_texture_image (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glBindTexture (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDeleteTextures (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glGenTextures (int,int /*<<< orphan*/ *) ; 
+
+
+
+struct video_fbo_rect {int height; int width; } ;
+typedef int GLuint ;
+
+
+ int GL_TEXTURE_2D ;
+ int RARCH_GL_COLOR_ATTACHMENT0 ;
+ int RARCH_GL_FORMAT32 ;
+ int RARCH_GL_FRAMEBUFFER ;
+ scalar_t__ RARCH_GL_FRAMEBUFFER_COMPLETE ;
+ int RARCH_GL_INTERNAL_FORMAT32 ;
+ int RARCH_GL_TEXTURE_TYPE32 ;
+ int RARCH_WARN (char*) ;
+ int gl2_bind_fb (int ) ;
+ scalar_t__ gl2_check_fb_status (int ) ;
+ int gl2_fb_texture_2d (int ,int ,int ,int ,int ) ;
+ int gl2_load_texture_image (int ,int ,int ,int ,int ,int ,int ,int ,int *) ;
+ int glBindTexture (int ,int ) ;
+ int glDeleteTextures (int,int *) ;
+ int glGenTextures (int,int *) ;
 
 __attribute__((used)) static bool gl2_recreate_fbo(
       struct video_fbo_rect *fbo_rect,
@@ -45,7 +45,7 @@ __attribute__((used)) static bool gl2_recreate_fbo(
          fbo_rect->width,
          fbo_rect->height,
          0, RARCH_GL_TEXTURE_TYPE32,
-         RARCH_GL_FORMAT32, NULL);
+         RARCH_GL_FORMAT32, ((void*)0));
 
    gl2_fb_texture_2d(RARCH_GL_FRAMEBUFFER,
          RARCH_GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D,
@@ -53,8 +53,8 @@ __attribute__((used)) static bool gl2_recreate_fbo(
 
    if (gl2_check_fb_status(RARCH_GL_FRAMEBUFFER)
          == RARCH_GL_FRAMEBUFFER_COMPLETE)
-      return true;
+      return 1;
 
    RARCH_WARN("Failed to reinitialize FBO texture.\n");
-   return false;
+   return 0;
 }

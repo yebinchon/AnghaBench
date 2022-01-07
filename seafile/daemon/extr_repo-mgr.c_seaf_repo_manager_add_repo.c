@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3 ;
-typedef  int /*<<< orphan*/  sql ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int sqlite3 ;
+typedef int sql ;
 struct TYPE_10__ {char* id; TYPE_2__* manager; } ;
 struct TYPE_9__ {TYPE_1__* priv; } ;
-struct TYPE_8__ {int /*<<< orphan*/  lock; int /*<<< orphan*/  repo_hash; int /*<<< orphan*/  db_lock; int /*<<< orphan*/ * db; } ;
-typedef  TYPE_2__ SeafRepoManager ;
-typedef  TYPE_3__ SeafRepo ;
+struct TYPE_8__ {int lock; int repo_hash; int db_lock; int * db; } ;
+typedef TYPE_2__ SeafRepoManager ;
+typedef TYPE_3__ SeafRepo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  g_hash_table_insert (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  g_strdup (char*) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_rwlock_unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_rwlock_wrlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  seaf_repo_manager_remove_garbage_repo (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  seaf_warning (char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
- int /*<<< orphan*/  sqlite_query_exec (int /*<<< orphan*/ *,char*) ; 
+
+ int g_hash_table_insert (int ,int ,TYPE_3__*) ;
+ int g_strdup (char*) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int pthread_rwlock_unlock (int *) ;
+ scalar_t__ pthread_rwlock_wrlock (int *) ;
+ int seaf_repo_manager_remove_garbage_repo (TYPE_2__*,char*) ;
+ int seaf_warning (char*) ;
+ int snprintf (char*,int,char*,char*) ;
+ int sqlite_query_exec (int *,char*) ;
 
 int
 seaf_repo_manager_add_repo (SeafRepoManager *manager,
@@ -47,9 +47,9 @@ seaf_repo_manager_add_repo (SeafRepoManager *manager,
 
     pthread_mutex_unlock (&manager->priv->db_lock);
 
-    /* There may be a "deletion record" for this repo when it was deleted
-     * last time.
-     */
+
+
+
     seaf_repo_manager_remove_garbage_repo (manager, repo->id);
 
     repo->manager = manager;

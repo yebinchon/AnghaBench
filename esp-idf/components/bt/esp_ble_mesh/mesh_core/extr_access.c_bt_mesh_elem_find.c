@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t u16_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef size_t u16_t ;
 struct bt_mesh_elem {size_t addr; } ;
 struct TYPE_2__ {size_t elem_count; struct bt_mesh_elem* elem; } ;
 
-/* Variables and functions */
- scalar_t__ BLE_MESH_ADDR_IS_UNICAST (size_t) ; 
- scalar_t__ bt_mesh_elem_find_group (struct bt_mesh_elem*,size_t) ; 
- TYPE_1__* dev_comp ; 
+
+ scalar_t__ BLE_MESH_ADDR_IS_UNICAST (size_t) ;
+ scalar_t__ bt_mesh_elem_find_group (struct bt_mesh_elem*,size_t) ;
+ TYPE_1__* dev_comp ;
 
 struct bt_mesh_elem *bt_mesh_elem_find(u16_t addr)
 {
@@ -29,7 +29,7 @@ struct bt_mesh_elem *bt_mesh_elem_find(u16_t addr)
         if (index < dev_comp->elem_count) {
             return &dev_comp->elem[index];
         } else {
-            return NULL;
+            return ((void*)0);
         }
     }
 
@@ -41,5 +41,5 @@ struct bt_mesh_elem *bt_mesh_elem_find(u16_t addr)
         }
     }
 
-    return NULL;
+    return ((void*)0);
 }

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct connection {int dummy; } ;
 struct TYPE_4__ {char* text; } ;
-typedef  TYPE_1__ message ;
+typedef TYPE_1__ message ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GET_LOG ; 
- int /*<<< orphan*/  INIT ; 
- TYPE_1__* MESSAGE (struct connection*) ; 
- int /*<<< orphan*/  RETURN (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SET_LOG_VERBOSITY ; 
- scalar_t__ STATS_BUFF_SIZE ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- scalar_t__ buf ; 
- int /*<<< orphan*/  eat_at (char const*,int,char**,int*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,int) ; 
- int /*<<< orphan*/  get ; 
- int get_objs (int,int,int,scalar_t__) ; 
- int get_objs_hints (int,int,int,char*,scalar_t__) ; 
- int /*<<< orphan*/  hst (char*,char const*,int) ; 
- int magus_prepare_stats () ; 
- scalar_t__ msg_verify (TYPE_1__*,int) ; 
- int prepare_stats (struct connection*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  return_one_key (struct connection*,char const*,scalar_t__,int) ; 
- int sscanf (char*,char*,int*,int*,...) ; 
- scalar_t__ stats_buff ; 
- int /*<<< orphan*/  stderr ; 
- int strlen (scalar_t__) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- int verbosity ; 
+
+ int GET_LOG ;
+ int INIT ;
+ TYPE_1__* MESSAGE (struct connection*) ;
+ int RETURN (int ,int) ;
+ int SET_LOG_VERBOSITY ;
+ scalar_t__ STATS_BUFF_SIZE ;
+ int assert (int ) ;
+ scalar_t__ buf ;
+ int eat_at (char const*,int,char**,int*) ;
+ int fprintf (int ,char*,char const*,int) ;
+ int get ;
+ int get_objs (int,int,int,scalar_t__) ;
+ int get_objs_hints (int,int,int,char*,scalar_t__) ;
+ int hst (char*,char const*,int) ;
+ int magus_prepare_stats () ;
+ scalar_t__ msg_verify (TYPE_1__*,int) ;
+ int prepare_stats (struct connection*,scalar_t__,scalar_t__) ;
+ int return_one_key (struct connection*,char const*,scalar_t__,int) ;
+ int sscanf (char*,char*,int*,int*,...) ;
+ scalar_t__ stats_buff ;
+ int stderr ;
+ int strlen (scalar_t__) ;
+ int strncmp (char*,char*,int) ;
+ int verbosity ;
 
 int memcache_try_get (struct connection *c, const char *old_key, int old_key_len) {
   hst ("memcache_get: key='%s', key_len=%d\n", old_key, old_key_len);
@@ -80,7 +80,7 @@ int memcache_try_get (struct connection *c, const char *old_key, int old_key_len
     int cur = 0;
     cur_add = 0;
 
-    assert (s != NULL);
+    assert (s != ((void*)0));
 
     if (sscanf (s, "%d,%d,%d%n", &user_id, &type, &fn, &cur_add) != 3 || fn <= 0) {
       RETURN(get, 0);

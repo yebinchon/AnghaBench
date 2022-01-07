@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int Protocol; int /*<<< orphan*/  NewSockConnectEvent; int /*<<< orphan*/  NewSockQueue; } ;
-struct TYPE_6__ {scalar_t__ Type; int ListenMode; int /*<<< orphan*/  UnderlayProtocol; scalar_t__ CancelAccept; scalar_t__ Disconnecting; TYPE_2__* R_UDP_Stack; } ;
-typedef  TYPE_1__ SOCK ;
-typedef  TYPE_2__ RUDP_STACK ;
 
-/* Variables and functions */
- TYPE_1__* GetNextWithLock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INFINITE ; 
-#define  RUDP_PROTOCOL_DNS 130 
-#define  RUDP_PROTOCOL_ICMP 129 
-#define  RUDP_PROTOCOL_UDP 128 
- scalar_t__ SOCK_RUDP_LISTEN ; 
- int /*<<< orphan*/  SOCK_UNDERLAY_DNS ; 
- int /*<<< orphan*/  SOCK_UNDERLAY_ICMP ; 
- int /*<<< orphan*/  SOCK_UNDERLAY_NAT_T ; 
- int /*<<< orphan*/  StrCpy (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Wait (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int Protocol; int NewSockConnectEvent; int NewSockQueue; } ;
+struct TYPE_6__ {scalar_t__ Type; int ListenMode; int UnderlayProtocol; scalar_t__ CancelAccept; scalar_t__ Disconnecting; TYPE_2__* R_UDP_Stack; } ;
+typedef TYPE_1__ SOCK ;
+typedef TYPE_2__ RUDP_STACK ;
+
+
+ TYPE_1__* GetNextWithLock (int ) ;
+ int INFINITE ;
+
+
+
+ scalar_t__ SOCK_RUDP_LISTEN ;
+ int SOCK_UNDERLAY_DNS ;
+ int SOCK_UNDERLAY_ICMP ;
+ int SOCK_UNDERLAY_NAT_T ;
+ int StrCpy (int ,int,int ) ;
+ int Wait (int ,int ) ;
 
 SOCK *AcceptRUDP(SOCK *s)
 {
-	// Validate arguments
-	if (s == NULL || s->Type != SOCK_RUDP_LISTEN || s->ListenMode == false)
-	{
-		return NULL;
-	}
 
-	while (true)
-	{
-		RUDP_STACK *r = s->R_UDP_Stack;
-		SOCK *ret;
+ if (s == ((void*)0) || s->Type != SOCK_RUDP_LISTEN || s->ListenMode == 0)
+ {
+  return ((void*)0);
+ }
 
-		if (s->Disconnecting || s->CancelAccept)
-		{
-			return NULL;
-		}
+ while (1)
+ {
+  RUDP_STACK *r = s->R_UDP_Stack;
+  SOCK *ret;
 
-		ret = GetNextWithLock(r->NewSockQueue);
+  if (s->Disconnecting || s->CancelAccept)
+  {
+   return ((void*)0);
+  }
 
-		if (ret != NULL)
-		{
-			switch (r->Protocol)
-			{
-			case RUDP_PROTOCOL_UDP:
-				StrCpy(ret->UnderlayProtocol, sizeof(ret->UnderlayProtocol), SOCK_UNDERLAY_NAT_T);
-				break;
+  ret = GetNextWithLock(r->NewSockQueue);
 
-			case RUDP_PROTOCOL_DNS:
-				StrCpy(ret->UnderlayProtocol, sizeof(ret->UnderlayProtocol), SOCK_UNDERLAY_DNS);
-				break;
+  if (ret != ((void*)0))
+  {
+   switch (r->Protocol)
+   {
+   case 128:
+    StrCpy(ret->UnderlayProtocol, sizeof(ret->UnderlayProtocol), SOCK_UNDERLAY_NAT_T);
+    break;
 
-			case RUDP_PROTOCOL_ICMP:
-				StrCpy(ret->UnderlayProtocol, sizeof(ret->UnderlayProtocol), SOCK_UNDERLAY_ICMP);
-				break;
-			}
+   case 130:
+    StrCpy(ret->UnderlayProtocol, sizeof(ret->UnderlayProtocol), SOCK_UNDERLAY_DNS);
+    break;
 
-			return ret;
-		}
+   case 129:
+    StrCpy(ret->UnderlayProtocol, sizeof(ret->UnderlayProtocol), SOCK_UNDERLAY_ICMP);
+    break;
+   }
 
-		Wait(r->NewSockConnectEvent, INFINITE);
-	}
+   return ret;
+  }
+
+  Wait(r->NewSockConnectEvent, INFINITE);
+ }
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EVP_MD ;
-typedef  int /*<<< orphan*/  EC_KEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EC_KEY_get0_group (int /*<<< orphan*/  const*) ; 
- int EVP_MD_size (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  SM2_F_SM2_PLAINTEXT_SIZE ; 
- int /*<<< orphan*/  SM2_R_INVALID_DIGEST ; 
- int /*<<< orphan*/  SM2_R_INVALID_ENCODING ; 
- int /*<<< orphan*/  SM2_R_INVALID_FIELD ; 
- int /*<<< orphan*/  SM2err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t ec_field_size (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int EVP_MD ;
+typedef int EC_KEY ;
+
+
+ int EC_KEY_get0_group (int const*) ;
+ int EVP_MD_size (int const*) ;
+ int SM2_F_SM2_PLAINTEXT_SIZE ;
+ int SM2_R_INVALID_DIGEST ;
+ int SM2_R_INVALID_ENCODING ;
+ int SM2_R_INVALID_FIELD ;
+ int SM2err (int ,int ) ;
+ size_t ec_field_size (int ) ;
 
 int sm2_plaintext_size(const EC_KEY *key, const EVP_MD *digest, size_t msg_len,
                        size_t *pt_size)

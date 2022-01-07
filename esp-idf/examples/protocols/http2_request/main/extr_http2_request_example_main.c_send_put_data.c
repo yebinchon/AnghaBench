@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+
+
+typedef int uint32_t ;
 struct sh2lib_handle {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DATA_TO_SEND ; 
- int /*<<< orphan*/  NGHTTP2_DATA_FLAG_EOF ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  printf (char*,int) ; 
- int strlen (int /*<<< orphan*/ ) ; 
+
+ int DATA_TO_SEND ;
+ int NGHTTP2_DATA_FLAG_EOF ;
+ int memcpy (char*,int ,int) ;
+ int printf (char*,int) ;
+ int strlen (int ) ;
 
 int send_put_data(struct sh2lib_handle *handle, char *buf, size_t length, uint32_t *data_flags)
 {
-#define DATA_TO_SEND "Hello World"
-    int copylen = strlen(DATA_TO_SEND);
+
+    int copylen = strlen("Hello World");
     if (copylen < length) {
         printf("[data-prvd] Sending %d bytes\n", copylen);
-        memcpy(buf, DATA_TO_SEND, copylen);
+        memcpy(buf, "Hello World", copylen);
     } else {
         copylen = 0;
     }

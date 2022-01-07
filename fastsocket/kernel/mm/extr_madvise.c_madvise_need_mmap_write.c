@@ -1,30 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  MADV_DONTNEED 130 
-#define  MADV_REMOVE 129 
-#define  MADV_WILLNEED 128 
-
 __attribute__((used)) static int madvise_need_mmap_write(int behavior)
 {
-	switch (behavior) {
-	case MADV_REMOVE:
-	case MADV_WILLNEED:
-	case MADV_DONTNEED:
-		return 0;
-	default:
-		/* be safe, default to 1. list exceptions explicitly */
-		return 1;
-	}
+ switch (behavior) {
+ case 129:
+ case 128:
+ case 130:
+  return 0;
+ default:
+
+  return 1;
+ }
 }

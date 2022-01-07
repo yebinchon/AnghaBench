@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_mode; } ;
-typedef  int /*<<< orphan*/  LPCSTR ;
-typedef  int /*<<< orphan*/  HCERTSTORE ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  O_RDONLY ; 
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- scalar_t__ S_ISREG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  debugstr_a (int /*<<< orphan*/ ) ; 
- scalar_t__ fstat (int,struct stat*) ; 
- scalar_t__ import_certs_from_dir (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ import_certs_from_file (int,int /*<<< orphan*/ ) ; 
- int open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct stat {int st_mode; } ;
+typedef int LPCSTR ;
+typedef int HCERTSTORE ;
+typedef scalar_t__ BOOL ;
+
+
+ int ERR (char*,int ) ;
+ scalar_t__ FALSE ;
+ int O_RDONLY ;
+ scalar_t__ S_ISDIR (int ) ;
+ scalar_t__ S_ISREG (int ) ;
+ int TRACE (char*,int ,int ,scalar_t__) ;
+ int WARN (char*,int ) ;
+ int close (int) ;
+ int debugstr_a (int ) ;
+ scalar_t__ fstat (int,struct stat*) ;
+ scalar_t__ import_certs_from_dir (int ,int ) ;
+ scalar_t__ import_certs_from_file (int,int ) ;
+ int open (int ,int ) ;
 
 __attribute__((used)) static BOOL import_certs_from_path(LPCSTR path, HCERTSTORE store,
  BOOL allow_dir)

@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32 ;
 
-/* Variables and functions */
+
+
+
+typedef int uint32 ;
+
+
 
 __attribute__((used)) static uint32 make_lut_bgobj_ste(uint32 bx, uint32 sx)
 {
@@ -20,12 +20,12 @@ __attribute__((used)) static uint32 make_lut_bgobj_ste(uint32 bx, uint32 sx)
 
   int bf = (bx & 0x3F);
   int bp = (bx & 0x40);
-  int b  = (bx & 0x0F);
+  int b = (bx & 0x0F);
   int bi = (bx & 0x80) >> 1;
 
   int sf = (sx & 0x3F);
   int sp = (sx & 0x40);
-  int s  = (sx & 0x0F);
+  int s = (sx & 0x0F);
   int si = sp | bi;
 
   if(sp)
@@ -129,7 +129,7 @@ __attribute__((used)) static uint32 make_lut_bgobj_ste(uint32 bx, uint32 sx)
         }
       }
       else
-      {          
+      {
         c = (bf | bi);
       }
     }

@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int MPASS (int ) ;
+ int destroy_dev (int *) ;
+ int * nsmb_dev ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  MPASS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  destroy_dev (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * nsmb_dev ; 
-
-__attribute__((used)) static void 
+__attribute__((used)) static void
 nsmb_dev_destroy(void)
 {
 
-	MPASS(nsmb_dev != NULL);
-	destroy_dev(nsmb_dev);
-	nsmb_dev = NULL;
+ MPASS(nsmb_dev != ((void*)0));
+ destroy_dev(nsmb_dev);
+ nsmb_dev = ((void*)0);
 }

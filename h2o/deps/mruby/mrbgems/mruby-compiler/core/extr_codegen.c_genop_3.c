@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  mrb_code ;
-typedef  int /*<<< orphan*/  codegen_scope ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gen_B (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  genop_2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int mrb_code ;
+typedef int codegen_scope ;
+
+
+ int gen_B (int *,int ) ;
+ int genop_2 (int *,int ,int ,int ) ;
 
 __attribute__((used)) static void
 genop_3(codegen_scope *s, mrb_code i, uint16_t a, uint16_t b, uint8_t c)

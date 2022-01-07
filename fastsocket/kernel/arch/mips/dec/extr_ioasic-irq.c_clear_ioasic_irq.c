@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IO_REG_SIR ; 
- unsigned int ioasic_irq_base ; 
- int /*<<< orphan*/  ioasic_write (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int u32 ;
+
+
+ int IO_REG_SIR ;
+ unsigned int ioasic_irq_base ;
+ int ioasic_write (int ,int) ;
 
 __attribute__((used)) static inline void clear_ioasic_irq(unsigned int irq)
 {
-	u32 sir;
+ u32 sir;
 
-	sir = ~(1 << (irq - ioasic_irq_base));
-	ioasic_write(IO_REG_SIR, sir);
+ sir = ~(1 << (irq - ioasic_irq_base));
+ ioasic_write(IO_REG_SIR, sir);
 }

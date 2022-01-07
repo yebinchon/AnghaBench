@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned int uint8_t ;
-typedef  unsigned int int32_t ;
 
-/* Variables and functions */
- size_t BU_IDX ; 
- size_t BV_IDX ; 
- size_t BY_IDX ; 
- size_t GU_IDX ; 
- size_t GV_IDX ; 
- size_t GY_IDX ; 
- unsigned int RGB2YUV_SHIFT ; 
- size_t RU_IDX ; 
- size_t RV_IDX ; 
- size_t RY_IDX ; 
+
+
+
+typedef unsigned int uint8_t ;
+typedef unsigned int int32_t ;
+
+
+ size_t BU_IDX ;
+ size_t BV_IDX ;
+ size_t BY_IDX ;
+ size_t GU_IDX ;
+ size_t GV_IDX ;
+ size_t GY_IDX ;
+ unsigned int RGB2YUV_SHIFT ;
+ size_t RU_IDX ;
+ size_t RV_IDX ;
+ size_t RY_IDX ;
 
 void ff_rgb24toyv12_c(const uint8_t *src, uint8_t *ydst, uint8_t *udst,
                    uint8_t *vdst, int width, int height, int lumStride,
@@ -42,12 +42,12 @@ void ff_rgb24toyv12_c(const uint8_t *src, uint8_t *ydst, uint8_t *udst,
             unsigned int g = src[6 * i + 1];
             unsigned int r = src[6 * i + 2];
 
-            unsigned int Y = ((ry * r + gy * g + by * b) >> RGB2YUV_SHIFT) +  16;
+            unsigned int Y = ((ry * r + gy * g + by * b) >> RGB2YUV_SHIFT) + 16;
             unsigned int V = ((rv * r + gv * g + bv * b) >> RGB2YUV_SHIFT) + 128;
             unsigned int U = ((ru * r + gu * g + bu * b) >> RGB2YUV_SHIFT) + 128;
 
-            udst[i]     = U;
-            vdst[i]     = V;
+            udst[i] = U;
+            vdst[i] = V;
             ydst[2 * i] = Y;
 
             b = src[6 * i + 3];
@@ -58,7 +58,7 @@ void ff_rgb24toyv12_c(const uint8_t *src, uint8_t *ydst, uint8_t *udst,
             ydst[2 * i + 1] = Y;
         }
         ydst += lumStride;
-        src  += srcStride;
+        src += srcStride;
 
         if (y+1 == height)
             break;
@@ -82,6 +82,6 @@ void ff_rgb24toyv12_c(const uint8_t *src, uint8_t *ydst, uint8_t *udst,
         udst += chromStride;
         vdst += chromStride;
         ydst += lumStride;
-        src  += srcStride;
+        src += srcStride;
     }
 }

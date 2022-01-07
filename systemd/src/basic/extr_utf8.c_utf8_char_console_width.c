@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  char32_t ;
 
-/* Variables and functions */
- scalar_t__ unichar_iswide (int /*<<< orphan*/ ) ; 
- int utf8_encoded_to_unichar (char const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int char32_t ;
+
+
+ scalar_t__ unichar_iswide (int ) ;
+ int utf8_encoded_to_unichar (char const*,int *) ;
 
 __attribute__((used)) static int utf8_char_console_width(const char *str) {
         char32_t c;
@@ -24,7 +24,7 @@ __attribute__((used)) static int utf8_char_console_width(const char *str) {
         if (r < 0)
                 return r;
 
-        /* TODO: we should detect combining characters */
+
 
         return unichar_iswide(c) ? 2 : 1;
 }

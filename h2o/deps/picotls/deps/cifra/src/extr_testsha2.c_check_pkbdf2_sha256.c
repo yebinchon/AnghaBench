@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_CHECK (int) ; 
- int /*<<< orphan*/  cf_pbkdf2_hmac (void const*,size_t,void const*,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cf_sha256 ; 
- scalar_t__ memcmp (void const*,int /*<<< orphan*/ *,size_t) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+
+
+ int TEST_CHECK (int) ;
+ int cf_pbkdf2_hmac (void const*,size_t,void const*,size_t,int ,int *,size_t,int *) ;
+ int cf_sha256 ;
+ scalar_t__ memcmp (void const*,int *,size_t) ;
 
 __attribute__((used)) static void check_pkbdf2_sha256(const void *pw, size_t npw,
                                 const void *salt, size_t nsalt,
@@ -26,7 +26,7 @@ __attribute__((used)) static void check_pkbdf2_sha256(const void *pw, size_t npw
 {
   uint8_t output[64];
 
-  cf_pbkdf2_hmac((const void *) pw, npw, 
+  cf_pbkdf2_hmac((const void *) pw, npw,
                  (const void *) salt, nsalt,
                  iters,
                  output, nexpect,

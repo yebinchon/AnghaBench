@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WINDOW ;
 
-/* Variables and functions */
- int LINES ; 
- int /*<<< orphan*/  MAINWIN_ROW ; 
- int /*<<< orphan*/  sethostent (int) ; 
- int /*<<< orphan*/  setnetent (int) ; 
- int /*<<< orphan*/  stdscr ; 
- int /*<<< orphan*/ * subwin (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int WINDOW ;
+
+
+ int LINES ;
+ int MAINWIN_ROW ;
+ int sethostent (int) ;
+ int setnetent (int) ;
+ int stdscr ;
+ int * subwin (int ,int,int ,int ,int ) ;
 
 WINDOW *
 opennetstat(void)
 {
-	sethostent(1);
-	setnetent(1);
-	return (subwin(stdscr, LINES-3-1, 0, MAINWIN_ROW, 0));
+ sethostent(1);
+ setnetent(1);
+ return (subwin(stdscr, LINES-3-1, 0, MAINWIN_ROW, 0));
 }

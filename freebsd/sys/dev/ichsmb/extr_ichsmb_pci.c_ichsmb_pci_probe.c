@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ichsmb_device {scalar_t__ id; int /*<<< orphan*/ * name; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int ENXIO ; 
- scalar_t__ PCI_VENDOR_INTEL ; 
- int /*<<< orphan*/  device_set_desc (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- struct ichsmb_device* ichsmb_devices ; 
- int ichsmb_probe (int /*<<< orphan*/ ) ; 
- scalar_t__ pci_get_device (int /*<<< orphan*/ ) ; 
- scalar_t__ pci_get_vendor (int /*<<< orphan*/ ) ; 
+
+
+
+struct ichsmb_device {scalar_t__ id; int * name; } ;
+typedef int device_t ;
+
+
+ int ENXIO ;
+ scalar_t__ PCI_VENDOR_INTEL ;
+ int device_set_desc (int ,int *) ;
+ struct ichsmb_device* ichsmb_devices ;
+ int ichsmb_probe (int ) ;
+ scalar_t__ pci_get_device (int ) ;
+ scalar_t__ pci_get_vendor (int ) ;
 
 __attribute__((used)) static int
 ichsmb_pci_probe(device_t dev)
 {
-	const struct ichsmb_device *device;
+ const struct ichsmb_device *device;
 
-	if (pci_get_vendor(dev) != PCI_VENDOR_INTEL)
-		return (ENXIO);
+ if (pci_get_vendor(dev) != PCI_VENDOR_INTEL)
+  return (ENXIO);
 
-	for (device = ichsmb_devices; device->name != NULL; device++) {
-		if (pci_get_device(dev) == device->id) {
-			device_set_desc(dev, device->name);
-			return (ichsmb_probe(dev));
-		}
-	}
+ for (device = ichsmb_devices; device->name != ((void*)0); device++) {
+  if (pci_get_device(dev) == device->id) {
+   device_set_desc(dev, device->name);
+   return (ichsmb_probe(dev));
+  }
+ }
 
-	return (ENXIO);
+ return (ENXIO);
 }

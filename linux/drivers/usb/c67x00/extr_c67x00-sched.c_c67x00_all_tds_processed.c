@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct c67x00_hcd {int /*<<< orphan*/  sie; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  c67x00_ll_husb_get_current_td (int /*<<< orphan*/ ) ; 
+
+
+
+struct c67x00_hcd {int sie; } ;
+
+
+ int c67x00_ll_husb_get_current_td (int ) ;
 
 __attribute__((used)) static inline int c67x00_all_tds_processed(struct c67x00_hcd *c67x00)
 {
-	/* If all tds are processed, we can check the previous frame (if
-	 * there was any) and start our next frame.
-	 */
-	return !c67x00_ll_husb_get_current_td(c67x00->sie);
+
+
+
+ return !c67x00_ll_husb_get_current_td(c67x00->sie);
 }

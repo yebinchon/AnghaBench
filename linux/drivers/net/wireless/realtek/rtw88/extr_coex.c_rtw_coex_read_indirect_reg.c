@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  u16 ;
+
+
+
+
+typedef int u32 ;
+typedef int u16 ;
 struct rtw_dev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ltecoex_read_reg (struct rtw_dev*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rtw_err (struct rtw_dev*,char*) ; 
+
+ int ltecoex_read_reg (struct rtw_dev*,int ,int *) ;
+ int rtw_err (struct rtw_dev*,char*) ;
 
 u32 rtw_coex_read_indirect_reg(struct rtw_dev *rtwdev, u16 addr)
 {
-	u32 val;
+ u32 val;
 
-	if (!ltecoex_read_reg(rtwdev, addr, &val)) {
-		rtw_err(rtwdev, "failed to read indirect register\n");
-		return 0;
-	}
+ if (!ltecoex_read_reg(rtwdev, addr, &val)) {
+  rtw_err(rtwdev, "failed to read indirect register\n");
+  return 0;
+ }
 
-	return val;
+ return val;
 }

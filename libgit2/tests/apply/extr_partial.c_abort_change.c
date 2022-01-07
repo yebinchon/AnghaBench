@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ new_lines; scalar_t__ old_lines; } ;
-typedef  TYPE_1__ git_diff_hunk ;
+typedef TYPE_1__ git_diff_hunk ;
 
-/* Variables and functions */
- int GIT_EUSER ; 
- int /*<<< orphan*/  GIT_UNUSED (void*) ; 
+
+ int GIT_EUSER ;
+ int GIT_UNUSED (void*) ;
 
 __attribute__((used)) static int abort_change(
-	const git_diff_hunk *hunk,
-	void *payload)
+ const git_diff_hunk *hunk,
+ void *payload)
 {
-	GIT_UNUSED(payload);
+ GIT_UNUSED(payload);
 
-	return (hunk->new_lines == hunk->old_lines) ? GIT_EUSER : 0;
+ return (hunk->new_lines == hunk->old_lines) ? GIT_EUSER : 0;
 }

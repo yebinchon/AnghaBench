@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- long get_hex_digit (int) ; 
- int /*<<< orphan*/  supply_register (int /*<<< orphan*/ ,char*) ; 
+ long get_hex_digit (int) ;
+ int supply_register (int ,char*) ;
 
 __attribute__((used)) static void
 get_hex_regs (int n, int regno)
@@ -27,7 +19,7 @@ get_hex_regs (int n, int regno)
 
       val = 0;
       for (j = 0; j < 8; j++)
-	val = (val << 4) + get_hex_digit (j == 0);
+ val = (val << 4) + get_hex_digit (j == 0);
       supply_register (regno++, (char *) &val);
     }
 }

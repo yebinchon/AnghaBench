@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hashdata ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int ULONG ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int hashdata ;
+typedef int WORD ;
+typedef int WCHAR ;
+typedef int ULONG ;
 struct TYPE_7__ {int blobsz; TYPE_1__* tables; } ;
 struct TYPE_6__ {int offset; } ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int /*<<< orphan*/  BCRYPT_ALG_HANDLE ;
-typedef  TYPE_2__ ASSEMBLY ;
+typedef int * LPWSTR ;
+typedef int LONG ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef int BYTE ;
+typedef int BCRYPT_ALG_HANDLE ;
+typedef TYPE_2__ ASSEMBLY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSEMBLYTABLE ; 
- int /*<<< orphan*/  BCRYPT_SHA1_ALGORITHM ; 
- int /*<<< orphan*/  BCryptCloseAlgorithmProvider (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ BCryptHash (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int) ; 
- scalar_t__ BCryptOpenAlgorithmProvider (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int BYTES_PER_TOKEN ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  FIELD_OFFSET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MS_PRIMITIVE_PROVIDER ; 
- int /*<<< orphan*/  PublicKey ; 
- scalar_t__ STATUS_SUCCESS ; 
- int /*<<< orphan*/  S_OK ; 
- int TOKEN_LENGTH ; 
- size_t TableFromToken (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * assembly_data_offset (TYPE_2__*,int) ; 
- int /*<<< orphan*/ * assembly_get_blob (TYPE_2__*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/ * heap_alloc (int) ; 
- int /*<<< orphan*/  mdtAssembly ; 
- int /*<<< orphan*/  token_to_str (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int ASSEMBLYTABLE ;
+ int BCRYPT_SHA1_ALGORITHM ;
+ int BCryptCloseAlgorithmProvider (int ,int ) ;
+ scalar_t__ BCryptHash (int ,int *,int ,int *,int,int *,int) ;
+ scalar_t__ BCryptOpenAlgorithmProvider (int *,int ,int ,int ) ;
+ int BYTES_PER_TOKEN ;
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ int FIELD_OFFSET (int ,int ) ;
+ int MS_PRIMITIVE_PROVIDER ;
+ int PublicKey ;
+ scalar_t__ STATUS_SUCCESS ;
+ int S_OK ;
+ int TOKEN_LENGTH ;
+ size_t TableFromToken (int ) ;
+ int * assembly_data_offset (TYPE_2__*,int) ;
+ int * assembly_get_blob (TYPE_2__*,int ,int*) ;
+ int * heap_alloc (int) ;
+ int mdtAssembly ;
+ int token_to_str (int *,int *) ;
 
 HRESULT assembly_get_pubkey_token(ASSEMBLY *assembly, LPWSTR *token)
 {
@@ -59,7 +59,7 @@ HRESULT assembly_get_pubkey_token(ASSEMBLY *assembly, LPWSTR *token)
     LPWSTR tok;
     DWORD idx;
 
-    *token = NULL;
+    *token = ((void*)0);
 
     offset = assembly->tables[TableFromToken(mdtAssembly)].offset;
     if (offset == -1)
@@ -80,7 +80,7 @@ HRESULT assembly_get_pubkey_token(ASSEMBLY *assembly, LPWSTR *token)
     if (BCryptOpenAlgorithmProvider(&alg, BCRYPT_SHA1_ALGORITHM, MS_PRIMITIVE_PROVIDER, 0) != STATUS_SUCCESS)
         return E_FAIL;
 
-    if (BCryptHash(alg, NULL, 0, pubkey, size, hashdata, sizeof(hashdata)) != STATUS_SUCCESS)
+    if (BCryptHash(alg, ((void*)0), 0, pubkey, size, hashdata, sizeof(hashdata)) != STATUS_SUCCESS)
     {
         hr = E_FAIL;
         goto done;

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-struct forkpoint {scalar_t__ saved_data_stack; scalar_t__ saved_curr_frame; int path_len; int /*<<< orphan*/  subexp_nest; int /*<<< orphan*/  value_at_path; int /*<<< orphan*/ * return_address; } ;
-struct TYPE_5__ {scalar_t__ fork_top; scalar_t__ stk_top; scalar_t__ curr_frame; int /*<<< orphan*/  stk; int /*<<< orphan*/  subexp_nest; int /*<<< orphan*/  value_at_path; int /*<<< orphan*/  path; } ;
-typedef  TYPE_1__ jq_state ;
 
-/* Variables and functions */
- scalar_t__ JV_KIND_ARRAY ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  frame_pop (TYPE_1__*) ; 
- int /*<<< orphan*/  jv_array_slice (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  jv_free (int /*<<< orphan*/ ) ; 
- scalar_t__ jv_get_kind (int /*<<< orphan*/ ) ; 
- struct forkpoint* stack_block (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  stack_pop (TYPE_1__*) ; 
- scalar_t__ stack_pop_block (int /*<<< orphan*/ *,scalar_t__,int) ; 
- scalar_t__ stack_pop_will_free (int /*<<< orphan*/ *,scalar_t__) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct forkpoint {scalar_t__ saved_data_stack; scalar_t__ saved_curr_frame; int path_len; int subexp_nest; int value_at_path; int * return_address; } ;
+struct TYPE_5__ {scalar_t__ fork_top; scalar_t__ stk_top; scalar_t__ curr_frame; int stk; int subexp_nest; int value_at_path; int path; } ;
+typedef TYPE_1__ jq_state ;
+
+
+ scalar_t__ JV_KIND_ARRAY ;
+ int assert (int) ;
+ int frame_pop (TYPE_1__*) ;
+ int jv_array_slice (int ,int ,int) ;
+ int jv_free (int ) ;
+ scalar_t__ jv_get_kind (int ) ;
+ struct forkpoint* stack_block (int *,scalar_t__) ;
+ int stack_pop (TYPE_1__*) ;
+ scalar_t__ stack_pop_block (int *,scalar_t__,int) ;
+ scalar_t__ stack_pop_will_free (int *,scalar_t__) ;
 
 uint16_t* stack_restore(jq_state *jq){
   while (!stack_pop_will_free(&jq->stk, jq->fork_top)) {

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int disable_11n; } ;
 
-/* Variables and functions */
- int IWL_DISABLE_HT_RXAGG ; 
- TYPE_1__ iwlwifi_mod_params ; 
+
+ int IWL_DISABLE_HT_RXAGG ;
+ TYPE_1__ iwlwifi_mod_params ;
 
 __attribute__((used)) static inline bool iwl_enable_rx_ampdu(void)
 {
-	if (iwlwifi_mod_params.disable_11n & IWL_DISABLE_HT_RXAGG)
-		return false;
-	return true;
+ if (iwlwifi_mod_params.disable_11n & IWL_DISABLE_HT_RXAGG)
+  return 0;
+ return 1;
 }

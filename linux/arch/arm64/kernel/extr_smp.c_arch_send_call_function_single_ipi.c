@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  IPI_CALL_FUNC ; 
- int /*<<< orphan*/  cpumask_of (int) ; 
- int /*<<< orphan*/  smp_cross_call (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int IPI_CALL_FUNC ;
+ int cpumask_of (int) ;
+ int smp_cross_call (int ,int ) ;
 
 void arch_send_call_function_single_ipi(int cpu)
 {
-	smp_cross_call(cpumask_of(cpu), IPI_CALL_FUNC);
+ smp_cross_call(cpumask_of(cpu), IPI_CALL_FUNC);
 }

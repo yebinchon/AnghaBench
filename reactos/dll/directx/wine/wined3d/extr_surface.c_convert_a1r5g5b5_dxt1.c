@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WINED3DFMT_B5G5R5A1_UNORM ; 
- int /*<<< orphan*/  wined3d_dxt1_encode (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,unsigned int) ; 
+
+
+
+typedef int DWORD ;
+typedef int BYTE ;
+
+
+ int WINED3DFMT_B5G5R5A1_UNORM ;
+ int wined3d_dxt1_encode (int const*,int *,int ,int ,int ,unsigned int,unsigned int) ;
 
 __attribute__((used)) static void convert_a1r5g5b5_dxt1(const BYTE *src, BYTE *dst,
         DWORD pitch_in, DWORD pitch_out, unsigned int w, unsigned int h)

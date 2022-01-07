@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dictionary_entry {int /*<<< orphan*/  extra; int /*<<< orphan*/  value; int /*<<< orphan*/  key; int /*<<< orphan*/  (* destroy ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;struct dictionary_entry* next; struct dictionary_entry* head; } ;
-struct dictionary {int /*<<< orphan*/  extra; int /*<<< orphan*/  value; int /*<<< orphan*/  key; int /*<<< orphan*/  (* destroy ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;struct dictionary* next; struct dictionary* head; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct dictionary_entry*) ; 
- int /*<<< orphan*/  TRACE (char*,struct dictionary_entry*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct dictionary_entry {int extra; int value; int key; int (* destroy ) (int ,int ,int ) ;struct dictionary_entry* next; struct dictionary_entry* head; } ;
+struct dictionary {int extra; int value; int key; int (* destroy ) (int ,int ,int ) ;struct dictionary* next; struct dictionary* head; } ;
+
+
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,struct dictionary_entry*) ;
+ int TRACE (char*,struct dictionary_entry*) ;
+ int stub1 (int ,int ,int ) ;
 
 void dictionary_destroy(struct dictionary *d)
 {

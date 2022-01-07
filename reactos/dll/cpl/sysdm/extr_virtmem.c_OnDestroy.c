@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int VOID ;
 struct TYPE_6__ {struct TYPE_6__* szPagingFiles; TYPE_1__* Pagefile; } ;
 struct TYPE_5__ {TYPE_2__* pszVolume; } ;
-typedef  TYPE_2__* PVIRTMEM ;
-typedef  int INT ;
+typedef TYPE_2__* PVIRTMEM ;
+typedef int INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
+
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,TYPE_2__*) ;
 
 __attribute__((used)) static VOID
 OnDestroy(PVIRTMEM pVirtMem)
@@ -29,7 +29,7 @@ OnDestroy(PVIRTMEM pVirtMem)
 
     for (i = 0; i < 26; i++)
     {
-        if (pVirtMem->Pagefile[i].pszVolume != NULL)
+        if (pVirtMem->Pagefile[i].pszVolume != ((void*)0))
             HeapFree(GetProcessHeap(), 0, pVirtMem->Pagefile[i].pszVolume);
     }
 

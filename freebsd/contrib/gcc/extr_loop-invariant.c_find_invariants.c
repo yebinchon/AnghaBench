@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct loop {int dummy; } ;
-typedef  int /*<<< orphan*/  bitmap ;
-typedef  int /*<<< orphan*/  basic_block ;
+typedef int bitmap ;
+typedef int basic_block ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BITMAP_ALLOC (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BITMAP_FREE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  compute_always_reached (struct loop*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  find_defs (struct loop*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  find_exits (struct loop*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  find_invariants_body (struct loop*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * get_loop_body_in_dom_order (struct loop*) ; 
- int /*<<< orphan*/  merge_identical_invariants () ; 
+
+ int BITMAP_ALLOC (int *) ;
+ int BITMAP_FREE (int ) ;
+ int compute_always_reached (struct loop*,int *,int ,int ) ;
+ int find_defs (struct loop*,int *) ;
+ int find_exits (struct loop*,int *,int ,int ) ;
+ int find_invariants_body (struct loop*,int *,int ,int ) ;
+ int free (int *) ;
+ int * get_loop_body_in_dom_order (struct loop*) ;
+ int merge_identical_invariants () ;
 
 __attribute__((used)) static void
 find_invariants (struct loop *loop)
 {
-  bitmap may_exit = BITMAP_ALLOC (NULL);
-  bitmap always_reached = BITMAP_ALLOC (NULL);
-  bitmap has_exit = BITMAP_ALLOC (NULL);
-  bitmap always_executed = BITMAP_ALLOC (NULL);
+  bitmap may_exit = BITMAP_ALLOC (((void*)0));
+  bitmap always_reached = BITMAP_ALLOC (((void*)0));
+  bitmap has_exit = BITMAP_ALLOC (((void*)0));
+  bitmap always_executed = BITMAP_ALLOC (((void*)0));
   basic_block *body = get_loop_body_in_dom_order (loop);
 
   find_exits (loop, body, may_exit, has_exit);

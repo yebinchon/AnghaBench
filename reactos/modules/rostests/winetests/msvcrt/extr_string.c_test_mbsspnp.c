@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int _getmbcp () ; 
- unsigned char* _mbsspnp (unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  _setmbcp (int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+ int _getmbcp () ;
+ unsigned char* _mbsspnp (unsigned char*,unsigned char*) ;
+ int _setmbcp (int) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_mbsspnp( void)
 {
@@ -37,7 +29,7 @@ __attribute__((used)) static void test_mbsspnp( void)
     ret=_mbsspnp( str1, empty);
     ok( ret[0]=='c', "_mbsspnp returns %c should be c\n", ret[0]);
     ret=_mbsspnp( str1, full);
-    ok( ret==NULL, "_mbsspnp returns %p should be NULL\n", ret);
+    ok( ret==((void*)0), "_mbsspnp returns %p should be NULL\n", ret);
 
     _setmbcp( 932);
     ret=_mbsspnp( mbstr, mbset1);

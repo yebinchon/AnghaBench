@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct dw_mci {TYPE_1__* dms; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * ch; } ;
+struct TYPE_2__ {int * ch; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dma_release_channel (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (TYPE_1__*) ; 
+
+ int dma_release_channel (int *) ;
+ int kfree (TYPE_1__*) ;
 
 __attribute__((used)) static void dw_mci_edmac_exit(struct dw_mci *host)
 {
-	if (host->dms) {
-		if (host->dms->ch) {
-			dma_release_channel(host->dms->ch);
-			host->dms->ch = NULL;
-		}
-		kfree(host->dms);
-		host->dms = NULL;
-	}
+ if (host->dms) {
+  if (host->dms->ch) {
+   dma_release_channel(host->dms->ch);
+   host->dms->ch = ((void*)0);
+  }
+  kfree(host->dms);
+  host->dms = ((void*)0);
+ }
 }

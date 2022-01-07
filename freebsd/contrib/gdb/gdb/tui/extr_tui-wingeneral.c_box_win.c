@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tui_gen_win_info {int /*<<< orphan*/  title; int /*<<< orphan*/ * handle; } ;
-typedef  int /*<<< orphan*/  WINDOW ;
 
-/* Variables and functions */
- int HILITE ; 
- int /*<<< orphan*/  mvwaddstr (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int tui_active_border_attrs ; 
- int tui_border_attrs ; 
- int /*<<< orphan*/  tui_border_hline ; 
- int /*<<< orphan*/  tui_border_llcorner ; 
- int /*<<< orphan*/  tui_border_lrcorner ; 
- int /*<<< orphan*/  tui_border_ulcorner ; 
- int /*<<< orphan*/  tui_border_urcorner ; 
- int /*<<< orphan*/  tui_border_vline ; 
- int /*<<< orphan*/  wattroff (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  wattron (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  wborder (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct tui_gen_win_info {int title; int * handle; } ;
+typedef int WINDOW ;
+
+
+ int HILITE ;
+ int mvwaddstr (int *,int ,int,int ) ;
+ int tui_active_border_attrs ;
+ int tui_border_attrs ;
+ int tui_border_hline ;
+ int tui_border_llcorner ;
+ int tui_border_lrcorner ;
+ int tui_border_ulcorner ;
+ int tui_border_urcorner ;
+ int tui_border_vline ;
+ int wattroff (int *,int) ;
+ int wattron (int *,int) ;
+ int wborder (int *,int ,int ,int ,int ,int ,int ,int ,int ) ;
 
 void
 box_win (struct tui_gen_win_info * win_info, int highlight_flag)

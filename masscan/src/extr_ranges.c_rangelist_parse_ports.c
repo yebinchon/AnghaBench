@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct RangeList {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG (int /*<<< orphan*/ ,char*,unsigned int,...) ; 
- unsigned int Templ_ICMP_echo ; 
- unsigned int Templ_Oproto_first ; 
- unsigned int Templ_SCTP ; 
- unsigned int Templ_UDP ; 
- scalar_t__ isalpha (char) ; 
- int /*<<< orphan*/  isdigit (char) ; 
- scalar_t__ isspace (char) ; 
- int /*<<< orphan*/  rangelist_add_range (struct RangeList*,unsigned int,unsigned int) ; 
- scalar_t__ strtoul (char*,char**,int /*<<< orphan*/ ) ; 
+
+ int LOG (int ,char*,unsigned int,...) ;
+ unsigned int Templ_ICMP_echo ;
+ unsigned int Templ_Oproto_first ;
+ unsigned int Templ_SCTP ;
+ unsigned int Templ_UDP ;
+ scalar_t__ isalpha (char) ;
+ int isdigit (char) ;
+ scalar_t__ isspace (char) ;
+ int rangelist_add_range (struct RangeList*,unsigned int,unsigned int) ;
+ scalar_t__ strtoul (char*,char**,int ) ;
 
 const char *
 rangelist_parse_ports(struct RangeList *ports, const char *string, unsigned *is_error, unsigned proto_offset)
 {
     char *p = (char*)string;
-    
+
     *is_error = 0;
     while (*p) {
         unsigned port;
         unsigned end;
 
-        /* skip whitespace */
+
         while (*p && isspace(*p & 0xFF))
             p++;
 
-        /* end at comment */
+
         if (*p == 0 || *p == '#')
             break;
 
-        /* special processing. Nmap allows ports to be prefixed with a
-         * characters to clarify TCP, UDP, or SCTP */
+
+
         if (isalpha(*p&0xFF) && p[1] == ':') {
             switch (*p) {
                 case 'T': case 't':

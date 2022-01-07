@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_4__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_4__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int doc_id; TYPE_4__* sword; } ;
-typedef  TYPE_1__ ilist_decoder_t ;
-typedef  int /*<<< orphan*/  iheap_en_t ;
-typedef  scalar_t__ hash_t ;
-struct TYPE_6__ {scalar_t__ word; int /*<<< orphan*/  file_offset; int /*<<< orphan*/  len; } ;
+typedef TYPE_1__ ilist_decoder_t ;
+typedef int iheap_en_t ;
+typedef scalar_t__ hash_t ;
+struct TYPE_6__ {scalar_t__ word; int file_offset; int len; } ;
 
-/* Variables and functions */
- TYPE_4__* IndexWords ; 
- int /*<<< orphan*/  idx_items ; 
- int idx_words ; 
- int /*<<< orphan*/  init_decoder (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  searchy_is_term (scalar_t__) ; 
+
+ TYPE_4__* IndexWords ;
+ int idx_items ;
+ int idx_words ;
+ int init_decoder (int *,TYPE_1__*,int ,int ,int *,int ) ;
+ int searchy_is_term (scalar_t__) ;
 
 int init_ilist_decoder (iheap_en_t *H, ilist_decoder_t *D, hash_t word) {
-  /* *D is already cleared,
-     since D is a part of already cleared heap entry
-  */
+
+
+
   D->doc_id = -1;
 
   int a = -1, b = idx_words, c;

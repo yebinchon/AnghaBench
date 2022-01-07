@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FetchStmt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMPARE_SCALAR_FIELD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  COMPARE_STRING_FIELD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  direction ; 
- int /*<<< orphan*/  howMany ; 
- int /*<<< orphan*/  ismove ; 
- int /*<<< orphan*/  portalname ; 
+
+
+
+typedef int FetchStmt ;
+
+
+ int COMPARE_SCALAR_FIELD (int ) ;
+ int COMPARE_STRING_FIELD (int ) ;
+ int direction ;
+ int howMany ;
+ int ismove ;
+ int portalname ;
 
 __attribute__((used)) static bool
 _equalFetchStmt(const FetchStmt *a, const FetchStmt *b)
 {
-	COMPARE_SCALAR_FIELD(direction);
-	COMPARE_SCALAR_FIELD(howMany);
-	COMPARE_STRING_FIELD(portalname);
-	COMPARE_SCALAR_FIELD(ismove);
+ COMPARE_SCALAR_FIELD(direction);
+ COMPARE_SCALAR_FIELD(howMany);
+ COMPARE_STRING_FIELD(portalname);
+ COMPARE_SCALAR_FIELD(ismove);
 
-	return true;
+ return 1;
 }

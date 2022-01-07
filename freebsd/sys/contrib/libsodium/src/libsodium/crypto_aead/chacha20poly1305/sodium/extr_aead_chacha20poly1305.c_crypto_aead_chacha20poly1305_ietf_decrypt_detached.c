@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  unsigned char crypto_onetimeauth_poly1305_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMPILER_ASSERT (int) ; 
- int /*<<< orphan*/  STORE64_LE (unsigned char*,int /*<<< orphan*/ ) ; 
- unsigned char* _pad0 ; 
- int crypto_aead_chacha20poly1305_ietf_ABYTES ; 
- int /*<<< orphan*/  crypto_onetimeauth_poly1305_final (unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  crypto_onetimeauth_poly1305_init (unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  crypto_onetimeauth_poly1305_update (unsigned char*,unsigned char const*,int) ; 
- int /*<<< orphan*/  crypto_stream_chacha20_ietf (unsigned char*,int,unsigned char const*,unsigned char const*) ; 
- int /*<<< orphan*/  crypto_stream_chacha20_ietf_xor_ic (unsigned char*,unsigned char const*,unsigned long long,unsigned char const*,unsigned int,unsigned char const*) ; 
- int crypto_verify_16 (unsigned char*,unsigned char const*) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,unsigned long long) ; 
- int /*<<< orphan*/  sodium_memzero (unsigned char*,int) ; 
+
+
+
+typedef int uint64_t ;
+typedef unsigned char crypto_onetimeauth_poly1305_state ;
+
+
+ int COMPILER_ASSERT (int) ;
+ int STORE64_LE (unsigned char*,int ) ;
+ unsigned char* _pad0 ;
+ int crypto_aead_chacha20poly1305_ietf_ABYTES ;
+ int crypto_onetimeauth_poly1305_final (unsigned char*,unsigned char*) ;
+ int crypto_onetimeauth_poly1305_init (unsigned char*,unsigned char*) ;
+ int crypto_onetimeauth_poly1305_update (unsigned char*,unsigned char const*,int) ;
+ int crypto_stream_chacha20_ietf (unsigned char*,int,unsigned char const*,unsigned char const*) ;
+ int crypto_stream_chacha20_ietf_xor_ic (unsigned char*,unsigned char const*,unsigned long long,unsigned char const*,unsigned int,unsigned char const*) ;
+ int crypto_verify_16 (unsigned char*,unsigned char const*) ;
+ int memset (unsigned char*,int ,unsigned long long) ;
+ int sodium_memzero (unsigned char*,int) ;
 
 int
 crypto_aead_chacha20poly1305_ietf_decrypt_detached(unsigned char *m,
@@ -39,11 +39,11 @@ crypto_aead_chacha20poly1305_ietf_decrypt_detached(unsigned char *m,
                                                    const unsigned char *k)
 {
     crypto_onetimeauth_poly1305_state state;
-    unsigned char                     block0[64U];
-    unsigned char                     slen[8U];
-    unsigned char                     computed_mac[crypto_aead_chacha20poly1305_ietf_ABYTES];
-    unsigned long long                mlen;
-    int                               ret;
+    unsigned char block0[64U];
+    unsigned char slen[8U];
+    unsigned char computed_mac[crypto_aead_chacha20poly1305_ietf_ABYTES];
+    unsigned long long mlen;
+    int ret;
 
     (void) nsec;
     crypto_stream_chacha20_ietf(block0, sizeof block0, npub, k);
@@ -69,7 +69,7 @@ crypto_aead_chacha20poly1305_ietf_decrypt_detached(unsigned char *m,
     COMPILER_ASSERT(sizeof computed_mac == 16U);
     ret = crypto_verify_16(computed_mac, mac);
     sodium_memzero(computed_mac, sizeof computed_mac);
-    if (m == NULL) {
+    if (m == ((void*)0)) {
         return ret;
     }
     if (ret != 0) {

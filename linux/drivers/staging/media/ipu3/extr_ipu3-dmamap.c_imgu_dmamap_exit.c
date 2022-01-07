@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct imgu_device {int /*<<< orphan*/  iova_domain; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  iova_cache_put () ; 
- int /*<<< orphan*/  put_iova_domain (int /*<<< orphan*/ *) ; 
+
+
+
+struct imgu_device {int iova_domain; } ;
+
+
+ int iova_cache_put () ;
+ int put_iova_domain (int *) ;
 
 void imgu_dmamap_exit(struct imgu_device *imgu)
 {
-	put_iova_domain(&imgu->iova_domain);
-	iova_cache_put();
+ put_iova_domain(&imgu->iova_domain);
+ iova_cache_put();
 }

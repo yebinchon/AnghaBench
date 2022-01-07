@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vfs_dir ;
-struct vfs_stat {int /*<<< orphan*/  name; int /*<<< orphan*/  size; } ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- scalar_t__ VFS_RES_OK ; 
- int /*<<< orphan*/  luaL_getmetafield (int /*<<< orphan*/ *,int,char*) ; 
- char* luaL_optstring (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_error (int /*<<< orphan*/ *) ; 
- scalar_t__ lua_isnil (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_newtable (int /*<<< orphan*/ *) ; 
- int lua_pcall (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_settop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vfs_closedir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vfs_opendir (char*) ; 
- scalar_t__ vfs_readdir (int /*<<< orphan*/ *,struct vfs_stat*) ; 
+
+
+
+typedef int vfs_dir ;
+struct vfs_stat {int name; int size; } ;
+typedef int lua_State ;
+
+
+ scalar_t__ VFS_RES_OK ;
+ int luaL_getmetafield (int *,int,char*) ;
+ char* luaL_optstring (int *,int,int *) ;
+ int lua_error (int *) ;
+ scalar_t__ lua_isnil (int *,int) ;
+ int lua_newtable (int *) ;
+ int lua_pcall (int *,int,int,int ) ;
+ int lua_pushinteger (int *,int ) ;
+ int lua_pushstring (int *,int ) ;
+ int lua_pushvalue (int *,int) ;
+ int lua_setfield (int *,int,int ) ;
+ int lua_settop (int *,int) ;
+ int vfs_closedir (int *) ;
+ int * vfs_opendir (char*) ;
+ scalar_t__ vfs_readdir (int *,struct vfs_stat*) ;
 
 __attribute__((used)) static int file_list( lua_State* L )
 {
-  vfs_dir  *dir;
+  vfs_dir *dir;
   const char *pattern;
   struct vfs_stat stat;
   int pcres;
 
   lua_settop(L, 1);
-  pattern = luaL_optstring(L, 1, NULL);   /* Pattern (arg) or nil (not) at 1 */
+  pattern = luaL_optstring(L, 1, ((void*)0));
 
   dir = vfs_opendir("");
-  if (dir == NULL) {
+  if (dir == ((void*)0)) {
     return 0;
   }
 
-  lua_newtable( L );                      /* Table at 2 */
+  lua_newtable( L );
 
   if (pattern) {
-    /*
-     * We know that pattern is a string, and so the "match" method will always
-     * exist.  No need to check return value here
-     */
-    luaL_getmetafield( L, 1, "match" );  /* Function at 3 */
+
+
+
+
+    luaL_getmetafield( L, 1, "match" );
   }
 
   while (vfs_readdir(dir, &stat) == VFS_RES_OK) {
     if (pattern) {
-      lua_settop( L, 3 );                 /* Ensure nothing else on stack */
+      lua_settop( L, 3 );
 
-      /* Construct and pcall(string.match,name,pattern) */
+
       lua_pushvalue( L, 3 );
       lua_pushstring( L, stat.name );
       lua_pushvalue( L, 1 );
@@ -77,7 +77,7 @@ __attribute__((used)) static int file_list( lua_State* L )
     lua_setfield( L, 2, stat.name );
   }
 
-  /* Shed everything back to Table */
+
   lua_settop( L, 2 );
   vfs_closedir(dir);
   return 1;

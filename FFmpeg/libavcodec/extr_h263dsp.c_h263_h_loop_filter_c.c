@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int FFABS (int) ; 
- int av_clip (int,int,int) ; 
- int* ff_h263_loop_filter_strength ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int FFABS (int) ;
+ int av_clip (int,int,int) ;
+ int* ff_h263_loop_filter_strength ;
 
 __attribute__((used)) static void h263_h_loop_filter_c(uint8_t *src, int stride, int qscale)
 {
@@ -28,7 +28,7 @@ __attribute__((used)) static void h263_h_loop_filter_c(uint8_t *src, int stride,
         int p1 = src[y * stride - 1];
         int p2 = src[y * stride + 0];
         int p3 = src[y * stride + 1];
-        int d  = (p0 - p3 + 4 * (p2 - p1)) / 8;
+        int d = (p0 - p3 + 4 * (p2 - p1)) / 8;
 
         if (d < -2 * strength)
             d1 = 0;

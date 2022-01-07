@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int error; double size_in; scalar_t__ size_out; } ;
-typedef  TYPE_1__ compressResult_t ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ compressResult_t ;
+typedef int FILE ;
 
-/* Variables and functions */
- int compareFiles (int /*<<< orphan*/ * const,int /*<<< orphan*/ * const) ; 
- TYPE_1__ compress_file (int /*<<< orphan*/ * const,int /*<<< orphan*/ * const) ; 
- int decompress_file (int /*<<< orphan*/ * const,int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*) ; 
+
+ int compareFiles (int * const,int * const) ;
+ TYPE_1__ compress_file (int * const,int * const) ;
+ int decompress_file (int * const,int * const) ;
+ int fclose (int * const) ;
+ int * fopen (char*,char*) ;
+ int printf (char*,...) ;
+ int snprintf (char*,int,char*,char const*) ;
 
 int main(int argc, const char **argv) {
     char inpFilename[256] = { 0 };
@@ -42,8 +42,8 @@ int main(int argc, const char **argv) {
     printf("lz4 = [%s]\n", lz4Filename);
     printf("dec = [%s]\n", decFilename);
 
-    /* compress */
-    {   FILE* const inpFp = fopen(inpFilename, "rb");
+
+    { FILE* const inpFp = fopen(inpFilename, "rb");
         FILE* const outFp = fopen(lz4Filename, "wb");
 
         printf("compress : %s -> %s\n", inpFilename, lz4Filename);
@@ -58,13 +58,13 @@ int main(int argc, const char **argv) {
         }
         printf("%s: %zu → %zu bytes, %.1f%%\n",
             inpFilename,
-            (size_t)ret.size_in, (size_t)ret.size_out,  /* might overflow is size_t is 32 bits and size_{in,out} > 4 GB */
+            (size_t)ret.size_in, (size_t)ret.size_out,
             (double)ret.size_out / ret.size_in * 100);
         printf("compress : done\n");
     }
 
-    /* decompress */
-    {   FILE* const inpFp = fopen(lz4Filename, "rb");
+
+    { FILE* const inpFp = fopen(lz4Filename, "rb");
         FILE* const outFp = fopen(decFilename, "wb");
 
         printf("decompress : %s -> %s\n", lz4Filename, decFilename);
@@ -80,8 +80,8 @@ int main(int argc, const char **argv) {
         printf("decompress : done\n");
     }
 
-    /* verify */
-    {   FILE* const inpFp = fopen(inpFilename, "rb");
+
+    { FILE* const inpFp = fopen(inpFilename, "rb");
         FILE* const decFp = fopen(decFilename, "rb");
 
         printf("verify : %s <-> %s\n", inpFilename, decFilename);

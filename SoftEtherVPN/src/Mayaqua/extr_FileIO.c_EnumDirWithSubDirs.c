@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  tmp ;
-typedef  int /*<<< orphan*/  UNI_TOKEN_LIST ;
-typedef  int /*<<< orphan*/  TOKEN_LIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * EnumDirWithSubDirsW (int /*<<< orphan*/ *) ; 
- int MAX_SIZE ; 
- int /*<<< orphan*/  StrToUni (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  UniFreeToken (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * UniTokenListToTokenList (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int wchar_t ;
+typedef int tmp ;
+typedef int UNI_TOKEN_LIST ;
+typedef int TOKEN_LIST ;
+
+
+ int * EnumDirWithSubDirsW (int *) ;
+ int MAX_SIZE ;
+ int StrToUni (int *,int,char*) ;
+ int UniFreeToken (int *) ;
+ int * UniTokenListToTokenList (int *) ;
 
 TOKEN_LIST *EnumDirWithSubDirs(char *dirname)
 {
-	TOKEN_LIST *ret;
-	UNI_TOKEN_LIST *ret2;
-	wchar_t tmp[MAX_SIZE];
-	// Validate arguments
-	if (dirname == NULL)
-	{
-		dirname = "./";
-	}
+ TOKEN_LIST *ret;
+ UNI_TOKEN_LIST *ret2;
+ wchar_t tmp[MAX_SIZE];
 
-	StrToUni(tmp, sizeof(tmp), dirname);
+ if (dirname == ((void*)0))
+ {
+  dirname = "./";
+ }
 
-	ret2 = EnumDirWithSubDirsW(tmp);
+ StrToUni(tmp, sizeof(tmp), dirname);
 
-	ret = UniTokenListToTokenList(ret2);
+ ret2 = EnumDirWithSubDirsW(tmp);
 
-	UniFreeToken(ret2);
+ ret = UniTokenListToTokenList(ret2);
 
-	return ret;
+ UniFreeToken(ret2);
+
+ return ret;
 }

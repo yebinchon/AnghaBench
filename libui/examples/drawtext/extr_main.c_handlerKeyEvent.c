@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uiAreaKeyEvent ;
-typedef  int /*<<< orphan*/  uiAreaHandler ;
-typedef  int /*<<< orphan*/  uiArea ;
 
-/* Variables and functions */
+
+
+
+typedef int uiAreaKeyEvent ;
+typedef int uiAreaHandler ;
+typedef int uiArea ;
+
+
 
 __attribute__((used)) static int handlerKeyEvent(uiAreaHandler *ah, uiArea *a, uiAreaKeyEvent *e)
 {
-	// reject all keys
-	return 0;
+
+ return 0;
 }

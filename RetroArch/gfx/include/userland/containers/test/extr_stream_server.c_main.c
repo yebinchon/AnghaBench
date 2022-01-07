@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int vc_container_net_status_t ;
-typedef  int /*<<< orphan*/  name ;
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_NET_T ;
 
-/* Variables and functions */
- int MAX_BUFFER_LEN ; 
- int MAX_NAME_LEN ; 
- int VC_CONTAINER_NET_ERROR_CONNECTION_LOST ; 
- int /*<<< orphan*/  VC_CONTAINER_NET_OPEN_FLAG_STREAM ; 
- int VC_CONTAINER_NET_SUCCESS ; 
- scalar_t__ isalpha (unsigned char) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  putchar (char) ; 
- int /*<<< orphan*/  sscanf (char*,char*,int*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int vc_container_net_accept (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  vc_container_net_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vc_container_net_get_client_name (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  vc_container_net_get_client_port (int /*<<< orphan*/ *,unsigned short*) ; 
- int vc_container_net_listen (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * vc_container_net_open (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int*) ; 
- size_t vc_container_net_read (int /*<<< orphan*/ *,char*,int) ; 
- int vc_container_net_status (int /*<<< orphan*/ *) ; 
- size_t vc_container_net_write (int /*<<< orphan*/ *,char*,size_t) ; 
+
+
+
+typedef int vc_container_net_status_t ;
+typedef int name ;
+typedef int buffer ;
+typedef int VC_CONTAINER_NET_T ;
+
+
+ int MAX_BUFFER_LEN ;
+ int MAX_NAME_LEN ;
+ int VC_CONTAINER_NET_ERROR_CONNECTION_LOST ;
+ int VC_CONTAINER_NET_OPEN_FLAG_STREAM ;
+ int VC_CONTAINER_NET_SUCCESS ;
+ scalar_t__ isalpha (unsigned char) ;
+ int printf (char*,...) ;
+ int putchar (char) ;
+ int sscanf (char*,char*,int*) ;
+ int strcpy (char*,char*) ;
+ int vc_container_net_accept (int *,int **) ;
+ int vc_container_net_close (int *) ;
+ int vc_container_net_get_client_name (int *,char*,int) ;
+ int vc_container_net_get_client_port (int *,unsigned short*) ;
+ int vc_container_net_listen (int *,int) ;
+ int * vc_container_net_open (int *,char*,int ,int*) ;
+ size_t vc_container_net_read (int *,char*,int) ;
+ int vc_container_net_status (int *) ;
+ size_t vc_container_net_write (int *,char*,size_t) ;
 
 int main(int argc, char **argv)
 {
@@ -52,7 +52,7 @@ int main(int argc, char **argv)
       return 1;
    }
 
-   server_sock = vc_container_net_open(NULL, argv[1], VC_CONTAINER_NET_OPEN_FLAG_STREAM, &status);
+   server_sock = vc_container_net_open(((void*)0), argv[1], VC_CONTAINER_NET_OPEN_FLAG_STREAM, &status);
    if (!server_sock)
    {
       printf("vc_container_net_open failed: %d\n", status);
@@ -94,14 +94,14 @@ int main(int argc, char **argv)
 
          printf("Rx:");
 
-         /* Flip case and echo data back to client */
+
          for (jj = 0; jj < received; jj++, ptr++)
          {
             char c = *ptr;
 
             putchar(c);
             if (isalpha((unsigned char)c))
-               *ptr ^= 0x20;  /* Swaps case of ASCII alphabetic characters */
+               *ptr ^= 0x20;
          }
 
          ptr = buffer;
@@ -119,7 +119,7 @@ int main(int argc, char **argv)
                break;
             }
 
-            /* Print out bytes actually sent */
+
             while (sent--)
             {
                received--;

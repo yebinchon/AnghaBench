@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vo {int dwidth; int dheight; struct priv* priv; } ;
-struct priv {int /*<<< orphan*/  window; } ;
+struct priv {int window; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SDL_GetWindowSize (int /*<<< orphan*/ ,int*,int*) ; 
- int /*<<< orphan*/  resize (struct vo*,int,int) ; 
+
+ int SDL_GetWindowSize (int ,int*,int*) ;
+ int resize (struct vo*,int,int) ;
 
 __attribute__((used)) static void check_resize(struct vo *vo)
 {

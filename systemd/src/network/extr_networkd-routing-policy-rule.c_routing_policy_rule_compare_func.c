@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int family; int from_prefixlen; int to_prefixlen; int invert_rule; int tos; int fwmark; int fwmask; int priority; int table; int protocol; int /*<<< orphan*/  oif; int /*<<< orphan*/  iif; int /*<<< orphan*/  dport; int /*<<< orphan*/  sport; int /*<<< orphan*/  to; int /*<<< orphan*/  from; } ;
-typedef  TYPE_1__ RoutingPolicyRule ;
 
-/* Variables and functions */
-#define  AF_INET 129 
-#define  AF_INET6 128 
- int CMP (int,int) ; 
- int FAMILY_ADDRESS_SIZE (int) ; 
- int memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int strcmp_ptr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int family; int from_prefixlen; int to_prefixlen; int invert_rule; int tos; int fwmark; int fwmask; int priority; int table; int protocol; int oif; int iif; int dport; int sport; int to; int from; } ;
+typedef TYPE_1__ RoutingPolicyRule ;
+
+
+
+
+ int CMP (int,int) ;
+ int FAMILY_ADDRESS_SIZE (int) ;
+ int memcmp (int *,int *,int) ;
+ int strcmp_ptr (int ,int ) ;
 
 __attribute__((used)) static int routing_policy_rule_compare_func(const RoutingPolicyRule *a, const RoutingPolicyRule *b) {
         int r;
@@ -30,8 +30,8 @@ __attribute__((used)) static int routing_policy_rule_compare_func(const RoutingP
                 return r;
 
         switch (a->family) {
-        case AF_INET:
-        case AF_INET6:
+        case 129:
+        case 128:
                 r = CMP(a->from_prefixlen, b->from_prefixlen);
                 if (r != 0)
                         return r;
@@ -94,7 +94,7 @@ __attribute__((used)) static int routing_policy_rule_compare_func(const RoutingP
 
                 return 0;
         default:
-                /* treat any other address family as AF_UNSPEC */
+
                 return 0;
         }
 }

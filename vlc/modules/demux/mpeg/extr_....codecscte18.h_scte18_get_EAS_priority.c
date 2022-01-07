@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
+
+
+
+typedef int uint8_t ;
+
+
 
 __attribute__((used)) static inline int scte18_get_EAS_priority( const uint8_t *p_buffer, size_t i_buffer )
 {
@@ -20,13 +20,13 @@ __attribute__((used)) static inline int scte18_get_EAS_priority( const uint8_t *
         return -1;
 
     size_t i_offset = 6;
-    size_t i_len = p_buffer[i_offset]; /* EAS code Len */
-    i_offset += i_len + 1; /* EAS code Text */
+    size_t i_len = p_buffer[i_offset];
+    i_offset += i_len + 1;
     if( i_offset >= i_buffer )
         return -1;
 
-    i_len = p_buffer[i_offset]; /* NOA Len */
-    i_offset += i_len + 1; /* NOA Text */
+    i_len = p_buffer[i_offset];
+    i_offset += i_len + 1;
 
     i_offset += 1 + 4 + 2 + 1;
 

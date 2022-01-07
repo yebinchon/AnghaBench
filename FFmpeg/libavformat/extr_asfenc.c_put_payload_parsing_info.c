@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int int64_t ;
 struct TYPE_5__ {scalar_t__ multi_payloads_present; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * pb; TYPE_2__* priv_data; } ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_1__ AVFormatContext ;
-typedef  TYPE_2__ ASFContext ;
+struct TYPE_4__ {int * pb; TYPE_2__* priv_data; } ;
+typedef int AVIOContext ;
+typedef TYPE_1__ AVFormatContext ;
+typedef TYPE_2__ ASFContext ;
 
-/* Variables and functions */
- int ASF_PACKET_ERROR_CORRECTION_DATA_SIZE ; 
- int ASF_PACKET_ERROR_CORRECTION_FLAGS ; 
- int ASF_PAYLOAD_FLAGS ; 
- int ASF_PPI_FLAG_MULTIPLE_PAYLOADS_PRESENT ; 
- int ASF_PPI_FLAG_PADDING_LENGTH_FIELD_IS_BYTE ; 
- int ASF_PPI_FLAG_PADDING_LENGTH_FIELD_IS_WORD ; 
- int ASF_PPI_LENGTH_TYPE_FLAGS ; 
- int ASF_PPI_PROPERTY_FLAGS ; 
- scalar_t__ PACKET_HEADER_MIN_SIZE ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_w8 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wl16 (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  avio_wl32 (int /*<<< orphan*/ *,unsigned int) ; 
+
+ int ASF_PACKET_ERROR_CORRECTION_DATA_SIZE ;
+ int ASF_PACKET_ERROR_CORRECTION_FLAGS ;
+ int ASF_PAYLOAD_FLAGS ;
+ int ASF_PPI_FLAG_MULTIPLE_PAYLOADS_PRESENT ;
+ int ASF_PPI_FLAG_PADDING_LENGTH_FIELD_IS_BYTE ;
+ int ASF_PPI_FLAG_PADDING_LENGTH_FIELD_IS_WORD ;
+ int ASF_PPI_LENGTH_TYPE_FLAGS ;
+ int ASF_PPI_PROPERTY_FLAGS ;
+ scalar_t__ PACKET_HEADER_MIN_SIZE ;
+ int av_assert0 (int) ;
+ int avio_tell (int *) ;
+ int avio_w8 (int *,int) ;
+ int avio_wl16 (int *,unsigned int) ;
+ int avio_wl32 (int *,unsigned int) ;
 
 __attribute__((used)) static int put_payload_parsing_info(AVFormatContext *s,
                                     unsigned sendtime, unsigned duration,

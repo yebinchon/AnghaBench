@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  file ;
-typedef  scalar_t__ HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CREATE_ALWAYS ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFileA (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteFileA (char*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_NORMAL ; 
- int /*<<< orphan*/  GENERIC_WRITE ; 
- int /*<<< orphan*/  GetLongPathNameA (char*,char*,int) ; 
- int /*<<< orphan*/  GetTempPathA (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  MAX_PATH ; 
- int /*<<< orphan*/  PathAppendA (char*,char*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ setLayerValue (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  test_SdbSetPermLayerKeysLevel (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  test_SetPermLayerStateLevel (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int file ;
+typedef scalar_t__ HANDLE ;
+
+
+ int CREATE_ALWAYS ;
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFileA (char*,int ,int ,int *,int ,int ,int *) ;
+ int DeleteFileA (char*) ;
+ int FALSE ;
+ int FILE_ATTRIBUTE_NORMAL ;
+ int GENERIC_WRITE ;
+ int GetLongPathNameA (char*,char*,int) ;
+ int GetTempPathA (int ,char*) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int MAX_PATH ;
+ int PathAppendA (char*,char*) ;
+ int TRUE ;
+ int ok (int,char*,...) ;
+ scalar_t__ setLayerValue (int ,char*,int *) ;
+ int skip (char*) ;
+ int test_SdbSetPermLayerKeysLevel (int ,char*) ;
+ int test_SetPermLayerStateLevel (int ,char*) ;
 
 __attribute__((used)) static void test_SetPermLayer(void)
 {
@@ -42,7 +42,7 @@ __attribute__((used)) static void test_SetPermLayer(void)
     GetLongPathNameA(tmp, file, sizeof(file));
     PathAppendA(file, "test_file.exe");
 
-    hfile = CreateFileA(file, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+    hfile = CreateFileA(file, GENERIC_WRITE, 0, ((void*)0), CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, ((void*)0));
     ok(hfile != INVALID_HANDLE_VALUE, "CreateFile failed for '%s'\n", file);
     if (hfile == INVALID_HANDLE_VALUE)
     {
@@ -51,7 +51,7 @@ __attribute__((used)) static void test_SetPermLayer(void)
     }
     CloseHandle(hfile);
 
-    if (setLayerValue(FALSE, file, NULL))
+    if (setLayerValue(FALSE, file, ((void*)0)))
     {
         test_SdbSetPermLayerKeysLevel(FALSE, file);
         test_SetPermLayerStateLevel(FALSE, file);
@@ -60,7 +60,7 @@ __attribute__((used)) static void test_SetPermLayer(void)
     {
         skip("Skipping SetPermLayerStateLevel tests for User, because I cannot prepare the environment\n");
     }
-    if (setLayerValue(TRUE, file, NULL))
+    if (setLayerValue(TRUE, file, ((void*)0)))
     {
         test_SdbSetPermLayerKeysLevel(TRUE, file);
         test_SetPermLayerStateLevel(TRUE, file);

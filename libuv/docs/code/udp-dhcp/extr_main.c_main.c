@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_udp_send_t ;
-typedef  int /*<<< orphan*/  uv_buf_t ;
+
+
+
+
+typedef int uv_udp_send_t ;
+typedef int uv_buf_t ;
 struct sockaddr_in {int dummy; } ;
 struct sockaddr {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UV_RUN_DEFAULT ; 
- int /*<<< orphan*/  UV_UDP_REUSEADDR ; 
- int /*<<< orphan*/  alloc_buffer ; 
- int /*<<< orphan*/  loop ; 
- int /*<<< orphan*/  make_discover_msg () ; 
- int /*<<< orphan*/  on_read ; 
- int /*<<< orphan*/  on_send ; 
- int /*<<< orphan*/  recv_socket ; 
- int /*<<< orphan*/  send_socket ; 
- int /*<<< orphan*/  uv_default_loop () ; 
- int /*<<< orphan*/  uv_ip4_addr (char*,int,struct sockaddr_in*) ; 
- int uv_run (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv_udp_bind (int /*<<< orphan*/ *,struct sockaddr const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv_udp_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_udp_recv_start (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv_udp_send (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,struct sockaddr const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv_udp_set_broadcast (int /*<<< orphan*/ *,int) ; 
+
+ int UV_RUN_DEFAULT ;
+ int UV_UDP_REUSEADDR ;
+ int alloc_buffer ;
+ int loop ;
+ int make_discover_msg () ;
+ int on_read ;
+ int on_send ;
+ int recv_socket ;
+ int send_socket ;
+ int uv_default_loop () ;
+ int uv_ip4_addr (char*,int,struct sockaddr_in*) ;
+ int uv_run (int ,int ) ;
+ int uv_udp_bind (int *,struct sockaddr const*,int ) ;
+ int uv_udp_init (int ,int *) ;
+ int uv_udp_recv_start (int *,int ,int ) ;
+ int uv_udp_send (int *,int *,int *,int,struct sockaddr const*,int ) ;
+ int uv_udp_set_broadcast (int *,int) ;
 
 int main() {
     loop = uv_default_loop();

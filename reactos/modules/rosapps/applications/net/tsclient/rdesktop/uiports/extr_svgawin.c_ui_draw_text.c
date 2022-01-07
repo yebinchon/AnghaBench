@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8 ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8 ;
 struct TYPE_3__ {int size; scalar_t__ data; } ;
-typedef  int /*<<< orphan*/  FONTGLYPH ;
-typedef  TYPE_1__ DATABLOB ;
-typedef  int /*<<< orphan*/  BRUSH ;
+typedef int FONTGLYPH ;
+typedef TYPE_1__ DATABLOB ;
+typedef int BRUSH ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DO_GLYPH (int*,int) ; 
- int MIX_OPAQUE ; 
- int TEXT2_IMPLICIT_X ; 
- int TEXT2_VERTICAL ; 
- int /*<<< orphan*/  True ; 
- TYPE_1__* cache_get_text (int) ; 
- int /*<<< orphan*/  cache_put_text (int,int*,int) ; 
- int /*<<< orphan*/  cache_rect (int,int,int,int,int /*<<< orphan*/ ) ; 
- scalar_t__ contains_mouse (int,int,int,int) ; 
- int /*<<< orphan*/  draw_cursor_under (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fill_rect (int,int,int,int,int,int) ; 
- int /*<<< orphan*/  mousex ; 
- int /*<<< orphan*/  mousey ; 
+
+ int DO_GLYPH (int*,int) ;
+ int MIX_OPAQUE ;
+ int TEXT2_IMPLICIT_X ;
+ int TEXT2_VERTICAL ;
+ int True ;
+ TYPE_1__* cache_get_text (int) ;
+ int cache_put_text (int,int*,int) ;
+ int cache_rect (int,int,int,int,int ) ;
+ scalar_t__ contains_mouse (int,int,int,int) ;
+ int draw_cursor_under (int ,int ) ;
+ int error (char*) ;
+ int exit (int) ;
+ int fill_rect (int,int,int,int,int,int) ;
+ int mousex ;
+ int mousey ;
 
 void ui_draw_text(uint8 font, uint8 flags, uint8 opcode, int mixmode,
                   int x, int y,
@@ -60,7 +60,7 @@ void ui_draw_text(uint8 font, uint8 flags, uint8 opcode, int mixmode,
       fill_rect(clipx, clipy, clipcx, clipcy, bgcolour, 0xc);
   }
 
-  /* Paint text, character by character */
+
   for (i = 0; i < length;)
   {
     switch (text[i])
@@ -73,7 +73,7 @@ void ui_draw_text(uint8 font, uint8 flags, uint8 opcode, int mixmode,
           error("this shouldn't be happening\n");
           exit(1);
         }
-        /* this will move pointer from start to first character after FF command */
+
         length -= i + 3;
         text = &(text[i + 3]);
         i = 0;
@@ -81,7 +81,7 @@ void ui_draw_text(uint8 font, uint8 flags, uint8 opcode, int mixmode,
 
       case 0xfe:
         entry = cache_get_text(text[i + 1]);
-        if (entry != NULL)
+        if (entry != ((void*)0))
         {
           if ((((uint8 *) (entry->data))[1] == 0) && (!(flags & TEXT2_IMPLICIT_X)))
           {
@@ -98,7 +98,7 @@ void ui_draw_text(uint8 font, uint8 flags, uint8 opcode, int mixmode,
         else
           i += 2;
         length -= i;
-        /* this will move pointer from start to first character after FE command */
+
         text = &(text[i]);
         i = 0;
         break;

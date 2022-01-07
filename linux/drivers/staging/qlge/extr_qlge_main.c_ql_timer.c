@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct timer_list {int dummy; } ;
-struct ql_adapter {int /*<<< orphan*/  timer; int /*<<< orphan*/  ndev; int /*<<< orphan*/  pdev; } ;
+struct ql_adapter {int timer; int ndev; int pdev; } ;
 
-/* Variables and functions */
- int HZ ; 
- int /*<<< orphan*/  STS ; 
- struct ql_adapter* from_timer (int /*<<< orphan*/ ,struct timer_list*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ifup ; 
- scalar_t__ jiffies ; 
- int /*<<< orphan*/  mod_timer (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  netif_err (struct ql_adapter*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ pci_channel_offline (int /*<<< orphan*/ ) ; 
- struct ql_adapter* qdev ; 
- int /*<<< orphan*/  ql_read32 (struct ql_adapter*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timer ; 
+
+ int HZ ;
+ int STS ;
+ struct ql_adapter* from_timer (int ,struct timer_list*,int ) ;
+ int ifup ;
+ scalar_t__ jiffies ;
+ int mod_timer (int *,scalar_t__) ;
+ int netif_err (struct ql_adapter*,int ,int ,char*,int ) ;
+ scalar_t__ pci_channel_offline (int ) ;
+ struct ql_adapter* qdev ;
+ int ql_read32 (struct ql_adapter*,int ) ;
+ int timer ;
 
 __attribute__((used)) static void ql_timer(struct timer_list *t)
 {
-	struct ql_adapter *qdev = from_timer(qdev, t, timer);
-	u32 var = 0;
+ struct ql_adapter *qdev = from_timer(qdev, t, timer);
+ u32 var = 0;
 
-	var = ql_read32(qdev, STS);
-	if (pci_channel_offline(qdev->pdev)) {
-		netif_err(qdev, ifup, qdev->ndev, "EEH STS = 0x%.08x.\n", var);
-		return;
-	}
+ var = ql_read32(qdev, STS);
+ if (pci_channel_offline(qdev->pdev)) {
+  netif_err(qdev, ifup, qdev->ndev, "EEH STS = 0x%.08x.\n", var);
+  return;
+ }
 
-	mod_timer(&qdev->timer, jiffies + (5*HZ));
+ mod_timer(&qdev->timer, jiffies + (5*HZ));
 }

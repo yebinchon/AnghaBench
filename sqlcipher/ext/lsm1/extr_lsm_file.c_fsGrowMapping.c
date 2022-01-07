@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  scalar_t__ i64 ;
-struct TYPE_5__ {scalar_t__ pCompress; scalar_t__ nMap; int /*<<< orphan*/  pDb; TYPE_1__* pMapped; int /*<<< orphan*/ * pMap; int /*<<< orphan*/  fdDb; int /*<<< orphan*/  pEnv; } ;
-struct TYPE_4__ {int /*<<< orphan*/  aData; struct TYPE_4__* pMappedNext; } ;
-typedef  TYPE_1__ Page ;
-typedef  TYPE_2__ FileSystem ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int PAGE_HASPREV ; 
- int /*<<< orphan*/  assert (int) ; 
- int lsmEnvRemap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ **,scalar_t__*) ; 
- int /*<<< orphan*/  lsmSortedRemap (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef scalar_t__ i64 ;
+struct TYPE_5__ {scalar_t__ pCompress; scalar_t__ nMap; int pDb; TYPE_1__* pMapped; int * pMap; int fdDb; int pEnv; } ;
+struct TYPE_4__ {int aData; struct TYPE_4__* pMappedNext; } ;
+typedef TYPE_1__ Page ;
+typedef TYPE_2__ FileSystem ;
+
+
+ int LSM_OK ;
+ int PAGE_HASPREV ;
+ int assert (int) ;
+ int lsmEnvRemap (int ,int ,scalar_t__,int **,scalar_t__*) ;
+ int lsmSortedRemap (int ) ;
 
 __attribute__((used)) static void fsGrowMapping(
-  FileSystem *pFS,                /* File system object */
-  i64 iSz,                        /* Minimum size to extend mapping to */
-  int *pRc                        /* IN/OUT: Error code */
+  FileSystem *pFS,
+  i64 iSz,
+  int *pRc
 ){
   assert( pFS->pCompress==0 );
   assert( PAGE_HASPREV==4 );

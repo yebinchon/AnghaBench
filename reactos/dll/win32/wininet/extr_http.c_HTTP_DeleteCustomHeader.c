@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {size_t nCustHeaders; TYPE_2__* custHeaders; } ;
-typedef  TYPE_1__ http_request_t ;
-struct TYPE_7__ {int /*<<< orphan*/  lpszValue; int /*<<< orphan*/  lpszField; } ;
-typedef  int /*<<< orphan*/  HTTPHEADERW ;
-typedef  size_t DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ http_request_t ;
+struct TYPE_7__ {int lpszValue; int lpszField; } ;
+typedef int HTTPHEADERW ;
+typedef size_t DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memmove (TYPE_2__*,TYPE_2__*,size_t) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
+
+ int FALSE ;
+ int TRUE ;
+ int heap_free (int ) ;
+ int memmove (TYPE_2__*,TYPE_2__*,size_t) ;
+ int memset (TYPE_2__*,int ,int) ;
 
 __attribute__((used)) static BOOL HTTP_DeleteCustomHeader(http_request_t *request, DWORD index)
 {

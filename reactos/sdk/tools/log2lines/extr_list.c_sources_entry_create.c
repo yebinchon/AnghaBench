@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {char* buf; char* name; } ;
-typedef  TYPE_1__* PLIST_MEMBER ;
-typedef  scalar_t__ PLIST ;
-typedef  int /*<<< orphan*/  LIST_MEMBER ;
+typedef TYPE_1__* PLIST_MEMBER ;
+typedef scalar_t__ PLIST ;
+typedef int LIST_MEMBER ;
 
-/* Variables and functions */
- TYPE_1__* entry_delete (TYPE_1__*) ; 
- int /*<<< orphan*/  entry_insert (scalar_t__,TYPE_1__*) ; 
- scalar_t__ entry_lookup (scalar_t__,char*) ; 
- int /*<<< orphan*/  l2l_dbg (int,char*,...) ; 
- void* malloc (int) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int strlen (char*) ; 
+
+ TYPE_1__* entry_delete (TYPE_1__*) ;
+ int entry_insert (scalar_t__,TYPE_1__*) ;
+ scalar_t__ entry_lookup (scalar_t__,char*) ;
+ int l2l_dbg (int,char*,...) ;
+ void* malloc (int) ;
+ int strcat (char*,char*) ;
+ int strcpy (char*,char*) ;
+ int strlen (char*) ;
 
 PLIST_MEMBER
 sources_entry_create(PLIST list, char *path, char *prefix)
 {
     PLIST_MEMBER pentry;
-    char *s = NULL;
+    char *s = ((void*)0);
     int l;
 
     if (!path)
-        return NULL;
+        return ((void*)0);
     if (!prefix)
         prefix = "";
 
     pentry = malloc(sizeof(LIST_MEMBER));
     if (!pentry)
-        return NULL;
+        return ((void*)0);
 
     l = strlen(path) + strlen(prefix);
     pentry->buf = s = malloc(l + 1);

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-struct TYPE_5__ {int /*<<< orphan*/  i_rate; int /*<<< orphan*/  i_format; } ;
-typedef  TYPE_1__ audio_sample_format_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  aout_FormatPrintChannels (TYPE_1__ const*) ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,char const*,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+struct TYPE_5__ {int i_rate; int i_format; } ;
+typedef TYPE_1__ audio_sample_format_t ;
+
+
+ int aout_FormatPrintChannels (TYPE_1__ const*) ;
+ int msg_Dbg (int *,char*,char const*,char*,char*,int ,int ,int ,int ) ;
 
 void aout_FormatsPrint( vlc_object_t *obj, const char * psz_text,
                         const audio_sample_format_t * p_format1,

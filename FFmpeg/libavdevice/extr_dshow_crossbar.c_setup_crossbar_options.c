@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct dshow_ctx {int crossbar_video_input_pin_number; int crossbar_audio_input_pin_number; char** device_name; scalar_t__ list_options; } ;
-typedef  enum dshowDeviceType { ____Placeholder_dshowDeviceType } dshowDeviceType ;
+typedef enum dshowDeviceType { ____Placeholder_dshowDeviceType } dshowDeviceType ;
 struct TYPE_4__ {struct dshow_ctx* priv_data; } ;
-typedef  int /*<<< orphan*/  IAMCrossbar ;
-typedef  scalar_t__ HRESULT ;
-typedef  TYPE_1__ AVFormatContext ;
+typedef int IAMCrossbar ;
+typedef scalar_t__ HRESULT ;
+typedef TYPE_1__ AVFormatContext ;
 
-/* Variables and functions */
- scalar_t__ AVERROR (int /*<<< orphan*/ ) ; 
- int AV_LOG_DEBUG ; 
- int AV_LOG_ERROR ; 
- int AV_LOG_INFO ; 
- int AV_LOG_WARNING ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  FALSE ; 
- long GetPhysicalPinName (long) ; 
- scalar_t__ IAMCrossbar_CanRoute (int /*<<< orphan*/ *,int,int) ; 
- scalar_t__ IAMCrossbar_Route (int /*<<< orphan*/ *,int,int) ; 
- scalar_t__ IAMCrossbar_get_CrossbarPinInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,long*,long*) ; 
- scalar_t__ IAMCrossbar_get_IsRoutedTo (int /*<<< orphan*/ *,int,long*) ; 
- scalar_t__ IAMCrossbar_get_PinCounts (int /*<<< orphan*/ *,long*,long*) ; 
- long PhysConn_Audio_AudioDecoder ; 
- long PhysConn_Video_VideoDecoder ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int,char*,...) ; 
+
+ scalar_t__ AVERROR (int ) ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_INFO ;
+ int AV_LOG_WARNING ;
+ int EIO ;
+ int FALSE ;
+ long GetPhysicalPinName (long) ;
+ scalar_t__ IAMCrossbar_CanRoute (int *,int,int) ;
+ scalar_t__ IAMCrossbar_Route (int *,int,int) ;
+ scalar_t__ IAMCrossbar_get_CrossbarPinInfo (int *,int ,int,long*,long*) ;
+ scalar_t__ IAMCrossbar_get_IsRoutedTo (int *,int,long*) ;
+ scalar_t__ IAMCrossbar_get_PinCounts (int *,long*,long*) ;
+ long PhysConn_Audio_AudioDecoder ;
+ long PhysConn_Video_VideoDecoder ;
+ scalar_t__ S_OK ;
+ int TRUE ;
+ int av_log (TYPE_1__*,int,char*,...) ;
 
 __attribute__((used)) static HRESULT
 setup_crossbar_options(IAMCrossbar *cross_bar, enum dshowDeviceType devtype, AVFormatContext *avctx)
@@ -63,7 +63,7 @@ setup_crossbar_options(IAMCrossbar *cross_bar, enum dshowDeviceType devtype, AVF
         long related_pin, pin_type, route_to_pin;
         hr = IAMCrossbar_get_CrossbarPinInfo(cross_bar, FALSE, i, &related_pin, &pin_type);
         if (pin_type == PhysConn_Video_VideoDecoder) {
-            /* assume there is only one "Video (and one Audio) Decoder" output pin, and it's all we care about routing to...for now */
+
             if (video_input_pin != -1) {
                 av_log(avctx, log_level, "Routing video input from pin %d\n", video_input_pin);
                 hr = IAMCrossbar_Route(cross_bar, i, video_input_pin);

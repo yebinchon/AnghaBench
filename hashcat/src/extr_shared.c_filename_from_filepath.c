@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* strrchr (char*,char) ; 
+ char* strrchr (char*,char) ;
 
 char *filename_from_filepath (char *filepath)
 {
-  char *ptr = NULL;
+  char *ptr = ((void*)0);
 
-  if ((ptr = strrchr (filepath, '/')) != NULL)
+  if ((ptr = strrchr (filepath, '/')) != ((void*)0))
   {
     ptr++;
   }
-  else if ((ptr = strrchr (filepath, '\\')) != NULL)
+  else if ((ptr = strrchr (filepath, '\\')) != ((void*)0))
   {
     ptr++;
   }

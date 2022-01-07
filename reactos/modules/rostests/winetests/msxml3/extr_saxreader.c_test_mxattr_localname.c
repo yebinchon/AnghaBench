@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct msxmlsupported_data_t {scalar_t__ clsid; int /*<<< orphan*/  name; } ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  ISAXAttributes ;
-typedef  int /*<<< orphan*/  IMXAttributes ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_SAXAttributes ; 
- int /*<<< orphan*/  CLSID_SAXAttributes30 ; 
- int /*<<< orphan*/  CoCreateInstance (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  EXPECT_HR (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  E_POINTER ; 
- int /*<<< orphan*/  IID_IMXAttributes ; 
- int /*<<< orphan*/  IID_ISAXAttributes ; 
- int /*<<< orphan*/  IMXAttributes_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IMXAttributes_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMXAttributes_addAttribute (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ISAXAttributes_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ISAXAttributes_getIndexFromName (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int*) ; 
- scalar_t__ IsEqualGUID (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  _bstr_ (char*) ; 
- int /*<<< orphan*/  free_bstrs () ; 
- int /*<<< orphan*/  is_clsid_supported (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lstrlenW (char const*) ; 
- int /*<<< orphan*/  mxattributes_support_data ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ,int) ; 
- struct msxmlsupported_data_t* saxattr_support_data ; 
+
+
+
+struct msxmlsupported_data_t {scalar_t__ clsid; int name; } ;
+typedef char WCHAR ;
+typedef int ISAXAttributes ;
+typedef int IMXAttributes ;
+typedef int HRESULT ;
+
+
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_SAXAttributes ;
+ int CLSID_SAXAttributes30 ;
+ int CoCreateInstance (scalar_t__,int *,int ,int *,void**) ;
+ int EXPECT_HR (int ,int ) ;
+ int E_INVALIDARG ;
+ int E_POINTER ;
+ int IID_IMXAttributes ;
+ int IID_ISAXAttributes ;
+ int IMXAttributes_QueryInterface (int *,int *,void**) ;
+ int IMXAttributes_Release (int *) ;
+ int IMXAttributes_addAttribute (int *,int ,int ,int ,int ,int ) ;
+ int ISAXAttributes_Release (int *) ;
+ int ISAXAttributes_getIndexFromName (int *,char const*,int ,char const*,int ,int*) ;
+ scalar_t__ IsEqualGUID (scalar_t__,int *) ;
+ int S_OK ;
+ int _bstr_ (char*) ;
+ int free_bstrs () ;
+ int is_clsid_supported (scalar_t__,int ) ;
+ int lstrlenW (char const*) ;
+ int mxattributes_support_data ;
+ int ok (int,char*,int ,int) ;
+ struct msxmlsupported_data_t* saxattr_support_data ;
 
 __attribute__((used)) static void test_mxattr_localname(void)
 {
@@ -63,17 +63,17 @@ __attribute__((used)) static void test_mxattr_localname(void)
             continue;
         }
 
-        hr = CoCreateInstance(table->clsid, NULL, CLSCTX_INPROC_SERVER,
+        hr = CoCreateInstance(table->clsid, ((void*)0), CLSCTX_INPROC_SERVER,
             &IID_IMXAttributes, (void**)&mxattr);
         EXPECT_HR(hr, S_OK);
 
         hr = IMXAttributes_QueryInterface(mxattr, &IID_ISAXAttributes, (void**)&saxattr);
         EXPECT_HR(hr, S_OK);
 
-        hr = ISAXAttributes_getIndexFromName(saxattr, NULL, 0, NULL, 0, &index);
+        hr = ISAXAttributes_getIndexFromName(saxattr, ((void*)0), 0, ((void*)0), 0, &index);
         EXPECT_HR(hr, E_INVALIDARG);
 
-        /* add some ambiguos attribute names */
+
         hr = IMXAttributes_addAttribute(mxattr, _bstr_("uri"), _bstr_("localname"),
             _bstr_("a:localname"), _bstr_(""), _bstr_("value"));
         EXPECT_HR(hr, S_OK);
@@ -99,25 +99,25 @@ __attribute__((used)) static void test_mxattr_localname(void)
         if (IsEqualGUID(table->clsid, &CLSID_SAXAttributes) ||
             IsEqualGUID(table->clsid, &CLSID_SAXAttributes30))
         {
-            hr = ISAXAttributes_getIndexFromName(saxattr, NULL, 0, NULL, 0, NULL);
+            hr = ISAXAttributes_getIndexFromName(saxattr, ((void*)0), 0, ((void*)0), 0, ((void*)0));
             EXPECT_HR(hr, E_POINTER);
 
-            hr = ISAXAttributes_getIndexFromName(saxattr, uriW, lstrlenW(uriW), localname1W, lstrlenW(localname1W), NULL);
+            hr = ISAXAttributes_getIndexFromName(saxattr, uriW, lstrlenW(uriW), localname1W, lstrlenW(localname1W), ((void*)0));
             EXPECT_HR(hr, E_POINTER);
         }
         else
         {
-            hr = ISAXAttributes_getIndexFromName(saxattr, NULL, 0, NULL, 0, NULL);
+            hr = ISAXAttributes_getIndexFromName(saxattr, ((void*)0), 0, ((void*)0), 0, ((void*)0));
             EXPECT_HR(hr, E_INVALIDARG);
 
-            hr = ISAXAttributes_getIndexFromName(saxattr, uriW, lstrlenW(uriW), localname1W, lstrlenW(localname1W), NULL);
+            hr = ISAXAttributes_getIndexFromName(saxattr, uriW, lstrlenW(uriW), localname1W, lstrlenW(localname1W), ((void*)0));
             EXPECT_HR(hr, E_INVALIDARG);
         }
 
-        hr = ISAXAttributes_getIndexFromName(saxattr, uriW, lstrlenW(uriW), NULL, 0, &index);
+        hr = ISAXAttributes_getIndexFromName(saxattr, uriW, lstrlenW(uriW), ((void*)0), 0, &index);
         EXPECT_HR(hr, E_INVALIDARG);
 
-        hr = ISAXAttributes_getIndexFromName(saxattr, NULL, 0, localname1W, lstrlenW(localname1W), &index);
+        hr = ISAXAttributes_getIndexFromName(saxattr, ((void*)0), 0, localname1W, lstrlenW(localname1W), &index);
         EXPECT_HR(hr, E_INVALIDARG);
 
         table++;

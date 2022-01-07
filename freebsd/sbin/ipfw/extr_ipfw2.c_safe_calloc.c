@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EX_OSERR ; 
- void* calloc (size_t,size_t) ; 
- int /*<<< orphan*/  err (int /*<<< orphan*/ ,char*) ; 
+ int EX_OSERR ;
+ void* calloc (size_t,size_t) ;
+ int err (int ,char*) ;
 
 void *
 safe_calloc(size_t number, size_t size)
 {
-	void *ret = calloc(number, size);
+ void *ret = calloc(number, size);
 
-	if (ret == NULL)
-		err(EX_OSERR, "calloc");
-	return ret;
+ if (ret == ((void*)0))
+  err(EX_OSERR, "calloc");
+ return ret;
 }

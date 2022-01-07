@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int gint ;
-typedef  char gchar ;
 
-/* Variables and functions */
-#define  CAMEL_FIRST_UPPER 129 
-#define  CAMEL_OTHER 128 
+
+
+
+typedef int gint ;
+typedef char gchar ;
+
+
+
+
 
 __attribute__((used)) static void
 camel_convert(gchar *str)
 {
-    gint state = CAMEL_OTHER;
+    gint state = 128;
 
-    if (str == NULL) return;
+    if (str == ((void*)0)) return;
     while (*str)
     {
         if (*str == '_') *str = ' ';
         switch (state)
         {
-            case CAMEL_OTHER:
+            case 128:
             {
                 if (*str >= 'A' && *str <= 'Z')
-                    state = CAMEL_FIRST_UPPER;
+                    state = 129;
                 else
-                    state = CAMEL_OTHER;
+                    state = 128;
 
             } break;
-            case CAMEL_FIRST_UPPER:
+            case 129:
             {
                 if (*str >= 'A' && *str <= 'Z')
                     *str = *str - 'A' + 'a';
                 else
-                    state = CAMEL_OTHER;
+                    state = 128;
             } break;
         }
         str++;

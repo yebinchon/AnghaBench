@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  name; int /*<<< orphan*/  attrs; } ;
-typedef  TYPE_1__ type_t ;
-typedef  int /*<<< orphan*/  UUID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATTR_UUID ; 
- int /*<<< orphan*/  count_methods (TYPE_1__ const*) ; 
- int /*<<< orphan*/  format_uuid (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * get_attrp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  indent ; 
- scalar_t__ is_local (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_object (TYPE_1__ const*) ; 
- int /*<<< orphan*/  put_str (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  type_iface_get_inherit (TYPE_1__ const*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int name; int attrs; } ;
+typedef TYPE_1__ type_t ;
+typedef int UUID ;
+
+
+ int ATTR_UUID ;
+ int count_methods (TYPE_1__ const*) ;
+ int format_uuid (int const*) ;
+ int * get_attrp (int ,int ) ;
+ int indent ;
+ scalar_t__ is_local (int ) ;
+ int is_object (TYPE_1__ const*) ;
+ int put_str (int ,char*,...) ;
+ int type_iface_get_inherit (TYPE_1__ const*) ;
 
 __attribute__((used)) static void write_interface( const type_t *iface, const type_t *ps_factory )
 {
@@ -33,7 +33,7 @@ __attribute__((used)) static void write_interface( const type_t *iface, const ty
 
     if (!uuid) return;
     if (!is_object( iface )) return;
-    if (!type_iface_get_inherit(iface)) /* special case for IUnknown */
+    if (!type_iface_get_inherit(iface))
     {
         put_str( indent, "'%s' = s '%s'\n", format_uuid( uuid ), iface->name );
         return;

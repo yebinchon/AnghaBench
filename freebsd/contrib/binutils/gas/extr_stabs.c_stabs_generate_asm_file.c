@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  N_SO ; 
- char* alloca (scalar_t__) ; 
- int /*<<< orphan*/  as_where (char**,unsigned int*) ; 
- int /*<<< orphan*/  generate_asm_file (int /*<<< orphan*/ ,char*) ; 
- char* getpwd () ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,char*) ; 
- scalar_t__ strlen (char*) ; 
- scalar_t__ use_gnu_debug_info_extensions ; 
+ int N_SO ;
+ char* alloca (scalar_t__) ;
+ int as_where (char**,unsigned int*) ;
+ int generate_asm_file (int ,char*) ;
+ char* getpwd () ;
+ int sprintf (char*,char*,char*,char*) ;
+ scalar_t__ strlen (char*) ;
+ scalar_t__ use_gnu_debug_info_extensions ;
 
 void
 stabs_generate_asm_file (void)

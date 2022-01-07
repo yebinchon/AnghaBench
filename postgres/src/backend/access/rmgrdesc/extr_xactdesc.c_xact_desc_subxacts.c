@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TransactionId ;
-typedef  int /*<<< orphan*/  StringInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  appendStringInfo (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  appendStringInfoString (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int TransactionId ;
+typedef int StringInfo ;
+
+
+ int appendStringInfo (int ,char*,int ) ;
+ int appendStringInfoString (int ,char*) ;
 
 __attribute__((used)) static void
 xact_desc_subxacts(StringInfo buf, int nsubxacts, TransactionId *subxacts)
 {
-	int		i;
+ int i;
 
-	if (nsubxacts > 0)
-	{
-		appendStringInfoString(buf, "; subxacts:");
-		for (i = 0; i < nsubxacts; i++)
-			appendStringInfo(buf, " %u", subxacts[i]);
-	}
+ if (nsubxacts > 0)
+ {
+  appendStringInfoString(buf, "; subxacts:");
+  for (i = 0; i < nsubxacts; i++)
+   appendStringInfo(buf, " %u", subxacts[i]);
+ }
 }

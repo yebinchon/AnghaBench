@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * file_buffer ; 
- int /*<<< orphan*/ * file_handle ; 
- scalar_t__ file_pointer ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
+ int fclose (int *) ;
+ int * file_buffer ;
+ int * file_handle ;
+ scalar_t__ file_pointer ;
+ int free (int *) ;
 
 __attribute__((used)) static void
 close_file()
 {
   free(file_buffer);
-  file_buffer = NULL;
+  file_buffer = ((void*)0);
   fclose(file_handle);
-  file_handle = NULL;
+  file_handle = ((void*)0);
   file_pointer = 0;
 }

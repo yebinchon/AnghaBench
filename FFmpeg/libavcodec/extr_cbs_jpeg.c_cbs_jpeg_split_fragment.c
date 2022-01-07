@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_8__ {int /*<<< orphan*/  log_ctx; } ;
-struct TYPE_7__ {int data_size; int* data; int /*<<< orphan*/ * data_ref; } ;
-typedef  TYPE_1__ CodedBitstreamFragment ;
-typedef  TYPE_2__ CodedBitstreamContext ;
-typedef  int /*<<< orphan*/  AVBufferRef ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int AV_RB16 (int*) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int JPEG_MARKER_EOI ; 
- int JPEG_MARKER_SOI ; 
- int JPEG_MARKER_SOS ; 
- int /*<<< orphan*/  av_freep (int**) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- int* av_malloc (scalar_t__) ; 
- int ff_cbs_insert_unit_data (TYPE_2__*,TYPE_1__*,int,int,int*,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,scalar_t__) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_8__ {int log_ctx; } ;
+struct TYPE_7__ {int data_size; int* data; int * data_ref; } ;
+typedef TYPE_1__ CodedBitstreamFragment ;
+typedef TYPE_2__ CodedBitstreamContext ;
+typedef int AVBufferRef ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ int AV_RB16 (int*) ;
+ int ENOMEM ;
+ int JPEG_MARKER_EOI ;
+ int JPEG_MARKER_SOI ;
+ int JPEG_MARKER_SOS ;
+ int av_freep (int**) ;
+ int av_log (int ,int ,char*,...) ;
+ int* av_malloc (scalar_t__) ;
+ int ff_cbs_insert_unit_data (TYPE_2__*,TYPE_1__*,int,int,int*,size_t,int *) ;
+ int memcpy (int*,int*,int) ;
+ int memset (int*,int ,scalar_t__) ;
 
 __attribute__((used)) static int cbs_jpeg_split_fragment(CodedBitstreamContext *ctx,
                                    CodedBitstreamFragment *frag,
@@ -48,7 +48,7 @@ __attribute__((used)) static int cbs_jpeg_split_fragment(CodedBitstreamContext *
     int err, i, j, length;
 
     if (frag->data_size < 4) {
-        // Definitely too short to be meaningful.
+
         return AVERROR_INVALIDDATA;
     }
 
@@ -76,7 +76,7 @@ __attribute__((used)) static int cbs_jpeg_split_fragment(CodedBitstreamContext *
         return AVERROR_INVALIDDATA;
     }
     marker = frag->data[i];
-    start  = i + 1;
+    start = i + 1;
 
     for (unit = 0;; unit++) {
         if (marker == JPEG_MARKER_EOI) {
@@ -94,7 +94,7 @@ __attribute__((used)) static int cbs_jpeg_split_fragment(CodedBitstreamContext *
                     if (frag->data[i] == 0x00)
                         continue;
                     next_marker = frag->data[i];
-                    next_start  = i + 1;
+                    next_start = i + 1;
                 }
                 break;
             }
@@ -123,7 +123,7 @@ __attribute__((used)) static int cbs_jpeg_split_fragment(CodedBitstreamContext *
                     next_marker = -1;
                 } else {
                     next_marker = frag->data[i];
-                    next_start  = i + 1;
+                    next_start = i + 1;
                 }
             }
         }
@@ -131,8 +131,8 @@ __attribute__((used)) static int cbs_jpeg_split_fragment(CodedBitstreamContext *
         if (marker == JPEG_MARKER_SOS) {
             length = AV_RB16(frag->data + start);
 
-            data_ref = NULL;
-            data     = av_malloc(end - start +
+            data_ref = ((void*)0);
+            data = av_malloc(end - start +
                                  AV_INPUT_BUFFER_PADDING_SIZE);
             if (!data)
                 return AVERROR(ENOMEM);
@@ -152,9 +152,9 @@ __attribute__((used)) static int cbs_jpeg_split_fragment(CodedBitstreamContext *
             memset(data + data_size, 0, AV_INPUT_BUFFER_PADDING_SIZE);
 
         } else {
-            data      = frag->data + start;
+            data = frag->data + start;
             data_size = end - start;
-            data_ref  = frag->data_ref;
+            data_ref = frag->data_ref;
         }
 
         err = ff_cbs_insert_unit_data(ctx, frag, unit, marker,
@@ -168,7 +168,7 @@ __attribute__((used)) static int cbs_jpeg_split_fragment(CodedBitstreamContext *
         if (next_marker == -1)
             break;
         marker = next_marker;
-        start  = next_start;
+        start = next_start;
     }
 
     return 0;

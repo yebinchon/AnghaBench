@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct espconn {int dummy; } ;
-typedef  int /*<<< orphan*/  lua_State ;
+typedef int lua_State ;
 struct TYPE_7__ {scalar_t__ self_ref; TYPE_4__* pesp_conn; } ;
-typedef  TYPE_2__ lcoap_userdata ;
+typedef TYPE_2__ lcoap_userdata ;
 struct TYPE_6__ {TYPE_4__* udp; } ;
 struct TYPE_8__ {TYPE_1__ proto; scalar_t__ local_port; scalar_t__ remote_port; } ;
 
-/* Variables and functions */
- scalar_t__ LUA_NOREF ; 
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- int /*<<< orphan*/  NODE_DBG (char*) ; 
- int /*<<< orphan*/  espconn_delete (TYPE_4__*) ; 
- int /*<<< orphan*/  free (TYPE_4__*) ; 
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,TYPE_2__*,int,char*) ; 
- scalar_t__ luaL_checkudata (int /*<<< orphan*/ *,int,char const*) ; 
- int /*<<< orphan*/  luaL_unref (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ scalar_t__ LUA_NOREF ;
+ int LUA_REGISTRYINDEX ;
+ int NODE_DBG (char*) ;
+ int espconn_delete (TYPE_4__*) ;
+ int free (TYPE_4__*) ;
+ int luaL_argcheck (int *,TYPE_2__*,int,char*) ;
+ scalar_t__ luaL_checkudata (int *,int,char const*) ;
+ int luaL_unref (int *,int ,scalar_t__) ;
 
 __attribute__((used)) static int coap_delete( lua_State* L, const char* mt )
 {
-  struct espconn *pesp_conn = NULL;
+  struct espconn *pesp_conn = ((void*)0);
   lcoap_userdata *cud;
 
   cud = (lcoap_userdata *)luaL_checkudata(L, 1, mt);
   luaL_argcheck(L, cud, 1, "Server/Client expected");
-  if(cud==NULL){
+  if(cud==((void*)0)){
     NODE_DBG("userdata is nil.\n");
     return 0;
   }
 
-  // free (unref) callback ref
+
   if(LUA_NOREF!=cud->self_ref){
     luaL_unref(L, LUA_REGISTRYINDEX, cud->self_ref);
     cud->self_ref = LUA_NOREF;
@@ -53,9 +53,9 @@ __attribute__((used)) static int coap_delete( lua_State* L, const char* mt )
     if(cud->pesp_conn->proto.udp->remote_port || cud->pesp_conn->proto.udp->local_port)
       espconn_delete(cud->pesp_conn);
     free(cud->pesp_conn->proto.udp);
-    cud->pesp_conn->proto.udp = NULL;
+    cud->pesp_conn->proto.udp = ((void*)0);
     free(cud->pesp_conn);
-    cud->pesp_conn = NULL;
+    cud->pesp_conn = ((void*)0);
   }
 
   NODE_DBG("coap_delete is called.\n");

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct uuid_command {void* uuid; } ;
-typedef  int /*<<< orphan*/  kernel_mach_header_t ;
+typedef int kernel_mach_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LC_UUID ; 
- scalar_t__ getcommandfromheader (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int LC_UUID ;
+ scalar_t__ getcommandfromheader (int *,int ) ;
 
 void *
 getuuidfromheader(kernel_mach_header_t *mhp, unsigned long *size)
@@ -23,12 +23,12 @@ getuuidfromheader(kernel_mach_header_t *mhp, unsigned long *size)
     struct uuid_command *cmd = (struct uuid_command *)
         getcommandfromheader(mhp, LC_UUID);
 
-    if (cmd != NULL) {
+    if (cmd != ((void*)0)) {
         if (size) {
             *size = sizeof(cmd->uuid);
         }
         return cmd->uuid;
     }
 
-    return NULL;
+    return ((void*)0);
 }

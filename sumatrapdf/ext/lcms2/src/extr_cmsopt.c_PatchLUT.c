@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int cmsUInt32Number ;
-typedef  scalar_t__ cmsUInt16Number ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int cmsUInt32Number ;
+typedef scalar_t__ cmsUInt16Number ;
 struct TYPE_7__ {scalar_t__ Type; scalar_t__ Data; } ;
-typedef  TYPE_2__ cmsStage ;
+typedef TYPE_2__ cmsStage ;
 struct TYPE_8__ {double* Domain; scalar_t__* opta; } ;
-typedef  TYPE_3__ cmsInterpParams ;
-typedef  double cmsFloat64Number ;
-typedef  int /*<<< orphan*/  cmsContext ;
-typedef  int /*<<< orphan*/  cmsBool ;
+typedef TYPE_3__ cmsInterpParams ;
+typedef double cmsFloat64Number ;
+typedef int cmsContext ;
+typedef int cmsBool ;
 struct TYPE_6__ {scalar_t__* T; } ;
 struct TYPE_9__ {TYPE_1__ Tab; TYPE_3__* Params; } ;
-typedef  TYPE_4__ _cmsStageCLutData ;
+typedef TYPE_4__ _cmsStageCLutData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  cmsERROR_INTERNAL ; 
- scalar_t__ cmsSigCLutElemType ; 
- int /*<<< orphan*/  cmsSignalError (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ floor (double) ; 
+
+ int FALSE ;
+ int TRUE ;
+ int cmsERROR_INTERNAL ;
+ scalar_t__ cmsSigCLutElemType ;
+ int cmsSignalError (int ,int ,char*,...) ;
+ scalar_t__ floor (double) ;
 
 __attribute__((used)) static
-cmsBool  PatchLUT(cmsContext ContextID, cmsStage* CLUT, cmsUInt16Number At[], cmsUInt16Number Value[],
+cmsBool PatchLUT(cmsContext ContextID, cmsStage* CLUT, cmsUInt16Number At[], cmsUInt16Number Value[],
                   cmsUInt32Number nChannelsOut, cmsUInt32Number nChannelsIn)
 {
     _cmsStageCLutData* Grid = (_cmsStageCLutData*) CLUT ->Data;
-    cmsInterpParams* p16  = Grid ->Params;
+    cmsInterpParams* p16 = Grid ->Params;
     cmsFloat64Number px, py, pz, pw;
-    int        x0, y0, z0, w0;
-    int        i, index;
+    int x0, y0, z0, w0;
+    int i, index;
 
     if (CLUT -> Type != cmsSigCLutElemType) {
         cmsSignalError(ContextID, cmsERROR_INTERNAL, "(internal) Attempt to PatchLUT on non-lut stage");
@@ -65,7 +65,7 @@ cmsBool  PatchLUT(cmsContext ContextID, cmsStage* CLUT, cmsUInt16Number At[], cm
         if (((px - x0) != 0) ||
             ((py - y0) != 0) ||
             ((pz - z0) != 0) ||
-            ((pw - w0) != 0)) return FALSE; // Not on exact node
+            ((pw - w0) != 0)) return FALSE;
 
         index = (int) p16 -> opta[3] * x0 +
                 (int) p16 -> opta[2] * y0 +
@@ -85,7 +85,7 @@ cmsBool  PatchLUT(cmsContext ContextID, cmsStage* CLUT, cmsUInt16Number At[], cm
 
             if (((px - x0) != 0) ||
                 ((py - y0) != 0) ||
-                ((pz - z0) != 0)) return FALSE;  // Not on exact node
+                ((pz - z0) != 0)) return FALSE;
 
             index = (int) p16 -> opta[2] * x0 +
                     (int) p16 -> opta[1] * y0 +
@@ -98,7 +98,7 @@ cmsBool  PatchLUT(cmsContext ContextID, cmsStage* CLUT, cmsUInt16Number At[], cm
 
                 x0 = (int) floor(px);
 
-                if (((px - x0) != 0)) return FALSE; // Not on exact node
+                if (((px - x0) != 0)) return FALSE;
 
                 index = (int) p16 -> opta[0] * x0;
             }

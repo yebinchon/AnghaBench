@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pagesetup_data ;
-typedef  scalar_t__ WORD ;
-typedef  int LRESULT ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  DEVMODEW ;
 
-/* Variables and functions */
- int CB_ERR ; 
- int /*<<< orphan*/  CB_GETCOUNT ; 
- int /*<<< orphan*/  CB_GETITEMDATA ; 
- int /*<<< orphan*/  CB_SETCURSEL ; 
- int /*<<< orphan*/  ClosePrinter (int /*<<< orphan*/ ) ; 
- int DM_IN_BUFFER ; 
- int DM_IN_PROMPT ; 
- int DM_OUT_BUFFER ; 
- int /*<<< orphan*/  DocumentPropertiesW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  OpenPrinterW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ SendDlgItemMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmb2 ; 
- int /*<<< orphan*/  pagesetup_change_preview (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * pagesetup_get_devmode (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pagesetup_get_devname (int /*<<< orphan*/ *) ; 
- scalar_t__ pagesetup_get_papersize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pagesetup_release_a_devname (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pagesetup_release_devmode (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pagesetup_set_devmode (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pagesetup_update_orientation_buttons (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pagesetup_update_papersize (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int pagesetup_data ;
+typedef scalar_t__ WORD ;
+typedef int LRESULT ;
+typedef int LPWSTR ;
+typedef int HWND ;
+typedef int HANDLE ;
+typedef int DEVMODEW ;
+
+
+ int CB_ERR ;
+ int CB_GETCOUNT ;
+ int CB_GETITEMDATA ;
+ int CB_SETCURSEL ;
+ int ClosePrinter (int ) ;
+ int DM_IN_BUFFER ;
+ int DM_IN_PROMPT ;
+ int DM_OUT_BUFFER ;
+ int DocumentPropertiesW (int ,int ,int ,int *,int *,int) ;
+ int FIXME (char*) ;
+ int OpenPrinterW (int ,int *,int *) ;
+ scalar_t__ SendDlgItemMessageW (int ,int ,int ,int,int ) ;
+ int cmb2 ;
+ int pagesetup_change_preview (int *) ;
+ int * pagesetup_get_devmode (int *) ;
+ int pagesetup_get_devname (int *) ;
+ scalar_t__ pagesetup_get_papersize (int *) ;
+ int pagesetup_release_a_devname (int *,int ) ;
+ int pagesetup_release_devmode (int *,int *) ;
+ int pagesetup_set_devmode (int *,int *) ;
+ int pagesetup_update_orientation_buttons (int ,int *) ;
+ int pagesetup_update_papersize (int *) ;
 
 __attribute__((used)) static void pagesetup_printer_properties(HWND hDlg, pagesetup_data *data)
 {
@@ -52,7 +52,7 @@ __attribute__((used)) static void pagesetup_printer_properties(HWND hDlg, pagese
 
     devname = pagesetup_get_devname(data);
 
-    if (!OpenPrinterW(devname, &hprn, NULL))
+    if (!OpenPrinterW(devname, &hprn, ((void*)0)))
     {
         FIXME("Call to OpenPrinter did not succeed!\n");
         pagesetup_release_a_devname(data, devname);
@@ -66,14 +66,14 @@ __attribute__((used)) static void pagesetup_printer_properties(HWND hDlg, pagese
     pagesetup_release_a_devname(data, devname);
     ClosePrinter(hprn);
 
-    /* Changing paper */
+
     pagesetup_update_papersize(data);
     pagesetup_update_orientation_buttons(hDlg, data);
 
-    /* Changing paper preview */
+
     pagesetup_change_preview(data);
 
-    /* Selecting paper in combo */
+
     count = SendDlgItemMessageW(hDlg, cmb2, CB_GETCOUNT, 0, 0);
     if(count != CB_ERR)
     {

@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  UDPLISTENER_RECV_PROC ;
-struct TYPE_5__ {int /*<<< orphan*/  Thread; int /*<<< orphan*/  Interrupts; void* SendPacketList; int /*<<< orphan*/ * RecvProc; int /*<<< orphan*/  ListenIP; int /*<<< orphan*/  Event; void* PortList; int /*<<< orphan*/  PacketType; void* Param; } ;
-typedef  TYPE_1__ UDPLISTENER ;
-typedef  int /*<<< orphan*/  IP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  NewInterruptManager () ; 
- void* NewList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NewSockEvent () ; 
- int /*<<< orphan*/  NewThread (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  UdpListenerThread ; 
- TYPE_1__* ZeroMalloc (int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int UINT ;
+typedef int UDPLISTENER_RECV_PROC ;
+struct TYPE_5__ {int Thread; int Interrupts; void* SendPacketList; int * RecvProc; int ListenIP; int Event; void* PortList; int PacketType; void* Param; } ;
+typedef TYPE_1__ UDPLISTENER ;
+typedef int IP ;
+
+
+ int Copy (int *,int *,int) ;
+ int NewInterruptManager () ;
+ void* NewList (int *) ;
+ int NewSockEvent () ;
+ int NewThread (int ,TYPE_1__*) ;
+ int UdpListenerThread ;
+ TYPE_1__* ZeroMalloc (int) ;
 
 UDPLISTENER *NewUdpListenerEx(UDPLISTENER_RECV_PROC *recv_proc, void *param, IP *listen_ip, UINT packet_type)
 {
-	UDPLISTENER *u;
-	// Validate arguments
-	if (recv_proc == NULL)
-	{
-		return NULL;
-	}
-	
-	u = ZeroMalloc(sizeof(UDPLISTENER));
+ UDPLISTENER *u;
 
-	u->Param = param;
-	u->PacketType = packet_type;
+ if (recv_proc == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	u->PortList = NewList(NULL);
-	u->Event = NewSockEvent();
+ u = ZeroMalloc(sizeof(UDPLISTENER));
 
-	if (listen_ip)
-	{
-		Copy(&u->ListenIP, listen_ip, sizeof(IP));
-	}
+ u->Param = param;
+ u->PacketType = packet_type;
 
-	u->RecvProc = recv_proc;
-	u->SendPacketList = NewList(NULL);
+ u->PortList = NewList(((void*)0));
+ u->Event = NewSockEvent();
 
-	u->Interrupts = NewInterruptManager();
+ if (listen_ip)
+ {
+  Copy(&u->ListenIP, listen_ip, sizeof(IP));
+ }
 
-	u->Thread = NewThread(UdpListenerThread, u);
+ u->RecvProc = recv_proc;
+ u->SendPacketList = NewList(((void*)0));
 
-	return u;
+ u->Interrupts = NewInterruptManager();
+
+ u->Thread = NewThread(UdpListenerThread, u);
+
+ return u;
 }

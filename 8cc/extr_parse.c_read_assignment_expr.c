@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Token ;
+
+
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+
+
+typedef int Token ;
 struct TYPE_21__ {scalar_t__ kind; } ;
 struct TYPE_20__ {TYPE_4__* ty; } ;
-typedef  TYPE_1__ Node ;
+typedef TYPE_1__ Node ;
 
-/* Variables and functions */
- TYPE_1__* ast_binop (TYPE_4__*,char,TYPE_1__*,TYPE_1__*) ; 
- TYPE_1__* ast_conv (TYPE_4__*,TYPE_1__*) ; 
- TYPE_1__* binop (int,TYPE_1__*,TYPE_1__*) ; 
- TYPE_1__* conv (TYPE_1__*) ; 
- TYPE_1__* do_read_conditional_expr (TYPE_1__*) ; 
- int /*<<< orphan*/  ensure_lvalue (TYPE_1__*) ; 
- int /*<<< orphan*/ * get () ; 
- int get_compound_assign_op (int /*<<< orphan*/ *) ; 
- scalar_t__ is_arithtype (TYPE_4__*) ; 
- scalar_t__ is_keyword (int /*<<< orphan*/ *,char) ; 
- TYPE_1__* read_logor_expr () ; 
- int /*<<< orphan*/  unget_token (int /*<<< orphan*/ *) ; 
+
+ TYPE_1__* ast_binop (TYPE_4__*,char,TYPE_1__*,TYPE_1__*) ;
+ TYPE_1__* ast_conv (TYPE_4__*,TYPE_1__*) ;
+ TYPE_1__* binop (int,TYPE_1__*,TYPE_1__*) ;
+ TYPE_1__* conv (TYPE_1__*) ;
+ TYPE_1__* do_read_conditional_expr (TYPE_1__*) ;
+ int ensure_lvalue (TYPE_1__*) ;
+ int * get () ;
+ int get_compound_assign_op (int *) ;
+ scalar_t__ is_arithtype (TYPE_4__*) ;
+ scalar_t__ is_keyword (int *,char) ;
+ TYPE_1__* read_logor_expr () ;
+ int unget_token (int *) ;
 
 __attribute__((used)) static Node *read_assignment_expr() {
     Node *node = read_logor_expr();

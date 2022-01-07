@@ -1,47 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BotFreeGoalState (int) ; 
- int /*<<< orphan*/  BotFreeInfoEntities () ; 
- int /*<<< orphan*/  FreeMemory (int /*<<< orphan*/ *) ; 
- int MAX_CLIENTS ; 
- scalar_t__* botgoalstates ; 
- int /*<<< orphan*/ * freelevelitems ; 
- int /*<<< orphan*/ * itemconfig ; 
- int /*<<< orphan*/ * levelitemheap ; 
- int /*<<< orphan*/ * levelitems ; 
- scalar_t__ numlevelitems ; 
+ int BotFreeGoalState (int) ;
+ int BotFreeInfoEntities () ;
+ int FreeMemory (int *) ;
+ int MAX_CLIENTS ;
+ scalar_t__* botgoalstates ;
+ int * freelevelitems ;
+ int * itemconfig ;
+ int * levelitemheap ;
+ int * levelitems ;
+ scalar_t__ numlevelitems ;
 
 void BotShutdownGoalAI(void)
 {
-	int i;
+ int i;
 
-	if (itemconfig) FreeMemory(itemconfig);
-	itemconfig = NULL;
-	if (levelitemheap) FreeMemory(levelitemheap);
-	levelitemheap = NULL;
-	freelevelitems = NULL;
-	levelitems = NULL;
-	numlevelitems = 0;
+ if (itemconfig) FreeMemory(itemconfig);
+ itemconfig = ((void*)0);
+ if (levelitemheap) FreeMemory(levelitemheap);
+ levelitemheap = ((void*)0);
+ freelevelitems = ((void*)0);
+ levelitems = ((void*)0);
+ numlevelitems = 0;
 
-	BotFreeInfoEntities();
+ BotFreeInfoEntities();
 
-	for (i = 1; i <= MAX_CLIENTS; i++)
-	{
-		if (botgoalstates[i])
-		{
-			BotFreeGoalState(i);
-		} //end if
-	} //end for
+ for (i = 1; i <= MAX_CLIENTS; i++)
+ {
+  if (botgoalstates[i])
+  {
+   BotFreeGoalState(i);
+  }
+ }
 }

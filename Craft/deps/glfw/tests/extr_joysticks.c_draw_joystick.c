@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int axis_count; float* axes; int button_count; scalar_t__* buttons; } ;
-typedef  TYPE_1__ Joystick ;
+typedef TYPE_1__ Joystick ;
 
-/* Variables and functions */
- int /*<<< orphan*/  glColor3f (float,float,float) ; 
- int /*<<< orphan*/  glRecti (int,int,int,int) ; 
+
+ int glColor3f (float,float,float) ;
+ int glRecti (int,int,int,int) ;
 
 __attribute__((used)) static void draw_joystick(Joystick* j, int x, int y, int width, int height)
 {
@@ -28,7 +28,7 @@ __attribute__((used)) static void draw_joystick(Joystick* j, int x, int y, int w
     {
         const int axis_width = width / j->axis_count;
 
-        for (i = 0;  i < j->axis_count;  i++)
+        for (i = 0; i < j->axis_count; i++)
         {
             float value = j->axes[i] / 2.f + 0.5f;
 
@@ -50,7 +50,7 @@ __attribute__((used)) static void draw_joystick(Joystick* j, int x, int y, int w
     {
         const int button_width = width / j->button_count;
 
-        for (i = 0;  i < j->button_count;  i++)
+        for (i = 0; i < j->button_count; i++)
         {
             if (j->buttons[i])
                 glColor3f(1.f, 1.f, 1.f);

@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  WORK_TIMER ; 
- int /*<<< orphan*/  isp1301_defer_work (void*,int /*<<< orphan*/ ) ; 
+ int WORK_TIMER ;
+ int isp1301_defer_work (void*,int ) ;
 
 __attribute__((used)) static void isp1301_timer(unsigned long _isp)
 {
-	isp1301_defer_work((void *)_isp, WORK_TIMER);
+ isp1301_defer_work((void *)_isp, WORK_TIMER);
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int utc; int weekdays_bits; int end_of_month; int /*<<< orphan*/  microsecond; int /*<<< orphan*/  minute; int /*<<< orphan*/  hour; int /*<<< orphan*/  day; int /*<<< orphan*/  month; int /*<<< orphan*/  year; int /*<<< orphan*/  timezone; } ;
-typedef  TYPE_1__ CalendarSpec ;
 
-/* Variables and functions */
- int BITS_WEEKDAYS ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  fix_year (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  normalize_chain (int /*<<< orphan*/ *) ; 
- scalar_t__ streq_ptr (int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int utc; int weekdays_bits; int end_of_month; int microsecond; int minute; int hour; int day; int month; int year; int timezone; } ;
+typedef TYPE_1__ CalendarSpec ;
+
+
+ int BITS_WEEKDAYS ;
+ int assert (TYPE_1__*) ;
+ int fix_year (int ) ;
+ int mfree (int ) ;
+ int normalize_chain (int *) ;
+ scalar_t__ streq_ptr (int ,char*) ;
 
 int calendar_spec_normalize(CalendarSpec *c) {
         assert(c);
 
         if (streq_ptr(c->timezone, "UTC")) {
-                c->utc = true;
+                c->utc = 1;
                 c->timezone = mfree(c->timezone);
         }
 
@@ -34,7 +34,7 @@ int calendar_spec_normalize(CalendarSpec *c) {
                 c->weekdays_bits = -1;
 
         if (c->end_of_month && !c->day)
-                c->end_of_month = false;
+                c->end_of_month = 0;
 
         fix_year(c->year);
 

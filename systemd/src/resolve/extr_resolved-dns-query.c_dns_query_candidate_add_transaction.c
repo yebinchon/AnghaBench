@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_17__ {TYPE_1__* query; int /*<<< orphan*/  clamp_ttl; int /*<<< orphan*/  notify_query_candidates; int /*<<< orphan*/  transactions; int /*<<< orphan*/  notify_query_candidates_done; int /*<<< orphan*/  scope; } ;
-struct TYPE_16__ {int /*<<< orphan*/  clamp_ttl; } ;
-typedef  TYPE_2__ DnsTransaction ;
-typedef  TYPE_2__ DnsResourceKey ;
-typedef  TYPE_2__ DnsQueryCandidate ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- TYPE_2__* dns_scope_find_transaction (int /*<<< orphan*/ ,TYPE_2__*,int) ; 
- int /*<<< orphan*/  dns_transaction_gc (TYPE_2__*) ; 
- int dns_transaction_new (TYPE_2__**,int /*<<< orphan*/ ,TYPE_2__*) ; 
- scalar_t__ set_contains (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int set_ensure_allocated (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int set_put (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  set_remove (int /*<<< orphan*/ ,TYPE_2__*) ; 
+
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+struct TYPE_17__ {TYPE_1__* query; int clamp_ttl; int notify_query_candidates; int transactions; int notify_query_candidates_done; int scope; } ;
+struct TYPE_16__ {int clamp_ttl; } ;
+typedef TYPE_2__ DnsTransaction ;
+typedef TYPE_2__ DnsResourceKey ;
+typedef TYPE_2__ DnsQueryCandidate ;
+
+
+ int assert (TYPE_2__*) ;
+ TYPE_2__* dns_scope_find_transaction (int ,TYPE_2__*,int) ;
+ int dns_transaction_gc (TYPE_2__*) ;
+ int dns_transaction_new (TYPE_2__**,int ,TYPE_2__*) ;
+ scalar_t__ set_contains (int ,TYPE_2__*) ;
+ int set_ensure_allocated (int *,int *) ;
+ int set_put (int ,TYPE_2__*) ;
+ int set_remove (int ,TYPE_2__*) ;
 
 __attribute__((used)) static int dns_query_candidate_add_transaction(DnsQueryCandidate *c, DnsResourceKey *key) {
         DnsTransaction *t;
@@ -35,7 +35,7 @@ __attribute__((used)) static int dns_query_candidate_add_transaction(DnsQueryCan
         assert(c);
         assert(key);
 
-        t = dns_scope_find_transaction(c->scope, key, true);
+        t = dns_scope_find_transaction(c->scope, key, 1);
         if (!t) {
                 r = dns_transaction_new(&t, c->scope, key);
                 if (r < 0)
@@ -45,15 +45,15 @@ __attribute__((used)) static int dns_query_candidate_add_transaction(DnsQueryCan
                         return 0;
         }
 
-        r = set_ensure_allocated(&c->transactions, NULL);
+        r = set_ensure_allocated(&c->transactions, ((void*)0));
         if (r < 0)
                 goto gc;
 
-        r = set_ensure_allocated(&t->notify_query_candidates, NULL);
+        r = set_ensure_allocated(&t->notify_query_candidates, ((void*)0));
         if (r < 0)
                 goto gc;
 
-        r = set_ensure_allocated(&t->notify_query_candidates_done, NULL);
+        r = set_ensure_allocated(&t->notify_query_candidates_done, ((void*)0));
         if (r < 0)
                 goto gc;
 

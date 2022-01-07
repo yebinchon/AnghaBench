@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ULONG ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int ULONG ;
 struct TYPE_4__ {int flags; int num_data_items; } ;
 struct TYPE_5__ {TYPE_1__ http; } ;
-typedef  TYPE_2__ RpcPktHdr ;
-typedef  int /*<<< orphan*/  RPC_STATUS ;
+typedef TYPE_2__ RpcPktHdr ;
+typedef int RPC_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int) ; 
- scalar_t__ GET_HTTP_PAYLOAD_FIELD_DATA (unsigned char*) ; 
- int READ_HTTP_PAYLOAD_FIELD_TYPE (unsigned char*) ; 
- int /*<<< orphan*/  RPC_S_OK ; 
- int /*<<< orphan*/  RPC_S_PROTOCOL_ERROR ; 
+
+ int ERR (char*,int) ;
+ scalar_t__ GET_HTTP_PAYLOAD_FIELD_DATA (unsigned char*) ;
+ int READ_HTTP_PAYLOAD_FIELD_TYPE (unsigned char*) ;
+ int RPC_S_OK ;
+ int RPC_S_PROTOCOL_ERROR ;
 
 RPC_STATUS RPCRT4_ParseHttpPrepareHeader1(RpcPktHdr *header,
                                           unsigned char *data, ULONG *field1)

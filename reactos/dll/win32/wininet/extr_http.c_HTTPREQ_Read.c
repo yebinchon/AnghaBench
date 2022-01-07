@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {scalar_t__ read_size; scalar_t__ read_buf; scalar_t__ read_pos; int /*<<< orphan*/  read_section; } ;
-typedef  TYPE_1__ http_request_t ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ WSAEWOULDBLOCK ; 
- scalar_t__ drain_content (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  http_release_netconn (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (void*,scalar_t__,scalar_t__) ; 
- scalar_t__ min (scalar_t__,scalar_t__) ; 
- scalar_t__ read_http_stream (TYPE_1__*,int /*<<< orphan*/ *,scalar_t__,scalar_t__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {scalar_t__ read_size; scalar_t__ read_buf; scalar_t__ read_pos; int read_section; } ;
+typedef TYPE_1__ http_request_t ;
+typedef scalar_t__ DWORD ;
+typedef int BYTE ;
+typedef int BOOL ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int EnterCriticalSection (int *) ;
+ int FALSE ;
+ int LeaveCriticalSection (int *) ;
+ int TRACE (char*,scalar_t__,scalar_t__) ;
+ int TRUE ;
+ scalar_t__ WSAEWOULDBLOCK ;
+ scalar_t__ drain_content (TYPE_1__*,int ) ;
+ int http_release_netconn (TYPE_1__*,int ) ;
+ int memcpy (void*,scalar_t__,scalar_t__) ;
+ scalar_t__ min (scalar_t__,scalar_t__) ;
+ scalar_t__ read_http_stream (TYPE_1__*,int *,scalar_t__,scalar_t__*,int ) ;
 
 __attribute__((used)) static DWORD HTTPREQ_Read(http_request_t *req, void *buffer, DWORD size, DWORD *read, BOOL allow_blocking)
 {

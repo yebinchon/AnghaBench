@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  Guid; int /*<<< orphan*/  FileName; int /*<<< orphan*/  Version; int /*<<< orphan*/  MacAddress; int /*<<< orphan*/  Enabled; int /*<<< orphan*/  DeviceName; } ;
-typedef  TYPE_1__ RPC_CLIENT_GET_VLAN ;
-typedef  int /*<<< orphan*/  PACK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PackAddInt (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PackAddStr (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int Guid; int FileName; int Version; int MacAddress; int Enabled; int DeviceName; } ;
+typedef TYPE_1__ RPC_CLIENT_GET_VLAN ;
+typedef int PACK ;
+
+
+ int PackAddInt (int *,char*,int ) ;
+ int PackAddStr (int *,char*,int ) ;
 
 void OutRpcClientGetVLan(PACK *p, RPC_CLIENT_GET_VLAN *v)
 {
-	// Validate arguments
-	if (v == NULL || p == NULL)
-	{
-		return;
-	}
 
-	PackAddStr(p, "DeviceName", v->DeviceName);
-	PackAddInt(p, "Enabled", v->Enabled);
-	PackAddStr(p, "MacAddress", v->MacAddress);
-	PackAddStr(p, "Version", v->Version);
-	PackAddStr(p, "FileName", v->FileName);
-	PackAddStr(p, "Guid", v->Guid);
+ if (v == ((void*)0) || p == ((void*)0))
+ {
+  return;
+ }
+
+ PackAddStr(p, "DeviceName", v->DeviceName);
+ PackAddInt(p, "Enabled", v->Enabled);
+ PackAddStr(p, "MacAddress", v->MacAddress);
+ PackAddStr(p, "Version", v->Version);
+ PackAddStr(p, "FileName", v->FileName);
+ PackAddStr(p, "Guid", v->Guid);
 }

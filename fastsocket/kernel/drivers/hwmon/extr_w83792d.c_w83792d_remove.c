@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct w83792d_data {int /*<<< orphan*/ ** lm75; int /*<<< orphan*/  hwmon_dev; } ;
-struct TYPE_2__ {int /*<<< orphan*/  kobj; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct w83792d_data {int ** lm75; int hwmon_dev; } ;
+struct TYPE_2__ {int kobj; } ;
 struct i2c_client {TYPE_1__ dev; } ;
 
-/* Variables and functions */
- int ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hwmon_device_unregister (int /*<<< orphan*/ ) ; 
- struct w83792d_data* i2c_get_clientdata (struct i2c_client*) ; 
- int /*<<< orphan*/  i2c_unregister_device (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (struct w83792d_data*) ; 
- int /*<<< orphan*/  sysfs_remove_group (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  w83792d_group ; 
- int /*<<< orphan*/ * w83792d_group_fan ; 
+
+ int ARRAY_SIZE (int *) ;
+ int hwmon_device_unregister (int ) ;
+ struct w83792d_data* i2c_get_clientdata (struct i2c_client*) ;
+ int i2c_unregister_device (int *) ;
+ int kfree (struct w83792d_data*) ;
+ int sysfs_remove_group (int *,int *) ;
+ int w83792d_group ;
+ int * w83792d_group_fan ;
 
 __attribute__((used)) static int
 w83792d_remove(struct i2c_client *client)
 {
-	struct w83792d_data *data = i2c_get_clientdata(client);
-	int i;
+ struct w83792d_data *data = i2c_get_clientdata(client);
+ int i;
 
-	hwmon_device_unregister(data->hwmon_dev);
-	sysfs_remove_group(&client->dev.kobj, &w83792d_group);
-	for (i = 0; i < ARRAY_SIZE(w83792d_group_fan); i++)
-		sysfs_remove_group(&client->dev.kobj,
-				   &w83792d_group_fan[i]);
+ hwmon_device_unregister(data->hwmon_dev);
+ sysfs_remove_group(&client->dev.kobj, &w83792d_group);
+ for (i = 0; i < ARRAY_SIZE(w83792d_group_fan); i++)
+  sysfs_remove_group(&client->dev.kobj,
+       &w83792d_group_fan[i]);
 
-	if (data->lm75[0] != NULL)
-		i2c_unregister_device(data->lm75[0]);
-	if (data->lm75[1] != NULL)
-		i2c_unregister_device(data->lm75[1]);
+ if (data->lm75[0] != ((void*)0))
+  i2c_unregister_device(data->lm75[0]);
+ if (data->lm75[1] != ((void*)0))
+  i2c_unregister_device(data->lm75[1]);
 
-	kfree(data);
-	return 0;
+ kfree(data);
+ return 0;
 }

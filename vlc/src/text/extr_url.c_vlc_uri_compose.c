@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char* psz_protocol; char* psz_path; char* psz_option; char* psz_fragment; int /*<<< orphan*/  i_port; int /*<<< orphan*/ * psz_host; int /*<<< orphan*/ * psz_password; int /*<<< orphan*/ * psz_username; } ;
-typedef  TYPE_1__ vlc_url_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char* psz_protocol; char* psz_path; char* psz_option; char* psz_fragment; int i_port; int * psz_host; int * psz_password; int * psz_username; } ;
+typedef TYPE_1__ vlc_url_t ;
 struct vlc_memstream {char* ptr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/ * strchr (int /*<<< orphan*/ *,char) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- scalar_t__ vlc_memstream_close (struct vlc_memstream*) ; 
- int /*<<< orphan*/  vlc_memstream_open (struct vlc_memstream*) ; 
- int /*<<< orphan*/  vlc_memstream_printf (struct vlc_memstream*,char const*,char*,...) ; 
- int /*<<< orphan*/  vlc_memstream_putc (struct vlc_memstream*,char) ; 
- int /*<<< orphan*/  vlc_memstream_puts (struct vlc_memstream*,char*) ; 
- int /*<<< orphan*/  vlc_memstream_write (struct vlc_memstream*,char*,int) ; 
- char* vlc_uri_encode (int /*<<< orphan*/ *) ; 
+
+ int free (char*) ;
+ int * strchr (int *,char) ;
+ scalar_t__ unlikely (int ) ;
+ scalar_t__ vlc_memstream_close (struct vlc_memstream*) ;
+ int vlc_memstream_open (struct vlc_memstream*) ;
+ int vlc_memstream_printf (struct vlc_memstream*,char const*,char*,...) ;
+ int vlc_memstream_putc (struct vlc_memstream*,char) ;
+ int vlc_memstream_puts (struct vlc_memstream*,char*) ;
+ int vlc_memstream_write (struct vlc_memstream*,char*,int) ;
+ char* vlc_uri_encode (int *) ;
 
 char *vlc_uri_compose(const vlc_url_t *uri)
 {
@@ -34,26 +34,26 @@ char *vlc_uri_compose(const vlc_url_t *uri)
 
     vlc_memstream_open(&stream);
 
-    if (uri->psz_protocol != NULL)
+    if (uri->psz_protocol != ((void*)0))
         vlc_memstream_printf(&stream, "%s:", uri->psz_protocol);
 
-    if (uri->psz_host != NULL)
+    if (uri->psz_host != ((void*)0))
     {
         vlc_memstream_write(&stream, "//", 2);
 
-        if (uri->psz_username != NULL)
+        if (uri->psz_username != ((void*)0))
         {
             enc = vlc_uri_encode(uri->psz_username);
-            if (enc == NULL)
+            if (enc == ((void*)0))
                 goto error;
 
             vlc_memstream_puts(&stream, enc);
             free(enc);
 
-            if (uri->psz_password != NULL)
+            if (uri->psz_password != ((void*)0))
             {
                 enc = vlc_uri_encode(uri->psz_password);
-                if (unlikely(enc == NULL))
+                if (unlikely(enc == ((void*)0)))
                     goto error;
 
                 vlc_memstream_printf(&stream, ":%s", enc);
@@ -64,27 +64,27 @@ char *vlc_uri_compose(const vlc_url_t *uri)
 
         const char *fmt;
 
-        if (strchr(uri->psz_host, ':') != NULL)
+        if (strchr(uri->psz_host, ':') != ((void*)0))
             fmt = (uri->i_port != 0) ? "[%s]:%d" : "[%s]";
         else
             fmt = (uri->i_port != 0) ? "%s:%d" : "%s";
-        /* No IDNA decoding here. Seems unnecessary, dangerous even. */
+
         vlc_memstream_printf(&stream, fmt, uri->psz_host, uri->i_port);
     }
 
-    if (uri->psz_path != NULL)
+    if (uri->psz_path != ((void*)0))
         vlc_memstream_puts(&stream, uri->psz_path);
-    if (uri->psz_option != NULL)
+    if (uri->psz_option != ((void*)0))
         vlc_memstream_printf(&stream, "?%s", uri->psz_option);
-    if (uri->psz_fragment != NULL)
+    if (uri->psz_fragment != ((void*)0))
         vlc_memstream_printf(&stream, "#%s", uri->psz_fragment);
 
     if (vlc_memstream_close(&stream))
-        return NULL;
+        return ((void*)0);
     return stream.ptr;
 
 error:
     if (vlc_memstream_close(&stream) == 0)
         free(stream.ptr);
-    return NULL;
+    return ((void*)0);
 }

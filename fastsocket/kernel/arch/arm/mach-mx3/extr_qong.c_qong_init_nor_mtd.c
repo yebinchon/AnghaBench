@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  platform_device_register (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  qong_nor_mtd_device ; 
+ int platform_device_register (int *) ;
+ int qong_nor_mtd_device ;
 
 __attribute__((used)) static void qong_init_nor_mtd(void)
 {
-	(void)platform_device_register(&qong_nor_mtd_device);
+ (void)platform_device_register(&qong_nor_mtd_device);
 }

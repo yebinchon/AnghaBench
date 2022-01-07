@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
-typedef  int int32_t ;
-struct TYPE_4__ {int /*<<< orphan*/  fc; } ;
-typedef  TYPE_1__ MOVContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_VERBOSE ; 
- int MKBETAG (char,float,char,char) ; 
- int /*<<< orphan*/  SEEK_CUR ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int avio_rb32 (int /*<<< orphan*/ *) ; 
- int avio_seek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int avio_size (int /*<<< orphan*/ *) ; 
- int avio_tell (int /*<<< orphan*/ *) ; 
- int read_tfra (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+typedef int int32_t ;
+struct TYPE_4__ {int fc; } ;
+typedef TYPE_1__ MOVContext ;
+typedef int AVIOContext ;
+
+
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_VERBOSE ;
+ int MKBETAG (char,float,char,char) ;
+ int SEEK_CUR ;
+ int SEEK_SET ;
+ int av_log (int ,int ,char*) ;
+ int avio_rb32 (int *) ;
+ int avio_seek (int *,int,int ) ;
+ int avio_size (int *) ;
+ int avio_tell (int *) ;
+ int read_tfra (TYPE_1__*,int *) ;
 
 __attribute__((used)) static int mov_read_mfra(MOVContext *c, AVIOContext *f)
 {

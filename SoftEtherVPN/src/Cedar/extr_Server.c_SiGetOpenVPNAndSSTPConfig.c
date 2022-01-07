@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int EnableOpenVPN; int EnableSSTP; int /*<<< orphan*/  OpenVPNObfuscationMask; int /*<<< orphan*/  OpenVPNObfuscation; int /*<<< orphan*/  OpenVPNPortList; } ;
-struct TYPE_8__ {int DisableOpenVPNServer; int DisableSSTPServer; int /*<<< orphan*/  OpenVpnSstpConfigLock; TYPE_1__* Cedar; int /*<<< orphan*/  OpenVpnServerUdpPorts; } ;
-struct TYPE_7__ {int /*<<< orphan*/  OpenVPNObfuscationMask; int /*<<< orphan*/  OpenVPNObfuscation; } ;
-typedef  TYPE_2__ SERVER ;
-typedef  TYPE_3__ OPENVPN_SSTP_CONFIG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StrCpy (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Zero (TYPE_3__*,int) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int EnableOpenVPN; int EnableSSTP; int OpenVPNObfuscationMask; int OpenVPNObfuscation; int OpenVPNPortList; } ;
+struct TYPE_8__ {int DisableOpenVPNServer; int DisableSSTPServer; int OpenVpnSstpConfigLock; TYPE_1__* Cedar; int OpenVpnServerUdpPorts; } ;
+struct TYPE_7__ {int OpenVPNObfuscationMask; int OpenVPNObfuscation; } ;
+typedef TYPE_2__ SERVER ;
+typedef TYPE_3__ OPENVPN_SSTP_CONFIG ;
+
+
+ int Lock (int ) ;
+ int StrCpy (int ,int,int ) ;
+ int Unlock (int ) ;
+ int Zero (TYPE_3__*,int) ;
 
 void SiGetOpenVPNAndSSTPConfig(SERVER *s, OPENVPN_SSTP_CONFIG *c)
 {
-	// Validate arguments
-	if (s == NULL || c == NULL)
-	{
-		return;
-	}
 
-	Zero(c, sizeof(OPENVPN_SSTP_CONFIG));
+ if (s == ((void*)0) || c == ((void*)0))
+ {
+  return;
+ }
 
-	Lock(s->OpenVpnSstpConfigLock);
-	{
-		if (s->DisableOpenVPNServer == false)
-		{
-			c->EnableOpenVPN = true;
-		}
+ Zero(c, sizeof(OPENVPN_SSTP_CONFIG));
 
-		if (s->DisableSSTPServer == false)
-		{
-			c->EnableSSTP = true;
-		}
+ Lock(s->OpenVpnSstpConfigLock);
+ {
+  if (s->DisableOpenVPNServer == 0)
+  {
+   c->EnableOpenVPN = 1;
+  }
 
-		StrCpy(c->OpenVPNPortList, sizeof(c->OpenVPNPortList), s->OpenVpnServerUdpPorts);
+  if (s->DisableSSTPServer == 0)
+  {
+   c->EnableSSTP = 1;
+  }
 
-		c->OpenVPNObfuscation = s->Cedar->OpenVPNObfuscation;
-		StrCpy(c->OpenVPNObfuscationMask, sizeof(c->OpenVPNObfuscationMask), s->Cedar->OpenVPNObfuscationMask);
-	}
-	Unlock(s->OpenVpnSstpConfigLock);
+  StrCpy(c->OpenVPNPortList, sizeof(c->OpenVPNPortList), s->OpenVpnServerUdpPorts);
+
+  c->OpenVPNObfuscation = s->Cedar->OpenVPNObfuscation;
+  StrCpy(c->OpenVPNObfuscationMask, sizeof(c->OpenVPNObfuscationMask), s->Cedar->OpenVPNObfuscationMask);
+ }
+ Unlock(s->OpenVpnSstpConfigLock);
 }

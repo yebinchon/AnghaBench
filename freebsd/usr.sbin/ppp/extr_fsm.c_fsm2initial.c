@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fsm {scalar_t__ state; int /*<<< orphan*/  StoppedTimer; int /*<<< orphan*/  OpenTimer; int /*<<< orphan*/  FsmTimer; } ;
 
-/* Variables and functions */
- scalar_t__ ST_INITIAL ; 
- scalar_t__ ST_STOPPED ; 
- int /*<<< orphan*/  fsm_Close (struct fsm*) ; 
- int /*<<< orphan*/  fsm_Down (struct fsm*) ; 
- int /*<<< orphan*/  timer_Stop (int /*<<< orphan*/ *) ; 
+
+
+
+struct fsm {scalar_t__ state; int StoppedTimer; int OpenTimer; int FsmTimer; } ;
+
+
+ scalar_t__ ST_INITIAL ;
+ scalar_t__ ST_STOPPED ;
+ int fsm_Close (struct fsm*) ;
+ int fsm_Down (struct fsm*) ;
+ int timer_Stop (int *) ;
 
 void
 fsm2initial(struct fsm *fp)

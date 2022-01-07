@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * read; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * read; } ;
 struct TYPE_6__ {TYPE_1__ _cb; } ;
-typedef  TYPE_2__ h2o_socket_t ;
+typedef TYPE_2__ h2o_socket_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  do_read_stop (TYPE_2__*) ; 
+
+ int do_read_stop (TYPE_2__*) ;
 
 void h2o_socket_read_stop(h2o_socket_t *sock)
 {
-    sock->_cb.read = NULL;
+    sock->_cb.read = ((void*)0);
     do_read_stop(sock);
 }

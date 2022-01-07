@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vec3 {int /*<<< orphan*/  m; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _mm_set_ps (float,float,float,float) ; 
+
+
+
+struct vec3 {int m; } ;
+
+
+ int _mm_set_ps (float,float,float,float) ;
 
 __attribute__((used)) static inline void vec3_set(struct vec3 *dst, float x, float y, float z)
 {
-	dst->m = _mm_set_ps(0.0f, z, y, x);
+ dst->m = _mm_set_ps(0.0f, z, y, x);
 }

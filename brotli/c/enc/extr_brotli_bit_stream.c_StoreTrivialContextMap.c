@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  histogram ;
-typedef  int /*<<< orphan*/  HuffmanTree ;
 
-/* Variables and functions */
- int BROTLI_MAX_CONTEXT_MAP_SYMBOLS ; 
- int /*<<< orphan*/  BrotliWriteBits (int,int,size_t*,int*) ; 
- int /*<<< orphan*/  BuildAndStoreHuffmanTree (int*,size_t,size_t,int /*<<< orphan*/ *,int*,int*,size_t*,int*) ; 
- int /*<<< orphan*/  StoreVarLenUint8 (size_t,size_t*,int*) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,size_t) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+typedef int histogram ;
+typedef int HuffmanTree ;
+
+
+ int BROTLI_MAX_CONTEXT_MAP_SYMBOLS ;
+ int BrotliWriteBits (int,int,size_t*,int*) ;
+ int BuildAndStoreHuffmanTree (int*,size_t,size_t,int *,int*,int*,size_t*,int*) ;
+ int StoreVarLenUint8 (size_t,size_t*,int*) ;
+ int memset (int*,int ,size_t) ;
 
 __attribute__((used)) static void StoreTrivialContextMap(size_t num_types,
                                    size_t context_bits,
@@ -38,7 +38,7 @@ __attribute__((used)) static void StoreTrivialContextMap(size_t num_types,
     uint16_t bits[BROTLI_MAX_CONTEXT_MAP_SYMBOLS];
     size_t i;
     memset(histogram, 0, alphabet_size * sizeof(histogram[0]));
-    /* Write RLEMAX. */
+
     BrotliWriteBits(1, 1, storage_ix, storage);
     BrotliWriteBits(4, repeat_code - 1, storage_ix, storage);
     histogram[repeat_code] = (uint32_t)num_types;
@@ -55,7 +55,7 @@ __attribute__((used)) static void StoreTrivialContextMap(size_t num_types,
           depths[repeat_code], bits[repeat_code], storage_ix, storage);
       BrotliWriteBits(repeat_code, repeat_bits, storage_ix, storage);
     }
-    /* Write IMTF (inverse-move-to-front) bit. */
+
     BrotliWriteBits(1, 1, storage_ix, storage);
   }
 }

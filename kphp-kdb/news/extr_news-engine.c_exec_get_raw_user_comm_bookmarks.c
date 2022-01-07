@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct connection {int dummy; } ;
 
-/* Variables and functions */
- int MAX_QUERY ; 
- int /*<<< orphan*/  Q ; 
- int QL ; 
- int /*<<< orphan*/  assert (int) ; 
- int bookmarks_size ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int) ; 
- int get_bookmarks (int,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  return_one_key_list (struct connection*,char const*,int,int,int,int /*<<< orphan*/ ,int) ; 
- scalar_t__ sscanf (char const*,char*,int*) ; 
- int /*<<< orphan*/  stderr ; 
- int strtol (char const*,char**,int) ; 
- int verbosity ; 
+
+ int MAX_QUERY ;
+ int Q ;
+ int QL ;
+ int assert (int) ;
+ int bookmarks_size ;
+ int fprintf (int ,char*,int,int) ;
+ int get_bookmarks (int,int,int ,int) ;
+ int return_one_key_list (struct connection*,char const*,int,int,int,int ,int) ;
+ scalar_t__ sscanf (char const*,char*,int*) ;
+ int stderr ;
+ int strtol (char const*,char**,int) ;
+ int verbosity ;
 
 __attribute__((used)) static int exec_get_raw_user_comm_bookmarks (struct connection *c, const char *key, int key_len, int dog_len) {
   int user_id;

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int proba_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int proba_t ;
 struct TYPE_3__ {int**** stats_; int**** coeffs_; int dirty_; } ;
-typedef  TYPE_1__ VP8EncProba ;
+typedef TYPE_1__ VP8EncProba ;
 
-/* Variables and functions */
- int BranchCost (int const,int const,int const) ; 
- int CalcTokenProba (int const,int const) ; 
- int NUM_BANDS ; 
- int NUM_CTX ; 
- int NUM_PROBAS ; 
- int NUM_TYPES ; 
- int VP8BitCost (int const,int const) ; 
- int**** VP8CoeffsProba0 ; 
- int**** VP8CoeffsUpdateProba ; 
+
+ int BranchCost (int const,int const,int const) ;
+ int CalcTokenProba (int const,int const) ;
+ int NUM_BANDS ;
+ int NUM_CTX ;
+ int NUM_PROBAS ;
+ int NUM_TYPES ;
+ int VP8BitCost (int const,int const) ;
+ int**** VP8CoeffsProba0 ;
+ int**** VP8CoeffsUpdateProba ;
 
 __attribute__((used)) static int FinalizeTokenProbas(VP8EncProba* const proba) {
   int has_changed = 0;
@@ -47,7 +47,7 @@ __attribute__((used)) static int FinalizeTokenProbas(VP8EncProba* const proba) {
                              + 8 * 256;
           const int use_new_p = (old_cost > new_cost);
           size += VP8BitCost(use_new_p, update_proba);
-          if (use_new_p) {  // only use proba that seem meaningful enough.
+          if (use_new_p) {
             proba->coeffs_[t][b][c][p] = new_p;
             has_changed |= (new_p != old_p);
             size += 8 * 256;

@@ -1,54 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int HELPLIST_CHOICE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  EVP_CIPHER_do_all_sorted (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_MD_do_all_sorted (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FT_cipher ; 
- int /*<<< orphan*/  FT_general ; 
- int /*<<< orphan*/  FT_md ; 
-#define  OPT_CIPHER_ALGORITHMS 141 
-#define  OPT_CIPHER_COMMANDS 140 
-#define  OPT_COMMANDS 139 
-#define  OPT_DIGEST_ALGORITHMS 138 
-#define  OPT_DIGEST_COMMANDS 137 
-#define  OPT_DISABLED 136 
-#define  OPT_EOF 135 
-#define  OPT_ERR 134 
-#define  OPT_HELP 133 
-#define  OPT_MISSING_HELP 132 
-#define  OPT_ONE 131 
-#define  OPT_OPTIONS 130 
-#define  OPT_PK_ALGORITHMS 129 
-#define  OPT_PK_METHOD 128 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/  bio_out ; 
- int /*<<< orphan*/  list_cipher_fn ; 
- int /*<<< orphan*/  list_disabled () ; 
- int /*<<< orphan*/  list_md_fn ; 
- int /*<<< orphan*/  list_missing_help () ; 
- int /*<<< orphan*/  list_options ; 
- int /*<<< orphan*/  list_options_for_command (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_pkey () ; 
- int /*<<< orphan*/  list_pkey_meth () ; 
- int /*<<< orphan*/  list_type (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  opt_arg () ; 
- int /*<<< orphan*/  opt_help (int /*<<< orphan*/ ) ; 
- char* opt_init (int,char**,int /*<<< orphan*/ ) ; 
- int opt_next () ; 
- scalar_t__ opt_num_rest () ; 
+
+
+
+typedef int HELPLIST_CHOICE ;
+
+
+ int BIO_printf (int ,char*,...) ;
+ int EVP_CIPHER_do_all_sorted (int ,int ) ;
+ int EVP_MD_do_all_sorted (int ,int ) ;
+ int FT_cipher ;
+ int FT_general ;
+ int FT_md ;
+ int bio_err ;
+ int bio_out ;
+ int list_cipher_fn ;
+ int list_disabled () ;
+ int list_md_fn ;
+ int list_missing_help () ;
+ int list_options ;
+ int list_options_for_command (int ) ;
+ int list_pkey () ;
+ int list_pkey_meth () ;
+ int list_type (int ,int) ;
+ int opt_arg () ;
+ int opt_help (int ) ;
+ char* opt_init (int,char**,int ) ;
+ int opt_next () ;
+ scalar_t__ opt_num_rest () ;
 
 int list_main(int argc, char **argv)
 {
@@ -57,47 +43,47 @@ int list_main(int argc, char **argv)
     int one = 0, done = 0;
 
     prog = opt_init(argc, argv, list_options);
-    while ((o = opt_next()) != OPT_EOF) {
+    while ((o = opt_next()) != 135) {
         switch (o) {
-        case OPT_EOF:  /* Never hit, but suppresses warning */
-        case OPT_ERR:
+        case 135:
+        case 134:
 opthelp:
             BIO_printf(bio_err, "%s: Use -help for summary.\n", prog);
             return 1;
-        case OPT_HELP:
+        case 133:
             opt_help(list_options);
             break;
-        case OPT_ONE:
+        case 131:
             one = 1;
             break;
-        case OPT_COMMANDS:
+        case 139:
             list_type(FT_general, one);
             break;
-        case OPT_DIGEST_COMMANDS:
+        case 137:
             list_type(FT_md, one);
             break;
-        case OPT_DIGEST_ALGORITHMS:
+        case 138:
             EVP_MD_do_all_sorted(list_md_fn, bio_out);
             break;
-        case OPT_CIPHER_COMMANDS:
+        case 140:
             list_type(FT_cipher, one);
             break;
-        case OPT_CIPHER_ALGORITHMS:
+        case 141:
             EVP_CIPHER_do_all_sorted(list_cipher_fn, bio_out);
             break;
-        case OPT_PK_ALGORITHMS:
+        case 129:
             list_pkey();
             break;
-        case OPT_PK_METHOD:
+        case 128:
             list_pkey_meth();
             break;
-        case OPT_DISABLED:
+        case 136:
             list_disabled();
             break;
-        case OPT_MISSING_HELP:
+        case 132:
             list_missing_help();
             break;
-        case OPT_OPTIONS:
+        case 130:
             list_options_for_command(opt_arg());
             break;
         }

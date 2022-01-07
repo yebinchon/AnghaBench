@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  qpel_mc_func ;
-typedef  int /*<<< orphan*/  h264_weight_func ;
-typedef  int /*<<< orphan*/  h264_chroma_mc_func ;
-typedef  int /*<<< orphan*/  h264_biweight_func ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int qpel_mc_func ;
+typedef int h264_weight_func ;
+typedef int h264_chroma_mc_func ;
+typedef int h264_biweight_func ;
 struct TYPE_6__ {int use_weight; int*** implicit_weight; } ;
 struct TYPE_7__ {size_t** ref_cache; int mb_y; TYPE_1__ pwt; } ;
-typedef  TYPE_2__ H264SliceContext ;
-typedef  int /*<<< orphan*/  H264Context ;
+typedef TYPE_2__ H264SliceContext ;
+typedef int H264Context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHROMA_IDC ; 
- int /*<<< orphan*/  PIXEL_SHIFT ; 
- int /*<<< orphan*/  mc_part_std (int /*<<< orphan*/  const*,TYPE_2__*,int,int,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mc_part_weighted (int /*<<< orphan*/  const*,TYPE_2__*,int,int,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/  const,int /*<<< orphan*/  const,int /*<<< orphan*/  const,int /*<<< orphan*/  const,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t* scan8 ; 
+
+ int CHROMA_IDC ;
+ int PIXEL_SHIFT ;
+ int mc_part_std (int const*,TYPE_2__*,int,int,int,int,int *,int *,int *,int,int,int const*,int ,int const*,int ,int,int,int ,int ) ;
+ int mc_part_weighted (int const*,TYPE_2__*,int,int,int,int,int *,int *,int *,int,int,int const*,int ,int const,int const,int const,int const,int,int,int ,int ) ;
+ size_t* scan8 ;
 
 __attribute__((used)) static void mc_part(const H264Context *h, H264SliceContext *sl,
                     int n, int square,

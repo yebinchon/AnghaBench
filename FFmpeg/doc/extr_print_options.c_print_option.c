@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int flags; char* name; int type; char* help; scalar_t__ unit; } ;
-typedef  TYPE_1__ AVOption ;
+typedef TYPE_1__ AVOption ;
 
-/* Variables and functions */
- int AV_OPT_FLAG_AUDIO_PARAM ; 
- int AV_OPT_FLAG_DECODING_PARAM ; 
- int AV_OPT_FLAG_ENCODING_PARAM ; 
- int AV_OPT_FLAG_SUBTITLE_PARAM ; 
- int AV_OPT_FLAG_VIDEO_PARAM ; 
-#define  AV_OPT_TYPE_BINARY 135 
- scalar_t__ AV_OPT_TYPE_CONST ; 
-#define  AV_OPT_TYPE_DOUBLE 134 
-#define  AV_OPT_TYPE_FLAGS 133 
-#define  AV_OPT_TYPE_FLOAT 132 
-#define  AV_OPT_TYPE_INT 131 
-#define  AV_OPT_TYPE_INT64 130 
-#define  AV_OPT_TYPE_RATIONAL 129 
-#define  AV_OPT_TYPE_STRING 128 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  strcmp (scalar_t__,scalar_t__) ; 
+
+ int AV_OPT_FLAG_AUDIO_PARAM ;
+ int AV_OPT_FLAG_DECODING_PARAM ;
+ int AV_OPT_FLAG_ENCODING_PARAM ;
+ int AV_OPT_FLAG_SUBTITLE_PARAM ;
+ int AV_OPT_FLAG_VIDEO_PARAM ;
+
+ scalar_t__ AV_OPT_TYPE_CONST ;
+
+
+
+
+
+
+
+ int printf (char*,...) ;
+ int strcmp (scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static void print_option(const AVOption *opts, const AVOption *o, int per_stream)
 {
@@ -39,15 +39,15 @@ __attribute__((used)) static void print_option(const AVOption *opts, const AVOpt
 
     printf("@item -%s%s @var{", o->name, per_stream ? "[:stream_specifier]" : "");
     switch (o->type) {
-    case AV_OPT_TYPE_BINARY:   printf("hexadecimal string"); break;
-    case AV_OPT_TYPE_STRING:   printf("string");             break;
-    case AV_OPT_TYPE_INT:
-    case AV_OPT_TYPE_INT64:    printf("integer");            break;
-    case AV_OPT_TYPE_FLOAT:
-    case AV_OPT_TYPE_DOUBLE:   printf("float");              break;
-    case AV_OPT_TYPE_RATIONAL: printf("rational number");    break;
-    case AV_OPT_TYPE_FLAGS:    printf("flags");              break;
-    default:                   printf("value");              break;
+    case 135: printf("hexadecimal string"); break;
+    case 128: printf("string"); break;
+    case 131:
+    case 130: printf("integer"); break;
+    case 132:
+    case 134: printf("float"); break;
+    case 129: printf("rational number"); break;
+    case 133: printf("flags"); break;
+    default: printf("value"); break;
     }
     printf("} (@emph{");
 
@@ -57,8 +57,8 @@ __attribute__((used)) static void print_option(const AVOption *opts, const AVOpt
             printf("/");
     }
     if (o->flags & AV_OPT_FLAG_ENCODING_PARAM) printf("output");
-    if (o->flags & AV_OPT_FLAG_AUDIO_PARAM)    printf(",audio");
-    if (o->flags & AV_OPT_FLAG_VIDEO_PARAM)    printf(",video");
+    if (o->flags & AV_OPT_FLAG_AUDIO_PARAM) printf(",audio");
+    if (o->flags & AV_OPT_FLAG_VIDEO_PARAM) printf(",video");
     if (o->flags & AV_OPT_FLAG_SUBTITLE_PARAM) printf(",subtitles");
 
     printf("})\n");

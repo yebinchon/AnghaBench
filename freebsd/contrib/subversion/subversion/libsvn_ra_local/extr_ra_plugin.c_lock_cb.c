@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_lock_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct lock_baton_t {int /*<<< orphan*/  is_lock; int /*<<< orphan*/  lock_baton; scalar_t__ (* lock_func ) (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;scalar_t__ cb_err; int /*<<< orphan*/  fs_path; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_fspath__skip_ancestor (int /*<<< orphan*/ ,char const*) ; 
+
+
+
+typedef int svn_lock_t ;
+typedef int svn_error_t ;
+struct lock_baton_t {int is_lock; int lock_baton; scalar_t__ (* lock_func ) (int ,char const*,int ,int const*,int *,int *) ;scalar_t__ cb_err; int fs_path; } ;
+typedef int apr_pool_t ;
+
+
+ int * SVN_NO_ERROR ;
+ scalar_t__ stub1 (int ,char const*,int ,int const*,int *,int *) ;
+ char* svn_fspath__skip_ancestor (int ,char const*) ;
 
 __attribute__((used)) static svn_error_t *
 lock_cb(void *lock_baton,

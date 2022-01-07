@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tmdc {int /*<<< orphan*/  gameport; } ;
+
+
+
+
+struct tmdc {int gameport; } ;
 struct input_dev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gameport_stop_polling (int /*<<< orphan*/ ) ; 
- struct tmdc* input_get_drvdata (struct input_dev*) ; 
+
+ int gameport_stop_polling (int ) ;
+ struct tmdc* input_get_drvdata (struct input_dev*) ;
 
 __attribute__((used)) static void tmdc_close(struct input_dev *dev)
 {
-	struct tmdc *tmdc = input_get_drvdata(dev);
+ struct tmdc *tmdc = input_get_drvdata(dev);
 
-	gameport_stop_polling(tmdc->gameport);
+ gameport_stop_polling(tmdc->gameport);
 }

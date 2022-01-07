@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * Z; int /*<<< orphan*/ * Y; int /*<<< orphan*/ * X; } ;
-typedef  TYPE_1__ EC_POINT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- void* BN_new () ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * Z; int * Y; int * X; } ;
+typedef TYPE_1__ EC_POINT ;
+
+
+ int BN_free (int *) ;
+ void* BN_new () ;
 
 int ec_GF2m_simple_point_init(EC_POINT *point)
 {
@@ -24,7 +24,7 @@ int ec_GF2m_simple_point_init(EC_POINT *point)
     point->Y = BN_new();
     point->Z = BN_new();
 
-    if (point->X == NULL || point->Y == NULL || point->Z == NULL) {
+    if (point->X == ((void*)0) || point->Y == ((void*)0) || point->Z == ((void*)0)) {
         BN_free(point->X);
         BN_free(point->Y);
         BN_free(point->Z);

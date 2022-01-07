@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {int size_sub; int size_rle; int size_got; scalar_t__ pts; scalar_t__ pts_stop; int /*<<< orphan*/  scr_sequence; int /*<<< orphan*/  current_scr_sequence; TYPE_6__* buf; int /*<<< orphan*/  stream_id; } ;
-typedef  TYPE_3__ hb_work_private_t ;
+
+
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_15__ {int size_sub; int size_rle; int size_got; scalar_t__ pts; scalar_t__ pts_stop; int scr_sequence; int current_scr_sequence; TYPE_6__* buf; int stream_id; } ;
+typedef TYPE_3__ hb_work_private_t ;
 struct TYPE_16__ {TYPE_3__* private_data; } ;
-typedef  TYPE_4__ hb_work_object_t ;
-struct TYPE_14__ {int flags; scalar_t__ start; int /*<<< orphan*/  id; int /*<<< orphan*/  scr_sequence; } ;
+typedef TYPE_4__ hb_work_object_t ;
+struct TYPE_14__ {int flags; scalar_t__ start; int id; int scr_sequence; } ;
 struct TYPE_17__ {int* data; int size; TYPE_2__ s; } ;
-typedef  TYPE_5__ hb_buffer_t ;
-struct TYPE_13__ {int /*<<< orphan*/  id; int /*<<< orphan*/  frametype; } ;
+typedef TYPE_5__ hb_buffer_t ;
+struct TYPE_13__ {int id; int frametype; } ;
 struct TYPE_18__ {int size; TYPE_1__ s; scalar_t__ data; } ;
 
-/* Variables and functions */
- scalar_t__ AV_NOPTS_VALUE ; 
- TYPE_5__* Decode (TYPE_4__*) ; 
- int HB_BUF_FLAG_EOF ; 
- int /*<<< orphan*/  HB_FRAME_SUBTITLE ; 
- int HB_WORK_DONE ; 
- int HB_WORK_OK ; 
- int /*<<< orphan*/  hb_buffer_close (TYPE_6__**) ; 
- TYPE_6__* hb_buffer_init (int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,int*,int) ; 
+
+ scalar_t__ AV_NOPTS_VALUE ;
+ TYPE_5__* Decode (TYPE_4__*) ;
+ int HB_BUF_FLAG_EOF ;
+ int HB_FRAME_SUBTITLE ;
+ int HB_WORK_DONE ;
+ int HB_WORK_OK ;
+ int hb_buffer_close (TYPE_6__**) ;
+ TYPE_6__* hb_buffer_init (int) ;
+ int memcpy (scalar_t__,int*,int) ;
 
 int decsubWork( hb_work_object_t * w, hb_buffer_t ** buf_in,
                 hb_buffer_t ** buf_out )
@@ -46,9 +46,9 @@ int decsubWork( hb_work_object_t * w, hb_buffer_t ** buf_in,
 
     if (in->s.flags & HB_BUF_FLAG_EOF)
     {
-        /* EOF on input stream - send it downstream & say that we're done */
+
         *buf_out = in;
-        *buf_in = NULL;
+        *buf_in = ((void*)0);
         return HB_WORK_DONE;
     }
 
@@ -59,29 +59,29 @@ int decsubWork( hb_work_object_t * w, hb_buffer_t ** buf_in,
 
     if( !pv->size_sub )
     {
-        /* We are looking for the start of a new subtitle */
+
         if( size_sub && size_rle && size_sub > size_rle &&
             in->size <= size_sub )
         {
-            /* Looks all right so far */
+
             pv->size_sub = size_sub;
             pv->size_rle = size_rle;
 
-            pv->buf      = hb_buffer_init( 0xFFFF );
+            pv->buf = hb_buffer_init( 0xFFFF );
             memcpy( pv->buf->data, in->data, in->size );
             pv->buf->s.id = in->s.id;
             pv->buf->s.frametype = HB_FRAME_SUBTITLE;
             pv->size_got = in->size;
             if( in->s.start >= 0 )
             {
-                pv->pts                  = in->s.start;
+                pv->pts = in->s.start;
                 pv->current_scr_sequence = in->s.scr_sequence;
             }
         }
     }
     else
     {
-        /* We are waiting for the end of the current subtitle */
+
         if( in->size <= pv->size_sub - pv->size_got )
         {
             memcpy( pv->buf->data + pv->size_got, in->data, in->size );
@@ -89,45 +89,45 @@ int decsubWork( hb_work_object_t * w, hb_buffer_t ** buf_in,
             pv->size_got += in->size;
             if( in->s.start >= 0 )
             {
-                pv->pts                  = in->s.start;
+                pv->pts = in->s.start;
                 pv->current_scr_sequence = in->s.scr_sequence;
             }
         }
         else
         {
-            // bad size, must have lost sync
-            // force re-sync
-            if ( pv->buf != NULL )
+
+
+            if ( pv->buf != ((void*)0) )
                 hb_buffer_close( &pv->buf );
             pv->size_sub = 0;
         }
 
     }
 
-    *buf_out = NULL;
+    *buf_out = ((void*)0);
 
     if( pv->size_sub && pv->size_sub == pv->size_got )
     {
         pv->buf->size = pv->size_sub;
 
-        /* We got a complete subtitle, decode it */
+
         *buf_out = Decode( w );
 
-        if ( *buf_out != NULL )
+        if ( *buf_out != ((void*)0) )
             (*buf_out)->s.id = in->s.id;
 
-        /* Wait for the next one */
+
         pv->size_sub = 0;
         pv->size_got = 0;
         pv->size_rle = 0;
 
         if ( pv->pts_stop != AV_NOPTS_VALUE )
         {
-            // If we don't get a valid next timestamp, use the stop time
-            // of the current sub as the start of the next.
-            // This can happen if reader invalidates timestamps while
-            // waiting for an audio to update the SCR.
-            pv->pts                  = pv->pts_stop;
+
+
+
+
+            pv->pts = pv->pts_stop;
             pv->current_scr_sequence = pv->scr_sequence;
         }
     }

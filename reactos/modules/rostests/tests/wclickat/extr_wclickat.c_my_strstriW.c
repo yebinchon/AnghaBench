@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ WCHAR ;
 
-/* Variables and functions */
- scalar_t__ towlower (scalar_t__ const) ; 
+
+
+
+typedef scalar_t__ WCHAR ;
+
+
+ scalar_t__ towlower (scalar_t__ const) ;
 
 __attribute__((used)) static const WCHAR* my_strstriW(const WCHAR* haystack, const WCHAR* needle)
 {
@@ -23,9 +23,9 @@ __attribute__((used)) static const WCHAR* my_strstriW(const WCHAR* haystack, con
     if (!*needle)
         return haystack;
 
-    /* Special case the first character because
-     * we will be doing a lot of comparisons with it.
-     */
+
+
+
     first=towlower(*needle);
     needle++;
     while (*haystack)
@@ -44,5 +44,5 @@ __attribute__((used)) static const WCHAR* my_strstriW(const WCHAR* haystack, con
             return haystack;
         haystack++;
     }
-    return NULL;
+    return ((void*)0);
 }

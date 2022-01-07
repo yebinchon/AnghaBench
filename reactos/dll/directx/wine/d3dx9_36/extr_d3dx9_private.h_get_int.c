@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int D3DXPARAMETER_TYPE ;
 
-/* Variables and functions */
-#define  D3DXPT_BOOL 131 
-#define  D3DXPT_FLOAT 130 
-#define  D3DXPT_INT 129 
-#define  D3DXPT_VOID 128 
- int get_bool (int,void const*) ; 
+
+
+
+typedef int D3DXPARAMETER_TYPE ;
+
+
+
+
+
+
+ int get_bool (int,void const*) ;
 
 __attribute__((used)) static inline int get_int(D3DXPARAMETER_TYPE type, const void *data)
 {
     switch (type)
     {
-        case D3DXPT_FLOAT:
+        case 130:
             return (int)(*(float *)data);
 
-        case D3DXPT_INT:
-        case D3DXPT_VOID:
+        case 129:
+        case 128:
             return *(int *)data;
 
-        case D3DXPT_BOOL:
+        case 131:
             return get_bool(type, data);
 
         default:

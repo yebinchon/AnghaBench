@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  item ;
 
-/* Variables and functions */
- scalar_t__ FLAGS_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITEM_get_cas (int /*<<< orphan*/ *) ; 
- scalar_t__ ITEM_suffix (int /*<<< orphan*/ *) ; 
- char* itoa_u32 (int,char*) ; 
- char* itoa_u64 (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int uint32_t ;
+typedef int item ;
+
+
+ scalar_t__ FLAGS_SIZE (int *) ;
+ int ITEM_get_cas (int *) ;
+ scalar_t__ ITEM_suffix (int *) ;
+ char* itoa_u32 (int,char*) ;
+ char* itoa_u64 (int ,char*) ;
 
 __attribute__((used)) static inline int make_ascii_get_suffix(char *suffix, item *it, bool return_cas, int nbytes) {
     char *p = suffix;

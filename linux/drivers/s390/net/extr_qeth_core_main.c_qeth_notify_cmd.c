@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct qeth_cmd_buffer {int rc; int /*<<< orphan*/  done; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  complete (int /*<<< orphan*/ *) ; 
+
+
+
+struct qeth_cmd_buffer {int rc; int done; } ;
+
+
+ int complete (int *) ;
 
 void qeth_notify_cmd(struct qeth_cmd_buffer *iob, int reason)
 {
-	iob->rc = reason;
-	complete(&iob->done);
+ iob->rc = reason;
+ complete(&iob->done);
 }

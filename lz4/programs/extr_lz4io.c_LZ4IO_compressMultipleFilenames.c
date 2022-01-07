@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cRess_t ;
-typedef  int /*<<< orphan*/  LZ4IO_prefs_t ;
 
-/* Variables and functions */
- size_t FNSPACE ; 
- scalar_t__ LZ4IO_compressFilename_extRess (int /*<<< orphan*/ * const,int /*<<< orphan*/ ,char const*,char*,int) ; 
- int /*<<< orphan*/  LZ4IO_createCResources (int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  LZ4IO_freeCResources (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ malloc (size_t) ; 
- char* stdoutmark ; 
- int /*<<< orphan*/  strcat (char*,char const*) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- size_t strlen (char const*) ; 
+
+
+
+typedef int cRess_t ;
+typedef int LZ4IO_prefs_t ;
+
+
+ size_t FNSPACE ;
+ scalar_t__ LZ4IO_compressFilename_extRess (int * const,int ,char const*,char*,int) ;
+ int LZ4IO_createCResources (int * const) ;
+ int LZ4IO_freeCResources (int ) ;
+ int free (char*) ;
+ scalar_t__ malloc (size_t) ;
+ char* stdoutmark ;
+ int strcat (char*,char const*) ;
+ int strcmp (char const*,char*) ;
+ int strcpy (char*,char const*) ;
+ size_t strlen (char const*) ;
 
 int LZ4IO_compressMultipleFilenames(LZ4IO_prefs_t* const prefs,
                               const char** inFileNamesTable, int ifntSize,
@@ -38,10 +38,10 @@ int LZ4IO_compressMultipleFilenames(LZ4IO_prefs_t* const prefs,
     const size_t suffixSize = strlen(suffix);
     cRess_t ress;
 
-    if (dstFileName == NULL) return ifntSize;   /* not enough memory */
+    if (dstFileName == ((void*)0)) return ifntSize;
     ress = LZ4IO_createCResources(prefs);
 
-    /* loop on each file */
+
     for (i=0; i<ifntSize; i++) {
         size_t const ifnSize = strlen(inFileNamesTable[i]);
         if (!strcmp(suffix, stdoutmark)) {
@@ -54,10 +54,10 @@ int LZ4IO_compressMultipleFilenames(LZ4IO_prefs_t* const prefs,
             free(dstFileName);
             ofnSize = ifnSize + 20;
             dstFileName = (char*)malloc(ofnSize);
-            if (dstFileName==NULL) {
+            if (dstFileName==((void*)0)) {
                 LZ4IO_freeCResources(ress);
                 return ifntSize;
-        }   }
+        } }
         strcpy(dstFileName, inFileNamesTable[i]);
         strcat(dstFileName, suffix);
 
@@ -66,7 +66,7 @@ int LZ4IO_compressMultipleFilenames(LZ4IO_prefs_t* const prefs,
                                 compressionLevel);
     }
 
-    /* Close & Free */
+
     LZ4IO_freeCResources(ress);
     free(dstFileName);
 

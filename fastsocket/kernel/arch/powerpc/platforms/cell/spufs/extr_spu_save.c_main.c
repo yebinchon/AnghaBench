@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {void** ui; } ;
-typedef  TYPE_1__ addr64 ;
+typedef TYPE_1__ addr64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SPU_RdSigNotify1 ; 
- int /*<<< orphan*/  SPU_RdSigNotify2 ; 
- int /*<<< orphan*/  build_dma_list (TYPE_1__) ; 
- int /*<<< orphan*/  enqueue_putllc (TYPE_1__) ; 
- int /*<<< orphan*/  enqueue_sync (TYPE_1__) ; 
- int /*<<< orphan*/  read_llar_status () ; 
- int /*<<< orphan*/  read_tag_status () ; 
- int /*<<< orphan*/  save_complete () ; 
- int /*<<< orphan*/  save_decr () ; 
- int /*<<< orphan*/  save_event_mask () ; 
- int /*<<< orphan*/  save_fpcr () ; 
- int /*<<< orphan*/  save_srr0 () ; 
- int /*<<< orphan*/  save_tag_mask () ; 
- int /*<<< orphan*/  save_upper_240kb (TYPE_1__) ; 
- int /*<<< orphan*/  set_event_mask () ; 
- int /*<<< orphan*/  set_tag_mask () ; 
- int /*<<< orphan*/  set_tag_update () ; 
- int /*<<< orphan*/  spill_regs_to_mem (TYPE_1__) ; 
- void* spu_readch (int /*<<< orphan*/ ) ; 
+
+ int SPU_RdSigNotify1 ;
+ int SPU_RdSigNotify2 ;
+ int build_dma_list (TYPE_1__) ;
+ int enqueue_putllc (TYPE_1__) ;
+ int enqueue_sync (TYPE_1__) ;
+ int read_llar_status () ;
+ int read_tag_status () ;
+ int save_complete () ;
+ int save_decr () ;
+ int save_event_mask () ;
+ int save_fpcr () ;
+ int save_srr0 () ;
+ int save_tag_mask () ;
+ int save_upper_240kb (TYPE_1__) ;
+ int set_event_mask () ;
+ int set_tag_mask () ;
+ int set_tag_update () ;
+ int spill_regs_to_mem (TYPE_1__) ;
+ void* spu_readch (int ) ;
 
 int main()
 {
-	addr64 lscsa_ea;
+ addr64 lscsa_ea;
 
-	lscsa_ea.ui[0] = spu_readch(SPU_RdSigNotify1);
-	lscsa_ea.ui[1] = spu_readch(SPU_RdSigNotify2);
+ lscsa_ea.ui[0] = spu_readch(SPU_RdSigNotify1);
+ lscsa_ea.ui[1] = spu_readch(SPU_RdSigNotify2);
 
-	/* Step 1: done by exit(). */
-	save_event_mask();	/* Step 2.  */
-	save_tag_mask();	/* Step 3.  */
-	set_event_mask();	/* Step 4.  */
-	set_tag_mask();		/* Step 5.  */
-	build_dma_list(lscsa_ea);	/* Step 6.  */
-	save_upper_240kb(lscsa_ea);	/* Step 7.  */
-	/* Step 8: done by exit(). */
-	save_fpcr();		/* Step 9.  */
-	save_decr();		/* Step 10. */
-	save_srr0();		/* Step 11. */
-	enqueue_putllc(lscsa_ea);	/* Step 12. */
-	spill_regs_to_mem(lscsa_ea);	/* Step 13. */
-	enqueue_sync(lscsa_ea);	/* Step 14. */
-	set_tag_update();	/* Step 15. */
-	read_tag_status();	/* Step 16. */
-	read_llar_status();	/* Step 17. */
-	save_complete();	/* Step 18. */
 
-	return 0;
+ save_event_mask();
+ save_tag_mask();
+ set_event_mask();
+ set_tag_mask();
+ build_dma_list(lscsa_ea);
+ save_upper_240kb(lscsa_ea);
+
+ save_fpcr();
+ save_decr();
+ save_srr0();
+ enqueue_putllc(lscsa_ea);
+ spill_regs_to_mem(lscsa_ea);
+ enqueue_sync(lscsa_ea);
+ set_tag_update();
+ read_tag_status();
+ read_llar_status();
+ save_complete();
+
+ return 0;
 }

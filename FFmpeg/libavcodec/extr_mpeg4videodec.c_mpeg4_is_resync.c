@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_14__ {int size_in_bits; } ;
 struct TYPE_12__ {int workaround_bugs; int pict_type; int mb_num; TYPE_3__ gb; scalar_t__ partitioned_frame; } ;
-struct TYPE_13__ {int /*<<< orphan*/  resync_marker; TYPE_1__ m; } ;
-typedef  TYPE_1__ MpegEncContext ;
-typedef  TYPE_2__ Mpeg4DecContext ;
-typedef  TYPE_3__ GetBitContext ;
+struct TYPE_13__ {int resync_marker; TYPE_1__ m; } ;
+typedef TYPE_1__ MpegEncContext ;
+typedef TYPE_2__ Mpeg4DecContext ;
+typedef TYPE_3__ GetBitContext ;
 
-/* Variables and functions */
- int AV_PICTURE_TYPE_B ; 
- int FF_BUG_NO_PADDING ; 
- int /*<<< orphan*/  align_get_bits (TYPE_3__*) ; 
- int av_log2 (int) ; 
- int ff_mpeg4_get_video_packet_prefix_length (TYPE_1__*) ; 
- int* ff_mpeg4_resync_prefix ; 
- int get_bits (TYPE_3__*,int) ; 
- scalar_t__ get_bits1 (TYPE_3__*) ; 
- int get_bits_count (TYPE_3__*) ; 
- int show_bits (TYPE_3__*,int) ; 
- int /*<<< orphan*/  skip_bits (TYPE_3__*,int) ; 
+
+ int AV_PICTURE_TYPE_B ;
+ int FF_BUG_NO_PADDING ;
+ int align_get_bits (TYPE_3__*) ;
+ int av_log2 (int) ;
+ int ff_mpeg4_get_video_packet_prefix_length (TYPE_1__*) ;
+ int* ff_mpeg4_resync_prefix ;
+ int get_bits (TYPE_3__*,int) ;
+ scalar_t__ get_bits1 (TYPE_3__*) ;
+ int get_bits_count (TYPE_3__*) ;
+ int show_bits (TYPE_3__*,int) ;
+ int skip_bits (TYPE_3__*,int) ;
 
 __attribute__((used)) static inline int mpeg4_is_resync(Mpeg4DecContext *ctx)
 {
     MpegEncContext *s = &ctx->m;
     int bits_count = get_bits_count(&s->gb);
-    int v          = show_bits(&s->gb, 16);
+    int v = show_bits(&s->gb, 16);
 
     if (s->workaround_bugs & FF_BUG_NO_PADDING && !ctx->resync_marker)
         return 0;
@@ -53,7 +53,7 @@ __attribute__((used)) static inline int mpeg4_is_resync(Mpeg4DecContext *ctx)
 
     if (bits_count + 8 >= s->gb.size_in_bits) {
         v >>= 8;
-        v  |= 0x7F >> (7 - (bits_count & 7));
+        v |= 0x7F >> (7 - (bits_count & 7));
 
         if (v == 0x7F)
             return s->mb_num;

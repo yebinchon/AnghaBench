@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_4__ {int /*<<< orphan*/  out; } ;
-typedef  TYPE_1__ demux_t ;
-typedef  int /*<<< orphan*/  buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DemuxBlock (TYPE_1__*,int const*,int) ; 
- int /*<<< orphan*/  ES_OUT_GET_EMPTY ; 
- int /*<<< orphan*/  es_out_Control (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_4__ {int out; } ;
+typedef TYPE_1__ demux_t ;
+typedef int buffer ;
+
+
+ int DemuxBlock (TYPE_1__*,int const*,int) ;
+ int ES_OUT_GET_EMPTY ;
+ int es_out_Control (int ,int ,int*) ;
 
 __attribute__((used)) static void DemuxForceStill( demux_t *p_demux )
 {

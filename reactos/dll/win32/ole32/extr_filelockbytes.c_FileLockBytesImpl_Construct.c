@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_5__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_6__ {int ref; TYPE_1__ ILockBytes_iface; int /*<<< orphan*/ * pwcsName; int /*<<< orphan*/  flProtect; scalar_t__ hfile; } ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  TYPE_1__ ILockBytes ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ HANDLE ;
-typedef  TYPE_2__ FileLockBytesImpl ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  FileLockBytesImpl_Vtbl ; 
- int /*<<< orphan*/  GetFullPathNameW (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  GetProtectMode (int /*<<< orphan*/ ) ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  lstrcpyW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lstrcpynW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int lstrlenW (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_5__ {int * lpVtbl; } ;
+struct TYPE_6__ {int ref; TYPE_1__ ILockBytes_iface; int * pwcsName; int flProtect; scalar_t__ hfile; } ;
+typedef int LPCWSTR ;
+typedef TYPE_1__ ILockBytes ;
+typedef int HRESULT ;
+typedef scalar_t__ HANDLE ;
+typedef TYPE_2__ FileLockBytesImpl ;
+typedef int DWORD ;
+
+
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ int FileLockBytesImpl_Vtbl ;
+ int GetFullPathNameW (int ,int,int *,int *) ;
+ int GetProcessHeap () ;
+ int GetProtectMode (int ) ;
+ void* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_2__*) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int MAX_PATH ;
+ int S_OK ;
+ int lstrcpyW (int *,int *) ;
+ int lstrcpynW (int *,int ,int) ;
+ int lstrlenW (int *) ;
 
 HRESULT FileLockBytesImpl_Construct(HANDLE hFile, DWORD openFlags, LPCWSTR pwcsName, ILockBytes **pLockBytes)
 {
@@ -57,7 +57,7 @@ HRESULT FileLockBytesImpl_Construct(HANDLE hFile, DWORD openFlags, LPCWSTR pwcsN
   This->flProtect = GetProtectMode(openFlags);
 
   if(pwcsName) {
-    if (!GetFullPathNameW(pwcsName, MAX_PATH, fullpath, NULL))
+    if (!GetFullPathNameW(pwcsName, MAX_PATH, fullpath, ((void*)0)))
     {
       lstrcpynW(fullpath, pwcsName, MAX_PATH);
     }
@@ -71,7 +71,7 @@ HRESULT FileLockBytesImpl_Construct(HANDLE hFile, DWORD openFlags, LPCWSTR pwcsN
     lstrcpyW(This->pwcsName, fullpath);
   }
   else
-    This->pwcsName = NULL;
+    This->pwcsName = ((void*)0);
 
   *pLockBytes = &This->ILockBytes_iface;
 

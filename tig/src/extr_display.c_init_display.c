@@ -1,126 +1,126 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * file; } ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LINE_STATUS ; 
- int /*<<< orphan*/  STDIN_FILENO ; 
- int /*<<< orphan*/  TABSIZE ; 
- scalar_t__ atexit (int /*<<< orphan*/ ) ; 
- int cursed ; 
- int /*<<< orphan*/  die (char*) ; 
- int /*<<< orphan*/  done_display ; 
- int /*<<< orphan*/  enable_mouse (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  get_line_attr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* getenv (char*) ; 
- int /*<<< orphan*/  getmaxyx (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  init_colors () ; 
- int /*<<< orphan*/  initscr () ; 
- scalar_t__ isatty (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  keypad (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  newterm (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  newwin (int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  opt_mouse ; 
- int /*<<< orphan*/  opt_tab_size ; 
- TYPE_1__ opt_tty ; 
- int /*<<< orphan*/  set_tabsize (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_terminal_modes () ; 
- int /*<<< orphan*/  status_win ; 
- int /*<<< orphan*/  stdscr ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- int use_scroll_redrawwin ; 
- int use_scroll_status_wclear ; 
- int /*<<< orphan*/  wbkgdset (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * file; } ;
+typedef int FILE ;
+
+
+ int LINE_STATUS ;
+ int STDIN_FILENO ;
+ int TABSIZE ;
+ scalar_t__ atexit (int ) ;
+ int cursed ;
+ int die (char*) ;
+ int done_display ;
+ int enable_mouse (int ) ;
+ int * fopen (char*,char*) ;
+ int get_line_attr (int *,int ) ;
+ char* getenv (char*) ;
+ int getmaxyx (int ,int,int) ;
+ int init_colors () ;
+ int initscr () ;
+ scalar_t__ isatty (int ) ;
+ int keypad (int ,int) ;
+ int newterm (int *,int *,int *) ;
+ int newwin (int,int,int,int ) ;
+ int opt_mouse ;
+ int opt_tab_size ;
+ TYPE_1__ opt_tty ;
+ int set_tabsize (int ) ;
+ int set_terminal_modes () ;
+ int status_win ;
+ int stdscr ;
+ int strcmp (char const*,char*) ;
+ int use_scroll_redrawwin ;
+ int use_scroll_status_wclear ;
+ int wbkgdset (int ,int ) ;
 
 void
 init_display(void)
 {
-	bool no_display = !!getenv("TIG_NO_DISPLAY");
-	const char *term;
-	int x, y;
+ bool no_display = !!getenv("TIG_NO_DISPLAY");
+ const char *term;
+ int x, y;
 
-	if (!opt_tty.file)
-		die("Can't initialize display without tty");
+ if (!opt_tty.file)
+  die("Can't initialize display without tty");
 
-	if (atexit(done_display))
-		die("Failed to register done_display");
+ if (atexit(done_display))
+  die("Failed to register done_display");
 
-	/* Initialize the curses library */
-	if (!no_display && isatty(STDIN_FILENO)) {
-		/* Needed for ncurses 5.4 compatibility. */
-		cursed = !!initscr();
-	} else {
-		/* Leave stdin and stdout alone when acting as a pager. */
-		FILE *out_tty;
 
-		out_tty = no_display ? fopen("/dev/null", "w+") : opt_tty.file;
-		if (!out_tty)
-			die("Failed to open tty for output");
-		cursed = !!newterm(NULL, out_tty, opt_tty.file);
-	}
+ if (!no_display && isatty(STDIN_FILENO)) {
 
-	if (!cursed)
-		die("Failed to initialize curses");
+  cursed = !!initscr();
+ } else {
 
-	set_terminal_modes();
-	init_colors();
+  FILE *out_tty;
 
-	getmaxyx(stdscr, y, x);
-	status_win = newwin(1, x, y - 1, 0);
-	if (!status_win)
-		die("Failed to create status window");
+  out_tty = no_display ? fopen("/dev/null", "w+") : opt_tty.file;
+  if (!out_tty)
+   die("Failed to open tty for output");
+  cursed = !!newterm(((void*)0), out_tty, opt_tty.file);
+ }
 
-	/* Enable keyboard mapping */
-	keypad(status_win, true);
-	wbkgdset(status_win, get_line_attr(NULL, LINE_STATUS));
-	enable_mouse(opt_mouse);
+ if (!cursed)
+  die("Failed to initialize curses");
 
-#if defined(NCURSES_VERSION_PATCH) && (NCURSES_VERSION_PATCH >= 20080119)
-	set_tabsize(opt_tab_size);
-#else
-	TABSIZE = opt_tab_size;
-#endif
+ set_terminal_modes();
+ init_colors();
 
-	term = getenv("XTERM_VERSION")
-		   ? NULL
-		   : (getenv("TERM_PROGRAM") ? getenv("TERM_PROGRAM") : getenv("COLORTERM"));
-	if (term && !strcmp(term, "gnome-terminal")) {
-		/* In the gnome-terminal-emulator, the warning message
-		 * shown when scrolling up one line while the cursor is
-		 * on the first line followed by scrolling down one line
-		 * corrupts the status line. This is fixed by calling
-		 * wclear. */
-		use_scroll_status_wclear = true;
-		use_scroll_redrawwin = false;
+ getmaxyx(stdscr, y, x);
+ status_win = newwin(1, x, y - 1, 0);
+ if (!status_win)
+  die("Failed to create status window");
 
-	} else if (term &&
-			   (!strcmp(term, "xrvt-xpm") || !strcmp(term, "Apple_Terminal") ||
-				!strcmp(term, "iTerm.app"))) {
-		/* No problems with full optimizations in
-		 * xrvt-(unicode)
-		 * aterm
-		 * Terminal.app
-		 * iTerm2 */
-		use_scroll_status_wclear = use_scroll_redrawwin = false;
 
-	} else {
-		/* When scrolling in (u)xterm the last line in the
-		 * scrolling direction will update slowly.  This is
-		 * the conservative default. */
-		use_scroll_redrawwin = true;
-		use_scroll_status_wclear = false;
-	}
+ keypad(status_win, 1);
+ wbkgdset(status_win, get_line_attr(((void*)0), LINE_STATUS));
+ enable_mouse(opt_mouse);
+
+
+
+
+ TABSIZE = opt_tab_size;
+
+
+ term = getenv("XTERM_VERSION")
+     ? ((void*)0)
+     : (getenv("TERM_PROGRAM") ? getenv("TERM_PROGRAM") : getenv("COLORTERM"));
+ if (term && !strcmp(term, "gnome-terminal")) {
+
+
+
+
+
+  use_scroll_status_wclear = 1;
+  use_scroll_redrawwin = 0;
+
+ } else if (term &&
+      (!strcmp(term, "xrvt-xpm") || !strcmp(term, "Apple_Terminal") ||
+    !strcmp(term, "iTerm.app"))) {
+
+
+
+
+
+  use_scroll_status_wclear = use_scroll_redrawwin = 0;
+
+ } else {
+
+
+
+  use_scroll_redrawwin = 1;
+  use_scroll_status_wclear = 0;
+ }
 }

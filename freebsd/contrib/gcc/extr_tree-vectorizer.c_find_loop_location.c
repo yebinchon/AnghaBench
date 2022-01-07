@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ tree ;
+
+
+
+
+typedef scalar_t__ tree ;
 struct loop {scalar_t__ header; } ;
-typedef  int /*<<< orphan*/  block_stmt_iterator ;
-typedef  scalar_t__ basic_block ;
-typedef  int /*<<< orphan*/  LOC ;
+typedef int block_stmt_iterator ;
+typedef scalar_t__ basic_block ;
+typedef int LOC ;
 
-/* Variables and functions */
- scalar_t__ EXPR_FILENAME (scalar_t__) ; 
- scalar_t__ EXPR_HAS_LOCATION (scalar_t__) ; 
- scalar_t__ EXPR_LINENO (scalar_t__) ; 
- int /*<<< orphan*/  EXPR_LOC (scalar_t__) ; 
- scalar_t__ EXPR_P (scalar_t__) ; 
- scalar_t__ NULL_TREE ; 
- int /*<<< orphan*/  UNKNOWN_LOC ; 
- int /*<<< orphan*/  bsi_end_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bsi_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bsi_start (scalar_t__) ; 
- scalar_t__ bsi_stmt (int /*<<< orphan*/ ) ; 
- scalar_t__ get_loop_exit_condition (struct loop*) ; 
+
+ scalar_t__ EXPR_FILENAME (scalar_t__) ;
+ scalar_t__ EXPR_HAS_LOCATION (scalar_t__) ;
+ scalar_t__ EXPR_LINENO (scalar_t__) ;
+ int EXPR_LOC (scalar_t__) ;
+ scalar_t__ EXPR_P (scalar_t__) ;
+ scalar_t__ NULL_TREE ;
+ int UNKNOWN_LOC ;
+ int bsi_end_p (int ) ;
+ int bsi_next (int *) ;
+ int bsi_start (scalar_t__) ;
+ scalar_t__ bsi_stmt (int ) ;
+ scalar_t__ get_loop_exit_condition (struct loop*) ;
 
 LOC
 find_loop_location (struct loop *loop)
@@ -46,8 +46,8 @@ find_loop_location (struct loop *loop)
       && EXPR_FILENAME (node) && EXPR_LINENO (node))
     return EXPR_LOC (node);
 
-  /* If we got here the loop is probably not "well formed",
-     try to estimate the loop location */
+
+
 
   if (!loop->header)
     return UNKNOWN_LOC;

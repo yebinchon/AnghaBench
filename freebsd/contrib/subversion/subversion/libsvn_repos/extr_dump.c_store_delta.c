@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_txdelta_window_handler_t ;
-typedef  int /*<<< orphan*/  svn_txdelta_stream_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_fs_root_t ;
-typedef  scalar_t__ svn_filesize_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  scalar_t__ apr_off_t ;
-typedef  int /*<<< orphan*/  apr_file_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_SET ; 
- int /*<<< orphan*/  SVN_DELTA_COMPRESSION_LEVEL_DEFAULT ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  svn_fs_get_file_delta_stream (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_file_del_on_pool_cleanup ; 
- int /*<<< orphan*/  svn_io_file_get_offset (scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_io_file_seek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_open_unique_file3 (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_stream_from_aprfile2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_txdelta_send_txstream (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_txdelta_to_svndiff3 (int /*<<< orphan*/ *,void**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_txdelta_window_handler_t ;
+typedef int svn_txdelta_stream_t ;
+typedef int svn_stream_t ;
+typedef int svn_fs_root_t ;
+typedef scalar_t__ svn_filesize_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+typedef scalar_t__ apr_off_t ;
+typedef int apr_file_t ;
+
+
+ int APR_SET ;
+ int SVN_DELTA_COMPRESSION_LEVEL_DEFAULT ;
+ int SVN_ERR (int ) ;
+ int TRUE ;
+ int svn_fs_get_file_delta_stream (int **,int *,char const*,int *,char const*,int *) ;
+ int svn_io_file_del_on_pool_cleanup ;
+ int svn_io_file_get_offset (scalar_t__*,int *,int *) ;
+ int * svn_io_file_seek (int *,int ,scalar_t__*,int *) ;
+ int svn_io_open_unique_file3 (int **,int *,int *,int ,int *,int *) ;
+ int * svn_stream_from_aprfile2 (int *,int ,int *) ;
+ int svn_txdelta_send_txstream (int *,int ,void*,int *) ;
+ int svn_txdelta_to_svndiff3 (int *,void**,int *,int ,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 store_delta(apr_file_t **tempfile, svn_filesize_t *len,
@@ -45,21 +45,21 @@ store_delta(apr_file_t **tempfile, svn_filesize_t *len,
   svn_txdelta_window_handler_t wh;
   void *whb;
 
-  /* Create a temporary file and open a stream to it. Note that we need
-     the file handle in order to rewind it. */
-  SVN_ERR(svn_io_open_unique_file3(tempfile, NULL, NULL,
+
+
+  SVN_ERR(svn_io_open_unique_file3(tempfile, ((void*)0), ((void*)0),
                                    svn_io_file_del_on_pool_cleanup,
                                    pool, pool));
   temp_stream = svn_stream_from_aprfile2(*tempfile, TRUE, pool);
 
-  /* Compute the delta and send it to the temporary file. */
+
   SVN_ERR(svn_fs_get_file_delta_stream(&delta_stream, oldroot, oldpath,
                                        newroot, newpath, pool));
   svn_txdelta_to_svndiff3(&wh, &whb, temp_stream, 0,
                           SVN_DELTA_COMPRESSION_LEVEL_DEFAULT, pool);
   SVN_ERR(svn_txdelta_send_txstream(delta_stream, wh, whb, pool));
 
-  /* Get the length of the temporary file and rewind it. */
+
   SVN_ERR(svn_io_file_get_offset(&offset, *tempfile, pool));
   *len = offset;
   offset = 0;

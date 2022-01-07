@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  In; int /*<<< orphan*/  last_response_time; int /*<<< orphan*/  fd; } ;
-typedef  int /*<<< orphan*/  qres_t ;
-typedef  int /*<<< orphan*/  nb_iterator_t ;
 
-/* Variables and functions */
-#define  RPC_PONG 130 
-#define  RPC_REQ_ERROR 129 
-#define  RPC_REQ_RESULT 128 
- int SKIP_ALL_BYTES ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/ * get_qres (long long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  got_result (long long) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  nbit_clear (int /*<<< orphan*/ *) ; 
- int nbit_read_in (int /*<<< orphan*/ *,...) ; 
- int /*<<< orphan*/  nbit_set (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  precise_now ; 
- int /*<<< orphan*/  qr_ans ; 
- int /*<<< orphan*/  qres_error (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  qres_save (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int /*<<< orphan*/ ,int,int) ; 
+
+
+
+struct connection {int In; int last_response_time; int fd; } ;
+typedef int qres_t ;
+typedef int nb_iterator_t ;
+
+
+
+
+
+ int SKIP_ALL_BYTES ;
+ int assert (int) ;
+ int free (char*) ;
+ int * get_qres (long long,int ) ;
+ int got_result (long long) ;
+ char* malloc (int) ;
+ int nbit_clear (int *) ;
+ int nbit_read_in (int *,...) ;
+ int nbit_set (int *,int *) ;
+ int precise_now ;
+ int qr_ans ;
+ int qres_error (int *) ;
+ int qres_save (int *,char*,int) ;
+ int vkprintf (int,char*,int ,int,int) ;
 
 int rpcc_execute (struct connection *c, int op, int len) {
   vkprintf (1, "rpcc_execute: fd=%d, op=%d, len=%d\n", c->fd, op, len);
@@ -47,8 +47,8 @@ int rpcc_execute (struct connection *c, int op, int len) {
   c->last_response_time = precise_now;
 
   switch (op) {
-    case RPC_REQ_ERROR:
-    case RPC_REQ_RESULT:
+    case 129:
+    case 128:
       assert (len % (int)sizeof (int) == 0);
       len /= (int)sizeof (int);
       assert (len >= 6);
@@ -59,12 +59,12 @@ int rpcc_execute (struct connection *c, int op, int len) {
       long long id = *(long long *)(&head[3]);
 
       qres = get_qres (id, qr_ans);
-      if (qres == NULL) {
+      if (qres == ((void*)0)) {
         got_result (id);
         break;
       }
 
-      if (op == RPC_REQ_ERROR) {
+      if (op == 129) {
         qres_error (qres);
         break;
       }
@@ -80,7 +80,7 @@ int rpcc_execute (struct connection *c, int op, int len) {
       }
 
       break;
-    case RPC_PONG:
+    case 130:
       break;
   }
 

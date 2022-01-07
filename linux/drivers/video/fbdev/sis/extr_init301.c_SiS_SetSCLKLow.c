@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct SiS_Private {int /*<<< orphan*/  SiS_DDC_NClk; int /*<<< orphan*/  SiS_DDC_Index; int /*<<< orphan*/  SiS_DDC_Port; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SiS_DDC2Delay (struct SiS_Private*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SiS_I2CDELAYSHORT ; 
- int /*<<< orphan*/  SiS_SetRegANDOR (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct SiS_Private {int SiS_DDC_NClk; int SiS_DDC_Index; int SiS_DDC_Port; } ;
+
+
+ int SiS_DDC2Delay (struct SiS_Private*,int ) ;
+ int SiS_I2CDELAYSHORT ;
+ int SiS_SetRegANDOR (int ,int ,int ,int) ;
 
 __attribute__((used)) static unsigned short
 SiS_SetSCLKLow(struct SiS_Private *SiS_Pr)
 {
   SiS_SetRegANDOR(SiS_Pr->SiS_DDC_Port,
-		  SiS_Pr->SiS_DDC_Index,
-		  SiS_Pr->SiS_DDC_NClk,
-		  0x00);					/* SetSCLKLow()  */
+    SiS_Pr->SiS_DDC_Index,
+    SiS_Pr->SiS_DDC_NClk,
+    0x00);
   SiS_DDC2Delay(SiS_Pr,SiS_I2CDELAYSHORT);
   return 0;
 }

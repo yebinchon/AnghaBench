@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned char crypto_onetimeauth_poly1305_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMPILER_ASSERT (int) ; 
- int /*<<< orphan*/  crypto_core_hsalsa20 (unsigned char*,unsigned char const*,unsigned char const*,int /*<<< orphan*/ *) ; 
- unsigned int crypto_onetimeauth_poly1305_KEYBYTES ; 
- int /*<<< orphan*/  crypto_onetimeauth_poly1305_final (unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  crypto_onetimeauth_poly1305_init (unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  crypto_onetimeauth_poly1305_update (unsigned char*,unsigned char*,unsigned long long) ; 
- unsigned int crypto_secretbox_ZEROBYTES ; 
- int crypto_stream_salsa20_KEYBYTES ; 
- int /*<<< orphan*/  crypto_stream_salsa20_xor (unsigned char*,unsigned char*,unsigned long long,unsigned char const*,unsigned char*) ; 
- int /*<<< orphan*/  crypto_stream_salsa20_xor_ic (unsigned char*,unsigned char const*,unsigned long long,unsigned char const*,unsigned int,unsigned char*) ; 
- int /*<<< orphan*/  memmove (unsigned char*,unsigned char const*,unsigned long long) ; 
- int /*<<< orphan*/  memset (unsigned char*,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  sodium_memzero (unsigned char*,int) ; 
+
+
+
+typedef unsigned char crypto_onetimeauth_poly1305_state ;
+
+
+ int COMPILER_ASSERT (int) ;
+ int crypto_core_hsalsa20 (unsigned char*,unsigned char const*,unsigned char const*,int *) ;
+ unsigned int crypto_onetimeauth_poly1305_KEYBYTES ;
+ int crypto_onetimeauth_poly1305_final (unsigned char*,unsigned char*) ;
+ int crypto_onetimeauth_poly1305_init (unsigned char*,unsigned char*) ;
+ int crypto_onetimeauth_poly1305_update (unsigned char*,unsigned char*,unsigned long long) ;
+ unsigned int crypto_secretbox_ZEROBYTES ;
+ int crypto_stream_salsa20_KEYBYTES ;
+ int crypto_stream_salsa20_xor (unsigned char*,unsigned char*,unsigned long long,unsigned char const*,unsigned char*) ;
+ int crypto_stream_salsa20_xor_ic (unsigned char*,unsigned char const*,unsigned long long,unsigned char const*,unsigned int,unsigned char*) ;
+ int memmove (unsigned char*,unsigned char const*,unsigned long long) ;
+ int memset (unsigned char*,unsigned int,unsigned int) ;
+ int sodium_memzero (unsigned char*,int) ;
 
 int
 crypto_secretbox_detached(unsigned char *c, unsigned char *mac,
@@ -34,17 +34,17 @@ crypto_secretbox_detached(unsigned char *c, unsigned char *mac,
                           const unsigned char *k)
 {
     crypto_onetimeauth_poly1305_state state;
-    unsigned char                     block0[64U];
-    unsigned char                     subkey[crypto_stream_salsa20_KEYBYTES];
-    unsigned long long                i;
-    unsigned long long                mlen0;
+    unsigned char block0[64U];
+    unsigned char subkey[crypto_stream_salsa20_KEYBYTES];
+    unsigned long long i;
+    unsigned long long mlen0;
 
-    crypto_core_hsalsa20(subkey, n, k, NULL);
+    crypto_core_hsalsa20(subkey, n, k, ((void*)0));
 
     if (((uintptr_t) c > (uintptr_t) m &&
          (uintptr_t) c - (uintptr_t) m < mlen) ||
         ((uintptr_t) m > (uintptr_t) c &&
-         (uintptr_t) m - (uintptr_t) c < mlen)) { /* LCOV_EXCL_LINE */
+         (uintptr_t) m - (uintptr_t) c < mlen)) {
         memmove(c, m, mlen);
         m = c;
     }

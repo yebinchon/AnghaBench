@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  chtype ;
-typedef  int /*<<< orphan*/  WINDOW ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACS_HLINE ; 
- int /*<<< orphan*/  ACS_LTEE ; 
- int /*<<< orphan*/  ACS_RTEE ; 
- int /*<<< orphan*/  dlg_attrset (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char dlg_boxchar (int /*<<< orphan*/ ) ; 
- int getmaxx (int /*<<< orphan*/ *) ; 
- int getmaxy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  waddch (int /*<<< orphan*/ *,char) ; 
- int /*<<< orphan*/  wmove (int /*<<< orphan*/ *,int,int) ; 
+
+
+
+typedef int chtype ;
+typedef int WINDOW ;
+
+
+ int ACS_HLINE ;
+ int ACS_LTEE ;
+ int ACS_RTEE ;
+ int dlg_attrset (int *,int ) ;
+ char dlg_boxchar (int ) ;
+ int getmaxx (int *) ;
+ int getmaxy (int *) ;
+ int waddch (int *,char) ;
+ int wmove (int *,int,int) ;
 
 void
 dlg_draw_bottom_box2(WINDOW *win, chtype on_left, chtype on_right, chtype on_inside)
@@ -35,11 +35,11 @@ dlg_draw_bottom_box2(WINDOW *win, chtype on_left, chtype on_right, chtype on_ins
     (void) wmove(win, height - 3, 0);
     (void) waddch(win, dlg_boxchar(ACS_LTEE));
     for (i = 0; i < width - 2; i++)
-	(void) waddch(win, dlg_boxchar(ACS_HLINE));
+ (void) waddch(win, dlg_boxchar(ACS_HLINE));
     dlg_attrset(win, on_right);
     (void) waddch(win, dlg_boxchar(ACS_RTEE));
     dlg_attrset(win, on_inside);
     (void) wmove(win, height - 2, 1);
     for (i = 0; i < width - 2; i++)
-	(void) waddch(win, ' ');
+ (void) waddch(win, ' ');
 }

@@ -1,41 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int CTL_KERN ; 
- int KERN_SECURELVL ; 
- int /*<<< orphan*/  emergency (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int sysctl (int*,int,int*,size_t*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int CTL_KERN ;
+ int KERN_SECURELVL ;
+ int emergency (char*,int ) ;
+ int errno ;
+ int strerror (int ) ;
+ int sysctl (int*,int,int*,size_t*,int *,int ) ;
 
 __attribute__((used)) static int
 getsecuritylevel(void)
 {
-#ifdef KERN_SECURELVL
-	int name[2], curlevel;
-	size_t len;
+ return (-1);
 
-	name[0] = CTL_KERN;
-	name[1] = KERN_SECURELVL;
-	len = sizeof curlevel;
-	if (sysctl(name, 2, &curlevel, &len, NULL, 0) == -1) {
-		emergency("cannot get kernel security level: %s",
-		    strerror(errno));
-		return (-1);
-	}
-	return (curlevel);
-#else
-	return (-1);
-#endif
 }

@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int int32_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int32_t ;
 struct TYPE_4__ {int maxSessions; } ;
 struct TYPE_5__ {scalar_t__ meterIndex; TYPE_1__ cfg; } ;
-typedef  int /*<<< orphan*/  TSCKSUM ;
-typedef  int /*<<< orphan*/  SMeterObjHeader ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int TSCKSUM ;
+typedef int SMeterObjHeader ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- int TSDB_FILENAME_LEN ; 
- int /*<<< orphan*/  TSDB_FILE_HEADER_LEN ; 
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  dError (char*,int,char*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fwrite (scalar_t__,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,int,int) ; 
- int /*<<< orphan*/  taosCalcChecksumAppend (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  tfree (scalar_t__) ; 
- char* tsDirectory ; 
- int /*<<< orphan*/  vnodeCreateFileHeader (int /*<<< orphan*/ *) ; 
- TYPE_2__* vnodeList ; 
- int /*<<< orphan*/  vnodeUpdateVnodeFileHeader (int /*<<< orphan*/ *,TYPE_2__*) ; 
+
+ int SEEK_SET ;
+ int TSDB_FILENAME_LEN ;
+ int TSDB_FILE_HEADER_LEN ;
+ scalar_t__ calloc (int,int) ;
+ int dError (char*,int,char*) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fseek (int *,int ,int ) ;
+ int fwrite (scalar_t__,int,int,int *) ;
+ int sprintf (char*,char*,char*,int,int) ;
+ int taosCalcChecksumAppend (int ,int *,int) ;
+ int tfree (scalar_t__) ;
+ char* tsDirectory ;
+ int vnodeCreateFileHeader (int *) ;
+ TYPE_2__* vnodeList ;
+ int vnodeUpdateVnodeFileHeader (int *,TYPE_2__*) ;
 
 int vnodeCreateMeterObjFile(int vnode) {
-  FILE *  fp;
-  char    fileName[TSDB_FILENAME_LEN];
+  FILE * fp;
+  char fileName[TSDB_FILENAME_LEN];
   int32_t size;
-  // SMeterObj *pObj;
+
 
   sprintf(fileName, "%s/vnode%d/meterObj.v%d", tsDirectory, vnode, vnode);
   fp = fopen(fileName, "w+");
-  if (fp == NULL) {
+  if (fp == ((void*)0)) {
     dError("failed to create vnode:%d file:%s", vnode, fileName);
     return -1;
   } else {

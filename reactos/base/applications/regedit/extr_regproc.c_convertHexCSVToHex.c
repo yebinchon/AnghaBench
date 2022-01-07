@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int UINT ;
-typedef  int DWORD ;
-typedef  char BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_ENOUGH_MEMORY (char*) ; 
- char* GetMultiByteString (char*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  getAppName () ; 
- int lstrlenW (char*) ; 
- int /*<<< orphan*/  stderr ; 
- int strtoulW (char*,char**,int) ; 
+
+
+
+typedef char WCHAR ;
+typedef int UINT ;
+typedef int DWORD ;
+typedef char BYTE ;
+
+
+ int CHECK_ENOUGH_MEMORY (char*) ;
+ char* GetMultiByteString (char*) ;
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,char*) ;
+ int fprintf (int ,char*,int ,char*) ;
+ int getAppName () ;
+ int lstrlenW (char*) ;
+ int stderr ;
+ int strtoulW (char*,char**,int) ;
 
 __attribute__((used)) static BYTE* convertHexCSVToHex(WCHAR *str, DWORD *size)
 {
     WCHAR *s;
     BYTE *d, *data;
 
-    /* The worst case is 1 digit + 1 comma per byte */
+
     *size=(lstrlenW(str)+1)/2;
     data=HeapAlloc(GetProcessHeap(), 0, *size);
     CHECK_ENOUGH_MEMORY(data);
@@ -51,7 +51,7 @@ __attribute__((used)) static BYTE* convertHexCSVToHex(WCHAR *str, DWORD *size)
                     getAppName(), strA);
             HeapFree(GetProcessHeap(), 0, data);
             HeapFree(GetProcessHeap(), 0, strA);
-            return NULL;
+            return ((void*)0);
         }
         *d++ =(BYTE)wc;
         (*size)++;

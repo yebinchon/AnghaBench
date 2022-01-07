@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lev_birthday {int user_id; int day; int month; int year; int /*<<< orphan*/  type; } ;
 
-/* Variables and functions */
- int* I ; 
- int* L ; 
- int /*<<< orphan*/  LEV_TARG_BIRTHDAY ; 
- int /*<<< orphan*/  LEV_TARG_CUTE ; 
- int /*<<< orphan*/  LEV_TARG_MSTATUS ; 
- int /*<<< orphan*/  LEV_TARG_ONLINE ; 
- int /*<<< orphan*/  LEV_TARG_POLITICAL ; 
- int /*<<< orphan*/  LEV_TARG_PRIVACY ; 
- int /*<<< orphan*/  LEV_TARG_RATE ; 
- int /*<<< orphan*/  LEV_TARG_RATECUTE ; 
- int /*<<< orphan*/  LEV_TARG_SEX ; 
- int /*<<< orphan*/  LEV_TARG_UNIVCITY ; 
- scalar_t__ LEV_TARG_USERFLAGS ; 
- int /*<<< orphan*/  adj_rec ; 
- int /*<<< orphan*/  fits (int) ; 
- int /*<<< orphan*/  log_0ints (scalar_t__) ; 
- int /*<<< orphan*/  log_1int (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  log_2ints (int /*<<< orphan*/ ,int,int) ; 
- size_t ml_bday_day ; 
- size_t ml_bday_month ; 
- size_t ml_bday_year ; 
- size_t ml_cute ; 
- size_t ml_id ; 
- size_t ml_ip ; 
- size_t ml_logged ; 
- size_t ml_photo ; 
- size_t ml_political ; 
- size_t ml_profile_privacy ; 
- size_t ml_rate ; 
- size_t ml_sex ; 
- size_t ml_status ; 
- size_t ml_uni_city ; 
- size_t ml_uni_country ; 
- int user_id ; 
- struct lev_birthday* write_alloc (int) ; 
+
+
+
+struct lev_birthday {int user_id; int day; int month; int year; int type; } ;
+
+
+ int* I ;
+ int* L ;
+ int LEV_TARG_BIRTHDAY ;
+ int LEV_TARG_CUTE ;
+ int LEV_TARG_MSTATUS ;
+ int LEV_TARG_ONLINE ;
+ int LEV_TARG_POLITICAL ;
+ int LEV_TARG_PRIVACY ;
+ int LEV_TARG_RATE ;
+ int LEV_TARG_RATECUTE ;
+ int LEV_TARG_SEX ;
+ int LEV_TARG_UNIVCITY ;
+ scalar_t__ LEV_TARG_USERFLAGS ;
+ int adj_rec ;
+ int fits (int) ;
+ int log_0ints (scalar_t__) ;
+ int log_1int (int ,int) ;
+ int log_2ints (int ,int,int) ;
+ size_t ml_bday_day ;
+ size_t ml_bday_month ;
+ size_t ml_bday_year ;
+ size_t ml_cute ;
+ size_t ml_id ;
+ size_t ml_ip ;
+ size_t ml_logged ;
+ size_t ml_photo ;
+ size_t ml_political ;
+ size_t ml_profile_privacy ;
+ size_t ml_rate ;
+ size_t ml_sex ;
+ size_t ml_status ;
+ size_t ml_uni_city ;
+ size_t ml_uni_country ;
+ int user_id ;
+ struct lev_birthday* write_alloc (int) ;
 
 void process_memlite_row (void) {
   struct lev_birthday *LB;

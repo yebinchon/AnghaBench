@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct scatterlist {int dummy; } ;
-struct ata_queued_cmd {int dma_dir; struct scatterlist* sg; int /*<<< orphan*/  flags; int /*<<< orphan*/  orig_n_elem; scalar_t__ n_elem; struct ata_port* ap; } ;
-struct ata_port {int /*<<< orphan*/  dev; } ;
+struct ata_queued_cmd {int dma_dir; struct scatterlist* sg; int flags; int orig_n_elem; scalar_t__ n_elem; struct ata_port* ap; } ;
+struct ata_port {int dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATA_QCFLAG_DMAMAP ; 
- int /*<<< orphan*/  VPRINTK (char*,scalar_t__) ; 
- int /*<<< orphan*/  WARN_ON_ONCE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dma_unmap_sg (int /*<<< orphan*/ ,struct scatterlist*,int /*<<< orphan*/ ,int) ; 
+
+ int ATA_QCFLAG_DMAMAP ;
+ int VPRINTK (char*,scalar_t__) ;
+ int WARN_ON_ONCE (int ) ;
+ int dma_unmap_sg (int ,struct scatterlist*,int ,int) ;
 
 void ata_sg_clean(struct ata_queued_cmd *qc)
 {
-	struct ata_port *ap = qc->ap;
-	struct scatterlist *sg = qc->sg;
-	int dir = qc->dma_dir;
+ struct ata_port *ap = qc->ap;
+ struct scatterlist *sg = qc->sg;
+ int dir = qc->dma_dir;
 
-	WARN_ON_ONCE(sg == NULL);
+ WARN_ON_ONCE(sg == ((void*)0));
 
-	VPRINTK("unmapping %u sg elements\n", qc->n_elem);
+ VPRINTK("unmapping %u sg elements\n", qc->n_elem);
 
-	if (qc->n_elem)
-		dma_unmap_sg(ap->dev, sg, qc->orig_n_elem, dir);
+ if (qc->n_elem)
+  dma_unmap_sg(ap->dev, sg, qc->orig_n_elem, dir);
 
-	qc->flags &= ~ATA_QCFLAG_DMAMAP;
-	qc->sg = NULL;
+ qc->flags &= ~ATA_QCFLAG_DMAMAP;
+ qc->sg = ((void*)0);
 }

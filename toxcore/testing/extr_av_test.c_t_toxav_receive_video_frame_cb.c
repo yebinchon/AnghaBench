@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int uint16_t ;
-typedef  unsigned long int32_t ;
-typedef  int /*<<< orphan*/  ToxAV ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+typedef unsigned long int32_t ;
+typedef int ToxAV ;
 struct TYPE_3__ {int height; int width; } ;
-typedef  int /*<<< orphan*/  IplImage ;
-typedef  TYPE_1__ CvSize ;
-typedef  int /*<<< orphan*/  CvMat ;
+typedef int IplImage ;
+typedef TYPE_1__ CvSize ;
+typedef int CvMat ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CV_8UC3 ; 
- int YUV2B (int,int,int) ; 
- int YUV2G (int,int,int) ; 
- int YUV2R (int,int,int) ; 
- unsigned long abs (unsigned long) ; 
- int /*<<< orphan*/ * cvCreateImageHeader (TYPE_1__,int,int) ; 
- int /*<<< orphan*/ * cvGetImage (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cvMat (int,int,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  cvShowImage (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int*) ; 
- int* malloc (int) ; 
- int /*<<< orphan*/  vdout ; 
+
+ int CV_8UC3 ;
+ int YUV2B (int,int,int) ;
+ int YUV2G (int,int,int) ;
+ int YUV2R (int,int,int) ;
+ unsigned long abs (unsigned long) ;
+ int * cvCreateImageHeader (TYPE_1__,int,int) ;
+ int * cvGetImage (int *,int *) ;
+ int cvMat (int,int,int ,int*) ;
+ int cvShowImage (int ,int *) ;
+ int free (int*) ;
+ int* malloc (int) ;
+ int vdout ;
 
 void t_toxav_receive_video_frame_cb(ToxAV *av, uint32_t friend_number,
                                     uint16_t width, uint16_t height,

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_short ;
-typedef  int u_char ;
 
-/* Variables and functions */
-#define  PROTO_CHAP 129 
-#define  PROTO_PAP 128 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
+
+
+
+typedef int u_short ;
+typedef int u_char ;
+
+
+
+
+ int snprintf (char*,int,char*,int) ;
 
 const char *
 Auth2Nam(u_short auth, u_char type)
@@ -24,9 +24,9 @@ Auth2Nam(u_short auth, u_char type)
   static char chap[10];
 
   switch (auth) {
-  case PROTO_PAP:
+  case 128:
     return "PAP";
-  case PROTO_CHAP:
+  case 129:
     snprintf(chap, sizeof chap, "CHAP 0x%02x", type);
     return chap;
   case 0:

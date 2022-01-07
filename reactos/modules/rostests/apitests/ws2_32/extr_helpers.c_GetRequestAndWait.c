@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct fd_set {int dummy; } ;
-typedef  int /*<<< orphan*/  SOCKET ;
+typedef int SOCKET ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FD_SET (int /*<<< orphan*/ ,struct fd_set*) ; 
- int /*<<< orphan*/  FD_ZERO (struct fd_set*) ; 
- int /*<<< orphan*/  SCKTEST (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SD_SEND ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int /*<<< orphan*/  select (int /*<<< orphan*/ ,struct fd_set*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  send (int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shutdown (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int strlen (char const*) ; 
+
+ int FD_SET (int ,struct fd_set*) ;
+ int FD_ZERO (struct fd_set*) ;
+ int SCKTEST (int ) ;
+ int SD_SEND ;
+ int ok (int,char*,int) ;
+ int select (int ,struct fd_set*,int *,int *,int *) ;
+ int send (int ,char const*,int,int ) ;
+ int shutdown (int ,int ) ;
+ int strlen (char const*) ;
 
 int GetRequestAndWait(SOCKET sck)
 {
@@ -30,18 +30,18 @@ int GetRequestAndWait(SOCKET sck)
     int iResult;
     struct fd_set readable;
 
-    /* Send the GET request */
+
     SCKTEST(send(sck, szGetRequest, strlen(szGetRequest), 0));
     ok(iResult == strlen(szGetRequest), "iResult = %d\n", iResult);
-#if 0 /* breaks windows too */
-    /* Shutdown the SEND connection */
-    SCKTEST(shutdown(sck, SD_SEND));
-#endif
-    /* Wait until we're ready to read */
+
+
+
+
+
     FD_ZERO(&readable);
     FD_SET(sck, &readable);
 
-    SCKTEST(select(0, &readable, NULL, NULL, NULL));
-    
+    SCKTEST(select(0, &readable, ((void*)0), ((void*)0), ((void*)0)));
+
     return 1;
 }

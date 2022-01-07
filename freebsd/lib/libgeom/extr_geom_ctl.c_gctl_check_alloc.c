@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gctl_req {int /*<<< orphan*/ * error; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gctl_set_error (struct gctl_req*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * nomemmsg ; 
+
+
+
+struct gctl_req {int * error; } ;
+
+
+ int gctl_set_error (struct gctl_req*,int *) ;
+ int * nomemmsg ;
 
 __attribute__((used)) static void
 gctl_check_alloc(struct gctl_req *req, void *ptr)
 {
 
-	if (ptr != NULL)
-		return;
-	gctl_set_error(req, nomemmsg);
-	if (req->error == NULL)
-		req->error = nomemmsg;
+ if (ptr != ((void*)0))
+  return;
+ gctl_set_error(req, nomemmsg);
+ if (req->error == ((void*)0))
+  req->error = nomemmsg;
 }

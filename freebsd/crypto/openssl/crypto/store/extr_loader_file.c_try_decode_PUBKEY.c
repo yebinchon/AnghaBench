@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UI_METHOD ;
-typedef  int /*<<< orphan*/  OSSL_STORE_INFO ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * OSSL_STORE_INFO_new_PKEY (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PEM_STRING_PUBLIC ; 
- int /*<<< orphan*/ * d2i_PUBKEY (int /*<<< orphan*/ *,unsigned char const**,size_t) ; 
- scalar_t__ strcmp (char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UI_METHOD ;
+typedef int OSSL_STORE_INFO ;
+typedef int EVP_PKEY ;
+
+
+ int * OSSL_STORE_INFO_new_PKEY (int *) ;
+ int PEM_STRING_PUBLIC ;
+ int * d2i_PUBKEY (int *,unsigned char const**,size_t) ;
+ scalar_t__ strcmp (char const*,int ) ;
 
 __attribute__((used)) static OSSL_STORE_INFO *try_decode_PUBKEY(const char *pem_name,
                                           const char *pem_header,
@@ -28,17 +28,17 @@ __attribute__((used)) static OSSL_STORE_INFO *try_decode_PUBKEY(const char *pem_
                                           const UI_METHOD *ui_method,
                                           void *ui_data)
 {
-    OSSL_STORE_INFO *store_info = NULL;
-    EVP_PKEY *pkey = NULL;
+    OSSL_STORE_INFO *store_info = ((void*)0);
+    EVP_PKEY *pkey = ((void*)0);
 
-    if (pem_name != NULL) {
+    if (pem_name != ((void*)0)) {
         if (strcmp(pem_name, PEM_STRING_PUBLIC) != 0)
-            /* No match */
-            return NULL;
+
+            return ((void*)0);
         *matchcount = 1;
     }
 
-    if ((pkey = d2i_PUBKEY(NULL, &blob, len)) != NULL) {
+    if ((pkey = d2i_PUBKEY(((void*)0), &blob, len)) != ((void*)0)) {
         *matchcount = 1;
         store_info = OSSL_STORE_INFO_new_PKEY(pkey);
     }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ stream_t ;
+typedef TYPE_1__ stream_t ;
 struct TYPE_9__ {scalar_t__ i_buffer_tcp; int i_command; scalar_t__ buffer_tcp; } ;
-typedef  TYPE_2__ access_sys_t ;
+typedef TYPE_2__ access_sys_t ;
 
-/* Variables and functions */
- size_t MMS_BUFFER_SIZE ; 
- scalar_t__ NetFillBuffer (TYPE_1__*) ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  memmove (scalar_t__,scalar_t__,size_t) ; 
- int /*<<< orphan*/  mms_CommandSend (TYPE_1__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int mms_ParseCommand (TYPE_1__*,scalar_t__,scalar_t__,size_t*) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_1__*,char*) ; 
+
+ size_t MMS_BUFFER_SIZE ;
+ scalar_t__ NetFillBuffer (TYPE_1__*) ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int memmove (scalar_t__,scalar_t__,size_t) ;
+ int mms_CommandSend (TYPE_1__*,int,int ,int ,int *,int ) ;
+ int mms_ParseCommand (TYPE_1__*,scalar_t__,scalar_t__,size_t*) ;
+ int msg_Warn (TYPE_1__*,char*) ;
 
 __attribute__((used)) static int mms_ReceiveCommand( stream_t *p_access )
 {
@@ -59,7 +59,7 @@ __attribute__((used)) static int mms_ReceiveCommand( stream_t *p_access )
 
             if( p_sys->i_command == 0x1b )
             {
-                mms_CommandSend( p_access, 0x1b, 0, 0, NULL, 0 );
+                mms_CommandSend( p_access, 0x1b, 0, 0, ((void*)0), 0 );
             }
             else
             {

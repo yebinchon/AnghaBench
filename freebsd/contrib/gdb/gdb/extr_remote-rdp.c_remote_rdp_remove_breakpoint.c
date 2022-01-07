@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ rdi_level; } ;
-typedef  int /*<<< orphan*/  CORE_ADDR ;
+typedef int CORE_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RDP_CLEAR_BREAK ; 
- TYPE_1__ ds ; 
- int /*<<< orphan*/  send_rdp (char*,int /*<<< orphan*/ ,char*,...) ; 
+
+ int RDP_CLEAR_BREAK ;
+ TYPE_1__ ds ;
+ int send_rdp (char*,int ,char*,...) ;
 
 __attribute__((used)) static int
 remote_rdp_remove_breakpoint (CORE_ADDR addr, char *save)
@@ -26,16 +26,16 @@ remote_rdp_remove_breakpoint (CORE_ADDR addr, char *save)
   if (ds.rdi_level > 0)
     {
       send_rdp ("b-p-S-B",
-		RDP_CLEAR_BREAK,
-		save, 4,
-		&res);
+  RDP_CLEAR_BREAK,
+  save, 4,
+  &res);
     }
   else
     {
       send_rdp ("bw-S-B",
-		RDP_CLEAR_BREAK,
-		addr,
-		&res);
+  RDP_CLEAR_BREAK,
+  addr,
+  &res);
     }
   return res;
 }

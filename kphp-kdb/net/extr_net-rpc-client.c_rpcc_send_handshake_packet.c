@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int ip; scalar_t__ port; } ;
 struct rpcc_data {TYPE_1__ remote_pid; } ;
-struct rpc_handshake_packet {int len; int seq_num; int /*<<< orphan*/  crc32; int /*<<< orphan*/  peer_pid; int /*<<< orphan*/  sender_pid; scalar_t__ flags; int /*<<< orphan*/  type; } ;
+struct rpc_handshake_packet {int len; int seq_num; int crc32; int peer_pid; int sender_pid; scalar_t__ flags; int type; } ;
 struct process_id {int dummy; } ;
-struct connection {int remote_ip; int /*<<< orphan*/  Out; scalar_t__ remote_port; int /*<<< orphan*/  our_ip; } ;
-struct TYPE_5__ {int /*<<< orphan*/  (* flush_packet ) (struct connection*) ;} ;
-typedef  int /*<<< orphan*/  P ;
+struct connection {int remote_ip; int Out; scalar_t__ remote_port; int our_ip; } ;
+struct TYPE_5__ {int (* flush_packet ) (struct connection*) ;} ;
+typedef int P ;
 
-/* Variables and functions */
- TYPE_1__ PID ; 
- struct rpcc_data* RPCC_DATA (struct connection*) ; 
- TYPE_2__* RPCC_FUNC (struct connection*) ; 
- int /*<<< orphan*/  RPC_HANDSHAKE ; 
- int /*<<< orphan*/  compute_crc32 (struct rpc_handshake_packet*,int) ; 
- int get_my_ipv4 () ; 
- int /*<<< orphan*/  init_client_PID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,TYPE_1__*,int) ; 
- int /*<<< orphan*/  memset (struct rpc_handshake_packet*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub1 (struct connection*) ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ *,struct rpc_handshake_packet*,int) ; 
+
+ TYPE_1__ PID ;
+ struct rpcc_data* RPCC_DATA (struct connection*) ;
+ TYPE_2__* RPCC_FUNC (struct connection*) ;
+ int RPC_HANDSHAKE ;
+ int compute_crc32 (struct rpc_handshake_packet*,int) ;
+ int get_my_ipv4 () ;
+ int init_client_PID (int ) ;
+ int memcpy (int *,TYPE_1__*,int) ;
+ int memset (struct rpc_handshake_packet*,int ,int) ;
+ int stub1 (struct connection*) ;
+ int write_out (int *,struct rpc_handshake_packet*,int) ;
 
 __attribute__((used)) static int rpcc_send_handshake_packet (struct connection *c) {
   struct rpcc_data *D = RPCC_DATA (c);

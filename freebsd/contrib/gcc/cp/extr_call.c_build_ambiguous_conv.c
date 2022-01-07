@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* tree ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef void* tree ;
 struct TYPE_5__ {void* expr; } ;
 struct TYPE_6__ {TYPE_1__ u; void* type; } ;
-typedef  TYPE_2__ conversion ;
+typedef TYPE_2__ conversion ;
 
-/* Variables and functions */
- TYPE_2__* alloc_conversion (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ck_ambig ; 
+
+ TYPE_2__* alloc_conversion (int ) ;
+ int ck_ambig ;
 
 __attribute__((used)) static conversion *
 build_ambiguous_conv (tree type, tree expr)

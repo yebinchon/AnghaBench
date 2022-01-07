@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct Qdisc {int flags; int /*<<< orphan*/ * cpu_qstats; int /*<<< orphan*/ * cpu_bstats; } ;
 
-/* Variables and functions */
- int TCQ_F_CPUSTATS ; 
- int TCQ_F_NOLOCK ; 
- int /*<<< orphan*/  free_percpu (int /*<<< orphan*/ *) ; 
+
+
+
+struct Qdisc {int flags; int * cpu_qstats; int * cpu_bstats; } ;
+
+
+ int TCQ_F_CPUSTATS ;
+ int TCQ_F_NOLOCK ;
+ int free_percpu (int *) ;
 
 __attribute__((used)) static void qdisc_clear_nolock(struct Qdisc *sch)
 {
-	sch->flags &= ~TCQ_F_NOLOCK;
-	if (!(sch->flags & TCQ_F_CPUSTATS))
-		return;
+ sch->flags &= ~TCQ_F_NOLOCK;
+ if (!(sch->flags & TCQ_F_CPUSTATS))
+  return;
 
-	free_percpu(sch->cpu_bstats);
-	free_percpu(sch->cpu_qstats);
-	sch->cpu_bstats = NULL;
-	sch->cpu_qstats = NULL;
-	sch->flags &= ~TCQ_F_CPUSTATS;
+ free_percpu(sch->cpu_bstats);
+ free_percpu(sch->cpu_qstats);
+ sch->cpu_bstats = ((void*)0);
+ sch->cpu_qstats = ((void*)0);
+ sch->flags &= ~TCQ_F_CPUSTATS;
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_2__* fsap_data; } ;
-typedef  TYPE_1__ svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_fs_freeze_func_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct fs_freeze_baton_t {void* freeze_baton; int /*<<< orphan*/  freeze_func; TYPE_1__* fs; } ;
+typedef TYPE_1__ svn_fs_t ;
+typedef int svn_fs_freeze_func_t ;
+typedef int svn_error_t ;
+struct fs_freeze_baton_t {void* freeze_baton; int freeze_func; TYPE_1__* fs; } ;
 struct TYPE_7__ {scalar_t__ format; } ;
-typedef  TYPE_2__ fs_fs_data_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_2__ fs_fs_data_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- scalar_t__ SVN_FS_FS__MIN_PACK_LOCK_FORMAT ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  fs_freeze_body2 (struct fs_freeze_baton_t*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs__check_fs (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_fs_fs__with_pack_lock (TYPE_1__*,int /*<<< orphan*/  (*) (struct fs_freeze_baton_t*,int /*<<< orphan*/ *),struct fs_freeze_baton_t*,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ scalar_t__ SVN_FS_FS__MIN_PACK_LOCK_FORMAT ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int fs_freeze_body2 (struct fs_freeze_baton_t*,int *) ;
+ int svn_fs__check_fs (TYPE_1__*,int ) ;
+ int svn_fs_fs__with_pack_lock (TYPE_1__*,int (*) (struct fs_freeze_baton_t*,int *),struct fs_freeze_baton_t*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 fs_freeze(svn_fs_t *fs,

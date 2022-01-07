@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  type; scalar_t__ version; } ;
-typedef  TYPE_1__ coap_tls_version_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COAP_TLS_LIBRARY_NOTLS ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int type; scalar_t__ version; } ;
+typedef TYPE_1__ coap_tls_version_t ;
+
+
+ int COAP_TLS_LIBRARY_NOTLS ;
 
 coap_tls_version_t *
 coap_get_tls_library_version(void) {

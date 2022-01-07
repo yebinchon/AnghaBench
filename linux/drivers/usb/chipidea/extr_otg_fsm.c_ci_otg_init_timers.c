@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  function; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int function; } ;
 struct ci_hdrc {TYPE_1__ otg_fsm_hrtimer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- int /*<<< orphan*/  HRTIMER_MODE_ABS ; 
- int /*<<< orphan*/  ci_otg_hrtimer_func ; 
- int /*<<< orphan*/  hrtimer_init (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CLOCK_MONOTONIC ;
+ int HRTIMER_MODE_ABS ;
+ int ci_otg_hrtimer_func ;
+ int hrtimer_init (TYPE_1__*,int ,int ) ;
 
 __attribute__((used)) static int ci_otg_init_timers(struct ci_hdrc *ci)
 {
-	hrtimer_init(&ci->otg_fsm_hrtimer, CLOCK_MONOTONIC, HRTIMER_MODE_ABS);
-	ci->otg_fsm_hrtimer.function = ci_otg_hrtimer_func;
+ hrtimer_init(&ci->otg_fsm_hrtimer, CLOCK_MONOTONIC, HRTIMER_MODE_ABS);
+ ci->otg_fsm_hrtimer.function = ci_otg_hrtimer_func;
 
-	return 0;
+ return 0;
 }

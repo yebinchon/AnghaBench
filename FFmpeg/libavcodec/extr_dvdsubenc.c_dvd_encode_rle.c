@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PUTNIBBLE (int) ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int PUTNIBBLE (int) ;
+ int av_assert0 (int) ;
 
 __attribute__((used)) static void dvd_encode_rle(uint8_t **pq,
                            const uint8_t *bitmap, int linesize,
@@ -60,7 +60,7 @@ __attribute__((used)) static void dvd_encode_rle(uint8_t **pq,
                 PUTNIBBLE((len << 2)|color);
             }
         }
-        /* end of line */
+
         if (ncnt & 1)
             PUTNIBBLE(0);
         bitmap += linesize;

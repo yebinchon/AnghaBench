@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct _reent {int _errno; } ;
-struct TYPE_6__ {TYPE_1__* dev; int /*<<< orphan*/  dirHandle; } ;
-typedef  TYPE_2__ fs_dev_dir_entry_t ;
+struct TYPE_6__ {TYPE_1__* dev; int dirHandle; } ;
+typedef TYPE_2__ fs_dev_dir_entry_t ;
 struct TYPE_7__ {scalar_t__ dirStruct; } ;
-struct TYPE_5__ {int /*<<< orphan*/  pMutex; int /*<<< orphan*/  fsaFd; } ;
-typedef  TYPE_3__ DIR_ITER ;
+struct TYPE_5__ {int pMutex; int fsaFd; } ;
+typedef TYPE_3__ DIR_ITER ;
 
-/* Variables and functions */
- int EINVAL ; 
- int ENODEV ; 
- int IOSUHAX_FSA_RewindDir (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OSLockMutex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OSUnlockMutex (int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ int ENODEV ;
+ int IOSUHAX_FSA_RewindDir (int ,int ) ;
+ int OSLockMutex (int ) ;
+ int OSUnlockMutex (int ) ;
 
 __attribute__((used)) static int fs_dev_dirreset_r (struct _reent *r, DIR_ITER *dirState)
 {

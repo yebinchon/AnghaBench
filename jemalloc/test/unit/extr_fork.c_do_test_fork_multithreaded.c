@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  thd_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  do_fork_thd (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  thd_create (int /*<<< orphan*/ *,int /*<<< orphan*/  (*) (int /*<<< orphan*/ *),int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  thd_join (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int thd_t ;
+
+
+ int do_fork_thd (int *) ;
+ int thd_create (int *,int (*) (int *),int *) ;
+ int thd_join (int ,int *) ;
 
 __attribute__((used)) static void
 do_test_fork_multithreaded() {
-	thd_t child;
-	thd_create(&child, do_fork_thd, NULL);
-	do_fork_thd(NULL);
-	thd_join(child, NULL);
+ thd_t child;
+ thd_create(&child, do_fork_thd, ((void*)0));
+ do_fork_thd(((void*)0));
+ thd_join(child, ((void*)0));
 }

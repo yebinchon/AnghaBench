@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct _reent {int _errno; } ;
-struct TYPE_7__ {int /*<<< orphan*/  pMutex; int /*<<< orphan*/  fsaFd; } ;
-typedef  TYPE_1__ fs_dev_private_t ;
-struct TYPE_8__ {int flags; int read; int write; int append; int fd; int /*<<< orphan*/  len; scalar_t__ pos; TYPE_1__* dev; } ;
-typedef  TYPE_2__ fs_dev_file_state_t ;
-struct TYPE_9__ {int /*<<< orphan*/  size; } ;
-typedef  TYPE_3__ fileStat_s ;
+struct TYPE_7__ {int pMutex; int fsaFd; } ;
+typedef TYPE_1__ fs_dev_private_t ;
+struct TYPE_8__ {int flags; int read; int write; int append; int fd; int len; scalar_t__ pos; TYPE_1__* dev; } ;
+typedef TYPE_2__ fs_dev_file_state_t ;
+struct TYPE_9__ {int size; } ;
+typedef TYPE_3__ fileStat_s ;
 
-/* Variables and functions */
- int EACCES ; 
- int EINVAL ; 
- int ENODEV ; 
- int ENOMEM ; 
- int /*<<< orphan*/  IOSUHAX_FSA_CloseFile (int /*<<< orphan*/ ,int) ; 
- int IOSUHAX_FSA_OpenFile (int /*<<< orphan*/ ,char*,char const*,int*) ; 
- int IOSUHAX_FSA_StatFile (int /*<<< orphan*/ ,int,TYPE_3__*) ; 
- int /*<<< orphan*/  OSLockMutex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OSUnlockMutex (int /*<<< orphan*/ ) ; 
- int O_APPEND ; 
- int O_RDONLY ; 
- int O_RDWR ; 
- int O_WRONLY ; 
- int /*<<< orphan*/  free (char*) ; 
- TYPE_1__* fs_dev_get_device_data (char const*) ; 
- char* fs_dev_real_path (char const*,TYPE_1__*) ; 
+
+ int EACCES ;
+ int EINVAL ;
+ int ENODEV ;
+ int ENOMEM ;
+ int IOSUHAX_FSA_CloseFile (int ,int) ;
+ int IOSUHAX_FSA_OpenFile (int ,char*,char const*,int*) ;
+ int IOSUHAX_FSA_StatFile (int ,int,TYPE_3__*) ;
+ int OSLockMutex (int ) ;
+ int OSUnlockMutex (int ) ;
+ int O_APPEND ;
+ int O_RDONLY ;
+ int O_RDWR ;
+ int O_WRONLY ;
+ int free (char*) ;
+ TYPE_1__* fs_dev_get_device_data (char const*) ;
+ char* fs_dev_real_path (char const*,TYPE_1__*) ;
 
 __attribute__((used)) static int fs_dev_open_r (struct _reent *r, void *fileStruct, const char *path, int flags, int mode)
 {
@@ -58,7 +58,7 @@ __attribute__((used)) static int fs_dev_open_r (struct _reent *r, void *fileStru
     }
 
     file->dev = dev;
-    /* Determine which mode the file is opened for */
+
     file->flags = flags;
 
     const char *mode_str;

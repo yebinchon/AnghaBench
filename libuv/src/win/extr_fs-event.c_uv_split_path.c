@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetCurrentDirectoryW (int,char*) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  uv__free (char*) ; 
- scalar_t__ uv__malloc (size_t) ; 
- int /*<<< orphan*/  uv_fatal_error (int /*<<< orphan*/ ,char*) ; 
- char* wcsdup (char const*) ; 
- size_t wcslen (char const*) ; 
- int /*<<< orphan*/  wcsncpy (char*,char const*,size_t) ; 
+
+
+
+typedef char WCHAR ;
+
+
+ int ERROR_OUTOFMEMORY ;
+ int GetCurrentDirectoryW (int,char*) ;
+ int MAX_PATH ;
+ int uv__free (char*) ;
+ scalar_t__ uv__malloc (size_t) ;
+ int uv_fatal_error (int ,char*) ;
+ char* wcsdup (char const*) ;
+ size_t wcslen (char const*) ;
+ int wcsncpy (char*,char const*,size_t) ;
 
 __attribute__((used)) static int uv_split_path(const WCHAR* filename, WCHAR** dir,
     WCHAR** file) {
   size_t len, i;
 
-  if (filename == NULL) {
-    if (dir != NULL)
-      *dir = NULL;
-    *file = NULL;
+  if (filename == ((void*)0)) {
+    if (dir != ((void*)0))
+      *dir = ((void*)0);
+    *file = ((void*)0);
     return 0;
   }
 
@@ -47,7 +47,7 @@ __attribute__((used)) static int uv_split_path(const WCHAR* filename, WCHAR** di
 
       if (!GetCurrentDirectoryW(MAX_PATH, *dir)) {
         uv__free(*dir);
-        *dir = NULL;
+        *dir = ((void*)0);
         return -1;
       }
     }

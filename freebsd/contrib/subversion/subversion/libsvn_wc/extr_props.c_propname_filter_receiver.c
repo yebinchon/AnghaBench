@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_string_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct propname_filter_baton_t {int /*<<< orphan*/  receiver_baton; int /*<<< orphan*/  (* receiver_func ) (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;int /*<<< orphan*/  propname; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_hash_gets (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int svn_string_t ;
+typedef int svn_error_t ;
+struct propname_filter_baton_t {int receiver_baton; int (* receiver_func ) (int ,char const*,int *,int *) ;int propname; } ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int * apr_hash_make (int *) ;
+ int stub1 (int ,char const*,int *,int *) ;
+ int * svn_hash_gets (int *,int ) ;
+ int svn_hash_sets (int *,int ,int const*) ;
 
 __attribute__((used)) static svn_error_t *
 propname_filter_receiver(void *baton,

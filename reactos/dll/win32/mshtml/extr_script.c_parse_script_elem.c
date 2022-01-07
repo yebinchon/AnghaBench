@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsAString ;
-struct TYPE_6__ {int /*<<< orphan*/  parsed; int /*<<< orphan*/  nsscript; } ;
-typedef  int /*<<< orphan*/  ScriptHost ;
-typedef  scalar_t__ PRUnichar ;
-typedef  TYPE_1__ HTMLScriptElement ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ NS_SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  READYSTATE_COMPLETE ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  debugstr_w (scalar_t__ const*) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_GetData (int /*<<< orphan*/ *,scalar_t__ const**) ; 
- int /*<<< orphan*/  nsAString_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMHTMLScriptElement_GetEvent (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMHTMLScriptElement_GetSrc (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  parse_extern_script (int /*<<< orphan*/ *,TYPE_1__*,scalar_t__ const*) ; 
- int /*<<< orphan*/  parse_inline_script (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  set_script_elem_readystate (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int nsresult ;
+typedef int nsAString ;
+struct TYPE_6__ {int parsed; int nsscript; } ;
+typedef int ScriptHost ;
+typedef scalar_t__ PRUnichar ;
+typedef TYPE_1__ HTMLScriptElement ;
+
+
+ int ERR (char*,int ) ;
+ scalar_t__ NS_FAILED (int ) ;
+ scalar_t__ NS_SUCCEEDED (int ) ;
+ int READYSTATE_COMPLETE ;
+ int TRACE (char*,int ) ;
+ int TRUE ;
+ int debugstr_w (scalar_t__ const*) ;
+ int nsAString_Finish (int *) ;
+ int nsAString_GetData (int *,scalar_t__ const**) ;
+ int nsAString_Init (int *,int *) ;
+ int nsIDOMHTMLScriptElement_GetEvent (int ,int *) ;
+ int nsIDOMHTMLScriptElement_GetSrc (int ,int *) ;
+ int parse_extern_script (int *,TYPE_1__*,scalar_t__ const*) ;
+ int parse_inline_script (int *,TYPE_1__*) ;
+ int set_script_elem_readystate (TYPE_1__*,int ) ;
 
 __attribute__((used)) static void parse_script_elem(ScriptHost *script_host, HTMLScriptElement *script_elem)
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static void parse_script_elem(ScriptHost *script_host, HTM
     const PRUnichar *src;
     nsresult nsres;
 
-    nsAString_Init(&event_str, NULL);
+    nsAString_Init(&event_str, ((void*)0));
     nsres = nsIDOMHTMLScriptElement_GetEvent(script_elem->nsscript, &event_str);
     if(NS_SUCCEEDED(nsres)) {
         const PRUnichar *event;
@@ -57,7 +57,7 @@ __attribute__((used)) static void parse_script_elem(ScriptHost *script_host, HTM
     }
     nsAString_Finish(&event_str);
 
-    nsAString_Init(&src_str, NULL);
+    nsAString_Init(&src_str, ((void*)0));
     nsres = nsIDOMHTMLScriptElement_GetSrc(script_elem->nsscript, &src_str);
     nsAString_GetData(&src_str, &src);
 

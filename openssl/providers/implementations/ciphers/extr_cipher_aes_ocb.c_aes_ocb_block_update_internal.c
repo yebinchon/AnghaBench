@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PROV_AES_OCB_CTX ;
-typedef  int /*<<< orphan*/  (* OSSL_ocb_cipher_fn ) (int /*<<< orphan*/ *,unsigned char const*,unsigned char*,size_t) ;
 
-/* Variables and functions */
- size_t AES_BLOCK_SIZE ; 
- int /*<<< orphan*/  ERR_LIB_PROV ; 
- int /*<<< orphan*/  ERR_raise (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PROV_R_CIPHER_OPERATION_FAILED ; 
- int /*<<< orphan*/  PROV_R_OUTPUT_BUFFER_TOO_SMALL ; 
- size_t fillblock (unsigned char*,size_t*,size_t,unsigned char const**,size_t*) ; 
- int /*<<< orphan*/  trailingdata (unsigned char*,size_t*,size_t,unsigned char const**,size_t*) ; 
+
+
+
+typedef int PROV_AES_OCB_CTX ;
+typedef int (* OSSL_ocb_cipher_fn ) (int *,unsigned char const*,unsigned char*,size_t) ;
+
+
+ size_t AES_BLOCK_SIZE ;
+ int ERR_LIB_PROV ;
+ int ERR_raise (int ,int ) ;
+ int PROV_R_CIPHER_OPERATION_FAILED ;
+ int PROV_R_OUTPUT_BUFFER_TOO_SMALL ;
+ size_t fillblock (unsigned char*,size_t*,size_t,unsigned char const**,size_t*) ;
+ int trailingdata (unsigned char*,size_t*,size_t,unsigned char const**,size_t*) ;
 
 __attribute__((used)) static int aes_ocb_block_update_internal(PROV_AES_OCB_CTX *ctx,
                                          unsigned char *buf, size_t *bufsz,
@@ -58,7 +58,7 @@ __attribute__((used)) static int aes_ocb_block_update_internal(PROV_AES_OCB_CTX 
         inl -= nextblocks;
     }
     if (!trailingdata(buf, bufsz, AES_BLOCK_SIZE, &in, &inl)) {
-        /* PROVerr already called */
+
         return 0;
     }
 

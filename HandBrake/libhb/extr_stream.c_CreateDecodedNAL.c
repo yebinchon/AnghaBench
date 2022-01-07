@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int* malloc (int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int* malloc (int) ;
 
 __attribute__((used)) static void CreateDecodedNAL( uint8_t **dst, int *dst_len,
                               const uint8_t *src, int src_len )
@@ -30,7 +30,7 @@ __attribute__((used)) static void CreateDecodedNAL( uint8_t **dst, int *dst_len,
             if( src < end - 3 && src[0] == 0x00 && src[1] == 0x00 &&
                 src[2] == 0x01 )
             {
-                // Next start code found
+
                 break;
             }
             if( src < end - 3 && src[0] == 0x00 && src[1] == 0x00 &&

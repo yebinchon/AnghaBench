@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_15__ {TYPE_3__* priv; } ;
-struct TYPE_14__ {int w; int h; int /*<<< orphan*/  format; TYPE_6__* dst; } ;
-struct TYPE_13__ {int /*<<< orphan*/  log2_chroma_h; int /*<<< orphan*/  log2_chroma_w; TYPE_1__* comp; } ;
-struct TYPE_12__ {int depth; int sigma; int nb_prev; int nb_next; int nb_planes; int block_bits; int overlap; TYPE_2__* planes; int /*<<< orphan*/  export_row; int /*<<< orphan*/  import_row; } ;
+struct TYPE_14__ {int w; int h; int format; TYPE_6__* dst; } ;
+struct TYPE_13__ {int log2_chroma_h; int log2_chroma_w; TYPE_1__* comp; } ;
+struct TYPE_12__ {int depth; int sigma; int nb_prev; int nb_next; int nb_planes; int block_bits; int overlap; TYPE_2__* planes; int export_row; int import_row; } ;
 struct TYPE_11__ {int planewidth; int planeheight; int b; float n; int o; int nox; int noy; int buffer_linesize; int data_linesize; void* vdata; void* hdata; void** buffer; } ;
 struct TYPE_10__ {int depth; } ;
-typedef  TYPE_2__ PlaneContext ;
-typedef  TYPE_3__ FFTdnoizContext ;
-typedef  int /*<<< orphan*/  FFTComplex ;
-typedef  TYPE_4__ AVPixFmtDescriptor ;
-typedef  TYPE_5__ AVFilterLink ;
-typedef  TYPE_6__ AVFilterContext ;
+typedef TYPE_2__ PlaneContext ;
+typedef TYPE_3__ FFTdnoizContext ;
+typedef int FFTComplex ;
+typedef TYPE_4__ AVPixFmtDescriptor ;
+typedef TYPE_5__ AVFilterLink ;
+typedef TYPE_6__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- void* AV_CEIL_RSHIFT (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- size_t CURRENT ; 
- int /*<<< orphan*/  ENOMEM ; 
- size_t NEXT ; 
- size_t PREV ; 
- void* av_calloc (int,int) ; 
- int /*<<< orphan*/  av_log (TYPE_6__*,int /*<<< orphan*/ ,char*,int,int,int) ; 
- int av_pix_fmt_count_planes (int /*<<< orphan*/ ) ; 
- TYPE_4__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  export_row16 ; 
- int /*<<< orphan*/  export_row8 ; 
- int /*<<< orphan*/  import_row16 ; 
- int /*<<< orphan*/  import_row8 ; 
+
+ int AVERROR (int ) ;
+ void* AV_CEIL_RSHIFT (int,int ) ;
+ int AV_LOG_DEBUG ;
+ size_t CURRENT ;
+ int ENOMEM ;
+ size_t NEXT ;
+ size_t PREV ;
+ void* av_calloc (int,int) ;
+ int av_log (TYPE_6__*,int ,char*,int,int,int) ;
+ int av_pix_fmt_count_planes (int ) ;
+ TYPE_4__* av_pix_fmt_desc_get (int ) ;
+ int export_row16 ;
+ int export_row8 ;
+ int import_row16 ;
+ int import_row8 ;
 
 __attribute__((used)) static int config_input(AVFilterLink *inlink)
 {
@@ -80,7 +80,7 @@ __attribute__((used)) static int config_input(AVFilterLink *inlink)
         p->n = 1.f / (p->b * p->b);
         p->o = p->b * s->overlap;
         size = p->b - p->o;
-        p->nox = (p->planewidth  + (size - 1)) / size;
+        p->nox = (p->planewidth + (size - 1)) / size;
         p->noy = (p->planeheight + (size - 1)) / size;
 
         av_log(ctx, AV_LOG_DEBUG, "nox:%d noy:%d size:%d\n", p->nox, p->noy, size);

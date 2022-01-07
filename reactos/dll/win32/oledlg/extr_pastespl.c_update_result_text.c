@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ptrdiff_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int ptrdiff_t ;
 struct TYPE_4__ {int flags; } ;
-typedef  TYPE_1__ ps_struct_t ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
+typedef TYPE_1__ ps_struct_t ;
+typedef char WCHAR ;
+typedef int UINT ;
 struct TYPE_5__ {char* lpstrResultText; } ;
-typedef  TYPE_2__ OLEUIPASTEENTRYW ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  HWND ;
+typedef TYPE_2__ OLEUIPASTEENTRYW ;
+typedef int LONG ;
+typedef int HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (char*) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  IDC_PS_DISPLAYLIST ; 
- int /*<<< orphan*/  IDC_PS_RESULTTEXT ; 
- int /*<<< orphan*/  IDS_PS_PASTE_DATA ; 
- int /*<<< orphan*/  IDS_PS_PASTE_LINK_DATA ; 
- int /*<<< orphan*/  IDS_PS_PASTE_LINK_OBJECT_AS_ICON ; 
- int /*<<< orphan*/  IDS_PS_PASTE_OBJECT_AS_ICON ; 
- int /*<<< orphan*/  LB_GETCURSEL ; 
- int /*<<< orphan*/  LB_GETITEMDATA ; 
- int /*<<< orphan*/  LoadStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OLEDLG_hInstance ; 
- int PSF_CHECKDISPLAYASICON ; 
- int PSF_SELECTPASTE ; 
- int SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetDlgItemTextW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int strlenW (char*) ; 
- char* strstrW (char*,char const*) ; 
+
+ int ARRAY_SIZE (char*) ;
+ int GetDlgItem (int ,int ) ;
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,size_t) ;
+ int HeapFree (int ,int ,char*) ;
+ int IDC_PS_DISPLAYLIST ;
+ int IDC_PS_RESULTTEXT ;
+ int IDS_PS_PASTE_DATA ;
+ int IDS_PS_PASTE_LINK_DATA ;
+ int IDS_PS_PASTE_LINK_OBJECT_AS_ICON ;
+ int IDS_PS_PASTE_OBJECT_AS_ICON ;
+ int LB_GETCURSEL ;
+ int LB_GETITEMDATA ;
+ int LoadStringW (int ,int ,char*,int ) ;
+ int OLEDLG_hInstance ;
+ int PSF_CHECKDISPLAYASICON ;
+ int PSF_SELECTPASTE ;
+ int SendMessageW (int ,int ,int,int ) ;
+ int SetDlgItemTextW (int ,int ,char*) ;
+ int memcpy (char*,char*,int) ;
+ int strlenW (char*) ;
+ char* strstrW (char*,char const*) ;
 
 __attribute__((used)) static void update_result_text(HWND hdlg, const ps_struct_t *ps_struct)
 {
@@ -77,7 +77,7 @@ __attribute__((used)) static void update_result_text(HWND hdlg, const ps_struct_
     LoadStringW(OLEDLG_hInstance, res_id, resource_txt, ARRAY_SIZE(resource_txt));
     if((ptr = strstrW(resource_txt, percent_s)))
     {
-        /* FIXME handle %s in ResultText. Sub appname if IDS_PS_PASTE_OBJECT{_AS_ICON}.  Else sub appropriate type name */
+
         size_t result_txt_len = strlenW(pent->lpstrResultText);
         ptrdiff_t offs = (char*)ptr - (char*)resource_txt;
         result_txt = HeapAlloc(GetProcessHeap(), 0, (strlenW(resource_txt) + result_txt_len - 1) * sizeof(WCHAR));

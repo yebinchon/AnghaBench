@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  (* cf_blockwise_in_fn ) (void*,int /*<<< orphan*/ *) ;
 
-/* Variables and functions */
- size_t MIN (size_t,size_t) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t) ; 
+
+
+
+typedef int uint8_t ;
+typedef int (* cf_blockwise_in_fn ) (void*,int *) ;
+
+
+ size_t MIN (size_t,size_t) ;
+ int memset (int *,int ,size_t) ;
 
 void cf_blockwise_acc_byte(uint8_t *partial, size_t *npartial,
                            size_t nblock,
@@ -23,7 +23,7 @@ void cf_blockwise_acc_byte(uint8_t *partial, size_t *npartial,
                            cf_blockwise_in_fn process,
                            void *ctx)
 {
-  /* only memset the whole of the block once */
+
   int filled = 0;
 
   while (nbytes)

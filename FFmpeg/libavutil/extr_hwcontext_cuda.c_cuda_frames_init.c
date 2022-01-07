@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {scalar_t__ sw_format; TYPE_1__* internal; int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  pool; } ;
-struct TYPE_8__ {int /*<<< orphan*/  shift_height; int /*<<< orphan*/  shift_width; } ;
-struct TYPE_7__ {int /*<<< orphan*/  pool_internal; TYPE_2__* priv; } ;
-typedef  TYPE_2__ CUDAFramesContext ;
-typedef  TYPE_3__ AVHWFramesContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  CUDA_FRAME_ALIGNMENT ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  ENOSYS ; 
- int FF_ARRAY_ELEMS (scalar_t__*) ; 
- int /*<<< orphan*/  av_buffer_pool_init2 (int,TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_get_pix_fmt_name (scalar_t__) ; 
- int av_image_get_buffer_size (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_pix_fmt_get_chroma_sub_sample (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cuda_pool_alloc ; 
- scalar_t__* supported_formats ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_9__ {scalar_t__ sw_format; TYPE_1__* internal; int height; int width; int pool; } ;
+struct TYPE_8__ {int shift_height; int shift_width; } ;
+struct TYPE_7__ {int pool_internal; TYPE_2__* priv; } ;
+typedef TYPE_2__ CUDAFramesContext ;
+typedef TYPE_3__ AVHWFramesContext ;
+
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int CUDA_FRAME_ALIGNMENT ;
+ int ENOMEM ;
+ int ENOSYS ;
+ int FF_ARRAY_ELEMS (scalar_t__*) ;
+ int av_buffer_pool_init2 (int,TYPE_3__*,int ,int *) ;
+ int av_get_pix_fmt_name (scalar_t__) ;
+ int av_image_get_buffer_size (scalar_t__,int ,int ,int ) ;
+ int av_log (TYPE_3__*,int ,char*,int ) ;
+ int av_pix_fmt_get_chroma_sub_sample (scalar_t__,int *,int *) ;
+ int cuda_pool_alloc ;
+ scalar_t__* supported_formats ;
 
 __attribute__((used)) static int cuda_frames_init(AVHWFramesContext *ctx)
 {
@@ -56,7 +56,7 @@ __attribute__((used)) static int cuda_frames_init(AVHWFramesContext *ctx)
         if (size < 0)
             return size;
 
-        ctx->internal->pool_internal = av_buffer_pool_init2(size, ctx, cuda_pool_alloc, NULL);
+        ctx->internal->pool_internal = av_buffer_pool_init2(size, ctx, cuda_pool_alloc, ((void*)0));
         if (!ctx->internal->pool_internal)
             return AVERROR(ENOMEM);
     }

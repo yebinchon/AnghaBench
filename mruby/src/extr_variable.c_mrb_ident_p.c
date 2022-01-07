@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t mrb_int ;
-typedef  int /*<<< orphan*/  mrb_bool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  identchar (char const) ; 
+
+
+
+typedef size_t mrb_int ;
+typedef int mrb_bool ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int identchar (char const) ;
 
 mrb_bool
 mrb_ident_p(const char *s, mrb_int len)

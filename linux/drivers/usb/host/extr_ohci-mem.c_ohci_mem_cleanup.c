@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ohci_hcd {int /*<<< orphan*/ * ed_cache; int /*<<< orphan*/ * td_cache; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dma_pool_destroy (int /*<<< orphan*/ *) ; 
+
+
+
+struct ohci_hcd {int * ed_cache; int * td_cache; } ;
+
+
+ int dma_pool_destroy (int *) ;
 
 __attribute__((used)) static void ohci_mem_cleanup (struct ohci_hcd *ohci)
 {
-	dma_pool_destroy(ohci->td_cache);
-	ohci->td_cache = NULL;
-	dma_pool_destroy(ohci->ed_cache);
-	ohci->ed_cache = NULL;
+ dma_pool_destroy(ohci->td_cache);
+ ohci->td_cache = ((void*)0);
+ dma_pool_destroy(ohci->ed_cache);
+ ohci->ed_cache = ((void*)0);
 }

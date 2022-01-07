@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ nl_family; scalar_t__ nl_pid; } ;
 union sockaddr_union {TYPE_1__ nl; } ;
 struct ucred {scalar_t__ pid; } ;
 struct sockaddr_nl {int dummy; } ;
 struct nlmsghdr {scalar_t__ nlmsg_type; scalar_t__ nlmsg_len; } ;
-typedef  int socklen_t ;
-typedef  void const Server ;
+typedef int socklen_t ;
+typedef void const Server ;
 
-/* Variables and functions */
- scalar_t__ AF_NETLINK ; 
- size_t ALIGN (int) ; 
- scalar_t__ AUDIT_FIRST_USER_MSG ; 
- scalar_t__ AUDIT_USER ; 
- scalar_t__ IN_SET (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NLMSG_DATA (struct nlmsghdr const*) ; 
- int /*<<< orphan*/  NLMSG_ERROR ; 
- int /*<<< orphan*/  NLMSG_NOOP ; 
- int /*<<< orphan*/  NLMSG_OK (struct nlmsghdr const*,size_t) ; 
- int /*<<< orphan*/  assert (void const*) ; 
- int /*<<< orphan*/  log_debug (char*) ; 
- int /*<<< orphan*/  log_error (char*) ; 
- int /*<<< orphan*/  process_audit_string (void const*,scalar_t__,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ scalar_t__ AF_NETLINK ;
+ size_t ALIGN (int) ;
+ scalar_t__ AUDIT_FIRST_USER_MSG ;
+ scalar_t__ AUDIT_USER ;
+ scalar_t__ IN_SET (scalar_t__,int ,int ) ;
+ int NLMSG_DATA (struct nlmsghdr const*) ;
+ int NLMSG_ERROR ;
+ int NLMSG_NOOP ;
+ int NLMSG_OK (struct nlmsghdr const*,size_t) ;
+ int assert (void const*) ;
+ int log_debug (char*) ;
+ int log_error (char*) ;
+ int process_audit_string (void const*,scalar_t__,int ,scalar_t__) ;
 
 void server_process_audit_message(
                 Server *s,
@@ -51,7 +51,7 @@ void server_process_audit_message(
 
         assert(buffer);
 
-        /* Filter out fake data */
+
         if (!sa ||
             salen != sizeof(struct sockaddr_nl) ||
             sa->nl.nl_family != AF_NETLINK ||
@@ -70,11 +70,11 @@ void server_process_audit_message(
                 return;
         }
 
-        /* Ignore special Netlink messages */
+
         if (IN_SET(nl->nlmsg_type, NLMSG_NOOP, NLMSG_ERROR))
                 return;
 
-        /* Except AUDIT_USER, all messages below AUDIT_FIRST_USER_MSG are control messages, let's ignore those */
+
         if (nl->nlmsg_type < AUDIT_FIRST_USER_MSG && nl->nlmsg_type != AUDIT_USER)
                 return;
 

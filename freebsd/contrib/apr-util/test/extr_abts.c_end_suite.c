@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ failed; int num_test; } ;
-typedef  TYPE_1__ sub_suite ;
+typedef TYPE_1__ sub_suite ;
 struct TYPE_5__ {TYPE_1__* tail; } ;
-typedef  TYPE_2__ abts_suite ;
+typedef TYPE_2__ abts_suite ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  quiet ; 
- int /*<<< orphan*/  stdout ; 
+
+ int fflush (int ) ;
+ int fprintf (int ,char*,...) ;
+ int quiet ;
+ int stdout ;
 
 __attribute__((used)) static void end_suite(abts_suite *suite)
 {
-    if (suite != NULL) {
+    if (suite != ((void*)0)) {
         sub_suite *last = suite->tail;
         if (!quiet) {
             fprintf(stdout, "\b");

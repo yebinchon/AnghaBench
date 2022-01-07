@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_int32_t ;
-typedef  scalar_t__ u_int16_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u_int32_t ;
+typedef scalar_t__ u_int16_t ;
 struct ath_hal {int dummy; } ;
 struct TYPE_3__ {scalar_t__ halKeyCacheSize; } ;
 struct TYPE_4__ {TYPE_1__ ah_caps; } ;
-typedef  TYPE_1__ HAL_CAPABILITIES ;
-typedef  int /*<<< orphan*/  HAL_BOOL ;
+typedef TYPE_1__ HAL_CAPABILITIES ;
+typedef int HAL_BOOL ;
 
-/* Variables and functions */
- TYPE_2__* AH_PRIVATE (struct ath_hal*) ; 
- int /*<<< orphan*/  AH_TRUE ; 
- int /*<<< orphan*/  AR_KEYTABLE_KEY0 (scalar_t__) ; 
- int /*<<< orphan*/  AR_KEYTABLE_KEY1 (scalar_t__) ; 
- int /*<<< orphan*/  AR_KEYTABLE_KEY2 (scalar_t__) ; 
- int /*<<< orphan*/  AR_KEYTABLE_KEY3 (scalar_t__) ; 
- int /*<<< orphan*/  AR_KEYTABLE_KEY4 (scalar_t__) ; 
- int /*<<< orphan*/  AR_KEYTABLE_MAC0 (scalar_t__) ; 
- int /*<<< orphan*/  AR_KEYTABLE_MAC1 (scalar_t__) ; 
- int /*<<< orphan*/  AR_KEYTABLE_TYPE (scalar_t__) ; 
- int AR_KEYTABLE_VALID ; 
- int OS_REG_READ (struct ath_hal*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ath_hal_printf (struct ath_hal*,char*,...) ; 
+
+ TYPE_2__* AH_PRIVATE (struct ath_hal*) ;
+ int AH_TRUE ;
+ int AR_KEYTABLE_KEY0 (scalar_t__) ;
+ int AR_KEYTABLE_KEY1 (scalar_t__) ;
+ int AR_KEYTABLE_KEY2 (scalar_t__) ;
+ int AR_KEYTABLE_KEY3 (scalar_t__) ;
+ int AR_KEYTABLE_KEY4 (scalar_t__) ;
+ int AR_KEYTABLE_MAC0 (scalar_t__) ;
+ int AR_KEYTABLE_MAC1 (scalar_t__) ;
+ int AR_KEYTABLE_TYPE (scalar_t__) ;
+ int AR_KEYTABLE_VALID ;
+ int OS_REG_READ (struct ath_hal*,int ) ;
+ int ath_hal_printf (struct ath_hal*,char*,...) ;
 
 HAL_BOOL
 ar9300_print_keycache(struct ath_hal *ah)
@@ -82,11 +82,11 @@ ar9300_print_keycache(struct ath_hal *ah)
             (key0 << 24) >> 24, (key0 << 16) >> 24,
             (key0 << 8) >> 24, key0 >> 24,
             (key1 << 24) >> 24, (key1 << 16) >> 24,
-            //(key1 << 8) >> 24, key1 >> 24,
+
             (key2 << 24) >> 24, (key2 << 16) >> 24,
             (key2 << 8) >> 24, key2 >> 24,
             (key3 << 24) >> 24, (key3 << 16) >> 24,
-            //(key3 << 8) >> 24, key3 >> 24,
+
             (key4 << 24) >> 24, (key4 << 16) >> 24,
             (key4 << 8) >> 24, key4 >> 24,
             valid, key_type,

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int WCHAR ;
-typedef  int /*<<< orphan*/  ScriptCache ;
-typedef  int /*<<< orphan*/  SCRIPT_ANALYSIS ;
-typedef  int IndicSyllable ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Bengali_consonants ; 
- int /*<<< orphan*/  Bengali_vowels ; 
- int /*<<< orphan*/  ComposeConsonants (int /*<<< orphan*/ ,int*,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DecomposeVowels (int /*<<< orphan*/ ,int*,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  GetGlyphIndicesW (int /*<<< orphan*/ ,int*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Indic_ReorderCharacters (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int,int**,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Reorder_Like_Bengali ; 
- int /*<<< orphan*/  ShapeIndicSyllables (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int,int*,int,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  apply_GSUB_feature_to_glyph (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int*,char*) ; 
- int /*<<< orphan*/  bengali_lex ; 
- int /*<<< orphan*/  debugstr_wn (int*,int) ; 
- int /*<<< orphan*/  get_GSUB_Indic2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int* heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (int*) ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
+
+
+
+typedef int WORD ;
+typedef int WCHAR ;
+typedef int ScriptCache ;
+typedef int SCRIPT_ANALYSIS ;
+typedef int IndicSyllable ;
+typedef int INT ;
+typedef int HDC ;
+typedef int BOOL ;
+
+
+ int Bengali_consonants ;
+ int Bengali_vowels ;
+ int ComposeConsonants (int ,int*,int*,int ,int *) ;
+ int DecomposeVowels (int ,int*,int*,int ,int *,int) ;
+ int ERR (char*) ;
+ int GetGlyphIndicesW (int ,int*,int,int *,int ) ;
+ int Indic_ReorderCharacters (int ,int *,int *,int*,int,int**,int*,int ,int ,int ) ;
+ int Reorder_Like_Bengali ;
+ int ShapeIndicSyllables (int ,int *,int *,int*,int,int*,int,int *,int*,int *,int ,int *,int ) ;
+ int TRACE (char*,int ,...) ;
+ int apply_GSUB_feature_to_glyph (int ,int *,int *,int *,int ,int,int*,char*) ;
+ int bengali_lex ;
+ int debugstr_wn (int*,int) ;
+ int get_GSUB_Indic2 (int *,int *) ;
+ int* heap_alloc (int) ;
+ int heap_free (int*) ;
+ int memcpy (int*,int*,int) ;
 
 __attribute__((used)) static void ContextualShape_Bengali(HDC hdc, ScriptCache *psc, SCRIPT_ANALYSIS *psa, WCHAR* pwcChars, INT cChars, WORD* pwOutGlyphs, INT* pcGlyphs, INT cMaxGlyphs, WORD *pwLogClust)
 {
     int cCount = cChars;
     WCHAR *input;
-    IndicSyllable *syllables = NULL;
+    IndicSyllable *syllables = ((void*)0);
     int syllable_count = 0;
     BOOL modern = get_GSUB_Indic2(psa, psc);
 
@@ -55,21 +55,21 @@ __attribute__((used)) static void ContextualShape_Bengali(HDC hdc, ScriptCache *
     input = heap_alloc(2 * cChars * sizeof(*input));
     memcpy(input, pwcChars, cChars * sizeof(WCHAR));
 
-    /* Step 1: Decompose Vowels and Compose Consonants */
-    DecomposeVowels(hdc, input,  &cCount, Bengali_vowels, pwLogClust, cChars);
+
+    DecomposeVowels(hdc, input, &cCount, Bengali_vowels, pwLogClust, cChars);
     ComposeConsonants(hdc, input, &cCount, Bengali_consonants, pwLogClust);
     TRACE("New composed string %s (%i)\n",debugstr_wn(input,cCount),cCount);
 
-    /* Step 2: Reorder within Syllables */
+
     Indic_ReorderCharacters( hdc, psa, psc, input, cCount, &syllables, &syllable_count, bengali_lex, Reorder_Like_Bengali, modern);
     TRACE("reordered string %s\n",debugstr_wn(input,cCount));
     GetGlyphIndicesW(hdc, input, cCount, pwOutGlyphs, 0);
     *pcGlyphs = cCount;
 
-    /* Step 3: Initial form is only applied to the beginning of words */
+
     for (cCount = cCount - 1 ; cCount >= 0; cCount --)
     {
-        if (cCount == 0 || input[cCount] == 0x0020) /* space */
+        if (cCount == 0 || input[cCount] == 0x0020)
         {
             int index = cCount;
             int gCount = 1;
@@ -79,8 +79,8 @@ __attribute__((used)) static void ContextualShape_Bengali(HDC hdc, ScriptCache *
         }
     }
 
-    /* Step 4: Base Form application to syllables */
-    ShapeIndicSyllables(hdc, psc, psa, input, cChars, syllables, syllable_count, pwOutGlyphs, pcGlyphs, pwLogClust, bengali_lex, NULL, modern);
+
+    ShapeIndicSyllables(hdc, psc, psa, input, cChars, syllables, syllable_count, pwOutGlyphs, pcGlyphs, pwLogClust, bengali_lex, ((void*)0), modern);
 
     heap_free(input);
     heap_free(syllables);

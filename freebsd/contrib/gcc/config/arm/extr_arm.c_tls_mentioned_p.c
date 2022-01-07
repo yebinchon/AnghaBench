@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
-#define  CONST 129 
- int GET_CODE (int /*<<< orphan*/ ) ; 
-#define  UNSPEC 128 
- int /*<<< orphan*/  UNSPEC_TLS ; 
- int /*<<< orphan*/  XEXP (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XINT (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int rtx ;
+
+
+
+ int GET_CODE (int ) ;
+
+ int UNSPEC_TLS ;
+ int XEXP (int ,int ) ;
+ int XINT (int ,int) ;
 
 int
 tls_mentioned_p (rtx x)
 {
   switch (GET_CODE (x))
     {
-    case CONST:
+    case 129:
       return tls_mentioned_p (XEXP (x, 0));
 
-    case UNSPEC:
+    case 128:
       if (XINT (x, 1) == UNSPEC_TLS)
-	return 1;
+ return 1;
 
     default:
       return 0;

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HMETAFILE ;
-typedef  int /*<<< orphan*/  HDC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseMetaFile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateMetaFileA (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteMetaFile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int GetDeviceCaps (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RASTERCAPS ; 
- int RC_PALETTE ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  check_system_palette_entries (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+
+
+typedef int HMETAFILE ;
+typedef int HDC ;
+
+
+ int CloseMetaFile (int ) ;
+ int CreateMetaFileA (int *) ;
+ int DeleteMetaFile (int ) ;
+ int GetDC (int ) ;
+ int GetDeviceCaps (int ,int ) ;
+ int RASTERCAPS ;
+ int RC_PALETTE ;
+ int ReleaseDC (int ,int ) ;
+ int check_system_palette_entries (int ) ;
+ int skip (char*) ;
 
 __attribute__((used)) static void test_system_palette_entries(void)
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static void test_system_palette_entries(void)
 
     ReleaseDC( 0, hdc );
 
-    metafile_dc = CreateMetaFileA(NULL);
+    metafile_dc = CreateMetaFileA(((void*)0));
 
     check_system_palette_entries(metafile_dc);
 

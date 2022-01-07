@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RECT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HTHEME ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GWL_STYLE ; 
- int /*<<< orphan*/  GetClientRect (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetThemeBackgroundContentRect (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int GetWindowLongW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetWindowTheme (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InflateRect (int /*<<< orphan*/ *,int,int) ; 
- int PBS_VERTICAL ; 
- int PP_BAR ; 
- int PP_BARVERT ; 
+
+
+
+typedef int RECT ;
+typedef int HWND ;
+typedef int HTHEME ;
+typedef int DWORD ;
+
+
+ int GWL_STYLE ;
+ int GetClientRect (int ,int *) ;
+ int GetThemeBackgroundContentRect (int ,int ,int,int ,int *,int *) ;
+ int GetWindowLongW (int ,int ) ;
+ int GetWindowTheme (int ) ;
+ int InflateRect (int *,int,int) ;
+ int PBS_VERTICAL ;
+ int PP_BAR ;
+ int PP_BARVERT ;
 
 __attribute__((used)) static inline void get_client_rect (HWND hwnd, RECT* rect)
 {

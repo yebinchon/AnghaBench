@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_13__ {scalar_t__ scheme; scalar_t__ crypt_byte_block; scalar_t__ skip_byte_block; int subsample_count; TYPE_2__* subsamples; int /*<<< orphan*/  iv; } ;
-struct TYPE_12__ {int /*<<< orphan*/  fc; int /*<<< orphan*/  decryption_key; } ;
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_13__ {scalar_t__ scheme; scalar_t__ crypt_byte_block; scalar_t__ skip_byte_block; int subsample_count; TYPE_2__* subsamples; int iv; } ;
+struct TYPE_12__ {int fc; int decryption_key; } ;
 struct TYPE_9__ {scalar_t__ aes_ctr; } ;
 struct TYPE_11__ {TYPE_1__ cenc; } ;
 struct TYPE_10__ {int bytes_of_clear_data; int bytes_of_protected_data; } ;
-typedef  TYPE_3__ MOVStreamContext ;
-typedef  TYPE_4__ MOVContext ;
-typedef  TYPE_5__ AVEncryptionInfo ;
+typedef TYPE_3__ MOVStreamContext ;
+typedef TYPE_4__ MOVContext ;
+typedef TYPE_5__ AVEncryptionInfo ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int AVERROR_PATCHWELCOME ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  ENOMEM ; 
- scalar_t__ MKBETAG (char,char,char,char) ; 
- scalar_t__ av_aes_ctr_alloc () ; 
- int /*<<< orphan*/  av_aes_ctr_crypt (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int av_aes_ctr_init (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_aes_ctr_set_full_iv (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVERROR_PATCHWELCOME ;
+ int AV_LOG_ERROR ;
+ int ENOMEM ;
+ scalar_t__ MKBETAG (char,char,char,char) ;
+ scalar_t__ av_aes_ctr_alloc () ;
+ int av_aes_ctr_crypt (scalar_t__,int *,int *,int) ;
+ int av_aes_ctr_init (scalar_t__,int ) ;
+ int av_aes_ctr_set_full_iv (scalar_t__,int ) ;
+ int av_log (int ,int ,char*) ;
 
 __attribute__((used)) static int cenc_decrypt(MOVContext *c, MOVStreamContext *sc, AVEncryptionInfo *sample, uint8_t *input, int size)
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static int cenc_decrypt(MOVContext *c, MOVStreamContext *s
     }
 
     if (!sc->cenc.aes_ctr) {
-        /* initialize the cipher */
+
         sc->cenc.aes_ctr = av_aes_ctr_alloc();
         if (!sc->cenc.aes_ctr) {
             return AVERROR(ENOMEM);
@@ -64,7 +64,7 @@ __attribute__((used)) static int cenc_decrypt(MOVContext *c, MOVStreamContext *s
 
     if (!sample->subsample_count)
     {
-        /* decrypt the whole packet */
+
         av_aes_ctr_crypt(sc->cenc.aes_ctr, input, input, size);
         return 0;
     }
@@ -76,11 +76,11 @@ __attribute__((used)) static int cenc_decrypt(MOVContext *c, MOVStreamContext *s
             return AVERROR_INVALIDDATA;
         }
 
-        /* skip the clear bytes */
+
         input += sample->subsamples[i].bytes_of_clear_data;
         size -= sample->subsamples[i].bytes_of_clear_data;
 
-        /* decrypt the encrypted bytes */
+
         av_aes_ctr_crypt(sc->cenc.aes_ctr, input, input, sample->subsamples[i].bytes_of_protected_data);
         input += sample->subsamples[i].bytes_of_protected_data;
         size -= sample->subsamples[i].bytes_of_protected_data;

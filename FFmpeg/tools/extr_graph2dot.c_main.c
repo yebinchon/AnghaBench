@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct line {int /*<<< orphan*/  data; struct line* next; } ;
-typedef  int int64_t ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  AVFilterGraph ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  av_log_set_level (int /*<<< orphan*/ ) ; 
- void* av_malloc (int) ; 
- int /*<<< orphan*/ * av_mallocz (int) ; 
- scalar_t__ avfilter_graph_config (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ avfilter_graph_parse (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ *) ; 
- scalar_t__ fgets (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- char getopt (int,char**,char*) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,size_t) ; 
- char* optarg ; 
- int /*<<< orphan*/  print_digraph (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- char* strerror (int /*<<< orphan*/ ) ; 
- int strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usage () ; 
+
+
+
+struct line {int data; struct line* next; } ;
+typedef int int64_t ;
+typedef int FILE ;
+typedef int AVFilterGraph ;
+
+
+ int AV_LOG_DEBUG ;
+ int av_log_set_level (int ) ;
+ void* av_malloc (int) ;
+ int * av_mallocz (int) ;
+ scalar_t__ avfilter_graph_config (int *,int *) ;
+ scalar_t__ avfilter_graph_parse (int *,char*,int *,int *,int *) ;
+ int errno ;
+ int fflush (int *) ;
+ scalar_t__ fgets (int ,int,int *) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int ,char*,...) ;
+ char getopt (int,char**,char*) ;
+ int memcpy (char*,int ,size_t) ;
+ char* optarg ;
+ int print_digraph (int *,int *) ;
+ int stderr ;
+ int strcmp (char const*,char*) ;
+ char* strerror (int ) ;
+ int strlen (int ) ;
+ int usage () ;
 
 int main(int argc, char **argv)
 {
-    const char *outfilename = NULL;
-    const char *infilename  = NULL;
-    FILE *outfile           = NULL;
-    FILE *infile            = NULL;
-    char *graph_string      = NULL;
+    const char *outfilename = ((void*)0);
+    const char *infilename = ((void*)0);
+    FILE *outfile = ((void*)0);
+    FILE *infile = ((void*)0);
+    char *graph_string = ((void*)0);
     AVFilterGraph *graph = av_mallocz(sizeof(AVFilterGraph));
     char c;
 
@@ -83,7 +83,7 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    /* read from infile and put it in a buffer */
+
     {
         int64_t count = 0;
         struct line *line, *last_line, *first_line;
@@ -102,9 +102,9 @@ int main(int argc, char **argv)
             }
             count += strlen(last_line->data);
             last_line->next = new_line;
-            last_line       = new_line;
+            last_line = new_line;
         }
-        last_line->next = NULL;
+        last_line->next = ((void*)0);
 
         graph_string = av_malloc(count + 1);
         if (!graph_string) {
@@ -120,12 +120,12 @@ int main(int argc, char **argv)
         *p = '\0';
     }
 
-    if (avfilter_graph_parse(graph, graph_string, NULL, NULL, NULL) < 0) {
+    if (avfilter_graph_parse(graph, graph_string, ((void*)0), ((void*)0), ((void*)0)) < 0) {
         fprintf(stderr, "Failed to parse the graph description\n");
         return 1;
     }
 
-    if (avfilter_graph_config(graph, NULL) < 0)
+    if (avfilter_graph_config(graph, ((void*)0)) < 0)
         return 1;
 
     print_digraph(outfile, graph);

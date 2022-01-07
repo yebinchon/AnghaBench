@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct _property {int dummy; } ;
-typedef  TYPE_1__* properties ;
-struct TYPE_4__ {int /*<<< orphan*/ * value; struct TYPE_4__* name; int /*<<< orphan*/ * next; } ;
+typedef TYPE_1__* properties ;
+struct TYPE_4__ {int * value; struct TYPE_4__* name; int * next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- scalar_t__ malloc (int) ; 
- void* strdup (char*) ; 
+
+ int free (TYPE_1__*) ;
+ scalar_t__ malloc (int) ;
+ void* strdup (char*) ;
 
 __attribute__((used)) static properties
 property_alloc(char *name, char *value)
 {
     properties n;
 
-    if ((n = (properties)malloc(sizeof(struct _property))) == NULL)
-	return (NULL);
-    n->next = NULL;
-    if (name != NULL) {
-	if ((n->name = strdup(name)) == NULL) {
-	    free(n);
-	    return (NULL);
-	}
+    if ((n = (properties)malloc(sizeof(struct _property))) == ((void*)0))
+ return (((void*)0));
+    n->next = ((void*)0);
+    if (name != ((void*)0)) {
+ if ((n->name = strdup(name)) == ((void*)0)) {
+     free(n);
+     return (((void*)0));
+ }
     } else
-	n->name = NULL;
-    if (value != NULL) {
-	if ((n->value = strdup(value)) == NULL) {
-	    free(n->name);
-	    free(n);
-	    return (NULL);
-	}
+ n->name = ((void*)0);
+    if (value != ((void*)0)) {
+ if ((n->value = strdup(value)) == ((void*)0)) {
+     free(n->name);
+     free(n);
+     return (((void*)0));
+ }
     } else
-	n->value = NULL;
+ n->value = ((void*)0);
     return (n);
 }

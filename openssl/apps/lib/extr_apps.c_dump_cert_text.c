@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509 ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_puts (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  X509_get_issuer_name (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_get_subject_name (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_nameopt () ; 
- int /*<<< orphan*/  print_name (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int X509 ;
+typedef int BIO ;
+
+
+ int BIO_puts (int *,char*) ;
+ int X509_get_issuer_name (int *) ;
+ int X509_get_subject_name (int *) ;
+ int get_nameopt () ;
+ int print_name (int *,char*,int ,int ) ;
 
 int dump_cert_text(BIO *out, X509 *x)
 {

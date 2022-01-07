@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int error_depth; int /*<<< orphan*/  untrusted; TYPE_1__* param; int /*<<< orphan*/  chain; } ;
-typedef  TYPE_2__ X509_STORE_CTX ;
-typedef  int /*<<< orphan*/  X509_NAME ;
-struct TYPE_9__ {int /*<<< orphan*/  akid; } ;
-typedef  TYPE_3__ X509_CRL ;
-typedef  int /*<<< orphan*/  X509 ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int error_depth; int untrusted; TYPE_1__* param; int chain; } ;
+typedef TYPE_2__ X509_STORE_CTX ;
+typedef int X509_NAME ;
+struct TYPE_9__ {int akid; } ;
+typedef TYPE_3__ X509_CRL ;
+typedef int X509 ;
 struct TYPE_7__ {int flags; } ;
 
-/* Variables and functions */
- int CRL_SCORE_AKID ; 
- int CRL_SCORE_ISSUER_CERT ; 
- int CRL_SCORE_ISSUER_NAME ; 
- int CRL_SCORE_SAME_PATH ; 
- int /*<<< orphan*/ * X509_CRL_get_issuer (TYPE_3__*) ; 
- scalar_t__ X509_NAME_cmp (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int X509_V_FLAG_EXTENDED_CRL_SUPPORT ; 
- scalar_t__ X509_V_OK ; 
- scalar_t__ X509_check_akid (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_get_subject_name (int /*<<< orphan*/ *) ; 
- int sk_X509_num (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * sk_X509_value (int /*<<< orphan*/ ,int) ; 
+
+ int CRL_SCORE_AKID ;
+ int CRL_SCORE_ISSUER_CERT ;
+ int CRL_SCORE_ISSUER_NAME ;
+ int CRL_SCORE_SAME_PATH ;
+ int * X509_CRL_get_issuer (TYPE_3__*) ;
+ scalar_t__ X509_NAME_cmp (int ,int *) ;
+ int X509_V_FLAG_EXTENDED_CRL_SUPPORT ;
+ scalar_t__ X509_V_OK ;
+ scalar_t__ X509_check_akid (int *,int ) ;
+ int X509_get_subject_name (int *) ;
+ int sk_X509_num (int ) ;
+ int * sk_X509_value (int ,int) ;
 
 __attribute__((used)) static void crl_akid_check(X509_STORE_CTX *ctx, X509_CRL *crl,
                            X509 **pissuer, int *pcrl_score)
 {
-    X509 *crl_issuer = NULL;
+    X509 *crl_issuer = ((void*)0);
     X509_NAME *cnm = X509_CRL_get_issuer(crl);
     int cidx = ctx->error_depth;
     int i;
@@ -67,15 +67,15 @@ __attribute__((used)) static void crl_akid_check(X509_STORE_CTX *ctx, X509_CRL *
         }
     }
 
-    /* Anything else needs extended CRL support */
+
 
     if (!(ctx->param->flags & X509_V_FLAG_EXTENDED_CRL_SUPPORT))
         return;
 
-    /*
-     * Otherwise the CRL issuer is not on the path. Look for it in the set of
-     * untrusted certificates.
-     */
+
+
+
+
     for (i = 0; i < sk_X509_num(ctx->untrusted); i++) {
         crl_issuer = sk_X509_value(ctx->untrusted, i);
         if (X509_NAME_cmp(X509_get_subject_name(crl_issuer), cnm))

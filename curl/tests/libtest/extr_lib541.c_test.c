@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  st_size; } ;
-typedef  TYPE_1__ struct_stat ;
-typedef  char FILE ;
-typedef  int CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- scalar_t__ CURLE_OK ; 
- int /*<<< orphan*/  CURLOPT_READDATA ; 
- int /*<<< orphan*/  CURLOPT_UPLOAD ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURLOPT_VERBOSE ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- int TEST_ERR_MAJOR_BAD ; 
- int TEST_ERR_USAGE ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * curl_easy_init () ; 
- int curl_easy_perform (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- scalar_t__ curl_global_init (int /*<<< orphan*/ ) ; 
- int errno ; 
- int /*<<< orphan*/  fclose (char*) ; 
- int /*<<< orphan*/  fileno (char*) ; 
- char* fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int fstat (int /*<<< orphan*/ ,TYPE_1__*) ; 
- char* libtest_arg2 ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (int) ; 
- int /*<<< orphan*/  test_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int st_size; } ;
+typedef TYPE_1__ struct_stat ;
+typedef char FILE ;
+typedef int CURLcode ;
+typedef int CURL ;
+
+
+ scalar_t__ CURLE_OK ;
+ int CURLOPT_READDATA ;
+ int CURLOPT_UPLOAD ;
+ int CURLOPT_URL ;
+ int CURLOPT_VERBOSE ;
+ int CURL_GLOBAL_ALL ;
+ int TEST_ERR_MAJOR_BAD ;
+ int TEST_ERR_USAGE ;
+ int curl_easy_cleanup (int *) ;
+ int * curl_easy_init () ;
+ int curl_easy_perform (int *) ;
+ int curl_global_cleanup () ;
+ scalar_t__ curl_global_init (int ) ;
+ int errno ;
+ int fclose (char*) ;
+ int fileno (char*) ;
+ char* fopen (char*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int fstat (int ,TYPE_1__*) ;
+ char* libtest_arg2 ;
+ int stderr ;
+ char* strerror (int) ;
+ int test_setopt (int *,int ,...) ;
 
 int test(char *URL)
 {
@@ -56,17 +56,17 @@ int test(char *URL)
   }
 
   hd_src = fopen(libtest_arg2, "rb");
-  if(NULL == hd_src) {
+  if(((void*)0) == hd_src) {
     fprintf(stderr, "fopen failed with error: %d %s\n",
             errno, strerror(errno));
     fprintf(stderr, "Error opening file: %s\n", libtest_arg2);
-    return -2; /* if this happens things are major weird */
+    return -2;
   }
 
-  /* get the file size of the local file */
+
   hd = fstat(fileno(hd_src), &file_info);
   if(hd == -1) {
-    /* can't open file, bail out */
+
     fprintf(stderr, "fstat() failed with error: %d %s\n",
             errno, strerror(errno));
     fprintf(stderr, "ERROR: cannot open file %s\n", libtest_arg2);
@@ -86,7 +86,7 @@ int test(char *URL)
     return TEST_ERR_MAJOR_BAD;
   }
 
-  /* get a curl handle */
+
   curl = curl_easy_init();
   if(!curl) {
     fprintf(stderr, "curl_easy_init() failed\n");
@@ -95,28 +95,28 @@ int test(char *URL)
     return TEST_ERR_MAJOR_BAD;
   }
 
-  /* enable uploading */
+
   test_setopt(curl, CURLOPT_UPLOAD, 1L);
 
-  /* enable verbose */
+
   test_setopt(curl, CURLOPT_VERBOSE, 1L);
 
-  /* specify target */
+
   test_setopt(curl, CURLOPT_URL, URL);
 
-  /* now specify which file to upload */
+
   test_setopt(curl, CURLOPT_READDATA, hd_src);
 
-  /* Now run off and do what you've been told! */
+
   curl_easy_perform(curl);
 
-  /* and now upload the exact same again, but without rewinding so it already
-     is at end of file */
+
+
   res = curl_easy_perform(curl);
 
 test_cleanup:
 
-  /* close the local file */
+
   fclose(hd_src);
 
   curl_easy_cleanup(curl);

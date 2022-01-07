@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  raw_buffer ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  feof (int /*<<< orphan*/ *) ; 
- int fread (char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  fwrite (char*,int,int,int /*<<< orphan*/ *) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/ * stb__fopen (char*,char*) ; 
- scalar_t__ stb_feq (char*,char*) ; 
+
+
+
+typedef int raw_buffer ;
+typedef int FILE ;
+
+
+ int fclose (int *) ;
+ int feof (int *) ;
+ int fread (char*,int,int,int *) ;
+ int free (char*) ;
+ int fwrite (char*,int,int,int *) ;
+ scalar_t__ malloc (int) ;
+ int * stb__fopen (char*,char*) ;
+ scalar_t__ stb_feq (char*,char*) ;
 
 int stb_copyfile(char *src, char *dest)
 {
@@ -31,22 +31,22 @@ int stb_copyfile(char *src, char *dest)
 
    FILE *f, *g;
 
-   // if file already exists at destination, do nothing
+
    if (stb_feq(src, dest)) return 1;
 
-   // open file
-   f = stb__fopen(src, "rb");
-   if (f == NULL) return 0;
 
-   // open file for writing
+   f = stb__fopen(src, "rb");
+   if (f == ((void*)0)) return 0;
+
+
    g = stb__fopen(dest, "wb");
-   if (g == NULL) {
+   if (g == ((void*)0)) {
       fclose(f);
       return 0;
    }
 
    buffer = (char *) malloc(buf_size);
-   if (buffer == NULL) {
+   if (buffer == ((void*)0)) {
       buffer = raw_buffer;
       buf_size = sizeof(raw_buffer);
    }

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ v8i16 ;
-typedef  int v4i32 ;
-typedef  int /*<<< orphan*/  v2i64 ;
-typedef  scalar_t__ v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  int8_t ;
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLIP_SH_0_255 (scalar_t__) ; 
- int /*<<< orphan*/  DOTP_SB3_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  DPADD_SB2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  HEVC_BIW_RND_CLIP2 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,int,int,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ILVL_B2_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ILVL_B4_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ILVRL_H2_SW (scalar_t__,scalar_t__,int,int) ; 
- int /*<<< orphan*/  ILVR_B2_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ILVR_B4_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ILVR_D3_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  LD_SB2 (int /*<<< orphan*/ *,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  LD_SB7 (int /*<<< orphan*/ *,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ LD_SH (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  LD_SH2 (int /*<<< orphan*/ *,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  PCKEV_B2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  SPLATI_H4_SH (scalar_t__,int /*<<< orphan*/ ,int,int,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  SRAR_W2_SW (int,int,int) ; 
- int /*<<< orphan*/  ST_D2 (scalar_t__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ST_W2 (scalar_t__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  XORI_B2_128_SB (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  XORI_B7_128_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_dpadd_s_h (scalar_t__,scalar_t__,scalar_t__) ; 
- int __msa_dpadd_s_w (int,scalar_t__,scalar_t__) ; 
- int __msa_fill_w (int) ; 
- scalar_t__ __msa_ilvr_d (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int __msa_ldi_w (int) ; 
- scalar_t__ __msa_pckev_h (scalar_t__,scalar_t__) ; 
+
+
+
+typedef scalar_t__ v8i16 ;
+typedef int v4i32 ;
+typedef int v2i64 ;
+typedef scalar_t__ v16i8 ;
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int int8_t ;
+typedef int int32_t ;
+typedef int int16_t ;
+
+
+ int CLIP_SH_0_255 (scalar_t__) ;
+ int DOTP_SB3_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int DPADD_SB2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int HEVC_BIW_RND_CLIP2 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,int,int,int,scalar_t__,scalar_t__) ;
+ int ILVL_B2_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ILVL_B4_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ILVRL_H2_SW (scalar_t__,scalar_t__,int,int) ;
+ int ILVR_B2_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ILVR_B4_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ILVR_D3_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int LD_SB2 (int *,int,scalar_t__,scalar_t__) ;
+ int LD_SB7 (int *,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ LD_SH (int const*) ;
+ int LD_SH2 (int *,int,scalar_t__,scalar_t__) ;
+ int PCKEV_B2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int SPLATI_H4_SH (scalar_t__,int ,int,int,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int SRAR_W2_SW (int,int,int) ;
+ int ST_D2 (scalar_t__,int ,int,int *,int) ;
+ int ST_W2 (scalar_t__,int ,int,int *,int) ;
+ int XORI_B2_128_SB (scalar_t__,scalar_t__) ;
+ int XORI_B7_128_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_dpadd_s_h (scalar_t__,scalar_t__,scalar_t__) ;
+ int __msa_dpadd_s_w (int,scalar_t__,scalar_t__) ;
+ int __msa_fill_w (int) ;
+ scalar_t__ __msa_ilvr_d (int ,int ) ;
+ int __msa_ldi_w (int) ;
+ scalar_t__ __msa_pckev_h (scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static void hevc_vt_biwgt_8t_12w_msa(uint8_t *src0_ptr,
                                      int32_t src_stride,

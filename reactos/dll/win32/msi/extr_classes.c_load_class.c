@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-struct TYPE_13__ {int /*<<< orphan*/  action; void* Attributes; int /*<<< orphan*/  Feature; int /*<<< orphan*/  Argument; void* DefInprocHandler32; void* DefInprocHandler; void* IconPath; void* FileTypeMask; int /*<<< orphan*/  AppID; void* Description; void* ProgIDText; int /*<<< orphan*/  ProgID; int /*<<< orphan*/  Component; void* Context; void* clsid; int /*<<< orphan*/  entry; } ;
-struct TYPE_12__ {int /*<<< orphan*/  classes; } ;
-typedef  int /*<<< orphan*/  MSIRECORD ;
-typedef  TYPE_1__ MSIPACKAGE ;
-typedef  TYPE_2__ MSICLASS ;
-typedef  void* LPWSTR ;
-typedef  scalar_t__ LPCWSTR ;
-typedef  void* INT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INSTALLSTATE_UNKNOWN ; 
- int MSI_NULL_INTEGER ; 
- void* MSI_RecordGetInteger (int /*<<< orphan*/ *,int) ; 
- scalar_t__ MSI_RecordGetString (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  MSI_RecordIsNull (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (void*) ; 
- int /*<<< orphan*/  deformat_string (TYPE_1__*,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  load_given_appid (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  load_given_progid (TYPE_1__*,void*) ; 
- void* msi_alloc (int) ; 
- TYPE_2__* msi_alloc_zero (int) ; 
- void* msi_build_icon_path (TYPE_1__*,scalar_t__) ; 
- void* msi_dup_record_field (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  msi_free (void*) ; 
- int /*<<< orphan*/  msi_get_loaded_component (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  msi_get_loaded_feature (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  msi_reduce_to_long_filename (void*) ; 
- int /*<<< orphan*/  sprintfW (void*,char const*,void*,void*) ; 
- void* strdupW (char const*) ; 
- int strlenW (void*) ; 
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+struct TYPE_13__ {int action; void* Attributes; int Feature; int Argument; void* DefInprocHandler32; void* DefInprocHandler; void* IconPath; void* FileTypeMask; int AppID; void* Description; void* ProgIDText; int ProgID; int Component; void* Context; void* clsid; int entry; } ;
+struct TYPE_12__ {int classes; } ;
+typedef int MSIRECORD ;
+typedef TYPE_1__ MSIPACKAGE ;
+typedef TYPE_2__ MSICLASS ;
+typedef void* LPWSTR ;
+typedef scalar_t__ LPCWSTR ;
+typedef void* INT ;
+typedef int DWORD ;
+
+
+ int INSTALLSTATE_UNKNOWN ;
+ int MSI_NULL_INTEGER ;
+ void* MSI_RecordGetInteger (int *,int) ;
+ scalar_t__ MSI_RecordGetString (int *,int) ;
+ int MSI_RecordIsNull (int *,int) ;
+ int TRACE (char*,int ) ;
+ int debugstr_w (void*) ;
+ int deformat_string (TYPE_1__*,scalar_t__,int *) ;
+ int list_add_tail (int *,int *) ;
+ int load_given_appid (TYPE_1__*,scalar_t__) ;
+ int load_given_progid (TYPE_1__*,void*) ;
+ void* msi_alloc (int) ;
+ TYPE_2__* msi_alloc_zero (int) ;
+ void* msi_build_icon_path (TYPE_1__*,scalar_t__) ;
+ void* msi_dup_record_field (int *,int) ;
+ int msi_free (void*) ;
+ int msi_get_loaded_component (TYPE_1__*,scalar_t__) ;
+ int msi_get_loaded_feature (TYPE_1__*,scalar_t__) ;
+ int msi_reduce_to_long_filename (void*) ;
+ int sprintfW (void*,char const*,void*,void*) ;
+ void* strdupW (char const*) ;
+ int strlenW (void*) ;
 
 __attribute__((used)) static MSICLASS *load_class( MSIPACKAGE* package, MSIRECORD *row )
 {
@@ -53,11 +53,11 @@ __attribute__((used)) static MSICLASS *load_class( MSIPACKAGE* package, MSIRECOR
     DWORD i;
     LPCWSTR buffer;
 
-    /* fill in the data */
+
 
     cls = msi_alloc_zero( sizeof(MSICLASS) );
     if (!cls)
-        return NULL;
+        return ((void*)0);
 
     list_add_tail( &package->classes, &cls->entry );
 
@@ -81,13 +81,13 @@ __attribute__((used)) static MSICLASS *load_class( MSIPACKAGE* package, MSIRECOR
     if (!MSI_RecordIsNull(row,9))
     {
 
-        INT icon_index = MSI_RecordGetInteger(row,9); 
+        INT icon_index = MSI_RecordGetInteger(row,9);
         LPCWSTR FileName = MSI_RecordGetString(row,8);
         LPWSTR FilePath;
         static const WCHAR fmt[] = {'%','s',',','%','i',0};
 
         FilePath = msi_build_icon_path(package, FileName);
-       
+
         cls->IconPath = msi_alloc( (strlenW(FilePath)+5)* sizeof(WCHAR) );
 
         sprintfW(cls->IconPath,fmt,FilePath,icon_index);
@@ -104,7 +104,7 @@ __attribute__((used)) static MSICLASS *load_class( MSIPACKAGE* package, MSIRECOR
     if (!MSI_RecordIsNull(row,10))
     {
         i = MSI_RecordGetInteger(row,10);
-        if (i != MSI_NULL_INTEGER && i > 0 &&  i < 4)
+        if (i != MSI_NULL_INTEGER && i > 0 && i < 4)
         {
             static const WCHAR ole2[] = {'o','l','e','2','.','d','l','l',0};
             static const WCHAR ole32[] = {'o','l','e','3','2','.','d','l','l',0};

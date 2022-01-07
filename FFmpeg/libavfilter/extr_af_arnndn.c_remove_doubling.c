@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FFABS (int) ; 
- float FFMAX (float,float) ; 
- int /*<<< orphan*/  PITCH_MAX_PERIOD ; 
- float Q15ONE ; 
- float celt_inner_prod (float*,float*,int) ; 
- float compute_pitch_gain (float,float,float) ; 
- int /*<<< orphan*/  dual_inner_prod (float*,float*,float*,int,float*,float*) ; 
- int* second_check ; 
+ int FFABS (int) ;
+ float FFMAX (float,float) ;
+ int PITCH_MAX_PERIOD ;
+ float Q15ONE ;
+ float celt_inner_prod (float*,float*,int) ;
+ float compute_pitch_gain (float,float,float) ;
+ int dual_inner_prod (float*,float*,float*,int,float*,float*) ;
+ int* second_check ;
 
 __attribute__((used)) static float remove_doubling(float *x, int maxperiod, int minperiod, int N,
                              int *T0_, int prev_period, float prev_gain)
@@ -56,7 +48,7 @@ __attribute__((used)) static float remove_doubling(float *x, int maxperiod, int 
     best_xy = xy;
     best_yy = yy;
     g = g0 = compute_pitch_gain(xy, xx, yy);
-    /* Look for any pitch at T/k */
+
     for (k = 2; k <= 15; k++) {
         int T1, T1b;
         float g1;
@@ -65,7 +57,7 @@ __attribute__((used)) static float remove_doubling(float *x, int maxperiod, int 
         T1 = (2*T0+k)/(2*k);
         if (T1 < minperiod)
             break;
-        /* Look for another strong correlation at T1b */
+
         if (k==2)
         {
             if (T1+T0>maxperiod)
@@ -87,8 +79,8 @@ __attribute__((used)) static float remove_doubling(float *x, int maxperiod, int 
         else
             cont = 0;
         thresh = FFMAX(.3f, (.7f * g0) - cont);
-        /* Bias against very high pitch (very short period) to avoid false-positives
-           due to short-term correlation */
+
+
         if (T1<3*minperiod)
             thresh = FFMAX(.4f, (.85f * g0) - cont);
         else if (T1<2*minperiod)

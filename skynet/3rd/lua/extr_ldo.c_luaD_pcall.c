@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* ptrdiff_t ;
-struct TYPE_8__ {unsigned short nny; void* errfunc; int /*<<< orphan*/  allowhook; int /*<<< orphan*/ * ci; } ;
-typedef  TYPE_1__ lua_State ;
-typedef  int /*<<< orphan*/  lu_byte ;
-typedef  int /*<<< orphan*/  StkId ;
-typedef  int /*<<< orphan*/  Pfunc ;
-typedef  int /*<<< orphan*/  CallInfo ;
 
-/* Variables and functions */
- int LUA_OK ; 
- int luaD_rawrunprotected (TYPE_1__*,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  luaD_shrinkstack (TYPE_1__*) ; 
- int /*<<< orphan*/  luaF_close (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  restorestack (TYPE_1__*,void*) ; 
- int /*<<< orphan*/  seterrorobj (TYPE_1__*,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef void* ptrdiff_t ;
+struct TYPE_8__ {unsigned short nny; void* errfunc; int allowhook; int * ci; } ;
+typedef TYPE_1__ lua_State ;
+typedef int lu_byte ;
+typedef int StkId ;
+typedef int Pfunc ;
+typedef int CallInfo ;
+
+
+ int LUA_OK ;
+ int luaD_rawrunprotected (TYPE_1__*,int ,void*) ;
+ int luaD_shrinkstack (TYPE_1__*) ;
+ int luaF_close (TYPE_1__*,int ) ;
+ int restorestack (TYPE_1__*,void*) ;
+ int seterrorobj (TYPE_1__*,int,int ) ;
 
 int luaD_pcall (lua_State *L, Pfunc func, void *u,
                 ptrdiff_t old_top, ptrdiff_t ef) {
@@ -36,9 +36,9 @@ int luaD_pcall (lua_State *L, Pfunc func, void *u,
   ptrdiff_t old_errfunc = L->errfunc;
   L->errfunc = ef;
   status = luaD_rawrunprotected(L, func, u);
-  if (status != LUA_OK) {  /* an error occurred? */
+  if (status != LUA_OK) {
     StkId oldtop = restorestack(L, old_top);
-    luaF_close(L, oldtop);  /* close possible pending closures */
+    luaF_close(L, oldtop);
     seterrorobj(L, status, oldtop);
     L->ci = old_ci;
     L->allowhook = old_allowhooks;

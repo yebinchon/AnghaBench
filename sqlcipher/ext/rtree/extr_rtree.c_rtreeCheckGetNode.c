@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  i64 ;
-struct TYPE_6__ {scalar_t__ rc; scalar_t__ pGetNode; int /*<<< orphan*/  zTab; int /*<<< orphan*/  zDb; } ;
-typedef  TYPE_1__ RtreeCheck ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_NOMEM ; 
- scalar_t__ SQLITE_OK ; 
- scalar_t__ SQLITE_ROW ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  rtreeCheckAppendMsg (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ rtreeCheckPrepare (TYPE_1__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rtreeCheckReset (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  sqlite3_bind_int64 (scalar_t__,int,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_column_blob (scalar_t__,int /*<<< orphan*/ ) ; 
- int sqlite3_column_bytes (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * sqlite3_malloc64 (int) ; 
- scalar_t__ sqlite3_step (scalar_t__) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int i64 ;
+struct TYPE_6__ {scalar_t__ rc; scalar_t__ pGetNode; int zTab; int zDb; } ;
+typedef TYPE_1__ RtreeCheck ;
+
+
+ scalar_t__ SQLITE_NOMEM ;
+ scalar_t__ SQLITE_OK ;
+ scalar_t__ SQLITE_ROW ;
+ int memcpy (int *,int const*,int) ;
+ int rtreeCheckAppendMsg (TYPE_1__*,char*,int ) ;
+ scalar_t__ rtreeCheckPrepare (TYPE_1__*,char*,int ,int ) ;
+ int rtreeCheckReset (TYPE_1__*,scalar_t__) ;
+ int sqlite3_bind_int64 (scalar_t__,int,int ) ;
+ scalar_t__ sqlite3_column_blob (scalar_t__,int ) ;
+ int sqlite3_column_bytes (scalar_t__,int ) ;
+ int * sqlite3_malloc64 (int) ;
+ scalar_t__ sqlite3_step (scalar_t__) ;
 
 __attribute__((used)) static u8 *rtreeCheckGetNode(RtreeCheck *pCheck, i64 iNode, int *pnNode){
-  u8 *pRet = 0;                   /* Return value */
+  u8 *pRet = 0;
 
   if( pCheck->rc==SQLITE_OK && pCheck->pGetNode==0 ){
     pCheck->pGetNode = rtreeCheckPrepare(pCheck,
-        "SELECT data FROM %Q.'%q_node' WHERE nodeno=?", 
+        "SELECT data FROM %Q.'%q_node' WHERE nodeno=?",
         pCheck->zDb, pCheck->zTab
     );
   }

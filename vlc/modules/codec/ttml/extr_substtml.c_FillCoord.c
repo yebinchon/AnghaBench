@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {float i_value; scalar_t__ unit; } ;
-typedef  TYPE_1__ ttml_length_t ;
+typedef TYPE_1__ ttml_length_t ;
 
-/* Variables and functions */
- scalar_t__ TTML_UNIT_PERCENT ; 
+
+ scalar_t__ TTML_UNIT_PERCENT ;
 
 __attribute__((used)) static void FillCoord( ttml_length_t v, int i_flag, float *p_val, int *pi_flags )
 {

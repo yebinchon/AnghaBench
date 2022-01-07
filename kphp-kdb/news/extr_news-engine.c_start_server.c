@@ -1,44 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int NB_alloc ; 
- int NB_max ; 
- int NB_used ; 
- int active_connections ; 
- scalar_t__ binlog_disabled ; 
- int /*<<< orphan*/  check_all_aio_completions () ; 
- int /*<<< orphan*/  cstatus_binlog_pos (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  ct_rpc_server ; 
- int /*<<< orphan*/  epoll_work (int) ; 
- int /*<<< orphan*/  fetch_binlog_data (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  flush_binlog () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,int,int,int) ; 
- int /*<<< orphan*/  log_cur_pos () ; 
- int /*<<< orphan*/  log_write_pos () ; 
- int maxconn ; 
- int /*<<< orphan*/  news_engine ; 
- int /*<<< orphan*/  news_functions ; 
- int /*<<< orphan*/  news_parse_function ; 
- int /*<<< orphan*/  process_signals () ; 
- int /*<<< orphan*/  rpc_methods ; 
- int /*<<< orphan*/  server_exit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  server_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- double tl_aio_timeout ; 
- int /*<<< orphan*/  tl_parse_function ; 
- int /*<<< orphan*/  tl_restart_all_ready () ; 
- scalar_t__ verbosity ; 
+ int NB_alloc ;
+ int NB_max ;
+ int NB_used ;
+ int active_connections ;
+ scalar_t__ binlog_disabled ;
+ int check_all_aio_completions () ;
+ int cstatus_binlog_pos (int ,scalar_t__) ;
+ int ct_rpc_server ;
+ int epoll_work (int) ;
+ int fetch_binlog_data (int ) ;
+ int flush_binlog () ;
+ int fprintf (int ,char*,int,int,int,int,int) ;
+ int log_cur_pos () ;
+ int log_write_pos () ;
+ int maxconn ;
+ int news_engine ;
+ int news_functions ;
+ int news_parse_function ;
+ int process_signals () ;
+ int rpc_methods ;
+ int server_exit (int *) ;
+ int server_init (int *,int *,int *,int *) ;
+ int stderr ;
+ double tl_aio_timeout ;
+ int tl_parse_function ;
+ int tl_restart_all_ready () ;
+ scalar_t__ verbosity ;
 
 void start_server (void) {
   tl_parse_function = news_parse_function;
@@ -48,30 +40,20 @@ void start_server (void) {
   for (i = 0; ; i++) {
     if (verbosity > 0 && !(i & 1023)) {
       fprintf (stderr, "epoll_work(): %d out of %d connections, network buffers: %d used, %d out of %d allocated\n",
-	       active_connections, maxconn, NB_used, NB_alloc, NB_max);
+        active_connections, maxconn, NB_used, NB_alloc, NB_max);
     }
     fetch_binlog_data (binlog_disabled ? log_cur_pos() : log_write_pos ());
     epoll_work (epoll_work_timeout);
-    
+
     if (!process_signals ()) {
       break;
     }
 
     check_all_aio_completions ();
     tl_restart_all_ready ();
-    
+
     flush_binlog ();
     cstatus_binlog_pos (binlog_disabled ? log_cur_pos() : log_write_pos (), binlog_disabled);
-
-    /*if (getloadavg (&loadavg_last_minute, 1) == 1 && loadavg_last_minute < 1.0) {
-      vkprintf (4, "Collect garbage\n");
-      last_collect_garbage_time = now;
-      news_collect_garbage (100);
-      epoll_work_timeout = 10;
-    } else {
-      epoll_work_timeout = 97;
-      }*/
-
     if (quit_steps && !--quit_steps) break;
   }
 

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vertex {int dummy; } ;
-typedef  int /*<<< orphan*/  IDirect3DVertexBuffer9 ;
-typedef  int /*<<< orphan*/  IDirect3DDevice9 ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  D3DXMATRIX ;
+typedef int IDirect3DVertexBuffer9 ;
+typedef int IDirect3DDevice9 ;
+typedef scalar_t__ HRESULT ;
+typedef int D3DXMATRIX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DCLEAR_TARGET ; 
- int /*<<< orphan*/  D3DCOLOR_XRGB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  D3DPT_TRIANGLESTRIP ; 
- int /*<<< orphan*/  D3DTS_PROJECTION ; 
- int /*<<< orphan*/  D3DXMatrixOrthoLH (int /*<<< orphan*/ *,float,float,float,float) ; 
- scalar_t__ D3D_OK ; 
- scalar_t__ IDirect3DDevice9_BeginScene (int /*<<< orphan*/ *) ; 
- scalar_t__ IDirect3DDevice9_Clear (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,float,int /*<<< orphan*/ ) ; 
- scalar_t__ IDirect3DDevice9_DrawPrimitive (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ IDirect3DDevice9_EndScene (int /*<<< orphan*/ *) ; 
- scalar_t__ IDirect3DDevice9_SetStreamSource (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IDirect3DDevice9_SetTransform (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
+
+ int D3DCLEAR_TARGET ;
+ int D3DCOLOR_XRGB (int ,int ,int ) ;
+ int D3DPT_TRIANGLESTRIP ;
+ int D3DTS_PROJECTION ;
+ int D3DXMatrixOrthoLH (int *,float,float,float,float) ;
+ scalar_t__ D3D_OK ;
+ scalar_t__ IDirect3DDevice9_BeginScene (int *) ;
+ scalar_t__ IDirect3DDevice9_Clear (int *,int ,int *,int ,int ,float,int ) ;
+ scalar_t__ IDirect3DDevice9_DrawPrimitive (int *,int ,int ,int) ;
+ scalar_t__ IDirect3DDevice9_EndScene (int *) ;
+ scalar_t__ IDirect3DDevice9_SetStreamSource (int *,int ,int *,int ,int) ;
+ int IDirect3DDevice9_SetTransform (int *,int ,int *) ;
+ int ok (int,char*,scalar_t__) ;
 
 __attribute__((used)) static void draw_quad_with_shader9(IDirect3DDevice9 *device, IDirect3DVertexBuffer9 *quad_geometry)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static void draw_quad_with_shader9(IDirect3DDevice9 *devic
     D3DXMatrixOrthoLH(&projection_matrix, 2.0f, 2.0f, 0.0f, 1.0f);
     IDirect3DDevice9_SetTransform(device, D3DTS_PROJECTION, &projection_matrix);
 
-    hr = IDirect3DDevice9_Clear(device, 0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 0), 1.0f, 0);
+    hr = IDirect3DDevice9_Clear(device, 0, ((void*)0), D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 0), 1.0f, 0);
     ok(hr == D3D_OK, "IDirect3DDevice9_Clear returned: %08x\n", hr);
 
     hr = IDirect3DDevice9_BeginScene(device);

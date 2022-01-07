@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32_t ;
-struct TYPE_5__ {unsigned int number_of_frames; unsigned int starting_frame_index; unsigned int max_restart_interval; unsigned int one_sample_buffer_size; unsigned int* frame_size; TYPE_1__* avctx; int /*<<< orphan*/ * inout_buffer; int /*<<< orphan*/ * sample_buffer; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int int32_t ;
+struct TYPE_5__ {unsigned int number_of_frames; unsigned int starting_frame_index; unsigned int max_restart_interval; unsigned int one_sample_buffer_size; unsigned int* frame_size; TYPE_1__* avctx; int * inout_buffer; int * sample_buffer; } ;
 struct TYPE_4__ {unsigned int channels; } ;
-typedef  TYPE_2__ MLPEncodeContext ;
+typedef TYPE_2__ MLPEncodeContext ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void input_to_sample_buffer(MLPEncodeContext *ctx)
 {
@@ -32,8 +32,8 @@ __attribute__((used)) static void input_to_sample_buffer(MLPEncodeContext *ctx)
         for (i = 0; i < ctx->frame_size[cur_index]; i++) {
             for (channel = 0; channel < ctx->avctx->channels; channel++)
                 *sample_buffer++ = *input_buffer++;
-            sample_buffer += 2; /* noise_channels */
-            input_buffer += 2; /* noise_channels */
+            sample_buffer += 2;
+            input_buffer += 2;
         }
     }
 }

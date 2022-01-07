@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct RangeList {size_t count; unsigned int* picker; int picker_mask; TYPE_1__* list; int /*<<< orphan*/  is_sorted; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct RangeList {size_t count; unsigned int* picker; int picker_mask; TYPE_1__* list; int is_sorted; } ;
 struct TYPE_2__ {scalar_t__ begin; scalar_t__ end; } ;
 
-/* Variables and functions */
- unsigned int* REALLOCARRAY (int /*<<< orphan*/ *,size_t,int) ; 
- int /*<<< orphan*/  free (unsigned int*) ; 
- int /*<<< orphan*/  rangelist_sort (struct RangeList*) ; 
+
+ unsigned int* REALLOCARRAY (int *,size_t,int) ;
+ int free (unsigned int*) ;
+ int rangelist_sort (struct RangeList*) ;
 
 void
 rangelist_optimize(struct RangeList *targets)
@@ -34,7 +34,7 @@ rangelist_optimize(struct RangeList *targets)
     if (targets->picker)
         free(targets->picker);
 
-    picker = REALLOCARRAY(NULL, targets->count, sizeof(*picker));
+    picker = REALLOCARRAY(((void*)0), targets->count, sizeof(*picker));
 
     for (i=0; i<targets->count; i++) {
         picker[i] = total;
@@ -52,5 +52,5 @@ rangelist_optimize(struct RangeList *targets)
 
     targets->picker_mask = (1 << bit_count) - 1;
 
-    
+
 }

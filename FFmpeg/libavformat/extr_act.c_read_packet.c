@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int second_packet; int bytes_left_in_chunk; int /*<<< orphan*/ * audio_buffer; } ;
-struct TYPE_12__ {TYPE_2__** streams; int /*<<< orphan*/ * pb; TYPE_5__* priv_data; } ;
-struct TYPE_11__ {int duration; int /*<<< orphan*/ * data; } ;
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int second_packet; int bytes_left_in_chunk; int * audio_buffer; } ;
+struct TYPE_12__ {TYPE_2__** streams; int * pb; TYPE_5__* priv_data; } ;
+struct TYPE_11__ {int duration; int * data; } ;
 struct TYPE_10__ {TYPE_1__* codecpar; } ;
 struct TYPE_9__ {int sample_rate; } ;
-typedef  TYPE_3__ AVPacket ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_4__ AVFormatContext ;
-typedef  TYPE_5__ ACTContext ;
+typedef TYPE_3__ AVPacket ;
+typedef int AVIOContext ;
+typedef TYPE_4__ AVFormatContext ;
+typedef TYPE_5__ ACTContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int CHUNK_SIZE ; 
- int /*<<< orphan*/  EIO ; 
- int av_new_packet (TYPE_3__*,int) ; 
- int avio_read (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR (int ) ;
+ int CHUNK_SIZE ;
+ int EIO ;
+ int av_new_packet (TYPE_3__*,int) ;
+ int avio_read (int *,int *,int) ;
+ int avio_skip (int *,int) ;
 
 __attribute__((used)) static int read_packet(AVFormatContext *s,
                           AVPacket *pkt)
@@ -89,7 +89,7 @@ __attribute__((used)) static int read_packet(AVFormatContext *s,
 
         ctx->second_packet=0;
     }
-    else // 8000 Hz
+    else
     {
         ret = avio_read(pb, ctx->audio_buffer, frame_size);
 

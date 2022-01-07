@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct chvgpio_softc {int /*<<< orphan*/  sc_busdev; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- struct chvgpio_softc* device_get_softc (int /*<<< orphan*/ ) ; 
+
+
+
+struct chvgpio_softc {int sc_busdev; } ;
+typedef int device_t ;
+
+
+ struct chvgpio_softc* device_get_softc (int ) ;
 
 __attribute__((used)) static device_t
 chvgpio_get_bus(device_t dev)
 {
-	struct chvgpio_softc *sc;
+ struct chvgpio_softc *sc;
 
-	sc = device_get_softc(dev);
+ sc = device_get_softc(dev);
 
-	return (sc->sc_busdev);
+ return (sc->sc_busdev);
 }

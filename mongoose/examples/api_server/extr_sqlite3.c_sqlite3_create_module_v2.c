@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_module ;
-typedef  int /*<<< orphan*/  sqlite3 ;
 
-/* Variables and functions */
- int createModule (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/  const*,void*,void (*) (void*)) ; 
+
+
+
+typedef int sqlite3_module ;
+typedef int sqlite3 ;
+
+
+ int createModule (int *,char const*,int const*,void*,void (*) (void*)) ;
 
 int sqlite3_create_module_v2(
-  sqlite3 *db,                    /* Database in which module is registered */
-  const char *zName,              /* Name assigned to this module */
-  const sqlite3_module *pModule,  /* The definition of the module */
-  void *pAux,                     /* Context pointer for xCreate/xConnect */
-  void (*xDestroy)(void *)        /* Module destructor function */
+  sqlite3 *db,
+  const char *zName,
+  const sqlite3_module *pModule,
+  void *pAux,
+  void (*xDestroy)(void *)
 ){
   return createModule(db, zName, pModule, pAux, xDestroy);
 }

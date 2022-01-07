@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_7__ ;
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_18__ {int bytes; void* colId; int /*<<< orphan*/  type; } ;
-struct TYPE_17__ {char* secret; char* cipheringKey; int /*<<< orphan*/  encrypt; int /*<<< orphan*/  spi; } ;
-struct TYPE_16__ {int vnode; scalar_t__ sid; char* meterId; int numOfColumns; int sqlLen; scalar_t__ sversion; char* secret; char* cipheringKey; int /*<<< orphan*/  encrypt; int /*<<< orphan*/  spi; TYPE_2__* schema; void* timeStamp; int /*<<< orphan*/  uid; void* lastCreate; } ;
-struct TYPE_15__ {int vnode; scalar_t__ sid; char* meterId; int numOfColumns; scalar_t__ maxBytes; int sqlLen; char* pSql; TYPE_7__* schema; int /*<<< orphan*/  pointsPerFileBlock; int /*<<< orphan*/  bytesPerPoint; void* sversion; void* timeStamp; int /*<<< orphan*/  uid; } ;
-struct TYPE_12__ {scalar_t__ maxSessions; int /*<<< orphan*/  rowsInFileBlock; } ;
-struct TYPE_14__ {TYPE_1__ cfg; int /*<<< orphan*/ * pCachePool; } ;
-struct TYPE_13__ {int bytes; int colId; int /*<<< orphan*/  type; } ;
-typedef  int /*<<< orphan*/  TSKEY ;
-typedef  TYPE_3__ SVnodeObj ;
-typedef  TYPE_4__ SMeterObj ;
-typedef  int /*<<< orphan*/  SMColumn ;
-typedef  TYPE_5__ SCreateMsg ;
-typedef  TYPE_6__ SConnSec ;
-typedef  TYPE_7__ SColumn ;
 
-/* Variables and functions */
- int TSDB_CODE_INVALID_SESSION_ID ; 
- int TSDB_CODE_NOT_ACTIVE_SESSION ; 
- int TSDB_CODE_NO_RESOURCE ; 
- int TSDB_CODE_OTHERS ; 
- int TSDB_CODE_SUCCESS ; 
- int TSDB_KEY_LEN ; 
- scalar_t__ TSDB_MAX_VNODES ; 
- int TSDB_METER_ID_LEN ; 
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  dError (char*,int,...) ; 
- int /*<<< orphan*/  dTrace (char*,int,scalar_t__,char*) ; 
- void* htobe64 (void*) ; 
- void* htonl (scalar_t__) ; 
- void* htons (int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  tfree (TYPE_4__*) ; 
- int vnodeCreateMeterObj (TYPE_4__*,TYPE_6__*) ; 
- TYPE_3__* vnodeList ; 
- int /*<<< orphan*/  vnodeSendVpeerCfgMsg (int) ; 
+
+typedef struct TYPE_18__ TYPE_7__ ;
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_18__ {int bytes; void* colId; int type; } ;
+struct TYPE_17__ {char* secret; char* cipheringKey; int encrypt; int spi; } ;
+struct TYPE_16__ {int vnode; scalar_t__ sid; char* meterId; int numOfColumns; int sqlLen; scalar_t__ sversion; char* secret; char* cipheringKey; int encrypt; int spi; TYPE_2__* schema; void* timeStamp; int uid; void* lastCreate; } ;
+struct TYPE_15__ {int vnode; scalar_t__ sid; char* meterId; int numOfColumns; scalar_t__ maxBytes; int sqlLen; char* pSql; TYPE_7__* schema; int pointsPerFileBlock; int bytesPerPoint; void* sversion; void* timeStamp; int uid; } ;
+struct TYPE_12__ {scalar_t__ maxSessions; int rowsInFileBlock; } ;
+struct TYPE_14__ {TYPE_1__ cfg; int * pCachePool; } ;
+struct TYPE_13__ {int bytes; int colId; int type; } ;
+typedef int TSKEY ;
+typedef TYPE_3__ SVnodeObj ;
+typedef TYPE_4__ SMeterObj ;
+typedef int SMColumn ;
+typedef TYPE_5__ SCreateMsg ;
+typedef TYPE_6__ SConnSec ;
+typedef TYPE_7__ SColumn ;
+
+
+ int TSDB_CODE_INVALID_SESSION_ID ;
+ int TSDB_CODE_NOT_ACTIVE_SESSION ;
+ int TSDB_CODE_NO_RESOURCE ;
+ int TSDB_CODE_OTHERS ;
+ int TSDB_CODE_SUCCESS ;
+ int TSDB_KEY_LEN ;
+ scalar_t__ TSDB_MAX_VNODES ;
+ int TSDB_METER_ID_LEN ;
+ scalar_t__ calloc (int,int) ;
+ int dError (char*,int,...) ;
+ int dTrace (char*,int,scalar_t__,char*) ;
+ void* htobe64 (void*) ;
+ void* htonl (scalar_t__) ;
+ void* htons (int) ;
+ int memcpy (char*,char*,int) ;
+ int tfree (TYPE_4__*) ;
+ int vnodeCreateMeterObj (TYPE_4__*,TYPE_6__*) ;
+ TYPE_3__* vnodeList ;
+ int vnodeSendVpeerCfgMsg (int) ;
 
 int vnodeProcessCreateMeterMsg(char *pMsg, int msgLen) {
-  int         code;
-  SMeterObj * pObj = NULL;
-  SConnSec    connSec;
+  int code;
+  SMeterObj * pObj = ((void*)0);
+  SConnSec connSec;
   SCreateMsg *pCreate = (SCreateMsg *)pMsg;
 
   pCreate->vnode = htons(pCreate->vnode);
@@ -71,7 +71,7 @@ int vnodeProcessCreateMeterMsg(char *pMsg, int msgLen) {
   }
 
   SVnodeObj *pVnode = vnodeList + pCreate->vnode;
-  if (pVnode->pCachePool == NULL) {
+  if (pVnode->pCachePool == ((void*)0)) {
     dError("vid:%d is not activated yet", pCreate->vnode);
     vnodeSendVpeerCfgMsg(pCreate->vnode);
     code = TSDB_CODE_NOT_ACTIVE_SESSION;
@@ -93,17 +93,17 @@ int vnodeProcessCreateMeterMsg(char *pMsg, int msgLen) {
 
   pCreate->sqlLen = htons(pCreate->sqlLen);
   pObj = (SMeterObj *)calloc(1, sizeof(SMeterObj) + pCreate->sqlLen + 1);
-  if (pObj == NULL) {
+  if (pObj == ((void*)0)) {
     dError("vid:%d sid:%d id:%s, no memory to allocate meterObj", pCreate->vnode, pCreate->sid, pCreate->meterId);
     code = TSDB_CODE_NO_RESOURCE;
     goto _create_over;
   }
 
-  /*
-   * memory alignment may cause holes in SColumn struct which are not assigned any value
-   * therefore, we could not use memcmp to compare whether two SColumns are equal or not.
-   * So, we need to set the memory to 0 when allocating memory.
-   */
+
+
+
+
+
   pObj->schema = (SColumn *)calloc(1, pCreate->numOfColumns * sizeof(SColumn));
 
   pObj->vnode = pCreate->vnode;
@@ -138,7 +138,7 @@ int vnodeProcessCreateMeterMsg(char *pMsg, int msgLen) {
     goto _create_over;
   }
 
-  // security info shall be saved here
+
   connSec.spi = pCreate->spi;
   connSec.encrypt = pCreate->encrypt;
   memcpy(connSec.secret, pCreate->secret, TSDB_KEY_LEN);

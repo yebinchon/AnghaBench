@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct context {int /*<<< orphan*/  something; } ;
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int /*<<< orphan*/  sd_bus ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/  log_info (char*,char const*,int /*<<< orphan*/ ) ; 
- int sd_bus_message_append (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+
+
+struct context {int something; } ;
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
+typedef int sd_bus ;
+
+
+ int assert_se (int) ;
+ int log_info (char*,char const*,int ) ;
+ int sd_bus_message_append (int *,char*,int ) ;
 
 __attribute__((used)) static int get_handler(sd_bus *bus, const char *path, const char *interface, const char *property, sd_bus_message *reply, void *userdata, sd_bus_error *error) {
         struct context *c = userdata;

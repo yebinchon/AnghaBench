@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  VP8BitReader ;
 
-/* Variables and functions */
- int VP8GetBit (int /*<<< orphan*/ * const,int const,char*) ; 
- int** kCat3456 ; 
+
+
+
+typedef int uint8_t ;
+typedef int VP8BitReader ;
+
+
+ int VP8GetBit (int * const,int const,char*) ;
+ int** kCat3456 ;
 
 __attribute__((used)) static int GetLargeValue(VP8BitReader* const br, const uint8_t* const p) {
   int v;

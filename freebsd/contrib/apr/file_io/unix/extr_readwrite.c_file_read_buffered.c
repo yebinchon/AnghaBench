@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ apr_uint64_t ;
-typedef  scalar_t__ apr_status_t ;
-typedef  scalar_t__ apr_ssize_t ;
-typedef  int apr_size_t ;
-struct TYPE_4__ {int direction; scalar_t__ bufpos; scalar_t__ dataRead; int ungetchar; scalar_t__ buffer; int filePtr; int /*<<< orphan*/  eof_hit; int /*<<< orphan*/  bufsize; int /*<<< orphan*/  filedes; } ;
-typedef  TYPE_1__ apr_file_t ;
 
-/* Variables and functions */
- scalar_t__ APR_EOF ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ apr_file_flush_locked (TYPE_1__*) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  memcpy (char*,scalar_t__,scalar_t__) ; 
- int read (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ apr_uint64_t ;
+typedef scalar_t__ apr_status_t ;
+typedef scalar_t__ apr_ssize_t ;
+typedef int apr_size_t ;
+struct TYPE_4__ {int direction; scalar_t__ bufpos; scalar_t__ dataRead; int ungetchar; scalar_t__ buffer; int filePtr; int eof_hit; int bufsize; int filedes; } ;
+typedef TYPE_1__ apr_file_t ;
+
+
+ scalar_t__ APR_EOF ;
+ int TRUE ;
+ scalar_t__ apr_file_flush_locked (TYPE_1__*) ;
+ scalar_t__ errno ;
+ int memcpy (char*,scalar_t__,scalar_t__) ;
+ int read (int ,scalar_t__,int ) ;
 
 __attribute__((used)) static apr_status_t file_read_buffered(apr_file_t *thefile, void *buf,
                                        apr_size_t *nbytes)
@@ -53,7 +53,7 @@ __attribute__((used)) static apr_status_t file_read_buffered(apr_file_t *thefile
     }
     while (rv == 0 && size > 0) {
         if (thefile->bufpos >= thefile->dataRead) {
-            int bytesread = read(thefile->filedes, thefile->buffer, 
+            int bytesread = read(thefile->filedes, thefile->buffer,
                                  thefile->bufsize);
             if (bytesread == 0) {
                 thefile->eof_hit = TRUE;

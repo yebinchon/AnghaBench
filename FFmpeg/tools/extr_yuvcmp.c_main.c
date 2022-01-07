@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  F_NOCACHE ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int atoi (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fcntl (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  lseek (int,int,int /*<<< orphan*/ ) ; 
- void* malloc (int) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int read (int,int*,int) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strstr (char*,char*) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int F_NOCACHE ;
+ int O_RDONLY ;
+ int SEEK_SET ;
+ int atoi (char*) ;
+ int exit (int) ;
+ int fcntl (int,int ,int) ;
+ int fprintf (int ,char*,...) ;
+ int lseek (int,int,int ) ;
+ void* malloc (int) ;
+ int memset (char*,int ,int) ;
+ int open (char*,int ) ;
+ int perror (char*) ;
+ int printf (char*,...) ;
+ int read (int,int*,int) ;
+ int stderr ;
+ scalar_t__ strstr (char*,char*) ;
 
 int
 main(int argc, char **argv)
@@ -46,7 +46,7 @@ main(int argc, char **argv)
         return 1;
     }
 
-    width  = atoi(argv[3]);
+    width = atoi(argv[3]);
     height = atoi(argv[4]);
     if (argc > 6)
         to_skip = atoi(argv[6]);
@@ -66,7 +66,7 @@ main(int argc, char **argv)
     int die = 0;
 
     print_pixels = strstr(argv[5], "pixelcmp") ? 1 : 0;
-    dump_blocks  = strstr(argv[5], "blockdump") ? 1 : 0;
+    dump_blocks = strstr(argv[5], "blockdump") ? 1 : 0;
 
     for(i = 0; i < 2; i++) {
         Y[i] = malloc(lsiz);
@@ -123,7 +123,7 @@ main(int argc, char **argv)
             }
         }
 
-        /* Chroma planes */
+
 
         for(p = 0; p < 2; p++) {
 

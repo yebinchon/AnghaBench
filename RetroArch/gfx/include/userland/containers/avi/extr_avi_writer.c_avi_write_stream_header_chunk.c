@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_7__ ;
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  scalar_t__ uint16_t ;
-typedef  int /*<<< orphan*/  int64_t ;
-struct TYPE_15__ {TYPE_6__* priv; TYPE_4__* format; int /*<<< orphan*/  is_enabled; } ;
-typedef  TYPE_7__ VC_CONTAINER_TRACK_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_FOURCC_T ;
+
+
+typedef struct TYPE_15__ TYPE_7__ ;
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef scalar_t__ uint16_t ;
+typedef int int64_t ;
+struct TYPE_15__ {TYPE_6__* priv; TYPE_4__* format; int is_enabled; } ;
+typedef TYPE_7__ VC_CONTAINER_TRACK_T ;
+typedef int VC_CONTAINER_T ;
+typedef int VC_CONTAINER_STATUS_T ;
+typedef int VC_CONTAINER_FOURCC_T ;
 struct TYPE_14__ {TYPE_5__* module; } ;
 struct TYPE_13__ {int chunk_offs; int chunk_index; int max_chunk_size; int sample_size; } ;
-struct TYPE_12__ {scalar_t__ es_type; int bitrate; int /*<<< orphan*/  codec; TYPE_3__* type; } ;
+struct TYPE_12__ {scalar_t__ es_type; int bitrate; int codec; TYPE_3__* type; } ;
 struct TYPE_10__ {int block_align; int sample_rate; } ;
 struct TYPE_9__ {int frame_rate_den; int frame_rate_num; scalar_t__ visible_width; scalar_t__ x_offset; scalar_t__ visible_height; scalar_t__ y_offset; } ;
 struct TYPE_11__ {TYPE_2__ audio; TYPE_1__ video; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_DEBUG (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  STREAM_STATUS (int /*<<< orphan*/ *) ; 
- scalar_t__ VC_CONTAINER_ES_TYPE_AUDIO ; 
- scalar_t__ VC_CONTAINER_ES_TYPE_VIDEO ; 
- int /*<<< orphan*/  VC_FOURCC (char,unsigned char,char,char) ; 
- int /*<<< orphan*/  WRITE_FOURCC (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  WRITE_U16 (int /*<<< orphan*/ *,scalar_t__,char*) ; 
- int /*<<< orphan*/  WRITE_U32 (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  codec_to_vfw_fourcc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vc_container_assert (int /*<<< orphan*/ ) ; 
- int vc_container_maths_gcd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int LOG_DEBUG (int *,char*,...) ;
+ int STREAM_STATUS (int *) ;
+ scalar_t__ VC_CONTAINER_ES_TYPE_AUDIO ;
+ scalar_t__ VC_CONTAINER_ES_TYPE_VIDEO ;
+ int VC_FOURCC (char,unsigned char,char,char) ;
+ int WRITE_FOURCC (int *,int ,char*) ;
+ int WRITE_U16 (int *,scalar_t__,char*) ;
+ int WRITE_U32 (int *,int,char*) ;
+ int codec_to_vfw_fourcc (int ) ;
+ int vc_container_assert (int ) ;
+ int vc_container_maths_gcd (int ,int ) ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T avi_write_stream_header_chunk(VC_CONTAINER_T *p_ctx,
    VC_CONTAINER_TRACK_T *track)
@@ -57,7 +57,7 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T avi_write_stream_header_chunk
    WRITE_U32(p_ctx, 56, "Chunk Size");
 
    if (!track->is_enabled)
-      flags = 0; /* AVISF_DISABLED; FIXME: write_media should set this correctly! */
+      flags = 0;
    else
       flags = 0;
 
@@ -97,7 +97,7 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T avi_write_stream_header_chunk
    }
    else
    {
-      /* avi_writer_add_track should ensure this can't happen */
+
       vc_container_assert(0);
    }
 

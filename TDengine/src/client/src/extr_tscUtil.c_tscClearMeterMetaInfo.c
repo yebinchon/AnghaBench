@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  pMetricMeta; int /*<<< orphan*/  pMeterMeta; } ;
-typedef  TYPE_1__ SMeterMetaInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  taosRemoveDataFromCache (int /*<<< orphan*/ ,void**,int) ; 
- int /*<<< orphan*/  tscCacheHandle ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int pMetricMeta; int pMeterMeta; } ;
+typedef TYPE_1__ SMeterMetaInfo ;
+
+
+ int taosRemoveDataFromCache (int ,void**,int) ;
+ int tscCacheHandle ;
 
 void tscClearMeterMetaInfo(SMeterMetaInfo* pMeterMetaInfo, bool removeFromCache) {
-  if (pMeterMetaInfo == NULL) {
+  if (pMeterMetaInfo == ((void*)0)) {
     return;
   }
 

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int IPPROTO_MAX ; 
- int /*<<< orphan*/  LOG_ERR ; 
- int UINT8_MAX ; 
- int /*<<< orphan*/  assert (void*) ; 
- int /*<<< orphan*/  assert_cc (int) ; 
- int /*<<< orphan*/  log_syntax (char const*,int /*<<< orphan*/ ,char const*,unsigned int,int,char*,char const*) ; 
- int parse_ip_protocol (char const*) ; 
- int safe_atou8 (char const*,int*) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int IPPROTO_MAX ;
+ int LOG_ERR ;
+ int UINT8_MAX ;
+ int assert (void*) ;
+ int assert_cc (int) ;
+ int log_syntax (char const*,int ,char const*,unsigned int,int,char*,char const*) ;
+ int parse_ip_protocol (char const*) ;
+ int safe_atou8 (char const*,int*) ;
 
 int config_parse_ip_protocol(
                 const char *unit,

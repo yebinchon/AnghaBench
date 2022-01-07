@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PACK ;
-typedef  int /*<<< orphan*/  K ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BufToK (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeBuf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PackGetBuf (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int PACK ;
+typedef int K ;
+typedef int BUF ;
+
+
+ int * BufToK (int *,int,int,int *) ;
+ int FreeBuf (int *) ;
+ int * PackGetBuf (int *,char*) ;
 
 K *PackGetK(PACK *p, char *name)
 {
-	K *k;
-	BUF *b;
-	// Validate arguments
-	if (p == NULL || name == NULL)
-	{
-		return NULL;
-	}
+ K *k;
+ BUF *b;
 
-	b = PackGetBuf(p, name);
-	if (b == NULL)
-	{
-		return NULL;
-	}
+ if (p == ((void*)0) || name == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	k = BufToK(b, true, false, NULL);
+ b = PackGetBuf(p, name);
+ if (b == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	if (k == NULL)
-	{
-		k = BufToK(b, true, true, NULL);
-	}
+ k = BufToK(b, 1, 0, ((void*)0));
 
-	FreeBuf(b);
+ if (k == ((void*)0))
+ {
+  k = BufToK(b, 1, 1, ((void*)0));
+ }
 
-	return k;
+ FreeBuf(b);
+
+ return k;
 }

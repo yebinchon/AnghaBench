@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pdb_file_info {int dummy; } ;
-typedef  int DWORD ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  pdb_free (void*) ; 
- unsigned int pdb_get_stream_by_name (struct pdb_file_info const*,char*) ; 
- void* pdb_read_file (struct pdb_file_info const*,unsigned int) ; 
+
+ int WARN (char*) ;
+ int pdb_free (void*) ;
+ unsigned int pdb_get_stream_by_name (struct pdb_file_info const*,char*) ;
+ void* pdb_read_file (struct pdb_file_info const*,unsigned int) ;
 
 __attribute__((used)) static void* pdb_read_strings(const struct pdb_file_info* pdb_file)
 {
@@ -32,5 +32,5 @@ __attribute__((used)) static void* pdb_read_strings(const struct pdb_file_info* 
         pdb_free( ret );
     }
     WARN("string table not found\n");
-    return NULL;
+    return ((void*)0);
 }

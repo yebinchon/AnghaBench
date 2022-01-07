@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ time_t ;
-typedef  int ngx_uint_t ;
-typedef  int ngx_msec_int_t ;
-typedef  scalar_t__ ngx_int_t ;
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef scalar_t__ time_t ;
+typedef int ngx_uint_t ;
+typedef int ngx_msec_int_t ;
+typedef scalar_t__ ngx_int_t ;
 struct TYPE_10__ {scalar_t__ current; int nr_slots; int cached_rt; TYPE_3__* slots; scalar_t__ cached_rt_exptime; } ;
-typedef  TYPE_2__ ngx_http_sysguard_rt_ring_t ;
+typedef TYPE_2__ ngx_http_sysguard_rt_ring_t ;
 struct TYPE_11__ {scalar_t__ stamp; scalar_t__ requests; scalar_t__ msec; scalar_t__ sec; } ;
-typedef  TYPE_3__ ngx_http_sysguard_rt_node_t ;
+typedef TYPE_3__ ngx_http_sysguard_rt_node_t ;
 struct TYPE_12__ {scalar_t__ rt_period; TYPE_2__* rt_ring; } ;
-typedef  TYPE_4__ ngx_http_sysguard_conf_t ;
+typedef TYPE_4__ ngx_http_sysguard_conf_t ;
 struct TYPE_13__ {TYPE_1__* connection; } ;
-typedef  TYPE_5__ ngx_http_request_t ;
-struct TYPE_9__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_5__ ngx_http_request_t ;
+struct TYPE_9__ {int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- scalar_t__ NGX_OK ; 
- TYPE_4__* ngx_http_get_module_loc_conf (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_sysguard_module ; 
- int /*<<< orphan*/  ngx_log_debug3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int,int) ; 
- int /*<<< orphan*/  ngx_log_debug4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ngx_log_debug5 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int ngx_max (int,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_time () ; 
+
+ int NGX_LOG_DEBUG_HTTP ;
+ scalar_t__ NGX_OK ;
+ TYPE_4__* ngx_http_get_module_loc_conf (TYPE_5__*,int ) ;
+ int ngx_http_sysguard_module ;
+ int ngx_log_debug3 (int ,int ,int ,char*,int,int,int) ;
+ int ngx_log_debug4 (int ,int ,int ,char*,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ngx_log_debug5 (int ,int ,int ,char*,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ngx_max (int,int ) ;
+ scalar_t__ ngx_time () ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_sysguard_update_rt(ngx_http_request_t *r, time_t exptime)
 {
-    ngx_uint_t                    rt = 0, rt_sec = 0,
+    ngx_uint_t rt = 0, rt_sec = 0,
                                   rt_requests = 0;
-    ngx_int_t                     i, head, processed = 0;
-    ngx_msec_int_t                rt_msec = 0;
-    ngx_http_sysguard_conf_t     *glcf;
-    ngx_http_sysguard_rt_ring_t  *ring;
-    ngx_http_sysguard_rt_node_t  *node, *cur_node;
+    ngx_int_t i, head, processed = 0;
+    ngx_msec_int_t rt_msec = 0;
+    ngx_http_sysguard_conf_t *glcf;
+    ngx_http_sysguard_rt_ring_t *ring;
+    ngx_http_sysguard_rt_node_t *node, *cur_node;
 
     glcf = ngx_http_get_module_loc_conf(r, ngx_http_sysguard_module);
 
@@ -92,7 +92,7 @@ ngx_http_sysguard_update_rt(ngx_http_request_t *r, time_t exptime)
         rt_requests += node->requests;
 
 cont:
-        /* wrap back to beginning */
+
         if (i == 0) {
             i = ring->nr_slots;
         }

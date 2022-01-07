@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_1__* desc; } ;
-typedef  TYPE_2__ vbdisp_t ;
-struct TYPE_8__ {int /*<<< orphan*/  site; } ;
-typedef  TYPE_3__ script_ctx_t ;
-typedef  int /*<<< orphan*/  VARIANT ;
-struct TYPE_6__ {int /*<<< orphan*/  value_func; TYPE_3__* ctx; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_2__ vbdisp_t ;
+struct TYPE_8__ {int site; } ;
+typedef TYPE_3__ script_ctx_t ;
+typedef int VARIANT ;
+struct TYPE_6__ {int value_func; TYPE_3__* ctx; } ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IActiveScriptSite_OnEnterScript (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IActiveScriptSite_OnLeaveScript (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  exec_script (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int IActiveScriptSite_OnEnterScript (int ) ;
+ int IActiveScriptSite_OnLeaveScript (int ) ;
+ int TRACE (char*) ;
+ int exec_script (TYPE_3__*,int ,int *,int *,int *) ;
 
 __attribute__((used)) static HRESULT Procedure_invoke(vbdisp_t *This, VARIANT *args, unsigned args_cnt, VARIANT *res)
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static HRESULT Procedure_invoke(vbdisp_t *This, VARIANT *a
     TRACE("\n");
 
     IActiveScriptSite_OnEnterScript(ctx->site);
-    hres = exec_script(ctx, This->desc->value_func, NULL, NULL, NULL);
+    hres = exec_script(ctx, This->desc->value_func, ((void*)0), ((void*)0), ((void*)0));
     IActiveScriptSite_OnLeaveScript(ctx->site);
 
     return hres;

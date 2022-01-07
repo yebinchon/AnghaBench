@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  hWnd; } ;
-typedef  int /*<<< orphan*/  MCI_GENERIC_PARMS ;
-typedef  TYPE_1__ MCI_DGV_WINDOW_PARMSW ;
-typedef  int /*<<< orphan*/  MCI_DGV_RECT_PARMS ;
-typedef  scalar_t__ MCIERROR ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  DWORD_PTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EnableMenuItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IDM_CLOSE_FILE ; 
- int /*<<< orphan*/  IDM_DEVPROPS ; 
- int /*<<< orphan*/  IDM_SWITCHVIEW ; 
- int /*<<< orphan*/  MCI_CONFIGURE ; 
- int MCI_DGV_WHERE_SOURCE ; 
- int MCI_DGV_WINDOW_HWND ; 
- int MCI_TEST ; 
- int /*<<< orphan*/  MCI_WHERE ; 
- int /*<<< orphan*/  MCI_WINDOW ; 
- int MF_BYCOMMAND ; 
- int MF_ENABLED ; 
- int /*<<< orphan*/  hMainMenu ; 
- scalar_t__ mciSendCommand (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wDeviceId ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int hWnd; } ;
+typedef int MCI_GENERIC_PARMS ;
+typedef TYPE_1__ MCI_DGV_WINDOW_PARMSW ;
+typedef int MCI_DGV_RECT_PARMS ;
+typedef scalar_t__ MCIERROR ;
+typedef int HWND ;
+typedef int DWORD_PTR ;
+
+
+ int EnableMenuItem (int ,int ,int) ;
+ int IDM_CLOSE_FILE ;
+ int IDM_DEVPROPS ;
+ int IDM_SWITCHVIEW ;
+ int MCI_CONFIGURE ;
+ int MCI_DGV_WHERE_SOURCE ;
+ int MCI_DGV_WINDOW_HWND ;
+ int MCI_TEST ;
+ int MCI_WHERE ;
+ int MCI_WINDOW ;
+ int MF_BYCOMMAND ;
+ int MF_ENABLED ;
+ int hMainMenu ;
+ scalar_t__ mciSendCommand (int ,int ,int,int ) ;
+ int wDeviceId ;
 
 void EnableMenuItems(HWND hwnd)
 {

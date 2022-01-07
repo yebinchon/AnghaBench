@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ucs4_t ;
-typedef  int /*<<< orphan*/  conv_t ;
 
-/* Variables and functions */
- int RET_ILUNI ; 
- unsigned char* cp864_page00 ; 
- unsigned char* cp864_page00_1 ; 
- unsigned char* cp864_page06 ; 
- unsigned char* cp864_page22 ; 
- unsigned char* cp864_page25 ; 
- unsigned char* cp864_pagefe ; 
+
+
+
+typedef int ucs4_t ;
+typedef int conv_t ;
+
+
+ int RET_ILUNI ;
+ unsigned char* cp864_page00 ;
+ unsigned char* cp864_page00_1 ;
+ unsigned char* cp864_page06 ;
+ unsigned char* cp864_page22 ;
+ unsigned char* cp864_page25 ;
+ unsigned char* cp864_pagefe ;
 
 __attribute__((used)) static int
 cp864_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)

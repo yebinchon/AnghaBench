@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct httprequest {char* testno; int skip; int writedelay; void* close; void* upgrade; void* connmon; int /*<<< orphan*/  rcmd; void* open; void* auth_req; } ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CMD_AUTH_REQUIRED ; 
- int /*<<< orphan*/  CMD_CONNECTIONMONITOR ; 
- int /*<<< orphan*/  CMD_IDLE ; 
- int /*<<< orphan*/  CMD_STREAM ; 
- int /*<<< orphan*/  CMD_SWSCLOSE ; 
- int /*<<< orphan*/  CMD_UPGRADE ; 
- void* FALSE ; 
- int /*<<< orphan*/  RCMD_IDLE ; 
- int /*<<< orphan*/  RCMD_STREAM ; 
- void* TRUE ; 
- int errno ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int getpart (char**,size_t*,char*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  logmsg (char*,...) ; 
- int sscanf (char*,char*,int*) ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  strerror (int) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strncmp (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- char* test2file (char*) ; 
+
+
+
+struct httprequest {char* testno; int skip; int writedelay; void* close; void* upgrade; void* connmon; int rcmd; void* open; void* auth_req; } ;
+typedef int FILE ;
+
+
+ int CMD_AUTH_REQUIRED ;
+ int CMD_CONNECTIONMONITOR ;
+ int CMD_IDLE ;
+ int CMD_STREAM ;
+ int CMD_SWSCLOSE ;
+ int CMD_UPGRADE ;
+ void* FALSE ;
+ int RCMD_IDLE ;
+ int RCMD_STREAM ;
+ void* TRUE ;
+ int errno ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int free (char*) ;
+ int getpart (char**,size_t*,char*,char*,int *) ;
+ int logmsg (char*,...) ;
+ int sscanf (char*,char*,int*) ;
+ char* strchr (char*,char) ;
+ int strerror (int) ;
+ int strlen (int ) ;
+ int strncmp (int ,char*,int ) ;
+ char* test2file (char*) ;
 
 __attribute__((used)) static int parse_servercmd(struct httprequest *req)
 {
@@ -51,22 +51,22 @@ __attribute__((used)) static int parse_servercmd(struct httprequest *req)
     logmsg("fopen() failed with error: %d %s", error, strerror(error));
     logmsg("  [1] Error opening file: %s", filename);
     logmsg("  Couldn't open test file %ld", req->testno);
-    req->open = FALSE; /* closes connection */
-    return 1; /* done */
+    req->open = FALSE;
+    return 1;
   }
   else {
-    char *orgcmd = NULL;
-    char *cmd = NULL;
+    char *orgcmd = ((void*)0);
+    char *cmd = ((void*)0);
     size_t cmdsize = 0;
     int num = 0;
 
-    /* get the custom server control "commands" */
+
     error = getpart(&orgcmd, &cmdsize, "reply", "servercmd", stream);
     fclose(stream);
     if(error) {
       logmsg("getpart() failed with error: %d", error);
-      req->open = FALSE; /* closes connection */
-      return 1; /* done */
+      req->open = FALSE;
+      return 1;
     }
 
     req->connmon = FALSE;
@@ -112,18 +112,18 @@ __attribute__((used)) static int parse_servercmd(struct httprequest *req)
       else {
         logmsg("Unknown <servercmd> instruction found: %s", cmd);
       }
-      /* try to deal with CRLF or just LF */
+
       check = strchr(cmd, '\r');
       if(!check)
         check = strchr(cmd, '\n');
 
       if(check) {
-        /* get to the letter following the newline */
+
         while((*check == '\r') || (*check == '\n'))
           check++;
 
         if(!*check)
-          /* if we reached a zero, get out */
+
           break;
         cmd = check;
       }
@@ -133,5 +133,5 @@ __attribute__((used)) static int parse_servercmd(struct httprequest *req)
     free(orgcmd);
   }
 
-  return 0; /* OK! */
+  return 0;
 }

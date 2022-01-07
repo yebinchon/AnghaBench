@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mpv_event {int event_id; void* data; } ;
-struct mp_client_api {int num_clients; int /*<<< orphan*/  lock; int /*<<< orphan*/ * clients; } ;
+struct mp_client_api {int num_clients; int lock; int * clients; } ;
 struct MPContext {struct mp_client_api* clients; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  send_event (int /*<<< orphan*/ ,struct mpv_event*,int) ; 
+
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int send_event (int ,struct mpv_event*,int) ;
 
 void mp_client_broadcast_event(struct MPContext *mpctx, int event, void *data)
 {
@@ -30,7 +30,7 @@ void mp_client_broadcast_event(struct MPContext *mpctx, int event, void *data)
             .event_id = event,
             .data = data,
         };
-        send_event(clients->clients[n], &event_data, true);
+        send_event(clients->clients[n], &event_data, 1);
     }
 
     pthread_mutex_unlock(&clients->lock);

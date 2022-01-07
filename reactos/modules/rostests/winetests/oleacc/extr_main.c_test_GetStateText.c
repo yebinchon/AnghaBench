@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WCHAR ;
-typedef  int UINT ;
-typedef  char CHAR ;
 
-/* Variables and functions */
- int GetStateTextA (unsigned int,char*,int) ; 
- int GetStateTextW (int,int*,int) ; 
- int /*<<< orphan*/  memcmp (int*,int*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  wine_dbgstr_wn (void*,int) ; 
+
+
+
+typedef int WCHAR ;
+typedef int UINT ;
+typedef char CHAR ;
+
+
+ int GetStateTextA (unsigned int,char*,int) ;
+ int GetStateTextW (int,int*,int) ;
+ int memcmp (int*,int*,int) ;
+ int ok (int,char*,...) ;
+ int wine_dbgstr_wn (void*,int) ;
 
 __attribute__((used)) static void test_GetStateText(void)
 {
@@ -29,13 +29,13 @@ __attribute__((used)) static void test_GetStateText(void)
     UINT ret, ret2;
     int i;
 
-    ret2 = GetStateTextW(0, NULL, 1024);
+    ret2 = GetStateTextW(0, ((void*)0), 1024);
     ok(ret2, "GetStateText failed\n");
 
-    ptr = NULL;
+    ptr = ((void*)0);
     ret = GetStateTextW(0, (WCHAR*)&ptr, 0);
     ok(ret == ret2, "got %d, expected %d\n", ret, ret2);
-    ok(ptr != NULL, "ptr was not changed\n");
+    ok(ptr != ((void*)0), "ptr was not changed\n");
 
     ret = GetStateTextW(0, buf, 1024);
     ok(ret == ret2, "got %d, expected %d\n", ret, ret2);
@@ -61,15 +61,15 @@ __attribute__((used)) static void test_GetStateText(void)
     ok(!memcmp(buf, buf2, ret*sizeof(WCHAR)),
             "GetStateText(2,...) returned different data than GetStateText(3,...)\n");
 
-    ret2 = GetStateTextA(0, NULL, 1024);
+    ret2 = GetStateTextA(0, ((void*)0), 1024);
     ok(ret2, "GetStateText failed\n");
 
-    ptr = NULL;
+    ptr = ((void*)0);
     ret = GetStateTextA(0, (CHAR*)&ptr, 0);
     ok(!ret, "got %d\n", ret);
-    ok(ptr == NULL, "ptr was changed\n");
+    ok(ptr == ((void*)0), "ptr was changed\n");
 
-    ret = GetStateTextA(0, NULL, 0);
+    ret = GetStateTextA(0, ((void*)0), 0);
     ok(ret == ret2, "got %d, expected %d\n", ret, ret2);
 
     ret = GetStateTextA(0, bufa, 1024);

@@ -1,67 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  __xmlGlobalInitMutexLock () ; 
- int /*<<< orphan*/  __xmlGlobalInitMutexUnlock () ; 
- int /*<<< orphan*/  htmlDefaultSAXHandlerInit () ; 
- int /*<<< orphan*/  htmlInitAutoClose () ; 
- int /*<<< orphan*/  initGenericErrorDefaultFunc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xmlDefaultSAXHandlerInit () ; 
- int /*<<< orphan*/ * xmlGenericError ; 
- int /*<<< orphan*/ * xmlGenericErrorDefaultFunc ; 
- int /*<<< orphan*/  xmlInitCharEncodingHandlers () ; 
- int /*<<< orphan*/  xmlInitGlobals () ; 
- int /*<<< orphan*/  xmlInitMemory () ; 
- int /*<<< orphan*/  xmlInitThreads () ; 
- int /*<<< orphan*/  xmlInitializeDict () ; 
- int xmlParserInitialized ; 
- int /*<<< orphan*/  xmlRegisterDefaultInputCallbacks () ; 
- int /*<<< orphan*/  xmlRegisterDefaultOutputCallbacks () ; 
- int /*<<< orphan*/  xmlXPathInit () ; 
+ int __xmlGlobalInitMutexLock () ;
+ int __xmlGlobalInitMutexUnlock () ;
+ int htmlDefaultSAXHandlerInit () ;
+ int htmlInitAutoClose () ;
+ int initGenericErrorDefaultFunc (int *) ;
+ int xmlDefaultSAXHandlerInit () ;
+ int * xmlGenericError ;
+ int * xmlGenericErrorDefaultFunc ;
+ int xmlInitCharEncodingHandlers () ;
+ int xmlInitGlobals () ;
+ int xmlInitMemory () ;
+ int xmlInitThreads () ;
+ int xmlInitializeDict () ;
+ int xmlParserInitialized ;
+ int xmlRegisterDefaultInputCallbacks () ;
+ int xmlRegisterDefaultOutputCallbacks () ;
+ int xmlXPathInit () ;
 
 void
 xmlInitParser(void) {
     if (xmlParserInitialized != 0)
-	return;
+ return;
 
-#ifdef LIBXML_THREAD_ENABLED
-    __xmlGlobalInitMutexLock();
-    if (xmlParserInitialized == 0) {
-#endif
-	xmlInitThreads();
-	xmlInitGlobals();
-	if ((xmlGenericError == xmlGenericErrorDefaultFunc) ||
-	    (xmlGenericError == NULL))
-	    initGenericErrorDefaultFunc(NULL);
-	xmlInitMemory();
+
+
+
+
+ xmlInitThreads();
+ xmlInitGlobals();
+ if ((xmlGenericError == xmlGenericErrorDefaultFunc) ||
+     (xmlGenericError == ((void*)0)))
+     initGenericErrorDefaultFunc(((void*)0));
+ xmlInitMemory();
         xmlInitializeDict();
-	xmlInitCharEncodingHandlers();
-	xmlDefaultSAXHandlerInit();
-	xmlRegisterDefaultInputCallbacks();
-#ifdef LIBXML_OUTPUT_ENABLED
-	xmlRegisterDefaultOutputCallbacks();
-#endif /* LIBXML_OUTPUT_ENABLED */
-#ifdef LIBXML_HTML_ENABLED
-	htmlInitAutoClose();
-	htmlDefaultSAXHandlerInit();
-#endif
-#ifdef LIBXML_XPATH_ENABLED
-	xmlXPathInit();
-#endif
-	xmlParserInitialized = 1;
-#ifdef LIBXML_THREAD_ENABLED
-    }
-    __xmlGlobalInitMutexUnlock();
-#endif
+ xmlInitCharEncodingHandlers();
+ xmlDefaultSAXHandlerInit();
+ xmlRegisterDefaultInputCallbacks();
+ xmlParserInitialized = 1;
+
+
+
+
 }

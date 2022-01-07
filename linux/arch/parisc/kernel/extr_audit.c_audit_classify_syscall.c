@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int AUDIT_ARCH_PARISC ;
 
-/* Forward declarations */
 
-/* Type definitions */
 
-/* Variables and functions */
- int AUDIT_ARCH_PARISC ; 
-#define  __NR_execve 130 
-#define  __NR_open 129 
-#define  __NR_openat 128 
 
 int audit_classify_syscall(int abi, unsigned syscall)
 {
-#ifdef CONFIG_COMPAT
-	extern int parisc32_classify_syscall(unsigned);
-	if (abi == AUDIT_ARCH_PARISC)
-		return parisc32_classify_syscall(syscall);
-#endif
-	switch (syscall) {
-	case __NR_open:
-		return 2;
-	case __NR_openat:
-		return 3;
-	case __NR_execve:
-		return 5;
-	default:
-		return 0;
-	}
+
+
+
+
+
+ switch (syscall) {
+ case 129:
+  return 2;
+ case 128:
+  return 3;
+ case 130:
+  return 5;
+ default:
+  return 0;
+ }
 }

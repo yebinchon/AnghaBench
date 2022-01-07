@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- char* apr_pstrndup (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_longest_ancestor_length (int /*<<< orphan*/ ,char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  type_dirent ; 
+
+
+
+typedef int apr_pool_t ;
+
+
+ char* apr_pstrndup (int *,char const*,int ) ;
+ int get_longest_ancestor_length (int ,char const*,char const*,int *) ;
+ int type_dirent ;
 
 char *
 svn_dirent_get_longest_ancestor(const char *dirent1,

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_notify_state_t ;
-typedef  int /*<<< orphan*/  svn_wc_notify_action_t ;
-struct TYPE_5__ {int /*<<< orphan*/  sdb; int /*<<< orphan*/  abspath; } ;
-typedef  TYPE_1__ svn_wc__db_wcroot_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-typedef  int /*<<< orphan*/  svn_skel_t ;
-typedef  int /*<<< orphan*/  svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STMT_INSERT_UPDATE_MOVE_LIST ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  kind_map_none ; 
- int /*<<< orphan*/  svn_sqlite__bindf (int /*<<< orphan*/ *,char*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__get_statement (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__step_done (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__conflict_read_info (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_mark_conflict_internal (TYPE_1__*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_wq_add_internal (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_notify_state_inapplicable ; 
- int /*<<< orphan*/  svn_wc_notify_tree_conflict ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int svn_wc_notify_state_t ;
+typedef int svn_wc_notify_action_t ;
+struct TYPE_5__ {int sdb; int abspath; } ;
+typedef TYPE_1__ svn_wc__db_wcroot_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_sqlite__stmt_t ;
+typedef int svn_skel_t ;
+typedef int svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int STMT_INSERT_UPDATE_MOVE_LIST ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int kind_map_none ;
+ int svn_sqlite__bindf (int *,char*,char const*,int ,int ,int ,int ,int ) ;
+ int svn_sqlite__get_statement (int **,int ,int ) ;
+ int svn_sqlite__step_done (int *) ;
+ int svn_wc__conflict_read_info (int *,int *,int *,int *,scalar_t__*,int *,int ,int *,int *,int *) ;
+ int svn_wc__db_mark_conflict_internal (TYPE_1__*,char const*,int *,int *) ;
+ int svn_wc__db_wq_add_internal (TYPE_1__*,int *,int *) ;
+ int svn_wc_notify_state_inapplicable ;
+ int svn_wc_notify_tree_conflict ;
 
 __attribute__((used)) static svn_error_t *
 update_move_list_add(svn_wc__db_wcroot_t *wcroot,
@@ -55,7 +55,7 @@ update_move_list_add(svn_wc__db_wcroot_t *wcroot,
     {
       svn_boolean_t tree_conflict;
 
-      SVN_ERR(svn_wc__conflict_read_info(NULL, NULL, NULL, NULL,
+      SVN_ERR(svn_wc__conflict_read_info(((void*)0), ((void*)0), ((void*)0), ((void*)0),
                                          &tree_conflict,
                                          db, wcroot->abspath, conflict,
                                          scratch_pool, scratch_pool));

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
 struct TYPE_8__ {struct deint_data* const pp_pics; } ;
 struct TYPE_7__ {struct deint_data* const surfaces; } ;
 struct deint_data {TYPE_3__ history; TYPE_2__ forward_refs; TYPE_1__* meta; scalar_t__ b_double_rate; } ;
-struct TYPE_9__ {int /*<<< orphan*/  pf_flush; int /*<<< orphan*/  pf_video_filter; } ;
-typedef  TYPE_4__ filter_t ;
-typedef  int /*<<< orphan*/  VAProcPipelineCaps ;
-struct TYPE_6__ {int i_nb_fields; int /*<<< orphan*/  date; } ;
+struct TYPE_9__ {int pf_flush; int pf_video_filter; } ;
+typedef TYPE_4__ filter_t ;
+typedef int VAProcPipelineCaps ;
+struct TYPE_6__ {int i_nb_fields; int date; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Deinterlace ; 
- int /*<<< orphan*/  DeinterlaceX2 ; 
- int /*<<< orphan*/  Deinterlace_Flush ; 
- unsigned int METADATA_SIZE ; 
- scalar_t__ Open (TYPE_4__* const,int /*<<< orphan*/ ,int /*<<< orphan*/ *,struct deint_data* const,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OpenDeinterlace_InitFilterParams ; 
- int /*<<< orphan*/  OpenDeinterlace_InitHistory ; 
- int /*<<< orphan*/  VAProcFilterDeinterlacing ; 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  VLC_TICK_INVALID ; 
- struct deint_data* calloc (int,int) ; 
- int /*<<< orphan*/  free (struct deint_data* const) ; 
+
+ int Deinterlace ;
+ int DeinterlaceX2 ;
+ int Deinterlace_Flush ;
+ unsigned int METADATA_SIZE ;
+ scalar_t__ Open (TYPE_4__* const,int ,int *,struct deint_data* const,int ,int ) ;
+ int OpenDeinterlace_InitFilterParams ;
+ int OpenDeinterlace_InitHistory ;
+ int VAProcFilterDeinterlacing ;
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int VLC_TICK_INVALID ;
+ struct deint_data* calloc (int,int) ;
+ int free (struct deint_data* const) ;
 
 __attribute__((used)) static int
 OpenDeinterlace(vlc_object_t * obj)
 {
-    VAProcPipelineCaps          pipeline_caps;
-    filter_t *const             filter = (filter_t *)obj;
-    struct deint_data *const    p_data = calloc(1, sizeof(*p_data));
+    VAProcPipelineCaps pipeline_caps;
+    filter_t *const filter = (filter_t *)obj;
+    struct deint_data *const p_data = calloc(1, sizeof(*p_data));
     if (!p_data)
         return VLC_ENOMEM;
 

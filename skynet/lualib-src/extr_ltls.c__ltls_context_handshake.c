@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tls_context {int /*<<< orphan*/  ssl; } ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int SSL_ERROR_WANT_READ ; 
- int SSL_ERROR_WANT_WRITE ; 
- int SSL_do_handshake (int /*<<< orphan*/ ) ; 
- int SSL_get_error (int /*<<< orphan*/ ,int) ; 
- scalar_t__ SSL_is_init_finished (int /*<<< orphan*/ ) ; 
- int _bio_read (int /*<<< orphan*/ *,struct tls_context*) ; 
- int /*<<< orphan*/  _bio_write (int /*<<< orphan*/ *,struct tls_context*,char const*,size_t) ; 
- struct tls_context* _check_context (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*,...) ; 
- char* lua_tolstring (int /*<<< orphan*/ *,int,size_t*) ; 
+
+
+
+struct tls_context {int ssl; } ;
+typedef int lua_State ;
+
+
+ int SSL_ERROR_WANT_READ ;
+ int SSL_ERROR_WANT_WRITE ;
+ int SSL_do_handshake (int ) ;
+ int SSL_get_error (int ,int) ;
+ scalar_t__ SSL_is_init_finished (int ) ;
+ int _bio_read (int *,struct tls_context*) ;
+ int _bio_write (int *,struct tls_context*,char const*,size_t) ;
+ struct tls_context* _check_context (int *,int) ;
+ int luaL_error (int *,char*,...) ;
+ char* lua_tolstring (int *,int,size_t*) ;
 
 __attribute__((used)) static int
 _ltls_context_handshake(lua_State* L) {
@@ -31,17 +31,17 @@ _ltls_context_handshake(lua_State* L) {
     size_t slen = 0;
     const char* exchange = lua_tolstring(L, 2, &slen);
 
-    // check handshake is finished
+
     if(SSL_is_init_finished(tls_p->ssl)) {
         luaL_error(L, "handshake is finished");
     }
 
-    // handshake exchange
-    if(slen > 0 && exchange != NULL) {
+
+    if(slen > 0 && exchange != ((void*)0)) {
         _bio_write(L, tls_p, exchange, slen);
     }
 
-    // first handshake; initiated by client
+
     if(!SSL_is_init_finished(tls_p->ssl)) {
         int ret = SSL_do_handshake(tls_p->ssl);
         if(ret == 1) {

@@ -1,50 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int csp; double** cmatrix; int /*<<< orphan*/  ctx; } ;
-typedef  TYPE_1__ ShowCQTContext ;
 
-/* Variables and functions */
-#define  AVCOL_SPC_BT2020_NCL 134 
-#define  AVCOL_SPC_BT470BG 133 
-#define  AVCOL_SPC_BT709 132 
-#define  AVCOL_SPC_FCC 131 
-#define  AVCOL_SPC_SMPTE170M 130 
-#define  AVCOL_SPC_SMPTE240M 129 
-#define  AVCOL_SPC_UNSPECIFIED 128 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int csp; double** cmatrix; int ctx; } ;
+typedef TYPE_1__ ShowCQTContext ;
+ int AV_LOG_WARNING ;
+ int av_log (int ,int ,char*) ;
 
 __attribute__((used)) static void init_colormatrix(ShowCQTContext *s)
 {
     double kr, kg, kb;
 
-    /* from vf_colorspace.c */
+
     switch (s->csp) {
     default:
         av_log(s->ctx, AV_LOG_WARNING, "unsupported colorspace, setting it to unspecified.\n");
-        s->csp = AVCOL_SPC_UNSPECIFIED;
-    case AVCOL_SPC_UNSPECIFIED:
-    case AVCOL_SPC_BT470BG:
-    case AVCOL_SPC_SMPTE170M:
+        s->csp = 128;
+    case 128:
+    case 133:
+    case 130:
         kr = 0.299; kb = 0.114; break;
-    case AVCOL_SPC_BT709:
+    case 132:
         kr = 0.2126; kb = 0.0722; break;
-    case AVCOL_SPC_FCC:
+    case 131:
         kr = 0.30; kb = 0.11; break;
-    case AVCOL_SPC_SMPTE240M:
+    case 129:
         kr = 0.212; kb = 0.087; break;
-    case AVCOL_SPC_BT2020_NCL:
+    case 134:
         kr = 0.2627; kb = 0.0593; break;
     }
 

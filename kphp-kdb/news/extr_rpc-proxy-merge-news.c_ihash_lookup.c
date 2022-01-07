@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int type; scalar_t__ day; int owner; int place; int user_id; int item; } ;
-typedef  TYPE_1__ item_t ;
+typedef TYPE_1__ item_t ;
 
-/* Variables and functions */
- unsigned int HASH_SIZE ; 
- scalar_t__* HD ; 
- TYPE_1__** HX ; 
- scalar_t__ Hs ; 
- scalar_t__ Ht ; 
- int MAX_HASH_ITERATIONS ; 
- int* TypeFlags ; 
- int* TypeReduce ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ unsigned int HASH_SIZE ;
+ scalar_t__* HD ;
+ TYPE_1__** HX ;
+ scalar_t__ Hs ;
+ scalar_t__ Ht ;
+ int MAX_HASH_ITERATIONS ;
+ int* TypeFlags ;
+ int* TypeReduce ;
+ int assert (int) ;
 
 int ihash_lookup (item_t *A, int mode) {
   int t = A->type, tt = mode ? t : TypeReduce[t];

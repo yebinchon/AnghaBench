@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_6__ ;
-typedef  struct TYPE_20__   TYPE_5__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
+
+
+typedef struct TYPE_21__ TYPE_6__ ;
+typedef struct TYPE_20__ TYPE_5__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int int64_t ;
 struct TYPE_16__ {char* filename; } ;
 struct TYPE_21__ {int segmentSize; int segmentNumber; int segmentWrap; char* imv_filename; char* pts_filename; scalar_t__ lasttime; scalar_t__ frame; scalar_t__ starttime; TYPE_2__* encoder_pool; scalar_t__ save_pts; scalar_t__ inlineMotionVectors; TYPE_1__ common_settings; scalar_t__ splitNow; scalar_t__ splitWait; } ;
 struct TYPE_20__ {int length; int flags; scalar_t__ pts; scalar_t__ data; } ;
 struct TYPE_19__ {scalar_t__ is_enabled; scalar_t__ userdata; } ;
-struct TYPE_18__ {int* cb_buff; int cb_len; int cb_wptr; int header_wptr; int* header_bytes; int* iframe_buff; size_t iframe_buff_wpos; int iframe_buff_rpos; int cb_wrap; int abort; TYPE_6__* pstate; int /*<<< orphan*/ * pts_file_handle; int /*<<< orphan*/ * file_handle; scalar_t__ flush_buffers; int /*<<< orphan*/ * imv_file_handle; } ;
-struct TYPE_17__ {int /*<<< orphan*/  queue; } ;
-typedef  TYPE_3__ PORT_USERDATA ;
-typedef  scalar_t__ MMAL_STATUS_T ;
-typedef  TYPE_4__ MMAL_PORT_T ;
-typedef  TYPE_5__ MMAL_BUFFER_HEADER_T ;
-typedef  int /*<<< orphan*/  FILE ;
+struct TYPE_18__ {int* cb_buff; int cb_len; int cb_wptr; int header_wptr; int* header_bytes; int* iframe_buff; size_t iframe_buff_wpos; int iframe_buff_rpos; int cb_wrap; int abort; TYPE_6__* pstate; int * pts_file_handle; int * file_handle; scalar_t__ flush_buffers; int * imv_file_handle; } ;
+struct TYPE_17__ {int queue; } ;
+typedef TYPE_3__ PORT_USERDATA ;
+typedef scalar_t__ MMAL_STATUS_T ;
+typedef TYPE_4__ MMAL_PORT_T ;
+typedef TYPE_5__ MMAL_BUFFER_HEADER_T ;
+typedef int FILE ;
 
-/* Variables and functions */
- int IFRAME_BUFSIZE ; 
- int MMAL_BUFFER_HEADER_FLAG_CODECSIDEINFO ; 
- int MMAL_BUFFER_HEADER_FLAG_CONFIG ; 
- int MMAL_BUFFER_HEADER_FLAG_FRAME_END ; 
- int MMAL_BUFFER_HEADER_FLAG_KEYFRAME ; 
- scalar_t__ MMAL_SUCCESS ; 
- scalar_t__ MMAL_TIME_UNKNOWN ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,int,int) ; 
- int fwrite (scalar_t__,int,int,int /*<<< orphan*/ *) ; 
- int get_microseconds64 () ; 
- int /*<<< orphan*/  memcpy (int*,scalar_t__,int) ; 
- int /*<<< orphan*/  mmal_buffer_header_mem_lock (TYPE_5__*) ; 
- int /*<<< orphan*/  mmal_buffer_header_mem_unlock (TYPE_5__*) ; 
- int /*<<< orphan*/  mmal_buffer_header_release (TYPE_5__*) ; 
- scalar_t__ mmal_port_send_buffer (TYPE_4__*,TYPE_5__*) ; 
- TYPE_5__* mmal_queue_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * open_filename (TYPE_6__*,char*) ; 
- int /*<<< orphan*/  update_annotation_data (TYPE_6__*) ; 
- int /*<<< orphan*/  vcos_assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_log_error (char*,...) ; 
+
+ int IFRAME_BUFSIZE ;
+ int MMAL_BUFFER_HEADER_FLAG_CODECSIDEINFO ;
+ int MMAL_BUFFER_HEADER_FLAG_CONFIG ;
+ int MMAL_BUFFER_HEADER_FLAG_FRAME_END ;
+ int MMAL_BUFFER_HEADER_FLAG_KEYFRAME ;
+ scalar_t__ MMAL_SUCCESS ;
+ scalar_t__ MMAL_TIME_UNKNOWN ;
+ int fclose (int *) ;
+ int fflush (int *) ;
+ int fprintf (int *,char*,int,int) ;
+ int fwrite (scalar_t__,int,int,int *) ;
+ int get_microseconds64 () ;
+ int memcpy (int*,scalar_t__,int) ;
+ int mmal_buffer_header_mem_lock (TYPE_5__*) ;
+ int mmal_buffer_header_mem_unlock (TYPE_5__*) ;
+ int mmal_buffer_header_release (TYPE_5__*) ;
+ scalar_t__ mmal_port_send_buffer (TYPE_4__*,TYPE_5__*) ;
+ TYPE_5__* mmal_queue_get (int ) ;
+ int * open_filename (TYPE_6__*,char*) ;
+ int update_annotation_data (TYPE_6__*) ;
+ int vcos_assert (int *) ;
+ int vcos_log_error (char*,...) ;
 
 __attribute__((used)) static void encoder_buffer_callback(MMAL_PORT_T *port, MMAL_BUFFER_HEADER_T *buffer)
 {
    MMAL_BUFFER_HEADER_T *new_buffer;
-   static int64_t base_time =  -1;
+   static int64_t base_time = -1;
    static int64_t last_second = -1;
 
-   // All our segment times based on the receipt of the first encoder callback
+
    if (base_time == -1)
       base_time = get_microseconds64()/1000;
 
-   // We pass our file handle and other stuff in via the userdata field.
+
 
    PORT_USERDATA *pData = (PORT_USERDATA *)port->userdata;
 
@@ -89,7 +89,7 @@ __attribute__((used)) static void encoder_buffer_callback(MMAL_PORT_T *port, MMA
             }
             else
             {
-               // These are the header bytes, save them for final output
+
                mmal_buffer_header_mem_lock(buffer);
                memcpy(pData->header_bytes + pData->header_wptr, buffer->data, buffer->length);
                mmal_buffer_header_mem_unlock(buffer);
@@ -98,7 +98,7 @@ __attribute__((used)) static void encoder_buffer_callback(MMAL_PORT_T *port, MMA
          }
          else if((buffer->flags & MMAL_BUFFER_HEADER_FLAG_CODECSIDEINFO))
          {
-            // Do something with the inline motion vectors...
+
          }
          else
          {
@@ -117,7 +117,7 @@ __attribute__((used)) static void encoder_buffer_callback(MMAL_PORT_T *port, MMA
             if(buffer->flags & MMAL_BUFFER_HEADER_FLAG_FRAME_END)
                frame_start = -1;
 
-            // If we overtake the iframe rptr then move the rptr along
+
             if((pData->iframe_buff_rpos + 1) % IFRAME_BUFSIZE != pData->iframe_buff_wpos)
             {
                while(
@@ -134,7 +134,7 @@ __attribute__((used)) static void encoder_buffer_callback(MMAL_PORT_T *port, MMA
             }
 
             mmal_buffer_header_mem_lock(buffer);
-            // We are pushing data into a circular buffer
+
             memcpy(pData->cb_buff + pData->cb_wptr, buffer->data, copy_to_end);
             memcpy(pData->cb_buff, buffer->data + copy_to_end, copy_to_start);
             mmal_buffer_header_mem_unlock(buffer);
@@ -156,10 +156,10 @@ __attribute__((used)) static void encoder_buffer_callback(MMAL_PORT_T *port, MMA
       }
       else
       {
-         // For segmented record mode, we need to see if we have exceeded our time/size,
-         // but also since we have inline headers turned on we need to break when we get one to
-         // ensure that the new stream has the header in it. If we break on an I-frame, the
-         // SPS/PPS header is actually in the previous chunk.
+
+
+
+
          if ((buffer->flags & MMAL_BUFFER_HEADER_FLAG_CONFIG) &&
                ((pData->pstate->segmentSize && current_time > base_time + pData->pstate->segmentSize) ||
                 (pData->pstate->splitWait && pData->pstate->splitNow)))
@@ -171,7 +171,7 @@ __attribute__((used)) static void encoder_buffer_callback(MMAL_PORT_T *port, MMA
             pData->pstate->splitNow = 0;
             pData->pstate->segmentNumber++;
 
-            // Only wrap if we have a wrap point set
+
             if (pData->pstate->segmentWrap && pData->pstate->segmentNumber > pData->pstate->segmentWrap)
                pData->pstate->segmentNumber = 1;
 
@@ -220,7 +220,7 @@ __attribute__((used)) static void encoder_buffer_callback(MMAL_PORT_T *port, MMA
                }
                else
                {
-                  //We do not want to save inlineMotionVectors...
+
                   bytes_written = buffer->length;
                }
             }
@@ -257,7 +257,7 @@ __attribute__((used)) static void encoder_buffer_callback(MMAL_PORT_T *port, MMA
          }
       }
 
-      // See if the second count has changed and we need to update any annotation
+
       if (current_time/1000 != last_second)
       {
          update_annotation_data(pData->pstate);
@@ -269,10 +269,10 @@ __attribute__((used)) static void encoder_buffer_callback(MMAL_PORT_T *port, MMA
       vcos_log_error("Received a encoder buffer callback with no state");
    }
 
-   // release buffer back to the pool
+
    mmal_buffer_header_release(buffer);
 
-   // and send one back to the port (if still open)
+
    if (port->is_enabled)
    {
       MMAL_STATUS_T status;

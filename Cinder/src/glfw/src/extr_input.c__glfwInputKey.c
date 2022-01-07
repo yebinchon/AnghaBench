@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  (* key ) (int /*<<< orphan*/ *,int,int,int,int) ;} ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int (* key ) (int *,int,int,int,int) ;} ;
 struct TYPE_5__ {int* keys; TYPE_1__ callbacks; scalar_t__ stickyKeys; } ;
-typedef  TYPE_2__ _GLFWwindow ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
-typedef  scalar_t__ GLFWbool ;
+typedef TYPE_2__ _GLFWwindow ;
+typedef int GLFWwindow ;
+typedef scalar_t__ GLFWbool ;
 
-/* Variables and functions */
- scalar_t__ GLFW_FALSE ; 
- int GLFW_KEY_LAST ; 
- int GLFW_PRESS ; 
- int GLFW_RELEASE ; 
- int GLFW_REPEAT ; 
- scalar_t__ GLFW_TRUE ; 
- int _GLFW_STICK ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int,int,int,int) ; 
+
+ scalar_t__ GLFW_FALSE ;
+ int GLFW_KEY_LAST ;
+ int GLFW_PRESS ;
+ int GLFW_RELEASE ;
+ int GLFW_REPEAT ;
+ scalar_t__ GLFW_TRUE ;
+ int _GLFW_STICK ;
+ int stub1 (int *,int,int,int,int) ;
 
 void _glfwInputKey(_GLFWwindow* window, int key, int scancode, int action, int mods)
 {

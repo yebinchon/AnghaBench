@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* extract_string (char**) ; 
- scalar_t__ flag_use_repository ; 
- char* getenv (char*) ; 
- char const* lbasename (char const*) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  warning (int /*<<< orphan*/ ,char*) ; 
+ char* extract_string (char**) ;
+ scalar_t__ flag_use_repository ;
+ char* getenv (char*) ;
+ char const* lbasename (char const*) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int warning (int ,char*) ;
 
 __attribute__((used)) static const char *
 get_base_filename (const char *filename)
 {
   char *p = getenv ("COLLECT_GCC_OPTIONS");
-  char *output = NULL;
+  char *output = ((void*)0);
   int compiling = 0;
 
   while (p && *p)
@@ -31,9 +23,9 @@ get_base_filename (const char *filename)
       char *q = extract_string (&p);
 
       if (strcmp (q, "-o") == 0)
-	output = extract_string (&p);
+ output = extract_string (&p);
       else if (strcmp (q, "-c") == 0)
-	compiling = 1;
+ compiling = 1;
     }
 
   if (compiling && output)
@@ -43,7 +35,7 @@ get_base_filename (const char *filename)
     {
       warning (0, "-frepo must be used with -c");
       flag_use_repository = 0;
-      return NULL;
+      return ((void*)0);
     }
 
   return lbasename (filename);

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tvec_base {int dummy; } ;
 
-/* Variables and functions */
- unsigned int TBASE_DEFERRABLE_FLAG ; 
+
+ unsigned int TBASE_DEFERRABLE_FLAG ;
 
 __attribute__((used)) static inline unsigned int tbase_get_deferrable(struct tvec_base *base)
 {
-	return ((unsigned int)(unsigned long)base & TBASE_DEFERRABLE_FLAG);
+ return ((unsigned int)(unsigned long)base & TBASE_DEFERRABLE_FLAG);
 }

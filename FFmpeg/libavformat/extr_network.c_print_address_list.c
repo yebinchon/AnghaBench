@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct addrinfo {struct addrinfo* ai_next; int /*<<< orphan*/  ai_addrlen; int /*<<< orphan*/  ai_addr; } ;
-typedef  int /*<<< orphan*/  portbuf ;
-typedef  int /*<<< orphan*/  hostbuf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int NI_NUMERICHOST ; 
- int NI_NUMERICSERV ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,char const*,...) ; 
- int /*<<< orphan*/  getnameinfo (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,char*,int,int) ; 
+
+
+
+struct addrinfo {struct addrinfo* ai_next; int ai_addrlen; int ai_addr; } ;
+typedef int portbuf ;
+typedef int hostbuf ;
+
+
+ int AV_LOG_DEBUG ;
+ int NI_NUMERICHOST ;
+ int NI_NUMERICSERV ;
+ int av_log (void*,int ,char*,char const*,...) ;
+ int getnameinfo (int ,int ,char*,int,char*,int,int) ;
 
 __attribute__((used)) static void print_address_list(void *ctx, const struct addrinfo *addr,
                                const char *title)

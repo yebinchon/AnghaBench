@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TL_ERROR_SYNTAX ; 
- int /*<<< orphan*/  TL_ERROR_TOO_LONG_STRING ; 
- int TL_IN_REMAINING ; 
- scalar_t__ tl_fetch_check (int) ; 
- int /*<<< orphan*/  tl_fetch_raw_data (int*,int) ; 
- int /*<<< orphan*/  tl_fetch_set_error (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tl_fetch_set_error_format (int /*<<< orphan*/ ,char*,int,int) ; 
+ int TL_ERROR_SYNTAX ;
+ int TL_ERROR_TOO_LONG_STRING ;
+ int TL_IN_REMAINING ;
+ scalar_t__ tl_fetch_check (int) ;
+ int tl_fetch_raw_data (int*,int) ;
+ int tl_fetch_set_error (char*,int ) ;
+ int tl_fetch_set_error_format (int ,char*,int,int) ;
 
 __attribute__((used)) static inline int tl_fetch_string_len (int max_len) {
   if (tl_fetch_check (4) < 0) {

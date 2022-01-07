@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  fd; TYPE_1__* cache; scalar_t__ windows; } ;
-struct TYPE_9__ {int /*<<< orphan*/  fds; } ;
-typedef  TYPE_2__ MMapFileDescriptor ;
-typedef  TYPE_2__ MMapCache ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FD_TO_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int /*<<< orphan*/  assert_se (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  hashmap_remove (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mmap_cache_process_sigbus (TYPE_2__*) ; 
- int /*<<< orphan*/  window_free (scalar_t__) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int fd; TYPE_1__* cache; scalar_t__ windows; } ;
+struct TYPE_9__ {int fds; } ;
+typedef TYPE_2__ MMapFileDescriptor ;
+typedef TYPE_2__ MMapCache ;
+
+
+ int FD_TO_PTR (int ) ;
+ int assert (TYPE_2__*) ;
+ int assert_se (int ) ;
+ int free (TYPE_2__*) ;
+ int hashmap_remove (int ,int ) ;
+ int mmap_cache_process_sigbus (TYPE_2__*) ;
+ int window_free (scalar_t__) ;
 
 void mmap_cache_free_fd(MMapCache *m, MMapFileDescriptor *f) {
         assert(m);
         assert(f);
 
-        /* Make sure that any queued SIGBUS are first dispatched, so
-         * that we don't end up with a SIGBUS entry we cannot relate
-         * to any existing memory map */
+
+
+
 
         mmap_cache_process_sigbus(m);
 

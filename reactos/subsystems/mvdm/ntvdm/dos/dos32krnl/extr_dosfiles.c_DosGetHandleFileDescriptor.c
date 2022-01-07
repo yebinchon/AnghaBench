@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/ * PDOS_FILE_DESCRIPTOR ;
-typedef  int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * DosGetFileDescriptor (int) ; 
- int DosQueryHandle (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int WORD ;
+typedef int * PDOS_FILE_DESCRIPTOR ;
+typedef int BYTE ;
+
+
+ int * DosGetFileDescriptor (int) ;
+ int DosQueryHandle (int ) ;
 
 PDOS_FILE_DESCRIPTOR DosGetHandleFileDescriptor(WORD DosHandle)
 {
     BYTE DescriptorId = DosQueryHandle(DosHandle);
-    if (DescriptorId == 0xFF) return NULL;
+    if (DescriptorId == 0xFF) return ((void*)0);
 
     return DosGetFileDescriptor(DescriptorId);
 }

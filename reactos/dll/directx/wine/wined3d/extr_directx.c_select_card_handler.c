@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct gl_vendor_selection {int gl_vendor; unsigned int cards_size; TYPE_1__* cards; int /*<<< orphan*/  description; } ;
-typedef  enum wined3d_pci_device { ____Placeholder_wined3d_pci_device } wined3d_pci_device ;
-typedef  enum wined3d_gl_vendor { ____Placeholder_wined3d_gl_vendor } wined3d_gl_vendor ;
-struct TYPE_2__ {int id; int /*<<< orphan*/  renderer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*,int,int /*<<< orphan*/ ) ; 
- int PCI_DEVICE_NONE ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_a (char const*) ; 
- scalar_t__ strstr (char const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct gl_vendor_selection {int gl_vendor; unsigned int cards_size; TYPE_1__* cards; int description; } ;
+typedef enum wined3d_pci_device { ____Placeholder_wined3d_pci_device } wined3d_pci_device ;
+typedef enum wined3d_gl_vendor { ____Placeholder_wined3d_gl_vendor } wined3d_gl_vendor ;
+struct TYPE_2__ {int id; int renderer; } ;
+
+
+ int FIXME (char*,int,int ) ;
+ int PCI_DEVICE_NONE ;
+ int TRACE (char*,int ) ;
+ int debugstr_a (char const*) ;
+ scalar_t__ strstr (char const*,int ) ;
 
 __attribute__((used)) static enum wined3d_pci_device select_card_handler(const struct gl_vendor_selection *table,
         unsigned int table_size, enum wined3d_gl_vendor gl_vendor, const char *gl_renderer)

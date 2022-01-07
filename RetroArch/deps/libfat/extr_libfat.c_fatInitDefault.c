@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DEFAULT_CACHE_PAGES ; 
- int fatInit (int /*<<< orphan*/ ,int) ; 
+ int DEFAULT_CACHE_PAGES ;
+ int fatInit (int ,int) ;
 
 bool fatInitDefault (void)
 {
-	return fatInit (DEFAULT_CACHE_PAGES, true);
+ return fatInit (DEFAULT_CACHE_PAGES, 1);
 }

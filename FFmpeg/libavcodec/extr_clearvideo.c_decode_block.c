@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int16_t ;
-struct TYPE_6__ {int /*<<< orphan*/  table; } ;
-struct TYPE_5__ {int /*<<< orphan*/  table; } ;
-struct TYPE_7__ {TYPE_2__ ac_vlc; TYPE_1__ dc_vlc; int /*<<< orphan*/  gb; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_3__ CLVContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int FFABS (int) ; 
- size_t* ff_zigzag_direct ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits1 (int /*<<< orphan*/ *) ; 
- int get_sbits (int /*<<< orphan*/ *,int) ; 
- int get_vlc2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int int16_t ;
+struct TYPE_6__ {int table; } ;
+struct TYPE_5__ {int table; } ;
+struct TYPE_7__ {TYPE_2__ ac_vlc; TYPE_1__ dc_vlc; int gb; } ;
+typedef int GetBitContext ;
+typedef TYPE_3__ CLVContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int FFABS (int) ;
+ size_t* ff_zigzag_direct ;
+ int get_bits (int *,int) ;
+ int get_bits1 (int *) ;
+ int get_sbits (int *,int) ;
+ int get_vlc2 (int *,int ,int,int) ;
+ int memset (int*,int ,int) ;
 
 __attribute__((used)) static inline int decode_block(CLVContext *ctx, int16_t *blk, int has_ac,
                                int ac_quant)
@@ -50,7 +50,7 @@ __attribute__((used)) static inline int decode_block(CLVContext *ctx, int16_t *b
         if (val < 0)
             return AVERROR_INVALIDDATA;
         if (val != 0x1BFF) {
-            last =  val >> 12;
+            last = val >> 12;
             skip = (val >> 4) & 0xFF;
             val &= 0xF;
             if (get_bits1(gb))
@@ -58,7 +58,7 @@ __attribute__((used)) static inline int decode_block(CLVContext *ctx, int16_t *b
         } else {
             last = get_bits1(gb);
             skip = get_bits(gb, 6);
-            val  = get_sbits(gb, 8);
+            val = get_sbits(gb, 8);
         }
         if (val) {
             int aval = FFABS(val), sign = val < 0;

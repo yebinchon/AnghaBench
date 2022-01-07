@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u16 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ u16 ;
 struct btrfs_super_block {scalar_t__ sys_chunk_array_size; scalar_t__ sys_chunk_array; } ;
-struct btrfs_disk_key {int /*<<< orphan*/  type; int /*<<< orphan*/  offset; int /*<<< orphan*/  objectid; } ;
+struct btrfs_disk_key {int type; int offset; int objectid; } ;
 struct btrfs_chunk {scalar_t__ length; scalar_t__ owner; scalar_t__ stripe_len; scalar_t__ type; scalar_t__ io_align; scalar_t__ io_width; scalar_t__ sector_size; scalar_t__ num_stripes; scalar_t__ sub_stripes; } ;
 struct TYPE_2__ {struct btrfs_super_block SuperBlock; } ;
 
-/* Variables and functions */
- TYPE_1__* BtrFsInfo ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- scalar_t__ btrfs_chunk_item_size (scalar_t__) ; 
- int /*<<< orphan*/  insert_map (struct btrfs_disk_key const*,struct btrfs_chunk*) ; 
+
+ TYPE_1__* BtrFsInfo ;
+ int TRACE (char*,...) ;
+ scalar_t__ btrfs_chunk_item_size (scalar_t__) ;
+ int insert_map (struct btrfs_disk_key const*,struct btrfs_chunk*) ;
 
 __attribute__((used)) static void btrfs_read_sys_chunk_array()
 {
@@ -30,7 +30,7 @@ __attribute__((used)) static void btrfs_read_sys_chunk_array()
     struct btrfs_chunk *chunk;
     u16 cur;
 
-    /* read chunk array in superblock */
+
     TRACE("reading chunk array\n-----------------------------\n");
     cur = 0;
     while (cur < sb->sys_chunk_array_size)

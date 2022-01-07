@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct TYPE_8__ {int width; int height; int x_offset; int y_offset; int visible_width; int visible_height; } ;
-typedef  TYPE_3__ VC_CONTAINER_VIDEO_FORMAT_T ;
+typedef TYPE_3__ VC_CONTAINER_VIDEO_FORMAT_T ;
 struct TYPE_9__ {TYPE_2__* format; } ;
-typedef  TYPE_4__ VC_CONTAINER_TRACK_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_BITS_T ;
+typedef TYPE_4__ VC_CONTAINER_TRACK_T ;
+typedef int VC_CONTAINER_T ;
+typedef int VC_CONTAINER_STATUS_T ;
+typedef int VC_CONTAINER_BITS_T ;
 struct TYPE_7__ {TYPE_1__* type; } ;
 struct TYPE_6__ {TYPE_3__ video; } ;
 
-/* Variables and functions */
- int BITS_READ_U32 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,char*) ; 
- int BITS_READ_U32_EXP (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int BITS_READ_U8 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  BITS_SKIP (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  BITS_SKIP_EXP (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  BITS_VALID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int CHROMA_FORMAT_RGB ; 
- int CHROMA_FORMAT_YUV_444_PLANAR ; 
- int /*<<< orphan*/  LOG_ERROR (int /*<<< orphan*/ *,char*,...) ; 
- int MACROBLOCK_HEIGHT ; 
- int MACROBLOCK_WIDTH ; 
- int /*<<< orphan*/  VC_CONTAINER_ERROR_FORMAT_INVALID ; 
- int /*<<< orphan*/  VC_CONTAINER_SUCCESS ; 
- int* chroma_sub_height ; 
- int* chroma_sub_width ; 
- int h264_get_chroma_format (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int BITS_READ_U32 (int *,int *,int,char*) ;
+ int BITS_READ_U32_EXP (int *,int *,char*) ;
+ int BITS_READ_U8 (int *,int *,int,char*) ;
+ int BITS_SKIP (int *,int *,int,char*) ;
+ int BITS_SKIP_EXP (int *,int *,char*) ;
+ int BITS_VALID (int *,int *) ;
+ int CHROMA_FORMAT_RGB ;
+ int CHROMA_FORMAT_YUV_444_PLANAR ;
+ int LOG_ERROR (int *,char*,...) ;
+ int MACROBLOCK_HEIGHT ;
+ int MACROBLOCK_WIDTH ;
+ int VC_CONTAINER_ERROR_FORMAT_INVALID ;
+ int VC_CONTAINER_SUCCESS ;
+ int* chroma_sub_height ;
+ int* chroma_sub_width ;
+ int h264_get_chroma_format (int *,int *) ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T h264_decode_sequence_parameter_set(VC_CONTAINER_T *p_ctx,
       VC_CONTAINER_TRACK_T *track,
@@ -54,7 +54,7 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T h264_decode_sequence_paramete
    uint32_t frame_crop_left_offset, frame_crop_right_offset, frame_crop_top_offset, frame_crop_bottom_offset;
    uint8_t profile_idc;
 
-   /* This structure is defined by H.264 section 7.3.2.1.1 */
+
    profile_idc = BITS_READ_U8(p_ctx, sprop, 8, "profile_idc");
    BITS_SKIP(p_ctx, sprop, 16, "Rest of profile_level_id");
 
@@ -97,7 +97,7 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T h264_decode_sequence_paramete
    pic_height_in_map_units_minus1 = BITS_READ_U32_EXP(p_ctx, sprop, "pic_height_in_map_units_minus1");
    frame_mbs_only_flag = BITS_READ_U32(p_ctx, sprop, 1, "frame_mbs_only_flag");
 
-   /* Can now set the overall width and height in pixels */
+
    video->width = (pic_width_in_mbs_minus1 + 1) * MACROBLOCK_WIDTH;
    video->height = (2 - frame_mbs_only_flag) * (pic_height_in_map_units_minus1 + 1) * MACROBLOCK_HEIGHT;
 
@@ -107,13 +107,13 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T h264_decode_sequence_paramete
 
    if (BITS_READ_U32(p_ctx, sprop, 1, "frame_cropping_flag"))
    {
-      /* Visible area is restricted */
+
       frame_crop_left_offset = BITS_READ_U32_EXP(p_ctx, sprop, "frame_crop_left_offset");
       frame_crop_right_offset = BITS_READ_U32_EXP(p_ctx, sprop, "frame_crop_right_offset");
       frame_crop_top_offset = BITS_READ_U32_EXP(p_ctx, sprop, "frame_crop_top_offset");
       frame_crop_bottom_offset = BITS_READ_U32_EXP(p_ctx, sprop, "frame_crop_bottom_offset");
 
-      /* Need to adjust offsets for 4:2:0 and 4:2:2 chroma formats and field/frame flag */
+
       frame_crop_left_offset *= chroma_sub_width[chroma_format_idc];
       frame_crop_right_offset *= chroma_sub_width[chroma_format_idc];
       frame_crop_top_offset *= chroma_sub_height[chroma_format_idc] * (2 - frame_mbs_only_flag);
@@ -137,7 +137,7 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T h264_decode_sequence_paramete
       video->visible_height = video->height;
    }
 
-   /* vui_parameters may follow, but these will not be decoded */
+
 
    if (!BITS_VALID(p_ctx, sprop))
       goto error;

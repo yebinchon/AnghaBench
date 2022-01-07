@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  data; int /*<<< orphan*/  (* fn ) (int /*<<< orphan*/ ) ;} ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int data; int (* fn ) (int ) ;} ;
 struct TYPE_5__ {unsigned long long* SampleOctets; unsigned long long OctetsPerSecond; } ;
 struct TYPE_4__ {unsigned long long* SampleOctets; unsigned long long OctetsPerSecond; } ;
-struct pppThroughput {int SamplePeriod; size_t nSample; unsigned long long OctetsIn; unsigned long long OctetsOut; unsigned long long BestOctetsPerSecond; int /*<<< orphan*/  Timer; TYPE_3__ callback; int /*<<< orphan*/  BestOctetsPerSecondTime; TYPE_2__ out; TYPE_1__ in; } ;
+struct pppThroughput {int SamplePeriod; size_t nSample; unsigned long long OctetsIn; unsigned long long OctetsOut; unsigned long long BestOctetsPerSecond; int Timer; TYPE_3__ callback; int BestOctetsPerSecondTime; TYPE_2__ out; TYPE_1__ in; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- int throughput_uptime (struct pppThroughput*) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  timer_Start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  timer_Stop (int /*<<< orphan*/ *) ; 
+
+ int stub1 (int ) ;
+ int throughput_uptime (struct pppThroughput*) ;
+ int time (int *) ;
+ int timer_Start (int *) ;
+ int timer_Stop (int *) ;
 
 __attribute__((used)) static void
 throughput_sampler(void *v)
@@ -55,7 +55,7 @@ throughput_sampler(void *v)
   if (++t->nSample == t->SamplePeriod)
     t->nSample = 0;
 
-  if (t->callback.fn != NULL && uptime >= t->SamplePeriod)
+  if (t->callback.fn != ((void*)0) && uptime >= t->SamplePeriod)
     (*t->callback.fn)(t->callback.data);
 
   timer_Start(&t->Timer);

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct sockaddr_un {int dummy; } ;
-struct sockaddr_storage {int /*<<< orphan*/  ss_family; } ;
-struct sockaddr_in {int /*<<< orphan*/  sin_port; int /*<<< orphan*/  sin_addr; } ;
-typedef  int socklen_t ;
-struct TYPE_4__ {int /*<<< orphan*/  host; } ;
-typedef  TYPE_1__ h2o_url_t ;
-typedef  int /*<<< orphan*/  h2o_socketpool_target_type_t ;
+struct sockaddr_storage {int ss_family; } ;
+struct sockaddr_in {int sin_port; int sin_addr; } ;
+typedef int socklen_t ;
+struct TYPE_4__ {int host; } ;
+typedef TYPE_1__ h2o_url_t ;
+typedef int h2o_socketpool_target_type_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  H2O_SOCKETPOOL_TYPE_NAMED ; 
- int /*<<< orphan*/  H2O_SOCKETPOOL_TYPE_SOCKADDR ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- scalar_t__ h2o_hostinfo_aton (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  h2o_url_get_port (TYPE_1__*) ; 
- char* h2o_url_host_to_sun (int /*<<< orphan*/ ,struct sockaddr_un*) ; 
- char const* h2o_url_host_to_sun_err_is_not_unix_socket ; 
- int /*<<< orphan*/  htons (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct sockaddr_storage*,int /*<<< orphan*/ ,int) ; 
+
+ int AF_INET ;
+ int H2O_SOCKETPOOL_TYPE_NAMED ;
+ int H2O_SOCKETPOOL_TYPE_SOCKADDR ;
+ int assert (int ) ;
+ scalar_t__ h2o_hostinfo_aton (int ,int *) ;
+ int h2o_url_get_port (TYPE_1__*) ;
+ char* h2o_url_host_to_sun (int ,struct sockaddr_un*) ;
+ char const* h2o_url_host_to_sun_err_is_not_unix_socket ;
+ int htons (int ) ;
+ int memset (struct sockaddr_storage*,int ,int) ;
 
 h2o_socketpool_target_type_t detect_target_type(h2o_url_t *url, struct sockaddr_storage *sa, socklen_t *salen)
 {
@@ -47,7 +47,7 @@ h2o_socketpool_target_type_t detect_target_type(h2o_url_t *url, struct sockaddr_
             return H2O_SOCKETPOOL_TYPE_NAMED;
         }
     } else {
-        assert(to_sun_err == NULL);
+        assert(to_sun_err == ((void*)0));
         *salen = sizeof(struct sockaddr_un);
         return H2O_SOCKETPOOL_TYPE_SOCKADDR;
     }

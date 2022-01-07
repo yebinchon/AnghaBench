@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_9__ {TYPE_2__* input; } ;
-typedef  TYPE_3__ xmlreader ;
+typedef TYPE_3__ xmlreader ;
 struct TYPE_10__ {int cur; scalar_t__ data; } ;
-typedef  TYPE_4__ encoded_buffer ;
-typedef  int /*<<< orphan*/  WCHAR ;
+typedef TYPE_4__ encoded_buffer ;
+typedef int WCHAR ;
 struct TYPE_8__ {TYPE_1__* buffer; } ;
 struct TYPE_7__ {TYPE_4__ utf16; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  reader_more (TYPE_3__*) ; 
+
+ int reader_more (TYPE_3__*) ;
 
 __attribute__((used)) static inline WCHAR *reader_get_ptr(xmlreader *reader)
 {

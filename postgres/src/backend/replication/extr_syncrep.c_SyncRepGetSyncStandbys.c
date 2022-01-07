@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ syncrep_method; } ;
-typedef  int /*<<< orphan*/  List ;
+typedef int List ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LWLockHeldByMe (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * NIL ; 
- scalar_t__ SYNC_REP_PRIORITY ; 
- TYPE_1__* SyncRepConfig ; 
- int /*<<< orphan*/ * SyncRepGetSyncStandbysPriority (int*) ; 
- int /*<<< orphan*/ * SyncRepGetSyncStandbysQuorum (int*) ; 
- int /*<<< orphan*/  SyncRepLock ; 
+
+ int Assert (int ) ;
+ int LWLockHeldByMe (int ) ;
+ int * NIL ;
+ scalar_t__ SYNC_REP_PRIORITY ;
+ TYPE_1__* SyncRepConfig ;
+ int * SyncRepGetSyncStandbysPriority (int*) ;
+ int * SyncRepGetSyncStandbysQuorum (int*) ;
+ int SyncRepLock ;
 
 List *
 SyncRepGetSyncStandbys(bool *am_sync)
 {
-	Assert(LWLockHeldByMe(SyncRepLock));
+ Assert(LWLockHeldByMe(SyncRepLock));
 
-	/* Set default result */
-	if (am_sync != NULL)
-		*am_sync = false;
 
-	/* Quick exit if sync replication is not requested */
-	if (SyncRepConfig == NULL)
-		return NIL;
+ if (am_sync != ((void*)0))
+  *am_sync = 0;
 
-	return (SyncRepConfig->syncrep_method == SYNC_REP_PRIORITY) ?
-		SyncRepGetSyncStandbysPriority(am_sync) :
-		SyncRepGetSyncStandbysQuorum(am_sync);
+
+ if (SyncRepConfig == ((void*)0))
+  return NIL;
+
+ return (SyncRepConfig->syncrep_method == SYNC_REP_PRIORITY) ?
+  SyncRepGetSyncStandbysPriority(am_sync) :
+  SyncRepGetSyncStandbysQuorum(am_sync);
 }

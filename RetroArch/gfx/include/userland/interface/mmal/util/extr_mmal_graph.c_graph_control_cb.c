@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  cmd; } ;
-struct TYPE_12__ {int /*<<< orphan*/  event_cb_data; int /*<<< orphan*/  (* event_cb ) (int /*<<< orphan*/ *,TYPE_1__*,TYPE_3__*,int /*<<< orphan*/ ) ;} ;
-struct TYPE_11__ {scalar_t__ index; scalar_t__ type; int /*<<< orphan*/  name; scalar_t__ userdata; } ;
-typedef  TYPE_1__ MMAL_PORT_T ;
-typedef  int /*<<< orphan*/  MMAL_GRAPH_T ;
-typedef  TYPE_2__ MMAL_GRAPH_PRIVATE_T ;
-typedef  TYPE_3__ MMAL_BUFFER_HEADER_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_ERROR (char*,int,int) ; 
- int /*<<< orphan*/  LOG_TRACE (char*,int /*<<< orphan*/ ,TYPE_1__*,TYPE_3__*,char*) ; 
- int /*<<< orphan*/  mmal_buffer_header_release (TYPE_3__*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,TYPE_1__*,TYPE_3__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int cmd; } ;
+struct TYPE_12__ {int event_cb_data; int (* event_cb ) (int *,TYPE_1__*,TYPE_3__*,int ) ;} ;
+struct TYPE_11__ {scalar_t__ index; scalar_t__ type; int name; scalar_t__ userdata; } ;
+typedef TYPE_1__ MMAL_PORT_T ;
+typedef int MMAL_GRAPH_T ;
+typedef TYPE_2__ MMAL_GRAPH_PRIVATE_T ;
+typedef TYPE_3__ MMAL_BUFFER_HEADER_T ;
+
+
+ int LOG_ERROR (char*,int,int) ;
+ int LOG_TRACE (char*,int ,TYPE_1__*,TYPE_3__*,char*) ;
+ int mmal_buffer_header_release (TYPE_3__*) ;
+ int stub1 (int *,TYPE_1__*,TYPE_3__*,int ) ;
 
 __attribute__((used)) static void graph_control_cb(MMAL_PORT_T *port, MMAL_BUFFER_HEADER_T *buffer)
 {

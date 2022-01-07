@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vlc_readdir_helper {size_t i_slaves; size_t i_dirs; struct rdh_slave** pp_dirs; struct rdh_slave** pp_slaves; struct rdh_slave* psz_ignored_exts; int /*<<< orphan*/  p_node; } ;
-struct rdh_slave {struct rdh_slave* psz_filename; int /*<<< orphan*/  p_slave; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TAB_CLEAN (size_t,struct rdh_slave**) ; 
- int /*<<< orphan*/  free (struct rdh_slave*) ; 
- int /*<<< orphan*/  input_item_slave_Delete (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rdh_attach_slaves (struct vlc_readdir_helper*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rdh_sort (int /*<<< orphan*/ ) ; 
+
+
+
+struct vlc_readdir_helper {size_t i_slaves; size_t i_dirs; struct rdh_slave** pp_dirs; struct rdh_slave** pp_slaves; struct rdh_slave* psz_ignored_exts; int p_node; } ;
+struct rdh_slave {struct rdh_slave* psz_filename; int p_slave; } ;
+
+
+ int TAB_CLEAN (size_t,struct rdh_slave**) ;
+ int free (struct rdh_slave*) ;
+ int input_item_slave_Delete (int ) ;
+ int rdh_attach_slaves (struct vlc_readdir_helper*,int ) ;
+ int rdh_sort (int ) ;
 
 void vlc_readdir_helper_finish(struct vlc_readdir_helper *p_rdh, bool b_success)
 {
@@ -29,11 +29,11 @@ void vlc_readdir_helper_finish(struct vlc_readdir_helper *p_rdh, bool b_success)
     }
     free(p_rdh->psz_ignored_exts);
 
-    /* Remove unmatched slaves */
+
     for (size_t i = 0; i < p_rdh->i_slaves; i++)
     {
         struct rdh_slave *p_rdh_slave = p_rdh->pp_slaves[i];
-        if (p_rdh_slave != NULL)
+        if (p_rdh_slave != ((void*)0))
         {
             input_item_slave_Delete(p_rdh_slave->p_slave);
             free(p_rdh_slave->psz_filename);

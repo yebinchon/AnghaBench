@@ -1,65 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int DFLAG ;
+ char* INTERNAL_DISASSEMBLER_ERROR ;
+ int PREFIX_DATA ;
+ int REX_W ;
+ int USED_REX (int) ;
+ int intel_syntax ;
+ char** names16 ;
+ char** names32 ;
+ char** names64 ;
+ char** names8 ;
+ char** names8rex ;
+ char** names_seg ;
+ int oappend (char const*) ;
+ int prefixes ;
+ int rex ;
 
-/* Forward declarations */
 
-/* Type definitions */
 
-/* Variables and functions */
- int DFLAG ; 
- char* INTERNAL_DISASSEMBLER_ERROR ; 
- int PREFIX_DATA ; 
- int REX_W ; 
- int /*<<< orphan*/  USED_REX (int) ; 
-#define  ah_reg 159 
-#define  al_reg 158 
-#define  ax_reg 157 
-#define  bh_reg 156 
-#define  bl_reg 155 
-#define  bp_reg 154 
-#define  bx_reg 153 
-#define  ch_reg 152 
-#define  cl_reg 151 
-#define  cs_reg 150 
-#define  cx_reg 149 
-#define  dh_reg 148 
-#define  di_reg 147 
-#define  dl_reg 146 
-#define  ds_reg 145 
-#define  dx_reg 144 
-#define  eAX_reg 143 
-#define  eBP_reg 142 
-#define  eBX_reg 141 
-#define  eCX_reg 140 
-#define  eDI_reg 139 
-#define  eDX_reg 138 
-#define  eSI_reg 137 
-#define  eSP_reg 136 
-#define  es_reg 135 
-#define  fs_reg 134 
-#define  gs_reg 133 
-#define  indir_dx_reg 132 
- int /*<<< orphan*/  intel_syntax ; 
- char** names16 ; 
- char** names32 ; 
- char** names64 ; 
- char** names8 ; 
- char** names8rex ; 
- char** names_seg ; 
- int /*<<< orphan*/  oappend (char const*) ; 
- int prefixes ; 
- int rex ; 
-#define  si_reg 131 
-#define  sp_reg 130 
-#define  ss_reg 129 
- int used_prefixes ; 
-#define  z_mode_ax_reg 128 
+ int used_prefixes ;
+
 
 __attribute__((used)) static void
 OP_IMREG (int code, int sizeflag)
@@ -68,46 +32,46 @@ OP_IMREG (int code, int sizeflag)
 
   switch (code)
     {
-    case indir_dx_reg:
+    case 132:
       if (intel_syntax)
-	s = "dx";
+ s = "dx";
       else
-	s = "(%dx)";
+ s = "(%dx)";
       break;
-    case ax_reg: case cx_reg: case dx_reg: case bx_reg:
-    case sp_reg: case bp_reg: case si_reg: case di_reg:
-      s = names16[code - ax_reg];
+    case 157: case 149: case 144: case 153:
+    case 130: case 154: case 131: case 147:
+      s = names16[code - 157];
       break;
-    case es_reg: case ss_reg: case cs_reg:
-    case ds_reg: case fs_reg: case gs_reg:
-      s = names_seg[code - es_reg];
+    case 135: case 129: case 150:
+    case 145: case 134: case 133:
+      s = names_seg[code - 135];
       break;
-    case al_reg: case ah_reg: case cl_reg: case ch_reg:
-    case dl_reg: case dh_reg: case bl_reg: case bh_reg:
+    case 158: case 159: case 151: case 152:
+    case 146: case 148: case 155: case 156:
       USED_REX (0);
       if (rex)
-	s = names8rex[code - al_reg];
+ s = names8rex[code - 158];
       else
-	s = names8[code - al_reg];
+ s = names8[code - 158];
       break;
-    case eAX_reg: case eCX_reg: case eDX_reg: case eBX_reg:
-    case eSP_reg: case eBP_reg: case eSI_reg: case eDI_reg:
+    case 143: case 140: case 138: case 141:
+    case 136: case 142: case 137: case 139:
       USED_REX (REX_W);
       if (rex & REX_W)
-	s = names64[code - eAX_reg];
+ s = names64[code - 143];
       else if (sizeflag & DFLAG)
-	s = names32[code - eAX_reg];
+ s = names32[code - 143];
       else
-	s = names16[code - eAX_reg];
+ s = names16[code - 143];
       used_prefixes |= (prefixes & PREFIX_DATA);
       break;
-    case z_mode_ax_reg:
+    case 128:
       if ((rex & REX_W) || (sizeflag & DFLAG))
-	s = *names32;
+ s = *names32;
       else
-	s = *names16;
+ s = *names16;
       if (!(rex & REX_W))
-	used_prefixes |= (prefixes & PREFIX_DATA);
+ used_prefixes |= (prefixes & PREFIX_DATA);
       break;
     default:
       s = INTERNAL_DISASSEMBLER_ERROR;

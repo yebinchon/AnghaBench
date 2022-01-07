@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ offset; scalar_t__ lineno; } ;
-struct view {scalar_t__ lines; int height; int has_scrolled; int /*<<< orphan*/  win; TYPE_1__ pos; } ;
+struct view {scalar_t__ lines; int height; int has_scrolled; int win; TYPE_1__ pos; } ;
 
-/* Variables and functions */
- int ABS (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ draw_view_line (struct view*,int) ; 
- int /*<<< orphan*/  redraw_view (struct view*) ; 
- int /*<<< orphan*/  report_clear () ; 
- int /*<<< orphan*/  scrollok (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  wnoutrefresh (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wscrl (int /*<<< orphan*/ ,int) ; 
+
+ int ABS (int) ;
+ int assert (int) ;
+ scalar_t__ draw_view_line (struct view*,int) ;
+ int redraw_view (struct view*) ;
+ int report_clear () ;
+ int scrollok (int ,int) ;
+ int wnoutrefresh (int ) ;
+ int wscrl (int ,int) ;
 
 void
 do_scroll_view(struct view *view, int lines)
 {
-	bool redraw_current_line = false;
+ bool redraw_current_line = 0;
 
-	/* The rendering expects the new offset. */
-	view->pos.offset += lines;
 
-	assert(0 <= view->pos.offset && view->pos.offset < view->lines);
-	assert(lines);
+ view->pos.offset += lines;
 
-	/* Move current line into the view. */
-	if (view->pos.lineno < view->pos.offset) {
-		view->pos.lineno = view->pos.offset;
-		redraw_current_line = true;
-	} else if (view->pos.lineno >= view->pos.offset + view->height) {
-		view->pos.lineno = view->pos.offset + view->height - 1;
-		redraw_current_line = true;
-	}
+ assert(0 <= view->pos.offset && view->pos.offset < view->lines);
+ assert(lines);
 
-	assert(view->pos.offset <= view->pos.lineno && view->pos.lineno < view->lines);
 
-	/* Redraw the whole screen if scrolling is pointless. */
-	if (view->height < ABS(lines)) {
-		redraw_view(view);
+ if (view->pos.lineno < view->pos.offset) {
+  view->pos.lineno = view->pos.offset;
+  redraw_current_line = 1;
+ } else if (view->pos.lineno >= view->pos.offset + view->height) {
+  view->pos.lineno = view->pos.offset + view->height - 1;
+  redraw_current_line = 1;
+ }
 
-	} else {
-		int line = lines > 0 ? view->height - lines : 0;
-		int end = line + ABS(lines);
+ assert(view->pos.offset <= view->pos.lineno && view->pos.lineno < view->lines);
 
-		scrollok(view->win, true);
-		wscrl(view->win, lines);
-		scrollok(view->win, false);
 
-		while (line < end && draw_view_line(view, line))
-			line++;
+ if (view->height < ABS(lines)) {
+  redraw_view(view);
 
-		if (redraw_current_line)
-			draw_view_line(view, view->pos.lineno - view->pos.offset);
-		wnoutrefresh(view->win);
-	}
+ } else {
+  int line = lines > 0 ? view->height - lines : 0;
+  int end = line + ABS(lines);
 
-	view->has_scrolled = true;
-	report_clear();
+  scrollok(view->win, 1);
+  wscrl(view->win, lines);
+  scrollok(view->win, 0);
+
+  while (line < end && draw_view_line(view, line))
+   line++;
+
+  if (redraw_current_line)
+   draw_view_line(view, view->pos.lineno - view->pos.offset);
+  wnoutrefresh(view->win);
+ }
+
+ view->has_scrolled = 1;
+ report_clear();
 }

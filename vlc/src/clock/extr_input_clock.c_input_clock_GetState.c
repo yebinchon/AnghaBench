@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ vlc_tick_t ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ vlc_tick_t ;
 struct TYPE_6__ {scalar_t__ system; scalar_t__ stream; } ;
 struct TYPE_5__ {scalar_t__ system; scalar_t__ stream; } ;
-struct TYPE_7__ {int /*<<< orphan*/  lock; TYPE_2__ ref; TYPE_1__ last; int /*<<< orphan*/  b_has_reference; } ;
-typedef  TYPE_3__ input_clock_t ;
+struct TYPE_7__ {int lock; TYPE_2__ ref; TYPE_1__ last; int b_has_reference; } ;
+typedef TYPE_3__ input_clock_t ;
 
-/* Variables and functions */
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 int input_clock_GetState( input_clock_t *cl,
                           vlc_tick_t *pi_stream_start, vlc_tick_t *pi_system_start,

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ gdi_clip; int /*<<< orphan*/  clip; } ;
-typedef  scalar_t__ HRGN ;
-typedef  scalar_t__ GpStatus ;
-typedef  int /*<<< orphan*/  GpRegion ;
-typedef  int /*<<< orphan*/  GpMatrix ;
-typedef  TYPE_1__ GpGraphics ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CombineRgn (scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CoordinateSpaceDevice ; 
- scalar_t__ CreateRectRgn (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ GdipCloneRegion (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteRegion (int /*<<< orphan*/ *) ; 
- scalar_t__ GdipGetRegionHRgn (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ GdipIsMatrixIdentity (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ GdipTransformRegion (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ Ok ; 
- int /*<<< orphan*/  RGN_AND ; 
- int /*<<< orphan*/  RGN_COPY ; 
- int /*<<< orphan*/  WineCoordinateSpaceGdiDevice ; 
- scalar_t__ get_graphics_transform (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ gdi_clip; int clip; } ;
+typedef scalar_t__ HRGN ;
+typedef scalar_t__ GpStatus ;
+typedef int GpRegion ;
+typedef int GpMatrix ;
+typedef TYPE_1__ GpGraphics ;
+typedef int BOOL ;
+
+
+ int CombineRgn (scalar_t__,scalar_t__,scalar_t__,int ) ;
+ int CoordinateSpaceDevice ;
+ scalar_t__ CreateRectRgn (int ,int ,int ,int ) ;
+ scalar_t__ GdipCloneRegion (int ,int **) ;
+ int GdipDeleteRegion (int *) ;
+ scalar_t__ GdipGetRegionHRgn (int *,int *,scalar_t__*) ;
+ scalar_t__ GdipIsMatrixIdentity (int *,int *) ;
+ scalar_t__ GdipTransformRegion (int *,int *) ;
+ scalar_t__ Ok ;
+ int RGN_AND ;
+ int RGN_COPY ;
+ int WineCoordinateSpaceGdiDevice ;
+ scalar_t__ get_graphics_transform (TYPE_1__*,int ,int ,int *) ;
 
 __attribute__((used)) static GpStatus get_clip_hrgn(GpGraphics *graphics, HRGN *hrgn)
 {
@@ -55,7 +55,7 @@ __attribute__((used)) static GpStatus get_clip_hrgn(GpGraphics *graphics, HRGN *
             stat = GdipTransformRegion(rgn, &transform);
 
         if (stat == Ok)
-            stat = GdipGetRegionHRgn(rgn, NULL, hrgn);
+            stat = GdipGetRegionHRgn(rgn, ((void*)0), hrgn);
 
         GdipDeleteRegion(rgn);
     }

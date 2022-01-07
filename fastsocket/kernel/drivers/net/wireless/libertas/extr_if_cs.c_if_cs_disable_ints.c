@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct if_cs_card {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IF_CS_BIT_MASK ; 
- int /*<<< orphan*/  IF_CS_HOST_INT_MASK ; 
- int /*<<< orphan*/  LBS_DEB_CS ; 
- int /*<<< orphan*/  if_cs_write16 (struct if_cs_card*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lbs_deb_enter (int /*<<< orphan*/ ) ; 
+
+ int IF_CS_BIT_MASK ;
+ int IF_CS_HOST_INT_MASK ;
+ int LBS_DEB_CS ;
+ int if_cs_write16 (struct if_cs_card*,int ,int ) ;
+ int lbs_deb_enter (int ) ;
 
 __attribute__((used)) static inline void if_cs_disable_ints(struct if_cs_card *card)
 {
-	lbs_deb_enter(LBS_DEB_CS);
-	if_cs_write16(card, IF_CS_HOST_INT_MASK, IF_CS_BIT_MASK);
+ lbs_deb_enter(LBS_DEB_CS);
+ if_cs_write16(card, IF_CS_HOST_INT_MASK, IF_CS_BIT_MASK);
 }

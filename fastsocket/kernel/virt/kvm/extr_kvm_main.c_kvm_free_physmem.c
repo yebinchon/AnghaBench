@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct kvm_memslots {int nmemslots; int /*<<< orphan*/ * memslots; } ;
+
+
+
+
+struct kvm_memslots {int nmemslots; int * memslots; } ;
 struct kvm {struct kvm_memslots* memslots; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct kvm_memslots*) ; 
- int /*<<< orphan*/  kvm_free_physmem_slot (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int kfree (struct kvm_memslots*) ;
+ int kvm_free_physmem_slot (int *,int *) ;
 
 void kvm_free_physmem(struct kvm *kvm)
 {
-	int i;
-	struct kvm_memslots *slots = kvm->memslots;
+ int i;
+ struct kvm_memslots *slots = kvm->memslots;
 
-	for (i = 0; i < slots->nmemslots; ++i)
-		kvm_free_physmem_slot(&slots->memslots[i], NULL);
+ for (i = 0; i < slots->nmemslots; ++i)
+  kvm_free_physmem_slot(&slots->memslots[i], ((void*)0));
 
-	kfree(kvm->memslots);
+ kfree(kvm->memslots);
 }

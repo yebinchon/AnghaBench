@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct priv {int num_buffers; int num_samples; } ;
 struct ao {struct priv* priv; } ;
-typedef  int ALint ;
+typedef int ALint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AL_BUFFERS_QUEUED ; 
- int /*<<< orphan*/  alGetSourcei (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  source ; 
- int /*<<< orphan*/  unqueue_buffers (struct ao*) ; 
+
+ int AL_BUFFERS_QUEUED ;
+ int alGetSourcei (int ,int ,int*) ;
+ int source ;
+ int unqueue_buffers (struct ao*) ;
 
 __attribute__((used)) static int get_space(struct ao *ao)
 {

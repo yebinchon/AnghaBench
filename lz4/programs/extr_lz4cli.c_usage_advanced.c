@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DISPLAY (char*,...) ; 
- int /*<<< orphan*/  LZ4HC_CLEVEL_MAX ; 
- char* WELCOME_MESSAGE ; 
- scalar_t__ g_lz4c_legacy_commands ; 
- int /*<<< orphan*/  usage (char const*) ; 
+ int DISPLAY (char*,...) ;
+ int LZ4HC_CLEVEL_MAX ;
+ char* WELCOME_MESSAGE ;
+ scalar_t__ g_lz4c_legacy_commands ;
+ int usage (char const*) ;
 
 __attribute__((used)) static int usage_advanced(const char* exeName)
 {
@@ -30,9 +22,9 @@ __attribute__((used)) static int usage_advanced(const char* exeName)
     DISPLAY( " -c     : force write to standard output, even if it is the console\n");
     DISPLAY( " -t     : test compressed file integrity\n");
     DISPLAY( " -m     : multiple input files (implies automatic output filenames)\n");
-#ifdef UTIL_HAS_CREATEFILELIST
-    DISPLAY( " -r     : operate recursively on directories (sets also -m) \n");
-#endif
+
+
+
     DISPLAY( " -l     : compress using Legacy format (Linux kernel compression)\n");
     DISPLAY( " -B#    : cut file into blocks of size # bytes [32+] \n");
     DISPLAY( "                     or predefined block size [4-7] (default: 7) \n");

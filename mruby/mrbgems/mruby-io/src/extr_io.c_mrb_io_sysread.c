@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mrb_io {int /*<<< orphan*/  fd; int /*<<< orphan*/  readable; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  scalar_t__ mrb_int ;
-typedef  int /*<<< orphan*/  fsize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_ARGUMENT_ERROR ; 
- int /*<<< orphan*/  E_EOF_ERROR ; 
- int /*<<< orphan*/  E_IO_ERROR ; 
- int /*<<< orphan*/  RSTRING (int /*<<< orphan*/ ) ; 
- int RSTRING_LEN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RSTRING_PTR (int /*<<< orphan*/ ) ; 
- scalar_t__ io_get_open_fptr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,scalar_t__*,int /*<<< orphan*/ *) ; 
- scalar_t__ mrb_nil_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_nil_value () ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mrb_str_modify (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_str_new (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  mrb_str_new_cstr (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  mrb_str_resize (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mrb_sys_fail (int /*<<< orphan*/ *,char*) ; 
- int read (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct mrb_io {int fd; int readable; } ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef scalar_t__ mrb_int ;
+typedef int fsize_t ;
+
+
+ int E_ARGUMENT_ERROR ;
+ int E_EOF_ERROR ;
+ int E_IO_ERROR ;
+ int RSTRING (int ) ;
+ int RSTRING_LEN (int ) ;
+ int RSTRING_PTR (int ) ;
+ scalar_t__ io_get_open_fptr (int *,int ) ;
+ int mrb_get_args (int *,char*,scalar_t__*,int *) ;
+ scalar_t__ mrb_nil_p (int ) ;
+ int mrb_nil_value () ;
+ int mrb_raise (int *,int ,char*) ;
+ int mrb_str_modify (int *,int ) ;
+ int mrb_str_new (int *,int *,scalar_t__) ;
+ int mrb_str_new_cstr (int *,char*) ;
+ int mrb_str_resize (int *,int ,int) ;
+ int mrb_sys_fail (int *,char*) ;
+ int read (int ,int ,int ) ;
 
 mrb_value
 mrb_io_sysread(mrb_state *mrb, mrb_value io)
@@ -48,11 +48,11 @@ mrb_io_sysread(mrb_state *mrb, mrb_value io)
     mrb_raise(mrb, E_ARGUMENT_ERROR, "negative expanding string size");
   }
   else if (maxlen == 0) {
-    return mrb_str_new(mrb, NULL, maxlen);
+    return mrb_str_new(mrb, ((void*)0), maxlen);
   }
 
   if (mrb_nil_p(buf)) {
-    buf = mrb_str_new(mrb, NULL, maxlen);
+    buf = mrb_str_new(mrb, ((void*)0), maxlen);
   }
 
   if (RSTRING_LEN(buf) != maxlen) {
@@ -67,14 +67,14 @@ mrb_io_sysread(mrb_state *mrb, mrb_value io)
   }
   ret = read(fptr->fd, RSTRING_PTR(buf), (fsize_t)maxlen);
   switch (ret) {
-    case 0: /* EOF */
+    case 0:
       if (maxlen == 0) {
         buf = mrb_str_new_cstr(mrb, "");
       } else {
         mrb_raise(mrb, E_EOF_ERROR, "sysread failed: End of File");
       }
       break;
-    case -1: /* Error */
+    case -1:
       mrb_sys_fail(mrb, "sysread failed");
       break;
     default:

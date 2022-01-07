@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct snd_soc_dapm_widget {int /*<<< orphan*/  dapm; } ;
+
+
+
+
+struct snd_soc_dapm_widget {int dapm; } ;
 struct snd_soc_component {int dummy; } ;
 struct snd_kcontrol {int dummy; } ;
-struct nau8824 {int /*<<< orphan*/  regmap; } ;
+struct nau8824 {int regmap; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  NAU8824_JAMNODCLOW ; 
- int /*<<< orphan*/  NAU8824_REG_CHARGE_PUMP_CONTROL ; 
-#define  SND_SOC_DAPM_POST_PMU 129 
-#define  SND_SOC_DAPM_PRE_PMD 128 
- int /*<<< orphan*/  msleep (int) ; 
- int /*<<< orphan*/  regmap_update_bits (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct nau8824* snd_soc_component_get_drvdata (struct snd_soc_component*) ; 
- struct snd_soc_component* snd_soc_dapm_to_component (int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ int NAU8824_JAMNODCLOW ;
+ int NAU8824_REG_CHARGE_PUMP_CONTROL ;
+
+
+ int msleep (int) ;
+ int regmap_update_bits (int ,int ,int ,int ) ;
+ struct nau8824* snd_soc_component_get_drvdata (struct snd_soc_component*) ;
+ struct snd_soc_component* snd_soc_dapm_to_component (int ) ;
 
 __attribute__((used)) static int nau8824_pump_event(struct snd_soc_dapm_widget *w,
-	struct snd_kcontrol *kcontrol, int event)
+ struct snd_kcontrol *kcontrol, int event)
 {
-	struct snd_soc_component *component = snd_soc_dapm_to_component(w->dapm);
-	struct nau8824 *nau8824 = snd_soc_component_get_drvdata(component);
+ struct snd_soc_component *component = snd_soc_dapm_to_component(w->dapm);
+ struct nau8824 *nau8824 = snd_soc_component_get_drvdata(component);
 
-	switch (event) {
-	case SND_SOC_DAPM_POST_PMU:
-		/* Prevent startup click by letting charge pump to ramp up */
-		msleep(10);
-		regmap_update_bits(nau8824->regmap,
-			NAU8824_REG_CHARGE_PUMP_CONTROL,
-			NAU8824_JAMNODCLOW, NAU8824_JAMNODCLOW);
-		break;
-	case SND_SOC_DAPM_PRE_PMD:
-		regmap_update_bits(nau8824->regmap,
-			NAU8824_REG_CHARGE_PUMP_CONTROL,
-			NAU8824_JAMNODCLOW, 0);
-		break;
-	default:
-		return -EINVAL;
-	}
+ switch (event) {
+ case 129:
 
-	return 0;
+  msleep(10);
+  regmap_update_bits(nau8824->regmap,
+   NAU8824_REG_CHARGE_PUMP_CONTROL,
+   NAU8824_JAMNODCLOW, NAU8824_JAMNODCLOW);
+  break;
+ case 128:
+  regmap_update_bits(nau8824->regmap,
+   NAU8824_REG_CHARGE_PUMP_CONTROL,
+   NAU8824_JAMNODCLOW, 0);
+  break;
+ default:
+  return -EINVAL;
+ }
+
+ return 0;
 }

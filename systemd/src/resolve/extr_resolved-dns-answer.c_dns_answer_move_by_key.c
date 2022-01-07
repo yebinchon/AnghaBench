@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * DnsResourceKey ;
-typedef  int /*<<< orphan*/  DnsAnswerFlags ;
-typedef  int /*<<< orphan*/  DnsAnswer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ * const*) ; 
- int dns_answer_copy_by_key (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ * const*,int /*<<< orphan*/ ) ; 
- int dns_answer_remove_by_key (int /*<<< orphan*/ **,int /*<<< orphan*/ * const*) ; 
+
+
+
+typedef int * DnsResourceKey ;
+typedef int DnsAnswerFlags ;
+typedef int DnsAnswer ;
+
+
+ int assert (int * const*) ;
+ int dns_answer_copy_by_key (int **,int *,int * const*,int ) ;
+ int dns_answer_remove_by_key (int **,int * const*) ;
 
 int dns_answer_move_by_key(DnsAnswer **to, DnsAnswer **from, const DnsResourceKey *key, DnsAnswerFlags or_flags) {
         int r;

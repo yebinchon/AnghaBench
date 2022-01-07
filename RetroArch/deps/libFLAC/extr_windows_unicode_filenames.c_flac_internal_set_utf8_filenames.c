@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ FLAC__bool ;
 
-/* Variables and functions */
- int utf8_filenames ; 
+
+
+
+typedef scalar_t__ FLAC__bool ;
+
+
+ int utf8_filenames ;
 
 void flac_internal_set_utf8_filenames(FLAC__bool flag)
 {
-	utf8_filenames = flag ? true : false;
+ utf8_filenames = flag ? 1 : 0;
 }

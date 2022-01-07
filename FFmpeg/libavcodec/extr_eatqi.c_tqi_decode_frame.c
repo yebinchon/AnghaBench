@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_12__ {int /*<<< orphan*/  (* bswap_buf ) (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int) ;} ;
-struct TYPE_13__ {int mb_y; int mb_x; int /*<<< orphan*/  block; scalar_t__* last_dc; int /*<<< orphan*/  bitstream_buf; int /*<<< orphan*/  gb; TYPE_1__ bsdsp; int /*<<< orphan*/  bitstream_buf_size; TYPE_4__* avctx; } ;
-typedef  TYPE_2__ TqiContext ;
+
+
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_12__ {int (* bswap_buf ) (int ,int const*,int) ;} ;
+struct TYPE_13__ {int mb_y; int mb_x; int block; scalar_t__* last_dc; int bitstream_buf; int gb; TYPE_1__ bsdsp; int bitstream_buf_size; TYPE_4__* avctx; } ;
+typedef TYPE_2__ TqiContext ;
 struct TYPE_15__ {TYPE_2__* priv_data; } ;
-struct TYPE_14__ {int size; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_3__ AVPacket ;
-typedef  int /*<<< orphan*/  AVFrame ;
-typedef  TYPE_4__ AVCodecContext ;
+struct TYPE_14__ {int size; int * data; } ;
+typedef TYPE_3__ AVPacket ;
+typedef int AVFrame ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int AV_RL16 (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_fast_padded_malloc (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int ff_get_buffer (TYPE_4__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int ff_set_dimensions (TYPE_4__*,int,int) ; 
- int /*<<< orphan*/  init_get_bits (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  tqi_calculate_qtable (TYPE_2__*,int /*<<< orphan*/  const) ; 
- scalar_t__ tqi_decode_mb (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tqi_idct_put (TYPE_4__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_RL16 (int const*) ;
+ int ENOMEM ;
+ int av_fast_padded_malloc (int *,int *,int) ;
+ int ff_get_buffer (TYPE_4__*,int *,int ) ;
+ int ff_set_dimensions (TYPE_4__*,int,int) ;
+ int init_get_bits (int *,int ,int) ;
+ int stub1 (int ,int const*,int) ;
+ int tqi_calculate_qtable (TYPE_2__*,int const) ;
+ scalar_t__ tqi_decode_mb (TYPE_2__*,int ) ;
+ int tqi_idct_put (TYPE_4__*,int *,int ) ;
 
 __attribute__((used)) static int tqi_decode_frame(AVCodecContext *avctx,
                             void *data, int *got_frame,

@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  emit_adc (int,int) ; 
- int /*<<< orphan*/  emit_adcimm (int,int) ; 
- int /*<<< orphan*/  emit_addimm_and_set_flags (int,int) ; 
- int /*<<< orphan*/  emit_andimm (int,int,int) ; 
- int /*<<< orphan*/  emit_mov (int,int) ; 
- int /*<<< orphan*/  emit_not (int,int) ; 
- int /*<<< orphan*/  emit_popreg (int) ; 
- int /*<<< orphan*/  emit_pushreg (int) ; 
- int /*<<< orphan*/  emit_shrimm (int,int,int) ; 
- int /*<<< orphan*/  emit_xor (int,int,int) ; 
+ int assert (int) ;
+ int emit_adc (int,int) ;
+ int emit_adcimm (int,int) ;
+ int emit_addimm_and_set_flags (int,int) ;
+ int emit_andimm (int,int,int) ;
+ int emit_mov (int,int) ;
+ int emit_not (int,int) ;
+ int emit_popreg (int) ;
+ int emit_pushreg (int) ;
+ int emit_shrimm (int,int,int) ;
+ int emit_xor (int,int,int) ;
 
 void emit_cmpstr(int s1, int s2, int sr, int temp)
 {
-  // Compare s1 and s2.  If any byte is equal, set T.
-  // Calculates the xor of the strings, then checks if any byte is
-  // zero by subtracting 1 from each byte.  If there is a carry/borrow
-  // then a byte was zero.
+
+
+
+
   assert(temp>=0);
   emit_pushreg(s2);
   emit_xor(s1,s2,s2);

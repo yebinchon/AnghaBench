@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ngx_event_t ;
 
-/* Variables and functions */
- scalar_t__ ngx_http_upstream_check_need_exit () ; 
+
+
+
+typedef int ngx_event_t ;
+
+
+ scalar_t__ ngx_http_upstream_check_need_exit () ;
 
 __attribute__((used)) static void
 ngx_http_upstream_check_finish_handler(ngx_event_t *event)

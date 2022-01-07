@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  err (int,char*) ; 
- int /*<<< orphan*/  kqfd ; 
- int /*<<< orphan*/  success () ; 
- int /*<<< orphan*/  test_begin (char*) ; 
+ scalar_t__ close (int ) ;
+ int err (int,char*) ;
+ int kqfd ;
+ int success () ;
+ int test_begin (char*) ;
 
 void
 test_kqueue_close(void)

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab_cursor ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-struct TYPE_3__ {scalar_t__ nPrefix; scalar_t__ zPrefix; int nLine; char* zLine; int /*<<< orphan*/  ePhase; scalar_t__ iRowid; } ;
-typedef  TYPE_1__ completion_cursor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMPLETION_FIRST_PHASE ; 
- int SQLITE_NOMEM ; 
- int /*<<< orphan*/  completionCursorReset (TYPE_1__*) ; 
- int completionNext (int /*<<< orphan*/ *) ; 
- scalar_t__ isalnum (char) ; 
- void* sqlite3_mprintf (char*,int,...) ; 
- void* sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int sqlite3_vtab_cursor ;
+typedef int sqlite3_value ;
+struct TYPE_3__ {scalar_t__ nPrefix; scalar_t__ zPrefix; int nLine; char* zLine; int ePhase; scalar_t__ iRowid; } ;
+typedef TYPE_1__ completion_cursor ;
+
+
+ int COMPLETION_FIRST_PHASE ;
+ int SQLITE_NOMEM ;
+ int completionCursorReset (TYPE_1__*) ;
+ int completionNext (int *) ;
+ scalar_t__ isalnum (char) ;
+ void* sqlite3_mprintf (char*,int,...) ;
+ void* sqlite3_value_bytes (int *) ;
+ int sqlite3_value_text (int *) ;
 
 __attribute__((used)) static int completionFilter(
-  sqlite3_vtab_cursor *pVtabCursor, 
+  sqlite3_vtab_cursor *pVtabCursor,
   int idxNum, const char *idxStr,
   int argc, sqlite3_value **argv
 ){
   completion_cursor *pCur = (completion_cursor *)pVtabCursor;
   int iArg = 0;
-  (void)(idxStr);   /* Unused parameter */
-  (void)(argc);     /* Unused parameter */
+  (void)(idxStr);
+  (void)(argc);
   completionCursorReset(pCur);
   if( idxNum & 1 ){
     pCur->nPrefix = sqlite3_value_bytes(argv[iArg]);

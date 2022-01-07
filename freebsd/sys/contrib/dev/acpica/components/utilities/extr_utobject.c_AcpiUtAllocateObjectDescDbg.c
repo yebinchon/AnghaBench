@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT32 ;
-typedef  int /*<<< orphan*/  ACPI_OPERAND_OBJECT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_DB_ALLOCATIONS ; 
- int /*<<< orphan*/  ACPI_DEBUG_PRINT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_DESC_TYPE_OPERAND ; 
- int /*<<< orphan*/  ACPI_ERROR (char const*) ; 
- int /*<<< orphan*/  ACPI_FUNCTION_TRACE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_SET_DESCRIPTOR_TYPE (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiGbl_OperandCache ; 
- int /*<<< orphan*/ * AcpiOsAcquireObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UtAllocateObjectDescDbg ; 
- int /*<<< orphan*/  return_PTR (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int UINT32 ;
+typedef int ACPI_OPERAND_OBJECT ;
+
+
+ int ACPI_DB_ALLOCATIONS ;
+ int ACPI_DEBUG_PRINT (int ) ;
+ int ACPI_DESC_TYPE_OPERAND ;
+ int ACPI_ERROR (char const*) ;
+ int ACPI_FUNCTION_TRACE (int ) ;
+ int ACPI_SET_DESCRIPTOR_TYPE (int *,int ) ;
+ int AcpiGbl_OperandCache ;
+ int * AcpiOsAcquireObject (int ) ;
+ int UtAllocateObjectDescDbg ;
+ int return_PTR (int *) ;
 
 void *
 AcpiUtAllocateObjectDescDbg (
-    const char              *ModuleName,
-    UINT32                  LineNumber,
-    UINT32                  ComponentId)
+    const char *ModuleName,
+    UINT32 LineNumber,
+    UINT32 ComponentId)
 {
-    ACPI_OPERAND_OBJECT     *Object;
+    ACPI_OPERAND_OBJECT *Object;
 
 
     ACPI_FUNCTION_TRACE (UtAllocateObjectDescDbg);
@@ -43,10 +43,10 @@ AcpiUtAllocateObjectDescDbg (
         ACPI_ERROR ((ModuleName, LineNumber,
             "Could not allocate an object descriptor"));
 
-        return_PTR (NULL);
+        return_PTR (((void*)0));
     }
 
-    /* Mark the descriptor type */
+
 
     ACPI_SET_DESCRIPTOR_TYPE (Object, ACPI_DESC_TYPE_OPERAND);
 

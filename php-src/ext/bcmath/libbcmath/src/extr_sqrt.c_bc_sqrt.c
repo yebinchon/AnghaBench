@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_28__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* bc_num ;
+
+
+typedef struct TYPE_28__ TYPE_1__ ;
+
+
+typedef TYPE_1__* bc_num ;
 struct TYPE_28__ {int n_scale; int* n_value; int n_len; } ;
 
-/* Variables and functions */
- TYPE_1__* BCG (int /*<<< orphan*/ ) ; 
- int FALSE ; 
- int MAX (int,int) ; 
- int MIN (int,int) ; 
- int TRUE ; 
- int /*<<< orphan*/  _one_ ; 
- int /*<<< orphan*/  _zero_ ; 
- int /*<<< orphan*/  bc_add (TYPE_1__*,TYPE_1__*,TYPE_1__**,int /*<<< orphan*/ ) ; 
- int bc_compare (TYPE_1__*,TYPE_1__*) ; 
- TYPE_1__* bc_copy_num (TYPE_1__*) ; 
- int /*<<< orphan*/  bc_divide (TYPE_1__*,TYPE_1__*,TYPE_1__**,int) ; 
- int /*<<< orphan*/  bc_free_num (TYPE_1__**) ; 
- int /*<<< orphan*/  bc_init_num (TYPE_1__**) ; 
- int /*<<< orphan*/  bc_int2num (TYPE_1__**,int) ; 
- scalar_t__ bc_is_near_zero (TYPE_1__*,int) ; 
- int /*<<< orphan*/  bc_multiply (TYPE_1__*,TYPE_1__*,TYPE_1__**,int) ; 
- TYPE_1__* bc_new_num (int,int) ; 
- int /*<<< orphan*/  bc_raise (TYPE_1__*,TYPE_1__*,TYPE_1__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bc_sub (TYPE_1__*,TYPE_1__*,TYPE_1__**,int) ; 
+
+ TYPE_1__* BCG (int ) ;
+ int FALSE ;
+ int MAX (int,int) ;
+ int MIN (int,int) ;
+ int TRUE ;
+ int _one_ ;
+ int _zero_ ;
+ int bc_add (TYPE_1__*,TYPE_1__*,TYPE_1__**,int ) ;
+ int bc_compare (TYPE_1__*,TYPE_1__*) ;
+ TYPE_1__* bc_copy_num (TYPE_1__*) ;
+ int bc_divide (TYPE_1__*,TYPE_1__*,TYPE_1__**,int) ;
+ int bc_free_num (TYPE_1__**) ;
+ int bc_init_num (TYPE_1__**) ;
+ int bc_int2num (TYPE_1__**,int) ;
+ scalar_t__ bc_is_near_zero (TYPE_1__*,int) ;
+ int bc_multiply (TYPE_1__*,TYPE_1__*,TYPE_1__**,int) ;
+ TYPE_1__* bc_new_num (int,int) ;
+ int bc_raise (TYPE_1__*,TYPE_1__*,TYPE_1__**,int ) ;
+ int bc_sub (TYPE_1__*,TYPE_1__*,TYPE_1__**,int) ;
 
 int
 bc_sqrt (bc_num *num, int scale)
@@ -42,18 +42,18 @@ bc_sqrt (bc_num *num, int scale)
   int cscale;
   bc_num guess, guess1, point5, diff;
 
-  /* Initial checks. */
+
   cmp_res = bc_compare (*num, BCG(_zero_));
   if (cmp_res < 0)
-    return 0;		/* error */
+    return 0;
   else
     {
       if (cmp_res == 0)
-	{
-	  bc_free_num (num);
-	  *num = bc_copy_num (BCG(_zero_));
-	  return 1;
-	}
+ {
+   bc_free_num (num);
+   *num = bc_copy_num (BCG(_zero_));
+   return 1;
+ }
     }
   cmp_res = bc_compare (*num, BCG(_one_));
   if (cmp_res == 0)
@@ -63,7 +63,7 @@ bc_sqrt (bc_num *num, int scale)
       return 1;
     }
 
-  /* Initialize the variables. */
+
   rscale = MAX (scale, (*num)->n_scale);
   bc_init_num(&guess);
   bc_init_num(&guess1);
@@ -72,16 +72,16 @@ bc_sqrt (bc_num *num, int scale)
   point5->n_value[1] = 5;
 
 
-  /* Calculate the initial guess. */
+
   if (cmp_res < 0)
     {
-      /* The number is between 0 and 1.  Guess should start at 1. */
+
       guess = bc_copy_num (BCG(_one_));
       cscale = (*num)->n_scale;
     }
   else
     {
-      /* The number is greater than 1.  Guess should start at 10^(exp/2). */
+
       bc_int2num (&guess,10);
 
       bc_int2num (&guess1,(*num)->n_len);
@@ -92,7 +92,7 @@ bc_sqrt (bc_num *num, int scale)
       cscale = 3;
     }
 
-  /* Find the square root using Newton's algorithm. */
+
   done = FALSE;
   while (!done)
     {
@@ -103,15 +103,15 @@ bc_sqrt (bc_num *num, int scale)
       bc_multiply (guess, point5, &guess, cscale);
       bc_sub (guess, guess1, &diff, cscale+1);
       if (bc_is_near_zero (diff, cscale))
-	{
-	  if (cscale < rscale+1)
-	    cscale = MIN (cscale*3, rscale+1);
-	  else
-	    done = TRUE;
-	}
+ {
+   if (cscale < rscale+1)
+     cscale = MIN (cscale*3, rscale+1);
+   else
+     done = TRUE;
+ }
     }
 
-  /* Assign the number and clean up. */
+
   bc_free_num (num);
   bc_divide (guess,BCG(_one_),num,rscale);
   bc_free_num (&guess);

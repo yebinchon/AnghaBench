@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct efx_nic {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MDIO_MMD_PHYXS ; 
- int /*<<< orphan*/  TXC_GPIO_OUTPUT ; 
- int /*<<< orphan*/  efx_mdio_set_flag (struct efx_nic*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
+
+ int MDIO_MMD_PHYXS ;
+ int TXC_GPIO_OUTPUT ;
+ int efx_mdio_set_flag (struct efx_nic*,int ,int ,int,int) ;
 
 void falcon_txc_set_gpio_val(struct efx_nic *efx, int pin, int on)
 {
-	efx_mdio_set_flag(efx, MDIO_MMD_PHYXS, TXC_GPIO_OUTPUT, 1 << pin, on);
+ efx_mdio_set_flag(efx, MDIO_MMD_PHYXS, TXC_GPIO_OUTPUT, 1 << pin, on);
 }

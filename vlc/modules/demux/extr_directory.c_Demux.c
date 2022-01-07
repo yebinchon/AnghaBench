@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  input_item_node_t ;
-struct TYPE_4__ {int /*<<< orphan*/  out; int /*<<< orphan*/  s; int /*<<< orphan*/  p_input_item; } ;
-typedef  TYPE_1__ demux_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ES_OUT_POST_SUBNODE ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- scalar_t__ es_out_Control (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * input_item_node_Create (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  input_item_node_Delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_1__*,char*) ; 
- scalar_t__ vlc_stream_ReadDir (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int input_item_node_t ;
+struct TYPE_4__ {int out; int s; int p_input_item; } ;
+typedef TYPE_1__ demux_t ;
+
+
+ int ES_OUT_POST_SUBNODE ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ scalar_t__ es_out_Control (int ,int ,int *) ;
+ int * input_item_node_Create (int ) ;
+ int input_item_node_Delete (int *) ;
+ int msg_Warn (TYPE_1__*,char*) ;
+ scalar_t__ vlc_stream_ReadDir (int ,int *) ;
 
 __attribute__((used)) static int Demux( demux_t *p_demux )
 {

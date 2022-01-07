@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  double UINT32 ;
-typedef  unsigned int REFERENCE_TIME ;
-typedef  int /*<<< orphan*/  IMMDevice ;
-typedef  int /*<<< orphan*/  IAudioClient ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RARCH_LOG (char*,...) ; 
- int /*<<< orphan*/  RARCH_WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _IAudioClient_GetBufferSize (int /*<<< orphan*/ *,double*) ; 
- int /*<<< orphan*/  _IAudioClient_GetDevicePeriod (int /*<<< orphan*/ *,unsigned int*,unsigned int*) ; 
- int /*<<< orphan*/  _IAudioClient_GetStreamLatency (int /*<<< orphan*/ *,unsigned int*) ; 
- int /*<<< orphan*/ * wasapi_init_client_ex (int /*<<< orphan*/ *,int*,unsigned int*,unsigned int) ; 
- int /*<<< orphan*/ * wasapi_init_client_sh (int /*<<< orphan*/ *,int*,unsigned int*,unsigned int) ; 
+
+
+
+typedef double UINT32 ;
+typedef unsigned int REFERENCE_TIME ;
+typedef int IMMDevice ;
+typedef int IAudioClient ;
+typedef int HRESULT ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int RARCH_LOG (char*,...) ;
+ int RARCH_WARN (char*,int ) ;
+ int _IAudioClient_GetBufferSize (int *,double*) ;
+ int _IAudioClient_GetDevicePeriod (int *,unsigned int*,unsigned int*) ;
+ int _IAudioClient_GetStreamLatency (int *,unsigned int*) ;
+ int * wasapi_init_client_ex (int *,int*,unsigned int*,unsigned int) ;
+ int * wasapi_init_client_sh (int *,int*,unsigned int*,unsigned int) ;
 
 __attribute__((used)) static IAudioClient *wasapi_init_client(IMMDevice *device, bool *exclusive,
       bool *float_fmt, unsigned *rate, unsigned latency)
@@ -32,9 +32,9 @@ __attribute__((used)) static IAudioClient *wasapi_init_client(IMMDevice *device,
    HRESULT hr;
    IAudioClient *client;
    double latency_res;
-   REFERENCE_TIME device_period  = 0;
+   REFERENCE_TIME device_period = 0;
    REFERENCE_TIME stream_latency = 0;
-   UINT32 buffer_length          = 0;
+   UINT32 buffer_length = 0;
 
    if (*exclusive)
    {
@@ -43,7 +43,7 @@ __attribute__((used)) static IAudioClient *wasapi_init_client(IMMDevice *device,
       {
          client = wasapi_init_client_sh(device, float_fmt, rate, latency);
          if (client)
-            *exclusive = false;
+            *exclusive = 0;
       }
    }
    else
@@ -53,19 +53,19 @@ __attribute__((used)) static IAudioClient *wasapi_init_client(IMMDevice *device,
       {
          client = wasapi_init_client_ex(device, float_fmt, rate, latency);
          if (client)
-            *exclusive = true;
+            *exclusive = 1;
       }
    }
 
    if (!client)
-      return NULL;
+      return ((void*)0);
 
-   /* next calls are allowed to fail (we losing info only) */
+
 
    if (*exclusive)
-      hr = _IAudioClient_GetDevicePeriod(client, NULL, &device_period);
+      hr = _IAudioClient_GetDevicePeriod(client, ((void*)0), &device_period);
    else
-      hr = _IAudioClient_GetDevicePeriod(client, &device_period, NULL);
+      hr = _IAudioClient_GetDevicePeriod(client, &device_period, ((void*)0));
 
    if (FAILED(hr))
    {

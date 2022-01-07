@@ -1,127 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_8__ ;
-typedef  struct TYPE_15__   TYPE_7__ ;
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  val ;
-struct TYPE_14__ {int is_fixed_pitch; scalar_t__ italic_angle; scalar_t__ weight; scalar_t__ family_name; scalar_t__ full_name; scalar_t__ notice; scalar_t__ version; int /*<<< orphan*/  underline_thickness; int /*<<< orphan*/  underline_position; } ;
-struct TYPE_13__ {int /*<<< orphan*/  fs_type; } ;
-struct TYPE_12__ {int num_blue_values; int num_other_blues; int num_family_blues; int num_family_other_blues; int num_snap_widths; int num_snap_heights; int round_stem_up; int force_bold; scalar_t__ password; scalar_t__ language_group; int /*<<< orphan*/  lenIV; int /*<<< orphan*/ * min_feature; int /*<<< orphan*/ * snap_heights; int /*<<< orphan*/ * snap_widths; int /*<<< orphan*/ * family_other_blues; int /*<<< orphan*/ * family_blues; int /*<<< orphan*/ * other_blues; int /*<<< orphan*/  blue_shift; int /*<<< orphan*/  blue_fuzz; int /*<<< orphan*/  blue_scale; int /*<<< orphan*/ * blue_values; int /*<<< orphan*/ * standard_height; int /*<<< orphan*/ * standard_width; int /*<<< orphan*/  unique_id; } ;
-struct TYPE_11__ {scalar_t__* char_name; int /*<<< orphan*/  num_chars; } ;
-struct TYPE_10__ {int /*<<< orphan*/  yMax; int /*<<< orphan*/  xMax; int /*<<< orphan*/  yMin; int /*<<< orphan*/  xMin; } ;
-struct TYPE_9__ {int /*<<< orphan*/  yy; int /*<<< orphan*/  yx; int /*<<< orphan*/  xy; int /*<<< orphan*/  xx; } ;
-struct TYPE_15__ {int font_type; int paint_type; TYPE_6__ font_info; TYPE_5__ font_extra; TYPE_4__ private_dict; scalar_t__* subrs; int /*<<< orphan*/ * subrs_len; int /*<<< orphan*/  num_subrs; int /*<<< orphan*/  subrs_hash; TYPE_3__ encoding; int /*<<< orphan*/  encoding_type; scalar_t__* charstrings; int /*<<< orphan*/ * charstrings_len; int /*<<< orphan*/  num_glyphs; scalar_t__* glyph_names; scalar_t__ font_name; TYPE_2__ font_bbox; TYPE_1__ font_matrix; } ;
+
+
+typedef struct TYPE_16__ TYPE_8__ ;
+typedef struct TYPE_15__ TYPE_7__ ;
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int val ;
+struct TYPE_14__ {int is_fixed_pitch; scalar_t__ italic_angle; scalar_t__ weight; scalar_t__ family_name; scalar_t__ full_name; scalar_t__ notice; scalar_t__ version; int underline_thickness; int underline_position; } ;
+struct TYPE_13__ {int fs_type; } ;
+struct TYPE_12__ {int num_blue_values; int num_other_blues; int num_family_blues; int num_family_other_blues; int num_snap_widths; int num_snap_heights; int round_stem_up; int force_bold; scalar_t__ password; scalar_t__ language_group; int lenIV; int * min_feature; int * snap_heights; int * snap_widths; int * family_other_blues; int * family_blues; int * other_blues; int blue_shift; int blue_fuzz; int blue_scale; int * blue_values; int * standard_height; int * standard_width; int unique_id; } ;
+struct TYPE_11__ {scalar_t__* char_name; int num_chars; } ;
+struct TYPE_10__ {int yMax; int xMax; int yMin; int xMin; } ;
+struct TYPE_9__ {int yy; int yx; int xy; int xx; } ;
+struct TYPE_15__ {int font_type; int paint_type; TYPE_6__ font_info; TYPE_5__ font_extra; TYPE_4__ private_dict; scalar_t__* subrs; int * subrs_len; int num_subrs; int subrs_hash; TYPE_3__ encoding; int encoding_type; scalar_t__* charstrings; int * charstrings_len; int num_glyphs; scalar_t__* glyph_names; scalar_t__ font_name; TYPE_2__ font_bbox; TYPE_1__ font_matrix; } ;
 struct TYPE_16__ {TYPE_7__ type1; } ;
-typedef  TYPE_7__* T1_Font ;
-typedef  TYPE_8__* T1_Face ;
-typedef  int /*<<< orphan*/  T1_EncodingType ;
-typedef  int PS_Dict_Keys ;
-typedef  int /*<<< orphan*/  FT_UShort ;
-typedef  size_t FT_ULong ;
-typedef  int FT_UInt ;
-typedef  int /*<<< orphan*/  FT_Short ;
-typedef  scalar_t__ FT_Long ;
-typedef  int /*<<< orphan*/  FT_Int ;
-typedef  int /*<<< orphan*/  FT_Fixed ;
-typedef  int /*<<< orphan*/  FT_Face ;
-typedef  int /*<<< orphan*/  FT_Char ;
-typedef  int FT_Byte ;
-typedef  int FT_Bool ;
-
-/* Variables and functions */
-#define  PS_DICT_BLUE_FUZZ 173 
-#define  PS_DICT_BLUE_SCALE 172 
-#define  PS_DICT_BLUE_SHIFT 171 
-#define  PS_DICT_BLUE_VALUE 170 
-#define  PS_DICT_CHAR_STRING 169 
-#define  PS_DICT_CHAR_STRING_KEY 168 
-#define  PS_DICT_ENCODING_ENTRY 167 
-#define  PS_DICT_ENCODING_TYPE 166 
-#define  PS_DICT_FAMILY_BLUE 165 
-#define  PS_DICT_FAMILY_NAME 164 
-#define  PS_DICT_FAMILY_OTHER_BLUE 163 
-#define  PS_DICT_FONT_BBOX 162 
-#define  PS_DICT_FONT_MATRIX 161 
-#define  PS_DICT_FONT_NAME 160 
-#define  PS_DICT_FONT_TYPE 159 
-#define  PS_DICT_FORCE_BOLD 158 
-#define  PS_DICT_FS_TYPE 157 
-#define  PS_DICT_FULL_NAME 156 
-#define  PS_DICT_IS_FIXED_PITCH 155 
-#define  PS_DICT_ITALIC_ANGLE 154 
-#define  PS_DICT_LANGUAGE_GROUP 153 
-#define  PS_DICT_LEN_IV 152 
-#define  PS_DICT_MIN_FEATURE 151 
-#define  PS_DICT_NOTICE 150 
-#define  PS_DICT_NUM_BLUE_VALUES 149 
-#define  PS_DICT_NUM_CHAR_STRINGS 148 
-#define  PS_DICT_NUM_FAMILY_BLUES 147 
-#define  PS_DICT_NUM_FAMILY_OTHER_BLUES 146 
-#define  PS_DICT_NUM_OTHER_BLUES 145 
-#define  PS_DICT_NUM_STEM_SNAP_H 144 
-#define  PS_DICT_NUM_STEM_SNAP_V 143 
-#define  PS_DICT_NUM_SUBRS 142 
-#define  PS_DICT_OTHER_BLUE 141 
-#define  PS_DICT_PAINT_TYPE 140 
-#define  PS_DICT_PASSWORD 139 
-#define  PS_DICT_RND_STEM_UP 138 
-#define  PS_DICT_STD_HW 137 
-#define  PS_DICT_STD_VW 136 
-#define  PS_DICT_STEM_SNAP_H 135 
-#define  PS_DICT_STEM_SNAP_V 134 
-#define  PS_DICT_SUBR 133 
-#define  PS_DICT_UNDERLINE_POSITION 132 
-#define  PS_DICT_UNDERLINE_THICKNESS 131 
-#define  PS_DICT_UNIQUE_ID 130 
-#define  PS_DICT_VERSION 129 
-#define  PS_DICT_WEIGHT 128 
- int /*<<< orphan*/  T1_ENCODING_TYPE_ARRAY ; 
- size_t* ft_hash_num_lookup (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ft_memcpy (void*,void*,size_t) ; 
- int /*<<< orphan*/  ft_strlen (scalar_t__) ; 
+typedef TYPE_7__* T1_Font ;
+typedef TYPE_8__* T1_Face ;
+typedef int T1_EncodingType ;
+typedef int PS_Dict_Keys ;
+typedef int FT_UShort ;
+typedef size_t FT_ULong ;
+typedef int FT_UInt ;
+typedef int FT_Short ;
+typedef scalar_t__ FT_Long ;
+typedef int FT_Int ;
+typedef int FT_Fixed ;
+typedef int FT_Face ;
+typedef int FT_Char ;
+typedef int FT_Byte ;
+typedef int FT_Bool ;
+ int T1_ENCODING_TYPE_ARRAY ;
+ size_t* ft_hash_num_lookup (int ,int ) ;
+ int ft_memcpy (void*,void*,size_t) ;
+ int ft_strlen (scalar_t__) ;
 
 __attribute__((used)) static FT_Long
-  t1_ps_get_font_value( FT_Face       face,
-                        PS_Dict_Keys  key,
-                        FT_UInt       idx,
-                        void         *value,
-                        FT_Long       value_len_ )
+  t1_ps_get_font_value( FT_Face face,
+                        PS_Dict_Keys key,
+                        FT_UInt idx,
+                        void *value,
+                        FT_Long value_len_ )
   {
-    FT_ULong  retval    = 0; /* always >= 1 if valid */
-    FT_ULong  value_len = value_len_ < 0 ? 0 : (FT_ULong)value_len_;
+    FT_ULong retval = 0;
+    FT_ULong value_len = value_len_ < 0 ? 0 : (FT_ULong)value_len_;
 
-    T1_Face  t1face = (T1_Face)face;
-    T1_Font  type1  = &t1face->type1;
+    T1_Face t1face = (T1_Face)face;
+    T1_Font type1 = &t1face->type1;
 
 
     switch ( key )
     {
-    case PS_DICT_FONT_TYPE:
+    case 159:
       retval = sizeof ( type1->font_type );
       if ( value && value_len >= retval )
         *((FT_Byte *)value) = type1->font_type;
       break;
 
-    case PS_DICT_FONT_MATRIX:
+    case 161:
       if ( idx < sizeof ( type1->font_matrix ) /
                    sizeof ( type1->font_matrix.xx ) )
       {
-        FT_Fixed  val = 0;
+        FT_Fixed val = 0;
 
 
         retval = sizeof ( val );
@@ -147,11 +99,11 @@ __attribute__((used)) static FT_Long
       }
       break;
 
-    case PS_DICT_FONT_BBOX:
+    case 162:
       if ( idx < sizeof ( type1->font_bbox ) /
                    sizeof ( type1->font_bbox.xMin ) )
       {
-        FT_Fixed  val = 0;
+        FT_Fixed val = 0;
 
 
         retval = sizeof ( val );
@@ -177,13 +129,13 @@ __attribute__((used)) static FT_Long
       }
       break;
 
-    case PS_DICT_PAINT_TYPE:
+    case 140:
       retval = sizeof ( type1->paint_type );
       if ( value && value_len >= retval )
         *((FT_Byte *)value) = type1->paint_type;
       break;
 
-    case PS_DICT_FONT_NAME:
+    case 160:
       if ( type1->font_name )
       {
         retval = ft_strlen( type1->font_name ) + 1;
@@ -192,19 +144,19 @@ __attribute__((used)) static FT_Long
       }
       break;
 
-    case PS_DICT_UNIQUE_ID:
+    case 130:
       retval = sizeof ( type1->private_dict.unique_id );
       if ( value && value_len >= retval )
         *((FT_Int *)value) = type1->private_dict.unique_id;
       break;
 
-    case PS_DICT_NUM_CHAR_STRINGS:
+    case 148:
       retval = sizeof ( type1->num_glyphs );
       if ( value && value_len >= retval )
         *((FT_Int *)value) = type1->num_glyphs;
       break;
 
-    case PS_DICT_CHAR_STRING_KEY:
+    case 168:
       if ( idx < (FT_UInt)type1->num_glyphs )
       {
         retval = ft_strlen( type1->glyph_names[idx] ) + 1;
@@ -216,7 +168,7 @@ __attribute__((used)) static FT_Long
       }
       break;
 
-    case PS_DICT_CHAR_STRING:
+    case 169:
       if ( idx < (FT_UInt)type1->num_glyphs )
       {
         retval = type1->charstrings_len[idx] + 1;
@@ -229,15 +181,15 @@ __attribute__((used)) static FT_Long
       }
       break;
 
-    case PS_DICT_ENCODING_TYPE:
+    case 166:
       retval = sizeof ( type1->encoding_type );
       if ( value && value_len >= retval )
         *((T1_EncodingType *)value) = type1->encoding_type;
       break;
 
-    case PS_DICT_ENCODING_ENTRY:
+    case 167:
       if ( type1->encoding_type == T1_ENCODING_TYPE_ARRAY &&
-           idx < (FT_UInt)type1->encoding.num_chars       )
+           idx < (FT_UInt)type1->encoding.num_chars )
       {
         retval = ft_strlen( type1->encoding.char_name[idx] ) + 1;
         if ( value && value_len >= retval )
@@ -249,28 +201,28 @@ __attribute__((used)) static FT_Long
       }
       break;
 
-    case PS_DICT_NUM_SUBRS:
+    case 142:
       retval = sizeof ( type1->num_subrs );
       if ( value && value_len >= retval )
         *((FT_Int *)value) = type1->num_subrs;
       break;
 
-    case PS_DICT_SUBR:
+    case 133:
       {
-        FT_Bool  ok = 0;
+        FT_Bool ok = 0;
 
 
         if ( type1->subrs_hash )
         {
-          /* convert subr index to array index */
-          size_t*  val = ft_hash_num_lookup( (FT_Int)idx,
+
+          size_t* val = ft_hash_num_lookup( (FT_Int)idx,
                                              type1->subrs_hash );
 
 
           if ( val )
           {
             idx = *val;
-            ok  = 1;
+            ok = 1;
           }
         }
         else
@@ -291,25 +243,25 @@ __attribute__((used)) static FT_Long
       }
       break;
 
-    case PS_DICT_STD_HW:
+    case 137:
       retval = sizeof ( type1->private_dict.standard_width[0] );
       if ( value && value_len >= retval )
         *((FT_UShort *)value) = type1->private_dict.standard_width[0];
       break;
 
-    case PS_DICT_STD_VW:
+    case 136:
       retval = sizeof ( type1->private_dict.standard_height[0] );
       if ( value && value_len >= retval )
         *((FT_UShort *)value) = type1->private_dict.standard_height[0];
       break;
 
-    case PS_DICT_NUM_BLUE_VALUES:
+    case 149:
       retval = sizeof ( type1->private_dict.num_blue_values );
       if ( value && value_len >= retval )
         *((FT_Byte *)value) = type1->private_dict.num_blue_values;
       break;
 
-    case PS_DICT_BLUE_VALUE:
+    case 170:
       if ( idx < type1->private_dict.num_blue_values )
       {
         retval = sizeof ( type1->private_dict.blue_values[idx] );
@@ -318,31 +270,31 @@ __attribute__((used)) static FT_Long
       }
       break;
 
-    case PS_DICT_BLUE_SCALE:
+    case 172:
       retval = sizeof ( type1->private_dict.blue_scale );
       if ( value && value_len >= retval )
         *((FT_Fixed *)value) = type1->private_dict.blue_scale;
       break;
 
-    case PS_DICT_BLUE_FUZZ:
+    case 173:
       retval = sizeof ( type1->private_dict.blue_fuzz );
       if ( value && value_len >= retval )
         *((FT_Int *)value) = type1->private_dict.blue_fuzz;
       break;
 
-    case PS_DICT_BLUE_SHIFT:
+    case 171:
       retval = sizeof ( type1->private_dict.blue_shift );
       if ( value && value_len >= retval )
         *((FT_Int *)value) = type1->private_dict.blue_shift;
       break;
 
-    case PS_DICT_NUM_OTHER_BLUES:
+    case 145:
       retval = sizeof ( type1->private_dict.num_other_blues );
       if ( value && value_len >= retval )
         *((FT_Byte *)value) = type1->private_dict.num_other_blues;
       break;
 
-    case PS_DICT_OTHER_BLUE:
+    case 141:
       if ( idx < type1->private_dict.num_other_blues )
       {
         retval = sizeof ( type1->private_dict.other_blues[idx] );
@@ -351,13 +303,13 @@ __attribute__((used)) static FT_Long
       }
       break;
 
-    case PS_DICT_NUM_FAMILY_BLUES:
+    case 147:
       retval = sizeof ( type1->private_dict.num_family_blues );
       if ( value && value_len >= retval )
         *((FT_Byte *)value) = type1->private_dict.num_family_blues;
       break;
 
-    case PS_DICT_FAMILY_BLUE:
+    case 165:
       if ( idx < type1->private_dict.num_family_blues )
       {
         retval = sizeof ( type1->private_dict.family_blues[idx] );
@@ -366,13 +318,13 @@ __attribute__((used)) static FT_Long
       }
       break;
 
-    case PS_DICT_NUM_FAMILY_OTHER_BLUES:
+    case 146:
       retval = sizeof ( type1->private_dict.num_family_other_blues );
       if ( value && value_len >= retval )
         *((FT_Byte *)value) = type1->private_dict.num_family_other_blues;
       break;
 
-    case PS_DICT_FAMILY_OTHER_BLUE:
+    case 163:
       if ( idx < type1->private_dict.num_family_other_blues )
       {
         retval = sizeof ( type1->private_dict.family_other_blues[idx] );
@@ -381,13 +333,13 @@ __attribute__((used)) static FT_Long
       }
       break;
 
-    case PS_DICT_NUM_STEM_SNAP_H:
+    case 144:
       retval = sizeof ( type1->private_dict.num_snap_widths );
       if ( value && value_len >= retval )
         *((FT_Byte *)value) = type1->private_dict.num_snap_widths;
       break;
 
-    case PS_DICT_STEM_SNAP_H:
+    case 135:
       if ( idx < type1->private_dict.num_snap_widths )
       {
         retval = sizeof ( type1->private_dict.snap_widths[idx] );
@@ -396,13 +348,13 @@ __attribute__((used)) static FT_Long
       }
       break;
 
-    case PS_DICT_NUM_STEM_SNAP_V:
+    case 143:
       retval = sizeof ( type1->private_dict.num_snap_heights );
       if ( value && value_len >= retval )
         *((FT_Byte *)value) = type1->private_dict.num_snap_heights;
       break;
 
-    case PS_DICT_STEM_SNAP_V:
+    case 134:
       if ( idx < type1->private_dict.num_snap_heights )
       {
         retval = sizeof ( type1->private_dict.snap_heights[idx] );
@@ -411,19 +363,19 @@ __attribute__((used)) static FT_Long
       }
       break;
 
-    case PS_DICT_RND_STEM_UP:
+    case 138:
       retval = sizeof ( type1->private_dict.round_stem_up );
       if ( value && value_len >= retval )
         *((FT_Bool *)value) = type1->private_dict.round_stem_up;
       break;
 
-    case PS_DICT_FORCE_BOLD:
+    case 158:
       retval = sizeof ( type1->private_dict.force_bold );
       if ( value && value_len >= retval )
         *((FT_Bool *)value) = type1->private_dict.force_bold;
       break;
 
-    case PS_DICT_MIN_FEATURE:
+    case 151:
       if ( idx < sizeof ( type1->private_dict.min_feature ) /
                    sizeof ( type1->private_dict.min_feature[0] ) )
       {
@@ -433,49 +385,49 @@ __attribute__((used)) static FT_Long
       }
       break;
 
-    case PS_DICT_LEN_IV:
+    case 152:
       retval = sizeof ( type1->private_dict.lenIV );
       if ( value && value_len >= retval )
         *((FT_Int *)value) = type1->private_dict.lenIV;
       break;
 
-    case PS_DICT_PASSWORD:
+    case 139:
       retval = sizeof ( type1->private_dict.password );
       if ( value && value_len >= retval )
         *((FT_Long *)value) = type1->private_dict.password;
       break;
 
-    case PS_DICT_LANGUAGE_GROUP:
+    case 153:
       retval = sizeof ( type1->private_dict.language_group );
       if ( value && value_len >= retval )
         *((FT_Long *)value) = type1->private_dict.language_group;
       break;
 
-    case PS_DICT_IS_FIXED_PITCH:
+    case 155:
       retval = sizeof ( type1->font_info.is_fixed_pitch );
       if ( value && value_len >= retval )
         *((FT_Bool *)value) = type1->font_info.is_fixed_pitch;
       break;
 
-    case PS_DICT_UNDERLINE_POSITION:
+    case 132:
       retval = sizeof ( type1->font_info.underline_position );
       if ( value && value_len >= retval )
         *((FT_Short *)value) = type1->font_info.underline_position;
       break;
 
-    case PS_DICT_UNDERLINE_THICKNESS:
+    case 131:
       retval = sizeof ( type1->font_info.underline_thickness );
       if ( value && value_len >= retval )
         *((FT_UShort *)value) = type1->font_info.underline_thickness;
       break;
 
-    case PS_DICT_FS_TYPE:
+    case 157:
       retval = sizeof ( type1->font_extra.fs_type );
       if ( value && value_len >= retval )
         *((FT_UShort *)value) = type1->font_extra.fs_type;
       break;
 
-    case PS_DICT_VERSION:
+    case 129:
       if ( type1->font_info.version )
       {
         retval = ft_strlen( type1->font_info.version ) + 1;
@@ -484,7 +436,7 @@ __attribute__((used)) static FT_Long
       }
       break;
 
-    case PS_DICT_NOTICE:
+    case 150:
       if ( type1->font_info.notice )
       {
         retval = ft_strlen( type1->font_info.notice ) + 1;
@@ -493,7 +445,7 @@ __attribute__((used)) static FT_Long
       }
       break;
 
-    case PS_DICT_FULL_NAME:
+    case 156:
       if ( type1->font_info.full_name )
       {
         retval = ft_strlen( type1->font_info.full_name ) + 1;
@@ -502,7 +454,7 @@ __attribute__((used)) static FT_Long
       }
       break;
 
-    case PS_DICT_FAMILY_NAME:
+    case 164:
       if ( type1->font_info.family_name )
       {
         retval = ft_strlen( type1->font_info.family_name ) + 1;
@@ -512,7 +464,7 @@ __attribute__((used)) static FT_Long
       }
       break;
 
-    case PS_DICT_WEIGHT:
+    case 128:
       if ( type1->font_info.weight )
       {
         retval = ft_strlen( type1->font_info.weight ) + 1;
@@ -521,7 +473,7 @@ __attribute__((used)) static FT_Long
       }
       break;
 
-    case PS_DICT_ITALIC_ANGLE:
+    case 154:
       retval = sizeof ( type1->font_info.italic_angle );
       if ( value && value_len >= retval )
         *((FT_Long *)value) = type1->font_info.italic_angle;

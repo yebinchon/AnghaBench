@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PLAY_SONG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _ADJUST ; 
- int /*<<< orphan*/  clicky_off () ; 
- int /*<<< orphan*/  clicky_on () ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- int muse_mode ; 
- int /*<<< orphan*/  plover_gb_song ; 
- int /*<<< orphan*/  plover_song ; 
- int /*<<< orphan*/  stop_all_notes () ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int PLAY_SONG (int ) ;
+ int _ADJUST ;
+ int clicky_off () ;
+ int clicky_on () ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ int muse_mode ;
+ int plover_gb_song ;
+ int plover_song ;
+ int stop_all_notes () ;
 
 void dip_update(uint8_t index, bool active) {
   switch (index) {
     case 0:
       if (active) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(plover_song);
-        #endif
+
+
+
         layer_on(_ADJUST);
       } else {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(plover_gb_song);
-        #endif
+
+
+
         layer_off(_ADJUST);
       }
       break;
     case 1:
       if (active) {
-        muse_mode = true;
+        muse_mode = 1;
       } else {
-        muse_mode = false;
-        #ifdef AUDIO_ENABLE
-          stop_all_notes();
-        #endif
+        muse_mode = 0;
+
+
+
       }
       break;
     case 3:

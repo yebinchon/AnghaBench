@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int Data1; int Data2; int Data3; int* Data4; } ;
-typedef  char* LPCWSTR ;
-typedef  TYPE_1__ GUID ;
-typedef  int /*<<< orphan*/  CLSID ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef char* LPCWSTR ;
+typedef TYPE_1__ GUID ;
+typedef int CLSID ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  debugstr_w (char*) ; 
- int* guid_conv_table ; 
- int /*<<< orphan*/  is_valid_hex (char) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+ int FALSE ;
+ int TRACE (char*,int ,TYPE_1__*) ;
+ int TRUE ;
+ int debugstr_w (char*) ;
+ int* guid_conv_table ;
+ int is_valid_hex (char) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static BOOL guid_from_string(LPCWSTR s, GUID *id)
 {
-  int	i;
+  int i;
 
   if (!s || s[0]!='{') {
     memset( id, 0, sizeof (CLSID) );
@@ -38,7 +38,7 @@ __attribute__((used)) static BOOL guid_from_string(LPCWSTR s, GUID *id)
 
   TRACE("%s -> %p\n", debugstr_w(s), id);
 
-  /* in form {XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX} */
+
 
   id->Data1 = 0;
   for (i = 1; i < 9; i++) {

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct collector {char* plugin; char* module; } ;
-struct array_printer {scalar_t__ c; int /*<<< orphan*/ * wb; } ;
-typedef  int /*<<< orphan*/  BUFFER ;
+struct array_printer {scalar_t__ c; int * wb; } ;
+typedef int BUFFER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  buffer_strcat (int /*<<< orphan*/ *,char*) ; 
+
+ int buffer_strcat (int *,char*) ;
 
 int print_collector(void *entry, void *data) {
     struct array_printer *ap = (struct array_printer *)data;

@@ -1,40 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ CheckAvailableVersion (int) ; 
- scalar_t__ CheckInstalledVersion (int) ; 
- int /*<<< orphan*/  CitusHasBeenLoaded () ; 
- int /*<<< orphan*/  EnableVersionChecks ; 
- int citusVersionKnownCompatible ; 
+ scalar_t__ CheckAvailableVersion (int) ;
+ scalar_t__ CheckInstalledVersion (int) ;
+ int CitusHasBeenLoaded () ;
+ int EnableVersionChecks ;
+ int citusVersionKnownCompatible ;
 
 bool
 CheckCitusVersion(int elevel)
 {
-	if (citusVersionKnownCompatible ||
-		!CitusHasBeenLoaded() ||
-		!EnableVersionChecks)
-	{
-		return true;
-	}
+ if (citusVersionKnownCompatible ||
+  !CitusHasBeenLoaded() ||
+  !EnableVersionChecks)
+ {
+  return 1;
+ }
 
-	if (CheckAvailableVersion(elevel) && CheckInstalledVersion(elevel))
-	{
-		citusVersionKnownCompatible = true;
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+ if (CheckAvailableVersion(elevel) && CheckInstalledVersion(elevel))
+ {
+  citusVersionKnownCompatible = 1;
+  return 1;
+ }
+ else
+ {
+  return 0;
+ }
 }

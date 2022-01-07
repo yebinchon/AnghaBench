@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {char* psz_path; } ;
-typedef  TYPE_1__ vlc_url_t ;
+typedef TYPE_1__ vlc_url_t ;
 struct TYPE_8__ {TYPE_3__* p_sys; } ;
-typedef  TYPE_2__ sout_stream_t ;
-struct TYPE_9__ {int /*<<< orphan*/ * p_httpd_file; scalar_t__ p_httpd_host; } ;
-typedef  TYPE_3__ sout_stream_sys_t ;
+typedef TYPE_2__ sout_stream_t ;
+struct TYPE_9__ {int * p_httpd_file; scalar_t__ p_httpd_host; } ;
+typedef TYPE_3__ sout_stream_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HttpCallback ; 
- int VLC_EGENERIC ; 
- int /*<<< orphan*/  VLC_OBJECT (TYPE_2__*) ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/ * httpd_FileNew (scalar_t__,char*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*) ; 
- scalar_t__ vlc_http_HostNew (int /*<<< orphan*/ ) ; 
+
+ int HttpCallback ;
+ int VLC_EGENERIC ;
+ int VLC_OBJECT (TYPE_2__*) ;
+ int VLC_SUCCESS ;
+ int * httpd_FileNew (scalar_t__,char*,char*,int *,int *,int ,void*) ;
+ scalar_t__ vlc_http_HostNew (int ) ;
 
 __attribute__((used)) static int HttpSetup( sout_stream_t *p_stream, const vlc_url_t *url)
 {
@@ -38,10 +38,10 @@ __attribute__((used)) static int HttpSetup( sout_stream_t *p_stream, const vlc_u
         p_sys->p_httpd_file = httpd_FileNew( p_sys->p_httpd_host,
                                              url->psz_path ? url->psz_path : "/",
                                              "application/sdp",
-                                             NULL, NULL,
+                                             ((void*)0), ((void*)0),
                                              HttpCallback, (void*)p_sys );
     }
-    if( p_sys->p_httpd_file == NULL )
+    if( p_sys->p_httpd_file == ((void*)0) )
     {
         return VLC_EGENERIC;
     }

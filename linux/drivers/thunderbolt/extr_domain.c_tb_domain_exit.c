@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  bus_unregister (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ida_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tb_bus_type ; 
- int /*<<< orphan*/  tb_domain_ida ; 
- int /*<<< orphan*/  tb_switch_exit () ; 
- int /*<<< orphan*/  tb_xdomain_exit () ; 
+ int bus_unregister (int *) ;
+ int ida_destroy (int *) ;
+ int tb_bus_type ;
+ int tb_domain_ida ;
+ int tb_switch_exit () ;
+ int tb_xdomain_exit () ;
 
 void tb_domain_exit(void)
 {
-	bus_unregister(&tb_bus_type);
-	ida_destroy(&tb_domain_ida);
-	tb_switch_exit();
-	tb_xdomain_exit();
+ bus_unregister(&tb_bus_type);
+ ida_destroy(&tb_domain_ida);
+ tb_switch_exit();
+ tb_xdomain_exit();
 }

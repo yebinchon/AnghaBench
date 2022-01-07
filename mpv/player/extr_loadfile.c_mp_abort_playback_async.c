@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mp_abort_entry {scalar_t__ coupled_to_playback; } ;
-struct MPContext {int num_abort_list; int /*<<< orphan*/  abort_lock; struct mp_abort_entry** abort_list; int /*<<< orphan*/  playback_abort; } ;
+struct MPContext {int num_abort_list; int abort_lock; struct mp_abort_entry** abort_list; int playback_abort; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mp_abort_trigger_locked (struct MPContext*,struct mp_abort_entry*) ; 
- int /*<<< orphan*/  mp_cancel_trigger (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int mp_abort_trigger_locked (struct MPContext*,struct mp_abort_entry*) ;
+ int mp_cancel_trigger (int ) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 void mp_abort_playback_async(struct MPContext *mpctx)
 {

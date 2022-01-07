@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {scalar_t__ n_operations; int /*<<< orphan*/  event; int /*<<< orphan*/  bus; int /*<<< orphan*/  polkit_registry; int /*<<< orphan*/  nscd_cache_flush_event; int /*<<< orphan*/  image_cache_defer_event; int /*<<< orphan*/  image_cache; int /*<<< orphan*/  machine_leaders; int /*<<< orphan*/  machine_units; int /*<<< orphan*/  machines; scalar_t__ operations; } ;
-typedef  TYPE_1__ Manager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  bus_verify_polkit_async_registry_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hashmap_free (int /*<<< orphan*/ ) ; 
- TYPE_1__* mfree (TYPE_1__*) ; 
- int /*<<< orphan*/  operation_free (scalar_t__) ; 
- int /*<<< orphan*/  sd_bus_flush_close_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_event_source_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_event_unref (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {scalar_t__ n_operations; int event; int bus; int polkit_registry; int nscd_cache_flush_event; int image_cache_defer_event; int image_cache; int machine_leaders; int machine_units; int machines; scalar_t__ operations; } ;
+typedef TYPE_1__ Manager ;
+
+
+ int assert (int) ;
+ int bus_verify_polkit_async_registry_free (int ) ;
+ int hashmap_free (int ) ;
+ TYPE_1__* mfree (TYPE_1__*) ;
+ int operation_free (scalar_t__) ;
+ int sd_bus_flush_close_unref (int ) ;
+ int sd_event_source_unref (int ) ;
+ int sd_event_unref (int ) ;
 
 __attribute__((used)) static Manager* manager_unref(Manager *m) {
         if (!m)
-                return NULL;
+                return ((void*)0);
 
         while (m->operations)
                 operation_free(m->operations);
 
         assert(m->n_operations == 0);
 
-        hashmap_free(m->machines); /* This will free all machines, so that the machine_units/machine_leaders is empty */
+        hashmap_free(m->machines);
         hashmap_free(m->machine_units);
         hashmap_free(m->machine_leaders);
         hashmap_free(m->image_cache);

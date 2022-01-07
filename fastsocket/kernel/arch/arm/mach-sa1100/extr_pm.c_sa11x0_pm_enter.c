@@ -1,106 +1,106 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  suspend_state_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GAFR ; 
- unsigned long GPCR ; 
- int /*<<< orphan*/  GPDR ; 
- unsigned long GPLR ; 
- unsigned long GPSR ; 
- int ICCR ; 
- scalar_t__ ICLR ; 
- scalar_t__ ICMR ; 
- int /*<<< orphan*/  PPAR ; 
- int /*<<< orphan*/  PPDR ; 
- int /*<<< orphan*/  PPSR ; 
- int /*<<< orphan*/  PSDR ; 
- scalar_t__ PSPR ; 
- int /*<<< orphan*/  PSSR ; 
- int /*<<< orphan*/  PSSR_PH ; 
- int RCSR ; 
- int RCSR_HWR ; 
- int RCSR_SMR ; 
- int RCSR_SWR ; 
- int RCSR_WDR ; 
- int /*<<< orphan*/  RESTORE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SAVE (int /*<<< orphan*/ ) ; 
- int SLEEP_SAVE_COUNT ; 
- int /*<<< orphan*/  Ser1SDCR0 ; 
- int /*<<< orphan*/  cpu_init () ; 
- int /*<<< orphan*/  sa1100_cpu_resume ; 
- int /*<<< orphan*/  sa1100_cpu_suspend () ; 
- scalar_t__ virt_to_phys (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int suspend_state_t ;
+
+
+ int GAFR ;
+ unsigned long GPCR ;
+ int GPDR ;
+ unsigned long GPLR ;
+ unsigned long GPSR ;
+ int ICCR ;
+ scalar_t__ ICLR ;
+ scalar_t__ ICMR ;
+ int PPAR ;
+ int PPDR ;
+ int PPSR ;
+ int PSDR ;
+ scalar_t__ PSPR ;
+ int PSSR ;
+ int PSSR_PH ;
+ int RCSR ;
+ int RCSR_HWR ;
+ int RCSR_SMR ;
+ int RCSR_SWR ;
+ int RCSR_WDR ;
+ int RESTORE (int ) ;
+ int SAVE (int ) ;
+ int SLEEP_SAVE_COUNT ;
+ int Ser1SDCR0 ;
+ int cpu_init () ;
+ int sa1100_cpu_resume ;
+ int sa1100_cpu_suspend () ;
+ scalar_t__ virt_to_phys (int ) ;
 
 __attribute__((used)) static int sa11x0_pm_enter(suspend_state_t state)
 {
-	unsigned long gpio, sleep_save[SLEEP_SAVE_COUNT];
+ unsigned long gpio, sleep_save[SLEEP_SAVE_COUNT];
 
-	gpio = GPLR;
+ gpio = GPLR;
 
-	/* save vital registers */
-	SAVE(GPDR);
-	SAVE(GAFR);
 
-	SAVE(PPDR);
-	SAVE(PPSR);
-	SAVE(PPAR);
-	SAVE(PSDR);
+ SAVE(GPDR);
+ SAVE(GAFR);
 
-	SAVE(Ser1SDCR0);
+ SAVE(PPDR);
+ SAVE(PPSR);
+ SAVE(PPAR);
+ SAVE(PSDR);
 
-	/* Clear previous reset status */
-	RCSR = RCSR_HWR | RCSR_SWR | RCSR_WDR | RCSR_SMR;
+ SAVE(Ser1SDCR0);
 
-	/* set resume return address */
-	PSPR = virt_to_phys(sa1100_cpu_resume);
 
-	/* go zzz */
-	sa1100_cpu_suspend();
+ RCSR = RCSR_HWR | RCSR_SWR | RCSR_WDR | RCSR_SMR;
 
-	cpu_init();
 
-	/*
-	 * Ensure not to come back here if it wasn't intended
-	 */
-	PSPR = 0;
+ PSPR = virt_to_phys(sa1100_cpu_resume);
 
-	/*
-	 * Ensure interrupt sources are disabled; we will re-init
-	 * the interrupt subsystem via the device manager.
-	 */
-	ICLR = 0;
-	ICCR = 1;
-	ICMR = 0;
 
-	/* restore registers */
-	RESTORE(GPDR);
-	RESTORE(GAFR);
+ sa1100_cpu_suspend();
 
-	RESTORE(PPDR);
-	RESTORE(PPSR);
-	RESTORE(PPAR);
-	RESTORE(PSDR);
+ cpu_init();
 
-	RESTORE(Ser1SDCR0);
 
-	GPSR = gpio;
-	GPCR = ~gpio;
 
-	/*
-	 * Clear the peripheral sleep-hold bit.
-	 */
-	PSSR = PSSR_PH;
 
-	return 0;
+ PSPR = 0;
+
+
+
+
+
+ ICLR = 0;
+ ICCR = 1;
+ ICMR = 0;
+
+
+ RESTORE(GPDR);
+ RESTORE(GAFR);
+
+ RESTORE(PPDR);
+ RESTORE(PPSR);
+ RESTORE(PPAR);
+ RESTORE(PSDR);
+
+ RESTORE(Ser1SDCR0);
+
+ GPSR = gpio;
+ GPCR = ~gpio;
+
+
+
+
+ PSSR = PSSR_PH;
+
+ return 0;
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  do_transform; int /*<<< orphan*/  do_init; int /*<<< orphan*/  do_dispose; } ;
-struct aesctr_context_t {int /*<<< orphan*/  aes; TYPE_1__ super; } ;
-typedef  int /*<<< orphan*/  ptls_cipher_context_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  aesctr_dispose ; 
- int /*<<< orphan*/  aesctr_init ; 
- int /*<<< orphan*/  aesctr_transform ; 
- int /*<<< orphan*/  cf_aes_init (int /*<<< orphan*/ *,void const*,size_t) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int do_transform; int do_init; int do_dispose; } ;
+struct aesctr_context_t {int aes; TYPE_1__ super; } ;
+typedef int ptls_cipher_context_t ;
+
+
+ int aesctr_dispose ;
+ int aesctr_init ;
+ int aesctr_transform ;
+ int cf_aes_init (int *,void const*,size_t) ;
 
 __attribute__((used)) static inline int aesctr_setup_crypto(ptls_cipher_context_t *_ctx, int is_enc, const void *key, size_t key_size)
 {

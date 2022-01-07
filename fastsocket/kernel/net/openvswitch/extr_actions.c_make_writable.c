@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sk_buff {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_ATOMIC ; 
- int pskb_expand_head (struct sk_buff*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ skb_clone_writable (struct sk_buff*,int) ; 
- int /*<<< orphan*/  skb_cloned (struct sk_buff*) ; 
+
+ int GFP_ATOMIC ;
+ int pskb_expand_head (struct sk_buff*,int ,int ,int ) ;
+ scalar_t__ skb_clone_writable (struct sk_buff*,int) ;
+ int skb_cloned (struct sk_buff*) ;
 
 __attribute__((used)) static int make_writable(struct sk_buff *skb, int write_len)
 {
-	if (!skb_cloned(skb) || skb_clone_writable(skb, write_len))
-		return 0;
+ if (!skb_cloned(skb) || skb_clone_writable(skb, write_len))
+  return 0;
 
-	return pskb_expand_head(skb, 0, 0, GFP_ATOMIC);
+ return pskb_expand_head(skb, 0, 0, GFP_ATOMIC);
 }

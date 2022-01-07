@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  SYNTHETIC_ERRNO (int /*<<< orphan*/ ) ; 
- int log_error_errno (int /*<<< orphan*/ ,char*,char const*) ; 
- scalar_t__ path_equal (char const*,char*) ; 
- int /*<<< orphan*/  path_is_normalized (char const*) ; 
- int stop_mount (int /*<<< orphan*/ *,char const*,char*) ; 
+
+
+
+typedef int sd_bus ;
+
+
+ int EINVAL ;
+ int SYNTHETIC_ERRNO (int ) ;
+ int log_error_errno (int ,char*,char const*) ;
+ scalar_t__ path_equal (char const*,char*) ;
+ int path_is_normalized (char const*) ;
+ int stop_mount (int *,char const*,char*) ;
 
 __attribute__((used)) static int stop_mounts(
                 sd_bus *bus,

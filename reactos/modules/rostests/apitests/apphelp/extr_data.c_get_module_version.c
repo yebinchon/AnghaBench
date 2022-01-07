@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  dwFileVersionMS; int /*<<< orphan*/  dwProductVersionMS; } ;
-typedef  TYPE_1__ VS_FIXEDFILEINFO ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  scalar_t__ HRSRC ;
-typedef  int /*<<< orphan*/  HMODULE ;
-typedef  int /*<<< orphan*/  HLOCAL ;
-typedef  int /*<<< orphan*/  HGLOBAL ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CopyMemory (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ FindResource (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FreeResource (int /*<<< orphan*/ ) ; 
- int HIWORD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LMEM_FIXED ; 
- int LOWORD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LoadResource (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  LocalAlloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  LocalFree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LockResource (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAKEINTRESOURCE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RT_VERSION ; 
- int SizeofResource (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  VS_VERSION_INFO ; 
- scalar_t__ VerQueryValueW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int dwFileVersionMS; int dwProductVersionMS; } ;
+typedef TYPE_1__ VS_FIXEDFILEINFO ;
+typedef int UINT ;
+typedef int LPVOID ;
+typedef scalar_t__ HRSRC ;
+typedef int HMODULE ;
+typedef int HLOCAL ;
+typedef int HGLOBAL ;
+typedef int DWORD ;
+
+
+ int CopyMemory (int ,int ,int) ;
+ scalar_t__ FindResource (int ,int ,int ) ;
+ int FreeResource (int ) ;
+ int HIWORD (int ) ;
+ int LMEM_FIXED ;
+ int LOWORD (int ) ;
+ int LoadResource (int ,scalar_t__) ;
+ int LocalAlloc (int ,int) ;
+ int LocalFree (int ) ;
+ int LockResource (int ) ;
+ int MAKEINTRESOURCE (int ) ;
+ int RT_VERSION ;
+ int SizeofResource (int ,scalar_t__) ;
+ int VS_VERSION_INFO ;
+ scalar_t__ VerQueryValueW (int ,char*,int *,int *) ;
 
 DWORD get_module_version(HMODULE mod)
 {

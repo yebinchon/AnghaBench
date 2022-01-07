@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int RB_PANIC_ZPRINT ; 
- int /*<<< orphan*/  panic (char*,char*) ; 
- int /*<<< orphan*/  zprint_panic_info () ; 
+ int RB_PANIC_ZPRINT ;
+ int panic (char*,char*) ;
+ int zprint_panic_info () ;
 
 __attribute__((used)) static void
 panic_kernel(int howto, char *message)
 {
-	if ((howto & RB_PANIC_ZPRINT) == RB_PANIC_ZPRINT) {
-		zprint_panic_info();
-	}
-	panic("userspace panic: %s", message);
+ if ((howto & RB_PANIC_ZPRINT) == RB_PANIC_ZPRINT) {
+  zprint_panic_info();
+ }
+ panic("userspace panic: %s", message);
 }

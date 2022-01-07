@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CARTRIDGE_main ; 
- int /*<<< orphan*/  CARTRIDGE_piggyback ; 
- int /*<<< orphan*/  MapActiveCart () ; 
- int /*<<< orphan*/  ResetCartState (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * active_cart ; 
+ int CARTRIDGE_main ;
+ int CARTRIDGE_piggyback ;
+ int MapActiveCart () ;
+ int ResetCartState (int *) ;
+ int * active_cart ;
 
 void CARTRIDGE_ColdStart(void) {
-	active_cart = &CARTRIDGE_main;
-	ResetCartState(&CARTRIDGE_main);
-	ResetCartState(&CARTRIDGE_piggyback);
-	MapActiveCart();
+ active_cart = &CARTRIDGE_main;
+ ResetCartState(&CARTRIDGE_main);
+ ResetCartState(&CARTRIDGE_piggyback);
+ MapActiveCart();
 }

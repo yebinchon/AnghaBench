@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_11__ {int wxflag; scalar_t__ handle; } ;
-typedef  TYPE_1__ ioinfo ;
-struct TYPE_14__ {int /*<<< orphan*/  handle; } ;
-struct TYPE_13__ {unsigned int _file; int /*<<< orphan*/  _flag; int /*<<< orphan*/ * _tmpfname; } ;
+typedef TYPE_1__ ioinfo ;
+struct TYPE_14__ {int handle; } ;
+struct TYPE_13__ {unsigned int _file; int _flag; int * _tmpfname; } ;
 struct TYPE_12__ {int cbReserved2; int* lpReserved2; } ;
-typedef  TYPE_2__ STARTUPINFOA ;
-typedef  scalar_t__ HANDLE ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int DWORD ;
-typedef  int BYTE ;
+typedef TYPE_2__ STARTUPINFOA ;
+typedef scalar_t__ HANDLE ;
+typedef int FILE ;
+typedef int DWORD ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int FILE_TYPE_CHAR ; 
- int FILE_TYPE_PIPE ; 
- int GetFileType (scalar_t__) ; 
- int /*<<< orphan*/  GetStartupInfoA (TYPE_2__*) ; 
- scalar_t__ GetStdHandle (int /*<<< orphan*/ ) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int MSVCRT_MAX_FILES ; 
- int MSVCRT_stream_idx ; 
- unsigned int STDERR_FILENO ; 
- unsigned int STDIN_FILENO ; 
- unsigned int STDOUT_FILENO ; 
- int /*<<< orphan*/  STD_ERROR_HANDLE ; 
- int /*<<< orphan*/  STD_INPUT_HANDLE ; 
- int /*<<< orphan*/  STD_OUTPUT_HANDLE ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int WX_OPEN ; 
- int WX_PIPE ; 
- int WX_TEXT ; 
- int WX_TTY ; 
- int /*<<< orphan*/  _IOREAD ; 
- int /*<<< orphan*/  _IOWRT ; 
- TYPE_1__ __badioinfo ; 
- TYPE_5__* _iob ; 
- TYPE_1__* get_ioinfo_alloc_fd (unsigned int) ; 
- TYPE_6__* get_ioinfo_nolock (unsigned int) ; 
- int /*<<< orphan*/  memset (TYPE_5__*,int /*<<< orphan*/ ,int) ; 
- unsigned int min (unsigned int,int) ; 
- int /*<<< orphan*/  msvcrt_set_fd (TYPE_1__*,scalar_t__,int) ; 
- int /*<<< orphan*/  release_ioinfo (TYPE_1__*) ; 
+
+ int FILE_TYPE_CHAR ;
+ int FILE_TYPE_PIPE ;
+ int GetFileType (scalar_t__) ;
+ int GetStartupInfoA (TYPE_2__*) ;
+ scalar_t__ GetStdHandle (int ) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int MSVCRT_MAX_FILES ;
+ int MSVCRT_stream_idx ;
+ unsigned int STDERR_FILENO ;
+ unsigned int STDIN_FILENO ;
+ unsigned int STDOUT_FILENO ;
+ int STD_ERROR_HANDLE ;
+ int STD_INPUT_HANDLE ;
+ int STD_OUTPUT_HANDLE ;
+ int TRACE (char*,int ,int ,int ) ;
+ int WX_OPEN ;
+ int WX_PIPE ;
+ int WX_TEXT ;
+ int WX_TTY ;
+ int _IOREAD ;
+ int _IOWRT ;
+ TYPE_1__ __badioinfo ;
+ TYPE_5__* _iob ;
+ TYPE_1__* get_ioinfo_alloc_fd (unsigned int) ;
+ TYPE_6__* get_ioinfo_nolock (unsigned int) ;
+ int memset (TYPE_5__*,int ,int) ;
+ unsigned int min (unsigned int,int) ;
+ int msvcrt_set_fd (TYPE_1__*,scalar_t__,int) ;
+ int release_ioinfo (TYPE_1__*) ;
 
 void msvcrt_init_io(void)
 {
-  STARTUPINFOA  si;
-  unsigned int  i;
-  ioinfo        *fdinfo;
+  STARTUPINFOA si;
+  unsigned int i;
+  ioinfo *fdinfo;
 
   GetStartupInfoA(&si);
-  if (si.cbReserved2 >= sizeof(unsigned int) && si.lpReserved2 != NULL)
+  if (si.cbReserved2 >= sizeof(unsigned int) && si.lpReserved2 != ((void*)0))
   {
-    BYTE*       wxflag_ptr;
-    HANDLE*     handle_ptr;
+    BYTE* wxflag_ptr;
+    HANDLE* handle_ptr;
     unsigned int count;
 
     count = *(unsigned*)si.lpReserved2;
@@ -126,9 +126,9 @@ void msvcrt_init_io(void)
   memset(_iob,0,3*sizeof(FILE));
   for (i = 0; i < 3; i++)
   {
-    /* FILE structs for stdin/out/err are static and never deleted */
+
     _iob[i]._file = i;
-    _iob[i]._tmpfname = NULL;
+    _iob[i]._tmpfname = ((void*)0);
     _iob[i]._flag = (i == 0) ? _IOREAD : _IOWRT;
   }
   MSVCRT_stream_idx = 3;

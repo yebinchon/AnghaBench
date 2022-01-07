@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct seq_file {struct hisi_hba* private; } ;
-struct hisi_hba {int /*<<< orphan*/  debugfs_bist_phy_no; } ;
+struct hisi_hba {int debugfs_bist_phy_no; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  seq_printf (struct seq_file*,char*,int /*<<< orphan*/ ) ; 
+
+ int seq_printf (struct seq_file*,char*,int ) ;
 
 __attribute__((used)) static int hisi_sas_debugfs_bist_phy_show(struct seq_file *s, void *p)
 {
-	struct hisi_hba *hisi_hba = s->private;
+ struct hisi_hba *hisi_hba = s->private;
 
-	seq_printf(s, "%d\n", hisi_hba->debugfs_bist_phy_no);
+ seq_printf(s, "%d\n", hisi_hba->debugfs_bist_phy_no);
 
-	return 0;
+ return 0;
 }

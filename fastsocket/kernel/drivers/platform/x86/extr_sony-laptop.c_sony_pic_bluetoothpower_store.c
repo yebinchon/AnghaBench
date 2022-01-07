@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  size_t ssize_t ;
-struct TYPE_2__ {int /*<<< orphan*/  lock; } ;
+typedef size_t ssize_t ;
+struct TYPE_2__ {int lock; } ;
 
-/* Variables and functions */
- size_t EINVAL ; 
- int /*<<< orphan*/  __sony_pic_set_bluetoothpower (unsigned long) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- unsigned long simple_strtoul (char const*,int /*<<< orphan*/ *,int) ; 
- TYPE_1__ spic_dev ; 
+
+ size_t EINVAL ;
+ int __sony_pic_set_bluetoothpower (unsigned long) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ unsigned long simple_strtoul (char const*,int *,int) ;
+ TYPE_1__ spic_dev ;
 
 __attribute__((used)) static ssize_t sony_pic_bluetoothpower_store(struct device *dev,
-		struct device_attribute *attr,
-		const char *buffer, size_t count)
+  struct device_attribute *attr,
+  const char *buffer, size_t count)
 {
-	unsigned long value;
-	if (count > 31)
-		return -EINVAL;
+ unsigned long value;
+ if (count > 31)
+  return -EINVAL;
 
-	value = simple_strtoul(buffer, NULL, 10);
-	mutex_lock(&spic_dev.lock);
-	__sony_pic_set_bluetoothpower(value);
-	mutex_unlock(&spic_dev.lock);
+ value = simple_strtoul(buffer, ((void*)0), 10);
+ mutex_lock(&spic_dev.lock);
+ __sony_pic_set_bluetoothpower(value);
+ mutex_unlock(&spic_dev.lock);
 
-	return count;
+ return count;
 }

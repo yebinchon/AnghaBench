@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GLuint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- int OFFSET ; 
- int /*<<< orphan*/  create_texture () ; 
- int /*<<< orphan*/  draw_quad (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  error_callback ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glColor3f (float,float,float) ; 
- int /*<<< orphan*/  glfwGetWindowPos (int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  glfwGetWindowSize (int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwInit () ; 
- int /*<<< orphan*/  glfwMakeContextCurrent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwSetErrorCallback (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSwapBuffers (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwTerminate () ; 
- int /*<<< orphan*/  glfwWaitEvents () ; 
- int /*<<< orphan*/  glfwWindowShouldClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * open_window (char*,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/ ** windows ; 
+
+
+
+typedef int GLuint ;
+
+
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int OFFSET ;
+ int create_texture () ;
+ int draw_quad (int ) ;
+ int error_callback ;
+ int exit (int ) ;
+ int glColor3f (float,float,float) ;
+ int glfwGetWindowPos (int *,int*,int*) ;
+ int glfwGetWindowSize (int *,int*,int *) ;
+ int glfwInit () ;
+ int glfwMakeContextCurrent (int *) ;
+ int glfwSetErrorCallback (int ) ;
+ int glfwSwapBuffers (int *) ;
+ int glfwTerminate () ;
+ int glfwWaitEvents () ;
+ int glfwWindowShouldClose (int *) ;
+ int * open_window (char*,int *,int,int) ;
+ int ** windows ;
 
 int main(int argc, char** argv)
 {
@@ -43,22 +43,22 @@ int main(int argc, char** argv)
     if (!glfwInit())
         exit(EXIT_FAILURE);
 
-    windows[0] = open_window("First", NULL, OFFSET, OFFSET);
+    windows[0] = open_window("First", ((void*)0), OFFSET, OFFSET);
     if (!windows[0])
     {
         glfwTerminate();
         exit(EXIT_FAILURE);
     }
 
-    // This is the one and only time we create a texture
-    // It is created inside the first context, created above
-    // It will then be shared with the second context, created below
+
+
+
     texture = create_texture();
 
     glfwGetWindowPos(windows[0], &x, &y);
-    glfwGetWindowSize(windows[0], &width, NULL);
+    glfwGetWindowSize(windows[0], &width, ((void*)0));
 
-    // Put the second window to the right of the first one
+
     windows[1] = open_window("Second", windows[0], x + width + OFFSET, y);
     if (!windows[1])
     {
@@ -66,7 +66,7 @@ int main(int argc, char** argv)
         exit(EXIT_FAILURE);
     }
 
-    // Set drawing color for both contexts
+
     glfwMakeContextCurrent(windows[0]);
     glColor3f(0.6f, 0.f, 0.6f);
     glfwMakeContextCurrent(windows[1]);

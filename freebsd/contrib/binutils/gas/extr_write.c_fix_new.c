@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  symbolS ;
-typedef  int /*<<< orphan*/  offsetT ;
-typedef  int /*<<< orphan*/  fragS ;
-typedef  int /*<<< orphan*/  fixS ;
-typedef  int /*<<< orphan*/  RELOC_ENUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * fix_new_internal (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int symbolS ;
+typedef int offsetT ;
+typedef int fragS ;
+typedef int fixS ;
+typedef int RELOC_ENUM ;
+
+
+ int * fix_new_internal (int *,int,int,int *,int *,int ,int,int ) ;
 
 fixS *
-fix_new (fragS *frag,		/* Which frag?  */
-	 int where,			/* Where in that frag?  */
-	 int size,			/* 1, 2, or 4 usually.  */
-	 symbolS *add_symbol,	/* X_add_symbol.  */
-	 offsetT offset,		/* X_add_number.  */
-	 int pcrel,			/* TRUE if PC-relative relocation.  */
-	 RELOC_ENUM r_type		/* Relocation type.  */)
+fix_new (fragS *frag,
+  int where,
+  int size,
+  symbolS *add_symbol,
+  offsetT offset,
+  int pcrel,
+  RELOC_ENUM r_type )
 {
   return fix_new_internal (frag, where, size, add_symbol,
-			   (symbolS *) NULL, offset, pcrel, r_type);
+      (symbolS *) ((void*)0), offset, pcrel, r_type);
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ krb5_error_code ;
-typedef  int /*<<< orphan*/  krb5_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  check_set_time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errx (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  krb5_free_context (int /*<<< orphan*/ ) ; 
- scalar_t__ krb5_init_context (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ krb5_error_code ;
+typedef int krb5_context ;
+
+
+ int check_set_time (int ) ;
+ int errx (int,char*,scalar_t__) ;
+ int krb5_free_context (int ) ;
+ scalar_t__ krb5_init_context (int *) ;
 
 int
 main(int argc, char **argv)
@@ -27,7 +27,7 @@ main(int argc, char **argv)
 
     ret = krb5_init_context(&context);
     if (ret)
-	errx(1, "krb5_init_context %d", ret);
+ errx(1, "krb5_init_context %d", ret);
 
     check_set_time(context);
     check_set_time(context);

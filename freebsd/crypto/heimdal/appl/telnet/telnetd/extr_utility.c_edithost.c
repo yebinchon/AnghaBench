@@ -1,53 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* editedhost ; 
- int /*<<< orphan*/  strlcpy (char*,char*,int) ; 
+ char* editedhost ;
+ int strlcpy (char*,char*,int) ;
 
 void edithost(char *pat, char *host)
 {
     char *res = editedhost;
 
     if (!pat)
-	pat = "";
+ pat = "";
     while (*pat) {
-	switch (*pat) {
+ switch (*pat) {
 
-	case '#':
-	    if (*host)
-		host++;
-	    break;
+ case '#':
+     if (*host)
+  host++;
+     break;
 
-	case '@':
-	    if (*host)
-		*res++ = *host++;
-	    break;
+ case '@':
+     if (*host)
+  *res++ = *host++;
+     break;
 
-	default:
-	    *res++ = *pat;
-	    break;
-	}
-	if (res == &editedhost[sizeof editedhost - 1]) {
-	    *res = '\0';
-	    return;
-	}
-	pat++;
+ default:
+     *res++ = *pat;
+     break;
+ }
+ if (res == &editedhost[sizeof editedhost - 1]) {
+     *res = '\0';
+     return;
+ }
+ pat++;
     }
     if (*host)
-	strlcpy (res, host,
-			 sizeof editedhost - (res - editedhost));
+ strlcpy (res, host,
+    sizeof editedhost - (res - editedhost));
     else
-	*res = '\0';
+ *res = '\0';
     editedhost[sizeof editedhost - 1] = '\0';
 }

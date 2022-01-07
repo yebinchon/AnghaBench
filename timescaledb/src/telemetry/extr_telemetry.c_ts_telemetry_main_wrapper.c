@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TELEMETRY_HOST ; 
- int /*<<< orphan*/  TELEMETRY_PATH ; 
- int /*<<< orphan*/  TELEMETRY_SCHEME ; 
- int ts_telemetry_main (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int TELEMETRY_HOST ;
+ int TELEMETRY_PATH ;
+ int TELEMETRY_SCHEME ;
+ int ts_telemetry_main (int ,int ,int ) ;
 
 bool
 ts_telemetry_main_wrapper()
 {
-	return ts_telemetry_main(TELEMETRY_HOST, TELEMETRY_PATH, TELEMETRY_SCHEME);
+ return ts_telemetry_main(TELEMETRY_HOST, TELEMETRY_PATH, TELEMETRY_SCHEME);
 }

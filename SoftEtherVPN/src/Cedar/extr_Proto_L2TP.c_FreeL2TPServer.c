@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  UDPPACKET ;
-struct TYPE_4__ {int /*<<< orphan*/  FlushList; int /*<<< orphan*/  Cedar; int /*<<< orphan*/  HaltCompletedEvent; int /*<<< orphan*/  SockEvent; int /*<<< orphan*/  TunnelList; int /*<<< orphan*/  SendPacketList; int /*<<< orphan*/  ThreadList; } ;
-typedef  int /*<<< orphan*/  L2TP_TUNNEL ;
-typedef  TYPE_1__ L2TP_SERVER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Free (TYPE_1__*) ; 
- int /*<<< orphan*/  FreeL2TPTunnel (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeThreadList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FreeTubeFlushList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FreeUdpPacket (int /*<<< orphan*/ *) ; 
- void* LIST_DATA (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseCedar (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseSockEvent (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+typedef int UDPPACKET ;
+struct TYPE_4__ {int FlushList; int Cedar; int HaltCompletedEvent; int SockEvent; int TunnelList; int SendPacketList; int ThreadList; } ;
+typedef int L2TP_TUNNEL ;
+typedef TYPE_1__ L2TP_SERVER ;
+
+
+ int Free (TYPE_1__*) ;
+ int FreeL2TPTunnel (int *) ;
+ int FreeThreadList (int ) ;
+ int FreeTubeFlushList (int ) ;
+ int FreeUdpPacket (int *) ;
+ void* LIST_DATA (int ,scalar_t__) ;
+ scalar_t__ LIST_NUM (int ) ;
+ int ReleaseCedar (int ) ;
+ int ReleaseEvent (int ) ;
+ int ReleaseList (int ) ;
+ int ReleaseSockEvent (int ) ;
 
 void FreeL2TPServer(L2TP_SERVER *l2tp)
 {
-	UINT i;
-	// Validate arguments
-	if (l2tp == NULL)
-	{
-		return;
-	}
+ UINT i;
 
-	FreeThreadList(l2tp->ThreadList);
+ if (l2tp == ((void*)0))
+ {
+  return;
+ }
 
-	for (i = 0;i < LIST_NUM(l2tp->SendPacketList);i++)
-	{
-		UDPPACKET *p = LIST_DATA(l2tp->SendPacketList, i);
+ FreeThreadList(l2tp->ThreadList);
 
-		FreeUdpPacket(p);
-	}
+ for (i = 0;i < LIST_NUM(l2tp->SendPacketList);i++)
+ {
+  UDPPACKET *p = LIST_DATA(l2tp->SendPacketList, i);
 
-	ReleaseList(l2tp->SendPacketList);
+  FreeUdpPacket(p);
+ }
 
-	for (i = 0;i < LIST_NUM(l2tp->TunnelList);i++)
-	{
-		L2TP_TUNNEL *t = LIST_DATA(l2tp->TunnelList, i);
+ ReleaseList(l2tp->SendPacketList);
 
-		FreeL2TPTunnel(t);
-	}
+ for (i = 0;i < LIST_NUM(l2tp->TunnelList);i++)
+ {
+  L2TP_TUNNEL *t = LIST_DATA(l2tp->TunnelList, i);
 
-	ReleaseList(l2tp->TunnelList);
+  FreeL2TPTunnel(t);
+ }
 
-	ReleaseSockEvent(l2tp->SockEvent);
+ ReleaseList(l2tp->TunnelList);
 
-	ReleaseEvent(l2tp->HaltCompletedEvent);
+ ReleaseSockEvent(l2tp->SockEvent);
 
-	ReleaseCedar(l2tp->Cedar);
+ ReleaseEvent(l2tp->HaltCompletedEvent);
 
-	FreeTubeFlushList(l2tp->FlushList);
+ ReleaseCedar(l2tp->Cedar);
 
-	Free(l2tp);
+ FreeTubeFlushList(l2tp->FlushList);
+
+ Free(l2tp);
 }

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {size_t n_keys; int /*<<< orphan*/ * keys; } ;
-typedef  TYPE_1__ DnsQuestion ;
 
-/* Variables and functions */
- int dns_question_contains (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {size_t n_keys; int * keys; } ;
+typedef TYPE_1__ DnsQuestion ;
+
+
+ int dns_question_contains (TYPE_1__*,int ) ;
 
 int dns_question_is_equal(DnsQuestion *a, DnsQuestion *b) {
         size_t j;
@@ -29,7 +29,7 @@ int dns_question_is_equal(DnsQuestion *a, DnsQuestion *b) {
         if (!b)
                 return a->n_keys == 0;
 
-        /* Checks if all keys in a are also contained b, and vice versa */
+
 
         for (j = 0; j < a->n_keys; j++) {
                 r = dns_question_contains(b, a->keys[j]);

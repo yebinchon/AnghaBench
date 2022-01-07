@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct compressor_entry {struct compressor* comp; } ;
-struct compressor {int /*<<< orphan*/  owner; } ;
+struct compressor {int owner; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  compressor_list_lock ; 
- struct compressor_entry* find_comp_entry (int) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  try_module_get (int /*<<< orphan*/ ) ; 
+
+ int compressor_list_lock ;
+ struct compressor_entry* find_comp_entry (int) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int try_module_get (int ) ;
 
 __attribute__((used)) static struct compressor *
 find_compressor(int type)
 {
-	struct compressor_entry *ce;
-	struct compressor *cp = NULL;
+ struct compressor_entry *ce;
+ struct compressor *cp = ((void*)0);
 
-	spin_lock(&compressor_list_lock);
-	ce = find_comp_entry(type);
-	if (ce) {
-		cp = ce->comp;
-		if (!try_module_get(cp->owner))
-			cp = NULL;
-	}
-	spin_unlock(&compressor_list_lock);
-	return cp;
+ spin_lock(&compressor_list_lock);
+ ce = find_comp_entry(type);
+ if (ce) {
+  cp = ce->comp;
+  if (!try_module_get(cp->owner))
+   cp = ((void*)0);
+ }
+ spin_unlock(&compressor_list_lock);
+ return cp;
 }

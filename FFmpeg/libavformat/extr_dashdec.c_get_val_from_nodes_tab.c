@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ xmlNodePtr ;
 
-/* Variables and functions */
- char* xmlGetProp (scalar_t__,char const*) ; 
+
+
+
+typedef scalar_t__ xmlNodePtr ;
+
+
+ char* xmlGetProp (scalar_t__,char const*) ;
 
 __attribute__((used)) static char *get_val_from_nodes_tab(xmlNodePtr *nodes, const int n_nodes, const char *attrname)
 {
@@ -28,5 +28,5 @@ __attribute__((used)) static char *get_val_from_nodes_tab(xmlNodePtr *nodes, con
         }
     }
 
-    return NULL;
+    return ((void*)0);
 }

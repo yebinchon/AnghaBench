@@ -1,114 +1,114 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
 struct TYPE_16__ {int Me; } ;
-struct TYPE_15__ {int LastVersion; int CurrentVersion; int Offline; int /*<<< orphan*/  Type; int /*<<< orphan*/  Name; TYPE_1__* Cedar; } ;
-struct TYPE_14__ {scalar_t__ ServerType; int /*<<< orphan*/ * FarmMemberList; } ;
+struct TYPE_15__ {int LastVersion; int CurrentVersion; int Offline; int Type; int Name; TYPE_1__* Cedar; } ;
+struct TYPE_14__ {scalar_t__ ServerType; int * FarmMemberList; } ;
 struct TYPE_13__ {TYPE_2__* Server; } ;
-typedef  TYPE_2__ SERVER ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  TYPE_3__ HUB ;
-typedef  TYPE_4__ FARM_MEMBER ;
+typedef TYPE_2__ SERVER ;
+typedef int LIST ;
+typedef TYPE_3__ HUB ;
+typedef TYPE_4__ FARM_MEMBER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Add (int /*<<< orphan*/ *,TYPE_4__*) ; 
- int /*<<< orphan*/  Debug (char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ; 
- int IsInList (int /*<<< orphan*/ *,TYPE_4__*) ; 
- TYPE_4__* LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewListFast (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseList (int /*<<< orphan*/ *) ; 
- scalar_t__ SERVER_TYPE_FARM_CONTROLLER ; 
- int /*<<< orphan*/  SiCallUpdateHub (TYPE_2__*,TYPE_4__*,TYPE_3__*) ; 
- int /*<<< orphan*/  SiHubOnlineProc (TYPE_3__*) ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ *) ; 
+
+ int Add (int *,TYPE_4__*) ;
+ int Debug (char*,int ,int,int ,int) ;
+ int IsInList (int *,TYPE_4__*) ;
+ TYPE_4__* LIST_DATA (int *,scalar_t__) ;
+ scalar_t__ LIST_NUM (int *) ;
+ int LockList (int *) ;
+ int * NewListFast (int *) ;
+ int ReleaseList (int *) ;
+ scalar_t__ SERVER_TYPE_FARM_CONTROLLER ;
+ int SiCallUpdateHub (TYPE_2__*,TYPE_4__*,TYPE_3__*) ;
+ int SiHubOnlineProc (TYPE_3__*) ;
+ int UnlockList (int *) ;
 
 void SiHubUpdateProc(HUB *h)
 {
-	SERVER *s;
-	UINT i;
-	// Validate arguments
-	if (h == NULL || h->Cedar == NULL || h->Cedar->Server == NULL || h->Cedar->Server->ServerType != SERVER_TYPE_FARM_CONTROLLER)
-	{
-		return;
-	}
+ SERVER *s;
+ UINT i;
 
-	s = h->Cedar->Server;
+ if (h == ((void*)0) || h->Cedar == ((void*)0) || h->Cedar->Server == ((void*)0) || h->Cedar->Server->ServerType != SERVER_TYPE_FARM_CONTROLLER)
+ {
+  return;
+ }
 
-	if (s->FarmMemberList == NULL)
-	{
-		return;
-	}
+ s = h->Cedar->Server;
 
-	if (h->LastVersion != h->CurrentVersion || h->CurrentVersion == 0)
-	{
-		LIST *fm_list;
-		if (h->CurrentVersion == 0)
-		{
-			h->CurrentVersion = 1;
-		}
-		h->LastVersion = h->CurrentVersion;
+ if (s->FarmMemberList == ((void*)0))
+ {
+  return;
+ }
 
-		Debug("SiHubUpdateProc HUB=%s, Ver=%u, Type=%u, Offline=%u\n", h->Name, h->CurrentVersion,
-			h->Type, h->Offline);
+ if (h->LastVersion != h->CurrentVersion || h->CurrentVersion == 0)
+ {
+  LIST *fm_list;
+  if (h->CurrentVersion == 0)
+  {
+   h->CurrentVersion = 1;
+  }
+  h->LastVersion = h->CurrentVersion;
 
-		fm_list = NewListFast(NULL);
+  Debug("SiHubUpdateProc HUB=%s, Ver=%u, Type=%u, Offline=%u\n", h->Name, h->CurrentVersion,
+   h->Type, h->Offline);
 
-		LockList(s->FarmMemberList);
-		{
-			while (true)
-			{
-				bool escape = true;
-				// Update the HUB on all members
-				for (i = 0;i < LIST_NUM(s->FarmMemberList);i++)
-				{
-					FARM_MEMBER *f = LIST_DATA(s->FarmMemberList, i);
+  fm_list = NewListFast(((void*)0));
 
-					if (IsInList(fm_list, f) == false)
-					{
-						Add(fm_list, f);
-						escape = false;
+  LockList(s->FarmMemberList);
+  {
+   while (1)
+   {
+    bool escape = 1;
 
-						if (f->Me == false)
-						{
-							SiCallUpdateHub(s, f, h);
-						}
+    for (i = 0;i < LIST_NUM(s->FarmMemberList);i++)
+    {
+     FARM_MEMBER *f = LIST_DATA(s->FarmMemberList, i);
 
-						break;
-					}
-				}
+     if (IsInList(fm_list, f) == 0)
+     {
+      Add(fm_list, f);
+      escape = 0;
 
-				if (escape)
-				{
-					break;
-				}
+      if (f->Me == 0)
+      {
+       SiCallUpdateHub(s, f, h);
+      }
 
-				UnlockList(s->FarmMemberList);
-				LockList(s->FarmMemberList);
-			}
-		}
-		UnlockList(s->FarmMemberList);
+      break;
+     }
+    }
 
-		ReleaseList(fm_list);
-	}
+    if (escape)
+    {
+     break;
+    }
 
-	if (h->Offline == false)
-	{
-		SiHubOnlineProc(h);
-	}
+    UnlockList(s->FarmMemberList);
+    LockList(s->FarmMemberList);
+   }
+  }
+  UnlockList(s->FarmMemberList);
+
+  ReleaseList(fm_list);
+ }
+
+ if (h->Offline == 0)
+ {
+  SiHubOnlineProc(h);
+ }
 }

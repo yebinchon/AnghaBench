@@ -1,56 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ json_pretty_print; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (char const***) ; 
-#define  GO_VERSION 157 
-#define  HTML_REPORT_NAV_AH_SMALL 156 
-#define  HTML_REPORT_NAV_AH_SMALL_TITLE 155 
-#define  HTML_REPORT_NAV_BRIGHT 154 
-#define  HTML_REPORT_NAV_DARK_BLUE 153 
-#define  HTML_REPORT_NAV_DARK_GRAY 152 
-#define  HTML_REPORT_NAV_DARK_PURPLE 151 
-#define  HTML_REPORT_NAV_DISPLAY_TABLES 150 
-#define  HTML_REPORT_NAV_EXPORT_JSON 149 
-#define  HTML_REPORT_NAV_FILE_OPTS 148 
-#define  HTML_REPORT_NAV_HOR 147 
-#define  HTML_REPORT_NAV_ITEMS_PER_PAGE 146 
-#define  HTML_REPORT_NAV_LAYOUT 145 
-#define  HTML_REPORT_NAV_PANELS 144 
-#define  HTML_REPORT_NAV_TABLES 143 
-#define  HTML_REPORT_NAV_THEME 142 
-#define  HTML_REPORT_NAV_VER 141 
-#define  HTML_REPORT_PANEL_AREA_SPLINE 140 
-#define  HTML_REPORT_PANEL_BAR 139 
-#define  HTML_REPORT_PANEL_CHART 138 
-#define  HTML_REPORT_PANEL_CHART_OPTS 137 
-#define  HTML_REPORT_PANEL_FIRST 136 
-#define  HTML_REPORT_PANEL_LAST 135 
-#define  HTML_REPORT_PANEL_NEXT 134 
-#define  HTML_REPORT_PANEL_PANEL_OPTS 133 
-#define  HTML_REPORT_PANEL_PLOT_METRIC 132 
-#define  HTML_REPORT_PANEL_PREVIOUS 131 
-#define  HTML_REPORT_PANEL_TABLE_COLS 130 
-#define  HTML_REPORT_PANEL_TYPE 129 
-#define  T_HEAD 128 
- int /*<<< orphan*/  _ (char const*) ; 
- TYPE_1__ conf ; 
- int /*<<< orphan*/  fpclose_obj (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  fpopen_obj (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fpskeysval (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+ size_t ARRAY_SIZE (char const***) ;
+ int _ (char const*) ;
+ TYPE_1__ conf ;
+ int fpclose_obj (int *,int ,int) ;
+ int fpopen_obj (int *,int ) ;
+ int fpskeysval (int *,char const*,int ,int,int ) ;
 
 __attribute__((used)) static void
 print_json_i18n_def (FILE * fp)
@@ -58,42 +28,42 @@ print_json_i18n_def (FILE * fp)
   int sp = 0;
   size_t i = 0;
 
-  /* *INDENT-OFF* */
-  static const char *json_i18n[][2] = {
-    {"theme"          , HTML_REPORT_NAV_THEME}          ,
-    {"dark_gray"      , HTML_REPORT_NAV_DARK_GRAY}      ,
-    {"bright"         , HTML_REPORT_NAV_BRIGHT}         ,
-    {"dark_blue"      , HTML_REPORT_NAV_DARK_BLUE}      ,
-    {"dark_purple"    , HTML_REPORT_NAV_DARK_PURPLE}    ,
-    {"panels"         , HTML_REPORT_NAV_PANELS}         ,
-    {"items_per_page" , HTML_REPORT_NAV_ITEMS_PER_PAGE} ,
-    {"tables"         , HTML_REPORT_NAV_TABLES}         ,
-    {"display_tables" , HTML_REPORT_NAV_DISPLAY_TABLES} ,
-    {"ah_small"       , HTML_REPORT_NAV_AH_SMALL}       ,
-    {"ah_small_title" , HTML_REPORT_NAV_AH_SMALL_TITLE} ,
-    {"layout"         , HTML_REPORT_NAV_LAYOUT}         ,
-    {"horizontal"     , HTML_REPORT_NAV_HOR}            ,
-    {"vertical"       , HTML_REPORT_NAV_VER}            ,
-    {"file_opts"      , HTML_REPORT_NAV_FILE_OPTS}      ,
-    {"export_json"    , HTML_REPORT_NAV_EXPORT_JSON}    ,
-    {"panel_opts"     , HTML_REPORT_PANEL_PANEL_OPTS}   ,
-    {"previous"       , HTML_REPORT_PANEL_PREVIOUS}     ,
-    {"next"           , HTML_REPORT_PANEL_NEXT}         ,
-    {"first"          , HTML_REPORT_PANEL_FIRST}        ,
-    {"last"           , HTML_REPORT_PANEL_LAST}         ,
-    {"chart_opts"     , HTML_REPORT_PANEL_CHART_OPTS}   ,
-    {"chart"          , HTML_REPORT_PANEL_CHART}        ,
-    {"type"           , HTML_REPORT_PANEL_TYPE}         ,
-    {"area_spline"    , HTML_REPORT_PANEL_AREA_SPLINE}  ,
-    {"bar"            , HTML_REPORT_PANEL_BAR}          ,
-    {"plot_metric"    , HTML_REPORT_PANEL_PLOT_METRIC}  ,
-    {"table_columns"  , HTML_REPORT_PANEL_TABLE_COLS}   ,
-    {"thead"          , T_HEAD}                         ,
-    {"version"        , GO_VERSION}                     ,
-  };
-  /* *INDENT-ON* */
 
-  /* use tabs to prettify output */
+  static const char *json_i18n[][2] = {
+    {"theme" , 142} ,
+    {"dark_gray" , 152} ,
+    {"bright" , 154} ,
+    {"dark_blue" , 153} ,
+    {"dark_purple" , 151} ,
+    {"panels" , 144} ,
+    {"items_per_page" , 146} ,
+    {"tables" , 143} ,
+    {"display_tables" , 150} ,
+    {"ah_small" , 156} ,
+    {"ah_small_title" , 155} ,
+    {"layout" , 145} ,
+    {"horizontal" , 147} ,
+    {"vertical" , 141} ,
+    {"file_opts" , 148} ,
+    {"export_json" , 149} ,
+    {"panel_opts" , 133} ,
+    {"previous" , 131} ,
+    {"next" , 134} ,
+    {"first" , 136} ,
+    {"last" , 135} ,
+    {"chart_opts" , 137} ,
+    {"chart" , 138} ,
+    {"type" , 129} ,
+    {"area_spline" , 140} ,
+    {"bar" , 139} ,
+    {"plot_metric" , 132} ,
+    {"table_columns" , 130} ,
+    {"thead" , 128} ,
+    {"version" , 157} ,
+  };
+
+
+
   if (conf.json_pretty_print)
     sp = 1;
 

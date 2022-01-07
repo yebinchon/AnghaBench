@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ v8i16 ;
-typedef  int /*<<< orphan*/  v4i32 ;
-typedef  int /*<<< orphan*/  int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HEVC_IDCT4x4_COL (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ILVRL_H2_SW (TYPE_1__,TYPE_1__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ILVRL_W2_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__,TYPE_1__) ; 
- int /*<<< orphan*/  LD_SH2 (int /*<<< orphan*/ *,int,TYPE_1__,TYPE_1__) ; 
- int /*<<< orphan*/  PCKEV_H2_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__,TYPE_1__) ; 
- int /*<<< orphan*/  ST_SH2 (TYPE_1__,TYPE_1__,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TRANSPOSE4x4_SW_SW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int member_0; } ;
+typedef TYPE_1__ v8i16 ;
+typedef int v4i32 ;
+typedef int int16_t ;
+
+
+ int HEVC_IDCT4x4_COL (int ,int ,int ,int ,int ,int ,int ,int ,int) ;
+ int ILVRL_H2_SW (TYPE_1__,TYPE_1__,int ,int ) ;
+ int ILVRL_W2_SH (int ,int ,TYPE_1__,TYPE_1__) ;
+ int LD_SH2 (int *,int,TYPE_1__,TYPE_1__) ;
+ int PCKEV_H2_SH (int ,int ,int ,int ,TYPE_1__,TYPE_1__) ;
+ int ST_SH2 (TYPE_1__,TYPE_1__,int *,int) ;
+ int TRANSPOSE4x4_SW_SW (int ,int ,int ,int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static void hevc_idct_4x4_msa(int16_t *coeffs)
 {
@@ -40,7 +40,7 @@ __attribute__((used)) static void hevc_idct_4x4_msa(int16_t *coeffs)
     TRANSPOSE4x4_SW_SW(sum0, sum1, sum2, sum3, in_r0, in_l0, in_r1, in_l1);
     HEVC_IDCT4x4_COL(in_r0, in_l0, in_r1, in_l1, sum0, sum1, sum2, sum3, 12);
 
-    /* Pack and transpose */
+
     PCKEV_H2_SH(sum2, sum0, sum3, sum1, in0, in1);
     ILVRL_H2_SW(in1, in0, sum0, sum1);
     ILVRL_W2_SH(sum1, sum0, in0, in1);

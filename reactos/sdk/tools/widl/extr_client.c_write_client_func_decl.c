@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_6__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_6__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {TYPE_6__* type; } ;
-typedef  TYPE_1__ var_t ;
-typedef  int /*<<< orphan*/  var_list_t ;
-struct TYPE_11__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_2__ type_t ;
-struct TYPE_12__ {int /*<<< orphan*/  attrs; } ;
+typedef TYPE_1__ var_t ;
+typedef int var_list_t ;
+struct TYPE_11__ {int name; } ;
+typedef TYPE_2__ type_t ;
+struct TYPE_12__ {int attrs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATTR_CALLCONV ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  client ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- char* get_attrp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_name (TYPE_1__ const*) ; 
- int /*<<< orphan*/  indent ; 
- char* prefix_client ; 
- int /*<<< orphan*/  print_client (char*) ; 
- TYPE_2__* type_function_get_rettype (TYPE_6__*) ; 
- int /*<<< orphan*/ * type_get_function_args (TYPE_6__*) ; 
- int /*<<< orphan*/  write_args (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_type_decl_left (int /*<<< orphan*/ ,TYPE_2__*) ; 
+
+ int ATTR_CALLCONV ;
+ int TRUE ;
+ int client ;
+ int fprintf (int ,char*,...) ;
+ char* get_attrp (int ,int ) ;
+ int get_name (TYPE_1__ const*) ;
+ int indent ;
+ char* prefix_client ;
+ int print_client (char*) ;
+ TYPE_2__* type_function_get_rettype (TYPE_6__*) ;
+ int * type_get_function_args (TYPE_6__*) ;
+ int write_args (int ,int const*,int ,int ,int ) ;
+ int write_type_decl_left (int ,TYPE_2__*) ;
 
 __attribute__((used)) static void write_client_func_decl( const type_t *iface, const var_t *func )
 {

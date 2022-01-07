@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint ;
 
-/* Variables and functions */
- int CYC_SHIFT ; 
- int DY ; 
- int FLAG_C ; 
- int /*<<< orphan*/  FLAG_N ; 
- int FLAG_V ; 
- int FLAG_X ; 
- int FLAG_Z ; 
- int MASK_OUT_ABOVE_32 (int) ; 
- int /*<<< orphan*/  NFLAG_32 (int) ; 
- int REG_IR ; 
- int /*<<< orphan*/  USE_CYCLES (int) ; 
- int* m68ki_shift_32_table ; 
+
+
+
+typedef int uint ;
+
+
+ int CYC_SHIFT ;
+ int DY ;
+ int FLAG_C ;
+ int FLAG_N ;
+ int FLAG_V ;
+ int FLAG_X ;
+ int FLAG_Z ;
+ int MASK_OUT_ABOVE_32 (int) ;
+ int NFLAG_32 (int) ;
+ int REG_IR ;
+ int USE_CYCLES (int) ;
+ int* m68ki_shift_32_table ;
 
 __attribute__((used)) static void m68k_op_asl_32_s(void)
 {

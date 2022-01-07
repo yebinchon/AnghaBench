@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lf ;
-struct TYPE_9__ {int /*<<< orphan*/  fIcon; int /*<<< orphan*/ * hbmMask; int /*<<< orphan*/ * hbmColor; } ;
-struct TYPE_8__ {int /*<<< orphan*/  top; int /*<<< orphan*/  left; } ;
-typedef  TYPE_1__ RECT ;
-typedef  char* LPWSTR ;
-typedef  int /*<<< orphan*/  LOGFONTW ;
-typedef  int INT ;
-typedef  TYPE_2__ ICONINFO ;
-typedef  int /*<<< orphan*/ * HICON ;
-typedef  int /*<<< orphan*/ * HFONT ;
-typedef  scalar_t__ HDC ;
-typedef  int /*<<< orphan*/ * HBITMAP ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLACKNESS ; 
- int /*<<< orphan*/  COLOR_HIGHLIGHT ; 
- int /*<<< orphan*/  COLOR_HIGHLIGHTTEXT ; 
- int /*<<< orphan*/  COLOR_WINDOW ; 
- int /*<<< orphan*/  COLOR_WINDOWTEXT ; 
- int /*<<< orphan*/ * CreateBitmap (int,int,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CreateCompatibleBitmap (scalar_t__,int,int) ; 
- scalar_t__ CreateCompatibleDC (scalar_t__) ; 
- int /*<<< orphan*/ * CreateFontIndirectW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CreateIconIndirect (TYPE_2__*) ; 
- int DT_CENTER ; 
- int DT_SINGLELINE ; 
- int DT_VCENTER ; 
- int /*<<< orphan*/  DeleteDC (scalar_t__) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DrawTextW (scalar_t__,char*,int,TYPE_1__*,int) ; 
- int /*<<< orphan*/  ETO_OPAQUE ; 
- int /*<<< orphan*/  ExtTextOutW (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FillRect (scalar_t__,TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ GetDC (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetSysColor (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetSysColorBrush (int /*<<< orphan*/ ) ; 
- int GetSystemMetrics (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PatBlt (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  SM_CXSMICON ; 
- int /*<<< orphan*/  SM_CYSMICON ; 
- int /*<<< orphan*/  SPI_GETICONTITLELOGFONT ; 
- int /*<<< orphan*/ * SelectObject (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetBkColor (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetRect (TYPE_1__*,int,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  SetTextColor (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ SystemParametersInfoW (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int lf ;
+struct TYPE_9__ {int fIcon; int * hbmMask; int * hbmColor; } ;
+struct TYPE_8__ {int top; int left; } ;
+typedef TYPE_1__ RECT ;
+typedef char* LPWSTR ;
+typedef int LOGFONTW ;
+typedef int INT ;
+typedef TYPE_2__ ICONINFO ;
+typedef int * HICON ;
+typedef int * HFONT ;
+typedef scalar_t__ HDC ;
+typedef int * HBITMAP ;
+typedef scalar_t__ BOOL ;
+
+
+ int BLACKNESS ;
+ int COLOR_HIGHLIGHT ;
+ int COLOR_HIGHLIGHTTEXT ;
+ int COLOR_WINDOW ;
+ int COLOR_WINDOWTEXT ;
+ int * CreateBitmap (int,int,int,int,int *) ;
+ int * CreateCompatibleBitmap (scalar_t__,int,int) ;
+ scalar_t__ CreateCompatibleDC (scalar_t__) ;
+ int * CreateFontIndirectW (int *) ;
+ int * CreateIconIndirect (TYPE_2__*) ;
+ int DT_CENTER ;
+ int DT_SINGLELINE ;
+ int DT_VCENTER ;
+ int DeleteDC (scalar_t__) ;
+ int DeleteObject (int *) ;
+ int DrawTextW (scalar_t__,char*,int,TYPE_1__*,int) ;
+ int ETO_OPAQUE ;
+ int ExtTextOutW (scalar_t__,int ,int ,int ,TYPE_1__*,char*,int ,int *) ;
+ scalar_t__ FALSE ;
+ int FillRect (scalar_t__,TYPE_1__*,int ) ;
+ scalar_t__ GetDC (int *) ;
+ int GetSysColor (int ) ;
+ int GetSysColorBrush (int ) ;
+ int GetSystemMetrics (int ) ;
+ int PatBlt (scalar_t__,int ,int ,int,int,int ) ;
+ int ReleaseDC (int *,scalar_t__) ;
+ int SM_CXSMICON ;
+ int SM_CYSMICON ;
+ int SPI_GETICONTITLELOGFONT ;
+ int * SelectObject (scalar_t__,int *) ;
+ int SetBkColor (scalar_t__,int ) ;
+ int SetRect (TYPE_1__*,int,int ,int,int) ;
+ int SetTextColor (scalar_t__,int ) ;
+ scalar_t__ SystemParametersInfoW (int ,int,int *,int ) ;
+ int TRUE ;
 
 __attribute__((used)) static HICON
 CreateLayoutIcon(LPWSTR szLayout, BOOL bIsDefault)
@@ -71,19 +71,19 @@ CreateLayoutIcon(LPWSTR szLayout, BOOL bIsDefault)
     HDC hdc;
     HDC hdcsrc;
     HBITMAP hBitmap;
-    HICON hIcon = NULL;
+    HICON hIcon = ((void*)0);
 
-    hdcsrc = GetDC(NULL);
+    hdcsrc = GetDC(((void*)0));
     hdc = CreateCompatibleDC(hdcsrc);
     hBitmap = CreateCompatibleBitmap(hdcsrc, width, height);
 
-    ReleaseDC(NULL, hdcsrc);
+    ReleaseDC(((void*)0), hdcsrc);
 
     if (hdc && hBitmap)
     {
         HBITMAP hBmpNew;
 
-        hBmpNew = CreateBitmap(width, height, 1, 1, NULL);
+        hBmpNew = CreateBitmap(width, height, 1, 1, ((void*)0));
         if (hBmpNew)
         {
             LOGFONTW lf;
@@ -95,13 +95,13 @@ CreateLayoutIcon(LPWSTR szLayout, BOOL bIsDefault)
 
                 hFont = CreateFontIndirectW(&lf);
 
-                if (hFont != NULL)
+                if (hFont != ((void*)0))
                 {
                     HBITMAP hBmpOld;
 
                     hBmpOld = SelectObject(hdc, hBitmap);
 
-                    if (hBmpOld != NULL)
+                    if (hBmpOld != ((void*)0))
                     {
                         RECT rect;
 
@@ -112,7 +112,7 @@ CreateLayoutIcon(LPWSTR szLayout, BOOL bIsDefault)
                             SetBkColor(hdc, GetSysColor(COLOR_WINDOW));
                             SetTextColor(hdc, GetSysColor(COLOR_WINDOWTEXT));
 
-                            ExtTextOutW(hdc, rect.left, rect.top, ETO_OPAQUE, &rect, L"", 0, NULL);
+                            ExtTextOutW(hdc, rect.left, rect.top, ETO_OPAQUE, &rect, L"", 0, ((void*)0));
 
                             SelectObject(hdc, hFont);
                             DrawTextW(hdc, L"\x2022", 1, &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
@@ -127,7 +127,7 @@ CreateLayoutIcon(LPWSTR szLayout, BOOL bIsDefault)
                         SetBkColor(hdc, GetSysColor(COLOR_HIGHLIGHT));
                         SetTextColor(hdc, GetSysColor(COLOR_HIGHLIGHTTEXT));
 
-                        ExtTextOutW(hdc, rect.left, rect.top, ETO_OPAQUE, &rect, L"", 0, NULL);
+                        ExtTextOutW(hdc, rect.left, rect.top, ETO_OPAQUE, &rect, L"", 0, ((void*)0));
 
                         SelectObject(hdc, hFont);
                         DrawTextW(hdc, szLayout, 2, &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);

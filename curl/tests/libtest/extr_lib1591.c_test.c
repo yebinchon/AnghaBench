@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char curl_slist ;
-typedef  scalar_t__ CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- scalar_t__ CURLE_FAILED_INIT ; 
- scalar_t__ CURLE_OK ; 
- int /*<<< orphan*/  CURLOPT_HTTPHEADER ; 
- int /*<<< orphan*/  CURLOPT_PUT ; 
- int /*<<< orphan*/  CURLOPT_READFUNCTION ; 
- int /*<<< orphan*/  CURLOPT_TRAILERDATA ; 
- int /*<<< orphan*/  CURLOPT_TRAILERFUNCTION ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- int TEST_ERR_MAJOR_BAD ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * curl_easy_init () ; 
- scalar_t__ curl_easy_perform (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- scalar_t__ curl_global_init (int /*<<< orphan*/ ) ; 
- char* curl_slist_append (char*,char*) ; 
- int /*<<< orphan*/  curl_slist_free_all (char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- char* read_callback ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  test_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- char* trailers_callback ; 
+
+
+
+typedef char curl_slist ;
+typedef scalar_t__ CURLcode ;
+typedef int CURL ;
+
+
+ scalar_t__ CURLE_FAILED_INIT ;
+ scalar_t__ CURLE_OK ;
+ int CURLOPT_HTTPHEADER ;
+ int CURLOPT_PUT ;
+ int CURLOPT_READFUNCTION ;
+ int CURLOPT_TRAILERDATA ;
+ int CURLOPT_TRAILERFUNCTION ;
+ int CURLOPT_URL ;
+ int CURL_GLOBAL_ALL ;
+ int TEST_ERR_MAJOR_BAD ;
+ int curl_easy_cleanup (int *) ;
+ int * curl_easy_init () ;
+ scalar_t__ curl_easy_perform (int *) ;
+ int curl_global_cleanup () ;
+ scalar_t__ curl_global_init (int ) ;
+ char* curl_slist_append (char*,char*) ;
+ int curl_slist_free_all (char*) ;
+ int fprintf (int ,char*) ;
+ char* read_callback ;
+ int stderr ;
+ int test_setopt (int *,int ,...) ;
+ char* trailers_callback ;
 
 int test(char *URL)
 {
-  CURL *curl = NULL;
+  CURL *curl = ((void*)0);
   CURLcode res = CURLE_FAILED_INIT;
-  /* http and proxy header list*/
-  struct curl_slist *hhl = NULL;
+
+  struct curl_slist *hhl = ((void*)0);
 
   if(curl_global_init(CURL_GLOBAL_ALL) != CURLE_OK) {
     fprintf(stderr, "curl_global_init() failed\n");
@@ -69,7 +69,7 @@ int test(char *URL)
   test_setopt(curl, CURLOPT_PUT, 1L);
   test_setopt(curl, CURLOPT_READFUNCTION, read_callback);
   test_setopt(curl, CURLOPT_TRAILERFUNCTION, trailers_callback);
-  test_setopt(curl, CURLOPT_TRAILERDATA, NULL);
+  test_setopt(curl, CURLOPT_TRAILERDATA, ((void*)0));
 
   res = curl_easy_perform(curl);
 

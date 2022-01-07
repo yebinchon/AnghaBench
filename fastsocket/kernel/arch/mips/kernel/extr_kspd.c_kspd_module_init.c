@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  stop; int /*<<< orphan*/  start; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kspd_notifylist ; 
- TYPE_1__ notify ; 
- int /*<<< orphan*/  startwork ; 
- int /*<<< orphan*/  stopwork ; 
- int /*<<< orphan*/  tclimit ; 
- int /*<<< orphan*/  vpe_notify (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int stop; int start; } ;
+
+
+ int INIT_LIST_HEAD (int *) ;
+ int kspd_notifylist ;
+ TYPE_1__ notify ;
+ int startwork ;
+ int stopwork ;
+ int tclimit ;
+ int vpe_notify (int ,TYPE_1__*) ;
 
 __attribute__((used)) static int kspd_module_init(void)
 {
-	INIT_LIST_HEAD(&kspd_notifylist);
+ INIT_LIST_HEAD(&kspd_notifylist);
 
-	notify.start = startwork;
-	notify.stop = stopwork;
-	vpe_notify(tclimit, &notify);
+ notify.start = startwork;
+ notify.stop = stopwork;
+ vpe_notify(tclimit, &notify);
 
-	return 0;
+ return 0;
 }

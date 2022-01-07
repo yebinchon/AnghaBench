@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ULONG ;
+
+
+ int DPRINT (int ) ;
 
 void SetHardwareBreakPoint(ULONG ulAddress,ULONG ulReg)
 {
@@ -27,56 +27,56 @@ void SetHardwareBreakPoint(ULONG ulAddress,ULONG ulReg)
 
     DPRINT((0,"mask = %x\n",mask));
 
-	__asm__ __volatile__
-	("\n\t \
-		xorl %%eax,%%eax\n\t \
-		mov %%eax,%%dr6\n\t \
-        mov %%dr7,%%eax\n\t \
-        orl %0,%%eax\n\t \
-		mov %%eax,%%dr7\n\t \
-	"
-	:
-	:"m" (mask)
-	:"eax");
+ __asm__ __volatile__
+ ("\n\t 		xorl %%eax,%%eax\n\t 		mov %%eax,%%dr6\n\t         mov %%dr7,%%eax\n\t         orl %0,%%eax\n\t 		mov %%eax,%%dr7\n\t 	"
+
+
+
+
+
+
+ :
+ :"m" (mask)
+ :"eax");
 
     switch(ulReg)
     {
         case 0:
             __asm__ __volatile__
-            ("\n\t \
-        		mov %0,%%eax\n\t \
-		        mov %%eax,%%dr0\n\t \
-             "
+            ("\n\t         		mov %0,%%eax\n\t 		        mov %%eax,%%dr0\n\t              "
+
+
+
              :
              :"m" (ulAddress)
              :"eax");
              break;
         case 1:
             __asm__ __volatile__
-            ("\n\t \
-        		mov %0,%%eax\n\t \
-		        mov %%eax,%%dr1\n\t \
-             "
+            ("\n\t         		mov %0,%%eax\n\t 		        mov %%eax,%%dr1\n\t              "
+
+
+
              :
              :"m" (ulAddress)
              :"eax");
              break;
         case 2:
             __asm__ __volatile__
-            ("\n\t \
-        		mov %0,%%eax\n\t \
-		        mov %%eax,%%dr2\n\t \
-             "
+            ("\n\t         		mov %0,%%eax\n\t 		        mov %%eax,%%dr2\n\t              "
+
+
+
              :
              :"m" (ulAddress)
              :"eax");
              break;
         case 3:
             __asm__ __volatile__
-            ("\n\t \
-        		mov %0,%%eax\n\t \
-		        mov %%eax,%%dr3\n\t \
-             "
+            ("\n\t         		mov %0,%%eax\n\t 		        mov %%eax,%%dr3\n\t              "
+
+
+
              :
              :"m" (ulAddress)
              :"eax");

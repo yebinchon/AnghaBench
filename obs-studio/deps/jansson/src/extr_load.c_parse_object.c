@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {char token; } ;
-typedef  TYPE_1__ lex_t ;
-typedef  int /*<<< orphan*/  json_t ;
-typedef  int /*<<< orphan*/  json_error_t ;
+typedef TYPE_1__ lex_t ;
+typedef int json_t ;
+typedef int json_error_t ;
 
-/* Variables and functions */
- size_t JSON_REJECT_DUPLICATES ; 
- char TOKEN_STRING ; 
- int /*<<< orphan*/  error_set (int /*<<< orphan*/ *,TYPE_1__*,char*) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_object () ; 
- scalar_t__ json_object_get (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ json_object_set_nocheck (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsonp_free (char*) ; 
- int /*<<< orphan*/  lex_scan (TYPE_1__*,int /*<<< orphan*/ *) ; 
- char* lex_steal_string (TYPE_1__*,size_t*) ; 
- scalar_t__ memchr (char*,char,size_t) ; 
- int /*<<< orphan*/ * parse_value (TYPE_1__*,size_t,int /*<<< orphan*/ *) ; 
+
+ size_t JSON_REJECT_DUPLICATES ;
+ char TOKEN_STRING ;
+ int error_set (int *,TYPE_1__*,char*) ;
+ int json_decref (int *) ;
+ int * json_object () ;
+ scalar_t__ json_object_get (int *,char*) ;
+ scalar_t__ json_object_set_nocheck (int *,char*,int *) ;
+ int jsonp_free (char*) ;
+ int lex_scan (TYPE_1__*,int *) ;
+ char* lex_steal_string (TYPE_1__*,size_t*) ;
+ scalar_t__ memchr (char*,char,size_t) ;
+ int * parse_value (TYPE_1__*,size_t,int *) ;
 
 __attribute__((used)) static json_t *parse_object(lex_t *lex, size_t flags, json_error_t *error)
 {
     json_t *object = json_object();
     if(!object)
-        return NULL;
+        return ((void*)0);
 
     lex_scan(lex, error);
     if(lex->token == '}')
@@ -52,7 +52,7 @@ __attribute__((used)) static json_t *parse_object(lex_t *lex, size_t flags, json
 
         key = lex_steal_string(lex, &len);
         if(!key)
-            return NULL;
+            return ((void*)0);
         if (memchr(key, '\0', len)) {
             jsonp_free(key);
             error_set(error, lex, "NUL byte in object key not supported");
@@ -106,5 +106,5 @@ __attribute__((used)) static json_t *parse_object(lex_t *lex, size_t flags, json
 
 error:
     json_decref(object);
-    return NULL;
+    return ((void*)0);
 }

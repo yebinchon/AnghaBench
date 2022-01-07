@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct knote {struct cuse_client* kn_hook; } ;
 struct cuse_client {int cflags; } ;
 
-/* Variables and functions */
- int CUSE_CLI_KNOTE_NEED_READ ; 
- int /*<<< orphan*/  MA_OWNED ; 
- int /*<<< orphan*/  cuse_mtx ; 
- int /*<<< orphan*/  mtx_assert (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int CUSE_CLI_KNOTE_NEED_READ ;
+ int MA_OWNED ;
+ int cuse_mtx ;
+ int mtx_assert (int *,int ) ;
 
 __attribute__((used)) static int
 cuse_client_kqfilter_read_event(struct knote *kn, long hint)
 {
-	struct cuse_client *pcc;
+ struct cuse_client *pcc;
 
-	mtx_assert(&cuse_mtx, MA_OWNED);
+ mtx_assert(&cuse_mtx, MA_OWNED);
 
-	pcc = kn->kn_hook;
-	return ((pcc->cflags & CUSE_CLI_KNOTE_NEED_READ) ? 1 : 0);
+ pcc = kn->kn_hook;
+ return ((pcc->cflags & CUSE_CLI_KNOTE_NEED_READ) ? 1 : 0);
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  double calculated_number ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STORAGE_NUMBER_NEGATIVE_MAX_RAW ; 
- int /*<<< orphan*/  STORAGE_NUMBER_POSITIVE_MIN_RAW ; 
- int /*<<< orphan*/  benchmark_storage_number (int,int) ; 
- scalar_t__ check_storage_number (double,int) ; 
- scalar_t__ check_storage_number_exists () ; 
- double unpack_storage_number (int /*<<< orphan*/ ) ; 
+
+
+
+typedef double calculated_number ;
+
+
+ int STORAGE_NUMBER_NEGATIVE_MAX_RAW ;
+ int STORAGE_NUMBER_POSITIVE_MIN_RAW ;
+ int benchmark_storage_number (int,int) ;
+ scalar_t__ check_storage_number (double,int) ;
+ scalar_t__ check_storage_number_exists () ;
+ double unpack_storage_number (int ) ;
 
 int unit_test_storage() {
     if(check_storage_number_exists()) return 0;
@@ -46,7 +46,7 @@ int unit_test_storage() {
         }
     }
 
-    // if(check_storage_number(858993459.1234567, 1)) return 1;
+
     benchmark_storage_number(1000000, 2);
     return r;
 }

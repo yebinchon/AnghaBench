@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int* pageEnds; int pageCapacity; } ;
 struct TYPE_7__ {int bottom; } ;
 struct TYPE_6__ {int cpMin; } ;
-struct TYPE_8__ {TYPE_2__ rc; TYPE_1__ chrg; int /*<<< orphan*/  hdc; } ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  TYPE_3__ FORMATRANGE ;
+struct TYPE_8__ {TYPE_2__ rc; TYPE_1__ chrg; int hdc; } ;
+typedef int RECT ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef TYPE_3__ FORMATRANGE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EM_FORMATRANGE ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FillRect (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  GetStockObject (int /*<<< orphan*/ ) ; 
- int* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int* HeapReAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- int SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WHITE_BRUSH ; 
- scalar_t__ is_last_preview_page (int) ; 
- TYPE_4__ preview ; 
+
+ int EM_FORMATRANGE ;
+ int FALSE ;
+ int FillRect (int ,int *,int ) ;
+ int GetProcessHeap () ;
+ int GetStockObject (int ) ;
+ int* HeapAlloc (int ,int ,int) ;
+ int* HeapReAlloc (int ,int ,int*,int) ;
+ int SendMessageW (int ,int ,int ,int ) ;
+ int TRUE ;
+ int WHITE_BRUSH ;
+ scalar_t__ is_last_preview_page (int) ;
+ TYPE_4__ preview ;
 
 __attribute__((used)) static void draw_preview(HWND hEditorWnd, FORMATRANGE* lpFr, RECT* paper, int page)
 {
@@ -62,8 +62,8 @@ __attribute__((used)) static void draw_preview(HWND hEditorWnd, FORMATRANGE* lpF
     bottom = lpFr->rc.bottom;
     preview.pageEnds[page-1] = SendMessageW(hEditorWnd, EM_FORMATRANGE, TRUE, (LPARAM)lpFr);
 
-    /* EM_FORMATRANGE sets fr.rc.bottom to indicate the area printed in,
-     * but we want to keep the original for drawing margins */
+
+
     lpFr->rc.bottom = bottom;
     SendMessageW(hEditorWnd, EM_FORMATRANGE, FALSE, 0);
 }

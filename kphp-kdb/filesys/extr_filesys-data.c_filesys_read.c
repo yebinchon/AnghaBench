@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct filesys_inode {unsigned int index_filesize; int /*<<< orphan*/ * index_data; } ;
 
-/* Variables and functions */
- unsigned int copy_updates (struct filesys_inode*,unsigned int,unsigned int,char*,unsigned int*) ; 
- int /*<<< orphan*/  filesys_inode_load (struct filesys_inode*) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  vkprintf (int,char*) ; 
+
+
+
+struct filesys_inode {unsigned int index_filesize; int * index_data; } ;
+
+
+ unsigned int copy_updates (struct filesys_inode*,unsigned int,unsigned int,char*,unsigned int*) ;
+ int filesys_inode_load (struct filesys_inode*) ;
+ int memcpy (char*,int *,unsigned int) ;
+ int memset (char*,int ,unsigned int) ;
+ int vkprintf (int,char*) ;
 
 __attribute__((used)) static int filesys_read (struct filesys_inode *I, unsigned int offset, unsigned int length, char *data) {
   unsigned int blocksize;
@@ -29,7 +29,7 @@ __attribute__((used)) static int filesys_read (struct filesys_inode *I, unsigned
   vkprintf (3, "filesys_read: before memset\n");
 
   if (offset >= I->index_filesize) {
-    /* avoid loading metafile, if we really doesn't need it */
+
     return blocksize;
   }
   filesys_inode_load (I);

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct keep_mc_store {scalar_t__ magic; int num; scalar_t__ list_id; } ;
 struct connection {TYPE_1__* Tmp; } ;
-typedef  int /*<<< orphan*/  nb_iterator_t ;
+typedef int nb_iterator_t ;
 struct TYPE_2__ {scalar_t__ start; } ;
 
-/* Variables and functions */
- scalar_t__ FRIENDS_STORE_MAGIC ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ list_id ; 
- int nbit_advance (int /*<<< orphan*/ *,int) ; 
- int nbit_read_in (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  nbit_set (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int user_num ; 
- int /*<<< orphan*/  userlist ; 
+
+ scalar_t__ FRIENDS_STORE_MAGIC ;
+ int assert (int) ;
+ scalar_t__ list_id ;
+ int nbit_advance (int *,int) ;
+ int nbit_read_in (int *,int ,int) ;
+ int nbit_set (int *,TYPE_1__*) ;
+ int user_num ;
+ int userlist ;
 
 void friends_load_saved_data (struct connection *c) {
   struct keep_mc_store *Data = 0;
@@ -42,5 +42,5 @@ void friends_load_saved_data (struct connection *c) {
   assert (nbit_advance (&R, sizeof (struct keep_mc_store)) == sizeof (struct keep_mc_store));
   assert (nbit_read_in (&R, userlist, 4 * Data->num) == 4 * Data->num);
   list_id = Data->list_id;
-  //free_tmp_buffers (c);
+
 }

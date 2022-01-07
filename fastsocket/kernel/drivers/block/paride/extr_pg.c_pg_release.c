@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pg {int /*<<< orphan*/  access; int /*<<< orphan*/ * bufptr; } ;
+
+
+
+
+struct pg {int access; int * bufptr; } ;
 struct inode {int dummy; } ;
 struct file {struct pg* private_data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
+
+ int clear_bit (int ,int *) ;
+ int kfree (int *) ;
 
 __attribute__((used)) static int pg_release(struct inode *inode, struct file *file)
 {
-	struct pg *dev = file->private_data;
+ struct pg *dev = file->private_data;
 
-	kfree(dev->bufptr);
-	dev->bufptr = NULL;
-	clear_bit(0, &dev->access);
+ kfree(dev->bufptr);
+ dev->bufptr = ((void*)0);
+ clear_bit(0, &dev->access);
 
-	return 0;
+ return 0;
 }

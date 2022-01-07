@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int depth; scalar_t__ owner; int /*<<< orphan*/  counter; int /*<<< orphan*/  sema; } ;
-typedef  TYPE_1__ __gthread_recursive_mutex_t ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ GetCurrentThreadId () ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  InterlockedDecrement (int /*<<< orphan*/ *) ; 
- scalar_t__ InterlockedIncrement (int /*<<< orphan*/ *) ; 
- scalar_t__ WAIT_OBJECT_0 ; 
- scalar_t__ WaitForSingleObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int depth; scalar_t__ owner; int counter; int sema; } ;
+typedef TYPE_1__ __gthread_recursive_mutex_t ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ GetCurrentThreadId () ;
+ int INFINITE ;
+ int InterlockedDecrement (int *) ;
+ scalar_t__ InterlockedIncrement (int *) ;
+ scalar_t__ WAIT_OBJECT_0 ;
+ scalar_t__ WaitForSingleObject (int ,int ) ;
 
 int
 __gthr_win32_recursive_mutex_lock (__gthread_recursive_mutex_t *mutex)
@@ -44,8 +44,8 @@ __gthr_win32_recursive_mutex_lock (__gthread_recursive_mutex_t *mutex)
     }
   else
     {
-      /* WaitForSingleObject returns WAIT_FAILED, and we can only do
-         some best-effort cleanup here.  */
+
+
       InterlockedDecrement (&mutex->counter);
       return 1;
     }

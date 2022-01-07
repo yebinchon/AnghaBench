@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t UBYTE ;
 
-/* Variables and functions */
- size_t END ; 
- int /*<<< orphan*/  FREQUENCY ; 
- int /*<<< orphan*/  PLAY ; 
- size_t SILENCE ; 
- int /*<<< orphan*/  delay (int) ; 
- int* frequencies ; 
- size_t* music ; 
- int /*<<< orphan*/  update_value (size_t,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef size_t UBYTE ;
+
+
+ size_t END ;
+ int FREQUENCY ;
+ int PLAY ;
+ size_t SILENCE ;
+ int delay (int) ;
+ int* frequencies ;
+ size_t* music ;
+ int update_value (size_t,int ,int) ;
 
 void play_music(UBYTE mode)
 {

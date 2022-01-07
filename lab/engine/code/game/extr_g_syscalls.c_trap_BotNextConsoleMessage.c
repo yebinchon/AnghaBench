@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int BOTLIB_AI_NEXT_CONSOLE_MESSAGE ;
+ int syscall (int ,int,void*) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BOTLIB_AI_NEXT_CONSOLE_MESSAGE ; 
- int syscall (int /*<<< orphan*/ ,int,void*) ; 
-
-int trap_BotNextConsoleMessage(int chatstate, void /* struct bot_consolemessage_s */ *cm) {
-	return syscall( BOTLIB_AI_NEXT_CONSOLE_MESSAGE, chatstate, cm );
+int trap_BotNextConsoleMessage(int chatstate, void *cm) {
+ return syscall( BOTLIB_AI_NEXT_CONSOLE_MESSAGE, chatstate, cm );
 }

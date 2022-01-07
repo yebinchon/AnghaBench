@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct port {int outvq_full; int /*<<< orphan*/  outvq_lock; int /*<<< orphan*/  host_connected; int /*<<< orphan*/  guest_connected; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  reclaim_consumed_buffers (struct port*) ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
+
+
+
+struct port {int outvq_full; int outvq_lock; int host_connected; int guest_connected; } ;
+
+
+ int reclaim_consumed_buffers (struct port*) ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
 
 __attribute__((used)) static bool will_write_block(struct port *port)
 {
-	bool ret;
+ bool ret;
 
-	if (!port->guest_connected) {
-		/* Port got hot-unplugged. Let's exit. */
-		return false;
-	}
-	if (!port->host_connected)
-		return true;
+ if (!port->guest_connected) {
 
-	spin_lock_irq(&port->outvq_lock);
-	/*
-	 * Check if the Host has consumed any buffers since we last
-	 * sent data (this is only applicable for nonblocking ports).
-	 */
-	reclaim_consumed_buffers(port);
-	ret = port->outvq_full;
-	spin_unlock_irq(&port->outvq_lock);
+  return 0;
+ }
+ if (!port->host_connected)
+  return 1;
 
-	return ret;
+ spin_lock_irq(&port->outvq_lock);
+
+
+
+
+ reclaim_consumed_buffers(port);
+ ret = port->outvq_full;
+ spin_unlock_irq(&port->outvq_lock);
+
+ return ret;
 }

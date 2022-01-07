@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
+
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct bxe_softc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOGE (struct bxe_softc*,char*,int,int,int,int,int) ; 
- int /*<<< orphan*/  CHIP_IS_E1 (struct bxe_softc*) ; 
- int /*<<< orphan*/  CHIP_IS_E1x (struct bxe_softc*) ; 
- scalar_t__ CHIP_IS_E3 (struct bxe_softc*) ; 
- int /*<<< orphan*/  DELAY (int) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  MISC_REG_UNPREPARED ; 
- int /*<<< orphan*/  PGLUE_B_REG_LATCHED_ERRORS_CLR ; 
- int /*<<< orphan*/  PGLUE_B_REG_TAGS_63_32 ; 
- int /*<<< orphan*/  PXP2_REG_PGL_EXP_ROM2 ; 
- int /*<<< orphan*/  PXP2_REG_RD_BLK_CNT ; 
- int /*<<< orphan*/  PXP2_REG_RD_PORT_IS_IDLE_0 ; 
- int /*<<< orphan*/  PXP2_REG_RD_PORT_IS_IDLE_1 ; 
- int /*<<< orphan*/  PXP2_REG_RD_SR_CNT ; 
- int REG_RD (struct bxe_softc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REG_WR (struct bxe_softc*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ bxe_er_poll_igu_vq (struct bxe_softc*) ; 
- int /*<<< orphan*/  bxe_process_kill_chip_reset (struct bxe_softc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bxe_pxp_prep (struct bxe_softc*) ; 
- scalar_t__ bxe_reset_mcp_comp (struct bxe_softc*,int) ; 
- int /*<<< orphan*/  bxe_reset_mcp_prep (struct bxe_softc*,int*) ; 
- int /*<<< orphan*/  bxe_set_234_gates (struct bxe_softc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mb () ; 
- int /*<<< orphan*/  wmb () ; 
+
+ int BLOGE (struct bxe_softc*,char*,int,int,int,int,int) ;
+ int CHIP_IS_E1 (struct bxe_softc*) ;
+ int CHIP_IS_E1x (struct bxe_softc*) ;
+ scalar_t__ CHIP_IS_E3 (struct bxe_softc*) ;
+ int DELAY (int) ;
+ int FALSE ;
+ int MISC_REG_UNPREPARED ;
+ int PGLUE_B_REG_LATCHED_ERRORS_CLR ;
+ int PGLUE_B_REG_TAGS_63_32 ;
+ int PXP2_REG_PGL_EXP_ROM2 ;
+ int PXP2_REG_RD_BLK_CNT ;
+ int PXP2_REG_RD_PORT_IS_IDLE_0 ;
+ int PXP2_REG_RD_PORT_IS_IDLE_1 ;
+ int PXP2_REG_RD_SR_CNT ;
+ int REG_RD (struct bxe_softc*,int ) ;
+ int REG_WR (struct bxe_softc*,int ,int) ;
+ int TRUE ;
+ scalar_t__ bxe_er_poll_igu_vq (struct bxe_softc*) ;
+ int bxe_process_kill_chip_reset (struct bxe_softc*,int ) ;
+ int bxe_pxp_prep (struct bxe_softc*) ;
+ scalar_t__ bxe_reset_mcp_comp (struct bxe_softc*,int) ;
+ int bxe_reset_mcp_prep (struct bxe_softc*,int*) ;
+ int bxe_set_234_gates (struct bxe_softc*,int ) ;
+ int mb () ;
+ int wmb () ;
 
 __attribute__((used)) static int
 bxe_process_kill(struct bxe_softc *sc,
-                 uint8_t          global)
+                 uint8_t global)
 {
     int cnt = 1000;
     uint32_t val = 0;
     uint32_t sr_cnt, blk_cnt, port_is_idle_0, port_is_idle_1, pgl_exp_rom2;
     uint32_t tags_63_32 = 0;
 
-    /* Empty the Tetris buffer, wait for 1s */
+
     do {
-        sr_cnt  = REG_RD(sc, PXP2_REG_RD_SR_CNT);
+        sr_cnt = REG_RD(sc, PXP2_REG_RD_SR_CNT);
         blk_cnt = REG_RD(sc, PXP2_REG_RD_BLK_CNT);
         port_is_idle_0 = REG_RD(sc, PXP2_REG_RD_PORT_IS_IDLE_0);
         port_is_idle_1 = REG_RD(sc, PXP2_REG_RD_PORT_IS_IDLE_1);
@@ -82,62 +82,62 @@ bxe_process_kill(struct bxe_softc *sc,
 
     mb();
 
-    /* Close gates #2, #3 and #4 */
+
     bxe_set_234_gates(sc, TRUE);
 
-    /* Poll for IGU VQs for 57712 and newer chips */
+
     if (!CHIP_IS_E1x(sc) && bxe_er_poll_igu_vq(sc)) {
         return (-1);
     }
 
-    /* XXX indicate that "process kill" is in progress to MCP */
 
-    /* clear "unprepared" bit */
+
+
     REG_WR(sc, MISC_REG_UNPREPARED, 0);
     mb();
 
-    /* Make sure all is written to the chip before the reset */
+
     wmb();
 
-    /*
-     * Wait for 1ms to empty GLUE and PCI-E core queues,
-     * PSWHST, GRC and PSWRD Tetris buffer.
-     */
+
+
+
+
     DELAY(1000);
 
-    /* Prepare to chip reset: */
-    /* MCP */
+
+
     if (global) {
         bxe_reset_mcp_prep(sc, &val);
     }
 
-    /* PXP */
+
     bxe_pxp_prep(sc);
     mb();
 
-    /* reset the chip */
+
     bxe_process_kill_chip_reset(sc, global);
     mb();
 
-    /* clear errors in PGB */
+
     if (!CHIP_IS_E1(sc))
         REG_WR(sc, PGLUE_B_REG_LATCHED_ERRORS_CLR, 0x7f);
 
-    /* Recover after reset: */
-    /* MCP */
+
+
     if (global && bxe_reset_mcp_comp(sc, val)) {
         return (-1);
     }
 
-    /* XXX add resetting the NO_MCP mode DB here */
 
-    /* Open the gates #2, #3 and #4 */
+
+
     bxe_set_234_gates(sc, FALSE);
 
-    /* XXX
-     * IGU/AEU preparation bring back the AEU/IGU to a reset state
-     * re-enable attentions
-     */
+
+
+
+
 
     return (0);
 }

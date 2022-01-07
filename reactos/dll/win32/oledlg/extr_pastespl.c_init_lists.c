@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int flags; int /*<<< orphan*/  ps; } ;
-typedef  TYPE_1__ ps_struct_t ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CheckRadioButton (int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  EnableWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ IDC_PS_PASTE ; 
- scalar_t__ IDC_PS_PASTELINK ; 
- scalar_t__ IDC_PS_PASTELINKLIST ; 
- scalar_t__ IDC_PS_PASTELIST ; 
- int /*<<< orphan*/  IDOK ; 
- int PSF_SELECTPASTE ; 
- int PSF_SELECTPASTELINK ; 
- int /*<<< orphan*/  init_linklist (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_pastelist (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_display_list (int /*<<< orphan*/ ,scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int flags; int ps; } ;
+typedef TYPE_1__ ps_struct_t ;
+typedef scalar_t__ UINT ;
+typedef int HWND ;
+typedef int DWORD ;
+
+
+ int CheckRadioButton (int ,scalar_t__,scalar_t__,scalar_t__) ;
+ int EnableWindow (int ,int ) ;
+ int GetDlgItem (int ,int ) ;
+ scalar_t__ IDC_PS_PASTE ;
+ scalar_t__ IDC_PS_PASTELINK ;
+ scalar_t__ IDC_PS_PASTELINKLIST ;
+ scalar_t__ IDC_PS_PASTELIST ;
+ int IDOK ;
+ int PSF_SELECTPASTE ;
+ int PSF_SELECTPASTELINK ;
+ int init_linklist (int ,int ) ;
+ int init_pastelist (int ,int ) ;
+ int update_display_list (int ,scalar_t__) ;
 
 __attribute__((used)) static void init_lists(HWND hdlg, ps_struct_t *ps_struct)
 {

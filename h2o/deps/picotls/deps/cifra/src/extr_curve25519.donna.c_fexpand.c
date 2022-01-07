@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  limb ;
 
-/* Variables and functions */
- int /*<<< orphan*/  F (int,int,int,int) ; 
+
+
+
+typedef int u8 ;
+typedef int limb ;
+
+
+ int F (int,int,int,int) ;
 
 __attribute__((used)) static void
 fexpand(limb *output, const u8 *input) {
-#define F(n,start,shift,mask) \
-  output[n] = ((((limb) input[start + 0]) | \
-                ((limb) input[start + 1]) << 8 | \
-                ((limb) input[start + 2]) << 16 | \
-                ((limb) input[start + 3]) << 24) >> shift) & mask;
-  F(0, 0, 0, 0x3ffffff);
-  F(1, 3, 2, 0x1ffffff);
-  F(2, 6, 3, 0x3ffffff);
-  F(3, 9, 5, 0x1ffffff);
-  F(4, 12, 6, 0x3ffffff);
-  F(5, 16, 0, 0x1ffffff);
-  F(6, 19, 1, 0x3ffffff);
-  F(7, 22, 3, 0x1ffffff);
-  F(8, 25, 4, 0x3ffffff);
-  F(9, 28, 6, 0x1ffffff);
-#undef F
+
+
+
+
+
+  output[0] = ((((limb) input[0 + 0]) | ((limb) input[0 + 1]) << 8 | ((limb) input[0 + 2]) << 16 | ((limb) input[0 + 3]) << 24) >> 0) & 0x3ffffff;;
+  output[1] = ((((limb) input[3 + 0]) | ((limb) input[3 + 1]) << 8 | ((limb) input[3 + 2]) << 16 | ((limb) input[3 + 3]) << 24) >> 2) & 0x1ffffff;;
+  output[2] = ((((limb) input[6 + 0]) | ((limb) input[6 + 1]) << 8 | ((limb) input[6 + 2]) << 16 | ((limb) input[6 + 3]) << 24) >> 3) & 0x3ffffff;;
+  output[3] = ((((limb) input[9 + 0]) | ((limb) input[9 + 1]) << 8 | ((limb) input[9 + 2]) << 16 | ((limb) input[9 + 3]) << 24) >> 5) & 0x1ffffff;;
+  output[4] = ((((limb) input[12 + 0]) | ((limb) input[12 + 1]) << 8 | ((limb) input[12 + 2]) << 16 | ((limb) input[12 + 3]) << 24) >> 6) & 0x3ffffff;;
+  output[5] = ((((limb) input[16 + 0]) | ((limb) input[16 + 1]) << 8 | ((limb) input[16 + 2]) << 16 | ((limb) input[16 + 3]) << 24) >> 0) & 0x1ffffff;;
+  output[6] = ((((limb) input[19 + 0]) | ((limb) input[19 + 1]) << 8 | ((limb) input[19 + 2]) << 16 | ((limb) input[19 + 3]) << 24) >> 1) & 0x3ffffff;;
+  output[7] = ((((limb) input[22 + 0]) | ((limb) input[22 + 1]) << 8 | ((limb) input[22 + 2]) << 16 | ((limb) input[22 + 3]) << 24) >> 3) & 0x1ffffff;;
+  output[8] = ((((limb) input[25 + 0]) | ((limb) input[25 + 1]) << 8 | ((limb) input[25 + 2]) << 16 | ((limb) input[25 + 3]) << 24) >> 4) & 0x3ffffff;;
+  output[9] = ((((limb) input[28 + 0]) | ((limb) input[28 + 1]) << 8 | ((limb) input[28 + 2]) << 16 | ((limb) input[28 + 3]) << 24) >> 6) & 0x1ffffff;;
+
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32_t ;
-struct TYPE_3__ {int blocksize; int /*<<< orphan*/  gb; int /*<<< orphan*/  avctx; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_1__ FLACContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int INT_MAX ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  get_sbits_long (int /*<<< orphan*/ *,int) ; 
- int get_sr_golomb_flac (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int int32_t ;
+struct TYPE_3__ {int blocksize; int gb; int avctx; } ;
+typedef int GetBitContext ;
+typedef TYPE_1__ FLACContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int INT_MAX ;
+ int av_log (int ,int ,char*,...) ;
+ int get_bits (int *,int) ;
+ int get_sbits_long (int *,int) ;
+ int get_sr_golomb_flac (int *,int,int,int ) ;
 
 __attribute__((used)) static int decode_residuals(FLACContext *s, int32_t *decoded, int pred_order)
 {
@@ -33,14 +33,14 @@ __attribute__((used)) static int decode_residuals(FLACContext *s, int32_t *decod
     int samples;
 
     method_type = get_bits(&gb, 2);
-    rice_order  = get_bits(&gb, 4);
+    rice_order = get_bits(&gb, 4);
 
-    samples   = s->blocksize >> rice_order;
+    samples = s->blocksize >> rice_order;
     rice_bits = 4 + method_type;
-    rice_esc  = (1 << rice_bits) - 1;
+    rice_esc = (1 << rice_bits) - 1;
 
     decoded += pred_order;
-    i        = pred_order;
+    i = pred_order;
 
     if (method_type > 1) {
         av_log(s->avctx, AV_LOG_ERROR, "illegal residual coding method %d\n",

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
-typedef  struct TYPE_11__   TYPE_10__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
-typedef  TYPE_3__ _GLFWwndconfig ;
-struct TYPE_13__ {int scale; int /*<<< orphan*/  transparent; int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  native; int /*<<< orphan*/  surface; } ;
+
+
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+typedef struct TYPE_11__ TYPE_10__ ;
+
+
+struct TYPE_14__ {int height; int width; } ;
+typedef TYPE_3__ _GLFWwndconfig ;
+struct TYPE_13__ {int scale; int transparent; int height; int width; int native; int surface; } ;
 struct TYPE_15__ {TYPE_2__ wl; } ;
-typedef  TYPE_4__ _GLFWwindow ;
-struct TYPE_12__ {int /*<<< orphan*/  compositor; } ;
+typedef TYPE_4__ _GLFWwindow ;
+struct TYPE_12__ {int compositor; } ;
 struct TYPE_11__ {TYPE_1__ wl; } ;
-typedef  int /*<<< orphan*/  GLFWbool ;
+typedef int GLFWbool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_FALSE ; 
- int /*<<< orphan*/  GLFW_TRUE ; 
- TYPE_10__ _glfw ; 
- int /*<<< orphan*/  setOpaqueRegion (TYPE_4__*) ; 
- int /*<<< orphan*/  surfaceListener ; 
- int /*<<< orphan*/  wl_compositor_create_surface (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wl_egl_window_create (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wl_surface_add_listener (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_4__*) ; 
- int /*<<< orphan*/  wl_surface_set_user_data (int /*<<< orphan*/ ,TYPE_4__*) ; 
+
+ int GLFW_FALSE ;
+ int GLFW_TRUE ;
+ TYPE_10__ _glfw ;
+ int setOpaqueRegion (TYPE_4__*) ;
+ int surfaceListener ;
+ int wl_compositor_create_surface (int ) ;
+ int wl_egl_window_create (int ,int ,int ) ;
+ int wl_surface_add_listener (int ,int *,TYPE_4__*) ;
+ int wl_surface_set_user_data (int ,TYPE_4__*) ;
 
 __attribute__((used)) static GLFWbool createSurface(_GLFWwindow* window,
                               const _GLFWwndconfig* wndconfig)

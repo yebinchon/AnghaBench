@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct child_blackbox {int /*<<< orphan*/  failures; } ;
-typedef  int /*<<< orphan*/  blackbox ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct child_blackbox {int failures; } ;
+typedef int blackbox ;
 struct TYPE_4__ {TYPE_1__* Peb; } ;
-struct TYPE_3__ {int /*<<< orphan*/  BeingDebugged; } ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int BOOL ;
+struct TYPE_3__ {int BeingDebugged; } ;
+typedef int HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int CloseHandle (int /*<<< orphan*/ ) ; 
- int DebugActiveProcess (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetCurrentProcess () ; 
- int GetLastError () ; 
- TYPE_2__* NtCurrentTeb () ; 
- int /*<<< orphan*/  OpenProcess (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PROCESS_QUERY_INFORMATION ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  child_failures ; 
- int /*<<< orphan*/  child_ok (int,char*,int) ; 
- int pCheckRemoteDebuggerPresent (int /*<<< orphan*/ ,int*) ; 
- int pDebugActiveProcessStop (int /*<<< orphan*/ ) ; 
- int pIsDebuggerPresent () ; 
- int /*<<< orphan*/  save_blackbox (char const*,struct child_blackbox*,int) ; 
- int /*<<< orphan*/  sscanf (char*,char*,int /*<<< orphan*/ *) ; 
+
+ int CloseHandle (int ) ;
+ int DebugActiveProcess (int ) ;
+ int FALSE ;
+ int GetCurrentProcess () ;
+ int GetLastError () ;
+ TYPE_2__* NtCurrentTeb () ;
+ int OpenProcess (int ,int ,int ) ;
+ int PROCESS_QUERY_INFORMATION ;
+ int TRUE ;
+ int child_failures ;
+ int child_ok (int,char*,int) ;
+ int pCheckRemoteDebuggerPresent (int ,int*) ;
+ int pDebugActiveProcessStop (int ) ;
+ int pIsDebuggerPresent () ;
+ int save_blackbox (char const*,struct child_blackbox*,int) ;
+ int sscanf (char*,char*,int *) ;
 
 __attribute__((used)) static void doChild(int argc, char **argv)
 {

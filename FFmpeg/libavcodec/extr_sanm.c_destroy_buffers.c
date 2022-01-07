@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ frm2_size; scalar_t__ frm1_size; scalar_t__ frm0_size; int /*<<< orphan*/  rle_buf; int /*<<< orphan*/  stored_frame; int /*<<< orphan*/  frm2; int /*<<< orphan*/  frm1; int /*<<< orphan*/  frm0; } ;
-typedef  TYPE_1__ SANMVideoContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_sizes (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ frm2_size; scalar_t__ frm1_size; scalar_t__ frm0_size; int rle_buf; int stored_frame; int frm2; int frm1; int frm0; } ;
+typedef TYPE_1__ SANMVideoContext ;
+
+
+ int av_freep (int *) ;
+ int init_sizes (TYPE_1__*,int ,int ) ;
 
 __attribute__((used)) static void destroy_buffers(SANMVideoContext *ctx)
 {

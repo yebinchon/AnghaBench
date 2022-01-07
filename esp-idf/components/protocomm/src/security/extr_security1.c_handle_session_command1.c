@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_7__ ;
-typedef  struct TYPE_23__   TYPE_5__ ;
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_24__ TYPE_7__ ;
+typedef struct TYPE_23__ TYPE_5__ ;
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
 struct TYPE_21__ {int len; TYPE_4__* data; } ;
-struct TYPE_22__ {struct TYPE_22__* sr1; int /*<<< orphan*/  payload_case; int /*<<< orphan*/  msg; TYPE_3__ device_verify_data; int /*<<< orphan*/  status; TYPE_2__* sc1; } ;
-typedef  TYPE_4__ uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_23__ {scalar_t__ state; int /*<<< orphan*/  ctx_aes; TYPE_4__* client_pubkey; int /*<<< orphan*/  stb; int /*<<< orphan*/  rand; scalar_t__ nc_off; int /*<<< orphan*/  device_pubkey; int /*<<< orphan*/  sym_key; } ;
-typedef  TYPE_5__ session_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
-typedef  int /*<<< orphan*/  check_buf ;
-struct TYPE_24__ {TYPE_4__* sec1; int /*<<< orphan*/  proto_case; } ;
+struct TYPE_22__ {struct TYPE_22__* sr1; int payload_case; int msg; TYPE_3__ device_verify_data; int status; TYPE_2__* sc1; } ;
+typedef TYPE_4__ uint8_t ;
+typedef int uint32_t ;
+struct TYPE_23__ {scalar_t__ state; int ctx_aes; TYPE_4__* client_pubkey; int stb; int rand; scalar_t__ nc_off; int device_pubkey; int sym_key; } ;
+typedef TYPE_5__ session_t ;
+typedef int esp_err_t ;
+typedef int check_buf ;
+struct TYPE_24__ {TYPE_4__* sec1; int proto_case; } ;
 struct TYPE_19__ {int len; TYPE_4__* data; } ;
 struct TYPE_20__ {TYPE_1__ client_verify_data; } ;
-typedef  TYPE_4__ SessionResp1 ;
-typedef  TYPE_7__ SessionData ;
-typedef  TYPE_4__ Sec1Payload ;
+typedef TYPE_4__ SessionResp1 ;
+typedef TYPE_7__ SessionData ;
+typedef TYPE_4__ Sec1Payload ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERR_INVALID_STATE ; 
- int /*<<< orphan*/  ESP_ERR_NO_MEM ; 
- int /*<<< orphan*/  ESP_FAIL ; 
- int /*<<< orphan*/  ESP_LOGD (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ESP_OK ; 
- int PUBLIC_KEY_LEN ; 
- int /*<<< orphan*/  SEC1_MSG_TYPE__Session_Response1 ; 
- int /*<<< orphan*/  SEC1_PAYLOAD__PAYLOAD_SR1 ; 
- int /*<<< orphan*/  SESSION_DATA__PROTO_SEC1 ; 
- scalar_t__ SESSION_STATE_CMD1 ; 
- scalar_t__ SESSION_STATE_DONE ; 
- int /*<<< orphan*/  STATUS__Success ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  free (TYPE_4__*) ; 
- int /*<<< orphan*/  hexdump (char*,TYPE_4__*,int) ; 
- scalar_t__ malloc (int) ; 
- int mbedtls_aes_crypt_ctr (int /*<<< orphan*/ *,int,scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_4__*,TYPE_4__*) ; 
- int /*<<< orphan*/  mbedtls_aes_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_aes_init (int /*<<< orphan*/ *) ; 
- int mbedtls_aes_setkey_enc (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ mbedtls_ssl_safer_memcmp (TYPE_4__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sec1_payload__init (TYPE_4__*) ; 
- int /*<<< orphan*/  session_resp1__init (TYPE_4__*) ; 
+
+ int ESP_ERR_INVALID_STATE ;
+ int ESP_ERR_NO_MEM ;
+ int ESP_FAIL ;
+ int ESP_LOGD (int ,char*) ;
+ int ESP_LOGE (int ,char*,...) ;
+ int ESP_OK ;
+ int PUBLIC_KEY_LEN ;
+ int SEC1_MSG_TYPE__Session_Response1 ;
+ int SEC1_PAYLOAD__PAYLOAD_SR1 ;
+ int SESSION_DATA__PROTO_SEC1 ;
+ scalar_t__ SESSION_STATE_CMD1 ;
+ scalar_t__ SESSION_STATE_DONE ;
+ int STATUS__Success ;
+ int TAG ;
+ int free (TYPE_4__*) ;
+ int hexdump (char*,TYPE_4__*,int) ;
+ scalar_t__ malloc (int) ;
+ int mbedtls_aes_crypt_ctr (int *,int,scalar_t__*,int ,int ,TYPE_4__*,TYPE_4__*) ;
+ int mbedtls_aes_free (int *) ;
+ int mbedtls_aes_init (int *) ;
+ int mbedtls_aes_setkey_enc (int *,int ,int) ;
+ scalar_t__ mbedtls_ssl_safer_memcmp (TYPE_4__*,int ,int) ;
+ int memset (int ,int ,int) ;
+ int sec1_payload__init (TYPE_4__*) ;
+ int session_resp1__init (TYPE_4__*) ;
 
 __attribute__((used)) static esp_err_t handle_session_command1(session_t *cur_session,
                                          uint32_t session_id,
@@ -72,7 +72,7 @@ __attribute__((used)) static esp_err_t handle_session_command1(session_t *cur_se
         return ESP_ERR_INVALID_STATE;
     }
 
-    /* Initialize crypto context */
+
     mbedtls_aes_init(&cur_session->ctx_aes);
     memset(cur_session->stb, 0, sizeof(cur_session->stb));
     cur_session->nc_off = 0;
@@ -100,7 +100,7 @@ __attribute__((used)) static esp_err_t handle_session_command1(session_t *cur_se
 
     hexdump("Dec Client verifier", check_buf, sizeof(check_buf));
 
-    /* constant time memcmp */
+
     if (mbedtls_ssl_safer_memcmp(check_buf, cur_session->device_pubkey,
                                  sizeof(cur_session->device_pubkey)) != 0) {
         ESP_LOGE(TAG, "Key mismatch. Close connection");

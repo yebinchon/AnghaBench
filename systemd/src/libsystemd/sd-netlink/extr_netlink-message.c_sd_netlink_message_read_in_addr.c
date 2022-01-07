@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct in_addr {int dummy; } ;
-typedef  int /*<<< orphan*/  sd_netlink_message ;
+typedef int sd_netlink_message ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int EIO ; 
- int /*<<< orphan*/  NETLINK_TYPE_IN_ADDR ; 
- int /*<<< orphan*/  assert_return (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (struct in_addr*,void*,int) ; 
- int message_attribute_has_type (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned short,int /*<<< orphan*/ ) ; 
- int netlink_message_read_internal (int /*<<< orphan*/ *,unsigned short,void**,int /*<<< orphan*/ *) ; 
+
+ int EINVAL ;
+ int EIO ;
+ int NETLINK_TYPE_IN_ADDR ;
+ int assert_return (int *,int ) ;
+ int memcpy (struct in_addr*,void*,int) ;
+ int message_attribute_has_type (int *,int *,unsigned short,int ) ;
+ int netlink_message_read_internal (int *,unsigned short,void**,int *) ;
 
 int sd_netlink_message_read_in_addr(sd_netlink_message *m, unsigned short type, struct in_addr *data) {
         int r;
@@ -28,11 +28,11 @@ int sd_netlink_message_read_in_addr(sd_netlink_message *m, unsigned short type, 
 
         assert_return(m, -EINVAL);
 
-        r = message_attribute_has_type(m, NULL, type, NETLINK_TYPE_IN_ADDR);
+        r = message_attribute_has_type(m, ((void*)0), type, NETLINK_TYPE_IN_ADDR);
         if (r < 0)
                 return r;
 
-        r = netlink_message_read_internal(m, type, &attr_data, NULL);
+        r = netlink_message_read_internal(m, type, &attr_data, ((void*)0));
         if (r < 0)
                 return r;
         else if ((size_t)r < sizeof(struct in_addr))

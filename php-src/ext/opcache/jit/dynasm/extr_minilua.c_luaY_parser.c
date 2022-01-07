@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct LexState {int /*<<< orphan*/ * buff; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct LexState {int * buff; } ;
 struct FuncState {TYPE_1__* f; } ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  ZIO ;
+typedef int lua_State ;
+typedef int ZIO ;
 struct TYPE_3__ {int is_vararg; } ;
-typedef  TYPE_1__ Proto ;
-typedef  int /*<<< orphan*/  Mbuffer ;
+typedef TYPE_1__ Proto ;
+typedef int Mbuffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TK_EOS ; 
- int /*<<< orphan*/  check (struct LexState*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  chunk (struct LexState*) ; 
- int /*<<< orphan*/  close_func (struct LexState*) ; 
- int /*<<< orphan*/  luaS_new (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  luaX_next (struct LexState*) ; 
- int /*<<< orphan*/  luaX_setinput (int /*<<< orphan*/ *,struct LexState*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  open_func (struct LexState*,struct FuncState*) ; 
+
+ int TK_EOS ;
+ int check (struct LexState*,int ) ;
+ int chunk (struct LexState*) ;
+ int close_func (struct LexState*) ;
+ int luaS_new (int *,char const*) ;
+ int luaX_next (struct LexState*) ;
+ int luaX_setinput (int *,struct LexState*,int *,int ) ;
+ int open_func (struct LexState*,struct FuncState*) ;
 
 __attribute__((used)) static Proto*luaY_parser(lua_State*L,ZIO*z,Mbuffer*buff,const char*name){
 struct LexState lexstate;

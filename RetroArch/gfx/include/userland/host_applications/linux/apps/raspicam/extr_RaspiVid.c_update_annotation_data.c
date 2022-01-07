@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int enable_annotate; char* annotate_string; int /*<<< orphan*/  annotate_y; int /*<<< orphan*/  annotate_x; int /*<<< orphan*/  annotate_justify; int /*<<< orphan*/  annotate_bg_colour; int /*<<< orphan*/  annotate_text_colour; int /*<<< orphan*/  annotate_text_size; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int enable_annotate; char* annotate_string; int annotate_y; int annotate_x; int annotate_justify; int annotate_bg_colour; int annotate_text_colour; int annotate_text_size; } ;
 struct TYPE_5__ {scalar_t__ gps; } ;
-struct TYPE_7__ {int bitrate; TYPE_2__ camera_parameters; int /*<<< orphan*/  camera_component; int /*<<< orphan*/  level; int /*<<< orphan*/  profile; int /*<<< orphan*/  intraperiod; int /*<<< orphan*/  framerate; int /*<<< orphan*/  intra_refresh_type; TYPE_1__ common_settings; } ;
-typedef  TYPE_3__ RASPIVID_STATE ;
+struct TYPE_7__ {int bitrate; TYPE_2__ camera_parameters; int camera_component; int level; int profile; int intraperiod; int framerate; int intra_refresh_type; TYPE_1__ common_settings; } ;
+typedef TYPE_3__ RASPIVID_STATE ;
 
-/* Variables and functions */
- int ANNOTATE_APP_TEXT ; 
- int /*<<< orphan*/  asprintf (char**,char*,int,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  intra_refresh_map ; 
- int /*<<< orphan*/  intra_refresh_map_size ; 
- int /*<<< orphan*/  level_map ; 
- int /*<<< orphan*/  level_map_size ; 
- int /*<<< orphan*/  profile_map ; 
- int /*<<< orphan*/  profile_map_size ; 
- char* raspi_gps_location_string () ; 
- int /*<<< orphan*/  raspicamcontrol_set_annotate (int /*<<< orphan*/ ,int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* raspicli_unmap_xref (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ANNOTATE_APP_TEXT ;
+ int asprintf (char**,char*,int,int ,char const*,int ,char*,char*) ;
+ int free (char*) ;
+ int intra_refresh_map ;
+ int intra_refresh_map_size ;
+ int level_map ;
+ int level_map_size ;
+ int profile_map ;
+ int profile_map_size ;
+ char* raspi_gps_location_string () ;
+ int raspicamcontrol_set_annotate (int ,int,char*,int ,int ,int ,int ,int ,int ) ;
+ char* raspicli_unmap_xref (int ,int ,int ) ;
 
 __attribute__((used)) static void update_annotation_data(RASPIVID_STATE *state)
 {
-   // So, if we have asked for a application supplied string, set it to the H264 or GPS parameters
+
    if (state->camera_parameters.enable_annotate & ANNOTATE_APP_TEXT)
    {
       char *text;
@@ -47,8 +47,8 @@ __attribute__((used)) static void update_annotation_data(RASPIVID_STATE *state)
       {
          const char *refresh = raspicli_unmap_xref(state->intra_refresh_type, intra_refresh_map, intra_refresh_map_size);
 
-         asprintf(&text,  "%dk,%df,%s,%d,%s,%s",
-                  state->bitrate / 1000,  state->framerate,
+         asprintf(&text, "%dk,%df,%s,%d,%s,%s",
+                  state->bitrate / 1000, state->framerate,
                   refresh ? refresh : "(none)",
                   state->intraperiod,
                   raspicli_unmap_xref(state->profile, profile_map, profile_map_size),

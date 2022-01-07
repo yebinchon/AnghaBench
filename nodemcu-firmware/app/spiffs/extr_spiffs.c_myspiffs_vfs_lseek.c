@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vfs_file {int dummy; } ;
-typedef  scalar_t__ sint32_t ;
+typedef scalar_t__ sint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GET_FILE_FH (struct vfs_file const*) ; 
- int SPIFFS_SEEK_CUR ; 
- int SPIFFS_SEEK_END ; 
- int SPIFFS_SEEK_SET ; 
- scalar_t__ SPIFFS_lseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,int) ; 
- scalar_t__ VFS_RES_ERR ; 
-#define  VFS_SEEK_CUR 130 
-#define  VFS_SEEK_END 129 
-#define  VFS_SEEK_SET 128 
- int /*<<< orphan*/  fh ; 
- int /*<<< orphan*/  fs ; 
+
+ int GET_FILE_FH (struct vfs_file const*) ;
+ int SPIFFS_SEEK_CUR ;
+ int SPIFFS_SEEK_END ;
+ int SPIFFS_SEEK_SET ;
+ scalar_t__ SPIFFS_lseek (int *,int ,scalar_t__,int) ;
+ scalar_t__ VFS_RES_ERR ;
+
+
+
+ int fh ;
+ int fs ;
 
 __attribute__((used)) static sint32_t myspiffs_vfs_lseek( const struct vfs_file *fd, sint32_t off, int whence ) {
   GET_FILE_FH(fd);
@@ -32,13 +32,13 @@ __attribute__((used)) static sint32_t myspiffs_vfs_lseek( const struct vfs_file 
 
   switch (whence) {
   default:
-  case VFS_SEEK_SET:
+  case 128:
     spiffs_whence = SPIFFS_SEEK_SET;
     break;
-  case VFS_SEEK_CUR:
+  case 130:
     spiffs_whence = SPIFFS_SEEK_CUR;
     break;
-  case VFS_SEEK_END:
+  case 129:
     spiffs_whence = SPIFFS_SEEK_END;
     break;
   }

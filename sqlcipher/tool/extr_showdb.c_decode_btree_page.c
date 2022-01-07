@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int i64 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int i64 ;
 struct TYPE_2__ {size_t pagesize; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ISDIGIT (char) ; 
- int /*<<< orphan*/  decodeCell (unsigned char*,int,int,int,int) ; 
- int describeCell (unsigned char,unsigned char*,int,char**) ; 
- TYPE_1__ g ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  memset (char*,char,size_t) ; 
- int /*<<< orphan*/  print_decode_line (unsigned char*,int,int,char const*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_malloc (size_t) ; 
- scalar_t__ strlen (char*) ; 
+
+ int ISDIGIT (char) ;
+ int decodeCell (unsigned char*,int,int,int,int) ;
+ int describeCell (unsigned char,unsigned char*,int,char**) ;
+ TYPE_1__ g ;
+ int memcpy (char*,char*,int) ;
+ int memset (char*,char,size_t) ;
+ int print_decode_line (unsigned char*,int,int,char const*) ;
+ int printf (char*,...) ;
+ int sprintf (char*,char*,int) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_malloc (size_t) ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static void decode_btree_page(
-  unsigned char *a,   /* Page content */
-  int pgno,           /* Page number */
-  int hdrSize,        /* Size of the page header.  0 or 100 */
-  char *zArgs         /* Flags to control formatting */
+  unsigned char *a,
+  int pgno,
+  int hdrSize,
+  char *zArgs
 ){
   const char *zType = "unknown";
   int nCell;
@@ -43,15 +43,15 @@ __attribute__((used)) static void decode_btree_page(
   int cellToDecode = -2;
   char *zMap = 0;
   switch( a[0] ){
-    case 2:  zType = "index interior node";  break;
-    case 5:  zType = "table interior node";  break;
-    case 10: zType = "index leaf";           break;
-    case 13: zType = "table leaf";           break;
+    case 2: zType = "index interior node"; break;
+    case 5: zType = "table interior node"; break;
+    case 10: zType = "index leaf"; break;
+    case 13: zType = "table leaf"; break;
   }
   while( zArgs[0] ){
     switch( zArgs[0] ){
-      case 'c': showCellContent = 1;  break;
-      case 'm': showMap = 1;          break;
+      case 'c': showCellContent = 1; break;
+      case 'm': showMap = 1; break;
       case 'd': {
         if( !ISDIGIT(zArgs[1]) ){
           cellToDecode = -1;

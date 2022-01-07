@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct module {TYPE_1__** addr_sorttab; } ;
-typedef  int /*<<< orphan*/  ULONG64 ;
-struct TYPE_2__ {int /*<<< orphan*/  symt; } ;
+typedef int ULONG64 ;
+struct TYPE_2__ {int symt; } ;
 
-/* Variables and functions */
- int cmp_addr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  symt_get_address (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int cmp_addr (int ,int ) ;
+ int symt_get_address (int *,int *) ;
 
 __attribute__((used)) static inline int cmp_sorttab_addr(struct module* module, int idx, ULONG64 addr)
 {
-    ULONG64     ref;
+    ULONG64 ref;
     symt_get_address(&module->addr_sorttab[idx]->symt, &ref);
     return cmp_addr(ref, addr);
 }

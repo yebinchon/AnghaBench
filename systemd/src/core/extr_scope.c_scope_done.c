@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Unit ;
-struct TYPE_3__ {int /*<<< orphan*/  timer_event_source; int /*<<< orphan*/  controller_track; int /*<<< orphan*/  controller; } ;
-typedef  TYPE_1__ Scope ;
 
-/* Variables and functions */
- TYPE_1__* SCOPE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_bus_track_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_event_source_unref (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int Unit ;
+struct TYPE_3__ {int timer_event_source; int controller_track; int controller; } ;
+typedef TYPE_1__ Scope ;
+
+
+ TYPE_1__* SCOPE (int *) ;
+ int assert (int *) ;
+ int mfree (int ) ;
+ int sd_bus_track_unref (int ) ;
+ int sd_event_source_unref (int ) ;
 
 __attribute__((used)) static void scope_done(Unit *u) {
         Scope *s = SCOPE(u);

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sock {int /*<<< orphan*/  sk_callback_lock; int /*<<< orphan*/  sk_sleep; } ;
 
-/* Variables and functions */
- int POLLIN ; 
- int POLLPRI ; 
- int POLLRDBAND ; 
- int POLLRDNORM ; 
- int /*<<< orphan*/  POLL_IN ; 
- int /*<<< orphan*/  SOCK_WAKE_WAITD ; 
- int /*<<< orphan*/  read_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  read_unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ sk_has_sleeper (struct sock*) ; 
- int /*<<< orphan*/  sk_wake_async (struct sock*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wake_up_interruptible_sync_poll (int /*<<< orphan*/ ,int) ; 
+
+
+
+struct sock {int sk_callback_lock; int sk_sleep; } ;
+
+
+ int POLLIN ;
+ int POLLPRI ;
+ int POLLRDBAND ;
+ int POLLRDNORM ;
+ int POLL_IN ;
+ int SOCK_WAKE_WAITD ;
+ int read_lock (int *) ;
+ int read_unlock (int *) ;
+ scalar_t__ sk_has_sleeper (struct sock*) ;
+ int sk_wake_async (struct sock*,int ,int ) ;
+ int wake_up_interruptible_sync_poll (int ,int) ;
 
 __attribute__((used)) static void sock_def_readable(struct sock *sk, int len)
 {
-	read_lock(&sk->sk_callback_lock);
-	if (sk_has_sleeper(sk))
-		wake_up_interruptible_sync_poll(sk->sk_sleep, POLLIN | POLLPRI |
-						POLLRDNORM | POLLRDBAND);
-	sk_wake_async(sk, SOCK_WAKE_WAITD, POLL_IN);
-	read_unlock(&sk->sk_callback_lock);
+ read_lock(&sk->sk_callback_lock);
+ if (sk_has_sleeper(sk))
+  wake_up_interruptible_sync_poll(sk->sk_sleep, POLLIN | POLLPRI |
+      POLLRDNORM | POLLRDBAND);
+ sk_wake_async(sk, SOCK_WAKE_WAITD, POLL_IN);
+ read_unlock(&sk->sk_callback_lock);
 }

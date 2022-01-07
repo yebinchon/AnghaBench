@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int luaL_optint (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  luaL_where (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_concat (int /*<<< orphan*/ *,int) ; 
- int lua_error (int /*<<< orphan*/ *) ; 
- scalar_t__ lua_isstring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_settop (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int luaL_optint (int *,int,int) ;
+ int luaL_where (int *,int) ;
+ int lua_concat (int *,int) ;
+ int lua_error (int *) ;
+ scalar_t__ lua_isstring (int *,int) ;
+ int lua_pushvalue (int *,int) ;
+ int lua_settop (int *,int) ;
 
 __attribute__((used)) static int luaB_error(lua_State*L){
 int level=luaL_optint(L,2,1);

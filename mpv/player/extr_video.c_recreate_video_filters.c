@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vo_chain {int /*<<< orphan*/  filter; } ;
-struct MPOpts {int /*<<< orphan*/  vf_settings; } ;
+
+
+
+
+struct vo_chain {int filter; } ;
+struct MPOpts {int vf_settings; } ;
 struct MPContext {struct vo_chain* vo_chain; struct MPOpts* opts; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (struct vo_chain*) ; 
- int mp_output_chain_update_filters (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int assert (struct vo_chain*) ;
+ int mp_output_chain_update_filters (int ,int ) ;
 
 __attribute__((used)) static bool recreate_video_filters(struct MPContext *mpctx)
 {

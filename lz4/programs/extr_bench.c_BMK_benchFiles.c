@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int U64 ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BMK_benchFileTable (char const**,unsigned int,int,int,char*,int) ; 
- int /*<<< orphan*/  BMK_benchFilesSeparately (char const**,unsigned int,int,int,char*,int) ; 
- int /*<<< orphan*/  BMK_syntheticTest (int,int,double const,char*,int) ; 
- int /*<<< orphan*/  DISPLAYLEVEL (int,char*,int,int) ; 
- int /*<<< orphan*/  EXM_THROW (int,char*) ; 
- int LZ4HC_CLEVEL_MAX ; 
- int LZ4_MAX_DICT_SIZE ; 
- int /*<<< orphan*/  SEEK_SET ; 
- scalar_t__ UTIL_fseek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int UTIL_getFileSize (char const*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- size_t fread (char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ g_benchSeparately ; 
- scalar_t__ g_compressibilityDefault ; 
- scalar_t__ malloc (int) ; 
+
+
+
+typedef int U64 ;
+typedef int FILE ;
+
+
+ int BMK_benchFileTable (char const**,unsigned int,int,int,char*,int) ;
+ int BMK_benchFilesSeparately (char const**,unsigned int,int,int,char*,int) ;
+ int BMK_syntheticTest (int,int,double const,char*,int) ;
+ int DISPLAYLEVEL (int,char*,int,int) ;
+ int EXM_THROW (int,char*) ;
+ int LZ4HC_CLEVEL_MAX ;
+ int LZ4_MAX_DICT_SIZE ;
+ int SEEK_SET ;
+ scalar_t__ UTIL_fseek (int *,int,int ) ;
+ int UTIL_getFileSize (char const*) ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ size_t fread (char*,int,int,int *) ;
+ int free (char*) ;
+ scalar_t__ g_benchSeparately ;
+ scalar_t__ g_compressibilityDefault ;
+ scalar_t__ malloc (int) ;
 
 int BMK_benchFiles(const char** fileNamesTable, unsigned nbFiles,
                    int cLevel, int cLevelLast,
                    const char* dictFileName)
 {
     double const compressibility = (double)g_compressibilityDefault / 100;
-    char* dictBuf = NULL;
+    char* dictBuf = ((void*)0);
     int dictSize = 0;
 
     if (cLevel > LZ4HC_CLEVEL_MAX) cLevel = LZ4HC_CLEVEL_MAX;
@@ -46,7 +46,7 @@ int BMK_benchFiles(const char** fileNamesTable, unsigned nbFiles,
     if (cLevelLast > cLevel) DISPLAYLEVEL(2, "Benchmarking levels from %d to %d\n", cLevel, cLevelLast);
 
     if (dictFileName) {
-        FILE* dictFile = NULL;
+        FILE* dictFile = ((void*)0);
         U64 dictFileSize = UTIL_getFileSize(dictFileName);
         if (!dictFileSize) EXM_THROW(25, "Dictionary error : could not stat dictionary file");
 

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xmlXPathContextPtr ;
-typedef  int /*<<< orphan*/  xmlChar ;
 
-/* Variables and functions */
- int /*<<< orphan*/  xmlXPathRegisterFunc (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xsltCurrentFunction ; 
- int /*<<< orphan*/  xsltDocumentFunction ; 
- int /*<<< orphan*/  xsltElementAvailableFunction ; 
- int /*<<< orphan*/  xsltFormatNumberFunction ; 
- int /*<<< orphan*/  xsltFunctionAvailableFunction ; 
- int /*<<< orphan*/  xsltGenerateIdFunction ; 
- int /*<<< orphan*/  xsltKeyFunction ; 
- int /*<<< orphan*/  xsltSystemPropertyFunction ; 
- int /*<<< orphan*/  xsltUnparsedEntityURIFunction ; 
+
+
+
+typedef int xmlXPathContextPtr ;
+typedef int xmlChar ;
+
+
+ int xmlXPathRegisterFunc (int ,int const*,int ) ;
+ int xsltCurrentFunction ;
+ int xsltDocumentFunction ;
+ int xsltElementAvailableFunction ;
+ int xsltFormatNumberFunction ;
+ int xsltFunctionAvailableFunction ;
+ int xsltGenerateIdFunction ;
+ int xsltKeyFunction ;
+ int xsltSystemPropertyFunction ;
+ int xsltUnparsedEntityURIFunction ;
 
 void
 xsltRegisterAllFunctions(xmlXPathContextPtr ctxt)

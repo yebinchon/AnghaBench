@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * (* fortranfunc ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void*) ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int * (* fortranfunc ) (int *,int *,int *,void*) ;
 struct TYPE_5__ {TYPE_1__* defs; } ;
-struct TYPE_4__ {int rank; int /*<<< orphan*/ * data; int /*<<< orphan*/ * func; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  TYPE_2__ PyFortranObject ;
+struct TYPE_4__ {int rank; int * data; int * func; } ;
+typedef int PyObject ;
+typedef TYPE_2__ PyFortranObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyErr_Format (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_RuntimeError ; 
- int /*<<< orphan*/  PyExc_TypeError ; 
- int /*<<< orphan*/ * stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/ * stub2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void*) ; 
+
+ int PyErr_Format (int ,char*) ;
+ int PyExc_RuntimeError ;
+ int PyExc_TypeError ;
+ int * stub1 (int *,int *,int *,void*) ;
+ int * stub2 (int *,int *,int *,void*) ;
 
 __attribute__((used)) static PyObject*
 fortran_call(PyFortranObject *fp, PyObject *arg, PyObject *kw) {
     int i = 0;
-    /*  printf("fortran call
-        name=%s,func=%p,data=%p,%p\n",fp->defs[i].name,
-        fp->defs[i].func,fp->defs[i].data,&fp->defs[i].data); */
-    if (fp->defs[i].rank==-1) {/* is Fortran routine */
-        if (fp->defs[i].func==NULL) {
+
+
+
+    if (fp->defs[i].rank==-1) {
+        if (fp->defs[i].func==((void*)0)) {
             PyErr_Format(PyExc_RuntimeError, "no function to call");
-            return NULL;
+            return ((void*)0);
         }
-        else if (fp->defs[i].data==NULL)
-            /* dummy routine */
-            return (*((fortranfunc)(fp->defs[i].func)))((PyObject *)fp,arg,kw,NULL);
+        else if (fp->defs[i].data==((void*)0))
+
+            return (*((fortranfunc)(fp->defs[i].func)))((PyObject *)fp,arg,kw,((void*)0));
         else
             return (*((fortranfunc)(fp->defs[i].func)))((PyObject *)fp,arg,kw,
                                                         (void *)fp->defs[i].data);
     }
     PyErr_Format(PyExc_TypeError, "this fortran object is not callable");
-    return NULL;
+    return ((void*)0);
 }

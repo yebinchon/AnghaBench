@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vout_thread_t ;
-typedef  int /*<<< orphan*/  subpicture_updater_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int vout_thread_t ;
+typedef int subpicture_updater_t ;
 struct TYPE_4__ {scalar_t__ i_channel; int b_subtitle; scalar_t__ i_order; } ;
-typedef  TYPE_1__ subpicture_t ;
-struct decoder_owner {scalar_t__ i_spu_channel; int vout_thread_started; int vout_order; scalar_t__ i_spu_order; int /*<<< orphan*/  lock; int /*<<< orphan*/ * p_vout; int /*<<< orphan*/  p_clock; int /*<<< orphan*/  p_resource; scalar_t__ error; } ;
-typedef  enum vlc_vout_order { ____Placeholder_vlc_vout_order } vlc_vout_order ;
-typedef  int /*<<< orphan*/  decoder_t ;
+typedef TYPE_1__ subpicture_t ;
+struct decoder_owner {scalar_t__ i_spu_channel; int vout_thread_started; int vout_order; scalar_t__ i_spu_order; int lock; int * p_vout; int p_clock; int p_resource; scalar_t__ error; } ;
+typedef enum vlc_vout_order { ____Placeholder_vlc_vout_order } vlc_vout_order ;
+typedef int decoder_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DECODER_SPU_VOUT_WAIT_DURATION ; 
- int VLC_VOUT_ORDER_NONE ; 
- scalar_t__ VOUT_SPU_CHANNEL_INVALID ; 
- int /*<<< orphan*/  assert (int) ; 
- struct decoder_owner* dec_get_owner (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  decoder_Notify (struct decoder_owner*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,...) ; 
- int /*<<< orphan*/ * input_resource_HoldVout (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg_Warn (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  on_vout_started ; 
- int /*<<< orphan*/  on_vout_stopped ; 
- TYPE_1__* subpicture_New (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_tick_sleep (int /*<<< orphan*/ ) ; 
- scalar_t__ vout_RegisterSubpictureChannelInternal (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  vout_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vout_UnregisterSubpictureChannel (int /*<<< orphan*/ *,scalar_t__) ; 
+
+ int DECODER_SPU_VOUT_WAIT_DURATION ;
+ int VLC_VOUT_ORDER_NONE ;
+ scalar_t__ VOUT_SPU_CHANNEL_INVALID ;
+ int assert (int) ;
+ struct decoder_owner* dec_get_owner (int *) ;
+ int decoder_Notify (struct decoder_owner*,int ,int *,...) ;
+ int * input_resource_HoldVout (int ) ;
+ int msg_Warn (int *,char*) ;
+ int on_vout_started ;
+ int on_vout_stopped ;
+ TYPE_1__* subpicture_New (int const*) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
+ int vlc_tick_sleep (int ) ;
+ scalar_t__ vout_RegisterSubpictureChannelInternal (int *,int ,int*) ;
+ int vout_Release (int *) ;
+ int vout_UnregisterSubpictureChannel (int *,scalar_t__) ;
 
 __attribute__((used)) static subpicture_t *ModuleThread_NewSpuBuffer( decoder_t *p_dec,
                                      const subpicture_updater_t *p_updater )
 {
     struct decoder_owner *p_owner = dec_get_owner( p_dec );
-    vout_thread_t *p_vout = NULL;
+    vout_thread_t *p_vout = ((void*)0);
     subpicture_t *p_subpic;
     int i_attempts = 30;
 
@@ -72,29 +72,29 @@ __attribute__((used)) static subpicture_t *ModuleThread_NewSpuBuffer( decoder_t 
             p_owner->i_spu_channel = VOUT_SPU_CHANNEL_INVALID;
 
             vout_Release(p_owner->p_vout);
-            p_owner->p_vout = NULL; // the DecoderThread should not use the old vout anymore
-            p_owner->vout_thread_started = false;
+            p_owner->p_vout = ((void*)0);
+            p_owner->vout_thread_started = 0;
             vlc_mutex_unlock( &p_owner->lock );
         }
-        return NULL;
+        return ((void*)0);
     }
 
     if( p_owner->p_vout != p_vout )
     {
-        if (p_owner->p_vout) /* notify the previous vout deletion unlocked */
+        if (p_owner->p_vout)
             decoder_Notify(p_owner, on_vout_stopped, p_owner->p_vout);
 
         vlc_mutex_lock(&p_owner->lock);
 
         if (p_owner->p_vout)
         {
-            /* Unregister the SPU channel of the previous vout */
+
             assert(p_owner->i_spu_channel != VOUT_SPU_CHANNEL_INVALID);
             vout_UnregisterSubpictureChannel(p_owner->p_vout,
                                              p_owner->i_spu_channel);
             vout_Release(p_owner->p_vout);
-            p_owner->p_vout = NULL; // the DecoderThread should not use the old vout anymore
-            p_owner->vout_thread_started = false;
+            p_owner->p_vout = ((void*)0);
+            p_owner->vout_thread_started = 0;
         }
 
         enum vlc_vout_order channel_order;
@@ -105,14 +105,14 @@ __attribute__((used)) static subpicture_t *ModuleThread_NewSpuBuffer( decoder_t 
 
         if (p_owner->i_spu_channel == VOUT_SPU_CHANNEL_INVALID)
         {
-            /* The new vout doesn't support SPU, aborting... */
+
             vlc_mutex_unlock(&p_owner->lock);
             vout_Release(p_vout);
-            return NULL;
+            return ((void*)0);
         }
 
         p_owner->p_vout = p_vout;
-        p_owner->vout_thread_started = true;
+        p_owner->vout_thread_started = 1;
         p_owner->vout_order = channel_order;
         vlc_mutex_unlock(&p_owner->lock);
 
@@ -127,7 +127,7 @@ __attribute__((used)) static subpicture_t *ModuleThread_NewSpuBuffer( decoder_t 
     {
         p_subpic->i_channel = p_owner->i_spu_channel;
         p_subpic->i_order = p_owner->i_spu_order++;
-        p_subpic->b_subtitle = true;
+        p_subpic->b_subtitle = 1;
     }
 
     return p_subpic;

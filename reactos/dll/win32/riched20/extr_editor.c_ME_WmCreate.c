@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_13__ {scalar_t__ lpszName; } ;
 struct TYPE_12__ {scalar_t__ lpszName; } ;
-struct TYPE_11__ {int styleFlags; int /*<<< orphan*/ * pCursors; int /*<<< orphan*/  texthost; } ;
-typedef  TYPE_1__ ME_TextEditor ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  scalar_t__ LPARAM ;
-typedef  int INT ;
-typedef  TYPE_2__ CREATESTRUCTW ;
-typedef  TYPE_3__ CREATESTRUCTA ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct TYPE_11__ {int styleFlags; int * pCursors; int texthost; } ;
+typedef TYPE_1__ ME_TextEditor ;
+typedef int LRESULT ;
+typedef scalar_t__ LPARAM ;
+typedef int INT ;
+typedef TYPE_2__ CREATESTRUCTW ;
+typedef TYPE_3__ CREATESTRUCTA ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESB_DISABLE_BOTH ; 
- int ES_DISABLENOSCROLL ; 
- int /*<<< orphan*/  ITextHost_TxEnableScrollBar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ITextHost_TxSetScrollRange (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ITextHost_TxShowScrollBar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ME_CommitUndo (TYPE_1__*) ; 
- int /*<<< orphan*/  ME_MoveCaret (TYPE_1__*) ; 
- int /*<<< orphan*/  ME_SetCursorToStart (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ME_SetDefaultFormatRect (TYPE_1__*) ; 
- int /*<<< orphan*/  ME_SetText (TYPE_1__*,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ME_WrapMarkedParagraphs (TYPE_1__*) ; 
- int /*<<< orphan*/  SB_HORZ ; 
- int /*<<< orphan*/  SB_VERT ; 
- int /*<<< orphan*/  TRUE ; 
- int WS_HSCROLL ; 
- int WS_VSCROLL ; 
+
+ int ESB_DISABLE_BOTH ;
+ int ES_DISABLENOSCROLL ;
+ int ITextHost_TxEnableScrollBar (int ,int ,int ) ;
+ int ITextHost_TxSetScrollRange (int ,int ,int ,int,int ) ;
+ int ITextHost_TxShowScrollBar (int ,int ,int ) ;
+ int ME_CommitUndo (TYPE_1__*) ;
+ int ME_MoveCaret (TYPE_1__*) ;
+ int ME_SetCursorToStart (TYPE_1__*,int *) ;
+ int ME_SetDefaultFormatRect (TYPE_1__*) ;
+ int ME_SetText (TYPE_1__*,void*,int ) ;
+ int ME_WrapMarkedParagraphs (TYPE_1__*) ;
+ int SB_HORZ ;
+ int SB_VERT ;
+ int TRUE ;
+ int WS_HSCROLL ;
+ int WS_VSCROLL ;
 
 __attribute__((used)) static LRESULT ME_WmCreate(ME_TextEditor *editor, LPARAM lParam, BOOL unicode)
 {
   CREATESTRUCTW *createW = (CREATESTRUCTW*)lParam;
   CREATESTRUCTA *createA = (CREATESTRUCTA*)lParam;
-  void *text = NULL;
+  void *text = ((void*)0);
   INT max;
 
   if (lParam)

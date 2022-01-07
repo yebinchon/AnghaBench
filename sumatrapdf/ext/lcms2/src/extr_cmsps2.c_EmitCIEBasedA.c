@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsToneCurve ;
-typedef  int /*<<< orphan*/  cmsIOHANDLER ;
-typedef  int /*<<< orphan*/  cmsContext ;
-typedef  int /*<<< orphan*/  cmsCIEXYZ ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Emit1Gamma (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EmitIntent (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EmitWhiteBlackD50 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INTENT_PERCEPTUAL ; 
- int /*<<< orphan*/  _cmsIOPrintf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int cmsToneCurve ;
+typedef int cmsIOHANDLER ;
+typedef int cmsContext ;
+typedef int cmsCIEXYZ ;
+
+
+ int Emit1Gamma (int ,int *,int *) ;
+ int EmitIntent (int ,int *,int ) ;
+ int EmitWhiteBlackD50 (int ,int *,int *) ;
+ int INTENT_PERCEPTUAL ;
+ int _cmsIOPrintf (int ,int *,char*) ;
 
 __attribute__((used)) static
 int EmitCIEBasedA(cmsContext ContextID, cmsIOHANDLER* m, cmsToneCurve* Curve, cmsCIEXYZ* BlackPoint)

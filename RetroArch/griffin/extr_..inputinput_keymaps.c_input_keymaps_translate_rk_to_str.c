@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum retro_key { ____Placeholder_retro_key } retro_key ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef enum retro_key { ____Placeholder_retro_key } retro_key ;
 struct TYPE_2__ {int key; scalar_t__ str; } ;
 
-/* Variables and functions */
- int RETROK_a ; 
- int RETROK_z ; 
- TYPE_1__* input_config_key_map ; 
- int /*<<< orphan*/  retro_assert (int) ; 
- int /*<<< orphan*/  strlcpy (char*,scalar_t__,size_t) ; 
+
+ int RETROK_a ;
+ int RETROK_z ;
+ TYPE_1__* input_config_key_map ;
+ int retro_assert (int) ;
+ int strlcpy (char*,scalar_t__,size_t) ;
 
 void input_keymaps_translate_rk_to_str(enum retro_key key, char *buf, size_t size)
 {

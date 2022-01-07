@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  aead_aad ; 
- int /*<<< orphan*/  aead_cipher ; 
- int /*<<< orphan*/  aead_key ; 
- int /*<<< orphan*/  aead_msg ; 
- int /*<<< orphan*/  aead_nonce ; 
- int /*<<< orphan*/  aead_tag ; 
- int /*<<< orphan*/  bracket ; 
- int /*<<< orphan*/  cf_norx32_encrypt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int aead_aad ;
+ int aead_cipher ;
+ int aead_key ;
+ int aead_msg ;
+ int aead_nonce ;
+ int aead_tag ;
+ int bracket ;
+ int cf_norx32_encrypt (int ,int ,int ,int,int ,int ,int *,int ,int ,int ) ;
 
 __attribute__((used)) static void aeadperf_norx(void)
 {
   cf_norx32_encrypt(aead_key, aead_nonce,
                     aead_aad, sizeof aead_aad,
                     aead_msg, bracket,
-                    NULL, 0,
+                    ((void*)0), 0,
                     aead_cipher, aead_tag);
 }

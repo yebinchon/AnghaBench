@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bfd ;
-typedef  int /*<<< orphan*/  asymbol ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int bfd ;
+typedef int asymbol ;
 struct TYPE_7__ {unsigned char* contents; } ;
-typedef  TYPE_1__ asection ;
-struct TYPE_8__ {int /*<<< orphan*/  bfd_arch; int /*<<< orphan*/  object_target; } ;
+typedef TYPE_1__ asection ;
+struct TYPE_8__ {int bfd_arch; int object_target; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BSF_GLOBAL ; 
- int PE_IDATA4_SIZE ; 
- int PE_IDATA5_SIZE ; 
- int /*<<< orphan*/  SEC_HAS_CONTENTS ; 
- int /*<<< orphan*/  U (char*) ; 
- int /*<<< orphan*/ * bfd_create (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bfd_find_target (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bfd_make_readable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bfd_make_writable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bfd_object ; 
- int /*<<< orphan*/  bfd_set_arch_mach (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bfd_set_format (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bfd_set_section_contents (int /*<<< orphan*/ *,TYPE_1__*,unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  bfd_set_section_size (int /*<<< orphan*/ *,TYPE_1__*,int) ; 
- int /*<<< orphan*/  bfd_set_symtab (int /*<<< orphan*/ *,void*,scalar_t__) ; 
- int /*<<< orphan*/  dll_filename ; 
- int /*<<< orphan*/  dll_symname ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- TYPE_4__* pe_details ; 
- TYPE_1__* quick_section (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  quick_symbol (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  strcpy (char*,int /*<<< orphan*/ ) ; 
- int strlen (int /*<<< orphan*/ ) ; 
- scalar_t__ symptr ; 
- void* symtab ; 
- int tmp_seq ; 
- void* xmalloc (int) ; 
+
+ int BSF_GLOBAL ;
+ int PE_IDATA4_SIZE ;
+ int PE_IDATA5_SIZE ;
+ int SEC_HAS_CONTENTS ;
+ int U (char*) ;
+ int * bfd_create (char*,int *) ;
+ int bfd_find_target (int ,int *) ;
+ int bfd_make_readable (int *) ;
+ int bfd_make_writable (int *) ;
+ int bfd_object ;
+ int bfd_set_arch_mach (int *,int ,int ) ;
+ int bfd_set_format (int *,int ) ;
+ int bfd_set_section_contents (int *,TYPE_1__*,unsigned char*,int ,int) ;
+ int bfd_set_section_size (int *,TYPE_1__*,int) ;
+ int bfd_set_symtab (int *,void*,scalar_t__) ;
+ int dll_filename ;
+ int dll_symname ;
+ int memset (unsigned char*,int ,int) ;
+ TYPE_4__* pe_details ;
+ TYPE_1__* quick_section (int *,char*,int ,int) ;
+ int quick_symbol (int *,int ,int ,char*,TYPE_1__*,int ,int ) ;
+ int sprintf (char*,char*,int) ;
+ int strcpy (char*,int ) ;
+ int strlen (int ) ;
+ scalar_t__ symptr ;
+ void* symtab ;
+ int tmp_seq ;
+ void* xmalloc (int) ;
 
 __attribute__((used)) static bfd *
 make_tail (bfd *parent)
@@ -92,9 +92,9 @@ make_tail (bfd *parent)
   d7 = xmalloc (len);
   id7->contents = d7;
   strcpy ((char *) d7, dll_filename);
-  /* If len was odd, the above
-     strcpy leaves behind an undefined byte. That is harmless,
-     but we set it to 0 just so the binary dumps are pretty.  */
+
+
+
   d7[len - 1] = 0;
 
   bfd_set_symtab (abfd, symtab, symptr);

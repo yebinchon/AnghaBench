@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
 
-/* Variables and functions */
+
+
+
+typedef int u8 ;
+
+
 
 size_t base32_decode (u8 (*f) (const u8), const u8 *in_buf, const size_t in_len, u8 *out_buf)
 {
@@ -40,13 +40,13 @@ size_t base32_decode (u8 (*f) (const u8), const u8 *in_buf, const size_t in_len,
     const u8 out_val6 = f (f6 & 0x7f);
     const u8 out_val7 = f (f7 & 0x7f);
 
-    out_ptr[0] =                            ((out_val0 << 3) & 0xf8) | ((out_val1 >> 2) & 0x07);
+    out_ptr[0] = ((out_val0 << 3) & 0xf8) | ((out_val1 >> 2) & 0x07);
     out_ptr[1] = ((out_val1 << 6) & 0xc0) | ((out_val2 << 1) & 0x3e) | ((out_val3 >> 4) & 0x01);
-    out_ptr[2] =                            ((out_val3 << 4) & 0xf0) | ((out_val4 >> 1) & 0x0f);
+    out_ptr[2] = ((out_val3 << 4) & 0xf0) | ((out_val4 >> 1) & 0x0f);
     out_ptr[3] = ((out_val4 << 7) & 0x80) | ((out_val5 << 2) & 0x7c) | ((out_val6 >> 3) & 0x03);
-    out_ptr[4] =                            ((out_val6 << 5) & 0xe0) | ((out_val7 >> 0) & 0x1f);
+    out_ptr[4] = ((out_val6 << 5) & 0xe0) | ((out_val7 >> 0) & 0x1f);
 
-    in_ptr  += 8;
+    in_ptr += 8;
     out_ptr += 5;
   }
 

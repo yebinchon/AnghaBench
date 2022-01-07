@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pem_password_cb_data {int rwflag; int /*<<< orphan*/ * cb; } ;
-typedef  int /*<<< orphan*/  pem_password_cb ;
-typedef  int /*<<< orphan*/  UI_METHOD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPENSSL_free (struct pem_password_cb_data*) ; 
- struct pem_password_cb_data* OPENSSL_zalloc (int) ; 
- int /*<<< orphan*/  RUN_ONCE (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * UI_create_method (char*) ; 
- int /*<<< orphan*/  UI_destroy_method (int /*<<< orphan*/ *) ; 
- scalar_t__ UI_method_set_closer (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ UI_method_set_ex_data (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct pem_password_cb_data*) ; 
- scalar_t__ UI_method_set_opener (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ UI_method_set_reader (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ UI_method_set_writer (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_index_once ; 
- int /*<<< orphan*/  ui_close ; 
- int /*<<< orphan*/  ui_method_data_index ; 
- int /*<<< orphan*/  ui_method_data_index_init ; 
- int /*<<< orphan*/  ui_open ; 
- int /*<<< orphan*/  ui_read ; 
- int /*<<< orphan*/  ui_write ; 
+
+
+
+struct pem_password_cb_data {int rwflag; int * cb; } ;
+typedef int pem_password_cb ;
+typedef int UI_METHOD ;
+
+
+ int OPENSSL_free (struct pem_password_cb_data*) ;
+ struct pem_password_cb_data* OPENSSL_zalloc (int) ;
+ int RUN_ONCE (int *,int ) ;
+ int * UI_create_method (char*) ;
+ int UI_destroy_method (int *) ;
+ scalar_t__ UI_method_set_closer (int *,int ) ;
+ scalar_t__ UI_method_set_ex_data (int *,int ,struct pem_password_cb_data*) ;
+ scalar_t__ UI_method_set_opener (int *,int ) ;
+ scalar_t__ UI_method_set_reader (int *,int ) ;
+ scalar_t__ UI_method_set_writer (int *,int ) ;
+ int get_index_once ;
+ int ui_close ;
+ int ui_method_data_index ;
+ int ui_method_data_index_init ;
+ int ui_open ;
+ int ui_read ;
+ int ui_write ;
 
 UI_METHOD *UI_UTIL_wrap_read_pem_callback(pem_password_cb *cb, int rwflag)
 {
-    struct pem_password_cb_data *data = NULL;
-    UI_METHOD *ui_method = NULL;
+    struct pem_password_cb_data *data = ((void*)0);
+    UI_METHOD *ui_method = ((void*)0);
 
-    if ((data = OPENSSL_zalloc(sizeof(*data))) == NULL
-        || (ui_method = UI_create_method("PEM password callback wrapper")) == NULL
+    if ((data = OPENSSL_zalloc(sizeof(*data))) == ((void*)0)
+        || (ui_method = UI_create_method("PEM password callback wrapper")) == ((void*)0)
         || UI_method_set_opener(ui_method, ui_open) < 0
         || UI_method_set_reader(ui_method, ui_read) < 0
         || UI_method_set_writer(ui_method, ui_write) < 0
@@ -48,7 +48,7 @@ UI_METHOD *UI_UTIL_wrap_read_pem_callback(pem_password_cb *cb, int rwflag)
         || UI_method_set_ex_data(ui_method, ui_method_data_index, data) < 0) {
         UI_destroy_method(ui_method);
         OPENSSL_free(data);
-        return NULL;
+        return ((void*)0);
     }
     data->rwflag = rwflag;
     data->cb = cb;

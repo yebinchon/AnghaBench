@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_2__* priv; } ;
-struct TYPE_7__ {int buf_size; int /*<<< orphan*/  (* upmix_5_1 ) (TYPE_3__*,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float,int) ;TYPE_1__* input; } ;
+struct TYPE_7__ {int buf_size; int (* upmix_5_1 ) (TYPE_3__*,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float,int) ;TYPE_1__* input; } ;
 struct TYPE_6__ {scalar_t__* extended_data; } ;
-typedef  TYPE_2__ AudioSurroundContext ;
-typedef  TYPE_3__ AVFilterContext ;
+typedef TYPE_2__ AudioSurroundContext ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- float FFDIFFSIGN (float,float) ; 
- float M_PI ; 
- float atan2f (float,float) ; 
- float fabsf (float) ; 
- float hypotf (float,float) ; 
- int /*<<< orphan*/  stereo_position (float,float,float*,float*) ; 
- int /*<<< orphan*/  stub1 (TYPE_3__*,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float,int) ; 
+
+ float FFDIFFSIGN (float,float) ;
+ float M_PI ;
+ float atan2f (float,float) ;
+ float fabsf (float) ;
+ float hypotf (float,float) ;
+ int stereo_position (float,float,float*,float*) ;
+ int stub1 (TYPE_3__*,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float,int) ;
 
 __attribute__((used)) static void filter_5_1_back(AVFilterContext *ctx)
 {

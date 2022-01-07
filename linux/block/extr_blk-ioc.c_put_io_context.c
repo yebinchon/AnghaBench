@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct io_context {int /*<<< orphan*/  lock; int /*<<< orphan*/  release_work; int /*<<< orphan*/  icq_list; int /*<<< orphan*/  refcount; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- scalar_t__ atomic_long_dec_and_test (int /*<<< orphan*/ *) ; 
- scalar_t__ atomic_long_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hlist_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  iocontext_cachep ; 
- int /*<<< orphan*/  kmem_cache_free (int /*<<< orphan*/ ,struct io_context*) ; 
- int /*<<< orphan*/  queue_work (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  system_power_efficient_wq ; 
+
+
+
+struct io_context {int lock; int release_work; int icq_list; int refcount; } ;
+
+
+ int BUG_ON (int) ;
+ scalar_t__ atomic_long_dec_and_test (int *) ;
+ scalar_t__ atomic_long_read (int *) ;
+ int hlist_empty (int *) ;
+ int iocontext_cachep ;
+ int kmem_cache_free (int ,struct io_context*) ;
+ int queue_work (int ,int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int system_power_efficient_wq ;
 
 void put_io_context(struct io_context *ioc)
 {
-	unsigned long flags;
-	bool free_ioc = false;
+ unsigned long flags;
+ bool free_ioc = 0;
 
-	if (ioc == NULL)
-		return;
+ if (ioc == ((void*)0))
+  return;
 
-	BUG_ON(atomic_long_read(&ioc->refcount) <= 0);
+ BUG_ON(atomic_long_read(&ioc->refcount) <= 0);
 
-	/*
-	 * Releasing ioc requires reverse order double locking and we may
-	 * already be holding a queue_lock.  Do it asynchronously from wq.
-	 */
-	if (atomic_long_dec_and_test(&ioc->refcount)) {
-		spin_lock_irqsave(&ioc->lock, flags);
-		if (!hlist_empty(&ioc->icq_list))
-			queue_work(system_power_efficient_wq,
-					&ioc->release_work);
-		else
-			free_ioc = true;
-		spin_unlock_irqrestore(&ioc->lock, flags);
-	}
 
-	if (free_ioc)
-		kmem_cache_free(iocontext_cachep, ioc);
+
+
+
+ if (atomic_long_dec_and_test(&ioc->refcount)) {
+  spin_lock_irqsave(&ioc->lock, flags);
+  if (!hlist_empty(&ioc->icq_list))
+   queue_work(system_power_efficient_wq,
+     &ioc->release_work);
+  else
+   free_ioc = 1;
+  spin_unlock_irqrestore(&ioc->lock, flags);
+ }
+
+ if (free_ioc)
+  kmem_cache_free(iocontext_cachep, ioc);
 }

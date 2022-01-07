@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  yrmcds_error ;
-typedef  int /*<<< orphan*/  yrmcds ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  textbuf_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  YRMCDS_BAD_ARGUMENT ; 
- int /*<<< orphan*/  send_command (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  textbuf_append_char (int /*<<< orphan*/ *,char) ; 
- int /*<<< orphan*/  textbuf_append_const_string (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  textbuf_append_uint64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  textbuf_init (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int yrmcds_error ;
+typedef int yrmcds ;
+typedef int uint32_t ;
+typedef int textbuf_t ;
+
+
+ int YRMCDS_BAD_ARGUMENT ;
+ int send_command (int *,int *,int *) ;
+ int textbuf_append_char (int *,char) ;
+ int textbuf_append_const_string (int *,char*) ;
+ int textbuf_append_uint64 (int *,int ) ;
+ int textbuf_init (int *) ;
 
 yrmcds_error yrmcds_text_flush(yrmcds* c, uint32_t delay,
                                int quiet, uint32_t* serial) {

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct websocket_message {int /*<<< orphan*/  data; scalar_t__ size; int /*<<< orphan*/  flags; } ;
+
+
+
+
+struct websocket_message {int data; scalar_t__ size; int flags; } ;
 struct mg_connection {scalar_t__ user_data; } ;
 struct mbuf {int dummy; } ;
 
-/* Variables and functions */
- int MG_EV_CLOSE ; 
- int MG_EV_WEBSOCKET_CONTROL_FRAME ; 
- int MG_EV_WEBSOCKET_FRAME ; 
- int MG_EV_WEBSOCKET_HANDSHAKE_DONE ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  mbuf_append (struct mbuf*,char*,int) ; 
- int mg_asprintf (char**,int /*<<< orphan*/ ,char*,char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int s_ws_client1_connected ; 
+
+ int MG_EV_CLOSE ;
+ int MG_EV_WEBSOCKET_CONTROL_FRAME ;
+ int MG_EV_WEBSOCKET_FRAME ;
+ int MG_EV_WEBSOCKET_HANDSHAKE_DONE ;
+ int free (char*) ;
+ int mbuf_append (struct mbuf*,char*,int) ;
+ int mg_asprintf (char**,int ,char*,char*,int ,int,int ) ;
+ int s_ws_client1_connected ;
 
 __attribute__((used)) static void cb_ws_client1(struct mg_connection *nc, int ev, void *ev_data) {
   struct websocket_message *wm = (struct websocket_message *) ev_data;
 
   if (ev == MG_EV_WEBSOCKET_FRAME || ev == MG_EV_WEBSOCKET_CONTROL_FRAME) {
-    char *tmp = NULL;
+    char *tmp = ((void*)0);
     int tmplen;
     tmplen =
         mg_asprintf(&tmp, 0, "%s%.2x:[%.*s]",

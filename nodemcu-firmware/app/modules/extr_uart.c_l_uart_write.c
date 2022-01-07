@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char const u8 ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- scalar_t__ LUA_TNUMBER ; 
- int /*<<< orphan*/  LUA_TSTRING ; 
- int /*<<< orphan*/  MOD_CHECK_ID (int /*<<< orphan*/ ,int) ; 
- int luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaL_checktype (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- size_t lua_tointeger (int /*<<< orphan*/ *,int) ; 
- char* lua_tolstring (int /*<<< orphan*/ *,int,size_t*) ; 
- scalar_t__ lua_type (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  platform_uart_send (int,char const) ; 
- int /*<<< orphan*/  uart ; 
+
+
+
+typedef char const u8 ;
+typedef int lua_State ;
+
+
+ scalar_t__ LUA_TNUMBER ;
+ int LUA_TSTRING ;
+ int MOD_CHECK_ID (int ,int) ;
+ int luaL_checkinteger (int *,int) ;
+ int luaL_checktype (int *,int,int ) ;
+ int luaL_error (int *,char*) ;
+ int lua_gettop (int *) ;
+ size_t lua_tointeger (int *,int) ;
+ char* lua_tolstring (int *,int,size_t*) ;
+ scalar_t__ lua_type (int *,int) ;
+ int platform_uart_send (int,char const) ;
+ int uart ;
 
 __attribute__((used)) static int l_uart_write( lua_State* L )
 {

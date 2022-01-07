@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct smc_ib_device {int /*<<< orphan*/  recv_tasklet; } ;
+
+
+
+
+struct smc_ib_device {int recv_tasklet; } ;
 struct ib_cq {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  tasklet_schedule (int /*<<< orphan*/ *) ; 
+
+ int tasklet_schedule (int *) ;
 
 void smc_wr_rx_cq_handler(struct ib_cq *ib_cq, void *cq_context)
 {
-	struct smc_ib_device *dev = (struct smc_ib_device *)cq_context;
+ struct smc_ib_device *dev = (struct smc_ib_device *)cq_context;
 
-	tasklet_schedule(&dev->recv_tasklet);
+ tasklet_schedule(&dev->recv_tasklet);
 }

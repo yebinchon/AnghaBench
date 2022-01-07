@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ npy_intp ;
-struct TYPE_3__ {int /*<<< orphan*/ * iter; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
-typedef  TYPE_1__ NewNpyArrayIterObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * NpyIter_GetIterView (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ NpyIter_GetNOp (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- int /*<<< orphan*/ * PyTuple_New (scalar_t__) ; 
- int /*<<< orphan*/  PyTuple_SET_ITEM (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ npy_intp ;
+struct TYPE_3__ {int * iter; } ;
+typedef int PyObject ;
+typedef int PyArrayObject ;
+typedef TYPE_1__ NewNpyArrayIterObject ;
+
+
+ int * NpyIter_GetIterView (int *,scalar_t__) ;
+ scalar_t__ NpyIter_GetNOp (int *) ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_ValueError ;
+ int * PyTuple_New (scalar_t__) ;
+ int PyTuple_SET_ITEM (int *,scalar_t__,int *) ;
+ int Py_DECREF (int *) ;
 
 __attribute__((used)) static PyObject *npyiter_itviews_get(NewNpyArrayIterObject *self)
 {
@@ -32,23 +32,23 @@ __attribute__((used)) static PyObject *npyiter_itviews_get(NewNpyArrayIterObject
 
     npy_intp iop, nop;
 
-    if (self->iter == NULL) {
+    if (self->iter == ((void*)0)) {
         PyErr_SetString(PyExc_ValueError,
                 "Iterator is invalid");
-        return NULL;
+        return ((void*)0);
     }
     nop = NpyIter_GetNOp(self->iter);
 
     ret = PyTuple_New(nop);
-    if (ret == NULL) {
-        return NULL;
+    if (ret == ((void*)0)) {
+        return ((void*)0);
     }
     for (iop = 0; iop < nop; ++iop) {
         PyArrayObject *view = NpyIter_GetIterView(self->iter, iop);
 
-        if (view == NULL) {
+        if (view == ((void*)0)) {
             Py_DECREF(ret);
-            return NULL;
+            return ((void*)0);
         }
         PyTuple_SET_ITEM(ret, iop, (PyObject *)view);
     }

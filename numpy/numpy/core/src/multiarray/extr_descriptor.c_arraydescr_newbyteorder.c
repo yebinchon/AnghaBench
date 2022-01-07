@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArray_Descr ;
 
-/* Variables and functions */
- char NPY_SWAP ; 
- int /*<<< orphan*/  PyArg_ParseTuple (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyArray_ByteorderConverter ; 
- scalar_t__ PyArray_DescrNewByteorder (int /*<<< orphan*/ *,char) ; 
+
+
+
+typedef int PyObject ;
+typedef int PyArray_Descr ;
+
+
+ char NPY_SWAP ;
+ int PyArg_ParseTuple (int *,char*,int ,char*) ;
+ int PyArray_ByteorderConverter ;
+ scalar_t__ PyArray_DescrNewByteorder (int *,char) ;
 
 __attribute__((used)) static PyObject *
 arraydescr_newbyteorder(PyArray_Descr *self, PyObject *args)
@@ -26,7 +26,7 @@ arraydescr_newbyteorder(PyArray_Descr *self, PyObject *args)
 
     if (!PyArg_ParseTuple(args, "|O&:newbyteorder", PyArray_ByteorderConverter,
                 &endian)) {
-        return NULL;
+        return ((void*)0);
     }
     return (PyObject *)PyArray_DescrNewByteorder(self, endian);
 }

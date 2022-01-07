@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* bfd_demangle (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
+ char* bfd_demangle (int ,char*,int ) ;
+ int printf (char*,char*) ;
 
 int main(void)
 {
-	char symbol[4096] = "FieldName__9ClassNameFd";
-	char *tmp;
+ char symbol[4096] = "FieldName__9ClassNameFd";
+ char *tmp;
 
-	tmp = bfd_demangle(0, symbol, 0);
+ tmp = bfd_demangle(0, symbol, 0);
 
-	printf("demangled symbol: {%s}\n", tmp);
+ printf("demangled symbol: {%s}\n", tmp);
 
-	return 0;
+ return 0;
 }

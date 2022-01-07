@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct device {int dummy; } ;
-struct class_interface {int /*<<< orphan*/  (* remove_dev ) (struct device*,struct class_interface*) ;int /*<<< orphan*/  node; struct class* class; } ;
+struct class_interface {int (* remove_dev ) (struct device*,struct class_interface*) ;int node; struct class* class; } ;
 struct class_dev_iter {int dummy; } ;
 struct class {TYPE_1__* p; } ;
-struct TYPE_2__ {int /*<<< orphan*/  class_mutex; } ;
+struct TYPE_2__ {int class_mutex; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  class_dev_iter_exit (struct class_dev_iter*) ; 
- int /*<<< orphan*/  class_dev_iter_init (struct class_dev_iter*,struct class*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- struct device* class_dev_iter_next (struct class_dev_iter*) ; 
- int /*<<< orphan*/  class_put (struct class*) ; 
- int /*<<< orphan*/  list_del_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (struct device*,struct class_interface*) ; 
+
+ int class_dev_iter_exit (struct class_dev_iter*) ;
+ int class_dev_iter_init (struct class_dev_iter*,struct class*,int *,int *) ;
+ struct device* class_dev_iter_next (struct class_dev_iter*) ;
+ int class_put (struct class*) ;
+ int list_del_init (int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int stub1 (struct device*,struct class_interface*) ;
 
 void class_interface_unregister(struct class_interface *class_intf)
 {
-	struct class *parent = class_intf->class;
-	struct class_dev_iter iter;
-	struct device *dev;
+ struct class *parent = class_intf->class;
+ struct class_dev_iter iter;
+ struct device *dev;
 
-	if (!parent)
-		return;
+ if (!parent)
+  return;
 
-	mutex_lock(&parent->p->class_mutex);
-	list_del_init(&class_intf->node);
-	if (class_intf->remove_dev) {
-		class_dev_iter_init(&iter, parent, NULL, NULL);
-		while ((dev = class_dev_iter_next(&iter)))
-			class_intf->remove_dev(dev, class_intf);
-		class_dev_iter_exit(&iter);
-	}
-	mutex_unlock(&parent->p->class_mutex);
+ mutex_lock(&parent->p->class_mutex);
+ list_del_init(&class_intf->node);
+ if (class_intf->remove_dev) {
+  class_dev_iter_init(&iter, parent, ((void*)0), ((void*)0));
+  while ((dev = class_dev_iter_next(&iter)))
+   class_intf->remove_dev(dev, class_intf);
+  class_dev_iter_exit(&iter);
+ }
+ mutex_unlock(&parent->p->class_mutex);
 
-	class_put(parent);
+ class_put(parent);
 }

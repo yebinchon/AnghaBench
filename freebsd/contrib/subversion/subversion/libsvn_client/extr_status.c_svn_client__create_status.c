@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {scalar_t__ kind; int /*<<< orphan*/  moved_to_abspath; int /*<<< orphan*/  moved_from_abspath; scalar_t__ conflicted; scalar_t__ versioned; int /*<<< orphan*/  ood_changed_author; int /*<<< orphan*/  ood_changed_date; int /*<<< orphan*/  ood_changed_rev; int /*<<< orphan*/  repos_lock; int /*<<< orphan*/  repos_prop_status; int /*<<< orphan*/  repos_text_status; int /*<<< orphan*/  repos_node_status; int /*<<< orphan*/  ood_kind; int /*<<< orphan*/  depth; int /*<<< orphan*/  changelist; int /*<<< orphan*/  lock; scalar_t__ file_external; int /*<<< orphan*/  switched; int /*<<< orphan*/  repos_relpath; int /*<<< orphan*/  repos_uuid; int /*<<< orphan*/  repos_root_url; int /*<<< orphan*/  changed_author; int /*<<< orphan*/  changed_date; int /*<<< orphan*/  changed_rev; int /*<<< orphan*/  revision; int /*<<< orphan*/  copied; int /*<<< orphan*/  locked; void* prop_status; void* text_status; void* node_status; int /*<<< orphan*/  filesize; } ;
-typedef  TYPE_1__ svn_wc_status3_t ;
-typedef  int /*<<< orphan*/  svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_7__ {scalar_t__ kind; char const* local_abspath; int /*<<< orphan*/  moved_to_abspath; int /*<<< orphan*/  moved_from_abspath; void* node_status; void* prop_status; void* text_status; TYPE_1__ const* backwards_compatibility_baton; int /*<<< orphan*/  ood_changed_author; int /*<<< orphan*/  ood_changed_date; int /*<<< orphan*/  ood_changed_rev; int /*<<< orphan*/  repos_lock; int /*<<< orphan*/  repos_prop_status; int /*<<< orphan*/  repos_text_status; int /*<<< orphan*/  repos_node_status; int /*<<< orphan*/  ood_kind; int /*<<< orphan*/  depth; int /*<<< orphan*/  changelist; int /*<<< orphan*/  lock; int /*<<< orphan*/  switched; scalar_t__ file_external; int /*<<< orphan*/  repos_relpath; int /*<<< orphan*/  repos_uuid; int /*<<< orphan*/  repos_root_url; int /*<<< orphan*/  changed_author; int /*<<< orphan*/  changed_date; int /*<<< orphan*/  changed_rev; int /*<<< orphan*/  revision; int /*<<< orphan*/  copied; int /*<<< orphan*/  wc_is_locked; scalar_t__ conflicted; scalar_t__ versioned; int /*<<< orphan*/  filesize; } ;
-typedef  TYPE_2__ svn_client_status_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- TYPE_2__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- scalar_t__ svn_node_dir ; 
- int /*<<< orphan*/  svn_wc_conflicted_p3 (scalar_t__*,scalar_t__*,scalar_t__*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- void* svn_wc_status_conflicted ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {scalar_t__ kind; int moved_to_abspath; int moved_from_abspath; scalar_t__ conflicted; scalar_t__ versioned; int ood_changed_author; int ood_changed_date; int ood_changed_rev; int repos_lock; int repos_prop_status; int repos_text_status; int repos_node_status; int ood_kind; int depth; int changelist; int lock; scalar_t__ file_external; int switched; int repos_relpath; int repos_uuid; int repos_root_url; int changed_author; int changed_date; int changed_rev; int revision; int copied; int locked; void* prop_status; void* text_status; void* node_status; int filesize; } ;
+typedef TYPE_1__ svn_wc_status3_t ;
+typedef int svn_wc_context_t ;
+typedef int svn_error_t ;
+struct TYPE_7__ {scalar_t__ kind; char const* local_abspath; int moved_to_abspath; int moved_from_abspath; void* node_status; void* prop_status; void* text_status; TYPE_1__ const* backwards_compatibility_baton; int ood_changed_author; int ood_changed_date; int ood_changed_rev; int repos_lock; int repos_prop_status; int repos_text_status; int repos_node_status; int ood_kind; int depth; int changelist; int lock; int switched; scalar_t__ file_external; int repos_relpath; int repos_uuid; int repos_root_url; int changed_author; int changed_date; int changed_rev; int revision; int copied; int wc_is_locked; scalar_t__ conflicted; scalar_t__ versioned; int filesize; } ;
+typedef TYPE_2__ svn_client_status_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ TYPE_2__* apr_pcalloc (int *,int) ;
+ scalar_t__ svn_node_dir ;
+ int svn_wc_conflicted_p3 (scalar_t__*,scalar_t__*,scalar_t__*,int *,char const*,int *) ;
+ void* svn_wc_status_conflicted ;
 
 svn_error_t *
 svn_client__create_status(svn_client_status_t **cst,
@@ -78,7 +78,7 @@ svn_client__create_status(svn_client_status_t **cst,
   (*cst)->changelist = status->changelist;
   (*cst)->depth = status->depth;
 
-  /* Out of date information */
+
   (*cst)->ood_kind = status->ood_kind;
   (*cst)->repos_node_status = status->repos_node_status;
   (*cst)->repos_text_status = status->repos_text_status;
@@ -89,17 +89,17 @@ svn_client__create_status(svn_client_status_t **cst,
   (*cst)->ood_changed_date = status->ood_changed_date;
   (*cst)->ood_changed_author = status->ood_changed_author;
 
-  /* When changing the value of backwards_compatibility_baton, also
-     change its use in status4_wrapper_func in deprecated.c */
+
+
   (*cst)->backwards_compatibility_baton = status;
 
   if (status->versioned && status->conflicted)
     {
       svn_boolean_t text_conflicted, prop_conflicted, tree_conflicted;
 
-      /* Note: This checks the on disk markers to automatically hide
-               text/property conflicts that are hidden by removing their
-               markers */
+
+
+
       SVN_ERR(svn_wc_conflicted_p3(&text_conflicted, &prop_conflicted,
                                    &tree_conflicted, wc_ctx, local_abspath,
                                    scratch_pool));
@@ -110,7 +110,7 @@ svn_client__create_status(svn_client_status_t **cst,
       if (prop_conflicted)
         (*cst)->prop_status = svn_wc_status_conflicted;
 
-      /* ### Also set this for tree_conflicts? */
+
       if (text_conflicted || prop_conflicted)
         (*cst)->node_status = svn_wc_status_conflicted;
     }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * PayloadList; int /*<<< orphan*/ * Spi; } ;
-typedef  TYPE_1__ IKE_PACKET_PROPOSAL_PAYLOAD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreeBuf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IkeFreePayloadList (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * PayloadList; int * Spi; } ;
+typedef TYPE_1__ IKE_PACKET_PROPOSAL_PAYLOAD ;
+
+
+ int FreeBuf (int *) ;
+ int IkeFreePayloadList (int *) ;
 
 void IkeFreeProposalPayload(IKE_PACKET_PROPOSAL_PAYLOAD *t)
 {
-	// Validate arguments
-	if (t == NULL)
-	{
-		return;
-	}
 
-	if (t->Spi != NULL)
-	{
-		FreeBuf(t->Spi);
-		t->Spi = NULL;
-	}
+ if (t == ((void*)0))
+ {
+  return;
+ }
 
-	if (t->PayloadList != NULL)
-	{
-		IkeFreePayloadList(t->PayloadList);
-		t->PayloadList = NULL;
-	}
+ if (t->Spi != ((void*)0))
+ {
+  FreeBuf(t->Spi);
+  t->Spi = ((void*)0);
+ }
+
+ if (t->PayloadList != ((void*)0))
+ {
+  IkeFreePayloadList(t->PayloadList);
+  t->PayloadList = ((void*)0);
+ }
 }

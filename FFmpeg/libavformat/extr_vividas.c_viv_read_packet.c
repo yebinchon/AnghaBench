@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_9__ ;
-typedef  struct TYPE_22__   TYPE_8__ ;
-typedef  struct TYPE_21__   TYPE_7__ ;
-typedef  struct TYPE_20__   TYPE_6__ ;
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  scalar_t__ int64_t ;
-struct TYPE_20__ {int current_audio_subpacket; int n_audio_subpackets; size_t current_sb; int audio_sample; size_t current_sb_entry; size_t n_sb_entries; int n_sb_blocks; TYPE_5__* sb_blocks; scalar_t__ sb_offset; TYPE_4__* audio_subpackets; TYPE_3__* sb_entries; int /*<<< orphan*/ * sb_pb; } ;
-typedef  TYPE_6__ VividasDemuxContext ;
+
+
+typedef struct TYPE_23__ TYPE_9__ ;
+typedef struct TYPE_22__ TYPE_8__ ;
+typedef struct TYPE_21__ TYPE_7__ ;
+typedef struct TYPE_20__ TYPE_6__ ;
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef scalar_t__ int64_t ;
+struct TYPE_20__ {int current_audio_subpacket; int n_audio_subpackets; size_t current_sb; int audio_sample; size_t current_sb_entry; size_t n_sb_entries; int n_sb_blocks; TYPE_5__* sb_blocks; scalar_t__ sb_offset; TYPE_4__* audio_subpackets; TYPE_3__* sb_entries; int * sb_pb; } ;
+typedef TYPE_6__ VividasDemuxContext ;
 struct TYPE_23__ {TYPE_7__** streams; TYPE_6__* priv_data; } ;
-struct TYPE_22__ {int stream_index; int pts; int* data; int /*<<< orphan*/  flags; int /*<<< orphan*/  pos; } ;
-struct TYPE_15__ {int /*<<< orphan*/  num; int /*<<< orphan*/  den; } ;
+struct TYPE_22__ {int stream_index; int pts; int* data; int flags; int pos; } ;
+struct TYPE_15__ {int num; int den; } ;
 struct TYPE_21__ {TYPE_2__* codecpar; TYPE_1__ time_base; } ;
 struct TYPE_19__ {int packet_offset; scalar_t__ byte_offset; } ;
 struct TYPE_18__ {int start; int pcm_bytes; } ;
 struct TYPE_17__ {scalar_t__ flag; scalar_t__ size; } ;
 struct TYPE_16__ {int sample_rate; int channels; } ;
-typedef  TYPE_7__ AVStream ;
-typedef  TYPE_8__ AVPacket ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_9__ AVFormatContext ;
+typedef TYPE_7__ AVStream ;
+typedef TYPE_8__ AVPacket ;
+typedef int AVIOContext ;
+typedef TYPE_9__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_PKT_FLAG_KEY ; 
- int /*<<< orphan*/  EIO ; 
- int INT_MAX ; 
- int MAX_AUDIO_SUBPACKETS ; 
- int av_get_packet (int /*<<< orphan*/ *,TYPE_8__*,int) ; 
- int av_rescale (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ avio_feof (int /*<<< orphan*/ *) ; 
- scalar_t__ avio_tell (int /*<<< orphan*/ *) ; 
- int ffio_read_varlen (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  load_sb_block (TYPE_9__*,TYPE_6__*,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AVERROR_INVALIDDATA ;
+ int AV_PKT_FLAG_KEY ;
+ int EIO ;
+ int INT_MAX ;
+ int MAX_AUDIO_SUBPACKETS ;
+ int av_get_packet (int *,TYPE_8__*,int) ;
+ int av_rescale (int,int ,int ) ;
+ scalar_t__ avio_feof (int *) ;
+ scalar_t__ avio_tell (int *) ;
+ int ffio_read_varlen (int *) ;
+ int load_sb_block (TYPE_9__*,TYPE_6__*,int ) ;
 
 __attribute__((used)) static int viv_read_packet(AVFormatContext *s,
                            AVPacket *pkt)

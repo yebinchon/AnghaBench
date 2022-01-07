@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  int uint32_t ;
-typedef  int const uint16_t ;
-typedef  int /*<<< orphan*/  MemoryManager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BROTLI_DCHECK (int) ; 
- scalar_t__ BROTLI_IS_OOM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BrotliBuildAndStoreHuffmanTreeFast (int /*<<< orphan*/ *,int*,size_t const,int,size_t*,int const*,size_t*,size_t*) ; 
- int /*<<< orphan*/  BrotliWriteBits (int const,int const,size_t*,size_t*) ; 
- int /*<<< orphan*/  BuildAndStoreCommandPrefixCode (int*,size_t*,int const*,size_t*,size_t*) ; 
+
+
+
+typedef size_t uint8_t ;
+typedef int uint32_t ;
+typedef int const uint16_t ;
+typedef int MemoryManager ;
+
+
+ int BROTLI_DCHECK (int) ;
+ scalar_t__ BROTLI_IS_OOM (int *) ;
+ int BrotliBuildAndStoreHuffmanTreeFast (int *,int*,size_t const,int,size_t*,int const*,size_t*,size_t*) ;
+ int BrotliWriteBits (int const,int const,size_t*,size_t*) ;
+ int BuildAndStoreCommandPrefixCode (int*,size_t*,int const*,size_t*,size_t*) ;
 
 __attribute__((used)) static void StoreCommands(MemoryManager* m,
                           const uint8_t* literals, const size_t num_literals,
@@ -51,7 +51,7 @@ __attribute__((used)) static void StoreCommands(MemoryManager* m,
     ++lit_histo[literals[i]];
   }
   BrotliBuildAndStoreHuffmanTreeFast(m, lit_histo, num_literals,
-                                     /* max_bits = */ 8,
+                                                      8,
                                      lit_depths, lit_bits,
                                      storage_ix, storage);
   if (BROTLI_IS_OOM(m)) return;

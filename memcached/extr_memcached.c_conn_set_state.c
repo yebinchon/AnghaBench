@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum conn_states { ____Placeholder_conn_states } conn_states ;
-struct TYPE_4__ {int state; int sfd; int /*<<< orphan*/  wbytes; int /*<<< orphan*/  wbuf; } ;
-typedef  TYPE_1__ conn ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef enum conn_states { ____Placeholder_conn_states } conn_states ;
+struct TYPE_4__ {int state; int sfd; int wbytes; int wbuf; } ;
+typedef TYPE_1__ conn ;
 struct TYPE_5__ {int verbose; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MEMCACHED_PROCESS_COMMAND_END (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int conn_listening ; 
- int conn_max_state ; 
- int conn_mwrite ; 
- int conn_write ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,char*,char*) ; 
- TYPE_2__ settings ; 
- char* state_text (int) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int MEMCACHED_PROCESS_COMMAND_END (int,int ,int ) ;
+ int assert (int) ;
+ int conn_listening ;
+ int conn_max_state ;
+ int conn_mwrite ;
+ int conn_write ;
+ int fprintf (int ,char*,int,char*,char*) ;
+ TYPE_2__ settings ;
+ char* state_text (int) ;
+ int stderr ;
 
 __attribute__((used)) static void conn_set_state(conn *c, enum conn_states state) {
-    assert(c != NULL);
+    assert(c != ((void*)0));
     assert(state >= conn_listening && state < conn_max_state);
 
     if (state != c->state) {

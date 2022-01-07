@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  keyName ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_14__ {int /*<<< orphan*/  Delay; int /*<<< orphan*/  Type; } ;
-struct TYPE_13__ {int /*<<< orphan*/  lpDescription; } ;
-struct TYPE_12__ {scalar_t__ cActions; int /*<<< orphan*/  lpCommand; int /*<<< orphan*/  lpRebootMsg; TYPE_4__* lpsaActions; int /*<<< orphan*/  dwResetPeriod; } ;
-typedef  int /*<<< orphan*/  SC_HANDLE ;
-typedef  TYPE_1__* LPWSTR ;
-typedef  TYPE_1__* LPSERVICE_FAILURE_ACTIONSW ;
-typedef  TYPE_3__* LPSERVICE_DESCRIPTIONW ;
-typedef  TYPE_4__* LPSC_ACTION ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  TYPE_1__* LPBYTE ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_INSUFFICIENT_BUFFER ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  KEY_QUERY_VALUE ; 
- int /*<<< orphan*/  QueryServiceConfig2W (int /*<<< orphan*/ ,scalar_t__,TYPE_1__*,scalar_t__,scalar_t__*) ; 
- scalar_t__ REG_BINARY ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ RegQueryValueExW (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,scalar_t__*,TYPE_1__*,scalar_t__*) ; 
- scalar_t__ RegReadStringW (int /*<<< orphan*/ *,char*,TYPE_1__**) ; 
-#define  SERVICE_CONFIG_DESCRIPTION 129 
-#define  SERVICE_CONFIG_FAILURE_ACTIONS 128 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  StringCbPrintfW (int /*<<< orphan*/ *,int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  skip (char*,scalar_t__,...) ; 
- int wcscmp (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int keyName ;
+typedef int WCHAR ;
+struct TYPE_14__ {int Delay; int Type; } ;
+struct TYPE_13__ {int lpDescription; } ;
+struct TYPE_12__ {scalar_t__ cActions; int lpCommand; int lpRebootMsg; TYPE_4__* lpsaActions; int dwResetPeriod; } ;
+typedef int SC_HANDLE ;
+typedef TYPE_1__* LPWSTR ;
+typedef TYPE_1__* LPSERVICE_FAILURE_ACTIONSW ;
+typedef TYPE_3__* LPSERVICE_DESCRIPTIONW ;
+typedef TYPE_4__* LPSC_ACTION ;
+typedef int LPCWSTR ;
+typedef TYPE_1__* LPBYTE ;
+typedef scalar_t__ LONG ;
+typedef int * HKEY ;
+typedef scalar_t__ DWORD ;
+typedef int BOOL ;
+
+
+ scalar_t__ ERROR_INSUFFICIENT_BUFFER ;
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ scalar_t__ GetLastError () ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ int HKEY_LOCAL_MACHINE ;
+ TYPE_1__* HeapAlloc (int ,int ,scalar_t__) ;
+ int HeapFree (int ,int ,TYPE_1__*) ;
+ int KEY_QUERY_VALUE ;
+ int QueryServiceConfig2W (int ,scalar_t__,TYPE_1__*,scalar_t__,scalar_t__*) ;
+ scalar_t__ REG_BINARY ;
+ int RegCloseKey (int *) ;
+ scalar_t__ RegOpenKeyExW (int ,int *,int ,int ,int **) ;
+ scalar_t__ RegQueryValueExW (int *,char*,int *,scalar_t__*,TYPE_1__*,scalar_t__*) ;
+ scalar_t__ RegReadStringW (int *,char*,TYPE_1__**) ;
+
+
+ int SetLastError (int) ;
+ int StringCbPrintfW (int *,int,char*,int ) ;
+ int ok (int,char*,...) ;
+ int skip (char*,scalar_t__,...) ;
+ int wcscmp (int ,TYPE_1__*) ;
 
 __attribute__((used)) static int QueryConfig2W(SC_HANDLE hService, LPCWSTR serviceName, DWORD dwInfoLevel)
 {
-    int    iRet  = 0;
-    LONG   lRet  = 0;
-    DWORD  dwRet = 0;
-    BOOL   bError = FALSE;
-    DWORD  dwRequiredSize = 0;
-    LPBYTE lpBuffer = NULL;
+    int iRet = 0;
+    LONG lRet = 0;
+    DWORD dwRet = 0;
+    BOOL bError = FALSE;
+    DWORD dwRequiredSize = 0;
+    LPBYTE lpBuffer = ((void*)0);
 
     WCHAR keyName[256];
-    HKEY hKey = NULL;
+    HKEY hKey = ((void*)0);
     DWORD dwType = 0;
 
-    /* Get the needed size */
+
     SetLastError(0xdeadbeef);
     bError = QueryServiceConfig2W(hService,
                                   dwInfoLevel,
-                                  NULL,
+                                  ((void*)0),
                                   0,
                                   &dwRequiredSize);
     ok(bError == FALSE && GetLastError() == ERROR_INSUFFICIENT_BUFFER, "(bError, GetLastError()) = (%u, 0x%08lx), expected (FALSE, 0x%08lx)\n", bError, GetLastError(), (DWORD)ERROR_INSUFFICIENT_BUFFER);
@@ -83,15 +83,15 @@ __attribute__((used)) static int QueryConfig2W(SC_HANDLE hService, LPCWSTR servi
         return 1;
     }
 
-    /* Allocate memory */
+
     lpBuffer = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, dwRequiredSize);
-    if (lpBuffer == NULL)
+    if (lpBuffer == ((void*)0))
     {
         skip("Cannot allocate %lu bytes of memory\n", dwRequiredSize);
         return 2;
     }
 
-    /* Get the actual value */
+
     SetLastError(0xdeadbeef);
     bError = QueryServiceConfig2W(hService,
                                   dwInfoLevel,
@@ -106,7 +106,7 @@ __attribute__((used)) static int QueryConfig2W(SC_HANDLE hService, LPCWSTR servi
         return 3;
     }
 
-    /* Now we can compare the retrieved value with what it's actually stored in the registry */
+
     StringCbPrintfW(keyName, sizeof(keyName), L"System\\CurrentControlSet\\Services\\%s", serviceName);
     SetLastError(0xdeadbeef);
     lRet = RegOpenKeyExW(HKEY_LOCAL_MACHINE, keyName, 0, KEY_QUERY_VALUE, &hKey);
@@ -120,17 +120,17 @@ __attribute__((used)) static int QueryConfig2W(SC_HANDLE hService, LPCWSTR servi
 
     switch (dwInfoLevel)
     {
-        case SERVICE_CONFIG_DESCRIPTION:
+        case 129:
         {
             LPSERVICE_DESCRIPTIONW lpDescription = (LPSERVICE_DESCRIPTIONW)lpBuffer;
-            LPWSTR lpszDescription = NULL;
+            LPWSTR lpszDescription = ((void*)0);
 
-            /* Retrieve the description via the registry */
+
             dwRet = RegReadStringW(hKey, L"Description", &lpszDescription);
             ok(dwRet == ERROR_SUCCESS, "RegReadStringW returned 0x%08lx\n", dwRet);
-            ok(lpszDescription != NULL, "lpszDescription is null, expected non-null\n");
+            ok(lpszDescription != ((void*)0), "lpszDescription is null, expected non-null\n");
 
-            /* Compare it with the description retrieved via QueryServiceConfig2 */
+
             if (lpszDescription)
                 iRet = wcscmp(lpDescription->lpDescription, lpszDescription);
             else
@@ -139,33 +139,33 @@ __attribute__((used)) static int QueryConfig2W(SC_HANDLE hService, LPCWSTR servi
             ok(iRet == 0, "Retrieved descriptions are different !\n");
 
 
-            /* Memory cleanup */
+
             HeapFree(GetProcessHeap(), 0, lpszDescription);
 
             break;
         }
 
-        case SERVICE_CONFIG_FAILURE_ACTIONS:
+        case 128:
         {
             LPSERVICE_FAILURE_ACTIONSW lpFailureActions1 = (LPSERVICE_FAILURE_ACTIONSW)lpBuffer;
-            LPSERVICE_FAILURE_ACTIONSW lpFailureActions2 = NULL;
-            LPWSTR lpRebootMessage  = NULL;
-            LPWSTR lpFailureCommand = NULL;
-            DWORD  i = 0;
+            LPSERVICE_FAILURE_ACTIONSW lpFailureActions2 = ((void*)0);
+            LPWSTR lpRebootMessage = ((void*)0);
+            LPWSTR lpFailureCommand = ((void*)0);
+            DWORD i = 0;
 
-            /* Retrieve the failure actions via the registry */
+
             lRet = RegQueryValueExW(hKey,
                                     L"FailureActions",
-                                    NULL,
+                                    ((void*)0),
                                     &dwType,
-                                    NULL,
+                                    ((void*)0),
                                     &dwRequiredSize);
             ok(lRet == ERROR_SUCCESS, "RegQueryValueExW returned 0x%08lx\n", lRet);
             ok(dwType == REG_BINARY, "dwType = %lu, expected REG_BINARY\n", dwType);
             ok(dwRequiredSize != 0, "dwRequiredSize is zero, expected non-zero\n");
 
             lpFailureActions2 = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, dwRequiredSize);
-            if (lpFailureActions2 == NULL)
+            if (lpFailureActions2 == ((void*)0))
             {
                 skip("Cannot allocate %lu bytes of memory\n", dwRequiredSize);
                 break;
@@ -173,40 +173,40 @@ __attribute__((used)) static int QueryConfig2W(SC_HANDLE hService, LPCWSTR servi
 
             lRet = RegQueryValueExW(hKey,
                                     L"FailureActions",
-                                    NULL,
-                                    NULL,
+                                    ((void*)0),
+                                    ((void*)0),
                                     (LPBYTE)lpFailureActions2,
                                     &dwRequiredSize);
             ok(lRet == ERROR_SUCCESS, "RegQueryValueExW returned 0x%08lx\n", lRet);
             ok(dwRequiredSize != 0, "dwRequiredSize is zero, expected non-zero\n");
 
-            /* Get the strings */
+
             RegReadStringW(hKey, L"FailureCommand", &lpFailureCommand);
             RegReadStringW(hKey, L"RebootMessage" , &lpRebootMessage );
 
-            /* Check the values */
+
             ok(lpFailureActions1->dwResetPeriod == lpFailureActions2->dwResetPeriod, "lpFailureActions1->dwResetPeriod != lpFailureActions2->dwResetPeriod\n");
             ok(lpFailureActions1->cActions == lpFailureActions2->cActions, "lpFailureActions1->cActions != lpFailureActions2->cActions\n");
 
-            /* Compare the actions */
+
             if (lpFailureActions1->cActions == lpFailureActions2->cActions)
             {
-                lpFailureActions2->lpsaActions = (lpFailureActions2->cActions > 0 ? (LPSC_ACTION)(lpFailureActions2 + 1) : NULL);
+                lpFailureActions2->lpsaActions = (lpFailureActions2->cActions > 0 ? (LPSC_ACTION)(lpFailureActions2 + 1) : ((void*)0));
 
                 if (lpFailureActions1->cActions > 0 &&
-                    lpFailureActions1->lpsaActions != NULL)
+                    lpFailureActions1->lpsaActions != ((void*)0))
                 {
                     for (i = 0; i < lpFailureActions1->cActions; ++i)
                     {
-                        ok(lpFailureActions1->lpsaActions[i].Type  == lpFailureActions2->lpsaActions[i].Type , "lpFailureActions1->lpsaActions[%lu].Type  != lpFailureActions2->lpsaActions[%lu].Type\n" , i, i);
+                        ok(lpFailureActions1->lpsaActions[i].Type == lpFailureActions2->lpsaActions[i].Type , "lpFailureActions1->lpsaActions[%lu].Type  != lpFailureActions2->lpsaActions[%lu].Type\n" , i, i);
                         ok(lpFailureActions1->lpsaActions[i].Delay == lpFailureActions2->lpsaActions[i].Delay, "lpFailureActions1->lpsaActions[%lu].Delay != lpFailureActions2->lpsaActions[%lu].Delay\n", i, i);
                     }
                 }
             }
 
-            /* TODO: retrieve the strings if they are in MUI format */
 
-            /* Compare RebootMsg */
+
+
             if (lpFailureActions1->lpRebootMsg && lpRebootMessage)
                 iRet = wcscmp(lpFailureActions1->lpRebootMsg, lpRebootMessage);
             else
@@ -214,7 +214,7 @@ __attribute__((used)) static int QueryConfig2W(SC_HANDLE hService, LPCWSTR servi
 
             ok(iRet == 0, "Retrieved reboot messages are different !\n");
 
-            /* Compare Command */
+
             if (lpFailureActions1->lpCommand && lpFailureCommand)
                 iRet = wcscmp(lpFailureActions1->lpCommand, lpFailureCommand);
             else
@@ -223,7 +223,7 @@ __attribute__((used)) static int QueryConfig2W(SC_HANDLE hService, LPCWSTR servi
             ok(iRet == 0, "Retrieved commands are different !\n");
 
 
-            /* Memory cleanup */
+
             if (lpRebootMessage)
                 HeapFree(GetProcessHeap(), 0, lpRebootMessage);
 

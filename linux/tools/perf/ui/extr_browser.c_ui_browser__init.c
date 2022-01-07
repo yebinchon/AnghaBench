@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ui_browser_colorset {int /*<<< orphan*/  bg; int /*<<< orphan*/  fg; scalar_t__ name; int /*<<< orphan*/  colorset; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  perf_config (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sltt_set_color (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ui_browser__color_config ; 
- struct ui_browser_colorset* ui_browser__colorsets ; 
+
+
+
+struct ui_browser_colorset {int bg; int fg; scalar_t__ name; int colorset; } ;
+
+
+ int perf_config (int ,int *) ;
+ int sltt_set_color (int ,scalar_t__,int ,int ) ;
+ int ui_browser__color_config ;
+ struct ui_browser_colorset* ui_browser__colorsets ;
 
 void ui_browser__init(void)
 {
-	int i = 0;
+ int i = 0;
 
-	perf_config(ui_browser__color_config, NULL);
+ perf_config(ui_browser__color_config, ((void*)0));
 
-	while (ui_browser__colorsets[i].name) {
-		struct ui_browser_colorset *c = &ui_browser__colorsets[i++];
-		sltt_set_color(c->colorset, c->name, c->fg, c->bg);
-	}
+ while (ui_browser__colorsets[i].name) {
+  struct ui_browser_colorset *c = &ui_browser__colorsets[i++];
+  sltt_set_color(c->colorset, c->name, c->fg, c->bg);
+ }
 }

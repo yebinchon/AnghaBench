@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_3__ {int /*<<< orphan*/  base; } ;
-typedef  TYPE_1__ repository_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- char* svn_dirent_internal_style (char const*,int /*<<< orphan*/ *) ; 
- char* svn_dirent_join (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_path_is_repos_relative_url (char const*) ; 
- scalar_t__ svn_path_is_url (char const*) ; 
- int /*<<< orphan*/  svn_path_resolve_repos_relative_url (char const**,char const*,char const*,int /*<<< orphan*/ *) ; 
- char* svn_uri_canonicalize (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_uri_get_file_url_from_dirent (char const**,char const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+struct TYPE_3__ {int base; } ;
+typedef TYPE_1__ repository_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ char* svn_dirent_internal_style (char const*,int *) ;
+ char* svn_dirent_join (int ,char const*,int *) ;
+ scalar_t__ svn_path_is_repos_relative_url (char const*) ;
+ scalar_t__ svn_path_is_url (char const*) ;
+ int svn_path_resolve_repos_relative_url (char const**,char const*,char const*,int *) ;
+ char* svn_uri_canonicalize (char const*,int *) ;
+ int svn_uri_get_file_url_from_dirent (char const**,char const*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 canonicalize_access_file(const char **access_file, repository_t *repository,

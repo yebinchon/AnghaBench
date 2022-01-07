@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (char const*) ; 
- scalar_t__ env_match (char*,char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
+ int assert (char const*) ;
+ scalar_t__ env_match (char*,char const*) ;
+ int free (char*) ;
 
 char **strv_env_unset(char **l, const char *p) {
 
         char **f, **t;
 
         if (!l)
-                return NULL;
+                return ((void*)0);
 
         assert(p);
 
-        /* Drops every occurrence of the env var setting p in the
-         * string list. Edits in-place. */
+
+
 
         for (f = t = l; *f; f++) {
 
@@ -38,6 +30,6 @@ char **strv_env_unset(char **l, const char *p) {
                 *(t++) = *f;
         }
 
-        *t = NULL;
+        *t = ((void*)0);
         return l;
 }

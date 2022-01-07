@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  val_args ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  size_t uint16_t ;
-typedef  int /*<<< orphan*/  jerry_value_t ;
-typedef  int /*<<< orphan*/  jerry_char_t ;
 
-/* Variables and functions */
- char* fn_sys_loop_name ; 
- int /*<<< orphan*/  jerry_call_function (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  jerry_create_number (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_create_string (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  jerry_get_global_object () ; 
- int /*<<< orphan*/  jerry_get_property (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- scalar_t__ jerry_value_is_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_value_is_function (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
+
+
+
+typedef int val_args ;
+typedef int uint32_t ;
+typedef size_t uint16_t ;
+typedef int jerry_value_t ;
+typedef int jerry_char_t ;
+
+
+ char* fn_sys_loop_name ;
+ int jerry_call_function (int ,int ,int *,size_t) ;
+ int jerry_create_number (int ) ;
+ int jerry_create_string (int const*) ;
+ int jerry_get_global_object () ;
+ int jerry_get_property (int ,int ) ;
+ int jerry_release_value (int ) ;
+ scalar_t__ jerry_value_is_error (int ) ;
+ int jerry_value_is_function (int ) ;
+ int printf (char*,char*) ;
 
 int js_loop (uint32_t ticknow)
 {

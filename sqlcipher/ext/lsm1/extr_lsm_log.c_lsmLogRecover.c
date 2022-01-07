@@ -1,73 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_36__   TYPE_7__ ;
-typedef  struct TYPE_35__   TYPE_6__ ;
-typedef  struct TYPE_34__   TYPE_5__ ;
-typedef  struct TYPE_33__   TYPE_4__ ;
-typedef  struct TYPE_32__   TYPE_3__ ;
-typedef  struct TYPE_31__   TYPE_2__ ;
-typedef  struct TYPE_30__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-struct TYPE_36__ {int /*<<< orphan*/  cksum1; int /*<<< orphan*/  cksum0; TYPE_1__* aRegion; } ;
+
+
+typedef struct TYPE_36__ TYPE_7__ ;
+typedef struct TYPE_35__ TYPE_6__ ;
+typedef struct TYPE_34__ TYPE_5__ ;
+typedef struct TYPE_33__ TYPE_4__ ;
+typedef struct TYPE_32__ TYPE_3__ ;
+typedef struct TYPE_31__ TYPE_2__ ;
+typedef struct TYPE_30__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct TYPE_36__ {int cksum1; int cksum0; TYPE_1__* aRegion; } ;
 struct TYPE_31__ {TYPE_7__ log; } ;
-struct TYPE_33__ {scalar_t__ bRoTrans; int /*<<< orphan*/  pEnv; TYPE_3__* pShmhdr; TYPE_2__ treehdr; } ;
-typedef  TYPE_4__ lsm_db ;
+struct TYPE_33__ {scalar_t__ bRoTrans; int pEnv; TYPE_3__* pShmhdr; TYPE_2__ treehdr; } ;
+typedef TYPE_4__ lsm_db ;
 struct TYPE_34__ {int n; scalar_t__ z; } ;
-struct TYPE_35__ {int iOff; int iBuf; TYPE_5__ buf; int /*<<< orphan*/  cksum1; int /*<<< orphan*/  cksum0; } ;
-struct TYPE_32__ {int /*<<< orphan*/  aSnap2; } ;
+struct TYPE_35__ {int iOff; int iBuf; TYPE_5__ buf; int cksum1; int cksum0; } ;
+struct TYPE_32__ {int aSnap2; } ;
 struct TYPE_30__ {scalar_t__ iStart; int iEnd; } ;
-typedef  TYPE_5__ LsmString ;
-typedef  TYPE_6__ LogReader ;
-typedef  TYPE_7__ DbLog ;
-
-/* Variables and functions */
-#define  LSM_LOG_COMMIT 137 
-#define  LSM_LOG_DELETE 136 
-#define  LSM_LOG_DELETE_CKSUM 135 
-#define  LSM_LOG_DRANGE 134 
-#define  LSM_LOG_DRANGE_CKSUM 133 
-#define  LSM_LOG_JUMP 132 
-#define  LSM_LOG_PAD1 131 
-#define  LSM_LOG_PAD2 130 
-#define  LSM_LOG_WRITE 129 
-#define  LSM_LOG_WRITE_CKSUM 128 
- int LSM_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  logReaderBlob (TYPE_6__*,TYPE_5__*,int,int**,int*) ; 
- int /*<<< orphan*/  logReaderByte (TYPE_6__*,int*,int*) ; 
- int /*<<< orphan*/  logReaderCksum (TYPE_6__*,TYPE_5__*,int*,int*) ; 
- int /*<<< orphan*/  logReaderInit (TYPE_4__*,TYPE_7__*,int,TYPE_6__*) ; 
- int /*<<< orphan*/  logReaderVarint (TYPE_6__*,TYPE_5__*,int*,int*) ; 
- int logRequireCksum (TYPE_6__*,int) ; 
- int /*<<< orphan*/  lsmCheckpointLogoffset (int /*<<< orphan*/ ,TYPE_7__*) ; 
- int /*<<< orphan*/  lsmCheckpointZeroLogoffset (TYPE_4__*) ; 
- int lsmFinishRecovery (TYPE_4__*) ; 
- int /*<<< orphan*/  lsmFsCloseLog (TYPE_4__*) ; 
- int lsmFsOpenLog (TYPE_4__*,int*) ; 
- int /*<<< orphan*/  lsmStringClear (TYPE_5__*) ; 
- int /*<<< orphan*/  lsmStringInit (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int lsmTreeDelete (TYPE_4__*,int*,int,int*,int) ; 
- int lsmTreeInit (TYPE_4__*) ; 
- int lsmTreeInsert (TYPE_4__*,int*,int,int*,int) ; 
+typedef TYPE_5__ LsmString ;
+typedef TYPE_6__ LogReader ;
+typedef TYPE_7__ DbLog ;
+ int LSM_OK ;
+ int assert (int) ;
+ int logReaderBlob (TYPE_6__*,TYPE_5__*,int,int**,int*) ;
+ int logReaderByte (TYPE_6__*,int*,int*) ;
+ int logReaderCksum (TYPE_6__*,TYPE_5__*,int*,int*) ;
+ int logReaderInit (TYPE_4__*,TYPE_7__*,int,TYPE_6__*) ;
+ int logReaderVarint (TYPE_6__*,TYPE_5__*,int*,int*) ;
+ int logRequireCksum (TYPE_6__*,int) ;
+ int lsmCheckpointLogoffset (int ,TYPE_7__*) ;
+ int lsmCheckpointZeroLogoffset (TYPE_4__*) ;
+ int lsmFinishRecovery (TYPE_4__*) ;
+ int lsmFsCloseLog (TYPE_4__*) ;
+ int lsmFsOpenLog (TYPE_4__*,int*) ;
+ int lsmStringClear (TYPE_5__*) ;
+ int lsmStringInit (TYPE_5__*,int ) ;
+ int lsmTreeDelete (TYPE_4__*,int*,int,int*,int) ;
+ int lsmTreeInit (TYPE_4__*) ;
+ int lsmTreeInsert (TYPE_4__*,int*,int,int*,int) ;
 
 int lsmLogRecover(lsm_db *pDb){
-  LsmString buf1;                 /* Key buffer */
-  LsmString buf2;                 /* Value buffer */
-  LogReader reader;               /* Log reader object */
-  int rc = LSM_OK;                /* Return code */
-  int nCommit = 0;                /* Number of transactions to recover */
+  LsmString buf1;
+  LsmString buf2;
+  LogReader reader;
+  int rc = LSM_OK;
+  int nCommit = 0;
   int iPass;
-  int nJump = 0;                  /* Number of LSM_LOG_JUMP records in pass 0 */
+  int nJump = 0;
   DbLog *pLog;
   int bOpen;
 
@@ -84,10 +72,10 @@ int lsmLogRecover(lsm_db *pDb){
   lsmStringInit(&buf1, pDb->pEnv);
   lsmStringInit(&buf2, pDb->pEnv);
 
-  /* The outer for() loop runs at most twice. The first iteration is to 
-  ** count the number of committed transactions in the log. The second 
-  ** iterates through those transactions and updates the in-memory tree 
-  ** structure with their contents.  */
+
+
+
+
   if( bOpen ){
     for(iPass=0; iPass<2 && rc==LSM_OK; iPass++){
       int bEof = 0;
@@ -97,27 +85,27 @@ int lsmLogRecover(lsm_db *pDb){
         logReaderByte(&reader, &eType, &rc);
 
         switch( eType ){
-          case LSM_LOG_PAD1:
+          case 131:
             break;
 
-          case LSM_LOG_PAD2: {
+          case 130: {
             int nPad;
             logReaderVarint(&reader, &buf1, &nPad, &rc);
             logReaderBlob(&reader, &buf1, nPad, 0, &rc);
             break;
           }
 
-          case LSM_LOG_DRANGE:
-          case LSM_LOG_DRANGE_CKSUM:
-          case LSM_LOG_WRITE:
-          case LSM_LOG_WRITE_CKSUM: {
+          case 134:
+          case 133:
+          case 129:
+          case 128: {
             int nKey;
             int nVal;
             u8 *aVal;
             logReaderVarint(&reader, &buf1, &nKey, &rc);
             logReaderVarint(&reader, &buf2, &nVal, &rc);
 
-            if( eType==LSM_LOG_WRITE_CKSUM || eType==LSM_LOG_DRANGE_CKSUM ){
+            if( eType==128 || eType==133 ){
               logReaderCksum(&reader, &buf1, &bEof, &rc);
             }else{
               bEof = logRequireCksum(&reader, nKey+nVal);
@@ -126,8 +114,8 @@ int lsmLogRecover(lsm_db *pDb){
 
             logReaderBlob(&reader, &buf1, nKey, 0, &rc);
             logReaderBlob(&reader, &buf2, nVal, &aVal, &rc);
-            if( iPass==1 && rc==LSM_OK ){ 
-              if( eType==LSM_LOG_WRITE || eType==LSM_LOG_WRITE_CKSUM ){
+            if( iPass==1 && rc==LSM_OK ){
+              if( eType==129 || eType==128 ){
                 rc = lsmTreeInsert(pDb, (u8 *)buf1.z, nKey, aVal, nVal);
               }else{
                 rc = lsmTreeDelete(pDb, (u8 *)buf1.z, nKey, aVal, nVal);
@@ -136,12 +124,12 @@ int lsmLogRecover(lsm_db *pDb){
             break;
           }
 
-          case LSM_LOG_DELETE:
-          case LSM_LOG_DELETE_CKSUM: {
+          case 136:
+          case 135: {
             int nKey; u8 *aKey;
             logReaderVarint(&reader, &buf1, &nKey, &rc);
 
-            if( eType==LSM_LOG_DELETE_CKSUM ){
+            if( eType==135 ){
               logReaderCksum(&reader, &buf1, &bEof, &rc);
             }else{
               bEof = logRequireCksum(&reader, nKey);
@@ -149,13 +137,13 @@ int lsmLogRecover(lsm_db *pDb){
             if( bEof ) break;
 
             logReaderBlob(&reader, &buf1, nKey, &aKey, &rc);
-            if( iPass==1 && rc==LSM_OK ){ 
-              rc = lsmTreeInsert(pDb, aKey, nKey, NULL, -1);
+            if( iPass==1 && rc==LSM_OK ){
+              rc = lsmTreeInsert(pDb, aKey, nKey, ((void*)0), -1);
             }
             break;
           }
 
-          case LSM_LOG_COMMIT:
+          case 137:
             logReaderCksum(&reader, &buf1, &bEof, &rc);
             if( bEof==0 ){
               nCommit++;
@@ -164,7 +152,7 @@ int lsmLogRecover(lsm_db *pDb){
             }
             break;
 
-          case LSM_LOG_JUMP: {
+          case 132: {
             int iOff = 0;
             logReaderVarint(&reader, &buf1, &iOff, &rc);
             if( rc==LSM_OK ){
@@ -191,7 +179,7 @@ int lsmLogRecover(lsm_db *pDb){
           }
 
           default:
-            /* Including LSM_LOG_EOF */
+
             bEof = 1;
             break;
         }
@@ -213,7 +201,7 @@ int lsmLogRecover(lsm_db *pDb){
     }
   }
 
-  /* Initialize DbLog object */
+
   if( rc==LSM_OK ){
     pLog->aRegion[2].iEnd = reader.iOff - reader.buf.n + reader.iBuf;
     pLog->cksum0 = reader.cksum0;

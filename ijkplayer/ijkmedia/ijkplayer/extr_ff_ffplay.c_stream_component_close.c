@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int audio_stream; int video_stream; int subtitle_stream; int /*<<< orphan*/ * subtitle_st; int /*<<< orphan*/ * video_st; int /*<<< orphan*/ * audio_st; int /*<<< orphan*/  subdec; int /*<<< orphan*/  subpq; int /*<<< orphan*/  viddec; int /*<<< orphan*/  pictq; int /*<<< orphan*/  rdft_bits; int /*<<< orphan*/ * rdft; int /*<<< orphan*/  rdft_data; int /*<<< orphan*/ * audio_buf; int /*<<< orphan*/  audio_buf1_size; int /*<<< orphan*/  audio_buf1; int /*<<< orphan*/  swr_ctx; int /*<<< orphan*/  auddec; int /*<<< orphan*/  sampq; TYPE_4__* ic; } ;
-typedef  TYPE_2__ VideoState ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int audio_stream; int video_stream; int subtitle_stream; int * subtitle_st; int * video_st; int * audio_st; int subdec; int subpq; int viddec; int pictq; int rdft_bits; int * rdft; int rdft_data; int * audio_buf; int audio_buf1_size; int audio_buf1; int swr_ctx; int auddec; int sampq; TYPE_4__* ic; } ;
+typedef TYPE_2__ VideoState ;
 struct TYPE_11__ {int codec_type; } ;
 struct TYPE_10__ {int nb_streams; TYPE_1__** streams; } ;
-struct TYPE_9__ {int /*<<< orphan*/  aout; TYPE_2__* is; } ;
-struct TYPE_7__ {int /*<<< orphan*/  discard; TYPE_5__* codecpar; } ;
-typedef  TYPE_3__ FFPlayer ;
-typedef  TYPE_4__ AVFormatContext ;
-typedef  TYPE_5__ AVCodecParameters ;
+struct TYPE_9__ {int aout; TYPE_2__* is; } ;
+struct TYPE_7__ {int discard; TYPE_5__* codecpar; } ;
+typedef TYPE_3__ FFPlayer ;
+typedef TYPE_4__ AVFormatContext ;
+typedef TYPE_5__ AVCodecParameters ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVDISCARD_ALL ; 
-#define  AVMEDIA_TYPE_AUDIO 130 
-#define  AVMEDIA_TYPE_SUBTITLE 129 
-#define  AVMEDIA_TYPE_VIDEO 128 
- int /*<<< orphan*/  SDL_AoutCloseAudio (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_rdft_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  decoder_abort (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  decoder_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  swr_free (int /*<<< orphan*/ *) ; 
+
+ int AVDISCARD_ALL ;
+
+
+
+ int SDL_AoutCloseAudio (int ) ;
+ int av_freep (int *) ;
+ int av_rdft_end (int *) ;
+ int decoder_abort (int *,int *) ;
+ int decoder_destroy (int *) ;
+ int swr_free (int *) ;
 
 __attribute__((used)) static void stream_component_close(FFPlayer *ffp, int stream_index)
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static void stream_component_close(FFPlayer *ffp, int stre
     codecpar = ic->streams[stream_index]->codecpar;
 
     switch (codecpar->codec_type) {
-    case AVMEDIA_TYPE_AUDIO:
+    case 130:
         decoder_abort(&is->auddec, &is->sampq);
         SDL_AoutCloseAudio(ffp->aout);
 
@@ -56,22 +56,13 @@ __attribute__((used)) static void stream_component_close(FFPlayer *ffp, int stre
         swr_free(&is->swr_ctx);
         av_freep(&is->audio_buf1);
         is->audio_buf1_size = 0;
-        is->audio_buf = NULL;
-
-#ifdef FFP_MERGE
-        if (is->rdft) {
-            av_rdft_end(is->rdft);
-            av_freep(&is->rdft_data);
-            is->rdft = NULL;
-            is->rdft_bits = 0;
-        }
-#endif
+        is->audio_buf = ((void*)0);
         break;
-    case AVMEDIA_TYPE_VIDEO:
+    case 128:
         decoder_abort(&is->viddec, &is->pictq);
         decoder_destroy(&is->viddec);
         break;
-    case AVMEDIA_TYPE_SUBTITLE:
+    case 129:
         decoder_abort(&is->subdec, &is->subpq);
         decoder_destroy(&is->subdec);
         break;
@@ -81,16 +72,16 @@ __attribute__((used)) static void stream_component_close(FFPlayer *ffp, int stre
 
     ic->streams[stream_index]->discard = AVDISCARD_ALL;
     switch (codecpar->codec_type) {
-    case AVMEDIA_TYPE_AUDIO:
-        is->audio_st = NULL;
+    case 130:
+        is->audio_st = ((void*)0);
         is->audio_stream = -1;
         break;
-    case AVMEDIA_TYPE_VIDEO:
-        is->video_st = NULL;
+    case 128:
+        is->video_st = ((void*)0);
         is->video_stream = -1;
         break;
-    case AVMEDIA_TYPE_SUBTITLE:
-        is->subtitle_st = NULL;
+    case 129:
+        is->subtitle_st = ((void*)0);
         is->subtitle_stream = -1;
         break;
     default:

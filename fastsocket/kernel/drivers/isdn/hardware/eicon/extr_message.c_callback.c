@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_31__   TYPE_8__ ;
-typedef  struct TYPE_30__   TYPE_7__ ;
-typedef  struct TYPE_29__   TYPE_6__ ;
-typedef  struct TYPE_28__   TYPE_5__ ;
-typedef  struct TYPE_27__   TYPE_4__ ;
-typedef  struct TYPE_26__   TYPE_3__ ;
-typedef  struct TYPE_25__   TYPE_2__ ;
-typedef  struct TYPE_24__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int word ;
-typedef  size_t byte ;
+
+
+typedef struct TYPE_31__ TYPE_8__ ;
+typedef struct TYPE_30__ TYPE_7__ ;
+typedef struct TYPE_29__ TYPE_6__ ;
+typedef struct TYPE_28__ TYPE_5__ ;
+typedef struct TYPE_27__ TYPE_4__ ;
+typedef struct TYPE_26__ TYPE_3__ ;
+typedef struct TYPE_25__ TYPE_2__ ;
+typedef struct TYPE_24__ TYPE_1__ ;
+
+
+typedef int word ;
+typedef size_t byte ;
 struct TYPE_27__ {int length; size_t command; } ;
 struct TYPE_25__ {scalar_t__ Data; } ;
 struct TYPE_26__ {TYPE_2__ data_b3_req; } ;
@@ -27,50 +27,50 @@ struct TYPE_31__ {TYPE_4__ header; TYPE_3__ info; } ;
 struct TYPE_30__ {scalar_t__* FlowControlIdTable; int* ch_flow_control; scalar_t__* ch_flow_plci; scalar_t__* FlowControlSkipTable; TYPE_5__* plci; } ;
 struct TYPE_29__ {int* user; scalar_t__ Id; size_t Req; size_t Rc; int Ind; int complete; size_t RcCh; size_t ReqCh; size_t IndCh; int RNR; } ;
 struct TYPE_24__ {int XNum; } ;
-struct TYPE_28__ {scalar_t__ nl_remove_id; scalar_t__ rx_dma_descriptor; scalar_t__ Id; size_t nl_global_req; int data_sent; size_t sig_global_req; int msg_in_write_pos; int msg_in_read_pos; int msg_in_wrap_pos; int li_notify_update; scalar_t__ msg_in_queue; scalar_t__ internal_command; int /*<<< orphan*/  req_in; scalar_t__ sig_req; scalar_t__ sig_remove_id; TYPE_1__ NL; scalar_t__ nl_req; } ;
-typedef  TYPE_5__ PLCI ;
-typedef  TYPE_6__ ENTITY ;
-typedef  TYPE_7__ DIVA_CAPI_ADAPTER ;
-typedef  TYPE_8__ CAPI_MSG ;
-typedef  int /*<<< orphan*/  APPL ;
+struct TYPE_28__ {scalar_t__ nl_remove_id; scalar_t__ rx_dma_descriptor; scalar_t__ Id; size_t nl_global_req; int data_sent; size_t sig_global_req; int msg_in_write_pos; int msg_in_read_pos; int msg_in_wrap_pos; int li_notify_update; scalar_t__ msg_in_queue; scalar_t__ internal_command; int req_in; scalar_t__ sig_req; scalar_t__ sig_remove_id; TYPE_1__ NL; scalar_t__ nl_req; } ;
+typedef TYPE_5__ PLCI ;
+typedef TYPE_6__ ENTITY ;
+typedef TYPE_7__ DIVA_CAPI_ADAPTER ;
+typedef TYPE_8__ CAPI_MSG ;
+typedef int APPL ;
 
-/* Variables and functions */
- size_t ASSIGN_OK ; 
- int DIVA_CAPI_SUPPORTS_NO_CANCEL (TYPE_7__*) ; 
- void* MSG_IN_OVERHEAD ; 
- void* MSG_IN_QUEUE_SIZE ; 
- size_t N_DISC ; 
- size_t N_DISC_ACK ; 
- int N_OK_FC_PENDING ; 
- int N_RX_FLOW_CONTROL_MASK ; 
- size_t N_XON ; 
- size_t OK ; 
- size_t OK_FC ; 
- size_t REMOVE ; 
- int /*<<< orphan*/  TransmitBufferFree (int /*<<< orphan*/ *,size_t*) ; 
- size_t _DATA_B3_R ; 
- TYPE_7__* adapter ; 
- int api_put (int /*<<< orphan*/ *,TYPE_8__*) ; 
- int /*<<< orphan*/  channel_flow_control_remove (TYPE_5__*) ; 
- int /*<<< orphan*/  channel_x_on (TYPE_5__*,size_t) ; 
- int /*<<< orphan*/  channel_xmit_xon (TYPE_5__*) ; 
- int /*<<< orphan*/  control_rc (TYPE_5__*,size_t,size_t,size_t,size_t,int) ; 
- int /*<<< orphan*/  data_rc (TYPE_5__*,size_t) ; 
- int /*<<< orphan*/  dbug (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  diva_free_dma_descriptor (TYPE_5__*,scalar_t__) ; 
- int /*<<< orphan*/  dprintf (char*,...) ; 
- int /*<<< orphan*/  mixer_notify_update (TYPE_5__*,int) ; 
- int /*<<< orphan*/  nl_ind (TYPE_5__*) ; 
- int /*<<< orphan*/  send_data (TYPE_5__*) ; 
- int /*<<< orphan*/  send_req (TYPE_5__*) ; 
- int /*<<< orphan*/  sig_ind (TYPE_5__*) ; 
 
-void   callback(ENTITY   * e)
+ size_t ASSIGN_OK ;
+ int DIVA_CAPI_SUPPORTS_NO_CANCEL (TYPE_7__*) ;
+ void* MSG_IN_OVERHEAD ;
+ void* MSG_IN_QUEUE_SIZE ;
+ size_t N_DISC ;
+ size_t N_DISC_ACK ;
+ int N_OK_FC_PENDING ;
+ int N_RX_FLOW_CONTROL_MASK ;
+ size_t N_XON ;
+ size_t OK ;
+ size_t OK_FC ;
+ size_t REMOVE ;
+ int TransmitBufferFree (int *,size_t*) ;
+ size_t _DATA_B3_R ;
+ TYPE_7__* adapter ;
+ int api_put (int *,TYPE_8__*) ;
+ int channel_flow_control_remove (TYPE_5__*) ;
+ int channel_x_on (TYPE_5__*,size_t) ;
+ int channel_xmit_xon (TYPE_5__*) ;
+ int control_rc (TYPE_5__*,size_t,size_t,size_t,size_t,int) ;
+ int data_rc (TYPE_5__*,size_t) ;
+ int dbug (int,int ) ;
+ int diva_free_dma_descriptor (TYPE_5__*,scalar_t__) ;
+ int dprintf (char*,...) ;
+ int mixer_notify_update (TYPE_5__*,int) ;
+ int nl_ind (TYPE_5__*) ;
+ int send_data (TYPE_5__*) ;
+ int send_req (TYPE_5__*) ;
+ int sig_ind (TYPE_5__*) ;
+
+void callback(ENTITY * e)
 {
-  DIVA_CAPI_ADAPTER   * a;
-  APPL   * appl;
-  PLCI   * plci;
-  CAPI_MSG   *m;
+  DIVA_CAPI_ADAPTER * a;
+  APPL * appl;
+  PLCI * plci;
+  CAPI_MSG *m;
   word i, j;
   byte rc;
   byte ch;
@@ -85,11 +85,11 @@ void   callback(ENTITY   * e)
   plci = &(a->plci[e->user[1]]);
   no_cancel_rc = DIVA_CAPI_SUPPORTS_NO_CANCEL(a);
 
-  /*
-     If new protocol code and new XDI is used then CAPI should work
-     fully in accordance with IDI cpec an look on callback field instead
-     of Rc field for return codes.
-   */
+
+
+
+
+
   if (((e->complete == 0xff) && no_cancel_rc) ||
       (e->Rc && !no_cancel_rc)) {
     rc = e->Rc;
@@ -99,11 +99,11 @@ void   callback(ENTITY   * e)
 
     if (e->user[0] & 0x8000)
     {
-      /*
-         If REMOVE request was sent then we have to wait until
-         return code with Id set to zero arrives.
-         All other return codes should be ignored.
-         */
+
+
+
+
+
       if (req == REMOVE)
       {
         if (e->Id)
@@ -134,13 +134,13 @@ void   callback(ENTITY   * e)
       }
       else
       {
-        /*
-          Cancel return codes self, if feature was requested
-          */
+
+
+
         if (no_cancel_rc && (a->FlowControlIdTable[ch] == e->Id) && e->Id) {
           a->FlowControlIdTable[ch] = 0;
           if ((rc == OK) && a->FlowControlSkipTable[ch]) {
-            dbug(3,dprintf ("XDI CAPI: RC cancelled Id:0x02, Ch:%02x",                              e->Id, ch));
+            dbug(3,dprintf ("XDI CAPI: RC cancelled Id:0x02, Ch:%02x", e->Id, ch));
             return;
           }
         }
@@ -155,14 +155,14 @@ void   callback(ENTITY   * e)
           plci->nl_req = 0;
       }
       if (plci->nl_req)
-        control_rc (plci, 0, rc, ch, 0, true);
+        control_rc (plci, 0, rc, ch, 0, 1);
       else
       {
         if (req == N_XON)
         {
           channel_x_on (plci, ch);
           if (plci->internal_command)
-            control_rc (plci, req, rc, ch, 0, true);
+            control_rc (plci, req, rc, ch, 0, 1);
         }
         else
         {
@@ -178,32 +178,32 @@ void   callback(ENTITY   * e)
               }
             }
             channel_xmit_xon (plci);
-            control_rc (plci, 0, rc, ch, global_req, true);
+            control_rc (plci, 0, rc, ch, global_req, 1);
           }
           else if (plci->data_sent)
           {
             channel_xmit_xon (plci);
-            plci->data_sent = false;
+            plci->data_sent = 0;
             plci->NL.XNum = 1;
             data_rc (plci, ch);
             if (plci->internal_command)
-              control_rc (plci, req, rc, ch, 0, true);
+              control_rc (plci, req, rc, ch, 0, 1);
           }
           else
           {
             channel_xmit_xon (plci);
-            control_rc (plci, req, rc, ch, 0, true);
+            control_rc (plci, req, rc, ch, 0, 1);
           }
         }
       }
     }
     else
     {
-      /*
-         If REMOVE request was sent then we have to wait until
-         return code with Id set to zero arrives.
-         All other return codes should be ignored.
-         */
+
+
+
+
+
       if (req == REMOVE)
       {
         if (e->Id)
@@ -221,19 +221,19 @@ void   callback(ENTITY   * e)
         if (rc != ASSIGN_OK)
           e->Id = 0;
         channel_xmit_xon (plci);
-        control_rc (plci, 0, rc, ch, global_req, false);
+        control_rc (plci, 0, rc, ch, global_req, 0);
       }
       else
       {
         channel_xmit_xon (plci);
-        control_rc (plci, req, rc, ch, 0, false);
+        control_rc (plci, req, rc, ch, 0, 0);
       }
     }
-    /*
-      Again: in accordance with IDI spec Rc and Ind can't be delivered in the
-      same callback. Also if new XDI and protocol code used then jump
-      direct to finish.
-      */
+
+
+
+
+
     if (no_cancel_rc) {
       channel_xmit_xon(plci);
       goto capi_callback_suffix;
@@ -274,10 +274,10 @@ capi_callback_suffix:
   {
     j = (plci->msg_in_read_pos == plci->msg_in_wrap_pos) ? 0 : plci->msg_in_read_pos;
 
-    i = (((CAPI_MSG   *)(&((byte   *)(plci->msg_in_queue))[j]))->header.length + 3) & 0xfffc;
+    i = (((CAPI_MSG *)(&((byte *)(plci->msg_in_queue))[j]))->header.length + 3) & 0xfffc;
 
-    m = (CAPI_MSG   *)(&((byte   *)(plci->msg_in_queue))[j]);
-    appl = *((APPL   *   *)(&((byte   *)(plci->msg_in_queue))[j+i]));
+    m = (CAPI_MSG *)(&((byte *)(plci->msg_in_queue))[j]);
+    appl = *((APPL * *)(&((byte *)(plci->msg_in_queue))[j+i]));
     dbug(1,dprintf("dequeue msg(0x%04x) - write=%d read=%d wrap=%d",
       m->header.command, plci->msg_in_write_pos, plci->msg_in_read_pos, plci->msg_in_wrap_pos));
     if (plci->msg_in_read_pos == plci->msg_in_wrap_pos)
@@ -312,8 +312,8 @@ capi_callback_suffix:
 
     if (plci->li_notify_update)
     {
-      plci->li_notify_update = false;
-      mixer_notify_update (plci, false);
+      plci->li_notify_update = 0;
+      mixer_notify_update (plci, 0);
     }
 
   }

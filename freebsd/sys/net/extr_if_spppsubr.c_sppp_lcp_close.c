@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sppp {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lcp ; 
- int /*<<< orphan*/  sppp_close_event (int /*<<< orphan*/ *,struct sppp*) ; 
+
+ int lcp ;
+ int sppp_close_event (int *,struct sppp*) ;
 
 __attribute__((used)) static void
 sppp_lcp_close(struct sppp *sp)
 {
-	sppp_close_event(&lcp, sp);
+ sppp_close_event(&lcp, sp);
 }

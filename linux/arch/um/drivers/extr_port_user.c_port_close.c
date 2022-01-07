@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct port_chan {int /*<<< orphan*/  kernel_data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  os_close_file (int) ; 
- int /*<<< orphan*/  port_remove_dev (int /*<<< orphan*/ ) ; 
+
+
+
+struct port_chan {int kernel_data; } ;
+
+
+ int os_close_file (int) ;
+ int port_remove_dev (int ) ;
 
 __attribute__((used)) static void port_close(int fd, void *d)
 {
-	struct port_chan *data = d;
+ struct port_chan *data = d;
 
-	port_remove_dev(data->kernel_data);
-	os_close_file(fd);
+ port_remove_dev(data->kernel_data);
+ os_close_file(fd);
 }

@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * TupleDesc ;
-struct TYPE_2__ {scalar_t__ prorettype; int /*<<< orphan*/  prokind; } ;
-typedef  int /*<<< orphan*/  HeapTuple ;
-typedef  TYPE_1__* Form_pg_proc ;
-typedef  int /*<<< orphan*/  Datum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Anum_pg_proc_proallargtypes ; 
- int /*<<< orphan*/  Anum_pg_proc_proargmodes ; 
- int /*<<< orphan*/  Anum_pg_proc_proargnames ; 
- int /*<<< orphan*/  Assert (int) ; 
- int /*<<< orphan*/  GETSTRUCT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PROCOID ; 
- int /*<<< orphan*/  PointerGetDatum (int /*<<< orphan*/ *) ; 
- scalar_t__ RECORDOID ; 
- int /*<<< orphan*/  SysCacheGetAttr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/ * build_function_result_tupdesc_d (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ heap_attisnull (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int * TupleDesc ;
+struct TYPE_2__ {scalar_t__ prorettype; int prokind; } ;
+typedef int HeapTuple ;
+typedef TYPE_1__* Form_pg_proc ;
+typedef int Datum ;
+
+
+ int Anum_pg_proc_proallargtypes ;
+ int Anum_pg_proc_proargmodes ;
+ int Anum_pg_proc_proargnames ;
+ int Assert (int) ;
+ int GETSTRUCT (int ) ;
+ int PROCOID ;
+ int PointerGetDatum (int *) ;
+ scalar_t__ RECORDOID ;
+ int SysCacheGetAttr (int ,int ,int ,int*) ;
+ int * build_function_result_tupdesc_d (int ,int ,int ,int ) ;
+ scalar_t__ heap_attisnull (int ,int ,int *) ;
 
 TupleDesc
 build_function_result_tupdesc_t(HeapTuple procTuple)
 {
-	Form_pg_proc procform = (Form_pg_proc) GETSTRUCT(procTuple);
-	Datum		proallargtypes;
-	Datum		proargmodes;
-	Datum		proargnames;
-	bool		isnull;
+ Form_pg_proc procform = (Form_pg_proc) GETSTRUCT(procTuple);
+ Datum proallargtypes;
+ Datum proargmodes;
+ Datum proargnames;
+ bool isnull;
 
-	/* Return NULL if the function isn't declared to return RECORD */
-	if (procform->prorettype != RECORDOID)
-		return NULL;
 
-	/* If there are no OUT parameters, return NULL */
-	if (heap_attisnull(procTuple, Anum_pg_proc_proallargtypes, NULL) ||
-		heap_attisnull(procTuple, Anum_pg_proc_proargmodes, NULL))
-		return NULL;
+ if (procform->prorettype != RECORDOID)
+  return ((void*)0);
 
-	/* Get the data out of the tuple */
-	proallargtypes = SysCacheGetAttr(PROCOID, procTuple,
-									 Anum_pg_proc_proallargtypes,
-									 &isnull);
-	Assert(!isnull);
-	proargmodes = SysCacheGetAttr(PROCOID, procTuple,
-								  Anum_pg_proc_proargmodes,
-								  &isnull);
-	Assert(!isnull);
-	proargnames = SysCacheGetAttr(PROCOID, procTuple,
-								  Anum_pg_proc_proargnames,
-								  &isnull);
-	if (isnull)
-		proargnames = PointerGetDatum(NULL);	/* just to be sure */
 
-	return build_function_result_tupdesc_d(procform->prokind,
-										   proallargtypes,
-										   proargmodes,
-										   proargnames);
+ if (heap_attisnull(procTuple, Anum_pg_proc_proallargtypes, ((void*)0)) ||
+  heap_attisnull(procTuple, Anum_pg_proc_proargmodes, ((void*)0)))
+  return ((void*)0);
+
+
+ proallargtypes = SysCacheGetAttr(PROCOID, procTuple,
+          Anum_pg_proc_proallargtypes,
+          &isnull);
+ Assert(!isnull);
+ proargmodes = SysCacheGetAttr(PROCOID, procTuple,
+          Anum_pg_proc_proargmodes,
+          &isnull);
+ Assert(!isnull);
+ proargnames = SysCacheGetAttr(PROCOID, procTuple,
+          Anum_pg_proc_proargnames,
+          &isnull);
+ if (isnull)
+  proargnames = PointerGetDatum(((void*)0));
+
+ return build_function_result_tupdesc_d(procform->prokind,
+             proallargtypes,
+             proargmodes,
+             proargnames);
 }

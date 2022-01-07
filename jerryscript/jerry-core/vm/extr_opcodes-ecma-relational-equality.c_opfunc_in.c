@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ecma_value_t ;
-typedef  int /*<<< orphan*/  ecma_string_t ;
-typedef  int /*<<< orphan*/  ecma_object_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ECMA_ERR_MSG (char*) ; 
- int /*<<< orphan*/  ECMA_VALUE_ERROR ; 
- scalar_t__ JERRY_UNLIKELY (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ecma_deref_ecma_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ecma_get_object_from_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ecma_is_value_object (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ecma_make_boolean_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ecma_op_object_has_property (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ecma_op_to_prop_name (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ecma_raise_type_error (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ecma_value_t ;
+typedef int ecma_string_t ;
+typedef int ecma_object_t ;
+
+
+ int ECMA_ERR_MSG (char*) ;
+ int ECMA_VALUE_ERROR ;
+ scalar_t__ JERRY_UNLIKELY (int ) ;
+ int ecma_deref_ecma_string (int *) ;
+ int * ecma_get_object_from_value (int ) ;
+ int ecma_is_value_object (int ) ;
+ int ecma_make_boolean_value (int ) ;
+ int ecma_op_object_has_property (int *,int *) ;
+ int * ecma_op_to_prop_name (int ) ;
+ int ecma_raise_type_error (int ) ;
 
 ecma_value_t
-opfunc_in (ecma_value_t left_value, /**< left value */
-           ecma_value_t right_value) /**< right value */
+opfunc_in (ecma_value_t left_value,
+           ecma_value_t right_value)
 {
   if (!ecma_is_value_object (right_value))
   {
@@ -37,7 +37,7 @@ opfunc_in (ecma_value_t left_value, /**< left value */
 
   ecma_string_t *property_name_p = ecma_op_to_prop_name (left_value);
 
-  if (JERRY_UNLIKELY (property_name_p == NULL))
+  if (JERRY_UNLIKELY (property_name_p == ((void*)0)))
   {
     return ECMA_VALUE_ERROR;
   }

@@ -1,40 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ MAX_FN ; 
- scalar_t__ ansI ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ atoi (void*) ; 
- scalar_t__ change_user (char*) ; 
- int /*<<< orphan*/  dl_open_file (scalar_t__,void*,int) ; 
- int /*<<< orphan*/  dl_set_debug_handlers () ; 
- void* dump_name ; 
- scalar_t__ engineF ; 
- scalar_t__ engineN ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  flush_w_buff () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  init_data () ; 
- void* optarg ; 
- int optind ; 
- void* out_name ; 
- char* progname ; 
- int /*<<< orphan*/  run () ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  usage () ; 
- char* username ; 
+ scalar_t__ MAX_FN ;
+ scalar_t__ ansI ;
+ int assert (int) ;
+ scalar_t__ atoi (void*) ;
+ scalar_t__ change_user (char*) ;
+ int dl_open_file (scalar_t__,void*,int) ;
+ int dl_set_debug_handlers () ;
+ void* dump_name ;
+ scalar_t__ engineF ;
+ scalar_t__ engineN ;
+ int exit (int) ;
+ int flush_w_buff () ;
+ int fprintf (int ,char*,char*) ;
+ int getopt (int,char**,char*) ;
+ int init_data () ;
+ void* optarg ;
+ int optind ;
+ void* out_name ;
+ char* progname ;
+ int run () ;
+ int stderr ;
+ int usage () ;
+ char* username ;
 
 int main (int argc, char *argv[]) {
   int i;

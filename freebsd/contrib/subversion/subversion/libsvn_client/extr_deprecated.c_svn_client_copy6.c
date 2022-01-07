@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_commit_callback2_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  svn_client_copy7 (int /*<<< orphan*/  const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int svn_error_t ;
+typedef int svn_commit_callback2_t ;
+typedef int svn_client_ctx_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_array_header_t ;
+
+
+ int FALSE ;
+ int svn_client_copy7 (int const*,char const*,int ,int ,int ,int ,int ,int *,int const*,int ,void*,int *,int *) ;
+ int * svn_error_trace (int ) ;
 
 svn_error_t *
 svn_client_copy6(const apr_array_header_t *sources,
@@ -37,9 +37,9 @@ svn_client_copy6(const apr_array_header_t *sources,
 {
   return svn_error_trace(svn_client_copy7(sources, dst_path, copy_as_child,
                                           make_parents, ignore_externals,
-                                          FALSE /* metadata_only */,
-                                          FALSE /* pin_externals */,
-                                          NULL /* externals_to_pin */,
+                                          FALSE ,
+                                          FALSE ,
+                                          ((void*)0) ,
                                           revprop_table,
                                           commit_callback, commit_baton,
                                           ctx, pool));

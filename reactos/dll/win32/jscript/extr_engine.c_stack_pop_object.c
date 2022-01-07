@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JS_E_OBJECT_REQUIRED ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/ * get_object (int /*<<< orphan*/ ) ; 
- scalar_t__ is_object_instance (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stack_pop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  throw_type_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  to_object (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int IDispatch ;
+typedef int HRESULT ;
+
+
+ int JS_E_OBJECT_REQUIRED ;
+ int S_OK ;
+ int * get_object (int ) ;
+ scalar_t__ is_object_instance (int ) ;
+ int jsval_release (int ) ;
+ int stack_pop (int *) ;
+ int throw_type_error (int *,int ,int *) ;
+ int to_object (int *,int ,int **) ;
 
 __attribute__((used)) static HRESULT stack_pop_object(script_ctx_t *ctx, IDispatch **r)
 {
@@ -33,7 +33,7 @@ __attribute__((used)) static HRESULT stack_pop_object(script_ctx_t *ctx, IDispat
     v = stack_pop(ctx);
     if(is_object_instance(v)) {
         if(!get_object(v))
-            return throw_type_error(ctx, JS_E_OBJECT_REQUIRED, NULL);
+            return throw_type_error(ctx, JS_E_OBJECT_REQUIRED, ((void*)0));
         *r = get_object(v);
         return S_OK;
     }

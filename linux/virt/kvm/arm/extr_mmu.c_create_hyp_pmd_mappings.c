@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pud_t ;
-typedef  int /*<<< orphan*/  pte_t ;
-typedef  int /*<<< orphan*/  pmd_t ;
-typedef  int /*<<< orphan*/  pgprot_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int /*<<< orphan*/ ) ; 
- int ENOMEM ; 
- unsigned long PAGE_SHIFT ; 
- int /*<<< orphan*/  create_hyp_pte_mappings (int /*<<< orphan*/ *,unsigned long,unsigned long,unsigned long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_page (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kvm_err (char*) ; 
- int /*<<< orphan*/  kvm_pmd_populate (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- unsigned long pmd_addr_end (unsigned long,unsigned long) ; 
- scalar_t__ pmd_none (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * pmd_offset (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  pmd_sect (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * pte_alloc_one_kernel (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  virt_to_page (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int pud_t ;
+typedef int pte_t ;
+typedef int pmd_t ;
+typedef int pgprot_t ;
+
+
+ int BUG_ON (int ) ;
+ int ENOMEM ;
+ unsigned long PAGE_SHIFT ;
+ int create_hyp_pte_mappings (int *,unsigned long,unsigned long,unsigned long,int ) ;
+ int get_page (int ) ;
+ int kvm_err (char*) ;
+ int kvm_pmd_populate (int *,int *) ;
+ unsigned long pmd_addr_end (unsigned long,unsigned long) ;
+ scalar_t__ pmd_none (int ) ;
+ int * pmd_offset (int *,unsigned long) ;
+ int pmd_sect (int ) ;
+ int * pte_alloc_one_kernel (int *) ;
+ int virt_to_page (int *) ;
 
 __attribute__((used)) static int create_hyp_pmd_mappings(pud_t *pud, unsigned long start,
-				   unsigned long end, unsigned long pfn,
-				   pgprot_t prot)
+       unsigned long end, unsigned long pfn,
+       pgprot_t prot)
 {
-	pmd_t *pmd;
-	pte_t *pte;
-	unsigned long addr, next;
+ pmd_t *pmd;
+ pte_t *pte;
+ unsigned long addr, next;
 
-	addr = start;
-	do {
-		pmd = pmd_offset(pud, addr);
+ addr = start;
+ do {
+  pmd = pmd_offset(pud, addr);
 
-		BUG_ON(pmd_sect(*pmd));
+  BUG_ON(pmd_sect(*pmd));
 
-		if (pmd_none(*pmd)) {
-			pte = pte_alloc_one_kernel(NULL);
-			if (!pte) {
-				kvm_err("Cannot allocate Hyp pte\n");
-				return -ENOMEM;
-			}
-			kvm_pmd_populate(pmd, pte);
-			get_page(virt_to_page(pmd));
-		}
+  if (pmd_none(*pmd)) {
+   pte = pte_alloc_one_kernel(((void*)0));
+   if (!pte) {
+    kvm_err("Cannot allocate Hyp pte\n");
+    return -ENOMEM;
+   }
+   kvm_pmd_populate(pmd, pte);
+   get_page(virt_to_page(pmd));
+  }
 
-		next = pmd_addr_end(addr, end);
+  next = pmd_addr_end(addr, end);
 
-		create_hyp_pte_mappings(pmd, addr, next, pfn, prot);
-		pfn += (next - addr) >> PAGE_SHIFT;
-	} while (addr = next, addr != end);
+  create_hyp_pte_mappings(pmd, addr, next, pfn, prot);
+  pfn += (next - addr) >> PAGE_SHIFT;
+ } while (addr = next, addr != end);
 
-	return 0;
+ return 0;
 }

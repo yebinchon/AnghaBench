@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct exynos_data {int /*<<< orphan*/  g2d; int /*<<< orphan*/ ** src; int /*<<< orphan*/ * dst; } ;
 
-/* Variables and functions */
- unsigned int EXYNOS_IMAGE_COUNT ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g2d_fini (int /*<<< orphan*/ ) ; 
+
+
+
+struct exynos_data {int g2d; int ** src; int * dst; } ;
+
+
+ unsigned int EXYNOS_IMAGE_COUNT ;
+ int free (int *) ;
+ int g2d_fini (int ) ;
 
 __attribute__((used)) static void exynos_g2d_free(struct exynos_data *pdata)
 {
@@ -26,7 +26,7 @@ __attribute__((used)) static void exynos_g2d_free(struct exynos_data *pdata)
    for (i = 0; i < EXYNOS_IMAGE_COUNT; ++i)
    {
       free(pdata->src[i]);
-      pdata->src[i] = NULL;
+      pdata->src[i] = ((void*)0);
    }
 
    g2d_fini(pdata->g2d);

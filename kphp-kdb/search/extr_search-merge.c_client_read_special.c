@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct gather_entry {int res_read; int res_bytes; int num; } ;
-struct connection {int fd; int unread_res_bytes; scalar_t__ master_generation; TYPE_3__* gather; TYPE_1__* master; int /*<<< orphan*/  In; TYPE_2__* serv; } ;
-struct TYPE_8__ {int /*<<< orphan*/  in_queue; } ;
-struct TYPE_7__ {int tot_num; int error_num; int wait_num; int ready_num; struct gather_entry* List; int /*<<< orphan*/  Alloc; } ;
+struct connection {int fd; int unread_res_bytes; scalar_t__ master_generation; TYPE_3__* gather; TYPE_1__* master; int In; TYPE_2__* serv; } ;
+struct TYPE_8__ {int in_queue; } ;
+struct TYPE_7__ {int tot_num; int error_num; int wait_num; int ready_num; struct gather_entry* List; int Alloc; } ;
 struct TYPE_6__ {int id; } ;
 struct TYPE_5__ {int fd; TYPE_4__* ev; } ;
 
-/* Variables and functions */
- int CSN ; 
- int /*<<< orphan*/  advance_read_ptr (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int client_result_alloc (int /*<<< orphan*/ ,struct gather_entry*,char**) ; 
- int force_ready_bytes (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,...) ; 
- int /*<<< orphan*/  free_unused_buffers (int /*<<< orphan*/ *) ; 
- char* get_read_ptr (int /*<<< orphan*/ *) ; 
- int get_ready_bytes (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  put_event_into_heap (TYPE_4__*) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+ int CSN ;
+ int advance_read_ptr (int *,int) ;
+ int assert (int) ;
+ int client_result_alloc (int ,struct gather_entry*,char**) ;
+ int force_ready_bytes (int *,int) ;
+ int fprintf (int ,char*,int,int,...) ;
+ int free_unused_buffers (int *) ;
+ char* get_read_ptr (int *) ;
+ int get_ready_bytes (int *) ;
+ int memcpy (char*,char*,int) ;
+ int put_event_into_heap (TYPE_4__*) ;
+ int stderr ;
+ int verbosity ;
 
 __attribute__((used)) static int client_read_special (struct connection *c) {
   int x = c->serv->id, t = 0, s, u;
@@ -108,7 +108,7 @@ __attribute__((used)) static int client_read_special (struct connection *c) {
   }
 
   if (!c->unread_res_bytes && c->gather && c->gather->tot_num >= x) {
-    /* das ist alles */
+
     if (verbosity > 0) {
       fprintf (stderr, "socket %d completes reading data for master %d\n", c->fd, c->master->fd);
     }
@@ -120,7 +120,7 @@ __attribute__((used)) static int client_read_special (struct connection *c) {
     assert (E->res_read == E->res_bytes);
     assert (++c->gather->ready_num <= c->gather->wait_num);
     if (c->gather->ready_num == c->gather->wait_num) {
-      /* wake up master */
+
       if (verbosity > 0) {
   fprintf (stderr, "socket %d was the last one, waking master %d\n", c->fd, c->master->fd);
       }
@@ -131,7 +131,7 @@ __attribute__((used)) static int client_read_special (struct connection *c) {
     c->master = 0;
     c->gather = 0;
     c->master_generation = 0;
-    //  c->state &= ~2;
+
   }
 
   return t;

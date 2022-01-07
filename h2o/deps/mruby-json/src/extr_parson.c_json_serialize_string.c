@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  APPEND_STRING (char*) ; 
- size_t strlen (char const*) ; 
+ int APPEND_STRING (char*) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static int json_serialize_string(const char *string, char *buf) {
     size_t i = 0, len = strlen(string);
@@ -25,7 +17,7 @@ __attribute__((used)) static int json_serialize_string(const char *string, char 
         switch (c) {
             case '\"': APPEND_STRING("\\\""); break;
             case '\\': APPEND_STRING("\\\\"); break;
-            case '/':  APPEND_STRING("\\/"); break; /* to make json embeddable in xml\/html */
+            case '/': APPEND_STRING("\\/"); break;
             case '\b': APPEND_STRING("\\b"); break;
             case '\f': APPEND_STRING("\\f"); break;
             case '\n': APPEND_STRING("\\n"); break;
@@ -39,12 +31,12 @@ __attribute__((used)) static int json_serialize_string(const char *string, char 
             case '\x05': APPEND_STRING("\\u0005"); break;
             case '\x06': APPEND_STRING("\\u0006"); break;
             case '\x07': APPEND_STRING("\\u0007"); break;
-            /* '\x08' duplicate: '\b' */
-            /* '\x09' duplicate: '\t' */
-            /* '\x0a' duplicate: '\n' */
+
+
+
             case '\x0b': APPEND_STRING("\\u000b"); break;
-            /* '\x0c' duplicate: '\f' */
-            /* '\x0d' duplicate: '\r' */
+
+
             case '\x0e': APPEND_STRING("\\u000e"); break;
             case '\x0f': APPEND_STRING("\\u000f"); break;
             case '\x10': APPEND_STRING("\\u0010"); break;
@@ -64,7 +56,7 @@ __attribute__((used)) static int json_serialize_string(const char *string, char 
             case '\x1e': APPEND_STRING("\\u001e"); break;
             case '\x1f': APPEND_STRING("\\u001f"); break;
             default:
-                if (buf != NULL) {
+                if (buf != ((void*)0)) {
                     buf[0] = c;
                     buf += 1;
                 }

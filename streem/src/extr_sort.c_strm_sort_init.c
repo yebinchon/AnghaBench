@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  strm_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ary_median ; 
- int /*<<< orphan*/  ary_sort ; 
- int /*<<< orphan*/  ary_sortby ; 
- int /*<<< orphan*/  exec_cmp ; 
- int /*<<< orphan*/  exec_median ; 
- int /*<<< orphan*/  exec_sort ; 
- int /*<<< orphan*/  exec_sortby ; 
- int /*<<< orphan*/  str_ge ; 
- int /*<<< orphan*/  str_gt ; 
- int /*<<< orphan*/  str_le ; 
- int /*<<< orphan*/  str_lt ; 
- int /*<<< orphan*/  strm_cfunc_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * strm_ns_array ; 
- int /*<<< orphan*/ * strm_ns_string ; 
- int /*<<< orphan*/  strm_var_def (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int strm_state ;
+
+
+ int ary_median ;
+ int ary_sort ;
+ int ary_sortby ;
+ int exec_cmp ;
+ int exec_median ;
+ int exec_sort ;
+ int exec_sortby ;
+ int str_ge ;
+ int str_gt ;
+ int str_le ;
+ int str_lt ;
+ int strm_cfunc_value (int ) ;
+ int * strm_ns_array ;
+ int * strm_ns_string ;
+ int strm_var_def (int *,char*,int ) ;
 
 void
 strm_sort_init(strm_state* state)

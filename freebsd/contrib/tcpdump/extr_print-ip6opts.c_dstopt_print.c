@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u_char ;
 struct ip6_dest {int ip6d_len; } ;
 struct TYPE_5__ {scalar_t__ ndo_vflag; } ;
-typedef  TYPE_1__ netdissect_options ;
+typedef TYPE_1__ netdissect_options ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ND_PRINT (TYPE_1__*) ; 
- int /*<<< orphan*/  ND_TCHECK (int) ; 
- int /*<<< orphan*/  ND_TCHECK2 (struct ip6_dest const,int) ; 
- int /*<<< orphan*/  ip6_opt_print (TYPE_1__*,int /*<<< orphan*/  const*,int) ; 
+
+ int ND_PRINT (TYPE_1__*) ;
+ int ND_TCHECK (int) ;
+ int ND_TCHECK2 (struct ip6_dest const,int) ;
+ int ip6_opt_print (TYPE_1__*,int const*,int) ;
 
 int
 dstopt_print(netdissect_options *ndo, register const u_char *bp)
@@ -33,8 +33,8 @@ dstopt_print(netdissect_options *ndo, register const u_char *bp)
     ND_TCHECK2(*dp, dstoptlen);
     ND_PRINT((ndo, "DSTOPT "));
     if (ndo->ndo_vflag) {
-	ip6_opt_print(ndo, (const u_char *)dp + sizeof(*dp),
-	    dstoptlen - sizeof(*dp));
+ ip6_opt_print(ndo, (const u_char *)dp + sizeof(*dp),
+     dstoptlen - sizeof(*dp));
     }
 
     return(dstoptlen);

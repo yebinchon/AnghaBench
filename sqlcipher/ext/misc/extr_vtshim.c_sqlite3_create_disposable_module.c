@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_7__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int iVersion; int /*<<< orphan*/  xRollbackTo; int /*<<< orphan*/  xRelease; int /*<<< orphan*/  xSavepoint; int /*<<< orphan*/  xRename; int /*<<< orphan*/  xFindFunction; int /*<<< orphan*/  xRollback; int /*<<< orphan*/  xCommit; int /*<<< orphan*/  xSync; int /*<<< orphan*/  xBegin; int /*<<< orphan*/  xUpdate; int /*<<< orphan*/  xRowid; int /*<<< orphan*/  xColumn; int /*<<< orphan*/  xEof; int /*<<< orphan*/  xNext; int /*<<< orphan*/  xFilter; int /*<<< orphan*/  xClose; int /*<<< orphan*/  xOpen; int /*<<< orphan*/  xDestroy; int /*<<< orphan*/  xDisconnect; int /*<<< orphan*/  xBestIndex; int /*<<< orphan*/  xConnect; int /*<<< orphan*/  xCreate; } ;
-struct TYPE_10__ {void (* xChildDestroy ) (void*) ;TYPE_7__ sSelf; scalar_t__ pAllVtab; scalar_t__ bDisposed; int /*<<< orphan*/  zName; int /*<<< orphan*/ * db; TYPE_2__* pMod; void* pChildAux; } ;
-typedef  TYPE_1__ vtshim_aux ;
+
+
+typedef struct TYPE_12__ TYPE_7__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int iVersion; int xRollbackTo; int xRelease; int xSavepoint; int xRename; int xFindFunction; int xRollback; int xCommit; int xSync; int xBegin; int xUpdate; int xRowid; int xColumn; int xEof; int xNext; int xFilter; int xClose; int xOpen; int xDestroy; int xDisconnect; int xBestIndex; int xConnect; int xCreate; } ;
+struct TYPE_10__ {void (* xChildDestroy ) (void*) ;TYPE_7__ sSelf; scalar_t__ pAllVtab; scalar_t__ bDisposed; int zName; int * db; TYPE_2__* pMod; void* pChildAux; } ;
+typedef TYPE_1__ vtshim_aux ;
 struct TYPE_11__ {int iVersion; scalar_t__ xRollbackTo; scalar_t__ xRelease; scalar_t__ xSavepoint; scalar_t__ xRename; scalar_t__ xFindFunction; scalar_t__ xRollback; scalar_t__ xCommit; scalar_t__ xSync; scalar_t__ xBegin; scalar_t__ xUpdate; scalar_t__ xRowid; scalar_t__ xColumn; scalar_t__ xEof; scalar_t__ xNext; scalar_t__ xFilter; scalar_t__ xClose; scalar_t__ xOpen; scalar_t__ xDestroy; scalar_t__ xDisconnect; scalar_t__ xBestIndex; scalar_t__ xConnect; scalar_t__ xCreate; } ;
-typedef  TYPE_2__ sqlite3_module ;
-typedef  int /*<<< orphan*/  sqlite3 ;
+typedef TYPE_2__ sqlite3_module ;
+typedef int sqlite3 ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int sqlite3_create_module_v2 (int /*<<< orphan*/ *,char const*,TYPE_7__*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_free (TYPE_1__*) ; 
- TYPE_1__* sqlite3_malloc (int) ; 
- int /*<<< orphan*/  sqlite3_mprintf (char*,char const*) ; 
- int /*<<< orphan*/  vtshimAuxDestructor ; 
- int /*<<< orphan*/  vtshimBegin ; 
- int /*<<< orphan*/  vtshimBestIndex ; 
- int /*<<< orphan*/  vtshimClose ; 
- int /*<<< orphan*/  vtshimColumn ; 
- int /*<<< orphan*/  vtshimCommit ; 
- int /*<<< orphan*/  vtshimConnect ; 
- int vtshimCopyModule (TYPE_2__ const*,TYPE_2__**) ; 
- int /*<<< orphan*/  vtshimCreate ; 
- int /*<<< orphan*/  vtshimDestroy ; 
- int /*<<< orphan*/  vtshimDisconnect ; 
- int /*<<< orphan*/  vtshimEof ; 
- int /*<<< orphan*/  vtshimFilter ; 
- int /*<<< orphan*/  vtshimFindFunction ; 
- int /*<<< orphan*/  vtshimNext ; 
- int /*<<< orphan*/  vtshimOpen ; 
- int /*<<< orphan*/  vtshimRelease ; 
- int /*<<< orphan*/  vtshimRename ; 
- int /*<<< orphan*/  vtshimRollback ; 
- int /*<<< orphan*/  vtshimRollbackTo ; 
- int /*<<< orphan*/  vtshimRowid ; 
- int /*<<< orphan*/  vtshimSavepoint ; 
- int /*<<< orphan*/  vtshimSync ; 
- int /*<<< orphan*/  vtshimUpdate ; 
+
+ int SQLITE_OK ;
+ int sqlite3_create_module_v2 (int *,char const*,TYPE_7__*,TYPE_1__*,int ) ;
+ int sqlite3_free (TYPE_1__*) ;
+ TYPE_1__* sqlite3_malloc (int) ;
+ int sqlite3_mprintf (char*,char const*) ;
+ int vtshimAuxDestructor ;
+ int vtshimBegin ;
+ int vtshimBestIndex ;
+ int vtshimClose ;
+ int vtshimColumn ;
+ int vtshimCommit ;
+ int vtshimConnect ;
+ int vtshimCopyModule (TYPE_2__ const*,TYPE_2__**) ;
+ int vtshimCreate ;
+ int vtshimDestroy ;
+ int vtshimDisconnect ;
+ int vtshimEof ;
+ int vtshimFilter ;
+ int vtshimFindFunction ;
+ int vtshimNext ;
+ int vtshimOpen ;
+ int vtshimRelease ;
+ int vtshimRename ;
+ int vtshimRollback ;
+ int vtshimRollbackTo ;
+ int vtshimRowid ;
+ int vtshimSavepoint ;
+ int vtshimSync ;
+ int vtshimUpdate ;
 
 void *sqlite3_create_disposable_module(
-  sqlite3 *db,               /* SQLite connection to register module with */
-  const char *zName,         /* Name of the module */
-  const sqlite3_module *p,   /* Methods for the module */
-  void *pClientData,         /* Client data for xCreate/xConnect */
-  void(*xDestroy)(void*)     /* Module destructor function */
+  sqlite3 *db,
+  const char *zName,
+  const sqlite3_module *p,
+  void *pClientData,
+  void(*xDestroy)(void*)
 ){
   vtshim_aux *pAux;
   sqlite3_module *pMod;

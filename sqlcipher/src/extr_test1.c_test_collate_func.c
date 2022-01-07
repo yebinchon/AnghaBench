@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  Tcl_Obj ;
-typedef  int /*<<< orphan*/  Tcl_Interp ;
 
-/* Variables and functions */
- int SQLITE_PTR_TO_INT (void*) ; 
- int /*<<< orphan*/  SQLITE_STATIC ; 
-#define  SQLITE_UTF16BE 130 
-#define  SQLITE_UTF16LE 129 
-#define  SQLITE_UTF8 128 
- int /*<<< orphan*/  Tcl_DecrRefCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Tcl_EvalObjEx (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Tcl_GetIntFromObj (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  Tcl_GetObjResult (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Tcl_IncrRefCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Tcl_ListObjAppendElement (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Tcl_NewStringObj (char*,int) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * pTestCollateInterp ; 
- int /*<<< orphan*/  sqlite3BeginBenignMalloc () ; 
- int /*<<< orphan*/  sqlite3EndBenignMalloc () ; 
- int /*<<< orphan*/  sqlite3ValueFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sqlite3ValueNew (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3ValueSetStr (int /*<<< orphan*/ *,int,void const*,int,int /*<<< orphan*/ ) ; 
- int sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_value ;
+typedef int Tcl_Obj ;
+typedef int Tcl_Interp ;
+
+
+ int SQLITE_PTR_TO_INT (void*) ;
+ int SQLITE_STATIC ;
+
+
+
+ int Tcl_DecrRefCount (int *) ;
+ int Tcl_EvalObjEx (int *,int *,int ) ;
+ int Tcl_GetIntFromObj (int *,int ,int*) ;
+ int Tcl_GetObjResult (int *) ;
+ int Tcl_IncrRefCount (int *) ;
+ int Tcl_ListObjAppendElement (int *,int *,int *) ;
+ int * Tcl_NewStringObj (char*,int) ;
+ int assert (int ) ;
+ int * pTestCollateInterp ;
+ int sqlite3BeginBenignMalloc () ;
+ int sqlite3EndBenignMalloc () ;
+ int sqlite3ValueFree (int *) ;
+ int * sqlite3ValueNew (int ) ;
+ int sqlite3ValueSetStr (int *,int,void const*,int,int ) ;
+ int sqlite3_value_bytes (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
 
 __attribute__((used)) static int test_collate_func(
-  void *pCtx, 
+  void *pCtx,
   int nA, const void *zA,
   int nB, const void *zB
 ){
@@ -54,13 +54,13 @@ __attribute__((used)) static int test_collate_func(
   Tcl_IncrRefCount(pX);
 
   switch( encin ){
-    case SQLITE_UTF8:
+    case 128:
       Tcl_ListObjAppendElement(i,pX,Tcl_NewStringObj("UTF-8",-1));
       break;
-    case SQLITE_UTF16LE:
+    case 129:
       Tcl_ListObjAppendElement(i,pX,Tcl_NewStringObj("UTF-16LE",-1));
       break;
-    case SQLITE_UTF16BE:
+    case 130:
       Tcl_ListObjAppendElement(i,pX,Tcl_NewStringObj("UTF-16BE",-1));
       break;
     default:

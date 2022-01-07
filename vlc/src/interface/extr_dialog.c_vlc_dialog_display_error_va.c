@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  vlc_dialog_provider ;
-typedef  int /*<<< orphan*/  va_list ;
 
-/* Variables and functions */
- int VLC_EGENERIC ; 
- int /*<<< orphan*/  VLC_MSG_ERR ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  assert (int) ; 
- int dialog_display_error_va (int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * get_dialog_provider (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*,char const*) ; 
- int /*<<< orphan*/  msg_GenericVa (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int vlc_object_t ;
+typedef int vlc_dialog_provider ;
+typedef int va_list ;
+
+
+ int VLC_EGENERIC ;
+ int VLC_MSG_ERR ;
+ int VLC_SUCCESS ;
+ int assert (int) ;
+ int dialog_display_error_va (int *,char const*,char const*,int ) ;
+ int * get_dialog_provider (int *,int) ;
+ int msg_Err (int *,char*,char const*) ;
+ int msg_GenericVa (int *,int ,char const*,int ) ;
 
 int
 vlc_dialog_display_error_va(vlc_object_t *p_obj, const char *psz_title,
                             const char *psz_fmt, va_list ap)
 {
-    assert(p_obj != NULL && psz_title != NULL && psz_fmt != NULL);
+    assert(p_obj != ((void*)0) && psz_title != ((void*)0) && psz_fmt != ((void*)0));
     int i_ret;
-    vlc_dialog_provider *p_provider = get_dialog_provider(p_obj, true);
+    vlc_dialog_provider *p_provider = get_dialog_provider(p_obj, 1);
 
-    if (p_provider != NULL)
+    if (p_provider != ((void*)0))
         i_ret = dialog_display_error_va(p_provider, psz_title, psz_fmt, ap);
     else
         i_ret = VLC_EGENERIC;

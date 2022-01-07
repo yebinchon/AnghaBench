@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PACKET ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- unsigned int ID_SEQUENCE ; 
- int /*<<< orphan*/  PACKET_buf_init (int /*<<< orphan*/ *,unsigned char const*,size_t) ; 
- unsigned char const* PACKET_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PACKET_get_1 (int /*<<< orphan*/ *,unsigned int*) ; 
- scalar_t__ PACKET_remaining (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  decode_der_integer (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  decode_der_length (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int PACKET ;
+typedef int BIGNUM ;
+
+
+ unsigned int ID_SEQUENCE ;
+ int PACKET_buf_init (int *,unsigned char const*,size_t) ;
+ unsigned char const* PACKET_data (int *) ;
+ int PACKET_get_1 (int *,unsigned int*) ;
+ scalar_t__ PACKET_remaining (int *) ;
+ int decode_der_integer (int *,int *) ;
+ int decode_der_length (int *,int *) ;
 
 size_t decode_der_dsa_sig(BIGNUM *r, BIGNUM *s, const unsigned char **ppin,
                           size_t len)

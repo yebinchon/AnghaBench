@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_meta_t ;
-typedef  unsigned int time_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int vlc_meta_t ;
+typedef unsigned int time_t ;
 struct tm {int dummy; } ;
 struct TYPE_5__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ stream_t ;
-typedef  int /*<<< orphan*/  str ;
-struct TYPE_6__ {float fps; int /*<<< orphan*/ * p_meta; } ;
-typedef  TYPE_2__ access_sys_t ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ stream_t ;
+typedef int str ;
+struct TYPE_6__ {float fps; int * p_meta; } ;
+typedef TYPE_2__ access_sys_t ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * OpenRelativeFile (TYPE_1__*,char*) ; 
- scalar_t__ ReadLine (char**,size_t*,int /*<<< orphan*/ *) ; 
- float atof (char*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  isalpha (unsigned char) ; 
- int /*<<< orphan*/  localtime_r (unsigned int*,struct tm*) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,unsigned int,unsigned int) ; 
- int sscanf (char*,char*,unsigned int*,unsigned int*,unsigned int*) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- char* strchr (char*,char) ; 
- char* strdup (char*) ; 
- int /*<<< orphan*/  strftime (char*,int,char*,struct tm*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  vlc_meta_AddExtra (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/ * vlc_meta_New () ; 
- int /*<<< orphan*/  vlc_meta_SetDescription (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  vlc_meta_SetTitle (int /*<<< orphan*/ *,char*) ; 
+
+ int * OpenRelativeFile (TYPE_1__*,char*) ;
+ scalar_t__ ReadLine (char**,size_t*,int *) ;
+ float atof (char*) ;
+ int fclose (int *) ;
+ int free (char*) ;
+ int isalpha (unsigned char) ;
+ int localtime_r (unsigned int*,struct tm*) ;
+ char* malloc (int) ;
+ int snprintf (char*,int,char*,unsigned int,unsigned int) ;
+ int sscanf (char*,char*,unsigned int*,unsigned int*,unsigned int*) ;
+ int strcat (char*,char*) ;
+ char* strchr (char*,char) ;
+ char* strdup (char*) ;
+ int strftime (char*,int,char*,struct tm*) ;
+ int strlen (char*) ;
+ int vlc_meta_AddExtra (int *,char*,char*) ;
+ int * vlc_meta_New () ;
+ int vlc_meta_SetDescription (int *,char*) ;
+ int vlc_meta_SetTitle (int *,char*) ;
 
 __attribute__((used)) static void ImportMeta( stream_t *p_access )
 {
@@ -59,9 +59,9 @@ __attribute__((used)) static void ImportMeta( stream_t *p_access )
         return;
     }
 
-    char *line = NULL;
+    char *line = ((void*)0);
     size_t line_len;
-    char *psz_title = NULL, *psz_smalltext = NULL, *psz_date = NULL;
+    char *psz_title = ((void*)0), *psz_smalltext = ((void*)0), *psz_date = ((void*)0);
 
     while( ReadLine( &line, &line_len, infofile ) )
     {
@@ -92,13 +92,13 @@ __attribute__((used)) static void ImportMeta( stream_t *p_access )
                 time_t start = i_start;
                 localtime_r( &start, &tm );
 
-                /* TODO: locale */
+
                 strftime( str, sizeof(str), "%Y-%m-%d %H:%M", &tm );
                 vlc_meta_AddExtra( p_meta, "Date", str );
                 free( psz_date );
                 psz_date = strdup( str );
 
-                /* display in minutes */
+
                 i_length = ( i_length + 59 ) / 60;
                 snprintf( str, sizeof(str), "%u:%02u", i_length / 60, i_length % 60 );
                 vlc_meta_AddExtra( p_meta, "Duration", str );
@@ -129,7 +129,7 @@ __attribute__((used)) static void ImportMeta( stream_t *p_access )
             vlc_meta_SetDescription( p_meta, text );
         }
 
-        /* FPS are required to convert between timestamps and frames */
+
         else if( tag == 'F' )
         {
             float fps = atof( text );
@@ -149,7 +149,7 @@ __attribute__((used)) static void ImportMeta( stream_t *p_access )
         }
     }
 
-    /* create a meaningful title */
+
     int i_len = 10 +
         ( psz_title ? strlen( psz_title ) : 0 ) +
         ( psz_smalltext ? strlen( psz_smalltext ) : 0 ) +

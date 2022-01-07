@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct pcm_runtime {TYPE_2__* in_urbs; TYPE_1__* out_urbs; } ;
 struct TYPE_4__ {void* buffer; } ;
 struct TYPE_3__ {void* buffer; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  PCM_MAX_PACKET_SIZE ; 
- int /*<<< orphan*/  PCM_N_PACKETS_PER_URB ; 
- int PCM_N_URBS ; 
- void* kcalloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int PCM_MAX_PACKET_SIZE ;
+ int PCM_N_PACKETS_PER_URB ;
+ int PCM_N_URBS ;
+ void* kcalloc (int ,int ,int ) ;
 
 __attribute__((used)) static int usb6fire_pcm_buffers_init(struct pcm_runtime *rt)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < PCM_N_URBS; i++) {
-		rt->out_urbs[i].buffer = kcalloc(PCM_MAX_PACKET_SIZE,
-						 PCM_N_PACKETS_PER_URB,
-						 GFP_KERNEL);
-		if (!rt->out_urbs[i].buffer)
-			return -ENOMEM;
-		rt->in_urbs[i].buffer = kcalloc(PCM_MAX_PACKET_SIZE,
-						PCM_N_PACKETS_PER_URB,
-						GFP_KERNEL);
-		if (!rt->in_urbs[i].buffer)
-			return -ENOMEM;
-	}
-	return 0;
+ for (i = 0; i < PCM_N_URBS; i++) {
+  rt->out_urbs[i].buffer = kcalloc(PCM_MAX_PACKET_SIZE,
+       PCM_N_PACKETS_PER_URB,
+       GFP_KERNEL);
+  if (!rt->out_urbs[i].buffer)
+   return -ENOMEM;
+  rt->in_urbs[i].buffer = kcalloc(PCM_MAX_PACKET_SIZE,
+      PCM_N_PACKETS_PER_URB,
+      GFP_KERNEL);
+  if (!rt->in_urbs[i].buffer)
+   return -ENOMEM;
+ }
+ return 0;
 }

@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* xsltTransformContextPtr ;
-typedef  TYPE_2__* xmlDocPtr ;
-struct TYPE_6__ {int /*<<< orphan*/ * _private; scalar_t__ next; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef TYPE_1__* xsltTransformContextPtr ;
+typedef TYPE_2__* xmlDocPtr ;
+struct TYPE_6__ {int * _private; scalar_t__ next; } ;
 struct TYPE_5__ {TYPE_2__* persistRVT; TYPE_2__* tmpRVT; TYPE_2__* localRVT; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  xmlFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xmlFreeDoc (TYPE_2__*) ; 
- int /*<<< orphan*/  xsltFreeDocumentKeys (int /*<<< orphan*/ *) ; 
+
+ int xmlFree (int *) ;
+ int xmlFreeDoc (TYPE_2__*) ;
+ int xsltFreeDocumentKeys (int *) ;
 
 void
 xsltFreeRVTs(xsltTransformContextPtr ctxt)
 {
     xmlDocPtr cur, next;
 
-    if (ctxt == NULL)
-	return;
-    /*
-    * Local fragments.
-    */
+    if (ctxt == ((void*)0))
+ return;
+
+
+
     cur = ctxt->localRVT;
-    while (cur != NULL) {
+    while (cur != ((void*)0)) {
         next = (xmlDocPtr) cur->next;
-	if (cur->_private != NULL) {
-	    xsltFreeDocumentKeys(cur->_private);
-	    xmlFree(cur->_private);
-	}
-	xmlFreeDoc(cur);
-	cur = next;
+ if (cur->_private != ((void*)0)) {
+     xsltFreeDocumentKeys(cur->_private);
+     xmlFree(cur->_private);
+ }
+ xmlFreeDoc(cur);
+ cur = next;
     }
-    ctxt->localRVT = NULL;
-    /*
-    * User-created per-template fragments.
-    */
+    ctxt->localRVT = ((void*)0);
+
+
+
     cur = ctxt->tmpRVT;
-    while (cur != NULL) {
+    while (cur != ((void*)0)) {
         next = (xmlDocPtr) cur->next;
-	if (cur->_private != NULL) {
-	    xsltFreeDocumentKeys(cur->_private);
-	    xmlFree(cur->_private);
-	}
-	xmlFreeDoc(cur);
-	cur = next;
+ if (cur->_private != ((void*)0)) {
+     xsltFreeDocumentKeys(cur->_private);
+     xmlFree(cur->_private);
+ }
+ xmlFreeDoc(cur);
+ cur = next;
     }
-    ctxt->tmpRVT = NULL;
-    /*
-    * Global fragments.
-    */
+    ctxt->tmpRVT = ((void*)0);
+
+
+
     cur = ctxt->persistRVT;
-    while (cur != NULL) {
+    while (cur != ((void*)0)) {
         next = (xmlDocPtr) cur->next;
-	if (cur->_private != NULL) {
-	    xsltFreeDocumentKeys(cur->_private);
-	    xmlFree(cur->_private);
-	}
-	xmlFreeDoc(cur);
-	cur = next;
+ if (cur->_private != ((void*)0)) {
+     xsltFreeDocumentKeys(cur->_private);
+     xmlFree(cur->_private);
+ }
+ xmlFreeDoc(cur);
+ cur = next;
     }
-    ctxt->persistRVT = NULL;
+    ctxt->persistRVT = ((void*)0);
 }

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int pri; } ;
-typedef  TYPE_1__ weight_t ;
-typedef  int /*<<< orphan*/  int32_t ;
+typedef TYPE_1__ weight_t ;
+typedef int int32_t ;
 
-/* Variables and functions */
- int COLLATE_SUBST_PRIORITY ; 
- int /*<<< orphan*/ * RB_FIND (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  RB_INSERT (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*) ; 
- TYPE_1__* calloc (int,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int resolve_pri (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/ * weights ; 
+
+ int COLLATE_SUBST_PRIORITY ;
+ int * RB_FIND (int *,int *,TYPE_1__*) ;
+ int RB_INSERT (int *,int *,TYPE_1__*) ;
+ TYPE_1__* calloc (int,int) ;
+ int fprintf (int ,char*) ;
+ int resolve_pri (int ) ;
+ int stderr ;
+ int * weights ;
 
 void
 add_weight(int32_t ref, int pass)
 {
-	weight_t srch;
-	weight_t *w;
+ weight_t srch;
+ weight_t *w;
 
-	srch.pri = resolve_pri(ref);
+ srch.pri = resolve_pri(ref);
 
-	/* No translation of ignores */
-	if (srch.pri == 0)
-		return;
 
-	/* Substitution priorities are not weights */
-	if (srch.pri & COLLATE_SUBST_PRIORITY)
-		return;
+ if (srch.pri == 0)
+  return;
 
-	if (RB_FIND(weights, &weights[pass], &srch) != NULL)
-		return;
 
-	if ((w = calloc(1, sizeof(*w))) == NULL) {
-		fprintf(stderr, "out of memory");
-		return;
-	}
-	w->pri = srch.pri;
-	RB_INSERT(weights, &weights[pass], w);
+ if (srch.pri & COLLATE_SUBST_PRIORITY)
+  return;
+
+ if (RB_FIND(weights, &weights[pass], &srch) != ((void*)0))
+  return;
+
+ if ((w = calloc(1, sizeof(*w))) == ((void*)0)) {
+  fprintf(stderr, "out of memory");
+  return;
+ }
+ w->pri = srch.pri;
+ RB_INSERT(weights, &weights[pass], w);
 }

@@ -1,81 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  pStmt; } ;
-typedef  TYPE_1__ stmt_cursor ;
-typedef  int /*<<< orphan*/  sqlite3_vtab_cursor ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int SQLITE_STMTSTATUS_FULLSCAN_STEP ; 
- int SQLITE_STMTSTATUS_MEMUSED ; 
- int /*<<< orphan*/  SQLITE_TRANSIENT ; 
-#define  STMT_COLUMN_BUSY 138 
-#define  STMT_COLUMN_MEM 137 
-#define  STMT_COLUMN_NAIDX 136 
-#define  STMT_COLUMN_NCOL 135 
-#define  STMT_COLUMN_NSCAN 134 
-#define  STMT_COLUMN_NSORT 133 
-#define  STMT_COLUMN_NSTEP 132 
-#define  STMT_COLUMN_REPREP 131 
-#define  STMT_COLUMN_RO 130 
-#define  STMT_COLUMN_RUN 129 
-#define  STMT_COLUMN_SQL 128 
- int /*<<< orphan*/  sqlite3_column_count (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_sql (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_stmt_busy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_stmt_readonly (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_stmt_status (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int pStmt; } ;
+typedef TYPE_1__ stmt_cursor ;
+typedef int sqlite3_vtab_cursor ;
+typedef int sqlite3_context ;
+
+
+ int SQLITE_OK ;
+ int SQLITE_STMTSTATUS_FULLSCAN_STEP ;
+ int SQLITE_STMTSTATUS_MEMUSED ;
+ int SQLITE_TRANSIENT ;
+ int sqlite3_column_count (int ) ;
+ int sqlite3_result_int (int *,int ) ;
+ int sqlite3_result_text (int *,int ,int,int ) ;
+ int sqlite3_sql (int ) ;
+ int sqlite3_stmt_busy (int ) ;
+ int sqlite3_stmt_readonly (int ) ;
+ int sqlite3_stmt_status (int ,int,int ) ;
 
 __attribute__((used)) static int stmtColumn(
-  sqlite3_vtab_cursor *cur,   /* The cursor */
-  sqlite3_context *ctx,       /* First argument to sqlite3_result_...() */
-  int i                       /* Which column to return */
+  sqlite3_vtab_cursor *cur,
+  sqlite3_context *ctx,
+  int i
 ){
   stmt_cursor *pCur = (stmt_cursor*)cur;
   switch( i ){
-    case STMT_COLUMN_SQL: {
+    case 128: {
       sqlite3_result_text(ctx, sqlite3_sql(pCur->pStmt), -1, SQLITE_TRANSIENT);
       break;
     }
-    case STMT_COLUMN_NCOL: {
+    case 135: {
       sqlite3_result_int(ctx, sqlite3_column_count(pCur->pStmt));
       break;
     }
-    case STMT_COLUMN_RO: {
+    case 130: {
       sqlite3_result_int(ctx, sqlite3_stmt_readonly(pCur->pStmt));
       break;
     }
-    case STMT_COLUMN_BUSY: {
+    case 138: {
       sqlite3_result_int(ctx, sqlite3_stmt_busy(pCur->pStmt));
       break;
     }
-    case STMT_COLUMN_MEM: {
-      i = SQLITE_STMTSTATUS_MEMUSED + 
-            STMT_COLUMN_NSCAN - SQLITE_STMTSTATUS_FULLSCAN_STEP;
-      /* Fall thru */
+    case 137: {
+      i = SQLITE_STMTSTATUS_MEMUSED +
+            134 - SQLITE_STMTSTATUS_FULLSCAN_STEP;
+
     }
-    case STMT_COLUMN_NSCAN:
-    case STMT_COLUMN_NSORT:
-    case STMT_COLUMN_NAIDX:
-    case STMT_COLUMN_NSTEP:
-    case STMT_COLUMN_REPREP:
-    case STMT_COLUMN_RUN: {
+    case 134:
+    case 133:
+    case 136:
+    case 132:
+    case 131:
+    case 129: {
       sqlite3_result_int(ctx, sqlite3_stmt_status(pCur->pStmt,
-                      i-STMT_COLUMN_NSCAN+SQLITE_STMTSTATUS_FULLSCAN_STEP, 0));
+                      i-134 +SQLITE_STMTSTATUS_FULLSCAN_STEP, 0));
       break;
     }
   }

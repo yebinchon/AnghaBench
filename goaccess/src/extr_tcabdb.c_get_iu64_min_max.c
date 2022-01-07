@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (void*) ; 
- void* tcadbget (void*,void*,int,int*) ; 
- int /*<<< orphan*/  tcadbiterinit (void*) ; 
- void* tcadbiternext (void*,int*) ; 
+
+
+
+typedef scalar_t__ uint64_t ;
+
+
+ int free (void*) ;
+ void* tcadbget (void*,void*,int,int*) ;
+ int tcadbiterinit (void*) ;
+ void* tcadbiternext (void*,int*) ;
 
 __attribute__((used)) static void
 get_iu64_min_max (void *hash, uint64_t * min, uint64_t * max)
@@ -26,8 +26,8 @@ get_iu64_min_max (void *hash, uint64_t * min, uint64_t * max)
   void *key, *ptr;
 
   tcadbiterinit (hash);
-  while ((key = tcadbiternext (hash, &ksize)) != NULL) {
-    if ((ptr = tcadbget (hash, key, ksize, &sp)) == NULL) {
+  while ((key = tcadbiternext (hash, &ksize)) != ((void*)0)) {
+    if ((ptr = tcadbget (hash, key, ksize, &sp)) == ((void*)0)) {
       free (key);
       continue;
     }

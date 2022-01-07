@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  _putenv (char*) ; 
- int /*<<< orphan*/  _snprintf (char*,int,char*,char*) ; 
- int /*<<< orphan*/  _tzset () ; 
- char* getenv (char*) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int* p___p__daylight () ; 
- int* p___p__dstbias () ; 
- int* p___p__timezone () ; 
- int* p__dstbias () ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+ int _putenv (char*) ;
+ int _snprintf (char*,int,char*,char*) ;
+ int _tzset () ;
+ char* getenv (char*) ;
+ int ok (int,char*,int) ;
+ int* p___p__daylight () ;
+ int* p___p__dstbias () ;
+ int* p___p__timezone () ;
+ int* p__dstbias () ;
+ int skip (char*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test__tzset(void)
 {

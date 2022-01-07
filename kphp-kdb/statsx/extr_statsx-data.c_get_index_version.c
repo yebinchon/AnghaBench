@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int STATSX_INDEX_MAGIC_OLD ; 
- int STATSX_INDEX_MAGIC_V1 ; 
- int STATSX_INDEX_MAGIC_V2 ; 
- int STATSX_INDEX_MAGIC_V3 ; 
- int STATSX_INDEX_MAGIC_V4 ; 
- int custom_version_names ; 
- int index_version ; 
- int /*<<< orphan*/  vkprintf (int /*<<< orphan*/ ,char*,...) ; 
+ int STATSX_INDEX_MAGIC_OLD ;
+ int STATSX_INDEX_MAGIC_V1 ;
+ int STATSX_INDEX_MAGIC_V2 ;
+ int STATSX_INDEX_MAGIC_V3 ;
+ int STATSX_INDEX_MAGIC_V4 ;
+ int custom_version_names ;
+ int index_version ;
+ int vkprintf (int ,char*,...) ;
 
 int get_index_version (int magic) {
   if (magic == STATSX_INDEX_MAGIC_OLD) {

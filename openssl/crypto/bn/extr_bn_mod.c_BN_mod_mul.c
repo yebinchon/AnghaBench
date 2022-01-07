@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  const BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const* BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mul (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_nnmod (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_sqr (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bn_check_top (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int BN_CTX ;
+typedef int const BIGNUM ;
+
+
+ int BN_CTX_end (int *) ;
+ int const* BN_CTX_get (int *) ;
+ int BN_CTX_start (int *) ;
+ int BN_mul (int const*,int const*,int const*,int *) ;
+ int BN_nnmod (int const*,int const*,int const*,int *) ;
+ int BN_sqr (int const*,int const*,int *) ;
+ int bn_check_top (int const*) ;
 
 int BN_mod_mul(BIGNUM *r, const BIGNUM *a, const BIGNUM *b, const BIGNUM *m,
                BN_CTX *ctx)
@@ -33,7 +33,7 @@ int BN_mod_mul(BIGNUM *r, const BIGNUM *a, const BIGNUM *b, const BIGNUM *m,
     bn_check_top(m);
 
     BN_CTX_start(ctx);
-    if ((t = BN_CTX_get(ctx)) == NULL)
+    if ((t = BN_CTX_get(ctx)) == ((void*)0))
         goto err;
     if (a == b) {
         if (!BN_sqr(t, a, ctx))

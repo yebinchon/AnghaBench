@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bURL ;
-typedef  scalar_t__ CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- scalar_t__ CURLE_FAILED_INIT ; 
- scalar_t__ CURLE_OK ; 
- int /*<<< orphan*/  CURLOPT_HEADER ; 
- int /*<<< orphan*/  CURLOPT_PROXY ; 
- int /*<<< orphan*/  CURLOPT_PROXYTYPE ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURLOPT_VERBOSE ; 
- long CURLPROXY_HTTP ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- int TEST_ERR_MAJOR_BAD ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * curl_easy_init () ; 
- scalar_t__ curl_easy_perform (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- scalar_t__ curl_global_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- long libtest_arg2 ; 
- int /*<<< orphan*/  msnprintf (char*,int,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  test_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
+
+
+
+typedef int bURL ;
+typedef scalar_t__ CURLcode ;
+typedef int CURL ;
+
+
+ scalar_t__ CURLE_FAILED_INIT ;
+ scalar_t__ CURLE_OK ;
+ int CURLOPT_HEADER ;
+ int CURLOPT_PROXY ;
+ int CURLOPT_PROXYTYPE ;
+ int CURLOPT_URL ;
+ int CURLOPT_VERBOSE ;
+ long CURLPROXY_HTTP ;
+ int CURL_GLOBAL_ALL ;
+ int TEST_ERR_MAJOR_BAD ;
+ int curl_easy_cleanup (int *) ;
+ int * curl_easy_init () ;
+ scalar_t__ curl_easy_perform (int *) ;
+ int curl_global_cleanup () ;
+ scalar_t__ curl_global_init (int ) ;
+ int fprintf (int ,char*) ;
+ long libtest_arg2 ;
+ int msnprintf (char*,int,char*,char*) ;
+ int stderr ;
+ int test_setopt (int *,int ,...) ;
 
 int test(char *URL)
 {
-  CURL *curl = NULL;
+  CURL *curl = ((void*)0);
   CURLcode res = CURLE_FAILED_INIT;
   char bURL[512];
   msnprintf(bURL, sizeof(bURL),

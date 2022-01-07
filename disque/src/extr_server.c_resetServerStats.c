@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ aof_delayed_fsync; scalar_t__ stat_net_output_bytes; scalar_t__ stat_net_input_bytes; TYPE_1__* inst_metric; scalar_t__ stat_rejected_conn; scalar_t__ stat_fork_rate; scalar_t__ stat_fork_time; scalar_t__ stat_numconnections; scalar_t__ stat_numcommands; } ;
-struct TYPE_3__ {int /*<<< orphan*/  samples; scalar_t__ last_sample_count; int /*<<< orphan*/  last_sample_time; scalar_t__ idx; } ;
+struct TYPE_3__ {int samples; scalar_t__ last_sample_count; int last_sample_time; scalar_t__ idx; } ;
 
-/* Variables and functions */
- int STATS_METRIC_COUNT ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mstime () ; 
- TYPE_2__ server ; 
+
+ int STATS_METRIC_COUNT ;
+ int memset (int ,int ,int) ;
+ int mstime () ;
+ TYPE_2__ server ;
 
 void resetServerStats(void) {
     int j;

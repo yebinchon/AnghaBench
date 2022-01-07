@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
-#define  AND 132 
- int GET_CODE (int /*<<< orphan*/ ) ; 
-#define  IOR 131 
-#define  MINUS 130 
-#define  PLUS 129 
-#define  XOR 128 
- int /*<<< orphan*/  gcc_unreachable () ; 
+
+
+
+typedef int rtx ;
+
+
+
+ int GET_CODE (int ) ;
+
+
+
+
+ int gcc_unreachable () ;
 
 const char *
 arithmetic_instr (rtx op, int shift_first_arg)
 {
   switch (GET_CODE (op))
     {
-    case PLUS:
+    case 129:
       return "add";
 
-    case MINUS:
+    case 130:
       return shift_first_arg ? "rsb" : "sub";
 
-    case IOR:
+    case 131:
       return "orr";
 
-    case XOR:
+    case 128:
       return "eor";
 
-    case AND:
+    case 132:
       return "and";
 
     default:

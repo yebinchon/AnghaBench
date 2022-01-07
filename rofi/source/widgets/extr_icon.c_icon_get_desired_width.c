@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  widget ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int widget ;
 struct TYPE_2__ {int size; } ;
-typedef  TYPE_1__ icon ;
+typedef TYPE_1__ icon ;
 
-/* Variables and functions */
- scalar_t__ widget_padding_get_padding_width (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ widget_padding_get_padding_width (int *) ;
 
 __attribute__((used)) static int icon_get_desired_width ( widget *widget )
 {
-    icon *b    = (icon *) widget;
-    int  width = b->size;
+    icon *b = (icon *) widget;
+    int width = b->size;
     width += widget_padding_get_padding_width ( widget );
     return width;
 }

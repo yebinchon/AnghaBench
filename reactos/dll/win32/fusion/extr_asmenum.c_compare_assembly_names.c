@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  version2 ;
-typedef  int /*<<< orphan*/  version1 ;
-typedef  int /*<<< orphan*/  token2 ;
-typedef  int /*<<< orphan*/  token1 ;
-typedef  int /*<<< orphan*/  name2 ;
-typedef  int /*<<< orphan*/  name1 ;
-typedef  scalar_t__ WORD ;
-typedef  scalar_t__ WCHAR ;
-struct TYPE_4__ {int /*<<< orphan*/  name; } ;
-typedef  scalar_t__ DWORD ;
-typedef  scalar_t__ BYTE ;
-typedef  TYPE_1__ ASMNAME ;
 
-/* Variables and functions */
- scalar_t__ ASM_NAME_CULTURE ; 
- scalar_t__ ASM_NAME_MAJOR_VERSION ; 
- scalar_t__ ASM_NAME_NAME ; 
- scalar_t__ ASM_NAME_PUBLIC_KEY_TOKEN ; 
- int BYTES_PER_TOKEN ; 
- int /*<<< orphan*/  IAssemblyName_GetProperty (int /*<<< orphan*/ ,scalar_t__,scalar_t__*,scalar_t__*) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  TOKEN_LENGTH ; 
- int /*<<< orphan*/  token_to_str (scalar_t__*,scalar_t__*) ; 
- int wcsicmp (scalar_t__*,scalar_t__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int version2 ;
+typedef int version1 ;
+typedef int token2 ;
+typedef int token1 ;
+typedef int name2 ;
+typedef int name1 ;
+typedef scalar_t__ WORD ;
+typedef scalar_t__ WCHAR ;
+struct TYPE_4__ {int name; } ;
+typedef scalar_t__ DWORD ;
+typedef scalar_t__ BYTE ;
+typedef TYPE_1__ ASMNAME ;
+
+
+ scalar_t__ ASM_NAME_CULTURE ;
+ scalar_t__ ASM_NAME_MAJOR_VERSION ;
+ scalar_t__ ASM_NAME_NAME ;
+ scalar_t__ ASM_NAME_PUBLIC_KEY_TOKEN ;
+ int BYTES_PER_TOKEN ;
+ int IAssemblyName_GetProperty (int ,scalar_t__,scalar_t__*,scalar_t__*) ;
+ int MAX_PATH ;
+ int TOKEN_LENGTH ;
+ int token_to_str (scalar_t__*,scalar_t__*) ;
+ int wcsicmp (scalar_t__*,scalar_t__*) ;
 
 __attribute__((used)) static int compare_assembly_names(ASMNAME *asmname1, ASMNAME *asmname2)
 {
@@ -63,7 +63,7 @@ __attribute__((used)) static int compare_assembly_names(ASMNAME *asmname1, ASMNA
         if (version1 > version2) return 1;
     }
 
-    /* FIXME: compare cultures */
+
 
     size = sizeof(token1);
     IAssemblyName_GetProperty(asmname1->name, ASM_NAME_PUBLIC_KEY_TOKEN, token1, &size);

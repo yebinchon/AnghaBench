@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  input ;
 
-/* Variables and functions */
- int /*<<< orphan*/  autoboot_maybe () ; 
- int /*<<< orphan*/ * getenv (char*) ; 
- int /*<<< orphan*/  interp_emit_prompt () ; 
- int /*<<< orphan*/  interp_init () ; 
- int /*<<< orphan*/  interp_run (char*) ; 
- int /*<<< orphan*/  ngets (char*,int) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  setenv (char*,char*,int) ; 
+
+
+
+typedef int input ;
+
+
+ int autoboot_maybe () ;
+ int * getenv (char*) ;
+ int interp_emit_prompt () ;
+ int interp_init () ;
+ int interp_run (char*) ;
+ int ngets (char*,int) ;
+ int printf (char*) ;
+ int setenv (char*,char*,int) ;
 
 void
 interact(void)
 {
-	static char	input[256];			/* big enough? */
+ static char input[256];
 
-	interp_init();
+ interp_init();
 
-	printf("\n");
+ printf("\n");
 
-	/*
-	 * Before interacting, we might want to autoboot.
-	 */
-	autoboot_maybe();
 
-	/*
-	 * Not autobooting, go manual
-	 */
-	printf("\nType '?' for a list of commands, 'help' for more detailed help.\n");
-	if (getenv("prompt") == NULL)
-		setenv("prompt", "${interpret}", 1);
-	if (getenv("interpret") == NULL)
-		setenv("interpret", "OK", 1);
 
-	for (;;) {
-		input[0] = '\0';
-		interp_emit_prompt();
-		ngets(input, sizeof(input));
-		interp_run(input);
-	}
+
+ autoboot_maybe();
+
+
+
+
+ printf("\nType '?' for a list of commands, 'help' for more detailed help.\n");
+ if (getenv("prompt") == ((void*)0))
+  setenv("prompt", "${interpret}", 1);
+ if (getenv("interpret") == ((void*)0))
+  setenv("interpret", "OK", 1);
+
+ for (;;) {
+  input[0] = '\0';
+  interp_emit_prompt();
+  ngets(input, sizeof(input));
+  interp_run(input);
+ }
 }

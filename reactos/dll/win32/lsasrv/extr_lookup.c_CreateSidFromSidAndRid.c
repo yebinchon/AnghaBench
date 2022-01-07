@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
-typedef  int UCHAR ;
-typedef  scalar_t__* PULONG ;
-typedef  int /*<<< orphan*/ * PSID ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * MIDL_user_allocate (scalar_t__) ; 
- int /*<<< orphan*/  RtlIdentifierAuthoritySid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RtlInitializeSid (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ RtlLengthRequiredSid (int) ; 
- int* RtlSubAuthorityCountSid (int /*<<< orphan*/ *) ; 
- scalar_t__* RtlSubAuthoritySid (int /*<<< orphan*/ *,scalar_t__) ; 
+
+
+
+typedef scalar_t__ ULONG ;
+typedef int UCHAR ;
+typedef scalar_t__* PULONG ;
+typedef int * PSID ;
+
+
+ int * MIDL_user_allocate (scalar_t__) ;
+ int RtlIdentifierAuthoritySid (int *) ;
+ int RtlInitializeSid (int *,int ,int) ;
+ scalar_t__ RtlLengthRequiredSid (int) ;
+ int* RtlSubAuthorityCountSid (int *) ;
+ scalar_t__* RtlSubAuthoritySid (int *,scalar_t__) ;
 
 __attribute__((used)) static PSID
 CreateSidFromSidAndRid(PSID SrcSid,
@@ -35,13 +35,13 @@ CreateSidFromSidAndRid(PSID SrcSid,
 
     RidCount = *RtlSubAuthorityCountSid(SrcSid);
     if (RidCount >= 8)
-        return NULL;
+        return ((void*)0);
 
     DstSidSize = RtlLengthRequiredSid(RidCount + 1);
 
     DstSid = MIDL_user_allocate(DstSidSize);
-    if (DstSid == NULL)
-        return NULL;
+    if (DstSid == ((void*)0))
+        return ((void*)0);
 
     RtlInitializeSid(DstSid,
                      RtlIdentifierAuthoritySid(SrcSid),

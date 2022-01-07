@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct treespace_header {int /*<<< orphan*/  used_ints; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct treespace_header {int used_ints; } ;
 struct TYPE_2__ {scalar_t__ data_end; scalar_t__ stale_ads_data_offset; scalar_t__ stale_ads_directory_offset; scalar_t__ fresh_ads_data_offset; scalar_t__ fresh_ads_directory_offset; scalar_t__ word_data_offset; scalar_t__ user_data_offset; scalar_t__ word_directory_offset; } ;
 
-/* Variables and functions */
- scalar_t__ AdSpace ; 
- TYPE_1__ NewHeader ; 
- scalar_t__ WordSpace ; 
- int ancient_ads_loaded ; 
- int /*<<< orphan*/  ancient_ads_loaded_bytes ; 
- double binlog_load_time ; 
- scalar_t__ dyn_cur ; 
- scalar_t__ dyn_first ; 
- scalar_t__ dyn_last ; 
- scalar_t__ dyn_top ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,double,...) ; 
- double idx_end_time ; 
- double idx_start_time ; 
- int /*<<< orphan*/  log_cur_pos () ; 
- int /*<<< orphan*/  log_last_ts ; 
- int max_uid ; 
- int new_fresh_ads ; 
- int new_idx_words ; 
- int new_idx_words_short ; 
- int new_stale_ads ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  tot_fresh_ads_userlist_bytes ; 
- int /*<<< orphan*/  tot_stale_ads_userlist_bytes ; 
- int /*<<< orphan*/  tot_userlists ; 
- int tot_userlists_size ; 
- int tot_users ; 
- int /*<<< orphan*/  word_user_pairs ; 
+
+ scalar_t__ AdSpace ;
+ TYPE_1__ NewHeader ;
+ scalar_t__ WordSpace ;
+ int ancient_ads_loaded ;
+ int ancient_ads_loaded_bytes ;
+ double binlog_load_time ;
+ scalar_t__ dyn_cur ;
+ scalar_t__ dyn_first ;
+ scalar_t__ dyn_last ;
+ scalar_t__ dyn_top ;
+ int fprintf (int ,char*,double,...) ;
+ double idx_end_time ;
+ double idx_start_time ;
+ int log_cur_pos () ;
+ int log_last_ts ;
+ int max_uid ;
+ int new_fresh_ads ;
+ int new_idx_words ;
+ int new_idx_words_short ;
+ int new_stale_ads ;
+ int stderr ;
+ int tot_fresh_ads_userlist_bytes ;
+ int tot_stale_ads_userlist_bytes ;
+ int tot_userlists ;
+ int tot_userlists_size ;
+ int tot_users ;
+ int word_user_pairs ;
 
 __attribute__((used)) static void output_index_stats (void) {
   fprintf (stderr, "binlog loaded in %.3f seconds, binlog position %lld, timestamp %d\n", binlog_load_time, log_cur_pos (), log_last_ts);

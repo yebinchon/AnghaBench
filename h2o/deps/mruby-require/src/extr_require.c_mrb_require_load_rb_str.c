@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
+
+
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int mrb_value ;
 struct TYPE_11__ {scalar_t__ jmp; scalar_t__ exc; } ;
-typedef  TYPE_1__ mrb_state ;
-typedef  int /*<<< orphan*/  mrb_irep ;
-typedef  int mode_t ;
-typedef  int /*<<< orphan*/  jmp_buf ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ mrb_state ;
+typedef int mrb_irep ;
+typedef int mode_t ;
+typedef int jmp_buf ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_LOAD_ERROR ; 
- int MAX_PATH ; 
- int MRB_DUMP_OK ; 
- int /*<<< orphan*/  RSTRING_LEN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RSTRING_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close (int) ; 
- int compile_rb2mrb (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  eval_load_irep (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fdopen (int,char*) ; 
- int /*<<< orphan*/  longjmp (int /*<<< orphan*/ ,int) ; 
- int mkstemp (char*) ; 
- int /*<<< orphan*/  mrb_get_args (TYPE_1__*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_nil_value () ; 
- int /*<<< orphan*/  mrb_raisef (TYPE_1__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * mrb_read_irep_file (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_str_new_cstr (TYPE_1__*,char*) ; 
- char* mrb_str_to_cstr (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_string_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_sys_fail (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  mrb_true_value () ; 
- int /*<<< orphan*/  remove (char*) ; 
- int /*<<< orphan*/  rewind (int /*<<< orphan*/ *) ; 
- int umask (int) ; 
+
+ int E_LOAD_ERROR ;
+ int MAX_PATH ;
+ int MRB_DUMP_OK ;
+ int RSTRING_LEN (int ) ;
+ int RSTRING_PTR (int ) ;
+ int close (int) ;
+ int compile_rb2mrb (TYPE_1__*,int ,int ,char*,int *) ;
+ int eval_load_irep (TYPE_1__*,int *) ;
+ int fclose (int *) ;
+ int * fdopen (int,char*) ;
+ int longjmp (int ,int) ;
+ int mkstemp (char*) ;
+ int mrb_get_args (TYPE_1__*,char*,int *,int *) ;
+ int mrb_nil_value () ;
+ int mrb_raisef (TYPE_1__*,int ,char*,int ) ;
+ int * mrb_read_irep_file (TYPE_1__*,int *) ;
+ int mrb_str_new_cstr (TYPE_1__*,char*) ;
+ char* mrb_str_to_cstr (TYPE_1__*,int ) ;
+ int mrb_string_p (int ) ;
+ int mrb_sys_fail (TYPE_1__*,char*) ;
+ int mrb_true_value () ;
+ int remove (char*) ;
+ int rewind (int *) ;
+ int umask (int) ;
 
 __attribute__((used)) static mrb_value
 mrb_require_load_rb_str(mrb_state *mrb, mrb_value self)
 {
-  char *path_ptr = NULL;
-#if defined(_WIN32) || defined(_WIN64)
-  char tmpname[MAX_PATH] = "tmp.XXXXXXXX";
-#else
+  char *path_ptr = ((void*)0);
+
+
+
   char tmpname[] = "tmp.XXXXXXXX";
-#endif
+
   mode_t mask;
-  FILE *tmpfp = NULL;
+  FILE *tmpfp = ((void*)0);
   int fd = -1, ret;
   mrb_irep *irep;
   mrb_value code, path = mrb_nil_value();
@@ -74,7 +74,7 @@ mrb_require_load_rb_str(mrb_state *mrb, mrb_value self)
   umask(mask);
 
   tmpfp = fdopen(fd, "r+");
-  if (tmpfp == NULL) {
+  if (tmpfp == ((void*)0)) {
     close(fd);
     mrb_sys_fail(mrb, "can't open temporay file at mrb_require_load_rb_str");
   }
@@ -95,7 +95,7 @@ mrb_require_load_rb_str(mrb_state *mrb, mrb_value self)
   if (irep) {
     eval_load_irep(mrb, irep);
   } else if (mrb->exc) {
-    // fail to load
+
     longjmp(*(jmp_buf*)mrb->jmp, 1);
   } else {
     mrb_raisef(mrb, E_LOAD_ERROR, "can't load file -- %S", path);

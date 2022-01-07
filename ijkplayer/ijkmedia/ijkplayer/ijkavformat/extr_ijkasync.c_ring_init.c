@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
-struct TYPE_4__ {int read_back_capacity; int /*<<< orphan*/  fifo; } ;
-typedef  TYPE_1__ RingBuffer ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_fifo_alloc (unsigned int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
+struct TYPE_4__ {int read_back_capacity; int fifo; } ;
+typedef TYPE_1__ RingBuffer ;
+
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int av_fifo_alloc (unsigned int) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static int ring_init(RingBuffer *ring, int64_t capacity, int64_t read_back_capacity)
 {

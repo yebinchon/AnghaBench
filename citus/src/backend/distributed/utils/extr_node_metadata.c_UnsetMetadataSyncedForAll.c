@@ -1,122 +1,122 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  values ;
-typedef  int /*<<< orphan*/  replace ;
-typedef  int /*<<< orphan*/  isnull ;
-typedef  int /*<<< orphan*/ * TupleDesc ;
-struct TYPE_8__ {int /*<<< orphan*/  t_self; } ;
-typedef  int /*<<< orphan*/ * SysScanDesc ;
-typedef  int /*<<< orphan*/  ScanKeyData ;
-typedef  int /*<<< orphan*/ * Relation ;
-typedef  TYPE_1__* HeapTuple ;
-typedef  int Datum ;
-typedef  int /*<<< orphan*/  CatalogIndexState ;
 
-/* Variables and functions */
- int Anum_pg_dist_node_hasmetadata ; 
- int Anum_pg_dist_node_metadatasynced ; 
- int /*<<< orphan*/  BTEqualStrategyNumber ; 
- int BoolGetDatum (int) ; 
- int /*<<< orphan*/  CatalogCloseIndexes (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CatalogOpenIndexes (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CatalogTupleUpdateWithInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CommandCounterIncrement () ; 
- int /*<<< orphan*/  DistNodeRelationId () ; 
- int /*<<< orphan*/  ExclusiveLock ; 
- int /*<<< orphan*/  F_BOOLEQ ; 
- scalar_t__ HeapTupleIsValid (TYPE_1__*) ; 
- int /*<<< orphan*/  InvalidOid ; 
- int Natts_pg_dist_node ; 
- int /*<<< orphan*/  NoLock ; 
- int /*<<< orphan*/ * RelationGetDescr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ScanKeyInit (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  heap_close (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_freetuple (TYPE_1__*) ; 
- TYPE_1__* heap_modify_tuple (TYPE_1__*,int /*<<< orphan*/ *,int*,int*,int*) ; 
- int /*<<< orphan*/ * heap_open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int*,int,int) ; 
- int /*<<< orphan*/ * systable_beginscan (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  systable_endscan (int /*<<< orphan*/ *) ; 
- TYPE_1__* systable_getnext (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int values ;
+typedef int replace ;
+typedef int isnull ;
+typedef int * TupleDesc ;
+struct TYPE_8__ {int t_self; } ;
+typedef int * SysScanDesc ;
+typedef int ScanKeyData ;
+typedef int * Relation ;
+typedef TYPE_1__* HeapTuple ;
+typedef int Datum ;
+typedef int CatalogIndexState ;
+
+
+ int Anum_pg_dist_node_hasmetadata ;
+ int Anum_pg_dist_node_metadatasynced ;
+ int BTEqualStrategyNumber ;
+ int BoolGetDatum (int) ;
+ int CatalogCloseIndexes (int ) ;
+ int CatalogOpenIndexes (int *) ;
+ int CatalogTupleUpdateWithInfo (int *,int *,TYPE_1__*,int ) ;
+ int CommandCounterIncrement () ;
+ int DistNodeRelationId () ;
+ int ExclusiveLock ;
+ int F_BOOLEQ ;
+ scalar_t__ HeapTupleIsValid (TYPE_1__*) ;
+ int InvalidOid ;
+ int Natts_pg_dist_node ;
+ int NoLock ;
+ int * RelationGetDescr (int *) ;
+ int ScanKeyInit (int *,int,int ,int ,int) ;
+ int heap_close (int *,int ) ;
+ int heap_freetuple (TYPE_1__*) ;
+ TYPE_1__* heap_modify_tuple (TYPE_1__*,int *,int*,int*,int*) ;
+ int * heap_open (int ,int ) ;
+ int memset (int*,int,int) ;
+ int * systable_beginscan (int *,int ,int,int *,int,int *) ;
+ int systable_endscan (int *) ;
+ TYPE_1__* systable_getnext (int *) ;
 
 __attribute__((used)) static bool
 UnsetMetadataSyncedForAll(void)
 {
-	bool updatedAtLeastOne = false;
-	Relation relation = NULL;
-	SysScanDesc scanDescriptor = NULL;
-	ScanKeyData scanKey[2];
-	int scanKeyCount = 2;
-	bool indexOK = false;
-	HeapTuple heapTuple = NULL;
-	TupleDesc tupleDescriptor = NULL;
-	CatalogIndexState indstate;
+ bool updatedAtLeastOne = 0;
+ Relation relation = ((void*)0);
+ SysScanDesc scanDescriptor = ((void*)0);
+ ScanKeyData scanKey[2];
+ int scanKeyCount = 2;
+ bool indexOK = 0;
+ HeapTuple heapTuple = ((void*)0);
+ TupleDesc tupleDescriptor = ((void*)0);
+ CatalogIndexState indstate;
 
-	/*
-	 * Concurrent master_update_node() calls might iterate and try to update
-	 * pg_dist_node in different orders. To protect against deadlock, we
-	 * get an exclusive lock here.
-	 */
-	relation = heap_open(DistNodeRelationId(), ExclusiveLock);
-	tupleDescriptor = RelationGetDescr(relation);
-	ScanKeyInit(&scanKey[0], Anum_pg_dist_node_hasmetadata,
-				BTEqualStrategyNumber, F_BOOLEQ, BoolGetDatum(true));
-	ScanKeyInit(&scanKey[1], Anum_pg_dist_node_metadatasynced,
-				BTEqualStrategyNumber, F_BOOLEQ, BoolGetDatum(true));
 
-	indstate = CatalogOpenIndexes(relation);
 
-	scanDescriptor = systable_beginscan(relation,
-										InvalidOid, indexOK,
-										NULL, scanKeyCount, scanKey);
 
-	heapTuple = systable_getnext(scanDescriptor);
-	if (HeapTupleIsValid(heapTuple))
-	{
-		updatedAtLeastOne = true;
-	}
 
-	while (HeapTupleIsValid(heapTuple))
-	{
-		HeapTuple newHeapTuple = NULL;
-		Datum values[Natts_pg_dist_node];
-		bool isnull[Natts_pg_dist_node];
-		bool replace[Natts_pg_dist_node];
 
-		memset(replace, false, sizeof(replace));
-		memset(isnull, false, sizeof(isnull));
-		memset(values, 0, sizeof(values));
+ relation = heap_open(DistNodeRelationId(), ExclusiveLock);
+ tupleDescriptor = RelationGetDescr(relation);
+ ScanKeyInit(&scanKey[0], Anum_pg_dist_node_hasmetadata,
+    BTEqualStrategyNumber, F_BOOLEQ, BoolGetDatum(1));
+ ScanKeyInit(&scanKey[1], Anum_pg_dist_node_metadatasynced,
+    BTEqualStrategyNumber, F_BOOLEQ, BoolGetDatum(1));
 
-		values[Anum_pg_dist_node_metadatasynced - 1] = BoolGetDatum(false);
-		replace[Anum_pg_dist_node_metadatasynced - 1] = true;
+ indstate = CatalogOpenIndexes(relation);
 
-		newHeapTuple = heap_modify_tuple(heapTuple, tupleDescriptor, values, isnull,
-										 replace);
+ scanDescriptor = systable_beginscan(relation,
+          InvalidOid, indexOK,
+          ((void*)0), scanKeyCount, scanKey);
 
-		CatalogTupleUpdateWithInfo(relation, &newHeapTuple->t_self, newHeapTuple,
-								   indstate);
+ heapTuple = systable_getnext(scanDescriptor);
+ if (HeapTupleIsValid(heapTuple))
+ {
+  updatedAtLeastOne = 1;
+ }
 
-		CommandCounterIncrement();
+ while (HeapTupleIsValid(heapTuple))
+ {
+  HeapTuple newHeapTuple = ((void*)0);
+  Datum values[Natts_pg_dist_node];
+  bool isnull[Natts_pg_dist_node];
+  bool replace[Natts_pg_dist_node];
 
-		heap_freetuple(newHeapTuple);
+  memset(replace, 0, sizeof(replace));
+  memset(isnull, 0, sizeof(isnull));
+  memset(values, 0, sizeof(values));
 
-		heapTuple = systable_getnext(scanDescriptor);
-	}
+  values[Anum_pg_dist_node_metadatasynced - 1] = BoolGetDatum(0);
+  replace[Anum_pg_dist_node_metadatasynced - 1] = 1;
 
-	systable_endscan(scanDescriptor);
-	CatalogCloseIndexes(indstate);
-	heap_close(relation, NoLock);
+  newHeapTuple = heap_modify_tuple(heapTuple, tupleDescriptor, values, isnull,
+           replace);
 
-	return updatedAtLeastOne;
+  CatalogTupleUpdateWithInfo(relation, &newHeapTuple->t_self, newHeapTuple,
+           indstate);
+
+  CommandCounterIncrement();
+
+  heap_freetuple(newHeapTuple);
+
+  heapTuple = systable_getnext(scanDescriptor);
+ }
+
+ systable_endscan(scanDescriptor);
+ CatalogCloseIndexes(indstate);
+ heap_close(relation, NoLock);
+
+ return updatedAtLeastOne;
 }

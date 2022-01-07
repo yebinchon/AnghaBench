@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
+
+
+
+typedef int FILE ;
+
+
 
 void xml_out_frame_tlm(FILE*
-                       xmlout)   /* opt, main header only.  May be multiple. */
+                       xmlout)
 {
-    /* Compare j2k_read_tlm()... which doesn't retain anything! */
-    /* Plan:  Since this is only called from main header, not tilepart, use global j2k_default_tcp rather than parameter */
-    /* Main header indents are 10 spaces */
+
+
+
 }

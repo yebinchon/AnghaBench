@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SORT_TYPE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REVERSE_ELEMENTS (int /*<<< orphan*/ *,size_t const,size_t) ; 
- scalar_t__ SORT_CMP (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SORT_SWAP (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int SORT_TYPE ;
+
+
+ int REVERSE_ELEMENTS (int *,size_t const,size_t) ;
+ scalar_t__ SORT_CMP (int ,int ) ;
+ int SORT_SWAP (int ,int ) ;
 
 __attribute__((used)) static size_t COUNT_RUN(SORT_TYPE *dst, const size_t start, const size_t size) {
   size_t curr;
@@ -35,7 +35,7 @@ __attribute__((used)) static size_t COUNT_RUN(SORT_TYPE *dst, const size_t start
   curr = start + 2;
 
   if (SORT_CMP(dst[start], dst[start + 1]) <= 0) {
-    /* increasing run */
+
     while (1) {
       if (curr == size - 1) {
         break;
@@ -50,7 +50,7 @@ __attribute__((used)) static size_t COUNT_RUN(SORT_TYPE *dst, const size_t start
 
     return curr - start;
   } else {
-    /* decreasing run */
+
     while (1) {
       if (curr == size - 1) {
         break;
@@ -63,7 +63,7 @@ __attribute__((used)) static size_t COUNT_RUN(SORT_TYPE *dst, const size_t start
       curr++;
     }
 
-    /* reverse in-place */
+
     REVERSE_ELEMENTS(dst, start, curr - 1);
     return curr - start;
   }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Set ;
 
-/* Variables and functions */
- int EEXIST ; 
- int ENOMEM ; 
- int /*<<< orphan*/  assert (char const*) ; 
- int /*<<< orphan*/  path_hash_ops ; 
- int /*<<< orphan*/  path_simplify (char*,int) ; 
- int set_consume (int /*<<< orphan*/ *,char*) ; 
- int set_ensure_allocated (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- char* strdup (char const*) ; 
+
+
+
+typedef int Set ;
+
+
+ int EEXIST ;
+ int ENOMEM ;
+ int assert (char const*) ;
+ int path_hash_ops ;
+ int path_simplify (char*,int) ;
+ int set_consume (int *,char*) ;
+ int set_ensure_allocated (int **,int *) ;
+ char* strdup (char const*) ;
 
 __attribute__((used)) static int mark_symlink_for_removal(
                 Set **remove_symlinks_to,
@@ -39,7 +39,7 @@ __attribute__((used)) static int mark_symlink_for_removal(
         if (!n)
                 return -ENOMEM;
 
-        path_simplify(n, false);
+        path_simplify(n, 0);
 
         r = set_consume(*remove_symlinks_to, n);
         if (r == -EEXIST)

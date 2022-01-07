@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
 struct TYPE_17__ {struct TYPE_17__* p; } ;
-typedef  TYPE_2__ vlc_tls_t ;
+typedef TYPE_2__ vlc_tls_t ;
 struct TYPE_18__ {TYPE_1__* ops; } ;
-typedef  TYPE_3__ vlc_tls_client_t ;
-typedef  scalar_t__ vlc_tick_t ;
-struct pollfd {int /*<<< orphan*/  events; int /*<<< orphan*/  fd; } ;
+typedef TYPE_3__ vlc_tls_client_t ;
+typedef scalar_t__ vlc_tick_t ;
+struct pollfd {int events; int fd; } ;
 struct TYPE_16__ {int (* handshake ) (TYPE_2__*,char const*,char const*,char**) ;TYPE_2__* (* open ) (TYPE_3__*,TYPE_2__*,char const*,char const* const*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MS_FROM_VLC_TICK (scalar_t__) ; 
- int /*<<< orphan*/  POLLIN ; 
- int /*<<< orphan*/  POLLOUT ; 
- scalar_t__ VLC_TICK_FROM_MS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  cleanup_tls ; 
- int /*<<< orphan*/  msg_Err (TYPE_3__*,char*) ; 
- TYPE_2__* stub1 (TYPE_3__*,TYPE_2__*,char const*,char const* const*) ; 
- int stub2 (TYPE_2__*,char const*,char const*,char**) ; 
- int /*<<< orphan*/  var_InheritInteger (TYPE_3__*,char*) ; 
- int /*<<< orphan*/  vlc_cleanup_pop () ; 
- int /*<<< orphan*/  vlc_cleanup_push (int /*<<< orphan*/ ,TYPE_2__*) ; 
- scalar_t__ vlc_killed () ; 
- int vlc_poll_i11e (struct pollfd*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_restorecancel (int) ; 
- int vlc_savecancel () ; 
- scalar_t__ vlc_tick_now () ; 
- int /*<<< orphan*/  vlc_tls_GetPollFD (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_tls_SessionDelete (TYPE_2__*) ; 
+
+ int MS_FROM_VLC_TICK (scalar_t__) ;
+ int POLLIN ;
+ int POLLOUT ;
+ scalar_t__ VLC_TICK_FROM_MS (int ) ;
+ int assert (int) ;
+ int cleanup_tls ;
+ int msg_Err (TYPE_3__*,char*) ;
+ TYPE_2__* stub1 (TYPE_3__*,TYPE_2__*,char const*,char const* const*) ;
+ int stub2 (TYPE_2__*,char const*,char const*,char**) ;
+ int var_InheritInteger (TYPE_3__*,char*) ;
+ int vlc_cleanup_pop () ;
+ int vlc_cleanup_push (int ,TYPE_2__*) ;
+ scalar_t__ vlc_killed () ;
+ int vlc_poll_i11e (struct pollfd*,int,int ) ;
+ int vlc_restorecancel (int) ;
+ int vlc_savecancel () ;
+ scalar_t__ vlc_tick_now () ;
+ int vlc_tls_GetPollFD (TYPE_2__*,int *) ;
+ int vlc_tls_SessionDelete (TYPE_2__*) ;
 
 vlc_tls_t *vlc_tls_ClientSessionCreate(vlc_tls_client_t *crd, vlc_tls_t *sock,
                                        const char *host, const char *service,
@@ -51,8 +51,8 @@ vlc_tls_t *vlc_tls_ClientSessionCreate(vlc_tls_client_t *crd, vlc_tls_t *sock,
     vlc_tls_t *session = crd->ops->open(crd, sock, host, alpn);
     vlc_restorecancel(canc);
 
-    if (session == NULL)
-        return NULL;
+    if (session == ((void*)0))
+        return ((void*)0);
 
     session->p = sock;
 
@@ -71,7 +71,7 @@ vlc_tls_t *vlc_tls_ClientSessionCreate(vlc_tls_client_t *crd, vlc_tls_t *sock,
                 msg_Err(crd, "TLS session handshake error");
 error:
             vlc_tls_SessionDelete (session);
-            session = NULL;
+            session = ((void*)0);
             break;
         }
 

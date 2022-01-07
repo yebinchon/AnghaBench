@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EXIT_SUCCESS ; 
- int /*<<< orphan*/  HANDLE_ACTION ; 
- int /*<<< orphan*/  INHIBIT_MODE ; 
- int /*<<< orphan*/  KILL_WHO ; 
- int /*<<< orphan*/  SESSION_CLASS ; 
- int /*<<< orphan*/  SESSION_STATE ; 
- int /*<<< orphan*/  SESSION_TYPE ; 
- int /*<<< orphan*/  USER_STATE ; 
- int /*<<< orphan*/  handle_action ; 
- int /*<<< orphan*/  inhibit_mode ; 
- int /*<<< orphan*/  kill_who ; 
- int /*<<< orphan*/  session_class ; 
- int /*<<< orphan*/  session_state ; 
- int /*<<< orphan*/  session_type ; 
- int /*<<< orphan*/  test_table (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  user_state ; 
+ int EXIT_SUCCESS ;
+ int HANDLE_ACTION ;
+ int INHIBIT_MODE ;
+ int KILL_WHO ;
+ int SESSION_CLASS ;
+ int SESSION_STATE ;
+ int SESSION_TYPE ;
+ int USER_STATE ;
+ int handle_action ;
+ int inhibit_mode ;
+ int kill_who ;
+ int session_class ;
+ int session_state ;
+ int session_type ;
+ int test_table (int ,int ) ;
+ int user_state ;
 
 int main(int argc, char **argv) {
         test_table(handle_action, HANDLE_ACTION);

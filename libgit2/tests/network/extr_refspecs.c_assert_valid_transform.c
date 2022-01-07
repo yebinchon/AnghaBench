@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_refspec ;
-struct TYPE_5__ {int /*<<< orphan*/  ptr; } ;
-typedef  TYPE_1__ git_buf ;
 
-/* Variables and functions */
- TYPE_1__ GIT_BUF_INIT ; 
- int /*<<< orphan*/  cl_assert_equal_s (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_buf_dispose (TYPE_1__*) ; 
- int /*<<< orphan*/  git_refspec__dispose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_refspec__parse (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  git_refspec_transform (TYPE_1__*,int /*<<< orphan*/ *,char const*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int git_refspec ;
+struct TYPE_5__ {int ptr; } ;
+typedef TYPE_1__ git_buf ;
+
+
+ TYPE_1__ GIT_BUF_INIT ;
+ int cl_assert_equal_s (char const*,int ) ;
+ int cl_git_pass (int ) ;
+ int git_buf_dispose (TYPE_1__*) ;
+ int git_refspec__dispose (int *) ;
+ int git_refspec__parse (int *,char const*,int) ;
+ int git_refspec_transform (TYPE_1__*,int *,char const*) ;
 
 __attribute__((used)) static void assert_valid_transform(const char *refspec, const char *name, const char *result)
 {
-	git_refspec spec;
-	git_buf buf = GIT_BUF_INIT;
+ git_refspec spec;
+ git_buf buf = GIT_BUF_INIT;
 
-	cl_git_pass(git_refspec__parse(&spec, refspec, true));
-	cl_git_pass(git_refspec_transform(&buf, &spec, name));
-	cl_assert_equal_s(result, buf.ptr);
+ cl_git_pass(git_refspec__parse(&spec, refspec, 1));
+ cl_git_pass(git_refspec_transform(&buf, &spec, name));
+ cl_assert_equal_s(result, buf.ptr);
 
-	git_buf_dispose(&buf);
-	git_refspec__dispose(&spec);
+ git_buf_dispose(&buf);
+ git_refspec__dispose(&spec);
 }

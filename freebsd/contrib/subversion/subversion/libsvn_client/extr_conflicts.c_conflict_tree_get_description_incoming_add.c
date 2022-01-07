@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ svn_wc_operation_t ;
-typedef  scalar_t__ svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ svn_wc_operation_t ;
+typedef scalar_t__ svn_revnum_t ;
+typedef int svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef int svn_client_ctx_t ;
 struct TYPE_8__ {struct conflict_tree_incoming_add_details* tree_conflict_incoming_details; } ;
-typedef  TYPE_1__ svn_client_conflict_t ;
+typedef TYPE_1__ svn_client_conflict_t ;
 struct conflict_tree_incoming_add_details {int dummy; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  conflict_tree_get_incoming_description_generic (char const**,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* describe_incoming_add_upon_merge (struct conflict_tree_incoming_add_details*,int /*<<< orphan*/ ,scalar_t__,char const*,scalar_t__,int /*<<< orphan*/ *) ; 
- char* describe_incoming_add_upon_switch (struct conflict_tree_incoming_add_details*,int /*<<< orphan*/ ,char const*,scalar_t__,int /*<<< orphan*/ *) ; 
- char* describe_incoming_add_upon_update (struct conflict_tree_incoming_add_details*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *) ; 
- char* describe_incoming_reverse_deletion_upon_merge (struct conflict_tree_incoming_add_details*,int /*<<< orphan*/ ,char const*,scalar_t__,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client_conflict_get_incoming_new_repos_location (char const**,scalar_t__*,int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client_conflict_get_incoming_old_repos_location (char const**,scalar_t__*,int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_client_conflict_get_operation (TYPE_1__*) ; 
- int /*<<< orphan*/  svn_client_conflict_tree_get_victim_node_kind (TYPE_1__*) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- scalar_t__ svn_wc_operation_merge ; 
- scalar_t__ svn_wc_operation_switch ; 
- scalar_t__ svn_wc_operation_update ; 
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ char* apr_pstrdup (int *,char const*) ;
+ int conflict_tree_get_incoming_description_generic (char const**,TYPE_1__*,int *,int *,int *) ;
+ char* describe_incoming_add_upon_merge (struct conflict_tree_incoming_add_details*,int ,scalar_t__,char const*,scalar_t__,int *) ;
+ char* describe_incoming_add_upon_switch (struct conflict_tree_incoming_add_details*,int ,char const*,scalar_t__,int *) ;
+ char* describe_incoming_add_upon_update (struct conflict_tree_incoming_add_details*,int ,scalar_t__,int *) ;
+ char* describe_incoming_reverse_deletion_upon_merge (struct conflict_tree_incoming_add_details*,int ,char const*,scalar_t__,scalar_t__,int *) ;
+ int svn_client_conflict_get_incoming_new_repos_location (char const**,scalar_t__*,int *,TYPE_1__*,int *,int *) ;
+ int svn_client_conflict_get_incoming_old_repos_location (char const**,scalar_t__*,int *,TYPE_1__*,int *,int *) ;
+ scalar_t__ svn_client_conflict_get_operation (TYPE_1__*) ;
+ int svn_client_conflict_tree_get_victim_node_kind (TYPE_1__*) ;
+ int * svn_error_trace (int ) ;
+ scalar_t__ svn_wc_operation_merge ;
+ scalar_t__ svn_wc_operation_switch ;
+ scalar_t__ svn_wc_operation_update ;
 
 __attribute__((used)) static svn_error_t *
 conflict_tree_get_description_incoming_add(
@@ -58,7 +58,7 @@ conflict_tree_get_description_incoming_add(
   svn_node_kind_t new_node_kind;
   struct conflict_tree_incoming_add_details *details;
 
-  if (conflict->tree_conflict_incoming_details == NULL)
+  if (conflict->tree_conflict_incoming_details == ((void*)0))
     return svn_error_trace(conflict_tree_get_incoming_description_generic(
                              incoming_change_description, conflict, ctx,
                              result_pool, scratch_pool));

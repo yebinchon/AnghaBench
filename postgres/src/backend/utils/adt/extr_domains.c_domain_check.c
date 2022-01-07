@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ domain_type; } ;
-typedef  scalar_t__ Oid ;
-typedef  int /*<<< orphan*/ * MemoryContext ;
-typedef  TYPE_1__ DomainIOData ;
-typedef  int /*<<< orphan*/  Datum ;
+typedef scalar_t__ Oid ;
+typedef int * MemoryContext ;
+typedef TYPE_1__ DomainIOData ;
+typedef int Datum ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CurrentMemoryContext ; 
- int /*<<< orphan*/  domain_check_input (int /*<<< orphan*/ ,int,TYPE_1__*) ; 
- TYPE_1__* domain_state_setup (scalar_t__,int,int /*<<< orphan*/ *) ; 
+
+ int * CurrentMemoryContext ;
+ int domain_check_input (int ,int,TYPE_1__*) ;
+ TYPE_1__* domain_state_setup (scalar_t__,int,int *) ;
 
 void
 domain_check(Datum value, bool isnull, Oid domainType,
-			 void **extra, MemoryContext mcxt)
+    void **extra, MemoryContext mcxt)
 {
-	DomainIOData *my_extra = NULL;
+ DomainIOData *my_extra = ((void*)0);
 
-	if (mcxt == NULL)
-		mcxt = CurrentMemoryContext;
+ if (mcxt == ((void*)0))
+  mcxt = CurrentMemoryContext;
 
-	/*
-	 * We arrange to look up the needed info just once per series of calls,
-	 * assuming the domain type doesn't change underneath us (which really
-	 * shouldn't happen, but cope if it does).
-	 */
-	if (extra)
-		my_extra = (DomainIOData *) *extra;
-	if (my_extra == NULL || my_extra->domain_type != domainType)
-	{
-		my_extra = domain_state_setup(domainType, true, mcxt);
-		if (extra)
-			*extra = (void *) my_extra;
-	}
 
-	/*
-	 * Do the necessary checks to ensure it's a valid domain value.
-	 */
-	domain_check_input(value, isnull, my_extra);
+
+
+
+
+ if (extra)
+  my_extra = (DomainIOData *) *extra;
+ if (my_extra == ((void*)0) || my_extra->domain_type != domainType)
+ {
+  my_extra = domain_state_setup(domainType, 1, mcxt);
+  if (extra)
+   *extra = (void *) my_extra;
+ }
+
+
+
+
+ domain_check_input(value, isnull, my_extra);
 }

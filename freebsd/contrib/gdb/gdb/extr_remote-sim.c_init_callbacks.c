@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  magic; int /*<<< orphan*/  poll_quit; int /*<<< orphan*/  error; int /*<<< orphan*/  evprintf_filtered; int /*<<< orphan*/  vprintf_filtered; int /*<<< orphan*/  printf_filtered; int /*<<< orphan*/  flush_stderr; int /*<<< orphan*/  write_stderr; int /*<<< orphan*/  flush_stdout; int /*<<< orphan*/  write_stdout; int /*<<< orphan*/  (* init ) (TYPE_1__*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HOST_CALLBACK_MAGIC ; 
- int callbacks_initialized ; 
- TYPE_1__ default_callback ; 
- TYPE_1__ gdb_callback ; 
- int /*<<< orphan*/  gdb_os_error ; 
- int /*<<< orphan*/  gdb_os_evprintf_filtered ; 
- int /*<<< orphan*/  gdb_os_flush_stderr ; 
- int /*<<< orphan*/  gdb_os_flush_stdout ; 
- int /*<<< orphan*/  gdb_os_poll_quit ; 
- int /*<<< orphan*/  gdb_os_printf_filtered ; 
- int /*<<< orphan*/  gdb_os_vprintf_filtered ; 
- int /*<<< orphan*/  gdb_os_write_stderr ; 
- int /*<<< orphan*/  gdb_os_write_stdout ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int magic; int poll_quit; int error; int evprintf_filtered; int vprintf_filtered; int printf_filtered; int flush_stderr; int write_stderr; int flush_stdout; int write_stdout; int (* init ) (TYPE_1__*) ;} ;
+
+
+ int HOST_CALLBACK_MAGIC ;
+ int callbacks_initialized ;
+ TYPE_1__ default_callback ;
+ TYPE_1__ gdb_callback ;
+ int gdb_os_error ;
+ int gdb_os_evprintf_filtered ;
+ int gdb_os_flush_stderr ;
+ int gdb_os_flush_stdout ;
+ int gdb_os_poll_quit ;
+ int gdb_os_printf_filtered ;
+ int gdb_os_vprintf_filtered ;
+ int gdb_os_write_stderr ;
+ int gdb_os_write_stdout ;
+ int stub1 (TYPE_1__*) ;
 
 __attribute__((used)) static void
 init_callbacks (void)

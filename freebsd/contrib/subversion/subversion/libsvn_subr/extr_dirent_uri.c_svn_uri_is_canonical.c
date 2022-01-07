@@ -1,58 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int apr_int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ strncmp (char const*,char*,int) ; 
- scalar_t__ strtol (char*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  svn_path_is_url (char const*) ; 
- scalar_t__* svn_uri__char_validity ; 
+
+
+
+typedef int svn_boolean_t ;
+typedef int apr_size_t ;
+typedef int apr_pool_t ;
+typedef int apr_int64_t ;
+
+
+ int FALSE ;
+ int TRUE ;
+ scalar_t__ strncmp (char const*,char*,int) ;
+ scalar_t__ strtol (char*,int *,int) ;
+ int svn_path_is_url (char const*) ;
+ scalar_t__* svn_uri__char_validity ;
 
 svn_boolean_t
 svn_uri_is_canonical(const char *uri, apr_pool_t *scratch_pool)
 {
   const char *ptr = uri, *seg = uri;
-  const char *schema_data = NULL;
-
-  /* URI is canonical if it has:
-   *  - lowercase URL scheme
-   *  - lowercase URL hostname
-   *  - no '.' segments
-   *  - no closing '/'
-   *  - no '//'
-   *  - uppercase hex-encoded pair digits ("%AB", not "%ab")
-   */
-
+  const char *schema_data = ((void*)0);
   if (*uri == '\0')
     return FALSE;
 
   if (! svn_path_is_url(uri))
     return FALSE;
 
-  /* Skip the scheme. */
+
   while (*ptr && (*ptr != '/') && (*ptr != ':'))
     ptr++;
 
-  /* No scheme?  No good. */
+
   if (! (*ptr == ':' && *(ptr+1) == '/' && *(ptr+2) == '/'))
     return FALSE;
 
-  /* Found a scheme, check that it's all lowercase. */
+
   ptr = uri;
   while (*ptr != ':')
     {
@@ -60,14 +50,14 @@ svn_uri_is_canonical(const char *uri, apr_pool_t *scratch_pool)
         return FALSE;
       ptr++;
     }
-  /* Skip :// */
+
   ptr += 3;
 
-  /* Scheme only?  That works. */
+
   if (! *ptr)
     return TRUE;
 
-  /* This might be the hostname */
+
   seg = ptr;
   while (*ptr && (*ptr != '/') && (*ptr != '@'))
     ptr++;
@@ -75,7 +65,7 @@ svn_uri_is_canonical(const char *uri, apr_pool_t *scratch_pool)
   if (*ptr == '@')
     seg = ptr + 1;
 
-  /* Found a hostname, check that it's all lowercase. */
+
   ptr = seg;
 
   if (*ptr == '[')
@@ -100,7 +90,7 @@ svn_uri_is_canonical(const char *uri, apr_pool_t *scratch_pool)
         ptr++;
       }
 
-  /* Found a portnumber */
+
   if (*ptr == ':')
     {
       apr_int64_t port = 0;
@@ -115,7 +105,7 @@ svn_uri_is_canonical(const char *uri, apr_pool_t *scratch_pool)
         }
 
       if (ptr == schema_data && (*ptr == '/' || *ptr == '\0'))
-        return FALSE; /* Fail on "http://host:" */
+        return FALSE;
 
       if (port == 80 && strncmp(uri, "http:", 5) == 0)
         return FALSE;
@@ -125,25 +115,10 @@ svn_uri_is_canonical(const char *uri, apr_pool_t *scratch_pool)
         return FALSE;
 
       while (*ptr && *ptr != '/')
-        ++ptr; /* Allow "http://host:stuff" */
+        ++ptr;
     }
 
   schema_data = ptr;
-
-#ifdef SVN_USE_DOS_PATHS
-  if (schema_data && *ptr == '/')
-    {
-      /* If this is a file url, ptr now points to the third '/' in
-         file:///C:/path. Check that if we have such a URL the drive
-         letter is in uppercase. */
-      if (strncmp(uri, "file:", 5) == 0 &&
-          ! (*(ptr+1) >= 'A' && *(ptr+1) <= 'Z') &&
-          *(ptr+2) == ':')
-        return FALSE;
-    }
-#endif /* SVN_USE_DOS_PATHS */
-
-  /* Now validate the rest of the URI. */
   seg = ptr;
   while (*ptr && (*ptr != '/'))
     ptr++;
@@ -152,13 +127,13 @@ svn_uri_is_canonical(const char *uri, apr_pool_t *scratch_pool)
       apr_size_t seglen = ptr - seg;
 
       if (seglen == 1 && *seg == '.')
-        return FALSE;  /*  /./   */
+        return FALSE;
 
       if (*ptr == '/' && *(ptr+1) == '/')
-        return FALSE;  /*  //    */
+        return FALSE;
 
       if (! *ptr && *(ptr - 1) == '/' && ptr - 1 != uri)
-        return FALSE;  /* foo/  */
+        return FALSE;
 
       if (! *ptr)
         break;
@@ -180,8 +155,8 @@ svn_uri_is_canonical(const char *uri, apr_pool_t *scratch_pool)
           char digitz[3];
           int val;
 
-          /* Can't usesvn_ctype_isxdigit() because lower case letters are
-             not in our canonical format */
+
+
           if (((*(ptr+1) < '0' || *(ptr+1) > '9'))
               && (*(ptr+1) < 'A' || *(ptr+1) > 'F'))
             return FALSE;
@@ -192,13 +167,13 @@ svn_uri_is_canonical(const char *uri, apr_pool_t *scratch_pool)
           digitz[0] = *(++ptr);
           digitz[1] = *(++ptr);
           digitz[2] = '\0';
-          val = (int)strtol(digitz, NULL, 16);
+          val = (int)strtol(digitz, ((void*)0), 16);
 
           if (svn_uri__char_validity[val])
-            return FALSE; /* Should not have been escaped */
+            return FALSE;
         }
       else if (*ptr != '/' && !svn_uri__char_validity[(unsigned char)*ptr])
-        return FALSE; /* Character should have been escaped */
+        return FALSE;
       ptr++;
     }
 

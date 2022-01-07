@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
-typedef  struct TYPE_17__   TYPE_14__ ;
 
-/* Type definitions */
-struct TYPE_18__ {int /*<<< orphan*/  buffer_info; int /*<<< orphan*/  output_buffers; int /*<<< orphan*/  codec; int /*<<< orphan*/  input_buffers; } ;
-typedef  TYPE_1__ mc_api_sys ;
-struct TYPE_19__ {int b_started; int /*<<< orphan*/  p_obj; TYPE_1__* p_sys; } ;
-typedef  TYPE_2__ mc_api ;
-typedef  int /*<<< orphan*/ * jobject ;
-struct TYPE_20__ {int /*<<< orphan*/  (* DeleteLocalRef ) (TYPE_3__**,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* NewGlobalRef ) (TYPE_3__**,int /*<<< orphan*/ *) ;int /*<<< orphan*/ * (* NewObject ) (TYPE_3__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/ * (* CallObjectMethod ) (TYPE_3__**,int /*<<< orphan*/ ,scalar_t__) ;int /*<<< orphan*/  (* CallVoidMethod ) (TYPE_3__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
-struct TYPE_17__ {int /*<<< orphan*/  buffer_info_ctor; int /*<<< orphan*/  buffer_info_class; scalar_t__ get_output_buffers; scalar_t__ get_input_buffers; int /*<<< orphan*/  start; } ;
-typedef  TYPE_3__* JNIEnv ;
 
-/* Variables and functions */
- scalar_t__ CHECK_EXCEPTION () ; 
- int /*<<< orphan*/  GET_ENV () ; 
- int MC_API_ERROR ; 
- int /*<<< orphan*/  Stop (TYPE_2__*) ; 
- TYPE_14__ jfields ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  msg_Warn (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stub1 (TYPE_3__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub10 (TYPE_3__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stub2 (TYPE_3__**,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  stub3 (TYPE_3__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stub4 (TYPE_3__**,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  stub5 (TYPE_3__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stub6 (TYPE_3__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub7 (TYPE_3__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub8 (TYPE_3__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub9 (TYPE_3__**,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+typedef struct TYPE_17__ TYPE_14__ ;
+
+
+struct TYPE_18__ {int buffer_info; int output_buffers; int codec; int input_buffers; } ;
+typedef TYPE_1__ mc_api_sys ;
+struct TYPE_19__ {int b_started; int p_obj; TYPE_1__* p_sys; } ;
+typedef TYPE_2__ mc_api ;
+typedef int * jobject ;
+struct TYPE_20__ {int (* DeleteLocalRef ) (TYPE_3__**,int *) ;int (* NewGlobalRef ) (TYPE_3__**,int *) ;int * (* NewObject ) (TYPE_3__**,int ,int ) ;int * (* CallObjectMethod ) (TYPE_3__**,int ,scalar_t__) ;int (* CallVoidMethod ) (TYPE_3__**,int ,int ) ;} ;
+struct TYPE_17__ {int buffer_info_ctor; int buffer_info_class; scalar_t__ get_output_buffers; scalar_t__ get_input_buffers; int start; } ;
+typedef TYPE_3__* JNIEnv ;
+
+
+ scalar_t__ CHECK_EXCEPTION () ;
+ int GET_ENV () ;
+ int MC_API_ERROR ;
+ int Stop (TYPE_2__*) ;
+ TYPE_14__ jfields ;
+ int msg_Dbg (int ,char*) ;
+ int msg_Err (int ,char*) ;
+ int msg_Warn (int ,char*) ;
+ int stub1 (TYPE_3__**,int ,int ) ;
+ int stub10 (TYPE_3__**,int *) ;
+ int * stub2 (TYPE_3__**,int ,scalar_t__) ;
+ int stub3 (TYPE_3__**,int *) ;
+ int * stub4 (TYPE_3__**,int ,scalar_t__) ;
+ int stub5 (TYPE_3__**,int *) ;
+ int * stub6 (TYPE_3__**,int ,int ) ;
+ int stub7 (TYPE_3__**,int *) ;
+ int stub8 (TYPE_3__**,int *) ;
+ int stub9 (TYPE_3__**,int *) ;
 
 __attribute__((used)) static int Start(mc_api *api)
 {
     mc_api_sys *p_sys = api->p_sys;
-    JNIEnv* env = NULL;
-    jobject jinput_buffers = NULL;
-    jobject joutput_buffers = NULL;
-    jobject jbuffer_info = NULL;
+    JNIEnv* env = ((void*)0);
+    jobject jinput_buffers = ((void*)0);
+    jobject joutput_buffers = ((void*)0);
+    jobject jbuffer_info = ((void*)0);
 
     GET_ENV();
 
@@ -61,7 +61,7 @@ __attribute__((used)) static int Start(mc_api *api)
         msg_Warn(api->p_obj, "Exception occurred in MediaCodec.start");
         goto error;
     }
-    api->b_started = true;
+    api->b_started = 1;
 
     if (jfields.get_input_buffers && jfields.get_output_buffers)
     {

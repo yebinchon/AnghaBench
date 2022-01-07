@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/ ** kvm_device_ops_table ; 
+
+
+
+typedef size_t u32 ;
+
+
+ int ** kvm_device_ops_table ;
 
 void kvm_unregister_device_ops(u32 type)
 {
-	if (kvm_device_ops_table[type] != NULL)
-		kvm_device_ops_table[type] = NULL;
+ if (kvm_device_ops_table[type] != ((void*)0))
+  kvm_device_ops_table[type] = ((void*)0);
 }

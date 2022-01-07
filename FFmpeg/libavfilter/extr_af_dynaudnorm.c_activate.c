@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
-struct TYPE_6__ {TYPE_1__* priv; int /*<<< orphan*/ ** outputs; int /*<<< orphan*/ ** inputs; } ;
-struct TYPE_5__ {int eof; scalar_t__ frame_len; scalar_t__ delay; int /*<<< orphan*/  pts; } ;
-typedef  TYPE_1__ DynamicAudioNormalizerContext ;
-typedef  int /*<<< orphan*/  AVFrame ;
-typedef  int /*<<< orphan*/  AVFilterLink ;
-typedef  TYPE_2__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR_EOF ; 
- int FFERROR_NOT_READY ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_STATUS_BACK (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_WANTED (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_filter_set_ready (TYPE_2__*,int) ; 
- scalar_t__ ff_inlink_acknowledge_status (int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *) ; 
- int ff_inlink_consume_samples (int /*<<< orphan*/ *,scalar_t__,scalar_t__,int /*<<< orphan*/ **) ; 
- scalar_t__ ff_inlink_queued_samples (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_outlink_set_status (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int filter_frame (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int flush (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+struct TYPE_6__ {TYPE_1__* priv; int ** outputs; int ** inputs; } ;
+struct TYPE_5__ {int eof; scalar_t__ frame_len; scalar_t__ delay; int pts; } ;
+typedef TYPE_1__ DynamicAudioNormalizerContext ;
+typedef int AVFrame ;
+typedef int AVFilterLink ;
+typedef TYPE_2__ AVFilterContext ;
+
+
+ int AVERROR_EOF ;
+ int FFERROR_NOT_READY ;
+ int FF_FILTER_FORWARD_STATUS_BACK (int *,int *) ;
+ int FF_FILTER_FORWARD_WANTED (int *,int *) ;
+ int ff_filter_set_ready (TYPE_2__*,int) ;
+ scalar_t__ ff_inlink_acknowledge_status (int *,int*,int *) ;
+ int ff_inlink_consume_samples (int *,scalar_t__,scalar_t__,int **) ;
+ scalar_t__ ff_inlink_queued_samples (int *) ;
+ int ff_outlink_set_status (int *,int,int ) ;
+ int filter_frame (int *,int *) ;
+ int flush (int *) ;
 
 __attribute__((used)) static int activate(AVFilterContext *ctx)
 {
     AVFilterLink *inlink = ctx->inputs[0];
     AVFilterLink *outlink = ctx->outputs[0];
     DynamicAudioNormalizerContext *s = ctx->priv;
-    AVFrame *in = NULL;
+    AVFrame *in = ((void*)0);
     int ret = 0, status;
     int64_t pts;
 

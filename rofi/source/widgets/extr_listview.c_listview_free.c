@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  widget ;
-struct TYPE_3__ {unsigned int cur_elements; int /*<<< orphan*/  scrollbar; struct TYPE_3__* listview_name; struct TYPE_3__* boxes; int /*<<< orphan*/  box; } ;
-typedef  TYPE_1__ listview ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WIDGET (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_free (TYPE_1__*) ; 
- int /*<<< orphan*/  widget_free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int widget ;
+struct TYPE_3__ {unsigned int cur_elements; int scrollbar; struct TYPE_3__* listview_name; struct TYPE_3__* boxes; int box; } ;
+typedef TYPE_1__ listview ;
+
+
+ int WIDGET (int ) ;
+ int g_free (TYPE_1__*) ;
+ int widget_free (int ) ;
 
 __attribute__((used)) static void listview_free ( widget *wid )
 {

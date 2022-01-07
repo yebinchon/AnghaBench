@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct net_device {int /*<<< orphan*/  base_addr; int /*<<< orphan*/  name; int /*<<< orphan*/  irq; } ;
+
+
+
+
+struct net_device {int base_addr; int name; int irq; } ;
 struct mipsnet_regs {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQF_SHARED ; 
- int /*<<< orphan*/  MIPSNET_INTCTL_TESTBIT ; 
- int /*<<< orphan*/  interruptControl ; 
- int /*<<< orphan*/  mipsnet_interrupt ; 
- int /*<<< orphan*/  netif_start_queue (struct net_device*) ; 
- int /*<<< orphan*/  outl (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  regaddr (struct net_device*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  release_region (int /*<<< orphan*/ ,int) ; 
- int request_irq (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
+
+ int IRQF_SHARED ;
+ int MIPSNET_INTCTL_TESTBIT ;
+ int interruptControl ;
+ int mipsnet_interrupt ;
+ int netif_start_queue (struct net_device*) ;
+ int outl (int ,int ) ;
+ int regaddr (struct net_device*,int ) ;
+ int release_region (int ,int) ;
+ int request_irq (int ,int *,int ,int ,void*) ;
 
 __attribute__((used)) static int mipsnet_open(struct net_device *dev)
 {
-	int err;
+ int err;
 
-	err = request_irq(dev->irq, &mipsnet_interrupt,
-			  IRQF_SHARED, dev->name, (void *) dev);
-	if (err) {
-		release_region(dev->base_addr, sizeof(struct mipsnet_regs));
-		return err;
-	}
+ err = request_irq(dev->irq, &mipsnet_interrupt,
+     IRQF_SHARED, dev->name, (void *) dev);
+ if (err) {
+  release_region(dev->base_addr, sizeof(struct mipsnet_regs));
+  return err;
+ }
 
-	netif_start_queue(dev);
+ netif_start_queue(dev);
 
-	/* test interrupt handler */
-	outl(MIPSNET_INTCTL_TESTBIT, regaddr(dev, interruptControl));
 
-	return 0;
+ outl(MIPSNET_INTCTL_TESTBIT, regaddr(dev, interruptControl));
+
+ return 0;
 }

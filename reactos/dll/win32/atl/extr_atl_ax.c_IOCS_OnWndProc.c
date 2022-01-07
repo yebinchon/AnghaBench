@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPARAM ;
-typedef  int /*<<< orphan*/  WNDPROC ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_7__ {int /*<<< orphan*/  OrigWndProc; } ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  TYPE_1__ IOCS ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CallWindowProcW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HIWORD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IOCS_Detach (TYPE_1__*) ; 
- int /*<<< orphan*/  IOCS_OnDraw (TYPE_1__*) ; 
- int /*<<< orphan*/  IOCS_OnShow (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IOCS_OnSize (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LOWORD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetRect (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
-#define  WM_DESTROY 131 
-#define  WM_PAINT 130 
-#define  WM_SHOWWINDOW 129 
-#define  WM_SIZE 128 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int WPARAM ;
+typedef int WNDPROC ;
+typedef int UINT ;
+struct TYPE_7__ {int OrigWndProc; } ;
+typedef int RECT ;
+typedef int LRESULT ;
+typedef int LPARAM ;
+typedef TYPE_1__ IOCS ;
+typedef int HWND ;
+typedef int BOOL ;
+
+
+ int CallWindowProcW (int ,int ,int ,int ,int ) ;
+ int HIWORD (int ) ;
+ int IOCS_Detach (TYPE_1__*) ;
+ int IOCS_OnDraw (TYPE_1__*) ;
+ int IOCS_OnShow (TYPE_1__*,int ) ;
+ int IOCS_OnSize (TYPE_1__*,int *) ;
+ int LOWORD (int ) ;
+ int SetRect (int *,int ,int ,int ,int ) ;
+
+
+
+
 
 __attribute__((used)) static LRESULT IOCS_OnWndProc( IOCS *This, HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )
 {
@@ -42,20 +42,20 @@ __attribute__((used)) static LRESULT IOCS_OnWndProc( IOCS *This, HWND hWnd, UINT
 
     switch( uMsg )
     {
-        case WM_DESTROY:
+        case 131:
             IOCS_Detach( This );
             break;
-        case WM_SIZE:
+        case 128:
             {
                 RECT r;
                 SetRect(&r, 0, 0, LOWORD(lParam), HIWORD(lParam));
                 IOCS_OnSize( This, &r );
             }
             break;
-        case WM_SHOWWINDOW:
+        case 129:
             IOCS_OnShow( This, (BOOL) wParam );
             break;
-        case WM_PAINT:
+        case 130:
             IOCS_OnDraw( This );
             break;
     }

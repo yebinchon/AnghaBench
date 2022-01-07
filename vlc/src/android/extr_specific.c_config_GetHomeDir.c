@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ EEXIST ; 
- int asprintf (char**,char*,char*,char const*) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  free (char*) ; 
- char* getenv (char*) ; 
- char* strdup (char const*) ; 
- int vlc_mkdir (char*,int) ; 
+ scalar_t__ EEXIST ;
+ int asprintf (char**,char*,char*,char const*) ;
+ scalar_t__ errno ;
+ int free (char*) ;
+ char* getenv (char*) ;
+ char* strdup (char const*) ;
+ int vlc_mkdir (char*,int) ;
 
 __attribute__((used)) static char *config_GetHomeDir(const char *psz_dir, const char *psz_default_dir)
 {
     char *psz_home = getenv("HOME");
-    if (psz_home == NULL)
+    if (psz_home == ((void*)0))
         goto fallback;
 
-    if (psz_dir == NULL)
+    if (psz_dir == ((void*)0))
         return strdup(psz_home);
 
     char *psz_fullpath;
@@ -40,5 +32,5 @@ __attribute__((used)) static char *config_GetHomeDir(const char *psz_dir, const 
     return psz_fullpath;
 
 fallback:
-    return psz_default_dir != NULL ? strdup(psz_default_dir) : NULL;
+    return psz_default_dir != ((void*)0) ? strdup(psz_default_dir) : ((void*)0);
 }

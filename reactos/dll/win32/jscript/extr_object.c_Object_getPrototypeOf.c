@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vdisp_t ;
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int vdisp_t ;
+typedef int script_ctx_t ;
+typedef int jsval_t ;
 struct TYPE_3__ {scalar_t__ prototype; } ;
-typedef  TYPE_1__ jsdisp_t ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ jsdisp_t ;
+typedef int WORD ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_NOTIMPL ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_jsval (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_object (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_object_instance (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_addref (scalar_t__) ; 
- int /*<<< orphan*/  jsval_null () ; 
- int /*<<< orphan*/  jsval_obj (int /*<<< orphan*/ ) ; 
- TYPE_1__* to_jsdisp (int /*<<< orphan*/ ) ; 
+
+ int E_NOTIMPL ;
+ int FIXME (char*) ;
+ int S_OK ;
+ int TRACE (char*,int ) ;
+ int debugstr_jsval (int ) ;
+ int get_object (int ) ;
+ int is_object_instance (int ) ;
+ int jsdisp_addref (scalar_t__) ;
+ int jsval_null () ;
+ int jsval_obj (int ) ;
+ TYPE_1__* to_jsdisp (int ) ;
 
 __attribute__((used)) static HRESULT Object_getPrototypeOf(script_ctx_t *ctx, vdisp_t *jsthis, WORD flags,
                                      unsigned argc, jsval_t *argv, jsval_t *r)

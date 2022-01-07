@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  mt19937_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mt19937_next (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint32_t ;
+typedef int mt19937_state ;
+
+
+ int mt19937_next (int *) ;
 
 __attribute__((used)) static inline uint32_t mt19937_next32(mt19937_state *state) {
   return mt19937_next(state);

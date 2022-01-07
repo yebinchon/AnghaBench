@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
 struct TYPE_6__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ sout_stream_t ;
-struct TYPE_7__ {int i_es; struct TYPE_7__* psz_destination; struct TYPE_7__* psz_vod_session; struct TYPE_7__* psz_sdp_file; struct TYPE_7__* psz_sdp; scalar_t__ p_httpd_host; scalar_t__ p_httpd_file; int /*<<< orphan*/  lock_es; int /*<<< orphan*/  lock_ts; int /*<<< orphan*/  lock_sdp; int /*<<< orphan*/ * rtsp; scalar_t__ packet; int /*<<< orphan*/  p_grab; int /*<<< orphan*/ * es; scalar_t__ p_mux; } ;
-typedef  TYPE_2__ sout_stream_sys_t ;
+typedef TYPE_1__ sout_stream_t ;
+struct TYPE_7__ {int i_es; struct TYPE_7__* psz_destination; struct TYPE_7__* psz_vod_session; struct TYPE_7__* psz_sdp_file; struct TYPE_7__* psz_sdp; scalar_t__ p_httpd_host; scalar_t__ p_httpd_file; int lock_es; int lock_ts; int lock_sdp; int * rtsp; scalar_t__ packet; int p_grab; int * es; scalar_t__ p_mux; } ;
+typedef TYPE_2__ sout_stream_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Del (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RtspUnsetup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  block_Release (scalar_t__) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  httpd_FileDelete (scalar_t__) ; 
- int /*<<< orphan*/  httpd_HostDelete (scalar_t__) ; 
- int /*<<< orphan*/  sout_AccessOutDelete (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sout_MuxDelete (scalar_t__) ; 
- int /*<<< orphan*/  unlink (TYPE_2__*) ; 
- int /*<<< orphan*/  vlc_mutex_destroy (int /*<<< orphan*/ *) ; 
+
+ int Del (TYPE_1__*,int ) ;
+ int RtspUnsetup (int *) ;
+ int assert (int) ;
+ int block_Release (scalar_t__) ;
+ int free (TYPE_2__*) ;
+ int httpd_FileDelete (scalar_t__) ;
+ int httpd_HostDelete (scalar_t__) ;
+ int sout_AccessOutDelete (int ) ;
+ int sout_MuxDelete (scalar_t__) ;
+ int unlink (TYPE_2__*) ;
+ int vlc_mutex_destroy (int *) ;
 
 __attribute__((used)) static void Close( vlc_object_t * p_this )
 {
-    sout_stream_t     *p_stream = (sout_stream_t*)p_this;
+    sout_stream_t *p_stream = (sout_stream_t*)p_this;
     sout_stream_sys_t *p_sys = p_stream->p_sys;
 
     if( p_sys->p_mux )
@@ -51,7 +51,7 @@ __attribute__((used)) static void Close( vlc_object_t * p_this )
         }
     }
 
-    if( p_sys->rtsp != NULL )
+    if( p_sys->rtsp != ((void*)0) )
         RtspUnsetup( p_sys->rtsp );
 
     vlc_mutex_destroy( &p_sys->lock_sdp );
@@ -66,7 +66,7 @@ __attribute__((used)) static void Close( vlc_object_t * p_this )
 
     free( p_sys->psz_sdp );
 
-    if( p_sys->psz_sdp_file != NULL )
+    if( p_sys->psz_sdp_file != ((void*)0) )
     {
         unlink( p_sys->psz_sdp_file );
         free( p_sys->psz_sdp_file );

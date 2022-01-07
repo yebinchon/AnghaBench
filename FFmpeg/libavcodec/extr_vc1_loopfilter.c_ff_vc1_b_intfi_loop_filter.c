@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-struct TYPE_9__ {int linesize; size_t mb_x; size_t mb_stride; scalar_t__ mb_y; scalar_t__ start_mb_y; int uvlinesize; int end_mb_y; int mb_width; int /*<<< orphan*/ ** dest; scalar_t__ first_slice_line; TYPE_1__* avctx; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_9__ {int linesize; size_t mb_x; size_t mb_stride; scalar_t__ mb_y; scalar_t__ start_mb_y; int uvlinesize; int end_mb_y; int mb_width; int ** dest; scalar_t__ first_slice_line; TYPE_1__* avctx; } ;
 struct TYPE_8__ {int* cbp; int* ttblk; TYPE_3__ s; } ;
-typedef  TYPE_2__ VC1Context ;
+typedef TYPE_2__ VC1Context ;
 struct TYPE_7__ {int flags; } ;
-typedef  TYPE_3__ MpegEncContext ;
+typedef TYPE_3__ MpegEncContext ;
 
-/* Variables and functions */
- int AV_CODEC_FLAG_GRAY ; 
- int BOTTOM_EDGE ; 
- scalar_t__ CONFIG_GRAY ; 
- int LEFT_EDGE ; 
- int RIGHT_EDGE ; 
- int TOP_EDGE ; 
- int /*<<< orphan*/  vc1_b_h_intfi_loop_filter (TYPE_2__*,int /*<<< orphan*/ *,int*,int*,int,int) ; 
- int /*<<< orphan*/  vc1_b_v_intfi_loop_filter (TYPE_2__*,int /*<<< orphan*/ *,int*,int*,int,int) ; 
+
+ int AV_CODEC_FLAG_GRAY ;
+ int BOTTOM_EDGE ;
+ scalar_t__ CONFIG_GRAY ;
+ int LEFT_EDGE ;
+ int RIGHT_EDGE ;
+ int TOP_EDGE ;
+ int vc1_b_h_intfi_loop_filter (TYPE_2__*,int *,int*,int*,int,int) ;
+ int vc1_b_v_intfi_loop_filter (TYPE_2__*,int *,int*,int*,int,int) ;
 
 void ff_vc1_b_intfi_loop_filter(VC1Context *v)
 {
@@ -41,12 +41,12 @@ void ff_vc1_b_intfi_loop_filter(VC1Context *v)
     uint32_t flags = 0;
     int i;
 
-    /* Within a MB, the vertical loop filter always runs before the horizontal.
-     * To accomplish that, we run the V loop filter on all applicable
-     * horizontal borders of the MB above the currently decoded MB. Then,
-     * we wait for the next loop filter iteration to do H loop filter on all
-     * applicable vertical borders of this MB. Therefore, the loop filter
-     * trails by one row and one column relative to the decoding loop. */
+
+
+
+
+
+
     if (!s->first_slice_line) {
         dest = s->dest[0] - 16 * s->linesize;
         cbp = &v->cbp[s->mb_x - s->mb_stride];

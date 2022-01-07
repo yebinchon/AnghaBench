@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wakeup_source {int dummy; } ;
-struct epitem {TYPE_1__* ep; int /*<<< orphan*/  ws; } ;
-struct TYPE_2__ {int /*<<< orphan*/  mtx; } ;
+struct epitem {TYPE_1__* ep; int ws; } ;
+struct TYPE_2__ {int mtx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lockdep_is_held (int /*<<< orphan*/ *) ; 
- struct wakeup_source* rcu_dereference_check (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int lockdep_is_held (int *) ;
+ struct wakeup_source* rcu_dereference_check (int ,int ) ;
 
 __attribute__((used)) static inline struct wakeup_source *ep_wakeup_source(struct epitem *epi)
 {
-	return rcu_dereference_check(epi->ws, lockdep_is_held(&epi->ep->mtx));
+ return rcu_dereference_check(epi->ws, lockdep_is_held(&epi->ep->mtx));
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  MultiUnaryNode ;
-typedef  int /*<<< orphan*/  MultiNode ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ChildNode (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetChild (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int MultiUnaryNode ;
+typedef int MultiNode ;
+
+
+ int * ChildNode (int *) ;
+ int SetChild (int *,int *) ;
 
 __attribute__((used)) static void
 PlaceUnaryNodeChild(MultiUnaryNode *unaryNode, MultiUnaryNode *newChildNode)
 {
-	MultiNode *oldChildNode = ChildNode(unaryNode);
+ MultiNode *oldChildNode = ChildNode(unaryNode);
 
-	SetChild(unaryNode, (MultiNode *) newChildNode);
-	SetChild(newChildNode, oldChildNode);
+ SetChild(unaryNode, (MultiNode *) newChildNode);
+ SetChild(newChildNode, oldChildNode);
 }

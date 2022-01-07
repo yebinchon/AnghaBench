@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {size_t nlist; int /*<<< orphan*/ ** list; } ;
-typedef  int /*<<< orphan*/  Char ;
 
-/* Variables and functions */
- scalar_t__ Strcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_1__ tw_item ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {size_t nlist; int ** list; } ;
+typedef int Char ;
+
+
+ scalar_t__ Strcmp (int *,int *) ;
+ TYPE_1__ tw_item ;
 
 Char *
 tw_item_find(Char *str)
 {
     size_t i;
 
-    if (tw_item.list == NULL || str == NULL)
-	return NULL;
+    if (tw_item.list == ((void*)0) || str == ((void*)0))
+ return ((void*)0);
 
     for (i = 0; i < tw_item.nlist; i++)
-	if (tw_item.list[i] != NULL && Strcmp(tw_item.list[i], str) == 0)
-	    return tw_item.list[i];
-    return NULL;
+ if (tw_item.list[i] != ((void*)0) && Strcmp(tw_item.list[i], str) == 0)
+     return tw_item.list[i];
+    return ((void*)0);
 }

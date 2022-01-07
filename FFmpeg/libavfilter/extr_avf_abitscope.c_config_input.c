@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_10__ {TYPE_2__* priv; } ;
-struct TYPE_9__ {int channels; scalar_t__ format; int /*<<< orphan*/  sample_rate; TYPE_4__* dst; } ;
-struct TYPE_7__ {int /*<<< orphan*/  num; int /*<<< orphan*/  den; } ;
-struct TYPE_8__ {int nb_channels; int depth; int* fg; int /*<<< orphan*/  colors; TYPE_1__ frame_rate; int /*<<< orphan*/  nb_samples; } ;
-typedef  TYPE_2__ AudioBitScopeContext ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
+struct TYPE_9__ {int channels; scalar_t__ format; int sample_rate; TYPE_4__* dst; } ;
+struct TYPE_7__ {int num; int den; } ;
+struct TYPE_8__ {int nb_channels; int depth; int* fg; int colors; TYPE_1__ frame_rate; int nb_samples; } ;
+typedef TYPE_2__ AudioBitScopeContext ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ AV_SAMPLE_FMT_S16P ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  FFMAX (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_free (char*) ; 
- int* av_malloc_array (int,int) ; 
- int /*<<< orphan*/  av_parse_color (int*,char*,int,TYPE_4__*) ; 
- int /*<<< orphan*/  av_rescale (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* av_strdup (int /*<<< orphan*/ ) ; 
- char* av_strtok (char*,char*,char**) ; 
+
+ int AVERROR (int ) ;
+ scalar_t__ AV_SAMPLE_FMT_S16P ;
+ int ENOMEM ;
+ int FFMAX (int,int ) ;
+ int av_free (char*) ;
+ int* av_malloc_array (int,int) ;
+ int av_parse_color (int*,char*,int,TYPE_4__*) ;
+ int av_rescale (int ,int ,int ) ;
+ char* av_strdup (int ) ;
+ char* av_strtok (char*,char*,char**) ;
 
 __attribute__((used)) static int config_input(AVFilterLink *inlink)
 {
     AVFilterContext *ctx = inlink->dst;
     AudioBitScopeContext *s = ctx->priv;
     int ch;
-    char *colors, *saveptr = NULL;
+    char *colors, *saveptr = ((void*)0);
 
     s->nb_samples = FFMAX(1, av_rescale(inlink->sample_rate, s->frame_rate.den, s->frame_rate.num));
     s->nb_channels = inlink->channels;
@@ -58,7 +58,7 @@ __attribute__((used)) static int config_input(AVFilterLink *inlink)
         uint8_t fg[4] = { 0xff, 0xff, 0xff, 0xff };
         char *color;
 
-        color = av_strtok(ch == 0 ? colors : NULL, " |", &saveptr);
+        color = av_strtok(ch == 0 ? colors : ((void*)0), " |", &saveptr);
         if (color)
             av_parse_color(fg, color, -1, ctx);
         s->fg[4 * ch + 0] = fg[0];

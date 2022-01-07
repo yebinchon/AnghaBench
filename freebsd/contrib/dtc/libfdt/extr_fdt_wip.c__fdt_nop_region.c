@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fdt32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FDT_NOP ; 
- int /*<<< orphan*/  cpu_to_fdt32 (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int fdt32_t ;
+
+
+ int FDT_NOP ;
+ int cpu_to_fdt32 (int ) ;
 
 __attribute__((used)) static void _fdt_nop_region(void *start, int len)
 {
-	fdt32_t *p;
+ fdt32_t *p;
 
-	for (p = start; (char *)p < ((char *)start + len); p++)
-		*p = cpu_to_fdt32(FDT_NOP);
+ for (p = start; (char *)p < ((char *)start + len); p++)
+  *p = cpu_to_fdt32(FDT_NOP);
 }

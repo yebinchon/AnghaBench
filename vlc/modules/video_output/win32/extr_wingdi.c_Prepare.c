@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_2__* sys; } ;
-typedef  TYPE_1__ vout_display_t ;
-struct TYPE_5__ {int /*<<< orphan*/  i_pic_pitch; int /*<<< orphan*/  p_pic_buffer; } ;
-typedef  TYPE_2__ vout_display_sys_t ;
-typedef  int /*<<< orphan*/ * vlc_tick_t ;
-typedef  int /*<<< orphan*/  subpicture_t ;
-typedef  int /*<<< orphan*/  picture_t ;
+typedef TYPE_1__ vout_display_t ;
+struct TYPE_5__ {int i_pic_pitch; int p_pic_buffer; } ;
+typedef TYPE_2__ vout_display_sys_t ;
+typedef int * vlc_tick_t ;
+typedef int subpicture_t ;
+typedef int picture_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLC_UNUSED (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  picture_CopyPixels (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  picture_UpdatePlanes (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int VLC_UNUSED (int *) ;
+ int picture_CopyPixels (int *,int *) ;
+ int picture_UpdatePlanes (int *,int ,int ) ;
 
 __attribute__((used)) static void Prepare(vout_display_t *vd, picture_t *picture, subpicture_t *subpic,
                     vlc_tick_t date)

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ptid_t ;
-typedef  enum target_signal { ____Placeholder_target_signal } target_signal ;
 
-/* Variables and functions */
- int PIDGET (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  inferior_ptid ; 
- int /*<<< orphan*/  printf_filtered (char*,int,int) ; 
- int resume_siggnal ; 
- int resume_step ; 
- scalar_t__ sr_get_debug () ; 
+
+
+
+typedef int ptid_t ;
+typedef enum target_signal { ____Placeholder_target_signal } target_signal ;
+
+
+ int PIDGET (int ) ;
+ int error (char*) ;
+ int inferior_ptid ;
+ int printf_filtered (char*,int,int) ;
+ int resume_siggnal ;
+ int resume_step ;
+ scalar_t__ sr_get_debug () ;
 
 __attribute__((used)) static void
 gdbsim_resume (ptid_t ptid, int step, enum target_signal siggnal)

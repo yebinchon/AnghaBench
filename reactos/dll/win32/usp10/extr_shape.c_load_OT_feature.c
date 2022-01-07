@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ userLang; scalar_t__ GPOS_Table; scalar_t__ GSUB_Table; } ;
-typedef  TYPE_1__ ScriptCache ;
-typedef  int /*<<< orphan*/  SCRIPT_ANALYSIS ;
-typedef  int OPENTYPE_TAG ;
-typedef  int /*<<< orphan*/  LoadedFeature ;
-typedef  int /*<<< orphan*/  HDC ;
+typedef TYPE_1__ ScriptCache ;
+typedef int SCRIPT_ANALYSIS ;
+typedef int OPENTYPE_TAG ;
+typedef int LoadedFeature ;
+typedef int HDC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int MS_MAKE_TAG (char const,char const,char const,char const) ; 
- int /*<<< orphan*/  OpenType_GetFontFeatureTags (TYPE_1__*,int,int,int /*<<< orphan*/ ,int,char,int,int*,int*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_an (char const*,int) ; 
- int get_opentype_script (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__*,int) ; 
+
+ int FALSE ;
+ int MS_MAKE_TAG (char const,char const,char const,char const) ;
+ int OpenType_GetFontFeatureTags (TYPE_1__*,int,int,int ,int,char,int,int*,int*,int **) ;
+ int TRACE (char*,int ,int *) ;
+ int debugstr_an (char const*,int) ;
+ int get_opentype_script (int ,int *,TYPE_1__*,int) ;
 
 __attribute__((used)) static LoadedFeature* load_OT_feature(HDC hdc, SCRIPT_ANALYSIS *psa, ScriptCache *psc, char tableType, const char* feat)
 {
-    LoadedFeature *feature = NULL;
+    LoadedFeature *feature = ((void*)0);
 
     if (psc->GSUB_Table || psc->GPOS_Table)
     {
@@ -51,7 +51,7 @@ __attribute__((used)) static LoadedFeature* load_OT_feature(HDC hdc, SCRIPT_ANAL
 
         } while(attempt && !feature);
 
-        /* try in the default (latin) table */
+
         if (!feature)
         {
             if (!script)

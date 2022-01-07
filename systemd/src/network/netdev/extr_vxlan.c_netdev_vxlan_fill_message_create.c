@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_2__ ;
-typedef  struct TYPE_22__   TYPE_1__ ;
-typedef  struct TYPE_21__   TYPE_17__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_23__ TYPE_2__ ;
+typedef struct TYPE_22__ TYPE_1__ ;
+typedef struct TYPE_21__ TYPE_17__ ;
+
+
 struct ifla_vxlan_port_range {void* high; void* low; } ;
 struct TYPE_22__ {scalar_t__ low; scalar_t__ high; } ;
-struct TYPE_21__ {int /*<<< orphan*/  in6; int /*<<< orphan*/  in; } ;
-struct TYPE_23__ {scalar_t__ vni; scalar_t__ remote_family; scalar_t__ local_family; int ifindex; scalar_t__ ttl; scalar_t__ tos; scalar_t__ learning; scalar_t__ route_short_circuit; scalar_t__ arp_proxy; scalar_t__ l2miss; scalar_t__ l3miss; int fdb_ageing; int max_fdb; scalar_t__ udpcsum; scalar_t__ udp6zerocsumtx; scalar_t__ udp6zerocsumrx; scalar_t__ remote_csum_tx; scalar_t__ remote_csum_rx; scalar_t__ dest_port; scalar_t__ df; scalar_t__ generic_protocol_extension; scalar_t__ group_policy; int /*<<< orphan*/  flow_label; TYPE_1__ port_range; scalar_t__ inherit; TYPE_17__ local; TYPE_17__ remote; } ;
-typedef  TYPE_2__ sd_netlink_message ;
-typedef  int /*<<< orphan*/  port_range ;
-typedef  TYPE_2__ VxLan ;
-typedef  TYPE_2__ NetDev ;
-typedef  TYPE_2__ Link ;
+struct TYPE_21__ {int in6; int in; } ;
+struct TYPE_23__ {scalar_t__ vni; scalar_t__ remote_family; scalar_t__ local_family; int ifindex; scalar_t__ ttl; scalar_t__ tos; scalar_t__ learning; scalar_t__ route_short_circuit; scalar_t__ arp_proxy; scalar_t__ l2miss; scalar_t__ l3miss; int fdb_ageing; int max_fdb; scalar_t__ udpcsum; scalar_t__ udp6zerocsumtx; scalar_t__ udp6zerocsumrx; scalar_t__ remote_csum_tx; scalar_t__ remote_csum_rx; scalar_t__ dest_port; scalar_t__ df; scalar_t__ generic_protocol_extension; scalar_t__ group_policy; int flow_label; TYPE_1__ port_range; scalar_t__ inherit; TYPE_17__ local; TYPE_17__ remote; } ;
+typedef TYPE_2__ sd_netlink_message ;
+typedef int port_range ;
+typedef TYPE_2__ VxLan ;
+typedef TYPE_2__ NetDev ;
+typedef TYPE_2__ Link ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- int /*<<< orphan*/  IFLA_VXLAN_AGEING ; 
- int /*<<< orphan*/  IFLA_VXLAN_DF ; 
- int /*<<< orphan*/  IFLA_VXLAN_GBP ; 
- int /*<<< orphan*/  IFLA_VXLAN_GPE ; 
- int /*<<< orphan*/  IFLA_VXLAN_GROUP ; 
- int /*<<< orphan*/  IFLA_VXLAN_GROUP6 ; 
- int /*<<< orphan*/  IFLA_VXLAN_ID ; 
- int /*<<< orphan*/  IFLA_VXLAN_L2MISS ; 
- int /*<<< orphan*/  IFLA_VXLAN_L3MISS ; 
- int /*<<< orphan*/  IFLA_VXLAN_LABEL ; 
- int /*<<< orphan*/  IFLA_VXLAN_LEARNING ; 
- int /*<<< orphan*/  IFLA_VXLAN_LIMIT ; 
- int /*<<< orphan*/  IFLA_VXLAN_LINK ; 
- int /*<<< orphan*/  IFLA_VXLAN_LOCAL ; 
- int /*<<< orphan*/  IFLA_VXLAN_LOCAL6 ; 
- int /*<<< orphan*/  IFLA_VXLAN_PORT ; 
- int /*<<< orphan*/  IFLA_VXLAN_PORT_RANGE ; 
- int /*<<< orphan*/  IFLA_VXLAN_PROXY ; 
- int /*<<< orphan*/  IFLA_VXLAN_REMCSUM_RX ; 
- int /*<<< orphan*/  IFLA_VXLAN_REMCSUM_TX ; 
- int /*<<< orphan*/  IFLA_VXLAN_RSC ; 
- int /*<<< orphan*/  IFLA_VXLAN_TOS ; 
- int /*<<< orphan*/  IFLA_VXLAN_TTL ; 
- int /*<<< orphan*/  IFLA_VXLAN_TTL_INHERIT ; 
- int /*<<< orphan*/  IFLA_VXLAN_UDP_CSUM ; 
- int /*<<< orphan*/  IFLA_VXLAN_UDP_ZERO_CSUM6_RX ; 
- int /*<<< orphan*/  IFLA_VXLAN_UDP_ZERO_CSUM6_TX ; 
- int USEC_PER_SEC ; 
- TYPE_2__* VXLAN (TYPE_2__*) ; 
- scalar_t__ VXLAN_VID_MAX ; 
- scalar_t__ _NETDEV_VXLAN_DF_INVALID ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- void* htobe16 (scalar_t__) ; 
- int htobe32 (int /*<<< orphan*/ ) ; 
- scalar_t__ in_addr_is_null (scalar_t__,TYPE_17__*) ; 
- int log_netdev_error_errno (TYPE_2__*,int,char*) ; 
- int sd_netlink_message_append_data (TYPE_2__*,int /*<<< orphan*/ ,struct ifla_vxlan_port_range*,int) ; 
- int sd_netlink_message_append_flag (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int sd_netlink_message_append_in6_addr (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int sd_netlink_message_append_in_addr (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int sd_netlink_message_append_u16 (TYPE_2__*,int /*<<< orphan*/ ,void*) ; 
- int sd_netlink_message_append_u32 (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int sd_netlink_message_append_u8 (TYPE_2__*,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ scalar_t__ AF_INET ;
+ int IFLA_VXLAN_AGEING ;
+ int IFLA_VXLAN_DF ;
+ int IFLA_VXLAN_GBP ;
+ int IFLA_VXLAN_GPE ;
+ int IFLA_VXLAN_GROUP ;
+ int IFLA_VXLAN_GROUP6 ;
+ int IFLA_VXLAN_ID ;
+ int IFLA_VXLAN_L2MISS ;
+ int IFLA_VXLAN_L3MISS ;
+ int IFLA_VXLAN_LABEL ;
+ int IFLA_VXLAN_LEARNING ;
+ int IFLA_VXLAN_LIMIT ;
+ int IFLA_VXLAN_LINK ;
+ int IFLA_VXLAN_LOCAL ;
+ int IFLA_VXLAN_LOCAL6 ;
+ int IFLA_VXLAN_PORT ;
+ int IFLA_VXLAN_PORT_RANGE ;
+ int IFLA_VXLAN_PROXY ;
+ int IFLA_VXLAN_REMCSUM_RX ;
+ int IFLA_VXLAN_REMCSUM_TX ;
+ int IFLA_VXLAN_RSC ;
+ int IFLA_VXLAN_TOS ;
+ int IFLA_VXLAN_TTL ;
+ int IFLA_VXLAN_TTL_INHERIT ;
+ int IFLA_VXLAN_UDP_CSUM ;
+ int IFLA_VXLAN_UDP_ZERO_CSUM6_RX ;
+ int IFLA_VXLAN_UDP_ZERO_CSUM6_TX ;
+ int USEC_PER_SEC ;
+ TYPE_2__* VXLAN (TYPE_2__*) ;
+ scalar_t__ VXLAN_VID_MAX ;
+ scalar_t__ _NETDEV_VXLAN_DF_INVALID ;
+ int assert (TYPE_2__*) ;
+ void* htobe16 (scalar_t__) ;
+ int htobe32 (int ) ;
+ scalar_t__ in_addr_is_null (scalar_t__,TYPE_17__*) ;
+ int log_netdev_error_errno (TYPE_2__*,int,char*) ;
+ int sd_netlink_message_append_data (TYPE_2__*,int ,struct ifla_vxlan_port_range*,int) ;
+ int sd_netlink_message_append_flag (TYPE_2__*,int ) ;
+ int sd_netlink_message_append_in6_addr (TYPE_2__*,int ,int *) ;
+ int sd_netlink_message_append_in_addr (TYPE_2__*,int ,int *) ;
+ int sd_netlink_message_append_u16 (TYPE_2__*,int ,void*) ;
+ int sd_netlink_message_append_u32 (TYPE_2__*,int ,int) ;
+ int sd_netlink_message_append_u8 (TYPE_2__*,int ,scalar_t__) ;
 
 __attribute__((used)) static int netdev_vxlan_fill_message_create(NetDev *netdev, Link *link, sd_netlink_message *m) {
         VxLan *v;

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SIOCDIFADDR ; 
- int ifaddr_ad (int /*<<< orphan*/ ,char const*,struct sockaddr*,struct sockaddr*) ; 
- int /*<<< orphan*/  warn (char*) ; 
+
+ int SIOCDIFADDR ;
+ int ifaddr_ad (int ,char const*,struct sockaddr*,struct sockaddr*) ;
+ int warn (char*) ;
 
 __attribute__((used)) static int
 ifaddr_del(const char *ifnam, struct sockaddr *sa, struct sockaddr *mask)
 {
-	int error;
+ int error;
 
-	error = ifaddr_ad(SIOCDIFADDR, ifnam, sa, mask);
-	if (error != 0)
-		warn("ioctl SIOCDIFADDR");
-	return (error);
+ error = ifaddr_ad(SIOCDIFADDR, ifnam, sa, mask);
+ if (error != 0)
+  warn("ioctl SIOCDIFADDR");
+ return (error);
 }

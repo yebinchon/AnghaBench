@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-struct mpv_handle {int property_event_masks; int event_mask; int choked; int /*<<< orphan*/  lock; } ;
+
+
+
+
+typedef int uint64_t ;
+struct mpv_handle {int property_event_masks; int event_mask; int choked; int lock; } ;
 struct mpv_event {unsigned long long event_id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_ERR (struct mpv_handle*,char*) ; 
- int append_event (struct mpv_handle*,struct mpv_event,int) ; 
- int /*<<< orphan*/  notify_property_events (struct mpv_handle*,int) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int MP_ERR (struct mpv_handle*,char*) ;
+ int append_event (struct mpv_handle*,struct mpv_event,int) ;
+ int notify_property_events (struct mpv_handle*,int) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 __attribute__((used)) static int send_event(struct mpv_handle *ctx, struct mpv_event *event, bool copy)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static int send_event(struct mpv_handle *ctx, struct mpv_e
         r = append_event(ctx, *event, copy);
         if (r < 0) {
             MP_ERR(ctx, "Too many events queued.\n");
-            ctx->choked = true;
+            ctx->choked = 1;
         }
     }
     pthread_mutex_unlock(&ctx->lock);

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GLuint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_MODULATE ; 
- int /*<<< orphan*/  GL_PROJECTION ; 
- int /*<<< orphan*/  GL_QUADS ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  GL_TEXTURE_ENV ; 
- int /*<<< orphan*/  GL_TEXTURE_ENV_MODE ; 
- int /*<<< orphan*/  glBegin (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glBindTexture (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glEnable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glEnd () ; 
- int /*<<< orphan*/  glLoadIdentity () ; 
- int /*<<< orphan*/  glMatrixMode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glOrtho (float,float,float,float,float,float) ; 
- int /*<<< orphan*/  glTexCoord2f (float,float) ; 
- int /*<<< orphan*/  glTexEnvi (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glVertex2f (float,float) ; 
- int /*<<< orphan*/  glViewport (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  glfwGetCurrentContext () ; 
- int /*<<< orphan*/  glfwGetFramebufferSize (int /*<<< orphan*/ ,int*,int*) ; 
+
+
+
+typedef int GLuint ;
+
+
+ int GL_MODULATE ;
+ int GL_PROJECTION ;
+ int GL_QUADS ;
+ int GL_TEXTURE_2D ;
+ int GL_TEXTURE_ENV ;
+ int GL_TEXTURE_ENV_MODE ;
+ int glBegin (int ) ;
+ int glBindTexture (int ,int ) ;
+ int glEnable (int ) ;
+ int glEnd () ;
+ int glLoadIdentity () ;
+ int glMatrixMode (int ) ;
+ int glOrtho (float,float,float,float,float,float) ;
+ int glTexCoord2f (float,float) ;
+ int glTexEnvi (int ,int ,int ) ;
+ int glVertex2f (float,float) ;
+ int glViewport (int ,int ,int,int) ;
+ int glfwGetCurrentContext () ;
+ int glfwGetFramebufferSize (int ,int*,int*) ;
 
 __attribute__((used)) static void draw_quad(GLuint texture)
 {

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  IActiveScriptParse ;
-typedef  int /*<<< orphan*/  IActiveScript ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ActiveScriptSite ; 
- int /*<<< orphan*/  CHECK_CALLED (int /*<<< orphan*/ ) ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  GetItemInfo_testVal ; 
- scalar_t__ IActiveScriptParse_InitNew (int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScriptParse_ParseScriptText (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IActiveScriptParse_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScript_AddNamedItem (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ IActiveScript_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IActiveScript_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScript_SetScriptSite (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScript_SetScriptState (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_IActiveScriptParse ; 
- int SCRIPTITEM_GLOBALMEMBERS ; 
- int SCRIPTITEM_ISSOURCE ; 
- int SCRIPTITEM_ISVISIBLE ; 
- int /*<<< orphan*/  SCRIPTSTATE_STARTED ; 
- int /*<<< orphan*/  SET_EXPECT (int /*<<< orphan*/ ) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/ * create_script () ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  test_valW ; 
+
+
+
+typedef char WCHAR ;
+typedef int IActiveScriptParse ;
+typedef int IActiveScript ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ BOOL ;
+
+
+ int ActiveScriptSite ;
+ int CHECK_CALLED (int ) ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int GetItemInfo_testVal ;
+ scalar_t__ IActiveScriptParse_InitNew (int *) ;
+ scalar_t__ IActiveScriptParse_ParseScriptText (int *,char const*,int *,int *,int *,int ,int ,int ,int *,int *) ;
+ int IActiveScriptParse_Release (int *) ;
+ scalar_t__ IActiveScript_AddNamedItem (int *,int ,int) ;
+ scalar_t__ IActiveScript_QueryInterface (int *,int *,void**) ;
+ int IActiveScript_Release (int *) ;
+ scalar_t__ IActiveScript_SetScriptSite (int *,int *) ;
+ scalar_t__ IActiveScript_SetScriptState (int *,int ) ;
+ int IID_IActiveScriptParse ;
+ int SCRIPTITEM_GLOBALMEMBERS ;
+ int SCRIPTITEM_ISSOURCE ;
+ int SCRIPTITEM_ISVISIBLE ;
+ int SCRIPTSTATE_STARTED ;
+ int SET_EXPECT (int ) ;
+ scalar_t__ S_OK ;
+ int * create_script () ;
+ int ok (int,char*,scalar_t__) ;
+ int test_valW ;
 
 __attribute__((used)) static void test_isvisible(BOOL global_members)
 {
@@ -81,12 +81,12 @@ __attribute__((used)) static void test_isvisible(BOOL global_members)
 
     if(!global_members)
         SET_EXPECT(GetItemInfo_testVal);
-    hres = IActiveScriptParse_ParseScriptText(parser, script_textW, NULL, NULL, NULL, 0, 0, 0, NULL, NULL);
+    hres = IActiveScriptParse_ParseScriptText(parser, script_textW, ((void*)0), ((void*)0), ((void*)0), 0, 0, 0, ((void*)0), ((void*)0));
     ok(hres == S_OK, "ParseScriptText failed: %08x\n", hres);
     if(!global_members)
         CHECK_CALLED(GetItemInfo_testVal);
 
-    hres = IActiveScriptParse_ParseScriptText(parser, script_textW, NULL, NULL, NULL, 0, 0, 0, NULL, NULL);
+    hres = IActiveScriptParse_ParseScriptText(parser, script_textW, ((void*)0), ((void*)0), ((void*)0), 0, 0, 0, ((void*)0), ((void*)0));
     ok(hres == S_OK, "ParseScriptText failed: %08x\n", hres);
 
     IActiveScript_Release(engine);

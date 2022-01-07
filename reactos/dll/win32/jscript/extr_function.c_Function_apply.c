@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  disp; } ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int disp; } ;
 struct TYPE_11__ {int flags; TYPE_2__ u; } ;
-typedef  TYPE_3__ vdisp_t ;
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int /*<<< orphan*/  WORD ;
+typedef TYPE_3__ vdisp_t ;
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int jsdisp_t ;
+typedef int WORD ;
 struct TYPE_12__ {TYPE_1__* vtbl; } ;
-struct TYPE_9__ {int /*<<< orphan*/  (* call ) (int /*<<< orphan*/ *,TYPE_4__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_4__ FunctionInstance ;
+struct TYPE_9__ {int (* call ) (int *,TYPE_4__*,int *,int ,unsigned int,int *,int *) ;} ;
+typedef int IDispatch ;
+typedef int HRESULT ;
+typedef TYPE_4__ FunctionInstance ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISPATCH_METHOD ; 
- int /*<<< orphan*/  E_FAIL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  IDispatch_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  JSCLASS_ARGUMENTS ; 
- int /*<<< orphan*/  JSCLASS_ARRAY ; 
- int /*<<< orphan*/  JS_E_FUNCTION_EXPECTED ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int VDISP_JSDISP ; 
- int /*<<< orphan*/  array_to_args (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned int*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  disp_call_value (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_4__* function_this (TYPE_3__*) ; 
- int /*<<< orphan*/  get_object (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * iface_to_jsdisp (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_class (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_null (int /*<<< orphan*/ ) ; 
- scalar_t__ is_object_instance (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_undefined (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,TYPE_4__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  throw_type_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  to_object (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
+
+ int DISPATCH_METHOD ;
+ int E_FAIL ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*) ;
+ int IDispatch_Release (int *) ;
+ int JSCLASS_ARGUMENTS ;
+ int JSCLASS_ARRAY ;
+ int JS_E_FUNCTION_EXPECTED ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int TRACE (char*) ;
+ int VDISP_JSDISP ;
+ int array_to_args (int *,int *,unsigned int*,int **) ;
+ int disp_call_value (int *,int ,int *,int ,unsigned int,int *,int *) ;
+ TYPE_4__* function_this (TYPE_3__*) ;
+ int get_object (int ) ;
+ int heap_free (int *) ;
+ int * iface_to_jsdisp (int ) ;
+ int is_class (int *,int ) ;
+ int is_null (int ) ;
+ scalar_t__ is_object_instance (int ) ;
+ int is_undefined (int ) ;
+ int jsdisp_release (int *) ;
+ int jsval_release (int ) ;
+ int stub1 (int *,TYPE_4__*,int *,int ,unsigned int,int *,int *) ;
+ int throw_type_error (int *,int ,int *) ;
+ int to_object (int *,int ,int **) ;
 
 __attribute__((used)) static HRESULT Function_apply(script_ctx_t *ctx, vdisp_t *jsthis, WORD flags, unsigned argc, jsval_t *argv, jsval_t *r)
 {
     FunctionInstance *function;
-    jsval_t *args = NULL;
+    jsval_t *args = ((void*)0);
     unsigned i, cnt = 0;
-    IDispatch *this_obj = NULL;
+    IDispatch *this_obj = ((void*)0);
     HRESULT hres = S_OK;
 
     TRACE("\n");
 
     if(!(function = function_this(jsthis)) && (jsthis->flags & VDISP_JSDISP))
-        return throw_type_error(ctx, JS_E_FUNCTION_EXPECTED, NULL);
+        return throw_type_error(ctx, JS_E_FUNCTION_EXPECTED, ((void*)0));
 
     if(argc) {
         if(!is_undefined(argv[0]) && !is_null(argv[0])) {
@@ -78,14 +78,14 @@ __attribute__((used)) static HRESULT Function_apply(script_ctx_t *ctx, vdisp_t *
     }
 
     if(argc >= 2) {
-        jsdisp_t *arg_array = NULL;
+        jsdisp_t *arg_array = ((void*)0);
 
         if(is_object_instance(argv[1])) {
             arg_array = iface_to_jsdisp(get_object(argv[1]));
             if(arg_array &&
                (!is_class(arg_array, JSCLASS_ARRAY) && !is_class(arg_array, JSCLASS_ARGUMENTS) )) {
                 jsdisp_release(arg_array);
-                arg_array = NULL;
+                arg_array = ((void*)0);
             }
         }
 

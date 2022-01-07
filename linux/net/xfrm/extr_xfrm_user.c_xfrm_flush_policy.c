@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct sk_buff {int /*<<< orphan*/  sk; } ;
-struct nlmsghdr {int /*<<< orphan*/  nlmsg_pid; int /*<<< orphan*/  nlmsg_seq; int /*<<< orphan*/  nlmsg_type; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct sk_buff {int sk; } ;
+struct nlmsghdr {int nlmsg_pid; int nlmsg_seq; int nlmsg_type; } ;
 struct nlattr {int dummy; } ;
 struct net {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  type; } ;
-struct km_event {struct net* net; int /*<<< orphan*/  portid; int /*<<< orphan*/  seq; int /*<<< orphan*/  event; TYPE_1__ data; } ;
+struct TYPE_2__ {int type; } ;
+struct km_event {struct net* net; int portid; int seq; int event; TYPE_1__ data; } ;
 
-/* Variables and functions */
- int ESRCH ; 
- int /*<<< orphan*/  XFRM_POLICY_TYPE_MAIN ; 
- int copy_from_user_policy_type (int /*<<< orphan*/ *,struct nlattr**) ; 
- int /*<<< orphan*/  km_policy_notify (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct km_event*) ; 
- struct net* sock_net (int /*<<< orphan*/ ) ; 
- int xfrm_policy_flush (struct net*,int /*<<< orphan*/ ,int) ; 
+
+ int ESRCH ;
+ int XFRM_POLICY_TYPE_MAIN ;
+ int copy_from_user_policy_type (int *,struct nlattr**) ;
+ int km_policy_notify (int *,int ,struct km_event*) ;
+ struct net* sock_net (int ) ;
+ int xfrm_policy_flush (struct net*,int ,int) ;
 
 __attribute__((used)) static int xfrm_flush_policy(struct sk_buff *skb, struct nlmsghdr *nlh,
-		struct nlattr **attrs)
+  struct nlattr **attrs)
 {
-	struct net *net = sock_net(skb->sk);
-	struct km_event c;
-	u8 type = XFRM_POLICY_TYPE_MAIN;
-	int err;
+ struct net *net = sock_net(skb->sk);
+ struct km_event c;
+ u8 type = XFRM_POLICY_TYPE_MAIN;
+ int err;
 
-	err = copy_from_user_policy_type(&type, attrs);
-	if (err)
-		return err;
+ err = copy_from_user_policy_type(&type, attrs);
+ if (err)
+  return err;
 
-	err = xfrm_policy_flush(net, type, true);
-	if (err) {
-		if (err == -ESRCH) /* empty table */
-			return 0;
-		return err;
-	}
+ err = xfrm_policy_flush(net, type, 1);
+ if (err) {
+  if (err == -ESRCH)
+   return 0;
+  return err;
+ }
 
-	c.data.type = type;
-	c.event = nlh->nlmsg_type;
-	c.seq = nlh->nlmsg_seq;
-	c.portid = nlh->nlmsg_pid;
-	c.net = net;
-	km_policy_notify(NULL, 0, &c);
-	return 0;
+ c.data.type = type;
+ c.event = nlh->nlmsg_type;
+ c.seq = nlh->nlmsg_seq;
+ c.portid = nlh->nlmsg_pid;
+ c.net = net;
+ km_policy_notify(((void*)0), 0, &c);
+ return 0;
 }

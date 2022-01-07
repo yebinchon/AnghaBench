@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t png_uint_32 ;
-typedef  TYPE_1__* png_textp ;
-typedef  int /*<<< orphan*/  png_infop ;
-struct TYPE_7__ {char* file; char* test; int /*<<< orphan*/  png_ptr; } ;
-typedef  TYPE_2__ display ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef size_t png_uint_32 ;
+typedef TYPE_1__* png_textp ;
+typedef int png_infop ;
+struct TYPE_7__ {char* file; char* test; int png_ptr; } ;
+typedef TYPE_2__ display ;
 struct TYPE_6__ {int compression; } ;
 
-/* Variables and functions */
- size_t PNG_INFO_iTXt ; 
- size_t PNG_INFO_tEXt ; 
- size_t PNG_INFO_zTXt ; 
- int /*<<< orphan*/  display_exit (TYPE_2__*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*,int) ; 
- size_t png_get_text (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__**,int /*<<< orphan*/ *) ; 
- size_t png_get_valid (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  stderr ; 
+
+ size_t PNG_INFO_iTXt ;
+ size_t PNG_INFO_tEXt ;
+ size_t PNG_INFO_zTXt ;
+ int display_exit (TYPE_2__*) ;
+ int fprintf (int ,char*,char*,char*,int) ;
+ size_t png_get_text (int ,int ,TYPE_1__**,int *) ;
+ size_t png_get_valid (int ,int ,size_t) ;
+ int stderr ;
 
 __attribute__((used)) static png_uint_32
 get_valid(display *d, png_infop info_ptr)
 {
    png_uint_32 flags = png_get_valid(d->png_ptr, info_ptr, (png_uint_32)~0);
 
-   /* Map the text chunks back into the flags */
+
    {
       png_textp text;
-      png_uint_32 ntext = png_get_text(d->png_ptr, info_ptr, &text, NULL);
+      png_uint_32 ntext = png_get_text(d->png_ptr, info_ptr, &text, ((void*)0));
 
       while (ntext > 0) switch (text[--ntext].compression)
       {

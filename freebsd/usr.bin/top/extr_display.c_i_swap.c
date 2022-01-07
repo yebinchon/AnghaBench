@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lastline ; 
- char* setup_buffer (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  summary_format (char*,int*,int /*<<< orphan*/ *) ; 
- char* swap_buffer ; 
- int /*<<< orphan*/ * swap_names ; 
+ int fputs (char*,int ) ;
+ int lastline ;
+ char* setup_buffer (char*,int ) ;
+ int stdout ;
+ int summary_format (char*,int*,int *) ;
+ char* swap_buffer ;
+ int * swap_names ;
 
 void
 i_swap(int *stats)
 {
     swap_buffer = setup_buffer(swap_buffer, 0);
 
-    if (swap_names == NULL)
-	    return;
+    if (swap_names == ((void*)0))
+     return;
 
     fputs("\nSwap: ", stdout);
     lastline++;
 
-    /* format and print the swap summary */
+
     summary_format(swap_buffer, stats, swap_names);
     fputs(swap_buffer, stdout);
 }

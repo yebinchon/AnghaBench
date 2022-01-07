@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
-struct jme_adapter {int /*<<< orphan*/  pdev; int /*<<< orphan*/  reg_rxcs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JME_RXCS ; 
- int JME_RX_DISABLE_TIMEOUT ; 
- int RXCS_ENABLE ; 
- int /*<<< orphan*/  jeprintk (int /*<<< orphan*/ ,char*) ; 
- int jread32 (struct jme_adapter*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jwrite32 (struct jme_adapter*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mdelay (int) ; 
- int /*<<< orphan*/  rmb () ; 
- int /*<<< orphan*/  wmb () ; 
+
+
+
+typedef int u32 ;
+struct jme_adapter {int pdev; int reg_rxcs; } ;
+
+
+ int JME_RXCS ;
+ int JME_RX_DISABLE_TIMEOUT ;
+ int RXCS_ENABLE ;
+ int jeprintk (int ,char*) ;
+ int jread32 (struct jme_adapter*,int ) ;
+ int jwrite32 (struct jme_adapter*,int ,int ) ;
+ int mdelay (int) ;
+ int rmb () ;
+ int wmb () ;
 
 __attribute__((used)) static inline void
 jme_disable_rx_engine(struct jme_adapter *jme)
 {
-	int i;
-	u32 val;
+ int i;
+ u32 val;
 
-	/*
-	 * Disable RX Engine
-	 */
-	jwrite32(jme, JME_RXCS, jme->reg_rxcs);
-	wmb();
 
-	val = jread32(jme, JME_RXCS);
-	for (i = JME_RX_DISABLE_TIMEOUT ; (val & RXCS_ENABLE) && i > 0 ; --i) {
-		mdelay(1);
-		val = jread32(jme, JME_RXCS);
-		rmb();
-	}
 
-	if (!i)
-		jeprintk(jme->pdev, "Disable RX engine timeout.\n");
+
+ jwrite32(jme, JME_RXCS, jme->reg_rxcs);
+ wmb();
+
+ val = jread32(jme, JME_RXCS);
+ for (i = JME_RX_DISABLE_TIMEOUT ; (val & RXCS_ENABLE) && i > 0 ; --i) {
+  mdelay(1);
+  val = jread32(jme, JME_RXCS);
+  rmb();
+ }
+
+ if (!i)
+  jeprintk(jme->pdev, "Disable RX engine timeout.\n");
 
 }

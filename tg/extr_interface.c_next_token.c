@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* cur_token ; 
- int cur_token_end_str ; 
- int cur_token_len ; 
- int cur_token_quoted ; 
- int /*<<< orphan*/  force_end_mode ; 
- char* line_ptr ; 
- int /*<<< orphan*/  skip_wspc () ; 
- int /*<<< orphan*/  unescape_token (char*,char*) ; 
+ char* cur_token ;
+ int cur_token_end_str ;
+ int cur_token_len ;
+ int cur_token_quoted ;
+ int force_end_mode ;
+ char* line_ptr ;
+ int skip_wspc () ;
+ int unescape_token (char*,char*) ;
 
 __attribute__((used)) static void next_token (void) {
   skip_wspc ();

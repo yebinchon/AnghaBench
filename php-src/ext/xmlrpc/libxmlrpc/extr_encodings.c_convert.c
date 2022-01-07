@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ iconv_t ;
 
-/* Variables and functions */
- scalar_t__ E2BIG ; 
- scalar_t__ ICONV_CSNMAXLEN ; 
- int /*<<< orphan*/  efree (char*) ; 
- scalar_t__ emalloc (int) ; 
- scalar_t__ erealloc (char*,int) ; 
- scalar_t__ errno ; 
- size_t iconv (scalar_t__,char**,size_t*,char**,size_t*) ; 
- int /*<<< orphan*/  iconv_close (scalar_t__) ; 
- scalar_t__ iconv_open (char const*,char const*) ; 
- scalar_t__ strlen (char const*) ; 
+
+
+
+typedef scalar_t__ iconv_t ;
+
+
+ scalar_t__ E2BIG ;
+ scalar_t__ ICONV_CSNMAXLEN ;
+ int efree (char*) ;
+ scalar_t__ emalloc (int) ;
+ scalar_t__ erealloc (char*,int) ;
+ scalar_t__ errno ;
+ size_t iconv (scalar_t__,char**,size_t*,char**,size_t*) ;
+ int iconv_close (scalar_t__) ;
+ scalar_t__ iconv_open (char const*,char const*) ;
+ scalar_t__ strlen (char const*) ;
 
 __attribute__((used)) static char* convert(const char* src, int src_len, int *new_len, const char* from_enc, const char* to_enc) {
    char* outbuf = 0;
@@ -35,7 +35,7 @@ __attribute__((used)) static char* convert(const char* src, int src_len, int *ne
       char* out_ptr = 0;
 
       if(strlen(to_enc) >= ICONV_CSNMAXLEN || strlen(from_enc) >= ICONV_CSNMAXLEN) {
-         return NULL;
+         return ((void*)0);
       }
       ic = iconv_open(to_enc, from_enc);
       if(ic != (iconv_t)-1) {

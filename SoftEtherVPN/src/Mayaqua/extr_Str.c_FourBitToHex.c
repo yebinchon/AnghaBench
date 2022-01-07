@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
 
-/* Variables and functions */
+
+
+
+typedef int UINT ;
+
+
 
 char FourBitToHex(UINT value)
 {
-	value = value % 16;
+ value = value % 16;
 
-	if (value <= 9)
-	{
-		return '0' + value;
-	}
-	else
-	{
-		return 'a' + (value - 10);
-	}
+ if (value <= 9)
+ {
+  return '0' + value;
+ }
+ else
+ {
+  return 'a' + (value - 10);
+ }
 }

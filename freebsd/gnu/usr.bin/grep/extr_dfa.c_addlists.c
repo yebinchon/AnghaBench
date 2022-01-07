@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char** enlist (char**,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+ char** enlist (char**,char*,int ) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static char **
 addlists (char **old, char **new)
 {
   int i;
 
-  if (old == NULL || new == NULL)
-    return NULL;
-  for (i = 0; new[i] != NULL; ++i)
+  if (old == ((void*)0) || new == ((void*)0))
+    return ((void*)0);
+  for (i = 0; new[i] != ((void*)0); ++i)
     {
       old = enlist(old, new[i], strlen(new[i]));
-      if (old == NULL)
-	break;
+      if (old == ((void*)0))
+ break;
     }
   return old;
 }

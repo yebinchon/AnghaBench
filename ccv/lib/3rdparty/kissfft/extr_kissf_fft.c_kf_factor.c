@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ double floor (int ) ;
+ int sqrt (double) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- double floor (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqrt (double) ; 
-
-__attribute__((used)) static 
+__attribute__((used)) static
 void kf_factor(int n,int * facbuf)
 {
     int p=4;
     double floor_sqrt;
     floor_sqrt = floor( sqrt((double)n) );
 
-    /*factor out powers of 4, powers of 2, then any remaining primes */
+
     do {
         while (n % p) {
             switch (p) {
@@ -31,7 +23,7 @@ void kf_factor(int n,int * facbuf)
                 default: p += 2; break;
             }
             if (p > floor_sqrt)
-                p = n;          /* no more factors, skip to end */
+                p = n;
         }
         n /= p;
         *facbuf++ = p;

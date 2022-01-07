@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  received_answer_ack_ack ; 
- int /*<<< orphan*/  resent_answer_ack ; 
- int /*<<< orphan*/  resent_queries ; 
- int /*<<< orphan*/  secure_send_s0 ; 
- int /*<<< orphan*/  secure_send_s1 ; 
- int /*<<< orphan*/  sent_answer_ack ; 
- int snprintf (char*,int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int received_answer_ack_ack ;
+ int resent_answer_ack ;
+ int resent_queries ;
+ int secure_send_s0 ;
+ int secure_send_s1 ;
+ int sent_answer_ack ;
+ int snprintf (char*,int,char*,int ,int ,int ,int ,int ,int ) ;
 
 int secure_send_global_stat (char *buf, int len) {
-  return snprintf (buf, len, 
+  return snprintf (buf, len,
     "resent_queries\t%lld\n"
     "resent_answer_ack\t%lld\n"
     "secure_send_state0\t%lld\n"

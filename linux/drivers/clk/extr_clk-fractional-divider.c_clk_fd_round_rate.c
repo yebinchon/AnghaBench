@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned long u64 ;
+
+
+
+
+typedef unsigned long u64 ;
 struct clk_hw {int dummy; } ;
-struct clk_fractional_divider {int /*<<< orphan*/  (* approximation ) (struct clk_hw*,unsigned long,unsigned long*,unsigned long*,unsigned long*) ;} ;
+struct clk_fractional_divider {int (* approximation ) (struct clk_hw*,unsigned long,unsigned long*,unsigned long*,unsigned long*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clk_fd_general_approximation (struct clk_hw*,unsigned long,unsigned long*,unsigned long*,unsigned long*) ; 
- int /*<<< orphan*/  clk_hw_can_set_rate_parent (struct clk_hw*) ; 
- int /*<<< orphan*/  do_div (unsigned long,unsigned long) ; 
- int /*<<< orphan*/  stub1 (struct clk_hw*,unsigned long,unsigned long*,unsigned long*,unsigned long*) ; 
- struct clk_fractional_divider* to_clk_fd (struct clk_hw*) ; 
+
+ int clk_fd_general_approximation (struct clk_hw*,unsigned long,unsigned long*,unsigned long*,unsigned long*) ;
+ int clk_hw_can_set_rate_parent (struct clk_hw*) ;
+ int do_div (unsigned long,unsigned long) ;
+ int stub1 (struct clk_hw*,unsigned long,unsigned long*,unsigned long*,unsigned long*) ;
+ struct clk_fractional_divider* to_clk_fd (struct clk_hw*) ;
 
 __attribute__((used)) static long clk_fd_round_rate(struct clk_hw *hw, unsigned long rate,
-			      unsigned long *parent_rate)
+         unsigned long *parent_rate)
 {
-	struct clk_fractional_divider *fd = to_clk_fd(hw);
-	unsigned long m, n;
-	u64 ret;
+ struct clk_fractional_divider *fd = to_clk_fd(hw);
+ unsigned long m, n;
+ u64 ret;
 
-	if (!rate || (!clk_hw_can_set_rate_parent(hw) && rate >= *parent_rate))
-		return *parent_rate;
+ if (!rate || (!clk_hw_can_set_rate_parent(hw) && rate >= *parent_rate))
+  return *parent_rate;
 
-	if (fd->approximation)
-		fd->approximation(hw, rate, parent_rate, &m, &n);
-	else
-		clk_fd_general_approximation(hw, rate, parent_rate, &m, &n);
+ if (fd->approximation)
+  fd->approximation(hw, rate, parent_rate, &m, &n);
+ else
+  clk_fd_general_approximation(hw, rate, parent_rate, &m, &n);
 
-	ret = (u64)*parent_rate * m;
-	do_div(ret, n);
+ ret = (u64)*parent_rate * m;
+ do_div(ret, n);
 
-	return ret;
+ return ret;
 }

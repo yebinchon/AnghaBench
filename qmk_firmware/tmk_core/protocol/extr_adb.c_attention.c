@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  _delay_us (int) ; 
- int /*<<< orphan*/  data_lo () ; 
- int /*<<< orphan*/  place_bit1 () ; 
+ int _delay_us (int) ;
+ int data_lo () ;
+ int place_bit1 () ;
 
 __attribute__((used)) static inline void attention(void) {
     data_lo();
-    _delay_us(800 - 35);  // bit1 holds lo for 35 more
+    _delay_us(800 - 35);
     place_bit1();
 }

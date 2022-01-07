@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_reporter_t ;
-typedef  int /*<<< orphan*/  svn_ra_reporter3_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_delta_editor_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_2__ {int /*<<< orphan*/  (* do_diff ) (void*,int /*<<< orphan*/  const**,void**,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/  const*,void*,int /*<<< orphan*/ *) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_DEPTH_INFINITY_OR_FILES (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- TYPE_1__ VTBL ; 
- int /*<<< orphan*/  compat_wrap_reporter (int /*<<< orphan*/  const**,void**,int /*<<< orphan*/  const*,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (void*,int /*<<< orphan*/  const**,void**,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/  const*,void*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int svn_ra_reporter_t ;
+typedef int svn_ra_reporter3_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef int svn_delta_editor_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+struct TYPE_2__ {int (* do_diff ) (void*,int const**,void**,int ,char const*,int ,int ,int ,char const*,int const*,void*,int *) ;} ;
+
+
+ int SVN_DEPTH_INFINITY_OR_FILES (int ) ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ TYPE_1__ VTBL ;
+ int compat_wrap_reporter (int const**,void**,int const*,void*,int *) ;
+ int stub1 (void*,int const**,void**,int ,char const*,int ,int ,int ,char const*,int const*,void*,int *) ;
 
 __attribute__((used)) static svn_error_t *compat_do_diff(void *session_baton,
                                    const svn_ra_reporter_t **reporter,

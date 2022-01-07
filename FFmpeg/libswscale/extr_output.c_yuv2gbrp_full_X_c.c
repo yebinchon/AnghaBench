@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
-typedef  int int16_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int int16_t ;
 struct TYPE_8__ {int flags; TYPE_1__* comp; } ;
-struct TYPE_7__ {int yuv2rgb_y_coeff; int yuv2rgb_v2r_coeff; int yuv2rgb_v2g_coeff; int yuv2rgb_u2g_coeff; int yuv2rgb_u2b_coeff; int /*<<< orphan*/  dstFormat; scalar_t__ yuv2rgb_y_offset; } ;
+struct TYPE_7__ {int yuv2rgb_y_coeff; int yuv2rgb_v2r_coeff; int yuv2rgb_v2g_coeff; int yuv2rgb_u2g_coeff; int yuv2rgb_u2b_coeff; int dstFormat; scalar_t__ yuv2rgb_y_offset; } ;
 struct TYPE_6__ {int depth; } ;
-typedef  TYPE_2__ SwsContext ;
-typedef  TYPE_3__ AVPixFmtDescriptor ;
+typedef TYPE_2__ SwsContext ;
+typedef TYPE_3__ AVPixFmtDescriptor ;
 
-/* Variables and functions */
- int AV_PIX_FMT_FLAG_ALPHA ; 
- int /*<<< orphan*/  HAVE_BIGENDIAN ; 
- int av_bswap16 (int) ; 
- int av_clip_uintp2 (int,int) ; 
- TYPE_3__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  isBE (int /*<<< orphan*/ ) ; 
+
+ int AV_PIX_FMT_FLAG_ALPHA ;
+ int HAVE_BIGENDIAN ;
+ int av_bswap16 (int) ;
+ int av_clip_uintp2 (int,int) ;
+ TYPE_3__* av_pix_fmt_desc_get (int ) ;
+ int isBE (int ) ;
 
 __attribute__((used)) static void
 yuv2gbrp_full_X_c(SwsContext *c, const int16_t *lumFilter,
@@ -43,7 +43,7 @@ yuv2gbrp_full_X_c(SwsContext *c, const int16_t *lumFilter,
     int hasAlpha = (desc->flags & AV_PIX_FMT_FLAG_ALPHA) && alpSrc;
     uint16_t **dest16 = (uint16_t**)dest;
     int SH = 22 + 8 - desc->comp[0].depth;
-    int A = 0; // init to silence warning
+    int A = 0;
 
     for (i = 0; i < dstW; i++) {
         int j;
@@ -71,7 +71,7 @@ yuv2gbrp_full_X_c(SwsContext *c, const int16_t *lumFilter,
                 A += alpSrc[j][i] * lumFilter[j];
 
             if (A & 0xF8000000)
-                A =  av_clip_uintp2(A, 27);
+                A = av_clip_uintp2(A, 27);
         }
 
         Y -= c->yuv2rgb_y_offset;
@@ -79,7 +79,7 @@ yuv2gbrp_full_X_c(SwsContext *c, const int16_t *lumFilter,
         Y += 1 << (SH-1);
         R = Y + V * c->yuv2rgb_v2r_coeff;
         G = Y + V * c->yuv2rgb_v2g_coeff + U * c->yuv2rgb_u2g_coeff;
-        B = Y +                            U * c->yuv2rgb_u2b_coeff;
+        B = Y + U * c->yuv2rgb_u2b_coeff;
 
         if ((R | G | B) & 0xC0000000) {
             R = av_clip_uintp2(R, 30);

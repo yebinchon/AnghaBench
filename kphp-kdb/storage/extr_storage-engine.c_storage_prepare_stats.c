@@ -1,91 +1,91 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct connection {int dummy; } ;
 struct TYPE_5__ {int pos; } ;
-typedef  TYPE_1__ stats_buffer_t ;
+typedef TYPE_1__ stats_buffer_t ;
 
-/* Variables and functions */
- scalar_t__ AM_GET_MEMORY_USAGE_OVERALL ; 
- scalar_t__ AM_GET_MEMORY_USAGE_SELF ; 
- int /*<<< orphan*/  FullVersionStr ; 
- int /*<<< orphan*/  SB_PRINT_I32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SB_PRINT_I64 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SB_PRINT_QUERIES (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SB_PRINT_TIME (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATS_BUFF_SIZE ; 
- int /*<<< orphan*/  active_aio_queries ; 
- int /*<<< orphan*/  active_gathers ; 
- int /*<<< orphan*/  aio_query_timeout_value ; 
- int /*<<< orphan*/  alloc_tree_nodes ; 
- int /*<<< orphan*/  append_to_binlog_time ; 
- int /*<<< orphan*/  bad_image_cache_max_living_time ; 
- int /*<<< orphan*/  binlog_disabled ; 
- int /*<<< orphan*/  binlog_index_loading_time ; 
- int /*<<< orphan*/  binlog_load_time ; 
- int /*<<< orphan*/  booting_time ; 
- int /*<<< orphan*/  choose_binlog_options ; 
- int /*<<< orphan*/  choose_reading_binlog_errors ; 
- int /*<<< orphan*/  cmd_stats ; 
- int /*<<< orphan*/  cmd_version ; 
- int /*<<< orphan*/  expired_aio_queries ; 
- int /*<<< orphan*/  gather_timeouts ; 
- int /*<<< orphan*/  get_file_queries ; 
- int /*<<< orphan*/  get_hide_queries ; 
- int /*<<< orphan*/  get_misses ; 
- int /*<<< orphan*/  get_queries ; 
- int /*<<< orphan*/  get_volume_misses ; 
- int /*<<< orphan*/  http_queries ; 
- int /*<<< orphan*/  idx_docs ; 
- int /*<<< orphan*/  index_load_time ; 
- int /*<<< orphan*/  index_size ; 
- int /*<<< orphan*/  max_aio_connections_per_disk ; 
- int /*<<< orphan*/  max_immediately_reply_filesize ; 
- int /*<<< orphan*/  max_metafiles_bytes ; 
- int /*<<< orphan*/  md5_mode ; 
- int /*<<< orphan*/  metafiles ; 
- int /*<<< orphan*/  metafiles_bytes ; 
- int /*<<< orphan*/  metafiles_cache_hits ; 
- int /*<<< orphan*/  metafiles_cancelled ; 
- int /*<<< orphan*/  metafiles_crc32_errors ; 
- int /*<<< orphan*/  metafiles_load_errors ; 
- int /*<<< orphan*/  metafiles_unloaded ; 
- int /*<<< orphan*/  one_pix_transparent_errors ; 
- int /*<<< orphan*/  open_replicas_time ; 
- int /*<<< orphan*/  redirect_retries ; 
- int /*<<< orphan*/  redirect_retries_content_type ; 
- int /*<<< orphan*/  redirect_retries_corrupted ; 
- int /*<<< orphan*/  redirect_retries_local_id ; 
- int /*<<< orphan*/  redirect_retries_meta_aio ; 
- int /*<<< orphan*/  redirect_retries_secret ; 
- int /*<<< orphan*/  redirect_retries_type ; 
- int /*<<< orphan*/  reoder_binlog_files_time ; 
- int /*<<< orphan*/  safe_div (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sb_memory (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  sb_prepare (TYPE_1__*,struct connection*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sb_printf (TYPE_1__*,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  scandir_time ; 
- int /*<<< orphan*/  snapshot_size ; 
- int /*<<< orphan*/  stats_buff ; 
- int /*<<< orphan*/  statvfs_calls ; 
- int /*<<< orphan*/  too_many_aio_connections_errors ; 
- int /*<<< orphan*/  tot_aio_fsync_queries ; 
- int /*<<< orphan*/  tot_aio_loaded_bytes ; 
- int /*<<< orphan*/  tot_aio_queries ; 
- int /*<<< orphan*/  tot_docs ; 
- int /*<<< orphan*/  total_aio_time ; 
- int /*<<< orphan*/  volumes ; 
- int /*<<< orphan*/  x_accel_redirects ; 
+
+ scalar_t__ AM_GET_MEMORY_USAGE_OVERALL ;
+ scalar_t__ AM_GET_MEMORY_USAGE_SELF ;
+ int FullVersionStr ;
+ int SB_PRINT_I32 (int ) ;
+ int SB_PRINT_I64 (int ) ;
+ int SB_PRINT_QUERIES (int ) ;
+ int SB_PRINT_TIME (int ) ;
+ int STATS_BUFF_SIZE ;
+ int active_aio_queries ;
+ int active_gathers ;
+ int aio_query_timeout_value ;
+ int alloc_tree_nodes ;
+ int append_to_binlog_time ;
+ int bad_image_cache_max_living_time ;
+ int binlog_disabled ;
+ int binlog_index_loading_time ;
+ int binlog_load_time ;
+ int booting_time ;
+ int choose_binlog_options ;
+ int choose_reading_binlog_errors ;
+ int cmd_stats ;
+ int cmd_version ;
+ int expired_aio_queries ;
+ int gather_timeouts ;
+ int get_file_queries ;
+ int get_hide_queries ;
+ int get_misses ;
+ int get_queries ;
+ int get_volume_misses ;
+ int http_queries ;
+ int idx_docs ;
+ int index_load_time ;
+ int index_size ;
+ int max_aio_connections_per_disk ;
+ int max_immediately_reply_filesize ;
+ int max_metafiles_bytes ;
+ int md5_mode ;
+ int metafiles ;
+ int metafiles_bytes ;
+ int metafiles_cache_hits ;
+ int metafiles_cancelled ;
+ int metafiles_crc32_errors ;
+ int metafiles_load_errors ;
+ int metafiles_unloaded ;
+ int one_pix_transparent_errors ;
+ int open_replicas_time ;
+ int redirect_retries ;
+ int redirect_retries_content_type ;
+ int redirect_retries_corrupted ;
+ int redirect_retries_local_id ;
+ int redirect_retries_meta_aio ;
+ int redirect_retries_secret ;
+ int redirect_retries_type ;
+ int reoder_binlog_files_time ;
+ int safe_div (int ,int ) ;
+ int sb_memory (TYPE_1__*,scalar_t__) ;
+ int sb_prepare (TYPE_1__*,struct connection*,int ,int ) ;
+ int sb_printf (TYPE_1__*,char*,int ,...) ;
+ int scandir_time ;
+ int snapshot_size ;
+ int stats_buff ;
+ int statvfs_calls ;
+ int too_many_aio_connections_errors ;
+ int tot_aio_fsync_queries ;
+ int tot_aio_loaded_bytes ;
+ int tot_aio_queries ;
+ int tot_docs ;
+ int total_aio_time ;
+ int volumes ;
+ int x_accel_redirects ;
 
 int storage_prepare_stats (struct connection *c) {
   stats_buffer_t sb;
@@ -105,21 +105,6 @@ int storage_prepare_stats (struct connection *c) {
       "binlog_disabled\t%d\n"
       "index_loaded_bytes\t%lld\n"
       "index_size\t%lld\n"
-/*
-      "binlog_original_size\t%lld\n"
-      "binlog_loaded_bytes\t%lld\n"
-      "binlog_load_time\t%.6fs\n"
-      "current_binlog_size\t%lld\n"
-      "binlog_uncommitted_bytes\t%d\n"
-      "binlog_path\t%s\n"
-      "binlog_first_timestamp\t%d\n"
-      "binlog_read_timestamp\t%d\n"
-      "binlog_last_timestamp\t%d\n"
-      "index_loaded_bytes\t%lld\n"
-      "index_size\t%lld\n"
-      "index_path\t%s\n"
-      "index_load_time\t%.6fs\n"
-*/
       "cmd_version\t%lld\n"
       "cmd_stats\t%lld\n"
       "tree_nodes\t%d\n"
@@ -146,21 +131,6 @@ int storage_prepare_stats (struct connection *c) {
     binlog_disabled,
     snapshot_size,
     index_size,
-/*
-    binlog_loaded_size,
-    log_readto_pos - jump_log_pos,
-    binlog_load_time,
-    log_pos,
-    log_uncommitted,
-    binlogname ? (sizeof(binlogname) < 250 ? binlogname : "(too long)") : "(none)",
-    log_first_ts,
-    log_read_until,
-    log_last_ts,
-		idx_loaded_bytes,
-		engine_snapshot_size,
-    engine_snapshot_name,
-    index_load_time,
-*/
     cmd_version,
     cmd_stats,
     alloc_tree_nodes,

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int mp_uint_t ;
 
-/* Variables and functions */
- scalar_t__ lpc_console ; 
- int /*<<< orphan*/  lpc_uart_write (char const) ; 
- scalar_t__ potato_console ; 
- int /*<<< orphan*/  potato_uart_write (char const) ; 
+
+
+
+typedef int mp_uint_t ;
+
+
+ scalar_t__ lpc_console ;
+ int lpc_uart_write (char const) ;
+ scalar_t__ potato_console ;
+ int potato_uart_write (char const) ;
 
 void mp_hal_stdout_tx_strn(const char *str, mp_uint_t len) {
     if (lpc_console) {

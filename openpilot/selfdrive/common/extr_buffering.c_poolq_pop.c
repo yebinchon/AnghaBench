@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {size_t head; size_t tail; int* idx; int num; int num_bufs; int /*<<< orphan*/  lock; int /*<<< orphan*/  efd; scalar_t__ stopped; int /*<<< orphan*/  cv; } ;
-typedef  TYPE_1__ PoolQueue ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  efd_clear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pthread_cond_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {size_t head; size_t tail; int* idx; int num; int num_bufs; int lock; int efd; scalar_t__ stopped; int cv; } ;
+typedef TYPE_1__ PoolQueue ;
+
+
+ int assert (int) ;
+ int efd_clear (int ) ;
+ int pthread_cond_wait (int *,int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 int poolq_pop(PoolQueue *c) {
   pthread_mutex_lock(&c->lock);
@@ -38,7 +38,7 @@ int poolq_pop(PoolQueue *c) {
     }
   }
 
-  // printf("pop head %d tail %d\n", s->head, s->tail);
+
 
   assert(c->head != c->tail);
 
@@ -46,12 +46,12 @@ int poolq_pop(PoolQueue *c) {
   c->idx[c->tail] = -1;
   c->tail = (c->tail+1) % c->num;
 
-  // queue event is level triggered
+
   if (c->head == c->tail) {
     efd_clear(c->efd);
   }
 
-  // printf("pop %d head %d tail %d\n", r, s->head, s->tail);
+
 
   assert(r >= 0 && r < c->num_bufs);
 

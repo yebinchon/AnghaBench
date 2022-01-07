@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct thread {int dummy; } ;
 struct linux_ptrace_args {int dummy; } ;
 
-/* Variables and functions */
- int EDOOFUS ; 
- int /*<<< orphan*/  LIN_SDT_PROBE0 (int /*<<< orphan*/ ,int (*) (struct thread*,struct linux_ptrace_args*),int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ptrace ; 
- int /*<<< orphan*/  todo ; 
+
+ int EDOOFUS ;
+ int LIN_SDT_PROBE0 (int ,int (*) (struct thread*,struct linux_ptrace_args*),int ) ;
+ int ptrace ;
+ int todo ;
 
 int
 linux_ptrace(struct thread *td, struct linux_ptrace_args *uap)
 {
 
-	/* LINUXTODO: implement arm64 linux_ptrace */
-	LIN_SDT_PROBE0(ptrace, linux_ptrace, todo);
-	return (EDOOFUS);
+
+ LIN_SDT_PROBE0(ptrace, linux_ptrace, todo);
+ return (EDOOFUS);
 }

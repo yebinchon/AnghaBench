@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  b; int /*<<< orphan*/  a; TYPE_1__* meth; int /*<<< orphan*/  libctx; int /*<<< orphan*/  field; } ;
-struct TYPE_6__ {int /*<<< orphan*/  (* field_decode ) (TYPE_2__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_2__ EC_GROUP ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_new_ex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (TYPE_2__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int b; int a; TYPE_1__* meth; int libctx; int field; } ;
+struct TYPE_6__ {int (* field_decode ) (TYPE_2__ const*,int *,int ,int *) ;} ;
+typedef TYPE_2__ EC_GROUP ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_CTX_free (int *) ;
+ int * BN_CTX_new_ex (int ) ;
+ int BN_copy (int *,int ) ;
+ int stub1 (TYPE_2__ const*,int *,int ,int *) ;
+ int stub2 (TYPE_2__ const*,int *,int ,int *) ;
 
 int ec_GFp_simple_group_get_curve(const EC_GROUP *group, BIGNUM *p, BIGNUM *a,
                                   BIGNUM *b, BN_CTX *ctx)
 {
     int ret = 0;
-    BN_CTX *new_ctx = NULL;
+    BN_CTX *new_ctx = ((void*)0);
 
-    if (p != NULL) {
+    if (p != ((void*)0)) {
         if (!BN_copy(p, group->field))
             return 0;
     }
 
-    if (a != NULL || b != NULL) {
+    if (a != ((void*)0) || b != ((void*)0)) {
         if (group->meth->field_decode) {
-            if (ctx == NULL) {
+            if (ctx == ((void*)0)) {
                 ctx = new_ctx = BN_CTX_new_ex(group->libctx);
-                if (ctx == NULL)
+                if (ctx == ((void*)0))
                     return 0;
             }
-            if (a != NULL) {
+            if (a != ((void*)0)) {
                 if (!group->meth->field_decode(group, a, group->a, ctx))
                     goto err;
             }
-            if (b != NULL) {
+            if (b != ((void*)0)) {
                 if (!group->meth->field_decode(group, b, group->b, ctx))
                     goto err;
             }
         } else {
-            if (a != NULL) {
+            if (a != ((void*)0)) {
                 if (!BN_copy(a, group->a))
                     goto err;
             }
-            if (b != NULL) {
+            if (b != ((void*)0)) {
                 if (!BN_copy(b, group->b))
                     goto err;
             }

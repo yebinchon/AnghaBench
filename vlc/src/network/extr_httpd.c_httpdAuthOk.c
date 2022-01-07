@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- char* strchr (char*,char) ; 
- scalar_t__ strcmp (char*,char const*) ; 
- scalar_t__ strncasecmp (char const*,char*,int) ; 
- char* vlc_b64_decode (char const*) ; 
+ int free (char*) ;
+ char* strchr (char*,char) ;
+ scalar_t__ strcmp (char*,char const*) ;
+ scalar_t__ strncasecmp (char const*,char*,int) ;
+ char* vlc_b64_decode (char const*) ;
 
 __attribute__((used)) static bool httpdAuthOk(const char *user, const char *pass, const char *b64)
 {
     if (!*user && !*pass)
-        return true;
+        return 1;
 
     if (!b64)
-        return false;
+        return 0;
 
     if (strncasecmp(b64, "BASIC", 5))
-        return false;
+        return 0;
 
     b64 += 5;
     while (*b64 == ' ')
@@ -35,9 +27,9 @@ __attribute__((used)) static bool httpdAuthOk(const char *user, const char *pass
 
     char *given_user = vlc_b64_decode(b64);
     if (!given_user)
-        return false;
+        return 0;
 
-    char *given_pass = NULL;
+    char *given_pass = ((void*)0);
     given_pass = strchr (given_user, ':');
     if (!given_pass)
         goto auth_failed;
@@ -51,9 +43,9 @@ __attribute__((used)) static bool httpdAuthOk(const char *user, const char *pass
         goto auth_failed;
 
     free(given_user);
-    return true;
+    return 1;
 
 auth_failed:
     free(given_user);
-    return false;
+    return 0;
 }

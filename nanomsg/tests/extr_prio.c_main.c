@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sndprio ;
-typedef  int /*<<< orphan*/  rcvprio ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_SP ; 
- scalar_t__ EAGAIN ; 
- int /*<<< orphan*/  NN_DONTWAIT ; 
- int /*<<< orphan*/  NN_PULL ; 
- int /*<<< orphan*/  NN_PUSH ; 
- int /*<<< orphan*/  NN_RCVPRIO ; 
- int /*<<< orphan*/  NN_SNDPRIO ; 
- int /*<<< orphan*/  NN_SOL_SOCKET ; 
- int /*<<< orphan*/  SOCKET_ADDRESS_A ; 
- int /*<<< orphan*/  SOCKET_ADDRESS_B ; 
- int /*<<< orphan*/  errno_assert (int) ; 
- int /*<<< orphan*/  nn_assert (int) ; 
- scalar_t__ nn_errno () ; 
- int nn_send (int,char*,int,int /*<<< orphan*/ ) ; 
- int nn_setsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  nn_sleep (int) ; 
- int /*<<< orphan*/  test_bind (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_close (int) ; 
- int /*<<< orphan*/  test_connect (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_recv (int,char*) ; 
- int /*<<< orphan*/  test_send (int,char*) ; 
- int test_socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int sndprio ;
+typedef int rcvprio ;
+
+
+ int AF_SP ;
+ scalar_t__ EAGAIN ;
+ int NN_DONTWAIT ;
+ int NN_PULL ;
+ int NN_PUSH ;
+ int NN_RCVPRIO ;
+ int NN_SNDPRIO ;
+ int NN_SOL_SOCKET ;
+ int SOCKET_ADDRESS_A ;
+ int SOCKET_ADDRESS_B ;
+ int errno_assert (int) ;
+ int nn_assert (int) ;
+ scalar_t__ nn_errno () ;
+ int nn_send (int,char*,int,int ) ;
+ int nn_setsockopt (int,int ,int ,int*,int) ;
+ int nn_sleep (int) ;
+ int test_bind (int,int ) ;
+ int test_close (int) ;
+ int test_connect (int,int ) ;
+ int test_recv (int,char*) ;
+ int test_send (int,char*) ;
+ int test_socket (int ,int ) ;
 
 int main ()
 {
@@ -47,7 +47,7 @@ int main ()
     int sndprio;
     int rcvprio;
 
-    /*  Test send priorities. */
+
 
     pull1 = test_socket (AF_SP, NN_PULL);
     test_bind (pull1, SOCKET_ADDRESS_A);
@@ -74,7 +74,7 @@ int main ()
     test_close (push1);
     test_close (pull2);
 
-    /*  Test receive priorities. */
+
 
     push1 = test_socket (AF_SP, NN_PUSH);
     test_bind (push1, SOCKET_ADDRESS_A);
@@ -102,7 +102,7 @@ int main ()
     test_close (push2);
     test_close (push1);
 
-    /*  Test removing a pipe from the list. */
+
 
     push1 = test_socket (AF_SP, NN_PUSH);
     test_bind (push1, SOCKET_ADDRESS_A);

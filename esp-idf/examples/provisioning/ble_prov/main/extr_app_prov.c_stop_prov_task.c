@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * esp_timer_handle_t ;
-struct TYPE_3__ {int /*<<< orphan*/ * timer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  app_prov_stop_service () ; 
- int /*<<< orphan*/  esp_timer_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- TYPE_1__* g_prov ; 
- int /*<<< orphan*/  vTaskDelete (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int * esp_timer_handle_t ;
+struct TYPE_3__ {int * timer; } ;
+
+
+ int ESP_LOGI (int ,char*) ;
+ int TAG ;
+ int app_prov_stop_service () ;
+ int esp_timer_delete (int *) ;
+ int free (TYPE_1__*) ;
+ TYPE_1__* g_prov ;
+ int vTaskDelete (int *) ;
 
 __attribute__((used)) static void stop_prov_task(void * arg)
 {
     ESP_LOGI(TAG, "Stopping provisioning");
     app_prov_stop_service();
 
-    /* Timer not needed anymore */
+
     esp_timer_handle_t timer = g_prov->timer;
     esp_timer_delete(timer);
-    g_prov->timer = NULL;
+    g_prov->timer = ((void*)0);
 
-    /* Free provisioning process data */
+
     free(g_prov);
-    g_prov = NULL;
+    g_prov = ((void*)0);
     ESP_LOGI(TAG, "Provisioning stopped");
 
-    vTaskDelete(NULL);
+    vTaskDelete(((void*)0));
 }

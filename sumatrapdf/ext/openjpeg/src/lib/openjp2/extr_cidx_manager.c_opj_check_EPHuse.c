@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  opj_stream_private_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int opj_stream_private_t ;
 struct TYPE_3__ {scalar_t__ type; scalar_t__ pos; } ;
-typedef  TYPE_1__ opj_marker_info_t ;
-typedef  int /*<<< orphan*/  opj_event_mgr_t ;
-typedef  scalar_t__ OPJ_OFF_T ;
-typedef  int /*<<< orphan*/  OPJ_BYTE ;
-typedef  int /*<<< orphan*/  OPJ_BOOL ;
+typedef TYPE_1__ opj_marker_info_t ;
+typedef int opj_event_mgr_t ;
+typedef scalar_t__ OPJ_OFF_T ;
+typedef int OPJ_BYTE ;
+typedef int OPJ_BOOL ;
 
-/* Variables and functions */
- scalar_t__ J2K_MS_COD ; 
- int /*<<< orphan*/  OPJ_FALSE ; 
- int /*<<< orphan*/  OPJ_TRUE ; 
- int /*<<< orphan*/  opj_read_bytes (int /*<<< orphan*/ *,unsigned int*,int) ; 
- int /*<<< orphan*/  opj_stream_read_data (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  opj_stream_seek (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ opj_stream_tell (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ J2K_MS_COD ;
+ int OPJ_FALSE ;
+ int OPJ_TRUE ;
+ int opj_read_bytes (int *,unsigned int*,int) ;
+ int opj_stream_read_data (int *,int *,int,int *) ;
+ int opj_stream_seek (int *,scalar_t__,int *) ;
+ scalar_t__ opj_stream_tell (int *) ;
 
 OPJ_BOOL opj_check_EPHuse(int coff, opj_marker_info_t *markers, int marknum,
                           opj_stream_private_t *cio,

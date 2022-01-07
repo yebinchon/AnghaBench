@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  _GLFWmonitor ;
-struct TYPE_6__ {int cb; int StateFlags; int /*<<< orphan*/ * DeviceName; } ;
-typedef  scalar_t__ GLFWbool ;
-typedef  size_t DWORD ;
-typedef  TYPE_1__ DISPLAY_DEVICEW ;
 
-/* Variables and functions */
- int DISPLAY_DEVICE_ACTIVE ; 
- int DISPLAY_DEVICE_PRIMARY_DEVICE ; 
- scalar_t__ EnumDisplayDevicesW (int /*<<< orphan*/ *,size_t,TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ GLFW_FALSE ; 
- scalar_t__ GLFW_TRUE ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_1__*,int) ; 
- int /*<<< orphan*/  _GLFW_SWAP_POINTERS (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * createMonitor (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/ ** realloc (int /*<<< orphan*/ **,int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int _GLFWmonitor ;
+struct TYPE_6__ {int cb; int StateFlags; int * DeviceName; } ;
+typedef scalar_t__ GLFWbool ;
+typedef size_t DWORD ;
+typedef TYPE_1__ DISPLAY_DEVICEW ;
+
+
+ int DISPLAY_DEVICE_ACTIVE ;
+ int DISPLAY_DEVICE_PRIMARY_DEVICE ;
+ scalar_t__ EnumDisplayDevicesW (int *,size_t,TYPE_1__*,int ) ;
+ scalar_t__ GLFW_FALSE ;
+ scalar_t__ GLFW_TRUE ;
+ int ZeroMemory (TYPE_1__*,int) ;
+ int _GLFW_SWAP_POINTERS (int *,int *) ;
+ int * createMonitor (TYPE_1__*,TYPE_1__*) ;
+ int ** realloc (int **,int) ;
 
 _GLFWmonitor** _glfwPlatformGetMonitors(int* count)
 {
@@ -34,19 +34,19 @@ _GLFWmonitor** _glfwPlatformGetMonitors(int* count)
     DWORD adapterIndex, displayIndex, primaryIndex = 0;
     DISPLAY_DEVICEW adapter, display;
     GLFWbool hasDisplays = GLFW_FALSE;
-    _GLFWmonitor** monitors = NULL;
+    _GLFWmonitor** monitors = ((void*)0);
 
     *count = 0;
 
-    // HACK: Check if any active adapters have connected displays
-    //       If not, this is a headless system or a VMware guest
 
-    for (adapterIndex = 0;  ;  adapterIndex++)
+
+
+    for (adapterIndex = 0; ; adapterIndex++)
     {
         ZeroMemory(&adapter, sizeof(DISPLAY_DEVICEW));
         adapter.cb = sizeof(DISPLAY_DEVICEW);
 
-        if (!EnumDisplayDevicesW(NULL, adapterIndex, &adapter, 0))
+        if (!EnumDisplayDevicesW(((void*)0), adapterIndex, &adapter, 0))
             break;
 
         if (!(adapter.StateFlags & DISPLAY_DEVICE_ACTIVE))
@@ -62,12 +62,12 @@ _GLFWmonitor** _glfwPlatformGetMonitors(int* count)
         }
     }
 
-    for (adapterIndex = 0;  ;  adapterIndex++)
+    for (adapterIndex = 0; ; adapterIndex++)
     {
         ZeroMemory(&adapter, sizeof(DISPLAY_DEVICEW));
         adapter.cb = sizeof(DISPLAY_DEVICEW);
 
-        if (!EnumDisplayDevicesW(NULL, adapterIndex, &adapter, 0))
+        if (!EnumDisplayDevicesW(((void*)0), adapterIndex, &adapter, 0))
             break;
 
         if (!(adapter.StateFlags & DISPLAY_DEVICE_ACTIVE))
@@ -78,7 +78,7 @@ _GLFWmonitor** _glfwPlatformGetMonitors(int* count)
 
         if (hasDisplays)
         {
-            for (displayIndex = 0;  ;  displayIndex++)
+            for (displayIndex = 0; ; displayIndex++)
             {
                 ZeroMemory(&display, sizeof(DISPLAY_DEVICEW));
                 display.cb = sizeof(DISPLAY_DEVICEW);
@@ -95,7 +95,7 @@ _GLFWmonitor** _glfwPlatformGetMonitors(int* count)
         {
             found++;
             monitors = realloc(monitors, sizeof(_GLFWmonitor*) * found);
-            monitors[found - 1] = createMonitor(&adapter, NULL);
+            monitors[found - 1] = createMonitor(&adapter, ((void*)0));
         }
     }
 

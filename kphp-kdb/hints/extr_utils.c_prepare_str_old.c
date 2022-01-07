@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ADD_CHAR (char) ; 
- char* dl_malloc (int) ; 
- scalar_t__ is_letter (char) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- char* prep_buf ; 
+ int ADD_CHAR (char) ;
+ char* dl_malloc (int) ;
+ scalar_t__ is_letter (char) ;
+ int memcpy (char*,char*,int) ;
+ char* prep_buf ;
 
 char *prepare_str_old (char *x) {
   char *s = prep_buf;
@@ -44,7 +36,7 @@ char *prepare_str_old (char *x) {
   ADD_CHAR(0);
 
   char *res = dl_malloc (j);
-  if (res == NULL) {
+  if (res == ((void*)0)) {
     return res;
   }
   memcpy (res, prep_buf, j);

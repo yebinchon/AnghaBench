@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct Curl_easy {int dummy; } ;
-typedef  int /*<<< orphan*/  CURLcode ;
+typedef int CURLcode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLE_OK ; 
- int /*<<< orphan*/  CURLE_OUT_OF_MEMORY ; 
- int /*<<< orphan*/  CURLE_URL_MALFORMAT ; 
- int /*<<< orphan*/  Curl_convert_from_network (struct Curl_easy*,char*,int) ; 
- scalar_t__ ISXDIGIT (char const) ; 
- unsigned char curlx_ultouc (unsigned long) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (size_t) ; 
- size_t strlen (char const*) ; 
- unsigned long strtoul (char*,char**,int) ; 
+
+ int CURLE_OK ;
+ int CURLE_OUT_OF_MEMORY ;
+ int CURLE_URL_MALFORMAT ;
+ int Curl_convert_from_network (struct Curl_easy*,char*,int) ;
+ scalar_t__ ISXDIGIT (char const) ;
+ unsigned char curlx_ultouc (unsigned long) ;
+ int free (char*) ;
+ char* malloc (size_t) ;
+ size_t strlen (char const*) ;
+ unsigned long strtoul (char*,char**,int) ;
 
 CURLcode Curl_urldecode(struct Curl_easy *data,
                         const char *string, size_t length,
@@ -43,7 +43,7 @@ CURLcode Curl_urldecode(struct Curl_easy *data,
     unsigned char in = *string;
     if(('%' == in) && (alloc > 2) &&
        ISXDIGIT(string[1]) && ISXDIGIT(string[2])) {
-      /* this is two hexadecimal digits following a '%' */
+
       char hexstr[3];
       char *ptr;
       hexstr[0] = string[1];
@@ -52,12 +52,12 @@ CURLcode Curl_urldecode(struct Curl_easy *data,
 
       hex = strtoul(hexstr, &ptr, 16);
 
-      in = curlx_ultouc(hex); /* this long is never bigger than 255 anyway */
+      in = curlx_ultouc(hex);
 
       if(data) {
         result = Curl_convert_from_network(data, (char *)&in, 1);
         if(result) {
-          /* Curl_convert_from_network calls failf if unsuccessful */
+
           free(ns);
           return result;
         }
@@ -75,13 +75,13 @@ CURLcode Curl_urldecode(struct Curl_easy *data,
     ns[strindex++] = in;
     string++;
   }
-  ns[strindex] = 0; /* terminate it */
+  ns[strindex] = 0;
 
   if(olen)
-    /* store output size */
+
     *olen = strindex;
 
-  /* store output string */
+
   *ostring = ns;
 
   return CURLE_OK;

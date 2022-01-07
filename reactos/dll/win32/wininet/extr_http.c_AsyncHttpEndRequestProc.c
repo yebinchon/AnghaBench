@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  task_header_t ;
-typedef  int /*<<< orphan*/  http_request_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int task_header_t ;
+typedef int http_request_t ;
 struct TYPE_3__ {scalar_t__ hdr; } ;
-struct TYPE_4__ {int /*<<< orphan*/  context; int /*<<< orphan*/  flags; TYPE_1__ hdr; } ;
-typedef  TYPE_2__ end_request_task_t ;
+struct TYPE_4__ {int context; int flags; TYPE_1__ hdr; } ;
+typedef TYPE_2__ end_request_task_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HTTP_HttpEndRequestW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *) ; 
+
+ int HTTP_HttpEndRequestW (int *,int ,int ) ;
+ int TRACE (char*,int *) ;
 
 __attribute__((used)) static void AsyncHttpEndRequestProc(task_header_t *hdr)
 {

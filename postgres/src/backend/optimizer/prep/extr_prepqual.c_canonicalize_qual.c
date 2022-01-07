@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Expr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- int /*<<< orphan*/  IsA (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  List ; 
- int /*<<< orphan*/ * find_duplicate_ors (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int Expr ;
+
+
+ int Assert (int) ;
+ int IsA (int *,int ) ;
+ int List ;
+ int * find_duplicate_ors (int *,int) ;
 
 Expr *
 canonicalize_qual(Expr *qual, bool is_check)
 {
-	Expr	   *newqual;
+ Expr *newqual;
 
-	/* Quick exit for empty qual */
-	if (qual == NULL)
-		return NULL;
 
-	/* This should not be invoked on quals in implicit-AND format */
-	Assert(!IsA(qual, List));
+ if (qual == ((void*)0))
+  return ((void*)0);
 
-	/*
-	 * Pull up redundant subclauses in OR-of-AND trees.  We do this only
-	 * within the top-level AND/OR structure; there's no point in looking
-	 * deeper.  Also remove any NULL constants in the top-level structure.
-	 */
-	newqual = find_duplicate_ors(qual, is_check);
 
-	return newqual;
+ Assert(!IsA(qual, List));
+
+
+
+
+
+
+ newqual = find_duplicate_ors(qual, is_check);
+
+ return newqual;
 }

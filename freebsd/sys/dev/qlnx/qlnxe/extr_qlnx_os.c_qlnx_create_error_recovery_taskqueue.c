@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  tq_name ;
-struct TYPE_5__ {int /*<<< orphan*/ * err_taskqueue; int /*<<< orphan*/  err_task; } ;
-typedef  TYPE_1__ qlnx_host_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_NOWAIT ; 
- int /*<<< orphan*/  PI_NET ; 
- int /*<<< orphan*/  QL_DPRINT1 (TYPE_1__*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TASK_INIT (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  bzero (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  qlnx_error_recovery_taskqueue ; 
- int /*<<< orphan*/  snprintf (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/ * taskqueue_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  taskqueue_start_threads (int /*<<< orphan*/ **,int,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  taskqueue_thread_enqueue ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int tq_name ;
+struct TYPE_5__ {int * err_taskqueue; int err_task; } ;
+typedef TYPE_1__ qlnx_host_t ;
+
+
+ int M_NOWAIT ;
+ int PI_NET ;
+ int QL_DPRINT1 (TYPE_1__*,char*,int *) ;
+ int TASK_INIT (int *,int ,int ,TYPE_1__*) ;
+ int bzero (int *,int) ;
+ int qlnx_error_recovery_taskqueue ;
+ int snprintf (int *,int,char*) ;
+ int * taskqueue_create (int *,int ,int ,int **) ;
+ int taskqueue_start_threads (int **,int,int ,char*,int *) ;
+ int taskqueue_thread_enqueue ;
 
 __attribute__((used)) static int
 qlnx_create_error_recovery_taskqueue(qlnx_host_t *ha)
@@ -42,7 +42,7 @@ qlnx_create_error_recovery_taskqueue(qlnx_host_t *ha)
                                 taskqueue_thread_enqueue, &ha->err_taskqueue);
 
 
-        if (ha->err_taskqueue == NULL)
+        if (ha->err_taskqueue == ((void*)0))
                 return (-1);
 
         taskqueue_start_threads(&ha->err_taskqueue, 1, PI_NET, "%s", tq_name);

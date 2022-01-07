@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uuid_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pg_cache_insertions; } ;
-struct TYPE_3__ {int /*<<< orphan*/  lock; int /*<<< orphan*/  JudyHS_array; } ;
-struct page_cache {int /*<<< orphan*/  pg_cache_rwlock; int /*<<< orphan*/  page_descriptors; TYPE_1__ metrics_index; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uuid_t ;
+struct TYPE_4__ {int pg_cache_insertions; } ;
+struct TYPE_3__ {int lock; int JudyHS_array; } ;
+struct page_cache {int pg_cache_rwlock; int page_descriptors; TYPE_1__ metrics_index; } ;
 struct rrdengine_instance {TYPE_2__ stats; struct page_cache pg_cache; } ;
-struct rrdeng_page_descr {unsigned long pg_cache_descr_state; int start_time; int /*<<< orphan*/  lock; int /*<<< orphan*/  JudyL_array; int /*<<< orphan*/  id; struct page_cache_descr* pg_cache_descr; } ;
-struct pg_cache_page_index {unsigned long pg_cache_descr_state; int start_time; int /*<<< orphan*/  lock; int /*<<< orphan*/  JudyL_array; int /*<<< orphan*/  id; struct page_cache_descr* pg_cache_descr; } ;
+struct rrdeng_page_descr {unsigned long pg_cache_descr_state; int start_time; int lock; int JudyL_array; int id; struct page_cache_descr* pg_cache_descr; } ;
+struct pg_cache_page_index {unsigned long pg_cache_descr_state; int start_time; int lock; int JudyL_array; int id; struct page_cache_descr* pg_cache_descr; } ;
 struct page_cache_descr {int flags; } ;
-typedef  int /*<<< orphan*/  Word_t ;
-typedef  struct rrdeng_page_descr* Pvoid_t ;
+typedef int Word_t ;
+typedef struct rrdeng_page_descr* Pvoid_t ;
 
-/* Variables and functions */
- struct rrdeng_page_descr** JudyHSGet (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- struct rrdeng_page_descr** JudyLIns (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned long PG_CACHE_DESCR_ALLOCATED ; 
- int /*<<< orphan*/  PJE0 ; 
- int RRD_PAGE_DIRTY ; 
- int RRD_PAGE_POPULATED ; 
- int USEC_PER_SEC ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  pg_cache_add_new_metric_time (struct rrdeng_page_descr*,struct rrdeng_page_descr*) ; 
- int /*<<< orphan*/  pg_cache_replaceQ_insert (struct rrdengine_instance*,struct rrdeng_page_descr*) ; 
- int /*<<< orphan*/  pg_cache_reserve_pages (struct rrdengine_instance*,int) ; 
- scalar_t__ unlikely (int) ; 
- int /*<<< orphan*/  uv_rwlock_rdlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_rwlock_rdunlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_rwlock_wrlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_rwlock_wrunlock (int /*<<< orphan*/ *) ; 
+
+ struct rrdeng_page_descr** JudyHSGet (int ,int ,int) ;
+ struct rrdeng_page_descr** JudyLIns (int *,int ,int ) ;
+ unsigned long PG_CACHE_DESCR_ALLOCATED ;
+ int PJE0 ;
+ int RRD_PAGE_DIRTY ;
+ int RRD_PAGE_POPULATED ;
+ int USEC_PER_SEC ;
+ int assert (int) ;
+ int pg_cache_add_new_metric_time (struct rrdeng_page_descr*,struct rrdeng_page_descr*) ;
+ int pg_cache_replaceQ_insert (struct rrdengine_instance*,struct rrdeng_page_descr*) ;
+ int pg_cache_reserve_pages (struct rrdengine_instance*,int) ;
+ scalar_t__ unlikely (int) ;
+ int uv_rwlock_rdlock (int *) ;
+ int uv_rwlock_rdunlock (int *) ;
+ int uv_rwlock_wrlock (int *) ;
+ int uv_rwlock_wrunlock (int *) ;
 
 void pg_cache_insert(struct rrdengine_instance *ctx, struct pg_cache_page_index *index,
                      struct rrdeng_page_descr *descr)
@@ -50,7 +50,7 @@ void pg_cache_insert(struct rrdengine_instance *ctx, struct pg_cache_page_index 
     unsigned long pg_cache_descr_state = descr->pg_cache_descr_state;
 
     if (0 != pg_cache_descr_state) {
-        /* there is page cache descriptor pre-allocated state */
+
         struct page_cache_descr *pg_cache_descr = descr->pg_cache_descr;
 
         assert(pg_cache_descr_state & PG_CACHE_DESCR_ALLOCATED);
@@ -61,10 +61,10 @@ void pg_cache_insert(struct rrdengine_instance *ctx, struct pg_cache_page_index 
         }
     }
 
-    if (unlikely(NULL == index)) {
+    if (unlikely(((void*)0) == index)) {
         uv_rwlock_rdlock(&pg_cache->metrics_index.lock);
         PValue = JudyHSGet(pg_cache->metrics_index.JudyHS_array, descr->id, sizeof(uuid_t));
-        assert(NULL != PValue);
+        assert(((void*)0) != PValue);
         page_index = *PValue;
         uv_rwlock_rdunlock(&pg_cache->metrics_index.lock);
     } else {

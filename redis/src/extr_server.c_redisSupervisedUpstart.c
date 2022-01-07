@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LL_NOTICE ; 
- int /*<<< orphan*/  LL_WARNING ; 
- int /*<<< orphan*/  SIGSTOP ; 
- char* getenv (char*) ; 
- int /*<<< orphan*/  raise (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  serverLog (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  unsetenv (char*) ; 
+ int LL_NOTICE ;
+ int LL_WARNING ;
+ int SIGSTOP ;
+ char* getenv (char*) ;
+ int raise (int ) ;
+ int serverLog (int ,char*) ;
+ int unsetenv (char*) ;
 
 int redisSupervisedUpstart(void) {
     const char *upstart_job = getenv("UPSTART_JOB");

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RC5_32_KEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RC5_32_encrypt (unsigned long*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  c2l (unsigned char*,unsigned long) ; 
- int /*<<< orphan*/  l2c (unsigned long,...) ; 
+
+
+
+typedef int RC5_32_KEY ;
+
+
+ int RC5_32_encrypt (unsigned long*,int *) ;
+ int c2l (unsigned char*,unsigned long) ;
+ int l2c (unsigned long,...) ;
 
 void RC5_32_ofb64_encrypt(const unsigned char *in, unsigned char *out,
                           long length, RC5_32_KEY *schedule,

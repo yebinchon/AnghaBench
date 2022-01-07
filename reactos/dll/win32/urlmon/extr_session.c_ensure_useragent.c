@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  info ;
-typedef  char WCHAR ;
-struct TYPE_3__ {int member_0; scalar_t__ dwPlatformId; int /*<<< orphan*/  dwMinorVersion; int /*<<< orphan*/  dwMajorVersion; } ;
-typedef  TYPE_1__ OSVERSIONINFOW ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ ARRAY_SIZE (char*) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  GetCurrentProcess () ; 
- int /*<<< orphan*/  GetVersionExW (TYPE_1__*) ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- scalar_t__ IsWow64Process (int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegEnumValueW (int /*<<< orphan*/ ,scalar_t__,char*,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyW (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ VER_PLATFORM_WIN32_NT ; 
- int /*<<< orphan*/  debugstr_w (char*) ; 
- char* heap_alloc (size_t) ; 
- char* heap_realloc (char*,size_t) ; 
- int /*<<< orphan*/  memcpy (char*,char*,scalar_t__) ; 
- int /*<<< orphan*/  sprintfW (char*,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
- size_t strlenW (char*) ; 
- char* user_agent ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int info ;
+typedef char WCHAR ;
+struct TYPE_3__ {int member_0; scalar_t__ dwPlatformId; int dwMinorVersion; int dwMajorVersion; } ;
+typedef TYPE_1__ OSVERSIONINFOW ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ ARRAY_SIZE (char*) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int GetCurrentProcess () ;
+ int GetVersionExW (TYPE_1__*) ;
+ int HKEY_LOCAL_MACHINE ;
+ scalar_t__ IsWow64Process (int ,scalar_t__*) ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegEnumValueW (int ,scalar_t__,char*,scalar_t__*,int *,int *,int *,int *) ;
+ scalar_t__ RegOpenKeyW (int ,char const*,int *) ;
+ int TRACE (char*,int ) ;
+ scalar_t__ VER_PLATFORM_WIN32_NT ;
+ int debugstr_w (char*) ;
+ char* heap_alloc (size_t) ;
+ char* heap_realloc (char*,size_t) ;
+ int memcpy (char*,char*,scalar_t__) ;
+ int sprintfW (char*,char const*,char const*,int ,int ,char const*) ;
+ size_t strlenW (char*) ;
+ char* user_agent ;
 
 __attribute__((used)) static void ensure_useragent(void)
 {
@@ -97,12 +97,12 @@ __attribute__((used)) static void ensure_useragent(void)
 
         while(1) {
             value_len = ARRAY_SIZE(buf);
-            res = RegEnumValueW(key, idx, buf, &value_len, NULL, NULL, NULL, NULL);
+            res = RegEnumValueW(key, idx, buf, &value_len, ((void*)0), ((void*)0), ((void*)0), ((void*)0));
             if(res != ERROR_SUCCESS)
                 break;
             idx++;
 
-            if(len + value_len + 2 /* strlen("; ") */ + 1 /* trailing ')' */ >= size) {
+            if(len + value_len + 2 + 1 >= size) {
                 tmp = heap_realloc(ret, (size*2+value_len)*sizeof(WCHAR));
                 if(!tmp)
                     break;

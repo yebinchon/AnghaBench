@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uiButton ;
 
-/* Variables and functions */
- int /*<<< orphan*/  parent ; 
- int /*<<< orphan*/  uiFreeText (char*) ; 
- int /*<<< orphan*/  uiLabel (void*) ; 
- int /*<<< orphan*/  uiLabelSetText (int /*<<< orphan*/ ,char*) ; 
- char* uiSaveFile (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uiButton ;
+
+
+ int parent ;
+ int uiFreeText (char*) ;
+ int uiLabel (void*) ;
+ int uiLabelSetText (int ,char*) ;
+ char* uiSaveFile (int ) ;
 
 __attribute__((used)) static void saveFile(uiButton *b, void *data)
 {
-	char *fn;
+ char *fn;
 
-	fn = uiSaveFile(parent);
-	if (fn == NULL)
-		uiLabelSetText(uiLabel(data), "(cancelled)");
-	else {
-		uiLabelSetText(uiLabel(data), fn);
-		uiFreeText(fn);
-	}
+ fn = uiSaveFile(parent);
+ if (fn == ((void*)0))
+  uiLabelSetText(uiLabel(data), "(cancelled)");
+ else {
+  uiLabelSetText(uiLabel(data), fn);
+  uiFreeText(fn);
+ }
 }

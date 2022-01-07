@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- unsigned int crypto_pwhash_scryptsalsa208sha256_STRBYTES ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/ * escrypt_parse_setting (int /*<<< orphan*/  const*,scalar_t__*,scalar_t__*,scalar_t__*) ; 
- scalar_t__ pickparams (unsigned long long,size_t,scalar_t__*,scalar_t__*,scalar_t__*) ; 
- unsigned int sodium_strnlen (char const*,unsigned int) ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+
+
+ int EINVAL ;
+ unsigned int crypto_pwhash_scryptsalsa208sha256_STRBYTES ;
+ int errno ;
+ int * escrypt_parse_setting (int const*,scalar_t__*,scalar_t__*,scalar_t__*) ;
+ scalar_t__ pickparams (unsigned long long,size_t,scalar_t__*,scalar_t__*,scalar_t__*) ;
+ unsigned int sodium_strnlen (char const*,unsigned int) ;
 
 int
 crypto_pwhash_scryptsalsa208sha256_str_needs_rehash(
@@ -40,7 +40,7 @@ crypto_pwhash_scryptsalsa208sha256_str_needs_rehash(
         return -1;
     }
     if (escrypt_parse_setting((const uint8_t *) str,
-                              &N_log2_, &r_, &p_) == NULL) {
+                              &N_log2_, &r_, &p_) == ((void*)0)) {
         errno = EINVAL;
         return -1;
     }

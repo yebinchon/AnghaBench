@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int n; int* lcp; unsigned char* y; int* p; } ;
-typedef  TYPE_1__ suffix_array_t ;
-typedef  int /*<<< orphan*/  dyn_mark_t ;
+typedef TYPE_1__ suffix_array_t ;
+typedef int dyn_mark_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dyn_mark (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dyn_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lcp_table (TYPE_1__*,int,int const) ; 
- int* malloc (int) ; 
- int* zmalloc (int) ; 
+
+ int dyn_mark (int ) ;
+ int dyn_release (int ) ;
+ int lcp_table (TYPE_1__*,int,int const) ;
+ int* malloc (int) ;
+ int* zmalloc (int) ;
 
 __attribute__((used)) static void suffix_array_lcp_init (suffix_array_t *A) {
   int i, j, k;
@@ -31,7 +31,7 @@ __attribute__((used)) static void suffix_array_lcp_init (suffix_array_t *A) {
   int *LCP = A->lcp;
   dyn_mark_t ss_mark;
   dyn_mark (ss_mark);
-  int *R = zmalloc (4 * n);  
+  int *R = zmalloc (4 * n);
   for (i = 0; i < n; i++) {
     R[p[i]] = i;
   }

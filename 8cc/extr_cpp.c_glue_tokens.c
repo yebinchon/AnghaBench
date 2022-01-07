@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Token ;
-typedef  int /*<<< orphan*/  Buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  buf_body (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  buf_printf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * lex_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * make_buffer () ; 
- int /*<<< orphan*/  tok2s (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int Token ;
+typedef int Buffer ;
+
+
+ int buf_body (int *) ;
+ int buf_printf (int *,char*,int ) ;
+ int * lex_string (int ) ;
+ int * make_buffer () ;
+ int tok2s (int *) ;
 
 __attribute__((used)) static Token *glue_tokens(Token *t, Token *u) {
     Buffer *b = make_buffer();

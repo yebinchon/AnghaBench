@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct alias {int /*<<< orphan*/  val; int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  out1c (char) ; 
- int /*<<< orphan*/  out1fmt (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  out1qstr (int /*<<< orphan*/ ) ; 
+
+
+
+struct alias {int val; int name; } ;
+
+
+ int out1c (char) ;
+ int out1fmt (char*,int ) ;
+ int out1qstr (int ) ;
 
 __attribute__((used)) static void
 printalias(const struct alias *a)
 {
-	out1fmt("%s=", a->name);
-	out1qstr(a->val);
-	out1c('\n');
+ out1fmt("%s=", a->name);
+ out1qstr(a->val);
+ out1c('\n');
 }

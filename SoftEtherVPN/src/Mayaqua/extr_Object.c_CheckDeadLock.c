@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  msg ;
-typedef  int /*<<< orphan*/  c ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_4__ {int Unlocked; int /*<<< orphan*/  Timeout; int /*<<< orphan*/ * Lock; } ;
-typedef  int /*<<< orphan*/  THREAD ;
-typedef  int /*<<< orphan*/  LOCK ;
-typedef  TYPE_1__ DEADCHECK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AbortExitEx (char*) ; 
- int /*<<< orphan*/  CheckDeadLockThread ; 
- int /*<<< orphan*/  Format (char*,int,char*,char*) ; 
- int /*<<< orphan*/  INFINITE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/ * NewThread (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  ReleaseThread (int /*<<< orphan*/ *) ; 
- int WaitThread (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WaitThreadInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Zero (TYPE_1__*,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int msg ;
+typedef int c ;
+typedef int UINT ;
+struct TYPE_4__ {int Unlocked; int Timeout; int * Lock; } ;
+typedef int THREAD ;
+typedef int LOCK ;
+typedef TYPE_1__ DEADCHECK ;
+
+
+ int AbortExitEx (char*) ;
+ int CheckDeadLockThread ;
+ int Format (char*,int,char*,char*) ;
+ int INFINITE ;
+ int MAX_PATH ;
+ int * NewThread (int ,TYPE_1__*) ;
+ int ReleaseThread (int *) ;
+ int WaitThread (int *,int ) ;
+ int WaitThreadInit (int *) ;
+ int Zero (TYPE_1__*,int) ;
 
 void CheckDeadLock(LOCK *lock, UINT timeout, char *name)
 {
-	DEADCHECK c;
-	THREAD *t;
-	char msg[MAX_PATH];
+ DEADCHECK c;
+ THREAD *t;
+ char msg[MAX_PATH];
 
-	if (lock == NULL)
-	{
-		return;
-	}
-	if (name == NULL)
-	{
-		name = "Unknown";
-	}
+ if (lock == ((void*)0))
+ {
+  return;
+ }
+ if (name == ((void*)0))
+ {
+  name = "Unknown";
+ }
 
-	Format(msg, sizeof(msg), "error: CheckDeadLock() Failed: %s\n", name);
+ Format(msg, sizeof(msg), "error: CheckDeadLock() Failed: %s\n", name);
 
-	Zero(&c, sizeof(c));
-	c.Lock = lock;
-	c.Timeout = timeout;
-	c.Unlocked = false;
+ Zero(&c, sizeof(c));
+ c.Lock = lock;
+ c.Timeout = timeout;
+ c.Unlocked = 0;
 
-	t = NewThread(CheckDeadLockThread, &c);
-	WaitThreadInit(t);
-	if (WaitThread(t, timeout) == false)
-	{
-		if (c.Unlocked == false)
-		{
-			// Deadlock occured
-			AbortExitEx(msg);
-		}
-		else
-		{
-			WaitThread(t, INFINITE);
-		}
-	}
+ t = NewThread(CheckDeadLockThread, &c);
+ WaitThreadInit(t);
+ if (WaitThread(t, timeout) == 0)
+ {
+  if (c.Unlocked == 0)
+  {
 
-	ReleaseThread(t);
+   AbortExitEx(msg);
+  }
+  else
+  {
+   WaitThread(t, INFINITE);
+  }
+ }
+
+ ReleaseThread(t);
 }

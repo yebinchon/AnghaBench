@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct devstat {int dummy; } ;
 struct bio_queue_head {int dummy; } ;
 struct bio {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  biofinish (struct bio*,struct devstat*,int) ; 
- struct bio* bioq_takefirst (struct bio_queue_head*) ; 
+
+ int biofinish (struct bio*,struct devstat*,int) ;
+ struct bio* bioq_takefirst (struct bio_queue_head*) ;
 
 void
 bioq_flush(struct bio_queue_head *head, struct devstat *stp, int error)
 {
-	struct bio *bp;
+ struct bio *bp;
 
-	while ((bp = bioq_takefirst(head)) != NULL)
-		biofinish(bp, stp, error);
+ while ((bp = bioq_takefirst(head)) != ((void*)0))
+  biofinish(bp, stp, error);
 }

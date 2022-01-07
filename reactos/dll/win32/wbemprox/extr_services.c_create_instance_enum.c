@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct path {int dummy; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  IEnumWbemClassObject ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef int WCHAR ;
+typedef int IEnumWbemClassObject ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  exec_query (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * query_from_path (struct path const*) ; 
+
+ int E_OUTOFMEMORY ;
+ int exec_query (int *,int **) ;
+ int heap_free (int *) ;
+ int * query_from_path (struct path const*) ;
 
 __attribute__((used)) static HRESULT create_instance_enum( const struct path *path, IEnumWbemClassObject **iter )
 {

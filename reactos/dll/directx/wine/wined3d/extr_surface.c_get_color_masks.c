@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_format {unsigned int red_size; unsigned int red_offset; unsigned int green_size; unsigned int green_offset; unsigned int blue_size; unsigned int blue_offset; } ;
-typedef  unsigned int DWORD ;
+typedef unsigned int DWORD ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void get_color_masks(const struct wined3d_format *format, DWORD *masks)
 {

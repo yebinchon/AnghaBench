@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr {int dummy; } ;
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  scalar_t__ mrb_int ;
-typedef  int /*<<< orphan*/  fsize_t ;
+typedef int ssize_t ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef scalar_t__ mrb_int ;
+typedef int fsize_t ;
 
-/* Variables and functions */
- scalar_t__ RSTRING_LEN (int /*<<< orphan*/ ) ; 
- scalar_t__ RSTRING_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_fixnum_value (scalar_t__) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *) ; 
- scalar_t__ mrb_nil_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_nil_value () ; 
- int /*<<< orphan*/  mrb_sys_fail (int /*<<< orphan*/ *,char*) ; 
- int send (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int) ; 
- int sendto (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int,struct sockaddr const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  socket_fd (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ RSTRING_LEN (int ) ;
+ scalar_t__ RSTRING_PTR (int ) ;
+ int mrb_fixnum_value (scalar_t__) ;
+ int mrb_get_args (int *,char*,int *,scalar_t__*,int *) ;
+ scalar_t__ mrb_nil_p (int ) ;
+ int mrb_nil_value () ;
+ int mrb_sys_fail (int *,char*) ;
+ int send (int ,scalar_t__,int ,int) ;
+ int sendto (int ,scalar_t__,int ,int,struct sockaddr const*,int ) ;
+ int socket_fd (int *,int ) ;
 
 __attribute__((used)) static mrb_value
 mrb_basicsocket_send(mrb_state *mrb, mrb_value self)

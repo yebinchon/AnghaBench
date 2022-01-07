@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct page {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SetPageError (struct page*) ; 
- int /*<<< orphan*/  mapping_set_error (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  page_file_mapping (struct page*) ; 
+
+ int SetPageError (struct page*) ;
+ int mapping_set_error (int ,int) ;
+ int page_file_mapping (struct page*) ;
 
 __attribute__((used)) static void nfs_mapping_set_error(struct page *page, int error)
 {
-	SetPageError(page);
-	mapping_set_error(page_file_mapping(page), error);
+ SetPageError(page);
+ mapping_set_error(page_file_mapping(page), error);
 }

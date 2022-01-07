@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jit_State ;
-typedef  int /*<<< orphan*/  TValue ;
-typedef  int /*<<< orphan*/  TRef ;
-typedef  int /*<<< orphan*/  CTState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CTID_INT32 ; 
- int /*<<< orphan*/  crec_ct_tv (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ctype_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int jit_State ;
+typedef int TValue ;
+typedef int TRef ;
+typedef int CTState ;
+
+
+ int CTID_INT32 ;
+ int crec_ct_tv (int *,int ,int ,int ,int *) ;
+ int ctype_get (int *,int ) ;
 
 __attribute__((used)) static TRef crec_toint(jit_State *J, CTState *cts, TRef sp, TValue *sval)
 {

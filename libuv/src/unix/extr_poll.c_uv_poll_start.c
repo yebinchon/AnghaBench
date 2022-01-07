@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  poll_cb; int /*<<< orphan*/  io_watcher; int /*<<< orphan*/  loop; } ;
-typedef  TYPE_1__ uv_poll_t ;
-typedef  int /*<<< orphan*/  uv_poll_cb ;
 
-/* Variables and functions */
- int POLLIN ; 
- int POLLOUT ; 
- int UV_DISCONNECT ; 
- int UV_PRIORITIZED ; 
- int UV_READABLE ; 
- int UV_WRITABLE ; 
- int UV__POLLPRI ; 
- int UV__POLLRDHUP ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  uv__handle_start (TYPE_1__*) ; 
- int /*<<< orphan*/  uv__io_start (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  uv__is_closing (TYPE_1__*) ; 
- int /*<<< orphan*/  uv__poll_stop (TYPE_1__*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int poll_cb; int io_watcher; int loop; } ;
+typedef TYPE_1__ uv_poll_t ;
+typedef int uv_poll_cb ;
+
+
+ int POLLIN ;
+ int POLLOUT ;
+ int UV_DISCONNECT ;
+ int UV_PRIORITIZED ;
+ int UV_READABLE ;
+ int UV_WRITABLE ;
+ int UV__POLLPRI ;
+ int UV__POLLRDHUP ;
+ int assert (int) ;
+ int uv__handle_start (TYPE_1__*) ;
+ int uv__io_start (int ,int *,int) ;
+ int uv__is_closing (TYPE_1__*) ;
+ int uv__poll_stop (TYPE_1__*) ;
 
 int uv_poll_start(uv_poll_t* handle, int pevents, uv_poll_cb poll_cb) {
   int events;

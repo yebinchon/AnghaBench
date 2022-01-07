@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_PLATFORM_ERROR ; 
- int /*<<< orphan*/  _glfwInputErrorWin32 (int /*<<< orphan*/ ,char*) ; 
+ int GLFW_PLATFORM_ERROR ;
+ int _glfwInputErrorWin32 (int ,char*) ;
 
 __attribute__((used)) static int findPixelFormatAttribValue(const int* attribs,
                                       int attribCount,
@@ -22,7 +14,7 @@ __attribute__((used)) static int findPixelFormatAttribValue(const int* attribs,
 {
     int i;
 
-    for (i = 0;  i < attribCount;  i++)
+    for (i = 0; i < attribCount; i++)
     {
         if (attribs[i] == attrib)
             return values[i];

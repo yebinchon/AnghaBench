@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hb_value_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int hb_value_t ;
 struct TYPE_3__ {char* settings_template; } ;
-typedef  TYPE_1__ hb_filter_object_t ;
-typedef  int /*<<< orphan*/  hb_dict_t ;
+typedef TYPE_1__ hb_filter_object_t ;
+typedef int hb_dict_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  hb_dict_get (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/ * hb_dict_init () ; 
- int /*<<< orphan*/  hb_dict_set (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- TYPE_1__* hb_filter_get (int) ; 
- char* hb_filter_settings_string (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hb_log (char*,int) ; 
- int /*<<< orphan*/  hb_str_vfree (char**) ; 
- char** hb_str_vsplit (char*,char) ; 
- char* hb_value_get_string_xform (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_value_string (char*) ; 
+
+ int free (char*) ;
+ int hb_dict_get (int *,char const*) ;
+ int * hb_dict_init () ;
+ int hb_dict_set (int *,char const*,int ) ;
+ TYPE_1__* hb_filter_get (int) ;
+ char* hb_filter_settings_string (int,int *) ;
+ int hb_log (char*,int) ;
+ int hb_str_vfree (char**) ;
+ char** hb_str_vsplit (char*,char) ;
+ char* hb_value_get_string_xform (int ) ;
+ int hb_value_string (char*) ;
 
 __attribute__((used)) static void import_custom_11_1_0(hb_value_t * preset, int filter_id,
                                  const char * key)
 {
     char *str = hb_value_get_string_xform(hb_dict_get(preset, key));
-    if (str == NULL)
+    if (str == ((void*)0))
     {
         return;
     }
     hb_filter_object_t * filter = hb_filter_get(filter_id);
-    if (filter == NULL)
+    if (filter == ((void*)0))
     {
         hb_log("import_custom_11_1_0: invalid filter id %d\n", filter_id);
         return;
     }
-    if (filter->settings_template == NULL)
+    if (filter->settings_template == ((void*)0))
     {
         return;
     }
     char ** values = hb_str_vsplit(str, ':');
-    char ** tmpl   = hb_str_vsplit(filter->settings_template, ':');
-    int     ii;
+    char ** tmpl = hb_str_vsplit(filter->settings_template, ':');
+    int ii;
 
     free(str);
     hb_dict_t * dict = hb_dict_init();
-    for (ii = 0; values[ii] != NULL; ii++)
+    for (ii = 0; values[ii] != ((void*)0); ii++)
     {
-        if (tmpl[ii] == NULL)
+        if (tmpl[ii] == ((void*)0))
         {
-            // Incomplete template?
+
             break;
         }
         char ** pair = hb_str_vsplit(tmpl[ii], '=');
-        if (pair[0] != NULL)
+        if (pair[0] != ((void*)0))
         {
             hb_dict_set(dict, pair[0], hb_value_string(values[ii]));
         }

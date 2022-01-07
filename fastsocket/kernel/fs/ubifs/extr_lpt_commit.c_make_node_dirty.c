@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ubifs_info {int dummy; } ;
 
-/* Variables and functions */
- int EINVAL ; 
-#define  UBIFS_LPT_LSAVE 131 
-#define  UBIFS_LPT_LTAB 130 
-#define  UBIFS_LPT_NNODE 129 
-#define  UBIFS_LPT_PNODE 128 
- int make_lsave_dirty (struct ubifs_info*,int,int) ; 
- int make_ltab_dirty (struct ubifs_info*,int,int) ; 
- int make_nnode_dirty (struct ubifs_info*,int,int,int) ; 
- int make_pnode_dirty (struct ubifs_info*,int,int,int) ; 
+
+ int EINVAL ;
+
+
+
+
+ int make_lsave_dirty (struct ubifs_info*,int,int) ;
+ int make_ltab_dirty (struct ubifs_info*,int,int) ;
+ int make_nnode_dirty (struct ubifs_info*,int,int,int) ;
+ int make_pnode_dirty (struct ubifs_info*,int,int,int) ;
 
 __attribute__((used)) static int make_node_dirty(struct ubifs_info *c, int node_type, int node_num,
-			   int lnum, int offs)
+      int lnum, int offs)
 {
-	switch (node_type) {
-	case UBIFS_LPT_NNODE:
-		return make_nnode_dirty(c, node_num, lnum, offs);
-	case UBIFS_LPT_PNODE:
-		return make_pnode_dirty(c, node_num, lnum, offs);
-	case UBIFS_LPT_LTAB:
-		return make_ltab_dirty(c, lnum, offs);
-	case UBIFS_LPT_LSAVE:
-		return make_lsave_dirty(c, lnum, offs);
-	}
-	return -EINVAL;
+ switch (node_type) {
+ case 129:
+  return make_nnode_dirty(c, node_num, lnum, offs);
+ case 128:
+  return make_pnode_dirty(c, node_num, lnum, offs);
+ case 130:
+  return make_ltab_dirty(c, lnum, offs);
+ case 131:
+  return make_lsave_dirty(c, lnum, offs);
+ }
+ return -EINVAL;
 }

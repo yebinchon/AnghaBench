@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {void* datum; } ;
-typedef  TYPE_1__* LstNode ;
+typedef TYPE_1__* LstNode ;
 
-/* Variables and functions */
+
 
 void *
 Lst_Datum(LstNode ln)
 {
-    if (ln != NULL) {
-	return ((ln)->datum);
+    if (ln != ((void*)0)) {
+ return ((ln)->datum);
     } else {
-	return NULL;
+ return ((void*)0);
     }
 }

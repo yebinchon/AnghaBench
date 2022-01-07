@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  route_wakeup_expire; int /*<<< orphan*/  route_wakeup; int /*<<< orphan*/  es; } ;
-struct TYPE_4__ {int /*<<< orphan*/  tuntap; int /*<<< orphan*/  route_ipv6_list; int /*<<< orphan*/  route_list; } ;
-struct context {TYPE_1__ c2; int /*<<< orphan*/  net_ctx; int /*<<< orphan*/  plugins; TYPE_2__ c1; int /*<<< orphan*/  options; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ISC_ERRORS ; 
- int /*<<< orphan*/  do_route (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  event_timeout_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  initialization_sequence_completed (struct context*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_time () ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int route_wakeup_expire; int route_wakeup; int es; } ;
+struct TYPE_4__ {int tuntap; int route_ipv6_list; int route_list; } ;
+struct context {TYPE_1__ c2; int net_ctx; int plugins; TYPE_2__ c1; int options; } ;
+
+
+ int ISC_ERRORS ;
+ int do_route (int *,int ,int ,int ,int ,int ,int *) ;
+ int event_timeout_clear (int *) ;
+ int initialization_sequence_completed (struct context*,int ) ;
+ int update_time () ;
 
 __attribute__((used)) static void
 check_add_routes_action(struct context *c, const bool errors)
@@ -31,5 +31,5 @@ check_add_routes_action(struct context *c, const bool errors)
     update_time();
     event_timeout_clear(&c->c2.route_wakeup);
     event_timeout_clear(&c->c2.route_wakeup_expire);
-    initialization_sequence_completed(c, errors ? ISC_ERRORS : 0); /* client/p2p --route-delay was defined */
+    initialization_sequence_completed(c, errors ? ISC_ERRORS : 0);
 }

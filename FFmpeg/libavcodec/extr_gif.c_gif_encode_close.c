@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* priv_data; } ;
-struct TYPE_4__ {int /*<<< orphan*/  tmpl; int /*<<< orphan*/  last_frame; scalar_t__ buf_size; int /*<<< orphan*/  buf; int /*<<< orphan*/  lzw; } ;
-typedef  TYPE_1__ GIFContext ;
-typedef  TYPE_2__ AVCodecContext ;
+struct TYPE_4__ {int tmpl; int last_frame; scalar_t__ buf_size; int buf; int lzw; } ;
+typedef TYPE_1__ GIFContext ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_frame_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ *) ; 
+
+ int av_frame_free (int *) ;
+ int av_freep (int *) ;
 
 __attribute__((used)) static int gif_encode_close(AVCodecContext *avctx)
 {

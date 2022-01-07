@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct breakpoint {int /*<<< orphan*/  old_data; int /*<<< orphan*/  pc; struct breakpoint* next; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* write_memory ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  breakpoint_len ; 
- struct breakpoint* breakpoints ; 
- int /*<<< orphan*/  free (struct breakpoint*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* the_target ; 
- int /*<<< orphan*/  warning (char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct breakpoint {int old_data; int pc; struct breakpoint* next; } ;
+struct TYPE_2__ {int (* write_memory ) (int ,int ,int ) ;} ;
+
+
+ int breakpoint_len ;
+ struct breakpoint* breakpoints ;
+ int free (struct breakpoint*) ;
+ int stub1 (int ,int ,int ) ;
+ int stub2 (int ,int ,int ) ;
+ TYPE_1__* the_target ;
+ int warning (char*) ;
 
 __attribute__((used)) static void
 delete_breakpoint (struct breakpoint *bp)
@@ -32,7 +32,7 @@ delete_breakpoint (struct breakpoint *bp)
     {
       breakpoints = bp->next;
       (*the_target->write_memory) (bp->pc, bp->old_data,
-				   breakpoint_len);
+       breakpoint_len);
       free (bp);
       return;
     }
@@ -40,13 +40,13 @@ delete_breakpoint (struct breakpoint *bp)
   while (cur->next)
     {
       if (cur->next == bp)
-	{
-	  cur->next = bp->next;
-	  (*the_target->write_memory) (bp->pc, bp->old_data,
-				       breakpoint_len);
-	  free (bp);
-	  return;
-	}
+ {
+   cur->next = bp->next;
+   (*the_target->write_memory) (bp->pc, bp->old_data,
+           breakpoint_len);
+   free (bp);
+   return;
+ }
     }
   warning ("Could not find breakpoint in list.");
 }

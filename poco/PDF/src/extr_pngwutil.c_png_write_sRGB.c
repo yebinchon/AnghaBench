@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  png_structp ;
-typedef  int /*<<< orphan*/  png_size_t ;
-typedef  scalar_t__ png_byte ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PNG_sRGB ; 
- int PNG_sRGB_INTENT_LAST ; 
- int /*<<< orphan*/  png_debug (int,char*) ; 
- int /*<<< orphan*/  png_sRGB ; 
- int /*<<< orphan*/  png_warning (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  png_write_chunk (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ) ; 
 
-void /* PRIVATE */
+
+
+typedef int png_structp ;
+typedef int png_size_t ;
+typedef scalar_t__ png_byte ;
+
+
+ int PNG_sRGB ;
+ int PNG_sRGB_INTENT_LAST ;
+ int png_debug (int,char*) ;
+ int png_sRGB ;
+ int png_warning (int ,char*) ;
+ int png_write_chunk (int ,int ,scalar_t__*,int ) ;
+
+void
 png_write_sRGB(png_structp png_ptr, int srgb_intent)
 {
-#ifdef PNG_USE_LOCAL_ARRAYS
-   PNG_sRGB;
-#endif
+
+
+
    png_byte buf[1];
 
    png_debug(1, "in png_write_sRGB\n");

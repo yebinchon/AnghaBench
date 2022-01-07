@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-typedef  int /*<<< orphan*/  UErrorCode ;
-typedef  int /*<<< orphan*/  UCollator ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int /*<<< orphan*/  SQLITE_UTF16 ; 
- int /*<<< orphan*/  U_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  U_ZERO_ERROR ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  icuCollationColl ; 
- int /*<<< orphan*/  icuCollationDel ; 
- int /*<<< orphan*/  icuFunctionError (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int sqlite3_create_collation_v2 (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_error (int /*<<< orphan*/ *,char*,int) ; 
- scalar_t__ sqlite3_user_data (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ucol_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ucol_open (char const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+typedef int sqlite3 ;
+typedef int UErrorCode ;
+typedef int UCollator ;
+
+
+ int SQLITE_OK ;
+ int SQLITE_UTF16 ;
+ int U_SUCCESS (int ) ;
+ int U_ZERO_ERROR ;
+ int assert (int) ;
+ int icuCollationColl ;
+ int icuCollationDel ;
+ int icuFunctionError (int *,char*,int ) ;
+ int sqlite3_create_collation_v2 (int *,char const*,int ,void*,int ,int ) ;
+ int sqlite3_result_error (int *,char*,int) ;
+ scalar_t__ sqlite3_user_data (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
+ int ucol_close (int *) ;
+ int * ucol_open (char const*,int *) ;
 
 __attribute__((used)) static void icuLoadCollation(
-  sqlite3_context *p, 
-  int nArg, 
+  sqlite3_context *p,
+  int nArg,
   sqlite3_value **apArg
 ){
   sqlite3 *db = (sqlite3 *)sqlite3_user_data(p);
   UErrorCode status = U_ZERO_ERROR;
-  const char *zLocale;      /* Locale identifier - (eg. "jp_JP") */
-  const char *zName;        /* SQL Collation sequence name (eg. "japanese") */
-  UCollator *pUCollator;    /* ICU library collation object */
-  int rc;                   /* Return code from sqlite3_create_collation_x() */
+  const char *zLocale;
+  const char *zName;
+  UCollator *pUCollator;
+  int rc;
 
   assert(nArg==2);
-  (void)nArg; /* Unused parameter */
+  (void)nArg;
   zLocale = (const char *)sqlite3_value_text(apArg[0]);
   zName = (const char *)sqlite3_value_text(apArg[1]);
 
@@ -60,7 +60,7 @@ __attribute__((used)) static void icuLoadCollation(
   }
   assert(p);
 
-  rc = sqlite3_create_collation_v2(db, zName, SQLITE_UTF16, (void *)pUCollator, 
+  rc = sqlite3_create_collation_v2(db, zName, SQLITE_UTF16, (void *)pUCollator,
       icuCollationColl, icuCollationDel
   );
   if( rc!=SQLITE_OK ){

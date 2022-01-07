@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int symbolEncodingType_e ;
-typedef  int /*<<< orphan*/  const U32 ;
-typedef  int /*<<< orphan*/  const S16 ;
-typedef  int /*<<< orphan*/  FSE_CTable ;
-typedef  size_t BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUGLOG (int,char*,unsigned int) ; 
- int /*<<< orphan*/  FORWARD_IF_ERROR (size_t const) ; 
- size_t const FSE_buildCTable_rle (int /*<<< orphan*/ *,size_t) ; 
- size_t const FSE_buildCTable_wksp (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const,int /*<<< orphan*/  const,void*,size_t) ; 
- size_t const FSE_normalizeCount (int /*<<< orphan*/  const*,int /*<<< orphan*/  const,unsigned int*,size_t,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  const FSE_optimalTableLog (int /*<<< orphan*/  const,size_t,int /*<<< orphan*/  const) ; 
- size_t FSE_writeNCount (size_t*,int,int /*<<< orphan*/  const*,int /*<<< orphan*/  const,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  GENERIC ; 
- int /*<<< orphan*/  MaxSeq ; 
- int /*<<< orphan*/  RETURN_ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RETURN_ERROR_IF (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  dstSize_tooSmall ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,size_t) ; 
-#define  set_basic 131 
-#define  set_compressed 130 
-#define  set_repeat 129 
-#define  set_rle 128 
+
+
+
+typedef int symbolEncodingType_e ;
+typedef int const U32 ;
+typedef int const S16 ;
+typedef int FSE_CTable ;
+typedef size_t BYTE ;
+
+
+ int DEBUGLOG (int,char*,unsigned int) ;
+ int FORWARD_IF_ERROR (size_t const) ;
+ size_t const FSE_buildCTable_rle (int *,size_t) ;
+ size_t const FSE_buildCTable_wksp (int *,int const*,int const,int const,void*,size_t) ;
+ size_t const FSE_normalizeCount (int const*,int const,unsigned int*,size_t,int const) ;
+ int const FSE_optimalTableLog (int const,size_t,int const) ;
+ size_t FSE_writeNCount (size_t*,int,int const*,int const,int const) ;
+ int GENERIC ;
+ int MaxSeq ;
+ int RETURN_ERROR (int ) ;
+ int RETURN_ERROR_IF (int,int ) ;
+ int assert (int) ;
+ int dstSize_tooSmall ;
+ int memcpy (int *,int const*,size_t) ;
+
+
+
+
 
 size_t
 ZSTD_buildCTable(void* dst, size_t dstCapacity,
@@ -50,18 +50,18 @@ ZSTD_buildCTable(void* dst, size_t dstCapacity,
     DEBUGLOG(6, "ZSTD_buildCTable (dstCapacity=%u)", (unsigned)dstCapacity);
 
     switch (type) {
-    case set_rle:
+    case 128:
         FORWARD_IF_ERROR(FSE_buildCTable_rle(nextCTable, (BYTE)max));
         RETURN_ERROR_IF(dstCapacity==0, dstSize_tooSmall);
         *op = codeTable[0];
         return 1;
-    case set_repeat:
+    case 129:
         memcpy(nextCTable, prevCTable, prevCTableSize);
         return 0;
-    case set_basic:
-        FORWARD_IF_ERROR(FSE_buildCTable_wksp(nextCTable, defaultNorm, defaultMax, defaultNormLog, entropyWorkspace, entropyWorkspaceSize));  /* note : could be pre-calculated */
+    case 131:
+        FORWARD_IF_ERROR(FSE_buildCTable_wksp(nextCTable, defaultNorm, defaultMax, defaultNormLog, entropyWorkspace, entropyWorkspaceSize));
         return 0;
-    case set_compressed: {
+    case 130: {
         S16 norm[MaxSeq + 1];
         size_t nbSeq_1 = nbSeq;
         const U32 tableLog = FSE_optimalTableLog(FSELog, nbSeq, max);
@@ -71,7 +71,7 @@ ZSTD_buildCTable(void* dst, size_t dstCapacity,
         }
         assert(nbSeq_1 > 1);
         FORWARD_IF_ERROR(FSE_normalizeCount(norm, tableLog, count, nbSeq_1, max));
-        {   size_t const NCountSize = FSE_writeNCount(op, oend - op, norm, max, tableLog);   /* overflow protected */
+        { size_t const NCountSize = FSE_writeNCount(op, oend - op, norm, max, tableLog);
             FORWARD_IF_ERROR(NCountSize);
             FORWARD_IF_ERROR(FSE_buildCTable_wksp(nextCTable, norm, max, tableLog, entropyWorkspace, entropyWorkspaceSize));
             return NCountSize;

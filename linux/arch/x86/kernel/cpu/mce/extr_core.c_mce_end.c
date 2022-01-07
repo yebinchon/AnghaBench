@@ -1,96 +1,96 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u64 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u64 ;
 struct TYPE_2__ {scalar_t__ monarch_timeout; } ;
 
-/* Variables and functions */
- int NSEC_PER_USEC ; 
- int /*<<< orphan*/  SPINUNIT ; 
- int /*<<< orphan*/  atomic_inc (int /*<<< orphan*/ *) ; 
- int atomic_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atomic_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  barrier () ; 
- int /*<<< orphan*/  global_nwo ; 
- TYPE_1__ mca_cfg ; 
- int /*<<< orphan*/  mce_callin ; 
- int /*<<< orphan*/  mce_executing ; 
- int /*<<< orphan*/  mce_reign () ; 
- scalar_t__ mce_timed_out (int*,char*) ; 
- int /*<<< orphan*/  ndelay (int /*<<< orphan*/ ) ; 
- int num_online_cpus () ; 
+
+ int NSEC_PER_USEC ;
+ int SPINUNIT ;
+ int atomic_inc (int *) ;
+ int atomic_read (int *) ;
+ int atomic_set (int *,int ) ;
+ int barrier () ;
+ int global_nwo ;
+ TYPE_1__ mca_cfg ;
+ int mce_callin ;
+ int mce_executing ;
+ int mce_reign () ;
+ scalar_t__ mce_timed_out (int*,char*) ;
+ int ndelay (int ) ;
+ int num_online_cpus () ;
 
 __attribute__((used)) static int mce_end(int order)
 {
-	int ret = -1;
-	u64 timeout = (u64)mca_cfg.monarch_timeout * NSEC_PER_USEC;
+ int ret = -1;
+ u64 timeout = (u64)mca_cfg.monarch_timeout * NSEC_PER_USEC;
 
-	if (!timeout)
-		goto reset;
-	if (order < 0)
-		goto reset;
+ if (!timeout)
+  goto reset;
+ if (order < 0)
+  goto reset;
 
-	/*
-	 * Allow others to run.
-	 */
-	atomic_inc(&mce_executing);
 
-	if (order == 1) {
-		/* CHECKME: Can this race with a parallel hotplug? */
-		int cpus = num_online_cpus();
 
-		/*
-		 * Monarch: Wait for everyone to go through their scanning
-		 * loops.
-		 */
-		while (atomic_read(&mce_executing) <= cpus) {
-			if (mce_timed_out(&timeout,
-					  "Timeout: Monarch CPU unable to finish machine check processing"))
-				goto reset;
-			ndelay(SPINUNIT);
-		}
 
-		mce_reign();
-		barrier();
-		ret = 0;
-	} else {
-		/*
-		 * Subject: Wait for Monarch to finish.
-		 */
-		while (atomic_read(&mce_executing) != 0) {
-			if (mce_timed_out(&timeout,
-					  "Timeout: Monarch CPU did not finish machine check processing"))
-				goto reset;
-			ndelay(SPINUNIT);
-		}
+ atomic_inc(&mce_executing);
 
-		/*
-		 * Don't reset anything. That's done by the Monarch.
-		 */
-		return 0;
-	}
+ if (order == 1) {
 
-	/*
-	 * Reset all global state.
-	 */
+  int cpus = num_online_cpus();
+
+
+
+
+
+  while (atomic_read(&mce_executing) <= cpus) {
+   if (mce_timed_out(&timeout,
+       "Timeout: Monarch CPU unable to finish machine check processing"))
+    goto reset;
+   ndelay(SPINUNIT);
+  }
+
+  mce_reign();
+  barrier();
+  ret = 0;
+ } else {
+
+
+
+  while (atomic_read(&mce_executing) != 0) {
+   if (mce_timed_out(&timeout,
+       "Timeout: Monarch CPU did not finish machine check processing"))
+    goto reset;
+   ndelay(SPINUNIT);
+  }
+
+
+
+
+  return 0;
+ }
+
+
+
+
 reset:
-	atomic_set(&global_nwo, 0);
-	atomic_set(&mce_callin, 0);
-	barrier();
+ atomic_set(&global_nwo, 0);
+ atomic_set(&mce_callin, 0);
+ barrier();
 
-	/*
-	 * Let others run again.
-	 */
-	atomic_set(&mce_executing, 0);
-	return ret;
+
+
+
+ atomic_set(&mce_executing, 0);
+ return ret;
 }

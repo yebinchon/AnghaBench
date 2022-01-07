@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  h2o_timerwheel_t ;
-typedef  int /*<<< orphan*/  h2o_timerwheel_entry_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * h2o_timerwheel_create (int,int const) ; 
- int /*<<< orphan*/  h2o_timerwheel_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  h2o_timerwheel_init_entry (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  h2o_timerwheel_link_abs (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int const) ; 
- int /*<<< orphan*/  h2o_timerwheel_run (int /*<<< orphan*/ *,int const) ; 
- int invokes ; 
- int /*<<< orphan*/  my_callback ; 
- int /*<<< orphan*/  ok (int) ; 
+
+
+
+typedef int uint64_t ;
+typedef int h2o_timerwheel_t ;
+typedef int h2o_timerwheel_entry_t ;
+
+
+ int * h2o_timerwheel_create (int,int const) ;
+ int h2o_timerwheel_destroy (int *) ;
+ int h2o_timerwheel_init_entry (int *,int ) ;
+ int h2o_timerwheel_link_abs (int *,int *,int const) ;
+ int h2o_timerwheel_run (int *,int const) ;
+ int invokes ;
+ int my_callback ;
+ int ok (int) ;
 
 __attribute__((used)) static void test_multiple_cascade_in_sparse_wheels(void)
 {

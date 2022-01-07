@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int stub1 (void const*,void const*) ; 
+ int stub1 (void const*,void const*) ;
 
 void* bsearch( const void* key, const void* base, size_t nmemb, size_t size, int ( *compare )( const void*, const void* ) ) {
     size_t m;
@@ -34,5 +26,5 @@ void* bsearch( const void* key, const void* base, size_t nmemb, size_t size, int
         }
     }
 
-    return NULL;
+    return ((void*)0);
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {unsigned char* y; int n; int* p; } ;
-typedef  TYPE_1__ suffix_array_t ;
-typedef  int /*<<< orphan*/  dyn_mark_t ;
+typedef TYPE_1__ suffix_array_t ;
+typedef int dyn_mark_t ;
 struct TYPE_6__ {void* value; void* prev; void* head; } ;
-typedef  TYPE_2__ buckets_t ;
+typedef TYPE_2__ buckets_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dyn_mark (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dyn_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ss_bucket_sort (TYPE_2__*,int*,int const,int*,int) ; 
- void* zmalloc (int) ; 
- int* zmalloc0 (int) ; 
+
+ int dyn_mark (int ) ;
+ int dyn_release (int ) ;
+ int ss_bucket_sort (TYPE_2__*,int*,int const,int*,int) ;
+ void* zmalloc (int) ;
+ int* zmalloc0 (int) ;
 
 __attribute__((used)) static void suffix_array_sort (suffix_array_t *A) {
   unsigned char *y = A->y;
@@ -42,7 +42,7 @@ __attribute__((used)) static void suffix_array_sort (suffix_array_t *A) {
       c[i] = m++;
     }
   }
-  /* m - cardalph (y) */
+
   buckets_t B;
   B.head = zmalloc (4 * (n + 1));
   B.head++;

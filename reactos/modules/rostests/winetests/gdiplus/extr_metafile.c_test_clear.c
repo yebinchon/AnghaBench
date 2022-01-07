@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
 struct TYPE_6__ {double member_0; double member_1; } ;
 struct TYPE_5__ {double member_0; double member_1; double member_2; double member_3; } ;
-typedef  int /*<<< orphan*/  HENHMETAFILE ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int GpStatus ;
-typedef  TYPE_1__ GpRectF ;
-typedef  TYPE_2__ GpPointF ;
-typedef  int /*<<< orphan*/  GpMetafile ;
-typedef  int /*<<< orphan*/  GpImage ;
-typedef  int /*<<< orphan*/  GpGraphics ;
-typedef  int /*<<< orphan*/  GpBitmap ;
-typedef  int ARGB ;
+typedef int HENHMETAFILE ;
+typedef int HDC ;
+typedef int GpStatus ;
+typedef TYPE_1__ GpRectF ;
+typedef TYPE_2__ GpPointF ;
+typedef int GpMetafile ;
+typedef int GpImage ;
+typedef int GpGraphics ;
+typedef int GpBitmap ;
+typedef int ARGB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateCompatibleDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteEnhMetaFile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EmfTypeEmfPlusOnly ; 
- int GdipBitmapGetPixel (int /*<<< orphan*/ *,int,int,int*) ; 
- int GdipCreateBitmapFromScan0 (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int GdipDisposeImage (int /*<<< orphan*/ *) ; 
- int GdipDrawImagePointsRect (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__ const*,int,double,double,double,double,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int GdipGetHemfFromMetafile (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int GdipGetImageGraphicsContext (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int GdipGraphicsClear (int /*<<< orphan*/ *,int) ; 
- int GdipRecordMetafile (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__ const*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ **) ; 
- int InvalidParameter ; 
- int /*<<< orphan*/  MetafileFrameUnitPixel ; 
- int Ok ; 
- int /*<<< orphan*/  PixelFormat32bppRGB ; 
- int /*<<< orphan*/  UnitPixel ; 
- int /*<<< orphan*/  check_emfplus (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  clear_emf_records ; 
- int /*<<< orphan*/  expect (int,int) ; 
- int /*<<< orphan*/  sync_metafile (int /*<<< orphan*/ **,char*) ; 
+
+ int CreateCompatibleDC (int ) ;
+ int DeleteDC (int ) ;
+ int DeleteEnhMetaFile (int ) ;
+ int EmfTypeEmfPlusOnly ;
+ int GdipBitmapGetPixel (int *,int,int,int*) ;
+ int GdipCreateBitmapFromScan0 (int,int,int ,int ,int *,int **) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipDisposeImage (int *) ;
+ int GdipDrawImagePointsRect (int *,int *,TYPE_2__ const*,int,double,double,double,double,int ,int *,int *,int *) ;
+ int GdipGetHemfFromMetafile (int *,int *) ;
+ int GdipGetImageGraphicsContext (int *,int **) ;
+ int GdipGraphicsClear (int *,int) ;
+ int GdipRecordMetafile (int ,int ,TYPE_1__ const*,int ,char const*,int **) ;
+ int InvalidParameter ;
+ int MetafileFrameUnitPixel ;
+ int Ok ;
+ int PixelFormat32bppRGB ;
+ int UnitPixel ;
+ int check_emfplus (int ,int ,char*) ;
+ int clear_emf_records ;
+ int expect (int,int) ;
+ int sync_metafile (int **,char*) ;
 
 __attribute__((used)) static void test_clear(void)
 {
@@ -87,14 +87,14 @@ __attribute__((used)) static void test_clear(void)
 
     sync_metafile(&metafile, "clear.emf");
 
-    stat = GdipCreateBitmapFromScan0(30, 30, 0, PixelFormat32bppRGB, NULL, &bitmap);
+    stat = GdipCreateBitmapFromScan0(30, 30, 0, PixelFormat32bppRGB, ((void*)0), &bitmap);
     expect(Ok, stat);
 
     stat = GdipGetImageGraphicsContext((GpImage*)bitmap, &graphics);
     expect(Ok, stat);
 
     stat = GdipDrawImagePointsRect(graphics, (GpImage*)metafile, dst_points, 3,
-        0.0, 0.0, 100.0, 100.0, UnitPixel, NULL, NULL, NULL);
+        0.0, 0.0, 100.0, 100.0, UnitPixel, ((void*)0), ((void*)0), ((void*)0));
     expect(Ok, stat);
 
     stat = GdipBitmapGetPixel(bitmap, 5, 5, &color);

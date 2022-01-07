@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xpt_busfunc_t ;
-struct xpt_traverse_config {void* tr_arg; int /*<<< orphan*/ * tr_func; int /*<<< orphan*/  depth; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XPT_DEPTH_BUS ; 
- int xptbustraverse (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct xpt_traverse_config*) ; 
- int /*<<< orphan*/  xptdefbusfunc ; 
+
+
+
+typedef int xpt_busfunc_t ;
+struct xpt_traverse_config {void* tr_arg; int * tr_func; int depth; } ;
+
+
+ int XPT_DEPTH_BUS ;
+ int xptbustraverse (int *,int ,struct xpt_traverse_config*) ;
+ int xptdefbusfunc ;
 
 __attribute__((used)) static int
 xpt_for_all_busses(xpt_busfunc_t *tr_func, void *arg)
 {
-	struct xpt_traverse_config tr_config;
+ struct xpt_traverse_config tr_config;
 
-	tr_config.depth = XPT_DEPTH_BUS;
-	tr_config.tr_func = tr_func;
-	tr_config.tr_arg = arg;
+ tr_config.depth = XPT_DEPTH_BUS;
+ tr_config.tr_func = tr_func;
+ tr_config.tr_arg = arg;
 
-	return(xptbustraverse(NULL, xptdefbusfunc, &tr_config));
+ return(xptbustraverse(((void*)0), xptdefbusfunc, &tr_config));
 }

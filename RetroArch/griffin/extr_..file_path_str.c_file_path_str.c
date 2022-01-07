@@ -1,291 +1,222 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum file_path_enum { ____Placeholder_file_path_enum } file_path_enum ;
 
-/* Variables and functions */
-#define  FILE_PATH_7Z_EXTENSION 193 
-#define  FILE_PATH_ASSETS_ZIP 192 
-#define  FILE_PATH_AUTOCONFIG_ZIP 191 
-#define  FILE_PATH_AUTO_EXTENSION 190 
-#define  FILE_PATH_BACKGROUND_IMAGE 189 
-#define  FILE_PATH_BMP_EXTENSION 188 
-#define  FILE_PATH_BPS_EXTENSION 187 
-#define  FILE_PATH_BSV_EXTENSION 186 
-#define  FILE_PATH_CGP_EXTENSION 185 
-#define  FILE_PATH_CHEATS_ZIP 184 
-#define  FILE_PATH_CHT_EXTENSION 183 
-#define  FILE_PATH_CONFIG_EXTENSION 182 
-#define  FILE_PATH_CONTENT_BASENAME 181 
-#define  FILE_PATH_CONTENT_FAVORITES 180 
-#define  FILE_PATH_CONTENT_HISTORY 179 
-#define  FILE_PATH_CONTENT_IMAGE_HISTORY 178 
-#define  FILE_PATH_CONTENT_MUSIC_HISTORY 177 
-#define  FILE_PATH_CONTENT_VIDEO_HISTORY 176 
-#define  FILE_PATH_CORE_INFO_EXTENSION 175 
-#define  FILE_PATH_CORE_INFO_ZIP 174 
-#define  FILE_PATH_CORE_OPTIONS_CONFIG 173 
-#define  FILE_PATH_CORE_THUMBNAILPACKS_URL 172 
-#define  FILE_PATH_CORE_THUMBNAILS_URL 171 
-#define  FILE_PATH_DATABASE_RDB_ZIP 170 
-#define  FILE_PATH_DEFAULT_EVENT_LOG 169 
-#define  FILE_PATH_DETECT 168 
-#define  FILE_PATH_EVENT_LOG_EXTENSION 167 
-#define  FILE_PATH_FLAC_EXTENSION 166 
-#define  FILE_PATH_GLSLP_EXTENSION 165 
-#define  FILE_PATH_INDEX_DIRS_URL 164 
-#define  FILE_PATH_INDEX_EXTENDED_URL 163 
-#define  FILE_PATH_INDEX_URL 162 
-#define  FILE_PATH_IPS_EXTENSION 161 
-#define  FILE_PATH_JPEG_EXTENSION 160 
-#define  FILE_PATH_JPG_EXTENSION 159 
-#define  FILE_PATH_LAKKA_URL 158 
-#define  FILE_PATH_LPL_EXTENSION 157 
-#define  FILE_PATH_LPL_EXTENSION_NO_DOT 156 
-#define  FILE_PATH_LUTRO_PLAYLIST 155 
-#define  FILE_PATH_MAIN_CONFIG 154 
-#define  FILE_PATH_MOD_EXTENSION 153 
-#define  FILE_PATH_MP3_EXTENSION 152 
-#define  FILE_PATH_NETPLAY_ROOM_LIST_URL 151 
-#define  FILE_PATH_NUL 150 
-#define  FILE_PATH_OGG_EXTENSION 149 
-#define  FILE_PATH_OPT_EXTENSION 148 
-#define  FILE_PATH_OVERLAYS_ZIP 147 
-#define  FILE_PATH_PNG_EXTENSION 146 
-#define  FILE_PATH_RDB_EXTENSION 145 
-#define  FILE_PATH_REMAP_EXTENSION 144 
-#define  FILE_PATH_RTC_EXTENSION 143 
-#define  FILE_PATH_RUNTIME_EXTENSION 142 
-#define  FILE_PATH_S3M_EXTENSION 141 
-#define  FILE_PATH_SHADERS_CG_ZIP 140 
-#define  FILE_PATH_SHADERS_GLSL_ZIP 139 
-#define  FILE_PATH_SHADERS_SLANG_ZIP 138 
-#define  FILE_PATH_SLANGP_EXTENSION 137 
-#define  FILE_PATH_SRM_EXTENSION 136 
-#define  FILE_PATH_STATE_EXTENSION 135 
-#define  FILE_PATH_TGA_EXTENSION 134 
-#define  FILE_PATH_TTF_FONT 133 
-#define  FILE_PATH_UNKNOWN 132 
-#define  FILE_PATH_UPS_EXTENSION 131 
-#define  FILE_PATH_WAV_EXTENSION 130 
-#define  FILE_PATH_XM_EXTENSION 129 
-#define  FILE_PATH_ZIP_EXTENSION 128 
 
+
+
+typedef enum file_path_enum { ____Placeholder_file_path_enum } file_path_enum ;
 const char *file_path_str(enum file_path_enum enum_idx)
 {
    const char *str = "null";
 
    switch (enum_idx)
    {
-      case FILE_PATH_DETECT:
+      case 168:
          str = "DETECT";
          break;
-      case FILE_PATH_CONTENT_BASENAME:
+      case 181:
          str = "content.png";
          break;
-      case FILE_PATH_LUTRO_PLAYLIST:
+      case 155:
          str = "Lutro.lpl";
          break;
-      case FILE_PATH_NUL:
+      case 150:
          str = "nul";
          break;
-      case FILE_PATH_CGP_EXTENSION:
+      case 185:
          str = ".cgp";
          break;
-      case FILE_PATH_GLSLP_EXTENSION:
+      case 165:
          str = ".glslp";
          break;
-      case FILE_PATH_SLANGP_EXTENSION:
+      case 137:
          str = ".slangp";
          break;
-      case FILE_PATH_AUTO_EXTENSION:
+      case 190:
          str = ".auto";
          break;
-      case FILE_PATH_BSV_EXTENSION:
+      case 186:
          str = ".bsv";
          break;
-      case FILE_PATH_OPT_EXTENSION:
+      case 148:
          str = ".opt";
          break;
-      case FILE_PATH_CORE_INFO_EXTENSION:
+      case 175:
          str = ".info";
          break;
-      case FILE_PATH_CONFIG_EXTENSION:
+      case 182:
          str = ".cfg";
          break;
-      case FILE_PATH_REMAP_EXTENSION:
+      case 144:
          str = ".rmp";
          break;
-      case FILE_PATH_RTC_EXTENSION:
+      case 143:
          str = ".rtc";
          break;
-      case FILE_PATH_CHT_EXTENSION:
+      case 183:
          str = ".cht";
          break;
-      case FILE_PATH_SRM_EXTENSION:
+      case 136:
          str = ".srm";
          break;
-      case FILE_PATH_STATE_EXTENSION:
+      case 135:
          str = ".state";
          break;
-      case FILE_PATH_LPL_EXTENSION:
+      case 157:
          str = ".lpl";
          break;
-      case FILE_PATH_LPL_EXTENSION_NO_DOT:
+      case 156:
          str = "lpl";
          break;
-      case FILE_PATH_PNG_EXTENSION:
+      case 146:
          str = ".png";
          break;
-      case FILE_PATH_MP3_EXTENSION:
+      case 152:
          str = ".mp3";
          break;
-      case FILE_PATH_FLAC_EXTENSION:
+      case 166:
          str = ".flac";
          break;
-      case FILE_PATH_OGG_EXTENSION:
+      case 149:
          str = ".ogg";
          break;
-      case FILE_PATH_WAV_EXTENSION:
+      case 130:
          str = ".wav";
          break;
-      case FILE_PATH_MOD_EXTENSION:
+      case 153:
          str = ".mod";
          break;
-      case FILE_PATH_S3M_EXTENSION:
+      case 141:
          str = ".s3m";
          break;
-      case FILE_PATH_XM_EXTENSION:
+      case 129:
          str = ".xm";
          break;
-      case FILE_PATH_JPEG_EXTENSION:
+      case 160:
          str = ".jpeg";
          break;
-      case FILE_PATH_BMP_EXTENSION:
+      case 188:
          str = ".bmp";
          break;
-      case FILE_PATH_TGA_EXTENSION:
+      case 134:
          str = ".tga";
          break;
-      case FILE_PATH_JPG_EXTENSION:
+      case 159:
          str = ".jpg";
          break;
-      case FILE_PATH_UPS_EXTENSION:
+      case 131:
          str = ".ups";
          break;
-      case FILE_PATH_IPS_EXTENSION:
+      case 161:
          str = ".ips";
          break;
-      case FILE_PATH_BPS_EXTENSION:
+      case 187:
          str = ".bps";
          break;
-      case FILE_PATH_RDB_EXTENSION:
+      case 145:
          str = ".rdb";
          break;
-      case FILE_PATH_ZIP_EXTENSION:
+      case 128:
          str = ".zip";
          break;
-      case FILE_PATH_7Z_EXTENSION:
+      case 193:
          str = ".7z";
          break;
-      case FILE_PATH_INDEX_URL:
+      case 162:
          str = ".index";
          break;
-      case FILE_PATH_INDEX_DIRS_URL:
+      case 164:
          str = ".index-dirs";
          break;
-      case FILE_PATH_INDEX_EXTENDED_URL:
+      case 163:
          str = ".index-extended";
          break;
-      case FILE_PATH_NETPLAY_ROOM_LIST_URL:
+      case 151:
          str = "registry.lpl";
          break;
-      case FILE_PATH_CORE_THUMBNAILS_URL:
+      case 171:
          str = "http://thumbnails.libretro.com";
          break;
-      case FILE_PATH_CORE_THUMBNAILPACKS_URL:
+      case 172:
          str = "http://thumbnailpacks.libretro.com";
          break;
-      case FILE_PATH_LAKKA_URL:
-#ifdef HAVE_LAKKA_NIGHTLY
-         str = "http://nightly.builds.lakka.tv/.updater";
-#else
+      case 158:
+
+
+
          str = "http://le.builds.lakka.tv";
-#endif
+
          break;
-      case FILE_PATH_SHADERS_GLSL_ZIP:
+      case 139:
          str = "shaders_glsl.zip";
          break;
-      case FILE_PATH_SHADERS_SLANG_ZIP:
+      case 138:
          str = "shaders_slang.zip";
          break;
-      case FILE_PATH_SHADERS_CG_ZIP:
+      case 140:
          str = "shaders_cg.zip";
          break;
-      case FILE_PATH_DATABASE_RDB_ZIP:
+      case 170:
          str = "database-rdb.zip";
          break;
-      case FILE_PATH_OVERLAYS_ZIP:
+      case 147:
          str = "overlays.zip";
          break;
-      case FILE_PATH_CORE_INFO_ZIP:
+      case 174:
          str = "info.zip";
          break;
-      case FILE_PATH_CHEATS_ZIP:
+      case 184:
          str = "cheats.zip";
          break;
-      case FILE_PATH_ASSETS_ZIP:
+      case 192:
          str = "assets.zip";
          break;
-      case FILE_PATH_AUTOCONFIG_ZIP:
+      case 191:
          str = "autoconfig.zip";
          break;
-      case FILE_PATH_CONTENT_HISTORY:
+      case 179:
          str = "content_history.lpl";
          break;
-      case FILE_PATH_CONTENT_FAVORITES:
+      case 180:
          str = "content_favorites.lpl";
          break;
-      case FILE_PATH_CONTENT_MUSIC_HISTORY:
+      case 177:
          str = "content_music_history.lpl";
          break;
-      case FILE_PATH_CONTENT_VIDEO_HISTORY:
+      case 176:
          str = "content_video_history.lpl";
          break;
-      case FILE_PATH_CONTENT_IMAGE_HISTORY:
+      case 178:
          str = "content_image_history.lpl";
          break;
-      case FILE_PATH_CORE_OPTIONS_CONFIG:
+      case 173:
          str = "retroarch-core-options.cfg";
          break;
-      case FILE_PATH_MAIN_CONFIG:
+      case 154:
          str = "retroarch.cfg";
          break;
-      case FILE_PATH_BACKGROUND_IMAGE:
+      case 189:
          str = "bg.png";
          break;
-      case FILE_PATH_TTF_FONT:
+      case 133:
          str = "font.ttf";
          break;
-      case FILE_PATH_RUNTIME_EXTENSION:
+      case 142:
          str = ".lrtl";
          break;
-      case FILE_PATH_DEFAULT_EVENT_LOG:
+      case 169:
          str = "retroarch.log";
          break;
-      case FILE_PATH_EVENT_LOG_EXTENSION:
+      case 167:
          str = ".log";
          break;
-      case FILE_PATH_UNKNOWN:
+      case 132:
       default:
          break;
    }

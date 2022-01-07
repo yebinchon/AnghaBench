@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32 ;
-typedef  int /*<<< orphan*/  uint16 ;
-typedef  scalar_t__ tmsize_t ;
-struct TYPE_9__ {scalar_t__ (* tif_decodestrip ) (TYPE_1__*,void*,scalar_t__,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* tif_postdecode ) (TYPE_1__*,void*,scalar_t__) ;int /*<<< orphan*/  tif_clientdata; } ;
-typedef  TYPE_1__ TIFF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TIFFErrorExt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TIFFFileName (TYPE_1__*) ; 
- int /*<<< orphan*/  TIFFFillStrip (TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ TIFFReadEncodedStrip (TYPE_1__*,int /*<<< orphan*/ ,void*,scalar_t__) ; 
- scalar_t__ TIFFReadEncodedStripGetStripSize (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- void* _TIFFmalloc (scalar_t__) ; 
- int /*<<< orphan*/  _TIFFmemset (void*,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ stub1 (TYPE_1__*,void*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (TYPE_1__*,void*,scalar_t__) ; 
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint32 ;
+typedef int uint16 ;
+typedef scalar_t__ tmsize_t ;
+struct TYPE_9__ {scalar_t__ (* tif_decodestrip ) (TYPE_1__*,void*,scalar_t__,int ) ;int (* tif_postdecode ) (TYPE_1__*,void*,scalar_t__) ;int tif_clientdata; } ;
+typedef TYPE_1__ TIFF ;
+
+
+ int TIFFErrorExt (int ,int ,char*) ;
+ int TIFFFileName (TYPE_1__*) ;
+ int TIFFFillStrip (TYPE_1__*,int ) ;
+ scalar_t__ TIFFReadEncodedStrip (TYPE_1__*,int ,void*,scalar_t__) ;
+ scalar_t__ TIFFReadEncodedStripGetStripSize (TYPE_1__*,int ,int *) ;
+ void* _TIFFmalloc (scalar_t__) ;
+ int _TIFFmemset (void*,int ,scalar_t__) ;
+ scalar_t__ stub1 (TYPE_1__*,void*,scalar_t__,int ) ;
+ int stub2 (TYPE_1__*,void*,scalar_t__) ;
 
 tmsize_t
 _TIFFReadEncodedStripAndAllocBuffer(TIFF* tif, uint32 strip,
@@ -36,7 +36,7 @@ _TIFFReadEncodedStripAndAllocBuffer(TIFF* tif, uint32 strip,
     tmsize_t this_stripsize;
     uint16 plane;
 
-    if( *buf != NULL )
+    if( *buf != ((void*)0) )
     {
         return TIFFReadEncodedStrip(tif, strip, *buf, size_to_read);
     }
@@ -51,7 +51,7 @@ _TIFFReadEncodedStripAndAllocBuffer(TIFF* tif, uint32 strip,
             return((tmsize_t)(-1));
 
     *buf = _TIFFmalloc(bufsizetoalloc);
-    if (*buf == NULL) {
+    if (*buf == ((void*)0)) {
             TIFFErrorExt(tif->tif_clientdata, TIFFFileName(tif), "No space for strip buffer");
             return((tmsize_t)(-1));
     }

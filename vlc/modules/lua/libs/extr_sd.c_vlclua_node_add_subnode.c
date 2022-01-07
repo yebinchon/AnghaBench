@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  services_discovery_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  input_item_t ;
 
-/* Variables and functions */
- scalar_t__ luaL_checkudata (int /*<<< orphan*/ *,int,char*) ; 
- scalar_t__ vlclua_get_this (int /*<<< orphan*/ *) ; 
- int vlclua_sd_add_sub_common (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlclua_sd_create_node (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int services_discovery_t ;
+typedef int lua_State ;
+typedef int input_item_t ;
+
+
+ scalar_t__ luaL_checkudata (int *,int,char*) ;
+ scalar_t__ vlclua_get_this (int *) ;
+ int vlclua_sd_add_sub_common (int *,int **,int ) ;
+ int vlclua_sd_create_node (int *,int *) ;
 
 __attribute__((used)) static int vlclua_node_add_subnode( lua_State *L )
 {

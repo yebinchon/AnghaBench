@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_config_t ;
-struct TYPE_5__ {int /*<<< orphan*/  wc_ctx; int /*<<< orphan*/ * config; struct TYPE_5__* conflict_baton2; int /*<<< orphan*/  conflict_func2; struct TYPE_5__* notify_baton2; int /*<<< orphan*/  notify_func2; } ;
-typedef  TYPE_1__ svn_client_ctx_t ;
-struct TYPE_6__ {int /*<<< orphan*/  magic_id; scalar_t__ magic_null; TYPE_1__ public_ctx; } ;
-typedef  TYPE_2__ svn_client__private_ctx_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLIENT_CTX_MAGIC ; 
- int /*<<< orphan*/  SVN_CONFIG_CATEGORY_CONFIG ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- TYPE_2__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  call_conflict_func ; 
- int /*<<< orphan*/  call_notify_func ; 
- int /*<<< orphan*/ * svn_hash_gets (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_wc_context_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+typedef int svn_config_t ;
+struct TYPE_5__ {int wc_ctx; int * config; struct TYPE_5__* conflict_baton2; int conflict_func2; struct TYPE_5__* notify_baton2; int notify_func2; } ;
+typedef TYPE_1__ svn_client_ctx_t ;
+struct TYPE_6__ {int magic_id; scalar_t__ magic_null; TYPE_1__ public_ctx; } ;
+typedef TYPE_2__ svn_client__private_ctx_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int CLIENT_CTX_MAGIC ;
+ int SVN_CONFIG_CATEGORY_CONFIG ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ TYPE_2__* apr_pcalloc (int *,int) ;
+ int call_conflict_func ;
+ int call_notify_func ;
+ int * svn_hash_gets (int *,int ) ;
+ int svn_wc_context_create (int *,int *,int *,int *) ;
 
 svn_error_t *
 svn_client_create_context2(svn_client_ctx_t **ctx,
@@ -57,7 +57,7 @@ svn_client_create_context2(svn_client_ctx_t **ctx,
   if (cfg_hash)
     cfg_config = svn_hash_gets(cfg_hash, SVN_CONFIG_CATEGORY_CONFIG);
   else
-    cfg_config = NULL;
+    cfg_config = ((void*)0);
 
   SVN_ERR(svn_wc_context_create(&public_ctx->wc_ctx, cfg_config,
                                 pool, pool));

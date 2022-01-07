@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_8__ ;
-typedef  struct TYPE_15__   TYPE_7__ ;
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_16__ TYPE_8__ ;
+typedef struct TYPE_15__ TYPE_7__ ;
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_15__ {int func_code; void* status; } ;
-struct TYPE_14__ {int version_num; int base_transfer_speed; int transport_version; int /*<<< orphan*/  maxio; void* protocol_version; void* protocol; void* transport; int /*<<< orphan*/  dev_name; int /*<<< orphan*/  hba_vid; int /*<<< orphan*/  sim_vid; int /*<<< orphan*/  initiator_id; int /*<<< orphan*/  bus_id; int /*<<< orphan*/  unit_number; int /*<<< orphan*/  max_lun; int /*<<< orphan*/  max_target; int /*<<< orphan*/  hba_eng_cnt; int /*<<< orphan*/  hba_misc; int /*<<< orphan*/  target_sprt; int /*<<< orphan*/  hba_inquiry; } ;
+struct TYPE_14__ {int version_num; int base_transfer_speed; int transport_version; int maxio; void* protocol_version; void* protocol; void* transport; int dev_name; int hba_vid; int sim_vid; int initiator_id; int bus_id; int unit_number; int max_lun; int max_target; int hba_eng_cnt; int hba_misc; int target_sprt; int hba_inquiry; } ;
 struct TYPE_16__ {union ccb* block_size; } ;
-struct TYPE_11__ {int /*<<< orphan*/  flags; int /*<<< orphan*/  valid; } ;
+struct TYPE_11__ {int flags; int valid; } ;
 struct TYPE_12__ {TYPE_3__ scsi; } ;
-struct TYPE_9__ {int /*<<< orphan*/  flags; int /*<<< orphan*/  valid; } ;
+struct TYPE_9__ {int flags; int valid; } ;
 struct TYPE_10__ {TYPE_1__ spi; } ;
 struct TYPE_13__ {int transport_version; TYPE_4__ proto_specific; TYPE_2__ xport_specific; void* transport; void* protocol_version; void* protocol; } ;
 union ccb {TYPE_7__ ccb_h; TYPE_6__ cpi; TYPE_8__ ccg; TYPE_5__ cts; } ;
 struct tws_softc {int dummy; } ;
 struct cam_sim {TYPE_7__ ccb_h; TYPE_6__ cpi; TYPE_8__ ccg; TYPE_5__ cts; } ;
 
-/* Variables and functions */
- void* CAM_FUNC_NOTAVAIL ; 
- void* CAM_REQ_CMP ; 
- void* CAM_REQ_INVALID ; 
- void* CAM_UA_ABORT ; 
- int /*<<< orphan*/  CTS_SCSI_FLAGS_TAG_ENB ; 
- int /*<<< orphan*/  CTS_SCSI_VALID_TQ ; 
- int /*<<< orphan*/  CTS_SPI_FLAGS_DISC_ENB ; 
- int /*<<< orphan*/  CTS_SPI_VALID_DISC ; 
- int /*<<< orphan*/  DEV_IDLEN ; 
- int /*<<< orphan*/  HBA_IDLEN ; 
- void* PROTO_SCSI ; 
- void* SCSI_REV_2 ; 
- int /*<<< orphan*/  SIM_IDLEN ; 
- int /*<<< orphan*/  TWS_MAX_IO_SIZE ; 
- int /*<<< orphan*/  TWS_MAX_NUM_LUNS ; 
- int /*<<< orphan*/  TWS_MAX_NUM_UNITS ; 
- int /*<<< orphan*/  TWS_SCSI_INITIATOR_ID ; 
- int /*<<< orphan*/  TWS_TRACE_DEBUG (struct tws_softc*,char*,union ccb*,union ccb*) ; 
- void* XPORT_SPI ; 
-#define  XPT_ABORT 134 
-#define  XPT_CALC_GEOMETRY 133 
-#define  XPT_GET_TRAN_SETTINGS 132 
-#define  XPT_PATH_INQ 131 
-#define  XPT_RESET_BUS 130 
-#define  XPT_SCSI_IO 129 
-#define  XPT_SET_TRAN_SETTINGS 128 
- int /*<<< orphan*/  cam_calc_geometry (TYPE_8__*,int) ; 
- int /*<<< orphan*/  cam_sim_bus (union ccb*) ; 
- char* cam_sim_name (union ccb*) ; 
- scalar_t__ cam_sim_softc (union ccb*) ; 
- int /*<<< orphan*/  cam_sim_unit (union ccb*) ; 
- int /*<<< orphan*/  strlcpy (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tws_execute_scsi (struct tws_softc*,union ccb*) ; 
- int /*<<< orphan*/  xpt_done (union ccb*) ; 
+
+ void* CAM_FUNC_NOTAVAIL ;
+ void* CAM_REQ_CMP ;
+ void* CAM_REQ_INVALID ;
+ void* CAM_UA_ABORT ;
+ int CTS_SCSI_FLAGS_TAG_ENB ;
+ int CTS_SCSI_VALID_TQ ;
+ int CTS_SPI_FLAGS_DISC_ENB ;
+ int CTS_SPI_VALID_DISC ;
+ int DEV_IDLEN ;
+ int HBA_IDLEN ;
+ void* PROTO_SCSI ;
+ void* SCSI_REV_2 ;
+ int SIM_IDLEN ;
+ int TWS_MAX_IO_SIZE ;
+ int TWS_MAX_NUM_LUNS ;
+ int TWS_MAX_NUM_UNITS ;
+ int TWS_SCSI_INITIATOR_ID ;
+ int TWS_TRACE_DEBUG (struct tws_softc*,char*,union ccb*,union ccb*) ;
+ void* XPORT_SPI ;
+
+
+
+
+
+
+
+ int cam_calc_geometry (TYPE_8__*,int) ;
+ int cam_sim_bus (union ccb*) ;
+ char* cam_sim_name (union ccb*) ;
+ scalar_t__ cam_sim_softc (union ccb*) ;
+ int cam_sim_unit (union ccb*) ;
+ int strlcpy (int ,char*,int ) ;
+ int tws_execute_scsi (struct tws_softc*,union ccb*) ;
+ int xpt_done (union ccb*) ;
 
 __attribute__((used)) static void
 tws_action(struct cam_sim *sim, union ccb *ccb)
@@ -73,25 +73,25 @@ tws_action(struct cam_sim *sim, union ccb *ccb)
 
 
     switch( ccb->ccb_h.func_code ) {
-        case XPT_SCSI_IO:   
+        case 129:
         {
-            if ( tws_execute_scsi(sc, ccb) ) 
+            if ( tws_execute_scsi(sc, ccb) )
                 TWS_TRACE_DEBUG(sc, "execute scsi failed", 0, 0);
             break;
         }
-        case XPT_ABORT:
+        case 134:
         {
             TWS_TRACE_DEBUG(sc, "abort i/o", 0, 0);
             ccb->ccb_h.status = CAM_UA_ABORT;
             xpt_done(ccb);
             break;
         }
-        case XPT_RESET_BUS:
+        case 130:
         {
             TWS_TRACE_DEBUG(sc, "reset bus", sim, ccb);
             break;
         }
-        case XPT_SET_TRAN_SETTINGS:
+        case 128:
         {
             TWS_TRACE_DEBUG(sc, "set tran settings", sim, ccb);
             ccb->ccb_h.status = CAM_FUNC_NOTAVAIL;
@@ -99,7 +99,7 @@ tws_action(struct cam_sim *sim, union ccb *ccb)
 
             break;
         }
-        case XPT_GET_TRAN_SETTINGS:
+        case 132:
         {
             TWS_TRACE_DEBUG(sc, "get tran settings", sim, ccb);
 
@@ -117,16 +117,16 @@ tws_action(struct cam_sim *sim, union ccb *ccb)
 
             break;
         }
-        case XPT_CALC_GEOMETRY:
+        case 133:
         {
-            TWS_TRACE_DEBUG(sc, "calc geometry(ccb,block-size)", ccb, 
+            TWS_TRACE_DEBUG(sc, "calc geometry(ccb,block-size)", ccb,
                                           ccb->ccg.block_size);
-            cam_calc_geometry(&ccb->ccg, 1/* extended */);
+            cam_calc_geometry(&ccb->ccg, 1 );
             xpt_done(ccb);
 
             break;
         }
-        case XPT_PATH_INQ:
+        case 131:
         {
             TWS_TRACE_DEBUG(sc, "path inquiry", sim, ccb);
             ccb->cpi.version_num = 1;

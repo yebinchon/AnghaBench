@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  netdissect_options ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * parsefattr (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int,int) ; 
- int /*<<< orphan*/ * parsestatus (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int*) ; 
+
+
+
+typedef int uint32_t ;
+typedef int netdissect_options ;
+
+
+ int * parsefattr (int *,int const*,int,int) ;
+ int * parsestatus (int *,int const*,int*) ;
 
 __attribute__((used)) static int
 parseattrstat(netdissect_options *ndo,
               const uint32_t *dp, int verbose, int v3)
 {
-	int er;
+ int er;
 
-	dp = parsestatus(ndo, dp, &er);
-	if (dp == NULL)
-		return (0);
-	if (er)
-		return (1);
+ dp = parsestatus(ndo, dp, &er);
+ if (dp == ((void*)0))
+  return (0);
+ if (er)
+  return (1);
 
-	return (parsefattr(ndo, dp, verbose, v3) != NULL);
+ return (parsefattr(ndo, dp, verbose, v3) != ((void*)0));
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct shash_desc {int /*<<< orphan*/  tfm; } ;
-struct ghash_desc_ctx {int /*<<< orphan*/  key; } ;
-struct ghash_ctx {int /*<<< orphan*/  key; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GHASH_BLOCK_SIZE ; 
- struct ghash_ctx* crypto_shash_ctx (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct ghash_desc_ctx*,int /*<<< orphan*/ ,int) ; 
- struct ghash_desc_ctx* shash_desc_ctx (struct shash_desc*) ; 
+
+
+
+struct shash_desc {int tfm; } ;
+struct ghash_desc_ctx {int key; } ;
+struct ghash_ctx {int key; } ;
+
+
+ int GHASH_BLOCK_SIZE ;
+ struct ghash_ctx* crypto_shash_ctx (int ) ;
+ int memcpy (int ,int ,int ) ;
+ int memset (struct ghash_desc_ctx*,int ,int) ;
+ struct ghash_desc_ctx* shash_desc_ctx (struct shash_desc*) ;
 
 __attribute__((used)) static int ghash_init(struct shash_desc *desc)
 {
-	struct ghash_desc_ctx *dctx = shash_desc_ctx(desc);
-	struct ghash_ctx *ctx = crypto_shash_ctx(desc->tfm);
+ struct ghash_desc_ctx *dctx = shash_desc_ctx(desc);
+ struct ghash_ctx *ctx = crypto_shash_ctx(desc->tfm);
 
-	memset(dctx, 0, sizeof(*dctx));
-	memcpy(dctx->key, ctx->key, GHASH_BLOCK_SIZE);
+ memset(dctx, 0, sizeof(*dctx));
+ memcpy(dctx->key, ctx->key, GHASH_BLOCK_SIZE);
 
-	return 0;
+ return 0;
 }

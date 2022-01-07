@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cp_static_data_t ;
-struct TYPE_2__ {int flags; int /*<<< orphan*/  dispid; } ;
-typedef  int /*<<< orphan*/  HTMLDocumentNode ;
 
-/* Variables and functions */
- int EVENTID_LAST ; 
- int EVENT_DEFAULTLISTENER ; 
- int /*<<< orphan*/  ensure_doc_nsevent_handler (int /*<<< orphan*/ *,int) ; 
- TYPE_1__* event_info ; 
- scalar_t__ is_cp_event (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int cp_static_data_t ;
+struct TYPE_2__ {int flags; int dispid; } ;
+typedef int HTMLDocumentNode ;
+
+
+ int EVENTID_LAST ;
+ int EVENT_DEFAULTLISTENER ;
+ int ensure_doc_nsevent_handler (int *,int) ;
+ TYPE_1__* event_info ;
+ scalar_t__ is_cp_event (int *,int ) ;
 
 void update_doc_cp_events(HTMLDocumentNode *doc, cp_static_data_t *cp)
 {

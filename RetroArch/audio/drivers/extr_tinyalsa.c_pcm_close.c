@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pcm {int flags; int fd; scalar_t__ buffer_size; scalar_t__ running; scalar_t__ prepared; int /*<<< orphan*/  mmap_buffer; } ;
 
-/* Variables and functions */
- int PCM_MMAP ; 
- struct pcm bad_pcm ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  free (struct pcm*) ; 
- int /*<<< orphan*/  munmap (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pcm_frames_to_bytes (struct pcm*,scalar_t__) ; 
- int /*<<< orphan*/  pcm_hw_munmap_status (struct pcm*) ; 
- int /*<<< orphan*/  pcm_stop (struct pcm*) ; 
+
+
+
+struct pcm {int flags; int fd; scalar_t__ buffer_size; scalar_t__ running; scalar_t__ prepared; int mmap_buffer; } ;
+
+
+ int PCM_MMAP ;
+ struct pcm bad_pcm ;
+ int close (int) ;
+ int free (struct pcm*) ;
+ int munmap (int ,int ) ;
+ int pcm_frames_to_bytes (struct pcm*,scalar_t__) ;
+ int pcm_hw_munmap_status (struct pcm*) ;
+ int pcm_stop (struct pcm*) ;
 
 __attribute__((used)) static int pcm_close(struct pcm *pcm)
 {

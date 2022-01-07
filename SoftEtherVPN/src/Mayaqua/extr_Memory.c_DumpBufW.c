@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-struct TYPE_3__ {int /*<<< orphan*/  Size; int /*<<< orphan*/  Buf; } ;
-typedef  int /*<<< orphan*/  IO ;
-typedef  TYPE_1__ BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FileClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * FileCreateW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FileWrite (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+struct TYPE_3__ {int Size; int Buf; } ;
+typedef int IO ;
+typedef TYPE_1__ BUF ;
+
+
+ int FileClose (int *) ;
+ int * FileCreateW (int *) ;
+ int FileWrite (int *,int ,int ) ;
 
 bool DumpBufW(BUF *b, wchar_t *filename)
 {
-	IO *o;
-	// Validate arguments
-	if (b == NULL || filename == NULL)
-	{
-		return false;
-	}
+ IO *o;
 
-	o = FileCreateW(filename);
-	if (o == NULL)
-	{
-		return false;
-	}
-	FileWrite(o, b->Buf, b->Size);
-	FileClose(o);
+ if (b == ((void*)0) || filename == ((void*)0))
+ {
+  return 0;
+ }
 
-	return true;
+ o = FileCreateW(filename);
+ if (o == ((void*)0))
+ {
+  return 0;
+ }
+ FileWrite(o, b->Buf, b->Size);
+ FileClose(o);
+
+ return 1;
 }

@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ BASE_ADDR ; 
- int TARGET_SIZE_2 ; 
- scalar_t__ jump_dirty ; 
- scalar_t__ jump_in ; 
- scalar_t__ jump_out ; 
- int /*<<< orphan*/  ll_clear (scalar_t__) ; 
- scalar_t__ munmap (void*,int) ; 
- int /*<<< orphan*/  printf (char*) ; 
+ scalar_t__ BASE_ADDR ;
+ int TARGET_SIZE_2 ;
+ scalar_t__ jump_dirty ;
+ scalar_t__ jump_in ;
+ scalar_t__ jump_out ;
+ int ll_clear (scalar_t__) ;
+ scalar_t__ munmap (void*,int) ;
+ int printf (char*) ;
 
 void sh2_dynarec_cleanup()
 {

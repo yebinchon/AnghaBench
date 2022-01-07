@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_4__ {int /*<<< orphan*/  pWith; int /*<<< orphan*/  pLimit; int /*<<< orphan*/  pOrderBy; int /*<<< orphan*/  pHaving; int /*<<< orphan*/  pGroupBy; int /*<<< orphan*/  pWhere; int /*<<< orphan*/  pSrc; int /*<<< orphan*/  pEList; struct TYPE_4__* pPrior; } ;
-typedef  TYPE_1__ Select ;
 
-/* Variables and functions */
- scalar_t__ OK_IF_ALWAYS_TRUE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3DbFreeNN (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3ExprDelete (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3ExprListDelete (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3SrcListDelete (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3WithDelete (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sqlite3 ;
+struct TYPE_4__ {int pWith; int pLimit; int pOrderBy; int pHaving; int pGroupBy; int pWhere; int pSrc; int pEList; struct TYPE_4__* pPrior; } ;
+typedef TYPE_1__ Select ;
+
+
+ scalar_t__ OK_IF_ALWAYS_TRUE (int ) ;
+ int sqlite3DbFreeNN (int *,TYPE_1__*) ;
+ int sqlite3ExprDelete (int *,int ) ;
+ int sqlite3ExprListDelete (int *,int ) ;
+ int sqlite3SrcListDelete (int *,int ) ;
+ int sqlite3WithDelete (int *,int ) ;
 
 __attribute__((used)) static void clearSelect(sqlite3 *db, Select *p, int bFree){
   while( p ){

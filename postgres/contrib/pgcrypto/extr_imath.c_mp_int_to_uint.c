@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int mp_usmall ;
-typedef  scalar_t__ mp_size ;
-typedef  int /*<<< orphan*/  mp_result ;
-typedef  int /*<<< orphan*/ * mp_int ;
-typedef  int /*<<< orphan*/  mp_digit ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * MP_DIGITS (int /*<<< orphan*/ *) ; 
- int MP_DIGIT_BIT ; 
- scalar_t__ MP_NEG ; 
- int /*<<< orphan*/  MP_OK ; 
- int /*<<< orphan*/  MP_RANGE ; 
- scalar_t__ MP_SIGN (int /*<<< orphan*/ *) ; 
- scalar_t__ MP_USED (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MP_USMALL_MAX ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- scalar_t__ mp_int_compare_uvalue (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mp_usmall ;
+typedef scalar_t__ mp_size ;
+typedef int mp_result ;
+typedef int * mp_int ;
+typedef int mp_digit ;
+
+
+ int * MP_DIGITS (int *) ;
+ int MP_DIGIT_BIT ;
+ scalar_t__ MP_NEG ;
+ int MP_OK ;
+ int MP_RANGE ;
+ scalar_t__ MP_SIGN (int *) ;
+ scalar_t__ MP_USED (int *) ;
+ int MP_USMALL_MAX ;
+ int assert (int ) ;
+ scalar_t__ mp_int_compare_uvalue (int *,int ) ;
 
 mp_result
 mp_int_to_uint(mp_int z, mp_usmall *out)
 {
-	assert(z != NULL);
+ assert(z != ((void*)0));
 
-	/* Make sure the value is representable as an unsigned small integer */
-	mp_size		sz = MP_SIGN(z);
 
-	if (sz == MP_NEG || mp_int_compare_uvalue(z, MP_USMALL_MAX) > 0)
-	{
-		return MP_RANGE;
-	}
+ mp_size sz = MP_SIGN(z);
 
-	mp_size		uz = MP_USED(z);
-	mp_digit   *dz = MP_DIGITS(z) + uz - 1;
-	mp_usmall	uv = 0;
+ if (sz == MP_NEG || mp_int_compare_uvalue(z, MP_USMALL_MAX) > 0)
+ {
+  return MP_RANGE;
+ }
 
-	while (uz > 0)
-	{
-		uv <<= MP_DIGIT_BIT / 2;
-		uv = (uv << (MP_DIGIT_BIT / 2)) | *dz--;
-		--uz;
-	}
+ mp_size uz = MP_USED(z);
+ mp_digit *dz = MP_DIGITS(z) + uz - 1;
+ mp_usmall uv = 0;
 
-	if (out)
-		*out = uv;
+ while (uz > 0)
+ {
+  uv <<= MP_DIGIT_BIT / 2;
+  uv = (uv << (MP_DIGIT_BIT / 2)) | *dz--;
+  --uz;
+ }
 
-	return MP_OK;
+ if (out)
+  *out = uv;
+
+ return MP_OK;
 }

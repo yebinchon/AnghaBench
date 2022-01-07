@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int inpragma; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GCC_BAD (char*) ; 
- int /*<<< orphan*/  VEC_safe_push (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VISIBILITY_DEFAULT ; 
- int /*<<< orphan*/  VISIBILITY_HIDDEN ; 
- int /*<<< orphan*/  VISIBILITY_INTERNAL ; 
- int /*<<< orphan*/  VISIBILITY_PROTECTED ; 
- int /*<<< orphan*/  default_visibility ; 
- int /*<<< orphan*/  heap ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- int /*<<< orphan*/  visibility ; 
- TYPE_1__ visibility_options ; 
- int /*<<< orphan*/  visstack ; 
+
+ int GCC_BAD (char*) ;
+ int VEC_safe_push (int ,int ,int ,int ) ;
+ int VISIBILITY_DEFAULT ;
+ int VISIBILITY_HIDDEN ;
+ int VISIBILITY_INTERNAL ;
+ int VISIBILITY_PROTECTED ;
+ int default_visibility ;
+ int heap ;
+ int strcmp (char const*,char*) ;
+ int visibility ;
+ TYPE_1__ visibility_options ;
+ int visstack ;
 
 void
 push_visibility (const char *str)
 {
   VEC_safe_push (visibility, heap, visstack,
-		 default_visibility);
+   default_visibility);
   if (!strcmp (str, "default"))
     default_visibility = VISIBILITY_DEFAULT;
   else if (!strcmp (str, "internal"))

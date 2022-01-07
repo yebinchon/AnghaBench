@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct task_struct {int dummy; } ;
 struct pid_namespace {int dummy; } ;
-struct path {int /*<<< orphan*/  dentry; } ;
-struct kstat {int /*<<< orphan*/  gid; int /*<<< orphan*/  uid; } ;
-struct inode {int /*<<< orphan*/  i_mode; } ;
+struct path {int dentry; } ;
+struct kstat {int gid; int uid; } ;
+struct inode {int i_mode; } ;
 
-/* Variables and functions */
- int ENOENT ; 
- int /*<<< orphan*/  GLOBAL_ROOT_GID ; 
- int /*<<< orphan*/  GLOBAL_ROOT_UID ; 
- int /*<<< orphan*/  HIDEPID_INVISIBLE ; 
- int /*<<< orphan*/  PIDTYPE_PID ; 
- struct inode* d_inode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  generic_fillattr (struct inode*,struct kstat*) ; 
- int /*<<< orphan*/  has_pid_permissions (struct pid_namespace*,struct task_struct*,int /*<<< orphan*/ ) ; 
- struct task_struct* pid_task (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  proc_pid (struct inode*) ; 
- struct pid_namespace* proc_pid_ns (struct inode*) ; 
- int /*<<< orphan*/  rcu_read_lock () ; 
- int /*<<< orphan*/  rcu_read_unlock () ; 
- int /*<<< orphan*/  task_dump_owner (struct task_struct*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int ENOENT ;
+ int GLOBAL_ROOT_GID ;
+ int GLOBAL_ROOT_UID ;
+ int HIDEPID_INVISIBLE ;
+ int PIDTYPE_PID ;
+ struct inode* d_inode (int ) ;
+ int generic_fillattr (struct inode*,struct kstat*) ;
+ int has_pid_permissions (struct pid_namespace*,struct task_struct*,int ) ;
+ struct task_struct* pid_task (int ,int ) ;
+ int proc_pid (struct inode*) ;
+ struct pid_namespace* proc_pid_ns (struct inode*) ;
+ int rcu_read_lock () ;
+ int rcu_read_unlock () ;
+ int task_dump_owner (struct task_struct*,int ,int *,int *) ;
 
 int pid_getattr(const struct path *path, struct kstat *stat,
-		u32 request_mask, unsigned int query_flags)
+  u32 request_mask, unsigned int query_flags)
 {
-	struct inode *inode = d_inode(path->dentry);
-	struct pid_namespace *pid = proc_pid_ns(inode);
-	struct task_struct *task;
+ struct inode *inode = d_inode(path->dentry);
+ struct pid_namespace *pid = proc_pid_ns(inode);
+ struct task_struct *task;
 
-	generic_fillattr(inode, stat);
+ generic_fillattr(inode, stat);
 
-	stat->uid = GLOBAL_ROOT_UID;
-	stat->gid = GLOBAL_ROOT_GID;
-	rcu_read_lock();
-	task = pid_task(proc_pid(inode), PIDTYPE_PID);
-	if (task) {
-		if (!has_pid_permissions(pid, task, HIDEPID_INVISIBLE)) {
-			rcu_read_unlock();
-			/*
-			 * This doesn't prevent learning whether PID exists,
-			 * it only makes getattr() consistent with readdir().
-			 */
-			return -ENOENT;
-		}
-		task_dump_owner(task, inode->i_mode, &stat->uid, &stat->gid);
-	}
-	rcu_read_unlock();
-	return 0;
+ stat->uid = GLOBAL_ROOT_UID;
+ stat->gid = GLOBAL_ROOT_GID;
+ rcu_read_lock();
+ task = pid_task(proc_pid(inode), PIDTYPE_PID);
+ if (task) {
+  if (!has_pid_permissions(pid, task, HIDEPID_INVISIBLE)) {
+   rcu_read_unlock();
+
+
+
+
+   return -ENOENT;
+  }
+  task_dump_owner(task, inode->i_mode, &stat->uid, &stat->gid);
+ }
+ rcu_read_unlock();
+ return 0;
 }

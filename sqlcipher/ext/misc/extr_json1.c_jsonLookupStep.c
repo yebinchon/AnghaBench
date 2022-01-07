@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t u32 ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef size_t u32 ;
 struct TYPE_11__ {size_t iAppend; } ;
 struct TYPE_13__ {scalar_t__ eType; size_t n; int jnFlags; TYPE_1__ u; } ;
 struct TYPE_12__ {TYPE_3__* aNode; scalar_t__ oom; } ;
-typedef  TYPE_2__ JsonParse ;
-typedef  TYPE_3__ JsonNode ;
+typedef TYPE_2__ JsonParse ;
+typedef TYPE_3__ JsonNode ;
 
-/* Variables and functions */
- int JNODE_APPEND ; 
- int JNODE_RAW ; 
- int JNODE_REMOVE ; 
- scalar_t__ JSON_ARRAY ; 
- scalar_t__ JSON_OBJECT ; 
- scalar_t__ JSON_STRING ; 
- scalar_t__ jsonLabelCompare (TYPE_3__*,char const*,size_t) ; 
- TYPE_3__* jsonLookupAppend (TYPE_2__*,char const*,int*,char const**) ; 
- scalar_t__ jsonNodeSize (TYPE_3__*) ; 
- size_t jsonParseAddNode (TYPE_2__*,scalar_t__,int,char const*) ; 
- scalar_t__ safe_isdigit (char const) ; 
+
+ int JNODE_APPEND ;
+ int JNODE_RAW ;
+ int JNODE_REMOVE ;
+ scalar_t__ JSON_ARRAY ;
+ scalar_t__ JSON_OBJECT ;
+ scalar_t__ JSON_STRING ;
+ scalar_t__ jsonLabelCompare (TYPE_3__*,char const*,size_t) ;
+ TYPE_3__* jsonLookupAppend (TYPE_2__*,char const*,int*,char const**) ;
+ scalar_t__ jsonNodeSize (TYPE_3__*) ;
+ size_t jsonParseAddNode (TYPE_2__*,scalar_t__,int,char const*) ;
+ scalar_t__ safe_isdigit (char const) ;
 
 __attribute__((used)) static JsonNode *jsonLookupStep(
-  JsonParse *pParse,      /* The JSON to search */
-  u32 iRoot,              /* Begin the search at this node */
-  const char *zPath,      /* The path to search */
-  int *pApnd,             /* Append nodes to complete path if not NULL */
-  const char **pzErr      /* Make *pzErr point to any syntax error in zPath */
+  JsonParse *pParse,
+  u32 iRoot,
+  const char *zPath,
+  int *pApnd,
+  const char **pzErr
 ){
   u32 i, j, nKey;
   const char *zKey;

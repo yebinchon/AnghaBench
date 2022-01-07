@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {void* password_file; void* realm; } ;
-struct lwan_url_map {TYPE_1__ authorization; int /*<<< orphan*/  flags; } ;
+struct lwan_url_map {TYPE_1__ authorization; int flags; } ;
 struct config_line {char* value; int type; char* key; } ;
 struct config {int dummy; } ;
 
-/* Variables and functions */
-#define  CONFIG_LINE_TYPE_LINE 130 
-#define  CONFIG_LINE_TYPE_SECTION 129 
-#define  CONFIG_LINE_TYPE_SECTION_END 128 
- int /*<<< orphan*/  HANDLER_MUST_AUTHORIZE ; 
- int /*<<< orphan*/  config_error (struct config*,char*,...) ; 
- struct config_line* config_read_line (struct config*) ; 
- int /*<<< orphan*/  free (void*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- void* strdup (char*) ; 
- scalar_t__ streq (char*,char*) ; 
+
+
+
+
+ int HANDLER_MUST_AUTHORIZE ;
+ int config_error (struct config*,char*,...) ;
+ struct config_line* config_read_line (struct config*) ;
+ int free (void*) ;
+ int memset (TYPE_1__*,int ,int) ;
+ void* strdup (char*) ;
+ scalar_t__ streq (char*,char*) ;
 
 __attribute__((used)) static void parse_listener_prefix_authorization(struct config *c,
                                                 const struct config_line *l,
@@ -41,7 +41,7 @@ __attribute__((used)) static void parse_listener_prefix_authorization(struct con
 
     while ((l = config_read_line(c))) {
         switch (l->type) {
-        case CONFIG_LINE_TYPE_LINE:
+        case 130:
             if (streq(l->key, "realm")) {
                 free(url_map->authorization.realm);
                 url_map->authorization.realm = strdup(l->value);
@@ -51,11 +51,11 @@ __attribute__((used)) static void parse_listener_prefix_authorization(struct con
             }
             break;
 
-        case CONFIG_LINE_TYPE_SECTION:
+        case 129:
             config_error(c, "Unexpected section: %s", l->key);
             goto error;
 
-        case CONFIG_LINE_TYPE_SECTION_END:
+        case 128:
             if (!url_map->authorization.realm)
                 url_map->authorization.realm = strdup("Lwan");
             if (!url_map->authorization.password_file)

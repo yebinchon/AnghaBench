@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  luaL_argerror (int /*<<< orphan*/ *,int,char*) ; 
- char* luaL_checkstring (int /*<<< orphan*/ *,int) ; 
- scalar_t__ luaT_iscdata (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaT_pushudata (int /*<<< orphan*/ *,void*,char const*) ; 
- scalar_t__ lua_isnumber (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_tonumber (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_topointer (int /*<<< orphan*/ *,int) ; 
- int lua_type (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int luaL_argerror (int *,int,char*) ;
+ char* luaL_checkstring (int *,int) ;
+ scalar_t__ luaT_iscdata (int *,int) ;
+ int luaT_pushudata (int *,void*,char const*) ;
+ scalar_t__ lua_isnumber (int *,int) ;
+ scalar_t__ lua_tonumber (int *,int) ;
+ scalar_t__ lua_topointer (int *,int) ;
+ int lua_type (int *,int) ;
 
 int luaT_lua_pushudata(lua_State *L)
 {
-  void *udata = NULL;
+  void *udata = ((void*)0);
   const char *tname = luaL_checkstring(L, 2);
 
   if(lua_type(L, 1) == 10)

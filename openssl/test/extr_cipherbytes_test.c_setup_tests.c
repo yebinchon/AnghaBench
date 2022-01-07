@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ADD_TEST (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_CTX_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TLS_server_method () ; 
- int /*<<< orphan*/  ctx ; 
- int /*<<< orphan*/  s ; 
- int /*<<< orphan*/  test_empty ; 
- int /*<<< orphan*/  test_unsupported ; 
- int /*<<< orphan*/  test_v2 ; 
- int /*<<< orphan*/  test_v3 ; 
+ int ADD_TEST (int ) ;
+ int SSL_CTX_new (int ) ;
+ int SSL_new (int ) ;
+ int TEST_ptr (int ) ;
+ int TLS_server_method () ;
+ int ctx ;
+ int s ;
+ int test_empty ;
+ int test_unsupported ;
+ int test_v2 ;
+ int test_v3 ;
 
 int setup_tests(void)
 {

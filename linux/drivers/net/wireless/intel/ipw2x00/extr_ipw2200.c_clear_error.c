@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ipw_priv {int /*<<< orphan*/ * error; } ;
+
+
+
+
+struct ipw_priv {int * error; } ;
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  size_t ssize_t ;
+typedef size_t ssize_t ;
 
-/* Variables and functions */
- struct ipw_priv* dev_get_drvdata (struct device*) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
+
+ struct ipw_priv* dev_get_drvdata (struct device*) ;
+ int kfree (int *) ;
 
 __attribute__((used)) static ssize_t clear_error(struct device *d,
-			   struct device_attribute *attr,
-			   const char *buf, size_t count)
+      struct device_attribute *attr,
+      const char *buf, size_t count)
 {
-	struct ipw_priv *priv = dev_get_drvdata(d);
+ struct ipw_priv *priv = dev_get_drvdata(d);
 
-	kfree(priv->error);
-	priv->error = NULL;
-	return count;
+ kfree(priv->error);
+ priv->error = ((void*)0);
+ return count;
 }

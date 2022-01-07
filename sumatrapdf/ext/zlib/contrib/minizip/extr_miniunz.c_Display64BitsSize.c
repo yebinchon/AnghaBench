@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ZPOS64_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  printf (char*,...) ; 
+
+
+
+typedef int ZPOS64_T ;
+
+
+ int printf (char*,...) ;
 
 void Display64BitsSize(ZPOS64_T n, int size_char)
 {
-  /* to avoid compatibility problem , we do here the conversion */
+
   char number[21];
   int offset=19;
   int pos_string = 19;

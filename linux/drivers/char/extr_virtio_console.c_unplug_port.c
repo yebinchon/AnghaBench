@@ -1,91 +1,91 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  hvc; int /*<<< orphan*/  list; } ;
-struct port {int guest_connected; int host_connected; int /*<<< orphan*/  kref; int /*<<< orphan*/  name; int /*<<< orphan*/  debugfs_file; int /*<<< orphan*/  cdev; TYPE_3__* dev; TYPE_2__* portdev; TYPE_1__ cons; int /*<<< orphan*/  inbuf_lock; int /*<<< orphan*/  waitqueue; int /*<<< orphan*/  list; } ;
-struct TYPE_8__ {int /*<<< orphan*/  class; } ;
-struct TYPE_7__ {int /*<<< orphan*/  devt; int /*<<< orphan*/  kobj; } ;
-struct TYPE_6__ {int /*<<< orphan*/  ports_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cdev_del (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugfs_remove (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_destroy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hvc_remove (int /*<<< orphan*/ ) ; 
- scalar_t__ is_console_port (struct port*) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kref_put (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- TYPE_4__ pdrvdata ; 
- int /*<<< orphan*/  pdrvdata_lock ; 
- int /*<<< orphan*/  port_attribute_group ; 
- int /*<<< orphan*/  remove_port ; 
- int /*<<< orphan*/  remove_port_data (struct port*) ; 
- int /*<<< orphan*/  send_sigio_to_port (struct port*) ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sysfs_remove_group (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wake_up_interruptible (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int hvc; int list; } ;
+struct port {int guest_connected; int host_connected; int kref; int name; int debugfs_file; int cdev; TYPE_3__* dev; TYPE_2__* portdev; TYPE_1__ cons; int inbuf_lock; int waitqueue; int list; } ;
+struct TYPE_8__ {int class; } ;
+struct TYPE_7__ {int devt; int kobj; } ;
+struct TYPE_6__ {int ports_lock; } ;
+
+
+ int cdev_del (int ) ;
+ int debugfs_remove (int ) ;
+ int device_destroy (int ,int ) ;
+ int hvc_remove (int ) ;
+ scalar_t__ is_console_port (struct port*) ;
+ int kfree (int ) ;
+ int kref_put (int *,int ) ;
+ int list_del (int *) ;
+ TYPE_4__ pdrvdata ;
+ int pdrvdata_lock ;
+ int port_attribute_group ;
+ int remove_port ;
+ int remove_port_data (struct port*) ;
+ int send_sigio_to_port (struct port*) ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
+ int sysfs_remove_group (int *,int *) ;
+ int wake_up_interruptible (int *) ;
 
 __attribute__((used)) static void unplug_port(struct port *port)
 {
-	spin_lock_irq(&port->portdev->ports_lock);
-	list_del(&port->list);
-	spin_unlock_irq(&port->portdev->ports_lock);
+ spin_lock_irq(&port->portdev->ports_lock);
+ list_del(&port->list);
+ spin_unlock_irq(&port->portdev->ports_lock);
 
-	spin_lock_irq(&port->inbuf_lock);
-	if (port->guest_connected) {
-		/* Let the app know the port is going down. */
-		send_sigio_to_port(port);
+ spin_lock_irq(&port->inbuf_lock);
+ if (port->guest_connected) {
 
-		/* Do this after sigio is actually sent */
-		port->guest_connected = false;
-		port->host_connected = false;
+  send_sigio_to_port(port);
 
-		wake_up_interruptible(&port->waitqueue);
-	}
-	spin_unlock_irq(&port->inbuf_lock);
 
-	if (is_console_port(port)) {
-		spin_lock_irq(&pdrvdata_lock);
-		list_del(&port->cons.list);
-		spin_unlock_irq(&pdrvdata_lock);
-		hvc_remove(port->cons.hvc);
-	}
+  port->guest_connected = 0;
+  port->host_connected = 0;
 
-	remove_port_data(port);
+  wake_up_interruptible(&port->waitqueue);
+ }
+ spin_unlock_irq(&port->inbuf_lock);
 
-	/*
-	 * We should just assume the device itself has gone off --
-	 * else a close on an open port later will try to send out a
-	 * control message.
-	 */
-	port->portdev = NULL;
+ if (is_console_port(port)) {
+  spin_lock_irq(&pdrvdata_lock);
+  list_del(&port->cons.list);
+  spin_unlock_irq(&pdrvdata_lock);
+  hvc_remove(port->cons.hvc);
+ }
 
-	sysfs_remove_group(&port->dev->kobj, &port_attribute_group);
-	device_destroy(pdrvdata.class, port->dev->devt);
-	cdev_del(port->cdev);
+ remove_port_data(port);
 
-	debugfs_remove(port->debugfs_file);
-	kfree(port->name);
 
-	/*
-	 * Locks around here are not necessary - a port can't be
-	 * opened after we removed the port struct from ports_list
-	 * above.
-	 */
-	kref_put(&port->kref, remove_port);
+
+
+
+
+ port->portdev = ((void*)0);
+
+ sysfs_remove_group(&port->dev->kobj, &port_attribute_group);
+ device_destroy(pdrvdata.class, port->dev->devt);
+ cdev_del(port->cdev);
+
+ debugfs_remove(port->debugfs_file);
+ kfree(port->name);
+
+
+
+
+
+
+ kref_put(&port->kref, remove_port);
 }

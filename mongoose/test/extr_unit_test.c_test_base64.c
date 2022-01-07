@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cases ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_EQ (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ASSERT_STREQ (char*,char*) ; 
- int /*<<< orphan*/  mg_base64_decode (unsigned char*,int,char*) ; 
- int /*<<< orphan*/  mg_base64_encode (unsigned char*,int,char*) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- int strlen (char const*) ; 
+
+
+
+typedef int cases ;
+
+
+ int ASSERT_EQ (int ,int) ;
+ int ASSERT_STREQ (char*,char*) ;
+ int mg_base64_decode (unsigned char*,int,char*) ;
+ int mg_base64_encode (unsigned char*,int,char*) ;
+ int strcmp (char const*,char*) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static const char *test_base64(void) {
   const char *cases[] = {"test", "longer string"};
@@ -38,5 +38,5 @@ __attribute__((used)) static const char *test_base64(void) {
   ASSERT_EQ(mg_base64_decode((unsigned char *) "Q2VzYW50YQ==", 12, dec), 12);
   ASSERT_STREQ(dec, "Cesanta");
 
-  return NULL;
+  return ((void*)0);
 }

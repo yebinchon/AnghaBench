@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct j1939_ecu {TYPE_1__* priv; } ;
-struct TYPE_2__ {int /*<<< orphan*/  lock; } ;
+struct TYPE_2__ {int lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  j1939_ecu_unmap_locked (struct j1939_ecu*) ; 
- int /*<<< orphan*/  write_lock_bh (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_unlock_bh (int /*<<< orphan*/ *) ; 
+
+ int j1939_ecu_unmap_locked (struct j1939_ecu*) ;
+ int write_lock_bh (int *) ;
+ int write_unlock_bh (int *) ;
 
 void j1939_ecu_unmap(struct j1939_ecu *ecu)
 {
-	write_lock_bh(&ecu->priv->lock);
-	j1939_ecu_unmap_locked(ecu);
-	write_unlock_bh(&ecu->priv->lock);
+ write_lock_bh(&ecu->priv->lock);
+ j1939_ecu_unmap_locked(ecu);
+ write_unlock_bh(&ecu->priv->lock);
 }

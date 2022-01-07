@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_13__ {struct REnv* env; } ;
 struct TYPE_12__ {TYPE_2__* irep; } ;
-struct RProc {int /*<<< orphan*/  flags; TYPE_4__ e; TYPE_3__ body; struct RProc* upper; } ;
+struct RProc {int flags; TYPE_4__ e; TYPE_3__ body; struct RProc* upper; } ;
 struct REnv {struct RClass* c; } ;
 struct RClass {int dummy; } ;
 struct RBasic {int dummy; } ;
 struct TYPE_14__ {TYPE_1__* c; } ;
-typedef  TYPE_5__ mrb_state ;
+typedef TYPE_5__ mrb_state ;
 struct TYPE_15__ {struct REnv* env; } ;
-typedef  TYPE_6__ mrb_callinfo ;
-struct TYPE_11__ {int /*<<< orphan*/  nlocals; } ;
+typedef TYPE_6__ mrb_callinfo ;
+struct TYPE_11__ {int nlocals; } ;
 struct TYPE_10__ {TYPE_6__* ci; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MRB_PROC_ENVSET ; 
- struct RClass* MRB_PROC_TARGET_CLASS (struct RProc*) ; 
- struct REnv* env_new (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_field_write_barrier (TYPE_5__*,struct RBasic*,struct RBasic*) ; 
+
+ int MRB_PROC_ENVSET ;
+ struct RClass* MRB_PROC_TARGET_CLASS (struct RProc*) ;
+ struct REnv* env_new (TYPE_5__*,int ) ;
+ int mrb_field_write_barrier (TYPE_5__*,struct RBasic*,struct RBasic*) ;
 
 __attribute__((used)) static void
 closure_setup(mrb_state *mrb, struct RProc *p)
 {
   mrb_callinfo *ci = mrb->c->ci;
   struct RProc *up = p->upper;
-  struct REnv *e = NULL;
+  struct REnv *e = ((void*)0);
 
   if (ci && ci->env) {
     e = ci->env;

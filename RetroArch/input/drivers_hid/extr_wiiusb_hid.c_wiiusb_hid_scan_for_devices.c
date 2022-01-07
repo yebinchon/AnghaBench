@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wiiusb_hid_t ;
-struct TYPE_5__ {scalar_t__ vid; scalar_t__ pid; int /*<<< orphan*/  device_id; } ;
-typedef  TYPE_1__ usb_device_entry ;
-typedef  unsigned int u8 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX_USERS ; 
- int /*<<< orphan*/  USB_CLASS_HID ; 
- scalar_t__ USB_GetDeviceList (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int*) ; 
- scalar_t__ calloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  wiiusb_hid_add_adapter (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  wiiusb_hid_new_device (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int wiiusb_hid_t ;
+struct TYPE_5__ {scalar_t__ vid; scalar_t__ pid; int device_id; } ;
+typedef TYPE_1__ usb_device_entry ;
+typedef unsigned int u8 ;
+
+
+ int MAX_USERS ;
+ int USB_CLASS_HID ;
+ scalar_t__ USB_GetDeviceList (TYPE_1__*,int ,int ,unsigned int*) ;
+ scalar_t__ calloc (int ,int) ;
+ int free (TYPE_1__*) ;
+ int wiiusb_hid_add_adapter (int *,TYPE_1__*) ;
+ int wiiusb_hid_new_device (int *,int ) ;
 
 __attribute__((used)) static void wiiusb_hid_scan_for_devices(wiiusb_hid_t *hid)
 {
@@ -40,7 +40,7 @@ __attribute__((used)) static void wiiusb_hid_scan_for_devices(wiiusb_hid_t *hid)
 
    for (i = 0; i < count; i++)
    {
-    /* first check the device is not already in our list */
+
       if (!wiiusb_hid_new_device(hid, dev_entries[i].device_id))
          continue;
 

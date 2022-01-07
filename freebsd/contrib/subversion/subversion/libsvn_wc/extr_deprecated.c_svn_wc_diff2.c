@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_diff_callbacks_t ;
-typedef  int /*<<< orphan*/  svn_wc_adm_access_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct diff_callbacks_wrapper_baton {void* baton; int /*<<< orphan*/  const* callbacks; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_DEPTH_INFINITY_OR_FILES (int /*<<< orphan*/ ) ; 
- struct diff_callbacks_wrapper_baton* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  diff_callbacks_wrapper ; 
- int /*<<< orphan*/ * svn_wc_diff5 (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,struct diff_callbacks_wrapper_baton*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_wc_diff_callbacks_t ;
+typedef int svn_wc_adm_access_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+struct diff_callbacks_wrapper_baton {void* baton; int const* callbacks; } ;
+typedef int apr_pool_t ;
+
+
+ int SVN_DEPTH_INFINITY_OR_FILES (int ) ;
+ struct diff_callbacks_wrapper_baton* apr_pcalloc (int *,int) ;
+ int diff_callbacks_wrapper ;
+ int * svn_wc_diff5 (int *,char const*,int *,struct diff_callbacks_wrapper_baton*,int ,int ,int *,int *) ;
 
 svn_error_t *
 svn_wc_diff2(svn_wc_adm_access_t *anchor,
@@ -37,5 +37,5 @@ svn_wc_diff2(svn_wc_adm_access_t *anchor,
   b->baton = callback_baton;
   return svn_wc_diff5(anchor, target, &diff_callbacks_wrapper, b,
                       SVN_DEPTH_INFINITY_OR_FILES(recurse), ignore_ancestry,
-                      NULL, pool);
+                      ((void*)0), pool);
 }

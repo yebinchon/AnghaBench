@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  Session; TYPE_1__* Thread; int /*<<< orphan*/ * Sock; } ;
-struct TYPE_5__ {int /*<<< orphan*/  ref; } ;
-typedef  TYPE_1__ THREAD ;
-typedef  int /*<<< orphan*/  SOCK ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  TYPE_2__ CNC_STATUS_PRINTER_WINDOW_PARAM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddRef (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FreePack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NoticeThreadInit (TYPE_1__*) ; 
- int /*<<< orphan*/ * RecvPack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  StopSessionEx (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int Session; TYPE_1__* Thread; int * Sock; } ;
+struct TYPE_5__ {int ref; } ;
+typedef TYPE_1__ THREAD ;
+typedef int SOCK ;
+typedef int PACK ;
+typedef TYPE_2__ CNC_STATUS_PRINTER_WINDOW_PARAM ;
+
+
+ int AddRef (int ) ;
+ int FreePack (int *) ;
+ int NoticeThreadInit (TYPE_1__*) ;
+ int * RecvPack (int *) ;
+ int StopSessionEx (int ,int) ;
 
 void CncStatusPrinterWindowThreadProc(THREAD *thread, void *param)
 {
-	CNC_STATUS_PRINTER_WINDOW_PARAM *pp;
-	SOCK *sock;
-	PACK *p;
-	// Validate arguments
-	if (thread == NULL || param == NULL)
-	{
-		return;
-	}
+ CNC_STATUS_PRINTER_WINDOW_PARAM *pp;
+ SOCK *sock;
+ PACK *p;
 
-	pp = (CNC_STATUS_PRINTER_WINDOW_PARAM *)param;
-	sock = pp->Sock;
-	pp->Thread = thread;
-	AddRef(pp->Thread->ref);
+ if (thread == ((void*)0) || param == ((void*)0))
+ {
+  return;
+ }
 
-	NoticeThreadInit(thread);
+ pp = (CNC_STATUS_PRINTER_WINDOW_PARAM *)param;
+ sock = pp->Sock;
+ pp->Thread = thread;
+ AddRef(pp->Thread->ref);
 
-	p = RecvPack(sock);
-	if (p != NULL)
-	{
-		// Stop the session
-		StopSessionEx(pp->Session, true);
+ NoticeThreadInit(thread);
 
-		FreePack(p);
-	}
+ p = RecvPack(sock);
+ if (p != ((void*)0))
+ {
+
+  StopSessionEx(pp->Session, 1);
+
+  FreePack(p);
+ }
 }

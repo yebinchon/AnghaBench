@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_18__ {int /*<<< orphan*/ * outputs; TYPE_2__* priv; } ;
+
+
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+struct TYPE_18__ {int * outputs; TYPE_2__* priv; } ;
 struct TYPE_17__ {TYPE_5__* dst; } ;
 struct TYPE_16__ {int width; int height; } ;
-struct TYPE_15__ {unsigned int* d; int* s; int x; int y; int* S; int nb_planes; size_t front; size_t back; TYPE_1__* points; int /*<<< orphan*/  (* set_pixel ) (TYPE_3__*,int,int,unsigned int const,unsigned int const,unsigned int const,unsigned int const) ;scalar_t__ (* is_same ) (TYPE_3__*,int,int,int,int,int,int) ;int /*<<< orphan*/  (* pick_pixel ) (TYPE_3__*,int,int,int*,int*,int*,int*) ;} ;
+struct TYPE_15__ {unsigned int* d; int* s; int x; int y; int* S; int nb_planes; size_t front; size_t back; TYPE_1__* points; int (* set_pixel ) (TYPE_3__*,int,int,unsigned int const,unsigned int const,unsigned int const,unsigned int const) ;scalar_t__ (* is_same ) (TYPE_3__*,int,int,int,int,int,int) ;int (* pick_pixel ) (TYPE_3__*,int,int,int*,int*,int*,int*) ;} ;
 struct TYPE_14__ {int x; int y; } ;
-typedef  TYPE_2__ FloodfillContext ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVFilterLink ;
-typedef  TYPE_5__ AVFilterContext ;
+typedef TYPE_2__ FloodfillContext ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVFilterLink ;
+typedef TYPE_5__ AVFilterContext ;
 
-/* Variables and functions */
- int av_frame_make_writable (TYPE_3__*) ; 
- int ff_filter_frame (int /*<<< orphan*/ ,TYPE_3__*) ; 
- scalar_t__ is_inside (int,int,int const,int const) ; 
- int /*<<< orphan*/  stub1 (TYPE_3__*,int,int,int*,int*,int*,int*) ; 
- scalar_t__ stub2 (TYPE_3__*,int,int,int,int,int,int) ; 
- scalar_t__ stub3 (TYPE_3__*,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  stub4 (TYPE_3__*,int,int,unsigned int const,unsigned int const,unsigned int const,unsigned int const) ; 
+
+ int av_frame_make_writable (TYPE_3__*) ;
+ int ff_filter_frame (int ,TYPE_3__*) ;
+ scalar_t__ is_inside (int,int,int const,int const) ;
+ int stub1 (TYPE_3__*,int,int,int*,int*,int*,int*) ;
+ scalar_t__ stub2 (TYPE_3__*,int,int,int,int,int,int) ;
+ scalar_t__ stub3 (TYPE_3__*,int,int,int,int,int,int) ;
+ int stub4 (TYPE_3__*,int,int,unsigned int const,unsigned int const,unsigned int const,unsigned int const) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *link, AVFrame *frame)
 {
@@ -85,22 +85,22 @@ __attribute__((used)) static int filter_frame(AVFilterLink *link, AVFrame *frame
                 s->set_pixel(frame, x, y, d0, d1, d2, d3);
 
                 if (is_inside(x + 1, y, w, h)) {
-                    s->points[s->front]  .x = x + 1;
+                    s->points[s->front] .x = x + 1;
                     s->points[s->front++].y = y;
                 }
 
                 if (is_inside(x - 1, y, w, h)) {
-                    s->points[s->front]  .x = x - 1;
+                    s->points[s->front] .x = x - 1;
                     s->points[s->front++].y = y;
                 }
 
                 if (is_inside(x, y + 1, w, h)) {
-                    s->points[s->front]  .x = x;
+                    s->points[s->front] .x = x;
                     s->points[s->front++].y = y + 1;
                 }
 
                 if (is_inside(x, y - 1, w, h)) {
-                    s->points[s->front]  .x = x;
+                    s->points[s->front] .x = x;
                     s->points[s->front++].y = y - 1;
                 }
             }

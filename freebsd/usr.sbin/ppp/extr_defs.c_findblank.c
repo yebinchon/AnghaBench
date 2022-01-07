@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int PARSE_NOHASH ; 
- int PARSE_REDUCE ; 
- scalar_t__ issep (char) ; 
- int /*<<< orphan*/  memmove (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+ int PARSE_NOHASH ;
+ int PARSE_REDUCE ;
+ scalar_t__ issep (char) ;
+ int memmove (char*,char*,int ) ;
+ int strlen (char*) ;
 
 char *
 findblank(char *p, int flags)
@@ -42,5 +34,5 @@ findblank(char *p, int flags)
     p++;
   }
 
-  return instring ? NULL : p;
+  return instring ? ((void*)0) : p;
 }

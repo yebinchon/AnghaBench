@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct vertex_buffer {size_t* Findex; size_t* Bindex; void*** TexCoord; void*** Eye; void*** Bcolor; void*** Fcolor; } ;
 struct TYPE_3__ {int ClipMask; struct vertex_buffer* VB; } ;
-typedef  size_t GLuint ;
-typedef  scalar_t__ GLint ;
-typedef  void* GLfloat ;
-typedef  TYPE_1__ GLcontext ;
+typedef size_t GLuint ;
+typedef scalar_t__ GLint ;
+typedef void* GLfloat ;
+typedef TYPE_1__ GLcontext ;
 
-/* Variables and functions */
- int CLIP_BCOLOR_BIT ; 
- int CLIP_BINDEX_BIT ; 
- int CLIP_FCOLOR_BIT ; 
- int CLIP_FINDEX_BIT ; 
- size_t CLIP_SPACE ; 
- int CLIP_TEXTURE_BIT ; 
- void* LINTERP (void*,void*,void*) ; 
+
+ int CLIP_BCOLOR_BIT ;
+ int CLIP_BINDEX_BIT ;
+ int CLIP_FCOLOR_BIT ;
+ int CLIP_FINDEX_BIT ;
+ size_t CLIP_SPACE ;
+ int CLIP_TEXTURE_BIT ;
+ void* LINTERP (void*,void*,void*) ;
 
 void interpolate_aux( GLcontext* ctx, GLuint space,
                       GLuint dst, GLfloat t, GLuint in, GLuint out )
@@ -55,10 +55,10 @@ void interpolate_aux( GLcontext* ctx, GLuint space,
    }
 
    if (ctx->ClipMask & CLIP_TEXTURE_BIT) {
-      /* TODO: is more sophisticated texture coord interpolation needed?? */
+
       if (space==CLIP_SPACE) {
-	 /* also interpolate eye Z component */
-	 VB->Eye[dst][2] = LINTERP( t, VB->Eye[in][2], VB->Eye[out][2] );
+
+  VB->Eye[dst][2] = LINTERP( t, VB->Eye[in][2], VB->Eye[out][2] );
       }
       VB->TexCoord[dst][0] = LINTERP(t,VB->TexCoord[in][0],VB->TexCoord[out][0]);
       VB->TexCoord[dst][1] = LINTERP(t,VB->TexCoord[in][1],VB->TexCoord[out][1]);

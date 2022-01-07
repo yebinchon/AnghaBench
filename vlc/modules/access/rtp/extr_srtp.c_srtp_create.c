@@ -1,87 +1,87 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {unsigned int flags; unsigned int tag_len; int rtp_rcc; int /*<<< orphan*/  rtp; int /*<<< orphan*/  rtcp; } ;
-typedef  TYPE_1__ srtp_session_t ;
 
-/* Variables and functions */
- int GCRY_CIPHER_AES ; 
- int GCRY_CIPHER_NONE ; 
- int GCRY_MD_NONE ; 
- int GCRY_MD_SHA1 ; 
-#define  SRTP_AUTH_HMAC_SHA1 131 
-#define  SRTP_AUTH_NULL 130 
-#define  SRTP_ENCR_AES_CM 129 
-#define  SRTP_ENCR_NULL 128 
- unsigned int SRTP_FLAGS_MASK ; 
- int SRTP_PRF_AES_CM ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- unsigned int gcry_md_get_algo_dlen (int) ; 
- TYPE_1__* malloc (int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ proto_create (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  proto_destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ rcc_mode (TYPE_1__*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {unsigned int flags; unsigned int tag_len; int rtp_rcc; int rtp; int rtcp; } ;
+typedef TYPE_1__ srtp_session_t ;
+
+
+ int GCRY_CIPHER_AES ;
+ int GCRY_CIPHER_NONE ;
+ int GCRY_MD_NONE ;
+ int GCRY_MD_SHA1 ;
+
+
+
+
+ unsigned int SRTP_FLAGS_MASK ;
+ int SRTP_PRF_AES_CM ;
+ int free (TYPE_1__*) ;
+ unsigned int gcry_md_get_algo_dlen (int) ;
+ TYPE_1__* malloc (int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ scalar_t__ proto_create (int *,int,int) ;
+ int proto_destroy (int *) ;
+ scalar_t__ rcc_mode (TYPE_1__*) ;
 
 srtp_session_t *
 srtp_create (int encr, int auth, unsigned tag_len, int prf, unsigned flags)
 {
     if ((flags & ~SRTP_FLAGS_MASK))
-        return NULL;
+        return ((void*)0);
 
     int cipher, md;
     switch (encr)
     {
-        case SRTP_ENCR_NULL:
+        case 128:
             cipher = GCRY_CIPHER_NONE;
             break;
 
-        case SRTP_ENCR_AES_CM:
+        case 129:
             cipher = GCRY_CIPHER_AES;
             break;
 
         default:
-            return NULL;
+            return ((void*)0);
     }
 
     switch (auth)
     {
-        case SRTP_AUTH_NULL:
+        case 130:
             md = GCRY_MD_NONE;
             break;
 
-        case SRTP_AUTH_HMAC_SHA1:
+        case 131:
             md = GCRY_MD_SHA1;
             break;
 
         default:
-            return NULL;
+            return ((void*)0);
     }
 
     if (tag_len > gcry_md_get_algo_dlen (md))
-        return NULL;
+        return ((void*)0);
 
     if (prf != SRTP_PRF_AES_CM)
-        return NULL;
+        return ((void*)0);
 
     srtp_session_t *s = malloc (sizeof (*s));
-    if (s == NULL)
-        return NULL;
+    if (s == ((void*)0))
+        return ((void*)0);
 
     memset (s, 0, sizeof (*s));
     s->flags = flags;
     s->tag_len = tag_len;
-    s->rtp_rcc = 1; /* Default RCC rate */
+    s->rtp_rcc = 1;
     if (rcc_mode (s))
     {
         if (tag_len < 4)
@@ -97,5 +97,5 @@ srtp_create (int encr, int auth, unsigned tag_len, int prf, unsigned flags)
 
 error:
     free (s);
-    return NULL;
+    return ((void*)0);
 }

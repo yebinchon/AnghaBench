@@ -1,301 +1,244 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * xmlTextWriterPtr ;
-typedef  int /*<<< orphan*/ * xmlBufferPtr ;
-struct pg_tm {int /*<<< orphan*/  tm_mday; int /*<<< orphan*/  tm_mon; int /*<<< orphan*/  tm_year; } ;
-typedef  int /*<<< orphan*/  int16 ;
-typedef  int /*<<< orphan*/  fsec_t ;
-typedef  int /*<<< orphan*/  bytea ;
-typedef  int /*<<< orphan*/  TimestampTz ;
-typedef  int /*<<< orphan*/  Timestamp ;
-struct TYPE_9__ {int /*<<< orphan*/  err_occurred; } ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int * xmlTextWriterPtr ;
+typedef int * xmlBufferPtr ;
+struct pg_tm {int tm_mday; int tm_mon; int tm_year; } ;
+typedef int int16 ;
+typedef int fsec_t ;
+typedef int bytea ;
+typedef int TimestampTz ;
+typedef int Timestamp ;
+struct TYPE_9__ {int err_occurred; } ;
 struct TYPE_8__ {char* data; } ;
-typedef  TYPE_1__ StringInfoData ;
-typedef  TYPE_2__ PgXmlErrorContext ;
-typedef  int Oid ;
-typedef  int Datum ;
-typedef  scalar_t__ DateADT ;
-typedef  int /*<<< orphan*/  ArrayType ;
+typedef TYPE_1__ StringInfoData ;
+typedef TYPE_2__ PgXmlErrorContext ;
+typedef int Oid ;
+typedef int Datum ;
+typedef scalar_t__ DateADT ;
+typedef int ArrayType ;
 
-/* Variables and functions */
- int ARR_ELEMTYPE (int /*<<< orphan*/ *) ; 
-#define  BOOLOID 132 
-#define  BYTEAOID 131 
-#define  DATEOID 130 
- int /*<<< orphan*/  DATE_NOT_FINITE (scalar_t__) ; 
- int /*<<< orphan*/ * DatumGetArrayTypeP (int) ; 
- int /*<<< orphan*/  DatumGetBool (int) ; 
- int /*<<< orphan*/ * DatumGetByteaPP (int) ; 
- scalar_t__ DatumGetDateADT (int) ; 
- int /*<<< orphan*/  DatumGetTimestamp (int) ; 
- int /*<<< orphan*/  ERRCODE_DATETIME_VALUE_OUT_OF_RANGE ; 
- int /*<<< orphan*/  ERRCODE_OUT_OF_MEMORY ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  EncodeDateOnly (struct pg_tm*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  EncodeDateTime (struct pg_tm*,int /*<<< orphan*/ ,int,int,char const*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  MAXDATELEN ; 
- char* OidOutputFunctionCall (int,int) ; 
- int /*<<< orphan*/  PG_CATCH () ; 
- int /*<<< orphan*/  PG_END_TRY () ; 
- int /*<<< orphan*/  PG_RE_THROW () ; 
- int /*<<< orphan*/  PG_TRY () ; 
- int /*<<< orphan*/  PG_XML_STRICTNESS_ALL ; 
- scalar_t__ POSTGRES_EPOCH_JDATE ; 
-#define  TIMESTAMPOID 129 
-#define  TIMESTAMPTZOID 128 
- int /*<<< orphan*/  TIMESTAMP_NOT_FINITE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  USE_XSD_DATES ; 
- int /*<<< orphan*/  VARDATA_ANY (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VARSIZE_ANY_EXHDR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  XMLBINARY_BASE64 ; 
- int XMLOID ; 
- int /*<<< orphan*/  appendStringInfoString (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  deconstruct_array (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int,char,int**,int**,int*) ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errdetail (char*) ; 
- int /*<<< orphan*/  errmsg (char*) ; 
- char* escape_xml (char*) ; 
- int getBaseType (int) ; 
- int /*<<< orphan*/  getTypeOutputInfo (int,int*,int*) ; 
- int /*<<< orphan*/  get_typlenbyvalalign (int,int /*<<< orphan*/ *,int*,char*) ; 
- int /*<<< orphan*/  initStringInfo (TYPE_1__*) ; 
- int /*<<< orphan*/  j2date (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pfree (int*) ; 
- int /*<<< orphan*/  pg_xml_done (TYPE_2__*,int) ; 
- TYPE_2__* pg_xml_init (int /*<<< orphan*/ ) ; 
- char* pstrdup (char const*) ; 
- int /*<<< orphan*/  timestamp2tm (int /*<<< orphan*/ ,int*,struct pg_tm*,int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ *) ; 
- scalar_t__ type_is_array_domain (int) ; 
- scalar_t__ xmlBufferContent (int /*<<< orphan*/ * volatile) ; 
- int /*<<< orphan*/ * xmlBufferCreate () ; 
- int /*<<< orphan*/  xmlBufferFree (int /*<<< orphan*/ * volatile) ; 
- int /*<<< orphan*/  xmlFreeTextWriter (int /*<<< orphan*/ * volatile) ; 
- int /*<<< orphan*/ * xmlNewTextWriterMemory (int /*<<< orphan*/ * volatile,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xmlTextWriterWriteBase64 (int /*<<< orphan*/ * volatile,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xmlTextWriterWriteBinHex (int /*<<< orphan*/ * volatile,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xml_ereport (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  xmlbinary ; 
+
+ int ARR_ELEMTYPE (int *) ;
+
+
+
+ int DATE_NOT_FINITE (scalar_t__) ;
+ int * DatumGetArrayTypeP (int) ;
+ int DatumGetBool (int) ;
+ int * DatumGetByteaPP (int) ;
+ scalar_t__ DatumGetDateADT (int) ;
+ int DatumGetTimestamp (int) ;
+ int ERRCODE_DATETIME_VALUE_OUT_OF_RANGE ;
+ int ERRCODE_OUT_OF_MEMORY ;
+ int ERROR ;
+ int EncodeDateOnly (struct pg_tm*,int ,char*) ;
+ int EncodeDateTime (struct pg_tm*,int ,int,int,char const*,int ,char*) ;
+ int MAXDATELEN ;
+ char* OidOutputFunctionCall (int,int) ;
+ int PG_CATCH () ;
+ int PG_END_TRY () ;
+ int PG_RE_THROW () ;
+ int PG_TRY () ;
+ int PG_XML_STRICTNESS_ALL ;
+ scalar_t__ POSTGRES_EPOCH_JDATE ;
+
+
+ int TIMESTAMP_NOT_FINITE (int ) ;
+ int USE_XSD_DATES ;
+ int VARDATA_ANY (int *) ;
+ int VARSIZE_ANY_EXHDR (int *) ;
+ int XMLBINARY_BASE64 ;
+ int XMLOID ;
+ int appendStringInfoString (TYPE_1__*,char*) ;
+ int deconstruct_array (int *,int,int ,int,char,int**,int**,int*) ;
+ int ereport (int ,int ) ;
+ int errcode (int ) ;
+ int errdetail (char*) ;
+ int errmsg (char*) ;
+ char* escape_xml (char*) ;
+ int getBaseType (int) ;
+ int getTypeOutputInfo (int,int*,int*) ;
+ int get_typlenbyvalalign (int,int *,int*,char*) ;
+ int initStringInfo (TYPE_1__*) ;
+ int j2date (scalar_t__,int *,int *,int *) ;
+ int pfree (int*) ;
+ int pg_xml_done (TYPE_2__*,int) ;
+ TYPE_2__* pg_xml_init (int ) ;
+ char* pstrdup (char const*) ;
+ int timestamp2tm (int ,int*,struct pg_tm*,int *,char const**,int *) ;
+ scalar_t__ type_is_array_domain (int) ;
+ scalar_t__ xmlBufferContent (int * volatile) ;
+ int * xmlBufferCreate () ;
+ int xmlBufferFree (int * volatile) ;
+ int xmlFreeTextWriter (int * volatile) ;
+ int * xmlNewTextWriterMemory (int * volatile,int ) ;
+ int xmlTextWriterWriteBase64 (int * volatile,int ,int ,int ) ;
+ int xmlTextWriterWriteBinHex (int * volatile,int ,int ,int ) ;
+ int xml_ereport (TYPE_2__*,int ,int ,char*) ;
+ int xmlbinary ;
 
 char *
 map_sql_value_to_xml_value(Datum value, Oid type, bool xml_escape_strings)
 {
-	if (type_is_array_domain(type))
-	{
-		ArrayType  *array;
-		Oid			elmtype;
-		int16		elmlen;
-		bool		elmbyval;
-		char		elmalign;
-		int			num_elems;
-		Datum	   *elem_values;
-		bool	   *elem_nulls;
-		StringInfoData buf;
-		int			i;
+ if (type_is_array_domain(type))
+ {
+  ArrayType *array;
+  Oid elmtype;
+  int16 elmlen;
+  bool elmbyval;
+  char elmalign;
+  int num_elems;
+  Datum *elem_values;
+  bool *elem_nulls;
+  StringInfoData buf;
+  int i;
 
-		array = DatumGetArrayTypeP(value);
-		elmtype = ARR_ELEMTYPE(array);
-		get_typlenbyvalalign(elmtype, &elmlen, &elmbyval, &elmalign);
+  array = DatumGetArrayTypeP(value);
+  elmtype = ARR_ELEMTYPE(array);
+  get_typlenbyvalalign(elmtype, &elmlen, &elmbyval, &elmalign);
 
-		deconstruct_array(array, elmtype,
-						  elmlen, elmbyval, elmalign,
-						  &elem_values, &elem_nulls,
-						  &num_elems);
+  deconstruct_array(array, elmtype,
+        elmlen, elmbyval, elmalign,
+        &elem_values, &elem_nulls,
+        &num_elems);
 
-		initStringInfo(&buf);
+  initStringInfo(&buf);
 
-		for (i = 0; i < num_elems; i++)
-		{
-			if (elem_nulls[i])
-				continue;
-			appendStringInfoString(&buf, "<element>");
-			appendStringInfoString(&buf,
-								   map_sql_value_to_xml_value(elem_values[i],
-															  elmtype, true));
-			appendStringInfoString(&buf, "</element>");
-		}
+  for (i = 0; i < num_elems; i++)
+  {
+   if (elem_nulls[i])
+    continue;
+   appendStringInfoString(&buf, "<element>");
+   appendStringInfoString(&buf,
+           map_sql_value_to_xml_value(elem_values[i],
+                 elmtype, 1));
+   appendStringInfoString(&buf, "</element>");
+  }
 
-		pfree(elem_values);
-		pfree(elem_nulls);
+  pfree(elem_values);
+  pfree(elem_nulls);
 
-		return buf.data;
-	}
-	else
-	{
-		Oid			typeOut;
-		bool		isvarlena;
-		char	   *str;
+  return buf.data;
+ }
+ else
+ {
+  Oid typeOut;
+  bool isvarlena;
+  char *str;
 
-		/*
-		 * Flatten domains; the special-case treatments below should apply to,
-		 * eg, domains over boolean not just boolean.
-		 */
-		type = getBaseType(type);
 
-		/*
-		 * Special XSD formatting for some data types
-		 */
-		switch (type)
-		{
-			case BOOLOID:
-				if (DatumGetBool(value))
-					return "true";
-				else
-					return "false";
 
-			case DATEOID:
-				{
-					DateADT		date;
-					struct pg_tm tm;
-					char		buf[MAXDATELEN + 1];
 
-					date = DatumGetDateADT(value);
-					/* XSD doesn't support infinite values */
-					if (DATE_NOT_FINITE(date))
-						ereport(ERROR,
-								(errcode(ERRCODE_DATETIME_VALUE_OUT_OF_RANGE),
-								 errmsg("date out of range"),
-								 errdetail("XML does not support infinite date values.")));
-					j2date(date + POSTGRES_EPOCH_JDATE,
-						   &(tm.tm_year), &(tm.tm_mon), &(tm.tm_mday));
-					EncodeDateOnly(&tm, USE_XSD_DATES, buf);
 
-					return pstrdup(buf);
-				}
+  type = getBaseType(type);
 
-			case TIMESTAMPOID:
-				{
-					Timestamp	timestamp;
-					struct pg_tm tm;
-					fsec_t		fsec;
-					char		buf[MAXDATELEN + 1];
 
-					timestamp = DatumGetTimestamp(value);
 
-					/* XSD doesn't support infinite values */
-					if (TIMESTAMP_NOT_FINITE(timestamp))
-						ereport(ERROR,
-								(errcode(ERRCODE_DATETIME_VALUE_OUT_OF_RANGE),
-								 errmsg("timestamp out of range"),
-								 errdetail("XML does not support infinite timestamp values.")));
-					else if (timestamp2tm(timestamp, NULL, &tm, &fsec, NULL, NULL) == 0)
-						EncodeDateTime(&tm, fsec, false, 0, NULL, USE_XSD_DATES, buf);
-					else
-						ereport(ERROR,
-								(errcode(ERRCODE_DATETIME_VALUE_OUT_OF_RANGE),
-								 errmsg("timestamp out of range")));
 
-					return pstrdup(buf);
-				}
+  switch (type)
+  {
+   case 132:
+    if (DatumGetBool(value))
+     return "true";
+    else
+     return "false";
 
-			case TIMESTAMPTZOID:
-				{
-					TimestampTz timestamp;
-					struct pg_tm tm;
-					int			tz;
-					fsec_t		fsec;
-					const char *tzn = NULL;
-					char		buf[MAXDATELEN + 1];
+   case 130:
+    {
+     DateADT date;
+     struct pg_tm tm;
+     char buf[MAXDATELEN + 1];
 
-					timestamp = DatumGetTimestamp(value);
+     date = DatumGetDateADT(value);
 
-					/* XSD doesn't support infinite values */
-					if (TIMESTAMP_NOT_FINITE(timestamp))
-						ereport(ERROR,
-								(errcode(ERRCODE_DATETIME_VALUE_OUT_OF_RANGE),
-								 errmsg("timestamp out of range"),
-								 errdetail("XML does not support infinite timestamp values.")));
-					else if (timestamp2tm(timestamp, &tz, &tm, &fsec, &tzn, NULL) == 0)
-						EncodeDateTime(&tm, fsec, true, tz, tzn, USE_XSD_DATES, buf);
-					else
-						ereport(ERROR,
-								(errcode(ERRCODE_DATETIME_VALUE_OUT_OF_RANGE),
-								 errmsg("timestamp out of range")));
+     if (DATE_NOT_FINITE(date))
+      ereport(ERROR,
+        (errcode(ERRCODE_DATETIME_VALUE_OUT_OF_RANGE),
+         errmsg("date out of range"),
+         errdetail("XML does not support infinite date values.")));
+     j2date(date + POSTGRES_EPOCH_JDATE,
+         &(tm.tm_year), &(tm.tm_mon), &(tm.tm_mday));
+     EncodeDateOnly(&tm, USE_XSD_DATES, buf);
 
-					return pstrdup(buf);
-				}
+     return pstrdup(buf);
+    }
 
-#ifdef USE_LIBXML
-			case BYTEAOID:
-				{
-					bytea	   *bstr = DatumGetByteaPP(value);
-					PgXmlErrorContext *xmlerrcxt;
-					volatile xmlBufferPtr buf = NULL;
-					volatile xmlTextWriterPtr writer = NULL;
-					char	   *result;
+   case 129:
+    {
+     Timestamp timestamp;
+     struct pg_tm tm;
+     fsec_t fsec;
+     char buf[MAXDATELEN + 1];
 
-					xmlerrcxt = pg_xml_init(PG_XML_STRICTNESS_ALL);
+     timestamp = DatumGetTimestamp(value);
 
-					PG_TRY();
-					{
-						buf = xmlBufferCreate();
-						if (buf == NULL || xmlerrcxt->err_occurred)
-							xml_ereport(xmlerrcxt, ERROR, ERRCODE_OUT_OF_MEMORY,
-										"could not allocate xmlBuffer");
-						writer = xmlNewTextWriterMemory(buf, 0);
-						if (writer == NULL || xmlerrcxt->err_occurred)
-							xml_ereport(xmlerrcxt, ERROR, ERRCODE_OUT_OF_MEMORY,
-										"could not allocate xmlTextWriter");
 
-						if (xmlbinary == XMLBINARY_BASE64)
-							xmlTextWriterWriteBase64(writer, VARDATA_ANY(bstr),
-													 0, VARSIZE_ANY_EXHDR(bstr));
-						else
-							xmlTextWriterWriteBinHex(writer, VARDATA_ANY(bstr),
-													 0, VARSIZE_ANY_EXHDR(bstr));
+     if (TIMESTAMP_NOT_FINITE(timestamp))
+      ereport(ERROR,
+        (errcode(ERRCODE_DATETIME_VALUE_OUT_OF_RANGE),
+         errmsg("timestamp out of range"),
+         errdetail("XML does not support infinite timestamp values.")));
+     else if (timestamp2tm(timestamp, ((void*)0), &tm, &fsec, ((void*)0), ((void*)0)) == 0)
+      EncodeDateTime(&tm, fsec, 0, 0, ((void*)0), USE_XSD_DATES, buf);
+     else
+      ereport(ERROR,
+        (errcode(ERRCODE_DATETIME_VALUE_OUT_OF_RANGE),
+         errmsg("timestamp out of range")));
 
-						/* we MUST do this now to flush data out to the buffer */
-						xmlFreeTextWriter(writer);
-						writer = NULL;
+     return pstrdup(buf);
+    }
 
-						result = pstrdup((const char *) xmlBufferContent(buf));
-					}
-					PG_CATCH();
-					{
-						if (writer)
-							xmlFreeTextWriter(writer);
-						if (buf)
-							xmlBufferFree(buf);
+   case 128:
+    {
+     TimestampTz timestamp;
+     struct pg_tm tm;
+     int tz;
+     fsec_t fsec;
+     const char *tzn = ((void*)0);
+     char buf[MAXDATELEN + 1];
 
-						pg_xml_done(xmlerrcxt, true);
+     timestamp = DatumGetTimestamp(value);
 
-						PG_RE_THROW();
-					}
-					PG_END_TRY();
 
-					xmlBufferFree(buf);
+     if (TIMESTAMP_NOT_FINITE(timestamp))
+      ereport(ERROR,
+        (errcode(ERRCODE_DATETIME_VALUE_OUT_OF_RANGE),
+         errmsg("timestamp out of range"),
+         errdetail("XML does not support infinite timestamp values.")));
+     else if (timestamp2tm(timestamp, &tz, &tm, &fsec, &tzn, ((void*)0)) == 0)
+      EncodeDateTime(&tm, fsec, 1, tz, tzn, USE_XSD_DATES, buf);
+     else
+      ereport(ERROR,
+        (errcode(ERRCODE_DATETIME_VALUE_OUT_OF_RANGE),
+         errmsg("timestamp out of range")));
 
-					pg_xml_done(xmlerrcxt, false);
+     return pstrdup(buf);
+    }
+  }
 
-					return result;
-				}
-#endif							/* USE_LIBXML */
 
-		}
 
-		/*
-		 * otherwise, just use the type's native text representation
-		 */
-		getTypeOutputInfo(type, &typeOut, &isvarlena);
-		str = OidOutputFunctionCall(typeOut, value);
 
-		/* ... exactly as-is for XML, and when escaping is not wanted */
-		if (type == XMLOID || !xml_escape_strings)
-			return str;
+  getTypeOutputInfo(type, &typeOut, &isvarlena);
+  str = OidOutputFunctionCall(typeOut, value);
 
-		/* otherwise, translate special characters as needed */
-		return escape_xml(str);
-	}
+
+  if (type == XMLOID || !xml_escape_strings)
+   return str;
+
+
+  return escape_xml(str);
+ }
 }

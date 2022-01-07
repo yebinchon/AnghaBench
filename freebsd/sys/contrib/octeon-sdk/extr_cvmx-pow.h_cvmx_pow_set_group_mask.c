@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint64_t ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef void* uint64_t ;
 struct TYPE_5__ {void* grp_msk; } ;
-struct TYPE_7__ {int /*<<< orphan*/  u64; TYPE_1__ s; } ;
-typedef  TYPE_3__ cvmx_sso_ppx_grp_msk_t ;
+struct TYPE_7__ {int u64; TYPE_1__ s; } ;
+typedef TYPE_3__ cvmx_sso_ppx_grp_msk_t ;
 struct TYPE_6__ {void* grp_msk; } ;
-struct TYPE_8__ {int /*<<< orphan*/  u64; TYPE_2__ s; } ;
-typedef  TYPE_4__ cvmx_pow_pp_grp_mskx_t ;
+struct TYPE_8__ {int u64; TYPE_2__ s; } ;
+typedef TYPE_4__ cvmx_pow_pp_grp_mskx_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CVMX_POW_PP_GRP_MSKX (void*) ; 
- int /*<<< orphan*/  CVMX_SSO_PPX_GRP_MSK (void*) ; 
- int /*<<< orphan*/  OCTEON_FEATURE_CN68XX_WQE ; 
- int /*<<< orphan*/  cvmx_read_csr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cvmx_write_csr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ octeon_has_feature (int /*<<< orphan*/ ) ; 
+
+ int CVMX_POW_PP_GRP_MSKX (void*) ;
+ int CVMX_SSO_PPX_GRP_MSK (void*) ;
+ int OCTEON_FEATURE_CN68XX_WQE ;
+ int cvmx_read_csr (int ) ;
+ int cvmx_write_csr (int ,int ) ;
+ scalar_t__ octeon_has_feature (int ) ;
 
 __attribute__((used)) static inline void cvmx_pow_set_group_mask(uint64_t core_num, uint64_t mask)
 {

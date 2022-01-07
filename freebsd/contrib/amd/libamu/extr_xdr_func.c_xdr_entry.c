@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  ne_nextentry; int /*<<< orphan*/  ne_cookie; int /*<<< orphan*/  ne_name; int /*<<< orphan*/  ne_fileid; } ;
-typedef  TYPE_1__ nfsentry ;
-typedef  int /*<<< orphan*/  bool_t ;
-typedef  int /*<<< orphan*/  XDRPROC_T_TYPE ;
-typedef  int /*<<< orphan*/  XDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_XDRTRACE ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  XLOG_DEBUG ; 
- scalar_t__ amuDebug (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  plog (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  xdr_filename (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xdr_nfscookie (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xdr_pointer (int /*<<< orphan*/ *,char**,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xdr_u_int (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int ne_nextentry; int ne_cookie; int ne_name; int ne_fileid; } ;
+typedef TYPE_1__ nfsentry ;
+typedef int bool_t ;
+typedef int XDRPROC_T_TYPE ;
+typedef int XDR ;
+
+
+ int D_XDRTRACE ;
+ int FALSE ;
+ int TRUE ;
+ int XLOG_DEBUG ;
+ scalar_t__ amuDebug (int ) ;
+ int plog (int ,char*) ;
+ int xdr_filename (int *,int *) ;
+ int xdr_nfscookie (int *,int ) ;
+ int xdr_pointer (int *,char**,int,int ) ;
+ int xdr_u_int (int *,int *) ;
 
 bool_t
 xdr_entry(XDR *xdrs, nfsentry *objp)

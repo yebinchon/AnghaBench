@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int freeze_flag; int current_dic_index_max; int next_code; int /*<<< orphan*/  context; scalar_t__ bump_code; int /*<<< orphan*/  dic_code_bit; int /*<<< orphan*/ * dict; } ;
-typedef  int /*<<< orphan*/  MLZDict ;
-typedef  TYPE_1__ MLZ ;
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
-#define  FLUSH_CODE 130 
-#define  FREEZE_CODE 129 
-#define  MAX_CODE 128 
- int /*<<< orphan*/  TABLE_SIZE ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- int decode_string (TYPE_1__*,unsigned char*,int,int*,int) ; 
- int /*<<< orphan*/  ff_mlz_flush_dict (TYPE_1__*) ; 
- int input_code (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_new_entry_dict (int /*<<< orphan*/ *,int,int,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int freeze_flag; int current_dic_index_max; int next_code; int context; scalar_t__ bump_code; int dic_code_bit; int * dict; } ;
+typedef int MLZDict ;
+typedef TYPE_1__ MLZ ;
+typedef int GetBitContext ;
+
+
+ int AV_LOG_ERROR ;
+
+
+
+ int TABLE_SIZE ;
+ int av_log (int ,int ,char*,...) ;
+ int decode_string (TYPE_1__*,unsigned char*,int,int*,int) ;
+ int ff_mlz_flush_dict (TYPE_1__*) ;
+ int input_code (int *,int ) ;
+ int set_new_entry_dict (int *,int,int,int) ;
 
 int ff_mlz_decompression(MLZ* mlz, GetBitContext* gb, int size, unsigned char *buff) {
     MLZDict *dict = mlz->dict;
@@ -34,20 +34,20 @@ int ff_mlz_decompression(MLZ* mlz, GetBitContext* gb, int size, unsigned char *b
     int string_code, last_string_code, char_code;
 
     string_code = 0;
-    char_code   = -1;
+    char_code = -1;
     last_string_code = -1;
     output_chars = 0;
 
     while (output_chars < size) {
         string_code = input_code(gb, mlz->dic_code_bit);
         switch (string_code) {
-            case FLUSH_CODE:
-            case MAX_CODE:
+            case 130:
+            case 128:
                 ff_mlz_flush_dict(mlz);
                 char_code = -1;
                 last_string_code = -1;
                 break;
-            case FREEZE_CODE:
+            case 129:
                 mlz->freeze_flag = 1;
                 break;
             default:

@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char* qname; int qid; char* ifname; scalar_t__ ifbandwidth; } ;
 struct pf_altq_node {struct pf_altq_node* next; struct pf_altq_node* children; TYPE_1__ altq; } ;
 
-/* Variables and functions */
- int PF_OPT_DEBUG ; 
- int PF_OPT_VERBOSE ; 
- int /*<<< orphan*/  pfctl_print_altq_nodestat (int,struct pf_altq_node const*) ; 
- int /*<<< orphan*/  print_altq (TYPE_1__*,unsigned int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- char* rate2str (double) ; 
+
+ int PF_OPT_DEBUG ;
+ int PF_OPT_VERBOSE ;
+ int pfctl_print_altq_nodestat (int,struct pf_altq_node const*) ;
+ int print_altq (TYPE_1__*,unsigned int,int *,int *) ;
+ int printf (char*,...) ;
+ char* rate2str (double) ;
 
 void
 pfctl_print_altq_node(int dev, const struct pf_altq_node *node,
     unsigned int level, int opts)
 {
-	const struct pf_altq_node	*child;
+ const struct pf_altq_node *child;
 
-	if (node == NULL)
-		return;
+ if (node == ((void*)0))
+  return;
 
-	print_altq(&node->altq, level, NULL, NULL);
+ print_altq(&node->altq, level, ((void*)0), ((void*)0));
 
-	if (node->children != NULL) {
-		printf("{");
-		for (child = node->children; child != NULL;
-		    child = child->next) {
-			printf("%s", child->altq.qname);
-			if (child->next != NULL)
-				printf(", ");
-		}
-		printf("}");
-	}
-	printf("\n");
+ if (node->children != ((void*)0)) {
+  printf("{");
+  for (child = node->children; child != ((void*)0);
+      child = child->next) {
+   printf("%s", child->altq.qname);
+   if (child->next != ((void*)0))
+    printf(", ");
+  }
+  printf("}");
+ }
+ printf("\n");
 
-	if (opts & PF_OPT_VERBOSE)
-		pfctl_print_altq_nodestat(dev, node);
+ if (opts & PF_OPT_VERBOSE)
+  pfctl_print_altq_nodestat(dev, node);
 
-	if (opts & PF_OPT_DEBUG)
-		printf("  [ qid=%u ifname=%s ifbandwidth=%s ]\n",
-		    node->altq.qid, node->altq.ifname,
-		    rate2str((double)(node->altq.ifbandwidth)));
+ if (opts & PF_OPT_DEBUG)
+  printf("  [ qid=%u ifname=%s ifbandwidth=%s ]\n",
+      node->altq.qid, node->altq.ifname,
+      rate2str((double)(node->altq.ifbandwidth)));
 
-	for (child = node->children; child != NULL;
-	    child = child->next)
-		pfctl_print_altq_node(dev, child, level + 1, opts);
+ for (child = node->children; child != ((void*)0);
+     child = child->next)
+  pfctl_print_altq_node(dev, child, level + 1, opts);
 }

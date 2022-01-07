@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* getenv (char*) ; 
- int perf_config_bool (char*,char const*) ; 
- scalar_t__ spawned_pager ; 
+ char* getenv (char*) ;
+ int perf_config_bool (char*,char const*) ;
+ scalar_t__ spawned_pager ;
 
 int pager_in_use(void)
 {
-	const char *env;
+ const char *env;
 
-	if (spawned_pager)
-		return 1;
+ if (spawned_pager)
+  return 1;
 
-	env = getenv("PERF_PAGER_IN_USE");
-	return env ? perf_config_bool("PERF_PAGER_IN_USE", env) : 0;
+ env = getenv("PERF_PAGER_IN_USE");
+ return env ? perf_config_bool("PERF_PAGER_IN_USE", env) : 0;
 }

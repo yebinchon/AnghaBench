@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct mrb_context {TYPE_1__* cibase; TYPE_1__* ci; } ;
-typedef  int /*<<< orphan*/  mrb_state ;
+typedef int mrb_state ;
 struct TYPE_2__ {scalar_t__ acc; } ;
-typedef  TYPE_1__ mrb_callinfo ;
+typedef TYPE_1__ mrb_callinfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_FIBER_ERROR ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
+
+ int E_FIBER_ERROR ;
+ int mrb_raise (int *,int ,char*) ;
 
 __attribute__((used)) static void
 fiber_check_cfunc(mrb_state *mrb, struct mrb_context *c)

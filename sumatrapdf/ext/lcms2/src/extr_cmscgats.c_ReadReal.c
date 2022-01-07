@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int cmsInt32Number ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int cmsInt32Number ;
 struct TYPE_4__ {double dnum; char ch; } ;
-typedef  TYPE_1__ cmsIT8 ;
-typedef  double cmsFloat64Number ;
+typedef TYPE_1__ cmsIT8 ;
+typedef double cmsFloat64Number ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NextCh (TYPE_1__*) ; 
- scalar_t__ isdigit (char) ; 
- char toupper (char) ; 
- double xpow10 (int) ; 
+
+ int NextCh (TYPE_1__*) ;
+ scalar_t__ isdigit (char) ;
+ char toupper (char) ;
+ double xpow10 (int) ;
 
 __attribute__((used)) static
 void ReadReal(cmsIT8* it8, cmsInt32Number inum)
@@ -33,12 +33,12 @@ void ReadReal(cmsIT8* it8, cmsInt32Number inum)
         NextCh(it8);
     }
 
-    if (it8->ch == '.') {        // Decimal point
+    if (it8->ch == '.') {
 
-        cmsFloat64Number frac = 0.0;      // fraction
-        int prec = 0;                     // precision
+        cmsFloat64Number frac = 0.0;
+        int prec = 0;
 
-        NextCh(it8);               // Eats dec. point
+        NextCh(it8);
 
         while (isdigit(it8->ch)) {
 
@@ -50,7 +50,7 @@ void ReadReal(cmsIT8* it8, cmsInt32Number inum)
         it8->dnum = it8->dnum + (frac / xpow10(prec));
     }
 
-    // Exponent, example 34.00E+20
+
     if (toupper(it8->ch) == 'E') {
 
         cmsInt32Number e;

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int64_t ;
 
-/* Variables and functions */
- int __MAX (int,int) ; 
- unsigned int sscanf (char const*,char*,unsigned int*,unsigned int*,unsigned int*,unsigned int*) ; 
- int strtoll (char const*,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int int64_t ;
+
+
+ int __MAX (int,int) ;
+ unsigned int sscanf (char const*,char*,unsigned int*,unsigned int*,unsigned int*,unsigned int*) ;
+ int strtoll (char const*,int *,int) ;
 
 __attribute__((used)) static int64_t ParseFrameNumber( const char *psz_line, float fps )
 {
     unsigned h, m, s, f, n;
 
-    /* hour:min:sec.frame (frame is optional) */
+
     n = sscanf( psz_line, "%u:%u:%u.%u", &h, &m, &s, &f );
     if( n >= 3 )
     {
@@ -31,7 +31,7 @@ __attribute__((used)) static int64_t ParseFrameNumber( const char *psz_line, flo
         return (int64_t)( i_seconds * (double)fps ) + __MAX(1, f) - 1;
     }
 
-    /* only a frame number */
-    int64_t i_frame = strtoll( psz_line, NULL, 10 );
+
+    int64_t i_frame = strtoll( psz_line, ((void*)0), 10 );
     return __MAX(1, i_frame) - 1;
 }

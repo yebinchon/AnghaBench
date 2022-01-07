@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ disable_ws; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  I3_IPC_MESSAGE_TYPE_SUBSCRIBE ; 
- TYPE_1__ config ; 
- int /*<<< orphan*/  i3_send_msg (int /*<<< orphan*/ ,char*) ; 
+
+ int I3_IPC_MESSAGE_TYPE_SUBSCRIBE ;
+ TYPE_1__ config ;
+ int i3_send_msg (int ,char*) ;
 
 void subscribe_events(void) {
     if (config.disable_ws) {

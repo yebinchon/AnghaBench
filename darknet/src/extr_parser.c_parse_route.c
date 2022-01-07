@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int index; int batch; } ;
-typedef  TYPE_1__ size_params ;
+typedef TYPE_1__ size_params ;
 struct TYPE_10__ {scalar_t__ out_w; scalar_t__ out_h; scalar_t__ out_c; } ;
-typedef  TYPE_2__ route_layer ;
+typedef TYPE_2__ route_layer ;
 struct TYPE_11__ {TYPE_4__* layers; } ;
-typedef  TYPE_3__ network ;
-typedef  int /*<<< orphan*/  list ;
+typedef TYPE_3__ network ;
+typedef int list ;
 struct TYPE_12__ {int outputs; scalar_t__ out_w; scalar_t__ out_h; scalar_t__ out_c; } ;
-typedef  TYPE_4__ convolutional_layer ;
+typedef TYPE_4__ convolutional_layer ;
 
-/* Variables and functions */
- int atoi (char*) ; 
- int* calloc (int,int) ; 
- int /*<<< orphan*/  error (char*) ; 
- TYPE_2__ make_route_layer (int,int,int*,int*) ; 
- char* option_find (int /*<<< orphan*/ *,char*) ; 
- char* strchr (char*,char) ; 
- int strlen (char*) ; 
+
+ int atoi (char*) ;
+ int* calloc (int,int) ;
+ int error (char*) ;
+ TYPE_2__ make_route_layer (int,int,int*,int*) ;
+ char* option_find (int *,char*) ;
+ char* strchr (char*,char) ;
+ int strlen (char*) ;
 
 route_layer parse_route(list *options, size_params params, network *net)
 {

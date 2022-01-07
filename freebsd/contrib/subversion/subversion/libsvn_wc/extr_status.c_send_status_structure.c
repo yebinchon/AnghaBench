@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  (* svn_wc_status_func4_t ) (void*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;
-struct TYPE_3__ {int /*<<< orphan*/  s; } ;
-typedef  TYPE_1__ svn_wc__internal_status_t ;
-typedef  int /*<<< orphan*/  svn_lock_t ;
-typedef  int /*<<< orphan*/  svn_io_dirent2_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct walk_status_baton {int /*<<< orphan*/  check_working_copy; int /*<<< orphan*/  ignore_text_mods; int /*<<< orphan*/  db; scalar_t__ repos_locks; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int (* svn_wc_status_func4_t ) (void*,char const*,int *,int *) ;
+struct TYPE_3__ {int s; } ;
+typedef TYPE_1__ svn_wc__internal_status_t ;
+typedef int svn_lock_t ;
+typedef int svn_io_dirent2_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+struct walk_status_baton {int check_working_copy; int ignore_text_mods; int db; scalar_t__ repos_locks; } ;
 struct svn_wc__db_info_t {int dummy; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  assemble_status (TYPE_1__**,int /*<<< orphan*/ ,char const*,char const*,char const*,char const*,struct svn_wc__db_info_t const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_repos_root_url_relpath (char const**,char const**,char const**,struct svn_wc__db_info_t const*,char const*,char const*,char const*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (void*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_fspath__join (char*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_hash_gets (scalar_t__,int /*<<< orphan*/ ) ; 
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int assemble_status (TYPE_1__**,int ,char const*,char const*,char const*,char const*,struct svn_wc__db_info_t const*,int const*,int ,int ,int ,int const*,int *,int *) ;
+ int get_repos_root_url_relpath (char const**,char const**,char const**,struct svn_wc__db_info_t const*,char const*,char const*,char const*,int ,char const*,int *,int *) ;
+ int stub1 (void*,char const*,int *,int *) ;
+ int * svn_error_trace (int ) ;
+ int svn_fspath__join (char*,char const*,int *) ;
+ int * svn_hash_gets (scalar_t__,int ) ;
 
 __attribute__((used)) static svn_error_t *
 send_status_structure(const struct walk_status_baton *wb,
@@ -46,9 +46,9 @@ send_status_structure(const struct walk_status_baton *wb,
                       apr_pool_t *scratch_pool)
 {
   svn_wc__internal_status_t *statstruct;
-  const svn_lock_t *repos_lock = NULL;
+  const svn_lock_t *repos_lock = ((void*)0);
 
-  /* Check for a repository lock. */
+
   if (wb->repos_locks)
     {
       const char *repos_relpath, *repos_root_url, *repos_uuid;
@@ -62,8 +62,8 @@ send_status_structure(const struct walk_status_baton *wb,
                                          scratch_pool, scratch_pool));
       if (repos_relpath)
         {
-          /* repos_lock still uses the deprecated filesystem absolute path
-             format */
+
+
           repos_lock = svn_hash_gets(wb->repos_locks,
                                      svn_fspath__join("/", repos_relpath,
                                                       scratch_pool));

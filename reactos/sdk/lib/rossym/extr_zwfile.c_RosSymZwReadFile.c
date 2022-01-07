@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG ;
 struct TYPE_3__ {scalar_t__ Information; } ;
-typedef  scalar_t__ PVOID ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  TYPE_1__ IO_STATUS_BLOCK ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int BOOLEAN ;
+typedef scalar_t__ PVOID ;
+typedef int NTSTATUS ;
+typedef TYPE_1__ IO_STATUS_BLOCK ;
+typedef int HANDLE ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- scalar_t__ NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZwReadFile (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,scalar_t__,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ NT_SUCCESS (int ) ;
+ int ZwReadFile (int ,int *,int *,int *,TYPE_1__*,scalar_t__,scalar_t__,int *,int *) ;
 
 BOOLEAN
 RosSymZwReadFile(PVOID FileContext, PVOID Buffer, ULONG Size)
@@ -30,11 +30,11 @@ RosSymZwReadFile(PVOID FileContext, PVOID Buffer, ULONG Size)
   IO_STATUS_BLOCK IoStatusBlock;
 
   Status = ZwReadFile(*((HANDLE *) FileContext),
-                      NULL, NULL, NULL,
+                      ((void*)0), ((void*)0), ((void*)0),
                       &IoStatusBlock,
                       Buffer,
                       Size,
-                      NULL, NULL);
+                      ((void*)0), ((void*)0));
 
   return NT_SUCCESS(Status) && IoStatusBlock.Information == Size;
 }

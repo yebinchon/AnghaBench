@@ -1,0 +1,138 @@
+; ModuleID = '/home/carl/AnghaBench/linux/sound/soc/codecs/extr_cs4349.c_cs4349_i2c_probe.c'
+source_filename = "/home/carl/AnghaBench/linux/sound/soc/codecs/extr_cs4349.c_cs4349_i2c_probe.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.i2c_client = type { i32 }
+%struct.i2c_device_id = type { i32 }
+%struct.cs4349_private = type { i32, i32 }
+
+@GFP_KERNEL = common dso_local global i32 0, align 4
+@ENOMEM = common dso_local global i32 0, align 4
+@cs4349_regmap = common dso_local global i32 0, align 4
+@.str = private unnamed_addr constant [26 x i8] c"regmap_init() failed: %d\0A\00", align 1
+@.str.1 = private unnamed_addr constant [6 x i8] c"reset\00", align 1
+@GPIOD_OUT_LOW = common dso_local global i32 0, align 4
+@soc_component_dev_cs4349 = common dso_local global i32 0, align 4
+@cs4349_dai = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.i2c_client*, %struct.i2c_device_id*)* @cs4349_i2c_probe to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @cs4349_i2c_probe(%struct.i2c_client* %0, %struct.i2c_device_id* %1) #0 {
+  %3 = alloca i32, align 4
+  %4 = alloca %struct.i2c_client*, align 8
+  %5 = alloca %struct.i2c_device_id*, align 8
+  %6 = alloca %struct.cs4349_private*, align 8
+  %7 = alloca i32, align 4
+  store %struct.i2c_client* %0, %struct.i2c_client** %4, align 8
+  store %struct.i2c_device_id* %1, %struct.i2c_device_id** %5, align 8
+  %8 = load %struct.i2c_client*, %struct.i2c_client** %4, align 8
+  %9 = getelementptr inbounds %struct.i2c_client, %struct.i2c_client* %8, i32 0, i32 0
+  %10 = load i32, i32* @GFP_KERNEL, align 4
+  %11 = call %struct.cs4349_private* @devm_kzalloc(i32* %9, i32 8, i32 %10)
+  store %struct.cs4349_private* %11, %struct.cs4349_private** %6, align 8
+  %12 = load %struct.cs4349_private*, %struct.cs4349_private** %6, align 8
+  %13 = icmp ne %struct.cs4349_private* %12, null
+  br i1 %13, label %17, label %14
+
+14:                                               ; preds = %2
+  %15 = load i32, i32* @ENOMEM, align 4
+  %16 = sub nsw i32 0, %15
+  store i32 %16, i32* %3, align 4
+  br label %65
+
+17:                                               ; preds = %2
+  %18 = load %struct.i2c_client*, %struct.i2c_client** %4, align 8
+  %19 = call i32 @devm_regmap_init_i2c(%struct.i2c_client* %18, i32* @cs4349_regmap)
+  %20 = load %struct.cs4349_private*, %struct.cs4349_private** %6, align 8
+  %21 = getelementptr inbounds %struct.cs4349_private, %struct.cs4349_private* %20, i32 0, i32 1
+  store i32 %19, i32* %21, align 4
+  %22 = load %struct.cs4349_private*, %struct.cs4349_private** %6, align 8
+  %23 = getelementptr inbounds %struct.cs4349_private, %struct.cs4349_private* %22, i32 0, i32 1
+  %24 = load i32, i32* %23, align 4
+  %25 = call i64 @IS_ERR(i32 %24)
+  %26 = icmp ne i64 %25, 0
+  br i1 %26, label %27, label %37
+
+27:                                               ; preds = %17
+  %28 = load %struct.cs4349_private*, %struct.cs4349_private** %6, align 8
+  %29 = getelementptr inbounds %struct.cs4349_private, %struct.cs4349_private* %28, i32 0, i32 1
+  %30 = load i32, i32* %29, align 4
+  %31 = call i32 @PTR_ERR(i32 %30)
+  store i32 %31, i32* %7, align 4
+  %32 = load %struct.i2c_client*, %struct.i2c_client** %4, align 8
+  %33 = getelementptr inbounds %struct.i2c_client, %struct.i2c_client* %32, i32 0, i32 0
+  %34 = load i32, i32* %7, align 4
+  %35 = call i32 @dev_err(i32* %33, i8* getelementptr inbounds ([26 x i8], [26 x i8]* @.str, i64 0, i64 0), i32 %34)
+  %36 = load i32, i32* %7, align 4
+  store i32 %36, i32* %3, align 4
+  br label %65
+
+37:                                               ; preds = %17
+  %38 = load %struct.i2c_client*, %struct.i2c_client** %4, align 8
+  %39 = getelementptr inbounds %struct.i2c_client, %struct.i2c_client* %38, i32 0, i32 0
+  %40 = load i32, i32* @GPIOD_OUT_LOW, align 4
+  %41 = call i32 @devm_gpiod_get_optional(i32* %39, i8* getelementptr inbounds ([6 x i8], [6 x i8]* @.str.1, i64 0, i64 0), i32 %40)
+  %42 = load %struct.cs4349_private*, %struct.cs4349_private** %6, align 8
+  %43 = getelementptr inbounds %struct.cs4349_private, %struct.cs4349_private* %42, i32 0, i32 0
+  store i32 %41, i32* %43, align 4
+  %44 = load %struct.cs4349_private*, %struct.cs4349_private** %6, align 8
+  %45 = getelementptr inbounds %struct.cs4349_private, %struct.cs4349_private* %44, i32 0, i32 0
+  %46 = load i32, i32* %45, align 4
+  %47 = call i64 @IS_ERR(i32 %46)
+  %48 = icmp ne i64 %47, 0
+  br i1 %48, label %49, label %54
+
+49:                                               ; preds = %37
+  %50 = load %struct.cs4349_private*, %struct.cs4349_private** %6, align 8
+  %51 = getelementptr inbounds %struct.cs4349_private, %struct.cs4349_private* %50, i32 0, i32 0
+  %52 = load i32, i32* %51, align 4
+  %53 = call i32 @PTR_ERR(i32 %52)
+  store i32 %53, i32* %3, align 4
+  br label %65
+
+54:                                               ; preds = %37
+  %55 = load %struct.cs4349_private*, %struct.cs4349_private** %6, align 8
+  %56 = getelementptr inbounds %struct.cs4349_private, %struct.cs4349_private* %55, i32 0, i32 0
+  %57 = load i32, i32* %56, align 4
+  %58 = call i32 @gpiod_set_value_cansleep(i32 %57, i32 1)
+  %59 = load %struct.i2c_client*, %struct.i2c_client** %4, align 8
+  %60 = load %struct.cs4349_private*, %struct.cs4349_private** %6, align 8
+  %61 = call i32 @i2c_set_clientdata(%struct.i2c_client* %59, %struct.cs4349_private* %60)
+  %62 = load %struct.i2c_client*, %struct.i2c_client** %4, align 8
+  %63 = getelementptr inbounds %struct.i2c_client, %struct.i2c_client* %62, i32 0, i32 0
+  %64 = call i32 @devm_snd_soc_register_component(i32* %63, i32* @soc_component_dev_cs4349, i32* @cs4349_dai, i32 1)
+  store i32 %64, i32* %3, align 4
+  br label %65
+
+65:                                               ; preds = %54, %49, %27, %14
+  %66 = load i32, i32* %3, align 4
+  ret i32 %66
+}
+
+declare dso_local %struct.cs4349_private* @devm_kzalloc(i32*, i32, i32) #1
+
+declare dso_local i32 @devm_regmap_init_i2c(%struct.i2c_client*, i32*) #1
+
+declare dso_local i64 @IS_ERR(i32) #1
+
+declare dso_local i32 @PTR_ERR(i32) #1
+
+declare dso_local i32 @dev_err(i32*, i8*, i32) #1
+
+declare dso_local i32 @devm_gpiod_get_optional(i32*, i8*, i32) #1
+
+declare dso_local i32 @gpiod_set_value_cansleep(i32, i32) #1
+
+declare dso_local i32 @i2c_set_clientdata(%struct.i2c_client*, %struct.cs4349_private*) #1
+
+declare dso_local i32 @devm_snd_soc_register_component(i32*, i32*, i32*, i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

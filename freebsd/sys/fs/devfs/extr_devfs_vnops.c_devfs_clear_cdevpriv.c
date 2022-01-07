@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct file {int dummy; } ;
 struct TYPE_2__ {struct file* td_fpop; } ;
 
-/* Variables and functions */
- TYPE_1__* curthread ; 
- int /*<<< orphan*/  devfs_fpdrop (struct file*) ; 
+
+ TYPE_1__* curthread ;
+ int devfs_fpdrop (struct file*) ;
 
 void
 devfs_clear_cdevpriv(void)
 {
-	struct file *fp;
+ struct file *fp;
 
-	fp = curthread->td_fpop;
-	if (fp == NULL)
-		return;
-	devfs_fpdrop(fp);
+ fp = curthread->td_fpop;
+ if (fp == ((void*)0))
+  return;
+ devfs_fpdrop(fp);
 }

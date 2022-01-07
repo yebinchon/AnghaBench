@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int sqlite_uint64 ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- scalar_t__ ISSPACE (char) ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- void* asciiToUtf16le (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int finalizeTime ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int fread (char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (void*) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,long,int /*<<< orphan*/ ) ; 
- int ftell (int /*<<< orphan*/ *) ; 
- char* malloc (int) ; 
- int prepTime ; 
- int /*<<< orphan*/  prepareAndRun (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int runTime ; 
- int sqlite3Hwtime () ; 
- int /*<<< orphan*/  sqlite3_close (int /*<<< orphan*/ *) ; 
- int sqlite3_complete (char*) ; 
- int sqlite3_libversion_number () ; 
- int sqlite3_open16 (void*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  unlink (char*) ; 
+
+
+
+typedef int sqlite_uint64 ;
+typedef int sqlite3 ;
+typedef int FILE ;
+
+
+ scalar_t__ ISSPACE (char) ;
+ int SEEK_END ;
+ int SEEK_SET ;
+ void* asciiToUtf16le (char*) ;
+ int exit (int) ;
+ int finalizeTime ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,char*) ;
+ int fread (char*,int,int,int *) ;
+ int free (void*) ;
+ int fseek (int *,long,int ) ;
+ int ftell (int *) ;
+ char* malloc (int) ;
+ int prepTime ;
+ int prepareAndRun (int *,char*) ;
+ int printf (char*,...) ;
+ int runTime ;
+ int sqlite3Hwtime () ;
+ int sqlite3_close (int *) ;
+ int sqlite3_complete (char*) ;
+ int sqlite3_libversion_number () ;
+ int sqlite3_open16 (void*,int **) ;
+ int stderr ;
+ int unlink (char*) ;
 
 int main(int argc, char **argv){
   void *utf16;

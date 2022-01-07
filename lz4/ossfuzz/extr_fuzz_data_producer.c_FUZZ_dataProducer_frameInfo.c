@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ blockSizeID; void* blockChecksumFlag; void* contentChecksumFlag; void* blockMode; } ;
-typedef  TYPE_1__ LZ4F_frameInfo_t ;
-typedef  int /*<<< orphan*/  FUZZ_dataProducer_t ;
+typedef TYPE_1__ LZ4F_frameInfo_t ;
+typedef int FUZZ_dataProducer_t ;
 
-/* Variables and functions */
- void* FUZZ_dataProducer_range32 (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- TYPE_1__ LZ4F_INIT_FRAMEINFO ; 
- int /*<<< orphan*/  LZ4F_blockChecksumEnabled ; 
- int /*<<< orphan*/  LZ4F_blockIndependent ; 
- scalar_t__ LZ4F_blockLinked ; 
- int /*<<< orphan*/  LZ4F_contentChecksumEnabled ; 
- scalar_t__ LZ4F_default ; 
- int /*<<< orphan*/  LZ4F_max4MB ; 
- scalar_t__ LZ4F_max64KB ; 
- scalar_t__ LZ4F_noBlockChecksum ; 
- scalar_t__ LZ4F_noContentChecksum ; 
+
+ void* FUZZ_dataProducer_range32 (int *,scalar_t__,int ) ;
+ TYPE_1__ LZ4F_INIT_FRAMEINFO ;
+ int LZ4F_blockChecksumEnabled ;
+ int LZ4F_blockIndependent ;
+ scalar_t__ LZ4F_blockLinked ;
+ int LZ4F_contentChecksumEnabled ;
+ scalar_t__ LZ4F_default ;
+ int LZ4F_max4MB ;
+ scalar_t__ LZ4F_max64KB ;
+ scalar_t__ LZ4F_noBlockChecksum ;
+ scalar_t__ LZ4F_noContentChecksum ;
 
 LZ4F_frameInfo_t FUZZ_dataProducer_frameInfo(FUZZ_dataProducer_t* producer)
 {

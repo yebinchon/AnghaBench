@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int active; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  init_ws_for_output (TYPE_1__*) ; 
- int /*<<< orphan*/  output_init_con (TYPE_1__*) ; 
- TYPE_1__* root_output ; 
+
+ int init_ws_for_output (TYPE_1__*) ;
+ int output_init_con (TYPE_1__*) ;
+ TYPE_1__* root_output ;
 
 __attribute__((used)) static void fallback_to_root_output(void) {
-    root_output->active = true;
+    root_output->active = 1;
     output_init_con(root_output);
     init_ws_for_output(root_output);
 }

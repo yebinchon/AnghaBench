@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_10__ {int dwMask; scalar_t__ bCharSet; int /*<<< orphan*/ * szFaceName; } ;
-struct TYPE_9__ {scalar_t__ bCharSet; int /*<<< orphan*/ * szFaceName; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_10__ {int dwMask; scalar_t__ bCharSet; int * szFaceName; } ;
+struct TYPE_9__ {scalar_t__ bCharSet; int * szFaceName; } ;
 struct TYPE_8__ {int nFontTblLen; TYPE_3__* fonttbl; } ;
 struct TYPE_7__ {TYPE_4__ fmt; } ;
-typedef  TYPE_1__ ME_Style ;
-typedef  TYPE_2__ ME_OutStream ;
-typedef  TYPE_3__ ME_FontTableItem ;
-typedef  TYPE_4__ CHARFORMAT2W ;
-typedef  scalar_t__ BYTE ;
+typedef TYPE_1__ ME_Style ;
+typedef TYPE_2__ ME_OutStream ;
+typedef TYPE_3__ ME_FontTableItem ;
+typedef TYPE_4__ CHARFORMAT2W ;
+typedef scalar_t__ BYTE ;
 
-/* Variables and functions */
- int CFM_CHARSET ; 
- int CFM_FACE ; 
- scalar_t__ DEFAULT_CHARSET ; 
- int STREAMOUT_FONTTBL_SIZE ; 
- int /*<<< orphan*/  lstrcmpW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int CFM_CHARSET ;
+ int CFM_FACE ;
+ scalar_t__ DEFAULT_CHARSET ;
+ int STREAMOUT_FONTTBL_SIZE ;
+ int lstrcmpW (int *,int *) ;
 
 __attribute__((used)) static void add_font_to_fonttbl( ME_OutStream *stream, ME_Style *style )
 {

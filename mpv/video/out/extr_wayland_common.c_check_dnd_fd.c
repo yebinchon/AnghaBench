@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct vo_wayland_state {int dnd_fd; scalar_t__ dnd_mime_score; int /*<<< orphan*/ * dnd_mime_type; int /*<<< orphan*/  dnd_offer; int /*<<< orphan*/  dnd_action; TYPE_1__* vo; } ;
-struct pollfd {int member_0; int member_1; int revents; int /*<<< orphan*/  member_2; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct vo_wayland_state {int dnd_fd; scalar_t__ dnd_mime_score; int * dnd_mime_type; int dnd_offer; int dnd_action; TYPE_1__* vo; } ;
+struct pollfd {int member_0; int member_1; int revents; int member_2; } ;
 struct bstr {int dummy; } ;
-typedef  size_t ptrdiff_t ;
-struct TYPE_2__ {int /*<<< orphan*/  input_ctx; } ;
+typedef size_t ptrdiff_t ;
+struct TYPE_2__ {int input_ctx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_VERBOSE (struct vo_wayland_state*,char*,size_t) ; 
- int POLLERR ; 
- int POLLHUP ; 
- int POLLIN ; 
- struct bstr bstr0 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t const) ; 
- int /*<<< orphan*/  mp_event_drop_mime_data (int /*<<< orphan*/ ,int /*<<< orphan*/ *,struct bstr,int /*<<< orphan*/ ) ; 
- scalar_t__ poll (struct pollfd*,int,int /*<<< orphan*/ ) ; 
- size_t read (int,int /*<<< orphan*/ *,size_t const) ; 
- int /*<<< orphan*/ * ta_realloc_size (struct vo_wayland_state*,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/ * ta_zalloc_size (struct vo_wayland_state*,size_t const) ; 
- int /*<<< orphan*/  talloc_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wl_data_offer_finish (int /*<<< orphan*/ ) ; 
+
+ int MP_VERBOSE (struct vo_wayland_state*,char*,size_t) ;
+ int POLLERR ;
+ int POLLHUP ;
+ int POLLIN ;
+ struct bstr bstr0 (int *) ;
+ int close (int) ;
+ int memset (int *,int ,size_t const) ;
+ int mp_event_drop_mime_data (int ,int *,struct bstr,int ) ;
+ scalar_t__ poll (struct pollfd*,int,int ) ;
+ size_t read (int,int *,size_t const) ;
+ int * ta_realloc_size (struct vo_wayland_state*,int *,size_t) ;
+ int * ta_zalloc_size (struct vo_wayland_state*,size_t const) ;
+ int talloc_free (int *) ;
+ int wl_data_offer_finish (int ) ;
 
 __attribute__((used)) static void check_dnd_fd(struct vo_wayland_state *wl)
 {
@@ -68,7 +68,7 @@ __attribute__((used)) static void check_dnd_fd(struct vo_wayland_state *wl)
 end:
         wl_data_offer_finish(wl->dnd_offer);
         talloc_free(wl->dnd_mime_type);
-        wl->dnd_mime_type = NULL;
+        wl->dnd_mime_type = ((void*)0);
         wl->dnd_mime_score = 0;
     }
 

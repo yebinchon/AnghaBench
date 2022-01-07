@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct redir_cache_data {int /*<<< orphan*/  redir_to; } ;
+
+
+
+
+struct redir_cache_data {int redir_to; } ;
 struct lwan_request {int dummy; } ;
-struct lwan_key_value {char* key; int /*<<< orphan*/  value; } ;
+struct lwan_key_value {char* key; int value; } ;
 struct file_cache_entry {struct redir_cache_data redir_cache_data; } ;
-typedef  enum lwan_http_status { ____Placeholder_lwan_http_status } lwan_http_status ;
+typedef enum lwan_http_status { ____Placeholder_lwan_http_status } lwan_http_status ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HTTP_MOVED_PERMANENTLY ; 
- int serve_buffer (struct lwan_request*,struct file_cache_entry*,struct lwan_key_value const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
+
+ int HTTP_MOVED_PERMANENTLY ;
+ int serve_buffer (struct lwan_request*,struct file_cache_entry*,struct lwan_key_value const*,int ,int ,int ) ;
+ int strlen (int ) ;
 
 __attribute__((used)) static enum lwan_http_status redir_serve(struct lwan_request *request,
                                          void *data)

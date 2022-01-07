@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct _cmstransform_struct {int dummy; } ;
-typedef  int cmsUInt8Number ;
-typedef  size_t cmsUInt32Number ;
-typedef  int /*<<< orphan*/  cmsContext ;
+typedef int cmsUInt8Number ;
+typedef size_t cmsUInt32Number ;
+typedef int cmsContext ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static
 void TrancendentalTransform(cmsContext ContextID, struct _cmstransform_struct * CMM,

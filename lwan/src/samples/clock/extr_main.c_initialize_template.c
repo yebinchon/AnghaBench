@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LWAN_TPL_FLAG_CONST_TEMPLATE ; 
- int /*<<< orphan*/  index_desc ; 
- int /*<<< orphan*/  index_tpl ; 
- int /*<<< orphan*/  lwan_status_critical (char*) ; 
- int /*<<< orphan*/  lwan_tpl_compile_string_full (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int LWAN_TPL_FLAG_CONST_TEMPLATE ;
+ int index_desc ;
+ int index_tpl ;
+ int lwan_status_critical (char*) ;
+ int lwan_tpl_compile_string_full (char const*,int ,int ) ;
 
 __attribute__((used)) __attribute__((constructor)) static void initialize_template(void)
 {

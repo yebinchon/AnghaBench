@@ -1,106 +1,106 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_16__ {TYPE_1__* Session; int /*<<< orphan*/  ServerX; int /*<<< orphan*/  ConnectingSocks; int /*<<< orphan*/  ServerName; } ;
-struct TYPE_15__ {int /*<<< orphan*/  RemoteX; int /*<<< orphan*/  ref; } ;
+
+
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+struct TYPE_16__ {TYPE_1__* Session; int ServerX; int ConnectingSocks; int ServerName; } ;
+struct TYPE_15__ {int RemoteX; int ref; } ;
 struct TYPE_14__ {int SessionTimeOuted; scalar_t__ Halt; } ;
-typedef  TYPE_2__ SOCK ;
-typedef  TYPE_3__ CONNECTION ;
+typedef TYPE_2__ SOCK ;
+typedef TYPE_3__ CONNECTION ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Add (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  AddRef (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CONNECTING_TIMEOUT ; 
- TYPE_2__* ClientConnectGetSocket (TYPE_3__*,int) ; 
- int CompareX (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ Delete (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  Disconnect (TYPE_2__*) ; 
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseSock (TYPE_2__*) ; 
- int /*<<< orphan*/  SetTimeout (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int StartSSLEx (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ ) ; 
+
+ int Add (int ,TYPE_2__*) ;
+ int AddRef (int ) ;
+ int CONNECTING_TIMEOUT ;
+ TYPE_2__* ClientConnectGetSocket (TYPE_3__*,int) ;
+ int CompareX (int ,int ) ;
+ scalar_t__ Delete (int ,TYPE_2__*) ;
+ int Disconnect (TYPE_2__*) ;
+ int LockList (int ) ;
+ int ReleaseSock (TYPE_2__*) ;
+ int SetTimeout (TYPE_2__*,int ) ;
+ int StartSSLEx (TYPE_2__*,int *,int *,int ,int ) ;
+ int UnlockList (int ) ;
 
 SOCK *ClientAdditionalConnectToServer(CONNECTION *c)
 {
-	SOCK *s;
-	// Validate arguments
-	if (c == NULL)
-	{
-		return NULL;
-	}
+ SOCK *s;
 
-	// Socket connection
-	s = ClientConnectGetSocket(c, true);
-	if (s == NULL)
-	{
-		// Connection failure
-		return NULL;
-	}
+ if (c == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	// Add the socket to the list
-	LockList(c->ConnectingSocks);
-	{
-		Add(c->ConnectingSocks, s);
-		AddRef(s->ref);
-	}
-	UnlockList(c->ConnectingSocks);
 
-	if (c->Session->Halt)
-	{
-		// Stop
-		Disconnect(s);
-		LockList(c->ConnectingSocks);
-		{
-			if (Delete(c->ConnectingSocks, s))
-			{
-				ReleaseSock(s);
-			}
-		}
-		UnlockList(c->ConnectingSocks);
-		ReleaseSock(s);
-		return NULL;
-	}
+ s = ClientConnectGetSocket(c, 1);
+ if (s == ((void*)0))
+ {
 
-	// Time-out
-	SetTimeout(s, CONNECTING_TIMEOUT);
+  return ((void*)0);
+ }
 
-	// Start the SSL communication
-	if (StartSSLEx(s, NULL, NULL, 0, c->ServerName) == false)
-	{
-		// SSL communication failure
-		Disconnect(s);
-		LockList(c->ConnectingSocks);
-		{
-			if (Delete(c->ConnectingSocks, s))
-			{
-				ReleaseSock(s);
-			}
-		}
-		UnlockList(c->ConnectingSocks);
-		ReleaseSock(s);
-		return NULL;
-	}
 
-	// Check the certificate
-	if (CompareX(s->RemoteX, c->ServerX) == false)
-	{
-		// The certificate is invalid
-		Disconnect(s);
-		c->Session->SessionTimeOuted = true;
-	}
+ LockList(c->ConnectingSocks);
+ {
+  Add(c->ConnectingSocks, s);
+  AddRef(s->ref);
+ }
+ UnlockList(c->ConnectingSocks);
 
-	return s;
+ if (c->Session->Halt)
+ {
+
+  Disconnect(s);
+  LockList(c->ConnectingSocks);
+  {
+   if (Delete(c->ConnectingSocks, s))
+   {
+    ReleaseSock(s);
+   }
+  }
+  UnlockList(c->ConnectingSocks);
+  ReleaseSock(s);
+  return ((void*)0);
+ }
+
+
+ SetTimeout(s, CONNECTING_TIMEOUT);
+
+
+ if (StartSSLEx(s, ((void*)0), ((void*)0), 0, c->ServerName) == 0)
+ {
+
+  Disconnect(s);
+  LockList(c->ConnectingSocks);
+  {
+   if (Delete(c->ConnectingSocks, s))
+   {
+    ReleaseSock(s);
+   }
+  }
+  UnlockList(c->ConnectingSocks);
+  ReleaseSock(s);
+  return ((void*)0);
+ }
+
+
+ if (CompareX(s->RemoteX, c->ServerX) == 0)
+ {
+
+  Disconnect(s);
+  c->Session->SessionTimeOuted = 1;
+ }
+
+ return s;
 }

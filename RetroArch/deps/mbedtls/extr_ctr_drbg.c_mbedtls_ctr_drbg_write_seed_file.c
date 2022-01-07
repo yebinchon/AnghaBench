@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbedtls_ctr_drbg_context ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int MBEDTLS_CTR_DRBG_MAX_INPUT ; 
- int MBEDTLS_ERR_CTR_DRBG_FILE_IO_ERROR ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int fwrite (unsigned char*,int,int,int /*<<< orphan*/ *) ; 
- int mbedtls_ctr_drbg_random (int /*<<< orphan*/ *,unsigned char*,int) ; 
+
+
+
+typedef int mbedtls_ctr_drbg_context ;
+typedef int FILE ;
+
+
+ int MBEDTLS_CTR_DRBG_MAX_INPUT ;
+ int MBEDTLS_ERR_CTR_DRBG_FILE_IO_ERROR ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fwrite (unsigned char*,int,int,int *) ;
+ int mbedtls_ctr_drbg_random (int *,unsigned char*,int) ;
 
 int mbedtls_ctr_drbg_write_seed_file( mbedtls_ctr_drbg_context *ctx, const char *path )
 {
@@ -27,7 +27,7 @@ int mbedtls_ctr_drbg_write_seed_file( mbedtls_ctr_drbg_context *ctx, const char 
     FILE *f;
     unsigned char buf[ MBEDTLS_CTR_DRBG_MAX_INPUT ];
 
-    if( ( f = fopen( path, "wb" ) ) == NULL )
+    if( ( f = fopen( path, "wb" ) ) == ((void*)0) )
         return( MBEDTLS_ERR_CTR_DRBG_FILE_IO_ERROR );
 
     if( ( ret = mbedtls_ctr_drbg_random( ctx, buf, MBEDTLS_CTR_DRBG_MAX_INPUT ) ) != 0 )

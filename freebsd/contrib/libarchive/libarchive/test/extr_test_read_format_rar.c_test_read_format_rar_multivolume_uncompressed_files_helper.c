@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct archive {int dummy; } ;
-typedef  int /*<<< orphan*/  buff ;
+typedef int buff ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_CUR ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  archive_read_data (struct archive*,char*,int) ; 
- int /*<<< orphan*/  archive_seek_data (struct archive*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assertEqualIntA (struct archive*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assertEqualStringA (struct archive*,char*,char*) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
+
+ int SEEK_CUR ;
+ int SEEK_END ;
+ int SEEK_SET ;
+ int archive_read_data (struct archive*,char*,int) ;
+ int archive_seek_data (struct archive*,int,int ) ;
+ int assertEqualIntA (struct archive*,int,int ) ;
+ int assertEqualStringA (struct archive*,char*,char*) ;
+ int memset (char*,int ,int) ;
 
 __attribute__((used)) static void
 test_read_format_rar_multivolume_uncompressed_files_helper(struct archive *a)
 {
   char buff[64];
 
-  /* Do checks for seeks/reads past beginning and end of file */
+
   assertEqualIntA(a, 0, archive_seek_data(a, 0, SEEK_SET));
   memset(buff, 0, sizeof(buff));
   assertEqualIntA(a, -1, archive_seek_data(a, -((int)sizeof(buff)-1), SEEK_SET));

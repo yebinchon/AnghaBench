@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  errbuf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVUNERROR (int) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char const*,char const*) ; 
- scalar_t__ av_strerror (int,char*,int) ; 
- char* strerror (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int errbuf ;
+
+
+ int AVUNERROR (int) ;
+ int AV_LOG_ERROR ;
+ int av_log (int *,int ,char*,char const*,char const*) ;
+ scalar_t__ av_strerror (int,char*,int) ;
+ char* strerror (int ) ;
 
 void print_error(const char *filename, int err)
 {
@@ -26,5 +26,5 @@ void print_error(const char *filename, int err)
 
     if (av_strerror(err, errbuf, sizeof(errbuf)) < 0)
         errbuf_ptr = strerror(AVUNERROR(err));
-    av_log(NULL, AV_LOG_ERROR, "%s: %s\n", filename, errbuf_ptr);
+    av_log(((void*)0), AV_LOG_ERROR, "%s: %s\n", filename, errbuf_ptr);
 }

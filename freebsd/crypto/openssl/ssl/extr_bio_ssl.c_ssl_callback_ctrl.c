@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* ssl; } ;
-struct TYPE_4__ {int /*<<< orphan*/  rbio; } ;
-typedef  TYPE_1__ SSL ;
-typedef  int /*<<< orphan*/  BIO_info_cb ;
-typedef  TYPE_2__ BIO_SSL ;
-typedef  int /*<<< orphan*/  BIO ;
+struct TYPE_4__ {int rbio; } ;
+typedef TYPE_1__ SSL ;
+typedef int BIO_info_cb ;
+typedef TYPE_2__ BIO_SSL ;
+typedef int BIO ;
 
-/* Variables and functions */
-#define  BIO_CTRL_SET_CALLBACK 128 
- long BIO_callback_ctrl (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- TYPE_2__* BIO_get_data (int /*<<< orphan*/ *) ; 
+
+
+ long BIO_callback_ctrl (int ,int,int *) ;
+ TYPE_2__* BIO_get_data (int *) ;
 
 __attribute__((used)) static long ssl_callback_ctrl(BIO *b, int cmd, BIO_info_cb *fp)
 {
@@ -33,7 +33,7 @@ __attribute__((used)) static long ssl_callback_ctrl(BIO *b, int cmd, BIO_info_cb
     bs = BIO_get_data(b);
     ssl = bs->ssl;
     switch (cmd) {
-    case BIO_CTRL_SET_CALLBACK:
+    case 128:
         ret = BIO_callback_ctrl(ssl->rbio, cmd, fp);
         break;
     default:

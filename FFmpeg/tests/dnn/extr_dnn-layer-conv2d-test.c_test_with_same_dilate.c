@@ -1,67 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int32_t ;
-typedef  int /*<<< orphan*/  expected_output ;
-struct TYPE_6__ {int has_bias; float* biases; int dilation; int input_num; float* kernel; int kernel_size; int output_num; int /*<<< orphan*/  padding_method; int /*<<< orphan*/  activation; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ int32_t ;
+typedef int expected_output ;
+struct TYPE_6__ {int has_bias; float* biases; int dilation; int input_num; float* kernel; int kernel_size; int output_num; int padding_method; int activation; } ;
 struct TYPE_5__ {float* data; int* dims; } ;
-typedef  TYPE_1__ DnnOperand ;
-typedef  TYPE_2__ ConvolutionalParams ;
+typedef TYPE_1__ DnnOperand ;
+typedef TYPE_2__ ConvolutionalParams ;
 
-/* Variables and functions */
- scalar_t__ EPSON ; 
- int /*<<< orphan*/  SAME ; 
- int /*<<< orphan*/  TANH ; 
- int /*<<< orphan*/  av_freep (float**) ; 
- int /*<<< orphan*/  dnn_execute_layer_conv2d (TYPE_1__*,scalar_t__*,int,TYPE_2__*) ; 
- scalar_t__ fabs (float) ; 
- int /*<<< orphan*/  printf (char*,int,float,float) ; 
+
+ scalar_t__ EPSON ;
+ int SAME ;
+ int TANH ;
+ int av_freep (float**) ;
+ int dnn_execute_layer_conv2d (TYPE_1__*,scalar_t__*,int,TYPE_2__*) ;
+ scalar_t__ fabs (float) ;
+ int printf (char*,int,float,float) ;
 
 __attribute__((used)) static int test_with_same_dilate(void)
 {
-    // the input data and expected data are generated with below python code.
-    /*
-    x = tf.placeholder(tf.float32, shape=[1, None, None, 3])
-    y = tf.layers.conv2d(x, 2, 3, activation=tf.nn.tanh, padding='same', dilation_rate=(2, 2), bias_initializer=tf.keras.initializers.he_normal())
-    data = np.random.rand(1, 5, 6, 3);
-
-    sess=tf.Session()
-    sess.run(tf.global_variables_initializer())
-
-    weights = dict([(var.name, sess.run(var)) for var in tf.trainable_variables()])
-    kernel = weights['conv2d/kernel:0']
-    kernel = np.transpose(kernel, [3, 0, 1, 2])
-    print("kernel:")
-    print(kernel.shape)
-    print(list(kernel.flatten()))
-
-    bias = weights['conv2d/bias:0']
-    print("bias:")
-    print(bias.shape)
-    print(list(bias.flatten()))
-
-    output = sess.run(y, feed_dict={x: data})
-
-    print("input:")
-    print(data.shape)
-    print(list(data.flatten()))
-
-    print("output:")
-    print(output.shape)
-    print(list(output.flatten()))
-    */
-
     ConvolutionalParams params;
     DnnOperand operands[2];
     int32_t input_indexes[1];
@@ -114,7 +82,7 @@ __attribute__((used)) static int test_with_same_dilate(void)
     operands[0].dims[1] = 5;
     operands[0].dims[2] = 6;
     operands[0].dims[3] = 3;
-    operands[1].data = NULL;
+    operands[1].data = ((void*)0);
 
     input_indexes[0] = 0;
     dnn_execute_layer_conv2d(operands, input_indexes, 1, &params);

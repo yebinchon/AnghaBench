@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr_storage {int dummy; } ;
 
-/* Variables and functions */
- int cmp_sock_addr (int /*<<< orphan*/ ,int,struct sockaddr_storage const*,int) ; 
- int /*<<< orphan*/  getpeername ; 
+
+ int cmp_sock_addr (int ,int,struct sockaddr_storage const*,int) ;
+ int getpeername ;
 
 __attribute__((used)) static int cmp_peer_addr(int sock1, const struct sockaddr_storage *addr2)
 {
-	return cmp_sock_addr(getpeername, sock1, addr2, /*cmp_port*/ 1);
+ return cmp_sock_addr(getpeername, sock1, addr2, 1);
 }

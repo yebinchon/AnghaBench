@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct vo_wayland_state {int /*<<< orphan*/  surface; } ;
-struct vo {int /*<<< orphan*/  osd; int /*<<< orphan*/  dheight; int /*<<< orphan*/  dwidth; struct vo_wayland_state* wl; struct priv* priv; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct vo_wayland_state {int surface; } ;
+struct vo {int osd; int dheight; int dwidth; struct vo_wayland_state* wl; struct priv* priv; } ;
 struct TYPE_6__ {scalar_t__ x0; scalar_t__ y0; scalar_t__ x1; scalar_t__ y1; } ;
 struct TYPE_4__ {scalar_t__ x0; scalar_t__ y0; scalar_t__ x1; scalar_t__ y1; } ;
-struct priv {int /*<<< orphan*/  osd; int /*<<< orphan*/  sws; TYPE_3__ dst; TYPE_1__ src; struct buffer* free_buffers; } ;
+struct priv {int osd; int sws; TYPE_3__ dst; TYPE_1__ src; struct buffer* free_buffers; } ;
 struct mp_rect {scalar_t__ x0; scalar_t__ y0; scalar_t__ x1; scalar_t__ y1; } ;
-struct TYPE_5__ {int /*<<< orphan*/  align_y; int /*<<< orphan*/  align_x; } ;
-struct mp_image {scalar_t__ w; scalar_t__ h; int /*<<< orphan*/  pts; TYPE_2__ fmt; } ;
-struct buffer {int /*<<< orphan*/ * buffer; struct mp_image mpi; struct buffer* next; } ;
+struct TYPE_5__ {int align_y; int align_x; } ;
+struct mp_image {scalar_t__ w; scalar_t__ h; int pts; TYPE_2__ fmt; } ;
+struct buffer {int * buffer; struct mp_image mpi; struct buffer* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MPMAX (int /*<<< orphan*/ ,int) ; 
- void* MP_ALIGN_DOWN (scalar_t__,int /*<<< orphan*/ ) ; 
- struct buffer* buffer_create (struct vo*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_image_clear (struct mp_image*,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  mp_image_crop_rc (struct mp_image*,struct mp_rect) ; 
- int /*<<< orphan*/  mp_sws_scale (int /*<<< orphan*/ ,struct mp_image*,struct mp_image*) ; 
- int /*<<< orphan*/  osd_draw_on_image (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct mp_image*) ; 
- int /*<<< orphan*/  talloc_free (struct mp_image*) ; 
- int /*<<< orphan*/  wl_surface_attach (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int MPMAX (int ,int) ;
+ void* MP_ALIGN_DOWN (scalar_t__,int ) ;
+ struct buffer* buffer_create (struct vo*,int ,int ) ;
+ int mp_image_clear (struct mp_image*,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int mp_image_crop_rc (struct mp_image*,struct mp_rect) ;
+ int mp_sws_scale (int ,struct mp_image*,struct mp_image*) ;
+ int osd_draw_on_image (int ,int ,int ,int ,struct mp_image*) ;
+ int talloc_free (struct mp_image*) ;
+ int wl_surface_attach (int ,int *,int ,int ) ;
 
 __attribute__((used)) static void draw_image(struct vo *vo, struct mp_image *src)
 {
@@ -46,7 +46,7 @@ __attribute__((used)) static void draw_image(struct vo *vo, struct mp_image *src
     } else {
         buf = buffer_create(vo, vo->dwidth, vo->dheight);
         if (!buf) {
-            wl_surface_attach(wl->surface, NULL, 0, 0);
+            wl_surface_attach(wl->surface, ((void*)0), 0, 0);
             return;
         }
     }

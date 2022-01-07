@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct page {int /*<<< orphan*/  flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEFINE_WAIT_BIT (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PG_locked ; 
- int /*<<< orphan*/  TASK_UNINTERRUPTIBLE ; 
- int /*<<< orphan*/  __wait_on_bit_lock (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  page_waitqueue (struct page*) ; 
- int /*<<< orphan*/  sync_page ; 
- int /*<<< orphan*/  wait ; 
+
+
+
+struct page {int flags; } ;
+
+
+ int DEFINE_WAIT_BIT (int ,int *,int ) ;
+ int PG_locked ;
+ int TASK_UNINTERRUPTIBLE ;
+ int __wait_on_bit_lock (int ,int *,int ,int ) ;
+ int page_waitqueue (struct page*) ;
+ int sync_page ;
+ int wait ;
 
 void __lock_page(struct page *page)
 {
-	DEFINE_WAIT_BIT(wait, &page->flags, PG_locked);
+ DEFINE_WAIT_BIT(wait, &page->flags, PG_locked);
 
-	__wait_on_bit_lock(page_waitqueue(page), &wait, sync_page,
-							TASK_UNINTERRUPTIBLE);
+ __wait_on_bit_lock(page_waitqueue(page), &wait, sync_page,
+       TASK_UNINTERRUPTIBLE);
 }

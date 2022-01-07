@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT_BOOL ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IObjectIdentity ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDispatch_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IID_IObjectIdentity ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  IObjectIdentity_IsEqualObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IObjectIdentity_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  VARIANT_FALSE ; 
- int /*<<< orphan*/  VARIANT_TRUE ; 
+
+
+
+typedef int VARIANT_BOOL ;
+typedef int IUnknown ;
+typedef int IObjectIdentity ;
+typedef int IDispatch ;
+typedef int HRESULT ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int IDispatch_QueryInterface (int *,int *,void**) ;
+ int IID_IObjectIdentity ;
+ int IID_IUnknown ;
+ int IObjectIdentity_IsEqualObject (int *,int *) ;
+ int IObjectIdentity_Release (int *) ;
+ int IUnknown_QueryInterface (int *,int *,void**) ;
+ int IUnknown_Release (int *) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int VARIANT_FALSE ;
+ int VARIANT_TRUE ;
 
 __attribute__((used)) static HRESULT disp_cmp(IDispatch *disp1, IDispatch *disp2, VARIANT_BOOL *ret)
 {

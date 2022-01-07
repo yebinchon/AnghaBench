@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  by_expiry; int /*<<< orphan*/  by_key; } ;
-struct TYPE_12__ {int /*<<< orphan*/  prioq_idx; int /*<<< orphan*/  key; } ;
-typedef  TYPE_1__ DnsCacheItem ;
-typedef  TYPE_2__ DnsCache ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIST_REMOVE (int /*<<< orphan*/ ,TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/  by_key ; 
- int /*<<< orphan*/  dns_cache_item_free (TYPE_1__*) ; 
- TYPE_1__* hashmap_get (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hashmap_remove (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ hashmap_replace (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  prioq_remove (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int by_expiry; int by_key; } ;
+struct TYPE_12__ {int prioq_idx; int key; } ;
+typedef TYPE_1__ DnsCacheItem ;
+typedef TYPE_2__ DnsCache ;
+
+
+ int LIST_REMOVE (int ,TYPE_1__*,TYPE_1__*) ;
+ int assert (TYPE_2__*) ;
+ int assert_se (int) ;
+ int by_key ;
+ int dns_cache_item_free (TYPE_1__*) ;
+ TYPE_1__* hashmap_get (int ,int ) ;
+ int hashmap_remove (int ,int ) ;
+ scalar_t__ hashmap_replace (int ,int ,TYPE_1__*) ;
+ int prioq_remove (int ,TYPE_1__*,int *) ;
 
 __attribute__((used)) static void dns_cache_item_unlink_and_free(DnsCache *c, DnsCacheItem *i) {
         DnsCacheItem *first;

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct fd {TYPE_1__* tty; int /*<<< orphan*/  tty_other_fds; } ;
-struct TYPE_2__ {int /*<<< orphan*/  fds_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  list_remove_safe (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tty_release (TYPE_1__*) ; 
- int /*<<< orphan*/  ttys_lock ; 
- int /*<<< orphan*/  unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct fd {TYPE_1__* tty; int tty_other_fds; } ;
+struct TYPE_2__ {int fds_lock; } ;
+
+
+ int list_remove_safe (int *) ;
+ int lock (int *) ;
+ int tty_release (TYPE_1__*) ;
+ int ttys_lock ;
+ int unlock (int *) ;
 
 __attribute__((used)) static int tty_close(struct fd *fd) {
-    if (fd->tty != NULL) {
+    if (fd->tty != ((void*)0)) {
         lock(&fd->tty->fds_lock);
         list_remove_safe(&fd->tty_other_fds);
         unlock(&fd->tty->fds_lock);

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u16 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u16 ;
 struct TYPE_2__ {int miovf; int mifull; scalar_t__ midi_in_cnt; int mibuf; int* midi_in_buf; int miemp; int mofull; int moemp; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCSP_INTERRUPT_MIDI_IN ; 
- int /*<<< orphan*/  SCSP_INTTARGET_BOTH ; 
- int /*<<< orphan*/  ScspRaiseInterrupt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__ scsp ; 
+
+ int SCSP_INTERRUPT_MIDI_IN ;
+ int SCSP_INTTARGET_BOTH ;
+ int ScspRaiseInterrupt (int ,int ) ;
+ TYPE_1__ scsp ;
 
 __attribute__((used)) static u16 ScspMidiIn(void)
 {
@@ -35,13 +35,13 @@ __attribute__((used)) static u16 ScspMidiIn(void)
       if (!scsp.miemp)
          ScspRaiseInterrupt(SCSP_INTERRUPT_MIDI_IN, SCSP_INTTARGET_BOTH);
    }
-   else  // scsp.midi_in_cnt == 0
+   else
       scsp.mibuf = 0xFF;
 
    return scsp.mofull << 12
-        | scsp.moemp  << 11
-        | scsp.miovf  << 10
-        | scsp.mifull <<  9
-        | scsp.miemp  <<  8
-        | scsp.mibuf  <<  0;
+        | scsp.moemp << 11
+        | scsp.miovf << 10
+        | scsp.mifull << 9
+        | scsp.miemp << 8
+        | scsp.mibuf << 0;
 }

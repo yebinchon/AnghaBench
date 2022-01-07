@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509 ;
-struct TYPE_7__ {int mdpth; TYPE_1__* mtlsa; int /*<<< orphan*/ * mcert; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int X509 ;
+struct TYPE_7__ {int mdpth; TYPE_1__* mtlsa; int * mcert; } ;
 struct TYPE_8__ {scalar_t__ verify_result; TYPE_2__ dane; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * spki; } ;
-typedef  TYPE_2__ SSL_DANE ;
-typedef  TYPE_3__ SSL ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
+struct TYPE_6__ {int * spki; } ;
+typedef TYPE_2__ SSL_DANE ;
+typedef TYPE_3__ SSL ;
+typedef int EVP_PKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DANETLS_ENABLED (TYPE_2__*) ; 
- scalar_t__ X509_V_OK ; 
+
+ int DANETLS_ENABLED (TYPE_2__*) ;
+ scalar_t__ X509_V_OK ;
 
 int SSL_get0_dane_authority(SSL *s, X509 **mcert, EVP_PKEY **mspki)
 {
@@ -35,7 +35,7 @@ int SSL_get0_dane_authority(SSL *s, X509 **mcert, EVP_PKEY **mspki)
         if (mcert)
             *mcert = dane->mcert;
         if (mspki)
-            *mspki = (dane->mcert == NULL) ? dane->mtlsa->spki : NULL;
+            *mspki = (dane->mcert == ((void*)0)) ? dane->mtlsa->spki : ((void*)0);
     }
     return dane->mdpth;
 }

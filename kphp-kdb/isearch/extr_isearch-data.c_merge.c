@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t* data ;
 
-/* Variables and functions */
- int MAXQ ; 
- scalar_t__ RATING_MIN ; 
- int /*<<< orphan*/  black_list_check (scalar_t__) ; 
- float get_rating (size_t) ; 
- scalar_t__* names ; 
- scalar_t__ names_buff ; 
- size_t* q ; 
- float* rating_q ; 
- scalar_t__* ratings ; 
- scalar_t__* stemmed_names ; 
- int /*<<< orphan*/  swap (size_t,size_t) ; 
+
+
+
+typedef size_t* data ;
+
+
+ int MAXQ ;
+ scalar_t__ RATING_MIN ;
+ int black_list_check (scalar_t__) ;
+ float get_rating (size_t) ;
+ scalar_t__* names ;
+ scalar_t__ names_buff ;
+ size_t* q ;
+ float* rating_q ;
+ scalar_t__* ratings ;
+ scalar_t__* stemmed_names ;
+ int swap (size_t,size_t) ;
 
 void merge (data p) {
   int ip, iq;
 
   for (ip = 0; ip < MAXQ && ratings[p[ip]] > RATING_MIN; ip++) {
     if (!black_list_check (names_buff + names[p[ip]])) {
-//      fprintf (stderr, "<%s>\n", names_buff + names[p[ip]]);
+
       float rb = get_rating (p[ip]);
 
       for (iq = 0; iq < MAXQ; iq++)

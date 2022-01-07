@@ -1,47 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG ;
 struct TYPE_3__ {int cValues; scalar_t__* aulPropTag; } ;
-typedef  TYPE_1__ SPropTagArray ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_1__ SPropTagArray ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- scalar_t__ MV_FLAG ; 
- scalar_t__ PROP_ID_INVALID ; 
- scalar_t__ PROP_TYPE_MASK ; 
-#define  PT_APPTIME 143 
-#define  PT_BINARY 142 
-#define  PT_BOOLEAN 141 
-#define  PT_CLSID 140 
-#define  PT_CURRENCY 139 
- scalar_t__ PT_ERROR ; 
-#define  PT_I2 138 
-#define  PT_I4 137 
-#define  PT_I8 136 
-#define  PT_NULL 135 
-#define  PT_OBJECT 134 
-#define  PT_R4 133 
-#define  PT_R8 132 
-#define  PT_STRING8 131 
-#define  PT_SYSTIME 130 
-#define  PT_UNICODE 129 
-#define  PT_UNSPECIFIED 128 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ pFBadColumnSet (TYPE_1__*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+ scalar_t__ FALSE ;
+ scalar_t__ MV_FLAG ;
+ scalar_t__ PROP_ID_INVALID ;
+ scalar_t__ PROP_TYPE_MASK ;
+
+
+
+
+
+ scalar_t__ PT_ERROR ;
+ scalar_t__ TRUE ;
+ int ok (int,char*,...) ;
+ scalar_t__ pFBadColumnSet (TYPE_1__*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_FBadColumnSet(void)
 {
@@ -54,7 +43,7 @@ __attribute__((used)) static void test_FBadColumnSet(void)
         return;
     }
 
-    res = pFBadColumnSet(NULL);
+    res = pFBadColumnSet(((void*)0));
     ok(res != 0, "(null): Expected non-zero, got 0\n");
 
     pta.cValues = 1;
@@ -67,22 +56,22 @@ __attribute__((used)) static void test_FBadColumnSet(void)
 
         switch (pt & (~MV_FLAG & PROP_TYPE_MASK))
         {
-        case PT_UNSPECIFIED:
-        case PT_NULL:
-        case PT_I2:
-        case PT_I4:
-        case PT_R4:
-        case PT_R8:
-        case PT_CURRENCY:
-        case PT_APPTIME:
-        case PT_BOOLEAN:
-        case PT_OBJECT:
-        case PT_I8:
-        case PT_STRING8:
-        case PT_UNICODE:
-        case PT_SYSTIME:
-        case PT_CLSID:
-        case PT_BINARY:
+        case 128:
+        case 135:
+        case 138:
+        case 137:
+        case 133:
+        case 132:
+        case 139:
+        case 143:
+        case 141:
+        case 134:
+        case 136:
+        case 131:
+        case 129:
+        case 130:
+        case 140:
+        case 142:
             bBad = FALSE;
         }
         if (pt == (MV_FLAG|PT_ERROR))

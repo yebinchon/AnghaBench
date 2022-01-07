@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct file_baton {int /*<<< orphan*/  pool; int /*<<< orphan*/  right_source; int /*<<< orphan*/  skip; int /*<<< orphan*/  pfb; int /*<<< orphan*/  pristine_props; } ;
-struct edit_baton {TYPE_1__* processor; int /*<<< orphan*/  target_revision; int /*<<< orphan*/  empty_hash; } ;
-struct dir_baton {int /*<<< orphan*/  pdb; struct edit_baton* edit_baton; scalar_t__ skip_children; int /*<<< orphan*/  pool; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_2__ {int /*<<< orphan*/  (* file_opened ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- struct file_baton* make_file_baton (char const*,struct dir_baton*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_diff__source_create (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int svn_error_t ;
+struct file_baton {int pool; int right_source; int skip; int pfb; int pristine_props; } ;
+struct edit_baton {TYPE_1__* processor; int target_revision; int empty_hash; } ;
+struct dir_baton {int pdb; struct edit_baton* edit_baton; scalar_t__ skip_children; int pool; } ;
+typedef int apr_pool_t ;
+struct TYPE_2__ {int (* file_opened ) (int *,int *,char const*,int *,int ,int *,int ,TYPE_1__*,int ,int ) ;} ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ struct file_baton* make_file_baton (char const*,struct dir_baton*,int ,int ) ;
+ int stub1 (int *,int *,char const*,int *,int ,int *,int ,TYPE_1__*,int ,int ) ;
+ int svn_diff__source_create (int ,int ) ;
 
 __attribute__((used)) static svn_error_t *
 add_file(const char *path,
@@ -39,12 +39,12 @@ add_file(const char *path,
   struct edit_baton *eb = pb->edit_baton;
   struct file_baton *fb;
 
-  /* ### TODO: support copyfrom? */
+
 
   fb = make_file_baton(path, pb, TRUE, pb->pool);
   *file_baton = fb;
 
-  /* Process Skips. */
+
   if (pb->skip_children)
     {
       fb->skip = TRUE;
@@ -58,9 +58,9 @@ add_file(const char *path,
   SVN_ERR(eb->processor->file_opened(&fb->pfb,
                                      &fb->skip,
                                      path,
-                                     NULL,
+                                     ((void*)0),
                                      fb->right_source,
-                                     NULL /* copy source */,
+                                     ((void*)0) ,
                                      pb->pdb,
                                      eb->processor,
                                      fb->pool, fb->pool));

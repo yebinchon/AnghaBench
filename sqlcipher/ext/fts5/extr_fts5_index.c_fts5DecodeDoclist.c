@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u64 ;
-typedef  scalar_t__ i64 ;
-typedef  int /*<<< orphan*/  Fts5Buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MIN (int,int) ; 
- scalar_t__ fts5DecodePoslist (int*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- scalar_t__ fts5GetPoslistSize (int /*<<< orphan*/  const*,int*,int*) ; 
- int /*<<< orphan*/  sqlite3Fts5BufferAppendPrintf (int*,int /*<<< orphan*/ *,char*,int,...) ; 
- int sqlite3Fts5GetVarint (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int u8 ;
+typedef int u64 ;
+typedef scalar_t__ i64 ;
+typedef int Fts5Buffer ;
+
+
+ int MIN (int,int) ;
+ scalar_t__ fts5DecodePoslist (int*,int *,int const*,int ) ;
+ scalar_t__ fts5GetPoslistSize (int const*,int*,int*) ;
+ int sqlite3Fts5BufferAppendPrintf (int*,int *,char*,int,...) ;
+ int sqlite3Fts5GetVarint (int const*,int *) ;
 
 __attribute__((used)) static int fts5DecodeDoclist(int *pRc, Fts5Buffer *pBuf, const u8 *a, int n){
   i64 iDocid = 0;

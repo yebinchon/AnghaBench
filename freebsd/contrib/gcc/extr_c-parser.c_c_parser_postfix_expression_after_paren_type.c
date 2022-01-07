@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ tree ;
+
+
+
+
+typedef scalar_t__ tree ;
 struct c_type_name {int dummy; } ;
-struct c_expr {int /*<<< orphan*/  original_code; int /*<<< orphan*/  value; } ;
-typedef  int /*<<< orphan*/  c_parser ;
+struct c_expr {int original_code; int value; } ;
+typedef int c_parser ;
 
-/* Variables and functions */
- scalar_t__ C_TYPE_VARIABLE_SIZE (scalar_t__) ; 
- int /*<<< orphan*/  ERROR_MARK ; 
- int /*<<< orphan*/  NULL_TREE ; 
- int /*<<< orphan*/  build_compound_literal (scalar_t__,int /*<<< orphan*/ ) ; 
- struct c_expr c_parser_braced_init (int /*<<< orphan*/ *,scalar_t__,int) ; 
- struct c_expr c_parser_postfix_expression_after_primary (int /*<<< orphan*/ *,struct c_expr) ; 
- int /*<<< orphan*/  error (char*) ; 
- scalar_t__ error_mark_node ; 
- int /*<<< orphan*/  finish_init () ; 
- int /*<<< orphan*/  flag_isoc99 ; 
- scalar_t__ groktypename (struct c_type_name*) ; 
- int /*<<< orphan*/  maybe_warn_string_init (scalar_t__,struct c_expr) ; 
- scalar_t__ pedantic ; 
- int /*<<< orphan*/  pedwarn (char*) ; 
- int /*<<< orphan*/  start_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ C_TYPE_VARIABLE_SIZE (scalar_t__) ;
+ int ERROR_MARK ;
+ int NULL_TREE ;
+ int build_compound_literal (scalar_t__,int ) ;
+ struct c_expr c_parser_braced_init (int *,scalar_t__,int) ;
+ struct c_expr c_parser_postfix_expression_after_primary (int *,struct c_expr) ;
+ int error (char*) ;
+ scalar_t__ error_mark_node ;
+ int finish_init () ;
+ int flag_isoc99 ;
+ scalar_t__ groktypename (struct c_type_name*) ;
+ int maybe_warn_string_init (scalar_t__,struct c_expr) ;
+ scalar_t__ pedantic ;
+ int pedwarn (char*) ;
+ int start_init (int ,int *,int ) ;
 
 __attribute__((used)) static struct c_expr
 c_parser_postfix_expression_after_paren_type (c_parser *parser,
-					      struct c_type_name *type_name)
+           struct c_type_name *type_name)
 {
   tree type;
   struct c_expr init;
   struct c_expr expr;
-  start_init (NULL_TREE, NULL, 0);
+  start_init (NULL_TREE, ((void*)0), 0);
   type = groktypename (type_name);
   if (type != error_mark_node && C_TYPE_VARIABLE_SIZE (type))
     {
       error ("compound literal has variable size");
       type = error_mark_node;
     }
-  init = c_parser_braced_init (parser, type, false);
+  init = c_parser_braced_init (parser, type, 0);
   finish_init ();
   maybe_warn_string_init (type, init);
 

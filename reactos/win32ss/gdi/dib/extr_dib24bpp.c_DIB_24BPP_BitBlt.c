@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_8__ ;
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ULONG ;
+
+
+typedef struct TYPE_17__ TYPE_8__ ;
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int ULONG ;
 struct TYPE_13__ {int cy; int cx; } ;
 struct TYPE_17__ {TYPE_4__ sizlBitmap; } ;
 struct TYPE_14__ {int left; int top; int bottom; int right; } ;
 struct TYPE_12__ {int y; int x; } ;
 struct TYPE_11__ {int y; int x; } ;
-struct TYPE_16__ {TYPE_6__* DestSurface; TYPE_5__ DestRect; TYPE_8__* PatternSurface; int /*<<< orphan*/  Rop4; TYPE_3__ BrushOrigin; int /*<<< orphan*/  XlateSourceToDest; int /*<<< orphan*/  SourceSurface; TYPE_2__ SourcePoint; TYPE_1__* Brush; } ;
+struct TYPE_16__ {TYPE_6__* DestSurface; TYPE_5__ DestRect; TYPE_8__* PatternSurface; int Rop4; TYPE_3__ BrushOrigin; int XlateSourceToDest; int SourceSurface; TYPE_2__ SourcePoint; TYPE_1__* Brush; } ;
 struct TYPE_15__ {int lDelta; scalar_t__ pvScan0; } ;
 struct TYPE_10__ {int iSolidColor; } ;
-typedef  int* PUSHORT ;
-typedef  int* PBYTE ;
-typedef  TYPE_7__* PBLTINFO ;
-typedef  int LONG ;
-typedef  int BYTE ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
-typedef  scalar_t__ BOOL ;
+typedef int* PUSHORT ;
+typedef int* PBYTE ;
+typedef TYPE_7__* PBLTINFO ;
+typedef int LONG ;
+typedef int BYTE ;
+typedef int BOOLEAN ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int DIB_DoRop (int /*<<< orphan*/ ,int,int,int) ; 
- int DIB_GetSource (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- int DIB_GetSourceIndex (TYPE_8__*,int,int) ; 
- scalar_t__ ROP4_USES_PATTERN (int /*<<< orphan*/ ) ; 
- scalar_t__ ROP4_USES_SOURCE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int DIB_DoRop (int ,int,int,int) ;
+ int DIB_GetSource (int ,int,int,int ) ;
+ int DIB_GetSourceIndex (TYPE_8__*,int,int) ;
+ scalar_t__ ROP4_USES_PATTERN (int ) ;
+ scalar_t__ ROP4_USES_SOURCE (int ) ;
+ int TRUE ;
 
 BOOLEAN
 DIB_24BPP_BitBlt(PBLTINFO BltInfo)

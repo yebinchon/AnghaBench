@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char* LPCSTR ;
-typedef  scalar_t__ HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFileA (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FILE_SHARE_READ ; 
- int /*<<< orphan*/  GENERIC_READ ; 
- int /*<<< orphan*/  GetFileSize (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INVALID_FILE_SIZE ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- int /*<<< orphan*/  PROG_FILES_DIR ; 
- int /*<<< orphan*/  lstrcatA (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lstrcpyA (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef char* LPCSTR ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+typedef int CHAR ;
+
+
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFileA (int *,int ,int ,int *,int ,int ,int *) ;
+ int FILE_SHARE_READ ;
+ int GENERIC_READ ;
+ int GetFileSize (scalar_t__,int *) ;
+ int INVALID_FILE_SIZE ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int MAX_PATH ;
+ int OPEN_EXISTING ;
+ int PROG_FILES_DIR ;
+ int lstrcatA (int *,char*) ;
+ int lstrcpyA (int *,int ) ;
 
 __attribute__((used)) static DWORD get_pf_file_size(LPCSTR file)
 {
@@ -39,11 +39,11 @@ __attribute__((used)) static DWORD get_pf_file_size(LPCSTR file)
     lstrcatA(path, "\\");
     lstrcatA(path, file);
 
-    hfile = CreateFileA(path, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, 0, NULL);
+    hfile = CreateFileA(path, GENERIC_READ, FILE_SHARE_READ, ((void*)0), OPEN_EXISTING, 0, ((void*)0));
     if (hfile == INVALID_HANDLE_VALUE)
         return INVALID_FILE_SIZE;
 
-    size = GetFileSize(hfile, NULL);
+    size = GetFileSize(hfile, ((void*)0));
     CloseHandle(hfile);
     return size;
 }

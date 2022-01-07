@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int xMin; int yMin; int xMax; int yMax; } ;
 struct TYPE_9__ {int Ascender; int Descender; int NumTrackKern; scalar_t__ TrackKerns; int NumKernPair; scalar_t__ KernPairs; TYPE_1__ FontBBox; scalar_t__ IsCIDFont; } ;
 struct TYPE_8__ {int index1; int index2; int x; int y; } ;
 struct TYPE_7__ {int degree; int min_ptsize; int min_kern; int max_ptsize; int max_kern; } ;
-typedef  scalar_t__ FT_UInt ;
-typedef  TYPE_2__* AFM_TrackKern ;
-typedef  TYPE_3__* AFM_KernPair ;
-typedef  TYPE_4__* AFM_FontInfo ;
+typedef scalar_t__ FT_UInt ;
+typedef TYPE_2__* AFM_TrackKern ;
+typedef TYPE_3__* AFM_KernPair ;
+typedef TYPE_4__* AFM_FontInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  printf (char*,...) ; 
 
-void dump_fontinfo( AFM_FontInfo  fi )
+ int printf (char*,...) ;
+
+void dump_fontinfo( AFM_FontInfo fi )
   {
-    FT_UInt  i;
+    FT_UInt i;
 
 
     printf( "This AFM is for %sCID font.\n\n",
@@ -49,7 +49,7 @@ void dump_fontinfo( AFM_FontInfo  fi )
 
     for ( i = 0; i < fi->NumTrackKern; i++ )
     {
-      AFM_TrackKern  tk = fi->TrackKerns + i;
+      AFM_TrackKern tk = fi->TrackKerns + i;
 
 
       printf( "\t%2d: %5.2f %5.2f %5.2f %5.2f\n", tk->degree,
@@ -69,7 +69,7 @@ void dump_fontinfo( AFM_FontInfo  fi )
 
     for ( i = 0; i < fi->NumKernPair; i++ )
     {
-      AFM_KernPair  kp = fi->KernPairs + i;
+      AFM_KernPair kp = fi->KernPairs + i;
 
 
       printf( "\t%3d + %3d => (%4d, %4d)\n", kp->index1,

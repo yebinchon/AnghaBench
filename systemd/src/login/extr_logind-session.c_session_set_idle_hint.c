@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int idle_hint; int /*<<< orphan*/  manager; int /*<<< orphan*/  user; scalar_t__ seat; int /*<<< orphan*/  idle_hint_timestamp; } ;
-typedef  TYPE_1__ Session ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  dual_timestamp_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  manager_send_changed (int /*<<< orphan*/ ,char*,char*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  seat_send_changed (scalar_t__,char*,char*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  session_send_changed (TYPE_1__*,char*,char*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  user_send_changed (int /*<<< orphan*/ ,char*,char*,char*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int idle_hint; int manager; int user; scalar_t__ seat; int idle_hint_timestamp; } ;
+typedef TYPE_1__ Session ;
+
+
+ int assert (TYPE_1__*) ;
+ int dual_timestamp_get (int *) ;
+ int manager_send_changed (int ,char*,char*,char*,int *) ;
+ int seat_send_changed (scalar_t__,char*,char*,char*,int *) ;
+ int session_send_changed (TYPE_1__*,char*,char*,char*,int *) ;
+ int user_send_changed (int ,char*,char*,char*,int *) ;
 
 void session_set_idle_hint(Session *s, bool b) {
         assert(s);
@@ -31,11 +31,11 @@ void session_set_idle_hint(Session *s, bool b) {
         s->idle_hint = b;
         dual_timestamp_get(&s->idle_hint_timestamp);
 
-        session_send_changed(s, "IdleHint", "IdleSinceHint", "IdleSinceHintMonotonic", NULL);
+        session_send_changed(s, "IdleHint", "IdleSinceHint", "IdleSinceHintMonotonic", ((void*)0));
 
         if (s->seat)
-                seat_send_changed(s->seat, "IdleHint", "IdleSinceHint", "IdleSinceHintMonotonic", NULL);
+                seat_send_changed(s->seat, "IdleHint", "IdleSinceHint", "IdleSinceHintMonotonic", ((void*)0));
 
-        user_send_changed(s->user, "IdleHint", "IdleSinceHint", "IdleSinceHintMonotonic", NULL);
-        manager_send_changed(s->manager, "IdleHint", "IdleSinceHint", "IdleSinceHintMonotonic", NULL);
+        user_send_changed(s->user, "IdleHint", "IdleSinceHint", "IdleSinceHintMonotonic", ((void*)0));
+        manager_send_changed(s->manager, "IdleHint", "IdleSinceHint", "IdleSinceHintMonotonic", ((void*)0));
 }

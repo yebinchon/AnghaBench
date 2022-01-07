@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  previouspriv ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int previouspriv ;
 struct TYPE_6__ {int PrivilegeCount; TYPE_1__* Privileges; } ;
-struct TYPE_5__ {int /*<<< orphan*/  Luid; int /*<<< orphan*/  Attributes; } ;
-typedef  TYPE_2__ TOKEN_PRIVILEGES ;
-typedef  int /*<<< orphan*/  LPSYSTEMTIME ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct TYPE_5__ {int Luid; int Attributes; } ;
+typedef TYPE_2__ TOKEN_PRIVILEGES ;
+typedef int LPSYSTEMTIME ;
+typedef int HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ AdjustTokenPrivileges (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,int,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetCurrentProcess () ; 
- scalar_t__ GetLastError () ; 
- scalar_t__ LookupPrivilegeValueW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ OpenProcessToken (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SE_PRIVILEGE_ENABLED ; 
- int /*<<< orphan*/  SE_SYSTEMTIME_NAME ; 
- int /*<<< orphan*/  SetSystemTime (int /*<<< orphan*/ ) ; 
- int TOKEN_ADJUST_PRIVILEGES ; 
- int TOKEN_QUERY ; 
+
+ scalar_t__ AdjustTokenPrivileges (int ,int ,TYPE_2__*,int,TYPE_2__*,int *) ;
+ int CloseHandle (int ) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int GetCurrentProcess () ;
+ scalar_t__ GetLastError () ;
+ scalar_t__ LookupPrivilegeValueW (int *,int ,int *) ;
+ scalar_t__ OpenProcessToken (int ,int,int *) ;
+ int SE_PRIVILEGE_ENABLED ;
+ int SE_SYSTEMTIME_NAME ;
+ int SetSystemTime (int ) ;
+ int TOKEN_ADJUST_PRIVILEGES ;
+ int TOKEN_QUERY ;
 
 BOOL
 SystemSetTime(LPSYSTEMTIME lpSystemTime)
@@ -44,9 +44,9 @@ SystemSetTime(LPSYSTEMTIME lpSystemTime)
     TOKEN_PRIVILEGES priv, previouspriv;
     BOOL Ret = FALSE;
 
-    /*
-     * Enable the SeSystemtimePrivilege privilege
-     */
+
+
+
 
     if (OpenProcessToken(GetCurrentProcess(),
                          TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY,
@@ -55,7 +55,7 @@ SystemSetTime(LPSYSTEMTIME lpSystemTime)
         priv.PrivilegeCount = 1;
         priv.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
 
-        if (LookupPrivilegeValueW(NULL,
+        if (LookupPrivilegeValueW(((void*)0),
                                   SE_SYSTEMTIME_NAME,
                                   &priv.Privileges[0].Luid))
         {
@@ -67,21 +67,21 @@ SystemSetTime(LPSYSTEMTIME lpSystemTime)
                                       &PrevSize) &&
                 GetLastError() == ERROR_SUCCESS)
             {
-                /*
-                 * We successfully enabled it, we're permitted to change the time.
-                 */
+
+
+
                 Ret = SetSystemTime(lpSystemTime);
 
-                /*
-                 * For the sake of security, restore the previous status again
-                 */
+
+
+
                 if (previouspriv.PrivilegeCount > 0)
                 {
                     AdjustTokenPrivileges(hToken,
                                           FALSE,
                                           &previouspriv,
                                           0,
-                                          NULL,
+                                          ((void*)0),
                                           0);
                 }
             }

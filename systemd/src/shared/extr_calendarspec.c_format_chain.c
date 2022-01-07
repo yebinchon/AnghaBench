@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int start; int repeat; int stop; struct TYPE_3__* next; } ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  TYPE_1__ CalendarComponent ;
+typedef int FILE ;
+typedef TYPE_1__ CalendarComponent ;
 
-/* Variables and functions */
- int USEC_PER_SEC ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,int,...) ; 
- int /*<<< orphan*/  fputc (char,int /*<<< orphan*/ *) ; 
+
+ int USEC_PER_SEC ;
+ int assert (int) ;
+ int fprintf (int *,char*,int,...) ;
+ int fputc (char,int *) ;
 
 __attribute__((used)) static void format_chain(FILE *f, int space, const CalendarComponent *c, bool usec) {
         int d = usec ? (int) USEC_PER_SEC : 1;

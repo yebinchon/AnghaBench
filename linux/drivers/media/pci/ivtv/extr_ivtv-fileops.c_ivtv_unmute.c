@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ivtv {int /*<<< orphan*/  capturing; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CX2341X_ENC_MISC ; 
- int /*<<< orphan*/  CX2341X_ENC_MUTE_AUDIO ; 
- int /*<<< orphan*/  IVTV_DEBUG_INFO (char*) ; 
- scalar_t__ atomic_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ivtv_msleep_timeout (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ivtv_vapi (struct ivtv*,int /*<<< orphan*/ ,int,int) ; 
+
+
+
+struct ivtv {int capturing; } ;
+
+
+ int CX2341X_ENC_MISC ;
+ int CX2341X_ENC_MUTE_AUDIO ;
+ int IVTV_DEBUG_INFO (char*) ;
+ scalar_t__ atomic_read (int *) ;
+ int ivtv_msleep_timeout (int,int ) ;
+ int ivtv_vapi (struct ivtv*,int ,int,int) ;
 
 void ivtv_unmute(struct ivtv *itv)
 {
-	if (atomic_read(&itv->capturing)) {
-		ivtv_msleep_timeout(100, 0);
-		ivtv_vapi(itv, CX2341X_ENC_MISC, 1, 12);
-		ivtv_vapi(itv, CX2341X_ENC_MUTE_AUDIO, 1, 0);
-	}
-	IVTV_DEBUG_INFO("Unmute\n");
+ if (atomic_read(&itv->capturing)) {
+  ivtv_msleep_timeout(100, 0);
+  ivtv_vapi(itv, CX2341X_ENC_MISC, 1, 12);
+  ivtv_vapi(itv, CX2341X_ENC_MUTE_AUDIO, 1, 0);
+ }
+ IVTV_DEBUG_INFO("Unmute\n");
 }

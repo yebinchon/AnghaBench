@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
 struct TYPE_3__ {int Control; void* Sacl; void* Dacl; void* Group; void* Owner; } ;
-typedef  TYPE_1__ SECURITY_DESCRIPTOR_RELATIVE ;
-typedef  int /*<<< orphan*/  PACL ;
-typedef  int* LPDWORD ;
-typedef  char* LPCWSTR ;
-typedef  void* LPBYTE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ SECURITY_DESCRIPTOR_RELATIVE ;
+typedef int PACL ;
+typedef int* LPDWORD ;
+typedef char* LPCWSTR ;
+typedef void* LPBYTE ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_INVALID_PARAMETER ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  ParseStringAclToAcl (char*,int*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  ParseStringSidToSid (char*,void*,int*) ; 
- int SE_DACL_PRESENT ; 
- int SE_SACL_PRESENT ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- char* heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (char*) ; 
- int lstrlenW (char*) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
+
+ int ERROR_INVALID_PARAMETER ;
+ int FALSE ;
+ int FIXME (char*) ;
+ int ParseStringAclToAcl (char*,int*,int ,int*) ;
+ int ParseStringSidToSid (char*,void*,int*) ;
+ int SE_DACL_PRESENT ;
+ int SE_SACL_PRESENT ;
+ int SetLastError (int ) ;
+ int TRUE ;
+ char* heap_alloc (int) ;
+ int heap_free (char*) ;
+ int lstrlenW (char*) ;
+ int memcpy (char*,char*,int) ;
 
 __attribute__((used)) static BOOL ParseStringSecurityDescriptorToSecurityDescriptor(
     LPCWSTR StringSecurityDescriptor,
@@ -45,7 +45,7 @@ __attribute__((used)) static BOOL ParseStringSecurityDescriptorToSecurityDescrip
     WCHAR toktype;
     WCHAR *tok;
     LPCWSTR lptoken;
-    LPBYTE lpNext = NULL;
+    LPBYTE lpNext = ((void*)0);
     DWORD len;
 
     *cBytes = sizeof(SECURITY_DESCRIPTOR_RELATIVE);
@@ -62,21 +62,21 @@ __attribute__((used)) static BOOL ParseStringSecurityDescriptorToSecurityDescrip
     {
         toktype = *StringSecurityDescriptor;
 
-	/* Expect char identifier followed by ':' */
-	StringSecurityDescriptor++;
+
+ StringSecurityDescriptor++;
         if (*StringSecurityDescriptor != ':')
         {
             SetLastError(ERROR_INVALID_PARAMETER);
             goto lend;
         }
-	StringSecurityDescriptor++;
+ StringSecurityDescriptor++;
 
-	/* Extract token */
-	lptoken = StringSecurityDescriptor;
-	while (*lptoken && *lptoken != ':')
+
+ lptoken = StringSecurityDescriptor;
+ while (*lptoken && *lptoken != ':')
             lptoken++;
 
-	if (*lptoken)
+ if (*lptoken)
             lptoken--;
 
         len = lptoken - StringSecurityDescriptor;
@@ -84,7 +84,7 @@ __attribute__((used)) static BOOL ParseStringSecurityDescriptorToSecurityDescrip
         tok[len] = 0;
 
         switch (toktype)
-	{
+ {
             case 'O':
             {
                 DWORD bytes;
@@ -95,10 +95,10 @@ __attribute__((used)) static BOOL ParseStringSecurityDescriptorToSecurityDescrip
                 if (SecurityDescriptor)
                 {
                     SecurityDescriptor->Owner = lpNext - (LPBYTE)SecurityDescriptor;
-                    lpNext += bytes; /* Advance to next token */
+                    lpNext += bytes;
                 }
 
-		*cBytes += bytes;
+  *cBytes += bytes;
 
                 break;
             }
@@ -113,16 +113,16 @@ __attribute__((used)) static BOOL ParseStringSecurityDescriptorToSecurityDescrip
                 if (SecurityDescriptor)
                 {
                     SecurityDescriptor->Group = lpNext - (LPBYTE)SecurityDescriptor;
-                    lpNext += bytes; /* Advance to next token */
+                    lpNext += bytes;
                 }
 
-		*cBytes += bytes;
+  *cBytes += bytes;
 
                 break;
             }
 
             case 'D':
-	    {
+     {
                 DWORD flags;
                 DWORD bytes;
 
@@ -133,12 +133,12 @@ __attribute__((used)) static BOOL ParseStringSecurityDescriptorToSecurityDescrip
                 {
                     SecurityDescriptor->Control |= SE_DACL_PRESENT | flags;
                     SecurityDescriptor->Dacl = lpNext - (LPBYTE)SecurityDescriptor;
-                    lpNext += bytes; /* Advance to next token */
-		}
+                    lpNext += bytes;
+  }
 
-		*cBytes += bytes;
+  *cBytes += bytes;
 
-		break;
+  break;
             }
 
             case 'S':
@@ -153,19 +153,19 @@ __attribute__((used)) static BOOL ParseStringSecurityDescriptorToSecurityDescrip
                 {
                     SecurityDescriptor->Control |= SE_SACL_PRESENT | flags;
                     SecurityDescriptor->Sacl = lpNext - (LPBYTE)SecurityDescriptor;
-                    lpNext += bytes; /* Advance to next token */
-		}
+                    lpNext += bytes;
+  }
 
-		*cBytes += bytes;
+  *cBytes += bytes;
 
-		break;
+  break;
             }
 
             default:
                 FIXME("Unknown token\n");
                 SetLastError(ERROR_INVALID_PARAMETER);
-		goto lend;
-	}
+  goto lend;
+ }
 
         StringSecurityDescriptor = lptoken;
     }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_10__ {int** mvs; scalar_t__ sb; struct TYPE_10__* subs; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * pixel_refs; int /*<<< orphan*/ * pixel_weights; int /*<<< orphan*/ * pixel_mvs; TYPE_2__* frames; } ;
+struct TYPE_9__ {int * pixel_refs; int * pixel_weights; int * pixel_mvs; TYPE_2__* frames; } ;
 struct TYPE_8__ {TYPE_1__* avf; } ;
 struct TYPE_7__ {int width; int height; } ;
-typedef  int /*<<< orphan*/  PixelWeights ;
-typedef  int /*<<< orphan*/  PixelRefs ;
-typedef  int /*<<< orphan*/  PixelMVS ;
-typedef  TYPE_3__ MIContext ;
-typedef  TYPE_4__ Block ;
+typedef int PixelWeights ;
+typedef int PixelRefs ;
+typedef int PixelMVS ;
+typedef TYPE_3__ MIContext ;
+typedef TYPE_4__ Block ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD_PIXELS (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  PX_WEIGHT_MAX ; 
+
+ int ADD_PIXELS (int ,int,int) ;
+ int PX_WEIGHT_MAX ;
 
 __attribute__((used)) static void var_size_bmc(MIContext *mi_ctx, Block *block, int x_mb, int y_mb, int n, int alpha)
 {
@@ -50,7 +50,7 @@ __attribute__((used)) static void var_size_bmc(MIContext *mi_ctx, Block *block, 
                 int end_x = start_x + (1 << (n - 1));
                 int end_y = start_y + (1 << (n - 1));
 
-                for (y = start_y; y < end_y; y++)  {
+                for (y = start_y; y < end_y; y++) {
                     int y_min = -y;
                     int y_max = height - y - 1;
                     for (x = start_x; x < end_x; x++) {

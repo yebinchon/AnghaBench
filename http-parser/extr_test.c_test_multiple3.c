@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct message {char* raw; int /*<<< orphan*/  type; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct message {char* raw; int type; } ;
 struct TYPE_2__ {scalar_t__ upgrade; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  abort () ; 
- int count_parsed_messages (int,struct message const*,struct message const*,struct message const*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  message_eq (int,int /*<<< orphan*/ ,struct message const*) ; 
- int num_messages ; 
- size_t parse (char*,size_t) ; 
- TYPE_1__ parser ; 
- int /*<<< orphan*/  parser_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_error (char*,size_t) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- size_t strlen (char*) ; 
- int /*<<< orphan*/  upgrade_message_fix (char*,size_t,int,struct message const*,struct message const*,struct message const*) ; 
+
+ int abort () ;
+ int count_parsed_messages (int,struct message const*,struct message const*,struct message const*) ;
+ int fprintf (int ,char*,int) ;
+ int message_eq (int,int ,struct message const*) ;
+ int num_messages ;
+ size_t parse (char*,size_t) ;
+ TYPE_1__ parser ;
+ int parser_init (int ) ;
+ int print_error (char*,size_t) ;
+ int stderr ;
+ int strcat (char*,char*) ;
+ size_t strlen (char*) ;
+ int upgrade_message_fix (char*,size_t,int,struct message const*,struct message const*,struct message const*) ;
 
 void
 test_multiple3 (const struct message *r1, const struct message *r2, const struct message *r3)
@@ -61,7 +61,7 @@ test_multiple3 (const struct message *r1, const struct message *r2, const struct
     abort();
   }
 
-  read = parse(NULL, 0);
+  read = parse(((void*)0), 0);
 
   if (read != 0) {
     print_error(total, read);

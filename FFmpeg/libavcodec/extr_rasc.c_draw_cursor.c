@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_7__ {scalar_t__ width; scalar_t__ height; scalar_t__ pix_fmt; TYPE_2__* priv_data; } ;
 struct TYPE_6__ {int* cursor; scalar_t__ cursor_x; scalar_t__ cursor_y; int cursor_w; scalar_t__ cursor_h; TYPE_1__* frame; } ;
 struct TYPE_5__ {int** data; int* linesize; } ;
-typedef  TYPE_2__ RASCContext ;
-typedef  TYPE_3__ AVCodecContext ;
+typedef TYPE_2__ RASCContext ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- scalar_t__ AV_PIX_FMT_BGR0 ; 
- scalar_t__ AV_PIX_FMT_PAL8 ; 
- scalar_t__ AV_PIX_FMT_RGB555LE ; 
- int /*<<< orphan*/  AV_WL16 (int*,int) ; 
- int FFABS (int) ; 
- int INT_MAX ; 
+
+ scalar_t__ AV_PIX_FMT_BGR0 ;
+ scalar_t__ AV_PIX_FMT_PAL8 ;
+ scalar_t__ AV_PIX_FMT_RGB555LE ;
+ int AV_WL16 (int*,int) ;
+ int FFABS (int) ;
+ int INT_MAX ;
 
 __attribute__((used)) static void draw_cursor(AVCodecContext *avctx)
 {

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  union in_addr_union {int dummy; } in_addr_union ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PREFIXLEN_LEGACY ; 
- int /*<<< orphan*/  PREFIXLEN_REFUSE ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int in_addr_equal (int,union in_addr_union*,union in_addr_union const*) ; 
- int in_addr_prefix_from_string (char const*,int,union in_addr_union*,unsigned char*) ; 
- int in_addr_prefix_from_string_auto (char const*,int*,union in_addr_union*,unsigned char*) ; 
- int in_addr_prefix_from_string_auto_internal (char const*,int /*<<< orphan*/ ,int*,union in_addr_union*,unsigned char*) ; 
+
+
+
+typedef union in_addr_union {int dummy; } in_addr_union ;
+
+
+ int PREFIXLEN_LEGACY ;
+ int PREFIXLEN_REFUSE ;
+ int assert_se (int) ;
+ int in_addr_equal (int,union in_addr_union*,union in_addr_union const*) ;
+ int in_addr_prefix_from_string (char const*,int,union in_addr_union*,unsigned char*) ;
+ int in_addr_prefix_from_string_auto (char const*,int*,union in_addr_union*,unsigned char*) ;
+ int in_addr_prefix_from_string_auto_internal (char const*,int ,int*,union in_addr_union*,unsigned char*) ;
 
 __attribute__((used)) static void test_in_addr_prefix_from_string_one(
                 const char *p,

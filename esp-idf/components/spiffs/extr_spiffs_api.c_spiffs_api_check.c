@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  size_t spiffs_check_type ;
-typedef  size_t spiffs_check_report ;
-typedef  int /*<<< orphan*/  spiffs ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ESP_LOGV (int /*<<< orphan*/ ,char*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t SPIFFS_CHECK_PROGRESS ; 
- int /*<<< orphan*/  TAG ; 
 
-void spiffs_api_check(spiffs *fs, spiffs_check_type type, 
+
+
+typedef int uint32_t ;
+typedef size_t spiffs_check_type ;
+typedef size_t spiffs_check_report ;
+typedef int spiffs ;
+
+
+ int ESP_LOGE (int ,char*,char const*,char const*,int ,int ) ;
+ int ESP_LOGV (int ,char*,char const*,int ,int ) ;
+ size_t SPIFFS_CHECK_PROGRESS ;
+ int TAG ;
+
+void spiffs_api_check(spiffs *fs, spiffs_check_type type,
                             spiffs_check_report report, uint32_t arg1, uint32_t arg2)
 {
     static const char * spiffs_check_type_str[3] = {
@@ -41,10 +41,10 @@ void spiffs_api_check(spiffs *fs, spiffs_check_type type,
     };
 
     if (report != SPIFFS_CHECK_PROGRESS) {
-        ESP_LOGE(TAG, "CHECK: type:%s, report:%s, %x:%x", spiffs_check_type_str[type], 
+        ESP_LOGE(TAG, "CHECK: type:%s, report:%s, %x:%x", spiffs_check_type_str[type],
                               spiffs_check_report_str[report], arg1, arg2);
     } else {
-        ESP_LOGV(TAG, "CHECK PROGRESS: report:%s, %x:%x", 
+        ESP_LOGV(TAG, "CHECK PROGRESS: report:%s, %x:%x",
                               spiffs_check_report_str[report], arg1, arg2);
     }
 }

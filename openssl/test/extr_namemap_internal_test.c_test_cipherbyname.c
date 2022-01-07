@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  OSSL_NAMEMAP ;
-typedef  int /*<<< orphan*/  EVP_CIPHER ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * EVP_get_cipherbyname (char*) ; 
- int /*<<< orphan*/  TEST_int_eq (int,int) ; 
- int /*<<< orphan*/  TEST_int_ne (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  TEST_ptr_eq (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int ossl_namemap_add (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/ * ossl_namemap_stored (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int OSSL_NAMEMAP ;
+typedef int EVP_CIPHER ;
+
+
+ int * EVP_get_cipherbyname (char*) ;
+ int TEST_int_eq (int,int) ;
+ int TEST_int_ne (int,int ) ;
+ int TEST_ptr (int const*) ;
+ int TEST_ptr_eq (int const*,int const*) ;
+ int ossl_namemap_add (int *,int,char*) ;
+ int * ossl_namemap_stored (int *) ;
 
 __attribute__((used)) static int test_cipherbyname(void)
 {
     int id;
-    OSSL_NAMEMAP *nm = ossl_namemap_stored(NULL);
+    OSSL_NAMEMAP *nm = ossl_namemap_stored(((void*)0));
     const EVP_CIPHER *aes128, *bar;
 
     id = ossl_namemap_add(nm, 0, "AES-128-CBC");

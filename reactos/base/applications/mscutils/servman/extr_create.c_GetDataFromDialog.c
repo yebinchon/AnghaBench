@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {void* Options; void* Description; void* BinPath; void* DisplayName; void* ServiceName; } ;
-typedef  TYPE_1__* PCREATE_DATA ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__* PCREATE_DATA ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- void* GetStringFromDialog (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_CREATE_DESC ; 
- int /*<<< orphan*/  IDC_CREATE_DISPNAME ; 
- int /*<<< orphan*/  IDC_CREATE_OPTIONS ; 
- int /*<<< orphan*/  IDC_CREATE_PATH ; 
- int /*<<< orphan*/  IDC_CREATE_SERVNAME ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int FALSE ;
+ void* GetStringFromDialog (TYPE_1__*,int ) ;
+ int IDC_CREATE_DESC ;
+ int IDC_CREATE_DISPNAME ;
+ int IDC_CREATE_OPTIONS ;
+ int IDC_CREATE_PATH ;
+ int IDC_CREATE_SERVNAME ;
+ int TRUE ;
 
 __attribute__((used)) static BOOL
 GetDataFromDialog(PCREATE_DATA Data)

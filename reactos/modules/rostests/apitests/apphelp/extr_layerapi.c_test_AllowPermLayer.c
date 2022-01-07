@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
 
-/* Variables and functions */
- scalar_t__ DRIVE_REMOTE ; 
- int FALSE ; 
- scalar_t__ GetDriveTypeA (char*) ; 
- scalar_t__ WINVER_WIN8 ; 
- scalar_t__ g_WinVersion ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int pAllowPermLayer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char) ; 
- int wrapAllowPermLayer (char*) ; 
+
+
+
+typedef scalar_t__ UINT ;
+
+
+ scalar_t__ DRIVE_REMOTE ;
+ int FALSE ;
+ scalar_t__ GetDriveTypeA (char*) ;
+ scalar_t__ WINVER_WIN8 ;
+ scalar_t__ g_WinVersion ;
+ int ok (int,char*,...) ;
+ int pAllowPermLayer (int *) ;
+ int sprintf (char*,char*,char) ;
+ int wrapAllowPermLayer (char*) ;
 
 __attribute__((used)) static void test_AllowPermLayer(void)
 {
     char buf[20];
     char drive_letter;
     UINT drivetype = 0;
-    ok(pAllowPermLayer(NULL) == FALSE, "Expected AllowPermLayer to fail for NULL\n");
+    ok(pAllowPermLayer(((void*)0)) == FALSE, "Expected AllowPermLayer to fail for NULL\n");
     if (g_WinVersion < WINVER_WIN8)
     {
         ok(wrapAllowPermLayer("-:"), "Expected AllowPermLayer to succeed\n");

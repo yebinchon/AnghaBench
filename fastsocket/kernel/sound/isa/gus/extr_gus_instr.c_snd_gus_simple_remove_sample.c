@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  mem_alloc; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int mem_alloc; } ;
 struct snd_gus_card {TYPE_1__ gf1; } ;
-struct TYPE_4__ {int /*<<< orphan*/  memory; } ;
+struct TYPE_4__ {int memory; } ;
 struct simple_instrument {TYPE_2__ address; } ;
 
-/* Variables and functions */
- int snd_gf1_mem_free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int snd_gf1_mem_free (int *,int ) ;
 
 int snd_gus_simple_remove_sample(void *private_data, struct simple_instrument *instr,
-			         int atomic)
+            int atomic)
 {
-	struct snd_gus_card *gus = private_data;
+ struct snd_gus_card *gus = private_data;
 
-	return snd_gf1_mem_free(&gus->gf1.mem_alloc, instr->address.memory);
+ return snd_gf1_mem_free(&gus->gf1.mem_alloc, instr->address.memory);
 }

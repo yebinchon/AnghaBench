@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  test_gamma_expand16; } ;
-typedef  TYPE_1__ png_modifier ;
-typedef  int /*<<< orphan*/  png_byte ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gamma_test (TYPE_1__*,int /*<<< orphan*/  const,int /*<<< orphan*/  const,int const,int const,double const,double const,int /*<<< orphan*/  const,int /*<<< orphan*/ ,char*,int const,int const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t safecat (char*,int,size_t,char*) ; 
- size_t safecatd (char*,int,size_t,double const,int) ; 
- size_t safecatn (char*,int,size_t,int /*<<< orphan*/  const) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int test_gamma_expand16; } ;
+typedef TYPE_1__ png_modifier ;
+typedef int png_byte ;
+
+
+ int gamma_test (TYPE_1__*,int const,int const,int const,int const,double const,double const,int const,int ,char*,int const,int const,int ,int ,int ,int ) ;
+ size_t safecat (char*,int,size_t,char*) ;
+ size_t safecatd (char*,int,size_t,double const,int) ;
+ size_t safecatn (char*,int,size_t,int const) ;
 
 __attribute__((used)) static void gamma_transform_test(png_modifier *pm,
    const png_byte colour_type, const png_byte bit_depth,

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_udp_t ;
-typedef  int /*<<< orphan*/  uv_handle_t ;
-struct TYPE_3__ {int /*<<< orphan*/  base; } ;
-typedef  TYPE_1__ uv_buf_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uv_udp_t ;
+typedef int uv_handle_t ;
+struct TYPE_3__ {int base; } ;
+typedef TYPE_1__ uv_buf_t ;
 struct sockaddr {int dummy; } ;
-typedef  scalar_t__ ssize_t ;
-typedef  int /*<<< orphan*/  sockname ;
+typedef scalar_t__ ssize_t ;
+typedef int sockname ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  check_sockname (struct sockaddr*,char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  getsocknamecount ; 
- int /*<<< orphan*/  memset (struct sockaddr*,int,int) ; 
- int /*<<< orphan*/  udp ; 
- int /*<<< orphan*/  uv_close (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int uv_udp_getsockname (int /*<<< orphan*/ *,struct sockaddr*,int*) ; 
+
+ int ASSERT (int) ;
+ int check_sockname (struct sockaddr*,char*,int ,char*) ;
+ int free (int ) ;
+ int getsocknamecount ;
+ int memset (struct sockaddr*,int,int) ;
+ int udp ;
+ int uv_close (int *,int *) ;
+ int uv_udp_getsockname (int *,struct sockaddr*,int*) ;
 
 __attribute__((used)) static void udp_recv(uv_udp_t* handle,
                      ssize_t nread,
@@ -52,6 +52,6 @@ __attribute__((used)) static void udp_recv(uv_udp_t* handle,
   check_sockname(&sockname, "0.0.0.0", 0, "udp receiving socket");
   getsocknamecount++;
 
-  uv_close((uv_handle_t*) &udp, NULL);
-  uv_close((uv_handle_t*) handle, NULL);
+  uv_close((uv_handle_t*) &udp, ((void*)0));
+  uv_close((uv_handle_t*) handle, ((void*)0));
 }

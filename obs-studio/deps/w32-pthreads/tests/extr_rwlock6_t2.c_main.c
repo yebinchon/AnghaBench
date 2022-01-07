@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pthread_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int pthread_t ;
 struct TYPE_5__ {long tv_sec; int tv_nsec; } ;
 struct TYPE_4__ {int const millitm; scalar_t__ time; } ;
-typedef  TYPE_1__ PTW32_STRUCT_TIMEB ;
-typedef  int DWORD ;
+typedef TYPE_1__ PTW32_STRUCT_TIMEB ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PTW32_FTIME (TYPE_1__*) ; 
- int /*<<< orphan*/  Sleep (int) ; 
- TYPE_2__ abstime ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ bankAccount ; 
- scalar_t__ pthread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*) ; 
- scalar_t__ pthread_join (int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  rdfunc ; 
- int /*<<< orphan*/  wrfunc ; 
+
+ int PTW32_FTIME (TYPE_1__*) ;
+ int Sleep (int) ;
+ TYPE_2__ abstime ;
+ int assert (int) ;
+ scalar_t__ bankAccount ;
+ scalar_t__ pthread_create (int *,int *,int ,void*) ;
+ scalar_t__ pthread_join (int ,void**) ;
+ int rdfunc ;
+ int wrfunc ;
 
 int
 main()
@@ -50,11 +50,11 @@ main()
 
   bankAccount = 0;
 
-  assert(pthread_create(&wrt1, NULL, wrfunc, (void *)(size_t)1) == 0);
+  assert(pthread_create(&wrt1, ((void*)0), wrfunc, (void *)(size_t)1) == 0);
   Sleep(100);
-  assert(pthread_create(&rdt, NULL, rdfunc, NULL) == 0);
+  assert(pthread_create(&rdt, ((void*)0), rdfunc, ((void*)0)) == 0);
   Sleep(100);
-  assert(pthread_create(&wrt2, NULL, wrfunc, (void *)(size_t)2) == 0);
+  assert(pthread_create(&wrt2, ((void*)0), wrfunc, (void *)(size_t)2) == 0);
 
   assert(pthread_join(wrt1, &wr1Result) == 0);
   assert(pthread_join(rdt, &rdResult) == 0);

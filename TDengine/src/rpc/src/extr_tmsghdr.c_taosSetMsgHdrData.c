@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct msghdr {size_t msg_iovlen; TYPE_1__* msg_iov; } ;
 struct TYPE_2__ {char* iov_base; size_t iov_len; } ;
 
-/* Variables and functions */
+
 
 void taosSetMsgHdrData(void *hdr, char *data, int dataLen) {
   struct msghdr *msgHdr = (struct msghdr *)hdr;

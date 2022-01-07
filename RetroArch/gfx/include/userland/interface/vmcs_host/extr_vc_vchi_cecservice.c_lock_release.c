@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  lock; int /*<<< orphan*/ * client_handle; scalar_t__ initialised; } ;
 
-/* Variables and functions */
- TYPE_1__ cecservice_client ; 
- int /*<<< orphan*/  vchi_service_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int lock; int * client_handle; scalar_t__ initialised; } ;
+
+
+ TYPE_1__ cecservice_client ;
+ int vchi_service_release (int ) ;
+ int vcos_mutex_unlock (int *) ;
 
 __attribute__((used)) static __inline void lock_release (void) {
    if(cecservice_client.initialised) {

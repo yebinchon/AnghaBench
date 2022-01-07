@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int fbw_channels; scalar_t__ channel_mode; int* channel_uses_spx; int spx_dst_end_freq; int spx_dst_start_freq; int spx_src_start_freq; int /*<<< orphan*/  spx_band_struct; int /*<<< orphan*/  spx_band_sizes; int /*<<< orphan*/  num_spx_bands; int /*<<< orphan*/  eac3; int /*<<< orphan*/  avctx; int /*<<< orphan*/  gbc; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_1__ AC3DecodeContext ;
 
-/* Variables and functions */
- scalar_t__ AC3_CHMODE_MONO ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  USE_FIXED ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  decode_band_structure (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int* end_freq_inv_tab ; 
- int /*<<< orphan*/  ff_eac3_default_spx_band_struct ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits1 (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int fbw_channels; scalar_t__ channel_mode; int* channel_uses_spx; int spx_dst_end_freq; int spx_dst_start_freq; int spx_src_start_freq; int spx_band_struct; int spx_band_sizes; int num_spx_bands; int eac3; int avctx; int gbc; } ;
+typedef int GetBitContext ;
+typedef TYPE_1__ AC3DecodeContext ;
+
+
+ scalar_t__ AC3_CHMODE_MONO ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int USE_FIXED ;
+ int av_log (int ,int ,char*,int,int) ;
+ int decode_band_structure (int *,int,int ,int ,int,int,int ,int *,int ,int ,int) ;
+ int* end_freq_inv_tab ;
+ int ff_eac3_default_spx_band_struct ;
+ int get_bits (int *,int) ;
+ int get_bits1 (int *) ;
 
 __attribute__((used)) static inline int spx_strategy(AC3DecodeContext *s, int blk)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static inline int spx_strategy(AC3DecodeContext *s, int bl
     int dst_start_freq, dst_end_freq, src_start_freq,
         start_subband, end_subband, ch;
 
-    /* determine which channels use spx */
+
     if (s->channel_mode == AC3_CHMODE_MONO) {
         s->channel_uses_spx[1] = 1;
     } else {
@@ -42,23 +42,23 @@ __attribute__((used)) static inline int spx_strategy(AC3DecodeContext *s, int bl
             s->channel_uses_spx[ch] = get_bits1(bc);
     }
 
-    /* get the frequency bins of the spx copy region and the spx start
-       and end subbands */
+
+
     dst_start_freq = get_bits(bc, 2);
-    start_subband  = get_bits(bc, 3) + 2;
+    start_subband = get_bits(bc, 3) + 2;
     if (start_subband > 7)
         start_subband += start_subband - 7;
-    end_subband    = get_bits(bc, 3) + 5;
-#if USE_FIXED
-    s->spx_dst_end_freq = end_freq_inv_tab[end_subband-5];
-#endif
-    if (end_subband   > 7)
-        end_subband   += end_subband   - 7;
-    dst_start_freq = dst_start_freq * 12 + 25;
-    src_start_freq = start_subband  * 12 + 25;
-    dst_end_freq   = end_subband    * 12 + 25;
+    end_subband = get_bits(bc, 3) + 5;
 
-    /* check validity of spx ranges */
+
+
+    if (end_subband > 7)
+        end_subband += end_subband - 7;
+    dst_start_freq = dst_start_freq * 12 + 25;
+    src_start_freq = start_subband * 12 + 25;
+    dst_end_freq = end_subband * 12 + 25;
+
+
     if (start_subband >= end_subband) {
         av_log(s->avctx, AV_LOG_ERROR, "invalid spectral extension "
                "range (%d >= %d)\n", start_subband, end_subband);
@@ -73,7 +73,7 @@ __attribute__((used)) static inline int spx_strategy(AC3DecodeContext *s, int bl
     s->spx_dst_start_freq = dst_start_freq;
     s->spx_src_start_freq = src_start_freq;
     if (!USE_FIXED)
-        s->spx_dst_end_freq   = dst_end_freq;
+        s->spx_dst_end_freq = dst_end_freq;
 
     decode_band_structure(bc, blk, s->eac3, 0,
                           start_subband, end_subband,

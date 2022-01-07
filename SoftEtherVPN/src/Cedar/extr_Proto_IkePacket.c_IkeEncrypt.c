@@ -1,80 +1,80 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp1600 ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  UCHAR ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int tmp1600 ;
+typedef int UINT ;
+typedef int UCHAR ;
 struct TYPE_7__ {TYPE_1__* Crypto; } ;
-struct TYPE_6__ {TYPE_4__* Key; int /*<<< orphan*/  NextIv; int /*<<< orphan*/  Iv; } ;
+struct TYPE_6__ {TYPE_4__* Key; int NextIv; int Iv; } ;
 struct TYPE_5__ {int BlockSize; } ;
-typedef  TYPE_2__ IKE_CRYPTO_PARAM ;
-typedef  int /*<<< orphan*/  BUF ;
+typedef TYPE_2__ IKE_CRYPTO_PARAM ;
+typedef int BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Copy (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  Free (void*) ; 
- int /*<<< orphan*/  IkeCryptoEncrypt (TYPE_4__*,void*,void*,int,int /*<<< orphan*/ ) ; 
- void* Malloc (int) ; 
- int /*<<< orphan*/ * MemToBuf (void*,int) ; 
- int /*<<< orphan*/  Zero (int /*<<< orphan*/ ,int) ; 
+
+ int Copy (int ,int *,int) ;
+ int Free (void*) ;
+ int IkeCryptoEncrypt (TYPE_4__*,void*,void*,int,int ) ;
+ void* Malloc (int) ;
+ int * MemToBuf (void*,int) ;
+ int Zero (int ,int) ;
 
 BUF *IkeEncrypt(void *data, UINT size, IKE_CRYPTO_PARAM *cparam)
 {
-	void *tmp;
-	BUF *b;
-	UCHAR tmp1600[1600];
-	bool no_free = false;
-	// Validate arguments
-	if (data == NULL || cparam == NULL)
-	{
-		return NULL;
-	}
+ void *tmp;
+ BUF *b;
+ UCHAR tmp1600[1600];
+ bool no_free = 0;
 
-	if ((size % cparam->Key->Crypto->BlockSize) != 0)
-	{
-		// Not an integral multiple of block size
-		return NULL;
-	}
+ if (data == ((void*)0) || cparam == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	if (size > sizeof(tmp1600))
-	{
-		tmp = Malloc(size);
-	}
-	else
-	{
-		tmp = tmp1600;
-		no_free = true;
-	}
+ if ((size % cparam->Key->Crypto->BlockSize) != 0)
+ {
 
-	IkeCryptoEncrypt(cparam->Key, tmp, data, size, cparam->Iv);
+  return ((void*)0);
+ }
 
-	if (size >= cparam->Key->Crypto->BlockSize)
-	{
-		Copy(cparam->NextIv, ((UCHAR *)tmp) + (size - cparam->Key->Crypto->BlockSize), cparam->Key->Crypto->BlockSize);
-	}
-	else
-	{
-		Zero(cparam->NextIv, cparam->Key->Crypto->BlockSize);
-	}
+ if (size > sizeof(tmp1600))
+ {
+  tmp = Malloc(size);
+ }
+ else
+ {
+  tmp = tmp1600;
+  no_free = 1;
+ }
 
-	b = MemToBuf(tmp, size);
+ IkeCryptoEncrypt(cparam->Key, tmp, data, size, cparam->Iv);
 
-	if (no_free == false)
-	{
-		Free(tmp);
-	}
+ if (size >= cparam->Key->Crypto->BlockSize)
+ {
+  Copy(cparam->NextIv, ((UCHAR *)tmp) + (size - cparam->Key->Crypto->BlockSize), cparam->Key->Crypto->BlockSize);
+ }
+ else
+ {
+  Zero(cparam->NextIv, cparam->Key->Crypto->BlockSize);
+ }
 
-	return b;
+ b = MemToBuf(tmp, size);
+
+ if (no_free == 0)
+ {
+  Free(tmp);
+ }
+
+ return b;
 }

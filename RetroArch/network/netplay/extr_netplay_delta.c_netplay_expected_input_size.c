@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_3__ {int* config_devices; } ;
-typedef  TYPE_1__ netplay_t ;
+typedef TYPE_1__ netplay_t ;
 
-/* Variables and functions */
- int MAX_INPUT_DEVICES ; 
-#define  RETRO_DEVICE_ANALOG 132 
-#define  RETRO_DEVICE_JOYPAD 131 
-#define  RETRO_DEVICE_KEYBOARD 130 
-#define  RETRO_DEVICE_LIGHTGUN 129 
- int RETRO_DEVICE_MASK ; 
-#define  RETRO_DEVICE_MOUSE 128 
+
+ int MAX_INPUT_DEVICES ;
+
+
+
+
+ int RETRO_DEVICE_MASK ;
+
 
 uint32_t netplay_expected_input_size(netplay_t *netplay, uint32_t devices)
 {
@@ -35,25 +35,25 @@ uint32_t netplay_expected_input_size(netplay_t *netplay, uint32_t devices)
 
       switch (netplay->config_devices[device]&RETRO_DEVICE_MASK)
       {
-         /* These are all essentially magic numbers, but each device has a
-          * fixed size, documented in network/netplay/README */
-         case RETRO_DEVICE_JOYPAD:
+
+
+         case 131:
             ret += 1;
             break;
-         case RETRO_DEVICE_MOUSE:
+         case 128:
             ret += 2;
             break;
-         case RETRO_DEVICE_KEYBOARD:
+         case 130:
             ret += 5;
             break;
-         case RETRO_DEVICE_LIGHTGUN:
+         case 129:
             ret += 2;
             break;
-         case RETRO_DEVICE_ANALOG:
+         case 132:
             ret += 3;
             break;
          default:
-            break; /* Unsupported */
+            break;
       }
    }
 

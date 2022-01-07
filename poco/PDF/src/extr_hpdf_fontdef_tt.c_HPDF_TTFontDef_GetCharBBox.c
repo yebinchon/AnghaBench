@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_14__ {void* top; void* right; void* bottom; void* left; } ;
-struct TYPE_13__ {int /*<<< orphan*/  attr; } ;
+struct TYPE_13__ {int attr; } ;
 struct TYPE_11__ {scalar_t__ index_to_loc_format; int units_per_em; } ;
 struct TYPE_10__ {int* offsets; scalar_t__ base_offset; } ;
-struct TYPE_12__ {TYPE_2__ header; int /*<<< orphan*/  stream; TYPE_1__ glyph_tbl; } ;
-typedef  size_t HPDF_UINT16 ;
-typedef  TYPE_3__* HPDF_TTFontDefAttr ;
-typedef  scalar_t__ HPDF_STATUS ;
-typedef  void* HPDF_REAL ;
-typedef  int HPDF_INT32 ;
-typedef  scalar_t__ HPDF_INT16 ;
-typedef  int HPDF_INT ;
-typedef  TYPE_4__* HPDF_FontDef ;
-typedef  TYPE_5__ HPDF_Box ;
+struct TYPE_12__ {TYPE_2__ header; int stream; TYPE_1__ glyph_tbl; } ;
+typedef size_t HPDF_UINT16 ;
+typedef TYPE_3__* HPDF_TTFontDefAttr ;
+typedef scalar_t__ HPDF_STATUS ;
+typedef void* HPDF_REAL ;
+typedef int HPDF_INT32 ;
+typedef scalar_t__ HPDF_INT16 ;
+typedef int HPDF_INT ;
+typedef TYPE_4__* HPDF_FontDef ;
+typedef TYPE_5__ HPDF_Box ;
 
-/* Variables and functions */
- scalar_t__ GetINT16 (int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ HPDF_OK ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- int /*<<< orphan*/  HPDF_SEEK_SET ; 
- scalar_t__ HPDF_Stream_Seek (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- size_t HPDF_TTFontDef_GetGlyphid (TYPE_4__*,size_t) ; 
- TYPE_5__ HPDF_ToBox (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ GetINT16 (int ,scalar_t__*) ;
+ scalar_t__ HPDF_OK ;
+ int HPDF_PTRACE (char*) ;
+ int HPDF_SEEK_SET ;
+ scalar_t__ HPDF_Stream_Seek (int ,scalar_t__,int ) ;
+ size_t HPDF_TTFontDef_GetGlyphid (TYPE_4__*,size_t) ;
+ TYPE_5__ HPDF_ToBox (int ,int ,int ,int ) ;
 
 HPDF_Box
-HPDF_TTFontDef_GetCharBBox  (HPDF_FontDef   fontdef,
-                             HPDF_UINT16    unicode)
+HPDF_TTFontDef_GetCharBBox (HPDF_FontDef fontdef,
+                             HPDF_UINT16 unicode)
 {
     HPDF_TTFontDefAttr attr = (HPDF_TTFontDefAttr)fontdef->attr;
     HPDF_UINT16 gid = HPDF_TTFontDef_GetGlyphid(fontdef, unicode);

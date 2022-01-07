@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  IDirectInput8_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * g_dinput_ctx ; 
+ int IDirectInput8_Release (int *) ;
+ int * g_dinput_ctx ;
 
 void dinput_destroy_context(void)
 {
@@ -21,5 +13,5 @@ void dinput_destroy_context(void)
       return;
 
    IDirectInput8_Release(g_dinput_ctx);
-   g_dinput_ctx = NULL;
+   g_dinput_ctx = ((void*)0);
 }

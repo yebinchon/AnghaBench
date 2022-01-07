@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  strm_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_E ; 
- int /*<<< orphan*/  M_PI ; 
- int /*<<< orphan*/  math_ceil ; 
- int /*<<< orphan*/  math_cos ; 
- int /*<<< orphan*/  math_floor ; 
- int /*<<< orphan*/  math_pow ; 
- int /*<<< orphan*/  math_round ; 
- int /*<<< orphan*/  math_sin ; 
- int /*<<< orphan*/  math_sqrt ; 
- int /*<<< orphan*/  math_tan ; 
- int /*<<< orphan*/  math_trunc ; 
- int /*<<< orphan*/  strm_cfunc_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_float_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_var_def (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int strm_state ;
+
+
+ int M_E ;
+ int M_PI ;
+ int math_ceil ;
+ int math_cos ;
+ int math_floor ;
+ int math_pow ;
+ int math_round ;
+ int math_sin ;
+ int math_sqrt ;
+ int math_tan ;
+ int math_trunc ;
+ int strm_cfunc_value (int ) ;
+ int strm_float_value (int ) ;
+ int strm_var_def (int *,char*,int ) ;
 
 void
 strm_math_init(strm_state* state)

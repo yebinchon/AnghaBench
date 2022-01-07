@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  ao; int /*<<< orphan*/  dataptr; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int ao; int dataptr; } ;
 struct TYPE_5__ {int numiter; scalar_t__ index; scalar_t__ size; TYPE_2__** iters; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  TYPE_1__ PyArrayMultiIterObject ;
-typedef  TYPE_2__ PyArrayIterObject ;
+typedef int PyObject ;
+typedef TYPE_1__ PyArrayMultiIterObject ;
+typedef TYPE_2__ PyArrayIterObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyArray_ITER_NEXT (TYPE_2__*) ; 
- int /*<<< orphan*/  PyArray_ToScalar (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * PyTuple_New (int) ; 
- int /*<<< orphan*/  PyTuple_SET_ITEM (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
+
+ int PyArray_ITER_NEXT (TYPE_2__*) ;
+ int PyArray_ToScalar (int ,int ) ;
+ int * PyTuple_New (int) ;
+ int PyTuple_SET_ITEM (int *,int,int ) ;
+ int Py_DECREF (int *) ;
 
 __attribute__((used)) static PyObject *
 arraymultiter_next(PyArrayMultiIterObject *multi)
@@ -33,8 +33,8 @@ arraymultiter_next(PyArrayMultiIterObject *multi)
 
     n = multi->numiter;
     ret = PyTuple_New(n);
-    if (ret == NULL) {
-        return NULL;
+    if (ret == ((void*)0)) {
+        return ((void*)0);
     }
     if (multi->index < multi->size) {
         for (i = 0; i < n; i++) {
@@ -47,5 +47,5 @@ arraymultiter_next(PyArrayMultiIterObject *multi)
         return ret;
     }
     Py_DECREF(ret);
-    return NULL;
+    return ((void*)0);
 }

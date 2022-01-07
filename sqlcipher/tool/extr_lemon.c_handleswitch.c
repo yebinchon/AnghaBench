@@ -1,41 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ label; int type; scalar_t__ arg; } ;
-typedef  int /*<<< orphan*/  FILE ;
-
-/* Variables and functions */
-#define  OPT_DBL 135 
-#define  OPT_FDBL 134 
-#define  OPT_FFLAG 133 
-#define  OPT_FINT 132 
-#define  OPT_FLAG 131 
-#define  OPT_FSTR 130 
-#define  OPT_INT 129 
-#define  OPT_STR 128 
- scalar_t__* argv ; 
- int /*<<< orphan*/  assert (int) ; 
- char* emsg ; 
- int /*<<< orphan*/  errline (int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,char*) ; 
- TYPE_1__* op ; 
- char* strchr (scalar_t__,char) ; 
- scalar_t__ strcmp (scalar_t__,scalar_t__) ; 
- double strtod (char*,char**) ; 
- int strtol (char*,char**,int /*<<< orphan*/ ) ; 
- void stub1 (double) ; 
- void stub2 (int) ; 
- void stub3 (char*) ; 
+typedef int FILE ;
+ scalar_t__* argv ;
+ int assert (int) ;
+ char* emsg ;
+ int errline (int,int,int *) ;
+ int fprintf (int *,char*,char*) ;
+ TYPE_1__* op ;
+ char* strchr (scalar_t__,char) ;
+ scalar_t__ strcmp (scalar_t__,scalar_t__) ;
+ double strtod (char*,char**) ;
+ int strtol (char*,char**,int ) ;
+ void stub1 (double) ;
+ void stub2 (int) ;
+ void stub3 (char*) ;
 
 __attribute__((used)) static int handleswitch(int i, FILE *err)
 {
@@ -61,16 +51,16 @@ __attribute__((used)) static int handleswitch(int i, FILE *err)
   }else{
     cp++;
     switch( op[j].type ){
-      case OPT_FLAG:
-      case OPT_FFLAG:
+      case 131:
+      case 133:
         if( err ){
           fprintf(err,"%soption requires an argument.\n",emsg);
           errline(i,0,err);
         }
         errcnt++;
         break;
-      case OPT_DBL:
-      case OPT_FDBL:
+      case 135:
+      case 134:
         dv = strtod(cp,&end);
         if( *end ){
           if( err ){
@@ -81,8 +71,8 @@ __attribute__((used)) static int handleswitch(int i, FILE *err)
           errcnt++;
         }
         break;
-      case OPT_INT:
-      case OPT_FINT:
+      case 129:
+      case 132:
         lv = strtol(cp,&end,0);
         if( *end ){
           if( err ){
@@ -92,31 +82,31 @@ __attribute__((used)) static int handleswitch(int i, FILE *err)
           errcnt++;
         }
         break;
-      case OPT_STR:
-      case OPT_FSTR:
+      case 128:
+      case 130:
         sv = cp;
         break;
     }
     switch( op[j].type ){
-      case OPT_FLAG:
-      case OPT_FFLAG:
+      case 131:
+      case 133:
         break;
-      case OPT_DBL:
+      case 135:
         *(double*)(op[j].arg) = dv;
         break;
-      case OPT_FDBL:
+      case 134:
         (*(void(*)(double))(op[j].arg))(dv);
         break;
-      case OPT_INT:
+      case 129:
         *(int*)(op[j].arg) = lv;
         break;
-      case OPT_FINT:
+      case 132:
         (*(void(*)(int))(op[j].arg))((int)lv);
         break;
-      case OPT_STR:
+      case 128:
         *(char**)(op[j].arg) = sv;
         break;
-      case OPT_FSTR:
+      case 130:
         (*(void(*)(char *))(op[j].arg))(sv);
         break;
     }

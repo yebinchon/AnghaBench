@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct string_list {size_t size; struct string_list* elems; struct string_list* userdata; struct string_list* data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (struct string_list*) ; 
+
+ int free (struct string_list*) ;
 
 void string_list_free(struct string_list *list)
 {
@@ -29,13 +29,13 @@ void string_list_free(struct string_list *list)
             free(list->elems[i].data);
          if (list->elems[i].userdata)
             free(list->elems[i].userdata);
-         list->elems[i].data     = NULL;
-         list->elems[i].userdata = NULL;
+         list->elems[i].data = ((void*)0);
+         list->elems[i].userdata = ((void*)0);
       }
 
       free(list->elems);
    }
 
-   list->elems = NULL;
+   list->elems = ((void*)0);
    free(list);
 }

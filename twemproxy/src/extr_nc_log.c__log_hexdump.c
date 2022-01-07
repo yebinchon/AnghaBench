@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct logger {scalar_t__ fd; int /*<<< orphan*/  nerror; } ;
-typedef  scalar_t__ ssize_t ;
 
-/* Variables and functions */
- int LOG_MAX_LEN ; 
- int errno ; 
- scalar_t__ isprint (char) ; 
- struct logger logger ; 
- scalar_t__ nc_scnprintf (char*,int,char*,...) ; 
- scalar_t__ nc_write (scalar_t__,char*,int) ; 
+
+
+
+struct logger {scalar_t__ fd; int nerror; } ;
+typedef scalar_t__ ssize_t ;
+
+
+ int LOG_MAX_LEN ;
+ int errno ;
+ scalar_t__ isprint (char) ;
+ struct logger logger ;
+ scalar_t__ nc_scnprintf (char*,int,char*,...) ;
+ scalar_t__ nc_write (scalar_t__,char*,int) ;
 
 void
 _log_hexdump(const char *file, int line, char *data, int datalen,
@@ -34,11 +34,11 @@ _log_hexdump(const char *file, int line, char *data, int datalen,
         return;
     }
 
-    /* log hexdump */
+
     errno_save = errno;
-    off = 0;                  /* data offset */
-    len = 0;                  /* length of output buffer */
-    size = 8 * LOG_MAX_LEN;   /* size of output buffer */
+    off = 0;
+    len = 0;
+    size = 8 * LOG_MAX_LEN;
 
     while (datalen != 0 && (len < size - 1)) {
         char *save, *str;

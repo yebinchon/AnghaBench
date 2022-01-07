@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct se_hba {int hba_id; TYPE_1__* transport; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+typedef int ssize_t ;
 struct TYPE_2__ {char* name; } ;
 
-/* Variables and functions */
- char* TARGET_CORE_CONFIGFS_VERSION ; 
- int /*<<< orphan*/  sprintf (char*,char*,int,char*,char*) ; 
+
+ char* TARGET_CORE_CONFIGFS_VERSION ;
+ int sprintf (char*,char*,int,char*,char*) ;
 
 __attribute__((used)) static ssize_t target_core_hba_show_attr_hba_info(
-	struct se_hba *hba,
-	char *page)
+ struct se_hba *hba,
+ char *page)
 {
-	return sprintf(page, "HBA Index: %d plugin: %s version: %s\n",
-			hba->hba_id, hba->transport->name,
-			TARGET_CORE_CONFIGFS_VERSION);
+ return sprintf(page, "HBA Index: %d plugin: %s version: %s\n",
+   hba->hba_id, hba->transport->name,
+   TARGET_CORE_CONFIGFS_VERSION);
 }

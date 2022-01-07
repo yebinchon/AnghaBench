@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
-struct TYPE_2__ {int next_iter; int /*<<< orphan*/ * prev_insn; } ;
-typedef  int /*<<< orphan*/  HOST_WIDE_INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GEN_INT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_insn (int /*<<< orphan*/ ) ; 
- TYPE_1__ spill_fill_data ; 
- int /*<<< orphan*/  spill_restore_mem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int rtx ;
+struct TYPE_2__ {int next_iter; int * prev_insn; } ;
+typedef int HOST_WIDE_INT ;
+
+
+ int GEN_INT (int ) ;
+ int emit_insn (int ) ;
+ TYPE_1__ spill_fill_data ;
+ int spill_restore_mem (int ,int ) ;
+ int stub1 (int ,int ,int ) ;
 
 __attribute__((used)) static void
 do_restore (rtx (*move_fn) (rtx, rtx, rtx), rtx reg, HOST_WIDE_INT cfa_off)
@@ -29,6 +29,6 @@ do_restore (rtx (*move_fn) (rtx, rtx, rtx), rtx reg, HOST_WIDE_INT cfa_off)
   rtx insn;
 
   insn = emit_insn ((*move_fn) (reg, spill_restore_mem (reg, cfa_off),
-				GEN_INT (cfa_off)));
+    GEN_INT (cfa_off)));
   spill_fill_data.prev_insn[iter] = insn;
 }

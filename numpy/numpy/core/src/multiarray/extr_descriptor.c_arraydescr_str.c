@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArray_Descr ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * PyImport_ImportModule (char*) ; 
- int /*<<< orphan*/ * PyObject_CallMethod (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int PyObject ;
+typedef int PyArray_Descr ;
+
+
+ int * PyImport_ImportModule (char*) ;
+ int * PyObject_CallMethod (int *,char*,char*,int *) ;
+ int Py_DECREF (int *) ;
 
 __attribute__((used)) static PyObject *
 arraydescr_str(PyArray_Descr *dtype)
@@ -24,8 +24,8 @@ arraydescr_str(PyArray_Descr *dtype)
     PyObject *_numpy_dtype;
     PyObject *res;
     _numpy_dtype = PyImport_ImportModule("numpy.core._dtype");
-    if (_numpy_dtype == NULL) {
-        return NULL;
+    if (_numpy_dtype == ((void*)0)) {
+        return ((void*)0);
     }
     res = PyObject_CallMethod(_numpy_dtype, "__str__", "O", dtype);
     Py_DECREF(_numpy_dtype);

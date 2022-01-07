@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_6__ {char* path; } ;
 struct TYPE_5__ {int port; char* host; char* ca_cert; char* cert; char* key; } ;
 struct TYPE_4__ {char* host; int port; } ;
-struct config {int /*<<< orphan*/  type; TYPE_3__ unix_sock; TYPE_2__ ssl; TYPE_1__ tcp; } ;
+struct config {int type; TYPE_3__ unix_sock; TYPE_2__ ssl; TYPE_1__ tcp; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONN_FD ; 
- int /*<<< orphan*/  CONN_SSL ; 
- int /*<<< orphan*/  CONN_TCP ; 
- int /*<<< orphan*/  CONN_UNIX ; 
- int /*<<< orphan*/  SIGPIPE ; 
- int /*<<< orphan*/  SIG_IGN ; 
- void* atoi (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int fails ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  test_append_formatted_commands (struct config) ; 
- int /*<<< orphan*/  test_blocking_connection (struct config) ; 
- int /*<<< orphan*/  test_blocking_connection_errors () ; 
- int /*<<< orphan*/  test_blocking_connection_timeouts (struct config) ; 
- int /*<<< orphan*/  test_blocking_io_errors (struct config) ; 
- int /*<<< orphan*/  test_format_commands () ; 
- int /*<<< orphan*/  test_free_null () ; 
- int /*<<< orphan*/  test_invalid_timeout_errors (struct config) ; 
- int /*<<< orphan*/  test_reply_reader () ; 
- int /*<<< orphan*/  test_throughput (struct config) ; 
+
+ int CONN_FD ;
+ int CONN_SSL ;
+ int CONN_TCP ;
+ int CONN_UNIX ;
+ int SIGPIPE ;
+ int SIG_IGN ;
+ void* atoi (char*) ;
+ int exit (int) ;
+ int fails ;
+ int fprintf (int ,char*,char*) ;
+ int printf (char*,...) ;
+ int signal (int ,int ) ;
+ int stderr ;
+ int strcmp (char*,char*) ;
+ int test_append_formatted_commands (struct config) ;
+ int test_blocking_connection (struct config) ;
+ int test_blocking_connection_errors () ;
+ int test_blocking_connection_timeouts (struct config) ;
+ int test_blocking_io_errors (struct config) ;
+ int test_format_commands () ;
+ int test_free_null () ;
+ int test_invalid_timeout_errors (struct config) ;
+ int test_reply_reader () ;
+ int test_throughput (struct config) ;
 
 int main(int argc, char **argv) {
     struct config cfg = {
@@ -57,10 +57,10 @@ int main(int argc, char **argv) {
     int throughput = 1;
     int test_inherit_fd = 1;
 
-    /* Ignore broken pipe signal (for I/O error tests). */
+
     signal(SIGPIPE, SIG_IGN);
 
-    /* Parse command line options. */
+
     argv++; argc--;
     while (argc) {
         if (argc >= 2 && !strcmp(argv[0],"-h")) {
@@ -76,23 +76,6 @@ int main(int argc, char **argv) {
             throughput = 0;
         } else if (argc >= 1 && !strcmp(argv[0],"--skip-inherit-fd")) {
             test_inherit_fd = 0;
-#ifdef HIREDIS_TEST_SSL
-        } else if (argc >= 2 && !strcmp(argv[0],"--ssl-port")) {
-            argv++; argc--;
-            cfg.ssl.port = atoi(argv[0]);
-        } else if (argc >= 2 && !strcmp(argv[0],"--ssl-host")) {
-            argv++; argc--;
-            cfg.ssl.host = argv[0];
-        } else if (argc >= 2 && !strcmp(argv[0],"--ssl-ca-cert")) {
-            argv++; argc--;
-            cfg.ssl.ca_cert  = argv[0];
-        } else if (argc >= 2 && !strcmp(argv[0],"--ssl-cert")) {
-            argv++; argc--;
-            cfg.ssl.cert = argv[0];
-        } else if (argc >= 2 && !strcmp(argv[0],"--ssl-key")) {
-            argv++; argc--;
-            cfg.ssl.key = argv[0];
-#endif
         } else {
             fprintf(stderr, "Invalid argument: %s\n", argv[0]);
             exit(1);
@@ -120,21 +103,6 @@ int main(int argc, char **argv) {
     test_blocking_connection_timeouts(cfg);
     test_blocking_io_errors(cfg);
     if (throughput) test_throughput(cfg);
-
-#ifdef HIREDIS_TEST_SSL
-    if (cfg.ssl.port && cfg.ssl.host) {
-        printf("\nTesting against SSL connection (%s:%d):\n", cfg.ssl.host, cfg.ssl.port);
-        cfg.type = CONN_SSL;
-
-        test_blocking_connection(cfg);
-        test_blocking_connection_timeouts(cfg);
-        test_blocking_io_errors(cfg);
-        test_invalid_timeout_errors(cfg);
-        test_append_formatted_commands(cfg);
-        if (throughput) test_throughput(cfg);
-    }
-#endif
-
     if (test_inherit_fd) {
         printf("\nTesting against inherited fd (%s):\n", cfg.unix_sock.path);
         cfg.type = CONN_FD;

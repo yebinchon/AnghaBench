@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab ;
-struct TYPE_4__ {int /*<<< orphan*/  db; int /*<<< orphan*/  zName; int /*<<< orphan*/  zDb; } ;
-typedef  TYPE_1__ Rtree ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  nodeBlobReset (TYPE_1__*) ; 
- int /*<<< orphan*/  rtreeRelease (TYPE_1__*) ; 
- int sqlite3_exec (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sqlite3_vtab ;
+struct TYPE_4__ {int db; int zName; int zDb; } ;
+typedef TYPE_1__ Rtree ;
+
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int nodeBlobReset (TYPE_1__*) ;
+ int rtreeRelease (TYPE_1__*) ;
+ int sqlite3_exec (int ,char*,int ,int ,int ) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,int ,int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static int rtreeDestroy(sqlite3_vtab *pVtab){
   Rtree *pRtree = (Rtree *)pVtab;
@@ -31,7 +31,7 @@ __attribute__((used)) static int rtreeDestroy(sqlite3_vtab *pVtab){
     "DROP TABLE '%q'.'%q_node';"
     "DROP TABLE '%q'.'%q_rowid';"
     "DROP TABLE '%q'.'%q_parent';",
-    pRtree->zDb, pRtree->zName, 
+    pRtree->zDb, pRtree->zName,
     pRtree->zDb, pRtree->zName,
     pRtree->zDb, pRtree->zName
   );

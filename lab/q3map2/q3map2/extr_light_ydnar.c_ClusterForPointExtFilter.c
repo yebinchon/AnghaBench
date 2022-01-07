@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vec3_t ;
 
-/* Variables and functions */
- int ClusterForPointExt (int /*<<< orphan*/ ,float) ; 
- scalar_t__ ClusterVisible (int,int) ; 
+
+
+
+typedef int vec3_t ;
+
+
+ int ClusterForPointExt (int ,float) ;
+ scalar_t__ ClusterVisible (int,int) ;
 
 int ClusterForPointExtFilter( vec3_t point, float epsilon, int numClusters, int *clusters ){
-	int i, cluster;
+ int i, cluster;
 
 
-	/* get cluster for point */
-	cluster = ClusterForPointExt( point, epsilon );
 
-	/* check if filtering is necessary */
-	if ( cluster < 0 || numClusters <= 0 || clusters == NULL ) {
-		return cluster;
-	}
+ cluster = ClusterForPointExt( point, epsilon );
 
-	/* filter */
-	for ( i = 0; i < numClusters; i++ )
-	{
-		if ( cluster == clusters[ i ] || ClusterVisible( cluster, clusters[ i ] ) ) {
-			return cluster;
-		}
-	}
 
-	/* failed */
-	return -1;
+ if ( cluster < 0 || numClusters <= 0 || clusters == ((void*)0) ) {
+  return cluster;
+ }
+
+
+ for ( i = 0; i < numClusters; i++ )
+ {
+  if ( cluster == clusters[ i ] || ClusterVisible( cluster, clusters[ i ] ) ) {
+   return cluster;
+  }
+ }
+
+
+ return -1;
 }

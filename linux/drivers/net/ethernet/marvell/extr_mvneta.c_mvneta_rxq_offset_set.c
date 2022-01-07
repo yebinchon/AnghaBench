@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct mvneta_rx_queue {int /*<<< orphan*/  id; } ;
+
+
+
+
+typedef int u32 ;
+struct mvneta_rx_queue {int id; } ;
 struct mvneta_port {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MVNETA_RXQ_CONFIG_REG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MVNETA_RXQ_PKT_OFFSET_ALL_MASK ; 
- int /*<<< orphan*/  MVNETA_RXQ_PKT_OFFSET_MASK (int) ; 
- int /*<<< orphan*/  mvreg_read (struct mvneta_port*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mvreg_write (struct mvneta_port*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int MVNETA_RXQ_CONFIG_REG (int ) ;
+ int MVNETA_RXQ_PKT_OFFSET_ALL_MASK ;
+ int MVNETA_RXQ_PKT_OFFSET_MASK (int) ;
+ int mvreg_read (struct mvneta_port*,int ) ;
+ int mvreg_write (struct mvneta_port*,int ,int ) ;
 
 __attribute__((used)) static void mvneta_rxq_offset_set(struct mvneta_port *pp,
-				  struct mvneta_rx_queue *rxq,
-				  int offset)
+      struct mvneta_rx_queue *rxq,
+      int offset)
 {
-	u32 val;
+ u32 val;
 
-	val = mvreg_read(pp, MVNETA_RXQ_CONFIG_REG(rxq->id));
-	val &= ~MVNETA_RXQ_PKT_OFFSET_ALL_MASK;
+ val = mvreg_read(pp, MVNETA_RXQ_CONFIG_REG(rxq->id));
+ val &= ~MVNETA_RXQ_PKT_OFFSET_ALL_MASK;
 
-	/* Offset is in */
-	val |= MVNETA_RXQ_PKT_OFFSET_MASK(offset >> 3);
-	mvreg_write(pp, MVNETA_RXQ_CONFIG_REG(rxq->id), val);
+
+ val |= MVNETA_RXQ_PKT_OFFSET_MASK(offset >> 3);
+ mvreg_write(pp, MVNETA_RXQ_CONFIG_REG(rxq->id), val);
 }

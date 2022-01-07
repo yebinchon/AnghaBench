@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct hrtimer {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  debug_hrtimer_deactivate (struct hrtimer*) ; 
- int /*<<< orphan*/  trace_hrtimer_cancel (struct hrtimer*) ; 
+
+ int debug_hrtimer_deactivate (struct hrtimer*) ;
+ int trace_hrtimer_cancel (struct hrtimer*) ;
 
 __attribute__((used)) static inline void debug_deactivate(struct hrtimer *timer)
 {
-	debug_hrtimer_deactivate(timer);
-	trace_hrtimer_cancel(timer);
+ debug_hrtimer_deactivate(timer);
+ trace_hrtimer_cancel(timer);
 }

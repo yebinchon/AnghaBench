@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_8__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_21__ {size_t buffer_size_min; size_t buffer_size; int buffer_num; int /*<<< orphan*/  name; } ;
+
+
+typedef struct TYPE_21__ TYPE_8__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+struct TYPE_21__ {size_t buffer_size_min; size_t buffer_size; int buffer_num; int name; } ;
 struct TYPE_20__ {scalar_t__ state; size_t ports_num; TYPE_3__* ports; } ;
-struct TYPE_19__ {int actions; int populated; int buffers; scalar_t__ direction; TYPE_8__* mmal; int /*<<< orphan*/  zero_copy; void* buffers_allocated; } ;
-struct TYPE_17__ {int /*<<< orphan*/  nVersion; } ;
+struct TYPE_19__ {int actions; int populated; int buffers; scalar_t__ direction; TYPE_8__* mmal; int zero_copy; void* buffers_allocated; } ;
+struct TYPE_17__ {int nVersion; } ;
 struct TYPE_18__ {int nSize; size_t nAllocLen; size_t nInputPortIndex; size_t nOutputPortIndex; scalar_t__ pBuffer; void* pPlatformPrivate; void* pInputPortPrivate; void* pOutputPortPrivate; void* pAppPrivate; TYPE_1__ nVersion; } ;
-typedef  size_t OMX_U32 ;
-typedef  void* OMX_PTR ;
-typedef  scalar_t__ OMX_HANDLETYPE ;
-typedef  scalar_t__ OMX_ERRORTYPE ;
-typedef  TYPE_2__ OMX_BUFFERHEADERTYPE ;
-typedef  scalar_t__ MMAL_STATUS_T ;
-typedef  int MMAL_BOOL_T ;
-typedef  TYPE_3__ MMALOMX_PORT_T ;
-typedef  TYPE_4__ MMALOMX_COMPONENT_T ;
+typedef size_t OMX_U32 ;
+typedef void* OMX_PTR ;
+typedef scalar_t__ OMX_HANDLETYPE ;
+typedef scalar_t__ OMX_ERRORTYPE ;
+typedef TYPE_2__ OMX_BUFFERHEADERTYPE ;
+typedef scalar_t__ MMAL_STATUS_T ;
+typedef int MMAL_BOOL_T ;
+typedef TYPE_3__ MMALOMX_PORT_T ;
+typedef TYPE_4__ MMALOMX_COMPONENT_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_DEBUG (char*,int,int) ; 
- int /*<<< orphan*/  LOG_ERROR (char*,int,...) ; 
- int /*<<< orphan*/  LOG_TRACE (char*,scalar_t__,TYPE_2__**,int,void*,int) ; 
- int MMALOMX_ACTION_CHECK_ALLOCATED ; 
- int /*<<< orphan*/  MMALOMX_LOCK_PORT (TYPE_4__*,TYPE_3__*) ; 
- int /*<<< orphan*/  MMALOMX_UNLOCK_PORT (TYPE_4__*,TYPE_3__*) ; 
- size_t MMALOMX_ZERO_COPY_THRESHOLD ; 
- scalar_t__ MMAL_ENOSYS ; 
- void* MMAL_FALSE ; 
- int /*<<< orphan*/  MMAL_PARAMETER_ZERO_COPY ; 
- scalar_t__ MMAL_SUCCESS ; 
- void* MMAL_TRUE ; 
- scalar_t__ OMX_DirInput ; 
- scalar_t__ OMX_ErrorBadParameter ; 
- scalar_t__ OMX_ErrorBadPortIndex ; 
- scalar_t__ OMX_ErrorIncorrectStateOperation ; 
- scalar_t__ OMX_ErrorInsufficientResources ; 
- scalar_t__ OMX_ErrorInvalidComponent ; 
- scalar_t__ OMX_ErrorInvalidState ; 
- scalar_t__ OMX_ErrorNone ; 
- scalar_t__ OMX_StateInvalid ; 
- int /*<<< orphan*/  OMX_VERSION ; 
- TYPE_2__* calloc (int,int) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- scalar_t__ mmal_port_parameter_set_boolean (TYPE_8__*,int /*<<< orphan*/ ,void*) ; 
- scalar_t__ mmal_port_payload_alloc (TYPE_8__*,size_t) ; 
- int /*<<< orphan*/  mmalomx_commands_actions_check (TYPE_4__*) ; 
- int /*<<< orphan*/  mmalomx_commands_actions_signal (TYPE_4__*) ; 
+
+ int LOG_DEBUG (char*,int,int) ;
+ int LOG_ERROR (char*,int,...) ;
+ int LOG_TRACE (char*,scalar_t__,TYPE_2__**,int,void*,int) ;
+ int MMALOMX_ACTION_CHECK_ALLOCATED ;
+ int MMALOMX_LOCK_PORT (TYPE_4__*,TYPE_3__*) ;
+ int MMALOMX_UNLOCK_PORT (TYPE_4__*,TYPE_3__*) ;
+ size_t MMALOMX_ZERO_COPY_THRESHOLD ;
+ scalar_t__ MMAL_ENOSYS ;
+ void* MMAL_FALSE ;
+ int MMAL_PARAMETER_ZERO_COPY ;
+ scalar_t__ MMAL_SUCCESS ;
+ void* MMAL_TRUE ;
+ scalar_t__ OMX_DirInput ;
+ scalar_t__ OMX_ErrorBadParameter ;
+ scalar_t__ OMX_ErrorBadPortIndex ;
+ scalar_t__ OMX_ErrorIncorrectStateOperation ;
+ scalar_t__ OMX_ErrorInsufficientResources ;
+ scalar_t__ OMX_ErrorInvalidComponent ;
+ scalar_t__ OMX_ErrorInvalidState ;
+ scalar_t__ OMX_ErrorNone ;
+ scalar_t__ OMX_StateInvalid ;
+ int OMX_VERSION ;
+ TYPE_2__* calloc (int,int) ;
+ int free (TYPE_2__*) ;
+ scalar_t__ mmal_port_parameter_set_boolean (TYPE_8__*,int ,void*) ;
+ scalar_t__ mmal_port_payload_alloc (TYPE_8__*,size_t) ;
+ int mmalomx_commands_actions_check (TYPE_4__*) ;
+ int mmalomx_commands_actions_signal (TYPE_4__*) ;
 
 __attribute__((used)) static OMX_ERRORTYPE mmalomx_ComponentAllocateBuffer(
    OMX_HANDLETYPE hComponent,
@@ -77,7 +77,7 @@ __attribute__((used)) static OMX_ERRORTYPE mmalomx_ComponentAllocateBuffer(
              "nSizeBytes %i", hComponent, ppBuffer, (int)nPortIndex,
              pAppPrivate, (int)nSizeBytes);
 
-   /* Sanity checks */
+
    if (!hComponent)
       return OMX_ErrorInvalidComponent;
    if (!ppBuffer)
@@ -87,9 +87,9 @@ __attribute__((used)) static OMX_ERRORTYPE mmalomx_ComponentAllocateBuffer(
    if (nPortIndex >= component->ports_num)
       return OMX_ErrorBadPortIndex;
 
-   /* Make sure any previous command has been processed.
-   * This is not ideal since done inline but in practice the actual
-   * notification to the client will not be done as part of this call. */
+
+
+
    mmalomx_commands_actions_check(component);
 
    port = &component->ports[nPortIndex];
@@ -102,14 +102,14 @@ __attribute__((used)) static OMX_ERRORTYPE mmalomx_ComponentAllocateBuffer(
    if (status != OMX_ErrorNone)
       goto error;
 
-   /* Check for mismatched calls to UseBuffer/AllocateBuffer */
+
    if (!status && port->buffers && !port->buffers_allocated)
    {
       status = OMX_ErrorBadParameter;
       goto error;
    }
 
-   /* Sanity check buffer size */
+
    if (nSizeBytes < port->mmal->buffer_size_min)
    {
       LOG_ERROR("buffer size too small (%i/%i)", (int)nSizeBytes,
@@ -127,7 +127,7 @@ __attribute__((used)) static OMX_ERRORTYPE mmalomx_ComponentAllocateBuffer(
       goto error;
    }
 
-   /* Set the zero-copy mode */
+
    if (!port->buffers_allocated && nSizeBytes > MMALOMX_ZERO_COPY_THRESHOLD &&
        !port->zero_copy)
    {
@@ -165,7 +165,7 @@ __attribute__((used)) static OMX_ERRORTYPE mmalomx_ComponentAllocateBuffer(
       buffer->nOutputPortIndex = nPortIndex;
       buffer->pInputPortPrivate = pAppPrivate;
    }
-   /* Keep an unmodified copy of the pointer for when we come to free it */
+
    buffer->pPlatformPrivate = (OMX_PTR)buffer->pBuffer;
 
    *ppBuffer = buffer;

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * LastLine; int /*<<< orphan*/ * FirstLine; struct TYPE_5__* Next; } ;
-typedef  TYPE_1__* PINFCACHESECTION ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FREE (TYPE_1__*) ; 
- int /*<<< orphan*/ * InfpFreeLine (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * LastLine; int * FirstLine; struct TYPE_5__* Next; } ;
+typedef TYPE_1__* PINFCACHESECTION ;
+
+
+ int FREE (TYPE_1__*) ;
+ int * InfpFreeLine (int *) ;
 
 PINFCACHESECTION
 InfpFreeSection (PINFCACHESECTION Section)
 {
   PINFCACHESECTION Next;
 
-  if (Section == NULL)
+  if (Section == ((void*)0))
     {
-      return NULL;
+      return ((void*)0);
     }
 
-  /* Release all keys */
+
   Next = Section->Next;
-  while (Section->FirstLine != NULL)
+  while (Section->FirstLine != ((void*)0))
     {
       Section->FirstLine = InfpFreeLine (Section->FirstLine);
     }
-  Section->LastLine = NULL;
+  Section->LastLine = ((void*)0);
 
   FREE (Section);
 

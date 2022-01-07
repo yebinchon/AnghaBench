@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3 ;
-typedef  int /*<<< orphan*/  sql ;
-struct TYPE_8__ {int enc_version; char* id; int /*<<< orphan*/  enc_iv; int /*<<< orphan*/  enc_key; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int sqlite3 ;
+typedef int sql ;
+struct TYPE_8__ {int enc_version; char* id; int enc_iv; int enc_key; } ;
 struct TYPE_7__ {TYPE_1__* priv; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * db; } ;
-typedef  TYPE_2__ SeafRepoManager ;
-typedef  TYPE_3__ SeafRepo ;
+struct TYPE_6__ {int * db; } ;
+typedef TYPE_2__ SeafRepoManager ;
+typedef TYPE_3__ SeafRepo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  rawdata_to_hex (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,char*,char*) ; 
- scalar_t__ sqlite_query_exec (int /*<<< orphan*/ *,char*) ; 
+
+ int rawdata_to_hex (int ,char*,int) ;
+ int snprintf (char*,int,char*,char*,char*,char*) ;
+ scalar_t__ sqlite_query_exec (int *,char*) ;
 
 __attribute__((used)) static int
 save_repo_enc_info (SeafRepoManager *manager,

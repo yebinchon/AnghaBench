@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  timestamp ;
-typedef  int /*<<< orphan*/  time_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gmtime (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  strftime (char*,int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int timestamp ;
+typedef int time_t ;
+
+
+ int gmtime (int *) ;
+ int printf (char*,char*) ;
+ int strftime (char*,int,char*,int ) ;
+ int time (int *) ;
 
 __attribute__((used)) static void
 generate_preamble(void)
 {
-	time_t now;
-	char timestamp[128];
-	char preamble[] =
+ time_t now;
+ char timestamp[128];
+ char preamble[] =
 "/*\n"
 " * ntp_keyword.h\n"
 " * \n"
@@ -36,10 +36,10 @@ generate_preamble(void)
 "#include \"ntp_parser.h\"\n"
 "\n";
 
-	time(&now);
-	if (!strftime(timestamp, sizeof(timestamp),
-		      "%Y-%m-%d %H:%M:%S", gmtime(&now)))
-		timestamp[0] = '\0';
+ time(&now);
+ if (!strftime(timestamp, sizeof(timestamp),
+        "%Y-%m-%d %H:%M:%S", gmtime(&now)))
+  timestamp[0] = '\0';
 
-	printf(preamble, timestamp);
+ printf(preamble, timestamp);
 }

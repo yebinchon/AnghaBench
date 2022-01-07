@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ type; scalar_t__ name; } ;
-typedef  TYPE_1__ AVOption ;
+typedef TYPE_1__ AVOption ;
 
-/* Variables and functions */
- scalar_t__ AV_OPT_TYPE_CONST ; 
- int /*<<< orphan*/  print_option (TYPE_1__ const*,TYPE_1__ const*,int) ; 
- int /*<<< orphan*/  printf (char*) ; 
+
+ scalar_t__ AV_OPT_TYPE_CONST ;
+ int print_option (TYPE_1__ const*,TYPE_1__ const*,int) ;
+ int printf (char*) ;
 
 __attribute__((used)) static void show_opts(const AVOption *opts, int per_stream)
 {

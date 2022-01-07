@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  size_t ssize_t ;
-struct TYPE_3__ {size_t length; int stream_id; int /*<<< orphan*/  const* payload; int /*<<< orphan*/  flags; int /*<<< orphan*/  type; } ;
-typedef  TYPE_1__ h2o_http2_frame_t ;
 
-/* Variables and functions */
- size_t H2O_HTTP2_ERROR_FRAME_SIZE ; 
- size_t H2O_HTTP2_ERROR_INCOMPLETE ; 
- size_t H2O_HTTP2_FRAME_HEADER_SIZE ; 
- size_t h2o_http2_decode24u (int /*<<< orphan*/  const*) ; 
- int h2o_http2_decode32u (int /*<<< orphan*/  const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef size_t ssize_t ;
+struct TYPE_3__ {size_t length; int stream_id; int const* payload; int flags; int type; } ;
+typedef TYPE_1__ h2o_http2_frame_t ;
+
+
+ size_t H2O_HTTP2_ERROR_FRAME_SIZE ;
+ size_t H2O_HTTP2_ERROR_INCOMPLETE ;
+ size_t H2O_HTTP2_FRAME_HEADER_SIZE ;
+ size_t h2o_http2_decode24u (int const*) ;
+ int h2o_http2_decode32u (int const*) ;
 
 ssize_t h2o_http2_decode_frame(h2o_http2_frame_t *frame, const uint8_t *src, size_t len, size_t max_frame_size,
                                const char **err_desc)

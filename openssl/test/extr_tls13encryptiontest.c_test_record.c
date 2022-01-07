@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  plaintext; int /*<<< orphan*/  ciphertext; } ;
-struct TYPE_5__ {int /*<<< orphan*/  length; int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ SSL3_RECORD ;
-typedef  TYPE_2__ RECORD_DATA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- int /*<<< orphan*/  TEST_info (char*) ; 
- int /*<<< orphan*/  TEST_mem_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*,size_t) ; 
- int /*<<< orphan*/  TEST_ptr (unsigned char*) ; 
- unsigned char* multihexstr2buf (int /*<<< orphan*/ ,size_t*) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int plaintext; int ciphertext; } ;
+struct TYPE_5__ {int length; int data; } ;
+typedef TYPE_1__ SSL3_RECORD ;
+typedef TYPE_2__ RECORD_DATA ;
+
+
+ int OPENSSL_free (unsigned char*) ;
+ int TEST_info (char*) ;
+ int TEST_mem_eq (int ,int ,unsigned char*,size_t) ;
+ int TEST_ptr (unsigned char*) ;
+ unsigned char* multihexstr2buf (int ,size_t*) ;
 
 __attribute__((used)) static int test_record(SSL3_RECORD *rec, RECORD_DATA *recd, int enc)
 {

@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ svn_revnum_t ;
-struct TYPE_6__ {int /*<<< orphan*/  conn; } ;
-typedef  TYPE_1__ svn_ra_svn__session_baton_t ;
-typedef  int /*<<< orphan*/  svn_ra_svn__list_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ svn_revnum_t ;
+struct TYPE_6__ {int conn; } ;
+typedef TYPE_1__ svn_ra_svn__session_baton_t ;
+typedef int svn_ra_svn__list_t ;
 struct TYPE_7__ {TYPE_1__* priv; } ;
-typedef  TYPE_2__ svn_ra_session_t ;
-typedef  int /*<<< orphan*/  (* svn_ra_replay_revstart_callback_t ) (scalar_t__,void*,int /*<<< orphan*/  const**,void**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;
-typedef  int /*<<< orphan*/  (* svn_ra_replay_revfinish_callback_t ) (scalar_t__,void*,int /*<<< orphan*/  const*,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_delta_editor_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
+typedef TYPE_2__ svn_ra_session_t ;
+typedef int (* svn_ra_replay_revstart_callback_t ) (scalar_t__,void*,int const**,void**,int *,int *) ;
+typedef int (* svn_ra_replay_revfinish_callback_t ) (scalar_t__,void*,int const*,void*,int *,int *) ;
+typedef int svn_error_t ;
+typedef int svn_delta_editor_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  N_ (char*) ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_RA_SVN_EDIT_ABORTED ; 
- int /*<<< orphan*/  SVN_ERR_RA_SVN_MALFORMED_DATA ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  ensure_exact_server_parent (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  handle_auth_request (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  handle_unsupported_cmd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_svn__handle_failure_status (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_svn__parse_proplist (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  svn_ra_svn__read_cmd_response (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  svn_ra_svn__read_tuple (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,char const**,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  svn_ra_svn__write_cmd_replay_range (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_ra_svn_drive_editor2 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ int N_ (char*) ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_RA_SVN_EDIT_ABORTED ;
+ int SVN_ERR_RA_SVN_MALFORMED_DATA ;
+ int TRUE ;
+ int _ (char*) ;
+ int ensure_exact_server_parent (TYPE_2__*,int *) ;
+ int handle_auth_request (TYPE_1__*,int *) ;
+ int handle_unsupported_cmd (int ,int ) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int * svn_error_create (int ,int *,int ) ;
+ int * svn_error_createf (int ,int *,int ,char const*) ;
+ int * svn_error_trace (int ) ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ int svn_ra_svn__handle_failure_status (int *) ;
+ int svn_ra_svn__parse_proplist (int *,int *,int **) ;
+ int svn_ra_svn__read_cmd_response (int ,int *,char*) ;
+ int svn_ra_svn__read_tuple (int ,int *,char*,char const**,int **) ;
+ int svn_ra_svn__write_cmd_replay_range (int ,int *,scalar_t__,scalar_t__,scalar_t__,int ) ;
+ int svn_ra_svn_drive_editor2 (int ,int *,int const*,void*,int *,int ) ;
 
 __attribute__((used)) static svn_error_t *
 ra_svn_replay_range(svn_ra_session_t *session,
@@ -67,8 +67,8 @@ ra_svn_replay_range(svn_ra_session_t *session,
   svn_revnum_t rev;
   svn_boolean_t drive_aborted = FALSE;
 
-  /* Complex EDITOR callbacks may rely on client and server parent path
-     being in sync. */
+
+
   SVN_ERR(ensure_exact_server_parent(session, pool));
   SVN_ERR(svn_ra_svn__write_cmd_replay_range(sess->conn, pool,
                                              start_revision, end_revision,
@@ -97,7 +97,7 @@ ra_svn_replay_range(svn_ra_session_t *session,
           if (strcmp(word, "failure") == 0)
             SVN_ERR(svn_ra_svn__handle_failure_status(list));
 
-          return svn_error_createf(SVN_ERR_RA_SVN_MALFORMED_DATA, NULL,
+          return svn_error_createf(SVN_ERR_RA_SVN_MALFORMED_DATA, ((void*)0),
                                    _("Expected 'revprops', found '%s'"),
                                    word);
         }
@@ -111,11 +111,11 @@ ra_svn_replay_range(svn_ra_session_t *session,
       SVN_ERR(svn_ra_svn_drive_editor2(sess->conn, iterpool,
                                        editor, edit_baton,
                                        &drive_aborted, TRUE));
-      /* If drive_editor2() aborted the commit, do NOT try to call
-         revfinish_func and commit the transaction! */
+
+
       if (drive_aborted) {
         svn_pool_destroy(iterpool);
-        return svn_error_create(SVN_ERR_RA_SVN_EDIT_ABORTED, NULL,
+        return svn_error_create(SVN_ERR_RA_SVN_EDIT_ABORTED, ((void*)0),
                                 _("Error while replaying commit"));
       }
       SVN_ERR(revfinish_func(rev, replay_baton,

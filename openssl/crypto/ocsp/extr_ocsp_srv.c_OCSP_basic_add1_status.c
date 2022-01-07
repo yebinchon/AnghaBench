@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/ * responses; } ;
+
+
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int * responses; } ;
 struct TYPE_18__ {TYPE_2__ tbsResponseData; } ;
-struct TYPE_13__ {int /*<<< orphan*/ * unknown; int /*<<< orphan*/ * good; TYPE_4__* revoked; } ;
+struct TYPE_13__ {int * unknown; int * good; TYPE_4__* revoked; } ;
 struct TYPE_17__ {int type; TYPE_1__ value; } ;
-struct TYPE_16__ {int /*<<< orphan*/ * revocationReason; int /*<<< orphan*/  revocationTime; } ;
-struct TYPE_15__ {TYPE_5__* certStatus; int /*<<< orphan*/ * certId; int /*<<< orphan*/  nextUpdate; int /*<<< orphan*/  thisUpdate; } ;
-typedef  TYPE_3__ OCSP_SINGLERESP ;
-typedef  TYPE_4__ OCSP_REVOKEDINFO ;
-typedef  TYPE_5__ OCSP_CERTSTATUS ;
-typedef  int /*<<< orphan*/  OCSP_CERTID ;
-typedef  TYPE_6__ OCSP_BASICRESP ;
-typedef  int /*<<< orphan*/  ASN1_TIME ;
+struct TYPE_16__ {int * revocationReason; int revocationTime; } ;
+struct TYPE_15__ {TYPE_5__* certStatus; int * certId; int nextUpdate; int thisUpdate; } ;
+typedef TYPE_3__ OCSP_SINGLERESP ;
+typedef TYPE_4__ OCSP_REVOKEDINFO ;
+typedef TYPE_5__ OCSP_CERTSTATUS ;
+typedef int OCSP_CERTID ;
+typedef TYPE_6__ OCSP_BASICRESP ;
+typedef int ASN1_TIME ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ASN1_ENUMERATED_new () ; 
- int /*<<< orphan*/  ASN1_ENUMERATED_set (int /*<<< orphan*/ *,int) ; 
- void* ASN1_NULL_new () ; 
- int /*<<< orphan*/  ASN1_TIME_to_generalizedtime (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * OCSP_CERTID_dup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OCSP_CERTID_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OCSP_F_OCSP_BASIC_ADD1_STATUS ; 
- TYPE_4__* OCSP_REVOKEDINFO_new () ; 
- int OCSP_REVOKED_STATUS_NOSTATUS ; 
- int /*<<< orphan*/  OCSP_R_NO_REVOKED_TIME ; 
- int /*<<< orphan*/  OCSP_SINGLERESP_free (TYPE_3__*) ; 
- TYPE_3__* OCSP_SINGLERESP_new () ; 
- int /*<<< orphan*/  OCSPerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
-#define  V_OCSP_CERTSTATUS_GOOD 130 
-#define  V_OCSP_CERTSTATUS_REVOKED 129 
-#define  V_OCSP_CERTSTATUS_UNKNOWN 128 
- int /*<<< orphan*/ * sk_OCSP_SINGLERESP_new_null () ; 
- int /*<<< orphan*/  sk_OCSP_SINGLERESP_push (int /*<<< orphan*/ *,TYPE_3__*) ; 
+
+ int * ASN1_ENUMERATED_new () ;
+ int ASN1_ENUMERATED_set (int *,int) ;
+ void* ASN1_NULL_new () ;
+ int ASN1_TIME_to_generalizedtime (int *,int *) ;
+ int * OCSP_CERTID_dup (int *) ;
+ int OCSP_CERTID_free (int *) ;
+ int OCSP_F_OCSP_BASIC_ADD1_STATUS ;
+ TYPE_4__* OCSP_REVOKEDINFO_new () ;
+ int OCSP_REVOKED_STATUS_NOSTATUS ;
+ int OCSP_R_NO_REVOKED_TIME ;
+ int OCSP_SINGLERESP_free (TYPE_3__*) ;
+ TYPE_3__* OCSP_SINGLERESP_new () ;
+ int OCSPerr (int ,int ) ;
+
+
+
+ int * sk_OCSP_SINGLERESP_new_null () ;
+ int sk_OCSP_SINGLERESP_push (int *,TYPE_3__*) ;
 
 OCSP_SINGLERESP *OCSP_basic_add1_status(OCSP_BASICRESP *rsp,
                                         OCSP_CERTID *cid,
@@ -56,16 +56,16 @@ OCSP_SINGLERESP *OCSP_basic_add1_status(OCSP_BASICRESP *rsp,
                                         ASN1_TIME *thisupd,
                                         ASN1_TIME *nextupd)
 {
-    OCSP_SINGLERESP *single = NULL;
+    OCSP_SINGLERESP *single = ((void*)0);
     OCSP_CERTSTATUS *cs;
     OCSP_REVOKEDINFO *ri;
 
-    if (rsp->tbsResponseData.responses == NULL
+    if (rsp->tbsResponseData.responses == ((void*)0)
         && (rsp->tbsResponseData.responses
-                = sk_OCSP_SINGLERESP_new_null()) == NULL)
+                = sk_OCSP_SINGLERESP_new_null()) == ((void*)0))
         goto err;
 
-    if ((single = OCSP_SINGLERESP_new()) == NULL)
+    if ((single = OCSP_SINGLERESP_new()) == ((void*)0))
         goto err;
 
     if (!ASN1_TIME_to_generalizedtime(thisupd, &single->thisUpdate))
@@ -76,35 +76,35 @@ OCSP_SINGLERESP *OCSP_basic_add1_status(OCSP_BASICRESP *rsp,
 
     OCSP_CERTID_free(single->certId);
 
-    if ((single->certId = OCSP_CERTID_dup(cid)) == NULL)
+    if ((single->certId = OCSP_CERTID_dup(cid)) == ((void*)0))
         goto err;
 
     cs = single->certStatus;
     switch (cs->type = status) {
-    case V_OCSP_CERTSTATUS_REVOKED:
+    case 129:
         if (!revtime) {
             OCSPerr(OCSP_F_OCSP_BASIC_ADD1_STATUS, OCSP_R_NO_REVOKED_TIME);
             goto err;
         }
-        if ((cs->value.revoked = ri = OCSP_REVOKEDINFO_new()) == NULL)
+        if ((cs->value.revoked = ri = OCSP_REVOKEDINFO_new()) == ((void*)0))
             goto err;
         if (!ASN1_TIME_to_generalizedtime(revtime, &ri->revocationTime))
             goto err;
         if (reason != OCSP_REVOKED_STATUS_NOSTATUS) {
-            if ((ri->revocationReason = ASN1_ENUMERATED_new()) == NULL)
+            if ((ri->revocationReason = ASN1_ENUMERATED_new()) == ((void*)0))
                 goto err;
             if (!(ASN1_ENUMERATED_set(ri->revocationReason, reason)))
                 goto err;
         }
         break;
 
-    case V_OCSP_CERTSTATUS_GOOD:
-        if ((cs->value.good = ASN1_NULL_new()) == NULL)
+    case 130:
+        if ((cs->value.good = ASN1_NULL_new()) == ((void*)0))
             goto err;
         break;
 
-    case V_OCSP_CERTSTATUS_UNKNOWN:
-        if ((cs->value.unknown = ASN1_NULL_new()) == NULL)
+    case 128:
+        if ((cs->value.unknown = ASN1_NULL_new()) == ((void*)0))
             goto err;
         break;
 
@@ -117,5 +117,5 @@ OCSP_SINGLERESP *OCSP_basic_add1_status(OCSP_BASICRESP *rsp,
     return single;
  err:
     OCSP_SINGLERESP_free(single);
-    return NULL;
+    return ((void*)0);
 }

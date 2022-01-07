@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned int uint8_t ;
-typedef  int const uint32_t ;
-typedef  int /*<<< orphan*/  mask ;
 
-/* Variables and functions */
- int AOUT_CHAN_MAX ; 
- int CHAR_BIT ; 
- int* pi_vlc_chan_order_wg4 ; 
- int /*<<< orphan*/  static_assert (int,char*) ; 
+
+
+
+typedef unsigned int uint8_t ;
+typedef int const uint32_t ;
+typedef int mask ;
+
+
+ int AOUT_CHAN_MAX ;
+ int CHAR_BIT ;
+ int* pi_vlc_chan_order_wg4 ;
+ int static_assert (int,char*) ;
 
 unsigned aout_CheckChannelReorder( const uint32_t *chans_in,
                                    const uint32_t *chans_out,
@@ -28,9 +28,9 @@ unsigned aout_CheckChannelReorder( const uint32_t *chans_in,
 
     unsigned channels = 0;
 
-    if( chans_in == NULL )
+    if( chans_in == ((void*)0) )
         chans_in = pi_vlc_chan_order_wg4;
-    if( chans_out == NULL )
+    if( chans_out == ((void*)0) )
         chans_out = pi_vlc_chan_order_wg4;
 
     for( unsigned i = 0; chans_in[i]; i++ )

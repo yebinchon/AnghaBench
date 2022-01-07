@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ia64_opcode {int dummy; } ;
 
-/* Variables and functions */
- short find_main_ent (short) ; 
- short find_string_ent (char*) ; 
- int /*<<< orphan*/  get_opc_prefix (char const**,char*) ; 
- struct ia64_opcode* ia64_find_matching_opcode (char const*,short) ; 
- int strlen (char const*) ; 
+
+ short find_main_ent (short) ;
+ short find_string_ent (char*) ;
+ int get_opc_prefix (char const**,char*) ;
+ struct ia64_opcode* ia64_find_matching_opcode (char const*,short) ;
+ int strlen (char const*) ;
 
 struct ia64_opcode *
 ia64_find_opcode (const char *name)
@@ -29,21 +29,21 @@ ia64_find_opcode (const char *name)
 
   if (strlen (name) > 128)
     {
-      return NULL;
+      return ((void*)0);
     }
   suffix = name;
   get_opc_prefix (&suffix, op);
   name_index = find_string_ent (op);
   if (name_index < 0)
     {
-      return NULL;
+      return ((void*)0);
     }
 
   place = find_main_ent (name_index);
 
   if (place < 0)
     {
-      return NULL;
+      return ((void*)0);
     }
   return ia64_find_matching_opcode (name, place);
 }

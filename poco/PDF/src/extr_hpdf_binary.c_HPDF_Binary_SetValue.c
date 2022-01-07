@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ len; scalar_t__ value; int /*<<< orphan*/  error; int /*<<< orphan*/  mmgr; } ;
-typedef  scalar_t__ HPDF_UINT ;
-typedef  int /*<<< orphan*/  HPDF_STATUS ;
-typedef  TYPE_1__* HPDF_Binary ;
-typedef  int /*<<< orphan*/  HPDF_BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HPDF_BINARY_LENGTH_ERR ; 
- int /*<<< orphan*/  HPDF_Error_GetCode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_FreeMem (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ HPDF_GetMem (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ HPDF_LIMIT_MAX_STRING_LEN ; 
- int /*<<< orphan*/  HPDF_MemCpy (scalar_t__,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  HPDF_OK ; 
- int /*<<< orphan*/  HPDF_SetError (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ len; scalar_t__ value; int error; int mmgr; } ;
+typedef scalar_t__ HPDF_UINT ;
+typedef int HPDF_STATUS ;
+typedef TYPE_1__* HPDF_Binary ;
+typedef int HPDF_BYTE ;
+
+
+ int HPDF_BINARY_LENGTH_ERR ;
+ int HPDF_Error_GetCode (int ) ;
+ int HPDF_FreeMem (int ,scalar_t__) ;
+ scalar_t__ HPDF_GetMem (int ,scalar_t__) ;
+ scalar_t__ HPDF_LIMIT_MAX_STRING_LEN ;
+ int HPDF_MemCpy (scalar_t__,int *,scalar_t__) ;
+ int HPDF_OK ;
+ int HPDF_SetError (int ,int ,int ) ;
 
 HPDF_STATUS
-HPDF_Binary_SetValue  (HPDF_Binary  obj,
-                       HPDF_BYTE    *value,
-                       HPDF_UINT    len)
+HPDF_Binary_SetValue (HPDF_Binary obj,
+                       HPDF_BYTE *value,
+                       HPDF_UINT len)
 {
     if (len > HPDF_LIMIT_MAX_STRING_LEN)
         return HPDF_SetError (obj->error, HPDF_BINARY_LENGTH_ERR, 0);

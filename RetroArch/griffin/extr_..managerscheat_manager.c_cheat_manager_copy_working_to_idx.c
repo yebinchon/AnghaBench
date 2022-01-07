@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct item_cheat {int dummy; } ;
-struct TYPE_4__ {unsigned int size; int /*<<< orphan*/  working_code; TYPE_1__* cheats; int /*<<< orphan*/  working_desc; int /*<<< orphan*/  working_cheat; } ;
+struct TYPE_4__ {unsigned int size; int working_code; TYPE_1__* cheats; int working_desc; int working_cheat; } ;
 struct TYPE_3__ {void* code; void* desc; } ;
 
-/* Variables and functions */
- TYPE_2__ cheat_manager_state ; 
- int /*<<< orphan*/  free (void*) ; 
- int /*<<< orphan*/  memcpy (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- void* strdup (int /*<<< orphan*/ ) ; 
+
+ TYPE_2__ cheat_manager_state ;
+ int free (void*) ;
+ int memcpy (TYPE_1__*,int *,int) ;
+ void* strdup (int ) ;
 
 bool cheat_manager_copy_working_to_idx(unsigned idx)
 {
    if ((!cheat_manager_state.cheats) || (cheat_manager_state.size < idx + 1))
-      return false;
+      return 0;
 
    memcpy(&(cheat_manager_state.cheats[idx]), &(cheat_manager_state.working_cheat), sizeof(struct item_cheat));
 
@@ -39,5 +39,5 @@ bool cheat_manager_copy_working_to_idx(unsigned idx)
 
    cheat_manager_state.cheats[idx].code = strdup(cheat_manager_state.working_code);
 
-   return true;
+   return 1;
 }

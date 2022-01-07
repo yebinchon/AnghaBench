@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  scalar_t__ lua_Integer ;
 
-/* Variables and functions */
- scalar_t__ LUA_MAXINTEGER ; 
- int /*<<< orphan*/  LUA_OPEQ ; 
- int /*<<< orphan*/  TAB_R ; 
- int /*<<< orphan*/  TAB_W ; 
- int /*<<< orphan*/  checktab (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int,int,char*) ; 
- scalar_t__ luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_compare (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_geti (int /*<<< orphan*/ *,int,scalar_t__) ; 
- int /*<<< orphan*/  lua_isnoneornil (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_seti (int /*<<< orphan*/ *,int,scalar_t__) ; 
+
+
+
+typedef int lua_State ;
+typedef scalar_t__ lua_Integer ;
+
+
+ scalar_t__ LUA_MAXINTEGER ;
+ int LUA_OPEQ ;
+ int TAB_R ;
+ int TAB_W ;
+ int checktab (int *,int,int ) ;
+ int luaL_argcheck (int *,int,int,char*) ;
+ scalar_t__ luaL_checkinteger (int *,int) ;
+ int lua_compare (int *,int,int,int ) ;
+ int lua_geti (int *,int,scalar_t__) ;
+ int lua_isnoneornil (int *,int) ;
+ int lua_pushvalue (int *,int) ;
+ int lua_seti (int *,int,scalar_t__) ;
 
 __attribute__((used)) static int tmove (lua_State *L) {
   lua_Integer f = luaL_checkinteger(L, 2);
   lua_Integer e = luaL_checkinteger(L, 3);
   lua_Integer t = luaL_checkinteger(L, 4);
-  int tt = !lua_isnoneornil(L, 5) ? 5 : 1;  /* destination table */
+  int tt = !lua_isnoneornil(L, 5) ? 5 : 1;
   checktab(L, 1, TAB_R);
   checktab(L, tt, TAB_W);
-  if (e >= f) {  /* otherwise, nothing to move */
+  if (e >= f) {
     lua_Integer n, i;
     luaL_argcheck(L, f > 0 || e < LUA_MAXINTEGER + f, 3,
                   "too many elements to move");
-    n = e - f + 1;  /* number of elements to move */
+    n = e - f + 1;
     luaL_argcheck(L, t <= LUA_MAXINTEGER - n + 1, 4,
                   "destination wrap around");
     if (t > e || t <= f || (tt != 1 && !lua_compare(L, 1, tt, LUA_OPEQ))) {
@@ -54,6 +54,6 @@ __attribute__((used)) static int tmove (lua_State *L) {
       }
     }
   }
-  lua_pushvalue(L, tt);  /* return destination table */
+  lua_pushvalue(L, tt);
   return 1;
 }

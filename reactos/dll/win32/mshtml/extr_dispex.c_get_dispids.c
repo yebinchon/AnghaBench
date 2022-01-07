@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tid_t ;
-struct TYPE_8__ {int /*<<< orphan*/  memid; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int tid_t ;
+struct TYPE_8__ {int memid; } ;
 struct TYPE_7__ {unsigned int cFuncs; } ;
-typedef  TYPE_1__ TYPEATTR ;
-typedef  int /*<<< orphan*/  ITypeInfo ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_2__ FUNCDESC ;
-typedef  unsigned int DWORD ;
-typedef  int /*<<< orphan*/  DISPID ;
+typedef TYPE_1__ TYPEATTR ;
+typedef int ITypeInfo ;
+typedef int HRESULT ;
+typedef TYPE_2__ FUNCDESC ;
+typedef unsigned int DWORD ;
+typedef int DISPID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ITypeInfo_GetFuncDesc (int /*<<< orphan*/ *,unsigned int,TYPE_2__**) ; 
- int /*<<< orphan*/  ITypeInfo_GetTypeAttr (int /*<<< orphan*/ *,TYPE_1__**) ; 
- int /*<<< orphan*/  ITypeInfo_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITypeInfo_ReleaseFuncDesc (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  ITypeInfo_ReleaseTypeAttr (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  get_typeinfo (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * heap_alloc (unsigned int) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  id_cmp ; 
- int /*<<< orphan*/  qsort (int /*<<< orphan*/ *,unsigned int,int,int /*<<< orphan*/ ) ; 
+
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int ITypeInfo_GetFuncDesc (int *,unsigned int,TYPE_2__**) ;
+ int ITypeInfo_GetTypeAttr (int *,TYPE_1__**) ;
+ int ITypeInfo_Release (int *) ;
+ int ITypeInfo_ReleaseFuncDesc (int *,TYPE_2__*) ;
+ int ITypeInfo_ReleaseTypeAttr (int *,TYPE_1__*) ;
+ int S_OK ;
+ int get_typeinfo (int ,int **) ;
+ int * heap_alloc (unsigned int) ;
+ int heap_free (int *) ;
+ int id_cmp ;
+ int qsort (int *,unsigned int,int,int ) ;
 
 HRESULT get_dispids(tid_t tid, DWORD *ret_size, DISPID **ret)
 {

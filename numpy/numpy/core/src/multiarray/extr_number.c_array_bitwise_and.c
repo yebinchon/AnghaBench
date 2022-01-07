@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  bitwise_and; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BINOP_GIVE_UP_IF_NEEDED (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ * (*) (int /*<<< orphan*/ *,int /*<<< orphan*/ *)) ; 
- int /*<<< orphan*/ * PyArray_GenericBinaryFunction (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  array_inplace_bitwise_and ; 
- TYPE_1__ n_ops ; 
- int /*<<< orphan*/  nb_and ; 
- scalar_t__ try_binary_elide (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int bitwise_and; } ;
+typedef int PyObject ;
+typedef int PyArrayObject ;
+
+
+ int BINOP_GIVE_UP_IF_NEEDED (int *,int *,int ,int * (*) (int *,int *)) ;
+ int * PyArray_GenericBinaryFunction (int *,int *,int ) ;
+ int array_inplace_bitwise_and ;
+ TYPE_1__ n_ops ;
+ int nb_and ;
+ scalar_t__ try_binary_elide (int *,int *,int *,int **,int) ;
 
 __attribute__((used)) static PyObject *
 array_bitwise_and(PyArrayObject *m1, PyObject *m2)

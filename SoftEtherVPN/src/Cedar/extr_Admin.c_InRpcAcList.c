@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-struct TYPE_9__ {void* Priority; int /*<<< orphan*/  SubnetMask; void* Masked; int /*<<< orphan*/  IpAddress; void* Deny; void* Id; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * o; int /*<<< orphan*/  HubName; } ;
-typedef  TYPE_1__ RPC_AC_LIST ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  TYPE_2__ AC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddAc (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  Free (TYPE_2__*) ; 
- int /*<<< orphan*/ * NewAcList () ; 
- void* PackGetBoolEx (int /*<<< orphan*/ *,char*,scalar_t__) ; 
- scalar_t__ PackGetIndexCount (int /*<<< orphan*/ *,char*) ; 
- void* PackGetIntEx (int /*<<< orphan*/ *,char*,scalar_t__) ; 
- int /*<<< orphan*/  PackGetIpEx (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  PackGetStr (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  Zero (TYPE_1__*,int) ; 
- TYPE_2__* ZeroMalloc (int) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+struct TYPE_9__ {void* Priority; int SubnetMask; void* Masked; int IpAddress; void* Deny; void* Id; } ;
+struct TYPE_8__ {int * o; int HubName; } ;
+typedef TYPE_1__ RPC_AC_LIST ;
+typedef int PACK ;
+typedef int LIST ;
+typedef TYPE_2__ AC ;
+
+
+ int AddAc (int *,TYPE_2__*) ;
+ int Free (TYPE_2__*) ;
+ int * NewAcList () ;
+ void* PackGetBoolEx (int *,char*,scalar_t__) ;
+ scalar_t__ PackGetIndexCount (int *,char*) ;
+ void* PackGetIntEx (int *,char*,scalar_t__) ;
+ int PackGetIpEx (int *,char*,int *,scalar_t__) ;
+ int PackGetStr (int *,char*,int ,int) ;
+ int Zero (TYPE_1__*,int) ;
+ TYPE_2__* ZeroMalloc (int) ;
 
 void InRpcAcList(RPC_AC_LIST *t, PACK *p)
 {
-	UINT i;
-	LIST *o;
-	UINT num;
-	// Validate arguments
-	if (t == NULL || p == NULL)
-	{
-		return;
-	}
+ UINT i;
+ LIST *o;
+ UINT num;
 
-	Zero(t, sizeof(RPC_AC_LIST));
-	o = NewAcList();
+ if (t == ((void*)0) || p == ((void*)0))
+ {
+  return;
+ }
 
-	PackGetStr(p, "HubName", t->HubName, sizeof(t->HubName));
-	num = PackGetIndexCount(p, "IpAddress");
+ Zero(t, sizeof(RPC_AC_LIST));
+ o = NewAcList();
 
-	for (i = 0;i < num;i++)
-	{
-		AC *ac = ZeroMalloc(sizeof(AC));
+ PackGetStr(p, "HubName", t->HubName, sizeof(t->HubName));
+ num = PackGetIndexCount(p, "IpAddress");
 
-		ac->Id = PackGetIntEx(p, "Id", i);
-		ac->Deny = PackGetBoolEx(p, "Deny", i);
-		PackGetIpEx(p, "IpAddress", &ac->IpAddress, i);
-		ac->Masked = PackGetBoolEx(p, "Masked", i);
+ for (i = 0;i < num;i++)
+ {
+  AC *ac = ZeroMalloc(sizeof(AC));
 
-		if (ac->Masked)
-		{
-			PackGetIpEx(p, "SubnetMask", &ac->SubnetMask, i);
-		}
+  ac->Id = PackGetIntEx(p, "Id", i);
+  ac->Deny = PackGetBoolEx(p, "Deny", i);
+  PackGetIpEx(p, "IpAddress", &ac->IpAddress, i);
+  ac->Masked = PackGetBoolEx(p, "Masked", i);
 
-		ac->Priority = PackGetIntEx(p, "Priority", i);
+  if (ac->Masked)
+  {
+   PackGetIpEx(p, "SubnetMask", &ac->SubnetMask, i);
+  }
 
-		AddAc(o, ac);
+  ac->Priority = PackGetIntEx(p, "Priority", i);
 
-		Free(ac);
-	}
+  AddAc(o, ac);
 
-	t->o = o;
+  Free(ac);
+ }
+
+ t->o = o;
 }

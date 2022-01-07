@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int saved_stdout; int saved_stdin; int /*<<< orphan*/  saved_stdin_attr; int /*<<< orphan*/  saved_stdout_attr; int /*<<< orphan*/  event; void* sigwinch_event_source; void* master_event_source; void* stdout_event_source; void* stdin_event_source; } ;
-typedef  TYPE_1__ PTYForward ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STDIN_FILENO ; 
- int /*<<< orphan*/  STDOUT_FILENO ; 
- int /*<<< orphan*/  TCSANOW ; 
- int /*<<< orphan*/  fd_nonblock (int /*<<< orphan*/ ,int) ; 
- void* sd_event_source_unref (void*) ; 
- int /*<<< orphan*/  sd_event_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tcsetattr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int saved_stdout; int saved_stdin; int saved_stdin_attr; int saved_stdout_attr; int event; void* sigwinch_event_source; void* master_event_source; void* stdout_event_source; void* stdin_event_source; } ;
+typedef TYPE_1__ PTYForward ;
+
+
+ int STDIN_FILENO ;
+ int STDOUT_FILENO ;
+ int TCSANOW ;
+ int fd_nonblock (int ,int) ;
+ void* sd_event_source_unref (void*) ;
+ int sd_event_unref (int ) ;
+ int tcsetattr (int ,int ,int *) ;
 
 __attribute__((used)) static void pty_forward_disconnect(PTYForward *f) {
 
@@ -38,10 +38,10 @@ __attribute__((used)) static void pty_forward_disconnect(PTYForward *f) {
                 if (f->saved_stdin)
                         tcsetattr(STDIN_FILENO, TCSANOW, &f->saved_stdin_attr);
 
-                f->saved_stdout = f->saved_stdin = false;
+                f->saved_stdout = f->saved_stdin = 0;
         }
 
-        /* STDIN/STDOUT should not be nonblocking normally, so let's unconditionally reset it */
-        (void) fd_nonblock(STDIN_FILENO, false);
-        (void) fd_nonblock(STDOUT_FILENO, false);
+
+        (void) fd_nonblock(STDIN_FILENO, 0);
+        (void) fd_nonblock(STDOUT_FILENO, 0);
 }

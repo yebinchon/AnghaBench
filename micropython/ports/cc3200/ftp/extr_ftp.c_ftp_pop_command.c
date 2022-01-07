@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t ftp_cmd_index_t ;
-struct TYPE_2__ {int /*<<< orphan*/  cmd; } ;
 
-/* Variables and functions */
- size_t E_FTP_CMD_NOT_SUPPORTED ; 
- size_t E_FTP_NUM_FTP_CMDS ; 
- int FTP_CMD_SIZE_MAX ; 
- TYPE_1__* ftp_cmd_table ; 
- int /*<<< orphan*/  ftp_pop_param (char**,char*) ; 
- int /*<<< orphan*/  stoupper (char*) ; 
- int /*<<< orphan*/  strcmp (char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef size_t ftp_cmd_index_t ;
+struct TYPE_2__ {int cmd; } ;
+
+
+ size_t E_FTP_CMD_NOT_SUPPORTED ;
+ size_t E_FTP_NUM_FTP_CMDS ;
+ int FTP_CMD_SIZE_MAX ;
+ TYPE_1__* ftp_cmd_table ;
+ int ftp_pop_param (char**,char*) ;
+ int stoupper (char*) ;
+ int strcmp (char*,int ) ;
 
 __attribute__((used)) static ftp_cmd_index_t ftp_pop_command (char **str) {
     char _cmd[FTP_CMD_SIZE_MAX];
@@ -29,7 +29,7 @@ __attribute__((used)) static ftp_cmd_index_t ftp_pop_command (char **str) {
     stoupper (_cmd);
     for (ftp_cmd_index_t i = 0; i < E_FTP_NUM_FTP_CMDS; i++) {
         if (!strcmp (_cmd, ftp_cmd_table[i].cmd)) {
-            // move one step further to skip the space
+
             (*str)++;
             return i;
         }

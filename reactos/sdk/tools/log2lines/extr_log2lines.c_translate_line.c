@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  total; int /*<<< orphan*/  skipped; int /*<<< orphan*/  translated; int /*<<< orphan*/  undo; int /*<<< orphan*/  redo; } ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LINESIZE ; 
- int NAMESIZE ; 
- scalar_t__ atoi (char*) ; 
- int /*<<< orphan*/  log (int /*<<< orphan*/ *,char*,char*,char*,...) ; 
- int /*<<< orphan*/  memset (char*,char,int /*<<< orphan*/ ) ; 
- scalar_t__ opt_Mark ; 
- scalar_t__ opt_mark ; 
- scalar_t__ opt_redo ; 
- scalar_t__ opt_undo ; 
- char* remove_mark (char*) ; 
- int sscanf (char*,char*,char*,...) ; 
- char* strchr (char*,char) ; 
- scalar_t__ strcmp (char*,char*) ; 
- TYPE_1__ summ ; 
- int translate_file (char*,unsigned int,char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int total; int skipped; int translated; int undo; int redo; } ;
+typedef int FILE ;
+
+
+ int LINESIZE ;
+ int NAMESIZE ;
+ scalar_t__ atoi (char*) ;
+ int log (int *,char*,char*,char*,...) ;
+ int memset (char*,char,int ) ;
+ scalar_t__ opt_Mark ;
+ scalar_t__ opt_mark ;
+ scalar_t__ opt_redo ;
+ scalar_t__ opt_undo ;
+ char* remove_mark (char*) ;
+ int sscanf (char*,char*,char*,...) ;
+ char* strchr (char*,char) ;
+ scalar_t__ strcmp (char*,char*) ;
+ TYPE_1__ summ ;
+ int translate_file (char*,unsigned int,char*) ;
 
 __attribute__((used)) static void
 translate_line(FILE *outFile, char *Line, char *path, char *LineOut)
@@ -47,7 +47,7 @@ translate_line(FILE *outFile, char *Line, char *path, char *LineOut)
     s = remove_mark(Line);
     if (opt_undo)
     {
-        /* Strip all lines added by this tool: */
+
         char buf[NAMESIZE];
         if (sscanf(s, "| %s", buf) == 1)
             if (buf[0] == '0' || strcmp(buf, "----") == 0 || strcmp(buf, "L2L-") == 0 || strcmp(buf, "S---") == 0 || strcmp(buf, "R---") == 0 || atoi(buf))
@@ -113,8 +113,8 @@ translate_line(FILE *outFile, char *Line, char *path, char *LineOut)
     if (res)
     {
         if (sep)
-            *sep = ':';  // restore because not translated
+            *sep = ':';
         log(outFile, "%s%s", mark, s);
     }
-    memset(Line, '\0', LINESIZE);  // flushed
+    memset(Line, '\0', LINESIZE);
 }

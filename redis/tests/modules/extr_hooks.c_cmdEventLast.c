@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  last_val_int; scalar_t__ last_val_string; } ;
-typedef  int /*<<< orphan*/  RedisModuleString ;
-typedef  int /*<<< orphan*/  RedisModuleCtx ;
-typedef  TYPE_1__ EventElement ;
 
-/* Variables and functions */
- int REDISMODULE_OK ; 
- TYPE_1__* RedisModule_DictGet (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_ReplyWithLongLong (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RedisModule_ReplyWithNull (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_ReplyWithString (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  RedisModule_WrongArity (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  event_log ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int last_val_int; scalar_t__ last_val_string; } ;
+typedef int RedisModuleString ;
+typedef int RedisModuleCtx ;
+typedef TYPE_1__ EventElement ;
+
+
+ int REDISMODULE_OK ;
+ TYPE_1__* RedisModule_DictGet (int ,int *,int *) ;
+ int RedisModule_ReplyWithLongLong (int *,int ) ;
+ int RedisModule_ReplyWithNull (int *) ;
+ int RedisModule_ReplyWithString (int *,scalar_t__) ;
+ int RedisModule_WrongArity (int *) ;
+ int event_log ;
 
 int cmdEventLast(RedisModuleCtx *ctx, RedisModuleString **argv, int argc)
 {
@@ -32,7 +32,7 @@ int cmdEventLast(RedisModuleCtx *ctx, RedisModuleString **argv, int argc)
         return REDISMODULE_OK;
     }
 
-    EventElement *event = RedisModule_DictGet(event_log, argv[1], NULL);
+    EventElement *event = RedisModule_DictGet(event_log, argv[1], ((void*)0));
     if (event && event->last_val_string)
         RedisModule_ReplyWithString(ctx, event->last_val_string);
     else if (event)

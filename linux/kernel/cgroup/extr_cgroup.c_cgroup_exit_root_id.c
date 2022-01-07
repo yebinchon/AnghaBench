@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cgroup_root {int /*<<< orphan*/  hierarchy_id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cgroup_hierarchy_idr ; 
- int /*<<< orphan*/  cgroup_mutex ; 
- int /*<<< orphan*/  idr_remove (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lockdep_assert_held (int /*<<< orphan*/ *) ; 
+
+
+
+struct cgroup_root {int hierarchy_id; } ;
+
+
+ int cgroup_hierarchy_idr ;
+ int cgroup_mutex ;
+ int idr_remove (int *,int ) ;
+ int lockdep_assert_held (int *) ;
 
 __attribute__((used)) static void cgroup_exit_root_id(struct cgroup_root *root)
 {
-	lockdep_assert_held(&cgroup_mutex);
+ lockdep_assert_held(&cgroup_mutex);
 
-	idr_remove(&cgroup_hierarchy_idr, root->hierarchy_id);
+ idr_remove(&cgroup_hierarchy_idr, root->hierarchy_id);
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bufferevent {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bufferevent_get_input (struct bufferevent*) ; 
- int /*<<< orphan*/  evbuffer_drain (int /*<<< orphan*/ ,int) ; 
+
+ int bufferevent_get_input (struct bufferevent*) ;
+ int evbuffer_drain (int ,int) ;
 
 __attribute__((used)) static void
 terminate_readcb(struct bufferevent *bev, void *arg)
 {
-	/* just drop the data */
-	evbuffer_drain(bufferevent_get_input(bev), -1);
+
+ evbuffer_drain(bufferevent_get_input(bev), -1);
 }

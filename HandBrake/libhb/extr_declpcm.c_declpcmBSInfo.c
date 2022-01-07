@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
-typedef  int /*<<< orphan*/  hb_work_object_t ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+typedef int hb_work_object_t ;
 struct TYPE_7__ {int num; int den; } ;
-struct TYPE_8__ {char* name; int bitrate; int flags; int sample_bit_depth; int samples_per_frame; int /*<<< orphan*/ * channel_map; int /*<<< orphan*/  channel_layout; int /*<<< orphan*/  matrix_encoding; TYPE_1__ rate; } ;
-typedef  TYPE_2__ hb_work_info_t ;
+struct TYPE_8__ {char* name; int bitrate; int flags; int sample_bit_depth; int samples_per_frame; int * channel_map; int channel_layout; int matrix_encoding; TYPE_1__ rate; } ;
+typedef TYPE_2__ hb_work_info_t ;
 struct TYPE_9__ {int* data; } ;
-typedef  TYPE_3__ hb_buffer_t ;
+typedef TYPE_3__ hb_buffer_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_MATRIX_ENCODING_NONE ; 
- int /*<<< orphan*/  hb_libav_chan_map ; 
- int /*<<< orphan*/ * hdr2layout ; 
- int* hdr2samplerate ; 
- int* hdr2samplesize ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
+
+ int AV_MATRIX_ENCODING_NONE ;
+ int hb_libav_chan_map ;
+ int * hdr2layout ;
+ int* hdr2samplerate ;
+ int* hdr2samplesize ;
+ int memset (TYPE_2__*,int ,int) ;
 
 __attribute__((used)) static int declpcmBSInfo( hb_work_object_t *w, const hb_buffer_t *b,
                           hb_work_info_t *info )
 {
-    int nchannels  = ( b->data[4] & 7 ) + 1;
+    int nchannels = ( b->data[4] & 7 ) + 1;
     int sample_size = hdr2samplesize[b->data[4] >> 6];
 
     int rate = hdr2samplerate[ ( b->data[4] >> 4 ) & 0x3 ];

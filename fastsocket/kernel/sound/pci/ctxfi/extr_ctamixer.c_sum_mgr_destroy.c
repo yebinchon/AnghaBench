@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sum_mgr {int /*<<< orphan*/  mgr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct sum_mgr*) ; 
- int /*<<< orphan*/  rsc_mgr_uninit (int /*<<< orphan*/ *) ; 
+
+
+
+struct sum_mgr {int mgr; } ;
+
+
+ int kfree (struct sum_mgr*) ;
+ int rsc_mgr_uninit (int *) ;
 
 int sum_mgr_destroy(struct sum_mgr *sum_mgr)
 {
-	rsc_mgr_uninit(&sum_mgr->mgr);
-	kfree(sum_mgr);
-	return 0;
+ rsc_mgr_uninit(&sum_mgr->mgr);
+ kfree(sum_mgr);
+ return 0;
 }

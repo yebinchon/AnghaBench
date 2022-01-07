@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8 ;
-typedef  scalar_t__ int16 ;
 
-/* Variables and functions */
- scalar_t__* Buffer ; 
- scalar_t__ BufferIn ; 
- size_t BufferRead ; 
- size_t BufferSize ; 
+
+
+
+typedef int uint8 ;
+typedef scalar_t__ int16 ;
+
+
+ scalar_t__* Buffer ;
+ scalar_t__ BufferIn ;
+ size_t BufferRead ;
+ size_t BufferSize ;
 
 __attribute__((used)) static void fillaudio(void *udata, uint8 *stream, int len)
 {

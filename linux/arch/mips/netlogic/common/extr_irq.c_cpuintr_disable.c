@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct irq_data {int /*<<< orphan*/  irq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clear_c0_eimr (int /*<<< orphan*/ ) ; 
+
+
+
+struct irq_data {int irq; } ;
+
+
+ int clear_c0_eimr (int ) ;
 
 __attribute__((used)) static void cpuintr_disable(struct irq_data *d)
 {
-	clear_c0_eimr(d->irq);
+ clear_c0_eimr(d->irq);
 }

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  maple_device_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int maple_device_t ;
 struct TYPE_3__ {int buttons; int rtrig; int ltrig; int joyx; int joyy; } ;
-typedef  TYPE_1__ cont_state_t ;
+typedef TYPE_1__ cont_state_t ;
 struct TYPE_4__ {int* padbits; } ;
 
-/* Variables and functions */
- int CONT_A ; 
- int CONT_B ; 
- int CONT_DPAD_DOWN ; 
- int CONT_DPAD_LEFT ; 
- int CONT_DPAD_RIGHT ; 
- int CONT_DPAD_UP ; 
- int CONT_START ; 
- int CONT_X ; 
- int CONT_Y ; 
- int /*<<< orphan*/  MAPLE_FUNC_CONTROLLER ; 
- int /*<<< orphan*/  YabauseExec () ; 
- scalar_t__ maple_dev_status (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * maple_enum_type (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__* pad1 ; 
 
-int PERDCHandleEvents(void)	{
+ int CONT_A ;
+ int CONT_B ;
+ int CONT_DPAD_DOWN ;
+ int CONT_DPAD_LEFT ;
+ int CONT_DPAD_RIGHT ;
+ int CONT_DPAD_UP ;
+ int CONT_START ;
+ int CONT_X ;
+ int CONT_Y ;
+ int MAPLE_FUNC_CONTROLLER ;
+ int YabauseExec () ;
+ scalar_t__ maple_dev_status (int *) ;
+ int * maple_enum_type (int ,int ) ;
+ TYPE_2__* pad1 ;
+
+int PERDCHandleEvents(void) {
     maple_device_t *dev;
 
     dev = maple_enum_type(0, MAPLE_FUNC_CONTROLLER);
-    if(dev != NULL) {
+    if(dev != ((void*)0)) {
         cont_state_t *state = (cont_state_t *) maple_dev_status(dev);
 
-        if(state != NULL)   {
+        if(state != ((void*)0)) {
             if(state->buttons & CONT_DPAD_UP)
                 *pad1->padbits &= 0xEF;
             else
@@ -111,5 +111,5 @@ int PERDCHandleEvents(void)	{
 
     YabauseExec();
 
-	return 0;
+ return 0;
 }

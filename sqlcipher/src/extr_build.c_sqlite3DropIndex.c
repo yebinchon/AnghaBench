@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_32__   TYPE_7__ ;
-typedef  struct TYPE_31__   TYPE_6__ ;
-typedef  struct TYPE_30__   TYPE_5__ ;
-typedef  struct TYPE_29__   TYPE_4__ ;
-typedef  struct TYPE_28__   TYPE_3__ ;
-typedef  struct TYPE_27__   TYPE_2__ ;
-typedef  struct TYPE_26__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_32__ TYPE_7__ ;
+typedef struct TYPE_31__ TYPE_6__ ;
+typedef struct TYPE_30__ TYPE_5__ ;
+typedef struct TYPE_29__ TYPE_4__ ;
+typedef struct TYPE_28__ TYPE_3__ ;
+typedef struct TYPE_27__ TYPE_2__ ;
+typedef struct TYPE_26__ TYPE_1__ ;
+
+
 struct TYPE_28__ {TYPE_2__* aDb; scalar_t__ mallocFailed; } ;
-typedef  TYPE_3__ sqlite3 ;
-typedef  int /*<<< orphan*/  Vdbe ;
-struct TYPE_29__ {int /*<<< orphan*/  zName; } ;
-typedef  TYPE_4__ Table ;
-struct TYPE_32__ {scalar_t__ idxType; char const* zName; int /*<<< orphan*/  tnum; TYPE_4__* pTable; int /*<<< orphan*/  pSchema; } ;
+typedef TYPE_3__ sqlite3 ;
+typedef int Vdbe ;
+struct TYPE_29__ {int zName; } ;
+typedef TYPE_4__ Table ;
+struct TYPE_32__ {scalar_t__ idxType; char const* zName; int tnum; TYPE_4__* pTable; int pSchema; } ;
 struct TYPE_31__ {scalar_t__ nErr; int checkSchema; TYPE_3__* db; } ;
 struct TYPE_30__ {int nSrc; TYPE_1__* a; } ;
 struct TYPE_27__ {char* zDbSName; } ;
-struct TYPE_26__ {int /*<<< orphan*/  zDatabase; int /*<<< orphan*/  zName; } ;
-typedef  TYPE_5__ SrcList ;
-typedef  TYPE_6__ Parse ;
-typedef  TYPE_7__ Index ;
+struct TYPE_26__ {int zDatabase; int zName; } ;
+typedef TYPE_5__ SrcList ;
+typedef TYPE_6__ Parse ;
+typedef TYPE_7__ Index ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MASTER_NAME ; 
- int /*<<< orphan*/  OMIT_TEMPDB ; 
- int /*<<< orphan*/  OP_DropIndex ; 
- char* SCHEMA_TABLE (int) ; 
- int SQLITE_DELETE ; 
- int SQLITE_DROP_INDEX ; 
- int SQLITE_DROP_TEMP_INDEX ; 
- scalar_t__ SQLITE_IDXTYPE_APPDEF ; 
- scalar_t__ SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  destroyRootPage (TYPE_6__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ sqlite3AuthCheck (TYPE_6__*,int,char const*,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  sqlite3BeginWriteOperation (TYPE_6__*,int,int) ; 
- int /*<<< orphan*/  sqlite3ChangeCookie (TYPE_6__*,int) ; 
- int /*<<< orphan*/  sqlite3ClearStatTables (TYPE_6__*,int,char*,char const*) ; 
- int /*<<< orphan*/  sqlite3CodeVerifyNamedSchema (TYPE_6__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3ErrorMsg (TYPE_6__*,char*,TYPE_5__*,...) ; 
- TYPE_7__* sqlite3FindIndex (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * sqlite3GetVdbe (TYPE_6__*) ; 
- int /*<<< orphan*/  sqlite3NestedParse (TYPE_6__*,char*,char*,int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ sqlite3ReadSchema (TYPE_6__*) ; 
- int sqlite3SchemaToIndex (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3SrcListDelete (TYPE_3__*,TYPE_5__*) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp4 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
+
+ int MASTER_NAME ;
+ int OMIT_TEMPDB ;
+ int OP_DropIndex ;
+ char* SCHEMA_TABLE (int) ;
+ int SQLITE_DELETE ;
+ int SQLITE_DROP_INDEX ;
+ int SQLITE_DROP_TEMP_INDEX ;
+ scalar_t__ SQLITE_IDXTYPE_APPDEF ;
+ scalar_t__ SQLITE_OK ;
+ int assert (int) ;
+ int destroyRootPage (TYPE_6__*,int ,int) ;
+ scalar_t__ sqlite3AuthCheck (TYPE_6__*,int,char const*,int ,char const*) ;
+ int sqlite3BeginWriteOperation (TYPE_6__*,int,int) ;
+ int sqlite3ChangeCookie (TYPE_6__*,int) ;
+ int sqlite3ClearStatTables (TYPE_6__*,int,char*,char const*) ;
+ int sqlite3CodeVerifyNamedSchema (TYPE_6__*,int ) ;
+ int sqlite3ErrorMsg (TYPE_6__*,char*,TYPE_5__*,...) ;
+ TYPE_7__* sqlite3FindIndex (TYPE_3__*,int ,int ) ;
+ int * sqlite3GetVdbe (TYPE_6__*) ;
+ int sqlite3NestedParse (TYPE_6__*,char*,char*,int ,char const*) ;
+ scalar_t__ sqlite3ReadSchema (TYPE_6__*) ;
+ int sqlite3SchemaToIndex (TYPE_3__*,int ) ;
+ int sqlite3SrcListDelete (TYPE_3__*,TYPE_5__*) ;
+ int sqlite3VdbeAddOp4 (int *,int ,int,int ,int ,char const*,int ) ;
 
 void sqlite3DropIndex(Parse *pParse, SrcList *pName, int ifExists){
   Index *pIndex;
@@ -63,7 +63,7 @@ void sqlite3DropIndex(Parse *pParse, SrcList *pName, int ifExists){
   sqlite3 *db = pParse->db;
   int iDb;
 
-  assert( pParse->nErr==0 );   /* Never called with prior errors */
+  assert( pParse->nErr==0 );
   if( db->mallocFailed ){
     goto exit_drop_index;
   }
@@ -87,7 +87,7 @@ void sqlite3DropIndex(Parse *pParse, SrcList *pName, int ifExists){
     goto exit_drop_index;
   }
   iDb = sqlite3SchemaToIndex(db, pIndex->pSchema);
-#ifndef SQLITE_OMIT_AUTHORIZATION
+
   {
     int code = SQLITE_DROP_INDEX;
     Table *pTab = pIndex->pTable;
@@ -101,9 +101,9 @@ void sqlite3DropIndex(Parse *pParse, SrcList *pName, int ifExists){
       goto exit_drop_index;
     }
   }
-#endif
 
-  /* Generate code to remove the index and from the master table */
+
+
   v = sqlite3GetVdbe(pParse);
   if( v ){
     sqlite3BeginWriteOperation(pParse, 1, iDb);

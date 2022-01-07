@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int /*<<< orphan*/  opt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_SP ; 
- int /*<<< orphan*/  ETIMEDOUT ; 
- int /*<<< orphan*/  NN_PAIR ; 
- int /*<<< orphan*/  NN_RCVTIMEO ; 
- int /*<<< orphan*/  NN_SOL_SOCKET ; 
- int /*<<< orphan*/  NN_WS ; 
- int /*<<< orphan*/  NN_WS_MSG_TYPE ; 
- int NN_WS_MSG_TYPE_TEXT ; 
- int /*<<< orphan*/  socket_address ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int /*<<< orphan*/  test_bind (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_close (int) ; 
- int /*<<< orphan*/  test_connect (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_drop (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_recv (int,char*) ; 
- int /*<<< orphan*/  test_send (int,char*) ; 
- int /*<<< orphan*/  test_setsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- int test_socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef char uint8_t ;
+typedef int opt ;
+
+
+ int AF_SP ;
+ int ETIMEDOUT ;
+ int NN_PAIR ;
+ int NN_RCVTIMEO ;
+ int NN_SOL_SOCKET ;
+ int NN_WS ;
+ int NN_WS_MSG_TYPE ;
+ int NN_WS_MSG_TYPE_TEXT ;
+ int socket_address ;
+ int strcpy (char*,char*) ;
+ int test_bind (int,int ) ;
+ int test_close (int) ;
+ int test_connect (int,int ) ;
+ int test_drop (int,int ) ;
+ int test_recv (int,char*) ;
+ int test_send (int,char*) ;
+ int test_setsockopt (int,int ,int ,int*,int) ;
+ int test_socket (int ,int ) ;
 
 void test_text ()
 {
@@ -40,7 +40,7 @@ void test_text ()
     int opt;
     uint8_t bad[20];
 
-    /*  Negative testing... bad UTF-8 data for text. */
+
     sb = test_socket (AF_SP, NN_PAIR);
     sc = test_socket (AF_SP, NN_PAIR);
 
@@ -57,12 +57,12 @@ void test_text ()
     test_send (sc, "GOOD");
     test_recv (sb, "GOOD");
 
-    /*  and the bad ... */
+
     strcpy ((char *)bad, "BAD.");
     bad[2] = (char)0xDD;
     test_send (sc, (char *)bad);
 
-    /*  Make sure we dropped the frame. */
+
     test_drop (sb, ETIMEDOUT);
 
     test_close (sb);

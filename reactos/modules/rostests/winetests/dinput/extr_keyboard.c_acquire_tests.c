@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  kbd_state ;
-typedef  int /*<<< orphan*/  df ;
-typedef  int /*<<< orphan*/  custom_state ;
-typedef  int UINT ;
-struct TYPE_4__ {int dwSize; int dwObjSize; int dwDataSize; int dwNumObjs; scalar_t__* rgodf; int /*<<< orphan*/  dwFlags; } ;
-typedef  int /*<<< orphan*/  RAWINPUTDEVICE ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  IDirectInputDeviceA ;
-typedef  int /*<<< orphan*/  IDirectInputA ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int HRESULT ;
-typedef  int /*<<< orphan*/  HKL ;
-typedef  scalar_t__ DIOBJECTDATAFORMAT ;
-typedef  TYPE_1__ DIDATAFORMAT ;
-typedef  scalar_t__ BYTE ;
 
-/* Variables and functions */
- int ARRAY_SIZE (scalar_t__*) ; 
- int /*<<< orphan*/  ActivateKeyboardLayout (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int DIDFT_BUTTON ; 
- int DIDFT_MAKEINSTANCE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DIDF_RELAXIS ; 
- int DIERR_INVALIDPARAM ; 
- int DIERR_NOTACQUIRED ; 
- int /*<<< orphan*/  DIK_E ; 
- int /*<<< orphan*/  DIK_Q ; 
- int /*<<< orphan*/  DIK_R ; 
- int /*<<< orphan*/  DIK_W ; 
- int DISCL_BACKGROUND ; 
- int DISCL_NONEXCLUSIVE ; 
- scalar_t__ FAILED (int) ; 
- int /*<<< orphan*/  GUID_Key ; 
- int /*<<< orphan*/  GUID_SysKeyboard ; 
- int /*<<< orphan*/  GetRegisteredRawInputDevices (int /*<<< orphan*/ *,int*,int) ; 
- int IDirectInputDevice_Acquire (int /*<<< orphan*/ *) ; 
- int IDirectInputDevice_GetDeviceState (int /*<<< orphan*/ *,int,scalar_t__*) ; 
- int IDirectInputDevice_SetCooperativeLevel (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int IDirectInputDevice_SetDataFormat (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int IDirectInputDevice_Unacquire (int /*<<< orphan*/ *) ; 
- int IDirectInput_CreateDevice (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KEYEVENTF_KEYUP ; 
- int /*<<< orphan*/  LANG_ENGLISH ; 
- int /*<<< orphan*/  MAKELANGID (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SUBLANG_DEFAULT ; 
- int SUCCEEDED (int) ; 
- int S_FALSE ; 
- int /*<<< orphan*/  SetFocus (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnloadKeyboardLayout (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  activate_keyboard_layout (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ broken (int) ; 
- TYPE_1__ c_dfDIKeyboard ; 
- int /*<<< orphan*/  keybd_event (char,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (scalar_t__*,int,int) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int /*<<< orphan*/  pump_messages () ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int kbd_state ;
+typedef int df ;
+typedef int custom_state ;
+typedef int UINT ;
+struct TYPE_4__ {int dwSize; int dwObjSize; int dwDataSize; int dwNumObjs; scalar_t__* rgodf; int dwFlags; } ;
+typedef int RAWINPUTDEVICE ;
+typedef scalar_t__ LONG ;
+typedef int IDirectInputDeviceA ;
+typedef int IDirectInputA ;
+typedef int HWND ;
+typedef int HRESULT ;
+typedef int HKL ;
+typedef scalar_t__ DIOBJECTDATAFORMAT ;
+typedef TYPE_1__ DIDATAFORMAT ;
+typedef scalar_t__ BYTE ;
+
+
+ int ARRAY_SIZE (scalar_t__*) ;
+ int ActivateKeyboardLayout (int ,int ) ;
+ int DIDFT_BUTTON ;
+ int DIDFT_MAKEINSTANCE (int ) ;
+ int DIDF_RELAXIS ;
+ int DIERR_INVALIDPARAM ;
+ int DIERR_NOTACQUIRED ;
+ int DIK_E ;
+ int DIK_Q ;
+ int DIK_R ;
+ int DIK_W ;
+ int DISCL_BACKGROUND ;
+ int DISCL_NONEXCLUSIVE ;
+ scalar_t__ FAILED (int) ;
+ int GUID_Key ;
+ int GUID_SysKeyboard ;
+ int GetRegisteredRawInputDevices (int *,int*,int) ;
+ int IDirectInputDevice_Acquire (int *) ;
+ int IDirectInputDevice_GetDeviceState (int *,int,scalar_t__*) ;
+ int IDirectInputDevice_SetCooperativeLevel (int *,int *,int) ;
+ int IDirectInputDevice_SetDataFormat (int *,TYPE_1__*) ;
+ int IDirectInputDevice_Unacquire (int *) ;
+ int IDirectInput_CreateDevice (int *,int *,int **,int *) ;
+ int IUnknown_Release (int *) ;
+ int KEYEVENTF_KEYUP ;
+ int LANG_ENGLISH ;
+ int MAKELANGID (int ,int ) ;
+ int SUBLANG_DEFAULT ;
+ int SUCCEEDED (int) ;
+ int S_FALSE ;
+ int SetFocus (int ) ;
+ int UnloadKeyboardLayout (int ) ;
+ int activate_keyboard_layout (int ,int *) ;
+ scalar_t__ broken (int) ;
+ TYPE_1__ c_dfDIKeyboard ;
+ int keybd_event (char,int ,int ,int ) ;
+ int memset (scalar_t__*,int,int) ;
+ int ok (int,char*,int) ;
+ int pump_messages () ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void acquire_tests(IDirectInputA *pDI, HWND hwnd)
 {
@@ -97,13 +97,13 @@ __attribute__((used)) static void acquire_tests(IDirectInputA *pDI, HWND hwnd)
     df.dwNumObjs = ARRAY_SIZE(dodf);
     df.rgodf = dodf;
 
-    hr = IDirectInput_CreateDevice(pDI, &GUID_SysKeyboard, &pKeyboard, NULL);
+    hr = IDirectInput_CreateDevice(pDI, &GUID_SysKeyboard, &pKeyboard, ((void*)0));
     ok(SUCCEEDED(hr), "IDirectInput_CreateDevice() failed: %08x\n", hr);
     if (FAILED(hr)) return;
 
     hr = IDirectInputDevice_SetDataFormat(pKeyboard, &c_dfDIKeyboard);
     ok(SUCCEEDED(hr), "IDirectInputDevice_SetDataFormat() failed: %08x\n", hr);
-    hr = IDirectInputDevice_SetCooperativeLevel(pKeyboard, NULL, DISCL_NONEXCLUSIVE | DISCL_BACKGROUND);
+    hr = IDirectInputDevice_SetCooperativeLevel(pKeyboard, ((void*)0), DISCL_NONEXCLUSIVE | DISCL_BACKGROUND);
     ok(SUCCEEDED(hr), "IDirectInputDevice_SetCooperativeLevel() failed: %08x\n", hr);
     hr = IDirectInputDevice_GetDeviceState(pKeyboard, 10, kbd_state);
     ok(hr == DIERR_NOTACQUIRED, "IDirectInputDevice_GetDeviceState(10,) should have failed: %08x\n", hr);
@@ -135,7 +135,7 @@ __attribute__((used)) static void acquire_tests(IDirectInputA *pDI, HWND hwnd)
     for (i = 0; i < ARRAY_SIZE(custom_state); i++)
         ok(custom_state[i] == 0, "Should be zeroed, got 0x%08x\n", custom_state[i]);
 
-    /* simulate some keyboard input */
+
     SetFocus(hwnd);
     pump_messages();
 
@@ -146,7 +146,7 @@ __attribute__((used)) static void acquire_tests(IDirectInputA *pDI, HWND hwnd)
         win_skip("Keyboard event not processed, skipping test\n");
     else
     {
-        /* unacquiring should reset the device state */
+
         hr = IDirectInputDevice_Unacquire(pKeyboard);
         ok(SUCCEEDED(hr), "IDirectInputDevice_Unacquire() failed: %08x\n", hr);
         hr = IDirectInputDevice_Acquire(pKeyboard);
@@ -159,15 +159,15 @@ __attribute__((used)) static void acquire_tests(IDirectInputA *pDI, HWND hwnd)
     keybd_event('Q', 0, KEYEVENTF_KEYUP, 0);
 
     prev_raw_devices_count = 0;
-    GetRegisteredRawInputDevices(NULL, &prev_raw_devices_count, sizeof(RAWINPUTDEVICE));
-    ok(prev_raw_devices_count == 0 || broken(prev_raw_devices_count == 1) /* wxppro, w2003std */,
+    GetRegisteredRawInputDevices(((void*)0), &prev_raw_devices_count, sizeof(RAWINPUTDEVICE));
+    ok(prev_raw_devices_count == 0 || broken(prev_raw_devices_count == 1) ,
        "Unexpected raw devices registered: %d\n", prev_raw_devices_count);
 
     hr = IDirectInputDevice_Acquire(pKeyboard);
     ok(SUCCEEDED(hr), "IDirectInputDevice_Acquire() failed: %08x\n", hr);
 
     raw_devices_count = 0;
-    GetRegisteredRawInputDevices(NULL, &raw_devices_count, sizeof(RAWINPUTDEVICE));
+    GetRegisteredRawInputDevices(((void*)0), &raw_devices_count, sizeof(RAWINPUTDEVICE));
     ok(raw_devices_count == prev_raw_devices_count,
        "Unexpected raw devices registered: %d\n", raw_devices_count);
 

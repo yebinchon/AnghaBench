@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_6__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int ptrdiff_t ;
+
+
+typedef struct TYPE_10__ TYPE_6__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int ptrdiff_t ;
 struct TYPE_8__ {int num_mvs; int** mv_codebook; int num_blocks_packed; int** block_codebook; TYPE_1__* last_frame; TYPE_6__* avctx; } ;
-typedef  TYPE_2__ TgvContext ;
+typedef TYPE_2__ TgvContext ;
 struct TYPE_10__ {int height; int width; } ;
 struct TYPE_9__ {int** data; int* linesize; } ;
 struct TYPE_7__ {int** data; int* linesize; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_3__ AVFrame ;
+typedef int GetBitContext ;
+typedef TYPE_3__ AVFrame ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int AV_RL16 (int const*) ; 
- int MIN_CACHE_BITS ; 
- int /*<<< orphan*/  av_log (TYPE_6__*,int /*<<< orphan*/ ,char*,int,...) ; 
- int av_reallocp (int***,int) ; 
- int av_reallocp_array (int***,int,int) ; 
- size_t get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits_left (int /*<<< orphan*/ *) ; 
- void* get_sbits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  init_get_bits (int /*<<< orphan*/ *,int const*,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_RL16 (int const*) ;
+ int MIN_CACHE_BITS ;
+ int av_log (TYPE_6__*,int ,char*,int,...) ;
+ int av_reallocp (int***,int) ;
+ int av_reallocp_array (int***,int,int) ;
+ size_t get_bits (int *,int) ;
+ int get_bits_left (int *) ;
+ void* get_sbits (int *,int) ;
+ int init_get_bits (int *,int const*,int) ;
 
 __attribute__((used)) static int tgv_decode_inter(TgvContext *s, AVFrame *frame,
                             const uint8_t *buf, const uint8_t *buf_end)
@@ -52,10 +52,10 @@ __attribute__((used)) static int tgv_decode_inter(TgvContext *s, AVFrame *frame,
     if(buf_end - buf < 12)
         return AVERROR_INVALIDDATA;
 
-    num_mvs           = AV_RL16(&buf[0]);
-    num_blocks_raw    = AV_RL16(&buf[2]);
+    num_mvs = AV_RL16(&buf[0]);
+    num_blocks_raw = AV_RL16(&buf[2]);
     num_blocks_packed = AV_RL16(&buf[4]);
-    vector_bits       = AV_RL16(&buf[6]);
+    vector_bits = AV_RL16(&buf[6]);
     buf += 12;
 
     if (vector_bits > MIN_CACHE_BITS || !vector_bits) {
@@ -64,7 +64,7 @@ __attribute__((used)) static int tgv_decode_inter(TgvContext *s, AVFrame *frame,
         return AVERROR_INVALIDDATA;
     }
 
-    /* allocate codebook buffers as necessary */
+
     if (num_mvs > s->num_mvs) {
         int err = av_reallocp_array(&s->mv_codebook, num_mvs, sizeof(*s->mv_codebook));
         if (err < 0) {
@@ -83,7 +83,7 @@ __attribute__((used)) static int tgv_decode_inter(TgvContext *s, AVFrame *frame,
         s->num_blocks_packed = num_blocks_packed;
     }
 
-    /* read motion vectors */
+
     mvbits = (num_mvs * 2 * 10 + 31) & ~31;
 
     if (buf_end - buf < (mvbits>>3) + 16*num_blocks_raw + 8*num_blocks_packed)
@@ -96,11 +96,11 @@ __attribute__((used)) static int tgv_decode_inter(TgvContext *s, AVFrame *frame,
     }
     buf += mvbits >> 3;
 
-    /* note ptr to uncompressed blocks */
-    blocks_raw = buf;
-    buf       += num_blocks_raw * 16;
 
-    /* read compressed blocks */
+    blocks_raw = buf;
+    buf += num_blocks_raw * 16;
+
+
     init_get_bits(&gb, buf, (buf_end - buf) << 3);
     for (i = 0; i < num_blocks_packed; i++) {
         int tmp[4];
@@ -114,7 +114,7 @@ __attribute__((used)) static int tgv_decode_inter(TgvContext *s, AVFrame *frame,
         (s->avctx->height / 4) * (s->avctx->width / 4))
         return AVERROR_INVALIDDATA;
 
-    /* read vectors and build frame */
+
     for (y = 0; y < s->avctx->height / 4; y++)
         for (x = 0; x < s->avctx->width / 4; x++) {
             unsigned int vector = get_bits(&gb, vector_bits);

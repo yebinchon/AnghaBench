@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int uint16_t ;
 struct TYPE_2__ {int sequnum; } ;
 struct RTPMessage {TYPE_1__ header; } ;
 struct JitterBuffer {int size; int bottom; int capacity; int top; struct RTPMessage** queue; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOGGER_DEBUG (char*,struct JitterBuffer*) ; 
- int /*<<< orphan*/  jbuf_clear (struct JitterBuffer*) ; 
+
+ int LOGGER_DEBUG (char*,struct JitterBuffer*) ;
+ int jbuf_clear (struct JitterBuffer*) ;
 
 __attribute__((used)) static int jbuf_write(struct JitterBuffer *q, struct RTPMessage *m)
 {

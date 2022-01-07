@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct TYPE_4__ {int frame_start_found; int state; } ;
 struct TYPE_5__ {int size; TYPE_1__ pc; } ;
-typedef  TYPE_1__ ParseContext ;
-typedef  TYPE_2__ MJPEGParserContext ;
+typedef TYPE_1__ ParseContext ;
+typedef TYPE_2__ MJPEGParserContext ;
 
-/* Variables and functions */
- int END_NOT_FOUND ; 
- int FFMIN (int,int) ; 
+
+ int END_NOT_FOUND ;
+ int FFMIN (int,int) ;
 
 __attribute__((used)) static int find_frame_end(MJPEGParserContext *m, const uint8_t *buf, int buf_size){
     ParseContext *pc= &m->pc;
@@ -56,7 +56,7 @@ __attribute__((used)) static int find_frame_end(MJPEGParserContext *m, const uin
     }
 
     if(vop_found){
-        /* EOF considered as end of frame */
+
         if (buf_size == 0)
             return 0;
         for(; i<buf_size;){

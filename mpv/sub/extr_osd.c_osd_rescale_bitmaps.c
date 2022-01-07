@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sub_bitmaps {int num_parts; struct sub_bitmap* parts; } ;
 struct sub_bitmap {int x; int y; int dw; double w; int dh; double h; } ;
 struct mp_osd_res {int w; int ml; int mr; int h; int mt; int mb; double display_par; } ;
 
-/* Variables and functions */
+
 
 void osd_rescale_bitmaps(struct sub_bitmaps *imgs, int frame_w, int frame_h,
                          struct mp_osd_res res, double compensate_par)

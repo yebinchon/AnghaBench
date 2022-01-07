@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* prob; } ;
-typedef  TYPE_2__ VP8Context ;
-struct TYPE_4__ {int /*<<< orphan*/ ** token; } ;
+typedef TYPE_2__ VP8Context ;
+struct TYPE_4__ {int ** token; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- size_t* vp8_coeff_band ; 
- int /*<<< orphan*/ ** vp8_token_default_probs ; 
+
+ int memcpy (int ,int ,int) ;
+ size_t* vp8_coeff_band ;
+ int ** vp8_token_default_probs ;
 
 __attribute__((used)) static void vp78_reset_probability_tables(VP8Context *s)
 {

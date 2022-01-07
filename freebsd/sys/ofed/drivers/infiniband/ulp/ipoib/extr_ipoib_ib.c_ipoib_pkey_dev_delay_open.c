@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ipoib_dev_priv {int /*<<< orphan*/  pkey_poll_task; int /*<<< orphan*/  flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HZ ; 
- int /*<<< orphan*/  IPOIB_PKEY_ASSIGNED ; 
- int /*<<< orphan*/  IPOIB_PKEY_STOP ; 
- int /*<<< orphan*/  clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ipoib_pkey_dev_check_presence (struct ipoib_dev_priv*) ; 
- int /*<<< orphan*/  ipoib_workqueue ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pkey_mutex ; 
- int /*<<< orphan*/  queue_delayed_work (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct ipoib_dev_priv {int pkey_poll_task; int flags; } ;
+
+
+ int HZ ;
+ int IPOIB_PKEY_ASSIGNED ;
+ int IPOIB_PKEY_STOP ;
+ int clear_bit (int ,int *) ;
+ int ipoib_pkey_dev_check_presence (struct ipoib_dev_priv*) ;
+ int ipoib_workqueue ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int pkey_mutex ;
+ int queue_delayed_work (int ,int *,int ) ;
+ int test_bit (int ,int *) ;
 
 int ipoib_pkey_dev_delay_open(struct ipoib_dev_priv *priv)
 {
 
-	/* Look for the interface pkey value in the IB Port P_Key table and */
-	/* set the interface pkey assigment flag                            */
-	ipoib_pkey_dev_check_presence(priv);
 
-	/* P_Key value not assigned yet - start polling */
-	if (!test_bit(IPOIB_PKEY_ASSIGNED, &priv->flags)) {
-		mutex_lock(&pkey_mutex);
-		clear_bit(IPOIB_PKEY_STOP, &priv->flags);
-		queue_delayed_work(ipoib_workqueue,
-				   &priv->pkey_poll_task,
-				   HZ);
-		mutex_unlock(&pkey_mutex);
-		return 1;
-	}
 
-	return 0;
+ ipoib_pkey_dev_check_presence(priv);
+
+
+ if (!test_bit(IPOIB_PKEY_ASSIGNED, &priv->flags)) {
+  mutex_lock(&pkey_mutex);
+  clear_bit(IPOIB_PKEY_STOP, &priv->flags);
+  queue_delayed_work(ipoib_workqueue,
+       &priv->pkey_poll_task,
+       HZ);
+  mutex_unlock(&pkey_mutex);
+  return 1;
+ }
+
+ return 0;
 }

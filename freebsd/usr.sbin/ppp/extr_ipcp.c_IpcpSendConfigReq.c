@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int16_t ;
-typedef  int /*<<< orphan*/  u_char ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int u_int16_t ;
+typedef int u_char ;
 struct physical {int dummy; } ;
 struct TYPE_10__ {TYPE_4__* dns; } ;
-struct TYPE_7__ {int /*<<< orphan*/  dns_neg; } ;
+struct TYPE_7__ {int dns_neg; } ;
 struct TYPE_8__ {TYPE_2__ ns; } ;
-struct compreq {int slots; int compcid; int /*<<< orphan*/  proto; } ;
+struct compreq {int slots; int compcid; int proto; } ;
 struct TYPE_6__ {struct compreq s_addr; } ;
 struct ipcp {int my_compproto; TYPE_5__ ns; TYPE_3__ cfg; scalar_t__ heis1172; TYPE_1__ my_ip; } ;
-struct fsm_opt {int /*<<< orphan*/  data; } ;
-struct fsm {int /*<<< orphan*/  reqid; int /*<<< orphan*/  link; } ;
+struct fsm_opt {int data; } ;
+struct fsm {int reqid; int link; } ;
 struct TYPE_9__ {struct compreq s_addr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CODE_CONFIGREQ ; 
- int /*<<< orphan*/  INC_FSM_OPT (scalar_t__,int,struct fsm_opt*) ; 
- scalar_t__ IsEnabled (int /*<<< orphan*/ ) ; 
- int MAX_FSM_OPT_LEN ; 
- int /*<<< orphan*/  MB_IPCPOUT ; 
- int /*<<< orphan*/  PROTO_VJCOMP ; 
- int /*<<< orphan*/  REJECTED (struct ipcp*,scalar_t__) ; 
- scalar_t__ TY_ADJUST_NS ; 
- scalar_t__ TY_COMPPROTO ; 
- scalar_t__ TY_IPADDR ; 
- scalar_t__ TY_PRIMARY_DNS ; 
- scalar_t__ TY_SECONDARY_DNS ; 
- struct ipcp* fsm2ipcp (struct fsm*) ; 
- int /*<<< orphan*/  fsm_Output (struct fsm*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  htons (int) ; 
- struct physical* link2physical (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,struct compreq*,int) ; 
- int /*<<< orphan*/  physical_IsSync (struct physical*) ; 
- int /*<<< orphan*/  ua_htons (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int CODE_CONFIGREQ ;
+ int INC_FSM_OPT (scalar_t__,int,struct fsm_opt*) ;
+ scalar_t__ IsEnabled (int ) ;
+ int MAX_FSM_OPT_LEN ;
+ int MB_IPCPOUT ;
+ int PROTO_VJCOMP ;
+ int REJECTED (struct ipcp*,scalar_t__) ;
+ scalar_t__ TY_ADJUST_NS ;
+ scalar_t__ TY_COMPPROTO ;
+ scalar_t__ TY_IPADDR ;
+ scalar_t__ TY_PRIMARY_DNS ;
+ scalar_t__ TY_SECONDARY_DNS ;
+ struct ipcp* fsm2ipcp (struct fsm*) ;
+ int fsm_Output (struct fsm*,int ,int ,int *,int,int ) ;
+ int htons (int) ;
+ struct physical* link2physical (int ) ;
+ int memcpy (int ,struct compreq*,int) ;
+ int physical_IsSync (struct physical*) ;
+ int ua_htons (int *,int ) ;
 
 __attribute__((used)) static void
 IpcpSendConfigReq(struct fsm *fp)
 {
-  /* Send config REQ please */
+
   struct physical *p = link2physical(fp->link);
   struct ipcp *ipcp = fsm2ipcp(fp);
   u_char buff[MAX_FSM_OPT_LEN];

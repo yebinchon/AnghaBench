@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {TYPE_1__** tab; int /*<<< orphan*/  size; } ;
-struct TYPE_5__ {int /*<<< orphan*/  nval; struct TYPE_5__* cnext; } ;
-typedef  TYPE_1__ Cell ;
-typedef  TYPE_2__ Array ;
 
-/* Variables and functions */
- int hash (char const*,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (char const*,int /*<<< orphan*/ ) ; 
 
-Cell *lookup(const char *s, Array *tp)	/* look for s in tp */
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {TYPE_1__** tab; int size; } ;
+struct TYPE_5__ {int nval; struct TYPE_5__* cnext; } ;
+typedef TYPE_1__ Cell ;
+typedef TYPE_2__ Array ;
+
+
+ int hash (char const*,int ) ;
+ scalar_t__ strcmp (char const*,int ) ;
+
+Cell *lookup(const char *s, Array *tp)
 {
-	Cell *p;
-	int h;
+ Cell *p;
+ int h;
 
-	h = hash(s, tp->size);
-	for (p = tp->tab[h]; p != NULL; p = p->cnext)
-		if (strcmp(s, p->nval) == 0)
-			return(p);	/* found it */
-	return(NULL);			/* not found */
+ h = hash(s, tp->size);
+ for (p = tp->tab[h]; p != ((void*)0); p = p->cnext)
+  if (strcmp(s, p->nval) == 0)
+   return(p);
+ return(((void*)0));
 }

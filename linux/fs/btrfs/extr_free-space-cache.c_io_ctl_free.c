@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct btrfs_io_ctl {int /*<<< orphan*/ * pages; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
+
+
+
+struct btrfs_io_ctl {int * pages; } ;
+
+
+ int kfree (int *) ;
 
 __attribute__((used)) static void io_ctl_free(struct btrfs_io_ctl *io_ctl)
 {
-	kfree(io_ctl->pages);
-	io_ctl->pages = NULL;
+ kfree(io_ctl->pages);
+ io_ctl->pages = ((void*)0);
 }

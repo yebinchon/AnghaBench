@@ -1,139 +1,139 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int id; int use_file; int command; int /*<<< orphan*/  con; int /*<<< orphan*/  ecnt; } ;
-typedef  int /*<<< orphan*/  PGresult ;
-typedef  TYPE_1__ CState ;
 
-/* Variables and functions */
-#define  PGRES_COMMAND_OK 130 
-#define  PGRES_EMPTY_QUERY 129 
-#define  PGRES_TUPLES_OK 128 
- int /*<<< orphan*/  PQclear (int /*<<< orphan*/ *) ; 
- char* PQerrorMessage (int /*<<< orphan*/ ) ; 
- char* PQfname (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * PQgetResult (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PQgetvalue (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int PQnfields (int /*<<< orphan*/ *) ; 
- int PQntuples (int /*<<< orphan*/ *) ; 
- int PQresultStatus (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,...) ; 
- int /*<<< orphan*/  pg_free (char*) ; 
- char* psprintf (char*,char*,char*) ; 
- int /*<<< orphan*/  putVariable (TYPE_1__*,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int id; int use_file; int command; int con; int ecnt; } ;
+typedef int PGresult ;
+typedef TYPE_1__ CState ;
+
+
+
+
+
+ int PQclear (int *) ;
+ char* PQerrorMessage (int ) ;
+ char* PQfname (int *,int) ;
+ int * PQgetResult (int ) ;
+ int PQgetvalue (int *,int ,int) ;
+ int PQnfields (int *) ;
+ int PQntuples (int *) ;
+ int PQresultStatus (int *) ;
+ int fprintf (int ,char*,int,int,...) ;
+ int pg_free (char*) ;
+ char* psprintf (char*,char*,char*) ;
+ int putVariable (TYPE_1__*,char*,char*,int ) ;
+ int stderr ;
 
 __attribute__((used)) static bool
 readCommandResponse(CState *st, char *varprefix)
 {
-	PGresult   *res;
-	PGresult   *next_res;
-	int			qrynum = 0;
+ PGresult *res;
+ PGresult *next_res;
+ int qrynum = 0;
 
-	res = PQgetResult(st->con);
+ res = PQgetResult(st->con);
 
-	while (res != NULL)
-	{
-		bool		is_last;
+ while (res != ((void*)0))
+ {
+  bool is_last;
 
-		/* peek at the next result to know whether the current is last */
-		next_res = PQgetResult(st->con);
-		is_last = (next_res == NULL);
 
-		switch (PQresultStatus(res))
-		{
-			case PGRES_COMMAND_OK:	/* non-SELECT commands */
-			case PGRES_EMPTY_QUERY: /* may be used for testing no-op overhead */
-				if (is_last && varprefix != NULL)
-				{
-					fprintf(stderr,
-							"client %d script %d command %d query %d: expected one row, got %d\n",
-							st->id, st->use_file, st->command, qrynum, 0);
-					goto error;
-				}
-				break;
+  next_res = PQgetResult(st->con);
+  is_last = (next_res == ((void*)0));
 
-			case PGRES_TUPLES_OK:
-				if (is_last && varprefix != NULL)
-				{
-					if (PQntuples(res) != 1)
-					{
-						fprintf(stderr,
-								"client %d script %d command %d query %d: expected one row, got %d\n",
-								st->id, st->use_file, st->command, qrynum, PQntuples(res));
-						goto error;
-					}
+  switch (PQresultStatus(res))
+  {
+   case 130:
+   case 129:
+    if (is_last && varprefix != ((void*)0))
+    {
+     fprintf(stderr,
+       "client %d script %d command %d query %d: expected one row, got %d\n",
+       st->id, st->use_file, st->command, qrynum, 0);
+     goto error;
+    }
+    break;
 
-					/* store results into variables */
-					for (int fld = 0; fld < PQnfields(res); fld++)
-					{
-						char	   *varname = PQfname(res, fld);
+   case 128:
+    if (is_last && varprefix != ((void*)0))
+    {
+     if (PQntuples(res) != 1)
+     {
+      fprintf(stderr,
+        "client %d script %d command %d query %d: expected one row, got %d\n",
+        st->id, st->use_file, st->command, qrynum, PQntuples(res));
+      goto error;
+     }
 
-						/* allocate varname only if necessary, freed below */
-						if (*varprefix != '\0')
-							varname = psprintf("%s%s", varprefix, varname);
 
-						/* store result as a string */
-						if (!putVariable(st, "gset", varname,
-										 PQgetvalue(res, 0, fld)))
-						{
-							/* internal error */
-							fprintf(stderr,
-									"client %d script %d command %d query %d: error storing into variable %s\n",
-									st->id, st->use_file, st->command, qrynum,
-									varname);
-							goto error;
-						}
+     for (int fld = 0; fld < PQnfields(res); fld++)
+     {
+      char *varname = PQfname(res, fld);
 
-						if (*varprefix != '\0')
-							pg_free(varname);
-					}
-				}
-				/* otherwise the result is simply thrown away by PQclear below */
-				break;
 
-			default:
-				/* anything else is unexpected */
-				fprintf(stderr,
-						"client %d script %d aborted in command %d query %d: %s",
-						st->id, st->use_file, st->command, qrynum,
-						PQerrorMessage(st->con));
-				goto error;
-		}
+      if (*varprefix != '\0')
+       varname = psprintf("%s%s", varprefix, varname);
 
-		PQclear(res);
-		qrynum++;
-		res = next_res;
-	}
 
-	if (qrynum == 0)
-	{
-		fprintf(stderr, "client %d command %d: no results\n", st->id, st->command);
-		st->ecnt++;
-		return false;
-	}
+      if (!putVariable(st, "gset", varname,
+           PQgetvalue(res, 0, fld)))
+      {
 
-	return true;
+       fprintf(stderr,
+         "client %d script %d command %d query %d: error storing into variable %s\n",
+         st->id, st->use_file, st->command, qrynum,
+         varname);
+       goto error;
+      }
+
+      if (*varprefix != '\0')
+       pg_free(varname);
+     }
+    }
+
+    break;
+
+   default:
+
+    fprintf(stderr,
+      "client %d script %d aborted in command %d query %d: %s",
+      st->id, st->use_file, st->command, qrynum,
+      PQerrorMessage(st->con));
+    goto error;
+  }
+
+  PQclear(res);
+  qrynum++;
+  res = next_res;
+ }
+
+ if (qrynum == 0)
+ {
+  fprintf(stderr, "client %d command %d: no results\n", st->id, st->command);
+  st->ecnt++;
+  return 0;
+ }
+
+ return 1;
 
 error:
-	st->ecnt++;
-	PQclear(res);
-	PQclear(next_res);
-	do
-	{
-		res = PQgetResult(st->con);
-		PQclear(res);
-	} while (res);
+ st->ecnt++;
+ PQclear(res);
+ PQclear(next_res);
+ do
+ {
+  res = PQgetResult(st->con);
+  PQclear(res);
+ } while (res);
 
-	return false;
+ return 0;
 }

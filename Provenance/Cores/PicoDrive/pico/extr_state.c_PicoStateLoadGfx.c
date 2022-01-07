@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  video; int /*<<< orphan*/ * vsram; int /*<<< orphan*/ * cram; int /*<<< orphan*/ * vram; } ;
 
-/* Variables and functions */
- TYPE_1__ Pico ; 
- int /*<<< orphan*/  SEEK_CUR ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  areaClose (void*) ; 
- int /*<<< orphan*/  areaRead (int /*<<< orphan*/ *,int,int,void*) ; 
- int /*<<< orphan*/  areaSeek (void*,int,int /*<<< orphan*/ ) ; 
- void* open_save_file (char const*,int /*<<< orphan*/ ) ; 
- int state_load_gfx (void*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int video; int * vsram; int * cram; int * vram; } ;
+
+
+ TYPE_1__ Pico ;
+ int SEEK_CUR ;
+ int SEEK_SET ;
+ int areaClose (void*) ;
+ int areaRead (int *,int,int,void*) ;
+ int areaSeek (void*,int,int ) ;
+ void* open_save_file (char const*,int ) ;
+ int state_load_gfx (void*) ;
 
 int PicoStateLoadGfx(const char *fname)
 {
@@ -29,13 +29,13 @@ int PicoStateLoadGfx(const char *fname)
   int ret;
 
   afile = open_save_file(fname, 0);
-  if (afile == NULL)
+  if (afile == ((void*)0))
     return -1;
 
   ret = state_load_gfx(afile);
   if (ret != 0) {
-    // assume legacy
-    areaSeek(afile, 0x10020, SEEK_SET);  // skip header and RAM
+
+    areaSeek(afile, 0x10020, SEEK_SET);
     areaRead(Pico.vram, 1, sizeof(Pico.vram), afile);
     areaSeek(afile, 0x2000, SEEK_CUR);
     areaRead(Pico.cram, 1, sizeof(Pico.cram), afile);

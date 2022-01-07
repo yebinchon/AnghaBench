@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RSA ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_new () ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_new () ; 
- int /*<<< orphan*/  BN_set_word (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  RSA_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * RSA_new () ; 
- int /*<<< orphan*/  RSA_set0_factors (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RSA_set0_key (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ TEST_false (int /*<<< orphan*/ ) ; 
- scalar_t__ TEST_ptr (int /*<<< orphan*/ *) ; 
- scalar_t__ TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rsa_check_private_exponent (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int RSA ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_CTX_free (int *) ;
+ int * BN_CTX_new () ;
+ int BN_free (int *) ;
+ int * BN_new () ;
+ int BN_set_word (int *,int) ;
+ int RSA_free (int *) ;
+ int * RSA_new () ;
+ int RSA_set0_factors (int *,int *,int *) ;
+ int RSA_set0_key (int *,int *,int *,int *) ;
+ scalar_t__ TEST_false (int ) ;
+ scalar_t__ TEST_ptr (int *) ;
+ scalar_t__ TEST_true (int ) ;
+ int rsa_check_private_exponent (int *,int,int *) ;
 
 __attribute__((used)) static int test_check_private_exponent(void)
 {
     int ret = 0;
-    RSA *key = NULL;
-    BN_CTX *ctx = NULL;
-    BIGNUM *p = NULL, *q = NULL, *e = NULL, *d = NULL, *n = NULL;
+    RSA *key = ((void*)0);
+    BN_CTX *ctx = ((void*)0);
+    BIGNUM *p = ((void*)0), *q = ((void*)0), *e = ((void*)0), *d = ((void*)0), *n = ((void*)0);
 
     ret = TEST_ptr(key = RSA_new())
           && TEST_ptr(ctx = BN_CTX_new())
           && TEST_ptr(p = BN_new())
           && TEST_ptr(q = BN_new())
-          /* lcm(15-1,17-1) = 14*16 / 2 = 112 */
+
           && TEST_true(BN_set_word(p, 15))
           && TEST_true(BN_set_word(q, 17))
           && TEST_true(RSA_set0_factors(key, p, q));
@@ -63,17 +63,17 @@ __attribute__((used)) static int test_check_private_exponent(void)
         BN_free(n);
         goto end;
     }
-    /* fails since d >= lcm(p-1, q-1) */
+
     ret = TEST_false(rsa_check_private_exponent(key, 8, ctx))
           && TEST_true(BN_set_word(d, 45))
-          /* d is correct size and 1 = e.d mod lcm(p-1, q-1) */
+
           && TEST_true(rsa_check_private_exponent(key, 8, ctx))
-          /* d is too small compared to nbits */
+
           && TEST_false(rsa_check_private_exponent(key, 16, ctx))
-          /* d is too small compared to nbits */
+
           && TEST_true(BN_set_word(d, 16))
           && TEST_false(rsa_check_private_exponent(key, 8, ctx))
-          /* fail if 1 != e.d mod lcm(p-1, q-1) */
+
           && TEST_true(BN_set_word(d, 46))
           && TEST_false(rsa_check_private_exponent(key, 8, ctx));
 end:

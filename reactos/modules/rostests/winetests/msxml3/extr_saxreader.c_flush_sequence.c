@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct call_sequence {int count; int size; TYPE_1__* sequence; } ;
-struct TYPE_2__ {int attr_count; int /*<<< orphan*/  arg3W; int /*<<< orphan*/  arg2W; int /*<<< orphan*/  arg1W; struct TYPE_2__* attributes; int /*<<< orphan*/  valueW; int /*<<< orphan*/  qnameW; int /*<<< orphan*/  localW; int /*<<< orphan*/  uriW; } ;
+struct TYPE_2__ {int attr_count; int arg3W; int arg2W; int arg1W; struct TYPE_2__* attributes; int valueW; int qnameW; int localW; int uriW; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_free (TYPE_1__*) ; 
+
+ int SysFreeString (int ) ;
+ int heap_free (TYPE_1__*) ;
 
 __attribute__((used)) static inline void flush_sequence(struct call_sequence **seg, int sequence_index)
 {
@@ -44,6 +44,6 @@ __attribute__((used)) static inline void flush_sequence(struct call_sequence **s
     }
 
     heap_free(call_seq->sequence);
-    call_seq->sequence = NULL;
+    call_seq->sequence = ((void*)0);
     call_seq->count = call_seq->size = 0;
 }

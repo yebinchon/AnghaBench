@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_7__ {int /*<<< orphan*/  index; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef int uint16_t ;
+struct TYPE_7__ {int index; } ;
 struct TYPE_6__ {scalar_t__ timestamp; int* frame; int frame_size; int pgroup; int width; int xinc; } ;
-typedef  TYPE_1__ PayloadContext ;
-typedef  TYPE_2__ AVStream ;
-typedef  int /*<<< orphan*/  AVPacket ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
+typedef TYPE_1__ PayloadContext ;
+typedef TYPE_2__ AVStream ;
+typedef int AVPacket ;
+typedef int AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/  ENOMEM ; 
- int RTP_FLAG_MARKER ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int* av_malloc (int) ; 
- int /*<<< orphan*/  memcpy (int*,int const*,int) ; 
- int rfc4175_finalize_packet (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int EAGAIN ;
+ int ENOMEM ;
+ int RTP_FLAG_MARKER ;
+ int av_log (int *,int ,char*) ;
+ int* av_malloc (int) ;
+ int memcpy (int*,int const*,int) ;
+ int rfc4175_finalize_packet (TYPE_1__*,int *,int ) ;
 
 __attribute__((used)) static int rfc4175_handle_packet(AVFormatContext *ctx, PayloadContext *data,
                                  AVStream *st, AVPacket *pkt, uint32_t *timestamp,
@@ -40,7 +40,7 @@ __attribute__((used)) static int rfc4175_handle_packet(AVFormatContext *ctx, Pay
                                  uint16_t seq, int flags)
 {
     int length, line, offset, cont;
-    const uint8_t *headers = buf + 2; /* skip extended seqnum */
+    const uint8_t *headers = buf + 2;
     const uint8_t *payload = buf + 2;
     int payload_len = len - 2;
     int missed_last_packet = 0;
@@ -49,13 +49,13 @@ __attribute__((used)) static int rfc4175_handle_packet(AVFormatContext *ctx, Pay
 
     if (*timestamp != data->timestamp) {
         if (data->frame) {
-            /*
-             * if we're here, it means that two RTP packets didn't have the
-             * same timestamp, which is a sign that they were packets from two
-             * different frames, but we didn't get the flag RTP_FLAG_MARKER on
-             * the first one of these frames (last packet of a frame).
-             * Finalize the previous frame anyway by filling the AVPacket.
-             */
+
+
+
+
+
+
+
             av_log(ctx, AV_LOG_ERROR, "Missed previous RTP Marker\n");
             missed_last_packet = 1;
             rfc4175_finalize_packet(data, pkt, st->index);
@@ -71,10 +71,10 @@ __attribute__((used)) static int rfc4175_handle_packet(AVFormatContext *ctx, Pay
         }
     }
 
-    /*
-     * looks for the 'Continuation bit' in scan lines' headers
-     * to find where data start
-     */
+
+
+
+
     do {
         if (payload_len < 6)
             return AVERROR_INVALIDDATA;
@@ -84,7 +84,7 @@ __attribute__((used)) static int rfc4175_handle_packet(AVFormatContext *ctx, Pay
         payload_len -= 6;
     } while (cont);
 
-    /* and now iterate over every scan lines */
+
     do {
         int copy_offset;
 
@@ -103,7 +103,7 @@ __attribute__((used)) static int rfc4175_handle_packet(AVFormatContext *ctx, Pay
         if (length > payload_len)
             length = payload_len;
 
-        /* prevent ill-formed packets to write after buffer's end */
+
         copy_offset = (line * data->width + offset) * data->pgroup / data->xinc;
         if (copy_offset + length > data->frame_size)
             return AVERROR_INVALIDDATA;

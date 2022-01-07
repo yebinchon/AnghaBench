@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_17__ {int /*<<< orphan*/  hreftype; int /*<<< orphan*/  guid; } ;
+
+
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_17__ {int hreftype; int guid; } ;
 struct TYPE_16__ {TYPE_2__* pLibInfo; TYPE_1__* pTblDir; } ;
-struct TYPE_15__ {int offset; int /*<<< orphan*/  entry; int /*<<< orphan*/  hreftype; int /*<<< orphan*/  guid; } ;
-struct TYPE_14__ {int length; int /*<<< orphan*/  offset; } ;
-struct TYPE_13__ {int /*<<< orphan*/  guid_list; } ;
+struct TYPE_15__ {int offset; int entry; int hreftype; int guid; } ;
+struct TYPE_14__ {int length; int offset; } ;
+struct TYPE_13__ {int guid_list; } ;
 struct TYPE_12__ {TYPE_3__ pGuidTab; } ;
-typedef  TYPE_4__ TLBGuid ;
-typedef  TYPE_5__ TLBContext ;
-typedef  TYPE_6__ MSFT_GuidEntry ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_4__ TLBGuid ;
+typedef TYPE_5__ TLBContext ;
+typedef TYPE_6__ MSFT_GuidEntry ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DO_NOT_SEEK ; 
- int /*<<< orphan*/  MSFT_ReadLEWords (TYPE_6__*,int,TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MSFT_Seek (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- TYPE_4__* heap_alloc (int) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int DO_NOT_SEEK ;
+ int MSFT_ReadLEWords (TYPE_6__*,int,TYPE_5__*,int ) ;
+ int MSFT_Seek (TYPE_5__*,int ) ;
+ int S_OK ;
+ TYPE_4__* heap_alloc (int) ;
+ int list_add_tail (int *,int *) ;
 
 __attribute__((used)) static HRESULT MSFT_ReadAllGuids(TLBContext *pcx)
 {

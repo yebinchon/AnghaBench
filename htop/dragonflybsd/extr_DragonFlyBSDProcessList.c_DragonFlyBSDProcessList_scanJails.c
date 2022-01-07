@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ jails; } ;
-typedef  TYPE_1__ DragonFlyBSDProcessList ;
+typedef TYPE_1__ DragonFlyBSDProcessList ;
 
-/* Variables and functions */
- scalar_t__ ENOMEM ; 
- int /*<<< orphan*/  Hashtable_delete (scalar_t__) ; 
- scalar_t__ Hashtable_get (scalar_t__,int) ; 
- scalar_t__ Hashtable_new (int,int) ; 
- int /*<<< orphan*/  Hashtable_put (scalar_t__,int,char*) ; 
- int atoi (char*) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  stderr ; 
- char* strchr (char*,char) ; 
- char* strtok (char*,char*) ; 
- int sysctlbyname (char*,char*,size_t*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* xMalloc (size_t) ; 
- char* xStrdup (char*) ; 
+
+ scalar_t__ ENOMEM ;
+ int Hashtable_delete (scalar_t__) ;
+ scalar_t__ Hashtable_get (scalar_t__,int) ;
+ scalar_t__ Hashtable_new (int,int) ;
+ int Hashtable_put (scalar_t__,int,char*) ;
+ int atoi (char*) ;
+ scalar_t__ errno ;
+ int exit (int) ;
+ int fprintf (int ,char*) ;
+ int free (char*) ;
+ int stderr ;
+ char* strchr (char*,char) ;
+ char* strtok (char*,char*) ;
+ int sysctlbyname (char*,char*,size_t*,int *,int ) ;
+ char* xMalloc (size_t) ;
+ char* xStrdup (char*) ;
 
 __attribute__((used)) static inline void DragonFlyBSDProcessList_scanJails(DragonFlyBSDProcessList* dfpl) {
    size_t len;
-   char *jls; /* Jail list */
+   char *jls;
    char *curpos;
    char *nextpos;
 
-   if (sysctlbyname("jail.list", NULL, &len, NULL, 0) == -1) {
+   if (sysctlbyname("jail.list", ((void*)0), &len, ((void*)0), 0) == -1) {
       fprintf(stderr, "initial sysctlbyname / jail.list failed\n");
       exit(3);
    }
@@ -47,11 +47,11 @@ retry:
       return;
 
    jls = xMalloc(len);
-   if (jls == NULL) {
+   if (jls == ((void*)0)) {
       fprintf(stderr, "xMalloc failed\n");
       exit(4);
    }
-   if (sysctlbyname("jail.list", jls, &len, NULL, 0) == -1) {
+   if (sysctlbyname("jail.list", jls, &len, ((void*)0), 0) == -1) {
       if (errno == ENOMEM) {
          free(jls);
          goto retry;
@@ -63,7 +63,7 @@ retry:
    if (dfpl->jails) {
       Hashtable_delete(dfpl->jails);
    }
-   dfpl->jails = Hashtable_new(20, true);
+   dfpl->jails = Hashtable_new(20, 1);
    curpos = jls;
    while (curpos) {
       int jailid;
@@ -73,10 +73,10 @@ retry:
          *nextpos++ = 0;
 
       jailid = atoi(strtok(curpos, " "));
-      str_hostname = strtok(NULL, " ");
+      str_hostname = strtok(((void*)0), " ");
 
       char *jname = (char *) (Hashtable_get(dfpl->jails, jailid));
-      if (jname == NULL) {
+      if (jname == ((void*)0)) {
          jname = xStrdup(str_hostname);
          Hashtable_put(dfpl->jails, jailid, jname);
       }

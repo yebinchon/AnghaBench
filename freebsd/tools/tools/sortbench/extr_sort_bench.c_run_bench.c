@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum test { ____Placeholder_test } test ;
-typedef  enum sort { ____Placeholder_sort } sort ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EX_DATAERR ; 
-#define  INVALID_TEST 132 
-#define  PART 131 
-#define  RAND 130 
-#define  REV 129 
-#define  SORT 128 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  partial_bench (int,int) ; 
- int /*<<< orphan*/  rand_bench (int,int) ; 
- int /*<<< orphan*/  reverse_bench (int,int) ; 
- int /*<<< orphan*/  sort_bench (int,int) ; 
+
+
+
+typedef enum test { ____Placeholder_test } test ;
+typedef enum sort { ____Placeholder_sort } sort ;
+
+
+ int EX_DATAERR ;
+
+
+
+
+
+ int exit (int ) ;
+ int partial_bench (int,int) ;
+ int rand_bench (int,int) ;
+ int reverse_bench (int,int) ;
+ int sort_bench (int,int) ;
 
 __attribute__((used)) static void
 run_bench(enum sort s, enum test t, int runs, int elts)
 {
-	for (int i = 0; i < runs; i++) {
-		switch (t) {
-		case RAND:
-			rand_bench(elts, s);
-			break;
-		case SORT:
-			sort_bench(elts, s);
-			break;
-		case PART:
-			partial_bench(elts, s);
-			break;
-		case REV:
-			reverse_bench(elts, s);
-			break;
-		// Should never be reached
-		case INVALID_TEST:
-			exit(EX_DATAERR);
-		}
-	}
+ for (int i = 0; i < runs; i++) {
+  switch (t) {
+  case 130:
+   rand_bench(elts, s);
+   break;
+  case 128:
+   sort_bench(elts, s);
+   break;
+  case 131:
+   partial_bench(elts, s);
+   break;
+  case 129:
+   reverse_bench(elts, s);
+   break;
+
+  case 132:
+   exit(EX_DATAERR);
+  }
+ }
 }

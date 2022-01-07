@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ iso639_2b; scalar_t__ iso639_2; scalar_t__ eng_name; } ;
-typedef  TYPE_1__ iso639_lang_t ;
+typedef TYPE_1__ iso639_lang_t ;
 
-/* Variables and functions */
- TYPE_1__ lang_any ; 
- scalar_t__ languages ; 
- int /*<<< orphan*/  strcmp (scalar_t__,char*) ; 
- char tolower (char const) ; 
+
+ TYPE_1__ lang_any ;
+ scalar_t__ languages ;
+ int strcmp (scalar_t__,char*) ;
+ char tolower (char const) ;
 
 iso639_lang_t * lang_for_code2( const char *code )
 {
@@ -30,7 +30,7 @@ iso639_lang_t * lang_for_code2( const char *code )
     code_string[2] = tolower( code[2] );
     code_string[3] = 0;
 
-    if ((lang_any.iso639_2  && !strcmp(lang_any.iso639_2,  code_string)) ||
+    if ((lang_any.iso639_2 && !strcmp(lang_any.iso639_2, code_string)) ||
         (lang_any.iso639_2b && !strcmp(lang_any.iso639_2b, code_string)))
     {
         return &lang_any;
@@ -38,13 +38,13 @@ iso639_lang_t * lang_for_code2( const char *code )
 
     for( lang = (iso639_lang_t*) languages; lang->eng_name; lang++ )
     {
-        if ((lang->iso639_2  && !strcmp(lang->iso639_2,  code_string)) ||
+        if ((lang->iso639_2 && !strcmp(lang->iso639_2, code_string)) ||
             (lang->iso639_2b && !strcmp(lang->iso639_2b, code_string)))
         {
             return lang;
         }
     }
 
-    // Not found, return "Unknown"
+
     return (iso639_lang_t*) languages;
 }

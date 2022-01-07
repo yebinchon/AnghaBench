@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int u32 ;
-typedef  int u16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MappedMemoryWriteByte (int,int) ; 
+
+
+
+typedef int u8 ;
+typedef int u32 ;
+typedef int u16 ;
+
+
+ int MappedMemoryWriteByte (int,int) ;
 
 __attribute__((used)) static void ConvertMonthAndDay(u32 data, u32 monthaddr, u32 dayaddr, int type)
 {
@@ -28,10 +28,10 @@ __attribute__((used)) static void ConvertMonthAndDay(u32 data, u32 monthaddr, u3
 
    if (data < monthtbl[0])
    {
-      // Month
+
       MappedMemoryWriteByte(monthaddr, 1);
 
-      // Day
+
       MappedMemoryWriteByte(dayaddr, (u8)(data + 1));
       return;
    }
@@ -44,10 +44,10 @@ __attribute__((used)) static void ConvertMonthAndDay(u32 data, u32 monthaddr, u3
 
    if (type == 1)
    {
-      // Month
+
       MappedMemoryWriteByte(monthaddr, (u8)(i + 1));
 
-      // Day
+
       if ((i + 1) == 2)
          MappedMemoryWriteByte(dayaddr, (u8)(data - monthtbl[(i - 1)] + 1));
       else
@@ -55,10 +55,10 @@ __attribute__((used)) static void ConvertMonthAndDay(u32 data, u32 monthaddr, u3
    }
    else
    {
-      // Month
+
       MappedMemoryWriteByte(monthaddr, (u8)(i + 1));
-      
-      // Day
+
+
       MappedMemoryWriteByte(dayaddr, (u8)(data - monthtbl[(i - 1)] + 1));
    }
 }

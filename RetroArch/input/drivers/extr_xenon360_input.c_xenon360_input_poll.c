@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
+
+
+
+
+typedef int uint64_t ;
 struct controller_data_s {scalar_t__ rt; scalar_t__ lt; scalar_t__ back; scalar_t__ start; scalar_t__ down; scalar_t__ up; scalar_t__ right; scalar_t__ left; scalar_t__ x; scalar_t__ y; scalar_t__ a; scalar_t__ b; } ;
 
-/* Variables and functions */
- unsigned int DEFAULT_MAX_PADS ; 
- int /*<<< orphan*/  RETRO_DEVICE_ID_JOYPAD_A ; 
- int /*<<< orphan*/  RETRO_DEVICE_ID_JOYPAD_B ; 
- int /*<<< orphan*/  RETRO_DEVICE_ID_JOYPAD_DOWN ; 
- int /*<<< orphan*/  RETRO_DEVICE_ID_JOYPAD_L ; 
- int /*<<< orphan*/  RETRO_DEVICE_ID_JOYPAD_LEFT ; 
- int /*<<< orphan*/  RETRO_DEVICE_ID_JOYPAD_R ; 
- int /*<<< orphan*/  RETRO_DEVICE_ID_JOYPAD_RIGHT ; 
- int /*<<< orphan*/  RETRO_DEVICE_ID_JOYPAD_SELECT ; 
- int /*<<< orphan*/  RETRO_DEVICE_ID_JOYPAD_START ; 
- int /*<<< orphan*/  RETRO_DEVICE_ID_JOYPAD_UP ; 
- int /*<<< orphan*/  RETRO_DEVICE_ID_JOYPAD_X ; 
- int /*<<< orphan*/  RETRO_DEVICE_ID_JOYPAD_Y ; 
- int /*<<< orphan*/  get_controller_data (struct controller_data_s*,unsigned int) ; 
- int /*<<< orphan*/ * state ; 
- int /*<<< orphan*/  usb_do_poll () ; 
+
+ unsigned int DEFAULT_MAX_PADS ;
+ int RETRO_DEVICE_ID_JOYPAD_A ;
+ int RETRO_DEVICE_ID_JOYPAD_B ;
+ int RETRO_DEVICE_ID_JOYPAD_DOWN ;
+ int RETRO_DEVICE_ID_JOYPAD_L ;
+ int RETRO_DEVICE_ID_JOYPAD_LEFT ;
+ int RETRO_DEVICE_ID_JOYPAD_R ;
+ int RETRO_DEVICE_ID_JOYPAD_RIGHT ;
+ int RETRO_DEVICE_ID_JOYPAD_SELECT ;
+ int RETRO_DEVICE_ID_JOYPAD_START ;
+ int RETRO_DEVICE_ID_JOYPAD_UP ;
+ int RETRO_DEVICE_ID_JOYPAD_X ;
+ int RETRO_DEVICE_ID_JOYPAD_Y ;
+ int get_controller_data (struct controller_data_s*,unsigned int) ;
+ int * state ;
+ int usb_do_poll () ;
 
 __attribute__((used)) static void xenon360_input_poll(void *data)
 {

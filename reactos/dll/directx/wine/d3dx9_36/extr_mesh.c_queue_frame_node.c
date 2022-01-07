@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct list {int dummy; } ;
-struct frame_node {int /*<<< orphan*/  entry; TYPE_1__* frame; } ;
-struct TYPE_3__ {int /*<<< orphan*/  pFrameFirstChild; } ;
-typedef  TYPE_1__ D3DXFRAME ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct frame_node {int entry; TYPE_1__* frame; } ;
+struct TYPE_3__ {int pFrameFirstChild; } ;
+typedef TYPE_1__ D3DXFRAME ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- struct frame_node* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  list_add_tail (struct list*,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int GetProcessHeap () ;
+ struct frame_node* HeapAlloc (int ,int ,int) ;
+ int TRUE ;
+ int list_add_tail (struct list*,int *) ;
 
 __attribute__((used)) static BOOL queue_frame_node(struct list *queue, D3DXFRAME *frame)
 {

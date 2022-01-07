@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  heap_free (char*) ; 
- char* heap_xalloc (int) ; 
- int lstrlenW (char*) ; 
- int /*<<< orphan*/  sprintfW (char*,char const*,char*) ; 
- int /*<<< orphan*/  write_file (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int HANDLE ;
+
+
+ int heap_free (char*) ;
+ char* heap_xalloc (int) ;
+ int lstrlenW (char*) ;
+ int sprintfW (char*,char const*,char*) ;
+ int write_file (int ,char*) ;
 
 __attribute__((used)) static void export_key_name(HANDLE hFile, WCHAR *name)
 {

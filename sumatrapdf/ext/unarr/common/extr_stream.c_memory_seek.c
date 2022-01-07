@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct MemoryStream {size_t offset; size_t length; } ;
-typedef  scalar_t__ off64_t ;
+typedef scalar_t__ off64_t ;
 
-/* Variables and functions */
- int SEEK_CUR ; 
- int SEEK_END ; 
+
+ int SEEK_CUR ;
+ int SEEK_END ;
 
 __attribute__((used)) static bool memory_seek(void *data, off64_t offset, int origin)
 {
@@ -25,7 +25,7 @@ __attribute__((used)) static bool memory_seek(void *data, off64_t offset, int or
     else if (origin == SEEK_END)
         offset += stm->length;
     if (offset < 0 || offset > (off64_t)stm->length || (size_t)offset > stm->length)
-        return false;
+        return 0;
     stm->offset = (size_t)offset;
-    return true;
+    return 1;
 }

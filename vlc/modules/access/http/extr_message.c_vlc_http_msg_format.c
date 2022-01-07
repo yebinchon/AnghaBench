@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vlc_memstream {size_t length; char* ptr; } ;
-struct vlc_http_msg {unsigned int count; scalar_t__** headers; int /*<<< orphan*/  status; scalar_t__ authority; scalar_t__ path; scalar_t__ scheme; int /*<<< orphan*/  method; } ;
+struct vlc_http_msg {unsigned int count; scalar_t__** headers; int status; scalar_t__ authority; scalar_t__ path; scalar_t__ scheme; int method; } ;
 
-/* Variables and functions */
- scalar_t__ vlc_memstream_close (struct vlc_memstream*) ; 
- int /*<<< orphan*/  vlc_memstream_open (struct vlc_memstream*) ; 
- int /*<<< orphan*/  vlc_memstream_printf (struct vlc_memstream*,char*,scalar_t__,...) ; 
- int /*<<< orphan*/  vlc_memstream_puts (struct vlc_memstream*,char*) ; 
+
+ scalar_t__ vlc_memstream_close (struct vlc_memstream*) ;
+ int vlc_memstream_open (struct vlc_memstream*) ;
+ int vlc_memstream_printf (struct vlc_memstream*,char*,scalar_t__,...) ;
+ int vlc_memstream_puts (struct vlc_memstream*,char*) ;
 
 char *vlc_http_msg_format(const struct vlc_http_msg *m, size_t *restrict lenp,
                           bool proxied)
@@ -44,9 +44,9 @@ char *vlc_http_msg_format(const struct vlc_http_msg *m, size_t *restrict lenp,
     vlc_memstream_puts(&stream, "\r\n");
 
     if (vlc_memstream_close(&stream))
-        return NULL;
+        return ((void*)0);
 
-    if (lenp != NULL)
+    if (lenp != ((void*)0))
         *lenp = stream.length;
     return stream.ptr;
 }

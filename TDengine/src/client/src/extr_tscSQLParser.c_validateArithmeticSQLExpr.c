@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ nSQLOptr; struct TYPE_4__* pRight; struct TYPE_4__* pLeft; } ;
-typedef  TYPE_1__ tSQLExpr ;
-typedef  scalar_t__ int32_t ;
-typedef  int /*<<< orphan*/  SSchema ;
-typedef  int /*<<< orphan*/  SColumnIdListRes ;
+typedef TYPE_1__ tSQLExpr ;
+typedef scalar_t__ int32_t ;
+typedef int SSchema ;
+typedef int SColumnIdListRes ;
 
-/* Variables and functions */
- scalar_t__ TK_PLUS ; 
- scalar_t__ TK_REM ; 
- scalar_t__ TSDB_CODE_SUCCESS ; 
- scalar_t__ validateSQLExpr (TYPE_1__*,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ TK_PLUS ;
+ scalar_t__ TK_REM ;
+ scalar_t__ TSDB_CODE_SUCCESS ;
+ scalar_t__ validateSQLExpr (TYPE_1__*,int *,scalar_t__,int *) ;
 
 __attribute__((used)) static int32_t validateArithmeticSQLExpr(tSQLExpr* pExpr, SSchema* pSchema, int32_t numOfCols,
                                          SColumnIdListRes* pList) {
-  if (pExpr == NULL) {
+  if (pExpr == ((void*)0)) {
     return TSDB_CODE_SUCCESS;
   }
 

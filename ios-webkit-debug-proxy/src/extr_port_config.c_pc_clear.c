@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct pc_entry_struct {int dummy; } ;
-typedef  TYPE_1__* pc_t ;
-typedef  TYPE_2__* pc_entry_t ;
+typedef TYPE_1__* pc_t ;
+typedef TYPE_2__* pc_entry_t ;
 struct TYPE_7__ {struct TYPE_7__* next; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * tail; TYPE_2__* head; } ;
+struct TYPE_6__ {int * tail; TYPE_2__* head; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
+
+ int free (TYPE_2__*) ;
+ int memset (TYPE_2__*,int ,int) ;
 
 void pc_clear(pc_t self) {
   if (self) {
@@ -31,7 +31,7 @@ void pc_clear(pc_t self) {
       free(e);
       e = next;
     }
-    self->head = NULL;
-    self->tail = NULL;
+    self->head = ((void*)0);
+    self->tail = ((void*)0);
   }
 }

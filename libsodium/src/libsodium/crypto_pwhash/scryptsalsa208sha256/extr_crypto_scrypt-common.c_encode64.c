@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int uint32_t ;
 
-/* Variables and functions */
- scalar_t__* encode64_uint32 (scalar_t__*,size_t,int,int) ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint32_t ;
+
+
+ scalar_t__* encode64_uint32 (scalar_t__*,size_t,int,int) ;
 
 __attribute__((used)) static uint8_t *
 encode64(uint8_t *dst, size_t dstlen, const uint8_t *src, size_t srclen)
@@ -32,7 +32,7 @@ encode64(uint8_t *dst, size_t dstlen, const uint8_t *src, size_t srclen)
 
         dnext = encode64_uint32(dst, dstlen, value, bits);
         if (!dnext) {
-            return NULL; /* LCOV_EXCL_LINE */
+            return ((void*)0);
         }
         dstlen -= dnext - dst;
         dst = dnext;

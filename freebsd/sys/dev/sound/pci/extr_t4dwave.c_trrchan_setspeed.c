@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_int32_t ;
+
+
+
+
+typedef int u_int32_t ;
 struct tr_rchinfo {int delta; struct tr_info* parent; } ;
 struct tr_info {int dummy; } ;
-typedef  int /*<<< orphan*/  kobj_t ;
+typedef int kobj_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TR_REG_SBDELTA ; 
- int /*<<< orphan*/  tr_wr (struct tr_info*,int /*<<< orphan*/ ,int,int) ; 
+
+ int TR_REG_SBDELTA ;
+ int tr_wr (struct tr_info*,int ,int,int) ;
 
 __attribute__((used)) static u_int32_t
 trrchan_setspeed(kobj_t obj, void *data, u_int32_t speed)
 {
-	struct tr_rchinfo *ch = data;
-	struct tr_info *tr = ch->parent;
+ struct tr_rchinfo *ch = data;
+ struct tr_info *tr = ch->parent;
 
-	/* setup speed */
-	ch->delta = (48000 << 12) / speed;
-	tr_wr(tr, TR_REG_SBDELTA, ch->delta, 2);
 
-	/* return closest possible speed */
-	return (48000 << 12) / ch->delta;
+ ch->delta = (48000 << 12) / speed;
+ tr_wr(tr, TR_REG_SBDELTA, ch->delta, 2);
+
+
+ return (48000 << 12) / ch->delta;
 }

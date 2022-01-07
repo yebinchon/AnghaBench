@@ -1,148 +1,101 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_52__   TYPE_3__ ;
-typedef  struct TYPE_51__   TYPE_2__ ;
-typedef  struct TYPE_50__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vec4_t ;
+
+
+typedef struct TYPE_52__ TYPE_3__ ;
+typedef struct TYPE_51__ TYPE_2__ ;
+typedef struct TYPE_50__ TYPE_1__ ;
+
+
+typedef int vec4_t ;
 struct TYPE_50__ {float x; float y; float w; float h; } ;
-typedef  TYPE_1__ rectDef_t ;
-typedef  int /*<<< orphan*/  qhandle_t ;
-struct TYPE_52__ {int /*<<< orphan*/  integer; } ;
+typedef TYPE_1__ rectDef_t ;
+typedef int qhandle_t ;
+struct TYPE_52__ {int integer; } ;
 struct TYPE_51__ {scalar_t__ integer; } ;
+ int CG_Draw1stPlace (TYPE_1__*,float,int ,int ,int) ;
+ int CG_Draw2ndPlace (TYPE_1__*,float,int ,int ,int) ;
+ int CG_DrawAreaChat (TYPE_1__*,float,int ,int ) ;
+ int CG_DrawAreaPowerUp (TYPE_1__*,int,float,float,int ) ;
+ int CG_DrawAreaSystemChat (TYPE_1__*,float,int ,int ) ;
+ int CG_DrawAreaTeamChat (TYPE_1__*,float,int ,int ) ;
+ int CG_DrawBlueFlagHead (TYPE_1__*) ;
+ int CG_DrawBlueFlagName (TYPE_1__*,float,int ,int) ;
+ int CG_DrawBlueFlagStatus (TYPE_1__*,int ) ;
+ int CG_DrawBlueName (TYPE_1__*,float,int ,int) ;
+ int CG_DrawBlueScore (TYPE_1__*,float,int ,int ,int) ;
+ int CG_DrawCTFPowerUp (TYPE_1__*) ;
+ int CG_DrawCapFragLimit (TYPE_1__*,float,int ,int ,int) ;
+ int CG_DrawGameStatus (TYPE_1__*,float,int ,int ,int) ;
+ int CG_DrawGameType (TYPE_1__*,float,int ,int ,int) ;
+ int CG_DrawKiller (TYPE_1__*,float,int ,int ,int) ;
+ int CG_DrawMedal (int,TYPE_1__*,float,int ,int ) ;
+ int CG_DrawNewTeamInfo (TYPE_1__*,float,float,float,int ,int ) ;
+ int CG_DrawPlayerAmmoIcon (TYPE_1__*,int) ;
+ int CG_DrawPlayerAmmoValue (TYPE_1__*,float,int ,int ,int) ;
+ int CG_DrawPlayerArmorIcon (TYPE_1__*,int) ;
+ int CG_DrawPlayerArmorValue (TYPE_1__*,float,int ,int ,int) ;
+ int CG_DrawPlayerHasFlag (TYPE_1__*,int) ;
+ int CG_DrawPlayerHead (TYPE_1__*,int) ;
+ int CG_DrawPlayerHealth (TYPE_1__*,float,int ,int ,int) ;
+ int CG_DrawPlayerItem (TYPE_1__*,float,int) ;
+ int CG_DrawPlayerLocation (TYPE_1__*,float,int ,int) ;
+ int CG_DrawPlayerScore (TYPE_1__*,float,int ,int ,int) ;
+ int CG_DrawPlayerStatus (TYPE_1__*) ;
+ int CG_DrawRedFlagHead (TYPE_1__*) ;
+ int CG_DrawRedFlagName (TYPE_1__*,float,int ,int) ;
+ int CG_DrawRedFlagStatus (TYPE_1__*,int ) ;
+ int CG_DrawRedName (TYPE_1__*,float,int ,int) ;
+ int CG_DrawRedScore (TYPE_1__*,float,int ,int ,int) ;
+ int CG_DrawSelectedPlayerArmor (TYPE_1__*,float,int ,int ,int) ;
+ int CG_DrawSelectedPlayerHead (TYPE_1__*,int,int) ;
+ int CG_DrawSelectedPlayerHealth (TYPE_1__*,float,int ,int ,int) ;
+ int CG_DrawSelectedPlayerLocation (TYPE_1__*,float,int ,int) ;
+ int CG_DrawSelectedPlayerName (TYPE_1__*,float,int ,int,int) ;
+ int CG_DrawSelectedPlayerPowerup (TYPE_1__*,int) ;
+ int CG_DrawSelectedPlayerStatus (TYPE_1__*) ;
+ int CG_DrawSelectedPlayerWeapon (TYPE_1__*) ;
+ int CG_DrawTeamColor (TYPE_1__*,int ) ;
+ int CG_DrawTeamSpectators (TYPE_1__*,float,int ,int ) ;
 
-/* Variables and functions */
-#define  CG_1STPLACE 186 
-#define  CG_2NDPLACE 185 
-#define  CG_ACCURACY 184 
-#define  CG_AREA_CHAT 183 
-#define  CG_AREA_POWERUP 182 
-#define  CG_AREA_SYSTEMCHAT 181 
-#define  CG_AREA_TEAMCHAT 180 
-#define  CG_ASSISTS 179 
-#define  CG_BLUE_FLAGHEAD 178 
-#define  CG_BLUE_FLAGNAME 177 
-#define  CG_BLUE_FLAGSTATUS 176 
-#define  CG_BLUE_NAME 175 
-#define  CG_BLUE_SCORE 174 
-#define  CG_CAPFRAGLIMIT 173 
-#define  CG_CAPTURES 172 
-#define  CG_CTF_POWERUP 171 
-#define  CG_DEFEND 170 
- int /*<<< orphan*/  CG_Draw1stPlace (TYPE_1__*,float,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CG_Draw2ndPlace (TYPE_1__*,float,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CG_DrawAreaChat (TYPE_1__*,float,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CG_DrawAreaPowerUp (TYPE_1__*,int,float,float,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CG_DrawAreaSystemChat (TYPE_1__*,float,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CG_DrawAreaTeamChat (TYPE_1__*,float,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CG_DrawBlueFlagHead (TYPE_1__*) ; 
- int /*<<< orphan*/  CG_DrawBlueFlagName (TYPE_1__*,float,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CG_DrawBlueFlagStatus (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CG_DrawBlueName (TYPE_1__*,float,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CG_DrawBlueScore (TYPE_1__*,float,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CG_DrawCTFPowerUp (TYPE_1__*) ; 
- int /*<<< orphan*/  CG_DrawCapFragLimit (TYPE_1__*,float,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CG_DrawGameStatus (TYPE_1__*,float,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CG_DrawGameType (TYPE_1__*,float,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CG_DrawKiller (TYPE_1__*,float,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CG_DrawMedal (int,TYPE_1__*,float,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CG_DrawNewTeamInfo (TYPE_1__*,float,float,float,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CG_DrawPlayerAmmoIcon (TYPE_1__*,int) ; 
- int /*<<< orphan*/  CG_DrawPlayerAmmoValue (TYPE_1__*,float,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CG_DrawPlayerArmorIcon (TYPE_1__*,int) ; 
- int /*<<< orphan*/  CG_DrawPlayerArmorValue (TYPE_1__*,float,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CG_DrawPlayerHasFlag (TYPE_1__*,int) ; 
- int /*<<< orphan*/  CG_DrawPlayerHead (TYPE_1__*,int) ; 
- int /*<<< orphan*/  CG_DrawPlayerHealth (TYPE_1__*,float,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CG_DrawPlayerItem (TYPE_1__*,float,int) ; 
- int /*<<< orphan*/  CG_DrawPlayerLocation (TYPE_1__*,float,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CG_DrawPlayerScore (TYPE_1__*,float,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CG_DrawPlayerStatus (TYPE_1__*) ; 
- int /*<<< orphan*/  CG_DrawRedFlagHead (TYPE_1__*) ; 
- int /*<<< orphan*/  CG_DrawRedFlagName (TYPE_1__*,float,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CG_DrawRedFlagStatus (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CG_DrawRedName (TYPE_1__*,float,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CG_DrawRedScore (TYPE_1__*,float,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CG_DrawSelectedPlayerArmor (TYPE_1__*,float,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CG_DrawSelectedPlayerHead (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  CG_DrawSelectedPlayerHealth (TYPE_1__*,float,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CG_DrawSelectedPlayerLocation (TYPE_1__*,float,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CG_DrawSelectedPlayerName (TYPE_1__*,float,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  CG_DrawSelectedPlayerPowerup (TYPE_1__*,int) ; 
- int /*<<< orphan*/  CG_DrawSelectedPlayerStatus (TYPE_1__*) ; 
- int /*<<< orphan*/  CG_DrawSelectedPlayerWeapon (TYPE_1__*) ; 
- int /*<<< orphan*/  CG_DrawTeamColor (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CG_DrawTeamSpectators (TYPE_1__*,float,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
-#define  CG_EXCELLENT 169 
-#define  CG_GAME_STATUS 168 
-#define  CG_GAME_TYPE 167 
-#define  CG_GAUNTLET 166 
-#define  CG_HARVESTER_SKULLS 165 
-#define  CG_HARVESTER_SKULLS2D 164 
- int /*<<< orphan*/  CG_HarvesterSkulls (TYPE_1__*,float,int /*<<< orphan*/ ,int,int) ; 
-#define  CG_IMPRESSIVE 163 
-#define  CG_KILLER 162 
-#define  CG_ONEFLAG_STATUS 161 
- int /*<<< orphan*/  CG_OneFlagStatus (TYPE_1__*) ; 
-#define  CG_PERFECT 160 
-#define  CG_PLAYER_AMMO_ICON 159 
-#define  CG_PLAYER_AMMO_ICON2D 158 
-#define  CG_PLAYER_AMMO_VALUE 157 
-#define  CG_PLAYER_ARMOR_ICON 156 
-#define  CG_PLAYER_ARMOR_ICON2D 155 
-#define  CG_PLAYER_ARMOR_VALUE 154 
-#define  CG_PLAYER_HASFLAG 153 
-#define  CG_PLAYER_HASFLAG2D 152 
-#define  CG_PLAYER_HEAD 151 
-#define  CG_PLAYER_HEALTH 150 
-#define  CG_PLAYER_ITEM 149 
-#define  CG_PLAYER_LOCATION 148 
-#define  CG_PLAYER_SCORE 147 
-#define  CG_PLAYER_STATUS 146 
-#define  CG_RED_FLAGHEAD 145 
-#define  CG_RED_FLAGNAME 144 
-#define  CG_RED_FLAGSTATUS 143 
-#define  CG_RED_NAME 142 
-#define  CG_RED_SCORE 141 
-#define  CG_SELECTEDPLAYER_ARMOR 140 
-#define  CG_SELECTEDPLAYER_HEAD 139 
-#define  CG_SELECTEDPLAYER_HEALTH 138 
-#define  CG_SELECTEDPLAYER_LOCATION 137 
-#define  CG_SELECTEDPLAYER_NAME 136 
-#define  CG_SELECTEDPLAYER_POWERUP 135 
-#define  CG_SELECTEDPLAYER_STATUS 134 
-#define  CG_SELECTEDPLAYER_WEAPON 133 
- int CG_SHOW_2DONLY ; 
-#define  CG_SPECTATORS 132 
-#define  CG_TEAMINFO 131 
-#define  CG_TEAM_COLOR 130 
-#define  CG_VOICE_HEAD 129 
-#define  CG_VOICE_NAME 128 
- TYPE_3__ cg_currentSelectedPlayer ; 
- TYPE_2__ cg_drawStatus ; 
- int /*<<< orphan*/  numSortedTeamPlayers ; 
- int qfalse ; 
- int qtrue ; 
+
+
+
+
+
+ int CG_HarvesterSkulls (TYPE_1__*,float,int ,int,int) ;
+
+
+
+ int CG_OneFlagStatus (TYPE_1__*) ;
+ int CG_SHOW_2DONLY ;
+
+
+
+
+
+ TYPE_3__ cg_currentSelectedPlayer ;
+ TYPE_2__ cg_drawStatus ;
+ int numSortedTeamPlayers ;
+ int qfalse ;
+ int qtrue ;
 
 void CG_OwnerDraw(float x, float y, float w, float h, float text_x, float text_y, int ownerDraw, int ownerDrawFlags, int align, float special, float scale, vec4_t color, qhandle_t shader, int textStyle) {
-	rectDef_t rect;
+ rectDef_t rect;
 
   if ( cg_drawStatus.integer == 0 ) {
-		return;
-	}
+  return;
+ }
 
-	//if (ownerDrawFlags != 0 && !CG_OwnerDrawVisible(ownerDrawFlags)) {
-	//	return;
-	//}
+
+
+
 
   rect.x = x;
   rect.y = y;
@@ -150,171 +103,171 @@ void CG_OwnerDraw(float x, float y, float w, float h, float text_x, float text_y
   rect.h = h;
 
   switch (ownerDraw) {
-  case CG_PLAYER_ARMOR_ICON:
+  case 156:
     CG_DrawPlayerArmorIcon(&rect, ownerDrawFlags & CG_SHOW_2DONLY);
     break;
-  case CG_PLAYER_ARMOR_ICON2D:
+  case 155:
     CG_DrawPlayerArmorIcon(&rect, qtrue);
     break;
-  case CG_PLAYER_ARMOR_VALUE:
+  case 154:
     CG_DrawPlayerArmorValue(&rect, scale, color, shader, textStyle);
     break;
-  case CG_PLAYER_AMMO_ICON:
+  case 159:
     CG_DrawPlayerAmmoIcon(&rect, ownerDrawFlags & CG_SHOW_2DONLY);
     break;
-  case CG_PLAYER_AMMO_ICON2D:
+  case 158:
     CG_DrawPlayerAmmoIcon(&rect, qtrue);
     break;
-  case CG_PLAYER_AMMO_VALUE:
+  case 157:
     CG_DrawPlayerAmmoValue(&rect, scale, color, shader, textStyle);
     break;
-  case CG_SELECTEDPLAYER_HEAD:
+  case 139:
     CG_DrawSelectedPlayerHead(&rect, ownerDrawFlags & CG_SHOW_2DONLY, qfalse);
     break;
-  case CG_VOICE_HEAD:
+  case 129:
     CG_DrawSelectedPlayerHead(&rect, ownerDrawFlags & CG_SHOW_2DONLY, qtrue);
     break;
-  case CG_VOICE_NAME:
+  case 128:
     CG_DrawSelectedPlayerName(&rect, scale, color, qtrue, textStyle);
     break;
-  case CG_SELECTEDPLAYER_STATUS:
+  case 134:
     CG_DrawSelectedPlayerStatus(&rect);
     break;
-  case CG_SELECTEDPLAYER_ARMOR:
+  case 140:
     CG_DrawSelectedPlayerArmor(&rect, scale, color, shader, textStyle);
     break;
-  case CG_SELECTEDPLAYER_HEALTH:
+  case 138:
     CG_DrawSelectedPlayerHealth(&rect, scale, color, shader, textStyle);
     break;
-  case CG_SELECTEDPLAYER_NAME:
+  case 136:
     CG_DrawSelectedPlayerName(&rect, scale, color, qfalse, textStyle);
     break;
-  case CG_SELECTEDPLAYER_LOCATION:
+  case 137:
     CG_DrawSelectedPlayerLocation(&rect, scale, color, textStyle);
     break;
-  case CG_SELECTEDPLAYER_WEAPON:
+  case 133:
     CG_DrawSelectedPlayerWeapon(&rect);
     break;
-  case CG_SELECTEDPLAYER_POWERUP:
+  case 135:
     CG_DrawSelectedPlayerPowerup(&rect, ownerDrawFlags & CG_SHOW_2DONLY);
     break;
-  case CG_PLAYER_HEAD:
+  case 151:
     CG_DrawPlayerHead(&rect, ownerDrawFlags & CG_SHOW_2DONLY);
     break;
-  case CG_PLAYER_ITEM:
+  case 149:
     CG_DrawPlayerItem(&rect, scale, ownerDrawFlags & CG_SHOW_2DONLY);
     break;
-  case CG_PLAYER_SCORE:
+  case 147:
     CG_DrawPlayerScore(&rect, scale, color, shader, textStyle);
     break;
-  case CG_PLAYER_HEALTH:
+  case 150:
     CG_DrawPlayerHealth(&rect, scale, color, shader, textStyle);
     break;
-  case CG_RED_SCORE:
+  case 141:
     CG_DrawRedScore(&rect, scale, color, shader, textStyle);
     break;
-  case CG_BLUE_SCORE:
+  case 174:
     CG_DrawBlueScore(&rect, scale, color, shader, textStyle);
     break;
-  case CG_RED_NAME:
+  case 142:
     CG_DrawRedName(&rect, scale, color, textStyle);
     break;
-  case CG_BLUE_NAME:
+  case 175:
     CG_DrawBlueName(&rect, scale, color, textStyle);
     break;
-  case CG_BLUE_FLAGHEAD:
+  case 178:
     CG_DrawBlueFlagHead(&rect);
     break;
-  case CG_BLUE_FLAGSTATUS:
+  case 176:
     CG_DrawBlueFlagStatus(&rect, shader);
     break;
-  case CG_BLUE_FLAGNAME:
+  case 177:
     CG_DrawBlueFlagName(&rect, scale, color, textStyle);
     break;
-  case CG_RED_FLAGHEAD:
+  case 145:
     CG_DrawRedFlagHead(&rect);
     break;
-  case CG_RED_FLAGSTATUS:
+  case 143:
     CG_DrawRedFlagStatus(&rect, shader);
     break;
-  case CG_RED_FLAGNAME:
+  case 144:
     CG_DrawRedFlagName(&rect, scale, color, textStyle);
     break;
-  case CG_HARVESTER_SKULLS:
+  case 165:
     CG_HarvesterSkulls(&rect, scale, color, qfalse, textStyle);
     break;
-  case CG_HARVESTER_SKULLS2D:
+  case 164:
     CG_HarvesterSkulls(&rect, scale, color, qtrue, textStyle);
     break;
-  case CG_ONEFLAG_STATUS:
+  case 161:
     CG_OneFlagStatus(&rect);
     break;
-  case CG_PLAYER_LOCATION:
+  case 148:
     CG_DrawPlayerLocation(&rect, scale, color, textStyle);
     break;
-  case CG_TEAM_COLOR:
+  case 130:
     CG_DrawTeamColor(&rect, color);
     break;
-  case CG_CTF_POWERUP:
+  case 171:
     CG_DrawCTFPowerUp(&rect);
     break;
-  case CG_AREA_POWERUP:
-		CG_DrawAreaPowerUp(&rect, align, special, scale, color);
+  case 182:
+  CG_DrawAreaPowerUp(&rect, align, special, scale, color);
     break;
-  case CG_PLAYER_STATUS:
+  case 146:
     CG_DrawPlayerStatus(&rect);
     break;
-  case CG_PLAYER_HASFLAG:
+  case 153:
     CG_DrawPlayerHasFlag(&rect, qfalse);
     break;
-  case CG_PLAYER_HASFLAG2D:
+  case 152:
     CG_DrawPlayerHasFlag(&rect, qtrue);
     break;
-  case CG_AREA_SYSTEMCHAT:
+  case 181:
     CG_DrawAreaSystemChat(&rect, scale, color, shader);
     break;
-  case CG_AREA_TEAMCHAT:
+  case 180:
     CG_DrawAreaTeamChat(&rect, scale, color, shader);
     break;
-  case CG_AREA_CHAT:
+  case 183:
     CG_DrawAreaChat(&rect, scale, color, shader);
     break;
-  case CG_GAME_TYPE:
+  case 167:
     CG_DrawGameType(&rect, scale, color, shader, textStyle);
     break;
-  case CG_GAME_STATUS:
+  case 168:
     CG_DrawGameStatus(&rect, scale, color, shader, textStyle);
-		break;
-  case CG_KILLER:
+  break;
+  case 162:
     CG_DrawKiller(&rect, scale, color, shader, textStyle);
-		break;
-	case CG_ACCURACY:
-	case CG_ASSISTS:
-	case CG_DEFEND:
-	case CG_EXCELLENT:
-	case CG_IMPRESSIVE:
-	case CG_PERFECT:
-	case CG_GAUNTLET:
-	case CG_CAPTURES:
-		CG_DrawMedal(ownerDraw, &rect, scale, color, shader);
-		break;
-  case CG_SPECTATORS:
-		CG_DrawTeamSpectators(&rect, scale, color, shader);
-		break;
-  case CG_TEAMINFO:
-		if (cg_currentSelectedPlayer.integer == numSortedTeamPlayers) {
-			CG_DrawNewTeamInfo(&rect, text_x, text_y, scale, color, shader);
-		}
-		break;
-  case CG_CAPFRAGLIMIT:
+  break;
+ case 184:
+ case 179:
+ case 170:
+ case 169:
+ case 163:
+ case 160:
+ case 166:
+ case 172:
+  CG_DrawMedal(ownerDraw, &rect, scale, color, shader);
+  break;
+  case 132:
+  CG_DrawTeamSpectators(&rect, scale, color, shader);
+  break;
+  case 131:
+  if (cg_currentSelectedPlayer.integer == numSortedTeamPlayers) {
+   CG_DrawNewTeamInfo(&rect, text_x, text_y, scale, color, shader);
+  }
+  break;
+  case 173:
     CG_DrawCapFragLimit(&rect, scale, color, shader, textStyle);
-		break;
-  case CG_1STPLACE:
+  break;
+  case 186:
     CG_Draw1stPlace(&rect, scale, color, shader, textStyle);
-		break;
-  case CG_2NDPLACE:
+  break;
+  case 185:
     CG_Draw2ndPlace(&rect, scale, color, shader, textStyle);
-		break;
+  break;
   default:
     break;
   }

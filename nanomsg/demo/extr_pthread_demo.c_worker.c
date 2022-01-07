@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  timer ;
+
+
+
+
+typedef void uint8_t ;
+typedef int uint32_t ;
+typedef int timer ;
 struct nn_msghdr {int msg_iovlen; void** msg_control; struct nn_iovec* msg_iov; void* msg_controllen; } ;
 struct nn_iovec {void** iov_base; void* iov_len; } ;
-typedef  int /*<<< orphan*/  hdr ;
+typedef int hdr ;
 
-/* Variables and functions */
- scalar_t__ EBADF ; 
- void* NN_MSG ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,void*,int) ; 
- int /*<<< orphan*/  memset (struct nn_msghdr*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  nn_close (int) ; 
- scalar_t__ nn_errno () ; 
- int /*<<< orphan*/  nn_freemsg (void*) ; 
- int nn_recvmsg (int,struct nn_msghdr*,int /*<<< orphan*/ ) ; 
- int nn_sendmsg (int,struct nn_msghdr*,int /*<<< orphan*/ ) ; 
- char* nn_strerror (scalar_t__) ; 
- int /*<<< orphan*/  ntohl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  poll (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
+
+ scalar_t__ EBADF ;
+ void* NN_MSG ;
+ int fprintf (int ,char*,...) ;
+ int memcpy (int *,void*,int) ;
+ int memset (struct nn_msghdr*,int ,int) ;
+ int nn_close (int) ;
+ scalar_t__ nn_errno () ;
+ int nn_freemsg (void*) ;
+ int nn_recvmsg (int,struct nn_msghdr*,int ) ;
+ int nn_sendmsg (int,struct nn_msghdr*,int ) ;
+ char* nn_strerror (scalar_t__) ;
+ int ntohl (int ) ;
+ int poll (int *,int ,int ) ;
+ int stderr ;
 
 void *worker (void *arg)
 {
-    int fd = (intptr_t)arg; 
+    int fd = (intptr_t)arg;
 
-    /*  Main processing loop. */
+
 
     for (;;) {
         uint32_t timer;
@@ -49,7 +49,7 @@ void *worker (void *arg)
         struct nn_msghdr hdr;
 
         memset (&hdr, 0, sizeof (hdr));
-        control = NULL;
+        control = ((void*)0);
         iov.iov_base = &body;
         iov.iov_len = NN_MSG;
         hdr.msg_iov = &iov;
@@ -60,9 +60,9 @@ void *worker (void *arg)
         rc = nn_recvmsg (fd, &hdr, 0);
         if (rc < 0) {
             if (nn_errno () == EBADF) {
-                return (NULL);   /* Socket closed by another thread. */
+                return (((void*)0));
             }
-            /*  Any error here is unexpected. */
+
             fprintf (stderr, "nn_recv: %s\n", nn_strerror (nn_errno ()));
             break;
         }
@@ -78,10 +78,10 @@ void *worker (void *arg)
         memcpy (&timer, body, sizeof (timer));
         nn_freemsg (body);
 
-        /*  Poor mans usleep but in msec. */
-        poll (NULL, 0, ntohl (timer));
 
-        hdr.msg_iov = NULL;
+        poll (((void*)0), 0, ntohl (timer));
+
+        hdr.msg_iov = ((void*)0);
         hdr.msg_iovlen = 0;
 
         rc = nn_sendmsg (fd, &hdr, 0);
@@ -91,9 +91,9 @@ void *worker (void *arg)
         }
     }
 
-    /*  We got here, so close the file.  That will cause the other threads
-        to shut down too. */
+
+
 
     nn_close (fd);
-    return (NULL);
+    return (((void*)0));
 }

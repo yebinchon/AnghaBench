@@ -1,59 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {void* NoSaveConfig; void* NoSaveLog; } ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  TYPE_1__ CLIENT ;
+typedef int LIST ;
+typedef TYPE_1__ CLIENT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CiFreeIni (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CiLoadIni () ; 
- int /*<<< orphan*/  IniStrValue (int /*<<< orphan*/ *,char*) ; 
- void* ToBool (int /*<<< orphan*/ ) ; 
+
+ int CiFreeIni (int *) ;
+ int * CiLoadIni () ;
+ int IniStrValue (int *,char*) ;
+ void* ToBool (int ) ;
 
 void CiLoadIniSettings(CLIENT *c)
 {
-	LIST *o;
-	//char *log;
-	//char *config;
+ LIST *o;
 
-	if (c == NULL)
-	{
-		return;
-	}
 
-	o = CiLoadIni();
 
-	if (o == NULL)
-	{
-		return;
-	}
+ if (c == ((void*)0))
+ {
+  return;
+ }
 
-	/*log = IniStrValue(o, "NoSaveLog");
-	config = IniStrValue(o, "NoSaveConfig");
+ o = CiLoadIni();
 
-	if(StrCmpi(log, "true") == 0)
-	{
-		c->NoSaveLog = true;
-	}
-	if(StrCmpi(config, "true") == 0)
-	{
-		c->NoSaveConfig = true;
-	}*/
+ if (o == ((void*)0))
+ {
+  return;
+ }
+ c->NoSaveLog = ToBool(IniStrValue(o, "NoSaveLog"));
+ c->NoSaveConfig = ToBool(IniStrValue(o, "NoSaveConfig"));
 
-	c->NoSaveLog = ToBool(IniStrValue(o, "NoSaveLog"));
-	c->NoSaveConfig = ToBool(IniStrValue(o, "NoSaveConfig"));
-	
-	CiFreeIni(o);
+ CiFreeIni(o);
 
 }

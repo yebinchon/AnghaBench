@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_11__ {int /*<<< orphan*/  data; int /*<<< orphan*/  stream_index; } ;
-struct TYPE_10__ {int /*<<< orphan*/  index; } ;
-struct TYPE_9__ {int last_frame; unsigned int nr_frames; int /*<<< orphan*/  fragment; int /*<<< orphan*/  timestamp; } ;
-typedef  TYPE_1__ PayloadContext ;
-typedef  TYPE_2__ AVStream ;
-typedef  TYPE_3__ AVPacket ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/  ENOMEM ; 
- int RTP_AC3_PAYLOAD_HEADER_SIZE ; 
- int RTP_FLAG_MARKER ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  av_new_packet (TYPE_3__*,int) ; 
- int avio_open_dyn_buf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ ,int const*,int) ; 
- int ff_rtp_finalize_packet (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ffio_free_dyn_buf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int const*,int) ; 
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+struct TYPE_11__ {int data; int stream_index; } ;
+struct TYPE_10__ {int index; } ;
+struct TYPE_9__ {int last_frame; unsigned int nr_frames; int fragment; int timestamp; } ;
+typedef TYPE_1__ PayloadContext ;
+typedef TYPE_2__ AVStream ;
+typedef TYPE_3__ AVPacket ;
+typedef int AVFormatContext ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ int EAGAIN ;
+ int ENOMEM ;
+ int RTP_AC3_PAYLOAD_HEADER_SIZE ;
+ int RTP_FLAG_MARKER ;
+ int av_log (int *,int ,char*,...) ;
+ int av_new_packet (TYPE_3__*,int) ;
+ int avio_open_dyn_buf (int *) ;
+ int avio_write (int ,int const*,int) ;
+ int ff_rtp_finalize_packet (TYPE_3__*,int *,int ) ;
+ int ffio_free_dyn_buf (int *) ;
+ int memcpy (int ,int const*,int) ;
 
 __attribute__((used)) static int ac3_handle_packet(AVFormatContext *ctx, PayloadContext *data,
                              AVStream *st, AVPacket *pkt, uint32_t *timestamp,
@@ -61,7 +61,7 @@ __attribute__((used)) static int ac3_handle_packet(AVFormatContext *ctx, Payload
     len -= RTP_AC3_PAYLOAD_HEADER_SIZE;
 
     switch (frame_type) {
-    case 0: /* One or more complete frames */
+    case 0:
         if (!nr_frames) {
             av_log(ctx, AV_LOG_ERROR, "Invalid AC3 packet data\n");
             return AVERROR_INVALIDDATA;
@@ -76,7 +76,7 @@ __attribute__((used)) static int ac3_handle_packet(AVFormatContext *ctx, Payload
         return 0;
 
     case 1:
-    case 2: /* First fragment */
+    case 2:
         ffio_free_dyn_buf(&data->fragment);
 
         data->last_frame = 1;
@@ -89,7 +89,7 @@ __attribute__((used)) static int ac3_handle_packet(AVFormatContext *ctx, Payload
         data->timestamp = *timestamp;
         return AVERROR(EAGAIN);
 
-    case 3: /* Fragment other than first */
+    case 3:
         if (!data->fragment) {
             av_log(ctx, AV_LOG_WARNING,
                    "Received packet without a start fragment; dropping.\n");

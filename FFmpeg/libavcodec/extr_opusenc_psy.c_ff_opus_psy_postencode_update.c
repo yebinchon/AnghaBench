@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_12__ {int index; } ;
 struct TYPE_11__ {float framebits; scalar_t__ intensity_stereo; } ;
-struct TYPE_9__ {int frames; int /*<<< orphan*/  framesize; } ;
+struct TYPE_9__ {int frames; int framesize; } ;
 struct TYPE_10__ {int max_steps; int buffered_steps; int avg_is_band; float lambda; int total_packets_out; scalar_t__ inflection_points_count; TYPE_2__ p; scalar_t__ steps_to_process; scalar_t__ cs_num; TYPE_1__* avctx; TYPE_5__** steps; } ;
 struct TYPE_8__ {int bit_rate; int sample_rate; } ;
-typedef  int /*<<< orphan*/  OpusRangeCoder ;
-typedef  int /*<<< orphan*/  OpusPsyStep ;
-typedef  TYPE_3__ OpusPsyContext ;
-typedef  TYPE_4__ CeltFrame ;
+typedef int OpusRangeCoder ;
+typedef int OpusPsyStep ;
+typedef TYPE_3__ OpusPsyContext ;
+typedef TYPE_4__ CeltFrame ;
 
-/* Variables and functions */
- int FF_BUFQUEUE_SIZE ; 
- int OPUS_BLOCK_SIZE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_5__*,int /*<<< orphan*/ ,int) ; 
+
+ int FF_BUFQUEUE_SIZE ;
+ int OPUS_BLOCK_SIZE (int ) ;
+ int memset (TYPE_5__*,int ,int) ;
 
 void ff_opus_psy_postencode_update(OpusPsyContext *s, CeltFrame *f, OpusRangeCoder *rc)
 {

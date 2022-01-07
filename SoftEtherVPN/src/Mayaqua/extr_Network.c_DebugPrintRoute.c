@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
-typedef  int /*<<< orphan*/  ROUTE_ENTRY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Debug (char*,char*) ; 
- int IsDebug () ; 
- int MAX_SIZE ; 
- int /*<<< orphan*/  RouteToStr (char*,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int tmp ;
+typedef int ROUTE_ENTRY ;
+
+
+ int Debug (char*,char*) ;
+ int IsDebug () ;
+ int MAX_SIZE ;
+ int RouteToStr (char*,int,int *) ;
 
 void DebugPrintRoute(ROUTE_ENTRY *e)
 {
-	char tmp[MAX_SIZE];
-	// Validate arguments
-	if (e == NULL)
-	{
-		return;
-	}
+ char tmp[MAX_SIZE];
 
-	if (IsDebug() == false)
-	{
-		return;
-	}
+ if (e == ((void*)0))
+ {
+  return;
+ }
 
-	RouteToStr(tmp, sizeof(tmp), e);
+ if (IsDebug() == 0)
+ {
+  return;
+ }
 
-	Debug("%s\n", tmp);
+ RouteToStr(tmp, sizeof(tmp), e);
+
+ Debug("%s\n", tmp);
 }

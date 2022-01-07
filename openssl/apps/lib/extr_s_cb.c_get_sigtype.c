@@ -1,58 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  EVP_PKEY_DSA 136 
-#define  EVP_PKEY_EC 135 
-#define  EVP_PKEY_RSA 134 
-#define  EVP_PKEY_RSA_PSS 133 
-#define  NID_ED25519 132 
-#define  NID_ED448 131 
-#define  NID_id_GostR3410_2001 130 
-#define  NID_id_GostR3410_2012_256 129 
-#define  NID_id_GostR3410_2012_512 128 
-
 __attribute__((used)) static const char *get_sigtype(int nid)
 {
     switch (nid) {
-    case EVP_PKEY_RSA:
+    case 134:
         return "RSA";
 
-    case EVP_PKEY_RSA_PSS:
+    case 133:
         return "RSA-PSS";
 
-    case EVP_PKEY_DSA:
+    case 136:
         return "DSA";
 
-     case EVP_PKEY_EC:
+     case 135:
         return "ECDSA";
 
-     case NID_ED25519:
+     case 132:
         return "Ed25519";
 
-     case NID_ED448:
+     case 131:
         return "Ed448";
 
-     case NID_id_GostR3410_2001:
+     case 130:
         return "gost2001";
 
-     case NID_id_GostR3410_2012_256:
+     case 129:
         return "gost2012_256";
 
-     case NID_id_GostR3410_2012_512:
+     case 128:
         return "gost2012_512";
 
     default:
-        return NULL;
+        return ((void*)0);
     }
 }

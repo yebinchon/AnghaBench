@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ error; int /*<<< orphan*/  info_png; int /*<<< orphan*/  info_raw; } ;
-typedef  TYPE_1__ LodePNGState ;
 
-/* Variables and functions */
- scalar_t__ lodepng_color_mode_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lodepng_color_mode_init (int /*<<< orphan*/ *) ; 
- scalar_t__ lodepng_info_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lodepng_info_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lodepng_state_cleanup (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ error; int info_png; int info_raw; } ;
+typedef TYPE_1__ LodePNGState ;
+
+
+ scalar_t__ lodepng_color_mode_copy (int *,int *) ;
+ int lodepng_color_mode_init (int *) ;
+ scalar_t__ lodepng_info_copy (int *,int *) ;
+ int lodepng_info_init (int *) ;
+ int lodepng_state_cleanup (TYPE_1__*) ;
 
 void lodepng_state_copy(LodePNGState* dest, const LodePNGState* source)
 {

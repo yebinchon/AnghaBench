@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct circ_buf {int /*<<< orphan*/ * buf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int TI_WRITE_BUF_SIZE ; 
- int /*<<< orphan*/  kfree (struct circ_buf*) ; 
- void* kmalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ti_buf_clear (struct circ_buf*) ; 
+
+
+
+struct circ_buf {int * buf; } ;
+
+
+ int GFP_KERNEL ;
+ int TI_WRITE_BUF_SIZE ;
+ int kfree (struct circ_buf*) ;
+ void* kmalloc (int,int ) ;
+ int ti_buf_clear (struct circ_buf*) ;
 
 __attribute__((used)) static struct circ_buf *ti_buf_alloc(void)
 {
-	struct circ_buf *cb;
+ struct circ_buf *cb;
 
-	cb = kmalloc(sizeof(struct circ_buf), GFP_KERNEL);
-	if (cb == NULL)
-		return NULL;
+ cb = kmalloc(sizeof(struct circ_buf), GFP_KERNEL);
+ if (cb == ((void*)0))
+  return ((void*)0);
 
-	cb->buf = kmalloc(TI_WRITE_BUF_SIZE, GFP_KERNEL);
-	if (cb->buf == NULL) {
-		kfree(cb);
-		return NULL;
-	}
+ cb->buf = kmalloc(TI_WRITE_BUF_SIZE, GFP_KERNEL);
+ if (cb->buf == ((void*)0)) {
+  kfree(cb);
+  return ((void*)0);
+ }
 
-	ti_buf_clear(cb);
+ ti_buf_clear(cb);
 
-	return cb;
+ return cb;
 }

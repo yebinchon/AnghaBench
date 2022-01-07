@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int Delay; int Ok; int Finished; int /*<<< orphan*/  FinishEvent; int /*<<< orphan*/  FinishedTick; int /*<<< orphan*/ * Result_Nat_T_Sock; int /*<<< orphan*/  TargetHostname; int /*<<< orphan*/  HintStr; int /*<<< orphan*/  CancelFlag; int /*<<< orphan*/  Timeout; int /*<<< orphan*/  NatT_ErrorCode; int /*<<< orphan*/  Ip; int /*<<< orphan*/  SvcName; } ;
-typedef  int /*<<< orphan*/  THREAD ;
-typedef  int /*<<< orphan*/  SOCK ;
-typedef  TYPE_1__ CONNECT_TCP_RUDP_PARAM ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * NewRUDPClientNatT (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Set (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Tick64 () ; 
- int /*<<< orphan*/  WaitEx (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int Delay; int Ok; int Finished; int FinishEvent; int FinishedTick; int * Result_Nat_T_Sock; int TargetHostname; int HintStr; int CancelFlag; int Timeout; int NatT_ErrorCode; int Ip; int SvcName; } ;
+typedef int THREAD ;
+typedef int SOCK ;
+typedef TYPE_1__ CONNECT_TCP_RUDP_PARAM ;
+
+
+ int * NewRUDPClientNatT (int ,int *,int *,int ,int ,int ,int ) ;
+ int Set (int ) ;
+ int Tick64 () ;
+ int WaitEx (int *,int,int ) ;
 
 void ConnectThreadForRUDP(THREAD *thread, void *param)
 {
-	SOCK *sock;
-	CONNECT_TCP_RUDP_PARAM *p = (CONNECT_TCP_RUDP_PARAM *)param;
-	if (thread == NULL || p == NULL)
-	{
-		return;
-	}
+ SOCK *sock;
+ CONNECT_TCP_RUDP_PARAM *p = (CONNECT_TCP_RUDP_PARAM *)param;
+ if (thread == ((void*)0) || p == ((void*)0))
+ {
+  return;
+ }
 
-	// Delay
-	if (p->Delay >= 1)
-	{
-		WaitEx(NULL, p->Delay, p->CancelFlag);
-	}
 
-	// Connecting process
-	sock = NewRUDPClientNatT(p->SvcName, &p->Ip, &p->NatT_ErrorCode, p->Timeout, p->CancelFlag, p->HintStr, p->TargetHostname);
+ if (p->Delay >= 1)
+ {
+  WaitEx(((void*)0), p->Delay, p->CancelFlag);
+ }
 
-	p->Result_Nat_T_Sock = sock;
-	p->Ok = (p->Result_Nat_T_Sock == NULL ? false : true);
-	p->FinishedTick = Tick64();
-	p->Finished = true;
 
-	Set(p->FinishEvent);
+ sock = NewRUDPClientNatT(p->SvcName, &p->Ip, &p->NatT_ErrorCode, p->Timeout, p->CancelFlag, p->HintStr, p->TargetHostname);
+
+ p->Result_Nat_T_Sock = sock;
+ p->Ok = (p->Result_Nat_T_Sock == ((void*)0) ? 0 : 1);
+ p->FinishedTick = Tick64();
+ p->Finished = 1;
+
+ Set(p->FinishEvent);
 }

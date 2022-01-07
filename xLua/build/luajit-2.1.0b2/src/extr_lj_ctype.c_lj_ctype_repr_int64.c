@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  scalar_t__ int64_t ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  GCstr ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * lj_str_new (int /*<<< orphan*/ *,char*,size_t) ; 
+
+
+
+typedef int uint64_t ;
+typedef int lua_State ;
+typedef scalar_t__ int64_t ;
+typedef int buf ;
+typedef int GCstr ;
+
+
+ int * lj_str_new (int *,char*,size_t) ;
 
 GCstr *lj_ctype_repr_int64(lua_State *L, uint64_t n, int isunsigned)
 {

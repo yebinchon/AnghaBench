@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct timeval {int tv_sec; int tv_usec; } ;
 struct curl_slist {int dummy; } ;
-typedef  int /*<<< orphan*/  fd_set ;
+typedef int fd_set ;
 struct TYPE_4__ {scalar_t__ result; } ;
-struct TYPE_5__ {scalar_t__ msg; TYPE_1__ data; int /*<<< orphan*/ * easy_handle; } ;
-typedef  TYPE_2__ CURLMsg ;
-typedef  int /*<<< orphan*/  CURLM ;
-typedef  int /*<<< orphan*/  CURL ;
+struct TYPE_5__ {scalar_t__ msg; TYPE_1__ data; int * easy_handle; } ;
+typedef TYPE_2__ CURLMsg ;
+typedef int CURLM ;
+typedef int CURL ;
 
-/* Variables and functions */
- scalar_t__ CURLMSG_DONE ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int INT_MAX ; 
- int NUM_HANDLES ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- char* curl_easy_strerror (scalar_t__) ; 
- TYPE_2__* curl_multi_info_read (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  curl_multi_remove_handle (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ ** eh ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,...) ; 
- int init (int,int /*<<< orphan*/ *,char const*,char const*,struct curl_slist*) ; 
- int /*<<< orphan*/  res_multi_fdset (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  res_multi_perform (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  res_multi_timeout (int /*<<< orphan*/ *,long*) ; 
- int /*<<< orphan*/  res_select_test (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
- int /*<<< orphan*/  res_test_timedout () ; 
- int /*<<< orphan*/  stderr ; 
+
+ scalar_t__ CURLMSG_DONE ;
+ int FD_ZERO (int *) ;
+ int INT_MAX ;
+ int NUM_HANDLES ;
+ int curl_easy_cleanup (int *) ;
+ char* curl_easy_strerror (scalar_t__) ;
+ TYPE_2__* curl_multi_info_read (int *,int*) ;
+ int curl_multi_remove_handle (int *,int *) ;
+ int ** eh ;
+ int fprintf (int ,char*,int,...) ;
+ int init (int,int *,char const*,char const*,struct curl_slist*) ;
+ int res_multi_fdset (int *,int *,int *,int *,int*) ;
+ int res_multi_perform (int *,int*) ;
+ int res_multi_timeout (int *,long*) ;
+ int res_select_test (int,int *,int *,int *,struct timeval*) ;
+ int res_test_timedout () ;
+ int stderr ;
 
 __attribute__((used)) static int loop(int num, CURLM *cm, const char *url, const char *userpwd,
                 struct curl_slist *headers)
@@ -75,13 +75,13 @@ __attribute__((used)) static int loop(int num, CURLM *cm, const char *url, const
       if(res)
         return res;
 
-      /* At this point, M is guaranteed to be greater or equal than -1. */
+
 
       res_multi_timeout(cm, &L);
       if(res)
         return res;
 
-      /* At this point, L is guaranteed to be greater or equal than -1. */
+
 
       if(L != -1) {
         int itimeout = (L > (long)INT_MAX) ? INT_MAX : (int)L;
@@ -98,7 +98,7 @@ __attribute__((used)) static int loop(int num, CURLM *cm, const char *url, const
         return res;
     }
 
-    while((msg = curl_multi_info_read(cm, &Q)) != NULL) {
+    while((msg = curl_multi_info_read(cm, &Q)) != ((void*)0)) {
       if(msg->msg == CURLMSG_DONE) {
         int i;
         CURL *e = msg->easy_handle;
@@ -108,7 +108,7 @@ __attribute__((used)) static int loop(int num, CURLM *cm, const char *url, const
         curl_easy_cleanup(e);
         for(i = 0; i < NUM_HANDLES; i++) {
           if(eh[i] == e) {
-            eh[i] = NULL;
+            eh[i] = ((void*)0);
             break;
           }
         }
@@ -122,5 +122,5 @@ __attribute__((used)) static int loop(int num, CURLM *cm, const char *url, const
       return res;
   }
 
-  return 0; /* success */
+  return 0;
 }

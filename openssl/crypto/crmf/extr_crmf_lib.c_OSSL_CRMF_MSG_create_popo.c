@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_7__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/ * subsequentMessage; } ;
-struct TYPE_13__ {TYPE_1__ value; int /*<<< orphan*/  type; } ;
-struct TYPE_12__ {TYPE_3__* popo; int /*<<< orphan*/  certReq; } ;
-struct TYPE_10__ {TYPE_7__* keyEncipherment; int /*<<< orphan*/ * signature; int /*<<< orphan*/ * raVerified; } ;
+
+
+typedef struct TYPE_13__ TYPE_7__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int * subsequentMessage; } ;
+struct TYPE_13__ {TYPE_1__ value; int type; } ;
+struct TYPE_12__ {TYPE_3__* popo; int certReq; } ;
+struct TYPE_10__ {TYPE_7__* keyEncipherment; int * signature; int * raVerified; } ;
 struct TYPE_11__ {int type; TYPE_2__ value; } ;
-typedef  int /*<<< orphan*/  OSSL_CRMF_POPOSIGNINGKEY ;
-typedef  TYPE_3__ OSSL_CRMF_POPO ;
-typedef  TYPE_4__ OSSL_CRMF_MSG ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
-typedef  int /*<<< orphan*/  ASN1_INTEGER ;
+typedef int OSSL_CRMF_POPOSIGNINGKEY ;
+typedef TYPE_3__ OSSL_CRMF_POPO ;
+typedef TYPE_4__ OSSL_CRMF_MSG ;
+typedef int EVP_PKEY ;
+typedef int ASN1_INTEGER ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ASN1_INTEGER_new () ; 
- int /*<<< orphan*/  ASN1_INTEGER_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ASN1_NULL_new () ; 
- int /*<<< orphan*/  CRMF_F_OSSL_CRMF_MSG_CREATE_POPO ; 
- int /*<<< orphan*/  CRMF_R_NULL_ARGUMENT ; 
- int /*<<< orphan*/  CRMF_R_UNSUPPORTED_METHOD_FOR_CREATING_POPO ; 
- int /*<<< orphan*/  CRMF_poposigningkey_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  CRMFerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OSSL_CRMF_POPOPRIVKEY_SUBSEQUENTMESSAGE ; 
- TYPE_7__* OSSL_CRMF_POPOPRIVKEY_new () ; 
- int /*<<< orphan*/  OSSL_CRMF_POPOSIGNINGKEY_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * OSSL_CRMF_POPOSIGNINGKEY_new () ; 
-#define  OSSL_CRMF_POPO_KEYENC 130 
- int OSSL_CRMF_POPO_NONE ; 
-#define  OSSL_CRMF_POPO_RAVERIFIED 129 
-#define  OSSL_CRMF_POPO_SIGNATURE 128 
- int /*<<< orphan*/  OSSL_CRMF_POPO_free (TYPE_3__*) ; 
- TYPE_3__* OSSL_CRMF_POPO_new () ; 
- int /*<<< orphan*/  OSSL_CRMF_SUBSEQUENTMESSAGE_ENCRCERT ; 
+
+ int * ASN1_INTEGER_new () ;
+ int ASN1_INTEGER_set (int *,int ) ;
+ int * ASN1_NULL_new () ;
+ int CRMF_F_OSSL_CRMF_MSG_CREATE_POPO ;
+ int CRMF_R_NULL_ARGUMENT ;
+ int CRMF_R_UNSUPPORTED_METHOD_FOR_CREATING_POPO ;
+ int CRMF_poposigningkey_init (int *,int ,int *,int) ;
+ int CRMFerr (int ,int ) ;
+ int OSSL_CRMF_POPOPRIVKEY_SUBSEQUENTMESSAGE ;
+ TYPE_7__* OSSL_CRMF_POPOPRIVKEY_new () ;
+ int OSSL_CRMF_POPOSIGNINGKEY_free (int *) ;
+ int * OSSL_CRMF_POPOSIGNINGKEY_new () ;
+
+ int OSSL_CRMF_POPO_NONE ;
+
+
+ int OSSL_CRMF_POPO_free (TYPE_3__*) ;
+ TYPE_3__* OSSL_CRMF_POPO_new () ;
+ int OSSL_CRMF_SUBSEQUENTMESSAGE_ENCRCERT ;
 
 int OSSL_CRMF_MSG_create_popo(OSSL_CRMF_MSG *crm, EVP_PKEY *pkey,
                               int dgst, int ppmtd)
 {
-    OSSL_CRMF_POPO *pp = NULL;
-    ASN1_INTEGER *tag = NULL;
+    OSSL_CRMF_POPO *pp = ((void*)0);
+    ASN1_INTEGER *tag = ((void*)0);
 
-    if (crm == NULL || (ppmtd == OSSL_CRMF_POPO_SIGNATURE && pkey == NULL)) {
+    if (crm == ((void*)0) || (ppmtd == 128 && pkey == ((void*)0))) {
         CRMFerr(CRMF_F_OSSL_CRMF_MSG_CREATE_POPO, CRMF_R_NULL_ARGUMENT);
         return 0;
     }
 
     if (ppmtd == OSSL_CRMF_POPO_NONE)
         goto end;
-    if ((pp = OSSL_CRMF_POPO_new()) == NULL)
+    if ((pp = OSSL_CRMF_POPO_new()) == ((void*)0))
         goto err;
     pp->type = ppmtd;
 
     switch (ppmtd) {
-    case OSSL_CRMF_POPO_RAVERIFIED:
-        if ((pp->value.raVerified = ASN1_NULL_new()) == NULL)
+    case 129:
+        if ((pp->value.raVerified = ASN1_NULL_new()) == ((void*)0))
             goto err;
         break;
 
-    case OSSL_CRMF_POPO_SIGNATURE:
+    case 128:
         {
             OSSL_CRMF_POPOSIGNINGKEY *ps = OSSL_CRMF_POPOSIGNINGKEY_new();
-            if (ps == NULL
+            if (ps == ((void*)0)
                     || !CRMF_poposigningkey_init(ps, crm->certReq, pkey, dgst)){
                 OSSL_CRMF_POPOSIGNINGKEY_free(ps);
                 goto err;
@@ -82,14 +82,14 @@ int OSSL_CRMF_MSG_create_popo(OSSL_CRMF_MSG *crm, EVP_PKEY *pkey,
         }
         break;
 
-    case OSSL_CRMF_POPO_KEYENC:
-        if ((pp->value.keyEncipherment = OSSL_CRMF_POPOPRIVKEY_new()) == NULL)
+    case 130:
+        if ((pp->value.keyEncipherment = OSSL_CRMF_POPOPRIVKEY_new()) == ((void*)0))
             goto err;
         tag = ASN1_INTEGER_new();
         pp->value.keyEncipherment->type =
             OSSL_CRMF_POPOPRIVKEY_SUBSEQUENTMESSAGE;
         pp->value.keyEncipherment->value.subsequentMessage = tag;
-        if (tag == NULL
+        if (tag == ((void*)0)
                 || !ASN1_INTEGER_set(tag, OSSL_CRMF_SUBSEQUENTMESSAGE_ENCRCERT))
             goto err;
         break;

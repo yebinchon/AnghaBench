@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {char* buf; int pos; int size; } ;
 struct TYPE_6__ {scalar_t__ pos; scalar_t__ size; char* buf; } ;
-struct TYPE_8__ {TYPE_2__ compressed; TYPE_1__ data; int /*<<< orphan*/  cstream; int /*<<< orphan*/  seed; } ;
-typedef  TYPE_3__ state_t ;
+struct TYPE_8__ {TYPE_2__ compressed; TYPE_1__ data; int cstream; int seed; } ;
+typedef TYPE_3__ state_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FUZZ_ASSERT (int) ; 
- int FUZZ_rand32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int const) ; 
- int LZ4_compress_fast_continue (int /*<<< orphan*/ ,char const*,char*,int const,int const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  state_decompress (TYPE_3__*,char*,int const) ; 
+
+ int FUZZ_ASSERT (int) ;
+ int FUZZ_rand32 (int *,int ,int const) ;
+ int LZ4_compress_fast_continue (int ,char const*,char*,int const,int const,int ) ;
+ int state_decompress (TYPE_3__*,char*,int const) ;
 
 __attribute__((used)) static void state_prefixRoundTrip(state_t* state)
 {

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Suite ;
-typedef  int /*<<< orphan*/  SRunner ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CK_NORMAL ; 
- int EXIT_FAILURE ; 
- int EXIT_SUCCESS ; 
- int /*<<< orphan*/  LC_ALL ; 
- int /*<<< orphan*/  cmd_set_arguments (int,char**) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * setlocale (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * srunner_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  srunner_free (int /*<<< orphan*/ *) ; 
- int srunner_ntests_failed (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  srunner_run_all (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/ * theme_parser_suite () ; 
+
+
+
+typedef int Suite ;
+typedef int SRunner ;
+
+
+ int CK_NORMAL ;
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int LC_ALL ;
+ int cmd_set_arguments (int,char**) ;
+ int fprintf (int ,char*) ;
+ int * setlocale (int ,char*) ;
+ int * srunner_create (int *) ;
+ int srunner_free (int *) ;
+ int srunner_ntests_failed (int *) ;
+ int srunner_run_all (int *,int ) ;
+ int stderr ;
+ int * theme_parser_suite () ;
 
 int main ( int argc, char ** argv )
 {
     cmd_set_arguments ( argc, argv );
 
-    if ( setlocale ( LC_ALL, "C" ) == NULL ) {
+    if ( setlocale ( LC_ALL, "C" ) == ((void*)0) ) {
         fprintf ( stderr, "Failed to set locale.\n" );
         return EXIT_FAILURE;
     }

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EC_POINT ;
-typedef  int /*<<< orphan*/  EC_KEY ;
-typedef  int /*<<< orphan*/  EC_GROUP ;
-typedef  int /*<<< orphan*/  ECDSA_SIG ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  const BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const* BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_new () ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- scalar_t__ BN_cmp (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- scalar_t__ BN_is_zero (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_mod_add (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const* BN_value_one () ; 
- int /*<<< orphan*/  ECDSA_SIG_get0 (int /*<<< orphan*/  const*,int /*<<< orphan*/  const**,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  const* EC_GROUP_get0_order (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * EC_KEY_get0_group (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EC_KEY_get0_public_key (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EC_POINT_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_get_affine_coordinates (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_mul (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EC_POINT_new (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ERR_R_BN_LIB ; 
- int /*<<< orphan*/  ERR_R_EC_LIB ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  SM2_F_SM2_SIG_VERIFY ; 
- int /*<<< orphan*/  SM2_R_BAD_SIGNATURE ; 
- int /*<<< orphan*/  SM2err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int EC_POINT ;
+typedef int EC_KEY ;
+typedef int EC_GROUP ;
+typedef int ECDSA_SIG ;
+typedef int BN_CTX ;
+typedef int const BIGNUM ;
+
+
+ int BN_CTX_free (int *) ;
+ int const* BN_CTX_get (int *) ;
+ int * BN_CTX_new () ;
+ int BN_CTX_start (int *) ;
+ scalar_t__ BN_cmp (int const*,int const*) ;
+ scalar_t__ BN_is_zero (int const*) ;
+ int BN_mod_add (int const*,int const*,int const*,int const*,int *) ;
+ int const* BN_value_one () ;
+ int ECDSA_SIG_get0 (int const*,int const**,int const**) ;
+ int const* EC_GROUP_get0_order (int const*) ;
+ int * EC_KEY_get0_group (int const*) ;
+ int EC_KEY_get0_public_key (int const*) ;
+ int EC_POINT_free (int *) ;
+ int EC_POINT_get_affine_coordinates (int const*,int *,int const*,int *,int *) ;
+ int EC_POINT_mul (int const*,int *,int const*,int ,int const*,int *) ;
+ int * EC_POINT_new (int const*) ;
+ int ERR_R_BN_LIB ;
+ int ERR_R_EC_LIB ;
+ int ERR_R_MALLOC_FAILURE ;
+ int SM2_F_SM2_SIG_VERIFY ;
+ int SM2_R_BAD_SIGNATURE ;
+ int SM2err (int ,int ) ;
 
 __attribute__((used)) static int sm2_sig_verify(const EC_KEY *key, const ECDSA_SIG *sig,
                           const BIGNUM *e)
@@ -47,16 +47,16 @@ __attribute__((used)) static int sm2_sig_verify(const EC_KEY *key, const ECDSA_S
     int ret = 0;
     const EC_GROUP *group = EC_KEY_get0_group(key);
     const BIGNUM *order = EC_GROUP_get0_order(group);
-    BN_CTX *ctx = NULL;
-    EC_POINT *pt = NULL;
-    BIGNUM *t = NULL;
-    BIGNUM *x1 = NULL;
-    const BIGNUM *r = NULL;
-    const BIGNUM *s = NULL;
+    BN_CTX *ctx = ((void*)0);
+    EC_POINT *pt = ((void*)0);
+    BIGNUM *t = ((void*)0);
+    BIGNUM *x1 = ((void*)0);
+    const BIGNUM *r = ((void*)0);
+    const BIGNUM *s = ((void*)0);
 
     ctx = BN_CTX_new();
     pt = EC_POINT_new(group);
-    if (ctx == NULL || pt == NULL) {
+    if (ctx == ((void*)0) || pt == ((void*)0)) {
         SM2err(SM2_F_SM2_SIG_VERIFY, ERR_R_MALLOC_FAILURE);
         goto done;
     }
@@ -64,21 +64,10 @@ __attribute__((used)) static int sm2_sig_verify(const EC_KEY *key, const ECDSA_S
     BN_CTX_start(ctx);
     t = BN_CTX_get(ctx);
     x1 = BN_CTX_get(ctx);
-    if (x1 == NULL) {
+    if (x1 == ((void*)0)) {
         SM2err(SM2_F_SM2_SIG_VERIFY, ERR_R_MALLOC_FAILURE);
         goto done;
     }
-
-    /*
-     * B1: verify whether r' in [1,n-1], verification failed if not
-     * B2: verify whether s' in [1,n-1], verification failed if not
-     * B3: set M'~=ZA || M'
-     * B4: calculate e'=Hv(M'~)
-     * B5: calculate t = (r' + s') modn, verification failed if t=0
-     * B6: calculate the point (x1', y1')=[s']G + [t]PA
-     * B7: calculate R=(e'+x1') modn, verification pass if yes, otherwise failed
-     */
-
     ECDSA_SIG_get0(sig, &r, &s);
 
     if (BN_cmp(r, BN_value_one()) < 0
@@ -100,7 +89,7 @@ __attribute__((used)) static int sm2_sig_verify(const EC_KEY *key, const ECDSA_S
     }
 
     if (!EC_POINT_mul(group, pt, s, EC_KEY_get0_public_key(key), t, ctx)
-            || !EC_POINT_get_affine_coordinates(group, pt, x1, NULL, ctx)) {
+            || !EC_POINT_get_affine_coordinates(group, pt, x1, ((void*)0), ctx)) {
         SM2err(SM2_F_SM2_SIG_VERIFY, ERR_R_EC_LIB);
         goto done;
     }

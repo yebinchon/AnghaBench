@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ OSSL_NELEM (scalar_t__*) ; 
- int opt_num_rest () ; 
- char** opt_rest () ; 
- int /*<<< orphan*/  test_printf_stderr (char*,int,...) ; 
- scalar_t__* used ; 
+ scalar_t__ OSSL_NELEM (scalar_t__*) ;
+ int opt_num_rest () ;
+ char** opt_rest () ;
+ int test_printf_stderr (char*,int,...) ;
+ scalar_t__* used ;
 
 void opt_check_usage(void)
 {

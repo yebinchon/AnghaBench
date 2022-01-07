@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  scalar_t__ MMRESULT ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  DeviceType ;
-typedef  scalar_t__ DWORD_PTR ;
-typedef  scalar_t__ DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (scalar_t__) ; 
- int /*<<< orphan*/  CloseKernelDevice (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPRINT (char*) ; 
- scalar_t__ DeviceIoControl (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__*,int /*<<< orphan*/ *) ; 
- scalar_t__ ErrorToMmResult (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GENERIC_READ ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ IOCTL_MIDI_GET_CAPABILITIES ; 
- scalar_t__ IOCTL_WAVE_GET_CAPABILITIES ; 
- scalar_t__ IsAuxDevice (int /*<<< orphan*/ ) ; 
- scalar_t__ IsMidiDevice (int /*<<< orphan*/ ) ; 
- scalar_t__ IsWaveDevice (int /*<<< orphan*/ ) ; 
- scalar_t__ MMSYSERR_NOERROR ; 
- scalar_t__ MMSYSERR_NOTSUPPORTED ; 
- scalar_t__ OpenKernelDevice (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int UINT ;
+typedef scalar_t__ MMRESULT ;
+typedef int LPVOID ;
+typedef int HANDLE ;
+typedef int DeviceType ;
+typedef scalar_t__ DWORD_PTR ;
+typedef scalar_t__ DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ int ASSERT (scalar_t__) ;
+ int CloseKernelDevice (int ) ;
+ int DPRINT (char*) ;
+ scalar_t__ DeviceIoControl (int ,scalar_t__,int *,int ,int ,scalar_t__,scalar_t__*,int *) ;
+ scalar_t__ ErrorToMmResult (int ) ;
+ int GENERIC_READ ;
+ int GetLastError () ;
+ scalar_t__ IOCTL_MIDI_GET_CAPABILITIES ;
+ scalar_t__ IOCTL_WAVE_GET_CAPABILITIES ;
+ scalar_t__ IsAuxDevice (int ) ;
+ scalar_t__ IsMidiDevice (int ) ;
+ scalar_t__ IsWaveDevice (int ) ;
+ scalar_t__ MMSYSERR_NOERROR ;
+ scalar_t__ MMSYSERR_NOTSUPPORTED ;
+ scalar_t__ OpenKernelDevice (int ,int ,int ,int *) ;
 
 DWORD
 GetDeviceCapabilities(
@@ -51,14 +51,14 @@ GetDeviceCapabilities(
 
     ASSERT(capabilities);
 
-    /* Choose the right IOCTL for the job */
+
 
     if ( IsWaveDevice(device_type) )
         ioctl = IOCTL_WAVE_GET_CAPABILITIES;
     else if ( IsMidiDevice(device_type) )
         ioctl = IOCTL_MIDI_GET_CAPABILITIES;
     else if ( IsAuxDevice(device_type) )
-        return MMSYSERR_NOTSUPPORTED; /* TODO */
+        return MMSYSERR_NOTSUPPORTED;
     else
         return MMSYSERR_NOTSUPPORTED;
 
@@ -75,21 +75,21 @@ GetDeviceCapabilities(
 
     device_io_result = DeviceIoControl(handle,
                                        ioctl,
-                                       NULL,
+                                       ((void*)0),
                                        0,
                                        (LPVOID) capabilities,
                                        capabilities_size,
                                        &bytes_returned,
-                                       NULL);
+                                       ((void*)0));
 
-    /* Translate result */
+
 
     if ( device_io_result )
         result = MMSYSERR_NOERROR;
     else
         result = ErrorToMmResult(GetLastError());
 
-    /* Clean up and return */
+
 
     CloseKernelDevice(handle);
 

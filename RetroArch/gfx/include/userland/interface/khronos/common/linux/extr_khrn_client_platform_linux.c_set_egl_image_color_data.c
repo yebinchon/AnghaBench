@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_3__ {int stride; int height; int format; int width; scalar_t__ storage; } ;
-typedef  TYPE_1__ KHRN_IMAGE_WRAP_T ;
-typedef  int /*<<< orphan*/  EGLImageKHR ;
-typedef  int /*<<< orphan*/  CLIENT_THREAD_STATE_T ;
+typedef TYPE_1__ KHRN_IMAGE_WRAP_T ;
+typedef int EGLImageKHR ;
+typedef int CLIENT_THREAD_STATE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CLIENT_GET_THREAD_STATE () ; 
- int /*<<< orphan*/  EGLINTIMAGESETCOLORDATA_ID ; 
- int KHDISPATCH_WORKSPACE_SIZE ; 
- int /*<<< orphan*/  RPC_CALL8_IN_BULK (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  RPC_EGLID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RPC_INT (int) ; 
- int /*<<< orphan*/  RPC_UINT (int) ; 
- int _min (int,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  eglIntImageSetColorData_impl ; 
- scalar_t__ khrn_image_is_brcm1 (int) ; 
+
+ int * CLIENT_GET_THREAD_STATE () ;
+ int EGLINTIMAGESETCOLORDATA_ID ;
+ int KHDISPATCH_WORKSPACE_SIZE ;
+ int RPC_CALL8_IN_BULK (int ,int *,int ,int ,int ,int ,int ,int ,int ,int ,char const*,int) ;
+ int RPC_EGLID (int ) ;
+ int RPC_INT (int) ;
+ int RPC_UINT (int) ;
+ int _min (int,int) ;
+ int assert (int) ;
+ int eglIntImageSetColorData_impl ;
+ scalar_t__ khrn_image_is_brcm1 (int) ;
 
 __attribute__((used)) static void set_egl_image_color_data(EGLImageKHR egl_image, KHRN_IMAGE_WRAP_T *image)
 {

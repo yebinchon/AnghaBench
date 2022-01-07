@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  wstr; int /*<<< orphan*/  cstr; } ;
-struct bwstring {int /*<<< orphan*/  len; TYPE_1__ data; } ;
 
-/* Variables and functions */
- int MB_CUR_MAX ; 
- int /*<<< orphan*/  SIZEOF_WCHAR_STRING (int /*<<< orphan*/ ) ; 
- struct bwstring* bwsalloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int wstr; int cstr; } ;
+struct bwstring {int len; TYPE_1__ data; } ;
+
+
+ int MB_CUR_MAX ;
+ int SIZEOF_WCHAR_STRING (int ) ;
+ struct bwstring* bwsalloc (int ) ;
+ int memcpy (int ,int ,int ) ;
 
 struct bwstring *
 bwsdup(const struct bwstring *s)
 {
 
-	if (s == NULL)
-		return (NULL);
-	else {
-		struct bwstring *ret = bwsalloc(s->len);
+ if (s == ((void*)0))
+  return (((void*)0));
+ else {
+  struct bwstring *ret = bwsalloc(s->len);
 
-		if (MB_CUR_MAX == 1)
-			memcpy(ret->data.cstr, s->data.cstr, (s->len));
-		else
-			memcpy(ret->data.wstr, s->data.wstr,
-			    SIZEOF_WCHAR_STRING(s->len));
+  if (MB_CUR_MAX == 1)
+   memcpy(ret->data.cstr, s->data.cstr, (s->len));
+  else
+   memcpy(ret->data.wstr, s->data.wstr,
+       SIZEOF_WCHAR_STRING(s->len));
 
-		return (ret);
-	}
+  return (ret);
+ }
 }

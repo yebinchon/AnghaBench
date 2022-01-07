@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
 struct TYPE_15__ {int is_managed; } ;
-typedef  TYPE_1__ Link ;
+typedef TYPE_1__ Link ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  link_flush_settings (TYPE_1__*) ; 
- int link_is_managed (TYPE_1__*) ; 
- int link_update_default_route (TYPE_1__*) ; 
- int link_update_dns_over_tls_mode (TYPE_1__*) ; 
- int link_update_dns_servers (TYPE_1__*) ; 
- int link_update_dnssec_mode (TYPE_1__*) ; 
- int link_update_dnssec_negative_trust_anchors (TYPE_1__*) ; 
- int link_update_llmnr_support (TYPE_1__*) ; 
- int link_update_mdns_support (TYPE_1__*) ; 
- int link_update_search_domains (TYPE_1__*) ; 
- int /*<<< orphan*/  log_link_warning_errno (TYPE_1__*,int,char*) ; 
+
+ int assert (TYPE_1__*) ;
+ int link_flush_settings (TYPE_1__*) ;
+ int link_is_managed (TYPE_1__*) ;
+ int link_update_default_route (TYPE_1__*) ;
+ int link_update_dns_over_tls_mode (TYPE_1__*) ;
+ int link_update_dns_servers (TYPE_1__*) ;
+ int link_update_dnssec_mode (TYPE_1__*) ;
+ int link_update_dnssec_negative_trust_anchors (TYPE_1__*) ;
+ int link_update_llmnr_support (TYPE_1__*) ;
+ int link_update_mdns_support (TYPE_1__*) ;
+ int link_update_search_domains (TYPE_1__*) ;
+ int log_link_warning_errno (TYPE_1__*,int,char*) ;
 
 __attribute__((used)) static void link_read_settings(Link *l) {
         int r;
 
         assert(l);
 
-        /* Read settings from networkd, except when networkd is not managing this interface. */
+
 
         r = link_is_managed(l);
         if (r < 0) {
@@ -42,15 +42,15 @@ __attribute__((used)) static void link_read_settings(Link *l) {
         }
         if (r == 0) {
 
-                /* If this link used to be managed, but is now unmanaged, flush all our settings — but only once. */
+
                 if (l->is_managed)
                         link_flush_settings(l);
 
-                l->is_managed = false;
+                l->is_managed = 0;
                 return;
         }
 
-        l->is_managed = true;
+        l->is_managed = 1;
 
         r = link_update_dns_servers(l);
         if (r < 0)

@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int cmsUInt32Number ;
-typedef  int /*<<< orphan*/  cmsStage ;
-typedef  int /*<<< orphan*/  cmsPipeline ;
-typedef  int /*<<< orphan*/ * cmsHPROFILE ;
-typedef  int /*<<< orphan*/  cmsFloat64Number ;
-typedef  int /*<<< orphan*/  cmsContext ;
-typedef  scalar_t__ cmsBool ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int cmsUInt32Number ;
+typedef int cmsStage ;
+typedef int cmsPipeline ;
+typedef int * cmsHPROFILE ;
+typedef int cmsFloat64Number ;
+typedef int cmsContext ;
+typedef scalar_t__ cmsBool ;
 struct TYPE_3__ {void* hIlimit; void* sRGB2Lab; void* hLab2sRGB; } ;
-typedef  TYPE_1__ FakeCMYKParams ;
+typedef TYPE_1__ FakeCMYKParams ;
 
-/* Variables and functions */
- int BYTES_SH (int /*<<< orphan*/ ) ; 
- int CHANNELS_SH (int) ; 
- int /*<<< orphan*/ * Create_AboveRGB () ; 
- int /*<<< orphan*/  DbgThread () ; 
- int FLOAT_SH (int) ; 
- int /*<<< orphan*/  ForwardSampler ; 
- int /*<<< orphan*/  INTENT_PERCEPTUAL ; 
- int /*<<< orphan*/  ReverseSampler ; 
- int TYPE_CMYK_16 ; 
- int TYPE_Lab_16 ; 
- int TYPE_RGB_DBL ; 
- int /*<<< orphan*/ * _cmsStageAllocIdentityCurves (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  cmsAT_BEGIN ; 
- int /*<<< orphan*/  cmsAT_END ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cmsCreateInkLimitingDeviceLink (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * cmsCreateLab4Profile (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cmsCreateProfilePlaceholder (int /*<<< orphan*/ ) ; 
- void* cmsCreateTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * cmsCreate_sRGBProfile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDeleteTransform (int /*<<< orphan*/ ,void*) ; 
- int cmsFLAGS_NOCACHE ; 
- int cmsFLAGS_NOOPTIMIZE ; 
- int /*<<< orphan*/  cmsLinkTag (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * cmsPipelineAlloc (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  cmsPipelineFree (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsPipelineInsertStage (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsSetColorSpace (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsSetDeviceClass (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsSetPCS (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsSetProfileVersion (int /*<<< orphan*/ ,int /*<<< orphan*/ *,double) ; 
- int /*<<< orphan*/  cmsSigAToB0Tag ; 
- int /*<<< orphan*/  cmsSigAToB1Tag ; 
- int /*<<< orphan*/  cmsSigAToB2Tag ; 
- int /*<<< orphan*/  cmsSigBToA0Tag ; 
- int /*<<< orphan*/  cmsSigBToA1Tag ; 
- int /*<<< orphan*/  cmsSigBToA2Tag ; 
- int /*<<< orphan*/  cmsSigCmykData ; 
- int /*<<< orphan*/  cmsSigLabData ; 
- int /*<<< orphan*/  cmsSigOutputClass ; 
- int /*<<< orphan*/ * cmsStageAllocCLut16bit (int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsStageSampleCLut16bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsWriteTag (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*) ; 
+
+ int BYTES_SH (int ) ;
+ int CHANNELS_SH (int) ;
+ int * Create_AboveRGB () ;
+ int DbgThread () ;
+ int FLOAT_SH (int) ;
+ int ForwardSampler ;
+ int INTENT_PERCEPTUAL ;
+ int ReverseSampler ;
+ int TYPE_CMYK_16 ;
+ int TYPE_Lab_16 ;
+ int TYPE_RGB_DBL ;
+ int * _cmsStageAllocIdentityCurves (int ,int) ;
+ int cmsAT_BEGIN ;
+ int cmsAT_END ;
+ int cmsCloseProfile (int ,int *) ;
+ int * cmsCreateInkLimitingDeviceLink (int ,int ,int ) ;
+ int * cmsCreateLab4Profile (int ,int *) ;
+ int * cmsCreateProfilePlaceholder (int ) ;
+ void* cmsCreateTransform (int ,int *,int,int *,int,int ,int) ;
+ int * cmsCreate_sRGBProfile (int ) ;
+ int cmsDeleteTransform (int ,void*) ;
+ int cmsFLAGS_NOCACHE ;
+ int cmsFLAGS_NOOPTIMIZE ;
+ int cmsLinkTag (int ,int *,int ,int ) ;
+ int * cmsPipelineAlloc (int ,int,int) ;
+ int cmsPipelineFree (int ,int *) ;
+ int cmsPipelineInsertStage (int ,int *,int ,int *) ;
+ int cmsSetColorSpace (int ,int *,int ) ;
+ int cmsSetDeviceClass (int ,int *,int ) ;
+ int cmsSetPCS (int ,int *,int ) ;
+ int cmsSetProfileVersion (int ,int *,double) ;
+ int cmsSigAToB0Tag ;
+ int cmsSigAToB1Tag ;
+ int cmsSigAToB2Tag ;
+ int cmsSigBToA0Tag ;
+ int cmsSigBToA1Tag ;
+ int cmsSigBToA2Tag ;
+ int cmsSigCmykData ;
+ int cmsSigLabData ;
+ int cmsSigOutputClass ;
+ int * cmsStageAllocCLut16bit (int ,int,int,int,int *) ;
+ int cmsStageSampleCLut16bit (int ,int *,int ,TYPE_1__*,int ) ;
+ int cmsWriteTag (int ,int *,int ,void*) ;
 
 __attribute__((used)) static
 cmsHPROFILE CreateFakeCMYK(cmsFloat64Number InkLimit, cmsBool lUseAboveRGB)
@@ -82,31 +82,31 @@ cmsHPROFILE CreateFakeCMYK(cmsFloat64Number InkLimit, cmsBool lUseAboveRGB)
     if (lUseAboveRGB)
         hsRGB = Create_AboveRGB();
     else
-       hsRGB  = cmsCreate_sRGBProfile(ContextID);
+       hsRGB = cmsCreate_sRGBProfile(ContextID);
 
-    hLab   = cmsCreateLab4Profile(ContextID, NULL);
+    hLab = cmsCreateLab4Profile(ContextID, ((void*)0));
     hLimit = cmsCreateInkLimitingDeviceLink(ContextID, cmsSigCmykData, InkLimit);
 
     cmykfrm = FLOAT_SH(1) | BYTES_SH(0)|CHANNELS_SH(4);
-    p.hLab2sRGB = cmsCreateTransform(ContextID, hLab,  TYPE_Lab_16,  hsRGB, TYPE_RGB_DBL, INTENT_PERCEPTUAL, cmsFLAGS_NOOPTIMIZE|cmsFLAGS_NOCACHE);
-    p.sRGB2Lab  = cmsCreateTransform(ContextID, hsRGB, TYPE_RGB_DBL, hLab,  TYPE_Lab_16,  INTENT_PERCEPTUAL, cmsFLAGS_NOOPTIMIZE|cmsFLAGS_NOCACHE);
-    p.hIlimit   = cmsCreateTransform(ContextID, hLimit, cmykfrm, NULL, TYPE_CMYK_16, INTENT_PERCEPTUAL, cmsFLAGS_NOOPTIMIZE|cmsFLAGS_NOCACHE);
+    p.hLab2sRGB = cmsCreateTransform(ContextID, hLab, TYPE_Lab_16, hsRGB, TYPE_RGB_DBL, INTENT_PERCEPTUAL, cmsFLAGS_NOOPTIMIZE|cmsFLAGS_NOCACHE);
+    p.sRGB2Lab = cmsCreateTransform(ContextID, hsRGB, TYPE_RGB_DBL, hLab, TYPE_Lab_16, INTENT_PERCEPTUAL, cmsFLAGS_NOOPTIMIZE|cmsFLAGS_NOCACHE);
+    p.hIlimit = cmsCreateTransform(ContextID, hLimit, cmykfrm, ((void*)0), TYPE_CMYK_16, INTENT_PERCEPTUAL, cmsFLAGS_NOOPTIMIZE|cmsFLAGS_NOCACHE);
 
     cmsCloseProfile(ContextID, hLab); cmsCloseProfile(ContextID, hsRGB); cmsCloseProfile(ContextID, hLimit);
 
     hICC = cmsCreateProfilePlaceholder(ContextID);
-    if (!hICC) return NULL;
+    if (!hICC) return ((void*)0);
 
     cmsSetProfileVersion(ContextID, hICC, 4.3);
 
     cmsSetDeviceClass(ContextID, hICC, cmsSigOutputClass);
-    cmsSetColorSpace(ContextID, hICC,  cmsSigCmykData);
-    cmsSetPCS(ContextID, hICC,         cmsSigLabData);
+    cmsSetColorSpace(ContextID, hICC, cmsSigCmykData);
+    cmsSetPCS(ContextID, hICC, cmsSigLabData);
 
     BToA0 = cmsPipelineAlloc(ContextID, 3, 4);
-    if (BToA0 == NULL) return 0;
-    CLUT = cmsStageAllocCLut16bit(ContextID, 17, 3, 4, NULL);
-    if (CLUT == NULL) return 0;
+    if (BToA0 == ((void*)0)) return 0;
+    CLUT = cmsStageAllocCLut16bit(ContextID, 17, 3, 4, ((void*)0));
+    if (CLUT == ((void*)0)) return 0;
     if (!cmsStageSampleCLut16bit(ContextID, CLUT, ForwardSampler, &p, 0)) return 0;
 
     cmsPipelineInsertStage(ContextID, BToA0, cmsAT_BEGIN, _cmsStageAllocIdentityCurves(ContextID, 3));
@@ -117,9 +117,9 @@ cmsHPROFILE CreateFakeCMYK(cmsFloat64Number InkLimit, cmsBool lUseAboveRGB)
     cmsPipelineFree(ContextID, BToA0);
 
     AToB0 = cmsPipelineAlloc(ContextID, 4, 3);
-    if (AToB0 == NULL) return 0;
-    CLUT = cmsStageAllocCLut16bit(ContextID, 17, 4, 3, NULL);
-    if (CLUT == NULL) return 0;
+    if (AToB0 == ((void*)0)) return 0;
+    CLUT = cmsStageAllocCLut16bit(ContextID, 17, 4, 3, ((void*)0));
+    if (CLUT == ((void*)0)) return 0;
     if (!cmsStageSampleCLut16bit(ContextID, CLUT, ReverseSampler, &p, 0)) return 0;
 
     cmsPipelineInsertStage(ContextID, AToB0, cmsAT_BEGIN, _cmsStageAllocIdentityCurves(ContextID, 4));

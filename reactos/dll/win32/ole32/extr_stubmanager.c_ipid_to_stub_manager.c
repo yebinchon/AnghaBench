@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stub_manager {int dummy; } ;
 struct ifstub {int dummy; } ;
-typedef  int /*<<< orphan*/  IPID ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  APARTMENT ;
+typedef int IPID ;
+typedef int HRESULT ;
+typedef int APARTMENT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ipid_to_ifstub (int /*<<< orphan*/  const*,int /*<<< orphan*/ **,struct stub_manager**,struct ifstub**) ; 
+
+ int ipid_to_ifstub (int const*,int **,struct stub_manager**,struct ifstub**) ;
 
 __attribute__((used)) static HRESULT ipid_to_stub_manager(const IPID *ipid, APARTMENT **stub_apt, struct stub_manager **stub)
 {

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  unknown_types; int /*<<< orphan*/  timers; int /*<<< orphan*/  sets; int /*<<< orphan*/  histograms; int /*<<< orphan*/  meters; int /*<<< orphan*/  counters; int /*<<< orphan*/  gauges; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_STATSD ; 
- int /*<<< orphan*/  STATSD_METRIC_TYPE_COUNTER ; 
- int /*<<< orphan*/  STATSD_METRIC_TYPE_GAUGE ; 
- int /*<<< orphan*/  STATSD_METRIC_TYPE_HISTOGRAM ; 
- int /*<<< orphan*/  STATSD_METRIC_TYPE_METER ; 
- int /*<<< orphan*/  STATSD_METRIC_TYPE_SET ; 
- int /*<<< orphan*/  STATSD_METRIC_TYPE_TIMER ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,char const*,char const*,char const*,char const*,char const*) ; 
- int /*<<< orphan*/  error (char*,char const*,char const*,char const*) ; 
- TYPE_1__ statsd ; 
- int /*<<< orphan*/  statsd_find_or_add_metric (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  statsd_process_counter (int /*<<< orphan*/ ,char const*,char const*) ; 
- int /*<<< orphan*/  statsd_process_gauge (int /*<<< orphan*/ ,char const*,char const*) ; 
- int /*<<< orphan*/  statsd_process_histogram (int /*<<< orphan*/ ,char const*,char const*) ; 
- int /*<<< orphan*/  statsd_process_meter (int /*<<< orphan*/ ,char const*,char const*) ; 
- int /*<<< orphan*/  statsd_process_set (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  statsd_process_timer (int /*<<< orphan*/ ,char const*,char const*) ; 
- scalar_t__ unlikely (int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int unknown_types; int timers; int sets; int histograms; int meters; int counters; int gauges; } ;
+
+
+ int D_STATSD ;
+ int STATSD_METRIC_TYPE_COUNTER ;
+ int STATSD_METRIC_TYPE_GAUGE ;
+ int STATSD_METRIC_TYPE_HISTOGRAM ;
+ int STATSD_METRIC_TYPE_METER ;
+ int STATSD_METRIC_TYPE_SET ;
+ int STATSD_METRIC_TYPE_TIMER ;
+ int debug (int ,char*,char const*,char const*,char const*,char const*,char const*) ;
+ int error (char*,char const*,char const*,char const*) ;
+ TYPE_1__ statsd ;
+ int statsd_find_or_add_metric (int *,char const*,int ) ;
+ int statsd_process_counter (int ,char const*,char const*) ;
+ int statsd_process_gauge (int ,char const*,char const*) ;
+ int statsd_process_histogram (int ,char const*,char const*) ;
+ int statsd_process_meter (int ,char const*,char const*) ;
+ int statsd_process_set (int ,char const*) ;
+ int statsd_process_timer (int ,char const*,char const*) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static void statsd_process_metric(const char *name, const char *value, const char *type, const char *sampling, const char *tags) {
     (void)tags;
@@ -49,8 +49,8 @@ __attribute__((used)) static void statsd_process_metric(const char *name, const 
                 value, sampling);
     }
     else if(unlikely((t0 == 'c' || t0 == 'C') && t1 == '\0')) {
-        // etsy/statsd uses 'c'
-        // brubeck     uses 'C'
+
+
         statsd_process_counter(
                 statsd_find_or_add_metric(&statsd.counters, name, STATSD_METRIC_TYPE_COUNTER),
                 value, sampling);

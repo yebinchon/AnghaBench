@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_opt_revision_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_client_list_func2_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_uint32_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  list_internal (char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int svn_opt_revision_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef int svn_client_list_func2_t ;
+typedef int svn_client_ctx_t ;
+typedef int svn_boolean_t ;
+typedef int apr_uint32_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+
+
+ int list_internal (char const*,int const*,int const*,int const*,int ,int ,int ,int ,int *,int *,int ,void*,int *,int *) ;
+ int * svn_error_trace (int ) ;
 
 svn_error_t *
 svn_client_list4(const char *path_or_url,
@@ -44,6 +44,6 @@ svn_client_list4(const char *path_or_url,
                                        depth, dirent_fields,
                                        fetch_locks,
                                        include_externals,
-                                       NULL, NULL, list_func,
+                                       ((void*)0), ((void*)0), list_func,
                                        baton, ctx, scratch_pool));
 }

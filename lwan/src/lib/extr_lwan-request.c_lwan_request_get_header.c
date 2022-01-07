@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct lwan_request {TYPE_1__* helper; } ;
-typedef  int /*<<< orphan*/  name ;
+typedef int name ;
 struct TYPE_2__ {size_t n_header_start; char** header_start; } ;
 
-/* Variables and functions */
- char* HEADER_TERMINATOR_LEN ; 
- scalar_t__ UNLIKELY (int) ; 
- int snprintf (char*,int,char*,char const*) ; 
- int /*<<< orphan*/  strncasecmp (char const*,char*,size_t) ; 
+
+ char* HEADER_TERMINATOR_LEN ;
+ scalar_t__ UNLIKELY (int) ;
+ int snprintf (char*,int,char*,char const*) ;
+ int strncasecmp (char const*,char*,size_t) ;
 
 const char *lwan_request_get_header(struct lwan_request *request,
                                     const char *header)
@@ -29,7 +29,7 @@ const char *lwan_request_get_header(struct lwan_request *request,
 
     r = snprintf(name, sizeof(name), "%s: ", header);
     if (UNLIKELY(r < 0 || r >= (int)sizeof(name)))
-        return NULL;
+        return ((void*)0);
 
     for (size_t i = 0; i < request->helper->n_header_start; i++) {
         const char *start = request->helper->header_start[i];
@@ -44,5 +44,5 @@ const char *lwan_request_get_header(struct lwan_request *request,
         }
     }
 
-    return NULL;
+    return ((void*)0);
 }

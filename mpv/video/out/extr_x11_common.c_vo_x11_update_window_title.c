@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vo_x11_state {int /*<<< orphan*/  window_title; int /*<<< orphan*/  window; } ;
+
+
+
+
+struct vo_x11_state {int window_title; int window; } ;
 struct vo {struct vo_x11_state* x11; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XA (struct vo_x11_state*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XA_WM_ICON_NAME ; 
- int /*<<< orphan*/  XA_WM_NAME ; 
- int /*<<< orphan*/  _NET_WM_ICON_NAME ; 
- int /*<<< orphan*/  _NET_WM_NAME ; 
- int /*<<< orphan*/  vo_x11_set_property_string (struct vo*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vo_x11_set_property_utf8 (struct vo*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int XA (struct vo_x11_state*,int ) ;
+ int XA_WM_ICON_NAME ;
+ int XA_WM_NAME ;
+ int _NET_WM_ICON_NAME ;
+ int _NET_WM_NAME ;
+ int vo_x11_set_property_string (struct vo*,int ,int ) ;
+ int vo_x11_set_property_utf8 (struct vo*,int ,int ) ;
 
 __attribute__((used)) static void vo_x11_update_window_title(struct vo *vo)
 {

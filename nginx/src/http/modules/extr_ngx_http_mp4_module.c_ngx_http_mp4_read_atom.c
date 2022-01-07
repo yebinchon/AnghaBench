@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  u_char ;
-typedef  scalar_t__ off_t ;
-typedef  size_t ngx_uint_t ;
-typedef  int /*<<< orphan*/  ngx_mp4_atom_header_t ;
-typedef  int /*<<< orphan*/  ngx_mp4_atom_header64_t ;
-typedef  scalar_t__ ngx_int_t ;
-struct TYPE_10__ {int /*<<< orphan*/  data; } ;
-struct TYPE_11__ {TYPE_1__ name; int /*<<< orphan*/  log; } ;
-struct TYPE_12__ {int offset; TYPE_2__ file; int /*<<< orphan*/ * buffer_pos; } ;
-typedef  TYPE_3__ ngx_http_mp4_file_t ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int u_char ;
+typedef scalar_t__ off_t ;
+typedef size_t ngx_uint_t ;
+typedef int ngx_mp4_atom_header_t ;
+typedef int ngx_mp4_atom_header64_t ;
+typedef scalar_t__ ngx_int_t ;
+struct TYPE_10__ {int data; } ;
+struct TYPE_11__ {TYPE_1__ name; int log; } ;
+struct TYPE_12__ {int offset; TYPE_2__ file; int * buffer_pos; } ;
+typedef TYPE_3__ ngx_http_mp4_file_t ;
 struct TYPE_13__ {scalar_t__ (* handler ) (TYPE_3__*,int) ;scalar_t__ name; } ;
-typedef  TYPE_4__ ngx_http_mp4_atom_handler_t ;
+typedef TYPE_4__ ngx_http_mp4_atom_handler_t ;
 
-/* Variables and functions */
- scalar_t__ NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- scalar_t__ NGX_MAX_OFF_T_VALUE ; 
- scalar_t__ NGX_OK ; 
- scalar_t__ ngx_http_mp4_read (TYPE_3__*,int) ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_log_debug4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,size_t,int /*<<< orphan*/ *,scalar_t__,int) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ngx_mp4_atom_next (TYPE_3__*,int) ; 
- int ngx_mp4_get_32value (int /*<<< orphan*/ *) ; 
- int ngx_mp4_get_64value (int /*<<< orphan*/ *) ; 
- scalar_t__ ngx_strncmp (int /*<<< orphan*/ *,scalar_t__,int) ; 
- scalar_t__ stub1 (TYPE_3__*,int) ; 
+
+ scalar_t__ NGX_ERROR ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_LOG_ERR ;
+ scalar_t__ NGX_MAX_OFF_T_VALUE ;
+ scalar_t__ NGX_OK ;
+ scalar_t__ ngx_http_mp4_read (TYPE_3__*,int) ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int ngx_log_debug4 (int ,int ,int ,char*,size_t,int *,scalar_t__,int) ;
+ int ngx_log_error (int ,int ,int ,char*,int ,int) ;
+ int ngx_mp4_atom_next (TYPE_3__*,int) ;
+ int ngx_mp4_get_32value (int *) ;
+ int ngx_mp4_get_64value (int *) ;
+ scalar_t__ ngx_strncmp (int *,scalar_t__,int) ;
+ scalar_t__ stub1 (TYPE_3__*,int) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_mp4_read_atom(ngx_http_mp4_file_t *mp4,
     ngx_http_mp4_atom_handler_t *atom, uint64_t atom_data_size)
 {
-    off_t        end;
-    size_t       atom_header_size;
-    u_char      *atom_header, *atom_name;
-    uint64_t     atom_size;
-    ngx_int_t    rc;
-    ngx_uint_t   n;
+    off_t end;
+    size_t atom_header_size;
+    u_char *atom_header, *atom_name;
+    uint64_t atom_size;
+    ngx_int_t rc;
+    ngx_uint_t n;
 
     end = mp4->offset + atom_data_size;
 
@@ -84,7 +84,7 @@ ngx_http_mp4_read_atom(ngx_http_mp4_file_t *mp4,
                     return NGX_ERROR;
                 }
 
-                /* 64-bit atom size */
+
                 atom_header = mp4->buffer_pos;
                 atom_size = ngx_mp4_get_64value(atom_header + 8);
                 atom_header_size = sizeof(ngx_mp4_atom_header64_t);

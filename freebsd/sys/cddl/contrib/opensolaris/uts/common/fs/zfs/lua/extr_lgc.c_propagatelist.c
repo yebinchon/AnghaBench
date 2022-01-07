@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * gray; } ;
-typedef  TYPE_1__ global_State ;
-typedef  int /*<<< orphan*/  GCObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lua_assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  propagateall (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * gray; } ;
+typedef TYPE_1__ global_State ;
+typedef int GCObject ;
+
+
+ int lua_assert (int ) ;
+ int propagateall (TYPE_1__*) ;
 
 __attribute__((used)) static void propagatelist (global_State *g, GCObject *l) {
-  lua_assert(g->gray == NULL);  /* no grays left */
+  lua_assert(g->gray == ((void*)0));
   g->gray = l;
-  propagateall(g);  /* traverse all elements from 'l' */
+  propagateall(g);
 }

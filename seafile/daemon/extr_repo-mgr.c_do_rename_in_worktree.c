@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  new_name; int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  GHashTable ;
-typedef  TYPE_1__ DiffEntry ;
 
-/* Variables and functions */
- char* build_checkout_path (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- char* g_build_filename (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- scalar_t__ seaf_util_exists (char*) ; 
- scalar_t__ seaf_util_rename (char*,char*) ; 
- int /*<<< orphan*/  seaf_warning (char*,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int new_name; int name; } ;
+typedef int GHashTable ;
+typedef TYPE_1__ DiffEntry ;
+
+
+ char* build_checkout_path (char const*,int ,int ) ;
+ int errno ;
+ char* g_build_filename (char const*,int ,int *) ;
+ int g_free (char*) ;
+ scalar_t__ seaf_util_exists (char*) ;
+ scalar_t__ seaf_util_rename (char*,char*) ;
+ int seaf_warning (char*,char*,char*,int ) ;
+ int strerror (int ) ;
+ int strlen (int ) ;
 
 __attribute__((used)) static int
 do_rename_in_worktree (DiffEntry *de, const char *worktree,
@@ -33,7 +33,7 @@ do_rename_in_worktree (DiffEntry *de, const char *worktree,
     char *old_path, *new_path;
     int ret = 0;
 
-    old_path = g_build_filename (worktree, de->name, NULL);
+    old_path = g_build_filename (worktree, de->name, ((void*)0));
 
     if (seaf_util_exists (old_path)) {
         new_path = build_checkout_path (worktree, de->new_name, strlen(de->new_name));

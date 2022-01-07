@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_3__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct d3drm_viewport {int /*<<< orphan*/  obj; int /*<<< orphan*/ * d3drm; TYPE_2__ IDirect3DRMViewport2_iface; TYPE_1__ IDirect3DRMViewport_iface; } ;
-typedef  int /*<<< orphan*/  IDirect3DRM ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,struct d3drm_viewport**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  d3drm_object_init (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  d3drm_viewport1_vtbl ; 
- int /*<<< orphan*/  d3drm_viewport2_vtbl ; 
- struct d3drm_viewport* heap_alloc_zero (int) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * lpVtbl; } ;
+struct TYPE_3__ {int * lpVtbl; } ;
+struct d3drm_viewport {int obj; int * d3drm; TYPE_2__ IDirect3DRMViewport2_iface; TYPE_1__ IDirect3DRMViewport_iface; } ;
+typedef int IDirect3DRM ;
+typedef int HRESULT ;
+
+
+ int E_OUTOFMEMORY ;
+ int S_OK ;
+ int TRACE (char*,struct d3drm_viewport**,int *) ;
+ int d3drm_object_init (int *,char const*) ;
+ int d3drm_viewport1_vtbl ;
+ int d3drm_viewport2_vtbl ;
+ struct d3drm_viewport* heap_alloc_zero (int) ;
 
 HRESULT d3drm_viewport_create(struct d3drm_viewport **viewport, IDirect3DRM *d3drm)
 {

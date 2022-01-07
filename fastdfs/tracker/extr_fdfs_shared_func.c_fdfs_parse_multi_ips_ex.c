@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int count; TYPE_1__* ips; scalar_t__ index; } ;
 struct TYPE_4__ {char* address; scalar_t__ type; } ;
-typedef  TYPE_2__ FDFSMultiIP ;
+typedef TYPE_2__ FDFSMultiIP ;
 
-/* Variables and functions */
- int EINVAL ; 
- scalar_t__ FDFS_IP_TYPE_UNKNOWN ; 
- int FDFS_MULTI_IP_MAX_COUNT ; 
- scalar_t__ INADDR_NONE ; 
- scalar_t__ fdfs_get_ip_type (char*) ; 
- scalar_t__ getIpaddrByName (char*,char*,int) ; 
- int /*<<< orphan*/  h_errno ; 
- char* hstrerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (char*,int const,char*,char*,...) ; 
- int splitEx (char*,char,char**,int) ; 
+
+ int EINVAL ;
+ scalar_t__ FDFS_IP_TYPE_UNKNOWN ;
+ int FDFS_MULTI_IP_MAX_COUNT ;
+ scalar_t__ INADDR_NONE ;
+ scalar_t__ fdfs_get_ip_type (char*) ;
+ scalar_t__ getIpaddrByName (char*,char*,int) ;
+ int h_errno ;
+ char* hstrerror (int ) ;
+ int snprintf (char*,int const,char*,char*,...) ;
+ int splitEx (char*,char,char**,int) ;
 
 int fdfs_parse_multi_ips_ex(char *ip_str, FDFSMultiIP *ip_addrs,
         char *error_info, const int error_size, const bool resolve)

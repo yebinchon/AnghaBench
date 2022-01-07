@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tBT_TRANSPORT ;
-typedef  int tBTM_STATUS ;
-typedef  int /*<<< orphan*/  tBTA_STATUS ;
-typedef  int /*<<< orphan*/  (* tBTA_DM_ENCRYPT_CBACK ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;
-typedef  size_t UINT8 ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int tBT_TRANSPORT ;
+typedef int tBTM_STATUS ;
+typedef int tBTA_STATUS ;
+typedef int (* tBTA_DM_ENCRYPT_CBACK ) (int ,int ,int ) ;
+typedef size_t UINT8 ;
 struct TYPE_5__ {size_t count; TYPE_1__* peer_device; } ;
 struct TYPE_6__ {TYPE_2__ device_list; } ;
-struct TYPE_4__ {scalar_t__ conn_state; int /*<<< orphan*/  (* p_encrypt_cback ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  peer_bdaddr; } ;
-typedef  int /*<<< orphan*/  BD_ADDR ;
+struct TYPE_4__ {scalar_t__ conn_state; int (* p_encrypt_cback ) (int ,int ,int ) ;int peer_bdaddr; } ;
+typedef int BD_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APPL_TRACE_DEBUG (char*,int /*<<< orphan*/ ,int /*<<< orphan*/  (*) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ )) ; 
- int /*<<< orphan*/  BTA_BUSY ; 
- scalar_t__ BTA_DM_CONNECTED ; 
- int /*<<< orphan*/  BTA_FAILURE ; 
- int /*<<< orphan*/  BTA_NO_RESOURCES ; 
- int /*<<< orphan*/  BTA_SUCCESS ; 
- int /*<<< orphan*/  BTA_WRONG_MODE ; 
-#define  BTM_BUSY 131 
-#define  BTM_NO_RESOURCES 130 
-#define  BTM_SUCCESS 129 
-#define  BTM_WRONG_MODE 128 
- int /*<<< orphan*/  UNUSED (void*) ; 
- scalar_t__ bdcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_3__ bta_dm_cb ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int APPL_TRACE_DEBUG (char*,int ,int (*) (int ,int ,int )) ;
+ int BTA_BUSY ;
+ scalar_t__ BTA_DM_CONNECTED ;
+ int BTA_FAILURE ;
+ int BTA_NO_RESOURCES ;
+ int BTA_SUCCESS ;
+ int BTA_WRONG_MODE ;
+
+
+
+
+ int UNUSED (void*) ;
+ scalar_t__ bdcmp (int ,int ) ;
+ TYPE_3__ bta_dm_cb ;
+ int stub1 (int ,int ,int ) ;
 
 void bta_dm_encrypt_cback(BD_ADDR bd_addr, tBT_TRANSPORT transport, void *p_ref_data, tBTM_STATUS result)
 {
-    tBTA_STATUS   bta_status = BTA_SUCCESS;
-    tBTA_DM_ENCRYPT_CBACK *p_callback = NULL;
-    UINT8   i ;
+    tBTA_STATUS bta_status = BTA_SUCCESS;
+    tBTA_DM_ENCRYPT_CBACK *p_callback = ((void*)0);
+    UINT8 i ;
     UNUSED(p_ref_data);
 
     for (i = 0; i < bta_dm_cb.device_list.count; i++) {
@@ -56,19 +56,19 @@ void bta_dm_encrypt_cback(BD_ADDR bd_addr, tBT_TRANSPORT transport, void *p_ref_
 
     if (i < bta_dm_cb.device_list.count) {
         p_callback = bta_dm_cb.device_list.peer_device[i].p_encrypt_cback;
-        bta_dm_cb.device_list.peer_device[i].p_encrypt_cback = NULL;
+        bta_dm_cb.device_list.peer_device[i].p_encrypt_cback = ((void*)0);
     }
 
     switch (result) {
-    case BTM_SUCCESS:
+    case 129:
         break;
-    case BTM_WRONG_MODE:
+    case 128:
         bta_status = BTA_WRONG_MODE;
         break;
-    case BTM_NO_RESOURCES:
+    case 130:
         bta_status = BTA_NO_RESOURCES;
         break;
-    case BTM_BUSY:
+    case 131:
         bta_status = BTA_BUSY;
         break;
     default:

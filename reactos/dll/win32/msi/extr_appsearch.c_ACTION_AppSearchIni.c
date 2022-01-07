@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_14__ {int /*<<< orphan*/  db; } ;
-struct TYPE_13__ {int /*<<< orphan*/  hdr; } ;
-struct TYPE_12__ {int /*<<< orphan*/  Name; } ;
-typedef  TYPE_1__ MSISIGNATURE ;
-typedef  TYPE_2__ MSIRECORD ;
-typedef  TYPE_3__ MSIPACKAGE ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACTION_SearchDirectory (TYPE_3__*,TYPE_1__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  GetPrivateProfileStringW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- int MSI_NULL_INTEGER ; 
- TYPE_2__* MSI_QueryGetRecord (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int MSI_RecordGetInteger (TYPE_2__*,int) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * app_search_file (char*,TYPE_1__*) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * get_ini_field (char*,int) ; 
- int /*<<< orphan*/ * msi_dup_record_field (TYPE_2__*,int) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/ *) ; 
-#define  msidbLocatorTypeDirectory 130 
-#define  msidbLocatorTypeFileName 129 
-#define  msidbLocatorTypeRawValue 128 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+typedef int UINT ;
+struct TYPE_14__ {int db; } ;
+struct TYPE_13__ {int hdr; } ;
+struct TYPE_12__ {int Name; } ;
+typedef TYPE_1__ MSISIGNATURE ;
+typedef TYPE_2__ MSIRECORD ;
+typedef TYPE_3__ MSIPACKAGE ;
+typedef int * LPWSTR ;
+
+
+ int ACTION_SearchDirectory (TYPE_3__*,TYPE_1__*,char*,int ,int **) ;
+ int ERROR_SUCCESS ;
+ int GetPrivateProfileStringW (int *,int *,int *,char*,int,int *) ;
+ int MAX_PATH ;
+ int MSI_NULL_INTEGER ;
+ TYPE_2__* MSI_QueryGetRecord (int ,char const*,int ) ;
+ int MSI_RecordGetInteger (TYPE_2__*,int) ;
+ int TRACE (char*,int ) ;
+ int * app_search_file (char*,TYPE_1__*) ;
+ int debugstr_w (int ) ;
+ int * get_ini_field (char*,int) ;
+ int * msi_dup_record_field (TYPE_2__*,int) ;
+ int msi_free (int *) ;
+
+
+
+ int msiobj_release (int *) ;
 
 __attribute__((used)) static UINT ACTION_AppSearchIni(MSIPACKAGE *package, LPWSTR *appValue,
  MSISIGNATURE *sig)
 {
-    static const WCHAR query[] =  {
+    static const WCHAR query[] = {
         's','e','l','e','c','t',' ','*',' ',
         'f','r','o','m',' ',
         'I','n','i','L','o','c','a','t','o','r',' ',
@@ -58,7 +58,7 @@ __attribute__((used)) static UINT ACTION_AppSearchIni(MSIPACKAGE *package, LPWST
 
     TRACE("%s\n", debugstr_w(sig->Name));
 
-    *appValue = NULL;
+    *appValue = ((void*)0);
 
     row = MSI_QueryGetRecord( package->db, query, sig->Name );
     if (!row)
@@ -77,18 +77,18 @@ __attribute__((used)) static UINT ACTION_AppSearchIni(MSIPACKAGE *package, LPWST
     if (type == MSI_NULL_INTEGER)
         type = 0;
 
-    GetPrivateProfileStringW(section, key, NULL, buf, MAX_PATH, fileName);
+    GetPrivateProfileStringW(section, key, ((void*)0), buf, MAX_PATH, fileName);
     if (buf[0])
     {
         switch (type & 0x0f)
         {
-        case msidbLocatorTypeDirectory:
+        case 130:
             ACTION_SearchDirectory(package, sig, buf, 0, appValue);
             break;
-        case msidbLocatorTypeFileName:
+        case 129:
             *appValue = app_search_file(buf, sig);
             break;
-        case msidbLocatorTypeRawValue:
+        case 128:
             *appValue = get_ini_field(buf, field);
             break;
         }

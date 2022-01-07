@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct connection {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BYS_MSG (struct connection*) ; 
- int /*<<< orphan*/  INIT ; 
- int /*<<< orphan*/  MAX_VALUE_LEN ; 
- int /*<<< orphan*/  RETURN (int /*<<< orphan*/ ,int) ; 
- scalar_t__ STATS_BUFF_SIZE ; 
- int bayes_is_spam (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  bayes_is_spam_debug (int /*<<< orphan*/ ,int,char*) ; 
- double bayes_is_spam_prob (int /*<<< orphan*/ ,int) ; 
- int bayes_prepare_stats () ; 
- int black_list_get (char*,int /*<<< orphan*/ ) ; 
- char* buf ; 
- int /*<<< orphan*/  do_bayes_reset_ham (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  do_bayes_reset_spam (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  do_bayes_set_ham (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  do_bayes_set_spam (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  do_bayes_unset_ham (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  do_bayes_unset_spam (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  eat_at (char const*,int,char**,int*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,int) ; 
- int /*<<< orphan*/  get ; 
- int prepare_stats (struct connection*,char*,scalar_t__) ; 
- int /*<<< orphan*/  return_one_key (struct connection*,char const*,char*,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,double) ; 
- int sscanf (char*,char*,int*) ; 
- char* stats_buff ; 
- int /*<<< orphan*/  stderr ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- int verbosity ; 
+
+ int BYS_MSG (struct connection*) ;
+ int INIT ;
+ int MAX_VALUE_LEN ;
+ int RETURN (int ,int) ;
+ scalar_t__ STATS_BUFF_SIZE ;
+ int bayes_is_spam (int ,int) ;
+ int bayes_is_spam_debug (int ,int,char*) ;
+ double bayes_is_spam_prob (int ,int) ;
+ int bayes_prepare_stats () ;
+ int black_list_get (char*,int ) ;
+ char* buf ;
+ int do_bayes_reset_ham (int ,int) ;
+ int do_bayes_reset_spam (int ,int) ;
+ int do_bayes_set_ham (int ,int) ;
+ int do_bayes_set_spam (int ,int) ;
+ int do_bayes_unset_ham (int ,int) ;
+ int do_bayes_unset_spam (int ,int) ;
+ int eat_at (char const*,int,char**,int*) ;
+ int fprintf (int ,char*,char const*,int) ;
+ int get ;
+ int prepare_stats (struct connection*,char*,scalar_t__) ;
+ int return_one_key (struct connection*,char const*,char*,int) ;
+ int sprintf (char*,char*,double) ;
+ int sscanf (char*,char*,int*) ;
+ char* stats_buff ;
+ int stderr ;
+ int strlen (char*) ;
+ int strncmp (char*,char*,int) ;
+ int verbosity ;
 
 int memcache_try_get (struct connection *c, const char *old_key, int old_key_len) {
   INIT;

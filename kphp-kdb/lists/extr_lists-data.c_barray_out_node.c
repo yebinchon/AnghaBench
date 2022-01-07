@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  listree_t ;
 
-/* Variables and functions */
- int MAX_RES ; 
- int /*<<< orphan*/ * M_global_id_list ; 
- int /*<<< orphan*/  M_obj_id_list ; 
- int /*<<< orphan*/  OARR_ENTRY (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  PTR_INTS ; 
- int* R ; 
- int* R_end ; 
- int R_mode ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  metafile_get_date (int) ; 
- int /*<<< orphan*/  metafile_get_flags (int) ; 
- char* metafile_get_text (int,int*) ; 
- int /*<<< orphan*/  metafile_get_value (int) ; 
- int /*<<< orphan*/  store_object_id (int**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  store_value (int**,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int listree_t ;
+
+
+ int MAX_RES ;
+ int * M_global_id_list ;
+ int M_obj_id_list ;
+ int OARR_ENTRY (int ,int) ;
+ int PTR_INTS ;
+ int* R ;
+ int* R_end ;
+ int R_mode ;
+ int assert (int) ;
+ int metafile_get_date (int) ;
+ int metafile_get_flags (int) ;
+ char* metafile_get_text (int,int*) ;
+ int metafile_get_value (int) ;
+ int store_object_id (int**,int ) ;
+ int store_value (int**,int ) ;
 
 __attribute__((used)) static inline int barray_out_node (listree_t *LT, int temp_id) {
   int m = R_mode, *p = R_end;
@@ -50,7 +50,7 @@ __attribute__((used)) static inline int barray_out_node (listree_t *LT, int temp
     int text_len;
 
     *((char **)p) = metafile_get_text (temp_id, &text_len);
-    
+
     p += PTR_INTS;
     *p++ = text_len;
   }

@@ -1,88 +1,88 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_30__   TYPE_3__ ;
-typedef  struct TYPE_29__   TYPE_2__ ;
-typedef  struct TYPE_28__   TYPE_1__ ;
-typedef  struct TYPE_27__   TYPE_12__ ;
-typedef  struct TYPE_26__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  scalar_t__ off_t ;
+
+
+typedef struct TYPE_30__ TYPE_3__ ;
+typedef struct TYPE_29__ TYPE_2__ ;
+typedef struct TYPE_28__ TYPE_1__ ;
+typedef struct TYPE_27__ TYPE_12__ ;
+typedef struct TYPE_26__ TYPE_10__ ;
+
+
+typedef scalar_t__ off_t ;
 struct TYPE_28__ {scalar_t__ num; } ;
-struct TYPE_29__ {scalar_t__ (* output_filter ) (int /*<<< orphan*/ ,TYPE_3__*) ;scalar_t__ allocated; int /*<<< orphan*/  tag; int /*<<< orphan*/ * busy; TYPE_3__* free; TYPE_12__* pool; int /*<<< orphan*/  filter_ctx; TYPE_3__* in; TYPE_10__* buf; TYPE_1__ bufs; scalar_t__ aio; } ;
-typedef  TYPE_2__ ngx_output_chain_ctx_t ;
-typedef  scalar_t__ ngx_int_t ;
+struct TYPE_29__ {scalar_t__ (* output_filter ) (int ,TYPE_3__*) ;scalar_t__ allocated; int tag; int * busy; TYPE_3__* free; TYPE_12__* pool; int filter_ctx; TYPE_3__* in; TYPE_10__* buf; TYPE_1__ bufs; scalar_t__ aio; } ;
+typedef TYPE_2__ ngx_output_chain_ctx_t ;
+typedef scalar_t__ ngx_int_t ;
 struct TYPE_30__ {struct TYPE_30__* next; TYPE_10__* buf; } ;
-typedef  TYPE_3__ ngx_chain_t ;
-struct TYPE_27__ {int /*<<< orphan*/  log; } ;
-struct TYPE_26__ {scalar_t__ file_last; int /*<<< orphan*/  file_pos; int /*<<< orphan*/  file; int /*<<< orphan*/  last; int /*<<< orphan*/  pos; int /*<<< orphan*/  start; scalar_t__ in_file; int /*<<< orphan*/  recycled; int /*<<< orphan*/  temporary; } ;
+typedef TYPE_3__ ngx_chain_t ;
+struct TYPE_27__ {int log; } ;
+struct TYPE_26__ {scalar_t__ file_last; int file_pos; int file; int last; int pos; int start; scalar_t__ in_file; int recycled; int temporary; } ;
 
-/* Variables and functions */
- scalar_t__ NGX_AGAIN ; 
- scalar_t__ NGX_DONE ; 
- scalar_t__ NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_ALERT ; 
- scalar_t__ NGX_NONE ; 
- scalar_t__ NGX_OK ; 
- scalar_t__ NGX_SENDFILE_LIMIT ; 
- TYPE_3__* ngx_alloc_chain_link (TYPE_12__*) ; 
- scalar_t__ ngx_buf_size (TYPE_10__*) ; 
- int /*<<< orphan*/  ngx_buf_special (TYPE_10__*) ; 
- int /*<<< orphan*/  ngx_chain_update_chains (TYPE_12__*,TYPE_3__**,int /*<<< orphan*/ **,TYPE_3__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_debug_point () ; 
- int /*<<< orphan*/  ngx_free_chain (TYPE_12__*,TYPE_3__*) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ ngx_output_chain_add_copy (TYPE_12__*,TYPE_3__**,TYPE_3__*) ; 
- scalar_t__ ngx_output_chain_align_file_buf (TYPE_2__*,scalar_t__) ; 
- scalar_t__ ngx_output_chain_as_is (TYPE_2__*,TYPE_10__*) ; 
- scalar_t__ ngx_output_chain_copy_buf (TYPE_2__*) ; 
- scalar_t__ ngx_output_chain_get_buf (TYPE_2__*,scalar_t__) ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ,TYPE_3__*) ; 
- scalar_t__ stub2 (int /*<<< orphan*/ ,TYPE_3__*) ; 
- scalar_t__ stub3 (int /*<<< orphan*/ ,TYPE_3__*) ; 
+
+ scalar_t__ NGX_AGAIN ;
+ scalar_t__ NGX_DONE ;
+ scalar_t__ NGX_ERROR ;
+ int NGX_LOG_ALERT ;
+ scalar_t__ NGX_NONE ;
+ scalar_t__ NGX_OK ;
+ scalar_t__ NGX_SENDFILE_LIMIT ;
+ TYPE_3__* ngx_alloc_chain_link (TYPE_12__*) ;
+ scalar_t__ ngx_buf_size (TYPE_10__*) ;
+ int ngx_buf_special (TYPE_10__*) ;
+ int ngx_chain_update_chains (TYPE_12__*,TYPE_3__**,int **,TYPE_3__**,int ) ;
+ int ngx_debug_point () ;
+ int ngx_free_chain (TYPE_12__*,TYPE_3__*) ;
+ int ngx_log_error (int ,int ,int ,char*,int ,int ,scalar_t__,int ,int ,int ,int ,int ,scalar_t__) ;
+ scalar_t__ ngx_output_chain_add_copy (TYPE_12__*,TYPE_3__**,TYPE_3__*) ;
+ scalar_t__ ngx_output_chain_align_file_buf (TYPE_2__*,scalar_t__) ;
+ scalar_t__ ngx_output_chain_as_is (TYPE_2__*,TYPE_10__*) ;
+ scalar_t__ ngx_output_chain_copy_buf (TYPE_2__*) ;
+ scalar_t__ ngx_output_chain_get_buf (TYPE_2__*,scalar_t__) ;
+ scalar_t__ stub1 (int ,TYPE_3__*) ;
+ scalar_t__ stub2 (int ,TYPE_3__*) ;
+ scalar_t__ stub3 (int ,TYPE_3__*) ;
 
 ngx_int_t
 ngx_output_chain(ngx_output_chain_ctx_t *ctx, ngx_chain_t *in)
 {
-    off_t         bsize;
-    ngx_int_t     rc, last;
-    ngx_chain_t  *cl, *out, **last_out;
+    off_t bsize;
+    ngx_int_t rc, last;
+    ngx_chain_t *cl, *out, **last_out;
 
-    if (ctx->in == NULL && ctx->busy == NULL
-#if (NGX_HAVE_FILE_AIO || NGX_THREADS)
-        && !ctx->aio
-#endif
+    if (ctx->in == ((void*)0) && ctx->busy == ((void*)0)
+
+
+
        )
     {
-        /*
-         * the short path for the case when the ctx->in and ctx->busy chains
-         * are empty, the incoming chain is empty too or has the single buf
-         * that does not require the copy
-         */
 
-        if (in == NULL) {
+
+
+
+
+
+        if (in == ((void*)0)) {
             return ctx->output_filter(ctx->filter_ctx, in);
         }
 
-        if (in->next == NULL
-#if (NGX_SENDFILE_LIMIT)
-            && !(in->buf->in_file && in->buf->file_last > NGX_SENDFILE_LIMIT)
-#endif
+        if (in->next == ((void*)0)
+
+
+
             && ngx_output_chain_as_is(ctx, in->buf))
         {
             return ctx->output_filter(ctx->filter_ctx, in);
         }
     }
 
-    /* add the incoming buf to the chain ctx->in */
+
 
     if (in) {
         if (ngx_output_chain_add_copy(ctx->pool, &ctx->in, in) == NGX_ERROR) {
@@ -90,24 +90,24 @@ ngx_output_chain(ngx_output_chain_ctx_t *ctx, ngx_chain_t *in)
         }
     }
 
-    out = NULL;
+    out = ((void*)0);
     last_out = &out;
     last = NGX_NONE;
 
     for ( ;; ) {
 
-#if (NGX_HAVE_FILE_AIO || NGX_THREADS)
-        if (ctx->aio) {
-            return NGX_AGAIN;
-        }
-#endif
+
+
+
+
+
 
         while (ctx->in) {
 
-            /*
-             * cycle while there are the ctx->in bufs
-             * and there are the free output bufs to copy in
-             */
+
+
+
+
 
             bsize = ngx_buf_size(ctx->in->buf);
 
@@ -155,19 +155,19 @@ ngx_output_chain(ngx_output_chain_ctx_t *ctx, ngx_chain_t *in)
 
             if (ngx_output_chain_as_is(ctx, ctx->in->buf)) {
 
-                /* move the chain link to the output chain */
+
 
                 cl = ctx->in;
                 ctx->in = cl->next;
 
                 *last_out = cl;
                 last_out = &cl->next;
-                cl->next = NULL;
+                cl->next = ((void*)0);
 
                 continue;
             }
 
-            if (ctx->buf == NULL) {
+            if (ctx->buf == ((void*)0)) {
 
                 rc = ngx_output_chain_align_file_buf(ctx, bsize);
 
@@ -179,7 +179,7 @@ ngx_output_chain(ngx_output_chain_ctx_t *ctx, ngx_chain_t *in)
 
                     if (ctx->free) {
 
-                        /* get the free buf */
+
 
                         cl = ctx->free;
                         ctx->buf = cl->buf;
@@ -211,25 +211,25 @@ ngx_output_chain(ngx_output_chain_ctx_t *ctx, ngx_chain_t *in)
                 return rc;
             }
 
-            /* delete the completed buf from the ctx->in chain */
+
 
             if (ngx_buf_size(ctx->in->buf) == 0) {
                 ctx->in = ctx->in->next;
             }
 
             cl = ngx_alloc_chain_link(ctx->pool);
-            if (cl == NULL) {
+            if (cl == ((void*)0)) {
                 return NGX_ERROR;
             }
 
             cl->buf = ctx->buf;
-            cl->next = NULL;
+            cl->next = ((void*)0);
             *last_out = cl;
             last_out = &cl->next;
-            ctx->buf = NULL;
+            ctx->buf = ((void*)0);
         }
 
-        if (out == NULL && last != NGX_NONE) {
+        if (out == ((void*)0) && last != NGX_NONE) {
 
             if (ctx->in) {
                 return NGX_AGAIN;

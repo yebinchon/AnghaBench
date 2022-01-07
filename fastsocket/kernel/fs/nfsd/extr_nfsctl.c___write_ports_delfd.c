@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ssize_t ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  SIMPLE_TRANSACTION_LIMIT ; 
- int /*<<< orphan*/  kfree (char*) ; 
- char* kstrdup (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * nfsd_serv ; 
- int svc_sock_names (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int ssize_t ;
+
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int SIMPLE_TRANSACTION_LIMIT ;
+ int kfree (char*) ;
+ char* kstrdup (char*,int ) ;
+ int * nfsd_serv ;
+ int svc_sock_names (int *,char*,int ,char*) ;
 
 __attribute__((used)) static ssize_t __write_ports_delfd(char *buf)
 {
-	char *toclose;
-	int len = 0;
+ char *toclose;
+ int len = 0;
 
-	toclose = kstrdup(buf + 1, GFP_KERNEL);
-	if (toclose == NULL)
-		return -ENOMEM;
+ toclose = kstrdup(buf + 1, GFP_KERNEL);
+ if (toclose == ((void*)0))
+  return -ENOMEM;
 
-	if (nfsd_serv != NULL)
-		len = svc_sock_names(nfsd_serv, buf,
-					SIMPLE_TRANSACTION_LIMIT, toclose);
-	kfree(toclose);
-	return len;
+ if (nfsd_serv != ((void*)0))
+  len = svc_sock_names(nfsd_serv, buf,
+     SIMPLE_TRANSACTION_LIMIT, toclose);
+ kfree(toclose);
+ return len;
 }

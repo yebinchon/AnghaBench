@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
 struct TYPE_7__ {TYPE_3__* priv; } ;
-typedef  TYPE_2__ svn_ra_session_t ;
-struct TYPE_6__ {int /*<<< orphan*/  path; } ;
+typedef TYPE_2__ svn_ra_session_t ;
+struct TYPE_6__ {int path; } ;
 struct TYPE_8__ {TYPE_1__ session_url; } ;
-typedef  TYPE_3__ svn_ra_serf__session_t ;
-typedef  int /*<<< orphan*/  svn_ra_reporter3_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_delta_editor_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_3__ svn_ra_serf__session_t ;
+typedef int svn_ra_reporter3_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef int svn_delta_editor_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  make_update_reporter (TYPE_2__*,int /*<<< orphan*/  const**,void**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int make_update_reporter (TYPE_2__*,int const**,void**,int ,int ,int *,char const*,int ,int ,int ,int ,int const*,void*,int *,int *) ;
 
 svn_error_t *
 svn_ra_serf__do_update(svn_ra_session_t *ra_session,
@@ -50,8 +50,8 @@ svn_ra_serf__do_update(svn_ra_session_t *ra_session,
 
   SVN_ERR(make_update_reporter(ra_session, reporter, report_baton,
                                revision_to_update_to,
-                               session->session_url.path, NULL, update_target,
-                               depth, ignore_ancestry, TRUE /* text_deltas */,
+                               session->session_url.path, ((void*)0), update_target,
+                               depth, ignore_ancestry, TRUE ,
                                send_copyfrom_args,
                                update_editor, update_baton,
                                result_pool, scratch_pool));

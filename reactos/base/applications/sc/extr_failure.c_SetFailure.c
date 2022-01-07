@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * lpsaActions; } ;
-typedef  TYPE_1__ SERVICE_FAILURE_ACTIONS ;
-typedef  int /*<<< orphan*/ * SC_HANDLE ;
-typedef  int /*<<< orphan*/ * LPCTSTR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  scalar_t__ BOOLEAN ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ChangeServiceConfig2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CloseServiceHandle (int /*<<< orphan*/ *) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * OpenSCManager (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * OpenService (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ParseFailureArguments (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ **,TYPE_1__*) ; 
- int /*<<< orphan*/  ReportLastError () ; 
- int /*<<< orphan*/  RtlAdjustPrivilege (int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  SC_MANAGER_CONNECT ; 
- int SERVICE_CHANGE_CONFIG ; 
- int /*<<< orphan*/  SERVICE_CONFIG_FAILURE_ACTIONS ; 
- int SERVICE_START ; 
- int /*<<< orphan*/  SE_SHUTDOWN_PRIVILEGE ; 
- int /*<<< orphan*/  SetFailureUsage () ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_1__*,int) ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _tprintf (int /*<<< orphan*/ ,...) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * lpsaActions; } ;
+typedef TYPE_1__ SERVICE_FAILURE_ACTIONS ;
+typedef int * SC_HANDLE ;
+typedef int * LPCTSTR ;
+typedef int LPBYTE ;
+typedef int INT ;
+typedef scalar_t__ BOOLEAN ;
+typedef scalar_t__ BOOL ;
+
+
+ int ChangeServiceConfig2 (int *,int ,int ) ;
+ int CloseServiceHandle (int *) ;
+ scalar_t__ FALSE ;
+ int GetLastError () ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,int *) ;
+ int * OpenSCManager (int *,int *,int ) ;
+ int * OpenService (int *,int *,int) ;
+ int ParseFailureArguments (int **,int ,int **,TYPE_1__*) ;
+ int ReportLastError () ;
+ int RtlAdjustPrivilege (int ,scalar_t__,scalar_t__,scalar_t__*) ;
+ int SC_MANAGER_CONNECT ;
+ int SERVICE_CHANGE_CONFIG ;
+ int SERVICE_CONFIG_FAILURE_ACTIONS ;
+ int SERVICE_START ;
+ int SE_SHUTDOWN_PRIVILEGE ;
+ int SetFailureUsage () ;
+ scalar_t__ TRUE ;
+ int ZeroMemory (TYPE_1__*,int) ;
+ int _T (char*) ;
+ int _tprintf (int ,...) ;
 
 BOOL
 SetFailure(
     LPCTSTR *ServiceArgs,
     INT ArgCount)
 {
-    SC_HANDLE hManager = NULL;
-    SC_HANDLE hService = NULL;
+    SC_HANDLE hManager = ((void*)0);
+    SC_HANDLE hService = ((void*)0);
     BOOL bResult = TRUE;
     SERVICE_FAILURE_ACTIONS FailureActions;
-    LPCTSTR lpServiceName = NULL;
+    LPCTSTR lpServiceName = ((void*)0);
     BOOLEAN Old = FALSE;
 
     ZeroMemory(&FailureActions, sizeof(SERVICE_FAILURE_ACTIONS));
@@ -63,10 +63,10 @@ SetFailure(
         return FALSE;
     }
 
-    hManager = OpenSCManager(NULL,
-                             NULL,
+    hManager = OpenSCManager(((void*)0),
+                             ((void*)0),
                              SC_MANAGER_CONNECT);
-    if (hManager == NULL)
+    if (hManager == ((void*)0))
     {
         _tprintf(_T("[SC] OpenSCManager FAILED %lu:\n\n"), GetLastError());
         bResult = FALSE;
@@ -76,7 +76,7 @@ SetFailure(
     hService = OpenService(hManager,
                            lpServiceName,
                            SERVICE_CHANGE_CONFIG | SERVICE_START);
-    if (hService == NULL)
+    if (hService == ((void*)0))
     {
         _tprintf(_T("[SC] OpenService FAILED %lu:\n\n"), GetLastError());
         bResult = FALSE;
@@ -102,7 +102,7 @@ done:
     if (bResult == FALSE)
         ReportLastError();
 
-    if (FailureActions.lpsaActions != NULL)
+    if (FailureActions.lpsaActions != ((void*)0))
         HeapFree(GetProcessHeap(), 0, FailureActions.lpsaActions);
 
     if (hService)

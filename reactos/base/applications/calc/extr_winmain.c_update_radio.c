@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int WORD ;
-struct TYPE_5__ {unsigned int base; unsigned int degr; unsigned int size; int /*<<< orphan*/  hInstance; int /*<<< orphan*/  code; } ;
-struct TYPE_4__ {int mask; int /*<<< orphan*/  idc; } ;
-typedef  int /*<<< orphan*/  LPCTSTR ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HMENU ;
 
-/* Variables and functions */
- int BITMASK_BIN_MASK ; 
- int BITMASK_DEC_MASK ; 
- int BITMASK_HEX_MASK ; 
- int BITMASK_OCT_MASK ; 
- int /*<<< orphan*/  CheckRadioButton (int /*<<< orphan*/ ,int const,int const,unsigned int) ; 
- int /*<<< orphan*/  DestroyMenu (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetMenu (int /*<<< orphan*/ ) ; 
-#define  IDC_RADIO_BIN 131 
- int const IDC_RADIO_BYTE ; 
-#define  IDC_RADIO_DEC 130 
- int const IDC_RADIO_DEG ; 
- int const IDC_RADIO_GRAD ; 
-#define  IDC_RADIO_HEX 129 
-#define  IDC_RADIO_OCT 128 
- int const IDC_RADIO_QWORD ; 
- int /*<<< orphan*/  IDR_MENU_SCIENTIFIC_1 ; 
- int /*<<< orphan*/  IDR_MENU_SCIENTIFIC_2 ; 
- int /*<<< orphan*/  LoadMenu (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAKEINTRESOURCE (int /*<<< orphan*/ ) ; 
- int SIZEOF (TYPE_1__*) ; 
- int /*<<< orphan*/  SW_HIDE ; 
- int /*<<< orphan*/  SW_SHOW ; 
- int /*<<< orphan*/  SetMenu (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ShowWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__ calc ; 
- int /*<<< orphan*/  convert_real_integer (unsigned int) ; 
- int /*<<< orphan*/  convert_text2number (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  display_rpn_result (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  enable_allowed_controls (int /*<<< orphan*/ ,unsigned int) ; 
- TYPE_1__* radio_setup ; 
- int /*<<< orphan*/  update_menu (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WORD ;
+struct TYPE_5__ {unsigned int base; unsigned int degr; unsigned int size; int hInstance; int code; } ;
+struct TYPE_4__ {int mask; int idc; } ;
+typedef int LPCTSTR ;
+typedef int HWND ;
+typedef int HMENU ;
+
+
+ int BITMASK_BIN_MASK ;
+ int BITMASK_DEC_MASK ;
+ int BITMASK_HEX_MASK ;
+ int BITMASK_OCT_MASK ;
+ int CheckRadioButton (int ,int const,int const,unsigned int) ;
+ int DestroyMenu (int ) ;
+ int GetDlgItem (int ,int ) ;
+ int GetMenu (int ) ;
+
+ int const IDC_RADIO_BYTE ;
+
+ int const IDC_RADIO_DEG ;
+ int const IDC_RADIO_GRAD ;
+
+
+ int const IDC_RADIO_QWORD ;
+ int IDR_MENU_SCIENTIFIC_1 ;
+ int IDR_MENU_SCIENTIFIC_2 ;
+ int LoadMenu (int ,int ) ;
+ int MAKEINTRESOURCE (int ) ;
+ int SIZEOF (TYPE_1__*) ;
+ int SW_HIDE ;
+ int SW_SHOW ;
+ int SetMenu (int ,int ) ;
+ int ShowWindow (int ,int ) ;
+ TYPE_2__ calc ;
+ int convert_real_integer (unsigned int) ;
+ int convert_text2number (int *) ;
+ int display_rpn_result (int ,int *) ;
+ int enable_allowed_controls (int ,unsigned int) ;
+ TYPE_1__* radio_setup ;
+ int update_menu (int ) ;
 
 __attribute__((used)) static void update_radio(HWND hwnd, unsigned int base)
 {
-    HMENU   hMenu;
+    HMENU hMenu;
     LPCTSTR lpMenuId;
-    WORD    mask;
-    int     n;
+    WORD mask;
+    int n;
 
     switch (base) {
-    case IDC_RADIO_DEC:
+    case 130:
         lpMenuId = MAKEINTRESOURCE(IDR_MENU_SCIENTIFIC_1);
         mask = BITMASK_DEC_MASK;
         break;
-    case IDC_RADIO_HEX:
+    case 129:
         lpMenuId = MAKEINTRESOURCE(IDR_MENU_SCIENTIFIC_2);
         mask = BITMASK_HEX_MASK;
         break;
-    case IDC_RADIO_OCT:
+    case 128:
         lpMenuId = MAKEINTRESOURCE(IDR_MENU_SCIENTIFIC_2);
         mask = BITMASK_OCT_MASK;
         break;
-    case IDC_RADIO_BIN:
+    case 131:
         lpMenuId = MAKEINTRESOURCE(IDR_MENU_SCIENTIFIC_2);
         mask = BITMASK_BIN_MASK;
         break;
@@ -99,9 +99,9 @@ __attribute__((used)) static void update_radio(HWND hwnd, unsigned int base)
         enable_allowed_controls(hwnd, base);
     }
 
-    CheckRadioButton(hwnd, IDC_RADIO_HEX, IDC_RADIO_BIN, calc.base);
+    CheckRadioButton(hwnd, 129, 131, calc.base);
 
-    if (base == IDC_RADIO_DEC)
+    if (base == 130)
         CheckRadioButton(hwnd, IDC_RADIO_DEG, IDC_RADIO_GRAD, calc.degr);
     else
         CheckRadioButton(hwnd, IDC_RADIO_QWORD, IDC_RADIO_BYTE, calc.size);

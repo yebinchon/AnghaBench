@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u16 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u16 ;
 struct TYPE_2__ {int mcieb; int scieb; scalar_t__ scipd; scalar_t__ mcipd; } ;
 
-/* Variables and functions */
- int SCSP_INTTARGET_MAIN ; 
- int SCSP_INTTARGET_SOUND ; 
- int /*<<< orphan*/  ScspRaiseInterrupt (int,int) ; 
- TYPE_1__ scsp ; 
+
+ int SCSP_INTTARGET_MAIN ;
+ int SCSP_INTTARGET_SOUND ;
+ int ScspRaiseInterrupt (int,int) ;
+ TYPE_1__ scsp ;
 
 __attribute__((used)) static void ScspCheckInterrupts(u16 mask, int target)
 {

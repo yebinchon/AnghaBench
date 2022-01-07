@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CoTaskMemAlloc (int) ; 
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  strcpyW (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int strlenW (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int HRESULT ;
+
+
+ int * CoTaskMemAlloc (int) ;
+ int E_INVALIDARG ;
+ int E_OUTOFMEMORY ;
+ int S_OK ;
+ int strcpyW (int *,int const*) ;
+ int strlenW (int const*) ;
 
 __attribute__((used)) static inline HRESULT return_strval(const WCHAR *str, WCHAR **ret)
 {

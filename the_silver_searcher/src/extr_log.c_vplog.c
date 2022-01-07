@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
-#define  LOG_LEVEL_DEBUG 131 
-#define  LOG_LEVEL_ERR 130 
-#define  LOG_LEVEL_MSG 129 
-#define  LOG_LEVEL_WARN 128 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*) ; 
- unsigned int const log_threshold ; 
- int /*<<< orphan*/ * out_fd ; 
- int /*<<< orphan*/  print_mtx ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stderr ; 
- int /*<<< orphan*/  vfprintf (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int va_list ;
+typedef int FILE ;
+
+
+
+
+
+
+ int fprintf (int *,char*) ;
+ unsigned int const log_threshold ;
+ int * out_fd ;
+ int print_mtx ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int * stderr ;
+ int vfprintf (int *,char const*,int ) ;
 
 void vplog(const unsigned int level, const char *fmt, va_list args) {
     if (level < log_threshold) {
@@ -36,16 +36,16 @@ void vplog(const unsigned int level, const char *fmt, va_list args) {
     FILE *stream = out_fd;
 
     switch (level) {
-        case LOG_LEVEL_DEBUG:
+        case 131:
             fprintf(stream, "DEBUG: ");
             break;
-        case LOG_LEVEL_MSG:
+        case 129:
             fprintf(stream, "MSG: ");
             break;
-        case LOG_LEVEL_WARN:
+        case 128:
             fprintf(stream, "WARN: ");
             break;
-        case LOG_LEVEL_ERR:
+        case 130:
             stream = stderr;
             fprintf(stream, "ERR: ");
             break;

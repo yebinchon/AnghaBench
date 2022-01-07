@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- double GPU_FFT_QPUS ; 
- float* twiddles_base_32 (double,float*,double) ; 
- float* twiddles_step_32 (double,float*,double) ; 
+ double GPU_FFT_QPUS ;
+ float* twiddles_base_32 (double,float*,double) ;
+ float* twiddles_step_32 (double,float*,double) ;
 
 __attribute__((used)) static void twiddles_32k(double two_pi, float *out) {
     double N=32768;

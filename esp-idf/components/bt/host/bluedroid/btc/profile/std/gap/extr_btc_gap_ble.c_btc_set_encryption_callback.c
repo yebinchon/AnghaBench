@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tBTA_TRANSPORT ;
-typedef  int /*<<< orphan*/  tBTA_STATUS ;
-typedef  int /*<<< orphan*/  BD_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BTC_TRACE_DEBUG (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UNUSED (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tBTA_TRANSPORT ;
+typedef int tBTA_STATUS ;
+typedef int BD_ADDR ;
+
+
+ int BTC_TRACE_DEBUG (char*,int ) ;
+ int UNUSED (int ) ;
 
 __attribute__((used)) static void btc_set_encryption_callback(BD_ADDR bd_addr, tBTA_TRANSPORT transport, tBTA_STATUS enc_status)
 {

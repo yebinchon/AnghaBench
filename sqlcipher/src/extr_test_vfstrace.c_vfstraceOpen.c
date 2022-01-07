@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  zVfsName; TYPE_3__* pRootVfs; } ;
-typedef  TYPE_1__ vfstrace_info ;
+
+
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int zVfsName; TYPE_3__* pRootVfs; } ;
+typedef TYPE_1__ vfstrace_info ;
 struct TYPE_15__ {char* zFName; TYPE_5__* pReal; TYPE_1__* pInfo; } ;
-typedef  TYPE_2__ vfstrace_file ;
+typedef TYPE_2__ vfstrace_file ;
 struct TYPE_16__ {int (* xOpen ) (TYPE_3__*,char const*,TYPE_5__*,int,int*) ;scalar_t__ pAppData; } ;
-typedef  TYPE_3__ sqlite3_vfs ;
-struct TYPE_17__ {int iVersion; scalar_t__ xShmUnmap; scalar_t__ xShmBarrier; scalar_t__ xShmLock; scalar_t__ xShmMap; int /*<<< orphan*/  xDeviceCharacteristics; int /*<<< orphan*/  xSectorSize; int /*<<< orphan*/  xFileControl; int /*<<< orphan*/  xCheckReservedLock; int /*<<< orphan*/  xUnlock; int /*<<< orphan*/  xLock; int /*<<< orphan*/  xFileSize; int /*<<< orphan*/  xSync; int /*<<< orphan*/  xTruncate; int /*<<< orphan*/  xWrite; int /*<<< orphan*/  xRead; int /*<<< orphan*/  xClose; } ;
-typedef  TYPE_4__ sqlite3_io_methods ;
+typedef TYPE_3__ sqlite3_vfs ;
+struct TYPE_17__ {int iVersion; scalar_t__ xShmUnmap; scalar_t__ xShmBarrier; scalar_t__ xShmLock; scalar_t__ xShmMap; int xDeviceCharacteristics; int xSectorSize; int xFileControl; int xCheckReservedLock; int xUnlock; int xLock; int xFileSize; int xSync; int xTruncate; int xWrite; int xRead; int xClose; } ;
+typedef TYPE_4__ sqlite3_io_methods ;
 struct TYPE_18__ {TYPE_4__* pMethods; } ;
-typedef  TYPE_5__ sqlite3_file ;
+typedef TYPE_5__ sqlite3_file ;
 
-/* Variables and functions */
- char* fileTail (char const*) ; 
- int /*<<< orphan*/  memset (TYPE_4__*,int /*<<< orphan*/ ,int) ; 
- TYPE_4__* sqlite3_malloc (int) ; 
- int stub1 (TYPE_3__*,char const*,TYPE_5__*,int,int*) ; 
- int /*<<< orphan*/  vfstraceCheckReservedLock ; 
- int /*<<< orphan*/  vfstraceClose ; 
- int /*<<< orphan*/  vfstraceDeviceCharacteristics ; 
- int /*<<< orphan*/  vfstraceFileControl ; 
- int /*<<< orphan*/  vfstraceFileSize ; 
- int /*<<< orphan*/  vfstraceLock ; 
- int /*<<< orphan*/  vfstraceRead ; 
- int /*<<< orphan*/  vfstraceSectorSize ; 
- scalar_t__ vfstraceShmBarrier ; 
- scalar_t__ vfstraceShmLock ; 
- scalar_t__ vfstraceShmMap ; 
- scalar_t__ vfstraceShmUnmap ; 
- int /*<<< orphan*/  vfstraceSync ; 
- int /*<<< orphan*/  vfstraceTruncate ; 
- int /*<<< orphan*/  vfstraceUnlock ; 
- int /*<<< orphan*/  vfstraceWrite ; 
- int /*<<< orphan*/  vfstrace_print_errcode (TYPE_1__*,char*,int) ; 
- int /*<<< orphan*/  vfstrace_printf (TYPE_1__*,char*,...) ; 
+
+ char* fileTail (char const*) ;
+ int memset (TYPE_4__*,int ,int) ;
+ TYPE_4__* sqlite3_malloc (int) ;
+ int stub1 (TYPE_3__*,char const*,TYPE_5__*,int,int*) ;
+ int vfstraceCheckReservedLock ;
+ int vfstraceClose ;
+ int vfstraceDeviceCharacteristics ;
+ int vfstraceFileControl ;
+ int vfstraceFileSize ;
+ int vfstraceLock ;
+ int vfstraceRead ;
+ int vfstraceSectorSize ;
+ scalar_t__ vfstraceShmBarrier ;
+ scalar_t__ vfstraceShmLock ;
+ scalar_t__ vfstraceShmMap ;
+ scalar_t__ vfstraceShmUnmap ;
+ int vfstraceSync ;
+ int vfstraceTruncate ;
+ int vfstraceUnlock ;
+ int vfstraceWrite ;
+ int vfstrace_print_errcode (TYPE_1__*,char*,int) ;
+ int vfstrace_printf (TYPE_1__*,char*,...) ;
 
 __attribute__((used)) static int vfstraceOpen(
   sqlite3_vfs *pVfs,

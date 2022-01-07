@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct random_gather_extra {int bytes; int limit; scalar_t__ hex; } ;
 struct gather_entry {int res_bytes; int* data; } ;
 struct connection {int dummy; } ;
-typedef  int /*<<< orphan*/  EVP_CIPHER_CTX ;
+typedef int EVP_CIPHER_CTX ;
 
-/* Variables and functions */
- int* A ; 
- int /*<<< orphan*/  EVP_CIPHER_CTX_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_CIPHER_CTX_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_EncryptFinal_ex (int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  EVP_EncryptInit_ex (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  EVP_EncryptUpdate (int /*<<< orphan*/ *,int*,int*,char*,int) ; 
- int /*<<< orphan*/  EVP_aes_256_cbc () ; 
- char* R ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int return_one_key (struct connection*,char const*,char*,int) ; 
- int /*<<< orphan*/  vkprintf (int,char*) ; 
+
+ int* A ;
+ int EVP_CIPHER_CTX_cleanup (int *) ;
+ int EVP_CIPHER_CTX_init (int *) ;
+ int EVP_EncryptFinal_ex (int *,int*,int*) ;
+ int EVP_EncryptInit_ex (int *,int ,int *,char*,char*) ;
+ int EVP_EncryptUpdate (int *,int*,int*,char*,int) ;
+ int EVP_aes_256_cbc () ;
+ char* R ;
+ int memset (char*,int ,int) ;
+ int return_one_key (struct connection*,char const*,char*,int) ;
+ int vkprintf (int,char*) ;
 
 int random_merge_end_query (struct connection *c, const char *key, int key_len, void *E, struct gather_entry *data, int tot_num) {
   struct random_gather_extra *extra = E;
@@ -52,7 +52,7 @@ int random_merge_end_query (struct connection *c, const char *key, int key_len, 
 
   EVP_CIPHER_CTX e;
   EVP_CIPHER_CTX_init (&e);
-  EVP_EncryptInit_ex (&e, EVP_aes_256_cbc(), NULL, R, R + 32);
+  EVP_EncryptInit_ex (&e, EVP_aes_256_cbc(), ((void*)0), R, R + 32);
   int c_len, f_len;
 
   if (!EVP_EncryptUpdate (&e, A, &c_len, R + 64, max_bytes - 64)) {

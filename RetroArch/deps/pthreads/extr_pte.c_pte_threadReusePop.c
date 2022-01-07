@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* pthread_t ;
-struct TYPE_4__ {int /*<<< orphan*/ * prevReuse; } ;
-typedef  TYPE_1__ pte_thread_t ;
 
-/* Variables and functions */
- void* PTE_THREAD_REUSE_EMPTY ; 
- int /*<<< orphan*/  pte_osMutexLock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pte_osMutexUnlock (int /*<<< orphan*/ ) ; 
- void* pte_threadReuseBottom ; 
- void* pte_threadReuseTop ; 
- int /*<<< orphan*/  pte_thread_reuse_lock ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef TYPE_1__* pthread_t ;
+struct TYPE_4__ {int * prevReuse; } ;
+typedef TYPE_1__ pte_thread_t ;
+
+
+ void* PTE_THREAD_REUSE_EMPTY ;
+ int pte_osMutexLock (int ) ;
+ int pte_osMutexUnlock (int ) ;
+ void* pte_threadReuseBottom ;
+ void* pte_threadReuseTop ;
+ int pte_thread_reuse_lock ;
 
 pthread_t
 pte_threadReusePop (void)
 {
-   pthread_t t = NULL;
+   pthread_t t = ((void*)0);
 
    pte_osMutexLock (pte_thread_reuse_lock);
 
@@ -41,7 +41,7 @@ pte_threadReusePop (void)
       if (PTE_THREAD_REUSE_EMPTY == pte_threadReuseTop)
          pte_threadReuseBottom = PTE_THREAD_REUSE_EMPTY;
 
-      tp->prevReuse = NULL;
+      tp->prevReuse = ((void*)0);
 
       t = tp;
    }

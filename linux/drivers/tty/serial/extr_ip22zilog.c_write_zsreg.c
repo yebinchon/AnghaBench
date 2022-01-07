@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct zilog_channel {int /*<<< orphan*/  control; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZSDELAY () ; 
- int /*<<< orphan*/  writeb (unsigned char,int /*<<< orphan*/ *) ; 
+
+
+
+struct zilog_channel {int control; } ;
+
+
+ int ZSDELAY () ;
+ int writeb (unsigned char,int *) ;
 
 __attribute__((used)) static void write_zsreg(struct zilog_channel *channel,
-			unsigned char reg, unsigned char value)
+   unsigned char reg, unsigned char value)
 {
-	writeb(reg, &channel->control);
-	ZSDELAY();
-	writeb(value, &channel->control);
-	ZSDELAY();
+ writeb(reg, &channel->control);
+ ZSDELAY();
+ writeb(value, &channel->control);
+ ZSDELAY();
 }

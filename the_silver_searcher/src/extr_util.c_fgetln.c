@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int BUFSIZ ; 
- int EOF ; 
- int /*<<< orphan*/  flockfile (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  funlockfile (int /*<<< orphan*/ *) ; 
- int getc_unlocked (int /*<<< orphan*/ *) ; 
- char* realloc (char*,size_t) ; 
+
+
+
+typedef int FILE ;
+
+
+ int BUFSIZ ;
+ int EOF ;
+ int flockfile (int *) ;
+ int free (char*) ;
+ int funlockfile (int *) ;
+ int getc_unlocked (int *) ;
+ char* realloc (char*,size_t) ;
 
 char *fgetln(FILE *fp, size_t *lenp) {
-    char *buf = NULL;
+    char *buf = ((void*)0);
     int c, used = 0, len = 0;
 
     flockfile(fp);
@@ -35,7 +35,7 @@ char *fgetln(FILE *fp, size_t *lenp) {
                 funlockfile(fp);
                 if (buf)
                     free(buf);
-                return NULL;
+                return ((void*)0);
             }
             buf = newbuf;
             used = nsize;

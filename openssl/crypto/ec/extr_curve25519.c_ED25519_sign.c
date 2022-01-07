@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  nonce ;
-typedef  int /*<<< orphan*/  hash_ctx ;
-typedef  int /*<<< orphan*/  ge_p3 ;
-typedef  int /*<<< orphan*/  az ;
-typedef  int SHA512_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPENSSL_cleanse (int*,int) ; 
- int SHA512_DIGEST_LENGTH ; 
- int /*<<< orphan*/  SHA512_Final (int*,int*) ; 
- int /*<<< orphan*/  SHA512_Init (int*) ; 
- int /*<<< orphan*/  SHA512_Update (int*,int const*,size_t) ; 
- int /*<<< orphan*/  ge_p3_tobytes (int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ge_scalarmult_base (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  sc_muladd (int*,int*,int*,int*) ; 
- int /*<<< orphan*/  x25519_sc_reduce (int*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int nonce ;
+typedef int hash_ctx ;
+typedef int ge_p3 ;
+typedef int az ;
+typedef int SHA512_CTX ;
+
+
+ int OPENSSL_cleanse (int*,int) ;
+ int SHA512_DIGEST_LENGTH ;
+ int SHA512_Final (int*,int*) ;
+ int SHA512_Init (int*) ;
+ int SHA512_Update (int*,int const*,size_t) ;
+ int ge_p3_tobytes (int*,int *) ;
+ int ge_scalarmult_base (int *,int*) ;
+ int sc_muladd (int*,int*,int*,int*) ;
+ int x25519_sc_reduce (int*) ;
 
 int ED25519_sign(uint8_t *out_sig, const uint8_t *message, size_t message_len,
                  const uint8_t public_key[32], const uint8_t private_key[32])

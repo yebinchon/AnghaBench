@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void const uint32_t ;
-typedef  size_t uint16_t ;
-typedef  int ssize_t ;
-struct TYPE_2__ {size_t write_pos; int /*<<< orphan*/  fifo_lock; scalar_t__ buffer; int /*<<< orphan*/  cond_lock; int /*<<< orphan*/  cond; scalar_t__ read_pos; scalar_t__ nonblocking; int /*<<< orphan*/  running; } ;
-typedef  TYPE_1__ psp_audio_t ;
 
-/* Variables and functions */
- size_t AUDIO_BUFFER_SIZE ; 
- size_t AUDIO_BUFFER_SIZE_MASK ; 
- int /*<<< orphan*/  memcpy (scalar_t__,void const*,size_t) ; 
- int /*<<< orphan*/  scond_wait (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slock_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slock_unlock (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef void const uint32_t ;
+typedef size_t uint16_t ;
+typedef int ssize_t ;
+struct TYPE_2__ {size_t write_pos; int fifo_lock; scalar_t__ buffer; int cond_lock; int cond; scalar_t__ read_pos; scalar_t__ nonblocking; int running; } ;
+typedef TYPE_1__ psp_audio_t ;
+
+
+ size_t AUDIO_BUFFER_SIZE ;
+ size_t AUDIO_BUFFER_SIZE_MASK ;
+ int memcpy (scalar_t__,void const*,size_t) ;
+ int scond_wait (int ,int ) ;
+ int slock_lock (int ) ;
+ int slock_unlock (int ) ;
 
 __attribute__((used)) static ssize_t psp_audio_write(void *data, const void *buf, size_t size)
 {
    psp_audio_t* psp = (psp_audio_t*)data;
-   uint16_t write_pos   = psp->write_pos;
+   uint16_t write_pos = psp->write_pos;
    uint16_t sampleCount = size / sizeof(uint32_t);
 
    if (!psp->running)
@@ -59,9 +59,9 @@ __attribute__((used)) static ssize_t psp_audio_write(void *data, const void *buf
    else
       memcpy(psp->buffer + write_pos, buf, size);
 
-   write_pos      += sampleCount;
-   write_pos      &= AUDIO_BUFFER_SIZE_MASK;
-   psp->write_pos  = write_pos;
+   write_pos += sampleCount;
+   write_pos &= AUDIO_BUFFER_SIZE_MASK;
+   psp->write_pos = write_pos;
 
    slock_unlock(psp->fifo_lock);
    return size;

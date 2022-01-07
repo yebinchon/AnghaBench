@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  UPDATE_NOTIFY_PROC ;
-typedef  int /*<<< orphan*/  UPDATE_ISFOREGROUND_PROC ;
-typedef  int /*<<< orphan*/  UPDATE_CLIENT_SETTING ;
-struct TYPE_5__ {int /*<<< orphan*/  Thread; int /*<<< orphan*/  HaltEvent; void* Param; int /*<<< orphan*/  Setting; int /*<<< orphan*/  MyLanguage; int /*<<< orphan*/  MyDate; scalar_t__ MyBuild; int /*<<< orphan*/  SoftwareTitle; int /*<<< orphan*/  SoftwareName; int /*<<< orphan*/  FamilyName; int /*<<< orphan*/  ClientId; int /*<<< orphan*/ * IsForegroundCb; int /*<<< orphan*/ * Callback; } ;
-typedef  TYPE_1__ UPDATE_CLIENT ;
-typedef  int /*<<< orphan*/  UINT64 ;
-typedef  scalar_t__ UINT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  NewEvent () ; 
- int /*<<< orphan*/  NewThread (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  StrCpy (int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  UniStrCpy (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UpdateClientThreadProc ; 
- TYPE_1__* ZeroMalloc (int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef int UPDATE_NOTIFY_PROC ;
+typedef int UPDATE_ISFOREGROUND_PROC ;
+typedef int UPDATE_CLIENT_SETTING ;
+struct TYPE_5__ {int Thread; int HaltEvent; void* Param; int Setting; int MyLanguage; int MyDate; scalar_t__ MyBuild; int SoftwareTitle; int SoftwareName; int FamilyName; int ClientId; int * IsForegroundCb; int * Callback; } ;
+typedef TYPE_1__ UPDATE_CLIENT ;
+typedef int UINT64 ;
+typedef scalar_t__ UINT ;
+
+
+ int Copy (int *,int *,int) ;
+ int NewEvent () ;
+ int NewThread (int ,TYPE_1__*) ;
+ int StrCpy (int ,int,char*) ;
+ int UniStrCpy (int ,int,int *) ;
+ int UpdateClientThreadProc ;
+ TYPE_1__* ZeroMalloc (int) ;
 
 UPDATE_CLIENT *NewUpdateClient(UPDATE_NOTIFY_PROC *cb, UPDATE_ISFOREGROUND_PROC *isforeground_cb, void *param, char *family_name, char *software_name, wchar_t *software_title, UINT my_build, UINT64 my_date, char *my_lang, UPDATE_CLIENT_SETTING *current_setting, char *client_id)
 {
-	UPDATE_CLIENT *c;
-	// Validate arguments
-	if (family_name == NULL || software_title == NULL || software_name == NULL || my_build == 0 ||
-		my_lang == NULL || current_setting == NULL || cb == NULL)
-	{
-		return NULL;
-	}
+ UPDATE_CLIENT *c;
 
-	c = ZeroMalloc(sizeof(UPDATE_CLIENT));
+ if (family_name == ((void*)0) || software_title == ((void*)0) || software_name == ((void*)0) || my_build == 0 ||
+  my_lang == ((void*)0) || current_setting == ((void*)0) || cb == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	c->Callback = cb;
-	c->IsForegroundCb = isforeground_cb;
+ c = ZeroMalloc(sizeof(UPDATE_CLIENT));
 
-	StrCpy(c->ClientId, sizeof(c->ClientId), client_id);
-	StrCpy(c->FamilyName, sizeof(c->FamilyName), family_name);
-	StrCpy(c->SoftwareName, sizeof(c->SoftwareName), software_name);
-	UniStrCpy(c->SoftwareTitle, sizeof(c->SoftwareTitle), software_title);
-	c->MyBuild = my_build;
-	c->MyDate = my_date;
-	StrCpy(c->MyLanguage, sizeof(c->MyLanguage), my_lang);
+ c->Callback = cb;
+ c->IsForegroundCb = isforeground_cb;
 
-	Copy(&c->Setting, current_setting, sizeof(c->Setting));
+ StrCpy(c->ClientId, sizeof(c->ClientId), client_id);
+ StrCpy(c->FamilyName, sizeof(c->FamilyName), family_name);
+ StrCpy(c->SoftwareName, sizeof(c->SoftwareName), software_name);
+ UniStrCpy(c->SoftwareTitle, sizeof(c->SoftwareTitle), software_title);
+ c->MyBuild = my_build;
+ c->MyDate = my_date;
+ StrCpy(c->MyLanguage, sizeof(c->MyLanguage), my_lang);
 
-	c->Param = param;
+ Copy(&c->Setting, current_setting, sizeof(c->Setting));
 
-	c->HaltEvent = NewEvent();
+ c->Param = param;
 
-	// Create a thread
-	c->Thread = NewThread(UpdateClientThreadProc, c);
+ c->HaltEvent = NewEvent();
 
-	return c;
+
+ c->Thread = NewThread(UpdateClientThreadProc, c);
+
+ return c;
 }

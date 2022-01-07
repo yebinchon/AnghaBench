@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  u_int32_t ;
+
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+typedef int u_int32_t ;
 struct ccb_ataio {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATA_SEP_ATTN ; 
- int /*<<< orphan*/  CAM_DIR_NONE ; 
- int /*<<< orphan*/  CAM_DIR_OUT ; 
- int /*<<< orphan*/  ata_28bit_cmd (struct ccb_ataio*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  cam_fill_ataio (struct ccb_ataio*,int /*<<< orphan*/ ,void (*) (struct cam_periph*,union ccb*),int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int min (int,int) ; 
+
+ int ATA_SEP_ATTN ;
+ int CAM_DIR_NONE ;
+ int CAM_DIR_OUT ;
+ int ata_28bit_cmd (struct ccb_ataio*,int ,int ,int,int) ;
+ int cam_fill_ataio (struct ccb_ataio*,int ,void (*) (struct cam_periph*,union ccb*),int ,int ,int *,int,int ) ;
+ int min (int,int) ;
 
 void
 semb_write_buffer(struct ccb_ataio *ataio,
@@ -30,16 +30,16 @@ semb_write_buffer(struct ccb_ataio *ataio,
     uint8_t tag_action, uint8_t *data_ptr, uint16_t length, uint32_t timeout)
 {
 
-	length = min(length, 1020);
-	length = (length + 3) & ~3;
-	cam_fill_ataio(ataio,
-		      retries,
-		      cbfcnp,
-		      /*flags*/length ? CAM_DIR_OUT : CAM_DIR_NONE,
-		      tag_action,
-		      data_ptr,
-		      length,
-		      timeout);
-	ata_28bit_cmd(ataio, ATA_SEP_ATTN,
-	    length > 0 ? data_ptr[0] : 0, 0x80, length / 4);
+ length = min(length, 1020);
+ length = (length + 3) & ~3;
+ cam_fill_ataio(ataio,
+        retries,
+        cbfcnp,
+                 length ? CAM_DIR_OUT : CAM_DIR_NONE,
+        tag_action,
+        data_ptr,
+        length,
+        timeout);
+ ata_28bit_cmd(ataio, ATA_SEP_ATTN,
+     length > 0 ? data_ptr[0] : 0, 0x80, length / 4);
 }

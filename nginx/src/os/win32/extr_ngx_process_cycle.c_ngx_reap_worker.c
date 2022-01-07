@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_4__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_long ;
-typedef  int ngx_uint_t ;
-typedef  size_t ngx_int_t ;
-struct TYPE_5__ {int /*<<< orphan*/  log; } ;
-typedef  TYPE_1__ ngx_cycle_t ;
-struct TYPE_6__ {int /*<<< orphan*/ * handle; int /*<<< orphan*/  just_spawn; int /*<<< orphan*/  exiting; int /*<<< orphan*/ * pid; int /*<<< orphan*/ * name; int /*<<< orphan*/ * reopen; int /*<<< orphan*/ * quit; int /*<<< orphan*/ * term; } ;
-typedef  int /*<<< orphan*/ * HANDLE ;
 
-/* Variables and functions */
- scalar_t__ GetExitCodeProcess (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ NGX_INVALID_PID ; 
- int /*<<< orphan*/  NGX_LOG_ALERT ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_CORE ; 
- int /*<<< orphan*/  NGX_LOG_NOTICE ; 
- int /*<<< orphan*/  ngx_close_handle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_errno ; 
- size_t ngx_last_process ; 
- int /*<<< orphan*/  ngx_log_debug5 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,size_t,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,...) ; 
- TYPE_4__* ngx_processes ; 
- int /*<<< orphan*/  ngx_quit ; 
- scalar_t__ ngx_spawn_process (TYPE_1__*,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  ngx_terminate ; 
+
+typedef struct TYPE_6__ TYPE_4__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u_long ;
+typedef int ngx_uint_t ;
+typedef size_t ngx_int_t ;
+struct TYPE_5__ {int log; } ;
+typedef TYPE_1__ ngx_cycle_t ;
+struct TYPE_6__ {int * handle; int just_spawn; int exiting; int * pid; int * name; int * reopen; int * quit; int * term; } ;
+typedef int * HANDLE ;
+
+
+ scalar_t__ GetExitCodeProcess (int *,int *) ;
+ scalar_t__ NGX_INVALID_PID ;
+ int NGX_LOG_ALERT ;
+ int NGX_LOG_DEBUG_CORE ;
+ int NGX_LOG_NOTICE ;
+ int ngx_close_handle (int *) ;
+ int ngx_errno ;
+ size_t ngx_last_process ;
+ int ngx_log_debug5 (int ,int ,int ,char*,size_t,int *,int *,int ,int ) ;
+ int ngx_log_error (int ,int ,int ,char*,int *,...) ;
+ TYPE_4__* ngx_processes ;
+ int ngx_quit ;
+ scalar_t__ ngx_spawn_process (TYPE_1__*,int *,size_t) ;
+ int ngx_terminate ;
 
 __attribute__((used)) static ngx_uint_t
 ngx_reap_worker(ngx_cycle_t *cycle, HANDLE h)
 {
-    u_long     code;
-    ngx_int_t  n;
+    u_long code;
+    ngx_int_t n;
 
     for (n = 0; n < ngx_last_process; n++) {
 
@@ -63,10 +63,10 @@ ngx_reap_worker(ngx_cycle_t *cycle, HANDLE h)
         ngx_close_handle(ngx_processes[n].term);
         ngx_close_handle(h);
 
-        ngx_processes[n].handle = NULL;
-        ngx_processes[n].term = NULL;
-        ngx_processes[n].quit = NULL;
-        ngx_processes[n].reopen = NULL;
+        ngx_processes[n].handle = ((void*)0);
+        ngx_processes[n].term = ((void*)0);
+        ngx_processes[n].quit = ((void*)0);
+        ngx_processes[n].reopen = ((void*)0);
 
         if (!ngx_processes[n].exiting && !ngx_terminate && !ngx_quit) {
 

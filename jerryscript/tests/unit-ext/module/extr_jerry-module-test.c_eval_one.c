@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jerry_value_t ;
-typedef  int /*<<< orphan*/  jerry_char_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JERRY_PARSE_STRICT_MODE ; 
- int /*<<< orphan*/  assert_number (int /*<<< orphan*/ ,double) ; 
- int /*<<< orphan*/  jerry_eval (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+
+
+typedef int jerry_value_t ;
+typedef int jerry_char_t ;
+
+
+ int JERRY_PARSE_STRICT_MODE ;
+ int assert_number (int ,double) ;
+ int jerry_eval (int const*,int ,int ) ;
+ int jerry_release_value (int ) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static void
 eval_one (const char *the_string, double expected_result)

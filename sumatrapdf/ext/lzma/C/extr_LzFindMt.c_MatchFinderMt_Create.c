@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UInt32 ;
-struct TYPE_9__ {int historySize; int* hashBuf; int* btBuf; int /*<<< orphan*/  btSync; int /*<<< orphan*/  hashSync; int /*<<< orphan*/ * MatchFinder; } ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int UInt32 ;
+struct TYPE_9__ {int historySize; int* hashBuf; int* btBuf; int btSync; int hashSync; int * MatchFinder; } ;
 struct TYPE_8__ {scalar_t__ (* Alloc ) (TYPE_1__*,int) ;} ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  TYPE_1__ ISzAlloc ;
-typedef  TYPE_2__ CMatchFinderMt ;
-typedef  int /*<<< orphan*/  CMatchFinder ;
+typedef int SRes ;
+typedef TYPE_1__ ISzAlloc ;
+typedef TYPE_2__ CMatchFinderMt ;
+typedef int CMatchFinder ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BtThreadFunc2 ; 
- int /*<<< orphan*/  HashThreadFunc2 ; 
- int /*<<< orphan*/  MatchFinder_Create (int /*<<< orphan*/ *,int,int,int,int,TYPE_1__*) ; 
- int /*<<< orphan*/  MtSync_Create (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RINOK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SZ_ERROR_MEM ; 
- int /*<<< orphan*/  SZ_ERROR_PARAM ; 
- int /*<<< orphan*/  SZ_OK ; 
- int kBtBufferSize ; 
- int kHashBufferSize ; 
- int kMtBtBlockSize ; 
- int /*<<< orphan*/  kMtBtNumBlocks ; 
- scalar_t__ kMtHashBlockSize ; 
- int /*<<< orphan*/  kMtHashNumBlocks ; 
- scalar_t__ stub1 (TYPE_1__*,int) ; 
+
+ int BtThreadFunc2 ;
+ int HashThreadFunc2 ;
+ int MatchFinder_Create (int *,int,int,int,int,TYPE_1__*) ;
+ int MtSync_Create (int *,int ,TYPE_2__*,int ) ;
+ int RINOK (int ) ;
+ int SZ_ERROR_MEM ;
+ int SZ_ERROR_PARAM ;
+ int SZ_OK ;
+ int kBtBufferSize ;
+ int kHashBufferSize ;
+ int kMtBtBlockSize ;
+ int kMtBtNumBlocks ;
+ scalar_t__ kMtHashBlockSize ;
+ int kMtHashNumBlocks ;
+ scalar_t__ stub1 (TYPE_1__*,int) ;
 
 SRes MatchFinderMt_Create(CMatchFinderMt *p, UInt32 historySize, UInt32 keepAddBufferBefore,
     UInt32 matchMaxLen, UInt32 keepAddBufferAfter, ISzAlloc *alloc)

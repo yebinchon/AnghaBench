@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-struct TYPE_5__ {int /*<<< orphan*/  value; } ;
-typedef  TYPE_1__ token_t ;
-typedef  scalar_t__ int32_t ;
-typedef  int /*<<< orphan*/  conn ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_5__ {int value; } ;
+typedef TYPE_1__ token_t ;
+typedef scalar_t__ int32_t ;
+typedef int conn ;
 struct TYPE_6__ {int hot_lru_pct; int warm_lru_pct; double hot_max_factor; double warm_max_factor; int lru_segmented; int temp_lru; scalar_t__ temporary_ttl; scalar_t__ lru_maintainer_thread; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  out_string (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  safe_strtod (int /*<<< orphan*/ ,double*) ; 
- int /*<<< orphan*/  safe_strtol (int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  safe_strtoul (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  set_noreply_maybe (int /*<<< orphan*/ *,TYPE_1__*,size_t const) ; 
- TYPE_2__ settings ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
+
+ int out_string (int *,char*) ;
+ int safe_strtod (int ,double*) ;
+ int safe_strtol (int ,scalar_t__*) ;
+ int safe_strtoul (int ,int*) ;
+ int set_noreply_maybe (int *,TYPE_1__*,size_t const) ;
+ TYPE_2__ settings ;
+ scalar_t__ strcmp (int ,char*) ;
 
 __attribute__((used)) static void process_lru_command(conn *c, token_t *tokens, const size_t ntokens) {
     uint32_t pct_hot;
@@ -59,10 +59,10 @@ __attribute__((used)) static void process_lru_command(conn *c, token_t *tokens, 
     } else if (strcmp(tokens[1].value, "mode") == 0 && ntokens >= 4 &&
                settings.lru_maintainer_thread) {
         if (strcmp(tokens[2].value, "flat") == 0) {
-            settings.lru_segmented = false;
+            settings.lru_segmented = 0;
             out_string(c, "OK");
         } else if (strcmp(tokens[2].value, "segmented") == 0) {
-            settings.lru_segmented = true;
+            settings.lru_segmented = 1;
             out_string(c, "OK");
         } else {
             out_string(c, "ERROR");
@@ -73,9 +73,9 @@ __attribute__((used)) static void process_lru_command(conn *c, token_t *tokens, 
             out_string(c, "ERROR");
         } else {
             if (ttl < 0) {
-                settings.temp_lru = false;
+                settings.temp_lru = 0;
             } else {
-                settings.temp_lru = true;
+                settings.temp_lru = 1;
                 settings.temporary_ttl = ttl;
             }
             out_string(c, "OK");

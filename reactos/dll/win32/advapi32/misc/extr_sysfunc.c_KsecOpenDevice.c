@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  int /*<<< orphan*/  OBJECT_ATTRIBUTES ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  IO_STATUS_BLOCK ;
-typedef  int /*<<< orphan*/  HANDLE ;
 
-/* Variables and functions */
- int FILE_READ_DATA ; 
- int FILE_SHARE_DELETE ; 
- int FILE_SHARE_READ ; 
- int FILE_SHARE_WRITE ; 
- int /*<<< orphan*/  FILE_SYNCHRONOUS_IO_NONALERT ; 
- int /*<<< orphan*/  InitializeObjectAttributes (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * InterlockedCompareExchangePointer (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KsecDeviceHandle ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtClose (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtOpenFile (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OBJ_CASE_INSENSITIVE ; 
- int /*<<< orphan*/  RTL_CONSTANT_STRING (char*) ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int SYNCHRONIZE ; 
+
+
+
+typedef int UNICODE_STRING ;
+typedef int OBJECT_ATTRIBUTES ;
+typedef int NTSTATUS ;
+typedef int IO_STATUS_BLOCK ;
+typedef int HANDLE ;
+
+
+ int FILE_READ_DATA ;
+ int FILE_SHARE_DELETE ;
+ int FILE_SHARE_READ ;
+ int FILE_SHARE_WRITE ;
+ int FILE_SYNCHRONOUS_IO_NONALERT ;
+ int InitializeObjectAttributes (int *,int *,int ,int *,int *) ;
+ int * InterlockedCompareExchangePointer (int *,int ,int *) ;
+ int KsecDeviceHandle ;
+ int NT_SUCCESS (int ) ;
+ int NtClose (int ) ;
+ int NtOpenFile (int *,int,int *,int *,int,int ) ;
+ int OBJ_CASE_INSENSITIVE ;
+ int RTL_CONSTANT_STRING (char*) ;
+ int STATUS_SUCCESS ;
+ int SYNCHRONIZE ;
 
 __attribute__((used)) static
 NTSTATUS
@@ -46,8 +46,8 @@ KsecOpenDevice()
     InitializeObjectAttributes(&ObjectAttributes,
                                &DeviceName,
                                OBJ_CASE_INSENSITIVE,
-                               NULL,
-                               NULL);
+                               ((void*)0),
+                               ((void*)0));
     Status = NtOpenFile(&DeviceHandle,
                         FILE_READ_DATA | SYNCHRONIZE,
                         &ObjectAttributes,
@@ -59,7 +59,7 @@ KsecOpenDevice()
         return Status;
     }
 
-    if (InterlockedCompareExchangePointer(&KsecDeviceHandle, DeviceHandle, NULL) != NULL)
+    if (InterlockedCompareExchangePointer(&KsecDeviceHandle, DeviceHandle, ((void*)0)) != ((void*)0))
     {
         NtClose(DeviceHandle);
     }

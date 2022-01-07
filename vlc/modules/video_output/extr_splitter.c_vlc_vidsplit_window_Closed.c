@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {struct vlc_vidsplit_part* sys; } ;
 struct TYPE_5__ {TYPE_1__ owner; } ;
-typedef  TYPE_2__ vout_window_t ;
-typedef  int /*<<< orphan*/  vout_display_t ;
-struct vlc_vidsplit_part {int /*<<< orphan*/  lock; int /*<<< orphan*/ * display; } ;
+typedef TYPE_2__ vout_window_t ;
+typedef int vout_display_t ;
+struct vlc_vidsplit_part {int lock; int * display; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  vlc_sem_post (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_sem_wait (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vout_display_Delete (int /*<<< orphan*/ *) ; 
+
+ int vlc_sem_post (int *) ;
+ int vlc_sem_wait (int *) ;
+ int vout_display_Delete (int *) ;
 
 __attribute__((used)) static void vlc_vidsplit_window_Closed(vout_window_t *wnd)
 {
@@ -30,9 +30,9 @@ __attribute__((used)) static void vlc_vidsplit_window_Closed(vout_window_t *wnd)
 
     vlc_sem_wait(&part->lock);
     display = part->display;
-    part->display = NULL;
+    part->display = ((void*)0);
     vlc_sem_post(&part->lock);
 
-    if (display != NULL)
+    if (display != ((void*)0))
         vout_display_Delete(display);
 }

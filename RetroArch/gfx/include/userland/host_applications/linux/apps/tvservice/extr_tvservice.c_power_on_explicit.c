@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  scalar_t__ HDMI_RES_GROUP_T ;
 
-/* Variables and functions */
- scalar_t__ HDMI_RES_GROUP_CEA ; 
- scalar_t__ HDMI_RES_GROUP_DMT ; 
- int /*<<< orphan*/  LOG_ERR (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOG_STD (char*,char*,int /*<<< orphan*/ ) ; 
- int vc_tv_hdmi_power_on_explicit (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+typedef scalar_t__ HDMI_RES_GROUP_T ;
+
+
+ scalar_t__ HDMI_RES_GROUP_CEA ;
+ scalar_t__ HDMI_RES_GROUP_DMT ;
+ int LOG_ERR (char*,char*,int ) ;
+ int LOG_STD (char*,char*,int ) ;
+ int vc_tv_hdmi_power_on_explicit (int ,scalar_t__,int ) ;
 
 __attribute__((used)) static int power_on_explicit( HDMI_RES_GROUP_T group,
                               uint32_t mode, uint32_t drive )

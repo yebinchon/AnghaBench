@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  esp_err_t ;
-typedef  scalar_t__ esp_efuse_block_t ;
 
-/* Variables and functions */
- scalar_t__ EFUSE_BLK1 ; 
- scalar_t__ EFUSE_BLK10 ; 
- scalar_t__ EFUSE_BLK2 ; 
- scalar_t__ EFUSE_BLK3 ; 
- scalar_t__ EFUSE_BLK4 ; 
- scalar_t__ EFUSE_BLK5 ; 
- scalar_t__ EFUSE_BLK6 ; 
- scalar_t__ EFUSE_BLK7 ; 
- scalar_t__ EFUSE_BLK8 ; 
- scalar_t__ EFUSE_BLK9 ; 
- int /*<<< orphan*/  ESP_EFUSE_WR_DIS_BLK1 ; 
- int /*<<< orphan*/  ESP_EFUSE_WR_DIS_KEY0 ; 
- int /*<<< orphan*/  ESP_EFUSE_WR_DIS_KEY1 ; 
- int /*<<< orphan*/  ESP_EFUSE_WR_DIS_KEY2 ; 
- int /*<<< orphan*/  ESP_EFUSE_WR_DIS_KEY3 ; 
- int /*<<< orphan*/  ESP_EFUSE_WR_DIS_KEY4 ; 
- int /*<<< orphan*/  ESP_EFUSE_WR_DIS_KEY5 ; 
- int /*<<< orphan*/  ESP_EFUSE_WR_DIS_SYS_DATA_PART1 ; 
- int /*<<< orphan*/  ESP_EFUSE_WR_DIS_SYS_DATA_PART2 ; 
- int /*<<< orphan*/  ESP_EFUSE_WR_DIS_USER_DATA ; 
- int /*<<< orphan*/  ESP_ERR_NOT_SUPPORTED ; 
- int /*<<< orphan*/  esp_efuse_write_field_cnt (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int esp_err_t ;
+typedef scalar_t__ esp_efuse_block_t ;
+
+
+ scalar_t__ EFUSE_BLK1 ;
+ scalar_t__ EFUSE_BLK10 ;
+ scalar_t__ EFUSE_BLK2 ;
+ scalar_t__ EFUSE_BLK3 ;
+ scalar_t__ EFUSE_BLK4 ;
+ scalar_t__ EFUSE_BLK5 ;
+ scalar_t__ EFUSE_BLK6 ;
+ scalar_t__ EFUSE_BLK7 ;
+ scalar_t__ EFUSE_BLK8 ;
+ scalar_t__ EFUSE_BLK9 ;
+ int ESP_EFUSE_WR_DIS_BLK1 ;
+ int ESP_EFUSE_WR_DIS_KEY0 ;
+ int ESP_EFUSE_WR_DIS_KEY1 ;
+ int ESP_EFUSE_WR_DIS_KEY2 ;
+ int ESP_EFUSE_WR_DIS_KEY3 ;
+ int ESP_EFUSE_WR_DIS_KEY4 ;
+ int ESP_EFUSE_WR_DIS_KEY5 ;
+ int ESP_EFUSE_WR_DIS_SYS_DATA_PART1 ;
+ int ESP_EFUSE_WR_DIS_SYS_DATA_PART2 ;
+ int ESP_EFUSE_WR_DIS_USER_DATA ;
+ int ESP_ERR_NOT_SUPPORTED ;
+ int esp_efuse_write_field_cnt (int ,int) ;
 
 esp_err_t esp_efuse_set_write_protect(esp_efuse_block_t blk)
 {

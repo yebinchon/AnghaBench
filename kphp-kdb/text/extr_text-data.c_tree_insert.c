@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int y; int x; struct TYPE_6__* right; struct TYPE_6__* left; } ;
-typedef  TYPE_1__ tree_t ;
+typedef TYPE_1__ tree_t ;
 
-/* Variables and functions */
- TYPE_1__* NewestNode ; 
- TYPE_1__* new_tree_node (int,int,void*) ; 
+
+ TYPE_1__* NewestNode ;
+ TYPE_1__* new_tree_node (int,int,void*) ;
 
 __attribute__((used)) static tree_t *tree_insert (tree_t *T, int x, int y, void *data) {
   tree_t *Root = T, **U = &Root, **L, **R;

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ should_resize; } ;
-typedef  TYPE_1__ gl_t ;
+typedef TYPE_1__ gl_t ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void gfx_ctx_ps3_check_window(void *data, bool *quit,
       bool *resize, unsigned *width, unsigned *height,
@@ -22,9 +22,9 @@ __attribute__((used)) static void gfx_ctx_ps3_check_window(void *data, bool *qui
 {
    gl_t *gl = data;
 
-   *quit    = false;
-   *resize  = false;
+   *quit = 0;
+   *resize = 0;
 
    if (gl->should_resize)
-      *resize = true;
+      *resize = 1;
 }

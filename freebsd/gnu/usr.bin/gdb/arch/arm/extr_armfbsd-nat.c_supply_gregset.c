@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct reg {int /*<<< orphan*/  r_pc; int /*<<< orphan*/  r_cpsr; int /*<<< orphan*/  r_lr; int /*<<< orphan*/  r_sp; int /*<<< orphan*/ * r; } ;
-typedef  int /*<<< orphan*/  CORE_ADDR ;
 
-/* Variables and functions */
- int ARM_A1_REGNUM ; 
- int ARM_LR_REGNUM ; 
- int ARM_PC_REGNUM ; 
- int ARM_PS_REGNUM ; 
- int ARM_SP_REGNUM ; 
- scalar_t__ arm_apcs_32 ; 
- int /*<<< orphan*/  supply_register (int,char*) ; 
+
+
+
+struct reg {int r_pc; int r_cpsr; int r_lr; int r_sp; int * r; } ;
+typedef int CORE_ADDR ;
+
+
+ int ARM_A1_REGNUM ;
+ int ARM_LR_REGNUM ;
+ int ARM_PC_REGNUM ;
+ int ARM_PS_REGNUM ;
+ int ARM_SP_REGNUM ;
+ scalar_t__ arm_apcs_32 ;
+ int supply_register (int,char*) ;
 
 void
 supply_gregset (struct reg *gregset)
@@ -28,7 +28,7 @@ supply_gregset (struct reg *gregset)
   int regno;
   CORE_ADDR r_pc;
 
-  /* Integer registers.  */
+
   for (regno = ARM_A1_REGNUM; regno < ARM_SP_REGNUM; regno++)
     supply_register (regno, (char *) &gregset->r[regno]);
 

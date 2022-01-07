@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_2__ {int core_hw_context_enable; } ;
-typedef  TYPE_1__ gfx_ctx_x_data_t ;
+typedef TYPE_1__ gfx_ctx_x_data_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIT32_GET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GFX_CTX_FLAGS_ADAPTIVE_VSYNC ; 
- int /*<<< orphan*/  GFX_CTX_FLAGS_GL_CORE_CONTEXT ; 
- int /*<<< orphan*/  GFX_CTX_FLAGS_MULTISAMPLING ; 
-#define  GFX_CTX_NONE 130 
-#define  GFX_CTX_OPENGL_API 129 
-#define  GFX_CTX_OPENGL_ES_API 128 
- int x_adaptive_vsync ; 
- int x_api ; 
- int x_enable_msaa ; 
+
+ int BIT32_GET (int ,int ) ;
+ int GFX_CTX_FLAGS_ADAPTIVE_VSYNC ;
+ int GFX_CTX_FLAGS_GL_CORE_CONTEXT ;
+ int GFX_CTX_FLAGS_MULTISAMPLING ;
+
+
+
+ int x_adaptive_vsync ;
+ int x_api ;
+ int x_enable_msaa ;
 
 __attribute__((used)) static void gfx_ctx_x_set_flags(void *data, uint32_t flags)
 {
@@ -33,16 +33,16 @@ __attribute__((used)) static void gfx_ctx_x_set_flags(void *data, uint32_t flags
 
    switch (x_api)
    {
-      case GFX_CTX_OPENGL_API:
-      case GFX_CTX_OPENGL_ES_API:
+      case 129:
+      case 128:
          if (BIT32_GET(flags, GFX_CTX_FLAGS_ADAPTIVE_VSYNC))
-               x_adaptive_vsync = true;
+               x_adaptive_vsync = 1;
          if (BIT32_GET(flags, GFX_CTX_FLAGS_GL_CORE_CONTEXT))
-            x->core_hw_context_enable = true;
+            x->core_hw_context_enable = 1;
          if (BIT32_GET(flags, GFX_CTX_FLAGS_MULTISAMPLING))
-            x_enable_msaa = true;
+            x_enable_msaa = 1;
          break;
-      case GFX_CTX_NONE:
+      case 130:
       default:
          break;
    }

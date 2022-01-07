@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  G_FILE_TEST_IS_REGULAR ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  appimage_get_elf_section_offset_and_length (char const*,char const*,unsigned long*,unsigned long*) ; 
- char* appimage_hexlify (char*,int const) ; 
- int /*<<< orphan*/  appimage_type2_digest_md5 (char const*,char*) ; 
- scalar_t__ compare_byte_buffers (char*,char*,int const) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int const fread (char*,int,int const,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ fseek (int /*<<< orphan*/ *,unsigned long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_file_test (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int FILE ;
+
+
+ int G_FILE_TEST_IS_REGULAR ;
+ int SEEK_SET ;
+ int appimage_get_elf_section_offset_and_length (char const*,char const*,unsigned long*,unsigned long*) ;
+ char* appimage_hexlify (char*,int const) ;
+ int appimage_type2_digest_md5 (char const*,char*) ;
+ scalar_t__ compare_byte_buffers (char*,char*,int const) ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int const fread (char*,int,int const,int *) ;
+ int free (char*) ;
+ scalar_t__ fseek (int *,unsigned long,int ) ;
+ int g_file_test (char const*,int ) ;
+ int printf (char*,...) ;
+ int stderr ;
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
@@ -44,7 +44,7 @@ int main(int argc, char* argv[]) {
 
     static const int digest_size = 16;
 
-    // first, calculate MD5 digest using algorithm in libappimage
+
     char expected_digest[digest_size];
 
     if (!appimage_type2_digest_md5(fname, expected_digest)) {
@@ -52,7 +52,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // print hex encoded digest
+
     char* hexlified_expected_digest = appimage_hexlify(expected_digest, digest_size);
     printf("calculated: %s\n", hexlified_expected_digest);
     free(hexlified_expected_digest);
@@ -77,7 +77,7 @@ int main(int argc, char* argv[]) {
     char embedded_digest[digest_size];
     FILE* fp = fopen(fname, "r");
 
-    if (fp == NULL) {
+    if (fp == ((void*)0)) {
         fprintf(stderr, "Failed to open AppImage for writing");
         return 1;
     }

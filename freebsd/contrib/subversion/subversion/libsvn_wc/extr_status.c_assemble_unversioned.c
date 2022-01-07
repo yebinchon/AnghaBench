@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {scalar_t__ actual_kind; int /*<<< orphan*/ * changelist; scalar_t__ conflicted; scalar_t__ ood_kind; void* ood_changed_rev; void* changed_rev; void* revision; void* node_status; void* repos_prop_status; void* repos_text_status; void* repos_node_status; void* prop_status; void* text_status; void* filesize; int /*<<< orphan*/  depth; int /*<<< orphan*/  kind; } ;
-typedef  TYPE_1__ svn_wc_status3_t ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {scalar_t__ actual_kind; int * changelist; scalar_t__ conflicted; scalar_t__ ood_kind; void* ood_changed_rev; void* changed_rev; void* revision; void* node_status; void* repos_prop_status; void* repos_text_status; void* repos_node_status; void* prop_status; void* text_status; void* filesize; int depth; int kind; } ;
+typedef TYPE_1__ svn_wc_status3_t ;
 struct TYPE_8__ {TYPE_1__ s; } ;
-typedef  TYPE_2__ svn_wc__internal_status_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
+typedef TYPE_2__ svn_wc__internal_status_t ;
+typedef int svn_wc__db_t ;
 struct TYPE_9__ {scalar_t__ kind; void* filesize; scalar_t__ special; } ;
-typedef  TYPE_3__ svn_io_dirent2_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_3__ svn_io_dirent2_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- void* SVN_INVALID_FILESIZE ; 
- void* SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- TYPE_2__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  svn_depth_unknown ; 
- scalar_t__ svn_node_file ; 
- scalar_t__ svn_node_none ; 
- scalar_t__ svn_node_symlink ; 
- int /*<<< orphan*/  svn_node_unknown ; 
- void* svn_wc_status_conflicted ; 
- void* svn_wc_status_ignored ; 
- void* svn_wc_status_none ; 
- void* svn_wc_status_unversioned ; 
+
+ void* SVN_INVALID_FILESIZE ;
+ void* SVN_INVALID_REVNUM ;
+ int * SVN_NO_ERROR ;
+ TYPE_2__* apr_pcalloc (int *,int) ;
+ int svn_depth_unknown ;
+ scalar_t__ svn_node_file ;
+ scalar_t__ svn_node_none ;
+ scalar_t__ svn_node_symlink ;
+ int svn_node_unknown ;
+ void* svn_wc_status_conflicted ;
+ void* svn_wc_status_ignored ;
+ void* svn_wc_status_none ;
+ void* svn_wc_status_unversioned ;
 
 __attribute__((used)) static svn_error_t *
 assemble_unversioned(svn_wc__internal_status_t **status,
@@ -52,12 +52,12 @@ assemble_unversioned(svn_wc__internal_status_t **status,
   svn_wc__internal_status_t *inner_status;
   svn_wc_status3_t *stat;
 
-  /* return a fairly blank structure. */
+
   inner_status = apr_pcalloc(result_pool, sizeof(*inner_status));
   stat = &inner_status->s;
 
-  /*stat->versioned = FALSE;*/
-  stat->kind = svn_node_unknown; /* not versioned */
+
+  stat->kind = svn_node_unknown;
   stat->depth = svn_depth_unknown;
   if (dirent)
     {
@@ -80,11 +80,11 @@ assemble_unversioned(svn_wc__internal_status_t **status,
   stat->repos_text_status = svn_wc_status_none;
   stat->repos_prop_status = svn_wc_status_none;
 
-  /* If this path has no entry, but IS present on disk, it's
-     unversioned.  If this file is being explicitly ignored (due
-     to matching an ignore-pattern), the node_status is set to
-     svn_wc_status_ignored.  Otherwise the node_status is set to
-     svn_wc_status_unversioned. */
+
+
+
+
+
   if (dirent && dirent->kind != svn_node_none)
     {
       if (is_ignored)
@@ -94,8 +94,8 @@ assemble_unversioned(svn_wc__internal_status_t **status,
     }
   else if (tree_conflicted)
     {
-      /* If this path has no entry, is NOT present on disk, and IS a
-         tree conflict victim, report it as conflicted. */
+
+
       stat->node_status = svn_wc_status_conflicted;
     }
 
@@ -104,10 +104,10 @@ assemble_unversioned(svn_wc__internal_status_t **status,
   stat->ood_changed_rev = SVN_INVALID_REVNUM;
   stat->ood_kind = svn_node_none;
 
-  /* For the case of an incoming delete to a locally deleted path during
-     an update, we get a tree conflict. */
+
+
   stat->conflicted = tree_conflicted;
-  stat->changelist = NULL;
+  stat->changelist = ((void*)0);
 
   *status = inner_status;
   return SVN_NO_ERROR;

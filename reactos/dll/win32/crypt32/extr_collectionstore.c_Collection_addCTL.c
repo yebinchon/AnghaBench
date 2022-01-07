@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/ * ptr; } ;
+
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int * ptr; } ;
 struct TYPE_14__ {TYPE_1__ u; } ;
 struct TYPE_13__ {TYPE_3__ base; } ;
-typedef  TYPE_2__ ctl_t ;
-typedef  TYPE_3__ context_t ;
-typedef  int /*<<< orphan*/  WINE_STORE_LIST_ENTRY ;
-typedef  int /*<<< orphan*/  WINE_COLLECTIONSTORE ;
-typedef  int /*<<< orphan*/  WINECRYPT_CERTSTORE ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_2__ ctl_t ;
+typedef TYPE_3__ context_t ;
+typedef int WINE_STORE_LIST_ENTRY ;
+typedef int WINE_COLLECTIONSTORE ;
+typedef int WINECRYPT_CERTSTORE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPT_CollectionAddContext (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_3__*,TYPE_3__*,TYPE_3__**) ; 
- scalar_t__ CRYPT_CollectionCreateContextFromChild (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  Context_Release (TYPE_3__*) ; 
- int /*<<< orphan*/  ctls ; 
- int /*<<< orphan*/  offsetof (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  store_vtbl_t ; 
+
+ int CRYPT_CollectionAddContext (int *,int ,TYPE_3__*,TYPE_3__*,TYPE_3__**) ;
+ scalar_t__ CRYPT_CollectionCreateContextFromChild (int *,int *,TYPE_3__*) ;
+ int Context_Release (TYPE_3__*) ;
+ int ctls ;
+ int offsetof (int ,int ) ;
+ int store_vtbl_t ;
 
 __attribute__((used)) static BOOL Collection_addCTL(WINECRYPT_CERTSTORE *store, context_t *ctl,
  context_t *toReplace, context_t **ppStoreContext, BOOL use_link)
 {
     BOOL ret;
-    context_t *childContext = NULL;
+    context_t *childContext = ((void*)0);
     WINE_COLLECTIONSTORE *cs = (WINE_COLLECTIONSTORE*)store;
 
     ret = CRYPT_CollectionAddContext(cs, offsetof(store_vtbl_t, ctls),

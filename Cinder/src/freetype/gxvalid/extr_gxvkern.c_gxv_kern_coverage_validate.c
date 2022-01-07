@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GXV_kern_Dialect ;
-typedef  int /*<<< orphan*/  GXV_Validator ;
-typedef  int /*<<< orphan*/  FT_UShort ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GXV_EXIT ; 
- int /*<<< orphan*/  GXV_NAME_ENTER (char*) ; 
- int /*<<< orphan*/  GXV_TRACE (char*) ; 
- scalar_t__ KERN_ALLOWS_APPLE (int /*<<< orphan*/ ) ; 
- scalar_t__ KERN_ALLOWS_MS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  KERN_DIALECT_APPLE ; 
- int /*<<< orphan*/  KERN_DIALECT_MS ; 
- int /*<<< orphan*/  KERN_DIALECT_UNKNOWN ; 
- scalar_t__ KERN_IS_CLASSIC (int /*<<< orphan*/ ) ; 
- scalar_t__ KERN_IS_NEW (int /*<<< orphan*/ ) ; 
- scalar_t__ gxv_kern_coverage_classic_apple_validate (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ gxv_kern_coverage_classic_microsoft_validate (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ gxv_kern_coverage_new_apple_validate (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int GXV_kern_Dialect ;
+typedef int GXV_Validator ;
+typedef int FT_UShort ;
+
+
+ int GXV_EXIT ;
+ int GXV_NAME_ENTER (char*) ;
+ int GXV_TRACE (char*) ;
+ scalar_t__ KERN_ALLOWS_APPLE (int ) ;
+ scalar_t__ KERN_ALLOWS_MS (int ) ;
+ int KERN_DIALECT_APPLE ;
+ int KERN_DIALECT_MS ;
+ int KERN_DIALECT_UNKNOWN ;
+ scalar_t__ KERN_IS_CLASSIC (int ) ;
+ scalar_t__ KERN_IS_NEW (int ) ;
+ scalar_t__ gxv_kern_coverage_classic_apple_validate (int ,int *,int ) ;
+ scalar_t__ gxv_kern_coverage_classic_microsoft_validate (int ,int *,int ) ;
+ scalar_t__ gxv_kern_coverage_new_apple_validate (int ,int *,int ) ;
 
 __attribute__((used)) static GXV_kern_Dialect
-  gxv_kern_coverage_validate( FT_UShort      coverage,
-                              FT_UShort*     format,
-                              GXV_Validator  gxvalid )
+  gxv_kern_coverage_validate( FT_UShort coverage,
+                              FT_UShort* format,
+                              GXV_Validator gxvalid )
   {
-    GXV_kern_Dialect  result = KERN_DIALECT_UNKNOWN;
+    GXV_kern_Dialect result = KERN_DIALECT_UNKNOWN;
 
 
     GXV_NAME_ENTER( "validating coverage" );

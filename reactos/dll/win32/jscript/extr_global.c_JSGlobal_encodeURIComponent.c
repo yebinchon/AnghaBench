@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vdisp_t ;
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  scalar_t__ WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
-typedef  int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_UTF8 ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JS_E_INVALID_URI_CHAR ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__ const*,int,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- void* int_to_char (char) ; 
- scalar_t__ is_uri_unescaped (scalar_t__ const) ; 
- int /*<<< orphan*/ * jsstr_alloc_buf (int,scalar_t__**) ; 
- int /*<<< orphan*/  jsstr_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * jsstr_undefined () ; 
- int /*<<< orphan*/  jsval_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  throw_uri_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  to_flat_string (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **,scalar_t__ const**) ; 
+
+
+
+typedef int vdisp_t ;
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int jsstr_t ;
+typedef int buf ;
+typedef int WORD ;
+typedef scalar_t__ WCHAR ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef int BYTE ;
+
+
+ int CP_UTF8 ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int JS_E_INVALID_URI_CHAR ;
+ int S_OK ;
+ int TRACE (char*) ;
+ int WideCharToMultiByte (int ,int ,scalar_t__ const*,int,char*,int,int *,int *) ;
+ void* int_to_char (char) ;
+ scalar_t__ is_uri_unescaped (scalar_t__ const) ;
+ int * jsstr_alloc_buf (int,scalar_t__**) ;
+ int jsstr_release (int *) ;
+ int * jsstr_undefined () ;
+ int jsval_string (int *) ;
+ int throw_uri_error (int *,int ,int *) ;
+ int to_flat_string (int *,int ,int **,scalar_t__ const**) ;
 
 __attribute__((used)) static HRESULT JSGlobal_encodeURIComponent(script_ctx_t *ctx, vdisp_t *jsthis, WORD flags, unsigned argc, jsval_t *argv,
         jsval_t *r)
@@ -64,10 +64,10 @@ __attribute__((used)) static HRESULT JSGlobal_encodeURIComponent(script_ctx_t *c
         if(is_uri_unescaped(*ptr))
             len++;
         else {
-            size = WideCharToMultiByte(CP_UTF8, 0, ptr, 1, NULL, 0, NULL, NULL);
+            size = WideCharToMultiByte(CP_UTF8, 0, ptr, 1, ((void*)0), 0, ((void*)0), ((void*)0));
             if(!size) {
                 jsstr_release(str);
-                return throw_uri_error(ctx, JS_E_INVALID_URI_CHAR, NULL);
+                return throw_uri_error(ctx, JS_E_INVALID_URI_CHAR, ((void*)0));
             }
             len += size*3;
         }
@@ -83,7 +83,7 @@ __attribute__((used)) static HRESULT JSGlobal_encodeURIComponent(script_ctx_t *c
         if(is_uri_unescaped(*ptr)) {
             *ret++ = *ptr;
         }else {
-            size = WideCharToMultiByte(CP_UTF8, 0, ptr, 1, buf, sizeof(buf), NULL, NULL);
+            size = WideCharToMultiByte(CP_UTF8, 0, ptr, 1, buf, sizeof(buf), ((void*)0), ((void*)0));
             for(i=0; i<size; i++) {
                 *ret++ = '%';
                 *ret++ = int_to_char((BYTE)buf[i] >> 4);

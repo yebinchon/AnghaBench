@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hid_device {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hid_remove_device (struct hid_device*) ; 
- int /*<<< orphan*/  put_device (int /*<<< orphan*/ *) ; 
+
+
+
+struct hid_device {int dev; } ;
+
+
+ int hid_remove_device (struct hid_device*) ;
+ int put_device (int *) ;
 
 void hid_destroy_device(struct hid_device *hdev)
 {
-	hid_remove_device(hdev);
-	put_device(&hdev->dev);
+ hid_remove_device(hdev);
+ put_device(&hdev->dev);
 }

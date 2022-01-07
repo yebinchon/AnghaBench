@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ ready_state; long pcm_offset; int current_link; int /*<<< orphan*/  vd; int /*<<< orphan*/  vi; } ;
-typedef  TYPE_1__ OggVorbis_File ;
 
-/* Variables and functions */
- scalar_t__ INITSET ; 
- scalar_t__ OPENED ; 
- long OV_EINVAL ; 
- int OV_EOF ; 
- int _fetch_and_process_packet (TYPE_1__*,int /*<<< orphan*/ *,int,int) ; 
- int vorbis_synthesis_halfrate_p (int /*<<< orphan*/ ) ; 
- long vorbis_synthesis_pcmout (int /*<<< orphan*/ *,float***) ; 
- int /*<<< orphan*/  vorbis_synthesis_read (int /*<<< orphan*/ *,long) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ ready_state; long pcm_offset; int current_link; int vd; int vi; } ;
+typedef TYPE_1__ OggVorbis_File ;
+
+
+ scalar_t__ INITSET ;
+ scalar_t__ OPENED ;
+ long OV_EINVAL ;
+ int OV_EOF ;
+ int _fetch_and_process_packet (TYPE_1__*,int *,int,int) ;
+ int vorbis_synthesis_halfrate_p (int ) ;
+ long vorbis_synthesis_pcmout (int *,float***) ;
+ int vorbis_synthesis_read (int *,long) ;
 
 long ov_read_float(OggVorbis_File *vf,float ***pcm_channels,int length,
                    int *bitstream){
@@ -45,9 +45,9 @@ long ov_read_float(OggVorbis_File *vf,float ***pcm_channels,int length,
       }
     }
 
-    /* suck in another packet */
+
     {
-      int ret=_fetch_and_process_packet(vf,NULL,1,1);
+      int ret=_fetch_and_process_packet(vf,((void*)0),1,1);
       if(ret==OV_EOF)return(0);
       if(ret<=0)return(ret);
     }

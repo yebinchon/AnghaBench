@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct trampoline_st {int /*<<< orphan*/  (* func ) (int /*<<< orphan*/ ,void*) ;} ;
-typedef  int /*<<< orphan*/  ossl_uintmax_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,void*) ; 
+
+
+
+struct trampoline_st {int (* func ) (int ,void*) ;} ;
+typedef int ossl_uintmax_t ;
+
+
+ int stub1 (int ,void*) ;
 
 __attribute__((used)) static void trampoline(ossl_uintmax_t n, void *l, void *arg)
 {

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_2__ {int sat; int /*<<< orphan*/  val; int /*<<< orphan*/  hue; } ;
 
-/* Variables and functions */
- int RGBLIGHT_SAT_STEP ; 
- TYPE_1__ rgblight_config ; 
- int /*<<< orphan*/  rgblight_sethsv (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_2__ {int sat; int val; int hue; } ;
+
+
+ int RGBLIGHT_SAT_STEP ;
+ TYPE_1__ rgblight_config ;
+ int rgblight_sethsv (int ,int,int ) ;
 
 void rgblight_increase_sat(void) {
   uint8_t sat;

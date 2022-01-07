@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  ssize_t ;
-struct TYPE_2__ {scalar_t__ id; scalar_t__ state; int /*<<< orphan*/  stb; int /*<<< orphan*/  rand; int /*<<< orphan*/  nc_off; int /*<<< orphan*/  ctx_aes; } ;
-typedef  TYPE_1__ session_t ;
-typedef  scalar_t__ protocomm_security_handle_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERR_INVALID_ARG ; 
- int /*<<< orphan*/  ESP_ERR_INVALID_STATE ; 
- int /*<<< orphan*/  ESP_FAIL ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ESP_OK ; 
- scalar_t__ SESSION_STATE_DONE ; 
- int /*<<< orphan*/  TAG ; 
- int mbedtls_aes_crypt_ctr (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef int ssize_t ;
+struct TYPE_2__ {scalar_t__ id; scalar_t__ state; int stb; int rand; int nc_off; int ctx_aes; } ;
+typedef TYPE_1__ session_t ;
+typedef scalar_t__ protocomm_security_handle_t ;
+typedef int esp_err_t ;
+
+
+ int ESP_ERR_INVALID_ARG ;
+ int ESP_ERR_INVALID_STATE ;
+ int ESP_FAIL ;
+ int ESP_LOGE (int ,char*,...) ;
+ int ESP_OK ;
+ scalar_t__ SESSION_STATE_DONE ;
+ int TAG ;
+ int mbedtls_aes_crypt_ctr (int *,int ,int *,int ,int ,int const*,int *) ;
 
 __attribute__((used)) static esp_err_t sec1_decrypt(protocomm_security_handle_t handle,
                               uint32_t session_id,

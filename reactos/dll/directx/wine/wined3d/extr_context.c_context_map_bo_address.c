@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_gl_info {scalar_t__* supported; } ;
 struct wined3d_context {struct wined3d_gl_info* gl_info; } ;
-struct wined3d_bo_address {void* addr; int /*<<< orphan*/  buffer_object; } ;
-typedef  int /*<<< orphan*/  INT_PTR ;
-typedef  int /*<<< orphan*/  GLenum ;
-typedef  int GLbitfield ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  void BYTE ;
+struct wined3d_bo_address {void* addr; int buffer_object; } ;
+typedef int INT_PTR ;
+typedef int GLenum ;
+typedef int GLbitfield ;
+typedef int DWORD ;
+typedef void BYTE ;
 
-/* Variables and functions */
- size_t ARB_MAP_BUFFER_RANGE ; 
- void* GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int GL_MAP_FLUSH_EXPLICIT_BIT ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- int /*<<< orphan*/  context_bind_bo (struct wined3d_context*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glMapBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glMapBufferRange (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t,int) ; 
- int /*<<< orphan*/  wined3d_resource_gl_legacy_map_flags (int /*<<< orphan*/ ) ; 
- int wined3d_resource_gl_map_flags (int /*<<< orphan*/ ) ; 
+
+ size_t ARB_MAP_BUFFER_RANGE ;
+ void* GL_EXTCALL (int ) ;
+ int GL_MAP_FLUSH_EXPLICIT_BIT ;
+ int checkGLcall (char*) ;
+ int context_bind_bo (struct wined3d_context*,int ,int ) ;
+ int glMapBuffer (int ,int ) ;
+ int glMapBufferRange (int ,int ,size_t,int) ;
+ int wined3d_resource_gl_legacy_map_flags (int ) ;
+ int wined3d_resource_gl_map_flags (int ) ;
 
 void *context_map_bo_address(struct wined3d_context *context,
         const struct wined3d_bo_address *data, size_t size, GLenum binding, DWORD flags)

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  isc_result_t ;
-typedef  int /*<<< orphan*/  isc_region_t ;
-typedef  int /*<<< orphan*/  isc_buffer_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  base32 ; 
- int /*<<< orphan*/  base32_totext (int /*<<< orphan*/ *,int,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int isc_result_t ;
+typedef int isc_region_t ;
+typedef int isc_buffer_t ;
+
+
+ int base32 ;
+ int base32_totext (int *,int,char const*,int *,int ) ;
 
 isc_result_t
 isc_base32_totext(isc_region_t *source, int wordlength,
-		  const char *wordbreak, isc_buffer_t *target)
+    const char *wordbreak, isc_buffer_t *target)
 {
-	return (base32_totext(source, wordlength, wordbreak, target, base32));
+ return (base32_totext(source, wordlength, wordbreak, target, base32));
 }

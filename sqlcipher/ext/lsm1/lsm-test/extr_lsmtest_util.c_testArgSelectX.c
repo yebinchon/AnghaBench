@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  argError (void*,char const*,int,char const*) ; 
- scalar_t__ memcmp (char const*,char const*,int) ; 
- int strlen (char const*) ; 
+ int argError (void*,char const*,int,char const*) ;
+ scalar_t__ memcmp (char const*,char const*,int) ;
+ int strlen (char const*) ;
 
 int testArgSelectX(
-  void *aData, 
-  const char *zType, 
-  int sz, 
-  const char *zArg, 
+  void *aData,
+  const char *zType,
+  int sz,
+  const char *zArg,
   int *piOut
 ){
   struct Entry { const char *zName; };
@@ -31,8 +23,8 @@ int testArgSelectX(
   int iOut = -1;
   int nOut = 0;
 
-  for(pEntry=(struct Entry *)aData; 
-      pEntry->zName; 
+  for(pEntry=(struct Entry *)aData;
+      pEntry->zName;
       pEntry=(struct Entry *)&((unsigned char *)pEntry)[sz]
   ){
     int nName = strlen(pEntry->zName);

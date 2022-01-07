@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pci_pbm_info {int /*<<< orphan*/ * msi_irq_table; int /*<<< orphan*/ * msiq_irq_cookies; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
+
+
+
+struct pci_pbm_info {int * msi_irq_table; int * msiq_irq_cookies; } ;
+
+
+ int kfree (int *) ;
 
 __attribute__((used)) static void msi_table_free(struct pci_pbm_info *pbm)
 {
-	kfree(pbm->msiq_irq_cookies);
-	pbm->msiq_irq_cookies = NULL;
+ kfree(pbm->msiq_irq_cookies);
+ pbm->msiq_irq_cookies = ((void*)0);
 
-	kfree(pbm->msi_irq_table);
-	pbm->msi_irq_table = NULL;
+ kfree(pbm->msi_irq_table);
+ pbm->msi_irq_table = ((void*)0);
 }

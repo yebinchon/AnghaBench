@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct i915_vma {TYPE_1__* vm; struct i915_fence_reg* fence; } ;
-struct i915_fence_reg {int /*<<< orphan*/  pin_count; } ;
-struct TYPE_2__ {int /*<<< orphan*/  mutex; } ;
+struct i915_fence_reg {int pin_count; } ;
+struct TYPE_2__ {int mutex; } ;
 
-/* Variables and functions */
- int EBUSY ; 
- scalar_t__ atomic_read (int /*<<< orphan*/ *) ; 
- int fence_update (struct i915_fence_reg*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lockdep_assert_held (int /*<<< orphan*/ *) ; 
+
+ int EBUSY ;
+ scalar_t__ atomic_read (int *) ;
+ int fence_update (struct i915_fence_reg*,int *) ;
+ int lockdep_assert_held (int *) ;
 
 int i915_vma_revoke_fence(struct i915_vma *vma)
 {
-	struct i915_fence_reg *fence = vma->fence;
+ struct i915_fence_reg *fence = vma->fence;
 
-	lockdep_assert_held(&vma->vm->mutex);
-	if (!fence)
-		return 0;
+ lockdep_assert_held(&vma->vm->mutex);
+ if (!fence)
+  return 0;
 
-	if (atomic_read(&fence->pin_count))
-		return -EBUSY;
+ if (atomic_read(&fence->pin_count))
+  return -EBUSY;
 
-	return fence_update(fence, NULL);
+ return fence_update(fence, ((void*)0));
 }

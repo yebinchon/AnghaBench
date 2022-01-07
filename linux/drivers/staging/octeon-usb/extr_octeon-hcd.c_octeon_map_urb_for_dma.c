@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct usb_hcd {int dummy; } ;
 struct urb {int dummy; } ;
-typedef  int /*<<< orphan*/  gfp_t ;
+typedef int gfp_t ;
 
-/* Variables and functions */
- int octeon_alloc_temp_buffer (struct urb*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  octeon_free_temp_buffer (struct urb*) ; 
- int usb_hcd_map_urb_for_dma (struct usb_hcd*,struct urb*,int /*<<< orphan*/ ) ; 
+
+ int octeon_alloc_temp_buffer (struct urb*,int ) ;
+ int octeon_free_temp_buffer (struct urb*) ;
+ int usb_hcd_map_urb_for_dma (struct usb_hcd*,struct urb*,int ) ;
 
 __attribute__((used)) static int octeon_map_urb_for_dma(struct usb_hcd *hcd, struct urb *urb,
-				  gfp_t mem_flags)
+      gfp_t mem_flags)
 {
-	int ret;
+ int ret;
 
-	ret = octeon_alloc_temp_buffer(urb, mem_flags);
-	if (ret)
-		return ret;
+ ret = octeon_alloc_temp_buffer(urb, mem_flags);
+ if (ret)
+  return ret;
 
-	ret = usb_hcd_map_urb_for_dma(hcd, urb, mem_flags);
-	if (ret)
-		octeon_free_temp_buffer(urb);
+ ret = usb_hcd_map_urb_for_dma(hcd, urb, mem_flags);
+ if (ret)
+  octeon_free_temp_buffer(urb);
 
-	return ret;
+ return ret;
 }

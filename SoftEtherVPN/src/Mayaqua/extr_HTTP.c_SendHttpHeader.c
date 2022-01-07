@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  SecureMode; } ;
-typedef  TYPE_1__ SOCK ;
-typedef  int /*<<< orphan*/  HTTP_HEADER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Free (char*) ; 
- char* HttpHeaderToStr (int /*<<< orphan*/ *) ; 
- int SendAll (TYPE_1__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StrLen (char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int SecureMode; } ;
+typedef TYPE_1__ SOCK ;
+typedef int HTTP_HEADER ;
+
+
+ int Free (char*) ;
+ char* HttpHeaderToStr (int *) ;
+ int SendAll (TYPE_1__*,char*,int ,int ) ;
+ int StrLen (char*) ;
 
 bool SendHttpHeader(SOCK *s, HTTP_HEADER *header)
 {
-	char *str;
-	bool ret;
-	// Validate arguments
-	if (s == NULL || header == NULL)
-	{
-		return false;
-	}
+ char *str;
+ bool ret;
 
-	// Convert to string
-	str = HttpHeaderToStr(header);
+ if (s == ((void*)0) || header == ((void*)0))
+ {
+  return 0;
+ }
 
-	// Transmission
-	ret = SendAll(s, str, StrLen(str), s->SecureMode);
 
-	Free(str);
+ str = HttpHeaderToStr(header);
 
-	return ret;
+
+ ret = SendAll(s, str, StrLen(str), s->SecureMode);
+
+ Free(str);
+
+ return ret;
 }

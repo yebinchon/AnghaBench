@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
-#define  BARRIER 134 
-#define  CALL_INSN 133 
-#define  CODE_LABEL 132 
- int GET_CODE (int /*<<< orphan*/ ) ; 
-#define  INSN 131 
-#define  JUMP_INSN 130 
-#define  NOTE 129 
-#define  SEQUENCE 128 
- int /*<<< orphan*/  add_insn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_insn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcc_unreachable () ; 
- int /*<<< orphan*/  make_call_insn_raw (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rtx ;
+
+
+
+
+
+ int GET_CODE (int ) ;
+
+
+
+
+ int add_insn (int ) ;
+ int emit_insn (int ) ;
+ int gcc_unreachable () ;
+ int make_call_insn_raw (int ) ;
 
 rtx
 emit_call_insn (rtx x)
@@ -33,20 +33,20 @@ emit_call_insn (rtx x)
 
   switch (GET_CODE (x))
     {
-    case INSN:
-    case JUMP_INSN:
-    case CALL_INSN:
-    case CODE_LABEL:
-    case BARRIER:
-    case NOTE:
+    case 131:
+    case 130:
+    case 133:
+    case 132:
+    case 134:
+    case 129:
       insn = emit_insn (x);
       break;
 
-#ifdef ENABLE_RTL_CHECKING
-    case SEQUENCE:
-      gcc_unreachable ();
-      break;
-#endif
+
+
+
+
+
 
     default:
       insn = make_call_insn_raw (x);

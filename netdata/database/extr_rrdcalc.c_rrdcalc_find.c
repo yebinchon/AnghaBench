@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-struct TYPE_6__ {scalar_t__ hash; int /*<<< orphan*/  name; struct TYPE_6__* rrdset_next; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+struct TYPE_6__ {scalar_t__ hash; int name; struct TYPE_6__* rrdset_next; } ;
 struct TYPE_5__ {TYPE_2__* alarms; } ;
-typedef  TYPE_1__ RRDSET ;
-typedef  TYPE_2__ RRDCALC ;
+typedef TYPE_1__ RRDSET ;
+typedef TYPE_2__ RRDCALC ;
 
-/* Variables and functions */
- scalar_t__ simple_hash (char const*) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ unlikely (int) ; 
+
+ scalar_t__ simple_hash (char const*) ;
+ int strcmp (int ,char const*) ;
+ scalar_t__ unlikely (int) ;
 
 RRDCALC *rrdcalc_find(RRDSET *st, const char *name) {
     RRDCALC *rc;
@@ -32,5 +32,5 @@ RRDCALC *rrdcalc_find(RRDSET *st, const char *name) {
             return rc;
     }
 
-    return NULL;
+    return ((void*)0);
 }

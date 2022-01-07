@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int styleFlags; int /*<<< orphan*/ * pCursors; } ;
-typedef  TYPE_1__ ME_TextEditor ;
-typedef  int /*<<< orphan*/  ME_Cursor ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int ES_READONLY ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  MB_ICONERROR ; 
- int /*<<< orphan*/  ME_CommitUndo (TYPE_1__*) ; 
- scalar_t__ ME_Copy (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- int ME_GetSelectionOfs (TYPE_1__*,int*,int*) ; 
- int /*<<< orphan*/  ME_InternalDeleteText (TYPE_1__*,int /*<<< orphan*/ *,int,scalar_t__) ; 
- int /*<<< orphan*/  ME_UpdateRepaint (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MessageBeep (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int styleFlags; int * pCursors; } ;
+typedef TYPE_1__ ME_TextEditor ;
+typedef int ME_Cursor ;
+typedef scalar_t__ BOOL ;
+
+
+ int ES_READONLY ;
+ scalar_t__ FALSE ;
+ int MB_ICONERROR ;
+ int ME_CommitUndo (TYPE_1__*) ;
+ scalar_t__ ME_Copy (TYPE_1__*,int *,int) ;
+ int ME_GetSelectionOfs (TYPE_1__*,int*,int*) ;
+ int ME_InternalDeleteText (TYPE_1__*,int *,int,scalar_t__) ;
+ int ME_UpdateRepaint (TYPE_1__*,int ) ;
+ int MessageBeep (int ) ;
+ int TRUE ;
 
 __attribute__((used)) static BOOL copy_or_cut(ME_TextEditor *editor, BOOL cut)
 {

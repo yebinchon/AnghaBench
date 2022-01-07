@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {char const* psz_iso639_1; int /*<<< orphan*/  psz_eng_name; } ;
-typedef  TYPE_1__ iso639_lang_t ;
 
-/* Variables and functions */
- TYPE_1__* GetLang_1 (char const*) ; 
- TYPE_1__* GetLang_2B (char const*) ; 
- TYPE_1__* GetLang_2T (char const*) ; 
- char* LanguageGetCode (char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- char* strdup (char const*) ; 
- int strlen (char const*) ; 
- char const* vlc_gettext (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {char const* psz_iso639_1; int psz_eng_name; } ;
+typedef TYPE_1__ iso639_lang_t ;
+
+
+ TYPE_1__* GetLang_1 (char const*) ;
+ TYPE_1__* GetLang_2B (char const*) ;
+ TYPE_1__* GetLang_2T (char const*) ;
+ char* LanguageGetCode (char const*) ;
+ int free (char*) ;
+ int strcmp (char const*,char*) ;
+ char* strdup (char const*) ;
+ int strlen (char const*) ;
+ char const* vlc_gettext (int ) ;
 
 __attribute__((used)) static char *LanguageGetName( const char *psz_code )
 {
     const iso639_lang_t *pl;
 
-    if( psz_code == NULL || !strcmp( psz_code, "und" ) )
+    if( psz_code == ((void*)0) || !strcmp( psz_code, "und" ) )
     {
         return strdup( "" );
     }

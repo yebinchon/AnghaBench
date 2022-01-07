@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * version; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * version; } ;
 struct TYPE_5__ {TYPE_1__ crl; } ;
-typedef  TYPE_2__ X509_CRL ;
+typedef TYPE_2__ X509_CRL ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ASN1_INTEGER_new () ; 
- int ASN1_INTEGER_set (int /*<<< orphan*/ *,long) ; 
+
+ int * ASN1_INTEGER_new () ;
+ int ASN1_INTEGER_set (int *,long) ;
 
 int X509_CRL_set_version(X509_CRL *x, long version)
 {
-    if (x == NULL)
+    if (x == ((void*)0))
         return 0;
-    if (x->crl.version == NULL) {
-        if ((x->crl.version = ASN1_INTEGER_new()) == NULL)
+    if (x->crl.version == ((void*)0)) {
+        if ((x->crl.version = ASN1_INTEGER_new()) == ((void*)0))
             return 0;
     }
     return ASN1_INTEGER_set(x->crl.version, version);

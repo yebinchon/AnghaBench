@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_34__   TYPE_5__ ;
-typedef  struct TYPE_33__   TYPE_4__ ;
-typedef  struct TYPE_32__   TYPE_3__ ;
-typedef  struct TYPE_31__   TYPE_2__ ;
-typedef  struct TYPE_30__   TYPE_1__ ;
-typedef  struct TYPE_29__   TYPE_15__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int int64_t ;
+
+
+typedef struct TYPE_34__ TYPE_5__ ;
+typedef struct TYPE_33__ TYPE_4__ ;
+typedef struct TYPE_32__ TYPE_3__ ;
+typedef struct TYPE_31__ TYPE_2__ ;
+typedef struct TYPE_30__ TYPE_1__ ;
+typedef struct TYPE_29__ TYPE_15__ ;
+
+
+typedef int uint32_t ;
+typedef int int64_t ;
 struct TYPE_34__ {scalar_t__ codec_id; scalar_t__ codec_tag; scalar_t__ codec_type; int bits_per_coded_sample; int width; scalar_t__ format; } ;
 struct TYPE_33__ {TYPE_3__* pb; TYPE_15__** streams; } ;
 struct TYPE_32__ {int seekable; } ;
-struct TYPE_31__ {int* palette; int pal_offset; int strh_flags_offset; int /*<<< orphan*/  old_palette; } ;
-struct TYPE_30__ {int stream_index; scalar_t__ size; int /*<<< orphan*/  dts; } ;
+struct TYPE_31__ {int* palette; int pal_offset; int strh_flags_offset; int old_palette; } ;
+struct TYPE_30__ {int stream_index; scalar_t__ size; int dts; } ;
 struct TYPE_29__ {TYPE_2__* priv_data; TYPE_5__* codecpar; } ;
-typedef  TYPE_1__ AVPacket ;
-typedef  TYPE_2__ AVIStream ;
-typedef  TYPE_3__ AVIOContext ;
-typedef  TYPE_4__ AVFormatContext ;
-typedef  TYPE_5__ AVCodecParameters ;
+typedef TYPE_1__ AVPacket ;
+typedef TYPE_2__ AVIStream ;
+typedef TYPE_3__ AVIOContext ;
+typedef TYPE_4__ AVFormatContext ;
+typedef TYPE_5__ AVCodecParameters ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVIIF_NO_TIME ; 
- int AVIO_SEEKABLE_NORMAL ; 
- int AVISF_VIDEO_PALCHANGES ; 
- scalar_t__ AVMEDIA_TYPE_VIDEO ; 
- scalar_t__ AV_CODEC_ID_H264 ; 
- scalar_t__ AV_CODEC_ID_RAWVIDEO ; 
- scalar_t__ AV_PIX_FMT_PAL8 ; 
- scalar_t__ MKTAG (char,char,char,char) ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  av_packet_free (TYPE_1__**) ; 
- int avi_add_ientry (TYPE_4__*,int const,unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  avi_stream2fourcc (unsigned char*,int const,scalar_t__) ; 
- int avi_write_packet_internal (TYPE_4__*,TYPE_1__*) ; 
- int /*<<< orphan*/  avio_seek (TYPE_3__*,int,int /*<<< orphan*/ ) ; 
- int avio_tell (TYPE_3__*) ; 
- int /*<<< orphan*/  avio_w8 (TYPE_3__*,int) ; 
- int /*<<< orphan*/  avio_wb32 (TYPE_3__*,int) ; 
- int /*<<< orphan*/  avio_wl16 (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_wl32 (TYPE_3__*,int) ; 
- int ff_check_h264_startcode (TYPE_4__*,TYPE_15__*,TYPE_1__*) ; 
- int /*<<< orphan*/  ff_end_tag (TYPE_3__*,int) ; 
- int ff_get_packet_palette (TYPE_4__*,TYPE_1__*,int,int*) ; 
- int ff_reshuffle_raw_rgb (TYPE_4__*,TYPE_1__**,TYPE_5__*,int) ; 
- int ff_start_tag (TYPE_3__*,unsigned char*) ; 
- scalar_t__ memcmp (int*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int*,int) ; 
- int write_skip_frames (TYPE_4__*,int const,int /*<<< orphan*/ ) ; 
+
+ int AVIIF_NO_TIME ;
+ int AVIO_SEEKABLE_NORMAL ;
+ int AVISF_VIDEO_PALCHANGES ;
+ scalar_t__ AVMEDIA_TYPE_VIDEO ;
+ scalar_t__ AV_CODEC_ID_H264 ;
+ scalar_t__ AV_CODEC_ID_RAWVIDEO ;
+ scalar_t__ AV_PIX_FMT_PAL8 ;
+ scalar_t__ MKTAG (char,char,char,char) ;
+ int SEEK_SET ;
+ int av_assert0 (int) ;
+ int av_packet_free (TYPE_1__**) ;
+ int avi_add_ientry (TYPE_4__*,int const,unsigned char*,int ,int) ;
+ int avi_stream2fourcc (unsigned char*,int const,scalar_t__) ;
+ int avi_write_packet_internal (TYPE_4__*,TYPE_1__*) ;
+ int avio_seek (TYPE_3__*,int,int ) ;
+ int avio_tell (TYPE_3__*) ;
+ int avio_w8 (TYPE_3__*,int) ;
+ int avio_wb32 (TYPE_3__*,int) ;
+ int avio_wl16 (TYPE_3__*,int ) ;
+ int avio_wl32 (TYPE_3__*,int) ;
+ int ff_check_h264_startcode (TYPE_4__*,TYPE_15__*,TYPE_1__*) ;
+ int ff_end_tag (TYPE_3__*,int) ;
+ int ff_get_packet_palette (TYPE_4__*,TYPE_1__*,int,int*) ;
+ int ff_reshuffle_raw_rgb (TYPE_4__*,TYPE_1__**,TYPE_5__*,int) ;
+ int ff_start_tag (TYPE_3__*,unsigned char*) ;
+ scalar_t__ memcmp (int*,int ,int) ;
+ int memcpy (int ,int*,int) ;
+ int write_skip_frames (TYPE_4__*,int const,int ) ;
 
 __attribute__((used)) static int avi_write_packet(AVFormatContext *s, AVPacket *pkt)
 {
@@ -76,12 +76,12 @@ __attribute__((used)) static int avi_write_packet(AVFormatContext *s, AVPacket *
         return ret;
 
     if (!pkt->size)
-        return avi_write_packet_internal(s, pkt); /* Passthrough */
+        return avi_write_packet_internal(s, pkt);
 
     if (par->codec_type == AVMEDIA_TYPE_VIDEO) {
         AVIStream *avist = s->streams[stream_index]->priv_data;
-        AVIOContext *pb  = s->pb;
-        AVPacket *opkt   = pkt;
+        AVIOContext *pb = s->pb;
+        AVPacket *opkt = pkt;
         int reshuffle_ret;
         if (par->codec_id == AV_CODEC_ID_RAWVIDEO && par->codec_tag == 0) {
             int64_t bpc = par->bits_per_coded_sample != 15 ? par->bits_per_coded_sample : 16;
@@ -132,7 +132,7 @@ __attribute__((used)) static int avi_write_packet(AVFormatContext *s, AVPacket *
                     pc_tag = ff_start_tag(pb, tag);
                     avio_w8(pb, 0);
                     avio_w8(pb, pal_size & 0xFF);
-                    avio_wl16(pb, 0); // reserved
+                    avio_wl16(pb, 0);
                     for (i = 0; i < pal_size; i++) {
                         uint32_t v = avist->palette[i];
                         avio_wb32(pb, v<<8);

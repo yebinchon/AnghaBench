@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vbdisp_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  const* BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_NOTIMPL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  MAKE_VBSERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/  const*) ; 
- int SysStringLen (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  VBSE_ILLEGAL_NULL_USE ; 
- scalar_t__ VT_NULL ; 
- scalar_t__ V_VT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  debugstr_variant (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  return_int (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  to_int (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  to_string (int /*<<< orphan*/ *,int /*<<< orphan*/  const**) ; 
+
+
+
+typedef int vbdisp_t ;
+typedef int WCHAR ;
+typedef int VARIANT ;
+typedef int HRESULT ;
+typedef int const* BSTR ;
+
+
+ int E_NOTIMPL ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,...) ;
+ int MAKE_VBSERROR (int ) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int SysFreeString (int const*) ;
+ int SysStringLen (int const*) ;
+ int TRACE (char*,int ,int ,unsigned int) ;
+ int VBSE_ILLEGAL_NULL_USE ;
+ scalar_t__ VT_NULL ;
+ scalar_t__ V_VT (int *) ;
+ int assert (int) ;
+ int debugstr_variant (int *) ;
+ int memcmp (int const*,int const*,size_t) ;
+ int return_int (int *,int) ;
+ int to_int (int *,int*) ;
+ int to_string (int *,int const**) ;
 
 __attribute__((used)) static HRESULT Global_InStrRev(vbdisp_t *This, VARIANT *args, unsigned args_cnt, VARIANT *res)
 {
@@ -69,7 +69,7 @@ __attribute__((used)) static HRESULT Global_InStrRev(vbdisp_t *This, VARIANT *ar
             start = SysStringLen(str1);
         }
     } else {
-        str2 = NULL;
+        str2 = ((void*)0);
     }
 
     if(SUCCEEDED(hres)) {

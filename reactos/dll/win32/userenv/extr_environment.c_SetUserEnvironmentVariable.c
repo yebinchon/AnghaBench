@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_16__ {int MaximumLength; int /*<<< orphan*/ * Buffer; scalar_t__ Length; } ;
-typedef  TYPE_1__ WCHAR ;
-typedef  TYPE_1__ UNICODE_STRING ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  PWSTR ;
-typedef  int /*<<< orphan*/ * PVOID ;
-typedef  int NTSTATUS ;
-typedef  TYPE_1__* LPWSTR ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAYSIZE (TYPE_1__*) ; 
- int /*<<< orphan*/  DPRINT (char*,TYPE_1__*,...) ; 
- int /*<<< orphan*/  DPRINT1 (char*,...) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ GetShortPathNameW (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LPTR ; 
- int /*<<< orphan*/ * LocalAlloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  LocalFree (int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  NT_SUCCESS (int) ; 
- int RtlExpandEnvironmentStrings_U (int /*<<< orphan*/ ,TYPE_1__*,TYPE_1__*,int*) ; 
- int /*<<< orphan*/  RtlInitUnicodeString (TYPE_1__*,TYPE_1__*) ; 
- int RtlSetEnvironmentVariable (int /*<<< orphan*/ *,TYPE_1__*,TYPE_1__*) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  _wcsicmp (TYPE_1__*,char*) ; 
+
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+struct TYPE_16__ {int MaximumLength; int * Buffer; scalar_t__ Length; } ;
+typedef TYPE_1__ WCHAR ;
+typedef TYPE_1__ UNICODE_STRING ;
+typedef int ULONG ;
+typedef int PWSTR ;
+typedef int * PVOID ;
+typedef int NTSTATUS ;
+typedef TYPE_1__* LPWSTR ;
+typedef scalar_t__ BOOL ;
+
+
+ int ARRAYSIZE (TYPE_1__*) ;
+ int DPRINT (char*,TYPE_1__*,...) ;
+ int DPRINT1 (char*,...) ;
+ scalar_t__ FALSE ;
+ int GetLastError () ;
+ scalar_t__ GetShortPathNameW (int *,TYPE_1__*,int ) ;
+ int LPTR ;
+ int * LocalAlloc (int ,int) ;
+ int LocalFree (int *) ;
+ int MAX_PATH ;
+ int NT_SUCCESS (int) ;
+ int RtlExpandEnvironmentStrings_U (int ,TYPE_1__*,TYPE_1__*,int*) ;
+ int RtlInitUnicodeString (TYPE_1__*,TYPE_1__*) ;
+ int RtlSetEnvironmentVariable (int *,TYPE_1__*,TYPE_1__*) ;
+ scalar_t__ TRUE ;
+ int _wcsicmp (TYPE_1__*,char*) ;
 
 __attribute__((used)) static
 BOOL
@@ -50,7 +50,7 @@ SetUserEnvironmentVariable(PWSTR* Environment,
     UNICODE_STRING Name;
     UNICODE_STRING SrcValue, DstValue;
     ULONG Length;
-    PVOID Buffer = NULL;
+    PVOID Buffer = ((void*)0);
     WCHAR ShortName[MAX_PATH];
 
     if (bExpand)
@@ -62,7 +62,7 @@ SetUserEnvironmentVariable(PWSTR* Environment,
         DstValue.Length = 0;
         DstValue.MaximumLength = Length;
         DstValue.Buffer = Buffer = LocalAlloc(LPTR, Length);
-        if (DstValue.Buffer == NULL)
+        if (DstValue.Buffer == ((void*)0))
         {
             DPRINT1("LocalAlloc() failed\n");
             return FALSE;

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  snprintf (char*,size_t,char*,double) ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+
+
+ int snprintf (char*,size_t,char*,double) ;
 
 __attribute__((used)) static void
 convert_sff_temp(char *buf, size_t size, uint8_t *xbuf)
 {
-	double d;
+ double d;
 
-	d = (double)xbuf[0];
-	d += (double)xbuf[1] / 256;
+ d = (double)xbuf[0];
+ d += (double)xbuf[1] / 256;
 
-	snprintf(buf, size, "%.2f C", d);
+ snprintf(buf, size, "%.2f C", d);
 }

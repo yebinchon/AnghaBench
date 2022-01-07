@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  SendID2_Buf; int /*<<< orphan*/  SendID1_Buf; int /*<<< orphan*/ * EtherIP; int /*<<< orphan*/ * L2TP; } ;
-typedef  int /*<<< orphan*/  IKE_SERVER ;
-typedef  TYPE_1__ IKE_CLIENT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Free (TYPE_1__*) ; 
- int /*<<< orphan*/  FreeBuf (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FreeL2TPServer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseEtherIPServer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  StopL2TPServer (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int SendID2_Buf; int SendID1_Buf; int * EtherIP; int * L2TP; } ;
+typedef int IKE_SERVER ;
+typedef TYPE_1__ IKE_CLIENT ;
+
+
+ int Free (TYPE_1__*) ;
+ int FreeBuf (int ) ;
+ int FreeL2TPServer (int *) ;
+ int ReleaseEtherIPServer (int *) ;
+ int StopL2TPServer (int *,int) ;
 
 void FreeIkeClient(IKE_SERVER *ike, IKE_CLIENT *c)
 {
-	// Validate arguments
-	if (c == NULL || ike == NULL)
-	{
-		return;
-	}
 
-	if (c->L2TP != NULL)
-	{
-		StopL2TPServer(c->L2TP, true);
-		FreeL2TPServer(c->L2TP);
-	}
+ if (c == ((void*)0) || ike == ((void*)0))
+ {
+  return;
+ }
 
-	if (c->EtherIP != NULL)
-	{
-		ReleaseEtherIPServer(c->EtherIP);
-	}
+ if (c->L2TP != ((void*)0))
+ {
+  StopL2TPServer(c->L2TP, 1);
+  FreeL2TPServer(c->L2TP);
+ }
 
-	FreeBuf(c->SendID1_Buf);
-	FreeBuf(c->SendID2_Buf);
+ if (c->EtherIP != ((void*)0))
+ {
+  ReleaseEtherIPServer(c->EtherIP);
+ }
 
-	Free(c);
+ FreeBuf(c->SendID1_Buf);
+ FreeBuf(c->SendID2_Buf);
+
+ Free(c);
 }

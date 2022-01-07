@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_9__ {TYPE_1__* VolumeFcb; } ;
 struct TYPE_8__ {TYPE_3__* DeviceExt; } ;
-struct TYPE_7__ {int /*<<< orphan*/  Flags; } ;
-typedef  TYPE_2__* PVFAT_IRP_CONTEXT ;
-typedef  TYPE_3__* PDEVICE_EXTENSION ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
+struct TYPE_7__ {int Flags; } ;
+typedef TYPE_2__* PVFAT_IRP_CONTEXT ;
+typedef TYPE_3__* PDEVICE_EXTENSION ;
+typedef int NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BooleanFlagOn (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPRINT (char*,TYPE_2__*) ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  SetDirtyStatus (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  VCB_CLEAR_DIRTY ; 
- int /*<<< orphan*/  VCB_IS_DIRTY ; 
+
+ int BooleanFlagOn (int ,int ) ;
+ int DPRINT (char*,TYPE_2__*) ;
+ int STATUS_SUCCESS ;
+ int SetDirtyStatus (TYPE_3__*,int ) ;
+ int TRUE ;
+ int VCB_CLEAR_DIRTY ;
+ int VCB_IS_DIRTY ;
 
 __attribute__((used)) static
 NTSTATUS

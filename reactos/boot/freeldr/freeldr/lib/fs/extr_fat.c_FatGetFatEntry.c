@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int USHORT ;
-typedef  int ULONG ;
-typedef  int UINT32 ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int USHORT ;
+typedef int ULONG ;
+typedef int UINT32 ;
 struct TYPE_4__ {int FatType; int BytesPerSector; } ;
-typedef  int* PUINT32 ;
-typedef  int PUCHAR ;
-typedef  TYPE_1__* PFAT_VOLUME_INFO ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+typedef int* PUINT32 ;
+typedef int PUCHAR ;
+typedef TYPE_1__* PFAT_VOLUME_INFO ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int) ; 
- int /*<<< orphan*/  FALSE ; 
-#define  FAT12 132 
-#define  FAT16 131 
-#define  FAT32 130 
-#define  FATX16 129 
-#define  FATX32 128 
- int FatGetFatSector (TYPE_1__*,int) ; 
- int SWAPD (int) ; 
- int SWAPW (int) ; 
- int /*<<< orphan*/  TRACE (char*,int) ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int ERR (char*,int) ;
+ int FALSE ;
+
+
+
+
+
+ int FatGetFatSector (TYPE_1__*,int) ;
+ int SWAPD (int) ;
+ int SWAPW (int) ;
+ int TRACE (char*,int) ;
+ int TRUE ;
 
 __attribute__((used)) static
 BOOLEAN FatGetFatEntry(PFAT_VOLUME_INFO Volume, UINT32 Cluster, PUINT32 ClusterPointer)
@@ -44,7 +44,7 @@ BOOLEAN FatGetFatEntry(PFAT_VOLUME_INFO Volume, UINT32 Cluster, PUINT32 ClusterP
 
     switch(Volume->FatType)
     {
-    case FAT12:
+    case 132:
 
         FatOffset = Cluster + (Cluster / 2);
         ThisFatSecNum = FatOffset / Volume->BytesPerSector;
@@ -54,11 +54,11 @@ BOOLEAN FatGetFatEntry(PFAT_VOLUME_INFO Volume, UINT32 Cluster, PUINT32 ClusterP
         TRACE("ThisFatSecNum: %d\n", ThisFatSecNum);
         TRACE("ThisFatEntOffset: %d\n", ThisFatEntOffset);
 
-        // The cluster pointer can span within two sectors, but the FatGetFatSector function
-        // reads 4 sectors most times, except when we are at the edge of FAT cache
-        // and/or FAT region on the disk. For FAT12 the whole FAT would be cached so
-        // there will be no situation when the first sector is at the end of the cache
-        // and the next one is in the beginning
+
+
+
+
+
 
         ReadBuffer = FatGetFatSector(Volume, ThisFatSecNum);
         if (!ReadBuffer)
@@ -69,14 +69,14 @@ BOOLEAN FatGetFatEntry(PFAT_VOLUME_INFO Volume, UINT32 Cluster, PUINT32 ClusterP
         fat = *((USHORT *) (ReadBuffer + ThisFatEntOffset));
         fat = SWAPW(fat);
         if (Cluster & 0x0001)
-            fat = fat >> 4;    /* Cluster number is ODD */
+            fat = fat >> 4;
         else
-            fat = fat & 0x0FFF;    /* Cluster number is EVEN */
+            fat = fat & 0x0FFF;
 
         break;
 
-    case FAT16:
-    case FATX16:
+    case 131:
+    case 129:
 
         FatOffset = (Cluster * 2);
         ThisFatSecNum = FatOffset / Volume->BytesPerSector;
@@ -93,8 +93,8 @@ BOOLEAN FatGetFatEntry(PFAT_VOLUME_INFO Volume, UINT32 Cluster, PUINT32 ClusterP
 
         break;
 
-    case FAT32:
-    case FATX32:
+    case 130:
+    case 128:
 
         FatOffset = (Cluster * 4);
         ThisFatSecNum = FatOffset / Volume->BytesPerSector;
@@ -106,7 +106,7 @@ BOOLEAN FatGetFatEntry(PFAT_VOLUME_INFO Volume, UINT32 Cluster, PUINT32 ClusterP
             return FALSE;
         }
 
-        // Get the fat entry
+
         fat = (*((ULONG *) (ReadBuffer + ThisFatEntOffset))) & 0x0FFFFFFF;
         fat = SWAPD(fat);
 

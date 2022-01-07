@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPCSTR ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- scalar_t__ Base64HeaderToBinaryA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ Base64ToBinaryA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ DecodeBinaryToBinaryA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ ERROR_INVALID_DATA ; 
+
+
+
+typedef int LPCSTR ;
+typedef scalar_t__ LONG ;
+typedef int DWORD ;
+typedef int BYTE ;
+
+
+ scalar_t__ Base64HeaderToBinaryA (int ,int ,int *,int *,int *,int *) ;
+ scalar_t__ Base64ToBinaryA (int ,int ,int *,int *,int *,int *) ;
+ scalar_t__ DecodeBinaryToBinaryA (int ,int ,int *,int *,int *,int *) ;
+ scalar_t__ ERROR_INVALID_DATA ;
 
 __attribute__((used)) static LONG DecodeAnyA(LPCSTR pszString, DWORD cchString,
  BYTE *pbBinary, DWORD *pcbBinary, DWORD *pdwSkip, DWORD *pdwFlags)

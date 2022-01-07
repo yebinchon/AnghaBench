@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dbcs_table {unsigned char* cp2uni_leadbytes; int /*<<< orphan*/ * cp2uni; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
 
-/* Variables and functions */
- unsigned int wine_decompose (int /*<<< orphan*/ ,int /*<<< orphan*/ *,unsigned int) ; 
+
+
+
+struct dbcs_table {unsigned char* cp2uni_leadbytes; int * cp2uni; } ;
+typedef int WCHAR ;
+
+
+ unsigned int wine_decompose (int ,int *,unsigned int) ;
 
 __attribute__((used)) static int mbstowcs_dbcs_decompose( const struct dbcs_table *table,
                                     const unsigned char *src, unsigned int srclen,
@@ -25,9 +25,9 @@ __attribute__((used)) static int mbstowcs_dbcs_decompose( const struct dbcs_tabl
     unsigned int len, res;
     WCHAR ch;
 
-    if (!dstlen)  /* compute length */
+    if (!dstlen)
     {
-        WCHAR dummy[4]; /* no decomposition is larger than 4 chars */
+        WCHAR dummy[4];
         for (len = 0; srclen; srclen--, src++)
         {
             unsigned char off = cp2uni_lb[*src];
@@ -57,6 +57,6 @@ __attribute__((used)) static int mbstowcs_dbcs_decompose( const struct dbcs_tabl
         dst += res;
         len -= res;
     }
-    if (srclen) return -1;  /* overflow */
+    if (srclen) return -1;
     return dstlen - len;
 }

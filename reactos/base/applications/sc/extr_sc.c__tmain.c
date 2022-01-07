@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char* LPCTSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MainUsage () ; 
- int ScControl (char*,char*,char**,int) ; 
+
+
+
+typedef char* LPCTSTR ;
+
+
+ int MainUsage () ;
+ int ScControl (char*,char*,char**,int) ;
 
 int _tmain(int argc, LPCTSTR argv[])
 {
-    LPCTSTR Server = NULL;   // remote machine
-    LPCTSTR Command = NULL;  // sc command
-    LPCTSTR *Args = NULL;    // Any remaining args
+    LPCTSTR Server = ((void*)0);
+    LPCTSTR Command = ((void*)0);
+    LPCTSTR *Args = ((void*)0);
 
     if (argc < 2)
     {
@@ -28,7 +28,7 @@ int _tmain(int argc, LPCTSTR argv[])
         return -1;
     }
 
-    /* get server name */
+
     if ((argv[1][0] == '\\') && (argv[1][1] == '\\'))
     {
         if (argc < 3)

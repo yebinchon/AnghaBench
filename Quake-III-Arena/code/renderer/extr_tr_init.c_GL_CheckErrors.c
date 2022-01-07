@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  s ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int s ;
 struct TYPE_4__ {scalar_t__ integer; } ;
-struct TYPE_3__ {int /*<<< orphan*/  (* Error ) (int /*<<< orphan*/ ,char*,char*) ;} ;
+struct TYPE_3__ {int (* Error ) (int ,char*,char*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Com_sprintf (char*,int,char*,int) ; 
- int /*<<< orphan*/  ERR_FATAL ; 
-#define  GL_INVALID_ENUM 133 
-#define  GL_INVALID_OPERATION 132 
-#define  GL_INVALID_VALUE 131 
- int GL_NO_ERROR ; 
-#define  GL_OUT_OF_MEMORY 130 
-#define  GL_STACK_OVERFLOW 129 
-#define  GL_STACK_UNDERFLOW 128 
- int qglGetError () ; 
- TYPE_2__* r_ignoreGLErrors ; 
- TYPE_1__ ri ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,char*,char*) ; 
+
+ int Com_sprintf (char*,int,char*,int) ;
+ int ERR_FATAL ;
+
+
+
+ int GL_NO_ERROR ;
+
+
+
+ int qglGetError () ;
+ TYPE_2__* r_ignoreGLErrors ;
+ TYPE_1__ ri ;
+ int strcpy (char*,char*) ;
+ int stub1 (int ,char*,char*) ;
 
 void GL_CheckErrors( void ) {
-    int		err;
-    char	s[64];
+    int err;
+    char s[64];
 
     err = qglGetError();
     if ( err == GL_NO_ERROR ) {
@@ -44,22 +44,22 @@ void GL_CheckErrors( void ) {
         return;
     }
     switch( err ) {
-        case GL_INVALID_ENUM:
+        case 133:
             strcpy( s, "GL_INVALID_ENUM" );
             break;
-        case GL_INVALID_VALUE:
+        case 131:
             strcpy( s, "GL_INVALID_VALUE" );
             break;
-        case GL_INVALID_OPERATION:
+        case 132:
             strcpy( s, "GL_INVALID_OPERATION" );
             break;
-        case GL_STACK_OVERFLOW:
+        case 129:
             strcpy( s, "GL_STACK_OVERFLOW" );
             break;
-        case GL_STACK_UNDERFLOW:
+        case 128:
             strcpy( s, "GL_STACK_UNDERFLOW" );
             break;
-        case GL_OUT_OF_MEMORY:
+        case 130:
             strcpy( s, "GL_OUT_OF_MEMORY" );
             break;
         default:

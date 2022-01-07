@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nn_sock {int /*<<< orphan*/  ctx; int /*<<< orphan*/  fsm; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  nn_ctx_enter (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_ctx_leave (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_fsm_stop (int /*<<< orphan*/ *) ; 
+
+
+
+struct nn_sock {int ctx; int fsm; } ;
+
+
+ int nn_ctx_enter (int *) ;
+ int nn_ctx_leave (int *) ;
+ int nn_fsm_stop (int *) ;
 
 void nn_sock_stop (struct nn_sock *self)
 {

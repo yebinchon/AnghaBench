@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  double time_t ;
+
+
+
+
+typedef double time_t ;
 struct tm {int dummy; } ;
-typedef  int /*<<< orphan*/  int64_t ;
+typedef int int64_t ;
 
-/* Variables and functions */
- double av_int2double (int /*<<< orphan*/ ) ; 
- struct tm* gmtime_r (double*,struct tm*) ; 
- int /*<<< orphan*/  strftime (char*,int,char*,struct tm*) ; 
+
+ double av_int2double (int ) ;
+ struct tm* gmtime_r (double*,struct tm*) ;
+ int strftime (char*,int,char*,struct tm*) ;
 
 __attribute__((used)) static int oledate_to_iso8601(char *buf, int buf_size, int64_t value)
 {

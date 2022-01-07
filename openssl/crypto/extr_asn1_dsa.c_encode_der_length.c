@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPACKET ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WPACKET_put_bytes_u16 (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  WPACKET_put_bytes_u8 (int /*<<< orphan*/ *,size_t) ; 
+
+
+
+typedef int WPACKET ;
+
+
+ int WPACKET_put_bytes_u16 (int *,size_t) ;
+ int WPACKET_put_bytes_u8 (int *,size_t) ;
 
 int encode_der_length(WPACKET *pkt, size_t cont_len)
 {
     if (cont_len > 0xffff)
-        return 0; /* Too large for supported length encodings */
+        return 0;
 
     if (cont_len > 0xff) {
         if (!WPACKET_put_bytes_u8(pkt, 0x82)

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ipuv3_channel {int /*<<< orphan*/  num; int /*<<< orphan*/  ipu; } ;
 
-/* Variables and functions */
- int ipu_fsu_unlink (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct ipuv3_channel {int num; int ipu; } ;
+
+
+ int ipu_fsu_unlink (int ,int ,int ) ;
 
 int ipu_idmac_unlink(struct ipuv3_channel *src, struct ipuv3_channel *sink)
 {
-	return ipu_fsu_unlink(src->ipu, src->num, sink->num);
+ return ipu_fsu_unlink(src->ipu, src->num, sink->num);
 }

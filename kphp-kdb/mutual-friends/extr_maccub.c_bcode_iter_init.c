@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int i; int k; int len; int /*<<< orphan*/ * ptr; } ;
-typedef  TYPE_1__ bcode_iterator ;
-typedef  int /*<<< orphan*/ * bcode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int bcode_iter_get_val (TYPE_1__*,int) ; 
- int /*<<< orphan*/  bcode_iter_next (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int i; int k; int len; int * ptr; } ;
+typedef TYPE_1__ bcode_iterator ;
+typedef int * bcode ;
+
+
+ int assert (int ) ;
+ int bcode_iter_get_val (TYPE_1__*,int) ;
+ int bcode_iter_next (TYPE_1__*) ;
 
 void bcode_iter_init (bcode_iterator *it, bcode x, int tot_items, int len, int nr) {
   it->ptr = x;
@@ -33,10 +33,10 @@ void bcode_iter_init (bcode_iterator *it, bcode x, int tot_items, int len, int n
   }
 
   if (it->k > 0) {
-  //  assert (x != NULL);
+
     it->len = 8 * len / it->k;
   } else {
-    assert (x == NULL);
+    assert (x == ((void*)0));
     it->len = 0;
   }
 

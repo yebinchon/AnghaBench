@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-struct TYPE_2__ {void* iTimeout; int /*<<< orphan*/  db; scalar_t__ nTest; scalar_t__ nError; } ;
 
-/* Variables and functions */
- void* DEFAULT_TIMEOUT ; 
- int SQLITE_BUSY ; 
- int SQLITE_DONE ; 
- int SQLITE_OK ; 
- int SQLITE_ROW ; 
- int /*<<< orphan*/  errorMessage (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fatalError (char*,int /*<<< orphan*/ ) ; 
- TYPE_1__ g ; 
- int /*<<< orphan*/ * prepareSql (char*,int) ; 
- int /*<<< orphan*/  runSql (char*,...) ; 
- int /*<<< orphan*/  sqlite3_close (int /*<<< orphan*/ ) ; 
- int sqlite3_column_bytes (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int sqlite3_column_int (int /*<<< orphan*/ *,int) ; 
- scalar_t__ sqlite3_column_text (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_errmsg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- char* sqlite3_malloc (int) ; 
- char* sqlite3_mprintf (char*,scalar_t__) ; 
- int /*<<< orphan*/  sqlite3_sleep (int) ; 
- int sqlite3_step (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- int trySql (char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+struct TYPE_2__ {void* iTimeout; int db; scalar_t__ nTest; scalar_t__ nError; } ;
+
+
+ void* DEFAULT_TIMEOUT ;
+ int SQLITE_BUSY ;
+ int SQLITE_DONE ;
+ int SQLITE_OK ;
+ int SQLITE_ROW ;
+ int errorMessage (char*) ;
+ int exit (int) ;
+ int fatalError (char*,int ) ;
+ TYPE_1__ g ;
+ int * prepareSql (char*,int) ;
+ int runSql (char*,...) ;
+ int sqlite3_close (int ) ;
+ int sqlite3_column_bytes (int *,int ) ;
+ int sqlite3_column_int (int *,int) ;
+ scalar_t__ sqlite3_column_text (int *,int) ;
+ int sqlite3_errmsg (int ) ;
+ int sqlite3_finalize (int *) ;
+ char* sqlite3_malloc (int) ;
+ char* sqlite3_mprintf (char*,scalar_t__) ;
+ int sqlite3_sleep (int) ;
+ int sqlite3_step (int *) ;
+ int strcpy (char*,char const*) ;
+ int trySql (char*) ;
 
 __attribute__((used)) static int startScript(
-  int iClient,              /* The client number */
-  char **pzScript,          /* Write task script here */
-  int *pTaskId,             /* Write task number here */
-  char **pzTaskName         /* Name of the task */
+  int iClient,
+  char **pzScript,
+  int *pTaskId,
+  char **pzTaskName
 ){
   sqlite3_stmt *pStmt = 0;
   int taskId;

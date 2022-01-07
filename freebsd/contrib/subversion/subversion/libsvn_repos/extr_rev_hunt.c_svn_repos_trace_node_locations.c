@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ svn_revnum_t ;
-typedef  int /*<<< orphan*/  (* svn_repos_authz_func_t ) (scalar_t__*,int /*<<< orphan*/ *,char const*,void*,int /*<<< orphan*/ *) ;
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_fs_root_t ;
-typedef  scalar_t__ svn_fs_node_relation_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ svn_revnum_t ;
+typedef int (* svn_repos_authz_func_t ) (scalar_t__*,int *,char const*,void*,int *) ;
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_fs_t ;
+typedef int svn_fs_root_t ;
+typedef scalar_t__ svn_fs_node_relation_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
 struct TYPE_6__ {int elt_size; int nelts; scalar_t__ elts; } ;
-typedef  TYPE_1__ apr_array_header_t ;
+typedef TYPE_1__ apr_array_header_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_VA_NULL ; 
- TYPE_1__* apr_array_copy (int /*<<< orphan*/ *,TYPE_1__ const*) ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_hash_set (int /*<<< orphan*/ *,scalar_t__*,int,int /*<<< orphan*/ ) ; 
- char* apr_pstrcat (int /*<<< orphan*/ *,char*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  check_ancestry_of_peg_path (scalar_t__*,int /*<<< orphan*/ *,char const*,scalar_t__,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  check_readability (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/  (*) (scalar_t__*,int /*<<< orphan*/ *,char const*,void*,int /*<<< orphan*/ *),void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_check_path (scalar_t__*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_node_relation (scalar_t__*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_fs_node_unrelated ; 
- int /*<<< orphan*/  svn_fs_revision_root (int /*<<< orphan*/ **,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_none ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_repos__prev_location (scalar_t__*,char const**,scalar_t__*,int /*<<< orphan*/ *,scalar_t__,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sort__array (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sort_compare_revisions ; 
+
+ scalar_t__ FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int) ;
+ int * SVN_NO_ERROR ;
+ int SVN_VA_NULL ;
+ TYPE_1__* apr_array_copy (int *,TYPE_1__ const*) ;
+ int * apr_hash_make (int *) ;
+ int apr_hash_set (int *,scalar_t__*,int,int ) ;
+ char* apr_pstrcat (int *,char*,char const*,int ) ;
+ int apr_pstrdup (int *,char const*) ;
+ int check_ancestry_of_peg_path (scalar_t__*,int *,char const*,scalar_t__,scalar_t__,int *) ;
+ int check_readability (int *,char const*,int (*) (scalar_t__*,int *,char const*,void*,int *),void*,int *) ;
+ int svn_fs_check_path (scalar_t__*,int *,char const*,int *) ;
+ int svn_fs_node_relation (scalar_t__*,int *,char const*,int *,char const*,int *) ;
+ scalar_t__ svn_fs_node_unrelated ;
+ int svn_fs_revision_root (int **,int *,scalar_t__,int *) ;
+ scalar_t__ svn_node_none ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ int svn_repos__prev_location (scalar_t__*,char const**,scalar_t__*,int *,scalar_t__,char const*,int *) ;
+ int svn_sort__array (TYPE_1__*,int ) ;
+ int svn_sort_compare_revisions ;
 
 svn_error_t *
 svn_repos_trace_node_locations(svn_fs_t *fs,
@@ -69,12 +69,12 @@ svn_repos_trace_node_locations(svn_fs_t *fs,
 
   SVN_ERR_ASSERT(location_revisions_orig->elt_size == sizeof(svn_revnum_t));
 
-  /* Ensure that FS_PATH is absolute, because our path-math below will
-     depend on that being the case.  */
+
+
   if (*fs_path != '/')
     fs_path = apr_pstrcat(pool, "/", fs_path, SVN_VA_NULL);
 
-  /* Another sanity check. */
+
   if (authz_read_func)
     {
       svn_fs_root_t *peg_root;
@@ -85,20 +85,20 @@ svn_repos_trace_node_locations(svn_fs_t *fs,
 
   *locations = apr_hash_make(pool);
 
-  /* We flip between two pools in the second loop below. */
+
   lastpool = svn_pool_create(pool);
   currpool = svn_pool_create(pool);
 
-  /* First - let's sort the array of the revisions from the greatest revision
-   * downward, so it will be easier to search on. */
+
+
   location_revisions = apr_array_copy(pool, location_revisions_orig);
   svn_sort__array(location_revisions, svn_sort_compare_revisions);
 
   revision_ptr = (svn_revnum_t *)location_revisions->elts;
   revision_ptr_end = revision_ptr + location_revisions->nelts;
 
-  /* Ignore revisions R that are younger than the peg_revisions where
-     path@peg_revision is not an ancestor of path@R. */
+
+
   is_ancestor = FALSE;
   while (revision_ptr < revision_ptr_end && *revision_ptr > peg_revision)
     {
@@ -126,32 +126,32 @@ svn_repos_trace_node_locations(svn_fs_t *fs,
       svn_revnum_t appeared_rev, prev_rev;
       const char *prev_path;
 
-      /* Find the target of the innermost copy relevant to path@revision.
-         The copy may be of path itself, or of a parent directory. */
+
+
       SVN_ERR(svn_repos__prev_location(&appeared_rev, &prev_path, &prev_rev,
                                        fs, revision, path, currpool));
       if (! prev_path)
         break;
 
-      /* Assign the current path to all younger revisions until we reach
-         the copy target rev. */
+
+
       while ((revision_ptr < revision_ptr_end)
              && (*revision_ptr >= appeared_rev))
         {
-          /* *revision_ptr is allocated out of pool, so we can point
-             to in the hash table. */
+
+
           apr_hash_set(*locations, revision_ptr, sizeof(*revision_ptr),
                        apr_pstrdup(pool, path));
           revision_ptr++;
         }
 
-      /* Ignore all revs between the copy target rev and the copy
-         source rev (non-inclusive). */
+
+
       while ((revision_ptr < revision_ptr_end)
              && (*revision_ptr > prev_rev))
         revision_ptr++;
 
-      /* State update. */
+
       path = prev_path;
       revision = prev_rev;
 
@@ -169,18 +169,18 @@ svn_repos_trace_node_locations(svn_fs_t *fs,
             }
         }
 
-      /* Clear last pool and switch. */
+
       svn_pool_clear(lastpool);
       tmppool = lastpool;
       lastpool = currpool;
       currpool = tmppool;
     }
 
-  /* There are no copies relevant to path@revision.  So any remaining
-     revisions either predate the creation of path@revision or have
-     the node existing at the same path.  We will look up path@lrev
-     for each remaining location-revision and make sure it is related
-     to path@revision. */
+
+
+
+
+
   SVN_ERR(svn_fs_revision_root(&root, fs, revision, lastpool));
   while (revision_ptr < revision_ptr_end)
     {
@@ -199,14 +199,14 @@ svn_repos_trace_node_locations(svn_fs_t *fs,
       if (node_relation == svn_fs_node_unrelated)
         break;
 
-      /* The node exists at the same path; record that and advance. */
+
       apr_hash_set(*locations, revision_ptr, sizeof(*revision_ptr),
                    apr_pstrdup(pool, path));
       revision_ptr++;
     }
 
-  /* Ignore any remaining location-revisions; they predate the
-     creation of path@revision. */
+
+
 
   svn_pool_destroy(lastpool);
   svn_pool_destroy(currpool);

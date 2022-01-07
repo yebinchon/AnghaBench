@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct cfunction {scalar_t__ nargs; int /*<<< orphan*/  name; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct cfunction {scalar_t__ nargs; int name; } ;
 struct TYPE_5__ {struct cfunction const* cfunc; } ;
-struct TYPE_6__ {scalar_t__ any_unbound; scalar_t__ nformals; int /*<<< orphan*/  symbol; TYPE_1__ imm; } ;
-typedef  TYPE_2__ inst ;
-typedef  int /*<<< orphan*/  block ;
+struct TYPE_6__ {scalar_t__ any_unbound; scalar_t__ nformals; int symbol; TYPE_1__ imm; } ;
+typedef TYPE_2__ inst ;
+typedef int block ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOCK (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CLOSURE_CREATE_C ; 
- int /*<<< orphan*/  inst_block (TYPE_2__*) ; 
- TYPE_2__* inst_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strdup (int /*<<< orphan*/ ) ; 
+
+ int BLOCK (int ,int ) ;
+ int CLOSURE_CREATE_C ;
+ int inst_block (TYPE_2__*) ;
+ TYPE_2__* inst_new (int ) ;
+ int strdup (int ) ;
 
 block gen_cbinding(const struct cfunction* cfunctions, int ncfunctions, block code) {
   for (int cfunc=0; cfunc<ncfunctions; cfunc++) {

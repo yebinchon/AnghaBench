@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  config_chain_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  check_config_equality (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* config_ChainCreate (char**,int /*<<< orphan*/ **,scalar_t__) ; 
- int /*<<< orphan*/  config_ChainDestroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * config_ChainDuplicate (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__* ppsz_string ; 
+
+
+
+typedef int config_chain_t ;
+
+
+ int check_config_equality (int *,int *) ;
+ char* config_ChainCreate (char**,int **,scalar_t__) ;
+ int config_ChainDestroy (int *) ;
+ int * config_ChainDuplicate (int *) ;
+ int free (char*) ;
+ scalar_t__* ppsz_string ;
 
 __attribute__((used)) static void test_config_ChainDuplicate()
 {

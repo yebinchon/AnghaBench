@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  long __int64 ;
-typedef  long ULONGLONG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
+
+
+
+typedef long __int64 ;
+typedef long ULONGLONG ;
+
+
+ int memcpy (char*,char*,int) ;
 
 char* _i64toa(__int64 value, char* string, int radix)
 {
@@ -25,29 +25,29 @@ char* _i64toa(__int64 value, char* string, int radix)
     int digit;
 
     if (value < 0 && radix == 10) {
-	negative = 1;
+ negative = 1;
         val = -value;
     } else {
-	negative = 0;
+ negative = 0;
         val = value;
-    } /* if */
+    }
 
     pos = &buffer[64];
     *pos = '\0';
 
     do {
-	digit = val % radix;
-	val = val / radix;
-	if (digit < 10) {
-	    *--pos = '0' + digit;
-	} else {
-	    *--pos = 'a' + digit - 10;
-	} /* if */
+ digit = val % radix;
+ val = val / radix;
+ if (digit < 10) {
+     *--pos = '0' + digit;
+ } else {
+     *--pos = 'a' + digit - 10;
+ }
     } while (val != 0L);
 
     if (negative) {
-	*--pos = '-';
-    } /* if */
+ *--pos = '-';
+    }
 
     memcpy(string, pos, &buffer[64] - pos + 1);
     return string;

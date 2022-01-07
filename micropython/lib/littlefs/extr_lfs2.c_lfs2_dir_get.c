@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lfs2_tag_t ;
-typedef  int /*<<< orphan*/  lfs2_t ;
-typedef  int /*<<< orphan*/  lfs2_stag_t ;
-typedef  int /*<<< orphan*/  lfs2_mdir_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lfs2_dir_getslice (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lfs2_tag_size (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int lfs2_tag_t ;
+typedef int lfs2_t ;
+typedef int lfs2_stag_t ;
+typedef int lfs2_mdir_t ;
+
+
+ int lfs2_dir_getslice (int *,int const*,int ,int ,int ,void*,int ) ;
+ int lfs2_tag_size (int ) ;
 
 __attribute__((used)) static lfs2_stag_t lfs2_dir_get(lfs2_t *lfs2, const lfs2_mdir_t *dir,
         lfs2_tag_t gmask, lfs2_tag_t gtag, void *buffer) {

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WCHAR ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int,int*,int) ; 
- scalar_t__ create_manifest_file (char const*,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int strlen (char const*) ; 
+
+
+
+typedef int WCHAR ;
+typedef scalar_t__ BOOL ;
+
+
+ int CP_ACP ;
+ int GetProcessHeap () ;
+ int* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int*) ;
+ int MultiByteToWideChar (int ,int ,char const*,int,int*,int) ;
+ scalar_t__ create_manifest_file (char const*,char*,int,int *,int *) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static BOOL create_wide_manifest(const char *filename, const char *manifest, BOOL fBOM, BOOL fReverse)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static BOOL create_wide_manifest(const char *filename, con
         for (i = 0; i < strlen(manifest)+1; i++)
             wmanifest[i] = (wmanifest[i] << 8) | ((wmanifest[i] >> 8) & 0xff);
     }
-    ret = create_manifest_file(filename, (char *)&wmanifest[offset], (strlen(manifest)+1-offset) * sizeof(WCHAR), NULL, NULL);
+    ret = create_manifest_file(filename, (char *)&wmanifest[offset], (strlen(manifest)+1-offset) * sizeof(WCHAR), ((void*)0), ((void*)0));
     HeapFree(GetProcessHeap(), 0, wmanifest);
     return ret;
 }

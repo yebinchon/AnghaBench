@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned char WCHAR ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  GUID ;
 
-/* Variables and functions */
- scalar_t__ E_INVALIDARG ; 
- int /*<<< orphan*/  GUID_MetadataFormatUnknown ; 
- int /*<<< orphan*/  GUID_MetadataFormatXMP ; 
- int /*<<< orphan*/  GUID_NULL ; 
- int IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- scalar_t__ WICMapShortNameToGuid (unsigned char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ WINCODEC_ERR_PROPERTYNOTFOUND ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- scalar_t__ wine_dbgstr_guid (int /*<<< orphan*/ *) ; 
+
+
+
+typedef unsigned char WCHAR ;
+typedef scalar_t__ HRESULT ;
+typedef int GUID ;
+
+
+ scalar_t__ E_INVALIDARG ;
+ int GUID_MetadataFormatUnknown ;
+ int GUID_MetadataFormatXMP ;
+ int GUID_NULL ;
+ int IsEqualGUID (int *,int *) ;
+ scalar_t__ S_OK ;
+ scalar_t__ WICMapShortNameToGuid (unsigned char const*,int *) ;
+ scalar_t__ WINCODEC_ERR_PROPERTYNOTFOUND ;
+ int ok (int,char*,scalar_t__) ;
+ scalar_t__ wine_dbgstr_guid (int *) ;
 
 __attribute__((used)) static void test_WICMapShortNameToGuid(void)
 {
@@ -35,13 +35,13 @@ __attribute__((used)) static void test_WICMapShortNameToGuid(void)
     HRESULT hr;
     GUID guid;
 
-    hr = WICMapShortNameToGuid(NULL, NULL);
+    hr = WICMapShortNameToGuid(((void*)0), ((void*)0));
     ok(hr == E_INVALIDARG, "got %#x\n", hr);
 
-    hr = WICMapShortNameToGuid(NULL, &guid);
+    hr = WICMapShortNameToGuid(((void*)0), &guid);
     ok(hr == E_INVALIDARG, "got %#x\n", hr);
 
-    hr = WICMapShortNameToGuid(unknownW, NULL);
+    hr = WICMapShortNameToGuid(unknownW, ((void*)0));
     ok(hr == E_INVALIDARG, "got %#x\n", hr);
 
     hr = WICMapShortNameToGuid(unkW, &guid);

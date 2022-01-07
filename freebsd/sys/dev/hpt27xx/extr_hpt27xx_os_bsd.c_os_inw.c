@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ HPT_UPTR ;
-typedef  int /*<<< orphan*/  HPT_U16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  inw (unsigned int) ; 
 
-HPT_U16  os_inw  (void *port) { return inw((unsigned)(HPT_UPTR)port); }
+
+
+typedef scalar_t__ HPT_UPTR ;
+typedef int HPT_U16 ;
+
+
+ int inw (unsigned int) ;
+
+HPT_U16 os_inw (void *port) { return inw((unsigned)(HPT_UPTR)port); }

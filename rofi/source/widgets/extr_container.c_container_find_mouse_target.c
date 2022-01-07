@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  widget ;
-typedef  int /*<<< orphan*/  gint ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int widget ;
+typedef int gint ;
 struct TYPE_4__ {TYPE_2__* child; } ;
-typedef  TYPE_1__ container ;
-typedef  int /*<<< orphan*/  WidgetType ;
+typedef TYPE_1__ container ;
+typedef int WidgetType ;
 struct TYPE_5__ {scalar_t__ y; scalar_t__ x; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * widget_find_mouse_target (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  widget_intersect (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int * widget_find_mouse_target (TYPE_2__*,int ,int ,int ) ;
+ int widget_intersect (TYPE_2__*,int ,int ) ;
 
 __attribute__((used)) static widget *container_find_mouse_target ( widget *wid, WidgetType type, gint x, gint y )
 {
     container *b = (container *) wid;
     if ( !widget_intersect ( b->child, x, y ) ) {
-        return NULL;
+        return ((void*)0);
     }
 
     x -= b->child->x;

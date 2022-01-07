@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int time_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ctime (int*) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int time_t ;
+
+
+ int * ctime (int*) ;
+ int ok (int ,char*) ;
 
 void Test_ctime()
 {
-    /* Test border ctime cases */
+
     time_t time;
     time = -15;
-    ok(ctime(&time) == NULL, "ctime doesn't return NULL for invalid parameters\n");
+    ok(ctime(&time) == ((void*)0), "ctime doesn't return NULL for invalid parameters\n");
     time = -5000000;
-    ok(ctime(&time) == NULL,  "ctime doesn't return NULL for invalid parameters\n");
+    ok(ctime(&time) == ((void*)0), "ctime doesn't return NULL for invalid parameters\n");
 }

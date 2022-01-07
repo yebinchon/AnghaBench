@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct item {int dummy; } ;
 struct TYPE_12__ {scalar_t__ doc_id; } ;
-struct TYPE_11__ {int* Bt; int sp; TYPE_4__** TS; int /*<<< orphan*/  cur_freq_text0; int /*<<< orphan*/  cur_freq_title0; int /*<<< orphan*/  cur0; TYPE_3__ Decoder; struct item* cur1; int /*<<< orphan*/  word; } ;
-typedef  TYPE_1__ iheap_en_t ;
-typedef  int /*<<< orphan*/  hash_t ;
-struct TYPE_13__ {int /*<<< orphan*/  freq_text; int /*<<< orphan*/  freq_title; int /*<<< orphan*/  item; } ;
+struct TYPE_11__ {int* Bt; int sp; TYPE_4__** TS; int cur_freq_text0; int cur_freq_title0; int cur0; TYPE_3__ Decoder; struct item* cur1; int word; } ;
+typedef TYPE_1__ iheap_en_t ;
+typedef int hash_t ;
+struct TYPE_13__ {int freq_text; int freq_title; int item; } ;
 
-/* Variables and functions */
- scalar_t__ IndexItems ; 
- TYPE_4__* Root ; 
- scalar_t__ adv_ilist (TYPE_3__*) ; 
- int ihe_dive (TYPE_1__*) ; 
- int ihe_load (TYPE_1__*) ; 
- int ihe_sgn (TYPE_4__*,TYPE_1__*) ; 
- scalar_t__ init_ilist_decoder (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ IndexItems ;
+ TYPE_4__* Root ;
+ scalar_t__ adv_ilist (TYPE_3__*) ;
+ int ihe_dive (TYPE_1__*) ;
+ int ihe_load (TYPE_1__*) ;
+ int ihe_sgn (TYPE_4__*,TYPE_1__*) ;
+ scalar_t__ init_ilist_decoder (TYPE_3__*,int ) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static int ihe_init (iheap_en_t *A, hash_t word) {
   int sgn, sp;

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct map {int dummy; } ;
 struct dso {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAP__FUNCTION ; 
- struct dso* dso__new (char const*) ; 
- struct map* map__new2 (int /*<<< orphan*/ ,struct dso*,int /*<<< orphan*/ ) ; 
+
+ int MAP__FUNCTION ;
+ struct dso* dso__new (char const*) ;
+ struct map* map__new2 (int ,struct dso*,int ) ;
 
 struct map *dso__new_map(const char *name)
 {
-	struct map *map = NULL;
-	struct dso *dso = dso__new(name);
+ struct map *map = ((void*)0);
+ struct dso *dso = dso__new(name);
 
-	if (dso)
-		map = map__new2(0, dso, MAP__FUNCTION);
+ if (dso)
+  map = map__new2(0, dso, MAP__FUNCTION);
 
-	return map;
+ return map;
 }

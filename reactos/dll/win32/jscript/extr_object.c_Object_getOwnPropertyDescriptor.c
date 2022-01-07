@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vdisp_t ;
-typedef  int /*<<< orphan*/  script_ctx_t ;
-struct TYPE_4__ {int flags; int /*<<< orphan*/  value; int /*<<< orphan*/ * setter; int /*<<< orphan*/ * getter; scalar_t__ explicit_setter; scalar_t__ explicit_getter; } ;
-typedef  TYPE_1__ property_desc_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ DISP_E_UNKNOWNNAME ; 
- scalar_t__ E_NOTIMPL ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  JS_E_OBJECT_EXPECTED ; 
- int /*<<< orphan*/  PROPF_ALL ; 
- int PROPF_CONFIGURABLE ; 
- int PROPF_ENUMERABLE ; 
- int PROPF_WRITABLE ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  configurableW ; 
- scalar_t__ create_object (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  enumerableW ; 
- int /*<<< orphan*/  getW ; 
- int /*<<< orphan*/  get_object (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_object_instance (int /*<<< orphan*/ ) ; 
- scalar_t__ jsdisp_define_data_property (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ jsdisp_get_own_property (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ jsdisp_propput_name (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsstr_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_bool (int) ; 
- int /*<<< orphan*/  jsval_obj (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_undefined () ; 
- int /*<<< orphan*/  release_property_descriptor (TYPE_1__*) ; 
- int /*<<< orphan*/  setW ; 
- scalar_t__ throw_type_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ to_flat_string (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/ * to_jsdisp (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  valueW ; 
- int /*<<< orphan*/  writableW ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int vdisp_t ;
+typedef int script_ctx_t ;
+struct TYPE_4__ {int flags; int value; int * setter; int * getter; scalar_t__ explicit_setter; scalar_t__ explicit_getter; } ;
+typedef TYPE_1__ property_desc_t ;
+typedef int jsval_t ;
+typedef int jsstr_t ;
+typedef int jsdisp_t ;
+typedef int WORD ;
+typedef int WCHAR ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ DISP_E_UNKNOWNNAME ;
+ scalar_t__ E_NOTIMPL ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int FALSE ;
+ int FIXME (char*) ;
+ int JS_E_OBJECT_EXPECTED ;
+ int PROPF_ALL ;
+ int PROPF_CONFIGURABLE ;
+ int PROPF_ENUMERABLE ;
+ int PROPF_WRITABLE ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_OK ;
+ int TRACE (char*) ;
+ int configurableW ;
+ scalar_t__ create_object (int *,int *,int **) ;
+ int enumerableW ;
+ int getW ;
+ int get_object (int ) ;
+ int is_object_instance (int ) ;
+ scalar_t__ jsdisp_define_data_property (int *,int ,int ,int ) ;
+ scalar_t__ jsdisp_get_own_property (int *,int const*,int ,TYPE_1__*) ;
+ scalar_t__ jsdisp_propput_name (int *,int ,int ) ;
+ int jsdisp_release (int *) ;
+ int jsstr_release (int *) ;
+ int jsval_bool (int) ;
+ int jsval_obj (int *) ;
+ int jsval_undefined () ;
+ int release_property_descriptor (TYPE_1__*) ;
+ int setW ;
+ scalar_t__ throw_type_error (int *,int ,int *) ;
+ scalar_t__ to_flat_string (int *,int ,int **,int const**) ;
+ int * to_jsdisp (int ) ;
+ int valueW ;
+ int writableW ;
 
 __attribute__((used)) static HRESULT Object_getOwnPropertyDescriptor(script_ctx_t *ctx, vdisp_t *jsthis, WORD flags,
                                                unsigned argc, jsval_t *argv, jsval_t *r)
@@ -70,7 +70,7 @@ __attribute__((used)) static HRESULT Object_getOwnPropertyDescriptor(script_ctx_
     TRACE("\n");
 
     if(argc < 1 || !is_object_instance(argv[0]))
-        return throw_type_error(ctx, JS_E_OBJECT_EXPECTED, NULL);
+        return throw_type_error(ctx, JS_E_OBJECT_EXPECTED, ((void*)0));
     obj = to_jsdisp(get_object(argv[0]));
     if(!obj) {
         FIXME("not implemented non-JS object\n");
@@ -90,7 +90,7 @@ __attribute__((used)) static HRESULT Object_getOwnPropertyDescriptor(script_ctx_
     if(FAILED(hres))
         return hres;
 
-    hres = create_object(ctx, NULL, &desc_obj);
+    hres = create_object(ctx, ((void*)0), &desc_obj);
     if(FAILED(hres))
         return hres;
 

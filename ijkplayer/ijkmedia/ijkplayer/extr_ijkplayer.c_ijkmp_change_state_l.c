@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int mp_state; int /*<<< orphan*/  ffplayer; } ;
-typedef  TYPE_1__ IjkMediaPlayer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FFP_MSG_PLAYBACK_STATE_CHANGED ; 
- int /*<<< orphan*/  ffp_notify_msg1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int mp_state; int ffplayer; } ;
+typedef TYPE_1__ IjkMediaPlayer ;
+
+
+ int FFP_MSG_PLAYBACK_STATE_CHANGED ;
+ int ffp_notify_msg1 (int ,int ) ;
 
 void ijkmp_change_state_l(IjkMediaPlayer *mp, int new_state)
 {

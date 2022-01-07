@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct SN_env {scalar_t__ c; scalar_t__* I; int lb; scalar_t__ ket; scalar_t__ bra; int l; char* p; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  a_6 ; 
- int find_among_b (struct SN_env*,int /*<<< orphan*/ ,int) ; 
- int r_R2 (struct SN_env*) ; 
- int slice_del (struct SN_env*) ; 
 
-__attribute__((used)) static int r_verb_suffix(struct SN_env * z) { /* backwardmode */
+ int a_6 ;
+ int find_among_b (struct SN_env*,int ,int) ;
+ int r_R2 (struct SN_env*) ;
+ int slice_del (struct SN_env*) ;
+
+__attribute__((used)) static int r_verb_suffix(struct SN_env * z) {
     int among_var;
 
-    {   int mlimit1; /* setlimit, line 181 */
+    { int mlimit1;
         if (z->c < z->I[0]) return 0;
         mlimit1 = z->lb; z->lb = z->I[0];
-        z->ket = z->c; /* [, line 182 */
-        among_var = find_among_b(z, a_6, 38); /* substring, line 182 */
+        z->ket = z->c;
+        among_var = find_among_b(z, a_6, 38);
         if (!(among_var)) { z->lb = mlimit1; return 0; }
-        z->bra = z->c; /* ], line 182 */
-        switch (among_var) { /* among, line 182 */
+        z->bra = z->c;
+        switch (among_var) {
             case 1:
-                {   int ret = r_R2(z); /* call R2, line 184 */
+                { int ret = r_R2(z);
                     if (ret == 0) { z->lb = mlimit1; return 0; }
                     if (ret < 0) return ret;
                 }
-                {   int ret = slice_del(z); /* delete, line 184 */
+                { int ret = slice_del(z);
                     if (ret < 0) return ret;
                 }
                 break;
             case 2:
-                {   int ret = slice_del(z); /* delete, line 192 */
+                { int ret = slice_del(z);
                     if (ret < 0) return ret;
                 }
                 break;
             case 3:
-                {   int ret = slice_del(z); /* delete, line 197 */
+                { int ret = slice_del(z);
                     if (ret < 0) return ret;
                 }
-                {   int m2 = z->l - z->c; (void)m2; /* try, line 198 */
-                    z->ket = z->c; /* [, line 198 */
-                    if (z->c <= z->lb || z->p[z->c - 1] != 'e') { z->c = z->l - m2; goto lab0; } /* literal, line 198 */
+                { int m2 = z->l - z->c; (void)m2;
+                    z->ket = z->c;
+                    if (z->c <= z->lb || z->p[z->c - 1] != 'e') { z->c = z->l - m2; goto lab0; }
                     z->c--;
-                    z->bra = z->c; /* ], line 198 */
-                    {   int ret = slice_del(z); /* delete, line 198 */
+                    z->bra = z->c;
+                    { int ret = slice_del(z);
                         if (ret < 0) return ret;
                     }
                 lab0:

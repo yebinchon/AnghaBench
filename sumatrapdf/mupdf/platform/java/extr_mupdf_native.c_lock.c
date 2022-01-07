@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * mutexes ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
+ int EnterCriticalSection (int *) ;
+ int * mutexes ;
+ int pthread_mutex_lock (int *) ;
 
 __attribute__((used)) static void lock(void *user, int lock)
 {
-#ifdef _WIN32
-	EnterCriticalSection(&mutexes[lock]);
-#else
-	(void)pthread_mutex_lock(&mutexes[lock]);
-#endif
+
+
+
+ (void)pthread_mutex_lock(&mutexes[lock]);
+
 }

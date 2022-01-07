@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {scalar_t__ nRow; int nData; int nAlloc; char** azResult; int nColumn; int /*<<< orphan*/  rc; void* zErrMsg; } ;
-typedef  TYPE_1__ TabResult ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_ERROR ; 
- int /*<<< orphan*/  SQLITE_NOMEM_BKPT ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int sqlite3Strlen30 (char*) ; 
- int /*<<< orphan*/  sqlite3_free (void*) ; 
- char* sqlite3_malloc64 (int) ; 
- void* sqlite3_mprintf (char*,...) ; 
- char** sqlite3_realloc64 (char**,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {scalar_t__ nRow; int nData; int nAlloc; char** azResult; int nColumn; int rc; void* zErrMsg; } ;
+typedef TYPE_1__ TabResult ;
+
+
+ int SQLITE_ERROR ;
+ int SQLITE_NOMEM_BKPT ;
+ int memcpy (char*,char*,int) ;
+ int sqlite3Strlen30 (char*) ;
+ int sqlite3_free (void*) ;
+ char* sqlite3_malloc64 (int) ;
+ void* sqlite3_mprintf (char*,...) ;
+ char** sqlite3_realloc64 (char**,int) ;
 
 __attribute__((used)) static int sqlite3_get_table_cb(void *pArg, int nCol, char **argv, char **colv){
-  TabResult *p = (TabResult*)pArg;  /* Result accumulator */
-  int need;                         /* Slots needed in p->azResult[] */
-  int i;                            /* Loop counter */
-  char *z;                          /* A single column of result */
+  TabResult *p = (TabResult*)pArg;
+  int need;
+  int i;
+  char *z;
 
-  /* Make sure there is enough space in p->azResult to hold everything
-  ** we need to remember from this invocation of the callback.
-  */
+
+
+
   if( p->nRow==0 && argv!=0 ){
     need = nCol*2;
   }else{
@@ -46,9 +46,9 @@ __attribute__((used)) static int sqlite3_get_table_cb(void *pArg, int nCol, char
     p->azResult = azNew;
   }
 
-  /* If this is the first row, then generate an extra row containing
-  ** the names of all columns.
-  */
+
+
+
   if( p->nRow==0 ){
     p->nColumn = nCol;
     for(i=0; i<nCol; i++){
@@ -65,8 +65,8 @@ __attribute__((used)) static int sqlite3_get_table_cb(void *pArg, int nCol, char
     return 1;
   }
 
-  /* Copy over the row data
-  */
+
+
   if( argv!=0 ){
     for(i=0; i<nCol; i++){
       if( argv[i]==0 ){

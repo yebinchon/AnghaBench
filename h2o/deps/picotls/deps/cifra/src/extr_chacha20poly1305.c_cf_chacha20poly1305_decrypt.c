@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DECRYPT ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int process (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,size_t,int /*<<< orphan*/  const*,size_t,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int DECRYPT ;
+ int memcpy (int *,int const*,int) ;
+ int process (int const*,int const*,int const*,size_t,int const*,size_t,int *,int ,int *) ;
 
 int cf_chacha20poly1305_decrypt(const uint8_t key[32],
                                 const uint8_t nonce[12],

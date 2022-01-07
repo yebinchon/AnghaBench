@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bnxt_softc {int /*<<< orphan*/  hwrm_short_cmd_req_addr; int /*<<< orphan*/  hwrm_max_req_len; int /*<<< orphan*/  ctx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUS_DMA_NOWAIT ; 
- int iflib_dma_alloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct bnxt_softc {int hwrm_short_cmd_req_addr; int hwrm_max_req_len; int ctx; } ;
+
+
+ int BUS_DMA_NOWAIT ;
+ int iflib_dma_alloc (int ,int ,int *,int ) ;
 
 __attribute__((used)) static int bnxt_alloc_hwrm_short_cmd_req(struct bnxt_softc *softc)
 {
-	int rc;
+ int rc;
 
-	rc = iflib_dma_alloc(softc->ctx, softc->hwrm_max_req_len,
-	    &softc->hwrm_short_cmd_req_addr, BUS_DMA_NOWAIT);
+ rc = iflib_dma_alloc(softc->ctx, softc->hwrm_max_req_len,
+     &softc->hwrm_short_cmd_req_addr, BUS_DMA_NOWAIT);
 
-	return rc;
+ return rc;
 }

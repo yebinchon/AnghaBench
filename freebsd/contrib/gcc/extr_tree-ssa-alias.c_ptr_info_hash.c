@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ptr_info_def {int /*<<< orphan*/  pt_vars; } ;
-typedef  int /*<<< orphan*/  hashval_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bitmap_hash (int /*<<< orphan*/ ) ; 
+
+
+
+struct ptr_info_def {int pt_vars; } ;
+typedef int hashval_t ;
+
+
+ int bitmap_hash (int ) ;
 
 __attribute__((used)) static hashval_t
 ptr_info_hash (const void *p)

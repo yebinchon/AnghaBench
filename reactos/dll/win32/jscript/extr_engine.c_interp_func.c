@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {TYPE_3__* call_ctx; } ;
-typedef  TYPE_2__ script_ctx_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-struct TYPE_10__ {int /*<<< orphan*/  scope; TYPE_1__* function; int /*<<< orphan*/  bytecode; } ;
-typedef  TYPE_3__ call_frame_t ;
+typedef TYPE_2__ script_ctx_t ;
+typedef int jsdisp_t ;
+struct TYPE_10__ {int scope; TYPE_1__* function; int bytecode; } ;
+typedef TYPE_3__ call_frame_t ;
 struct TYPE_8__ {scalar_t__ funcs; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,unsigned int) ; 
- int /*<<< orphan*/  create_source_function (TYPE_2__*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- unsigned int get_op_uint (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_obj (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stack_push (TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ FAILED (int ) ;
+ int TRACE (char*,unsigned int) ;
+ int create_source_function (TYPE_2__*,int ,scalar_t__,int ,int **) ;
+ unsigned int get_op_uint (TYPE_2__*,int ) ;
+ int jsval_obj (int *) ;
+ int stack_push (TYPE_2__*,int ) ;
 
 __attribute__((used)) static HRESULT interp_func(script_ctx_t *ctx)
 {

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ ** block; } ;
-typedef  TYPE_1__ partition_struct ;
 
-/* Variables and functions */
- unsigned int MAX_BLOCKS ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int ** block; } ;
+typedef TYPE_1__ partition_struct ;
+
+
+ unsigned int MAX_BLOCKS ;
 
 void Cs2SortBlocks(partition_struct * part) {
   unsigned int from, to;
 
   for (from = to = 0; from < MAX_BLOCKS; from++)
   {
-     if (part->block[from] != NULL)
+     if (part->block[from] != ((void*)0))
      {
         if (to != from)
         {
@@ -33,6 +33,6 @@ void Cs2SortBlocks(partition_struct * part) {
   }
 
   for (; to < MAX_BLOCKS; to++) {
-      part->block[to] = NULL;
+      part->block[to] = ((void*)0);
   }
 }

@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SIGPxcall ; 
- int /*<<< orphan*/  cpu_datap (int) ; 
- int /*<<< orphan*/  cpu_signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,void*) ; 
+ int SIGPxcall ;
+ int cpu_datap (int) ;
+ int cpu_signal (int ,int ,void*,void*) ;
 
 void
 timer_call_cpu(int cpu, void (*fn)(void *), void *arg)
 {
-	cpu_signal(cpu_datap(cpu), SIGPxcall, (void *) fn, arg);
+ cpu_signal(cpu_datap(cpu), SIGPxcall, (void *) fn, arg);
 }

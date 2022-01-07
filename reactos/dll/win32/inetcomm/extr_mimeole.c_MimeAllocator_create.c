@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLASS_E_NOAGGREGATION ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  mime_allocator ; 
+
+
+
+typedef int IUnknown ;
+typedef int HRESULT ;
+
+
+ int CLASS_E_NOAGGREGATION ;
+ int S_OK ;
+ int mime_allocator ;
 
 HRESULT MimeAllocator_create(IUnknown *outer, void **obj)
 {

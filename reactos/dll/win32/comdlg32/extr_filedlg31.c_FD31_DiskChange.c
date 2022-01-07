@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_4__ {int /*<<< orphan*/  hwnd; } ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  long LPARAM ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  TYPE_1__ FD31_DATA ;
 
-/* Variables and functions */
- int BUFFILE ; 
- int /*<<< orphan*/  BUFFILEALLOC ; 
- int /*<<< orphan*/  CB_GETCURSEL ; 
- int /*<<< orphan*/  CB_GETLBTEXT ; 
- int /*<<< orphan*/  FD31_StripEditControl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FD31_Validate (TYPE_1__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FILE_specc ; 
- scalar_t__ LB_ERR ; 
- scalar_t__ SendDlgItemMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,long) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  cmb2 ; 
- int /*<<< orphan*/ * heap_alloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wsprintfW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_4__ {int hwnd; } ;
+typedef int LRESULT ;
+typedef int * LPWSTR ;
+typedef long LPARAM ;
+typedef scalar_t__ LONG ;
+typedef int HWND ;
+typedef TYPE_1__ FD31_DATA ;
+
+
+ int BUFFILE ;
+ int BUFFILEALLOC ;
+ int CB_GETCURSEL ;
+ int CB_GETLBTEXT ;
+ int FD31_StripEditControl (int ) ;
+ int FD31_Validate (TYPE_1__ const*,int *,int ,scalar_t__,int ) ;
+ int FILE_specc ;
+ scalar_t__ LB_ERR ;
+ scalar_t__ SendDlgItemMessageW (int ,int ,int ,scalar_t__,long) ;
+ int TRUE ;
+ int cmb2 ;
+ int * heap_alloc (int ) ;
+ int heap_free (int *) ;
+ int wsprintfW (int *,int ,int ) ;
 
 __attribute__((used)) static LRESULT FD31_DiskChange( const FD31_DATA *lfs )
 {

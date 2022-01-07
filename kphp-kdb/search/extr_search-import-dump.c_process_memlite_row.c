@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_search_text_short_entry {int rate; int rate2; int obj_id; char* text; scalar_t__ type; } ;
-struct lev_search_text_long_entry {int rate; int rate2; int obj_id; int text_len; char* text; int /*<<< orphan*/  type; } ;
+struct lev_search_text_long_entry {int rate; int rate2; int obj_id; int text_len; char* text; int type; } ;
 
-/* Variables and functions */
- int* I ; 
- int* L ; 
- int /*<<< orphan*/  LEV_SEARCH_TEXT_LONG ; 
- scalar_t__ LEV_SEARCH_TEXT_SHORT ; 
- char** S ; 
- int /*<<< orphan*/  adj_rec ; 
- int /*<<< orphan*/  fits (int) ; 
- size_t ml_cute ; 
- size_t ml_first_name ; 
- size_t ml_id ; 
- size_t ml_last_name ; 
- size_t ml_profile_privacy ; 
- size_t ml_rate ; 
- void* write_alloc (int) ; 
+
+ int* I ;
+ int* L ;
+ int LEV_SEARCH_TEXT_LONG ;
+ scalar_t__ LEV_SEARCH_TEXT_SHORT ;
+ char** S ;
+ int adj_rec ;
+ int fits (int) ;
+ size_t ml_cute ;
+ size_t ml_first_name ;
+ size_t ml_id ;
+ size_t ml_last_name ;
+ size_t ml_profile_privacy ;
+ size_t ml_rate ;
+ void* write_alloc (int) ;
 
 void process_memlite_row (void) {
   char *p, *q;

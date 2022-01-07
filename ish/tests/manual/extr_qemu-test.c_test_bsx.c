@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TEST_BSX (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  bsfl ; 
- int /*<<< orphan*/  bsfq ; 
- int /*<<< orphan*/  bsfw ; 
- int /*<<< orphan*/  bsrl ; 
- int /*<<< orphan*/  bsrq ; 
- int /*<<< orphan*/  bsrw ; 
+ int TEST_BSX (int ,char*,int) ;
+ int bsfl ;
+ int bsfq ;
+ int bsfw ;
+ int bsrl ;
+ int bsrq ;
+ int bsrw ;
 
 void test_bsx(void)
 {
@@ -30,10 +22,10 @@ void test_bsx(void)
     TEST_BSX(bsrl, "k", 0x00340128);
     TEST_BSX(bsfl, "k", 0);
     TEST_BSX(bsfl, "k", 0x00340128);
-#if defined(__x86_64__)
+
     TEST_BSX(bsrq, "", 0);
     TEST_BSX(bsrq, "", 0x003401281234);
     TEST_BSX(bsfq, "", 0);
     TEST_BSX(bsfq, "", 0x003401281234);
-#endif
+
 }

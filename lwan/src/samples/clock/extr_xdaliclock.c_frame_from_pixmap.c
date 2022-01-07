@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct frame {TYPE_1__* scanlines; } ;
 struct TYPE_2__ {scalar_t__* right; scalar_t__* left; } ;
-typedef  scalar_t__ POS ;
+typedef scalar_t__ POS ;
 
-/* Variables and functions */
- int MAX_SEGS_PER_LINE ; 
- struct frame* frame_mk (int,int) ; 
- scalar_t__ get_bit (unsigned char const*,int,int,int) ; 
- int /*<<< orphan*/  lwan_status_critical (char*) ; 
+
+ int MAX_SEGS_PER_LINE ;
+ struct frame* frame_mk (int,int) ;
+ scalar_t__ get_bit (unsigned char const*,int,int,int) ;
+ int lwan_status_critical (char*) ;
 
 __attribute__((used)) static struct frame *
 frame_from_pixmap(const unsigned char *bits, int width, int height)
@@ -31,7 +31,7 @@ frame_from_pixmap(const unsigned char *bits, int width, int height)
 
     frame = frame_mk(width, height);
     if (!frame)
-        return NULL;
+        return ((void*)0);
 
     for (y = 0; y < height; y++) {
         int seg, end;
@@ -65,14 +65,14 @@ frame_from_pixmap(const unsigned char *bits, int width, int height)
                 lwan_status_critical(
                     "Font too curvy. Increase MAX_SEGS_PER_LINE "
                     "and recompile");
-                return NULL;
+                return ((void*)0);
             }
         }
 
-        /* If there were any segments on this line, then replicate the last
-           one out to the end of the line.  If it's blank, leave it alone,
-           meaning it will be a 0-pixel-wide line down the middle.
-         */
+
+
+
+
         end = seg;
         if (end > 0) {
             for (; seg < MAX_SEGS_PER_LINE; seg++) {

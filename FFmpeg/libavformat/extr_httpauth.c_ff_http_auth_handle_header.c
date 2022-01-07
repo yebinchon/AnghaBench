@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ff_parse_key_val_cb ;
-struct TYPE_6__ {char const* stale; int /*<<< orphan*/  qop; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int ff_parse_key_val_cb ;
+struct TYPE_6__ {char const* stale; int qop; } ;
 struct TYPE_5__ {scalar_t__ auth_type; int stale; TYPE_2__ digest_params; scalar_t__* realm; } ;
-typedef  TYPE_1__ HTTPAuthState ;
-typedef  int /*<<< orphan*/  DigestParams ;
+typedef TYPE_1__ HTTPAuthState ;
+typedef int DigestParams ;
 
-/* Variables and functions */
- scalar_t__ HTTP_AUTH_BASIC ; 
- scalar_t__ HTTP_AUTH_DIGEST ; 
- int /*<<< orphan*/  av_strcasecmp (char const*,char*) ; 
- scalar_t__ av_stristart (char const*,char*,char const**) ; 
- int /*<<< orphan*/  choose_qop (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ff_parse_key_value (char const*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ handle_basic_params ; 
- scalar_t__ handle_digest_params ; 
- scalar_t__ handle_digest_update ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ HTTP_AUTH_BASIC ;
+ scalar_t__ HTTP_AUTH_DIGEST ;
+ int av_strcasecmp (char const*,char*) ;
+ scalar_t__ av_stristart (char const*,char*,char const**) ;
+ int choose_qop (int ,int) ;
+ int ff_parse_key_value (char const*,int ,TYPE_1__*) ;
+ scalar_t__ handle_basic_params ;
+ scalar_t__ handle_digest_params ;
+ scalar_t__ handle_digest_update ;
+ int memset (TYPE_2__*,int ,int) ;
 
 void ff_http_auth_handle_header(HTTPAuthState *state, const char *key,
                                 const char *value)

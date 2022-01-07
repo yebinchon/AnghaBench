@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {void* servername; } ;
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  SSL ;
-typedef  TYPE_1__ HANDSHAKE_EX_DATA ;
+typedef int SSL_CTX ;
+typedef int SSL ;
+typedef TYPE_1__ HANDSHAKE_EX_DATA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SSL_CTX_get_options (int /*<<< orphan*/ *) ; 
- void* SSL_TEST_SERVERNAME_SERVER1 ; 
- void* SSL_TEST_SERVERNAME_SERVER2 ; 
- int SSL_TLSEXT_ERR_ALERT_FATAL ; 
- int SSL_TLSEXT_ERR_NOACK ; 
- int SSL_TLSEXT_ERR_OK ; 
- int /*<<< orphan*/  SSL_clear_options (int /*<<< orphan*/ *,int) ; 
- scalar_t__ SSL_get_ex_data (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* SSL_get_servername (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_set_SSL_CTX (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_set_options (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TLSEXT_NAMETYPE_host_name ; 
- int /*<<< orphan*/  ex_data_idx ; 
- scalar_t__ strcmp (char const*,char*) ; 
+
+ int SSL_CTX_get_options (int *) ;
+ void* SSL_TEST_SERVERNAME_SERVER1 ;
+ void* SSL_TEST_SERVERNAME_SERVER2 ;
+ int SSL_TLSEXT_ERR_ALERT_FATAL ;
+ int SSL_TLSEXT_ERR_NOACK ;
+ int SSL_TLSEXT_ERR_OK ;
+ int SSL_clear_options (int *,int) ;
+ scalar_t__ SSL_get_ex_data (int *,int ) ;
+ char* SSL_get_servername (int *,int ) ;
+ int SSL_set_SSL_CTX (int *,int *) ;
+ int SSL_set_options (int *,int ) ;
+ int TLSEXT_NAMETYPE_host_name ;
+ int ex_data_idx ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 __attribute__((used)) static int select_server_ctx(SSL *s, void *arg, int ignore)
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static int select_server_ctx(SSL *s, void *arg, int ignore
     HANDSHAKE_EX_DATA *ex_data =
         (HANDSHAKE_EX_DATA*)(SSL_get_ex_data(s, ex_data_idx));
 
-    if (servername == NULL) {
+    if (servername == ((void*)0)) {
         ex_data->servername = SSL_TEST_SERVERNAME_SERVER1;
         return SSL_TLSEXT_ERR_NOACK;
     }
@@ -46,11 +46,11 @@ __attribute__((used)) static int select_server_ctx(SSL *s, void *arg, int ignore
     if (strcmp(servername, "server2") == 0) {
         SSL_CTX *new_ctx = (SSL_CTX*)arg;
         SSL_set_SSL_CTX(s, new_ctx);
-        /*
-         * Copy over all the SSL_CTX options - reasonable behavior
-         * allows testing of cases where the options between two
-         * contexts differ/conflict
-         */
+
+
+
+
+
         SSL_clear_options(s, 0xFFFFFFFFL);
         SSL_set_options(s, SSL_CTX_get_options(new_ctx));
 
@@ -63,7 +63,7 @@ __attribute__((used)) static int select_server_ctx(SSL *s, void *arg, int ignore
         ex_data->servername = SSL_TEST_SERVERNAME_SERVER1;
         return SSL_TLSEXT_ERR_NOACK;
     } else {
-        /* Don't set an explicit alert, to test library defaults. */
+
         return SSL_TLSEXT_ERR_ALERT_FATAL;
     }
 }

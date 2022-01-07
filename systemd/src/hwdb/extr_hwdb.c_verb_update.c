@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  arg_hwdb_bin_dir ; 
- int /*<<< orphan*/  arg_root ; 
- int /*<<< orphan*/  arg_strict ; 
- int hwdb_update (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+ int arg_hwdb_bin_dir ;
+ int arg_root ;
+ int arg_strict ;
+ int hwdb_update (int ,int ,int ,int) ;
 
 __attribute__((used)) static int verb_update(int argc, char *argv[], void *userdata) {
-        return hwdb_update(arg_root, arg_hwdb_bin_dir, arg_strict, false);
+        return hwdb_update(arg_root, arg_hwdb_bin_dir, arg_strict, 0);
 }

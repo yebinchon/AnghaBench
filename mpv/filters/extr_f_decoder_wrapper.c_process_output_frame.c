@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {scalar_t__ play_dir; int /*<<< orphan*/  fps; } ;
-struct priv {TYPE_1__ public; int /*<<< orphan*/  fixed_format; int /*<<< orphan*/  last_format; } ;
-struct mp_image {int /*<<< orphan*/  nominal_fps; int /*<<< orphan*/  params; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {scalar_t__ play_dir; int fps; } ;
+struct priv {TYPE_1__ public; int fixed_format; int last_format; } ;
+struct mp_image {int nominal_fps; int params; } ;
 struct mp_frame {scalar_t__ type; struct mp_image* data; } ;
-struct mp_aframe {int /*<<< orphan*/  nominal_fps; int /*<<< orphan*/  params; } ;
+struct mp_aframe {int nominal_fps; int params; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_ERR (struct priv*,char*) ; 
- scalar_t__ MP_FRAME_AUDIO ; 
- scalar_t__ MP_FRAME_VIDEO ; 
- int /*<<< orphan*/  correct_audio_pts (struct priv*,struct mp_image*) ; 
- int /*<<< orphan*/  correct_video_pts (struct priv*,struct mp_image*) ; 
- int /*<<< orphan*/  fix_image_params (struct priv*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_aframe_reverse (struct mp_image*) ; 
- int /*<<< orphan*/  mp_image_params_equal (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int MP_ERR (struct priv*,char*) ;
+ scalar_t__ MP_FRAME_AUDIO ;
+ scalar_t__ MP_FRAME_VIDEO ;
+ int correct_audio_pts (struct priv*,struct mp_image*) ;
+ int correct_video_pts (struct priv*,struct mp_image*) ;
+ int fix_image_params (struct priv*,int *) ;
+ int mp_aframe_reverse (struct mp_image*) ;
+ int mp_image_params_equal (int *,int *) ;
 
 __attribute__((used)) static void process_output_frame(struct priv *p, struct mp_frame frame)
 {

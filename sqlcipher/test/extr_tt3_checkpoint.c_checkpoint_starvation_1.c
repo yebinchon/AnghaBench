@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int nMaxFrame; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-struct TYPE_6__ {int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ Error ;
-typedef  TYPE_2__ CheckpointStarvationCtx ;
 
-/* Variables and functions */
- int CHECKPOINT_STARVATION_FRAMELIMIT ; 
- int /*<<< orphan*/  SQLITE_CHECKPOINT_PASSIVE ; 
- int /*<<< orphan*/  checkpoint_starvation_main (int,TYPE_2__*) ; 
- int /*<<< orphan*/  print_and_free_err (TYPE_1__*) ; 
- int /*<<< orphan*/  test_error (TYPE_1__*,char*,int) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int nMaxFrame; int member_1; int member_0; } ;
+struct TYPE_6__ {int member_0; } ;
+typedef TYPE_1__ Error ;
+typedef TYPE_2__ CheckpointStarvationCtx ;
+
+
+ int CHECKPOINT_STARVATION_FRAMELIMIT ;
+ int SQLITE_CHECKPOINT_PASSIVE ;
+ int checkpoint_starvation_main (int,TYPE_2__*) ;
+ int print_and_free_err (TYPE_1__*) ;
+ int test_error (TYPE_1__*,char*,int) ;
 
 __attribute__((used)) static void checkpoint_starvation_1(int nMs){
   Error err = {0};

@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  breakpoint_re_set () ; 
- int /*<<< orphan*/  clear_current_source_symtab_and_line () ; 
- int /*<<< orphan*/  clear_displays () ; 
- int /*<<< orphan*/  clear_internalvars () ; 
- int /*<<< orphan*/  clear_pc_function_cache () ; 
- int /*<<< orphan*/  clear_value_history () ; 
- int /*<<< orphan*/  set_default_breakpoint (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  target_new_objfile_hook (int /*<<< orphan*/ *) ; 
+ int breakpoint_re_set () ;
+ int clear_current_source_symtab_and_line () ;
+ int clear_displays () ;
+ int clear_internalvars () ;
+ int clear_pc_function_cache () ;
+ int clear_value_history () ;
+ int set_default_breakpoint (int ,int ,int ,int ) ;
+ int target_new_objfile_hook (int *) ;
 
 void
 clear_symtab_users (void)
 {
-  /* Someday, we should do better than this, by only blowing away
-     the things that really need to be blown.  */
+
+
   clear_value_history ();
   clear_displays ();
   clear_internalvars ();
@@ -34,5 +26,5 @@ clear_symtab_users (void)
   clear_current_source_symtab_and_line ();
   clear_pc_function_cache ();
   if (target_new_objfile_hook)
-    target_new_objfile_hook (NULL);
+    target_new_objfile_hook (((void*)0));
 }

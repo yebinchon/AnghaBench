@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  options; int /*<<< orphan*/  is_program; int /*<<< orphan*/  filename; int /*<<< orphan*/  cstate; } ;
-struct TYPE_5__ {int /*<<< orphan*/  ss_currentRelation; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int options; int is_program; int filename; int cstate; } ;
+struct TYPE_5__ {int ss_currentRelation; } ;
 struct TYPE_6__ {TYPE_1__ ss; scalar_t__ fdw_state; } ;
-typedef  TYPE_2__ ForeignScanState ;
-typedef  TYPE_3__ FileFdwExecutionState ;
+typedef TYPE_2__ ForeignScanState ;
+typedef TYPE_3__ FileFdwExecutionState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BeginCopyFrom (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EndCopyFrom (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NIL ; 
+
+ int BeginCopyFrom (int *,int ,int ,int ,int *,int ,int ) ;
+ int EndCopyFrom (int ) ;
+ int NIL ;
 
 __attribute__((used)) static void
 fileReScanForeignScan(ForeignScanState *node)
 {
-	FileFdwExecutionState *festate = (FileFdwExecutionState *) node->fdw_state;
+ FileFdwExecutionState *festate = (FileFdwExecutionState *) node->fdw_state;
 
-	EndCopyFrom(festate->cstate);
+ EndCopyFrom(festate->cstate);
 
-	festate->cstate = BeginCopyFrom(NULL,
-									node->ss.ss_currentRelation,
-									festate->filename,
-									festate->is_program,
-									NULL,
-									NIL,
-									festate->options);
+ festate->cstate = BeginCopyFrom(((void*)0),
+         node->ss.ss_currentRelation,
+         festate->filename,
+         festate->is_program,
+         ((void*)0),
+         NIL,
+         festate->options);
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct _Locale_collate {int dummy; } ;
-typedef  int /*<<< orphan*/  locale_t ;
+typedef int locale_t ;
 
-/* Variables and functions */
- int strcoll_l (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strncpy (char*,char const*,size_t) ; 
+
+ int strcoll_l (char*,char*,int ) ;
+ int strncpy (char*,char const*,size_t) ;
 
 int _Locale_strcmp(struct _Locale_collate * __loc,
                    const char *s1, size_t n1,
-		   const char *s2, size_t n2) {
+     const char *s2, size_t n2) {
   int ret = 0;
   char buf1[64], buf2[64];
   while (n1 > 0 || n2 > 0) {

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_4__ {int GlobalFlags; int /*<<< orphan*/  SleepButtonDc; int /*<<< orphan*/  PowerButtonDc; int /*<<< orphan*/  LidCloseDc; int /*<<< orphan*/  SleepButtonAc; int /*<<< orphan*/  PowerButtonAc; int /*<<< orphan*/  LidCloseAc; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int VOID ;
+struct TYPE_4__ {int GlobalFlags; int SleepButtonDc; int PowerButtonDc; int LidCloseDc; int SleepButtonAc; int PowerButtonAc; int LidCloseAc; } ;
 struct TYPE_5__ {TYPE_1__ user; } ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int BOOL ;
+typedef int HWND ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ BST_CHECKED ; 
- int EnablePasswordLogon ; 
- int EnableSysTrayBatteryMeter ; 
- int EnableVideoDimDisplay ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_LIDCLOSE ; 
- int /*<<< orphan*/  IDC_PASSWORDLOGON ; 
- int /*<<< orphan*/  IDC_POWERBUTTON ; 
- int /*<<< orphan*/  IDC_SLEEPBUTTON ; 
- int /*<<< orphan*/  IDC_SYSTRAYBATTERYMETER ; 
- int /*<<< orphan*/  IDC_VIDEODIMDISPLAY ; 
- int /*<<< orphan*/  IsBatteryUsed () ; 
- scalar_t__ IsDlgButtonChecked (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MB_OK ; 
- int /*<<< orphan*/  MessageBox (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SaveCurrentPowerActionPolicy (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetSystrayPowerIconState (int) ; 
- int /*<<< orphan*/  WriteGlobalPwrPolicy (TYPE_2__*) ; 
- TYPE_2__ gGPP ; 
+
+ scalar_t__ BST_CHECKED ;
+ int EnablePasswordLogon ;
+ int EnableSysTrayBatteryMeter ;
+ int EnableVideoDimDisplay ;
+ int GetDlgItem (int ,int ) ;
+ int IDC_LIDCLOSE ;
+ int IDC_PASSWORDLOGON ;
+ int IDC_POWERBUTTON ;
+ int IDC_SLEEPBUTTON ;
+ int IDC_SYSTRAYBATTERYMETER ;
+ int IDC_VIDEODIMDISPLAY ;
+ int IsBatteryUsed () ;
+ scalar_t__ IsDlgButtonChecked (int ,int ) ;
+ int MB_OK ;
+ int MessageBox (int ,char*,int *,int ) ;
+ int SaveCurrentPowerActionPolicy (int ,int *) ;
+ int SetSystrayPowerIconState (int) ;
+ int WriteGlobalPwrPolicy (TYPE_2__*) ;
+ TYPE_2__ gGPP ;
 
 __attribute__((used)) static VOID
 Adv_SaveData(HWND hwndDlg)
@@ -102,27 +102,27 @@ Adv_SaveData(HWND hwndDlg)
 
     if (!IsBatteryUsed())
     {
-#if 0
-        SaveCurrentPowerActionPolicy(GetDlgItem(hwndDlg, IDC_LIDCLOSE), &gGPP.user.LidCloseAc);
-#endif
+
+
+
         SaveCurrentPowerActionPolicy(GetDlgItem(hwndDlg, IDC_POWERBUTTON), &gGPP.user.PowerButtonAc);
         SaveCurrentPowerActionPolicy(GetDlgItem(hwndDlg, IDC_SLEEPBUTTON), &gGPP.user.SleepButtonAc);
     }
     else
     {
-#if 0
-        SaveCurrentPowerActionPolicy(GetDlgItem(hwndDlg, IDC_LIDCLOSE), &gGPP.user.LidCloseDc);
-        SaveCurrentPowerActionPolicy(GetDlgItem(hwndDlg, IDC_POWERBUTTON), &gGPP.user.PowerButtonDc);
-        SaveCurrentPowerActionPolicy(GetDlgItem(hwndDlg, IDC_SLEEPBUTTON), &gGPP.user.SleepButtonDc);
-#endif
+
+
+
+
+
     }
 
     if (!WriteGlobalPwrPolicy(&gGPP))
     {
-        MessageBox(hwndDlg, L"WriteGlobalPwrPolicy failed", NULL, MB_OK);
+        MessageBox(hwndDlg, L"WriteGlobalPwrPolicy failed", ((void*)0), MB_OK);
     }
 
     SetSystrayPowerIconState(bSystrayBatteryMeter);
 
-//    Adv_InitDialog(hwndDlg);
+
 }

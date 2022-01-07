@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_mode; } ;
+
+
+
+
+struct stat {int st_mode; } ;
 struct dirent {char* d_name; } ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  DIR ;
+typedef int lua_State ;
+typedef int DIR ;
 
-/* Variables and functions */
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- scalar_t__ S_ISREG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- int luaL_checkoption (int /*<<< orphan*/ *,int,char*,char const**) ; 
- char* luaL_checkstring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_newtable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_settable (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * opendir (char const*) ; 
- struct dirent* readdir (int /*<<< orphan*/ *) ; 
- scalar_t__ stat (char*,struct stat*) ; 
- scalar_t__ strcmp (char*,char*) ; 
- char* talloc_asprintf_append (char*,char*,char const*,char*) ; 
- int /*<<< orphan*/  talloc_free (char*) ; 
+
+ scalar_t__ S_ISDIR (int ) ;
+ scalar_t__ S_ISREG (int ) ;
+ int closedir (int *) ;
+ int luaL_checkoption (int *,int,char*,char const**) ;
+ char* luaL_checkstring (int *,int) ;
+ int lua_newtable (int *) ;
+ int lua_pushinteger (int *,int) ;
+ int lua_pushnil (int *) ;
+ int lua_pushstring (int *,char*) ;
+ int lua_settable (int *,int) ;
+ int * opendir (char const*) ;
+ struct dirent* readdir (int *) ;
+ scalar_t__ stat (char*,struct stat*) ;
+ scalar_t__ strcmp (char*,char*) ;
+ char* talloc_asprintf_append (char*,char*,char const*,char*) ;
+ int talloc_free (char*) ;
 
 __attribute__((used)) static int script_readdir(lua_State *L)
 {
-    //                    0      1        2       3
-    const char *fmts[] = {"all", "files", "dirs", "normal", NULL};
+
+    const char *fmts[] = {"all", "files", "dirs", "normal", ((void*)0)};
     const char *path = luaL_checkstring(L, 1);
     int t = luaL_checkoption(L, 2, "normal", fmts);
     DIR *dir = opendir(path);
@@ -45,8 +45,8 @@ __attribute__((used)) static int script_readdir(lua_State *L)
         lua_pushstring(L, "error");
         return 2;
     }
-    lua_newtable(L); // list
-    char *fullpath = NULL;
+    lua_newtable(L);
+    char *fullpath = ((void*)0);
     struct dirent *e;
     int n = 0;
     while ((e = readdir(dir))) {
@@ -64,9 +64,9 @@ __attribute__((used)) static int script_readdir(lua_State *L)
                   ((t & 2) && S_ISDIR(st.st_mode))))
                 continue;
         }
-        lua_pushinteger(L, ++n); // list index
-        lua_pushstring(L, name); // list index name
-        lua_settable(L, -3); // list
+        lua_pushinteger(L, ++n);
+        lua_pushstring(L, name);
+        lua_settable(L, -3);
     }
     closedir(dir);
     talloc_free(fullpath);

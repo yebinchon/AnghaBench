@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int maxId; int* freeList; int /*<<< orphan*/  mutex; int /*<<< orphan*/  numOfFree; } ;
-typedef  TYPE_1__ id_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int*) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
- int /*<<< orphan*/  perror (char*) ; 
- scalar_t__ pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int maxId; int* freeList; int mutex; int numOfFree; } ;
+typedef TYPE_1__ id_pool_t ;
+
+
+ int free (int*) ;
+ scalar_t__ malloc (int) ;
+ int memcpy (int*,int*,int) ;
+ int perror (char*) ;
+ scalar_t__ pthread_mutex_lock (int *) ;
+ scalar_t__ pthread_mutex_unlock (int *) ;
 
 int taosUpdateIdPool(id_pool_t *handle, int maxId) {
   id_pool_t *pIdPool = (id_pool_t*)handle;
@@ -30,7 +30,7 @@ int taosUpdateIdPool(id_pool_t *handle, int maxId) {
 
   int *idList, i;
   idList = (int *)malloc(sizeof(int) * (size_t)maxId);
-  if (idList == NULL) {
+  if (idList == ((void*)0)) {
     return -1;
   }
   for (i = 1; i < maxId; ++i) {

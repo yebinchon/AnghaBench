@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  mibII_idle ; 
- int mibII_poll_ticks ; 
- int /*<<< orphan*/ * mibII_poll_timer ; 
- int /*<<< orphan*/  module ; 
- int /*<<< orphan*/  syslog (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/ * timer_start_repeat (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timer_stop (int /*<<< orphan*/ *) ; 
+ int LOG_ERR ;
+ int mibII_idle ;
+ int mibII_poll_ticks ;
+ int * mibII_poll_timer ;
+ int module ;
+ int syslog (int ,char*,int) ;
+ int * timer_start_repeat (int,int,int ,int *,int ) ;
+ int timer_stop (int *) ;
 
 void
 mibif_restart_mibII_poll_timer(void)
 {
-	if (mibII_poll_timer != NULL)
-		timer_stop(mibII_poll_timer);
+ if (mibII_poll_timer != ((void*)0))
+  timer_stop(mibII_poll_timer);
 
-	if ((mibII_poll_timer = timer_start_repeat(mibII_poll_ticks * 10,
-	    mibII_poll_ticks * 10, mibII_idle, NULL, module)) == NULL)
-		syslog(LOG_ERR, "timer_start(%u): %m", mibII_poll_ticks);
+ if ((mibII_poll_timer = timer_start_repeat(mibII_poll_ticks * 10,
+     mibII_poll_ticks * 10, mibII_idle, ((void*)0), module)) == ((void*)0))
+  syslog(LOG_ERR, "timer_start(%u): %m", mibII_poll_ticks);
 }

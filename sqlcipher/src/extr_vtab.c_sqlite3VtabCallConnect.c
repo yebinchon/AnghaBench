@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_18__ {int /*<<< orphan*/  aModule; } ;
-typedef  TYPE_2__ sqlite3 ;
+
+
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+struct TYPE_18__ {int aModule; } ;
+typedef TYPE_2__ sqlite3 ;
 struct TYPE_19__ {char** azModuleArg; } ;
-typedef  TYPE_3__ Table ;
+typedef TYPE_3__ Table ;
 struct TYPE_21__ {TYPE_1__* pModule; } ;
 struct TYPE_20__ {int rc; TYPE_2__* db; } ;
-struct TYPE_17__ {int /*<<< orphan*/  xConnect; } ;
-typedef  TYPE_4__ Parse ;
-typedef  TYPE_5__ Module ;
+struct TYPE_17__ {int xConnect; } ;
+typedef TYPE_4__ Parse ;
+typedef TYPE_5__ Module ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IsVirtual (TYPE_3__*) ; 
- int SQLITE_ERROR ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (TYPE_3__*) ; 
- int /*<<< orphan*/  sqlite3DbFree (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  sqlite3ErrorMsg (TYPE_4__*,char*,char const*) ; 
- scalar_t__ sqlite3GetVTable (TYPE_2__*,TYPE_3__*) ; 
- scalar_t__ sqlite3HashFind (int /*<<< orphan*/ *,char const*) ; 
- int vtabCallConstructor (TYPE_2__*,TYPE_3__*,TYPE_5__*,int /*<<< orphan*/ ,char**) ; 
+
+ int IsVirtual (TYPE_3__*) ;
+ int SQLITE_ERROR ;
+ int SQLITE_OK ;
+ int assert (TYPE_3__*) ;
+ int sqlite3DbFree (TYPE_2__*,char*) ;
+ int sqlite3ErrorMsg (TYPE_4__*,char*,char const*) ;
+ scalar_t__ sqlite3GetVTable (TYPE_2__*,TYPE_3__*) ;
+ scalar_t__ sqlite3HashFind (int *,char const*) ;
+ int vtabCallConstructor (TYPE_2__*,TYPE_3__*,TYPE_5__*,int ,char**) ;
 
 int sqlite3VtabCallConnect(Parse *pParse, Table *pTab){
   sqlite3 *db = pParse->db;
@@ -47,7 +47,7 @@ int sqlite3VtabCallConnect(Parse *pParse, Table *pTab){
     return SQLITE_OK;
   }
 
-  /* Locate the required virtual table module */
+
   zMod = pTab->azModuleArg[0];
   pMod = (Module*)sqlite3HashFind(&db->aModule, zMod);
 

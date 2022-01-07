@@ -1,38 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ACOMPAT ; 
- int /*<<< orphan*/  ACORE ; 
- int /*<<< orphan*/  AFORK ; 
- int /*<<< orphan*/  ASU ; 
- int /*<<< orphan*/  AXSIG ; 
- int /*<<< orphan*/  BIT (int /*<<< orphan*/ ,char) ; 
+ int ACOMPAT ;
+ int ACORE ;
+ int AFORK ;
+ int ASU ;
+ int AXSIG ;
+ int BIT (int ,char) ;
 
 char *
 flagbits(int f)
 {
-	static char flags[20] = "-";
-	char *p;
+ static char flags[20] = "-";
+ char *p;
 
-#define	BIT(flag, ch)	if (f & flag) *p++ = ch
 
-	p = flags + 1;
-	BIT(ASU, 'S');
-	BIT(AFORK, 'F');
-	BIT(ACOMPAT, 'C');
-	BIT(ACORE, 'D');
-	BIT(AXSIG, 'X');
-	*p = '\0';
-	return (flags);
+
+ p = flags + 1;
+ if (f & ASU) *p++ = 'S';
+ if (f & AFORK) *p++ = 'F';
+ if (f & ACOMPAT) *p++ = 'C';
+ if (f & ACORE) *p++ = 'D';
+ if (f & AXSIG) *p++ = 'X';
+ *p = '\0';
+ return (flags);
 }

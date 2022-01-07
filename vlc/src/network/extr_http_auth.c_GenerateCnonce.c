@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct md5_s {int dummy; } ;
-typedef  int /*<<< orphan*/  ps_random ;
+typedef int ps_random ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddMD5 (struct md5_s*,char*,int) ; 
- int /*<<< orphan*/  EndMD5 (struct md5_s*) ; 
- int /*<<< orphan*/  InitMD5 (struct md5_s*) ; 
- char* psz_md5_hash (struct md5_s*) ; 
- int /*<<< orphan*/  vlc_rand_bytes (char*,int) ; 
+
+ int AddMD5 (struct md5_s*,char*,int) ;
+ int EndMD5 (struct md5_s*) ;
+ int InitMD5 (struct md5_s*) ;
+ char* psz_md5_hash (struct md5_s*) ;
+ int vlc_rand_bytes (char*,int) ;
 
 __attribute__((used)) static char *GenerateCnonce()
 {

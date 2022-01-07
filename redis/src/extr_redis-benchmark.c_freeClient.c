@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_6__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  listNode ;
-typedef  TYPE_1__* client ;
-typedef  int /*<<< orphan*/  aeEventLoop ;
-struct TYPE_10__ {int requests; int /*<<< orphan*/  liveclients_mutex; scalar_t__ num_threads; int /*<<< orphan*/  clients; int /*<<< orphan*/  liveclients; int /*<<< orphan*/  requests_finished; } ;
-struct TYPE_9__ {int /*<<< orphan*/  fd; } ;
-struct TYPE_8__ {scalar_t__ thread_id; struct TYPE_8__* stagptr; struct TYPE_8__* randptr; int /*<<< orphan*/  obuf; TYPE_3__* context; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AE_READABLE ; 
- int /*<<< orphan*/  AE_WRITABLE ; 
- int /*<<< orphan*/ * CLIENT_GET_EVENTLOOP (TYPE_1__*) ; 
- int /*<<< orphan*/  aeDeleteFileEvent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  aeStop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atomicGet (int /*<<< orphan*/ ,int) ; 
- TYPE_6__ config ; 
- int /*<<< orphan*/  listDelNode (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * listSearchKey (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  redisFree (TYPE_3__*) ; 
- int /*<<< orphan*/  sdsfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zfree (TYPE_1__*) ; 
+
+typedef struct TYPE_10__ TYPE_6__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int listNode ;
+typedef TYPE_1__* client ;
+typedef int aeEventLoop ;
+struct TYPE_10__ {int requests; int liveclients_mutex; scalar_t__ num_threads; int clients; int liveclients; int requests_finished; } ;
+struct TYPE_9__ {int fd; } ;
+struct TYPE_8__ {scalar_t__ thread_id; struct TYPE_8__* stagptr; struct TYPE_8__* randptr; int obuf; TYPE_3__* context; } ;
+
+
+ int AE_READABLE ;
+ int AE_WRITABLE ;
+ int * CLIENT_GET_EVENTLOOP (TYPE_1__*) ;
+ int aeDeleteFileEvent (int *,int ,int ) ;
+ int aeStop (int *) ;
+ int assert (int ) ;
+ int atomicGet (int ,int) ;
+ TYPE_6__ config ;
+ int listDelNode (int ,int *) ;
+ int * listSearchKey (int ,TYPE_1__*) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int redisFree (TYPE_3__*) ;
+ int sdsfree (int ) ;
+ int zfree (TYPE_1__*) ;
 
 __attribute__((used)) static void freeClient(client c) {
     aeEventLoop *el = CLIENT_GET_EVENTLOOP(c);
@@ -57,7 +57,7 @@ __attribute__((used)) static void freeClient(client c) {
     if (config.num_threads) pthread_mutex_lock(&(config.liveclients_mutex));
     config.liveclients--;
     ln = listSearchKey(config.clients,c);
-    assert(ln != NULL);
+    assert(ln != ((void*)0));
     listDelNode(config.clients,ln);
     if (config.num_threads) pthread_mutex_unlock(&(config.liveclients_mutex));
 }

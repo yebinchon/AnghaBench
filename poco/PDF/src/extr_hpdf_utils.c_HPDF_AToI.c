@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int HPDF_INT ;
-typedef  scalar_t__ HPDF_BOOL ;
 
-/* Variables and functions */
- scalar_t__ HPDF_FALSE ; 
- scalar_t__ HPDF_IS_WHITE_SPACE (char const) ; 
- scalar_t__ HPDF_TRUE ; 
+
+
+
+typedef int HPDF_INT ;
+typedef scalar_t__ HPDF_BOOL ;
+
+
+ scalar_t__ HPDF_FALSE ;
+ scalar_t__ HPDF_IS_WHITE_SPACE (char const) ;
+ scalar_t__ HPDF_TRUE ;
 
 HPDF_INT
-HPDF_AToI  (const char  *s)
+HPDF_AToI (const char *s)
 {
     HPDF_BOOL flg = HPDF_FALSE;
-    HPDF_INT  v = 0;
+    HPDF_INT v = 0;
 
     if (!s) {
         return 0;
     }
 
-    /* increment pointer until the charactor of 's' is not
-     * white-space-charactor.
-     */
+
+
+
     while (*s) {
         if (HPDF_IS_WHITE_SPACE(*s))
             s++;

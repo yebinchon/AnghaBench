@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  flush_user_windows () ; 
- int /*<<< orphan*/  prom_cmdline () ; 
- int /*<<< orphan*/  prom_printf (char*) ; 
- int /*<<< orphan*/  stop_a_enabled ; 
+ int flush_user_windows () ;
+ int prom_cmdline () ;
+ int prom_printf (char*) ;
+ int stop_a_enabled ;
 
 void sun_do_break(void)
 {
-	if (!stop_a_enabled)
-		return;
+ if (!stop_a_enabled)
+  return;
 
-	prom_printf("\n");
-	flush_user_windows();
+ prom_printf("\n");
+ flush_user_windows();
 
-	prom_cmdline();
+ prom_cmdline();
 }

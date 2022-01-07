@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ pid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- int /*<<< orphan*/  _exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert_se (int) ; 
- scalar_t__ fork () ; 
- int getpid_cached () ; 
- int pid_is_unwaited (int) ; 
- int /*<<< orphan*/  waitpid (scalar_t__,int*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ pid_t ;
+
+
+ int EXIT_SUCCESS ;
+ int _exit (int ) ;
+ int assert_se (int) ;
+ scalar_t__ fork () ;
+ int getpid_cached () ;
+ int pid_is_unwaited (int) ;
+ int waitpid (scalar_t__,int*,int ) ;
 
 __attribute__((used)) static void test_pid_is_unwaited(void) {
         pid_t pid;

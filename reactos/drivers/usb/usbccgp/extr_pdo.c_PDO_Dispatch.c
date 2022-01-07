@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_13__ {int MajorFunction; } ;
-struct TYPE_11__ {int /*<<< orphan*/  Status; } ;
+struct TYPE_11__ {int Status; } ;
 struct TYPE_12__ {TYPE_1__ IoStatus; } ;
-typedef  TYPE_2__* PIRP ;
-typedef  TYPE_3__* PIO_STACK_LOCATION ;
-typedef  int /*<<< orphan*/  PDEVICE_OBJECT ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
+typedef TYPE_2__* PIRP ;
+typedef TYPE_3__* PIO_STACK_LOCATION ;
+typedef int PDEVICE_OBJECT ;
+typedef int NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT1 (char*,int) ; 
- int /*<<< orphan*/  IO_NO_INCREMENT ; 
-#define  IRP_MJ_INTERNAL_DEVICE_CONTROL 130 
-#define  IRP_MJ_PNP 129 
-#define  IRP_MJ_POWER 128 
- int /*<<< orphan*/  IoCompleteRequest (TYPE_2__*,int /*<<< orphan*/ ) ; 
- TYPE_3__* IoGetCurrentIrpStackLocation (TYPE_2__*) ; 
- int /*<<< orphan*/  PDO_HandleInternalDeviceControl (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  PDO_HandlePnp (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  PoStartNextPowerIrp (TYPE_2__*) ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
+
+ int DPRINT1 (char*,int) ;
+ int IO_NO_INCREMENT ;
+
+
+
+ int IoCompleteRequest (TYPE_2__*,int ) ;
+ TYPE_3__* IoGetCurrentIrpStackLocation (TYPE_2__*) ;
+ int PDO_HandleInternalDeviceControl (int ,TYPE_2__*) ;
+ int PDO_HandlePnp (int ,TYPE_2__*) ;
+ int PoStartNextPowerIrp (TYPE_2__*) ;
+ int STATUS_SUCCESS ;
 
 NTSTATUS
 PDO_Dispatch(
@@ -42,16 +42,16 @@ PDO_Dispatch(
     PIO_STACK_LOCATION IoStack;
     NTSTATUS Status;
 
-    /* get stack location */
+
     IoStack = IoGetCurrentIrpStackLocation(Irp);
 
     switch(IoStack->MajorFunction)
     {
-        case IRP_MJ_PNP:
+        case 129:
             return PDO_HandlePnp(DeviceObject, Irp);
-        case IRP_MJ_INTERNAL_DEVICE_CONTROL:
+        case 130:
             return PDO_HandleInternalDeviceControl(DeviceObject, Irp);
-        case IRP_MJ_POWER:
+        case 128:
             PoStartNextPowerIrp(Irp);
             Irp->IoStatus.Status = STATUS_SUCCESS;
             IoCompleteRequest(Irp, IO_NO_INCREMENT);

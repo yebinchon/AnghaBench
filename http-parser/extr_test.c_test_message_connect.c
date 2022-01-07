@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct message {char* name; int /*<<< orphan*/  type; scalar_t__ raw; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  message_eq (int /*<<< orphan*/ ,int,struct message const*) ; 
- int num_messages ; 
- int /*<<< orphan*/  parse_connect (char*,size_t) ; 
- int /*<<< orphan*/  parser_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- size_t strlen (scalar_t__) ; 
+
+
+
+struct message {char* name; int type; scalar_t__ raw; } ;
+
+
+ int abort () ;
+ int message_eq (int ,int,struct message const*) ;
+ int num_messages ;
+ int parse_connect (char*,size_t) ;
+ int parser_init (int ) ;
+ int printf (char*,char*) ;
+ size_t strlen (scalar_t__) ;
 
 void
 test_message_connect (const struct message *msg)

@@ -1,48 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_int ;
 
-/* Variables and functions */
-#define  FUZZ_1_BIT_FLIP 134 
-#define  FUZZ_1_BYTE_FLIP 133 
-#define  FUZZ_2_BIT_FLIP 132 
-#define  FUZZ_2_BYTE_FLIP 131 
-#define  FUZZ_BASE64 130 
-#define  FUZZ_TRUNCATE_END 129 
-#define  FUZZ_TRUNCATE_START 128 
- int /*<<< orphan*/  abort () ; 
+
+
+
+typedef int u_int ;
+ int abort () ;
 
 __attribute__((used)) static const char *
 fuzz_ntop(u_int n)
 {
-	switch (n) {
-	case 0:
-		return "NONE";
-	case FUZZ_1_BIT_FLIP:
-		return "FUZZ_1_BIT_FLIP";
-	case FUZZ_2_BIT_FLIP:
-		return "FUZZ_2_BIT_FLIP";
-	case FUZZ_1_BYTE_FLIP:
-		return "FUZZ_1_BYTE_FLIP";
-	case FUZZ_2_BYTE_FLIP:
-		return "FUZZ_2_BYTE_FLIP";
-	case FUZZ_TRUNCATE_START:
-		return "FUZZ_TRUNCATE_START";
-	case FUZZ_TRUNCATE_END:
-		return "FUZZ_TRUNCATE_END";
-	case FUZZ_BASE64:
-		return "FUZZ_BASE64";
-	default:
-		abort();
-	}
+ switch (n) {
+ case 0:
+  return "NONE";
+ case 134:
+  return "FUZZ_1_BIT_FLIP";
+ case 132:
+  return "FUZZ_2_BIT_FLIP";
+ case 133:
+  return "FUZZ_1_BYTE_FLIP";
+ case 131:
+  return "FUZZ_2_BYTE_FLIP";
+ case 128:
+  return "FUZZ_TRUNCATE_START";
+ case 129:
+  return "FUZZ_TRUNCATE_END";
+ case 130:
+  return "FUZZ_BASE64";
+ default:
+  abort();
+ }
 }

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_int8_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u_int8_t ;
 struct tws_softc {int dummy; } ;
-struct tws_request {int /*<<< orphan*/  timeout; int /*<<< orphan*/  flags; int /*<<< orphan*/ * data; int /*<<< orphan*/  length; int /*<<< orphan*/  request_id; struct tws_command_packet* cmd_pkt; int /*<<< orphan*/  cb; } ;
-struct TYPE_3__ {int sgl_offset; int* cdb; int /*<<< orphan*/  lun_l4__req_id; scalar_t__ unit; scalar_t__ status; int /*<<< orphan*/  res__opcode; } ;
+struct tws_request {int timeout; int flags; int * data; int length; int request_id; struct tws_command_packet* cmd_pkt; int cb; } ;
+struct TYPE_3__ {int sgl_offset; int* cdb; int lun_l4__req_id; scalar_t__ unit; scalar_t__ status; int res__opcode; } ;
 struct TYPE_4__ {TYPE_1__ pkt_a; } ;
 struct tws_command_packet {TYPE_2__ cmd; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  M_NOWAIT ; 
- int /*<<< orphan*/  M_TWS ; 
- int /*<<< orphan*/  TWS_DIR_IN ; 
- int /*<<< orphan*/  TWS_FW_CMD_EXECUTE_SCSI ; 
- int TWS_IO_TIMEOUT ; 
- int /*<<< orphan*/  TWS_REQ_TYPE_AEN_FETCH ; 
- int /*<<< orphan*/  TWS_SECTOR_SIZE ; 
- int /*<<< orphan*/  TWS_TRACE_DEBUG (struct tws_softc*,char*,struct tws_softc*,int) ; 
- int /*<<< orphan*/  bzero (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  callout_reset (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,struct tws_request*) ; 
- int hz ; 
- int /*<<< orphan*/ * malloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tws_aen_complete ; 
- struct tws_request* tws_get_request (struct tws_softc*,int /*<<< orphan*/ ) ; 
- int tws_map_request (struct tws_softc*,struct tws_request*) ; 
- int /*<<< orphan*/  tws_timeout ; 
+
+ int ENOMEM ;
+ int M_NOWAIT ;
+ int M_TWS ;
+ int TWS_DIR_IN ;
+ int TWS_FW_CMD_EXECUTE_SCSI ;
+ int TWS_IO_TIMEOUT ;
+ int TWS_REQ_TYPE_AEN_FETCH ;
+ int TWS_SECTOR_SIZE ;
+ int TWS_TRACE_DEBUG (struct tws_softc*,char*,struct tws_softc*,int) ;
+ int bzero (int *,int ) ;
+ int callout_reset (int *,int,int ,struct tws_request*) ;
+ int hz ;
+ int * malloc (int ,int ,int ) ;
+ int tws_aen_complete ;
+ struct tws_request* tws_get_request (struct tws_softc*,int ) ;
+ int tws_map_request (struct tws_softc*,struct tws_request*) ;
+ int tws_timeout ;
 
 int
 tws_send_scsi_cmd(struct tws_softc *sc, int cmd)
@@ -48,7 +48,7 @@ tws_send_scsi_cmd(struct tws_softc *sc, int cmd)
     TWS_TRACE_DEBUG(sc, "entry",sc, cmd);
     req = tws_get_request(sc, TWS_REQ_TYPE_AEN_FETCH);
 
-    if ( req == NULL )
+    if ( req == ((void*)0) )
         return(ENOMEM);
 
     req->cb = tws_aen_complete;
@@ -65,7 +65,7 @@ tws_send_scsi_cmd(struct tws_softc *sc, int cmd)
 
     req->length = TWS_SECTOR_SIZE;
     req->data = malloc(TWS_SECTOR_SIZE, M_TWS, M_NOWAIT);
-    if ( req->data == NULL )
+    if ( req->data == ((void*)0) )
         return(ENOMEM);
     bzero(req->data, TWS_SECTOR_SIZE);
     req->flags = TWS_DIR_IN;

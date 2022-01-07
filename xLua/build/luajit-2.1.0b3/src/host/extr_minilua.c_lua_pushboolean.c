@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  top; } ;
-typedef  TYPE_1__ lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  api_incr_top (TYPE_1__*) ; 
- int /*<<< orphan*/  setbvalue (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int top; } ;
+typedef TYPE_1__ lua_State ;
+
+
+ int api_incr_top (TYPE_1__*) ;
+ int setbvalue (int ,int) ;
 
 __attribute__((used)) static void lua_pushboolean(lua_State*L,int b){
 setbvalue(L->top,(b!=0));

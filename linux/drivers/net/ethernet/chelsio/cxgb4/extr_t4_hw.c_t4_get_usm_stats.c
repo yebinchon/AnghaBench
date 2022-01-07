@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u64 ;
-typedef  int u32 ;
+
+
+
+
+typedef int u64 ;
+typedef int u32 ;
 struct tp_usm_stats {int frames; int drops; int octets; } ;
 struct adapter {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TP_MIB_USM_PKTS_A ; 
- int /*<<< orphan*/  t4_tp_mib_read (struct adapter*,int*,int,int /*<<< orphan*/ ,int) ; 
+
+ int TP_MIB_USM_PKTS_A ;
+ int t4_tp_mib_read (struct adapter*,int*,int,int ,int) ;
 
 void t4_get_usm_stats(struct adapter *adap, struct tp_usm_stats *st,
-		      bool sleep_ok)
+        bool sleep_ok)
 {
-	u32 val[4];
+ u32 val[4];
 
-	t4_tp_mib_read(adap, val, 4, TP_MIB_USM_PKTS_A, sleep_ok);
-	st->frames = val[0];
-	st->drops = val[1];
-	st->octets = ((u64)val[2] << 32) | val[3];
+ t4_tp_mib_read(adap, val, 4, TP_MIB_USM_PKTS_A, sleep_ok);
+ st->frames = val[0];
+ st->drops = val[1];
+ st->octets = ((u64)val[2] << 32) | val[3];
 }

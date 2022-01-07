@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  VEC_pop (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  current_lang_base ; 
- int /*<<< orphan*/  current_lang_name ; 
- int /*<<< orphan*/  tree ; 
+ int VEC_pop (int ,int ) ;
+ int current_lang_base ;
+ int current_lang_name ;
+ int tree ;
 
 void
 pop_lang_context (void)

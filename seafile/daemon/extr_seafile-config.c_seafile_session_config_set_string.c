@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sql ;
-struct TYPE_3__ {int /*<<< orphan*/ * http_proxy_password; int /*<<< orphan*/ * http_proxy_username; int /*<<< orphan*/ * http_proxy_addr; int /*<<< orphan*/ * http_proxy_type; void* use_http_proxy; void* disable_verify_certificate; void* sync_extra_temp_file; int /*<<< orphan*/ * client_name; int /*<<< orphan*/  config_db; } ;
-typedef  TYPE_1__ SeafileSession ;
 
-/* Variables and functions */
- void* FALSE ; 
- char* KEY_CLIENT_NAME ; 
- char* KEY_DISABLE_VERIFY_CERTIFICATE ; 
- char* KEY_PROXY_ADDR ; 
- char* KEY_PROXY_PASSWORD ; 
- char* KEY_PROXY_TYPE ; 
- char* KEY_PROXY_USERNAME ; 
- char* KEY_SYNC_EXTRA_TEMP_FILE ; 
- char* KEY_USE_PROXY ; 
- void* TRUE ; 
- int /*<<< orphan*/  g_free (int /*<<< orphan*/ *) ; 
- scalar_t__ g_strcmp0 (char const*,char*) ; 
- int /*<<< orphan*/ * g_strdup (char const*) ; 
- int /*<<< orphan*/  sqlite3_snprintf (int,char*,char*,char const*,char const*) ; 
- scalar_t__ sqlite_query_exec (int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int sql ;
+struct TYPE_3__ {int * http_proxy_password; int * http_proxy_username; int * http_proxy_addr; int * http_proxy_type; void* use_http_proxy; void* disable_verify_certificate; void* sync_extra_temp_file; int * client_name; int config_db; } ;
+typedef TYPE_1__ SeafileSession ;
+
+
+ void* FALSE ;
+ char* KEY_CLIENT_NAME ;
+ char* KEY_DISABLE_VERIFY_CERTIFICATE ;
+ char* KEY_PROXY_ADDR ;
+ char* KEY_PROXY_PASSWORD ;
+ char* KEY_PROXY_TYPE ;
+ char* KEY_PROXY_USERNAME ;
+ char* KEY_SYNC_EXTRA_TEMP_FILE ;
+ char* KEY_USE_PROXY ;
+ void* TRUE ;
+ int g_free (int *) ;
+ scalar_t__ g_strcmp0 (char const*,char*) ;
+ int * g_strdup (char const*) ;
+ int sqlite3_snprintf (int,char*,char*,char const*,char const*) ;
+ scalar_t__ sqlite_query_exec (int ,char*) ;
 
 int
 seafile_session_config_set_string (SeafileSession *session,
@@ -73,7 +73,7 @@ seafile_session_config_set_string (SeafileSession *session,
 
     if (g_strcmp0(key, KEY_PROXY_TYPE) == 0) {
         session->http_proxy_type =
-            g_strcmp0(value, "none") == 0 ? NULL : g_strdup(value);
+            g_strcmp0(value, "none") == 0 ? ((void*)0) : g_strdup(value);
     }
 
     if (g_strcmp0(key, KEY_PROXY_ADDR) == 0) {

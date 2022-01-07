@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct _krb5_key_data {int dummy; } ;
 struct _krb5_checksum_type {int dummy; } ;
-typedef  int /*<<< orphan*/  sha1_data ;
-typedef  scalar_t__ krb5_error_code ;
-typedef  int /*<<< orphan*/  krb5_context ;
+typedef int sha1_data ;
+typedef scalar_t__ krb5_error_code ;
+typedef int krb5_context ;
 struct TYPE_5__ {char* data; int length; } ;
 struct TYPE_6__ {TYPE_1__ checksum; } ;
-typedef  TYPE_2__ Checksum ;
+typedef TYPE_2__ Checksum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CKSUMTYPE_SHA1 ; 
- struct _krb5_checksum_type* _krb5_find_checksum (int /*<<< orphan*/ ) ; 
- scalar_t__ _krb5_internal_hmac (int /*<<< orphan*/ ,struct _krb5_checksum_type*,void const*,size_t,unsigned int,struct _krb5_key_data*,TYPE_2__*) ; 
- int /*<<< orphan*/  krb5_abortx (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
+
+ int CKSUMTYPE_SHA1 ;
+ struct _krb5_checksum_type* _krb5_find_checksum (int ) ;
+ scalar_t__ _krb5_internal_hmac (int ,struct _krb5_checksum_type*,void const*,size_t,unsigned int,struct _krb5_key_data*,TYPE_2__*) ;
+ int krb5_abortx (int ,char*) ;
+ int memcpy (char*,char*,int) ;
 
 krb5_error_code
 _krb5_SP_HMAC_SHA1_checksum(krb5_context context,
-			    struct _krb5_key_data *key,
-			    const void *data,
-			    size_t len,
-			    unsigned usage,
-			    Checksum *result)
+       struct _krb5_key_data *key,
+       const void *data,
+       size_t len,
+       unsigned usage,
+       Checksum *result)
 {
     struct _krb5_checksum_type *c = _krb5_find_checksum(CKSUMTYPE_SHA1);
     Checksum res;
@@ -46,7 +46,7 @@ _krb5_SP_HMAC_SHA1_checksum(krb5_context context,
 
     ret = _krb5_internal_hmac(context, c, data, len, usage, key, &res);
     if (ret)
-	krb5_abortx(context, "hmac failed");
+ krb5_abortx(context, "hmac failed");
     memcpy(result->checksum.data, res.checksum.data, result->checksum.length);
     return 0;
 }

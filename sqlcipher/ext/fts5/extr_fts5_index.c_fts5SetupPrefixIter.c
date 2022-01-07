@@ -1,83 +1,83 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_60__   TYPE_7__ ;
-typedef  struct TYPE_59__   TYPE_6__ ;
-typedef  struct TYPE_58__   TYPE_5__ ;
-typedef  struct TYPE_57__   TYPE_4__ ;
-typedef  struct TYPE_56__   TYPE_3__ ;
-typedef  struct TYPE_55__   TYPE_2__ ;
-typedef  struct TYPE_54__   TYPE_1__ ;
-typedef  struct TYPE_53__   TYPE_14__ ;
-typedef  struct TYPE_52__   TYPE_11__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  scalar_t__ i64 ;
-typedef  int /*<<< orphan*/  doclist ;
-struct TYPE_60__ {scalar_t__ n; int /*<<< orphan*/  p; } ;
+
+
+typedef struct TYPE_60__ TYPE_7__ ;
+typedef struct TYPE_59__ TYPE_6__ ;
+typedef struct TYPE_58__ TYPE_5__ ;
+typedef struct TYPE_57__ TYPE_4__ ;
+typedef struct TYPE_56__ TYPE_3__ ;
+typedef struct TYPE_55__ TYPE_2__ ;
+typedef struct TYPE_54__ TYPE_1__ ;
+typedef struct TYPE_53__ TYPE_14__ ;
+typedef struct TYPE_52__ TYPE_11__ ;
+
+
+typedef int u8 ;
+typedef scalar_t__ i64 ;
+typedef int doclist ;
+struct TYPE_60__ {scalar_t__ n; int p; } ;
 struct TYPE_57__ {scalar_t__ nData; scalar_t__ iRowid; } ;
-struct TYPE_59__ {TYPE_4__ base; int /*<<< orphan*/  (* xSetOutputs ) (TYPE_6__*,TYPE_11__*) ;TYPE_2__* aFirst; TYPE_11__* aSeg; } ;
+struct TYPE_59__ {TYPE_4__ base; int (* xSetOutputs ) (TYPE_6__*,TYPE_11__*) ;TYPE_2__* aFirst; TYPE_11__* aSeg; } ;
 struct TYPE_58__ {scalar_t__ rc; TYPE_1__* pConfig; } ;
-struct TYPE_56__ {int n; int /*<<< orphan*/ * p; } ;
+struct TYPE_56__ {int n; int * p; } ;
 struct TYPE_55__ {size_t iFirst; } ;
 struct TYPE_54__ {scalar_t__ eDetail; } ;
-struct TYPE_53__ {int nn; int szLeaf; int /*<<< orphan*/ * p; } ;
+struct TYPE_53__ {int nn; int szLeaf; int * p; } ;
 struct TYPE_52__ {TYPE_3__ term; } ;
-typedef  int /*<<< orphan*/  Fts5Structure ;
-typedef  TYPE_11__ Fts5SegIter ;
-typedef  TYPE_6__ Fts5Iter ;
-typedef  TYPE_5__ Fts5Index ;
-typedef  TYPE_14__ Fts5Data ;
-typedef  int /*<<< orphan*/  Fts5Colset ;
-typedef  TYPE_7__ Fts5Buffer ;
+typedef int Fts5Structure ;
+typedef TYPE_11__ Fts5SegIter ;
+typedef TYPE_6__ Fts5Iter ;
+typedef TYPE_5__ Fts5Index ;
+typedef TYPE_14__ Fts5Data ;
+typedef int Fts5Colset ;
+typedef TYPE_7__ Fts5Buffer ;
 
-/* Variables and functions */
- int FTS5INDEX_QUERY_NOOUTPUT ; 
- int FTS5INDEX_QUERY_SCAN ; 
- int FTS5INDEX_QUERY_SKIPEMPTY ; 
- int FTS5_DATA_ZERO_PADDING ; 
- scalar_t__ FTS5_DETAIL_NONE ; 
- int MIN (int,int) ; 
- scalar_t__ SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  assert_nc (int) ; 
- void fts5AppendPoslist (TYPE_5__*,i64,TYPE_6__*,TYPE_7__*) ; 
- void fts5AppendRowid (TYPE_5__*,i64,TYPE_6__*,TYPE_7__*) ; 
- int /*<<< orphan*/  fts5BufferFree (TYPE_7__*) ; 
- int /*<<< orphan*/  fts5BufferSwap (TYPE_7__*,TYPE_7__*) ; 
- int /*<<< orphan*/  fts5BufferZero (TYPE_7__*) ; 
- TYPE_14__* fts5IdxMalloc (TYPE_5__*,int) ; 
- int /*<<< orphan*/  fts5IterSetOutputCb (scalar_t__*,TYPE_6__*) ; 
- void fts5MergePrefixLists (TYPE_5__*,TYPE_7__*,TYPE_7__*) ; 
- void fts5MergeRowidLists (TYPE_5__*,TYPE_7__*,TYPE_7__*) ; 
- scalar_t__ fts5MultiIterEof (TYPE_5__*,TYPE_6__*) ; 
- int /*<<< orphan*/  fts5MultiIterFree (TYPE_6__*) ; 
- int /*<<< orphan*/  fts5MultiIterNew (TYPE_5__*,int /*<<< orphan*/ *,int const,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int,int,int /*<<< orphan*/ ,TYPE_6__**) ; 
- int /*<<< orphan*/  fts5MultiIterNew2 (TYPE_5__*,TYPE_14__*,int,TYPE_6__**) ; 
- int /*<<< orphan*/  fts5MultiIterNext2 (TYPE_5__*,TYPE_6__*,int*) ; 
- int /*<<< orphan*/ * fts5StructureRead (TYPE_5__*) ; 
- int /*<<< orphan*/  fts5StructureRelease (int /*<<< orphan*/ *) ; 
- scalar_t__ memcmp (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (TYPE_7__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3_free (TYPE_7__*) ; 
- int /*<<< orphan*/  stub1 (TYPE_6__*,TYPE_11__*) ; 
+
+ int FTS5INDEX_QUERY_NOOUTPUT ;
+ int FTS5INDEX_QUERY_SCAN ;
+ int FTS5INDEX_QUERY_SKIPEMPTY ;
+ int FTS5_DATA_ZERO_PADDING ;
+ scalar_t__ FTS5_DETAIL_NONE ;
+ int MIN (int,int) ;
+ scalar_t__ SQLITE_OK ;
+ int assert (int) ;
+ int assert_nc (int) ;
+ void fts5AppendPoslist (TYPE_5__*,i64,TYPE_6__*,TYPE_7__*) ;
+ void fts5AppendRowid (TYPE_5__*,i64,TYPE_6__*,TYPE_7__*) ;
+ int fts5BufferFree (TYPE_7__*) ;
+ int fts5BufferSwap (TYPE_7__*,TYPE_7__*) ;
+ int fts5BufferZero (TYPE_7__*) ;
+ TYPE_14__* fts5IdxMalloc (TYPE_5__*,int) ;
+ int fts5IterSetOutputCb (scalar_t__*,TYPE_6__*) ;
+ void fts5MergePrefixLists (TYPE_5__*,TYPE_7__*,TYPE_7__*) ;
+ void fts5MergeRowidLists (TYPE_5__*,TYPE_7__*,TYPE_7__*) ;
+ scalar_t__ fts5MultiIterEof (TYPE_5__*,TYPE_6__*) ;
+ int fts5MultiIterFree (TYPE_6__*) ;
+ int fts5MultiIterNew (TYPE_5__*,int *,int const,int *,int const*,int,int,int ,TYPE_6__**) ;
+ int fts5MultiIterNew2 (TYPE_5__*,TYPE_14__*,int,TYPE_6__**) ;
+ int fts5MultiIterNext2 (TYPE_5__*,TYPE_6__*,int*) ;
+ int * fts5StructureRead (TYPE_5__*) ;
+ int fts5StructureRelease (int *) ;
+ scalar_t__ memcmp (int const*,int const*,int) ;
+ int memcpy (int *,int ,int) ;
+ int memset (TYPE_7__*,int ,int) ;
+ int sqlite3_free (TYPE_7__*) ;
+ int stub1 (TYPE_6__*,TYPE_11__*) ;
 
 __attribute__((used)) static void fts5SetupPrefixIter(
-  Fts5Index *p,                   /* Index to read from */
-  int bDesc,                      /* True for "ORDER BY rowid DESC" */
-  const u8 *pToken,               /* Buffer containing prefix to match */
-  int nToken,                     /* Size of buffer pToken in bytes */
-  Fts5Colset *pColset,            /* Restrict matches to these columns */
-  Fts5Iter **ppIter          /* OUT: New iterator */
+  Fts5Index *p,
+  int bDesc,
+  const u8 *pToken,
+  int nToken,
+  Fts5Colset *pColset,
+  Fts5Iter **ppIter
 ){
   Fts5Structure *pStruct;
   Fts5Buffer *aBuf;
@@ -97,12 +97,12 @@ __attribute__((used)) static void fts5SetupPrefixIter(
   pStruct = fts5StructureRead(p);
 
   if( aBuf && pStruct ){
-    const int flags = FTS5INDEX_QUERY_SCAN 
-                    | FTS5INDEX_QUERY_SKIPEMPTY 
+    const int flags = FTS5INDEX_QUERY_SCAN
+                    | FTS5INDEX_QUERY_SKIPEMPTY
                     | FTS5INDEX_QUERY_NOOUTPUT;
     int i;
     i64 iLastRowid = 0;
-    Fts5Iter *p1 = 0;     /* Iterator used to gather data from index */
+    Fts5Iter *p1 = 0;
     Fts5Data *pData;
     Fts5Buffer doclist;
     int bNewTerm = 1;
@@ -110,7 +110,7 @@ __attribute__((used)) static void fts5SetupPrefixIter(
     memset(&doclist, 0, sizeof(doclist));
     fts5MultiIterNew(p, pStruct, flags, pColset, pToken, nToken, -1, 0, &p1);
     fts5IterSetOutputCb(&p->rc, p1);
-    for( /* no-op */ ;
+    for( ;
         fts5MultiIterEof(p, p1)==0;
         fts5MultiIterNext2(p, p1, &bNewTerm)
     ){

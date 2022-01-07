@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ptrdiff_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LoadExtByName (char*) ; 
- char* strchr (char const*,char) ; 
- size_t strlen (char const*) ; 
- int /*<<< orphan*/  strncpy (char*,char const*,int) ; 
+
+
+
+typedef scalar_t__ ptrdiff_t ;
+
+
+ int LoadExtByName (char*) ;
+ char* strchr (char const*,char) ;
+ size_t strlen (char const*) ;
+ int strncpy (char*,char const*,int) ;
 
 __attribute__((used)) static void ProcExtsFromExtString(const char *strExtList)
 {
-	size_t iExtListLen = strlen(strExtList);
-	const char *strExtListEnd = strExtList + iExtListLen;
-	const char *strCurrPos = strExtList;
-	char strWorkBuff[256];
+ size_t iExtListLen = strlen(strExtList);
+ const char *strExtListEnd = strExtList + iExtListLen;
+ const char *strCurrPos = strExtList;
+ char strWorkBuff[256];
 
-	while(*strCurrPos)
-	{
-		/*Get the extension at our position.*/
-		int iStrLen = 0;
-		const char *strEndStr = strchr(strCurrPos, ' ');
-		int iStop = 0;
-		if(strEndStr == NULL)
-		{
-			strEndStr = strExtListEnd;
-			iStop = 1;
-		}
+ while(*strCurrPos)
+ {
 
-		iStrLen = (int)((ptrdiff_t)strEndStr - (ptrdiff_t)strCurrPos);
+  int iStrLen = 0;
+  const char *strEndStr = strchr(strCurrPos, ' ');
+  int iStop = 0;
+  if(strEndStr == ((void*)0))
+  {
+   strEndStr = strExtListEnd;
+   iStop = 1;
+  }
 
-		if(iStrLen > 255)
-			return;
+  iStrLen = (int)((ptrdiff_t)strEndStr - (ptrdiff_t)strCurrPos);
 
-		strncpy(strWorkBuff, strCurrPos, iStrLen);
-		strWorkBuff[iStrLen] = '\0';
+  if(iStrLen > 255)
+   return;
 
-		LoadExtByName(strWorkBuff);
+  strncpy(strWorkBuff, strCurrPos, iStrLen);
+  strWorkBuff[iStrLen] = '\0';
 
-		strCurrPos = strEndStr + 1;
-		if(iStop) break;
-	}
+  LoadExtByName(strWorkBuff);
+
+  strCurrPos = strEndStr + 1;
+  if(iStop) break;
+ }
 }

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-struct discovery_sys {scalar_t__ i_nb_service_names; int /*<<< orphan*/ * p_microdns; int /*<<< orphan*/  thread; int /*<<< orphan*/ * ppsz_service_names; int /*<<< orphan*/  items; int /*<<< orphan*/  stop; } ;
-struct TYPE_2__ {int b_renderer; int /*<<< orphan*/  psz_service_name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MDNS_ADDR_IPV4 ; 
- int /*<<< orphan*/  MDNS_PORT ; 
- unsigned int NB_PROTOCOLS ; 
- int /*<<< orphan*/  RunRD ; 
- int /*<<< orphan*/  RunSD ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  VLC_THREAD_PRIORITY_LOW ; 
- int /*<<< orphan*/  atomic_init (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  free (struct discovery_sys*) ; 
- int /*<<< orphan*/  mdns_destroy (int /*<<< orphan*/ *) ; 
- int mdns_init (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  print_error (int /*<<< orphan*/ *,char*,int) ; 
- TYPE_1__* protocols ; 
- int /*<<< orphan*/  vlc_array_init (int /*<<< orphan*/ *) ; 
- scalar_t__ vlc_clone (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+struct discovery_sys {scalar_t__ i_nb_service_names; int * p_microdns; int thread; int * ppsz_service_names; int items; int stop; } ;
+struct TYPE_2__ {int b_renderer; int psz_service_name; } ;
+
+
+ int MDNS_ADDR_IPV4 ;
+ int MDNS_PORT ;
+ unsigned int NB_PROTOCOLS ;
+ int RunRD ;
+ int RunSD ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int VLC_THREAD_PRIORITY_LOW ;
+ int atomic_init (int *,int) ;
+ int free (struct discovery_sys*) ;
+ int mdns_destroy (int *) ;
+ int mdns_init (int **,int ,int ) ;
+ int msg_Dbg (int *,char*,int ,char*) ;
+ int msg_Err (int *,char*) ;
+ int print_error (int *,char*,int) ;
+ TYPE_1__* protocols ;
+ int vlc_array_init (int *) ;
+ scalar_t__ vlc_clone (int *,int ,int *,int ) ;
 
 __attribute__((used)) static int
 OpenCommon( vlc_object_t *p_obj, struct discovery_sys *p_sys, bool b_renderer )
 {
     int i_ret = VLC_EGENERIC;
-    atomic_init( &p_sys->stop, false );
+    atomic_init( &p_sys->stop, 0 );
     vlc_array_init( &p_sys->items );
 
-    /* Listen to protocols that are handled by VLC */
+
     for( unsigned int i = 0; i < NB_PROTOCOLS; ++i )
     {
         if( protocols[i].b_renderer == b_renderer )
@@ -76,7 +76,7 @@ OpenCommon( vlc_object_t *p_obj, struct discovery_sys *p_sys, bool b_renderer )
 
     return VLC_SUCCESS;
 error:
-    if( p_sys->p_microdns != NULL )
+    if( p_sys->p_microdns != ((void*)0) )
         mdns_destroy( p_sys->p_microdns );
     free( p_sys );
     return i_ret;

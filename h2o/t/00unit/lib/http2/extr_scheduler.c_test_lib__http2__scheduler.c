@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  subtest (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_change_weight ; 
- int /*<<< orphan*/  test_dependency ; 
- int /*<<< orphan*/  test_exclusive ; 
- int /*<<< orphan*/  test_exclusive_at_current_pos ; 
- int /*<<< orphan*/  test_firefox ; 
- int /*<<< orphan*/  test_priority ; 
- int /*<<< orphan*/  test_queue ; 
- int /*<<< orphan*/  test_reprioritize ; 
- int test_reprioritize_exclusive ; 
- int /*<<< orphan*/  test_round_robin ; 
+ int subtest (char*,int ) ;
+ int test_change_weight ;
+ int test_dependency ;
+ int test_exclusive ;
+ int test_exclusive_at_current_pos ;
+ int test_firefox ;
+ int test_priority ;
+ int test_queue ;
+ int test_reprioritize ;
+ int test_reprioritize_exclusive ;
+ int test_round_robin ;
 
 void test_lib__http2__scheduler(void)
 {

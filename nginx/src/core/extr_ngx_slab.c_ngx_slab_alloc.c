@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  mutex; } ;
-typedef  TYPE_1__ ngx_slab_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ngx_shmtx_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_shmtx_unlock (int /*<<< orphan*/ *) ; 
- void* ngx_slab_alloc_locked (TYPE_1__*,size_t) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int mutex; } ;
+typedef TYPE_1__ ngx_slab_pool_t ;
+
+
+ int ngx_shmtx_lock (int *) ;
+ int ngx_shmtx_unlock (int *) ;
+ void* ngx_slab_alloc_locked (TYPE_1__*,size_t) ;
 
 void *
 ngx_slab_alloc(ngx_slab_pool_t *pool, size_t size)
 {
-    void  *p;
+    void *p;
 
     ngx_shmtx_lock(&pool->mutex);
 

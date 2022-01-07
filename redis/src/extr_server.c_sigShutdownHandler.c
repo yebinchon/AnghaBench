@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int shutdown_asap; scalar_t__ loading; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LL_WARNING ; 
-#define  SIGINT 129 
-#define  SIGTERM 128 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  getpid () ; 
- int /*<<< orphan*/  rdbRemoveTempFile (int /*<<< orphan*/ ) ; 
- TYPE_1__ server ; 
- int /*<<< orphan*/  serverLogFromHandler (int /*<<< orphan*/ ,char*) ; 
+
+ int LL_WARNING ;
+
+
+ int exit (int) ;
+ int getpid () ;
+ int rdbRemoveTempFile (int ) ;
+ TYPE_1__ server ;
+ int serverLogFromHandler (int ,char*) ;
 
 __attribute__((used)) static void sigShutdownHandler(int sig) {
     char *msg;
 
     switch (sig) {
-    case SIGINT:
+    case 129:
         msg = "Received SIGINT scheduling shutdown...";
         break;
-    case SIGTERM:
+    case 128:
         msg = "Received SIGTERM scheduling shutdown...";
         break;
     default:
         msg = "Received shutdown signal, scheduling shutdown...";
     };
 
-    /* SIGINT is often delivered via Ctrl+C in an interactive session.
-     * If we receive the signal the second time, we interpret this as
-     * the user really wanting to quit ASAP without waiting to persist
-     * on disk. */
-    if (server.shutdown_asap && sig == SIGINT) {
+
+
+
+
+    if (server.shutdown_asap && sig == 129) {
         serverLogFromHandler(LL_WARNING, "You insist... exiting now.");
         rdbRemoveTempFile(getpid());
-        exit(1); /* Exit with an error since this was not a clean shutdown. */
+        exit(1);
     } else if (server.loading) {
         serverLogFromHandler(LL_WARNING, "Received shutdown signal during loading, exiting now.");
         exit(0);

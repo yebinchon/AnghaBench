@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct usb_request {int /*<<< orphan*/  (* complete ) (int /*<<< orphan*/ *,struct usb_request*) ;} ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct usb_request {int (* complete ) (int *,struct usb_request*) ;} ;
 struct cdns3_device {scalar_t__ status_completion_no_call; TYPE_1__** eps; struct usb_request* pending_status_request; } ;
-struct TYPE_2__ {int /*<<< orphan*/  endpoint; } ;
+struct TYPE_2__ {int endpoint; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,struct usb_request*) ; 
+
+ int stub1 (int *,struct usb_request*) ;
 
 __attribute__((used)) static void __pending_setup_status_handler(struct cdns3_device *priv_dev)
 {
-	struct usb_request *request = priv_dev->pending_status_request;
+ struct usb_request *request = priv_dev->pending_status_request;
 
-	if (priv_dev->status_completion_no_call && request &&
-	    request->complete) {
-		request->complete(&priv_dev->eps[0]->endpoint, request);
-		priv_dev->status_completion_no_call = 0;
-	}
+ if (priv_dev->status_completion_no_call && request &&
+     request->complete) {
+  request->complete(&priv_dev->eps[0]->endpoint, request);
+  priv_dev->status_completion_no_call = 0;
+ }
 }

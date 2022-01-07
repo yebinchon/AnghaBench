@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  WebPInfoStatus ;
-typedef  int /*<<< orphan*/  WebPInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GET_BITS (int,int) ; 
- int /*<<< orphan*/  GET_SIGNED_BITS (int,int) ; 
- int /*<<< orphan*/  WEBP_INFO_OK ; 
- int /*<<< orphan*/  printf (char*,int,...) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int WebPInfoStatus ;
+typedef int WebPInfo ;
+
+
+ int GET_BITS (int,int) ;
+ int GET_SIGNED_BITS (int,int) ;
+ int WEBP_INFO_OK ;
+ int printf (char*,int,...) ;
 
 __attribute__((used)) static WebPInfoStatus ParseLossySegmentHeader(const WebPInfo* const webp_info,
                                               const uint8_t* const data,

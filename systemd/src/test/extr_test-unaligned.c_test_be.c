@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/ * data ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int unaligned_read_be16 (int /*<<< orphan*/ *) ; 
- int unaligned_read_be32 (int /*<<< orphan*/ *) ; 
- int unaligned_read_be64 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  unaligned_write_be16 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  unaligned_write_be32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  unaligned_write_be64 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  zero (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+
+
+ int assert_se (int) ;
+ int * data ;
+ scalar_t__ memcmp (int *,int *,int) ;
+ int unaligned_read_be16 (int *) ;
+ int unaligned_read_be32 (int *) ;
+ int unaligned_read_be64 (int *) ;
+ int unaligned_write_be16 (int *,int) ;
+ int unaligned_write_be32 (int *,int) ;
+ int unaligned_write_be64 (int *,int) ;
+ int zero (int *) ;
 
 __attribute__((used)) static void test_be(void) {
         uint8_t scratch[16];

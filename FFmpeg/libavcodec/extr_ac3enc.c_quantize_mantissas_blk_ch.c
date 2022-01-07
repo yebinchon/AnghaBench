@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int int32_t ;
-typedef  int int16_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int32_t ;
+typedef int int16_t ;
 struct TYPE_3__ {int mant1_cnt; int* qmant1_ptr; int mant2_cnt; int* qmant2_ptr; int mant4_cnt; int* qmant4_ptr; } ;
-typedef  TYPE_1__ AC3Mant ;
+typedef TYPE_1__ AC3Mant ;
 
-/* Variables and functions */
- int asym_quant (int,int,int) ; 
- int sym_quant (int,int,int) ; 
+
+ int asym_quant (int,int,int) ;
+ int sym_quant (int,int,int) ;
 
 __attribute__((used)) static void quantize_mantissas_blk_ch(AC3Mant *s, int32_t *fixed_coef,
                                       uint8_t *exp, uint8_t *bap,

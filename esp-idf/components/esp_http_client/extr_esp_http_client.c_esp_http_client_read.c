@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  esp_log_level_t ;
-typedef  TYPE_2__* esp_http_client_handle_t ;
-struct TYPE_7__ {int raw_len; int raw_data; char* output_ptr; int /*<<< orphan*/  data; } ;
-typedef  TYPE_3__ esp_http_buffer_t ;
-struct TYPE_6__ {int buffer_size_rx; int /*<<< orphan*/  parser_settings; int /*<<< orphan*/  parser; TYPE_1__* response; int /*<<< orphan*/  timeout_ms; int /*<<< orphan*/  transport; int /*<<< orphan*/  is_chunk_complete; } ;
-struct TYPE_5__ {int /*<<< orphan*/  is_chunked; int /*<<< orphan*/  content_length; int /*<<< orphan*/  data_process; TYPE_3__* buffer; } ;
 
-/* Variables and functions */
- scalar_t__ ENOTCONN ; 
- int ESP_FAIL ; 
- int /*<<< orphan*/  ESP_LOGD (int /*<<< orphan*/ ,char*,int,int,int,...) ; 
- int /*<<< orphan*/  ESP_LOG_DEBUG ; 
- int /*<<< orphan*/  ESP_LOG_LEVEL (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,scalar_t__) ; 
- int /*<<< orphan*/  ESP_LOG_WARN ; 
- int /*<<< orphan*/  TAG ; 
- scalar_t__ errno ; 
- int esp_transport_read (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  http_parser_execute (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memcpy (char*,int,int) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int esp_log_level_t ;
+typedef TYPE_2__* esp_http_client_handle_t ;
+struct TYPE_7__ {int raw_len; int raw_data; char* output_ptr; int data; } ;
+typedef TYPE_3__ esp_http_buffer_t ;
+struct TYPE_6__ {int buffer_size_rx; int parser_settings; int parser; TYPE_1__* response; int timeout_ms; int transport; int is_chunk_complete; } ;
+struct TYPE_5__ {int is_chunked; int content_length; int data_process; TYPE_3__* buffer; } ;
+
+
+ scalar_t__ ENOTCONN ;
+ int ESP_FAIL ;
+ int ESP_LOGD (int ,char*,int,int,int,...) ;
+ int ESP_LOG_DEBUG ;
+ int ESP_LOG_LEVEL (int ,int ,char*,int,scalar_t__) ;
+ int ESP_LOG_WARN ;
+ int TAG ;
+ scalar_t__ errno ;
+ int esp_transport_read (int ,int ,int,int ) ;
+ int http_parser_execute (int ,int ,int ,int) ;
+ int memcpy (char*,int,int) ;
 
 int esp_http_client_read(esp_http_client_handle_t client, char *buffer, int len)
 {
@@ -49,7 +49,7 @@ int esp_http_client_read(esp_http_client_handle_t client, char *buffer, int len)
         ridx = remain_len;
     }
     int need_read = len - ridx;
-    bool is_data_remain = true;
+    bool is_data_remain = 1;
     while (need_read > 0 && is_data_remain) {
         if (client->response->is_chunked) {
             is_data_remain = !client->is_chunk_complete;
@@ -71,12 +71,12 @@ int esp_http_client_read(esp_http_client_handle_t client, char *buffer, int len)
         if (rlen <= 0) {
             if (errno != 0) {
                 esp_log_level_t sev = ESP_LOG_WARN;
-                /* On connection close from server, recv should ideally return 0 but we have error conversion
-                 * in `tcp_transport` SSL layer which translates it `-1` and hence below additional checks */
+
+
                 if (rlen == -1 && errno == ENOTCONN && client->response->is_chunked) {
-                    /* Explicit call to parser for invoking `message_complete` callback */
+
                     http_parser_execute(client->parser, client->parser_settings, res_buffer->data, 0);
-                    /* ...and lowering the message severity, as closed connection from server side is expected in chunked transport */
+
                     sev = ESP_LOG_DEBUG;
                 }
                 ESP_LOG_LEVEL(sev, TAG, "esp_transport_read returned:%d and errno:%d ", rlen, errno);
@@ -88,8 +88,8 @@ int esp_http_client_read(esp_http_client_handle_t client, char *buffer, int len)
         ridx += res_buffer->raw_len;
         need_read -= res_buffer->raw_len;
 
-        res_buffer->raw_len = 0; //clear
-        res_buffer->output_ptr = NULL;
+        res_buffer->raw_len = 0;
+        res_buffer->output_ptr = ((void*)0);
     }
 
     return ridx;

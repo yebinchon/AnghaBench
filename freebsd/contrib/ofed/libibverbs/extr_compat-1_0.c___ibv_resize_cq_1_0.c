@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ibv_cq_1_0 {int /*<<< orphan*/  real_cq; } ;
 
-/* Variables and functions */
- int ibv_resize_cq (int /*<<< orphan*/ ,int) ; 
+
+
+
+struct ibv_cq_1_0 {int real_cq; } ;
+
+
+ int ibv_resize_cq (int ,int) ;
 
 int __ibv_resize_cq_1_0(struct ibv_cq_1_0 *cq, int cqe)
 {
-	return ibv_resize_cq(cq->real_cq, cqe);
+ return ibv_resize_cq(cq->real_cq, cqe);
 }

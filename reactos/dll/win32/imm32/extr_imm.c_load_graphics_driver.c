@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  path ;
-typedef  int /*<<< orphan*/  key_pathW ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  HMODULE ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- scalar_t__ ARRAY_SIZE (char const*) ; 
- int /*<<< orphan*/  GetDesktopWindow () ; 
- int /*<<< orphan*/  GetPropW (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  GlobalGetAtomNameW (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  HandleToULong (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LoadLibraryW (char*) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegQueryValueExW (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (char*) ; 
- int /*<<< orphan*/  lstrcatW (char*,char const*) ; 
- int lstrlenW (char*) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
+
+
+
+typedef int path ;
+typedef int key_pathW ;
+typedef char WCHAR ;
+typedef int UINT ;
+typedef int HMODULE ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef int BYTE ;
+
+
+ scalar_t__ ARRAY_SIZE (char const*) ;
+ int GetDesktopWindow () ;
+ int GetPropW (int ,char const*) ;
+ int GlobalGetAtomNameW (int ,char*,int) ;
+ int HKEY_LOCAL_MACHINE ;
+ int HandleToULong (int ) ;
+ int LoadLibraryW (char*) ;
+ int MAX_PATH ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegOpenKeyW (int ,char*,int *) ;
+ int RegQueryValueExW (int ,char const*,int *,int *,int *,int*) ;
+ int TRACE (char*,int ,int ) ;
+ int debugstr_w (char*) ;
+ int lstrcatW (char*,char const*) ;
+ int lstrlenW (char*) ;
+ int memcpy (char*,char const*,int) ;
 
 __attribute__((used)) static HMODULE load_graphics_driver(void)
 {
@@ -63,7 +63,7 @@ __attribute__((used)) static HMODULE load_graphics_driver(void)
     lstrcatW( key, displayW );
     if (RegOpenKeyW( HKEY_LOCAL_MACHINE, key, &hkey )) return 0;
     size = sizeof(path);
-    if (!RegQueryValueExW( hkey, driverW, NULL, NULL, (BYTE *)path, &size )) ret = LoadLibraryW( path );
+    if (!RegQueryValueExW( hkey, driverW, ((void*)0), ((void*)0), (BYTE *)path, &size )) ret = LoadLibraryW( path );
     RegCloseKey( hkey );
     TRACE( "%s %p\n", debugstr_w(path), ret );
     return ret;

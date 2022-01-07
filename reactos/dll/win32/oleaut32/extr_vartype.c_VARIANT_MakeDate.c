@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int dwCount; int* dwValues; int* dwFlags; int dwParseFlags; } ;
 struct TYPE_6__ {int wYear; int wHour; int wMinute; int wSecond; int wDay; int wMonth; } ;
-typedef  TYPE_1__ SYSTEMTIME ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
-typedef  TYPE_2__ DATEPARSE ;
+typedef TYPE_1__ SYSTEMTIME ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef TYPE_2__ DATEPARSE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DATE_SWAP (int,int) ; 
- int /*<<< orphan*/  DISP_E_TYPEMISMATCH ; 
- int DP_AM ; 
- int DP_MONTH ; 
- int DP_PM ; 
- int /*<<< orphan*/  GetSystemTime (TYPE_1__*) ; 
- int ORDER_DMY ; 
- int ORDER_MDY ; 
- int ORDER_MYD ; 
- int ORDER_YDM ; 
- int ORDER_YMD ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int,...) ; 
- scalar_t__ VARIANT_IsValidMonthDay (int,int,int) ; 
+
+ int DATE_SWAP (int,int) ;
+ int DISP_E_TYPEMISMATCH ;
+ int DP_AM ;
+ int DP_MONTH ;
+ int DP_PM ;
+ int GetSystemTime (TYPE_1__*) ;
+ int ORDER_DMY ;
+ int ORDER_MDY ;
+ int ORDER_MYD ;
+ int ORDER_YDM ;
+ int ORDER_YMD ;
+ int S_OK ;
+ int TRACE (char*,int,...) ;
+ scalar_t__ VARIANT_IsValidMonthDay (int,int,int) ;
 
 __attribute__((used)) static inline HRESULT VARIANT_MakeDate(DATEPARSE *dp, DWORD iDate,
                                        DWORD offset, SYSTEMTIME *st)
@@ -42,7 +42,7 @@ __attribute__((used)) static inline HRESULT VARIANT_MakeDate(DATEPARSE *dp, DWOR
 
   if (!dp->dwCount)
   {
-    v1 = 30; /* Default to (Variant) 0 date part */
+    v1 = 30;
     v2 = 12;
     v3 = 1899;
     goto VARIANT_MakeDate_OK;
@@ -61,10 +61,10 @@ __attribute__((used)) static inline HRESULT VARIANT_MakeDate(DATEPARSE *dp, DWOR
 
   TRACE("(%d,%d,%d,%d,%d)\n", v1, v2, v3, iDate, offset);
 
-  /* If one number must be a month (Because a month name was given), then only
-   * consider orders with the month in that position.
-   * If we took the current year as 'v3', then only allow a year in that position.
-   */
+
+
+
+
   if (dp->dwFlags[offset + 0] & DP_MONTH)
   {
     dwAllOrders = ORDER_MDY;
@@ -95,27 +95,27 @@ VARIANT_MakeDate_Start:
 
     if (dwCount == 0)
     {
-      /* First: Try the order given by iDate */
+
       switch (iDate)
       {
-      case 0:  dwTry = dwAllOrders & ORDER_MDY; break;
-      case 1:  dwTry = dwAllOrders & ORDER_DMY; break;
+      case 0: dwTry = dwAllOrders & ORDER_MDY; break;
+      case 1: dwTry = dwAllOrders & ORDER_DMY; break;
       default: dwTry = dwAllOrders & ORDER_YMD; break;
       }
     }
     else if (dwCount == 1)
     {
-      /* Second: Try all the orders compatible with iDate */
+
       switch (iDate)
       {
-      case 0:  dwTry = dwAllOrders & ~(ORDER_DMY|ORDER_YDM); break;
-      case 1:  dwTry = dwAllOrders & ~(ORDER_MDY|ORDER_YDM|ORDER_MYD); break;
+      case 0: dwTry = dwAllOrders & ~(ORDER_DMY|ORDER_YDM); break;
+      case 1: dwTry = dwAllOrders & ~(ORDER_MDY|ORDER_YDM|ORDER_MYD); break;
       default: dwTry = dwAllOrders & ~(ORDER_DMY|ORDER_YDM); break;
       }
     }
     else
     {
-      /* Finally: Try any remaining orders */
+
       dwTry = dwAllOrders;
     }
 
@@ -125,13 +125,13 @@ VARIANT_MakeDate_Start:
     if (!dwTry)
       continue;
 
-#define DATE_SWAP(x,y) do { dwTemp = x; x = y; y = dwTemp; } while (0)
+
 
     if (dwTry & ORDER_MDY)
     {
       if (VARIANT_IsValidMonthDay(v2,v1,v3))
       {
-        DATE_SWAP(v1,v2);
+        do { dwTemp = v1; v1 = v2; v2 = dwTemp; } while (0);
         goto VARIANT_MakeDate_OK;
       }
       dwAllOrders &= ~ORDER_MDY;
@@ -140,7 +140,7 @@ VARIANT_MakeDate_Start:
     {
       if (VARIANT_IsValidMonthDay(v3,v2,v1))
       {
-        DATE_SWAP(v1,v3);
+        do { dwTemp = v1; v1 = v3; v3 = dwTemp; } while (0);
         goto VARIANT_MakeDate_OK;
       }
       dwAllOrders &= ~ORDER_YMD;
@@ -149,8 +149,8 @@ VARIANT_MakeDate_Start:
     {
       if (VARIANT_IsValidMonthDay(v2,v3,v1))
       {
-        DATE_SWAP(v1,v2);
-        DATE_SWAP(v2,v3);
+        do { dwTemp = v1; v1 = v2; v2 = dwTemp; } while (0);
+        do { dwTemp = v2; v2 = v3; v3 = dwTemp; } while (0);
         goto VARIANT_MakeDate_OK;
       }
       dwAllOrders &= ~ORDER_YDM;
@@ -163,11 +163,11 @@ VARIANT_MakeDate_Start:
     }
     if (dwTry & ORDER_MYD)
     {
-      /* Only occurs if we are trying a 2 year date as M/Y not D/M */
+
       if (VARIANT_IsValidMonthDay(v3,v1,v2))
       {
-        DATE_SWAP(v1,v3);
-        DATE_SWAP(v2,v3);
+        do { dwTemp = v1; v1 = v3; v3 = dwTemp; } while (0);
+        do { dwTemp = v2; v2 = v3; v3 = dwTemp; } while (0);
         goto VARIANT_MakeDate_OK;
       }
       dwAllOrders &= ~ORDER_MYD;
@@ -176,20 +176,20 @@ VARIANT_MakeDate_Start:
 
   if (dp->dwCount == 2)
   {
-    /* We couldn't make a date as D/M or M/D, so try M/Y or Y/M */
-    v3 = 1; /* 1st of the month */
+
+    v3 = 1;
     dwAllOrders = ORDER_YMD|ORDER_MYD;
-    dp->dwCount = 0; /* Don't return to this code path again */
+    dp->dwCount = 0;
     dwCount = 0;
     goto VARIANT_MakeDate_Start;
   }
 
-  /* No valid dates were able to be constructed */
+
   return DISP_E_TYPEMISMATCH;
 
 VARIANT_MakeDate_OK:
 
-  /* Check that the time part is ok */
+
   if (st->wHour > 23 || st->wMinute > 59 || st->wSecond > 59)
     return DISP_E_TYPEMISMATCH;
 
@@ -202,11 +202,11 @@ VARIANT_MakeDate_OK:
 
   st->wDay = v1;
   st->wMonth = v2;
-  /* FIXME: For 2 digit dates, I'm not sure if 30 is hard coded or not. It may
-   * be retrieved from:
-   * HKCU\Control Panel\International\Calendars\TwoDigitYearMax
-   * But Wine doesn't have/use that key as at the time of writing.
-   */
+
+
+
+
+
   st->wYear = v3 < 30 ? 2000 + v3 : v3 < 100 ? 1900 + v3 : v3;
   TRACE("Returning date %d/%d/%d\n", v1, v2, st->wYear);
   return S_OK;

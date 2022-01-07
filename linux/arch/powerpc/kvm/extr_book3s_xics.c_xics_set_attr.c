@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct kvmppc_xics {int dummy; } ;
-struct kvm_device_attr {int group; int /*<<< orphan*/  addr; int /*<<< orphan*/  attr; } ;
+struct kvm_device_attr {int group; int addr; int attr; } ;
 struct kvm_device {struct kvmppc_xics* private; } ;
 
-/* Variables and functions */
- int ENXIO ; 
-#define  KVM_DEV_XICS_GRP_SOURCES 128 
- int xics_set_source (struct kvmppc_xics*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ENXIO ;
+
+ int xics_set_source (struct kvmppc_xics*,int ,int ) ;
 
 __attribute__((used)) static int xics_set_attr(struct kvm_device *dev, struct kvm_device_attr *attr)
 {
-	struct kvmppc_xics *xics = dev->private;
+ struct kvmppc_xics *xics = dev->private;
 
-	switch (attr->group) {
-	case KVM_DEV_XICS_GRP_SOURCES:
-		return xics_set_source(xics, attr->attr, attr->addr);
-	}
-	return -ENXIO;
+ switch (attr->group) {
+ case 128:
+  return xics_set_source(xics, attr->attr, attr->addr);
+ }
+ return -ENXIO;
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  device_tree; int /*<<< orphan*/  initrd; int /*<<< orphan*/  efi; int /*<<< orphan*/  kernel; int /*<<< orphan*/  options; int /*<<< orphan*/  architecture; int /*<<< orphan*/  machine_id; int /*<<< orphan*/  version; int /*<<< orphan*/  show_title; int /*<<< orphan*/  title; int /*<<< orphan*/  root; int /*<<< orphan*/  path; int /*<<< orphan*/  id; } ;
-typedef  TYPE_1__ BootEntry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strv_free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int device_tree; int initrd; int efi; int kernel; int options; int architecture; int machine_id; int version; int show_title; int title; int root; int path; int id; } ;
+typedef TYPE_1__ BootEntry ;
+
+
+ int assert (TYPE_1__*) ;
+ int free (int ) ;
+ int strv_free (int ) ;
 
 __attribute__((used)) static void boot_entry_free(BootEntry *entry) {
         assert(entry);

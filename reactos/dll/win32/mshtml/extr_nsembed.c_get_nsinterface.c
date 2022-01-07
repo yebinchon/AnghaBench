@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsISupports ;
-typedef  int /*<<< orphan*/  nsIInterfaceRequestor ;
-typedef  int /*<<< orphan*/  REFIID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IID_nsIInterfaceRequestor ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nsIInterfaceRequestor_GetInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  nsIInterfaceRequestor_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsISupports_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
+
+
+
+typedef int nsresult ;
+typedef int nsISupports ;
+typedef int nsIInterfaceRequestor ;
+typedef int REFIID ;
+
+
+ int IID_nsIInterfaceRequestor ;
+ scalar_t__ NS_FAILED (int ) ;
+ int nsIInterfaceRequestor_GetInterface (int *,int ,void**) ;
+ int nsIInterfaceRequestor_Release (int *) ;
+ int nsISupports_QueryInterface (int *,int *,void**) ;
 
 nsresult get_nsinterface(nsISupports *iface, REFIID riid, void **ppv)
 {

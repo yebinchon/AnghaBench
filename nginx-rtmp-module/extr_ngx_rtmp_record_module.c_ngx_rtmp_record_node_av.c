@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_30__   TYPE_8__ ;
-typedef  struct TYPE_29__   TYPE_7__ ;
-typedef  struct TYPE_28__   TYPE_6__ ;
-typedef  struct TYPE_27__   TYPE_5__ ;
-typedef  struct TYPE_26__   TYPE_4__ ;
-typedef  struct TYPE_25__   TYPE_3__ ;
-typedef  struct TYPE_24__   TYPE_2__ ;
-typedef  struct TYPE_23__   TYPE_21__ ;
-typedef  struct TYPE_22__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_30__ TYPE_8__ ;
+typedef struct TYPE_29__ TYPE_7__ ;
+typedef struct TYPE_28__ TYPE_6__ ;
+typedef struct TYPE_27__ TYPE_5__ ;
+typedef struct TYPE_26__ TYPE_4__ ;
+typedef struct TYPE_25__ TYPE_3__ ;
+typedef struct TYPE_24__ TYPE_2__ ;
+typedef struct TYPE_23__ TYPE_21__ ;
+typedef struct TYPE_22__ TYPE_1__ ;
+
+
 struct TYPE_24__ {int msec; scalar_t__ sec; } ;
-typedef  TYPE_2__ ngx_time_t ;
+typedef TYPE_2__ ngx_time_t ;
 struct TYPE_25__ {TYPE_1__* connection; } ;
-typedef  TYPE_3__ ngx_rtmp_session_t ;
+typedef TYPE_3__ ngx_rtmp_session_t ;
 struct TYPE_30__ {scalar_t__ fd; scalar_t__ offset; } ;
-struct TYPE_26__ {scalar_t__ nframes; int initialized; int aac_header_sent; int avc_header_sent; int video_key_sent; TYPE_8__ file; scalar_t__ time_shift; scalar_t__ epoch; int /*<<< orphan*/  failed; TYPE_2__ last; TYPE_5__* conf; } ;
-typedef  TYPE_4__ ngx_rtmp_record_rec_ctx_t ;
-struct TYPE_27__ {int flags; scalar_t__ interval; int /*<<< orphan*/  id; } ;
-typedef  TYPE_5__ ngx_rtmp_record_app_conf_t ;
+struct TYPE_26__ {scalar_t__ nframes; int initialized; int aac_header_sent; int avc_header_sent; int video_key_sent; TYPE_8__ file; scalar_t__ time_shift; scalar_t__ epoch; int failed; TYPE_2__ last; TYPE_5__* conf; } ;
+typedef TYPE_4__ ngx_rtmp_record_rec_ctx_t ;
+struct TYPE_27__ {int flags; scalar_t__ interval; int id; } ;
+typedef TYPE_5__ ngx_rtmp_record_app_conf_t ;
 struct TYPE_28__ {scalar_t__ type; void* mlen; scalar_t__ timestamp; } ;
-typedef  TYPE_6__ ngx_rtmp_header_t ;
-struct TYPE_29__ {scalar_t__ video_codec_id; scalar_t__ audio_codec_id; int /*<<< orphan*/ * avc_header; int /*<<< orphan*/ * aac_header; } ;
-typedef  TYPE_7__ ngx_rtmp_codec_ctx_t ;
-typedef  scalar_t__ ngx_msec_t ;
-typedef  int ngx_int_t ;
-typedef  int /*<<< orphan*/  ngx_chain_t ;
+typedef TYPE_6__ ngx_rtmp_header_t ;
+struct TYPE_29__ {scalar_t__ video_codec_id; scalar_t__ audio_codec_id; int * avc_header; int * aac_header; } ;
+typedef TYPE_7__ ngx_rtmp_codec_ctx_t ;
+typedef scalar_t__ ngx_msec_t ;
+typedef int ngx_int_t ;
+typedef int ngx_chain_t ;
 struct TYPE_23__ {scalar_t__ sec; int msec; } ;
-struct TYPE_22__ {int /*<<< orphan*/  log; } ;
+struct TYPE_22__ {int log; } ;
 
-/* Variables and functions */
- scalar_t__ NGX_CONF_UNSET ; 
- scalar_t__ NGX_INVALID_FILE ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_RTMP ; 
- int NGX_OK ; 
- scalar_t__ NGX_RTMP_AUDIO_AAC ; 
- scalar_t__ NGX_RTMP_MSG_AUDIO ; 
- scalar_t__ NGX_RTMP_MSG_VIDEO ; 
- int NGX_RTMP_RECORD_AUDIO ; 
- int NGX_RTMP_RECORD_KEYFRAMES ; 
- int NGX_RTMP_RECORD_MANUAL ; 
- int NGX_RTMP_RECORD_OFF ; 
- int NGX_RTMP_RECORD_VIDEO ; 
- scalar_t__ NGX_RTMP_VIDEO_H264 ; 
- scalar_t__ NGX_RTMP_VIDEO_KEY_FRAME ; 
- TYPE_21__* ngx_cached_time ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_rtmp_codec_module ; 
- TYPE_7__* ngx_rtmp_get_module_ctx (TYPE_3__*,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_rtmp_get_video_frame_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_rtmp_is_codec_header (int /*<<< orphan*/ *) ; 
- void* ngx_rtmp_record_get_chain_mlen (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_rtmp_record_node_close (TYPE_3__*,TYPE_4__*) ; 
- int /*<<< orphan*/  ngx_rtmp_record_node_open (TYPE_3__*,TYPE_4__*) ; 
- int ngx_rtmp_record_write_frame (TYPE_3__*,TYPE_4__*,TYPE_6__*,int /*<<< orphan*/ *,int) ; 
- int ngx_rtmp_record_write_header (TYPE_8__*) ; 
+
+ scalar_t__ NGX_CONF_UNSET ;
+ scalar_t__ NGX_INVALID_FILE ;
+ int NGX_LOG_DEBUG_RTMP ;
+ int NGX_OK ;
+ scalar_t__ NGX_RTMP_AUDIO_AAC ;
+ scalar_t__ NGX_RTMP_MSG_AUDIO ;
+ scalar_t__ NGX_RTMP_MSG_VIDEO ;
+ int NGX_RTMP_RECORD_AUDIO ;
+ int NGX_RTMP_RECORD_KEYFRAMES ;
+ int NGX_RTMP_RECORD_MANUAL ;
+ int NGX_RTMP_RECORD_OFF ;
+ int NGX_RTMP_RECORD_VIDEO ;
+ scalar_t__ NGX_RTMP_VIDEO_H264 ;
+ scalar_t__ NGX_RTMP_VIDEO_KEY_FRAME ;
+ TYPE_21__* ngx_cached_time ;
+ int ngx_log_debug1 (int ,int ,int ,char*,int *) ;
+ int ngx_rtmp_codec_module ;
+ TYPE_7__* ngx_rtmp_get_module_ctx (TYPE_3__*,int ) ;
+ scalar_t__ ngx_rtmp_get_video_frame_type (int *) ;
+ int ngx_rtmp_is_codec_header (int *) ;
+ void* ngx_rtmp_record_get_chain_mlen (int *) ;
+ int ngx_rtmp_record_node_close (TYPE_3__*,TYPE_4__*) ;
+ int ngx_rtmp_record_node_open (TYPE_3__*,TYPE_4__*) ;
+ int ngx_rtmp_record_write_frame (TYPE_3__*,TYPE_4__*,TYPE_6__*,int *,int) ;
+ int ngx_rtmp_record_write_header (TYPE_8__*) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_rtmp_record_node_av(ngx_rtmp_session_t *s, ngx_rtmp_record_rec_ctx_t *rctx,
                         ngx_rtmp_header_t *h, ngx_chain_t *in)
 {
-    ngx_time_t                      next;
-    ngx_rtmp_header_t               ch;
-    ngx_rtmp_codec_ctx_t           *codec_ctx;
-    ngx_int_t                       keyframe, brkframe;
-    ngx_rtmp_record_app_conf_t     *rracf;
+    ngx_time_t next;
+    ngx_rtmp_header_t ch;
+    ngx_rtmp_codec_ctx_t *codec_ctx;
+    ngx_int_t keyframe, brkframe;
+    ngx_rtmp_record_app_conf_t *rracf;
 
     rracf = rctx->conf;
 
@@ -96,10 +96,10 @@ ngx_rtmp_record_node_av(ngx_rtmp_session_t *s, ngx_rtmp_record_rec_ctx_t *rctx,
 
             next = rctx->last;
             next.msec += rracf->interval;
-            next.sec  += (next.msec / 1000);
+            next.sec += (next.msec / 1000);
             next.msec %= 1000;
 
-            if (ngx_cached_time->sec  > next.sec ||
+            if (ngx_cached_time->sec > next.sec ||
                (ngx_cached_time->sec == next.sec &&
                 ngx_cached_time->msec > next.msec))
             {
@@ -152,7 +152,7 @@ ngx_rtmp_record_node_av(ngx_rtmp_session_t *s, ngx_rtmp_record_rec_ctx_t *rctx,
     if (codec_ctx) {
         ch = *h;
 
-        /* AAC header */
+
         if (!rctx->aac_header_sent && codec_ctx->aac_header &&
            (rracf->flags & NGX_RTMP_RECORD_AUDIO))
         {
@@ -172,7 +172,7 @@ ngx_rtmp_record_node_av(ngx_rtmp_session_t *s, ngx_rtmp_record_rec_ctx_t *rctx,
             rctx->aac_header_sent = 1;
         }
 
-        /* AVC header */
+
         if (!rctx->avc_header_sent && codec_ctx->avc_header &&
            (rracf->flags & (NGX_RTMP_RECORD_VIDEO|
                             NGX_RTMP_RECORD_KEYFRAMES)))

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LONG ;
-typedef  scalar_t__ HKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ HKEY_CURRENT_USER ; 
- int /*<<< orphan*/  KEY_READ ; 
- int /*<<< orphan*/  RegCloseKey (scalar_t__) ; 
- int /*<<< orphan*/  RegOpenCurrentUser (int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,...) ; 
+
+
+
+typedef int LONG ;
+typedef scalar_t__ HKEY ;
+
+
+ int GetLastError () ;
+ scalar_t__ HKEY_CURRENT_USER ;
+ int KEY_READ ;
+ int RegCloseKey (scalar_t__) ;
+ int RegOpenCurrentUser (int ,scalar_t__*) ;
+ int ok (int,char*,scalar_t__,...) ;
 
 __attribute__((used)) static void test_RegOpenCurrentUser(void)
 {

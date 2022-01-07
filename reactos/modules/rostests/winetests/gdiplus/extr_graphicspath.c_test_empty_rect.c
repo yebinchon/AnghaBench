@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpPath ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  FillModeAlternate ; 
- int /*<<< orphan*/  GdipAddPathRectangle (int /*<<< orphan*/ *,double,double,double,double) ; 
- int /*<<< orphan*/  GdipCreatePath (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeletePath (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetPointCount (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipIsVisiblePathPoint (int /*<<< orphan*/ *,double,double,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int Ok ; 
- int /*<<< orphan*/  expect (int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int INT ;
+typedef int GpStatus ;
+typedef int GpPath ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int FillModeAlternate ;
+ int GdipAddPathRectangle (int *,double,double,double,double) ;
+ int GdipCreatePath (int ,int **) ;
+ int GdipDeletePath (int *) ;
+ int GdipGetPointCount (int *,int *) ;
+ int GdipIsVisiblePathPoint (int *,double,double,int *,int *) ;
+ int Ok ;
+ int expect (int,int ) ;
 
 __attribute__((used)) static void test_empty_rect(void)
 {
@@ -43,7 +43,7 @@ __attribute__((used)) static void test_empty_rect(void)
     expect(Ok, status);
     expect(0, count);
 
-    status = GdipIsVisiblePathPoint(path, -2.0, 2.0, NULL, &result);
+    status = GdipIsVisiblePathPoint(path, -2.0, 2.0, ((void*)0), &result);
     expect(Ok, status);
     expect(FALSE, result);
 

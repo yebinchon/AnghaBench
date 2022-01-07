@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jit_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  check_call_unroll (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rec_func_setup (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int jit_State ;
+
+
+ int check_call_unroll (int *,int ) ;
+ int rec_func_setup (int *) ;
 
 __attribute__((used)) static void rec_func_lua(jit_State *J)
 {

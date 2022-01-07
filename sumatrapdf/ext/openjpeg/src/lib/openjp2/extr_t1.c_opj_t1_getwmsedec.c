@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t OPJ_UINT32 ;
-typedef  int OPJ_INT32 ;
-typedef  int OPJ_FLOAT64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPJ_ARG_NOT_USED (size_t) ; 
- int opj_dwt_getnorm (size_t,size_t) ; 
- int opj_dwt_getnorm_real (size_t,size_t) ; 
+
+
+
+typedef size_t OPJ_UINT32 ;
+typedef int OPJ_INT32 ;
+typedef int OPJ_FLOAT64 ;
+
+
+ int OPJ_ARG_NOT_USED (size_t) ;
+ int opj_dwt_getnorm (size_t,size_t) ;
+ int opj_dwt_getnorm_real (size_t,size_t) ;
 
 __attribute__((used)) static OPJ_FLOAT64 opj_t1_getwmsedec(
     OPJ_INT32 nmsedec,
@@ -40,7 +40,7 @@ __attribute__((used)) static OPJ_FLOAT64 opj_t1_getwmsedec(
 
     if (qmfbid == 1) {
         w2 = opj_dwt_getnorm(level, orient);
-    } else {    /* if (qmfbid == 0) */
+    } else {
         w2 = opj_dwt_getnorm_real(level, orient);
     }
 

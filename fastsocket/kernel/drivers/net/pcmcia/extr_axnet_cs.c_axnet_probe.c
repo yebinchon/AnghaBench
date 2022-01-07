@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  IntType; int /*<<< orphan*/  Attributes; } ;
-struct TYPE_5__ {int /*<<< orphan*/  IRQInfo1; int /*<<< orphan*/  Attributes; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int IntType; int Attributes; } ;
+struct TYPE_5__ {int IRQInfo1; int Attributes; } ;
 struct pcmcia_device {TYPE_2__ conf; TYPE_1__ irq; struct net_device* priv; } ;
-struct net_device {int /*<<< orphan*/  watchdog_timeo; int /*<<< orphan*/ * netdev_ops; } ;
-struct ei_device {int /*<<< orphan*/  page_lock; } ;
+struct net_device {int watchdog_timeo; int * netdev_ops; } ;
+struct ei_device {int page_lock; } ;
 struct TYPE_7__ {struct pcmcia_device* p_dev; } ;
-typedef  TYPE_3__ axnet_dev_t ;
+typedef TYPE_3__ axnet_dev_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONF_ENABLE_IRQ ; 
- int /*<<< orphan*/  DEBUG (int /*<<< orphan*/ ,char*) ; 
- int ENOMEM ; 
- int /*<<< orphan*/  INT_MEMORY_AND_IO ; 
- int /*<<< orphan*/  IRQ_LEVEL_ID ; 
- int /*<<< orphan*/  IRQ_TYPE_DYNAMIC_SHARING ; 
- TYPE_3__* PRIV (struct net_device*) ; 
- int /*<<< orphan*/  SET_ETHTOOL_OPS (struct net_device*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TX_TIMEOUT ; 
- struct net_device* alloc_etherdev (int) ; 
- int axnet_config (struct pcmcia_device*) ; 
- int /*<<< orphan*/  axnet_netdev_ops ; 
- int /*<<< orphan*/  netdev_ethtool_ops ; 
- struct ei_device* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
+
+ int CONF_ENABLE_IRQ ;
+ int DEBUG (int ,char*) ;
+ int ENOMEM ;
+ int INT_MEMORY_AND_IO ;
+ int IRQ_LEVEL_ID ;
+ int IRQ_TYPE_DYNAMIC_SHARING ;
+ TYPE_3__* PRIV (struct net_device*) ;
+ int SET_ETHTOOL_OPS (struct net_device*,int *) ;
+ int TX_TIMEOUT ;
+ struct net_device* alloc_etherdev (int) ;
+ int axnet_config (struct pcmcia_device*) ;
+ int axnet_netdev_ops ;
+ int netdev_ethtool_ops ;
+ struct ei_device* netdev_priv (struct net_device*) ;
+ int spin_lock_init (int *) ;
 
 __attribute__((used)) static int axnet_probe(struct pcmcia_device *link)
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static int axnet_probe(struct pcmcia_device *link)
 
     dev = alloc_etherdev(sizeof(struct ei_device) + sizeof(axnet_dev_t));
     if (!dev)
-	return -ENOMEM;
+ return -ENOMEM;
 
     ei_local = netdev_priv(dev);
     spin_lock_init(&ei_local->page_lock);

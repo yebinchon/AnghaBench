@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
-struct TYPE_5__ {int /*<<< orphan*/  Sid; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int ULONG ;
+struct TYPE_5__ {int Sid; } ;
 struct TYPE_6__ {TYPE_1__ PolicyAccountDomainInfo; } ;
-typedef  int /*<<< orphan*/ * PRPC_SID ;
-typedef  TYPE_2__* PLSAPR_POLICY_INFORMATION ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/ * LSAPR_HANDLE ;
+typedef int * PRPC_SID ;
+typedef TYPE_2__* PLSAPR_POLICY_INFORMATION ;
+typedef int NTSTATUS ;
+typedef int * LSAPR_HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  LsaIFree_LSAPR_POLICY_INFORMATION (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  LsaIOpenPolicyTrusted (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  LsarClose (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  LsarQueryInformationPolicy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__**) ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PolicyAccountDomainInformation ; 
- int /*<<< orphan*/ * RtlAllocateHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RtlGetProcessHeap () ; 
- int /*<<< orphan*/  RtlLengthSid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATUS_INSUFFICIENT_RESOURCES ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ERR (char*) ;
+ int LsaIFree_LSAPR_POLICY_INFORMATION (int ,TYPE_2__*) ;
+ int LsaIOpenPolicyTrusted (int **) ;
+ int LsarClose (int **) ;
+ int LsarQueryInformationPolicy (int *,int ,TYPE_2__**) ;
+ int NT_SUCCESS (int ) ;
+ int PolicyAccountDomainInformation ;
+ int * RtlAllocateHeap (int ,int ,int ) ;
+ int RtlGetProcessHeap () ;
+ int RtlLengthSid (int ) ;
+ int STATUS_INSUFFICIENT_RESOURCES ;
+ int TRACE (char*,int ) ;
+ int memcpy (int *,int ,int ) ;
 
 __attribute__((used)) static
 NTSTATUS
 GetAccountDomainSid(PRPC_SID *Sid)
 {
-    LSAPR_HANDLE PolicyHandle = NULL;
-    PLSAPR_POLICY_INFORMATION PolicyInfo = NULL;
+    LSAPR_HANDLE PolicyHandle = ((void*)0);
+    PLSAPR_POLICY_INFORMATION PolicyInfo = ((void*)0);
     ULONG Length = 0;
     NTSTATUS Status;
 
@@ -63,7 +63,7 @@ GetAccountDomainSid(PRPC_SID *Sid)
     Length = RtlLengthSid(PolicyInfo->PolicyAccountDomainInfo.Sid);
 
     *Sid = RtlAllocateHeap(RtlGetProcessHeap(), 0, Length);
-    if (*Sid == NULL)
+    if (*Sid == ((void*)0))
     {
         ERR("Failed to allocate SID\n");
         Status = STATUS_INSUFFICIENT_RESOURCES;
@@ -73,11 +73,11 @@ GetAccountDomainSid(PRPC_SID *Sid)
     memcpy(*Sid, PolicyInfo->PolicyAccountDomainInfo.Sid, Length);
 
 done:
-    if (PolicyInfo != NULL)
+    if (PolicyInfo != ((void*)0))
         LsaIFree_LSAPR_POLICY_INFORMATION(PolicyAccountDomainInformation,
                                           PolicyInfo);
 
-    if (PolicyHandle != NULL)
+    if (PolicyHandle != ((void*)0))
         LsarClose(&PolicyHandle);
 
     return Status;

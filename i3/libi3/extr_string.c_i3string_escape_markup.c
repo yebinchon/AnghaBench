@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  i3String ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- char* g_markup_escape_text (char const*,int) ; 
- char* i3string_as_utf8 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * i3string_from_utf8 (char*) ; 
+
+
+
+typedef int i3String ;
+
+
+ int free (char*) ;
+ char* g_markup_escape_text (char const*,int) ;
+ char* i3string_as_utf8 (int *) ;
+ int * i3string_from_utf8 (char*) ;
 
 i3String *i3string_escape_markup(i3String *str) {
     const char *text = i3string_as_utf8(str);

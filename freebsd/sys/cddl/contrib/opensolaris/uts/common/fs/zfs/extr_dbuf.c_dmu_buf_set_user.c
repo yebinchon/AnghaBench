@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dmu_buf_user_t ;
-typedef  int /*<<< orphan*/  dmu_buf_t ;
 
-/* Variables and functions */
- void* dmu_buf_replace_user (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int dmu_buf_user_t ;
+typedef int dmu_buf_t ;
+
+
+ void* dmu_buf_replace_user (int *,int *,int *) ;
 
 void *
 dmu_buf_set_user(dmu_buf_t *db_fake, dmu_buf_user_t *user)
 {
-	return (dmu_buf_replace_user(db_fake, NULL, user));
+ return (dmu_buf_replace_user(db_fake, ((void*)0), user));
 }

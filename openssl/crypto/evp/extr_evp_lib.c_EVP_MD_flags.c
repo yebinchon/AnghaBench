@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {unsigned long flags; } ;
-typedef  int /*<<< orphan*/  OSSL_PARAM ;
-typedef  TYPE_1__ EVP_MD ;
+typedef int OSSL_PARAM ;
+typedef TYPE_1__ EVP_MD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OSSL_CIPHER_PARAM_FLAGS ; 
- int /*<<< orphan*/  OSSL_PARAM_END ; 
- int /*<<< orphan*/  OSSL_PARAM_construct_ulong (int /*<<< orphan*/ ,unsigned long*) ; 
- int evp_do_md_getparams (TYPE_1__ const*,int /*<<< orphan*/ *) ; 
+
+ int OSSL_CIPHER_PARAM_FLAGS ;
+ int OSSL_PARAM_END ;
+ int OSSL_PARAM_construct_ulong (int ,unsigned long*) ;
+ int evp_do_md_getparams (TYPE_1__ const*,int *) ;
 
 unsigned long EVP_MD_flags(const EVP_MD *md)
 {

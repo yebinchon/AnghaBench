@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ cbInQue; scalar_t__ cbOutQue; } ;
-typedef  scalar_t__ HANDLE ;
-typedef  scalar_t__ DWORD ;
-typedef  TYPE_1__ COMSTAT ;
+typedef scalar_t__ HANDLE ;
+typedef scalar_t__ DWORD ;
+typedef TYPE_1__ COMSTAT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ClearCommError (scalar_t__,scalar_t__*,TYPE_1__*) ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ test_OpenComm (int /*<<< orphan*/ ) ; 
+
+ int ClearCommError (scalar_t__,scalar_t__*,TYPE_1__*) ;
+ int CloseHandle (scalar_t__) ;
+ int FALSE ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int ok (int,char*,...) ;
+ scalar_t__ test_OpenComm (int ) ;
 
 __attribute__((used)) static void test_ClearCommError(void)
 {
     HANDLE hcom;
-    DWORD  errors;
+    DWORD errors;
     COMSTAT lpStat;
 
     hcom = test_OpenComm(FALSE);

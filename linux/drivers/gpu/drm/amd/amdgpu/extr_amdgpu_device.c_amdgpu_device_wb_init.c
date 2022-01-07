@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_2__ {int num_wb; char used; scalar_t__ wb; int /*<<< orphan*/  gpu_addr; int /*<<< orphan*/ * wb_obj; } ;
-struct amdgpu_device {TYPE_1__ wb; int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AMDGPU_GEM_DOMAIN_GTT ; 
- int AMDGPU_MAX_WB ; 
- int /*<<< orphan*/  PAGE_SIZE ; 
- int amdgpu_bo_create_kernel (struct amdgpu_device*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  dev_warn (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_2__ {int num_wb; char used; scalar_t__ wb; int gpu_addr; int * wb_obj; } ;
+struct amdgpu_device {TYPE_1__ wb; int dev; } ;
+
+
+ int AMDGPU_GEM_DOMAIN_GTT ;
+ int AMDGPU_MAX_WB ;
+ int PAGE_SIZE ;
+ int amdgpu_bo_create_kernel (struct amdgpu_device*,int,int ,int ,int **,int *,void**) ;
+ int dev_warn (int ,char*,int) ;
+ int memset (char*,int ,int) ;
 
 __attribute__((used)) static int amdgpu_device_wb_init(struct amdgpu_device *adev)
 {
-	int r;
+ int r;
 
-	if (adev->wb.wb_obj == NULL) {
-		/* AMDGPU_MAX_WB * sizeof(uint32_t) * 8 = AMDGPU_MAX_WB 256bit slots */
-		r = amdgpu_bo_create_kernel(adev, AMDGPU_MAX_WB * sizeof(uint32_t) * 8,
-					    PAGE_SIZE, AMDGPU_GEM_DOMAIN_GTT,
-					    &adev->wb.wb_obj, &adev->wb.gpu_addr,
-					    (void **)&adev->wb.wb);
-		if (r) {
-			dev_warn(adev->dev, "(%d) create WB bo failed\n", r);
-			return r;
-		}
+ if (adev->wb.wb_obj == ((void*)0)) {
 
-		adev->wb.num_wb = AMDGPU_MAX_WB;
-		memset(&adev->wb.used, 0, sizeof(adev->wb.used));
+  r = amdgpu_bo_create_kernel(adev, AMDGPU_MAX_WB * sizeof(uint32_t) * 8,
+         PAGE_SIZE, AMDGPU_GEM_DOMAIN_GTT,
+         &adev->wb.wb_obj, &adev->wb.gpu_addr,
+         (void **)&adev->wb.wb);
+  if (r) {
+   dev_warn(adev->dev, "(%d) create WB bo failed\n", r);
+   return r;
+  }
 
-		/* clear wb memory */
-		memset((char *)adev->wb.wb, 0, AMDGPU_MAX_WB * sizeof(uint32_t) * 8);
-	}
+  adev->wb.num_wb = AMDGPU_MAX_WB;
+  memset(&adev->wb.used, 0, sizeof(adev->wb.used));
 
-	return 0;
+
+  memset((char *)adev->wb.wb, 0, AMDGPU_MAX_WB * sizeof(uint32_t) * 8);
+ }
+
+ return 0;
 }

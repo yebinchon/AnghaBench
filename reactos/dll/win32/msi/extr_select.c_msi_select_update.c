@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct tagMSIVIEW {int dummy; } ;
-typedef  scalar_t__ UINT ;
+typedef scalar_t__ UINT ;
 struct TYPE_16__ {TYPE_1__* ops; } ;
-struct TYPE_15__ {int /*<<< orphan*/  hdr; } ;
+struct TYPE_15__ {int hdr; } ;
 struct TYPE_14__ {scalar_t__* cols; TYPE_4__* table; } ;
-struct TYPE_13__ {scalar_t__ (* get_row ) (TYPE_4__*,scalar_t__,TYPE_3__**) ;scalar_t__ (* modify ) (TYPE_4__*,int /*<<< orphan*/ ,TYPE_3__*,scalar_t__) ;} ;
-typedef  TYPE_2__ MSISELECTVIEW ;
-typedef  TYPE_3__ MSIRECORD ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
+struct TYPE_13__ {scalar_t__ (* get_row ) (TYPE_4__*,scalar_t__,TYPE_3__**) ;scalar_t__ (* modify ) (TYPE_4__*,int ,TYPE_3__*,scalar_t__) ;} ;
+typedef TYPE_2__ MSISELECTVIEW ;
+typedef TYPE_3__ MSIRECORD ;
+typedef int LPCWSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,...) ; 
- scalar_t__ ERROR_FUNCTION_FAILED ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  MSIMODIFY_UPDATE ; 
- scalar_t__ MSITYPE_IS_BINARY (scalar_t__) ; 
- scalar_t__ MSITYPE_STRING ; 
- scalar_t__ MSI_RecordGetInteger (TYPE_3__*,scalar_t__) ; 
- scalar_t__ MSI_RecordSetInteger (TYPE_3__*,scalar_t__,scalar_t__) ; 
- scalar_t__ SELECT_get_column_info (struct tagMSIVIEW*,scalar_t__,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ SELECT_get_dimensions (struct tagMSIVIEW*,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  msi_record_get_string (TYPE_3__*,scalar_t__,int*) ; 
- scalar_t__ msi_record_set_string (TYPE_3__*,scalar_t__,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
- scalar_t__ stub1 (TYPE_4__*,scalar_t__,TYPE_3__**) ; 
- scalar_t__ stub2 (TYPE_4__*,int /*<<< orphan*/ ,TYPE_3__*,scalar_t__) ; 
+
+ int ERR (char*,...) ;
+ scalar_t__ ERROR_FUNCTION_FAILED ;
+ scalar_t__ ERROR_SUCCESS ;
+ int MSIMODIFY_UPDATE ;
+ scalar_t__ MSITYPE_IS_BINARY (scalar_t__) ;
+ scalar_t__ MSITYPE_STRING ;
+ scalar_t__ MSI_RecordGetInteger (TYPE_3__*,scalar_t__) ;
+ scalar_t__ MSI_RecordSetInteger (TYPE_3__*,scalar_t__,scalar_t__) ;
+ scalar_t__ SELECT_get_column_info (struct tagMSIVIEW*,scalar_t__,int *,scalar_t__*,int *,int *) ;
+ scalar_t__ SELECT_get_dimensions (struct tagMSIVIEW*,int *,scalar_t__*) ;
+ int msi_record_get_string (TYPE_3__*,scalar_t__,int*) ;
+ scalar_t__ msi_record_set_string (TYPE_3__*,scalar_t__,int ,int) ;
+ int msiobj_release (int *) ;
+ scalar_t__ stub1 (TYPE_4__*,scalar_t__,TYPE_3__**) ;
+ scalar_t__ stub2 (TYPE_4__*,int ,TYPE_3__*,scalar_t__) ;
 
 __attribute__((used)) static UINT msi_select_update(struct tagMSIVIEW *view, MSIRECORD *rec, UINT row)
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static UINT msi_select_update(struct tagMSIVIEW *view, MSI
     LPCWSTR str;
     MSIRECORD *mod;
 
-    r = SELECT_get_dimensions(view, NULL, &num_columns);
+    r = SELECT_get_dimensions(view, ((void*)0), &num_columns);
     if (r != ERROR_SUCCESS)
         return r;
 
@@ -60,7 +60,7 @@ __attribute__((used)) static UINT msi_select_update(struct tagMSIVIEW *view, MSI
     {
         col = sv->cols[i];
 
-        r = SELECT_get_column_info(view, i + 1, NULL, &type, NULL, NULL);
+        r = SELECT_get_column_info(view, i + 1, ((void*)0), &type, ((void*)0), ((void*)0));
         if (r != ERROR_SUCCESS)
         {
             ERR("Failed to get column information: %d\n", r);

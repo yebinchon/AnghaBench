@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  Lface; int /*<<< orphan*/  Org; int /*<<< orphan*/  Dst; int /*<<< orphan*/  Lnext; struct TYPE_8__* Sym; } ;
-typedef  int /*<<< orphan*/  GLUvertex ;
-typedef  TYPE_1__ GLUhalfEdge ;
 
-/* Variables and functions */
- TYPE_1__* MakeEdge (TYPE_1__*) ; 
- int /*<<< orphan*/  MakeVertex (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Splice (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * allocVertex () ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int Lface; int Org; int Dst; int Lnext; struct TYPE_8__* Sym; } ;
+typedef int GLUvertex ;
+typedef TYPE_1__ GLUhalfEdge ;
+
+
+ TYPE_1__* MakeEdge (TYPE_1__*) ;
+ int MakeVertex (int *,TYPE_1__*,int ) ;
+ int Splice (TYPE_1__*,int ) ;
+ int * allocVertex () ;
 
 GLUhalfEdge *__gl_meshAddEdgeVertex( GLUhalfEdge *eOrg )
 {
   GLUhalfEdge *eNewSym;
   GLUhalfEdge *eNew = MakeEdge( eOrg );
-  if (eNew == NULL) return NULL;
+  if (eNew == ((void*)0)) return ((void*)0);
 
   eNewSym = eNew->Sym;
 
-  /* Connect the new edge appropriately */
+
   Splice( eNew, eOrg->Lnext );
 
-  /* Set the vertex and face information */
+
   eNew->Org = eOrg->Dst;
   {
     GLUvertex *newVertex= allocVertex();
-    if (newVertex == NULL) return NULL;
+    if (newVertex == ((void*)0)) return ((void*)0);
 
     MakeVertex( newVertex, eNewSym, eNew->Org );
   }

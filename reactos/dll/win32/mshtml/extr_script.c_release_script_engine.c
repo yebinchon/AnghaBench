@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int script_state; int /*<<< orphan*/ * script; int /*<<< orphan*/ * parse; int /*<<< orphan*/ * parse_proc; } ;
-typedef  TYPE_1__ ScriptHost ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IActiveScriptParseProcedure2_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IActiveScriptParse_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IActiveScript_Close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IActiveScript_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IActiveScript_SetScriptState (int /*<<< orphan*/ *,int) ; 
-#define  SCRIPTSTATE_CONNECTED 131 
-#define  SCRIPTSTATE_DISCONNECTED 130 
-#define  SCRIPTSTATE_INITIALIZED 129 
-#define  SCRIPTSTATE_STARTED 128 
- int SCRIPTSTATE_UNINITIALIZED ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int script_state; int * script; int * parse; int * parse_proc; } ;
+typedef TYPE_1__ ScriptHost ;
+
+
+ int IActiveScriptParseProcedure2_Release (int *) ;
+ int IActiveScriptParse_Release (int *) ;
+ int IActiveScript_Close (int *) ;
+ int IActiveScript_Release (int *) ;
+ int IActiveScript_SetScriptState (int *,int) ;
+
+
+
+
+ int SCRIPTSTATE_UNINITIALIZED ;
 
 __attribute__((used)) static void release_script_engine(ScriptHost *This)
 {
@@ -32,27 +32,27 @@ __attribute__((used)) static void release_script_engine(ScriptHost *This)
         return;
 
     switch(This->script_state) {
-    case SCRIPTSTATE_CONNECTED:
-        IActiveScript_SetScriptState(This->script, SCRIPTSTATE_DISCONNECTED);
+    case 131:
+        IActiveScript_SetScriptState(This->script, 130);
 
-    case SCRIPTSTATE_STARTED:
-    case SCRIPTSTATE_DISCONNECTED:
-    case SCRIPTSTATE_INITIALIZED:
+    case 128:
+    case 130:
+    case 129:
         IActiveScript_Close(This->script);
 
     default:
         if(This->parse_proc) {
             IActiveScriptParseProcedure2_Release(This->parse_proc);
-            This->parse_proc = NULL;
+            This->parse_proc = ((void*)0);
         }
 
         if(This->parse) {
             IActiveScriptParse_Release(This->parse);
-            This->parse = NULL;
+            This->parse = ((void*)0);
         }
     }
 
     IActiveScript_Release(This->script);
-    This->script = NULL;
+    This->script = ((void*)0);
     This->script_state = SCRIPTSTATE_UNINITIALIZED;
 }

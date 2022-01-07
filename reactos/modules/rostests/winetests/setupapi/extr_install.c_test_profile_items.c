@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CSIDL_COMMON_PROGRAMS ; 
- char* CURR_DIR ; 
- int /*<<< orphan*/  CreateDirectoryA (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteFileA (char*) ; 
- scalar_t__ ERROR_ACCESS_DENIED ; 
- scalar_t__ GetFileAttributesA (char*) ; 
- scalar_t__ GetLastError () ; 
- scalar_t__ INVALID_FILE_ATTRIBUTES ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  RemoveDirectoryA (char*) ; 
- int /*<<< orphan*/  SHGFP_TYPE_CURRENT ; 
- scalar_t__ SHGetFolderPathA (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  create_inf_file (char*,char const*) ; 
- char* inffile ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- int /*<<< orphan*/  run_cmdline (char*,int,char*) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,char*) ; 
+ int CSIDL_COMMON_PROGRAMS ;
+ char* CURR_DIR ;
+ int CreateDirectoryA (char*,int *) ;
+ int DeleteFileA (char*) ;
+ scalar_t__ ERROR_ACCESS_DENIED ;
+ scalar_t__ GetFileAttributesA (char*) ;
+ scalar_t__ GetLastError () ;
+ scalar_t__ INVALID_FILE_ATTRIBUTES ;
+ int MAX_PATH ;
+ int RemoveDirectoryA (char*) ;
+ int SHGFP_TYPE_CURRENT ;
+ scalar_t__ SHGetFolderPathA (int *,int ,int *,int ,char*) ;
+ scalar_t__ S_OK ;
+ int create_inf_file (char*,char const*) ;
+ char* inffile ;
+ int ok (int,char*) ;
+ int run_cmdline (char*,int,char*) ;
+ int skip (char*) ;
+ int snprintf (char*,int,char*,char*) ;
+ int sprintf (char*,char*,char*,char*) ;
 
 __attribute__((used)) static void test_profile_items(void)
 {
@@ -53,14 +45,14 @@ __attribute__((used)) static void test_profile_items(void)
         "Name=TestGroup,4\n"
         ;
 
-    if (S_OK != SHGetFolderPathA(NULL, CSIDL_COMMON_PROGRAMS, NULL, SHGFP_TYPE_CURRENT, commonprogs))
+    if (S_OK != SHGetFolderPathA(((void*)0), CSIDL_COMMON_PROGRAMS, ((void*)0), SHGFP_TYPE_CURRENT, commonprogs))
     {
         skip("No common program files directory exists\n");
         goto cleanup;
     }
 
     snprintf(path, MAX_PATH, "%s\\TestDir", commonprogs);
-    if (!CreateDirectoryA(path, NULL) && GetLastError() == ERROR_ACCESS_DENIED)
+    if (!CreateDirectoryA(path, ((void*)0)) && GetLastError() == ERROR_ACCESS_DENIED)
     {
         skip("need admin rights\n");
         return;

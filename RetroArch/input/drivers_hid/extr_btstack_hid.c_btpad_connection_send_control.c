@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct btstack_hid_adapter {int /*<<< orphan*/ * channels; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bt_send_l2cap_ptr (int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t) ; 
+
+
+
+typedef int uint8_t ;
+struct btstack_hid_adapter {int * channels; } ;
+
+
+ int bt_send_l2cap_ptr (int ,int *,size_t) ;
 
 __attribute__((used)) static void btpad_connection_send_control(void *data,
       uint8_t* data_buf, size_t size)

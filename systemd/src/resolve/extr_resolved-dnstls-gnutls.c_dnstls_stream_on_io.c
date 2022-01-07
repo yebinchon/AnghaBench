@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_9__ {int shutdown; int handshake; TYPE_2__* session; } ;
 struct TYPE_10__ {void* dnstls_events; TYPE_1__ dnstls_data; struct TYPE_10__* encrypted; } ;
-typedef  TYPE_2__ DnsStream ;
+typedef TYPE_2__ DnsStream ;
 
-/* Variables and functions */
- int DNSTLS_STREAM_CLOSED ; 
- int EAGAIN ; 
- int ECONNREFUSED ; 
- void* EPOLLIN ; 
- void* EPOLLOUT ; 
- int GNUTLS_E_AGAIN ; 
- int /*<<< orphan*/  GNUTLS_SHUT_RDWR ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int /*<<< orphan*/  dns_stream_unref (TYPE_2__*) ; 
- int gnutls_bye (TYPE_2__*,int /*<<< orphan*/ ) ; 
- scalar_t__ gnutls_error_is_fatal (int) ; 
- int gnutls_handshake (TYPE_2__*) ; 
- int gnutls_record_get_direction (TYPE_2__*) ; 
- int /*<<< orphan*/  gnutls_strerror (int) ; 
- int /*<<< orphan*/  log_debug (char*,int /*<<< orphan*/ ) ; 
+
+ int DNSTLS_STREAM_CLOSED ;
+ int EAGAIN ;
+ int ECONNREFUSED ;
+ void* EPOLLIN ;
+ void* EPOLLOUT ;
+ int GNUTLS_E_AGAIN ;
+ int GNUTLS_SHUT_RDWR ;
+ int assert (TYPE_2__*) ;
+ int dns_stream_unref (TYPE_2__*) ;
+ int gnutls_bye (TYPE_2__*,int ) ;
+ scalar_t__ gnutls_error_is_fatal (int) ;
+ int gnutls_handshake (TYPE_2__*) ;
+ int gnutls_record_get_direction (TYPE_2__*) ;
+ int gnutls_strerror (int) ;
+ int log_debug (char*,int ) ;
 
 int dnstls_stream_on_io(DnsStream *stream, uint32_t revents) {
         int r;
@@ -50,7 +50,7 @@ int dnstls_stream_on_io(DnsStream *stream, uint32_t revents) {
                         log_debug("Failed to invoke gnutls_bye: %s", gnutls_strerror(r));
 
                 stream->dnstls_events = 0;
-                stream->dnstls_data.shutdown = false;
+                stream->dnstls_data.shutdown = 0;
                 dns_stream_unref(stream);
                 return DNSTLS_STREAM_CLOSED;
         } else if (stream->dnstls_data.handshake < 0) {

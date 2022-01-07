@@ -1,55 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {char* zDb; char* zName; size_t nColumn; char** azColumn; char** azContentColumn; int /*<<< orphan*/  azTokenizer; } ;
-typedef  TYPE_1__ TableSpec ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLEAR (TYPE_1__*) ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  clearTableSpec (TYPE_1__*) ; 
- char* firstToken (char*,char**) ; 
- int /*<<< orphan*/  safe_isalnum (char) ; 
- void* sqlite3_malloc (int) ; 
- char* sqlite3_mprintf (char*,int,char*) ; 
- scalar_t__ startsWith (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char const* const) ; 
- scalar_t__ strlen (char const* const) ; 
- int /*<<< orphan*/  tokenListToIdList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tokenizeString (char const*,int*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {char* zDb; char* zName; size_t nColumn; char** azColumn; char** azContentColumn; int azTokenizer; } ;
+typedef TYPE_1__ TableSpec ;
+
+
+ int CLEAR (TYPE_1__*) ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int clearTableSpec (TYPE_1__*) ;
+ char* firstToken (char*,char**) ;
+ int safe_isalnum (char) ;
+ void* sqlite3_malloc (int) ;
+ char* sqlite3_mprintf (char*,int,char*) ;
+ scalar_t__ startsWith (char*,char*) ;
+ int strcpy (char*,char const* const) ;
+ scalar_t__ strlen (char const* const) ;
+ int tokenListToIdList (int ) ;
+ int tokenizeString (char const*,int*) ;
 
 __attribute__((used)) static int parseSpec(TableSpec *pSpec, int argc, const char *const*argv,
                      char**pzErr){
   int i, n;
   char *z, *zDummy;
   char **azArg;
-  const char *zTokenizer = 0;    /* argv[] entry describing the tokenizer */
+  const char *zTokenizer = 0;
 
   assert( argc>=3 );
-  /* Current interface:
-  ** argv[0] - module name
-  ** argv[1] - database name
-  ** argv[2] - table name
-  ** argv[3..] - columns, optionally followed by tokenizer specification
-  **             and snippet delimiters specification.
-  */
-
-  /* Make a copy of the complete argv[][] array in a single allocation.
-  ** The argv[][] array is read-only and transient.  We can write to the
-  ** copy in order to modify things and the copy is persistent.
-  */
   CLEAR(pSpec);
   for(i=n=0; i<argc; i++){
     n += strlen(argv[i]) + 1;
@@ -65,9 +53,9 @@ __attribute__((used)) static int parseSpec(TableSpec *pSpec, int argc, const cha
     z += strlen(z)+1;
   }
 
-  /* Identify the column names and the tokenizer and delimiter arguments
-  ** in the argv[][] array.
-  */
+
+
+
   pSpec->zDb = azArg[1];
   pSpec->zName = azArg[2];
   pSpec->nColumn = 0;
@@ -85,20 +73,6 @@ __attribute__((used)) static int parseSpec(TableSpec *pSpec, int argc, const cha
     azArg[0] = "content";
     pSpec->nColumn = 1;
   }
-
-  /*
-  ** Construct the list of content column names.
-  **
-  ** Each content column name will be of the form cNNAAAA
-  ** where NN is the column number and AAAA is the sanitized
-  ** column name.  "sanitized" means that special characters are
-  ** converted to "_".  The cNN prefix guarantees that all column
-  ** names are unique.
-  **
-  ** The AAAA suffix is not strictly necessary.  It is included
-  ** for the convenience of people who might examine the generated
-  ** %_content table and wonder what the columns are used for.
-  */
   pSpec->azContentColumn = sqlite3_malloc( pSpec->nColumn * sizeof(char *) );
   if( pSpec->azContentColumn==0 ){
     clearTableSpec(pSpec);
@@ -112,9 +86,9 @@ __attribute__((used)) static int parseSpec(TableSpec *pSpec, int argc, const cha
     }
   }
 
-  /*
-  ** Parse the tokenizer specification string.
-  */
+
+
+
   pSpec->azTokenizer = tokenizeString(zTokenizer, &n);
   tokenListToIdList(pSpec->azTokenizer);
 

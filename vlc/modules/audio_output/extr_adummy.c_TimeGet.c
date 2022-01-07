@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ vlc_tick_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ vlc_tick_t ;
 struct aout_sys {scalar_t__ first_play_date; scalar_t__ length; } ;
 struct TYPE_4__ {struct aout_sys* sys; } ;
-typedef  TYPE_1__ audio_output_t ;
+typedef TYPE_1__ audio_output_t ;
 
-/* Variables and functions */
- scalar_t__ VLC_TICK_INVALID ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ likely (int) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_1__*,char*) ; 
- scalar_t__ unlikely (int) ; 
- scalar_t__ vlc_tick_now () ; 
+
+ scalar_t__ VLC_TICK_INVALID ;
+ int assert (int) ;
+ scalar_t__ likely (int) ;
+ int msg_Warn (TYPE_1__*,char*) ;
+ scalar_t__ unlikely (int) ;
+ scalar_t__ vlc_tick_now () ;
 
 __attribute__((used)) static int TimeGet(audio_output_t *aout, vlc_tick_t *restrict delay)
 {

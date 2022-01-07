@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int chroma_format; scalar_t__ swap_uv; int /*<<< orphan*/ ** pblocks; int /*<<< orphan*/ * block; } ;
-typedef  TYPE_1__ MpegEncContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exchange_uv (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int chroma_format; scalar_t__ swap_uv; int ** pblocks; int * block; } ;
+typedef TYPE_1__ MpegEncContext ;
+
+
+ int exchange_uv (TYPE_1__*) ;
 
 void ff_xvmc_pack_pblocks(MpegEncContext *s, int cbp)
 {
@@ -27,7 +27,7 @@ void ff_xvmc_pack_pblocks(MpegEncContext *s, int cbp)
         if (cbp & (1 << 11))
             s->pblocks[i] = &s->block[j++];
         else
-            s->pblocks[i] = NULL;
+            s->pblocks[i] = ((void*)0);
         cbp += cbp;
     }
     if (s->swap_uv) {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ulong ;
 
-/* Variables and functions */
+
+
+
+typedef int ulong ;
+
+
 
 __attribute__((used)) static inline void copy_buffer(void *from, void *to)
 {
-	ulong *p1 = (ulong *)from, *p2 = (ulong *)to;
-	int cnt;
+ ulong *p1 = (ulong *)from, *p2 = (ulong *)to;
+ int cnt;
 
-	for (cnt = 512/4; cnt; cnt--)
-		*p2++ = *p1++;
+ for (cnt = 512/4; cnt; cnt--)
+  *p2++ = *p1++;
 }

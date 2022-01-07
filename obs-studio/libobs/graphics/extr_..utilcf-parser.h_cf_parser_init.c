@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cf_parser {int /*<<< orphan*/ * cur_token; int /*<<< orphan*/  error_list; int /*<<< orphan*/  pp; int /*<<< orphan*/  lex; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cf_lexer_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cf_preprocessor_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  error_data_init (int /*<<< orphan*/ *) ; 
+
+
+
+struct cf_parser {int * cur_token; int error_list; int pp; int lex; } ;
+
+
+ int cf_lexer_init (int *) ;
+ int cf_preprocessor_init (int *) ;
+ int error_data_init (int *) ;
 
 __attribute__((used)) static inline void cf_parser_init(struct cf_parser *parser)
 {
-	cf_lexer_init(&parser->lex);
-	cf_preprocessor_init(&parser->pp);
-	error_data_init(&parser->error_list);
+ cf_lexer_init(&parser->lex);
+ cf_preprocessor_init(&parser->pp);
+ error_data_init(&parser->error_list);
 
-	parser->cur_token = NULL;
+ parser->cur_token = ((void*)0);
 }

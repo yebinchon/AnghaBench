@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_6__ {int usri4_flags; scalar_t__ usri4_acct_expires; scalar_t__ usri4_password_age; scalar_t__ usrmod0_max_passwd_age; scalar_t__ usrmod0_min_passwd_age; scalar_t__ usri4_last_logon; int /*<<< orphan*/ * grui0_name; int /*<<< orphan*/ * lgrui0_name; int /*<<< orphan*/ * usri4_logon_hours; int /*<<< orphan*/  usri4_units_per_week; int /*<<< orphan*/ * usri4_home_dir; int /*<<< orphan*/ * usri4_profile; int /*<<< orphan*/ * usri4_script_path; int /*<<< orphan*/ * usri4_workstations; int /*<<< orphan*/  usri4_country_code; int /*<<< orphan*/ * usri4_usr_comment; int /*<<< orphan*/ * usri4_comment; int /*<<< orphan*/ * usri4_full_name; int /*<<< orphan*/ * usri4_name; } ;
-typedef  TYPE_1__* PUSER_MODALS_INFO_0 ;
-typedef  TYPE_1__* PUSER_INFO_4 ;
-typedef  TYPE_1__* PLOCALGROUP_USERS_INFO_0 ;
-typedef  TYPE_1__* PGROUP_USERS_INFO_0 ;
-typedef  scalar_t__ NET_API_STATUS ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int INT ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAYSIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ConPrintf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,...) ; 
- int /*<<< orphan*/  ConPuts (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  GetCountryFromCountryCode (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ GetTimeInSeconds () ; 
- int /*<<< orphan*/  MAX_PREFERRED_LENGTH ; 
- scalar_t__ NERR_Success ; 
- int /*<<< orphan*/  NetApiBufferFree (TYPE_1__*) ; 
- scalar_t__ NetUserGetGroups (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__*,scalar_t__*) ; 
- scalar_t__ NetUserGetInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- scalar_t__ NetUserGetLocalGroups (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__*,scalar_t__*) ; 
- scalar_t__ NetUserModalsGet (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PrintDateTime (scalar_t__) ; 
- int /*<<< orphan*/  PrintLogonHours (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  PrintMessageString (int) ; 
- int /*<<< orphan*/  PrintPaddedMessageString (int,int) ; 
- int /*<<< orphan*/  PrintPadding (int,int) ; 
- int /*<<< orphan*/  StdOut ; 
- scalar_t__ TIMEQ_FOREVER ; 
- int UF_ACCOUNTDISABLE ; 
- int UF_DONT_EXPIRE_PASSWD ; 
- int UF_LOCKOUT ; 
- int UF_PASSWD_CANT_CHANGE ; 
- int UF_PASSWD_NOTREQD ; 
- scalar_t__ wcslen (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_6__ {int usri4_flags; scalar_t__ usri4_acct_expires; scalar_t__ usri4_password_age; scalar_t__ usrmod0_max_passwd_age; scalar_t__ usrmod0_min_passwd_age; scalar_t__ usri4_last_logon; int * grui0_name; int * lgrui0_name; int * usri4_logon_hours; int usri4_units_per_week; int * usri4_home_dir; int * usri4_profile; int * usri4_script_path; int * usri4_workstations; int usri4_country_code; int * usri4_usr_comment; int * usri4_comment; int * usri4_full_name; int * usri4_name; } ;
+typedef TYPE_1__* PUSER_MODALS_INFO_0 ;
+typedef TYPE_1__* PUSER_INFO_4 ;
+typedef TYPE_1__* PLOCALGROUP_USERS_INFO_0 ;
+typedef TYPE_1__* PGROUP_USERS_INFO_0 ;
+typedef scalar_t__ NET_API_STATUS ;
+typedef int LPWSTR ;
+typedef int LPBYTE ;
+typedef int INT ;
+typedef scalar_t__ DWORD ;
+
+
+ int ARRAYSIZE (int *) ;
+ int ConPrintf (int ,char*,int *,...) ;
+ int ConPuts (int ,char*) ;
+ int GetCountryFromCountryCode (int ,int ,int *) ;
+ scalar_t__ GetTimeInSeconds () ;
+ int MAX_PREFERRED_LENGTH ;
+ scalar_t__ NERR_Success ;
+ int NetApiBufferFree (TYPE_1__*) ;
+ scalar_t__ NetUserGetGroups (int *,int ,int ,int *,int ,scalar_t__*,scalar_t__*) ;
+ scalar_t__ NetUserGetInfo (int *,int ,int,int *) ;
+ scalar_t__ NetUserGetLocalGroups (int *,int ,int ,int ,int *,int ,scalar_t__*,scalar_t__*) ;
+ scalar_t__ NetUserModalsGet (int *,int ,int *) ;
+ int PrintDateTime (scalar_t__) ;
+ int PrintLogonHours (int ,int *,int) ;
+ int PrintMessageString (int) ;
+ int PrintPaddedMessageString (int,int) ;
+ int PrintPadding (int,int) ;
+ int StdOut ;
+ scalar_t__ TIMEQ_FOREVER ;
+ int UF_ACCOUNTDISABLE ;
+ int UF_DONT_EXPIRE_PASSWD ;
+ int UF_LOCKOUT ;
+ int UF_PASSWD_CANT_CHANGE ;
+ int UF_PASSWD_NOTREQD ;
+ scalar_t__ wcslen (int *) ;
 
 __attribute__((used)) static
 NET_API_STATUS
 DisplayUser(LPWSTR lpUserName)
 {
-    PUSER_MODALS_INFO_0 pUserModals = NULL;
-    PUSER_INFO_4 pUserInfo = NULL;
-    PLOCALGROUP_USERS_INFO_0 pLocalGroupInfo = NULL;
-    PGROUP_USERS_INFO_0 pGroupInfo = NULL;
+    PUSER_MODALS_INFO_0 pUserModals = ((void*)0);
+    PUSER_INFO_4 pUserInfo = ((void*)0);
+    PLOCALGROUP_USERS_INFO_0 pLocalGroupInfo = ((void*)0);
+    PGROUP_USERS_INFO_0 pGroupInfo = ((void*)0);
     DWORD dwLocalGroupRead, dwLocalGroupTotal;
     DWORD dwGroupRead, dwGroupTotal;
     DWORD dwLastSet;
@@ -66,21 +66,21 @@ DisplayUser(LPWSTR lpUserName)
     INT nPaddedLength = 36;
     NET_API_STATUS Status;
 
-    /* Modify the user */
-    Status = NetUserGetInfo(NULL,
+
+    Status = NetUserGetInfo(((void*)0),
                             lpUserName,
                             4,
                             (LPBYTE*)&pUserInfo);
     if (Status != NERR_Success)
         return Status;
 
-    Status = NetUserModalsGet(NULL,
+    Status = NetUserModalsGet(((void*)0),
                               0,
                               (LPBYTE*)&pUserModals);
     if (Status != NERR_Success)
         goto done;
 
-    Status = NetUserGetLocalGroups(NULL,
+    Status = NetUserGetLocalGroups(((void*)0),
                                    lpUserName,
                                    0,
                                    0,
@@ -91,7 +91,7 @@ DisplayUser(LPWSTR lpUserName)
     if (Status != NERR_Success)
         goto done;
 
-    Status = NetUserGetGroups(NULL,
+    Status = NetUserGetGroups(((void*)0),
                               lpUserName,
                               0,
                               (LPBYTE*)&pGroupInfo,
@@ -159,7 +159,7 @@ DisplayUser(LPWSTR lpUserName)
     ConPuts(StdOut, L"\n\n");
 
     PrintPaddedMessageString(4424, nPaddedLength);
-    if (pUserInfo->usri4_workstations == NULL || wcslen(pUserInfo->usri4_workstations) == 0)
+    if (pUserInfo->usri4_workstations == ((void*)0) || wcslen(pUserInfo->usri4_workstations) == 0)
         PrintMessageString(4302);
     else
         ConPrintf(StdOut, L"%s", pUserInfo->usri4_workstations);
@@ -182,7 +182,7 @@ DisplayUser(LPWSTR lpUserName)
     ConPuts(StdOut, L"\n\n");
 
     PrintPaddedMessageString(4432, nPaddedLength);
-    if (pUserInfo->usri4_logon_hours == NULL)
+    if (pUserInfo->usri4_logon_hours == ((void*)0))
     {
         PrintMessageString(4302);
         ConPuts(StdOut, L"\n");
@@ -196,7 +196,7 @@ DisplayUser(LPWSTR lpUserName)
 
     ConPuts(StdOut, L"\n");
     PrintPaddedMessageString(4427, nPaddedLength);
-    if (dwLocalGroupTotal != 0 && pLocalGroupInfo != NULL)
+    if (dwLocalGroupTotal != 0 && pLocalGroupInfo != ((void*)0))
     {
         for (i = 0; i < dwLocalGroupTotal; i++)
         {
@@ -211,7 +211,7 @@ DisplayUser(LPWSTR lpUserName)
     }
 
     PrintPaddedMessageString(4431, nPaddedLength);
-    if (dwGroupTotal != 0 && pGroupInfo != NULL)
+    if (dwGroupTotal != 0 && pGroupInfo != ((void*)0))
     {
         for (i = 0; i < dwGroupTotal; i++)
         {
@@ -226,16 +226,16 @@ DisplayUser(LPWSTR lpUserName)
     }
 
 done:
-    if (pGroupInfo != NULL)
+    if (pGroupInfo != ((void*)0))
         NetApiBufferFree(pGroupInfo);
 
-    if (pLocalGroupInfo != NULL)
+    if (pLocalGroupInfo != ((void*)0))
         NetApiBufferFree(pLocalGroupInfo);
 
-    if (pUserModals != NULL)
+    if (pUserModals != ((void*)0))
         NetApiBufferFree(pUserModals);
 
-    if (pUserInfo != NULL)
+    if (pUserInfo != ((void*)0))
         NetApiBufferFree(pUserInfo);
 
     return NERR_Success;

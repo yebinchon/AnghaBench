@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_29__   TYPE_9__ ;
-typedef  struct TYPE_28__   TYPE_8__ ;
-typedef  struct TYPE_27__   TYPE_7__ ;
-typedef  struct TYPE_26__   TYPE_6__ ;
-typedef  struct TYPE_25__   TYPE_5__ ;
-typedef  struct TYPE_24__   TYPE_4__ ;
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
-typedef  struct TYPE_20__   TYPE_15__ ;
-typedef  struct TYPE_19__   TYPE_13__ ;
-typedef  struct TYPE_18__   TYPE_12__ ;
-typedef  struct TYPE_17__   TYPE_11__ ;
-typedef  struct TYPE_16__   TYPE_10__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_29__ TYPE_9__ ;
+typedef struct TYPE_28__ TYPE_8__ ;
+typedef struct TYPE_27__ TYPE_7__ ;
+typedef struct TYPE_26__ TYPE_6__ ;
+typedef struct TYPE_25__ TYPE_5__ ;
+typedef struct TYPE_24__ TYPE_4__ ;
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+typedef struct TYPE_20__ TYPE_15__ ;
+typedef struct TYPE_19__ TYPE_13__ ;
+typedef struct TYPE_18__ TYPE_12__ ;
+typedef struct TYPE_17__ TYPE_11__ ;
+typedef struct TYPE_16__ TYPE_10__ ;
+
+
 struct TYPE_23__ {float w; float h; float x; float y; } ;
 struct TYPE_21__ {int w; int h; } ;
 struct TYPE_29__ {int layers_count; TYPE_8__* screens; TYPE_3__ render_bounds; TYPE_11__* layers; TYPE_1__ bounds; } ;
-typedef  TYPE_9__ view_t ;
+typedef TYPE_9__ view_t ;
 struct TYPE_16__ {int w; int h; } ;
-typedef  TYPE_10__ video_layout_bounds_t ;
+typedef TYPE_10__ video_layout_bounds_t ;
 struct TYPE_17__ {int elements_count; TYPE_12__* elements; } ;
-typedef  TYPE_11__ layer_t ;
+typedef TYPE_11__ layer_t ;
 struct TYPE_25__ {float x; float y; int w; int h; } ;
 struct TYPE_22__ {int x; int y; int w; int h; } ;
 struct TYPE_18__ {int components_count; TYPE_5__ render_bounds; TYPE_13__* components; TYPE_2__ bounds; } ;
-typedef  TYPE_12__ element_t ;
+typedef TYPE_12__ element_t ;
 struct TYPE_28__ {float x; float y; int w; int h; } ;
 struct TYPE_26__ {size_t index; } ;
 struct TYPE_27__ {TYPE_6__ screen; } ;
 struct TYPE_24__ {int x; int y; int w; int h; } ;
 struct TYPE_19__ {scalar_t__ type; TYPE_8__ render_bounds; TYPE_7__ attr; TYPE_4__ bounds; } ;
-typedef  TYPE_13__ component_t ;
+typedef TYPE_13__ component_t ;
 struct TYPE_20__ {TYPE_9__* view; } ;
 
-/* Variables and functions */
- float MIN (int,int) ; 
- scalar_t__ VIDEO_LAYOUT_C_SCREEN ; 
- TYPE_15__* video_layout_state ; 
+
+ float MIN (int,int) ;
+ scalar_t__ VIDEO_LAYOUT_C_SCREEN ;
+ TYPE_15__* video_layout_state ;
 
 void video_layout_view_fit_bounds(video_layout_bounds_t bounds)
 {

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  ecma_value_t ;
-typedef  int /*<<< orphan*/  ecma_object_t ;
-struct TYPE_5__ {int item_count; int /*<<< orphan*/ * buffer_p; } ;
-typedef  TYPE_1__ ecma_collection_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ECMA_IS_VALUE_ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JERRY_ASSERT (int) ; 
- int /*<<< orphan*/  ecma_collection_destroy (TYPE_1__*) ; 
- int /*<<< orphan*/  ecma_collection_free_objects (TYPE_1__*) ; 
- int /*<<< orphan*/ * ecma_fast_array_extend (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * ecma_get_object_from_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ecma_op_create_array_object (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- TYPE_1__* ecma_op_object_get_property_names (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int ecma_op_object_is_fast_array (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int ecma_value_t ;
+typedef int ecma_object_t ;
+struct TYPE_5__ {int item_count; int * buffer_p; } ;
+typedef TYPE_1__ ecma_collection_t ;
+
+
+ int ECMA_IS_VALUE_ERROR (int ) ;
+ int JERRY_ASSERT (int) ;
+ int ecma_collection_destroy (TYPE_1__*) ;
+ int ecma_collection_free_objects (TYPE_1__*) ;
+ int * ecma_fast_array_extend (int *,int) ;
+ int * ecma_get_object_from_value (int ) ;
+ int ecma_op_create_array_object (int *,int ,int) ;
+ TYPE_1__* ecma_op_object_get_property_names (int *,int ) ;
+ int ecma_op_object_is_fast_array (int *) ;
+ int memcpy (int *,int *,int) ;
 
 ecma_value_t
-ecma_builtin_helper_object_get_properties (ecma_object_t *obj_p, /**< object */
-                                           uint32_t opts) /**< any combination of ecma_list_properties_options_t */
+ecma_builtin_helper_object_get_properties (ecma_object_t *obj_p,
+                                           uint32_t opts)
 {
-  JERRY_ASSERT (obj_p != NULL);
+  JERRY_ASSERT (obj_p != ((void*)0));
 
-  ecma_value_t new_array = ecma_op_create_array_object (NULL, 0, false);
+  ecma_value_t new_array = ecma_op_create_array_object (((void*)0), 0, 0);
   JERRY_ASSERT (!ECMA_IS_VALUE_ERROR (new_array));
   ecma_object_t *new_array_p = ecma_get_object_from_value (new_array);
 

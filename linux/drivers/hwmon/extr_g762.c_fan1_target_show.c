@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct g762_data {int /*<<< orphan*/  update_lock; int /*<<< orphan*/  fan_cmd2; int /*<<< orphan*/  fan_cmd1; int /*<<< orphan*/  clk_freq; int /*<<< orphan*/  set_cnt; } ;
+
+
+
+
+struct g762_data {int update_lock; int fan_cmd2; int fan_cmd1; int clk_freq; int set_cnt; } ;
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  G762_CLKDIV_FROM_REG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  G762_GEARMULT_FROM_REG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  G762_PULSE_FROM_REG (int /*<<< orphan*/ ) ; 
- scalar_t__ IS_ERR (struct g762_data*) ; 
- int /*<<< orphan*/  PTR_ERR (struct g762_data*) ; 
- struct g762_data* g762_update_client (struct device*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- unsigned int rpm_from_cnt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,unsigned int) ; 
+
+ int G762_CLKDIV_FROM_REG (int ) ;
+ int G762_GEARMULT_FROM_REG (int ) ;
+ int G762_PULSE_FROM_REG (int ) ;
+ scalar_t__ IS_ERR (struct g762_data*) ;
+ int PTR_ERR (struct g762_data*) ;
+ struct g762_data* g762_update_client (struct device*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ unsigned int rpm_from_cnt (int ,int ,int ,int ,int ) ;
+ int sprintf (char*,char*,unsigned int) ;
 
 __attribute__((used)) static ssize_t fan1_target_show(struct device *dev,
-				struct device_attribute *da, char *buf)
+    struct device_attribute *da, char *buf)
 {
-	struct g762_data *data = g762_update_client(dev);
-	unsigned int rpm;
+ struct g762_data *data = g762_update_client(dev);
+ unsigned int rpm;
 
-	if (IS_ERR(data))
-		return PTR_ERR(data);
+ if (IS_ERR(data))
+  return PTR_ERR(data);
 
-	mutex_lock(&data->update_lock);
-	rpm = rpm_from_cnt(data->set_cnt, data->clk_freq,
-			   G762_PULSE_FROM_REG(data->fan_cmd1),
-			   G762_CLKDIV_FROM_REG(data->fan_cmd1),
-			   G762_GEARMULT_FROM_REG(data->fan_cmd2));
-	mutex_unlock(&data->update_lock);
+ mutex_lock(&data->update_lock);
+ rpm = rpm_from_cnt(data->set_cnt, data->clk_freq,
+      G762_PULSE_FROM_REG(data->fan_cmd1),
+      G762_CLKDIV_FROM_REG(data->fan_cmd1),
+      G762_GEARMULT_FROM_REG(data->fan_cmd2));
+ mutex_unlock(&data->update_lock);
 
-	return sprintf(buf, "%u\n", rpm);
+ return sprintf(buf, "%u\n", rpm);
 }

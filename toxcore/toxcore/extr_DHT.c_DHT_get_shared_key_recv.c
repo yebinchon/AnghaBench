@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_3__ {int /*<<< orphan*/  self_secret_key; int /*<<< orphan*/  shared_keys_recv; } ;
-typedef  TYPE_1__ DHT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  get_shared_key (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_3__ {int self_secret_key; int shared_keys_recv; } ;
+typedef TYPE_1__ DHT ;
+
+
+ int get_shared_key (int *,int *,int ,int const*) ;
 
 void DHT_get_shared_key_recv(DHT *dht, uint8_t *shared_key, const uint8_t *public_key)
 {

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tree {int dummy; } ;
 struct parse {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXPECT (char*) ; 
- scalar_t__ LEX_CHAR (char) ; 
- int /*<<< orphan*/  PARSE_INIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PARSE_OK ; 
- int /*<<< orphan*/  PARSE_TRY (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PARSE_TRY_PES (int /*<<< orphan*/ ) ; 
- scalar_t__ S ; 
- int /*<<< orphan*/  T ; 
- int /*<<< orphan*/  load_parse (struct parse) ; 
- int /*<<< orphan*/  parse_args ; 
- int /*<<< orphan*/  parse_multiplicity ; 
- int /*<<< orphan*/  parse_optional_arg_def ; 
- int /*<<< orphan*/  parse_var_ident_opt ; 
- struct parse save ; 
- struct parse save_parse () ; 
- int /*<<< orphan*/  tree_add_child (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  type_args2 ; 
+
+ int EXPECT (char*) ;
+ scalar_t__ LEX_CHAR (char) ;
+ int PARSE_INIT (int ) ;
+ int PARSE_OK ;
+ int PARSE_TRY (int ) ;
+ int PARSE_TRY_PES (int ) ;
+ scalar_t__ S ;
+ int T ;
+ int load_parse (struct parse) ;
+ int parse_args ;
+ int parse_multiplicity ;
+ int parse_optional_arg_def ;
+ int parse_var_ident_opt ;
+ struct parse save ;
+ struct parse save_parse () ;
+ int tree_add_child (int ,scalar_t__) ;
+ int type_args2 ;
 
 struct tree *parse_args2 (void) {
   PARSE_INIT (type_args2);
@@ -46,7 +46,7 @@ struct tree *parse_args2 (void) {
   if (S) {
     tree_add_child (T, S);
   } else {
-    load_parse (so);    
+    load_parse (so);
   }
   struct parse save2 = save_parse ();
   PARSE_TRY (parse_multiplicity);

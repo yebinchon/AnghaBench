@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct nft_object {int /*<<< orphan*/  key; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  nft_objname_hash (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u32 ;
+struct nft_object {int key; } ;
+
+
+ int nft_objname_hash (int *,int ,int ) ;
 
 __attribute__((used)) static u32 nft_objname_hash_obj(const void *data, u32 len, u32 seed)
 {
-	const struct nft_object *obj = data;
+ const struct nft_object *obj = data;
 
-	return nft_objname_hash(&obj->key, 0, seed);
+ return nft_objname_hash(&obj->key, 0, seed);
 }

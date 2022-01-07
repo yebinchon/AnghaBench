@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  click_events; } ;
 
-/* Variables and functions */
- int XCB_MOD_MASK_1 ; 
- int XCB_MOD_MASK_2 ; 
- int XCB_MOD_MASK_3 ; 
- int XCB_MOD_MASK_4 ; 
- int XCB_MOD_MASK_5 ; 
- int XCB_MOD_MASK_CONTROL ; 
- int XCB_MOD_MASK_SHIFT ; 
- TYPE_1__ child ; 
- int /*<<< orphan*/  child_click_events_initialize () ; 
- int /*<<< orphan*/  child_write_output () ; 
- int /*<<< orphan*/  gen ; 
- int /*<<< orphan*/  yajl_gen_array_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  yajl_gen_array_open (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  yajl_gen_integer (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  yajl_gen_map_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  yajl_gen_map_open (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ystr (char const*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int click_events; } ;
+
+
+ int XCB_MOD_MASK_1 ;
+ int XCB_MOD_MASK_2 ;
+ int XCB_MOD_MASK_3 ;
+ int XCB_MOD_MASK_4 ;
+ int XCB_MOD_MASK_5 ;
+ int XCB_MOD_MASK_CONTROL ;
+ int XCB_MOD_MASK_SHIFT ;
+ TYPE_1__ child ;
+ int child_click_events_initialize () ;
+ int child_write_output () ;
+ int gen ;
+ int yajl_gen_array_close (int ) ;
+ int yajl_gen_array_open (int ) ;
+ int yajl_gen_integer (int ,int) ;
+ int yajl_gen_map_close (int ) ;
+ int yajl_gen_map_open (int ) ;
+ int ystr (char const*) ;
 
 void send_block_clicked(int button, const char *name, const char *instance, int x, int y, int x_rel, int y_rel, int width, int height, int mods) {
     if (!child.click_events) {

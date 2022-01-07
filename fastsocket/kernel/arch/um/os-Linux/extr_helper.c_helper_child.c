@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct helper_data {char** argv; int /*<<< orphan*/  fd; int /*<<< orphan*/  buf; int /*<<< orphan*/  pre_data; int /*<<< orphan*/  (* pre_exec ) (int /*<<< orphan*/ ) ;} ;
-typedef  int /*<<< orphan*/  err ;
 
-/* Variables and functions */
- int execvp_noalloc (int /*<<< orphan*/ ,char*,char**) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write (int /*<<< orphan*/ ,int*,int) ; 
+
+
+
+struct helper_data {char** argv; int fd; int buf; int pre_data; int (* pre_exec ) (int ) ;} ;
+typedef int err ;
+
+
+ int execvp_noalloc (int ,char*,char**) ;
+ int stub1 (int ) ;
+ int write (int ,int*,int) ;
 
 __attribute__((used)) static int helper_child(void *arg)
 {
-	struct helper_data *data = arg;
-	char **argv = data->argv;
-	int err;
+ struct helper_data *data = arg;
+ char **argv = data->argv;
+ int err;
 
-	if (data->pre_exec != NULL)
-		(*data->pre_exec)(data->pre_data);
-	err = execvp_noalloc(data->buf, argv[0], argv);
+ if (data->pre_exec != ((void*)0))
+  (*data->pre_exec)(data->pre_data);
+ err = execvp_noalloc(data->buf, argv[0], argv);
 
-	/* If the exec succeeds, we don't get here */
-	write(data->fd, &err, sizeof(err));
 
-	return 0;
+ write(data->fd, &err, sizeof(err));
+
+ return 0;
 }

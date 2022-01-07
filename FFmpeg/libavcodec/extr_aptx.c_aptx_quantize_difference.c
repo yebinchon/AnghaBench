@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
-typedef  int int32_t ;
-struct TYPE_6__ {int* quantize_intervals; int* quantize_dither_factors; int /*<<< orphan*/  tables_size; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+typedef int int32_t ;
+struct TYPE_6__ {int* quantize_intervals; int* quantize_dither_factors; int tables_size; } ;
 struct TYPE_5__ {int quantized_sample; int quantized_sample_parity_change; void* error; } ;
-typedef  TYPE_1__ Quantize ;
-typedef  TYPE_2__ ConstTables ;
+typedef TYPE_1__ Quantize ;
+typedef TYPE_2__ ConstTables ;
 
-/* Variables and functions */
- void* FFABS (int) ; 
- int FFMIN (int,int) ; 
- int MUL64 (int,int) ; 
- int /*<<< orphan*/  MULH (int,int) ; 
- int aptx_bin_search (int,int,int const*,int /*<<< orphan*/ ) ; 
- scalar_t__ av_clip_intp2 (int,int) ; 
- int rshift32_clip24 (int /*<<< orphan*/ ,int) ; 
- int rshift64 (int,int) ; 
- int rshift64_clip24 (int,int) ; 
+
+ void* FFABS (int) ;
+ int FFMIN (int,int) ;
+ int MUL64 (int,int) ;
+ int MULH (int,int) ;
+ int aptx_bin_search (int,int,int const*,int ) ;
+ scalar_t__ av_clip_intp2 (int,int) ;
+ int rshift32_clip24 (int ,int) ;
+ int rshift64 (int,int) ;
+ int rshift64_clip24 (int,int) ;
 
 __attribute__((used)) static void aptx_quantize_difference(Quantize *quantize,
                                      int32_t sample_difference,
@@ -66,6 +66,6 @@ __attribute__((used)) static void aptx_quantize_difference(Quantize *quantize,
         parity_change--;
 
     inv = -(sample_difference < 0);
-    quantize->quantized_sample               = quantized_sample ^ inv;
-    quantize->quantized_sample_parity_change = parity_change    ^ inv;
+    quantize->quantized_sample = quantized_sample ^ inv;
+    quantize->quantized_sample_parity_change = parity_change ^ inv;
 }

@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assem_debug (char*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ out ; 
- int /*<<< orphan*/  output_byte (int) ; 
- int /*<<< orphan*/  output_modrm (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  output_rex (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  output_w32 (int) ; 
- int /*<<< orphan*/ ** regname ; 
+ int assem_debug (char*,int ,int) ;
+ scalar_t__ out ;
+ int output_byte (int) ;
+ int output_modrm (int ,int,int) ;
+ int output_rex (int ,int,int ,int ) ;
+ int output_w32 (int) ;
+ int ** regname ;
 
 void emit_writebyte(int rt, int addr)
 {
@@ -26,5 +18,5 @@ void emit_writebyte(int rt, int addr)
   if(rt>=4) output_rex(0,rt>>3,0,0);
   output_byte(0x88);
   output_modrm(0,5,rt);
-  output_w32(addr-(int)out-4); // Note: rip-relative in 64-bit mode
+  output_w32(addr-(int)out-4);
 }

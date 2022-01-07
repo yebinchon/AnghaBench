@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct timespec {int dummy; } ;
-struct ao_push_state {int final_chunk; int /*<<< orphan*/  lock; int /*<<< orphan*/  wakeup; int /*<<< orphan*/  buffer; scalar_t__ still_playing; scalar_t__ paused; } ;
+struct ao_push_state {int final_chunk; int lock; int wakeup; int buffer; scalar_t__ still_playing; scalar_t__ paused; } ;
 struct ao {double buffer; TYPE_1__* driver; scalar_t__ samplerate; struct ao_push_state* api_priv; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* drain ) (struct ao*) ;} ;
+struct TYPE_2__ {int (* drain ) (struct ao*) ;} ;
 
-/* Variables and functions */
- int MPMIN (double,double) ; 
- int /*<<< orphan*/  MP_VERBOSE (struct ao*,char*) ; 
- int /*<<< orphan*/  MP_WARN (struct ao*,char*) ; 
- scalar_t__ mp_audio_buffer_samples (int /*<<< orphan*/ ) ; 
- struct timespec mp_rel_time_to_timespec (double) ; 
- int /*<<< orphan*/  mp_sleep_us (int) ; 
- scalar_t__ pthread_cond_timedwait (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timespec*) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  reset (struct ao*) ; 
- int /*<<< orphan*/  stub1 (struct ao*) ; 
- double unlocked_get_delay (struct ao*) ; 
- int /*<<< orphan*/  wakeup_playthread (struct ao*) ; 
+
+ int MPMIN (double,double) ;
+ int MP_VERBOSE (struct ao*,char*) ;
+ int MP_WARN (struct ao*,char*) ;
+ scalar_t__ mp_audio_buffer_samples (int ) ;
+ struct timespec mp_rel_time_to_timespec (double) ;
+ int mp_sleep_us (int) ;
+ scalar_t__ pthread_cond_timedwait (int *,int *,struct timespec*) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int reset (struct ao*) ;
+ int stub1 (struct ao*) ;
+ double unlocked_get_delay (struct ao*) ;
+ int wakeup_playthread (struct ao*) ;
 
 __attribute__((used)) static void drain(struct ao *ao)
 {
@@ -42,12 +42,12 @@ __attribute__((used)) static void drain(struct ao *ao)
     if (p->paused)
         goto done;
 
-    p->final_chunk = true;
+    p->final_chunk = 1;
     wakeup_playthread(ao);
 
-    // Wait until everything is done. Since the audio API (especially ALSA)
-    // can't be trusted to do this right, and we're hard-blocking here, apply
-    // an upper bound timeout.
+
+
+
     struct timespec until = mp_rel_time_to_timespec(maxbuffer);
     while (p->still_playing && mp_audio_buffer_samples(p->buffer) > 0) {
         if (pthread_cond_timedwait(&p->wakeup, &p->lock, &until)) {

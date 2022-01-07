@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UV__NANOSEC ; 
- int /*<<< orphan*/  uv__hrtime (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv__once_init () ; 
+
+
+
+typedef int uint64_t ;
+
+
+ int UV__NANOSEC ;
+ int uv__hrtime (int ) ;
+ int uv__once_init () ;
 
 uint64_t uv_hrtime(void) {
   uv__once_init();

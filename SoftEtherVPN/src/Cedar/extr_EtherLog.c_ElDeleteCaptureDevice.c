@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  t ;
-struct TYPE_10__ {int /*<<< orphan*/  DeviceList; } ;
-struct TYPE_9__ {int Halt; int /*<<< orphan*/  Thread; int /*<<< orphan*/  Cancel1; int /*<<< orphan*/  DeviceName; } ;
-typedef  TYPE_1__ EL_DEVICE ;
-typedef  TYPE_2__ EL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Cancel (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Delete (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  Free (TYPE_1__*) ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseThread (int /*<<< orphan*/ ) ; 
- TYPE_1__* Search (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  StrCpy (int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WaitThread (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Zero (TYPE_1__*,int) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int t ;
+struct TYPE_10__ {int DeviceList; } ;
+struct TYPE_9__ {int Halt; int Thread; int Cancel1; int DeviceName; } ;
+typedef TYPE_1__ EL_DEVICE ;
+typedef TYPE_2__ EL ;
+
+
+ int Cancel (int ) ;
+ int Delete (int ,TYPE_1__*) ;
+ int Free (TYPE_1__*) ;
+ int INFINITE ;
+ int LockList (int ) ;
+ int ReleaseThread (int ) ;
+ TYPE_1__* Search (int ,TYPE_1__*) ;
+ int StrCpy (int ,int,char*) ;
+ int UnlockList (int ) ;
+ int WaitThread (int ,int ) ;
+ int Zero (TYPE_1__*,int) ;
 
 bool ElDeleteCaptureDevice(EL *e, char *name)
 {
-	bool ret = false;
-	EL_DEVICE *d, t;
-	// Validate arguments
-	if (e == NULL || name == NULL)
-	{
-		return false;
-	}
+ bool ret = 0;
+ EL_DEVICE *d, t;
 
-	LockList(e->DeviceList);
-	{
-		Zero(&t, sizeof(t));
-		StrCpy(t.DeviceName, sizeof(t.DeviceName), name);
+ if (e == ((void*)0) || name == ((void*)0))
+ {
+  return 0;
+ }
 
-		d = Search(e->DeviceList, &t);
+ LockList(e->DeviceList);
+ {
+  Zero(&t, sizeof(t));
+  StrCpy(t.DeviceName, sizeof(t.DeviceName), name);
 
-		if (d != NULL)
-		{
-			// Stop capture
-			d->Halt = true;
-			Cancel(d->Cancel1);
+  d = Search(e->DeviceList, &t);
 
-			// Wait for thread stop
-			WaitThread(d->Thread, INFINITE);
-			ReleaseThread(d->Thread);
+  if (d != ((void*)0))
+  {
 
-			// Release the memory
-			Delete(e->DeviceList, d);
-			Free(d);
+   d->Halt = 1;
+   Cancel(d->Cancel1);
 
-			ret = true;
-		}
-	}
-	UnlockList(e->DeviceList);
 
-	return ret;
+   WaitThread(d->Thread, INFINITE);
+   ReleaseThread(d->Thread);
+
+
+   Delete(e->DeviceList, d);
+   Free(d);
+
+   ret = 1;
+  }
+ }
+ UnlockList(e->DeviceList);
+
+ return ret;
 }

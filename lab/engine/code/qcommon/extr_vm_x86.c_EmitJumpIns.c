@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__* instructionPointers; } ;
-typedef  TYPE_1__ vm_t ;
+typedef TYPE_1__ vm_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Emit4 (scalar_t__) ; 
- int /*<<< orphan*/  EmitString (char const*) ; 
- int /*<<< orphan*/  JUSED (int) ; 
- scalar_t__ compiledOfs ; 
- int pass ; 
+
+ int Emit4 (scalar_t__) ;
+ int EmitString (char const*) ;
+ int JUSED (int) ;
+ scalar_t__ compiledOfs ;
+ int pass ;
 
 void EmitJumpIns(vm_t *vm, const char *jmpop, int cdest)
 {
-	JUSED(cdest);
+ JUSED(cdest);
 
-	EmitString(jmpop);	// j??? 0x12345678
+ EmitString(jmpop);
 
-	// we only know all the jump addresses in the third pass
-	if(pass == 2)
-		Emit4(vm->instructionPointers[cdest] - compiledOfs - 4);
-	else
-		compiledOfs += 4;
+
+ if(pass == 2)
+  Emit4(vm->instructionPointers[cdest] - compiledOfs - 4);
+ else
+  compiledOfs += 4;
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pam_handle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_WARNING ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  pam_syslog (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,...) ; 
- int parse_boolean (char const*) ; 
- scalar_t__ startswith (char const*,char*) ; 
- scalar_t__ streq (char const*,char*) ; 
+
+
+
+typedef int pam_handle_t ;
+
+
+ int LOG_WARNING ;
+ int assert (int) ;
+ int pam_syslog (int *,int ,char*,...) ;
+ int parse_boolean (char const*) ;
+ scalar_t__ startswith (char const*,char*) ;
+ scalar_t__ streq (char const*,char*) ;
 
 __attribute__((used)) static int parse_argv(
                 pam_handle_t *handle,
@@ -48,7 +48,7 @@ __attribute__((used)) static int parse_argv(
 
                 } else if (streq(argv[i], "debug")) {
                         if (debug)
-                                *debug = true;
+                                *debug = 1;
 
                 } else if (startswith(argv[i], "debug=")) {
                         int k;

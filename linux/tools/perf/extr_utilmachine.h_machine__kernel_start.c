@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
-struct machine {int /*<<< orphan*/  kernel_start; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  machine__get_kernel_start (struct machine*) ; 
+
+
+
+typedef int u64 ;
+struct machine {int kernel_start; } ;
+
+
+ int machine__get_kernel_start (struct machine*) ;
 
 __attribute__((used)) static inline u64 machine__kernel_start(struct machine *machine)
 {
-	if (!machine->kernel_start)
-		machine__get_kernel_start(machine);
-	return machine->kernel_start;
+ if (!machine->kernel_start)
+  machine__get_kernel_start(machine);
+ return machine->kernel_start;
 }

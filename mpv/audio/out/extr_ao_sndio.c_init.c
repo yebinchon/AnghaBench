@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_4__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int bits; int sig; scalar_t__ le; int bps; int rate; int appbufsz; int round; scalar_t__ msb; int /*<<< orphan*/  pchan; } ;
-struct priv {int /*<<< orphan*/ * hdl; TYPE_1__ par; int /*<<< orphan*/  pfd; int /*<<< orphan*/  havevol; } ;
+
+
+typedef struct TYPE_6__ TYPE_4__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int bits; int sig; scalar_t__ le; int bps; int rate; int appbufsz; int round; scalar_t__ msb; int pchan; } ;
+struct priv {int * hdl; TYPE_1__ par; int pfd; int havevol; } ;
 struct pollfd {int dummy; } ;
-struct mp_chmap_sel {int /*<<< orphan*/  member_0; } ;
-struct TYPE_6__ {int /*<<< orphan*/  num; } ;
+struct mp_chmap_sel {int member_0; } ;
+struct TYPE_6__ {int num; } ;
 struct ao {scalar_t__ format; int samplerate; int period_size; TYPE_4__ channels; struct priv* priv; } ;
-typedef  int /*<<< orphan*/  af_to_par ;
+typedef int af_to_par ;
 
-/* Variables and functions */
-#define  AF_FORMAT_S16 130 
-#define  AF_FORMAT_S32 129 
-#define  AF_FORMAT_U8 128 
- int /*<<< orphan*/  MP_ERR (struct ao*,char*,...) ; 
- int MP_NUM_CHANNELS ; 
- int /*<<< orphan*/  MP_VERBOSE (struct ao*,char*) ; 
- int SIO_BPS (int) ; 
- int /*<<< orphan*/  SIO_DEVANY ; 
- scalar_t__ SIO_LE_NATIVE ; 
- int /*<<< orphan*/  SIO_PLAY ; 
- scalar_t__ af_fmt_from_planar (scalar_t__) ; 
- int /*<<< orphan*/  ao_chmap_sel_adjust (struct ao*,struct mp_chmap_sel*,TYPE_4__*) ; 
- int /*<<< orphan*/  calloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  movecb ; 
- int /*<<< orphan*/  mp_chmap_sel_add_map (struct mp_chmap_sel*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sio_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sio_getpar (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  sio_initpar (TYPE_1__*) ; 
- int /*<<< orphan*/  sio_nfds (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sio_onmove (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct priv*) ; 
- int /*<<< orphan*/  sio_onvol (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct priv*) ; 
- int /*<<< orphan*/ * sio_open (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sio_setpar (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  sio_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sndio_layouts ; 
- int /*<<< orphan*/  volcb ; 
+
+
+
+
+ int MP_ERR (struct ao*,char*,...) ;
+ int MP_NUM_CHANNELS ;
+ int MP_VERBOSE (struct ao*,char*) ;
+ int SIO_BPS (int) ;
+ int SIO_DEVANY ;
+ scalar_t__ SIO_LE_NATIVE ;
+ int SIO_PLAY ;
+ scalar_t__ af_fmt_from_planar (scalar_t__) ;
+ int ao_chmap_sel_adjust (struct ao*,struct mp_chmap_sel*,TYPE_4__*) ;
+ int calloc (int ,int) ;
+ int movecb ;
+ int mp_chmap_sel_add_map (struct mp_chmap_sel*,int *) ;
+ int sio_close (int *) ;
+ int sio_getpar (int *,TYPE_1__*) ;
+ int sio_initpar (TYPE_1__*) ;
+ int sio_nfds (int *) ;
+ int sio_onmove (int *,int ,struct priv*) ;
+ int sio_onvol (int *,int ,struct priv*) ;
+ int * sio_open (int ,int ,int ) ;
+ int sio_setpar (int *,TYPE_1__*) ;
+ int sio_start (int *) ;
+ int * sndio_layouts ;
+ int volcb ;
 
 __attribute__((used)) static int init(struct ao *ao)
 {
@@ -56,15 +56,15 @@ __attribute__((used)) static int init(struct ao *ao)
         int format, bits, sig;
     };
     static const struct af_to_par af_to_par[] = {
-        {AF_FORMAT_U8,   8, 0},
-        {AF_FORMAT_S16, 16, 1},
-        {AF_FORMAT_S32, 32, 1},
+        {128, 8, 0},
+        {130, 16, 1},
+        {129, 32, 1},
     };
     const struct af_to_par *ap;
     int i;
 
     p->hdl = sio_open(SIO_DEVANY, SIO_PLAY, 0);
-    if (p->hdl == NULL) {
+    if (p->hdl == ((void*)0)) {
         MP_ERR(ao, "can't open sndio %s\n", SIO_DEVANY);
         goto error;
     }
@@ -100,8 +100,8 @@ __attribute__((used)) static int init(struct ao *ao)
         goto error;
 
     p->par.pchan = ao->channels.num;
-    p->par.appbufsz = p->par.rate * 250 / 1000;    /* 250ms buffer */
-    p->par.round = p->par.rate * 10 / 1000;    /*  10ms block size */
+    p->par.appbufsz = p->par.rate * 250 / 1000;
+    p->par.round = p->par.rate * 10 / 1000;
     if (!sio_setpar(p->hdl, &p->par)) {
         MP_ERR(ao, "couldn't set params\n");
         goto error;
@@ -115,11 +115,11 @@ __attribute__((used)) static int init(struct ao *ao)
         goto error;
     }
     if (p->par.bits == 8 && p->par.bps == 1 && !p->par.sig) {
-        ao->format = AF_FORMAT_U8;
+        ao->format = 128;
     } else if (p->par.bits == 16 && p->par.bps == 2 && p->par.sig) {
-        ao->format = AF_FORMAT_S16;
+        ao->format = 130;
     } else if ((p->par.bits == 32 || p->par.msb) && p->par.bps == 4 && p->par.sig) {
-        ao->format = AF_FORMAT_S32;
+        ao->format = 129;
     } else {
         MP_ERR(ao, "couldn't set format\n");
         goto error;

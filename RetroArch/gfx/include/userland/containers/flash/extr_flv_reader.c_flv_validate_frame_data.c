@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int int32_t ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int int32_t ;
 struct TYPE_9__ {TYPE_2__** tracks; scalar_t__ tracks_num; } ;
-typedef  TYPE_3__ VC_CONTAINER_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
+typedef TYPE_3__ VC_CONTAINER_T ;
+typedef int VC_CONTAINER_STATUS_T ;
 struct TYPE_8__ {TYPE_1__* format; } ;
 struct TYPE_7__ {int codec; } ;
 
-/* Variables and functions */
-#define  VC_CONTAINER_CODEC_H264 130 
-#define  VC_CONTAINER_CODEC_MP4A 129 
-#define  VC_CONTAINER_CODEC_VP6 128 
- int /*<<< orphan*/  VC_CONTAINER_ERROR_CONTINUE ; 
- int /*<<< orphan*/  VC_CONTAINER_ERROR_CORRUPTED ; 
- int /*<<< orphan*/  VC_CONTAINER_SUCCESS ; 
- int _READ_U24 (TYPE_3__*) ; 
- int _READ_U8 (TYPE_3__*) ; 
+
+
+
+
+ int VC_CONTAINER_ERROR_CONTINUE ;
+ int VC_CONTAINER_ERROR_CORRUPTED ;
+ int VC_CONTAINER_SUCCESS ;
+ int _READ_U24 (TYPE_3__*) ;
+ int _READ_U8 (TYPE_3__*) ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T flv_validate_frame_data(VC_CONTAINER_T *p_ctx,
    int track, int *p_size, uint32_t *p_timestamp)
@@ -41,21 +41,21 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T flv_validate_frame_data(VC_CO
 
    switch(p_ctx->tracks[track]->format->codec)
    {
-   case VC_CONTAINER_CODEC_VP6:
+   case 128:
       if(*p_size < 1) return VC_CONTAINER_ERROR_CORRUPTED;
       _READ_U8(p_ctx); *p_size -= 1;
       break;
-   case VC_CONTAINER_CODEC_MP4A:
+   case 129:
       if(*p_size < 1) return VC_CONTAINER_ERROR_CORRUPTED;
       *p_size -= 1;
-      if(_READ_U8(p_ctx)!=1) return VC_CONTAINER_ERROR_CONTINUE; /* empty frame*/
+      if(_READ_U8(p_ctx)!=1) return VC_CONTAINER_ERROR_CONTINUE;
       break;
-   case VC_CONTAINER_CODEC_H264:
+   case 130:
       if(*p_size < 4) return VC_CONTAINER_ERROR_CORRUPTED;
       *p_size -= 1;
-      if(_READ_U8(p_ctx)!=1) return VC_CONTAINER_ERROR_CONTINUE; /* empty frame*/
+      if(_READ_U8(p_ctx)!=1) return VC_CONTAINER_ERROR_CONTINUE;
       time_offset = _READ_U24(p_ctx);
-      time_offset <<= 8; time_offset >>= 8; /* change to signed */
+      time_offset <<= 8; time_offset >>= 8;
       *p_timestamp += time_offset;
       *p_size -= 3;
       break;

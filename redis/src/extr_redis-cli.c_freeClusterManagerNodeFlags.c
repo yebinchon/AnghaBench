@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sds ;
-struct TYPE_3__ {int /*<<< orphan*/  value; } ;
-typedef  TYPE_1__ listNode ;
-typedef  int /*<<< orphan*/  listIter ;
-typedef  int /*<<< orphan*/  list ;
 
-/* Variables and functions */
- TYPE_1__* listNext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  listRelease (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  listRewind (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sdsfree (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int sds ;
+struct TYPE_3__ {int value; } ;
+typedef TYPE_1__ listNode ;
+typedef int listIter ;
+typedef int list ;
+
+
+ TYPE_1__* listNext (int *) ;
+ int listRelease (int *) ;
+ int listRewind (int *,int *) ;
+ int sdsfree (int ) ;
 
 __attribute__((used)) static void freeClusterManagerNodeFlags(list *flags) {
     listIter li;
     listNode *ln;
     listRewind(flags, &li);
-    while ((ln = listNext(&li)) != NULL) {
+    while ((ln = listNext(&li)) != ((void*)0)) {
         sds flag = ln->value;
         sdsfree(flag);
     }

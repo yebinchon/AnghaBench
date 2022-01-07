@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ timer_t ;
-struct TYPE_3__ {int /*<<< orphan*/  log; } ;
-typedef  TYPE_1__ ngx_cycle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_LOG_ALERT ; 
- int close (int) ; 
- int ep ; 
- int /*<<< orphan*/ * event_list ; 
- scalar_t__ event_timer ; 
- scalar_t__ nevents ; 
- int /*<<< orphan*/  ngx_errno ; 
- int /*<<< orphan*/  ngx_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int timer_delete (scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ timer_t ;
+struct TYPE_3__ {int log; } ;
+typedef TYPE_1__ ngx_cycle_t ;
+
+
+ int NGX_LOG_ALERT ;
+ int close (int) ;
+ int ep ;
+ int * event_list ;
+ scalar_t__ event_timer ;
+ scalar_t__ nevents ;
+ int ngx_errno ;
+ int ngx_free (int *) ;
+ int ngx_log_error (int ,int ,int ,char*) ;
+ int timer_delete (scalar_t__) ;
 
 __attribute__((used)) static void
 ngx_eventport_done(ngx_cycle_t *cycle)
@@ -48,6 +48,6 @@ ngx_eventport_done(ngx_cycle_t *cycle)
 
     ngx_free(event_list);
 
-    event_list = NULL;
+    event_list = ((void*)0);
     nevents = 0;
 }

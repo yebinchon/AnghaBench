@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nfsd4_access {int ac_req_access; int ac_resp_access; int /*<<< orphan*/  ac_supported; } ;
+
+
+
+
+struct nfsd4_access {int ac_req_access; int ac_resp_access; int ac_supported; } ;
 union nfsd4_op_u {struct nfsd4_access access; } ;
 struct svc_rqst {int dummy; } ;
-struct nfsd4_compound_state {int /*<<< orphan*/  current_fh; } ;
-typedef  int /*<<< orphan*/  __be32 ;
+struct nfsd4_compound_state {int current_fh; } ;
+typedef int __be32 ;
 
-/* Variables and functions */
- int NFS3_ACCESS_FULL ; 
- int /*<<< orphan*/  nfsd_access (struct svc_rqst*,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nfserr_inval ; 
+
+ int NFS3_ACCESS_FULL ;
+ int nfsd_access (struct svc_rqst*,int *,int*,int *) ;
+ int nfserr_inval ;
 
 __attribute__((used)) static __be32
 nfsd4_access(struct svc_rqst *rqstp, struct nfsd4_compound_state *cstate,
-	     union nfsd4_op_u *u)
+      union nfsd4_op_u *u)
 {
-	struct nfsd4_access *access = &u->access;
+ struct nfsd4_access *access = &u->access;
 
-	if (access->ac_req_access & ~NFS3_ACCESS_FULL)
-		return nfserr_inval;
+ if (access->ac_req_access & ~NFS3_ACCESS_FULL)
+  return nfserr_inval;
 
-	access->ac_resp_access = access->ac_req_access;
-	return nfsd_access(rqstp, &cstate->current_fh, &access->ac_resp_access,
-			   &access->ac_supported);
+ access->ac_resp_access = access->ac_req_access;
+ return nfsd_access(rqstp, &cstate->current_fh, &access->ac_resp_access,
+      &access->ac_supported);
 }

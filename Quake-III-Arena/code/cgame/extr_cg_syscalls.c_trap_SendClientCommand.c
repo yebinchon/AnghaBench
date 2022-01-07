@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int CG_SENDCLIENTCOMMAND ;
+ int syscall (int ,char const*) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CG_SENDCLIENTCOMMAND ; 
- int /*<<< orphan*/  syscall (int /*<<< orphan*/ ,char const*) ; 
-
-void	trap_SendClientCommand( const char *s ) {
-	syscall( CG_SENDCLIENTCOMMAND, s );
+void trap_SendClientCommand( const char *s ) {
+ syscall( CG_SENDCLIENTCOMMAND, s );
 }

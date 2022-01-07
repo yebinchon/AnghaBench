@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct connection {int generation; scalar_t__ pending_queries; } ;
 struct conn_query {int req_generation; struct connection* requester; scalar_t__ extra; } ;
 
-/* Variables and functions */
- int conn_generation ; 
- int /*<<< orphan*/  delete_conn_query (struct conn_query*) ; 
- int /*<<< orphan*/  dl_strfree (char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,struct conn_query*,struct connection*) ; 
- int /*<<< orphan*/  pending_http_queries ; 
- int /*<<< orphan*/  qkey_clear_conn (char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  str_memory ; 
- scalar_t__ strlen (char*) ; 
- int verbosity ; 
- int /*<<< orphan*/  zfree (struct conn_query*,int) ; 
+
+ int conn_generation ;
+ int delete_conn_query (struct conn_query*) ;
+ int dl_strfree (char*) ;
+ int fprintf (int ,char*,struct conn_query*,struct connection*) ;
+ int pending_http_queries ;
+ int qkey_clear_conn (char*) ;
+ int stderr ;
+ int str_memory ;
+ scalar_t__ strlen (char*) ;
+ int verbosity ;
+ int zfree (struct conn_query*,int) ;
 
 int delete_history_query (struct conn_query *q) {
   if (verbosity > 1) {

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  chap81; int /*<<< orphan*/  chap80lm; int /*<<< orphan*/  chap80nt; int /*<<< orphan*/  chap05; int /*<<< orphan*/  pap; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int chap81; int chap80lm; int chap80nt; int chap05; int pap; } ;
 struct lcp {TYPE_2__ cfg; } ;
-struct TYPE_3__ {int len; int /*<<< orphan*/  id; } ;
+struct TYPE_3__ {int len; int id; } ;
 struct fsm_opt {unsigned char* data; TYPE_1__ hdr; } ;
 struct fsm_decode {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ IsAccepted (int /*<<< orphan*/ ) ; 
- int PROTO_CHAP ; 
- int PROTO_PAP ; 
- int /*<<< orphan*/  TY_AUTHPROTO ; 
- int /*<<< orphan*/  fsm_nak (struct fsm_decode*,struct fsm_opt*) ; 
+
+ scalar_t__ IsAccepted (int ) ;
+ int PROTO_CHAP ;
+ int PROTO_PAP ;
+ int TY_AUTHPROTO ;
+ int fsm_nak (struct fsm_decode*,struct fsm_opt*) ;
 
 __attribute__((used)) static int
 lcp_auth_nak(struct lcp *lcp, struct fsm_decode *dec)
@@ -47,7 +47,7 @@ lcp_auth_nak(struct lcp *lcp, struct fsm_decode *dec)
   if (IsAccepted(lcp->cfg.chap05)) {
     nak.data[2] = 0x05;
     fsm_nak(dec, &nak);
-#ifndef NODES
+
   } else if (IsAccepted(lcp->cfg.chap80nt) ||
              IsAccepted(lcp->cfg.chap80lm)) {
     nak.data[2] = 0x80;
@@ -55,7 +55,7 @@ lcp_auth_nak(struct lcp *lcp, struct fsm_decode *dec)
   } else if (IsAccepted(lcp->cfg.chap81)) {
     nak.data[2] = 0x81;
     fsm_nak(dec, &nak);
-#endif
+
   } else {
     return 0;
   }

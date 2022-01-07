@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  MemInfo; int /*<<< orphan*/  OsInfo; int /*<<< orphan*/  NatHostName; int /*<<< orphan*/  NatBuildInt; int /*<<< orphan*/  NatVerInt; int /*<<< orphan*/  NatBuildInfoString; int /*<<< orphan*/  NatVersionString; int /*<<< orphan*/  NatProductName; } ;
-typedef  TYPE_1__ RPC_NAT_INFO ;
-typedef  int /*<<< orphan*/  PACK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OutRpcMemInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OutRpcOsInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PackAddInt (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PackAddStr (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int MemInfo; int OsInfo; int NatHostName; int NatBuildInt; int NatVerInt; int NatBuildInfoString; int NatVersionString; int NatProductName; } ;
+typedef TYPE_1__ RPC_NAT_INFO ;
+typedef int PACK ;
+
+
+ int OutRpcMemInfo (int *,int *) ;
+ int OutRpcOsInfo (int *,int *) ;
+ int PackAddInt (int *,char*,int ) ;
+ int PackAddStr (int *,char*,int ) ;
 
 void OutRpcNatInfo(PACK *p, RPC_NAT_INFO *t)
 {
-	// Validate arguments
-	if (t == NULL || p == NULL)
-	{
-		return;
-	}
 
-	PackAddStr(p, "NatProductName", t->NatProductName);
-	PackAddStr(p, "NatVersionString", t->NatVersionString);
-	PackAddStr(p, "NatBuildInfoString", t->NatBuildInfoString);
-	PackAddInt(p, "NatVerInt", t->NatVerInt);
-	PackAddInt(p, "NatBuildInt", t->NatBuildInt);
-	PackAddStr(p, "NatHostName", t->NatHostName);
-	OutRpcOsInfo(p, &t->OsInfo);
-	OutRpcMemInfo(p, &t->MemInfo);
+ if (t == ((void*)0) || p == ((void*)0))
+ {
+  return;
+ }
+
+ PackAddStr(p, "NatProductName", t->NatProductName);
+ PackAddStr(p, "NatVersionString", t->NatVersionString);
+ PackAddStr(p, "NatBuildInfoString", t->NatBuildInfoString);
+ PackAddInt(p, "NatVerInt", t->NatVerInt);
+ PackAddInt(p, "NatBuildInt", t->NatBuildInt);
+ PackAddStr(p, "NatHostName", t->NatHostName);
+ OutRpcOsInfo(p, &t->OsInfo);
+ OutRpcMemInfo(p, &t->MemInfo);
 }

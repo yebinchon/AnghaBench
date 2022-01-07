@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int8_t ;
-typedef  enum strncpy_pad_check { ____Placeholder_strncpy_pad_check } strncpy_pad_check ;
 
-/* Variables and functions */
-#define  ISO9660_7BIT 131 
-#define  ISO9660_ACHARS 130 
-#define  ISO9660_DCHARS 129 
-#define  ISO9660_NOCHECK 128 
- int /*<<< orphan*/  cdio_assert (int) ; 
- int /*<<< orphan*/  cdio_assert_not_reached () ; 
- int /*<<< orphan*/  cdio_warn (char*,char const*,unsigned int) ; 
- int /*<<< orphan*/  iso9660_is_achar (char const) ; 
- int /*<<< orphan*/  iso9660_is_dchar (char const) ; 
- int /*<<< orphan*/  memset (char*,char,size_t) ; 
- size_t strlen (char const*) ; 
- int /*<<< orphan*/  strncpy (char*,char const*,size_t) ; 
+
+
+
+typedef int int8_t ;
+typedef enum strncpy_pad_check { ____Placeholder_strncpy_pad_check } strncpy_pad_check ;
+
+
+
+
+
+
+ int cdio_assert (int) ;
+ int cdio_assert_not_reached () ;
+ int cdio_warn (char*,char const*,unsigned int) ;
+ int iso9660_is_achar (char const) ;
+ int iso9660_is_dchar (char const) ;
+ int memset (char*,char,size_t) ;
+ size_t strlen (char const*) ;
+ int strncpy (char*,char const*,size_t) ;
 
 char *
 iso9660_strncpy_pad(char dst[], const char src[], size_t len,
@@ -33,17 +33,17 @@ iso9660_strncpy_pad(char dst[], const char src[], size_t len,
 {
   size_t rlen;
 
-  cdio_assert (dst != NULL);
-  cdio_assert (src != NULL);
+  cdio_assert (dst != ((void*)0));
+  cdio_assert (src != ((void*)0));
   cdio_assert (len > 0);
 
   switch (_check)
     {
       int idx;
-    case ISO9660_NOCHECK:
+    case 128:
       break;
 
-    case ISO9660_7BIT:
+    case 131:
       for (idx = 0; src[idx]; idx++)
         if ((int8_t) src[idx] < 0)
           {
@@ -53,7 +53,7 @@ iso9660_strncpy_pad(char dst[], const char src[], size_t len,
           }
       break;
 
-    case ISO9660_ACHARS:
+    case 130:
       for (idx = 0; src[idx]; idx++)
         if (!iso9660_is_achar (src[idx]))
           {
@@ -63,7 +63,7 @@ iso9660_strncpy_pad(char dst[], const char src[], size_t len,
           }
       break;
 
-    case ISO9660_DCHARS:
+    case 129:
       for (idx = 0; src[idx]; idx++)
         if (!iso9660_is_dchar (src[idx]))
           {

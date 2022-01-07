@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbedtls_camellia_context ;
 
-/* Variables and functions */
- int MBEDTLS_CAMELLIA_DECRYPT ; 
- int /*<<< orphan*/  MBEDTLS_CAMELLIA_ENCRYPT ; 
- int /*<<< orphan*/  mbedtls_camellia_crypt_ecb (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned char*,unsigned char*) ; 
+
+
+
+typedef int mbedtls_camellia_context ;
+
+
+ int MBEDTLS_CAMELLIA_DECRYPT ;
+ int MBEDTLS_CAMELLIA_ENCRYPT ;
+ int mbedtls_camellia_crypt_ecb (int *,int ,unsigned char*,unsigned char*) ;
 
 int mbedtls_camellia_crypt_cfb128( mbedtls_camellia_context *ctx,
                        int mode,

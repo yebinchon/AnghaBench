@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ npy_intp ;
-typedef  int NPY_CLIPMODE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NPY_BEGIN_ALLOW_THREADS ; 
-#define  NPY_CLIP 130 
- int /*<<< orphan*/  NPY_END_ALLOW_THREADS ; 
- int NPY_FAIL ; 
-#define  NPY_RAISE 129 
- int NPY_SUCCEED ; 
-#define  NPY_WRAP 128 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
+
+
+
+typedef scalar_t__ npy_intp ;
+typedef int NPY_CLIPMODE ;
+
+
+ int NPY_BEGIN_ALLOW_THREADS ;
+
+ int NPY_END_ALLOW_THREADS ;
+ int NPY_FAIL ;
+
+ int NPY_SUCCEED ;
+
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_ValueError ;
 
 __attribute__((used)) static int
 ravel_multi_index_loop(int ravel_ndim, npy_intp *ravel_dims,
@@ -35,10 +35,10 @@ ravel_multi_index_loop(int ravel_ndim, npy_intp *ravel_dims,
     char invalid;
     npy_intp j, m;
 
-    /*
-     * Check for 0-dimensional axes unless there is nothing to do.
-     * An empty array/shape cannot be indexed at all.
-     */
+
+
+
+
     if (count != 0) {
         for (i = 0; i < ravel_ndim; ++i) {
             if (ravel_dims[i] == 0) {
@@ -57,13 +57,13 @@ ravel_multi_index_loop(int ravel_ndim, npy_intp *ravel_dims,
             m = ravel_dims[i];
             j = *(npy_intp *)coords[i];
             switch (modes[i]) {
-                case NPY_RAISE:
+                case 129:
                     if (j < 0 || j >= m) {
                         invalid = 1;
                         goto end_while;
                     }
                     break;
-                case NPY_WRAP:
+                case 128:
                     if (j < 0) {
                         j += m;
                         if (j < 0) {
@@ -80,7 +80,7 @@ ravel_multi_index_loop(int ravel_ndim, npy_intp *ravel_dims,
                         }
                     }
                     break;
-                case NPY_CLIP:
+                case 130:
                     if (j < 0) {
                         j = 0;
                     }

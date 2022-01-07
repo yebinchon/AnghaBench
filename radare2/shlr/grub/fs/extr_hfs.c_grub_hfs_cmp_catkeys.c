@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct grub_hfs_catalog_key {int strlen; size_t* str; int /*<<< orphan*/  parent_dir; } ;
 
-/* Variables and functions */
- int grub_be_to_cpu32 (int /*<<< orphan*/ ) ; 
+
+
+
+struct grub_hfs_catalog_key {int strlen; size_t* str; int parent_dir; } ;
+
+
+ int grub_be_to_cpu32 (int ) ;
 
 __attribute__((used)) static int
 grub_hfs_cmp_catkeys (struct grub_hfs_catalog_key *k1,
-		      struct grub_hfs_catalog_key *k2)
+        struct grub_hfs_catalog_key *k2)
 {
-  /* Taken from hfsutils 3.2.6 and converted to a readable form */
+
   static const unsigned char hfs_charorder[256] = {
     [0x00] = 0,
     [0x01] = 1,
@@ -53,7 +53,7 @@ grub_hfs_cmp_catkeys (struct grub_hfs_catalog_key *k1,
     [0x1D] = 29,
     [0x1E] = 30,
     [0x1F] = 31,
-    [' '] = 32,		[0xCA] = 32,
+    [' '] = 32, [0xCA] = 32,
     ['!'] = 33,
     ['"'] = 34,
     [0xD2] = 35,
@@ -92,65 +92,65 @@ grub_hfs_cmp_catkeys (struct grub_hfs_catalog_key *k1,
     ['>'] = 68,
     ['?'] = 69,
     ['@'] = 70,
-    ['A'] = 71,		['a'] = 71,
-    [0x88] = 72,	[0xCB] = 72,
-    [0x80] = 73,	[0x8A] = 73,
-    [0x8B] = 74,	[0xCC] = 74,
-    [0x81] = 75,	[0x8C] = 75,
-    [0xAE] = 76,	[0xBE] = 76,
+    ['A'] = 71, ['a'] = 71,
+    [0x88] = 72, [0xCB] = 72,
+    [0x80] = 73, [0x8A] = 73,
+    [0x8B] = 74, [0xCC] = 74,
+    [0x81] = 75, [0x8C] = 75,
+    [0xAE] = 76, [0xBE] = 76,
     ['`'] = 77,
     [0x87] = 78,
     [0x89] = 79,
     [0xBB] = 80,
-    ['B'] = 81,		['b'] = 81,
-    ['C'] = 82,		['c'] = 82,
-    [0x82] = 83,	[0x8D] = 83,
-    ['D'] = 84,		['d'] = 84,
-    ['E'] = 85,		['e'] = 85,
-    [0x83] = 86,	[0x8E] = 86,
+    ['B'] = 81, ['b'] = 81,
+    ['C'] = 82, ['c'] = 82,
+    [0x82] = 83, [0x8D] = 83,
+    ['D'] = 84, ['d'] = 84,
+    ['E'] = 85, ['e'] = 85,
+    [0x83] = 86, [0x8E] = 86,
     [0x8F] = 87,
     [0x90] = 88,
     [0x91] = 89,
-    ['F'] = 90,		['f'] = 90,
-    ['G'] = 91,		['g'] = 91,
-    ['H'] = 92,		['h'] = 92,
-    ['I'] = 93,		['i'] = 93,
+    ['F'] = 90, ['f'] = 90,
+    ['G'] = 91, ['g'] = 91,
+    ['H'] = 92, ['h'] = 92,
+    ['I'] = 93, ['i'] = 93,
     [0x92] = 94,
     [0x93] = 95,
     [0x94] = 96,
     [0x95] = 97,
-    ['J'] = 98,		['j'] = 98,
-    ['K'] = 99,		['k'] = 99,
-    ['L'] = 100,	['l'] = 100,
-    ['M'] = 101,	['m'] = 101,
-    ['N'] = 102,	['n'] = 102,
-    [0x84] = 103,	[0x96] = 103,
-    ['O'] = 104,	['o'] = 104,
-    [0x85] = 105,	[0x9A] = 105,
-    [0x9B] = 106,	[0xCD] = 106,
-    [0xAF] = 107,	[0xBF] = 107,
-    [0xCE] = 108,	[0xCF] = 108,
+    ['J'] = 98, ['j'] = 98,
+    ['K'] = 99, ['k'] = 99,
+    ['L'] = 100, ['l'] = 100,
+    ['M'] = 101, ['m'] = 101,
+    ['N'] = 102, ['n'] = 102,
+    [0x84] = 103, [0x96] = 103,
+    ['O'] = 104, ['o'] = 104,
+    [0x85] = 105, [0x9A] = 105,
+    [0x9B] = 106, [0xCD] = 106,
+    [0xAF] = 107, [0xBF] = 107,
+    [0xCE] = 108, [0xCF] = 108,
     [0x97] = 109,
     [0x98] = 110,
     [0x99] = 111,
     [0xBC] = 112,
-    ['P'] = 113,	['p'] = 113,
-    ['Q'] = 114,	['q'] = 114,
-    ['R'] = 115,	['r'] = 115,
-    ['S'] = 116,	['s'] = 116,
+    ['P'] = 113, ['p'] = 113,
+    ['Q'] = 114, ['q'] = 114,
+    ['R'] = 115, ['r'] = 115,
+    ['S'] = 116, ['s'] = 116,
     [0xA7] = 117,
-    ['T'] = 118,	['t'] = 118,
-    ['U'] = 119,	['u'] = 119,
-    [0x86] = 120,	[0x9F] = 120,
+    ['T'] = 118, ['t'] = 118,
+    ['U'] = 119, ['u'] = 119,
+    [0x86] = 120, [0x9F] = 120,
     [0x9C] = 121,
     [0x9D] = 122,
     [0x9E] = 123,
-    ['V'] = 124,	['v'] = 124,
-    ['W'] = 125,	['w'] = 125,
-    ['X'] = 126,	['x'] = 126,
-    ['Y'] = 127,	['y'] = 127,
+    ['V'] = 124, ['v'] = 124,
+    ['W'] = 125, ['w'] = 125,
+    ['X'] = 126, ['x'] = 126,
+    ['Y'] = 127, ['y'] = 127,
     [0xD8] = 128,
-    ['Z'] = 129,	['z'] = 129,
+    ['Z'] = 129, ['z'] = 129,
     ['['] = 130,
     ['\\'] = 131,
     [']'] = 132,
@@ -250,9 +250,9 @@ grub_hfs_cmp_catkeys (struct grub_hfs_catalog_key *k1,
     {
       cmp = (hfs_charorder[k1->str[i]] - hfs_charorder[k2->str[i]]);
       if (cmp != 0)
-	return cmp;
+ return cmp;
     }
 
-  /* Shorter strings precede long ones.  */
+
   return (k1->strlen - k2->strlen);
 }

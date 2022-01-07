@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ dwDriver; } ;
-typedef  TYPE_1__* PACMDRVSTREAMINSTANCE ;
-typedef  int /*<<< orphan*/  LRESULT ;
+typedef TYPE_1__* PACMDRVSTREAMINSTANCE ;
+typedef int LRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  MMSYSERR_NOERROR ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__*) ; 
 
-__attribute__((used)) static	LRESULT	PCM_StreamClose(PACMDRVSTREAMINSTANCE adsi)
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,void*) ;
+ int MMSYSERR_NOERROR ;
+ int TRACE (char*,TYPE_1__*) ;
+
+__attribute__((used)) static LRESULT PCM_StreamClose(PACMDRVSTREAMINSTANCE adsi)
 {
     TRACE("(%p)\n", adsi);
 

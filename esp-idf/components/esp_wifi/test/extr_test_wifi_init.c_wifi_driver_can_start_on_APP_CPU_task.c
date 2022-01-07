@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wifi_init_config_t ;
-typedef  scalar_t__ esp_err_t ;
-typedef  int /*<<< orphan*/  SemaphoreHandle_t ;
 
-/* Variables and functions */
- char* EMPH_STR (char*) ; 
- scalar_t__ ESP_ERR_NVS_NEW_VERSION_FOUND ; 
- scalar_t__ ESP_ERR_NVS_NO_FREE_PAGES ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  TEST_ESP_OK (scalar_t__) ; 
- int /*<<< orphan*/  WIFI_INIT_CONFIG_DEFAULT () ; 
- scalar_t__ esp_wifi_deinit () ; 
- scalar_t__ esp_wifi_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  event_init () ; 
- int /*<<< orphan*/  nvs_flash_deinit () ; 
- scalar_t__ nvs_flash_erase () ; 
- scalar_t__ nvs_flash_init () ; 
- int /*<<< orphan*/  unity_reset_leak_checks () ; 
- int /*<<< orphan*/  vTaskDelete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xSemaphoreGive (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int wifi_init_config_t ;
+typedef scalar_t__ esp_err_t ;
+typedef int SemaphoreHandle_t ;
+
+
+ char* EMPH_STR (char*) ;
+ scalar_t__ ESP_ERR_NVS_NEW_VERSION_FOUND ;
+ scalar_t__ ESP_ERR_NVS_NO_FREE_PAGES ;
+ int ESP_LOGI (int ,char*) ;
+ int TAG ;
+ int TEST_ESP_OK (scalar_t__) ;
+ int WIFI_INIT_CONFIG_DEFAULT () ;
+ scalar_t__ esp_wifi_deinit () ;
+ scalar_t__ esp_wifi_init (int *) ;
+ int event_init () ;
+ int nvs_flash_deinit () ;
+ scalar_t__ nvs_flash_erase () ;
+ scalar_t__ nvs_flash_init () ;
+ int unity_reset_leak_checks () ;
+ int vTaskDelete (int *) ;
+ int xSemaphoreGive (int ) ;
 
 __attribute__((used)) static void wifi_driver_can_start_on_APP_CPU_task(void* arg)
 {
     SemaphoreHandle_t *sema = (SemaphoreHandle_t *) arg;
     wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
-    //init nvs
+
     ESP_LOGI(TAG, EMPH_STR("nvs_flash_init"));
     esp_err_t r = nvs_flash_init();
     if (r == ESP_ERR_NVS_NO_FREE_PAGES || r == ESP_ERR_NVS_NEW_VERSION_FOUND) {
@@ -45,7 +45,7 @@ __attribute__((used)) static void wifi_driver_can_start_on_APP_CPU_task(void* ar
         r = nvs_flash_init();
     }
     TEST_ESP_OK(r);
-    //init event loop
+
     ESP_LOGI(TAG, EMPH_STR("event_init"));
     event_init();
     unity_reset_leak_checks();
@@ -57,5 +57,5 @@ __attribute__((used)) static void wifi_driver_can_start_on_APP_CPU_task(void* ar
     nvs_flash_deinit();
     ESP_LOGI(TAG, "test passed...");
     xSemaphoreGive(*sema);
-    vTaskDelete(NULL);
+    vTaskDelete(((void*)0));
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct v4l2_jpegcompression {int /*<<< orphan*/  quality; } ;
-struct sd {scalar_t__ sensor; int /*<<< orphan*/  jpegqual; } ;
+
+
+
+
+struct v4l2_jpegcompression {int quality; } ;
+struct sd {scalar_t__ sensor; int jpegqual; } ;
 struct gspca_dev {int dummy; } ;
 
-/* Variables and functions */
- int ENOTTY ; 
- scalar_t__ SENSOR_SOI763A ; 
- int /*<<< orphan*/  v4l2_ctrl_s_ctrl (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ENOTTY ;
+ scalar_t__ SENSOR_SOI763A ;
+ int v4l2_ctrl_s_ctrl (int ,int ) ;
 
 __attribute__((used)) static int sd_set_jcomp(struct gspca_dev *gspca_dev,
-			const struct v4l2_jpegcompression *jcomp)
+   const struct v4l2_jpegcompression *jcomp)
 {
-	struct sd *sd = (struct sd *) gspca_dev;
+ struct sd *sd = (struct sd *) gspca_dev;
 
-	if (sd->sensor != SENSOR_SOI763A)
-		return -ENOTTY;
-	v4l2_ctrl_s_ctrl(sd->jpegqual, jcomp->quality);
-	return 0;
+ if (sd->sensor != SENSOR_SOI763A)
+  return -ENOTTY;
+ v4l2_ctrl_s_ctrl(sd->jpegqual, jcomp->quality);
+ return 0;
 }

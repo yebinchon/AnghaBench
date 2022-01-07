@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_6__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  service_params ;
-typedef  scalar_t__ VCHIQ_STATUS_T ;
-struct TYPE_7__ {char* userdata; void* version_min; void* version; int /*<<< orphan*/  callback; int /*<<< orphan*/  fourcc; } ;
-typedef  TYPE_1__ VCHIQ_SERVICE_PARAMS_T ;
-typedef  int /*<<< orphan*/  VCHIQ_SERVICE_HANDLE_T ;
-typedef  int /*<<< orphan*/  VCHIQ_INSTANCE_T ;
+
+
+typedef struct TYPE_9__ TYPE_6__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int service_params ;
+typedef scalar_t__ VCHIQ_STATUS_T ;
+struct TYPE_7__ {char* userdata; void* version_min; void* version; int callback; int fourcc; } ;
+typedef TYPE_1__ VCHIQ_SERVICE_PARAMS_T ;
+typedef int VCHIQ_SERVICE_HANDLE_T ;
+typedef int VCHIQ_INSTANCE_T ;
 struct TYPE_8__ {int size; scalar_t__ data; } ;
-typedef  TYPE_2__ VCHIQ_ELEMENT_T ;
+typedef TYPE_2__ VCHIQ_ELEMENT_T ;
 struct TYPE_9__ {int blocksize; int iters; scalar_t__ echo; } ;
 
-/* Variables and functions */
- int MSG_ECHO ; 
- int NUM_BULK_BUFS ; 
- scalar_t__ VCHIQ_ERROR ; 
- int /*<<< orphan*/  VCHIQ_MAKE_FOURCC (char,char,char,char) ; 
- scalar_t__ VCHIQ_SUCCESS ; 
- void* VCHIQ_TEST_VER ; 
- scalar_t__* bulk_tx_data ; 
- int /*<<< orphan*/  clnt_callback ; 
- scalar_t__ ctrl_received ; 
- TYPE_6__ g_params ; 
- char* g_server_error ; 
- char* g_servname ; 
- int /*<<< orphan*/  g_shutdown ; 
- scalar_t__ g_timeout_ms ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  setup_auto_kill (scalar_t__) ; 
- int /*<<< orphan*/  vchiq_connect (int /*<<< orphan*/ ) ; 
- scalar_t__ vchiq_initialise (int /*<<< orphan*/ *) ; 
- scalar_t__ vchiq_open_service (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ vchiq_queue_message (int /*<<< orphan*/ ,TYPE_2__*,int) ; 
- int /*<<< orphan*/  vchiq_remove_service (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vchiq_shutdown (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_event_wait (int /*<<< orphan*/ *) ; 
- int vcos_getmicrosecs () ; 
- int /*<<< orphan*/  vcos_log_trace (char*) ; 
+
+ int MSG_ECHO ;
+ int NUM_BULK_BUFS ;
+ scalar_t__ VCHIQ_ERROR ;
+ int VCHIQ_MAKE_FOURCC (char,char,char,char) ;
+ scalar_t__ VCHIQ_SUCCESS ;
+ void* VCHIQ_TEST_VER ;
+ scalar_t__* bulk_tx_data ;
+ int clnt_callback ;
+ scalar_t__ ctrl_received ;
+ TYPE_6__ g_params ;
+ char* g_server_error ;
+ char* g_servname ;
+ int g_shutdown ;
+ scalar_t__ g_timeout_ms ;
+ scalar_t__ malloc (int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int printf (char*,...) ;
+ int setup_auto_kill (scalar_t__) ;
+ int vchiq_connect (int ) ;
+ scalar_t__ vchiq_initialise (int *) ;
+ scalar_t__ vchiq_open_service (int ,TYPE_1__*,int *) ;
+ scalar_t__ vchiq_queue_message (int ,TYPE_2__*,int) ;
+ int vchiq_remove_service (int ) ;
+ int vchiq_shutdown (int ) ;
+ int vcos_event_wait (int *) ;
+ int vcos_getmicrosecs () ;
+ int vcos_log_trace (char*) ;
 
 __attribute__((used)) static VCHIQ_STATUS_T
 vchiq_ctrl_test(void)
@@ -81,14 +81,6 @@ vchiq_ctrl_test(void)
          *(unsigned int *)(bulk_tx_data[i] + j) = ((0x80 | i) << 24) + j;
       }
    }
-
-#ifdef ANDROID
-   if (g_timeout_ms)
-   {
-      setup_auto_kill(g_timeout_ms);
-   }
-#endif
-
    if (vchiq_initialise(&vchiq_instance) != VCHIQ_SUCCESS)
    {
       printf("* failed to open vchiq instance\n");

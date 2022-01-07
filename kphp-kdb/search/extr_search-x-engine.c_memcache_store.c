@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct connection {int dummy; } ;
 
-/* Variables and functions */
- int MAX_RATES ; 
- int do_store (struct connection*,long long,int,int,int,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,char const*,int,int,int,int) ; 
- int get_sorting_mode (char const) ; 
- int /*<<< orphan*/  minor_update_queries ; 
- int sscanf (char const*,char*,int*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  update_queries ; 
- scalar_t__ verbosity ; 
- int /*<<< orphan*/  vkprintf (int,char*,long long,...) ; 
+
+ int MAX_RATES ;
+ int do_store (struct connection*,long long,int,int,int,int) ;
+ int fprintf (int ,char*,int,char const*,int,int,int,int) ;
+ int get_sorting_mode (char const) ;
+ int minor_update_queries ;
+ int sscanf (char const*,char*,int*,...) ;
+ int stderr ;
+ int update_queries ;
+ scalar_t__ verbosity ;
+ int vkprintf (int,char*,long long,...) ;
 
 int memcache_store (struct connection *c, int op, const char *key, int key_len, int flags, int delay, int size) {
   int rate, rate2, owner_id, item_id;

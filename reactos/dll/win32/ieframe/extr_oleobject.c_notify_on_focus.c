@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  client; } ;
-typedef  TYPE_1__ WebBrowser ;
-typedef  int /*<<< orphan*/  IOleControlSite ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_IOleControlSite ; 
- int /*<<< orphan*/  IOleClientSite_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IOleControlSite_OnFocus (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IOleControlSite_Release (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int client; } ;
+typedef TYPE_1__ WebBrowser ;
+typedef int IOleControlSite ;
+typedef int HRESULT ;
+typedef int BOOL ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int IID_IOleControlSite ;
+ int IOleClientSite_QueryInterface (int ,int *,void**) ;
+ int IOleControlSite_OnFocus (int *,int ) ;
+ int IOleControlSite_Release (int *) ;
 
 __attribute__((used)) static void notify_on_focus(WebBrowser *This, BOOL got_focus)
 {

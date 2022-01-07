@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * led_map; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * led_map; } ;
 struct TYPE_6__ {TYPE_1__ uints; } ;
-typedef  TYPE_2__ settings_t ;
-struct TYPE_7__ {int /*<<< orphan*/ * map; scalar_t__* setup; } ;
+typedef TYPE_2__ settings_t ;
+struct TYPE_7__ {int * map; scalar_t__* setup; } ;
 
-/* Variables and functions */
- int MAX_LEDS ; 
- int /*<<< orphan*/  RARCH_LOG (char*,int,int /*<<< orphan*/ ) ; 
- TYPE_2__* config_get_ptr () ; 
- TYPE_3__* cur ; 
+
+ int MAX_LEDS ;
+ int RARCH_LOG (char*,int,int ) ;
+ TYPE_2__* config_get_ptr () ;
+ TYPE_3__* cur ;
 
 __attribute__((used)) static void rpi_init(void)
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static void rpi_init(void)
    for(i = 0; i < MAX_LEDS; i++)
    {
       cur->setup[i] = 0;
-      cur->map[i]   = settings->uints.led_map[i];
+      cur->map[i] = settings->uints.led_map[i];
       RARCH_LOG("[LED]: rpi map[%d]=%d\n", i, cur->map[i]);
    }
 }

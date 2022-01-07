@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr {int dummy; } ;
-typedef  scalar_t__ curl_socklen_t ;
+typedef scalar_t__ curl_socklen_t ;
 
-/* Variables and functions */
- int EAI_MEMORY ; 
- int QadrtConvertE2A (char*,char*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- int getnameinfo (struct sockaddr const*,scalar_t__,char*,scalar_t__,char*,scalar_t__,int) ; 
- char* malloc (scalar_t__) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+ int EAI_MEMORY ;
+ int QadrtConvertE2A (char*,char*,scalar_t__,int ) ;
+ int free (char*) ;
+ int getnameinfo (struct sockaddr const*,scalar_t__,char*,scalar_t__,char*,scalar_t__,int) ;
+ char* malloc (scalar_t__) ;
+ int strlen (char*) ;
 
 int
 Curl_getnameinfo_a(const struct sockaddr * sa, curl_socklen_t salen,
@@ -28,8 +28,8 @@ Curl_getnameinfo_a(const struct sockaddr * sa, curl_socklen_t salen,
               int flags)
 
 {
-  char *enodename = NULL;
-  char *eservname = NULL;
+  char *enodename = ((void*)0);
+  char *eservname = ((void*)0);
   int status;
 
   if(nodename && nodenamelen) {

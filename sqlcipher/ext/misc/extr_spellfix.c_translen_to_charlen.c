@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int cFrom; scalar_t__ cTo3; scalar_t__ cTo2; scalar_t__ cTo1; } ;
-typedef  TYPE_1__ Transliteration ;
+typedef TYPE_1__ Transliteration ;
 
-/* Variables and functions */
- TYPE_1__* spellfixFindTranslit (int,int*) ; 
- int utf8Read (unsigned char const*,int,int*) ; 
+
+ TYPE_1__* spellfixFindTranslit (int,int*) ;
+ int utf8Read (unsigned char const*,int,int*) ;
 
 __attribute__((used)) static int translen_to_charlen(const char *zIn, int nIn, int nTrans){
   int i, c, sz, nOut;

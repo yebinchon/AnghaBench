@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  msi_dialog ;
-struct TYPE_4__ {int /*<<< orphan*/  hwnd; } ;
-typedef  TYPE_1__ msi_control ;
-typedef  int /*<<< orphan*/  hrefW ;
-typedef  int /*<<< orphan*/  WPARAM ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int msi_dialog ;
+struct TYPE_4__ {int hwnd; } ;
+typedef TYPE_1__ msi_control ;
+typedef int hrefW ;
+typedef int WPARAM ;
+typedef char WCHAR ;
+typedef int UINT ;
 struct TYPE_5__ {int mask; char* szUrl; scalar_t__ iLink; } ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  TYPE_2__ LITEM ;
+typedef int LPARAM ;
+typedef TYPE_2__ LITEM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int LIF_ITEMINDEX ; 
- int LIF_URL ; 
- int /*<<< orphan*/  LM_GETITEM ; 
- int /*<<< orphan*/  SW_SHOWNORMAL ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ShellExecuteW (int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ isspaceW (char const) ; 
- int /*<<< orphan*/  memicmpW (char const*,char const*,int) ; 
- int strlenW (char const*) ; 
- char toupperW (int /*<<< orphan*/ ) ; 
+
+ int ERROR_SUCCESS ;
+ int LIF_ITEMINDEX ;
+ int LIF_URL ;
+ int LM_GETITEM ;
+ int SW_SHOWNORMAL ;
+ int SendMessageW (int ,int ,int ,int ) ;
+ int ShellExecuteW (int *,char const*,char const*,int *,int *,int ) ;
+ scalar_t__ isspaceW (char const) ;
+ int memicmpW (char const*,char const*,int) ;
+ int strlenW (char const*) ;
+ char toupperW (int ) ;
 
 __attribute__((used)) static UINT msi_dialog_hyperlink_handler( msi_dialog *dialog, msi_control *control, WPARAM param )
 {
@@ -45,8 +45,8 @@ __attribute__((used)) static UINT msi_dialog_hyperlink_handler( msi_dialog *dial
     WCHAR quote = 0;
     LITEM item;
 
-    item.mask     = LIF_ITEMINDEX | LIF_URL;
-    item.iLink    = 0;
+    item.mask = LIF_ITEMINDEX | LIF_URL;
+    item.iLink = 0;
     item.szUrl[0] = 0;
 
     SendMessageW( control->hwnd, LM_GETITEM, 0, (LPARAM)&item );
@@ -78,7 +78,7 @@ __attribute__((used)) static UINT msi_dialog_hyperlink_handler( msi_dialog *dial
             if (!*q) return ERROR_SUCCESS;
         }
         item.szUrl[q - item.szUrl] = 0;
-        ShellExecuteW( NULL, openW, p, NULL, NULL, SW_SHOWNORMAL );
+        ShellExecuteW( ((void*)0), openW, p, ((void*)0), ((void*)0), SW_SHOWNORMAL );
     }
     return ERROR_SUCCESS;
 }

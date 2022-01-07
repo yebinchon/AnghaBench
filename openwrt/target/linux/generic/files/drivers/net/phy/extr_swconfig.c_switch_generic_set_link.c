@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u16 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u16 ;
 struct switch_port_link {int speed; scalar_t__ duplex; scalar_t__ aneg; } ;
 struct switch_dev {TYPE_1__* ops; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* phy_write16 ) (struct switch_dev*,int,int /*<<< orphan*/ ,int) ;} ;
+struct TYPE_2__ {int (* phy_write16 ) (struct switch_dev*,int,int ,int) ;} ;
 
-/* Variables and functions */
- int BMCR_ANENABLE ; 
- int BMCR_ANRESTART ; 
- int BMCR_FULLDPLX ; 
- int BMCR_SPEED100 ; 
- int BMCR_SPEED1000 ; 
- int ENOTSUPP ; 
- int /*<<< orphan*/  MII_BMCR ; 
-#define  SWITCH_PORT_SPEED_10 130 
-#define  SWITCH_PORT_SPEED_100 129 
-#define  SWITCH_PORT_SPEED_1000 128 
- scalar_t__ WARN_ON (int) ; 
- int /*<<< orphan*/  stub1 (struct switch_dev*,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub2 (struct switch_dev*,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub3 (struct switch_dev*,int,int /*<<< orphan*/ ,int) ; 
+
+ int BMCR_ANENABLE ;
+ int BMCR_ANRESTART ;
+ int BMCR_FULLDPLX ;
+ int BMCR_SPEED100 ;
+ int BMCR_SPEED1000 ;
+ int ENOTSUPP ;
+ int MII_BMCR ;
+
+
+
+ scalar_t__ WARN_ON (int) ;
+ int stub1 (struct switch_dev*,int,int ,int) ;
+ int stub2 (struct switch_dev*,int,int ,int) ;
+ int stub3 (struct switch_dev*,int,int ,int) ;
 
 int
 switch_generic_set_link(struct switch_dev *dev, int port,
-			struct switch_port_link *link)
+   struct switch_port_link *link)
 {
-	if (WARN_ON(!dev->ops->phy_write16))
-		return -ENOTSUPP;
+ if (WARN_ON(!dev->ops->phy_write16))
+  return -ENOTSUPP;
 
-	/* Generic implementation */
-	if (link->aneg) {
-		dev->ops->phy_write16(dev, port, MII_BMCR, 0x0000);
-		dev->ops->phy_write16(dev, port, MII_BMCR, BMCR_ANENABLE | BMCR_ANRESTART);
-	} else {
-		u16 bmcr = 0;
 
-		if (link->duplex)
-			bmcr |= BMCR_FULLDPLX;
+ if (link->aneg) {
+  dev->ops->phy_write16(dev, port, MII_BMCR, 0x0000);
+  dev->ops->phy_write16(dev, port, MII_BMCR, BMCR_ANENABLE | BMCR_ANRESTART);
+ } else {
+  u16 bmcr = 0;
 
-		switch (link->speed) {
-		case SWITCH_PORT_SPEED_10:
-			break;
-		case SWITCH_PORT_SPEED_100:
-			bmcr |= BMCR_SPEED100;
-			break;
-		case SWITCH_PORT_SPEED_1000:
-			bmcr |= BMCR_SPEED1000;
-			break;
-		default:
-			return -ENOTSUPP;
-		}
+  if (link->duplex)
+   bmcr |= BMCR_FULLDPLX;
 
-		dev->ops->phy_write16(dev, port, MII_BMCR, bmcr);
-	}
+  switch (link->speed) {
+  case 130:
+   break;
+  case 129:
+   bmcr |= BMCR_SPEED100;
+   break;
+  case 128:
+   bmcr |= BMCR_SPEED1000;
+   break;
+  default:
+   return -ENOTSUPP;
+  }
 
-	return 0;
+  dev->ops->phy_write16(dev, port, MII_BMCR, bmcr);
+ }
+
+ return 0;
 }

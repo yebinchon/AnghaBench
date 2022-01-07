@@ -1,18 +1,9 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 __attribute__((used)) static inline double hermite_interpolation(double x, double x0, double x1,
                                     double p0, double p1,
                                     double m0, double m1)
@@ -31,7 +22,7 @@ __attribute__((used)) static inline double hermite_interpolation(double x, doubl
     ct1 = m0;
 
     ct2 = -3 * p0 - 2 * m0 + 3 * p1 - m1;
-    ct3 = 2 * p0 + m0  - 2 * p1 + m1;
+    ct3 = 2 * p0 + m0 - 2 * p1 + m1;
 
     return ct3 * t3 + ct2 * t2 + ct1 * t + ct0;
 }

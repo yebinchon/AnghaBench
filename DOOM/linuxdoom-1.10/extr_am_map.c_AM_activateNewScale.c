@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FTOM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  f_h ; 
- int /*<<< orphan*/  f_w ; 
- int m_h ; 
- int m_w ; 
- scalar_t__ m_x ; 
- scalar_t__ m_x2 ; 
- scalar_t__ m_y ; 
- scalar_t__ m_y2 ; 
+ int FTOM (int ) ;
+ int f_h ;
+ int f_w ;
+ int m_h ;
+ int m_w ;
+ scalar_t__ m_x ;
+ scalar_t__ m_x2 ;
+ scalar_t__ m_y ;
+ scalar_t__ m_y2 ;
 
 void AM_activateNewScale(void)
 {

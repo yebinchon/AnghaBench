@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int CMDCTRL; int CMDSIZE; int CMDPMOD; int CMDCOLR; scalar_t__ CMDGRDA; scalar_t__ CMDSRCA; int /*<<< orphan*/  CMDYA; int /*<<< orphan*/  CMDXA; int /*<<< orphan*/  CMDYC; int /*<<< orphan*/  CMDXC; int /*<<< orphan*/  CMDYD; int /*<<< orphan*/  CMDXD; int /*<<< orphan*/  CMDYB; int /*<<< orphan*/  CMDXB; } ;
-typedef  TYPE_1__ vdp1cmd_struct ;
-typedef  int u32 ;
-typedef  int u16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddString (char*,char*,...) ; 
- int T1ReadWord (int /*<<< orphan*/ ,int) ; 
- int Vdp1DebugGetCommandNumberAddr (int) ; 
- int /*<<< orphan*/  Vdp1Ram ; 
- int /*<<< orphan*/  Vdp1ReadCommand (TYPE_1__*,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int CMDCTRL; int CMDSIZE; int CMDPMOD; int CMDCOLR; scalar_t__ CMDGRDA; scalar_t__ CMDSRCA; int CMDYA; int CMDXA; int CMDYC; int CMDXC; int CMDYD; int CMDXD; int CMDYB; int CMDXB; } ;
+typedef TYPE_1__ vdp1cmd_struct ;
+typedef int u32 ;
+typedef int u16 ;
+
+
+ int AddString (char*,char*,...) ;
+ int T1ReadWord (int ,int) ;
+ int Vdp1DebugGetCommandNumberAddr (int) ;
+ int Vdp1Ram ;
+ int Vdp1ReadCommand (TYPE_1__*,int,int ) ;
 
 void Vdp1DebugCommand(u32 number, char *outstring)
 {
@@ -36,7 +36,7 @@ void Vdp1DebugCommand(u32 number, char *outstring)
 
    if (command & 0x8000)
    {
-      // Draw End
+
       outstring[0] = 0x00;
       return;
    }
@@ -151,7 +151,7 @@ void Vdp1DebugCommand(u32 number, char *outstring)
          return;
    }
 
-   // Only Sprite commands use CMDSRCA, CMDSIZE
+
    if (!(cmd.CMDCTRL & 0x000C))
    {
       AddString(outstring, "Texture address = %08X\r\n", ((unsigned int)cmd.CMDSRCA) << 3);
@@ -176,7 +176,7 @@ void Vdp1DebugCommand(u32 number, char *outstring)
       }
    }
 
-   // Only draw commands use CMDPMOD
+
    if (!(cmd.CMDCTRL & 0x0008))
    {
       if (cmd.CMDPMOD & 0x8000)
@@ -242,7 +242,7 @@ void Vdp1DebugCommand(u32 number, char *outstring)
          case 5:
             AddString(outstring, "15 BPP(RGB)\r\n");
 
-            // Only non-textured commands
+
             if (cmd.CMDCTRL & 0x0004)
             {
                AddString(outstring, "Non-textured color: %04X\r\n", cmd.CMDCOLR);

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char* msg; int err; } ;
 
-/* Variables and functions */
- TYPE_1__* errtab ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
+
+ TYPE_1__* errtab ;
+ int sprintf (char*,char*,int) ;
 
 char *
 strerror(int err)
 {
-    static char	msg[32];
-    int		i;
+    static char msg[32];
+    int i;
 
-    for (i = 0; errtab[i].msg != NULL; i++)
-	if (errtab[i].err == err)
-	    return(errtab[i].msg);
+    for (i = 0; errtab[i].msg != ((void*)0); i++)
+ if (errtab[i].err == err)
+     return(errtab[i].msg);
     sprintf(msg, "unknown error (%d)", err);
     return(msg);
 }

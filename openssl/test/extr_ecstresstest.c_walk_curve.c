@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ intmax_t ;
-typedef  int /*<<< orphan*/  EC_POINT ;
-typedef  int /*<<< orphan*/  EC_GROUP ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_new () ; 
- int /*<<< orphan*/  EC_POINT_get_affine_coordinates (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_mul (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ intmax_t ;
+typedef int EC_POINT ;
+typedef int EC_GROUP ;
+typedef int BIGNUM ;
+
+
+ int BN_free (int *) ;
+ int * BN_new () ;
+ int EC_POINT_get_affine_coordinates (int const*,int *,int *,int *,int *) ;
+ int EC_POINT_mul (int const*,int *,int *,int *,int *,int *) ;
+ int TEST_ptr (int *) ;
+ int TEST_true (int ) ;
 
 __attribute__((used)) static BIGNUM *walk_curve(const EC_GROUP *group, EC_POINT *point, intmax_t num)
 {
-    BIGNUM *scalar = NULL;
+    BIGNUM *scalar = ((void*)0);
     intmax_t i;
 
     if (!TEST_ptr(scalar = BN_new())
             || !TEST_true(EC_POINT_get_affine_coordinates(group, point, scalar,
-                                                          NULL, NULL)))
+                                                          ((void*)0), ((void*)0))))
         goto err;
 
     for (i = 0; i < num; i++) {
-        if (!TEST_true(EC_POINT_mul(group, point, NULL, point, scalar, NULL))
+        if (!TEST_true(EC_POINT_mul(group, point, ((void*)0), point, scalar, ((void*)0)))
                 || !TEST_true(EC_POINT_get_affine_coordinates(group, point,
                                                               scalar,
-                                                              NULL, NULL)))
+                                                              ((void*)0), ((void*)0))))
             goto err;
     }
     return scalar;
 
 err:
     BN_free(scalar);
-    return NULL;
+    return ((void*)0);
 }

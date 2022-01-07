@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct mmc_queue {TYPE_1__* sg; int /*<<< orphan*/  bounce_buf; int /*<<< orphan*/  bounce_sg_len; int /*<<< orphan*/  bounce_sg; int /*<<< orphan*/  req; } ;
-struct TYPE_2__ {int /*<<< orphan*/  length; } ;
 
-/* Variables and functions */
- scalar_t__ READ ; 
- int /*<<< orphan*/  local_irq_restore (unsigned long) ; 
- int /*<<< orphan*/  local_irq_save (unsigned long) ; 
- scalar_t__ rq_data_dir (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sg_copy_from_buffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct mmc_queue {TYPE_1__* sg; int bounce_buf; int bounce_sg_len; int bounce_sg; int req; } ;
+struct TYPE_2__ {int length; } ;
+
+
+ scalar_t__ READ ;
+ int local_irq_restore (unsigned long) ;
+ int local_irq_save (unsigned long) ;
+ scalar_t__ rq_data_dir (int ) ;
+ int sg_copy_from_buffer (int ,int ,int ,int ) ;
 
 void mmc_queue_bounce_post(struct mmc_queue *mq)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	if (!mq->bounce_buf)
-		return;
+ if (!mq->bounce_buf)
+  return;
 
-	if (rq_data_dir(mq->req) != READ)
-		return;
+ if (rq_data_dir(mq->req) != READ)
+  return;
 
-	local_irq_save(flags);
-	sg_copy_from_buffer(mq->bounce_sg, mq->bounce_sg_len,
-		mq->bounce_buf, mq->sg[0].length);
-	local_irq_restore(flags);
+ local_irq_save(flags);
+ sg_copy_from_buffer(mq->bounce_sg, mq->bounce_sg_len,
+  mq->bounce_buf, mq->sg[0].length);
+ local_irq_restore(flags);
 }

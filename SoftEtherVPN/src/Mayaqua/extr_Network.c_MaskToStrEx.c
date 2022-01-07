@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  IP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPToStr (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ IsSubnetMask (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SubnetMaskToInt (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ToStr (char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT ;
+typedef int IP ;
+
+
+ int IPToStr (char*,int ,int *) ;
+ scalar_t__ IsSubnetMask (int *) ;
+ int SubnetMaskToInt (int *) ;
+ int ToStr (char*,int ) ;
 
 void MaskToStrEx(char *str, UINT size, IP *mask, bool always_full_address)
 {
-	// Validate arguments
-	if (str == NULL || mask == NULL)
-	{
-		return;
-	}
 
-	if (always_full_address == false && IsSubnetMask(mask))
-	{
-		ToStr(str, SubnetMaskToInt(mask));
-	}
-	else
-	{
-		IPToStr(str, size, mask);
-	}
+ if (str == ((void*)0) || mask == ((void*)0))
+ {
+  return;
+ }
+
+ if (always_full_address == 0 && IsSubnetMask(mask))
+ {
+  ToStr(str, SubnetMaskToInt(mask));
+ }
+ else
+ {
+  IPToStr(str, size, mask);
+ }
 }

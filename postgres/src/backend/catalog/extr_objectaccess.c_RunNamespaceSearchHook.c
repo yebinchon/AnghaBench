@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int ereport_on_violation; int result; } ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  TYPE_1__ ObjectAccessNamespaceSearch ;
+typedef int Oid ;
+typedef TYPE_1__ ObjectAccessNamespaceSearch ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NamespaceRelationId ; 
- int /*<<< orphan*/  OAT_NAMESPACE_SEARCH ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  object_access_hook (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
+
+ int Assert (int ) ;
+ int NamespaceRelationId ;
+ int OAT_NAMESPACE_SEARCH ;
+ int memset (TYPE_1__*,int ,int) ;
+ int object_access_hook (int ,int ,int ,int ,void*) ;
+ int stub1 (int ,int ,int ,int ,void*) ;
 
 bool
 RunNamespaceSearchHook(Oid objectId, bool ereport_on_violation)
 {
-	ObjectAccessNamespaceSearch ns_arg;
+ ObjectAccessNamespaceSearch ns_arg;
 
-	/* caller should check, but just in case... */
-	Assert(object_access_hook != NULL);
 
-	memset(&ns_arg, 0, sizeof(ObjectAccessNamespaceSearch));
-	ns_arg.ereport_on_violation = ereport_on_violation;
-	ns_arg.result = true;
+ Assert(object_access_hook != ((void*)0));
 
-	(*object_access_hook) (OAT_NAMESPACE_SEARCH,
-						   NamespaceRelationId, objectId, 0,
-						   (void *) &ns_arg);
+ memset(&ns_arg, 0, sizeof(ObjectAccessNamespaceSearch));
+ ns_arg.ereport_on_violation = ereport_on_violation;
+ ns_arg.result = 1;
 
-	return ns_arg.result;
+ (*object_access_hook) (OAT_NAMESPACE_SEARCH,
+         NamespaceRelationId, objectId, 0,
+         (void *) &ns_arg);
+
+ return ns_arg.result;
 }

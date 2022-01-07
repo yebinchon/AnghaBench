@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hb_title_t ;
-typedef  int /*<<< orphan*/  hb_job_t ;
-typedef  int /*<<< orphan*/  hb_handle_t ;
-typedef  int /*<<< orphan*/  hb_dict_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hb_error (char*,int) ; 
- int /*<<< orphan*/ * hb_find_title_by_index (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  hb_job_close (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * hb_job_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * hb_job_to_dict (int /*<<< orphan*/ *) ; 
- scalar_t__ hb_preset_apply_filters (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- scalar_t__ hb_preset_apply_mux (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- scalar_t__ hb_preset_apply_title (int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- scalar_t__ hb_preset_apply_video (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hb_value_free (int /*<<< orphan*/ **) ; 
+
+
+
+typedef int hb_title_t ;
+typedef int hb_job_t ;
+typedef int hb_handle_t ;
+typedef int hb_dict_t ;
+
+
+ int hb_error (char*,int) ;
+ int * hb_find_title_by_index (int *,int) ;
+ int hb_job_close (int **) ;
+ int * hb_job_init (int *) ;
+ int * hb_job_to_dict (int *) ;
+ scalar_t__ hb_preset_apply_filters (int const*,int *) ;
+ scalar_t__ hb_preset_apply_mux (int const*,int *) ;
+ scalar_t__ hb_preset_apply_title (int *,int,int const*,int *) ;
+ scalar_t__ hb_preset_apply_video (int const*,int *) ;
+ int hb_value_free (int **) ;
 
 hb_dict_t* hb_preset_job_init(hb_handle_t *h, int title_index,
                               const hb_dict_t *preset)
 {
     hb_title_t *title = hb_find_title_by_index(h, title_index);
-    if (title == NULL)
+    if (title == ((void*)0))
     {
         hb_error("Invalid title index (%d)", title_index);
-        return NULL;
+        return ((void*)0);
     }
 
     hb_job_t *job = hb_job_init(title);
@@ -57,5 +57,5 @@ hb_dict_t* hb_preset_job_init(hb_handle_t *h, int title_index,
 
 fail:
     hb_value_free(&job_dict);
-    return NULL;
+    return ((void*)0);
 }

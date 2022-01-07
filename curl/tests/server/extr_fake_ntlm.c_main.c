@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  logfilename ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  LOGFILE ; 
- int TRUE ; 
- int errno ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- scalar_t__ fgets (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* getenv (char*) ; 
- int getpart (char**,size_t*,char*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  logmsg (char*,...) ; 
- int /*<<< orphan*/  msnprintf (char*,int,int /*<<< orphan*/ ,long) ; 
- char const* path ; 
- char* printable (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  puts (char*) ; 
- char* serverlogfile ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdin ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  strerror (int) ; 
- int strlen (char const*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- long strtol (char const*,char**,int) ; 
- char* test2file (long) ; 
+
+
+
+typedef int logfilename ;
+typedef int buf ;
+typedef int FILE ;
+
+
+ int FALSE ;
+ int LOGFILE ;
+ int TRUE ;
+ int errno ;
+ int exit (int) ;
+ int fclose (int *) ;
+ int fflush (int ) ;
+ scalar_t__ fgets (char*,int,int ) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*) ;
+ int free (char*) ;
+ char* getenv (char*) ;
+ int getpart (char**,size_t*,char*,char*,int *) ;
+ int logmsg (char*,...) ;
+ int msnprintf (char*,int,int ,long) ;
+ char const* path ;
+ char* printable (char*,int ) ;
+ int printf (char*,...) ;
+ int puts (char*) ;
+ char* serverlogfile ;
+ int stderr ;
+ int stdin ;
+ int stdout ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strerror (int) ;
+ int strlen (char const*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ long strtol (char const*,char**,int) ;
+ char* test2file (long) ;
 
 int main(int argc, char *argv[])
 {
@@ -52,8 +52,8 @@ int main(int argc, char *argv[])
   FILE *stream;
   char *filename;
   int error;
-  char *type1_input = NULL, *type3_input = NULL;
-  char *type1_output = NULL, *type3_output = NULL;
+  char *type1_input = ((void*)0), *type3_input = ((void*)0);
+  char *type1_output = ((void*)0), *type3_output = ((void*)0);
   size_t size = 0;
   long testnum;
   const char *env;
@@ -111,7 +111,7 @@ int main(int argc, char *argv[])
     exit(1);
   }
 
-  /* logmsg cannot be used until this file name is set */
+
   msnprintf(logfilename, sizeof(logfilename), LOGFILE, testnum);
   serverlogfile = logfilename;
 
@@ -134,7 +134,7 @@ int main(int argc, char *argv[])
     exit(1);
   }
   else {
-    /* get the ntlm_auth input/output */
+
     error = getpart(&type1_input, &size, "ntlm_auth_type1", "input", stream);
     fclose(stream);
     if(error || size == 0) {

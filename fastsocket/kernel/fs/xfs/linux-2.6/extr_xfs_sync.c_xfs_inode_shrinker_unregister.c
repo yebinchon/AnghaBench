@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct xfs_mount {int /*<<< orphan*/  m_inode_shrink; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  unregister_shrinker (int /*<<< orphan*/ *) ; 
+
+
+
+struct xfs_mount {int m_inode_shrink; } ;
+
+
+ int unregister_shrinker (int *) ;
 
 void
 xfs_inode_shrinker_unregister(
-	struct xfs_mount	*mp)
+ struct xfs_mount *mp)
 {
-	unregister_shrinker(&mp->m_inode_shrink);
+ unregister_shrinker(&mp->m_inode_shrink);
 }

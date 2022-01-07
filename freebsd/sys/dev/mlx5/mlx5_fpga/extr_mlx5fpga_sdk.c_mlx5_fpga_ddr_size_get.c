@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u64 ;
-struct mlx5_fpga_device {int /*<<< orphan*/  mdev; } ;
 
-/* Variables and functions */
- scalar_t__ MLX5_CAP_FPGA (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fpga_ddr_size ; 
+
+
+
+typedef int u64 ;
+struct mlx5_fpga_device {int mdev; } ;
+
+
+ scalar_t__ MLX5_CAP_FPGA (int ,int ) ;
+ int fpga_ddr_size ;
 
 u64 mlx5_fpga_ddr_size_get(struct mlx5_fpga_device *fdev)
 {
-	return (u64)MLX5_CAP_FPGA(fdev->mdev, fpga_ddr_size) << 10;
+ return (u64)MLX5_CAP_FPGA(fdev->mdev, fpga_ddr_size) << 10;
 }

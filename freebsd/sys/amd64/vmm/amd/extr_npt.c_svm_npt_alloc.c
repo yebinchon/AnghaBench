@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vm_offset_t ;
+
+
+
+
+typedef int vm_offset_t ;
 struct vmspace {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  npt_pinit ; 
- struct vmspace* vmspace_alloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int npt_pinit ;
+ struct vmspace* vmspace_alloc (int ,int ,int ) ;
 
 struct vmspace *
 svm_npt_alloc(vm_offset_t min, vm_offset_t max)
 {
-	
-	return (vmspace_alloc(min, max, npt_pinit));
+
+ return (vmspace_alloc(min, max, npt_pinit));
 }

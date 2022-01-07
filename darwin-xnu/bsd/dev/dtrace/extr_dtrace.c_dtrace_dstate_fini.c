@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  dtds_percpu; int /*<<< orphan*/  dtds_size; int /*<<< orphan*/ * dtds_base; } ;
-typedef  TYPE_1__ dtrace_dstate_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LCK_MTX_ASSERT (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LCK_MTX_ASSERT_OWNED ; 
- int /*<<< orphan*/  cpu_lock ; 
- int /*<<< orphan*/  dtrace_state_cache ; 
- int /*<<< orphan*/  kmem_cache_free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kmem_free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int dtds_percpu; int dtds_size; int * dtds_base; } ;
+typedef TYPE_1__ dtrace_dstate_t ;
+
+
+ int LCK_MTX_ASSERT (int *,int ) ;
+ int LCK_MTX_ASSERT_OWNED ;
+ int cpu_lock ;
+ int dtrace_state_cache ;
+ int kmem_cache_free (int ,int ) ;
+ int kmem_free (int *,int ) ;
 
 __attribute__((used)) static void
 dtrace_dstate_fini(dtrace_dstate_t *dstate)
 {
-	LCK_MTX_ASSERT(&cpu_lock, LCK_MTX_ASSERT_OWNED);
+ LCK_MTX_ASSERT(&cpu_lock, LCK_MTX_ASSERT_OWNED);
 
-	if (dstate->dtds_base == NULL)
-		return;
+ if (dstate->dtds_base == ((void*)0))
+  return;
 
-	kmem_free(dstate->dtds_base, dstate->dtds_size);
-	kmem_cache_free(dtrace_state_cache, dstate->dtds_percpu);
+ kmem_free(dstate->dtds_base, dstate->dtds_size);
+ kmem_cache_free(dtrace_state_cache, dstate->dtds_percpu);
 }

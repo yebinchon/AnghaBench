@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cs_etm_queue {int /*<<< orphan*/  decoder; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cs_etm__free_traceid_queues (struct cs_etm_queue*) ; 
- int /*<<< orphan*/  cs_etm_decoder__free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (struct cs_etm_queue*) ; 
+
+
+
+struct cs_etm_queue {int decoder; } ;
+
+
+ int cs_etm__free_traceid_queues (struct cs_etm_queue*) ;
+ int cs_etm_decoder__free (int ) ;
+ int free (struct cs_etm_queue*) ;
 
 __attribute__((used)) static void cs_etm__free_queue(void *priv)
 {
-	struct cs_etm_queue *etmq = priv;
+ struct cs_etm_queue *etmq = priv;
 
-	if (!etmq)
-		return;
+ if (!etmq)
+  return;
 
-	cs_etm_decoder__free(etmq->decoder);
-	cs_etm__free_traceid_queues(etmq);
-	free(etmq);
+ cs_etm_decoder__free(etmq->decoder);
+ cs_etm__free_traceid_queues(etmq);
+ free(etmq);
 }

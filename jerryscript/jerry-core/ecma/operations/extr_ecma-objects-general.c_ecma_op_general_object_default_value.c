@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  lit_magic_string_id_t ;
-typedef  int /*<<< orphan*/  ecma_value_t ;
-typedef  scalar_t__ ecma_preferred_type_hint_t ;
-typedef  int /*<<< orphan*/  ecma_object_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ECMA_ERR_MSG (char*) ; 
- scalar_t__ ECMA_IS_VALUE_ERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ ECMA_PREFERRED_TYPE_NO ; 
- scalar_t__ ECMA_PREFERRED_TYPE_NUMBER ; 
- scalar_t__ ECMA_PREFERRED_TYPE_STRING ; 
- int /*<<< orphan*/  ECMA_VALUE_EMPTY ; 
- int /*<<< orphan*/  JERRY_ASSERT (int) ; 
- int /*<<< orphan*/  LIT_MAGIC_STRING_DATE_UL ; 
- int /*<<< orphan*/  LIT_MAGIC_STRING_TO_STRING_UL ; 
- int /*<<< orphan*/  LIT_MAGIC_STRING_VALUE_OF_UL ; 
- int /*<<< orphan*/  ecma_free_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ecma_get_object_from_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ecma_is_lexical_environment (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ecma_is_value_empty (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ecma_is_value_object (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ecma_make_object_value (int /*<<< orphan*/ *) ; 
- scalar_t__ ecma_object_class_is (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ecma_op_function_call (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ ecma_op_is_callable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ecma_op_object_get_by_magic_id (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ecma_raise_type_error (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+typedef int lit_magic_string_id_t ;
+typedef int ecma_value_t ;
+typedef scalar_t__ ecma_preferred_type_hint_t ;
+typedef int ecma_object_t ;
+
+
+ int ECMA_ERR_MSG (char*) ;
+ scalar_t__ ECMA_IS_VALUE_ERROR (int ) ;
+ scalar_t__ ECMA_PREFERRED_TYPE_NO ;
+ scalar_t__ ECMA_PREFERRED_TYPE_NUMBER ;
+ scalar_t__ ECMA_PREFERRED_TYPE_STRING ;
+ int ECMA_VALUE_EMPTY ;
+ int JERRY_ASSERT (int) ;
+ int LIT_MAGIC_STRING_DATE_UL ;
+ int LIT_MAGIC_STRING_TO_STRING_UL ;
+ int LIT_MAGIC_STRING_VALUE_OF_UL ;
+ int ecma_free_value (int ) ;
+ int * ecma_get_object_from_value (int ) ;
+ int ecma_is_lexical_environment (int *) ;
+ int ecma_is_value_empty (int ) ;
+ int ecma_is_value_object (int ) ;
+ int ecma_make_object_value (int *) ;
+ scalar_t__ ecma_object_class_is (int *,int ) ;
+ int ecma_op_function_call (int *,int ,int *,int ) ;
+ scalar_t__ ecma_op_is_callable (int ) ;
+ int ecma_op_object_get_by_magic_id (int *,int ) ;
+ int ecma_raise_type_error (int ) ;
 
 ecma_value_t
-ecma_op_general_object_default_value (ecma_object_t *obj_p, /**< the object */
-                                      ecma_preferred_type_hint_t hint) /**< hint on preferred result type */
+ecma_op_general_object_default_value (ecma_object_t *obj_p,
+                                      ecma_preferred_type_hint_t hint)
 {
-  JERRY_ASSERT (obj_p != NULL
+  JERRY_ASSERT (obj_p != ((void*)0)
                 && !ecma_is_lexical_environment (obj_p));
 
   if (hint == ECMA_PREFERRED_TYPE_NO)
@@ -87,7 +87,7 @@ ecma_op_general_object_default_value (ecma_object_t *obj_p, /**< the object */
 
       call_completion = ecma_op_function_call (func_obj_p,
                                                ecma_make_object_value (obj_p),
-                                               NULL,
+                                               ((void*)0),
                                                0);
     }
 

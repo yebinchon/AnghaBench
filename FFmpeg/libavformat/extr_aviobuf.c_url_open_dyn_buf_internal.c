@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int max_packet_size; } ;
-struct TYPE_8__ {unsigned int io_buffer_size; int /*<<< orphan*/  io_buffer; } ;
-typedef  TYPE_1__ DynBuffer ;
-typedef  TYPE_2__ AVIOContext ;
+struct TYPE_8__ {unsigned int io_buffer_size; int io_buffer; } ;
+typedef TYPE_1__ DynBuffer ;
+typedef TYPE_2__ AVIOContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_free (TYPE_1__*) ; 
- TYPE_1__* av_mallocz (int) ; 
- TYPE_2__* avio_alloc_context (int /*<<< orphan*/ ,unsigned int,int,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * dyn_buf_seek ; 
- int /*<<< orphan*/  dyn_buf_write ; 
- int /*<<< orphan*/  dyn_packet_buf_write ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int av_free (TYPE_1__*) ;
+ TYPE_1__* av_mallocz (int) ;
+ TYPE_2__* avio_alloc_context (int ,unsigned int,int,TYPE_1__*,int *,int ,int *) ;
+ int * dyn_buf_seek ;
+ int dyn_buf_write ;
+ int dyn_packet_buf_write ;
 
 __attribute__((used)) static int url_open_dyn_buf_internal(AVIOContext **s, int max_packet_size)
 {
@@ -38,9 +38,9 @@ __attribute__((used)) static int url_open_dyn_buf_internal(AVIOContext **s, int 
     if (!d)
         return AVERROR(ENOMEM);
     d->io_buffer_size = io_buffer_size;
-    *s = avio_alloc_context(d->io_buffer, d->io_buffer_size, 1, d, NULL,
+    *s = avio_alloc_context(d->io_buffer, d->io_buffer_size, 1, d, ((void*)0),
                             max_packet_size ? dyn_packet_buf_write : dyn_buf_write,
-                            max_packet_size ? NULL : dyn_buf_seek);
+                            max_packet_size ? ((void*)0) : dyn_buf_seek);
     if(!*s) {
         av_free(d);
         return AVERROR(ENOMEM);

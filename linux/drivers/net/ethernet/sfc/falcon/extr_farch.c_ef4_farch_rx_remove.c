@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ef4_rx_queue {int /*<<< orphan*/  rxd; int /*<<< orphan*/  efx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ef4_free_special_buffer (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct ef4_rx_queue {int rxd; int efx; } ;
+
+
+ int ef4_free_special_buffer (int ,int *) ;
 
 void ef4_farch_rx_remove(struct ef4_rx_queue *rx_queue)
 {
-	ef4_free_special_buffer(rx_queue->efx, &rx_queue->rxd);
+ ef4_free_special_buffer(rx_queue->efx, &rx_queue->rxd);
 }

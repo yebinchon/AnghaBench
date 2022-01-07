@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LOG_DEBUG ; 
- int /*<<< orphan*/  test_architecture_table () ; 
- int /*<<< orphan*/  test_filter_sets () ; 
- int /*<<< orphan*/  test_filter_sets_ordered () ; 
- int /*<<< orphan*/  test_load_syscall_filter_set_raw () ; 
- int /*<<< orphan*/  test_lock_personality () ; 
- int /*<<< orphan*/  test_memory_deny_write_execute_mmap () ; 
- int /*<<< orphan*/  test_memory_deny_write_execute_shmat () ; 
- int /*<<< orphan*/  test_protect_sysctl () ; 
- int /*<<< orphan*/  test_protect_syslog () ; 
- int /*<<< orphan*/  test_restrict_address_families () ; 
- int /*<<< orphan*/  test_restrict_archs () ; 
- int /*<<< orphan*/  test_restrict_namespace () ; 
- int /*<<< orphan*/  test_restrict_realtime () ; 
- int /*<<< orphan*/  test_restrict_suid_sgid () ; 
- int /*<<< orphan*/  test_seccomp_arch_to_string () ; 
- int /*<<< orphan*/  test_setup_logging (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_syscall_filter_set_find () ; 
+ int LOG_DEBUG ;
+ int test_architecture_table () ;
+ int test_filter_sets () ;
+ int test_filter_sets_ordered () ;
+ int test_load_syscall_filter_set_raw () ;
+ int test_lock_personality () ;
+ int test_memory_deny_write_execute_mmap () ;
+ int test_memory_deny_write_execute_shmat () ;
+ int test_protect_sysctl () ;
+ int test_protect_syslog () ;
+ int test_restrict_address_families () ;
+ int test_restrict_archs () ;
+ int test_restrict_namespace () ;
+ int test_restrict_realtime () ;
+ int test_restrict_suid_sgid () ;
+ int test_seccomp_arch_to_string () ;
+ int test_setup_logging (int ) ;
+ int test_syscall_filter_set_find () ;
 
 int main(int argc, char *argv[]) {
         test_setup_logging(LOG_DEBUG);

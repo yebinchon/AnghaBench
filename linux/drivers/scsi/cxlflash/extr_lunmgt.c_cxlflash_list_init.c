@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * err_page; int /*<<< orphan*/  mutex; int /*<<< orphan*/  gluns; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- TYPE_1__ global ; 
- int /*<<< orphan*/  mutex_init (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * err_page; int mutex; int gluns; } ;
+
+
+ int INIT_LIST_HEAD (int *) ;
+ TYPE_1__ global ;
+ int mutex_init (int *) ;
 
 void cxlflash_list_init(void)
 {
-	INIT_LIST_HEAD(&global.gluns);
-	mutex_init(&global.mutex);
-	global.err_page = NULL;
+ INIT_LIST_HEAD(&global.gluns);
+ mutex_init(&global.mutex);
+ global.err_page = ((void*)0);
 }

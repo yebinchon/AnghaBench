@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zval ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int zval ;
 struct TYPE_3__ {int len; struct TYPE_3__* entry; struct TYPE_3__* val; scalar_t__ val_free; struct TYPE_3__* key; scalar_t__ key_free; } ;
-typedef  TYPE_1__ clusterDistList ;
+typedef TYPE_1__ clusterDistList ;
 
-/* Variables and functions */
- int /*<<< orphan*/  efree (TYPE_1__*) ; 
+
+ int efree (TYPE_1__*) ;
 
 __attribute__((used)) static void cluster_dist_free_ht(zval *p) {
     clusterDistList *dl = *(clusterDistList**)p;

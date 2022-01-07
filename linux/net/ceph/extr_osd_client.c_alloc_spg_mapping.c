@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ceph_spg_mapping {int /*<<< orphan*/  backoffs; int /*<<< orphan*/  node; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_NOIO ; 
- int /*<<< orphan*/  RB_CLEAR_NODE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RB_ROOT ; 
- struct ceph_spg_mapping* kmalloc (int,int /*<<< orphan*/ ) ; 
+
+
+
+struct ceph_spg_mapping {int backoffs; int node; } ;
+
+
+ int GFP_NOIO ;
+ int RB_CLEAR_NODE (int *) ;
+ int RB_ROOT ;
+ struct ceph_spg_mapping* kmalloc (int,int ) ;
 
 __attribute__((used)) static struct ceph_spg_mapping *alloc_spg_mapping(void)
 {
-	struct ceph_spg_mapping *spg;
+ struct ceph_spg_mapping *spg;
 
-	spg = kmalloc(sizeof(*spg), GFP_NOIO);
-	if (!spg)
-		return NULL;
+ spg = kmalloc(sizeof(*spg), GFP_NOIO);
+ if (!spg)
+  return ((void*)0);
 
-	RB_CLEAR_NODE(&spg->node);
-	spg->backoffs = RB_ROOT;
-	return spg;
+ RB_CLEAR_NODE(&spg->node);
+ spg->backoffs = RB_ROOT;
+ return spg;
 }

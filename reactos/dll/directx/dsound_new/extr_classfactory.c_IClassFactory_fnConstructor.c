@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int ref; int /*<<< orphan*/  riidInst; int /*<<< orphan*/  lpfnCI; int /*<<< orphan*/ * lpVtbl; } ;
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  scalar_t__ PLONG ;
-typedef  int /*<<< orphan*/  LPFNCREATEINSTANCE ;
-typedef  int /*<<< orphan*/ * LPCLASSFACTORY ;
-typedef  TYPE_1__ IClassFactoryImpl ;
-typedef  int /*<<< orphan*/  IClassFactory ;
 
-/* Variables and functions */
- TYPE_1__* CoTaskMemAlloc (int) ; 
- int /*<<< orphan*/  InterlockedIncrement (scalar_t__) ; 
- int /*<<< orphan*/  dclfvt ; 
 
-IClassFactory * 
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int ref; int riidInst; int lpfnCI; int * lpVtbl; } ;
+typedef int REFIID ;
+typedef scalar_t__ PLONG ;
+typedef int LPFNCREATEINSTANCE ;
+typedef int * LPCLASSFACTORY ;
+typedef TYPE_1__ IClassFactoryImpl ;
+typedef int IClassFactory ;
+
+
+ TYPE_1__* CoTaskMemAlloc (int) ;
+ int InterlockedIncrement (scalar_t__) ;
+ int dclfvt ;
+
+IClassFactory *
 IClassFactory_fnConstructor(
-    LPFNCREATEINSTANCE lpfnCI, 
-    PLONG pcRefDll, 
+    LPFNCREATEINSTANCE lpfnCI,
+    PLONG pcRefDll,
     REFIID riidInst)
 {
     IClassFactoryImpl* lpclf;

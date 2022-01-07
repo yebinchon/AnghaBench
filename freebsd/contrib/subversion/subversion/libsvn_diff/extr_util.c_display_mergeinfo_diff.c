@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char const* data; } ;
-typedef  TYPE_1__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_rangelist_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
+typedef TYPE_1__ svn_string_t ;
+typedef int svn_stream_t ;
+typedef int svn_rangelist_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_hash_index_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_EOL_STR ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- char* _ (char*) ; 
- char const* apr_hash_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- char* apr_hash_this_key (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_this_val (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_mergeinfo_diff2 (int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_mergeinfo_parse (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_rangelist_to_string (TYPE_1__**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_printf_from_utf8 (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,char*,char const*,char const*,int /*<<< orphan*/ ) ; 
+
+ int APR_EOL_STR ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ char* _ (char*) ;
+ char const* apr_hash_count (int *) ;
+ int * apr_hash_first (int *,int *) ;
+ int * apr_hash_next (int *) ;
+ char* apr_hash_this_key (int *) ;
+ int * apr_hash_this_val (int *) ;
+ int svn_mergeinfo_diff2 (int **,int **,int *,int *,int ,int *,int *) ;
+ int svn_mergeinfo_parse (int **,char const*,int *) ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ int svn_rangelist_to_string (TYPE_1__**,int *,int *) ;
+ int svn_stream_printf_from_utf8 (int *,char const*,int *,char*,char const*,char const*,int ) ;
 
 __attribute__((used)) static svn_error_t *
 display_mergeinfo_diff(const char *old_mergeinfo_val,
@@ -53,19 +53,19 @@ display_mergeinfo_diff(const char *old_mergeinfo_val,
   if (old_mergeinfo_val)
     SVN_ERR(svn_mergeinfo_parse(&old_mergeinfo_hash, old_mergeinfo_val, pool));
   else
-    old_mergeinfo_hash = NULL;
+    old_mergeinfo_hash = ((void*)0);
 
   if (new_mergeinfo_val)
     SVN_ERR(svn_mergeinfo_parse(&new_mergeinfo_hash, new_mergeinfo_val, pool));
   else
-    new_mergeinfo_hash = NULL;
+    new_mergeinfo_hash = ((void*)0);
 
   SVN_ERR(svn_mergeinfo_diff2(&deleted, &added, old_mergeinfo_hash,
                               new_mergeinfo_hash,
                               TRUE, pool, pool));
 
-  /* Print a hint for 'svn patch' or smilar tools, indicating the
-   * number of reverse-merges and forward-merges. */
+
+
   SVN_ERR(svn_stream_printf_from_utf8(outstream, encoding, pool,
                                       "## -0,%u +0,%u ##%s",
                                       apr_hash_count(deleted),

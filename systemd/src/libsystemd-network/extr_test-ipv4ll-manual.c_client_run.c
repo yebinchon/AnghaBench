@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ether_addr {int dummy; } ;
-typedef  int /*<<< orphan*/  sd_ipv4ll ;
-typedef  int /*<<< orphan*/  sd_event ;
+typedef int sd_ipv4ll ;
+typedef int sd_event ;
 
-/* Variables and functions */
- int EXIT_SUCCESS ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/  ll_handler ; 
- int /*<<< orphan*/  log_info (char*) ; 
- scalar_t__ safe_atou (char const*,unsigned int*) ; 
- scalar_t__ sd_event_loop (int /*<<< orphan*/ *) ; 
- scalar_t__ sd_ipv4ll_attach_event (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ sd_ipv4ll_new (int /*<<< orphan*/ **) ; 
- scalar_t__ sd_ipv4ll_set_address_seed (int /*<<< orphan*/ *,unsigned int) ; 
- scalar_t__ sd_ipv4ll_set_callback (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ sd_ipv4ll_set_ifindex (int /*<<< orphan*/ *,int) ; 
- scalar_t__ sd_ipv4ll_set_mac (int /*<<< orphan*/ *,struct ether_addr const*) ; 
- scalar_t__ sd_ipv4ll_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sd_ipv4ll_unref (int /*<<< orphan*/ *) ; 
+
+ int EXIT_SUCCESS ;
+ int assert_se (int) ;
+ int ll_handler ;
+ int log_info (char*) ;
+ scalar_t__ safe_atou (char const*,unsigned int*) ;
+ scalar_t__ sd_event_loop (int *) ;
+ scalar_t__ sd_ipv4ll_attach_event (int *,int *,int ) ;
+ scalar_t__ sd_ipv4ll_new (int **) ;
+ scalar_t__ sd_ipv4ll_set_address_seed (int *,unsigned int) ;
+ scalar_t__ sd_ipv4ll_set_callback (int *,int ,int *) ;
+ scalar_t__ sd_ipv4ll_set_ifindex (int *,int) ;
+ scalar_t__ sd_ipv4ll_set_mac (int *,struct ether_addr const*) ;
+ scalar_t__ sd_ipv4ll_start (int *) ;
+ int sd_ipv4ll_unref (int *) ;
 
 __attribute__((used)) static int client_run(int ifindex, const char *seed_str, const struct ether_addr *ha, sd_event *e) {
         sd_ipv4ll *ll;
@@ -38,7 +38,7 @@ __attribute__((used)) static int client_run(int ifindex, const char *seed_str, c
 
         assert_se(sd_ipv4ll_set_ifindex(ll, ifindex) >= 0);
         assert_se(sd_ipv4ll_set_mac(ll, ha) >= 0);
-        assert_se(sd_ipv4ll_set_callback(ll, ll_handler, NULL) >= 0);
+        assert_se(sd_ipv4ll_set_callback(ll, ll_handler, ((void*)0)) >= 0);
 
         if (seed_str) {
                 unsigned seed;

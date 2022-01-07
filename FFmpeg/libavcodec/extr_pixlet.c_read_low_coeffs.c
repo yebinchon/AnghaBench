@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ptrdiff_t ;
-typedef  int int64_t ;
-typedef  int int16_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int ptrdiff_t ;
+typedef int int64_t ;
+typedef int int16_t ;
 struct TYPE_5__ {TYPE_1__* priv_data; } ;
-struct TYPE_4__ {int /*<<< orphan*/  bc; } ;
-typedef  TYPE_1__ PixletContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_2__ AVCodecContext ;
+struct TYPE_4__ {int bc; } ;
+typedef TYPE_1__ PixletContext ;
+typedef int GetBitContext ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- unsigned int FFMIN (int,int) ; 
- int /*<<< orphan*/  align_get_bits (int /*<<< orphan*/ *) ; 
- int av_mod_uintp2 (int,unsigned int) ; 
- int ff_clz (int) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits_count (int /*<<< orphan*/ *) ; 
- unsigned int get_unary (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int show_bits (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  skip_bits (int /*<<< orphan*/ *,unsigned int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ unsigned int FFMIN (int,int) ;
+ int align_get_bits (int *) ;
+ int av_mod_uintp2 (int,unsigned int) ;
+ int ff_clz (int) ;
+ int get_bits (int *,int) ;
+ int get_bits_count (int *) ;
+ unsigned int get_unary (int *,int ,int) ;
+ int show_bits (int *,unsigned int) ;
+ int skip_bits (int *,unsigned int) ;
 
 __attribute__((used)) static int read_low_coeffs(AVCodecContext *avctx, int16_t *dst, int size,
                            int width, ptrdiff_t stride)
@@ -59,22 +59,22 @@ __attribute__((used)) static int read_low_coeffs(AVCodecContext *avctx, int16_t 
             escape = get_bits(bc, 16);
         }
 
-        value    = -((escape + flag) & 1) | 1;
+        value = -((escape + flag) & 1) | 1;
         dst[j++] = value * ((escape + flag + 1) >> 1);
         i++;
         if (j == width) {
-            j    = 0;
+            j = 0;
             dst += stride;
         }
         state = 120 * (escape + flag) + state - (120 * state >> 8);
-        flag  = 0;
+        flag = 0;
 
         if (state * 4ULL > 0xFF || i >= size)
             continue;
 
-        nbits  = ((state + 8) >> 5) + (state ? ff_clz(state) : 32) - 24;
+        nbits = ((state + 8) >> 5) + (state ? ff_clz(state) : 32) - 24;
         escape = av_mod_uintp2(16383, nbits);
-        cnt1   = get_unary(bc, 0, 8);
+        cnt1 = get_unary(bc, 0, 8);
         if (cnt1 > 7) {
             rlen = get_bits(bc, 16);
         } else {
@@ -95,13 +95,13 @@ __attribute__((used)) static int read_low_coeffs(AVCodecContext *avctx, int16_t 
         for (k = 0; k < rlen; k++) {
             dst[j++] = 0;
             if (j == width) {
-                j    = 0;
+                j = 0;
                 dst += stride;
             }
         }
 
         state = 0;
-        flag  = rlen < 0xFFFF ? 1 : 0;
+        flag = rlen < 0xFFFF ? 1 : 0;
     }
 
     align_get_bits(bc);

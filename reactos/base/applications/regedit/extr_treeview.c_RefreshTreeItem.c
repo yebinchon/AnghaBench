@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_4__ {int cChildren; int cchTextMax; int* pszText; void* hItem; int /*<<< orphan*/  mask; } ;
-typedef  TYPE_1__ TVITEMW ;
-typedef  int* LPWSTR ;
-typedef  int* LPCWSTR ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  void* HTREEITEM ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddEntryToTree (int /*<<< orphan*/ ,void*,int*,int /*<<< orphan*/ *,int) ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ FALSE ; 
- int* GetItemPath (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- scalar_t__ HeapReAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  KEY_QUERY_VALUE ; 
- int /*<<< orphan*/  KEY_READ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegEnumKeyExW (int /*<<< orphan*/ ,int,int*,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryInfoKeyW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  TVIF_CHILDREN ; 
- int /*<<< orphan*/  TVIF_TEXT ; 
- int /*<<< orphan*/  TVIS_EXPANDED ; 
- int /*<<< orphan*/  TVM_SORTCHILDREN ; 
- int /*<<< orphan*/  TreeView_DeleteItem (int /*<<< orphan*/ ,void*) ; 
- void* TreeView_GetChild (int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  TreeView_GetItem (int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ TreeView_GetItemState (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
- void* TreeView_GetNextSibling (int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  TreeView_SetItem (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  wcscmp (int*,int*) ; 
- scalar_t__ wcslen (int*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_4__ {int cChildren; int cchTextMax; int* pszText; void* hItem; int mask; } ;
+typedef TYPE_1__ TVITEMW ;
+typedef int* LPWSTR ;
+typedef int* LPCWSTR ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef void* HTREEITEM ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ int AddEntryToTree (int ,void*,int*,int *,int) ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ FALSE ;
+ int* GetItemPath (int ,void*,int *) ;
+ int GetProcessHeap () ;
+ int* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int*) ;
+ scalar_t__ HeapReAlloc (int ,int ,int*,int) ;
+ int KEY_QUERY_VALUE ;
+ int KEY_READ ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegEnumKeyExW (int ,int,int*,int*,int ,int ,int ,int *) ;
+ scalar_t__ RegOpenKeyExW (int ,int*,int ,int ,int *) ;
+ scalar_t__ RegQueryInfoKeyW (int ,int ,int ,int ,int*,int*,int ,int ,int ,int ,int ,int ) ;
+ int SendMessageW (int ,int ,int ,int ) ;
+ scalar_t__ TRUE ;
+ int TVIF_CHILDREN ;
+ int TVIF_TEXT ;
+ int TVIS_EXPANDED ;
+ int TVM_SORTCHILDREN ;
+ int TreeView_DeleteItem (int ,void*) ;
+ void* TreeView_GetChild (int ,void*) ;
+ int TreeView_GetItem (int ,TYPE_1__*) ;
+ scalar_t__ TreeView_GetItemState (int ,void*,int ) ;
+ void* TreeView_GetNextSibling (int ,void*) ;
+ int TreeView_SetItem (int ,TYPE_1__*) ;
+ int wcscmp (int*,int*) ;
+ scalar_t__ wcslen (int*) ;
 
 BOOL RefreshTreeItem(HWND hwndTV, HTREEITEM hItem)
 {
@@ -59,9 +59,9 @@ BOOL RefreshTreeItem(HWND hwndTV, HTREEITEM hItem)
     HTREEITEM childItem;
     LPCWSTR KeyPath;
     DWORD dwCount, dwIndex, dwMaxSubKeyLen;
-    LPWSTR Name = NULL;
+    LPWSTR Name = ((void*)0);
     TVITEMW tvItem;
-    LPWSTR pszNodes = NULL;
+    LPWSTR pszNodes = ((void*)0);
     BOOL bSuccess = FALSE;
     LPWSTR s;
     BOOL bAddedAny;
@@ -85,7 +85,7 @@ BOOL RefreshTreeItem(HWND hwndTV, HTREEITEM hItem)
         goto done;
     }
 
-    /* Set the number of children again */
+
     tvItem.mask = TVIF_CHILDREN;
     tvItem.hItem = hItem;
     tvItem.cChildren = dwCount;
@@ -94,7 +94,7 @@ BOOL RefreshTreeItem(HWND hwndTV, HTREEITEM hItem)
         goto done;
     }
 
-    /* We don't have to bother with the rest if it's not expanded. */
+
     if (TreeView_GetItemState(hwndTV, hItem, TVIS_EXPANDED) == 0)
     {
         RegCloseKey(hKey);
@@ -102,17 +102,17 @@ BOOL RefreshTreeItem(HWND hwndTV, HTREEITEM hItem)
         goto done;
     }
 
-    dwMaxSubKeyLen++; /* account for the \0 terminator */
+    dwMaxSubKeyLen++;
     if (!(Name = HeapAlloc(GetProcessHeap(), 0, dwMaxSubKeyLen * sizeof(WCHAR))))
     {
         goto done;
     }
     tvItem.cchTextMax = dwMaxSubKeyLen;
-    /*if (!(tvItem.pszText = HeapAlloc(GetProcessHeap(), 0, dwMaxSubKeyLen * sizeof(WCHAR)))) {
-        goto done;
-    }*/
 
-    /* Get all of the tree node siblings in one contiguous block of memory */
+
+
+
+
     {
         DWORD dwPhysicalSize = 0;
         DWORD dwActualSize = 0;
@@ -153,7 +153,7 @@ BOOL RefreshTreeItem(HWND hwndTV, HTREEITEM hItem)
             pszNodes[dwActualSize] = L'\0';
     }
 
-    /* Now go through all the children in the tree, and check if any have to be removed. */
+
     childItem = TreeView_GetChild(hwndTV, hItem);
     while (childItem)
     {
@@ -165,7 +165,7 @@ BOOL RefreshTreeItem(HWND hwndTV, HTREEITEM hItem)
         childItem = nextItem;
     }
 
-    /* Now go through all the children in the registry, and check if any have to be added. */
+
     bAddedAny = FALSE;
     for (dwIndex = 0; dwIndex < dwCount; dwIndex++)
     {
@@ -173,12 +173,12 @@ BOOL RefreshTreeItem(HWND hwndTV, HTREEITEM hItem)
         BOOL found;
 
         found = FALSE;
-        if (RegEnumKeyExW(hKey, dwIndex, Name, &cName, 0, 0, 0, NULL) != ERROR_SUCCESS)
+        if (RegEnumKeyExW(hKey, dwIndex, Name, &cName, 0, 0, 0, ((void*)0)) != ERROR_SUCCESS)
         {
             continue;
         }
 
-        /* Check if the node is already in there. */
+
         if (pszNodes)
         {
             for (s = pszNodes; *s; s += wcslen(s) + 1)
@@ -193,7 +193,7 @@ BOOL RefreshTreeItem(HWND hwndTV, HTREEITEM hItem)
 
         if (found == FALSE)
         {
-            /* Find the number of children of the node. */
+
             dwSubCount = 0;
             if (RegOpenKeyExW(hKey, Name, 0, KEY_QUERY_VALUE, &hSubKey) == ERROR_SUCCESS)
             {
@@ -204,7 +204,7 @@ BOOL RefreshTreeItem(HWND hwndTV, HTREEITEM hItem)
                 RegCloseKey(hSubKey);
             }
 
-            AddEntryToTree(hwndTV, hItem, Name, NULL, dwSubCount);
+            AddEntryToTree(hwndTV, hItem, Name, ((void*)0), dwSubCount);
             bAddedAny = TRUE;
         }
     }

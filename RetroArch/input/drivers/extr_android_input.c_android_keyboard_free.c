@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int DEFAULT_MAX_PADS ; 
- unsigned int MAX_KEYS ; 
- scalar_t__** android_key_state ; 
+ unsigned int DEFAULT_MAX_PADS ;
+ unsigned int MAX_KEYS ;
+ scalar_t__** android_key_state ;
 
 __attribute__((used)) static void android_keyboard_free(void)
 {

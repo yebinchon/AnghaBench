@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_9__ ;
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_18__ {scalar_t__ frame_count_in; int /*<<< orphan*/  time_base; } ;
-struct TYPE_17__ {int /*<<< orphan*/  time_base; int /*<<< orphan*/  pts; } ;
+
+
+typedef struct TYPE_18__ TYPE_9__ ;
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_18__ {scalar_t__ frame_count_in; int time_base; } ;
+struct TYPE_17__ {int time_base; int pts; } ;
 struct TYPE_16__ {int nb_inputs; TYPE_9__** outputs; } ;
 struct TYPE_15__ {scalar_t__ pts; } ;
 struct TYPE_14__ {TYPE_1__* opaque; TYPE_4__* parent; } ;
 struct TYPE_13__ {int nb_map; int* map; scalar_t__* last_pts; TYPE_6__ fs; scalar_t__ is_audio; TYPE_3__** frames; } ;
-typedef  TYPE_1__ StreamSelectContext ;
-typedef  TYPE_2__ FFFrameSync ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVFilterContext ;
+typedef TYPE_1__ StreamSelectContext ;
+typedef TYPE_2__ FFFrameSync ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- TYPE_3__* av_frame_clone (TYPE_3__*) ; 
- scalar_t__ av_rescale_q (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ff_filter_frame (TYPE_9__*,TYPE_3__*) ; 
- int /*<<< orphan*/  ff_filter_set_ready (TYPE_4__*,int) ; 
- int ff_framesync_get_frame (TYPE_6__*,int,TYPE_3__**,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ TYPE_3__* av_frame_clone (TYPE_3__*) ;
+ scalar_t__ av_rescale_q (int ,int ,int ) ;
+ int ff_filter_frame (TYPE_9__*,TYPE_3__*) ;
+ int ff_filter_set_ready (TYPE_4__*,int) ;
+ int ff_framesync_get_frame (TYPE_6__*,int,TYPE_3__**,int ) ;
 
 __attribute__((used)) static int process_frame(FFFrameSync *fs)
 {

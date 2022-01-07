@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct evmap_signal {int /*<<< orphan*/  events; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIST_INIT (int /*<<< orphan*/ *) ; 
+
+
+
+struct evmap_signal {int events; } ;
+
+
+ int LIST_INIT (int *) ;
 
 __attribute__((used)) static void
 evmap_signal_init(struct evmap_signal *entry)
 {
-	LIST_INIT(&entry->events);
+ LIST_INIT(&entry->events);
 }

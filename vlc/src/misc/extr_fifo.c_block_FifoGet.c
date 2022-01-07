@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  block_t ;
-typedef  int /*<<< orphan*/  block_fifo_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  vlc_cleanup_pop () ; 
- int /*<<< orphan*/  vlc_fifo_CleanupPush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vlc_fifo_DequeueUnlocked (int /*<<< orphan*/ *) ; 
- scalar_t__ vlc_fifo_IsEmpty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_fifo_Lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_fifo_Unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_fifo_Wait (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_testcancel () ; 
+
+
+
+typedef int block_t ;
+typedef int block_fifo_t ;
+
+
+ int vlc_cleanup_pop () ;
+ int vlc_fifo_CleanupPush (int *) ;
+ int * vlc_fifo_DequeueUnlocked (int *) ;
+ scalar_t__ vlc_fifo_IsEmpty (int *) ;
+ int vlc_fifo_Lock (int *) ;
+ int vlc_fifo_Unlock (int *) ;
+ int vlc_fifo_Wait (int *) ;
+ int vlc_testcancel () ;
 
 block_t *block_FifoGet(block_fifo_t *fifo)
 {

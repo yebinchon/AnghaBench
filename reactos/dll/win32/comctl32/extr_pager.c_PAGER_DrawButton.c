@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int UINT ;
 struct TYPE_5__ {scalar_t__ right; scalar_t__ left; scalar_t__ bottom; scalar_t__ top; } ;
-typedef  TYPE_1__ RECT ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  COLORREF ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_1__ RECT ;
+typedef int INT ;
+typedef int HDC ;
+typedef int COLORREF ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int DFCS_FLAT ; 
- int DFCS_INACTIVE ; 
- int DFCS_PUSHED ; 
- int DFCS_SCROLLDOWN ; 
- int DFCS_SCROLLLEFT ; 
- int DFCS_SCROLLRIGHT ; 
- int DFCS_SCROLLUP ; 
- int /*<<< orphan*/  DFC_SCROLL ; 
- int /*<<< orphan*/  DrawFrameControl (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int) ; 
-#define  PGF_DEPRESSED 131 
-#define  PGF_GRAYED 130 
-#define  PGF_HOT 129 
- int PGF_INVISIBLE ; 
-#define  PGF_NORMAL 128 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  wine_dbgstr_rect (TYPE_1__*) ; 
+
+ int DFCS_FLAT ;
+ int DFCS_INACTIVE ;
+ int DFCS_PUSHED ;
+ int DFCS_SCROLLDOWN ;
+ int DFCS_SCROLLLEFT ;
+ int DFCS_SCROLLRIGHT ;
+ int DFCS_SCROLLUP ;
+ int DFC_SCROLL ;
+ int DrawFrameControl (int ,TYPE_1__*,int ,int) ;
+
+
+
+ int PGF_INVISIBLE ;
+
+ int TRACE (char*,int ,int) ;
+ int wine_dbgstr_rect (TYPE_1__*) ;
 
 __attribute__((used)) static void
 PAGER_DrawButton(HDC hdc, COLORREF clrBk, RECT rc,
@@ -58,15 +58,15 @@ PAGER_DrawButton(HDC hdc, COLORREF clrBk, RECT rc,
 
     switch (btnState)
     {
-    case PGF_HOT:
+    case 129:
         break;
-    case PGF_NORMAL:
+    case 128:
         flags |= DFCS_FLAT;
         break;
-    case PGF_DEPRESSED:
+    case 131:
         flags |= DFCS_PUSHED;
         break;
-    case PGF_GRAYED:
+    case 130:
         flags |= DFCS_INACTIVE | DFCS_FLAT;
         break;
     }

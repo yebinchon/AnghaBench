@@ -1,77 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_txdelta_window_handler_t ;
-typedef  int /*<<< orphan*/  svn_txdelta_stream_t ;
-typedef  int /*<<< orphan*/  svn_string_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/ * (* svn_repos_authz_func_t ) (void**,int /*<<< orphan*/ *,char const*,void*,int /*<<< orphan*/ *) ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_fs_root_t ;
-struct TYPE_6__ {scalar_t__ change_kind; char* copyfrom_path; int /*<<< orphan*/  copyfrom_rev; void* copyfrom_known; } ;
-typedef  TYPE_1__ svn_fs_path_change3_t ;
-struct TYPE_7__ {scalar_t__ kind; int /*<<< orphan*/  name; } ;
-typedef  TYPE_2__ svn_fs_dirent_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_8__ {int /*<<< orphan*/ * (* close_file ) (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;int /*<<< orphan*/ * (* apply_textdelta ) (void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ;int /*<<< orphan*/ * (* change_file_prop ) (void*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;int /*<<< orphan*/ * (* add_file ) (char const*,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ;int /*<<< orphan*/ * (* close_directory ) (void*,int /*<<< orphan*/ *) ;int /*<<< orphan*/ * (* add_directory ) (char const*,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ;int /*<<< orphan*/ * (* change_dir_prop ) (void*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_3__ svn_delta_editor_t ;
-typedef  int /*<<< orphan*/  svn_checksum_t ;
-typedef  void* svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SVN_ERR_MALFUNCTION () ; 
- int /*<<< orphan*/  SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- void* TRUE ; 
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- char* apr_hash_this_key (int /*<<< orphan*/ *) ; 
- void* apr_hash_this_val (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stub1 (char const*,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/ * stub2 (void*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stub3 (char const*,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/ * stub4 (void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stub5 (char const*,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/ * stub6 (void*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stub7 (void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/ * stub8 (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_checksum_md5 ; 
- int /*<<< orphan*/  svn_checksum_to_cstring (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_fs_copied_from (int /*<<< orphan*/ *,char**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_fs_dir_entries (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_fs_file_checksum (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char const*,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_fs_get_file_delta_stream (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_fs_node_proplist (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_fs_path_change_delete ; 
- scalar_t__ svn_fs_path_change_replace ; 
- int /*<<< orphan*/ * svn_fs_revision_root (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_fs_root_fs (int /*<<< orphan*/ *) ; 
- char* svn_fspath__join (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_1__* svn_hash_gets (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_dir ; 
- scalar_t__ svn_node_file ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- char* svn_relpath_join (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_txdelta_send_txstream (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int svn_txdelta_window_handler_t ;
+typedef int svn_txdelta_stream_t ;
+typedef int svn_string_t ;
+typedef int svn_revnum_t ;
+typedef int * (* svn_repos_authz_func_t ) (void**,int *,char const*,void*,int *) ;
+typedef int svn_fs_t ;
+typedef int svn_fs_root_t ;
+struct TYPE_6__ {scalar_t__ change_kind; char* copyfrom_path; int copyfrom_rev; void* copyfrom_known; } ;
+typedef TYPE_1__ svn_fs_path_change3_t ;
+struct TYPE_7__ {scalar_t__ kind; int name; } ;
+typedef TYPE_2__ svn_fs_dirent_t ;
+typedef int svn_error_t ;
+struct TYPE_8__ {int * (* close_file ) (void*,int ,int *) ;int * (* apply_textdelta ) (void*,int *,int *,int *,void**) ;int * (* change_file_prop ) (void*,char const*,int *,int *) ;int * (* add_file ) (char const*,void*,int *,int ,int *,void**) ;int * (* close_directory ) (void*,int *) ;int * (* add_directory ) (char const*,void*,int *,int ,int *,void**) ;int * (* change_dir_prop ) (void*,char const*,int *,int *) ;} ;
+typedef TYPE_3__ svn_delta_editor_t ;
+typedef int svn_checksum_t ;
+typedef void* svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_hash_index_t ;
+
+
+ int SVN_ERR (int *) ;
+ int SVN_ERR_MALFUNCTION () ;
+ int SVN_INVALID_REVNUM ;
+ int * SVN_NO_ERROR ;
+ void* TRUE ;
+ int * apr_hash_first (int *,int *) ;
+ int * apr_hash_next (int *) ;
+ char* apr_hash_this_key (int *) ;
+ void* apr_hash_this_val (int *) ;
+ int * stub1 (char const*,void*,int *,int ,int *,void**) ;
+ int * stub2 (void*,char const*,int *,int *) ;
+ int * stub3 (char const*,void*,int *,int ,int *,void**) ;
+ int * stub4 (void*,int *) ;
+ int * stub5 (char const*,void*,int *,int ,int *,void**) ;
+ int * stub6 (void*,char const*,int *,int *) ;
+ int * stub7 (void*,int *,int *,int *,void**) ;
+ int * stub8 (void*,int ,int *) ;
+ int svn_checksum_md5 ;
+ int svn_checksum_to_cstring (int *,int *) ;
+ int * svn_fs_copied_from (int *,char**,int *,char const*,int *) ;
+ int * svn_fs_dir_entries (int **,int *,char const*,int *) ;
+ int * svn_fs_file_checksum (int **,int ,int *,char const*,void*,int *) ;
+ int * svn_fs_get_file_delta_stream (int **,int *,int *,int *,char const*,int *) ;
+ int * svn_fs_node_proplist (int **,int *,char const*,int *) ;
+ scalar_t__ svn_fs_path_change_delete ;
+ scalar_t__ svn_fs_path_change_replace ;
+ int * svn_fs_revision_root (int **,int *,int ,int *) ;
+ int * svn_fs_root_fs (int *) ;
+ char* svn_fspath__join (char const*,int ,int *) ;
+ TYPE_1__* svn_hash_gets (int *,char const*) ;
+ int svn_hash_sets (int *,char const*,int *) ;
+ scalar_t__ svn_node_dir ;
+ scalar_t__ svn_node_file ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ char* svn_relpath_join (char const*,int ,int *) ;
+ int * svn_txdelta_send_txstream (int *,int ,void*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 add_subdir(svn_fs_root_t *source_root,
@@ -92,7 +92,7 @@ add_subdir(svn_fs_root_t *source_root,
   apr_hash_t *dirents;
   apr_hash_t *props;
 
-  SVN_ERR(editor->add_directory(edit_path, parent_baton, NULL,
+  SVN_ERR(editor->add_directory(edit_path, parent_baton, ((void*)0),
                                 SVN_INVALID_REVNUM, pool, dir_baton));
 
   SVN_ERR(svn_fs_node_proplist(&props, target_root, edit_path, pool));
@@ -106,9 +106,9 @@ add_subdir(svn_fs_root_t *source_root,
       SVN_ERR(editor->change_dir_prop(*dir_baton, key, val, subpool));
     }
 
-  /* We have to get the dirents from the source path, not the target,
-     because we want nested copies from *readable* paths to be handled by
-     path_driver_cb_func, not add_subdir (in order to preserve history). */
+
+
+
   SVN_ERR(svn_fs_dir_entries(&dirents, source_root, source_fspath, pool));
 
   for (hi = apr_hash_first(pool, dirents); hi; hi = apr_hash_next(hi))
@@ -116,7 +116,7 @@ add_subdir(svn_fs_root_t *source_root,
       svn_fs_path_change3_t *change;
       svn_boolean_t readable = TRUE;
       svn_fs_dirent_t *dent = apr_hash_this_val(hi);
-      const char *copyfrom_path = NULL;
+      const char *copyfrom_path = ((void*)0);
       svn_revnum_t copyfrom_rev = SVN_INVALID_REVNUM;
       const char *new_edit_path;
 
@@ -124,21 +124,21 @@ add_subdir(svn_fs_root_t *source_root,
 
       new_edit_path = svn_relpath_join(edit_path, dent->name, subpool);
 
-      /* If a file or subdirectory of the copied directory is listed as a
-         changed path (because it was modified after the copy but before the
-         commit), we remove it from the changed_paths hash so that future
-         calls to path_driver_cb_func will ignore it. */
+
+
+
+
       change = svn_hash_gets(changed_paths, new_edit_path);
       if (change)
         {
-          svn_hash_sets(changed_paths, new_edit_path, NULL);
+          svn_hash_sets(changed_paths, new_edit_path, ((void*)0));
 
-          /* If it's a delete, skip this entry. */
+
           if (change->change_kind == svn_fs_path_change_delete)
             continue;
 
-          /* If it's a replacement, check for copyfrom info (if we
-             don't have it already. */
+
+
           if (change->change_kind == svn_fs_path_change_replace)
             {
               if (! change->copyfrom_known)
@@ -180,16 +180,16 @@ add_subdir(svn_fs_root_t *source_root,
                                                    subpool);
             }
 
-          /* ### authz considerations?
-           *
-           * I think not; when path_driver_cb_func() calls add_subdir(), it
-           * passes SOURCE_ROOT and SOURCE_FSPATH that are unreadable.
-           */
+
+
+
+
+
           if (change && change->change_kind == svn_fs_path_change_replace
-              && copyfrom_path == NULL)
+              && copyfrom_path == ((void*)0))
             {
               SVN_ERR(editor->add_directory(new_edit_path, *dir_baton,
-                                            NULL, SVN_INVALID_REVNUM,
+                                            ((void*)0), SVN_INVALID_REVNUM,
                                             subpool, &new_dir_baton));
             }
           else
@@ -210,7 +210,7 @@ add_subdir(svn_fs_root_t *source_root,
           svn_txdelta_stream_t *delta_stream;
           svn_checksum_t *checksum;
 
-          SVN_ERR(editor->add_file(new_edit_path, *dir_baton, NULL,
+          SVN_ERR(editor->add_file(new_edit_path, *dir_baton, ((void*)0),
                                    SVN_INVALID_REVNUM, pool, &file_baton));
 
           SVN_ERR(svn_fs_node_proplist(&props, target_root,
@@ -224,11 +224,11 @@ add_subdir(svn_fs_root_t *source_root,
               SVN_ERR(editor->change_file_prop(file_baton, key, val, subpool));
             }
 
-          SVN_ERR(editor->apply_textdelta(file_baton, NULL, pool,
+          SVN_ERR(editor->apply_textdelta(file_baton, ((void*)0), pool,
                                           &delta_handler,
                                           &delta_handler_baton));
 
-          SVN_ERR(svn_fs_get_file_delta_stream(&delta_stream, NULL, NULL,
+          SVN_ERR(svn_fs_get_file_delta_stream(&delta_stream, ((void*)0), ((void*)0),
                                                target_root, new_edit_path,
                                                pool));
 

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  error; } ;
-typedef  scalar_t__ HPDF_STATUS ;
-typedef  TYPE_1__* HPDF_Outline ;
 
-/* Variables and functions */
- scalar_t__ HPDF_Dict_Add (TYPE_1__*,char*,TYPE_1__*) ; 
- int /*<<< orphan*/  HPDF_Dict_GetItem (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ HPDF_Error_GetCode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_OCLASS_DICT ; 
- scalar_t__ HPDF_OK ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int error; } ;
+typedef scalar_t__ HPDF_STATUS ;
+typedef TYPE_1__* HPDF_Outline ;
+
+
+ scalar_t__ HPDF_Dict_Add (TYPE_1__*,char*,TYPE_1__*) ;
+ int HPDF_Dict_GetItem (TYPE_1__*,char*,int ) ;
+ scalar_t__ HPDF_Error_GetCode (int ) ;
+ int HPDF_OCLASS_DICT ;
+ scalar_t__ HPDF_OK ;
+ int HPDF_PTRACE (char*) ;
 
 __attribute__((used)) static HPDF_STATUS
-AddChild  (HPDF_Outline  parent,
-           HPDF_Outline  item)
+AddChild (HPDF_Outline parent,
+           HPDF_Outline item)
 {
     HPDF_Outline first = (HPDF_Outline)HPDF_Dict_GetItem (parent, "First",
                     HPDF_OCLASS_DICT);

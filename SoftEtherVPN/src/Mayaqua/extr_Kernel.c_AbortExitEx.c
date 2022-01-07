@@ -1,57 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RLIMIT_CORE ; 
- int /*<<< orphan*/  UnixSetResourceLimit (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _exit (int) ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fwrite (char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+
+
+typedef int FILE ;
+
+
+ int RLIMIT_CORE ;
+ int UnixSetResourceLimit (int ,int ) ;
+ int _exit (int) ;
+ int abort () ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fputs (char*,int ) ;
+ int fwrite (char*,int,int ,int *) ;
+ int stdout ;
+ int strlen (char*) ;
 
 void AbortExitEx(char *msg)
 {
-	FILE *f;
-	// Validate arguments
-	if (msg == NULL)
-	{
-		msg = "Unknown Error";
-	}
+ FILE *f;
 
-	f = fopen("abort_error_log.txt", "w");
-	if (f != NULL)
-	{
-		fwrite(msg, 1, strlen(msg), f);
-		fclose(f);
-	}
+ if (msg == ((void*)0))
+ {
+  msg = "Unknown Error";
+ }
 
-	fputs("Fatal Error: ", stdout);
-	fputs(msg, stdout);
-	fputs("\r\n", stdout);
+ f = fopen("abort_error_log.txt", "w");
+ if (f != ((void*)0))
+ {
+  fwrite(msg, 1, strlen(msg), f);
+  fclose(f);
+ }
 
-#ifdef	OS_WIN32
-	_exit(1);
-#else	// OS_WIN32
+ fputs("Fatal Error: ", stdout);
+ fputs(msg, stdout);
+ fputs("\r\n", stdout);
+ abort();
 
-#ifdef	RLIMIT_CORE
-	UnixSetResourceLimit(RLIMIT_CORE, 0);
-#endif	// RLIMIT_CORE
-
-	abort();
-#endif	// OS_WIN32
 }

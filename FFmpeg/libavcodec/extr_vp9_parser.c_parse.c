@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_6__ {int profile; } ;
-struct TYPE_5__ {int key_frame; int /*<<< orphan*/  pict_type; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_1__ AVCodecParserContext ;
-typedef  TYPE_2__ AVCodecContext ;
+struct TYPE_5__ {int key_frame; int pict_type; } ;
+typedef int GetBitContext ;
+typedef TYPE_1__ AVCodecParserContext ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_PICTURE_TYPE_I ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_P ; 
- int /*<<< orphan*/  get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits1 (int /*<<< orphan*/ *) ; 
- int init_get_bits8 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
+
+ int AV_PICTURE_TYPE_I ;
+ int AV_PICTURE_TYPE_P ;
+ int get_bits (int *,int) ;
+ int get_bits1 (int *) ;
+ int init_get_bits8 (int *,int const*,int) ;
 
 __attribute__((used)) static int parse(AVCodecParserContext *ctx,
                  AVCodecContext *avctx,
@@ -38,9 +38,9 @@ __attribute__((used)) static int parse(AVCodecParserContext *ctx,
     *out_size = size;
 
     if (!size || (res = init_get_bits8(&gb, data, size)) < 0)
-        return size; // parsers can't return errors
-    get_bits(&gb, 2); // frame marker
-    profile  = get_bits1(&gb);
+        return size;
+    get_bits(&gb, 2);
+    profile = get_bits1(&gb);
     profile |= get_bits1(&gb) << 1;
     if (profile == 3) profile += get_bits1(&gb);
     if (profile > 3)
@@ -51,7 +51,7 @@ __attribute__((used)) static int parse(AVCodecParserContext *ctx,
     if (get_bits1(&gb)) {
         keyframe = 0;
     } else {
-        keyframe  = !get_bits1(&gb);
+        keyframe = !get_bits1(&gb);
     }
 
     if (!keyframe) {

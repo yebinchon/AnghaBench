@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct connection {scalar_t__ status; int generation; scalar_t__ basic_type; TYPE_4__* type; scalar_t__ flags; TYPE_3__* target; TYPE_2__* next; TYPE_2__* prev; struct conn_query* first_query; } ;
 struct conn_query {TYPE_1__* cq_type; } ;
-struct TYPE_8__ {int (* free_buffers ) (struct connection*) ;int /*<<< orphan*/  (* crypto_free ) (struct connection*) ;} ;
-struct TYPE_7__ {int /*<<< orphan*/  active_outbound_connections; int /*<<< orphan*/  outbound_connections; } ;
+struct TYPE_8__ {int (* free_buffers ) (struct connection*) ;int (* crypto_free ) (struct connection*) ;} ;
+struct TYPE_7__ {int active_outbound_connections; int outbound_connections; } ;
 struct TYPE_6__ {struct TYPE_6__* next; struct TYPE_6__* prev; } ;
-struct TYPE_5__ {int /*<<< orphan*/  (* close ) (struct conn_query*) ;} ;
+struct TYPE_5__ {int (* close ) (struct conn_query*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  active_outbound_connections ; 
- int /*<<< orphan*/  clear_connection_timeout (struct connection*) ; 
- scalar_t__ conn_connecting ; 
- scalar_t__ conn_none ; 
- scalar_t__ ct_listen ; 
- int /*<<< orphan*/  delete_conn_query (struct conn_query*) ; 
- int /*<<< orphan*/  outbound_connections ; 
- int /*<<< orphan*/  stub1 (struct conn_query*) ; 
- int /*<<< orphan*/  stub2 (struct connection*) ; 
- int stub3 (struct connection*) ; 
+
+ int active_outbound_connections ;
+ int clear_connection_timeout (struct connection*) ;
+ scalar_t__ conn_connecting ;
+ scalar_t__ conn_none ;
+ scalar_t__ ct_listen ;
+ int delete_conn_query (struct conn_query*) ;
+ int outbound_connections ;
+ int stub1 (struct conn_query*) ;
+ int stub2 (struct connection*) ;
+ int stub3 (struct connection*) ;
 
 int server_close_connection (struct connection *c, int who) {
   struct conn_query *q;

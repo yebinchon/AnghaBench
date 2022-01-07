@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CONF_F_CONF_PARSE_LIST ; 
- int /*<<< orphan*/  CONF_R_LIST_CANNOT_BE_NULL ; 
- int /*<<< orphan*/  CONFerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ isspace (unsigned char) ; 
- char* strchr (char const*,int) ; 
- int strlen (char const*) ; 
+ int CONF_F_CONF_PARSE_LIST ;
+ int CONF_R_LIST_CANNOT_BE_NULL ;
+ int CONFerr (int ,int ) ;
+ scalar_t__ isspace (unsigned char) ;
+ char* strchr (char const*,int) ;
+ int strlen (char const*) ;
 
 int CONF_parse_list(const char *list_, int sep, int nospc,
                     int (*list_cb) (const char *elem, int len, void *usr),
@@ -26,7 +18,7 @@ int CONF_parse_list(const char *list_, int sep, int nospc,
     int ret;
     const char *lstart, *tmpend, *p;
 
-    if (list_ == NULL) {
+    if (list_ == ((void*)0)) {
         CONFerr(CONF_F_CONF_PARSE_LIST, CONF_R_LIST_CANNOT_BE_NULL);
         return 0;
     }
@@ -39,7 +31,7 @@ int CONF_parse_list(const char *list_, int sep, int nospc,
         }
         p = strchr(lstart, sep);
         if (p == lstart || *lstart == '\0')
-            ret = list_cb(NULL, 0, arg);
+            ret = list_cb(((void*)0), 0, arg);
         else {
             if (p)
                 tmpend = p - 1;
@@ -53,7 +45,7 @@ int CONF_parse_list(const char *list_, int sep, int nospc,
         }
         if (ret <= 0)
             return ret;
-        if (p == NULL)
+        if (p == ((void*)0))
             return 1;
         lstart = p + 1;
     }

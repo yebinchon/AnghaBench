@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_check_prime (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_new () ; 
- int /*<<< orphan*/  BN_set_word (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_int_eq (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ctx ; 
- int /*<<< orphan*/ * primes ; 
+
+
+
+typedef int BIGNUM ;
+
+
+ int BN_check_prime (int *,int ,int *) ;
+ int BN_free (int *) ;
+ int * BN_new () ;
+ int BN_set_word (int *,int ) ;
+ int TEST_int_eq (int ,int) ;
+ int TEST_ptr (int *) ;
+ int TEST_true (int ) ;
+ int ctx ;
+ int * primes ;
 
 __attribute__((used)) static int test_is_prime(int i)
 {
     int ret = 0;
-    BIGNUM *r = NULL;
+    BIGNUM *r = ((void*)0);
     int trial;
 
     if (!TEST_ptr(r = BN_new()))
@@ -34,7 +34,7 @@ __attribute__((used)) static int test_is_prime(int i)
 
     for (trial = 0; trial <= 1; ++trial) {
         if (!TEST_true(BN_set_word(r, primes[i]))
-                || !TEST_int_eq(BN_check_prime(r, ctx, NULL),
+                || !TEST_int_eq(BN_check_prime(r, ctx, ((void*)0)),
                                 1))
             goto err;
     }

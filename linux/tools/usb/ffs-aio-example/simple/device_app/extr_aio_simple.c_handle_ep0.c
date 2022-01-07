@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int bRequestType; } ;
 struct TYPE_4__ {TYPE_1__ setup; } ;
 struct usb_functionfs_event {int type; TYPE_2__ u; } ;
 struct pollfd {int fd; int events; int revents; } ;
-typedef  int /*<<< orphan*/  event ;
+typedef int event ;
 
-/* Variables and functions */
-#define  FUNCTIONFS_DISABLE 130 
-#define  FUNCTIONFS_ENABLE 129 
-#define  FUNCTIONFS_SETUP 128 
- int POLLIN ; 
- int USB_DIR_IN ; 
- int /*<<< orphan*/  display_event (struct usb_functionfs_event*) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int poll (struct pollfd*,int,int /*<<< orphan*/ ) ; 
- int read (int,struct usb_functionfs_event*,int) ; 
- int /*<<< orphan*/  write (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+
+ int POLLIN ;
+ int USB_DIR_IN ;
+ int display_event (struct usb_functionfs_event*) ;
+ int perror (char*) ;
+ int poll (struct pollfd*,int,int ) ;
+ int read (int,struct usb_functionfs_event*,int) ;
+ int write (int,int *,int ) ;
 
 __attribute__((used)) static void handle_ep0(int ep0, bool *ready)
 {
-	struct usb_functionfs_event event;
-	int ret;
+ struct usb_functionfs_event event;
+ int ret;
 
-	struct pollfd pfds[1];
-	pfds[0].fd = ep0;
-	pfds[0].events = POLLIN;
+ struct pollfd pfds[1];
+ pfds[0].fd = ep0;
+ pfds[0].events = POLLIN;
 
-	ret = poll(pfds, 1, 0);
+ ret = poll(pfds, 1, 0);
 
-	if (ret && (pfds[0].revents & POLLIN)) {
-		ret = read(ep0, &event, sizeof(event));
-		if (!ret) {
-			perror("unable to read event from ep0");
-			return;
-		}
-		display_event(&event);
-		switch (event.type) {
-		case FUNCTIONFS_SETUP:
-			if (event.u.setup.bRequestType & USB_DIR_IN)
-				write(ep0, NULL, 0);
-			else
-				read(ep0, NULL, 0);
-			break;
+ if (ret && (pfds[0].revents & POLLIN)) {
+  ret = read(ep0, &event, sizeof(event));
+  if (!ret) {
+   perror("unable to read event from ep0");
+   return;
+  }
+  display_event(&event);
+  switch (event.type) {
+  case 128:
+   if (event.u.setup.bRequestType & USB_DIR_IN)
+    write(ep0, ((void*)0), 0);
+   else
+    read(ep0, ((void*)0), 0);
+   break;
 
-		case FUNCTIONFS_ENABLE:
-			*ready = true;
-			break;
+  case 129:
+   *ready = 1;
+   break;
 
-		case FUNCTIONFS_DISABLE:
-			*ready = false;
-			break;
+  case 130:
+   *ready = 0;
+   break;
 
-		default:
-			break;
-		}
-	}
+  default:
+   break;
+  }
+ }
 }

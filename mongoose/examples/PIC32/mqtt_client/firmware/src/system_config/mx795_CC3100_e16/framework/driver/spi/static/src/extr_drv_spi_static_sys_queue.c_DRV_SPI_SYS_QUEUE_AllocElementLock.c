@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ DRV_SPI_SYS_QUEUE_RESULT ;
-typedef  int /*<<< orphan*/  DRV_SPI_SYS_QUEUE_HANDLE ;
 
-/* Variables and functions */
- scalar_t__ DRV_SPI_SYS_QUEUE_AllocElement (int /*<<< orphan*/ ,void**) ; 
- scalar_t__ DRV_SPI_SYS_QUEUE_SUCCESS ; 
- scalar_t__ _DRV_SPI_SYS_QUEUE_LockQueue (int /*<<< orphan*/ ,int) ; 
- scalar_t__ _DRV_SPI_SYS_QUEUE_UnlockQueue (int /*<<< orphan*/ ,int) ; 
 
-DRV_SPI_SYS_QUEUE_RESULT DRV_SPI_SYS_QUEUE_AllocElementLock(DRV_SPI_SYS_QUEUE_HANDLE queue, void  ** element)
+
+
+typedef scalar_t__ DRV_SPI_SYS_QUEUE_RESULT ;
+typedef int DRV_SPI_SYS_QUEUE_HANDLE ;
+
+
+ scalar_t__ DRV_SPI_SYS_QUEUE_AllocElement (int ,void**) ;
+ scalar_t__ DRV_SPI_SYS_QUEUE_SUCCESS ;
+ scalar_t__ _DRV_SPI_SYS_QUEUE_LockQueue (int ,int) ;
+ scalar_t__ _DRV_SPI_SYS_QUEUE_UnlockQueue (int ,int) ;
+
+DRV_SPI_SYS_QUEUE_RESULT DRV_SPI_SYS_QUEUE_AllocElementLock(DRV_SPI_SYS_QUEUE_HANDLE queue, void ** element)
 {
     DRV_SPI_SYS_QUEUE_RESULT ret;
     DRV_SPI_SYS_QUEUE_RESULT ret2;
-    ret = _DRV_SPI_SYS_QUEUE_LockQueue(queue, true);
+    ret = _DRV_SPI_SYS_QUEUE_LockQueue(queue, 1);
     if (ret != DRV_SPI_SYS_QUEUE_SUCCESS)
     {
         return ret;
@@ -31,7 +31,7 @@ DRV_SPI_SYS_QUEUE_RESULT DRV_SPI_SYS_QUEUE_AllocElementLock(DRV_SPI_SYS_QUEUE_HA
 
     ret2 = DRV_SPI_SYS_QUEUE_AllocElement(queue, element);
 
-    ret = _DRV_SPI_SYS_QUEUE_UnlockQueue(queue, true);
+    ret = _DRV_SPI_SYS_QUEUE_UnlockQueue(queue, 1);
     if (ret != DRV_SPI_SYS_QUEUE_SUCCESS)
     {
         return ret;

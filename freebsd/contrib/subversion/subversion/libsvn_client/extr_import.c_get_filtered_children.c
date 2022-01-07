@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  lock_state; int /*<<< orphan*/  prop_state; int /*<<< orphan*/  content_state; int /*<<< orphan*/  kind; } ;
-typedef  TYPE_1__ svn_wc_notify_t ;
-typedef  int /*<<< orphan*/  svn_io_dirent2_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  (* svn_client_import_filter_func_t ) (void*,scalar_t__*,char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ;
-struct TYPE_7__ {int /*<<< orphan*/  notify_baton2; int /*<<< orphan*/  (* notify_func2 ) (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_2__ svn_client_ctx_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- char* apr_hash_this_key (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_this_val (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- char* svn_dirent_join (char const*,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_hash_gets (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_get_dirents3 (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_node_dir ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- TYPE_1__* svn_wc_create_notify (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc_is_adm_dir (char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc_match_ignore_list (char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_notify_lock_state_inapplicable ; 
- int /*<<< orphan*/  svn_wc_notify_skip ; 
- int /*<<< orphan*/  svn_wc_notify_state_inapplicable ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int lock_state; int prop_state; int content_state; int kind; } ;
+typedef TYPE_1__ svn_wc_notify_t ;
+typedef int svn_io_dirent2_t ;
+typedef int svn_error_t ;
+typedef int (* svn_client_import_filter_func_t ) (void*,scalar_t__*,char const*,int const*,int *) ;
+struct TYPE_7__ {int notify_baton2; int (* notify_func2 ) (int ,TYPE_1__*,int *) ;} ;
+typedef TYPE_2__ svn_client_ctx_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_hash_index_t ;
+typedef int apr_array_header_t ;
+
+
+ scalar_t__ FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int * apr_hash_first (int *,int *) ;
+ int * apr_hash_next (int *) ;
+ char* apr_hash_this_key (int *) ;
+ int * apr_hash_this_val (int *) ;
+ int stub1 (int ,TYPE_1__*,int *) ;
+ char* svn_dirent_join (char const*,char const*,int *) ;
+ scalar_t__ svn_hash_gets (int *,char const*) ;
+ int svn_hash_sets (int *,char const*,int *) ;
+ int svn_io_get_dirents3 (int **,char const*,int ,int *,int *) ;
+ int svn_node_dir ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ TYPE_1__* svn_wc_create_notify (char*,int ,int *) ;
+ scalar_t__ svn_wc_is_adm_dir (char const*,int *) ;
+ scalar_t__ svn_wc_match_ignore_list (char const*,int *,int *) ;
+ int svn_wc_notify_lock_state_inapplicable ;
+ int svn_wc_notify_skip ;
+ int svn_wc_notify_state_inapplicable ;
 
 __attribute__((used)) static svn_error_t *
 get_filtered_children(apr_hash_t **children,
@@ -81,12 +81,12 @@ get_filtered_children(apr_hash_t **children,
 
       if (svn_wc_is_adm_dir(base_name, iterpool))
         {
-          /* If someone's trying to import a directory named the same
-             as our administrative directories, that's probably not
-             what they wanted to do.  If they are importing a file
-             with that name, something is bound to blow up when they
-             checkout what they've imported.  So, just skip items with
-             that name.  */
+
+
+
+
+
+
           if (ctx->notify_func2)
             {
               svn_wc_notify_t *notify
@@ -100,26 +100,26 @@ get_filtered_children(apr_hash_t **children,
               ctx->notify_func2(ctx->notify_baton2, notify, iterpool);
             }
 
-          svn_hash_sets(dirents, base_name, NULL);
+          svn_hash_sets(dirents, base_name, ((void*)0));
           continue;
         }
-            /* If this is an excluded path, exclude it. */
+
       if (svn_hash_gets(excludes, local_abspath))
         {
-          svn_hash_sets(dirents, base_name, NULL);
+          svn_hash_sets(dirents, base_name, ((void*)0));
           continue;
         }
 
       if (ignores && svn_wc_match_ignore_list(base_name, ignores, iterpool))
         {
-          svn_hash_sets(dirents, base_name, NULL);
+          svn_hash_sets(dirents, base_name, ((void*)0));
           continue;
         }
 
       if (global_ignores &&
           svn_wc_match_ignore_list(base_name, global_ignores, iterpool))
         {
-          svn_hash_sets(dirents, base_name, NULL);
+          svn_hash_sets(dirents, base_name, ((void*)0));
           continue;
         }
 
@@ -132,7 +132,7 @@ get_filtered_children(apr_hash_t **children,
 
           if (filter)
             {
-              svn_hash_sets(dirents, base_name, NULL);
+              svn_hash_sets(dirents, base_name, ((void*)0));
               continue;
             }
         }

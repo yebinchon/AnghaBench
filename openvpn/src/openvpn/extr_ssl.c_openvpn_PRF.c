@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char uint8_t ;
+
+
+
+
+typedef char uint8_t ;
 struct session_id {char const* id; } ;
 struct buffer {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BLEN (struct buffer*) ; 
- int /*<<< orphan*/  BPTR (struct buffer*) ; 
- int SID_SIZE ; 
- int /*<<< orphan*/  VALGRIND_MAKE_READABLE (void*,int) ; 
- struct buffer alloc_buf (int) ; 
- int /*<<< orphan*/  buf_clear (struct buffer*) ; 
- int /*<<< orphan*/  buf_write (struct buffer*,char const*,int) ; 
- int /*<<< orphan*/  free_buf (struct buffer*) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  tls1_PRF (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int,char*,int) ; 
+
+ int ASSERT (int ) ;
+ int BLEN (struct buffer*) ;
+ int BPTR (struct buffer*) ;
+ int SID_SIZE ;
+ int VALGRIND_MAKE_READABLE (void*,int) ;
+ struct buffer alloc_buf (int) ;
+ int buf_clear (struct buffer*) ;
+ int buf_write (struct buffer*,char const*,int) ;
+ int free_buf (struct buffer*) ;
+ int strlen (char const*) ;
+ int tls1_PRF (int ,int ,char const*,int,char*,int) ;
 
 __attribute__((used)) static void
 openvpn_PRF(const uint8_t *secret,
@@ -40,7 +40,7 @@ openvpn_PRF(const uint8_t *secret,
             uint8_t *output,
             int output_len)
 {
-    /* concatenate seed components */
+
 
     struct buffer seed = alloc_buf(strlen(label)
                                    + client_seed_len
@@ -60,7 +60,7 @@ openvpn_PRF(const uint8_t *secret,
         ASSERT(buf_write(&seed, server_sid->id, SID_SIZE));
     }
 
-    /* compute PRF */
+
     tls1_PRF(BPTR(&seed), BLEN(&seed), secret, secret_len, output, output_len);
 
     buf_clear(&seed);

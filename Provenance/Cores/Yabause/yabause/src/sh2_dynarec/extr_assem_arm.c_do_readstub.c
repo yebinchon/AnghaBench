@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct regstat {char* regmap; } ;
 
-/* Variables and functions */
- int AGEN1 ; 
- int CCREG ; 
- int LOADB_STUB ; 
- int LOADL_STUB ; 
- int LOADS_STUB ; 
- int LOADW_STUB ; 
- scalar_t__ MappedMemoryReadByte ; 
- scalar_t__ MappedMemoryReadLong ; 
- scalar_t__ MappedMemoryReadWord ; 
- int RTEMP ; 
- int TBIT ; 
- int /*<<< orphan*/  assem_debug (char*,scalar_t__) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  dynarec_local ; 
- int /*<<< orphan*/  emit_addimm (int,int,int) ; 
- int /*<<< orphan*/  emit_call (int) ; 
- int /*<<< orphan*/  emit_jmp (int) ; 
- int /*<<< orphan*/  emit_loadreg (int,int) ; 
- int /*<<< orphan*/  emit_mov (int,int) ; 
- int /*<<< orphan*/  emit_movsbl_reg (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  emit_movswl_reg (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  emit_readword (int,int) ; 
- int /*<<< orphan*/  emit_writeword (int,int) ; 
- int /*<<< orphan*/  emit_xorimm (int,int,int /*<<< orphan*/ ) ; 
- int get_reg (char*,int) ; 
- int /*<<< orphan*/  literal_pool (int) ; 
- scalar_t__ out ; 
- int /*<<< orphan*/  restore_regs (int) ; 
- int* rt1 ; 
- int /*<<< orphan*/  save_regs (int) ; 
- int /*<<< orphan*/  set_jump_target (int,int) ; 
- scalar_t__ start ; 
- int** stubs ; 
+
+ int AGEN1 ;
+ int CCREG ;
+ int LOADB_STUB ;
+ int LOADL_STUB ;
+ int LOADS_STUB ;
+ int LOADW_STUB ;
+ scalar_t__ MappedMemoryReadByte ;
+ scalar_t__ MappedMemoryReadLong ;
+ scalar_t__ MappedMemoryReadWord ;
+ int RTEMP ;
+ int TBIT ;
+ int assem_debug (char*,scalar_t__) ;
+ int assert (int) ;
+ int dynarec_local ;
+ int emit_addimm (int,int,int) ;
+ int emit_call (int) ;
+ int emit_jmp (int) ;
+ int emit_loadreg (int,int) ;
+ int emit_mov (int,int) ;
+ int emit_movsbl_reg (int ,int) ;
+ int emit_movswl_reg (int ,int) ;
+ int emit_readword (int,int) ;
+ int emit_writeword (int,int) ;
+ int emit_xorimm (int,int,int ) ;
+ int get_reg (char*,int) ;
+ int literal_pool (int) ;
+ scalar_t__ out ;
+ int restore_regs (int) ;
+ int* rt1 ;
+ int save_regs (int) ;
+ int set_jump_target (int,int) ;
+ scalar_t__ start ;
+ int** stubs ;
 
 do_readstub(int n)
 {
@@ -72,12 +72,12 @@ do_readstub(int n)
   if(type==LOADB_STUB) emit_xorimm(rs,1,0);
   else {if(rs!=0) emit_mov(rs,0);}
 
-  //ds=i_regs!=&regs[i];
-  //int real_rs=(itype[i]==LOADLR)?-1:get_reg(i_regmap,rs1[i]);
-  //u32 cmask=ds?-1:(0x100f|~i_regs->wasdoingcp);
-  //if(!ds) load_all_consts(regs[i].regmap_entry,regs[i].was32,regs[i].wasdirty&~(1<<addr)&(real_rs<0?-1:~(1<<real_rs))&0x100f,i);
-  //wb_dirtys(i_regs->regmap_entry,i_regs->was32,i_regs->wasdirty&cmask&~(1<<addr)&(real_rs<0?-1:~(1<<real_rs)));
-  //if(!ds) wb_consts(regs[i].regmap_entry,regs[i].was32,regs[i].wasdirty&~(1<<addr)&(real_rs<0?-1:~(1<<real_rs))&~0x100f,i);
+
+
+
+
+
+
   int cc=get_reg(i_regmap,CCREG);
   if(cc<0) {
     emit_loadreg(CCREG,2);
@@ -90,7 +90,7 @@ do_readstub(int n)
     emit_call((int)MappedMemoryReadLong);
   if(type==LOADS_STUB)
   {
-    // RTE instruction, pop PC and SR from stack
+
     int pc=get_reg(i_regmap,RTEMP);
     assert(pc>=0);
     if(rs<4||rs==12)
@@ -133,5 +133,5 @@ do_readstub(int n)
   }
   restore_regs(reglist);
   if(type==LOADS_STUB) emit_addimm(rs,8,rs);
-  emit_jmp(stubs[n][2]); // return address
+  emit_jmp(stubs[n][2]);
 }

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cpu_state {int dummy; } ;
 
-/* Variables and functions */
- size_t fconst_zero ; 
- int /*<<< orphan*/  fpu_compare (struct cpu_state*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * fpu_consts ; 
+
+ size_t fconst_zero ;
+ int fpu_compare (struct cpu_state*,int ) ;
+ int * fpu_consts ;
 
 void fpu_tst(struct cpu_state *cpu) {
     fpu_compare(cpu, fpu_consts[fconst_zero]);

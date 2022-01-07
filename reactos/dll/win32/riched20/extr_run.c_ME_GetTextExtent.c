@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {scalar_t__ hDC; } ;
 struct TYPE_8__ {scalar_t__ cy; scalar_t__ cx; } ;
-typedef  TYPE_1__ SIZE ;
-typedef  int /*<<< orphan*/  ME_Style ;
-typedef  TYPE_2__ ME_Context ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  HGDIOBJ ;
+typedef TYPE_1__ SIZE ;
+typedef int ME_Style ;
+typedef TYPE_2__ ME_Context ;
+typedef int LPCWSTR ;
+typedef int HGDIOBJ ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetTextExtentPoint32W (scalar_t__,int /*<<< orphan*/ ,int,TYPE_1__*) ; 
- int /*<<< orphan*/  ME_SelectStyleFont (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ME_UnselectStyleFont (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int GetTextExtentPoint32W (scalar_t__,int ,int,TYPE_1__*) ;
+ int ME_SelectStyleFont (TYPE_2__*,int *) ;
+ int ME_UnselectStyleFont (TYPE_2__*,int *,int ) ;
 
 __attribute__((used)) static void ME_GetTextExtent(ME_Context *c, LPCWSTR szText, int nChars, ME_Style *s, SIZE *size)
 {

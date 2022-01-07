@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  builder; } ;
-typedef  TYPE_1__ signal_user_data_t ;
-typedef  int /*<<< orphan*/  GtkSpinButton ;
-typedef  int /*<<< orphan*/  GtkAdjustment ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GHB_WIDGET (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * GTK_SPIN_BUTTON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  adjustment_configure (int /*<<< orphan*/ *,double,double,double,double,double,double) ; 
- double gtk_adjustment_get_page_increment (int /*<<< orphan*/ *) ; 
- double gtk_adjustment_get_page_size (int /*<<< orphan*/ *) ; 
- double gtk_adjustment_get_step_increment (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * gtk_spin_button_get_adjustment (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int builder; } ;
+typedef TYPE_1__ signal_user_data_t ;
+typedef int GtkSpinButton ;
+typedef int GtkAdjustment ;
+
+
+ int GHB_WIDGET (int ,char*) ;
+ int * GTK_SPIN_BUTTON (int ) ;
+ int adjustment_configure (int *,double,double,double,double,double,double) ;
+ double gtk_adjustment_get_page_increment (int *) ;
+ double gtk_adjustment_get_page_size (int *) ;
+ double gtk_adjustment_get_step_increment (int *) ;
+ int * gtk_spin_button_get_adjustment (int *) ;
 
 __attribute__((used)) static void
 spin_configure(signal_user_data_t *ud, char *name, double val, double min, double max)

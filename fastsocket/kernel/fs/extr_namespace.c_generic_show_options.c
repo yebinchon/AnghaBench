@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct vfsmount {TYPE_1__* mnt_sb; } ;
 struct seq_file {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  s_options; } ;
+struct TYPE_2__ {int s_options; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mangle (struct seq_file*,char const*) ; 
- char* rcu_dereference (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rcu_read_lock () ; 
- int /*<<< orphan*/  rcu_read_unlock () ; 
- int /*<<< orphan*/  seq_putc (struct seq_file*,char) ; 
+
+ int mangle (struct seq_file*,char const*) ;
+ char* rcu_dereference (int ) ;
+ int rcu_read_lock () ;
+ int rcu_read_unlock () ;
+ int seq_putc (struct seq_file*,char) ;
 
 int generic_show_options(struct seq_file *m, struct vfsmount *mnt)
 {
-	const char *options;
+ const char *options;
 
-	rcu_read_lock();
-	options = rcu_dereference(mnt->mnt_sb->s_options);
+ rcu_read_lock();
+ options = rcu_dereference(mnt->mnt_sb->s_options);
 
-	if (options != NULL && options[0]) {
-		seq_putc(m, ',');
-		mangle(m, options);
-	}
-	rcu_read_unlock();
+ if (options != ((void*)0) && options[0]) {
+  seq_putc(m, ',');
+  mangle(m, options);
+ }
+ rcu_read_unlock();
 
-	return 0;
+ return 0;
 }

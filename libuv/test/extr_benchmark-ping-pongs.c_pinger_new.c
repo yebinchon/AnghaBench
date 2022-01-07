@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct sockaddr_in {int dummy; } ;
 struct sockaddr {int dummy; } ;
 struct TYPE_7__ {TYPE_1__* data; } ;
-struct TYPE_6__ {TYPE_2__ tcp; int /*<<< orphan*/  connect_req; scalar_t__ pongs; scalar_t__ state; } ;
-typedef  TYPE_1__ pinger_t ;
+struct TYPE_6__ {TYPE_2__ tcp; int connect_req; scalar_t__ pongs; scalar_t__ state; } ;
+typedef TYPE_1__ pinger_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  TEST_PORT ; 
- int /*<<< orphan*/  loop ; 
- TYPE_1__* malloc (int) ; 
- int /*<<< orphan*/  pinger_connect_cb ; 
- scalar_t__ uv_ip4_addr (char*,int /*<<< orphan*/ ,struct sockaddr_in*) ; 
- scalar_t__ uv_tcp_bind (TYPE_2__*,struct sockaddr const*,int /*<<< orphan*/ ) ; 
- int uv_tcp_connect (int /*<<< orphan*/ *,TYPE_2__*,struct sockaddr const*,int /*<<< orphan*/ ) ; 
- int uv_tcp_init (int /*<<< orphan*/ ,TYPE_2__*) ; 
+
+ int ASSERT (int) ;
+ int TEST_PORT ;
+ int loop ;
+ TYPE_1__* malloc (int) ;
+ int pinger_connect_cb ;
+ scalar_t__ uv_ip4_addr (char*,int ,struct sockaddr_in*) ;
+ scalar_t__ uv_tcp_bind (TYPE_2__*,struct sockaddr const*,int ) ;
+ int uv_tcp_connect (int *,TYPE_2__*,struct sockaddr const*,int ) ;
+ int uv_tcp_init (int ,TYPE_2__*) ;
 
 __attribute__((used)) static void pinger_new(void) {
   struct sockaddr_in client_addr;
@@ -41,7 +41,7 @@ __attribute__((used)) static void pinger_new(void) {
   pinger->state = 0;
   pinger->pongs = 0;
 
-  /* Try to connect to the server and do NUM_PINGS ping-pongs. */
+
   r = uv_tcp_init(loop, &pinger->tcp);
   ASSERT(!r);
 

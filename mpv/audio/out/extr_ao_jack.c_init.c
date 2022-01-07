@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct priv {int /*<<< orphan*/  client; int /*<<< orphan*/  num_ports; TYPE_1__* opts; } ;
-struct mp_chmap_sel {int /*<<< orphan*/  member_0; } ;
-struct TYPE_5__ {int /*<<< orphan*/  num; } ;
-struct ao {TYPE_2__ channels; int /*<<< orphan*/  samplerate; int /*<<< orphan*/  format; int /*<<< orphan*/  global; struct priv* priv; } ;
-typedef  int /*<<< orphan*/  jack_options_t ;
-struct TYPE_4__ {int stdlayout; int /*<<< orphan*/  client_name; int /*<<< orphan*/  autostart; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_FORMAT_FLOATP ; 
- int /*<<< orphan*/  JackNoStartServer ; 
- int /*<<< orphan*/  JackNullOption ; 
- int /*<<< orphan*/  MP_FATAL (struct ao*,char*) ; 
- int /*<<< orphan*/  ao_chmap_sel_adjust (struct ao*,struct mp_chmap_sel*,TYPE_2__*) ; 
- int /*<<< orphan*/  ao_chmap_sel_get_def (struct ao*,struct mp_chmap_sel*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ao_jack_conf ; 
- int /*<<< orphan*/  buffer_size_cb ; 
- scalar_t__ create_ports (struct ao*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  graph_order_cb ; 
- int /*<<< orphan*/  jack_client_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jack_client_open (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jack_get_sample_rate (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jack_set_buffer_size_callback (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct ao*) ; 
- int /*<<< orphan*/  jack_set_graph_order_callback (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct ao*) ; 
- int /*<<< orphan*/  jack_set_process_callback (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct ao*) ; 
- int /*<<< orphan*/  mp_chmap_sel_add_any (struct mp_chmap_sel*) ; 
- int /*<<< orphan*/  mp_chmap_sel_add_waveext (struct mp_chmap_sel*) ; 
- TYPE_1__* mp_get_config_group (struct ao*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  process ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct priv {int client; int num_ports; TYPE_1__* opts; } ;
+struct mp_chmap_sel {int member_0; } ;
+struct TYPE_5__ {int num; } ;
+struct ao {TYPE_2__ channels; int samplerate; int format; int global; struct priv* priv; } ;
+typedef int jack_options_t ;
+struct TYPE_4__ {int stdlayout; int client_name; int autostart; } ;
+
+
+ int AF_FORMAT_FLOATP ;
+ int JackNoStartServer ;
+ int JackNullOption ;
+ int MP_FATAL (struct ao*,char*) ;
+ int ao_chmap_sel_adjust (struct ao*,struct mp_chmap_sel*,TYPE_2__*) ;
+ int ao_chmap_sel_get_def (struct ao*,struct mp_chmap_sel*,TYPE_2__*,int ) ;
+ int ao_jack_conf ;
+ int buffer_size_cb ;
+ scalar_t__ create_ports (struct ao*,int ) ;
+ int graph_order_cb ;
+ int jack_client_close (int ) ;
+ int jack_client_open (int ,int ,int *) ;
+ int jack_get_sample_rate (int ) ;
+ int jack_set_buffer_size_callback (int ,int ,struct ao*) ;
+ int jack_set_graph_order_callback (int ,int ,struct ao*) ;
+ int jack_set_process_callback (int ,int ,struct ao*) ;
+ int mp_chmap_sel_add_any (struct mp_chmap_sel*) ;
+ int mp_chmap_sel_add_waveext (struct mp_chmap_sel*) ;
+ TYPE_1__* mp_get_config_group (struct ao*,int ,int *) ;
+ int process ;
 
 __attribute__((used)) static int init(struct ao *ao)
 {
@@ -67,7 +67,7 @@ __attribute__((used)) static int init(struct ao *ao)
     if (!p->opts->autostart)
         open_options |= JackNoStartServer;
 
-    p->client = jack_client_open(p->opts->client_name, open_options, NULL);
+    p->client = jack_client_open(p->opts->client_name, open_options, ((void*)0));
     if (!p->client) {
         MP_FATAL(ao, "cannot open server\n");
         goto err_client_open;

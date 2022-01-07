@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* kcdata_descriptor_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* kcdata_descriptor_t ;
 struct TYPE_3__ {scalar_t__ kcd_addr_begin; } ;
 
-/* Variables and functions */
+
 
 void *kcdata_memory_get_begin_addr(kcdata_descriptor_t data)
 {
-	if (data == NULL) {
-		return NULL;
-	}
+ if (data == ((void*)0)) {
+  return ((void*)0);
+ }
 
-	return (void *)data->kcd_addr_begin;
+ return (void *)data->kcd_addr_begin;
 }

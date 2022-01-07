@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  yrmcds_error ;
-struct TYPE_3__ {int capacity; scalar_t__ used; char* recvbuf; int /*<<< orphan*/  sock; } ;
-typedef  TYPE_1__ yrmcds_cnt ;
-typedef  int ssize_t ;
 
-/* Variables and functions */
- scalar_t__ EINTR ; 
- scalar_t__ RECV_SIZE ; 
- int /*<<< orphan*/  YRMCDS_DISCONNECTED ; 
- int /*<<< orphan*/  YRMCDS_OK ; 
- int /*<<< orphan*/  YRMCDS_OUT_OF_MEMORY ; 
- int /*<<< orphan*/  YRMCDS_SYSTEM_ERROR ; 
- scalar_t__ errno ; 
- scalar_t__ realloc (char*,size_t) ; 
- int recv (int /*<<< orphan*/ ,char*,scalar_t__,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int yrmcds_error ;
+struct TYPE_3__ {int capacity; scalar_t__ used; char* recvbuf; int sock; } ;
+typedef TYPE_1__ yrmcds_cnt ;
+typedef int ssize_t ;
+
+
+ scalar_t__ EINTR ;
+ scalar_t__ RECV_SIZE ;
+ int YRMCDS_DISCONNECTED ;
+ int YRMCDS_OK ;
+ int YRMCDS_OUT_OF_MEMORY ;
+ int YRMCDS_SYSTEM_ERROR ;
+ scalar_t__ errno ;
+ scalar_t__ realloc (char*,size_t) ;
+ int recv (int ,char*,scalar_t__,int ) ;
 
 __attribute__((used)) static yrmcds_error
 recv_data(yrmcds_cnt* c) {
     if( (c->capacity - c->used) < RECV_SIZE ) {
         size_t new_capacity = c->capacity * 2;
         char* new_buffer = (char*)realloc(c->recvbuf, new_capacity);
-        if( new_buffer == NULL )
+        if( new_buffer == ((void*)0) )
             return YRMCDS_OUT_OF_MEMORY;
         c->recvbuf = new_buffer;
         c->capacity = new_capacity;

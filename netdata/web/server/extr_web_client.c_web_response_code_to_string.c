@@ -1,46 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  HTTP_RESP_BAD_REQUEST 134 
-#define  HTTP_RESP_FORBIDDEN 133 
-#define  HTTP_RESP_MOVED_PERM 132 
-#define  HTTP_RESP_NOT_FOUND 131 
-#define  HTTP_RESP_OK 130 
-#define  HTTP_RESP_PRECOND_FAIL 129 
-#define  HTTP_RESP_REDIR_TEMP 128 
-
 const char *web_response_code_to_string(int code) {
     switch(code) {
-        case HTTP_RESP_OK:
+        case 130:
             return "OK";
 
-        case HTTP_RESP_MOVED_PERM:
+        case 132:
             return "Moved Permanently";
 
-        case HTTP_RESP_REDIR_TEMP:
+        case 128:
             return "Temporary Redirect";
 
-        case HTTP_RESP_BAD_REQUEST:
+        case 134:
             return "Bad Request";
 
-        case HTTP_RESP_FORBIDDEN:
+        case 133:
             return "Forbidden";
 
-        case HTTP_RESP_NOT_FOUND:
+        case 131:
             return "Not Found";
 
-        case HTTP_RESP_PRECOND_FAIL:
+        case 129:
             return "Preconditions Failed";
 
         default:

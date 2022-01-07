@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct posix_acl {int dummy; } ;
-struct inode {int /*<<< orphan*/  i_sb; } ;
+struct inode {int i_sb; } ;
 
-/* Variables and functions */
- int ENODATA ; 
- int EOPNOTSUPP ; 
- scalar_t__ IS_ERR (struct posix_acl*) ; 
- int /*<<< orphan*/  POSIX_ACL ; 
- int PTR_ERR (struct posix_acl*) ; 
- struct posix_acl* ext4_get_acl (struct inode*,int) ; 
- int /*<<< orphan*/  posix_acl_release (struct posix_acl*) ; 
- int posix_acl_to_xattr (struct posix_acl*,void*,size_t) ; 
- int /*<<< orphan*/  test_opt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ENODATA ;
+ int EOPNOTSUPP ;
+ scalar_t__ IS_ERR (struct posix_acl*) ;
+ int POSIX_ACL ;
+ int PTR_ERR (struct posix_acl*) ;
+ struct posix_acl* ext4_get_acl (struct inode*,int) ;
+ int posix_acl_release (struct posix_acl*) ;
+ int posix_acl_to_xattr (struct posix_acl*,void*,size_t) ;
+ int test_opt (int ,int ) ;
 
 __attribute__((used)) static int
 ext4_xattr_get_acl(struct inode *inode, int type, void *buffer, size_t size)
 {
-	struct posix_acl *acl;
-	int error;
+ struct posix_acl *acl;
+ int error;
 
-	if (!test_opt(inode->i_sb, POSIX_ACL))
-		return -EOPNOTSUPP;
+ if (!test_opt(inode->i_sb, POSIX_ACL))
+  return -EOPNOTSUPP;
 
-	acl = ext4_get_acl(inode, type);
-	if (IS_ERR(acl))
-		return PTR_ERR(acl);
-	if (acl == NULL)
-		return -ENODATA;
-	error = posix_acl_to_xattr(acl, buffer, size);
-	posix_acl_release(acl);
+ acl = ext4_get_acl(inode, type);
+ if (IS_ERR(acl))
+  return PTR_ERR(acl);
+ if (acl == ((void*)0))
+  return -ENODATA;
+ error = posix_acl_to_xattr(acl, buffer, size);
+ posix_acl_release(acl);
 
-	return error;
+ return error;
 }

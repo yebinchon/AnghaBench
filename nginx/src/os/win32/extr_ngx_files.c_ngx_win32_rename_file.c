@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-typedef  int ngx_uint_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u_char ;
+typedef int ngx_uint_t ;
 struct TYPE_4__ {int len; scalar_t__ data; } ;
-typedef  TYPE_1__ ngx_str_t ;
-typedef  int /*<<< orphan*/  ngx_log_t ;
-typedef  scalar_t__ ngx_err_t ;
-typedef  int /*<<< orphan*/  ngx_atomic_uint_t ;
+typedef TYPE_1__ ngx_str_t ;
+typedef int ngx_log_t ;
+typedef scalar_t__ ngx_err_t ;
+typedef int ngx_atomic_uint_t ;
 
-/* Variables and functions */
- scalar_t__ DeleteFile (char const*) ; 
- scalar_t__ MoveFile (char const*,char const*) ; 
- int NGX_ATOMIC_T_LEN ; 
- scalar_t__ NGX_ENOMEM ; 
- int /*<<< orphan*/  NGX_LOG_CRIT ; 
- int /*<<< orphan*/ * ngx_alloc (int,int /*<<< orphan*/ *) ; 
- scalar_t__ ngx_errno ; 
- int /*<<< orphan*/  ngx_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__,char*,int /*<<< orphan*/ *,...) ; 
- int /*<<< orphan*/  ngx_memcpy (int /*<<< orphan*/ *,scalar_t__,int) ; 
- int /*<<< orphan*/  ngx_next_temp_number (int) ; 
- int /*<<< orphan*/  ngx_sprintf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ DeleteFile (char const*) ;
+ scalar_t__ MoveFile (char const*,char const*) ;
+ int NGX_ATOMIC_T_LEN ;
+ scalar_t__ NGX_ENOMEM ;
+ int NGX_LOG_CRIT ;
+ int * ngx_alloc (int,int *) ;
+ scalar_t__ ngx_errno ;
+ int ngx_free (int *) ;
+ int ngx_log_error (int ,int *,scalar_t__,char*,int *,...) ;
+ int ngx_memcpy (int *,scalar_t__,int) ;
+ int ngx_next_temp_number (int) ;
+ int ngx_sprintf (int *,char*,int ) ;
 
 ngx_err_t
 ngx_win32_rename_file(ngx_str_t *from, ngx_str_t *to, ngx_log_t *log)
 {
-    u_char             *name;
-    ngx_err_t           err;
-    ngx_uint_t          collision;
-    ngx_atomic_uint_t   num;
+    u_char *name;
+    ngx_err_t err;
+    ngx_uint_t collision;
+    ngx_atomic_uint_t num;
 
     name = ngx_alloc(to->len + 1 + NGX_ATOMIC_T_LEN + 1 + sizeof("DELETE"),
                      log);
-    if (name == NULL) {
+    if (name == ((void*)0)) {
         return NGX_ENOMEM;
     }
 
@@ -51,7 +51,7 @@ ngx_win32_rename_file(ngx_str_t *from, ngx_str_t *to, ngx_log_t *log)
 
     collision = 0;
 
-    /* mutex_lock() (per cache or single ?) */
+
 
     for ( ;; ) {
         num = ngx_next_temp_number(collision);
@@ -80,7 +80,7 @@ ngx_win32_rename_file(ngx_str_t *from, ngx_str_t *to, ngx_log_t *log)
                       "DeleteFile() \"%s\" failed", name);
     }
 
-    /* mutex_unlock() */
+
 
     ngx_free(name);
 

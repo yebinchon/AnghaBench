@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ RopCode; scalar_t__ UsesSource; } ;
-typedef  int /*<<< orphan*/  SourceBpp ;
-typedef  TYPE_1__* PROPINFO ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int SourceBpp ;
+typedef TYPE_1__* PROPINFO ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateBitCase (int /*<<< orphan*/ *,unsigned int,TYPE_1__*,int,unsigned int) ; 
- int FLAG_BOTTOMUP ; 
- int FLAG_FORCENOUSESSOURCE ; 
- int FLAG_TRIVIALXLATE ; 
- int /*<<< orphan*/  MARK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Output (int /*<<< orphan*/ *,char*,...) ; 
- scalar_t__ ROPCODE_GENERIC ; 
+
+ int CreateBitCase (int *,unsigned int,TYPE_1__*,int,unsigned int) ;
+ int FLAG_BOTTOMUP ;
+ int FLAG_FORCENOUSESSOURCE ;
+ int FLAG_TRIVIALXLATE ;
+ int MARK (int *) ;
+ int Output (int *,char*,...) ;
+ scalar_t__ ROPCODE_GENERIC ;
 
 __attribute__((used)) static void
 CreateActionBlock(FILE *Out, unsigned Bpp, PROPINFO RopInfo,

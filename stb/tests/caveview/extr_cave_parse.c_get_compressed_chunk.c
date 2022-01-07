@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32 ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint32 ;
 struct TYPE_7__ {int** sector_data; } ;
-typedef  TYPE_1__ region ;
+typedef TYPE_1__ region ;
 struct TYPE_8__ {int x; int z; int len; int refcount; void* data; } ;
-typedef  TYPE_2__ compressed_chunk ;
+typedef TYPE_2__ compressed_chunk ;
 
-/* Variables and functions */
- int NUM_CACHED_X ; 
- int NUM_CACHED_Z ; 
- int NUM_CHUNKS_PER_REGION ; 
- int NUM_CHUNKS_PER_REGION_LOG2 ; 
- int /*<<< orphan*/  SEEK_SET ; 
- TYPE_2__*** cached_chunk ; 
- int /*<<< orphan*/  deref_compressed_chunk (TYPE_2__*) ; 
- int /*<<< orphan*/  fread (void*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- TYPE_1__* get_region (int,int) ; 
- int /*<<< orphan*/  last_region ; 
- void* malloc (int) ; 
- int /*<<< orphan*/  open_file (int,int) ; 
+
+ int NUM_CACHED_X ;
+ int NUM_CACHED_Z ;
+ int NUM_CHUNKS_PER_REGION ;
+ int NUM_CHUNKS_PER_REGION_LOG2 ;
+ int SEEK_SET ;
+ TYPE_2__*** cached_chunk ;
+ int deref_compressed_chunk (TYPE_2__*) ;
+ int fread (void*,int,int,int ) ;
+ int fseek (int ,int,int ) ;
+ TYPE_1__* get_region (int,int) ;
+ int last_region ;
+ void* malloc (int) ;
+ int open_file (int,int) ;
 
 __attribute__((used)) static compressed_chunk *get_compressed_chunk(int chunk_x, int chunk_z)
 {
@@ -47,7 +47,7 @@ __attribute__((used)) static compressed_chunk *get_compressed_chunk(int chunk_x,
       region *r = get_region(reg_x, reg_z);
       if (cc) {
          deref_compressed_chunk(cc);
-         cached_chunk[slot_z][slot_x] = NULL;
+         cached_chunk[slot_z][slot_x] = ((void*)0);
       }
       cc = malloc(sizeof(*cc));
       cc->x = chunk_x;

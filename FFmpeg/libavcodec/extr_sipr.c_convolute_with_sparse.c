@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int n; int* x; float const* y; } ;
-typedef  TYPE_1__ AMRFixed ;
+typedef TYPE_1__ AMRFixed ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (float*,int /*<<< orphan*/ ,int) ; 
+
+ int memset (float*,int ,int) ;
 
 __attribute__((used)) static void convolute_with_sparse(float *out, const AMRFixed *pulses,
                                   const float *shape, int length)

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ingenic_drm {int /*<<< orphan*/  crtc; int /*<<< orphan*/  map; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- unsigned int JZ_LCD_STATE_EOF_IRQ ; 
- int /*<<< orphan*/  JZ_REG_LCD_STATE ; 
- int /*<<< orphan*/  drm_crtc_handle_vblank (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  regmap_read (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int*) ; 
- int /*<<< orphan*/  regmap_update_bits (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ) ; 
+
+
+
+struct ingenic_drm {int crtc; int map; } ;
+typedef int irqreturn_t ;
+
+
+ int IRQ_HANDLED ;
+ unsigned int JZ_LCD_STATE_EOF_IRQ ;
+ int JZ_REG_LCD_STATE ;
+ int drm_crtc_handle_vblank (int *) ;
+ int regmap_read (int ,int ,unsigned int*) ;
+ int regmap_update_bits (int ,int ,unsigned int,int ) ;
 
 __attribute__((used)) static irqreturn_t ingenic_drm_irq_handler(int irq, void *arg)
 {
-	struct ingenic_drm *priv = arg;
-	unsigned int state;
+ struct ingenic_drm *priv = arg;
+ unsigned int state;
 
-	regmap_read(priv->map, JZ_REG_LCD_STATE, &state);
+ regmap_read(priv->map, JZ_REG_LCD_STATE, &state);
 
-	regmap_update_bits(priv->map, JZ_REG_LCD_STATE,
-			   JZ_LCD_STATE_EOF_IRQ, 0);
+ regmap_update_bits(priv->map, JZ_REG_LCD_STATE,
+      JZ_LCD_STATE_EOF_IRQ, 0);
 
-	if (state & JZ_LCD_STATE_EOF_IRQ)
-		drm_crtc_handle_vblank(&priv->crtc);
+ if (state & JZ_LCD_STATE_EOF_IRQ)
+  drm_crtc_handle_vblank(&priv->crtc);
 
-	return IRQ_HANDLED;
+ return IRQ_HANDLED;
 }

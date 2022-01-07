@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int timeout; int swfAge; scalar_t__ nStreams; scalar_t__ curStreamIdx; } ;
 struct TYPE_6__ {int sb_socket; } ;
 struct TYPE_8__ {int m_bSendChunkSizeInfo; int m_nBufferMS; int m_nClientBW; int m_nClientBW2; int m_nServerBW; double m_fAudioCodecs; double m_fVideoCodecs; TYPE_2__ Link; void* m_outChunkSize; void* m_inChunkSize; TYPE_1__ m_sb; } ;
-typedef  TYPE_3__ RTMP ;
+typedef TYPE_3__ RTMP ;
 
-/* Variables and functions */
- void* RTMP_DEFAULT_CHUNKSIZE ; 
- int /*<<< orphan*/  RTMP_TLS_Init () ; 
- int /*<<< orphan*/  RTMP_TLS_ctx ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
+
+ void* RTMP_DEFAULT_CHUNKSIZE ;
+ int RTMP_TLS_Init () ;
+ int RTMP_TLS_ctx ;
+ int memset (TYPE_3__*,int ,int) ;
 
 void
 RTMP_Init(RTMP *r)
 {
-#ifdef CRYPTO
-    if (!RTMP_TLS_ctx)
-        RTMP_TLS_Init();
-#endif
+
+
+
+
 
     memset(r, 0, sizeof(RTMP));
     r->m_sb.sb_socket = -1;

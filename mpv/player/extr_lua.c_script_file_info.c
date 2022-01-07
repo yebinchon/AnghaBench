@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {unsigned int const st_mode; unsigned int const st_size; unsigned int const st_atime; unsigned int const st_mtime; unsigned int const st_ctime; } ;
-typedef  int /*<<< orphan*/  lua_State ;
+typedef int lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  S_ISDIR (unsigned int const) ; 
- int /*<<< orphan*/  S_ISREG (unsigned int const) ; 
- char* luaL_checkstring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_newtable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushboolean (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,unsigned int const) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,char const*) ; 
- scalar_t__ stat (char const*,struct stat*) ; 
+
+ int S_ISDIR (unsigned int const) ;
+ int S_ISREG (unsigned int const) ;
+ char* luaL_checkstring (int *,int) ;
+ int lua_newtable (int *) ;
+ int lua_pushboolean (int *,int ) ;
+ int lua_pushinteger (int *,unsigned int const) ;
+ int lua_pushnil (int *) ;
+ int lua_pushstring (int *,char*) ;
+ int lua_setfield (int *,int,char const*) ;
+ scalar_t__ stat (char const*,struct stat*) ;
 
 __attribute__((used)) static int script_file_info(lua_State *L)
 {
@@ -36,11 +36,11 @@ __attribute__((used)) static int script_file_info(lua_State *L)
         return 2;
     }
 
-    lua_newtable(L); // Result stat table
+    lua_newtable(L);
 
     const char * stat_names[] = {
         "mode", "size",
-        "atime", "mtime", "ctime", NULL
+        "atime", "mtime", "ctime", ((void*)0)
     };
     const unsigned int stat_values[] = {
         statbuf.st_mode,
@@ -50,19 +50,19 @@ __attribute__((used)) static int script_file_info(lua_State *L)
         statbuf.st_ctime
     };
 
-    // Add all fields
+
     for (int i = 0; stat_names[i]; i++) {
         lua_pushinteger(L, stat_values[i]);
         lua_setfield(L, -2, stat_names[i]);
     }
 
-    // Convenience booleans
+
     lua_pushboolean(L, S_ISREG(statbuf.st_mode));
     lua_setfield(L, -2, "is_file");
 
     lua_pushboolean(L, S_ISDIR(statbuf.st_mode));
     lua_setfield(L, -2, "is_dir");
 
-    // Return table
+
     return 1;
 }

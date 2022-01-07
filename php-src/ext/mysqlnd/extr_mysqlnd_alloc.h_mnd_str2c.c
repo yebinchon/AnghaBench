@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-struct TYPE_5__ {int /*<<< orphan*/  l; int /*<<< orphan*/  s; } ;
-typedef  TYPE_1__ MYSQLND_STRING ;
-typedef  TYPE_2__ const MYSQLND_CSTRING ;
 
-/* Variables and functions */
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int member_1; int member_0; } ;
+struct TYPE_5__ {int l; int s; } ;
+typedef TYPE_1__ MYSQLND_STRING ;
+typedef TYPE_2__ const MYSQLND_CSTRING ;
+
+
 
 __attribute__((used)) static inline MYSQLND_CSTRING mnd_str2c(const MYSQLND_STRING str)
 {
-	const MYSQLND_CSTRING ret = {str.s, str.l};
-	return ret;
+ const MYSQLND_CSTRING ret = {str.s, str.l};
+ return ret;
 }

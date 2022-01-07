@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char* zout; char* zout_start; int /*<<< orphan*/ * zbuffer_end; int /*<<< orphan*/ * zbuffer; } ;
-typedef  TYPE_1__ zbuf ;
-typedef  int /*<<< orphan*/  stbi__uint8 ;
 
-/* Variables and functions */
- scalar_t__ do_zlib (TYPE_1__*,char*,int,int,int) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ malloc (int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char* zout; char* zout_start; int * zbuffer_end; int * zbuffer; } ;
+typedef TYPE_1__ zbuf ;
+typedef int stbi__uint8 ;
+
+
+ scalar_t__ do_zlib (TYPE_1__*,char*,int,int,int) ;
+ int free (char*) ;
+ scalar_t__ malloc (int) ;
 
 char *stbi_zlib_decode_malloc_guesssize(const char *buffer, int len, int initial_size, int *outlen)
 {
    zbuf a;
    char *p = (char *) malloc(initial_size);
-   if (p == NULL) return NULL;
+   if (p == ((void*)0)) return ((void*)0);
    a.zbuffer = (stbi__uint8 *) buffer;
    a.zbuffer_end = (stbi__uint8 *) buffer + len;
    if (do_zlib(&a, p, initial_size, 1, 1)) {
@@ -32,6 +32,6 @@ char *stbi_zlib_decode_malloc_guesssize(const char *buffer, int len, int initial
       return a.zout_start;
    } else {
       free(a.zout_start);
-      return NULL;
+      return ((void*)0);
    }
 }

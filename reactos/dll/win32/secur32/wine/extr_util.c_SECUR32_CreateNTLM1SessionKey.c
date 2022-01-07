@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  digest; } ;
-typedef  int /*<<< orphan*/  SECURITY_STATUS ;
-typedef  int /*<<< orphan*/ * PBYTE ;
-typedef  TYPE_1__ MD4_CTX ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MD4Final (TYPE_1__*) ; 
- int /*<<< orphan*/  MD4Init (TYPE_1__*) ; 
- int /*<<< orphan*/  MD4Update (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SEC_E_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int digest; } ;
+typedef int SECURITY_STATUS ;
+typedef int * PBYTE ;
+typedef TYPE_1__ MD4_CTX ;
+typedef int BYTE ;
+
+
+ int MD4Final (TYPE_1__*) ;
+ int MD4Init (TYPE_1__*) ;
+ int MD4Update (TYPE_1__*,int *,int) ;
+ int SEC_E_OK ;
+ int TRACE (char*,int *,int *) ;
+ int memcpy (int *,int ,int) ;
 
 SECURITY_STATUS SECUR32_CreateNTLM1SessionKey(PBYTE password, int len, PBYTE session_key)
 {

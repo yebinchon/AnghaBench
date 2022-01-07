@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {int l125; TYPE_3__* k; scalar_t__ g; scalar_t__ l115; scalar_t__ l94; int /*<<< orphan*/  l30; } ;
-typedef  TYPE_1__ s ;
+
+
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+struct TYPE_15__ {int l125; TYPE_3__* k; scalar_t__ g; scalar_t__ l115; scalar_t__ l94; int l30; } ;
+typedef TYPE_1__ s ;
 struct TYPE_16__ {scalar_t__* l97; scalar_t__* l155; scalar_t__ l94; } ;
-typedef  TYPE_2__ l172 ;
-struct TYPE_17__ {int f; unsigned long l35; unsigned long l36; int l144; unsigned long l70; size_t p; unsigned long* l123; unsigned long* l124; int /*<<< orphan*/  l38; scalar_t__* l75; scalar_t__* l82; scalar_t__ l104; scalar_t__ l608; scalar_t__ l97; scalar_t__ l155; scalar_t__ x; } ;
-typedef  TYPE_3__ e ;
+typedef TYPE_2__ l172 ;
+struct TYPE_17__ {int f; unsigned long l35; unsigned long l36; int l144; unsigned long l70; size_t p; unsigned long* l123; unsigned long* l124; int l38; scalar_t__* l75; scalar_t__* l82; scalar_t__ l104; scalar_t__ l608; scalar_t__ l97; scalar_t__ l155; scalar_t__ x; } ;
+typedef TYPE_3__ e ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cp_led (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cp_set_mux (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  l (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  l157 (TYPE_3__*) ; 
- int /*<<< orphan*/  l165 (TYPE_3__*) ; 
- int /*<<< orphan*/  l210 (TYPE_3__*) ; 
- int l57 (TYPE_3__*,int) ; 
- int /*<<< orphan*/  l741 (TYPE_3__*) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
+
+ int cp_led (TYPE_1__*,int ) ;
+ int cp_set_mux (TYPE_1__*,int ) ;
+ int l (TYPE_1__*,int ,int) ;
+ int l157 (TYPE_3__*) ;
+ int l165 (TYPE_3__*) ;
+ int l210 (TYPE_3__*) ;
+ int l57 (TYPE_3__*,int) ;
+ int l741 (TYPE_3__*) ;
+ int memset (TYPE_2__*,int ,int) ;
 
 void cp_reset(s*b,l172*l60,unsigned
 long l69){e*a;{if(!(!b->g))goto l856;return;l856:;}{if(!(l60))goto

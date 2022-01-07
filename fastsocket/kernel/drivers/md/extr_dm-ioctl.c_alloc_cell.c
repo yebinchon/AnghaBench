@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mapped_device {int dummy; } ;
-struct hash_cell {int /*<<< orphan*/ * new_map; struct mapped_device* md; int /*<<< orphan*/  uuid_list; int /*<<< orphan*/  name_list; struct hash_cell* name; int /*<<< orphan*/ * uuid; } ;
+struct hash_cell {int * new_map; struct mapped_device* md; int uuid_list; int name_list; struct hash_cell* name; int * uuid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (struct hash_cell*) ; 
- struct hash_cell* kmalloc (int,int /*<<< orphan*/ ) ; 
- void* kstrdup (char const*,int /*<<< orphan*/ ) ; 
+
+ int GFP_KERNEL ;
+ int INIT_LIST_HEAD (int *) ;
+ int kfree (struct hash_cell*) ;
+ struct hash_cell* kmalloc (int,int ) ;
+ void* kstrdup (char const*,int ) ;
 
 __attribute__((used)) static struct hash_cell *alloc_cell(const char *name, const char *uuid,
-				    struct mapped_device *md)
+        struct mapped_device *md)
 {
-	struct hash_cell *hc;
+ struct hash_cell *hc;
 
-	hc = kmalloc(sizeof(*hc), GFP_KERNEL);
-	if (!hc)
-		return NULL;
+ hc = kmalloc(sizeof(*hc), GFP_KERNEL);
+ if (!hc)
+  return ((void*)0);
 
-	hc->name = kstrdup(name, GFP_KERNEL);
-	if (!hc->name) {
-		kfree(hc);
-		return NULL;
-	}
+ hc->name = kstrdup(name, GFP_KERNEL);
+ if (!hc->name) {
+  kfree(hc);
+  return ((void*)0);
+ }
 
-	if (!uuid)
-		hc->uuid = NULL;
+ if (!uuid)
+  hc->uuid = ((void*)0);
 
-	else {
-		hc->uuid = kstrdup(uuid, GFP_KERNEL);
-		if (!hc->uuid) {
-			kfree(hc->name);
-			kfree(hc);
-			return NULL;
-		}
-	}
+ else {
+  hc->uuid = kstrdup(uuid, GFP_KERNEL);
+  if (!hc->uuid) {
+   kfree(hc->name);
+   kfree(hc);
+   return ((void*)0);
+  }
+ }
 
-	INIT_LIST_HEAD(&hc->name_list);
-	INIT_LIST_HEAD(&hc->uuid_list);
-	hc->md = md;
-	hc->new_map = NULL;
-	return hc;
+ INIT_LIST_HEAD(&hc->name_list);
+ INIT_LIST_HEAD(&hc->uuid_list);
+ hc->md = md;
+ hc->new_map = ((void*)0);
+ return hc;
 }

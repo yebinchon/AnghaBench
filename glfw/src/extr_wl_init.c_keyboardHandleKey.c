@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
 struct wl_keyboard {int dummy; } ;
 struct TYPE_8__ {int tv_sec; int tv_nsec; } ;
 struct TYPE_7__ {int tv_nsec; int tv_sec; } ;
 struct itimerspec {TYPE_3__ it_value; TYPE_2__ it_interval; } ;
-typedef  int /*<<< orphan*/  _GLFWwindow ;
-struct TYPE_6__ {int /*<<< orphan*/  modifiers; } ;
-struct TYPE_9__ {int keyboardRepeatRate; int keyboardLastKey; int keyboardRepeatDelay; int /*<<< orphan*/  timerfd; scalar_t__ keyboardLastScancode; TYPE_1__ xkb; scalar_t__ serial; int /*<<< orphan*/ * keyboardFocus; } ;
+typedef int _GLFWwindow ;
+struct TYPE_6__ {int modifiers; } ;
+struct TYPE_9__ {int keyboardRepeatRate; int keyboardLastKey; int keyboardRepeatDelay; int timerfd; scalar_t__ keyboardLastScancode; TYPE_1__ xkb; scalar_t__ serial; int * keyboardFocus; } ;
 struct TYPE_10__ {TYPE_4__ wl; } ;
-typedef  scalar_t__ GLFWbool ;
+typedef scalar_t__ GLFWbool ;
 
-/* Variables and functions */
- int GLFW_PRESS ; 
- int GLFW_RELEASE ; 
- scalar_t__ WL_KEYBOARD_KEY_STATE_PRESSED ; 
- TYPE_5__ _glfw ; 
- int /*<<< orphan*/  _glfwInputKey (int /*<<< orphan*/ *,int,scalar_t__,int,int /*<<< orphan*/ ) ; 
- scalar_t__ inputChar (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  timerfd_settime (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct itimerspec*,int /*<<< orphan*/ *) ; 
- int toGLFWKeyCode (scalar_t__) ; 
+
+ int GLFW_PRESS ;
+ int GLFW_RELEASE ;
+ scalar_t__ WL_KEYBOARD_KEY_STATE_PRESSED ;
+ TYPE_5__ _glfw ;
+ int _glfwInputKey (int *,int,scalar_t__,int,int ) ;
+ scalar_t__ inputChar (int *,scalar_t__) ;
+ int timerfd_settime (int ,int ,struct itimerspec*,int *) ;
+ int toGLFWKeyCode (scalar_t__) ;
 
 __attribute__((used)) static void keyboardHandleKey(void* data,
                               struct wl_keyboard* keyboard,
@@ -76,5 +76,5 @@ __attribute__((used)) static void keyboardHandleKey(void* data,
             timer.it_value.tv_nsec = (_glfw.wl.keyboardRepeatDelay % 1000) * 1000000;
         }
     }
-    timerfd_settime(_glfw.wl.timerfd, 0, &timer, NULL);
+    timerfd_settime(_glfw.wl.timerfd, 0, &timer, ((void*)0));
 }

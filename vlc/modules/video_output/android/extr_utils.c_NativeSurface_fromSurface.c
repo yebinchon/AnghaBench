@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  libs ;
-typedef  int /*<<< orphan*/  jobject ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int libs ;
+typedef int jobject ;
 struct TYPE_5__ {void* p_dl_handle; void* p_surface_handle; } ;
-typedef  TYPE_1__ NativeSurface ;
-typedef  int /*<<< orphan*/  JNIEnv ;
-typedef  int /*<<< orphan*/  ANativeWindow ;
+typedef TYPE_1__ NativeSurface ;
+typedef int JNIEnv ;
+typedef int ANativeWindow ;
 
-/* Variables and functions */
- void* NativeSurface_Load (char const*,TYPE_1__*) ; 
- void* NativeSurface_getHandle (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- TYPE_1__* malloc (int) ; 
+
+ void* NativeSurface_Load (char const*,TYPE_1__*) ;
+ void* NativeSurface_getHandle (int *,int ) ;
+ int free (TYPE_1__*) ;
+ TYPE_1__* malloc (int) ;
 
 __attribute__((used)) static ANativeWindow*
 NativeSurface_fromSurface(JNIEnv *p_env, jobject jsurf)
@@ -37,10 +37,10 @@ NativeSurface_fromSurface(JNIEnv *p_env, jobject jsurf)
     };
     p_surface_handle = NativeSurface_getHandle(p_env, jsurf);
     if (!p_surface_handle)
-        return NULL;
+        return ((void*)0);
     p_ns = malloc(sizeof(NativeSurface));
     if (!p_ns)
-        return NULL;
+        return ((void*)0);
     p_ns->p_surface_handle = p_surface_handle;
 
     for (size_t i = 0; i < sizeof(libs) / sizeof(*libs); i++)
@@ -53,5 +53,5 @@ NativeSurface_fromSurface(JNIEnv *p_env, jobject jsurf)
         }
     }
     free(p_ns);
-    return NULL;
+    return ((void*)0);
 }

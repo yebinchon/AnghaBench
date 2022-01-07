@@ -1,52 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  GPIO ; 
- int /*<<< orphan*/  WDTS_TIMER_RUN ; 
- int /*<<< orphan*/  WDTVALLSB ; 
- int /*<<< orphan*/  WDTVALMSB ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spinlock ; 
- int /*<<< orphan*/  superio_enter () ; 
- int /*<<< orphan*/  superio_exit () ; 
- int /*<<< orphan*/  superio_outb (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  superio_select (int /*<<< orphan*/ ) ; 
- scalar_t__ test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int timeout ; 
- int /*<<< orphan*/  wdt_status ; 
+ int EINVAL ;
+ int GPIO ;
+ int WDTS_TIMER_RUN ;
+ int WDTVALLSB ;
+ int WDTVALMSB ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int spinlock ;
+ int superio_enter () ;
+ int superio_exit () ;
+ int superio_outb (int,int ) ;
+ int superio_select (int ) ;
+ scalar_t__ test_bit (int ,int *) ;
+ int timeout ;
+ int wdt_status ;
 
 __attribute__((used)) static int wdt_set_timeout(int t)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	if (t < 1 || t > 65535)
-		return -EINVAL;
+ if (t < 1 || t > 65535)
+  return -EINVAL;
 
-	timeout = t;
+ timeout = t;
 
-	spin_lock_irqsave(&spinlock, flags);
-	if (test_bit(WDTS_TIMER_RUN, &wdt_status)) {
-		superio_enter();
+ spin_lock_irqsave(&spinlock, flags);
+ if (test_bit(WDTS_TIMER_RUN, &wdt_status)) {
+  superio_enter();
 
-		superio_select(GPIO);
-		superio_outb(t>>8, WDTVALMSB);
-		superio_outb(t, WDTVALLSB);
+  superio_select(GPIO);
+  superio_outb(t>>8, WDTVALMSB);
+  superio_outb(t, WDTVALLSB);
 
-		superio_exit();
-	}
-	spin_unlock_irqrestore(&spinlock, flags);
-	return 0;
+  superio_exit();
+ }
+ spin_unlock_irqrestore(&spinlock, flags);
+ return 0;
 }

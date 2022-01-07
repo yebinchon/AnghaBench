@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
+
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct softfilter_thread_data {int in_pitch; int out_pitch; unsigned int height; unsigned int width; scalar_t__ out_data; scalar_t__ in_data; } ;
-typedef  int /*<<< orphan*/  scanline_color_buf ;
-typedef  int /*<<< orphan*/  color_buf ;
+typedef int scanline_color_buf ;
+typedef int color_buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
+
+ int memcpy (int*,int*,int) ;
 
 __attribute__((used)) static void scanline2x_work_cb_xrgb8888(void *data, void *thread_data)
 {
@@ -33,19 +33,19 @@ __attribute__((used)) static void scanline2x_work_cb_xrgb8888(void *data, void *
       uint32_t *out_ptr = output;
       for (x = 0; x < thr->width; ++x)
       {
-         /* Note: We process the 'padding' bits as though they
-          * matter (they don't), since this deals with any potential
-          * byte swapping issues */ 
-         uint32_t color          = *(input + x);
-         uint8_t  p              = (color >> 24 & 0xFF); /* Padding bits */
-         uint8_t  r              = (color >> 16 & 0xFF);
-         uint8_t  g              = (color >>  8 & 0xFF);
-         uint8_t  b              = (color       & 0xFF);
+
+
+
+         uint32_t color = *(input + x);
+         uint8_t p = (color >> 24 & 0xFF);
+         uint8_t r = (color >> 16 & 0xFF);
+         uint8_t g = (color >> 8 & 0xFF);
+         uint8_t b = (color & 0xFF);
          uint32_t scanline_color =
                (((p >> 1) + (p >> 2)) << 24) |
                (((r >> 1) + (r >> 2)) << 16) |
-               (((g >> 1) + (g >> 2)) <<  8) |
-               (((b >> 1) + (b >> 2))      );
+               (((g >> 1) + (g >> 2)) << 8) |
+               (((b >> 1) + (b >> 2)) );
          uint32_t color_buf[2];
          uint32_t scanline_color_buf[2];
 
@@ -55,13 +55,13 @@ __attribute__((used)) static void scanline2x_work_cb_xrgb8888(void *data, void *
          scanline_color_buf[0] = scanline_color;
          scanline_color_buf[1] = scanline_color;
 
-         memcpy(out_ptr,              color_buf,          sizeof(color_buf));
+         memcpy(out_ptr, color_buf, sizeof(color_buf));
          memcpy(out_ptr + out_stride, scanline_color_buf, sizeof(scanline_color_buf));
 
          out_ptr += 2;
       }
 
-      input  += in_stride;
+      input += in_stride;
       output += out_stride << 1;
    }
 }

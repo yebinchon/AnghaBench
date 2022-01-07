@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct nn_parse_context {char** argv; TYPE_1__* options; } ;
-struct TYPE_2__ {int /*<<< orphan*/  requires_mask; } ;
+struct TYPE_2__ {int requires_mask; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  nn_print_option (struct nn_parse_context*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nn_print_requires (struct nn_parse_context*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int exit (int) ;
+ int fprintf (int ,char*,...) ;
+ int nn_print_option (struct nn_parse_context*,int,int ) ;
+ int nn_print_requires (struct nn_parse_context*,int ) ;
+ int stderr ;
 
 __attribute__((used)) static void nn_option_requires (struct nn_parse_context *ctx, int opt_index) {
     fprintf (stderr, "%s: Option", ctx->argv[0]);

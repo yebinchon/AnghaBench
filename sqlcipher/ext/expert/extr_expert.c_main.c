@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3expert ;
-typedef  int /*<<< orphan*/  sqlite3 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXPERT_CONFIG_SAMPLE ; 
- int /*<<< orphan*/  EXPERT_REPORT_CANDIDATES ; 
- int /*<<< orphan*/  EXPERT_REPORT_INDEXES ; 
- int /*<<< orphan*/  EXPERT_REPORT_PLAN ; 
- int /*<<< orphan*/  EXPERT_REPORT_SQL ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int option_integer_arg (char*) ; 
- int /*<<< orphan*/  option_requires_argument (char*) ; 
- int readSqlFromFile (int /*<<< orphan*/ *,char*,char**) ; 
- char* sqlite3_errmsg (int /*<<< orphan*/ *) ; 
- int sqlite3_expert_analyze (int /*<<< orphan*/ *,char**) ; 
- int /*<<< orphan*/  sqlite3_expert_config (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int sqlite3_expert_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_expert_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sqlite3_expert_new (int /*<<< orphan*/ *,char**) ; 
- char* sqlite3_expert_report (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int sqlite3_expert_sql (int /*<<< orphan*/ *,char*,char**) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- int sqlite3_open (char const*,int /*<<< orphan*/ **) ; 
- scalar_t__ sqlite3_strnicmp (char*,char*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ strlen (char*) ; 
- int /*<<< orphan*/  usage (char**) ; 
+
+
+
+typedef int sqlite3expert ;
+typedef int sqlite3 ;
+
+
+ int EXPERT_CONFIG_SAMPLE ;
+ int EXPERT_REPORT_CANDIDATES ;
+ int EXPERT_REPORT_INDEXES ;
+ int EXPERT_REPORT_PLAN ;
+ int EXPERT_REPORT_SQL ;
+ int SQLITE_OK ;
+ int exit (int) ;
+ int fprintf (int ,char*,...) ;
+ int option_integer_arg (char*) ;
+ int option_requires_argument (char*) ;
+ int readSqlFromFile (int *,char*,char**) ;
+ char* sqlite3_errmsg (int *) ;
+ int sqlite3_expert_analyze (int *,char**) ;
+ int sqlite3_expert_config (int *,int ,int) ;
+ int sqlite3_expert_count (int *) ;
+ int sqlite3_expert_destroy (int *) ;
+ int * sqlite3_expert_new (int *,char**) ;
+ char* sqlite3_expert_report (int *,int,int ) ;
+ int sqlite3_expert_sql (int *,char*,char**) ;
+ int sqlite3_free (char*) ;
+ int sqlite3_open (char const*,int **) ;
+ scalar_t__ sqlite3_strnicmp (char*,char*,int) ;
+ int stderr ;
+ int stdout ;
+ scalar_t__ strlen (char*) ;
+ int usage (char**) ;
 
 int main(int argc, char **argv){
   const char *zDb;
   int rc = 0;
   char *zErr = 0;
   int i;
-  int iVerbose = 1;               /* -verbose option */
+  int iVerbose = 1;
 
   sqlite3 *db = 0;
   sqlite3expert *p = 0;

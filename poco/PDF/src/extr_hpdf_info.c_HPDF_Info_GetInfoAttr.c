@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ value; } ;
-typedef  TYPE_1__* HPDF_String ;
-typedef  int /*<<< orphan*/  HPDF_InfoType ;
-typedef  int /*<<< orphan*/  HPDF_Dict ;
+typedef TYPE_1__* HPDF_String ;
+typedef int HPDF_InfoType ;
+typedef int HPDF_Dict ;
 
-/* Variables and functions */
- TYPE_1__* HPDF_Dict_GetItem (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_OCLASS_STRING ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- char* InfoTypeToName (int /*<<< orphan*/ ) ; 
+
+ TYPE_1__* HPDF_Dict_GetItem (int ,char const*,int ) ;
+ int HPDF_OCLASS_STRING ;
+ int HPDF_PTRACE (char*) ;
+ char* InfoTypeToName (int ) ;
 
 const char*
-HPDF_Info_GetInfoAttr (HPDF_Dict      info,
-                       HPDF_InfoType  type)
+HPDF_Info_GetInfoAttr (HPDF_Dict info,
+                       HPDF_InfoType type)
 {
     const char* name = InfoTypeToName (type);
     HPDF_String s;
@@ -32,12 +32,12 @@ HPDF_Info_GetInfoAttr (HPDF_Dict      info,
     HPDF_PTRACE((" HPDF_Info_GetInfoAttr\n"));
 
     if (!info)
-        return NULL;
+        return ((void*)0);
 
     s = HPDF_Dict_GetItem (info, name, HPDF_OCLASS_STRING);
 
     if (!s)
-        return NULL;
+        return ((void*)0);
     else
         return (const char *)(s->value);
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  t ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  SERVER ;
-typedef  int /*<<< orphan*/  CAPSLIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetCapsInt (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  GetServerCaps (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Zero (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int t ;
+typedef int UINT ;
+typedef int SERVER ;
+typedef int CAPSLIST ;
+
+
+ int GetCapsInt (int *,char*) ;
+ int GetServerCaps (int *,int *) ;
+ int Zero (int *,int) ;
 
 UINT GetServerCapsInt(SERVER *s, char *name)
 {
-	CAPSLIST t;
-	UINT ret;
-	// Validate arguments
-	if (s == NULL || name == NULL)
-	{
-		return 0;
-	}
+ CAPSLIST t;
+ UINT ret;
 
-	Zero(&t, sizeof(t));
-	GetServerCaps(s, &t);
+ if (s == ((void*)0) || name == ((void*)0))
+ {
+  return 0;
+ }
 
-	ret = GetCapsInt(&t, name);
+ Zero(&t, sizeof(t));
+ GetServerCaps(s, &t);
 
-	return ret;
+ ret = GetCapsInt(&t, name);
+
+ return ret;
 }

@@ -1,29 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 __attribute__((used)) static bool
-get_key_value(const char *str,       /* source string */
-              char *key,             /* key stored here */
-              char *value,           /* value stored here */
+get_key_value(const char *str,
+              char *key,
+              char *value,
               int max_key_len,
               int max_value_len,
-              const char **endptr)   /* next search position */
+              const char **endptr)
 {
     int c;
-    bool starts_with_quote = false;
-    bool escape = false;
+    bool starts_with_quote = 0;
+    bool escape = 0;
 
     for (c = max_key_len-1; (*str && (*str != '=') && c--); )
     {
@@ -33,15 +24,15 @@ get_key_value(const char *str,       /* source string */
 
     if ('=' != *str++)
     {
-        /* no key/value found */
-        return false;
+
+        return 0;
     }
 
     if ('\"' == *str)
     {
-        /* quoted string */
+
         str++;
-        starts_with_quote = true;
+        starts_with_quote = 1;
     }
 
     for (c = max_value_len-1; *str && c--; str++)
@@ -51,10 +42,10 @@ get_key_value(const char *str,       /* source string */
             case '\\':
                 if (!escape)
                 {
-                    /* possibly the start of an escaped quote */
-                    escape = true;
-                    *value++ = '\\'; /* even though this is an escape character, we still
-                                      * store it as-is in the target buffer */
+
+                    escape = 1;
+                    *value++ = '\\';
+
                     continue;
                 }
                 break;
@@ -62,34 +53,34 @@ get_key_value(const char *str,       /* source string */
             case ',':
                 if (!starts_with_quote)
                 {
-                    /* this signals the end of the value if we didn't get a starting quote
-                     * and then we do "sloppy" parsing */
-                    c = 0; /* the end */
+
+
+                    c = 0;
                     continue;
                 }
                 break;
 
             case '\r':
             case '\n':
-                /* end of string */
+
                 c = 0;
                 continue;
 
             case '\"':
                 if (!escape && starts_with_quote)
                 {
-                    /* end of string */
+
                     c = 0;
                     continue;
                 }
                 break;
         }
-        escape = false;
+        escape = 0;
         *value++ = *str;
     }
     *value = '\0';
 
     *endptr = str;
 
-    return true; /* success */
+    return 1;
 }

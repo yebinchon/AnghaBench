@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  images ;
-typedef  int /*<<< orphan*/  W_CHAR ;
-typedef  int /*<<< orphan*/  AnimatedImage ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ClearAnimatedImage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CompareAnimatedImagePair (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,double) ; 
- double ExUtilGetFloat (char const*,int*) ; 
- int ExUtilGetInt (char const*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  FREE_WARGV_AND_RETURN (int) ; 
- scalar_t__ GET_WARGV (char const**,int) ; 
- int /*<<< orphan*/  GetAnimatedImageVersions (int*,int*) ; 
- int /*<<< orphan*/  Help () ; 
- int /*<<< orphan*/  INIT_WARGV (int,char const**) ; 
- int /*<<< orphan*/  MinimizeAnimationFrames (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ReadAnimatedImage (char const*,int /*<<< orphan*/ *,int,char const*) ; 
- int /*<<< orphan*/  WFPRINTF (int /*<<< orphan*/ ,char*,int /*<<< orphan*/  const*,...) ; 
- int /*<<< orphan*/  WPRINTF (char*,int /*<<< orphan*/  const*,...) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  printf (char*,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
+
+
+
+typedef int images ;
+typedef int W_CHAR ;
+typedef int AnimatedImage ;
+
+
+ int ClearAnimatedImage (int *) ;
+ int CompareAnimatedImagePair (int *,int *,int,double) ;
+ double ExUtilGetFloat (char const*,int*) ;
+ int ExUtilGetInt (char const*,int ,int*) ;
+ int FREE_WARGV_AND_RETURN (int) ;
+ scalar_t__ GET_WARGV (char const**,int) ;
+ int GetAnimatedImageVersions (int*,int*) ;
+ int Help () ;
+ int INIT_WARGV (int,char const**) ;
+ int MinimizeAnimationFrames (int *,int) ;
+ int ReadAnimatedImage (char const*,int *,int,char const*) ;
+ int WFPRINTF (int ,char*,int const*,...) ;
+ int WPRINTF (char*,int const*,...) ;
+ int memset (int *,int ,int) ;
+ int printf (char*,int,int,int,int,int,int) ;
+ int stderr ;
+ int strcmp (char const*,char*) ;
 
 int main(int argc, const char* argv[]) {
   int return_code = -1;
   int dump_frames = 0;
-  const char* dump_folder = NULL;
+  const char* dump_folder = ((void*)0);
   double min_psnr = 0.;
   int got_input1 = 0;
   int got_input2 = 0;
   int premultiply = 1;
   int max_diff = 0;
   int i, c;
-  const char* files[2] = { NULL, NULL };
+  const char* files[2] = { ((void*)0), ((void*)0) };
   AnimatedImage images[2];
 
   INIT_WARGV(argc, argv);

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  value ;
-typedef  int uint8_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  key ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int value ;
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int key ;
 struct TYPE_12__ {TYPE_1__* priv; } ;
 struct TYPE_11__ {int w; } ;
-struct TYPE_10__ {int width; int** data; int* linesize; int /*<<< orphan*/  metadata; } ;
+struct TYPE_10__ {int width; int** data; int* linesize; int metadata; } ;
 struct TYPE_9__ {int spw; int* temp; int min_range; int white; int black; int max_peak_diff; int max_period_diff; int max_start_diff; int bhd; int nb_found; scalar_t__ chp; scalar_t__ lp; } ;
-typedef  TYPE_1__ ReadEIA608Context ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
+typedef TYPE_1__ ReadEIA608Context ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int FALL ; 
- int FFABS (int) ; 
- int FFMAX (int,int const) ; 
- int FFMIN (int,int const) ; 
- int INT_MAX ; 
- int RISE ; 
- int /*<<< orphan*/  av_dict_set (int /*<<< orphan*/ *,int*,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  snprintf (int*,int,char*,int,...) ; 
+
+ int AV_LOG_DEBUG ;
+ int FALL ;
+ int FFABS (int) ;
+ int FFMAX (int,int const) ;
+ int FFMIN (int,int const) ;
+ int INT_MAX ;
+ int RISE ;
+ int av_dict_set (int *,int*,int*,int ) ;
+ int av_log (TYPE_4__*,int ,char*,int,...) ;
+ int snprintf (int*,int,char*,int,...) ;
 
 __attribute__((used)) static void extract_line(AVFilterContext *ctx, AVFilterLink *inlink, AVFrame *in, int line)
 {

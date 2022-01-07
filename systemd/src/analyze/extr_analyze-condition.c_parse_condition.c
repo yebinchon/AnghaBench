@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {char* name; int (* parser ) (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ **,TYPE_2__*) ;int /*<<< orphan*/  type; } ;
-typedef  TYPE_1__ condition_definition ;
-struct TYPE_8__ {int /*<<< orphan*/ * asserts; int /*<<< orphan*/ * conditions; } ;
-typedef  TYPE_2__ Unit ;
-typedef  int /*<<< orphan*/  Condition ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- size_t ELEMENTSOF (TYPE_1__*) ; 
- int /*<<< orphan*/  SYNTHETIC_ERRNO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WHITESPACE ; 
- TYPE_1__* condition_definitions ; 
- int log_error_errno (int /*<<< orphan*/ ,char*,char const*) ; 
- char* startswith (char const*,char*) ; 
- scalar_t__ strspn (char const*,int /*<<< orphan*/ ) ; 
- int stub1 (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ **,TYPE_2__*) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {char* name; int (* parser ) (int *,char*,int ,int *,int ,char*,int ,char const*,int **,TYPE_2__*) ;int type; } ;
+typedef TYPE_1__ condition_definition ;
+struct TYPE_8__ {int * asserts; int * conditions; } ;
+typedef TYPE_2__ Unit ;
+typedef int Condition ;
+
+
+ int EINVAL ;
+ size_t ELEMENTSOF (TYPE_1__*) ;
+ int SYNTHETIC_ERRNO (int ) ;
+ int WHITESPACE ;
+ TYPE_1__* condition_definitions ;
+ int log_error_errno (int ,char*,char const*) ;
+ char* startswith (char const*,char*) ;
+ scalar_t__ strspn (char const*,int ) ;
+ int stub1 (int *,char*,int ,int *,int ,char*,int ,char const*,int **,TYPE_2__*) ;
 
 __attribute__((used)) static int parse_condition(Unit *u, const char *line) {
         const char *p;
@@ -52,7 +52,7 @@ __attribute__((used)) static int parse_condition(Unit *u, const char *line) {
 
                 p += 1 + strspn(p + 1, WHITESPACE);
 
-                return c->parser(NULL, "(stdin)", 0, NULL, 0, c->name, c->type, p, target, u);
+                return c->parser(((void*)0), "(stdin)", 0, ((void*)0), 0, c->name, c->type, p, target, u);
         }
 
         return log_error_errno(SYNTHETIC_ERRNO(EINVAL), "Cannot parse \"%s\".", line);

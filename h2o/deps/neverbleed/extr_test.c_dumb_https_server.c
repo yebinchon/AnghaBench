@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  s_addr; } ;
-struct sockaddr_in {int /*<<< orphan*/  sin_port; TYPE_1__ sin_addr; int /*<<< orphan*/  sin_family; } ;
-typedef  int /*<<< orphan*/  sin ;
-typedef  int /*<<< orphan*/  reuse_flag ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- scalar_t__ EINTR ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  SOL_SOCKET ; 
- int /*<<< orphan*/  SOMAXCONN ; 
- int /*<<< orphan*/  SO_REUSEADDR ; 
- int SSL_accept (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SSL_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_read (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  SSL_set_fd (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SSL_shutdown (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_write (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- int accept (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ bind (int,void*,int) ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  htonl (int) ; 
- int /*<<< orphan*/  htons (int) ; 
- scalar_t__ listen (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (scalar_t__) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int s_addr; } ;
+struct sockaddr_in {int sin_port; TYPE_1__ sin_addr; int sin_family; } ;
+typedef int sin ;
+typedef int reuse_flag ;
+typedef int buf ;
+typedef int SSL_CTX ;
+typedef int SSL ;
+
+
+ int AF_INET ;
+ scalar_t__ EINTR ;
+ int SOCK_STREAM ;
+ int SOL_SOCKET ;
+ int SOMAXCONN ;
+ int SO_REUSEADDR ;
+ int SSL_accept (int *) ;
+ int SSL_free (int *) ;
+ int * SSL_new (int *) ;
+ int SSL_read (int *,char*,int) ;
+ int SSL_set_fd (int *,int) ;
+ int SSL_shutdown (int *) ;
+ int SSL_write (int *,char const*,int ) ;
+ int accept (int,int *,int *) ;
+ scalar_t__ bind (int,void*,int) ;
+ int close (int) ;
+ scalar_t__ errno ;
+ int fprintf (int ,char*,...) ;
+ int htonl (int) ;
+ int htons (int) ;
+ scalar_t__ listen (int,int ) ;
+ int setsockopt (int,int ,int ,int*,int) ;
+ int socket (int ,int ,int ) ;
+ int stderr ;
+ char* strerror (scalar_t__) ;
+ int strlen (char const*) ;
 
 int dumb_https_server(unsigned short port, SSL_CTX *ctx)
 {
@@ -74,8 +74,8 @@ int dumb_https_server(unsigned short port, SSL_CTX *ctx)
         int conn_fd;
         SSL *ssl;
         char buf[4096];
-        /* accept connection */
-        while ((conn_fd = accept(listen_fd, NULL, NULL)) == -1 && errno == EINTR)
+
+        while ((conn_fd = accept(listen_fd, ((void*)0), ((void*)0))) == -1 && errno == EINTR)
             ;
         if (conn_fd == -1) {
             fprintf(stderr, "accept(2) failed:%s\n", strerror(errno));

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  proc_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PSIG_LOCKED ; 
- int /*<<< orphan*/  psignal_internal (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int proc_t ;
+
+
+ int PSIG_LOCKED ;
+ int psignal_internal (int ,int *,int *,int ,int,int *) ;
 
 void
 psignal_locked(proc_t p, int signum)
 {
-	psignal_internal(p, NULL, NULL, PSIG_LOCKED, signum, NULL);
+ psignal_internal(p, ((void*)0), ((void*)0), PSIG_LOCKED, signum, ((void*)0));
 }

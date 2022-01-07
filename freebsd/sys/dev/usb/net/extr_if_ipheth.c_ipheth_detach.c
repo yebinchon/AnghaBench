@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct usb_ether {int dummy; } ;
-struct ipheth_softc {int /*<<< orphan*/  sc_mtx; int /*<<< orphan*/  sc_xfer; struct usb_ether sc_ue; } ;
-typedef  int /*<<< orphan*/  device_t ;
+struct ipheth_softc {int sc_mtx; int sc_xfer; struct usb_ether sc_ue; } ;
+typedef int device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPHETH_N_TRANSFER ; 
- struct ipheth_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mtx_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uether_ifdetach (struct usb_ether*) ; 
- int /*<<< orphan*/  usbd_transfer_unsetup (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int IPHETH_N_TRANSFER ;
+ struct ipheth_softc* device_get_softc (int ) ;
+ int mtx_destroy (int *) ;
+ int uether_ifdetach (struct usb_ether*) ;
+ int usbd_transfer_unsetup (int ,int ) ;
 
 __attribute__((used)) static int
 ipheth_detach(device_t dev)
 {
-	struct ipheth_softc *sc = device_get_softc(dev);
-	struct usb_ether *ue = &sc->sc_ue;
+ struct ipheth_softc *sc = device_get_softc(dev);
+ struct usb_ether *ue = &sc->sc_ue;
 
-	/* stop all USB transfers first */
-	usbd_transfer_unsetup(sc->sc_xfer, IPHETH_N_TRANSFER);
 
-	uether_ifdetach(ue);
+ usbd_transfer_unsetup(sc->sc_xfer, IPHETH_N_TRANSFER);
 
-	mtx_destroy(&sc->sc_mtx);
+ uether_ifdetach(ue);
 
-	return (0);
+ mtx_destroy(&sc->sc_mtx);
+
+ return (0);
 }

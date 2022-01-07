@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  robj ;
-struct TYPE_7__ {int /*<<< orphan*/ ** argv; } ;
-typedef  TYPE_1__ client ;
-struct TYPE_8__ {int /*<<< orphan*/  czero; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OBJ_ZSET ; 
- int /*<<< orphan*/  addReplyLongLong (TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ checkType (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * lookupKeyReadOrReply (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_3__ shared ; 
- int /*<<< orphan*/  zsetLength (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int robj ;
+struct TYPE_7__ {int ** argv; } ;
+typedef TYPE_1__ client ;
+struct TYPE_8__ {int czero; } ;
+
+
+ int OBJ_ZSET ;
+ int addReplyLongLong (TYPE_1__*,int ) ;
+ scalar_t__ checkType (TYPE_1__*,int *,int ) ;
+ int * lookupKeyReadOrReply (TYPE_1__*,int *,int ) ;
+ TYPE_3__ shared ;
+ int zsetLength (int *) ;
 
 void zcardCommand(client *c) {
     robj *key = c->argv[1];
     robj *zobj;
 
-    if ((zobj = lookupKeyReadOrReply(c,key,shared.czero)) == NULL ||
+    if ((zobj = lookupKeyReadOrReply(c,key,shared.czero)) == ((void*)0) ||
         checkType(c,zobj,OBJ_ZSET)) return;
 
     addReplyLongLong(c,zsetLength(zobj));

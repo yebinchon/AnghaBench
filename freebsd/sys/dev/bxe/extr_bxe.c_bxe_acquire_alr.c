@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+
+
+typedef int uint32_t ;
 struct bxe_softc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOGE (struct bxe_softc*,char*) ; 
- int /*<<< orphan*/  DELAY (int) ; 
- scalar_t__ GRCBASE_MCP ; 
- int REG_RD (struct bxe_softc*,scalar_t__) ; 
- int /*<<< orphan*/  REG_WR (struct bxe_softc*,scalar_t__,int) ; 
+
+ int BLOGE (struct bxe_softc*,char*) ;
+ int DELAY (int) ;
+ scalar_t__ GRCBASE_MCP ;
+ int REG_RD (struct bxe_softc*,scalar_t__) ;
+ int REG_WR (struct bxe_softc*,scalar_t__,int) ;
 
 __attribute__((used)) static int bxe_acquire_alr(struct bxe_softc *sc)
 {

@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ERROR_FILE_NOT_FOUND ; 
- int ERROR_INVALID_CMM ; 
- int _doserrno ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int p_set_doserrno (int) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+ int ERROR_FILE_NOT_FOUND ;
+ int ERROR_INVALID_CMM ;
+ int _doserrno ;
+ int ok (int,char*,int) ;
+ int p_set_doserrno (int) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test__set_doserrno(void)
 {

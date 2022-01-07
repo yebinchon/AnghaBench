@@ -1,53 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  NB_alloc ; 
- int /*<<< orphan*/  NB_max ; 
- int /*<<< orphan*/  NB_used ; 
- int /*<<< orphan*/  SIGHUP ; 
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  SIGIO ; 
- int /*<<< orphan*/  SIGPIPE ; 
- int /*<<< orphan*/  SIGTERM ; 
- int /*<<< orphan*/  SIGUSR1 ; 
- int /*<<< orphan*/  SIG_IGN ; 
- int /*<<< orphan*/  active_connections ; 
- scalar_t__ change_user (char*) ; 
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cron () ; 
- int /*<<< orphan*/  ct_spell_engine_server ; 
- scalar_t__ daemonize ; 
- int /*<<< orphan*/  epoll_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  epoll_work (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  init_epoll () ; 
- int /*<<< orphan*/  init_listening_connection (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_netbuffers () ; 
- int /*<<< orphan*/  maxconn ; 
- int /*<<< orphan*/  memcache_methods ; 
- int now ; 
- int /*<<< orphan*/  setsid () ; 
- int /*<<< orphan*/  sfd ; 
- int /*<<< orphan*/  sighup_handler ; 
- int /*<<< orphan*/  sigint_handler ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sigterm_handler ; 
- int /*<<< orphan*/  sigusr1_handler ; 
- int /*<<< orphan*/  stderr ; 
- char* username ; 
- int /*<<< orphan*/  vkprintf (int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int NB_alloc ;
+ int NB_max ;
+ int NB_used ;
+ int SIGHUP ;
+ int SIGINT ;
+ int SIGIO ;
+ int SIGPIPE ;
+ int SIGTERM ;
+ int SIGUSR1 ;
+ int SIG_IGN ;
+ int active_connections ;
+ scalar_t__ change_user (char*) ;
+ int close (int ) ;
+ int cron () ;
+ int ct_spell_engine_server ;
+ scalar_t__ daemonize ;
+ int epoll_close (int ) ;
+ int epoll_work (int) ;
+ int exit (int) ;
+ int fprintf (int ,char*,char*) ;
+ int init_epoll () ;
+ int init_listening_connection (int ,int *,int *) ;
+ int init_netbuffers () ;
+ int maxconn ;
+ int memcache_methods ;
+ int now ;
+ int setsid () ;
+ int sfd ;
+ int sighup_handler ;
+ int sigint_handler ;
+ int signal (int ,int ) ;
+ int sigterm_handler ;
+ int sigusr1_handler ;
+ int stderr ;
+ char* username ;
+ int vkprintf (int,char*,int ,int ,int ,int ,int ) ;
 
 void start_server (void) {
   int i;
@@ -83,7 +75,7 @@ void start_server (void) {
   for (i = 0; ; i++) {
     if (!(i & 255)) {
       vkprintf (1, "epoll_work(): %d out of %d connections, network buffers: %d used, %d out of %d allocated\n",
-	       active_connections, maxconn, NB_used, NB_alloc, NB_max);
+        active_connections, maxconn, NB_used, NB_alloc, NB_max);
     }
     epoll_work (57);
 

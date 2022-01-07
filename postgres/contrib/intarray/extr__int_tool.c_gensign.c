@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BITVEC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HASH (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int BITVEC ;
+
+
+ int HASH (int ,int) ;
 
 void
 gensign(BITVEC sign, int *a, int len)
 {
-	int			i;
+ int i;
 
-	/* we assume that the sign vector is previously zeroed */
-	for (i = 0; i < len; i++)
-	{
-		HASH(sign, *a);
-		a++;
-	}
+
+ for (i = 0; i < len; i++)
+ {
+  HASH(sign, *a);
+  a++;
+ }
 }

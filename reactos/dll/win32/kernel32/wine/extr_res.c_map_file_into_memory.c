@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mapping_info {int /*<<< orphan*/ * base; int /*<<< orphan*/  size; int /*<<< orphan*/  file; scalar_t__ read_write; } ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateFileMappingW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int FILE_MAP_READ ; 
- int FILE_MAP_WRITE ; 
- int /*<<< orphan*/ * MapViewOfFile (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int PAGE_READONLY ; 
- int PAGE_READWRITE ; 
+
+
+
+struct mapping_info {int * base; int size; int file; scalar_t__ read_write; } ;
+typedef int HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int CloseHandle (int ) ;
+ int CreateFileMappingW (int ,int *,int,int ,int ,int *) ;
+ int FALSE ;
+ int FILE_MAP_READ ;
+ int FILE_MAP_WRITE ;
+ int * MapViewOfFile (int ,int,int ,int ,int ) ;
+ int PAGE_READONLY ;
+ int PAGE_READWRITE ;
 
 __attribute__((used)) static BOOL map_file_into_memory( struct mapping_info *mi )
 {
@@ -41,11 +41,11 @@ __attribute__((used)) static BOOL map_file_into_memory( struct mapping_info *mi 
         perm = FILE_MAP_READ;
     }
 
-    mapping = CreateFileMappingW( mi->file, NULL, page_attr, 0, 0, NULL );
+    mapping = CreateFileMappingW( mi->file, ((void*)0), page_attr, 0, 0, ((void*)0) );
     if (!mapping) return FALSE;
 
     mi->base = MapViewOfFile( mapping, perm, 0, 0, mi->size );
     CloseHandle( mapping );
 
-    return mi->base != NULL;
+    return mi->base != ((void*)0);
 }

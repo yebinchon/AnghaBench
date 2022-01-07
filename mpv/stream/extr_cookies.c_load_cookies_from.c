@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mp_log {int dummy; } ;
 struct cookie_list_type {int secure; struct cookie_list_type* next; void* domain; void* path; void* value; void* name; } ;
-typedef  int /*<<< orphan*/  int64_t ;
+typedef int int64_t ;
 
-/* Variables and functions */
- void* col_dup (struct cookie_list_type*,char*) ; 
- int /*<<< orphan*/  cookie_list_t ; 
- int /*<<< orphan*/  free (char*) ; 
- char* load_file (struct mp_log*,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ parse_line (char**,char**) ; 
- struct cookie_list_type* talloc_zero (void*,int /*<<< orphan*/ ) ; 
+
+ void* col_dup (struct cookie_list_type*,char*) ;
+ int cookie_list_t ;
+ int free (char*) ;
+ char* load_file (struct mp_log*,char const*,int *) ;
+ scalar_t__ parse_line (char**,char**) ;
+ struct cookie_list_type* talloc_zero (void*,int ) ;
 
 __attribute__((used)) static struct cookie_list_type *load_cookies_from(void *ctx,
                                                   struct mp_log *log,
@@ -31,9 +31,9 @@ __attribute__((used)) static struct cookie_list_type *load_cookies_from(void *ct
 
     ptr = file = load_file(log, filename, &length);
     if (!ptr)
-        return NULL;
+        return ((void*)0);
 
-    struct cookie_list_type *list = NULL;
+    struct cookie_list_type *list = ((void*)0);
     while (*ptr) {
         char *cols[7];
         if (parse_line(&ptr, cols)) {

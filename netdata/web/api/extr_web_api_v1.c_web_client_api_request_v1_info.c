@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
 struct TYPE_15__ {TYPE_4__* data; } ;
 struct web_client {TYPE_1__ response; } ;
-struct TYPE_18__ {int /*<<< orphan*/  contenttype; } ;
+struct TYPE_18__ {int contenttype; } ;
 struct TYPE_17__ {char* program_version; char* machine_guid; TYPE_2__* system_info; } ;
 struct TYPE_16__ {char* os_name; char* os_id; char* os_id_like; char* os_version; char* os_version_id; char* os_detection; char* kernel_name; char* kernel_version; char* architecture; char* virtualization; char* virt_detection; char* container; char* container_detection; } ;
-typedef  TYPE_3__ RRDHOST ;
-typedef  TYPE_4__ BUFFER ;
+typedef TYPE_3__ RRDHOST ;
+typedef TYPE_4__ BUFFER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CT_APPLICATION_JSON ; 
- int HTTP_RESP_BACKEND_FETCH_FAILED ; 
- int HTTP_RESP_OK ; 
- int /*<<< orphan*/  buffer_flush (TYPE_4__*) ; 
- int /*<<< orphan*/  buffer_no_cacheable (TYPE_4__*) ; 
- int /*<<< orphan*/  buffer_sprintf (TYPE_4__*,char*,char*) ; 
- int /*<<< orphan*/  buffer_strcat (TYPE_4__*,char*) ; 
- int /*<<< orphan*/  chartcollectors2json (TYPE_3__*,TYPE_4__*) ; 
- int /*<<< orphan*/  netdata_ready ; 
- int /*<<< orphan*/  web_client_api_request_v1_info_mirrored_hosts (TYPE_4__*) ; 
- int /*<<< orphan*/  web_client_api_request_v1_info_summary_alarm_statuses (TYPE_3__*,TYPE_4__*) ; 
+
+ int CT_APPLICATION_JSON ;
+ int HTTP_RESP_BACKEND_FETCH_FAILED ;
+ int HTTP_RESP_OK ;
+ int buffer_flush (TYPE_4__*) ;
+ int buffer_no_cacheable (TYPE_4__*) ;
+ int buffer_sprintf (TYPE_4__*,char*,char*) ;
+ int buffer_strcat (TYPE_4__*,char*) ;
+ int chartcollectors2json (TYPE_3__*,TYPE_4__*) ;
+ int netdata_ready ;
+ int web_client_api_request_v1_info_mirrored_hosts (TYPE_4__*) ;
+ int web_client_api_request_v1_info_summary_alarm_statuses (TYPE_3__*,TYPE_4__*) ;
 
 inline int web_client_api_request_v1_info(RRDHOST *host, struct web_client *w, char *url) {
     (void)url;

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  val ;
 
-/* Variables and functions */
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  close (int) ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ read (int,uintptr_t*,int) ; 
+
+
+
+typedef int val ;
+
+
+ int O_RDONLY ;
+ int close (int) ;
+ int open (char*,int ) ;
+ scalar_t__ read (int,uintptr_t*,int) ;
 
 __attribute__((used)) static uintptr_t mmap_probe_seed(void)
 {
@@ -27,5 +27,5 @@ __attribute__((used)) static uintptr_t mmap_probe_seed(void)
     (void)close(fd);
     if (ok) return val;
   }
-  return 1;  /* Punt. */
+  return 1;
 }

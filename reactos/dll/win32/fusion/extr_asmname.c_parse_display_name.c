@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {char* displayname; char* name; char* procarch; char* culture; } ;
-typedef  char* LPWSTR ;
-typedef  char* LPCWSTR ;
-typedef  TYPE_1__ IAssemblyNameImpl ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ BOOL ;
+typedef char* LPWSTR ;
+typedef char* LPCWSTR ;
+typedef TYPE_1__ IAssemblyNameImpl ;
+typedef int HRESULT ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FUSION_E_INVALID_NAME ; 
- int /*<<< orphan*/  S_OK ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  culture ; 
- int /*<<< orphan*/  heap_free (char*) ; 
- int /*<<< orphan*/  lstrcmpiW (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_culture (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  parse_procarch (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  parse_pubkey (TYPE_1__*,char*) ; 
- char* parse_value (char*,int) ; 
- int /*<<< orphan*/  parse_version (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  procarch ; 
- int /*<<< orphan*/  pubkey ; 
- void* strdupW (char*) ; 
- int /*<<< orphan*/  version ; 
- char* wcschr (char*,char) ; 
+
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ scalar_t__ FALSE ;
+ int FUSION_E_INVALID_NAME ;
+ int S_OK ;
+ scalar_t__ TRUE ;
+ int culture ;
+ int heap_free (char*) ;
+ int lstrcmpiW (char*,int ) ;
+ int parse_culture (TYPE_1__*,char*) ;
+ int parse_procarch (TYPE_1__*,char*) ;
+ int parse_pubkey (TYPE_1__*,char*) ;
+ char* parse_value (char*,int) ;
+ int parse_version (TYPE_1__*,char*) ;
+ int procarch ;
+ int pubkey ;
+ void* strdupW (char*) ;
+ int version ;
+ char* wcschr (char*,char) ;
 
 __attribute__((used)) static HRESULT parse_display_name(IAssemblyNameImpl *name, LPCWSTR szAssemblyName)
 {
@@ -63,7 +63,7 @@ __attribute__((used)) static HRESULT parse_display_name(IAssemblyNameImpl *name,
     ptr = wcschr(str, ',');
     if (ptr) *ptr = '\0';
 
-    /* no ',' but ' ' only */
+
     if( !ptr && wcschr(str, ' ') )
     {
         hr = FUSION_E_INVALID_NAME;
@@ -125,7 +125,7 @@ __attribute__((used)) static HRESULT parse_display_name(IAssemblyNameImpl *name,
         else if (!lstrcmpiW(str, procarch))
         {
             name->procarch = value;
-            value = NULL;
+            value = ((void*)0);
 
             hr = parse_procarch( name, name->procarch );
         }

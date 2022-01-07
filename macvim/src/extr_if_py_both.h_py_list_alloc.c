@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  lv_refcount; } ;
-typedef  TYPE_1__ list_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyErr_NoMemory () ; 
- TYPE_1__* list_alloc () ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int lv_refcount; } ;
+typedef TYPE_1__ list_T ;
+
+
+ int PyErr_NoMemory () ;
+ TYPE_1__* list_alloc () ;
 
 __attribute__((used)) static list_T *
 py_list_alloc(void)
 {
-    list_T	*ret;
+    list_T *ret;
 
     if (!(ret = list_alloc()))
     {
-	PyErr_NoMemory();
-	return NULL;
+ PyErr_NoMemory();
+ return ((void*)0);
     }
     ++ret->lv_refcount;
 

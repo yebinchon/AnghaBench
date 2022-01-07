@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct connection {int dummy; } ;
 struct TYPE_4__ {scalar_t__ in_type; struct connection* extra; } ;
-struct TYPE_3__ {int /*<<< orphan*/  error; } ;
+struct TYPE_3__ {int error; } ;
 
-/* Variables and functions */
- TYPE_2__* CQ ; 
- int /*<<< orphan*/  RPC_FUN_NEXT ; 
- int RPC_READY ; 
- int RPC_STOP_READY ; 
- int /*<<< orphan*/  kitten_php_current_count () ; 
- int kitten_php_ready (int,struct connection*) ; 
- TYPE_1__ tl ; 
- int /*<<< orphan*/  tl_fetch_skip (int) ; 
- scalar_t__ tl_type_conn ; 
- int /*<<< orphan*/  vkprintf (int,char*,...) ; 
+
+ TYPE_2__* CQ ;
+ int RPC_FUN_NEXT ;
+ int RPC_READY ;
+ int RPC_STOP_READY ;
+ int kitten_php_current_count () ;
+ int kitten_php_ready (int,struct connection*) ;
+ TYPE_1__ tl ;
+ int tl_fetch_skip (int) ;
+ scalar_t__ tl_type_conn ;
+ int vkprintf (int,char*,...) ;
 
 int rpc_fun_kitten_php_start_stop (void **IP, void **Data) {
   int op = (long)*Data;

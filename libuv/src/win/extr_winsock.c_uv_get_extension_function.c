@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  guid ;
-typedef  int /*<<< orphan*/  SOCKET ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SIO_GET_EXTENSION_FUNCTION_POINTER ; 
- int SOCKET_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int WSAIoctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,void*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int guid ;
+typedef int SOCKET ;
+typedef int GUID ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int SIO_GET_EXTENSION_FUNCTION_POINTER ;
+ int SOCKET_ERROR ;
+ int TRUE ;
+ int WSAIoctl (int ,int ,int *,int,void*,int,int *,int *,int *) ;
 
 __attribute__((used)) static BOOL uv_get_extension_function(SOCKET socket, GUID guid,
     void **target) {
@@ -35,11 +35,11 @@ __attribute__((used)) static BOOL uv_get_extension_function(SOCKET socket, GUID 
                     (void*)target,
                     sizeof(*target),
                     &bytes,
-                    NULL,
-                    NULL);
+                    ((void*)0),
+                    ((void*)0));
 
   if (result == SOCKET_ERROR) {
-    *target = NULL;
+    *target = ((void*)0);
     return FALSE;
   } else {
     return TRUE;

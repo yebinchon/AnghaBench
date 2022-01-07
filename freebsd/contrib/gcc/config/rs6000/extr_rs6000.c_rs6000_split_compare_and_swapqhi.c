@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CCmode ; 
- int /*<<< orphan*/  CR0_REGNO ; 
- int /*<<< orphan*/  SImode ; 
- int /*<<< orphan*/  UNSPEC_AND ; 
- int /*<<< orphan*/  VOIDmode ; 
- int /*<<< orphan*/  XEXP (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  const0_rtx ; 
- int /*<<< orphan*/  emit_insn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_label (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_load_locked (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_store_conditional (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_unlikely_jump (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_iorsi3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_isync () ; 
- int /*<<< orphan*/  gen_label_rtx () ; 
- int /*<<< orphan*/  gen_memory_barrier () ; 
- int /*<<< orphan*/  gen_rtvec (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_AND (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_COMPARE (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_LABEL_REF (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_NE (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_NOT (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_REG (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_UNSPEC (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rtx ;
+
+
+ int CCmode ;
+ int CR0_REGNO ;
+ int SImode ;
+ int UNSPEC_AND ;
+ int VOIDmode ;
+ int XEXP (int ,int ) ;
+ int const0_rtx ;
+ int emit_insn (int ) ;
+ int emit_label (int ) ;
+ int emit_load_locked (int ,int ,int ) ;
+ int emit_store_conditional (int ,int ,int ,int ) ;
+ int emit_unlikely_jump (int ,int ) ;
+ int gen_iorsi3 (int ,int ,int ) ;
+ int gen_isync () ;
+ int gen_label_rtx () ;
+ int gen_memory_barrier () ;
+ int gen_rtvec (int,int ,int ) ;
+ int gen_rtx_AND (int ,int ,int ) ;
+ int gen_rtx_COMPARE (int ,int ,int ) ;
+ int gen_rtx_LABEL_REF (int ,int ) ;
+ int gen_rtx_NE (int ,int ,int ) ;
+ int gen_rtx_NOT (int ,int ) ;
+ int gen_rtx_REG (int ,int ) ;
+ int gen_rtx_SET (int ,int ,int ) ;
+ int gen_rtx_UNSPEC (int ,int ,int ) ;
 
 void
 rs6000_split_compare_and_swapqhi (rtx dest, rtx mask,
-				  rtx oldval, rtx newval, rtx mem,
-				  rtx scratch)
+      rtx oldval, rtx newval, rtx mem,
+      rtx scratch)
 {
   rtx label1, label2, x, cond = gen_rtx_REG (CCmode, CR0_REGNO);
 
@@ -53,12 +53,12 @@ rs6000_split_compare_and_swapqhi (rtx dest, rtx mask,
 
   emit_load_locked (SImode, scratch, mem);
 
-  /* Mask subword within loaded value for comparison with oldval.
-     Use UNSPEC_AND to avoid clobber.*/
+
+
   emit_insn (gen_rtx_SET (SImode, dest,
-			  gen_rtx_UNSPEC (SImode,
-					  gen_rtvec (2, scratch, mask),
-					  UNSPEC_AND)));
+     gen_rtx_UNSPEC (SImode,
+       gen_rtvec (2, scratch, mask),
+       UNSPEC_AND)));
 
   x = gen_rtx_COMPARE (CCmode, dest, oldval);
   emit_insn (gen_rtx_SET (VOIDmode, cond, x));
@@ -66,10 +66,10 @@ rs6000_split_compare_and_swapqhi (rtx dest, rtx mask,
   x = gen_rtx_NE (VOIDmode, cond, const0_rtx);
   emit_unlikely_jump (x, label2);
 
-  /* Clear subword within loaded value for insertion of new value.  */
+
   emit_insn (gen_rtx_SET (SImode, scratch,
-			  gen_rtx_AND (SImode,
-				       gen_rtx_NOT (SImode, mask), scratch)));
+     gen_rtx_AND (SImode,
+           gen_rtx_NOT (SImode, mask), scratch)));
   emit_insn (gen_iorsi3 (scratch, scratch, newval));
   emit_store_conditional (SImode, cond, mem, scratch);
 

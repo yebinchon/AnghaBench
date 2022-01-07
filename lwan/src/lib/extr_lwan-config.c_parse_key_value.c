@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct parser {int /*<<< orphan*/  items; int /*<<< orphan*/  strbuf; int /*<<< orphan*/  lexer; int /*<<< orphan*/  buffer; } ;
-struct TYPE_2__ {scalar_t__ len; int /*<<< orphan*/  value; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct parser {int items; int strbuf; int lexer; int buffer; } ;
+struct TYPE_2__ {scalar_t__ len; int value; } ;
 struct lexeme {int type; TYPE_1__ value; } ;
-struct config_line {int /*<<< orphan*/  key; int /*<<< orphan*/  value; int /*<<< orphan*/  type; } ;
+struct config_line {int key; int value; int type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONFIG_LINE_TYPE_LINE ; 
-#define  LEXEME_CLOSE_BRACKET 133 
-#define  LEXEME_EQUAL 132 
-#define  LEXEME_LINEFEED 131 
-#define  LEXEME_STRING 130 
-#define  LEXEME_VARIABLE 129 
-#define  LEXEME_VARIABLE_DEFAULT 128 
- int /*<<< orphan*/  backup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  config_ring_buffer_try_put (int /*<<< orphan*/ *,struct config_line*) ; 
- struct lexeme* lex_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lexeme_ring_buffer_empty (int /*<<< orphan*/ *) ; 
- struct lexeme* lexeme_ring_buffer_get_ptr_or_null (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * lexeme_type_str ; 
- int /*<<< orphan*/  lwan_status_debug (char*,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lwan_status_error (char*,...) ; 
- int /*<<< orphan*/  lwan_strbuf_append_char (int /*<<< orphan*/ *,char) ; 
- int /*<<< orphan*/  lwan_strbuf_append_str (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  lwan_strbuf_append_strz (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  lwan_strbuf_get_buffer (int /*<<< orphan*/ *) ; 
- size_t lwan_strbuf_get_length (int /*<<< orphan*/ *) ; 
- void* parse_config ; 
- char* secure_getenv_len (int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int CONFIG_LINE_TYPE_LINE ;
+
+
+
+
+
+
+ int backup (int *) ;
+ int config_ring_buffer_try_put (int *,struct config_line*) ;
+ struct lexeme* lex_next (int *) ;
+ int lexeme_ring_buffer_empty (int *) ;
+ struct lexeme* lexeme_ring_buffer_get_ptr_or_null (int *) ;
+ int * lexeme_type_str ;
+ int lwan_status_debug (char*,int,int ,int,int ) ;
+ int lwan_status_error (char*,...) ;
+ int lwan_strbuf_append_char (int *,char) ;
+ int lwan_strbuf_append_str (int *,int ,scalar_t__) ;
+ int lwan_strbuf_append_strz (int *,char const*) ;
+ int lwan_strbuf_get_buffer (int *) ;
+ size_t lwan_strbuf_get_length (int *) ;
+ void* parse_config ;
+ char* secure_getenv_len (int ,scalar_t__) ;
 
 __attribute__((used)) static void *parse_key_value(struct parser *parser)
 {
@@ -58,17 +58,17 @@ __attribute__((used)) static void *parse_key_value(struct parser *parser)
 
     while ((lexeme = lex_next(&parser->lexer))) {
         switch (lexeme->type) {
-        case LEXEME_VARIABLE_DEFAULT:
-        case LEXEME_VARIABLE: {
+        case 128:
+        case 129: {
             const char *value;
 
             value = secure_getenv_len(lexeme->value.value, lexeme->value.len);
-            if (lexeme->type == LEXEME_VARIABLE) {
+            if (lexeme->type == 129) {
                 if (!value) {
                     lwan_status_error(
                         "Variable '$%.*s' not defined in environment",
                         (int)lexeme->value.len, lexeme->value.value);
-                    return NULL;
+                    return ((void*)0);
                 } else {
                     lwan_strbuf_append_strz(&parser->strbuf, value);
                 }
@@ -79,12 +79,12 @@ __attribute__((used)) static void *parse_key_value(struct parser *parser)
                     lwan_status_error(
                         "Default value for variable '$%.*s' not given",
                         (int)var_name->value.len, var_name->value.value);
-                    return NULL;
+                    return ((void*)0);
                 }
 
-                if (lexeme->type != LEXEME_STRING) {
+                if (lexeme->type != 130) {
                     lwan_status_error("Wrong format for default value");
-                    return NULL;
+                    return ((void*)0);
                 }
 
                 if (!value) {
@@ -102,33 +102,33 @@ __attribute__((used)) static void *parse_key_value(struct parser *parser)
             break;
         }
 
-        case LEXEME_EQUAL:
+        case 132:
             lwan_strbuf_append_char(&parser->strbuf, '=');
             break;
 
-        case LEXEME_STRING:
+        case 130:
             lwan_strbuf_append_str(&parser->strbuf, lexeme->value.value,
                                    lexeme->value.len);
             break;
 
-        case LEXEME_CLOSE_BRACKET:
+        case 133:
             backup(&parser->lexer);
-            /* fallthrough */
 
-        case LEXEME_LINEFEED:
+
+        case 131:
             line.key = lwan_strbuf_get_buffer(&parser->strbuf);
             line.value = line.key + key_size + 1;
             return config_ring_buffer_try_put(&parser->items, &line)
                        ? parse_config
-                       : NULL;
+                       : ((void*)0);
 
         default:
             lwan_status_error("Unexpected token while parsing key-value: %s",
                               lexeme_type_str[lexeme->type]);
-            return NULL;
+            return ((void*)0);
         }
     }
 
     lwan_status_error("EOF while parsing key-value");
-    return NULL;
+    return ((void*)0);
 }

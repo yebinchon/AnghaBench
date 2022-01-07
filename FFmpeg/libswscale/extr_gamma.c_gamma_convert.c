@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  size_t uint16_t ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef size_t uint16_t ;
 struct TYPE_9__ {size_t* table; } ;
 struct TYPE_8__ {TYPE_2__* src; TYPE_4__* instance; } ;
 struct TYPE_7__ {int width; TYPE_1__* plane; } ;
-struct TYPE_6__ {int sliceY; int /*<<< orphan*/ ** line; } ;
-typedef  TYPE_3__ SwsFilterDescriptor ;
-typedef  int /*<<< orphan*/  SwsContext ;
-typedef  TYPE_4__ GammaContext ;
+struct TYPE_6__ {int sliceY; int ** line; } ;
+typedef TYPE_3__ SwsFilterDescriptor ;
+typedef int SwsContext ;
+typedef TYPE_4__ GammaContext ;
 
-/* Variables and functions */
- size_t AV_RL16 (size_t*) ; 
- int /*<<< orphan*/  AV_WL16 (size_t*,size_t) ; 
+
+ size_t AV_RL16 (size_t*) ;
+ int AV_WL16 (size_t*,size_t) ;
 
 __attribute__((used)) static int gamma_convert(SwsContext *c, SwsFilterDescriptor *desc, int sliceY, int sliceH)
 {

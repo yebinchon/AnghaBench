@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int IIC_ENOADDR ; 
- int /*<<< orphan*/  PPB_DONTWAIT ; 
- int /*<<< orphan*/  device_get_parent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  lpbb_reset_bus (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ppb_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ppb_release_bus (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ppb_request_bus (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ppb_unlock (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u_char ;
+typedef int device_t ;
+
+
+ int IIC_ENOADDR ;
+ int PPB_DONTWAIT ;
+ int device_get_parent (int ) ;
+ int device_printf (int ,char*) ;
+ int lpbb_reset_bus (int ) ;
+ int ppb_lock (int ) ;
+ int ppb_release_bus (int ,int ) ;
+ scalar_t__ ppb_request_bus (int ,int ,int ) ;
+ int ppb_unlock (int ) ;
 
 __attribute__((used)) static int
 lpbb_reset(device_t dev, u_char speed, u_char addr, u_char * oldaddr)
 {
-	device_t ppbus = device_get_parent(dev);
+ device_t ppbus = device_get_parent(dev);
 
-	ppb_lock(ppbus);
-	if (ppb_request_bus(ppbus, dev, PPB_DONTWAIT)) {
-		ppb_unlock(ppbus);
-		device_printf(dev, "can't allocate ppbus\n");
-		return (0);
-	}
+ ppb_lock(ppbus);
+ if (ppb_request_bus(ppbus, dev, PPB_DONTWAIT)) {
+  ppb_unlock(ppbus);
+  device_printf(dev, "can't allocate ppbus\n");
+  return (0);
+ }
 
-	lpbb_reset_bus(dev);
+ lpbb_reset_bus(dev);
 
-	ppb_release_bus(ppbus, dev);
-	ppb_unlock(ppbus);
+ ppb_release_bus(ppbus, dev);
+ ppb_unlock(ppbus);
 
-	return (IIC_ENOADDR);
+ return (IIC_ENOADDR);
 }

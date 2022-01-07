@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct netconn {int /*<<< orphan*/  (* callback ) (struct netconn*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  acceptmbox; } ;
-typedef  int /*<<< orphan*/  mqmsg_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  API_LIB_DEBUG ; 
- int /*<<< orphan*/  LWIP_DEBUGF (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  MQ_MSG_BLOCK ; 
- int /*<<< orphan*/  MQ_Receive (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NETCONN_EVTRCVMINUS ; 
- int /*<<< orphan*/  stub1 (struct netconn*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct netconn {int (* callback ) (struct netconn*,int ,int ) ;int acceptmbox; } ;
+typedef int mqmsg_t ;
+
+
+ int API_LIB_DEBUG ;
+ int LWIP_DEBUGF (int ,char*) ;
+ int MQ_MSG_BLOCK ;
+ int MQ_Receive (int ,int ,int ) ;
+ int NETCONN_EVTRCVMINUS ;
+ int stub1 (struct netconn*,int ,int ) ;
 
 __attribute__((used)) static struct netconn* netconn_accept(struct netconn* conn)
 {
-	struct netconn *newconn;
+ struct netconn *newconn;
 
-	if(conn==NULL) return NULL;
+ if(conn==((void*)0)) return ((void*)0);
 
-	LWIP_DEBUGF(API_LIB_DEBUG, ("netconn_accept(%p)\n", conn));
-	MQ_Receive(conn->acceptmbox,(mqmsg_t)&newconn,MQ_MSG_BLOCK);
-	if(conn->callback)
-		(*conn->callback)(conn,NETCONN_EVTRCVMINUS,0);
+ LWIP_DEBUGF(API_LIB_DEBUG, ("netconn_accept(%p)\n", conn));
+ MQ_Receive(conn->acceptmbox,(mqmsg_t)&newconn,MQ_MSG_BLOCK);
+ if(conn->callback)
+  (*conn->callback)(conn,NETCONN_EVTRCVMINUS,0);
 
-	return newconn;
+ return newconn;
 }

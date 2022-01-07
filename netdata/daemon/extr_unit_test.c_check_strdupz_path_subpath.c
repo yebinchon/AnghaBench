@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  freez (char*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char const*) ; 
- char* strdupz_path_subpath (char const*,char const*) ; 
+ int fprintf (int ,char*,...) ;
+ int freez (char*) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char const*) ;
+ char* strdupz_path_subpath (char const*,char const*) ;
 
 int check_strdupz_path_subpath() {
 
@@ -25,18 +17,18 @@ int check_strdupz_path_subpath() {
         const char *subpath;
         const char *result;
     } checks[] = {
-            { "",                "",            "."                     },
-            { "/",               "",            "/"                     },
-            { "/etc/netdata",    "",            "/etc/netdata"          },
-            { "/etc/netdata///", "",            "/etc/netdata"          },
-            { "/etc/netdata///", "health.d",    "/etc/netdata/health.d" },
+            { "", "", "." },
+            { "/", "", "/" },
+            { "/etc/netdata", "", "/etc/netdata" },
+            { "/etc/netdata///", "", "/etc/netdata" },
+            { "/etc/netdata///", "health.d", "/etc/netdata/health.d" },
             { "/etc/netdata///", "///health.d", "/etc/netdata/health.d" },
-            { "/etc/netdata",    "///health.d", "/etc/netdata/health.d" },
-            { "",                "///health.d", "./health.d"            },
-            { "/",               "///health.d", "/health.d"             },
+            { "/etc/netdata", "///health.d", "/etc/netdata/health.d" },
+            { "", "///health.d", "./health.d" },
+            { "/", "///health.d", "/health.d" },
 
-            // terminator
-            { NULL, NULL, NULL }
+
+            { ((void*)0), ((void*)0), ((void*)0) }
     };
 
     size_t i;

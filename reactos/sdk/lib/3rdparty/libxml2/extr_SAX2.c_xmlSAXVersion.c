@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int initialized; void* fatalError; void* error; int /*<<< orphan*/  warning; int /*<<< orphan*/  comment; int /*<<< orphan*/  processingInstruction; void* ignorableWhitespace; int /*<<< orphan*/  cdataBlock; void* characters; int /*<<< orphan*/  reference; int /*<<< orphan*/  endDocument; int /*<<< orphan*/  startDocument; int /*<<< orphan*/  setDocumentLocator; int /*<<< orphan*/  unparsedEntityDecl; int /*<<< orphan*/  notationDecl; int /*<<< orphan*/  elementDecl; int /*<<< orphan*/  attributeDecl; int /*<<< orphan*/  entityDecl; int /*<<< orphan*/  getParameterEntity; int /*<<< orphan*/  getEntity; int /*<<< orphan*/  resolveEntity; int /*<<< orphan*/  hasExternalSubset; int /*<<< orphan*/  hasInternalSubset; int /*<<< orphan*/  isStandalone; int /*<<< orphan*/  externalSubset; int /*<<< orphan*/  internalSubset; int /*<<< orphan*/ * endElement; int /*<<< orphan*/ * startElement; int /*<<< orphan*/ * serror; int /*<<< orphan*/  endElementNs; int /*<<< orphan*/  startElementNs; } ;
-typedef  TYPE_1__ xmlSAXHandler ;
 
-/* Variables and functions */
- int XML_SAX2_MAGIC ; 
- void* xmlParserError ; 
- int /*<<< orphan*/  xmlParserWarning ; 
- int /*<<< orphan*/  xmlSAX2AttributeDecl ; 
- int /*<<< orphan*/  xmlSAX2CDataBlock ; 
- void* xmlSAX2Characters ; 
- int /*<<< orphan*/  xmlSAX2Comment ; 
- int /*<<< orphan*/  xmlSAX2ElementDecl ; 
- int /*<<< orphan*/  xmlSAX2EndDocument ; 
- int /*<<< orphan*/ * xmlSAX2EndElement ; 
- int /*<<< orphan*/  xmlSAX2EndElementNs ; 
- int /*<<< orphan*/  xmlSAX2EntityDecl ; 
- int /*<<< orphan*/  xmlSAX2ExternalSubset ; 
- int /*<<< orphan*/  xmlSAX2GetEntity ; 
- int /*<<< orphan*/  xmlSAX2GetParameterEntity ; 
- int /*<<< orphan*/  xmlSAX2HasExternalSubset ; 
- int /*<<< orphan*/  xmlSAX2HasInternalSubset ; 
- int /*<<< orphan*/  xmlSAX2InternalSubset ; 
- int /*<<< orphan*/  xmlSAX2IsStandalone ; 
- int /*<<< orphan*/  xmlSAX2NotationDecl ; 
- int /*<<< orphan*/  xmlSAX2ProcessingInstruction ; 
- int /*<<< orphan*/  xmlSAX2Reference ; 
- int /*<<< orphan*/  xmlSAX2ResolveEntity ; 
- int /*<<< orphan*/  xmlSAX2SetDocumentLocator ; 
- int /*<<< orphan*/  xmlSAX2StartDocument ; 
- int /*<<< orphan*/ * xmlSAX2StartElement ; 
- int /*<<< orphan*/  xmlSAX2StartElementNs ; 
- int /*<<< orphan*/  xmlSAX2UnparsedEntityDecl ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int initialized; void* fatalError; void* error; int warning; int comment; int processingInstruction; void* ignorableWhitespace; int cdataBlock; void* characters; int reference; int endDocument; int startDocument; int setDocumentLocator; int unparsedEntityDecl; int notationDecl; int elementDecl; int attributeDecl; int entityDecl; int getParameterEntity; int getEntity; int resolveEntity; int hasExternalSubset; int hasInternalSubset; int isStandalone; int externalSubset; int internalSubset; int * endElement; int * startElement; int * serror; int endElementNs; int startElementNs; } ;
+typedef TYPE_1__ xmlSAXHandler ;
+
+
+ int XML_SAX2_MAGIC ;
+ void* xmlParserError ;
+ int xmlParserWarning ;
+ int xmlSAX2AttributeDecl ;
+ int xmlSAX2CDataBlock ;
+ void* xmlSAX2Characters ;
+ int xmlSAX2Comment ;
+ int xmlSAX2ElementDecl ;
+ int xmlSAX2EndDocument ;
+ int * xmlSAX2EndElement ;
+ int xmlSAX2EndElementNs ;
+ int xmlSAX2EntityDecl ;
+ int xmlSAX2ExternalSubset ;
+ int xmlSAX2GetEntity ;
+ int xmlSAX2GetParameterEntity ;
+ int xmlSAX2HasExternalSubset ;
+ int xmlSAX2HasInternalSubset ;
+ int xmlSAX2InternalSubset ;
+ int xmlSAX2IsStandalone ;
+ int xmlSAX2NotationDecl ;
+ int xmlSAX2ProcessingInstruction ;
+ int xmlSAX2Reference ;
+ int xmlSAX2ResolveEntity ;
+ int xmlSAX2SetDocumentLocator ;
+ int xmlSAX2StartDocument ;
+ int * xmlSAX2StartElement ;
+ int xmlSAX2StartElementNs ;
+ int xmlSAX2UnparsedEntityDecl ;
 
 int
 xmlSAXVersion(xmlSAXHandler *hdlr, int version)
 {
-    if (hdlr == NULL) return(-1);
+    if (hdlr == ((void*)0)) return(-1);
     if (version == 2) {
-	hdlr->startElement = NULL;
-	hdlr->endElement = NULL;
-	hdlr->startElementNs = xmlSAX2StartElementNs;
-	hdlr->endElementNs = xmlSAX2EndElementNs;
-	hdlr->serror = NULL;
-	hdlr->initialized = XML_SAX2_MAGIC;
-#ifdef LIBXML_SAX1_ENABLED
-    } else if (version == 1) {
-	hdlr->startElement = xmlSAX2StartElement;
-	hdlr->endElement = xmlSAX2EndElement;
-	hdlr->initialized = 1;
-#endif /* LIBXML_SAX1_ENABLED */
+ hdlr->startElement = ((void*)0);
+ hdlr->endElement = ((void*)0);
+ hdlr->startElementNs = xmlSAX2StartElementNs;
+ hdlr->endElementNs = xmlSAX2EndElementNs;
+ hdlr->serror = ((void*)0);
+ hdlr->initialized = XML_SAX2_MAGIC;
+
+
+
+
+
+
     } else
         return(-1);
     hdlr->internalSubset = xmlSAX2InternalSubset;

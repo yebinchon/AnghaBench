@@ -1,216 +1,165 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT8 ;
-typedef  int UINT16 ;
 
-/* Variables and functions */
-#define  BTM_BLE_APPEARANCE_BLOOD_PRESSURE_ARM 176 
-#define  BTM_BLE_APPEARANCE_BLOOD_PRESSURE_WRIST 175 
-#define  BTM_BLE_APPEARANCE_CYCLING_CADENCE 174 
-#define  BTM_BLE_APPEARANCE_CYCLING_COMPUTER 173 
-#define  BTM_BLE_APPEARANCE_CYCLING_POWER 172 
-#define  BTM_BLE_APPEARANCE_CYCLING_SPEED 171 
-#define  BTM_BLE_APPEARANCE_CYCLING_SPEED_CADENCE 170 
-#define  BTM_BLE_APPEARANCE_GENERIC_BARCODE_SCANNER 169 
-#define  BTM_BLE_APPEARANCE_GENERIC_BLOOD_PRESSURE 168 
-#define  BTM_BLE_APPEARANCE_GENERIC_CLOCK 167 
-#define  BTM_BLE_APPEARANCE_GENERIC_COMPUTER 166 
-#define  BTM_BLE_APPEARANCE_GENERIC_CYCLING 165 
-#define  BTM_BLE_APPEARANCE_GENERIC_DISPLAY 164 
-#define  BTM_BLE_APPEARANCE_GENERIC_EYEGLASSES 163 
-#define  BTM_BLE_APPEARANCE_GENERIC_GLUCOSE 162 
-#define  BTM_BLE_APPEARANCE_GENERIC_HEART_RATE 161 
-#define  BTM_BLE_APPEARANCE_GENERIC_HID 160 
-#define  BTM_BLE_APPEARANCE_GENERIC_KEYRING 159 
-#define  BTM_BLE_APPEARANCE_GENERIC_MEDIA_PLAYER 158 
-#define  BTM_BLE_APPEARANCE_GENERIC_OUTDOOR_SPORTS 157 
-#define  BTM_BLE_APPEARANCE_GENERIC_PHONE 156 
-#define  BTM_BLE_APPEARANCE_GENERIC_PULSE_OXIMETER 155 
-#define  BTM_BLE_APPEARANCE_GENERIC_REMOTE 154 
-#define  BTM_BLE_APPEARANCE_GENERIC_TAG 153 
-#define  BTM_BLE_APPEARANCE_GENERIC_THERMOMETER 152 
-#define  BTM_BLE_APPEARANCE_GENERIC_WALKING 151 
-#define  BTM_BLE_APPEARANCE_GENERIC_WATCH 150 
-#define  BTM_BLE_APPEARANCE_GENERIC_WEIGHT 149 
-#define  BTM_BLE_APPEARANCE_HEART_RATE_BELT 148 
-#define  BTM_BLE_APPEARANCE_HID_BARCODE_SCANNER 147 
-#define  BTM_BLE_APPEARANCE_HID_CARD_READER 146 
-#define  BTM_BLE_APPEARANCE_HID_DIGITAL_PEN 145 
-#define  BTM_BLE_APPEARANCE_HID_DIGITIZER_TABLET 144 
-#define  BTM_BLE_APPEARANCE_HID_GAMEPAD 143 
-#define  BTM_BLE_APPEARANCE_HID_JOYSTICK 142 
-#define  BTM_BLE_APPEARANCE_HID_KEYBOARD 141 
-#define  BTM_BLE_APPEARANCE_HID_MOUSE 140 
-#define  BTM_BLE_APPEARANCE_OUTDOOR_SPORTS_LOCATION 139 
-#define  BTM_BLE_APPEARANCE_OUTDOOR_SPORTS_LOCATION_AND_NAV 138 
-#define  BTM_BLE_APPEARANCE_OUTDOOR_SPORTS_LOCATION_POD 137 
-#define  BTM_BLE_APPEARANCE_OUTDOOR_SPORTS_LOCATION_POD_AND_NAV 136 
-#define  BTM_BLE_APPEARANCE_PULSE_OXIMETER_FINGERTIP 135 
-#define  BTM_BLE_APPEARANCE_PULSE_OXIMETER_WRIST 134 
-#define  BTM_BLE_APPEARANCE_SPORTS_WATCH 133 
-#define  BTM_BLE_APPEARANCE_THERMOMETER_EAR 132 
-#define  BTM_BLE_APPEARANCE_UNKNOWN 131 
-#define  BTM_BLE_APPEARANCE_WALKING_IN_SHOE 130 
-#define  BTM_BLE_APPEARANCE_WALKING_ON_HIP 129 
-#define  BTM_BLE_APPEARANCE_WALKING_ON_SHOE 128 
- scalar_t__ BTM_COD_MAJOR_AUDIO ; 
- scalar_t__ BTM_COD_MAJOR_COMPUTER ; 
- scalar_t__ BTM_COD_MAJOR_HEALTH ; 
- scalar_t__ BTM_COD_MAJOR_IMAGING ; 
- scalar_t__ BTM_COD_MAJOR_PERIPHERAL ; 
- scalar_t__ BTM_COD_MAJOR_PHONE ; 
- scalar_t__ BTM_COD_MAJOR_UNCLASSIFIED ; 
- scalar_t__ BTM_COD_MAJOR_WEARABLE ; 
- scalar_t__ BTM_COD_MINOR_BLOOD_MONITOR ; 
- scalar_t__ BTM_COD_MINOR_CARD_READER ; 
- scalar_t__ BTM_COD_MINOR_DIGITAL_PAN ; 
- scalar_t__ BTM_COD_MINOR_DIGITIZING_TABLET ; 
- scalar_t__ BTM_COD_MINOR_DISPLAY ; 
- scalar_t__ BTM_COD_MINOR_GAMEPAD ; 
- scalar_t__ BTM_COD_MINOR_GLASSES ; 
- scalar_t__ BTM_COD_MINOR_GLUCOSE_METER ; 
- scalar_t__ BTM_COD_MINOR_HEART_PULSE_MONITOR ; 
- scalar_t__ BTM_COD_MINOR_JOYSTICK ; 
- scalar_t__ BTM_COD_MINOR_KEYBOARD ; 
- scalar_t__ BTM_COD_MINOR_POINTING ; 
- scalar_t__ BTM_COD_MINOR_PULSE_OXIMETER ; 
- scalar_t__ BTM_COD_MINOR_REMOTE_CONTROL ; 
- scalar_t__ BTM_COD_MINOR_STEP_COUNTER ; 
- scalar_t__ BTM_COD_MINOR_THERMOMETER ; 
- scalar_t__ BTM_COD_MINOR_UNCLASSIFIED ; 
- scalar_t__ BTM_COD_MINOR_WEIGHING_SCALE ; 
- scalar_t__ BTM_COD_MINOR_WRIST_WATCH ; 
+
+
+
+typedef scalar_t__ UINT8 ;
+typedef int UINT16 ;
+ scalar_t__ BTM_COD_MAJOR_AUDIO ;
+ scalar_t__ BTM_COD_MAJOR_COMPUTER ;
+ scalar_t__ BTM_COD_MAJOR_HEALTH ;
+ scalar_t__ BTM_COD_MAJOR_IMAGING ;
+ scalar_t__ BTM_COD_MAJOR_PERIPHERAL ;
+ scalar_t__ BTM_COD_MAJOR_PHONE ;
+ scalar_t__ BTM_COD_MAJOR_UNCLASSIFIED ;
+ scalar_t__ BTM_COD_MAJOR_WEARABLE ;
+ scalar_t__ BTM_COD_MINOR_BLOOD_MONITOR ;
+ scalar_t__ BTM_COD_MINOR_CARD_READER ;
+ scalar_t__ BTM_COD_MINOR_DIGITAL_PAN ;
+ scalar_t__ BTM_COD_MINOR_DIGITIZING_TABLET ;
+ scalar_t__ BTM_COD_MINOR_DISPLAY ;
+ scalar_t__ BTM_COD_MINOR_GAMEPAD ;
+ scalar_t__ BTM_COD_MINOR_GLASSES ;
+ scalar_t__ BTM_COD_MINOR_GLUCOSE_METER ;
+ scalar_t__ BTM_COD_MINOR_HEART_PULSE_MONITOR ;
+ scalar_t__ BTM_COD_MINOR_JOYSTICK ;
+ scalar_t__ BTM_COD_MINOR_KEYBOARD ;
+ scalar_t__ BTM_COD_MINOR_POINTING ;
+ scalar_t__ BTM_COD_MINOR_PULSE_OXIMETER ;
+ scalar_t__ BTM_COD_MINOR_REMOTE_CONTROL ;
+ scalar_t__ BTM_COD_MINOR_STEP_COUNTER ;
+ scalar_t__ BTM_COD_MINOR_THERMOMETER ;
+ scalar_t__ BTM_COD_MINOR_UNCLASSIFIED ;
+ scalar_t__ BTM_COD_MINOR_WEIGHING_SCALE ;
+ scalar_t__ BTM_COD_MINOR_WRIST_WATCH ;
 
 __attribute__((used)) static void btm_ble_appearance_to_cod(UINT16 appearance, UINT8 *dev_class)
 {
     dev_class[0] = 0;
 
     switch (appearance) {
-    case BTM_BLE_APPEARANCE_GENERIC_PHONE:
+    case 156:
         dev_class[1] = BTM_COD_MAJOR_PHONE;
         dev_class[2] = BTM_COD_MINOR_UNCLASSIFIED;
         break;
-    case BTM_BLE_APPEARANCE_GENERIC_COMPUTER:
+    case 166:
         dev_class[1] = BTM_COD_MAJOR_COMPUTER;
         dev_class[2] = BTM_COD_MINOR_UNCLASSIFIED;
         break;
-    case BTM_BLE_APPEARANCE_GENERIC_REMOTE:
+    case 154:
         dev_class[1] = BTM_COD_MAJOR_PERIPHERAL;
         dev_class[2] = BTM_COD_MINOR_REMOTE_CONTROL;
         break;
-    case BTM_BLE_APPEARANCE_GENERIC_THERMOMETER:
-    case BTM_BLE_APPEARANCE_THERMOMETER_EAR:
+    case 152:
+    case 132:
         dev_class[1] = BTM_COD_MAJOR_HEALTH;
         dev_class[2] = BTM_COD_MINOR_THERMOMETER;
         break;
-    case BTM_BLE_APPEARANCE_GENERIC_HEART_RATE:
-    case BTM_BLE_APPEARANCE_HEART_RATE_BELT:
+    case 161:
+    case 148:
         dev_class[1] = BTM_COD_MAJOR_HEALTH;
         dev_class[2] = BTM_COD_MINOR_HEART_PULSE_MONITOR;
         break;
-    case BTM_BLE_APPEARANCE_GENERIC_BLOOD_PRESSURE:
-    case BTM_BLE_APPEARANCE_BLOOD_PRESSURE_ARM:
-    case BTM_BLE_APPEARANCE_BLOOD_PRESSURE_WRIST:
+    case 168:
+    case 176:
+    case 175:
         dev_class[1] = BTM_COD_MAJOR_HEALTH;
         dev_class[2] = BTM_COD_MINOR_BLOOD_MONITOR;
         break;
-    case BTM_BLE_APPEARANCE_GENERIC_PULSE_OXIMETER:
-    case BTM_BLE_APPEARANCE_PULSE_OXIMETER_FINGERTIP:
-    case BTM_BLE_APPEARANCE_PULSE_OXIMETER_WRIST:
+    case 155:
+    case 135:
+    case 134:
         dev_class[1] = BTM_COD_MAJOR_HEALTH;
         dev_class[2] = BTM_COD_MINOR_PULSE_OXIMETER;
         break;
-    case BTM_BLE_APPEARANCE_GENERIC_GLUCOSE:
+    case 162:
         dev_class[1] = BTM_COD_MAJOR_HEALTH;
         dev_class[2] = BTM_COD_MINOR_GLUCOSE_METER;
         break;
-    case BTM_BLE_APPEARANCE_GENERIC_WEIGHT:
+    case 149:
         dev_class[1] = BTM_COD_MAJOR_HEALTH;
         dev_class[2] = BTM_COD_MINOR_WEIGHING_SCALE;
         break;
-    case BTM_BLE_APPEARANCE_GENERIC_WALKING:
-    case BTM_BLE_APPEARANCE_WALKING_IN_SHOE:
-    case BTM_BLE_APPEARANCE_WALKING_ON_SHOE:
-    case BTM_BLE_APPEARANCE_WALKING_ON_HIP:
+    case 151:
+    case 130:
+    case 128:
+    case 129:
         dev_class[1] = BTM_COD_MAJOR_HEALTH;
         dev_class[2] = BTM_COD_MINOR_STEP_COUNTER;
         break;
-    case BTM_BLE_APPEARANCE_GENERIC_WATCH:
-    case BTM_BLE_APPEARANCE_SPORTS_WATCH:
+    case 150:
+    case 133:
         dev_class[1] = BTM_COD_MAJOR_WEARABLE;
         dev_class[2] = BTM_COD_MINOR_WRIST_WATCH;
         break;
-    case BTM_BLE_APPEARANCE_GENERIC_EYEGLASSES:
+    case 163:
         dev_class[1] = BTM_COD_MAJOR_WEARABLE;
         dev_class[2] = BTM_COD_MINOR_GLASSES;
         break;
-    case BTM_BLE_APPEARANCE_GENERIC_DISPLAY:
+    case 164:
         dev_class[1] = BTM_COD_MAJOR_IMAGING;
         dev_class[2] = BTM_COD_MINOR_DISPLAY;
         break;
-    case BTM_BLE_APPEARANCE_GENERIC_MEDIA_PLAYER:
+    case 158:
         dev_class[1] = BTM_COD_MAJOR_AUDIO;
         dev_class[2] = BTM_COD_MINOR_UNCLASSIFIED;
         break;
-    case BTM_BLE_APPEARANCE_GENERIC_BARCODE_SCANNER:
-    case BTM_BLE_APPEARANCE_HID_BARCODE_SCANNER:
-    case BTM_BLE_APPEARANCE_GENERIC_HID:
+    case 169:
+    case 147:
+    case 160:
         dev_class[1] = BTM_COD_MAJOR_PERIPHERAL;
         dev_class[2] = BTM_COD_MINOR_UNCLASSIFIED;
         break;
-    case BTM_BLE_APPEARANCE_HID_KEYBOARD:
+    case 141:
         dev_class[1] = BTM_COD_MAJOR_PERIPHERAL;
         dev_class[2] = BTM_COD_MINOR_KEYBOARD;
         break;
-    case BTM_BLE_APPEARANCE_HID_MOUSE:
+    case 140:
         dev_class[1] = BTM_COD_MAJOR_PERIPHERAL;
         dev_class[2] = BTM_COD_MINOR_POINTING;
         break;
-    case BTM_BLE_APPEARANCE_HID_JOYSTICK:
+    case 142:
         dev_class[1] = BTM_COD_MAJOR_PERIPHERAL;
         dev_class[2] = BTM_COD_MINOR_JOYSTICK;
         break;
-    case BTM_BLE_APPEARANCE_HID_GAMEPAD:
+    case 143:
         dev_class[1] = BTM_COD_MAJOR_PERIPHERAL;
         dev_class[2] = BTM_COD_MINOR_GAMEPAD;
         break;
-    case BTM_BLE_APPEARANCE_HID_DIGITIZER_TABLET:
+    case 144:
         dev_class[1] = BTM_COD_MAJOR_PERIPHERAL;
         dev_class[2] = BTM_COD_MINOR_DIGITIZING_TABLET;
         break;
-    case BTM_BLE_APPEARANCE_HID_CARD_READER:
+    case 146:
         dev_class[1] = BTM_COD_MAJOR_PERIPHERAL;
         dev_class[2] = BTM_COD_MINOR_CARD_READER;
         break;
-    case BTM_BLE_APPEARANCE_HID_DIGITAL_PEN:
+    case 145:
         dev_class[1] = BTM_COD_MAJOR_PERIPHERAL;
         dev_class[2] = BTM_COD_MINOR_DIGITAL_PAN;
         break;
-    case BTM_BLE_APPEARANCE_UNKNOWN:
-    case BTM_BLE_APPEARANCE_GENERIC_CLOCK:
-    case BTM_BLE_APPEARANCE_GENERIC_TAG:
-    case BTM_BLE_APPEARANCE_GENERIC_KEYRING:
-    case BTM_BLE_APPEARANCE_GENERIC_CYCLING:
-    case BTM_BLE_APPEARANCE_CYCLING_COMPUTER:
-    case BTM_BLE_APPEARANCE_CYCLING_SPEED:
-    case BTM_BLE_APPEARANCE_CYCLING_CADENCE:
-    case BTM_BLE_APPEARANCE_CYCLING_POWER:
-    case BTM_BLE_APPEARANCE_CYCLING_SPEED_CADENCE:
-    case BTM_BLE_APPEARANCE_GENERIC_OUTDOOR_SPORTS:
-    case BTM_BLE_APPEARANCE_OUTDOOR_SPORTS_LOCATION:
-    case BTM_BLE_APPEARANCE_OUTDOOR_SPORTS_LOCATION_AND_NAV:
-    case BTM_BLE_APPEARANCE_OUTDOOR_SPORTS_LOCATION_POD:
-    case BTM_BLE_APPEARANCE_OUTDOOR_SPORTS_LOCATION_POD_AND_NAV:
+    case 131:
+    case 167:
+    case 153:
+    case 159:
+    case 165:
+    case 173:
+    case 171:
+    case 174:
+    case 172:
+    case 170:
+    case 157:
+    case 139:
+    case 138:
+    case 137:
+    case 136:
     default:
         dev_class[1] = BTM_COD_MAJOR_UNCLASSIFIED;
         dev_class[2] = BTM_COD_MINOR_UNCLASSIFIED;

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  serf_bucket_t ;
-typedef  int /*<<< orphan*/  serf_bucket_alloc_t ;
-typedef  int /*<<< orphan*/  apr_mmap_t ;
 
-/* Variables and functions */
+
+
+
+typedef int serf_bucket_t ;
+typedef int serf_bucket_alloc_t ;
+typedef int apr_mmap_t ;
+
+
 
 serf_bucket_t *serf_bucket_mmap_create(apr_mmap_t *file_mmap,
                                        serf_bucket_alloc_t *allocator)
 {
-    return NULL;
+    return ((void*)0);
 }

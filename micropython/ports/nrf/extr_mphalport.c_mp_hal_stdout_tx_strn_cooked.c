@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mp_uint_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * MP_STATE_PORT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  board_stdio_uart ; 
- int /*<<< orphan*/  uart_tx_strn_cooked (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mp_uint_t ;
+
+
+ int * MP_STATE_PORT (int ) ;
+ int board_stdio_uart ;
+ int uart_tx_strn_cooked (int *,char const*,int ) ;
 
 void mp_hal_stdout_tx_strn_cooked(const char *str, mp_uint_t len) {
-    if (MP_STATE_PORT(board_stdio_uart) != NULL) {
+    if (MP_STATE_PORT(board_stdio_uart) != ((void*)0)) {
         uart_tx_strn_cooked(MP_STATE_PORT(board_stdio_uart), str, len);
     }
 }

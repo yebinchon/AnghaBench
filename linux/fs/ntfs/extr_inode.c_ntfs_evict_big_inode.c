@@ -1,83 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct inode {int /*<<< orphan*/  i_ino; int /*<<< orphan*/  i_sb; int /*<<< orphan*/  i_data; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * base_ntfs_ino; int /*<<< orphan*/ * extent_ntfs_inos; } ;
-struct TYPE_8__ {int nr_extents; int /*<<< orphan*/  count; int /*<<< orphan*/  page; TYPE_1__ ext; } ;
-typedef  TYPE_2__ ntfs_inode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG () ; 
- int /*<<< orphan*/  BUG_ON (int /*<<< orphan*/ ) ; 
- scalar_t__ NInoAttr (TYPE_2__*) ; 
- scalar_t__ NInoDirty (TYPE_2__*) ; 
- TYPE_2__* NTFS_I (struct inode*) ; 
- int /*<<< orphan*/  VFS_I (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  __ntfs_clear_inode (TYPE_2__*) ; 
- int /*<<< orphan*/  atomic_dec_and_test (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  clear_inode (struct inode*) ; 
- int /*<<< orphan*/  iput (int /*<<< orphan*/ ) ; 
- int is_bad_inode (struct inode*) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ntfs_clear_extent_inode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ntfs_commit_inode (struct inode*) ; 
- int /*<<< orphan*/  ntfs_error (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  truncate_inode_pages_final (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct inode {int i_ino; int i_sb; int i_data; } ;
+struct TYPE_7__ {int * base_ntfs_ino; int * extent_ntfs_inos; } ;
+struct TYPE_8__ {int nr_extents; int count; int page; TYPE_1__ ext; } ;
+typedef TYPE_2__ ntfs_inode ;
+
+
+ int BUG () ;
+ int BUG_ON (int ) ;
+ scalar_t__ NInoAttr (TYPE_2__*) ;
+ scalar_t__ NInoDirty (TYPE_2__*) ;
+ TYPE_2__* NTFS_I (struct inode*) ;
+ int VFS_I (int *) ;
+ int __ntfs_clear_inode (TYPE_2__*) ;
+ int atomic_dec_and_test (int *) ;
+ int clear_inode (struct inode*) ;
+ int iput (int ) ;
+ int is_bad_inode (struct inode*) ;
+ int kfree (int *) ;
+ int ntfs_clear_extent_inode (int ) ;
+ int ntfs_commit_inode (struct inode*) ;
+ int ntfs_error (int ,char*,int ) ;
+ int truncate_inode_pages_final (int *) ;
 
 void ntfs_evict_big_inode(struct inode *vi)
 {
-	ntfs_inode *ni = NTFS_I(vi);
+ ntfs_inode *ni = NTFS_I(vi);
 
-	truncate_inode_pages_final(&vi->i_data);
-	clear_inode(vi);
+ truncate_inode_pages_final(&vi->i_data);
+ clear_inode(vi);
+ if (ni->nr_extents > 0) {
+  int i;
 
-#ifdef NTFS_RW
-	if (NInoDirty(ni)) {
-		bool was_bad = (is_bad_inode(vi));
+  for (i = 0; i < ni->nr_extents; i++)
+   ntfs_clear_extent_inode(ni->ext.extent_ntfs_inos[i]);
+  kfree(ni->ext.extent_ntfs_inos);
+ }
 
-		/* Committing the inode also commits all extent inodes. */
-		ntfs_commit_inode(vi);
+ __ntfs_clear_inode(ni);
 
-		if (!was_bad && (is_bad_inode(vi) || NInoDirty(ni))) {
-			ntfs_error(vi->i_sb, "Failed to commit dirty inode "
-					"0x%lx.  Losing data!", vi->i_ino);
-			// FIXME:  Do something!!!
-		}
-	}
-#endif /* NTFS_RW */
+ if (NInoAttr(ni)) {
 
-	/* No need to lock at this stage as no one else has a reference. */
-	if (ni->nr_extents > 0) {
-		int i;
-
-		for (i = 0; i < ni->nr_extents; i++)
-			ntfs_clear_extent_inode(ni->ext.extent_ntfs_inos[i]);
-		kfree(ni->ext.extent_ntfs_inos);
-	}
-
-	__ntfs_clear_inode(ni);
-
-	if (NInoAttr(ni)) {
-		/* Release the base inode if we are holding it. */
-		if (ni->nr_extents == -1) {
-			iput(VFS_I(ni->ext.base_ntfs_ino));
-			ni->nr_extents = 0;
-			ni->ext.base_ntfs_ino = NULL;
-		}
-	}
-	BUG_ON(ni->page);
-	if (!atomic_dec_and_test(&ni->count))
-		BUG();
-	return;
+  if (ni->nr_extents == -1) {
+   iput(VFS_I(ni->ext.base_ntfs_ino));
+   ni->nr_extents = 0;
+   ni->ext.base_ntfs_ino = ((void*)0);
+  }
+ }
+ BUG_ON(ni->page);
+ if (!atomic_dec_and_test(&ni->count))
+  BUG();
+ return;
 }

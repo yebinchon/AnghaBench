@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ pCallback; } ;
 struct TYPE_5__ {TYPE_1__ InetTransport; } ;
-typedef  TYPE_2__ POP3Transport ;
-typedef  int /*<<< orphan*/  POP3RESPONSE ;
-typedef  int /*<<< orphan*/  IPOP3Callback ;
-typedef  int /*<<< orphan*/  IInternetTransport ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_2__ POP3Transport ;
+typedef int POP3RESPONSE ;
+typedef int IPOP3Callback ;
+typedef int IInternetTransport ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IPOP3Callback_OnResponse (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  POP3Transport_ParseResponse (TYPE_2__*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
+
+ scalar_t__ FAILED (int ) ;
+ int IPOP3Callback_OnResponse (int *,int *) ;
+ int POP3Transport_ParseResponse (TYPE_2__*,char*,int *) ;
+ int TRACE (char*) ;
 
 __attribute__((used)) static void POP3Transport_CallbackProcessRSETResp(IInternetTransport *iface, char *pBuffer, int cbBuffer)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static void POP3Transport_CallbackProcessRSETResp(IInterne
     hr = POP3Transport_ParseResponse(This, pBuffer, &response);
     if (FAILED(hr))
     {
-        /* FIXME: handle error */
+
         return;
     }
 

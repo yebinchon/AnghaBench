@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hts_data {int /*<<< orphan*/ * extra; } ;
+
+
+
+
+struct hts_data {int * extra; } ;
 struct connection {int dummy; } ;
-typedef  int /*<<< orphan*/  php_worker ;
+typedef int php_worker ;
 
-/* Variables and functions */
- struct hts_data* HTS_DATA (struct connection*) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int php_worker_main (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  php_worker_terminate (int /*<<< orphan*/ *,int,char*) ; 
+
+ struct hts_data* HTS_DATA (struct connection*) ;
+ int assert (int ) ;
+ int php_worker_main (int *) ;
+ int php_worker_terminate (int *,int,char*) ;
 
 int hts_func_close (struct connection *c, int who) {
   struct hts_data *D = HTS_DATA(c);
 
   php_worker *worker = D->extra;
-  if (worker != NULL) {
+  if (worker != ((void*)0)) {
     php_worker_terminate (worker, 1, "http connection close");
     int res = php_worker_main (worker);
-    D->extra = NULL;
+    D->extra = ((void*)0);
     assert ("worker is unfinished after closing connection" && res == 1);
   }
   return 0;

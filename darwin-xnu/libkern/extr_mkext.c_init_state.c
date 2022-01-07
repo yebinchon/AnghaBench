@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct encode_state {char* text_buf; void** parent; void** rchild; } ;
 
-/* Variables and functions */
- int F ; 
- int N ; 
- void* NIL ; 
- int /*<<< orphan*/  bzero (struct encode_state*,int) ; 
+
+ int F ;
+ int N ;
+ void* NIL ;
+ int bzero (struct encode_state*,int) ;
 
 __attribute__((used)) static void init_state(struct encode_state *sp)
 {
-    int  i;
+    int i;
 
     bzero(sp, sizeof(*sp));
 

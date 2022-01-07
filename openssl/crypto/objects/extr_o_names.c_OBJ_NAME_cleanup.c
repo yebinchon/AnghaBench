@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CRYPTO_THREAD_lock_free (int /*<<< orphan*/ *) ; 
- int free_type ; 
- int /*<<< orphan*/  lh_OBJ_NAME_doall (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lh_OBJ_NAME_free (int /*<<< orphan*/ *) ; 
- unsigned long lh_OBJ_NAME_get_down_load (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lh_OBJ_NAME_set_down_load (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  name_funcs_free ; 
- int /*<<< orphan*/ * name_funcs_stack ; 
- int /*<<< orphan*/ * names_lh ; 
- int /*<<< orphan*/  names_lh_free_doall ; 
- int /*<<< orphan*/ * obj_lock ; 
- int /*<<< orphan*/  sk_NAME_FUNCS_pop_free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int CRYPTO_THREAD_lock_free (int *) ;
+ int free_type ;
+ int lh_OBJ_NAME_doall (int *,int ) ;
+ int lh_OBJ_NAME_free (int *) ;
+ unsigned long lh_OBJ_NAME_get_down_load (int *) ;
+ int lh_OBJ_NAME_set_down_load (int *,unsigned long) ;
+ int name_funcs_free ;
+ int * name_funcs_stack ;
+ int * names_lh ;
+ int names_lh_free_doall ;
+ int * obj_lock ;
+ int sk_NAME_FUNCS_pop_free (int *,int ) ;
 
 void OBJ_NAME_cleanup(int type)
 {
     unsigned long down_load;
 
-    if (names_lh == NULL)
+    if (names_lh == ((void*)0))
         return;
 
     free_type = type;
@@ -41,9 +33,9 @@ void OBJ_NAME_cleanup(int type)
         lh_OBJ_NAME_free(names_lh);
         sk_NAME_FUNCS_pop_free(name_funcs_stack, name_funcs_free);
         CRYPTO_THREAD_lock_free(obj_lock);
-        names_lh = NULL;
-        name_funcs_stack = NULL;
-        obj_lock = NULL;
+        names_lh = ((void*)0);
+        name_funcs_stack = ((void*)0);
+        obj_lock = ((void*)0);
     } else
         lh_OBJ_NAME_set_down_load(names_lh, down_load);
 }

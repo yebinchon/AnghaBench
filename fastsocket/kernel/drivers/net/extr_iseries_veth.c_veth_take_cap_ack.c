@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct veth_lpevent {int dummy; } ;
-struct veth_lpar_connection {int state; int /*<<< orphan*/  lock; int /*<<< orphan*/  cap_ack_event; int /*<<< orphan*/  remote_lp; } ;
+struct veth_lpar_connection {int state; int lock; int cap_ack_event; int remote_lp; } ;
 
-/* Variables and functions */
- int VETH_STATE_GOTCAPACK ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,struct veth_lpevent*,int) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  veth_error (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  veth_kick_statemachine (struct veth_lpar_connection*) ; 
+
+ int VETH_STATE_GOTCAPACK ;
+ int memcpy (int *,struct veth_lpevent*,int) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int veth_error (char*,int ) ;
+ int veth_kick_statemachine (struct veth_lpar_connection*) ;
 
 __attribute__((used)) static void veth_take_cap_ack(struct veth_lpar_connection *cnx,
-			      struct veth_lpevent *event)
+         struct veth_lpevent *event)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	spin_lock_irqsave(&cnx->lock, flags);
-	if (cnx->state & VETH_STATE_GOTCAPACK) {
-		veth_error("Received a second capabilities ack from LPAR %d.\n",
-			   cnx->remote_lp);
-	} else {
-		memcpy(&cnx->cap_ack_event, event,
-		       sizeof(cnx->cap_ack_event));
-		cnx->state |= VETH_STATE_GOTCAPACK;
-		veth_kick_statemachine(cnx);
-	}
-	spin_unlock_irqrestore(&cnx->lock, flags);
+ spin_lock_irqsave(&cnx->lock, flags);
+ if (cnx->state & VETH_STATE_GOTCAPACK) {
+  veth_error("Received a second capabilities ack from LPAR %d.\n",
+      cnx->remote_lp);
+ } else {
+  memcpy(&cnx->cap_ack_event, event,
+         sizeof(cnx->cap_ack_event));
+  cnx->state |= VETH_STATE_GOTCAPACK;
+  veth_kick_statemachine(cnx);
+ }
+ spin_unlock_irqrestore(&cnx->lock, flags);
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {size_t lastLen; int /*<<< orphan*/  ssl; } ;
-typedef  TYPE_1__ redisSSLContext ;
-struct TYPE_7__ {int flags; int /*<<< orphan*/  obuf; TYPE_1__* privdata; } ;
-typedef  TYPE_2__ redisContext ;
 
-/* Variables and functions */
- int REDIS_BLOCK ; 
- int /*<<< orphan*/  REDIS_ERR_IO ; 
- int SSL_get_error (int /*<<< orphan*/ ,int) ; 
- int SSL_write (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  __redisSetError (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ maybeCheckWant (TYPE_1__*,int) ; 
- size_t sdslen (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {size_t lastLen; int ssl; } ;
+typedef TYPE_1__ redisSSLContext ;
+struct TYPE_7__ {int flags; int obuf; TYPE_1__* privdata; } ;
+typedef TYPE_2__ redisContext ;
+
+
+ int REDIS_BLOCK ;
+ int REDIS_ERR_IO ;
+ int SSL_get_error (int ,int) ;
+ int SSL_write (int ,int ,size_t) ;
+ int __redisSetError (TYPE_2__*,int ,int *) ;
+ scalar_t__ maybeCheckWant (TYPE_1__*,int) ;
+ size_t sdslen (int ) ;
 
 __attribute__((used)) static int redisSSLWrite(redisContext *c) {
     redisSSLContext *rssl = c->privdata;
@@ -41,7 +41,7 @@ __attribute__((used)) static int redisSSLWrite(redisContext *c) {
         if ((c->flags & REDIS_BLOCK) == 0 && maybeCheckWant(rssl, err)) {
             return 0;
         } else {
-            __redisSetError(c, REDIS_ERR_IO, NULL);
+            __redisSetError(c, REDIS_ERR_IO, ((void*)0));
             return -1;
         }
     }

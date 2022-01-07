@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-struct TYPE_4__ {int /*<<< orphan*/  (* Write ) (TYPE_1__*,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_1__ CONSOLE ;
 
-/* Variables and functions */
- scalar_t__ UniIsEmptyStr (int /*<<< orphan*/ *) ; 
- scalar_t__ UniStrCmpi (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ UniStrToIP32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * _UU (char*) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+struct TYPE_4__ {int (* Write ) (TYPE_1__*,int *) ;} ;
+typedef TYPE_1__ CONSOLE ;
+
+
+ scalar_t__ UniIsEmptyStr (int *) ;
+ scalar_t__ UniStrCmpi (int *,char*) ;
+ scalar_t__ UniStrToIP32 (int *) ;
+ int * _UU (char*) ;
+ int stub1 (TYPE_1__*,int *) ;
 
 bool CmdEvalIp(CONSOLE *c, wchar_t *str, void *param)
 {
-	// Validate arguments
-	if (c == NULL || str == NULL)
-	{
-		return false;
-	}
 
-	if (UniIsEmptyStr(str))
-	{
-		return true;
-	}
+ if (c == ((void*)0) || str == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (UniStrToIP32(str) == 0 && UniStrCmpi(str, L"0.0.0.0") != 0)
-	{
-		wchar_t *msg = (param == NULL) ? _UU("CMD_IP_EVAL_FAILED") : (wchar_t *)param;
-		c->Write(c, msg);
-		return false;
-	}
+ if (UniIsEmptyStr(str))
+ {
+  return 1;
+ }
 
-	return true;
+ if (UniStrToIP32(str) == 0 && UniStrCmpi(str, L"0.0.0.0") != 0)
+ {
+  wchar_t *msg = (param == ((void*)0)) ? _UU("CMD_IP_EVAL_FAILED") : (wchar_t *)param;
+  c->Write(c, msg);
+  return 0;
+ }
+
+ return 1;
 }

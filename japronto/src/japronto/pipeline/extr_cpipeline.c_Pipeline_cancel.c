@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int queue_start; int queue_end; int /*<<< orphan*/ * queue; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PipelineEntry ;
-typedef  TYPE_1__ Pipeline ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * PipelineEntry_get_task (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PipelineEntry_is_task (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * PyObject_CallFunctionObjArgs (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyObject_GetAttrString (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int queue_start; int queue_end; int * queue; } ;
+typedef int PyObject ;
+typedef int PipelineEntry ;
+typedef TYPE_1__ Pipeline ;
+
+
+ int * PipelineEntry_get_task (int ) ;
+ int PipelineEntry_is_task (int ) ;
+ int * PyObject_CallFunctionObjArgs (int *,int *) ;
+ int * PyObject_GetAttrString (int *,char*) ;
+ int Py_DECREF (int *) ;
+ int Py_XDECREF (int *) ;
 
 void*
 Pipeline_cancel(Pipeline* self)
@@ -36,20 +36,20 @@ Pipeline_cancel(Pipeline* self)
       continue;
 
     PyObject* task = PipelineEntry_get_task(*queue_entry);
-    PyObject* cancel = NULL;
+    PyObject* cancel = ((void*)0);
 
     if(!(cancel = PyObject_GetAttrString(task, "cancel")))
       goto loop_error;
 
     PyObject* tmp;
-    if(!(tmp = PyObject_CallFunctionObjArgs(cancel, NULL)))
+    if(!(tmp = PyObject_CallFunctionObjArgs(cancel, ((void*)0))))
       goto loop_error;
     Py_DECREF(tmp);
 
     goto loop_finally;
 
     loop_error:
-    result = NULL;
+    result = ((void*)0);
 
     loop_finally:
     Py_XDECREF(cancel);

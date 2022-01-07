@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_7__ ;
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int /*<<< orphan*/  VFATFCB ;
-typedef  scalar_t__ USHORT ;
-typedef  int /*<<< orphan*/  ULONG_PTR ;
-struct TYPE_19__ {scalar_t__ Length; scalar_t__ MaximumLength; int /*<<< orphan*/ * Buffer; } ;
+
+
+typedef struct TYPE_19__ TYPE_7__ ;
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int VOID ;
+typedef int VFATFCB ;
+typedef scalar_t__ USHORT ;
+typedef int ULONG_PTR ;
+struct TYPE_19__ {scalar_t__ Length; scalar_t__ MaximumLength; int * Buffer; } ;
 struct TYPE_18__ {scalar_t__ Length; scalar_t__ MaximumLength; scalar_t__ Buffer; } ;
 struct TYPE_17__ {scalar_t__ Buffer; scalar_t__ MaximumLength; scalar_t__ Length; } ;
 struct TYPE_16__ {scalar_t__ Length; } ;
-struct TYPE_14__ {int MaximumLength; int /*<<< orphan*/  Buffer; scalar_t__ Length; } ;
-struct TYPE_13__ {int NodeByteSize; int /*<<< orphan*/  NodeTypeCode; } ;
-struct TYPE_15__ {scalar_t__ OpenHandleCount; int /*<<< orphan*/  FCBShareAccess; TYPE_7__ LongNameU; TYPE_6__ DirNameU; TYPE_5__ PathNameU; TYPE_2__ ShortNameU; int /*<<< orphan*/  ShortNameBuffer; scalar_t__ PathNameBuffer; TYPE_1__ RFCB; } ;
-typedef  int /*<<< orphan*/  SHARE_ACCESS ;
-typedef  TYPE_3__* PVFATFCB ;
-typedef  TYPE_4__* PUNICODE_STRING ;
+struct TYPE_14__ {int MaximumLength; int Buffer; scalar_t__ Length; } ;
+struct TYPE_13__ {int NodeByteSize; int NodeTypeCode; } ;
+struct TYPE_15__ {scalar_t__ OpenHandleCount; int FCBShareAccess; TYPE_7__ LongNameU; TYPE_6__ DirNameU; TYPE_5__ PathNameU; TYPE_2__ ShortNameU; int ShortNameBuffer; scalar_t__ PathNameBuffer; TYPE_1__ RFCB; } ;
+typedef int SHARE_ACCESS ;
+typedef TYPE_3__* PVFATFCB ;
+typedef TYPE_4__* PUNICODE_STRING ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT1 (char*,TYPE_4__*) ; 
- scalar_t__ ExAllocatePoolWithTag (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FAT_FILE_SYSTEM ; 
- int /*<<< orphan*/  KeBugCheckEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NODE_TYPE_FCB ; 
- int /*<<< orphan*/  NonPagedPool ; 
- int /*<<< orphan*/  RtlCopyUnicodeString (TYPE_5__*,TYPE_4__*) ; 
- int /*<<< orphan*/  RtlZeroMemory (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TAG_FCB ; 
- int /*<<< orphan*/  vfatSplitPathName (TYPE_5__*,TYPE_6__*,TYPE_7__*) ; 
+
+ int DPRINT1 (char*,TYPE_4__*) ;
+ scalar_t__ ExAllocatePoolWithTag (int ,scalar_t__,int ) ;
+ int FAT_FILE_SYSTEM ;
+ int KeBugCheckEx (int ,int ,int ,int ,int ) ;
+ int NODE_TYPE_FCB ;
+ int NonPagedPool ;
+ int RtlCopyUnicodeString (TYPE_5__*,TYPE_4__*) ;
+ int RtlZeroMemory (int *,int) ;
+ int TAG_FCB ;
+ int vfatSplitPathName (TYPE_5__*,TYPE_6__*,TYPE_7__*) ;
 
 __attribute__((used)) static
 VOID
@@ -61,7 +61,7 @@ vfatInitFcb(
     Fcb->PathNameBuffer = ExAllocatePoolWithTag(NonPagedPool, PathNameBufferLength, TAG_FCB);
     if (!Fcb->PathNameBuffer)
     {
-        /* FIXME: what to do if no more memory? */
+
         DPRINT1("Unable to initialize FCB for filename '%wZ'\n", NameU);
         KeBugCheckEx(FAT_FILE_SYSTEM, (ULONG_PTR)Fcb, (ULONG_PTR)NameU, 0, 0);
     }
@@ -83,7 +83,7 @@ vfatInitFcb(
     }
     else
     {
-        Fcb->DirNameU.Buffer = Fcb->LongNameU.Buffer = NULL;
+        Fcb->DirNameU.Buffer = Fcb->LongNameU.Buffer = ((void*)0);
         Fcb->DirNameU.MaximumLength = Fcb->DirNameU.Length = 0;
         Fcb->LongNameU.MaximumLength = Fcb->LongNameU.Length = 0;
     }

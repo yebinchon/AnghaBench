@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_6__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
-struct TYPE_9__ {scalar_t__ nSize; unsigned char* pCell; int nLocal; scalar_t__ nKey; int /*<<< orphan*/  nHeader; } ;
+
+
+typedef struct TYPE_9__ TYPE_6__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct TYPE_9__ {scalar_t__ nSize; unsigned char* pCell; int nLocal; scalar_t__ nKey; int nHeader; } ;
 struct TYPE_8__ {size_t iPage; scalar_t__ eState; scalar_t__* aiIdx; TYPE_6__ info; TYPE_1__** apPage; } ;
 struct TYPE_7__ {scalar_t__ nCell; scalar_t__ intKey; } ;
-typedef  TYPE_1__ MemPage ;
-typedef  TYPE_2__ BtCursor ;
+typedef TYPE_1__ MemPage ;
+typedef TYPE_2__ BtCursor ;
 
-/* Variables and functions */
- scalar_t__ CURSOR_VALID ; 
- scalar_t__ NEVER (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  btreeParseCell (TYPE_1__*,scalar_t__,TYPE_6__*) ; 
- int cursorHoldsMutex (TYPE_2__*) ; 
+
+ scalar_t__ CURSOR_VALID ;
+ scalar_t__ NEVER (int) ;
+ int assert (int) ;
+ int btreeParseCell (TYPE_1__*,scalar_t__,TYPE_6__*) ;
+ int cursorHoldsMutex (TYPE_2__*) ;
 
 __attribute__((used)) static const unsigned char *fetchPayload(
-  BtCursor *pCur,      /* Cursor pointing to entry to read from */
-  int *pAmt,           /* Write the number of available bytes here */
-  int skipKey          /* read beginning at data if this is true */
+  BtCursor *pCur,
+  int *pAmt,
+  int skipKey
 ){
   unsigned char *aPayload;
   MemPage *pPage;

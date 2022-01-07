@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct snd_ac97 {int /*<<< orphan*/  flags; int /*<<< orphan*/ * build_ops; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AC97_AD198X_MSPLT ; 
- int /*<<< orphan*/  AC97_AD_MISC ; 
- int /*<<< orphan*/  AC97_STEREO_MUTES ; 
- int /*<<< orphan*/  check_ad1981_hp_jack_sense (struct snd_ac97*) ; 
- int /*<<< orphan*/  patch_ad1881 (struct snd_ac97*) ; 
- int /*<<< orphan*/  patch_ad1981a_build_ops ; 
- int /*<<< orphan*/  snd_ac97_update_bits (struct snd_ac97*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct snd_ac97 {int flags; int * build_ops; } ;
+
+
+ int AC97_AD198X_MSPLT ;
+ int AC97_AD_MISC ;
+ int AC97_STEREO_MUTES ;
+ int check_ad1981_hp_jack_sense (struct snd_ac97*) ;
+ int patch_ad1881 (struct snd_ac97*) ;
+ int patch_ad1981a_build_ops ;
+ int snd_ac97_update_bits (struct snd_ac97*,int ,int ,int ) ;
 
 __attribute__((used)) static int patch_ad1981a(struct snd_ac97 *ac97)
 {
-	patch_ad1881(ac97);
-	ac97->build_ops = &patch_ad1981a_build_ops;
-	snd_ac97_update_bits(ac97, AC97_AD_MISC, AC97_AD198X_MSPLT, AC97_AD198X_MSPLT);
-	ac97->flags |= AC97_STEREO_MUTES;
-	check_ad1981_hp_jack_sense(ac97);
-	return 0;
+ patch_ad1881(ac97);
+ ac97->build_ops = &patch_ad1981a_build_ops;
+ snd_ac97_update_bits(ac97, AC97_AD_MISC, AC97_AD198X_MSPLT, AC97_AD198X_MSPLT);
+ ac97->flags |= AC97_STEREO_MUTES;
+ check_ad1981_hp_jack_sense(ac97);
+ return 0;
 }

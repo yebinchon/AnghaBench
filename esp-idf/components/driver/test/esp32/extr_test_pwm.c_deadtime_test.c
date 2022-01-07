@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mcpwm_unit_t ;
-typedef  int /*<<< orphan*/  mcpwm_timer_t ;
-typedef  int /*<<< orphan*/  mcpwm_io_signals_t ;
-typedef  int /*<<< orphan*/  mcpwm_deadtime_type_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MCPWM_ACTIVE_HIGH_COMPLIMENT_MODE ; 
- int /*<<< orphan*/  MCPWM_ACTIVE_HIGH_MODE ; 
- int /*<<< orphan*/  MCPWM_ACTIVE_LOW_COMPLIMENT_MODE ; 
- int /*<<< orphan*/  MCPWM_ACTIVE_LOW_MODE ; 
- int /*<<< orphan*/  MCPWM_ACTIVE_RED_FED_FROM_PWMXA ; 
- int /*<<< orphan*/  MCPWM_ACTIVE_RED_FED_FROM_PWMXB ; 
- int /*<<< orphan*/  MCPWM_BYPASS_FED ; 
- int /*<<< orphan*/  MCPWM_BYPASS_RED ; 
- int /*<<< orphan*/  mcpwm_basic_config (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mcpwm_deadtime_disable (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mcpwm_deadtime_enable (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int portTICK_RATE_MS ; 
- int /*<<< orphan*/  vTaskDelay (int) ; 
+
+
+
+typedef int mcpwm_unit_t ;
+typedef int mcpwm_timer_t ;
+typedef int mcpwm_io_signals_t ;
+typedef int mcpwm_deadtime_type_t ;
+
+
+ int MCPWM_ACTIVE_HIGH_COMPLIMENT_MODE ;
+ int MCPWM_ACTIVE_HIGH_MODE ;
+ int MCPWM_ACTIVE_LOW_COMPLIMENT_MODE ;
+ int MCPWM_ACTIVE_LOW_MODE ;
+ int MCPWM_ACTIVE_RED_FED_FROM_PWMXA ;
+ int MCPWM_ACTIVE_RED_FED_FROM_PWMXB ;
+ int MCPWM_BYPASS_FED ;
+ int MCPWM_BYPASS_RED ;
+ int mcpwm_basic_config (int ,int ,int ,int ) ;
+ int mcpwm_deadtime_disable (int ,int ) ;
+ int mcpwm_deadtime_enable (int ,int ,int ,int,int) ;
+ int portTICK_RATE_MS ;
+ int vTaskDelay (int) ;
 
 __attribute__((used)) static void deadtime_test(mcpwm_unit_t unit, mcpwm_io_signals_t mcpwm_a, mcpwm_io_signals_t mcpwm_b, mcpwm_timer_t timer)
 {

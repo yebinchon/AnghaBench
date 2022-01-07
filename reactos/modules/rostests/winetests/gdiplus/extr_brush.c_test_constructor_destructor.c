@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpSolidFill ;
-typedef  int /*<<< orphan*/  GpBrush ;
-typedef  int /*<<< orphan*/  ARGB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GdipCreateSolidFill (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteBrush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InvalidParameter ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int GpStatus ;
+typedef int GpSolidFill ;
+typedef int GpBrush ;
+typedef int ARGB ;
+
+
+ int GdipCreateSolidFill (int ,int **) ;
+ int GdipDeleteBrush (int *) ;
+ int InvalidParameter ;
+ int Ok ;
+ int expect (int ,int ) ;
+ int ok (int ,char*) ;
 
 __attribute__((used)) static void test_constructor_destructor(void)
 {
     GpStatus status;
-    GpSolidFill *brush = NULL;
+    GpSolidFill *brush = ((void*)0);
 
     status = GdipCreateSolidFill((ARGB)0xdeadbeef, &brush);
     expect(Ok, status);
-    ok(brush != NULL, "Expected brush to be initialized\n");
+    ok(brush != ((void*)0), "Expected brush to be initialized\n");
 
-    status = GdipDeleteBrush(NULL);
+    status = GdipDeleteBrush(((void*)0));
     expect(InvalidParameter, status);
 
     status = GdipDeleteBrush((GpBrush*) brush);

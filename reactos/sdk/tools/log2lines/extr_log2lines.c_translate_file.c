@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* path; size_t ImageBase; } ;
-typedef  TYPE_1__ LIST_MEMBER ;
+typedef TYPE_1__ LIST_MEMBER ;
 
-/* Variables and functions */
- size_t INVALID_BASE ; 
- int /*<<< orphan*/  cache ; 
- char* convert_path (char const*) ; 
- TYPE_1__* entry_lookup (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ get_ImageBase (char*,size_t*) ; 
- int /*<<< orphan*/  l2l_dbg (int,char*,char*) ; 
- int process_file (char*,size_t,char*) ; 
+
+ size_t INVALID_BASE ;
+ int cache ;
+ char* convert_path (char const*) ;
+ TYPE_1__* entry_lookup (int *,char*) ;
+ int free (char*) ;
+ scalar_t__ get_ImageBase (char*,size_t*) ;
+ int l2l_dbg (int,char*,char*) ;
+ int process_file (char*,size_t,char*) ;
 
 __attribute__((used)) static int
 translate_file(const char *cpath, size_t offset, char *toString)
 {
     size_t base = 0;
-    LIST_MEMBER *pentry = NULL;
+    LIST_MEMBER *pentry = ((void*)0);
     int res = 0;
     char *path, *dpath;
 
@@ -36,7 +36,7 @@ translate_file(const char *cpath, size_t offset, char *toString)
     if (!path)
         return 1;
 
-    // The path could be absolute:
+
     if (get_ImageBase(path, &base))
     {
         pentry = entry_lookup(&cache, path);

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pte_t ;
 
-/* Variables and functions */
- long ENTRYLO_D ; 
- int /*<<< orphan*/  kvm_mips_gpa_pte_to_gva_unmapped (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pte_mkclean (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int pte_t ;
+
+
+ long ENTRYLO_D ;
+ int kvm_mips_gpa_pte_to_gva_unmapped (int ) ;
+ int pte_mkclean (int ) ;
 
 __attribute__((used)) static pte_t kvm_mips_gpa_pte_to_gva_mapped(pte_t pte, long entrylo)
 {
-	/* Guest EntryLo overrides host EntryLo */
-	if (!(entrylo & ENTRYLO_D))
-		pte = pte_mkclean(pte);
 
-	return kvm_mips_gpa_pte_to_gva_unmapped(pte);
+ if (!(entrylo & ENTRYLO_D))
+  pte = pte_mkclean(pte);
+
+ return kvm_mips_gpa_pte_to_gva_unmapped(pte);
 }

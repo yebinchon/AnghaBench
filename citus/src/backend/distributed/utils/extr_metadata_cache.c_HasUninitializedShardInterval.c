@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  maxValueExists; int /*<<< orphan*/  minValueExists; } ;
-typedef  TYPE_1__ ShardInterval ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int maxValueExists; int minValueExists; } ;
+typedef TYPE_1__ ShardInterval ;
+
+
+ int Assert (int ) ;
 
 __attribute__((used)) static bool
 HasUninitializedShardInterval(ShardInterval **sortedShardIntervalArray, int shardCount)
 {
-	bool hasUninitializedShardInterval = false;
-	ShardInterval *lastShardInterval = NULL;
+ bool hasUninitializedShardInterval = 0;
+ ShardInterval *lastShardInterval = ((void*)0);
 
-	if (shardCount == 0)
-	{
-		return hasUninitializedShardInterval;
-	}
+ if (shardCount == 0)
+ {
+  return hasUninitializedShardInterval;
+ }
 
-	Assert(sortedShardIntervalArray != NULL);
+ Assert(sortedShardIntervalArray != ((void*)0));
 
-	/*
-	 * Since the shard interval array is sorted, and uninitialized ones stored
-	 * in the end of the array, checking the last element is enough.
-	 */
-	lastShardInterval = sortedShardIntervalArray[shardCount - 1];
-	if (!lastShardInterval->minValueExists || !lastShardInterval->maxValueExists)
-	{
-		hasUninitializedShardInterval = true;
-	}
 
-	return hasUninitializedShardInterval;
+
+
+
+ lastShardInterval = sortedShardIntervalArray[shardCount - 1];
+ if (!lastShardInterval->minValueExists || !lastShardInterval->maxValueExists)
+ {
+  hasUninitializedShardInterval = 1;
+ }
+
+ return hasUninitializedShardInterval;
 }

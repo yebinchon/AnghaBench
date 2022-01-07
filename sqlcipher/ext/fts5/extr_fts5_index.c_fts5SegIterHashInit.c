@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u64 ;
-struct TYPE_16__ {int nn; int szLeaf; int /*<<< orphan*/ * p; } ;
-struct TYPE_15__ {int pHash; int /*<<< orphan*/  rc; } ;
-struct TYPE_14__ {int iEndofDoclist; int /*<<< orphan*/  flags; int /*<<< orphan*/  iRowid; int /*<<< orphan*/  iLeafOffset; TYPE_3__* pLeaf; int /*<<< orphan*/  term; } ;
-typedef  TYPE_1__ Fts5SegIter ;
-typedef  TYPE_2__ Fts5Index ;
-typedef  TYPE_3__ Fts5Data ;
 
-/* Variables and functions */
- int FTS5INDEX_QUERY_DESC ; 
- int FTS5INDEX_QUERY_SCAN ; 
- int /*<<< orphan*/  FTS5_SEGITER_ONETERM ; 
- int /*<<< orphan*/  FTS5_SEGITER_REVERSE ; 
- int /*<<< orphan*/  SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fts5GetVarint (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_3__* fts5IdxMalloc (TYPE_2__*,int) ; 
- int /*<<< orphan*/  fts5SegIterLoadNPos (TYPE_2__*,TYPE_1__*) ; 
- int /*<<< orphan*/  fts5SegIterReverseInitPage (TYPE_2__*,TYPE_1__*) ; 
- int /*<<< orphan*/  fts5SegIterSetNext (TYPE_2__*,TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3Fts5BufferSet (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  sqlite3Fts5HashQuery (int,int,char const*,int,void**,int*) ; 
- int /*<<< orphan*/  sqlite3Fts5HashScanEntry (int,char const**,int /*<<< orphan*/  const**,int*) ; 
- int /*<<< orphan*/  sqlite3Fts5HashScanInit (int,char const*,int) ; 
- scalar_t__ strlen (char const*) ; 
+
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u64 ;
+struct TYPE_16__ {int nn; int szLeaf; int * p; } ;
+struct TYPE_15__ {int pHash; int rc; } ;
+struct TYPE_14__ {int iEndofDoclist; int flags; int iRowid; int iLeafOffset; TYPE_3__* pLeaf; int term; } ;
+typedef TYPE_1__ Fts5SegIter ;
+typedef TYPE_2__ Fts5Index ;
+typedef TYPE_3__ Fts5Data ;
+
+
+ int FTS5INDEX_QUERY_DESC ;
+ int FTS5INDEX_QUERY_SCAN ;
+ int FTS5_SEGITER_ONETERM ;
+ int FTS5_SEGITER_REVERSE ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int fts5GetVarint (int *,int *) ;
+ TYPE_3__* fts5IdxMalloc (TYPE_2__*,int) ;
+ int fts5SegIterLoadNPos (TYPE_2__*,TYPE_1__*) ;
+ int fts5SegIterReverseInitPage (TYPE_2__*,TYPE_1__*) ;
+ int fts5SegIterSetNext (TYPE_2__*,TYPE_1__*) ;
+ int sqlite3Fts5BufferSet (int *,int *,int,int const*) ;
+ int sqlite3Fts5HashQuery (int,int,char const*,int,void**,int*) ;
+ int sqlite3Fts5HashScanEntry (int,char const**,int const**,int*) ;
+ int sqlite3Fts5HashScanInit (int,char const*,int) ;
+ scalar_t__ strlen (char const*) ;
 
 __attribute__((used)) static void fts5SegIterHashInit(
-  Fts5Index *p,                   /* FTS5 backend */
-  const u8 *pTerm, int nTerm,     /* Term to seek to */
-  int flags,                      /* Mask of FTS5INDEX_XXX flags */
-  Fts5SegIter *pIter              /* Object to populate */
+  Fts5Index *p,
+  const u8 *pTerm, int nTerm,
+  int flags,
+  Fts5SegIter *pIter
 ){
   int nList = 0;
   const u8 *z = 0;
@@ -67,7 +67,7 @@ __attribute__((used)) static void fts5SegIterHashInit(
       }
     }
   }else{
-    p->rc = sqlite3Fts5HashQuery(p->pHash, sizeof(Fts5Data), 
+    p->rc = sqlite3Fts5HashQuery(p->pHash, sizeof(Fts5Data),
         (const char*)pTerm, nTerm, (void**)&pLeaf, &nList
     );
     if( pLeaf ){

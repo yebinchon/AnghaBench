@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_11__ {int flags; scalar_t__ is_streamed; TYPE_2__* priv_data; } ;
-typedef  TYPE_1__ URLContext ;
-struct TYPE_12__ {int end_header; char* method; int willclose; char* http_code; scalar_t__ filesize; int seekable; int is_akamai; int is_mediagateway; void* icy_metaint; int /*<<< orphan*/  cookie_dict; void* mime_type; int /*<<< orphan*/  proxy_auth_state; int /*<<< orphan*/  auth_state; scalar_t__ chunksize; int /*<<< orphan*/  http_version; void* resource; scalar_t__ is_connected_server; } ;
-typedef  TYPE_2__ HTTPContext ;
+typedef TYPE_1__ URLContext ;
+struct TYPE_12__ {int end_header; char* method; int willclose; char* http_code; scalar_t__ filesize; int seekable; int is_akamai; int is_mediagateway; void* icy_metaint; int cookie_dict; void* mime_type; int proxy_auth_state; int auth_state; scalar_t__ chunksize; int http_version; void* resource; scalar_t__ is_connected_server; } ;
+typedef TYPE_2__ HTTPContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVIO_FLAG_READ ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_TRACE ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  ENOMEM ; 
- scalar_t__ UINT64_MAX ; 
- int /*<<< orphan*/  av_free (void*) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ *) ; 
- scalar_t__ av_isspace (char) ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ av_strcasecmp (char const*,char*) ; 
- void* av_strdup (char*) ; 
- scalar_t__ av_strncasecmp (char*,char*,int) ; 
- int /*<<< orphan*/  av_strndup (char*,int) ; 
- int check_http_code (TYPE_1__*,char*,char*) ; 
- int /*<<< orphan*/  ff_http_auth_handle_header (int /*<<< orphan*/ *,char*,char*) ; 
- int ff_http_averror (int,int) ; 
- int parse_content_encoding (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  parse_content_range (TYPE_1__*,char*) ; 
- scalar_t__ parse_cookie (TYPE_2__*,char*,int /*<<< orphan*/ *) ; 
- int parse_icy (TYPE_2__*,char*,char*) ; 
- int parse_location (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- char* strtol (char*,char**,int) ; 
- void* strtoull (char*,int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR (int ) ;
+ int AVIO_FLAG_READ ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_TRACE ;
+ int AV_LOG_WARNING ;
+ int EIO ;
+ int ENOMEM ;
+ scalar_t__ UINT64_MAX ;
+ int av_free (void*) ;
+ int av_freep (int *) ;
+ scalar_t__ av_isspace (char) ;
+ int av_log (TYPE_1__*,int ,char*,...) ;
+ scalar_t__ av_strcasecmp (char const*,char*) ;
+ void* av_strdup (char*) ;
+ scalar_t__ av_strncasecmp (char*,char*,int) ;
+ int av_strndup (char*,int) ;
+ int check_http_code (TYPE_1__*,char*,char*) ;
+ int ff_http_auth_handle_header (int *,char*,char*) ;
+ int ff_http_averror (int,int) ;
+ int parse_content_encoding (TYPE_1__*,char*) ;
+ int parse_content_range (TYPE_1__*,char*) ;
+ scalar_t__ parse_cookie (TYPE_2__*,char*,int *) ;
+ int parse_icy (TYPE_2__*,char*,char*) ;
+ int parse_location (TYPE_2__*,char*) ;
+ int strcmp (char*,char*) ;
+ int strncmp (char*,char*,int) ;
+ char* strtol (char*,char**,int) ;
+ void* strtoull (char*,int *,int) ;
 
 __attribute__((used)) static int process_line(URLContext *h, char *line, int line_count,
                         int *new_location)
 {
     HTTPContext *s = h->priv_data;
-    const char *auto_method =  h->flags & AVIO_FLAG_READ ? "POST" : "GET";
+    const char *auto_method = h->flags & AVIO_FLAG_READ ? "POST" : "GET";
     char *tag, *p, *end, *method, *resource, *version;
     int ret;
 
-    /* end of header */
+
     if (line[0] == '\0') {
         s->end_header = 1;
         return 0;
@@ -64,7 +64,7 @@ __attribute__((used)) static int process_line(URLContext *h, char *line, int lin
     p = line;
     if (line_count == 0) {
         if (s->is_connected_server) {
-            // HTTP method
+
             method = p;
             while (*p && !av_isspace(*p))
                 p++;
@@ -77,7 +77,7 @@ __attribute__((used)) static int process_line(URLContext *h, char *line, int lin
                     return ff_http_averror(400, AVERROR(EIO));
                 }
             } else {
-                // use autodetected HTTP method to expect
+
                 av_log(h, AV_LOG_TRACE, "Autodetected %s HTTP method\n", auto_method);
                 if (av_strcasecmp(auto_method, method)) {
                     av_log(h, AV_LOG_ERROR, "Received and autodetected HTTP method did not match "
@@ -88,7 +88,7 @@ __attribute__((used)) static int process_line(URLContext *h, char *line, int lin
                     return AVERROR(ENOMEM);
             }
 
-            // HTTP resource
+
             while (av_isspace(*p))
                 p++;
             resource = p;
@@ -99,7 +99,7 @@ __attribute__((used)) static int process_line(URLContext *h, char *line, int lin
             if (!(s->resource = av_strdup(resource)))
                 return AVERROR(ENOMEM);
 
-            // HTTP version
+
             while (av_isspace(*p))
                 p++;
             version = p;
@@ -137,7 +137,7 @@ __attribute__((used)) static int process_line(URLContext *h, char *line, int lin
         if (*p != ':')
             return 1;
 
-        *p  = '\0';
+        *p = '\0';
         tag = line;
         p++;
         while (av_isspace(*p))
@@ -148,7 +148,7 @@ __attribute__((used)) static int process_line(URLContext *h, char *line, int lin
             *new_location = 1;
         } else if (!av_strcasecmp(tag, "Content-Length") &&
                    s->filesize == UINT64_MAX) {
-            s->filesize = strtoull(p, NULL, 10);
+            s->filesize = strtoull(p, ((void*)0), 10);
         } else if (!av_strcasecmp(tag, "Content-Range")) {
             parse_content_range(h, p);
         } else if (!av_strcasecmp(tag, "Accept-Ranges") &&
@@ -157,7 +157,7 @@ __attribute__((used)) static int process_line(URLContext *h, char *line, int lin
             h->is_streamed = 0;
         } else if (!av_strcasecmp(tag, "Transfer-Encoding") &&
                    !av_strncasecmp(p, "chunked", 7)) {
-            s->filesize  = UINT64_MAX;
+            s->filesize = UINT64_MAX;
             s->chunksize = 0;
         } else if (!av_strcasecmp(tag, "WWW-Authenticate")) {
             ff_http_auth_handle_header(&s->auth_state, tag, p);
@@ -181,7 +181,7 @@ __attribute__((used)) static int process_line(URLContext *h, char *line, int lin
             if (parse_cookie(s, p, &s->cookie_dict))
                 av_log(h, AV_LOG_WARNING, "Unable to parse '%s'\n", p);
         } else if (!av_strcasecmp(tag, "Icy-MetaInt")) {
-            s->icy_metaint = strtoull(p, NULL, 10);
+            s->icy_metaint = strtoull(p, ((void*)0), 10);
         } else if (!av_strncasecmp(tag, "Icy-", 4)) {
             if ((ret = parse_icy(s, tag, p)) < 0)
                 return ret;

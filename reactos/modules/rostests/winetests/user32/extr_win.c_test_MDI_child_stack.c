@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPARAM ;
-struct TYPE_2__ {char* szClass; char* szTitle; int lParam; scalar_t__ style; void* cy; void* cx; void* y; void* x; int /*<<< orphan*/  hOwner; } ;
-typedef  TYPE_1__ MDICREATESTRUCTA ;
-typedef  int LPARAM ;
-typedef  scalar_t__ HWND ;
 
-/* Variables and functions */
- void* CW_USEDEFAULT ; 
- int /*<<< orphan*/  DestroyWindow (scalar_t__) ; 
- int /*<<< orphan*/  GW_HWNDNEXT ; 
- int /*<<< orphan*/  GetModuleHandleA (int /*<<< orphan*/ ) ; 
- scalar_t__ GetWindow (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ SendMessageA (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  WM_MDICREATE ; 
- int /*<<< orphan*/  WM_MDIGETACTIVE ; 
- int /*<<< orphan*/  WM_MDINEXT ; 
- scalar_t__ mdi_lParam_test_message ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  trace (char*,scalar_t__,...) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int WPARAM ;
+struct TYPE_2__ {char* szClass; char* szTitle; int lParam; scalar_t__ style; void* cy; void* cx; void* y; void* x; int hOwner; } ;
+typedef TYPE_1__ MDICREATESTRUCTA ;
+typedef int LPARAM ;
+typedef scalar_t__ HWND ;
+
+
+ void* CW_USEDEFAULT ;
+ int DestroyWindow (scalar_t__) ;
+ int GW_HWNDNEXT ;
+ int GetModuleHandleA (int ) ;
+ scalar_t__ GetWindow (scalar_t__,int ) ;
+ scalar_t__ SendMessageA (scalar_t__,int ,int ,int) ;
+ int WM_MDICREATE ;
+ int WM_MDIGETACTIVE ;
+ int WM_MDINEXT ;
+ scalar_t__ mdi_lParam_test_message ;
+ int ok (int,char*,...) ;
+ int trace (char*,scalar_t__,...) ;
 
 __attribute__((used)) static void test_MDI_child_stack(HWND mdi_client)
 {
@@ -39,13 +39,13 @@ __attribute__((used)) static void test_MDI_child_stack(HWND mdi_client)
 
     cs.szClass = "MDI_child_Class_1";
     cs.szTitle = "MDI child";
-    cs.hOwner  = GetModuleHandleA(0);
-    cs.x       = CW_USEDEFAULT;
-    cs.y       = CW_USEDEFAULT;
-    cs.cx      = CW_USEDEFAULT;
-    cs.cy      = CW_USEDEFAULT;
-    cs.style   = 0;
-    cs.lParam  = (LPARAM)mdi_lParam_test_message;
+    cs.hOwner = GetModuleHandleA(0);
+    cs.x = CW_USEDEFAULT;
+    cs.y = CW_USEDEFAULT;
+    cs.cx = CW_USEDEFAULT;
+    cs.cy = CW_USEDEFAULT;
+    cs.style = 0;
+    cs.lParam = (LPARAM)mdi_lParam_test_message;
 
     child_1 = (HWND)SendMessageA(mdi_client, WM_MDICREATE, 0, (LPARAM)&cs);
     ok(child_1 != 0, "expected child_1 to be non NULL\n");

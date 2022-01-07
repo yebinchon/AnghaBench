@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tasklet_func_t ;
-struct TYPE_2__ {int /*<<< orphan*/ * tqe_next; int /*<<< orphan*/ * tqe_prev; } ;
-struct tasklet_struct {unsigned long data; int /*<<< orphan*/  count; int /*<<< orphan*/  tasklet_state; int /*<<< orphan*/ * func; TYPE_1__ entry; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TASKLET_ST_IDLE ; 
- int /*<<< orphan*/  atomic_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atomic_set_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int tasklet_func_t ;
+struct TYPE_2__ {int * tqe_next; int * tqe_prev; } ;
+struct tasklet_struct {unsigned long data; int count; int tasklet_state; int * func; TYPE_1__ entry; } ;
+
+
+ int TASKLET_ST_IDLE ;
+ int atomic_set (int *,int ) ;
+ int atomic_set_int (int *,int ) ;
 
 void
 tasklet_init(struct tasklet_struct *ts,
     tasklet_func_t *func, unsigned long data)
 {
-	ts->entry.tqe_prev = NULL;
-	ts->entry.tqe_next = NULL;
-	ts->func = func;
-	ts->data = data;
-	atomic_set_int(&ts->tasklet_state, TASKLET_ST_IDLE);
-	atomic_set(&ts->count, 0);
+ ts->entry.tqe_prev = ((void*)0);
+ ts->entry.tqe_next = ((void*)0);
+ ts->func = func;
+ ts->data = data;
+ atomic_set_int(&ts->tasklet_state, TASKLET_ST_IDLE);
+ atomic_set(&ts->count, 0);
 }

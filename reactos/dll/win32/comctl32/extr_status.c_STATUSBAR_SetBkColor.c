@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  clrBk; int /*<<< orphan*/  Self; } ;
-typedef  TYPE_1__ STATUS_INFO ;
-typedef  int /*<<< orphan*/  COLORREF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  InvalidateRect (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int clrBk; int Self; } ;
+typedef TYPE_1__ STATUS_INFO ;
+typedef int COLORREF ;
+
+
+ int FALSE ;
+ int InvalidateRect (int ,int *,int ) ;
+ int TRACE (char*,int ,int ) ;
 
 __attribute__((used)) static COLORREF
 STATUSBAR_SetBkColor (STATUS_INFO *infoPtr, COLORREF color)
@@ -27,7 +27,7 @@ STATUSBAR_SetBkColor (STATUS_INFO *infoPtr, COLORREF color)
 
     oldBkColor = infoPtr->clrBk;
     infoPtr->clrBk = color;
-    InvalidateRect(infoPtr->Self, NULL, FALSE);
+    InvalidateRect(infoPtr->Self, ((void*)0), FALSE);
 
     TRACE("CREF: %08x -> %08x\n", oldBkColor, infoPtr->clrBk);
     return oldBkColor;

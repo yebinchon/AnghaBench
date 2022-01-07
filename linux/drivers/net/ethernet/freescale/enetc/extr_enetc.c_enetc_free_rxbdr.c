@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  union enetc_rx_bd {int dummy; } enetc_rx_bd ;
-struct enetc_bdr {int bd_count; int /*<<< orphan*/ * rx_swbd; int /*<<< orphan*/ * bd_base; int /*<<< orphan*/  bd_dma_base; int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dma_free_coherent (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vfree (int /*<<< orphan*/ *) ; 
+
+
+
+typedef union enetc_rx_bd {int dummy; } enetc_rx_bd ;
+struct enetc_bdr {int bd_count; int * rx_swbd; int * bd_base; int bd_dma_base; int dev; } ;
+
+
+ int dma_free_coherent (int ,int,int *,int ) ;
+ int vfree (int *) ;
 
 __attribute__((used)) static void enetc_free_rxbdr(struct enetc_bdr *rxr)
 {
-	int size;
+ int size;
 
-	size = rxr->bd_count * sizeof(union enetc_rx_bd);
+ size = rxr->bd_count * sizeof(union enetc_rx_bd);
 
-	dma_free_coherent(rxr->dev, size, rxr->bd_base, rxr->bd_dma_base);
-	rxr->bd_base = NULL;
+ dma_free_coherent(rxr->dev, size, rxr->bd_base, rxr->bd_dma_base);
+ rxr->bd_base = ((void*)0);
 
-	vfree(rxr->rx_swbd);
-	rxr->rx_swbd = NULL;
+ vfree(rxr->rx_swbd);
+ rxr->rx_swbd = ((void*)0);
 }

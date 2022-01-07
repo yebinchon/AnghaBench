@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int PATHSIZE ; 
- char* expand (char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
- char* value (char*) ; 
+
+
+
+typedef int buf ;
+
+
+ int PATHSIZE ;
+ char* expand (char*) ;
+ int snprintf (char*,int,char*,char*) ;
+ char* value (char*) ;
 
 char *
 getdeadletter(void)
 {
-	char *cp;
+ char *cp;
 
-	if ((cp = value("DEAD")) == NULL || (cp = expand(cp)) == NULL)
-		cp = expand("~/dead.letter");
-	else if (*cp != '/') {
-		char buf[PATHSIZE];
+ if ((cp = value("DEAD")) == ((void*)0) || (cp = expand(cp)) == ((void*)0))
+  cp = expand("~/dead.letter");
+ else if (*cp != '/') {
+  char buf[PATHSIZE];
 
-		(void)snprintf(buf, sizeof(buf), "~/%s", cp);
-		cp = expand(buf);
-	}
-	return (cp);
+  (void)snprintf(buf, sizeof(buf), "~/%s", cp);
+  cp = expand(buf);
+ }
+ return (cp);
 }

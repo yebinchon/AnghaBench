@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  Y; int /*<<< orphan*/  X; int /*<<< orphan*/  Z; } ;
-typedef  TYPE_1__ ge25519_p3 ;
-typedef  int /*<<< orphan*/  fe25519 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fe25519_invert (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int fe25519_isnegative (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fe25519_mul (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fe25519_tobytes (unsigned char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int Y; int X; int Z; } ;
+typedef TYPE_1__ ge25519_p3 ;
+typedef int fe25519 ;
+
+
+ int fe25519_invert (int ,int ) ;
+ int fe25519_isnegative (int ) ;
+ int fe25519_mul (int ,int ,int ) ;
+ int fe25519_tobytes (unsigned char*,int ) ;
 
 void
 ge25519_p3_tobytes(unsigned char *s, const ge25519_p3 *h)

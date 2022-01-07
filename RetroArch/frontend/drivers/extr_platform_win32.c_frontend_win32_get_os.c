@@ -1,87 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buildStr ;
-struct TYPE_10__ {int dwOSVersionInfoSize; int dwMajorVersion; int dwMinorVersion; char const* szCSDVersion; int /*<<< orphan*/  dwPlatformId; int /*<<< orphan*/  dwBuildNumber; int /*<<< orphan*/  member_0; } ;
-struct TYPE_9__ {int dwOSVersionInfoSize; scalar_t__ wProductType; int /*<<< orphan*/  member_0; } ;
-struct TYPE_7__ {int /*<<< orphan*/  member_0; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int buildStr ;
+struct TYPE_10__ {int dwOSVersionInfoSize; int dwMajorVersion; int dwMinorVersion; char const* szCSDVersion; int dwPlatformId; int dwBuildNumber; int member_0; } ;
+struct TYPE_9__ {int dwOSVersionInfoSize; scalar_t__ wProductType; int member_0; } ;
+struct TYPE_7__ {int member_0; } ;
 struct TYPE_8__ {int wProcessorArchitecture; TYPE_1__ member_0; } ;
-typedef  TYPE_2__ SYSTEM_INFO ;
-typedef  TYPE_3__ OSVERSIONINFOEX ;
-typedef  TYPE_4__ OSVERSIONINFO ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef TYPE_2__ SYSTEM_INFO ;
+typedef TYPE_3__ OSVERSIONINFOEX ;
+typedef TYPE_4__ OSVERSIONINFO ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetSystemInfo (TYPE_2__*) ; 
- int /*<<< orphan*/  GetSystemMetrics (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetVersionEx (TYPE_4__*) ; 
- scalar_t__ LOWORD (int /*<<< orphan*/ ) ; 
-#define  PROCESSOR_ARCHITECTURE_AMD64 130 
-#define  PROCESSOR_ARCHITECTURE_ARM 129 
-#define  PROCESSOR_ARCHITECTURE_INTEL 128 
- int /*<<< orphan*/  SM_SERVERR2 ; 
- scalar_t__ VER_NT_WORKSTATION ; 
- int /*<<< orphan*/  VER_PLATFORM_WIN32_NT ; 
- int /*<<< orphan*/  VER_PLATFORM_WIN32_WINDOWS ; 
- int /*<<< orphan*/  snprintf (char*,size_t,char*,int,...) ; 
- int /*<<< orphan*/  string_is_empty (char const*) ; 
- int /*<<< orphan*/  string_is_equal (char const*,char*) ; 
- int /*<<< orphan*/  strlcat (char*,char const*,size_t) ; 
- int /*<<< orphan*/  strlcpy (char*,char*,size_t) ; 
+
+ int GetSystemInfo (TYPE_2__*) ;
+ int GetSystemMetrics (int ) ;
+ int GetVersionEx (TYPE_4__*) ;
+ scalar_t__ LOWORD (int ) ;
+
+
+
+ int SM_SERVERR2 ;
+ scalar_t__ VER_NT_WORKSTATION ;
+ int VER_PLATFORM_WIN32_NT ;
+ int VER_PLATFORM_WIN32_WINDOWS ;
+ int snprintf (char*,size_t,char*,int,...) ;
+ int string_is_empty (char const*) ;
+ int string_is_equal (char const*,char*) ;
+ int strlcat (char*,char const*,size_t) ;
+ int strlcpy (char*,char*,size_t) ;
 
 __attribute__((used)) static void frontend_win32_get_os(char *s, size_t len, int *major, int *minor)
 {
-   char buildStr[11]      = {0};
-   bool server            = false;
-   const char *arch       = "";
-
-#if defined(_WIN32_WINNT) && _WIN32_WINNT >= 0x0500
-   /* Windows 2000 and later */
-   SYSTEM_INFO si         = {{0}};
-   OSVERSIONINFOEX vi     = {0};
-   vi.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);
-
-   GetSystemInfo(&si);
-
-   /* Available from NT 3.5 and Win95 */
-   GetVersionEx((OSVERSIONINFO*)&vi);
-
-   server = vi.wProductType != VER_NT_WORKSTATION;
-
-   switch (si.wProcessorArchitecture)
-   {
-      case PROCESSOR_ARCHITECTURE_AMD64:
-         arch = "x64";
-         break;
-      case PROCESSOR_ARCHITECTURE_INTEL:
-         arch = "x86";
-         break;
-      case PROCESSOR_ARCHITECTURE_ARM:
-         arch = "ARM";
-         break;
-      default:
-         break;
-   }
-#else
+   char buildStr[11] = {0};
+   bool server = 0;
+   const char *arch = "";
    OSVERSIONINFO vi = {0};
    vi.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
 
-   /* Available from NT 3.5 and Win95 */
+
    GetVersionEx(&vi);
-#endif
+
 
    if (major)
       *major = vi.dwMajorVersion;
@@ -90,7 +61,7 @@ __attribute__((used)) static void frontend_win32_get_os(char *s, size_t len, int
       *minor = vi.dwMinorVersion;
 
    if (vi.dwMajorVersion == 4 && vi.dwMinorVersion == 0)
-      snprintf(buildStr, sizeof(buildStr), "%lu", (DWORD)(LOWORD(vi.dwBuildNumber))); /* Windows 95 build number is in the low-order word only */
+      snprintf(buildStr, sizeof(buildStr), "%lu", (DWORD)(LOWORD(vi.dwBuildNumber)));
    else
       snprintf(buildStr, sizeof(buildStr), "%lu", vi.dwBuildNumber);
 
@@ -145,7 +116,7 @@ __attribute__((used)) static void frontend_win32_get_os(char *s, size_t len, int
                }
                else
                {
-                  /* Yes, XP Pro x64 is a higher version number than XP x86 */
+
                   if (string_is_equal(arch, "x64"))
                      strlcpy(s, "Windows XP", len);
                }

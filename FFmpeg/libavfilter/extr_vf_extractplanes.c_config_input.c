@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
 struct TYPE_14__ {TYPE_2__* priv; } ;
-struct TYPE_13__ {int /*<<< orphan*/  format; int /*<<< orphan*/  w; TYPE_5__* dst; } ;
+struct TYPE_13__ {int format; int w; TYPE_5__* dst; } ;
 struct TYPE_12__ {int flags; int nb_components; TYPE_1__* comp; } ;
-struct TYPE_11__ {int requested_planes; int depth; int step; int is_packed; size_t* map; int /*<<< orphan*/  linesize; } ;
+struct TYPE_11__ {int requested_planes; int depth; int step; int is_packed; size_t* map; int linesize; } ;
 struct TYPE_10__ {int depth; } ;
-typedef  TYPE_2__ ExtractPlanesContext ;
-typedef  TYPE_3__ AVPixFmtDescriptor ;
-typedef  TYPE_4__ AVFilterLink ;
-typedef  TYPE_5__ AVFilterContext ;
+typedef TYPE_2__ ExtractPlanesContext ;
+typedef TYPE_3__ AVPixFmtDescriptor ;
+typedef TYPE_4__ AVFilterLink ;
+typedef TYPE_5__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int AV_PIX_FMT_FLAG_ALPHA ; 
- int AV_PIX_FMT_FLAG_PLANAR ; 
- int AV_PIX_FMT_FLAG_RGB ; 
- int /*<<< orphan*/  EINVAL ; 
- int PLANE_A ; 
- int PLANE_B ; 
- int PLANE_G ; 
- int PLANE_R ; 
- int PLANE_U ; 
- int PLANE_V ; 
- int PLANE_Y ; 
- int av_get_padded_bits_per_pixel (TYPE_3__ const*) ; 
- int av_image_fill_linesizes (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*) ; 
- TYPE_3__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_fill_rgba_map (size_t*,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int AV_PIX_FMT_FLAG_ALPHA ;
+ int AV_PIX_FMT_FLAG_PLANAR ;
+ int AV_PIX_FMT_FLAG_RGB ;
+ int EINVAL ;
+ int PLANE_A ;
+ int PLANE_B ;
+ int PLANE_G ;
+ int PLANE_R ;
+ int PLANE_U ;
+ int PLANE_V ;
+ int PLANE_Y ;
+ int av_get_padded_bits_per_pixel (TYPE_3__ const*) ;
+ int av_image_fill_linesizes (int ,int ,int ) ;
+ int av_log (TYPE_5__*,int ,char*) ;
+ TYPE_3__* av_pix_fmt_desc_get (int ) ;
+ int ff_fill_rgba_map (size_t*,int ) ;
 
 __attribute__((used)) static int config_input(AVFilterLink *inlink)
 {

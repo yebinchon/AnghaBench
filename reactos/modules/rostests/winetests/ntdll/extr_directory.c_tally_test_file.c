@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_5__ {int attr; int /*<<< orphan*/  nfound; scalar_t__ attr_done; int /*<<< orphan*/  description; int /*<<< orphan*/  name; } ;
-struct TYPE_4__ {int FileAttributes; int FileNameLength; int /*<<< orphan*/ * FileName; } ;
-typedef  TYPE_1__ FILE_BOTH_DIRECTORY_INFORMATION ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int FILE_ATTRIBUTE_DIRECTORY ; 
- int FILE_ATTRIBUTE_HIDDEN ; 
- int FILE_ATTRIBUTE_REPARSE_POINT ; 
- int FILE_ATTRIBUTE_SYSTEM ; 
- scalar_t__ TRUE ; 
- int lstrlenW (int /*<<< orphan*/ ) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ,...) ; 
- int test_dir_count ; 
- TYPE_2__* testfiles ; 
- int /*<<< orphan*/  wine_dbgstr_w (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wine_dbgstr_wn (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_5__ {int attr; int nfound; scalar_t__ attr_done; int description; int name; } ;
+struct TYPE_4__ {int FileAttributes; int FileNameLength; int * FileName; } ;
+typedef TYPE_1__ FILE_BOTH_DIRECTORY_INFORMATION ;
+typedef int DWORD ;
+
+
+ int FILE_ATTRIBUTE_DIRECTORY ;
+ int FILE_ATTRIBUTE_HIDDEN ;
+ int FILE_ATTRIBUTE_REPARSE_POINT ;
+ int FILE_ATTRIBUTE_SYSTEM ;
+ scalar_t__ TRUE ;
+ int lstrlenW (int ) ;
+ scalar_t__ memcmp (int *,int ,int) ;
+ int ok (int,char*,int ,...) ;
+ int test_dir_count ;
+ TYPE_2__* testfiles ;
+ int wine_dbgstr_w (int ) ;
+ int wine_dbgstr_wn (int *,int) ;
 
 __attribute__((used)) static void tally_test_file(FILE_BOTH_DIRECTORY_INFORMATION *dir_info)
 {

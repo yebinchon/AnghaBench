@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* gss_buffer_t ;
-typedef  int /*<<< orphan*/  gss_OID ;
-struct TYPE_3__ {int /*<<< orphan*/ * value; scalar_t__ length; } ;
-typedef  scalar_t__ OM_uint32 ;
 
-/* Variables and functions */
-#define  GSS_C_GSS_CODE 129 
-#define  GSS_C_MECH_CODE 128 
- scalar_t__ GSS_LAST ; 
- scalar_t__ GSS_S_COMPLETE ; 
- scalar_t__ GSS_S_FAILURE ; 
- char const** min_err_table ; 
- void* strdup (char const*) ; 
- scalar_t__ strlen (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* gss_buffer_t ;
+typedef int gss_OID ;
+struct TYPE_3__ {int * value; scalar_t__ length; } ;
+typedef scalar_t__ OM_uint32 ;
+
+
+
+
+ scalar_t__ GSS_LAST ;
+ scalar_t__ GSS_S_COMPLETE ;
+ scalar_t__ GSS_S_FAILURE ;
+ char const** min_err_table ;
+ void* strdup (char const*) ;
+ scalar_t__ strlen (int *) ;
 
 OM_uint32 gss_display_status(OM_uint32 *min,
                              OM_uint32 status_value,
@@ -42,17 +42,17 @@ OM_uint32 gss_display_status(OM_uint32 *min,
     *message_context = 0;
 
   if(status_string) {
-    status_string->value = NULL;
+    status_string->value = ((void*)0);
     status_string->length = 0;
 
     if(status_value >= GSS_LAST)
       return GSS_S_FAILURE;
 
     switch(status_type) {
-      case GSS_C_GSS_CODE:
+      case 129:
         status_string->value = strdup(maj_str);
         break;
-      case GSS_C_MECH_CODE:
+      case 128:
         status_string->value = strdup(min_err_table[status_value]);
         break;
       default:

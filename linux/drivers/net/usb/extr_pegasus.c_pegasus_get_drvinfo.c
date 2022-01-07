@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct net_device {int dummy; } ;
-struct ethtool_drvinfo {int /*<<< orphan*/  bus_info; int /*<<< orphan*/  version; int /*<<< orphan*/  driver; } ;
-struct TYPE_3__ {int /*<<< orphan*/  usb; } ;
-typedef  TYPE_1__ pegasus_t ;
+struct ethtool_drvinfo {int bus_info; int version; int driver; } ;
+struct TYPE_3__ {int usb; } ;
+typedef TYPE_1__ pegasus_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DRIVER_VERSION ; 
- int /*<<< orphan*/  driver_name ; 
- TYPE_1__* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  strlcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  usb_make_path (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int DRIVER_VERSION ;
+ int driver_name ;
+ TYPE_1__* netdev_priv (struct net_device*) ;
+ int strlcpy (int ,int ,int) ;
+ int usb_make_path (int ,int ,int) ;
 
 __attribute__((used)) static void pegasus_get_drvinfo(struct net_device *dev,
-				struct ethtool_drvinfo *info)
+    struct ethtool_drvinfo *info)
 {
-	pegasus_t *pegasus = netdev_priv(dev);
+ pegasus_t *pegasus = netdev_priv(dev);
 
-	strlcpy(info->driver, driver_name, sizeof(info->driver));
-	strlcpy(info->version, DRIVER_VERSION, sizeof(info->version));
-	usb_make_path(pegasus->usb, info->bus_info, sizeof(info->bus_info));
+ strlcpy(info->driver, driver_name, sizeof(info->driver));
+ strlcpy(info->version, DRIVER_VERSION, sizeof(info->version));
+ usb_make_path(pegasus->usb, info->bus_info, sizeof(info->bus_info));
 }

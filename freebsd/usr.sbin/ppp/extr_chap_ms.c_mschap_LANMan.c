@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char u_char ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ChallengeResponse (char*,char*,char*) ; 
- int /*<<< orphan*/  DesEncrypt (char*,char*,char*) ; 
- int /*<<< orphan*/  memset (char*,char,int) ; 
- char toupper (char) ; 
+
+
+
+typedef char u_char ;
+
+
+ int ChallengeResponse (char*,char*,char*) ;
+ int DesEncrypt (char*,char*,char*) ;
+ int memset (char*,char,int) ;
+ char toupper (char) ;
 
 void
 mschap_LANMan(char *digest, char *challenge, char *secret)
 {
-  static u_char salt[] = "KGS!@#$%";	/* RASAPI32.dll */
+  static u_char salt[] = "KGS!@#$%";
   char SECRET[14], *ptr, *end;
   u_char hash[16];
 

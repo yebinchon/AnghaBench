@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsIDOMKeyEvent ;
-typedef  int /*<<< orphan*/  nsIDOMEvent ;
-typedef  int /*<<< orphan*/  UINT32 ;
-struct TYPE_4__ {int /*<<< orphan*/  nsnode; int /*<<< orphan*/  doc; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int nsresult ;
+typedef int nsIDOMKeyEvent ;
+typedef int nsIDOMEvent ;
+typedef int UINT32 ;
+struct TYPE_4__ {int nsnode; int doc; } ;
 struct TYPE_5__ {TYPE_1__ node; } ;
-typedef  TYPE_2__ HTMLElement ;
-typedef  int /*<<< orphan*/  HTMLDOMNode ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_2__ HTMLElement ;
+typedef int HTMLDOMNode ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVENTID_HELP ; 
-#define  EVENTID_KEYDOWN 129 
- int /*<<< orphan*/  IID_nsIDOMKeyEvent ; 
- int /*<<< orphan*/  NS_SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  TRUE ; 
-#define  VK_F1 128 
- int /*<<< orphan*/  fire_event (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_2__* impl_from_HTMLDOMNode (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMEvent_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  nsIDOMKeyEvent_GetKeyCode (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMKeyEvent_Release (int /*<<< orphan*/ *) ; 
+
+ int EVENTID_HELP ;
+
+ int IID_nsIDOMKeyEvent ;
+ int NS_SUCCEEDED (int ) ;
+ int S_OK ;
+ int TRACE (char*) ;
+ int TRUE ;
+
+ int fire_event (int ,int ,int ,int ,int *,int *) ;
+ TYPE_2__* impl_from_HTMLDOMNode (int *) ;
+ int nsIDOMEvent_QueryInterface (int *,int *,void**) ;
+ int nsIDOMKeyEvent_GetKeyCode (int *,int *) ;
+ int nsIDOMKeyEvent_Release (int *) ;
 
 HRESULT HTMLElement_handle_event(HTMLDOMNode *iface, DWORD eid, nsIDOMEvent *event, BOOL *prevent_default)
 {
     HTMLElement *This = impl_from_HTMLDOMNode(iface);
 
     switch(eid) {
-    case EVENTID_KEYDOWN: {
+    case 129: {
         nsIDOMKeyEvent *key_event;
         nsresult nsres;
 
@@ -55,9 +55,9 @@ HRESULT HTMLElement_handle_event(HTMLDOMNode *iface, DWORD eid, nsIDOMEvent *eve
             nsIDOMKeyEvent_GetKeyCode(key_event, &code);
 
             switch(code) {
-            case VK_F1: /* DOM_VK_F1 */
+            case 128:
                 TRACE("F1 pressed\n");
-                fire_event(This->node.doc, EVENTID_HELP, TRUE, This->node.nsnode, NULL, NULL);
+                fire_event(This->node.doc, EVENTID_HELP, TRUE, This->node.nsnode, ((void*)0), ((void*)0));
                 *prevent_default = TRUE;
             }
 

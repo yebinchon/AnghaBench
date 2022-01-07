@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct device {int /*<<< orphan*/  parent; } ;
+
+
+
+
+typedef int u32 ;
+struct device {int parent; } ;
 struct acpi_device {struct device dev; } ;
-typedef  int /*<<< orphan*/  acpi_handle ;
+typedef int acpi_handle ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __acpi_nvdimm_notify (struct device*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nfit_device_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nfit_device_unlock (int /*<<< orphan*/ ) ; 
+
+ int __acpi_nvdimm_notify (struct device*,int ) ;
+ int nfit_device_lock (int ) ;
+ int nfit_device_unlock (int ) ;
 
 __attribute__((used)) static void acpi_nvdimm_notify(acpi_handle handle, u32 event, void *data)
 {
-	struct acpi_device *adev = data;
-	struct device *dev = &adev->dev;
+ struct acpi_device *adev = data;
+ struct device *dev = &adev->dev;
 
-	nfit_device_lock(dev->parent);
-	__acpi_nvdimm_notify(dev, event);
-	nfit_device_unlock(dev->parent);
+ nfit_device_lock(dev->parent);
+ __acpi_nvdimm_notify(dev, event);
+ nfit_device_unlock(dev->parent);
 }

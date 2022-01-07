@@ -1,90 +1,90 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gpointer ;
-typedef  int gint ;
-typedef  int /*<<< orphan*/  gboolean ;
-struct TYPE_4__ {int /*<<< orphan*/  vbox; } ;
-typedef  int /*<<< orphan*/  GtkWidget ;
-typedef  int /*<<< orphan*/  GtkDialogFlags ;
-typedef  int /*<<< orphan*/  GdkEvent ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GTK_CONTAINER (int /*<<< orphan*/ ) ; 
- TYPE_1__* GTK_DIALOG (int /*<<< orphan*/ *) ; 
- int GTK_DIALOG_DESTROY_WITH_PARENT ; 
- int GTK_DIALOG_MODAL ; 
-#define  GTK_RESPONSE_CANCEL 131 
-#define  GTK_RESPONSE_DELETE_EVENT 130 
-#define  GTK_RESPONSE_NO 129 
-#define  GTK_RESPONSE_YES 128 
- int /*<<< orphan*/  GTK_STOCK_CANCEL ; 
- int /*<<< orphan*/  GTK_STOCK_NO ; 
- int /*<<< orphan*/  GTK_STOCK_OK ; 
- int /*<<< orphan*/  GTK_WINDOW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  conf_get_changed () ; 
- int /*<<< orphan*/  gtk_container_add (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * gtk_dialog_new_with_buttons (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int gtk_dialog_run (TYPE_1__*) ; 
- int /*<<< orphan*/  gtk_dialog_set_default_response (TYPE_1__*,int) ; 
- int /*<<< orphan*/ * gtk_label_new (char*) ; 
- int /*<<< orphan*/  gtk_widget_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_widget_show (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  main_wnd ; 
- int /*<<< orphan*/  on_save_activate (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int gpointer ;
+typedef int gint ;
+typedef int gboolean ;
+struct TYPE_4__ {int vbox; } ;
+typedef int GtkWidget ;
+typedef int GtkDialogFlags ;
+typedef int GdkEvent ;
+
+
+ int FALSE ;
+ int GTK_CONTAINER (int ) ;
+ TYPE_1__* GTK_DIALOG (int *) ;
+ int GTK_DIALOG_DESTROY_WITH_PARENT ;
+ int GTK_DIALOG_MODAL ;
+
+
+
+
+ int GTK_STOCK_CANCEL ;
+ int GTK_STOCK_NO ;
+ int GTK_STOCK_OK ;
+ int GTK_WINDOW (int ) ;
+ int TRUE ;
+ int conf_get_changed () ;
+ int gtk_container_add (int ,int *) ;
+ int * gtk_dialog_new_with_buttons (char*,int ,int ,int ,int,int ,int,int ,int,int *) ;
+ int gtk_dialog_run (TYPE_1__*) ;
+ int gtk_dialog_set_default_response (TYPE_1__*,int) ;
+ int * gtk_label_new (char*) ;
+ int gtk_widget_destroy (int *) ;
+ int gtk_widget_show (int *) ;
+ int main_wnd ;
+ int on_save_activate (int *,int *) ;
 
 gboolean on_window1_delete_event(GtkWidget * widget, GdkEvent * event,
-				 gpointer user_data)
+     gpointer user_data)
 {
-	GtkWidget *dialog, *label;
-	gint result;
+ GtkWidget *dialog, *label;
+ gint result;
 
-	if (!conf_get_changed())
-		return FALSE;
+ if (!conf_get_changed())
+  return FALSE;
 
-	dialog = gtk_dialog_new_with_buttons("Warning !",
-					     GTK_WINDOW(main_wnd),
-					     (GtkDialogFlags)
-					     (GTK_DIALOG_MODAL |
-					      GTK_DIALOG_DESTROY_WITH_PARENT),
-					     GTK_STOCK_OK,
-					     GTK_RESPONSE_YES,
-					     GTK_STOCK_NO,
-					     GTK_RESPONSE_NO,
-					     GTK_STOCK_CANCEL,
-					     GTK_RESPONSE_CANCEL, NULL);
-	gtk_dialog_set_default_response(GTK_DIALOG(dialog),
-					GTK_RESPONSE_CANCEL);
+ dialog = gtk_dialog_new_with_buttons("Warning !",
+          GTK_WINDOW(main_wnd),
+          (GtkDialogFlags)
+          (GTK_DIALOG_MODAL |
+           GTK_DIALOG_DESTROY_WITH_PARENT),
+          GTK_STOCK_OK,
+          128,
+          GTK_STOCK_NO,
+          129,
+          GTK_STOCK_CANCEL,
+          131, ((void*)0));
+ gtk_dialog_set_default_response(GTK_DIALOG(dialog),
+     131);
 
-	label = gtk_label_new("\nSave configuration ?\n");
-	gtk_container_add(GTK_CONTAINER(GTK_DIALOG(dialog)->vbox), label);
-	gtk_widget_show(label);
+ label = gtk_label_new("\nSave configuration ?\n");
+ gtk_container_add(GTK_CONTAINER(GTK_DIALOG(dialog)->vbox), label);
+ gtk_widget_show(label);
 
-	result = gtk_dialog_run(GTK_DIALOG(dialog));
-	switch (result) {
-	case GTK_RESPONSE_YES:
-		on_save_activate(NULL, NULL);
-		return FALSE;
-	case GTK_RESPONSE_NO:
-		return FALSE;
-	case GTK_RESPONSE_CANCEL:
-	case GTK_RESPONSE_DELETE_EVENT:
-	default:
-		gtk_widget_destroy(dialog);
-		return TRUE;
-	}
+ result = gtk_dialog_run(GTK_DIALOG(dialog));
+ switch (result) {
+ case 128:
+  on_save_activate(((void*)0), ((void*)0));
+  return FALSE;
+ case 129:
+  return FALSE;
+ case 131:
+ case 130:
+ default:
+  gtk_widget_destroy(dialog);
+  return TRUE;
+ }
 
-	return FALSE;
+ return FALSE;
 }

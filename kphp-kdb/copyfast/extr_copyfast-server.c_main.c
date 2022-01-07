@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {void* port; } ;
 
-/* Variables and functions */
- scalar_t__ MAX_CONNECTIONS ; 
- TYPE_1__ PID ; 
- int /*<<< orphan*/  aes_load_pwd_file (char*) ; 
- void* atof (void*) ; 
- void* atoi (void*) ; 
- int daemonize ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  init_dyn_data () ; 
- void* logname ; 
- scalar_t__ maxconn ; 
- void* medium_delay ; 
- void* optarg ; 
- int optind ; 
- void* port ; 
- char* progname ; 
- scalar_t__ raise_file_rlimit (scalar_t__) ; 
- int /*<<< orphan*/  read_network_file (char*) ; 
- int /*<<< orphan*/  set_debug_handlers () ; 
- void* slow_delay ; 
- int /*<<< orphan*/  start_server () ; 
- int /*<<< orphan*/  start_time ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strncpy (char*,void*,int) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usage () ; 
- void* username ; 
- int /*<<< orphan*/  verbosity ; 
+
+ scalar_t__ MAX_CONNECTIONS ;
+ TYPE_1__ PID ;
+ int aes_load_pwd_file (char*) ;
+ void* atof (void*) ;
+ void* atoi (void*) ;
+ int daemonize ;
+ int exit (int) ;
+ int fprintf (int ,char*,scalar_t__) ;
+ int getopt (int,char**,char*) ;
+ int init_dyn_data () ;
+ void* logname ;
+ scalar_t__ maxconn ;
+ void* medium_delay ;
+ void* optarg ;
+ int optind ;
+ void* port ;
+ char* progname ;
+ scalar_t__ raise_file_rlimit (scalar_t__) ;
+ int read_network_file (char*) ;
+ int set_debug_handlers () ;
+ void* slow_delay ;
+ int start_server () ;
+ int start_time ;
+ int stderr ;
+ int strncpy (char*,void*,int) ;
+ int time (int ) ;
+ int usage () ;
+ void* username ;
+ int verbosity ;
 
 int main (int argc, char *argv[]) {
   int i;

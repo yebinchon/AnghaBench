@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- long abs (long) ; 
- int /*<<< orphan*/  reverse (char*,char*) ; 
+ long abs (long) ;
+ int reverse (char*,char*) ;
 
 char* ltoa(long value, char* result, int base) {
     if(base < 2 || base > 16) {
@@ -31,7 +23,7 @@ char* ltoa(long value, char* result, int base) {
         quotient = tmp;
     } while(quotient);
 
-    // Apply negative sign
+
     if(value < 0)
         *out++ = '-';
 

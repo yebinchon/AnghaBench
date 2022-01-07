@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int l26; int l64; int /*<<< orphan*/  d; int /*<<< orphan*/  l38; scalar_t__ l133; int /*<<< orphan*/  l167; int /*<<< orphan*/  l53; int /*<<< orphan*/  l52; int /*<<< orphan*/  l31; int /*<<< orphan*/  l61; } ;
-typedef  TYPE_1__ e ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cp_set_gsyn (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cp_set_lloop (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cp_set_monitor (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cp_set_phony (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cp_set_unfram (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  l (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  l90 (TYPE_1__*,int,int) ; 
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int l26; int l64; int d; int l38; scalar_t__ l133; int l167; int l53; int l52; int l31; int l61; } ;
+typedef TYPE_1__ e ;
+
+
+ int cp_set_gsyn (TYPE_1__*,int ) ;
+ int cp_set_lloop (TYPE_1__*,int ) ;
+ int cp_set_monitor (TYPE_1__*,int ) ;
+ int cp_set_phony (TYPE_1__*,int ) ;
+ int cp_set_unfram (TYPE_1__*,int ) ;
+ int i (TYPE_1__*,int,int) ;
+ int l (int ,int,int) ;
+ int l90 (TYPE_1__*,int,int) ;
 
 __attribute__((used)) static void l210(e*a){int c;a->l26&=~128;l(a->d,a->l64,a->
 l26);cp_set_gsyn(a,a->l61);cp_set_unfram(a,a->l31);cp_set_phony(a,a->

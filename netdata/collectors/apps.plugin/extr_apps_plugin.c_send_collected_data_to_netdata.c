@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  usec_t ;
-struct target {unsigned long long processes; int utime; int stime; int gtime; int cutime; int cstime; int cgtime; unsigned long long num_threads; scalar_t__ starttime; unsigned long long uptime_min; unsigned long long uptime_sum; unsigned long long uptime_max; scalar_t__ status_vmrss; scalar_t__ status_vmshared; unsigned long long status_vmsize; unsigned long long status_vmswap; int minflt; int cminflt; int majflt; int cmajflt; unsigned long long io_logical_bytes_read; unsigned long long io_logical_bytes_written; unsigned long long io_storage_bytes_read; unsigned long long io_storage_bytes_written; unsigned long long openfiles; unsigned long long opensockets; unsigned long long openpipes; int /*<<< orphan*/  name; scalar_t__ exposed; struct target* next; } ;
-typedef  unsigned long long kernel_uint_t ;
 
-/* Variables and functions */
- int cgtime_fix_ratio ; 
- int cmajflt_fix_ratio ; 
- int cminflt_fix_ratio ; 
- int cstime_fix_ratio ; 
- int cutime_fix_ratio ; 
- scalar_t__ enable_file_charts ; 
- scalar_t__ global_uptime ; 
- int gtime_fix_ratio ; 
- scalar_t__ include_exited_childs ; 
- int majflt_fix_ratio ; 
- int minflt_fix_ratio ; 
- int /*<<< orphan*/  send_BEGIN (char const*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  send_END () ; 
- int /*<<< orphan*/  send_SET (int /*<<< orphan*/ ,unsigned long long) ; 
- scalar_t__ show_guest_time ; 
- int stime_fix_ratio ; 
- scalar_t__ unlikely (int) ; 
- int utime_fix_ratio ; 
+
+
+
+typedef int usec_t ;
+struct target {unsigned long long processes; int utime; int stime; int gtime; int cutime; int cstime; int cgtime; unsigned long long num_threads; scalar_t__ starttime; unsigned long long uptime_min; unsigned long long uptime_sum; unsigned long long uptime_max; scalar_t__ status_vmrss; scalar_t__ status_vmshared; unsigned long long status_vmsize; unsigned long long status_vmswap; int minflt; int cminflt; int majflt; int cmajflt; unsigned long long io_logical_bytes_read; unsigned long long io_logical_bytes_written; unsigned long long io_storage_bytes_read; unsigned long long io_storage_bytes_written; unsigned long long openfiles; unsigned long long opensockets; unsigned long long openpipes; int name; scalar_t__ exposed; struct target* next; } ;
+typedef unsigned long long kernel_uint_t ;
+
+
+ int cgtime_fix_ratio ;
+ int cmajflt_fix_ratio ;
+ int cminflt_fix_ratio ;
+ int cstime_fix_ratio ;
+ int cutime_fix_ratio ;
+ scalar_t__ enable_file_charts ;
+ scalar_t__ global_uptime ;
+ int gtime_fix_ratio ;
+ scalar_t__ include_exited_childs ;
+ int majflt_fix_ratio ;
+ int minflt_fix_ratio ;
+ int send_BEGIN (char const*,char*,int ) ;
+ int send_END () ;
+ int send_SET (int ,unsigned long long) ;
+ scalar_t__ show_guest_time ;
+ int stime_fix_ratio ;
+ scalar_t__ unlikely (int) ;
+ int utime_fix_ratio ;
 
 __attribute__((used)) static void send_collected_data_to_netdata(struct target *root, const char *type, usec_t dt) {
     struct target *w;
@@ -81,7 +81,7 @@ __attribute__((used)) static void send_collected_data_to_netdata(struct target *
     }
     send_END();
 
-#ifndef __FreeBSD__
+
     send_BEGIN(type, "uptime", dt);
     for (w = root; w ; w = w->next) {
         if(unlikely(w->exposed && w->processes))
@@ -109,7 +109,7 @@ __attribute__((used)) static void send_collected_data_to_netdata(struct target *
             send_SET(w->name, w->uptime_max);
     }
     send_END();
-#endif
+
 
     send_BEGIN(type, "mem", dt);
     for (w = root; w ; w = w->next) {
@@ -125,14 +125,14 @@ __attribute__((used)) static void send_collected_data_to_netdata(struct target *
     }
     send_END();
 
-#ifndef __FreeBSD__
+
     send_BEGIN(type, "swap", dt);
     for (w = root; w ; w = w->next) {
         if(unlikely(w->exposed && w->processes))
             send_SET(w->name, w->status_vmswap);
     }
     send_END();
-#endif
+
 
     send_BEGIN(type, "minor_faults", dt);
     for (w = root; w ; w = w->next) {
@@ -148,7 +148,7 @@ __attribute__((used)) static void send_collected_data_to_netdata(struct target *
     }
     send_END();
 
-#ifndef __FreeBSD__
+
     send_BEGIN(type, "lreads", dt);
     for (w = root; w ; w = w->next) {
         if(unlikely(w->exposed && w->processes))
@@ -162,7 +162,7 @@ __attribute__((used)) static void send_collected_data_to_netdata(struct target *
             send_SET(w->name, w->io_logical_bytes_written);
     }
     send_END();
-#endif
+
 
     send_BEGIN(type, "preads", dt);
     for (w = root; w ; w = w->next) {

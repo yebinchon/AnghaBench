@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_14__ {TYPE_4__** PGmy4; } ;
-typedef  TYPE_5__ kWMzp1 ;
+typedef TYPE_5__ kWMzp1 ;
 struct TYPE_15__ {unsigned long h80jx1; } ;
-struct TYPE_10__ {int /*<<< orphan*/  h80jx1; } ;
+struct TYPE_10__ {int h80jx1; } ;
 struct TYPE_11__ {TYPE_1__ Yj6gL2; } ;
 struct TYPE_12__ {TYPE_2__ SpbRG4; } ;
 struct TYPE_13__ {TYPE_3__ _8WVQ2; } ;
-typedef  TYPE_6__ QiOkk4 ;
+typedef TYPE_6__ QiOkk4 ;
 
-/* Variables and functions */
- unsigned long KAeao3 (long volatile*,int /*<<< orphan*/ ) ; 
- unsigned int YnF_24 (TYPE_6__) ; 
- int /*<<< orphan*/  kueUq2 (TYPE_5__*,unsigned int,unsigned int) ; 
+
+ unsigned long KAeao3 (long volatile*,int ) ;
+ unsigned int YnF_24 (TYPE_6__) ;
+ int kueUq2 (TYPE_5__*,unsigned int,unsigned int) ;
 
 __attribute__((used)) static void XHCWr2(kWMzp1*J7Iki4,unsigned LigBO2){
 QiOkk4 OS6VN2;OS6VN2.h80jx1=KAeao3(((long volatile* )(&J7Iki4->PGmy4[

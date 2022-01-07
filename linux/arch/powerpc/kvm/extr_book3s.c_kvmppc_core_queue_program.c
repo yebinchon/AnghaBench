@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ulong ;
+
+
+
+
+typedef int ulong ;
 struct kvm_vcpu {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BOOK3S_INTERRUPT_PROGRAM ; 
- int /*<<< orphan*/  kvmppc_inject_interrupt (struct kvm_vcpu*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int BOOK3S_INTERRUPT_PROGRAM ;
+ int kvmppc_inject_interrupt (struct kvm_vcpu*,int ,int ) ;
 
 void kvmppc_core_queue_program(struct kvm_vcpu *vcpu, ulong flags)
 {
-	/* might as well deliver this straight away */
-	kvmppc_inject_interrupt(vcpu, BOOK3S_INTERRUPT_PROGRAM, flags);
+
+ kvmppc_inject_interrupt(vcpu, BOOK3S_INTERRUPT_PROGRAM, flags);
 }

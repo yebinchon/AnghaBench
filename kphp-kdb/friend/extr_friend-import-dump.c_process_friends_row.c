@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lev_add_friend {int user_id; int friend_id; int cat; int /*<<< orphan*/  type; } ;
+
+
+
+
+struct lev_add_friend {int user_id; int friend_id; int cat; int type; } ;
 struct friend {int id; int cat; struct friend* next; } ;
 
-/* Variables and functions */
- struct friend** Friends ; 
- int* I ; 
- int /*<<< orphan*/  LEV_FR_ADD_FRIENDREQ ; 
- int /*<<< orphan*/  adj_rec ; 
- int conv_uid (int) ; 
- size_t fr_cat ; 
- size_t fr_confirmed ; 
- size_t fr_friend_id ; 
- size_t fr_user_id ; 
- struct friend* gmalloc (int) ; 
- int user_id ; 
- struct lev_add_friend* write_alloc (int) ; 
+
+ struct friend** Friends ;
+ int* I ;
+ int LEV_FR_ADD_FRIENDREQ ;
+ int adj_rec ;
+ int conv_uid (int) ;
+ size_t fr_cat ;
+ size_t fr_confirmed ;
+ size_t fr_friend_id ;
+ size_t fr_user_id ;
+ struct friend* gmalloc (int) ;
+ int user_id ;
+ struct lev_add_friend* write_alloc (int) ;
 
 void process_friends_row (void) {
   user_id = I[fr_friend_id];

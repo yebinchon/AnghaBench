@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * SC_HANDLE ;
-typedef  int /*<<< orphan*/  LPCTSTR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  ENUM_SERVICE_STATUS_PROCESS ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseServiceHandle (int /*<<< orphan*/ *) ; 
- scalar_t__ ERROR_MORE_DATA ; 
- scalar_t__ EnumServicesStatusEx (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- scalar_t__ HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * OpenSCManager (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReportLastError () ; 
- int /*<<< orphan*/  SC_ENUM_PROCESS_INFO ; 
- int /*<<< orphan*/  SC_MANAGER_ENUMERATE_SERVICE ; 
+
+
+
+typedef int * SC_HANDLE ;
+typedef int LPCTSTR ;
+typedef int LPBYTE ;
+typedef int ENUM_SERVICE_STATUS_PROCESS ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ int CloseServiceHandle (int *) ;
+ scalar_t__ ERROR_MORE_DATA ;
+ scalar_t__ EnumServicesStatusEx (int *,int ,int ,int ,int ,int ,int *,int *,int *,int ) ;
+ scalar_t__ GetLastError () ;
+ int GetProcessHeap () ;
+ scalar_t__ HeapAlloc (int ,int ,int ) ;
+ int HeapFree (int ,int ,int *) ;
+ int * OpenSCManager (int *,int *,int ) ;
+ int ReportLastError () ;
+ int SC_ENUM_PROCESS_INFO ;
+ int SC_MANAGER_ENUMERATE_SERVICE ;
 
 __attribute__((used)) static
 DWORD
@@ -45,10 +45,10 @@ EnumServices(ENUM_SERVICE_STATUS_PROCESS **pServiceStatus,
     DWORD NumServices = 0;
     BOOL Ret;
 
-    hSCManager = OpenSCManager(NULL,
-                               NULL,
+    hSCManager = OpenSCManager(((void*)0),
+                               ((void*)0),
                                SC_MANAGER_ENUMERATE_SERVICE);
-    if (hSCManager == NULL)
+    if (hSCManager == ((void*)0))
     {
         ReportLastError();
         return 0;
@@ -79,7 +79,7 @@ EnumServices(ENUM_SERVICE_STATUS_PROCESS **pServiceStatus,
                       HeapAlloc(GetProcessHeap(),
                                 0,
                                 dwBufferSize);
-    if (*pServiceStatus != NULL)
+    if (*pServiceStatus != ((void*)0))
     {
         if (EnumServicesStatusEx(hSCManager,
                                  SC_ENUM_PROCESS_INFO,

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct redisCommand {int dummy; } ;
-typedef  int /*<<< orphan*/  robj ;
-struct TYPE_2__ {scalar_t__ aof_state; int /*<<< orphan*/  slaves; } ;
+typedef int robj ;
+struct TYPE_2__ {scalar_t__ aof_state; int slaves; } ;
 
-/* Variables and functions */
- scalar_t__ AOF_OFF ; 
- int PROPAGATE_AOF ; 
- int PROPAGATE_REPL ; 
- int /*<<< orphan*/  feedAppendOnlyFile (struct redisCommand*,int,int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  replicationFeedSlaves (int /*<<< orphan*/ ,int,int /*<<< orphan*/ **,int) ; 
- TYPE_1__ server ; 
+
+ scalar_t__ AOF_OFF ;
+ int PROPAGATE_AOF ;
+ int PROPAGATE_REPL ;
+ int feedAppendOnlyFile (struct redisCommand*,int,int **,int) ;
+ int replicationFeedSlaves (int ,int,int **,int) ;
+ TYPE_1__ server ;
 
 void propagate(struct redisCommand *cmd, int dbid, robj **argv, int argc,
                int flags)

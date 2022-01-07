@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * LPCTSTR ;
-typedef  int INT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ContinueUsage () ; 
- int /*<<< orphan*/  Control (int,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  ControlUsage () ; 
- int /*<<< orphan*/  Create (int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  Delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteUsage () ; 
- int /*<<< orphan*/  EnumDepend (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EnumDependUsage () ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetDisplayName (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetDisplayNameUsage () ; 
- int /*<<< orphan*/  GetKeyName (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetKeyNameUsage () ; 
- int /*<<< orphan*/  InterrogateUsage () ; 
- int /*<<< orphan*/  MainUsage () ; 
- int /*<<< orphan*/  PauseUsage () ; 
- int /*<<< orphan*/  Query (int /*<<< orphan*/ **,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  QueryConfig (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  QueryConfigUsage () ; 
- int /*<<< orphan*/  QueryDescription (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  QueryDescriptionUsage () ; 
- int /*<<< orphan*/  QueryFailure (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  QueryFailureUsage () ; 
- int SERVICE_CONTROL_CONTINUE ; 
- int SERVICE_CONTROL_INTERROGATE ; 
- int SERVICE_CONTROL_NETBINDADD ; 
- int SERVICE_CONTROL_NETBINDDISABLE ; 
- int SERVICE_CONTROL_NETBINDENABLE ; 
- int SERVICE_CONTROL_NETBINDREMOVE ; 
- int SERVICE_CONTROL_PARAMCHANGE ; 
- int SERVICE_CONTROL_PAUSE ; 
- int SERVICE_CONTROL_STOP ; 
- int /*<<< orphan*/  SdSet (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SdSetUsage () ; 
- int /*<<< orphan*/  SdShow (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SdShowUsage () ; 
- int /*<<< orphan*/  SetConfig (int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  SetDescription (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetDescriptionUsage () ; 
- int /*<<< orphan*/  SetFailure (int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  Start (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  StartUsage () ; 
- int /*<<< orphan*/  StopUsage () ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _tprintf (int /*<<< orphan*/ ) ; 
- int _ttoi (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lstrcmpi (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int * LPCTSTR ;
+typedef int INT ;
+typedef int DWORD ;
+
+
+ int ContinueUsage () ;
+ int Control (int,int *,int **,int) ;
+ int ControlUsage () ;
+ int Create (int **,int) ;
+ int Delete (int *) ;
+ int DeleteUsage () ;
+ int EnumDepend (int *) ;
+ int EnumDependUsage () ;
+ int FALSE ;
+ int GetDisplayName (int *) ;
+ int GetDisplayNameUsage () ;
+ int GetKeyName (int *) ;
+ int GetKeyNameUsage () ;
+ int InterrogateUsage () ;
+ int MainUsage () ;
+ int PauseUsage () ;
+ int Query (int **,int,int ) ;
+ int QueryConfig (int *) ;
+ int QueryConfigUsage () ;
+ int QueryDescription (int *) ;
+ int QueryDescriptionUsage () ;
+ int QueryFailure (int *) ;
+ int QueryFailureUsage () ;
+ int SERVICE_CONTROL_CONTINUE ;
+ int SERVICE_CONTROL_INTERROGATE ;
+ int SERVICE_CONTROL_NETBINDADD ;
+ int SERVICE_CONTROL_NETBINDDISABLE ;
+ int SERVICE_CONTROL_NETBINDENABLE ;
+ int SERVICE_CONTROL_NETBINDREMOVE ;
+ int SERVICE_CONTROL_PARAMCHANGE ;
+ int SERVICE_CONTROL_PAUSE ;
+ int SERVICE_CONTROL_STOP ;
+ int SdSet (int *,int *) ;
+ int SdSetUsage () ;
+ int SdShow (int *) ;
+ int SdShowUsage () ;
+ int SetConfig (int **,int) ;
+ int SetDescription (int *,int *) ;
+ int SetDescriptionUsage () ;
+ int SetFailure (int **,int) ;
+ int Start (int *,int **,int) ;
+ int StartUsage () ;
+ int StopUsage () ;
+ int TRUE ;
+ int _T (char*) ;
+ int _tprintf (int ) ;
+ int _ttoi (int *) ;
+ int lstrcmpi (int *,int ) ;
 
 __attribute__((used)) static INT
-ScControl(LPCTSTR Server,       // remote machine name
-          LPCTSTR Command,      // sc command
-          LPCTSTR *ServiceArgs, // any options
-          DWORD ArgCount)       // argument counter
+ScControl(LPCTSTR Server,
+          LPCTSTR Command,
+          LPCTSTR *ServiceArgs,
+          DWORD ArgCount)
 {
-    LPCTSTR ServiceName = NULL;
+    LPCTSTR ServiceName = ((void*)0);
 
     if (Server)
     {
@@ -287,7 +287,7 @@ ScControl(LPCTSTR Server,       // remote machine name
     }
     else if (!lstrcmpi(Command, _T("description")))
     {
-        LPCTSTR Description = NULL;
+        LPCTSTR Description = ((void*)0);
 
         if (ArgCount > 0)
         {

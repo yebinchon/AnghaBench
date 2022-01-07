@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int rtx ;
 struct TYPE_3__ {int outgoing_args; int frame; } ;
-typedef  TYPE_1__ arm_stack_offsets ;
-typedef  int HOST_WIDE_INT ;
+typedef TYPE_1__ arm_stack_offsets ;
+typedef int HOST_WIDE_INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GEN_INT (int) ; 
- int LR_REGNUM ; 
- int /*<<< orphan*/  Pmode ; 
- unsigned long arm_compute_save_reg_mask () ; 
- TYPE_1__* arm_get_frame_offsets () ; 
- int /*<<< orphan*/  emit_insn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_move_insn (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ frame_pointer_needed ; 
- int /*<<< orphan*/  gen_addsi3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_frame_mem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_REG (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  hard_frame_pointer_rtx ; 
- int /*<<< orphan*/  plus_constant (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stack_pointer_rtx ; 
+
+ int GEN_INT (int) ;
+ int LR_REGNUM ;
+ int Pmode ;
+ unsigned long arm_compute_save_reg_mask () ;
+ TYPE_1__* arm_get_frame_offsets () ;
+ int emit_insn (int ) ;
+ int emit_move_insn (int ,int ) ;
+ scalar_t__ frame_pointer_needed ;
+ int gen_addsi3 (int ,int ,int ) ;
+ int gen_frame_mem (int ,int ) ;
+ int gen_rtx_REG (int ,int) ;
+ int hard_frame_pointer_rtx ;
+ int plus_constant (int ,int) ;
+ int stack_pointer_rtx ;
 
 void
 arm_set_return_address (rtx source, rtx scratch)
@@ -47,26 +47,26 @@ arm_set_return_address (rtx source, rtx scratch)
   else
     {
       if (frame_pointer_needed)
-	addr = plus_constant(hard_frame_pointer_rtx, -4);
+ addr = plus_constant(hard_frame_pointer_rtx, -4);
       else
-	{
-	  /* LR will be the first saved register.  */
-	  offsets = arm_get_frame_offsets ();
-	  delta = offsets->outgoing_args - (offsets->frame + 4);
+ {
+
+   offsets = arm_get_frame_offsets ();
+   delta = offsets->outgoing_args - (offsets->frame + 4);
 
 
-	  if (delta >= 4096)
-	    {
-	      emit_insn (gen_addsi3 (scratch, stack_pointer_rtx,
-				     GEN_INT (delta & ~4095)));
-	      addr = scratch;
-	      delta &= 4095;
-	    }
-	  else
-	    addr = stack_pointer_rtx;
+   if (delta >= 4096)
+     {
+       emit_insn (gen_addsi3 (scratch, stack_pointer_rtx,
+         GEN_INT (delta & ~4095)));
+       addr = scratch;
+       delta &= 4095;
+     }
+   else
+     addr = stack_pointer_rtx;
 
-	  addr = plus_constant (addr, delta);
-	}
+   addr = plus_constant (addr, delta);
+ }
       emit_move_insn (gen_frame_mem (Pmode, addr), source);
     }
 }

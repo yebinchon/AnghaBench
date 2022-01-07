@@ -1,113 +1,113 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct sk_buff {scalar_t__ data; } ;
 struct TYPE_7__ {scalar_t__ base; } ;
 struct TYPE_6__ {scalar_t__ base; } ;
-struct idt77252_dev {int /*<<< orphan*/  name; int /*<<< orphan*/  flags; scalar_t__ membase; scalar_t__* fbq; TYPE_4__* pcidev; TYPE_3__ tsq; TYPE_2__ rsq; int /*<<< orphan*/  raw_cell_paddr; scalar_t__ raw_cell_hnd; int /*<<< orphan*/  vcs; int /*<<< orphan*/  scd2vc; int /*<<< orphan*/  soft_tst; TYPE_1__* sbpool; scalar_t__ atmdev; int /*<<< orphan*/  index; } ;
-struct TYPE_8__ {int /*<<< orphan*/  irq; int /*<<< orphan*/  dev; } ;
+struct idt77252_dev {int name; int flags; scalar_t__ membase; scalar_t__* fbq; TYPE_4__* pcidev; TYPE_3__ tsq; TYPE_2__ rsq; int raw_cell_paddr; scalar_t__ raw_cell_hnd; int vcs; int scd2vc; int soft_tst; TYPE_1__* sbpool; scalar_t__ atmdev; int index; } ;
+struct TYPE_8__ {int irq; int dev; } ;
 struct TYPE_5__ {struct sk_buff** skb; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DIPRINTK (char*,...) ; 
- int /*<<< orphan*/  DMA_FROM_DEVICE ; 
- int FBQ_SIZE ; 
- int /*<<< orphan*/  IDT77252_BIT_INIT ; 
- int /*<<< orphan*/  IDT77252_PRV_PADDR (struct sk_buff*) ; 
- int /*<<< orphan*/  SAR_REG_CFG ; 
- int /*<<< orphan*/  atm_dev_deregister (scalar_t__) ; 
- int /*<<< orphan*/  clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  deinit_rsq (struct idt77252_dev*) ; 
- int /*<<< orphan*/  deinit_tsq (struct idt77252_dev*) ; 
- int /*<<< orphan*/  dev_kfree_skb (struct sk_buff*) ; 
- int /*<<< orphan*/  dma_free_coherent (int /*<<< orphan*/ *,int,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dma_unmap_single (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_irq (int /*<<< orphan*/ ,struct idt77252_dev*) ; 
- int /*<<< orphan*/  iounmap (scalar_t__) ; 
- int /*<<< orphan*/  printk (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ skb_end_pointer (struct sk_buff*) ; 
- int /*<<< orphan*/  test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  writel (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int DIPRINTK (char*,...) ;
+ int DMA_FROM_DEVICE ;
+ int FBQ_SIZE ;
+ int IDT77252_BIT_INIT ;
+ int IDT77252_PRV_PADDR (struct sk_buff*) ;
+ int SAR_REG_CFG ;
+ int atm_dev_deregister (scalar_t__) ;
+ int clear_bit (int ,int *) ;
+ int deinit_rsq (struct idt77252_dev*) ;
+ int deinit_tsq (struct idt77252_dev*) ;
+ int dev_kfree_skb (struct sk_buff*) ;
+ int dma_free_coherent (int *,int,scalar_t__,int ) ;
+ int dma_unmap_single (int *,int ,scalar_t__,int ) ;
+ int free_irq (int ,struct idt77252_dev*) ;
+ int iounmap (scalar_t__) ;
+ int printk (char*,int ) ;
+ scalar_t__ skb_end_pointer (struct sk_buff*) ;
+ int test_bit (int ,int *) ;
+ int vfree (int ) ;
+ int writel (int ,int ) ;
 
 __attribute__((used)) static void
 deinit_card(struct idt77252_dev *card)
 {
-	struct sk_buff *skb;
-	int i, j;
+ struct sk_buff *skb;
+ int i, j;
 
-	if (!test_bit(IDT77252_BIT_INIT, &card->flags)) {
-		printk("%s: SAR not yet initialized.\n", card->name);
-		return;
-	}
-	DIPRINTK("idt77252: deinitialize card %u\n", card->index);
+ if (!test_bit(IDT77252_BIT_INIT, &card->flags)) {
+  printk("%s: SAR not yet initialized.\n", card->name);
+  return;
+ }
+ DIPRINTK("idt77252: deinitialize card %u\n", card->index);
 
-	writel(0, SAR_REG_CFG);
+ writel(0, SAR_REG_CFG);
 
-	if (card->atmdev)
-		atm_dev_deregister(card->atmdev);
+ if (card->atmdev)
+  atm_dev_deregister(card->atmdev);
 
-	for (i = 0; i < 4; i++) {
-		for (j = 0; j < FBQ_SIZE; j++) {
-			skb = card->sbpool[i].skb[j];
-			if (skb) {
-				dma_unmap_single(&card->pcidev->dev,
-						 IDT77252_PRV_PADDR(skb),
-						 (skb_end_pointer(skb) -
-						  skb->data),
-						 DMA_FROM_DEVICE);
-				card->sbpool[i].skb[j] = NULL;
-				dev_kfree_skb(skb);
-			}
-		}
-	}
+ for (i = 0; i < 4; i++) {
+  for (j = 0; j < FBQ_SIZE; j++) {
+   skb = card->sbpool[i].skb[j];
+   if (skb) {
+    dma_unmap_single(&card->pcidev->dev,
+       IDT77252_PRV_PADDR(skb),
+       (skb_end_pointer(skb) -
+        skb->data),
+       DMA_FROM_DEVICE);
+    card->sbpool[i].skb[j] = ((void*)0);
+    dev_kfree_skb(skb);
+   }
+  }
+ }
 
-	vfree(card->soft_tst);
+ vfree(card->soft_tst);
 
-	vfree(card->scd2vc);
+ vfree(card->scd2vc);
 
-	vfree(card->vcs);
+ vfree(card->vcs);
 
-	if (card->raw_cell_hnd) {
-		dma_free_coherent(&card->pcidev->dev, 2 * sizeof(u32),
-				  card->raw_cell_hnd, card->raw_cell_paddr);
-	}
+ if (card->raw_cell_hnd) {
+  dma_free_coherent(&card->pcidev->dev, 2 * sizeof(u32),
+      card->raw_cell_hnd, card->raw_cell_paddr);
+ }
 
-	if (card->rsq.base) {
-		DIPRINTK("%s: Release RSQ ...\n", card->name);
-		deinit_rsq(card);
-	}
+ if (card->rsq.base) {
+  DIPRINTK("%s: Release RSQ ...\n", card->name);
+  deinit_rsq(card);
+ }
 
-	if (card->tsq.base) {
-		DIPRINTK("%s: Release TSQ ...\n", card->name);
-		deinit_tsq(card);
-	}
+ if (card->tsq.base) {
+  DIPRINTK("%s: Release TSQ ...\n", card->name);
+  deinit_tsq(card);
+ }
 
-	DIPRINTK("idt77252: Release IRQ.\n");
-	free_irq(card->pcidev->irq, card);
+ DIPRINTK("idt77252: Release IRQ.\n");
+ free_irq(card->pcidev->irq, card);
 
-	for (i = 0; i < 4; i++) {
-		if (card->fbq[i])
-			iounmap(card->fbq[i]);
-	}
+ for (i = 0; i < 4; i++) {
+  if (card->fbq[i])
+   iounmap(card->fbq[i]);
+ }
 
-	if (card->membase)
-		iounmap(card->membase);
+ if (card->membase)
+  iounmap(card->membase);
 
-	clear_bit(IDT77252_BIT_INIT, &card->flags);
-	DIPRINTK("%s: Card deinitialized.\n", card->name);
+ clear_bit(IDT77252_BIT_INIT, &card->flags);
+ DIPRINTK("%s: Card deinitialized.\n", card->name);
 }

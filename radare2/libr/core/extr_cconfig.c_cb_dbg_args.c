@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * value; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * value; } ;
 struct TYPE_5__ {TYPE_1__* io; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * args; } ;
-typedef  TYPE_2__ RCore ;
-typedef  TYPE_3__ RConfigNode ;
+struct TYPE_4__ {int * args; } ;
+typedef TYPE_2__ RCore ;
+typedef TYPE_3__ RConfigNode ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * strdup (int /*<<< orphan*/ *) ; 
+
+ int * strdup (int *) ;
 
 __attribute__((used)) static bool cb_dbg_args(void *user, void *data) {
-	RCore *core = (RCore *)user;
-	RConfigNode *node = (RConfigNode*) data;
-	if (!node || !*(node->value)) {
-		core->io->args = NULL;
-	} else {
-		core->io->args = strdup (node->value);
-	}
-	return true;
+ RCore *core = (RCore *)user;
+ RConfigNode *node = (RConfigNode*) data;
+ if (!node || !*(node->value)) {
+  core->io->args = ((void*)0);
+ } else {
+  core->io->args = strdup (node->value);
+ }
+ return 1;
 }

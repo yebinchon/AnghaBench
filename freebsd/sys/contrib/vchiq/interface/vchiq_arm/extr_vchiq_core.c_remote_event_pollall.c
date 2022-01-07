@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* local; } ;
-typedef  TYPE_2__ VCHIQ_STATE_T ;
-struct TYPE_4__ {int /*<<< orphan*/  recycle; int /*<<< orphan*/  trigger; int /*<<< orphan*/  sync_release; int /*<<< orphan*/  sync_trigger; } ;
+typedef TYPE_2__ VCHIQ_STATE_T ;
+struct TYPE_4__ {int recycle; int trigger; int sync_release; int sync_trigger; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  remote_event_poll (int /*<<< orphan*/ *) ; 
+
+ int remote_event_poll (int *) ;
 
 void
 remote_event_pollall(VCHIQ_STATE_T *state)
 {
-	remote_event_poll(&state->local->sync_trigger);
-	remote_event_poll(&state->local->sync_release);
-	remote_event_poll(&state->local->trigger);
-	remote_event_poll(&state->local->recycle);
+ remote_event_poll(&state->local->sync_trigger);
+ remote_event_poll(&state->local->sync_release);
+ remote_event_poll(&state->local->trigger);
+ remote_event_poll(&state->local->recycle);
 }

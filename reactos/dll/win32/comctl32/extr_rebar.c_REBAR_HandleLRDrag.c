@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
 struct TYPE_22__ {scalar_t__ y; scalar_t__ x; } ;
 struct TYPE_19__ {scalar_t__ left; } ;
-struct TYPE_21__ {int /*<<< orphan*/  cxEffective; int /*<<< orphan*/  cx; TYPE_1__ rcBand; } ;
-struct TYPE_20__ {scalar_t__ iGrabbedBand; int dwStyle; scalar_t__ ihitoffset; int /*<<< orphan*/  uNumBands; } ;
-typedef  TYPE_2__ REBAR_INFO ;
-typedef  TYPE_3__ REBAR_BAND ;
-typedef  TYPE_4__ POINT ;
-typedef  scalar_t__ INT ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct TYPE_21__ {int cxEffective; int cx; TYPE_1__ rcBand; } ;
+struct TYPE_20__ {scalar_t__ iGrabbedBand; int dwStyle; scalar_t__ ihitoffset; int uNumBands; } ;
+typedef TYPE_2__ REBAR_INFO ;
+typedef TYPE_3__ REBAR_BAND ;
+typedef TYPE_4__ POINT ;
+typedef scalar_t__ INT ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int CCS_VERT ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  REBAR_CalcHorzBand (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REBAR_CalcVertBand (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_3__* REBAR_GetBand (TYPE_2__*,scalar_t__) ; 
- int /*<<< orphan*/  REBAR_MoveBandToRowOffset (TYPE_2__*,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REBAR_MoveChildWindows (TYPE_2__*,scalar_t__,scalar_t__) ; 
- scalar_t__ REBAR_PRE_GRIPPER ; 
- int /*<<< orphan*/  REBAR_SetRowRectsX (TYPE_2__*,scalar_t__,scalar_t__) ; 
- scalar_t__ REBAR_ShrinkBandsLTR (TYPE_2__*,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ REBAR_ShrinkBandsRTL (TYPE_2__*,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ get_row_begin_for_band (TYPE_2__*,scalar_t__) ; 
- scalar_t__ get_row_end_for_band (TYPE_2__*,scalar_t__) ; 
- scalar_t__ prev_visible (TYPE_2__*,scalar_t__) ; 
+
+ int CCS_VERT ;
+ int FALSE ;
+ int REBAR_CalcHorzBand (TYPE_2__*,int ,int ) ;
+ int REBAR_CalcVertBand (TYPE_2__*,int ,int ) ;
+ TYPE_3__* REBAR_GetBand (TYPE_2__*,scalar_t__) ;
+ int REBAR_MoveBandToRowOffset (TYPE_2__*,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int ) ;
+ int REBAR_MoveChildWindows (TYPE_2__*,scalar_t__,scalar_t__) ;
+ scalar_t__ REBAR_PRE_GRIPPER ;
+ int REBAR_SetRowRectsX (TYPE_2__*,scalar_t__,scalar_t__) ;
+ scalar_t__ REBAR_ShrinkBandsLTR (TYPE_2__*,scalar_t__,scalar_t__,scalar_t__,int ) ;
+ scalar_t__ REBAR_ShrinkBandsRTL (TYPE_2__*,scalar_t__,scalar_t__,scalar_t__,int ) ;
+ int TRUE ;
+ scalar_t__ get_row_begin_for_band (TYPE_2__*,scalar_t__) ;
+ scalar_t__ get_row_end_for_band (TYPE_2__*,scalar_t__) ;
+ scalar_t__ prev_visible (TYPE_2__*,scalar_t__) ;
 
 __attribute__((used)) static void
 REBAR_HandleLRDrag (REBAR_INFO *infoPtr, const POINT *ptsmove)
-     /* Function:  This will implement the functionality of a     */
-     /*  Gripper drag within a row. It will not implement "out-   */
-     /*  of-row" drags. (They are detected and handled in         */
-     /*  REBAR_MouseMove.)                                        */
+
+
+
+
 {
     REBAR_BAND *hitBand;
     INT iHitBand, iRowBegin, iRowEnd;
@@ -62,7 +62,7 @@ REBAR_HandleLRDrag (REBAR_INFO *infoPtr, const POINT *ptsmove)
     movement = (infoPtr->dwStyle&CCS_VERT ? ptsmove->y : ptsmove->x)
                     - (xBand + REBAR_PRE_GRIPPER - infoPtr->ihitoffset);
 
-    /* Dragging the first band in a row cannot cause shrinking */
+
     if(iHitBand != iRowBegin)
     {
         if (movement < 0) {
@@ -94,8 +94,8 @@ REBAR_HandleLRDrag (REBAR_INFO *infoPtr, const POINT *ptsmove)
 
     if(!shrunkBands)
     {
-        /* It was not possible to move the band by shrinking bands.
-         * Try relocating the band instead. */
+
+
         REBAR_MoveBandToRowOffset(infoPtr, iHitBand, iRowBegin,
             iRowEnd, xBand + movement, TRUE);
     }

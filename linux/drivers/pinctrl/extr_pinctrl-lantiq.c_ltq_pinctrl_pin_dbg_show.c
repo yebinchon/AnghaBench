@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct seq_file {int dummy; } ;
-struct pinctrl_dev {int /*<<< orphan*/  dev; } ;
+struct pinctrl_dev {int dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dev_name (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seq_printf (struct seq_file*,char*,int /*<<< orphan*/ ) ; 
+
+ int dev_name (int ) ;
+ int seq_printf (struct seq_file*,char*,int ) ;
 
 __attribute__((used)) static void ltq_pinctrl_pin_dbg_show(struct pinctrl_dev *pctldev,
-					struct seq_file *s,
-					unsigned offset)
+     struct seq_file *s,
+     unsigned offset)
 {
-	seq_printf(s, " %s", dev_name(pctldev->dev));
+ seq_printf(s, " %s", dev_name(pctldev->dev));
 }

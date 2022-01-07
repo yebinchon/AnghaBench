@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ge25519_p3 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _crypto_scalarmult_ed25519_clamp (unsigned char*) ; 
- scalar_t__ _crypto_scalarmult_ed25519_is_inf (unsigned char*) ; 
- scalar_t__ ge25519_frombytes (int /*<<< orphan*/ *,unsigned char const*) ; 
- scalar_t__ ge25519_has_small_order (unsigned char const*) ; 
- scalar_t__ ge25519_is_canonical (unsigned char const*) ; 
- scalar_t__ ge25519_is_on_main_subgroup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ge25519_p3_tobytes (unsigned char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ge25519_scalarmult (int /*<<< orphan*/ *,unsigned char*,int /*<<< orphan*/ *) ; 
- scalar_t__ sodium_is_zero (unsigned char const*,int) ; 
+
+
+
+typedef int ge25519_p3 ;
+
+
+ int _crypto_scalarmult_ed25519_clamp (unsigned char*) ;
+ scalar_t__ _crypto_scalarmult_ed25519_is_inf (unsigned char*) ;
+ scalar_t__ ge25519_frombytes (int *,unsigned char const*) ;
+ scalar_t__ ge25519_has_small_order (unsigned char const*) ;
+ scalar_t__ ge25519_is_canonical (unsigned char const*) ;
+ scalar_t__ ge25519_is_on_main_subgroup (int *) ;
+ int ge25519_p3_tobytes (unsigned char*,int *) ;
+ int ge25519_scalarmult (int *,unsigned char*,int *) ;
+ scalar_t__ sodium_is_zero (unsigned char const*,int) ;
 
 __attribute__((used)) static int
 _crypto_scalarmult_ed25519(unsigned char *q, const unsigned char *n,
                            const unsigned char *p, const int clamp)
 {
     unsigned char *t = q;
-    ge25519_p3     Q;
-    ge25519_p3     P;
-    unsigned int   i;
+    ge25519_p3 Q;
+    ge25519_p3 P;
+    unsigned int i;
 
     if (ge25519_is_canonical(p) == 0 || ge25519_has_small_order(p) != 0 ||
         ge25519_frombytes(&P, p) != 0 || ge25519_is_on_main_subgroup(&P) == 0) {

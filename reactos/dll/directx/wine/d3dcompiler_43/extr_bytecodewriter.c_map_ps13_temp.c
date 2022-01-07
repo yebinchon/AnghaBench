@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct shader_reg {int regnum; } ;
 struct bc_writer {int dummy; } ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DSPR_TEMP ; 
- int /*<<< orphan*/  D3DSPR_TEXTURE ; 
- int T0_REG ; 
- int T1_REG ; 
- int T2_REG ; 
- int T3_REG ; 
- int /*<<< orphan*/  d3dsp_register (int /*<<< orphan*/ ,int) ; 
+
+ int D3DSPR_TEMP ;
+ int D3DSPR_TEXTURE ;
+ int T0_REG ;
+ int T1_REG ;
+ int T2_REG ;
+ int T3_REG ;
+ int d3dsp_register (int ,int) ;
 
 __attribute__((used)) static DWORD map_ps13_temp(struct bc_writer *This, const struct shader_reg *reg) {
     if(reg->regnum == T0_REG) {

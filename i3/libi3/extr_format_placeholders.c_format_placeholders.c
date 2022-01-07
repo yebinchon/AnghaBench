@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* name; char* value; } ;
-typedef  TYPE_1__ placeholder_t ;
+typedef TYPE_1__ placeholder_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CS_STARTS_WITH (char*,char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
- char* sstrdup (char*) ; 
- int strlen (char*) ; 
+
+ int CS_STARTS_WITH (char*,char*) ;
+ int sprintf (char*,char*,char*) ;
+ char* sstrdup (char*) ;
+ int strlen (char*) ;
 
 char *format_placeholders(char *format, placeholder_t *placeholders, int num) {
-    if (format == NULL)
-        return NULL;
+    if (format == ((void*)0))
+        return ((void*)0);
 
-    /* We have to first iterate over the string to see how much buffer space
-     * we need to allocate. */
+
+
     int buffer_len = strlen(format) + 1;
     for (char *walk = format; *walk != '\0'; walk++) {
         for (int i = 0; i < num; i++) {
@@ -38,7 +38,7 @@ char *format_placeholders(char *format, placeholder_t *placeholders, int num) {
         }
     }
 
-    /* Now we can parse the format string. */
+
     char buffer[buffer_len];
     char *outwalk = buffer;
     for (char *walk = format; *walk != '\0'; walk++) {
@@ -47,13 +47,13 @@ char *format_placeholders(char *format, placeholder_t *placeholders, int num) {
             continue;
         }
 
-        bool matched = false;
+        bool matched = 0;
         for (int i = 0; i < num; i++) {
             if (!CS_STARTS_WITH(walk, placeholders[i].name)) {
                 continue;
             }
 
-            matched = true;
+            matched = 1;
             outwalk += sprintf(outwalk, "%s", placeholders[i].value);
             walk += strlen(placeholders[i].name) - 1;
             break;

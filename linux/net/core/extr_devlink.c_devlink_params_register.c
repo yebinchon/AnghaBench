@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct devlink_param {int dummy; } ;
-struct devlink {int /*<<< orphan*/  param_list; } ;
+struct devlink {int param_list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEVLINK_CMD_PARAM_DEL ; 
- int /*<<< orphan*/  DEVLINK_CMD_PARAM_NEW ; 
- int __devlink_params_register (struct devlink*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,struct devlink_param const*,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int DEVLINK_CMD_PARAM_DEL ;
+ int DEVLINK_CMD_PARAM_NEW ;
+ int __devlink_params_register (struct devlink*,int ,int *,struct devlink_param const*,size_t,int ,int ) ;
 
 int devlink_params_register(struct devlink *devlink,
-			    const struct devlink_param *params,
-			    size_t params_count)
+       const struct devlink_param *params,
+       size_t params_count)
 {
-	return __devlink_params_register(devlink, 0, &devlink->param_list,
-					 params, params_count,
-					 DEVLINK_CMD_PARAM_NEW,
-					 DEVLINK_CMD_PARAM_DEL);
+ return __devlink_params_register(devlink, 0, &devlink->param_list,
+      params, params_count,
+      DEVLINK_CMD_PARAM_NEW,
+      DEVLINK_CMD_PARAM_DEL);
 }

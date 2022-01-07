@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int index; int batch; int /*<<< orphan*/  c; int /*<<< orphan*/  h; int /*<<< orphan*/  w; } ;
-typedef  TYPE_1__ size_params ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int index; int batch; int c; int h; int w; } ;
+typedef TYPE_1__ size_params ;
 struct TYPE_9__ {TYPE_3__* layers; } ;
-typedef  TYPE_2__ network ;
-typedef  int /*<<< orphan*/  list ;
-struct TYPE_10__ {void* beta; void* alpha; int /*<<< orphan*/  activation; int /*<<< orphan*/  out_c; int /*<<< orphan*/  out_h; int /*<<< orphan*/  out_w; } ;
-typedef  TYPE_3__ layer ;
-typedef  int /*<<< orphan*/  ACTIVATION ;
+typedef TYPE_2__ network ;
+typedef int list ;
+struct TYPE_10__ {void* beta; void* alpha; int activation; int out_c; int out_h; int out_w; } ;
+typedef TYPE_3__ layer ;
+typedef int ACTIVATION ;
 
-/* Variables and functions */
- int atoi (char*) ; 
- int /*<<< orphan*/  get_activation (char*) ; 
- TYPE_3__ make_shortcut_layer (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* option_find (int /*<<< orphan*/ *,char*) ; 
- void* option_find_float_quiet (int /*<<< orphan*/ *,char*,int) ; 
- char* option_find_str (int /*<<< orphan*/ *,char*,char*) ; 
+
+ int atoi (char*) ;
+ int get_activation (char*) ;
+ TYPE_3__ make_shortcut_layer (int,int,int ,int ,int ,int ,int ,int ) ;
+ char* option_find (int *,char*) ;
+ void* option_find_float_quiet (int *,char*,int) ;
+ char* option_find_str (int *,char*,char*) ;
 
 layer parse_shortcut(list *options, size_params params, network *net)
 {

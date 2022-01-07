@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_6__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_6__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_4__* monitor; } ;
-typedef  TYPE_2__ _GLFWwindow ;
-struct TYPE_7__ {int /*<<< orphan*/  mouseTrailSize; int /*<<< orphan*/  acquiredMonitorCount; } ;
+typedef TYPE_2__ _GLFWwindow ;
+struct TYPE_7__ {int mouseTrailSize; int acquiredMonitorCount; } ;
 struct TYPE_10__ {TYPE_1__ win32; } ;
 struct TYPE_9__ {TYPE_2__* window; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ES_CONTINUOUS ; 
- scalar_t__ IsWindowsXPOrGreater () ; 
- int /*<<< orphan*/  SPI_SETMOUSETRAILS ; 
- int /*<<< orphan*/  SetThreadExecutionState (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SystemParametersInfo (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_6__ _glfw ; 
- int /*<<< orphan*/  _glfwInputMonitorWindow (TYPE_4__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _glfwRestoreVideoModeWin32 (TYPE_4__*) ; 
+
+ int ES_CONTINUOUS ;
+ scalar_t__ IsWindowsXPOrGreater () ;
+ int SPI_SETMOUSETRAILS ;
+ int SetThreadExecutionState (int ) ;
+ int SystemParametersInfo (int ,int ,int ,int ) ;
+ TYPE_6__ _glfw ;
+ int _glfwInputMonitorWindow (TYPE_4__*,int *) ;
+ int _glfwRestoreVideoModeWin32 (TYPE_4__*) ;
 
 __attribute__((used)) static void releaseMonitor(_GLFWwindow* window)
 {
@@ -40,11 +40,11 @@ __attribute__((used)) static void releaseMonitor(_GLFWwindow* window)
     {
         SetThreadExecutionState(ES_CONTINUOUS);
 
-        // HACK: Restore mouse trail length saved in acquireMonitor
+
         if (IsWindowsXPOrGreater())
             SystemParametersInfo(SPI_SETMOUSETRAILS, _glfw.win32.mouseTrailSize, 0, 0);
     }
 
-    _glfwInputMonitorWindow(window->monitor, NULL);
+    _glfwInputMonitorWindow(window->monitor, ((void*)0));
     _glfwRestoreVideoModeWin32(window->monitor);
 }

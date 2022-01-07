@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509 ;
-struct TYPE_3__ {int /*<<< orphan*/  dlen; int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SSL_ASSERT2 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_DEBUG (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  SSL_PKEY_ERROR_LEVEL ; 
- int X509_METHOD_CALL (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * X509_new () ; 
- int /*<<< orphan*/  load ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int X509 ;
+struct TYPE_3__ {int dlen; int data; } ;
+typedef TYPE_1__ BIO ;
+
+
+ int SSL_ASSERT2 (int ) ;
+ int SSL_DEBUG (int ,char*,...) ;
+ int SSL_PKEY_ERROR_LEVEL ;
+ int X509_METHOD_CALL (int ,int *,int ,int ) ;
+ int X509_free (int *) ;
+ int * X509_new () ;
+ int load ;
 
 X509 * PEM_read_bio_X509(BIO *bp, X509 **cert, void *cb, void *u) {
     int m = 0;
@@ -56,5 +56,5 @@ failed:
         X509_free(x);
     }
 
-    return NULL;
+    return ((void*)0);
 }

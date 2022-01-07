@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  if_root; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int if_root; } ;
 struct xfs_ifork {scalar_t__ if_bytes; int if_height; TYPE_1__ if_u1; } ;
 struct xfs_iext_rec {int dummy; } ;
-struct xfs_iext_cursor {scalar_t__ pos; int /*<<< orphan*/  leaf; } ;
+struct xfs_iext_cursor {scalar_t__ pos; int leaf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  KM_NOFS ; 
- int /*<<< orphan*/  kmem_zalloc (int,int /*<<< orphan*/ ) ; 
+
+ int ASSERT (int) ;
+ int KM_NOFS ;
+ int kmem_zalloc (int,int ) ;
 
 __attribute__((used)) static void
 xfs_iext_alloc_root(
-	struct xfs_ifork	*ifp,
-	struct xfs_iext_cursor	*cur)
+ struct xfs_ifork *ifp,
+ struct xfs_iext_cursor *cur)
 {
-	ASSERT(ifp->if_bytes == 0);
+ ASSERT(ifp->if_bytes == 0);
 
-	ifp->if_u1.if_root = kmem_zalloc(sizeof(struct xfs_iext_rec), KM_NOFS);
-	ifp->if_height = 1;
+ ifp->if_u1.if_root = kmem_zalloc(sizeof(struct xfs_iext_rec), KM_NOFS);
+ ifp->if_height = 1;
 
-	/* now that we have a node step into it */
-	cur->leaf = ifp->if_u1.if_root;
-	cur->pos = 0;
+
+ cur->leaf = ifp->if_u1.if_root;
+ cur->pos = 0;
 }

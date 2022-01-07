@@ -1,141 +1,141 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_5__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  t ;
-typedef  int /*<<< orphan*/  args ;
-typedef  scalar_t__ UINT ;
-struct TYPE_20__ {int /*<<< orphan*/  (* Write ) (TYPE_5__*,int /*<<< orphan*/ ) ;} ;
-struct TYPE_19__ {char* member_0; int /*<<< orphan*/ * member_4; int /*<<< orphan*/ * member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; } ;
-struct TYPE_18__ {int /*<<< orphan*/  Rpc; int /*<<< orphan*/ * HubName; } ;
+
+
+typedef struct TYPE_20__ TYPE_5__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef int t ;
+typedef int args ;
+typedef scalar_t__ UINT ;
+struct TYPE_20__ {int (* Write ) (TYPE_5__*,int ) ;} ;
+struct TYPE_19__ {char* member_0; int * member_4; int * member_3; int member_2; int member_1; } ;
+struct TYPE_18__ {int Rpc; int * HubName; } ;
 struct TYPE_16__ {scalar_t__ PacketLogSwitchType; scalar_t__ SecurityLogSwitchType; } ;
-struct TYPE_17__ {TYPE_1__ LogSetting; int /*<<< orphan*/  HubName; } ;
-typedef  TYPE_2__ RPC_HUB_LOG ;
-typedef  TYPE_3__ PS ;
-typedef  TYPE_4__ PARAM ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  TYPE_5__ CONSOLE ;
+struct TYPE_17__ {TYPE_1__ LogSetting; int HubName; } ;
+typedef TYPE_2__ RPC_HUB_LOG ;
+typedef TYPE_3__ PS ;
+typedef TYPE_4__ PARAM ;
+typedef int LIST ;
+typedef TYPE_5__ CONSOLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CmdEvalNotEmpty ; 
- int /*<<< orphan*/  CmdPrintError (TYPE_5__*,scalar_t__) ; 
- int /*<<< orphan*/  CmdPrompt ; 
- scalar_t__ ERR_INVALID_PARAMETER ; 
- scalar_t__ ERR_NO_ERROR ; 
- int /*<<< orphan*/  FreeParamValueList (int /*<<< orphan*/ *) ; 
- char* GetParamStr (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ INFINITE ; 
- int /*<<< orphan*/ * ParseCommandList (TYPE_5__*,char*,int /*<<< orphan*/ *,TYPE_4__*,int) ; 
- scalar_t__ ScGetHubLog (int /*<<< orphan*/ ,TYPE_2__*) ; 
- scalar_t__ ScSetHubLog (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int StartWith (char*,char*) ; 
- int /*<<< orphan*/  StrCpy (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- scalar_t__ StrToLogSwitchType (char*) ; 
- int /*<<< orphan*/  Zero (TYPE_2__*,int) ; 
- int /*<<< orphan*/  _UU (char*) ; 
- int /*<<< orphan*/  stub1 (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (TYPE_5__*,int /*<<< orphan*/ ) ; 
+
+ int * CmdEvalNotEmpty ;
+ int CmdPrintError (TYPE_5__*,scalar_t__) ;
+ int CmdPrompt ;
+ scalar_t__ ERR_INVALID_PARAMETER ;
+ scalar_t__ ERR_NO_ERROR ;
+ int FreeParamValueList (int *) ;
+ char* GetParamStr (int *,char*) ;
+ scalar_t__ INFINITE ;
+ int * ParseCommandList (TYPE_5__*,char*,int *,TYPE_4__*,int) ;
+ scalar_t__ ScGetHubLog (int ,TYPE_2__*) ;
+ scalar_t__ ScSetHubLog (int ,TYPE_2__*) ;
+ int StartWith (char*,char*) ;
+ int StrCpy (int ,int,int *) ;
+ scalar_t__ StrToLogSwitchType (char*) ;
+ int Zero (TYPE_2__*,int) ;
+ int _UU (char*) ;
+ int stub1 (TYPE_5__*,int ) ;
+ int stub2 (TYPE_5__*,int ) ;
+ int stub3 (TYPE_5__*,int ) ;
 
 UINT PsLogSwitchSet(CONSOLE *c, char *cmd_name, wchar_t *str, void *param)
 {
-	LIST *o;
-	PS *ps = (PS *)param;
-	UINT ret = 0;
-	RPC_HUB_LOG t;
-	bool packet_log = false;
-	char *tmp;
-	UINT new_switch_type = 0;
-	// Parameter list that can be specified
-	PARAM args[] =
-	{
-		{"[security|packet]", CmdPrompt, _UU("CMD_LogEnable_Prompt"), CmdEvalNotEmpty, NULL},
-		{"SWITCH", CmdPrompt, _UU("CMD_LogSwitchSet_Prompt"), NULL, NULL},
-	};
+ LIST *o;
+ PS *ps = (PS *)param;
+ UINT ret = 0;
+ RPC_HUB_LOG t;
+ bool packet_log = 0;
+ char *tmp;
+ UINT new_switch_type = 0;
 
-	// If virtual HUB is not selected, it's an error
-	if (ps->HubName == NULL)
-	{
-		c->Write(c, _UU("CMD_Hub_Not_Selected"));
-		return ERR_INVALID_PARAMETER;
-	}
+ PARAM args[] =
+ {
+  {"[security|packet]", CmdPrompt, _UU("CMD_LogEnable_Prompt"), CmdEvalNotEmpty, ((void*)0)},
+  {"SWITCH", CmdPrompt, _UU("CMD_LogSwitchSet_Prompt"), ((void*)0), ((void*)0)},
+ };
 
-	o = ParseCommandList(c, cmd_name, str, args, sizeof(args) / sizeof(args[0]));
-	if (o == NULL)
-	{
-		return ERR_INVALID_PARAMETER;
-	}
 
-	tmp = GetParamStr(o, "[security|packet]");
+ if (ps->HubName == ((void*)0))
+ {
+  c->Write(c, _UU("CMD_Hub_Not_Selected"));
+  return ERR_INVALID_PARAMETER;
+ }
 
-	if (StartWith(tmp, "p"))
-	{
-		packet_log = true;
-	}
-	else if (StartWith(tmp, "s") == false)
-	{
-		c->Write(c, _UU("CMD_LogEnable_Prompt_Error"));
-		FreeParamValueList(o);
-		return ERR_INVALID_PARAMETER;
-	}
-	
-	new_switch_type = StrToLogSwitchType(GetParamStr(o, "SWITCH"));
+ o = ParseCommandList(c, cmd_name, str, args, sizeof(args) / sizeof(args[0]));
+ if (o == ((void*)0))
+ {
+  return ERR_INVALID_PARAMETER;
+ }
 
-	if (new_switch_type == INFINITE)
-	{
-		c->Write(c, _UU("CMD_LogEnable_Prompt_Error"));
-		FreeParamValueList(o);
-		return ERR_INVALID_PARAMETER;
-	}
+ tmp = GetParamStr(o, "[security|packet]");
 
-	Zero(&t, sizeof(t));
+ if (StartWith(tmp, "p"))
+ {
+  packet_log = 1;
+ }
+ else if (StartWith(tmp, "s") == 0)
+ {
+  c->Write(c, _UU("CMD_LogEnable_Prompt_Error"));
+  FreeParamValueList(o);
+  return ERR_INVALID_PARAMETER;
+ }
 
-	StrCpy(t.HubName, sizeof(t.HubName), ps->HubName);
+ new_switch_type = StrToLogSwitchType(GetParamStr(o, "SWITCH"));
 
-	// RPC call
-	ret = ScGetHubLog(ps->Rpc, &t);
-	if (ret != ERR_NO_ERROR)
-	{
-		// An error has occured
-		CmdPrintError(c, ret);
-		FreeParamValueList(o);
-		return ret;
-	}
+ if (new_switch_type == INFINITE)
+ {
+  c->Write(c, _UU("CMD_LogEnable_Prompt_Error"));
+  FreeParamValueList(o);
+  return ERR_INVALID_PARAMETER;
+ }
 
-	if (packet_log == false)
-	{
-		t.LogSetting.SecurityLogSwitchType = new_switch_type;
-	}
-	else
-	{
-		t.LogSetting.PacketLogSwitchType = new_switch_type;
-	}
+ Zero(&t, sizeof(t));
 
-	// RPC call
-	ret = ScSetHubLog(ps->Rpc, &t);
-	if (ret != ERR_NO_ERROR)
-	{
-		// An error has occured
-		CmdPrintError(c, ret);
-		FreeParamValueList(o);
-		return ret;
-	}
+ StrCpy(t.HubName, sizeof(t.HubName), ps->HubName);
 
-	FreeParamValueList(o);
 
-	return 0;
+ ret = ScGetHubLog(ps->Rpc, &t);
+ if (ret != ERR_NO_ERROR)
+ {
+
+  CmdPrintError(c, ret);
+  FreeParamValueList(o);
+  return ret;
+ }
+
+ if (packet_log == 0)
+ {
+  t.LogSetting.SecurityLogSwitchType = new_switch_type;
+ }
+ else
+ {
+  t.LogSetting.PacketLogSwitchType = new_switch_type;
+ }
+
+
+ ret = ScSetHubLog(ps->Rpc, &t);
+ if (ret != ERR_NO_ERROR)
+ {
+
+  CmdPrintError(c, ret);
+  FreeParamValueList(o);
+  return ret;
+ }
+
+ FreeParamValueList(o);
+
+ return 0;
 }

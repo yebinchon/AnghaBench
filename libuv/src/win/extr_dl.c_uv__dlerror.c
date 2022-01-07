@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int va_list ;
 struct TYPE_4__ {char* errmsg; } ;
-typedef  TYPE_1__ uv_lib_t ;
-typedef  int /*<<< orphan*/  LPSTR ;
-typedef  scalar_t__ DWORD_PTR ;
-typedef  scalar_t__ DWORD ;
+typedef TYPE_1__ uv_lib_t ;
+typedef int LPSTR ;
+typedef scalar_t__ DWORD_PTR ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_BAD_EXE_FORMAT ; 
- scalar_t__ ERROR_MUI_FILE_NOT_FOUND ; 
- scalar_t__ ERROR_RESOURCE_TYPE_NOT_FOUND ; 
- int FORMAT_MESSAGE_ALLOCATE_BUFFER ; 
- int FORMAT_MESSAGE_ARGUMENT_ARRAY ; 
- int FORMAT_MESSAGE_FROM_STRING ; 
- int FORMAT_MESSAGE_FROM_SYSTEM ; 
- int FORMAT_MESSAGE_IGNORE_INSERTS ; 
- scalar_t__ FormatMessageA (int,char*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  LANG_ENGLISH ; 
- int /*<<< orphan*/  LocalFree (char*) ; 
- int /*<<< orphan*/  MAKELANGID (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SUBLANG_ENGLISH_US ; 
- scalar_t__ strstr (char*,char*) ; 
- int /*<<< orphan*/  uv__format_fallback_error (TYPE_1__*,scalar_t__) ; 
+
+ scalar_t__ ERROR_BAD_EXE_FORMAT ;
+ scalar_t__ ERROR_MUI_FILE_NOT_FOUND ;
+ scalar_t__ ERROR_RESOURCE_TYPE_NOT_FOUND ;
+ int FORMAT_MESSAGE_ALLOCATE_BUFFER ;
+ int FORMAT_MESSAGE_ARGUMENT_ARRAY ;
+ int FORMAT_MESSAGE_FROM_STRING ;
+ int FORMAT_MESSAGE_FROM_SYSTEM ;
+ int FORMAT_MESSAGE_IGNORE_INSERTS ;
+ scalar_t__ FormatMessageA (int,char*,scalar_t__,int ,int ,int ,int *) ;
+ scalar_t__ GetLastError () ;
+ int LANG_ENGLISH ;
+ int LocalFree (char*) ;
+ int MAKELANGID (int ,int ) ;
+ int SUBLANG_ENGLISH_US ;
+ scalar_t__ strstr (char*,char*) ;
+ int uv__format_fallback_error (TYPE_1__*,scalar_t__) ;
 
 __attribute__((used)) static int uv__dlerror(uv_lib_t* lib, const char* filename, DWORD errorno) {
   DWORD_PTR arg;
@@ -43,7 +43,7 @@ __attribute__((used)) static int uv__dlerror(uv_lib_t* lib, const char* filename
 
   if (lib->errmsg) {
     LocalFree(lib->errmsg);
-    lib->errmsg = NULL;
+    lib->errmsg = ((void*)0);
   }
 
   if (errorno == 0)
@@ -51,21 +51,21 @@ __attribute__((used)) static int uv__dlerror(uv_lib_t* lib, const char* filename
 
   res = FormatMessageA(FORMAT_MESSAGE_ALLOCATE_BUFFER |
                        FORMAT_MESSAGE_FROM_SYSTEM |
-                       FORMAT_MESSAGE_IGNORE_INSERTS, NULL, errorno,
+                       FORMAT_MESSAGE_IGNORE_INSERTS, ((void*)0), errorno,
                        MAKELANGID(LANG_ENGLISH, SUBLANG_ENGLISH_US),
-                       (LPSTR) &lib->errmsg, 0, NULL);
+                       (LPSTR) &lib->errmsg, 0, ((void*)0));
 
   if (!res && (GetLastError() == ERROR_MUI_FILE_NOT_FOUND ||
                GetLastError() == ERROR_RESOURCE_TYPE_NOT_FOUND)) {
     res = FormatMessageA(FORMAT_MESSAGE_ALLOCATE_BUFFER |
                          FORMAT_MESSAGE_FROM_SYSTEM |
-                         FORMAT_MESSAGE_IGNORE_INSERTS, NULL, errorno,
-                         0, (LPSTR) &lib->errmsg, 0, NULL);
+                         FORMAT_MESSAGE_IGNORE_INSERTS, ((void*)0), errorno,
+                         0, (LPSTR) &lib->errmsg, 0, ((void*)0));
   }
 
   if (res && errorno == ERROR_BAD_EXE_FORMAT && strstr(lib->errmsg, "%1")) {
     msg = lib->errmsg;
-    lib->errmsg = NULL;
+    lib->errmsg = ((void*)0);
     arg = (DWORD_PTR) filename;
     res = FormatMessageA(FORMAT_MESSAGE_ALLOCATE_BUFFER |
                          FORMAT_MESSAGE_ARGUMENT_ARRAY |

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  int16_t ;
-struct TYPE_8__ {size_t* sf_adaptive_gain; int /*<<< orphan*/ * sf; int /*<<< orphan*/ * pitch_lag; } ;
-struct TYPE_9__ {int /*<<< orphan*/ ** working_buffer; int /*<<< orphan*/ * lpc_filter; int /*<<< orphan*/ * vector_buf; int /*<<< orphan*/  err_buf2; int /*<<< orphan*/  filter; int /*<<< orphan*/ * history; TYPE_1__ fparam; } ;
-typedef  TYPE_2__ DssSpContext ;
 
-/* Variables and functions */
- int SUBFRAMES ; 
- int /*<<< orphan*/  dss_sp_32to16bit (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * dss_sp_adaptive_gain ; 
- int /*<<< orphan*/  dss_sp_add_pulses (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dss_sp_convert_coeffs (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dss_sp_gen_exc (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dss_sp_sf_synthesis (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  dss_sp_shift_sq_sub (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dss_sp_unpack_coeffs (TYPE_2__*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  dss_sp_unpack_filter (TYPE_2__*) ; 
- int /*<<< orphan*/  dss_sp_update_buf (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dss_sp_update_state (TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int16_t ;
+struct TYPE_8__ {size_t* sf_adaptive_gain; int * sf; int * pitch_lag; } ;
+struct TYPE_9__ {int ** working_buffer; int * lpc_filter; int * vector_buf; int err_buf2; int filter; int * history; TYPE_1__ fparam; } ;
+typedef TYPE_2__ DssSpContext ;
+
+
+ int SUBFRAMES ;
+ int dss_sp_32to16bit (int *,int *,int) ;
+ int * dss_sp_adaptive_gain ;
+ int dss_sp_add_pulses (int *,int *) ;
+ int dss_sp_convert_coeffs (int *,int ) ;
+ int dss_sp_gen_exc (int *,int *,int ,int ) ;
+ int dss_sp_sf_synthesis (TYPE_2__*,int ,int *,int) ;
+ int dss_sp_shift_sq_sub (int ,int ,int *) ;
+ int dss_sp_unpack_coeffs (TYPE_2__*,int const*) ;
+ int dss_sp_unpack_filter (TYPE_2__*) ;
+ int dss_sp_update_buf (int *,int *) ;
+ int dss_sp_update_state (TYPE_2__*,int *) ;
 
 __attribute__((used)) static int dss_sp_decode_one_frame(DssSpContext *p,
                                    int16_t *abuf_dst, const uint8_t *abuf_src)

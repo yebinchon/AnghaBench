@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ WebPMuxError ;
-typedef  int /*<<< orphan*/  WebPMuxAnimParams ;
-typedef  int /*<<< orphan*/  WebPMux ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ WebPMuxError ;
+typedef int WebPMuxAnimParams ;
+typedef int WebPMux ;
 struct TYPE_4__ {scalar_t__ size; } ;
-typedef  TYPE_1__ WebPData ;
+typedef TYPE_1__ WebPData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_GOTO1 (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERROR_GOTO2 (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  End ; 
- int /*<<< orphan*/  ErrorString (scalar_t__) ; 
- scalar_t__ WEBP_MUX_OK ; 
- int /*<<< orphan*/  WebPMuxDelete (int /*<<< orphan*/ *) ; 
- scalar_t__ WebPMuxGetAnimationParams (int /*<<< orphan*/  const* const,int /*<<< orphan*/ *) ; 
- scalar_t__ WebPMuxGetChunk (int /*<<< orphan*/  const* const,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/ * WebPMuxNew () ; 
- scalar_t__ WebPMuxSetAnimationParams (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ WebPMuxSetChunk (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,int) ; 
- int /*<<< orphan*/ * kFourccList ; 
+
+ int ERROR_GOTO1 (char*,int ) ;
+ int ERROR_GOTO2 (char*,int ,int ) ;
+ int End ;
+ int ErrorString (scalar_t__) ;
+ scalar_t__ WEBP_MUX_OK ;
+ int WebPMuxDelete (int *) ;
+ scalar_t__ WebPMuxGetAnimationParams (int const* const,int *) ;
+ scalar_t__ WebPMuxGetChunk (int const* const,int ,TYPE_1__*) ;
+ int * WebPMuxNew () ;
+ scalar_t__ WebPMuxSetAnimationParams (int *,int *) ;
+ scalar_t__ WebPMuxSetChunk (int *,int ,TYPE_1__*,int) ;
+ int * kFourccList ;
 
 __attribute__((used)) static WebPMux* DuplicateMuxHeader(const WebPMux* const mux) {
   WebPMux* new_mux = WebPMuxNew();
@@ -38,7 +38,7 @@ __attribute__((used)) static WebPMux* DuplicateMuxHeader(const WebPMux* const mu
   int i;
   int ok = 1;
 
-  if (new_mux == NULL) return NULL;
+  if (new_mux == ((void*)0)) return ((void*)0);
 
   err = WebPMuxGetAnimationParams(mux, &p);
   if (err == WEBP_MUX_OK) {
@@ -48,7 +48,7 @@ __attribute__((used)) static WebPMux* DuplicateMuxHeader(const WebPMux* const mu
                   ErrorString(err), End);
     }
   } else {
-    /* it might not be an animation. Just keep moving. */
+
   }
 
   for (i = 1; i <= 3; ++i) {
@@ -65,7 +65,7 @@ __attribute__((used)) static WebPMux* DuplicateMuxHeader(const WebPMux* const mu
  End:
   if (!ok) {
     WebPMuxDelete(new_mux);
-    new_mux = NULL;
+    new_mux = ((void*)0);
   }
   return new_mux;
 }

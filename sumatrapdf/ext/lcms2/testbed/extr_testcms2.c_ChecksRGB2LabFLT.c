@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/  cmsHTRANSFORM ;
-typedef  int /*<<< orphan*/  cmsHPROFILE ;
-typedef  int cmsFloat32Number ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  FLOAT_PRECISSION ; 
- int /*<<< orphan*/  IsGoodVal (char*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TYPE_LabA_FLT ; 
- int /*<<< orphan*/  TYPE_RGBA_FLT ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsCreateLab4Profile (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsCreateTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  cmsCreate_sRGBProfile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDeleteTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDoTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int*,int) ; 
- int cmsFLAGS_NOCACHE ; 
- int cmsFLAGS_NOOPTIMIZE ; 
+
+
+
+typedef int cmsInt32Number ;
+typedef int cmsHTRANSFORM ;
+typedef int cmsHPROFILE ;
+typedef int cmsFloat32Number ;
+
+
+ int DbgThread () ;
+ int FLOAT_PRECISSION ;
+ int IsGoodVal (char*,int,int,int ) ;
+ int TYPE_LabA_FLT ;
+ int TYPE_RGBA_FLT ;
+ int cmsCloseProfile (int ,int ) ;
+ int cmsCreateLab4Profile (int ,int *) ;
+ int cmsCreateTransform (int ,int ,int ,int ,int ,int ,int) ;
+ int cmsCreate_sRGBProfile (int ) ;
+ int cmsDeleteTransform (int ,int ) ;
+ int cmsDoTransform (int ,int ,int*,int*,int) ;
+ int cmsFLAGS_NOCACHE ;
+ int cmsFLAGS_NOOPTIMIZE ;
 
 __attribute__((used)) static
 cmsInt32Number ChecksRGB2LabFLT(void)
 {
     cmsHPROFILE hSRGB = cmsCreate_sRGBProfile(DbgThread());
-    cmsHPROFILE hLab  = cmsCreateLab4Profile(DbgThread(), NULL);
+    cmsHPROFILE hLab = cmsCreateLab4Profile(DbgThread(), ((void*)0));
 
     cmsHTRANSFORM xform1 = cmsCreateTransform(DbgThread(), hSRGB, TYPE_RGBA_FLT, hLab, TYPE_LabA_FLT, 0, cmsFLAGS_NOCACHE|cmsFLAGS_NOOPTIMIZE);
     cmsHTRANSFORM xform2 = cmsCreateTransform(DbgThread(), hLab, TYPE_LabA_FLT, hSRGB, TYPE_RGBA_FLT, 0, cmsFLAGS_NOCACHE|cmsFLAGS_NOOPTIMIZE);
@@ -50,7 +50,7 @@ cmsInt32Number ChecksRGB2LabFLT(void)
         RGBA1[2] = i / 100.0F;
         RGBA1[3] = 0;
 
-        cmsDoTransform(DbgThread(), xform1, RGBA1, LabA,  1);
+        cmsDoTransform(DbgThread(), xform1, RGBA1, LabA, 1);
         cmsDoTransform(DbgThread(), xform2, LabA, RGBA2, 1);
 
         if (!IsGoodVal("Float RGB->RGB", RGBA1[0], RGBA2[0], FLOAT_PRECISSION) ||

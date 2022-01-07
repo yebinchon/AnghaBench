@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* br_build_path (char*,char*) ; 
- char* br_find_prefix (char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* strdup (char const*) ; 
+ char* br_build_path (char*,char*) ;
+ char* br_find_prefix (char const*) ;
+ int free (char*) ;
+ char* strdup (char const*) ;
 
 char *
 br_find_bin_dir (const char *default_bin_dir)
 {
-	char *prefix, *dir;
+ char *prefix, *dir;
 
-	prefix = br_find_prefix ((const char *) NULL);
-	if (prefix == (char *) NULL) {
-		/* BinReloc not initialized. */
-		if (default_bin_dir != (const char *) NULL)
-			return strdup (default_bin_dir);
-		else
-			return (char *) NULL;
-	}
+ prefix = br_find_prefix ((const char *) ((void*)0));
+ if (prefix == (char *) ((void*)0)) {
 
-	dir = br_build_path (prefix, "bin");
-	free (prefix);
-	return dir;
+  if (default_bin_dir != (const char *) ((void*)0))
+   return strdup (default_bin_dir);
+  else
+   return (char *) ((void*)0);
+ }
+
+ dir = br_build_path (prefix, "bin");
+ free (prefix);
+ return dir;
 }

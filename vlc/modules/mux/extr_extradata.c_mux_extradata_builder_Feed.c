@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_5__ {int /*<<< orphan*/  (* pf_feed ) (TYPE_2__*,int /*<<< orphan*/  const*,size_t) ;} ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_5__ {int (* pf_feed ) (TYPE_2__*,int const*,size_t) ;} ;
 struct TYPE_6__ {TYPE_1__ cb; } ;
-typedef  TYPE_2__ mux_extradata_builder_t ;
+typedef TYPE_2__ mux_extradata_builder_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (TYPE_2__*,int /*<<< orphan*/  const*,size_t) ; 
+
+ int stub1 (TYPE_2__*,int const*,size_t) ;
 
 void mux_extradata_builder_Feed(mux_extradata_builder_t *m,
                                 const uint8_t *p_data, size_t i_data)

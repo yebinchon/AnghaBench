@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct playlist_entry {size_t size; struct playlist_entry* entries; struct playlist_entry* default_core_name; struct playlist_entry* default_core_path; struct playlist_entry* conf_path; } ;
-typedef  struct playlist_entry playlist_t ;
+typedef struct playlist_entry playlist_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (struct playlist_entry*) ; 
- int /*<<< orphan*/  playlist_free_entry (struct playlist_entry*) ; 
+
+ int free (struct playlist_entry*) ;
+ int playlist_free_entry (struct playlist_entry*) ;
 
 void playlist_free(playlist_t *playlist)
 {
@@ -24,17 +24,17 @@ void playlist_free(playlist_t *playlist)
    if (!playlist)
       return;
 
-   if (playlist->conf_path != NULL)
+   if (playlist->conf_path != ((void*)0))
       free(playlist->conf_path);
-   playlist->conf_path = NULL;
+   playlist->conf_path = ((void*)0);
 
-   if (playlist->default_core_path != NULL)
+   if (playlist->default_core_path != ((void*)0))
       free(playlist->default_core_path);
-   playlist->default_core_path = NULL;
+   playlist->default_core_path = ((void*)0);
 
-   if (playlist->default_core_name != NULL)
+   if (playlist->default_core_name != ((void*)0))
       free(playlist->default_core_name);
-   playlist->default_core_name = NULL;
+   playlist->default_core_name = ((void*)0);
 
    for (i = 0; i < playlist->size; i++)
    {
@@ -45,7 +45,7 @@ void playlist_free(playlist_t *playlist)
    }
 
    free(playlist->entries);
-   playlist->entries = NULL;
+   playlist->entries = ((void*)0);
 
    free(playlist);
 }

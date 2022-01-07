@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uid_t ;
 
-/* Variables and functions */
- int EXIT_FAILURE ; 
- int EXIT_SUCCESS ; 
- int /*<<< orphan*/  LOG_DEBUG ; 
- int /*<<< orphan*/  log_error (char*) ; 
- int /*<<< orphan*/  log_error_errno (int,char*,...) ; 
- int /*<<< orphan*/  log_info (char*,int /*<<< orphan*/ ) ; 
- int parse_gid (char*,int /*<<< orphan*/ *) ; 
- int parse_uid (char*,int /*<<< orphan*/ *) ; 
- int path_patch_uid (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_setup_logging (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  yes_no (int) ; 
+
+
+
+typedef int uid_t ;
+
+
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int LOG_DEBUG ;
+ int log_error (char*) ;
+ int log_error_errno (int,char*,...) ;
+ int log_info (char*,int ) ;
+ int parse_gid (char*,int *) ;
+ int parse_uid (char*,int *) ;
+ int path_patch_uid (char*,int ,int ) ;
+ int test_setup_logging (int ) ;
+ int yes_no (int) ;
 
 int main(int argc, char *argv[]) {
         uid_t shift, range;

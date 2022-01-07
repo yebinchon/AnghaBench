@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
 struct TYPE_9__ {int x; int y; } ;
 struct TYPE_8__ {int nTotalCreated; scalar_t__ nActiveChildren; scalar_t__ idFirstChild; } ;
 struct TYPE_7__ {int bottom; int top; int right; int left; } ;
-typedef  TYPE_1__ RECT ;
-typedef  TYPE_2__ MDICLIENTINFO ;
-typedef  TYPE_3__* LPPOINT ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HWND ;
+typedef TYPE_1__ RECT ;
+typedef TYPE_2__ MDICLIENTINFO ;
+typedef TYPE_3__* LPPOINT ;
+typedef int INT ;
+typedef int HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetClientRect (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int GetSystemMetrics (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SM_CYCAPTION ; 
- int /*<<< orphan*/  SM_CYFRAME ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__) ; 
- TYPE_2__* get_client_info (int /*<<< orphan*/ ) ; 
+
+ int GetClientRect (int ,TYPE_1__*) ;
+ int GetSystemMetrics (int ) ;
+ int SM_CYCAPTION ;
+ int SM_CYFRAME ;
+ int TRACE (char*,scalar_t__) ;
+ TYPE_2__* get_client_info (int ) ;
 
 void MDI_CalcDefaultChildPos( HWND hwndClient, INT total, LPPOINT lpPos, INT delta, UINT *id )
 {
-    INT  nstagger;
+    INT nstagger;
     RECT rect;
     INT spacing = GetSystemMetrics(SM_CYCAPTION) + GetSystemMetrics(SM_CYFRAME) - 1;
 
-    if (total < 0) /* we are called from CreateWindow */
+    if (total < 0)
     {
         MDICLIENTINFO *ci = get_client_info(hwndClient);
-        total = ci ? ci->nTotalCreated : 0;                     // Do not portsync wine
-        *id = ci ? ci->idFirstChild + ci->nActiveChildren : 0;  // Do not portsync wine
+        total = ci ? ci->nTotalCreated : 0;
+        *id = ci ? ci->idFirstChild + ci->nActiveChildren : 0;
         TRACE("MDI child id %04x\n", *id);
     }
 
     GetClientRect( hwndClient, &rect );
     if( rect.bottom - rect.top - delta >= spacing )
-	rect.bottom -= delta;
+ rect.bottom -= delta;
 
     nstagger = (rect.bottom - rect.top)/(3 * spacing);
     lpPos[1].x = (rect.right - rect.left - nstagger * spacing);

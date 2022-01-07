@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- double* alloca (int) ; 
- int /*<<< orphan*/  memset (double*,int /*<<< orphan*/ ,int) ; 
+ double* alloca (int) ;
+ int memset (double*,int ,int) ;
 
 float vorbis_lpc_from_data(float *data,float *lpci,int n,int m){
   double *aut=alloca(sizeof(*aut)*(m+1));
@@ -22,17 +14,17 @@ float vorbis_lpc_from_data(float *data,float *lpci,int n,int m){
   double epsilon;
   int i,j;
 
-  /* autocorrelation, p+1 lag coefficients */
+
   j=m+1;
   while(j--){
-    double d=0; /* double needed for accumulator depth */
+    double d=0;
     for(i=j;i<n;i++)d+=(double)data[i]*data[i-j];
     aut[j]=d;
   }
 
-  /* Generate lpc coefficients from autocorr values */
 
-  /* set our noise floor to about -100dB */
+
+
   error=aut[0] * (1. + 1e-10);
   epsilon=1e-9*aut[0]+1e-10;
 
@@ -44,15 +36,15 @@ float vorbis_lpc_from_data(float *data,float *lpci,int n,int m){
       goto done;
     }
 
-    /* Sum up this iteration's reflection coefficient; note that in
-       Vorbis we don't save it.  If anyone wants to recycle this code
-       and needs reflection coefficients, save the results of 'r' from
-       each iteration. */
+
+
+
+
 
     for(j=0;j<i;j++)r-=lpc[j]*aut[i-j];
     r/=error;
 
-    /* Update LPC coefficients and total error */
+
 
     lpc[i]=r;
     for(j=0;j<i/2;j++){
@@ -69,7 +61,7 @@ float vorbis_lpc_from_data(float *data,float *lpci,int n,int m){
 
  done:
 
-  /* slightly damp the filter */
+
   {
     double g = .99;
     double damp = g;
@@ -81,8 +73,8 @@ float vorbis_lpc_from_data(float *data,float *lpci,int n,int m){
 
   for(j=0;j<m;j++)lpci[j]=(float)lpc[j];
 
-  /* we need the error value to know how big an impulse to hit the
-     filter with later */
+
+
 
   return error;
 }

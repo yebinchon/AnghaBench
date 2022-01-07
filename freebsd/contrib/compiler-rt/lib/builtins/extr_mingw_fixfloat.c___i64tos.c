@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  di_int ;
 
-/* Variables and functions */
- float __floatdisf (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int di_int ;
+
+
+ float __floatdisf (int ) ;
 
 float __i64tos(di_int a) { return __floatdisf(a); }

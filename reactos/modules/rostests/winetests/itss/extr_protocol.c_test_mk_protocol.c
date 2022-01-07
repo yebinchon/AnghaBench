@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IClassFactory ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_MkProtocol ; 
- scalar_t__ CoGetClassObject (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IClassFactory_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IClassFactory ; 
- int /*<<< orphan*/  MK_PROTOCOL ; 
- scalar_t__ REGDB_E_CLASSNOTREG ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  blank_url3 ; 
- int /*<<< orphan*/  blank_url7 ; 
- int /*<<< orphan*/  blank_url8 ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  cache_file ; 
- int /*<<< orphan*/  cache_file1 ; 
- int /*<<< orphan*/  cache_file2 ; 
- int /*<<< orphan*/  cache_file3 ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  test_protocol ; 
- int /*<<< orphan*/  test_protocol_url (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int IClassFactory ;
+typedef scalar_t__ HRESULT ;
+
+
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_MkProtocol ;
+ scalar_t__ CoGetClassObject (int *,int ,int *,int *,void**) ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int FALSE ;
+ int IClassFactory_Release (int *) ;
+ int IID_IClassFactory ;
+ int MK_PROTOCOL ;
+ scalar_t__ REGDB_E_CLASSNOTREG ;
+ scalar_t__ S_OK ;
+ int TRUE ;
+ int blank_url3 ;
+ int blank_url7 ;
+ int blank_url8 ;
+ scalar_t__ broken (int) ;
+ int cache_file ;
+ int cache_file1 ;
+ int cache_file2 ;
+ int cache_file3 ;
+ int ok (int,char*,scalar_t__) ;
+ int test_protocol ;
+ int test_protocol_url (int *,int ,int ) ;
 
 __attribute__((used)) static void test_mk_protocol(void)
 {
@@ -44,10 +44,10 @@ __attribute__((used)) static void test_mk_protocol(void)
 
     test_protocol = MK_PROTOCOL;
 
-    hres = CoGetClassObject(&CLSID_MkProtocol, CLSCTX_INPROC_SERVER, NULL, &IID_IClassFactory,
+    hres = CoGetClassObject(&CLSID_MkProtocol, CLSCTX_INPROC_SERVER, ((void*)0), &IID_IClassFactory,
                             (void**)&cf);
     ok(hres == S_OK ||
-       broken(hres == REGDB_E_CLASSNOTREG), /* Some W95 and NT4 */
+       broken(hres == REGDB_E_CLASSNOTREG),
        "CoGetClassObject failed: %08x\n", hres);
     if(FAILED(hres))
         return;

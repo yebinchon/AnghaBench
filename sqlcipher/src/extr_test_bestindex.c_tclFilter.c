@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {void* zErrMsg; } ;
-struct TYPE_8__ {TYPE_1__ base; int /*<<< orphan*/  db; int /*<<< orphan*/  pCmd; int /*<<< orphan*/ * interp; } ;
-typedef  TYPE_2__ tcl_vtab ;
-struct TYPE_9__ {int /*<<< orphan*/  pStmt; } ;
-typedef  TYPE_3__ tcl_cursor ;
+struct TYPE_8__ {TYPE_1__ base; int db; int pCmd; int * interp; } ;
+typedef TYPE_2__ tcl_vtab ;
+struct TYPE_9__ {int pStmt; } ;
+typedef TYPE_3__ tcl_cursor ;
 struct TYPE_10__ {scalar_t__ pVtab; } ;
-typedef  TYPE_4__ sqlite3_vtab_cursor ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  Tcl_Obj ;
-typedef  int /*<<< orphan*/  Tcl_Interp ;
+typedef TYPE_4__ sqlite3_vtab_cursor ;
+typedef int sqlite3_value ;
+typedef int Tcl_Obj ;
+typedef int Tcl_Interp ;
 
-/* Variables and functions */
- int SQLITE_ERROR ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  TCL_EVAL_GLOBAL ; 
- int TCL_OK ; 
- int /*<<< orphan*/  Tcl_DecrRefCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Tcl_DuplicateObj (int /*<<< orphan*/ ) ; 
- int Tcl_EvalObjEx (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * Tcl_GetObjResult (int /*<<< orphan*/ *) ; 
- char* Tcl_GetString (int /*<<< orphan*/ *) ; 
- char* Tcl_GetStringResult (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Tcl_IncrRefCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Tcl_ListObjAppendElement (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int Tcl_ListObjGetElements (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ***) ; 
- int /*<<< orphan*/ * Tcl_NewIntObj (int) ; 
- int /*<<< orphan*/ * Tcl_NewObj () ; 
- int /*<<< orphan*/ * Tcl_NewStringObj (char const*,int) ; 
- char* sqlite3_errmsg (int /*<<< orphan*/ ) ; 
- void* sqlite3_mprintf (char*,char const*) ; 
- int sqlite3_prepare_v2 (int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_stricmp (char*,char const*) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
- int tclNext (TYPE_4__*) ; 
+
+ int SQLITE_ERROR ;
+ int SQLITE_OK ;
+ int TCL_EVAL_GLOBAL ;
+ int TCL_OK ;
+ int Tcl_DecrRefCount (int *) ;
+ int * Tcl_DuplicateObj (int ) ;
+ int Tcl_EvalObjEx (int *,int *,int ) ;
+ int * Tcl_GetObjResult (int *) ;
+ char* Tcl_GetString (int *) ;
+ char* Tcl_GetStringResult (int *) ;
+ int Tcl_IncrRefCount (int *) ;
+ int Tcl_ListObjAppendElement (int *,int *,int *) ;
+ int Tcl_ListObjGetElements (int *,int *,int*,int ***) ;
+ int * Tcl_NewIntObj (int) ;
+ int * Tcl_NewObj () ;
+ int * Tcl_NewStringObj (char const*,int) ;
+ char* sqlite3_errmsg (int ) ;
+ void* sqlite3_mprintf (char*,char const*) ;
+ int sqlite3_prepare_v2 (int ,char const*,int,int *,int ) ;
+ scalar_t__ sqlite3_stricmp (char*,char const*) ;
+ scalar_t__ sqlite3_value_text (int *) ;
+ int tclNext (TYPE_4__*) ;
 
 __attribute__((used)) static int tclFilter(
-  sqlite3_vtab_cursor *pVtabCursor, 
+  sqlite3_vtab_cursor *pVtabCursor,
   int idxNum, const char *idxStr,
   int argc, sqlite3_value **argv
 ){
@@ -93,12 +93,12 @@ __attribute__((used)) static int tclFilter(
     rc = SQLITE_ERROR;
     pTab->base.zErrMsg = sqlite3_mprintf("%s", zErr);
   }else{
-    /* Analyze the scripts return value. The return value should be a tcl 
-    ** list object with an even number of elements. The first element of each
-    ** pair must be one of:
-    ** 
-    **   "sql"          (SQL statement to return data)
-    */
+
+
+
+
+
+
     Tcl_Obj *pRes = Tcl_GetObjResult(interp);
     Tcl_Obj **apElem = 0;
     int nElem;

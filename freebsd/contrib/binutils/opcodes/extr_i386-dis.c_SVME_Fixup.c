@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int AFLAG ; 
- int /*<<< orphan*/  OP_M (int,int) ; 
- int PREFIX_ADDR ; 
- int /*<<< orphan*/  address_mode ; 
- int /*<<< orphan*/  close_char ; 
- int* codep ; 
- int /*<<< orphan*/  mode_64bit ; 
- char** names16 ; 
- char const** names32 ; 
- char const* obuf ; 
- char* obufp ; 
- char** op_out ; 
- int /*<<< orphan*/  open_char ; 
- int prefixes ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- int strlen (char const*) ; 
- int two_source_ops ; 
- int used_prefixes ; 
+ int AFLAG ;
+ int OP_M (int,int) ;
+ int PREFIX_ADDR ;
+ int address_mode ;
+ int close_char ;
+ int* codep ;
+ int mode_64bit ;
+ char** names16 ;
+ char const** names32 ;
+ char const* obuf ;
+ char* obufp ;
+ char** op_out ;
+ int open_char ;
+ int prefixes ;
+ int strcpy (char*,char const*) ;
+ int strlen (char const*) ;
+ int two_source_ops ;
+ int used_prefixes ;
 
 __attribute__((used)) static void
 SVME_Fixup (int bytemode, int sizeflag)
@@ -67,9 +59,9 @@ SVME_Fixup (int bytemode, int sizeflag)
       OP_M (bytemode, sizeflag);
       return;
     }
-  /* Override "lidt".  */
+
   p = obuf + strlen (obuf) - 4;
-  /* We might have a suffix.  */
+
   if (*p == 'i')
     --p;
   strcpy (p, alt);
@@ -84,7 +76,7 @@ SVME_Fixup (int bytemode, int sizeflag)
     case 0xdf:
       strcpy (op_out[1], names32[1]);
       two_source_ops = 1;
-	  /* Fall through.  */
+
     case 0xd8:
     case 0xda:
     case 0xdb:

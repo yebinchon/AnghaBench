@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xmlwriter ;
+
+
+
+
+typedef int xmlwriter ;
 struct element {int len; scalar_t__* qname; } ;
-typedef  char WCHAR ;
+typedef char WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  strcatW (scalar_t__*,char const*) ; 
- int /*<<< orphan*/  strcpyW (scalar_t__*,char const*) ; 
- int strlenW (char const*) ; 
- void* writer_alloc (int /*<<< orphan*/ *,int) ; 
+
+ int strcatW (scalar_t__*,char const*) ;
+ int strcpyW (scalar_t__*,char const*) ;
+ int strlenW (char const*) ;
+ void* writer_alloc (int *,int) ;
 
 __attribute__((used)) static struct element *alloc_element(xmlwriter *writer, const WCHAR *prefix, const WCHAR *local)
 {
@@ -28,7 +28,7 @@ __attribute__((used)) static struct element *alloc_element(xmlwriter *writer, co
     ret = writer_alloc(writer, sizeof(*ret));
     if (!ret) return ret;
 
-    len = prefix ? strlenW(prefix) + 1 /* ':' */ : 0;
+    len = prefix ? strlenW(prefix) + 1 : 0;
     len += strlenW(local);
 
     ret->qname = writer_alloc(writer, (len + 1)*sizeof(WCHAR));

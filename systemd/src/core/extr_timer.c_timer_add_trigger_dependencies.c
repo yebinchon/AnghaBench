@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Unit ;
-typedef  int /*<<< orphan*/  Timer ;
-struct TYPE_4__ {int /*<<< orphan*/ * dependencies; } ;
 
-/* Variables and functions */
- TYPE_1__* UNIT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UNIT_BEFORE ; 
- int /*<<< orphan*/  UNIT_DEPENDENCY_IMPLICIT ; 
- size_t UNIT_TRIGGERS ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hashmap_isempty (int /*<<< orphan*/ ) ; 
- int unit_add_two_dependencies (TYPE_1__*,int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int unit_load_related_unit (TYPE_1__*,char*,int /*<<< orphan*/ **) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int Unit ;
+typedef int Timer ;
+struct TYPE_4__ {int * dependencies; } ;
+
+
+ TYPE_1__* UNIT (int *) ;
+ int UNIT_BEFORE ;
+ int UNIT_DEPENDENCY_IMPLICIT ;
+ size_t UNIT_TRIGGERS ;
+ int assert (int *) ;
+ int hashmap_isempty (int ) ;
+ int unit_add_two_dependencies (TYPE_1__*,int ,size_t,int *,int,int ) ;
+ int unit_load_related_unit (TYPE_1__*,char*,int **) ;
 
 __attribute__((used)) static int timer_add_trigger_dependencies(Timer *t) {
         Unit *x;
@@ -38,5 +38,5 @@ __attribute__((used)) static int timer_add_trigger_dependencies(Timer *t) {
         if (r < 0)
                 return r;
 
-        return unit_add_two_dependencies(UNIT(t), UNIT_BEFORE, UNIT_TRIGGERS, x, true, UNIT_DEPENDENCY_IMPLICIT);
+        return unit_add_two_dependencies(UNIT(t), UNIT_BEFORE, UNIT_TRIGGERS, x, 1, UNIT_DEPENDENCY_IMPLICIT);
 }

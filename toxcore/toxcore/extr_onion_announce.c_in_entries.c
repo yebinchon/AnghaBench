@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_5__ {TYPE_1__* entries; } ;
-struct TYPE_4__ {int /*<<< orphan*/  public_key; int /*<<< orphan*/  time; } ;
-typedef  TYPE_2__ Onion_Announce ;
+struct TYPE_4__ {int public_key; int time; } ;
+typedef TYPE_2__ Onion_Announce ;
 
-/* Variables and functions */
- unsigned int ONION_ANNOUNCE_MAX_ENTRIES ; 
- int /*<<< orphan*/  ONION_ANNOUNCE_TIMEOUT ; 
- int /*<<< orphan*/  is_timeout (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ public_key_cmp (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
+
+ unsigned int ONION_ANNOUNCE_MAX_ENTRIES ;
+ int ONION_ANNOUNCE_TIMEOUT ;
+ int is_timeout (int ,int ) ;
+ scalar_t__ public_key_cmp (int ,int const*) ;
 
 __attribute__((used)) static int in_entries(const Onion_Announce *onion_a, const uint8_t *public_key)
 {

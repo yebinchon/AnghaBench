@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  type_desc ;
-struct TYPE_3__ {char* s; int /*<<< orphan*/ * root; int /*<<< orphan*/ * token_list; } ;
-typedef  TYPE_1__ expression ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FAIL (char*,char*) ; 
- int /*<<< orphan*/ * _cur_type ; 
- int /*<<< orphan*/  del_node (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  del_token_list (int /*<<< orphan*/ *) ; 
- int expression_prepare (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * gen_tree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * get_token_list (char*) ; 
- int simplify_tree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sp_init () ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int type_desc ;
+struct TYPE_3__ {char* s; int * root; int * token_list; } ;
+typedef TYPE_1__ expression ;
+
+
+ int FAIL (char*,char*) ;
+ int * _cur_type ;
+ int del_node (int *) ;
+ int del_token_list (int *) ;
+ int expression_prepare (int *) ;
+ int * gen_tree (int *) ;
+ int * get_token_list (char*) ;
+ int simplify_tree (int *) ;
+ int sp_init () ;
 
 char *expression_compile (expression *e, char *s, type_desc *cur_type) {
   sp_init();
@@ -33,12 +33,12 @@ char *expression_compile (expression *e, char *s, type_desc *cur_type) {
   e->s = s;
   e->token_list = get_token_list (s);
 
-  if (e->token_list == NULL) {
+  if (e->token_list == ((void*)0)) {
     FAIL ("can't split query [%s] into tokens", s);
   }
 
   e->root = gen_tree (e->token_list);
-  if (e->root == NULL) {
+  if (e->root == ((void*)0)) {
     del_token_list (e->token_list);
     FAIL ("can't parse query [%s] as arithmetic expression", s);
   }
@@ -57,5 +57,5 @@ char *expression_compile (expression *e, char *s, type_desc *cur_type) {
     FAIL ("can't prepare expression [%s]", s);
   }
 
-  return NULL;
+  return ((void*)0);
 }

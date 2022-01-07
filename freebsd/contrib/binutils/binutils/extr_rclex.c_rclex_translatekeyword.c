@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rclex_keywords {int tok; int /*<<< orphan*/ * name; } ;
 
-/* Variables and functions */
- scalar_t__ ISUPPER (char const) ; 
- int STRING ; 
- struct rclex_keywords* keywds ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ *,char const*) ; 
+
+
+
+struct rclex_keywords {int tok; int * name; } ;
+
+
+ scalar_t__ ISUPPER (char const) ;
+ int STRING ;
+ struct rclex_keywords* keywds ;
+ int strcmp (int *,char const*) ;
 
 __attribute__((used)) static int
 rclex_translatekeyword (const char *key)
@@ -27,11 +27,11 @@ rclex_translatekeyword (const char *key)
 
       do
         {
-	  if (! strcmp (kw->name, key))
-	    return kw->tok;
-	  ++kw;
+   if (! strcmp (kw->name, key))
+     return kw->tok;
+   ++kw;
         }
-      while (kw->name != NULL);
+      while (kw->name != ((void*)0));
     }
   return STRING;
 }

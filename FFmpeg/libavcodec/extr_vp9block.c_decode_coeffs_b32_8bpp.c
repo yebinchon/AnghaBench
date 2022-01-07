@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  int16_t ;
-struct TYPE_3__ {int /*<<< orphan*/  c; } ;
-typedef  TYPE_1__ VP9TileData ;
 
-/* Variables and functions */
- int decode_coeffs_b_generic (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int,int,int,unsigned int***,unsigned int***,int /*<<< orphan*/ ***,int,int /*<<< orphan*/  const*,int /*<<< orphan*/  const**,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int16_t ;
+struct TYPE_3__ {int c; } ;
+typedef TYPE_1__ VP9TileData ;
+
+
+ int decode_coeffs_b_generic (int ,int *,int,int,int,int,unsigned int***,unsigned int***,int ***,int,int const*,int const**,int const*,int *) ;
 
 __attribute__((used)) static int decode_coeffs_b32_8bpp(VP9TileData *td, int16_t *coef, int n_coeffs,
                                   unsigned (*cnt)[6][3], unsigned (*eob)[6][2],

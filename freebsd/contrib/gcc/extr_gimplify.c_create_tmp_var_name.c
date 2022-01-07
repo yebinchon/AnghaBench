@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASM_FORMAT_PRIVATE_NAME (char*,char const*,int /*<<< orphan*/ ) ; 
- char* ASTRDUP (char const*) ; 
- int /*<<< orphan*/  get_identifier (char*) ; 
- int /*<<< orphan*/  remove_suffix (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  tmp_var_id_num ; 
+
+
+
+typedef int tree ;
+
+
+ int ASM_FORMAT_PRIVATE_NAME (char*,char const*,int ) ;
+ char* ASTRDUP (char const*) ;
+ int get_identifier (char*) ;
+ int remove_suffix (char*,int ) ;
+ int strlen (char*) ;
+ int tmp_var_id_num ;
 
 tree
 create_tmp_var_name (const char *prefix)

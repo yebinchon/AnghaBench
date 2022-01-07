@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint8_t ;
-typedef  int int8_t ;
-struct TYPE_3__ {unsigned int height; unsigned int channel_count; unsigned int line_size; unsigned long uncompressed_size; void** tmp; int /*<<< orphan*/  gb; int /*<<< orphan*/  avctx; } ;
-typedef  TYPE_1__ PSDContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- void* bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,unsigned int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef void* uint8_t ;
+typedef int int8_t ;
+struct TYPE_3__ {unsigned int height; unsigned int channel_count; unsigned int line_size; unsigned long uncompressed_size; void** tmp; int gb; int avctx; } ;
+typedef TYPE_1__ PSDContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int av_log (int ,int ,char*) ;
+ void* bytestream2_get_byte (int *) ;
+ int bytestream2_get_bytes_left (int *) ;
+ int bytestream2_skip (int *,unsigned int) ;
 
 __attribute__((used)) static int decode_rle(PSDContext * s){
     unsigned int scanline_count;
@@ -35,21 +35,21 @@ __attribute__((used)) static int decode_rle(PSDContext * s){
 
     scanline_count = s->height * s->channel_count;
 
-    /* scanline table */
+
     if (bytestream2_get_bytes_left(&s->gb) < scanline_count * 2) {
         av_log(s->avctx, AV_LOG_ERROR, "Not enough data for rle scanline table.\n");
         return AVERROR_INVALIDDATA;
     }
-    bytestream2_skip(&s->gb, scanline_count * 2);/* size of each scanline */
+    bytestream2_skip(&s->gb, scanline_count * 2);
 
-    /* decode rle data scanline by scanline */
+
     for (sl = 0; sl < scanline_count; sl++) {
         count = 0;
 
         while (count < s->line_size) {
             rle_char = bytestream2_get_byte(&s->gb);
 
-            if (rle_char <= 0) {/* byte repeat */
+            if (rle_char <= 0) {
                 repeat_count = rle_char * -1;
 
                 if (bytestream2_get_bytes_left(&s->gb) < 1) {

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct tcp_splice_state {int /*<<< orphan*/  flags; int /*<<< orphan*/  pipe; } ;
-struct sk_buff {int /*<<< orphan*/  sk; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct tcp_splice_state {int flags; int pipe; } ;
+struct sk_buff {int sk; } ;
 struct TYPE_4__ {struct tcp_splice_state* data; } ;
 struct TYPE_5__ {int count; TYPE_1__ arg; } ;
-typedef  TYPE_2__ read_descriptor_t ;
+typedef TYPE_2__ read_descriptor_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  min (int,size_t) ; 
- int skb_splice_bits (struct sk_buff*,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int min (int,size_t) ;
+ int skb_splice_bits (struct sk_buff*,int ,unsigned int,int ,int ,int ) ;
 
 __attribute__((used)) static int tcp_splice_data_recv(read_descriptor_t *rd_desc, struct sk_buff *skb,
-				unsigned int offset, size_t len)
+    unsigned int offset, size_t len)
 {
-	struct tcp_splice_state *tss = rd_desc->arg.data;
-	int ret;
+ struct tcp_splice_state *tss = rd_desc->arg.data;
+ int ret;
 
-	ret = skb_splice_bits(skb, skb->sk, offset, tss->pipe,
-			      min(rd_desc->count, len), tss->flags);
-	if (ret > 0)
-		rd_desc->count -= ret;
-	return ret;
+ ret = skb_splice_bits(skb, skb->sk, offset, tss->pipe,
+         min(rd_desc->count, len), tss->flags);
+ if (ret > 0)
+  rd_desc->count -= ret;
+ return ret;
 }

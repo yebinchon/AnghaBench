@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cx25821_fh {int type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG () ; 
-#define  V4L2_BUF_TYPE_VIDEO_CAPTURE 128 
+
+ int BUG () ;
+
 
 int get_resource(struct cx25821_fh *fh, int resource)
 {
-	switch (fh->type) {
-	case V4L2_BUF_TYPE_VIDEO_CAPTURE:
-		return resource;
-	default:
-		BUG();
-		return 0;
-	}
+ switch (fh->type) {
+ case 128:
+  return resource;
+ default:
+  BUG();
+  return 0;
+ }
 }

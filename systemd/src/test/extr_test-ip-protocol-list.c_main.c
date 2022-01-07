@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  IPPROTO_DCCP ; 
- int IPPROTO_IP ; 
- int IPPROTO_SCTP ; 
- int /*<<< orphan*/  IPPROTO_TCP ; 
- int /*<<< orphan*/  test_int (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_int_fail (int) ; 
- int /*<<< orphan*/  test_parse_ip_protocol (char*,int) ; 
- int /*<<< orphan*/  test_str (char*) ; 
- int /*<<< orphan*/  test_str_fail (char*) ; 
+ int EINVAL ;
+ int IPPROTO_DCCP ;
+ int IPPROTO_IP ;
+ int IPPROTO_SCTP ;
+ int IPPROTO_TCP ;
+ int test_int (int ) ;
+ int test_int_fail (int) ;
+ int test_parse_ip_protocol (char*,int) ;
+ int test_str (char*) ;
+ int test_str_fail (char*) ;
 
 int main(int argc, const char *argv[]) {
         test_int(IPPROTO_TCP);

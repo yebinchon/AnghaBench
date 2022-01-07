@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct abx500_pinctrl_soc_data {int dummy; } ;
 
-/* Variables and functions */
- struct abx500_pinctrl_soc_data ab8500_soc ; 
+
+ struct abx500_pinctrl_soc_data ab8500_soc ;
 
 void abx500_pinctrl_ab8500_init(struct abx500_pinctrl_soc_data **soc)
 {
-	*soc = &ab8500_soc;
+ *soc = &ab8500_soc;
 }

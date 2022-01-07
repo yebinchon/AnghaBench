@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  iic_dp_aux_address (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  iic_dp_aux_stop (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int device_t ;
+
+
+ int iic_dp_aux_address (int ,int ,int) ;
+ int iic_dp_aux_stop (int ,int) ;
 
 __attribute__((used)) static void
 iic_dp_aux_reset_bus(device_t idev)
 {
 
-	(void)iic_dp_aux_address(idev, 0, false);
-	(void)iic_dp_aux_stop(idev, false);
+ (void)iic_dp_aux_address(idev, 0, 0);
+ (void)iic_dp_aux_stop(idev, 0);
 }

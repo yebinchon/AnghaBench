@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_6__ {int size_in_bits; } ;
-typedef  TYPE_1__ PutBitContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+typedef TYPE_1__ PutBitContext ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- int FFMIN (int,int) ; 
- int /*<<< orphan*/  avpriv_copy_bits (TYPE_1__*,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits_left (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  put_bits (TYPE_1__*,int,int /*<<< orphan*/ ) ; 
- int put_bits_count (TYPE_1__*) ; 
+
+ int FFMIN (int,int) ;
+ int avpriv_copy_bits (TYPE_1__*,int const*,int) ;
+ int get_bits (int *,int) ;
+ int get_bits_left (int *) ;
+ int put_bits (TYPE_1__*,int,int ) ;
+ int put_bits_count (TYPE_1__*) ;
 
 __attribute__((used)) static void copy_bits(PutBitContext *pb,
                       const uint8_t *data, int size,

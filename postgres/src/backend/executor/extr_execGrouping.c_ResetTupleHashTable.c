@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* TupleHashTable ;
-struct TYPE_3__ {int /*<<< orphan*/  hashtab; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  tuplehash_reset (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* TupleHashTable ;
+struct TYPE_3__ {int hashtab; } ;
+
+
+ int tuplehash_reset (int ) ;
 
 void
 ResetTupleHashTable(TupleHashTable hashtable)
 {
-	tuplehash_reset(hashtable->hashtab);
+ tuplehash_reset(hashtable->hashtab);
 }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {void* sig; int /*<<< orphan*/  integer; } ;
-struct target_waitstatus {TYPE_1__ value; int /*<<< orphan*/  kind; } ;
 
-/* Variables and functions */
- scalar_t__ CHILD_SPECIAL_WAITSTATUS (struct target_waitstatus*,int) ; 
- int /*<<< orphan*/  TARGET_WAITKIND_EXITED ; 
- int /*<<< orphan*/  TARGET_WAITKIND_SIGNALLED ; 
- int /*<<< orphan*/  TARGET_WAITKIND_STOPPED ; 
- int /*<<< orphan*/  WEXITSTATUS (int) ; 
- scalar_t__ WIFEXITED (int) ; 
- int /*<<< orphan*/  WIFSTOPPED (int) ; 
- int /*<<< orphan*/  WSTOPSIG (int) ; 
- int /*<<< orphan*/  WTERMSIG (int) ; 
- void* target_signal_from_host (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {void* sig; int integer; } ;
+struct target_waitstatus {TYPE_1__ value; int kind; } ;
+
+
+ scalar_t__ CHILD_SPECIAL_WAITSTATUS (struct target_waitstatus*,int) ;
+ int TARGET_WAITKIND_EXITED ;
+ int TARGET_WAITKIND_SIGNALLED ;
+ int TARGET_WAITKIND_STOPPED ;
+ int WEXITSTATUS (int) ;
+ scalar_t__ WIFEXITED (int) ;
+ int WIFSTOPPED (int) ;
+ int WSTOPSIG (int) ;
+ int WTERMSIG (int) ;
+ void* target_signal_from_host (int ) ;
 
 void
 store_waitstatus (struct target_waitstatus *ourstatus, int hoststatus)
 {
-#ifdef CHILD_SPECIAL_WAITSTATUS
-  /* CHILD_SPECIAL_WAITSTATUS should return nonzero and set *OURSTATUS
-     if it wants to deal with hoststatus.  */
-  if (CHILD_SPECIAL_WAITSTATUS (ourstatus, hoststatus))
-    return;
-#endif
+
+
+
+
+
+
 
   if (WIFEXITED (hoststatus))
     {

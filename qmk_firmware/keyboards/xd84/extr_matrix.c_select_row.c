@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int ALL_HIGH ; 
- int ALL_INPUT ; 
- int /*<<< orphan*/  IC1 ; 
- int /*<<< orphan*/  PCA9555_PORT0 ; 
- int /*<<< orphan*/  pca9555_set_config (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pca9555_set_output (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int ALL_HIGH ;
+ int ALL_INPUT ;
+ int IC1 ;
+ int PCA9555_PORT0 ;
+ int pca9555_set_config (int ,int ,int) ;
+ int pca9555_set_output (int ,int ,int) ;
 
 __attribute__((used)) static void select_row(uint8_t row) {
-  // For the XD84 all rows are on the same IC and port
-  // so its safe enough to assume here row == pin
+
+
   uint8_t pin = row;
   uint8_t mask = 1 << pin;
 

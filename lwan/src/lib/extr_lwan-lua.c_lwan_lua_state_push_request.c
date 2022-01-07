@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lwan_request {int dummy; } ;
-typedef  int /*<<< orphan*/  lua_State ;
+typedef int lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  luaL_getmetatable (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct lwan_request** lua_newuserdata (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_setmetatable (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  request_metatable_name ; 
+
+ int luaL_getmetatable (int *,int ) ;
+ struct lwan_request** lua_newuserdata (int *,int) ;
+ int lua_setmetatable (int *,int) ;
+ int request_metatable_name ;
 
 void lwan_lua_state_push_request(lua_State *L, struct lwan_request *request)
 {

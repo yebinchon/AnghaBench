@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct mlx5_flow_table {int dummy; } ;
 struct list_head {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  lock; } ;
+struct TYPE_2__ {int lock; } ;
 struct fs_prio {TYPE_1__ base; } ;
 
-/* Variables and functions */
- struct mlx5_flow_table* _find_first_ft_in_prio (struct fs_prio*,struct list_head*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ struct mlx5_flow_table* _find_first_ft_in_prio (struct fs_prio*,struct list_head*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 __attribute__((used)) static struct mlx5_flow_table *find_first_ft_in_prio(struct fs_prio *prio,
-						     struct list_head *start)
+           struct list_head *start)
 {
-	struct mlx5_flow_table *ft;
+ struct mlx5_flow_table *ft;
 
-	if (!prio)
-		return NULL;
+ if (!prio)
+  return ((void*)0);
 
-	mutex_lock(&prio->base.lock);
-	ft = _find_first_ft_in_prio(prio, start);
-	mutex_unlock(&prio->base.lock);
+ mutex_lock(&prio->base.lock);
+ ft = _find_first_ft_in_prio(prio, start);
+ mutex_unlock(&prio->base.lock);
 
-	return ft;
+ return ft;
 }

@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  au_evclassmap_init () ; 
- int /*<<< orphan*/  au_evnamemap_init () ; 
+ int au_evclassmap_init () ;
+ int au_evnamemap_init () ;
 
 void
 kau_init(void)
 {
 
-	au_evclassmap_init();
-	au_evnamemap_init();
+ au_evclassmap_init();
+ au_evnamemap_init();
 }

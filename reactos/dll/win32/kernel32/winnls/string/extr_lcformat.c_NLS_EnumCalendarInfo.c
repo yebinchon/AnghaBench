@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int (* callback ) (char*) ;int (* callbackex ) (char*,int) ;int (* callbackexex ) (char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ;} ;
-struct enumcalendar_context {int calendar; int caltype; int type; int /*<<< orphan*/  lParam; TYPE_1__ u; int /*<<< orphan*/  lcid; scalar_t__ unicode; } ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/ * LPDWORD ;
-typedef  int /*<<< orphan*/  CHAR ;
-typedef  int CALID ;
-typedef  int BOOL ;
 
-/* Variables and functions */
-#define  CALLBACK_ENUMPROC 130 
-#define  CALLBACK_ENUMPROCEX 129 
-#define  CALLBACK_ENUMPROCEXEX 128 
- int CAL_RETURN_NUMBER ; 
- int ENUM_ALL_CALENDARS ; 
- int /*<<< orphan*/  ERR (char*,int,int) ; 
- int /*<<< orphan*/  ERROR_BADDB ; 
- scalar_t__ ERROR_INSUFFICIENT_BUFFER ; 
- int /*<<< orphan*/  ERROR_INVALID_PARAMETER ; 
- int /*<<< orphan*/  ERROR_NOT_ENOUGH_MEMORY ; 
- int FALSE ; 
- int GetCalendarInfoA (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int GetCalendarInfoW (int /*<<< orphan*/ ,int,int,char*,int,int /*<<< orphan*/ *) ; 
- scalar_t__ GetLastError () ; 
- int GetLocaleInfoW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- char* HeapReAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  LOCALE_ICALENDARTYPE ; 
- int /*<<< orphan*/  LOCALE_IOPTIONALCALENDAR ; 
- int NLS_GetLocaleNumber (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int TRUE ; 
- int /*<<< orphan*/  WARN (char*,int) ; 
- int stub1 (char*) ; 
- int stub2 (char*,int) ; 
- int stub3 (char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int (* callback ) (char*) ;int (* callbackex ) (char*,int) ;int (* callbackexex ) (char*,int,int *,int ) ;} ;
+struct enumcalendar_context {int calendar; int caltype; int type; int lParam; TYPE_1__ u; int lcid; scalar_t__ unicode; } ;
+typedef char WCHAR ;
+typedef int * LPDWORD ;
+typedef int CHAR ;
+typedef int CALID ;
+typedef int BOOL ;
+
+
+
+
+
+ int CAL_RETURN_NUMBER ;
+ int ENUM_ALL_CALENDARS ;
+ int ERR (char*,int,int) ;
+ int ERROR_BADDB ;
+ scalar_t__ ERROR_INSUFFICIENT_BUFFER ;
+ int ERROR_INVALID_PARAMETER ;
+ int ERROR_NOT_ENOUGH_MEMORY ;
+ int FALSE ;
+ int GetCalendarInfoA (int ,int,int,int *,int,int *) ;
+ int GetCalendarInfoW (int ,int,int,char*,int,int *) ;
+ scalar_t__ GetLastError () ;
+ int GetLocaleInfoW (int ,int ,char*,int) ;
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,char*) ;
+ char* HeapReAlloc (int ,int ,char*,int) ;
+ int LOCALE_ICALENDARTYPE ;
+ int LOCALE_IOPTIONALCALENDAR ;
+ int NLS_GetLocaleNumber (int ,int ) ;
+ int SetLastError (int ) ;
+ int TRUE ;
+ int WARN (char*,int) ;
+ int stub1 (char*) ;
+ int stub2 (char*,int) ;
+ int stub3 (char*,int,int *,int ) ;
 
 __attribute__((used)) static BOOL NLS_EnumCalendarInfo(const struct enumcalendar_context *ctxt)
 {
-  WCHAR *buf, *opt = NULL, *iter = NULL;
+  WCHAR *buf, *opt = ((void*)0), *iter = ((void*)0);
   CALID calendar = ctxt->calendar;
   BOOL ret = FALSE;
-  int bufSz = 200;		/* the size of the buffer */
+  int bufSz = 200;
 
-  if (ctxt->u.callback == NULL)
+  if (ctxt->u.callback == ((void*)0))
   {
     SetLastError(ERROR_INVALID_PARAMETER);
     return FALSE;
   }
 
   buf = HeapAlloc(GetProcessHeap(), 0, bufSz);
-  if (buf == NULL)
+  if (buf == ((void*)0))
   {
     SetLastError(ERROR_NOT_ENOUGH_MEMORY);
     return FALSE;
@@ -71,11 +71,11 @@ __attribute__((used)) static BOOL NLS_EnumCalendarInfo(const struct enumcalendar
 
   if (calendar == ENUM_ALL_CALENDARS)
   {
-    int optSz = GetLocaleInfoW(ctxt->lcid, LOCALE_IOPTIONALCALENDAR, NULL, 0);
+    int optSz = GetLocaleInfoW(ctxt->lcid, LOCALE_IOPTIONALCALENDAR, ((void*)0), 0);
     if (optSz > 1)
     {
       opt = HeapAlloc(GetProcessHeap(), 0, optSz * sizeof(WCHAR));
-      if (opt == NULL)
+      if (opt == ((void*)0))
       {
         SetLastError(ERROR_NOT_ENOUGH_MEMORY);
         goto cleanup;
@@ -86,24 +86,24 @@ __attribute__((used)) static BOOL NLS_EnumCalendarInfo(const struct enumcalendar
     calendar = NLS_GetLocaleNumber(ctxt->lcid, LOCALE_ICALENDARTYPE);
   }
 
-  while (TRUE)			/* loop through calendars */
+  while (TRUE)
   {
-    do				/* loop until there's no error */
+    do
     {
       if (ctxt->caltype & CAL_RETURN_NUMBER)
-        ret = GetCalendarInfoW(ctxt->lcid, calendar, ctxt->caltype, NULL, bufSz / sizeof(WCHAR), (LPDWORD)buf);
+        ret = GetCalendarInfoW(ctxt->lcid, calendar, ctxt->caltype, ((void*)0), bufSz / sizeof(WCHAR), (LPDWORD)buf);
       else if (ctxt->unicode)
-        ret = GetCalendarInfoW(ctxt->lcid, calendar, ctxt->caltype, buf, bufSz / sizeof(WCHAR), NULL);
-      else ret = GetCalendarInfoA(ctxt->lcid, calendar, ctxt->caltype, (CHAR*)buf, bufSz / sizeof(CHAR), NULL);
+        ret = GetCalendarInfoW(ctxt->lcid, calendar, ctxt->caltype, buf, bufSz / sizeof(WCHAR), ((void*)0));
+      else ret = GetCalendarInfoA(ctxt->lcid, calendar, ctxt->caltype, (CHAR*)buf, bufSz / sizeof(CHAR), ((void*)0));
 
       if (!ret)
       {
         if (GetLastError() == ERROR_INSUFFICIENT_BUFFER)
-        {				/* so resize it */
+        {
           int newSz;
           if (ctxt->unicode)
-            newSz = GetCalendarInfoW(ctxt->lcid, calendar, ctxt->caltype, NULL, 0, NULL) * sizeof(WCHAR);
-          else newSz = GetCalendarInfoA(ctxt->lcid, calendar, ctxt->caltype, NULL, 0, NULL) * sizeof(CHAR);
+            newSz = GetCalendarInfoW(ctxt->lcid, calendar, ctxt->caltype, ((void*)0), 0, ((void*)0)) * sizeof(WCHAR);
+          else newSz = GetCalendarInfoA(ctxt->lcid, calendar, ctxt->caltype, ((void*)0), 0, ((void*)0)) * sizeof(CHAR);
           if (bufSz >= newSz)
           {
             ERR("Buffer resizing disorder: was %d, requested %d.\n", bufSz, newSz);
@@ -112,38 +112,38 @@ __attribute__((used)) static BOOL NLS_EnumCalendarInfo(const struct enumcalendar
           bufSz = newSz;
           WARN("Buffer too small; resizing to %d bytes.\n", bufSz);
           buf = HeapReAlloc(GetProcessHeap(), 0, buf, bufSz);
-          if (buf == NULL)
+          if (buf == ((void*)0))
             goto cleanup;
         } else goto cleanup;
       }
     } while (!ret);
 
-    /* Here we are. We pass the buffer to the correct version of
-     * the callback. Because it's not the same number of params,
-     * we must check for Ex, but we don't care about Unicode
-     * because the buffer is already in the correct format.
-     */
+
+
+
+
+
     switch (ctxt->type)
     {
-    case CALLBACK_ENUMPROC:
+    case 130:
       ret = ctxt->u.callback(buf);
       break;
-    case CALLBACK_ENUMPROCEX:
+    case 129:
       ret = ctxt->u.callbackex(buf, calendar);
       break;
-    case CALLBACK_ENUMPROCEXEX:
-      ret = ctxt->u.callbackexex(buf, calendar, NULL, ctxt->lParam);
+    case 128:
+      ret = ctxt->u.callbackexex(buf, calendar, ((void*)0), ctxt->lParam);
       break;
     default:
       ;
     }
 
-    if (!ret) {			/* the callback told to stop */
+    if (!ret) {
       ret = TRUE;
       break;
     }
 
-    if ((iter == NULL) || (*iter == 0))	/* no more calendars */
+    if ((iter == ((void*)0)) || (*iter == 0))
       break;
 
     calendar = 0;

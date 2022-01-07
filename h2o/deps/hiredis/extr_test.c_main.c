@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char* path; } ;
 struct TYPE_3__ {char* host; int port; } ;
-struct config {int /*<<< orphan*/  type; TYPE_2__ unix_sock; TYPE_1__ tcp; } ;
+struct config {int type; TYPE_2__ unix_sock; TYPE_1__ tcp; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONN_FD ; 
- int /*<<< orphan*/  CONN_TCP ; 
- int /*<<< orphan*/  CONN_UNIX ; 
- int /*<<< orphan*/  SIGPIPE ; 
- int /*<<< orphan*/  SIG_IGN ; 
- int atoi (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int fails ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  test_append_formatted_commands (struct config) ; 
- int /*<<< orphan*/  test_blocking_connection (struct config) ; 
- int /*<<< orphan*/  test_blocking_connection_errors () ; 
- int /*<<< orphan*/  test_blocking_connection_timeouts (struct config) ; 
- int /*<<< orphan*/  test_blocking_io_errors (struct config) ; 
- int /*<<< orphan*/  test_format_commands () ; 
- int /*<<< orphan*/  test_free_null () ; 
- int /*<<< orphan*/  test_invalid_timeout_errors (struct config) ; 
- int /*<<< orphan*/  test_reply_reader () ; 
- int /*<<< orphan*/  test_throughput (struct config) ; 
+
+ int CONN_FD ;
+ int CONN_TCP ;
+ int CONN_UNIX ;
+ int SIGPIPE ;
+ int SIG_IGN ;
+ int atoi (char*) ;
+ int exit (int) ;
+ int fails ;
+ int fprintf (int ,char*,char*) ;
+ int printf (char*,...) ;
+ int signal (int ,int ) ;
+ int stderr ;
+ int strcmp (char*,char*) ;
+ int test_append_formatted_commands (struct config) ;
+ int test_blocking_connection (struct config) ;
+ int test_blocking_connection_errors () ;
+ int test_blocking_connection_timeouts (struct config) ;
+ int test_blocking_io_errors (struct config) ;
+ int test_format_commands () ;
+ int test_free_null () ;
+ int test_invalid_timeout_errors (struct config) ;
+ int test_reply_reader () ;
+ int test_throughput (struct config) ;
 
 int main(int argc, char **argv) {
     struct config cfg = {
@@ -54,10 +54,10 @@ int main(int argc, char **argv) {
     int throughput = 1;
     int test_inherit_fd = 1;
 
-    /* Ignore broken pipe signal (for I/O error tests). */
+
     signal(SIGPIPE, SIG_IGN);
 
-    /* Parse command line options. */
+
     argv++; argc--;
     while (argc) {
         if (argc >= 2 && !strcmp(argv[0],"-h")) {

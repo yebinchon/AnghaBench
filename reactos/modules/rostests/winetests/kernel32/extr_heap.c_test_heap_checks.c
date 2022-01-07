@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int SIZE_T ;
-typedef  int DWORD ;
-typedef  int BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- int HEAP_FREE_CHECKING_ENABLED ; 
- int HEAP_PAGE_ALLOCS ; 
- int /*<<< orphan*/  HEAP_REALLOC_IN_PLACE_ONLY ; 
- int HEAP_TAIL_CHECKING_ENABLED ; 
- int HEAP_VALIDATE ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- int* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int* HeapReAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- int HeapSize (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  HeapValidate (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  memset (int*,int,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  trace (char*,int) ; 
+
+
+
+typedef int SIZE_T ;
+typedef int DWORD ;
+typedef int BYTE ;
+typedef int BOOL ;
+
+
+ int GetProcessHeap () ;
+ int HEAP_FREE_CHECKING_ENABLED ;
+ int HEAP_PAGE_ALLOCS ;
+ int HEAP_REALLOC_IN_PLACE_ONLY ;
+ int HEAP_TAIL_CHECKING_ENABLED ;
+ int HEAP_VALIDATE ;
+ int HEAP_ZERO_MEMORY ;
+ int* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int*) ;
+ int* HeapReAlloc (int ,int ,int*,int) ;
+ int HeapSize (int ,int ,int*) ;
+ int HeapValidate (int ,int ,int*) ;
+ scalar_t__ broken (int) ;
+ int memset (int*,int,int) ;
+ int ok (int,char*,...) ;
+ int skip (char*) ;
+ int trace (char*,int) ;
 
 __attribute__((used)) static void test_heap_checks( DWORD flags )
 {
@@ -40,11 +40,11 @@ __attribute__((used)) static void test_heap_checks( DWORD flags )
     BOOL ret;
     SIZE_T i, size, large_size = 3000 * 1024 + 37;
 
-    if (flags & HEAP_PAGE_ALLOCS) return;  /* no tests for that case yet */
+    if (flags & HEAP_PAGE_ALLOCS) return;
     trace( "testing heap flags %08x\n", flags );
 
     p = HeapAlloc( GetProcessHeap(), HEAP_ZERO_MEMORY, 17 );
-    ok( p != NULL, "HeapAlloc failed\n" );
+    ok( p != ((void*)0), "HeapAlloc failed\n" );
 
     ret = HeapValidate( GetProcessHeap(), 0, p );
     ok( ret, "HeapValidate failed\n" );
@@ -84,7 +84,7 @@ __attribute__((used)) static void test_heap_checks( DWORD flags )
     ok( ret, "HeapFree failed\n" );
 
     p = HeapAlloc( GetProcessHeap(), HEAP_ZERO_MEMORY, 17 );
-    ok( p != NULL, "HeapAlloc failed\n" );
+    ok( p != ((void*)0), "HeapAlloc failed\n" );
     old = p[17];
     p[17] = 0xcc;
 
@@ -93,17 +93,17 @@ __attribute__((used)) static void test_heap_checks( DWORD flags )
         ret = HeapValidate( GetProcessHeap(), 0, p );
         ok( !ret, "HeapValidate succeeded\n" );
 
-        /* other calls only check when HEAP_VALIDATE is set */
+
         if (flags & HEAP_VALIDATE)
         {
             size = HeapSize( GetProcessHeap(), 0, p );
             ok( size == ~(SIZE_T)0 || broken(size == ~0u), "Wrong size %lu\n", size );
 
             p2 = HeapReAlloc( GetProcessHeap(), 0, p, 14 );
-            ok( p2 == NULL, "HeapReAlloc succeeded\n" );
+            ok( p2 == ((void*)0), "HeapReAlloc succeeded\n" );
 
             ret = HeapFree( GetProcessHeap(), 0, p );
-            ok( !ret || broken(sizeof(void*) == 8), /* not caught on xp64 */
+            ok( !ret || broken(sizeof(void*) == 8),
                 "HeapFree succeeded\n" );
         }
 
@@ -112,7 +112,7 @@ __attribute__((used)) static void test_heap_checks( DWORD flags )
         ok( size == 17, "Wrong size %lu\n", size );
 
         p2 = HeapReAlloc( GetProcessHeap(), 0, p, 14 );
-        ok( p2 != NULL, "HeapReAlloc failed\n" );
+        ok( p2 != ((void*)0), "HeapReAlloc failed\n" );
         p = p2;
     }
 
@@ -120,7 +120,7 @@ __attribute__((used)) static void test_heap_checks( DWORD flags )
     ok( ret, "HeapFree failed\n" );
 
     p = HeapAlloc( GetProcessHeap(), 0, 37 );
-    ok( p != NULL, "HeapAlloc failed\n" );
+    ok( p != ((void*)0), "HeapAlloc failed\n" );
     memset( p, 0xcc, 37 );
 
     ret = HeapFree( GetProcessHeap(), 0, p );
@@ -133,23 +133,23 @@ __attribute__((used)) static void test_heap_checks( DWORD flags )
         ok( p[18] == 0xee, "wrong data %x\n", p[18] );
         ok( p[19] == 0xfe, "wrong data %x\n", p[19] );
 
-        ret = HeapValidate( GetProcessHeap(), 0, NULL );
+        ret = HeapValidate( GetProcessHeap(), 0, ((void*)0) );
         ok( ret, "HeapValidate failed\n" );
 
         old = p[16];
         p[16] = 0xcc;
-        ret = HeapValidate( GetProcessHeap(), 0, NULL );
+        ret = HeapValidate( GetProcessHeap(), 0, ((void*)0) );
         ok( !ret, "HeapValidate succeeded\n" );
 
         p[16] = old;
-        ret = HeapValidate( GetProcessHeap(), 0, NULL );
+        ret = HeapValidate( GetProcessHeap(), 0, ((void*)0) );
         ok( ret, "HeapValidate failed\n" );
     }
 
-    /* now test large blocks */
+
 
     p = HeapAlloc( GetProcessHeap(), 0, large_size );
-    ok( p != NULL, "HeapAlloc failed\n" );
+    ok( p != ((void*)0), "HeapAlloc failed\n" );
 
     ret = HeapValidate( GetProcessHeap(), 0, p );
     ok( ret, "HeapValidate failed\n" );
@@ -162,7 +162,7 @@ __attribute__((used)) static void test_heap_checks( DWORD flags )
 
     if (flags & HEAP_TAIL_CHECKING_ENABLED)
     {
-        /* Windows doesn't do tail checking on large blocks */
+
         ok( p[large_size] == 0xab || broken(p[large_size] == 0), "wrong data %x\n", p[large_size] );
         ok( p[large_size+1] == 0xab || broken(p[large_size+1] == 0), "wrong data %x\n", p[large_size+1] );
         ok( p[large_size+2] == 0xab || broken(p[large_size+2] == 0), "wrong data %x\n", p[large_size+2] );
@@ -172,14 +172,14 @@ __attribute__((used)) static void test_heap_checks( DWORD flags )
             ret = HeapValidate( GetProcessHeap(), 0, p );
             ok( !ret, "HeapValidate succeeded\n" );
 
-            /* other calls only check when HEAP_VALIDATE is set */
+
             if (flags & HEAP_VALIDATE)
             {
                 size = HeapSize( GetProcessHeap(), 0, p );
                 ok( size == ~(SIZE_T)0, "Wrong size %lu\n", size );
 
                 p2 = HeapReAlloc( GetProcessHeap(), 0, p, large_size - 3 );
-                ok( p2 == NULL, "HeapReAlloc succeeded\n" );
+                ok( p2 == ((void*)0), "HeapReAlloc succeeded\n" );
 
                 ret = HeapFree( GetProcessHeap(), 0, p );
                 ok( !ret, "HeapFree succeeded\n" );
@@ -191,7 +191,7 @@ __attribute__((used)) static void test_heap_checks( DWORD flags )
     ret = HeapFree( GetProcessHeap(), 0, p );
     ok( ret, "HeapFree failed\n" );
 
-    /* test block sizes when tail checking */
+
     if (flags & HEAP_TAIL_CHECKING_ENABLED)
     {
         for (size = 0; size < 64; size++)

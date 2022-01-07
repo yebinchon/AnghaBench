@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int child_should_exit ; 
- int /*<<< orphan*/  dbg (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  getpid () ; 
+ int child_should_exit ;
+ int dbg (char*,int ,int) ;
+ int getpid () ;
 
 __attribute__((used)) static void child_sighandler(int sig)
 {
-	(void)sig;
-	dbg("PID: %d received sig %d", getpid(), sig);
-	child_should_exit = 1;
+ (void)sig;
+ dbg("PID: %d received sig %d", getpid(), sig);
+ child_should_exit = 1;
 }

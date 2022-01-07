@@ -1,99 +1,80 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  OPTION_EB 138 
-#define  OPTION_EL 137 
-#define  OPTION_FIXDD 136 
-#define  OPTION_NWARN 135 
-#define  OPTION_O0 134 
-#define  OPTION_PIC 133 
-#define  OPTION_R1 132 
-#define  OPTION_SCORE5 131 
-#define  OPTION_SCORE5U 130 
-#define  OPTION_SCORE7 129 
-#define  OPTION_SCORE_VERSION 128 
- int /*<<< orphan*/  PIC ; 
- int /*<<< orphan*/  SCORE5_PIPELINE ; 
- int /*<<< orphan*/  SCORE7_PIPELINE ; 
- char* _ (char*) ; 
- int /*<<< orphan*/  atoi (char*) ; 
- int fix_data_dependency ; 
- int /*<<< orphan*/  g_opt ; 
- int /*<<< orphan*/  g_switch_value ; 
- int /*<<< orphan*/  nor1 ; 
- int /*<<< orphan*/  printf (char*) ; 
- int score7 ; 
- int /*<<< orphan*/  score_pic ; 
- int target_big_endian ; 
- int university_version ; 
- int /*<<< orphan*/  vector_size ; 
- int /*<<< orphan*/  warn_fix_data_dependency ; 
+ int PIC ;
+ int SCORE5_PIPELINE ;
+ int SCORE7_PIPELINE ;
+ char* _ (char*) ;
+ int atoi (char*) ;
+ int fix_data_dependency ;
+ int g_opt ;
+ int g_switch_value ;
+ int nor1 ;
+ int printf (char*) ;
+ int score7 ;
+ int score_pic ;
+ int target_big_endian ;
+ int university_version ;
+ int vector_size ;
+ int warn_fix_data_dependency ;
 
 int
 md_parse_option (int c, char *arg)
 {
   switch (c)
     {
-#ifdef OPTION_EB
-    case OPTION_EB:
+
+    case 138:
       target_big_endian = 1;
       break;
-#endif
-#ifdef OPTION_EL
-    case OPTION_EL:
+
+
+    case 137:
       target_big_endian = 0;
       break;
-#endif
-    case OPTION_FIXDD:
+
+    case 136:
       fix_data_dependency = 1;
       break;
-    case OPTION_NWARN:
+    case 135:
       warn_fix_data_dependency = 0;
       break;
-    case OPTION_SCORE5:
+    case 131:
       score7 = 0;
       university_version = 0;
       vector_size = SCORE5_PIPELINE;
       break;
-    case OPTION_SCORE5U:
+    case 130:
       score7 = 0;
       university_version = 1;
       vector_size = SCORE5_PIPELINE;
       break;
-    case OPTION_SCORE7:
+    case 129:
       score7 = 1;
       university_version = 0;
       vector_size = SCORE7_PIPELINE;
       break;
-    case OPTION_R1:
+    case 132:
       nor1 = 0;
       break;
     case 'G':
       g_switch_value = atoi (arg);
       break;
-    case OPTION_O0:
+    case 134:
       g_opt = 0;
       break;
-    case OPTION_SCORE_VERSION:
+    case 128:
       printf (_("Sunplus-v2-0-0-20060510\n"));
       break;
-    case OPTION_PIC:
+    case 133:
       score_pic = PIC;
-      g_switch_value = 0;    /* Must set -G num as 0 to generate PIC code.  */
+      g_switch_value = 0;
       break;
     default:
-      /* as_bad (_("unrecognized option `-%c%s'"), c, arg ? arg : "");  */
+
       return 0;
     }
   return 1;

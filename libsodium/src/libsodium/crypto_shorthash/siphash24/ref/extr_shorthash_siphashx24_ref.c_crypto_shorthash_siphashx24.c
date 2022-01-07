@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned char uint8_t ;
-typedef  int uint64_t ;
 
-/* Variables and functions */
- int LOAD64_LE (unsigned char const*) ; 
- int /*<<< orphan*/  SIPROUND ; 
- int /*<<< orphan*/  STORE64_LE (unsigned char*,int) ; 
+
+
+
+typedef unsigned char uint8_t ;
+typedef int uint64_t ;
+
+
+ int LOAD64_LE (unsigned char const*) ;
+ int SIPROUND ;
+ int STORE64_LE (unsigned char*,int) ;
 
 int
 crypto_shorthash_siphashx24(unsigned char *out, const unsigned char *in,
                             unsigned long long inlen, const unsigned char *k)
 {
-    uint64_t       v0 = 0x736f6d6570736575ULL;
-    uint64_t       v1 = 0x646f72616e646f83ULL;
-    uint64_t       v2 = 0x6c7967656e657261ULL;
-    uint64_t       v3 = 0x7465646279746573ULL;
-    uint64_t       b;
-    uint64_t       k0 = LOAD64_LE(k);
-    uint64_t       k1 = LOAD64_LE(k + 8);
-    uint64_t       m;
-    const uint8_t *end  = in + inlen - (inlen % sizeof(uint64_t));
-    const int      left = inlen & 7;
+    uint64_t v0 = 0x736f6d6570736575ULL;
+    uint64_t v1 = 0x646f72616e646f83ULL;
+    uint64_t v2 = 0x6c7967656e657261ULL;
+    uint64_t v3 = 0x7465646279746573ULL;
+    uint64_t b;
+    uint64_t k0 = LOAD64_LE(k);
+    uint64_t k1 = LOAD64_LE(k + 8);
+    uint64_t m;
+    const uint8_t *end = in + inlen - (inlen % sizeof(uint64_t));
+    const int left = inlen & 7;
 
     b = ((uint64_t) inlen) << 56;
     v3 ^= k1;
@@ -48,22 +48,22 @@ crypto_shorthash_siphashx24(unsigned char *out, const unsigned char *in,
     switch (left) {
     case 7:
         b |= ((uint64_t) in[6]) << 48;
-        /* FALLTHRU */
+
     case 6:
         b |= ((uint64_t) in[5]) << 40;
-        /* FALLTHRU */
+
     case 5:
         b |= ((uint64_t) in[4]) << 32;
-        /* FALLTHRU */
+
     case 4:
         b |= ((uint64_t) in[3]) << 24;
-        /* FALLTHRU */
+
     case 3:
         b |= ((uint64_t) in[2]) << 16;
-        /* FALLTHRU */
+
     case 2:
         b |= ((uint64_t) in[1]) << 8;
-        /* FALLTHRU */
+
     case 1:
         b |= ((uint64_t) in[0]);
         break;

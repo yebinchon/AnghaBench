@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  char_u ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * expr_line ; 
- int /*<<< orphan*/ * vim_strsave (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int char_u ;
+
+
+ int * expr_line ;
+ int * vim_strsave (int *) ;
 
 char_u *
 get_expr_line_src()
 {
-    if (expr_line == NULL)
-	return NULL;
+    if (expr_line == ((void*)0))
+ return ((void*)0);
     return vim_strsave(expr_line);
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct usbmix_name_map {TYPE_1__* dB; } ;
-struct usb_mixer_elem_info {int initialized; int /*<<< orphan*/  dBmax; int /*<<< orphan*/  dBmin; } ;
-struct TYPE_2__ {int /*<<< orphan*/  max; int /*<<< orphan*/  min; } ;
+struct usb_mixer_elem_info {int initialized; int dBmax; int dBmin; } ;
+struct TYPE_2__ {int max; int min; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static inline void check_mapped_dB(const struct usbmix_name_map *p,
-				   struct usb_mixer_elem_info *cval)
+       struct usb_mixer_elem_info *cval)
 {
-	if (p && p->dB) {
-		cval->dBmin = p->dB->min;
-		cval->dBmax = p->dB->max;
-		cval->initialized = 1;
-	}
+ if (p && p->dB) {
+  cval->dBmin = p->dB->min;
+  cval->dBmax = p->dB->max;
+  cval->initialized = 1;
+ }
 }

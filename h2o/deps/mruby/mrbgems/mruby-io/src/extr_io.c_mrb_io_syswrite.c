@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mrb_io {int fd2; int fd; int /*<<< orphan*/  writable; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int /*<<< orphan*/  fsize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_IO_ERROR ; 
- scalar_t__ MRB_TT_STRING ; 
- scalar_t__ RSTRING_LEN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RSTRING_PTR (int /*<<< orphan*/ ) ; 
- struct mrb_io* io_get_open_fptr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_fixnum_value (int) ; 
- int /*<<< orphan*/  mrb_funcall (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mrb_sys_fail (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_type (int /*<<< orphan*/ ) ; 
- int write (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct mrb_io {int fd2; int fd; int writable; } ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef int fsize_t ;
+
+
+ int E_IO_ERROR ;
+ scalar_t__ MRB_TT_STRING ;
+ scalar_t__ RSTRING_LEN (int ) ;
+ int RSTRING_PTR (int ) ;
+ struct mrb_io* io_get_open_fptr (int *,int ) ;
+ int mrb_fixnum_value (int) ;
+ int mrb_funcall (int *,int ,char*,int ) ;
+ int mrb_get_args (int *,char*,int *) ;
+ int mrb_raise (int *,int ,char*) ;
+ int mrb_sys_fail (int *,int ) ;
+ scalar_t__ mrb_type (int ) ;
+ int write (int,int ,int ) ;
 
 mrb_value
 mrb_io_syswrite(mrb_state *mrb, mrb_value io)

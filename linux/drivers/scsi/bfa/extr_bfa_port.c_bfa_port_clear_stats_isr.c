@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bfa_port_s {int /*<<< orphan*/  (* stats_cbfn ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  stats_cbarg; int /*<<< orphan*/  stats_reset_time; int /*<<< orphan*/  stats_busy; int /*<<< orphan*/  stats_status; } ;
-typedef  int /*<<< orphan*/  bfa_status_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BFA_FALSE ; 
- int /*<<< orphan*/  ktime_get_seconds () ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct bfa_port_s {int (* stats_cbfn ) (int ,int ) ;int stats_cbarg; int stats_reset_time; int stats_busy; int stats_status; } ;
+typedef int bfa_status_t ;
+
+
+ int BFA_FALSE ;
+ int ktime_get_seconds () ;
+ int stub1 (int ,int ) ;
 
 __attribute__((used)) static void
 bfa_port_clear_stats_isr(struct bfa_port_s *port, bfa_status_t status)
 {
-	port->stats_status = status;
-	port->stats_busy   = BFA_FALSE;
+ port->stats_status = status;
+ port->stats_busy = BFA_FALSE;
 
-	/*
-	* re-initialize time stamp for stats reset
-	*/
-	port->stats_reset_time = ktime_get_seconds();
 
-	if (port->stats_cbfn) {
-		port->stats_cbfn(port->stats_cbarg, status);
-		port->stats_cbfn = NULL;
-	}
+
+
+ port->stats_reset_time = ktime_get_seconds();
+
+ if (port->stats_cbfn) {
+  port->stats_cbfn(port->stats_cbarg, status);
+  port->stats_cbfn = ((void*)0);
+ }
 }

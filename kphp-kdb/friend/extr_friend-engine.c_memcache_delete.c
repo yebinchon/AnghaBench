@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  Out; } ;
-typedef  int /*<<< orphan*/  privacy_key_t ;
 
-/* Variables and functions */
- int binlog_disabled ; 
- int do_delete_all_friend_requests (int) ; 
- int do_delete_friend (int,int) ; 
- int do_delete_friend_category (int,int) ; 
- int do_delete_friend_request (int,int) ; 
- int do_delete_privacy (int,int /*<<< orphan*/ ) ; 
- int do_delete_user (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  parse_privacy_key (char const*,int /*<<< orphan*/ *,int) ; 
- scalar_t__ reverse_friends_mode ; 
- int sscanf (char const*,char*,int*,...) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbosity ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ *,char*,int) ; 
+
+
+
+struct connection {int Out; } ;
+typedef int privacy_key_t ;
+
+
+ int binlog_disabled ;
+ int do_delete_all_friend_requests (int) ;
+ int do_delete_friend (int,int) ;
+ int do_delete_friend_category (int,int) ;
+ int do_delete_friend_request (int,int) ;
+ int do_delete_privacy (int,int ) ;
+ int do_delete_user (int) ;
+ int fprintf (int ,char*,char const*) ;
+ int parse_privacy_key (char const*,int *,int) ;
+ scalar_t__ reverse_friends_mode ;
+ int sscanf (char const*,char*,int*,...) ;
+ int stderr ;
+ scalar_t__ verbosity ;
+ int write_out (int *,char*,int) ;
 
 int memcache_delete (struct connection *c, const char *key, int key_len) {
   int user_id, arg = 0;

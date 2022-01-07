@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  REAL ;
-typedef  int /*<<< orphan*/  PixelFormat ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpImage ;
-typedef  int /*<<< orphan*/  GpGraphics ;
-typedef  int /*<<< orphan*/  GpBitmap ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GdipCreateBitmapFromGraphics (int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreateFromHDC (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDisposeImage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetDpiX (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetDpiY (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetImageHeight (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetImageHorizontalResolution (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetImagePixelFormat (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetImageVerticalResolution (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetImageWidth (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int InvalidParameter ; 
- int Ok ; 
- int PixelFormat32bppPARGB ; 
- int /*<<< orphan*/  expect (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expectf (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hwnd ; 
+
+
+
+typedef int UINT ;
+typedef int REAL ;
+typedef int PixelFormat ;
+typedef int HDC ;
+typedef int GpStatus ;
+typedef int GpImage ;
+typedef int GpGraphics ;
+typedef int GpBitmap ;
+
+
+ int GdipCreateBitmapFromGraphics (int,int,int *,int **) ;
+ int GdipCreateFromHDC (int ,int **) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipDisposeImage (int *) ;
+ int GdipGetDpiX (int *,int *) ;
+ int GdipGetDpiY (int *,int *) ;
+ int GdipGetImageHeight (int *,int *) ;
+ int GdipGetImageHorizontalResolution (int *,int *) ;
+ int GdipGetImagePixelFormat (int *,int *) ;
+ int GdipGetImageVerticalResolution (int *,int *) ;
+ int GdipGetImageWidth (int *,int *) ;
+ int GetDC (int ) ;
+ int InvalidParameter ;
+ int Ok ;
+ int PixelFormat32bppPARGB ;
+ int expect (int,int ) ;
+ int expectf (int ,int ) ;
+ int hwnd ;
 
 __attribute__((used)) static void test_bitmapfromgraphics(void)
 {
     GpStatus stat;
-    GpGraphics *graphics = NULL;
+    GpGraphics *graphics = ((void*)0);
     HDC hdc = GetDC( hwnd );
-    GpBitmap *bitmap = NULL;
+    GpBitmap *bitmap = ((void*)0);
     PixelFormat format;
     REAL imageres, graphicsres;
     UINT width, height;
@@ -52,10 +52,10 @@ __attribute__((used)) static void test_bitmapfromgraphics(void)
     stat = GdipCreateFromHDC(hdc, &graphics);
     expect(Ok, stat);
 
-    stat = GdipCreateBitmapFromGraphics(12, 13, NULL, &bitmap);
+    stat = GdipCreateBitmapFromGraphics(12, 13, ((void*)0), &bitmap);
     expect(InvalidParameter, stat);
 
-    stat = GdipCreateBitmapFromGraphics(12, 13, graphics, NULL);
+    stat = GdipCreateBitmapFromGraphics(12, 13, graphics, ((void*)0));
     expect(InvalidParameter, stat);
 
     stat = GdipCreateBitmapFromGraphics(12, 13, graphics, &bitmap);

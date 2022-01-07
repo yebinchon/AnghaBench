@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {scalar_t__ request_count; int /*<<< orphan*/  lock; int /*<<< orphan*/  wait; TYPE_2__* picture; } ;
-typedef  TYPE_1__ vout_snapshot_t ;
-typedef  int /*<<< orphan*/  video_format_t ;
-struct TYPE_8__ {struct TYPE_8__* p_next; int /*<<< orphan*/  format; } ;
-typedef  TYPE_2__ picture_t ;
 
-/* Variables and functions */
- TYPE_2__* picture_Clone (TYPE_2__*) ; 
- int /*<<< orphan*/  video_format_CopyCrop (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  vlc_cond_broadcast (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {scalar_t__ request_count; int lock; int wait; TYPE_2__* picture; } ;
+typedef TYPE_1__ vout_snapshot_t ;
+typedef int video_format_t ;
+struct TYPE_8__ {struct TYPE_8__* p_next; int format; } ;
+typedef TYPE_2__ picture_t ;
+
+
+ TYPE_2__* picture_Clone (TYPE_2__*) ;
+ int video_format_CopyCrop (int *,int const*) ;
+ int vlc_cond_broadcast (int *) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 void vout_snapshot_Set(vout_snapshot_t *snap,
                        const video_format_t *fmt,
                        picture_t *picture)
 {
-    if (snap == NULL)
+    if (snap == ((void*)0))
         return;
 
     if (!fmt)

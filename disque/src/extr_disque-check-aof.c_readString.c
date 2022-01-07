@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  consumeNewline (char*) ; 
- scalar_t__ malloc (long) ; 
- int /*<<< orphan*/  readBytes (int /*<<< orphan*/ *,char*,long) ; 
- int /*<<< orphan*/  readLong (int /*<<< orphan*/ *,char,long*) ; 
+
+
+
+typedef int FILE ;
+
+
+ int consumeNewline (char*) ;
+ scalar_t__ malloc (long) ;
+ int readBytes (int *,char*,long) ;
+ int readLong (int *,char,long*) ;
 
 int readString(FILE *fp, char** target) {
     long len;
-    *target = NULL;
+    *target = ((void*)0);
     if (!readLong(fp,'$',&len)) {
         return 0;
     }
 
-    /* Increase length to also consume \r\n */
+
     len += 2;
     *target = (char*)malloc(len);
     if (!readBytes(fp,*target,len)) {

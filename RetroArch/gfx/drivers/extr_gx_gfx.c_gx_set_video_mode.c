@@ -1,121 +1,121 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_8__ ;
-typedef  struct TYPE_20__   TYPE_7__ ;
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint16_t ;
-typedef  int /*<<< orphan*/  u16 ;
+
+
+typedef struct TYPE_21__ TYPE_8__ ;
+typedef struct TYPE_20__ TYPE_7__ ;
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint16_t ;
+typedef int u16 ;
 struct TYPE_16__ {unsigned int video_viwidth; int menu_rgui_aspect_ratio; } ;
 struct TYPE_14__ {scalar_t__ video_vfilter; } ;
 struct TYPE_17__ {TYPE_3__ uints; TYPE_1__ bools; } ;
-typedef  TYPE_4__ settings_t ;
+typedef TYPE_4__ settings_t ;
 struct TYPE_15__ {unsigned int full_width; unsigned int full_height; } ;
-struct TYPE_18__ {int double_strike; int should_resize; int /*<<< orphan*/ * framebuf; TYPE_2__ vp; } ;
-typedef  TYPE_5__ gx_video_t ;
-typedef  int /*<<< orphan*/  f32 ;
-struct TYPE_21__ {int viTVMode; unsigned int fbWidth; int efbHeight; int xfbHeight; unsigned int viWidth; unsigned int viHeight; int viXOrigin; int viYOrigin; int** sample_pattern; int* vfilter; void* field_rendering; void* aa; int /*<<< orphan*/  xfbMode; } ;
-struct TYPE_20__ {int member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
+struct TYPE_18__ {int double_strike; int should_resize; int * framebuf; TYPE_2__ vp; } ;
+typedef TYPE_5__ gx_video_t ;
+typedef int f32 ;
+struct TYPE_21__ {int viTVMode; unsigned int fbWidth; int efbHeight; int xfbHeight; unsigned int viWidth; unsigned int viHeight; int viXOrigin; int viYOrigin; int** sample_pattern; int* vfilter; void* field_rendering; void* aa; int xfbMode; } ;
+struct TYPE_20__ {int member_3; int member_2; int member_1; int member_0; } ;
 struct TYPE_19__ {unsigned int fbWidth; unsigned int xfbHeight; } ;
-typedef  TYPE_6__ GXRModeObj ;
-typedef  TYPE_7__ GXColor ;
+typedef TYPE_6__ GXRModeObj ;
+typedef TYPE_7__ GXColor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COLOR_BLACK ; 
- int /*<<< orphan*/  CONF_GetEuRGB60 () ; 
- scalar_t__ CONF_GetProgressiveScan () ; 
- int CONF_GetVideo () ; 
-#define  CONF_VIDEO_MPAL 136 
-#define  CONF_VIDEO_PAL 135 
- int /*<<< orphan*/  GX_DISABLE ; 
- int /*<<< orphan*/  GX_ENABLE ; 
- void* GX_FALSE ; 
- int /*<<< orphan*/  GX_Flush () ; 
- float GX_GetYScaleFactor (int,unsigned int) ; 
- int /*<<< orphan*/  GX_InvalidateTexAll () ; 
- int /*<<< orphan*/  GX_MAX_Z24 ; 
- int /*<<< orphan*/  GX_PF_RGB8_Z24 ; 
- int /*<<< orphan*/  GX_SetCopyClear (TYPE_7__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GX_SetCopyFilter (void*,int**,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  GX_SetDispCopyDst (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GX_SetDispCopySrc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,int) ; 
- scalar_t__ GX_SetDispCopyYScale (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GX_SetFieldMode (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GX_SetPixelFmt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GX_SetViewportJitter (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,int,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  GX_TRUE ; 
- int /*<<< orphan*/  GX_ZC_LINEAR ; 
- int MIN (unsigned int,int) ; 
- int /*<<< orphan*/  RARCH_DRIVER_CTL_SET_REFRESH_RATE ; 
- int /*<<< orphan*/  RARCH_LOG (char*,unsigned int,int,char*) ; 
-#define  RGUI_ASPECT_RATIO_16_10 134 
-#define  RGUI_ASPECT_RATIO_16_10_CENTRE 133 
-#define  RGUI_ASPECT_RATIO_16_9 132 
-#define  RGUI_ASPECT_RATIO_16_9_CENTRE 131 
- int /*<<< orphan*/  VIDEO_ClearFrameBuffer (TYPE_8__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VIDEO_Configure (TYPE_8__*) ; 
- int /*<<< orphan*/  VIDEO_Flush () ; 
- unsigned int VIDEO_GetCurrentTvMode () ; 
- int /*<<< orphan*/  VIDEO_GetNextField () ; 
- int /*<<< orphan*/  VIDEO_GetPreferredMode (TYPE_6__*) ; 
- int VIDEO_HaveComponentCable () ; 
- scalar_t__ VIDEO_PadFramebufferWidth (unsigned int) ; 
- int /*<<< orphan*/  VIDEO_SetBlack (int) ; 
- int /*<<< orphan*/  VIDEO_SetNextFramebuffer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VIDEO_SetPostRetraceCallback (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VIDEO_WaitVSync () ; 
-#define  VI_EURGB60 130 
- unsigned int VI_INTERLACE ; 
- int VI_MAX_HEIGHT_EURGB60 ; 
- int VI_MAX_HEIGHT_MPAL ; 
- int VI_MAX_HEIGHT_NTSC ; 
- int VI_MAX_HEIGHT_PAL ; 
- unsigned int VI_MAX_WIDTH_EURGB60 ; 
- unsigned int VI_MAX_WIDTH_MPAL ; 
- unsigned int VI_MAX_WIDTH_NTSC ; 
- unsigned int VI_MAX_WIDTH_PAL ; 
-#define  VI_MPAL 129 
- unsigned int VI_NON_INTERLACE ; 
- unsigned int VI_NTSC ; 
-#define  VI_PAL 128 
- unsigned int VI_PROGRESSIVE ; 
- int VI_TVMODE (unsigned int,unsigned int) ; 
- int /*<<< orphan*/  VI_XFBMODE_DF ; 
- int /*<<< orphan*/  VI_XFBMODE_SF ; 
- TYPE_4__* config_get_ptr () ; 
- int /*<<< orphan*/  driver_ctl (int /*<<< orphan*/ ,float*) ; 
- scalar_t__ g_current_framebuf ; 
- int g_draw_done ; 
- scalar_t__ gx_isValidXOrigin (int) ; 
- scalar_t__ gx_isValidYOrigin (int) ; 
- TYPE_8__ gx_mode ; 
- scalar_t__ gx_system_xOrigin ; 
- unsigned int gx_used_system_xOrigin ; 
- int gx_xOrigin ; 
- int gx_xOriginNeg ; 
- int gx_xOriginPos ; 
- int gx_yOrigin ; 
- int gx_yOriginNeg ; 
- int gx_yOriginPos ; 
- int max_height ; 
- int /*<<< orphan*/  menu_display_set_framebuffer_pitch (size_t) ; 
- int /*<<< orphan*/  menu_display_set_height (unsigned int) ; 
- int /*<<< orphan*/  menu_display_set_width (unsigned int) ; 
- int /*<<< orphan*/ * retrace_callback ; 
+
+ int COLOR_BLACK ;
+ int CONF_GetEuRGB60 () ;
+ scalar_t__ CONF_GetProgressiveScan () ;
+ int CONF_GetVideo () ;
+
+
+ int GX_DISABLE ;
+ int GX_ENABLE ;
+ void* GX_FALSE ;
+ int GX_Flush () ;
+ float GX_GetYScaleFactor (int,unsigned int) ;
+ int GX_InvalidateTexAll () ;
+ int GX_MAX_Z24 ;
+ int GX_PF_RGB8_Z24 ;
+ int GX_SetCopyClear (TYPE_7__,int ) ;
+ int GX_SetCopyFilter (void*,int**,int ,int*) ;
+ int GX_SetDispCopyDst (int ,int ) ;
+ int GX_SetDispCopySrc (int ,int ,unsigned int,int) ;
+ scalar_t__ GX_SetDispCopyYScale (int ) ;
+ int GX_SetFieldMode (void*,int ) ;
+ int GX_SetPixelFmt (int ,int ) ;
+ int GX_SetViewportJitter (int ,int ,unsigned int,int,int ,int,int) ;
+ int GX_TRUE ;
+ int GX_ZC_LINEAR ;
+ int MIN (unsigned int,int) ;
+ int RARCH_DRIVER_CTL_SET_REFRESH_RATE ;
+ int RARCH_LOG (char*,unsigned int,int,char*) ;
+
+
+
+
+ int VIDEO_ClearFrameBuffer (TYPE_8__*,int ,int ) ;
+ int VIDEO_Configure (TYPE_8__*) ;
+ int VIDEO_Flush () ;
+ unsigned int VIDEO_GetCurrentTvMode () ;
+ int VIDEO_GetNextField () ;
+ int VIDEO_GetPreferredMode (TYPE_6__*) ;
+ int VIDEO_HaveComponentCable () ;
+ scalar_t__ VIDEO_PadFramebufferWidth (unsigned int) ;
+ int VIDEO_SetBlack (int) ;
+ int VIDEO_SetNextFramebuffer (int ) ;
+ int VIDEO_SetPostRetraceCallback (int *) ;
+ int VIDEO_WaitVSync () ;
+
+ unsigned int VI_INTERLACE ;
+ int VI_MAX_HEIGHT_EURGB60 ;
+ int VI_MAX_HEIGHT_MPAL ;
+ int VI_MAX_HEIGHT_NTSC ;
+ int VI_MAX_HEIGHT_PAL ;
+ unsigned int VI_MAX_WIDTH_EURGB60 ;
+ unsigned int VI_MAX_WIDTH_MPAL ;
+ unsigned int VI_MAX_WIDTH_NTSC ;
+ unsigned int VI_MAX_WIDTH_PAL ;
+
+ unsigned int VI_NON_INTERLACE ;
+ unsigned int VI_NTSC ;
+
+ unsigned int VI_PROGRESSIVE ;
+ int VI_TVMODE (unsigned int,unsigned int) ;
+ int VI_XFBMODE_DF ;
+ int VI_XFBMODE_SF ;
+ TYPE_4__* config_get_ptr () ;
+ int driver_ctl (int ,float*) ;
+ scalar_t__ g_current_framebuf ;
+ int g_draw_done ;
+ scalar_t__ gx_isValidXOrigin (int) ;
+ scalar_t__ gx_isValidYOrigin (int) ;
+ TYPE_8__ gx_mode ;
+ scalar_t__ gx_system_xOrigin ;
+ unsigned int gx_used_system_xOrigin ;
+ int gx_xOrigin ;
+ int gx_xOriginNeg ;
+ int gx_xOriginPos ;
+ int gx_yOrigin ;
+ int gx_yOriginNeg ;
+ int gx_yOriginPos ;
+ int max_height ;
+ int menu_display_set_framebuffer_pitch (size_t) ;
+ int menu_display_set_height (unsigned int) ;
+ int menu_display_set_width (unsigned int) ;
+ int * retrace_callback ;
 
 __attribute__((used)) static void gx_set_video_mode(void *data, unsigned fbWidth, unsigned lines,
       bool fullscreen)
@@ -125,63 +125,43 @@ __attribute__((used)) static void gx_set_video_mode(void *data, unsigned fbWidth
    bool progressive;
    unsigned modetype, viHeightMultiplier, viWidth, tvmode,
             max_width, i;
-   size_t new_fb_pitch    = 0;
-   unsigned new_fb_width  = 0;
+   size_t new_fb_pitch = 0;
+   unsigned new_fb_width = 0;
    unsigned new_fb_height = 0;
-   float y_scale          = 0.0f;
-   uint16_t xfbWidth      = 0;
-   uint16_t xfbHeight     = 0;
-   gx_video_t *gx         = (gx_video_t*)data;
-   settings_t *settings   = config_get_ptr();
+   float y_scale = 0.0f;
+   uint16_t xfbWidth = 0;
+   uint16_t xfbHeight = 0;
+   gx_video_t *gx = (gx_video_t*)data;
+   settings_t *settings = config_get_ptr();
 
-   /* stop vsync callback */
-   VIDEO_SetPostRetraceCallback(NULL);
-   g_draw_done = false;
-   /* wait for next even field */
-   /* this prevents screen artifacts when switching
-    * between interlaced & non-interlaced modes */
+
+   VIDEO_SetPostRetraceCallback(((void*)0));
+   g_draw_done = 0;
+
+
+
    do VIDEO_WaitVSync();
    while (!VIDEO_GetNextField());
 
-   VIDEO_SetBlack(true);
+   VIDEO_SetBlack(1);
    VIDEO_Flush();
    viHeightMultiplier = 1;
-   viWidth            = settings->uints.video_viwidth;
-
-#if defined(HW_RVL)
-   progressive = CONF_GetProgressiveScan() > 0 && VIDEO_HaveComponentCable();
-
-   switch (CONF_GetVideo())
-   {
-      case CONF_VIDEO_PAL:
-         if (CONF_GetEuRGB60() > 0)
-            tvmode = VI_EURGB60;
-         else
-            tvmode = VI_PAL;
-         break;
-      case CONF_VIDEO_MPAL:
-         tvmode = VI_MPAL;
-         break;
-      default:
-         tvmode = VI_NTSC;
-         break;
-   }
-#else
+   viWidth = settings->uints.video_viwidth;
    progressive = VIDEO_HaveComponentCable();
    tvmode = VIDEO_GetCurrentTvMode();
-#endif
+
 
    switch (tvmode)
    {
-      case VI_PAL:
+      case 128:
          max_width = VI_MAX_WIDTH_PAL;
          max_height = VI_MAX_HEIGHT_PAL;
          break;
-      case VI_MPAL:
+      case 129:
          max_width = VI_MAX_WIDTH_MPAL;
          max_height = VI_MAX_HEIGHT_MPAL;
          break;
-      case VI_EURGB60:
+      case 130:
          max_width = VI_MAX_WIDTH_EURGB60;
          max_height = VI_MAX_HEIGHT_EURGB60;
          break;
@@ -216,9 +196,9 @@ __attribute__((used)) static void gx_set_video_mode(void *data, unsigned fbWidth
    if (fbWidth > max_width)
       fbWidth = max_width;
 
-   gx_mode.viTVMode     = VI_TVMODE(tvmode, modetype);
-   gx_mode.fbWidth      = fbWidth;
-   gx_mode.efbHeight    = MIN(lines, 480);
+   gx_mode.viTVMode = VI_TVMODE(tvmode, modetype);
+   gx_mode.fbWidth = fbWidth;
+   gx_mode.efbHeight = MIN(lines, 480);
 
    if (modetype == VI_NON_INTERLACE && lines > max_height / 2)
       gx_mode.xfbHeight = max_height / 2;
@@ -227,8 +207,8 @@ __attribute__((used)) static void gx_set_video_mode(void *data, unsigned fbWidth
    else
       gx_mode.xfbHeight = lines;
 
-   gx_mode.viWidth      = viWidth;
-   gx_mode.viHeight     = gx_mode.xfbHeight * viHeightMultiplier;
+   gx_mode.viWidth = viWidth;
+   gx_mode.viHeight = gx_mode.xfbHeight * viHeightMultiplier;
 
    gx_used_system_xOrigin = gx_system_xOrigin;
    if(gx_used_system_xOrigin > 0)
@@ -293,38 +273,38 @@ __attribute__((used)) static void gx_set_video_mode(void *data, unsigned fbWidth
    gx->vp.full_width = gx_mode.fbWidth;
    gx->vp.full_height = gx_mode.xfbHeight;
    gx->double_strike = (modetype == VI_NON_INTERLACE);
-   gx->should_resize = true;
+   gx->should_resize = 1;
 
-   /* Calculate menu dimensions
-    * > Height is set as large as possible, limited to
-    *   maximum of 240 (standard RGUI framebuffer height) */
-   new_fb_height  = (gx_mode.efbHeight / (gx->double_strike ? 1 : 2)) & ~3;
+
+
+
+   new_fb_height = (gx_mode.efbHeight / (gx->double_strike ? 1 : 2)) & ~3;
    if (new_fb_height > 240)
       new_fb_height = 240;
-   /* > Width is dertermined by current RGUI aspect ratio
-    *   (note that width is in principal limited by hardware
-    *    constraints to 640, but we impose a lower limit of
-    *    424 since this is the nearest to the RGUI 'standard'
-    *    for 16:9 aspect ratios which is supported by the Wii
-    *    - i.e. last two bits of value must be zero, so 426->424) */
+
+
+
+
+
+
    switch (settings->uints.menu_rgui_aspect_ratio)
    {
-      case RGUI_ASPECT_RATIO_16_9:
-      case RGUI_ASPECT_RATIO_16_9_CENTRE:
+      case 132:
+      case 131:
          if (new_fb_height == 240)
             new_fb_width = 424;
          else
             new_fb_width = (unsigned)((16.0f / 9.0f) * (float)new_fb_height) & ~3;
          break;
-      case RGUI_ASPECT_RATIO_16_10:
-      case RGUI_ASPECT_RATIO_16_10_CENTRE:
+      case 134:
+      case 133:
          if (new_fb_height == 240)
             new_fb_width = 384;
          else
             new_fb_width = (unsigned)((16.0f / 10.0f) * (float)new_fb_height) & ~3;
          break;
       default:
-         /* 4:3 */
+
          if (new_fb_height == 240)
             new_fb_width = 320;
          else
@@ -343,8 +323,8 @@ __attribute__((used)) static void gx_set_video_mode(void *data, unsigned fbWidth
    GX_SetViewportJitter(0, 0, gx_mode.fbWidth, gx_mode.efbHeight, 0, 1, 1);
    GX_SetDispCopySrc(0, 0, gx_mode.fbWidth, gx_mode.efbHeight);
 
-   y_scale   = GX_GetYScaleFactor(gx_mode.efbHeight, gx_mode.xfbHeight);
-   xfbWidth  = VIDEO_PadFramebufferWidth(gx_mode.fbWidth);
+   y_scale = GX_GetYScaleFactor(gx_mode.efbHeight, gx_mode.xfbHeight);
+   xfbWidth = VIDEO_PadFramebufferWidth(gx_mode.fbWidth);
    xfbHeight = GX_SetDispCopyYScale((f32)y_scale);
    GX_SetDispCopyDst((u16)xfbWidth, (u16)xfbHeight);
 
@@ -358,15 +338,15 @@ __attribute__((used)) static void gx_set_video_mode(void *data, unsigned fbWidth
    GX_InvalidateTexAll();
    GX_Flush();
 
-   /* Now apply all the configuration to the screen */
+
    VIDEO_Configure(&gx_mode);
    VIDEO_ClearFrameBuffer(&gx_mode, gx->framebuf[0], COLOR_BLACK);
    VIDEO_ClearFrameBuffer(&gx_mode, gx->framebuf[1], COLOR_BLACK);
    VIDEO_SetNextFramebuffer(gx->framebuf[0]);
    g_current_framebuf = 0;
-   /* re-activate the Vsync callback */
+
    VIDEO_SetPostRetraceCallback(retrace_callback);
-   VIDEO_SetBlack(false);
+   VIDEO_SetBlack(0);
    VIDEO_Flush();
    VIDEO_WaitVSync();
 
@@ -374,7 +354,7 @@ __attribute__((used)) static void gx_set_video_mode(void *data, unsigned fbWidth
          gx_mode.efbHeight, (gx_mode.viTVMode & 3) == VI_INTERLACE
          ? "interlaced" : "progressive");
 
-   if (tvmode == VI_PAL)
+   if (tvmode == 128)
    {
       refresh_rate = 50.0f;
       if (modetype == VI_NON_INTERLACE)

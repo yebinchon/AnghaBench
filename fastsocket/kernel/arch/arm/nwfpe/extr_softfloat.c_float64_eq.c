@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int float64 ;
-typedef  int flag ;
-typedef  scalar_t__ bits64 ;
 
-/* Variables and functions */
- int extractFloat64Exp (int) ; 
- scalar_t__ extractFloat64Frac (int) ; 
- scalar_t__ float64_is_signaling_nan (int) ; 
- int /*<<< orphan*/  float_flag_invalid ; 
- int /*<<< orphan*/  float_raise (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int float64 ;
+typedef int flag ;
+typedef scalar_t__ bits64 ;
+
+
+ int extractFloat64Exp (int) ;
+ scalar_t__ extractFloat64Frac (int) ;
+ scalar_t__ float64_is_signaling_nan (int) ;
+ int float_flag_invalid ;
+ int float_raise (int ) ;
 
 flag float64_eq( float64 a, float64 b )
 {
 
-    if (    ( ( extractFloat64Exp( a ) == 0x7FF ) && extractFloat64Frac( a ) )
+    if ( ( ( extractFloat64Exp( a ) == 0x7FF ) && extractFloat64Frac( a ) )
          || ( ( extractFloat64Exp( b ) == 0x7FF ) && extractFloat64Frac( b ) )
        ) {
         if ( float64_is_signaling_nan( a ) || float64_is_signaling_nan( b ) ) {

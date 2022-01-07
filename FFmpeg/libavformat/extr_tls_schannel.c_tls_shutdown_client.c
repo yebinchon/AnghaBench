@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dwshut ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int dwshut ;
 struct TYPE_9__ {TYPE_3__* priv_data; } ;
-typedef  TYPE_1__ URLContext ;
-struct TYPE_12__ {int cbBuffer; int /*<<< orphan*/  pvBuffer; } ;
-struct TYPE_10__ {int /*<<< orphan*/  tcp; int /*<<< orphan*/  host; } ;
-struct TYPE_11__ {scalar_t__ connected; int /*<<< orphan*/  ctxt_timestamp; int /*<<< orphan*/  context_flags; int /*<<< orphan*/  ctxt_handle; int /*<<< orphan*/  request_flags; int /*<<< orphan*/  cred_handle; TYPE_2__ tls_shared; } ;
-typedef  TYPE_2__ TLSShared ;
-typedef  TYPE_3__ TLSContext ;
-typedef  int /*<<< orphan*/  SecBufferDesc ;
-typedef  TYPE_4__ SecBuffer ;
-typedef  scalar_t__ SECURITY_STATUS ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef TYPE_1__ URLContext ;
+struct TYPE_12__ {int cbBuffer; int pvBuffer; } ;
+struct TYPE_10__ {int tcp; int host; } ;
+struct TYPE_11__ {scalar_t__ connected; int ctxt_timestamp; int context_flags; int ctxt_handle; int request_flags; int cred_handle; TYPE_2__ tls_shared; } ;
+typedef TYPE_2__ TLSShared ;
+typedef TYPE_3__ TLSContext ;
+typedef int SecBufferDesc ;
+typedef TYPE_4__ SecBuffer ;
+typedef scalar_t__ SECURITY_STATUS ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- scalar_t__ ApplyControlToken (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeContextBuffer (int /*<<< orphan*/ ) ; 
- scalar_t__ InitializeSecurityContext (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SCHANNEL_SHUTDOWN ; 
- int /*<<< orphan*/  SECBUFFER_EMPTY ; 
- int /*<<< orphan*/  SECBUFFER_TOKEN ; 
- scalar_t__ SEC_E_OK ; 
- scalar_t__ SEC_I_CONTEXT_EXPIRED ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*) ; 
- int ffurl_write (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  init_sec_buffer (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  init_sec_buffer_desc (int /*<<< orphan*/ *,TYPE_4__*,int) ; 
+
+ int AV_LOG_ERROR ;
+ scalar_t__ ApplyControlToken (int *,int *) ;
+ int FreeContextBuffer (int ) ;
+ scalar_t__ InitializeSecurityContext (int *,int *,int ,int ,int ,int ,int *,int ,int *,int *,int *,int *) ;
+ int SCHANNEL_SHUTDOWN ;
+ int SECBUFFER_EMPTY ;
+ int SECBUFFER_TOKEN ;
+ scalar_t__ SEC_E_OK ;
+ scalar_t__ SEC_I_CONTEXT_EXPIRED ;
+ int av_log (TYPE_1__*,int ,char*) ;
+ int ffurl_write (int ,int ,int) ;
+ int init_sec_buffer (TYPE_4__*,int ,int *,int) ;
+ int init_sec_buffer_desc (int *,TYPE_4__*,int) ;
 
 __attribute__((used)) static int tls_shutdown_client(URLContext *h)
 {
@@ -63,11 +63,11 @@ __attribute__((used)) static int tls_shutdown_client(URLContext *h)
         if (sspi_ret != SEC_E_OK)
             av_log(h, AV_LOG_ERROR, "ApplyControlToken failed\n");
 
-        init_sec_buffer(&outbuf, SECBUFFER_EMPTY, NULL, 0);
+        init_sec_buffer(&outbuf, SECBUFFER_EMPTY, ((void*)0), 0);
         init_sec_buffer_desc(&outbuf_desc, &outbuf, 1);
 
         sspi_ret = InitializeSecurityContext(&c->cred_handle, &c->ctxt_handle, s->host,
-                                             c->request_flags, 0, 0, NULL, 0, &c->ctxt_handle,
+                                             c->request_flags, 0, 0, ((void*)0), 0, &c->ctxt_handle,
                                              &outbuf_desc, &c->context_flags, &c->ctxt_timestamp);
         if (sspi_ret == SEC_E_OK || sspi_ret == SEC_I_CONTEXT_EXPIRED) {
             ret = ffurl_write(s->tcp, outbuf.pvBuffer, outbuf.cbBuffer);

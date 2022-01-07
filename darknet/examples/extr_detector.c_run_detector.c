@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  list ;
 
-/* Variables and functions */
- int atoi (char*) ; 
- int* calloc (int,int) ; 
- int /*<<< orphan*/  demo (char*,char*,float,int,char*,char**,int,int,char*,int,float,int,int,int,int) ; 
- int find_arg (int,char**,char*) ; 
- char* find_char_arg (int,char**,char*,int /*<<< orphan*/ ) ; 
- float find_float_arg (int,char**,char*,double) ; 
- int find_int_arg (int,char**,char*,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
- char** get_labels (char*) ; 
- int gpu_index ; 
- int option_find_int (int /*<<< orphan*/ *,char*,int) ; 
- char* option_find_str (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/ * read_data_cfg (char*) ; 
- int /*<<< orphan*/  stderr ; 
- char* strchr (char*,char) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  test_detector (char*,char*,char*,char*,float,float,char*,int) ; 
- int /*<<< orphan*/  train_detector (char*,char*,char*,int*,int,int) ; 
- int /*<<< orphan*/  validate_detector (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  validate_detector_flip (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  validate_detector_recall (char*,char*) ; 
+
+
+
+typedef int list ;
+
+
+ int atoi (char*) ;
+ int* calloc (int,int) ;
+ int demo (char*,char*,float,int,char*,char**,int,int,char*,int,float,int,int,int,int) ;
+ int find_arg (int,char**,char*) ;
+ char* find_char_arg (int,char**,char*,int ) ;
+ float find_float_arg (int,char**,char*,double) ;
+ int find_int_arg (int,char**,char*,int) ;
+ int fprintf (int ,char*,char*,char*) ;
+ char** get_labels (char*) ;
+ int gpu_index ;
+ int option_find_int (int *,char*,int) ;
+ char* option_find_str (int *,char*,char*) ;
+ int printf (char*,char*) ;
+ int * read_data_cfg (char*) ;
+ int stderr ;
+ char* strchr (char*,char) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strlen (char*) ;
+ int test_detector (char*,char*,char*,char*,float,float,char*,int) ;
+ int train_detector (char*,char*,char*,int*,int,int) ;
+ int validate_detector (char*,char*,char*,char*) ;
+ int validate_detector_flip (char*,char*,char*,char*) ;
+ int validate_detector_recall (char*,char*) ;
 
 void run_detector(int argc, char **argv)
 {
@@ -78,7 +78,7 @@ void run_detector(int argc, char **argv)
     int width = find_int_arg(argc, argv, "-w", 0);
     int height = find_int_arg(argc, argv, "-h", 0);
     int fps = find_int_arg(argc, argv, "-fps", 0);
-    //int class = find_int_arg(argc, argv, "-class", 0);
+
 
     char *datacfg = argv[3];
     char *cfg = argv[4];
@@ -96,6 +96,6 @@ void run_detector(int argc, char **argv)
         char **names = get_labels(name_list);
         demo(cfg, weights, thresh, cam_index, filename, names, classes, frame_skip, prefix, avg, hier_thresh, width, height, fps, fullscreen);
     }
-    //else if(0==strcmp(argv[2], "extract")) extract_detector(datacfg, cfg, weights, cam_index, filename, class, thresh, frame_skip);
-    //else if(0==strcmp(argv[2], "censor")) censor_detector(datacfg, cfg, weights, cam_index, filename, class, thresh, frame_skip);
+
+
 }

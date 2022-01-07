@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct adv7511 {int /*<<< orphan*/  regmap; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  adv7533_fixed_registers ; 
- int regmap_register_patch (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct adv7511 {int regmap; } ;
+
+
+ int ARRAY_SIZE (int ) ;
+ int adv7533_fixed_registers ;
+ int regmap_register_patch (int ,int ,int ) ;
 
 int adv7533_patch_registers(struct adv7511 *adv)
 {
-	return regmap_register_patch(adv->regmap,
-				     adv7533_fixed_registers,
-				     ARRAY_SIZE(adv7533_fixed_registers));
+ return regmap_register_patch(adv->regmap,
+         adv7533_fixed_registers,
+         ARRAY_SIZE(adv7533_fixed_registers));
 }

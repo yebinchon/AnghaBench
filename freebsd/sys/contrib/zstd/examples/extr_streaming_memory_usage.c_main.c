@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  decompressedData ;
-typedef  int /*<<< orphan*/  dataToCompress ;
-typedef  int /*<<< orphan*/  compressedData ;
-struct TYPE_8__ {char* member_0; int member_1; size_t pos; int /*<<< orphan*/  member_2; } ;
-typedef  TYPE_1__ ZSTD_outBuffer ;
-struct TYPE_9__ {char const* member_0; int member_1; int /*<<< orphan*/  member_2; } ;
-typedef  TYPE_2__ ZSTD_inBuffer ;
-typedef  int /*<<< orphan*/  ZSTD_DCtx ;
-typedef  int /*<<< orphan*/  ZSTD_CCtx_params ;
-typedef  int /*<<< orphan*/  ZSTD_CCtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK (int,char*,...) ; 
- int /*<<< orphan*/  CHECK_ZSTD (size_t const) ; 
- int COMPRESSED_SIZE ; 
- int INPUT_SIZE ; 
- int MAX_TESTED_LEVEL ; 
- size_t const ZSTD_CCtxParams_setParameter (int /*<<< orphan*/ * const,int /*<<< orphan*/ ,unsigned int) ; 
- size_t const ZSTD_CCtx_setParametersUsingCCtxParams (int /*<<< orphan*/ * const,int /*<<< orphan*/ * const) ; 
- size_t const ZSTD_DCtx_setParameter (int /*<<< orphan*/ * const,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  ZSTD_c_compressionLevel ; 
- int /*<<< orphan*/  ZSTD_c_windowLog ; 
- size_t const ZSTD_compressStream (int /*<<< orphan*/ * const,TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/ * ZSTD_createCCtx () ; 
- int /*<<< orphan*/ * ZSTD_createCCtxParams () ; 
- int /*<<< orphan*/ * ZSTD_createDCtx () ; 
- int /*<<< orphan*/  ZSTD_d_windowLogMax ; 
- size_t ZSTD_decompressStream (int /*<<< orphan*/ * const,TYPE_1__*,TYPE_2__*) ; 
- size_t ZSTD_endStream (int /*<<< orphan*/ * const,TYPE_1__*) ; 
- size_t ZSTD_estimateCStreamSize_usingCCtxParams (int /*<<< orphan*/ * const) ; 
- size_t ZSTD_estimateDStreamSize_fromFrame (char*,size_t) ; 
- int /*<<< orphan*/  ZSTD_freeCCtx (int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  ZSTD_freeCCtxParams (int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  ZSTD_freeDCtx (int /*<<< orphan*/ * const) ; 
- size_t ZSTD_sizeof_CStream (int /*<<< orphan*/ * const) ; 
- size_t ZSTD_sizeof_DStream (int /*<<< orphan*/ * const) ; 
- char* ZSTD_versionString () ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- unsigned int readU32FromChar (char const**) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int decompressedData ;
+typedef int dataToCompress ;
+typedef int compressedData ;
+struct TYPE_8__ {char* member_0; int member_1; size_t pos; int member_2; } ;
+typedef TYPE_1__ ZSTD_outBuffer ;
+struct TYPE_9__ {char const* member_0; int member_1; int member_2; } ;
+typedef TYPE_2__ ZSTD_inBuffer ;
+typedef int ZSTD_DCtx ;
+typedef int ZSTD_CCtx_params ;
+typedef int ZSTD_CCtx ;
+
+
+ int CHECK (int,char*,...) ;
+ int CHECK_ZSTD (size_t const) ;
+ int COMPRESSED_SIZE ;
+ int INPUT_SIZE ;
+ int MAX_TESTED_LEVEL ;
+ size_t const ZSTD_CCtxParams_setParameter (int * const,int ,unsigned int) ;
+ size_t const ZSTD_CCtx_setParametersUsingCCtxParams (int * const,int * const) ;
+ size_t const ZSTD_DCtx_setParameter (int * const,int ,unsigned int) ;
+ int ZSTD_c_compressionLevel ;
+ int ZSTD_c_windowLog ;
+ size_t const ZSTD_compressStream (int * const,TYPE_1__*,TYPE_2__*) ;
+ int * ZSTD_createCCtx () ;
+ int * ZSTD_createCCtxParams () ;
+ int * ZSTD_createDCtx () ;
+ int ZSTD_d_windowLogMax ;
+ size_t ZSTD_decompressStream (int * const,TYPE_1__*,TYPE_2__*) ;
+ size_t ZSTD_endStream (int * const,TYPE_1__*) ;
+ size_t ZSTD_estimateCStreamSize_usingCCtxParams (int * const) ;
+ size_t ZSTD_estimateDStreamSize_fromFrame (char*,size_t) ;
+ int ZSTD_freeCCtx (int * const) ;
+ int ZSTD_freeCCtxParams (int * const) ;
+ int ZSTD_freeDCtx (int * const) ;
+ size_t ZSTD_sizeof_CStream (int * const) ;
+ size_t ZSTD_sizeof_DStream (int * const) ;
+ char* ZSTD_versionString () ;
+ int printf (char*,...) ;
+ unsigned int readU32FromChar (char const**) ;
 
 int main(int argc, char const *argv[]) {
 
@@ -64,32 +64,32 @@ int main(int argc, char const *argv[]) {
 
     int compressionLevel;
     for (compressionLevel = 1; compressionLevel <= MAX_TESTED_LEVEL; compressionLevel++) {
-#define INPUT_SIZE 5
-#define COMPRESSED_SIZE 128
-        char const dataToCompress[INPUT_SIZE] = "abcde";
-        char compressedData[COMPRESSED_SIZE];
-        char decompressedData[INPUT_SIZE];
-        /* the ZSTD_CCtx_params structure is a way to save parameters and use
-         * them across multiple contexts. We use them here so we can call the
-         * function ZSTD_estimateCStreamSize_usingCCtxParams().
-         */
-        ZSTD_CCtx_params* const cctxParams = ZSTD_createCCtxParams();
-        CHECK(cctxParams != NULL, "ZSTD_createCCtxParams() failed!");
 
-        /* Set the compression level. */
+
+        char const dataToCompress[5] = "abcde";
+        char compressedData[128];
+        char decompressedData[5];
+
+
+
+
+        ZSTD_CCtx_params* const cctxParams = ZSTD_createCCtxParams();
+        CHECK(cctxParams != ((void*)0), "ZSTD_createCCtxParams() failed!");
+
+
         CHECK_ZSTD( ZSTD_CCtxParams_setParameter(cctxParams, ZSTD_c_compressionLevel, compressionLevel) );
-        /* Set the window log.
-         * The value 0 means use the default window log, which is equivalent to
-         * not setting it.
-         */
+
+
+
+
         CHECK_ZSTD( ZSTD_CCtxParams_setParameter(cctxParams, ZSTD_c_windowLog, wLog) );
 
-        /* Force the compressor to allocate the maximum memory size for a given
-         * level by not providing the pledged source size, or calling
-         * ZSTD_compressStream2() with ZSTD_e_end.
-         */
+
+
+
+
         ZSTD_CCtx* const cctx = ZSTD_createCCtx();
-        CHECK(cctx != NULL, "ZSTD_createCCtx() failed!");
+        CHECK(cctx != ((void*)0), "ZSTD_createCCtx() failed!");
         CHECK_ZSTD( ZSTD_CCtx_setParametersUsingCCtxParams(cctx, cctxParams) );
         size_t compressedSize;
         {
@@ -103,16 +103,16 @@ int main(int argc, char const *argv[]) {
         }
 
         ZSTD_DCtx* const dctx = ZSTD_createDCtx();
-        CHECK(dctx != NULL, "ZSTD_createDCtx() failed!");
-        /* Set the maximum allowed window log.
-         * The value 0 means use the default window log, which is equivalent to
-         * not setting it.
-         */
+        CHECK(dctx != ((void*)0), "ZSTD_createDCtx() failed!");
+
+
+
+
         CHECK_ZSTD( ZSTD_DCtx_setParameter(dctx, ZSTD_d_windowLogMax, wLog) );
-        /* forces decompressor to use maximum memory size, since the
-         * decompressed size is not stored in the frame header.
-         */
-        {   ZSTD_inBuffer inBuff = { compressedData, compressedSize, 0 };
+
+
+
+        { ZSTD_inBuffer inBuff = { compressedData, compressedSize, 0 };
             ZSTD_outBuffer outBuff = { decompressedData, sizeof(decompressedData), 0 };
             size_t const remaining = ZSTD_decompressStream(dctx, &outBuff, &inBuff);
             CHECK_ZSTD(remaining);
@@ -138,7 +138,7 @@ int main(int argc, char const *argv[]) {
         ZSTD_freeDCtx(dctx);
         ZSTD_freeCCtx(cctx);
         ZSTD_freeCCtxParams(cctxParams);
-        if (wLog) break;  /* single test */
+        if (wLog) break;
     }
     return 0;
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int kind; struct TYPE_8__* next; struct TYPE_8__* prev; void* target_offset; void* limit; void* offset; } ;
-typedef  TYPE_1__ range_list_node_t ;
-struct TYPE_9__ {int /*<<< orphan*/  free_list; int /*<<< orphan*/  pool; } ;
-typedef  TYPE_2__ range_index_t ;
-typedef  enum range_kind { ____Placeholder_range_kind } range_kind ;
-typedef  void* apr_size_t ;
+typedef TYPE_1__ range_list_node_t ;
+struct TYPE_9__ {int free_list; int pool; } ;
+typedef TYPE_2__ range_index_t ;
+typedef enum range_kind { ____Placeholder_range_kind } range_kind ;
+typedef void* apr_size_t ;
 
-/* Variables and functions */
- TYPE_1__* alloc_block (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ TYPE_1__* alloc_block (int ,int *) ;
 
 __attribute__((used)) static range_list_node_t *
 alloc_range_list(range_list_node_t **list,
@@ -36,15 +36,15 @@ alloc_range_list(range_list_node_t **list,
   node->offset = offset;
   node->limit = limit;
   node->target_offset = target_offset;
-  if (*list == NULL)
+  if (*list == ((void*)0))
     {
-      node->prev = node->next = NULL;
+      node->prev = node->next = ((void*)0);
       *list = *tail = node;
     }
   else
     {
       node->prev = *tail;
-      node->next = NULL;
+      node->next = ((void*)0);
       (*tail)->next = node;
       *tail = node;
     }

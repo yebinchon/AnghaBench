@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  alicesk ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  bobsk ; 
- int crypto_scalarmult (unsigned char*,int /*<<< orphan*/ ,unsigned char*) ; 
- int /*<<< orphan*/  crypto_scalarmult_BYTES ; 
- int /*<<< orphan*/  crypto_scalarmult_base (unsigned char*,int /*<<< orphan*/ ) ; 
- unsigned int crypto_scalarmult_bytes () ; 
- unsigned int crypto_scalarmult_curve25519_bytes () ; 
- unsigned int crypto_scalarmult_curve25519_scalarbytes () ; 
- int /*<<< orphan*/  crypto_scalarmult_primitive () ; 
- unsigned int crypto_scalarmult_scalarbytes () ; 
- char* hex ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- unsigned char* small_order_p ; 
- int /*<<< orphan*/  sodium_bin2hex (char*,int,unsigned char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sodium_free (unsigned char*) ; 
- scalar_t__ sodium_malloc (int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
+ int alicesk ;
+ int assert (int) ;
+ int bobsk ;
+ int crypto_scalarmult (unsigned char*,int ,unsigned char*) ;
+ int crypto_scalarmult_BYTES ;
+ int crypto_scalarmult_base (unsigned char*,int ) ;
+ unsigned int crypto_scalarmult_bytes () ;
+ unsigned int crypto_scalarmult_curve25519_bytes () ;
+ unsigned int crypto_scalarmult_curve25519_scalarbytes () ;
+ int crypto_scalarmult_primitive () ;
+ unsigned int crypto_scalarmult_scalarbytes () ;
+ char* hex ;
+ int printf (char*,char*) ;
+ unsigned char* small_order_p ;
+ int sodium_bin2hex (char*,int,unsigned char*,int ) ;
+ int sodium_free (unsigned char*) ;
+ scalar_t__ sodium_malloc (int ) ;
+ scalar_t__ strcmp (int ,char*) ;
 
 int
 main(void)
@@ -39,9 +31,9 @@ main(void)
     unsigned char *bobpk =
         (unsigned char *) sodium_malloc(crypto_scalarmult_BYTES);
     unsigned char *k = (unsigned char *) sodium_malloc(crypto_scalarmult_BYTES);
-    int            ret;
+    int ret;
 
-    assert(alicepk != NULL && bobpk != NULL && k != NULL);
+    assert(alicepk != ((void*)0) && bobpk != ((void*)0) && k != ((void*)0));
 
     crypto_scalarmult_base(alicepk, alicesk);
     sodium_bin2hex(hex, sizeof hex, alicepk, crypto_scalarmult_BYTES);

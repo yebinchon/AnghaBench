@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int i64 ;
 
-/* Variables and functions */
- int describeCell (unsigned char,unsigned char*,int,char**) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  memset (char*,char,size_t) ; 
- int pagesize ; 
- int /*<<< orphan*/  print_decode_line (unsigned char*,int,int,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- scalar_t__ strlen (char*) ; 
+
+
+
+typedef int i64 ;
+
+
+ int describeCell (unsigned char,unsigned char*,int,char**) ;
+ int free (char*) ;
+ char* malloc (int) ;
+ int memcpy (char*,char*,int) ;
+ int memset (char*,char,size_t) ;
+ int pagesize ;
+ int print_decode_line (unsigned char*,int,int,int ,char const*) ;
+ int printf (char*,...) ;
+ int sprintf (char*,char*,int) ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static void decode_btree_page(
-  unsigned char *a,   /* Content of the btree page to be decoded */
-  int pgno,           /* Page number */
-  int hdrSize,        /* Size of the page1-header in bytes */
-  const char *zArgs   /* Flags to control formatting */
+  unsigned char *a,
+  int pgno,
+  int hdrSize,
+  const char *zArgs
 ){
   const char *zType = "unknown";
   int nCell;
@@ -38,15 +38,15 @@ __attribute__((used)) static void decode_btree_page(
   int showMap = 0;
   char *zMap = 0;
   switch( a[0] ){
-    case 2:  zType = "index interior node";  break;
-    case 5:  zType = "table interior node";  break;
-    case 10: zType = "index leaf";           break;
-    case 13: zType = "table leaf";           break;
+    case 2: zType = "index interior node"; break;
+    case 5: zType = "table interior node"; break;
+    case 10: zType = "index leaf"; break;
+    case 13: zType = "table leaf"; break;
   }
   while( zArgs[0] ){
     switch( zArgs[0] ){
-      case 'c': showCellContent = 1;  break;
-      case 'm': showMap = 1;          break;
+      case 'c': showCellContent = 1; break;
+      case 'm': showMap = 1; break;
     }
     zArgs++;
   }
@@ -96,5 +96,5 @@ __attribute__((used)) static void decode_btree_page(
       printf(" %03x: %.64s\n", i, &zMap[i]);
     }
     free(zMap);
-  }  
+  }
 }

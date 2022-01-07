@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int Oid ;
-typedef  int /*<<< orphan*/  Node ;
-typedef  int /*<<< orphan*/  List ;
 
-/* Variables and functions */
-#define  F_NETWORK_SUB 131 
-#define  F_NETWORK_SUBEQ 130 
-#define  F_NETWORK_SUP 129 
-#define  F_NETWORK_SUPEQ 128 
- int /*<<< orphan*/ * NIL ; 
- int /*<<< orphan*/ * match_network_subset (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ; 
+
+
+
+typedef int Oid ;
+typedef int Node ;
+typedef int List ;
+
+
+
+
+
+
+ int * NIL ;
+ int * match_network_subset (int *,int *,int,int) ;
 
 __attribute__((used)) static List *
 match_network_function(Node *leftop,
-					   Node *rightop,
-					   int indexarg,
-					   Oid funcid,
-					   Oid opfamily)
+        Node *rightop,
+        int indexarg,
+        Oid funcid,
+        Oid opfamily)
 {
-	switch (funcid)
-	{
-		case F_NETWORK_SUB:
-			/* indexkey must be on the left */
-			if (indexarg != 0)
-				return NIL;
-			return match_network_subset(leftop, rightop, false, opfamily);
+ switch (funcid)
+ {
+  case 131:
 
-		case F_NETWORK_SUBEQ:
-			/* indexkey must be on the left */
-			if (indexarg != 0)
-				return NIL;
-			return match_network_subset(leftop, rightop, true, opfamily);
+   if (indexarg != 0)
+    return NIL;
+   return match_network_subset(leftop, rightop, 0, opfamily);
 
-		case F_NETWORK_SUP:
-			/* indexkey must be on the right */
-			if (indexarg != 1)
-				return NIL;
-			return match_network_subset(rightop, leftop, false, opfamily);
+  case 130:
 
-		case F_NETWORK_SUPEQ:
-			/* indexkey must be on the right */
-			if (indexarg != 1)
-				return NIL;
-			return match_network_subset(rightop, leftop, true, opfamily);
+   if (indexarg != 0)
+    return NIL;
+   return match_network_subset(leftop, rightop, 1, opfamily);
 
-		default:
+  case 129:
 
-			/*
-			 * We'd only get here if somebody attached this support function
-			 * to an unexpected function.  Maybe we should complain, but for
-			 * now, do nothing.
-			 */
-			return NIL;
-	}
+   if (indexarg != 1)
+    return NIL;
+   return match_network_subset(rightop, leftop, 0, opfamily);
+
+  case 128:
+
+   if (indexarg != 1)
+    return NIL;
+   return match_network_subset(rightop, leftop, 1, opfamily);
+
+  default:
+
+
+
+
+
+
+   return NIL;
+ }
 }

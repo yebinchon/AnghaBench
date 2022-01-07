@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RSA ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int BN_num_bits (int /*<<< orphan*/  const*) ; 
- int BN_num_bytes (int /*<<< orphan*/  const*) ; 
- unsigned int MS_RSA1MAGIC ; 
- unsigned int MS_RSA2MAGIC ; 
- int /*<<< orphan*/  PEM_F_CHECK_BITLEN_RSA ; 
- int /*<<< orphan*/  PEM_R_UNSUPPORTED_KEY_COMPONENTS ; 
- int /*<<< orphan*/  PEMerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int RSA_bits (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RSA_get0_crt_params (int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int /*<<< orphan*/  const**,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  RSA_get0_factors (int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  RSA_get0_key (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int /*<<< orphan*/  const**) ; 
- int RSA_size (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int RSA ;
+typedef int BIGNUM ;
+
+
+ int BN_num_bits (int const*) ;
+ int BN_num_bytes (int const*) ;
+ unsigned int MS_RSA1MAGIC ;
+ unsigned int MS_RSA2MAGIC ;
+ int PEM_F_CHECK_BITLEN_RSA ;
+ int PEM_R_UNSUPPORTED_KEY_COMPONENTS ;
+ int PEMerr (int ,int ) ;
+ int RSA_bits (int *) ;
+ int RSA_get0_crt_params (int *,int const**,int const**,int const**) ;
+ int RSA_get0_factors (int *,int const**,int const**) ;
+ int RSA_get0_key (int *,int *,int const**,int const**) ;
+ int RSA_size (int *) ;
 
 __attribute__((used)) static int check_bitlen_rsa(RSA *rsa, int ispub, unsigned int *pmagic)
 {
     int nbyte, hnbyte, bitlen;
     const BIGNUM *e;
 
-    RSA_get0_key(rsa, NULL, &e, NULL);
+    RSA_get0_key(rsa, ((void*)0), &e, ((void*)0));
     if (BN_num_bits(e) > 32)
         goto badkey;
     bitlen = RSA_bits(rsa);
@@ -46,10 +46,10 @@ __attribute__((used)) static int check_bitlen_rsa(RSA *rsa, int ispub, unsigned 
 
         *pmagic = MS_RSA2MAGIC;
 
-        /*
-         * For private key each component must fit within nbyte or hnbyte.
-         */
-        RSA_get0_key(rsa, NULL, NULL, &d);
+
+
+
+        RSA_get0_key(rsa, ((void*)0), ((void*)0), &d);
         if (BN_num_bytes(d) > nbyte)
             goto badkey;
         RSA_get0_factors(rsa, &p, &q);

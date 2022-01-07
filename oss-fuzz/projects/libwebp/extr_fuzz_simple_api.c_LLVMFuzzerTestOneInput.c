@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int FuzzHash (int const* const,size_t) ; 
- int* WebPDecodeARGB (int const* const,size_t,int*,int*) ; 
- int /*<<< orphan*/  WebPDecodeARGBInto (int const* const,size_t,int* const,size_t,int const) ; 
- int* WebPDecodeBGR (int const* const,size_t,int*,int*) ; 
- int* WebPDecodeBGRA (int const* const,size_t,int*,int*) ; 
- int /*<<< orphan*/  WebPDecodeBGRAInto (int const* const,size_t,int* const,size_t,int const) ; 
- int /*<<< orphan*/  WebPDecodeBGRInto (int const* const,size_t,int* const,size_t,int const) ; 
- int* WebPDecodeRGB (int const* const,size_t,int*,int*) ; 
- int* WebPDecodeRGBA (int const* const,size_t,int*,int*) ; 
- int /*<<< orphan*/  WebPDecodeRGBAInto (int const* const,size_t,int* const,size_t,int const) ; 
- int /*<<< orphan*/  WebPDecodeRGBInto (int const* const,size_t,int* const,size_t,int const) ; 
- int* WebPDecodeYUV (int const* const,size_t,int*,int*,int**,int**,int*,int*) ; 
- int /*<<< orphan*/  WebPDecodeYUVInto (int const* const,size_t,int* const,size_t,int,int* const,size_t,int const,int* const,size_t,int const) ; 
- int /*<<< orphan*/  WebPFree (int*) ; 
- int /*<<< orphan*/  WebPGetInfo (int const* const,size_t,int*,int*) ; 
- int /*<<< orphan*/  free (int* const) ; 
- size_t kFuzzPxLimit ; 
- scalar_t__ malloc (size_t) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int FuzzHash (int const* const,size_t) ;
+ int* WebPDecodeARGB (int const* const,size_t,int*,int*) ;
+ int WebPDecodeARGBInto (int const* const,size_t,int* const,size_t,int const) ;
+ int* WebPDecodeBGR (int const* const,size_t,int*,int*) ;
+ int* WebPDecodeBGRA (int const* const,size_t,int*,int*) ;
+ int WebPDecodeBGRAInto (int const* const,size_t,int* const,size_t,int const) ;
+ int WebPDecodeBGRInto (int const* const,size_t,int* const,size_t,int const) ;
+ int* WebPDecodeRGB (int const* const,size_t,int*,int*) ;
+ int* WebPDecodeRGBA (int const* const,size_t,int*,int*) ;
+ int WebPDecodeRGBAInto (int const* const,size_t,int* const,size_t,int const) ;
+ int WebPDecodeRGBInto (int const* const,size_t,int* const,size_t,int const) ;
+ int* WebPDecodeYUV (int const* const,size_t,int*,int*,int**,int**,int*,int*) ;
+ int WebPDecodeYUVInto (int const* const,size_t,int* const,size_t,int,int* const,size_t,int const,int* const,size_t,int const) ;
+ int WebPFree (int*) ;
+ int WebPGetInfo (int const* const,size_t,int*,int*) ;
+ int free (int* const) ;
+ size_t kFuzzPxLimit ;
+ scalar_t__ malloc (size_t) ;
 
 int LLVMFuzzerTestOneInput(const uint8_t* const data, size_t size) {
   int w, h;
@@ -38,10 +38,10 @@ int LLVMFuzzerTestOneInput(const uint8_t* const data, size_t size) {
   if ((size_t)w * h > kFuzzPxLimit) return 0;
 
   const uint8_t value = FuzzHash(data, size);
-  uint8_t* buf = NULL;
+  uint8_t* buf = ((void*)0);
 
-  // For *Into functions, which decode into an external buffer, an
-  // intentionally too small buffer can be given with low probability.
+
+
   if (value < 0x16) {
     buf = WebPDecodeRGBA(data, size, &w, &h);
   } else if (value < 0x2b) {
@@ -86,7 +86,7 @@ int LLVMFuzzerTestOneInput(const uint8_t* const data, size_t size) {
     uint8_t* const luma_buf = (uint8_t*)malloc(luma_size);
     uint8_t* const u_buf = (uint8_t*)malloc(u_size);
     uint8_t* const v_buf = (uint8_t*)malloc(v_size);
-    WebPDecodeYUVInto(data, size, luma_buf, luma_size, w /* luma_stride */,
+    WebPDecodeYUVInto(data, size, luma_buf, luma_size, w ,
                       u_buf, u_size, uv_stride, v_buf, v_size, uv_stride);
     free(luma_buf);
     free(u_buf);

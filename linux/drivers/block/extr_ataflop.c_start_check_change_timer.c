@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ CHECK_CHANGE_DELAY ; 
- int /*<<< orphan*/  fd_timer ; 
- scalar_t__ jiffies ; 
- int /*<<< orphan*/  mod_timer (int /*<<< orphan*/ *,scalar_t__) ; 
+ scalar_t__ CHECK_CHANGE_DELAY ;
+ int fd_timer ;
+ scalar_t__ jiffies ;
+ int mod_timer (int *,scalar_t__) ;
 
 __attribute__((used)) static inline void start_check_change_timer( void )
 {
-	mod_timer(&fd_timer, jiffies + CHECK_CHANGE_DELAY);
+ mod_timer(&fd_timer, jiffies + CHECK_CHANGE_DELAY);
 }

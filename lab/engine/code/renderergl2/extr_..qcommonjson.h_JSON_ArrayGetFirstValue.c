@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ IS_STRUCT_CLOSE (char const) ; 
- int /*<<< orphan*/  IS_STRUCT_OPEN (char const) ; 
- char* JSON_SkipSeparators (char const*,char const*) ; 
+ scalar_t__ IS_STRUCT_CLOSE (char const) ;
+ int IS_STRUCT_OPEN (char const) ;
+ char* JSON_SkipSeparators (char const*,char const*) ;
 
 const char *JSON_ArrayGetFirstValue(const char *json, const char *jsonEnd)
 {
-	if (!json || json >= jsonEnd || !IS_STRUCT_OPEN(*json))
-		return NULL;
+ if (!json || json >= jsonEnd || !IS_STRUCT_OPEN(*json))
+  return ((void*)0);
 
-	json = JSON_SkipSeparators(json + 1, jsonEnd);
+ json = JSON_SkipSeparators(json + 1, jsonEnd);
 
-	return (json >= jsonEnd || IS_STRUCT_CLOSE(*json)) ? NULL : json;
+ return (json >= jsonEnd || IS_STRUCT_CLOSE(*json)) ? ((void*)0) : json;
 }

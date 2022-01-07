@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {scalar_t__ page_file_count; int removing; int /*<<< orphan*/  tree_lock; TYPE_2__* vde; int /*<<< orphan*/  open_files; int /*<<< orphan*/  readonly; scalar_t__ need_write; int /*<<< orphan*/  locked; int /*<<< orphan*/  root_file; scalar_t__ disallow_dismount; TYPE_1__* Vpb; } ;
-typedef  TYPE_3__ device_extension ;
-struct TYPE_11__ {int /*<<< orphan*/ * mounted_device; } ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_12__ {scalar_t__ page_file_count; int removing; int tree_lock; TYPE_2__* vde; int open_files; int readonly; scalar_t__ need_write; int locked; int root_file; scalar_t__ disallow_dismount; TYPE_1__* Vpb; } ;
+typedef TYPE_3__ device_extension ;
+struct TYPE_11__ {int * mounted_device; } ;
 struct TYPE_10__ {int Flags; } ;
-typedef  int /*<<< orphan*/  PIRP ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
+typedef int PIRP ;
+typedef int NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExAcquireResourceExclusiveLite (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ExReleaseResourceLite (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FSRTL_VOLUME_DISMOUNT ; 
- int /*<<< orphan*/  FsRtlNotifyVolumeEvent (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATUS_ACCESS_DENIED ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int VPB_MOUNTED ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
- int /*<<< orphan*/  do_write (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  flush_fcb_caches (TYPE_3__*) ; 
- int /*<<< orphan*/  free_trees (TYPE_3__*) ; 
- int /*<<< orphan*/  uninit (TYPE_3__*) ; 
- int /*<<< orphan*/  update_volumes (TYPE_3__*) ; 
+
+ int ERR (char*,int ) ;
+ int ExAcquireResourceExclusiveLite (int *,int) ;
+ int ExReleaseResourceLite (int *) ;
+ int FSRTL_VOLUME_DISMOUNT ;
+ int FsRtlNotifyVolumeEvent (int ,int ) ;
+ int NT_SUCCESS (int ) ;
+ int STATUS_ACCESS_DENIED ;
+ int STATUS_SUCCESS ;
+ int TRACE (char*) ;
+ int VPB_MOUNTED ;
+ int WARN (char*,...) ;
+ int do_write (TYPE_3__*,int ) ;
+ int flush_fcb_caches (TYPE_3__*) ;
+ int free_trees (TYPE_3__*) ;
+ int uninit (TYPE_3__*) ;
+ int update_volumes (TYPE_3__*) ;
 
 NTSTATUS dismount_volume(device_extension* Vcb, bool shutdown, PIRP Irp) {
     NTSTATUS Status;
@@ -59,7 +59,7 @@ NTSTATUS dismount_volume(device_extension* Vcb, bool shutdown, PIRP Irp) {
         }
     }
 
-    ExAcquireResourceExclusiveLite(&Vcb->tree_lock, true);
+    ExAcquireResourceExclusiveLite(&Vcb->tree_lock, 1);
 
     if (!Vcb->locked) {
         flush_fcb_caches(Vcb);
@@ -74,13 +74,13 @@ NTSTATUS dismount_volume(device_extension* Vcb, bool shutdown, PIRP Irp) {
 
     free_trees(Vcb);
 
-    Vcb->removing = true;
+    Vcb->removing = 1;
 
     open_files = Vcb->open_files > 0;
 
     if (Vcb->vde) {
         update_volumes(Vcb);
-        Vcb->vde->mounted_device = NULL;
+        Vcb->vde->mounted_device = ((void*)0);
     }
 
     ExReleaseResourceLite(&Vcb->tree_lock);

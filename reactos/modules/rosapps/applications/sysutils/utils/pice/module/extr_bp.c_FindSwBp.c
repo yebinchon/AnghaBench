@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t ULONG ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef size_t ULONG ;
 struct TYPE_5__ {size_t ulAddress; scalar_t__ bUsed; scalar_t__ bVirtual; } ;
-typedef  TYPE_1__* PSW_BP ;
+typedef TYPE_1__* PSW_BP ;
 
-/* Variables and functions */
- size_t DIM (TYPE_1__*) ; 
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
- TYPE_1__* aSwBreakpoints ; 
+
+ size_t DIM (TYPE_1__*) ;
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
+ TYPE_1__* aSwBreakpoints ;
 
 PSW_BP FindSwBp(ULONG ulAddress)
 {
@@ -31,5 +31,5 @@ PSW_BP FindSwBp(ULONG ulAddress)
             return &aSwBreakpoints[i];
     }
 
-    return NULL;
+    return ((void*)0);
 }

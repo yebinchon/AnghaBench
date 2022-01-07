@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * s; int /*<<< orphan*/ * r; } ;
-typedef  TYPE_1__ DSA_SIG ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_clear_free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * s; int * r; } ;
+typedef TYPE_1__ DSA_SIG ;
+typedef int BIGNUM ;
+
+
+ int BN_clear_free (int *) ;
 
 int DSA_SIG_set0(DSA_SIG *sig, BIGNUM *r, BIGNUM *s)
 {
-    if (r == NULL || s == NULL)
+    if (r == ((void*)0) || s == ((void*)0))
         return 0;
     BN_clear_free(sig->r);
     BN_clear_free(sig->s);

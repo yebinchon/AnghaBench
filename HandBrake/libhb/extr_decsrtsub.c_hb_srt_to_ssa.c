@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int size; scalar_t__* data; } ;
-typedef  TYPE_1__ hb_buffer_t ;
+typedef TYPE_1__ hb_buffer_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  hb_buffer_close (TYPE_1__**) ; 
- TYPE_1__* hb_buffer_init (int) ; 
- int /*<<< orphan*/  hb_buffer_realloc (TYPE_1__*,int) ; 
- int /*<<< orphan*/  hb_buffer_swap_copy (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
- char* srt_markup_to_ssa (char*,int*) ; 
- int strlen (char*) ; 
+
+ int free (char*) ;
+ int hb_buffer_close (TYPE_1__**) ;
+ TYPE_1__* hb_buffer_init (int) ;
+ int hb_buffer_realloc (TYPE_1__*,int) ;
+ int hb_buffer_swap_copy (TYPE_1__*,TYPE_1__*) ;
+ int sprintf (char*,char*,...) ;
+ char* srt_markup_to_ssa (char*,int*) ;
+ int strlen (char*) ;
 
 void hb_srt_to_ssa(hb_buffer_t *sub_in, int line)
 {
     if (sub_in->size == 0)
         return;
 
-    // null terminate input if not already terminated
+
     if (sub_in->data[sub_in->size-1] != 0)
     {
         hb_buffer_realloc(sub_in, ++sub_in->size);
         sub_in->data[sub_in->size - 1] = 0;
     }
     char * srt = (char*)sub_in->data;
-    // SSA markup expands a little over SRT, so allocate a bit of extra
-    // space.  More will be realloc'd if needed.
+
+
     hb_buffer_t * sub = hb_buffer_init(sub_in->size + 80);
     char * ssa, *ssa_markup;
     int skip, len, pos, ii;
 
-    // Exchange data between input sub and new ssa_sub
-    // After this, sub_in contains ssa data
+
+
     hb_buffer_swap_copy(sub_in, sub);
     ssa = (char*)sub_in->data;
 
@@ -53,11 +53,11 @@ void hb_srt_to_ssa(hb_buffer_t *sub_in, int line)
     ii = 0;
     while (srt[ii] != '\0')
     {
-        if ((ssa_markup = srt_markup_to_ssa(srt + ii, &skip)) != NULL)
+        if ((ssa_markup = srt_markup_to_ssa(srt + ii, &skip)) != ((void*)0))
         {
             len = strlen(ssa_markup);
             hb_buffer_realloc(sub_in, pos + len + 1);
-            // After realloc, sub_in->data may change
+
             ssa = (char*)sub_in->data;
             sprintf(ssa + pos, "%s", ssa_markup);
             free(ssa_markup);
@@ -67,7 +67,7 @@ void hb_srt_to_ssa(hb_buffer_t *sub_in, int line)
         else
         {
             hb_buffer_realloc(sub_in, pos + 4);
-            // After realloc, sub_in->data may change
+
             ssa = (char*)sub_in->data;
             if (srt[ii] == '\r')
             {

@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int kind; int /*<<< orphan*/  name; int /*<<< orphan*/  is_local; } ;
-typedef  TYPE_1__ VariableSetStmt ;
 
-/* Variables and functions */
- int IsSettingSafeToPropagate (int /*<<< orphan*/ ) ; 
- scalar_t__ PROPSETCMD_LOCAL ; 
- scalar_t__ PropagateSetCommands ; 
-#define  VAR_RESET 133 
-#define  VAR_RESET_ALL 132 
-#define  VAR_SET_CURRENT 131 
-#define  VAR_SET_DEFAULT 130 
-#define  VAR_SET_MULTI 129 
-#define  VAR_SET_VALUE 128 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int kind; int name; int is_local; } ;
+typedef TYPE_1__ VariableSetStmt ;
+
+
+ int IsSettingSafeToPropagate (int ) ;
+ scalar_t__ PROPSETCMD_LOCAL ;
+ scalar_t__ PropagateSetCommands ;
+
+
+
+
+
+
 
 bool
 ShouldPropagateSetCommand(VariableSetStmt *setStmt)
 {
-	if (PropagateSetCommands != PROPSETCMD_LOCAL)
-	{
-		/* SET propagation is disabled */
-		return false;
-	}
+ if (PropagateSetCommands != PROPSETCMD_LOCAL)
+ {
 
-	switch (setStmt->kind)
-	{
-		case VAR_SET_VALUE:
-		case VAR_SET_CURRENT:
-		case VAR_SET_DEFAULT:
-		{
-			/* SET LOCAL on a safe setting */
-			return setStmt->is_local && IsSettingSafeToPropagate(setStmt->name);
-		}
+  return 0;
+ }
 
-		case VAR_RESET:
-		{
-			/* may need to reset prior SET LOCAL */
-			return IsSettingSafeToPropagate(setStmt->name);
-		}
+ switch (setStmt->kind)
+ {
+  case 128:
+  case 131:
+  case 130:
+  {
 
-		case VAR_RESET_ALL:
-		{
-			/* always propagate RESET ALL since it might affect prior SET LOCALs */
-			return true;
-		}
+   return setStmt->is_local && IsSettingSafeToPropagate(setStmt->name);
+  }
 
-		case VAR_SET_MULTI:
-		default:
-		{
-			/* SET (LOCAL) TRANSACTION should be handled locally */
-			return false;
-		}
-	}
+  case 133:
+  {
+
+   return IsSettingSafeToPropagate(setStmt->name);
+  }
+
+  case 132:
+  {
+
+   return 1;
+  }
+
+  case 129:
+  default:
+  {
+
+   return 0;
+  }
+ }
 }

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_12__ {scalar_t__ y; scalar_t__ x; } ;
-struct TYPE_15__ {scalar_t__ status; scalar_t__ boxes_left; scalar_t__ num_flags; scalar_t__ mines; unsigned int rows; unsigned int cols; size_t difficulty; scalar_t__ time; scalar_t__* best_time; int /*<<< orphan*/  hInst; int /*<<< orphan*/  hWnd; TYPE_2__** box; TYPE_1__ press; int /*<<< orphan*/  mines_rect; } ;
+struct TYPE_15__ {scalar_t__ status; scalar_t__ boxes_left; scalar_t__ num_flags; scalar_t__ mines; unsigned int rows; unsigned int cols; size_t difficulty; scalar_t__ time; scalar_t__* best_time; int hInst; int hWnd; TYPE_2__** box; TYPE_1__ press; int mines_rect; } ;
 struct TYPE_14__ {int x; int y; } ;
 struct TYPE_13__ {scalar_t__ FlagType; scalar_t__ IsMine; } ;
-typedef  TYPE_3__ POINT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  TYPE_4__ BOARD ;
+typedef TYPE_3__ POINT ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef TYPE_4__ BOARD ;
 
-/* Variables and functions */
- size_t CUSTOM ; 
- int /*<<< orphan*/  CongratsDlgProc ; 
- int /*<<< orphan*/  DLG_CONGRATS ; 
- int /*<<< orphan*/  DLG_TIMES ; 
- int /*<<< orphan*/  DialogBoxParamW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ FLAG ; 
- scalar_t__ GAMEOVER ; 
- int /*<<< orphan*/  MAKEINTRESOURCEW (int /*<<< orphan*/ ) ; 
- scalar_t__ PtInRect (int /*<<< orphan*/ *,TYPE_3__) ; 
- int RDW_INVALIDATE ; 
- int RDW_UPDATENOW ; 
- int /*<<< orphan*/  RedrawWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TestFace (TYPE_4__*,TYPE_3__,int) ; 
- int /*<<< orphan*/  TestMines (TYPE_4__*,TYPE_3__,int) ; 
- int /*<<< orphan*/  TimesDlgProc ; 
- int /*<<< orphan*/  UnpressBoxes (TYPE_4__*,scalar_t__,scalar_t__) ; 
- scalar_t__ WON ; 
+
+ size_t CUSTOM ;
+ int CongratsDlgProc ;
+ int DLG_CONGRATS ;
+ int DLG_TIMES ;
+ int DialogBoxParamW (int ,int ,int ,int ,int ) ;
+ scalar_t__ FLAG ;
+ scalar_t__ GAMEOVER ;
+ int MAKEINTRESOURCEW (int ) ;
+ scalar_t__ PtInRect (int *,TYPE_3__) ;
+ int RDW_INVALIDATE ;
+ int RDW_UPDATENOW ;
+ int RedrawWindow (int ,int *,int ,int) ;
+ int TestFace (TYPE_4__*,TYPE_3__,int) ;
+ int TestMines (TYPE_4__*,TYPE_3__,int) ;
+ int TimesDlgProc ;
+ int UnpressBoxes (TYPE_4__*,scalar_t__,scalar_t__) ;
+ scalar_t__ WON ;
 
 __attribute__((used)) static void TestBoard( HWND hWnd, BOARD *p_board, int x, int y, int msg )
 {
@@ -74,7 +74,7 @@ __attribute__((used)) static void TestBoard( HWND hWnd, BOARD *p_board, int x, i
 
             p_board->num_flags = p_board->mines;
 
-            RedrawWindow( p_board->hWnd, NULL, 0,
+            RedrawWindow( p_board->hWnd, ((void*)0), 0,
                 RDW_INVALIDATE | RDW_UPDATENOW );
         }
 

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cphy {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BMCR_PDOWN ; 
- int /*<<< orphan*/  MII_BMCR ; 
- int t3_mdio_change_bits (struct cphy*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int BMCR_PDOWN ;
+ int MII_BMCR ;
+ int t3_mdio_change_bits (struct cphy*,int ,int ,int ,int ) ;
 
 __attribute__((used)) static int vsc8211_power_down(struct cphy *cphy, int enable)
 {
-	return t3_mdio_change_bits(cphy, 0, MII_BMCR, BMCR_PDOWN,
-				   enable ? BMCR_PDOWN : 0);
+ return t3_mdio_change_bits(cphy, 0, MII_BMCR, BMCR_PDOWN,
+       enable ? BMCR_PDOWN : 0);
 }

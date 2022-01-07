@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  (* help ) () ;int /*<<< orphan*/ * name; } ;
-typedef  int /*<<< orphan*/  PCONSOLE_STATE ;
-typedef  int /*<<< orphan*/ * LPSTR ;
-typedef  TYPE_1__* LPCOMMAND ;
-typedef  int /*<<< orphan*/  INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONSOLE_ConOutPrintf (char*) ; 
- TYPE_1__* Commands ; 
- int /*<<< orphan*/  DPRINT1 (char*,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HelpHelp () ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  stricmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ strlen (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 () ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int (* help ) () ;int * name; } ;
+typedef int PCONSOLE_STATE ;
+typedef int * LPSTR ;
+typedef TYPE_1__* LPCOMMAND ;
+typedef int INT ;
+
+
+ int CONSOLE_ConOutPrintf (char*) ;
+ TYPE_1__* Commands ;
+ int DPRINT1 (char*,int *,scalar_t__,int *) ;
+ int HelpHelp () ;
+ int strcmp (int *,char*) ;
+ int stricmp (int *,int *) ;
+ scalar_t__ strlen (int *) ;
+ int stub1 () ;
 
 __attribute__((used)) static
 INT
@@ -43,13 +43,13 @@ CommandHelp(
         return 0;
     }
 
-    if (param != NULL && strlen(param) > 0)
+    if (param != ((void*)0) && strlen(param) > 0)
     {
-        for (cmdptr = Commands; cmdptr->name != NULL; cmdptr++)
+        for (cmdptr = Commands; cmdptr->name != ((void*)0); cmdptr++)
         {
             if (!stricmp(param, cmdptr->name))
             {
-                if (cmdptr->help != NULL)
+                if (cmdptr->help != ((void*)0))
                 {
                     cmdptr->help();
                     return 0;

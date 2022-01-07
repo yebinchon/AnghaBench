@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bxe_softc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOGI (struct bxe_softc*,char*,int,int,int,int) ; 
- int FW_MSG_CODE_DRV_LOAD_COMMON ; 
- int FW_MSG_CODE_DRV_LOAD_FUNCTION ; 
- int FW_MSG_CODE_DRV_LOAD_PORT ; 
- int SC_PATH (struct bxe_softc*) ; 
- int SC_PORT (struct bxe_softc*) ; 
- int** load_count ; 
+
+ int BLOGI (struct bxe_softc*,char*,int,int,int,int) ;
+ int FW_MSG_CODE_DRV_LOAD_COMMON ;
+ int FW_MSG_CODE_DRV_LOAD_FUNCTION ;
+ int FW_MSG_CODE_DRV_LOAD_PORT ;
+ int SC_PATH (struct bxe_softc*) ;
+ int SC_PORT (struct bxe_softc*) ;
+ int** load_count ;
 
 __attribute__((used)) static int
 bxe_nic_load_no_mcp(struct bxe_softc *sc)

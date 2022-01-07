@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct seq_file {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  lock; int /*<<< orphan*/  core; int /*<<< orphan*/  phy; int /*<<< orphan*/  pll; int /*<<< orphan*/  wp; } ;
+struct TYPE_2__ {int lock; int core; int phy; int pll; int wp; } ;
 
-/* Variables and functions */
- TYPE_1__ hdmi ; 
- int /*<<< orphan*/  hdmi4_core_dump (int /*<<< orphan*/ *,struct seq_file*) ; 
- int /*<<< orphan*/  hdmi_phy_dump (int /*<<< orphan*/ *,struct seq_file*) ; 
- int /*<<< orphan*/  hdmi_pll_dump (int /*<<< orphan*/ *,struct seq_file*) ; 
- scalar_t__ hdmi_runtime_get () ; 
- int /*<<< orphan*/  hdmi_runtime_put () ; 
- int /*<<< orphan*/  hdmi_wp_dump (int /*<<< orphan*/ *,struct seq_file*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ TYPE_1__ hdmi ;
+ int hdmi4_core_dump (int *,struct seq_file*) ;
+ int hdmi_phy_dump (int *,struct seq_file*) ;
+ int hdmi_pll_dump (int *,struct seq_file*) ;
+ scalar_t__ hdmi_runtime_get () ;
+ int hdmi_runtime_put () ;
+ int hdmi_wp_dump (int *,struct seq_file*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 __attribute__((used)) static void hdmi_dump_regs(struct seq_file *s)
 {
-	mutex_lock(&hdmi.lock);
+ mutex_lock(&hdmi.lock);
 
-	if (hdmi_runtime_get()) {
-		mutex_unlock(&hdmi.lock);
-		return;
-	}
+ if (hdmi_runtime_get()) {
+  mutex_unlock(&hdmi.lock);
+  return;
+ }
 
-	hdmi_wp_dump(&hdmi.wp, s);
-	hdmi_pll_dump(&hdmi.pll, s);
-	hdmi_phy_dump(&hdmi.phy, s);
-	hdmi4_core_dump(&hdmi.core, s);
+ hdmi_wp_dump(&hdmi.wp, s);
+ hdmi_pll_dump(&hdmi.pll, s);
+ hdmi_phy_dump(&hdmi.phy, s);
+ hdmi4_core_dump(&hdmi.core, s);
 
-	hdmi_runtime_put();
-	mutex_unlock(&hdmi.lock);
+ hdmi_runtime_put();
+ mutex_unlock(&hdmi.lock);
 }

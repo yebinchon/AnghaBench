@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int ULONG ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IFolder ;
-typedef  int /*<<< orphan*/  IFileCollection ;
-typedef  int /*<<< orphan*/  IFile ;
-typedef  int /*<<< orphan*/  IEnumVARIANT ;
-typedef  int HRESULT ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/ * BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSID_File ; 
- int /*<<< orphan*/  CLSID_Files ; 
- int /*<<< orphan*/  CREATE_ALWAYS ; 
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateDirectoryW (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CreateFileW (char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int E_NOINTERFACE ; 
- int E_POINTER ; 
- int /*<<< orphan*/  FILE_FLAG_DELETE_ON_CLOSE ; 
- int GENERIC_READ ; 
- int GENERIC_WRITE ; 
- int GET_REFCOUNT (int /*<<< orphan*/ *) ; 
- int IDispatch_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int IEnumVARIANT_Clone (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int IEnumVARIANT_Next (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  IEnumVARIANT_Release (int /*<<< orphan*/ *) ; 
- int IEnumVARIANT_Reset (int /*<<< orphan*/ *) ; 
- int IEnumVARIANT_Skip (int /*<<< orphan*/ *,int) ; 
- int IFileCollection_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IFileCollection_Release (int /*<<< orphan*/ *) ; 
- int IFileCollection_get_Count (int /*<<< orphan*/ *,int*) ; 
- int IFileCollection_get__NewEnum (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int IFileSystem3_GetFolder (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IFile_Release (int /*<<< orphan*/ *) ; 
- int IFile_get_Name (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IFolder_Release (int /*<<< orphan*/ *) ; 
- int IFolder_get_Files (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IID_IEnumVARIANT ; 
- int /*<<< orphan*/  IID_IFile ; 
- int IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  RemoveDirectoryW (char*) ; 
- int S_FALSE ; 
- int S_OK ; 
- int /*<<< orphan*/ * SysAllocString (char*) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ *) ; 
- int VT_DISPATCH ; 
- int /*<<< orphan*/  V_DISPATCH (int /*<<< orphan*/ *) ; 
- int V_VT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fs3 ; 
- int /*<<< orphan*/  get_temp_path (char const*,char*) ; 
- int /*<<< orphan*/  lstrcatW (char*,char const*) ; 
- int /*<<< orphan*/  lstrcmpW (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  lstrcpyW (char*,char*) ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
- int /*<<< orphan*/  test_provideclassinfo (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int wine_dbgstr_w (int /*<<< orphan*/ *) ; 
+
+
+
+typedef char WCHAR ;
+typedef int VARIANT ;
+typedef int ULONG ;
+typedef int LONG ;
+typedef int IUnknown ;
+typedef int IFolder ;
+typedef int IFileCollection ;
+typedef int IFile ;
+typedef int IEnumVARIANT ;
+typedef int HRESULT ;
+typedef int HANDLE ;
+typedef int * BSTR ;
+
+
+ int CLSID_File ;
+ int CLSID_Files ;
+ int CREATE_ALWAYS ;
+ int CloseHandle (int ) ;
+ int CreateDirectoryW (char*,int *) ;
+ int CreateFileW (char*,int,int ,int *,int ,int ,int ) ;
+ int E_NOINTERFACE ;
+ int E_POINTER ;
+ int FILE_FLAG_DELETE_ON_CLOSE ;
+ int GENERIC_READ ;
+ int GENERIC_WRITE ;
+ int GET_REFCOUNT (int *) ;
+ int IDispatch_QueryInterface (int ,int *,void**) ;
+ int IEnumVARIANT_Clone (int *,int **) ;
+ int IEnumVARIANT_Next (int *,int,int *,int*) ;
+ int IEnumVARIANT_Release (int *) ;
+ int IEnumVARIANT_Reset (int *) ;
+ int IEnumVARIANT_Skip (int *,int) ;
+ int IFileCollection_QueryInterface (int *,int *,void**) ;
+ int IFileCollection_Release (int *) ;
+ int IFileCollection_get_Count (int *,int*) ;
+ int IFileCollection_get__NewEnum (int *,int **) ;
+ int IFileSystem3_GetFolder (int ,int *,int **) ;
+ int IFile_Release (int *) ;
+ int IFile_get_Name (int *,int **) ;
+ int IFolder_Release (int *) ;
+ int IFolder_get_Files (int *,int **) ;
+ int IID_IEnumVARIANT ;
+ int IID_IFile ;
+ int IUnknown_QueryInterface (int *,int *,void**) ;
+ int IUnknown_Release (int *) ;
+ int MAX_PATH ;
+ int RemoveDirectoryW (char*) ;
+ int S_FALSE ;
+ int S_OK ;
+ int * SysAllocString (char*) ;
+ int SysFreeString (int *) ;
+ int VT_DISPATCH ;
+ int V_DISPATCH (int *) ;
+ int V_VT (int *) ;
+ int VariantClear (int *) ;
+ int VariantInit (int *) ;
+ int fs3 ;
+ int get_temp_path (char const*,char*) ;
+ int lstrcatW (char*,char const*) ;
+ int lstrcmpW (int *,char const*) ;
+ int lstrcpyW (char*,char*) ;
+ int ok (int,char*,int,...) ;
+ int test_provideclassinfo (int *,int *) ;
+ int wine_dbgstr_w (int *) ;
 
 __attribute__((used)) static void test_FileCollection(void)
 {
@@ -96,23 +96,23 @@ __attribute__((used)) static void test_FileCollection(void)
     int found_a = 0, found_b = 0, found_c = 0;
 
     get_temp_path(fooW, buffW);
-    CreateDirectoryW(buffW, NULL);
+    CreateDirectoryW(buffW, ((void*)0));
 
     str = SysAllocString(buffW);
     hr = IFileSystem3_GetFolder(fs3, str, &folder);
     ok(hr == S_OK, "got 0x%08x\n", hr);
     SysFreeString(str);
 
-    hr = IFolder_get_Files(folder, NULL);
+    hr = IFolder_get_Files(folder, ((void*)0));
     ok(hr == E_POINTER, "got 0x%08x\n", hr);
 
     lstrcpyW(pathW, buffW);
     lstrcatW(pathW, aW);
-    file_a = CreateFileW(pathW, GENERIC_READ | GENERIC_WRITE, 0, NULL, CREATE_ALWAYS,
+    file_a = CreateFileW(pathW, GENERIC_READ | GENERIC_WRITE, 0, ((void*)0), CREATE_ALWAYS,
                          FILE_FLAG_DELETE_ON_CLOSE, 0);
     lstrcpyW(pathW, buffW);
     lstrcatW(pathW, bW);
-    file_b = CreateFileW(pathW, GENERIC_READ | GENERIC_WRITE, 0, NULL, CREATE_ALWAYS,
+    file_b = CreateFileW(pathW, GENERIC_READ | GENERIC_WRITE, 0, ((void*)0), CREATE_ALWAYS,
                          FILE_FLAG_DELETE_ON_CLOSE, 0);
 
     hr = IFolder_get_Files(folder, &files);
@@ -127,45 +127,45 @@ __attribute__((used)) static void test_FileCollection(void)
 
     lstrcpyW(pathW, buffW);
     lstrcatW(pathW, cW);
-    file_c = CreateFileW(pathW, GENERIC_READ | GENERIC_WRITE, 0, NULL, CREATE_ALWAYS,
+    file_c = CreateFileW(pathW, GENERIC_READ | GENERIC_WRITE, 0, ((void*)0), CREATE_ALWAYS,
                          FILE_FLAG_DELETE_ON_CLOSE, 0);
 
-    /* every time property is requested it scans directory */
+
     count = 0;
     hr = IFileCollection_get_Count(files, &count);
     ok(hr == S_OK, "got 0x%08x\n", hr);
     ok(count == 3, "got %d\n", count);
 
-    hr = IFileCollection_get__NewEnum(files, NULL);
+    hr = IFileCollection_get__NewEnum(files, ((void*)0));
     ok(hr == E_POINTER, "got 0x%08x\n", hr);
 
     hr = IFileCollection_QueryInterface(files, &IID_IEnumVARIANT, (void**)&unk);
     ok(hr == E_NOINTERFACE, "got 0x%08x\n", hr);
 
-    /* NewEnum creates new instance each time it's called */
+
     ref = GET_REFCOUNT(files);
 
-    unk = NULL;
+    unk = ((void*)0);
     hr = IFileCollection_get__NewEnum(files, &unk);
     ok(hr == S_OK, "got 0x%08x\n", hr);
 
     ref2 = GET_REFCOUNT(files);
     ok(ref2 == ref + 1, "got %d, %d\n", ref2, ref);
 
-    unk2 = NULL;
+    unk2 = ((void*)0);
     hr = IFileCollection_get__NewEnum(files, &unk2);
     ok(hr == S_OK, "got 0x%08x\n", hr);
     ok(unk != unk2, "got %p, %p\n", unk2, unk);
     IUnknown_Release(unk2);
 
-    /* now get IEnumVARIANT */
+
     ref = GET_REFCOUNT(files);
     hr = IUnknown_QueryInterface(unk, &IID_IEnumVARIANT, (void**)&enumvar);
     ok(hr == S_OK, "got 0x%08x\n", hr);
     ref2 = GET_REFCOUNT(files);
     ok(ref2 == ref, "got %d, %d\n", ref2, ref);
 
-    /* clone enumerator */
+
     hr = IEnumVARIANT_Clone(enumvar, &clone);
     ok(hr == S_OK, "got 0x%08x\n", hr);
     ok(clone != enumvar, "got %p, %p\n", enumvar, clone);
@@ -187,7 +187,7 @@ __attribute__((used)) static void test_FileCollection(void)
         ok(hr == S_OK, "got 0x%08x\n", hr);
         test_provideclassinfo(file, &CLSID_File);
 
-        str = NULL;
+        str = ((void*)0);
         hr = IFile_get_Name(file, &str);
         ok(hr == S_OK, "got 0x%08x\n", hr);
         if (!lstrcmpW(str, aW + 1))

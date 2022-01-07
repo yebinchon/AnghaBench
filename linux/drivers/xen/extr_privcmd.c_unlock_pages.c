@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct page {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  put_page (struct page*) ; 
+
+ int put_page (struct page*) ;
 
 __attribute__((used)) static void unlock_pages(struct page *pages[], unsigned int nr_pages)
 {
-	unsigned int i;
+ unsigned int i;
 
-	if (!pages)
-		return;
+ if (!pages)
+  return;
 
-	for (i = 0; i < nr_pages; i++) {
-		if (pages[i])
-			put_page(pages[i]);
-	}
+ for (i = 0; i < nr_pages; i++) {
+  if (pages[i])
+   put_page(pages[i]);
+ }
 }

@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ av_isxdigit (char) ; 
- char* av_malloc (int) ; 
- char av_tolower (char) ; 
- int strlen (char const*) ; 
+ scalar_t__ av_isxdigit (char) ;
+ char* av_malloc (int) ;
+ char av_tolower (char) ;
+ int strlen (char const*) ;
 
 char *ff_urldecode(const char *url)
 {
     int s = 0, d = 0, url_len = 0;
     char c;
-    char *dest = NULL;
+    char *dest = ((void*)0);
 
     if (!url)
-        return NULL;
+        return ((void*)0);
 
     url_len = strlen(url) + 1;
     dest = av_malloc(url_len);
 
     if (!dest)
-        return NULL;
+        return ((void*)0);
 
     while (s < url_len) {
         c = url[s++];
@@ -54,7 +46,7 @@ char *ff_urldecode(const char *url)
 
                 dest[d++] = 16 * c2 + c3;
 
-            } else { /* %zz or something other invalid */
+            } else {
                 dest[d++] = c;
                 dest[d++] = c2;
                 dest[d++] = c3;

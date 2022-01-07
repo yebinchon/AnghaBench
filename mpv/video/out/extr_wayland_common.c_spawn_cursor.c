@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vo_wayland_state {int allocated_cursor_scale; int scaling; int /*<<< orphan*/  default_cursor; int /*<<< orphan*/  cursor_theme; int /*<<< orphan*/  shm; } ;
 
-/* Variables and functions */
- long INT_MAX ; 
- int /*<<< orphan*/  MP_ERR (struct vo_wayland_state*,char*) ; 
- scalar_t__ errno ; 
- char* getenv (char*) ; 
- long strtol (char const*,char**,int) ; 
- int /*<<< orphan*/  wl_cursor_theme_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wl_cursor_theme_get_cursor (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  wl_cursor_theme_load (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+
+
+struct vo_wayland_state {int allocated_cursor_scale; int scaling; int default_cursor; int cursor_theme; int shm; } ;
+
+
+ long INT_MAX ;
+ int MP_ERR (struct vo_wayland_state*,char*) ;
+ scalar_t__ errno ;
+ char* getenv (char*) ;
+ long strtol (char const*,char**,int) ;
+ int wl_cursor_theme_destroy (int ) ;
+ int wl_cursor_theme_get_cursor (int ,char*) ;
+ int wl_cursor_theme_load (int *,int,int ) ;
 
 __attribute__((used)) static int spawn_cursor(struct vo_wayland_state *wl)
 {
-    if (wl->allocated_cursor_scale == wl->scaling) /* Reuse if size is identical */
+    if (wl->allocated_cursor_scale == wl->scaling)
         return 0;
     else if (wl->cursor_theme)
         wl_cursor_theme_destroy(wl->cursor_theme);
 
     const char *size_str = getenv("XCURSOR_SIZE");
     int size = 32;
-    if (size_str != NULL) {
+    if (size_str != ((void*)0)) {
         errno = 0;
         char *end;
         long size_long = strtol(size_str, &end, 10);
@@ -39,7 +39,7 @@ __attribute__((used)) static int spawn_cursor(struct vo_wayland_state *wl)
             size = (int)size_long;
     }
 
-    wl->cursor_theme = wl_cursor_theme_load(NULL, size*wl->scaling, wl->shm);
+    wl->cursor_theme = wl_cursor_theme_load(((void*)0), size*wl->scaling, wl->shm);
     if (!wl->cursor_theme) {
         MP_ERR(wl, "Unable to load cursor theme!\n");
         return 1;

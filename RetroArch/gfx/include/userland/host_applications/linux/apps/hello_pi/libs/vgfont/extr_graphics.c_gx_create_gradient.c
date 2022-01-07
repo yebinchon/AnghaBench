@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  double VGfloat ;
-typedef  scalar_t__ VGPaint ;
-typedef  int /*<<< orphan*/  GX_PAINT_T ;
-typedef  int /*<<< orphan*/  GX_CLIENT_STATE_T ;
-typedef  int /*<<< orphan*/  GRAPHICS_RESOURCE_HANDLE ;
 
-/* Variables and functions */
- scalar_t__ VG_INVALID_HANDLE ; 
- int /*<<< orphan*/  VG_PAINT_COLOR_RAMP_STOPS ; 
- int /*<<< orphan*/  VG_PAINT_TYPE ; 
- int /*<<< orphan*/  VG_PAINT_TYPE_LINEAR_GRADIENT ; 
- int /*<<< orphan*/  gx_priv_colour_to_paint (int /*<<< orphan*/ ,double*) ; 
- int /*<<< orphan*/  gx_priv_restore (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gx_priv_save (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_log (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ vgCreatePaint () ; 
- int /*<<< orphan*/  vgGetError () ; 
- int /*<<< orphan*/  vgSetParameterfv (scalar_t__,int /*<<< orphan*/ ,int,double*) ; 
- int /*<<< orphan*/  vgSetParameteri (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+typedef double VGfloat ;
+typedef scalar_t__ VGPaint ;
+typedef int GX_PAINT_T ;
+typedef int GX_CLIENT_STATE_T ;
+typedef int GRAPHICS_RESOURCE_HANDLE ;
+
+
+ scalar_t__ VG_INVALID_HANDLE ;
+ int VG_PAINT_COLOR_RAMP_STOPS ;
+ int VG_PAINT_TYPE ;
+ int VG_PAINT_TYPE_LINEAR_GRADIENT ;
+ int gx_priv_colour_to_paint (int ,double*) ;
+ int gx_priv_restore (int *) ;
+ int gx_priv_save (int *,int ) ;
+ int vcos_assert (int ) ;
+ int vcos_log (char*,int ) ;
+ scalar_t__ vgCreatePaint () ;
+ int vgGetError () ;
+ int vgSetParameterfv (scalar_t__,int ,int,double*) ;
+ int vgSetParameteri (scalar_t__,int ,int ) ;
 
 GX_PAINT_T *gx_create_gradient(GRAPHICS_RESOURCE_HANDLE res,
                                uint32_t start_colour,
                                uint32_t end_colour)
 {
-   // holds  the two colour stops (offset,r,g,b,a).
+
    VGfloat fill_stops[10];
    GX_CLIENT_STATE_T save;
    VGPaint paint = VG_INVALID_HANDLE;

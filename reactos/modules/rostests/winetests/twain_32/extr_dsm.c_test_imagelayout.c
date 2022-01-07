@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_7__ ;
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  layout ;
-struct TYPE_14__ {int Whole; int /*<<< orphan*/  Frac; } ;
-struct TYPE_13__ {int Whole; int /*<<< orphan*/  Frac; } ;
-struct TYPE_12__ {int Whole; int /*<<< orphan*/  Frac; } ;
-struct TYPE_11__ {int Whole; int /*<<< orphan*/  Frac; } ;
+
+
+typedef struct TYPE_17__ TYPE_7__ ;
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int layout ;
+struct TYPE_14__ {int Whole; int Frac; } ;
+struct TYPE_13__ {int Whole; int Frac; } ;
+struct TYPE_12__ {int Whole; int Frac; } ;
+struct TYPE_11__ {int Whole; int Frac; } ;
 struct TYPE_15__ {TYPE_4__ Bottom; TYPE_3__ Right; TYPE_2__ Top; TYPE_1__ Left; } ;
-struct TYPE_17__ {int /*<<< orphan*/  FrameNumber; int /*<<< orphan*/  PageNumber; int /*<<< orphan*/  DocumentNumber; TYPE_5__ Frame; } ;
+struct TYPE_17__ {int FrameNumber; int PageNumber; int DocumentNumber; TYPE_5__ Frame; } ;
 struct TYPE_16__ {scalar_t__ ConditionCode; } ;
-typedef  scalar_t__ TW_UINT16 ;
-typedef  TYPE_6__ TW_STATUS ;
-typedef  TYPE_7__ TW_IMAGELAYOUT ;
-typedef  int /*<<< orphan*/  TW_IDENTITY ;
+typedef scalar_t__ TW_UINT16 ;
+typedef TYPE_6__ TW_STATUS ;
+typedef TYPE_7__ TW_IMAGELAYOUT ;
+typedef int TW_IDENTITY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DAT_IMAGELAYOUT ; 
- int /*<<< orphan*/  DG_IMAGE ; 
- int /*<<< orphan*/  MSG_GET ; 
- int /*<<< orphan*/  MSG_SET ; 
- scalar_t__ TWCC_SUCCESS ; 
- scalar_t__ TWRC_SUCCESS ; 
- int /*<<< orphan*/  get_condition_code (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_6__*) ; 
- int /*<<< orphan*/  memset (TYPE_7__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,scalar_t__) ; 
- scalar_t__ pDSM_Entry (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_7__*) ; 
- int /*<<< orphan*/  trace (char*,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int DAT_IMAGELAYOUT ;
+ int DG_IMAGE ;
+ int MSG_GET ;
+ int MSG_SET ;
+ scalar_t__ TWCC_SUCCESS ;
+ scalar_t__ TWRC_SUCCESS ;
+ int get_condition_code (int *,int *,TYPE_6__*) ;
+ int memset (TYPE_7__*,int ,int) ;
+ int ok (int,char*,scalar_t__,scalar_t__) ;
+ scalar_t__ pDSM_Entry (int *,int *,int ,int ,int ,TYPE_7__*) ;
+ int trace (char*,int,int ,int,int ,int,int ,int,int ,int ,int ,int ) ;
 
 __attribute__((used)) static void test_imagelayout(TW_IDENTITY *appid, TW_IDENTITY *source)
 {

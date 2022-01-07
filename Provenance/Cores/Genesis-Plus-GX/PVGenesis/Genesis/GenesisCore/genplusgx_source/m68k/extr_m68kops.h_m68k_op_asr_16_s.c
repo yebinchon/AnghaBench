@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t uint ;
 
-/* Variables and functions */
- size_t CYC_SHIFT ; 
- size_t DY ; 
- size_t FLAG_C ; 
- int /*<<< orphan*/  FLAG_N ; 
- int /*<<< orphan*/  FLAG_V ; 
- size_t FLAG_X ; 
- size_t FLAG_Z ; 
- scalar_t__ GET_MSB_16 (size_t) ; 
- size_t MASK_OUT_ABOVE_16 (size_t) ; 
- size_t MASK_OUT_BELOW_16 (size_t) ; 
- int /*<<< orphan*/  NFLAG_16 (size_t) ; 
- int REG_IR ; 
- int /*<<< orphan*/  USE_CYCLES (size_t) ; 
- int /*<<< orphan*/  VFLAG_CLEAR ; 
- size_t* m68ki_shift_16_table ; 
+
+
+
+typedef size_t uint ;
+
+
+ size_t CYC_SHIFT ;
+ size_t DY ;
+ size_t FLAG_C ;
+ int FLAG_N ;
+ int FLAG_V ;
+ size_t FLAG_X ;
+ size_t FLAG_Z ;
+ scalar_t__ GET_MSB_16 (size_t) ;
+ size_t MASK_OUT_ABOVE_16 (size_t) ;
+ size_t MASK_OUT_BELOW_16 (size_t) ;
+ int NFLAG_16 (size_t) ;
+ int REG_IR ;
+ int USE_CYCLES (size_t) ;
+ int VFLAG_CLEAR ;
+ size_t* m68ki_shift_16_table ;
 
 __attribute__((used)) static void m68k_op_asr_16_s(void)
 {

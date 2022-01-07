@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GPTD6 ; 
- int /*<<< orphan*/  GPTD7 ; 
- int /*<<< orphan*/  GPTD8 ; 
- int /*<<< orphan*/  audio_init () ; 
- int /*<<< orphan*/  audio_initialized ; 
- int /*<<< orphan*/  dprintf (char*) ; 
- scalar_t__* frequencies ; 
- scalar_t__ frequency ; 
- scalar_t__ frequency_alt ; 
- int /*<<< orphan*/  gptStopTimer (int /*<<< orphan*/ *) ; 
- int playing_note ; 
- int playing_notes ; 
- scalar_t__ voices ; 
- scalar_t__ volume ; 
- scalar_t__* volumes ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int GPTD6 ;
+ int GPTD7 ;
+ int GPTD8 ;
+ int audio_init () ;
+ int audio_initialized ;
+ int dprintf (char*) ;
+ scalar_t__* frequencies ;
+ scalar_t__ frequency ;
+ scalar_t__ frequency_alt ;
+ int gptStopTimer (int *) ;
+ int playing_note ;
+ int playing_notes ;
+ scalar_t__ voices ;
+ scalar_t__ volume ;
+ scalar_t__* volumes ;
 
 void stop_all_notes() {
     dprintf("audio stop all notes");
@@ -41,14 +41,14 @@ void stop_all_notes() {
     gptStopTimer(&GPTD7);
     gptStopTimer(&GPTD8);
 
-    playing_notes = false;
-    playing_note  = false;
-    frequency     = 0;
+    playing_notes = 0;
+    playing_note = 0;
+    frequency = 0;
     frequency_alt = 0;
-    volume        = 0;
+    volume = 0;
 
     for (uint8_t i = 0; i < 8; i++) {
         frequencies[i] = 0;
-        volumes[i]     = 0;
+        volumes[i] = 0;
     }
 }

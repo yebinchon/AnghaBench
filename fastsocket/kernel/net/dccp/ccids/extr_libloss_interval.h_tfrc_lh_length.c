@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct tfrc_loss_hist {int /*<<< orphan*/  counter; } ;
 
-/* Variables and functions */
- scalar_t__ LIH_SIZE ; 
- int /*<<< orphan*/  min (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u8 ;
+struct tfrc_loss_hist {int counter; } ;
+
+
+ scalar_t__ LIH_SIZE ;
+ int min (int ,int ) ;
 
 __attribute__((used)) static inline u8 tfrc_lh_length(struct tfrc_loss_hist *lh)
 {
-	return min(lh->counter, (u8)LIH_SIZE);
+ return min(lh->counter, (u8)LIH_SIZE);
 }

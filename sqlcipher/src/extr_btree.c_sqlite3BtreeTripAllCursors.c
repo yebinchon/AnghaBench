@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_12__ {int curFlags; scalar_t__ eState; int skipNext; struct TYPE_12__* pNext; } ;
 struct TYPE_11__ {TYPE_1__* pBt; } ;
 struct TYPE_10__ {TYPE_3__* pCursor; } ;
-typedef  TYPE_2__ Btree ;
-typedef  TYPE_3__ BtCursor ;
+typedef TYPE_2__ Btree ;
+typedef TYPE_3__ BtCursor ;
 
-/* Variables and functions */
- int BTCF_WriteFlag ; 
- scalar_t__ CURSOR_FAULT ; 
- scalar_t__ CURSOR_SKIPNEXT ; 
- scalar_t__ CURSOR_VALID ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  btreeReleaseAllCursorPages (TYPE_3__*) ; 
- int saveCursorPosition (TYPE_3__*) ; 
- int /*<<< orphan*/  sqlite3BtreeClearCursor (TYPE_3__*) ; 
- int /*<<< orphan*/  sqlite3BtreeEnter (TYPE_2__*) ; 
- int /*<<< orphan*/  sqlite3BtreeLeave (TYPE_2__*) ; 
+
+ int BTCF_WriteFlag ;
+ scalar_t__ CURSOR_FAULT ;
+ scalar_t__ CURSOR_SKIPNEXT ;
+ scalar_t__ CURSOR_VALID ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int btreeReleaseAllCursorPages (TYPE_3__*) ;
+ int saveCursorPosition (TYPE_3__*) ;
+ int sqlite3BtreeClearCursor (TYPE_3__*) ;
+ int sqlite3BtreeEnter (TYPE_2__*) ;
+ int sqlite3BtreeLeave (TYPE_2__*) ;
 
 int sqlite3BtreeTripAllCursors(Btree *pBtree, int errCode, int writeOnly){
   BtCursor *p;

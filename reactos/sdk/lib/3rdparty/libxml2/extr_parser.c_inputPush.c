@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * xmlParserInputPtr ;
-typedef  TYPE_1__* xmlParserCtxtPtr ;
-struct TYPE_4__ {int inputNr; int inputMax; int /*<<< orphan*/ * input; int /*<<< orphan*/ ** inputTab; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  xmlErrMemory (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xmlFreeInputStream (int /*<<< orphan*/ *) ; 
- scalar_t__ xmlRealloc (int /*<<< orphan*/ **,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int * xmlParserInputPtr ;
+typedef TYPE_1__* xmlParserCtxtPtr ;
+struct TYPE_4__ {int inputNr; int inputMax; int * input; int ** inputTab; } ;
+
+
+ int xmlErrMemory (TYPE_1__*,int *) ;
+ int xmlFreeInputStream (int *) ;
+ scalar_t__ xmlRealloc (int **,int) ;
 
 int
 inputPush(xmlParserCtxtPtr ctxt, xmlParserInputPtr value)
 {
-    if ((ctxt == NULL) || (value == NULL))
+    if ((ctxt == ((void*)0)) || (value == ((void*)0)))
         return(-1);
     if (ctxt->inputNr >= ctxt->inputMax) {
         ctxt->inputMax *= 2;
@@ -31,11 +31,11 @@ inputPush(xmlParserCtxtPtr ctxt, xmlParserInputPtr value)
             (xmlParserInputPtr *) xmlRealloc(ctxt->inputTab,
                                              ctxt->inputMax *
                                              sizeof(ctxt->inputTab[0]));
-        if (ctxt->inputTab == NULL) {
-            xmlErrMemory(ctxt, NULL);
-	    xmlFreeInputStream(value);
-	    ctxt->inputMax /= 2;
-	    value = NULL;
+        if (ctxt->inputTab == ((void*)0)) {
+            xmlErrMemory(ctxt, ((void*)0));
+     xmlFreeInputStream(value);
+     ctxt->inputMax /= 2;
+     value = ((void*)0);
             return (-1);
         }
     }

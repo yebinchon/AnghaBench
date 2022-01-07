@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-struct TYPE_5__ {int /*<<< orphan*/ * thread_proc; int /*<<< orphan*/  ref; void* param; int /*<<< orphan*/  init_finished_event; } ;
-typedef  int /*<<< orphan*/  THREAD_PROC ;
-typedef  TYPE_1__ THREAD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AbortExit () ; 
- int /*<<< orphan*/  KS_INC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  KS_NEWTHREAD_COUNT ; 
- int /*<<< orphan*/  NewEvent () ; 
- int /*<<< orphan*/  NewRef () ; 
- scalar_t__ OSInitThread (TYPE_1__*) ; 
- int /*<<< orphan*/  SleepThread (int) ; 
- TYPE_1__* ZeroMalloc (int) ; 
- int /*<<< orphan*/  printf (char*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+struct TYPE_5__ {int * thread_proc; int ref; void* param; int init_finished_event; } ;
+typedef int THREAD_PROC ;
+typedef TYPE_1__ THREAD ;
+
+
+ int AbortExit () ;
+ int KS_INC (int ) ;
+ int KS_NEWTHREAD_COUNT ;
+ int NewEvent () ;
+ int NewRef () ;
+ scalar_t__ OSInitThread (TYPE_1__*) ;
+ int SleepThread (int) ;
+ TYPE_1__* ZeroMalloc (int) ;
+ int printf (char*) ;
 
 THREAD *NewThreadInternal(THREAD_PROC *thread_proc, void *param)
 {
-	THREAD *t;
-	UINT retry = 0;
-	// Validate arguments
-	if (thread_proc == NULL)
-	{
-		return NULL;
-	}
+ THREAD *t;
+ UINT retry = 0;
 
-	// Initialize Thread object
-	t = ZeroMalloc(sizeof(THREAD));
-	t->init_finished_event = NewEvent();
+ if (thread_proc == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	t->param = param;
-	t->ref = NewRef();
-	t->thread_proc = thread_proc;
 
-	// Wait until the OS to initialize the thread
-	while (true)
-	{
-		if ((retry++) > 60)
-		{
-			printf("\n\n*** error: new thread create failed.\n\n");
-			AbortExit();
-		}
-		if (OSInitThread(t))
-		{
-			break;
-		}
-		SleepThread(500);
-	}
+ t = ZeroMalloc(sizeof(THREAD));
+ t->init_finished_event = NewEvent();
 
-	// KS
-	KS_INC(KS_NEWTHREAD_COUNT);
+ t->param = param;
+ t->ref = NewRef();
+ t->thread_proc = thread_proc;
 
-	return t;
+
+ while (1)
+ {
+  if ((retry++) > 60)
+  {
+   printf("\n\n*** error: new thread create failed.\n\n");
+   AbortExit();
+  }
+  if (OSInitThread(t))
+  {
+   break;
+  }
+  SleepThread(500);
+ }
+
+
+ KS_INC(KS_NEWTHREAD_COUNT);
+
+ return t;
 }

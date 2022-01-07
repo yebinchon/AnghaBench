@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/ * base; int /*<<< orphan*/ * top; } ;
-typedef  TYPE_1__ lua_State ;
-typedef  int /*<<< orphan*/  cTValue ;
-typedef  scalar_t__ MSize ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GCROOT_IO_OUTPUT ; 
- int /*<<< orphan*/  IOSTDF_UD (TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ LJ_52 ; 
- int /*<<< orphan*/  LUA_TSTRING ; 
- scalar_t__ fwrite (char const*,int,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lj_err_argt (TYPE_1__*,int,int /*<<< orphan*/ ) ; 
- char* lj_strfmt_wstrnum (TYPE_1__*,int /*<<< orphan*/ *,scalar_t__*) ; 
- int luaL_fileresult (TYPE_1__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  setudataV (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int * base; int * top; } ;
+typedef TYPE_1__ lua_State ;
+typedef int cTValue ;
+typedef scalar_t__ MSize ;
+typedef int FILE ;
+
+
+ int GCROOT_IO_OUTPUT ;
+ int IOSTDF_UD (TYPE_1__*,int ) ;
+ scalar_t__ LJ_52 ;
+ int LUA_TSTRING ;
+ scalar_t__ fwrite (char const*,int,scalar_t__,int *) ;
+ int lj_err_argt (TYPE_1__*,int,int ) ;
+ char* lj_strfmt_wstrnum (TYPE_1__*,int *,scalar_t__*) ;
+ int luaL_fileresult (TYPE_1__*,int,int *) ;
+ int setudataV (TYPE_1__*,int *,int ) ;
 
 __attribute__((used)) static int io_file_write(lua_State *L, FILE *fp, int start)
 {
@@ -45,5 +45,5 @@ __attribute__((used)) static int io_file_write(lua_State *L, FILE *fp, int start
       setudataV(L, L->base, IOSTDF_UD(L, GCROOT_IO_OUTPUT));
     return 1;
   }
-  return luaL_fileresult(L, status, NULL);
+  return luaL_fileresult(L, status, ((void*)0));
 }

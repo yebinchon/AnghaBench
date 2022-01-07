@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_8__ {TYPE_3__* cur_dir; TYPE_1__* sess; int /*<<< orphan*/  switched_paths; int /*<<< orphan*/ * pool; } ;
-typedef  TYPE_2__ report_context_t ;
-struct TYPE_9__ {int ref_count; void* copyfrom_rev; void* base_rev; void* repos_relpath; void* relpath; int /*<<< orphan*/  base_name; struct TYPE_9__* parent_dir; TYPE_2__* ctx; int /*<<< orphan*/ * pool; } ;
-typedef  TYPE_3__ dir_baton_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_7__ {int /*<<< orphan*/  session_url_str; int /*<<< orphan*/  repos_root_str; } ;
 
-/* Variables and functions */
- void* SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- TYPE_3__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- void* apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- void* svn_hash_gets (int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_relpath_basename (void*,int /*<<< orphan*/ *) ; 
- void* svn_relpath_join (void*,char const*,int /*<<< orphan*/ *) ; 
- void* svn_uri_skip_ancestor (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+struct TYPE_8__ {TYPE_3__* cur_dir; TYPE_1__* sess; int switched_paths; int * pool; } ;
+typedef TYPE_2__ report_context_t ;
+struct TYPE_9__ {int ref_count; void* copyfrom_rev; void* base_rev; void* repos_relpath; void* relpath; int base_name; struct TYPE_9__* parent_dir; TYPE_2__* ctx; int * pool; } ;
+typedef TYPE_3__ dir_baton_t ;
+typedef int apr_pool_t ;
+struct TYPE_7__ {int session_url_str; int repos_root_str; } ;
+
+
+ void* SVN_INVALID_REVNUM ;
+ int * SVN_NO_ERROR ;
+ TYPE_3__* apr_pcalloc (int *,int) ;
+ void* apr_pstrdup (int *,char const*) ;
+ void* svn_hash_gets (int ,void*) ;
+ int * svn_pool_create (int *) ;
+ int svn_relpath_basename (void*,int *) ;
+ void* svn_relpath_join (void*,char const*,int *) ;
+ void* svn_uri_skip_ancestor (int ,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 create_dir_baton(dir_baton_t **new_dir,
@@ -59,7 +59,7 @@ create_dir_baton(dir_baton_t **new_dir,
 
   dir->relpath = parent ? svn_relpath_join(parent->relpath, name, dir_pool)
                         : apr_pstrdup(dir_pool, name);
-  dir->base_name = svn_relpath_basename(dir->relpath, NULL);
+  dir->base_name = svn_relpath_basename(dir->relpath, ((void*)0));
 
   dir->repos_relpath = svn_hash_gets(ctx->switched_paths, dir->relpath);
   if (!dir->repos_relpath)

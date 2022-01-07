@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cdev {int dummy; } ;
 
-/* Variables and functions */
- int WARN_GIANTOK ; 
- int WARN_SLEEPOK ; 
- int /*<<< orphan*/  WITNESS_WARN (int,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  destroy_devl (struct cdev*) ; 
- int /*<<< orphan*/  dev_lock () ; 
- int /*<<< orphan*/  dev_unlock_and_free () ; 
+
+ int WARN_GIANTOK ;
+ int WARN_SLEEPOK ;
+ int WITNESS_WARN (int,int *,char*) ;
+ int destroy_devl (struct cdev*) ;
+ int dev_lock () ;
+ int dev_unlock_and_free () ;
 
 void
 destroy_dev(struct cdev *dev)
 {
 
-	WITNESS_WARN(WARN_GIANTOK | WARN_SLEEPOK, NULL, "destroy_dev");
-	dev_lock();
-	destroy_devl(dev);
-	dev_unlock_and_free();
+ WITNESS_WARN(WARN_GIANTOK | WARN_SLEEPOK, ((void*)0), "destroy_dev");
+ dev_lock();
+ destroy_devl(dev);
+ dev_unlock_and_free();
 }

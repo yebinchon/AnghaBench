@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct task_struct {int flags; int /*<<< orphan*/  pi_lock; int /*<<< orphan*/  task_works; } ;
-struct callback_head {int /*<<< orphan*/  (* func ) (struct callback_head*) ;struct callback_head* next; } ;
 
-/* Variables and functions */
- int PF_EXITING ; 
- struct callback_head* READ_ONCE (int /*<<< orphan*/ ) ; 
- struct callback_head* cmpxchg (int /*<<< orphan*/ *,struct callback_head*,struct callback_head*) ; 
- int /*<<< orphan*/  cond_resched () ; 
- struct task_struct* current ; 
- int /*<<< orphan*/  raw_spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  raw_spin_unlock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (struct callback_head*) ; 
- struct callback_head work_exited ; 
+
+
+
+struct task_struct {int flags; int pi_lock; int task_works; } ;
+struct callback_head {int (* func ) (struct callback_head*) ;struct callback_head* next; } ;
+
+
+ int PF_EXITING ;
+ struct callback_head* READ_ONCE (int ) ;
+ struct callback_head* cmpxchg (int *,struct callback_head*,struct callback_head*) ;
+ int cond_resched () ;
+ struct task_struct* current ;
+ int raw_spin_lock_irq (int *) ;
+ int raw_spin_unlock_irq (int *) ;
+ int stub1 (struct callback_head*) ;
+ struct callback_head work_exited ;
 
 void task_work_run(void)
 {
-	struct task_struct *task = current;
-	struct callback_head *work, *head, *next;
+ struct task_struct *task = current;
+ struct callback_head *work, *head, *next;
 
-	for (;;) {
-		/*
-		 * work->func() can do task_work_add(), do not set
-		 * work_exited unless the list is empty.
-		 */
-		raw_spin_lock_irq(&task->pi_lock);
-		do {
-			work = READ_ONCE(task->task_works);
-			head = !work && (task->flags & PF_EXITING) ?
-				&work_exited : NULL;
-		} while (cmpxchg(&task->task_works, work, head) != work);
-		raw_spin_unlock_irq(&task->pi_lock);
+ for (;;) {
 
-		if (!work)
-			break;
 
-		do {
-			next = work->next;
-			work->func(work);
-			work = next;
-			cond_resched();
-		} while (work);
-	}
+
+
+  raw_spin_lock_irq(&task->pi_lock);
+  do {
+   work = READ_ONCE(task->task_works);
+   head = !work && (task->flags & PF_EXITING) ?
+    &work_exited : ((void*)0);
+  } while (cmpxchg(&task->task_works, work, head) != work);
+  raw_spin_unlock_irq(&task->pi_lock);
+
+  if (!work)
+   break;
+
+  do {
+   next = work->next;
+   work->func(work);
+   work = next;
+   cond_resched();
+  } while (work);
+ }
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct vo {int /*<<< orphan*/  log; TYPE_1__* x11; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct vo {int log; TYPE_1__* x11; } ;
 struct ra_ctx {struct vo* vo; struct priv* priv; } ;
-struct priv {scalar_t__ context; int /*<<< orphan*/  vinfo; } ;
-struct TYPE_2__ {int /*<<< orphan*/  screen; int /*<<< orphan*/  window; int /*<<< orphan*/ * display; } ;
-typedef  scalar_t__ GLXContext ;
-typedef  int /*<<< orphan*/  GL ;
-typedef  int /*<<< orphan*/  Display ;
+struct priv {scalar_t__ context; int vinfo; } ;
+struct TYPE_2__ {int screen; int window; int * display; } ;
+typedef scalar_t__ GLXContext ;
+typedef int GL ;
+typedef int Display ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_FATAL (struct vo*,char*) ; 
- int /*<<< orphan*/  True ; 
- scalar_t__ glXCreateContext (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glXDestroyContext (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ glXGetProcAddressARB ; 
- int /*<<< orphan*/  glXMakeCurrent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- char* glXQueryExtensionsString (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpgl_load_functions (int /*<<< orphan*/ *,void*,char const*,int /*<<< orphan*/ ) ; 
+
+ int MP_FATAL (struct vo*,char*) ;
+ int True ;
+ scalar_t__ glXCreateContext (int *,int ,int *,int ) ;
+ int glXDestroyContext (int *,scalar_t__) ;
+ scalar_t__ glXGetProcAddressARB ;
+ int glXMakeCurrent (int *,int ,scalar_t__) ;
+ char* glXQueryExtensionsString (int *,int ) ;
+ int mpgl_load_functions (int *,void*,char const*,int ) ;
 
 __attribute__((used)) static bool create_context_x11_old(struct ra_ctx *ctx, GL *gl)
 {
@@ -36,23 +36,23 @@ __attribute__((used)) static bool create_context_x11_old(struct ra_ctx *ctx, GL 
     struct vo *vo = ctx->vo;
 
     if (p->context)
-        return true;
+        return 1;
 
     if (!p->vinfo) {
         MP_FATAL(vo, "Can't create a legacy GLX context without X visual\n");
-        return false;
+        return 0;
     }
 
-    GLXContext new_context = glXCreateContext(display, p->vinfo, NULL, True);
+    GLXContext new_context = glXCreateContext(display, p->vinfo, ((void*)0), True);
     if (!new_context) {
         MP_FATAL(vo, "Could not create GLX context!\n");
-        return false;
+        return 0;
     }
 
     if (!glXMakeCurrent(display, ctx->vo->x11->window, new_context)) {
         MP_FATAL(vo, "Could not set GLX context!\n");
         glXDestroyContext(display, new_context);
-        return false;
+        return 0;
     }
 
     const char *glxstr = glXQueryExtensionsString(display, ctx->vo->x11->screen);
@@ -61,5 +61,5 @@ __attribute__((used)) static bool create_context_x11_old(struct ra_ctx *ctx, GL 
 
     p->context = new_context;
 
-    return true;
+    return 1;
 }

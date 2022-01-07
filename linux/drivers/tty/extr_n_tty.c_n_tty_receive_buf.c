@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tty_struct {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  n_tty_receive_buf_common (struct tty_struct*,unsigned char const*,char*,int,int /*<<< orphan*/ ) ; 
+
+ int n_tty_receive_buf_common (struct tty_struct*,unsigned char const*,char*,int,int ) ;
 
 __attribute__((used)) static void n_tty_receive_buf(struct tty_struct *tty, const unsigned char *cp,
-			      char *fp, int count)
+         char *fp, int count)
 {
-	n_tty_receive_buf_common(tty, cp, fp, count, 0);
+ n_tty_receive_buf_common(tty, cp, fp, count, 0);
 }

@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
-typedef  struct TYPE_12__   TYPE_10__ ;
 
-/* Type definitions */
-struct TYPE_18__ {int /*<<< orphan*/  time_base; int /*<<< orphan*/  on_event; TYPE_2__* opaque; TYPE_3__* in; } ;
+
+
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+typedef struct TYPE_12__ TYPE_10__ ;
+
+
+struct TYPE_18__ {int time_base; int on_event; TYPE_2__* opaque; TYPE_3__* in; } ;
 struct TYPE_17__ {TYPE_4__** inputs; TYPE_2__* priv; } ;
-struct TYPE_16__ {int h; int w; int /*<<< orphan*/  time_base; void* sample_aspect_ratio; void* frame_rate; int /*<<< orphan*/  format; TYPE_5__* src; } ;
-struct TYPE_15__ {int sync; void* after; void* before; int /*<<< orphan*/  time_base; } ;
-struct TYPE_14__ {int nb_inputs; char* layout; TYPE_6__ fs; scalar_t__ shortest; int /*<<< orphan*/  nb_planes; TYPE_10__* desc; TYPE_1__* items; scalar_t__ is_horizontal; scalar_t__ is_vertical; } ;
-struct TYPE_13__ {int* height; int* y; int /*<<< orphan*/  x; int /*<<< orphan*/  linesize; } ;
-struct TYPE_12__ {int /*<<< orphan*/  log2_chroma_h; } ;
-typedef  TYPE_1__ StackItem ;
-typedef  TYPE_2__ StackContext ;
-typedef  TYPE_3__ FFFrameSyncIn ;
-typedef  void* AVRational ;
-typedef  TYPE_4__ AVFilterLink ;
-typedef  TYPE_5__ AVFilterContext ;
+struct TYPE_16__ {int h; int w; int time_base; void* sample_aspect_ratio; void* frame_rate; int format; TYPE_5__* src; } ;
+struct TYPE_15__ {int sync; void* after; void* before; int time_base; } ;
+struct TYPE_14__ {int nb_inputs; char* layout; TYPE_6__ fs; scalar_t__ shortest; int nb_planes; TYPE_10__* desc; TYPE_1__* items; scalar_t__ is_horizontal; scalar_t__ is_vertical; } ;
+struct TYPE_13__ {int* height; int* y; int x; int linesize; } ;
+struct TYPE_12__ {int log2_chroma_h; } ;
+typedef TYPE_1__ StackItem ;
+typedef TYPE_2__ StackContext ;
+typedef TYPE_3__ FFFrameSyncIn ;
+typedef void* AVRational ;
+typedef TYPE_4__ AVFilterLink ;
+typedef TYPE_5__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_BUG ; 
- void* AV_CEIL_RSHIFT (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- void* EXT_INFINITY ; 
- void* EXT_STOP ; 
- int FFMAX (int,int) ; 
- int av_image_fill_linesizes (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*,int,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  av_pix_fmt_count_planes (int /*<<< orphan*/ ) ; 
- TYPE_10__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
- char* av_strtok (char*,char*,char**) ; 
- int ff_framesync_configure (TYPE_6__*) ; 
- int ff_framesync_init (TYPE_6__*,TYPE_5__*,int) ; 
- int /*<<< orphan*/  process_frame ; 
- int sscanf (char*,char*,int*) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_BUG ;
+ void* AV_CEIL_RSHIFT (int,int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ void* EXT_INFINITY ;
+ void* EXT_STOP ;
+ int FFMAX (int,int) ;
+ int av_image_fill_linesizes (int ,int ,int) ;
+ int av_log (TYPE_5__*,int ,char*,int,int,int ,int) ;
+ int av_pix_fmt_count_planes (int ) ;
+ TYPE_10__* av_pix_fmt_desc_get (int ) ;
+ char* av_strtok (char*,char*,char**) ;
+ int ff_framesync_configure (TYPE_6__*) ;
+ int ff_framesync_init (TYPE_6__*,TYPE_5__*,int) ;
+ int process_frame ;
+ int sscanf (char*,char*,int*) ;
 
 __attribute__((used)) static int config_output(AVFilterLink *outlink)
 {
@@ -115,9 +115,9 @@ __attribute__((used)) static int config_output(AVFilterLink *outlink)
             }
         }
     } else {
-        char *arg, *p = s->layout, *saveptr = NULL;
-        char *arg2, *p2, *saveptr2 = NULL;
-        char *arg3, *p3, *saveptr3 = NULL;
+        char *arg, *p = s->layout, *saveptr = ((void*)0);
+        char *arg2, *p2, *saveptr2 = ((void*)0);
+        char *arg3, *p3, *saveptr3 = ((void*)0);
         int inw, inh, size;
 
         for (i = 0; i < s->nb_inputs; i++) {
@@ -127,7 +127,7 @@ __attribute__((used)) static int config_output(AVFilterLink *outlink)
             if (!(arg = av_strtok(p, "|", &saveptr)))
                 return AVERROR(EINVAL);
 
-            p = NULL;
+            p = ((void*)0);
 
             if ((ret = av_image_fill_linesizes(item->linesize, inlink->format, inlink->w)) < 0) {
                 return ret;
@@ -143,10 +143,10 @@ __attribute__((used)) static int config_output(AVFilterLink *outlink)
                 if (!(arg2 = av_strtok(p2, "_", &saveptr2)))
                     return AVERROR(EINVAL);
 
-                p2 = NULL;
+                p2 = ((void*)0);
                 p3 = arg2;
                 while ((arg3 = av_strtok(p3, "+", &saveptr3))) {
-                    p3 = NULL;
+                    p3 = ((void*)0);
                     if (sscanf(arg3, "w%d", &size) == 1) {
                         if (size == i || size < 0 || size >= s->nb_inputs)
                             return AVERROR(EINVAL);
@@ -184,15 +184,15 @@ __attribute__((used)) static int config_output(AVFilterLink *outlink)
             item->y[1] = item->y[2] = AV_CEIL_RSHIFT(inh, s->desc->log2_chroma_h);
             item->y[0] = item->y[3] = inh;
 
-            width  = FFMAX(width,  inlink->w + inw);
+            width = FFMAX(width, inlink->w + inw);
             height = FFMAX(height, inlink->h + inh);
         }
     }
 
     s->nb_planes = av_pix_fmt_count_planes(outlink->format);
 
-    outlink->w          = width;
-    outlink->h          = height;
+    outlink->w = width;
+    outlink->h = height;
     outlink->frame_rate = frame_rate;
     outlink->sample_aspect_ratio = sar;
 
@@ -207,9 +207,9 @@ __attribute__((used)) static int config_output(AVFilterLink *outlink)
         AVFilterLink *inlink = ctx->inputs[i];
 
         in[i].time_base = inlink->time_base;
-        in[i].sync   = 1;
+        in[i].sync = 1;
         in[i].before = EXT_STOP;
-        in[i].after  = s->shortest ? EXT_STOP : EXT_INFINITY;
+        in[i].after = s->shortest ? EXT_STOP : EXT_INFINITY;
     }
 
     ret = ff_framesync_configure(&s->fs);

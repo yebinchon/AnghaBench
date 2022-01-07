@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* priv_p ;
-typedef  int /*<<< orphan*/  hook_p ;
-struct TYPE_3__ {int /*<<< orphan*/ * hook; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NG_HOOK_NODE (int /*<<< orphan*/ ) ; 
- TYPE_1__* NG_NODE_PRIVATE (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* priv_p ;
+typedef int hook_p ;
+struct TYPE_3__ {int * hook; } ;
+
+
+ int NG_HOOK_NODE (int ) ;
+ TYPE_1__* NG_NODE_PRIVATE (int ) ;
 
 __attribute__((used)) static int
 ng_sppp_disconnect (hook_p hook)
 {
-	const priv_p priv = NG_NODE_PRIVATE(NG_HOOK_NODE(hook));
+ const priv_p priv = NG_NODE_PRIVATE(NG_HOOK_NODE(hook));
 
-	if (priv)
-		priv->hook = NULL;
+ if (priv)
+  priv->hook = ((void*)0);
 
-	return (0);
+ return (0);
 }

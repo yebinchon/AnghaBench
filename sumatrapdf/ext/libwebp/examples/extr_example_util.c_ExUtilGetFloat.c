@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const* const) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strtod (char const* const,char**) ; 
+ int fprintf (int ,char*,char const* const) ;
+ int stderr ;
+ scalar_t__ strtod (char const* const,char**) ;
 
 float ExUtilGetFloat(const char* const v, int* const error) {
-  char* end = NULL;
-  const float f = (v != NULL) ? (float)strtod(v, &end) : 0.f;
-  if (end == v && error != NULL && !*error) {
+  char* end = ((void*)0);
+  const float f = (v != ((void*)0)) ? (float)strtod(v, &end) : 0.f;
+  if (end == v && error != ((void*)0) && !*error) {
     *error = 1;
     fprintf(stderr, "Error! '%s' is not a floating point number.\n",
-            (v != NULL) ? v : "(null)");
+            (v != ((void*)0)) ? v : "(null)");
   }
   return f;
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  image ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  file_error (char*) ; 
- int /*<<< orphan*/  find_replace (char*,char*,char*,char*) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  free (int*) ; 
- int /*<<< orphan*/  free_image (int /*<<< orphan*/ ) ; 
- int fscanf (int /*<<< orphan*/ *,char*,int*,char*) ; 
- int /*<<< orphan*/  load_rle (int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  make_image (int,int,int) ; 
- int /*<<< orphan*/  or_image (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int* read_intlist (char*,int*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int image ;
+typedef int FILE ;
+
+
+ int fclose (int *) ;
+ int file_error (char*) ;
+ int find_replace (char*,char*,char*,char*) ;
+ int * fopen (char*,char*) ;
+ int free (int*) ;
+ int free_image (int ) ;
+ int fscanf (int *,char*,int*,char*) ;
+ int load_rle (int ,int*,int) ;
+ int make_image (int,int,int) ;
+ int or_image (int ,int ,int) ;
+ int* read_intlist (char*,int*,int ) ;
 
 image get_segmentation_image(char *path, int w, int h, int classes)
 {
@@ -47,7 +47,7 @@ image get_segmentation_image(char *path, int w, int h, int classes)
         or_image(part, mask, id);
         free(rle);
     }
-    //exclusive_image(mask);
+
     fclose(file);
     free_image(part);
     return mask;

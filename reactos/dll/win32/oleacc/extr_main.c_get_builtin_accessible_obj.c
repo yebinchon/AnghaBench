@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * accessible_create ;
-struct TYPE_7__ {int idx; int /*<<< orphan*/ * create_window; int /*<<< orphan*/ * create_client; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ WCHAR ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int ARRAY_SIZE (TYPE_1__*) ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- scalar_t__ OBJID_CLIENT ; 
- int /*<<< orphan*/  OBJID_QUERYCLASSNAMEIDX ; 
- int /*<<< orphan*/  RealGetWindowClassW (int /*<<< orphan*/ ,TYPE_1__*,int) ; 
- int SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int) ; 
- int /*<<< orphan*/  WARN (char*,int) ; 
- int /*<<< orphan*/  WM_GETOBJECT ; 
- TYPE_1__* builtin_classes ; 
- int debugstr_w (TYPE_1__*) ; 
- int /*<<< orphan*/  strcmpiW (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int * accessible_create ;
+struct TYPE_7__ {int idx; int * create_window; int * create_client; int name; } ;
+typedef TYPE_1__ WCHAR ;
+typedef scalar_t__ LONG ;
+typedef int HWND ;
+
+
+ int ARRAY_SIZE (TYPE_1__*) ;
+ int FIXME (char*,int) ;
+ scalar_t__ OBJID_CLIENT ;
+ int OBJID_QUERYCLASSNAMEIDX ;
+ int RealGetWindowClassW (int ,TYPE_1__*,int) ;
+ int SendMessageW (int ,int ,int ,int ) ;
+ int TRACE (char*,int) ;
+ int WARN (char*,int) ;
+ int WM_GETOBJECT ;
+ TYPE_1__* builtin_classes ;
+ int debugstr_w (TYPE_1__*) ;
+ int strcmpiW (TYPE_1__*,int ) ;
 
 __attribute__((used)) static accessible_create get_builtin_accessible_obj(HWND hwnd, LONG objid)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static accessible_create get_builtin_accessible_obj(HWND h
     int i, idx;
 
     if(!RealGetWindowClassW(hwnd, class_name, ARRAY_SIZE(class_name)))
-        return NULL;
+        return ((void*)0);
     TRACE("got window class: %s\n", debugstr_w(class_name));
 
     for(i=0; i<ARRAY_SIZE(builtin_classes); i++) {
@@ -71,5 +71,5 @@ __attribute__((used)) static accessible_create get_builtin_accessible_obj(HWND h
         WARN("unhandled class name idx: %x\n", idx);
     }
 
-    return NULL;
+    return ((void*)0);
 }

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UCHAR ;
-typedef  int LONGLONG ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
 
-/* Variables and functions */
+
+
+
+typedef int UCHAR ;
+typedef int LONGLONG ;
+typedef int BOOLEAN ;
+
+
 
 UCHAR
 GetPackedByteCount(LONGLONG NumberToPack,
@@ -41,7 +41,7 @@ GetPackedByteCount(LONGLONG NumberToPack,
 
     if (NumberToPack > 0)
     {
-        // we have to make sure the number that gets encoded won't be interpreted as negative
+
         if (NumberToPack >= 0x0080000000000000)
             return 8;
         if (NumberToPack >= 0x0000800000000000)
@@ -59,7 +59,7 @@ GetPackedByteCount(LONGLONG NumberToPack,
     }
     else
     {
-        // negative number
+
         if (NumberToPack <= 0xff80000000000000)
             return 8;
         if (NumberToPack <= 0xffff800000000000)

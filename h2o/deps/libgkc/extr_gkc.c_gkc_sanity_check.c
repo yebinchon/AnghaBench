@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
+
+
+
+
+typedef scalar_t__ uint64_t ;
 struct list {struct list* next; } ;
 struct gkc_tuple {scalar_t__ g; int delta; } ;
 struct gkc_summary {int nr_elems; int epsilon; scalar_t__ alloced; struct list head; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- struct gkc_tuple* list_to_tuple (struct list*) ; 
+
+ int assert (int) ;
+ struct gkc_tuple* list_to_tuple (struct list*) ;
 
 void gkc_sanity_check(struct gkc_summary *s)
 {
@@ -34,7 +34,7 @@ void gkc_sanity_check(struct gkc_summary *s)
         nr_elems += tcur->g;
         nr_alloced++;
         if (s->nr_elems > (1/s->epsilon)) {
-            /* there must be enough observations for this to become true */
+
             assert(tcur->g + tcur->delta <= (s->nr_elems * s->epsilon * 2));
         }
         assert(nr_alloced <= s->alloced);

@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ GETTEMP (char*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  _DIAGASSERT (int /*<<< orphan*/ ) ; 
+ scalar_t__ GETTEMP (char*,int *,int) ;
+ int _DIAGASSERT (int ) ;
 
 char *
 mkdtemp(char *path)
 {
-	_DIAGASSERT(path != NULL);
+ _DIAGASSERT(path != ((void*)0));
 
-	return GETTEMP(path, NULL, 1) ? path : NULL;
+ return GETTEMP(path, ((void*)0), 1) ? path : ((void*)0);
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  client ;
-struct TYPE_2__ {int requests; int /*<<< orphan*/  liveclients_mutex; scalar_t__ num_threads; int /*<<< orphan*/  liveclients; scalar_t__ keepalive; scalar_t__ el; int /*<<< orphan*/  requests_finished; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  aeStop (scalar_t__) ; 
- int /*<<< orphan*/  atomicGet (int /*<<< orphan*/ ,int) ; 
- TYPE_1__ config ; 
- int /*<<< orphan*/  createMissingClients (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  freeClient (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  resetClient (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int client ;
+struct TYPE_2__ {int requests; int liveclients_mutex; scalar_t__ num_threads; int liveclients; scalar_t__ keepalive; scalar_t__ el; int requests_finished; } ;
+
+
+ int aeStop (scalar_t__) ;
+ int atomicGet (int ,int) ;
+ TYPE_1__ config ;
+ int createMissingClients (int ) ;
+ int freeClient (int ) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int resetClient (int ) ;
 
 __attribute__((used)) static void clientDone(client c) {
     int requests_finished = 0;

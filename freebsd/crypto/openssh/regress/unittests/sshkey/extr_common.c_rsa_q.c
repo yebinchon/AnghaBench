@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sshkey {struct sshkey* rsa; } ;
-typedef  int /*<<< orphan*/  BIGNUM ;
+typedef int BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_PTR_NE (struct sshkey*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RSA_get0_factors (struct sshkey*,int /*<<< orphan*/ *,int /*<<< orphan*/  const**) ; 
+
+ int ASSERT_PTR_NE (struct sshkey*,int *) ;
+ int RSA_get0_factors (struct sshkey*,int *,int const**) ;
 
 const BIGNUM *
 rsa_q(struct sshkey *k)
 {
-	const BIGNUM *q = NULL;
+ const BIGNUM *q = ((void*)0);
 
-	ASSERT_PTR_NE(k, NULL);
-	ASSERT_PTR_NE(k->rsa, NULL);
-	RSA_get0_factors(k->rsa, NULL, &q);
-	return q;
+ ASSERT_PTR_NE(k, ((void*)0));
+ ASSERT_PTR_NE(k->rsa, ((void*)0));
+ RSA_get0_factors(k->rsa, ((void*)0), &q);
+ return q;
 }

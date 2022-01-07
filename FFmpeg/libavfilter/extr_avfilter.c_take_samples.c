@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_9__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_19__ {int /*<<< orphan*/  samples_skipped; } ;
-struct TYPE_18__ {int /*<<< orphan*/  time_base; TYPE_9__ fifo; int /*<<< orphan*/  format; int /*<<< orphan*/  channels; int /*<<< orphan*/  min_samples; } ;
-struct TYPE_17__ {unsigned int nb_samples; int /*<<< orphan*/  extended_data; int /*<<< orphan*/  pts; } ;
-typedef  TYPE_1__ AVFrame ;
-typedef  TYPE_2__ AVFilterLink ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_assert1 (int /*<<< orphan*/ ) ; 
- int av_frame_copy_props (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_1__**) ; 
- int /*<<< orphan*/  av_samples_copy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* ff_framequeue_peek (TYPE_9__*,unsigned int) ; 
- unsigned int ff_framequeue_queued_frames (TYPE_9__*) ; 
- int /*<<< orphan*/  ff_framequeue_skip_samples (TYPE_9__*,unsigned int,int /*<<< orphan*/ ) ; 
- TYPE_1__* ff_framequeue_take (TYPE_9__*) ; 
- TYPE_1__* ff_get_audio_buffer (TYPE_2__*,unsigned int) ; 
- int /*<<< orphan*/  samples_ready (TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_19__ TYPE_9__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+struct TYPE_19__ {int samples_skipped; } ;
+struct TYPE_18__ {int time_base; TYPE_9__ fifo; int format; int channels; int min_samples; } ;
+struct TYPE_17__ {unsigned int nb_samples; int extended_data; int pts; } ;
+typedef TYPE_1__ AVFrame ;
+typedef TYPE_2__ AVFilterLink ;
+
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int av_assert1 (int ) ;
+ int av_frame_copy_props (TYPE_1__*,TYPE_1__*) ;
+ int av_frame_free (TYPE_1__**) ;
+ int av_samples_copy (int ,int ,unsigned int,int ,unsigned int,int ,int ) ;
+ TYPE_1__* ff_framequeue_peek (TYPE_9__*,unsigned int) ;
+ unsigned int ff_framequeue_queued_frames (TYPE_9__*) ;
+ int ff_framequeue_skip_samples (TYPE_9__*,unsigned int,int ) ;
+ TYPE_1__* ff_framequeue_take (TYPE_9__*) ;
+ TYPE_1__* ff_get_audio_buffer (TYPE_2__*,unsigned int) ;
+ int samples_ready (TYPE_2__*,int ) ;
 
 __attribute__((used)) static int take_samples(AVFilterLink *link, unsigned min, unsigned max,
                         AVFrame **rframe)
@@ -40,8 +40,8 @@ __attribute__((used)) static int take_samples(AVFilterLink *link, unsigned min, 
     unsigned nb_samples, nb_frames, i, p;
     int ret;
 
-    /* Note: this function relies on no format changes and must only be
-       called with enough samples. */
+
+
     av_assert1(samples_ready(link, link->min_samples));
     frame0 = frame = ff_framequeue_peek(&link->fifo, 0);
     if (!link->fifo.samples_skipped && frame->nb_samples >= min && frame->nb_samples <= max) {

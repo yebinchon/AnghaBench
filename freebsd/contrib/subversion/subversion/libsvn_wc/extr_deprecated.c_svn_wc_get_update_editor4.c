@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_notify_func2_t ;
-typedef  int /*<<< orphan*/  svn_wc_external_update_t ;
-typedef  int /*<<< orphan*/  svn_wc_dirents_func_t ;
-typedef  int /*<<< orphan*/  svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_wc_conflict_resolver_func2_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_delta_editor_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_wc__get_update_editor (int /*<<< orphan*/  const**,void**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_wc_notify_func2_t ;
+typedef int svn_wc_external_update_t ;
+typedef int svn_wc_dirents_func_t ;
+typedef int svn_wc_context_t ;
+typedef int svn_wc_conflict_resolver_func2_t ;
+typedef int svn_revnum_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef int svn_delta_editor_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+
+
+ int * svn_error_trace (int ) ;
+ int svn_wc__get_update_editor (int const**,void**,int *,int *,char const*,char const*,int *,int ,int ,int ,int ,int ,int ,int ,char const*,int const*,int ,void*,int ,void*,int ,void*,int ,void*,int ,void*,int *,int *) ;
 
 svn_error_t *
 svn_wc_get_update_editor4(const svn_delta_editor_t **editor,
@@ -62,7 +62,7 @@ svn_wc_get_update_editor4(const svn_delta_editor_t **editor,
                               target_revision,
                               wc_ctx,
                               anchor_abspath,
-                              target_basename, NULL,
+                              target_basename, ((void*)0),
                               use_commit_times,
                               depth, depth_is_sticky,
                               allow_unver_obstructions,

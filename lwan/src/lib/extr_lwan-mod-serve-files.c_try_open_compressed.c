@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {scalar_t__ st_mtime; scalar_t__ st_size; int /*<<< orphan*/  st_mode; } ;
-struct serve_files_priv {int /*<<< orphan*/  root_fd; } ;
 
-/* Variables and functions */
- int ENOENT ; 
- scalar_t__ LIKELY (int /*<<< orphan*/ ) ; 
- int PATH_MAX ; 
- scalar_t__ UNLIKELY (int) ; 
- int /*<<< orphan*/  close (int) ; 
- int fstat (int,struct stat*) ; 
- int /*<<< orphan*/  is_compression_worthy (size_t,size_t) ; 
- int /*<<< orphan*/  is_world_readable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  open_mode ; 
- int openat (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int snprintf (char*,int,char*,char const*) ; 
- int /*<<< orphan*/  try_readahead (struct serve_files_priv const*,int,size_t) ; 
+
+
+
+struct stat {scalar_t__ st_mtime; scalar_t__ st_size; int st_mode; } ;
+struct serve_files_priv {int root_fd; } ;
+
+
+ int ENOENT ;
+ scalar_t__ LIKELY (int ) ;
+ int PATH_MAX ;
+ scalar_t__ UNLIKELY (int) ;
+ int close (int) ;
+ int fstat (int,struct stat*) ;
+ int is_compression_worthy (size_t,size_t) ;
+ int is_world_readable (int ) ;
+ int open_mode ;
+ int openat (int ,char*,int ) ;
+ int snprintf (char*,int,char*,char const*) ;
+ int try_readahead (struct serve_files_priv const*,int,size_t) ;
 
 __attribute__((used)) static int try_open_compressed(const char *relpath,
                                const struct serve_files_priv *priv,
@@ -36,7 +36,7 @@ __attribute__((used)) static int try_open_compressed(const char *relpath,
     struct stat st;
     int ret, fd;
 
-    /* Try to serve a compressed file using sendfile() if $FILENAME.gz exists */
+
     ret = snprintf(gzpath, PATH_MAX, "%s.gz", relpath + 1);
     if (UNLIKELY(ret < 0 || ret >= PATH_MAX))
         goto out;

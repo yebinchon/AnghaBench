@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  InterpolationMode ;
-typedef  int /*<<< orphan*/ * HDC ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpGraphics ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GdipCreateFromHDC (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetInterpolationMode (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipSetInterpolationMode (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/ * GetDC (int /*<<< orphan*/ ) ; 
- scalar_t__ InterpolationModeBilinear ; 
- scalar_t__ InterpolationModeDefault ; 
- scalar_t__ InterpolationModeHighQuality ; 
- scalar_t__ InterpolationModeHighQualityBicubic ; 
- scalar_t__ InterpolationModeInvalid ; 
- scalar_t__ InterpolationModeLowQuality ; 
- scalar_t__ InterpolationModeNearestNeighbor ; 
- scalar_t__ InvalidParameter ; 
- scalar_t__ Ok ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  expect (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hwnd ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int InterpolationMode ;
+typedef int * HDC ;
+typedef int GpStatus ;
+typedef int GpGraphics ;
+
+
+ int GdipCreateFromHDC (int *,int **) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipGetInterpolationMode (int *,int *) ;
+ int GdipSetInterpolationMode (int *,scalar_t__) ;
+ int * GetDC (int ) ;
+ scalar_t__ InterpolationModeBilinear ;
+ scalar_t__ InterpolationModeDefault ;
+ scalar_t__ InterpolationModeHighQuality ;
+ scalar_t__ InterpolationModeHighQualityBicubic ;
+ scalar_t__ InterpolationModeInvalid ;
+ scalar_t__ InterpolationModeLowQuality ;
+ scalar_t__ InterpolationModeNearestNeighbor ;
+ scalar_t__ InvalidParameter ;
+ scalar_t__ Ok ;
+ int ReleaseDC (int ,int *) ;
+ int expect (scalar_t__,int ) ;
+ int hwnd ;
+ int ok (int ,char*) ;
 
 __attribute__((used)) static void test_get_set_interpolation(void)
 {
@@ -42,25 +42,25 @@ __attribute__((used)) static void test_get_set_interpolation(void)
     GpStatus status;
     InterpolationMode mode;
 
-    ok(hdc != NULL, "Expected HDC to be initialized\n");
+    ok(hdc != ((void*)0), "Expected HDC to be initialized\n");
     status = GdipCreateFromHDC(hdc, &graphics);
     expect(Ok, status);
-    ok(graphics != NULL, "Expected graphics to be initialized\n");
+    ok(graphics != ((void*)0), "Expected graphics to be initialized\n");
 
-    status = GdipGetInterpolationMode(NULL, &mode);
+    status = GdipGetInterpolationMode(((void*)0), &mode);
     expect(InvalidParameter, status);
 
     if (0)
     {
-        /* Crashes on Windows XP */
-        status = GdipGetInterpolationMode(graphics, NULL);
+
+        status = GdipGetInterpolationMode(graphics, ((void*)0));
         expect(InvalidParameter, status);
     }
 
-    status = GdipSetInterpolationMode(NULL, InterpolationModeNearestNeighbor);
+    status = GdipSetInterpolationMode(((void*)0), InterpolationModeNearestNeighbor);
     expect(InvalidParameter, status);
 
-    /* out of range */
+
     status = GdipSetInterpolationMode(graphics, InterpolationModeHighQualityBicubic+1);
     expect(InvalidParameter, status);
 

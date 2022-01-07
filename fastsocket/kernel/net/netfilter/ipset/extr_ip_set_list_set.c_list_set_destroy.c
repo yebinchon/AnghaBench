@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct list_set {int /*<<< orphan*/  gc; int /*<<< orphan*/  timeout; } ;
+
+
+
+
+struct list_set {int gc; int timeout; } ;
 struct ip_set {struct list_set* data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  del_timer_sync (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (struct list_set*) ; 
- int /*<<< orphan*/  list_set_flush (struct ip_set*) ; 
- scalar_t__ with_timeout (int /*<<< orphan*/ ) ; 
+
+ int del_timer_sync (int *) ;
+ int kfree (struct list_set*) ;
+ int list_set_flush (struct ip_set*) ;
+ scalar_t__ with_timeout (int ) ;
 
 __attribute__((used)) static void
 list_set_destroy(struct ip_set *set)
 {
-	struct list_set *map = set->data;
+ struct list_set *map = set->data;
 
-	if (with_timeout(map->timeout))
-		del_timer_sync(&map->gc);
-	list_set_flush(set);
-	kfree(map);
+ if (with_timeout(map->timeout))
+  del_timer_sync(&map->gc);
+ list_set_flush(set);
+ kfree(map);
 
-	set->data = NULL;
+ set->data = ((void*)0);
 }

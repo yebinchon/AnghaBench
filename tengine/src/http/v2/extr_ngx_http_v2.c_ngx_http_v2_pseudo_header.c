@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ngx_int_t ;
-struct TYPE_14__ {int len; int /*<<< orphan*/  data; } ;
-struct TYPE_12__ {TYPE_4__ name; int /*<<< orphan*/  value; } ;
-typedef  TYPE_2__ ngx_http_v2_header_t ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int ngx_int_t ;
+struct TYPE_14__ {int len; int data; } ;
+struct TYPE_12__ {TYPE_4__ name; int value; } ;
+typedef TYPE_2__ ngx_http_v2_header_t ;
 struct TYPE_13__ {TYPE_1__* connection; } ;
-typedef  TYPE_3__ ngx_http_request_t ;
-struct TYPE_11__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_3__ ngx_http_request_t ;
+struct TYPE_11__ {int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_DECLINED ; 
- int /*<<< orphan*/  NGX_LOG_INFO ; 
- int /*<<< orphan*/  ngx_http_v2_parse_authority (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_http_v2_parse_method (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_http_v2_parse_path (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_http_v2_parse_scheme (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,TYPE_4__*) ; 
- int /*<<< orphan*/  ngx_memcmp (int /*<<< orphan*/ ,char*,int) ; 
+
+ int NGX_DECLINED ;
+ int NGX_LOG_INFO ;
+ int ngx_http_v2_parse_authority (TYPE_3__*,int *) ;
+ int ngx_http_v2_parse_method (TYPE_3__*,int *) ;
+ int ngx_http_v2_parse_path (TYPE_3__*,int *) ;
+ int ngx_http_v2_parse_scheme (TYPE_3__*,int *) ;
+ int ngx_log_error (int ,int ,int ,char*,TYPE_4__*) ;
+ int ngx_memcmp (int ,char*,int) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_v2_pseudo_header(ngx_http_request_t *r, ngx_http_v2_header_t *header)

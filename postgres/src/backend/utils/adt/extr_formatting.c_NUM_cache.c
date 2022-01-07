@@ -1,92 +1,92 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  text ;
-struct TYPE_8__ {int /*<<< orphan*/  zero_end; int /*<<< orphan*/  zero_start; int /*<<< orphan*/  multi; int /*<<< orphan*/  need_locale; int /*<<< orphan*/  pre_lsign_num; int /*<<< orphan*/  post; int /*<<< orphan*/  pre; int /*<<< orphan*/  lsign; int /*<<< orphan*/  flag; } ;
-struct TYPE_10__ {TYPE_1__ Num; int /*<<< orphan*/ * format; } ;
-struct TYPE_9__ {int /*<<< orphan*/  zero_end; int /*<<< orphan*/  zero_start; int /*<<< orphan*/  multi; int /*<<< orphan*/  need_locale; int /*<<< orphan*/  pre_lsign_num; int /*<<< orphan*/  post; int /*<<< orphan*/  pre; int /*<<< orphan*/  lsign; int /*<<< orphan*/  flag; } ;
-typedef  TYPE_2__ NUMDesc ;
-typedef  TYPE_3__ NUMCacheEntry ;
-typedef  int /*<<< orphan*/  FormatNode ;
 
-/* Variables and functions */
- int NUM_CACHE_SIZE ; 
- int /*<<< orphan*/  NUM_FLAG ; 
- TYPE_3__* NUM_cache_fetch (char*) ; 
- int /*<<< orphan*/  NUM_index ; 
- int /*<<< orphan*/  NUM_keywords ; 
- int /*<<< orphan*/  dump_index (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ palloc (int) ; 
- int /*<<< orphan*/  parse_format (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  pfree (char*) ; 
- char* text_to_cstring (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zeroize_NUM (TYPE_2__*) ; 
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int text ;
+struct TYPE_8__ {int zero_end; int zero_start; int multi; int need_locale; int pre_lsign_num; int post; int pre; int lsign; int flag; } ;
+struct TYPE_10__ {TYPE_1__ Num; int * format; } ;
+struct TYPE_9__ {int zero_end; int zero_start; int multi; int need_locale; int pre_lsign_num; int post; int pre; int lsign; int flag; } ;
+typedef TYPE_2__ NUMDesc ;
+typedef TYPE_3__ NUMCacheEntry ;
+typedef int FormatNode ;
+
+
+ int NUM_CACHE_SIZE ;
+ int NUM_FLAG ;
+ TYPE_3__* NUM_cache_fetch (char*) ;
+ int NUM_index ;
+ int NUM_keywords ;
+ int dump_index (int ,int ) ;
+ scalar_t__ palloc (int) ;
+ int parse_format (int *,char*,int ,int *,int ,int ,TYPE_2__*) ;
+ int pfree (char*) ;
+ char* text_to_cstring (int *) ;
+ int zeroize_NUM (TYPE_2__*) ;
 
 __attribute__((used)) static FormatNode *
 NUM_cache(int len, NUMDesc *Num, text *pars_str, bool *shouldFree)
 {
-	FormatNode *format = NULL;
-	char	   *str;
+ FormatNode *format = ((void*)0);
+ char *str;
 
-	str = text_to_cstring(pars_str);
+ str = text_to_cstring(pars_str);
 
-	if (len > NUM_CACHE_SIZE)
-	{
-		/*
-		 * Allocate new memory if format picture is bigger than static cache
-		 * and do not use cache (call parser always)
-		 */
-		format = (FormatNode *) palloc((len + 1) * sizeof(FormatNode));
+ if (len > NUM_CACHE_SIZE)
+ {
 
-		*shouldFree = true;
 
-		zeroize_NUM(Num);
 
-		parse_format(format, str, NUM_keywords,
-					 NULL, NUM_index, NUM_FLAG, Num);
-	}
-	else
-	{
-		/*
-		 * Use cache buffers
-		 */
-		NUMCacheEntry *ent = NUM_cache_fetch(str);
 
-		*shouldFree = false;
+  format = (FormatNode *) palloc((len + 1) * sizeof(FormatNode));
 
-		format = ent->format;
+  *shouldFree = 1;
 
-		/*
-		 * Copy cache to used struct
-		 */
-		Num->flag = ent->Num.flag;
-		Num->lsign = ent->Num.lsign;
-		Num->pre = ent->Num.pre;
-		Num->post = ent->Num.post;
-		Num->pre_lsign_num = ent->Num.pre_lsign_num;
-		Num->need_locale = ent->Num.need_locale;
-		Num->multi = ent->Num.multi;
-		Num->zero_start = ent->Num.zero_start;
-		Num->zero_end = ent->Num.zero_end;
-	}
+  zeroize_NUM(Num);
 
-#ifdef DEBUG_TO_FROM_CHAR
-	/* dump_node(format, len); */
-	dump_index(NUM_keywords, NUM_index);
-#endif
+  parse_format(format, str, NUM_keywords,
+      ((void*)0), NUM_index, NUM_FLAG, Num);
+ }
+ else
+ {
 
-	pfree(str);
-	return format;
+
+
+  NUMCacheEntry *ent = NUM_cache_fetch(str);
+
+  *shouldFree = 0;
+
+  format = ent->format;
+
+
+
+
+  Num->flag = ent->Num.flag;
+  Num->lsign = ent->Num.lsign;
+  Num->pre = ent->Num.pre;
+  Num->post = ent->Num.post;
+  Num->pre_lsign_num = ent->Num.pre_lsign_num;
+  Num->need_locale = ent->Num.need_locale;
+  Num->multi = ent->Num.multi;
+  Num->zero_start = ent->Num.zero_start;
+  Num->zero_end = ent->Num.zero_end;
+ }
+
+
+
+
+
+
+ pfree(str);
+ return format;
 }

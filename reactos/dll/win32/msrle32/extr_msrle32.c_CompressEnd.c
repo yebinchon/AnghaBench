@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int nPrevFrame; int /*<<< orphan*/ * palette_map; int /*<<< orphan*/  bCompress; int /*<<< orphan*/ * pCurFrame; int /*<<< orphan*/ * pPrevFrame; } ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  TYPE_1__ CodecInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GlobalFree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GlobalHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GlobalUnlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ICERR_OK ; 
- int /*<<< orphan*/  LocalFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int nPrevFrame; int * palette_map; int bCompress; int * pCurFrame; int * pPrevFrame; } ;
+typedef int LRESULT ;
+typedef TYPE_1__ CodecInfo ;
+
+
+ int FALSE ;
+ int GlobalFree (int ) ;
+ int GlobalHandle (int *) ;
+ int GlobalUnlock (int ) ;
+ int ICERR_OK ;
+ int LocalFree (int *) ;
+ int TRACE (char*,TYPE_1__*) ;
 
 __attribute__((used)) static LRESULT CompressEnd(CodecInfo *pi)
 {
   TRACE("(%p)\n",pi);
 
-  if (pi != NULL) {
-    if (pi->pPrevFrame != NULL)
+  if (pi != ((void*)0)) {
+    if (pi->pPrevFrame != ((void*)0))
     {
       GlobalUnlock(GlobalHandle(pi->pPrevFrame));
       GlobalFree(GlobalHandle(pi->pPrevFrame));
     }
-    if (pi->pCurFrame != NULL)
+    if (pi->pCurFrame != ((void*)0))
     {
       GlobalUnlock(GlobalHandle(pi->pCurFrame));
       GlobalFree(GlobalHandle(pi->pCurFrame));
     }
-    pi->pPrevFrame = NULL;
-    pi->pCurFrame  = NULL;
+    pi->pPrevFrame = ((void*)0);
+    pi->pCurFrame = ((void*)0);
     pi->nPrevFrame = -1;
-    pi->bCompress  = FALSE;
+    pi->bCompress = FALSE;
 
-    if (pi->palette_map != NULL) {
+    if (pi->palette_map != ((void*)0)) {
         LocalFree(pi->palette_map);
-        pi->palette_map = NULL;
+        pi->palette_map = ((void*)0);
     }
   }
 

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  relId; int /*<<< orphan*/  dbId; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int relId; int dbId; } ;
 struct TYPE_6__ {TYPE_1__ lockRelId; } ;
 struct TYPE_7__ {TYPE_2__ rd_lockInfo; } ;
-typedef  TYPE_3__* Relation ;
-typedef  int /*<<< orphan*/  LOCKTAG ;
-typedef  int /*<<< orphan*/  LOCKMODE ;
-typedef  int /*<<< orphan*/  ItemPointer ;
+typedef TYPE_3__* Relation ;
+typedef int LOCKTAG ;
+typedef int LOCKMODE ;
+typedef int ItemPointer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ItemPointerGetBlockNumber (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ItemPointerGetOffsetNumber (int /*<<< orphan*/ ) ; 
- scalar_t__ LOCKACQUIRE_NOT_AVAIL ; 
- scalar_t__ LockAcquire (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  SET_LOCKTAG_TUPLE (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ItemPointerGetBlockNumber (int ) ;
+ int ItemPointerGetOffsetNumber (int ) ;
+ scalar_t__ LOCKACQUIRE_NOT_AVAIL ;
+ scalar_t__ LockAcquire (int *,int ,int,int) ;
+ int SET_LOCKTAG_TUPLE (int ,int ,int ,int ,int ) ;
 
 bool
 ConditionalLockTuple(Relation relation, ItemPointer tid, LOCKMODE lockmode)
 {
-	LOCKTAG		tag;
+ LOCKTAG tag;
 
-	SET_LOCKTAG_TUPLE(tag,
-					  relation->rd_lockInfo.lockRelId.dbId,
-					  relation->rd_lockInfo.lockRelId.relId,
-					  ItemPointerGetBlockNumber(tid),
-					  ItemPointerGetOffsetNumber(tid));
+ SET_LOCKTAG_TUPLE(tag,
+       relation->rd_lockInfo.lockRelId.dbId,
+       relation->rd_lockInfo.lockRelId.relId,
+       ItemPointerGetBlockNumber(tid),
+       ItemPointerGetOffsetNumber(tid));
 
-	return (LockAcquire(&tag, lockmode, false, true) != LOCKACQUIRE_NOT_AVAIL);
+ return (LockAcquire(&tag, lockmode, 0, 1) != LOCKACQUIRE_NOT_AVAIL);
 }

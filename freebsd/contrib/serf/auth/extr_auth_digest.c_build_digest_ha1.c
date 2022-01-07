@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ apr_status_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int APR_MD5_DIGESTSIZE ; 
- scalar_t__ APR_SUCCESS ; 
- scalar_t__ apr_md5 (unsigned char*,char const*,int /*<<< orphan*/ ) ; 
- char* apr_psprintf (int /*<<< orphan*/ *,char*,char const*,char const*,char const*) ; 
- char* hex_encode (unsigned char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+
+
+typedef scalar_t__ apr_status_t ;
+typedef int apr_pool_t ;
+
+
+ int APR_MD5_DIGESTSIZE ;
+ scalar_t__ APR_SUCCESS ;
+ scalar_t__ apr_md5 (unsigned char*,char const*,int ) ;
+ char* apr_psprintf (int *,char*,char const*,char const*,char const*) ;
+ char* hex_encode (unsigned char*,int *) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static apr_status_t
 build_digest_ha1(const char **out_ha1,
@@ -32,8 +32,8 @@ build_digest_ha1(const char **out_ha1,
     unsigned char ha1[APR_MD5_DIGESTSIZE];
     apr_status_t status;
 
-    /* calculate ha1:
-       MD5 hash of the combined user name, authentication realm and password */
+
+
     tmp = apr_psprintf(pool, "%s:%s:%s",
                        username,
                        realm_name,

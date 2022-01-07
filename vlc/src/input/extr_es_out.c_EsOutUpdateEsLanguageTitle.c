@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  psz_title; int /*<<< orphan*/  psz_language_code; int /*<<< orphan*/  psz_language; } ;
-typedef  TYPE_1__ es_out_id_t ;
-struct TYPE_7__ {int /*<<< orphan*/  psz_language; } ;
-typedef  TYPE_2__ es_format_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EsGetTitle (TYPE_1__*) ; 
- int /*<<< orphan*/  LanguageGetCode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LanguageGetName (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int psz_title; int psz_language_code; int psz_language; } ;
+typedef TYPE_1__ es_out_id_t ;
+struct TYPE_7__ {int psz_language; } ;
+typedef TYPE_2__ es_format_t ;
+
+
+ int EsGetTitle (TYPE_1__*) ;
+ int LanguageGetCode (int ) ;
+ int LanguageGetName (int ) ;
+ int free (int ) ;
 
 __attribute__((used)) static void EsOutUpdateEsLanguageTitle(es_out_id_t *es,
                                      const es_format_t *fmt)

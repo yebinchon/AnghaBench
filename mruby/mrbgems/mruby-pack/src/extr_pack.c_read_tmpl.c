@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tmpl {char idx; int /*<<< orphan*/  str; } ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  char mrb_int ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_ARGUMENT_ERROR ; 
- int /*<<< orphan*/  E_RUNTIME_ERROR ; 
- int INT_MAX ; 
- scalar_t__ ISDIGIT (char const) ; 
- int PACK_DIR_BASE64 ; 
- int PACK_DIR_CHAR ; 
- int PACK_DIR_DOUBLE ; 
- int PACK_DIR_FLOAT ; 
- int PACK_DIR_HEX ; 
- int PACK_DIR_INVALID ; 
- int PACK_DIR_LONG ; 
- int PACK_DIR_NUL ; 
- int PACK_DIR_QUAD ; 
- int PACK_DIR_SHORT ; 
- int PACK_DIR_STR ; 
- int PACK_DIR_UTF8 ; 
- unsigned int PACK_FLAG_COUNT2 ; 
- unsigned int PACK_FLAG_GT ; 
- unsigned int PACK_FLAG_LITTLEENDIAN ; 
- unsigned int PACK_FLAG_LSB ; 
- unsigned int PACK_FLAG_LT ; 
- unsigned int PACK_FLAG_SIGNED ; 
- unsigned int PACK_FLAG_WIDTH ; 
- unsigned int PACK_FLAG_Z ; 
- unsigned int PACK_FLAG_a ; 
- unsigned int PACK_FLAG_s ; 
- int PACK_TYPE_FLOAT ; 
- int PACK_TYPE_INTEGER ; 
- int PACK_TYPE_NONE ; 
- int PACK_TYPE_STRING ; 
- char RSTRING_LEN (int /*<<< orphan*/ ) ; 
- char* RSTRING_PTR (int /*<<< orphan*/ ) ; 
- scalar_t__ littleendian ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mrb_raisef (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/ * strchr (char*,int) ; 
+
+
+
+struct tmpl {char idx; int str; } ;
+typedef int mrb_state ;
+typedef char mrb_int ;
+
+
+ int E_ARGUMENT_ERROR ;
+ int E_RUNTIME_ERROR ;
+ int INT_MAX ;
+ scalar_t__ ISDIGIT (char const) ;
+ int PACK_DIR_BASE64 ;
+ int PACK_DIR_CHAR ;
+ int PACK_DIR_DOUBLE ;
+ int PACK_DIR_FLOAT ;
+ int PACK_DIR_HEX ;
+ int PACK_DIR_INVALID ;
+ int PACK_DIR_LONG ;
+ int PACK_DIR_NUL ;
+ int PACK_DIR_QUAD ;
+ int PACK_DIR_SHORT ;
+ int PACK_DIR_STR ;
+ int PACK_DIR_UTF8 ;
+ unsigned int PACK_FLAG_COUNT2 ;
+ unsigned int PACK_FLAG_GT ;
+ unsigned int PACK_FLAG_LITTLEENDIAN ;
+ unsigned int PACK_FLAG_LSB ;
+ unsigned int PACK_FLAG_LT ;
+ unsigned int PACK_FLAG_SIGNED ;
+ unsigned int PACK_FLAG_WIDTH ;
+ unsigned int PACK_FLAG_Z ;
+ unsigned int PACK_FLAG_a ;
+ unsigned int PACK_FLAG_s ;
+ int PACK_TYPE_FLOAT ;
+ int PACK_TYPE_INTEGER ;
+ int PACK_TYPE_NONE ;
+ int PACK_TYPE_STRING ;
+ char RSTRING_LEN (int ) ;
+ char* RSTRING_PTR (int ) ;
+ scalar_t__ littleendian ;
+ int mrb_raise (int *,int ,char*) ;
+ int mrb_raisef (int *,int ,char*,int) ;
+ int * strchr (char*,int) ;
 
 __attribute__((used)) static void
 read_tmpl(mrb_state *mrb, struct tmpl *tmpl, int *dirp, int *typep, int *sizep, int *countp, unsigned int *flagsp)
@@ -168,13 +168,13 @@ alias:
     type = PACK_TYPE_STRING;
     flags |= PACK_FLAG_WIDTH | PACK_FLAG_COUNT2;
     break;
-  case 'N':  /* = "L>" */
+  case 'N':
     dir = PACK_DIR_LONG;
     type = PACK_TYPE_INTEGER;
     size = 4;
     flags |= PACK_FLAG_GT;
     break;
-  case 'n':  /* = "S>" */
+  case 'n':
     dir = PACK_DIR_SHORT;
     type = PACK_TYPE_INTEGER;
     size = 2;
@@ -206,13 +206,13 @@ alias:
     dir = PACK_DIR_UTF8;
     type = PACK_TYPE_INTEGER;
     break;
-  case 'V':  /* = "L<" */
+  case 'V':
     dir = PACK_DIR_LONG;
     type = PACK_TYPE_INTEGER;
     size = 4;
     flags |= PACK_FLAG_LT;
     break;
-  case 'v':  /* = "S<" */
+  case 'v':
     dir = PACK_DIR_SHORT;
     type = PACK_TYPE_INTEGER;
     size = 2;
@@ -233,7 +233,7 @@ alias:
     break;
   }
 
-  /* read suffix [0-9*_!<>] */
+
   while (tmpl->idx < tlen) {
     ch = tptr[tmpl->idx++];
     if (ISDIGIT(ch)) {
@@ -245,11 +245,11 @@ alias:
         }
         count = count * 10 + ch;
       }
-      continue;  /* special case */
-    } else if (ch == '*')  {
+      continue;
+    } else if (ch == '*') {
       count = -1;
     } else if (ch == '_' || ch == '!' || ch == '<' || ch == '>') {
-      if (strchr("sSiIlLqQ", (int)t) == NULL) {
+      if (strchr("sSiIlLqQ", (int)t) == ((void*)0)) {
         mrb_raisef(mrb, E_ARGUMENT_ERROR, "'%c' allowed only after types sSiIlLqQ", ch);
       }
       if (ch == '_' || ch == '!') {

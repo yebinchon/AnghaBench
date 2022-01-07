@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct loop {int /*<<< orphan*/  latch; } ;
-typedef  int /*<<< orphan*/  basic_block ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct loop {int latch; } ;
+typedef int basic_block ;
 struct TYPE_2__ {struct loop* loop_father; } ;
 
-/* Variables and functions */
- size_t CDI_DOMINATORS ; 
- int /*<<< orphan*/  add_bb_to_loop (int /*<<< orphan*/ ,struct loop*) ; 
- scalar_t__* dom_computed ; 
- int /*<<< orphan*/  set_immediate_dominator (size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  single_pred (int /*<<< orphan*/ ) ; 
- TYPE_1__* single_succ (int /*<<< orphan*/ ) ; 
+
+ size_t CDI_DOMINATORS ;
+ int add_bb_to_loop (int ,struct loop*) ;
+ scalar_t__* dom_computed ;
+ int set_immediate_dominator (size_t,int ,int ) ;
+ int single_pred (int ) ;
+ TYPE_1__* single_succ (int ) ;
 
 __attribute__((used)) static void
 mfb_update_loops (basic_block jump)

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int mp_uint_t ;
-typedef  scalar_t__ mp_obj_t ;
-typedef  scalar_t__ mp_int_t ;
-struct TYPE_4__ {int /*<<< orphan*/  greyscale; } ;
-typedef  TYPE_1__ microbit_image_obj_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  check_mutability (TYPE_1__*) ; 
- int /*<<< orphan*/  image_blit (TYPE_1__*,int /*<<< orphan*/ *,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  microbit_image_type ; 
- scalar_t__ mp_const_none ; 
- scalar_t__ mp_obj_get_int (scalar_t__ const) ; 
- int /*<<< orphan*/ * mp_obj_get_type (scalar_t__) ; 
- int /*<<< orphan*/  mp_raise_ValueError (char*) ; 
- int /*<<< orphan*/  mp_raise_msg (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  mp_type_TypeError ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int mp_uint_t ;
+typedef scalar_t__ mp_obj_t ;
+typedef scalar_t__ mp_int_t ;
+struct TYPE_4__ {int greyscale; } ;
+typedef TYPE_1__ microbit_image_obj_t ;
+
+
+ int check_mutability (TYPE_1__*) ;
+ int image_blit (TYPE_1__*,int *,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int microbit_image_type ;
+ scalar_t__ mp_const_none ;
+ scalar_t__ mp_obj_get_int (scalar_t__ const) ;
+ int * mp_obj_get_type (scalar_t__) ;
+ int mp_raise_ValueError (char*) ;
+ int mp_raise_msg (int *,char*) ;
+ int mp_type_TypeError ;
 
 mp_obj_t microbit_image_blit(mp_uint_t n_args, const mp_obj_t *args) {
     microbit_image_obj_t *self = (microbit_image_obj_t*)args[0];

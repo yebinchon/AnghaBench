@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ usec_t ;
-typedef  int /*<<< orphan*/  ts_start ;
-typedef  int /*<<< orphan*/  ts_span ;
-typedef  int /*<<< orphan*/  ts_exit ;
 
-/* Variables and functions */
- int EACCES ; 
- int ENODATA ; 
- int ENOENT ; 
- int FORMAT_TIMESPAN_MAX ; 
- int /*<<< orphan*/  LOG_DEBUG ; 
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  USEC_PER_MSEC ; 
- int acpi_get_boot_usec (scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  format_timespan (char*,int,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ getuid () ; 
- int /*<<< orphan*/  log_full_errno (int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  log_info (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ usec_t ;
+typedef int ts_start ;
+typedef int ts_span ;
+typedef int ts_exit ;
+
+
+ int EACCES ;
+ int ENODATA ;
+ int ENOENT ;
+ int FORMAT_TIMESPAN_MAX ;
+ int LOG_DEBUG ;
+ int LOG_ERR ;
+ int USEC_PER_MSEC ;
+ int acpi_get_boot_usec (scalar_t__*,scalar_t__*) ;
+ int format_timespan (char*,int,scalar_t__,int ) ;
+ scalar_t__ getuid () ;
+ int log_full_errno (int ,int,char*) ;
+ int log_info (char*,int ,int ,int ) ;
 
 __attribute__((used)) static int test_acpi_fpdt(void) {
         char ts_start[FORMAT_TIMESPAN_MAX], ts_exit[FORMAT_TIMESPAN_MAX], ts_span[FORMAT_TIMESPAN_MAX];

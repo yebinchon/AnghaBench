@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  logfont ;
-typedef  char WCHAR ;
-struct TYPE_10__ {int lfHeight; int /*<<< orphan*/  lfCharSet; int /*<<< orphan*/  lfFaceName; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int logfont ;
+typedef char WCHAR ;
+struct TYPE_10__ {int lfHeight; int lfCharSet; int lfFaceName; } ;
 struct TYPE_9__ {int member_0; int member_1; } ;
 struct TYPE_8__ {int Height; scalar_t__ Width; scalar_t__ Y; scalar_t__ X; } ;
-typedef  TYPE_1__ RectF ;
-typedef  TYPE_2__ PointF ;
-typedef  TYPE_3__ LOGFONTA ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  GpStringFormat ;
-typedef  scalar_t__ GpStatus ;
-typedef  int /*<<< orphan*/  GpSolidFill ;
-typedef  int /*<<< orphan*/  GpMatrix ;
-typedef  int /*<<< orphan*/  GpGraphics ;
-typedef  int /*<<< orphan*/  GpFont ;
-typedef  int /*<<< orphan*/  GpBrush ;
-typedef  int /*<<< orphan*/  ARGB ;
+typedef TYPE_1__ RectF ;
+typedef TYPE_2__ PointF ;
+typedef TYPE_3__ LOGFONTA ;
+typedef int HDC ;
+typedef int GpStringFormat ;
+typedef scalar_t__ GpStatus ;
+typedef int GpSolidFill ;
+typedef int GpMatrix ;
+typedef int GpGraphics ;
+typedef int GpFont ;
+typedef int GpBrush ;
+typedef int ARGB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEFAULT_CHARSET ; 
- int DriverStringOptionsCmapLookup ; 
- scalar_t__ FileNotFound ; 
- scalar_t__ GdipCreateFontFromLogfontA (int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ **) ; 
- scalar_t__ GdipCreateFromHDC (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ GdipCreateMatrix (int /*<<< orphan*/ **) ; 
- scalar_t__ GdipCreateSolidFill (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ GdipCreateStringFormat (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteBrush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeleteFont (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeleteMatrix (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeleteStringFormat (int /*<<< orphan*/ *) ; 
- scalar_t__ GdipDrawDriverString (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__ const*,int,int /*<<< orphan*/ *) ; 
- scalar_t__ GdipDrawString (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InvalidParameter ; 
- scalar_t__ NotTrueTypeFont ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  hwnd ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char*) ; 
+
+ int DEFAULT_CHARSET ;
+ int DriverStringOptionsCmapLookup ;
+ scalar_t__ FileNotFound ;
+ scalar_t__ GdipCreateFontFromLogfontA (int ,TYPE_3__*,int **) ;
+ scalar_t__ GdipCreateFromHDC (int ,int **) ;
+ scalar_t__ GdipCreateMatrix (int **) ;
+ scalar_t__ GdipCreateSolidFill (int ,int **) ;
+ scalar_t__ GdipCreateStringFormat (int ,int ,int **) ;
+ int GdipDeleteBrush (int *) ;
+ int GdipDeleteFont (int *) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipDeleteMatrix (int *) ;
+ int GdipDeleteStringFormat (int *) ;
+ scalar_t__ GdipDrawDriverString (int *,char const*,int,int *,int *,TYPE_2__ const*,int,int *) ;
+ scalar_t__ GdipDrawString (int *,char const*,int,int *,TYPE_1__*,int *,int *) ;
+ int GetDC (int ) ;
+ int InvalidParameter ;
+ scalar_t__ NotTrueTypeFont ;
+ int Ok ;
+ int ReleaseDC (int ,int ) ;
+ int expect (int ,scalar_t__) ;
+ int hwnd ;
+ int memset (TYPE_3__*,int ,int) ;
+ int skip (char*) ;
+ int strcpy (int ,char*) ;
 
 __attribute__((used)) static void test_GdipDrawString(void)
 {
     GpStatus status;
-    GpGraphics *graphics = NULL;
-    GpFont *fnt = NULL;
-    RectF  rect;
+    GpGraphics *graphics = ((void*)0);
+    GpFont *fnt = ((void*)0);
+    RectF rect;
     GpStringFormat *format;
     GpBrush *brush;
     LOGFONTA logfont;
@@ -105,25 +105,25 @@ __attribute__((used)) static void test_GdipDrawString(void)
     status = GdipCreateMatrix(&matrix);
     expect(Ok, status);
 
-    status = GdipDrawDriverString(NULL, string, 4, fnt, brush, positions, DriverStringOptionsCmapLookup, matrix);
+    status = GdipDrawDriverString(((void*)0), string, 4, fnt, brush, positions, DriverStringOptionsCmapLookup, matrix);
     expect(InvalidParameter, status);
 
-    status = GdipDrawDriverString(graphics, NULL, 4, fnt, brush, positions, DriverStringOptionsCmapLookup, matrix);
+    status = GdipDrawDriverString(graphics, ((void*)0), 4, fnt, brush, positions, DriverStringOptionsCmapLookup, matrix);
     expect(InvalidParameter, status);
 
-    status = GdipDrawDriverString(graphics, string, 4, NULL, brush, positions, DriverStringOptionsCmapLookup, matrix);
+    status = GdipDrawDriverString(graphics, string, 4, ((void*)0), brush, positions, DriverStringOptionsCmapLookup, matrix);
     expect(InvalidParameter, status);
 
-    status = GdipDrawDriverString(graphics, string, 4, fnt, NULL, positions, DriverStringOptionsCmapLookup, matrix);
+    status = GdipDrawDriverString(graphics, string, 4, fnt, ((void*)0), positions, DriverStringOptionsCmapLookup, matrix);
     expect(InvalidParameter, status);
 
-    status = GdipDrawDriverString(graphics, string, 4, fnt, brush, NULL, DriverStringOptionsCmapLookup, matrix);
+    status = GdipDrawDriverString(graphics, string, 4, fnt, brush, ((void*)0), DriverStringOptionsCmapLookup, matrix);
     expect(InvalidParameter, status);
 
     status = GdipDrawDriverString(graphics, string, 4, fnt, brush, positions, DriverStringOptionsCmapLookup|0x10, matrix);
     expect(Ok, status);
 
-    status = GdipDrawDriverString(graphics, string, 4, fnt, brush, positions, DriverStringOptionsCmapLookup, NULL);
+    status = GdipDrawDriverString(graphics, string, 4, fnt, brush, positions, DriverStringOptionsCmapLookup, ((void*)0));
     expect(Ok, status);
 
     status = GdipDrawDriverString(graphics, string, 4, fnt, brush, positions, DriverStringOptionsCmapLookup, matrix);

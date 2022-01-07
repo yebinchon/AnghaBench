@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X ;
-typedef  size_t UINT ;
-struct TYPE_4__ {size_t NumTokens; int /*<<< orphan*/ * Token; } ;
-typedef  TYPE_1__ TOKEN_LIST ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  int /*<<< orphan*/  FOLDER ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BufToX (int /*<<< orphan*/ *,int) ; 
- TYPE_1__* CfgEnumFolderToTokenList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CfgGetBuf (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * CfgGetFolder (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FreeBuf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeToken (TYPE_1__*) ; 
- int /*<<< orphan*/  Insert (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int X ;
+typedef size_t UINT ;
+struct TYPE_4__ {size_t NumTokens; int * Token; } ;
+typedef TYPE_1__ TOKEN_LIST ;
+typedef int LIST ;
+typedef int FOLDER ;
+typedef int BUF ;
+
+
+ int * BufToX (int *,int) ;
+ TYPE_1__* CfgEnumFolderToTokenList (int *) ;
+ int * CfgGetBuf (int *,char*) ;
+ int * CfgGetFolder (int *,int ) ;
+ int FreeBuf (int *) ;
+ int FreeToken (TYPE_1__*) ;
+ int Insert (int *,int *) ;
+ int LockList (int *) ;
+ int UnlockList (int *) ;
 
 void SiLoadCertList(LIST *o, FOLDER *f)
 {
-	// Validate arguments
-	if (o == NULL || f == NULL)
-	{
-		return;
-	}
 
-	LockList(o);
-	{
-		UINT i;
-		TOKEN_LIST *t;
+ if (o == ((void*)0) || f == ((void*)0))
+ {
+  return;
+ }
 
-		t = CfgEnumFolderToTokenList(f);
+ LockList(o);
+ {
+  UINT i;
+  TOKEN_LIST *t;
 
-		for (i = 0;i < t->NumTokens;i++)
-		{
-			FOLDER *ff = CfgGetFolder(f, t->Token[i]);
-			BUF *b;
+  t = CfgEnumFolderToTokenList(f);
 
-			b = CfgGetBuf(ff, "X509");
-			if (b != NULL)
-			{
-				X *x = BufToX(b, false);
-				if (x != NULL)
-				{
-					Insert(o, x);
-				}
-				FreeBuf(b);
-			}
-		}
+  for (i = 0;i < t->NumTokens;i++)
+  {
+   FOLDER *ff = CfgGetFolder(f, t->Token[i]);
+   BUF *b;
 
-		FreeToken(t);
-	}
-	UnlockList(o);
+   b = CfgGetBuf(ff, "X509");
+   if (b != ((void*)0))
+   {
+    X *x = BufToX(b, 0);
+    if (x != ((void*)0))
+    {
+     Insert(o, x);
+    }
+    FreeBuf(b);
+   }
+  }
+
+  FreeToken(t);
+ }
+ UnlockList(o);
 }

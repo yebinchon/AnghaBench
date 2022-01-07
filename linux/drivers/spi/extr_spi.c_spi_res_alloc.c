@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct spi_res {void* data; int /*<<< orphan*/  release; int /*<<< orphan*/  entry; } ;
+
+
+
+
+struct spi_res {void* data; int release; int entry; } ;
 struct spi_device {int dummy; } ;
-typedef  int /*<<< orphan*/  spi_res_release_t ;
-typedef  int /*<<< orphan*/  gfp_t ;
+typedef int spi_res_release_t ;
+typedef int gfp_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- struct spi_res* kzalloc (int,int /*<<< orphan*/ ) ; 
+
+ int INIT_LIST_HEAD (int *) ;
+ struct spi_res* kzalloc (int,int ) ;
 
 void *spi_res_alloc(struct spi_device *spi,
-		    spi_res_release_t release,
-		    size_t size, gfp_t gfp)
+      spi_res_release_t release,
+      size_t size, gfp_t gfp)
 {
-	struct spi_res *sres;
+ struct spi_res *sres;
 
-	sres = kzalloc(sizeof(*sres) + size, gfp);
-	if (!sres)
-		return NULL;
+ sres = kzalloc(sizeof(*sres) + size, gfp);
+ if (!sres)
+  return ((void*)0);
 
-	INIT_LIST_HEAD(&sres->entry);
-	sres->release = release;
+ INIT_LIST_HEAD(&sres->entry);
+ sres->release = release;
 
-	return sres->data;
+ return sres->data;
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  v8i16 ;
-typedef  int /*<<< orphan*/  v4i32 ;
-typedef  int /*<<< orphan*/  v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  int8_t ;
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HEVC_BIW_RND_CLIP4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HEVC_FILT_4TAP_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ILVL_B2_SB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ILVR_B2_SB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LD_SB2 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LD_SB3 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LD_SH (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  LD_SH2 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PCKEV_B2_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SPLATI_H2_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ST_SH2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  XORI_B2_128_SB (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XORI_B3_128_SB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __msa_fill_w (int) ; 
+
+
+
+typedef int v8i16 ;
+typedef int v4i32 ;
+typedef int v16i8 ;
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int int8_t ;
+typedef int int32_t ;
+typedef int int16_t ;
+
+
+ int HEVC_BIW_RND_CLIP4 (int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int HEVC_FILT_4TAP_SH (int ,int ,int ,int ) ;
+ int ILVL_B2_SB (int ,int ,int ,int ,int ,int ) ;
+ int ILVR_B2_SB (int ,int ,int ,int ,int ,int ) ;
+ int LD_SB2 (int *,int,int ,int ) ;
+ int LD_SB3 (int *,int,int ,int ,int ) ;
+ int LD_SH (int const*) ;
+ int LD_SH2 (int *,int,int ,int ) ;
+ int PCKEV_B2_SH (int ,int ,int ,int ,int ,int ) ;
+ int SPLATI_H2_SH (int ,int ,int,int ,int ) ;
+ int ST_SH2 (int ,int ,int *,int) ;
+ int XORI_B2_128_SB (int ,int ) ;
+ int XORI_B3_128_SB (int ,int ,int ) ;
+ int __msa_fill_w (int) ;
 
 __attribute__((used)) static void hevc_vt_biwgt_4t_32w_msa(uint8_t *src0_ptr,
                                      int32_t src_stride,
@@ -79,12 +79,12 @@ __attribute__((used)) static void hevc_vt_biwgt_4t_32w_msa(uint8_t *src0_ptr,
     filter_vec = LD_SH(filter);
     SPLATI_H2_SH(filter_vec, 0, 1, filt0, filt1);
 
-    /* 16width */
+
     LD_SB3(src0_ptr, src_stride, src0, src1, src2);
     XORI_B3_128_SB(src0, src1, src2);
     ILVR_B2_SB(src1, src0, src2, src1, src10_r, src21_r);
     ILVL_B2_SB(src1, src0, src2, src1, src10_l, src21_l);
-    /* next 16width */
+
     LD_SB3(src0_ptr + 16, src_stride, src6, src7, src8);
     src0_ptr += (3 * src_stride);
     XORI_B3_128_SB(src6, src7, src8);
@@ -92,7 +92,7 @@ __attribute__((used)) static void hevc_vt_biwgt_4t_32w_msa(uint8_t *src0_ptr,
     ILVL_B2_SB(src7, src6, src8, src7, src76_l, src87_l);
 
     for (loop_cnt = (height >> 1); loop_cnt--;) {
-        /* 16width */
+
         LD_SB2(src0_ptr, src_stride, src3, src4);
         LD_SH2(src1_ptr, src2_stride, in0, in1);
         LD_SH2(src1_ptr + 8, src2_stride, in2, in3);
@@ -100,17 +100,17 @@ __attribute__((used)) static void hevc_vt_biwgt_4t_32w_msa(uint8_t *src0_ptr,
         ILVR_B2_SB(src3, src2, src4, src3, src32_r, src43_r);
         ILVL_B2_SB(src3, src2, src4, src3, src32_l, src43_l);
 
-        /* 16width */
+
         tmp0 = HEVC_FILT_4TAP_SH(src10_r, src32_r, filt0, filt1);
         tmp4 = HEVC_FILT_4TAP_SH(src10_l, src32_l, filt0, filt1);
         tmp1 = HEVC_FILT_4TAP_SH(src21_r, src43_r, filt0, filt1);
         tmp5 = HEVC_FILT_4TAP_SH(src21_l, src43_l, filt0, filt1);
-        /* 16width */
+
         HEVC_BIW_RND_CLIP4(tmp0, tmp1, tmp4, tmp5,
                            in0, in1, in2, in3,
                            weight_vec, rnd_vec, offset_vec,
                            tmp0, tmp1, tmp4, tmp5);
-        /* 16width */
+
         PCKEV_B2_SH(tmp4, tmp0, tmp5, tmp1, tmp0, tmp1);
         ST_SH2(tmp0, tmp1, dst, dst_stride);
         dst += (2 * dst_stride);
@@ -121,7 +121,7 @@ __attribute__((used)) static void hevc_vt_biwgt_4t_32w_msa(uint8_t *src0_ptr,
         src21_l = src43_l;
         src2 = src4;
 
-        /* next 16width */
+
         LD_SB2(src0_ptr + 16, src_stride, src9, src10);
         src0_ptr += (2 * src_stride);
         LD_SH2(src1_ptr + 16, src2_stride, in4, in5);
@@ -130,18 +130,18 @@ __attribute__((used)) static void hevc_vt_biwgt_4t_32w_msa(uint8_t *src0_ptr,
         XORI_B2_128_SB(src9, src10);
         ILVR_B2_SB(src9, src8, src10, src9, src98_r, src109_r);
         ILVL_B2_SB(src9, src8, src10, src9, src98_l, src109_l);
-        /* next 16width */
+
         tmp2 = HEVC_FILT_4TAP_SH(src76_r, src98_r, filt0, filt1);
         tmp6 = HEVC_FILT_4TAP_SH(src76_l, src98_l, filt0, filt1);
         tmp3 = HEVC_FILT_4TAP_SH(src87_r, src109_r, filt0, filt1);
         tmp7 = HEVC_FILT_4TAP_SH(src87_l, src109_l, filt0, filt1);
-        /* next 16width */
+
         HEVC_BIW_RND_CLIP4(tmp2, tmp3, tmp6, tmp7,
                            in4, in5, in6, in7,
                            weight_vec, rnd_vec, offset_vec,
                            tmp2, tmp3, tmp6, tmp7);
 
-        /* next 16width */
+
         PCKEV_B2_SH(tmp6, tmp2, tmp7, tmp3, tmp2, tmp3);
         ST_SH2(tmp2, tmp3, dst_tmp, dst_stride);
         dst_tmp += (2 * dst_stride);

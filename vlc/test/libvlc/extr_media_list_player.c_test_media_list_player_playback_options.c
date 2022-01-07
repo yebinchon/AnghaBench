@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_17__ {int /*<<< orphan*/ * p_subitems; } ;
-typedef  TYPE_1__ libvlc_media_t ;
-typedef  int /*<<< orphan*/  libvlc_media_list_t ;
-typedef  TYPE_1__ libvlc_media_list_player_t ;
-typedef  int /*<<< orphan*/  libvlc_instance_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  libvlc_media_list_add_media (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/ * libvlc_media_list_new (int /*<<< orphan*/ *) ; 
- scalar_t__ libvlc_media_list_player_is_playing (TYPE_1__*) ; 
- TYPE_1__* libvlc_media_list_player_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_media_list_player_play_item (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  libvlc_media_list_player_release (TYPE_1__*) ; 
- int /*<<< orphan*/  libvlc_media_list_player_set_media_list (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_media_list_player_set_playback_mode (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  libvlc_media_list_player_stop_async (TYPE_1__*) ; 
- TYPE_1__* libvlc_media_new_path (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  libvlc_media_release (TYPE_1__*) ; 
- int /*<<< orphan*/ * libvlc_new (int,char const**) ; 
- int /*<<< orphan*/  libvlc_playback_mode_default ; 
- int /*<<< orphan*/  libvlc_playback_mode_loop ; 
- int /*<<< orphan*/  libvlc_playback_mode_repeat ; 
- int /*<<< orphan*/  libvlc_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  media_list_add_file_path (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  sched_yield () ; 
- int /*<<< orphan*/  stop_and_wait (TYPE_1__*) ; 
- char* test_default_sample ; 
- int /*<<< orphan*/  test_log (char*) ; 
- int /*<<< orphan*/  wait_playing (TYPE_1__*) ; 
+
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+struct TYPE_17__ {int * p_subitems; } ;
+typedef TYPE_1__ libvlc_media_t ;
+typedef int libvlc_media_list_t ;
+typedef TYPE_1__ libvlc_media_list_player_t ;
+typedef int libvlc_instance_t ;
+
+
+ int assert (TYPE_1__*) ;
+ int libvlc_media_list_add_media (int *,TYPE_1__*) ;
+ int * libvlc_media_list_new (int *) ;
+ scalar_t__ libvlc_media_list_player_is_playing (TYPE_1__*) ;
+ TYPE_1__* libvlc_media_list_player_new (int *) ;
+ int libvlc_media_list_player_play_item (TYPE_1__*,TYPE_1__*) ;
+ int libvlc_media_list_player_release (TYPE_1__*) ;
+ int libvlc_media_list_player_set_media_list (TYPE_1__*,int *) ;
+ int libvlc_media_list_player_set_playback_mode (TYPE_1__*,int ) ;
+ int libvlc_media_list_player_stop_async (TYPE_1__*) ;
+ TYPE_1__* libvlc_media_new_path (int *,char const*) ;
+ int libvlc_media_release (TYPE_1__*) ;
+ int * libvlc_new (int,char const**) ;
+ int libvlc_playback_mode_default ;
+ int libvlc_playback_mode_loop ;
+ int libvlc_playback_mode_repeat ;
+ int libvlc_release (int *) ;
+ int media_list_add_file_path (int *,int *,char const*) ;
+ int sched_yield () ;
+ int stop_and_wait (TYPE_1__*) ;
+ char* test_default_sample ;
+ int test_log (char*) ;
+ int wait_playing (TYPE_1__*) ;
 
 __attribute__((used)) static void test_media_list_player_playback_options (const char** argv, int argc)
 {
@@ -63,20 +63,7 @@ __attribute__((used)) static void test_media_list_player_playback_options (const
     test_log ("Testing media player playback options()\n");
 
     vlc = libvlc_new (argc, argv);
-    assert (vlc != NULL);
-
-    /*
-     *   Create the following media tree:
-     *
-     *  ml1:            0 ---- 1 ---- 2
-     *                 /       |       \
-     *  ml2&4:      0 -- 1     |   0 -- 1 -- 2
-     *                         |
-     *  ml3:    0 -- 1 -- 2 -- 3 -- 4 -- 5 -- 6
-     *                    |                   |
-     *  ml5&6:            0                 0 -- 1
-     */
-
+    assert (vlc != ((void*)0));
     md = libvlc_media_new_path (vlc, file);
     assert(md);
 
@@ -93,22 +80,22 @@ __attribute__((used)) static void test_media_list_player_playback_options (const
     assert(md5);
 
     ml = libvlc_media_list_new (vlc);
-    assert (ml != NULL);
+    assert (ml != ((void*)0));
 
     ml2 = libvlc_media_list_new (vlc);
-    assert (ml2 != NULL);
+    assert (ml2 != ((void*)0));
 
     ml3 = libvlc_media_list_new (vlc);
-    assert (ml3 != NULL);
+    assert (ml3 != ((void*)0));
 
     ml4 = libvlc_media_list_new (vlc);
-    assert (ml4 != NULL);
+    assert (ml4 != ((void*)0));
 
     ml5 = libvlc_media_list_new (vlc);
-    assert (ml5 != NULL);
+    assert (ml5 != ((void*)0));
 
     ml6 = libvlc_media_list_new (vlc);
-    assert (ml6 != NULL);
+    assert (ml6 != ((void*)0));
 
     media_list_add_file_path (vlc, ml2, file);
     media_list_add_file_path (vlc, ml2, file);
@@ -145,7 +132,7 @@ __attribute__((used)) static void test_media_list_player_playback_options (const
 
     libvlc_media_list_player_set_media_list (mlp, ml);
 
-    // Test default playback mode
+
     libvlc_media_list_player_set_playback_mode(mlp, libvlc_playback_mode_default);
 
     libvlc_media_list_player_play_item (mlp, md);
@@ -163,7 +150,7 @@ __attribute__((used)) static void test_media_list_player_playback_options (const
     while (libvlc_media_list_player_is_playing (mlp))
         sched_yield();
 
-    // Test looping playback mode
+
     test_log ("Testing media player playback option - Loop\n");
     libvlc_media_list_player_set_playback_mode(mlp, libvlc_playback_mode_loop);
 
@@ -173,7 +160,7 @@ __attribute__((used)) static void test_media_list_player_playback_options (const
 
     stop_and_wait (mlp);
 
-    // Test repeat playback mode
+
     test_log ("Testing media player playback option - Repeat\n");
     libvlc_media_list_player_set_playback_mode(mlp, libvlc_playback_mode_repeat);
 

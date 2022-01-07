@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  statement_list_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PACKAGE_VERSION ; 
- int /*<<< orphan*/  error (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ fopen (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  input_name ; 
- int /*<<< orphan*/  print_proxy (char*,...) ; 
- scalar_t__ proxy ; 
- int /*<<< orphan*/  proxy_name ; 
+
+
+
+typedef int statement_list_t ;
+
+
+ int PACKAGE_VERSION ;
+ int error (char*,int ) ;
+ scalar_t__ fopen (int ,char*) ;
+ int input_name ;
+ int print_proxy (char*,...) ;
+ scalar_t__ proxy ;
+ int proxy_name ;
 
 __attribute__((used)) static void init_proxy(const statement_list_t *stmts)
 {

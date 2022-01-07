@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Token ;
-typedef  int /*<<< orphan*/  Node ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KELLIPSIS ; 
- int /*<<< orphan*/  ast_dest (char*) ; 
- int /*<<< orphan*/  cases ; 
- int /*<<< orphan*/  check_case_duplicates (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errort (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  expect (char) ; 
- int /*<<< orphan*/  make_case (int,int,char*) ; 
- char* make_label () ; 
- scalar_t__ next_token (int /*<<< orphan*/ ) ; 
- int read_intexpr () ; 
- int /*<<< orphan*/ * read_label_tail (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vec_push (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Token ;
+typedef int Node ;
+
+
+ int KELLIPSIS ;
+ int ast_dest (char*) ;
+ int cases ;
+ int check_case_duplicates (int ) ;
+ int errort (int *,char*,...) ;
+ int expect (char) ;
+ int make_case (int,int,char*) ;
+ char* make_label () ;
+ scalar_t__ next_token (int ) ;
+ int read_intexpr () ;
+ int * read_label_tail (int ) ;
+ int vec_push (int ,int ) ;
 
 __attribute__((used)) static Node *read_case_label(Token *tok) {
     if (!cases)

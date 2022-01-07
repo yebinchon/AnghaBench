@@ -1,96 +1,96 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
 struct TYPE_3__ {int dwAttrs; } ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  int /*<<< orphan*/ * PDOCBUCKET ;
-typedef  TYPE_1__* LPXDTA ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  scalar_t__ LPTSTR ;
-typedef  scalar_t__ LPRECT ;
-typedef  long LPARAM ;
-typedef  int INT ;
-typedef  scalar_t__ HWND ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  HBRUSH ;
-typedef  scalar_t__ BOOL ;
+typedef int RECT ;
+typedef int * PDOCBUCKET ;
+typedef TYPE_1__* LPXDTA ;
+typedef int * LPWSTR ;
+typedef scalar_t__ LPTSTR ;
+typedef scalar_t__ LPRECT ;
+typedef long LPARAM ;
+typedef int INT ;
+typedef scalar_t__ HWND ;
+typedef int HDC ;
+typedef int HBRUSH ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int ATTR_DIR ; 
- int ATTR_PARENT ; 
- int COLOR_WINDOW ; 
- int COLOR_WINDOWFRAME ; 
- int COUNTOF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CreateSolidBrush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FS_GETDIRECTORY ; 
- int /*<<< orphan*/  FrameRect (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetClientRect (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetDC (scalar_t__) ; 
- scalar_t__ GetParent (scalar_t__) ; 
- int /*<<< orphan*/  GetSysColor (int) ; 
- scalar_t__ IDS_DRAG_COPYING ; 
- scalar_t__ IDS_DRAG_EXECUTING ; 
- scalar_t__ IDS_DRAG_MOVING ; 
- int /*<<< orphan*/  InflateRect (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  IntersectRect (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InvalidateRect (scalar_t__,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/ * IsProgramFile (int /*<<< orphan*/ *) ; 
- scalar_t__ LB_ERR ; 
- int /*<<< orphan*/  LB_GETITEMRECT ; 
- int /*<<< orphan*/  LB_GETSEL ; 
- int /*<<< orphan*/  LB_GETTEXT ; 
- int MAXPATHLEN ; 
- int /*<<< orphan*/ * MemGetFileName (TYPE_1__*) ; 
- int /*<<< orphan*/  ReleaseDC (scalar_t__,int /*<<< orphan*/ ) ; 
- int SBT_NOBORDERS ; 
- int /*<<< orphan*/  SB_SETTEXT ; 
- int SST_FORMAT ; 
- int SST_RESOURCE ; 
- scalar_t__ SendMessage (scalar_t__,int /*<<< orphan*/ ,int,long) ; 
- int /*<<< orphan*/  SetStatusText (int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  StripBackslash (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  StripFilespec (int /*<<< orphan*/ *) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  UpdateWindow (scalar_t__) ; 
- scalar_t__ fShowSourceBitmaps ; 
- scalar_t__ hwndDragging ; 
- scalar_t__ hwndStatus ; 
- scalar_t__ szNULL ; 
 
-BOOL 
+ int ATTR_DIR ;
+ int ATTR_PARENT ;
+ int COLOR_WINDOW ;
+ int COLOR_WINDOWFRAME ;
+ int COUNTOF (int *) ;
+ int CreateSolidBrush (int ) ;
+ int DeleteObject (int ) ;
+ scalar_t__ FALSE ;
+ int FS_GETDIRECTORY ;
+ int FrameRect (int ,int *,int ) ;
+ int GetClientRect (scalar_t__,int *) ;
+ int GetDC (scalar_t__) ;
+ scalar_t__ GetParent (scalar_t__) ;
+ int GetSysColor (int) ;
+ scalar_t__ IDS_DRAG_COPYING ;
+ scalar_t__ IDS_DRAG_EXECUTING ;
+ scalar_t__ IDS_DRAG_MOVING ;
+ int InflateRect (int *,int,int) ;
+ int IntersectRect (int *,int *,int *) ;
+ int InvalidateRect (scalar_t__,int *,scalar_t__) ;
+ int * IsProgramFile (int *) ;
+ scalar_t__ LB_ERR ;
+ int LB_GETITEMRECT ;
+ int LB_GETSEL ;
+ int LB_GETTEXT ;
+ int MAXPATHLEN ;
+ int * MemGetFileName (TYPE_1__*) ;
+ int ReleaseDC (scalar_t__,int ) ;
+ int SBT_NOBORDERS ;
+ int SB_SETTEXT ;
+ int SST_FORMAT ;
+ int SST_RESOURCE ;
+ scalar_t__ SendMessage (scalar_t__,int ,int,long) ;
+ int SetStatusText (int,int,int *,int *) ;
+ int StripBackslash (int *) ;
+ int StripFilespec (int *) ;
+ scalar_t__ TRUE ;
+ int UpdateWindow (scalar_t__) ;
+ scalar_t__ fShowSourceBitmaps ;
+ scalar_t__ hwndDragging ;
+ scalar_t__ hwndStatus ;
+ scalar_t__ szNULL ;
+
+BOOL
 DSRectItem(
    HWND hwndLB,
    INT iItem,
    BOOL bFocusOn,
    BOOL bSearch)
 {
-   RECT      rc;
-   RECT      rcT;
-   HDC       hDC;
-   BOOL      bSel;
-   INT       nColor;
-   HBRUSH    hBrush;
-   LPXDTA    lpxdta;
-   WCHAR     szTemp[MAXPATHLEN];
-   PDOCBUCKET pIsProgram = NULL;
-   LPWSTR    pszFile;
+   RECT rc;
+   RECT rcT;
+   HDC hDC;
+   BOOL bSel;
+   INT nColor;
+   HBRUSH hBrush;
+   LPXDTA lpxdta;
+   WCHAR szTemp[MAXPATHLEN];
+   PDOCBUCKET pIsProgram = ((void*)0);
+   LPWSTR pszFile;
 
-   //
-   // Are we over an unused part of the listbox?
-   //
+
+
+
    if (iItem == -1) {
       if (bSearch || hwndDragging == hwndLB) {
          SendMessage(hwndStatus,
@@ -121,9 +121,9 @@ DSRectItem(
       return FALSE;
    }
 
-   //
-   // Are we over ourselves? (i.e. a selected item in the source listbox)
-   //
+
+
+
    bSel = (BOOL)SendMessage(hwndLB, LB_GETSEL, iItem, 0L);
 
    if (bSel && (hwndDragging == hwndLB)) {
@@ -139,9 +139,9 @@ ClearStatus:
       return FALSE;
    }
 
-   //
-   // We only put rectangles around directories and program items.
-   //
+
+
+
    if (SendMessage(hwndLB,
                    LB_GETTEXT,
                    iItem,
@@ -149,25 +149,16 @@ ClearStatus:
       return FALSE;
    }
 
-   if (!(lpxdta->dwAttrs & ATTR_DIR)  &&
+   if (!(lpxdta->dwAttrs & ATTR_DIR) &&
       !(pIsProgram = IsProgramFile(MemGetFileName(lpxdta)))) {
-
-      //
-      // It's not a directory
-      //
-
-      //
-      // If it's the same dir window, or we are dropping to a search
-      // window, don't show any text!
-      //
       if ((hwndDragging == hwndLB) || bSearch) {
          goto ClearStatus;
       }
 
-      //
-      // We are in a directory window (not search window)
-      // but we aren't over a folder, so just use the current directory.
-      //
+
+
+
+
       SendMessage(GetParent(hwndLB), FS_GETDIRECTORY, COUNTOF(szTemp), (LPARAM)szTemp);
       StripBackslash(szTemp);
 
@@ -181,15 +172,6 @@ ClearStatus:
       UpdateWindow(hwndStatus);
       return FALSE;
    }
-
-   //
-   // At this point, we are over a directory folder,
-   // be we could be in a search or directory window.
-   //
-
-   //
-   // Turn the item's rectangle on or off.
-   //
    if (bSearch || !(lpxdta->dwAttrs & ATTR_PARENT)) {
 
       pszFile = MemGetFileName(lpxdta);
@@ -197,15 +179,15 @@ ClearStatus:
    } else {
 
       SendMessage(GetParent(hwndLB), FS_GETDIRECTORY, COUNTOF(szTemp), (LPARAM)szTemp);
-      StripBackslash(szTemp);  // trim it down
+      StripBackslash(szTemp);
       StripFilespec(szTemp);
 
       pszFile = szTemp;
    }
 
-   //
-   // Else bSearch and szTemp contains the file name
-   //
+
+
+
    if (bFocusOn) {
 
       SetStatusText(SBT_NOBORDERS|255,

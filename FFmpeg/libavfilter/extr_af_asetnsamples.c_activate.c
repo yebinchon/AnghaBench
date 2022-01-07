@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {scalar_t__ nb_out_samples; int /*<<< orphan*/  pad; } ;
-struct TYPE_13__ {TYPE_3__* priv; int /*<<< orphan*/ ** outputs; int /*<<< orphan*/ ** inputs; } ;
-struct TYPE_12__ {scalar_t__ nb_samples; int /*<<< orphan*/  format; int /*<<< orphan*/  channels; int /*<<< orphan*/  extended_data; } ;
-typedef  TYPE_1__ AVFrame ;
-typedef  int /*<<< orphan*/  AVFilterLink ;
-typedef  TYPE_2__ AVFilterContext ;
-typedef  TYPE_3__ ASNSContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFERROR_NOT_READY ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_STATUS (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_STATUS_BACK (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_WANTED (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int av_frame_copy_props (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_1__**) ; 
- int /*<<< orphan*/  av_samples_copy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_samples_set_silence (int /*<<< orphan*/ ,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ff_filter_frame (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  ff_filter_set_ready (TYPE_2__*,int) ; 
- TYPE_1__* ff_get_audio_buffer (int /*<<< orphan*/ *,scalar_t__) ; 
- int ff_inlink_consume_samples (int /*<<< orphan*/ *,scalar_t__,scalar_t__,TYPE_1__**) ; 
- scalar_t__ ff_inlink_queued_samples (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_14__ {scalar_t__ nb_out_samples; int pad; } ;
+struct TYPE_13__ {TYPE_3__* priv; int ** outputs; int ** inputs; } ;
+struct TYPE_12__ {scalar_t__ nb_samples; int format; int channels; int extended_data; } ;
+typedef TYPE_1__ AVFrame ;
+typedef int AVFilterLink ;
+typedef TYPE_2__ AVFilterContext ;
+typedef TYPE_3__ ASNSContext ;
+
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int FFERROR_NOT_READY ;
+ int FF_FILTER_FORWARD_STATUS (int *,int *) ;
+ int FF_FILTER_FORWARD_STATUS_BACK (int *,int *) ;
+ int FF_FILTER_FORWARD_WANTED (int *,int *) ;
+ int av_frame_copy_props (TYPE_1__*,TYPE_1__*) ;
+ int av_frame_free (TYPE_1__**) ;
+ int av_samples_copy (int ,int ,int ,int ,scalar_t__,int ,int ) ;
+ int av_samples_set_silence (int ,scalar_t__,scalar_t__,int ,int ) ;
+ int ff_filter_frame (int *,TYPE_1__*) ;
+ int ff_filter_set_ready (TYPE_2__*,int) ;
+ TYPE_1__* ff_get_audio_buffer (int *,scalar_t__) ;
+ int ff_inlink_consume_samples (int *,scalar_t__,scalar_t__,TYPE_1__**) ;
+ scalar_t__ ff_inlink_queued_samples (int *) ;
 
 __attribute__((used)) static int activate(AVFilterContext *ctx)
 {
     AVFilterLink *inlink = ctx->inputs[0];
     AVFilterLink *outlink = ctx->outputs[0];
     ASNSContext *s = ctx->priv;
-    AVFrame *frame = NULL, *pad_frame;
+    AVFrame *frame = ((void*)0), *pad_frame;
     int ret;
 
     FF_FILTER_FORWARD_STATUS_BACK(outlink, inlink);

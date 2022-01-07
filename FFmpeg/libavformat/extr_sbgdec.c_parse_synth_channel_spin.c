@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sbg_script_synth {int carrier; int beat; int vol; int /*<<< orphan*/  type; } ;
-struct sbg_parser {int /*<<< orphan*/  log; } ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  EDOM ; 
- int /*<<< orphan*/  FORWARD_ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SBG_TYPE_SPIN ; 
- int /*<<< orphan*/  lex_double (struct sbg_parser*,double*) ; 
- int /*<<< orphan*/  lex_fixed (struct sbg_parser*,char*,int) ; 
- int /*<<< orphan*/  parse_volume (struct sbg_parser*,int*) ; 
- scalar_t__ scale_double (int /*<<< orphan*/ ,double,int,int*) ; 
+
+
+
+struct sbg_script_synth {int carrier; int beat; int vol; int type; } ;
+struct sbg_parser {int log; } ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int EDOM ;
+ int FORWARD_ERROR (int ) ;
+ int SBG_TYPE_SPIN ;
+ int lex_double (struct sbg_parser*,double*) ;
+ int lex_fixed (struct sbg_parser*,char*,int) ;
+ int parse_volume (struct sbg_parser*,int*) ;
+ scalar_t__ scale_double (int ,double,int,int*) ;
 
 __attribute__((used)) static int parse_synth_channel_spin(struct sbg_parser *p,
                                     struct sbg_script_synth *synth)
@@ -40,9 +40,9 @@ __attribute__((used)) static int parse_synth_channel_spin(struct sbg_parser *p,
     if (scale_double(p->log, carrierf, 1, &carrier) < 0 ||
         scale_double(p->log, beatf, 1, &beat) < 0)
         return AVERROR(EDOM);
-    synth->type    = SBG_TYPE_SPIN;
+    synth->type = SBG_TYPE_SPIN;
     synth->carrier = carrier;
-    synth->beat    = beat;
-    synth->vol     = vol;
+    synth->beat = beat;
+    synth->vol = vol;
     return 1;
 }

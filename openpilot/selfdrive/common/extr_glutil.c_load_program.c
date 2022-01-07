@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  int GLint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_FRAGMENT_SHADER ; 
- int /*<<< orphan*/  GL_INFO_LOG_LENGTH ; 
- int /*<<< orphan*/  GL_LINK_STATUS ; 
- int /*<<< orphan*/  GL_VERTEX_SHADER ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  glAttachShader (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glCreateProgram () ; 
- int /*<<< orphan*/  glDeleteProgram (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDeleteShader (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glGetProgramInfoLog (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  glGetProgramiv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  glLinkProgram (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  load_shader (int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int GLuint ;
+typedef int GLint ;
+
+
+ int GL_FRAGMENT_SHADER ;
+ int GL_INFO_LOG_LENGTH ;
+ int GL_LINK_STATUS ;
+ int GL_VERTEX_SHADER ;
+ int fprintf (int ,char*,char*) ;
+ int free (char*) ;
+ int glAttachShader (int ,int ) ;
+ int glCreateProgram () ;
+ int glDeleteProgram (int ) ;
+ int glDeleteShader (int ) ;
+ int glGetProgramInfoLog (int ,int,int *,char*) ;
+ int glGetProgramiv (int ,int ,int*) ;
+ int glLinkProgram (int ) ;
+ int load_shader (int ,char const*) ;
+ scalar_t__ malloc (int) ;
+ int stderr ;
 
 GLuint load_program(const char *vert_src, const char *frag_src) {
   GLuint vert, frag, prog;
@@ -54,7 +54,7 @@ GLuint load_program(const char *vert_src, const char *frag_src) {
   if (len) {
     char *buf = (char*) malloc(len);
     if (buf) {
-      glGetProgramInfoLog(prog, len, NULL, buf);
+      glGetProgramInfoLog(prog, len, ((void*)0), buf);
       buf[len-1] = 0;
       fprintf(stderr, "error linking program:\n%s\n", buf);
       free(buf);

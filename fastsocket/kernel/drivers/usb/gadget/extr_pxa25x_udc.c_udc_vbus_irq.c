@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pxa25x_udc {int /*<<< orphan*/  gadget; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  is_vbus_present () ; 
- int /*<<< orphan*/  pxa25x_udc_vbus_session (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct pxa25x_udc {int gadget; } ;
+typedef int irqreturn_t ;
+
+
+ int IRQ_HANDLED ;
+ int is_vbus_present () ;
+ int pxa25x_udc_vbus_session (int *,int ) ;
 
 __attribute__((used)) static irqreturn_t udc_vbus_irq(int irq, void *_dev)
 {
-	struct pxa25x_udc	*dev = _dev;
+ struct pxa25x_udc *dev = _dev;
 
-	pxa25x_udc_vbus_session(&dev->gadget, is_vbus_present());
-	return IRQ_HANDLED;
+ pxa25x_udc_vbus_session(&dev->gadget, is_vbus_present());
+ return IRQ_HANDLED;
 }

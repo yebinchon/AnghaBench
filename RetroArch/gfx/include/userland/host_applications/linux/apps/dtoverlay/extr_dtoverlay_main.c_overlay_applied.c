@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  status ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int fread (char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_string (char const*) ; 
- scalar_t__ memcmp (char*,char*,int) ; 
- char* sprintf_dup (char*,char const*) ; 
+
+
+
+typedef int status ;
+typedef int FILE ;
+
+
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fread (char*,int,int,int *) ;
+ int free_string (char const*) ;
+ scalar_t__ memcmp (char*,char*,int) ;
+ char* sprintf_dup (char*,char const*) ;
 
 __attribute__((used)) static int overlay_applied(const char *overlay_dir)
 {
@@ -29,10 +29,10 @@ __attribute__((used)) static int overlay_applied(const char *overlay_dir)
     int bytes = 0;
     if (fp)
     {
-	bytes = fread(status, 1, sizeof(status), fp);
-	fclose(fp);
+ bytes = fread(status, 1, sizeof(status), fp);
+ fclose(fp);
     }
     free_string(status_path);
     return (bytes == sizeof(status)) &&
-	(memcmp(status, "applied", sizeof(status)) == 0);
+ (memcmp(status, "applied", sizeof(status)) == 0);
 }

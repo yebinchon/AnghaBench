@@ -1,25 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 __attribute__((used)) static inline unsigned int fract_exp_two(unsigned int x,
-					 unsigned int fract_bits)
+      unsigned int fract_bits)
 {
-	unsigned int mantissa = 1 << fract_bits;	/* Implicit bit */
+ unsigned int mantissa = 1 << fract_bits;
 
-	mantissa += x & (mantissa - 1);
-	x >>= fract_bits;	/* The exponent */
-	/* Largest intermediate value 0x7f0000 */
-	return mantissa << x >> fract_bits;
+ mantissa += x & (mantissa - 1);
+ x >>= fract_bits;
+
+ return mantissa << x >> fract_bits;
 }

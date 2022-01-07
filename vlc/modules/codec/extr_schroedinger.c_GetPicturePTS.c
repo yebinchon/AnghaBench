@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_tick_t ;
-typedef  scalar_t__ uint32_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int vlc_tick_t ;
+typedef scalar_t__ uint32_t ;
 struct TYPE_7__ {TYPE_3__* p_sys; } ;
-typedef  TYPE_2__ encoder_t ;
+typedef TYPE_2__ encoder_t ;
 struct TYPE_8__ {TYPE_1__* pts_tlb; } ;
-typedef  TYPE_3__ encoder_sys_t ;
-struct TYPE_6__ {int b_empty; scalar_t__ u_pnum; int /*<<< orphan*/  i_pts; } ;
+typedef TYPE_3__ encoder_sys_t ;
+struct TYPE_6__ {int b_empty; scalar_t__ u_pnum; int i_pts; } ;
 
-/* Variables and functions */
- int SCHRO_PTS_TLB_SIZE ; 
- int /*<<< orphan*/  VLC_TICK_INVALID ; 
- int /*<<< orphan*/  msg_Err (TYPE_2__*,char*,scalar_t__) ; 
+
+ int SCHRO_PTS_TLB_SIZE ;
+ int VLC_TICK_INVALID ;
+ int msg_Err (TYPE_2__*,char*,scalar_t__) ;
 
 __attribute__((used)) static vlc_tick_t GetPicturePTS( encoder_t *p_enc, uint32_t u_pnum )
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static vlc_tick_t GetPicturePTS( encoder_t *p_enc, uint32_
         if( !p_sys->pts_tlb[i].b_empty &&
             p_sys->pts_tlb[i].u_pnum == u_pnum )
         {
-             p_sys->pts_tlb[i].b_empty = true;
+             p_sys->pts_tlb[i].b_empty = 1;
              return p_sys->pts_tlb[i].i_pts;
         }
     }

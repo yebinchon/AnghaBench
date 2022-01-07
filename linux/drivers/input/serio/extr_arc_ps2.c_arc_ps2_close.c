@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct serio {struct arc_ps2_port* port_data; } ;
-struct arc_ps2_port {int /*<<< orphan*/  status_addr; } ;
+struct arc_ps2_port {int status_addr; } ;
 
-/* Variables and functions */
- int PS2_STAT_RX_INT_EN ; 
- int ioread32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  iowrite32 (int,int /*<<< orphan*/ ) ; 
+
+ int PS2_STAT_RX_INT_EN ;
+ int ioread32 (int ) ;
+ int iowrite32 (int,int ) ;
 
 __attribute__((used)) static void arc_ps2_close(struct serio *io)
 {
-	struct arc_ps2_port *port = io->port_data;
+ struct arc_ps2_port *port = io->port_data;
 
-	iowrite32(ioread32(port->status_addr) & ~PS2_STAT_RX_INT_EN,
-		  port->status_addr);
+ iowrite32(ioread32(port->status_addr) & ~PS2_STAT_RX_INT_EN,
+    port->status_addr);
 }

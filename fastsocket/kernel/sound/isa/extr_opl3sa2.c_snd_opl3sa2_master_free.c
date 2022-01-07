@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct snd_opl3sa2 {int /*<<< orphan*/ * master_volume; int /*<<< orphan*/ * master_switch; } ;
+
+
+
+
+struct snd_opl3sa2 {int * master_volume; int * master_switch; } ;
 struct snd_kcontrol {int dummy; } ;
 
-/* Variables and functions */
- struct snd_opl3sa2* snd_kcontrol_chip (struct snd_kcontrol*) ; 
+
+ struct snd_opl3sa2* snd_kcontrol_chip (struct snd_kcontrol*) ;
 
 __attribute__((used)) static void snd_opl3sa2_master_free(struct snd_kcontrol *kcontrol)
 {
-	struct snd_opl3sa2 *chip = snd_kcontrol_chip(kcontrol);
-	chip->master_switch = NULL;
-	chip->master_volume = NULL;
+ struct snd_opl3sa2 *chip = snd_kcontrol_chip(kcontrol);
+ chip->master_switch = ((void*)0);
+ chip->master_volume = ((void*)0);
 }

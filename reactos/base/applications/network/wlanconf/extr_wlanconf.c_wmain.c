@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  IP_ADAPTER_INDEX_MAP ;
-typedef  int /*<<< orphan*/  HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ConInitStdStreams () ; 
- int /*<<< orphan*/  ConResPuts (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DoFormatMessage (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  IDS_NO_WLAN_ADAPTER ; 
- int /*<<< orphan*/  OpenWlanAdapter (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ParseCmdline (int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  StdOut ; 
- int /*<<< orphan*/  WlanConnect (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WlanDisconnect (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WlanPrintCurrentStatus (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WlanScan (int /*<<< orphan*/ ) ; 
- scalar_t__ bConnect ; 
- scalar_t__ bDisconnect ; 
- scalar_t__ bScan ; 
+
+
+
+typedef int WCHAR ;
+typedef int IP_ADAPTER_INDEX_MAP ;
+typedef int HANDLE ;
+
+
+ int CloseHandle (int ) ;
+ int ConInitStdStreams () ;
+ int ConResPuts (int ,int ) ;
+ int DoFormatMessage (int ) ;
+ int GetLastError () ;
+ int IDS_NO_WLAN_ADAPTER ;
+ int OpenWlanAdapter (int *,int *) ;
+ int ParseCmdline (int,int **) ;
+ int StdOut ;
+ int WlanConnect (int ) ;
+ int WlanDisconnect (int ,int *) ;
+ int WlanPrintCurrentStatus (int ) ;
+ int WlanScan (int ) ;
+ scalar_t__ bConnect ;
+ scalar_t__ bDisconnect ;
+ scalar_t__ bScan ;
 
 int wmain(int argc, WCHAR *argv[])
 {
     HANDLE hAdapter;
     IP_ADAPTER_INDEX_MAP IpInfo;
 
-    /* Initialize the Console Standard Streams */
+
     ConInitStdStreams();
 
     if (!ParseCmdline(argc, argv))

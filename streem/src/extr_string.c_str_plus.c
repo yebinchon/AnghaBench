@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  strm_value ;
-typedef  int /*<<< orphan*/  strm_string ;
-typedef  int /*<<< orphan*/  strm_stream ;
 
-/* Variables and functions */
- int STRM_OK ; 
- int /*<<< orphan*/  memcpy (char*,scalar_t__,size_t) ; 
- int /*<<< orphan*/  strm_get_args (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- size_t strm_str_len (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_str_new (int /*<<< orphan*/ *,size_t) ; 
- scalar_t__ strm_str_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_str_value (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int strm_value ;
+typedef int strm_string ;
+typedef int strm_stream ;
+
+
+ int STRM_OK ;
+ int memcpy (char*,scalar_t__,size_t) ;
+ int strm_get_args (int *,int,int *,char*,int *,int *) ;
+ size_t strm_str_len (int ) ;
+ int strm_str_new (int *,size_t) ;
+ scalar_t__ strm_str_ptr (int ) ;
+ int strm_str_value (int ) ;
 
 __attribute__((used)) static int
 str_plus(strm_stream* strm, int argc, strm_value* args, strm_value* ret)
@@ -30,7 +30,7 @@ str_plus(strm_stream* strm, int argc, strm_value* args, strm_value* ret)
   char *p;
 
   strm_get_args(strm, argc, args, "SS", &str1, &str2);
-  str3 = strm_str_new(NULL, strm_str_len(str1) + strm_str_len(str2));
+  str3 = strm_str_new(((void*)0), strm_str_len(str1) + strm_str_len(str2));
 
   p = (char*)strm_str_ptr(str3);
   memcpy(p, strm_str_ptr(str1), strm_str_len(str1));

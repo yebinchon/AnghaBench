@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum wifi_driver_enum { ____Placeholder_wifi_driver_enum } wifi_driver_enum ;
 
-/* Variables and functions */
-#define  WIFI_CONNMANCTL 129 
- int WIFI_DEFAULT_DRIVER ; 
-#define  WIFI_NULL 128 
+
+
+
+typedef enum wifi_driver_enum { ____Placeholder_wifi_driver_enum } wifi_driver_enum ;
+
+
+
+ int WIFI_DEFAULT_DRIVER ;
+
 
 const char *config_get_default_wifi(void)
 {
@@ -23,9 +23,9 @@ const char *config_get_default_wifi(void)
 
    switch (default_driver)
    {
-      case WIFI_CONNMANCTL:
+      case 129:
          return "connmanctl";
-      case WIFI_NULL:
+      case 128:
          break;
    }
 

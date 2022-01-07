@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct termios {int* c_cc; int /*<<< orphan*/  c_lflag; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ICANON ; 
- int /*<<< orphan*/  TCSANOW ; 
- size_t VMIN ; 
- size_t VTIME ; 
- int /*<<< orphan*/  fileno (int /*<<< orphan*/ ) ; 
- int havemodes ; 
- struct termios savemodes ; 
- int /*<<< orphan*/  stdin ; 
- scalar_t__ tcgetattr (int /*<<< orphan*/ ,struct termios*) ; 
- int tcsetattr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct termios*) ; 
+
+
+
+struct termios {int* c_cc; int c_lflag; } ;
+
+
+ int ICANON ;
+ int TCSANOW ;
+ size_t VMIN ;
+ size_t VTIME ;
+ int fileno (int ) ;
+ int havemodes ;
+ struct termios savemodes ;
+ int stdin ;
+ scalar_t__ tcgetattr (int ,struct termios*) ;
+ int tcsetattr (int ,int ,struct termios*) ;
 
 int tty_break()
 {

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct disassemble_info {int bytes_per_chunk; int (* read_memory_func ) (int,int /*<<< orphan*/ *,int,struct disassemble_info*) ;int /*<<< orphan*/  (* memory_error_func ) (int,int,struct disassemble_info*) ;int /*<<< orphan*/  display_endian; } ;
-typedef  int bfd_vma ;
-typedef  int /*<<< orphan*/  bfd_byte ;
-typedef  scalar_t__ bfd_boolean ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BFD_ENDIAN_BIG ; 
- int /*<<< orphan*/  BFD_ENDIAN_LITTLE ; 
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  print_insn_parallel_sym (struct disassemble_info*) ; 
- int print_insn_score16 (int,struct disassemble_info*,long) ; 
- int print_insn_score32 (int,struct disassemble_info*,long) ; 
- int stub1 (int,int /*<<< orphan*/ *,int,struct disassemble_info*) ; 
- int stub2 (int,int /*<<< orphan*/ *,int,struct disassemble_info*) ; 
- int stub3 (int,int /*<<< orphan*/ *,int,struct disassemble_info*) ; 
- int /*<<< orphan*/  stub4 (int,int,struct disassemble_info*) ; 
+
+
+
+struct disassemble_info {int bytes_per_chunk; int (* read_memory_func ) (int,int *,int,struct disassemble_info*) ;int (* memory_error_func ) (int,int,struct disassemble_info*) ;int display_endian; } ;
+typedef int bfd_vma ;
+typedef int bfd_byte ;
+typedef scalar_t__ bfd_boolean ;
+
+
+ int BFD_ENDIAN_BIG ;
+ int BFD_ENDIAN_LITTLE ;
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
+ int print_insn_parallel_sym (struct disassemble_info*) ;
+ int print_insn_score16 (int,struct disassemble_info*,long) ;
+ int print_insn_score32 (int,struct disassemble_info*,long) ;
+ int stub1 (int,int *,int,struct disassemble_info*) ;
+ int stub2 (int,int *,int,struct disassemble_info*) ;
+ int stub3 (int,int *,int,struct disassemble_info*) ;
+ int stub4 (int,int,struct disassemble_info*) ;
 
 __attribute__((used)) static int
 print_insn (bfd_vma pc, struct disassemble_info *info, bfd_boolean little)
@@ -52,12 +52,12 @@ print_insn (bfd_vma pc, struct disassemble_info *info, bfd_boolean little)
       info->bytes_per_chunk = 4;
       status = info->read_memory_func (pc, (bfd_byte *) & b[0], 4, info);
       if (status != 0)
-	{
+ {
           info->bytes_per_chunk = 2;
           status = info->read_memory_func (pc, (bfd_byte *) b, 2, info);
           b[3] = b[2] = 0;
           insn_16_p = TRUE;
-	}
+ }
     }
 
   if (status != 0)
@@ -89,21 +89,21 @@ print_insn (bfd_vma pc, struct disassemble_info *info, bfd_boolean little)
       insn_16_p = TRUE;
     }
 
-  /* 16 bit instruction.  */
+
   if (insn_16_p)
     {
       if (little)
-	{
+ {
           given = b[0] | (b[1] << 8);
-	}
+ }
       else
-	{
+ {
           given = (b[0] << 8) | b[1];
-	}
+ }
 
       status = print_insn_score16 (pc, info, given);
     }
-  /* pce instruction.  */
+
   else if (insn_pce_p)
     {
       long other;
@@ -114,13 +114,13 @@ print_insn (bfd_vma pc, struct disassemble_info *info, bfd_boolean little)
       status = print_insn_score16 (pc, info, given);
       print_insn_parallel_sym (info);
       status += print_insn_score16 (pc, info, other);
-      /* disassemble_bytes() will output 4 byte per chunk for pce instructio.  */
+
       info->bytes_per_chunk = 4;
     }
-  /* 32 bit instruction.  */
+
   else
     {
-      /* Get rid of parity.  */
+
       ridparity = (given & 0x7FFF);
       ridparity |= (given & 0x7FFF0000) >> 1;
       given = ridparity;

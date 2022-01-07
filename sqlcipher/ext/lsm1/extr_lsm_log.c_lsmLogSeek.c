@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ bUseLog; TYPE_3__* pLogWriter; } ;
-typedef  TYPE_2__ lsm_db ;
-struct TYPE_10__ {int iOff; int nBuf; int /*<<< orphan*/  cksum1; int /*<<< orphan*/  cksum0; int /*<<< orphan*/  aBuf; } ;
-struct TYPE_7__ {int n; int /*<<< orphan*/  z; } ;
-struct TYPE_9__ {int iOff; int iCksumBuf; int iRegion1End; int iRegion2Start; int /*<<< orphan*/  cksum1; int /*<<< orphan*/  cksum0; TYPE_1__ buf; } ;
-typedef  TYPE_3__ LogWriter ;
-typedef  TYPE_4__ LogMark ;
+typedef TYPE_2__ lsm_db ;
+struct TYPE_10__ {int iOff; int nBuf; int cksum1; int cksum0; int aBuf; } ;
+struct TYPE_7__ {int n; int z; } ;
+struct TYPE_9__ {int iOff; int iCksumBuf; int iRegion1End; int iRegion2Start; int cksum1; int cksum0; TYPE_1__ buf; } ;
+typedef TYPE_3__ LogWriter ;
+typedef TYPE_4__ LogMark ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int assert (int) ;
+ int memcpy (int ,int ,int) ;
 
 void lsmLogSeek(
-  lsm_db *pDb,                    /* Database handle */
-  LogMark *pMark                  /* Object containing log offset to seek to */
+  lsm_db *pDb,
+  LogMark *pMark
 ){
   LogWriter *pLog;
 

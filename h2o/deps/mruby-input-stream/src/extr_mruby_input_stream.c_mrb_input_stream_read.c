@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int mrb_int ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef int mrb_int ;
 struct TYPE_4__ {int pos; char* base; int len; } ;
-typedef  TYPE_1__ mrb_input_stream_t ;
+typedef TYPE_1__ mrb_input_stream_t ;
 
-/* Variables and functions */
- TYPE_1__* DATA_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert_is_open (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int mrb_get_args (int /*<<< orphan*/ *,char*,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_nil_value () ; 
- int /*<<< orphan*/  mrb_str_cat (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  mrb_str_new (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  mrb_str_new_lit (int /*<<< orphan*/ *,char*) ; 
+
+ TYPE_1__* DATA_PTR (int ) ;
+ int assert_is_open (int *,TYPE_1__*) ;
+ int mrb_get_args (int *,char*,int*,int *) ;
+ int mrb_nil_value () ;
+ int mrb_str_cat (int *,int ,char const*,int) ;
+ int mrb_str_new (int *,char const*,int) ;
+ int mrb_str_new_lit (int *,char*) ;
 
 __attribute__((used)) static mrb_value
 mrb_input_stream_read(mrb_state *mrb, mrb_value self)

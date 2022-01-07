@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_27__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * jthrowable ;
-typedef  int /*<<< orphan*/ * jstring ;
-typedef  int /*<<< orphan*/ * jmethodID ;
-typedef  int /*<<< orphan*/ * jclass ;
-struct TYPE_27__ {int /*<<< orphan*/  (* DeleteLocalRef ) (TYPE_1__**,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* ExceptionClear ) (TYPE_1__**) ;scalar_t__ (* ExceptionCheck ) (TYPE_1__**) ;int /*<<< orphan*/ * (* CallObjectMethod ) (TYPE_1__**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;int /*<<< orphan*/ * (* GetMethodID ) (TYPE_1__**,int /*<<< orphan*/ *,char*,char*) ;int /*<<< orphan*/ * (* GetObjectClass ) (TYPE_1__**,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_1__* JNIEnv ;
-typedef  int /*<<< orphan*/  AVBPrint ;
 
-/* Variables and functions */
- int AVERROR_EXTERNAL ; 
- int /*<<< orphan*/  AV_BPRINT_SIZE_AUTOMATIC ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int av_bprint_finalize (int /*<<< orphan*/ *,char**) ; 
- int /*<<< orphan*/  av_bprint_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_bprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  av_free (char*) ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*) ; 
- char* ff_jni_jstring_to_utf_chars (TYPE_1__**,int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/ * stub1 (TYPE_1__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stub10 (TYPE_1__**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ stub11 (TYPE_1__**) ; 
- int /*<<< orphan*/  stub12 (TYPE_1__**) ; 
- int /*<<< orphan*/  stub13 (TYPE_1__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stub14 (TYPE_1__**,int /*<<< orphan*/ *,char*,char*) ; 
- scalar_t__ stub15 (TYPE_1__**) ; 
- int /*<<< orphan*/  stub16 (TYPE_1__**) ; 
- int /*<<< orphan*/ * stub17 (TYPE_1__**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ stub18 (TYPE_1__**) ; 
- int /*<<< orphan*/  stub19 (TYPE_1__**) ; 
- scalar_t__ stub2 (TYPE_1__**) ; 
- int /*<<< orphan*/  stub20 (TYPE_1__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub21 (TYPE_1__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub22 (TYPE_1__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub23 (TYPE_1__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub3 (TYPE_1__**) ; 
- int /*<<< orphan*/ * stub4 (TYPE_1__**,int /*<<< orphan*/ *) ; 
- scalar_t__ stub5 (TYPE_1__**) ; 
- int /*<<< orphan*/  stub6 (TYPE_1__**) ; 
- int /*<<< orphan*/ * stub7 (TYPE_1__**,int /*<<< orphan*/ *,char*,char*) ; 
- scalar_t__ stub8 (TYPE_1__**) ; 
- int /*<<< orphan*/  stub9 (TYPE_1__**) ; 
+
+typedef struct TYPE_27__ TYPE_1__ ;
+
+
+typedef int * jthrowable ;
+typedef int * jstring ;
+typedef int * jmethodID ;
+typedef int * jclass ;
+struct TYPE_27__ {int (* DeleteLocalRef ) (TYPE_1__**,int *) ;int (* ExceptionClear ) (TYPE_1__**) ;scalar_t__ (* ExceptionCheck ) (TYPE_1__**) ;int * (* CallObjectMethod ) (TYPE_1__**,int *,int *) ;int * (* GetMethodID ) (TYPE_1__**,int *,char*,char*) ;int * (* GetObjectClass ) (TYPE_1__**,int *) ;} ;
+typedef TYPE_1__* JNIEnv ;
+typedef int AVBPrint ;
+
+
+ int AVERROR_EXTERNAL ;
+ int AV_BPRINT_SIZE_AUTOMATIC ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ int av_bprint_finalize (int *,char**) ;
+ int av_bprint_init (int *,int ,int ) ;
+ int av_bprintf (int *,char*,...) ;
+ int av_free (char*) ;
+ int av_log (void*,int ,char*) ;
+ char* ff_jni_jstring_to_utf_chars (TYPE_1__**,int *,void*) ;
+ int * stub1 (TYPE_1__**,int *) ;
+ int * stub10 (TYPE_1__**,int *,int *) ;
+ scalar_t__ stub11 (TYPE_1__**) ;
+ int stub12 (TYPE_1__**) ;
+ int stub13 (TYPE_1__**,int *) ;
+ int * stub14 (TYPE_1__**,int *,char*,char*) ;
+ scalar_t__ stub15 (TYPE_1__**) ;
+ int stub16 (TYPE_1__**) ;
+ int * stub17 (TYPE_1__**,int *,int *) ;
+ scalar_t__ stub18 (TYPE_1__**) ;
+ int stub19 (TYPE_1__**) ;
+ scalar_t__ stub2 (TYPE_1__**) ;
+ int stub20 (TYPE_1__**,int *) ;
+ int stub21 (TYPE_1__**,int *) ;
+ int stub22 (TYPE_1__**,int *) ;
+ int stub23 (TYPE_1__**,int *) ;
+ int stub3 (TYPE_1__**) ;
+ int * stub4 (TYPE_1__**,int *) ;
+ scalar_t__ stub5 (TYPE_1__**) ;
+ int stub6 (TYPE_1__**) ;
+ int * stub7 (TYPE_1__**,int *,char*,char*) ;
+ scalar_t__ stub8 (TYPE_1__**) ;
+ int stub9 (TYPE_1__**) ;
 
 int ff_jni_exception_get_summary(JNIEnv *env, jthrowable exception, char **error, void *log_ctx)
 {
@@ -60,16 +60,16 @@ int ff_jni_exception_get_summary(JNIEnv *env, jthrowable exception, char **error
 
     AVBPrint bp;
 
-    char *name = NULL;
-    char *message = NULL;
+    char *name = ((void*)0);
+    char *message = ((void*)0);
 
-    jclass class_class = NULL;
-    jmethodID get_name_id = NULL;
+    jclass class_class = ((void*)0);
+    jmethodID get_name_id = ((void*)0);
 
-    jclass exception_class = NULL;
-    jmethodID get_message_id = NULL;
+    jclass exception_class = ((void*)0);
+    jmethodID get_message_id = ((void*)0);
 
-    jstring string = NULL;
+    jstring string = ((void*)0);
 
     av_bprint_init(&bp, 0, AV_BPRINT_SIZE_AUTOMATIC);
 
@@ -108,7 +108,7 @@ int ff_jni_exception_get_summary(JNIEnv *env, jthrowable exception, char **error
     if (string) {
         name = ff_jni_jstring_to_utf_chars(env, string, log_ctx);
         (*env)->DeleteLocalRef(env, string);
-        string = NULL;
+        string = ((void*)0);
     }
 
     get_message_id = (*env)->GetMethodID(env, exception_class, "getMessage", "()Ljava/lang/String;");
@@ -130,7 +130,7 @@ int ff_jni_exception_get_summary(JNIEnv *env, jthrowable exception, char **error
     if (string) {
         message = ff_jni_jstring_to_utf_chars(env, string, log_ctx);
         (*env)->DeleteLocalRef(env, string);
-        string = NULL;
+        string = ((void*)0);
     }
 
     if (name && message) {

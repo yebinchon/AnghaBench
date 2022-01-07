@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ size; int* data; } ;
-typedef  TYPE_2__ vec_on_state_changed ;
+typedef TYPE_2__ vec_on_state_changed ;
 struct TYPE_3__ {TYPE_2__ on_state_changed; } ;
-struct ctx {scalar_t__ last_state_idx; int /*<<< orphan*/  wait; int /*<<< orphan*/  player; TYPE_1__ report; } ;
-typedef  enum vlc_player_state { ____Placeholder_vlc_player_state } vlc_player_state ;
+struct ctx {scalar_t__ last_state_idx; int wait; int player; TYPE_1__ report; } ;
+typedef enum vlc_player_state { ____Placeholder_vlc_player_state } vlc_player_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  vlc_player_CondWait (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int vlc_player_CondWait (int ,int *) ;
 
 __attribute__((used)) static inline void
 wait_state(struct ctx *ctx, enum vlc_player_state state)

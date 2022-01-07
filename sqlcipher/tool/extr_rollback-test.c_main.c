@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3 ;
 
-/* Variables and functions */
- int atoi (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/ * openDb (char*) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  runSql (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  sqlite3_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- int /*<<< orphan*/  usage (char*) ; 
- char* zReply ; 
+
+
+
+typedef int sqlite3 ;
+
+
+ int atoi (char*) ;
+ int exit (int) ;
+ int fprintf (int ,char*,...) ;
+ int * openDb (char*) ;
+ int printf (char*) ;
+ int runSql (int *,char*) ;
+ int sprintf (char*,char*,int) ;
+ int sqlite3_close (int *) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ int usage (char*) ;
+ char* zReply ;
 
 int main(int argc, char **argv){
   sqlite3 *db;
@@ -51,20 +51,20 @@ int main(int argc, char **argv){
         usage(argv[0]);
       }
     }
-    runSql(db, 
+    runSql(db,
        "BEGIN;"
        "CREATE TABLE t1(x INTEGER PRIMARY KEY, y);"
        "INSERT INTO t1(y) VALUES('abcdefghijklmnopqrstuvwxyz');"
        "INSERT INTO t1(y) VALUES('abcdefghijklmnopqrstuvwxyz');"
-       "INSERT INTO t1(y) SELECT y FROM t1;" /* 4 */
-       "INSERT INTO t1(y) SELECT y FROM t1;" /* 8 */
-       "INSERT INTO t1(y) SELECT y FROM t1;" /* 16 */
-       "INSERT INTO t1(y) SELECT y FROM t1;" /* 32 */
-       "INSERT INTO t1(y) SELECT y FROM t1;" /* 64 */
-       "INSERT INTO t1(y) SELECT y FROM t1;" /* 128 */
-       "INSERT INTO t1(y) SELECT y FROM t1;" /* 256 */
-       "INSERT INTO t1(y) SELECT y FROM t1;" /* 512 */
-       "INSERT INTO t1(y) SELECT y FROM t1;" /* 1024 */
+       "INSERT INTO t1(y) SELECT y FROM t1;"
+       "INSERT INTO t1(y) SELECT y FROM t1;"
+       "INSERT INTO t1(y) SELECT y FROM t1;"
+       "INSERT INTO t1(y) SELECT y FROM t1;"
+       "INSERT INTO t1(y) SELECT y FROM t1;"
+       "INSERT INTO t1(y) SELECT y FROM t1;"
+       "INSERT INTO t1(y) SELECT y FROM t1;"
+       "INSERT INTO t1(y) SELECT y FROM t1;"
+       "INSERT INTO t1(y) SELECT y FROM t1;"
        "UPDATE t1 SET y=(y || x);"
        "CREATE INDEX t1y ON t1(y);"
        "COMMIT;"
@@ -77,7 +77,7 @@ int main(int argc, char **argv){
       fprintf(stderr, "Integrity check: %s\n", zReply);
       exit(1);
     }
-    runSql(db, 
+    runSql(db,
       "SELECT count(*) FROM t1 WHERE y<>('abcdefghijklmnopqrstuvwxyz' || x)"
     );
     if( strcmp(zReply, "0")!=0 ){

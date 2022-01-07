@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  AF_NETLINK ; 
- int EINVAL ; 
- int SD_LISTEN_FDS_START ; 
- int /*<<< orphan*/  SOCK_RAW ; 
- scalar_t__ sd_is_socket (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int sd_listen_fds (int) ; 
+ int AF_NETLINK ;
+ int EINVAL ;
+ int SD_LISTEN_FDS_START ;
+ int SOCK_RAW ;
+ scalar_t__ sd_is_socket (int,int ,int ,int) ;
+ int sd_listen_fds (int) ;
 
 __attribute__((used)) static int systemd_netlink_fd(void) {
         int n, fd, rtnl_fd = -EINVAL;
 
-        n = sd_listen_fds(true);
+        n = sd_listen_fds(1);
         if (n <= 0)
                 return -EINVAL;
 

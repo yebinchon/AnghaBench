@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ sqlite3_xauth ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
+
+
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+typedef scalar_t__ sqlite3_xauth ;
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
 struct TYPE_19__ {int flags; scalar_t__ xAuth; } ;
-typedef  TYPE_3__ sqlite3 ;
-typedef  int /*<<< orphan*/  sNC ;
+typedef TYPE_3__ sqlite3 ;
+typedef int sNC ;
 struct TYPE_21__ {TYPE_4__* pParse; } ;
 struct TYPE_20__ {int rc; TYPE_2__* pNewTrigger; scalar_t__ nErr; TYPE_1__* pNewTable; } ;
-struct TYPE_18__ {int /*<<< orphan*/  pTabSchema; } ;
+struct TYPE_18__ {int pTabSchema; } ;
 struct TYPE_17__ {scalar_t__ pSelect; } ;
-typedef  TYPE_4__ Parse ;
-typedef  TYPE_5__ NameContext ;
+typedef TYPE_4__ Parse ;
+typedef TYPE_5__ NameContext ;
 
-/* Variables and functions */
- int SQLITE_LegacyAlter ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  UNUSED_PARAMETER (int) ; 
- int /*<<< orphan*/  memset (TYPE_5__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  renameColumnParseError (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_4__*) ; 
- int /*<<< orphan*/  renameParseCleanup (TYPE_4__*) ; 
- int renameParseSql (TYPE_4__*,char const*,int,TYPE_3__*,char const*,int) ; 
- int renameResolveTrigger (TYPE_4__*,char const*) ; 
- int sqlite3FindDbName (TYPE_3__*,char const*) ; 
- int sqlite3SchemaToIndex (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3SelectPrep (TYPE_4__*,scalar_t__,TYPE_5__*) ; 
- TYPE_3__* sqlite3_context_db_handle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_int (int /*<<< orphan*/ *,int) ; 
- int sqlite3_value_int (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+ int SQLITE_LegacyAlter ;
+ int SQLITE_OK ;
+ int UNUSED_PARAMETER (int) ;
+ int memset (TYPE_5__*,int ,int) ;
+ int renameColumnParseError (int *,int,int *,int *,TYPE_4__*) ;
+ int renameParseCleanup (TYPE_4__*) ;
+ int renameParseSql (TYPE_4__*,char const*,int,TYPE_3__*,char const*,int) ;
+ int renameResolveTrigger (TYPE_4__*,char const*) ;
+ int sqlite3FindDbName (TYPE_3__*,char const*) ;
+ int sqlite3SchemaToIndex (TYPE_3__*,int ) ;
+ int sqlite3SelectPrep (TYPE_4__*,scalar_t__,TYPE_5__*) ;
+ TYPE_3__* sqlite3_context_db_handle (int *) ;
+ int sqlite3_result_int (int *,int) ;
+ int sqlite3_value_int (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
 
 __attribute__((used)) static void renameTableTest(
   sqlite3_context *context,
@@ -56,10 +56,10 @@ __attribute__((used)) static void renameTableTest(
   int bTemp = sqlite3_value_int(argv[4]);
   int isLegacy = (db->flags & SQLITE_LegacyAlter);
 
-#ifndef SQLITE_OMIT_AUTHORIZATION
+
   sqlite3_xauth xAuth = db->xAuth;
   db->xAuth = 0;
-#endif
+
 
   UNUSED_PARAMETER(NotUsed);
   if( zDb && zInput ){
@@ -93,7 +93,7 @@ __attribute__((used)) static void renameTableTest(
     renameParseCleanup(&sParse);
   }
 
-#ifndef SQLITE_OMIT_AUTHORIZATION
+
   db->xAuth = xAuth;
-#endif
+
 }

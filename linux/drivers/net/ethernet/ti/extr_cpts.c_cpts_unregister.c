@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cpts {int /*<<< orphan*/  refclk; int /*<<< orphan*/  txq; int /*<<< orphan*/ * clock; } ;
 
-/* Variables and functions */
- scalar_t__ WARN_ON (int) ; 
- int /*<<< orphan*/  clk_disable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  control ; 
- int /*<<< orphan*/  cpts_write32 (struct cpts*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  int_enable ; 
- int /*<<< orphan*/  ptp_clock_unregister (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skb_queue_purge (int /*<<< orphan*/ *) ; 
+
+
+
+struct cpts {int refclk; int txq; int * clock; } ;
+
+
+ scalar_t__ WARN_ON (int) ;
+ int clk_disable (int ) ;
+ int control ;
+ int cpts_write32 (struct cpts*,int ,int ) ;
+ int int_enable ;
+ int ptp_clock_unregister (int *) ;
+ int skb_queue_purge (int *) ;
 
 void cpts_unregister(struct cpts *cpts)
 {
-	if (WARN_ON(!cpts->clock))
-		return;
+ if (WARN_ON(!cpts->clock))
+  return;
 
-	ptp_clock_unregister(cpts->clock);
-	cpts->clock = NULL;
+ ptp_clock_unregister(cpts->clock);
+ cpts->clock = ((void*)0);
 
-	cpts_write32(cpts, 0, int_enable);
-	cpts_write32(cpts, 0, control);
+ cpts_write32(cpts, 0, int_enable);
+ cpts_write32(cpts, 0, control);
 
-	/* Drop all packet */
-	skb_queue_purge(&cpts->txq);
 
-	clk_disable(cpts->refclk);
+ skb_queue_purge(&cpts->txq);
+
+ clk_disable(cpts->refclk);
 }

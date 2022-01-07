@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  peer_r_key; int /*<<< orphan*/  peer_i_key; int /*<<< orphan*/  peer_enc_size; int /*<<< orphan*/  peer_auth_req; int /*<<< orphan*/  peer_oob_flag; int /*<<< orphan*/  peer_io_caps; } ;
-typedef  TYPE_1__ tSMP_CB ;
-typedef  int /*<<< orphan*/  UINT8 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SMP_TRACE_DEBUG (char*) ; 
- int /*<<< orphan*/  UINT8_TO_STREAM (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int peer_r_key; int peer_i_key; int peer_enc_size; int peer_auth_req; int peer_oob_flag; int peer_io_caps; } ;
+typedef TYPE_1__ tSMP_CB ;
+typedef int UINT8 ;
+
+
+ int SMP_TRACE_DEBUG (char*) ;
+ int UINT8_TO_STREAM (int *,int ) ;
 
 void smp_concatenate_peer( tSMP_CB *p_cb, UINT8 **p_data, UINT8 op_code)
 {
-    UINT8   *p = *p_data;
+    UINT8 *p = *p_data;
 
     SMP_TRACE_DEBUG ("smp_concatenate_peer \n");
     UINT8_TO_STREAM(p, op_code);

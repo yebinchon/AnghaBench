@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  data ;
-struct TYPE_3__ {int /*<<< orphan*/  sock; } ;
-typedef  TYPE_1__ TCP_Client_Connection ;
 
-/* Variables and functions */
- int read_TCP_packet (int /*<<< orphan*/ ,int*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int data ;
+struct TYPE_3__ {int sock; } ;
+typedef TYPE_1__ TCP_Client_Connection ;
+
+
+ int read_TCP_packet (int ,int*,int) ;
 
 __attribute__((used)) static int socks5_read_handshake_response(TCP_Client_Connection *TCP_conn)
 {
@@ -27,7 +27,7 @@ __attribute__((used)) static int socks5_read_handshake_response(TCP_Client_Conne
     if (ret == -1)
         return 0;
 
-    if (data[0] == 5 && data[1] == 0) // FIXME magic numbers
+    if (data[0] == 5 && data[1] == 0)
         return 1;
 
     return -1;

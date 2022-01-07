@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char u8 ;
-typedef  int u32 ;
-typedef  char u16 ;
-typedef  int /*<<< orphan*/  result_struct ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MappedMemoryAddMatch (int,char,int,int /*<<< orphan*/ *,int*) ; 
- char MappedMemoryReadByte (int) ; 
- char MappedMemoryReadWord (int) ; 
-#define  SEARCHREL16BIT 130 
-#define  SEARCHREL8BIT 129 
-#define  SEARCHSTRING 128 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- char* strdup (char const*) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- char* strtok (char*,char*) ; 
- int strtoul (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef char u8 ;
+typedef int u32 ;
+typedef char u16 ;
+typedef int result_struct ;
+
+
+ int MappedMemoryAddMatch (int,char,int,int *,int*) ;
+ char MappedMemoryReadByte (int) ;
+ char MappedMemoryReadWord (int) ;
+
+
+
+ int free (char*) ;
+ scalar_t__ malloc (int) ;
+ int strcpy (char*,char const*) ;
+ char* strdup (char const*) ;
+ int strlen (char const*) ;
+ char* strtok (char*,char*) ;
+ int strtoul (char*,int *,int ) ;
 
 __attribute__((used)) static int SearchString(u32 startaddr, u32 endaddr, int searchtype,
                         const char *searchstr, result_struct *results,
                         u32 *maxresults)
 {
-   u8 *buf=NULL;
-   u32 *buf32=NULL;
+   u8 *buf=((void*)0);
+   u32 *buf32=((void*)0);
    u32 buflen=0;
    u32 counter;
    u32 addr;
@@ -43,28 +43,28 @@ __attribute__((used)) static int SearchString(u32 startaddr, u32 endaddr, int se
 
    buflen=(u32)strlen(searchstr);
 
-   if ((buf32=(u32 *)malloc(buflen*sizeof(u32))) == NULL)
+   if ((buf32=(u32 *)malloc(buflen*sizeof(u32))) == ((void*)0))
       return 0;
 
    buf = (u8 *)buf32;
 
-   // Copy string to buffer
+
    switch (searchtype & 0x70)
    {
-      case SEARCHSTRING:
+      case 128:
          strcpy((char *)buf, searchstr);
          break;
-      case SEARCHREL8BIT:
-      case SEARCHREL16BIT:
+      case 129:
+      case 130:
       {
          char *text;
          char *searchtext=strdup(searchstr);
 
-         // Calculate buffer length and read values into table
+
          buflen = 0;
-         for (text=strtok((char *)searchtext, " ,"); text != NULL; text=strtok(NULL, " ,"))
+         for (text=strtok((char *)searchtext, " ,"); text != ((void*)0); text=strtok(((void*)0), " ,"))
          {
-            buf32[buflen] = strtoul(text, NULL, 0);
+            buf32[buflen] = strtoul(text, ((void*)0), 0);
             buflen++;
          }
          free(searchtext);
@@ -78,10 +78,10 @@ __attribute__((used)) static int SearchString(u32 startaddr, u32 endaddr, int se
 
    for (;;)
    {
-      // Fetch byte/word/etc.
+
       switch (searchtype & 0x70)
       {
-         case SEARCHSTRING:
+         case 128:
          {
             u8 val = MappedMemoryReadByte(addr);
             addr++;
@@ -96,7 +96,7 @@ __attribute__((used)) static int SearchString(u32 startaddr, u32 endaddr, int se
                counter = 0;
             break;
          }
-         case SEARCHREL8BIT:
+         case 129:
          {
             int diff;
             u32 j;
@@ -105,13 +105,13 @@ __attribute__((used)) static int SearchString(u32 startaddr, u32 endaddr, int se
 
             for (j = 1; j < buflen; j++)
             {
-               // grab the next value
+
                val2 = MappedMemoryReadByte(addr+j);
 
-               // figure out the diff
+
                diff = (int)val2 - (int)val;
 
-               // see if there's a match
+
                if (((int)buf32[j] - (int)buf32[j-1]) != diff)
                   break;
 
@@ -125,7 +125,7 @@ __attribute__((used)) static int SearchString(u32 startaddr, u32 endaddr, int se
 
             break;
          }
-         case SEARCHREL16BIT:
+         case 130:
          {
             int diff;
             u32 j;
@@ -134,13 +134,13 @@ __attribute__((used)) static int SearchString(u32 startaddr, u32 endaddr, int se
 
             for (j = 1; j < buflen; j++)
             {
-               // grab the next value
+
                val2 = MappedMemoryReadWord(addr+(j*2));
 
-               // figure out the diff
+
                diff = (int)val2 - (int)val;
 
-               // see if there's a match
+
                if (((int)buf32[j] - (int)buf32[j-1]) != diff)
                   break;
 

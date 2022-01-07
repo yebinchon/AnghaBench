@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ kgdb_break_asap ; 
- int /*<<< orphan*/  kgdb_breakpoint () ; 
- int /*<<< orphan*/  pr_crit (char*) ; 
+ scalar_t__ kgdb_break_asap ;
+ int kgdb_breakpoint () ;
+ int pr_crit (char*) ;
 
 __attribute__((used)) static void kgdb_initial_breakpoint(void)
 {
-	kgdb_break_asap = 0;
+ kgdb_break_asap = 0;
 
-	pr_crit("Waiting for connection from remote gdb...\n");
-	kgdb_breakpoint();
+ pr_crit("Waiting for connection from remote gdb...\n");
+ kgdb_breakpoint();
 }

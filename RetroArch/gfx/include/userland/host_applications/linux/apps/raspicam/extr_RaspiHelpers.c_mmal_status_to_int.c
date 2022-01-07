@@ -1,35 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int MMAL_STATUS_T ;
 
-/* Variables and functions */
-#define  MMAL_EAGAIN 142 
-#define  MMAL_ECONFIG 141 
-#define  MMAL_ECORRUPT 140 
-#define  MMAL_EFAULT 139 
-#define  MMAL_EINVAL 138 
-#define  MMAL_EIO 137 
-#define  MMAL_EISCONN 136 
-#define  MMAL_ENOENT 135 
-#define  MMAL_ENOMEM 134 
-#define  MMAL_ENOSPC 133 
-#define  MMAL_ENOSYS 132 
-#define  MMAL_ENOTCONN 131 
-#define  MMAL_ENOTREADY 130 
-#define  MMAL_ENXIO 129 
-#define  MMAL_ESPIPE 128 
- int MMAL_SUCCESS ; 
- int /*<<< orphan*/  vcos_log_error (char*) ; 
+
+
+
+typedef int MMAL_STATUS_T ;
+ int MMAL_SUCCESS ;
+ int vcos_log_error (char*) ;
 
 int mmal_status_to_int(MMAL_STATUS_T status)
 {
@@ -39,49 +22,49 @@ int mmal_status_to_int(MMAL_STATUS_T status)
    {
       switch (status)
       {
-      case MMAL_ENOMEM :
+      case 134 :
          vcos_log_error("Out of memory");
          break;
-      case MMAL_ENOSPC :
+      case 133 :
          vcos_log_error("Out of resources (other than memory)");
          break;
-      case MMAL_EINVAL:
+      case 138:
          vcos_log_error("Argument is invalid");
          break;
-      case MMAL_ENOSYS :
+      case 132 :
          vcos_log_error("Function not implemented");
          break;
-      case MMAL_ENOENT :
+      case 135 :
          vcos_log_error("No such file or directory");
          break;
-      case MMAL_ENXIO :
+      case 129 :
          vcos_log_error("No such device or address");
          break;
-      case MMAL_EIO :
+      case 137 :
          vcos_log_error("I/O error");
          break;
-      case MMAL_ESPIPE :
+      case 128 :
          vcos_log_error("Illegal seek");
          break;
-      case MMAL_ECORRUPT :
+      case 140 :
          vcos_log_error("Data is corrupt \attention FIXME: not POSIX");
          break;
-      case MMAL_ENOTREADY :
+      case 130 :
          vcos_log_error("Component is not ready \attention FIXME: not POSIX");
          break;
-      case MMAL_ECONFIG :
+      case 141 :
          vcos_log_error("Component is not configured \attention FIXME: not POSIX");
          break;
-      case MMAL_EISCONN :
+      case 136 :
          vcos_log_error("Port is already connected ");
          break;
-      case MMAL_ENOTCONN :
+      case 131 :
          vcos_log_error("Port is disconnected");
          break;
-      case MMAL_EAGAIN :
+      case 142 :
          vcos_log_error("Resource temporarily unavailable. Try again later");
          break;
-      case MMAL_EFAULT :
+      case 139 :
          vcos_log_error("Bad address");
          break;
       default :

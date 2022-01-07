@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  rmt_item32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ESP_LOG_INFO ; 
- int NEC_DATA_ITEM_NUM ; 
- int /*<<< orphan*/  NEC_TAG ; 
- int RMT_TX_CHANNEL ; 
- int RMT_TX_DATA_NUM ; 
- int /*<<< orphan*/  esp_log_level_set (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- scalar_t__ malloc (size_t) ; 
- int /*<<< orphan*/  memset (void*,int /*<<< orphan*/ ,size_t) ; 
- int nec_build_items (int,int /*<<< orphan*/ *,int,int,int) ; 
- int /*<<< orphan*/  nec_tx_init () ; 
- int /*<<< orphan*/  portMAX_DELAY ; 
- int portTICK_PERIOD_MS ; 
- int /*<<< orphan*/  rmt_wait_tx_done (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rmt_write_items (int,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  vTaskDelay (int) ; 
- int /*<<< orphan*/  vTaskDelete (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint16_t ;
+typedef int rmt_item32_t ;
+
+
+ int ESP_LOGI (int ,char*) ;
+ int ESP_LOG_INFO ;
+ int NEC_DATA_ITEM_NUM ;
+ int NEC_TAG ;
+ int RMT_TX_CHANNEL ;
+ int RMT_TX_DATA_NUM ;
+ int esp_log_level_set (int ,int ) ;
+ int free (int *) ;
+ scalar_t__ malloc (size_t) ;
+ int memset (void*,int ,size_t) ;
+ int nec_build_items (int,int *,int,int,int) ;
+ int nec_tx_init () ;
+ int portMAX_DELAY ;
+ int portTICK_PERIOD_MS ;
+ int rmt_wait_tx_done (int,int ) ;
+ int rmt_write_items (int,int *,int,int) ;
+ int vTaskDelay (int) ;
+ int vTaskDelete (int *) ;
 
 __attribute__((used)) static void rmt_example_nec_tx_task(void *arg)
 {
@@ -45,14 +45,14 @@ __attribute__((used)) static void rmt_example_nec_tx_task(void *arg)
     for(;;) {
         ESP_LOGI(NEC_TAG, "RMT TX DATA");
         size_t size = (sizeof(rmt_item32_t) * NEC_DATA_ITEM_NUM * nec_tx_num);
-        //each item represent a cycle of waveform.
+
         rmt_item32_t* item = (rmt_item32_t*) malloc(size);
         int item_num = NEC_DATA_ITEM_NUM * nec_tx_num;
         memset((void*) item, 0, size);
         int i, offset = 0;
         while(1) {
-            //To build a series of waveforms.
-            i = nec_build_items(channel, item + offset, item_num - offset, ((~addr) << 8) | addr, ((~cmd) << 8) |  cmd);
+
+            i = nec_build_items(channel, item + offset, item_num - offset, ((~addr) << 8) | addr, ((~cmd) << 8) | cmd);
             if(i < 0) {
                 break;
             }
@@ -60,13 +60,13 @@ __attribute__((used)) static void rmt_example_nec_tx_task(void *arg)
             addr++;
             offset += i;
         }
-        //To send data according to the waveform items.
-        rmt_write_items(channel, item, item_num, true);
-        //Wait until sending is done.
+
+        rmt_write_items(channel, item, item_num, 1);
+
         rmt_wait_tx_done(channel, portMAX_DELAY);
-        //before we free the data, make sure sending is already done.
+
         free(item);
         vTaskDelay(2000 / portTICK_PERIOD_MS);
     }
-    vTaskDelete(NULL);
+    vTaskDelete(((void*)0));
 }

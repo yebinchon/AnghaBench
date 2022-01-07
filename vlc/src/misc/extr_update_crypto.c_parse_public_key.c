@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_6__ {int* hashed_data; int* unhashed_data; } ;
 struct TYPE_7__ {TYPE_1__ v4; } ;
-struct TYPE_9__ {int version; TYPE_2__ specific; int /*<<< orphan*/  issuer_longid; } ;
-struct TYPE_8__ {int* psz_username; TYPE_4__ sig; int /*<<< orphan*/  key; } ;
-typedef  TYPE_3__ public_key_t ;
+struct TYPE_9__ {int version; TYPE_2__ specific; int issuer_longid; } ;
+struct TYPE_8__ {int* psz_username; TYPE_4__ sig; int key; } ;
+typedef TYPE_3__ public_key_t ;
 
-/* Variables and functions */
- int PUBLIC_KEY_FOUND ; 
-#define  PUBLIC_KEY_PACKET 130 
- int SIGNATURE_FOUND ; 
-#define  SIGNATURE_PACKET 129 
- int USER_ID_FOUND ; 
-#define  USER_ID_PACKET 128 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  free (int*) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ ,int const*,int) ; 
- int /*<<< orphan*/  memcpy (int*,int const*,int) ; 
- int packet_header_len (int /*<<< orphan*/ ) ; 
- int packet_type (int const) ; 
- int parse_public_key_packet (int /*<<< orphan*/ *,int const*,int) ; 
- int parse_signature_packet (TYPE_4__*,int const*,int) ; 
- int pgp_unarmor (char*,size_t,int*,size_t) ; 
- int scalar_number (int const*,int) ; 
+
+ int PUBLIC_KEY_FOUND ;
+
+ int SIGNATURE_FOUND ;
+
+ int USER_ID_FOUND ;
+
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int free (int*) ;
+ scalar_t__ malloc (int) ;
+ int memcmp (int ,int const*,int) ;
+ int memcpy (int*,int const*,int) ;
+ int packet_header_len (int ) ;
+ int packet_type (int const) ;
+ int parse_public_key_packet (int *,int const*,int) ;
+ int parse_signature_packet (TYPE_4__*,int const*,int) ;
+ int pgp_unarmor (char*,size_t,int*,size_t) ;
+ int scalar_number (int const*,int) ;
 
 int parse_public_key( const uint8_t *p_key_data, size_t i_key_len,
                       public_key_t *p_key, const uint8_t *p_sig_issuer )
@@ -49,18 +49,18 @@ int parse_public_key( const uint8_t *p_key_data, size_t i_key_len,
     const uint8_t *max_pos = pos + i_key_len;
 
     int i_status = 0;
-#define PUBLIC_KEY_FOUND    0x01
-#define USER_ID_FOUND       0x02
-#define SIGNATURE_FOUND     0X04
 
-    uint8_t *p_key_unarmored = NULL;
 
-    p_key->psz_username = NULL;
-    p_key->sig.specific.v4.hashed_data = NULL;
-    p_key->sig.specific.v4.unhashed_data = NULL;
+
+
+    uint8_t *p_key_unarmored = ((void*)0);
+
+    p_key->psz_username = ((void*)0);
+    p_key->sig.specific.v4.hashed_data = ((void*)0);
+    p_key->sig.specific.v4.unhashed_data = ((void*)0);
 
     if( !( *pos & 0x80 ) )
-    {   /* first byte is ASCII, unarmoring */
+    {
         p_key_unarmored = (uint8_t*)malloc( i_key_len );
         if( !p_key_unarmored )
             return VLC_ENOMEM;
@@ -94,14 +94,14 @@ int parse_public_key( const uint8_t *p_key_data, size_t i_key_len,
 
         switch( i_type )
         {
-            case PUBLIC_KEY_PACKET:
-                i_status |= PUBLIC_KEY_FOUND;
+            case 130:
+                i_status |= 0x01;
                 if( parse_public_key_packet( &p_key->key, pos, i_packet_len ) != VLC_SUCCESS )
                     goto error;
                 break;
 
-            case SIGNATURE_PACKET: /* we accept only v4 signatures here */
-                if( i_status & SIGNATURE_FOUND || !p_sig_issuer )
+            case 129:
+                if( i_status & 0X04 || !p_sig_issuer )
                     break;
                 int i_ret = parse_signature_packet( &p_key->sig, pos,
                                                     i_packet_len );
@@ -113,18 +113,18 @@ int parse_public_key( const uint8_t *p_key_data, size_t i_key_len,
                     {
                         free( p_key->sig.specific.v4.hashed_data );
                         free( p_key->sig.specific.v4.unhashed_data );
-                        p_key->sig.specific.v4.hashed_data = NULL;
-                        p_key->sig.specific.v4.unhashed_data = NULL;
+                        p_key->sig.specific.v4.hashed_data = ((void*)0);
+                        p_key->sig.specific.v4.unhashed_data = ((void*)0);
                         break;
                     }
-                    i_status |= SIGNATURE_FOUND;
+                    i_status |= 0X04;
                 }
                 break;
 
-            case USER_ID_PACKET:
-                if( p_key->psz_username ) /* save only the first User ID */
+            case 128:
+                if( p_key->psz_username )
                     break;
-                i_status |= USER_ID_FOUND;
+                i_status |= 0x02;
                 p_key->psz_username = (uint8_t*)malloc( i_packet_len + 1);
                 if( !p_key->psz_username )
                     goto error;
@@ -140,10 +140,10 @@ int parse_public_key( const uint8_t *p_key_data, size_t i_key_len,
     }
     free( p_key_unarmored );
 
-    if( !( i_status & ( PUBLIC_KEY_FOUND | USER_ID_FOUND ) ) )
+    if( !( i_status & ( 0x01 | 0x02 ) ) )
         return VLC_EGENERIC;
 
-    if( p_sig_issuer && !( i_status & SIGNATURE_FOUND ) )
+    if( p_sig_issuer && !( i_status & 0X04 ) )
         return VLC_EGENERIC;
 
     return VLC_SUCCESS;

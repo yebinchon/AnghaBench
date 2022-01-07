@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UnitDependencyMask ;
-typedef  int /*<<< orphan*/  UnitDependency ;
-typedef  int /*<<< orphan*/  Unit ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int unit_add_dependency (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UnitDependencyMask ;
+typedef int UnitDependency ;
+typedef int Unit ;
+
+
+ int assert (int *) ;
+ int unit_add_dependency (int *,int ,int *,int,int ) ;
 
 int unit_add_two_dependencies(Unit *u, UnitDependency d, UnitDependency e, Unit *other, bool add_reference, UnitDependencyMask mask) {
         int r;

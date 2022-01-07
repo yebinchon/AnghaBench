@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nk_context {int dummy; } ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
+typedef int GLFWwindow ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_KEY_BACKSPACE ; 
- int /*<<< orphan*/  GLFW_KEY_C ; 
- int /*<<< orphan*/  GLFW_KEY_DELETE ; 
- int /*<<< orphan*/  GLFW_KEY_DOWN ; 
- int /*<<< orphan*/  GLFW_KEY_E ; 
- int /*<<< orphan*/  GLFW_KEY_ENTER ; 
- int /*<<< orphan*/  GLFW_KEY_LEFT ; 
- int /*<<< orphan*/  GLFW_KEY_LEFT_CONTROL ; 
- int /*<<< orphan*/  GLFW_KEY_P ; 
- int /*<<< orphan*/  GLFW_KEY_RIGHT ; 
- int /*<<< orphan*/  GLFW_KEY_RIGHT_CONTROL ; 
- int /*<<< orphan*/  GLFW_KEY_TAB ; 
- int /*<<< orphan*/  GLFW_KEY_UP ; 
- int /*<<< orphan*/  GLFW_KEY_X ; 
- int /*<<< orphan*/  GLFW_MOUSE_BUTTON_LEFT ; 
- int /*<<< orphan*/  GLFW_MOUSE_BUTTON_MIDDLE ; 
- int /*<<< orphan*/  GLFW_MOUSE_BUTTON_RIGHT ; 
- scalar_t__ GLFW_PRESS ; 
- int /*<<< orphan*/  NK_BUTTON_LEFT ; 
- int /*<<< orphan*/  NK_BUTTON_MIDDLE ; 
- int /*<<< orphan*/  NK_BUTTON_RIGHT ; 
- int /*<<< orphan*/  NK_KEY_BACKSPACE ; 
- int /*<<< orphan*/  NK_KEY_COPY ; 
- int /*<<< orphan*/  NK_KEY_CUT ; 
- int /*<<< orphan*/  NK_KEY_DEL ; 
- int /*<<< orphan*/  NK_KEY_DOWN ; 
- int /*<<< orphan*/  NK_KEY_ENTER ; 
- int /*<<< orphan*/  NK_KEY_LEFT ; 
- int /*<<< orphan*/  NK_KEY_PASTE ; 
- int /*<<< orphan*/  NK_KEY_RIGHT ; 
- int /*<<< orphan*/  NK_KEY_SHIFT ; 
- int /*<<< orphan*/  NK_KEY_TAB ; 
- int /*<<< orphan*/  NK_KEY_UP ; 
- int /*<<< orphan*/  glfwGetCursorPos (int /*<<< orphan*/ *,double*,double*) ; 
- scalar_t__ glfwGetKey (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ glfwGetMouseButton (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwPollEvents () ; 
- int /*<<< orphan*/  nk_input_begin (struct nk_context*) ; 
- int /*<<< orphan*/  nk_input_button (struct nk_context*,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  nk_input_end (struct nk_context*) ; 
- int /*<<< orphan*/  nk_input_key (struct nk_context*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  nk_input_motion (struct nk_context*,int,int) ; 
+
+ int GLFW_KEY_BACKSPACE ;
+ int GLFW_KEY_C ;
+ int GLFW_KEY_DELETE ;
+ int GLFW_KEY_DOWN ;
+ int GLFW_KEY_E ;
+ int GLFW_KEY_ENTER ;
+ int GLFW_KEY_LEFT ;
+ int GLFW_KEY_LEFT_CONTROL ;
+ int GLFW_KEY_P ;
+ int GLFW_KEY_RIGHT ;
+ int GLFW_KEY_RIGHT_CONTROL ;
+ int GLFW_KEY_TAB ;
+ int GLFW_KEY_UP ;
+ int GLFW_KEY_X ;
+ int GLFW_MOUSE_BUTTON_LEFT ;
+ int GLFW_MOUSE_BUTTON_MIDDLE ;
+ int GLFW_MOUSE_BUTTON_RIGHT ;
+ scalar_t__ GLFW_PRESS ;
+ int NK_BUTTON_LEFT ;
+ int NK_BUTTON_MIDDLE ;
+ int NK_BUTTON_RIGHT ;
+ int NK_KEY_BACKSPACE ;
+ int NK_KEY_COPY ;
+ int NK_KEY_CUT ;
+ int NK_KEY_DEL ;
+ int NK_KEY_DOWN ;
+ int NK_KEY_ENTER ;
+ int NK_KEY_LEFT ;
+ int NK_KEY_PASTE ;
+ int NK_KEY_RIGHT ;
+ int NK_KEY_SHIFT ;
+ int NK_KEY_TAB ;
+ int NK_KEY_UP ;
+ int glfwGetCursorPos (int *,double*,double*) ;
+ scalar_t__ glfwGetKey (int *,int ) ;
+ scalar_t__ glfwGetMouseButton (int *,int ) ;
+ int glfwPollEvents () ;
+ int nk_input_begin (struct nk_context*) ;
+ int nk_input_button (struct nk_context*,int ,int,int,int) ;
+ int nk_input_end (struct nk_context*) ;
+ int nk_input_key (struct nk_context*,int ,int) ;
+ int nk_input_motion (struct nk_context*,int,int) ;
 
 __attribute__((used)) static void
 pump_input(struct nk_context *ctx, GLFWwindow *win)

@@ -1,127 +1,127 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct acpi_video_device_attrib {int display_type; scalar_t__ bios_can_detect; scalar_t__ device_id_scheme; } ;
 struct TYPE_2__ {int crt; int tvout; int dvi; int lcd; int unknown; int bios; } ;
-struct acpi_video_device {unsigned long long device_id; int /*<<< orphan*/  entry; TYPE_1__ flags; int /*<<< orphan*/  switch_brightness_work; struct acpi_device* dev; struct acpi_video_bus* video; } ;
-struct acpi_video_bus {int /*<<< orphan*/  device_list_lock; int /*<<< orphan*/  video_device_list; } ;
-struct acpi_device {struct acpi_video_device* driver_data; int /*<<< orphan*/  handle; } ;
+struct acpi_video_device {unsigned long long device_id; int entry; TYPE_1__ flags; int switch_brightness_work; struct acpi_device* dev; struct acpi_video_bus* video; } ;
+struct acpi_video_bus {int device_list_lock; int video_device_list; } ;
+struct acpi_device {struct acpi_video_device* driver_data; int handle; } ;
 
-/* Variables and functions */
- scalar_t__ ACPI_FAILURE (int) ; 
- int /*<<< orphan*/  ACPI_VIDEO_CLASS ; 
- int /*<<< orphan*/  ACPI_VIDEO_DEVICE_NAME ; 
-#define  ACPI_VIDEO_DISPLAY_CRT 134 
-#define  ACPI_VIDEO_DISPLAY_DVI 133 
-#define  ACPI_VIDEO_DISPLAY_LCD 132 
-#define  ACPI_VIDEO_DISPLAY_LEGACY_MONITOR 131 
-#define  ACPI_VIDEO_DISPLAY_LEGACY_PANEL 130 
-#define  ACPI_VIDEO_DISPLAY_LEGACY_TV 129 
-#define  ACPI_VIDEO_DISPLAY_TV 128 
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_DELAYED_WORK (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  acpi_device_class (struct acpi_device*) ; 
- int /*<<< orphan*/  acpi_device_name (struct acpi_device*) ; 
- int acpi_evaluate_integer (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,unsigned long long*) ; 
- int /*<<< orphan*/  acpi_video_device_bind (struct acpi_video_bus*,struct acpi_video_device*) ; 
- int /*<<< orphan*/  acpi_video_device_find_cap (struct acpi_video_device*) ; 
- struct acpi_video_device_attrib* acpi_video_get_device_attr (struct acpi_video_bus*,unsigned long long) ; 
- int acpi_video_get_device_type (struct acpi_video_bus*,unsigned long long) ; 
- int /*<<< orphan*/  acpi_video_switch_brightness ; 
- scalar_t__ device_id_scheme ; 
- struct acpi_video_device* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ACPI_FAILURE (int) ;
+ int ACPI_VIDEO_CLASS ;
+ int ACPI_VIDEO_DEVICE_NAME ;
+
+
+
+
+
+
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int INIT_DELAYED_WORK (int *,int ) ;
+ int acpi_device_class (struct acpi_device*) ;
+ int acpi_device_name (struct acpi_device*) ;
+ int acpi_evaluate_integer (int ,char*,int *,unsigned long long*) ;
+ int acpi_video_device_bind (struct acpi_video_bus*,struct acpi_video_device*) ;
+ int acpi_video_device_find_cap (struct acpi_video_device*) ;
+ struct acpi_video_device_attrib* acpi_video_get_device_attr (struct acpi_video_bus*,unsigned long long) ;
+ int acpi_video_get_device_type (struct acpi_video_bus*,unsigned long long) ;
+ int acpi_video_switch_brightness ;
+ scalar_t__ device_id_scheme ;
+ struct acpi_video_device* kzalloc (int,int ) ;
+ int list_add_tail (int *,int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int strcpy (int ,int ) ;
 
 __attribute__((used)) static int
 acpi_video_bus_get_one_device(struct acpi_device *device,
-			      struct acpi_video_bus *video)
+         struct acpi_video_bus *video)
 {
-	unsigned long long device_id;
-	int status, device_type;
-	struct acpi_video_device *data;
-	struct acpi_video_device_attrib *attribute;
+ unsigned long long device_id;
+ int status, device_type;
+ struct acpi_video_device *data;
+ struct acpi_video_device_attrib *attribute;
 
-	status =
-	    acpi_evaluate_integer(device->handle, "_ADR", NULL, &device_id);
-	/* Some device omits _ADR, we skip them instead of fail */
-	if (ACPI_FAILURE(status))
-		return 0;
+ status =
+     acpi_evaluate_integer(device->handle, "_ADR", ((void*)0), &device_id);
 
-	data = kzalloc(sizeof(struct acpi_video_device), GFP_KERNEL);
-	if (!data)
-		return -ENOMEM;
+ if (ACPI_FAILURE(status))
+  return 0;
 
-	strcpy(acpi_device_name(device), ACPI_VIDEO_DEVICE_NAME);
-	strcpy(acpi_device_class(device), ACPI_VIDEO_CLASS);
-	device->driver_data = data;
+ data = kzalloc(sizeof(struct acpi_video_device), GFP_KERNEL);
+ if (!data)
+  return -ENOMEM;
 
-	data->device_id = device_id;
-	data->video = video;
-	data->dev = device;
-	INIT_DELAYED_WORK(&data->switch_brightness_work,
-			  acpi_video_switch_brightness);
+ strcpy(acpi_device_name(device), ACPI_VIDEO_DEVICE_NAME);
+ strcpy(acpi_device_class(device), ACPI_VIDEO_CLASS);
+ device->driver_data = data;
 
-	attribute = acpi_video_get_device_attr(video, device_id);
+ data->device_id = device_id;
+ data->video = video;
+ data->dev = device;
+ INIT_DELAYED_WORK(&data->switch_brightness_work,
+     acpi_video_switch_brightness);
 
-	if (attribute && (attribute->device_id_scheme || device_id_scheme)) {
-		switch (attribute->display_type) {
-		case ACPI_VIDEO_DISPLAY_CRT:
-			data->flags.crt = 1;
-			break;
-		case ACPI_VIDEO_DISPLAY_TV:
-			data->flags.tvout = 1;
-			break;
-		case ACPI_VIDEO_DISPLAY_DVI:
-			data->flags.dvi = 1;
-			break;
-		case ACPI_VIDEO_DISPLAY_LCD:
-			data->flags.lcd = 1;
-			break;
-		default:
-			data->flags.unknown = 1;
-			break;
-		}
-		if (attribute->bios_can_detect)
-			data->flags.bios = 1;
-	} else {
-		/* Check for legacy IDs */
-		device_type = acpi_video_get_device_type(video, device_id);
-		/* Ignore bits 16 and 18-20 */
-		switch (device_type & 0xffe2ffff) {
-		case ACPI_VIDEO_DISPLAY_LEGACY_MONITOR:
-			data->flags.crt = 1;
-			break;
-		case ACPI_VIDEO_DISPLAY_LEGACY_PANEL:
-			data->flags.lcd = 1;
-			break;
-		case ACPI_VIDEO_DISPLAY_LEGACY_TV:
-			data->flags.tvout = 1;
-			break;
-		default:
-			data->flags.unknown = 1;
-		}
-	}
+ attribute = acpi_video_get_device_attr(video, device_id);
 
-	acpi_video_device_bind(video, data);
-	acpi_video_device_find_cap(data);
+ if (attribute && (attribute->device_id_scheme || device_id_scheme)) {
+  switch (attribute->display_type) {
+  case 134:
+   data->flags.crt = 1;
+   break;
+  case 128:
+   data->flags.tvout = 1;
+   break;
+  case 133:
+   data->flags.dvi = 1;
+   break;
+  case 132:
+   data->flags.lcd = 1;
+   break;
+  default:
+   data->flags.unknown = 1;
+   break;
+  }
+  if (attribute->bios_can_detect)
+   data->flags.bios = 1;
+ } else {
 
-	mutex_lock(&video->device_list_lock);
-	list_add_tail(&data->entry, &video->video_device_list);
-	mutex_unlock(&video->device_list_lock);
+  device_type = acpi_video_get_device_type(video, device_id);
 
-	return status;
+  switch (device_type & 0xffe2ffff) {
+  case 131:
+   data->flags.crt = 1;
+   break;
+  case 130:
+   data->flags.lcd = 1;
+   break;
+  case 129:
+   data->flags.tvout = 1;
+   break;
+  default:
+   data->flags.unknown = 1;
+  }
+ }
+
+ acpi_video_device_bind(video, data);
+ acpi_video_device_find_cap(data);
+
+ mutex_lock(&video->device_list_lock);
+ list_add_tail(&data->entry, &video->video_device_list);
+ mutex_unlock(&video->device_list_lock);
+
+ return status;
 }

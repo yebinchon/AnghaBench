@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cx_dev {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  device_unregister (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  put_device (int /*<<< orphan*/ *) ; 
+
+
+
+struct cx_dev {int dev; } ;
+
+
+ int device_unregister (int *) ;
+ int put_device (int *) ;
 
 int cx_device_unregister(struct cx_dev *cx_dev)
 {
-	put_device(&cx_dev->dev);
-	device_unregister(&cx_dev->dev);
-	return 0;
+ put_device(&cx_dev->dev);
+ device_unregister(&cx_dev->dev);
+ return 0;
 }

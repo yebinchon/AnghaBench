@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FREE (int /*<<< orphan*/ *) ; 
- int MAXYYINT ; 
- int /*<<< orphan*/  code_file ; 
- int /*<<< orphan*/  done (int) ; 
- int /*<<< orphan*/  end_table () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int high ; 
- int /*<<< orphan*/  outline ; 
- int /*<<< orphan*/  output_int (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  output_newline () ; 
- int /*<<< orphan*/  start_int_table (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/ * table ; 
+ int FREE (int *) ;
+ int MAXYYINT ;
+ int code_file ;
+ int done (int) ;
+ int end_table () ;
+ int fprintf (int ,char*,int) ;
+ int high ;
+ int outline ;
+ int output_int (int ) ;
+ int output_newline () ;
+ int start_int_table (char*,int ) ;
+ int stderr ;
+ int * table ;
 
 __attribute__((used)) static void
 output_table(void)
@@ -34,9 +26,9 @@ output_table(void)
 
     if (high >= MAXYYINT)
     {
-	fprintf(stderr, "YYTABLESIZE: %ld\n", high);
-	fprintf(stderr, "Table is longer than %d elements.\n", MAXYYINT);
-	done(1);
+ fprintf(stderr, "YYTABLESIZE: %ld\n", high);
+ fprintf(stderr, "Table is longer than %d elements.\n", MAXYYINT);
+ done(1);
     }
 
     ++outline;
@@ -46,15 +38,15 @@ output_table(void)
     j = 10;
     for (i = 1; i <= high; i++)
     {
-	if (j >= 10)
-	{
-	    output_newline();
-	    j = 1;
-	}
-	else
-	    ++j;
+ if (j >= 10)
+ {
+     output_newline();
+     j = 1;
+ }
+ else
+     ++j;
 
-	output_int(table[i]);
+ output_int(table[i]);
     }
 
     end_table();

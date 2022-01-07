@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_28__   TYPE_6__ ;
-typedef  struct TYPE_27__   TYPE_5__ ;
-typedef  struct TYPE_26__   TYPE_4__ ;
-typedef  struct TYPE_25__   TYPE_3__ ;
-typedef  struct TYPE_24__   TYPE_2__ ;
-typedef  struct TYPE_23__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+typedef struct TYPE_28__ TYPE_6__ ;
+typedef struct TYPE_27__ TYPE_5__ ;
+typedef struct TYPE_26__ TYPE_4__ ;
+typedef struct TYPE_25__ TYPE_3__ ;
+typedef struct TYPE_24__ TYPE_2__ ;
+typedef struct TYPE_23__ TYPE_1__ ;
+
+
+typedef int u8 ;
 struct TYPE_24__ {scalar_t__ mallocFailed; } ;
-typedef  TYPE_2__ sqlite3 ;
-typedef  int /*<<< orphan*/  Vdbe ;
+typedef TYPE_2__ sqlite3 ;
+typedef int Vdbe ;
 struct TYPE_23__ {char* zToken; } ;
 struct TYPE_28__ {scalar_t__ op; TYPE_1__ u; } ;
 struct TYPE_27__ {int nArg; } ;
 struct TYPE_26__ {TYPE_3__* pParse; } ;
-struct TYPE_25__ {int /*<<< orphan*/  nErr; TYPE_2__* db; } ;
-typedef  TYPE_3__ Parse ;
-typedef  TYPE_4__ NameContext ;
-typedef  TYPE_5__ FuncDef ;
-typedef  TYPE_6__ Expr ;
+struct TYPE_25__ {int nErr; TYPE_2__* db; } ;
+typedef TYPE_3__ Parse ;
+typedef TYPE_4__ NameContext ;
+typedef TYPE_5__ FuncDef ;
+typedef TYPE_6__ Expr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OP_Expire ; 
- int /*<<< orphan*/  OP_Function ; 
- int /*<<< orphan*/  P4_FUNCDEF ; 
- int SQLITE_ATTACH ; 
- int SQLITE_OK ; 
- scalar_t__ TK_STRING ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memset (TYPE_4__*,int /*<<< orphan*/ ,int) ; 
- int resolveAttachExpr (TYPE_4__*,TYPE_6__*) ; 
- int sqlite3AuthCheck (TYPE_3__*,int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3ExprCode (TYPE_3__*,TYPE_6__*,int) ; 
- int /*<<< orphan*/  sqlite3ExprDelete (TYPE_2__*,TYPE_6__*) ; 
- int sqlite3GetTempRange (TYPE_3__*,int) ; 
- int /*<<< orphan*/ * sqlite3GetVdbe (TYPE_3__*) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp3 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  sqlite3VdbeChangeP4 (int /*<<< orphan*/ *,int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3VdbeChangeP5 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int OP_Expire ;
+ int OP_Function ;
+ int P4_FUNCDEF ;
+ int SQLITE_ATTACH ;
+ int SQLITE_OK ;
+ scalar_t__ TK_STRING ;
+ int assert (int) ;
+ int memset (TYPE_4__*,int ,int) ;
+ int resolveAttachExpr (TYPE_4__*,TYPE_6__*) ;
+ int sqlite3AuthCheck (TYPE_3__*,int,char*,int ,int ) ;
+ int sqlite3ExprCode (TYPE_3__*,TYPE_6__*,int) ;
+ int sqlite3ExprDelete (TYPE_2__*,TYPE_6__*) ;
+ int sqlite3GetTempRange (TYPE_3__*,int) ;
+ int * sqlite3GetVdbe (TYPE_3__*) ;
+ int sqlite3VdbeAddOp1 (int *,int ,int) ;
+ int sqlite3VdbeAddOp3 (int *,int ,int ,int,int) ;
+ int sqlite3VdbeChangeP4 (int *,int,char*,int ) ;
+ int sqlite3VdbeChangeP5 (int *,int ) ;
 
 __attribute__((used)) static void codeAttach(
-  Parse *pParse,       /* The parser context */
-  int type,            /* Either SQLITE_ATTACH or SQLITE_DETACH */
-  FuncDef const *pFunc,/* FuncDef wrapper for detachFunc() or attachFunc() */
-  Expr *pAuthArg,      /* Expression to pass to authorization callback */
-  Expr *pFilename,     /* Name of database file */
-  Expr *pDbname,       /* Name of the database to use internally */
-  Expr *pKey           /* Database key for encryption extension */
+  Parse *pParse,
+  int type,
+  FuncDef const *pFunc,
+  Expr *pAuthArg,
+  Expr *pFilename,
+  Expr *pDbname,
+  Expr *pKey
 ){
   int rc;
   NameContext sName;
@@ -68,7 +68,7 @@ __attribute__((used)) static void codeAttach(
   memset(&sName, 0, sizeof(NameContext));
   sName.pParse = pParse;
 
-  if( 
+  if(
       SQLITE_OK!=(rc = resolveAttachExpr(&sName, pFilename)) ||
       SQLITE_OK!=(rc = resolveAttachExpr(&sName, pDbname)) ||
       SQLITE_OK!=(rc = resolveAttachExpr(&sName, pKey))
@@ -77,7 +77,7 @@ __attribute__((used)) static void codeAttach(
     goto attach_end;
   }
 
-#ifndef SQLITE_OMIT_AUTHORIZATION
+
   if( pAuthArg ){
     char *zAuthArg;
     if( pAuthArg->op==TK_STRING ){
@@ -90,7 +90,7 @@ __attribute__((used)) static void codeAttach(
       goto attach_end;
     }
   }
-#endif /* SQLITE_OMIT_AUTHORIZATION */
+
 
 
   v = sqlite3GetVdbe(pParse);
@@ -106,13 +106,13 @@ __attribute__((used)) static void codeAttach(
     sqlite3VdbeChangeP5(v, (u8)(pFunc->nArg));
     sqlite3VdbeChangeP4(v, -1, (char *)pFunc, P4_FUNCDEF);
 
-    /* Code an OP_Expire. For an ATTACH statement, set P1 to true (expire this
-    ** statement only). For DETACH, set it to false (expire all existing
-    ** statements).
-    */
+
+
+
+
     sqlite3VdbeAddOp1(v, OP_Expire, (type==SQLITE_ATTACH));
   }
-  
+
 attach_end:
   sqlite3ExprDelete(db, pFilename);
   sqlite3ExprDelete(db, pDbname);

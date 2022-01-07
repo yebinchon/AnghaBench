@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Reg ;
-typedef  int /*<<< orphan*/  IRIns ;
-typedef  int /*<<< orphan*/  ASMState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CC_NE ; 
- int /*<<< orphan*/  CC_P ; 
- int /*<<< orphan*/  RSET_FPR ; 
- int /*<<< orphan*/  RSET_GPR ; 
- int /*<<< orphan*/  XO_CVTSI2SD ; 
- int /*<<< orphan*/  XO_CVTTSD2SI ; 
- int /*<<< orphan*/  XO_UCOMISD ; 
- int /*<<< orphan*/  XO_XORPS ; 
- int /*<<< orphan*/  asm_guardcc (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_rr (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ra_dest (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ra_scratch (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rset_exclude (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Reg ;
+typedef int IRIns ;
+typedef int ASMState ;
+
+
+ int CC_NE ;
+ int CC_P ;
+ int RSET_FPR ;
+ int RSET_GPR ;
+ int XO_CVTSI2SD ;
+ int XO_CVTTSD2SI ;
+ int XO_UCOMISD ;
+ int XO_XORPS ;
+ int asm_guardcc (int *,int ) ;
+ int emit_rr (int *,int ,int ,int ) ;
+ int ra_dest (int *,int *,int ) ;
+ int ra_scratch (int *,int ) ;
+ int rset_exclude (int ,int ) ;
 
 __attribute__((used)) static void asm_tointg(ASMState *as, IRIns *ir, Reg left)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static void asm_tointg(ASMState *as, IRIns *ir, Reg left)
   asm_guardcc(as, CC_NE);
   emit_rr(as, XO_UCOMISD, left, tmp);
   emit_rr(as, XO_CVTSI2SD, tmp, dest);
-  emit_rr(as, XO_XORPS, tmp, tmp);  /* Avoid partial register stall. */
+  emit_rr(as, XO_XORPS, tmp, tmp);
   emit_rr(as, XO_CVTTSD2SI, dest, left);
-  /* Can't fuse since left is needed twice. */
+
 }

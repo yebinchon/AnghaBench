@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  br_rsa_i32_private ; 
- int /*<<< orphan*/  br_rsa_i32_public ; 
- int /*<<< orphan*/  test_speed_rsa_inner (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int br_rsa_i32_private ;
+ int br_rsa_i32_public ;
+ int test_speed_rsa_inner (char*,int *,int *,int ) ;
 
 __attribute__((used)) static void
 test_speed_rsa_i32(void)
 {
-	test_speed_rsa_inner("RSA i32",
-		&br_rsa_i32_public, &br_rsa_i32_private, 0);
+ test_speed_rsa_inner("RSA i32",
+  &br_rsa_i32_public, &br_rsa_i32_private, 0);
 }

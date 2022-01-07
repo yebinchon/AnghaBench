@@ -1,143 +1,143 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  expr; struct TYPE_11__* next; } ;
-struct TYPE_10__ {int /*<<< orphan*/  type; } ;
-typedef  TYPE_1__ PgBenchValue ;
-typedef  int PgBenchFunction ;
-typedef  TYPE_2__ PgBenchExprLink ;
-typedef  int /*<<< orphan*/  CState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
-#define  PGBENCH_AND 130 
-#define  PGBENCH_CASE 129 
-#define  PGBENCH_OR 128 
- int /*<<< orphan*/  PGBT_NULL ; 
- int /*<<< orphan*/  coerceToBool (TYPE_1__*,int*) ; 
- int evaluateExpr (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ isLazyFunc (int) ; 
- int /*<<< orphan*/  setBoolValue (TYPE_1__*,int) ; 
- int /*<<< orphan*/  setNullValue (TYPE_1__*) ; 
- int /*<<< orphan*/  valueTruth (TYPE_1__*) ; 
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int expr; struct TYPE_11__* next; } ;
+struct TYPE_10__ {int type; } ;
+typedef TYPE_1__ PgBenchValue ;
+typedef int PgBenchFunction ;
+typedef TYPE_2__ PgBenchExprLink ;
+typedef int CState ;
+
+
+ int Assert (int) ;
+
+
+
+ int PGBT_NULL ;
+ int coerceToBool (TYPE_1__*,int*) ;
+ int evaluateExpr (int *,int ,TYPE_1__*) ;
+ scalar_t__ isLazyFunc (int) ;
+ int setBoolValue (TYPE_1__*,int) ;
+ int setNullValue (TYPE_1__*) ;
+ int valueTruth (TYPE_1__*) ;
 
 __attribute__((used)) static bool
 evalLazyFunc(CState *st,
-			 PgBenchFunction func, PgBenchExprLink *args, PgBenchValue *retval)
+    PgBenchFunction func, PgBenchExprLink *args, PgBenchValue *retval)
 {
-	PgBenchValue a1,
-				a2;
-	bool		ba1,
-				ba2;
+ PgBenchValue a1,
+    a2;
+ bool ba1,
+    ba2;
 
-	Assert(isLazyFunc(func) && args != NULL && args->next != NULL);
+ Assert(isLazyFunc(func) && args != ((void*)0) && args->next != ((void*)0));
 
-	/* args points to first condition */
-	if (!evaluateExpr(st, args->expr, &a1))
-		return false;
 
-	/* second condition for AND/OR and corresponding branch for CASE */
-	args = args->next;
+ if (!evaluateExpr(st, args->expr, &a1))
+  return 0;
 
-	switch (func)
-	{
-		case PGBENCH_AND:
-			if (a1.type == PGBT_NULL)
-			{
-				setNullValue(retval);
-				return true;
-			}
 
-			if (!coerceToBool(&a1, &ba1))
-				return false;
+ args = args->next;
 
-			if (!ba1)
-			{
-				setBoolValue(retval, false);
-				return true;
-			}
+ switch (func)
+ {
+  case 130:
+   if (a1.type == PGBT_NULL)
+   {
+    setNullValue(retval);
+    return 1;
+   }
 
-			if (!evaluateExpr(st, args->expr, &a2))
-				return false;
+   if (!coerceToBool(&a1, &ba1))
+    return 0;
 
-			if (a2.type == PGBT_NULL)
-			{
-				setNullValue(retval);
-				return true;
-			}
-			else if (!coerceToBool(&a2, &ba2))
-				return false;
-			else
-			{
-				setBoolValue(retval, ba2);
-				return true;
-			}
+   if (!ba1)
+   {
+    setBoolValue(retval, 0);
+    return 1;
+   }
 
-			return true;
+   if (!evaluateExpr(st, args->expr, &a2))
+    return 0;
 
-		case PGBENCH_OR:
+   if (a2.type == PGBT_NULL)
+   {
+    setNullValue(retval);
+    return 1;
+   }
+   else if (!coerceToBool(&a2, &ba2))
+    return 0;
+   else
+   {
+    setBoolValue(retval, ba2);
+    return 1;
+   }
 
-			if (a1.type == PGBT_NULL)
-			{
-				setNullValue(retval);
-				return true;
-			}
+   return 1;
 
-			if (!coerceToBool(&a1, &ba1))
-				return false;
+  case 128:
 
-			if (ba1)
-			{
-				setBoolValue(retval, true);
-				return true;
-			}
+   if (a1.type == PGBT_NULL)
+   {
+    setNullValue(retval);
+    return 1;
+   }
 
-			if (!evaluateExpr(st, args->expr, &a2))
-				return false;
+   if (!coerceToBool(&a1, &ba1))
+    return 0;
 
-			if (a2.type == PGBT_NULL)
-			{
-				setNullValue(retval);
-				return true;
-			}
-			else if (!coerceToBool(&a2, &ba2))
-				return false;
-			else
-			{
-				setBoolValue(retval, ba2);
-				return true;
-			}
+   if (ba1)
+   {
+    setBoolValue(retval, 1);
+    return 1;
+   }
 
-		case PGBENCH_CASE:
-			/* when true, execute branch */
-			if (valueTruth(&a1))
-				return evaluateExpr(st, args->expr, retval);
+   if (!evaluateExpr(st, args->expr, &a2))
+    return 0;
 
-			/* now args contains next condition or final else expression */
-			args = args->next;
+   if (a2.type == PGBT_NULL)
+   {
+    setNullValue(retval);
+    return 1;
+   }
+   else if (!coerceToBool(&a2, &ba2))
+    return 0;
+   else
+   {
+    setBoolValue(retval, ba2);
+    return 1;
+   }
 
-			/* final else case? */
-			if (args->next == NULL)
-				return evaluateExpr(st, args->expr, retval);
+  case 129:
 
-			/* no, another when, proceed */
-			return evalLazyFunc(st, PGBENCH_CASE, args, retval);
+   if (valueTruth(&a1))
+    return evaluateExpr(st, args->expr, retval);
 
-		default:
-			/* internal error, cannot get here */
-			Assert(0);
-			break;
-	}
-	return false;
+
+   args = args->next;
+
+
+   if (args->next == ((void*)0))
+    return evaluateExpr(st, args->expr, retval);
+
+
+   return evalLazyFunc(st, 129, args, retval);
+
+  default:
+
+   Assert(0);
+   break;
+ }
+ return 0;
 }

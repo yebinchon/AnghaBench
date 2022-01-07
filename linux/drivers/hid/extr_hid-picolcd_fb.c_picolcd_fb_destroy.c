@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct picolcd_fb_data {int /*<<< orphan*/ * picolcd; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct picolcd_fb_data {int * picolcd; } ;
 struct TYPE_2__ {scalar_t__ smem_start; } ;
 struct fb_info {TYPE_1__ fix; struct picolcd_fb_data* par; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WARN_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fb_deferred_io_cleanup (struct fb_info*) ; 
- int /*<<< orphan*/  framebuffer_release (struct fb_info*) ; 
- int /*<<< orphan*/  vfree (int /*<<< orphan*/ *) ; 
+
+ int WARN_ON (int ) ;
+ int fb_deferred_io_cleanup (struct fb_info*) ;
+ int framebuffer_release (struct fb_info*) ;
+ int vfree (int *) ;
 
 __attribute__((used)) static void picolcd_fb_destroy(struct fb_info *info)
 {
-	struct picolcd_fb_data *fbdata = info->par;
+ struct picolcd_fb_data *fbdata = info->par;
 
-	/* make sure no work is deferred */
-	fb_deferred_io_cleanup(info);
 
-	/* No thridparty should ever unregister our framebuffer! */
-	WARN_ON(fbdata->picolcd != NULL);
+ fb_deferred_io_cleanup(info);
 
-	vfree((u8 *)info->fix.smem_start);
-	framebuffer_release(info);
+
+ WARN_ON(fbdata->picolcd != ((void*)0));
+
+ vfree((u8 *)info->fix.smem_start);
+ framebuffer_release(info);
 }

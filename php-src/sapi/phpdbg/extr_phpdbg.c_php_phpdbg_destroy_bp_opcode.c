@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zval ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int zval ;
 struct TYPE_2__ {scalar_t__ name; } ;
-typedef  TYPE_1__ phpdbg_breakop_t ;
+typedef TYPE_1__ phpdbg_breakop_t ;
 
-/* Variables and functions */
- char* Z_PTR_P (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  efree (char*) ; 
 
-__attribute__((used)) static void php_phpdbg_destroy_bp_opcode(zval *brake) /* {{{ */
+ char* Z_PTR_P (int *) ;
+ int efree (char*) ;
+
+__attribute__((used)) static void php_phpdbg_destroy_bp_opcode(zval *brake)
 {
-	efree((char *) ((phpdbg_breakop_t *) Z_PTR_P(brake))->name);
-	efree(Z_PTR_P(brake));
+ efree((char *) ((phpdbg_breakop_t *) Z_PTR_P(brake))->name);
+ efree(Z_PTR_P(brake));
 }

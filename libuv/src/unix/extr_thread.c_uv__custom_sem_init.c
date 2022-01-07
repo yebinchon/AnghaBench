@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {unsigned int value; int /*<<< orphan*/  mutex; int /*<<< orphan*/  cond; } ;
-typedef  TYPE_1__ uv_semaphore_t ;
-typedef  int /*<<< orphan*/  uv_sem_t ;
 
-/* Variables and functions */
- int UV_ENOMEM ; 
- int /*<<< orphan*/  uv__free (TYPE_1__*) ; 
- TYPE_1__* uv__malloc (int) ; 
- int uv_cond_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_mutex_destroy (int /*<<< orphan*/ *) ; 
- int uv_mutex_init (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {unsigned int value; int mutex; int cond; } ;
+typedef TYPE_1__ uv_semaphore_t ;
+typedef int uv_sem_t ;
+
+
+ int UV_ENOMEM ;
+ int uv__free (TYPE_1__*) ;
+ TYPE_1__* uv__malloc (int) ;
+ int uv_cond_init (int *) ;
+ int uv_mutex_destroy (int *) ;
+ int uv_mutex_init (int *) ;
 
 __attribute__((used)) static int uv__custom_sem_init(uv_sem_t* sem_, unsigned int value) {
   int err;
   uv_semaphore_t* sem;
 
   sem = uv__malloc(sizeof(*sem));
-  if (sem == NULL)
+  if (sem == ((void*)0))
     return UV_ENOMEM;
 
   if ((err = uv_mutex_init(&sem->mutex)) != 0) {

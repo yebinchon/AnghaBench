@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int int32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int int32_t ;
 struct TYPE_3__ {int int32_sent_bits; int int32_zeros; int int32_ones; int int32_dups; int flags; int crc_x; } ;
-typedef  TYPE_1__ WavPackEncodeContext ;
+typedef TYPE_1__ WavPackEncodeContext ;
 
-/* Variables and functions */
- int MAG_LSB ; 
- int MAG_MASK ; 
- int WV_INT32_DATA ; 
- int WV_MONO_DATA ; 
- int /*<<< orphan*/  shift_mono (int*,int,int) ; 
- int /*<<< orphan*/  shift_stereo (int*,int*,int,int) ; 
+
+ int MAG_LSB ;
+ int MAG_MASK ;
+ int WV_INT32_DATA ;
+ int WV_MONO_DATA ;
+ int shift_mono (int*,int,int) ;
+ int shift_stereo (int*,int*,int,int) ;
 
 __attribute__((used)) static int scan_int32(WavPackEncodeContext *s,
                       int32_t *samples_l, int32_t *samples_r,
@@ -43,7 +43,7 @@ __attribute__((used)) static int scan_int32(WavPackEncodeContext *s,
             magdata |= (M < 0) ? ~M : M;
             xordata |= M ^ -(M & 1);
             anddata &= M;
-            ordata  |= M;
+            ordata |= M;
         }
     } else {
         for (i = 0; i < nb_samples; i++) {
@@ -57,7 +57,7 @@ __attribute__((used)) static int scan_int32(WavPackEncodeContext *s,
             xordata |= L ^ -(L & 1);
             xordata |= R ^ -(R & 1);
             anddata &= L & R;
-            ordata  |= L | R;
+            ordata |= L | R;
         }
     }
 

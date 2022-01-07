@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int UINT ;
-struct TYPE_4__ {int /*<<< orphan*/  tempfolder; } ;
-typedef  TYPE_1__ MSIDATABASE ;
 
-/* Variables and functions */
- scalar_t__ CreateDirectoryW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ FILE_ATTRIBUTE_DIRECTORY ; 
- scalar_t__ GetFileAttributesW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetTempFileNameW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetTempPathW (int,int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/ * msi_alloc (int) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/ *) ; 
- scalar_t__ msi_get_property (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  strdupW (int /*<<< orphan*/ *) ; 
- int strlenW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  szMsi ; 
- int /*<<< orphan*/  szTempFolder ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int tmp ;
+typedef int WCHAR ;
+typedef int UINT ;
+struct TYPE_4__ {int tempfolder; } ;
+typedef TYPE_1__ MSIDATABASE ;
+
+
+ scalar_t__ CreateDirectoryW (int *,int *) ;
+ scalar_t__ FILE_ATTRIBUTE_DIRECTORY ;
+ scalar_t__ GetFileAttributesW (int *) ;
+ int GetTempFileNameW (int ,int ,int,int *) ;
+ int GetTempPathW (int,int *) ;
+ int MAX_PATH ;
+ int * msi_alloc (int) ;
+ int msi_free (int *) ;
+ scalar_t__ msi_get_property (TYPE_1__*,int ,int *,int*) ;
+ int strdupW (int *) ;
+ int strlenW (int ) ;
+ int szMsi ;
+ int szTempFolder ;
 
 __attribute__((used)) static WCHAR *create_temp_dir( MSIDATABASE *db )
 {
@@ -47,7 +47,7 @@ __attribute__((used)) static WCHAR *create_temp_dir( MSIDATABASE *db )
         {
             GetTempPathW( MAX_PATH, tmp );
         }
-        if (!(db->tempfolder = strdupW( tmp ))) return NULL;
+        if (!(db->tempfolder = strdupW( tmp ))) return ((void*)0);
     }
 
     if ((ret = msi_alloc( (strlenW( db->tempfolder ) + 20) * sizeof(WCHAR) )))
@@ -57,9 +57,9 @@ __attribute__((used)) static WCHAR *create_temp_dir( MSIDATABASE *db )
             if (!GetTempFileNameW( db->tempfolder, szMsi, ++id, ret ))
             {
                 msi_free( ret );
-                return NULL;
+                return ((void*)0);
             }
-            if (CreateDirectoryW( ret, NULL )) break;
+            if (CreateDirectoryW( ret, ((void*)0) )) break;
         }
     }
 

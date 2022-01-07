@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_fs_x__revision_file_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int svn_fs_x__revision_file_t ;
 struct TYPE_6__ {int size; } ;
-typedef  TYPE_1__ svn_fs_x__p2l_entry_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
+typedef TYPE_1__ svn_fs_x__p2l_entry_t ;
+typedef int svn_error_t ;
 struct TYPE_7__ {scalar_t__ digest; } ;
-typedef  TYPE_2__ svn_checksum_t ;
-typedef  int /*<<< orphan*/  svn_checksum_ctx_t ;
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int /*<<< orphan*/  apr_uint32_t ;
-typedef  int apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int apr_off_t ;
+typedef TYPE_2__ svn_checksum_t ;
+typedef int svn_checksum_ctx_t ;
+typedef int buffer ;
+typedef int apr_uint32_t ;
+typedef int apr_size_t ;
+typedef int apr_pool_t ;
+typedef int apr_off_t ;
 
-/* Variables and functions */
- int STREAM_THRESHOLD ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  expected_checksum (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ntohl (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/ * svn_checksum_ctx_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_checksum_final (TYPE_2__**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_checksum_fnv1a_32x4 ; 
- int /*<<< orphan*/  svn_checksum_update (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  svn_fs_x__rev_file_read (int /*<<< orphan*/ *,unsigned char*,int) ; 
+
+ int STREAM_THRESHOLD ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int expected_checksum (int *,TYPE_1__*,int ,int *) ;
+ int ntohl (int const) ;
+ int * svn_checksum_ctx_create (int ,int *) ;
+ int svn_checksum_final (TYPE_2__**,int *,int *) ;
+ int svn_checksum_fnv1a_32x4 ;
+ int svn_checksum_update (int *,unsigned char*,int) ;
+ int svn_fs_x__rev_file_read (int *,unsigned char*,int) ;
 
 __attribute__((used)) static svn_error_t *
 expected_streamed_checksum(svn_fs_x__revision_file_t *file,

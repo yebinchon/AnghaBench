@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct scale_test {TYPE_1__* ctx; } ;
 struct mp_image {int dummy; } ;
-struct image_writer_opts {int /*<<< orphan*/  format; } ;
-struct TYPE_2__ {int /*<<< orphan*/  log; int /*<<< orphan*/  global; int /*<<< orphan*/  out_path; } ;
+struct image_writer_opts {int format; } ;
+struct TYPE_2__ {int log; int global; int out_path; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_CODEC_ID_PNG ; 
- int /*<<< orphan*/  MP_FATAL (TYPE_1__*,char*,char*) ; 
- int /*<<< orphan*/  abort () ; 
- struct image_writer_opts image_writer_opts_defaults ; 
- char* mp_tprintf (int,char*,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  write_image (struct mp_image*,struct image_writer_opts*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AV_CODEC_ID_PNG ;
+ int MP_FATAL (TYPE_1__*,char*,char*) ;
+ int abort () ;
+ struct image_writer_opts image_writer_opts_defaults ;
+ char* mp_tprintf (int,char*,int ,char const*) ;
+ int write_image (struct mp_image*,struct image_writer_opts*,char*,int ,int ) ;
 
 __attribute__((used)) static void dump_image(struct scale_test *stest, const char *name,
                        struct mp_image *img)

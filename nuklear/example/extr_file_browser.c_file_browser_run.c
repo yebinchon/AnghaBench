@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct nk_rect {int /*<<< orphan*/  h; } ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct nk_rect {int h; } ;
 struct nk_image {int dummy; } ;
 struct TYPE_5__ {float x; } ;
 struct TYPE_6__ {TYPE_1__ spacing; } ;
@@ -24,32 +24,32 @@ struct TYPE_8__ {struct nk_image directory; struct nk_image computer; struct nk_
 struct media {TYPE_4__ icons; } ;
 struct file_browser {char* directory; char* home; char* desktop; size_t dir_count; size_t file_count; char** files; char* file; char** directories; struct media* media; } ;
 
-/* Variables and functions */
- size_t MAX_PATH_LEN ; 
- int /*<<< orphan*/  NK_DYNAMIC ; 
- int /*<<< orphan*/  NK_TEXT_CENTERED ; 
-#define  NK_UNDEFINED 128 
- int NK_WINDOW_BORDER ; 
- int NK_WINDOW_MOVABLE ; 
- int NK_WINDOW_NO_SCROLLBAR ; 
- int /*<<< orphan*/  file_browser_reload_directory_content (struct file_browser*,char*) ; 
- struct nk_image* media_icon_for_file (struct media*,char*) ; 
- scalar_t__ nk_begin (struct nk_context*,char*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ nk_button_image (struct nk_context*,struct nk_image) ; 
- scalar_t__ nk_button_image_label (struct nk_context*,struct nk_image,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ nk_button_label (struct nk_context*,char*) ; 
- int /*<<< orphan*/  nk_end (struct nk_context*) ; 
- int /*<<< orphan*/  nk_group_begin (struct nk_context*,char*,int) ; 
- int /*<<< orphan*/  nk_group_end (struct nk_context*) ; 
- int /*<<< orphan*/  nk_label (struct nk_context*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nk_layout_row (struct nk_context*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,float*) ; 
- int /*<<< orphan*/  nk_layout_row_dynamic (struct nk_context*,int,int) ; 
- int /*<<< orphan*/  nk_menubar_begin (struct nk_context*) ; 
- int /*<<< orphan*/  nk_menubar_end (struct nk_context*) ; 
- int /*<<< orphan*/  nk_rect (int,int,int,int) ; 
- struct nk_rect nk_window_get_content_region (struct nk_context*) ; 
- size_t strlen (char*) ; 
- int /*<<< orphan*/  strncpy (char*,char*,size_t) ; 
+
+ size_t MAX_PATH_LEN ;
+ int NK_DYNAMIC ;
+ int NK_TEXT_CENTERED ;
+
+ int NK_WINDOW_BORDER ;
+ int NK_WINDOW_MOVABLE ;
+ int NK_WINDOW_NO_SCROLLBAR ;
+ int file_browser_reload_directory_content (struct file_browser*,char*) ;
+ struct nk_image* media_icon_for_file (struct media*,char*) ;
+ scalar_t__ nk_begin (struct nk_context*,char*,int ,int) ;
+ scalar_t__ nk_button_image (struct nk_context*,struct nk_image) ;
+ scalar_t__ nk_button_image_label (struct nk_context*,struct nk_image,char*,int ) ;
+ scalar_t__ nk_button_label (struct nk_context*,char*) ;
+ int nk_end (struct nk_context*) ;
+ int nk_group_begin (struct nk_context*,char*,int) ;
+ int nk_group_end (struct nk_context*) ;
+ int nk_label (struct nk_context*,char*,int ) ;
+ int nk_layout_row (struct nk_context*,int ,int ,int,float*) ;
+ int nk_layout_row_dynamic (struct nk_context*,int,int) ;
+ int nk_menubar_begin (struct nk_context*) ;
+ int nk_menubar_end (struct nk_context*) ;
+ int nk_rect (int,int,int,int) ;
+ struct nk_rect nk_window_get_content_region (struct nk_context*) ;
+ size_t strlen (char*) ;
+ int strncpy (char*,char*,size_t) ;
 
 __attribute__((used)) static int
 file_browser_run(struct file_browser *browser, struct nk_context *ctx)
@@ -61,10 +61,10 @@ file_browser_run(struct file_browser *browser, struct nk_context *ctx)
     if (nk_begin(ctx, "File Browser", nk_rect(50, 50, 800, 600),
         NK_WINDOW_BORDER|NK_WINDOW_NO_SCROLLBAR|NK_WINDOW_MOVABLE))
     {
-        static float ratio[] = {0.25f, NK_UNDEFINED};
+        static float ratio[] = {0.25f, 128};
         float spacing_x = ctx->style.window.spacing.x;
 
-        /* output path directory selector in the menubar */
+
         ctx->style.window.spacing.x = 0;
         nk_menubar_begin(ctx);
         {
@@ -87,7 +87,7 @@ file_browser_run(struct file_browser *browser, struct nk_context *ctx)
         nk_menubar_end(ctx);
         ctx->style.window.spacing.x = spacing_x;
 
-        /* window layout */
+
         total_space = nk_window_get_content_region(ctx);
         nk_layout_row(ctx, NK_DYNAMIC, total_space.h, 2, ratio);
         nk_group_begin(ctx, "Special", NK_WINDOW_NO_SCROLLBAR);
@@ -106,7 +106,7 @@ file_browser_run(struct file_browser *browser, struct nk_context *ctx)
             nk_group_end(ctx);
         }
 
-        /* output directory content window */
+
         nk_group_begin(ctx, "Content", 0);
         {
             int index = -1;
@@ -120,13 +120,13 @@ file_browser_run(struct file_browser *browser, struct nk_context *ctx)
                 {size_t n = j + cols;
                 nk_layout_row_dynamic(ctx, 135, (int)cols);
                 for (; j < count && j < n; ++j) {
-                    /* draw one row of icons */
+
                     if (j < browser->dir_count) {
-                        /* draw and execute directory buttons */
+
                         if (nk_button_image(ctx,media->icons.directory))
                             index = (int)j;
                     } else {
-                        /* draw and execute files buttons */
+
                         struct nk_image *icon;
                         size_t fileIndex = ((size_t)j - browser->dir_count);
                         icon = media_icon_for_file(media,browser->files[fileIndex]);
@@ -141,7 +141,7 @@ file_browser_run(struct file_browser *browser, struct nk_context *ctx)
                 {size_t n = k + cols;
                 nk_layout_row_dynamic(ctx, 20, (int)cols);
                 for (; k < count && k < n; k++) {
-                    /* draw one row of labels */
+
                     if (k < browser->dir_count) {
                         nk_label(ctx, browser->directories[k], NK_TEXT_CENTERED);
                     } else {

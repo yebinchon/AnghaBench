@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ int64_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ int64_t ;
 struct TYPE_3__ {scalar_t__ channel_layout; scalar_t__ layout_tag; } ;
-typedef  TYPE_1__ MovChannelLayout ;
-typedef  int /*<<< orphan*/  AVIOContext ;
+typedef TYPE_1__ MovChannelLayout ;
+typedef int AVIOContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  avio_wb32 (int /*<<< orphan*/ *,scalar_t__) ; 
- TYPE_1__* mov_channel_layout ; 
+
+ int avio_wb32 (int *,scalar_t__) ;
+ TYPE_1__* mov_channel_layout ;
 
 void ff_mov_write_chan(AVIOContext *pb, int64_t channel_layout)
 {
@@ -33,11 +33,11 @@ void ff_mov_write_chan(AVIOContext *pb, int64_t channel_layout)
         }
 
     if (layout_tag) {
-        avio_wb32(pb, layout_tag); // mChannelLayoutTag
-        avio_wb32(pb, 0);          // mChannelBitmap
+        avio_wb32(pb, layout_tag);
+        avio_wb32(pb, 0);
     } else {
-        avio_wb32(pb, 0x10000);    // kCAFChannelLayoutTag_UseChannelBitmap
+        avio_wb32(pb, 0x10000);
         avio_wb32(pb, channel_layout);
     }
-    avio_wb32(pb, 0);              // mNumberChannelDescriptions
+    avio_wb32(pb, 0);
 }

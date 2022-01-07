@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_2__* parse; TYPE_1__* glob; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * jointree; } ;
+struct TYPE_7__ {int * jointree; } ;
 struct TYPE_6__ {scalar_t__ lastPHId; } ;
-typedef  TYPE_3__ PlannerInfo ;
-typedef  int /*<<< orphan*/  Node ;
+typedef TYPE_3__ PlannerInfo ;
+typedef int Node ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- int /*<<< orphan*/  FromExpr ; 
- scalar_t__ IsA (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  find_placeholders_recurse (TYPE_3__*,int /*<<< orphan*/ *) ; 
+
+ int Assert (int) ;
+ int FromExpr ;
+ scalar_t__ IsA (int *,int ) ;
+ int find_placeholders_recurse (TYPE_3__*,int *) ;
 
 void
 find_placeholders_in_jointree(PlannerInfo *root)
 {
-	/* We need do nothing if the query contains no PlaceHolderVars */
-	if (root->glob->lastPHId != 0)
-	{
-		/* Start recursion at top of jointree */
-		Assert(root->parse->jointree != NULL &&
-			   IsA(root->parse->jointree, FromExpr));
-		find_placeholders_recurse(root, (Node *) root->parse->jointree);
-	}
+
+ if (root->glob->lastPHId != 0)
+ {
+
+  Assert(root->parse->jointree != ((void*)0) &&
+      IsA(root->parse->jointree, FromExpr));
+  find_placeholders_recurse(root, (Node *) root->parse->jointree);
+ }
 }

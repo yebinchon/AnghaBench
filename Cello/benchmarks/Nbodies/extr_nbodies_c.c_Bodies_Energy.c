@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct Body {double mass; double vx; double vy; double vz; double x; double y; double z; } ;
 
-/* Variables and functions */
- double sqrt (double) ; 
+
+ double sqrt (double) ;
 
 __attribute__((used)) static double Bodies_Energy(struct Body* bodies, size_t nbodies) {
 
@@ -22,9 +22,9 @@ __attribute__((used)) static double Bodies_Energy(struct Body* bodies, size_t nb
   double dz = 0.0;
   double distance = 0.0;
   double e = 0.0;
-  
+
   for(size_t i = 0; i < nbodies; i++) {
-  
+
     struct Body* body0 = &bodies[i];
 
     e += (0.5 * body0->mass * (
@@ -33,7 +33,7 @@ __attribute__((used)) static double Bodies_Energy(struct Body* bodies, size_t nb
         body0->vz * body0->vz));
 
     for(size_t j = i+1; j < nbodies; j++) {
-      
+
       struct Body* body1 = &bodies[j];
 
       dx = body0->x - body1->x;
@@ -44,6 +44,6 @@ __attribute__((used)) static double Bodies_Energy(struct Body* bodies, size_t nb
       e -= (body0->mass * body1->mass) / distance;
     }
   }
-  
+
   return e;
 }

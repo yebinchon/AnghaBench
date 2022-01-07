@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mpv_node ;
 
-/* Variables and functions */
- int /*<<< orphan*/  node_get_alloc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  talloc_steal (void*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mpv_node ;
+
+
+ int node_get_alloc (int *) ;
+ int talloc_steal (void*,int ) ;
 
 __attribute__((used)) static void auto_free_node(void *tmp, mpv_node *node)
 {

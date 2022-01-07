@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LOG_ERROR (int /*<<< orphan*/ *,char*,char*) ; 
- int do_print_usage ; 
- char* packet_save_file ; 
- int packet_save_is_pktfile ; 
- char* read_uri ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- int verbosity ; 
+ int LOG_ERROR (int *,char*,char*) ;
+ int do_print_usage ;
+ char* packet_save_file ;
+ int packet_save_is_pktfile ;
+ char* read_uri ;
+ int strncmp (char*,char*,int) ;
+ int verbosity ;
 
 __attribute__((used)) static void parse_command_line(int argc, char **argv)
 {
@@ -26,13 +18,13 @@ __attribute__((used)) static void parse_command_line(int argc, char **argv)
 
    while (arg < argc)
    {
-      if (*argv[arg] != '-')  /* End of options, next should be URI */
+      if (*argv[arg] != '-')
          break;
 
       switch (argv[arg][1])
       {
       case 'h':
-         do_print_usage = true;
+         do_print_usage = 1;
          break;
       case 's':
          arg++;
@@ -50,7 +42,7 @@ __attribute__((used)) static void parse_command_line(int argc, char **argv)
                verbosity++;
          }
          break;
-      default: LOG_ERROR(NULL, "Unrecognised option: %s", argv[arg]); return;
+      default: LOG_ERROR(((void*)0), "Unrecognised option: %s", argv[arg]); return;
       }
 
       arg++;

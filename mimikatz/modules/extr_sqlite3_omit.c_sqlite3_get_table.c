@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int errCode; } ;
-typedef  TYPE_1__ sqlite3 ;
+typedef TYPE_1__ sqlite3 ;
 struct TYPE_8__ {char* zErrMsg; int nRow; int nColumn; int nData; int nAlloc; int rc; char** azResult; } ;
-typedef  TYPE_2__ TabResult ;
+typedef TYPE_2__ TabResult ;
 
-/* Variables and functions */
- int SQLITE_ABORT ; 
- char* SQLITE_INT_TO_PTR (int) ; 
- int SQLITE_MISUSE_BKPT ; 
- void* SQLITE_NOMEM ; 
- int SQLITE_NOMEM_BKPT ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3SafetyCheckOk (TYPE_1__*) ; 
- int sqlite3_exec (TYPE_1__*,char const*,int /*<<< orphan*/ ,TYPE_2__*,char**) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- int /*<<< orphan*/  sqlite3_free_table (char**) ; 
- int /*<<< orphan*/  sqlite3_get_table_cb ; 
- char** sqlite3_malloc64 (int) ; 
- char* sqlite3_mprintf (char*,char*) ; 
- char** sqlite3_realloc64 (char**,int) ; 
+
+ int SQLITE_ABORT ;
+ char* SQLITE_INT_TO_PTR (int) ;
+ int SQLITE_MISUSE_BKPT ;
+ void* SQLITE_NOMEM ;
+ int SQLITE_NOMEM_BKPT ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int sqlite3SafetyCheckOk (TYPE_1__*) ;
+ int sqlite3_exec (TYPE_1__*,char const*,int ,TYPE_2__*,char**) ;
+ int sqlite3_free (char*) ;
+ int sqlite3_free_table (char**) ;
+ int sqlite3_get_table_cb ;
+ char** sqlite3_malloc64 (int) ;
+ char* sqlite3_mprintf (char*,char*) ;
+ char** sqlite3_realloc64 (char**,int) ;
 
 int sqlite3_get_table(
-  sqlite3 *db,                /* The database on which the SQL executes */
-  const char *zSql,           /* The SQL to be executed */
-  char ***pazResult,          /* Write the result table here */
-  int *pnRow,                 /* Write the number of rows in the result here */
-  int *pnColumn,              /* Write the number of columns of result here */
-  char **pzErrMsg             /* Write error messages here */
+  sqlite3 *db,
+  const char *zSql,
+  char ***pazResult,
+  int *pnRow,
+  int *pnColumn,
+  char **pzErrMsg
 ){
   int rc;
   TabResult res;
 
-#ifdef SQLITE_ENABLE_API_ARMOR
-  if( !sqlite3SafetyCheckOk(db) || pazResult==0 ) return SQLITE_MISUSE_BKPT;
-#endif
+
+
+
   *pazResult = 0;
   if( pnColumn ) *pnColumn = 0;
   if( pnRow ) *pnRow = 0;
@@ -76,7 +76,7 @@ int sqlite3_get_table(
       }
       sqlite3_free(res.zErrMsg);
     }
-    db->errCode = res.rc;  /* Assume 32-bit assignment is atomic */
+    db->errCode = res.rc;
     return res.rc;
   }
   sqlite3_free(res.zErrMsg);

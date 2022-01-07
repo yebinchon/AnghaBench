@@ -1,88 +1,88 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct netlbl_unlhsh_iface {int /*<<< orphan*/  ifindex; int /*<<< orphan*/  addr4_list; } ;
-struct netlbl_unlhsh_addr4 {int /*<<< orphan*/  rcu; int /*<<< orphan*/  secid; } ;
+
+
+
+
+typedef int u32 ;
+struct netlbl_unlhsh_iface {int ifindex; int addr4_list; } ;
+struct netlbl_unlhsh_addr4 {int rcu; int secid; } ;
 struct netlbl_audit {int dummy; } ;
 struct netlbl_af4list {int dummy; } ;
-struct net_device {int /*<<< orphan*/ * name; } ;
+struct net_device {int * name; } ;
 struct net {int dummy; } ;
-struct in_addr {int /*<<< orphan*/  s_addr; } ;
+struct in_addr {int s_addr; } ;
 struct audit_buffer {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AUDIT_MAC_UNLBL_STCDEL ; 
- int ENOENT ; 
- int /*<<< orphan*/  audit_log_end (struct audit_buffer*) ; 
- int /*<<< orphan*/  audit_log_format (struct audit_buffer*,char*,...) ; 
- int /*<<< orphan*/  call_rcu (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct net_device* dev_get_by_index (struct net*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dev_put (struct net_device*) ; 
- int /*<<< orphan*/  netlbl_af4list_audit_addr (struct audit_buffer*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct netlbl_af4list* netlbl_af4list_remove (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- struct audit_buffer* netlbl_audit_start_common (int /*<<< orphan*/ ,struct netlbl_audit*) ; 
- struct netlbl_unlhsh_addr4* netlbl_unlhsh_addr4_entry (struct netlbl_af4list*) ; 
- int /*<<< orphan*/  netlbl_unlhsh_free_addr4 ; 
- int /*<<< orphan*/  netlbl_unlhsh_lock ; 
- int /*<<< orphan*/  security_release_secctx (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ security_secid_to_secctx (int /*<<< orphan*/ ,char**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+ int AUDIT_MAC_UNLBL_STCDEL ;
+ int ENOENT ;
+ int audit_log_end (struct audit_buffer*) ;
+ int audit_log_format (struct audit_buffer*,char*,...) ;
+ int call_rcu (int *,int ) ;
+ struct net_device* dev_get_by_index (struct net*,int ) ;
+ int dev_put (struct net_device*) ;
+ int netlbl_af4list_audit_addr (struct audit_buffer*,int,int *,int ,int ) ;
+ struct netlbl_af4list* netlbl_af4list_remove (int ,int ,int *) ;
+ struct audit_buffer* netlbl_audit_start_common (int ,struct netlbl_audit*) ;
+ struct netlbl_unlhsh_addr4* netlbl_unlhsh_addr4_entry (struct netlbl_af4list*) ;
+ int netlbl_unlhsh_free_addr4 ;
+ int netlbl_unlhsh_lock ;
+ int security_release_secctx (char*,int ) ;
+ scalar_t__ security_secid_to_secctx (int ,char**,int *) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 __attribute__((used)) static int netlbl_unlhsh_remove_addr4(struct net *net,
-				      struct netlbl_unlhsh_iface *iface,
-				      const struct in_addr *addr,
-				      const struct in_addr *mask,
-				      struct netlbl_audit *audit_info)
+          struct netlbl_unlhsh_iface *iface,
+          const struct in_addr *addr,
+          const struct in_addr *mask,
+          struct netlbl_audit *audit_info)
 {
-	struct netlbl_af4list *list_entry;
-	struct netlbl_unlhsh_addr4 *entry;
-	struct audit_buffer *audit_buf;
-	struct net_device *dev;
-	char *secctx;
-	u32 secctx_len;
+ struct netlbl_af4list *list_entry;
+ struct netlbl_unlhsh_addr4 *entry;
+ struct audit_buffer *audit_buf;
+ struct net_device *dev;
+ char *secctx;
+ u32 secctx_len;
 
-	spin_lock(&netlbl_unlhsh_lock);
-	list_entry = netlbl_af4list_remove(addr->s_addr, mask->s_addr,
-					   &iface->addr4_list);
-	spin_unlock(&netlbl_unlhsh_lock);
-	if (list_entry != NULL)
-		entry = netlbl_unlhsh_addr4_entry(list_entry);
-	else
-		entry = NULL;
+ spin_lock(&netlbl_unlhsh_lock);
+ list_entry = netlbl_af4list_remove(addr->s_addr, mask->s_addr,
+        &iface->addr4_list);
+ spin_unlock(&netlbl_unlhsh_lock);
+ if (list_entry != ((void*)0))
+  entry = netlbl_unlhsh_addr4_entry(list_entry);
+ else
+  entry = ((void*)0);
 
-	audit_buf = netlbl_audit_start_common(AUDIT_MAC_UNLBL_STCDEL,
-					      audit_info);
-	if (audit_buf != NULL) {
-		dev = dev_get_by_index(net, iface->ifindex);
-		netlbl_af4list_audit_addr(audit_buf, 1,
-					  (dev != NULL ? dev->name : NULL),
-					  addr->s_addr, mask->s_addr);
-		if (dev != NULL)
-			dev_put(dev);
-		if (entry != NULL &&
-		    security_secid_to_secctx(entry->secid,
-					     &secctx, &secctx_len) == 0) {
-			audit_log_format(audit_buf, " sec_obj=%s", secctx);
-			security_release_secctx(secctx, secctx_len);
-		}
-		audit_log_format(audit_buf, " res=%u", entry != NULL ? 1 : 0);
-		audit_log_end(audit_buf);
-	}
+ audit_buf = netlbl_audit_start_common(AUDIT_MAC_UNLBL_STCDEL,
+           audit_info);
+ if (audit_buf != ((void*)0)) {
+  dev = dev_get_by_index(net, iface->ifindex);
+  netlbl_af4list_audit_addr(audit_buf, 1,
+       (dev != ((void*)0) ? dev->name : ((void*)0)),
+       addr->s_addr, mask->s_addr);
+  if (dev != ((void*)0))
+   dev_put(dev);
+  if (entry != ((void*)0) &&
+      security_secid_to_secctx(entry->secid,
+          &secctx, &secctx_len) == 0) {
+   audit_log_format(audit_buf, " sec_obj=%s", secctx);
+   security_release_secctx(secctx, secctx_len);
+  }
+  audit_log_format(audit_buf, " res=%u", entry != ((void*)0) ? 1 : 0);
+  audit_log_end(audit_buf);
+ }
 
-	if (entry == NULL)
-		return -ENOENT;
+ if (entry == ((void*)0))
+  return -ENOENT;
 
-	call_rcu(&entry->rcu, netlbl_unlhsh_free_addr4);
-	return 0;
+ call_rcu(&entry->rcu, netlbl_unlhsh_free_addr4);
+ return 0;
 }

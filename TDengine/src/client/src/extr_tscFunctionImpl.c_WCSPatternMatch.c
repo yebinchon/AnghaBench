@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ wchar_t ;
-typedef  size_t int32_t ;
-typedef  int /*<<< orphan*/  SPatternCompareInfo ;
 
-/* Variables and functions */
- int TSDB_PATTERN_MATCH ; 
- size_t TSDB_PATTERN_NOMATCH ; 
- int TSDB_PATTERN_NOWILDCARDMATCH ; 
- scalar_t__ towlower (scalar_t__) ; 
- scalar_t__ towupper (scalar_t__) ; 
- size_t wcslen (scalar_t__ const*) ; 
- size_t wcsspn (scalar_t__ const*,scalar_t__*) ; 
+
+
+
+typedef scalar_t__ wchar_t ;
+typedef size_t int32_t ;
+typedef int SPatternCompareInfo ;
+
+
+ int TSDB_PATTERN_MATCH ;
+ size_t TSDB_PATTERN_NOMATCH ;
+ int TSDB_PATTERN_NOWILDCARDMATCH ;
+ scalar_t__ towlower (scalar_t__) ;
+ scalar_t__ towupper (scalar_t__) ;
+ size_t wcslen (scalar_t__ const*) ;
+ size_t wcsspn (scalar_t__ const*,scalar_t__*) ;
 
 int WCSPatternMatch(const wchar_t *patterStr, const wchar_t *str, size_t size, const SPatternCompareInfo *pInfo) {
   wchar_t c, c1;
-  wchar_t matchOne = L'_';  // "_"
-  wchar_t matchAll = L'%';  // "%"
+  wchar_t matchOne = L'_';
+  wchar_t matchAll = L'%';
 
   int32_t i = 0;
   int32_t j = 0;
 
   while ((c = patterStr[i++]) != 0) {
-    if (c == matchAll) { /* Match "%" */
+    if (c == matchAll) {
 
       while ((c = patterStr[i++]) == matchAll || c == matchOne) {
         if (c == matchOne && (j > size || str[j++] == 0)) {

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRY_MATCH (int const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+
+
+ int TRY_MATCH (int const*,int ) ;
 
 __attribute__((used)) static inline const uint8_t * startcode_FindAnnexB_Bits( const uint8_t *p, const uint8_t *end )
 {
@@ -29,7 +29,7 @@ __attribute__((used)) static inline const uint8_t * startcode_FindAnnexB_Bits( c
         uint32_t x = *(const uint32_t*)p;
         if ((x - 0x01010101) & (~x) & 0x80808080)
         {
-            /* matching DW isn't faster */
+
             TRY_MATCH(p, 0);
         }
     }
@@ -39,5 +39,5 @@ __attribute__((used)) static inline const uint8_t * startcode_FindAnnexB_Bits( c
             return p;
     }
 
-    return NULL;
+    return ((void*)0);
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_2__* call_ctx; } ;
-typedef  TYPE_1__ script_ctx_t ;
-struct TYPE_8__ {int flags; int /*<<< orphan*/  this_obj; int /*<<< orphan*/  ret; } ;
-typedef  TYPE_2__ call_frame_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ script_ctx_t ;
+struct TYPE_8__ {int flags; int this_obj; int ret; } ;
+typedef TYPE_2__ call_frame_t ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int EXEC_CONSTRUCTOR ; 
- int /*<<< orphan*/  IDispatch_AddRef (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- unsigned int get_op_uint (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_object_instance (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jmp_abs (TYPE_1__*,int) ; 
- int /*<<< orphan*/  jsval_disp (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  steal_ret (TYPE_2__*) ; 
+
+ int EXEC_CONSTRUCTOR ;
+ int IDispatch_AddRef (int ) ;
+ int S_OK ;
+ int TRACE (char*) ;
+ unsigned int get_op_uint (TYPE_1__*,int ) ;
+ int is_object_instance (int ) ;
+ int jmp_abs (TYPE_1__*,int) ;
+ int jsval_disp (int ) ;
+ int jsval_release (int ) ;
+ int steal_ret (TYPE_2__*) ;
 
 __attribute__((used)) static HRESULT interp_ret(script_ctx_t *ctx)
 {

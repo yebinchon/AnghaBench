@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct TYPE_2__ {int /*<<< orphan*/ * fops; int /*<<< orphan*/  name; int /*<<< orphan*/  minor; } ;
-struct kcs_bmc {TYPE_1__ miscdev; void* kbuffer; void* data_out; void* data_in; int /*<<< orphan*/  queue; int /*<<< orphan*/  mutex; int /*<<< orphan*/  channel; int /*<<< orphan*/  lock; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct TYPE_2__ {int * fops; int name; int minor; } ;
+struct kcs_bmc {TYPE_1__ miscdev; void* kbuffer; void* data_out; void* data_in; int queue; int mutex; int channel; int lock; } ;
 struct device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEVICE_NAME ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  KCS_MSG_BUFSIZ ; 
- int /*<<< orphan*/  MISC_DYNAMIC_MINOR ; 
- int /*<<< orphan*/  devm_kasprintf (struct device*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* devm_kmalloc (struct device*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct kcs_bmc* devm_kzalloc (struct device*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_waitqueue_head (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kcs_bmc_fops ; 
- int /*<<< orphan*/  mutex_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
+
+ int DEVICE_NAME ;
+ int GFP_KERNEL ;
+ int KCS_MSG_BUFSIZ ;
+ int MISC_DYNAMIC_MINOR ;
+ int devm_kasprintf (struct device*,int ,char*,int ,int ) ;
+ void* devm_kmalloc (struct device*,int ,int ) ;
+ struct kcs_bmc* devm_kzalloc (struct device*,int,int ) ;
+ int init_waitqueue_head (int *) ;
+ int kcs_bmc_fops ;
+ int mutex_init (int *) ;
+ int spin_lock_init (int *) ;
 
 struct kcs_bmc *kcs_bmc_alloc(struct device *dev, int sizeof_priv, u32 channel)
 {
-	struct kcs_bmc *kcs_bmc;
+ struct kcs_bmc *kcs_bmc;
 
-	kcs_bmc = devm_kzalloc(dev, sizeof(*kcs_bmc) + sizeof_priv, GFP_KERNEL);
-	if (!kcs_bmc)
-		return NULL;
+ kcs_bmc = devm_kzalloc(dev, sizeof(*kcs_bmc) + sizeof_priv, GFP_KERNEL);
+ if (!kcs_bmc)
+  return ((void*)0);
 
-	spin_lock_init(&kcs_bmc->lock);
-	kcs_bmc->channel = channel;
+ spin_lock_init(&kcs_bmc->lock);
+ kcs_bmc->channel = channel;
 
-	mutex_init(&kcs_bmc->mutex);
-	init_waitqueue_head(&kcs_bmc->queue);
+ mutex_init(&kcs_bmc->mutex);
+ init_waitqueue_head(&kcs_bmc->queue);
 
-	kcs_bmc->data_in = devm_kmalloc(dev, KCS_MSG_BUFSIZ, GFP_KERNEL);
-	kcs_bmc->data_out = devm_kmalloc(dev, KCS_MSG_BUFSIZ, GFP_KERNEL);
-	kcs_bmc->kbuffer = devm_kmalloc(dev, KCS_MSG_BUFSIZ, GFP_KERNEL);
+ kcs_bmc->data_in = devm_kmalloc(dev, KCS_MSG_BUFSIZ, GFP_KERNEL);
+ kcs_bmc->data_out = devm_kmalloc(dev, KCS_MSG_BUFSIZ, GFP_KERNEL);
+ kcs_bmc->kbuffer = devm_kmalloc(dev, KCS_MSG_BUFSIZ, GFP_KERNEL);
 
-	kcs_bmc->miscdev.minor = MISC_DYNAMIC_MINOR;
-	kcs_bmc->miscdev.name = devm_kasprintf(dev, GFP_KERNEL, "%s%u",
-					       DEVICE_NAME, channel);
-	if (!kcs_bmc->data_in || !kcs_bmc->data_out || !kcs_bmc->kbuffer ||
-	    !kcs_bmc->miscdev.name)
-		return NULL;
-	kcs_bmc->miscdev.fops = &kcs_bmc_fops;
+ kcs_bmc->miscdev.minor = MISC_DYNAMIC_MINOR;
+ kcs_bmc->miscdev.name = devm_kasprintf(dev, GFP_KERNEL, "%s%u",
+            DEVICE_NAME, channel);
+ if (!kcs_bmc->data_in || !kcs_bmc->data_out || !kcs_bmc->kbuffer ||
+     !kcs_bmc->miscdev.name)
+  return ((void*)0);
+ kcs_bmc->miscdev.fops = &kcs_bmc_fops;
 
-	return kcs_bmc;
+ return kcs_bmc;
 }

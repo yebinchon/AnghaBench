@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct anon_vma {int /*<<< orphan*/  rwsem; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  up_write (int /*<<< orphan*/ *) ; 
+
+
+
+struct anon_vma {int rwsem; } ;
+
+
+ int up_write (int *) ;
 
 __attribute__((used)) static inline void unlock_anon_vma_root(struct anon_vma *root)
 {
-	if (root)
-		up_write(&root->rwsem);
+ if (root)
+  up_write(&root->rwsem);
 }

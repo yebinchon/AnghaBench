@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  isc_uint32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int isc_uint32_t ;
 struct TYPE_3__ {scalar_t__ nanoseconds; scalar_t__ seconds; } ;
-typedef  TYPE_1__ isc_time_t ;
+typedef TYPE_1__ isc_time_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INSIST (int) ; 
- scalar_t__ NS_PER_S ; 
- int /*<<< orphan*/  REQUIRE (int /*<<< orphan*/ ) ; 
+
+ int INSIST (int) ;
+ scalar_t__ NS_PER_S ;
+ int REQUIRE (int ) ;
 
 isc_uint32_t
 isc_time_seconds(const isc_time_t *t) {
-	REQUIRE(t != NULL);
-	INSIST(t->nanoseconds < NS_PER_S);
+ REQUIRE(t != ((void*)0));
+ INSIST(t->nanoseconds < NS_PER_S);
 
-	return ((isc_uint32_t)t->seconds);
+ return ((isc_uint32_t)t->seconds);
 }

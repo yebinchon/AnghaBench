@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {float cost; int /*<<< orphan*/  shortcut; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {float cost; int shortcut; } ;
 struct TYPE_9__ {TYPE_1__ u; } ;
-typedef  TYPE_2__ ZopfliNode ;
-typedef  int /*<<< orphan*/  ZopfliCostModel ;
-struct TYPE_10__ {size_t pos; float cost; float costdiff; int /*<<< orphan*/  distance_cache; } ;
-typedef  int /*<<< orphan*/  StartPosQueue ;
-typedef  TYPE_3__ PosData ;
+typedef TYPE_2__ ZopfliNode ;
+typedef int ZopfliCostModel ;
+struct TYPE_10__ {size_t pos; float cost; float costdiff; int distance_cache; } ;
+typedef int StartPosQueue ;
+typedef TYPE_3__ PosData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ComputeDistanceCache (size_t const,int const*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ComputeDistanceShortcut (size_t const,size_t const,size_t const,size_t const,TYPE_2__*) ; 
- int /*<<< orphan*/  StartPosQueuePush (int /*<<< orphan*/ *,TYPE_3__*) ; 
- float ZopfliCostModelGetLiteralCosts (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,size_t const) ; 
+
+ int ComputeDistanceCache (size_t const,int const*,TYPE_2__*,int ) ;
+ int ComputeDistanceShortcut (size_t const,size_t const,size_t const,size_t const,TYPE_2__*) ;
+ int StartPosQueuePush (int *,TYPE_3__*) ;
+ float ZopfliCostModelGetLiteralCosts (int const*,int ,size_t const) ;
 
 __attribute__((used)) static void EvaluateNode(
     const size_t block_start, const size_t pos, const size_t max_backward_limit,
     const size_t gap, const int* starting_dist_cache,
     const ZopfliCostModel* model, StartPosQueue* queue, ZopfliNode* nodes) {
-  /* Save cost, because ComputeDistanceCache invalidates it. */
+
   float node_cost = nodes[pos].u.cost;
   nodes[pos].u.shortcut = ComputeDistanceShortcut(
       block_start, pos, max_backward_limit, gap, nodes);

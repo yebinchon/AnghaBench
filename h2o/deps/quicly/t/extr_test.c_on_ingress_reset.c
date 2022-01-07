@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int reset_stream; } ;
 struct TYPE_6__ {TYPE_1__ error_received; } ;
-typedef  TYPE_2__ test_streambuf_t ;
+typedef TYPE_2__ test_streambuf_t ;
 struct TYPE_7__ {TYPE_2__* data; } ;
-typedef  TYPE_3__ quicly_stream_t ;
+typedef TYPE_3__ quicly_stream_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  QUICLY_ERROR_IS_QUIC_APPLICATION (int) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+ int QUICLY_ERROR_IS_QUIC_APPLICATION (int) ;
+ int assert (int ) ;
 
 int on_ingress_reset(quicly_stream_t *stream, int err)
 {

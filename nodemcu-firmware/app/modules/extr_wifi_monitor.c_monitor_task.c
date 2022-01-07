@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_3__ {scalar_t__ len; int /*<<< orphan*/  buf; } ;
-typedef  TYPE_1__ packet_t ;
-typedef  scalar_t__ os_param_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- scalar_t__ LUA_NOREF ; 
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  luaL_getmetatable (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_call (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * lua_getstate () ; 
- scalar_t__ lua_newuserdata (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  lua_rawgeti (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  lua_setmetatable (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ recv_cb ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_3__ {scalar_t__ len; int buf; } ;
+typedef TYPE_1__ packet_t ;
+typedef scalar_t__ os_param_t ;
+typedef int lua_State ;
+
+
+ scalar_t__ LUA_NOREF ;
+ int LUA_REGISTRYINDEX ;
+ int free (TYPE_1__*) ;
+ int luaL_getmetatable (int *,char*) ;
+ int lua_call (int *,int,int ) ;
+ int * lua_getstate () ;
+ scalar_t__ lua_newuserdata (int *,scalar_t__) ;
+ int lua_rawgeti (int *,int ,scalar_t__) ;
+ int lua_setmetatable (int *,int) ;
+ int memcpy (int ,int ,scalar_t__) ;
+ scalar_t__ recv_cb ;
 
 __attribute__((used)) static void monitor_task(os_param_t param, uint8_t prio)
 {

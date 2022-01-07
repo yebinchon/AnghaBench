@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int Size; void* Str; } ;
-typedef  TYPE_1__ VALUE ;
+typedef TYPE_1__ VALUE ;
 
-/* Variables and functions */
- void* Malloc (int) ; 
- int /*<<< orphan*/  StrCpy (void*,int,char*) ; 
- int StrLen (char*) ; 
- int /*<<< orphan*/  Trim (void*) ; 
+
+ void* Malloc (int) ;
+ int StrCpy (void*,int,char*) ;
+ int StrLen (char*) ;
+ int Trim (void*) ;
 
 VALUE *NewStrValue(char *str)
 {
-	VALUE *v;
-	// Validate arguments
-	if (str == NULL)
-	{
-		return NULL;
-	}
+ VALUE *v;
 
-	// Memory allocation
-	v = Malloc(sizeof(VALUE));
+ if (str == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	// String copy
-	v->Size = StrLen(str) + 1;
-	v->Str = Malloc(v->Size);
-	StrCpy(v->Str, v->Size, str);
 
-	Trim(v->Str);
+ v = Malloc(sizeof(VALUE));
 
-	return v;
+
+ v->Size = StrLen(str) + 1;
+ v->Str = Malloc(v->Size);
+ StrCpy(v->Str, v->Size, str);
+
+ Trim(v->Str);
+
+ return v;
 }

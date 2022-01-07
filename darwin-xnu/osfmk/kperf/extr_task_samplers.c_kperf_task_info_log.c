@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct kperf_context {int /*<<< orphan*/  cur_pid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUF_DATA (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PERF_TK_INFO_DATA ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+
+
+struct kperf_context {int cur_pid; } ;
+
+
+ int BUF_DATA (int ,int ) ;
+ int PERF_TK_INFO_DATA ;
+ int assert (int ) ;
 
 void
 kperf_task_info_log(struct kperf_context *ctx)
 {
-	assert(ctx != NULL);
+ assert(ctx != ((void*)0));
 
-	BUF_DATA(PERF_TK_INFO_DATA, ctx->cur_pid);
+ BUF_DATA(PERF_TK_INFO_DATA, ctx->cur_pid);
 }

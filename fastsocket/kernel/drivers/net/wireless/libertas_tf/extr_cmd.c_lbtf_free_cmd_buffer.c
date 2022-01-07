@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lbtf_private {struct cmd_ctrl_node* cmd_array; } ;
 struct cmd_ctrl_node {struct cmd_ctrl_node* cmdbuf; } ;
 
-/* Variables and functions */
- unsigned int LBS_NUM_CMD_BUFFERS ; 
- int /*<<< orphan*/  LBTF_DEB_HOST ; 
- int /*<<< orphan*/  kfree (struct cmd_ctrl_node*) ; 
- int /*<<< orphan*/  lbtf_deb_enter (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lbtf_deb_host (char*) ; 
- int /*<<< orphan*/  lbtf_deb_leave (int /*<<< orphan*/ ) ; 
+
+ unsigned int LBS_NUM_CMD_BUFFERS ;
+ int LBTF_DEB_HOST ;
+ int kfree (struct cmd_ctrl_node*) ;
+ int lbtf_deb_enter (int ) ;
+ int lbtf_deb_host (char*) ;
+ int lbtf_deb_leave (int ) ;
 
 int lbtf_free_cmd_buffer(struct lbtf_private *priv)
 {
-	struct cmd_ctrl_node *cmdarray;
-	unsigned int i;
+ struct cmd_ctrl_node *cmdarray;
+ unsigned int i;
 
-	lbtf_deb_enter(LBTF_DEB_HOST);
+ lbtf_deb_enter(LBTF_DEB_HOST);
 
-	/* need to check if cmd array is allocated or not */
-	if (priv->cmd_array == NULL) {
-		lbtf_deb_host("FREE_CMD_BUF: cmd_array is NULL\n");
-		goto done;
-	}
 
-	cmdarray = priv->cmd_array;
+ if (priv->cmd_array == ((void*)0)) {
+  lbtf_deb_host("FREE_CMD_BUF: cmd_array is NULL\n");
+  goto done;
+ }
 
-	/* Release shared memory buffers */
-	for (i = 0; i < LBS_NUM_CMD_BUFFERS; i++) {
-		kfree(cmdarray[i].cmdbuf);
-		cmdarray[i].cmdbuf = NULL;
-	}
+ cmdarray = priv->cmd_array;
 
-	/* Release cmd_ctrl_node */
-	kfree(priv->cmd_array);
-	priv->cmd_array = NULL;
+
+ for (i = 0; i < LBS_NUM_CMD_BUFFERS; i++) {
+  kfree(cmdarray[i].cmdbuf);
+  cmdarray[i].cmdbuf = ((void*)0);
+ }
+
+
+ kfree(priv->cmd_array);
+ priv->cmd_array = ((void*)0);
 
 done:
-	lbtf_deb_leave(LBTF_DEB_HOST);
-	return 0;
+ lbtf_deb_leave(LBTF_DEB_HOST);
+ return 0;
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int /*<<< orphan*/  UnitWriteFlags ;
-struct TYPE_4__ {int /*<<< orphan*/  manager; } ;
-typedef  TYPE_1__ Unit ;
-typedef  int /*<<< orphan*/  EmergencyAction ;
 
-/* Variables and functions */
- int EOPNOTSUPP ; 
- int MANAGER_IS_SYSTEM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SD_BUS_ERROR_INVALID_ARGS ; 
- int /*<<< orphan*/  UNIT_WRITE_FLAGS_NOOP (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int parse_emergency_action (char const*,int,int /*<<< orphan*/ *) ; 
- int sd_bus_error_setf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char const*,char const*) ; 
- int sd_bus_message_read (int /*<<< orphan*/ *,char*,char const**) ; 
- int /*<<< orphan*/  unit_write_settingf (TYPE_1__*,int /*<<< orphan*/ ,char const*,char*,char const*,char const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
+typedef int UnitWriteFlags ;
+struct TYPE_4__ {int manager; } ;
+typedef TYPE_1__ Unit ;
+typedef int EmergencyAction ;
+
+
+ int EOPNOTSUPP ;
+ int MANAGER_IS_SYSTEM (int ) ;
+ int SD_BUS_ERROR_INVALID_ARGS ;
+ int UNIT_WRITE_FLAGS_NOOP (int ) ;
+ int assert (int *) ;
+ int parse_emergency_action (char const*,int,int *) ;
+ int sd_bus_error_setf (int *,int ,char*,char const*,char const*) ;
+ int sd_bus_message_read (int *,char*,char const**) ;
+ int unit_write_settingf (TYPE_1__*,int ,char const*,char*,char const*,char const*) ;
 
 __attribute__((used)) static int bus_set_transient_emergency_action(
                 Unit *u,

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct aoa_dma {int /*<<< orphan*/  mutex; int /*<<< orphan*/  tag; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_DEVBUF ; 
- int /*<<< orphan*/  bus_dma_tag_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (struct aoa_dma*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mtx_destroy (int /*<<< orphan*/ *) ; 
+
+
+
+struct aoa_dma {int mutex; int tag; } ;
+
+
+ int M_DEVBUF ;
+ int bus_dma_tag_destroy (int ) ;
+ int free (struct aoa_dma*,int ) ;
+ int mtx_destroy (int *) ;
 
 __attribute__((used)) static void
 aoa_dma_delete(struct aoa_dma *dma)
 {
-	bus_dma_tag_destroy(dma->tag);
-	mtx_destroy(&dma->mutex);
-	free(dma, M_DEVBUF);
+ bus_dma_tag_destroy(dma->tag);
+ mtx_destroy(&dma->mutex);
+ free(dma, M_DEVBUF);
 }

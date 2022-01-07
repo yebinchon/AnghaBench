@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  lsc; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int lsc; } ;
 struct le_dma_softc {TYPE_1__ sc_am7990; } ;
-typedef  int /*<<< orphan*/  device_t ;
+typedef int device_t ;
 
-/* Variables and functions */
- struct le_dma_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lance_resume (int /*<<< orphan*/ *) ; 
+
+ struct le_dma_softc* device_get_softc (int ) ;
+ int lance_resume (int *) ;
 
 __attribute__((used)) static int
 le_dma_resume(device_t dev)
 {
-	struct le_dma_softc *lesc;
+ struct le_dma_softc *lesc;
 
-	lesc = device_get_softc(dev);
+ lesc = device_get_softc(dev);
 
-	lance_resume(&lesc->sc_am7990.lsc);
+ lance_resume(&lesc->sc_am7990.lsc);
 
-	return (0);
+ return (0);
 }

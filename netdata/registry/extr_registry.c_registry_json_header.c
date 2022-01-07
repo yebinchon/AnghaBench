@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_4__* data; } ;
 struct web_client {TYPE_1__ response; } ;
-struct TYPE_8__ {int /*<<< orphan*/  contenttype; } ;
-struct TYPE_7__ {int /*<<< orphan*/  machine_guid; int /*<<< orphan*/  registry_hostname; } ;
-typedef  TYPE_2__ RRDHOST ;
+struct TYPE_8__ {int contenttype; } ;
+struct TYPE_7__ {int machine_guid; int registry_hostname; } ;
+typedef TYPE_2__ RRDHOST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CT_APPLICATION_JSON ; 
- int /*<<< orphan*/  buffer_flush (TYPE_4__*) ; 
- int /*<<< orphan*/  buffer_sprintf (TYPE_4__*,char*,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CT_APPLICATION_JSON ;
+ int buffer_flush (TYPE_4__*) ;
+ int buffer_sprintf (TYPE_4__*,char*,char const*,char const*,int ,int ) ;
 
 __attribute__((used)) static inline void registry_json_header(RRDHOST *host, struct web_client *w, const char *action, const char *status) {
     buffer_flush(w->response.data);

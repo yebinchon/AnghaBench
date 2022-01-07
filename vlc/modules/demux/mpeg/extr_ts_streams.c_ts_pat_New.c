@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int i_version; int i_ts_id; int b_generated; int /*<<< orphan*/  programs; int /*<<< orphan*/  handle; } ;
-typedef  TYPE_1__ ts_pat_t ;
-typedef  int /*<<< orphan*/  demux_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_INIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  handle_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_1__* malloc (int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int i_version; int i_ts_id; int b_generated; int programs; int handle; } ;
+typedef TYPE_1__ ts_pat_t ;
+typedef int demux_t ;
+
+
+ int ARRAY_INIT (int ) ;
+ int free (TYPE_1__*) ;
+ int handle_Init (int *,int *) ;
+ TYPE_1__* malloc (int) ;
 
 ts_pat_t *ts_pat_New( demux_t *p_demux )
 {
     ts_pat_t *pat = malloc( sizeof( ts_pat_t ) );
     if( !pat )
-        return NULL;
+        return ((void*)0);
 
     if( !handle_Init( p_demux, &pat->handle ) )
     {
         free( pat );
-        return NULL;
+        return ((void*)0);
     }
 
-    pat->i_version  = -1;
-    pat->i_ts_id    = -1;
-    pat->b_generated = false;
+    pat->i_version = -1;
+    pat->i_ts_id = -1;
+    pat->b_generated = 0;
     ARRAY_INIT( pat->programs );
 
     return pat;

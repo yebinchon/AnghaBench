@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  EnvColor; int /*<<< orphan*/  EnvMode; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int EnvColor; int EnvMode; } ;
 struct TYPE_6__ {TYPE_1__ Texture; } ;
-typedef  int /*<<< orphan*/  GLfloat ;
-typedef  scalar_t__ GLenum ;
-typedef  TYPE_2__ GLcontext ;
+typedef int GLfloat ;
+typedef scalar_t__ GLenum ;
+typedef TYPE_2__ GLcontext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COPY_4V (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENUM_TO_FLOAT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_INVALID_ENUM ; 
- scalar_t__ GL_TEXTURE_ENV ; 
-#define  GL_TEXTURE_ENV_COLOR 129 
-#define  GL_TEXTURE_ENV_MODE 128 
- int /*<<< orphan*/  gl_error (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
+
+ int COPY_4V (int *,int ) ;
+ int ENUM_TO_FLOAT (int ) ;
+ int GL_INVALID_ENUM ;
+ scalar_t__ GL_TEXTURE_ENV ;
+
+
+ int gl_error (TYPE_2__*,int ,char*) ;
 
 void gl_GetTexEnvfv( GLcontext *ctx,
                      GLenum target, GLenum pname, GLfloat *params )
@@ -35,12 +35,12 @@ void gl_GetTexEnvfv( GLcontext *ctx,
       return;
    }
    switch (pname) {
-      case GL_TEXTURE_ENV_MODE:
+      case 128:
          *params = ENUM_TO_FLOAT(ctx->Texture.EnvMode);
-	 break;
-      case GL_TEXTURE_ENV_COLOR:
-	 COPY_4V( params, ctx->Texture.EnvColor );
-	 break;
+  break;
+      case 129:
+  COPY_4V( params, ctx->Texture.EnvColor );
+  break;
       default:
          gl_error( ctx, GL_INVALID_ENUM, "glGetTexEnvfv(pname)" );
    }

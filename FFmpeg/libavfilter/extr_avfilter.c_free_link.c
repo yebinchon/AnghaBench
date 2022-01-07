@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {size_t srcpad; size_t dstpad; int /*<<< orphan*/  out_channel_layouts; int /*<<< orphan*/  in_channel_layouts; int /*<<< orphan*/  out_samplerates; int /*<<< orphan*/  in_samplerates; int /*<<< orphan*/  out_formats; int /*<<< orphan*/  in_formats; int /*<<< orphan*/  hw_frames_ctx; TYPE_2__* dst; TYPE_1__* src; } ;
-struct TYPE_7__ {size_t input_pads; int /*<<< orphan*/ ** inputs; } ;
-struct TYPE_6__ {size_t output_pads; int /*<<< orphan*/ ** outputs; } ;
-typedef  TYPE_3__ AVFilterLink ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_buffer_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avfilter_link_free (TYPE_3__**) ; 
- int /*<<< orphan*/  ff_channel_layouts_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_formats_unref (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {size_t srcpad; size_t dstpad; int out_channel_layouts; int in_channel_layouts; int out_samplerates; int in_samplerates; int out_formats; int in_formats; int hw_frames_ctx; TYPE_2__* dst; TYPE_1__* src; } ;
+struct TYPE_7__ {size_t input_pads; int ** inputs; } ;
+struct TYPE_6__ {size_t output_pads; int ** outputs; } ;
+typedef TYPE_3__ AVFilterLink ;
+
+
+ int av_buffer_unref (int *) ;
+ int avfilter_link_free (TYPE_3__**) ;
+ int ff_channel_layouts_unref (int *) ;
+ int ff_formats_unref (int *) ;
 
 __attribute__((used)) static void free_link(AVFilterLink *link)
 {
@@ -30,9 +30,9 @@ __attribute__((used)) static void free_link(AVFilterLink *link)
         return;
 
     if (link->src)
-        link->src->outputs[link->srcpad - link->src->output_pads] = NULL;
+        link->src->outputs[link->srcpad - link->src->output_pads] = ((void*)0);
     if (link->dst)
-        link->dst->inputs[link->dstpad - link->dst->input_pads] = NULL;
+        link->dst->inputs[link->dstpad - link->dst->input_pads] = ((void*)0);
 
     av_buffer_unref(&link->hw_frames_ctx);
 

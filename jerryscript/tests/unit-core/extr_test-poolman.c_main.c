@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  scalar_t__ uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- size_t TEST_CHUNK_SIZE ; 
- int /*<<< orphan*/  TEST_INIT () ; 
- size_t TEST_MAX_SUB_ITERS ; 
- int /*<<< orphan*/ * data ; 
- int /*<<< orphan*/  jmem_finalize () ; 
- int /*<<< orphan*/  jmem_heap_stats_print () ; 
- int /*<<< orphan*/  jmem_init () ; 
- scalar_t__ jmem_pools_alloc (size_t) ; 
- int /*<<< orphan*/  jmem_pools_collect_empty () ; 
- int /*<<< orphan*/  jmem_pools_free (scalar_t__*,size_t) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ ,scalar_t__*,size_t) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,scalar_t__*,size_t) ; 
- scalar_t__** ptrs ; 
- int rand () ; 
- scalar_t__ test_iters ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+typedef scalar_t__ uint32_t ;
+
+
+ int TEST_ASSERT (int) ;
+ size_t TEST_CHUNK_SIZE ;
+ int TEST_INIT () ;
+ size_t TEST_MAX_SUB_ITERS ;
+ int * data ;
+ int jmem_finalize () ;
+ int jmem_heap_stats_print () ;
+ int jmem_init () ;
+ scalar_t__ jmem_pools_alloc (size_t) ;
+ int jmem_pools_collect_empty () ;
+ int jmem_pools_free (scalar_t__*,size_t) ;
+ int memcmp (int ,scalar_t__*,size_t) ;
+ int memcpy (int ,scalar_t__*,size_t) ;
+ scalar_t__** ptrs ;
+ int rand () ;
+ scalar_t__ test_iters ;
 
 int
 main (void)
@@ -46,7 +46,7 @@ main (void)
     {
       ptrs[j] = (uint8_t *) jmem_pools_alloc (TEST_CHUNK_SIZE);
 
-      if (ptrs[j] != NULL)
+      if (ptrs[j] != ((void*)0))
       {
         for (size_t k = 0; k < TEST_CHUNK_SIZE; k++)
         {
@@ -57,7 +57,7 @@ main (void)
       }
     }
 
-    /* jmem_heap_print (false); */
+
 
     for (size_t j = 0; j < subiters; j++)
     {
@@ -66,7 +66,7 @@ main (void)
         jmem_pools_collect_empty ();
       }
 
-      if (ptrs[j] != NULL)
+      if (ptrs[j] != ((void*)0))
       {
         TEST_ASSERT (!memcmp (data[j], ptrs[j], TEST_CHUNK_SIZE));
 
@@ -75,9 +75,9 @@ main (void)
     }
   }
 
-#ifdef JMEM_STATS
-  jmem_heap_stats_print ();
-#endif /* JMEM_STATS */
+
+
+
 
   jmem_finalize ();
 

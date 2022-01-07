@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_11__ {TYPE_2__* FoundState; TYPE_1__* MinContext; } ;
 struct TYPE_10__ {scalar_t__ Freq; } ;
 struct TYPE_9__ {int SummFreq; } ;
-typedef  TYPE_2__ CPpmd_State ;
-typedef  TYPE_3__ CPpmd7 ;
+typedef TYPE_2__ CPpmd_State ;
+typedef TYPE_3__ CPpmd7 ;
 
-/* Variables and functions */
- scalar_t__ MAX_FREQ ; 
- int /*<<< orphan*/  NextContext (TYPE_3__*) ; 
- int /*<<< orphan*/  Rescale (TYPE_3__*) ; 
- int /*<<< orphan*/  SwapStates (TYPE_2__*,TYPE_2__*) ; 
+
+ scalar_t__ MAX_FREQ ;
+ int NextContext (TYPE_3__*) ;
+ int Rescale (TYPE_3__*) ;
+ int SwapStates (TYPE_2__*,TYPE_2__*) ;
 
 __attribute__((used)) static void Ppmd7_Update1(CPpmd7 *p)
 {

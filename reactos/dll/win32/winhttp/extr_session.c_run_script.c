@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uc ;
-struct AUTO_PROXY_SCRIPT_BUFFER {int dwStructSize; char* lpszScriptBuffer; int /*<<< orphan*/  dwScriptBufferSize; } ;
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int /*<<< orphan*/  WINHTTP_PROXY_INFO ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_4__ {int dwStructSize; int dwHostNameLength; int /*<<< orphan*/  lpszHostName; } ;
-typedef  TYPE_1__ URL_COMPONENTSW ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  InternetDeInitializeAutoProxyDll (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InternetGetProxyInfo (char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InternetInitializeAutoProxyDll (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct AUTO_PROXY_SCRIPT_BUFFER*) ; 
- scalar_t__ WinHttpCrackUrl (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  heap_free (char*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  parse_script_result (char*,int /*<<< orphan*/ *) ; 
- char* strdupWA (int /*<<< orphan*/  const*) ; 
- char* strdupWA_sized (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uc ;
+struct AUTO_PROXY_SCRIPT_BUFFER {int dwStructSize; char* lpszScriptBuffer; int dwScriptBufferSize; } ;
+typedef int buffer ;
+typedef int WINHTTP_PROXY_INFO ;
+typedef int WCHAR ;
+struct TYPE_4__ {int dwStructSize; int dwHostNameLength; int lpszHostName; } ;
+typedef TYPE_1__ URL_COMPONENTSW ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int InternetDeInitializeAutoProxyDll (int *,int ) ;
+ int InternetGetProxyInfo (char*,int ,char*,int ,char**,int *) ;
+ int InternetInitializeAutoProxyDll (int ,int *,int *,int *,struct AUTO_PROXY_SCRIPT_BUFFER*) ;
+ scalar_t__ WinHttpCrackUrl (int const*,int ,int ,TYPE_1__*) ;
+ int heap_free (char*) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int parse_script_result (char*,int *) ;
+ char* strdupWA (int const*) ;
+ char* strdupWA_sized (int ,int) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static BOOL run_script( char *script, DWORD size, const WCHAR *url, WINHTTP_PROXY_INFO *info )
 {
@@ -47,7 +47,7 @@ __attribute__((used)) static BOOL run_script( char *script, DWORD size, const WC
     buffer.dwScriptBufferSize = size;
 
     if (!(urlA = strdupWA( url ))) return FALSE;
-    if (!(ret = InternetInitializeAutoProxyDll( 0, NULL, NULL, NULL, &buffer )))
+    if (!(ret = InternetInitializeAutoProxyDll( 0, ((void*)0), ((void*)0), ((void*)0), &buffer )))
     {
         heap_free( urlA );
         return FALSE;
@@ -71,5 +71,5 @@ __attribute__((used)) static BOOL run_script( char *script, DWORD size, const WC
         heap_free( hostnameA );
     }
     heap_free( urlA );
-    return InternetDeInitializeAutoProxyDll( NULL, 0 );
+    return InternetDeInitializeAutoProxyDll( ((void*)0), 0 );
 }

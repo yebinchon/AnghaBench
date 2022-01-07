@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int NumberOfInterrupts; scalar_t__ isSleeping; scalar_t__ isIdle; TYPE_1__* interrupts; } ;
 struct TYPE_3__ {int level; int vector; } ;
 
-/* Variables and functions */
- TYPE_2__* MSH2 ; 
- int MappedMemoryReadLong (int) ; 
- int /*<<< orphan*/  MappedMemoryWriteLong (int,int) ; 
- size_t SR ; 
- size_t VBR ; 
- int /*<<< orphan*/  get_addr_ht (int) ; 
- int /*<<< orphan*/  master_ip ; 
- int master_pc ; 
- int* master_reg ; 
+
+ TYPE_2__* MSH2 ;
+ int MappedMemoryReadLong (int) ;
+ int MappedMemoryWriteLong (int,int) ;
+ size_t SR ;
+ size_t VBR ;
+ int get_addr_ht (int) ;
+ int master_ip ;
+ int master_pc ;
+ int* master_reg ;
 
 void DynarecMasterHandleInterrupts()
 {
@@ -42,7 +42,7 @@ void DynarecMasterHandleInterrupts()
     MSH2->isIdle = 0;
     MSH2->isSleeping = 0;
   }
-  //printf("DynarecMasterHandleInterrupts pc=%x ip=%x\n",master_pc,(int)master_ip);
-  //printf("master_cc=%d slave_cc=%d\n",master_cc,slave_cc);
-  //printf("frame=%d\n",framecounter);
+
+
+
 }

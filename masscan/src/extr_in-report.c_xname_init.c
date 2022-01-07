@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char* name; unsigned int length; unsigned int code; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  global_xnames ; 
- TYPE_1__* mynames ; 
- int /*<<< orphan*/  smack_add_pattern (int /*<<< orphan*/ ,char const*,unsigned int,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  smack_compile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  smack_create (char*,int /*<<< orphan*/ ) ; 
+
+ int global_xnames ;
+ TYPE_1__* mynames ;
+ int smack_add_pattern (int ,char const*,unsigned int,unsigned int,int ) ;
+ int smack_compile (int ) ;
+ int smack_create (char*,int ) ;
 
 __attribute__((used)) static void
 xname_init(void)
@@ -33,7 +33,7 @@ xname_init(void)
         unsigned id = mynames[i].code;
 
 
-        smack_add_pattern(  global_xnames,
+        smack_add_pattern( global_xnames,
                             pattern,
                             len,
                             id,

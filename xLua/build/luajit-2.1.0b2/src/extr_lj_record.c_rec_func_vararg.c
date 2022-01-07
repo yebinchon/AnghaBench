@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int maxslot; scalar_t__ baseslot; int /*<<< orphan*/ * base; int /*<<< orphan*/  framedepth; TYPE_2__* pt; } ;
-typedef  TYPE_1__ jit_State ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int maxslot; scalar_t__ baseslot; int * base; int framedepth; TYPE_2__* pt; } ;
+typedef TYPE_1__ jit_State ;
 struct TYPE_6__ {int flags; scalar_t__ framesize; scalar_t__ numparams; } ;
-typedef  TYPE_2__ GCproto ;
-typedef  int BCReg ;
+typedef TYPE_2__ GCproto ;
+typedef int BCReg ;
 
-/* Variables and functions */
- scalar_t__ LJ_MAX_JSLOTS ; 
- int /*<<< orphan*/  LJ_TRERR_STACKOV ; 
- int PROTO_VARARG ; 
- int /*<<< orphan*/  TREF_NIL ; 
- int /*<<< orphan*/  lj_trace_err (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_assert (int) ; 
+
+ scalar_t__ LJ_MAX_JSLOTS ;
+ int LJ_TRERR_STACKOV ;
+ int PROTO_VARARG ;
+ int TREF_NIL ;
+ int lj_trace_err (TYPE_1__*,int ) ;
+ int lua_assert (int) ;
 
 __attribute__((used)) static void rec_func_vararg(jit_State *J)
 {
@@ -33,8 +33,8 @@ __attribute__((used)) static void rec_func_vararg(jit_State *J)
   lua_assert((pt->flags & PROTO_VARARG));
   if (J->baseslot + vframe + pt->framesize >= LJ_MAX_JSLOTS)
     lj_trace_err(J, LJ_TRERR_STACKOV);
-  J->base[vframe-1] = J->base[-1];  /* Copy function up. */
-  /* Copy fixarg slots up and set their original slots to nil. */
+  J->base[vframe-1] = J->base[-1];
+
   fixargs = pt->numparams < J->maxslot ? pt->numparams : J->maxslot;
   for (s = 0; s < fixargs; s++) {
     J->base[vframe+s] = J->base[s];

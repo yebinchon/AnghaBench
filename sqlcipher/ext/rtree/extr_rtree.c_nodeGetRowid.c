@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  i64 ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int i64 ;
 struct TYPE_7__ {int nBytesPerCell; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * zData; } ;
-typedef  TYPE_1__ RtreeNode ;
-typedef  TYPE_2__ Rtree ;
+struct TYPE_6__ {int * zData; } ;
+typedef TYPE_1__ RtreeNode ;
+typedef TYPE_2__ Rtree ;
 
-/* Variables and functions */
- int NCELL (TYPE_1__*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  readInt64 (int /*<<< orphan*/ *) ; 
+
+ int NCELL (TYPE_1__*) ;
+ int assert (int) ;
+ int readInt64 (int *) ;
 
 __attribute__((used)) static i64 nodeGetRowid(
-  Rtree *pRtree,       /* The overall R-Tree */
-  RtreeNode *pNode,    /* The node from which to extract the ID */
-  int iCell            /* The cell index from which to extract the ID */
+  Rtree *pRtree,
+  RtreeNode *pNode,
+  int iCell
 ){
   assert( iCell<NCELL(pNode) );
   return readInt64(&pNode->zData[4 + pRtree->nBytesPerCell*iCell]);

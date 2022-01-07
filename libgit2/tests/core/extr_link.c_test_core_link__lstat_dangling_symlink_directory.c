@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_size; int /*<<< orphan*/  st_mode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  S_ISLNK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_assert_equal_i (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_must_fail (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_must_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  clar__skip () ; 
- int /*<<< orphan*/  do_symlink (char*,char*,int) ; 
- int /*<<< orphan*/  p_lstat (char*,struct stat*) ; 
- int /*<<< orphan*/  should_run () ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+
+
+struct stat {int st_size; int st_mode; } ;
+
+
+ int S_ISLNK (int ) ;
+ int cl_assert (int ) ;
+ int cl_assert_equal_i (int ,int ) ;
+ int cl_must_fail (int ) ;
+ int cl_must_pass (int ) ;
+ int clar__skip () ;
+ int do_symlink (char*,char*,int) ;
+ int p_lstat (char*,struct stat*) ;
+ int should_run () ;
+ int strlen (char*) ;
 
 void test_core_link__lstat_dangling_symlink_directory(void)
 {
-	struct stat st;
+ struct stat st;
 
-	if (!should_run())
-		clar__skip();
+ if (!should_run())
+  clar__skip();
 
-	do_symlink("lstat_nonexistent", "lstat_dangling_dir", 1);
+ do_symlink("lstat_nonexistent", "lstat_dangling_dir", 1);
 
-	cl_must_fail(p_lstat("lstat_nonexistent", &st));
+ cl_must_fail(p_lstat("lstat_nonexistent", &st));
 
-	cl_must_pass(p_lstat("lstat_dangling_dir", &st));
-	cl_assert(S_ISLNK(st.st_mode));
-	cl_assert_equal_i(strlen("lstat_nonexistent"), st.st_size);
+ cl_must_pass(p_lstat("lstat_dangling_dir", &st));
+ cl_assert(S_ISLNK(st.st_mode));
+ cl_assert_equal_i(strlen("lstat_nonexistent"), st.st_size);
 }

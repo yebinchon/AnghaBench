@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  azExt ;
-struct TYPE_2__ {char* zArgv0; int bSchemaPK; int bSchemaOnly; int bHandleVtab; int /*<<< orphan*/  db; int /*<<< orphan*/  fDebug; } ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_CONFIG_SINGLETHREAD ; 
- scalar_t__ SQLITE_ROW ; 
- int /*<<< orphan*/  all_tables_sql () ; 
- void changeset_one_table (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmdlineError (char*,...) ; 
- int /*<<< orphan*/ * db_prepare (char*,int /*<<< orphan*/ ) ; 
- void diff_one_table (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  free (char**) ; 
- TYPE_1__ g ; 
- int /*<<< orphan*/  printf (char*) ; 
- void rbudiff_one_table (char const*,int /*<<< orphan*/ *) ; 
- char** realloc (char**,int) ; 
- int /*<<< orphan*/  showHelp () ; 
- int /*<<< orphan*/  sqlite3_close (int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_column_text (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_config (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_enable_load_extension (int /*<<< orphan*/ ,int) ; 
- int sqlite3_exec (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char**) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int sqlite3_load_extension (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char**) ; 
- char* sqlite3_mprintf (char*,char const*) ; 
- int sqlite3_open (char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stdout ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/  strtol (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void summarize_one_table (char const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+typedef int azExt ;
+struct TYPE_2__ {char* zArgv0; int bSchemaPK; int bSchemaOnly; int bHandleVtab; int db; int fDebug; } ;
+typedef int FILE ;
+
+
+ int SQLITE_CONFIG_SINGLETHREAD ;
+ scalar_t__ SQLITE_ROW ;
+ int all_tables_sql () ;
+ void changeset_one_table (char const*,int *) ;
+ int cmdlineError (char*,...) ;
+ int * db_prepare (char*,int ) ;
+ void diff_one_table (char const*,int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int *,char*) ;
+ int free (char**) ;
+ TYPE_1__ g ;
+ int printf (char*) ;
+ void rbudiff_one_table (char const*,int *) ;
+ char** realloc (char**,int) ;
+ int showHelp () ;
+ int sqlite3_close (int ) ;
+ scalar_t__ sqlite3_column_text (int *,int ) ;
+ int sqlite3_config (int ) ;
+ int sqlite3_enable_load_extension (int ,int) ;
+ int sqlite3_exec (int ,char*,int ,int ,char**) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_load_extension (int ,char*,int ,char**) ;
+ char* sqlite3_mprintf (char*,char const*) ;
+ int sqlite3_open (char const*,int *) ;
+ scalar_t__ sqlite3_step (int *) ;
+ int * stdout ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int strtol (char*,int ,int ) ;
+ void summarize_one_table (char const*,int *) ;
 
 int main(int argc, char **argv){
   const char *zDb1 = 0;
@@ -58,10 +58,10 @@ int main(int argc, char **argv){
   char *zTab = 0;
   FILE *out = stdout;
   void (*xDiff)(const char*,FILE*) = diff_one_table;
-#ifndef SQLITE_OMIT_LOAD_EXTENSION
+
   int nExt = 0;
   char **azExt = 0;
-#endif
+
   int useTransaction = 0;
   int neverUseTransaction = 0;
 
@@ -87,14 +87,14 @@ int main(int argc, char **argv){
         showHelp();
         return 0;
       }else
-#ifndef SQLITE_OMIT_LOAD_EXTENSION
+
       if( strcmp(z,"lib")==0 || strcmp(z,"L")==0 ){
         if( i==argc-1 ) cmdlineError("missing argument to %s", argv[i]);
         azExt = realloc(azExt, sizeof(azExt[0])*(nExt+1));
         if( azExt==0 ) cmdlineError("out of memory");
         azExt[nExt++] = argv[++i];
       }else
-#endif
+
       if( strcmp(z,"primarykey")==0 ){
         g.bSchemaPK = 1;
       }else
@@ -139,7 +139,7 @@ int main(int argc, char **argv){
   if( rc || zErrMsg ){
     cmdlineError("\"%s\" does not appear to be a valid SQLite database", zDb1);
   }
-#ifndef SQLITE_OMIT_LOAD_EXTENSION
+
   sqlite3_enable_load_extension(g.db, 1);
   for(i=0; i<nExt; i++){
     rc = sqlite3_load_extension(g.db, azExt[i], 0, &zErrMsg);
@@ -148,7 +148,7 @@ int main(int argc, char **argv){
     }
   }
   free(azExt);
-#endif
+
   zSql = sqlite3_mprintf("ATTACH %Q as aux;", zDb2);
   rc = sqlite3_exec(g.db, zSql, 0, 0, &zErrMsg);
   if( rc || zErrMsg ){
@@ -170,7 +170,7 @@ int main(int argc, char **argv){
   if( zTab ){
     xDiff(zTab, out);
   }else{
-    /* Handle tables one by one */
+
     pStmt = db_prepare("%s", all_tables_sql() );
     while( SQLITE_ROW==sqlite3_step(pStmt) ){
       xDiff((const char*)sqlite3_column_text(pStmt,0), out);
@@ -179,8 +179,8 @@ int main(int argc, char **argv){
   }
   if( useTransaction ) printf("COMMIT;\n");
 
-  /* TBD: Handle trigger differences */
-  /* TBD: Handle view differences */
+
+
   sqlite3_close(g.db);
   return 0;
 }

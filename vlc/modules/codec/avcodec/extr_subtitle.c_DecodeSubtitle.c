@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  subpicture_t ;
-typedef  int /*<<< orphan*/  decoder_t ;
-typedef  int /*<<< orphan*/  block_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * DecodeBlock (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int VLCDEC_SUCCESS ; 
- int /*<<< orphan*/  decoder_QueueSub (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int subpicture_t ;
+typedef int decoder_t ;
+typedef int block_t ;
+
+
+ int * DecodeBlock (int *,int **) ;
+ int VLCDEC_SUCCESS ;
+ int decoder_QueueSub (int *,int *) ;
 
 __attribute__((used)) static int DecodeSubtitle(decoder_t *dec, block_t *block)
 {
-    block_t **block_ptr = block ? &block : NULL;
+    block_t **block_ptr = block ? &block : ((void*)0);
     subpicture_t *spu;
-    while ((spu = DecodeBlock(dec, block_ptr)) != NULL)
+    while ((spu = DecodeBlock(dec, block_ptr)) != ((void*)0))
         decoder_QueueSub(dec, spu);
     return VLCDEC_SUCCESS;
 }

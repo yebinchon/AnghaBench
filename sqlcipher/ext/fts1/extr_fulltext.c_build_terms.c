@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite_int64 ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int sqlite_int64 ;
 struct TYPE_10__ {TYPE_3__* pTokenizer; } ;
-typedef  TYPE_2__ sqlite3_tokenizer_cursor ;
+typedef TYPE_2__ sqlite3_tokenizer_cursor ;
 struct TYPE_11__ {TYPE_1__* pModule; } ;
-typedef  TYPE_3__ sqlite3_tokenizer ;
-struct TYPE_9__ {int (* xOpen ) (TYPE_3__*,char const*,int,TYPE_2__**) ;int (* xNext ) (TYPE_2__*,char const**,int*,int*,int*,int*) ;int /*<<< orphan*/  (* xClose ) (TYPE_2__*) ;} ;
-typedef  int /*<<< orphan*/  Hash ;
-typedef  int /*<<< orphan*/  DocList ;
+typedef TYPE_3__ sqlite3_tokenizer ;
+struct TYPE_9__ {int (* xOpen ) (TYPE_3__*,char const*,int,TYPE_2__**) ;int (* xNext ) (TYPE_2__*,char const**,int*,int*,int*,int*) ;int (* xClose ) (TYPE_2__*) ;} ;
+typedef int Hash ;
+typedef int DocList ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DL_POSITIONS_OFFSETS ; 
- int /*<<< orphan*/  HASH_STRING ; 
- int /*<<< orphan*/ * HashFind (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  HashInit (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HashInsert (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ *) ; 
- int SQLITE_ERROR ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  docListAddDocid (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  docListAddPosOffset (int /*<<< orphan*/ *,int,int,int) ; 
- int /*<<< orphan*/ * docListNew (int /*<<< orphan*/ ) ; 
- int stub1 (TYPE_3__*,char const*,int,TYPE_2__**) ; 
- int stub2 (TYPE_2__*,char const**,int*,int*,int*,int*) ; 
- int /*<<< orphan*/  stub3 (TYPE_2__*) ; 
+
+ int DL_POSITIONS_OFFSETS ;
+ int HASH_STRING ;
+ int * HashFind (int *,char const*,int) ;
+ int HashInit (int *,int ,int) ;
+ int HashInsert (int *,char const*,int,int *) ;
+ int SQLITE_ERROR ;
+ int SQLITE_OK ;
+ int docListAddDocid (int *,int ) ;
+ int docListAddPosOffset (int *,int,int,int) ;
+ int * docListNew (int ) ;
+ int stub1 (TYPE_3__*,char const*,int,TYPE_2__**) ;
+ int stub2 (TYPE_2__*,char const**,int*,int*,int*,int*) ;
+ int stub3 (TYPE_2__*) ;
 
 __attribute__((used)) static int build_terms(Hash *terms, sqlite3_tokenizer *pTokenizer,
                        const char *zText, sqlite_int64 iDocid){
@@ -55,14 +55,14 @@ __attribute__((used)) static int build_terms(Hash *terms, sqlite3_tokenizer *pTo
                                                &iPosition) ){
     DocList *p;
 
-    /* Positions can't be negative; we use -1 as a terminator internally. */
+
     if( iPosition<0 ) {
-      rc = SQLITE_ERROR;  
+      rc = SQLITE_ERROR;
       goto err;
     }
 
     p = HashFind(terms, pToken, nTokenBytes);
-    if( p==NULL ){
+    if( p==((void*)0) ){
       p = docListNew(DL_POSITIONS_OFFSETS);
       docListAddDocid(p, iDocid);
       HashInsert(terms, pToken, nTokenBytes, p);
@@ -71,11 +71,11 @@ __attribute__((used)) static int build_terms(Hash *terms, sqlite3_tokenizer *pTo
   }
 
 err:
-  /* TODO(shess) Check return?  Should this be able to cause errors at
-  ** this point?  Actually, same question about sqlite3_finalize(),
-  ** though one could argue that failure there means that the data is
-  ** not durable.  *ponder*
-  */
+
+
+
+
+
   pTokenizer->pModule->xClose(pCursor);
   return rc;
 }

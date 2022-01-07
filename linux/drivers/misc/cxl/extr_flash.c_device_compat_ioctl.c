@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct file {int dummy; } ;
 
-/* Variables and functions */
- long device_ioctl (struct file*,unsigned int,unsigned long) ; 
+
+ long device_ioctl (struct file*,unsigned int,unsigned long) ;
 
 __attribute__((used)) static long device_compat_ioctl(struct file *file, unsigned int cmd,
-				unsigned long arg)
+    unsigned long arg)
 {
-	return device_ioctl(file, cmd, arg);
+ return device_ioctl(file, cmd, arg);
 }

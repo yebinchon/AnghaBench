@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_MAC_ADB ; 
- int /*<<< orphan*/  disable_irq (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  enable_irq (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  macii_interrupt (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ int IRQ_MAC_ADB ;
+ int disable_irq (int ) ;
+ int enable_irq (int ) ;
+ int macii_interrupt (int ,int *) ;
 
 __attribute__((used)) static void macii_poll(void)
 {
-	disable_irq(IRQ_MAC_ADB);
-	macii_interrupt(0, NULL);
-	enable_irq(IRQ_MAC_ADB);
+ disable_irq(IRQ_MAC_ADB);
+ macii_interrupt(0, ((void*)0));
+ enable_irq(IRQ_MAC_ADB);
 }

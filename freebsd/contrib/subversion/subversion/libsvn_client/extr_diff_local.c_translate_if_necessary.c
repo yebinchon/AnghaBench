@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_subst_eol_style_t ;
-struct TYPE_3__ {int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_STRINGIFY (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_PROP_EOL_STYLE ; 
- int /*<<< orphan*/  SVN_PROP_KEYWORDS ; 
- int /*<<< orphan*/  TRUE ; 
- TYPE_1__* svn_hash_gets (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_io_file_del_on_pool_cleanup ; 
- int /*<<< orphan*/  svn_stream_copy3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_open_readonly (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_open_unique (int /*<<< orphan*/ **,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_subst_build_keywords3 (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_subst_eol_style_from_value (int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_subst_eol_style_none ; 
- int /*<<< orphan*/ * svn_subst_stream_translated (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_subst_translation_required (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_subst_eol_style_t ;
+struct TYPE_3__ {int data; } ;
+typedef TYPE_1__ svn_string_t ;
+typedef int svn_stream_t ;
+typedef int svn_error_t ;
+typedef int svn_cancel_func_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int APR_STRINGIFY (int ) ;
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_INVALID_REVNUM ;
+ int * SVN_NO_ERROR ;
+ int SVN_PROP_EOL_STYLE ;
+ int SVN_PROP_KEYWORDS ;
+ int TRUE ;
+ TYPE_1__* svn_hash_gets (int *,int ) ;
+ int svn_io_file_del_on_pool_cleanup ;
+ int svn_stream_copy3 (int *,int *,int ,void*,int *) ;
+ int svn_stream_open_readonly (int **,char const*,int *,int *) ;
+ int svn_stream_open_unique (int **,char const**,int *,int ,int *,int *) ;
+ int svn_subst_build_keywords3 (int **,int ,int ,char*,char*,int ,char*,int *) ;
+ int svn_subst_eol_style_from_value (int *,char const**,int ) ;
+ int svn_subst_eol_style_none ;
+ int * svn_subst_stream_translated (int *,char const*,int ,int *,int ,int *) ;
+ int svn_subst_translation_required (int ,char const*,int *,int ,int ) ;
 
 __attribute__((used)) static svn_error_t *
 translate_if_necessary(const char **local_abspath,
@@ -56,8 +56,8 @@ translate_if_necessary(const char **local_abspath,
   svn_stream_t *contents;
   svn_stream_t *dst;
 
-  /* if (svn_hash_gets(props, SVN_PROP_SPECIAL))
-      ### TODO: Implement */
+
+
 
   eol_style_val = svn_hash_gets(props, SVN_PROP_EOL_STYLE);
   keywords_val = svn_hash_gets(props, SVN_PROP_KEYWORDS);
@@ -66,7 +66,7 @@ translate_if_necessary(const char **local_abspath,
     svn_subst_eol_style_from_value(&eol_style, &eol, eol_style_val->data);
   else
     {
-      eol = NULL;
+      eol = ((void*)0);
       eol_style = svn_subst_eol_style_none;
     }
 
@@ -75,7 +75,7 @@ translate_if_necessary(const char **local_abspath,
                                       APR_STRINGIFY(SVN_INVALID_REVNUM),
                                       "", "", 0, "", scratch_pool));
   else
-    keywords = NULL;
+    keywords = ((void*)0);
 
   if (!svn_subst_translation_required(eol_style, eol, keywords, FALSE, FALSE))
     return SVN_NO_ERROR;
@@ -83,12 +83,12 @@ translate_if_necessary(const char **local_abspath,
   SVN_ERR(svn_stream_open_readonly(&contents, *local_abspath,
                                     scratch_pool, scratch_pool));
 
-  SVN_ERR(svn_stream_open_unique(&dst, local_abspath, NULL,
+  SVN_ERR(svn_stream_open_unique(&dst, local_abspath, ((void*)0),
                                   svn_io_file_del_on_pool_cleanup,
                                   result_pool, scratch_pool));
 
-  dst = svn_subst_stream_translated(dst, eol, TRUE /* repair */,
-                                    keywords, FALSE /* expand */,
+  dst = svn_subst_stream_translated(dst, eol, TRUE ,
+                                    keywords, FALSE ,
                                     scratch_pool);
 
   SVN_ERR(svn_stream_copy3(contents, dst, cancel_func, cancel_baton,

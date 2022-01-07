@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct ra_hwdec_mapper {TYPE_1__* src; int /*<<< orphan*/  ra; struct priv* priv; } ;
-struct priv {int /*<<< orphan*/  rtarget_h; int /*<<< orphan*/  device_h; int /*<<< orphan*/  rtarget; int /*<<< orphan*/  device; } ;
-struct TYPE_9__ {int /*<<< orphan*/  (* DXLockObjectsNV ) (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* DXUnlockObjectsNV ) (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ;} ;
-struct TYPE_8__ {int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-struct TYPE_7__ {int /*<<< orphan*/  h; int /*<<< orphan*/  w; scalar_t__* planes; } ;
-typedef  TYPE_2__ RECT ;
-typedef  int /*<<< orphan*/  IDirect3DSurface9 ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_3__ GL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DTEXF_NONE ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDirect3DDevice9Ex_StretchRect (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MP_ERR (struct ra_hwdec_mapper*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_HRESULT_to_str (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_LastError_to_str () ; 
- TYPE_3__* ra_gl_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct ra_hwdec_mapper {TYPE_1__* src; int ra; struct priv* priv; } ;
+struct priv {int rtarget_h; int device_h; int rtarget; int device; } ;
+struct TYPE_9__ {int (* DXLockObjectsNV ) (int ,int,int *) ;int (* DXUnlockObjectsNV ) (int ,int,int *) ;} ;
+struct TYPE_8__ {int member_3; int member_2; int member_1; int member_0; } ;
+struct TYPE_7__ {int h; int w; scalar_t__* planes; } ;
+typedef TYPE_2__ RECT ;
+typedef int IDirect3DSurface9 ;
+typedef int HRESULT ;
+typedef TYPE_3__ GL ;
+
+
+ int D3DTEXF_NONE ;
+ scalar_t__ FAILED (int ) ;
+ int IDirect3DDevice9Ex_StretchRect (int ,int *,TYPE_2__*,int ,TYPE_2__*,int ) ;
+ int MP_ERR (struct ra_hwdec_mapper*,char*,int ) ;
+ int mp_HRESULT_to_str (int ) ;
+ int mp_LastError_to_str () ;
+ TYPE_3__* ra_gl_get (int ) ;
+ int stub1 (int ,int,int *) ;
+ int stub2 (int ,int,int *) ;
 
 __attribute__((used)) static int mapper_map(struct ra_hwdec_mapper *mapper)
 {

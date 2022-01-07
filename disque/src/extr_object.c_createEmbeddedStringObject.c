@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct sdshdr8 {size_t len; size_t alloc; char* buf; int /*<<< orphan*/  flags; } ;
-struct TYPE_4__ {int refcount; scalar_t__ notused; struct sdshdr8* ptr; int /*<<< orphan*/  encoding; int /*<<< orphan*/  type; } ;
-typedef  TYPE_1__ robj ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OBJ_ENCODING_EMBSTR ; 
- int /*<<< orphan*/  OBJ_STRING ; 
- int /*<<< orphan*/  SDS_TYPE_8 ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,size_t) ; 
- TYPE_1__* zmalloc (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct sdshdr8 {size_t len; size_t alloc; char* buf; int flags; } ;
+struct TYPE_4__ {int refcount; scalar_t__ notused; struct sdshdr8* ptr; int encoding; int type; } ;
+typedef TYPE_1__ robj ;
+
+
+ int OBJ_ENCODING_EMBSTR ;
+ int OBJ_STRING ;
+ int SDS_TYPE_8 ;
+ int memcpy (char*,char const*,size_t) ;
+ int memset (char*,int ,size_t) ;
+ TYPE_1__* zmalloc (int) ;
 
 robj *createEmbeddedStringObject(const char *ptr, size_t len) {
     robj *o = zmalloc(sizeof(robj)+sizeof(struct sdshdr8)+len+1);

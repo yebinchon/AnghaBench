@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cb_sequence_res_ok {int /*<<< orphan*/  target_highest_slotid; int /*<<< orphan*/  highest_slotid; int /*<<< orphan*/  slotid; int /*<<< orphan*/  sequenceid; int /*<<< orphan*/  sessionid; } ;
-typedef  scalar_t__ bool_t ;
-typedef  int /*<<< orphan*/  XDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CBX_ERR (char*) ; 
- int /*<<< orphan*/  NFS4_SESSIONID_SIZE ; 
- scalar_t__ xdr_opaque (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ xdr_u_int32_t (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct cb_sequence_res_ok {int target_highest_slotid; int highest_slotid; int slotid; int sequenceid; int sessionid; } ;
+typedef scalar_t__ bool_t ;
+typedef int XDR ;
+
+
+ int CBX_ERR (char*) ;
+ int NFS4_SESSIONID_SIZE ;
+ scalar_t__ xdr_opaque (int *,int ,int ) ;
+ scalar_t__ xdr_u_int32_t (int *,int *) ;
 
 __attribute__((used)) static bool_t op_cb_sequence_res_ok(XDR *xdr, struct cb_sequence_res_ok *res)
 {

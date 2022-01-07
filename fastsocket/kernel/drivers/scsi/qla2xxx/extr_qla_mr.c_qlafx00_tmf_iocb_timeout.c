@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  comp; int /*<<< orphan*/  comp_status; } ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int comp; int comp_status; } ;
 struct TYPE_7__ {TYPE_2__ tmf; } ;
 struct srb_iocb {TYPE_3__ u; } ;
 struct TYPE_5__ {struct srb_iocb iocb_cmd; } ;
 struct TYPE_8__ {TYPE_1__ u; } ;
-typedef  TYPE_4__ srb_t ;
+typedef TYPE_4__ srb_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CS_TIMEOUT ; 
- int /*<<< orphan*/  complete (int /*<<< orphan*/ *) ; 
+
+ int CS_TIMEOUT ;
+ int complete (int *) ;
 
 __attribute__((used)) static void
 qlafx00_tmf_iocb_timeout(void *data)
 {
-	srb_t *sp = (srb_t *)data;
-	struct srb_iocb *tmf = &sp->u.iocb_cmd;
+ srb_t *sp = (srb_t *)data;
+ struct srb_iocb *tmf = &sp->u.iocb_cmd;
 
-	tmf->u.tmf.comp_status = CS_TIMEOUT;
-	complete(&tmf->u.tmf.comp);
+ tmf->u.tmf.comp_status = CS_TIMEOUT;
+ complete(&tmf->u.tmf.comp);
 }

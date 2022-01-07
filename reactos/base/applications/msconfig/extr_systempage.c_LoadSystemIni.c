@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  szBuffer ;
-typedef  int WCHAR ;
-typedef  int UINT ;
-struct TYPE_4__ {int* pszText; int /*<<< orphan*/  mask; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * hParent; TYPE_1__ item; int /*<<< orphan*/  hInsertAfter; } ;
-typedef  TYPE_2__ TVINSERTSTRUCT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/ * HTREEITEM ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int BUFFER_SIZE ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_SYSTEM_TREE ; 
- int /*<<< orphan*/  StringCbCatW (int*,int,char*) ; 
- int /*<<< orphan*/  StringCbCopyW (int*,int,int*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  TVIF_TEXT ; 
- int /*<<< orphan*/  TVI_LAST ; 
- int /*<<< orphan*/ * TreeView_InsertItem (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/ * _wfopen (int*,char*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  feof (int /*<<< orphan*/ *) ; 
- scalar_t__ fgetws (int*,int,int /*<<< orphan*/ *) ; 
- int wcslen (int*) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int szBuffer ;
+typedef int WCHAR ;
+typedef int UINT ;
+struct TYPE_4__ {int* pszText; int mask; } ;
+struct TYPE_5__ {int * hParent; TYPE_1__ item; int hInsertAfter; } ;
+typedef TYPE_2__ TVINSERTSTRUCT ;
+typedef int HWND ;
+typedef int * HTREEITEM ;
+typedef int HRESULT ;
+typedef int FILE ;
+typedef int BOOL ;
+
+
+ int BUFFER_SIZE ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int GetDlgItem (int ,int ) ;
+ int IDC_SYSTEM_TREE ;
+ int StringCbCatW (int*,int,char*) ;
+ int StringCbCopyW (int*,int,int*) ;
+ int TRUE ;
+ int TVIF_TEXT ;
+ int TVI_LAST ;
+ int * TreeView_InsertItem (int ,TYPE_2__*) ;
+ int * _wfopen (int*,char*) ;
+ int fclose (int *) ;
+ int feof (int *) ;
+ scalar_t__ fgetws (int*,int,int *) ;
+ int wcslen (int*) ;
 
 __attribute__((used)) static BOOL
 LoadSystemIni(WCHAR * szPath, HWND hDlg)
 {
     WCHAR szBuffer[BUFFER_SIZE];
     HWND hDlgCtrl;
-    HTREEITEM parent = NULL;
+    HTREEITEM parent = ((void*)0);
     FILE* file;
     UINT length;
     TVINSERTSTRUCT insert;
@@ -82,13 +82,13 @@ LoadSystemIni(WCHAR * szPath, HWND hDlg)
 
                 if (szBuffer[0] == L';' || szBuffer[0] == L'[')
                 {
-                    /* Parent */
-                    insert.hParent = NULL;
+
+                    insert.hParent = ((void*)0);
                     parent = TreeView_InsertItem(hDlgCtrl, &insert);
                 }
                 else
                 {
-                    /* Child */
+
                     insert.hParent = parent;
                     TreeView_InsertItem(hDlgCtrl, &insert);
                 }

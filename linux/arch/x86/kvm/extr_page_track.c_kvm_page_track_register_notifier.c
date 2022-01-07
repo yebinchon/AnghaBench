@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct kvm_page_track_notifier_node {int /*<<< orphan*/  node; } ;
-struct kvm_page_track_notifier_head {int /*<<< orphan*/  track_notifier_list; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct kvm_page_track_notifier_node {int node; } ;
+struct kvm_page_track_notifier_head {int track_notifier_list; } ;
 struct TYPE_2__ {struct kvm_page_track_notifier_head track_notifier_head; } ;
-struct kvm {int /*<<< orphan*/  mmu_lock; TYPE_1__ arch; } ;
+struct kvm {int mmu_lock; TYPE_1__ arch; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hlist_add_head_rcu (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+ int hlist_add_head_rcu (int *,int *) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 void
 kvm_page_track_register_notifier(struct kvm *kvm,
-				 struct kvm_page_track_notifier_node *n)
+     struct kvm_page_track_notifier_node *n)
 {
-	struct kvm_page_track_notifier_head *head;
+ struct kvm_page_track_notifier_head *head;
 
-	head = &kvm->arch.track_notifier_head;
+ head = &kvm->arch.track_notifier_head;
 
-	spin_lock(&kvm->mmu_lock);
-	hlist_add_head_rcu(&n->node, &head->track_notifier_list);
-	spin_unlock(&kvm->mmu_lock);
+ spin_lock(&kvm->mmu_lock);
+ hlist_add_head_rcu(&n->node, &head->track_notifier_list);
+ spin_unlock(&kvm->mmu_lock);
 }

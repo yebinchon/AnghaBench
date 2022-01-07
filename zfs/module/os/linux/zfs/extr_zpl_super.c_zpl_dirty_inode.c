@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct inode {int dummy; } ;
-typedef  int /*<<< orphan*/  fstrans_cookie_t ;
+typedef int fstrans_cookie_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  spl_fstrans_mark () ; 
- int /*<<< orphan*/  spl_fstrans_unmark (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zfs_dirty_inode (struct inode*,int /*<<< orphan*/ ) ; 
+
+ int spl_fstrans_mark () ;
+ int spl_fstrans_unmark (int ) ;
+ int zfs_dirty_inode (struct inode*,int ) ;
 
 __attribute__((used)) static void
 zpl_dirty_inode(struct inode *ip)
 {
-	fstrans_cookie_t cookie;
+ fstrans_cookie_t cookie;
 
-	cookie = spl_fstrans_mark();
-	zfs_dirty_inode(ip, 0);
-	spl_fstrans_unmark(cookie);
+ cookie = spl_fstrans_mark();
+ zfs_dirty_inode(ip, 0);
+ spl_fstrans_unmark(cookie);
 }

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {TYPE_2__* YRHFy; TYPE_1__* fV7o35; int /*<<< orphan*/  uyKJn2; int /*<<< orphan*/  h2LrH3; } ;
-typedef  TYPE_3__ kWMzp1 ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_12__ {TYPE_2__* YRHFy; TYPE_1__* fV7o35; int uyKJn2; int h2LrH3; } ;
+typedef TYPE_3__ kWMzp1 ;
 struct TYPE_11__ {scalar_t__ NNm8q; scalar_t__ QhwfE1; } ;
 struct TYPE_10__ {unsigned long UyRVB4; int Be1a54; scalar_t__ PGh3e4; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AUUSL3 (unsigned long volatile*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  B1Wc_1 (TYPE_3__*) ; 
- int /*<<< orphan*/  CLbj94 (TYPE_3__*) ; 
- int /*<<< orphan*/  IoSy32 (TYPE_3__*,int,int) ; 
- int Sptqu ; 
- int /*<<< orphan*/  WdqxE (TYPE_3__*,int) ; 
- int /*<<< orphan*/  blWHd2 ; 
- int /*<<< orphan*/  c0gFy1 (TYPE_3__*,int) ; 
- int gQf6j1 ; 
- int /*<<< orphan*/  l4W8X (unsigned long volatile*) ; 
- int r3CcP2 ; 
- int /*<<< orphan*/  wP7Tk3 (int /*<<< orphan*/ *) ; 
+
+ int AUUSL3 (unsigned long volatile*,int ,int ) ;
+ int B1Wc_1 (TYPE_3__*) ;
+ int CLbj94 (TYPE_3__*) ;
+ int IoSy32 (TYPE_3__*,int,int) ;
+ int Sptqu ;
+ int WdqxE (TYPE_3__*,int) ;
+ int blWHd2 ;
+ int c0gFy1 (TYPE_3__*,int) ;
+ int gQf6j1 ;
+ int l4W8X (unsigned long volatile*) ;
+ int r3CcP2 ;
+ int wP7Tk3 (int *) ;
 
 void __attribute__((
 cdecl))TAU32_DestructiveHalt(kWMzp1*J7Iki4,int mdbib4){volatile

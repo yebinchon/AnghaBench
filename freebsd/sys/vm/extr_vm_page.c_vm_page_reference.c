@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vm_page_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PGA_REFERENCED ; 
- int /*<<< orphan*/  vm_page_aflag_set (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int vm_page_t ;
+
+
+ int PGA_REFERENCED ;
+ int vm_page_aflag_set (int ,int ) ;
 
 void
 vm_page_reference(vm_page_t m)
 {
 
-	vm_page_aflag_set(m, PGA_REFERENCED);
+ vm_page_aflag_set(m, PGA_REFERENCED);
 }

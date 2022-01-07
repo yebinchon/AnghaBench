@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tSDP_ATTRIBUTE ;
-typedef  int /*<<< orphan*/  UINT8 ;
-typedef  size_t UINT16 ;
 
-/* Variables and functions */
- int SDP_MAX_ATTR_LEN ; 
- int /*<<< orphan*/  SDP_TRACE_ERROR (char*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  osi_free (int /*<<< orphan*/ *) ; 
- scalar_t__ osi_malloc (int) ; 
- int /*<<< orphan*/  sdpu_build_attrib_entry (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- size_t sdpu_get_attrib_entry_len (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int tSDP_ATTRIBUTE ;
+typedef int UINT8 ;
+typedef size_t UINT16 ;
+
+
+ int SDP_MAX_ATTR_LEN ;
+ int SDP_TRACE_ERROR (char*) ;
+ int memcpy (int *,int *,size_t) ;
+ int osi_free (int *) ;
+ scalar_t__ osi_malloc (int) ;
+ int sdpu_build_attrib_entry (int *,int *) ;
+ size_t sdpu_get_attrib_entry_len (int *) ;
 
 UINT8 *sdpu_build_partial_attrib_entry (UINT8 *p_out, tSDP_ATTRIBUTE *p_attr, UINT16 len, UINT16 *offset)
 {
-    UINT8   *p_attr_buff;
-    UINT8   *p_tmp_attr;
-    size_t  len_to_copy;
-    UINT16  attr_len;
+    UINT8 *p_attr_buff;
+    UINT8 *p_tmp_attr;
+    size_t len_to_copy;
+    UINT16 attr_len;
 
-    if ((p_attr_buff = (UINT8 *) osi_malloc(sizeof(UINT8) * SDP_MAX_ATTR_LEN )) == NULL) {
+    if ((p_attr_buff = (UINT8 *) osi_malloc(sizeof(UINT8) * SDP_MAX_ATTR_LEN )) == ((void*)0)) {
         SDP_TRACE_ERROR("sdpu_build_partial_attrib_entry cannot get a buffer!\n");
-        return NULL;
+        return ((void*)0);
     }
     p_tmp_attr = p_attr_buff;
 

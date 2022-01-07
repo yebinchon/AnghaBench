@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ ALTIVEC_REGNO_P (unsigned int) ; 
- unsigned int COUNT_REGISTER_REGNUM ; 
- unsigned int CR0_REGNO ; 
- scalar_t__ CR_REGNO_P (unsigned int) ; 
- scalar_t__ DWARF2_DEBUG ; 
- unsigned int FIRST_ALTIVEC_REGNO ; 
- unsigned int LINK_REGISTER_REGNUM ; 
- unsigned int MQ_REGNO ; 
- unsigned int SPEFSCR_REGNO ; 
- unsigned int SPE_ACC_REGNO ; 
- unsigned int VRSAVE_REGNO ; 
- unsigned int VSCR_REGNO ; 
- unsigned int XER_REGNO ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- scalar_t__ write_symbols ; 
+ scalar_t__ ALTIVEC_REGNO_P (unsigned int) ;
+ unsigned int COUNT_REGISTER_REGNUM ;
+ unsigned int CR0_REGNO ;
+ scalar_t__ CR_REGNO_P (unsigned int) ;
+ scalar_t__ DWARF2_DEBUG ;
+ unsigned int FIRST_ALTIVEC_REGNO ;
+ unsigned int LINK_REGISTER_REGNUM ;
+ unsigned int MQ_REGNO ;
+ unsigned int SPEFSCR_REGNO ;
+ unsigned int SPE_ACC_REGNO ;
+ unsigned int VRSAVE_REGNO ;
+ unsigned int VSCR_REGNO ;
+ unsigned int XER_REGNO ;
+ int gcc_assert (int) ;
+ scalar_t__ write_symbols ;
 
 unsigned int
 rs6000_dbx_register_number (unsigned int regno)
@@ -53,8 +45,8 @@ rs6000_dbx_register_number (unsigned int regno)
     return 99;
   if (regno == SPEFSCR_REGNO)
     return 612;
-  /* SPE high reg number.  We get these values of regno from
-     rs6000_dwarf_register_span.  */
+
+
   gcc_assert (regno >= 1200 && regno < 1232);
   return regno;
 }

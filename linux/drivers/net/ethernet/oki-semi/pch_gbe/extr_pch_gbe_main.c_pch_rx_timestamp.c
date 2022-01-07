@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
-typedef  int u32 ;
-typedef  int u16 ;
-struct skb_shared_hwtstamps {int /*<<< orphan*/  hwtstamp; } ;
+
+
+
+
+typedef int u64 ;
+typedef int u32 ;
+typedef int u16 ;
+struct skb_shared_hwtstamps {int hwtstamp; } ;
 struct sk_buff {int dummy; } ;
 struct pci_dev {int dummy; } ;
-struct pch_gbe_adapter {struct pci_dev* ptp_pdev; int /*<<< orphan*/  hwts_rx_en; } ;
+struct pch_gbe_adapter {struct pci_dev* ptp_pdev; int hwts_rx_en; } ;
 
-/* Variables and functions */
- int RX_SNAPSHOT_LOCKED ; 
- int /*<<< orphan*/  htonl (int) ; 
- int /*<<< orphan*/  htons (int) ; 
- int /*<<< orphan*/  memset (struct skb_shared_hwtstamps*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ns_to_ktime (int /*<<< orphan*/ ) ; 
- int pch_ch_event_read (struct pci_dev*) ; 
- int /*<<< orphan*/  pch_ch_event_write (struct pci_dev*,int) ; 
- int /*<<< orphan*/  pch_ptp_match (struct sk_buff*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pch_rx_snap_read (struct pci_dev*) ; 
- int pch_src_uuid_hi_read (struct pci_dev*) ; 
- int pch_src_uuid_lo_read (struct pci_dev*) ; 
- struct skb_shared_hwtstamps* skb_hwtstamps (struct sk_buff*) ; 
+
+ int RX_SNAPSHOT_LOCKED ;
+ int htonl (int) ;
+ int htons (int) ;
+ int memset (struct skb_shared_hwtstamps*,int ,int) ;
+ int ns_to_ktime (int ) ;
+ int pch_ch_event_read (struct pci_dev*) ;
+ int pch_ch_event_write (struct pci_dev*,int) ;
+ int pch_ptp_match (struct sk_buff*,int ,int ,int ) ;
+ int pch_rx_snap_read (struct pci_dev*) ;
+ int pch_src_uuid_hi_read (struct pci_dev*) ;
+ int pch_src_uuid_lo_read (struct pci_dev*) ;
+ struct skb_shared_hwtstamps* skb_hwtstamps (struct sk_buff*) ;
 
 __attribute__((used)) static void
 pch_rx_timestamp(struct pch_gbe_adapter *adapter, struct sk_buff *skb)
 {
-	struct skb_shared_hwtstamps *shhwtstamps;
-	struct pci_dev *pdev;
-	u64 ns;
-	u32 hi, lo, val;
-	u16 uid, seq;
+ struct skb_shared_hwtstamps *shhwtstamps;
+ struct pci_dev *pdev;
+ u64 ns;
+ u32 hi, lo, val;
+ u16 uid, seq;
 
-	if (!adapter->hwts_rx_en)
-		return;
+ if (!adapter->hwts_rx_en)
+  return;
 
-	/* Get ieee1588's dev information */
-	pdev = adapter->ptp_pdev;
 
-	val = pch_ch_event_read(pdev);
+ pdev = adapter->ptp_pdev;
 
-	if (!(val & RX_SNAPSHOT_LOCKED))
-		return;
+ val = pch_ch_event_read(pdev);
 
-	lo = pch_src_uuid_lo_read(pdev);
-	hi = pch_src_uuid_hi_read(pdev);
+ if (!(val & RX_SNAPSHOT_LOCKED))
+  return;
 
-	uid = hi & 0xffff;
-	seq = (hi >> 16) & 0xffff;
+ lo = pch_src_uuid_lo_read(pdev);
+ hi = pch_src_uuid_hi_read(pdev);
 
-	if (!pch_ptp_match(skb, htons(uid), htonl(lo), htons(seq)))
-		goto out;
+ uid = hi & 0xffff;
+ seq = (hi >> 16) & 0xffff;
 
-	ns = pch_rx_snap_read(pdev);
+ if (!pch_ptp_match(skb, htons(uid), htonl(lo), htons(seq)))
+  goto out;
 
-	shhwtstamps = skb_hwtstamps(skb);
-	memset(shhwtstamps, 0, sizeof(*shhwtstamps));
-	shhwtstamps->hwtstamp = ns_to_ktime(ns);
+ ns = pch_rx_snap_read(pdev);
+
+ shhwtstamps = skb_hwtstamps(skb);
+ memset(shhwtstamps, 0, sizeof(*shhwtstamps));
+ shhwtstamps->hwtstamp = ns_to_ktime(ns);
 out:
-	pch_ch_event_write(pdev, RX_SNAPSHOT_LOCKED);
+ pch_ch_event_write(pdev, RX_SNAPSHOT_LOCKED);
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned long pid_t ;
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef unsigned long pid_t ;
 struct TYPE_4__ {scalar_t__ value; } ;
-typedef  TYPE_1__ listNode ;
-typedef  int /*<<< orphan*/  listIter ;
-struct TYPE_5__ {int /*<<< orphan*/  children; } ;
+typedef TYPE_1__ listNode ;
+typedef int listIter ;
+struct TYPE_5__ {int children; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LL_WARNING ; 
- int /*<<< orphan*/  SIGKILL ; 
- int /*<<< orphan*/  kill (unsigned long,int /*<<< orphan*/ ) ; 
- TYPE_3__ ldb ; 
- int /*<<< orphan*/  listCreate () ; 
- TYPE_1__* listNext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  listRelease (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  listRewind (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  serverLog (int /*<<< orphan*/ ,char*,long) ; 
+
+ int LL_WARNING ;
+ int SIGKILL ;
+ int kill (unsigned long,int ) ;
+ TYPE_3__ ldb ;
+ int listCreate () ;
+ TYPE_1__* listNext (int *) ;
+ int listRelease (int ) ;
+ int listRewind (int ,int *) ;
+ int serverLog (int ,char*,long) ;
 
 void ldbKillForkedSessions(void) {
     listIter li;

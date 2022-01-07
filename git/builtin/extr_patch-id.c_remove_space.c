@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  isspace (unsigned char) ; 
+ int isspace (unsigned char) ;
 
 __attribute__((used)) static int remove_space(char *line)
 {
-	char *src = line;
-	char *dst = line;
-	unsigned char c;
+ char *src = line;
+ char *dst = line;
+ unsigned char c;
 
-	while ((c = *src++) != '\0') {
-		if (!isspace(c))
-			*dst++ = c;
-	}
-	return dst - line;
+ while ((c = *src++) != '\0') {
+  if (!isspace(c))
+   *dst++ = c;
+ }
+ return dst - line;
 }

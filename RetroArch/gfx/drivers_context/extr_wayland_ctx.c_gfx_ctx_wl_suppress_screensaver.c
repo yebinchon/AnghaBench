@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct zwp_idle_inhibit_manager_v1 {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * idle_inhibitor; int /*<<< orphan*/  surface; struct zwp_idle_inhibit_manager_v1* idle_inhibit_manager; } ;
-typedef  TYPE_1__ gfx_ctx_wayland_data_t ;
+struct TYPE_2__ {int * idle_inhibitor; int surface; struct zwp_idle_inhibit_manager_v1* idle_inhibit_manager; } ;
+typedef TYPE_1__ gfx_ctx_wayland_data_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RARCH_LOG (char*) ; 
- int /*<<< orphan*/ * zwp_idle_inhibit_manager_v1_create_inhibitor (struct zwp_idle_inhibit_manager_v1*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zwp_idle_inhibitor_v1_destroy (int /*<<< orphan*/ *) ; 
+
+ int RARCH_LOG (char*) ;
+ int * zwp_idle_inhibit_manager_v1_create_inhibitor (struct zwp_idle_inhibit_manager_v1*,int ) ;
+ int zwp_idle_inhibitor_v1_destroy (int *) ;
 
 __attribute__((used)) static bool gfx_ctx_wl_suppress_screensaver(void *data, bool state)
 {
-	(void)data;
+ (void)data;
 
-	gfx_ctx_wayland_data_t *wl = (gfx_ctx_wayland_data_t*)data;
+ gfx_ctx_wayland_data_t *wl = (gfx_ctx_wayland_data_t*)data;
 
     if (!wl->idle_inhibit_manager)
-        return false;
+        return 0;
     if (state == (!!wl->idle_inhibitor))
-        return true;
+        return 1;
     if (state)
     {
         RARCH_LOG("[Wayland]: Enabling idle inhibitor\n");
@@ -40,7 +40,7 @@ __attribute__((used)) static bool gfx_ctx_wl_suppress_screensaver(void *data, bo
     {
         RARCH_LOG("[Wayland]: Disabling the idle inhibitor\n");
         zwp_idle_inhibitor_v1_destroy(wl->idle_inhibitor);
-        wl->idle_inhibitor = NULL;
+        wl->idle_inhibitor = ((void*)0);
     }
-    return true;
+    return 1;
 }

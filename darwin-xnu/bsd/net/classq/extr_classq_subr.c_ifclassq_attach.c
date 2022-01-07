@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int32_t ;
-struct ifclassq {int /*<<< orphan*/ * ifcq_request; int /*<<< orphan*/  ifcq_dequeue_sc_multi; int /*<<< orphan*/  ifcq_dequeue_multi; int /*<<< orphan*/  ifcq_dequeue_sc; int /*<<< orphan*/  ifcq_dequeue; int /*<<< orphan*/ * ifcq_enqueue; int /*<<< orphan*/ * ifcq_disc; int /*<<< orphan*/  ifcq_type; } ;
-typedef  int /*<<< orphan*/ * ifclassq_req_func ;
-typedef  int /*<<< orphan*/ * ifclassq_enq_func ;
-typedef  int /*<<< orphan*/  ifclassq_deq_sc_multi_func ;
-typedef  int /*<<< orphan*/  ifclassq_deq_sc_func ;
-typedef  int /*<<< orphan*/  ifclassq_deq_multi_func ;
-typedef  int /*<<< orphan*/  ifclassq_deq_func ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IFCQ_LOCK_ASSERT_HELD (struct ifclassq*) ; 
- int /*<<< orphan*/  VERIFY (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u_int32_t ;
+struct ifclassq {int * ifcq_request; int ifcq_dequeue_sc_multi; int ifcq_dequeue_multi; int ifcq_dequeue_sc; int ifcq_dequeue; int * ifcq_enqueue; int * ifcq_disc; int ifcq_type; } ;
+typedef int * ifclassq_req_func ;
+typedef int * ifclassq_enq_func ;
+typedef int ifclassq_deq_sc_multi_func ;
+typedef int ifclassq_deq_sc_func ;
+typedef int ifclassq_deq_multi_func ;
+typedef int ifclassq_deq_func ;
+
+
+ int IFCQ_LOCK_ASSERT_HELD (struct ifclassq*) ;
+ int VERIFY (int ) ;
 
 int
 ifclassq_attach(struct ifclassq *ifq, u_int32_t type, void *discipline,
@@ -29,20 +29,20 @@ ifclassq_attach(struct ifclassq *ifq, u_int32_t type, void *discipline,
     ifclassq_deq_sc_func dequeue_sc, ifclassq_deq_multi_func dequeue_multi,
     ifclassq_deq_sc_multi_func dequeue_sc_multi, ifclassq_req_func request)
 {
-	IFCQ_LOCK_ASSERT_HELD(ifq);
+ IFCQ_LOCK_ASSERT_HELD(ifq);
 
-	VERIFY(ifq->ifcq_disc == NULL);
-	VERIFY(enqueue != NULL);
-	VERIFY(request != NULL);
+ VERIFY(ifq->ifcq_disc == ((void*)0));
+ VERIFY(enqueue != ((void*)0));
+ VERIFY(request != ((void*)0));
 
-	ifq->ifcq_type = type;
-	ifq->ifcq_disc = discipline;
-	ifq->ifcq_enqueue = enqueue;
-	ifq->ifcq_dequeue = dequeue;
-	ifq->ifcq_dequeue_sc = dequeue_sc;
-	ifq->ifcq_dequeue_multi = dequeue_multi;
-	ifq->ifcq_dequeue_sc_multi = dequeue_sc_multi;
-	ifq->ifcq_request = request;
+ ifq->ifcq_type = type;
+ ifq->ifcq_disc = discipline;
+ ifq->ifcq_enqueue = enqueue;
+ ifq->ifcq_dequeue = dequeue;
+ ifq->ifcq_dequeue_sc = dequeue_sc;
+ ifq->ifcq_dequeue_multi = dequeue_multi;
+ ifq->ifcq_dequeue_sc_multi = dequeue_sc_multi;
+ ifq->ifcq_request = request;
 
-	return (0);
+ return (0);
 }

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ecma_value_t ;
-typedef  int /*<<< orphan*/  ecma_string_t ;
-typedef  int /*<<< orphan*/  ecma_standard_error_t ;
-typedef  int /*<<< orphan*/  ecma_object_t ;
-typedef  scalar_t__ ecma_length_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ECMA_VALUE_ERROR ; 
- int /*<<< orphan*/  JERRY_ASSERT (int) ; 
- scalar_t__ JERRY_UNLIKELY (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ecma_deref_ecma_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ecma_is_value_undefined (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  ecma_make_object_value (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ecma_new_standard_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ecma_new_standard_error_with_message (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ecma_op_to_string (int /*<<< orphan*/  const) ; 
+
+
+
+typedef int ecma_value_t ;
+typedef int ecma_string_t ;
+typedef int ecma_standard_error_t ;
+typedef int ecma_object_t ;
+typedef scalar_t__ ecma_length_t ;
+
+
+ int ECMA_VALUE_ERROR ;
+ int JERRY_ASSERT (int) ;
+ scalar_t__ JERRY_UNLIKELY (int ) ;
+ int ecma_deref_ecma_string (int *) ;
+ int ecma_is_value_undefined (int const) ;
+ int ecma_make_object_value (int *) ;
+ int * ecma_new_standard_error (int ) ;
+ int * ecma_new_standard_error_with_message (int ,int *) ;
+ int * ecma_op_to_string (int const) ;
 
 ecma_value_t
-ecma_builtin_helper_error_dispatch_call (ecma_standard_error_t error_type, /**< native error type */
-                                         const ecma_value_t *arguments_list_p, /**< arguments list */
-                                         ecma_length_t arguments_list_len) /**< number of arguments */
+ecma_builtin_helper_error_dispatch_call (ecma_standard_error_t error_type,
+                                         const ecma_value_t *arguments_list_p,
+                                         ecma_length_t arguments_list_len)
 {
-  JERRY_ASSERT (arguments_list_len == 0 || arguments_list_p != NULL);
+  JERRY_ASSERT (arguments_list_len == 0 || arguments_list_p != ((void*)0));
 
   if (arguments_list_len != 0
       && !ecma_is_value_undefined (arguments_list_p[0]))
   {
     ecma_string_t *message_string_p = ecma_op_to_string (arguments_list_p[0]);
 
-    if (JERRY_UNLIKELY (message_string_p == NULL))
+    if (JERRY_UNLIKELY (message_string_p == ((void*)0)))
     {
       return ECMA_VALUE_ERROR;
     }

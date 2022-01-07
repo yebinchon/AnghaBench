@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct chmcTreeNode {int dummy; } ;
-struct chmcSection {int /*<<< orphan*/  offset; } ;
+struct chmcSection {int offset; } ;
 struct chmcFile {int sections_num; struct chmcSection** sections; } ;
-typedef  scalar_t__ UInt64 ;
-typedef  int /*<<< orphan*/  UInt16 ;
-typedef  int /*<<< orphan*/  UChar ;
+typedef scalar_t__ UInt64 ;
+typedef int UInt16 ;
+typedef int UChar ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (struct chmcFile*) ; 
- struct chmcTreeNode* chmc_add_entry (struct chmcFile*,char const*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int assert (struct chmcFile*) ;
+ struct chmcTreeNode* chmc_add_entry (struct chmcFile*,char const*,int ,int,int *,int ,scalar_t__) ;
 
 struct chmcTreeNode *chmc_add_file(struct chmcFile *chm, const char *filename,
                                    UInt16 prefixlen, int sect_id, UChar *buf,
                                    UInt64 len)
 {
-	struct chmcSection *section;
-	struct chmcTreeNode *node;
+ struct chmcSection *section;
+ struct chmcTreeNode *node;
 
-	assert(chm);
+ assert(chm);
 
-	if (sect_id >= chm->sections_num)
-		return NULL;
+ if (sect_id >= chm->sections_num)
+  return ((void*)0);
 
-	section = chm->sections[sect_id];
+ section = chm->sections[sect_id];
 
-	node = chmc_add_entry(chm, filename, prefixlen, sect_id, NULL,
-	                      section->offset, len);
+ node = chmc_add_entry(chm, filename, prefixlen, sect_id, ((void*)0),
+                       section->offset, len);
 
-	if ((node) && (len > 0))
-		section->offset += len;
+ if ((node) && (len > 0))
+  section->offset += len;
 
-	return node;
+ return node;
 }

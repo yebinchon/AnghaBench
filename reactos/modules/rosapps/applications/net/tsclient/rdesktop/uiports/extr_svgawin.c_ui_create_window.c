@@ -1,49 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ACCELFLAG_FILLBOX ; 
- int ACCELFLAG_PUTIMAGE ; 
- int ACCELFLAG_SCREENCOPY ; 
- int G1024x768x256 ; 
- int G1024x768x64K ; 
- int G640x480x256 ; 
- int G640x480x64K ; 
- int G800x600x256 ; 
- int G800x600x64K ; 
- int /*<<< orphan*/  VGA_AVAIL_ACCEL ; 
- int /*<<< orphan*/  VGA_EXT_AVAILABLE ; 
- int /*<<< orphan*/  error (char*) ; 
- int g_height ; 
- int /*<<< orphan*/  g_save_mem ; 
- int g_server_Bpp ; 
- int g_width ; 
- int has_fill_box ; 
- int has_put_image ; 
- int has_screen_copy ; 
- int /*<<< orphan*/  key_event ; 
- scalar_t__ keyboard_init () ; 
- int /*<<< orphan*/  keyboard_seteventhandler (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mouse_setposition (int,int) ; 
- int /*<<< orphan*/  printf (char*,int) ; 
- int /*<<< orphan*/  sdata ; 
- int /*<<< orphan*/  ui_reset_clip () ; 
- scalar_t__ use_accel ; 
- int vga_ext_set (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vga_hasmode (int) ; 
- int /*<<< orphan*/  vga_setmode (int) ; 
- int /*<<< orphan*/  vga_setmousesupport (int) ; 
- int /*<<< orphan*/  xmalloc (int) ; 
+ int ACCELFLAG_FILLBOX ;
+ int ACCELFLAG_PUTIMAGE ;
+ int ACCELFLAG_SCREENCOPY ;
+ int G1024x768x256 ;
+ int G1024x768x64K ;
+ int G640x480x256 ;
+ int G640x480x64K ;
+ int G800x600x256 ;
+ int G800x600x64K ;
+ int VGA_AVAIL_ACCEL ;
+ int VGA_EXT_AVAILABLE ;
+ int error (char*) ;
+ int g_height ;
+ int g_save_mem ;
+ int g_server_Bpp ;
+ int g_width ;
+ int has_fill_box ;
+ int has_put_image ;
+ int has_screen_copy ;
+ int key_event ;
+ scalar_t__ keyboard_init () ;
+ int keyboard_seteventhandler (int ) ;
+ int mouse_setposition (int,int) ;
+ int printf (char*,int) ;
+ int sdata ;
+ int ui_reset_clip () ;
+ scalar_t__ use_accel ;
+ int vga_ext_set (int ,int ) ;
+ int vga_hasmode (int) ;
+ int vga_setmode (int) ;
+ int vga_setmousesupport (int) ;
+ int xmalloc (int) ;
 
 int ui_create_window(void)
 {

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ svn_revnum_t ;
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct dump_edit_baton {int /*<<< orphan*/  ra_session; scalar_t__ current_revision; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_IS_VALID_REVNUM (scalar_t__) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_categorize_props (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_dir ; 
- scalar_t__ svn_node_file ; 
- int /*<<< orphan*/ * svn_prop_array_to_hash (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_prop_hash_to_array (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_check_path (int /*<<< orphan*/ ,char const*,scalar_t__,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_get_dir2 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,char const*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_get_file (int /*<<< orphan*/ ,char const*,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ svn_revnum_t ;
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_error_t ;
+struct dump_edit_baton {int ra_session; scalar_t__ current_revision; } ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_array_header_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_IS_VALID_REVNUM (scalar_t__) ;
+ int * SVN_NO_ERROR ;
+ int * apr_hash_make (int *) ;
+ int svn_categorize_props (int *,int *,int *,int **,int *) ;
+ scalar_t__ svn_node_dir ;
+ scalar_t__ svn_node_file ;
+ int * svn_prop_array_to_hash (int *,int *) ;
+ int * svn_prop_hash_to_array (int *,int *) ;
+ int svn_ra_check_path (int ,char const*,scalar_t__,scalar_t__*,int *) ;
+ int svn_ra_get_dir2 (int ,int *,int *,int **,char const*,scalar_t__,int ,int *) ;
+ int svn_ra_get_file (int ,char const*,scalar_t__,int *,int *,int **,int *) ;
 
 __attribute__((used)) static svn_error_t *
 fetch_props_func(apr_hash_t **props,
@@ -55,17 +55,17 @@ fetch_props_func(apr_hash_t **props,
   if (node_kind == svn_node_file)
     {
       SVN_ERR(svn_ra_get_file(eb->ra_session, path, base_revision,
-                              NULL, NULL, props, result_pool));
+                              ((void*)0), ((void*)0), props, result_pool));
     }
   else if (node_kind == svn_node_dir)
     {
       apr_array_header_t *tmp_props;
 
-      SVN_ERR(svn_ra_get_dir2(eb->ra_session, NULL, NULL, props, path,
-                              base_revision, 0 /* Dirent fields */,
+      SVN_ERR(svn_ra_get_dir2(eb->ra_session, ((void*)0), ((void*)0), props, path,
+                              base_revision, 0 ,
                               result_pool));
       tmp_props = svn_prop_hash_to_array(*props, result_pool);
-      SVN_ERR(svn_categorize_props(tmp_props, NULL, NULL, &tmp_props,
+      SVN_ERR(svn_categorize_props(tmp_props, ((void*)0), ((void*)0), &tmp_props,
                                    result_pool));
       *props = svn_prop_array_to_hash(tmp_props, result_pool);
     }

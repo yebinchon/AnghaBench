@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  RP; int /*<<< orphan*/  P; int /*<<< orphan*/  X; int /*<<< orphan*/  Vf; int /*<<< orphan*/  Vi; int /*<<< orphan*/  pX; } ;
-typedef  TYPE_1__ mbedtls_dhm_context ;
 
-/* Variables and functions */
- int MBEDTLS_ERR_MPI_NOT_ACCEPTABLE ; 
- int /*<<< orphan*/  MBEDTLS_MPI_CHK (int /*<<< orphan*/ ) ; 
- scalar_t__ mbedtls_mpi_cmp_int (int /*<<< orphan*/ *,int) ; 
- scalar_t__ mbedtls_mpi_cmp_mpi (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_mpi_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_mpi_exp_mod (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_mpi_fill_random (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int (*) (void*,unsigned char*,size_t),void*) ; 
- int /*<<< orphan*/  mbedtls_mpi_inv_mod (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_mpi_lset (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mbedtls_mpi_mod_mpi (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_mpi_mul_mpi (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_mpi_shift_r (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mbedtls_mpi_size (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int RP; int P; int X; int Vf; int Vi; int pX; } ;
+typedef TYPE_1__ mbedtls_dhm_context ;
+
+
+ int MBEDTLS_ERR_MPI_NOT_ACCEPTABLE ;
+ int MBEDTLS_MPI_CHK (int ) ;
+ scalar_t__ mbedtls_mpi_cmp_int (int *,int) ;
+ scalar_t__ mbedtls_mpi_cmp_mpi (int *,int *) ;
+ int mbedtls_mpi_copy (int *,int *) ;
+ int mbedtls_mpi_exp_mod (int *,int *,int *,int *,int *) ;
+ int mbedtls_mpi_fill_random (int *,int ,int (*) (void*,unsigned char*,size_t),void*) ;
+ int mbedtls_mpi_inv_mod (int *,int *,int *) ;
+ int mbedtls_mpi_lset (int *,int) ;
+ int mbedtls_mpi_mod_mpi (int *,int *,int *) ;
+ int mbedtls_mpi_mul_mpi (int *,int *,int *) ;
+ int mbedtls_mpi_shift_r (int *,int) ;
+ int mbedtls_mpi_size (int *) ;
 
 __attribute__((used)) static int dhm_update_blinding( mbedtls_dhm_context *ctx,
                     int (*f_rng)(void *, unsigned char *, size_t), void *p_rng )
 {
     int ret, count;
 
-    /*
-     * Don't use any blinding the first time a particular X is used,
-     * but remember it to use blinding next time.
-     */
+
+
+
+
     if( mbedtls_mpi_cmp_mpi( &ctx->X, &ctx->pX ) != 0 )
     {
         MBEDTLS_MPI_CHK( mbedtls_mpi_copy( &ctx->pX, &ctx->X ) );
@@ -47,10 +47,10 @@ __attribute__((used)) static int dhm_update_blinding( mbedtls_dhm_context *ctx,
         return( 0 );
     }
 
-    /*
-     * Ok, we need blinding. Can we re-use existing values?
-     * If yes, just update them by squaring them.
-     */
+
+
+
+
     if( mbedtls_mpi_cmp_int( &ctx->Vi, 1 ) != 0 )
     {
         MBEDTLS_MPI_CHK( mbedtls_mpi_mul_mpi( &ctx->Vi, &ctx->Vi, &ctx->Vi ) );
@@ -62,11 +62,11 @@ __attribute__((used)) static int dhm_update_blinding( mbedtls_dhm_context *ctx,
         return( 0 );
     }
 
-    /*
-     * We need to generate blinding values from scratch
-     */
 
-    /* Vi = random( 2, P-1 ) */
+
+
+
+
     count = 0;
     do
     {
@@ -80,7 +80,7 @@ __attribute__((used)) static int dhm_update_blinding( mbedtls_dhm_context *ctx,
     }
     while( mbedtls_mpi_cmp_int( &ctx->Vi, 1 ) <= 0 );
 
-    /* Vf = Vi^-X mod P */
+
     MBEDTLS_MPI_CHK( mbedtls_mpi_inv_mod( &ctx->Vf, &ctx->Vi, &ctx->P ) );
     MBEDTLS_MPI_CHK( mbedtls_mpi_exp_mod( &ctx->Vf, &ctx->Vf, &ctx->X, &ctx->P, &ctx->RP ) );
 

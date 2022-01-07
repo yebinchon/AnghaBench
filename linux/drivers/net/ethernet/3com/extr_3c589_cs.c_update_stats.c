@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  tx_packets; int /*<<< orphan*/  rx_fifo_errors; int /*<<< orphan*/  tx_window_errors; int /*<<< orphan*/  collisions; int /*<<< orphan*/  tx_heartbeat_errors; int /*<<< orphan*/  tx_carrier_errors; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int tx_packets; int rx_fifo_errors; int tx_window_errors; int collisions; int tx_heartbeat_errors; int tx_carrier_errors; } ;
 struct net_device {unsigned int base_addr; TYPE_1__ stats; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EL3WINDOW (int) ; 
- scalar_t__ EL3_CMD ; 
- int /*<<< orphan*/  StatsDisable ; 
- int /*<<< orphan*/  StatsEnable ; 
- scalar_t__ inb (unsigned int) ; 
- int /*<<< orphan*/  inw (unsigned int) ; 
- int /*<<< orphan*/  netdev_dbg (struct net_device*,char*) ; 
- int /*<<< orphan*/  outw (int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int EL3WINDOW (int) ;
+ scalar_t__ EL3_CMD ;
+ int StatsDisable ;
+ int StatsEnable ;
+ scalar_t__ inb (unsigned int) ;
+ int inw (unsigned int) ;
+ int netdev_dbg (struct net_device*,char*) ;
+ int outw (int ,scalar_t__) ;
 
 __attribute__((used)) static void update_stats(struct net_device *dev)
 {
-	unsigned int ioaddr = dev->base_addr;
+ unsigned int ioaddr = dev->base_addr;
 
-	netdev_dbg(dev, "updating the statistics.\n");
-	/* Turn off statistics updates while reading. */
-	outw(StatsDisable, ioaddr + EL3_CMD);
-	/* Switch to the stats window, and read everything. */
-	EL3WINDOW(6);
-	dev->stats.tx_carrier_errors	+= inb(ioaddr + 0);
-	dev->stats.tx_heartbeat_errors	+= inb(ioaddr + 1);
-	/* Multiple collisions. */
-	inb(ioaddr + 2);
-	dev->stats.collisions		+= inb(ioaddr + 3);
-	dev->stats.tx_window_errors		+= inb(ioaddr + 4);
-	dev->stats.rx_fifo_errors		+= inb(ioaddr + 5);
-	dev->stats.tx_packets		+= inb(ioaddr + 6);
-	/* Rx packets   */
-	inb(ioaddr + 7);
-	/* Tx deferrals */
-	inb(ioaddr + 8);
-	/* Rx octets */
-	inw(ioaddr + 10);
-	/* Tx octets */
-	inw(ioaddr + 12);
+ netdev_dbg(dev, "updating the statistics.\n");
 
-	/* Back to window 1, and turn statistics back on. */
-	EL3WINDOW(1);
-	outw(StatsEnable, ioaddr + EL3_CMD);
+ outw(StatsDisable, ioaddr + EL3_CMD);
+
+ EL3WINDOW(6);
+ dev->stats.tx_carrier_errors += inb(ioaddr + 0);
+ dev->stats.tx_heartbeat_errors += inb(ioaddr + 1);
+
+ inb(ioaddr + 2);
+ dev->stats.collisions += inb(ioaddr + 3);
+ dev->stats.tx_window_errors += inb(ioaddr + 4);
+ dev->stats.rx_fifo_errors += inb(ioaddr + 5);
+ dev->stats.tx_packets += inb(ioaddr + 6);
+
+ inb(ioaddr + 7);
+
+ inb(ioaddr + 8);
+
+ inw(ioaddr + 10);
+
+ inw(ioaddr + 12);
+
+
+ EL3WINDOW(1);
+ outw(StatsEnable, ioaddr + EL3_CMD);
 }

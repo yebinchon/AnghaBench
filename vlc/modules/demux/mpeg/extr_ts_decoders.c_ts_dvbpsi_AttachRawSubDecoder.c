@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_5__ {void* p_cb_data; int /*<<< orphan*/  pf_callback; } ;
-typedef  TYPE_1__ ts_dvbpsi_rawtable_decoder_t ;
-typedef  int /*<<< orphan*/  ts_dvbpsi_rawsections_callback_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+struct TYPE_5__ {void* p_cb_data; int pf_callback; } ;
+typedef TYPE_1__ ts_dvbpsi_rawtable_decoder_t ;
+typedef int ts_dvbpsi_rawsections_callback_t ;
 struct TYPE_6__ {scalar_t__ p_decoder; } ;
-typedef  TYPE_2__ dvbpsi_t ;
-typedef  int /*<<< orphan*/  dvbpsi_demux_t ;
-typedef  int /*<<< orphan*/  dvbpsi_demux_subdec_t ;
+typedef TYPE_2__ dvbpsi_t ;
+typedef int dvbpsi_demux_t ;
+typedef int dvbpsi_demux_subdec_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DVBPSI_DECODER (TYPE_1__*) ; 
- int /*<<< orphan*/  dvbpsi_AttachDemuxSubDecoder (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * dvbpsi_NewDemuxSubDecoder (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dvbpsi_decoder_delete (int /*<<< orphan*/ ) ; 
- scalar_t__ dvbpsi_decoder_new (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- scalar_t__ dvbpsi_demuxGetSubDec (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ts_dvbpsi_DetachRawSubDecoder ; 
- int /*<<< orphan*/  ts_dvbpsi_RawSubDecoderGatherSections ; 
+
+ int DVBPSI_DECODER (TYPE_1__*) ;
+ int dvbpsi_AttachDemuxSubDecoder (int *,int *) ;
+ int * dvbpsi_NewDemuxSubDecoder (int ,int ,int ,int ,int ) ;
+ int dvbpsi_decoder_delete (int ) ;
+ scalar_t__ dvbpsi_decoder_new (int *,int ,int,int) ;
+ scalar_t__ dvbpsi_demuxGetSubDec (int *,int ,int ) ;
+ int ts_dvbpsi_DetachRawSubDecoder ;
+ int ts_dvbpsi_RawSubDecoderGatherSections ;
 
 bool ts_dvbpsi_AttachRawSubDecoder( dvbpsi_t* p_dvbpsi,
                                     uint8_t i_table_id, uint16_t i_extension,
@@ -39,30 +39,30 @@ bool ts_dvbpsi_AttachRawSubDecoder( dvbpsi_t* p_dvbpsi,
 {
     dvbpsi_demux_t *p_demux = (dvbpsi_demux_t*)p_dvbpsi->p_decoder;
     if ( dvbpsi_demuxGetSubDec(p_demux, i_table_id, i_extension) )
-        return false;
+        return 0;
 
     ts_dvbpsi_rawtable_decoder_t *p_decoder;
-    p_decoder = (ts_dvbpsi_rawtable_decoder_t *) dvbpsi_decoder_new( NULL, 0, true, sizeof(*p_decoder) );
-    if ( p_decoder == NULL )
-        return false;
+    p_decoder = (ts_dvbpsi_rawtable_decoder_t *) dvbpsi_decoder_new( ((void*)0), 0, 1, sizeof(*p_decoder) );
+    if ( p_decoder == ((void*)0) )
+        return 0;
 
-    /* subtable decoder configuration */
+
     dvbpsi_demux_subdec_t* p_subdec;
     p_subdec = dvbpsi_NewDemuxSubDecoder( i_table_id, i_extension,
                                           ts_dvbpsi_DetachRawSubDecoder,
                                           ts_dvbpsi_RawSubDecoderGatherSections,
                                           DVBPSI_DECODER(p_decoder) );
-    if (p_subdec == NULL)
+    if (p_subdec == ((void*)0))
     {
         dvbpsi_decoder_delete( DVBPSI_DECODER(p_decoder) );
-        return false;
+        return 0;
     }
 
-    /* Attach the subtable decoder to the demux */
+
     dvbpsi_AttachDemuxSubDecoder( p_demux, p_subdec );
 
     p_decoder->pf_callback = pf_callback;
     p_decoder->p_cb_data = p_cb_data;
 
-    return true;
+    return 1;
 }

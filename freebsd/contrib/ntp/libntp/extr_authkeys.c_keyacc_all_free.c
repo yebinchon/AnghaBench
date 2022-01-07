@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  KeyAccT ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * keyacc_pop_free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int KeyAccT ;
+
+
+ int * keyacc_pop_free (int *) ;
 
 KeyAccT*
 keyacc_all_free(
-	KeyAccT * head
-	)
+ KeyAccT * head
+ )
 {
-	while (head)
-		head = keyacc_pop_free(head);
-	return head;
+ while (head)
+  head = keyacc_pop_free(head);
+ return head;
 }

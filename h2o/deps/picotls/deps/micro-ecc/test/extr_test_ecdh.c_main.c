@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+
+
+typedef int uint8_t ;
 struct uECC_Curve_t {int dummy; } ;
-typedef  int /*<<< orphan*/  secret1 ;
+typedef int secret1 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  uECC_make_key (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct uECC_Curve_t const*) ; 
- struct uECC_Curve_t* uECC_secp160r1 () ; 
- struct uECC_Curve_t* uECC_secp192r1 () ; 
- struct uECC_Curve_t* uECC_secp224r1 () ; 
- struct uECC_Curve_t* uECC_secp256k1 () ; 
- struct uECC_Curve_t* uECC_secp256r1 () ; 
- int /*<<< orphan*/  uECC_shared_secret (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct uECC_Curve_t const*) ; 
- int /*<<< orphan*/  vli_print (int /*<<< orphan*/ *,int) ; 
+
+ int fflush (int ) ;
+ scalar_t__ memcmp (int *,int *,int) ;
+ int printf (char*) ;
+ int stdout ;
+ int uECC_make_key (int *,int *,struct uECC_Curve_t const*) ;
+ struct uECC_Curve_t* uECC_secp160r1 () ;
+ struct uECC_Curve_t* uECC_secp192r1 () ;
+ struct uECC_Curve_t* uECC_secp224r1 () ;
+ struct uECC_Curve_t* uECC_secp256k1 () ;
+ struct uECC_Curve_t* uECC_secp256r1 () ;
+ int uECC_shared_secret (int *,int *,int *,struct uECC_Curve_t const*) ;
+ int vli_print (int *,int) ;
 
 int main() {
     int i, c;
@@ -36,25 +36,9 @@ int main() {
     uint8_t public2[64] = {0};
     uint8_t secret1[32] = {0};
     uint8_t secret2[32] = {0};
-    
+
     const struct uECC_Curve_t * curves[5];
     int num_curves = 0;
-#if uECC_SUPPORTS_secp160r1
-    curves[num_curves++] = uECC_secp160r1();
-#endif
-#if uECC_SUPPORTS_secp192r1
-    curves[num_curves++] = uECC_secp192r1();
-#endif
-#if uECC_SUPPORTS_secp224r1
-    curves[num_curves++] = uECC_secp224r1();
-#endif
-#if uECC_SUPPORTS_secp256r1
-    curves[num_curves++] = uECC_secp256r1();
-#endif
-#if uECC_SUPPORTS_secp256k1
-    curves[num_curves++] = uECC_secp256k1();
-#endif
-    
     printf("Testing 256 random private key pairs\n");
 
     for (c = 0; c < num_curves; ++c) {
@@ -77,7 +61,7 @@ int main() {
                 printf("shared_secret() failed (2)\n");
                 return 1;
             }
-        
+
             if (memcmp(secret1, secret2, sizeof(secret1)) != 0) {
                 printf("Shared secrets are not identical!\n");
                 printf("Private key 1 = ");
@@ -102,6 +86,6 @@ int main() {
         }
         printf("\n");
     }
-    
+
     return 0;
 }

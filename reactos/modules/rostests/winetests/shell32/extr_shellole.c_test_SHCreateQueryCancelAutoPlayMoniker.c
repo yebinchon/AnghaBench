@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  clsid ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IMoniker ;
-typedef  int /*<<< orphan*/  IBindCtx ;
-typedef  int HRESULT ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  CLSID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_CALLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CLSID_ClassMoniker ; 
- int /*<<< orphan*/  CreateBindCtx (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int E_INVALIDARG ; 
- int E_NOTIMPL ; 
- int /*<<< orphan*/  IBindCtx_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IQueryCancelAutoPlay ; 
- int IMoniker_BindToObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int IMoniker_GetClassID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IMoniker_IsSystemMoniker (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  IMoniker_Release (int /*<<< orphan*/ *) ; 
- int IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int MKSYS_CLASSMONIKER ; 
- int /*<<< orphan*/  SET_EXPECT (int /*<<< orphan*/ ) ; 
- int S_OK ; 
- int /*<<< orphan*/  autoplay_BindToObject ; 
- int /*<<< orphan*/  autoplay_GetClassObject ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int pSHCreateQueryCancelAutoPlayMoniker (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  test_moniker ; 
- int /*<<< orphan*/  win_skip (char*) ; 
- int wine_dbgstr_guid (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int clsid ;
+typedef int IUnknown ;
+typedef int IMoniker ;
+typedef int IBindCtx ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef int CLSID ;
+
+
+ int CHECK_CALLED (int ) ;
+ int CLSID_ClassMoniker ;
+ int CreateBindCtx (int ,int **) ;
+ int E_INVALIDARG ;
+ int E_NOTIMPL ;
+ int IBindCtx_Release (int *) ;
+ int IID_IQueryCancelAutoPlay ;
+ int IMoniker_BindToObject (int *,int *,int *,int *,void**) ;
+ int IMoniker_GetClassID (int *,int *) ;
+ int IMoniker_IsSystemMoniker (int *,int*) ;
+ int IMoniker_Release (int *) ;
+ int IsEqualGUID (int *,int *) ;
+ int MKSYS_CLASSMONIKER ;
+ int SET_EXPECT (int ) ;
+ int S_OK ;
+ int autoplay_BindToObject ;
+ int autoplay_GetClassObject ;
+ int memset (int *,int ,int) ;
+ int ok (int,char*,int) ;
+ int pSHCreateQueryCancelAutoPlayMoniker (int **) ;
+ int test_moniker ;
+ int win_skip (char*) ;
+ int wine_dbgstr_guid (int *) ;
 
 __attribute__((used)) static void test_SHCreateQueryCancelAutoPlayMoniker(void)
 {
@@ -58,7 +58,7 @@ __attribute__((used)) static void test_SHCreateQueryCancelAutoPlayMoniker(void)
         return;
     }
 
-    hr = pSHCreateQueryCancelAutoPlayMoniker(NULL);
+    hr = pSHCreateQueryCancelAutoPlayMoniker(((void*)0));
     ok(hr == E_INVALIDARG, "got 0x%08x\n", hr);
 
     hr = pSHCreateQueryCancelAutoPlayMoniker(&mon);
@@ -74,7 +74,7 @@ __attribute__((used)) static void test_SHCreateQueryCancelAutoPlayMoniker(void)
     ok(hr == S_OK, "got 0x%08x\n", hr);
     ok(IsEqualGUID(&clsid, &CLSID_ClassMoniker), "got %s\n", wine_dbgstr_guid(&clsid));
 
-    /* extract used CLSID that implements this hook */
+
     SET_EXPECT(autoplay_BindToObject);
     SET_EXPECT(autoplay_GetClassObject);
 

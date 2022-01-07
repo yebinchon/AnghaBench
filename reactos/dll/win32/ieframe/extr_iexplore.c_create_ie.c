@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int ref; int /*<<< orphan*/  entry; int /*<<< orphan*/  doc_host; int /*<<< orphan*/  IWebBrowser2_iface; int /*<<< orphan*/  hlink_frame; } ;
-typedef  TYPE_1__ InternetExplorer ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DocHostContainerVtbl ; 
- int /*<<< orphan*/  DocHost_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  HlinkFrame_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InterlockedIncrement (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InternetExplorer_WebBrowser_Init (TYPE_1__*) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  create_frame_hwnd (TYPE_1__*) ; 
- TYPE_1__* heap_alloc_zero (int) ; 
- int /*<<< orphan*/  ie_list ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  obj_cnt ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int ref; int entry; int doc_host; int IWebBrowser2_iface; int hlink_frame; } ;
+typedef TYPE_1__ InternetExplorer ;
+typedef int IUnknown ;
+typedef int HRESULT ;
+
+
+ int DocHostContainerVtbl ;
+ int DocHost_Init (int *,int *,int *) ;
+ int E_OUTOFMEMORY ;
+ int HlinkFrame_Init (int *,int *,int *) ;
+ int InterlockedIncrement (int *) ;
+ int InternetExplorer_WebBrowser_Init (TYPE_1__*) ;
+ int S_OK ;
+ int create_frame_hwnd (TYPE_1__*) ;
+ TYPE_1__* heap_alloc_zero (int) ;
+ int ie_list ;
+ int list_add_tail (int *,int *) ;
+ int obj_cnt ;
 
 __attribute__((used)) static HRESULT create_ie(InternetExplorer **ret_obj)
 {

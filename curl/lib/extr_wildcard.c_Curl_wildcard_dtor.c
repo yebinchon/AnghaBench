@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct WildcardData {int /*<<< orphan*/  state; int /*<<< orphan*/ * customptr; int /*<<< orphan*/ * pattern; int /*<<< orphan*/ * path; int /*<<< orphan*/  filelist; int /*<<< orphan*/ * protdata; int /*<<< orphan*/  (* dtor ) (int /*<<< orphan*/ *) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLWC_INIT ; 
- int /*<<< orphan*/  Curl_llist_destroy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DEBUGASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZERO_NULL (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *) ; 
+
+
+
+struct WildcardData {int state; int * customptr; int * pattern; int * path; int filelist; int * protdata; int (* dtor ) (int *) ;} ;
+
+
+ int CURLWC_INIT ;
+ int Curl_llist_destroy (int *,int *) ;
+ int DEBUGASSERT (int ) ;
+ int ZERO_NULL (int *) ;
+ int free (int *) ;
+ int stub1 (int *) ;
 
 void Curl_wildcard_dtor(struct WildcardData *wc)
 {
@@ -28,18 +28,18 @@ void Curl_wildcard_dtor(struct WildcardData *wc)
   if(wc->dtor) {
     wc->dtor(wc->protdata);
     wc->dtor = ZERO_NULL;
-    wc->protdata = NULL;
+    wc->protdata = ((void*)0);
   }
-  DEBUGASSERT(wc->protdata == NULL);
+  DEBUGASSERT(wc->protdata == ((void*)0));
 
-  Curl_llist_destroy(&wc->filelist, NULL);
+  Curl_llist_destroy(&wc->filelist, ((void*)0));
 
 
   free(wc->path);
-  wc->path = NULL;
+  wc->path = ((void*)0);
   free(wc->pattern);
-  wc->pattern = NULL;
+  wc->pattern = ((void*)0);
 
-  wc->customptr = NULL;
+  wc->customptr = ((void*)0);
   wc->state = CURLWC_INIT;
 }

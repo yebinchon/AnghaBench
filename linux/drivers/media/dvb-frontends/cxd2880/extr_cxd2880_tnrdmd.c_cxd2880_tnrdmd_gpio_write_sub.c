@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct cxd2880_tnrdmd {scalar_t__ diver_mode; int /*<<< orphan*/  diver_sub; } ;
 
-/* Variables and functions */
- scalar_t__ CXD2880_TNRDMD_DIVERMODE_MAIN ; 
- int EINVAL ; 
- int cxd2880_tnrdmd_gpio_write (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u8 ;
+struct cxd2880_tnrdmd {scalar_t__ diver_mode; int diver_sub; } ;
+
+
+ scalar_t__ CXD2880_TNRDMD_DIVERMODE_MAIN ;
+ int EINVAL ;
+ int cxd2880_tnrdmd_gpio_write (int ,int ,int ) ;
 
 int cxd2880_tnrdmd_gpio_write_sub(struct cxd2880_tnrdmd *tnr_dmd,
-				  u8 id, u8 value)
+      u8 id, u8 value)
 {
-	if (!tnr_dmd)
-		return -EINVAL;
+ if (!tnr_dmd)
+  return -EINVAL;
 
-	if (tnr_dmd->diver_mode != CXD2880_TNRDMD_DIVERMODE_MAIN)
-		return -EINVAL;
+ if (tnr_dmd->diver_mode != CXD2880_TNRDMD_DIVERMODE_MAIN)
+  return -EINVAL;
 
-	return cxd2880_tnrdmd_gpio_write(tnr_dmd->diver_sub, id, value);
+ return cxd2880_tnrdmd_gpio_write(tnr_dmd->diver_sub, id, value);
 }

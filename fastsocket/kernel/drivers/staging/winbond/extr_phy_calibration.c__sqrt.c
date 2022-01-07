@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
 
-/* Variables and functions */
+
+
+
+typedef int u32 ;
+
+
 
 u32 _sqrt(u32 sqsum)
 {
-    u32     sq_rt;
+    u32 sq_rt;
 
-    int     g0, g1, g2, g3, g4;
-    int     seed;
-    int     next;
-    int     step;
+    int g0, g1, g2, g3, g4;
+    int seed;
+    int next;
+    int step;
 
-    g4 =  sqsum / 100000000;
+    g4 = sqsum / 100000000;
     g3 = (sqsum - g4*100000000) /1000000;
     g2 = (sqsum - g4*100000000 - g3*1000000) /10000;
     g1 = (sqsum - g4*100000000 - g3*1000000 - g2*10000) /100;
@@ -34,8 +34,8 @@ u32 _sqrt(u32 sqsum)
     seed = 0;
     while (((seed+1)*(step+1)) <= next)
     {
-    	step++;
-    	seed++;
+     step++;
+     seed++;
     }
 
     sq_rt = seed * 10000;
@@ -46,7 +46,7 @@ u32 _sqrt(u32 sqsum)
     while (((seed+1)*(step+1)) <= next)
     {
         step++;
-    	seed++;
+     seed++;
     }
 
     sq_rt = sq_rt + step * 1000;
@@ -56,7 +56,7 @@ u32 _sqrt(u32 sqsum)
     while (((seed+1)*(step+1)) <= next)
     {
         step++;
-    	seed++;
+     seed++;
     }
 
     sq_rt = sq_rt + step * 100;
@@ -67,7 +67,7 @@ u32 _sqrt(u32 sqsum)
     while (((seed+1)*(step+1)) <= next)
     {
         step++;
-    	seed++;
+     seed++;
     }
 
     sq_rt = sq_rt + step * 10;
@@ -78,7 +78,7 @@ u32 _sqrt(u32 sqsum)
     while (((seed+1)*(step+1)) <= next)
     {
         step++;
-    	seed++;
+     seed++;
     }
 
     sq_rt = sq_rt + step;

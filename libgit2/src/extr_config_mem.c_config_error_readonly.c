@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GIT_ERROR_CONFIG ; 
- int /*<<< orphan*/  git_error_set (int /*<<< orphan*/ ,char*) ; 
+ int GIT_ERROR_CONFIG ;
+ int git_error_set (int ,char*) ;
 
 __attribute__((used)) static int config_error_readonly(void)
 {
-	git_error_set(GIT_ERROR_CONFIG, "this backend is read-only");
-	return -1;
+ git_error_set(GIT_ERROR_CONFIG, "this backend is read-only");
+ return -1;
 }

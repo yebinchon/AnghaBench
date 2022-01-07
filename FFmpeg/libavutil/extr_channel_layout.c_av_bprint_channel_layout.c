@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
 struct AVBPrint {int dummy; } ;
-struct TYPE_3__ {int nb_channels; scalar_t__ layout; int /*<<< orphan*/  name; } ;
+struct TYPE_3__ {int nb_channels; scalar_t__ layout; int name; } ;
 
-/* Variables and functions */
- int FF_ARRAY_ELEMS (TYPE_1__*) ; 
- int UINT64_C (int) ; 
- int /*<<< orphan*/  av_bprintf (struct AVBPrint*,char*,...) ; 
- int av_get_channel_layout_nb_channels (scalar_t__) ; 
- TYPE_1__* channel_layout_map ; 
- char* get_channel_name (int) ; 
+
+ int FF_ARRAY_ELEMS (TYPE_1__*) ;
+ int UINT64_C (int) ;
+ int av_bprintf (struct AVBPrint*,char*,...) ;
+ int av_get_channel_layout_nb_channels (scalar_t__) ;
+ TYPE_1__* channel_layout_map ;
+ char* get_channel_name (int) ;
 
 void av_bprint_channel_layout(struct AVBPrint *bp,
                               int nb_channels, uint64_t channel_layout)
@@ -32,7 +32,7 @@ void av_bprint_channel_layout(struct AVBPrint *bp,
         nb_channels = av_get_channel_layout_nb_channels(channel_layout);
 
     for (i = 0; i < FF_ARRAY_ELEMS(channel_layout_map); i++)
-        if (nb_channels    == channel_layout_map[i].nb_channels &&
+        if (nb_channels == channel_layout_map[i].nb_channels &&
             channel_layout == channel_layout_map[i].layout) {
             av_bprintf(bp, "%s", channel_layout_map[i].name);
             return;

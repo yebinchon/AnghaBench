@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nilfs_recovery_info {int /*<<< orphan*/  ri_used_segments; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (struct nilfs_recovery_info*,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct nilfs_recovery_info {int ri_used_segments; } ;
+
+
+ int INIT_LIST_HEAD (int *) ;
+ int memset (struct nilfs_recovery_info*,int ,int) ;
 
 __attribute__((used)) static void nilfs_init_recovery_info(struct nilfs_recovery_info *ri)
 {
-	memset(ri, 0, sizeof(*ri));
-	INIT_LIST_HEAD(&ri->ri_used_segments);
+ memset(ri, 0, sizeof(*ri));
+ INIT_LIST_HEAD(&ri->ri_used_segments);
 }

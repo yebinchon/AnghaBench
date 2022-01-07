@@ -1,38 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FORMAT_ASN1 ; 
- int FORMAT_ENGINE ; 
- int FORMAT_HTTP ; 
- int FORMAT_MSBLOB ; 
- int FORMAT_NSS ; 
- int FORMAT_PEM ; 
- int FORMAT_PKCS12 ; 
- int FORMAT_PVK ; 
- int FORMAT_SMIME ; 
- int FORMAT_TEXT ; 
- unsigned long OPT_FMT_ENGINE ; 
- unsigned long OPT_FMT_HTTP ; 
- unsigned long OPT_FMT_MSBLOB ; 
- unsigned long OPT_FMT_NSS ; 
- unsigned long OPT_FMT_PEMDER ; 
- unsigned long OPT_FMT_PKCS12 ; 
- unsigned long OPT_FMT_PVK ; 
- unsigned long OPT_FMT_SMIME ; 
- unsigned long OPT_FMT_TEXT ; 
- int opt_format_error (char const*,unsigned long) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
+ int FORMAT_ASN1 ;
+ int FORMAT_ENGINE ;
+ int FORMAT_HTTP ;
+ int FORMAT_MSBLOB ;
+ int FORMAT_NSS ;
+ int FORMAT_PEM ;
+ int FORMAT_PKCS12 ;
+ int FORMAT_PVK ;
+ int FORMAT_SMIME ;
+ int FORMAT_TEXT ;
+ unsigned long OPT_FMT_ENGINE ;
+ unsigned long OPT_FMT_HTTP ;
+ unsigned long OPT_FMT_MSBLOB ;
+ unsigned long OPT_FMT_NSS ;
+ unsigned long OPT_FMT_PEMDER ;
+ unsigned long OPT_FMT_PKCS12 ;
+ unsigned long OPT_FMT_PVK ;
+ unsigned long OPT_FMT_SMIME ;
+ unsigned long OPT_FMT_TEXT ;
+ int opt_format_error (char const*,unsigned long) ;
+ int strcmp (char const*,char*) ;
 
 int opt_format(const char *s, unsigned long flags, int *result)
 {

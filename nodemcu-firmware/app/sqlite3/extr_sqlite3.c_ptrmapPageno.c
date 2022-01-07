@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int usableSize; int /*<<< orphan*/  mutex; } ;
-typedef  int Pgno ;
-typedef  TYPE_1__ BtShared ;
 
-/* Variables and functions */
- int PENDING_BYTE_PAGE (TYPE_1__*) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_mutex_held (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int usableSize; int mutex; } ;
+typedef int Pgno ;
+typedef TYPE_1__ BtShared ;
+
+
+ int PENDING_BYTE_PAGE (TYPE_1__*) ;
+ int assert (int ) ;
+ int sqlite3_mutex_held (int ) ;
 
 __attribute__((used)) static Pgno ptrmapPageno(BtShared *pBt, Pgno pgno){
   int nPagesPerMapPage;

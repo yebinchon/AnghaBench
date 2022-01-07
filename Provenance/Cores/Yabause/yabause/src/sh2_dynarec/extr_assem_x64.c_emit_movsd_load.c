@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int EBP ; 
- int /*<<< orphan*/  assem_debug (char*,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  output_byte (int) ; 
- int /*<<< orphan*/  output_modrm (int,unsigned int,unsigned int) ; 
- int /*<<< orphan*/ * regname ; 
+ unsigned int EBP ;
+ int assem_debug (char*,int ,unsigned int) ;
+ int assert (int) ;
+ int output_byte (int) ;
+ int output_modrm (int,unsigned int,unsigned int) ;
+ int * regname ;
 
 void emit_movsd_load(unsigned int addr,unsigned int ssereg)
 {

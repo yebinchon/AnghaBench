@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsUInt8Number ;
-typedef  int cmsUInt32Number ;
-typedef  int /*<<< orphan*/  cmsUInt16Number ;
-typedef  int /*<<< orphan*/  cmsContext ;
-struct TYPE_3__ {int /*<<< orphan*/  InputFormat; } ;
-typedef  TYPE_1__ _cmsTRANSFORM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHANGE_ENDIAN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REVERSE_FLAVOR_16 (int /*<<< orphan*/ ) ; 
- int T_CHANNELS (int /*<<< orphan*/ ) ; 
- int T_DOSWAP (int /*<<< orphan*/ ) ; 
- int T_ENDIAN16 (int /*<<< orphan*/ ) ; 
- int T_EXTRA (int /*<<< orphan*/ ) ; 
- int T_FLAVOR (int /*<<< orphan*/ ) ; 
- int T_SWAPFIRST (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsUNUSED_PARAMETER (int) ; 
- int /*<<< orphan*/  memmove (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int cmsUInt8Number ;
+typedef int cmsUInt32Number ;
+typedef int cmsUInt16Number ;
+typedef int cmsContext ;
+struct TYPE_3__ {int InputFormat; } ;
+typedef TYPE_1__ _cmsTRANSFORM ;
+
+
+ int CHANGE_ENDIAN (int ) ;
+ int REVERSE_FLAVOR_16 (int ) ;
+ int T_CHANNELS (int ) ;
+ int T_DOSWAP (int ) ;
+ int T_ENDIAN16 (int ) ;
+ int T_EXTRA (int ) ;
+ int T_FLAVOR (int ) ;
+ int T_SWAPFIRST (int ) ;
+ int cmsUNUSED_PARAMETER (int) ;
+ int memmove (int *,int *,int) ;
 
 __attribute__((used)) static
 cmsUInt8Number* UnrollAnyWords(cmsContext ContextID, register _cmsTRANSFORM* info,
@@ -36,13 +36,13 @@ cmsUInt8Number* UnrollAnyWords(cmsContext ContextID, register _cmsTRANSFORM* inf
                                register cmsUInt8Number* accum,
                                register cmsUInt32Number Stride)
 {
-   cmsUInt32Number nChan       = T_CHANNELS(info -> InputFormat);
-   cmsUInt32Number SwapEndian  = T_ENDIAN16(info -> InputFormat);
-   cmsUInt32Number DoSwap      = T_DOSWAP(info ->InputFormat);
-   cmsUInt32Number Reverse     = T_FLAVOR(info ->InputFormat);
-   cmsUInt32Number SwapFirst   = T_SWAPFIRST(info -> InputFormat);
-   cmsUInt32Number Extra       = T_EXTRA(info -> InputFormat);
-   cmsUInt32Number ExtraFirst  = DoSwap ^ SwapFirst;
+   cmsUInt32Number nChan = T_CHANNELS(info -> InputFormat);
+   cmsUInt32Number SwapEndian = T_ENDIAN16(info -> InputFormat);
+   cmsUInt32Number DoSwap = T_DOSWAP(info ->InputFormat);
+   cmsUInt32Number Reverse = T_FLAVOR(info ->InputFormat);
+   cmsUInt32Number SwapFirst = T_SWAPFIRST(info -> InputFormat);
+   cmsUInt32Number Extra = T_EXTRA(info -> InputFormat);
+   cmsUInt32Number ExtraFirst = DoSwap ^ SwapFirst;
    cmsUInt32Number i;
 
     if (ExtraFirst) {

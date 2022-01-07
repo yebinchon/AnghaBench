@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u64 ;
-struct TYPE_2__ {int sample_window; int sample_width; int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  USEC_PER_MSEC ; 
- int /*<<< orphan*/  do_div (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_sample () ; 
- TYPE_1__ hwlat_data ; 
- int /*<<< orphan*/  kthread_should_stop () ; 
- int /*<<< orphan*/  local_irq_disable () ; 
- int /*<<< orphan*/  local_irq_enable () ; 
- int /*<<< orphan*/  move_to_next_cpu () ; 
- scalar_t__ msleep_interruptible (int) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u64 ;
+struct TYPE_2__ {int sample_window; int sample_width; int lock; } ;
+
+
+ int USEC_PER_MSEC ;
+ int do_div (int,int ) ;
+ int get_sample () ;
+ TYPE_1__ hwlat_data ;
+ int kthread_should_stop () ;
+ int local_irq_disable () ;
+ int local_irq_enable () ;
+ int move_to_next_cpu () ;
+ scalar_t__ msleep_interruptible (int) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 __attribute__((used)) static int kthread_fn(void *data)
 {
-	u64 interval;
+ u64 interval;
 
-	while (!kthread_should_stop()) {
+ while (!kthread_should_stop()) {
 
-		move_to_next_cpu();
+  move_to_next_cpu();
 
-		local_irq_disable();
-		get_sample();
-		local_irq_enable();
+  local_irq_disable();
+  get_sample();
+  local_irq_enable();
 
-		mutex_lock(&hwlat_data.lock);
-		interval = hwlat_data.sample_window - hwlat_data.sample_width;
-		mutex_unlock(&hwlat_data.lock);
+  mutex_lock(&hwlat_data.lock);
+  interval = hwlat_data.sample_window - hwlat_data.sample_width;
+  mutex_unlock(&hwlat_data.lock);
 
-		do_div(interval, USEC_PER_MSEC); /* modifies interval value */
+  do_div(interval, USEC_PER_MSEC);
 
-		/* Always sleep for at least 1ms */
-		if (interval < 1)
-			interval = 1;
 
-		if (msleep_interruptible(interval))
-			break;
-	}
+  if (interval < 1)
+   interval = 1;
 
-	return 0;
+  if (msleep_interruptible(interval))
+   break;
+ }
+
+ return 0;
 }

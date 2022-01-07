@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  explicit_exit_notification_time_wait; int /*<<< orphan*/  explicit_exit_notification_interval; } ;
-struct context {TYPE_1__ c2; int /*<<< orphan*/  sig; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_INFO ; 
- int /*<<< orphan*/  event_timeout_init (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  halt_non_edge_triggered_signals () ; 
- int /*<<< orphan*/  msg (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  now ; 
- int /*<<< orphan*/  reset_coarse_timers (struct context*) ; 
- int /*<<< orphan*/  signal_reset (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int explicit_exit_notification_time_wait; int explicit_exit_notification_interval; } ;
+struct context {TYPE_1__ c2; int sig; } ;
+
+
+ int M_INFO ;
+ int event_timeout_init (int *,int,int ) ;
+ int halt_non_edge_triggered_signals () ;
+ int msg (int ,char*) ;
+ int now ;
+ int reset_coarse_timers (struct context*) ;
+ int signal_reset (int ) ;
 
 __attribute__((used)) static void
 process_explicit_exit_notification_init(struct context *c)

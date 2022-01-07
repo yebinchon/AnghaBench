@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mstate ;
-typedef  int /*<<< orphan*/  mspace ;
 
-/* Variables and functions */
- int /*<<< orphan*/  POSTACTION (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PREACTION (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  USAGE_ERROR_ACTION (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ok_magic (int /*<<< orphan*/ ) ; 
- int sys_trim (int /*<<< orphan*/ ,size_t) ; 
+
+
+
+typedef int mstate ;
+typedef int mspace ;
+
+
+ int POSTACTION (int ) ;
+ int PREACTION (int ) ;
+ int USAGE_ERROR_ACTION (int ,int ) ;
+ scalar_t__ ok_magic (int ) ;
+ int sys_trim (int ,size_t) ;
 
 int mspace_trim(mspace msp, size_t pad) {
   int result = 0;

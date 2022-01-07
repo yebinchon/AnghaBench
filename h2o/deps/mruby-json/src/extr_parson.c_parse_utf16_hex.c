@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int hex_char_to_int (char const) ; 
+ int hex_char_to_int (char const) ;
 
 __attribute__((used)) static int parse_utf16_hex(const char *s, unsigned int *result) {
     int x1, x2, x3, x4;

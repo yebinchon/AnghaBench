@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int const APPROX_LOG_MAX ; 
- int APPROX_LOG_WITH_CORRECTION_MAX ; 
- int LOG_2_RECIPROCAL ; 
- int LOG_LOOKUP_IDX_MAX ; 
- int /*<<< orphan*/  assert (int) ; 
- int* kLog2Table ; 
- int log (double) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int const APPROX_LOG_MAX ;
+ int APPROX_LOG_WITH_CORRECTION_MAX ;
+ int LOG_2_RECIPROCAL ;
+ int LOG_LOOKUP_IDX_MAX ;
+ int assert (int) ;
+ int* kLog2Table ;
+ int log (double) ;
 
 __attribute__((used)) static float FastLog2Slow_C(uint32_t v) {
   assert(v >= LOG_LOOKUP_IDX_MAX);
@@ -35,8 +35,8 @@ __attribute__((used)) static float FastLog2Slow_C(uint32_t v) {
     } while (v >= LOG_LOOKUP_IDX_MAX);
     log_2 = kLog2Table[v] + log_cnt;
     if (orig_v >= APPROX_LOG_MAX) {
-      // Since the division is still expensive, add this correction factor only
-      // for large values of 'v'.
+
+
       const int correction = (23 * (orig_v & (y - 1))) >> 4;
       log_2 += (double)correction / orig_v;
     }

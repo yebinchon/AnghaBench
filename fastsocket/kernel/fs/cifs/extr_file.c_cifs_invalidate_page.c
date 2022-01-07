@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct page {TYPE_1__* mapping; } ;
-struct cifsInodeInfo {int /*<<< orphan*/  vfs_inode; } ;
-struct TYPE_2__ {int /*<<< orphan*/  host; } ;
+struct cifsInodeInfo {int vfs_inode; } ;
+struct TYPE_2__ {int host; } ;
 
-/* Variables and functions */
- struct cifsInodeInfo* CIFS_I (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cifs_fscache_invalidate_page (struct page*,int /*<<< orphan*/ *) ; 
+
+ struct cifsInodeInfo* CIFS_I (int ) ;
+ int cifs_fscache_invalidate_page (struct page*,int *) ;
 
 __attribute__((used)) static void cifs_invalidate_page(struct page *page, unsigned long offset)
 {
-	struct cifsInodeInfo *cifsi = CIFS_I(page->mapping->host);
+ struct cifsInodeInfo *cifsi = CIFS_I(page->mapping->host);
 
-	if (offset == 0)
-		cifs_fscache_invalidate_page(page, &cifsi->vfs_inode);
+ if (offset == 0)
+  cifs_fscache_invalidate_page(page, &cifsi->vfs_inode);
 }

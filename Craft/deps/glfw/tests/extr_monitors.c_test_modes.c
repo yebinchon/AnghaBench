@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ redBits; scalar_t__ greenBits; scalar_t__ blueBits; scalar_t__ refreshRate; int width; scalar_t__ height; } ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
-typedef  TYPE_1__ GLFWvidmode ;
-typedef  int /*<<< orphan*/  GLFWmonitor ;
+typedef int GLFWwindow ;
+typedef TYPE_1__ GLFWvidmode ;
+typedef int GLFWmonitor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- int /*<<< orphan*/  GLFW_BLUE_BITS ; 
- int /*<<< orphan*/  GLFW_GREEN_BITS ; 
- int /*<<< orphan*/  GLFW_RED_BITS ; 
- int /*<<< orphan*/  GLFW_REFRESH_RATE ; 
- int /*<<< orphan*/  GL_BLUE_BITS ; 
- int /*<<< orphan*/  GL_COLOR_BUFFER_BIT ; 
- int /*<<< orphan*/  GL_GREEN_BITS ; 
- int /*<<< orphan*/  GL_RED_BITS ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- char* format_mode (TYPE_1__ const*) ; 
- int /*<<< orphan*/  framebuffer_size_callback ; 
- int /*<<< orphan*/  glClear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glGetIntegerv (int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/ * glfwCreateWindow (int,scalar_t__,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwDestroyWindow (int /*<<< orphan*/ *) ; 
- char* glfwGetMonitorName (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwGetPrimaryMonitor () ; 
- double glfwGetTime () ; 
- TYPE_1__* glfwGetVideoModes (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  glfwGetWindowSize (int /*<<< orphan*/ *,int*,scalar_t__*) ; 
- int /*<<< orphan*/  glfwMakeContextCurrent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwPollEvents () ; 
- int /*<<< orphan*/  glfwSetFramebufferSizeCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetKeyCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetTime (double) ; 
- int /*<<< orphan*/  glfwSwapBuffers (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwSwapInterval (int) ; 
- int /*<<< orphan*/  glfwTerminate () ; 
- int /*<<< orphan*/  glfwWindowHint (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ glfwWindowShouldClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  key_callback ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+ int EXIT_SUCCESS ;
+ int GLFW_BLUE_BITS ;
+ int GLFW_GREEN_BITS ;
+ int GLFW_RED_BITS ;
+ int GLFW_REFRESH_RATE ;
+ int GL_BLUE_BITS ;
+ int GL_COLOR_BUFFER_BIT ;
+ int GL_GREEN_BITS ;
+ int GL_RED_BITS ;
+ int exit (int ) ;
+ char* format_mode (TYPE_1__ const*) ;
+ int framebuffer_size_callback ;
+ int glClear (int ) ;
+ int glGetIntegerv (int ,scalar_t__*) ;
+ int * glfwCreateWindow (int,scalar_t__,char*,int ,int *) ;
+ int glfwDestroyWindow (int *) ;
+ char* glfwGetMonitorName (int *) ;
+ int glfwGetPrimaryMonitor () ;
+ double glfwGetTime () ;
+ TYPE_1__* glfwGetVideoModes (int *,int*) ;
+ int glfwGetWindowSize (int *,int*,scalar_t__*) ;
+ int glfwMakeContextCurrent (int *) ;
+ int glfwPollEvents () ;
+ int glfwSetFramebufferSizeCallback (int *,int ) ;
+ int glfwSetKeyCallback (int *,int ) ;
+ int glfwSetTime (double) ;
+ int glfwSwapBuffers (int *) ;
+ int glfwSwapInterval (int) ;
+ int glfwTerminate () ;
+ int glfwWindowHint (int ,scalar_t__) ;
+ scalar_t__ glfwWindowShouldClose (int *) ;
+ int key_callback ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static void test_modes(GLFWmonitor* monitor)
 {
@@ -57,7 +57,7 @@ __attribute__((used)) static void test_modes(GLFWmonitor* monitor)
     GLFWwindow* window;
     const GLFWvidmode* modes = glfwGetVideoModes(monitor, &count);
 
-    for (i = 0;  i < count;  i++)
+    for (i = 0; i < count; i++)
     {
         const GLFWvidmode* mode = modes + i;
         GLFWvidmode current;
@@ -75,7 +75,7 @@ __attribute__((used)) static void test_modes(GLFWmonitor* monitor)
         window = glfwCreateWindow(mode->width, mode->height,
                                   "Video Mode Test",
                                   glfwGetPrimaryMonitor(),
-                                  NULL);
+                                  ((void*)0));
         if (!window)
         {
             printf("Failed to enter mode %u: %s\n",
@@ -132,7 +132,7 @@ __attribute__((used)) static void test_modes(GLFWmonitor* monitor)
         printf("Closing window\n");
 
         glfwDestroyWindow(window);
-        window = NULL;
+        window = ((void*)0);
 
         glfwPollEvents();
     }

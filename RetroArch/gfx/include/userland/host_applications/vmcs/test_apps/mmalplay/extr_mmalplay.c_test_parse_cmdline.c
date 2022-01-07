@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint32_t ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef void* uint32_t ;
 struct TYPE_7__ {unsigned int width; unsigned int height; } ;
 struct TYPE_6__ {unsigned int width; unsigned int height; } ;
 struct TYPE_10__ {int tunnelling; int stepping; float seeking; int disable_playback; int disable_video_decode; int disable_video; int disable_audio; int enable_scheduling; unsigned int output_num; int copy_input; int copy_output; char const* component_video_render; char const* component_video_decoder; char const* component_splitter; char const* component_video_converter; char const* component_video_scheduler; char const* component_audio_render; char const* component_audio_decoder; char const* component_container_reader; char const* audio_destination; unsigned int video_destination; int window; int audio_passthrough; TYPE_2__ render_rect; void* render_format; TYPE_1__ output_rect; void* output_format; } ;
 struct TYPE_8__ {char const* output_uri; } ;
 struct TYPE_9__ {char const* uri; TYPE_3__ options; } ;
 
-/* Variables and functions */
- scalar_t__ FILE_PLAY_MAX ; 
- char* VERSION ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  get_format (char const*,void**,unsigned int*,unsigned int*) ; 
- TYPE_5__ options ; 
- TYPE_4__* play_info ; 
- scalar_t__ play_info_count ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- unsigned int sleepy_time ; 
- int sscanf (char const*,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- char* strrchr (char const*,char) ; 
- int unclean_exit ; 
- int /*<<< orphan*/  verbosity ; 
+
+ scalar_t__ FILE_PLAY_MAX ;
+ char* VERSION ;
+ int exit (int ) ;
+ int fprintf (int ,char*,...) ;
+ int get_format (char const*,void**,unsigned int*,unsigned int*) ;
+ TYPE_5__ options ;
+ TYPE_4__* play_info ;
+ scalar_t__ play_info_count ;
+ int printf (char*,char*) ;
+ unsigned int sleepy_time ;
+ int sscanf (char const*,char*,...) ;
+ int stderr ;
+ int strcmp (char const*,char*) ;
+ char* strrchr (char const*,char) ;
+ int unclean_exit ;
+ int verbosity ;
 
 __attribute__((used)) static int test_parse_cmdline(int argc, const char **argv)
 {
@@ -47,14 +47,14 @@ __attribute__((used)) static int test_parse_cmdline(int argc, const char **argv)
    float value_f = 0;
    int i, j;
 
-   /* Parse the command line arguments */
+
    for(i = 1; i < argc; i++)
    {
       if(!argv[i]) continue;
 
       if(argv[i][0] != '-')
       {
-         /* Not an option argument so will be the input URI */
+
          if (play_info_count >= FILE_PLAY_MAX)
          {
             fprintf(stderr, "Too many URIs!\n");
@@ -64,7 +64,7 @@ __attribute__((used)) static int test_parse_cmdline(int argc, const char **argv)
          continue;
       }
 
-      /* We are now dealing with command line options */
+
       switch(argv[i][1])
       {
       case 'V':
@@ -85,7 +85,7 @@ __attribute__((used)) static int test_parse_cmdline(int argc, const char **argv)
             options.stepping = 1;
             break;
          }
-         /* coverity[secure_coding] Only reading numbers, so can't overflow */
+
          else if (!argv[i][2] && ++i < argc &&
                   sscanf(argv[i], "%f", &value_f) == 1)
          {
@@ -113,12 +113,12 @@ __attribute__((used)) static int test_parse_cmdline(int argc, const char **argv)
          options.enable_scheduling = 1; break;
          break;
       case 't':
-         /* coverity[secure_coding] Only reading integers, so can't overflow */
+
          if (++i >= argc || sscanf(argv[i], "%u", &sleepy_time) != 1)
-            goto usage;    /* Time missing / invalid */
+            goto usage;
          break;
       case 'x':
-         /* coverity[secure_coding] Only reading integers, so can't overflow */
+
          if (++i >= argc || sscanf(argv[i], "%u", &value_u1) != 1)
             goto usage;
          options.output_num = value_u1;
@@ -206,7 +206,7 @@ __attribute__((used)) static int test_parse_cmdline(int argc, const char **argv)
             options.audio_destination = argv[++i];
          else if (argv[i][2] == 'v')
          {
-            /* coverity[secure_coding] Only reading integers, so can't overflow */
+
             if (sscanf(argv[++i], "%u", &options.video_destination) != 1)
                goto usage;
          }
@@ -228,7 +228,7 @@ __attribute__((used)) static int test_parse_cmdline(int argc, const char **argv)
       continue;
    }
 
-   /* Sanity check that we have at least an input uri */
+
    if(!play_info_count)
    {
      fprintf(stderr, "missing uri argument\n");

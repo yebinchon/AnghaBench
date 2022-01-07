@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ VARIANT_BOOL ;
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  IXMLDOMSchemaCollection ;
-typedef  int /*<<< orphan*/  IXMLDOMNodeList ;
-typedef  int /*<<< orphan*/  IXMLDOMNode ;
-typedef  int /*<<< orphan*/  IXMLDOMElement ;
-typedef  int /*<<< orphan*/  IXMLDOMDocument2 ;
-typedef  int /*<<< orphan*/  IXMLDOMDocument ;
-typedef  int /*<<< orphan*/  IXMLDOMAttribute ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  char CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSID_DOMDocument2 ; 
- int /*<<< orphan*/  CLSID_XMLSchemaCache ; 
- int /*<<< orphan*/  EXPECT_HR (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  IID_IXMLDOMDocument2 ; 
- int /*<<< orphan*/  IID_IXMLDOMElement ; 
- int /*<<< orphan*/  IID_IXMLDOMSchemaCollection ; 
- int /*<<< orphan*/  IXMLDOMAttribute_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMAttribute_get_ownerDocument (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMDocument2_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMDocument2_get_firstChild (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMDocument2_loadXML (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  IXMLDOMDocument_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IXMLDOMDocument_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMDocument_get_documentElement (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMDocument_loadXML (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  IXMLDOMElement_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMElement_getAttributeNode (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMElement_get_childNodes (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMNodeList_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMNodeList_get_item (int /*<<< orphan*/ *,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMNodeList_get_length (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  IXMLDOMNode_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IXMLDOMNode_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMNode_get_ownerDocument (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMSchemaCollection_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- scalar_t__ VARIANT_TRUE ; 
- int /*<<< orphan*/  VariantInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _bstr_ (char const*) ; 
- int /*<<< orphan*/  check_default_props (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  check_set_props (int /*<<< orphan*/ *) ; 
- char* complete4A ; 
- int /*<<< orphan*/ * create_cache (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * create_document (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_bstrs () ; 
- int /*<<< orphan*/  is_clsid_supported (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  ole_check (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_props (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  unset_props (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ VARIANT_BOOL ;
+typedef int VARIANT ;
+typedef scalar_t__ LONG ;
+typedef int IXMLDOMSchemaCollection ;
+typedef int IXMLDOMNodeList ;
+typedef int IXMLDOMNode ;
+typedef int IXMLDOMElement ;
+typedef int IXMLDOMDocument2 ;
+typedef int IXMLDOMDocument ;
+typedef int IXMLDOMAttribute ;
+typedef int HRESULT ;
+typedef char CHAR ;
+
+
+ int CLSID_DOMDocument2 ;
+ int CLSID_XMLSchemaCache ;
+ int EXPECT_HR (int ,int ) ;
+ int E_INVALIDARG ;
+ int IID_IXMLDOMDocument2 ;
+ int IID_IXMLDOMElement ;
+ int IID_IXMLDOMSchemaCollection ;
+ int IXMLDOMAttribute_Release (int *) ;
+ int IXMLDOMAttribute_get_ownerDocument (int *,int *) ;
+ int IXMLDOMDocument2_Release (int *) ;
+ int IXMLDOMDocument2_get_firstChild (int *,int **) ;
+ int IXMLDOMDocument2_loadXML (int *,int ,scalar_t__*) ;
+ int IXMLDOMDocument_QueryInterface (int *,int *,void**) ;
+ int IXMLDOMDocument_Release (int *) ;
+ int IXMLDOMDocument_get_documentElement (int *,int **) ;
+ int IXMLDOMDocument_loadXML (int *,int ,scalar_t__*) ;
+ int IXMLDOMElement_Release (int *) ;
+ int IXMLDOMElement_getAttributeNode (int *,int ,int **) ;
+ int IXMLDOMElement_get_childNodes (int *,int **) ;
+ int IXMLDOMNodeList_Release (int *) ;
+ int IXMLDOMNodeList_get_item (int *,int,int **) ;
+ int IXMLDOMNodeList_get_length (int *,scalar_t__*) ;
+ int IXMLDOMNode_QueryInterface (int *,int *,void**) ;
+ int IXMLDOMNode_Release (int *) ;
+ int IXMLDOMNode_get_ownerDocument (int *,int **) ;
+ int IXMLDOMSchemaCollection_Release (int *) ;
+ int S_OK ;
+ scalar_t__ VARIANT_TRUE ;
+ int VariantInit (int *) ;
+ int _bstr_ (char const*) ;
+ int check_default_props (int *) ;
+ int check_set_props (int *) ;
+ char* complete4A ;
+ int * create_cache (int *) ;
+ int * create_document (int *) ;
+ int free_bstrs () ;
+ int is_clsid_supported (int *,int *) ;
+ int ok (int,char*,...) ;
+ int ole_check (int ) ;
+ int set_props (int *,int *) ;
+ int unset_props (int *) ;
 
 __attribute__((used)) static void test_get_ownerDocument(void)
 {
@@ -101,14 +101,14 @@ __attribute__((used)) static void test_get_ownerDocument(void)
 
     check_default_props(doc);
 
-    /* set properties and check that new instances use them */
+
     set_props(doc, cache);
     check_set_props(doc);
 
     ole_check(IXMLDOMDocument2_get_firstChild(doc, &node));
     ole_check(IXMLDOMNode_get_ownerDocument(node, &doc1));
 
-    /* new interface keeps props */
+
     ole_check(IXMLDOMDocument_QueryInterface(doc1, &IID_IXMLDOMDocument2, (void**)&doc_owner));
     ok( doc_owner != doc, "got %p, doc %p\n", doc_owner, doc);
     check_set_props(doc_owner);
@@ -119,11 +119,11 @@ __attribute__((used)) static void test_get_ownerDocument(void)
 
     ok(doc1 != doc2, "got %p, expected %p. original %p\n", doc2, doc1, doc);
 
-    /* reload */
+
     ole_check(IXMLDOMDocument2_loadXML(doc, _bstr_(complete4A), &b));
     ok(b == VARIANT_TRUE, "failed to load XML string\n");
 
-    /* properties retained even after reload */
+
     check_set_props(doc);
 
     ole_check(IXMLDOMDocument2_get_firstChild(doc, &node));
@@ -134,12 +134,12 @@ __attribute__((used)) static void test_get_ownerDocument(void)
     ok(doc3 != doc1 && doc3 != doc2 && doc_owner != doc, "got %p, (%p, %p, %p)\n", doc3, doc, doc1, doc2);
     check_set_props(doc_owner);
 
-    /* changing properties for one instance changes them for all */
+
     unset_props(doc_owner);
     check_default_props(doc_owner);
     check_default_props(doc);
 
-    /* NULL check */
+
     hr = IXMLDOMDocument_loadXML(doc1, _bstr_(nodeXML), &b);
     EXPECT_HR(hr, S_OK);
     ok(b == VARIANT_TRUE, "failed to load XML string\n");
@@ -157,14 +157,14 @@ __attribute__((used)) static void test_get_ownerDocument(void)
         hr = IXMLDOMNodeList_get_item(node_list, i, &node);
         EXPECT_HR(hr, S_OK);
 
-        hr = IXMLDOMNode_get_ownerDocument(node, NULL);
+        hr = IXMLDOMNode_get_ownerDocument(node, ((void*)0));
         EXPECT_HR(hr, E_INVALIDARG);
 
         IXMLDOMNode_Release(node);
     }
     IXMLDOMElement_Release(element);
 
-    /* Test Attribute Node */
+
     hr = IXMLDOMNodeList_get_item(node_list, 2, &node);
     EXPECT_HR(hr, S_OK);
     hr = IXMLDOMNode_QueryInterface(node, &IID_IXMLDOMElement, (void**)&element);
@@ -173,9 +173,9 @@ __attribute__((used)) static void test_get_ownerDocument(void)
 
     hr = IXMLDOMElement_getAttributeNode(element, _bstr_("attr"), &attr);
     EXPECT_HR(hr, S_OK);
-    ok(attr != NULL, "attr == NULL\n");
+    ok(attr != ((void*)0), "attr == NULL\n");
     IXMLDOMElement_Release(element);
-    hr = IXMLDOMAttribute_get_ownerDocument(attr, NULL);
+    hr = IXMLDOMAttribute_get_ownerDocument(attr, ((void*)0));
     EXPECT_HR(hr, E_INVALIDARG);
     IXMLDOMAttribute_Release(attr);
     IXMLDOMNodeList_Release(node_list);

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ mrb_int ;
-typedef  int /*<<< orphan*/  mrb_bool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ TOUPPER (char const) ; 
- int /*<<< orphan*/  TRUE ; 
+
+
+
+typedef scalar_t__ mrb_int ;
+typedef int mrb_bool ;
+
+
+ int FALSE ;
+ scalar_t__ TOUPPER (char const) ;
+ int TRUE ;
 
 __attribute__((used)) static mrb_bool
 str_casecmp_p(const char *s1, mrb_int len1, const char *s2, mrb_int len2)

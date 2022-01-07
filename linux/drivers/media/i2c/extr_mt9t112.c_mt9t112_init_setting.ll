@@ -1,0 +1,226 @@
+; ModuleID = '/home/carl/AnghaBench/linux/drivers/media/i2c/extr_mt9t112.c_mt9t112_init_setting.c'
+source_filename = "/home/carl/AnghaBench/linux/drivers/media/i2c/extr_mt9t112.c_mt9t112_init_setting.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.i2c_client = type { i32 }
+
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.i2c_client*)* @mt9t112_init_setting to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @mt9t112_init_setting(%struct.i2c_client* %0) #0 {
+  %2 = alloca %struct.i2c_client*, align 8
+  %3 = alloca i32, align 4
+  store %struct.i2c_client* %0, %struct.i2c_client** %2, align 8
+  %4 = load i32, i32* %3, align 4
+  %5 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %6 = call i32 @VAR(i32 26, i32 160)
+  %7 = call i32 @mt9t112_mcu_mask_set(i32 %4, %struct.i2c_client* %5, i32 %6, i32 64, i32 0)
+  %8 = load i32, i32* %3, align 4
+  %9 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %10 = call i32 @VAR(i32 18, i32 12)
+  %11 = call i32 @mt9t112_mcu_write(i32 %8, %struct.i2c_client* %9, i32 %10, i32 36)
+  %12 = load i32, i32* %3, align 4
+  %13 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %14 = call i32 @VAR(i32 18, i32 15)
+  %15 = call i32 @mt9t112_mcu_write(i32 %12, %struct.i2c_client* %13, i32 %14, i32 204)
+  %16 = load i32, i32* %3, align 4
+  %17 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %18 = call i32 @VAR(i32 18, i32 17)
+  %19 = call i32 @mt9t112_mcu_write(i32 %16, %struct.i2c_client* %17, i32 %18, i32 497)
+  %20 = load i32, i32* %3, align 4
+  %21 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %22 = call i32 @VAR(i32 18, i32 19)
+  %23 = call i32 @mt9t112_mcu_write(i32 %20, %struct.i2c_client* %21, i32 %22, i32 255)
+  %24 = load i32, i32* %3, align 4
+  %25 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %26 = call i32 @VAR(i32 18, i32 29)
+  %27 = call i32 @mt9t112_mcu_write(i32 %24, %struct.i2c_client* %25, i32 %26, i32 813)
+  %28 = load i32, i32* %3, align 4
+  %29 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %30 = call i32 @VAR(i32 18, i32 31)
+  %31 = call i32 @mt9t112_mcu_write(i32 %28, %struct.i2c_client* %29, i32 %30, i32 1850)
+  %32 = load i32, i32* %3, align 4
+  %33 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %34 = call i32 @VAR(i32 18, i32 37)
+  %35 = call i32 @mt9t112_mcu_write(i32 %32, %struct.i2c_client* %33, i32 %34, i32 2000)
+  %36 = load i32, i32* %3, align 4
+  %37 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %38 = call i32 @VAR(i32 27, i32 160)
+  %39 = call i32 @mt9t112_mcu_mask_set(i32 %36, %struct.i2c_client* %37, i32 %38, i32 64, i32 0)
+  %40 = load i32, i32* %3, align 4
+  %41 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %42 = call i32 @VAR(i32 18, i32 74)
+  %43 = call i32 @mt9t112_mcu_write(i32 %40, %struct.i2c_client* %41, i32 %42, i32 4)
+  %44 = load i32, i32* %3, align 4
+  %45 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %46 = call i32 @VAR(i32 18, i32 76)
+  %47 = call i32 @mt9t112_mcu_write(i32 %44, %struct.i2c_client* %45, i32 %46, i32 4)
+  %48 = load i32, i32* %3, align 4
+  %49 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %50 = call i32 @VAR(i32 18, i32 78)
+  %51 = call i32 @mt9t112_mcu_write(i32 %48, %struct.i2c_client* %49, i32 %50, i32 1547)
+  %52 = load i32, i32* %3, align 4
+  %53 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %54 = call i32 @VAR(i32 18, i32 80)
+  %55 = call i32 @mt9t112_mcu_write(i32 %52, %struct.i2c_client* %53, i32 %54, i32 2059)
+  %56 = load i32, i32* %3, align 4
+  %57 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %58 = call i32 @VAR(i32 18, i32 87)
+  %59 = call i32 @mt9t112_mcu_write(i32 %56, %struct.i2c_client* %57, i32 %58, i32 140)
+  %60 = load i32, i32* %3, align 4
+  %61 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %62 = call i32 @VAR(i32 18, i32 89)
+  %63 = call i32 @mt9t112_mcu_write(i32 %60, %struct.i2c_client* %61, i32 %62, i32 497)
+  %64 = load i32, i32* %3, align 4
+  %65 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %66 = call i32 @VAR(i32 18, i32 91)
+  %67 = call i32 @mt9t112_mcu_write(i32 %64, %struct.i2c_client* %65, i32 %66, i32 255)
+  %68 = load i32, i32* %3, align 4
+  %69 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %70 = call i32 @VAR(i32 18, i32 101)
+  %71 = call i32 @mt9t112_mcu_write(i32 %68, %struct.i2c_client* %69, i32 %70, i32 1640)
+  %72 = load i32, i32* %3, align 4
+  %73 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %74 = call i32 @VAR(i32 18, i32 103)
+  %75 = call i32 @mt9t112_mcu_write(i32 %72, %struct.i2c_client* %73, i32 %74, i32 2800)
+  %76 = load i32, i32* %3, align 4
+  %77 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %78 = call i32 @VAR(i32 18, i32 109)
+  %79 = call i32 @mt9t112_mcu_write(i32 %76, %struct.i2c_client* %77, i32 %78, i32 2800)
+  %80 = load i32, i32* %3, align 4
+  %81 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %82 = call i32 @VAR8(i32 8, i32 5)
+  %83 = call i32 @mt9t112_mcu_write(i32 %80, %struct.i2c_client* %81, i32 %82, i32 1)
+  %84 = load i32, i32* %3, align 4
+  %85 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %86 = call i32 @VAR(i32 27, i32 17)
+  %87 = call i32 @mt9t112_mcu_write(i32 %84, %struct.i2c_client* %85, i32 %86, i32 3)
+  %88 = load i32, i32* %3, align 4
+  %89 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %90 = call i32 @VAR(i32 26, i32 17)
+  %91 = call i32 @mt9t112_mcu_write(i32 %88, %struct.i2c_client* %89, i32 %90, i32 3)
+  %92 = load i32, i32* %3, align 4
+  %93 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %94 = call i32 @VAR8(i32 18, i32 165)
+  %95 = call i32 @mt9t112_mcu_write(i32 %92, %struct.i2c_client* %93, i32 %94, i32 37)
+  %96 = load i32, i32* %3, align 4
+  %97 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %98 = call i32 @VAR8(i32 18, i32 166)
+  %99 = call i32 @mt9t112_mcu_write(i32 %96, %struct.i2c_client* %97, i32 %98, i32 40)
+  %100 = load i32, i32* %3, align 4
+  %101 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %102 = call i32 @VAR8(i32 18, i32 167)
+  %103 = call i32 @mt9t112_mcu_write(i32 %100, %struct.i2c_client* %101, i32 %102, i32 44)
+  %104 = load i32, i32* %3, align 4
+  %105 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %106 = call i32 @VAR8(i32 18, i32 168)
+  %107 = call i32 @mt9t112_mcu_write(i32 %104, %struct.i2c_client* %105, i32 %106, i32 47)
+  %108 = load i32, i32* %3, align 4
+  %109 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %110 = call i32 @VAR8(i32 18, i32 68)
+  %111 = call i32 @mt9t112_mcu_write(i32 %108, %struct.i2c_client* %109, i32 %110, i32 186)
+  %112 = load i32, i32* %3, align 4
+  %113 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %114 = call i32 @VAR8(i32 18, i32 303)
+  %115 = call i32 @mt9t112_mcu_write(i32 %112, %struct.i2c_client* %113, i32 %114, i32 0)
+  %116 = load i32, i32* %3, align 4
+  %117 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %118 = call i32 @VAR8(i32 18, i32 69)
+  %119 = call i32 @mt9t112_mcu_write(i32 %116, %struct.i2c_client* %117, i32 %118, i32 155)
+  %120 = load i32, i32* %3, align 4
+  %121 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %122 = call i32 @VAR8(i32 18, i32 301)
+  %123 = call i32 @mt9t112_mcu_write(i32 %120, %struct.i2c_client* %121, i32 %122, i32 0)
+  %124 = load i32, i32* %3, align 4
+  %125 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %126 = call i32 @VAR8(i32 18, i32 140)
+  %127 = call i32 @mt9t112_mcu_write(i32 %124, %struct.i2c_client* %125, i32 %126, i32 130)
+  %128 = load i32, i32* %3, align 4
+  %129 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %130 = call i32 @VAR8(i32 18, i32 304)
+  %131 = call i32 @mt9t112_mcu_write(i32 %128, %struct.i2c_client* %129, i32 %130, i32 0)
+  %132 = load i32, i32* %3, align 4
+  %133 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %134 = call i32 @VAR8(i32 18, i32 141)
+  %135 = call i32 @mt9t112_mcu_write(i32 %132, %struct.i2c_client* %133, i32 %134, i32 109)
+  %136 = load i32, i32* %3, align 4
+  %137 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %138 = call i32 @VAR8(i32 18, i32 302)
+  %139 = call i32 @mt9t112_mcu_write(i32 %136, %struct.i2c_client* %137, i32 %138, i32 0)
+  %140 = load i32, i32* %3, align 4
+  %141 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %142 = call i32 @VAR8(i32 8, i32 2)
+  %143 = call i32 @mt9t112_mcu_write(i32 %140, %struct.i2c_client* %141, i32 %142, i32 16)
+  %144 = load i32, i32* %3, align 4
+  %145 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %146 = call i32 @VAR8(i32 8, i32 9)
+  %147 = call i32 @mt9t112_mcu_write(i32 %144, %struct.i2c_client* %145, i32 %146, i32 2)
+  %148 = load i32, i32* %3, align 4
+  %149 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %150 = call i32 @VAR8(i32 8, i32 10)
+  %151 = call i32 @mt9t112_mcu_write(i32 %148, %struct.i2c_client* %149, i32 %150, i32 3)
+  %152 = load i32, i32* %3, align 4
+  %153 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %154 = call i32 @VAR8(i32 8, i32 12)
+  %155 = call i32 @mt9t112_mcu_write(i32 %152, %struct.i2c_client* %153, i32 %154, i32 10)
+  %156 = load i32, i32* %3, align 4
+  %157 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %158 = call i32 @VAR(i32 18, i32 70)
+  %159 = call i32 @mt9t112_mcu_write(i32 %156, %struct.i2c_client* %157, i32 %158, i32 20)
+  %160 = load i32, i32* %3, align 4
+  %161 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %162 = call i32 @VAR(i32 18, i32 142)
+  %163 = call i32 @mt9t112_mcu_write(i32 %160, %struct.i2c_client* %161, i32 %162, i32 20)
+  %164 = load i32, i32* %3, align 4
+  %165 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %166 = call i32 @VAR8(i32 18, i32 68)
+  %167 = call i32 @mt9t112_mcu_write(i32 %164, %struct.i2c_client* %165, i32 %166, i32 133)
+  %168 = load i32, i32* %3, align 4
+  %169 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %170 = call i32 @VAR8(i32 18, i32 69)
+  %171 = call i32 @mt9t112_mcu_write(i32 %168, %struct.i2c_client* %169, i32 %170, i32 110)
+  %172 = load i32, i32* %3, align 4
+  %173 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %174 = call i32 @VAR8(i32 18, i32 140)
+  %175 = call i32 @mt9t112_mcu_write(i32 %172, %struct.i2c_client* %173, i32 %174, i32 130)
+  %176 = load i32, i32* %3, align 4
+  %177 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %178 = call i32 @VAR8(i32 18, i32 141)
+  %179 = call i32 @mt9t112_mcu_write(i32 %176, %struct.i2c_client* %177, i32 %178, i32 108)
+  %180 = load i32, i32* %3, align 4
+  %181 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %182 = call i32 @VAR8(i32 18, i32 165)
+  %183 = call i32 @mt9t112_mcu_write(i32 %180, %struct.i2c_client* %181, i32 %182, i32 27)
+  %184 = load i32, i32* %3, align 4
+  %185 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %186 = call i32 @VAR8(i32 18, i32 166)
+  %187 = call i32 @mt9t112_mcu_write(i32 %184, %struct.i2c_client* %185, i32 %186, i32 30)
+  %188 = load i32, i32* %3, align 4
+  %189 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %190 = call i32 @VAR8(i32 18, i32 167)
+  %191 = call i32 @mt9t112_mcu_write(i32 %188, %struct.i2c_client* %189, i32 %190, i32 32)
+  %192 = load i32, i32* %3, align 4
+  %193 = load %struct.i2c_client*, %struct.i2c_client** %2, align 8
+  %194 = call i32 @VAR8(i32 18, i32 168)
+  %195 = call i32 @mt9t112_mcu_write(i32 %192, %struct.i2c_client* %193, i32 %194, i32 35)
+  %196 = load i32, i32* %3, align 4
+  ret i32 %196
+}
+
+declare dso_local i32 @mt9t112_mcu_mask_set(i32, %struct.i2c_client*, i32, i32, i32) #1
+
+declare dso_local i32 @VAR(i32, i32) #1
+
+declare dso_local i32 @mt9t112_mcu_write(i32, %struct.i2c_client*, i32, i32) #1
+
+declare dso_local i32 @VAR8(i32, i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

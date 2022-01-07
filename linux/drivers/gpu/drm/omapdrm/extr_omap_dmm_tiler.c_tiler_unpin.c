@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tiler_block {int /*<<< orphan*/  area; } ;
 
-/* Variables and functions */
- int fill (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct tiler_block {int area; } ;
+
+
+ int fill (int *,int *,int ,int ,int) ;
 
 int tiler_unpin(struct tiler_block *block)
 {
-	return fill(&block->area, NULL, 0, 0, false);
+ return fill(&block->area, ((void*)0), 0, 0, 0);
 }

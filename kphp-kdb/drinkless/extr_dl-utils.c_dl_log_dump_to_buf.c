@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int i; char* s; int* v; } ;
 
-/* Variables and functions */
- int DL_LOG_SIZE ; 
- int LOG_ID_MX ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_1__* dl_log ; 
- scalar_t__ unlikely (int) ; 
 
-int dl_log_dump_to_buf (int log_id, int verb_min, int verb_max, char *buf, int buf_n, int line_mx)  {
+ int DL_LOG_SIZE ;
+ int LOG_ID_MX ;
+ int assert (int) ;
+ TYPE_1__* dl_log ;
+ scalar_t__ unlikely (int) ;
+
+int dl_log_dump_to_buf (int log_id, int verb_min, int verb_max, char *buf, int buf_n, int line_mx) {
   assert (0 <= log_id && log_id < LOG_ID_MX);
 
   int i = dl_log[log_id].i, bi = 0;

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int /*<<< orphan*/  data ;
 
-/* Variables and functions */
- unsigned int ELEMENTSOF (char*) ; 
- int /*<<< orphan*/  hexdump (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+typedef char uint8_t ;
+typedef int data ;
+
+
+ unsigned int ELEMENTSOF (char*) ;
+ int hexdump (int ,char*,int) ;
+ int stdout ;
 
 __attribute__((used)) static void test_hexdump(void) {
         uint8_t data[146];
         unsigned i;
 
-        hexdump(stdout, NULL, 0);
+        hexdump(stdout, ((void*)0), 0);
         hexdump(stdout, "", 0);
         hexdump(stdout, "", 1);
         hexdump(stdout, "x", 1);

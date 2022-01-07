@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmdline ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UNITY_BEGIN () ; 
- int /*<<< orphan*/  UNITY_END () ; 
- int /*<<< orphan*/  UNITY_OUTPUT_FLUSH () ; 
- int /*<<< orphan*/  UNITY_PRINT_EOL () ; 
- int /*<<< orphan*/  UnityPrint (char*) ; 
- int get_test_count () ; 
- scalar_t__ isdigit (unsigned char) ; 
- int /*<<< orphan*/  print_test_menu () ; 
- scalar_t__ strlen (char*) ; 
- char* strrchr (char*,char) ; 
- int /*<<< orphan*/  trim_trailing_space (char*) ; 
- int /*<<< orphan*/  unity_gets (char*,int) ; 
- int /*<<< orphan*/  unity_run_all_tests () ; 
- int /*<<< orphan*/  unity_run_single_test_by_index_parse (char*,int) ; 
- int /*<<< orphan*/  unity_run_test_by_name (char*) ; 
- int /*<<< orphan*/  unity_run_tests_by_tag (char*,int) ; 
+
+
+
+typedef int cmdline ;
+
+
+ int UNITY_BEGIN () ;
+ int UNITY_END () ;
+ int UNITY_OUTPUT_FLUSH () ;
+ int UNITY_PRINT_EOL () ;
+ int UnityPrint (char*) ;
+ int get_test_count () ;
+ scalar_t__ isdigit (unsigned char) ;
+ int print_test_menu () ;
+ scalar_t__ strlen (char*) ;
+ char* strrchr (char*,char) ;
+ int trim_trailing_space (char*) ;
+ int unity_gets (char*,int) ;
+ int unity_run_all_tests () ;
+ int unity_run_single_test_by_index_parse (char*,int) ;
+ int unity_run_test_by_name (char*) ;
+ int unity_run_tests_by_tag (char*,int) ;
 
 void unity_run_menu(void)
 {
@@ -37,17 +37,17 @@ void unity_run_menu(void)
     UnityPrint("Press ENTER to see the list of tests.");
     UNITY_PRINT_EOL();
     int test_count = get_test_count();
-    while (true) {
+    while (1) {
         char cmdline[256] = { 0 };
         while (strlen(cmdline) == 0) {
             unity_gets(cmdline, sizeof(cmdline));
             trim_trailing_space(cmdline);
             if (strlen(cmdline) == 0) {
-                /* if input was newline, print a new menu */
+
                 print_test_menu();
             }
         }
-        /*use '-' to show test history. Need to do it before UNITY_BEGIN cleanup history */
+
         if (cmdline[0] == '-') {
             UNITY_END();
             continue;
@@ -56,9 +56,9 @@ void unity_run_menu(void)
         UNITY_BEGIN();
 
         size_t idx = 0;
-        bool invert = false;
+        bool invert = 0;
         if (cmdline[idx] == '!') {
-            invert = true;
+            invert = 1;
             ++idx;
         }
 

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jerry_value_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JERRY_UNUSED (int /*<<< orphan*/  const) ; 
+
+
+
+typedef int jerry_value_t ;
+
+
+ int JERRY_UNUSED (int const) ;
 
 __attribute__((used)) static bool
-foreach_subset (const jerry_value_t name, /**< field name */
-                const jerry_value_t value, /**< field value */
-                void *user_data) /**< user data */
+foreach_subset (const jerry_value_t name,
+                const jerry_value_t value,
+                void *user_data)
 {
   JERRY_UNUSED (name);
   JERRY_UNUSED (value);
@@ -26,8 +26,8 @@ foreach_subset (const jerry_value_t name, /**< field name */
 
   if (*count_p == 3)
   {
-    return false;
+    return 0;
   }
   (*count_p)++;
-  return true;
+  return 1;
 }

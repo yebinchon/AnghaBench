@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct st_h2o_mruby_channel_context_t {int /*<<< orphan*/  receivers; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct st_h2o_mruby_channel_context_t {int receivers; } ;
+typedef int mrb_value ;
+typedef int mrb_state ;
 struct TYPE_5__ {TYPE_1__* shared; } ;
-typedef  TYPE_2__ h2o_mruby_context_t ;
-struct TYPE_4__ {int /*<<< orphan*/ * mrb; } ;
+typedef TYPE_2__ h2o_mruby_context_t ;
+struct TYPE_4__ {int * mrb; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_ARGUMENT_ERROR ; 
- int /*<<< orphan*/  channel_type ; 
- int /*<<< orphan*/  mrb_ary_entry (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_ary_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct st_h2o_mruby_channel_context_t* mrb_data_check_get_ptr (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_exc_new_str_lit (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mrb_nil_value () ; 
+
+ int E_ARGUMENT_ERROR ;
+ int channel_type ;
+ int mrb_ary_entry (int ,int ) ;
+ int mrb_ary_push (int *,int ,int ) ;
+ struct st_h2o_mruby_channel_context_t* mrb_data_check_get_ptr (int *,int ,int *) ;
+ int mrb_exc_new_str_lit (int *,int ,char*) ;
+ int mrb_nil_value () ;
 
 __attribute__((used)) static mrb_value wait_callback(h2o_mruby_context_t *mctx, mrb_value input, mrb_value *receiver, mrb_value args, int *run_again)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static mrb_value wait_callback(h2o_mruby_context_t *mctx, 
 
     struct st_h2o_mruby_channel_context_t *ctx;
 
-    if ((ctx = mrb_data_check_get_ptr(mrb, mrb_ary_entry(args, 0), &channel_type)) == NULL)
+    if ((ctx = mrb_data_check_get_ptr(mrb, mrb_ary_entry(args, 0), &channel_type)) == ((void*)0))
         return mrb_exc_new_str_lit(mrb, E_ARGUMENT_ERROR, "Channel#shift wrong self");
 
     mrb_ary_push(mrb, ctx->receivers, *receiver);

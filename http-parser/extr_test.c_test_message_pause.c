@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct message {char* name; scalar_t__ upgrade; int /*<<< orphan*/  type; scalar_t__ raw; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct message {char* name; scalar_t__ upgrade; int type; scalar_t__ raw; } ;
 struct TYPE_6__ {char* upgrade; scalar_t__ message_complete_cb_called; } ;
 struct TYPE_5__ {scalar_t__ upgrade; } ;
 
-/* Variables and functions */
- scalar_t__ HPE_PAUSED ; 
- scalar_t__ HPE_STRICT ; 
- scalar_t__ HTTP_PARSER_ERRNO (TYPE_1__*) ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  http_parser_pause (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  message_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct message const*) ; 
- TYPE_2__* messages ; 
- int num_messages ; 
- size_t parse_pause (char*,size_t) ; 
- TYPE_1__ parser ; 
- int /*<<< orphan*/  parser_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- size_t strlen (scalar_t__) ; 
+
+ scalar_t__ HPE_PAUSED ;
+ scalar_t__ HPE_STRICT ;
+ scalar_t__ HTTP_PARSER_ERRNO (TYPE_1__*) ;
+ int abort () ;
+ int assert (int) ;
+ int http_parser_pause (TYPE_1__*,int ) ;
+ int message_eq (int ,int ,struct message const*) ;
+ TYPE_2__* messages ;
+ int num_messages ;
+ size_t parse_pause (char*,size_t) ;
+ TYPE_1__ parser ;
+ int parser_init (int ) ;
+ int printf (char*,char*) ;
+ size_t strlen (scalar_t__) ;
 
 void
 test_message_pause (const struct message *msg)
@@ -44,8 +44,8 @@ test_message_pause (const struct message *msg)
   do {
     nread = parse_pause(buf, buflen);
 
-    // We can only set the upgrade buffer once we've gotten our message
-    // completion callback.
+
+
     if (messages[0].message_complete_cb_called &&
         msg->upgrade &&
         parser.upgrade) {
@@ -55,7 +55,7 @@ test_message_pause (const struct message *msg)
 
     if (nread < buflen) {
 
-      // Not much do to if we failed a strict-mode check
+
       if (HTTP_PARSER_ERRNO(&parser) == HPE_STRICT) {
         return;
       }
@@ -68,7 +68,7 @@ test_message_pause (const struct message *msg)
     http_parser_pause(&parser, 0);
   } while (buflen > 0);
 
-  nread = parse_pause(NULL, 0);
+  nread = parse_pause(((void*)0), 0);
   assert (nread == 0);
 
 test:

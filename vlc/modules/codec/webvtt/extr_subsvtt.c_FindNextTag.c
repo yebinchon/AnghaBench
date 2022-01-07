@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ IsEndTag (char const*) ; 
- char* strchr (char const*,char) ; 
+ scalar_t__ IsEndTag (char const*) ;
+ char* strchr (char const*,char) ;
 
 __attribute__((used)) static const char * FindNextTag( const char *psz, const char **ppsz_taglast )
 {
@@ -27,9 +19,9 @@ __attribute__((used)) static const char * FindNextTag( const char *psz, const ch
             if( tagsize <= 3 )
             {
                 if( tagsize < 2 || IsEndTag(psz) )
-                    *ppsz_taglast = psz = NULL;
+                    *ppsz_taglast = psz = ((void*)0);
             }
-        } else psz = NULL;
+        } else psz = ((void*)0);
     }
     return psz;
 }

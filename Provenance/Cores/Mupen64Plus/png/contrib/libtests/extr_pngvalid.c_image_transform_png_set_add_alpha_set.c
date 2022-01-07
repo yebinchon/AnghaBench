@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  transform_display ;
-typedef  int /*<<< orphan*/  png_structp ;
-typedef  int /*<<< orphan*/  png_infop ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int transform_display ;
+typedef int png_structp ;
+typedef int png_infop ;
 struct TYPE_5__ {TYPE_2__* next; } ;
-typedef  TYPE_1__ image_transform ;
-struct TYPE_7__ {int /*<<< orphan*/  flags; int /*<<< orphan*/  filler; } ;
-struct TYPE_6__ {int /*<<< orphan*/  (* set ) (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
+typedef TYPE_1__ image_transform ;
+struct TYPE_7__ {int flags; int filler; } ;
+struct TYPE_6__ {int (* set ) (TYPE_2__*,int *,int ,int ) ;} ;
 
-/* Variables and functions */
- TYPE_4__ data ; 
- int /*<<< orphan*/  png_set_add_alpha (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  random_choice () ; 
- int /*<<< orphan*/  random_u32 () ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ TYPE_4__ data ;
+ int png_set_add_alpha (int ,int ,int ) ;
+ int random_choice () ;
+ int random_u32 () ;
+ int stub1 (TYPE_2__*,int *,int ,int ) ;
 
 __attribute__((used)) static void
 image_transform_png_set_add_alpha_set(const image_transform *this,
     transform_display *that, png_structp pp, png_infop pi)
 {
-   /* Need a random choice for 'before' and 'after' as well as for the
-    * filler.  The 'filler' value has all 32 bits set, but only bit_depth
-    * will be used.  At this point we don't know bit_depth.
-    */
+
+
+
+
    data.filler = random_u32();
    data.flags = random_choice();
 

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct thread {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  critical_enter () ; 
- int /*<<< orphan*/  critical_exit () ; 
- int /*<<< orphan*/  pmap_activate_sw (struct thread*) ; 
+
+ int critical_enter () ;
+ int critical_exit () ;
+ int pmap_activate_sw (struct thread*) ;
 
 void
 pmap_activate(struct thread *td)
 {
 
-	critical_enter();
-	pmap_activate_sw(td);
-	critical_exit();
+ critical_enter();
+ pmap_activate_sw(td);
+ critical_exit();
 }

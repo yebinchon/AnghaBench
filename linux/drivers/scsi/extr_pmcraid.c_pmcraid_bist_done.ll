@@ -1,0 +1,133 @@
+; ModuleID = '/home/carl/AnghaBench/linux/drivers/scsi/extr_pmcraid.c_pmcraid_bist_done.c'
+source_filename = "/home/carl/AnghaBench/linux/drivers/scsi/extr_pmcraid.c_pmcraid_bist_done.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.pmcraid_cmd = type { i64, %struct.TYPE_4__, %struct.pmcraid_instance* }
+%struct.TYPE_4__ = type { i64 }
+%struct.pmcraid_instance = type { %struct.TYPE_3__*, i32 }
+%struct.TYPE_3__ = type { i32 }
+%struct.timer_list = type { i32 }
+
+@timer = common dso_local global i32 0, align 4
+@PCI_COMMAND = common dso_local global i32 0, align 4
+@PCIBIOS_SUCCESSFUL = common dso_local global i32 0, align 4
+@PCI_COMMAND_MEMORY = common dso_local global i32 0, align 4
+@.str = private unnamed_addr constant [43 x i8] c"BIST not complete, waiting another 2 secs\0A\00", align 1
+@jiffies = common dso_local global i64 0, align 8
+@.str.1 = private unnamed_addr constant [41 x i8] c"BIST is complete, proceeding with reset\0A\00", align 1
+@cmd = common dso_local global %struct.pmcraid_cmd* null, align 8
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void (%struct.timer_list*)* @pmcraid_bist_done to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @pmcraid_bist_done(%struct.timer_list* %0) #0 {
+  %2 = alloca %struct.timer_list*, align 8
+  %3 = alloca %struct.pmcraid_cmd*, align 8
+  %4 = alloca %struct.pmcraid_instance*, align 8
+  %5 = alloca i64, align 8
+  %6 = alloca i32, align 4
+  %7 = alloca i32, align 4
+  store %struct.timer_list* %0, %struct.timer_list** %2, align 8
+  %8 = load %struct.pmcraid_cmd*, %struct.pmcraid_cmd** %3, align 8
+  %9 = ptrtoint %struct.pmcraid_cmd* %8 to i32
+  %10 = load %struct.timer_list*, %struct.timer_list** %2, align 8
+  %11 = load i32, i32* @timer, align 4
+  %12 = call %struct.pmcraid_cmd* @from_timer(i32 %9, %struct.timer_list* %10, i32 %11)
+  store %struct.pmcraid_cmd* %12, %struct.pmcraid_cmd** %3, align 8
+  %13 = load %struct.pmcraid_cmd*, %struct.pmcraid_cmd** %3, align 8
+  %14 = getelementptr inbounds %struct.pmcraid_cmd, %struct.pmcraid_cmd* %13, i32 0, i32 2
+  %15 = load %struct.pmcraid_instance*, %struct.pmcraid_instance** %14, align 8
+  store %struct.pmcraid_instance* %15, %struct.pmcraid_instance** %4, align 8
+  %16 = load %struct.pmcraid_instance*, %struct.pmcraid_instance** %4, align 8
+  %17 = getelementptr inbounds %struct.pmcraid_instance, %struct.pmcraid_instance* %16, i32 0, i32 1
+  %18 = load i32, i32* %17, align 8
+  %19 = load i32, i32* @PCI_COMMAND, align 4
+  %20 = call i32 @pci_read_config_word(i32 %18, i32 %19, i32* %7)
+  store i32 %20, i32* %6, align 4
+  %21 = load i32, i32* %6, align 4
+  %22 = load i32, i32* @PCIBIOS_SUCCESSFUL, align 4
+  %23 = icmp ne i32 %21, %22
+  br i1 %23, label %29, label %24
+
+24:                                               ; preds = %1
+  %25 = load i32, i32* %7, align 4
+  %26 = load i32, i32* @PCI_COMMAND_MEMORY, align 4
+  %27 = and i32 %25, %26
+  %28 = icmp ne i32 %27, 0
+  br i1 %28, label %49, label %29
+
+29:                                               ; preds = %24, %1
+  %30 = load %struct.pmcraid_cmd*, %struct.pmcraid_cmd** %3, align 8
+  %31 = getelementptr inbounds %struct.pmcraid_cmd, %struct.pmcraid_cmd* %30, i32 0, i32 0
+  %32 = load i64, i64* %31, align 8
+  %33 = icmp sgt i64 %32, 0
+  br i1 %33, label %34, label %49
+
+34:                                               ; preds = %29
+  %35 = call i32 @pmcraid_info(i8* getelementptr inbounds ([43 x i8], [43 x i8]* @.str, i64 0, i64 0))
+  %36 = load i64, i64* @jiffies, align 8
+  %37 = load %struct.pmcraid_cmd*, %struct.pmcraid_cmd** %3, align 8
+  %38 = getelementptr inbounds %struct.pmcraid_cmd, %struct.pmcraid_cmd* %37, i32 0, i32 0
+  %39 = load i64, i64* %38, align 8
+  %40 = add nsw i64 %36, %39
+  %41 = load %struct.pmcraid_cmd*, %struct.pmcraid_cmd** %3, align 8
+  %42 = getelementptr inbounds %struct.pmcraid_cmd, %struct.pmcraid_cmd* %41, i32 0, i32 1
+  %43 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %42, i32 0, i32 0
+  store i64 %40, i64* %43, align 8
+  %44 = load %struct.pmcraid_cmd*, %struct.pmcraid_cmd** %3, align 8
+  %45 = getelementptr inbounds %struct.pmcraid_cmd, %struct.pmcraid_cmd* %44, i32 0, i32 0
+  store i64 0, i64* %45, align 8
+  %46 = load %struct.pmcraid_cmd*, %struct.pmcraid_cmd** %3, align 8
+  %47 = getelementptr inbounds %struct.pmcraid_cmd, %struct.pmcraid_cmd* %46, i32 0, i32 1
+  %48 = call i32 @add_timer(%struct.TYPE_4__* %47)
+  br label %69
+
+49:                                               ; preds = %29, %24
+  %50 = load %struct.pmcraid_cmd*, %struct.pmcraid_cmd** %3, align 8
+  %51 = getelementptr inbounds %struct.pmcraid_cmd, %struct.pmcraid_cmd* %50, i32 0, i32 0
+  store i64 0, i64* %51, align 8
+  %52 = call i32 @pmcraid_info(i8* getelementptr inbounds ([41 x i8], [41 x i8]* @.str.1, i64 0, i64 0))
+  %53 = load %struct.pmcraid_instance*, %struct.pmcraid_instance** %4, align 8
+  %54 = getelementptr inbounds %struct.pmcraid_instance, %struct.pmcraid_instance* %53, i32 0, i32 0
+  %55 = load %struct.TYPE_3__*, %struct.TYPE_3__** %54, align 8
+  %56 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %55, i32 0, i32 0
+  %57 = load i32, i32* %56, align 4
+  %58 = load i64, i64* %5, align 8
+  %59 = call i32 @spin_lock_irqsave(i32 %57, i64 %58)
+  %60 = load %struct.pmcraid_cmd*, %struct.pmcraid_cmd** %3, align 8
+  %61 = call i32 @pmcraid_ioa_reset(%struct.pmcraid_cmd* %60)
+  %62 = load %struct.pmcraid_instance*, %struct.pmcraid_instance** %4, align 8
+  %63 = getelementptr inbounds %struct.pmcraid_instance, %struct.pmcraid_instance* %62, i32 0, i32 0
+  %64 = load %struct.TYPE_3__*, %struct.TYPE_3__** %63, align 8
+  %65 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %64, i32 0, i32 0
+  %66 = load i32, i32* %65, align 4
+  %67 = load i64, i64* %5, align 8
+  %68 = call i32 @spin_unlock_irqrestore(i32 %66, i64 %67)
+  br label %69
+
+69:                                               ; preds = %49, %34
+  ret void
+}
+
+declare dso_local %struct.pmcraid_cmd* @from_timer(i32, %struct.timer_list*, i32) #1
+
+declare dso_local i32 @pci_read_config_word(i32, i32, i32*) #1
+
+declare dso_local i32 @pmcraid_info(i8*) #1
+
+declare dso_local i32 @add_timer(%struct.TYPE_4__*) #1
+
+declare dso_local i32 @spin_lock_irqsave(i32, i64) #1
+
+declare dso_local i32 @pmcraid_ioa_reset(%struct.pmcraid_cmd*) #1
+
+declare dso_local i32 @spin_unlock_irqrestore(i32, i64) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

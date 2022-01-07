@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  sendstate; int /*<<< orphan*/  recvstate; } ;
-typedef  TYPE_1__ quicly_stream_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  QUICLY_ERROR_FROM_APPLICATION_ERROR_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_request (int /*<<< orphan*/ ,char**,int*) ; 
- int /*<<< orphan*/  quicly_recvstate_transfer_complete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  quicly_request_stop (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  quicly_sendstate_is_open (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  quicly_streambuf_egress_shutdown (TYPE_1__*) ; 
- int /*<<< orphan*/  quicly_streambuf_ingress_get (TYPE_1__*) ; 
- int quicly_streambuf_ingress_receive (TYPE_1__*,size_t,void const*,size_t) ; 
- int /*<<< orphan*/  quicly_streambuf_ingress_shift (TYPE_1__*,size_t) ; 
- scalar_t__ send_file (TYPE_1__*,int,char*,char*) ; 
- int /*<<< orphan*/  send_header (TYPE_1__*,int,int,char*) ; 
- scalar_t__ send_sized_text (TYPE_1__*,char*,int) ; 
- int /*<<< orphan*/  send_str (TYPE_1__*,char*) ; 
- scalar_t__ strcmp (char*,char*) ; 
- scalar_t__ validate_path (char*) ; 
+
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int sendstate; int recvstate; } ;
+typedef TYPE_1__ quicly_stream_t ;
+
+
+ int QUICLY_ERROR_FROM_APPLICATION_ERROR_CODE (int ) ;
+ int parse_request (int ,char**,int*) ;
+ int quicly_recvstate_transfer_complete (int *) ;
+ int quicly_request_stop (TYPE_1__*,int ) ;
+ int quicly_sendstate_is_open (int *) ;
+ int quicly_streambuf_egress_shutdown (TYPE_1__*) ;
+ int quicly_streambuf_ingress_get (TYPE_1__*) ;
+ int quicly_streambuf_ingress_receive (TYPE_1__*,size_t,void const*,size_t) ;
+ int quicly_streambuf_ingress_shift (TYPE_1__*,size_t) ;
+ scalar_t__ send_file (TYPE_1__*,int,char*,char*) ;
+ int send_header (TYPE_1__*,int,int,char*) ;
+ scalar_t__ send_sized_text (TYPE_1__*,char*,int) ;
+ int send_str (TYPE_1__*,char*) ;
+ scalar_t__ strcmp (char*,char*) ;
+ scalar_t__ validate_path (char*) ;
 
 __attribute__((used)) static int server_on_receive(quicly_stream_t *stream, size_t off, const void *src, size_t len)
 {
@@ -43,7 +43,7 @@ __attribute__((used)) static int server_on_receive(quicly_stream_t *stream, size
     if (!parse_request(quicly_streambuf_ingress_get(stream), &path, &is_http1)) {
         if (!quicly_recvstate_transfer_complete(&stream->recvstate))
             return 0;
-        /* failed to parse request */
+
         send_header(stream, 1, 500, "text/plain; charset=utf-8");
         send_str(stream, "failed to parse HTTP request\n");
         goto Sent;

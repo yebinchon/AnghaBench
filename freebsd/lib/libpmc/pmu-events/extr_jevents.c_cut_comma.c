@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int start; int end; } ;
-typedef  TYPE_1__ jsmntok_t ;
+typedef TYPE_1__ jsmntok_t ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void cut_comma(char *map, jsmntok_t *newval)
 {
-	int i;
+ int i;
 
-	/* Cut off everything after comma */
-	for (i = newval->start; i < newval->end; i++) {
-		if (map[i] == ',')
-			newval->end = i;
-	}
+
+ for (i = newval->start; i < newval->end; i++) {
+  if (map[i] == ',')
+   newval->end = i;
+ }
 }

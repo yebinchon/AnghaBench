@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IMalloc ;
-typedef  int /*<<< orphan*/ * HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CO_E_OBJISREG ; 
- int /*<<< orphan*/ * CO_E_OBJNOTREG ; 
- int /*<<< orphan*/ * CoGetMalloc (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * CoRegisterMallocSpy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CoRevokeMallocSpy () ; 
- int /*<<< orphan*/ * E_INVALIDARG ; 
- int /*<<< orphan*/  IMalloc_Free (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMalloc_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MEMCTX_TASK ; 
- int /*<<< orphan*/ * S_OK ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  testspy ; 
+
+
+
+typedef int IMalloc ;
+typedef int * HRESULT ;
+
+
+ int * CO_E_OBJISREG ;
+ int * CO_E_OBJNOTREG ;
+ int * CoGetMalloc (int ,int **) ;
+ int * CoRegisterMallocSpy (int *) ;
+ int * CoRevokeMallocSpy () ;
+ int * E_INVALIDARG ;
+ int IMalloc_Free (int *,int *) ;
+ int IMalloc_Release (int *) ;
+ int MEMCTX_TASK ;
+ int * S_OK ;
+ int ok (int,char*,int *) ;
+ int testspy ;
 
 __attribute__((used)) static void test_IMallocSpy(void)
 {
     IMalloc *imalloc;
     HRESULT hr;
 
-    hr = CoRegisterMallocSpy(NULL);
+    hr = CoRegisterMallocSpy(((void*)0));
     ok(hr == E_INVALIDARG, "got 0x%08x\n", hr);
 
     hr = CoRevokeMallocSpy();
@@ -41,18 +41,18 @@ __attribute__((used)) static void test_IMallocSpy(void)
     hr = CoRegisterMallocSpy(&testspy);
     ok(hr == S_OK, "got 0x%08x\n", hr);
 
-    hr = CoRegisterMallocSpy(NULL);
+    hr = CoRegisterMallocSpy(((void*)0));
     ok(hr == E_INVALIDARG, "got 0x%08x\n", hr);
 
     hr = CoRegisterMallocSpy(&testspy);
     ok(hr == CO_E_OBJISREG, "got 0x%08x\n", hr);
 
-    imalloc = NULL;
+    imalloc = ((void*)0);
     hr = CoGetMalloc(MEMCTX_TASK, &imalloc);
     ok(hr == S_OK, "got 0x%08x\n", hr);
-    ok(imalloc != NULL, "got %p\n", imalloc);
+    ok(imalloc != ((void*)0), "got %p\n", imalloc);
 
-    IMalloc_Free(imalloc, NULL);
+    IMalloc_Free(imalloc, ((void*)0));
 
     IMalloc_Release(imalloc);
 

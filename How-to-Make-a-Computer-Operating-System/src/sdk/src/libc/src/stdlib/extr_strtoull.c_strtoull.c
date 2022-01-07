@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ERANGE ; 
- int ULLONG_MAX ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ isspace (char const) ; 
- scalar_t__ isxdigit (char const) ; 
+ int EINVAL ;
+ int ERANGE ;
+ int ULLONG_MAX ;
+ int errno ;
+ scalar_t__ isspace (char const) ;
+ scalar_t__ isxdigit (char const) ;
 
 unsigned long long int strtoull( const char* ptr, char** endptr, int base ) {
     int neg = 0, overflow = 0;
@@ -69,7 +61,7 @@ skip0x:
         c = ( c >= 'a' ? c - 'a' + 10 : c >= 'A' ? c - 'A' + 10 : c <= '9' ? c - '0' : 0xFF );
 
         if ( c >= base ) {
-            break;	/* out of base */
+            break;
         }
 
         {
@@ -86,13 +78,13 @@ skip0x:
         ++nptr;
     }
 
-    if ( nptr == orig ) {		/* no conversion done */
+    if ( nptr == orig ) {
         nptr = ptr;
         errno = EINVAL;
         v = 0;
     }
 
-    if ( endptr != NULL ) {
+    if ( endptr != ((void*)0) ) {
         *endptr = (char *)nptr;
     }
 

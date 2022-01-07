@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct qstr {unsigned int len; int /*<<< orphan*/  hash; int /*<<< orphan*/ * name; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  full_name_hash (char const*,unsigned int) ; 
- int /*<<< orphan*/ * kmemdup (char const*,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kmemleak_not_leak (int /*<<< orphan*/ *) ; 
+
+
+
+struct qstr {unsigned int len; int hash; int * name; } ;
+
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int full_name_hash (char const*,unsigned int) ;
+ int * kmemdup (char const*,unsigned int,int ) ;
+ int kmemleak_not_leak (int *) ;
 
 __attribute__((used)) static
 int nfs_readdir_make_qstr(struct qstr *string, const char *name, unsigned int len)
 {
-	string->len = len;
-	string->name = kmemdup(name, len, GFP_KERNEL);
-	if (string->name == NULL)
-		return -ENOMEM;
-	/*
-	 * Avoid a kmemleak false positive. The pointer to the name is stored
-	 * in a page cache page which kmemleak does not scan.
-	 */
-	kmemleak_not_leak(string->name);
-	string->hash = full_name_hash(name, len);
-	return 0;
+ string->len = len;
+ string->name = kmemdup(name, len, GFP_KERNEL);
+ if (string->name == ((void*)0))
+  return -ENOMEM;
+
+
+
+
+ kmemleak_not_leak(string->name);
+ string->hash = full_name_hash(name, len);
+ return 0;
 }

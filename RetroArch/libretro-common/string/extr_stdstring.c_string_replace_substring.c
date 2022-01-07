@@ -1,42 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- char* strdup (char const*) ; 
- size_t strlen (char const*) ; 
- char* strstr (char const*,char const*) ; 
+ scalar_t__ malloc (size_t) ;
+ int memcpy (char*,char const*,size_t) ;
+ int strcpy (char*,char const*) ;
+ char* strdup (char const*) ;
+ size_t strlen (char const*) ;
+ char* strstr (char const*,char const*) ;
 
 char *string_replace_substring(const char *in,
       const char *pattern, const char *replacement)
 {
    size_t numhits, pattern_len, replacement_len, outlen;
-   const char *inat   = NULL;
-   const char *inprev = NULL;
-   char          *out = NULL;
-   char        *outat = NULL;
+   const char *inat = ((void*)0);
+   const char *inprev = ((void*)0);
+   char *out = ((void*)0);
+   char *outat = ((void*)0);
 
-   /* if either pattern or replacement is NULL,
-    * duplicate in and let caller handle it. */
+
+
    if (!pattern || !replacement)
       return strdup(in);
 
-   pattern_len     = strlen(pattern);
+   pattern_len = strlen(pattern);
    replacement_len = strlen(replacement);
-   numhits         = 0;
-   inat            = in;
+   numhits = 0;
+   inat = in;
 
    while ((inat = strstr(inat, pattern)))
    {
@@ -44,15 +36,15 @@ char *string_replace_substring(const char *in,
       numhits++;
    }
 
-   outlen          = strlen(in) - pattern_len*numhits + replacement_len*numhits;
-   out             = (char *)malloc(outlen+1);
+   outlen = strlen(in) - pattern_len*numhits + replacement_len*numhits;
+   out = (char *)malloc(outlen+1);
 
    if (!out)
-      return NULL;
+      return ((void*)0);
 
-   outat           = out;
-   inat            = in;
-   inprev          = in;
+   outat = out;
+   inat = in;
+   inprev = in;
 
    while ((inat = strstr(inat, pattern)))
    {

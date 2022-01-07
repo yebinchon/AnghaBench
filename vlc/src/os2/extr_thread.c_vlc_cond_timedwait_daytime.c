@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int vlc_tick_t ;
-typedef  int /*<<< orphan*/  vlc_mutex_t ;
-typedef  int /*<<< orphan*/  vlc_cond_t ;
-typedef  int time_t ;
+
+
+
+
+typedef int vlc_tick_t ;
+typedef int vlc_mutex_t ;
+typedef int vlc_cond_t ;
+typedef int time_t ;
 struct timeval {int dummy; } ;
-typedef  int ULONG ;
+typedef int ULONG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gettimeofday (struct timeval*,int /*<<< orphan*/ *) ; 
- int vlc_cond_wait_common (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int vlc_tick_from_timeval (struct timeval*) ; 
+
+ int gettimeofday (struct timeval*,int *) ;
+ int vlc_cond_wait_common (int *,int *,int) ;
+ int vlc_tick_from_timeval (struct timeval*) ;
 
 int vlc_cond_timedwait_daytime (vlc_cond_t *p_condvar, vlc_mutex_t *p_mutex,
                                 time_t deadline)
@@ -29,7 +29,7 @@ int vlc_cond_timedwait_daytime (vlc_cond_t *p_condvar, vlc_mutex_t *p_mutex,
     vlc_tick_t total;
     struct timeval tv;
 
-    gettimeofday (&tv, NULL);
+    gettimeofday (&tv, ((void*)0));
 
     total = vlc_tick_from_timeval( &tv );
     total = (deadline - total) / 1000;

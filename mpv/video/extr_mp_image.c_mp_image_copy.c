@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int* bpp; int flags; } ;
-struct mp_image {scalar_t__ imgfmt; scalar_t__ w; scalar_t__ h; int num_planes; int /*<<< orphan*/ * planes; TYPE_1__ fmt; int /*<<< orphan*/ * stride; } ;
+struct mp_image {scalar_t__ imgfmt; scalar_t__ w; scalar_t__ h; int num_planes; int * planes; TYPE_1__ fmt; int * stride; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVPALETTE_SIZE ; 
- int MP_IMGFLAG_PAL ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy_pic (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int mp_image_is_writeable (struct mp_image*) ; 
- int mp_image_plane_h (struct mp_image*,int) ; 
- int mp_image_plane_w (struct mp_image*,int) ; 
+
+ int AVPALETTE_SIZE ;
+ int MP_IMGFLAG_PAL ;
+ int assert (int) ;
+ int memcpy (int ,int ,int ) ;
+ int memcpy_pic (int ,int ,int,int,int ,int ) ;
+ int mp_image_is_writeable (struct mp_image*) ;
+ int mp_image_plane_h (struct mp_image*,int) ;
+ int mp_image_plane_w (struct mp_image*,int) ;
 
 void mp_image_copy(struct mp_image *dst, struct mp_image *src)
 {

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * PutPacket; int /*<<< orphan*/ * GetNextPacket; int /*<<< orphan*/ * GetCancel; int /*<<< orphan*/ * Free; int /*<<< orphan*/ * Init; } ;
-typedef  int /*<<< orphan*/  PA_PUTPACKET ;
-typedef  int /*<<< orphan*/  PA_INIT ;
-typedef  int /*<<< orphan*/  PA_GETNEXTPACKET ;
-typedef  int /*<<< orphan*/  PA_GETCANCEL ;
-typedef  int /*<<< orphan*/  PA_FREE ;
-typedef  TYPE_1__ PACKET_ADAPTER ;
 
-/* Variables and functions */
- TYPE_1__* ZeroMalloc (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * PutPacket; int * GetNextPacket; int * GetCancel; int * Free; int * Init; } ;
+typedef int PA_PUTPACKET ;
+typedef int PA_INIT ;
+typedef int PA_GETNEXTPACKET ;
+typedef int PA_GETCANCEL ;
+typedef int PA_FREE ;
+typedef TYPE_1__ PACKET_ADAPTER ;
+
+
+ TYPE_1__* ZeroMalloc (int) ;
 
 PACKET_ADAPTER *NewPacketAdapter(PA_INIT *init, PA_GETCANCEL *getcancel, PA_GETNEXTPACKET *getnext,
-								 PA_PUTPACKET *put, PA_FREE *free)
+         PA_PUTPACKET *put, PA_FREE *free)
 {
-	PACKET_ADAPTER *pa;
-	// Validate arguments
-	if (init == NULL || getcancel == NULL || getnext == NULL || put == NULL || free == NULL)
-	{
-		return NULL;
-	}
+ PACKET_ADAPTER *pa;
 
-	pa = ZeroMalloc(sizeof(PACKET_ADAPTER));
+ if (init == ((void*)0) || getcancel == ((void*)0) || getnext == ((void*)0) || put == ((void*)0) || free == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	pa->Init = init;
-	pa->Free = free;
-	pa->GetCancel = getcancel;
-	pa->GetNextPacket = getnext;
-	pa->PutPacket = put;
+ pa = ZeroMalloc(sizeof(PACKET_ADAPTER));
 
-	return pa;
+ pa->Init = init;
+ pa->Free = free;
+ pa->GetCancel = getcancel;
+ pa->GetNextPacket = getnext;
+ pa->PutPacket = put;
+
+ return pa;
 }

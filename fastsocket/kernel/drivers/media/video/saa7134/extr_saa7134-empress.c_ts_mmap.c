@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vm_area_struct {int dummy; } ;
-struct saa7134_dev {int /*<<< orphan*/  empress_tsq; } ;
+struct saa7134_dev {int empress_tsq; } ;
 struct file {struct saa7134_dev* private_data; } ;
 
-/* Variables and functions */
- int videobuf_mmap_mapper (int /*<<< orphan*/ *,struct vm_area_struct*) ; 
+
+ int videobuf_mmap_mapper (int *,struct vm_area_struct*) ;
 
 __attribute__((used)) static int
 ts_mmap(struct file *file, struct vm_area_struct * vma)
 {
-	struct saa7134_dev *dev = file->private_data;
+ struct saa7134_dev *dev = file->private_data;
 
-	return videobuf_mmap_mapper(&dev->empress_tsq, vma);
+ return videobuf_mmap_mapper(&dev->empress_tsq, vma);
 }

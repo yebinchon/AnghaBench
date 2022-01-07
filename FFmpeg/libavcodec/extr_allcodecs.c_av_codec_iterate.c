@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVCodec ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_codec_init_static ; 
- int /*<<< orphan*/  av_codec_static_init ; 
- int /*<<< orphan*/ ** codec_list ; 
- int /*<<< orphan*/  ff_thread_once (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int AVCodec ;
+
+
+ int av_codec_init_static ;
+ int av_codec_static_init ;
+ int ** codec_list ;
+ int ff_thread_once (int *,int ) ;
 
 const AVCodec *av_codec_iterate(void **opaque)
 {

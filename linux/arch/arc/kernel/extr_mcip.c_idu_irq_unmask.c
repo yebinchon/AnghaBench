@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct irq_data {int /*<<< orphan*/  hwirq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CMD_IDU_SET_MASK ; 
- int /*<<< orphan*/  __mcip_cmd_data (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mcip_lock ; 
- int /*<<< orphan*/  raw_spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  raw_spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct irq_data {int hwirq; } ;
+
+
+ int CMD_IDU_SET_MASK ;
+ int __mcip_cmd_data (int ,int ,int ) ;
+ int mcip_lock ;
+ int raw_spin_lock_irqsave (int *,unsigned long) ;
+ int raw_spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void idu_irq_unmask(struct irq_data *data)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	raw_spin_lock_irqsave(&mcip_lock, flags);
-	__mcip_cmd_data(CMD_IDU_SET_MASK, data->hwirq, 0);
-	raw_spin_unlock_irqrestore(&mcip_lock, flags);
+ raw_spin_lock_irqsave(&mcip_lock, flags);
+ __mcip_cmd_data(CMD_IDU_SET_MASK, data->hwirq, 0);
+ raw_spin_unlock_irqrestore(&mcip_lock, flags);
 }

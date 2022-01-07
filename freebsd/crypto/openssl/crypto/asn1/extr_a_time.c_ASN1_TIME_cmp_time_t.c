@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
+
+
+
+
+typedef int time_t ;
 struct tm {int dummy; } ;
-typedef  int /*<<< orphan*/  ASN1_TIME ;
+typedef int ASN1_TIME ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_TIME_to_tm (int /*<<< orphan*/  const*,struct tm*) ; 
- int /*<<< orphan*/  OPENSSL_gmtime (int /*<<< orphan*/ *,struct tm*) ; 
- int /*<<< orphan*/  OPENSSL_gmtime_diff (int*,int*,struct tm*,struct tm*) ; 
+
+ int ASN1_TIME_to_tm (int const*,struct tm*) ;
+ int OPENSSL_gmtime (int *,struct tm*) ;
+ int OPENSSL_gmtime_diff (int*,int*,struct tm*,struct tm*) ;
 
 int ASN1_TIME_cmp_time_t(const ASN1_TIME *s, time_t t)
 {

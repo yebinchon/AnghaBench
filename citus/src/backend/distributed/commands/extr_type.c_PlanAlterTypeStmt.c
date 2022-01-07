@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ relkind; } ;
-typedef  int /*<<< orphan*/  ObjectAddress ;
-typedef  int /*<<< orphan*/  Node ;
-typedef  int /*<<< orphan*/  List ;
-typedef  TYPE_1__ AlterTableStmt ;
+typedef int ObjectAddress ;
+typedef int Node ;
+typedef int List ;
+typedef TYPE_1__ AlterTableStmt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALL_WORKERS ; 
- int /*<<< orphan*/  Assert (int) ; 
- int /*<<< orphan*/  DISABLE_DDL_PROPAGATION ; 
- char* DeparseTreeNode (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ENABLE_DDL_PROPAGATION ; 
- int /*<<< orphan*/  EnsureCoordinator () ; 
- int /*<<< orphan*/  EnsureSequentialModeForTypeDDL () ; 
- int /*<<< orphan*/ * GetObjectAddressFromParseTree (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * NIL ; 
- int /*<<< orphan*/ * NodeDDLTaskList (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ OBJECT_TYPE ; 
- int /*<<< orphan*/  QualifyTreeNode (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ShouldPropagateAlterType (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * list_make3 (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
+
+ int ALL_WORKERS ;
+ int Assert (int) ;
+ int DISABLE_DDL_PROPAGATION ;
+ char* DeparseTreeNode (int *) ;
+ int ENABLE_DDL_PROPAGATION ;
+ int EnsureCoordinator () ;
+ int EnsureSequentialModeForTypeDDL () ;
+ int * GetObjectAddressFromParseTree (int *,int) ;
+ int * NIL ;
+ int * NodeDDLTaskList (int ,int *) ;
+ scalar_t__ OBJECT_TYPE ;
+ int QualifyTreeNode (int *) ;
+ int ShouldPropagateAlterType (int const*) ;
+ int * list_make3 (int ,void*,int ) ;
 
 List *
 PlanAlterTypeStmt(AlterTableStmt *stmt, const char *queryString)
 {
-	const char *alterTypeStmtSql = NULL;
-	const ObjectAddress *typeAddress = NULL;
-	List *commands = NIL;
+ const char *alterTypeStmtSql = ((void*)0);
+ const ObjectAddress *typeAddress = ((void*)0);
+ List *commands = NIL;
 
-	Assert(stmt->relkind == OBJECT_TYPE);
+ Assert(stmt->relkind == OBJECT_TYPE);
 
-	typeAddress = GetObjectAddressFromParseTree((Node *) stmt, false);
-	if (!ShouldPropagateAlterType(typeAddress))
-	{
-		return NIL;
-	}
+ typeAddress = GetObjectAddressFromParseTree((Node *) stmt, 0);
+ if (!ShouldPropagateAlterType(typeAddress))
+ {
+  return NIL;
+ }
 
-	EnsureCoordinator();
+ EnsureCoordinator();
 
-	/* reconstruct alter statement in a portable fashion */
-	QualifyTreeNode((Node *) stmt);
-	alterTypeStmtSql = DeparseTreeNode((Node *) stmt);
 
-	/*
-	 * all types that are distributed will need their alter statements propagated
-	 * regardless if in a transaction or not. If we would not propagate the alter
-	 * statement the types would be different on worker and coordinator.
-	 */
-	EnsureSequentialModeForTypeDDL();
+ QualifyTreeNode((Node *) stmt);
+ alterTypeStmtSql = DeparseTreeNode((Node *) stmt);
 
-	commands = list_make3(DISABLE_DDL_PROPAGATION,
-						  (void *) alterTypeStmtSql,
-						  ENABLE_DDL_PROPAGATION);
 
-	return NodeDDLTaskList(ALL_WORKERS, commands);
+
+
+
+
+ EnsureSequentialModeForTypeDDL();
+
+ commands = list_make3(DISABLE_DDL_PROPAGATION,
+        (void *) alterTypeStmtSql,
+        ENABLE_DDL_PROPAGATION);
+
+ return NodeDDLTaskList(ALL_WORKERS, commands);
 }

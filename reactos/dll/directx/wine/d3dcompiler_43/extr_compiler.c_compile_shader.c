@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct target_info {int type; char sm_major; char sm_minor; int /*<<< orphan*/  support; } ;
+
+
+
+
+struct target_info {int type; char sm_major; char sm_minor; int support; } ;
 struct bwriter_shader {int dummy; } ;
-typedef  enum shader_type { ____Placeholder_shader_type } shader_type ;
-typedef  int /*<<< orphan*/  ID3DBlob ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  char DWORD ;
+typedef enum shader_type { ____Placeholder_shader_type } shader_type ;
+typedef int ID3DBlob ;
+typedef int HRESULT ;
+typedef char DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DCreateBlob (char,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  D3DERR_INVALIDCALL ; 
- int /*<<< orphan*/  D3DXERR_INVALIDDATA ; 
- int /*<<< orphan*/  ERR (char*,...) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- char* ID3D10Blob_GetBufferPointer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ID3D10Blob_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  SlDeleteShader (struct bwriter_shader*) ; 
- int /*<<< orphan*/  SlWriteBytecode (struct bwriter_shader*,int,char**,char*) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  debugstr_a (char const*) ; 
- struct target_info* get_target_info (char const*) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,char) ; 
- struct bwriter_shader* parse_hlsl_shader (char const*,int,char,char,char const*,char**) ; 
- char strlen (char const*) ; 
+
+ int D3DCreateBlob (char,int **) ;
+ int D3DERR_INVALIDCALL ;
+ int D3DXERR_INVALIDDATA ;
+ int ERR (char*,...) ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,int ) ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,char*) ;
+ char* ID3D10Blob_GetBufferPointer (int *) ;
+ int ID3D10Blob_Release (int *) ;
+ int S_OK ;
+ int SlDeleteShader (struct bwriter_shader*) ;
+ int SlWriteBytecode (struct bwriter_shader*,int,char**,char*) ;
+ int TRACE (char*,...) ;
+ int debugstr_a (char const*) ;
+ struct target_info* get_target_info (char const*) ;
+ int memcpy (char*,char const*,char) ;
+ struct bwriter_shader* parse_hlsl_shader (char const*,int,char,char,char const*,char**) ;
+ char strlen (char const*) ;
 
 __attribute__((used)) static HRESULT compile_shader(const char *preproc_shader, const char *target, const char *entrypoint,
         ID3DBlob **shader_blob, ID3DBlob **error_messages)
 {
     struct bwriter_shader *shader;
-    char *messages = NULL;
+    char *messages = ((void*)0);
     HRESULT hr;
     DWORD *res, size, major, minor;
     ID3DBlob *buffer;
@@ -86,7 +86,7 @@ __attribute__((used)) static HRESULT compile_shader(const char *preproc_shader, 
 
         if (error_messages)
         {
-            const char *preproc_messages = *error_messages ? ID3D10Blob_GetBufferPointer(*error_messages) : NULL;
+            const char *preproc_messages = *error_messages ? ID3D10Blob_GetBufferPointer(*error_messages) : ((void*)0);
 
             size = strlen(messages) + (preproc_messages ? strlen(preproc_messages) : 0) + 1;
             hr = D3DCreateBlob(size, &buffer);

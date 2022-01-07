@@ -1,60 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int log_verbosity; int implicitConfirm; int disableConfirm; int unprotectedSend; int unprotectedErrors; int days; int SubjectAltName_nodefault; int setSubjectAltNameCritical; int setPoliciesCritical; int ignore_keyusage; int popoMethod; int digest; int pbm_owf; int pbm_mac; int msgtimeout; int totaltimeout; int permitTAInExtraCertsForIR; int revocationReason; } ;
-typedef  TYPE_1__ OSSL_CMP_CTX ;
+typedef TYPE_1__ OSSL_CMP_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CMP_R_INVALID_ARGS ; 
- int /*<<< orphan*/  CMP_R_NULL_ARGUMENT ; 
- int /*<<< orphan*/  CMPerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int OCSP_REVOKED_STATUS_AACOMPROMISE ; 
- int OCSP_REVOKED_STATUS_NOSTATUS ; 
- int OSSL_CMP_LOG_DEBUG ; 
-#define  OSSL_CMP_OPT_DIGEST_ALGNID 145 
-#define  OSSL_CMP_OPT_DISABLECONFIRM 144 
-#define  OSSL_CMP_OPT_IGNORE_KEYUSAGE 143 
-#define  OSSL_CMP_OPT_IMPLICITCONFIRM 142 
-#define  OSSL_CMP_OPT_LOG_VERBOSITY 141 
-#define  OSSL_CMP_OPT_MAC_ALGNID 140 
-#define  OSSL_CMP_OPT_MSGTIMEOUT 139 
-#define  OSSL_CMP_OPT_OWF_ALGNID 138 
-#define  OSSL_CMP_OPT_PERMIT_TA_IN_EXTRACERTS_FOR_IR 137 
-#define  OSSL_CMP_OPT_POLICIES_CRITICAL 136 
-#define  OSSL_CMP_OPT_POPOMETHOD 135 
-#define  OSSL_CMP_OPT_REVOCATION_REASON 134 
-#define  OSSL_CMP_OPT_SUBJECTALTNAME_CRITICAL 133 
-#define  OSSL_CMP_OPT_SUBJECTALTNAME_NODEFAULT 132 
-#define  OSSL_CMP_OPT_TOTALTIMEOUT 131 
-#define  OSSL_CMP_OPT_UNPROTECTED_ERRORS 130 
-#define  OSSL_CMP_OPT_UNPROTECTED_SEND 129 
-#define  OSSL_CMP_OPT_VALIDITYDAYS 128 
- int OSSL_CRMF_POPO_KEYAGREE ; 
- int OSSL_CRMF_POPO_NONE ; 
+
+ int CMP_R_INVALID_ARGS ;
+ int CMP_R_NULL_ARGUMENT ;
+ int CMPerr (int ,int ) ;
+ int OCSP_REVOKED_STATUS_AACOMPROMISE ;
+ int OCSP_REVOKED_STATUS_NOSTATUS ;
+ int OSSL_CMP_LOG_DEBUG ;
+ int OSSL_CRMF_POPO_KEYAGREE ;
+ int OSSL_CRMF_POPO_NONE ;
 
 int OSSL_CMP_CTX_set_option(OSSL_CMP_CTX *ctx, int opt, int val) {
     int min_val;
 
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         CMPerr(0, CMP_R_NULL_ARGUMENT);
         return 0;
     }
 
     switch (opt) {
-    case OSSL_CMP_OPT_REVOCATION_REASON:
+    case 134:
         min_val = OCSP_REVOKED_STATUS_NOSTATUS;
         break;
-    case OSSL_CMP_OPT_POPOMETHOD:
+    case 135:
         min_val = OSSL_CRMF_POPO_NONE;
         break;
     default:
@@ -67,66 +49,66 @@ int OSSL_CMP_CTX_set_option(OSSL_CMP_CTX *ctx, int opt, int val) {
     }
 
     switch (opt) {
-    case OSSL_CMP_OPT_LOG_VERBOSITY:
+    case 141:
         if (val > OSSL_CMP_LOG_DEBUG) {
             CMPerr(0, CMP_R_INVALID_ARGS);
             return 0;
         }
         ctx->log_verbosity = val;
         break;
-    case OSSL_CMP_OPT_IMPLICITCONFIRM:
+    case 142:
         ctx->implicitConfirm = val;
         break;
-    case OSSL_CMP_OPT_DISABLECONFIRM:
+    case 144:
         ctx->disableConfirm = val;
         break;
-    case OSSL_CMP_OPT_UNPROTECTED_SEND:
+    case 129:
         ctx->unprotectedSend = val;
         break;
-    case OSSL_CMP_OPT_UNPROTECTED_ERRORS:
+    case 130:
         ctx->unprotectedErrors = val;
         break;
-    case OSSL_CMP_OPT_VALIDITYDAYS:
+    case 128:
         ctx->days = val;
         break;
-    case OSSL_CMP_OPT_SUBJECTALTNAME_NODEFAULT:
+    case 132:
         ctx->SubjectAltName_nodefault = val;
         break;
-    case OSSL_CMP_OPT_SUBJECTALTNAME_CRITICAL:
+    case 133:
         ctx->setSubjectAltNameCritical = val;
         break;
-    case OSSL_CMP_OPT_POLICIES_CRITICAL:
+    case 136:
         ctx->setPoliciesCritical = val;
         break;
-    case OSSL_CMP_OPT_IGNORE_KEYUSAGE:
+    case 143:
         ctx->ignore_keyusage = val;
         break;
-    case OSSL_CMP_OPT_POPOMETHOD:
+    case 135:
         if (val > OSSL_CRMF_POPO_KEYAGREE) {
             CMPerr(0, CMP_R_INVALID_ARGS);
             return 0;
         }
         ctx->popoMethod = val;
         break;
-    case OSSL_CMP_OPT_DIGEST_ALGNID:
+    case 145:
         ctx->digest = val;
         break;
-    case OSSL_CMP_OPT_OWF_ALGNID:
+    case 138:
         ctx->pbm_owf = val;
         break;
-    case OSSL_CMP_OPT_MAC_ALGNID:
+    case 140:
         ctx->pbm_mac = val;
         break;
-    case OSSL_CMP_OPT_MSGTIMEOUT:
+    case 139:
         ctx->msgtimeout = val;
         break;
-    case OSSL_CMP_OPT_TOTALTIMEOUT:
+    case 131:
         ctx->totaltimeout = val;
         break;
-    case OSSL_CMP_OPT_PERMIT_TA_IN_EXTRACERTS_FOR_IR:
+    case 137:
         ctx->permitTAInExtraCertsForIR = val;
         break;
-    case OSSL_CMP_OPT_REVOCATION_REASON:
+    case 134:
         if (val > OCSP_REVOKED_STATUS_AACOMPROMISE) {
             CMPerr(0, CMP_R_INVALID_ARGS);
             return 0;

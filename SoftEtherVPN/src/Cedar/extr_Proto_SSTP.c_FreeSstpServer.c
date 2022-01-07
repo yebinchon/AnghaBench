@@ -1,83 +1,83 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  TubeRecv; int /*<<< orphan*/  TubeSend; int /*<<< orphan*/  Cedar; int /*<<< orphan*/  Interrupt; int /*<<< orphan*/  SockEvent; int /*<<< orphan*/  SendQueue; int /*<<< orphan*/  RecvQueue; int /*<<< orphan*/  PPPThread; } ;
-typedef  TYPE_1__ SSTP_SERVER ;
-typedef  int /*<<< orphan*/  BLOCK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Free (TYPE_1__*) ; 
- int /*<<< orphan*/  FreeBlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeInterruptManager (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * GetNext (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  ReleaseCedar (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseQueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseSockEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseThread (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseTube (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TubeDisconnect (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WaitThread (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int TubeRecv; int TubeSend; int Cedar; int Interrupt; int SockEvent; int SendQueue; int RecvQueue; int PPPThread; } ;
+typedef TYPE_1__ SSTP_SERVER ;
+typedef int BLOCK ;
+
+
+ int Free (TYPE_1__*) ;
+ int FreeBlock (int *) ;
+ int FreeInterruptManager (int ) ;
+ int * GetNext (int ) ;
+ int INFINITE ;
+ int ReleaseCedar (int ) ;
+ int ReleaseQueue (int ) ;
+ int ReleaseSockEvent (int ) ;
+ int ReleaseThread (int ) ;
+ int ReleaseTube (int ) ;
+ int TubeDisconnect (int ) ;
+ int WaitThread (int ,int ) ;
 
 void FreeSstpServer(SSTP_SERVER *s)
 {
-	// Validate arguments
-	if (s == NULL)
-	{
-		return;
-	}
 
-	TubeDisconnect(s->TubeRecv);
-	TubeDisconnect(s->TubeSend);
+ if (s == ((void*)0))
+ {
+  return;
+ }
 
-	WaitThread(s->PPPThread, INFINITE);
-	ReleaseThread(s->PPPThread);
+ TubeDisconnect(s->TubeRecv);
+ TubeDisconnect(s->TubeSend);
 
-	while (true)
-	{
-		BLOCK *b = GetNext(s->RecvQueue);
+ WaitThread(s->PPPThread, INFINITE);
+ ReleaseThread(s->PPPThread);
 
-		if (b == NULL)
-		{
-			break;
-		}
+ while (1)
+ {
+  BLOCK *b = GetNext(s->RecvQueue);
 
-		FreeBlock(b);
-	}
+  if (b == ((void*)0))
+  {
+   break;
+  }
 
-	while (true)
-	{
-		BLOCK *b = GetNext(s->SendQueue);
+  FreeBlock(b);
+ }
 
-		if (b == NULL)
-		{
-			break;
-		}
+ while (1)
+ {
+  BLOCK *b = GetNext(s->SendQueue);
 
-		FreeBlock(b);
-	}
+  if (b == ((void*)0))
+  {
+   break;
+  }
 
-	ReleaseQueue(s->RecvQueue);
-	ReleaseQueue(s->SendQueue);
+  FreeBlock(b);
+ }
 
-	ReleaseSockEvent(s->SockEvent);
+ ReleaseQueue(s->RecvQueue);
+ ReleaseQueue(s->SendQueue);
 
-	FreeInterruptManager(s->Interrupt);
+ ReleaseSockEvent(s->SockEvent);
 
-	ReleaseCedar(s->Cedar);
+ FreeInterruptManager(s->Interrupt);
 
-	ReleaseTube(s->TubeSend);
-	ReleaseTube(s->TubeRecv);
+ ReleaseCedar(s->Cedar);
 
-	Free(s);
+ ReleaseTube(s->TubeSend);
+ ReleaseTube(s->TubeRecv);
+
+ Free(s);
 }

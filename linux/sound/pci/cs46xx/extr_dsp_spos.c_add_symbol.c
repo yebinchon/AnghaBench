@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct snd_cs46xx {TYPE_1__* card; struct dsp_spos_instance* dsp_spos_instance; } ;
-struct dsp_symbol_entry {int symbol_type; scalar_t__ deleted; int /*<<< orphan*/ * module; int /*<<< orphan*/  address; int /*<<< orphan*/  symbol_name; } ;
+struct dsp_symbol_entry {int symbol_type; scalar_t__ deleted; int * module; int address; int symbol_name; } ;
 struct TYPE_4__ {int nsymbols; int highest_frag_index; struct dsp_symbol_entry* symbols; } ;
 struct dsp_spos_instance {TYPE_2__ symbol_table; } ;
-struct TYPE_3__ {int /*<<< orphan*/  dev; } ;
+struct TYPE_3__ {int dev; } ;
 
-/* Variables and functions */
- int DSP_MAX_SYMBOLS ; 
- int /*<<< orphan*/ * cs46xx_dsp_lookup_symbol (struct snd_cs46xx*,char*,int) ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ ,char*,...) ; 
- int find_free_symbol_index (struct dsp_spos_instance*) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char*) ; 
+
+ int DSP_MAX_SYMBOLS ;
+ int * cs46xx_dsp_lookup_symbol (struct snd_cs46xx*,char*,int) ;
+ int dev_err (int ,char*,...) ;
+ int find_free_symbol_index (struct dsp_spos_instance*) ;
+ int strcpy (int ,char*) ;
 
 __attribute__((used)) static struct dsp_symbol_entry *
 add_symbol (struct snd_cs46xx * chip, char * symbol_name, u32 address, int type)
 {
-	struct dsp_spos_instance * ins = chip->dsp_spos_instance;
-	struct dsp_symbol_entry * symbol = NULL;
-	int index;
+ struct dsp_spos_instance * ins = chip->dsp_spos_instance;
+ struct dsp_symbol_entry * symbol = ((void*)0);
+ int index;
 
-	if (ins->symbol_table.nsymbols == (DSP_MAX_SYMBOLS - 1)) {
-		dev_err(chip->card->dev, "dsp_spos: symbol table is full\n");
-		return NULL;
-	}
-  
-	if (cs46xx_dsp_lookup_symbol(chip,
-				     symbol_name,
-				     type) != NULL) {
-		dev_err(chip->card->dev,
-			"dsp_spos: symbol <%s> duplicated\n", symbol_name);
-		return NULL;
-	}
+ if (ins->symbol_table.nsymbols == (DSP_MAX_SYMBOLS - 1)) {
+  dev_err(chip->card->dev, "dsp_spos: symbol table is full\n");
+  return ((void*)0);
+ }
 
-	index = find_free_symbol_index (ins);
+ if (cs46xx_dsp_lookup_symbol(chip,
+         symbol_name,
+         type) != ((void*)0)) {
+  dev_err(chip->card->dev,
+   "dsp_spos: symbol <%s> duplicated\n", symbol_name);
+  return ((void*)0);
+ }
 
-	strcpy (ins->symbol_table.symbols[index].symbol_name, symbol_name);
-	ins->symbol_table.symbols[index].address = address;
-	ins->symbol_table.symbols[index].symbol_type = type;
-	ins->symbol_table.symbols[index].module = NULL;
-	ins->symbol_table.symbols[index].deleted = 0;
-	symbol = (ins->symbol_table.symbols + index);
+ index = find_free_symbol_index (ins);
 
-	if (index > ins->symbol_table.highest_frag_index) 
-		ins->symbol_table.highest_frag_index = index;
+ strcpy (ins->symbol_table.symbols[index].symbol_name, symbol_name);
+ ins->symbol_table.symbols[index].address = address;
+ ins->symbol_table.symbols[index].symbol_type = type;
+ ins->symbol_table.symbols[index].module = ((void*)0);
+ ins->symbol_table.symbols[index].deleted = 0;
+ symbol = (ins->symbol_table.symbols + index);
 
-	if (index == ins->symbol_table.nsymbols)
-		ins->symbol_table.nsymbols++; /* no frag. in list */
+ if (index > ins->symbol_table.highest_frag_index)
+  ins->symbol_table.highest_frag_index = index;
 
-	return symbol;
+ if (index == ins->symbol_table.nsymbols)
+  ins->symbol_table.nsymbols++;
+
+ return symbol;
 }

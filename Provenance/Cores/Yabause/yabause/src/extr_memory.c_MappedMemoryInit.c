@@ -1,129 +1,129 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * Cs0WriteLong; int /*<<< orphan*/ * Cs0WriteWord; int /*<<< orphan*/ * Cs0WriteByte; int /*<<< orphan*/ * Cs0ReadLong; int /*<<< orphan*/ * Cs0ReadWord; int /*<<< orphan*/ * Cs0ReadByte; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BiosRomMemoryReadByte ; 
- int /*<<< orphan*/  BiosRomMemoryReadLong ; 
- int /*<<< orphan*/  BiosRomMemoryReadWord ; 
- int /*<<< orphan*/  BiosRomMemoryWriteByte ; 
- int /*<<< orphan*/  BiosRomMemoryWriteLong ; 
- int /*<<< orphan*/  BiosRomMemoryWriteWord ; 
- int /*<<< orphan*/  BupRamMemoryReadByte ; 
- int /*<<< orphan*/  BupRamMemoryReadLong ; 
- int /*<<< orphan*/  BupRamMemoryReadWord ; 
- int /*<<< orphan*/  BupRamMemoryWriteByte ; 
- int /*<<< orphan*/  BupRamMemoryWriteLong ; 
- int /*<<< orphan*/  BupRamMemoryWriteWord ; 
- TYPE_1__* CartridgeArea ; 
- int /*<<< orphan*/  Cs1ReadByte ; 
- int /*<<< orphan*/  Cs1ReadLong ; 
- int /*<<< orphan*/  Cs1ReadWord ; 
- int /*<<< orphan*/  Cs1WriteByte ; 
- int /*<<< orphan*/  Cs1WriteLong ; 
- int /*<<< orphan*/  Cs1WriteWord ; 
- int /*<<< orphan*/  Cs2ReadByte ; 
- int /*<<< orphan*/  Cs2ReadLong ; 
- int /*<<< orphan*/  Cs2ReadWord ; 
- int /*<<< orphan*/  Cs2WriteByte ; 
- int /*<<< orphan*/  Cs2WriteLong ; 
- int /*<<< orphan*/  Cs2WriteWord ; 
- int /*<<< orphan*/  FillMemoryArea (int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HighWramMemoryReadByte ; 
- int /*<<< orphan*/  HighWramMemoryReadLong ; 
- int /*<<< orphan*/  HighWramMemoryReadWord ; 
- int /*<<< orphan*/  HighWramMemoryWriteByte ; 
- int /*<<< orphan*/  HighWramMemoryWriteLong ; 
- int /*<<< orphan*/  HighWramMemoryWriteWord ; 
- int /*<<< orphan*/  LowWramMemoryReadByte ; 
- int /*<<< orphan*/  LowWramMemoryReadLong ; 
- int /*<<< orphan*/  LowWramMemoryReadWord ; 
- int /*<<< orphan*/  LowWramMemoryWriteByte ; 
- int /*<<< orphan*/  LowWramMemoryWriteLong ; 
- int /*<<< orphan*/  LowWramMemoryWriteWord ; 
- int /*<<< orphan*/  MSH2InputCaptureWriteWord ; 
- int /*<<< orphan*/  SSH2InputCaptureWriteWord ; 
- int /*<<< orphan*/  ScuReadByte ; 
- int /*<<< orphan*/  ScuReadLong ; 
- int /*<<< orphan*/  ScuReadWord ; 
- int /*<<< orphan*/  ScuWriteByte ; 
- int /*<<< orphan*/  ScuWriteLong ; 
- int /*<<< orphan*/  ScuWriteWord ; 
- int /*<<< orphan*/  SmpcReadByte ; 
- int /*<<< orphan*/  SmpcReadLong ; 
- int /*<<< orphan*/  SmpcReadWord ; 
- int /*<<< orphan*/  SmpcWriteByte ; 
- int /*<<< orphan*/  SmpcWriteLong ; 
- int /*<<< orphan*/  SmpcWriteWord ; 
- int /*<<< orphan*/  SoundRamReadByte ; 
- int /*<<< orphan*/  SoundRamReadLong ; 
- int /*<<< orphan*/  SoundRamReadWord ; 
- int /*<<< orphan*/  SoundRamWriteByte ; 
- int /*<<< orphan*/  SoundRamWriteLong ; 
- int /*<<< orphan*/  SoundRamWriteWord ; 
- int /*<<< orphan*/  UnhandledMemoryReadByte ; 
- int /*<<< orphan*/  UnhandledMemoryReadLong ; 
- int /*<<< orphan*/  UnhandledMemoryReadWord ; 
- int /*<<< orphan*/  UnhandledMemoryWriteByte ; 
- int /*<<< orphan*/  UnhandledMemoryWriteLong ; 
- int /*<<< orphan*/  UnhandledMemoryWriteWord ; 
- int /*<<< orphan*/  Vdp1FrameBufferReadByte ; 
- int /*<<< orphan*/  Vdp1FrameBufferReadLong ; 
- int /*<<< orphan*/  Vdp1FrameBufferReadWord ; 
- int /*<<< orphan*/  Vdp1FrameBufferWriteByte ; 
- int /*<<< orphan*/  Vdp1FrameBufferWriteLong ; 
- int /*<<< orphan*/  Vdp1FrameBufferWriteWord ; 
- int /*<<< orphan*/  Vdp1RamReadByte ; 
- int /*<<< orphan*/  Vdp1RamReadLong ; 
- int /*<<< orphan*/  Vdp1RamReadWord ; 
- int /*<<< orphan*/  Vdp1RamWriteByte ; 
- int /*<<< orphan*/  Vdp1RamWriteLong ; 
- int /*<<< orphan*/  Vdp1RamWriteWord ; 
- int /*<<< orphan*/  Vdp1ReadByte ; 
- int /*<<< orphan*/  Vdp1ReadLong ; 
- int /*<<< orphan*/  Vdp1ReadWord ; 
- int /*<<< orphan*/  Vdp1WriteByte ; 
- int /*<<< orphan*/  Vdp1WriteLong ; 
- int /*<<< orphan*/  Vdp1WriteWord ; 
- int /*<<< orphan*/  Vdp2ColorRamReadByte ; 
- int /*<<< orphan*/  Vdp2ColorRamReadLong ; 
- int /*<<< orphan*/  Vdp2ColorRamReadWord ; 
- int /*<<< orphan*/  Vdp2ColorRamWriteByte ; 
- int /*<<< orphan*/  Vdp2ColorRamWriteLong ; 
- int /*<<< orphan*/  Vdp2ColorRamWriteWord ; 
- int /*<<< orphan*/  Vdp2RamReadByte ; 
- int /*<<< orphan*/  Vdp2RamReadLong ; 
- int /*<<< orphan*/  Vdp2RamReadWord ; 
- int /*<<< orphan*/  Vdp2RamWriteByte ; 
- int /*<<< orphan*/  Vdp2RamWriteLong ; 
- int /*<<< orphan*/  Vdp2RamWriteWord ; 
- int /*<<< orphan*/  Vdp2ReadByte ; 
- int /*<<< orphan*/  Vdp2ReadLong ; 
- int /*<<< orphan*/  Vdp2ReadWord ; 
- int /*<<< orphan*/  Vdp2WriteByte ; 
- int /*<<< orphan*/  Vdp2WriteLong ; 
- int /*<<< orphan*/  Vdp2WriteWord ; 
- int /*<<< orphan*/  scsp_r_b ; 
- int /*<<< orphan*/  scsp_r_d ; 
- int /*<<< orphan*/  scsp_r_w ; 
- int /*<<< orphan*/  scsp_w_b ; 
- int /*<<< orphan*/  scsp_w_d ; 
- int /*<<< orphan*/  scsp_w_w ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * Cs0WriteLong; int * Cs0WriteWord; int * Cs0WriteByte; int * Cs0ReadLong; int * Cs0ReadWord; int * Cs0ReadByte; } ;
+
+
+ int BiosRomMemoryReadByte ;
+ int BiosRomMemoryReadLong ;
+ int BiosRomMemoryReadWord ;
+ int BiosRomMemoryWriteByte ;
+ int BiosRomMemoryWriteLong ;
+ int BiosRomMemoryWriteWord ;
+ int BupRamMemoryReadByte ;
+ int BupRamMemoryReadLong ;
+ int BupRamMemoryReadWord ;
+ int BupRamMemoryWriteByte ;
+ int BupRamMemoryWriteLong ;
+ int BupRamMemoryWriteWord ;
+ TYPE_1__* CartridgeArea ;
+ int Cs1ReadByte ;
+ int Cs1ReadLong ;
+ int Cs1ReadWord ;
+ int Cs1WriteByte ;
+ int Cs1WriteLong ;
+ int Cs1WriteWord ;
+ int Cs2ReadByte ;
+ int Cs2ReadLong ;
+ int Cs2ReadWord ;
+ int Cs2WriteByte ;
+ int Cs2WriteLong ;
+ int Cs2WriteWord ;
+ int FillMemoryArea (int,int,int *,int *,int *,int *,int *,int *) ;
+ int HighWramMemoryReadByte ;
+ int HighWramMemoryReadLong ;
+ int HighWramMemoryReadWord ;
+ int HighWramMemoryWriteByte ;
+ int HighWramMemoryWriteLong ;
+ int HighWramMemoryWriteWord ;
+ int LowWramMemoryReadByte ;
+ int LowWramMemoryReadLong ;
+ int LowWramMemoryReadWord ;
+ int LowWramMemoryWriteByte ;
+ int LowWramMemoryWriteLong ;
+ int LowWramMemoryWriteWord ;
+ int MSH2InputCaptureWriteWord ;
+ int SSH2InputCaptureWriteWord ;
+ int ScuReadByte ;
+ int ScuReadLong ;
+ int ScuReadWord ;
+ int ScuWriteByte ;
+ int ScuWriteLong ;
+ int ScuWriteWord ;
+ int SmpcReadByte ;
+ int SmpcReadLong ;
+ int SmpcReadWord ;
+ int SmpcWriteByte ;
+ int SmpcWriteLong ;
+ int SmpcWriteWord ;
+ int SoundRamReadByte ;
+ int SoundRamReadLong ;
+ int SoundRamReadWord ;
+ int SoundRamWriteByte ;
+ int SoundRamWriteLong ;
+ int SoundRamWriteWord ;
+ int UnhandledMemoryReadByte ;
+ int UnhandledMemoryReadLong ;
+ int UnhandledMemoryReadWord ;
+ int UnhandledMemoryWriteByte ;
+ int UnhandledMemoryWriteLong ;
+ int UnhandledMemoryWriteWord ;
+ int Vdp1FrameBufferReadByte ;
+ int Vdp1FrameBufferReadLong ;
+ int Vdp1FrameBufferReadWord ;
+ int Vdp1FrameBufferWriteByte ;
+ int Vdp1FrameBufferWriteLong ;
+ int Vdp1FrameBufferWriteWord ;
+ int Vdp1RamReadByte ;
+ int Vdp1RamReadLong ;
+ int Vdp1RamReadWord ;
+ int Vdp1RamWriteByte ;
+ int Vdp1RamWriteLong ;
+ int Vdp1RamWriteWord ;
+ int Vdp1ReadByte ;
+ int Vdp1ReadLong ;
+ int Vdp1ReadWord ;
+ int Vdp1WriteByte ;
+ int Vdp1WriteLong ;
+ int Vdp1WriteWord ;
+ int Vdp2ColorRamReadByte ;
+ int Vdp2ColorRamReadLong ;
+ int Vdp2ColorRamReadWord ;
+ int Vdp2ColorRamWriteByte ;
+ int Vdp2ColorRamWriteLong ;
+ int Vdp2ColorRamWriteWord ;
+ int Vdp2RamReadByte ;
+ int Vdp2RamReadLong ;
+ int Vdp2RamReadWord ;
+ int Vdp2RamWriteByte ;
+ int Vdp2RamWriteLong ;
+ int Vdp2RamWriteWord ;
+ int Vdp2ReadByte ;
+ int Vdp2ReadLong ;
+ int Vdp2ReadWord ;
+ int Vdp2WriteByte ;
+ int Vdp2WriteLong ;
+ int Vdp2WriteWord ;
+ int scsp_r_b ;
+ int scsp_r_d ;
+ int scsp_r_w ;
+ int scsp_w_b ;
+ int scsp_w_d ;
+ int scsp_w_w ;
 
 void MappedMemoryInit()
 {
-   // Initialize everyting to unhandled to begin with
+
    FillMemoryArea(0x000, 0xFFF, &UnhandledMemoryReadByte,
                                 &UnhandledMemoryReadWord,
                                 &UnhandledMemoryReadLong,
@@ -131,7 +131,7 @@ void MappedMemoryInit()
                                 &UnhandledMemoryWriteWord,
                                 &UnhandledMemoryWriteLong);
 
-   // Fill the rest
+
    FillMemoryArea(0x000, 0x00F, &BiosRomMemoryReadByte,
                                 &BiosRomMemoryReadWord,
                                 &BiosRomMemoryReadLong,

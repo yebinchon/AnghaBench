@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  UCHAR ;
-struct TYPE_4__ {int IsEtherIPOnIPsecTunnelMode; int /*<<< orphan*/  EtherIP; } ;
-typedef  int /*<<< orphan*/  IKE_SERVER ;
-typedef  TYPE_1__ IKE_CLIENT ;
-typedef  int /*<<< orphan*/  BLOCK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EtherIPProcRecvPackets (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IPsecIkeClientManageEtherIPServer (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/ * NewBlock (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+typedef int UCHAR ;
+struct TYPE_4__ {int IsEtherIPOnIPsecTunnelMode; int EtherIP; } ;
+typedef int IKE_SERVER ;
+typedef TYPE_1__ IKE_CLIENT ;
+typedef int BLOCK ;
+
+
+ int EtherIPProcRecvPackets (int ,int *) ;
+ int Free (int *) ;
+ int IPsecIkeClientManageEtherIPServer (int *,TYPE_1__*) ;
+ int * NewBlock (int *,scalar_t__,int ) ;
 
 void ProcIPsecEtherIPPacketRecv(IKE_SERVER *ike, IKE_CLIENT *c, UCHAR *data, UINT data_size, bool is_tunnel_mode)
 {
-	BLOCK *b;
-	// Validate arguments
-	if (ike == NULL || c == NULL || data == NULL || data_size == 0)
-	{
-		return;
-	}
+ BLOCK *b;
 
-	c->IsEtherIPOnIPsecTunnelMode = is_tunnel_mode;
+ if (ike == ((void*)0) || c == ((void*)0) || data == ((void*)0) || data_size == 0)
+ {
+  return;
+ }
 
-	IPsecIkeClientManageEtherIPServer(ike, c);
+ c->IsEtherIPOnIPsecTunnelMode = is_tunnel_mode;
 
-	b = NewBlock(data, data_size, 0);
+ IPsecIkeClientManageEtherIPServer(ike, c);
 
-	EtherIPProcRecvPackets(c->EtherIP, b);
+ b = NewBlock(data, data_size, 0);
 
-	Free(b);
+ EtherIPProcRecvPackets(c->EtherIP, b);
+
+ Free(b);
 }

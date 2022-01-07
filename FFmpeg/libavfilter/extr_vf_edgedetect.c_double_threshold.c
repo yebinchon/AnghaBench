@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
+
+
+
+typedef int uint8_t ;
+
+
 
 __attribute__((used)) static void double_threshold(int low, int high, int w, int h,
                                    uint8_t *dst, int dst_linesize,
@@ -30,12 +30,12 @@ __attribute__((used)) static void double_threshold(int low, int high, int w, int
             if ((!i || i == w - 1 || !j || j == h - 1) &&
                 src[i] > low &&
                 (src[-src_linesize + i-1] > high ||
-                 src[-src_linesize + i  ] > high ||
+                 src[-src_linesize + i ] > high ||
                  src[-src_linesize + i+1] > high ||
-                 src[                i-1] > high ||
-                 src[                i+1] > high ||
+                 src[ i-1] > high ||
+                 src[ i+1] > high ||
                  src[ src_linesize + i-1] > high ||
-                 src[ src_linesize + i  ] > high ||
+                 src[ src_linesize + i ] > high ||
                  src[ src_linesize + i+1] > high))
                 dst[i] = src[i];
             else

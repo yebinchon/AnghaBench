@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  statement_list_t ;
 
-/* Variables and functions */
- int does_any_iface (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  need_inline_stubs ; 
+
+
+
+typedef int statement_list_t ;
+
+
+ int does_any_iface (int const*,int ) ;
+ int need_inline_stubs ;
 
 int need_inline_stubs_file(const statement_list_t *stmts)
 {

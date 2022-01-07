@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct tagMSIVIEW {int dummy; } ;
-typedef  scalar_t__ UINT ;
-struct TYPE_7__ {scalar_t__ num_cols; TYPE_2__* table; int /*<<< orphan*/  row_size; TYPE_1__* columns; } ;
-struct TYPE_6__ {scalar_t__ row_count; int /*<<< orphan*/ ** data; int /*<<< orphan*/ * data_persistent; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * hash_table; } ;
-typedef  TYPE_3__ MSITABLEVIEW ;
+typedef scalar_t__ UINT ;
+struct TYPE_7__ {scalar_t__ num_cols; TYPE_2__* table; int row_size; TYPE_1__* columns; } ;
+struct TYPE_6__ {scalar_t__ row_count; int ** data; int * data_persistent; } ;
+struct TYPE_5__ {int * hash_table; } ;
+typedef TYPE_3__ MSITABLEVIEW ;
 
-/* Variables and functions */
- scalar_t__ ERROR_FUNCTION_FAILED ; 
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ TABLE_get_dimensions (struct tagMSIVIEW*,scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_3__*,scalar_t__) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ ERROR_FUNCTION_FAILED ;
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ TABLE_get_dimensions (struct tagMSIVIEW*,scalar_t__*,scalar_t__*) ;
+ int TRACE (char*,TYPE_3__*,scalar_t__) ;
+ int memcpy (int *,int *,int ) ;
+ int msi_free (int *) ;
 
 __attribute__((used)) static UINT TABLE_delete_row( struct tagMSIVIEW *view, UINT row )
 {
@@ -49,11 +49,11 @@ __attribute__((used)) static UINT TABLE_delete_row( struct tagMSIVIEW *view, UIN
     num_rows = tv->table->row_count;
     tv->table->row_count--;
 
-    /* reset the hash tables */
+
     for (i = 0; i < tv->num_cols; i++)
     {
         msi_free( tv->columns[i].hash_table );
-        tv->columns[i].hash_table = NULL;
+        tv->columns[i].hash_table = ((void*)0);
     }
 
     for (i = row + 1; i < num_rows; i++)

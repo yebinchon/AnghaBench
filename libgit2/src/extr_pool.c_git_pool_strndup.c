@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int item_size; } ;
-typedef  TYPE_1__ git_pool ;
+typedef TYPE_1__ git_pool ;
 
-/* Variables and functions */
- size_t SIZE_MAX ; 
- int /*<<< orphan*/  assert (int) ; 
- char* git_pool_malloc (TYPE_1__*,size_t) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
+
+ size_t SIZE_MAX ;
+ int assert (int) ;
+ char* git_pool_malloc (TYPE_1__*,size_t) ;
+ int memcpy (char*,char const*,size_t) ;
 
 char *git_pool_strndup(git_pool *pool, const char *str, size_t n)
 {
-	char *ptr = NULL;
+ char *ptr = ((void*)0);
 
-	assert(pool && str && pool->item_size == sizeof(char));
+ assert(pool && str && pool->item_size == sizeof(char));
 
-	if (n == SIZE_MAX)
-		return NULL;
+ if (n == SIZE_MAX)
+  return ((void*)0);
 
-	if ((ptr = git_pool_malloc(pool, (n + 1))) != NULL) {
-		memcpy(ptr, str, n);
-		ptr[n] = '\0';
-	}
+ if ((ptr = git_pool_malloc(pool, (n + 1))) != ((void*)0)) {
+  memcpy(ptr, str, n);
+  ptr[n] = '\0';
+ }
 
-	return ptr;
+ return ptr;
 }

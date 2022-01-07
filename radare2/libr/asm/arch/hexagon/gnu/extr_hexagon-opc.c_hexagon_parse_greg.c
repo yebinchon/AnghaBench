@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int flags; } ;
-typedef  TYPE_1__ hexagon_operand ;
-typedef  int /*<<< orphan*/  hexagon_opcode ;
-typedef  int /*<<< orphan*/  hexagon_insn ;
+typedef TYPE_1__ hexagon_operand ;
+typedef int hexagon_opcode ;
+typedef int hexagon_insn ;
 struct TYPE_8__ {int flags; char* name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int HEXAGON_OPERAND_IS_CONTROL ; 
- int HEXAGON_OPERAND_IS_INVALID ; 
- int HEXAGON_OPERAND_IS_WRITE ; 
- int HEXAGON_REG_IS_READONLY ; 
- scalar_t__ hexagon_encode_operand (TYPE_1__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char**) ; 
- TYPE_3__* hexagon_guest_regs ; 
- int /*<<< orphan*/  hexagon_guest_regs_count ; 
- int hexagon_reg_num (TYPE_1__ const*,char**,char,TYPE_3__*,int /*<<< orphan*/ ,size_t*,char) ; 
- int /*<<< orphan*/  hexagon_verify_hw ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
+
+ int FALSE ;
+ int HEXAGON_OPERAND_IS_CONTROL ;
+ int HEXAGON_OPERAND_IS_INVALID ;
+ int HEXAGON_OPERAND_IS_WRITE ;
+ int HEXAGON_REG_IS_READONLY ;
+ scalar_t__ hexagon_encode_operand (TYPE_1__ const*,int *,int const*,int,int *,int ,int ,char**) ;
+ TYPE_3__* hexagon_guest_regs ;
+ int hexagon_guest_regs_count ;
+ int hexagon_reg_num (TYPE_1__ const*,char**,char,TYPE_3__*,int ,size_t*,char) ;
+ int hexagon_verify_hw ;
+ int sprintf (char*,char*,char*) ;
 
 __attribute__((used)) static char *
 hexagon_parse_greg
@@ -42,7 +42,7 @@ hexagon_parse_greg
 
   reg = hexagon_reg_num (operand, &input, '\0', hexagon_guest_regs, hexagon_guest_regs_count, &regn, '\0');
   if (reg < 0)
-    return (NULL);
+    return (((void*)0));
 
   if (flag)
     *flag = 0;
@@ -62,7 +62,7 @@ hexagon_parse_greg
       }
 
   if (hexagon_encode_operand
-        (operand, insn, opcode, reg, NULL, FALSE, FALSE, errmsg))
+        (operand, insn, opcode, reg, ((void*)0), FALSE, FALSE, errmsg))
     {
       if (flag)
         *flag |= HEXAGON_OPERAND_IS_CONTROL;
@@ -71,5 +71,5 @@ hexagon_parse_greg
       return (input);
     }
 
-  return (NULL);
+  return (((void*)0));
 }

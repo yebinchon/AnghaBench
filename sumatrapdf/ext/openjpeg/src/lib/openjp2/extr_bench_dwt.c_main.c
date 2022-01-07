@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tcd_tile ;
-typedef  int /*<<< orphan*/  tcd_image ;
-typedef  int /*<<< orphan*/  tcd ;
-typedef  int /*<<< orphan*/  opj_thread_pool_t ;
-struct TYPE_13__ {int y1; int y0; int x1; int x0; int* data; int win_x0; int win_y0; int win_x1; int win_y1; int numcomps; int dx; int dy; int /*<<< orphan*/  numresolutions; struct TYPE_13__* comps; struct TYPE_13__* image; struct TYPE_13__* tiles; struct TYPE_13__* tcd_image; void* whole_tile_decoding; int /*<<< orphan*/ * thread_pool; } ;
-typedef  TYPE_1__ opj_tcd_tilecomp_t ;
-typedef  TYPE_1__ opj_tcd_tile_t ;
-typedef  TYPE_1__ opj_tcd_t ;
-typedef  TYPE_1__ opj_tcd_image_t ;
-typedef  TYPE_1__ opj_image_t ;
-typedef  TYPE_1__ opj_image_comp_t ;
-typedef  int /*<<< orphan*/  image_comp ;
-typedef  int /*<<< orphan*/  image ;
-typedef  int OPJ_UINT32 ;
-typedef  int OPJ_INT32 ;
-typedef  double OPJ_FLOAT64 ;
-typedef  void* OPJ_BOOL ;
 
-/* Variables and functions */
- void* OPJ_FALSE ; 
- void* OPJ_TRUE ; 
- int atoi (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free_tilec (TYPE_1__*) ; 
- scalar_t__ getValue (int) ; 
- int /*<<< orphan*/  init_tilec (TYPE_1__*,int,int,int,int,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- double opj_clock () ; 
- int /*<<< orphan*/  opj_dwt_decode (TYPE_1__*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  opj_dwt_encode (TYPE_1__*) ; 
- int /*<<< orphan*/ * opj_thread_pool_create (int) ; 
- int /*<<< orphan*/  opj_thread_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  usage () ; 
+
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int tcd_tile ;
+typedef int tcd_image ;
+typedef int tcd ;
+typedef int opj_thread_pool_t ;
+struct TYPE_13__ {int y1; int y0; int x1; int x0; int* data; int win_x0; int win_y0; int win_x1; int win_y1; int numcomps; int dx; int dy; int numresolutions; struct TYPE_13__* comps; struct TYPE_13__* image; struct TYPE_13__* tiles; struct TYPE_13__* tcd_image; void* whole_tile_decoding; int * thread_pool; } ;
+typedef TYPE_1__ opj_tcd_tilecomp_t ;
+typedef TYPE_1__ opj_tcd_tile_t ;
+typedef TYPE_1__ opj_tcd_t ;
+typedef TYPE_1__ opj_tcd_image_t ;
+typedef TYPE_1__ opj_image_t ;
+typedef TYPE_1__ opj_image_comp_t ;
+typedef int image_comp ;
+typedef int image ;
+typedef int OPJ_UINT32 ;
+typedef int OPJ_INT32 ;
+typedef double OPJ_FLOAT64 ;
+typedef void* OPJ_BOOL ;
+
+
+ void* OPJ_FALSE ;
+ void* OPJ_TRUE ;
+ int atoi (char*) ;
+ int exit (int) ;
+ int fprintf (int ,char*) ;
+ int free_tilec (TYPE_1__*) ;
+ scalar_t__ getValue (int) ;
+ int init_tilec (TYPE_1__*,int,int,int,int,int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ double opj_clock () ;
+ int opj_dwt_decode (TYPE_1__*,TYPE_1__*,int ) ;
+ int opj_dwt_encode (TYPE_1__*) ;
+ int * opj_thread_pool_create (int) ;
+ int opj_thread_pool_destroy (int *) ;
+ int printf (char*,...) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
+ int usage () ;
 
 int main(int argc, char** argv)
 {

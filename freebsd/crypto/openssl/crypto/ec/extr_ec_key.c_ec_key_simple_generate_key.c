@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * priv_key; int /*<<< orphan*/ * pub_key; int /*<<< orphan*/  group; } ;
-typedef  int /*<<< orphan*/  EC_POINT ;
-typedef  TYPE_1__ EC_KEY ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_new () ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- scalar_t__ BN_is_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_new () ; 
- int /*<<< orphan*/  BN_priv_rand_range (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * EC_GROUP_get0_order (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EC_POINT_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_mul (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EC_POINT_new (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * priv_key; int * pub_key; int group; } ;
+typedef int EC_POINT ;
+typedef TYPE_1__ EC_KEY ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_CTX_free (int *) ;
+ int * BN_CTX_new () ;
+ int BN_free (int *) ;
+ scalar_t__ BN_is_zero (int *) ;
+ int * BN_new () ;
+ int BN_priv_rand_range (int *,int const*) ;
+ int * EC_GROUP_get0_order (int ) ;
+ int EC_POINT_free (int *) ;
+ int EC_POINT_mul (int ,int *,int *,int *,int *,int *) ;
+ int * EC_POINT_new (int ) ;
 
 int ec_key_simple_generate_key(EC_KEY *eckey)
 {
     int ok = 0;
-    BN_CTX *ctx = NULL;
-    BIGNUM *priv_key = NULL;
-    const BIGNUM *order = NULL;
-    EC_POINT *pub_key = NULL;
+    BN_CTX *ctx = ((void*)0);
+    BIGNUM *priv_key = ((void*)0);
+    const BIGNUM *order = ((void*)0);
+    EC_POINT *pub_key = ((void*)0);
 
-    if ((ctx = BN_CTX_new()) == NULL)
+    if ((ctx = BN_CTX_new()) == ((void*)0))
         goto err;
 
-    if (eckey->priv_key == NULL) {
+    if (eckey->priv_key == ((void*)0)) {
         priv_key = BN_new();
-        if (priv_key == NULL)
+        if (priv_key == ((void*)0))
             goto err;
     } else
         priv_key = eckey->priv_key;
 
     order = EC_GROUP_get0_order(eckey->group);
-    if (order == NULL)
+    if (order == ((void*)0))
         goto err;
 
     do
@@ -56,14 +56,14 @@ int ec_key_simple_generate_key(EC_KEY *eckey)
             goto err;
     while (BN_is_zero(priv_key)) ;
 
-    if (eckey->pub_key == NULL) {
+    if (eckey->pub_key == ((void*)0)) {
         pub_key = EC_POINT_new(eckey->group);
-        if (pub_key == NULL)
+        if (pub_key == ((void*)0))
             goto err;
     } else
         pub_key = eckey->pub_key;
 
-    if (!EC_POINT_mul(eckey->group, pub_key, priv_key, NULL, NULL, ctx))
+    if (!EC_POINT_mul(eckey->group, pub_key, priv_key, ((void*)0), ((void*)0), ctx))
         goto err;
 
     eckey->priv_key = priv_key;
@@ -72,7 +72,7 @@ int ec_key_simple_generate_key(EC_KEY *eckey)
     ok = 1;
 
  err:
-    if (eckey->pub_key == NULL)
+    if (eckey->pub_key == ((void*)0))
         EC_POINT_free(pub_key);
     if (eckey->priv_key != priv_key)
         BN_free(priv_key);

@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mg_connection {int dummy; } ;
-typedef  int /*<<< orphan*/  src ;
-typedef  int /*<<< orphan*/  dst ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int src ;
+typedef int dst ;
+typedef int FILE ;
 
-/* Variables and functions */
-#define  MG_EV_ACCEPT 132 
-#define  MG_EV_CLOSE 131 
-#define  MG_EV_CONNECT 130 
-#define  MG_EV_RECV 129 
-#define  MG_EV_SEND 128 
- int MG_SOCK_STRINGIFY_IP ; 
- int MG_SOCK_STRINGIFY_PORT ; 
- int MG_SOCK_STRINGIFY_REMOTE ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,unsigned long,void*,char*,char const*,char*,int) ; 
- int /*<<< orphan*/  mg_conn_addr_to_str (struct mg_connection*,char*,int,int) ; 
- int /*<<< orphan*/ * mg_fopen (char const*,char*) ; 
- int /*<<< orphan*/  mg_hexdumpf (int /*<<< orphan*/ *,void const*,int) ; 
- scalar_t__ mg_time () ; 
- int /*<<< orphan*/ * stderr ; 
- int /*<<< orphan*/ * stdout ; 
- scalar_t__ strcmp (char const*,char*) ; 
+
+
+
+
+
+
+ int MG_SOCK_STRINGIFY_IP ;
+ int MG_SOCK_STRINGIFY_PORT ;
+ int MG_SOCK_STRINGIFY_REMOTE ;
+ int fclose (int *) ;
+ int fprintf (int *,char*,unsigned long,void*,char*,char const*,char*,int) ;
+ int mg_conn_addr_to_str (struct mg_connection*,char*,int,int) ;
+ int * mg_fopen (char const*,char*) ;
+ int mg_hexdumpf (int *,void const*,int) ;
+ scalar_t__ mg_time () ;
+ int * stderr ;
+ int * stdout ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 void mg_hexdump_connection(struct mg_connection *nc, const char *path,
                            const void *buf, int num_bytes, int ev) {
-  FILE *fp = NULL;
+  FILE *fp = ((void*)0);
   char src[60], dst[60];
-  const char *tag = NULL;
+  const char *tag = ((void*)0);
   switch (ev) {
-    case MG_EV_RECV:
+    case 129:
       tag = "<-";
       break;
-    case MG_EV_SEND:
+    case 128:
       tag = "->";
       break;
-    case MG_EV_ACCEPT:
+    case 132:
       tag = "<A";
       break;
-    case MG_EV_CONNECT:
+    case 130:
       tag = "C>";
       break;
-    case MG_EV_CLOSE:
+    case 131:
       tag = "XX";
       break;
   }
-  if (tag == NULL) return; /* Don't log MG_EV_TIMER, etc */
+  if (tag == ((void*)0)) return;
 
   if (strcmp(path, "-") == 0) {
     fp = stdout;
   } else if (strcmp(path, "--") == 0) {
     fp = stderr;
-#if MG_ENABLE_FILESYSTEM
-  } else {
-    fp = mg_fopen(path, "a");
-#endif
+
+
+
+
   }
-  if (fp == NULL) return;
+  if (fp == ((void*)0)) return;
 
   mg_conn_addr_to_str(nc, src, sizeof(src),
                       MG_SOCK_STRINGIFY_IP | MG_SOCK_STRINGIFY_PORT);

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct vo {struct priv* priv; } ;
 struct priv {TYPE_1__* next_image; } ;
 struct TYPE_2__ {scalar_t__* planes; } ;
-typedef  int /*<<< orphan*/  AVMediaCodecBuffer ;
+typedef int AVMediaCodecBuffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_mediacodec_release_buffer (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mp_image_unrefp (TYPE_1__**) ; 
+
+ int av_mediacodec_release_buffer (int *,int) ;
+ int mp_image_unrefp (TYPE_1__**) ;
 
 __attribute__((used)) static void flip_page(struct vo *vo)
 {

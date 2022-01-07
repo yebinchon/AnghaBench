@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int numresolutions; scalar_t__ qmfbid; scalar_t__ qntsty; int /*<<< orphan*/ * stepsizes; } ;
-typedef  TYPE_1__ opj_tccp_t ;
-typedef  int OPJ_UINT32 ;
-typedef  int /*<<< orphan*/  OPJ_INT32 ;
-typedef  int OPJ_FLOAT64 ;
 
-/* Variables and functions */
- scalar_t__ J2K_CCP_QNTSTY_NOQNT ; 
- scalar_t__ floor (int) ; 
- int /*<<< orphan*/  opj_dwt_encode_stepsize (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int** opj_dwt_norms_real ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int numresolutions; scalar_t__ qmfbid; scalar_t__ qntsty; int * stepsizes; } ;
+typedef TYPE_1__ opj_tccp_t ;
+typedef int OPJ_UINT32 ;
+typedef int OPJ_INT32 ;
+typedef int OPJ_FLOAT64 ;
+
+
+ scalar_t__ J2K_CCP_QNTSTY_NOQNT ;
+ scalar_t__ floor (int) ;
+ int opj_dwt_encode_stepsize (int ,int ,int *) ;
+ int** opj_dwt_norms_real ;
 
 void opj_dwt_calc_explicit_stepsizes(opj_tccp_t * tccp, OPJ_UINT32 prec)
 {

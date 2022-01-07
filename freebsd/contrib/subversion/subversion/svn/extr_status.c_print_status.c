@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_5__ ;
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_23__ TYPE_5__ ;
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
 struct TYPE_21__ {scalar_t__ apr_err; } ;
-typedef  TYPE_3__ svn_error_t ;
+typedef TYPE_3__ svn_error_t ;
 struct TYPE_22__ {int node_status; int prop_status; char* local_abspath; char const* revision; scalar_t__ repos_node_status; char const* changed_rev; char* changed_author; TYPE_2__* lock; scalar_t__ copied; scalar_t__ wc_is_locked; scalar_t__ versioned; TYPE_1__* repos_lock; scalar_t__ moved_to_abspath; scalar_t__ moved_from_abspath; scalar_t__ conflicted; } ;
-typedef  TYPE_4__ svn_client_status_t ;
-struct TYPE_23__ {int /*<<< orphan*/  wc_ctx; } ;
-typedef  TYPE_5__ svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  svn_client_conflict_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  enum svn_wc_status_kind { ____Placeholder_svn_wc_status_kind } svn_wc_status_kind ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_4__ svn_client_status_t ;
+struct TYPE_23__ {int wc_ctx; } ;
+typedef TYPE_5__ svn_client_ctx_t ;
+typedef int svn_client_conflict_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef enum svn_wc_status_kind { ____Placeholder_svn_wc_status_kind } svn_wc_status_kind ;
+typedef int apr_pool_t ;
 struct TYPE_20__ {scalar_t__ token; } ;
 struct TYPE_19__ {scalar_t__ token; } ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_ERR (TYPE_3__*) ; 
- scalar_t__ SVN_ERR_WC_UPGRADE_REQUIRED ; 
- scalar_t__ SVN_IS_VALID_REVNUM (char const*) ; 
- int /*<<< orphan*/  SVN_VA_NULL ; 
- scalar_t__ TRUE ; 
- char* _ (char*) ; 
- char* apr_psprintf (int /*<<< orphan*/ *,char*,char const*) ; 
- char* apr_pstrcat (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ) ; 
- int combined_status (TYPE_4__ const*) ; 
- int /*<<< orphan*/  generate_status_code (int) ; 
- int /*<<< orphan*/  generate_switch_column_code (TYPE_4__ const*) ; 
- char* make_relpath (char const*,char const*,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ strcmp (scalar_t__,scalar_t__) ; 
- TYPE_3__* svn_cl__get_human_readable_tree_conflict_description (char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_3__* svn_client_conflict_get (int /*<<< orphan*/ **,char const*,TYPE_5__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_3__* svn_cmdline_fflush (int /*<<< orphan*/ ) ; 
- TYPE_3__* svn_cmdline_printf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char,char,int /*<<< orphan*/ ,char,char,...) ; 
- char* svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_3__*) ; 
- TYPE_3__* svn_wc_conflicted_p3 (scalar_t__*,scalar_t__*,scalar_t__*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int svn_wc_status_added ; 
- scalar_t__ svn_wc_status_none ; 
+
+ scalar_t__ FALSE ;
+ int SVN_ERR (TYPE_3__*) ;
+ scalar_t__ SVN_ERR_WC_UPGRADE_REQUIRED ;
+ scalar_t__ SVN_IS_VALID_REVNUM (char const*) ;
+ int SVN_VA_NULL ;
+ scalar_t__ TRUE ;
+ char* _ (char*) ;
+ char* apr_psprintf (int *,char*,char const*) ;
+ char* apr_pstrcat (int *,char*,char*,int ) ;
+ int combined_status (TYPE_4__ const*) ;
+ int generate_status_code (int) ;
+ int generate_switch_column_code (TYPE_4__ const*) ;
+ char* make_relpath (char const*,char const*,scalar_t__,int *,int *) ;
+ int stdout ;
+ scalar_t__ strcmp (scalar_t__,scalar_t__) ;
+ TYPE_3__* svn_cl__get_human_readable_tree_conflict_description (char const**,int *,int *) ;
+ TYPE_3__* svn_client_conflict_get (int **,char const*,TYPE_5__*,int *,int *) ;
+ TYPE_3__* svn_cmdline_fflush (int ) ;
+ TYPE_3__* svn_cmdline_printf (int *,char*,int ,int ,char,char,int ,char,char,...) ;
+ char* svn_dirent_local_style (char const*,int *) ;
+ int svn_error_clear (TYPE_3__*) ;
+ TYPE_3__* svn_wc_conflicted_p3 (scalar_t__*,scalar_t__*,scalar_t__*,int ,char const*,int *) ;
+ int svn_wc_status_added ;
+ scalar_t__ svn_wc_status_none ;
 
 __attribute__((used)) static svn_error_t *
 print_status(const char *target_abspath,
@@ -74,21 +74,13 @@ print_status(const char *target_abspath,
   const char *tree_desc_line = "";
   const char *moved_from_line = "";
   const char *moved_to_line = "";
-
-  /* For historic reasons svn ignores the property status for added nodes, even
-     if these nodes were copied and have local property changes.
-
-     Note that it doesn't do this on replacements, or children of copies.
-
-     ### Our test suite would catch more errors if we reported property
-         changes on copies. */
   if (node_status == svn_wc_status_added)
       prop_status = svn_wc_status_none;
 
-  /* To indicate this node is the victim of a tree conflict, we show
-     'C' in the tree-conflict column, overriding any other status.
-     We also print a separate line describing the nature of the tree
-     conflict. */
+
+
+
+
   if (status->conflicted)
     {
       const char *desc;
@@ -141,9 +133,9 @@ print_status(const char *target_abspath,
         (*prop_conflicts)++;
     }
 
-  /* Note that moved-from and moved-to information is only available in STATUS
-   * for (op-)roots of a move. Those are exactly the nodes we want to show
-   * move info for in 'svn status'. See also comments in svn_wc_status3_t. */
+
+
+
   if (status->moved_from_abspath && status->moved_to_abspath &&
       strcmp(status->moved_from_abspath, status->moved_to_abspath) == 0)
     {

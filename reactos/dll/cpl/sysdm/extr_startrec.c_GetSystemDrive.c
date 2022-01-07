@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int GetEnvironmentVariableW (char*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * HeapReAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int MAX_PATH ; 
+
+
+
+typedef int WCHAR ;
+typedef int DWORD ;
+
+
+ int GetEnvironmentVariableW (char*,int *,int) ;
+ int GetProcessHeap () ;
+ int * HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int *) ;
+ int * HeapReAlloc (int ,int ,int *,int) ;
+ int MAX_PATH ;
 
 __attribute__((used)) static DWORD
 GetSystemDrive(WCHAR **szSystemDrive)
 {
     DWORD dwBufSize;
 
-    /* Get Path to freeldr.ini or boot.ini */
+
     *szSystemDrive = HeapAlloc(GetProcessHeap(), 0, MAX_PATH * sizeof(WCHAR));
-    if (*szSystemDrive != NULL)
+    if (*szSystemDrive != ((void*)0))
     {
         dwBufSize = GetEnvironmentVariableW(L"SystemDrive", *szSystemDrive, MAX_PATH);
         if (dwBufSize > MAX_PATH)
@@ -37,7 +37,7 @@ GetSystemDrive(WCHAR **szSystemDrive)
             DWORD dwBufSize2;
 
             szTmp = HeapReAlloc(GetProcessHeap(), 0, *szSystemDrive, dwBufSize * sizeof(WCHAR));
-            if (szTmp == NULL)
+            if (szTmp == ((void*)0))
                 goto FailGetSysDrive;
 
             *szSystemDrive = szTmp;
@@ -50,7 +50,7 @@ GetSystemDrive(WCHAR **szSystemDrive)
         {
 FailGetSysDrive:
             HeapFree(GetProcessHeap(), 0, *szSystemDrive);
-            *szSystemDrive = NULL;
+            *szSystemDrive = ((void*)0);
             return 0;
         }
 

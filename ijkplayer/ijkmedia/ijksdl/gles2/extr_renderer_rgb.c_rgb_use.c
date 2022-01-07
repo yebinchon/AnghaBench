@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__* plane_textures; int /*<<< orphan*/ * us2_sampler; int /*<<< orphan*/  program; } ;
-typedef  TYPE_1__ IJK_GLES2_Renderer ;
-typedef  int /*<<< orphan*/  GLboolean ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALOGI (char*) ; 
- int /*<<< orphan*/  GL_CLAMP_TO_EDGE ; 
- int /*<<< orphan*/  GL_LINEAR ; 
- scalar_t__ GL_TEXTURE0 ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  GL_TEXTURE_MAG_FILTER ; 
- int /*<<< orphan*/  GL_TEXTURE_MIN_FILTER ; 
- int /*<<< orphan*/  GL_TEXTURE_WRAP_S ; 
- int /*<<< orphan*/  GL_TEXTURE_WRAP_T ; 
- int /*<<< orphan*/  GL_TRUE ; 
- int /*<<< orphan*/  GL_UNPACK_ALIGNMENT ; 
- int /*<<< orphan*/  IJK_GLES2_checkError_TRACE (char*) ; 
- int /*<<< orphan*/  glActiveTexture (scalar_t__) ; 
- int /*<<< orphan*/  glBindTexture (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  glGenTextures (int,scalar_t__*) ; 
- int /*<<< orphan*/  glPixelStorei (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  glTexParameterf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glTexParameteri (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glUniform1i (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  glUseProgram (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__* plane_textures; int * us2_sampler; int program; } ;
+typedef TYPE_1__ IJK_GLES2_Renderer ;
+typedef int GLboolean ;
+
+
+ int ALOGI (char*) ;
+ int GL_CLAMP_TO_EDGE ;
+ int GL_LINEAR ;
+ scalar_t__ GL_TEXTURE0 ;
+ int GL_TEXTURE_2D ;
+ int GL_TEXTURE_MAG_FILTER ;
+ int GL_TEXTURE_MIN_FILTER ;
+ int GL_TEXTURE_WRAP_S ;
+ int GL_TEXTURE_WRAP_T ;
+ int GL_TRUE ;
+ int GL_UNPACK_ALIGNMENT ;
+ int IJK_GLES2_checkError_TRACE (char*) ;
+ int glActiveTexture (scalar_t__) ;
+ int glBindTexture (int ,scalar_t__) ;
+ int glGenTextures (int,scalar_t__*) ;
+ int glPixelStorei (int ,int) ;
+ int glTexParameterf (int ,int ,int ) ;
+ int glTexParameteri (int ,int ,int ) ;
+ int glUniform1i (int ,int) ;
+ int glUseProgram (int ) ;
 
 __attribute__((used)) static GLboolean rgb_use(IJK_GLES2_Renderer *renderer)
 {
     ALOGI("use render rgb\n");
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
-    glUseProgram(renderer->program);            IJK_GLES2_checkError_TRACE("glUseProgram");
+    glUseProgram(renderer->program); IJK_GLES2_checkError_TRACE("glUseProgram");
 
     if (0 == renderer->plane_textures[0])
         glGenTextures(1, renderer->plane_textures);

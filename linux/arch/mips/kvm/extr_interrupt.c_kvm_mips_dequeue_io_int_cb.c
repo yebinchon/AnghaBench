@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  cop0; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int cop0; } ;
 struct kvm_vcpu {TYPE_1__ arch; } ;
 struct kvm_mips_interrupt {scalar_t__ irq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  C_IRQ0 ; 
- int /*<<< orphan*/  C_IRQ1 ; 
- int /*<<< orphan*/  C_IRQ2 ; 
- int /*<<< orphan*/  MIPS_EXC_INT_IO ; 
- int /*<<< orphan*/  MIPS_EXC_INT_IPI_1 ; 
- int /*<<< orphan*/  MIPS_EXC_INT_IPI_2 ; 
- int /*<<< orphan*/  kvm_clear_c0_guest_cause (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kvm_mips_dequeue_irq (struct kvm_vcpu*,int /*<<< orphan*/ ) ; 
+
+ int C_IRQ0 ;
+ int C_IRQ1 ;
+ int C_IRQ2 ;
+ int MIPS_EXC_INT_IO ;
+ int MIPS_EXC_INT_IPI_1 ;
+ int MIPS_EXC_INT_IPI_2 ;
+ int kvm_clear_c0_guest_cause (int ,int ) ;
+ int kvm_mips_dequeue_irq (struct kvm_vcpu*,int ) ;
 
 void kvm_mips_dequeue_io_int_cb(struct kvm_vcpu *vcpu,
-				struct kvm_mips_interrupt *irq)
+    struct kvm_mips_interrupt *irq)
 {
-	int intr = (int)irq->irq;
+ int intr = (int)irq->irq;
 
-	switch (intr) {
-	case -2:
-		kvm_clear_c0_guest_cause(vcpu->arch.cop0, (C_IRQ0));
-		kvm_mips_dequeue_irq(vcpu, MIPS_EXC_INT_IO);
-		break;
+ switch (intr) {
+ case -2:
+  kvm_clear_c0_guest_cause(vcpu->arch.cop0, (C_IRQ0));
+  kvm_mips_dequeue_irq(vcpu, MIPS_EXC_INT_IO);
+  break;
 
-	case -3:
-		kvm_clear_c0_guest_cause(vcpu->arch.cop0, (C_IRQ1));
-		kvm_mips_dequeue_irq(vcpu, MIPS_EXC_INT_IPI_1);
-		break;
+ case -3:
+  kvm_clear_c0_guest_cause(vcpu->arch.cop0, (C_IRQ1));
+  kvm_mips_dequeue_irq(vcpu, MIPS_EXC_INT_IPI_1);
+  break;
 
-	case -4:
-		kvm_clear_c0_guest_cause(vcpu->arch.cop0, (C_IRQ2));
-		kvm_mips_dequeue_irq(vcpu, MIPS_EXC_INT_IPI_2);
-		break;
+ case -4:
+  kvm_clear_c0_guest_cause(vcpu->arch.cop0, (C_IRQ2));
+  kvm_mips_dequeue_irq(vcpu, MIPS_EXC_INT_IPI_2);
+  break;
 
-	default:
-		break;
-	}
+ default:
+  break;
+ }
 
 }

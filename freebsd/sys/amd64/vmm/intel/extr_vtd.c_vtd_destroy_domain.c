@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct domain {int /*<<< orphan*/  pt_levels; int /*<<< orphan*/  ptp; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_VTD ; 
- int /*<<< orphan*/  SLIST_REMOVE (int /*<<< orphan*/ *,struct domain*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  domain ; 
- int /*<<< orphan*/  domhead ; 
- int /*<<< orphan*/  free (struct domain*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  next ; 
- int /*<<< orphan*/  vtd_free_ptp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct domain {int pt_levels; int ptp; } ;
+
+
+ int M_VTD ;
+ int SLIST_REMOVE (int *,struct domain*,int ,int ) ;
+ int domain ;
+ int domhead ;
+ int free (struct domain*,int ) ;
+ int next ;
+ int vtd_free_ptp (int ,int ) ;
 
 __attribute__((used)) static void
 vtd_destroy_domain(void *arg)
 {
-	struct domain *dom;
-	
-	dom = arg;
+ struct domain *dom;
 
-	SLIST_REMOVE(&domhead, dom, domain, next);
-	vtd_free_ptp(dom->ptp, dom->pt_levels);
-	free(dom, M_VTD);
+ dom = arg;
+
+ SLIST_REMOVE(&domhead, dom, domain, next);
+ vtd_free_ptp(dom->ptp, dom->pt_levels);
+ free(dom, M_VTD);
 }

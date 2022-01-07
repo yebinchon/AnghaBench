@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  scalar_t__ esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_BOOTLOADER_OFFSET ; 
- int /*<<< orphan*/  ESP_LOGD (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  ESP_LOGW (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  TAG ; 
- scalar_t__ esp_flash_encrypt_region (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ esp_image_verify_bootloader (int /*<<< orphan*/ *) ; 
- scalar_t__ esp_secure_boot_enabled () ; 
+
+
+
+typedef int uint32_t ;
+typedef scalar_t__ esp_err_t ;
+
+
+ int ESP_BOOTLOADER_OFFSET ;
+ int ESP_LOGD (int ,char*) ;
+ int ESP_LOGE (int ,char*,scalar_t__) ;
+ int ESP_LOGW (int ,char*) ;
+ scalar_t__ ESP_OK ;
+ int TAG ;
+ scalar_t__ esp_flash_encrypt_region (int ,int ) ;
+ scalar_t__ esp_image_verify_bootloader (int *) ;
+ scalar_t__ esp_secure_boot_enabled () ;
 
 __attribute__((used)) static esp_err_t encrypt_bootloader(void)
 {
     esp_err_t err;
     uint32_t image_length;
-    /* Check for plaintext bootloader (verification will fail if it's already encrypted) */
+
     if (esp_image_verify_bootloader(&image_length) == ESP_OK) {
         ESP_LOGD(TAG, "bootloader is plaintext. Encrypting...");
         err = esp_flash_encrypt_region(ESP_BOOTLOADER_OFFSET, image_length);
@@ -38,7 +38,7 @@ __attribute__((used)) static esp_err_t encrypt_bootloader(void)
         }
 
         if (esp_secure_boot_enabled()) {
-            // TODO: anything different for secure boot?
+
         }
     }
     else {

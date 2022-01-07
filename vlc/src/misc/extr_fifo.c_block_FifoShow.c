@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  block_t ;
-struct TYPE_3__ {int /*<<< orphan*/  lock; int /*<<< orphan*/ * p_first; } ;
-typedef  TYPE_1__ block_fifo_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int block_t ;
+struct TYPE_3__ {int lock; int * p_first; } ;
+typedef TYPE_1__ block_fifo_t ;
+
+
+ int assert (int ) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 block_t *block_FifoShow( block_fifo_t *p_fifo )
 {
     block_t *b;
 
     vlc_mutex_lock( &p_fifo->lock );
-    assert(p_fifo->p_first != NULL);
+    assert(p_fifo->p_first != ((void*)0));
     b = p_fifo->p_first;
     vlc_mutex_unlock( &p_fifo->lock );
 

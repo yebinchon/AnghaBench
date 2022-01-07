@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pe ;
-typedef  scalar_t__ HANDLE ;
-typedef  int DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CREATE_ALWAYS ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFileA (char const*,int const,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteFileA (char const*) ; 
-#define  ERROR_SHARING_VIOLATION 134 
-#define  FALSE 133 
- int /*<<< orphan*/  FILE_ATTRIBUTE_NORMAL ; 
-#define  FILE_SHARE_READ 132 
-#define  FILE_SHARE_WRITE 131 
-#define  GENERIC_READ 130 
-#define  GENERIC_WRITE 129 
- int GetLastError () ; 
- int GetPrivateProfileStringA (char*,char*,int /*<<< orphan*/ *,char*,int,char const*) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- char* KEY ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- char* SECTION ; 
- int /*<<< orphan*/  SetLastError (int) ; 
-#define  TRUE 128 
- int /*<<< orphan*/  WriteFile (scalar_t__,char*,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ *) ; 
- int WritePrivateProfileStringA (char*,char*,char*,char const*) ; 
- int /*<<< orphan*/  broken (int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+
+
+typedef int pe ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int CREATE_ALWAYS ;
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFileA (char const*,int const,int,int *,int ,int ,int *) ;
+ int DeleteFileA (char const*) ;
+
+
+ int FILE_ATTRIBUTE_NORMAL ;
+
+
+
+
+ int GetLastError () ;
+ int GetPrivateProfileStringA (char*,char*,int *,char*,int,char const*) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ char* KEY ;
+ int MAX_PATH ;
+ int OPEN_EXISTING ;
+ char* SECTION ;
+ int SetLastError (int) ;
+
+ int WriteFile (scalar_t__,char*,int ,int*,int *) ;
+ int WritePrivateProfileStringA (char*,char*,char*,char const*) ;
+ int broken (int) ;
+ int ok (int,char*,...) ;
+ int sprintf (char*,char*,char*,char*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static void test_profile_existing(void)
 {
@@ -55,16 +55,16 @@ __attribute__((used)) static void test_profile_existing(void)
         BOOL read_error;
         DWORD broken_error;
     } pe[] = {
-        {GENERIC_READ,  FILE_SHARE_READ,  ERROR_SHARING_VIOLATION, FALSE },
-        {GENERIC_READ,  FILE_SHARE_WRITE, ERROR_SHARING_VIOLATION, TRUE },
-        {GENERIC_WRITE, FILE_SHARE_READ,  ERROR_SHARING_VIOLATION, FALSE },
-        {GENERIC_WRITE, FILE_SHARE_WRITE, ERROR_SHARING_VIOLATION, TRUE },
-        {GENERIC_READ|GENERIC_WRITE, FILE_SHARE_READ,  ERROR_SHARING_VIOLATION, FALSE },
-        {GENERIC_READ|GENERIC_WRITE, FILE_SHARE_WRITE, ERROR_SHARING_VIOLATION, TRUE },
-        {GENERIC_READ,  FILE_SHARE_READ|FILE_SHARE_WRITE, 0, FALSE, ERROR_SHARING_VIOLATION /* nt4 */},
-        {GENERIC_WRITE, FILE_SHARE_READ|FILE_SHARE_WRITE, 0, FALSE, ERROR_SHARING_VIOLATION /* nt4 */},
-        /*Thief demo (bug 5024) opens .ini file like this*/
-        {GENERIC_READ|GENERIC_WRITE, FILE_SHARE_READ|FILE_SHARE_WRITE, 0, FALSE, ERROR_SHARING_VIOLATION /* nt4 */}
+        {130, 132, 134, 133 },
+        {130, 131, 134, 128 },
+        {129, 132, 134, 133 },
+        {129, 131, 134, 128 },
+        {130|129, 132, 134, 133 },
+        {130|129, 131, 134, 128 },
+        {130, 132|131, 0, 133, 134 },
+        {129, 132|131, 0, 133, 134 },
+
+        {130|129, 132|131, 0, 133, 134 }
     };
 
     int i;
@@ -75,8 +75,8 @@ __attribute__((used)) static void test_profile_existing(void)
 
     for (i=0; i < sizeof(pe)/sizeof(pe[0]); i++)
     {
-        h = CreateFileA(testfile1, pe[i].dwDesiredAccess, pe[i].dwShareMode, NULL,
-                       CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+        h = CreateFileA(testfile1, pe[i].dwDesiredAccess, pe[i].dwShareMode, ((void*)0),
+                       CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, ((void*)0));
         ok(INVALID_HANDLE_VALUE != h, "%d: CreateFile failed\n",i);
         SetLastError(0xdeadbeef);
 
@@ -108,22 +108,22 @@ __attribute__((used)) static void test_profile_existing(void)
         ok( DeleteFileA(testfile1), "delete failed\n" );
     }
 
-    h = CreateFileA(testfile2, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+    h = CreateFileA(testfile2, 129, 0, ((void*)0), CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, ((void*)0));
     sprintf( buffer, "[%s]\r\n%s=123\r\n", SECTION, KEY );
-    ok( WriteFile( h, buffer, strlen(buffer), &size, NULL ), "failed to write\n" );
+    ok( WriteFile( h, buffer, strlen(buffer), &size, ((void*)0) ), "failed to write\n" );
     CloseHandle( h );
 
     for (i=0; i < sizeof(pe)/sizeof(pe[0]); i++)
     {
-        h = CreateFileA(testfile2, pe[i].dwDesiredAccess, pe[i].dwShareMode, NULL,
-                       OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+        h = CreateFileA(testfile2, pe[i].dwDesiredAccess, pe[i].dwShareMode, ((void*)0),
+                       OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, ((void*)0));
         ok(INVALID_HANDLE_VALUE != h, "%d: CreateFile failed\n",i);
         SetLastError(0xdeadbeef);
-        ret = GetPrivateProfileStringA(SECTION, KEY, NULL, buffer, MAX_PATH, testfile2);
-        /* Win9x and WinME returns 0 for all cases except the first one */
+        ret = GetPrivateProfileStringA(SECTION, KEY, ((void*)0), buffer, MAX_PATH, testfile2);
+
         if (!pe[i].read_error)
             ok( ret ||
-                broken(!ret && GetLastError() == 0xdeadbeef), /* Win9x, WinME */
+                broken(!ret && GetLastError() == 0xdeadbeef),
                 "%d: GetPrivateProfileString failed with error %u\n", i, GetLastError() );
         else
             ok( !ret, "%d: GetPrivateProfileString succeeded\n", i );

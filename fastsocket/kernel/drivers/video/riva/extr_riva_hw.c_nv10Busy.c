@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int FifoEmptyCount; int /*<<< orphan*/ * PGRAPH; TYPE_1__* Rop; } ;
-struct TYPE_4__ {int /*<<< orphan*/  FifoFree; } ;
-typedef  TYPE_2__ RIVA_HW_INST ;
 
-/* Variables and functions */
- int NV_RD32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int FifoEmptyCount; int * PGRAPH; TYPE_1__* Rop; } ;
+struct TYPE_4__ {int FifoFree; } ;
+typedef TYPE_2__ RIVA_HW_INST ;
+
+
+ int NV_RD32 (int *,int ) ;
 
 __attribute__((used)) static int nv10Busy
 (
@@ -25,5 +25,5 @@ __attribute__((used)) static int nv10Busy
 )
 {
     return ((NV_RD32(&chip->Rop->FifoFree, 0) < chip->FifoEmptyCount) ||
-	    NV_RD32(&chip->PGRAPH[0x00000700/4], 0) & 0x01);
+     NV_RD32(&chip->PGRAPH[0x00000700/4], 0) & 0x01);
 }

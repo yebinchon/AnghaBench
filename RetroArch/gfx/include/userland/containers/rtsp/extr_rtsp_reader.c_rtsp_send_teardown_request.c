@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {char* control_uri; int /*<<< orphan*/  session_header; } ;
-typedef  TYPE_2__ VC_CONTAINER_TRACK_MODULE_T ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_10__ {char* control_uri; int session_header; } ;
+typedef TYPE_2__ VC_CONTAINER_TRACK_MODULE_T ;
 struct TYPE_11__ {TYPE_1__* priv; } ;
-typedef  TYPE_3__ VC_CONTAINER_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
-struct TYPE_12__ {char* comms_buffer; int /*<<< orphan*/  cseq_value; } ;
-typedef  TYPE_4__ VC_CONTAINER_MODULE_T ;
+typedef TYPE_3__ VC_CONTAINER_T ;
+typedef int VC_CONTAINER_STATUS_T ;
+struct TYPE_12__ {char* comms_buffer; int cseq_value; } ;
+typedef TYPE_4__ VC_CONTAINER_MODULE_T ;
 struct TYPE_9__ {TYPE_4__* module; } ;
 
-/* Variables and functions */
- int COMMS_BUFFER_SIZE ; 
- int /*<<< orphan*/  LOG_ERROR (TYPE_3__*,char*,scalar_t__,scalar_t__) ; 
- char* RTSP_REQUEST_LINE_FORMAT ; 
- scalar_t__ RTSP_URI_LENGTH_MAX ; 
- char* SESSION_HEADER_FORMAT ; 
- int /*<<< orphan*/  TEARDOWN_METHOD ; 
- char* TRAILING_HEADERS_FORMAT ; 
- int /*<<< orphan*/  VC_CONTAINER_ERROR_URI_OPEN_FAILED ; 
- int /*<<< orphan*/  rtsp_send (TYPE_3__*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int /*<<< orphan*/ ,...) ; 
- scalar_t__ strlen (char*) ; 
- int /*<<< orphan*/  vc_container_assert (int) ; 
+
+ int COMMS_BUFFER_SIZE ;
+ int LOG_ERROR (TYPE_3__*,char*,scalar_t__,scalar_t__) ;
+ char* RTSP_REQUEST_LINE_FORMAT ;
+ scalar_t__ RTSP_URI_LENGTH_MAX ;
+ char* SESSION_HEADER_FORMAT ;
+ int TEARDOWN_METHOD ;
+ char* TRAILING_HEADERS_FORMAT ;
+ int VC_CONTAINER_ERROR_URI_OPEN_FAILED ;
+ int rtsp_send (TYPE_3__*) ;
+ int snprintf (char*,int,char*,int ,...) ;
+ scalar_t__ strlen (char*) ;
+ int vc_container_assert (int) ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T rtsp_send_teardown_request( VC_CONTAINER_T *p_ctx,
       VC_CONTAINER_TRACK_MODULE_T *t_module )

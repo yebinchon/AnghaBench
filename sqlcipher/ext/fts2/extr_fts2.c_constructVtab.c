@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int sqlite3_vtab ;
 struct TYPE_9__ {int (* xCreate ) (int,char const* const*,TYPE_4__**) ;} ;
-typedef  TYPE_1__ sqlite3_tokenizer_module ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_10__ {int nPendingData; int /*<<< orphan*/  base; int /*<<< orphan*/  pFulltextStatements; scalar_t__ azColumn; int /*<<< orphan*/  nColumn; TYPE_4__* pTokenizer; scalar_t__ azContentColumn; int /*<<< orphan*/  zName; int /*<<< orphan*/  zDb; int /*<<< orphan*/ * db; } ;
-typedef  TYPE_2__ fulltext_vtab ;
-typedef  int /*<<< orphan*/  fts2Hash ;
-struct TYPE_11__ {char** azTokenizer; int /*<<< orphan*/  zName; scalar_t__ azColumn; scalar_t__ azContentColumn; int /*<<< orphan*/  nColumn; int /*<<< orphan*/  zDb; } ;
-typedef  TYPE_3__ TableSpec ;
+typedef TYPE_1__ sqlite3_tokenizer_module ;
+typedef int sqlite3 ;
+struct TYPE_10__ {int nPendingData; int base; int pFulltextStatements; scalar_t__ azColumn; int nColumn; TYPE_4__* pTokenizer; scalar_t__ azContentColumn; int zName; int zDb; int * db; } ;
+typedef TYPE_2__ fulltext_vtab ;
+typedef int fts2Hash ;
+struct TYPE_11__ {char** azTokenizer; int zName; scalar_t__ azColumn; scalar_t__ azContentColumn; int nColumn; int zDb; } ;
+typedef TYPE_3__ TableSpec ;
 struct TYPE_12__ {TYPE_1__ const* pModule; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLEAR (TYPE_2__*) ; 
- int SQLITE_ERROR ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- char* fulltextSchema (int /*<<< orphan*/ ,char const* const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fulltext_vtab_destroy (TYPE_2__*) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ sqlite3Fts2HashFind (int /*<<< orphan*/ *,char const*,int) ; 
- int sqlite3_declare_vtab (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- scalar_t__ sqlite3_malloc (int) ; 
- char* sqlite3_mprintf (char*,char*) ; 
- int strlen (char const*) ; 
- int stub1 (int,char const* const*,TYPE_4__**) ; 
- int stub2 (int,char const* const*,TYPE_4__**) ; 
+
+ int CLEAR (TYPE_2__*) ;
+ int SQLITE_ERROR ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int TRACE (char*) ;
+ char* fulltextSchema (int ,char const* const*,int ) ;
+ int fulltext_vtab_destroy (TYPE_2__*) ;
+ int memset (int ,int ,int) ;
+ scalar_t__ sqlite3Fts2HashFind (int *,char const*,int) ;
+ int sqlite3_declare_vtab (int *,char*) ;
+ int sqlite3_free (char*) ;
+ scalar_t__ sqlite3_malloc (int) ;
+ char* sqlite3_mprintf (char*,char*) ;
+ int strlen (char const*) ;
+ int stub1 (int,char const* const*,TYPE_4__**) ;
+ int stub2 (int,char const* const*,TYPE_4__**) ;
 
 __attribute__((used)) static int constructVtab(
-  sqlite3 *db,              /* The SQLite database connection */
-  fts2Hash *pHash,          /* Hash table containing tokenizers */
-  TableSpec *spec,          /* Parsed spec information from parseSpec() */
-  sqlite3_vtab **ppVTab,    /* Write the resulting vtab structure here */
-  char **pzErr              /* Write any error message here */
+  sqlite3 *db,
+  fts2Hash *pHash,
+  TableSpec *spec,
+  sqlite3_vtab **ppVTab,
+  char **pzErr
 ){
   int rc;
   int n;
   fulltext_vtab *v = 0;
-  const sqlite3_tokenizer_module *m = NULL;
+  const sqlite3_tokenizer_module *m = ((void*)0);
   char *schema;
 
-  char const *zTok;         /* Name of tokenizer to use for this fts table */
-  int nTok;                 /* Length of zTok, including nul terminator */
+  char const *zTok;
+  int nTok;
 
   v = (fulltext_vtab *) sqlite3_malloc(sizeof(fulltext_vtab));
   if( v==0 ) return SQLITE_NOMEM;
   CLEAR(v);
-  /* sqlite will initialize v->base */
+
   v->db = db;
-  v->zDb = spec->zDb;       /* Freed when azColumn is freed */
-  v->zName = spec->zName;   /* Freed when azColumn is freed */
+  v->zDb = spec->zDb;
+  v->zName = spec->zName;
   v->nColumn = spec->nColumn;
   v->azContentColumn = spec->azContentColumn;
   spec->azContentColumn = 0;
@@ -76,7 +76,7 @@ __attribute__((used)) static int constructVtab(
     return SQLITE_NOMEM;
   }
 
-  zTok = spec->azTokenizer[0]; 
+  zTok = spec->azTokenizer[0];
   if( !zTok ){
     zTok = "simple";
   }
@@ -99,7 +99,7 @@ __attribute__((used)) static int constructVtab(
   if( rc!=SQLITE_OK ) goto err;
   v->pTokenizer->pModule = m;
 
-  /* TODO: verify the existence of backing tables foo_content, foo_term */
+
 
   schema = fulltextSchema(v->nColumn, (const char*const*)v->azColumn,
                           spec->zName);
@@ -109,7 +109,7 @@ __attribute__((used)) static int constructVtab(
 
   memset(v->pFulltextStatements, 0, sizeof(v->pFulltextStatements));
 
-  /* Indicate that the buffer is not live. */
+
   v->nPendingData = -1;
 
   *ppVTab = &v->base;

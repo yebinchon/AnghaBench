@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_3__* fsap_data; } ;
-typedef  TYPE_1__ svn_fs_t ;
-struct TYPE_7__ {int /*<<< orphan*/  log_addressing; int /*<<< orphan*/  min_unpacked_rev; int /*<<< orphan*/  shard_size; int /*<<< orphan*/  fs_type; } ;
-typedef  TYPE_2__ svn_fs_fsfs_info_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_8__ {int /*<<< orphan*/  use_log_addressing; int /*<<< orphan*/  min_unpacked_rev; int /*<<< orphan*/  max_files_per_dir; } ;
-typedef  TYPE_3__ fs_fs_data_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_fs_t ;
+struct TYPE_7__ {int log_addressing; int min_unpacked_rev; int shard_size; int fs_type; } ;
+typedef TYPE_2__ svn_fs_fsfs_info_t ;
+typedef int svn_error_t ;
+struct TYPE_8__ {int use_log_addressing; int min_unpacked_rev; int max_files_per_dir; } ;
+typedef TYPE_3__ fs_fs_data_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_FS_TYPE_FSFS ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- TYPE_2__* apr_palloc (int /*<<< orphan*/ *,int) ; 
+
+ int SVN_FS_TYPE_FSFS ;
+ int * SVN_NO_ERROR ;
+ TYPE_2__* apr_palloc (int *,int) ;
 
 __attribute__((used)) static svn_error_t *
 fs_info(const void **fsfs_info,

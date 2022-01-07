@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct conn {int redis; int client; int /*<<< orphan*/  (* ref ) (struct conn*,void*) ;int /*<<< orphan*/ * swallow_msg; int /*<<< orphan*/ * post_connect; int /*<<< orphan*/  dequeue_outq; int /*<<< orphan*/  enqueue_outq; int /*<<< orphan*/ * dequeue_inq; int /*<<< orphan*/ * enqueue_inq; int /*<<< orphan*/  unref; int /*<<< orphan*/  active; int /*<<< orphan*/  close; int /*<<< orphan*/  send_done; int /*<<< orphan*/  send_next; void* send; int /*<<< orphan*/  recv_done; int /*<<< orphan*/  recv_next; void* recv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_VVERB ; 
- struct conn* _conn_get () ; 
- int /*<<< orphan*/  client_active ; 
- int /*<<< orphan*/  client_close ; 
- int /*<<< orphan*/  client_ref (struct conn*,void*) ; 
- int /*<<< orphan*/  client_unref ; 
- int /*<<< orphan*/  log_debug (int /*<<< orphan*/ ,char*,struct conn*,int) ; 
- int /*<<< orphan*/ * memcache_post_connect ; 
- int /*<<< orphan*/ * memcache_swallow_msg ; 
- void* msg_recv ; 
- void* msg_send ; 
- int /*<<< orphan*/  ncurr_cconn ; 
- int /*<<< orphan*/ * redis_post_connect ; 
- int /*<<< orphan*/ * redis_swallow_msg ; 
- int /*<<< orphan*/  req_client_dequeue_omsgq ; 
- int /*<<< orphan*/  req_client_enqueue_omsgq ; 
- int /*<<< orphan*/  req_recv_done ; 
- int /*<<< orphan*/  req_recv_next ; 
- int /*<<< orphan*/  req_send_done ; 
- int /*<<< orphan*/  req_send_next ; 
- int /*<<< orphan*/ * req_server_dequeue_imsgq ; 
- int /*<<< orphan*/  req_server_dequeue_omsgq ; 
- int /*<<< orphan*/ * req_server_enqueue_imsgq ; 
- int /*<<< orphan*/  req_server_enqueue_omsgq ; 
- int /*<<< orphan*/  rsp_recv_done ; 
- int /*<<< orphan*/  rsp_recv_next ; 
- int /*<<< orphan*/  rsp_send_done ; 
- int /*<<< orphan*/  rsp_send_next ; 
- int /*<<< orphan*/  server_active ; 
- int /*<<< orphan*/  server_close ; 
- int /*<<< orphan*/  server_ref (struct conn*,void*) ; 
- int /*<<< orphan*/  server_unref ; 
- int /*<<< orphan*/  stub1 (struct conn*,void*) ; 
+
+
+
+struct conn {int redis; int client; int (* ref ) (struct conn*,void*) ;int * swallow_msg; int * post_connect; int dequeue_outq; int enqueue_outq; int * dequeue_inq; int * enqueue_inq; int unref; int active; int close; int send_done; int send_next; void* send; int recv_done; int recv_next; void* recv; } ;
+
+
+ int LOG_VVERB ;
+ struct conn* _conn_get () ;
+ int client_active ;
+ int client_close ;
+ int client_ref (struct conn*,void*) ;
+ int client_unref ;
+ int log_debug (int ,char*,struct conn*,int) ;
+ int * memcache_post_connect ;
+ int * memcache_swallow_msg ;
+ void* msg_recv ;
+ void* msg_send ;
+ int ncurr_cconn ;
+ int * redis_post_connect ;
+ int * redis_swallow_msg ;
+ int req_client_dequeue_omsgq ;
+ int req_client_enqueue_omsgq ;
+ int req_recv_done ;
+ int req_recv_next ;
+ int req_send_done ;
+ int req_send_next ;
+ int * req_server_dequeue_imsgq ;
+ int req_server_dequeue_omsgq ;
+ int * req_server_enqueue_imsgq ;
+ int req_server_enqueue_omsgq ;
+ int rsp_recv_done ;
+ int rsp_recv_next ;
+ int rsp_send_done ;
+ int rsp_send_next ;
+ int server_active ;
+ int server_close ;
+ int server_ref (struct conn*,void*) ;
+ int server_unref ;
+ int stub1 (struct conn*,void*) ;
 
 struct conn *
 conn_get(void *owner, bool client, bool redis)
@@ -53,20 +53,20 @@ conn_get(void *owner, bool client, bool redis)
     struct conn *conn;
 
     conn = _conn_get();
-    if (conn == NULL) {
-        return NULL;
+    if (conn == ((void*)0)) {
+        return ((void*)0);
     }
 
-    /* connection either handles redis or memcache messages */
+
     conn->redis = redis ? 1 : 0;
 
     conn->client = client ? 1 : 0;
 
     if (conn->client) {
-        /*
-         * client receives a request, possibly parsing it, and sends a
-         * response downstream.
-         */
+
+
+
+
         conn->recv = msg_recv;
         conn->recv_next = req_recv_next;
         conn->recv_done = req_recv_done;
@@ -81,19 +81,19 @@ conn_get(void *owner, bool client, bool redis)
         conn->ref = client_ref;
         conn->unref = client_unref;
 
-        conn->enqueue_inq = NULL;
-        conn->dequeue_inq = NULL;
+        conn->enqueue_inq = ((void*)0);
+        conn->dequeue_inq = ((void*)0);
         conn->enqueue_outq = req_client_enqueue_omsgq;
         conn->dequeue_outq = req_client_dequeue_omsgq;
-        conn->post_connect = NULL;
-        conn->swallow_msg = NULL;
+        conn->post_connect = ((void*)0);
+        conn->swallow_msg = ((void*)0);
 
         ncurr_cconn++;
     } else {
-        /*
-         * server receives a response, possibly parsing it, and sends a
-         * request upstream.
-         */
+
+
+
+
         conn->recv = msg_recv;
         conn->recv_next = rsp_recv_next;
         conn->recv_done = rsp_recv_done;

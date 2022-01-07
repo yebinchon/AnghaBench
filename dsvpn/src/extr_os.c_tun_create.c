@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ifreq {int ifr_flags; char* ifr_name; } ;
 
-/* Variables and functions */
- int IFF_NO_PI ; 
- int IFF_TUN ; 
- int /*<<< orphan*/  IFNAMSIZ ; 
- int /*<<< orphan*/  O_RDWR ; 
- int /*<<< orphan*/  TUNSETIFF ; 
- int /*<<< orphan*/  close (int) ; 
- int errno ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ ioctl (int,int /*<<< orphan*/ ,struct ifreq*) ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (char*,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int IFF_NO_PI ;
+ int IFF_TUN ;
+ int IFNAMSIZ ;
+ int O_RDWR ;
+ int TUNSETIFF ;
+ int close (int) ;
+ int errno ;
+ int fprintf (int ,char*) ;
+ scalar_t__ ioctl (int,int ,struct ifreq*) ;
+ int open (char*,int ) ;
+ int snprintf (char*,int ,char*,char*) ;
+ int stderr ;
 
 int tun_create(char if_name[IFNAMSIZ], const char *wanted_name)
 {
     struct ifreq ifr;
-    int          fd;
-    int          err;
+    int fd;
+    int err;
 
     fd = open("/dev/net/tun", O_RDWR);
     if (fd == -1) {
@@ -38,7 +38,7 @@ int tun_create(char if_name[IFNAMSIZ], const char *wanted_name)
         return -1;
     }
     ifr.ifr_flags = IFF_TUN | IFF_NO_PI;
-    snprintf(ifr.ifr_name, IFNAMSIZ, "%s", wanted_name == NULL ? "" : wanted_name);
+    snprintf(ifr.ifr_name, IFNAMSIZ, "%s", wanted_name == ((void*)0) ? "" : wanted_name);
     if (ioctl(fd, TUNSETIFF, &ifr) != 0) {
         err = errno;
         (void) close(fd);

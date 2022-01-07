@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct msg_part {scalar_t__ refcnt; struct msg_part* next; TYPE_1__* part; } ;
 struct TYPE_2__ {int refcnt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free_msg_buffer (TYPE_1__*) ; 
- int /*<<< orphan*/  free_msg_part (struct msg_part*) ; 
+
+ int assert (int) ;
+ int free_msg_buffer (TYPE_1__*) ;
+ int free_msg_part (struct msg_part*) ;
 
 __attribute__((used)) static int msg_part_decref (struct msg_part *mp) {
   struct msg_part *mpn;
@@ -37,7 +37,7 @@ __attribute__((used)) static int msg_part_decref (struct msg_part *mp) {
     mpn = mp->next;
     mp->part = 0;
     mp->next = 0;
-    free_msg_part (mp); // for now, msg_part is always malloc'd
+    free_msg_part (mp);
     mp = mpn;
   }
   return cnt;

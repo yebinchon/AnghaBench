@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct net_buf {int /*<<< orphan*/  node; int /*<<< orphan*/  flags; struct net_buf* frags; } ;
-typedef  struct net_buf sys_slist_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NET_BUF_ASSERT (struct net_buf*) ; 
- int /*<<< orphan*/  NET_BUF_FRAGS ; 
- unsigned int bt_mesh_irq_lock () ; 
- int /*<<< orphan*/  bt_mesh_irq_unlock (unsigned int) ; 
- int /*<<< orphan*/  sys_slist_append_list (struct net_buf*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct net_buf {int node; int flags; struct net_buf* frags; } ;
+typedef struct net_buf sys_slist_t ;
+
+
+ int NET_BUF_ASSERT (struct net_buf*) ;
+ int NET_BUF_FRAGS ;
+ unsigned int bt_mesh_irq_lock () ;
+ int bt_mesh_irq_unlock (unsigned int) ;
+ int sys_slist_append_list (struct net_buf*,int *,int *) ;
 
 void net_buf_slist_put(sys_slist_t *list, struct net_buf *buf)
 {

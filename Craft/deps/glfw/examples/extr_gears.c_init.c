@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  float GLfloat ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_AMBIENT_AND_DIFFUSE ; 
- int /*<<< orphan*/  GL_COMPILE ; 
- int /*<<< orphan*/  GL_CULL_FACE ; 
- int /*<<< orphan*/  GL_DEPTH_TEST ; 
- int /*<<< orphan*/  GL_FRONT ; 
- int /*<<< orphan*/  GL_LIGHT0 ; 
- int /*<<< orphan*/  GL_LIGHTING ; 
- int /*<<< orphan*/  GL_NORMALIZE ; 
- int /*<<< orphan*/  GL_POSITION ; 
- int /*<<< orphan*/  gear (float,float,float,int,float) ; 
- int /*<<< orphan*/  gear1 ; 
- int /*<<< orphan*/  gear2 ; 
- int /*<<< orphan*/  gear3 ; 
- int /*<<< orphan*/  glEnable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glEndList () ; 
- int /*<<< orphan*/  glGenLists (int) ; 
- int /*<<< orphan*/  glLightfv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,float*) ; 
- int /*<<< orphan*/  glMaterialfv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,float*) ; 
- int /*<<< orphan*/  glNewList (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef float GLfloat ;
+
+
+ int GL_AMBIENT_AND_DIFFUSE ;
+ int GL_COMPILE ;
+ int GL_CULL_FACE ;
+ int GL_DEPTH_TEST ;
+ int GL_FRONT ;
+ int GL_LIGHT0 ;
+ int GL_LIGHTING ;
+ int GL_NORMALIZE ;
+ int GL_POSITION ;
+ int gear (float,float,float,int,float) ;
+ int gear1 ;
+ int gear2 ;
+ int gear3 ;
+ int glEnable (int ) ;
+ int glEndList () ;
+ int glGenLists (int) ;
+ int glLightfv (int ,int ,float*) ;
+ int glMaterialfv (int ,int ,float*) ;
+ int glNewList (int ,int ) ;
 
 __attribute__((used)) static void init(void)
 {
@@ -46,7 +46,7 @@ __attribute__((used)) static void init(void)
   glEnable(GL_LIGHT0);
   glEnable(GL_DEPTH_TEST);
 
-  /* make the gears */
+
   gear1 = glGenLists(1);
   glNewList(gear1, GL_COMPILE);
   glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, red);

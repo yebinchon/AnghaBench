@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Condition ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONDITION_NULL ; 
- int /*<<< orphan*/  LIST_PREPEND (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  LOG_WARNING ; 
- int /*<<< orphan*/  assert (void*) ; 
- int /*<<< orphan*/ * condition_free_list (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * condition_new (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  conditions ; 
- scalar_t__ isempty (char const*) ; 
- int log_oom () ; 
- int /*<<< orphan*/  log_syntax (char const*,int /*<<< orphan*/ ,char const*,unsigned int,int,char*,char const*) ; 
- int parse_boolean (char const*) ; 
+
+
+
+typedef int Condition ;
+
+
+ int CONDITION_NULL ;
+ int LIST_PREPEND (int ,int *,int *) ;
+ int LOG_ERR ;
+ int LOG_WARNING ;
+ int assert (void*) ;
+ int * condition_free_list (int *) ;
+ int * condition_new (int ,int *,int,int) ;
+ int conditions ;
+ scalar_t__ isempty (char const*) ;
+ int log_oom () ;
+ int log_syntax (char const*,int ,char const*,unsigned int,int,char*,char const*) ;
+ int parse_boolean (char const*) ;
 
 int config_parse_unit_condition_null(
                 const char *unit,
@@ -50,7 +50,7 @@ int config_parse_unit_condition_null(
         log_syntax(unit, LOG_WARNING, filename, line, 0, "%s= is deprecated, please do not use.", lvalue);
 
         if (isempty(rvalue)) {
-                /* Empty assignment resets the list */
+
                 *list = condition_free_list(*list);
                 return 0;
         }
@@ -72,7 +72,7 @@ int config_parse_unit_condition_null(
         if (!b)
                 negate = !negate;
 
-        c = condition_new(CONDITION_NULL, NULL, trigger, negate);
+        c = condition_new(CONDITION_NULL, ((void*)0), trigger, negate);
         if (!c)
                 return log_oom();
 

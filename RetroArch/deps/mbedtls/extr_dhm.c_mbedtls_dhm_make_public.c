@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {size_t len; int /*<<< orphan*/  GX; int /*<<< orphan*/  P; int /*<<< orphan*/  RP; int /*<<< orphan*/  X; int /*<<< orphan*/  G; } ;
-typedef  TYPE_1__ mbedtls_dhm_context ;
 
-/* Variables and functions */
- int MBEDTLS_ERR_DHM_BAD_INPUT_DATA ; 
- int MBEDTLS_ERR_DHM_MAKE_PUBLIC_FAILED ; 
- int /*<<< orphan*/  MBEDTLS_MPI_CHK (int /*<<< orphan*/ ) ; 
- int dhm_check_range (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ mbedtls_mpi_cmp_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ mbedtls_mpi_cmp_mpi (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_mpi_exp_mod (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_mpi_fill_random (int /*<<< orphan*/ *,int,int (*) (void*,unsigned char*,size_t),void*) ; 
- int /*<<< orphan*/  mbedtls_mpi_shift_r (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mbedtls_mpi_write_binary (int /*<<< orphan*/ *,unsigned char*,size_t) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {size_t len; int GX; int P; int RP; int X; int G; } ;
+typedef TYPE_1__ mbedtls_dhm_context ;
+
+
+ int MBEDTLS_ERR_DHM_BAD_INPUT_DATA ;
+ int MBEDTLS_ERR_DHM_MAKE_PUBLIC_FAILED ;
+ int MBEDTLS_MPI_CHK (int ) ;
+ int dhm_check_range (int *,int *) ;
+ scalar_t__ mbedtls_mpi_cmp_int (int *,int ) ;
+ scalar_t__ mbedtls_mpi_cmp_mpi (int *,int *) ;
+ int mbedtls_mpi_exp_mod (int *,int *,int *,int *,int *) ;
+ int mbedtls_mpi_fill_random (int *,int,int (*) (void*,unsigned char*,size_t),void*) ;
+ int mbedtls_mpi_shift_r (int *,int) ;
+ int mbedtls_mpi_write_binary (int *,unsigned char*,size_t) ;
 
 int mbedtls_dhm_make_public( mbedtls_dhm_context *ctx, int x_size,
                      unsigned char *output, size_t olen,
@@ -33,15 +33,15 @@ int mbedtls_dhm_make_public( mbedtls_dhm_context *ctx, int x_size,
 {
     int ret, count = 0;
 
-    if( ctx == NULL || olen < 1 || olen > ctx->len )
+    if( ctx == ((void*)0) || olen < 1 || olen > ctx->len )
         return( MBEDTLS_ERR_DHM_BAD_INPUT_DATA );
 
     if( mbedtls_mpi_cmp_int( &ctx->P, 0 ) == 0 )
         return( MBEDTLS_ERR_DHM_BAD_INPUT_DATA );
 
-    /*
-     * generate X and calculate GX = G^X mod P
-     */
+
+
+
     do
     {
         MBEDTLS_MPI_CHK( mbedtls_mpi_fill_random( &ctx->X, x_size, f_rng, p_rng ) );

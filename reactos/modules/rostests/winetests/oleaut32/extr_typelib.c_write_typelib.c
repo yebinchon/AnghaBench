@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPCSTR ;
-typedef  scalar_t__ HRSRC ;
-typedef  scalar_t__ HANDLE ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CREATE_ALWAYS ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFileA (char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ FindResourceA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int GENERIC_READ ; 
- int GENERIC_WRITE ; 
- int /*<<< orphan*/  GetModuleHandleA (int /*<<< orphan*/ *) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  LoadResource (int /*<<< orphan*/ ,scalar_t__) ; 
- void* LockResource (int /*<<< orphan*/ ) ; 
- scalar_t__ MAKEINTRESOURCE (int) ; 
- scalar_t__ SizeofResource (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  WriteFile (scalar_t__,void*,scalar_t__,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
+
+
+
+typedef int LPCSTR ;
+typedef scalar_t__ HRSRC ;
+typedef scalar_t__ HANDLE ;
+typedef scalar_t__ DWORD ;
+
+
+ int CREATE_ALWAYS ;
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFileA (char const*,int,int ,int *,int ,int ,int ) ;
+ scalar_t__ FindResourceA (int ,int ,char*) ;
+ int GENERIC_READ ;
+ int GENERIC_WRITE ;
+ int GetModuleHandleA (int *) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int LoadResource (int ,scalar_t__) ;
+ void* LockResource (int ) ;
+ scalar_t__ MAKEINTRESOURCE (int) ;
+ scalar_t__ SizeofResource (int ,scalar_t__) ;
+ int WriteFile (scalar_t__,void*,scalar_t__,scalar_t__*,int *) ;
+ int ok (int,char*) ;
 
 __attribute__((used)) static void write_typelib(int res_no, const char *filename)
 {
@@ -38,13 +38,13 @@ __attribute__((used)) static void write_typelib(int res_no, const char *filename
     HRSRC res;
     void *ptr;
 
-    file = CreateFileA( filename, GENERIC_READ|GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, 0, 0 );
+    file = CreateFileA( filename, GENERIC_READ|GENERIC_WRITE, 0, ((void*)0), CREATE_ALWAYS, 0, 0 );
     ok( file != INVALID_HANDLE_VALUE, "file creation failed\n" );
     if (file == INVALID_HANDLE_VALUE) return;
-    res = FindResourceA( GetModuleHandleA(NULL), (LPCSTR)MAKEINTRESOURCE(res_no), "TYPELIB" );
+    res = FindResourceA( GetModuleHandleA(((void*)0)), (LPCSTR)MAKEINTRESOURCE(res_no), "TYPELIB" );
     ok( res != 0, "couldn't find resource\n" );
-    ptr = LockResource( LoadResource( GetModuleHandleA(NULL), res ));
-    WriteFile( file, ptr, SizeofResource( GetModuleHandleA(NULL), res ), &written, NULL );
-    ok( written == SizeofResource( GetModuleHandleA(NULL), res ), "couldn't write resource\n" );
+    ptr = LockResource( LoadResource( GetModuleHandleA(((void*)0)), res ));
+    WriteFile( file, ptr, SizeofResource( GetModuleHandleA(((void*)0)), res ), &written, ((void*)0) );
+    ok( written == SizeofResource( GetModuleHandleA(((void*)0)), res ), "couldn't write resource\n" );
     CloseHandle( file );
 }

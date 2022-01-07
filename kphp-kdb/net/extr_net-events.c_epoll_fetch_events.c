@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int fd; int /*<<< orphan*/  timestamp; int /*<<< orphan*/  epoll_ready; int /*<<< orphan*/  ready; } ;
-typedef  TYPE_2__ event_t ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int fd; int timestamp; int epoll_ready; int ready; } ;
+typedef TYPE_2__ event_t ;
 struct TYPE_7__ {int fd; } ;
-struct TYPE_9__ {int /*<<< orphan*/  events; TYPE_1__ data; } ;
+struct TYPE_9__ {int events; TYPE_1__ data; } ;
 
-/* Variables and functions */
- scalar_t__ EINTR ; 
- TYPE_2__* Events ; 
- int MAX_EVENTS ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  epoll_fd ; 
- int /*<<< orphan*/  epoll_unconv_flags (int /*<<< orphan*/ ) ; 
- int epoll_wait (int /*<<< orphan*/ ,TYPE_4__*,int,int) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  ev_timestamp ; 
- int /*<<< orphan*/  kprintf (char*,int /*<<< orphan*/ ,int) ; 
- TYPE_4__* new_ev_list ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  put_event_into_heap (TYPE_2__*) ; 
- int verbosity ; 
+
+ scalar_t__ EINTR ;
+ TYPE_2__* Events ;
+ int MAX_EVENTS ;
+ int assert (int) ;
+ int epoll_fd ;
+ int epoll_unconv_flags (int ) ;
+ int epoll_wait (int ,TYPE_4__*,int,int) ;
+ scalar_t__ errno ;
+ int ev_timestamp ;
+ int kprintf (char*,int ,int) ;
+ TYPE_4__* new_ev_list ;
+ int perror (char*) ;
+ int put_event_into_heap (TYPE_2__*) ;
+ int verbosity ;
 
 int epoll_fetch_events (int timeout) {
   int fd, i;

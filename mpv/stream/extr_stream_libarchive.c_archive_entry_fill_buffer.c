@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct priv {TYPE_2__* mpa; } ;
 struct TYPE_6__ {struct priv* priv; } ;
-typedef  TYPE_1__ stream_t ;
-typedef  int /*<<< orphan*/  locale_t ;
-struct TYPE_7__ {int /*<<< orphan*/  arch; int /*<<< orphan*/  locale; } ;
+typedef TYPE_1__ stream_t ;
+typedef int locale_t ;
+struct TYPE_7__ {int arch; int locale; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_ERR (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  archive_error_string (int /*<<< orphan*/ ) ; 
- int archive_read_data (int /*<<< orphan*/ ,void*,int) ; 
- scalar_t__ mp_archive_check_fatal (TYPE_2__*,int) ; 
- int /*<<< orphan*/  mp_archive_free (TYPE_2__*) ; 
- int /*<<< orphan*/  uselocale (int /*<<< orphan*/ ) ; 
+
+ int MP_ERR (TYPE_1__*,char*,int ) ;
+ int archive_error_string (int ) ;
+ int archive_read_data (int ,void*,int) ;
+ scalar_t__ mp_archive_check_fatal (TYPE_2__*,int) ;
+ int mp_archive_free (TYPE_2__*) ;
+ int uselocale (int ) ;
 
 __attribute__((used)) static int archive_entry_fill_buffer(stream_t *s, void *buffer, int max_len)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static int archive_entry_fill_buffer(stream_t *s, void *bu
         MP_ERR(s, "%s\n", archive_error_string(p->mpa->arch));
         if (mp_archive_check_fatal(p->mpa, r)) {
             mp_archive_free(p->mpa);
-            p->mpa = NULL;
+            p->mpa = ((void*)0);
         }
     }
     uselocale(oldlocale);

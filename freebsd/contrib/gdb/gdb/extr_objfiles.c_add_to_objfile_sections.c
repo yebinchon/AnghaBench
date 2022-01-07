@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct objfile {struct obj_section* sections_end; int /*<<< orphan*/  objfile_obstack; } ;
+
+
+
+
+struct objfile {struct obj_section* sections_end; int objfile_obstack; } ;
 struct obj_section {scalar_t__ addr; scalar_t__ endaddr; scalar_t__ ovly_mapped; struct bfd_section* the_bfd_section; struct objfile* objfile; scalar_t__ offset; } ;
 struct bfd_section {int dummy; } ;
 struct bfd {int dummy; } ;
-typedef  int /*<<< orphan*/  section ;
-typedef  int flagword ;
+typedef int section ;
+typedef int flagword ;
 
-/* Variables and functions */
- int SEC_ALLOC ; 
- int /*<<< orphan*/  TARGET_KEEP_SECTION (struct bfd_section*) ; 
- int bfd_get_section_flags (struct bfd*,struct bfd_section*) ; 
- scalar_t__ bfd_section_size (struct bfd*,struct bfd_section*) ; 
- scalar_t__ bfd_section_vma (struct bfd*,struct bfd_section*) ; 
- int /*<<< orphan*/  obstack_grow (int /*<<< orphan*/ *,char*,int) ; 
+
+ int SEC_ALLOC ;
+ int TARGET_KEEP_SECTION (struct bfd_section*) ;
+ int bfd_get_section_flags (struct bfd*,struct bfd_section*) ;
+ scalar_t__ bfd_section_size (struct bfd*,struct bfd_section*) ;
+ scalar_t__ bfd_section_vma (struct bfd*,struct bfd_section*) ;
+ int obstack_grow (int *,char*,int) ;
 
 __attribute__((used)) static void
 add_to_objfile_sections (struct bfd *abfd, struct bfd_section *asect,
-			 void *objfile_p_char)
+    void *objfile_p_char)
 {
   struct objfile *objfile = (struct objfile *) objfile_p_char;
   struct obj_section section;

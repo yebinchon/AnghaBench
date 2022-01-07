@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {scalar_t__ type; char* ifname; int received_udp_packet_max; int n_failed_udp; char* n_failed_tcp; int /*<<< orphan*/  packet_bad_opt; int /*<<< orphan*/  packet_truncated; int /*<<< orphan*/  packet_rrsig_missing; int /*<<< orphan*/  possible_feature_level; int /*<<< orphan*/  verified_feature_level; struct TYPE_7__* link; } ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  TYPE_1__ DnsServer ;
 
-/* Variables and functions */
- scalar_t__ DNS_SERVER_LINK ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  dns_server_dnssec_supported (TYPE_1__*) ; 
- int /*<<< orphan*/  dns_server_feature_level_to_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dns_server_get_dnssec_mode (TYPE_1__*) ; 
- char* dns_server_string (TYPE_1__*) ; 
- char* dns_server_type_to_string (scalar_t__) ; 
- int /*<<< orphan*/  dnssec_mode_to_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,int,int,char*,char*,char*,char*) ; 
- int /*<<< orphan*/  fputc (char,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stdout ; 
- char* strna (int /*<<< orphan*/ ) ; 
- char* yes_no (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {scalar_t__ type; char* ifname; int received_udp_packet_max; int n_failed_udp; char* n_failed_tcp; int packet_bad_opt; int packet_truncated; int packet_rrsig_missing; int possible_feature_level; int verified_feature_level; struct TYPE_7__* link; } ;
+typedef int FILE ;
+typedef TYPE_1__ DnsServer ;
+
+
+ scalar_t__ DNS_SERVER_LINK ;
+ int assert (TYPE_1__*) ;
+ int dns_server_dnssec_supported (TYPE_1__*) ;
+ int dns_server_feature_level_to_string (int ) ;
+ int dns_server_get_dnssec_mode (TYPE_1__*) ;
+ char* dns_server_string (TYPE_1__*) ;
+ char* dns_server_type_to_string (scalar_t__) ;
+ int dnssec_mode_to_string (int ) ;
+ int fprintf (int *,char*,int,int,char*,char*,char*,char*) ;
+ int fputc (char,int *) ;
+ int fputs (char*,int *) ;
+ int * stdout ;
+ char* strna (int ) ;
+ char* yes_no (int ) ;
 
 void dns_server_dump(DnsServer *s, FILE *f) {
         assert(s);

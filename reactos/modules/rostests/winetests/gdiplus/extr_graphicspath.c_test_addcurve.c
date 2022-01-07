@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {double X; double Y; } ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  TYPE_1__ GpPointF ;
-typedef  int /*<<< orphan*/  GpPath ;
+typedef int GpStatus ;
+typedef TYPE_1__ GpPointF ;
+typedef int GpPath ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FillModeAlternate ; 
- int /*<<< orphan*/  GdipAddPathCurve2 (int /*<<< orphan*/ *,TYPE_1__*,int,double) ; 
- int /*<<< orphan*/  GdipAddPathCurve3 (int /*<<< orphan*/ *,TYPE_1__*,int,int,int,double) ; 
- int /*<<< orphan*/  GdipAddPathLine (int /*<<< orphan*/ *,double,double,double,double) ; 
- int /*<<< orphan*/  GdipCreatePath (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeletePath (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipResetPath (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InvalidParameter ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  addcurve_path ; 
- int /*<<< orphan*/  addcurve_path2 ; 
- int /*<<< orphan*/  addcurve_path3 ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok_path (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ARRAY_SIZE (int ) ;
+ int FALSE ;
+ int FillModeAlternate ;
+ int GdipAddPathCurve2 (int *,TYPE_1__*,int,double) ;
+ int GdipAddPathCurve3 (int *,TYPE_1__*,int,int,int,double) ;
+ int GdipAddPathLine (int *,double,double,double,double) ;
+ int GdipCreatePath (int ,int **) ;
+ int GdipDeletePath (int *) ;
+ int GdipResetPath (int *) ;
+ int InvalidParameter ;
+ int Ok ;
+ int addcurve_path ;
+ int addcurve_path2 ;
+ int addcurve_path3 ;
+ int expect (int ,int ) ;
+ int ok_path (int *,int ,int ,int ) ;
 
 __attribute__((used)) static void test_addcurve(void)
 {
@@ -51,36 +51,36 @@ __attribute__((used)) static void test_addcurve(void)
 
     GdipCreatePath(FillModeAlternate, &path);
 
-    /* NULL args */
-    status = GdipAddPathCurve2(NULL, NULL, 0, 0.0);
+
+    status = GdipAddPathCurve2(((void*)0), ((void*)0), 0, 0.0);
     expect(InvalidParameter, status);
-    status = GdipAddPathCurve2(path, NULL, 0, 0.0);
+    status = GdipAddPathCurve2(path, ((void*)0), 0, 0.0);
     expect(InvalidParameter, status);
     status = GdipAddPathCurve2(path, points, -1, 0.0);
     expect(InvalidParameter, status);
     status = GdipAddPathCurve2(path, points, 1, 1.0);
     expect(InvalidParameter, status);
 
-    /* add to empty path */
+
     status = GdipAddPathCurve2(path, points, 4, 1.0);
     expect(Ok, status);
     ok_path(path, addcurve_path, ARRAY_SIZE(addcurve_path), FALSE);
     GdipDeletePath(path);
 
-    /* add to notempty path and opened figure */
+
     GdipCreatePath(FillModeAlternate, &path);
     GdipAddPathLine(path, 100.0, 120.0, 123.0, 10.0);
     status = GdipAddPathCurve2(path, points, 4, 1.0);
     expect(Ok, status);
     ok_path(path, addcurve_path2, ARRAY_SIZE(addcurve_path2), FALSE);
 
-    /* NULL args */
+
     GdipResetPath(path);
-    status = GdipAddPathCurve3(NULL, NULL, 0, 0, 0, 0.0);
+    status = GdipAddPathCurve3(((void*)0), ((void*)0), 0, 0, 0, 0.0);
     expect(InvalidParameter, status);
-    status = GdipAddPathCurve3(path, NULL, 0, 0, 0, 0.0);
+    status = GdipAddPathCurve3(path, ((void*)0), 0, 0, 0, 0.0);
     expect(InvalidParameter, status);
-    /* wrong count, offset.. */
+
     status = GdipAddPathCurve3(path, points, 0, 0, 0, 0.0);
     expect(InvalidParameter, status);
     status = GdipAddPathCurve3(path, points, 4, 0, 0, 0.0);
@@ -94,7 +94,7 @@ __attribute__((used)) static void test_addcurve(void)
     status = GdipAddPathCurve3(path, points, 4, 3, 1, 0.0);
     expect(InvalidParameter, status);
 
-    /* use all points */
+
     status = GdipAddPathCurve3(path, points, 4, 0, 3, 1.0);
     expect(Ok, status);
     ok_path(path, addcurve_path, ARRAY_SIZE(addcurve_path), FALSE);

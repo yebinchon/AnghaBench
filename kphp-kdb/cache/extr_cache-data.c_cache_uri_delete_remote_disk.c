@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cache_uri {int dummy; } ;
-typedef  int /*<<< orphan*/  cache_disk_filter_t ;
+typedef int cache_disk_filter_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CACHE_MAX_LOCAL_COPIES ; 
- int /*<<< orphan*/ * LC ; 
- int /*<<< orphan*/  cache_local_copy_cpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int cache_local_copy_unpack (struct cache_uri*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  cache_uri_decr_monthly_stats (struct cache_uri*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cache_uri_decr_server_stats (struct cache_uri*,int /*<<< orphan*/ *) ; 
- scalar_t__ cache_uri_local_copy_disk_filter_match (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cache_uri_update_local_copy (struct cache_uri*,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  vkprintf (int,char*,...) ; 
+
+ int CACHE_MAX_LOCAL_COPIES ;
+ int * LC ;
+ int cache_local_copy_cpy (int *,int *) ;
+ int cache_local_copy_unpack (struct cache_uri*,int *,int ,int ,int*) ;
+ int cache_uri_decr_monthly_stats (struct cache_uri*,int *) ;
+ int cache_uri_decr_server_stats (struct cache_uri*,int *) ;
+ scalar_t__ cache_uri_local_copy_disk_filter_match (int *,int *) ;
+ int cache_uri_update_local_copy (struct cache_uri*,int *,int,int) ;
+ int vkprintf (int,char*,...) ;
 
 int cache_uri_delete_remote_disk (struct cache_uri *U, cache_disk_filter_t *F) {
   vkprintf (4, "cache_uri_delete_remote_disk: (U:%p) starting\n", U);
@@ -35,9 +35,9 @@ int cache_uri_delete_remote_disk (struct cache_uri *U, cache_disk_filter_t *F) {
     if (cache_uri_local_copy_disk_filter_match (LC + i, F)) {
       r++;
 
-#ifdef CACHE_FEATURE_MONTHLY_COUNTER_PERF_STATS
-      cache_uri_decr_monthly_stats (U, LC + i);
-#endif
+
+
+
       cache_uri_decr_server_stats (U, LC + i);
 
       n--;

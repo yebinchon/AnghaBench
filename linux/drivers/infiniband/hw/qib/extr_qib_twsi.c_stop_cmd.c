@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct qib_devdata {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TWSI_BUF_WAIT_USEC ; 
- int /*<<< orphan*/  stop_seq (struct qib_devdata*) ; 
- int /*<<< orphan*/  udelay (int /*<<< orphan*/ ) ; 
+
+ int TWSI_BUF_WAIT_USEC ;
+ int stop_seq (struct qib_devdata*) ;
+ int udelay (int ) ;
 
 __attribute__((used)) static void stop_cmd(struct qib_devdata *dd)
 {
-	stop_seq(dd);
-	udelay(TWSI_BUF_WAIT_USEC);
+ stop_seq(dd);
+ udelay(TWSI_BUF_WAIT_USEC);
 }

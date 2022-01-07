@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bfd ;
-typedef  int /*<<< orphan*/  asymbol ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int bfd ;
+typedef int asymbol ;
 struct TYPE_7__ {unsigned char* contents; } ;
-typedef  TYPE_1__ asection ;
-struct TYPE_8__ {int /*<<< orphan*/  bfd_arch; int /*<<< orphan*/  object_target; } ;
+typedef TYPE_1__ asection ;
+struct TYPE_8__ {int bfd_arch; int object_target; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BFD_RELOC_RVA ; 
- int /*<<< orphan*/  BSF_NO_FLAGS ; 
- int /*<<< orphan*/  SEC_HAS_CONTENTS ; 
- int /*<<< orphan*/  U (char*) ; 
- int /*<<< orphan*/  UNDSEC ; 
- int /*<<< orphan*/ * bfd_create (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bfd_find_target (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bfd_make_readable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bfd_make_writable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bfd_object ; 
- int /*<<< orphan*/  bfd_set_arch_mach (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bfd_set_format (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bfd_set_section_contents (int /*<<< orphan*/ *,TYPE_1__*,unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  bfd_set_section_size (int /*<<< orphan*/ *,TYPE_1__*,int) ; 
- int /*<<< orphan*/  bfd_set_symtab (int /*<<< orphan*/ *,void*,scalar_t__) ; 
- TYPE_4__* pe_details ; 
- int /*<<< orphan*/  quick_reloc (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- TYPE_1__* quick_section (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  quick_symbol (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  save_relocs (TYPE_1__*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- scalar_t__ symptr ; 
- void* symtab ; 
- int tmp_seq ; 
- void* xmalloc (int) ; 
+
+ int BFD_RELOC_RVA ;
+ int BSF_NO_FLAGS ;
+ int SEC_HAS_CONTENTS ;
+ int U (char*) ;
+ int UNDSEC ;
+ int * bfd_create (char*,int *) ;
+ int bfd_find_target (int ,int *) ;
+ int bfd_make_readable (int *) ;
+ int bfd_make_writable (int *) ;
+ int bfd_object ;
+ int bfd_set_arch_mach (int *,int ,int ) ;
+ int bfd_set_format (int *,int ) ;
+ int bfd_set_section_contents (int *,TYPE_1__*,unsigned char*,int ,int) ;
+ int bfd_set_section_size (int *,TYPE_1__*,int) ;
+ int bfd_set_symtab (int *,void*,scalar_t__) ;
+ TYPE_4__* pe_details ;
+ int quick_reloc (int *,int ,int ,int) ;
+ TYPE_1__* quick_section (int *,char*,int ,int) ;
+ int quick_symbol (int *,char*,int ,char*,int ,int ,int ) ;
+ int save_relocs (TYPE_1__*) ;
+ int sprintf (char*,char*,int) ;
+ scalar_t__ symptr ;
+ void* symtab ;
+ int tmp_seq ;
+ void* xmalloc (int) ;
 
 __attribute__((used)) static bfd *
 pe_create_runtime_relocator_reference (bfd *parent)
@@ -69,7 +69,7 @@ pe_create_runtime_relocator_reference (bfd *parent)
   extern_rt_rel = quick_section (abfd, ".rdata", SEC_HAS_CONTENTS, 2);
 
   quick_symbol (abfd, "", U ("_pei386_runtime_relocator"), "", UNDSEC,
-		BSF_NO_FLAGS, 0);
+  BSF_NO_FLAGS, 0);
 
   bfd_set_section_size (abfd, extern_rt_rel, 4);
   extern_rt_rel_d = xmalloc (4);

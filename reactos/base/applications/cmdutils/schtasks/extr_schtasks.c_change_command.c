@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  IRegisteredTask ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  IRegisteredTask_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IRegisteredTask_put_Enabled (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  VARIANT_TRUE ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  enable_optW ; 
- int /*<<< orphan*/ * get_registered_task (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  strcmpiW (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tn_optW ; 
- int /*<<< orphan*/  tr_optW ; 
+
+
+
+typedef int WCHAR ;
+typedef int IRegisteredTask ;
+typedef int HRESULT ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ FAILED (int ) ;
+ scalar_t__ FALSE ;
+ int FIXME (char*,...) ;
+ int IRegisteredTask_Release (int *) ;
+ int IRegisteredTask_put_Enabled (int *,int ) ;
+ scalar_t__ TRUE ;
+ int VARIANT_TRUE ;
+ int debugstr_w (int *) ;
+ int enable_optW ;
+ int * get_registered_task (int const*) ;
+ int strcmpiW (int *,int ) ;
+ int tn_optW ;
+ int tr_optW ;
 
 __attribute__((used)) static int change_command(int argc, WCHAR *argv[])
 {
     BOOL have_option = FALSE, enable = FALSE;
-    const WCHAR *task_name = NULL;
+    const WCHAR *task_name = ((void*)0);
     IRegisteredTask *task;
     HRESULT hres;
 

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- char* fgetl (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  pclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * popen (char*,char*) ; 
- int print_game (float*,int /*<<< orphan*/ *) ; 
- int sscanf (char*,char*,char*,float*) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int FILE ;
+
+
+ int fclose (int *) ;
+ char* fgetl (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int free (char*) ;
+ int pclose (int *) ;
+ int * popen (char*,char*) ;
+ int print_game (float*,int *) ;
+ int sscanf (char*,char*,char*,float*) ;
+ int stderr ;
 
 float score_game(float *board)
 {

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  buffer ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int buffer ;
 struct TYPE_7__ {TYPE_1__* codecpar; TYPE_2__* priv_data; } ;
 struct TYPE_6__ {int iframes; int p_per_gop; int pframes; int b_per_i_or_p; int bframes; int first_gop_closed; } ;
 struct TYPE_5__ {int height; scalar_t__ format; scalar_t__ bit_rate; } ;
-typedef  TYPE_2__ GXFStreamContext ;
-typedef  TYPE_3__ AVStream ;
-typedef  int /*<<< orphan*/  AVIOContext ;
+typedef TYPE_2__ GXFStreamContext ;
+typedef TYPE_3__ AVStream ;
+typedef int AVIOContext ;
 
-/* Variables and functions */
- scalar_t__ AV_PIX_FMT_YUV422P ; 
- int TRACK_MPG_AUX ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  avio_w8 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int snprintf (char*,int,char*,float,int,int,int,int,int,int) ; 
+
+ scalar_t__ AV_PIX_FMT_YUV422P ;
+ int TRACK_MPG_AUX ;
+ int av_assert0 (int) ;
+ int avio_w8 (int *,int) ;
+ int avio_write (int *,int *,int) ;
+ int snprintf (char*,int,char*,float,int,int,int,int,int,int) ;
 
 __attribute__((used)) static int gxf_write_mpeg_auxiliary(AVIOContext *pb, AVStream *st)
 {
@@ -46,16 +46,16 @@ __attribute__((used)) static int gxf_write_mpeg_auxiliary(AVIOContext *pb, AVStr
                 sc->b_per_i_or_p++;
         }
         if (sc->p_per_gop > 9)
-            sc->p_per_gop = 9; /* ensure value won't take more than one char */
+            sc->p_per_gop = 9;
         if (sc->b_per_i_or_p > 9)
-            sc->b_per_i_or_p = 9; /* ensure value won't take more than one char */
+            sc->b_per_i_or_p = 9;
     }
     if (st->codecpar->height == 512 || st->codecpar->height == 608)
-        starting_line = 7; // VBI
+        starting_line = 7;
     else if (st->codecpar->height == 480)
         starting_line = 20;
     else
-        starting_line = 23; // default PAL
+        starting_line = 23;
 
     size = snprintf(buffer, sizeof(buffer), "Ver 1\nBr %.6f\nIpg 1\nPpi %d\nBpiop %d\n"
                     "Pix 0\nCf %d\nCg %d\nSl %d\nnl16 %d\nVi 1\nf1 1\n",

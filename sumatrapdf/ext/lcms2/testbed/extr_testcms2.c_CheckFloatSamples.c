@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsToneCurve ;
-typedef  int /*<<< orphan*/  cmsInt32Number ;
-typedef  int cmsFloat32Number ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int StraightLine (int) ; 
- int /*<<< orphan*/  TestCurve (char*,int /*<<< orphan*/ *,int (*) (int)) ; 
- int /*<<< orphan*/ * cmsBuildTabulatedToneCurveFloat (int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/  cmsFreeToneCurve (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int kNumPoints ; 
+
+
+
+typedef int cmsToneCurve ;
+typedef int cmsInt32Number ;
+typedef int cmsFloat32Number ;
+
+
+ int DbgThread () ;
+ int StraightLine (int) ;
+ int TestCurve (char*,int *,int (*) (int)) ;
+ int * cmsBuildTabulatedToneCurveFloat (int *,int,int*) ;
+ int cmsFreeToneCurve (int ,int *) ;
+ int kNumPoints ;
 
 __attribute__((used)) static
 cmsInt32Number CheckFloatSamples(void)
@@ -36,7 +36,7 @@ cmsInt32Number CheckFloatSamples(void)
         y[i] = StraightLine(x);
     }
 
-    curve = cmsBuildTabulatedToneCurveFloat(NULL, kNumPoints, y);
+    curve = cmsBuildTabulatedToneCurveFloat(((void*)0), kNumPoints, y);
     ok = TestCurve( "Float Samples", curve, StraightLine);
     cmsFreeToneCurve(DbgThread(), curve);
 

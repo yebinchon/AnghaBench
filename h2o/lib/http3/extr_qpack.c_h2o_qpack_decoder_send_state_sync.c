@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-struct TYPE_3__ {int /*<<< orphan*/  insert_count; } ;
-typedef  TYPE_1__ h2o_qpack_decoder_t ;
 
-/* Variables and functions */
- scalar_t__* h2o_hpack_encode_int (scalar_t__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+struct TYPE_3__ {int insert_count; } ;
+typedef TYPE_1__ h2o_qpack_decoder_t ;
+
+
+ scalar_t__* h2o_hpack_encode_int (scalar_t__*,int ,int) ;
 
 size_t h2o_qpack_decoder_send_state_sync(h2o_qpack_decoder_t *qpack, uint8_t *outbuf)
 {

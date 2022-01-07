@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tcpname ;
-struct TYPE_11__ {int is_streamed; int /*<<< orphan*/  protocol_blacklist; int /*<<< orphan*/  protocol_whitelist; int /*<<< orphan*/  interrupt_callback; TYPE_2__* priv_data; } ;
-typedef  TYPE_1__ URLContext ;
-struct TYPE_13__ {int header_parsed; int /*<<< orphan*/  mms_hd; int /*<<< orphan*/  stream_num; int /*<<< orphan*/  asf_packet_len; } ;
-struct TYPE_12__ {int packet_id; int header_packet_id; int incoming_flags; int /*<<< orphan*/  host; int /*<<< orphan*/  path; TYPE_3__ mms; } ;
-typedef  TYPE_2__ MMSTContext ;
-typedef  TYPE_3__ MMSContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AVIO_FLAG_READ_WRITE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_TRACE ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  SC_PKT_ASF_HEADER ; 
- int /*<<< orphan*/  SC_PKT_CLIENT_ACCEPTED ; 
- int /*<<< orphan*/  SC_PKT_HEADER_REQUEST_ACCEPTED ; 
- int /*<<< orphan*/  SC_PKT_MEDIA_FILE_DETAILS ; 
- int /*<<< orphan*/  SC_PKT_MEDIA_PKT_FOLLOWS ; 
- int /*<<< orphan*/  SC_PKT_PROTOCOL_ACCEPTED ; 
- int /*<<< orphan*/  SC_PKT_STREAM_ID_ACCEPTED ; 
- int /*<<< orphan*/  SC_PKT_TIMING_TEST_REPLY ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  av_url_split (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int*,int /*<<< orphan*/ ,int,char const*) ; 
- int /*<<< orphan*/  clear_stream_buffers (TYPE_3__*) ; 
- int ff_mms_asf_header_parser (TYPE_3__*) ; 
- int /*<<< orphan*/  ff_url_join (char*,int,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int ffurl_open_whitelist (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  mms_close (TYPE_1__*) ; 
- int mms_safe_send_recv (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * send_media_file_request ; 
- int /*<<< orphan*/ * send_media_header_request ; 
- int /*<<< orphan*/ * send_media_packet_request ; 
- int /*<<< orphan*/ * send_protocol_select ; 
- int /*<<< orphan*/ * send_startup_packet ; 
- int /*<<< orphan*/ * send_stream_selection_request ; 
- int /*<<< orphan*/ * send_time_test_data ; 
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int tcpname ;
+struct TYPE_11__ {int is_streamed; int protocol_blacklist; int protocol_whitelist; int interrupt_callback; TYPE_2__* priv_data; } ;
+typedef TYPE_1__ URLContext ;
+struct TYPE_13__ {int header_parsed; int mms_hd; int stream_num; int asf_packet_len; } ;
+struct TYPE_12__ {int packet_id; int header_packet_id; int incoming_flags; int host; int path; TYPE_3__ mms; } ;
+typedef TYPE_2__ MMSTContext ;
+typedef TYPE_3__ MMSContext ;
+
+
+ int AVERROR (int ) ;
+ int AVIO_FLAG_READ_WRITE ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_TRACE ;
+ int EINVAL ;
+ int SC_PKT_ASF_HEADER ;
+ int SC_PKT_CLIENT_ACCEPTED ;
+ int SC_PKT_HEADER_REQUEST_ACCEPTED ;
+ int SC_PKT_MEDIA_FILE_DETAILS ;
+ int SC_PKT_MEDIA_PKT_FOLLOWS ;
+ int SC_PKT_PROTOCOL_ACCEPTED ;
+ int SC_PKT_STREAM_ID_ACCEPTED ;
+ int SC_PKT_TIMING_TEST_REPLY ;
+ int av_log (TYPE_1__*,int ,char*,...) ;
+ int av_url_split (int *,int ,int *,int ,int ,int,int*,int ,int,char const*) ;
+ int clear_stream_buffers (TYPE_3__*) ;
+ int ff_mms_asf_header_parser (TYPE_3__*) ;
+ int ff_url_join (char*,int,char*,int *,int ,int,int *) ;
+ int ffurl_open_whitelist (int *,char*,int ,int *,int *,int ,int ,TYPE_1__*) ;
+ int mms_close (TYPE_1__*) ;
+ int mms_safe_send_recv (TYPE_2__*,int *,int ) ;
+ int * send_media_file_request ;
+ int * send_media_header_request ;
+ int * send_media_packet_request ;
+ int * send_protocol_select ;
+ int * send_startup_packet ;
+ int * send_stream_selection_request ;
+ int * send_time_test_data ;
 
 __attribute__((used)) static int mms_open(URLContext *h, const char *uri, int flags)
 {
@@ -61,24 +61,24 @@ __attribute__((used)) static int mms_open(URLContext *h, const char *uri, int fl
     h->is_streamed = 1;
     mms = &mmst->mms;
 
-    // only for MMS over TCP, so set proto = NULL
-    av_url_split(NULL, 0, NULL, 0,
+
+    av_url_split(((void*)0), 0, ((void*)0), 0,
             mmst->host, sizeof(mmst->host), &port, mmst->path,
             sizeof(mmst->path), uri);
 
     if(port<0)
-        port = 1755; // default MMS protocol port
+        port = 1755;
 
-    // establish tcp connection.
-    ff_url_join(tcpname, sizeof(tcpname), "tcp", NULL, mmst->host, port, NULL);
+
+    ff_url_join(tcpname, sizeof(tcpname), "tcp", ((void*)0), mmst->host, port, ((void*)0));
     err = ffurl_open_whitelist(&mms->mms_hd, tcpname, AVIO_FLAG_READ_WRITE,
-                               &h->interrupt_callback, NULL,
+                               &h->interrupt_callback, ((void*)0),
                                h->protocol_whitelist, h->protocol_blacklist, h);
     if (err)
         goto fail;
 
-    mmst->packet_id        = 3;          // default, initial value.
-    mmst->header_packet_id = 2;          // default, initial value.
+    mmst->packet_id = 3;
+    mmst->header_packet_id = 2;
     err = mms_safe_send_recv(mmst, send_startup_packet, SC_PKT_CLIENT_ACCEPTED);
     if (err)
         goto fail;
@@ -94,7 +94,7 @@ __attribute__((used)) static int mms_open(URLContext *h, const char *uri, int fl
     err = mms_safe_send_recv(mmst, send_media_header_request, SC_PKT_HEADER_REQUEST_ACCEPTED);
     if (err)
         goto fail;
-    err = mms_safe_send_recv(mmst, NULL, SC_PKT_ASF_HEADER);
+    err = mms_safe_send_recv(mmst, ((void*)0), SC_PKT_ASF_HEADER);
     if (err)
         goto fail;
     if((mmst->incoming_flags != 0X08) && (mmst->incoming_flags != 0X0C)) {
@@ -117,7 +117,7 @@ __attribute__((used)) static int mms_open(URLContext *h, const char *uri, int fl
     err = mms_safe_send_recv(mmst, send_stream_selection_request, SC_PKT_STREAM_ID_ACCEPTED);
     if (err)
         goto fail;
-    // send media packet request
+
     err = mms_safe_send_recv(mmst, send_media_packet_request, SC_PKT_MEDIA_PKT_FOLLOWS);
     if (err) {
         goto fail;

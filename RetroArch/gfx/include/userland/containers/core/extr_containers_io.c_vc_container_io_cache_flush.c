@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_7__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_7__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_13__ {TYPE_1__* priv; } ;
-typedef  TYPE_3__ VC_CONTAINER_IO_T ;
+typedef TYPE_3__ VC_CONTAINER_IO_T ;
 struct TYPE_14__ {size_t position; size_t size; size_t offset; scalar_t__ mem_size; scalar_t__ mem_max_size; scalar_t__ mem; scalar_t__ buffer; scalar_t__ dirty; TYPE_7__* io; } ;
-typedef  TYPE_4__ VC_CONTAINER_IO_PRIVATE_CACHE_T ;
+typedef TYPE_4__ VC_CONTAINER_IO_PRIVATE_CACHE_T ;
 struct TYPE_15__ {scalar_t__ (* pf_seek ) (TYPE_7__*,size_t) ;size_t (* pf_write ) (TYPE_7__*,scalar_t__,size_t) ;TYPE_2__* priv; } ;
 struct TYPE_12__ {size_t actual_offset; } ;
 struct TYPE_11__ {size_t actual_offset; scalar_t__ async_io; } ;
 
-/* Variables and functions */
- int MEM_CACHE_ALIGNMENT ; 
- scalar_t__ VC_CONTAINER_SUCCESS ; 
- scalar_t__ async_io_wait_complete (scalar_t__,TYPE_4__*,int) ; 
- size_t async_io_write (scalar_t__,TYPE_4__*) ; 
- scalar_t__ stub1 (TYPE_7__*,size_t) ; 
- size_t stub2 (TYPE_7__*,scalar_t__,size_t) ; 
+
+ int MEM_CACHE_ALIGNMENT ;
+ scalar_t__ VC_CONTAINER_SUCCESS ;
+ scalar_t__ async_io_wait_complete (scalar_t__,TYPE_4__*,int) ;
+ size_t async_io_write (scalar_t__,TYPE_4__*) ;
+ scalar_t__ stub1 (TYPE_7__*,size_t) ;
+ size_t stub2 (TYPE_7__*,scalar_t__,size_t) ;
 
 __attribute__((used)) static size_t vc_container_io_cache_flush( VC_CONTAINER_IO_T *p_ctx,
    VC_CONTAINER_IO_PRIVATE_CACHE_T *cache, int complete )

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
 struct TYPE_14__ {TYPE_3__* pLibInfo; TYPE_2__* pTblDir; } ;
-struct TYPE_13__ {int offset; int /*<<< orphan*/  entry; int /*<<< orphan*/ * str; } ;
-struct TYPE_12__ {int /*<<< orphan*/  string_list; } ;
-struct TYPE_10__ {int length; int /*<<< orphan*/  offset; } ;
+struct TYPE_13__ {int offset; int entry; int * str; } ;
+struct TYPE_12__ {int string_list; } ;
+struct TYPE_10__ {int length; int offset; } ;
 struct TYPE_11__ {TYPE_1__ pStringtab; } ;
-typedef  TYPE_4__ TLBString ;
-typedef  TYPE_5__ TLBContext ;
-typedef  int INT16 ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_4__ TLBString ;
+typedef TYPE_5__ TLBContext ;
+typedef int INT16 ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  DO_NOT_SEEK ; 
- int /*<<< orphan*/  E_UNEXPECTED ; 
- int MB_ERR_INVALID_CHARS ; 
- int MB_PRECOMPOSED ; 
- int /*<<< orphan*/  MSFT_Read (char*,int,TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MSFT_ReadLEWords (int*,int,TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MSFT_Seek (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int MultiByteToWideChar (int /*<<< orphan*/ ,int,char*,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/ * SysAllocStringByteLen (int /*<<< orphan*/ *,int) ; 
- void* heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (char*) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int CP_ACP ;
+ int DO_NOT_SEEK ;
+ int E_UNEXPECTED ;
+ int MB_ERR_INVALID_CHARS ;
+ int MB_PRECOMPOSED ;
+ int MSFT_Read (char*,int,TYPE_5__*,int ) ;
+ int MSFT_ReadLEWords (int*,int,TYPE_5__*,int ) ;
+ int MSFT_Seek (TYPE_5__*,int ) ;
+ int MultiByteToWideChar (int ,int,char*,int,int *,int) ;
+ int S_OK ;
+ int * SysAllocStringByteLen (int *,int) ;
+ void* heap_alloc (int) ;
+ int heap_free (char*) ;
+ int list_add_tail (int *,int *) ;
 
 __attribute__((used)) static HRESULT MSFT_ReadAllStrings(TLBContext *pcx)
 {
@@ -67,7 +67,7 @@ __attribute__((used)) static HRESULT MSFT_ReadAllStrings(TLBContext *pcx)
         string[len_str] = '\0';
 
         lengthInChars = MultiByteToWideChar(CP_ACP, MB_PRECOMPOSED | MB_ERR_INVALID_CHARS,
-                                            string, -1, NULL, 0);
+                                            string, -1, ((void*)0), 0);
         if (!lengthInChars) {
             heap_free(string);
             return E_UNEXPECTED;
@@ -76,7 +76,7 @@ __attribute__((used)) static HRESULT MSFT_ReadAllStrings(TLBContext *pcx)
         tlbstr = heap_alloc(sizeof(TLBString));
 
         tlbstr->offset = offs;
-        tlbstr->str = SysAllocStringByteLen(NULL, lengthInChars * sizeof(WCHAR));
+        tlbstr->str = SysAllocStringByteLen(((void*)0), lengthInChars * sizeof(WCHAR));
         MultiByteToWideChar(CP_ACP, MB_PRECOMPOSED, string, -1, tlbstr->str, lengthInChars);
 
         heap_free(string);

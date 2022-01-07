@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct priv {int data_length; int /*<<< orphan*/  fp; scalar_t__ waveheader; } ;
+
+
+
+
+struct priv {int data_length; int fp; scalar_t__ waveheader; } ;
 struct ao {struct priv* priv; } ;
-typedef  int /*<<< orphan*/  HANDLE ;
+typedef int HANDLE ;
 
-/* Variables and functions */
- scalar_t__ FILE_TYPE_DISK ; 
- scalar_t__ GetFileType (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MP_ERR (struct ao*,char*) ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  _fileno (int /*<<< orphan*/ ) ; 
- scalar_t__ _get_osfhandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ ) ; 
- scalar_t__ fseek (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_wave_header (struct ao*,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ FILE_TYPE_DISK ;
+ scalar_t__ GetFileType (int ) ;
+ int MP_ERR (struct ao*,char*) ;
+ int SEEK_SET ;
+ int _fileno (int ) ;
+ scalar_t__ _get_osfhandle (int ) ;
+ int fclose (int ) ;
+ scalar_t__ fseek (int ,int ,int ) ;
+ int write_wave_header (struct ao*,int ,int) ;
 
 __attribute__((used)) static void uninit(struct ao *ao)
 {
     struct priv *priv = ao->priv;
 
-    if (priv->waveheader) {    // Rewrite wave header
-        bool broken_seek = false;
-#ifdef __MINGW32__
-        // Windows, in its usual idiocy "emulates" seeks on pipes so it always
-        // looks like they work. So we have to detect them brute-force.
-        broken_seek = FILE_TYPE_DISK !=
-            GetFileType((HANDLE)_get_osfhandle(_fileno(priv->fp)));
-#endif
+    if (priv->waveheader) {
+        bool broken_seek = 0;
+
+
+
+
+
+
         if (broken_seek || fseek(priv->fp, 0, SEEK_SET) != 0)
             MP_ERR(ao, "Could not seek to start, WAV size headers not updated!\n");
         else {

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  v8i16 ;
-typedef  scalar_t__ v16u8 ;
-typedef  int /*<<< orphan*/  v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  int8_t ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DOTP_SB2_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DOTP_SB4_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPADD_SB2_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPADD_SB4_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LD_SB4 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LD_SH (int /*<<< orphan*/  const*) ; 
- scalar_t__ LD_UB (int /*<<< orphan*/ *) ; 
- scalar_t__ PCKEV_XORI128_UB (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SAT_SH2_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SAT_SH4_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SPLATI_H4_SB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SRARI_H2_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SRARI_H4_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ST_D4 (scalar_t__,scalar_t__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ST_W4 (scalar_t__,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  VSHF_B2_SB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XORI_B4_128_SB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ff_hevc_mask_arr ; 
+
+
+
+typedef int v8i16 ;
+typedef scalar_t__ v16u8 ;
+typedef int v16i8 ;
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int int8_t ;
+typedef int int32_t ;
+
+
+ int DOTP_SB2_SH (int ,int ,int ,int ,int ,int ) ;
+ int DOTP_SB4_SH (int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int DPADD_SB2_SH (int ,int ,int ,int ,int ,int ) ;
+ int DPADD_SB4_SH (int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int LD_SB4 (int *,int,int ,int ,int ,int ) ;
+ int LD_SH (int const*) ;
+ scalar_t__ LD_UB (int *) ;
+ scalar_t__ PCKEV_XORI128_UB (int ,int ) ;
+ int SAT_SH2_SH (int ,int ,int) ;
+ int SAT_SH4_SH (int ,int ,int ,int ,int) ;
+ int SPLATI_H4_SB (int ,int ,int,int,int,int ,int ,int ,int ) ;
+ int SRARI_H2_SH (int ,int ,int) ;
+ int SRARI_H4_SH (int ,int ,int ,int ,int) ;
+ int ST_D4 (scalar_t__,scalar_t__,int ,int,int ,int,int *,int) ;
+ int ST_W4 (scalar_t__,int ,int,int,int,int *,int) ;
+ int VSHF_B2_SB (int ,int ,int ,int ,scalar_t__,scalar_t__,int ,int ) ;
+ int XORI_B4_128_SB (int ,int ,int ,int ) ;
+ int * ff_hevc_mask_arr ;
 
 __attribute__((used)) static void common_hz_8t_12w_msa(uint8_t *src, int32_t src_stride,
                                  uint8_t *dst, int32_t dst_stride,
@@ -55,7 +55,7 @@ __attribute__((used)) static void common_hz_8t_12w_msa(uint8_t *src, int32_t src
 
     src = src - 3;
 
-    /* rearranging filter */
+
     filt = LD_SH(filter);
     SPLATI_H4_SB(filt, 0, 1, 2, 3, filt0, filt1, filt2, filt3);
 
@@ -67,9 +67,9 @@ __attribute__((used)) static void common_hz_8t_12w_msa(uint8_t *src, int32_t src
     mask6 = mask0 + 6;
 
     for (loop_cnt = 4; loop_cnt--;) {
-        /* 8 width */
+
         LD_SB4(src, src_stride, src0, src1, src2, src3);
-        /* 4 width */
+
         LD_SB4(src + 8, src_stride, src4, src5, src6, src7);
 
         XORI_B4_128_SB(src0, src1, src2, src3);
@@ -93,7 +93,7 @@ __attribute__((used)) static void common_hz_8t_12w_msa(uint8_t *src, int32_t src
         DPADD_SB4_SH(vec4, vec5, vec6, vec7, filt3, filt3, filt3, filt3, out0,
                      out1, out2, out3);
 
-        /* 4 width */
+
         VSHF_B2_SB(src4, src5, src6, src7, mask0, mask0, vec0, vec1);
         DOTP_SB2_SH(vec0, vec1, filt0, filt0, out4, out5);
         VSHF_B2_SB(src4, src5, src6, src7, mask4, mask4, vec2, vec3);

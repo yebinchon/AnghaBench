@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CHEATTYPE_BYTEWRITE ; 
- int /*<<< orphan*/  CHEATTYPE_ENABLE ; 
- int /*<<< orphan*/  CHEATTYPE_WORDWRITE ; 
- int CheatAddCode (int /*<<< orphan*/ ,unsigned long,unsigned short) ; 
- int /*<<< orphan*/  sscanf (char const*,char*,unsigned long*,unsigned short*) ; 
+ int CHEATTYPE_BYTEWRITE ;
+ int CHEATTYPE_ENABLE ;
+ int CHEATTYPE_WORDWRITE ;
+ int CheatAddCode (int ,unsigned long,unsigned short) ;
+ int sscanf (char const*,char*,unsigned long*,unsigned short*) ;
 
 int CheatAddARCode(const char *code)
 {
@@ -26,7 +18,7 @@ int CheatAddARCode(const char *code)
    switch (addr >> 28)
    {
       case 0x0:
-         // One time word write(fix me)
+
          return -1;
       case 0x1:
          return CheatAddCode(CHEATTYPE_WORDWRITE, addr & 0x0FFFFFFF, val);

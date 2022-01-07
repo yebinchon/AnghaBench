@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SIOCATMARK ; 
- int _ioctl (int,int /*<<< orphan*/ ,int*) ; 
+ int SIOCATMARK ;
+ int _ioctl (int,int ,int*) ;
 
 int sockatmark(int s)
 {
-	int atmark;
+ int atmark;
 
-	if (_ioctl(s, SIOCATMARK, &atmark) == -1)
-		return -1;
-	return atmark;
+ if (_ioctl(s, SIOCATMARK, &atmark) == -1)
+  return -1;
+ return atmark;
 }

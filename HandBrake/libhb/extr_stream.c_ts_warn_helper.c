@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
-typedef  int /*<<< orphan*/  msg ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int va_list ;
+typedef int msg ;
 struct TYPE_3__ {int errors; int frames; int last_error_frame; int last_error_count; } ;
-typedef  TYPE_1__ hb_stream_t ;
+typedef TYPE_1__ hb_stream_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hb_log (char*,int,...) ; 
- int /*<<< orphan*/  vsnprintf (char*,int,char*,int /*<<< orphan*/ ) ; 
+
+ int hb_log (char*,int,...) ;
+ int vsnprintf (char*,int,char*,int ) ;
 
 __attribute__((used)) static void ts_warn_helper( hb_stream_t *stream, char *log, va_list args )
 {
-    // limit error printing to at most one per minute of video (at 30fps)
+
     ++stream->errors;
     if ( stream->frames - stream->last_error_frame >= 30*60 )
     {

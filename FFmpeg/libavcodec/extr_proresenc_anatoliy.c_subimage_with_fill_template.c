@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
 
-/* Variables and functions */
- int FFMIN (unsigned int,unsigned int) ; 
+
+
+
+typedef int uint16_t ;
+
+
+ int FFMIN (unsigned int,unsigned int) ;
 
 __attribute__((used)) static inline void subimage_with_fill_template(uint16_t *src, unsigned x, unsigned y,
                                                unsigned stride, unsigned width, unsigned height, uint16_t *dst,
@@ -29,7 +29,7 @@ __attribute__((used)) static inline void subimage_with_fill_template(uint16_t *s
         src += y * src_stride + x;
         box_height = FFMIN(height - y, dst_height);
     } else {
-        src_stride = stride; /* 2 lines stride */
+        src_stride = stride;
         src += y * src_stride + x;
         box_height = FFMIN(height/2 - y, dst_height);
         if (!is_top_field)
@@ -41,13 +41,13 @@ __attribute__((used)) static inline void subimage_with_fill_template(uint16_t *s
             if (!is_alpha_plane) {
                 dst[j] = src[j];
             } else {
-                dst[j] = src[j] << 6; /* alpha 10b to 16b */
+                dst[j] = src[j] << 6;
             }
         }
         if (!is_alpha_plane) {
             last_pix = dst[j - 1];
         } else {
-            last_pix = dst[j - 1] << 6; /* alpha 10b to 16b */
+            last_pix = dst[j - 1] << 6;
         }
         for (; j < dst_width; j++)
             dst[j] = last_pix;

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  urlcache_header ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int urlcache_header ;
 struct hash_entry {scalar_t__ offset; } ;
 struct TYPE_4__ {scalar_t__ signature; } ;
 struct TYPE_5__ {char const* url_off; int header_info_off; int header_info_size; int cache_entry_type; char const* local_name_off; TYPE_1__ header; } ;
-typedef  TYPE_2__ entry_url ;
-typedef  int /*<<< orphan*/  cache_container ;
-typedef  int LPCSTR ;
-typedef  scalar_t__ LPBYTE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_2__ entry_url ;
+typedef int cache_container ;
+typedef int LPCSTR ;
+typedef scalar_t__ LPBYTE ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int ERROR_FILE_NOT_FOUND ; 
- int ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int GET_INSTALLED_ENTRY ; 
- int INSTALLED_CACHE_ENTRY ; 
- int /*<<< orphan*/  MIN_BLOCK_NO ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  TRACE (char*,int,...) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ URL_SIGNATURE ; 
- int /*<<< orphan*/  WARN (char*,int) ; 
- int /*<<< orphan*/ * cache_container_lock_index (int /*<<< orphan*/ *) ; 
- int cache_container_open_index (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cache_container_unlock_index (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int cache_containers_find (char const*,int /*<<< orphan*/ **) ; 
- int debugstr_a (char const*) ; 
- int debugstr_an (int,int) ; 
- int urlcache_copy_entry (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void*,int*,TYPE_2__ const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  urlcache_find_hash_entry (int /*<<< orphan*/ *,char const*,struct hash_entry**) ; 
+
+ int ERROR_FILE_NOT_FOUND ;
+ int ERROR_SUCCESS ;
+ int FALSE ;
+ int FIXME (char*,int) ;
+ int GET_INSTALLED_ENTRY ;
+ int INSTALLED_CACHE_ENTRY ;
+ int MIN_BLOCK_NO ;
+ int SetLastError (int) ;
+ int TRACE (char*,int,...) ;
+ int TRUE ;
+ scalar_t__ URL_SIGNATURE ;
+ int WARN (char*,int) ;
+ int * cache_container_lock_index (int *) ;
+ int cache_container_open_index (int *,int ) ;
+ int cache_container_unlock_index (int *,int *) ;
+ int cache_containers_find (char const*,int **) ;
+ int debugstr_a (char const*) ;
+ int debugstr_an (int,int) ;
+ int urlcache_copy_entry (int *,int *,void*,int*,TYPE_2__ const*,int ) ;
+ int urlcache_find_hash_entry (int *,char const*,struct hash_entry**) ;
 
 __attribute__((used)) static BOOL urlcache_get_entry_info(const char *url, void *entry_info,
         DWORD *size, DWORD flags, BOOL unicode)

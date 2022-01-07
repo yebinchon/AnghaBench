@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pci_dev {int dummy; } ;
-typedef  int /*<<< orphan*/  pci_ers_result_t ;
+typedef int pci_ers_result_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PCI_ERS_RESULT_DISCONNECT ; 
- int /*<<< orphan*/  PCI_ERS_RESULT_RECOVERED ; 
- int __mlx4_init_one (struct pci_dev*,int /*<<< orphan*/ ) ; 
+
+ int PCI_ERS_RESULT_DISCONNECT ;
+ int PCI_ERS_RESULT_RECOVERED ;
+ int __mlx4_init_one (struct pci_dev*,int ) ;
 
 __attribute__((used)) static pci_ers_result_t mlx4_pci_slot_reset(struct pci_dev *pdev)
 {
-	int ret = __mlx4_init_one(pdev, 0);
+ int ret = __mlx4_init_one(pdev, 0);
 
-	return ret ? PCI_ERS_RESULT_DISCONNECT : PCI_ERS_RESULT_RECOVERED;
+ return ret ? PCI_ERS_RESULT_DISCONNECT : PCI_ERS_RESULT_RECOVERED;
 }

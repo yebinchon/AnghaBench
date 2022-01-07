@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  c; int /*<<< orphan*/  h; int /*<<< orphan*/  w; int /*<<< orphan*/  inputs; int /*<<< orphan*/  batch; } ;
-typedef  TYPE_1__ size_params ;
-typedef  int /*<<< orphan*/  list ;
-struct TYPE_7__ {void* noloss; void* spatial; int /*<<< orphan*/  c; int /*<<< orphan*/  h; int /*<<< orphan*/  w; int /*<<< orphan*/  softmax_tree; void* temperature; } ;
-typedef  TYPE_2__ layer ;
 
-/* Variables and functions */
- TYPE_2__ make_softmax_layer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- void* option_find_float_quiet (int /*<<< orphan*/ *,char*,int) ; 
- void* option_find_int_quiet (int /*<<< orphan*/ *,char*,int) ; 
- char* option_find_str (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  read_tree (char*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int c; int h; int w; int inputs; int batch; } ;
+typedef TYPE_1__ size_params ;
+typedef int list ;
+struct TYPE_7__ {void* noloss; void* spatial; int c; int h; int w; int softmax_tree; void* temperature; } ;
+typedef TYPE_2__ layer ;
+
+
+ TYPE_2__ make_softmax_layer (int ,int ,int) ;
+ void* option_find_float_quiet (int *,char*,int) ;
+ void* option_find_int_quiet (int *,char*,int) ;
+ char* option_find_str (int *,char*,int ) ;
+ int read_tree (char*) ;
 
 layer parse_softmax(list *options, size_params params)
 {
@@ -36,6 +36,6 @@ layer parse_softmax(list *options, size_params params)
     l.h = params.h;
     l.c = params.c;
     l.spatial = option_find_float_quiet(options, "spatial", 0);
-    l.noloss =  option_find_int_quiet(options, "noloss", 0);
+    l.noloss = option_find_int_quiet(options, "noloss", 0);
     return l;
 }

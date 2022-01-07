@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * quirk_list ; 
- int /*<<< orphan*/  quirk_mutex ; 
+ int kfree (int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int * quirk_list ;
+ int quirk_mutex ;
 
 void usb_release_quirk_list(void)
 {
-	mutex_lock(&quirk_mutex);
-	kfree(quirk_list);
-	quirk_list = NULL;
-	mutex_unlock(&quirk_mutex);
+ mutex_lock(&quirk_mutex);
+ kfree(quirk_list);
+ quirk_list = ((void*)0);
+ mutex_unlock(&quirk_mutex);
 }

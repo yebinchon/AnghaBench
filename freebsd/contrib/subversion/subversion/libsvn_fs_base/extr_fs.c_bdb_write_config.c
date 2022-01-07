@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  pool; scalar_t__ config; int /*<<< orphan*/  path; } ;
-typedef  TYPE_1__ svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  dbconfig_options ;
-typedef  int /*<<< orphan*/  dbconfig_contents ;
-typedef  int /*<<< orphan*/  apr_file_t ;
 
-/* Variables and functions */
- int APR_CREATE ; 
- int /*<<< orphan*/  APR_OS_DEFAULT ; 
- int APR_WRITE ; 
- int /*<<< orphan*/  BDB_CONFIG_FILE ; 
- int DB_VERSION_MAJOR ; 
- int DB_VERSION_MINOR ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
-#define  SVN_FS_CONFIG_BDB_LOG_AUTOREMOVE 129 
-#define  SVN_FS_CONFIG_BDB_TXN_NOSYNC 128 
- scalar_t__ strcmp (void*,char*) ; 
- int strlen (char const*) ; 
- char* svn_dirent_join (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* svn_hash_gets (scalar_t__,char const*) ; 
- int /*<<< orphan*/ * svn_io_file_close (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_io_file_open (int /*<<< orphan*/ **,char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_io_file_write_full (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int pool; scalar_t__ config; int path; } ;
+typedef TYPE_1__ svn_fs_t ;
+typedef int svn_error_t ;
+typedef int dbconfig_options ;
+typedef int dbconfig_contents ;
+typedef int apr_file_t ;
+
+
+ int APR_CREATE ;
+ int APR_OS_DEFAULT ;
+ int APR_WRITE ;
+ int BDB_CONFIG_FILE ;
+ int DB_VERSION_MAJOR ;
+ int DB_VERSION_MINOR ;
+ int SVN_ERR (int ) ;
+
+
+ scalar_t__ strcmp (void*,char*) ;
+ int strlen (char const*) ;
+ char* svn_dirent_join (int ,int ,int ) ;
+ void* svn_hash_gets (scalar_t__,char const*) ;
+ int * svn_io_file_close (int *,int ) ;
+ int svn_io_file_open (int **,char const*,int,int ,int ) ;
+ int svn_io_file_write_full (int *,char const*,int,int *,int ) ;
 
 __attribute__((used)) static svn_error_t *
 bdb_write_config(svn_fs_t *fs)
 {
   const char *dbconfig_file_name =
     svn_dirent_join(fs->path, BDB_CONFIG_FILE, fs->pool);
-  apr_file_t *dbconfig_file = NULL;
+  apr_file_t *dbconfig_file = ((void*)0);
   int i;
 
   static const char dbconfig_contents[] =
@@ -92,21 +92,13 @@ bdb_write_config(svn_fs_t *fs)
     "#\n"
     "set_lg_regionmax 131072\n"
     "#\n"
-    /* ### Configure this with "svnadmin create --bdb-cache-size" */
+
     "# The default cache size in BDB is only 256k. As explained in\n"
     "# http://svn.haxx.se/dev/archive-2004-12/0368.shtml, this is too\n"
     "# small for most applications. Bump this number if \"db_stat -m\"\n"
     "# shows too many cache misses.\n"
     "#\n"
     "set_cachesize    0 1048576 1\n";
-
-  /* Run-time configurable options.
-     Each option set consists of a minimum required BDB version, a
-     config hash key, a header, an inactive form and an active
-     form. We always write the header; then, depending on the
-     run-time configuration and the BDB version we're compiling
-     against, we write either the active or inactive form of the
-     value. */
   static const struct
   {
     int bdb_major;
@@ -116,9 +108,9 @@ bdb_write_config(svn_fs_t *fs)
     const char *inactive;
     const char *active;
   } dbconfig_options[] = {
-    /* Controlled by "svnadmin create --bdb-txn-nosync" */
-    { 4, 0, SVN_FS_CONFIG_BDB_TXN_NOSYNC,
-      /* header */
+
+    { 4, 0, 128,
+
       "#\n"
       "# Disable fsync of log files on transaction commit. Read the\n"
       "# documentation about DB_TXN_NOSYNC at:\n"
@@ -127,13 +119,13 @@ bdb_write_config(svn_fs_t *fs)
       "#\n"
       "# [requires Berkeley DB 4.0]\n"
       "#\n",
-      /* inactive */
+
       "#set_flags DB_TXN_NOSYNC\n",
-      /* active */
+
       "set_flags DB_TXN_NOSYNC\n" },
-    /* Controlled by "svnadmin create --bdb-log-keep" */
-    { 4, 2, SVN_FS_CONFIG_BDB_LOG_AUTOREMOVE,
-      /* header */
+
+    { 4, 2, 129,
+
       "#\n"
       "# Enable automatic removal of unused transaction log files.\n"
       "# Read the documentation about DB_LOG_AUTOREMOVE at:\n"
@@ -142,9 +134,9 @@ bdb_write_config(svn_fs_t *fs)
       "#\n"
       "# [requires Berkeley DB 4.2]\n"
       "#\n",
-      /* inactive */
+
       "#set_flags DB_LOG_AUTOREMOVE\n",
-      /* active */
+
       "set_flags DB_LOG_AUTOREMOVE\n" },
   };
   static const int dbconfig_options_length =
@@ -156,13 +148,13 @@ bdb_write_config(svn_fs_t *fs)
                            fs->pool));
 
   SVN_ERR(svn_io_file_write_full(dbconfig_file, dbconfig_contents,
-                                 sizeof(dbconfig_contents) - 1, NULL,
+                                 sizeof(dbconfig_contents) - 1, ((void*)0),
                                  fs->pool));
 
-  /* Write the variable DB_CONFIG flags. */
+
   for (i = 0; i < dbconfig_options_length; ++i)
     {
-      void *value = NULL;
+      void *value = ((void*)0);
       const char *choice;
 
       if (fs->config)
@@ -173,18 +165,18 @@ bdb_write_config(svn_fs_t *fs)
       SVN_ERR(svn_io_file_write_full(dbconfig_file,
                                      dbconfig_options[i].header,
                                      strlen(dbconfig_options[i].header),
-                                     NULL, fs->pool));
+                                     ((void*)0), fs->pool));
 
       if (((DB_VERSION_MAJOR == dbconfig_options[i].bdb_major
             && DB_VERSION_MINOR >= dbconfig_options[i].bdb_minor)
            || DB_VERSION_MAJOR > dbconfig_options[i].bdb_major)
-          && value != NULL && strcmp(value, "0") != 0)
+          && value != ((void*)0) && strcmp(value, "0") != 0)
         choice = dbconfig_options[i].active;
       else
         choice = dbconfig_options[i].inactive;
 
       SVN_ERR(svn_io_file_write_full(dbconfig_file, choice, strlen(choice),
-                                     NULL, fs->pool));
+                                     ((void*)0), fs->pool));
     }
 
   return svn_io_file_close(dbconfig_file, fs->pool);

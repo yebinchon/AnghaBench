@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mpc85xx_gpio_softc {int /*<<< orphan*/ * in_res; int /*<<< orphan*/ * out_res; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GPIO_LOCK_DESTROY (struct mpc85xx_gpio_softc*) ; 
- int /*<<< orphan*/  SYS_RES_MEMORY ; 
- int /*<<< orphan*/  bus_release_resource (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- struct mpc85xx_gpio_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gpiobus_detach_bus (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rman_get_rid (int /*<<< orphan*/ *) ; 
+
+
+
+struct mpc85xx_gpio_softc {int * in_res; int * out_res; } ;
+typedef int device_t ;
+
+
+ int GPIO_LOCK_DESTROY (struct mpc85xx_gpio_softc*) ;
+ int SYS_RES_MEMORY ;
+ int bus_release_resource (int ,int ,int ,int *) ;
+ struct mpc85xx_gpio_softc* device_get_softc (int ) ;
+ int gpiobus_detach_bus (int ) ;
+ int rman_get_rid (int *) ;
 
 __attribute__((used)) static int
 mpc85xx_gpio_detach(device_t dev)
 {
-	struct mpc85xx_gpio_softc *sc = device_get_softc(dev);
+ struct mpc85xx_gpio_softc *sc = device_get_softc(dev);
 
-	gpiobus_detach_bus(dev);
+ gpiobus_detach_bus(dev);
 
-	if (sc->out_res != NULL) {
-		/* Release output port resource. */
-		bus_release_resource(dev, SYS_RES_MEMORY,
-				     rman_get_rid(sc->out_res), sc->out_res);
-	}
+ if (sc->out_res != ((void*)0)) {
 
-	if (sc->in_res != NULL) {
-		/* Release input port resource. */
-		bus_release_resource(dev, SYS_RES_MEMORY,
-				     rman_get_rid(sc->in_res), sc->in_res);
-	}
+  bus_release_resource(dev, SYS_RES_MEMORY,
+         rman_get_rid(sc->out_res), sc->out_res);
+ }
 
-	GPIO_LOCK_DESTROY(sc);
+ if (sc->in_res != ((void*)0)) {
 
-	return (0);
+  bus_release_resource(dev, SYS_RES_MEMORY,
+         rman_get_rid(sc->in_res), sc->in_res);
+ }
+
+ GPIO_LOCK_DESTROY(sc);
+
+ return (0);
 }

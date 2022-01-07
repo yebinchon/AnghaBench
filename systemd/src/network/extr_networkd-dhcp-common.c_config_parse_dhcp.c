@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ AddressFamily ;
 
-/* Variables and functions */
- scalar_t__ ADDRESS_FAMILY_IPV4 ; 
- scalar_t__ ADDRESS_FAMILY_IPV6 ; 
- scalar_t__ ADDRESS_FAMILY_NO ; 
- scalar_t__ ADDRESS_FAMILY_YES ; 
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  LOG_WARNING ; 
- scalar_t__ address_family_from_string (char const*) ; 
- int /*<<< orphan*/  address_family_to_string (scalar_t__) ; 
- int /*<<< orphan*/  assert (void*) ; 
- int /*<<< orphan*/  log_syntax (char const*,int /*<<< orphan*/ ,char const*,unsigned int,int /*<<< orphan*/ ,char*,char const*,...) ; 
- scalar_t__ streq (char const*,char*) ; 
+
+
+
+typedef scalar_t__ AddressFamily ;
+
+
+ scalar_t__ ADDRESS_FAMILY_IPV4 ;
+ scalar_t__ ADDRESS_FAMILY_IPV6 ;
+ scalar_t__ ADDRESS_FAMILY_NO ;
+ scalar_t__ ADDRESS_FAMILY_YES ;
+ int LOG_ERR ;
+ int LOG_WARNING ;
+ scalar_t__ address_family_from_string (char const*) ;
+ int address_family_to_string (scalar_t__) ;
+ int assert (void*) ;
+ int log_syntax (char const*,int ,char const*,unsigned int,int ,char*,char const*,...) ;
+ scalar_t__ streq (char const*,char*) ;
 
 int config_parse_dhcp(
                 const char* unit,
@@ -44,15 +44,15 @@ int config_parse_dhcp(
         assert(rvalue);
         assert(data);
 
-        /* Note that this is mostly like
-         * config_parse_address_family(), except that it
-         * understands some old names for the enum values */
+
+
+
 
         s = address_family_from_string(rvalue);
         if (s < 0) {
 
-                /* Previously, we had a slightly different enum here,
-                 * support its values for compatibility. */
+
+
 
                 if (streq(rvalue, "none"))
                         s = ADDRESS_FAMILY_NO;

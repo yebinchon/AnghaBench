@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  atf_tc_fail_nonfatal (char*) ; 
- int /*<<< orphan*/  equal_arrays (char const* const*,char**) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+ int atf_tc_fail_nonfatal (char*) ;
+ int equal_arrays (char const* const*,char**) ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static
 void
@@ -23,7 +15,7 @@ check_equal_array(const char *const *exp_array, char **actual_array)
     {
         const char *const *exp_ptr;
         printf("Expected arguments:");
-        for (exp_ptr = exp_array; *exp_ptr != NULL; exp_ptr++)
+        for (exp_ptr = exp_array; *exp_ptr != ((void*)0); exp_ptr++)
             printf(" '%s'", *exp_ptr);
         printf("\n");
     }
@@ -31,7 +23,7 @@ check_equal_array(const char *const *exp_array, char **actual_array)
     {
         char **actual_ptr;
         printf("Returned arguments:");
-        for (actual_ptr = actual_array; *actual_ptr != NULL; actual_ptr++)
+        for (actual_ptr = actual_array; *actual_ptr != ((void*)0); actual_ptr++)
             printf(" '%s'", *actual_ptr);
         printf("\n");
     }

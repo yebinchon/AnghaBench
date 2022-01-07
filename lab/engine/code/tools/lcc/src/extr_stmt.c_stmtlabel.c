@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  label; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int label; } ;
 struct TYPE_7__ {TYPE_1__ l; } ;
-struct TYPE_8__ {char src; int defined; TYPE_2__ u; int /*<<< orphan*/  name; int /*<<< orphan*/  scope; } ;
-typedef  TYPE_3__* Symbol ;
+struct TYPE_8__ {char src; int defined; TYPE_2__ u; int name; int scope; } ;
+typedef TYPE_3__* Symbol ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FUNC ; 
- int /*<<< orphan*/  LABELS ; 
- int /*<<< orphan*/  definelab (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  error (char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  expect (char) ; 
- int /*<<< orphan*/  genlabel (int) ; 
- int /*<<< orphan*/  gettok () ; 
- TYPE_3__* install (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_3__* lookup (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char src ; 
- int /*<<< orphan*/  stmtlabs ; 
- int /*<<< orphan*/  t ; 
- int /*<<< orphan*/  token ; 
+
+ int FUNC ;
+ int LABELS ;
+ int definelab (int ) ;
+ int error (char*,int ,char*) ;
+ int expect (char) ;
+ int genlabel (int) ;
+ int gettok () ;
+ TYPE_3__* install (int ,int *,int ,int ) ;
+ TYPE_3__* lookup (int ,int ) ;
+ char src ;
+ int stmtlabs ;
+ int t ;
+ int token ;
 
 __attribute__((used)) static void stmtlabel(void) {
-	Symbol p = lookup(token, stmtlabs);
+ Symbol p = lookup(token, stmtlabs);
 
-	if (p == NULL) {
-		p = install(token, &stmtlabs, 0, FUNC);
-		p->scope = LABELS;
-		p->u.l.label = genlabel(1);
-		p->src = src;
-	}
-	if (p->defined)
-		error("redefinition of label `%s' previously defined at %w\n", p->name, &p->src);
+ if (p == ((void*)0)) {
+  p = install(token, &stmtlabs, 0, FUNC);
+  p->scope = LABELS;
+  p->u.l.label = genlabel(1);
+  p->src = src;
+ }
+ if (p->defined)
+  error("redefinition of label `%s' previously defined at %w\n", p->name, &p->src);
 
-	p->defined = 1;
-	definelab(p->u.l.label);
-	t = gettok();
-	expect(':');
+ p->defined = 1;
+ definelab(p->u.l.label);
+ t = gettok();
+ expect(':');
 }

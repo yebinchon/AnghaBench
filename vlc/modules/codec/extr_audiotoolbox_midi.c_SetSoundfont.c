@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  url ;
-typedef  int /*<<< orphan*/  decoder_t ;
-typedef  int /*<<< orphan*/  UInt8 ;
-typedef  scalar_t__ OSStatus ;
-typedef  int /*<<< orphan*/ * CFURLRef ;
-typedef  int /*<<< orphan*/  AudioUnit ;
 
-/* Variables and functions */
- scalar_t__ AudioUnitSetProperty (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  CFRelease (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CFURLCreateFromFileSystemRepresentation (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int) ; 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  kAudioUnitScope_Global ; 
- int /*<<< orphan*/  kCFAllocatorDefault ; 
- int /*<<< orphan*/  kMusicDeviceProperty_SoundBankURL ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*,scalar_t__) ; 
- scalar_t__ noErr ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int url ;
+typedef int decoder_t ;
+typedef int UInt8 ;
+typedef scalar_t__ OSStatus ;
+typedef int * CFURLRef ;
+typedef int AudioUnit ;
+
+
+ scalar_t__ AudioUnitSetProperty (int ,int ,int ,int ,int **,int) ;
+ int CFRelease (int *) ;
+ int * CFURLCreateFromFileSystemRepresentation (int ,int const*,int ,int) ;
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int kAudioUnitScope_Global ;
+ int kCFAllocatorDefault ;
+ int kMusicDeviceProperty_SoundBankURL ;
+ int msg_Dbg (int *,char*,...) ;
+ int msg_Err (int *,char*,scalar_t__) ;
+ scalar_t__ noErr ;
+ int strlen (char const*) ;
+ scalar_t__ unlikely (int ) ;
 
 __attribute__((used)) static int SetSoundfont(decoder_t *p_dec, AudioUnit synthUnit, const char *sfPath) {
     if (!sfPath) {
@@ -42,8 +42,8 @@ __attribute__((used)) static int SetSoundfont(decoder_t *p_dec, AudioUnit synthU
     msg_Dbg(p_dec, "using custom soundfont: '%s'", sfPath);
     CFURLRef url = CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault,
                                                            (const UInt8 *)sfPath,
-                                                           strlen(sfPath), false);
-    if (unlikely(url == NULL))
+                                                           strlen(sfPath), 0);
+    if (unlikely(url == ((void*)0)))
         return VLC_ENOMEM;
 
     OSStatus status = AudioUnitSetProperty(synthUnit,

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct pasemi_dmachan {int dummy; } ;
-typedef  int /*<<< orphan*/  dma_addr_t ;
-struct TYPE_2__ {int /*<<< orphan*/  dev; } ;
+typedef int dma_addr_t ;
+struct TYPE_2__ {int dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- void* dma_alloc_coherent (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_1__* dma_pdev ; 
+
+ int GFP_KERNEL ;
+ void* dma_alloc_coherent (int *,int,int *,int ) ;
+ TYPE_1__* dma_pdev ;
 
 void *pasemi_dma_alloc_buf(struct pasemi_dmachan *chan, int size,
-			   dma_addr_t *handle)
+      dma_addr_t *handle)
 {
-	return dma_alloc_coherent(&dma_pdev->dev, size, handle, GFP_KERNEL);
+ return dma_alloc_coherent(&dma_pdev->dev, size, handle, GFP_KERNEL);
 }

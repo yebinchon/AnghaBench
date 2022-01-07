@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {char const* abspath; int /*<<< orphan*/  wc_id; int /*<<< orphan*/  sdb; } ;
-typedef  TYPE_1__ svn_wc__db_wcroot_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_checksum_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_time_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STMT_SELECT_NODE_INFO ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_WC_PATH_NOT_FOUND ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  VERIFY_USABLE_WCROOT (TYPE_1__*) ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- scalar_t__ strcmp (char const*,char const*) ; 
- int /*<<< orphan*/  svn_dirent_is_absolute (char const*) ; 
- int /*<<< orphan*/  svn_dirent_is_ancestor (char const*,char const*) ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- char* svn_dirent_skip_ancestor (char const*,char const*) ; 
- int /*<<< orphan*/  svn_error_compose_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  svn_sqlite__bindf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/ * svn_sqlite__column_checksum (int /*<<< orphan*/  const**,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__column_int64 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * svn_sqlite__column_properties (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__get_statement (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__step (scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_wcroot_parse_local_abspath (TYPE_1__**,char const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {char const* abspath; int wc_id; int sdb; } ;
+typedef TYPE_1__ svn_wc__db_wcroot_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_sqlite__stmt_t ;
+typedef int svn_error_t ;
+typedef int svn_checksum_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_time_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int STMT_SELECT_NODE_INFO ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int SVN_ERR_WC_PATH_NOT_FOUND ;
+ int * SVN_NO_ERROR ;
+ int VERIFY_USABLE_WCROOT (TYPE_1__*) ;
+ int _ (char*) ;
+ int * apr_hash_make (int *) ;
+ char* apr_pstrdup (int *,char const*) ;
+ scalar_t__ strcmp (char const*,char const*) ;
+ int svn_dirent_is_absolute (char const*) ;
+ int svn_dirent_is_ancestor (char const*,char const*) ;
+ int svn_dirent_local_style (char const*,int *) ;
+ char* svn_dirent_skip_ancestor (char const*,char const*) ;
+ int svn_error_compose_create (int *,int ) ;
+ int * svn_error_createf (int ,int ,int ,int ,...) ;
+ int svn_sqlite__bindf (int *,char*,int ,char const*) ;
+ int * svn_sqlite__column_checksum (int const**,int *,int,int *) ;
+ int svn_sqlite__column_int64 (int *,int) ;
+ int * svn_sqlite__column_properties (int **,int *,int,int *,int *) ;
+ int svn_sqlite__get_statement (int **,int ,int ) ;
+ int svn_sqlite__reset (int *) ;
+ int svn_sqlite__step (scalar_t__*,int *) ;
+ int svn_wc__db_wcroot_parse_local_abspath (TYPE_1__**,char const**,int *,char const*,int *,int *) ;
 
 svn_error_t *
 svn_wc__db_read_node_install_info(const char **wcroot_abspath,
@@ -62,7 +62,7 @@ svn_wc__db_read_node_install_info(const char **wcroot_abspath,
   svn_wc__db_wcroot_t *wcroot;
   const char *local_relpath;
   svn_sqlite__stmt_t *stmt;
-  svn_error_t *err = NULL;
+  svn_error_t *err = ((void*)0);
   svn_boolean_t have_row;
 
   SVN_ERR_ASSERT(svn_dirent_is_absolute(local_abspath));
@@ -79,7 +79,7 @@ svn_wc__db_read_node_install_info(const char **wcroot_abspath,
     {
       if (!svn_dirent_is_ancestor(wcroot->abspath, local_abspath))
         return svn_error_createf(
-                    SVN_ERR_WC_PATH_NOT_FOUND, NULL,
+                    SVN_ERR_WC_PATH_NOT_FOUND, ((void*)0),
                     _("The node '%s' is not in working copy '%s'"),
                     svn_dirent_local_style(local_abspath, scratch_pool),
                     svn_dirent_local_style(wcroot->abspath, scratch_pool));
@@ -87,7 +87,7 @@ svn_wc__db_read_node_install_info(const char **wcroot_abspath,
       local_relpath = svn_dirent_skip_ancestor(wcroot->abspath, local_abspath);
     }
 
-  if (wcroot_abspath != NULL)
+  if (wcroot_abspath != ((void*)0))
     *wcroot_abspath = apr_pstrdup(result_pool, wcroot->abspath);
 
   SVN_ERR(svn_sqlite__get_statement(&stmt, wcroot->sdb,
@@ -106,8 +106,8 @@ svn_wc__db_read_node_install_info(const char **wcroot_abspath,
         {
           err = svn_sqlite__column_properties(pristine_props, stmt, 14,
                                               result_pool, scratch_pool);
-          /* Null means no props (assuming presence normal or incomplete). */
-          if (*pristine_props == NULL)
+
+          if (*pristine_props == ((void*)0))
             *pristine_props = apr_hash_make(result_pool);
         }
 

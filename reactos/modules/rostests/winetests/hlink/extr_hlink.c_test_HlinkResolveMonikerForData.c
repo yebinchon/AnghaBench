@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IBindCtx ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BindStatusCallback ; 
- int /*<<< orphan*/  BindToStorage ; 
- int /*<<< orphan*/  CHECK_CALLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateBindCtx (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GetDisplayName ; 
- scalar_t__ HlinkResolveMonikerForData (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IBindCtx_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IsSystemMoniker ; 
- int /*<<< orphan*/  Moniker ; 
- int /*<<< orphan*/  SET_EXPECT (int /*<<< orphan*/ ) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/ * _bctx ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
+
+
+
+typedef int IBindCtx ;
+typedef scalar_t__ HRESULT ;
+
+
+ int BindStatusCallback ;
+ int BindToStorage ;
+ int CHECK_CALLED (int ) ;
+ int CreateBindCtx (int ,int **) ;
+ int GetDisplayName ;
+ scalar_t__ HlinkResolveMonikerForData (int *,int ,int *,int ,int *,int *,int *) ;
+ int IBindCtx_Release (int *) ;
+ int IsSystemMoniker ;
+ int Moniker ;
+ int SET_EXPECT (int ) ;
+ scalar_t__ S_OK ;
+ int * _bctx ;
+ int ok (int,char*,scalar_t__) ;
 
 __attribute__((used)) static void test_HlinkResolveMonikerForData(void)
 {
@@ -40,7 +40,7 @@ __attribute__((used)) static void test_HlinkResolveMonikerForData(void)
     SET_EXPECT(GetDisplayName);
     SET_EXPECT(BindToStorage);
 
-    hres = HlinkResolveMonikerForData(&Moniker, 0, bctx, 0, NULL, &BindStatusCallback, NULL);
+    hres = HlinkResolveMonikerForData(&Moniker, 0, bctx, 0, ((void*)0), &BindStatusCallback, ((void*)0));
     ok(hres == S_OK, "HlinkResolveMonikerForData failed: %08x\n", hres);
 
     CHECK_CALLED(IsSystemMoniker);
@@ -48,5 +48,5 @@ __attribute__((used)) static void test_HlinkResolveMonikerForData(void)
     CHECK_CALLED(BindToStorage);
 
     IBindCtx_Release(bctx);
-    _bctx = NULL;
+    _bctx = ((void*)0);
 }

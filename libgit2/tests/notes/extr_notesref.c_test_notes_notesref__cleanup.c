@@ -1,40 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * _cfg ; 
- int /*<<< orphan*/ * _note ; 
- int /*<<< orphan*/ * _repo ; 
- int /*<<< orphan*/ * _sig ; 
- int /*<<< orphan*/  cl_fixture_cleanup (char*) ; 
- int /*<<< orphan*/  git_config_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_note_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_repository_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_signature_free (int /*<<< orphan*/ *) ; 
+ int * _cfg ;
+ int * _note ;
+ int * _repo ;
+ int * _sig ;
+ int cl_fixture_cleanup (char*) ;
+ int git_config_free (int *) ;
+ int git_note_free (int *) ;
+ int git_repository_free (int *) ;
+ int git_signature_free (int *) ;
 
 void test_notes_notesref__cleanup(void)
 {
-	git_note_free(_note);
-	_note = NULL;
+ git_note_free(_note);
+ _note = ((void*)0);
 
-	git_signature_free(_sig);
-	_sig = NULL;
+ git_signature_free(_sig);
+ _sig = ((void*)0);
 
-	git_config_free(_cfg);
-	_cfg = NULL;
+ git_config_free(_cfg);
+ _cfg = ((void*)0);
 
-	git_repository_free(_repo);
-	_repo = NULL;
+ git_repository_free(_repo);
+ _repo = ((void*)0);
 
-	cl_fixture_cleanup("testrepo.git");
+ cl_fixture_cleanup("testrepo.git");
 }

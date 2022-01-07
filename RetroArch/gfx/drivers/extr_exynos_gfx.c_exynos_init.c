@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct exynos_data {scalar_t__ width; scalar_t__ height; float aspect; int num_pages; unsigned int bpp; unsigned int pitch; int size; } ;
 struct TYPE_6__ {scalar_t__ video_fullscreen_x; scalar_t__ video_fullscreen_y; } ;
 struct TYPE_7__ {TYPE_1__ uints; } ;
-typedef  TYPE_2__ settings_t ;
+typedef TYPE_2__ settings_t ;
 struct TYPE_9__ {unsigned int count_modes; TYPE_3__* modes; } ;
 struct TYPE_8__ {scalar_t__ hdisplay; scalar_t__ vdisplay; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RARCH_ERR (char*,...) ; 
- int /*<<< orphan*/  RARCH_LOG (char*,unsigned int,int,unsigned int) ; 
- TYPE_2__* config_get_ptr () ; 
- int /*<<< orphan*/  drm_restore_crtc () ; 
- int /*<<< orphan*/  drm_setup (int /*<<< orphan*/ ) ; 
- TYPE_4__* g_drm_connector ; 
- int /*<<< orphan*/  g_drm_fd ; 
- TYPE_3__* g_drm_mode ; 
+
+ int RARCH_ERR (char*,...) ;
+ int RARCH_LOG (char*,unsigned int,int,unsigned int) ;
+ TYPE_2__* config_get_ptr () ;
+ int drm_restore_crtc () ;
+ int drm_setup (int ) ;
+ TYPE_4__* g_drm_connector ;
+ int g_drm_fd ;
+ TYPE_3__* g_drm_mode ;
 
 __attribute__((used)) static int exynos_init(struct exynos_data *pdata, unsigned bpp)
 {
    unsigned i;
-   settings_t *settings   = config_get_ptr();
+   settings_t *settings = config_get_ptr();
 
    if (settings->uints.video_fullscreen_x != 0 &&
          settings->uints.video_fullscreen_y != 0)
@@ -60,7 +60,7 @@ __attribute__((used)) static int exynos_init(struct exynos_data *pdata, unsigned
    }
    else
    {
-      /* Select first mode, which is the native one. */
+
       g_drm_mode = &g_drm_connector->modes[0];
    }
 
@@ -72,17 +72,17 @@ __attribute__((used)) static int exynos_init(struct exynos_data *pdata, unsigned
 
    drm_setup(g_drm_fd);
 
-   pdata->width      = g_drm_mode->hdisplay;
-   pdata->height     = g_drm_mode->vdisplay;
+   pdata->width = g_drm_mode->hdisplay;
+   pdata->height = g_drm_mode->vdisplay;
 
    pdata->aspect = (float)g_drm_mode->hdisplay / (float)g_drm_mode->vdisplay;
 
-   /* Always use triple buffering to reduce chance of tearing. */
-   pdata->num_pages  = 3;
 
-   pdata->bpp        = bpp;
-   pdata->pitch      = bpp * pdata->width;
-   pdata->size       = pdata->pitch * pdata->height;
+   pdata->num_pages = 3;
+
+   pdata->bpp = bpp;
+   pdata->pitch = bpp * pdata->width;
+   pdata->size = pdata->pitch * pdata->height;
 
    RARCH_LOG("[video_exynos]: selected %ux%u resolution with %u bpp\n",
          pdata->width, pdata->height, pdata->bpp);
@@ -92,7 +92,7 @@ __attribute__((used)) static int exynos_init(struct exynos_data *pdata, unsigned
 fail:
    drm_restore_crtc();
 
-   g_drm_mode         = NULL;
+   g_drm_mode = ((void*)0);
 
    return -1;
 }

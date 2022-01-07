@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct blk_mq_hw_ctx {int /*<<< orphan*/  state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLK_MQ_S_SCHED_RESTART ; 
- int /*<<< orphan*/  set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct blk_mq_hw_ctx {int state; } ;
+
+
+ int BLK_MQ_S_SCHED_RESTART ;
+ int set_bit (int ,int *) ;
+ scalar_t__ test_bit (int ,int *) ;
 
 void blk_mq_sched_mark_restart_hctx(struct blk_mq_hw_ctx *hctx)
 {
-	if (test_bit(BLK_MQ_S_SCHED_RESTART, &hctx->state))
-		return;
+ if (test_bit(BLK_MQ_S_SCHED_RESTART, &hctx->state))
+  return;
 
-	set_bit(BLK_MQ_S_SCHED_RESTART, &hctx->state);
+ set_bit(BLK_MQ_S_SCHED_RESTART, &hctx->state);
 }

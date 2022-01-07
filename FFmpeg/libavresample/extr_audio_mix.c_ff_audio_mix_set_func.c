@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum AVSampleFormat { ____Placeholder_AVSampleFormat } AVSampleFormat ;
-typedef  enum AVMixCoeffType { ____Placeholder_AVMixCoeffType } AVMixCoeffType ;
-typedef  int /*<<< orphan*/  chan_str ;
-struct TYPE_3__ {int fmt; int coeff_type; int in_matrix_channels; int out_matrix_channels; char const* func_descr; int ptr_align; int samples_align; char const* func_descr_generic; int has_optimized_func; int /*<<< orphan*/  avr; void* mix_generic; void* mix; } ;
-typedef  TYPE_1__ AudioMix ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  av_get_sample_fmt_name (int) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/ * coeff_type_names ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,...) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef enum AVSampleFormat { ____Placeholder_AVSampleFormat } AVSampleFormat ;
+typedef enum AVMixCoeffType { ____Placeholder_AVMixCoeffType } AVMixCoeffType ;
+typedef int chan_str ;
+struct TYPE_3__ {int fmt; int coeff_type; int in_matrix_channels; int out_matrix_channels; char const* func_descr; int ptr_align; int samples_align; char const* func_descr_generic; int has_optimized_func; int avr; void* mix_generic; void* mix; } ;
+typedef TYPE_1__ AudioMix ;
+
+
+ int AV_LOG_DEBUG ;
+ int av_get_sample_fmt_name (int) ;
+ int av_log (int ,int ,char*,int ,int ,char*,char const*) ;
+ int * coeff_type_names ;
+ int snprintf (char*,int,char*,...) ;
 
 void ff_audio_mix_set_func(AudioMix *am, enum AVSampleFormat fmt,
                            enum AVMixCoeffType coeff_type, int in_channels,
@@ -30,15 +30,15 @@ void ff_audio_mix_set_func(AudioMix *am, enum AVSampleFormat fmt,
                            const char *descr, void *mix_func)
 {
     if (fmt == am->fmt && coeff_type == am->coeff_type &&
-        ( in_channels ==  am->in_matrix_channels ||  in_channels == 0) &&
+        ( in_channels == am->in_matrix_channels || in_channels == 0) &&
         (out_channels == am->out_matrix_channels || out_channels == 0)) {
         char chan_str[16];
-        am->mix           = mix_func;
-        am->func_descr    = descr;
-        am->ptr_align     = ptr_align;
+        am->mix = mix_func;
+        am->func_descr = descr;
+        am->ptr_align = ptr_align;
         am->samples_align = samples_align;
         if (ptr_align == 1 && samples_align == 1) {
-            am->mix_generic        = mix_func;
+            am->mix_generic = mix_func;
             am->func_descr_generic = descr;
         } else {
             am->has_optimized_func = 1;

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mlx5e_xdpsq {int /*<<< orphan*/ * doorbell_cseg; int /*<<< orphan*/  uar_map; int /*<<< orphan*/  pc; int /*<<< orphan*/  wq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mlx5e_notify_hw (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct mlx5e_xdpsq {int * doorbell_cseg; int uar_map; int pc; int wq; } ;
+
+
+ int mlx5e_notify_hw (int *,int ,int ,int *) ;
 
 __attribute__((used)) static inline void mlx5e_xmit_xdp_doorbell(struct mlx5e_xdpsq *sq)
 {
-	if (sq->doorbell_cseg) {
-		mlx5e_notify_hw(&sq->wq, sq->pc, sq->uar_map, sq->doorbell_cseg);
-		sq->doorbell_cseg = NULL;
-	}
+ if (sq->doorbell_cseg) {
+  mlx5e_notify_hw(&sq->wq, sq->pc, sq->uar_map, sq->doorbell_cseg);
+  sq->doorbell_cseg = ((void*)0);
+ }
 }

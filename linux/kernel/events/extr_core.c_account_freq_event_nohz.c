@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TICK_DEP_BIT_PERF_EVENTS ; 
- int atomic_inc_return (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nr_freq_events ; 
- int /*<<< orphan*/  nr_freq_lock ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tick_nohz_dep_set (int /*<<< orphan*/ ) ; 
+ int TICK_DEP_BIT_PERF_EVENTS ;
+ int atomic_inc_return (int *) ;
+ int nr_freq_events ;
+ int nr_freq_lock ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int tick_nohz_dep_set (int ) ;
 
 __attribute__((used)) static void account_freq_event_nohz(void)
 {
-#ifdef CONFIG_NO_HZ_FULL
-	/* Lock so we don't race with concurrent unaccount */
-	spin_lock(&nr_freq_lock);
-	if (atomic_inc_return(&nr_freq_events) == 1)
-		tick_nohz_dep_set(TICK_DEP_BIT_PERF_EVENTS);
-	spin_unlock(&nr_freq_lock);
-#endif
+
+
+
+
+
+
+
 }

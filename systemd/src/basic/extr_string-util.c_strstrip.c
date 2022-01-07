@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  WHITESPACE ; 
- char* delete_trailing_chars (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  skip_leading_chars (char*,int /*<<< orphan*/ ) ; 
+ int WHITESPACE ;
+ char* delete_trailing_chars (int ,int ) ;
+ int skip_leading_chars (char*,int ) ;
 
 char *strstrip(char *s) {
         if (!s)
-                return NULL;
+                return ((void*)0);
 
-        /* Drops trailing whitespace. Modifies the string in place. Returns pointer to first non-space character */
+
 
         return delete_trailing_chars(skip_leading_chars(s, WHITESPACE), WHITESPACE);
 }

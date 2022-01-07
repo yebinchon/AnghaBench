@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct slabhash {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  hash; } ;
-struct nonce_cache_key {int /*<<< orphan*/  client_publickey; int /*<<< orphan*/  magic_query; int /*<<< orphan*/  nonce; TYPE_1__ entry; } ;
+struct TYPE_2__ {int hash; } ;
+struct nonce_cache_key {int client_publickey; int magic_query; int nonce; TYPE_1__ entry; } ;
 struct lruhash_entry {int dummy; } ;
-typedef  int /*<<< orphan*/  k ;
+typedef int k ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DNSCRYPT_MAGIC_HEADER_LEN ; 
- int /*<<< orphan*/  crypto_box_HALF_NONCEBYTES ; 
- int /*<<< orphan*/  crypto_box_PUBLICKEYBYTES ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct nonce_cache_key*,int /*<<< orphan*/ ,int) ; 
- struct lruhash_entry* slabhash_lookup (struct slabhash*,int /*<<< orphan*/ ,struct nonce_cache_key*,int /*<<< orphan*/ ) ; 
+
+ int DNSCRYPT_MAGIC_HEADER_LEN ;
+ int crypto_box_HALF_NONCEBYTES ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int memcpy (int ,int const*,int ) ;
+ int memset (struct nonce_cache_key*,int ,int) ;
+ struct lruhash_entry* slabhash_lookup (struct slabhash*,int ,struct nonce_cache_key*,int ) ;
 
 __attribute__((used)) static struct lruhash_entry*
 dnsc_nonces_lookup(struct slabhash* cache,

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIT32_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GFX_CTX_FLAGS_BLACK_FRAME_INSERTION ; 
- int /*<<< orphan*/  GFX_CTX_FLAGS_MENU_FRAME_FILTERING ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int BIT32_SET (int ,int ) ;
+ int GFX_CTX_FLAGS_BLACK_FRAME_INSERTION ;
+ int GFX_CTX_FLAGS_MENU_FRAME_FILTERING ;
 
 __attribute__((used)) static uint32_t d3d8_get_flags(void *data)
 {
-   uint32_t             flags = 0;
+   uint32_t flags = 0;
 
    BIT32_SET(flags, GFX_CTX_FLAGS_BLACK_FRAME_INSERTION);
    BIT32_SET(flags, GFX_CTX_FLAGS_MENU_FRAME_FILTERING);

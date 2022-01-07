@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int int64_t ;
 struct TYPE_6__ {double mult; scalar_t__ tc_samples; } ;
-struct TYPE_5__ {double min; double nmin; int min_run; int min_count; double last; scalar_t__ min_non_zero; double max; double nmax; int max_run; int max_count; int zero_runs; double last_non_zero; double sigma_x; double sigma_x2; double avg_sigma_x2; double diff1_sum_x2; scalar_t__ nb_samples; void* min_sigma_x2; void* max_sigma_x2; int /*<<< orphan*/  imask; int /*<<< orphan*/  mask; int /*<<< orphan*/  diff1_sum; void* max_diff; void* min_diff; scalar_t__ max_runs; scalar_t__ min_runs; } ;
-typedef  TYPE_1__ ChannelStats ;
-typedef  TYPE_2__ AudioStatsContext ;
+struct TYPE_5__ {double min; double nmin; int min_run; int min_count; double last; scalar_t__ min_non_zero; double max; double nmax; int max_run; int max_count; int zero_runs; double last_non_zero; double sigma_x; double sigma_x2; double avg_sigma_x2; double diff1_sum_x2; scalar_t__ nb_samples; void* min_sigma_x2; void* max_sigma_x2; int imask; int mask; int diff1_sum; void* max_diff; void* min_diff; scalar_t__ max_runs; scalar_t__ min_runs; } ;
+typedef TYPE_1__ ChannelStats ;
+typedef TYPE_2__ AudioStatsContext ;
 
-/* Variables and functions */
- scalar_t__ FFABS (double) ; 
- void* FFMAX (void*,double) ; 
- void* FFMIN (void*,double) ; 
- scalar_t__ FFSIGN (double) ; 
- double fabs (double) ; 
- int /*<<< orphan*/  isnan (double) ; 
+
+ scalar_t__ FFABS (double) ;
+ void* FFMAX (void*,double) ;
+ void* FFMIN (void*,double) ;
+ scalar_t__ FFSIGN (double) ;
+ double fabs (double) ;
+ int isnan (double) ;
 
 __attribute__((used)) static inline void update_stat(AudioStatsContext *s, ChannelStats *p, double d, double nd, int64_t i)
 {

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fe25519 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fe25519_0 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fe25519_1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fe25519_add (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fe25519_copy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fe25519_cswap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  fe25519_frombytes (int /*<<< orphan*/ ,unsigned char const*) ; 
- int /*<<< orphan*/  fe25519_invert (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fe25519_mul (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fe25519_scalar_product (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  fe25519_sq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fe25519_sub (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fe25519_tobytes (unsigned char*,int /*<<< orphan*/ ) ; 
- scalar_t__ has_small_order (unsigned char const*) ; 
+
+
+
+typedef int fe25519 ;
+
+
+ int fe25519_0 (int ) ;
+ int fe25519_1 (int ) ;
+ int fe25519_add (int ,int ,int ) ;
+ int fe25519_copy (int ,int ) ;
+ int fe25519_cswap (int ,int ,unsigned int) ;
+ int fe25519_frombytes (int ,unsigned char const*) ;
+ int fe25519_invert (int ,int ) ;
+ int fe25519_mul (int ,int ,int ) ;
+ int fe25519_scalar_product (int ,int ,int) ;
+ int fe25519_sq (int ,int ) ;
+ int fe25519_sub (int ,int ,int ) ;
+ int fe25519_tobytes (unsigned char*,int ) ;
+ scalar_t__ has_small_order (unsigned char const*) ;
 
 __attribute__((used)) static int
 crypto_scalarmult_curve25519_ref10(unsigned char *q,
@@ -33,17 +33,17 @@ crypto_scalarmult_curve25519_ref10(unsigned char *q,
                                    const unsigned char *p)
 {
     unsigned char *t = q;
-    unsigned int   i;
-    fe25519        x1;
-    fe25519        x2;
-    fe25519        z2;
-    fe25519        x3;
-    fe25519        z3;
-    fe25519        tmp0;
-    fe25519        tmp1;
-    int            pos;
-    unsigned int   swap;
-    unsigned int   b;
+    unsigned int i;
+    fe25519 x1;
+    fe25519 x2;
+    fe25519 z2;
+    fe25519 x3;
+    fe25519 z3;
+    fe25519 tmp0;
+    fe25519 tmp1;
+    int pos;
+    unsigned int swap;
+    unsigned int b;
 
     if (has_small_order(p)) {
         return -1;

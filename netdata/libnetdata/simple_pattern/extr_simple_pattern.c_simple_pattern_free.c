@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct simple_pattern {int dummy; } ;
-typedef  int /*<<< orphan*/  SIMPLE_PATTERN ;
+typedef int SIMPLE_PATTERN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free_pattern (struct simple_pattern*) ; 
+
+ int free_pattern (struct simple_pattern*) ;
 
 void simple_pattern_free(SIMPLE_PATTERN *list) {
     if(!list) return;

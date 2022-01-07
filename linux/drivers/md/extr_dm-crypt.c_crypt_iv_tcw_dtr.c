@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct iv_tcw_private {int /*<<< orphan*/ * crc32_tfm; int /*<<< orphan*/ * whitening; int /*<<< orphan*/ * iv_seed; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct iv_tcw_private {int * crc32_tfm; int * whitening; int * iv_seed; } ;
 struct TYPE_2__ {struct iv_tcw_private tcw; } ;
 struct crypt_config {TYPE_1__ iv_gen_private; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IS_ERR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  crypto_free_shash (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kzfree (int /*<<< orphan*/ *) ; 
+
+ int IS_ERR (int *) ;
+ int crypto_free_shash (int *) ;
+ int kzfree (int *) ;
 
 __attribute__((used)) static void crypt_iv_tcw_dtr(struct crypt_config *cc)
 {
-	struct iv_tcw_private *tcw = &cc->iv_gen_private.tcw;
+ struct iv_tcw_private *tcw = &cc->iv_gen_private.tcw;
 
-	kzfree(tcw->iv_seed);
-	tcw->iv_seed = NULL;
-	kzfree(tcw->whitening);
-	tcw->whitening = NULL;
+ kzfree(tcw->iv_seed);
+ tcw->iv_seed = ((void*)0);
+ kzfree(tcw->whitening);
+ tcw->whitening = ((void*)0);
 
-	if (tcw->crc32_tfm && !IS_ERR(tcw->crc32_tfm))
-		crypto_free_shash(tcw->crc32_tfm);
-	tcw->crc32_tfm = NULL;
+ if (tcw->crc32_tfm && !IS_ERR(tcw->crc32_tfm))
+  crypto_free_shash(tcw->crc32_tfm);
+ tcw->crc32_tfm = ((void*)0);
 }

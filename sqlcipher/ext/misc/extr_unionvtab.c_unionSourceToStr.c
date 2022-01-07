@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-typedef  int /*<<< orphan*/  UnionTab ;
-struct TYPE_5__ {int /*<<< orphan*/  zDb; int /*<<< orphan*/  zTab; } ;
-typedef  TYPE_1__ UnionSrc ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- scalar_t__ SQLITE_ROW ; 
- int /*<<< orphan*/  SQLITE_STATIC ; 
- int /*<<< orphan*/  sqlite3_bind_text (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_column_text (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  unionFinalize (int*,int /*<<< orphan*/ *,char**) ; 
- int /*<<< orphan*/ * unionGetDb (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int unionIsIntkeyTable (int /*<<< orphan*/ *,TYPE_1__*,char**) ; 
- int /*<<< orphan*/ * unionPrepare (int*,int /*<<< orphan*/ *,char*,char**) ; 
- char* unionStrdup (int*,char const*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
+typedef int UnionTab ;
+struct TYPE_5__ {int zDb; int zTab; } ;
+typedef TYPE_1__ UnionSrc ;
+
+
+ int SQLITE_OK ;
+ scalar_t__ SQLITE_ROW ;
+ int SQLITE_STATIC ;
+ int sqlite3_bind_text (int *,int,int ,int,int ) ;
+ scalar_t__ sqlite3_column_text (int *,int ) ;
+ scalar_t__ sqlite3_step (int *) ;
+ int unionFinalize (int*,int *,char**) ;
+ int * unionGetDb (int *,TYPE_1__*) ;
+ int unionIsIntkeyTable (int *,TYPE_1__*,char**) ;
+ int * unionPrepare (int*,int *,char*,char**) ;
+ char* unionStrdup (int*,char const*) ;
 
 __attribute__((used)) static char *unionSourceToStr(
-  int *pRc,                       /* IN/OUT: Error code */
-  UnionTab *pTab,                 /* Virtual table object */
-  UnionSrc *pSrc,                 /* Source table to test */
-  char **pzErr                    /* OUT: Error message */
+  int *pRc,
+  UnionTab *pTab,
+  UnionSrc *pSrc,
+  char **pzErr
 ){
   char *zRet = 0;
   if( *pRc==SQLITE_OK ){
     sqlite3 *db = unionGetDb(pTab, pSrc);
     int rc = unionIsIntkeyTable(db, pSrc, pzErr);
-    sqlite3_stmt *pStmt = unionPrepare(&rc, db, 
+    sqlite3_stmt *pStmt = unionPrepare(&rc, db,
         "SELECT group_concat(quote(name) || '.' || quote(type)) "
         "FROM pragma_table_info(?, ?)", pzErr
     );

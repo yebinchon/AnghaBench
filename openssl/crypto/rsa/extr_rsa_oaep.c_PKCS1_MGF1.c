@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  md ;
-typedef  int /*<<< orphan*/  EVP_MD_CTX ;
-typedef  int /*<<< orphan*/  EVP_MD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_DigestFinal_ex (int /*<<< orphan*/ *,unsigned char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_DigestInit_ex (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_DigestUpdate (int /*<<< orphan*/ *,unsigned char const*,int) ; 
- int EVP_MAX_MD_SIZE ; 
- int /*<<< orphan*/  EVP_MD_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_MD_CTX_new () ; 
- int EVP_MD_size (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  OPENSSL_cleanse (unsigned char*,int) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,long) ; 
+
+
+
+typedef int md ;
+typedef int EVP_MD_CTX ;
+typedef int EVP_MD ;
+
+
+ int EVP_DigestFinal_ex (int *,unsigned char*,int *) ;
+ int EVP_DigestInit_ex (int *,int const*,int *) ;
+ int EVP_DigestUpdate (int *,unsigned char const*,int) ;
+ int EVP_MAX_MD_SIZE ;
+ int EVP_MD_CTX_free (int *) ;
+ int * EVP_MD_CTX_new () ;
+ int EVP_MD_size (int const*) ;
+ int OPENSSL_cleanse (unsigned char*,int) ;
+ int memcpy (unsigned char*,unsigned char*,long) ;
 
 int PKCS1_MGF1(unsigned char *mask, long len,
                const unsigned char *seed, long seedlen, const EVP_MD *dgst)
@@ -35,29 +35,29 @@ int PKCS1_MGF1(unsigned char *mask, long len,
     int mdlen;
     int rv = -1;
 
-    if (c == NULL)
+    if (c == ((void*)0))
         goto err;
     mdlen = EVP_MD_size(dgst);
     if (mdlen < 0)
         goto err;
-    /* step 4 */
+
     for (i = 0; outlen < len; i++) {
-        /* step 4a: D = I2BS(counter, 4) */
+
         cnt[0] = (unsigned char)((i >> 24) & 255);
         cnt[1] = (unsigned char)((i >> 16) & 255);
         cnt[2] = (unsigned char)((i >> 8)) & 255;
         cnt[3] = (unsigned char)(i & 255);
-        /* step 4b: T =T || hash(mgfSeed || D) */
-        if (!EVP_DigestInit_ex(c, dgst, NULL)
+
+        if (!EVP_DigestInit_ex(c, dgst, ((void*)0))
             || !EVP_DigestUpdate(c, seed, seedlen)
             || !EVP_DigestUpdate(c, cnt, 4))
             goto err;
         if (outlen + mdlen <= len) {
-            if (!EVP_DigestFinal_ex(c, mask + outlen, NULL))
+            if (!EVP_DigestFinal_ex(c, mask + outlen, ((void*)0)))
                 goto err;
             outlen += mdlen;
         } else {
-            if (!EVP_DigestFinal_ex(c, md, NULL))
+            if (!EVP_DigestFinal_ex(c, md, ((void*)0)))
                 goto err;
             memcpy(mask + outlen, md, len - outlen);
             outlen = len;

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ssh_sandbox {int /*<<< orphan*/  child_pid; } ;
-typedef  int /*<<< orphan*/  pid_t ;
 
-/* Variables and functions */
+
+
+
+struct ssh_sandbox {int child_pid; } ;
+typedef int pid_t ;
+
+
 
 void
 ssh_sandbox_parent_preauth(struct ssh_sandbox *box, pid_t child_pid)
 {
-	box->child_pid = child_pid;
+ box->child_pid = child_pid;
 }

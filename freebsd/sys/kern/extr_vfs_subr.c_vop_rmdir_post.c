@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vop_rmdir_args {int /*<<< orphan*/  a_vp; int /*<<< orphan*/  a_dvp; } ;
 
-/* Variables and functions */
- int NOTE_DELETE ; 
- int NOTE_LINK ; 
- int NOTE_WRITE ; 
- int /*<<< orphan*/  VFS_KNOTE_LOCKED (int /*<<< orphan*/ ,int) ; 
+
+
+
+struct vop_rmdir_args {int a_vp; int a_dvp; } ;
+
+
+ int NOTE_DELETE ;
+ int NOTE_LINK ;
+ int NOTE_WRITE ;
+ int VFS_KNOTE_LOCKED (int ,int) ;
 
 void
 vop_rmdir_post(void *ap, int rc)
 {
-	struct vop_rmdir_args *a = ap;
+ struct vop_rmdir_args *a = ap;
 
-	if (!rc) {
-		VFS_KNOTE_LOCKED(a->a_dvp, NOTE_WRITE | NOTE_LINK);
-		VFS_KNOTE_LOCKED(a->a_vp, NOTE_DELETE);
-	}
+ if (!rc) {
+  VFS_KNOTE_LOCKED(a->a_dvp, NOTE_WRITE | NOTE_LINK);
+  VFS_KNOTE_LOCKED(a->a_vp, NOTE_DELETE);
+ }
 }

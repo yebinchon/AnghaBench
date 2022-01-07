@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  die (char*) ; 
- void* malloc (size_t) ; 
+ int die (char*) ;
+ void* malloc (size_t) ;
 
 __attribute__((used)) static inline void *xmalloc(size_t len)
 {
-	void *new = malloc(len);
+ void *new = malloc(len);
 
-	if (! new)
-		die("malloc() failed\n");
+ if (! new)
+  die("malloc() failed\n");
 
-	return new;
+ return new;
 }

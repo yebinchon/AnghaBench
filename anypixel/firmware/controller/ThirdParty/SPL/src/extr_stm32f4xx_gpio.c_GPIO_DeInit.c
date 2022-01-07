@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GPIO_TypeDef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISABLE ; 
- int /*<<< orphan*/  ENABLE ; 
- int /*<<< orphan*/ * GPIOA ; 
- int /*<<< orphan*/ * GPIOB ; 
- int /*<<< orphan*/ * GPIOC ; 
- int /*<<< orphan*/ * GPIOD ; 
- int /*<<< orphan*/ * GPIOE ; 
- int /*<<< orphan*/ * GPIOF ; 
- int /*<<< orphan*/ * GPIOG ; 
- int /*<<< orphan*/ * GPIOH ; 
- int /*<<< orphan*/ * GPIOI ; 
- int /*<<< orphan*/  IS_GPIO_ALL_PERIPH (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RCC_AHB1PeriphResetCmd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RCC_AHB1Periph_GPIOA ; 
- int /*<<< orphan*/  RCC_AHB1Periph_GPIOB ; 
- int /*<<< orphan*/  RCC_AHB1Periph_GPIOC ; 
- int /*<<< orphan*/  RCC_AHB1Periph_GPIOD ; 
- int /*<<< orphan*/  RCC_AHB1Periph_GPIOE ; 
- int /*<<< orphan*/  RCC_AHB1Periph_GPIOF ; 
- int /*<<< orphan*/  RCC_AHB1Periph_GPIOG ; 
- int /*<<< orphan*/  RCC_AHB1Periph_GPIOH ; 
- int /*<<< orphan*/  RCC_AHB1Periph_GPIOI ; 
- int /*<<< orphan*/  assert_param (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int GPIO_TypeDef ;
+
+
+ int DISABLE ;
+ int ENABLE ;
+ int * GPIOA ;
+ int * GPIOB ;
+ int * GPIOC ;
+ int * GPIOD ;
+ int * GPIOE ;
+ int * GPIOF ;
+ int * GPIOG ;
+ int * GPIOH ;
+ int * GPIOI ;
+ int IS_GPIO_ALL_PERIPH (int *) ;
+ int RCC_AHB1PeriphResetCmd (int ,int ) ;
+ int RCC_AHB1Periph_GPIOA ;
+ int RCC_AHB1Periph_GPIOB ;
+ int RCC_AHB1Periph_GPIOC ;
+ int RCC_AHB1Periph_GPIOD ;
+ int RCC_AHB1Periph_GPIOE ;
+ int RCC_AHB1Periph_GPIOF ;
+ int RCC_AHB1Periph_GPIOG ;
+ int RCC_AHB1Periph_GPIOH ;
+ int RCC_AHB1Periph_GPIOI ;
+ int assert_param (int ) ;
 
 void GPIO_DeInit(GPIO_TypeDef* GPIOx)
 {
-  /* Check the parameters */
+
   assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
 
   if (GPIOx == GPIOA)

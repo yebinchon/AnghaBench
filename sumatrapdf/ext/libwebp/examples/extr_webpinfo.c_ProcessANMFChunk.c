@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  scalar_t__ uint64_t ;
-typedef  int /*<<< orphan*/  WebPInfoStatus ;
-struct TYPE_5__ {int is_processing_anim_frame_; int frame_width_; int frame_height_; scalar_t__ anim_frame_data_size_; scalar_t__ seen_image_subchunk_; scalar_t__ seen_alpha_subchunk_; scalar_t__ canvas_height_; scalar_t__ canvas_width_; int /*<<< orphan*/  quiet_; int /*<<< orphan*/ * chunk_counts_; } ;
-typedef  TYPE_1__ WebPInfo ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint64_t ;
+typedef int WebPInfoStatus ;
+struct TYPE_5__ {int is_processing_anim_frame_; int frame_width_; int frame_height_; scalar_t__ anim_frame_data_size_; scalar_t__ seen_image_subchunk_; scalar_t__ seen_alpha_subchunk_; scalar_t__ canvas_height_; scalar_t__ canvas_width_; int quiet_; int * chunk_counts_; } ;
+typedef TYPE_1__ WebPInfo ;
 struct TYPE_6__ {int* payload_; scalar_t__ size_; } ;
-typedef  TYPE_2__ ChunkData ;
+typedef TYPE_2__ ChunkData ;
 
-/* Variables and functions */
- scalar_t__ ANMF_CHUNK_SIZE ; 
- size_t CHUNK_ANIM ; 
- size_t CHUNK_ANMF ; 
- scalar_t__ CHUNK_HEADER_SIZE ; 
- int /*<<< orphan*/  LOG_ERROR (char*) ; 
- int MAX_DURATION ; 
- int MAX_POSITION_OFFSET ; 
- int ReadLE24 (int const**) ; 
- int /*<<< orphan*/  WEBP_INFO_INVALID_PARAM ; 
- int /*<<< orphan*/  WEBP_INFO_OK ; 
- int /*<<< orphan*/  WEBP_INFO_PARSE_ERROR ; 
- int /*<<< orphan*/  WEBP_INFO_TRUNCATED_DATA ; 
- int /*<<< orphan*/  printf (char*,int,int,int,int,int,int,int) ; 
+
+ scalar_t__ ANMF_CHUNK_SIZE ;
+ size_t CHUNK_ANIM ;
+ size_t CHUNK_ANMF ;
+ scalar_t__ CHUNK_HEADER_SIZE ;
+ int LOG_ERROR (char*) ;
+ int MAX_DURATION ;
+ int MAX_POSITION_OFFSET ;
+ int ReadLE24 (int const**) ;
+ int WEBP_INFO_INVALID_PARAM ;
+ int WEBP_INFO_OK ;
+ int WEBP_INFO_PARSE_ERROR ;
+ int WEBP_INFO_TRUNCATED_DATA ;
+ int printf (char*,int,int,int,int,int,int,int) ;
 
 __attribute__((used)) static WebPInfoStatus ProcessANMFChunk(const ChunkData* const chunk_data,
                                        WebPInfo* const webp_info) {

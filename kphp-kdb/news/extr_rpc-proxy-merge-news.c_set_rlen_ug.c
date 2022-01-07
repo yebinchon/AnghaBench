@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int tot_buckets; int cluster_mode; } ;
 
-/* Variables and functions */
- TYPE_1__* CC ; 
- int MAX_NEWS_BUCKETS ; 
- int* Q ; 
- int* QN ; 
- int Q_size ; 
- int* Rfirst ; 
- scalar_t__* Rlen ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ TYPE_1__* CC ;
+ int MAX_NEWS_BUCKETS ;
+ int* Q ;
+ int* QN ;
+ int Q_size ;
+ int* Rfirst ;
+ scalar_t__* Rlen ;
+ int assert (int) ;
 
 void set_rlen_ug (int ug_mode) {
   assert (CC->tot_buckets <= MAX_NEWS_BUCKETS);
@@ -31,8 +31,8 @@ void set_rlen_ug (int ug_mode) {
     Rfirst[i] = -1;
   }
 
-//  int f = (NEWS_UG_EXTENSION && CC->tot_buckets > split_factor);
-  //int ug_mode = (CC->schema == SCHEMA_UGNEWS);
+
+
   int split_factor = (ug_mode != 0) ? CC->tot_buckets : CC->tot_buckets / 2;
 
   for (i = Q_size - 1; i >= 0; i--) {

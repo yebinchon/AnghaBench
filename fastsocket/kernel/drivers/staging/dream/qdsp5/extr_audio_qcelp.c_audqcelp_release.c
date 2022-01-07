@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct inode {int dummy; } ;
 struct file {struct audio* private_data; } ;
-struct audio {int pcm_buf_count; int /*<<< orphan*/  lock; scalar_t__ pcm_feedback; int /*<<< orphan*/ * read_data; int /*<<< orphan*/  read_phys; TYPE_1__* in; int /*<<< orphan*/ * data; int /*<<< orphan*/  phys; scalar_t__ opened; int /*<<< orphan*/ * audplay; } ;
+struct audio {int pcm_buf_count; int lock; scalar_t__ pcm_feedback; int * read_data; int read_phys; TYPE_1__* in; int * data; int phys; scalar_t__ opened; int * audplay; } ;
 struct TYPE_2__ {int size; } ;
 
-/* Variables and functions */
- int DMASZ ; 
- int /*<<< orphan*/  audqcelp_disable (struct audio*) ; 
- int /*<<< orphan*/  audqcelp_flush (struct audio*) ; 
- int /*<<< orphan*/  audqcelp_flush_pcm_buf (struct audio*) ; 
- int /*<<< orphan*/  dma_free_coherent (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dprintk (char*) ; 
- int /*<<< orphan*/  msm_adsp_put (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int DMASZ ;
+ int audqcelp_disable (struct audio*) ;
+ int audqcelp_flush (struct audio*) ;
+ int audqcelp_flush_pcm_buf (struct audio*) ;
+ int dma_free_coherent (int *,int,int *,int ) ;
+ int dprintk (char*) ;
+ int msm_adsp_put (int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 __attribute__((used)) static int audqcelp_release(struct inode *inode, struct file *file)
 {
-	struct audio *audio = file->private_data;
+ struct audio *audio = file->private_data;
 
-	dprintk("audqcelp_release()\n");
+ dprintk("audqcelp_release()\n");
 
-	mutex_lock(&audio->lock);
-	audqcelp_disable(audio);
-	audqcelp_flush(audio);
-	audqcelp_flush_pcm_buf(audio);
-	msm_adsp_put(audio->audplay);
-	audio->audplay = NULL;
-	audio->opened = 0;
-	if (audio->data)
-		dma_free_coherent(NULL, DMASZ, audio->data, audio->phys);
-	audio->data = NULL;
-	if (audio->read_data) {
-		dma_free_coherent(NULL,
-				 audio->in[0].size * audio->pcm_buf_count,
-				 audio->read_data, audio->read_phys);
-		audio->read_data = NULL;
-	}
-	audio->pcm_feedback = 0;
-	mutex_unlock(&audio->lock);
-	return 0;
+ mutex_lock(&audio->lock);
+ audqcelp_disable(audio);
+ audqcelp_flush(audio);
+ audqcelp_flush_pcm_buf(audio);
+ msm_adsp_put(audio->audplay);
+ audio->audplay = ((void*)0);
+ audio->opened = 0;
+ if (audio->data)
+  dma_free_coherent(((void*)0), DMASZ, audio->data, audio->phys);
+ audio->data = ((void*)0);
+ if (audio->read_data) {
+  dma_free_coherent(((void*)0),
+     audio->in[0].size * audio->pcm_buf_count,
+     audio->read_data, audio->read_phys);
+  audio->read_data = ((void*)0);
+ }
+ audio->pcm_feedback = 0;
+ mutex_unlock(&audio->lock);
+ return 0;
 }

@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {int h; int w; int /*<<< orphan*/  format; TYPE_1__* dst; } ;
-struct TYPE_14__ {int /*<<< orphan*/ * get_cost; } ;
-struct TYPE_13__ {int /*<<< orphan*/  log2_chroma_w; int /*<<< orphan*/  log2_chroma_h; } ;
+
+
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_15__ {int h; int w; int format; TYPE_1__* dst; } ;
+struct TYPE_14__ {int * get_cost; } ;
+struct TYPE_13__ {int log2_chroma_w; int log2_chroma_h; } ;
 struct TYPE_12__ {void* blocks; } ;
-struct TYPE_11__ {int log2_mb_size; int mb_size; int b_width; int b_height; int b_count; scalar_t__ mi_mode; scalar_t__ me_mode; scalar_t__ me_method; scalar_t__ scd_method; void* pixel_refs; void* pixel_weights; void* pixel_mvs; TYPE_3__* frames; int /*<<< orphan*/  search_param; int /*<<< orphan*/  sad; void** mv_table; void* int_blocks; int /*<<< orphan*/  nb_planes; int /*<<< orphan*/  log2_chroma_w; int /*<<< orphan*/  log2_chroma_h; TYPE_5__ me_ctx; } ;
+struct TYPE_11__ {int log2_mb_size; int mb_size; int b_width; int b_height; int b_count; scalar_t__ mi_mode; scalar_t__ me_mode; scalar_t__ me_method; scalar_t__ scd_method; void* pixel_refs; void* pixel_weights; void* pixel_mvs; TYPE_3__* frames; int search_param; int sad; void** mv_table; void* int_blocks; int nb_planes; int log2_chroma_w; int log2_chroma_h; TYPE_5__ me_ctx; } ;
 struct TYPE_10__ {TYPE_2__* priv; } ;
-typedef  int /*<<< orphan*/  PixelWeights ;
-typedef  int /*<<< orphan*/  PixelRefs ;
-typedef  int /*<<< orphan*/  PixelMVS ;
-typedef  TYPE_2__ MIContext ;
-typedef  TYPE_3__ Frame ;
-typedef  int /*<<< orphan*/  Block ;
-typedef  TYPE_4__ AVPixFmtDescriptor ;
-typedef  TYPE_5__ AVMotionEstContext ;
-typedef  TYPE_6__ AVFilterLink ;
+typedef int PixelWeights ;
+typedef int PixelRefs ;
+typedef int PixelMVS ;
+typedef TYPE_2__ MIContext ;
+typedef TYPE_3__ Frame ;
+typedef int Block ;
+typedef TYPE_4__ AVPixFmtDescriptor ;
+typedef TYPE_5__ AVMotionEstContext ;
+typedef TYPE_6__ AVFilterLink ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ AV_ME_METHOD_EPZS ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- scalar_t__ ME_MODE_BIDIR ; 
- scalar_t__ ME_MODE_BILAT ; 
- scalar_t__ MI_MODE_MCI ; 
- int NB_FRAMES ; 
- scalar_t__ SCD_METHOD_FDIFF ; 
- int av_ceil_log2_c (int) ; 
- int /*<<< orphan*/  av_freep (void**) ; 
- void* av_mallocz_array (int const,int) ; 
- int /*<<< orphan*/  av_pix_fmt_count_planes (int /*<<< orphan*/ ) ; 
- TYPE_4__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_me_init_context (TYPE_5__*,int,int /*<<< orphan*/ ,int const,int const,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ff_scene_sad_get_fn (int) ; 
- int /*<<< orphan*/  get_sad_ob ; 
- int /*<<< orphan*/  get_sbad_ob ; 
+
+ int AVERROR (int ) ;
+ scalar_t__ AV_ME_METHOD_EPZS ;
+ int EINVAL ;
+ int ENOMEM ;
+ scalar_t__ ME_MODE_BIDIR ;
+ scalar_t__ ME_MODE_BILAT ;
+ scalar_t__ MI_MODE_MCI ;
+ int NB_FRAMES ;
+ scalar_t__ SCD_METHOD_FDIFF ;
+ int av_ceil_log2_c (int) ;
+ int av_freep (void**) ;
+ void* av_mallocz_array (int const,int) ;
+ int av_pix_fmt_count_planes (int ) ;
+ TYPE_4__* av_pix_fmt_desc_get (int ) ;
+ int ff_me_init_context (TYPE_5__*,int,int ,int const,int const,int ,int,int ,int) ;
+ int ff_scene_sad_get_fn (int) ;
+ int get_sad_ob ;
+ int get_sbad_ob ;
 
 __attribute__((used)) static int config_input(AVFilterLink *inlink)
 {
@@ -58,7 +58,7 @@ __attribute__((used)) static int config_input(AVFilterLink *inlink)
     AVMotionEstContext *me_ctx = &mi_ctx->me_ctx;
     const AVPixFmtDescriptor *desc = av_pix_fmt_desc_get(inlink->format);
     const int height = inlink->h;
-    const int width  = inlink->w;
+    const int width = inlink->w;
     int i, ret = 0;
 
     mi_ctx->log2_chroma_h = desc->log2_chroma_h;
@@ -69,7 +69,7 @@ __attribute__((used)) static int config_input(AVFilterLink *inlink)
     mi_ctx->log2_mb_size = av_ceil_log2_c(mi_ctx->mb_size);
     mi_ctx->mb_size = 1 << mi_ctx->log2_mb_size;
 
-    mi_ctx->b_width  = width >> mi_ctx->log2_mb_size;
+    mi_ctx->b_width = width >> mi_ctx->log2_mb_size;
     mi_ctx->b_height = height >> mi_ctx->log2_mb_size;
     mi_ctx->b_count = mi_ctx->b_width * mi_ctx->b_height;
 

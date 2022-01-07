@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct sja1000_priv {int /*<<< orphan*/  cmdreg_lock; int /*<<< orphan*/  (* read_reg ) (struct sja1000_priv*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* write_reg ) (struct sja1000_priv*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SJA1000_CMR ; 
- int /*<<< orphan*/  SJA1000_SR ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  stub1 (struct sja1000_priv*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (struct sja1000_priv*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u8 ;
+struct sja1000_priv {int cmdreg_lock; int (* read_reg ) (struct sja1000_priv*,int ) ;int (* write_reg ) (struct sja1000_priv*,int ,int ) ;} ;
+
+
+ int SJA1000_CMR ;
+ int SJA1000_SR ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int stub1 (struct sja1000_priv*,int ,int ) ;
+ int stub2 (struct sja1000_priv*,int ) ;
 
 __attribute__((used)) static void sja1000_write_cmdreg(struct sja1000_priv *priv, u8 val)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	/*
-	 * The command register needs some locking and time to settle
-	 * the write_reg() operation - especially on SMP systems.
-	 */
-	spin_lock_irqsave(&priv->cmdreg_lock, flags);
-	priv->write_reg(priv, SJA1000_CMR, val);
-	priv->read_reg(priv, SJA1000_SR);
-	spin_unlock_irqrestore(&priv->cmdreg_lock, flags);
+
+
+
+
+ spin_lock_irqsave(&priv->cmdreg_lock, flags);
+ priv->write_reg(priv, SJA1000_CMR, val);
+ priv->read_reg(priv, SJA1000_SR);
+ spin_unlock_irqrestore(&priv->cmdreg_lock, flags);
 }

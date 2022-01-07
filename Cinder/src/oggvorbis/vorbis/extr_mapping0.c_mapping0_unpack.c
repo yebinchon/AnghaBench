@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {int submaps; int coupling_steps; int* coupling_mag; int* coupling_ang; int* chmuxlist; int* floorsubmap; int* residuesubmap; } ;
-typedef  TYPE_1__ vorbis_info_mapping0 ;
-typedef  TYPE_1__ vorbis_info_mapping ;
+typedef TYPE_1__ vorbis_info_mapping0 ;
+typedef TYPE_1__ vorbis_info_mapping ;
 struct TYPE_11__ {int channels; TYPE_4__* codec_setup; } ;
-typedef  TYPE_3__ vorbis_info ;
-typedef  int /*<<< orphan*/  oggpack_buffer ;
+typedef TYPE_3__ vorbis_info ;
+typedef int oggpack_buffer ;
 struct TYPE_12__ {int floors; int residues; } ;
-typedef  TYPE_4__ codec_setup_info ;
+typedef TYPE_4__ codec_setup_info ;
 
-/* Variables and functions */
- TYPE_1__* _ogg_calloc (int,int) ; 
- int ilog (int) ; 
- int /*<<< orphan*/  mapping0_free_info (TYPE_1__*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int oggpack_read (int /*<<< orphan*/ *,int) ; 
+
+ TYPE_1__* _ogg_calloc (int,int) ;
+ int ilog (int) ;
+ int mapping0_free_info (TYPE_1__*) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int oggpack_read (int *,int) ;
 
 __attribute__((used)) static vorbis_info_mapping *mapping0_unpack(vorbis_info *vi,oggpack_buffer *opb){
   int i,b;
   vorbis_info_mapping0 *info=_ogg_calloc(1,sizeof(*info));
-  codec_setup_info     *ci=vi->codec_setup;
+  codec_setup_info *ci=vi->codec_setup;
   memset(info,0,sizeof(*info));
 
   b=oggpack_read(opb,1);
@@ -61,7 +61,7 @@ __attribute__((used)) static vorbis_info_mapping *mapping0_unpack(vorbis_info *v
 
   }
 
-  if(oggpack_read(opb,2)!=0)goto err_out; /* 2,3:reserved */
+  if(oggpack_read(opb,2)!=0)goto err_out;
 
   if(info->submaps>1){
     for(i=0;i<vi->channels;i++){
@@ -70,7 +70,7 @@ __attribute__((used)) static vorbis_info_mapping *mapping0_unpack(vorbis_info *v
     }
   }
   for(i=0;i<info->submaps;i++){
-    oggpack_read(opb,8); /* time submap unused */
+    oggpack_read(opb,8);
     info->floorsubmap[i]=oggpack_read(opb,8);
     if(info->floorsubmap[i]>=ci->floors || info->floorsubmap[i]<0)goto err_out;
     info->residuesubmap[i]=oggpack_read(opb,8);
@@ -81,5 +81,5 @@ __attribute__((used)) static vorbis_info_mapping *mapping0_unpack(vorbis_info *v
 
  err_out:
   mapping0_free_info(info);
-  return(NULL);
+  return(((void*)0));
 }

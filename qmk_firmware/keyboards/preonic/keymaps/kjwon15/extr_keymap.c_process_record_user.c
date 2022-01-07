@@ -1,77 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_4__ {int pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
+typedef TYPE_2__ keyrecord_t ;
 
-/* Variables and functions */
-#define  BLANK 134 
-#define  KC_CESC 133 
- int /*<<< orphan*/  KC_ESC ; 
- int /*<<< orphan*/  KC_LCTL ; 
- int /*<<< orphan*/  KC_SPC ; 
-#define  LOWER 132 
- int /*<<< orphan*/  MOD_BIT (int /*<<< orphan*/ ) ; 
-#define  PURE 131 
-#define  QWERTY 130 
-#define  RAISE 129 
-#define  SPC_MOU 128 
- int /*<<< orphan*/  TAPPING_TERM ; 
- int /*<<< orphan*/  _ADJUST ; 
- int /*<<< orphan*/  _BLANK ; 
- int /*<<< orphan*/  _LOWER ; 
- int /*<<< orphan*/  _MOUSE ; 
- int /*<<< orphan*/  _PURE ; 
- int /*<<< orphan*/  _QWERTY ; 
- int /*<<< orphan*/  _RAISE ; 
- int cntl_interrupted ; 
- int /*<<< orphan*/  cntl_timer ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- int mouse_interrupted ; 
- int /*<<< orphan*/  mouse_timer ; 
- int /*<<< orphan*/  register_mods (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_single_persistent_default_layer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tap_code (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timer_elapsed (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timer_read () ; 
- int /*<<< orphan*/  unregister_mods (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_tri_layer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+ int KC_ESC ;
+ int KC_LCTL ;
+ int KC_SPC ;
+
+ int MOD_BIT (int ) ;
+
+
+
+
+ int TAPPING_TERM ;
+ int _ADJUST ;
+ int _BLANK ;
+ int _LOWER ;
+ int _MOUSE ;
+ int _PURE ;
+ int _QWERTY ;
+ int _RAISE ;
+ int cntl_interrupted ;
+ int cntl_timer ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ int mouse_interrupted ;
+ int mouse_timer ;
+ int register_mods (int ) ;
+ int set_single_persistent_default_layer (int ) ;
+ int tap_code (int ) ;
+ int timer_elapsed (int ) ;
+ int timer_read () ;
+ int unregister_mods (int ) ;
+ int update_tri_layer (int ,int ,int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-        case QWERTY:
+        case 130:
           if (record->event.pressed) {
             set_single_persistent_default_layer(_QWERTY);
           }
-          return false;
+          return 0;
           break;
-        case PURE:
+        case 131:
           if (record->event.pressed) {
             set_single_persistent_default_layer(_PURE);
           }
-          return false;
+          return 0;
           break;
-        case BLANK:
+        case 134:
           if (record->event.pressed) {
             set_single_persistent_default_layer(_BLANK);
           }
-          return false;
+          return 0;
           break;
-        case LOWER:
+        case 132:
           if (record->event.pressed) {
             layer_on(_LOWER);
             update_tri_layer(_LOWER, _RAISE, _ADJUST);
@@ -79,9 +79,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             layer_off(_LOWER);
             update_tri_layer(_LOWER, _RAISE, _ADJUST);
           }
-          return false;
+          return 0;
           break;
-        case RAISE:
+        case 129:
           if (record->event.pressed) {
             layer_on(_RAISE);
             update_tri_layer(_LOWER, _RAISE, _ADJUST);
@@ -89,33 +89,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             layer_off(_RAISE);
             update_tri_layer(_LOWER, _RAISE, _ADJUST);
           }
-          return false;
+          return 0;
           break;
-
-        // BACKLIT is not used. If you want to use, uncomment below
-        /*
-        case BACKLIT:
+        case 133:
           if (record->event.pressed) {
-            register_code(KC_RSFT);
-            #ifdef BACKLIGHT_ENABLE
-              backlight_step();
-            #endif
-            #ifdef __AVR__
-            PORTE &= ~(1<<6);
-            #endif
-          } else {
-            unregister_code(KC_RSFT);
-            #ifdef __AVR__
-            PORTE |= (1<<6);
-            #endif
-          }
-          return false;
-          break;
-        */
-
-        case KC_CESC:
-          if (record->event.pressed) {
-           cntl_interrupted = false;
+           cntl_interrupted = 0;
            cntl_timer = timer_read();
            register_mods(MOD_BIT(KC_LCTL));
           } else if (!cntl_interrupted && timer_elapsed(cntl_timer) < TAPPING_TERM) {
@@ -124,15 +102,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           } else {
            unregister_mods(MOD_BIT(KC_LCTL));
           }
-          return false;
+          return 0;
           break;
 
-        case SPC_MOU:
+        case 128:
           if (record->event.pressed) {
-           mouse_interrupted = false;
+           mouse_interrupted = 0;
            mouse_timer = timer_read();
 
-           cntl_interrupted = true;
+           cntl_interrupted = 1;
            layer_on(_MOUSE);
           } else if (!mouse_interrupted && timer_elapsed(mouse_timer) < TAPPING_TERM) {
            layer_off(_MOUSE);
@@ -140,13 +118,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           } else {
            layer_off(_MOUSE);
           }
-          return false;
+          return 0;
           break;
 
         default:
-          cntl_interrupted = true;
-          mouse_interrupted = true;
+          cntl_interrupted = 1;
+          mouse_interrupted = 1;
           break;
       }
-    return true;
+    return 1;
 }

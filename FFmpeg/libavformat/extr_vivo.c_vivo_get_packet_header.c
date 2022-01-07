@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {unsigned int type; unsigned int sequence; int length; } ;
-typedef  TYPE_1__ VivoContext ;
-struct TYPE_6__ {int /*<<< orphan*/ * pb; TYPE_1__* priv_data; } ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_2__ AVFormatContext ;
+typedef TYPE_1__ VivoContext ;
+struct TYPE_6__ {int * pb; TYPE_1__* priv_data; } ;
+typedef int AVIOContext ;
+typedef TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR_EOF ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ avio_feof (int /*<<< orphan*/ *) ; 
- unsigned int avio_r8 (int /*<<< orphan*/ *) ; 
+
+ int AVERROR_EOF ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int av_log (TYPE_2__*,int ,char*,...) ;
+ scalar_t__ avio_feof (int *) ;
+ unsigned int avio_r8 (int *) ;
 
 __attribute__((used)) static int vivo_get_packet_header(AVFormatContext *s)
 {
@@ -41,15 +41,15 @@ __attribute__((used)) static int vivo_get_packet_header(AVFormatContext *s)
         c = avio_r8(pb);
     }
 
-    vivo->type     = c >> 4;
+    vivo->type = c >> 4;
     vivo->sequence = c & 0xF;
 
     switch (vivo->type) {
-    case 0:   get_length =   1; break;
+    case 0: get_length = 1; break;
     case 1: vivo->length = 128; break;
-    case 2:   get_length =   1; break;
-    case 3: vivo->length =  40; break;
-    case 4: vivo->length =  24; break;
+    case 2: get_length = 1; break;
+    case 3: vivo->length = 40; break;
+    case 4: vivo->length = 24; break;
     default:
         av_log(s, AV_LOG_ERROR, "unknown packet type %d\n", vivo->type);
         return AVERROR_INVALIDDATA;

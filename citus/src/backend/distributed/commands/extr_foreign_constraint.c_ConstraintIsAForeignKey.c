@@ -1,83 +1,83 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* data; } ;
 struct TYPE_4__ {scalar_t__ conrelid; TYPE_1__ conname; } ;
-typedef  int /*<<< orphan*/ * SysScanDesc ;
-typedef  int /*<<< orphan*/  ScanKeyData ;
-typedef  int /*<<< orphan*/ * Relation ;
-typedef  scalar_t__ Oid ;
-typedef  int /*<<< orphan*/ * HeapTuple ;
-typedef  TYPE_2__* Form_pg_constraint ;
+typedef int * SysScanDesc ;
+typedef int ScanKeyData ;
+typedef int * Relation ;
+typedef scalar_t__ Oid ;
+typedef int * HeapTuple ;
+typedef TYPE_2__* Form_pg_constraint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AccessShareLock ; 
- int /*<<< orphan*/  Anum_pg_constraint_contype ; 
- int /*<<< orphan*/  BTEqualStrategyNumber ; 
- int /*<<< orphan*/  CONSTRAINT_FOREIGN ; 
- int /*<<< orphan*/  CharGetDatum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ConstraintRelationId ; 
- int /*<<< orphan*/  F_CHAREQ ; 
- int /*<<< orphan*/  GETSTRUCT (int /*<<< orphan*/ *) ; 
- scalar_t__ HeapTupleIsValid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InvalidOid ; 
- int /*<<< orphan*/  NAMEDATALEN ; 
- int /*<<< orphan*/  ScanKeyInit (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_close (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * heap_open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ strncmp (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * systable_beginscan (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  systable_endscan (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * systable_getnext (int /*<<< orphan*/ *) ; 
+
+ int AccessShareLock ;
+ int Anum_pg_constraint_contype ;
+ int BTEqualStrategyNumber ;
+ int CONSTRAINT_FOREIGN ;
+ int CharGetDatum (int ) ;
+ int ConstraintRelationId ;
+ int F_CHAREQ ;
+ int GETSTRUCT (int *) ;
+ scalar_t__ HeapTupleIsValid (int *) ;
+ int InvalidOid ;
+ int NAMEDATALEN ;
+ int ScanKeyInit (int *,int ,int ,int ,int ) ;
+ int heap_close (int *,int ) ;
+ int * heap_open (int ,int ) ;
+ scalar_t__ strncmp (char*,char*,int ) ;
+ int * systable_beginscan (int *,int ,int,int *,int,int *) ;
+ int systable_endscan (int *) ;
+ int * systable_getnext (int *) ;
 
 bool
 ConstraintIsAForeignKey(char *constraintNameInput, Oid relationId)
 {
-	Relation pgConstraint = NULL;
-	SysScanDesc scanDescriptor = NULL;
-	ScanKeyData scanKey[1];
-	int scanKeyCount = 1;
-	HeapTuple heapTuple = NULL;
+ Relation pgConstraint = ((void*)0);
+ SysScanDesc scanDescriptor = ((void*)0);
+ ScanKeyData scanKey[1];
+ int scanKeyCount = 1;
+ HeapTuple heapTuple = ((void*)0);
 
-	pgConstraint = heap_open(ConstraintRelationId, AccessShareLock);
+ pgConstraint = heap_open(ConstraintRelationId, AccessShareLock);
 
-	ScanKeyInit(&scanKey[0], Anum_pg_constraint_contype, BTEqualStrategyNumber, F_CHAREQ,
-				CharGetDatum(CONSTRAINT_FOREIGN));
-	scanDescriptor = systable_beginscan(pgConstraint, InvalidOid, false,
-										NULL, scanKeyCount, scanKey);
+ ScanKeyInit(&scanKey[0], Anum_pg_constraint_contype, BTEqualStrategyNumber, F_CHAREQ,
+    CharGetDatum(CONSTRAINT_FOREIGN));
+ scanDescriptor = systable_beginscan(pgConstraint, InvalidOid, 0,
+          ((void*)0), scanKeyCount, scanKey);
 
-	heapTuple = systable_getnext(scanDescriptor);
-	while (HeapTupleIsValid(heapTuple))
-	{
-		Form_pg_constraint constraintForm = (Form_pg_constraint) GETSTRUCT(heapTuple);
-		char *constraintName = (constraintForm->conname).data;
+ heapTuple = systable_getnext(scanDescriptor);
+ while (HeapTupleIsValid(heapTuple))
+ {
+  Form_pg_constraint constraintForm = (Form_pg_constraint) GETSTRUCT(heapTuple);
+  char *constraintName = (constraintForm->conname).data;
 
-		if (strncmp(constraintName, constraintNameInput, NAMEDATALEN) == 0 &&
-			constraintForm->conrelid == relationId)
-		{
-			systable_endscan(scanDescriptor);
-			heap_close(pgConstraint, AccessShareLock);
+  if (strncmp(constraintName, constraintNameInput, NAMEDATALEN) == 0 &&
+   constraintForm->conrelid == relationId)
+  {
+   systable_endscan(scanDescriptor);
+   heap_close(pgConstraint, AccessShareLock);
 
-			return true;
-		}
+   return 1;
+  }
 
-		heapTuple = systable_getnext(scanDescriptor);
-	}
+  heapTuple = systable_getnext(scanDescriptor);
+ }
 
-	/* clean up scan and close system catalog */
-	systable_endscan(scanDescriptor);
-	heap_close(pgConstraint, AccessShareLock);
 
-	return false;
+ systable_endscan(scanDescriptor);
+ heap_close(pgConstraint, AccessShareLock);
+
+ return 0;
 }

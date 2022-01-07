@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char* str; } ;
 
-/* Variables and functions */
- int FDT_ERRTABSIZE ; 
- TYPE_1__* fdt_errtable ; 
+
+ int FDT_ERRTABSIZE ;
+ TYPE_1__* fdt_errtable ;
 
 const char *fdt_strerror(int errval)
 {
-	if (errval > 0)
-		return "<valid offset/length>";
-	else if (errval == 0)
-		return "<no error>";
-	else if (errval > -FDT_ERRTABSIZE) {
-		const char *s = fdt_errtable[-errval].str;
+ if (errval > 0)
+  return "<valid offset/length>";
+ else if (errval == 0)
+  return "<no error>";
+ else if (errval > -FDT_ERRTABSIZE) {
+  const char *s = fdt_errtable[-errval].str;
 
-		if (s)
-			return s;
-	}
+  if (s)
+   return s;
+ }
 
-	return "<unknown error>";
+ return "<unknown error>";
 }

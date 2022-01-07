@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int BUFFSIZE ; 
- char* Buff ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fd_close (int*) ; 
- int /*<<< orphan*/  kprintf (char*,...) ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int read (int,char*,int) ; 
- int sscanf (char*,char*,int*) ; 
- char* strstr (char*,char*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,...) ; 
+ int BUFFSIZE ;
+ char* Buff ;
+ int O_RDONLY ;
+ int exit (int) ;
+ int fd_close (int*) ;
+ int kprintf (char*,...) ;
+ int open (char*,int ) ;
+ int read (int,char*,int) ;
+ int sscanf (char*,char*,int*) ;
+ char* strstr (char*,char*) ;
+ int vkprintf (int,char*,...) ;
 
 int get_booting_time (void) {
   int fd = open ("/proc/stat", O_RDONLY);
@@ -47,7 +39,7 @@ int get_booting_time (void) {
   p = Buff;
   do {
     p = strstr (p, "\nbtime");
-    if (p == NULL) {
+    if (p == ((void*)0)) {
       vkprintf (1, "%s\n", Buff);
       kprintf ("get_booting_time: btime substring didn't find.\n");
       exit (1);

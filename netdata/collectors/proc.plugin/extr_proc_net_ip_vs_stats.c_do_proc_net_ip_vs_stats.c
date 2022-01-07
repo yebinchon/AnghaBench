@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  usec_t ;
-typedef  int /*<<< orphan*/  procfile ;
-typedef  int /*<<< orphan*/  RRDSET ;
 
-/* Variables and functions */
- int BITS_IN_A_KILOBIT ; 
- int /*<<< orphan*/  CONFIG_SECTION_PLUGIN_PROC_NET_IPVS ; 
- int /*<<< orphan*/  FILENAME_MAX ; 
- int /*<<< orphan*/  NETDATA_CHART_PRIO_IPVS_NET ; 
- int /*<<< orphan*/  NETDATA_CHART_PRIO_IPVS_PACKETS ; 
- int /*<<< orphan*/  NETDATA_CHART_PRIO_IPVS_SOCKETS ; 
- int /*<<< orphan*/  PLUGIN_PROC_MODULE_NET_IPVS_NAME ; 
- int /*<<< orphan*/  PLUGIN_PROC_NAME ; 
- int /*<<< orphan*/  PROCFILE_FLAG_DEFAULT ; 
- int /*<<< orphan*/  RRDSET_TYPE_AREA ; 
- int /*<<< orphan*/  RRDSET_TYPE_LINE ; 
- int /*<<< orphan*/  RRD_ALGORITHM_INCREMENTAL ; 
- int /*<<< orphan*/  RRD_TYPE_NET_IPVS ; 
- int /*<<< orphan*/  config_get (int /*<<< orphan*/ ,char*,char*) ; 
- int config_get_boolean (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  netdata_configured_host_prefix ; 
- int procfile_lines (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  procfile_lineword (int /*<<< orphan*/ *,int,int) ; 
- int procfile_linewords (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * procfile_open (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * procfile_readall (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rrddim_add (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrddim_set (int /*<<< orphan*/ *,char*,unsigned long long) ; 
- int /*<<< orphan*/ * rrdset_create_localhost (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrdset_done (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rrdset_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  snprintfz (char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char*) ; 
- unsigned long long strtoull (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- scalar_t__ unlikely (int) ; 
+
+
+
+typedef int usec_t ;
+typedef int procfile ;
+typedef int RRDSET ;
+
+
+ int BITS_IN_A_KILOBIT ;
+ int CONFIG_SECTION_PLUGIN_PROC_NET_IPVS ;
+ int FILENAME_MAX ;
+ int NETDATA_CHART_PRIO_IPVS_NET ;
+ int NETDATA_CHART_PRIO_IPVS_PACKETS ;
+ int NETDATA_CHART_PRIO_IPVS_SOCKETS ;
+ int PLUGIN_PROC_MODULE_NET_IPVS_NAME ;
+ int PLUGIN_PROC_NAME ;
+ int PROCFILE_FLAG_DEFAULT ;
+ int RRDSET_TYPE_AREA ;
+ int RRDSET_TYPE_LINE ;
+ int RRD_ALGORITHM_INCREMENTAL ;
+ int RRD_TYPE_NET_IPVS ;
+ int config_get (int ,char*,char*) ;
+ int config_get_boolean (int ,char*,int) ;
+ int netdata_configured_host_prefix ;
+ int procfile_lines (int *) ;
+ int procfile_lineword (int *,int,int) ;
+ int procfile_linewords (int *,int) ;
+ int * procfile_open (int ,char*,int ) ;
+ int * procfile_readall (int *) ;
+ int rrddim_add (int *,char*,int *,int,int,int ) ;
+ int rrddim_set (int *,char*,unsigned long long) ;
+ int * rrdset_create_localhost (int ,char*,int *,int ,int *,char*,char*,int ,int ,int ,int,int ) ;
+ int rrdset_done (int *) ;
+ int rrdset_next (int *) ;
+ int snprintfz (char*,int ,char*,int ,char*) ;
+ unsigned long long strtoull (int ,int *,int) ;
+ scalar_t__ unlikely (int) ;
 
 int do_proc_net_ip_vs_stats(int update_every, usec_t dt) {
     (void)dt;
     static int do_bandwidth = -1, do_sockets = -1, do_packets = -1;
-    static procfile *ff = NULL;
+    static procfile *ff = ((void*)0);
 
-    if(do_bandwidth == -1)  do_bandwidth    = config_get_boolean(CONFIG_SECTION_PLUGIN_PROC_NET_IPVS, "IPVS bandwidth", 1);
-    if(do_sockets == -1)    do_sockets      = config_get_boolean(CONFIG_SECTION_PLUGIN_PROC_NET_IPVS, "IPVS connections", 1);
-    if(do_packets == -1)    do_packets      = config_get_boolean(CONFIG_SECTION_PLUGIN_PROC_NET_IPVS, "IPVS packets", 1);
+    if(do_bandwidth == -1) do_bandwidth = config_get_boolean(CONFIG_SECTION_PLUGIN_PROC_NET_IPVS, "IPVS bandwidth", 1);
+    if(do_sockets == -1) do_sockets = config_get_boolean(CONFIG_SECTION_PLUGIN_PROC_NET_IPVS, "IPVS connections", 1);
+    if(do_packets == -1) do_packets = config_get_boolean(CONFIG_SECTION_PLUGIN_PROC_NET_IPVS, "IPVS packets", 1);
 
     if(!ff) {
         char filename[FILENAME_MAX + 1];
@@ -62,35 +62,35 @@ int do_proc_net_ip_vs_stats(int update_every, usec_t dt) {
     if(!ff) return 1;
 
     ff = procfile_readall(ff);
-    if(!ff) return 0; // we return 0, so that we will retry to open it next time
+    if(!ff) return 0;
 
-    // make sure we have 3 lines
+
     if(procfile_lines(ff) < 3) return 1;
 
-    // make sure we have 5 words on the 3rd line
+
     if(procfile_linewords(ff, 2) < 5) return 1;
 
     unsigned long long entries, InPackets, OutPackets, InBytes, OutBytes;
 
-    entries     = strtoull(procfile_lineword(ff, 2, 0), NULL, 16);
-    InPackets   = strtoull(procfile_lineword(ff, 2, 1), NULL, 16);
-    OutPackets  = strtoull(procfile_lineword(ff, 2, 2), NULL, 16);
-    InBytes     = strtoull(procfile_lineword(ff, 2, 3), NULL, 16);
-    OutBytes    = strtoull(procfile_lineword(ff, 2, 4), NULL, 16);
+    entries = strtoull(procfile_lineword(ff, 2, 0), ((void*)0), 16);
+    InPackets = strtoull(procfile_lineword(ff, 2, 1), ((void*)0), 16);
+    OutPackets = strtoull(procfile_lineword(ff, 2, 2), ((void*)0), 16);
+    InBytes = strtoull(procfile_lineword(ff, 2, 3), ((void*)0), 16);
+    OutBytes = strtoull(procfile_lineword(ff, 2, 4), ((void*)0), 16);
 
 
-    // --------------------------------------------------------------------
+
 
     if(do_sockets) {
-        static RRDSET *st = NULL;
+        static RRDSET *st = ((void*)0);
 
         if(unlikely(!st)) {
             st = rrdset_create_localhost(
                     RRD_TYPE_NET_IPVS
                     , "sockets"
-                    , NULL
+                    , ((void*)0)
                     , RRD_TYPE_NET_IPVS
-                    , NULL
+                    , ((void*)0)
                     , "IPVS New Connections"
                     , "connections/s"
                     , PLUGIN_PROC_NAME
@@ -100,7 +100,7 @@ int do_proc_net_ip_vs_stats(int update_every, usec_t dt) {
                     , RRDSET_TYPE_LINE
             );
 
-            rrddim_add(st, "connections", NULL, 1, 1, RRD_ALGORITHM_INCREMENTAL);
+            rrddim_add(st, "connections", ((void*)0), 1, 1, RRD_ALGORITHM_INCREMENTAL);
         }
         else rrdset_next(st);
 
@@ -108,17 +108,17 @@ int do_proc_net_ip_vs_stats(int update_every, usec_t dt) {
         rrdset_done(st);
     }
 
-    // --------------------------------------------------------------------
+
 
     if(do_packets) {
-        static RRDSET *st = NULL;
+        static RRDSET *st = ((void*)0);
         if(unlikely(!st)) {
             st = rrdset_create_localhost(
                     RRD_TYPE_NET_IPVS
                     , "packets"
-                    , NULL
+                    , ((void*)0)
                     , RRD_TYPE_NET_IPVS
-                    , NULL
+                    , ((void*)0)
                     , "IPVS Packets"
                     , "packets/s"
                     , PLUGIN_PROC_NAME
@@ -128,8 +128,8 @@ int do_proc_net_ip_vs_stats(int update_every, usec_t dt) {
                     , RRDSET_TYPE_LINE
             );
 
-            rrddim_add(st, "received", NULL, 1, 1, RRD_ALGORITHM_INCREMENTAL);
-            rrddim_add(st, "sent", NULL, -1, 1, RRD_ALGORITHM_INCREMENTAL);
+            rrddim_add(st, "received", ((void*)0), 1, 1, RRD_ALGORITHM_INCREMENTAL);
+            rrddim_add(st, "sent", ((void*)0), -1, 1, RRD_ALGORITHM_INCREMENTAL);
         }
         else rrdset_next(st);
 
@@ -138,17 +138,17 @@ int do_proc_net_ip_vs_stats(int update_every, usec_t dt) {
         rrdset_done(st);
     }
 
-    // --------------------------------------------------------------------
+
 
     if(do_bandwidth) {
-        static RRDSET *st = NULL;
+        static RRDSET *st = ((void*)0);
         if(unlikely(!st)) {
             st = rrdset_create_localhost(
                     RRD_TYPE_NET_IPVS
                     , "net"
-                    , NULL
+                    , ((void*)0)
                     , RRD_TYPE_NET_IPVS
-                    , NULL
+                    , ((void*)0)
                     , "IPVS Bandwidth"
                     , "kilobits/s"
                     , PLUGIN_PROC_NAME
@@ -158,8 +158,8 @@ int do_proc_net_ip_vs_stats(int update_every, usec_t dt) {
                     , RRDSET_TYPE_AREA
             );
 
-            rrddim_add(st, "received", NULL, 8, BITS_IN_A_KILOBIT, RRD_ALGORITHM_INCREMENTAL);
-            rrddim_add(st, "sent", NULL,    -8, BITS_IN_A_KILOBIT, RRD_ALGORITHM_INCREMENTAL);
+            rrddim_add(st, "received", ((void*)0), 8, BITS_IN_A_KILOBIT, RRD_ALGORITHM_INCREMENTAL);
+            rrddim_add(st, "sent", ((void*)0), -8, BITS_IN_A_KILOBIT, RRD_ALGORITHM_INCREMENTAL);
         }
         else rrdset_next(st);
 

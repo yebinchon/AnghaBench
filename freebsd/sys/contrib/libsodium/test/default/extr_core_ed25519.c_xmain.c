@@ -1,40 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  add_P (unsigned char*) ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ crypto_core_ed25519_BYTES ; 
- scalar_t__ crypto_core_ed25519_UNIFORMBYTES ; 
- int crypto_core_ed25519_add (unsigned char*,unsigned char*,unsigned char*) ; 
- scalar_t__ crypto_core_ed25519_bytes () ; 
- scalar_t__ crypto_core_ed25519_from_uniform (unsigned char*,unsigned char*) ; 
- int crypto_core_ed25519_is_valid_point (unsigned char*) ; 
- int crypto_core_ed25519_sub (unsigned char*,unsigned char*,unsigned char*) ; 
- scalar_t__ crypto_core_ed25519_uniformbytes () ; 
- scalar_t__ crypto_scalarmult_ed25519 (unsigned char*,unsigned char*,unsigned char*) ; 
- scalar_t__ crypto_scalarmult_ed25519_SCALARBYTES ; 
- unsigned char* max_canonical_p ; 
- scalar_t__ memcmp (unsigned char*,unsigned char*,scalar_t__) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,scalar_t__) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,scalar_t__) ; 
- unsigned char* non_canonical_invalid_p ; 
- unsigned char* non_canonical_p ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  randombytes_buf (unsigned char*,scalar_t__) ; 
- scalar_t__ randombytes_uniform (int) ; 
- int /*<<< orphan*/  sodium_free (unsigned char*) ; 
- scalar_t__ sodium_malloc (scalar_t__) ; 
+ int add_P (unsigned char*) ;
+ int assert (int) ;
+ scalar_t__ crypto_core_ed25519_BYTES ;
+ scalar_t__ crypto_core_ed25519_UNIFORMBYTES ;
+ int crypto_core_ed25519_add (unsigned char*,unsigned char*,unsigned char*) ;
+ scalar_t__ crypto_core_ed25519_bytes () ;
+ scalar_t__ crypto_core_ed25519_from_uniform (unsigned char*,unsigned char*) ;
+ int crypto_core_ed25519_is_valid_point (unsigned char*) ;
+ int crypto_core_ed25519_sub (unsigned char*,unsigned char*,unsigned char*) ;
+ scalar_t__ crypto_core_ed25519_uniformbytes () ;
+ scalar_t__ crypto_scalarmult_ed25519 (unsigned char*,unsigned char*,unsigned char*) ;
+ scalar_t__ crypto_scalarmult_ed25519_SCALARBYTES ;
+ unsigned char* max_canonical_p ;
+ scalar_t__ memcmp (unsigned char*,unsigned char*,scalar_t__) ;
+ int memcpy (unsigned char*,unsigned char*,scalar_t__) ;
+ int memset (unsigned char*,int ,scalar_t__) ;
+ unsigned char* non_canonical_invalid_p ;
+ unsigned char* non_canonical_p ;
+ int printf (char*) ;
+ int randombytes_buf (unsigned char*,scalar_t__) ;
+ scalar_t__ randombytes_uniform (int) ;
+ int sodium_free (unsigned char*) ;
+ scalar_t__ sodium_malloc (scalar_t__) ;
 
 int
 main(void)
@@ -42,7 +34,7 @@ main(void)
     unsigned char *h;
     unsigned char *p, *p2, *p3;
     unsigned char *sc;
-    int            i, j;
+    int i, j;
 
     h = (unsigned char *) sodium_malloc(crypto_core_ed25519_UNIFORMBYTES);
     p = (unsigned char *) sodium_malloc(crypto_core_ed25519_BYTES);

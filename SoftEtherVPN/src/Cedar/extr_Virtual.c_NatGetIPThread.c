@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  ref; int /*<<< orphan*/  Hostname; int /*<<< orphan*/  Ip; int /*<<< orphan*/  Ok; } ;
-typedef  int /*<<< orphan*/  THREAD ;
-typedef  TYPE_1__ NAT_DNS_QUERY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddWaitThread (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DelWaitThread (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Free (TYPE_1__*) ; 
- int /*<<< orphan*/  GetIP (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ Release (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int ref; int Hostname; int Ip; int Ok; } ;
+typedef int THREAD ;
+typedef TYPE_1__ NAT_DNS_QUERY ;
+
+
+ int AddWaitThread (int *) ;
+ int DelWaitThread (int *) ;
+ int Free (TYPE_1__*) ;
+ int GetIP (int *,int ) ;
+ scalar_t__ Release (int ) ;
 
 void NatGetIPThread(THREAD *t, void *param)
 {
-	NAT_DNS_QUERY *q;
-	// Validate arguments
-	if (t == NULL || param == NULL)
-	{
-		return;
-	}
+ NAT_DNS_QUERY *q;
 
-	q = (NAT_DNS_QUERY *)param;
-	AddWaitThread(t);
+ if (t == ((void*)0) || param == ((void*)0))
+ {
+  return;
+ }
 
-	q->Ok = GetIP(&q->Ip, q->Hostname);
+ q = (NAT_DNS_QUERY *)param;
+ AddWaitThread(t);
 
-	DelWaitThread(t);
+ q->Ok = GetIP(&q->Ip, q->Hostname);
 
-	if (Release(q->ref) == 0)
-	{
-		Free(q);
-	}
+ DelWaitThread(t);
+
+ if (Release(q->ref) == 0)
+ {
+  Free(q);
+ }
 }

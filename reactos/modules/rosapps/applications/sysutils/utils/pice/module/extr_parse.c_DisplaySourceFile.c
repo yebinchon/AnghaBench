@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG ;
 struct TYPE_2__ {scalar_t__ cy; } ;
-typedef  int* LPSTR ;
+typedef int* LPSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COLOR_BACKGROUND ; 
- int /*<<< orphan*/  COLOR_FOREGROUND ; 
- int /*<<< orphan*/  Clear (size_t) ; 
- int /*<<< orphan*/  DPRINT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DisableScroll (size_t) ; 
- int /*<<< orphan*/  EnableScroll (size_t) ; 
- int GLOBAL_SCREEN_WIDTH ; 
- int /*<<< orphan*/  PICE_sprintf (char*,char*,scalar_t__) ; 
- int PICE_strlen (char*) ; 
- int /*<<< orphan*/  Print (size_t,char*) ; 
- int /*<<< orphan*/  ResetColor () ; 
- size_t SOURCE_WINDOW ; 
- int /*<<< orphan*/  SetBackgroundColor (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetForegroundColor (int /*<<< orphan*/ ) ; 
- char* tempCmd ; 
- TYPE_1__* wWindow ; 
+
+ int COLOR_BACKGROUND ;
+ int COLOR_FOREGROUND ;
+ int Clear (size_t) ;
+ int DPRINT (int ) ;
+ int DisableScroll (size_t) ;
+ int EnableScroll (size_t) ;
+ int GLOBAL_SCREEN_WIDTH ;
+ int PICE_sprintf (char*,char*,scalar_t__) ;
+ int PICE_strlen (char*) ;
+ int Print (size_t,char*) ;
+ int ResetColor () ;
+ size_t SOURCE_WINDOW ;
+ int SetBackgroundColor (int ) ;
+ int SetForegroundColor (int ) ;
+ char* tempCmd ;
+ TYPE_1__* wWindow ;
 
 void DisplaySourceFile(LPSTR pSrcLine,LPSTR pSrcEnd,ULONG ulLineNumber,ULONG ulLineNumberToInvert)
 {
@@ -41,14 +41,14 @@ void DisplaySourceFile(LPSTR pSrcLine,LPSTR pSrcEnd,ULONG ulLineNumber,ULONG ulL
 
     DPRINT((0,"DisplaySourceFile(%.8X,%u,%u)\n",pSrcLine,ulLineNumber,ulLineNumberToInvert));
 
-    // go to line
+
     while(j--)
     {
-        // goto end of current line
+
         while(*pSrcLine!=0x0a && *pSrcLine!=0x0d)
             pSrcLine++;
 
-        // skip over the line end
+
         if(*pSrcLine == 0x0d)
             pSrcLine++;
         if(*pSrcLine == 0x0a)
@@ -68,7 +68,7 @@ void DisplaySourceFile(LPSTR pSrcLine,LPSTR pSrcEnd,ULONG ulLineNumber,ULONG ulL
 
             while(pSrcLine<pSrcEnd && *pSrcLine!=0x0a && *pSrcLine!=0x0d)
             {
-                if(*pSrcLine==0x9) // TAB
+                if(*pSrcLine==0x9)
                 {
                     *pTemp++ = 0x20;
                     *pTemp++ = 0x20;
@@ -84,7 +84,7 @@ void DisplaySourceFile(LPSTR pSrcLine,LPSTR pSrcEnd,ULONG ulLineNumber,ULONG ulL
 
             if(pSrcLine<pSrcEnd)
             {
-                // skip over the line end
+
                 if(*pSrcLine == 0x0d)
                     pSrcLine++;
                 if(*pSrcLine == 0x0a)

@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int u32 ;
-typedef  int i64 ;
-typedef  int /*<<< orphan*/  aFrame ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u32 ;
+typedef int i64 ;
+typedef int aFrame ;
 struct TYPE_5__ {void** aFrameCksum; } ;
-struct TYPE_6__ {int szPage; int iReCksum; int /*<<< orphan*/  pWalFd; TYPE_1__ hdr; } ;
-typedef  TYPE_2__ Wal ;
+struct TYPE_6__ {int szPage; int iReCksum; int pWalFd; TYPE_1__ hdr; } ;
+typedef TYPE_2__ Wal ;
 
-/* Variables and functions */
- int SQLITE_NOMEM_BKPT ; 
- int SQLITE_OK ; 
- int WAL_FRAME_HDRSIZE ; 
- int /*<<< orphan*/  assert (int) ; 
- void* sqlite3Get4byte (int /*<<< orphan*/ *) ; 
- int sqlite3OsRead (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int const,int) ; 
- int sqlite3OsWrite (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  sqlite3_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sqlite3_malloc (int const) ; 
- int /*<<< orphan*/  walEncodeFrame (TYPE_2__*,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int walFrameOffset (int,int const) ; 
+
+ int SQLITE_NOMEM_BKPT ;
+ int SQLITE_OK ;
+ int WAL_FRAME_HDRSIZE ;
+ int assert (int) ;
+ void* sqlite3Get4byte (int *) ;
+ int sqlite3OsRead (int ,int *,int const,int) ;
+ int sqlite3OsWrite (int ,int *,int,int) ;
+ int sqlite3_free (int *) ;
+ int * sqlite3_malloc (int const) ;
+ int walEncodeFrame (TYPE_2__*,int,int,int *,int *) ;
+ int walFrameOffset (int,int const) ;
 
 __attribute__((used)) static int walRewriteChecksums(Wal *pWal, u32 iLast){
-  const int szPage = pWal->szPage;/* Database page size */
-  int rc = SQLITE_OK;             /* Return code */
-  u8 *aBuf;                       /* Buffer to load data from wal file into */
-  u8 aFrame[WAL_FRAME_HDRSIZE];   /* Buffer to assemble frame-headers in */
-  u32 iRead;                      /* Next frame to read from wal file */
+  const int szPage = pWal->szPage;
+  int rc = SQLITE_OK;
+  u8 *aBuf;
+  u8 aFrame[WAL_FRAME_HDRSIZE];
+  u32 iRead;
   i64 iCksumOff;
 
   aBuf = sqlite3_malloc(szPage + WAL_FRAME_HDRSIZE);
   if( aBuf==0 ) return SQLITE_NOMEM_BKPT;
 
-  /* Find the checksum values to use as input for the recalculating the
-  ** first checksum. If the first frame is frame 1 (implying that the current
-  ** transaction restarted the wal file), these values must be read from the
-  ** wal-file header. Otherwise, read them from the frame header of the
-  ** previous frame.  */
+
+
+
+
+
   assert( pWal->iReCksum>0 );
   if( pWal->iReCksum==1 ){
     iCksumOff = 24;

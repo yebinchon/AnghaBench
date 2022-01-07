@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int customScore; int bandwidthMb; int /*<<< orphan*/  privateIp; } ;
-typedef  TYPE_1__ SDnodeObj ;
 
-/* Variables and functions */
- int TSDB_CODE_INVALID_SQL ; 
- int TSDB_CODE_SUCCESS ; 
- int atoi (char*) ; 
- int /*<<< orphan*/  mTrace (char*,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  mgmtSetDnodeUnRemove (TYPE_1__*) ; 
- int /*<<< orphan*/  mgmtStartBalanceTimer (int) ; 
- int /*<<< orphan*/  mgmtUpdateDnode (TYPE_1__*) ; 
- int /*<<< orphan*/  paGetToken (char*,char**,int*) ; 
- scalar_t__ strncasecmp (char*,char*,int) ; 
- int /*<<< orphan*/  taosIpStr (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int customScore; int bandwidthMb; int privateIp; } ;
+typedef TYPE_1__ SDnodeObj ;
+
+
+ int TSDB_CODE_INVALID_SQL ;
+ int TSDB_CODE_SUCCESS ;
+ int atoi (char*) ;
+ int mTrace (char*,int ,int,int) ;
+ int mgmtSetDnodeUnRemove (TYPE_1__*) ;
+ int mgmtStartBalanceTimer (int) ;
+ int mgmtUpdateDnode (TYPE_1__*) ;
+ int paGetToken (char*,char**,int*) ;
+ scalar_t__ strncasecmp (char*,char*,int) ;
+ int taosIpStr (int ) ;
 
 int mgmtCfgDynamicOptions(SDnodeObj *pDnode, char *msg) {
   char *option, *value;
-  int   olen, valen;
+  int olen, valen;
 
   paGetToken(msg, &option, &olen);
   if (strncasecmp(option, "unremove", 8) == 0) {

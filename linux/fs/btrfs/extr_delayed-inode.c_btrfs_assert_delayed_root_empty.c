@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct btrfs_fs_info {int /*<<< orphan*/  delayed_root; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WARN_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  btrfs_first_delayed_node (int /*<<< orphan*/ ) ; 
+
+
+
+struct btrfs_fs_info {int delayed_root; } ;
+
+
+ int WARN_ON (int ) ;
+ int btrfs_first_delayed_node (int ) ;
 
 void btrfs_assert_delayed_root_empty(struct btrfs_fs_info *fs_info)
 {
-	WARN_ON(btrfs_first_delayed_node(fs_info->delayed_root));
+ WARN_ON(btrfs_first_delayed_node(fs_info->delayed_root));
 }

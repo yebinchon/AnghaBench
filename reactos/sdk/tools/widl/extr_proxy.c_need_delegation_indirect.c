@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  type_t ;
 
-/* Variables and functions */
- int get_delegation_indirect (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int type_t ;
+
+
+ int get_delegation_indirect (int const*,int *) ;
 
 __attribute__((used)) static int need_delegation_indirect(const type_t *iface)
 {
-  return get_delegation_indirect(iface, NULL);
+  return get_delegation_indirect(iface, ((void*)0));
 }

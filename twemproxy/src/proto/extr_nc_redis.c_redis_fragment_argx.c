@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+
+
+typedef int uint32_t ;
 struct msg_tqh {int dummy; } ;
-struct msg {int narg; scalar_t__ type; scalar_t__ nfrag; struct msg* frag_owner; int /*<<< orphan*/  frag_id; struct msg** frag_seq; int /*<<< orphan*/  redis; int /*<<< orphan*/  request; int /*<<< orphan*/  owner; int /*<<< orphan*/  keys; int /*<<< orphan*/  mhdr; } ;
+struct msg {int narg; scalar_t__ type; scalar_t__ nfrag; struct msg* frag_owner; int frag_id; struct msg** frag_seq; int redis; int request; int owner; int keys; int mhdr; } ;
 struct mbuf {char* pos; char* start; } ;
 struct keypos {scalar_t__ start; scalar_t__ end; } ;
-typedef  int /*<<< orphan*/  rstatus_t ;
+typedef int rstatus_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- scalar_t__ MSG_REQ_REDIS_DEL ; 
- scalar_t__ MSG_REQ_REDIS_MGET ; 
- scalar_t__ MSG_REQ_REDIS_MSET ; 
- int /*<<< orphan*/  NC_ENOMEM ; 
- int /*<<< orphan*/  NC_OK ; 
- int /*<<< orphan*/  NOT_REACHED () ; 
- struct mbuf* STAILQ_FIRST (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TAILQ_INSERT_TAIL (struct msg_tqh*,struct msg*,int /*<<< orphan*/ ) ; 
- struct keypos* array_get (int /*<<< orphan*/ ,int) ; 
- int array_n (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  m_tqe ; 
- int msg_backend_idx (struct msg*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  msg_gen_frag_id () ; 
- struct msg* msg_get (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg_prepend_format (struct msg*,char*,int) ; 
- struct msg** nc_alloc (int) ; 
- int /*<<< orphan*/  nc_free (struct msg**) ; 
- struct msg** nc_zalloc (int) ; 
- int /*<<< orphan*/  redis_append_key (struct msg*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  redis_copy_bulk (struct msg*,struct msg*) ; 
+
+ int ASSERT (int) ;
+ scalar_t__ MSG_REQ_REDIS_DEL ;
+ scalar_t__ MSG_REQ_REDIS_MGET ;
+ scalar_t__ MSG_REQ_REDIS_MSET ;
+ int NC_ENOMEM ;
+ int NC_OK ;
+ int NOT_REACHED () ;
+ struct mbuf* STAILQ_FIRST (int *) ;
+ int TAILQ_INSERT_TAIL (struct msg_tqh*,struct msg*,int ) ;
+ struct keypos* array_get (int ,int) ;
+ int array_n (int ) ;
+ int m_tqe ;
+ int msg_backend_idx (struct msg*,scalar_t__,scalar_t__) ;
+ int msg_gen_frag_id () ;
+ struct msg* msg_get (int ,int ,int ) ;
+ int msg_prepend_format (struct msg*,char*,int) ;
+ struct msg** nc_alloc (int) ;
+ int nc_free (struct msg**) ;
+ struct msg** nc_zalloc (int) ;
+ int redis_append_key (struct msg*,scalar_t__,scalar_t__) ;
+ int redis_copy_bulk (struct msg*,struct msg*) ;
 
 __attribute__((used)) static rstatus_t
 redis_fragment_argx(struct msg *r, uint32_t ncontinuum, struct msg_tqh *frag_msgq,
@@ -52,13 +52,13 @@ redis_fragment_argx(struct msg *r, uint32_t ncontinuum, struct msg_tqh *frag_msg
     ASSERT(array_n(r->keys) == (r->narg - 1) / key_step);
 
     sub_msgs = nc_zalloc(ncontinuum * sizeof(*sub_msgs));
-    if (sub_msgs == NULL) {
+    if (sub_msgs == ((void*)0)) {
         return NC_ENOMEM;
     }
 
-    ASSERT(r->frag_seq == NULL);
+    ASSERT(r->frag_seq == ((void*)0));
     r->frag_seq = nc_alloc(array_n(r->keys) * sizeof(*r->frag_seq));
-    if (r->frag_seq == NULL) {
+    if (r->frag_seq == ((void*)0)) {
         nc_free(sub_msgs);
         return NC_ENOMEM;
     }
@@ -66,13 +66,13 @@ redis_fragment_argx(struct msg *r, uint32_t ncontinuum, struct msg_tqh *frag_msg
     mbuf = STAILQ_FIRST(&r->mhdr);
     mbuf->pos = mbuf->start;
 
-    /*
-     * This code is based on the assumption that '*narg\r\n$4\r\nMGET\r\n' is located
-     * in a contiguous location.
-     * This is always true because we have capped our MBUF_MIN_SIZE at 512 and
-     * whenever we have multiple messages, we copy the tail message into a new mbuf
-     */
-    for (i = 0; i < 3; i++) {                 /* eat *narg\r\n$4\r\nMGET\r\n */
+
+
+
+
+
+
+    for (i = 0; i < 3; i++) {
         for (; *(mbuf->pos) != '\n';) {
             mbuf->pos++;
         }
@@ -83,14 +83,14 @@ redis_fragment_argx(struct msg *r, uint32_t ncontinuum, struct msg_tqh *frag_msg
     r->nfrag = 0;
     r->frag_owner = r;
 
-    for (i = 0; i < array_n(r->keys); i++) {        /* for each key */
+    for (i = 0; i < array_n(r->keys); i++) {
         struct msg *sub_msg;
         struct keypos *kpos = array_get(r->keys, i);
         uint32_t idx = msg_backend_idx(r, kpos->start, kpos->end - kpos->start);
 
-        if (sub_msgs[idx] == NULL) {
+        if (sub_msgs[idx] == ((void*)0)) {
             sub_msgs[idx] = msg_get(r->owner, r->request, r->redis);
-            if (sub_msgs[idx] == NULL) {
+            if (sub_msgs[idx] == ((void*)0)) {
                 nc_free(sub_msgs);
                 return NC_ENOMEM;
             }
@@ -104,10 +104,10 @@ redis_fragment_argx(struct msg *r, uint32_t ncontinuum, struct msg_tqh *frag_msg
             return status;
         }
 
-        if (key_step == 1) {                            /* mget,del */
+        if (key_step == 1) {
             continue;
-        } else {                                        /* mset */
-            status = redis_copy_bulk(NULL, r);          /* eat key */
+        } else {
+            status = redis_copy_bulk(((void*)0), r);
             if (status != NC_OK) {
                 nc_free(sub_msgs);
                 return status;
@@ -123,9 +123,9 @@ redis_fragment_argx(struct msg *r, uint32_t ncontinuum, struct msg_tqh *frag_msg
         }
     }
 
-    for (i = 0; i < ncontinuum; i++) {     /* prepend mget header, and forward it */
+    for (i = 0; i < ncontinuum; i++) {
         struct msg *sub_msg = sub_msgs[i];
-        if (sub_msg == NULL) {
+        if (sub_msg == ((void*)0)) {
             continue;
         }
 

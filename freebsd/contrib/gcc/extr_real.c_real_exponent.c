@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int cl; } ;
-typedef  TYPE_1__ REAL_VALUE_TYPE ;
+typedef TYPE_1__ REAL_VALUE_TYPE ;
 
-/* Variables and functions */
- int REAL_EXP (TYPE_1__ const*) ; 
- int /*<<< orphan*/  gcc_unreachable () ; 
-#define  rvc_inf 131 
-#define  rvc_nan 130 
-#define  rvc_normal 129 
-#define  rvc_zero 128 
+
+ int REAL_EXP (TYPE_1__ const*) ;
+ int gcc_unreachable () ;
+
+
+
+
 
 int
 real_exponent (const REAL_VALUE_TYPE *r)
 {
   switch (r->cl)
     {
-    case rvc_zero:
+    case 128:
       return 0;
-    case rvc_inf:
-    case rvc_nan:
+    case 131:
+    case 130:
       return (unsigned int)-1 >> 1;
-    case rvc_normal:
+    case 129:
       return REAL_EXP (r);
     default:
       gcc_unreachable ();

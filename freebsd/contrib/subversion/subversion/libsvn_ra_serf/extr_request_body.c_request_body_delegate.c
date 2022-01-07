@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  total_bytes; int /*<<< orphan*/  all_data; scalar_t__ file; } ;
-typedef  TYPE_1__ svn_ra_serf__request_body_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  serf_bucket_t ;
-typedef  int /*<<< orphan*/  serf_bucket_alloc_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  scalar_t__ apr_off_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_SET ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/ * serf_bucket_file_create (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * serf_bucket_simple_create (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_file_seek (scalar_t__,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int total_bytes; int all_data; scalar_t__ file; } ;
+typedef TYPE_1__ svn_ra_serf__request_body_t ;
+typedef int svn_error_t ;
+typedef int serf_bucket_t ;
+typedef int serf_bucket_alloc_t ;
+typedef int apr_pool_t ;
+typedef scalar_t__ apr_off_t ;
+
+
+ int APR_SET ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int * serf_bucket_file_create (scalar_t__,int *) ;
+ int * serf_bucket_simple_create (int ,int ,int *,int *,int *) ;
+ int svn_io_file_seek (scalar_t__,int ,scalar_t__*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 request_body_delegate(serf_bucket_t **body_bkt,
@@ -49,7 +49,7 @@ request_body_delegate(serf_bucket_t **body_bkt,
     {
       *body_bkt = serf_bucket_simple_create(b->all_data,
                                             b->total_bytes,
-                                            NULL, NULL, alloc);
+                                            ((void*)0), ((void*)0), alloc);
     }
 
   return SVN_NO_ERROR;

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ VARIANT_BOOL ;
-typedef  int /*<<< orphan*/  IXMLDOMNodeList ;
-typedef  int /*<<< orphan*/  IXMLDOMNode ;
-typedef  int /*<<< orphan*/  IXMLDOMElement ;
-typedef  int /*<<< orphan*/  IXMLDOMDocument2 ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- scalar_t__ IXMLDOMDocument2_get_documentElement (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IXMLDOMDocument2_loadXML (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ IXMLDOMDocument2_put_preserveWhiteSpace (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  IXMLDOMElement_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IXMLDOMElement_get_childNodes (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMNodeList_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IXMLDOMNodeList_get_item (int /*<<< orphan*/ *,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMNode_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IXMLDOMNode_get_text (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- scalar_t__ VARIANT_TRUE ; 
- int /*<<< orphan*/  _bstr_ (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  charrefsxml ; 
- int /*<<< orphan*/  lstrcmpW (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,...) ; 
- int /*<<< orphan*/  wine_dbgstr_w (int /*<<< orphan*/ ) ; 
+
+
+
+typedef char WCHAR ;
+typedef scalar_t__ VARIANT_BOOL ;
+typedef int IXMLDOMNodeList ;
+typedef int IXMLDOMNode ;
+typedef int IXMLDOMElement ;
+typedef int IXMLDOMDocument2 ;
+typedef scalar_t__ HRESULT ;
+typedef int BSTR ;
+
+
+ scalar_t__ IXMLDOMDocument2_get_documentElement (int *,int **) ;
+ scalar_t__ IXMLDOMDocument2_loadXML (int *,int ,scalar_t__*) ;
+ scalar_t__ IXMLDOMDocument2_put_preserveWhiteSpace (int *,scalar_t__) ;
+ int IXMLDOMElement_Release (int *) ;
+ scalar_t__ IXMLDOMElement_get_childNodes (int *,int **) ;
+ int IXMLDOMNodeList_Release (int *) ;
+ scalar_t__ IXMLDOMNodeList_get_item (int *,int,int **) ;
+ int IXMLDOMNode_Release (int *) ;
+ scalar_t__ IXMLDOMNode_get_text (int *,int *) ;
+ scalar_t__ S_OK ;
+ int SysFreeString (int ) ;
+ scalar_t__ VARIANT_TRUE ;
+ int _bstr_ (int ) ;
+ int charrefsxml ;
+ int lstrcmpW (int ,char const*) ;
+ int ok (int,char*,scalar_t__,...) ;
+ int wine_dbgstr_w (int ) ;
 
 __attribute__((used)) static void test_preserve_charref(IXMLDOMDocument2 *doc, VARIANT_BOOL preserve)
 {

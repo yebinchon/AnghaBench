@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ off_t ;
 
-/* Variables and functions */
- int read_c0_cause () ; 
- int read_c0_compare () ; 
- int read_c0_compare2 () ; 
- int read_c0_compare3 () ; 
- int read_c0_config1 () ; 
- int read_c0_config2 () ; 
- int read_c0_config3 () ; 
- int read_c0_config7 () ; 
- int read_c0_count () ; 
- int read_c0_count2 () ; 
- int read_c0_count3 () ; 
- int read_c0_status () ; 
- scalar_t__ sprintf (char*,char*,int) ; 
+
+
+
+typedef scalar_t__ off_t ;
+
+
+ int read_c0_cause () ;
+ int read_c0_compare () ;
+ int read_c0_compare2 () ;
+ int read_c0_compare3 () ;
+ int read_c0_config1 () ;
+ int read_c0_config2 () ;
+ int read_c0_config3 () ;
+ int read_c0_config7 () ;
+ int read_c0_count () ;
+ int read_c0_count2 () ;
+ int read_c0_count3 () ;
+ int read_c0_status () ;
+ scalar_t__ sprintf (char*,char*,int) ;
 
 __attribute__((used)) static int pnx8550_registers_read(char* page, char** start, off_t offset, int count, int* eof, void* data)
 {

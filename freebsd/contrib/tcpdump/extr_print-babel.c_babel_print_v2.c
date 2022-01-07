@@ -1,55 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_short ;
-typedef  int u_int ;
-typedef  int u_char ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int u_short ;
+typedef int u_int ;
+typedef int u_char ;
 struct TYPE_7__ {scalar_t__ ndo_vflag; } ;
-typedef  TYPE_1__ netdissect_options ;
+typedef TYPE_1__ netdissect_options ;
 
-/* Variables and functions */
- void* EXTRACT_16BITS (int const*) ; 
- int /*<<< orphan*/  EXTRACT_32BITS (int const*) ; 
- int /*<<< orphan*/  ICHECK (int,int) ; 
-#define  MESSAGE_ACK 142 
-#define  MESSAGE_ACK_REQ 141 
-#define  MESSAGE_HELLO 140 
-#define  MESSAGE_HMAC 139 
-#define  MESSAGE_IHU 138 
-#define  MESSAGE_MH_REQUEST 137 
-#define  MESSAGE_MH_REQUEST_SRC_SPECIFIC 136 
-#define  MESSAGE_NH 135 
- int MESSAGE_PAD1 ; 
-#define  MESSAGE_PADN 134 
-#define  MESSAGE_REQUEST 133 
-#define  MESSAGE_REQUEST_SRC_SPECIFIC 132 
-#define  MESSAGE_ROUTER_ID 131 
-#define  MESSAGE_TSPC 130 
-#define  MESSAGE_UPDATE 129 
-#define  MESSAGE_UPDATE_SRC_SPECIFIC 128 
- int /*<<< orphan*/  ND_PRINT (TYPE_1__*) ; 
- int /*<<< orphan*/  ND_TCHECK2 (int const,int) ; 
- int /*<<< orphan*/  format_address (TYPE_1__*,int*) ; 
- int /*<<< orphan*/  format_id (int const*) ; 
- int /*<<< orphan*/  format_interval (unsigned short) ; 
- int /*<<< orphan*/  format_interval_update (int) ; 
- char* format_prefix (TYPE_1__*,int*,int) ; 
- int /*<<< orphan*/  istr ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
- int network_address (int const,int const*,int,int*) ; 
- int network_prefix (int const,int const,int const,int const*,int*,int,int*) ; 
- int /*<<< orphan*/  subtlvs_print (TYPE_1__*,int const*,int const*,int) ; 
- int /*<<< orphan*/  tstr ; 
+
+ void* EXTRACT_16BITS (int const*) ;
+ int EXTRACT_32BITS (int const*) ;
+ int ICHECK (int,int) ;
+ int MESSAGE_PAD1 ;
+
+
+
+
+
+
+
+ int ND_PRINT (TYPE_1__*) ;
+ int ND_TCHECK2 (int const,int) ;
+ int format_address (TYPE_1__*,int*) ;
+ int format_id (int const*) ;
+ int format_interval (unsigned short) ;
+ int format_interval_update (int) ;
+ char* format_prefix (TYPE_1__*,int*,int) ;
+ int istr ;
+ int memcpy (int*,int*,int) ;
+ int network_address (int const,int const*,int,int*) ;
+ int network_prefix (int const,int const,int const,int const*,int*,int,int*) ;
+ int subtlvs_print (TYPE_1__*,int const*,int const*,int) ;
+ int tstr ;
 
 __attribute__((used)) static void
 babel_print_v2(netdissect_options *ndo,
@@ -67,7 +59,7 @@ babel_print_v2(netdissect_options *ndo,
     bodylen = EXTRACT_16BITS(cp + 2);
     ND_PRINT((ndo, " (%u)", bodylen));
 
-    /* Process the TLVs in the body */
+
     i = 0;
     while(i < bodylen) {
         const u_char *message;
@@ -90,7 +82,7 @@ babel_print_v2(netdissect_options *ndo,
         ICHECK(i, 2 + len);
 
         switch(type) {
-        case MESSAGE_PADN: {
+        case 134: {
             if (!ndo->ndo_vflag)
                 ND_PRINT((ndo, " padN"));
             else
@@ -98,7 +90,7 @@ babel_print_v2(netdissect_options *ndo,
         }
             break;
 
-        case MESSAGE_ACK_REQ: {
+        case 141: {
             u_short nonce, interval;
             if (!ndo->ndo_vflag)
                 ND_PRINT((ndo, " ack-req"));
@@ -112,7 +104,7 @@ babel_print_v2(netdissect_options *ndo,
         }
             break;
 
-        case MESSAGE_ACK: {
+        case 142: {
             u_short nonce;
             if (!ndo->ndo_vflag)
                 ND_PRINT((ndo, " ack"));
@@ -125,7 +117,7 @@ babel_print_v2(netdissect_options *ndo,
         }
             break;
 
-        case MESSAGE_HELLO:  {
+        case 140: {
             u_short seqno, interval;
             if (!ndo->ndo_vflag)
                 ND_PRINT((ndo, " hello"));
@@ -135,14 +127,14 @@ babel_print_v2(netdissect_options *ndo,
                 seqno = EXTRACT_16BITS(message + 4);
                 interval = EXTRACT_16BITS(message + 6);
                 ND_PRINT((ndo, "seqno %u interval %s", seqno, format_interval(interval)));
-                /* Extra data. */
+
                 if(len > 6)
                     subtlvs_print(ndo, message + 8, message + 2 + len, type);
             }
         }
             break;
 
-        case MESSAGE_IHU: {
+        case 138: {
             unsigned short txcost, interval;
             if (!ndo->ndo_vflag)
                 ND_PRINT((ndo, " ihu"));
@@ -157,7 +149,7 @@ babel_print_v2(netdissect_options *ndo,
                 if(rc < 0) { ND_PRINT((ndo, "%s", tstr)); break; }
                 ND_PRINT((ndo, "%s txcost %u interval %s",
                        format_address(ndo, address), txcost, format_interval(interval)));
-                /* Extra data. */
+
                 if((u_int)rc < len - 6)
                     subtlvs_print(ndo, message + 8 + rc, message + 2 + len,
                                   type);
@@ -165,7 +157,7 @@ babel_print_v2(netdissect_options *ndo,
         }
             break;
 
-        case MESSAGE_ROUTER_ID: {
+        case 131: {
             if (!ndo->ndo_vflag)
                 ND_PRINT((ndo, " router-id"));
             else {
@@ -176,7 +168,7 @@ babel_print_v2(netdissect_options *ndo,
         }
             break;
 
-        case MESSAGE_NH: {
+        case 135: {
             if (!ndo->ndo_vflag)
                 ND_PRINT((ndo, " nh"));
             else {
@@ -191,7 +183,7 @@ babel_print_v2(netdissect_options *ndo,
         }
             break;
 
-        case MESSAGE_UPDATE: {
+        case 129: {
             if (!ndo->ndo_vflag) {
                 ND_PRINT((ndo, " update"));
                 if(len < 1)
@@ -229,14 +221,14 @@ babel_print_v2(netdissect_options *ndo,
                     else
                         memcpy(v6_prefix, prefix, 16);
                 }
-                /* extra data? */
+
                 if((u_int)rc < len - 10)
                     subtlvs_print(ndo, message + 12 + rc, message + 2 + len, type);
             }
         }
             break;
 
-        case MESSAGE_REQUEST: {
+        case 133: {
             if (!ndo->ndo_vflag)
                 ND_PRINT((ndo, " request"));
             else {
@@ -246,7 +238,7 @@ babel_print_v2(netdissect_options *ndo,
                 if(len < 2) goto invalid;
                 plen = message[3] + (message[2] == 1 ? 96 : 0);
                 rc = network_prefix(message[2], message[3], 0,
-                                    message + 4, NULL, len - 2, prefix);
+                                    message + 4, ((void*)0), len - 2, prefix);
                 if(rc < 0) goto invalid;
                 ND_PRINT((ndo, "for %s",
                        message[2] == 0 ? "any" : format_prefix(ndo, prefix, plen)));
@@ -254,7 +246,7 @@ babel_print_v2(netdissect_options *ndo,
         }
             break;
 
-        case MESSAGE_MH_REQUEST : {
+        case 137 : {
             if (!ndo->ndo_vflag)
                 ND_PRINT((ndo, " mh-request"));
             else {
@@ -265,7 +257,7 @@ babel_print_v2(netdissect_options *ndo,
                 if(len < 14) goto invalid;
                 seqno = EXTRACT_16BITS(message + 4);
                 rc = network_prefix(message[2], message[3], 0,
-                                    message + 16, NULL, len - 14, prefix);
+                                    message + 16, ((void*)0), len - 14, prefix);
                 if(rc < 0) goto invalid;
                 plen = message[3] + (message[2] == 1 ? 96 : 0);
                 ND_PRINT((ndo, "(%u hops) for %s seqno %u id %s",
@@ -274,7 +266,7 @@ babel_print_v2(netdissect_options *ndo,
             }
         }
             break;
-        case MESSAGE_TSPC :
+        case 130 :
             if (!ndo->ndo_vflag)
                 ND_PRINT((ndo, " tspc"));
             else {
@@ -284,7 +276,7 @@ babel_print_v2(netdissect_options *ndo,
                        EXTRACT_16BITS(message + 2)));
             }
             break;
-        case MESSAGE_HMAC : {
+        case 139 : {
             if (!ndo->ndo_vflag)
                 ND_PRINT((ndo, " hmac"));
             else {
@@ -298,7 +290,7 @@ babel_print_v2(netdissect_options *ndo,
         }
             break;
 
-        case MESSAGE_UPDATE_SRC_SPECIFIC : {
+        case 128 : {
             if(!ndo->ndo_vflag) {
                 ND_PRINT((ndo, " ss-update"));
             } else {
@@ -324,7 +316,7 @@ babel_print_v2(netdissect_options *ndo,
                     plen += 96;
                 parsed_len += rc;
                 rc = network_prefix(ae, src_plen, 0, message + 2 + parsed_len,
-                                    NULL, len - parsed_len, src_prefix);
+                                    ((void*)0), len - parsed_len, src_prefix);
                 if(rc < 0) goto invalid;
                 if(ae == 1)
                     src_plen += 96;
@@ -334,7 +326,7 @@ babel_print_v2(netdissect_options *ndo,
                 ND_PRINT((ndo, " %s metric %u seqno %u interval %s",
                           format_prefix(ndo, src_prefix, src_plen),
                           metric, seqno, format_interval_update(interval)));
-                /* extra data? */
+
                 if((u_int)parsed_len < len)
                     subtlvs_print(ndo, message + 2 + parsed_len,
                                   message + 2 + len, type);
@@ -342,7 +334,7 @@ babel_print_v2(netdissect_options *ndo,
         }
             break;
 
-        case MESSAGE_REQUEST_SRC_SPECIFIC : {
+        case 132 : {
             if(!ndo->ndo_vflag)
                 ND_PRINT((ndo, " ss-request"));
             else {
@@ -354,13 +346,13 @@ babel_print_v2(netdissect_options *ndo,
                 plen = message[3];
                 src_plen = message[4];
                 rc = network_prefix(ae, plen, 0, message + 2 + parsed_len,
-                                    NULL, len - parsed_len, prefix);
+                                    ((void*)0), len - parsed_len, prefix);
                 if(rc < 0) goto invalid;
                 if(ae == 1)
                     plen += 96;
                 parsed_len += rc;
                 rc = network_prefix(ae, src_plen, 0, message + 2 + parsed_len,
-                                    NULL, len - parsed_len, src_prefix);
+                                    ((void*)0), len - parsed_len, src_prefix);
                 if(rc < 0) goto invalid;
                 if(ae == 1)
                     src_plen += 96;
@@ -375,14 +367,14 @@ babel_print_v2(netdissect_options *ndo,
         }
             break;
 
-        case MESSAGE_MH_REQUEST_SRC_SPECIFIC : {
+        case 136 : {
             if(!ndo->ndo_vflag)
                 ND_PRINT((ndo, " ss-mh-request"));
             else {
                 int rc, parsed_len = 14;
                 u_short seqno;
                 u_char ae, plen, src_plen, prefix[16], src_prefix[16], hopc;
-                const u_char *router_id = NULL;
+                const u_char *router_id = ((void*)0);
                 ND_PRINT((ndo, "\n\tSS-MH-Request "));
                 if(len < 14) goto invalid;
                 ae = message[2];
@@ -392,13 +384,13 @@ babel_print_v2(netdissect_options *ndo,
                 src_plen = message[7];
                 router_id = message + 8;
                 rc = network_prefix(ae, plen, 0, message + 2 + parsed_len,
-                                    NULL, len - parsed_len, prefix);
+                                    ((void*)0), len - parsed_len, prefix);
                 if(rc < 0) goto invalid;
                 if(ae == 1)
                     plen += 96;
                 parsed_len += rc;
                 rc = network_prefix(ae, src_plen, 0, message + 2 + parsed_len,
-                                    NULL, len - parsed_len, src_prefix);
+                                    ((void*)0), len - parsed_len, src_prefix);
                 if(rc < 0) goto invalid;
                 if(ae == 1)
                     src_plen += 96;

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ verbose; } ;
 struct Curl_easy {TYPE_1__ set; } ;
 
-/* Variables and functions */
- int CURL_DO ; 
- int CURL_DONT ; 
- int CURL_IAC ; 
- int /*<<< orphan*/  CURL_TELCMD (int) ; 
- scalar_t__ CURL_TELCMD_OK (int) ; 
- char* CURL_TELOPT (int) ; 
- int CURL_TELOPT_EXOPL ; 
- scalar_t__ CURL_TELOPT_OK (int) ; 
- int CURL_WILL ; 
- int CURL_WONT ; 
- int /*<<< orphan*/  infof (struct Curl_easy*,char*,char const*,...) ; 
+
+ int CURL_DO ;
+ int CURL_DONT ;
+ int CURL_IAC ;
+ int CURL_TELCMD (int) ;
+ scalar_t__ CURL_TELCMD_OK (int) ;
+ char* CURL_TELOPT (int) ;
+ int CURL_TELOPT_EXOPL ;
+ scalar_t__ CURL_TELOPT_OK (int) ;
+ int CURL_WILL ;
+ int CURL_WONT ;
+ int infof (struct Curl_easy*,char*,char const*,...) ;
 
 __attribute__((used)) static void printoption(struct Curl_easy *data,
                         const char *direction, int cmd, int option)
@@ -49,7 +49,7 @@ __attribute__((used)) static void printoption(struct Curl_easy *data,
         else if(option == CURL_TELOPT_EXOPL)
           opt = "EXOPL";
         else
-          opt = NULL;
+          opt = ((void*)0);
 
         if(opt)
           infof(data, "%s %s %s\n", direction, fmt, opt);

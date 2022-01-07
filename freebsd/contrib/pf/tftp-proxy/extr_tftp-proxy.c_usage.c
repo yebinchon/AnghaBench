@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  __progname ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  syslog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+ int LOG_ERR ;
+ int __progname ;
+ int exit (int) ;
+ int syslog (int ,char*,int ) ;
 
 __attribute__((used)) static void
 usage(void)
 {
-	syslog(LOG_ERR, "usage: %s [-v] [-w transwait]", __progname);
-	exit(1);
+ syslog(LOG_ERR, "usage: %s [-v] [-w transwait]", __progname);
+ exit(1);
 }

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ esp_sleep_source_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
-struct TYPE_2__ {int /*<<< orphan*/  wakeup_triggers; scalar_t__ ext1_trigger_mode; scalar_t__ ext1_rtc_gpio_mask; scalar_t__ ext0_trigger_level; scalar_t__ ext0_rtc_gpio_num; scalar_t__ sleep_duration; } ;
 
-/* Variables and functions */
- scalar_t__ CHECK_SOURCE (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ESP_ERR_INVALID_STATE ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  ESP_OK ; 
- int /*<<< orphan*/  ESP_SLEEP_WAKEUP_EXT0 ; 
- int /*<<< orphan*/  ESP_SLEEP_WAKEUP_EXT1 ; 
- int /*<<< orphan*/  ESP_SLEEP_WAKEUP_TIMER ; 
- int /*<<< orphan*/  ESP_SLEEP_WAKEUP_TOUCHPAD ; 
- int /*<<< orphan*/  RTC_EXT0_TRIG_EN ; 
- int /*<<< orphan*/  RTC_EXT1_TRIG_EN ; 
- int /*<<< orphan*/  RTC_TIMER_TRIG_EN ; 
- int /*<<< orphan*/  RTC_TOUCH_TRIG_EN ; 
- int /*<<< orphan*/  TAG ; 
- TYPE_1__ s_config ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ esp_sleep_source_t ;
+typedef int esp_err_t ;
+struct TYPE_2__ {int wakeup_triggers; scalar_t__ ext1_trigger_mode; scalar_t__ ext1_rtc_gpio_mask; scalar_t__ ext0_trigger_level; scalar_t__ ext0_rtc_gpio_num; scalar_t__ sleep_duration; } ;
+
+
+ scalar_t__ CHECK_SOURCE (scalar_t__,int ,int ) ;
+ int ESP_ERR_INVALID_STATE ;
+ int ESP_LOGE (int ,char*,int) ;
+ int ESP_OK ;
+ int ESP_SLEEP_WAKEUP_EXT0 ;
+ int ESP_SLEEP_WAKEUP_EXT1 ;
+ int ESP_SLEEP_WAKEUP_TIMER ;
+ int ESP_SLEEP_WAKEUP_TOUCHPAD ;
+ int RTC_EXT0_TRIG_EN ;
+ int RTC_EXT1_TRIG_EN ;
+ int RTC_TIMER_TRIG_EN ;
+ int RTC_TOUCH_TRIG_EN ;
+ int TAG ;
+ TYPE_1__ s_config ;
 
 esp_err_t esp_sleep_disable_wakeup_source(esp_sleep_source_t source)
 {
-    // For most of sources it is enough to set trigger mask in local
-    // configuration structure. The actual RTC wake up options
-    // will be updated by esp_sleep_start().
+
+
+
     if (CHECK_SOURCE(source, ESP_SLEEP_WAKEUP_TIMER, RTC_TIMER_TRIG_EN)) {
         s_config.wakeup_triggers &= ~RTC_TIMER_TRIG_EN;
         s_config.sleep_duration = 0;

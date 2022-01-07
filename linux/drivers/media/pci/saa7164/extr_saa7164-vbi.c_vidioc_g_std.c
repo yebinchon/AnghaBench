@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  v4l2_std_id ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int v4l2_std_id ;
 struct saa7164_encoder_fh {TYPE_1__* port; } ;
 struct file {struct saa7164_encoder_fh* private_data; } ;
-struct TYPE_2__ {int /*<<< orphan*/  enc_port; } ;
+struct TYPE_2__ {int enc_port; } ;
 
-/* Variables and functions */
- int saa7164_g_std (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int saa7164_g_std (int ,int *) ;
 
 __attribute__((used)) static int vidioc_g_std(struct file *file, void *priv, v4l2_std_id *id)
 {
-	struct saa7164_encoder_fh *fh = file->private_data;
+ struct saa7164_encoder_fh *fh = file->private_data;
 
-	return saa7164_g_std(fh->port->enc_port, id);
+ return saa7164_g_std(fh->port->enc_port, id);
 }

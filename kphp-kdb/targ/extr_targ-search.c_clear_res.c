@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ R_cnt ; 
- int R_position ; 
- scalar_t__ R_tot ; 
- int /*<<< orphan*/  postprocess_res ; 
- int /*<<< orphan*/  postprocess_res_std ; 
- int /*<<< orphan*/  store_res ; 
- int /*<<< orphan*/  store_res_std ; 
+ scalar_t__ R_cnt ;
+ int R_position ;
+ scalar_t__ R_tot ;
+ int postprocess_res ;
+ int postprocess_res_std ;
+ int store_res ;
+ int store_res_std ;
 
 void clear_res (void) {
   R_cnt = R_tot = 0;

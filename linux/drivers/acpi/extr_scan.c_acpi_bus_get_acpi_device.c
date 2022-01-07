@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct acpi_device {int dummy; } ;
-typedef  int /*<<< orphan*/  acpi_handle ;
+typedef int acpi_handle ;
 
-/* Variables and functions */
- int /*<<< orphan*/  acpi_get_device_data (int /*<<< orphan*/ ,struct acpi_device**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_acpi_device ; 
+
+ int acpi_get_device_data (int ,struct acpi_device**,int ) ;
+ int get_acpi_device ;
 
 struct acpi_device *acpi_bus_get_acpi_device(acpi_handle handle)
 {
-	struct acpi_device *adev = NULL;
+ struct acpi_device *adev = ((void*)0);
 
-	acpi_get_device_data(handle, &adev, get_acpi_device);
-	return adev;
+ acpi_get_device_data(handle, &adev, get_acpi_device);
+ return adev;
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int u16 ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u16 ;
 struct TYPE_3__ {int CR1; int HIRQ; } ;
 struct TYPE_4__ {int status; int FAD; int speed1x; TYPE_1__ reg; scalar_t__ isdiskchanged; scalar_t__ isbufferfull; } ;
 
-/* Variables and functions */
- int CDB_HIRQ_CMOK ; 
- int CDB_HIRQ_DCHG ; 
- int CDB_HIRQ_ESEL ; 
- int CDB_STAT_NODISC ; 
- int CDB_STAT_OPEN ; 
- int CDB_STAT_PAUSE ; 
- TYPE_2__* Cs2Area ; 
- int /*<<< orphan*/  doCDReport (int) ; 
+
+ int CDB_HIRQ_CMOK ;
+ int CDB_HIRQ_DCHG ;
+ int CDB_HIRQ_ESEL ;
+ int CDB_STAT_NODISC ;
+ int CDB_STAT_OPEN ;
+ int CDB_STAT_PAUSE ;
+ TYPE_2__* Cs2Area ;
+ int doCDReport (int) ;
 
 void Cs2InitializeCDSystem(void) {
   u16 val = 0;
@@ -39,22 +39,22 @@ void Cs2InitializeCDSystem(void) {
 
   if (initflag & 0x1)
   {
-     // Reset CD block software
+
   }
 
   if (initflag & 0x2)
   {
-     // Decode RW subcode
+
   }
 
   if (initflag & 0x4)
   {
-     // Don't confirm Mode 2 subheader
+
   }
 
   if (initflag & 0x8)
   {
-     // Retry reading Form 2 sectors
+
   }
 
   if (initflag & 0x10)

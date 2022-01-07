@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsstr_t ;
-struct TYPE_6__ {char* ptr; int /*<<< orphan*/  end; int /*<<< orphan*/  ctx; } ;
-typedef  TYPE_1__ json_parse_ctx_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  create_array (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  create_object (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  debugstr_w (char*) ; 
- int /*<<< orphan*/  falseW ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  is_keyword (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  iswdigit (char) ; 
- int /*<<< orphan*/  jsdisp_propput_idx (int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_propput_name (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * jsstr_alloc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_bool (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_null () ; 
- int /*<<< orphan*/  jsval_number (int) ; 
- int /*<<< orphan*/  jsval_obj (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nullW ; 
- int /*<<< orphan*/  parse_decimal (char**,int /*<<< orphan*/ ,double*) ; 
- int /*<<< orphan*/  parse_json_string (TYPE_1__*,int /*<<< orphan*/ **) ; 
- char skip_spaces (TYPE_1__*) ; 
- int /*<<< orphan*/  trueW ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int jsval_t ;
+typedef int jsstr_t ;
+struct TYPE_6__ {char* ptr; int end; int ctx; } ;
+typedef TYPE_1__ json_parse_ctx_t ;
+typedef int jsdisp_t ;
+typedef int WCHAR ;
+typedef int HRESULT ;
+
+
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ int FAILED (int ) ;
+ int FALSE ;
+ int FIXME (char*,...) ;
+ int SUCCEEDED (int ) ;
+ int S_OK ;
+ int TRUE ;
+ int create_array (int ,int ,int **) ;
+ int create_object (int ,int *,int **) ;
+ int debugstr_w (char*) ;
+ int falseW ;
+ int heap_free (int *) ;
+ int is_keyword (TYPE_1__*,int ) ;
+ int iswdigit (char) ;
+ int jsdisp_propput_idx (int *,unsigned int,int ) ;
+ int jsdisp_propput_name (int *,int *,int ) ;
+ int jsdisp_release (int *) ;
+ int * jsstr_alloc (int *) ;
+ int jsval_bool (int ) ;
+ int jsval_null () ;
+ int jsval_number (int) ;
+ int jsval_obj (int *) ;
+ int jsval_release (int ) ;
+ int jsval_string (int *) ;
+ int nullW ;
+ int parse_decimal (char**,int ,double*) ;
+ int parse_json_string (TYPE_1__*,int **) ;
+ char skip_spaces (TYPE_1__*) ;
+ int trueW ;
 
 __attribute__((used)) static HRESULT parse_json_value(json_parse_ctx_t *ctx, jsval_t *r)
 {
@@ -57,14 +57,14 @@ __attribute__((used)) static HRESULT parse_json_value(json_parse_ctx_t *ctx, jsv
 
     switch(skip_spaces(ctx)) {
 
-    /* JSONNullLiteral */
+
     case 'n':
         if(!is_keyword(ctx, nullW))
             break;
         *r = jsval_null();
         return S_OK;
 
-    /* JSONBooleanLiteral */
+
     case 't':
         if(!is_keyword(ctx, trueW))
             break;
@@ -76,13 +76,13 @@ __attribute__((used)) static HRESULT parse_json_value(json_parse_ctx_t *ctx, jsv
         *r = jsval_bool(FALSE);
         return S_OK;
 
-    /* JSONObject */
+
     case '{': {
         WCHAR *prop_name;
         jsdisp_t *obj;
         jsval_t val;
 
-        hres = create_object(ctx->ctx, NULL, &obj);
+        hres = create_object(ctx->ctx, ((void*)0), &obj);
         if(FAILED(hres))
             return hres;
 
@@ -133,7 +133,7 @@ __attribute__((used)) static HRESULT parse_json_value(json_parse_ctx_t *ctx, jsv
         break;
     }
 
-    /* JSONString */
+
     case '"': {
         WCHAR *string;
         jsstr_t *str;
@@ -142,7 +142,7 @@ __attribute__((used)) static HRESULT parse_json_value(json_parse_ctx_t *ctx, jsv
         if(FAILED(hres))
             return hres;
 
-        /* FIXME: avoid reallocation */
+
         str = jsstr_alloc(string);
         heap_free(string);
         if(!str)
@@ -152,7 +152,7 @@ __attribute__((used)) static HRESULT parse_json_value(json_parse_ctx_t *ctx, jsv
         return S_OK;
     }
 
-    /* JSONArray */
+
     case '[': {
         jsdisp_t *array;
         unsigned i = 0;
@@ -198,7 +198,7 @@ __attribute__((used)) static HRESULT parse_json_value(json_parse_ctx_t *ctx, jsv
         break;
     }
 
-    /* JSONNumber */
+
     default: {
         int sign = 1;
         double n;

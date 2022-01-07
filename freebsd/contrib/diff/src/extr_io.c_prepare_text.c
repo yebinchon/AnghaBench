@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  word ;
+
+
+
+
+typedef int word ;
 struct file_data {size_t buffered; int missing_newline; } ;
 
-/* Variables and functions */
- char* FILE_BUFFER (struct file_data*) ; 
- char* memchr (char*,char,size_t) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ strip_trailing_cr ; 
+
+ char* FILE_BUFFER (struct file_data*) ;
+ char* memchr (char*,char,size_t) ;
+ int memset (char*,int ,int) ;
+ scalar_t__ strip_trailing_cr ;
 
 __attribute__((used)) static void
 prepare_text (struct file_data *current)
@@ -27,17 +27,17 @@ prepare_text (struct file_data *current)
   char *dst;
 
   if (buffered == 0 || p[buffered - 1] == '\n')
-    current->missing_newline = false;
+    current->missing_newline = 0;
   else
     {
       p[buffered++] = '\n';
-      current->missing_newline = true;
+      current->missing_newline = 1;
     }
 
   if (!p)
     return;
 
-  /* Don't use uninitialized storage when planting or using sentinels.  */
+
   memset (p + buffered, 0, sizeof (word));
 
   if (strip_trailing_cr && (dst = memchr (p, '\r', buffered)))
@@ -46,7 +46,7 @@ prepare_text (struct file_data *current)
       char const *srclim = p + buffered;
 
       do
-	dst += ! ((*dst = *src++) == '\r' && *src == '\n');
+ dst += ! ((*dst = *src++) == '\r' && *src == '\n');
       while (src < srclim);
 
       buffered -= src - dst;

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  last_framenum; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int last_framenum; } ;
 struct TYPE_7__ {TYPE_1__ smpte; } ;
-struct TYPE_8__ {float input_position; int /*<<< orphan*/  lock; TYPE_2__ smpte_source; void* last_ts; int /*<<< orphan*/  input_normal_time; void* input_length; int /*<<< orphan*/  state; } ;
+struct TYPE_8__ {float input_position; int lock; TYPE_2__ smpte_source; void* last_ts; int input_normal_time; void* input_length; int state; } ;
 struct TYPE_9__ {TYPE_3__ timer; } ;
-typedef  TYPE_4__ vlc_player_t ;
+typedef TYPE_4__ vlc_player_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ULONG_MAX ; 
- int /*<<< orphan*/  VLC_PLAYER_TIMER_STATE_DISCONTINUITY ; 
- int /*<<< orphan*/  VLC_TICK_0 ; 
- void* VLC_TICK_INVALID ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int ULONG_MAX ;
+ int VLC_PLAYER_TIMER_STATE_DISCONTINUITY ;
+ int VLC_TICK_0 ;
+ void* VLC_TICK_INVALID ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 void
 vlc_player_ResetTimer(vlc_player_t *player)

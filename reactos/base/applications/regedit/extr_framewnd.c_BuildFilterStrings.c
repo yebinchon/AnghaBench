@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int WCHAR ;
-struct TYPE_3__ {int /*<<< orphan*/  FilterID; int /*<<< orphan*/  DisplayID; } ;
-typedef  TYPE_1__* PFILTERPAIR ;
 
-/* Variables and functions */
- scalar_t__ LoadStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  hInst ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_3__ {int FilterID; int DisplayID; } ;
+typedef TYPE_1__* PFILTERPAIR ;
+
+
+ scalar_t__ LoadStringW (int ,int ,int*,int) ;
+ int hInst ;
 
 void
 BuildFilterStrings(WCHAR *Filter, PFILTERPAIR Pairs, int PairCount)

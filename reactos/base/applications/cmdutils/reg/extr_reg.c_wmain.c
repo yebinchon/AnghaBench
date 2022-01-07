@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int REG_ADD ; 
- int REG_DELETE ; 
- int REG_EXPORT ; 
- int REG_IMPORT ; 
- int REG_INVALID ; 
- int REG_QUERY ; 
- int REG_RESTORE ; 
- int REG_SAVE ; 
- int /*<<< orphan*/  STRING_FUNC_HELP ; 
- int STRING_INVALID_CMDLINE ; 
- int /*<<< orphan*/  STRING_INVALID_OPTION ; 
- int STRING_INVALID_SYNTAX ; 
- int STRING_REG_HELP ; 
- int STRING_USAGE ; 
- scalar_t__ TRUE ; 
- int get_operation (char*,int*) ; 
- scalar_t__ is_help_switch (char*) ; 
- int /*<<< orphan*/  lstrcmpiW (char*,char const*) ; 
- int /*<<< orphan*/  output_message (int,...) ; 
- int /*<<< orphan*/  parse_registry_key (char*,int /*<<< orphan*/ *,char**,char**) ; 
- int reg_add (int /*<<< orphan*/ ,char*,char*,scalar_t__,char*,char,char*,scalar_t__) ; 
- int reg_delete (int /*<<< orphan*/ ,char*,char*,char*,scalar_t__,scalar_t__,scalar_t__) ; 
- int reg_export (int,char**) ; 
- int reg_import (char*) ; 
- int reg_query (int /*<<< orphan*/ ,char*,char*,char*,scalar_t__,scalar_t__) ; 
- int reg_restore (int,char**) ; 
- int reg_save (int,char**) ; 
- int strlenW (char*) ; 
- int /*<<< orphan*/  struprW (char*) ; 
- int tolowerW (char) ; 
+
+
+
+typedef char WCHAR ;
+typedef int HKEY ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ FALSE ;
+ int REG_ADD ;
+ int REG_DELETE ;
+ int REG_EXPORT ;
+ int REG_IMPORT ;
+ int REG_INVALID ;
+ int REG_QUERY ;
+ int REG_RESTORE ;
+ int REG_SAVE ;
+ int STRING_FUNC_HELP ;
+ int STRING_INVALID_CMDLINE ;
+ int STRING_INVALID_OPTION ;
+ int STRING_INVALID_SYNTAX ;
+ int STRING_REG_HELP ;
+ int STRING_USAGE ;
+ scalar_t__ TRUE ;
+ int get_operation (char*,int*) ;
+ scalar_t__ is_help_switch (char*) ;
+ int lstrcmpiW (char*,char const*) ;
+ int output_message (int,...) ;
+ int parse_registry_key (char*,int *,char**,char**) ;
+ int reg_add (int ,char*,char*,scalar_t__,char*,char,char*,scalar_t__) ;
+ int reg_delete (int ,char*,char*,char*,scalar_t__,scalar_t__,scalar_t__) ;
+ int reg_export (int,char**) ;
+ int reg_import (char*) ;
+ int reg_query (int ,char*,char*,char*,scalar_t__,scalar_t__) ;
+ int reg_restore (int,char**) ;
+ int reg_save (int,char**) ;
+ int strlenW (char*) ;
+ int struprW (char*) ;
+ int tolowerW (char) ;
 
 int wmain(int argc, WCHAR *argvW[])
 {
@@ -53,7 +53,7 @@ int wmain(int argc, WCHAR *argvW[])
     BOOL show_op_help = FALSE;
     static const WCHAR switchVAW[] = {'v','a',0};
     static const WCHAR switchVEW[] = {'v','e',0};
-    WCHAR *key_name, *path, *value_name = NULL, *type = NULL, *data = NULL, separator = '\0';
+    WCHAR *key_name, *path, *value_name = ((void*)0), *type = ((void*)0), *data = ((void*)0), separator = '\0';
     BOOL value_empty = FALSE, value_all = FALSE, recurse = FALSE, force = FALSE;
     HKEY root;
 

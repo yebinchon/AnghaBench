@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
-struct TYPE_4__ {int /*<<< orphan*/  video_st; } ;
-typedef  TYPE_1__ VideoState ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+struct TYPE_4__ {int video_st; } ;
+typedef TYPE_1__ VideoState ;
 struct TYPE_5__ {TYPE_1__* is; } ;
-typedef  TYPE_2__ FFPlayer ;
+typedef TYPE_2__ FFPlayer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALOGW (char*,int) ; 
- int abs (int) ; 
- int /*<<< orphan*/  fabs (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_rotation (int /*<<< orphan*/ ) ; 
- scalar_t__ round (int /*<<< orphan*/ ) ; 
+
+ int ALOGW (char*,int) ;
+ int abs (int) ;
+ int fabs (int ) ;
+ int get_rotation (int ) ;
+ scalar_t__ round (int ) ;
 
 int ffp_get_video_rotate_degrees(FFPlayer *ffp)
 {
@@ -31,7 +31,7 @@ int ffp_get_video_rotate_degrees(FFPlayer *ffp)
     if (!is)
         return 0;
 
-    int theta  = abs((int)((int64_t)round(fabs(get_rotation(is->video_st))) % 360));
+    int theta = abs((int)((int64_t)round(fabs(get_rotation(is->video_st))) % 360));
     switch (theta) {
         case 0:
         case 90:

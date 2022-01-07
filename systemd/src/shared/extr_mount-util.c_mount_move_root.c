@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  MS_MOVE ; 
- int /*<<< orphan*/  assert (char const*) ; 
- scalar_t__ chdir (char const*) ; 
- scalar_t__ chroot (char*) ; 
- int errno ; 
- scalar_t__ mount (char const*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ int MS_MOVE ;
+ int assert (char const*) ;
+ scalar_t__ chdir (char const*) ;
+ scalar_t__ chroot (char*) ;
+ int errno ;
+ scalar_t__ mount (char const*,char*,int *,int ,int *) ;
 
 int mount_move_root(const char *path) {
         assert(path);
@@ -25,7 +17,7 @@ int mount_move_root(const char *path) {
         if (chdir(path) < 0)
                 return -errno;
 
-        if (mount(path, "/", NULL, MS_MOVE, NULL) < 0)
+        if (mount(path, "/", ((void*)0), MS_MOVE, ((void*)0)) < 0)
                 return -errno;
 
         if (chroot(".") < 0)

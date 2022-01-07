@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * get_ndarray_array_function () ; 
+
+
+
+typedef int PyObject ;
+
+
+ int * get_ndarray_array_function () ;
 
 __attribute__((used)) static int
 is_default_array_function(PyObject *obj)
 {
-    static PyObject *ndarray_array_function = NULL;
+    static PyObject *ndarray_array_function = ((void*)0);
 
-    if (ndarray_array_function == NULL) {
+    if (ndarray_array_function == ((void*)0)) {
         ndarray_array_function = get_ndarray_array_function();
     }
     return obj == ndarray_array_function;

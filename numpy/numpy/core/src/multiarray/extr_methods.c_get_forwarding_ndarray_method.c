@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * PyDict_GetItemString (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  PyErr_Format (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  PyExc_RuntimeError ; 
- int /*<<< orphan*/ * PyImport_ImportModule (char*) ; 
- int /*<<< orphan*/  PyModule_GetDict (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int PyObject ;
+
+
+ int * PyDict_GetItemString (int ,char const*) ;
+ int PyErr_Format (int ,char*,char const*) ;
+ int PyExc_RuntimeError ;
+ int * PyImport_ImportModule (char*) ;
+ int PyModule_GetDict (int *) ;
+ int Py_DECREF (int *) ;
+ int Py_INCREF (int *) ;
 
 __attribute__((used)) static PyObject *
 get_forwarding_ndarray_method(const char *name)
 {
     PyObject *module_methods, *callable;
 
-    /* Get a reference to the function we're calling */
+
     module_methods = PyImport_ImportModule("numpy.core._methods");
-    if (module_methods == NULL) {
-        return NULL;
+    if (module_methods == ((void*)0)) {
+        return ((void*)0);
     }
     callable = PyDict_GetItemString(PyModule_GetDict(module_methods), name);
-    if (callable == NULL) {
+    if (callable == ((void*)0)) {
         Py_DECREF(module_methods);
         PyErr_Format(PyExc_RuntimeError,
                 "NumPy internal error: could not find function "

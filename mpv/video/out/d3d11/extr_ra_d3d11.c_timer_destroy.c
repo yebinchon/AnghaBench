@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ra {int dummy; } ;
-struct d3d_timer {int /*<<< orphan*/  disjoint; int /*<<< orphan*/  ts_end; int /*<<< orphan*/  ts_start; } ;
-typedef  struct d3d_timer ra_timer ;
+struct d3d_timer {int disjoint; int ts_end; int ts_start; } ;
+typedef struct d3d_timer ra_timer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SAFE_RELEASE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  talloc_free (struct d3d_timer*) ; 
+
+ int SAFE_RELEASE (int ) ;
+ int talloc_free (struct d3d_timer*) ;
 
 __attribute__((used)) static void timer_destroy(struct ra *ra, ra_timer *ratimer)
 {

@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  STREQ (char*,char*) ; 
- int col ; 
- int /*<<< orphan*/  col_cleanup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  col_output (scalar_t__) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ ) ; 
- int show_range ; 
- int /*<<< orphan*/  show_total () ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ strlen (char*) ; 
- int total_mmm ; 
- scalar_t__ total_shown ; 
- scalar_t__ verbose ; 
+ int STREQ (char*,char*) ;
+ int col ;
+ int col_cleanup (int ) ;
+ int col_output (scalar_t__) ;
+ int fflush (int ) ;
+ int fprintf (int ,char*,char*) ;
+ int fputs (char*,int ) ;
+ int show_range ;
+ int show_total () ;
+ int stdout ;
+ scalar_t__ strlen (char*) ;
+ int total_mmm ;
+ scalar_t__ total_shown ;
+ scalar_t__ verbose ;
 
 void
 show_area_being_processed(char *area, int n)
 {
-  static char *last_area = NULL;
+  static char *last_area = ((void*)0);
 
   if (verbose < 0)
     return;

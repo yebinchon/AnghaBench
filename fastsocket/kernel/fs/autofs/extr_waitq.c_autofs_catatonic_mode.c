@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct autofs_wait_queue {int /*<<< orphan*/  queue; int /*<<< orphan*/ * name; int /*<<< orphan*/  status; struct autofs_wait_queue* next; } ;
-struct autofs_sb_info {int catatonic; int /*<<< orphan*/  dirhash; int /*<<< orphan*/ * pipe; struct autofs_wait_queue* queues; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINTK (char*) ; 
- int /*<<< orphan*/  ENOENT ; 
- int /*<<< orphan*/  autofs_hash_dputall (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fput (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wake_up (int /*<<< orphan*/ *) ; 
+
+
+
+struct autofs_wait_queue {int queue; int * name; int status; struct autofs_wait_queue* next; } ;
+struct autofs_sb_info {int catatonic; int dirhash; int * pipe; struct autofs_wait_queue* queues; } ;
+
+
+ int DPRINTK (char*) ;
+ int ENOENT ;
+ int autofs_hash_dputall (int *) ;
+ int fput (int *) ;
+ int kfree (int *) ;
+ int wake_up (int *) ;
 
 void autofs_catatonic_mode(struct autofs_sb_info *sbi)
 {
-	struct autofs_wait_queue *wq, *nwq;
+ struct autofs_wait_queue *wq, *nwq;
 
-	DPRINTK(("autofs: entering catatonic mode\n"));
+ DPRINTK(("autofs: entering catatonic mode\n"));
 
-	sbi->catatonic = 1;
-	wq = sbi->queues;
-	sbi->queues = NULL;	/* Erase all wait queues */
-	while ( wq ) {
-		nwq = wq->next;
-		wq->status = -ENOENT; /* Magic is gone - report failure */
-		kfree(wq->name);
-		wq->name = NULL;
-		wake_up(&wq->queue);
-		wq = nwq;
-	}
-	fput(sbi->pipe);	/* Close the pipe */
-	sbi->pipe = NULL;
-	autofs_hash_dputall(&sbi->dirhash); /* Remove all dentry pointers */
+ sbi->catatonic = 1;
+ wq = sbi->queues;
+ sbi->queues = ((void*)0);
+ while ( wq ) {
+  nwq = wq->next;
+  wq->status = -ENOENT;
+  kfree(wq->name);
+  wq->name = ((void*)0);
+  wake_up(&wq->queue);
+  wq = nwq;
+ }
+ fput(sbi->pipe);
+ sbi->pipe = ((void*)0);
+ autofs_hash_dputall(&sbi->dirhash);
 }

@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int BIO_CLOSE ; 
- int /*<<< orphan*/  BIO_FLAGS_UPLINK ; 
- int BIO_FP_TEXT ; 
- int /*<<< orphan*/  BIO_F_BIO_NEW_FILE ; 
- int /*<<< orphan*/  BIO_R_NO_SUCH_FILE ; 
- int /*<<< orphan*/  BIO_clear_flags (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * BIO_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_s_file () ; 
- int /*<<< orphan*/  BIO_set_fp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  BIOerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ENOENT ; 
- scalar_t__ ENXIO ; 
- int /*<<< orphan*/  ERR_R_SYS_LIB ; 
- int /*<<< orphan*/  ERR_add_error_data (int,char*,char const*,char*,char const*,char*) ; 
- int /*<<< orphan*/  SYS_F_FOPEN ; 
- int /*<<< orphan*/  SYSerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_last_sys_error () ; 
- int /*<<< orphan*/ * openssl_fopen (char const*,char const*) ; 
- int /*<<< orphan*/ * strchr (char const*,char) ; 
+
+
+
+typedef int FILE ;
+typedef int BIO ;
+
+
+ int BIO_CLOSE ;
+ int BIO_FLAGS_UPLINK ;
+ int BIO_FP_TEXT ;
+ int BIO_F_BIO_NEW_FILE ;
+ int BIO_R_NO_SUCH_FILE ;
+ int BIO_clear_flags (int *,int ) ;
+ int * BIO_new (int ) ;
+ int BIO_s_file () ;
+ int BIO_set_fp (int *,int *,int) ;
+ int BIOerr (int ,int ) ;
+ scalar_t__ ENOENT ;
+ scalar_t__ ENXIO ;
+ int ERR_R_SYS_LIB ;
+ int ERR_add_error_data (int,char*,char const*,char*,char const*,char*) ;
+ int SYS_F_FOPEN ;
+ int SYSerr (int ,int ) ;
+ scalar_t__ errno ;
+ int fclose (int *) ;
+ int get_last_sys_error () ;
+ int * openssl_fopen (char const*,char const*) ;
+ int * strchr (char const*,char) ;
 
 BIO *BIO_new_file(const char *filename, const char *mode)
 {
-    BIO  *ret;
+    BIO *ret;
     FILE *file = openssl_fopen(filename, mode);
     int fp_flags = BIO_CLOSE;
 
-    if (strchr(mode, 'b') == NULL)
+    if (strchr(mode, 'b') == ((void*)0))
         fp_flags |= BIO_FP_TEXT;
 
-    if (file == NULL) {
+    if (file == ((void*)0)) {
         SYSerr(SYS_F_FOPEN, get_last_sys_error());
         ERR_add_error_data(5, "fopen('", filename, "','", mode, "')");
         if (errno == ENOENT
-#ifdef ENXIO
-            || errno == ENXIO
-#endif
+
+
+
             )
             BIOerr(BIO_F_BIO_NEW_FILE, BIO_R_NO_SUCH_FILE);
         else
             BIOerr(BIO_F_BIO_NEW_FILE, ERR_R_SYS_LIB);
-        return NULL;
+        return ((void*)0);
     }
-    if ((ret = BIO_new(BIO_s_file())) == NULL) {
+    if ((ret = BIO_new(BIO_s_file())) == ((void*)0)) {
         fclose(file);
-        return NULL;
+        return ((void*)0);
     }
 
-    BIO_clear_flags(ret, BIO_FLAGS_UPLINK); /* we did fopen -> we disengage
-                                             * UPLINK */
+    BIO_clear_flags(ret, BIO_FLAGS_UPLINK);
+
     BIO_set_fp(ret, file, fp_flags);
     return ret;
 }

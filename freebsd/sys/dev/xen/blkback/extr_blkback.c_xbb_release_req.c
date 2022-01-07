@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct xbb_xen_req {int dummy; } ;
-struct xbb_softc {scalar_t__ active_request_count; int /*<<< orphan*/  request_free_stailq; int /*<<< orphan*/  lock; } ;
+struct xbb_softc {scalar_t__ active_request_count; int request_free_stailq; int lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KASSERT (int,char*) ; 
- int /*<<< orphan*/  MA_OWNED ; 
- int /*<<< orphan*/  STAILQ_INSERT_HEAD (int /*<<< orphan*/ *,struct xbb_xen_req*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  links ; 
- int /*<<< orphan*/  mtx_assert (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int KASSERT (int,char*) ;
+ int MA_OWNED ;
+ int STAILQ_INSERT_HEAD (int *,struct xbb_xen_req*,int ) ;
+ int links ;
+ int mtx_assert (int *,int ) ;
 
 __attribute__((used)) static inline void
 xbb_release_req(struct xbb_softc *xbb, struct xbb_xen_req *req)
 {
-	mtx_assert(&xbb->lock, MA_OWNED);
+ mtx_assert(&xbb->lock, MA_OWNED);
 
-	STAILQ_INSERT_HEAD(&xbb->request_free_stailq, req, links);
-	xbb->active_request_count--;
+ STAILQ_INSERT_HEAD(&xbb->request_free_stailq, req, links);
+ xbb->active_request_count--;
 
-	KASSERT(xbb->active_request_count >= 0,
-		("xbb_release_req: negative active count"));
+ KASSERT(xbb->active_request_count >= 0,
+  ("xbb_release_req: negative active count"));
 }

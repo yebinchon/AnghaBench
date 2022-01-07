@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  innerstream; } ;
-typedef  TYPE_1__ php_stream_temp_data ;
-typedef  int /*<<< orphan*/  php_stream_statbuf ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int innerstream; } ;
+typedef TYPE_1__ php_stream_temp_data ;
+typedef int php_stream_statbuf ;
 struct TYPE_5__ {scalar_t__ abstract; } ;
-typedef  TYPE_2__ php_stream ;
+typedef TYPE_2__ php_stream ;
 
-/* Variables and functions */
- int php_stream_stat (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
 
-__attribute__((used)) static int php_stream_temp_stat(php_stream *stream, php_stream_statbuf *ssb) /* {{{ */
+ int php_stream_stat (int ,int *) ;
+
+__attribute__((used)) static int php_stream_temp_stat(php_stream *stream, php_stream_statbuf *ssb)
 {
-	php_stream_temp_data *ts = (php_stream_temp_data*)stream->abstract;
+ php_stream_temp_data *ts = (php_stream_temp_data*)stream->abstract;
 
-	if (!ts || !ts->innerstream) {
-		return -1;
-	}
-	return php_stream_stat(ts->innerstream, ssb);
+ if (!ts || !ts->innerstream) {
+  return -1;
+ }
+ return php_stream_stat(ts->innerstream, ssb);
 }

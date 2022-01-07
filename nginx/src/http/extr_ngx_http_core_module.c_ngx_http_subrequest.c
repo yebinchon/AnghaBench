@@ -1,85 +1,85 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_28__   TYPE_8__ ;
-typedef  struct TYPE_27__   TYPE_7__ ;
-typedef  struct TYPE_26__   TYPE_6__ ;
-typedef  struct TYPE_25__   TYPE_5__ ;
-typedef  struct TYPE_24__   TYPE_4__ ;
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ngx_uint_t ;
-struct TYPE_24__ {int /*<<< orphan*/  msec; int /*<<< orphan*/  sec; } ;
-typedef  TYPE_4__ ngx_time_t ;
-typedef  int /*<<< orphan*/  ngx_table_elt_t ;
-typedef  void* ngx_str_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-struct TYPE_22__ {int /*<<< orphan*/  trailers; int /*<<< orphan*/  headers; } ;
-struct TYPE_25__ {scalar_t__ subrequests; int subrequest_in_memory; int waited; int background; int filter_need_in_memory; int internal; int expect_tested; int realloc_captures; int /*<<< orphan*/  captures_data; int /*<<< orphan*/  captures; int /*<<< orphan*/  ncaptures; int /*<<< orphan*/  write_event_handler; int /*<<< orphan*/  phase_handler; int /*<<< orphan*/  content_handler; int /*<<< orphan*/  valid_unparsed_uri; int /*<<< orphan*/  valid_location; int /*<<< orphan*/  loc_conf; int /*<<< orphan*/  method_name; int /*<<< orphan*/  method; TYPE_1__* main; int /*<<< orphan*/  start_msec; int /*<<< orphan*/  start_sec; scalar_t__ uri_changes; int /*<<< orphan*/  main_filter_need_in_memory; int /*<<< orphan*/  discard_body; TYPE_6__* postponed; int /*<<< orphan*/  pool; int /*<<< orphan*/  log_handler; int /*<<< orphan*/  variables; int /*<<< orphan*/  read_event_handler; int /*<<< orphan*/ * post_subrequest; struct TYPE_25__* parent; int /*<<< orphan*/  schema; int /*<<< orphan*/  http_protocol; int /*<<< orphan*/  unparsed_uri; void* args; void* uri; int /*<<< orphan*/  request_line; int /*<<< orphan*/  http_version; int /*<<< orphan*/  stream; int /*<<< orphan*/  request_body; int /*<<< orphan*/  headers_in; int /*<<< orphan*/  srv_conf; int /*<<< orphan*/  main_conf; TYPE_2__ headers_out; int /*<<< orphan*/ * ctx; TYPE_8__* connection; int /*<<< orphan*/  signature; } ;
-typedef  TYPE_5__ ngx_http_request_t ;
-struct TYPE_26__ {struct TYPE_26__* next; int /*<<< orphan*/ * out; TYPE_5__* request; } ;
-typedef  TYPE_6__ ngx_http_postponed_request_t ;
-typedef  int /*<<< orphan*/  ngx_http_post_subrequest_t ;
+
+
+typedef struct TYPE_28__ TYPE_8__ ;
+typedef struct TYPE_27__ TYPE_7__ ;
+typedef struct TYPE_26__ TYPE_6__ ;
+typedef struct TYPE_25__ TYPE_5__ ;
+typedef struct TYPE_24__ TYPE_4__ ;
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+
+
+typedef int ngx_uint_t ;
+struct TYPE_24__ {int msec; int sec; } ;
+typedef TYPE_4__ ngx_time_t ;
+typedef int ngx_table_elt_t ;
+typedef void* ngx_str_t ;
+typedef int ngx_int_t ;
+struct TYPE_22__ {int trailers; int headers; } ;
+struct TYPE_25__ {scalar_t__ subrequests; int subrequest_in_memory; int waited; int background; int filter_need_in_memory; int internal; int expect_tested; int realloc_captures; int captures_data; int captures; int ncaptures; int write_event_handler; int phase_handler; int content_handler; int valid_unparsed_uri; int valid_location; int loc_conf; int method_name; int method; TYPE_1__* main; int start_msec; int start_sec; scalar_t__ uri_changes; int main_filter_need_in_memory; int discard_body; TYPE_6__* postponed; int pool; int log_handler; int variables; int read_event_handler; int * post_subrequest; struct TYPE_25__* parent; int schema; int http_protocol; int unparsed_uri; void* args; void* uri; int request_line; int http_version; int stream; int request_body; int headers_in; int srv_conf; int main_conf; TYPE_2__ headers_out; int * ctx; TYPE_8__* connection; int signature; } ;
+typedef TYPE_5__ ngx_http_request_t ;
+struct TYPE_26__ {struct TYPE_26__* next; int * out; TYPE_5__* request; } ;
+typedef TYPE_6__ ngx_http_postponed_request_t ;
+typedef int ngx_http_post_subrequest_t ;
 struct TYPE_27__ {TYPE_3__* ctx; } ;
-typedef  TYPE_7__ ngx_http_core_srv_conf_t ;
-struct TYPE_28__ {TYPE_5__* data; int /*<<< orphan*/  log; } ;
-typedef  TYPE_8__ ngx_connection_t ;
-struct TYPE_23__ {int /*<<< orphan*/  loc_conf; int /*<<< orphan*/  srv_conf; int /*<<< orphan*/  main_conf; } ;
+typedef TYPE_7__ ngx_http_core_srv_conf_t ;
+struct TYPE_28__ {TYPE_5__* data; int log; } ;
+typedef TYPE_8__ ngx_connection_t ;
+struct TYPE_23__ {int loc_conf; int srv_conf; int main_conf; } ;
 struct TYPE_21__ {int count; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_HTTP_GET ; 
- scalar_t__ NGX_HTTP_MAX_URI_CHANGES ; 
- int /*<<< orphan*/  NGX_HTTP_MODULE ; 
- int NGX_HTTP_SUBREQUEST_BACKGROUND ; 
- int NGX_HTTP_SUBREQUEST_CLONE ; 
- int NGX_HTTP_SUBREQUEST_IN_MEMORY ; 
- int NGX_HTTP_SUBREQUEST_WAITED ; 
- int /*<<< orphan*/  NGX_LOG_CRIT ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- scalar_t__ NGX_OK ; 
- int /*<<< orphan*/  ngx_http_clear_accept_ranges (TYPE_5__*) ; 
- int /*<<< orphan*/  ngx_http_clear_content_length (TYPE_5__*) ; 
- int /*<<< orphan*/  ngx_http_clear_last_modified (TYPE_5__*) ; 
- int /*<<< orphan*/  ngx_http_core_get_method ; 
- int /*<<< orphan*/  ngx_http_core_module ; 
- int /*<<< orphan*/  ngx_http_core_run_phases ; 
- TYPE_7__* ngx_http_get_module_srv_conf (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_handler ; 
- int ngx_http_max_module ; 
- int /*<<< orphan*/  ngx_http_post_request (TYPE_5__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_http_request_empty_handler ; 
- int /*<<< orphan*/  ngx_http_set_exten (TYPE_5__*) ; 
- int /*<<< orphan*/  ngx_http_update_location_config (TYPE_5__*) ; 
- scalar_t__ ngx_list_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,void**,void**) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,void**) ; 
- TYPE_6__* ngx_palloc (int /*<<< orphan*/ ,int) ; 
- void* ngx_pcalloc (int /*<<< orphan*/ ,int) ; 
- TYPE_4__* ngx_timeofday () ; 
+
+ int NGX_ERROR ;
+ int NGX_HTTP_GET ;
+ scalar_t__ NGX_HTTP_MAX_URI_CHANGES ;
+ int NGX_HTTP_MODULE ;
+ int NGX_HTTP_SUBREQUEST_BACKGROUND ;
+ int NGX_HTTP_SUBREQUEST_CLONE ;
+ int NGX_HTTP_SUBREQUEST_IN_MEMORY ;
+ int NGX_HTTP_SUBREQUEST_WAITED ;
+ int NGX_LOG_CRIT ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_LOG_ERR ;
+ scalar_t__ NGX_OK ;
+ int ngx_http_clear_accept_ranges (TYPE_5__*) ;
+ int ngx_http_clear_content_length (TYPE_5__*) ;
+ int ngx_http_clear_last_modified (TYPE_5__*) ;
+ int ngx_http_core_get_method ;
+ int ngx_http_core_module ;
+ int ngx_http_core_run_phases ;
+ TYPE_7__* ngx_http_get_module_srv_conf (TYPE_5__*,int ) ;
+ int ngx_http_handler ;
+ int ngx_http_max_module ;
+ int ngx_http_post_request (TYPE_5__*,int *) ;
+ int ngx_http_request_empty_handler ;
+ int ngx_http_set_exten (TYPE_5__*) ;
+ int ngx_http_update_location_config (TYPE_5__*) ;
+ scalar_t__ ngx_list_init (int *,int ,int,int) ;
+ int ngx_log_debug2 (int ,int ,int ,char*,void**,void**) ;
+ int ngx_log_error (int ,int ,int ,char*,void**) ;
+ TYPE_6__* ngx_palloc (int ,int) ;
+ void* ngx_pcalloc (int ,int) ;
+ TYPE_4__* ngx_timeofday () ;
 
 ngx_int_t
 ngx_http_subrequest(ngx_http_request_t *r,
     ngx_str_t *uri, ngx_str_t *args, ngx_http_request_t **psr,
     ngx_http_post_subrequest_t *ps, ngx_uint_t flags)
 {
-    ngx_time_t                    *tp;
-    ngx_connection_t              *c;
-    ngx_http_request_t            *sr;
-    ngx_http_core_srv_conf_t      *cscf;
-    ngx_http_postponed_request_t  *pr, *p;
+    ngx_time_t *tp;
+    ngx_connection_t *c;
+    ngx_http_request_t *sr;
+    ngx_http_core_srv_conf_t *cscf;
+    ngx_http_postponed_request_t *pr, *p;
 
     if (r->subrequests == 0) {
         ngx_log_error(NGX_LOG_ERR, r->connection->log, 0,
@@ -87,9 +87,9 @@ ngx_http_subrequest(ngx_http_request_t *r,
         return NGX_ERROR;
     }
 
-    /*
-     * 1000 is reserved for other purposes.
-     */
+
+
+
     if (r->main->count >= 65535 - 1000) {
         ngx_log_error(NGX_LOG_CRIT, r->connection->log, 0,
                       "request reference counter overflow "
@@ -104,7 +104,7 @@ ngx_http_subrequest(ngx_http_request_t *r,
     }
 
     sr = ngx_pcalloc(r->pool, sizeof(ngx_http_request_t));
-    if (sr == NULL) {
+    if (sr == ((void*)0)) {
         return NGX_ERROR;
     }
 
@@ -114,7 +114,7 @@ ngx_http_subrequest(ngx_http_request_t *r,
     sr->connection = c;
 
     sr->ctx = ngx_pcalloc(r->pool, sizeof(void *) * ngx_http_max_module);
-    if (sr->ctx == NULL) {
+    if (sr->ctx == ((void*)0)) {
         return NGX_ERROR;
     }
 
@@ -147,9 +147,9 @@ ngx_http_subrequest(ngx_http_request_t *r,
 
     sr->request_body = r->request_body;
 
-#if (NGX_HTTP_V2)
-    sr->stream = r->stream;
-#endif
+
+
+
 
     sr->method = NGX_HTTP_GET;
     sr->http_version = r->http_version;
@@ -190,21 +190,21 @@ ngx_http_subrequest(ngx_http_request_t *r,
     }
 
     if (!sr->background) {
-        if (c->data == r && r->postponed == NULL) {
+        if (c->data == r && r->postponed == ((void*)0)) {
             c->data = sr;
         }
 
         pr = ngx_palloc(r->pool, sizeof(ngx_http_postponed_request_t));
-        if (pr == NULL) {
+        if (pr == ((void*)0)) {
             return NGX_ERROR;
         }
 
         pr->request = sr;
-        pr->out = NULL;
-        pr->next = NULL;
+        pr->out = ((void*)0);
+        pr->next = ((void*)0);
 
         if (r->postponed) {
-            for (p = r->postponed; p->next; p = p->next) { /* void */ }
+            for (p = r->postponed; p->next; p = p->next) { }
             p->next = pr;
 
         } else {
@@ -238,17 +238,8 @@ ngx_http_subrequest(ngx_http_request_t *r,
         sr->content_handler = r->content_handler;
         sr->phase_handler = r->phase_handler;
         sr->write_event_handler = ngx_http_core_run_phases;
-
-#if (NGX_PCRE)
-        sr->ncaptures = r->ncaptures;
-        sr->captures = r->captures;
-        sr->captures_data = r->captures_data;
-        sr->realloc_captures = 1;
-        r->realloc_captures = 1;
-#endif
-
         ngx_http_update_location_config(sr);
     }
 
-    return ngx_http_post_request(sr, NULL);
+    return ngx_http_post_request(sr, ((void*)0));
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RedisModuleString ;
-typedef  int /*<<< orphan*/  RedisModuleCtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Keyspace ; 
- int /*<<< orphan*/  REDISMODULE_APIVER_1 ; 
- scalar_t__ REDISMODULE_ERR ; 
- int /*<<< orphan*/  REDISMODULE_NOT_USED (int) ; 
- int REDISMODULE_OK ; 
- scalar_t__ RedisModule_CreateCommand (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RedisModule_CreateDict (int /*<<< orphan*/ *) ; 
- scalar_t__ RedisModule_Init (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmd_GET ; 
- int /*<<< orphan*/  cmd_KEYRANGE ; 
- int /*<<< orphan*/  cmd_SET ; 
+
+
+
+typedef int RedisModuleString ;
+typedef int RedisModuleCtx ;
+
+
+ int Keyspace ;
+ int REDISMODULE_APIVER_1 ;
+ scalar_t__ REDISMODULE_ERR ;
+ int REDISMODULE_NOT_USED (int) ;
+ int REDISMODULE_OK ;
+ scalar_t__ RedisModule_CreateCommand (int *,char*,int ,char*,int,int,int ) ;
+ int RedisModule_CreateDict (int *) ;
+ scalar_t__ RedisModule_Init (int *,char*,int,int ) ;
+ int cmd_GET ;
+ int cmd_KEYRANGE ;
+ int cmd_SET ;
 
 int RedisModule_OnLoad(RedisModuleCtx *ctx, RedisModuleString **argv, int argc) {
     REDISMODULE_NOT_USED(argv);
@@ -45,8 +45,8 @@ int RedisModule_OnLoad(RedisModuleCtx *ctx, RedisModuleString **argv, int argc) 
         cmd_KEYRANGE,"readonly",1,1,0) == REDISMODULE_ERR)
         return REDISMODULE_ERR;
 
-    /* Create our global dictionray. Here we'll set our keys and values. */
-    Keyspace = RedisModule_CreateDict(NULL);
+
+    Keyspace = RedisModule_CreateDict(((void*)0));
 
     return REDISMODULE_OK;
 }

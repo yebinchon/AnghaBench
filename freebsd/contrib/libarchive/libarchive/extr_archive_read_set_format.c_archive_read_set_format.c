@@ -1,42 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct archive_read {int /*<<< orphan*/  archive; TYPE_1__* format; TYPE_1__* formats; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct archive_read {int archive; TYPE_1__* format; TYPE_1__* formats; } ;
 struct archive {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  name; } ;
+struct TYPE_2__ {int name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARCHIVE_ERRNO_PROGRAMMER ; 
- int ARCHIVE_FATAL ; 
-#define  ARCHIVE_FORMAT_7ZIP 139 
-#define  ARCHIVE_FORMAT_AR 138 
- int ARCHIVE_FORMAT_BASE_MASK ; 
-#define  ARCHIVE_FORMAT_CAB 137 
-#define  ARCHIVE_FORMAT_CPIO 136 
-#define  ARCHIVE_FORMAT_ISO9660 135 
-#define  ARCHIVE_FORMAT_LHA 134 
-#define  ARCHIVE_FORMAT_MTREE 133 
-#define  ARCHIVE_FORMAT_RAR 132 
-#define  ARCHIVE_FORMAT_RAR_V5 131 
-#define  ARCHIVE_FORMAT_TAR 130 
-#define  ARCHIVE_FORMAT_XAR 129 
-#define  ARCHIVE_FORMAT_ZIP 128 
- int ARCHIVE_OK ; 
- int ARCHIVE_WARN ; 
- int archive_read_support_format_by_code (struct archive*,int) ; 
- int /*<<< orphan*/  archive_set_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
+
+ int ARCHIVE_ERRNO_PROGRAMMER ;
+ int ARCHIVE_FATAL ;
+
+
+ int ARCHIVE_FORMAT_BASE_MASK ;
+ int ARCHIVE_OK ;
+ int ARCHIVE_WARN ;
+ int archive_read_support_format_by_code (struct archive*,int) ;
+ int archive_set_error (int *,int ,char*) ;
+ scalar_t__ strcmp (int ,char*) ;
+ int strcpy (char*,char*) ;
 
 int
 archive_read_set_format(struct archive *_a, int code)
@@ -53,40 +43,40 @@ archive_read_set_format(struct archive *_a, int code)
     r2 = (ARCHIVE_WARN);
   switch (code & ARCHIVE_FORMAT_BASE_MASK)
   {
-    case ARCHIVE_FORMAT_7ZIP:
+    case 139:
       strcpy(str, "7zip");
       break;
-    case ARCHIVE_FORMAT_AR:
+    case 138:
       strcpy(str, "ar");
       break;
-    case ARCHIVE_FORMAT_CAB:
+    case 137:
       strcpy(str, "cab");
       break;
-    case ARCHIVE_FORMAT_CPIO:
+    case 136:
       strcpy(str, "cpio");
       break;
-    case ARCHIVE_FORMAT_ISO9660:
+    case 135:
       strcpy(str, "iso9660");
       break;
-    case ARCHIVE_FORMAT_LHA:
+    case 134:
       strcpy(str, "lha");
       break;
-    case ARCHIVE_FORMAT_MTREE:
+    case 133:
       strcpy(str, "mtree");
       break;
-    case ARCHIVE_FORMAT_RAR:
+    case 132:
       strcpy(str, "rar");
       break;
-    case ARCHIVE_FORMAT_RAR_V5:
+    case 131:
       strcpy(str, "rar5");
       break;
-    case ARCHIVE_FORMAT_TAR:
+    case 130:
       strcpy(str, "tar");
       break;
-    case ARCHIVE_FORMAT_XAR:
+    case 129:
       strcpy(str, "xar");
       break;
-    case ARCHIVE_FORMAT_ZIP:
+    case 128:
       strcpy(str, "zip");
       break;
     default:

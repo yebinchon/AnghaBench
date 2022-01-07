@@ -1,48 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  test_pack_BINDINFO () ; 
- int /*<<< orphan*/  test_pack_IBindHost () ; 
- int /*<<< orphan*/  test_pack_IBindHostVtbl () ; 
- int /*<<< orphan*/  test_pack_IBindStatusCallback () ; 
- int /*<<< orphan*/  test_pack_IBindStatusCallbackVtbl () ; 
- int /*<<< orphan*/  test_pack_IBinding () ; 
- int /*<<< orphan*/  test_pack_IBindingVtbl () ; 
- int /*<<< orphan*/  test_pack_IInternetProtocolInfo () ; 
- int /*<<< orphan*/  test_pack_IInternetProtocolInfoVtbl () ; 
- int /*<<< orphan*/  test_pack_IInternetSession () ; 
- int /*<<< orphan*/  test_pack_IInternetSessionVtbl () ; 
- int /*<<< orphan*/  test_pack_IPersistMoniker () ; 
- int /*<<< orphan*/  test_pack_IPersistMonikerVtbl () ; 
- int /*<<< orphan*/  test_pack_IWinInetHttpInfo () ; 
- int /*<<< orphan*/  test_pack_IWinInetHttpInfoVtbl () ; 
- int /*<<< orphan*/  test_pack_IWinInetInfo () ; 
- int /*<<< orphan*/  test_pack_IWinInetInfoVtbl () ; 
- int /*<<< orphan*/  test_pack_LPBINDHOST () ; 
- int /*<<< orphan*/  test_pack_LPBINDING () ; 
- int /*<<< orphan*/  test_pack_LPBINDSTATUSCALLBACK () ; 
- int /*<<< orphan*/  test_pack_LPIINTERNETPROTOCOLINFO () ; 
- int /*<<< orphan*/  test_pack_LPIINTERNETSESSION () ; 
- int /*<<< orphan*/  test_pack_LPPERSISTMONIKER () ; 
- int /*<<< orphan*/  test_pack_LPREMFORMATETC () ; 
- int /*<<< orphan*/  test_pack_LPREMSECURITY_ATTRIBUTES () ; 
- int /*<<< orphan*/  test_pack_LPWININETHTTPINFO () ; 
- int /*<<< orphan*/  test_pack_LPWININETINFO () ; 
- int /*<<< orphan*/  test_pack_PREMSECURITY_ATTRIBUTES () ; 
- int /*<<< orphan*/  test_pack_REMSECURITY_ATTRIBUTES () ; 
- int /*<<< orphan*/  test_pack_RemBINDINFO () ; 
- int /*<<< orphan*/  test_pack_RemFORMATETC () ; 
+ int test_pack_BINDINFO () ;
+ int test_pack_IBindHost () ;
+ int test_pack_IBindHostVtbl () ;
+ int test_pack_IBindStatusCallback () ;
+ int test_pack_IBindStatusCallbackVtbl () ;
+ int test_pack_IBinding () ;
+ int test_pack_IBindingVtbl () ;
+ int test_pack_IInternetProtocolInfo () ;
+ int test_pack_IInternetProtocolInfoVtbl () ;
+ int test_pack_IInternetSession () ;
+ int test_pack_IInternetSessionVtbl () ;
+ int test_pack_IPersistMoniker () ;
+ int test_pack_IPersistMonikerVtbl () ;
+ int test_pack_IWinInetHttpInfo () ;
+ int test_pack_IWinInetHttpInfoVtbl () ;
+ int test_pack_IWinInetInfo () ;
+ int test_pack_IWinInetInfoVtbl () ;
+ int test_pack_LPBINDHOST () ;
+ int test_pack_LPBINDING () ;
+ int test_pack_LPBINDSTATUSCALLBACK () ;
+ int test_pack_LPIINTERNETPROTOCOLINFO () ;
+ int test_pack_LPIINTERNETSESSION () ;
+ int test_pack_LPPERSISTMONIKER () ;
+ int test_pack_LPREMFORMATETC () ;
+ int test_pack_LPREMSECURITY_ATTRIBUTES () ;
+ int test_pack_LPWININETHTTPINFO () ;
+ int test_pack_LPWININETINFO () ;
+ int test_pack_PREMSECURITY_ATTRIBUTES () ;
+ int test_pack_REMSECURITY_ATTRIBUTES () ;
+ int test_pack_RemBINDINFO () ;
+ int test_pack_RemFORMATETC () ;
 
 __attribute__((used)) static void test_pack(void)
 {

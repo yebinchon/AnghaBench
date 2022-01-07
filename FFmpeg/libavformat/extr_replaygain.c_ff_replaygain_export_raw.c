@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint32_t ;
-typedef  scalar_t__ int32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef void* uint32_t ;
+typedef scalar_t__ int32_t ;
 struct TYPE_2__ {void* album_peak; scalar_t__ album_gain; void* track_peak; scalar_t__ track_gain; } ;
-typedef  int /*<<< orphan*/  AVStream ;
-typedef  TYPE_1__ AVReplayGain ;
+typedef int AVStream ;
+typedef TYPE_1__ AVReplayGain ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_PKT_DATA_REPLAYGAIN ; 
- int /*<<< orphan*/  ENOMEM ; 
- scalar_t__ INT32_MIN ; 
- scalar_t__ av_stream_new_side_data (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int AVERROR (int ) ;
+ int AV_PKT_DATA_REPLAYGAIN ;
+ int ENOMEM ;
+ scalar_t__ INT32_MIN ;
+ scalar_t__ av_stream_new_side_data (int *,int ,int) ;
 
 int ff_replaygain_export_raw(AVStream *st, int32_t tg, uint32_t tp,
                              int32_t ag, uint32_t ap)

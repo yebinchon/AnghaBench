@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int int32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int lua_State ;
+typedef int int32_t ;
 struct TYPE_2__ {scalar_t__ AC4; scalar_t__ B1; scalar_t__ AC3; scalar_t__ AC1; scalar_t__ AC2; scalar_t__ B2; } ;
 
-/* Variables and functions */
- TYPE_1__ bmp085_data ; 
- int bmp085_pressure_raw (int) ; 
- int bmp085_temperature_raw_b5 () ; 
- int luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_isnumber (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,int) ; 
+
+ TYPE_1__ bmp085_data ;
+ int bmp085_pressure_raw (int) ;
+ int bmp085_temperature_raw_b5 () ;
+ int luaL_checkinteger (int *,int) ;
+ scalar_t__ lua_isnumber (int *,int) ;
+ int lua_pushinteger (int *,int) ;
 
 __attribute__((used)) static int bmp085_lua_pressure(lua_State* L) {
     uint8_t oss = 0;
@@ -31,7 +31,7 @@ __attribute__((used)) static int bmp085_lua_pressure(lua_State* L) {
 
     if (lua_isnumber(L, 1)) {
         oss = luaL_checkinteger(L, 1);
-        if (oss > 3)  {
+        if (oss > 3) {
             oss = 3;
         }
     }
@@ -49,7 +49,7 @@ __attribute__((used)) static int bmp085_lua_pressure(lua_State* L) {
     X3 = (X1 + X2 + 2) >> 2;
     B4 = ((int32_t)bmp085_data.AC4 * (X3 + 32768)) >> 15;
     B7 = (p - B3) * (50000 / (1 << oss));
-    p  = (B7 / B4) << 1;
+    p = (B7 / B4) << 1;
     X1 = (p >> 8) * (p >> 8);
     X1 = (X1 * 3038) >> 16;
     X2 = (-7357 * p) >> 16;

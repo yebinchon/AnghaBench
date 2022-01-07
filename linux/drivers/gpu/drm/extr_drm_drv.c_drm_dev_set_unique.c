@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct drm_device {scalar_t__ unique; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  kfree (scalar_t__) ; 
- scalar_t__ kstrdup (char const*,int /*<<< orphan*/ ) ; 
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int kfree (scalar_t__) ;
+ scalar_t__ kstrdup (char const*,int ) ;
 
 int drm_dev_set_unique(struct drm_device *dev, const char *name)
 {
-	kfree(dev->unique);
-	dev->unique = kstrdup(name, GFP_KERNEL);
+ kfree(dev->unique);
+ dev->unique = kstrdup(name, GFP_KERNEL);
 
-	return dev->unique ? 0 : -ENOMEM;
+ return dev->unique ? 0 : -ENOMEM;
 }

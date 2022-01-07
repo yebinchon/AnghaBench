@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int prev_used; int next_bucket; } ;
 
-/* Variables and functions */
- int MAX_BUFF ; 
- int STAT_ST ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  black_list_check (scalar_t__) ; 
- scalar_t__ buff ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,int) ; 
- scalar_t__* names ; 
- scalar_t__ names_buff ; 
- TYPE_1__* q_entry ; 
- int* q_rev ; 
- int qr ; 
- int /*<<< orphan*/  stderr ; 
+
+ int MAX_BUFF ;
+ int STAT_ST ;
+ int assert (int) ;
+ int black_list_check (scalar_t__) ;
+ scalar_t__ buff ;
+ int fprintf (int ,char*,int,int,int) ;
+ scalar_t__* names ;
+ scalar_t__ names_buff ;
+ TYPE_1__* q_entry ;
+ int* q_rev ;
+ int qr ;
+ int stderr ;
 
 int *get_top_v (int need) {
   int *v = (int *)buff;

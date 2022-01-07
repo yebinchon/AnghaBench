@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {size_t num; scalar_t__* pRes; } ;
-typedef  TYPE_1__ tQueryResultset ;
-typedef  size_t int32_t ;
+typedef TYPE_1__ tQueryResultset ;
+typedef size_t int32_t ;
 
-/* Variables and functions */
- size_t POINTER_BYTES ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,scalar_t__*,size_t) ; 
- int /*<<< orphan*/  memset (scalar_t__*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  qsort (scalar_t__*,size_t,size_t,int /*<<< orphan*/ ) ; 
- void* realloc (scalar_t__*,size_t) ; 
- int /*<<< orphan*/  tQueryResultClean (TYPE_1__*) ; 
- int /*<<< orphan*/  tabObjPointerComparator ; 
+
+ size_t POINTER_BYTES ;
+ int memcpy (scalar_t__*,scalar_t__*,size_t) ;
+ int memset (scalar_t__*,int ,size_t) ;
+ int qsort (scalar_t__*,size_t,size_t,int ) ;
+ void* realloc (scalar_t__*,size_t) ;
+ int tQueryResultClean (TYPE_1__*) ;
+ int tabObjPointerComparator ;
 
 __attribute__((used)) static void queryResultUnion(tQueryResultset* pFinalRes, tQueryResultset* pRes) {
   if (pRes->num == 0) {
@@ -31,8 +31,8 @@ __attribute__((used)) static void queryResultUnion(tQueryResultset* pFinalRes, t
   }
 
   int32_t total = pFinalRes->num + pRes->num;
-  void*   tmp = realloc(pFinalRes->pRes, total * POINTER_BYTES);
-  if (tmp == NULL) {
+  void* tmp = realloc(pFinalRes->pRes, total * POINTER_BYTES);
+  if (tmp == ((void*)0)) {
     return;
   }
   pFinalRes->pRes = tmp;

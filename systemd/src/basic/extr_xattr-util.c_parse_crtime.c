@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ usec_t ;
-typedef  scalar_t__ uint64_t ;
-typedef  int /*<<< orphan*/  le64_t ;
 
-/* Variables and functions */
- int EIO ; 
- scalar_t__ IN_SET (scalar_t__,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  assert (scalar_t__*) ; 
- scalar_t__ le64toh (int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ usec_t ;
+typedef scalar_t__ uint64_t ;
+typedef int le64_t ;
+
+
+ int EIO ;
+ scalar_t__ IN_SET (scalar_t__,int ,scalar_t__) ;
+ int assert (scalar_t__*) ;
+ scalar_t__ le64toh (int ) ;
 
 __attribute__((used)) static int parse_crtime(le64_t le, usec_t *usec) {
         uint64_t u;

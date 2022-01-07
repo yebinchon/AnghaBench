@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct timer_list {int dummy; } ;
-struct llc_sock {int /*<<< orphan*/  sk; } ;
-struct TYPE_2__ {int /*<<< orphan*/  timer; } ;
+struct llc_sock {int sk; } ;
+struct TYPE_2__ {int timer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LLC_CONN_EV_TYPE_P_TMR ; 
- struct llc_sock* from_timer (int /*<<< orphan*/ ,struct timer_list*,int /*<<< orphan*/ ) ; 
- struct llc_sock* llc ; 
- int /*<<< orphan*/  llc_conn_tmr_common_cb (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_1__ pf_cycle_timer ; 
+
+ int LLC_CONN_EV_TYPE_P_TMR ;
+ struct llc_sock* from_timer (int ,struct timer_list*,int ) ;
+ struct llc_sock* llc ;
+ int llc_conn_tmr_common_cb (int *,int ) ;
+ TYPE_1__ pf_cycle_timer ;
 
 void llc_conn_pf_cycle_tmr_cb(struct timer_list *t)
 {
-	struct llc_sock *llc = from_timer(llc, t, pf_cycle_timer.timer);
+ struct llc_sock *llc = from_timer(llc, t, pf_cycle_timer.timer);
 
-	llc_conn_tmr_common_cb(&llc->sk, LLC_CONN_EV_TYPE_P_TMR);
+ llc_conn_tmr_common_cb(&llc->sk, LLC_CONN_EV_TYPE_P_TMR);
 }

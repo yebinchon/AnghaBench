@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  unsigned int uint64_t ;
 
-/* Variables and functions */
- scalar_t__ pow_2 (scalar_t__ const) ; 
 
-__attribute__((used)) static uint64_t sse_line_8bit(const uint8_t *main_line,  const uint8_t *ref_line, int outw)
+
+
+typedef scalar_t__ uint8_t ;
+typedef unsigned int uint64_t ;
+
+
+ scalar_t__ pow_2 (scalar_t__ const) ;
+
+__attribute__((used)) static uint64_t sse_line_8bit(const uint8_t *main_line, const uint8_t *ref_line, int outw)
 {
     int j;
     unsigned m2 = 0;

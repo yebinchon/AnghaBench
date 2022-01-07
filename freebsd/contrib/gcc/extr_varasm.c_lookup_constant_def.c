@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-struct constant_descriptor_tree {int /*<<< orphan*/  rtl; int /*<<< orphan*/  hash; int /*<<< orphan*/  value; } ;
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NULL_RTX ; 
- int /*<<< orphan*/  const_desc_htab ; 
- int /*<<< orphan*/  const_hash_1 (int /*<<< orphan*/ ) ; 
- struct constant_descriptor_tree* htab_find_with_hash (int /*<<< orphan*/ ,struct constant_descriptor_tree*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+struct constant_descriptor_tree {int rtl; int hash; int value; } ;
+typedef int rtx ;
+
+
+ int NULL_RTX ;
+ int const_desc_htab ;
+ int const_hash_1 (int ) ;
+ struct constant_descriptor_tree* htab_find_with_hash (int ,struct constant_descriptor_tree*,int ) ;
 
 rtx
 lookup_constant_def (tree exp)

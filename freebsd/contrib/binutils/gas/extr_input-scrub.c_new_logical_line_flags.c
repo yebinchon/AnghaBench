@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  abort () ; 
- char* logical_input_file ; 
- int logical_input_line ; 
- char* physical_input_file ; 
- int physical_input_line ; 
- scalar_t__ strcmp (char*,char*) ; 
+ int abort () ;
+ char* logical_input_file ;
+ int logical_input_line ;
+ char* physical_input_file ;
+ int physical_input_line ;
+ scalar_t__ strcmp (char*,char*) ;
 
 int
-new_logical_line_flags (char *fname, /* DON'T destroy it!  We point to it!  */
-			int line_number,
-			int flags)
+new_logical_line_flags (char *fname,
+   int line_number,
+   int flags)
 {
   switch (flags)
     {
@@ -30,11 +22,11 @@ new_logical_line_flags (char *fname, /* DON'T destroy it!  We point to it!  */
       break;
     case 1:
       if (line_number != -1)
-	abort ();
+ abort ();
       break;
     case 1 << 1:
     case 1 << 2:
-      /* FIXME: we could check that include nesting is correct.  */
+
       break;
     default:
       abort ();
@@ -46,12 +38,12 @@ new_logical_line_flags (char *fname, /* DON'T destroy it!  We point to it!  */
     {
       logical_input_file = physical_input_file;
       logical_input_line = physical_input_line;
-      fname = NULL;
+      fname = ((void*)0);
     }
 
   if (fname
-      && (logical_input_file == NULL
-	  || strcmp (logical_input_file, fname)))
+      && (logical_input_file == ((void*)0)
+   || strcmp (logical_input_file, fname)))
     {
       logical_input_file = fname;
       return 1;

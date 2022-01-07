@@ -1,46 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PLAN_ADAPTER ;
-typedef  int /*<<< orphan*/  NDIS_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPDestroyInterface (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IPUnregisterInterface (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Loopback ; 
- int /*<<< orphan*/  MAX_TRACE ; 
- int /*<<< orphan*/  MID_TRACE ; 
- int /*<<< orphan*/  NDIS_STATUS_SUCCESS ; 
- int /*<<< orphan*/  TI_DbgPrint (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int PLAN_ADAPTER ;
+typedef int NDIS_STATUS ;
+
+
+ int IPDestroyInterface (int *) ;
+ int IPUnregisterInterface (int *) ;
+ int * Loopback ;
+ int MAX_TRACE ;
+ int MID_TRACE ;
+ int NDIS_STATUS_SUCCESS ;
+ int TI_DbgPrint (int ,char*) ;
 
 NDIS_STATUS LoopUnregisterAdapter(
   PLAN_ADAPTER Adapter)
-/*
- * FUNCTION: Unregisters loopback adapter with the network layer
- * ARGUMENTS:
- *   Adapter = Unused
- * RETURNS:
- *   Status of operation
- * NOTES:
- *   Does not care wether we have registered loopback adapter
- */
 {
   TI_DbgPrint(MID_TRACE, ("Called.\n"));
 
-  if (Loopback != NULL)
+  if (Loopback != ((void*)0))
     {
       IPUnregisterInterface(Loopback);
       IPDestroyInterface(Loopback);
-      Loopback = NULL;
+      Loopback = ((void*)0);
     }
 
   TI_DbgPrint(MAX_TRACE, ("Leaving.\n"));

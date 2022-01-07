@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
-typedef  int /*<<< orphan*/  rtvec ;
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ABS ; 
- int /*<<< orphan*/  CONST0_RTX (int) ; 
- scalar_t__ CONST_DOUBLE ; 
- int /*<<< orphan*/  CONST_DOUBLE_REAL_VALUE (int /*<<< orphan*/ ) ; 
- int DFmode ; 
- scalar_t__ GET_CODE (int /*<<< orphan*/ ) ; 
- int GET_MODE (int /*<<< orphan*/ ) ; 
- int SFmode ; 
- int V2DFmode ; 
- int V4SFmode ; 
- int /*<<< orphan*/  emit_insn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  force_reg (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_copysigndf3_const (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_copysigndf3_var (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_copysignsf3_const (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_copysignsf3_var (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtvec (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  gen_rtx_CONST_VECTOR (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ix86_build_signbit_mask (int,int /*<<< orphan*/ ,int) ; 
- scalar_t__ real_isneg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  simplify_unary_operation (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int rtx ;
+typedef int rtvec ;
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+
+
+ int ABS ;
+ int CONST0_RTX (int) ;
+ scalar_t__ CONST_DOUBLE ;
+ int CONST_DOUBLE_REAL_VALUE (int ) ;
+ int DFmode ;
+ scalar_t__ GET_CODE (int ) ;
+ int GET_MODE (int ) ;
+ int SFmode ;
+ int V2DFmode ;
+ int V4SFmode ;
+ int emit_insn (int ) ;
+ int force_reg (int,int ) ;
+ int gen_copysigndf3_const (int ,int ,int ,int ) ;
+ int gen_copysigndf3_var (int ,int *,int ,int ,int ,int ) ;
+ int gen_copysignsf3_const (int ,int ,int ,int ) ;
+ int gen_copysignsf3_var (int ,int *,int ,int ,int ,int ) ;
+ int gen_rtvec (int,int ,int ,...) ;
+ int gen_rtx_CONST_VECTOR (int,int ) ;
+ int ix86_build_signbit_mask (int,int ,int) ;
+ scalar_t__ real_isneg (int ) ;
+ int simplify_unary_operation (int ,int,int ,int) ;
 
 void
 ix86_expand_copysign (rtx operands[])
@@ -55,26 +55,26 @@ ix86_expand_copysign (rtx operands[])
       rtvec v;
 
       if (real_isneg (CONST_DOUBLE_REAL_VALUE (op0)))
-	op0 = simplify_unary_operation (ABS, mode, op0, mode);
+ op0 = simplify_unary_operation (ABS, mode, op0, mode);
 
       if (op0 == CONST0_RTX (mode))
-	op0 = CONST0_RTX (vmode);
+ op0 = CONST0_RTX (vmode);
       else
         {
-	  if (mode == SFmode)
-	    v = gen_rtvec (4, op0, CONST0_RTX (SFmode),
+   if (mode == SFmode)
+     v = gen_rtvec (4, op0, CONST0_RTX (SFmode),
                            CONST0_RTX (SFmode), CONST0_RTX (SFmode));
-	  else
-	    v = gen_rtvec (2, op0, CONST0_RTX (DFmode));
+   else
+     v = gen_rtvec (2, op0, CONST0_RTX (DFmode));
           op0 = force_reg (vmode, gen_rtx_CONST_VECTOR (vmode, v));
-	}
+ }
 
       mask = ix86_build_signbit_mask (mode, 0, 0);
 
       if (mode == SFmode)
-	emit_insn (gen_copysignsf3_const (dest, op0, op1, mask));
+ emit_insn (gen_copysignsf3_const (dest, op0, op1, mask));
       else
-	emit_insn (gen_copysigndf3_const (dest, op0, op1, mask));
+ emit_insn (gen_copysigndf3_const (dest, op0, op1, mask));
     }
   else
     {
@@ -82,8 +82,8 @@ ix86_expand_copysign (rtx operands[])
       mask = ix86_build_signbit_mask (mode, 0, 0);
 
       if (mode == SFmode)
-	emit_insn (gen_copysignsf3_var (dest, NULL, op0, op1, nmask, mask));
+ emit_insn (gen_copysignsf3_var (dest, ((void*)0), op0, op1, nmask, mask));
       else
-	emit_insn (gen_copysigndf3_var (dest, NULL, op0, op1, nmask, mask));
+ emit_insn (gen_copysigndf3_var (dest, ((void*)0), op0, op1, nmask, mask));
     }
 }

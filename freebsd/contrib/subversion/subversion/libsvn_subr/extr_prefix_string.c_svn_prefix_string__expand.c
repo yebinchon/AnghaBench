@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {char* data; int len; } ;
-typedef  TYPE_2__ svn_string_t ;
-struct TYPE_9__ {TYPE_1__* prefix; int /*<<< orphan*/  data; } ;
-typedef  TYPE_3__ svn_prefix_string__t ;
-typedef  int apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_2__ svn_string_t ;
+struct TYPE_9__ {TYPE_1__* prefix; int data; } ;
+typedef TYPE_3__ svn_prefix_string__t ;
+typedef int apr_size_t ;
+typedef int apr_pool_t ;
 struct TYPE_7__ {int length; TYPE_3__ key; } ;
 
-/* Variables and functions */
- char* apr_palloc (int /*<<< orphan*/ *,int) ; 
- TYPE_2__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,int) ; 
- int strlen (int /*<<< orphan*/ ) ; 
+
+ char* apr_palloc (int *,int) ;
+ TYPE_2__* apr_pcalloc (int *,int) ;
+ int memcpy (char*,int ,int) ;
+ int strlen (int ) ;
 
 svn_string_t *
 svn_prefix_string__expand(const svn_prefix_string__t *s,

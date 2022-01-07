@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct addrinfo {int dummy; } ;
 
-/* Variables and functions */
- int EAI_MEMORY ; 
- int QadrtConvertA2E (char*,char const*,int,int) ; 
- int /*<<< orphan*/  free (char*) ; 
- int getaddrinfo (char*,char*,struct addrinfo const*,struct addrinfo**) ; 
- char* malloc (int) ; 
- int strlen (char const*) ; 
+
+ int EAI_MEMORY ;
+ int QadrtConvertA2E (char*,char const*,int,int) ;
+ int free (char*) ;
+ int getaddrinfo (char*,char*,struct addrinfo const*,struct addrinfo**) ;
+ char* malloc (int) ;
+ int strlen (char const*) ;
 
 int
 Curl_getaddrinfo_a(const char * nodename, const char * servname,
@@ -31,8 +31,8 @@ Curl_getaddrinfo_a(const char * nodename, const char * servname,
   int status;
   int i;
 
-  enodename = (char *) NULL;
-  eservname = (char *) NULL;
+  enodename = (char *) ((void*)0);
+  eservname = (char *) ((void*)0);
 
   if(nodename) {
     i = strlen(nodename);

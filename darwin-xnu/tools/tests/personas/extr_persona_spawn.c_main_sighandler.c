@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int SIGCHLD ; 
- int /*<<< orphan*/  dbg (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  g_nchildren ; 
- int /*<<< orphan*/  getpid () ; 
+ int SIGCHLD ;
+ int dbg (char*,int ,int) ;
+ int g_nchildren ;
+ int getpid () ;
 
 __attribute__((used)) static void main_sighandler(int sig)
 {
-	dbg("PID: %d received sig %d", getpid(), sig);
-	if (sig == SIGCHLD) {
-		--g_nchildren;
-	}
+ dbg("PID: %d received sig %d", getpid(), sig);
+ if (sig == SIGCHLD) {
+  --g_nchildren;
+ }
 }

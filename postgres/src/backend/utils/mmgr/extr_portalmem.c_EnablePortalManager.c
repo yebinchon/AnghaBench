@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int entrysize; int /*<<< orphan*/  keysize; } ;
-typedef  int /*<<< orphan*/  PortalHashEnt ;
-typedef  TYPE_1__ HASHCTL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALLOCSET_DEFAULT_SIZES ; 
- int /*<<< orphan*/ * AllocSetContextCreate (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HASH_ELEM ; 
- int /*<<< orphan*/  MAX_PORTALNAME_LEN ; 
- int /*<<< orphan*/  PORTALS_PER_USER ; 
- int /*<<< orphan*/  PortalHashTable ; 
- int /*<<< orphan*/  TopMemoryContext ; 
- int /*<<< orphan*/ * TopPortalContext ; 
- int /*<<< orphan*/  hash_create (char*,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int entrysize; int keysize; } ;
+typedef int PortalHashEnt ;
+typedef TYPE_1__ HASHCTL ;
+
+
+ int ALLOCSET_DEFAULT_SIZES ;
+ int * AllocSetContextCreate (int ,char*,int ) ;
+ int Assert (int ) ;
+ int HASH_ELEM ;
+ int MAX_PORTALNAME_LEN ;
+ int PORTALS_PER_USER ;
+ int PortalHashTable ;
+ int TopMemoryContext ;
+ int * TopPortalContext ;
+ int hash_create (char*,int ,TYPE_1__*,int ) ;
 
 void
 EnablePortalManager(void)
 {
-	HASHCTL		ctl;
+ HASHCTL ctl;
 
-	Assert(TopPortalContext == NULL);
+ Assert(TopPortalContext == ((void*)0));
 
-	TopPortalContext = AllocSetContextCreate(TopMemoryContext,
-											 "TopPortalContext",
-											 ALLOCSET_DEFAULT_SIZES);
+ TopPortalContext = AllocSetContextCreate(TopMemoryContext,
+            "TopPortalContext",
+            ALLOCSET_DEFAULT_SIZES);
 
-	ctl.keysize = MAX_PORTALNAME_LEN;
-	ctl.entrysize = sizeof(PortalHashEnt);
+ ctl.keysize = MAX_PORTALNAME_LEN;
+ ctl.entrysize = sizeof(PortalHashEnt);
 
-	/*
-	 * use PORTALS_PER_USER as a guess of how many hash table entries to
-	 * create, initially
-	 */
-	PortalHashTable = hash_create("Portal hash", PORTALS_PER_USER,
-								  &ctl, HASH_ELEM);
+
+
+
+
+ PortalHashTable = hash_create("Portal hash", PORTALS_PER_USER,
+          &ctl, HASH_ELEM);
 }

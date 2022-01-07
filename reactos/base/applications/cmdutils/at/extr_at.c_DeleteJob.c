@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  PWSTR ;
-typedef  scalar_t__ NET_API_STATUS ;
-typedef  int INT ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConResPrintf (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Confirm () ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  IDS_DELETE_ALL ; 
- scalar_t__ NERR_Success ; 
- scalar_t__ NetScheduleJobDel (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  PrintErrorMessage (scalar_t__) ; 
- int /*<<< orphan*/  StdOut ; 
+
+
+
+typedef int ULONG ;
+typedef int PWSTR ;
+typedef scalar_t__ NET_API_STATUS ;
+typedef int INT ;
+typedef scalar_t__ BOOL ;
+
+
+ int ConResPrintf (int ,int ) ;
+ int Confirm () ;
+ scalar_t__ FALSE ;
+ int IDS_DELETE_ALL ;
+ scalar_t__ NERR_Success ;
+ scalar_t__ NetScheduleJobDel (int ,int,int) ;
+ int PrintErrorMessage (scalar_t__) ;
+ int StdOut ;
 
 __attribute__((used)) static
 INT

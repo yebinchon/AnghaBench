@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct passwd {int dummy; } ;
 struct TYPE_2__ {char* pw_name; char* pw_dir; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XLOG_ERROR ; 
- int /*<<< orphan*/  XLOG_INFO ; 
- int /*<<< orphan*/  fopen (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- TYPE_1__ passwd_ent ; 
- int /*<<< orphan*/  passwd_fp ; 
- scalar_t__ passwd_line ; 
- int /*<<< orphan*/  passwdfile ; 
- int /*<<< orphan*/  plog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pw_dir ; 
- int /*<<< orphan*/  pw_name ; 
- int /*<<< orphan*/  setpwent () ; 
+
+ int XLOG_ERROR ;
+ int XLOG_INFO ;
+ int fopen (int ,char*) ;
+ int memset (char*,int ,int) ;
+ TYPE_1__ passwd_ent ;
+ int passwd_fp ;
+ scalar_t__ passwd_line ;
+ int passwdfile ;
+ int plog (int ,char*,int ) ;
+ int pw_dir ;
+ int pw_name ;
+ int setpwent () ;
 
 __attribute__((used)) static void
 hlfsd_setpwent(void)

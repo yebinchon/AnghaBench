@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sockaddr_in {int /*<<< orphan*/  sin_addr; } ;
+
+
+
+
+struct sockaddr_in {int sin_addr; } ;
 struct sockaddr {scalar_t__ sa_family; } ;
-typedef  int /*<<< orphan*/  shortbuf ;
-typedef  int /*<<< orphan*/  adns_state ;
-typedef  int /*<<< orphan*/  adns_rrtype ;
-typedef  int /*<<< orphan*/  adns_queryflags ;
-typedef  int /*<<< orphan*/  adns_query ;
+typedef int shortbuf ;
+typedef int adns_state ;
+typedef int adns_rrtype ;
+typedef int adns_queryflags ;
+typedef int adns_query ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- int ENOSYS ; 
- int /*<<< orphan*/  adns_qf_search ; 
- int adns_submit (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int errno ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,unsigned char const,unsigned char const,unsigned char const,unsigned char const,char const*) ; 
- int strlen (char const*) ; 
+
+ scalar_t__ AF_INET ;
+ int ENOSYS ;
+ int adns_qf_search ;
+ int adns_submit (int ,char*,int ,int ,void*,int *) ;
+ int errno ;
+ int free (char*) ;
+ char* malloc (int) ;
+ int sprintf (char*,char*,unsigned char const,unsigned char const,unsigned char const,unsigned char const,char const*) ;
+ int strlen (char const*) ;
 
 int adns_submit_reverse_any(adns_state ads,
-			    const struct sockaddr *addr,
-			    const char *zone,
-			    adns_rrtype type,
-			    adns_queryflags flags,
-			    void *context,
-			    adns_query *query_r) {
+       const struct sockaddr *addr,
+       const char *zone,
+       adns_rrtype type,
+       adns_queryflags flags,
+       void *context,
+       adns_query *query_r) {
   const unsigned char *iaddr;
   char *buf, *buf_free;
   char shortbuf[100];

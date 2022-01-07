@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int reference; int pic_id; int frame_num; } ;
-typedef  int /*<<< orphan*/  H264Ref ;
-typedef  TYPE_1__ H264Picture ;
+typedef int H264Ref ;
+typedef TYPE_1__ H264Picture ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  split_field_copy (int /*<<< orphan*/ *,TYPE_1__* const,int,int) ; 
+
+ int av_assert0 (int) ;
+ int split_field_copy (int *,TYPE_1__* const,int,int) ;
 
 __attribute__((used)) static int build_def_list(H264Ref *def, int def_len,
                           H264Picture * const *in, int len, int is_long, int sel)
 {
-    int  i[2] = { 0 };
+    int i[2] = { 0 };
     int index = 0;
 
     while (i[0] < len || i[1] < len) {

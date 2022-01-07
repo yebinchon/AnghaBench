@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int FUNCTION ;
+ int docfunctions (char*,int ) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FUNCTION ; 
- int /*<<< orphan*/  docfunctions (char*,int /*<<< orphan*/ ) ; 
-
-__attribute__((used)) static void extfunc(char * filename) { docfunctions(filename, FUNCTION);   }
+__attribute__((used)) static void extfunc(char * filename) { docfunctions(filename, FUNCTION); }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int64_t ;
-typedef  int /*<<< orphan*/  FailingMuxerPacketData ;
-typedef  int /*<<< orphan*/  AVPacket ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
-typedef  int /*<<< orphan*/  AVDictionary ;
 
-/* Variables and functions */
- int AVERROR_BUG ; 
- int SLEEPTIME_50_MS ; 
- char* av_err2str (int) ; 
- int av_gettime_relative () ; 
- int /*<<< orphan*/  av_init_packet (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_packet_unref (int /*<<< orphan*/ *) ; 
- int av_write_frame (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int av_write_trailer (int /*<<< orphan*/ *) ; 
- int avformat_write_header (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int prepare_packet (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int int64_t ;
+typedef int FailingMuxerPacketData ;
+typedef int AVPacket ;
+typedef int AVFormatContext ;
+typedef int AVDictionary ;
+
+
+ int AVERROR_BUG ;
+ int SLEEPTIME_50_MS ;
+ char* av_err2str (int) ;
+ int av_gettime_relative () ;
+ int av_init_packet (int *) ;
+ int av_packet_unref (int *) ;
+ int av_write_frame (int *,int *) ;
+ int av_write_trailer (int *) ;
+ int avformat_write_header (int *,int **) ;
+ int fprintf (int ,char*,...) ;
+ int prepare_packet (int *,int const*,int) ;
+ int stderr ;
 
 __attribute__((used)) static int fifo_overflow_drop_test(AVFormatContext *oc, AVDictionary **opts,
                                    const FailingMuxerPacketData *data)

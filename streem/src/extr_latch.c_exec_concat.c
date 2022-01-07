@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct concat_data {int len; int /*<<< orphan*/ ** latch; scalar_t__ i; } ;
-typedef  int /*<<< orphan*/  strm_value ;
-typedef  int /*<<< orphan*/  strm_stream ;
-typedef  int strm_int ;
 
-/* Variables and functions */
- int STRM_OK ; 
- int /*<<< orphan*/  concat_start ; 
- struct concat_data* malloc (int) ; 
- int /*<<< orphan*/  strm_connect (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * strm_latch_new () ; 
- int /*<<< orphan*/  strm_producer ; 
- int /*<<< orphan*/ * strm_stream_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,struct concat_data*) ; 
- int /*<<< orphan*/  strm_stream_value (int /*<<< orphan*/ *) ; 
+
+
+
+struct concat_data {int len; int ** latch; scalar_t__ i; } ;
+typedef int strm_value ;
+typedef int strm_stream ;
+typedef int strm_int ;
+
+
+ int STRM_OK ;
+ int concat_start ;
+ struct concat_data* malloc (int) ;
+ int strm_connect (int *,int ,int ,int *) ;
+ int * strm_latch_new () ;
+ int strm_producer ;
+ int * strm_stream_new (int ,int ,int *,struct concat_data*) ;
+ int strm_stream_value (int *) ;
 
 __attribute__((used)) static int
 exec_concat(strm_stream* strm, int argc, strm_value* args, strm_value* ret)
@@ -40,6 +40,6 @@ exec_concat(strm_stream* strm, int argc, strm_value* args, strm_value* ret)
     strm_connect(strm, args[i], strm_stream_value(s), &r);
     d->latch[i] = s;
   }
-  *ret = strm_stream_value(strm_stream_new(strm_producer, concat_start, NULL, d));
+  *ret = strm_stream_value(strm_stream_new(strm_producer, concat_start, ((void*)0), d));
   return STRM_OK;
 }

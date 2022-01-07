@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  close (int) ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  read (int,char*,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
+ int O_RDONLY ;
+ int close (int) ;
+ int open (char*,int ) ;
+ int read (int,char*,int) ;
+ int sprintf (char*,char*,int) ;
 
 int pids_cmdline(int pid, char *cmdline) {
         int fd;

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {unsigned char* ptr; size_t pos; } ;
-typedef  TYPE_1__ oggbyte_buffer ;
-typedef  int ogg_int64_t ;
+typedef TYPE_1__ oggbyte_buffer ;
+typedef int ogg_int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _positionB (TYPE_1__*,int) ; 
- int /*<<< orphan*/  _positionF (TYPE_1__*,int) ; 
+
+ int _positionB (TYPE_1__*,int) ;
+ int _positionF (TYPE_1__*,int) ;
 
 __attribute__((used)) static ogg_int64_t oggbyte_read8(oggbyte_buffer *b,int pos){
   ogg_int64_t ret;

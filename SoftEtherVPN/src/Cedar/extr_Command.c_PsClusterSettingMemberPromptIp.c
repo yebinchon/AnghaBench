@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-struct TYPE_6__ {int /*<<< orphan*/ * (* ReadLine ) (TYPE_1__*,char*,int) ;int /*<<< orphan*/  (* Write ) (TYPE_1__*,char*) ;} ;
-typedef  TYPE_1__ CONSOLE ;
 
-/* Variables and functions */
- char* _UU (char*) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  stub2 (TYPE_1__*,char*) ; 
- int /*<<< orphan*/ * stub3 (TYPE_1__*,char*,int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+struct TYPE_6__ {int * (* ReadLine ) (TYPE_1__*,char*,int) ;int (* Write ) (TYPE_1__*,char*) ;} ;
+typedef TYPE_1__ CONSOLE ;
+
+
+ char* _UU (char*) ;
+ int stub1 (TYPE_1__*,char*) ;
+ int stub2 (TYPE_1__*,char*) ;
+ int * stub3 (TYPE_1__*,char*,int) ;
 
 wchar_t *PsClusterSettingMemberPromptIp(CONSOLE *c, void *param)
 {
-	wchar_t *ret;
-	// Validate arguments
-	if (c == NULL)
-	{
-		return NULL;
-	}
+ wchar_t *ret;
 
-	c->Write(c, _UU("CMD_ClusterSettingMember_Prompt_IP_1"));
-	c->Write(c, L"");
+ if (c == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	ret = c->ReadLine(c, _UU("CMD_ClusterSettingMember_Prompt_IP_2"), true);
+ c->Write(c, _UU("CMD_ClusterSettingMember_Prompt_IP_1"));
+ c->Write(c, L"");
 
-	return ret;
+ ret = c->ReadLine(c, _UU("CMD_ClusterSettingMember_Prompt_IP_2"), 1);
+
+ return ret;
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  headers; int /*<<< orphan*/  data; int /*<<< orphan*/  encoder; int /*<<< orphan*/  type; int /*<<< orphan*/  filename; int /*<<< orphan*/  name; struct TYPE_4__* prev; struct TYPE_4__* subparts; } ;
-typedef  TYPE_1__ tool_mime ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONST_SAFEFREE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  curl_slist_free_all (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int headers; int data; int encoder; int type; int filename; int name; struct TYPE_4__* prev; struct TYPE_4__* subparts; } ;
+typedef TYPE_1__ tool_mime ;
+
+
+ int CONST_SAFEFREE (int ) ;
+ int curl_slist_free_all (int ) ;
+ int free (TYPE_1__*) ;
 
 void tool_mime_free(tool_mime *mime)
 {

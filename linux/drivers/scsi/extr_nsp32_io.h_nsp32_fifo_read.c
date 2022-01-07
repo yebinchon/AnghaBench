@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int FIFO_DATA_LOW ;
+ int nsp32_multi_read4 (unsigned int,int ,void*,unsigned long) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FIFO_DATA_LOW ; 
- int /*<<< orphan*/  nsp32_multi_read4 (unsigned int,int /*<<< orphan*/ ,void*,unsigned long) ; 
-
-__attribute__((used)) static inline void nsp32_fifo_read(unsigned int   base,
-				   void          *buf,
-				   unsigned long  count)
+__attribute__((used)) static inline void nsp32_fifo_read(unsigned int base,
+       void *buf,
+       unsigned long count)
 {
-	nsp32_multi_read4(base, FIFO_DATA_LOW, buf, count);
+ nsp32_multi_read4(base, FIFO_DATA_LOW, buf, count);
 }

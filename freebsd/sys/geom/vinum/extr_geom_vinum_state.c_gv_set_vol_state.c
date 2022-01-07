@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gv_volume {int state; int /*<<< orphan*/  vinumconf; int /*<<< orphan*/  provider; } ;
 
-/* Variables and functions */
- int GV_ERR_ISBUSY ; 
- int GV_ERR_SETSTATE ; 
- int GV_SETSTATE_CONFIG ; 
- int GV_SETSTATE_FORCE ; 
-#define  GV_VOL_DOWN 129 
-#define  GV_VOL_UP 128 
- int /*<<< orphan*/  KASSERT (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  gv_provider_is_open (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gv_save_config (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gv_update_vol_state (struct gv_volume*) ; 
+
+
+
+struct gv_volume {int state; int vinumconf; int provider; } ;
+
+
+ int GV_ERR_ISBUSY ;
+ int GV_ERR_SETSTATE ;
+ int GV_SETSTATE_CONFIG ;
+ int GV_SETSTATE_FORCE ;
+
+
+ int KASSERT (int ,char*) ;
+ int gv_provider_is_open (int ) ;
+ int gv_save_config (int ) ;
+ int gv_update_vol_state (struct gv_volume*) ;
 
 int
 gv_set_vol_state(struct gv_volume *v, int newstate, int flags)
 {
-	int oldstate;
+ int oldstate;
 
-	KASSERT(v != NULL, ("gv_set_vol_state: NULL v"));
+ KASSERT(v != ((void*)0), ("gv_set_vol_state: NULL v"));
 
-	oldstate = v->state;
+ oldstate = v->state;
 
-	if (newstate == oldstate)
-		return (0);
+ if (newstate == oldstate)
+  return (0);
 
-	switch (newstate) {
-	case GV_VOL_UP:
-		/* Let update handle if the volume can come up. */
-		gv_update_vol_state(v);
-		if (v->state != GV_VOL_UP && !(flags & GV_SETSTATE_FORCE))
-			return (GV_ERR_SETSTATE);
-		v->state = newstate;
-		break;
-	case GV_VOL_DOWN:
-		/*
-		 * Set state to GV_VOL_DOWN only if no-one is using the volume,
-		 * or if the state should be forced.
-		 */
-		if (!gv_provider_is_open(v->provider) &&
-		    !(flags & GV_SETSTATE_FORCE))
-			return (GV_ERR_ISBUSY);
-		v->state = newstate;
-		break;
-	}
-	/* Save config */
-	if (flags & GV_SETSTATE_CONFIG)
-		gv_save_config(v->vinumconf);
-	return (0);
+ switch (newstate) {
+ case 128:
+
+  gv_update_vol_state(v);
+  if (v->state != 128 && !(flags & GV_SETSTATE_FORCE))
+   return (GV_ERR_SETSTATE);
+  v->state = newstate;
+  break;
+ case 129:
+
+
+
+
+  if (!gv_provider_is_open(v->provider) &&
+      !(flags & GV_SETSTATE_FORCE))
+   return (GV_ERR_ISBUSY);
+  v->state = newstate;
+  break;
+ }
+
+ if (flags & GV_SETSTATE_CONFIG)
+  gv_save_config(v->vinumconf);
+ return (0);
 }

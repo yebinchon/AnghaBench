@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vdisp_t ;
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/ * jsstr_alloc (char const*) ; 
- int /*<<< orphan*/  jsval_string (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vdisp_t ;
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int jsstr_t ;
+typedef int WORD ;
+typedef char WCHAR ;
+typedef int HRESULT ;
+
+
+ int E_OUTOFMEMORY ;
+ int S_OK ;
+ int TRACE (char*) ;
+ int * jsstr_alloc (char const*) ;
+ int jsval_string (int *) ;
 
 __attribute__((used)) static HRESULT JSGlobal_ScriptEngine(script_ctx_t *ctx, vdisp_t *jsthis, WORD flags, unsigned argc, jsval_t *argv,
         jsval_t *r)

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vmci_subscription {int /*<<< orphan*/  callback_data; int /*<<< orphan*/  id; int /*<<< orphan*/  (* callback ) (int /*<<< orphan*/ ,struct vmci_event_data*,int /*<<< orphan*/ ) ;scalar_t__ event_payload; struct vmci_subscription* sub; } ;
+
+
+
+
+struct vmci_subscription {int callback_data; int id; int (* callback ) (int ,struct vmci_event_data*,int ) ;scalar_t__ event_payload; struct vmci_subscription* sub; } ;
 struct vmci_event_data {int dummy; } ;
-struct vmci_delayed_event_info {int /*<<< orphan*/  callback_data; int /*<<< orphan*/  id; int /*<<< orphan*/  (* callback ) (int /*<<< orphan*/ ,struct vmci_event_data*,int /*<<< orphan*/ ) ;scalar_t__ event_payload; struct vmci_delayed_event_info* sub; } ;
+struct vmci_delayed_event_info {int callback_data; int id; int (* callback ) (int ,struct vmci_event_data*,int ) ;scalar_t__ event_payload; struct vmci_delayed_event_info* sub; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (struct vmci_subscription*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,struct vmci_event_data*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  subscriber_lock ; 
- int /*<<< orphan*/  vmci_event_release (struct vmci_subscription*) ; 
- int /*<<< orphan*/  vmci_free_kernel_mem (struct vmci_subscription*,int) ; 
- int /*<<< orphan*/  vmci_grab_lock_bh (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vmci_release_lock_bh (int /*<<< orphan*/ *) ; 
+
+ int ASSERT (struct vmci_subscription*) ;
+ int stub1 (int ,struct vmci_event_data*,int ) ;
+ int subscriber_lock ;
+ int vmci_event_release (struct vmci_subscription*) ;
+ int vmci_free_kernel_mem (struct vmci_subscription*,int) ;
+ int vmci_grab_lock_bh (int *) ;
+ int vmci_release_lock_bh (int *) ;
 
 __attribute__((used)) static void
 vmci_event_delayed_dispatch_cb(void *data)
 {
-	struct vmci_delayed_event_info *event_info;
-	struct vmci_subscription *sub;
-	struct vmci_event_data *ed;
+ struct vmci_delayed_event_info *event_info;
+ struct vmci_subscription *sub;
+ struct vmci_event_data *ed;
 
-	event_info = (struct vmci_delayed_event_info *)data;
+ event_info = (struct vmci_delayed_event_info *)data;
 
-	ASSERT(event_info);
-	ASSERT(event_info->sub);
+ ASSERT(event_info);
+ ASSERT(event_info->sub);
 
-	sub = event_info->sub;
-	ed = (struct vmci_event_data *)event_info->event_payload;
+ sub = event_info->sub;
+ ed = (struct vmci_event_data *)event_info->event_payload;
 
-	sub->callback(sub->id, ed, sub->callback_data);
+ sub->callback(sub->id, ed, sub->callback_data);
 
-	vmci_grab_lock_bh(&subscriber_lock);
-	vmci_event_release(sub);
-	vmci_release_lock_bh(&subscriber_lock);
+ vmci_grab_lock_bh(&subscriber_lock);
+ vmci_event_release(sub);
+ vmci_release_lock_bh(&subscriber_lock);
 
-	vmci_free_kernel_mem(event_info, sizeof(*event_info));
+ vmci_free_kernel_mem(event_info, sizeof(*event_info));
 }

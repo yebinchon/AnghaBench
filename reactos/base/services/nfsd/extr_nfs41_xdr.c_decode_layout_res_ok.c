@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-struct TYPE_3__ {scalar_t__ count; int /*<<< orphan*/  layouts; int /*<<< orphan*/  stateid; int /*<<< orphan*/  return_on_close; } ;
-typedef  TYPE_1__ pnfs_layoutget_res_ok ;
-typedef  int /*<<< orphan*/  bool_t ;
-typedef  int /*<<< orphan*/  XDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  decode_layout (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xdr_bool (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xdr_stateid4 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xdr_u_int32_t (int /*<<< orphan*/ *,scalar_t__*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+struct TYPE_3__ {scalar_t__ count; int layouts; int stateid; int return_on_close; } ;
+typedef TYPE_1__ pnfs_layoutget_res_ok ;
+typedef int bool_t ;
+typedef int XDR ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int decode_layout (int *,int *) ;
+ int xdr_bool (int *,int *) ;
+ int xdr_stateid4 (int *,int *) ;
+ int xdr_u_int32_t (int *,scalar_t__*) ;
 
 __attribute__((used)) static bool_t decode_layout_res_ok(
     XDR *xdr,

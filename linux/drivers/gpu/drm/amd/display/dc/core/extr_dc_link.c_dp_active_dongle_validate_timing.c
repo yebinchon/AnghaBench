@@ -1,98 +1,88 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dc_dongle_caps {scalar_t__ dongle_type; int extendedCapValid; int dp_hdmi_max_bpc; int dp_hdmi_max_pixel_clk_in_khz; int /*<<< orphan*/  is_dp_hdmi_ycbcr420_pass_through; int /*<<< orphan*/  is_dp_hdmi_ycbcr422_pass_through; } ;
+
+
+
+
+struct dc_dongle_caps {scalar_t__ dongle_type; int extendedCapValid; int dp_hdmi_max_bpc; int dp_hdmi_max_pixel_clk_in_khz; int is_dp_hdmi_ycbcr420_pass_through; int is_dp_hdmi_ycbcr422_pass_through; } ;
 struct dpcd_caps {int dongle_type; struct dc_dongle_caps dongle_caps; } ;
 struct dc_crtc_timing {int pixel_encoding; int display_color_depth; } ;
+ scalar_t__ DISPLAY_DONGLE_DP_HDMI_CONVERTER ;
 
-/* Variables and functions */
-#define  COLOR_DEPTH_101010 140 
-#define  COLOR_DEPTH_121212 139 
-#define  COLOR_DEPTH_141414 138 
-#define  COLOR_DEPTH_161616 137 
-#define  COLOR_DEPTH_666 136 
-#define  COLOR_DEPTH_888 135 
-#define  DISPLAY_DONGLE_DP_DVI_CONVERTER 134 
-#define  DISPLAY_DONGLE_DP_DVI_DONGLE 133 
- scalar_t__ DISPLAY_DONGLE_DP_HDMI_CONVERTER ; 
-#define  DISPLAY_DONGLE_DP_VGA_CONVERTER 132 
-#define  PIXEL_ENCODING_RGB 131 
-#define  PIXEL_ENCODING_YCBCR420 130 
-#define  PIXEL_ENCODING_YCBCR422 129 
-#define  PIXEL_ENCODING_YCBCR444 128 
- int get_timing_pixel_clock_100hz (struct dc_crtc_timing const*) ; 
+
+
+
+
+ int get_timing_pixel_clock_100hz (struct dc_crtc_timing const*) ;
 
 __attribute__((used)) static bool dp_active_dongle_validate_timing(
-		const struct dc_crtc_timing *timing,
-		const struct dpcd_caps *dpcd_caps)
+  const struct dc_crtc_timing *timing,
+  const struct dpcd_caps *dpcd_caps)
 {
-	const struct dc_dongle_caps *dongle_caps = &dpcd_caps->dongle_caps;
+ const struct dc_dongle_caps *dongle_caps = &dpcd_caps->dongle_caps;
 
-	switch (dpcd_caps->dongle_type) {
-	case DISPLAY_DONGLE_DP_VGA_CONVERTER:
-	case DISPLAY_DONGLE_DP_DVI_CONVERTER:
-	case DISPLAY_DONGLE_DP_DVI_DONGLE:
-		if (timing->pixel_encoding == PIXEL_ENCODING_RGB)
-			return true;
-		else
-			return false;
-	default:
-		break;
-	}
+ switch (dpcd_caps->dongle_type) {
+ case 132:
+ case 134:
+ case 133:
+  if (timing->pixel_encoding == 131)
+   return 1;
+  else
+   return 0;
+ default:
+  break;
+ }
 
-	if (dongle_caps->dongle_type != DISPLAY_DONGLE_DP_HDMI_CONVERTER ||
-		dongle_caps->extendedCapValid == false)
-		return true;
+ if (dongle_caps->dongle_type != DISPLAY_DONGLE_DP_HDMI_CONVERTER ||
+  dongle_caps->extendedCapValid == 0)
+  return 1;
 
-	/* Check Pixel Encoding */
-	switch (timing->pixel_encoding) {
-	case PIXEL_ENCODING_RGB:
-	case PIXEL_ENCODING_YCBCR444:
-		break;
-	case PIXEL_ENCODING_YCBCR422:
-		if (!dongle_caps->is_dp_hdmi_ycbcr422_pass_through)
-			return false;
-		break;
-	case PIXEL_ENCODING_YCBCR420:
-		if (!dongle_caps->is_dp_hdmi_ycbcr420_pass_through)
-			return false;
-		break;
-	default:
-		/* Invalid Pixel Encoding*/
-		return false;
-	}
 
-	switch (timing->display_color_depth) {
-	case COLOR_DEPTH_666:
-	case COLOR_DEPTH_888:
-		/*888 and 666 should always be supported*/
-		break;
-	case COLOR_DEPTH_101010:
-		if (dongle_caps->dp_hdmi_max_bpc < 10)
-			return false;
-		break;
-	case COLOR_DEPTH_121212:
-		if (dongle_caps->dp_hdmi_max_bpc < 12)
-			return false;
-		break;
-	case COLOR_DEPTH_141414:
-	case COLOR_DEPTH_161616:
-	default:
-		/* These color depths are currently not supported */
-		return false;
-	}
+ switch (timing->pixel_encoding) {
+ case 131:
+ case 128:
+  break;
+ case 129:
+  if (!dongle_caps->is_dp_hdmi_ycbcr422_pass_through)
+   return 0;
+  break;
+ case 130:
+  if (!dongle_caps->is_dp_hdmi_ycbcr420_pass_through)
+   return 0;
+  break;
+ default:
 
-	if (get_timing_pixel_clock_100hz(timing) > (dongle_caps->dp_hdmi_max_pixel_clk_in_khz * 10))
-		return false;
+  return 0;
+ }
 
-	return true;
+ switch (timing->display_color_depth) {
+ case 136:
+ case 135:
+
+  break;
+ case 140:
+  if (dongle_caps->dp_hdmi_max_bpc < 10)
+   return 0;
+  break;
+ case 139:
+  if (dongle_caps->dp_hdmi_max_bpc < 12)
+   return 0;
+  break;
+ case 138:
+ case 137:
+ default:
+
+  return 0;
+ }
+
+ if (get_timing_pixel_clock_100hz(timing) > (dongle_caps->dp_hdmi_max_pixel_clk_in_khz * 10))
+  return 0;
+
+ return 1;
 }

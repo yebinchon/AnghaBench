@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* esp_http_client_handle_t ;
-typedef  int /*<<< orphan*/  esp_http_auth_data_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
-struct TYPE_5__ {int /*<<< orphan*/  opaque; int /*<<< orphan*/  nonce; int /*<<< orphan*/  qop; int /*<<< orphan*/  algorithm; int /*<<< orphan*/  realm; int /*<<< orphan*/  method; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef TYPE_1__* esp_http_client_handle_t ;
+typedef int esp_http_auth_data_t ;
+typedef int esp_err_t ;
+struct TYPE_5__ {int opaque; int nonce; int qop; int algorithm; int realm; int method; } ;
 struct TYPE_4__ {TYPE_2__* auth_data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_FAIL ; 
- int /*<<< orphan*/  ESP_OK ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
+
+ int ESP_FAIL ;
+ int ESP_OK ;
+ int free (int ) ;
+ int memset (TYPE_2__*,int ,int) ;
 
 __attribute__((used)) static esp_err_t _clear_auth_data(esp_http_client_handle_t client)
 {
-    if (client->auth_data == NULL) {
+    if (client->auth_data == ((void*)0)) {
         return ESP_FAIL;
     }
 

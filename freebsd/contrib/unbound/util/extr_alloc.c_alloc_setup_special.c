@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {TYPE_2__* key; int /*<<< orphan*/  lock; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {TYPE_2__* key; int lock; } ;
 struct TYPE_6__ {TYPE_1__ entry; } ;
-typedef  TYPE_2__ alloc_special_type ;
+typedef TYPE_2__ alloc_special_type ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lock_rw_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
+
+ int lock_rw_init (int *) ;
+ int memset (TYPE_2__*,int ,int) ;
 
 __attribute__((used)) static void
 alloc_setup_special(alloc_special_type* t)
 {
-	memset(t, 0, sizeof(*t));
-	lock_rw_init(&t->entry.lock);
-	t->entry.key = t;
+ memset(t, 0, sizeof(*t));
+ lock_rw_init(&t->entry.lock);
+ t->entry.key = t;
 }

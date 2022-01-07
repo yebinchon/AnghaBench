@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  properties; } ;
-struct TYPE_6__ {scalar_t__ cbData; int /*<<< orphan*/  pbData; } ;
-typedef  int /*<<< orphan*/ * LPBYTE ;
-typedef  scalar_t__ DWORD ;
-typedef  TYPE_1__ CRYPT_DATA_BLOB ;
-typedef  TYPE_2__ CDecodeMsg ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ CDecodeHashMsg_GetParam (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  CMSG_COMPUTED_HASH_PARAM ; 
- int /*<<< orphan*/  CMSG_HASH_DATA_PARAM ; 
- int /*<<< orphan*/  CRYPT_E_HASH_VALUE ; 
- scalar_t__ ContextPropertyList_FindProperty (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/ * CryptMemAlloc (scalar_t__) ; 
- int /*<<< orphan*/  CryptMemFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERROR_OUTOFMEMORY ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int properties; } ;
+struct TYPE_6__ {scalar_t__ cbData; int pbData; } ;
+typedef int * LPBYTE ;
+typedef scalar_t__ DWORD ;
+typedef TYPE_1__ CRYPT_DATA_BLOB ;
+typedef TYPE_2__ CDecodeMsg ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ CDecodeHashMsg_GetParam (TYPE_2__*,int ,int ,int *,scalar_t__*) ;
+ int CMSG_COMPUTED_HASH_PARAM ;
+ int CMSG_HASH_DATA_PARAM ;
+ int CRYPT_E_HASH_VALUE ;
+ scalar_t__ ContextPropertyList_FindProperty (int ,int ,TYPE_1__*) ;
+ int * CryptMemAlloc (scalar_t__) ;
+ int CryptMemFree (int *) ;
+ int ERROR_OUTOFMEMORY ;
+ scalar_t__ FALSE ;
+ int SetLastError (int ) ;
+ scalar_t__ memcmp (int ,int *,scalar_t__) ;
 
 __attribute__((used)) static BOOL CDecodeHashMsg_VerifyHash(CDecodeMsg *msg)
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static BOOL CDecodeHashMsg_VerifyHash(CDecodeMsg *msg)
     {
         DWORD computedHashSize = 0;
 
-        ret = CDecodeHashMsg_GetParam(msg, CMSG_COMPUTED_HASH_PARAM, 0, NULL,
+        ret = CDecodeHashMsg_GetParam(msg, CMSG_COMPUTED_HASH_PARAM, 0, ((void*)0),
          &computedHashSize);
         if (hashBlob.cbData == computedHashSize)
         {

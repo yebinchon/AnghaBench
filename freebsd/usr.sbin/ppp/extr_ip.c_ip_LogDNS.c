@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char u_short ;
-typedef  char u_char ;
+
+
+
+
+typedef char u_short ;
+typedef char u_char ;
 struct udphdr {char uh_ulen; } ;
 struct dns_header {scalar_t__ opcode; scalar_t__ qr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LogDNS ; 
- int /*<<< orphan*/  MAXHOSTNAMELEN ; 
- scalar_t__ OPCODE_QUERY ; 
- char* dns_Qclass2Txt (int /*<<< orphan*/ ) ; 
- char* dns_Qtype2Txt (int /*<<< orphan*/ ) ; 
- scalar_t__ log_IsKept (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,char const*,char const*,char const*,char*) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int /*<<< orphan*/  ntohs (char const) ; 
+
+ int LogDNS ;
+ int MAXHOSTNAMELEN ;
+ scalar_t__ OPCODE_QUERY ;
+ char* dns_Qclass2Txt (int ) ;
+ char* dns_Qtype2Txt (int ) ;
+ scalar_t__ log_IsKept (int ) ;
+ int log_Printf (int ,char*,char const*,char const*,char const*,char*) ;
+ int memcpy (char*,char const*,int) ;
+ int ntohs (char const) ;
 
 __attribute__((used)) static void
 ip_LogDNS(const struct udphdr *uh, const char *direction)
@@ -37,7 +37,7 @@ ip_LogDNS(const struct udphdr *uh, const char *direction)
 
   ptr = (const char *)uh + sizeof *uh;
   len = ntohs(uh->uh_ulen) - sizeof *uh;
-  if (len < sizeof header + 5)		/* rfc1024 */
+  if (len < sizeof header + 5)
     return;
 
   pktptr = (const u_short *)ptr;
@@ -46,12 +46,12 @@ ip_LogDNS(const struct udphdr *uh, const char *direction)
   len -= sizeof header;
 
   while (pktptr < (const u_short *)ptr) {
-    *hptr++ = ntohs(*pktptr);		/* Careful of macro side-effects ! */
+    *hptr++ = ntohs(*pktptr);
     pktptr++;
   }
 
   if (header.opcode == OPCODE_QUERY && header.qr == 0) {
-    /* rfc1035 */
+
     char namewithdot[MAXHOSTNAMELEN + 1], *n;
     const char *qtype, *qclass;
     const u_char *end;

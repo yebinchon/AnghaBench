@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  scalar_t__ svn_node_kind_t ;
-struct conflict_tree_incoming_delete_details {scalar_t__ replacing_node_kind; int /*<<< orphan*/  added_rev; int /*<<< orphan*/  rev_author; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _ (char*) ; 
- char const* apr_psprintf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ svn_node_dir ; 
- scalar_t__ svn_node_file ; 
- scalar_t__ svn_node_symlink ; 
+
+
+
+typedef int svn_revnum_t ;
+typedef scalar_t__ svn_node_kind_t ;
+struct conflict_tree_incoming_delete_details {scalar_t__ replacing_node_kind; int added_rev; int rev_author; } ;
+typedef int apr_pool_t ;
+
+
+ int _ (char*) ;
+ char const* apr_psprintf (int *,int ,char const*,int ,char const*,int ,int ,int ) ;
+ scalar_t__ svn_node_dir ;
+ scalar_t__ svn_node_file ;
+ scalar_t__ svn_node_symlink ;
 
 __attribute__((used)) static const char *
 describe_incoming_reverse_addition_upon_switch(

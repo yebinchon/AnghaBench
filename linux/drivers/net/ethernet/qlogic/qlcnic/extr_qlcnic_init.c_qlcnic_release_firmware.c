@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct qlcnic_adapter {int /*<<< orphan*/ * fw; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  release_firmware (int /*<<< orphan*/ *) ; 
+
+
+
+struct qlcnic_adapter {int * fw; } ;
+
+
+ int release_firmware (int *) ;
 
 void
 qlcnic_release_firmware(struct qlcnic_adapter *adapter)
 {
-	release_firmware(adapter->fw);
-	adapter->fw = NULL;
+ release_firmware(adapter->fw);
+ adapter->fw = ((void*)0);
 }

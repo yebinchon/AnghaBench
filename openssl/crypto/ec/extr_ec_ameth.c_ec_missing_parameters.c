@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * ec; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * ec; } ;
 struct TYPE_5__ {TYPE_1__ pkey; } ;
-typedef  TYPE_2__ EVP_PKEY ;
+typedef TYPE_2__ EVP_PKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * EC_KEY_get0_group (int /*<<< orphan*/ *) ; 
+
+ int * EC_KEY_get0_group (int *) ;
 
 __attribute__((used)) static int ec_missing_parameters(const EVP_PKEY *pkey)
 {
-    if (pkey->pkey.ec == NULL || EC_KEY_get0_group(pkey->pkey.ec) == NULL)
+    if (pkey->pkey.ec == ((void*)0) || EC_KEY_get0_group(pkey->pkey.ec) == ((void*)0))
         return 1;
     return 0;
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vo {int dummy; } ;
 struct ra_ctx {struct vo* vo; struct priv* priv; } ;
-struct priv {int /*<<< orphan*/  egl_context; int /*<<< orphan*/  egl_backbuffer; int /*<<< orphan*/  egl_display; int /*<<< orphan*/  egl_config; int /*<<< orphan*/  d3d11_backbuffer; int /*<<< orphan*/  dxgi_swapchain; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  EGLint ;
+struct priv {int egl_context; int egl_backbuffer; int egl_display; int egl_config; int d3d11_backbuffer; int dxgi_swapchain; } ;
+typedef int HRESULT ;
+typedef int EGLint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EGL_D3D_TEXTURE_ANGLE ; 
- int /*<<< orphan*/  EGL_NONE ; 
- int /*<<< orphan*/  EGL_TEXTURE_2D ; 
- int /*<<< orphan*/  EGL_TEXTURE_FORMAT ; 
- int /*<<< orphan*/  EGL_TEXTURE_RGBA ; 
- int /*<<< orphan*/  EGL_TEXTURE_TARGET ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDXGISwapChain_GetBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IID_ID3D11Texture2D ; 
- int /*<<< orphan*/  MP_FATAL (struct vo*,char*) ; 
- int /*<<< orphan*/  eglCreatePbufferFromClientBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  eglMakeCurrent (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int EGL_D3D_TEXTURE_ANGLE ;
+ int EGL_NONE ;
+ int EGL_TEXTURE_2D ;
+ int EGL_TEXTURE_FORMAT ;
+ int EGL_TEXTURE_RGBA ;
+ int EGL_TEXTURE_TARGET ;
+ scalar_t__ FAILED (int ) ;
+ int IDXGISwapChain_GetBuffer (int ,int ,int *,void**) ;
+ int IID_ID3D11Texture2D ;
+ int MP_FATAL (struct vo*,char*) ;
+ int eglCreatePbufferFromClientBuffer (int ,int ,int ,int ,int *) ;
+ int eglMakeCurrent (int ,int ,int ,int ) ;
 
 __attribute__((used)) static bool d3d11_backbuffer_get(struct ra_ctx *ctx)
 {
@@ -40,7 +40,7 @@ __attribute__((used)) static bool d3d11_backbuffer_get(struct ra_ctx *ctx)
         (void**)&p->d3d11_backbuffer);
     if (FAILED(hr)) {
         MP_FATAL(vo, "Couldn't get swap chain back buffer\n");
-        return false;
+        return 0;
     }
 
     EGLint pbuffer_attributes[] = {
@@ -53,10 +53,10 @@ __attribute__((used)) static bool d3d11_backbuffer_get(struct ra_ctx *ctx)
         pbuffer_attributes);
     if (!p->egl_backbuffer) {
         MP_FATAL(vo, "Couldn't create EGL pbuffer\n");
-        return false;
+        return 0;
     }
 
     eglMakeCurrent(p->egl_display, p->egl_backbuffer, p->egl_backbuffer,
                    p->egl_context);
-    return true;
+    return 1;
 }

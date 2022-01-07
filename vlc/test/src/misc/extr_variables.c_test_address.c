@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ p_address; } ;
-typedef  TYPE_1__ vlc_value_t ;
-typedef  int /*<<< orphan*/  libvlc_int_t ;
+typedef TYPE_1__ vlc_value_t ;
+typedef int libvlc_int_t ;
 struct TYPE_5__ {char* p_address; } ;
 
-/* Variables and functions */
- int VAR_COUNT ; 
- int /*<<< orphan*/  VLC_VAR_ADDRESS ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * psz_var_name ; 
- int /*<<< orphan*/  var_Create (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  var_Destroy (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  var_Get (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  var_SetAddress (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- TYPE_2__* var_value ; 
+
+ int VAR_COUNT ;
+ int VLC_VAR_ADDRESS ;
+ int assert (int) ;
+ int * psz_var_name ;
+ int var_Create (int *,int ,int ) ;
+ int var_Destroy (int *,int ) ;
+ int var_Get (int *,int ,TYPE_1__*) ;
+ int var_SetAddress (int *,int ,char*) ;
+ TYPE_2__* var_value ;
 
 __attribute__((used)) static void test_address( libvlc_int_t *p_libvlc )
 {

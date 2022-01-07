@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int size; int capacity; int thresh; int /*<<< orphan*/  lock; int /*<<< orphan*/  cond_full; scalar_t__ wait_full; TYPE_2__* first; } ;
-typedef  TYPE_1__ hb_fifo_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int size; int capacity; int thresh; int lock; int cond_full; scalar_t__ wait_full; TYPE_2__* first; } ;
+typedef TYPE_1__ hb_fifo_t ;
 struct TYPE_6__ {struct TYPE_6__* next; } ;
-typedef  TYPE_2__ hb_buffer_t ;
+typedef TYPE_2__ hb_buffer_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hb_cond_signal (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_unlock (int /*<<< orphan*/ ) ; 
+
+ int hb_cond_signal (int ) ;
+ int hb_lock (int ) ;
+ int hb_unlock (int ) ;
 
 hb_buffer_t * hb_fifo_get( hb_fifo_t * f )
 {
@@ -30,12 +30,12 @@ hb_buffer_t * hb_fifo_get( hb_fifo_t * f )
     if( f->size < 1 )
     {
         hb_unlock( f->lock );
-        return NULL;
+        return ((void*)0);
     }
-    b         = f->first;
-    f->first  = b->next;
-    b->next   = NULL;
-    f->size  -= 1;
+    b = f->first;
+    f->first = b->next;
+    b->next = ((void*)0);
+    f->size -= 1;
     if( f->wait_full && f->size == f->capacity - f->thresh )
     {
         f->wait_full = 0;

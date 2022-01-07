@@ -1,116 +1,116 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  repl_repl ;
-typedef  int /*<<< orphan*/  repl_null ;
-struct TYPE_10__ {int /*<<< orphan*/  oid; int /*<<< orphan*/  fdwowner; int /*<<< orphan*/  fdwname; } ;
-struct TYPE_9__ {int /*<<< orphan*/  t_self; } ;
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  TYPE_1__* HeapTuple ;
-typedef  TYPE_2__* Form_pg_foreign_data_wrapper ;
-typedef  int /*<<< orphan*/  Datum ;
-typedef  int /*<<< orphan*/  Acl ;
 
-/* Variables and functions */
- int Anum_pg_foreign_data_wrapper_fdwacl ; 
- int Anum_pg_foreign_data_wrapper_fdwowner ; 
- int /*<<< orphan*/  CatalogTupleUpdate (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  DatumGetAclP (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERRCODE_INSUFFICIENT_PRIVILEGE ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  ForeignDataWrapperRelationId ; 
- scalar_t__ GETSTRUCT (TYPE_1__*) ; 
- int /*<<< orphan*/  InvokeObjectPostAlterHook (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NameStr (int /*<<< orphan*/ ) ; 
- int Natts_pg_foreign_data_wrapper ; 
- int /*<<< orphan*/  ObjectIdGetDatum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PointerGetDatum (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RelationGetDescr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * aclnewowner (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  changeDependencyOnOwner (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errhint (char*) ; 
- int /*<<< orphan*/  errmsg (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_getattr (TYPE_1__*,int,int /*<<< orphan*/ ,int*) ; 
- TYPE_1__* heap_modify_tuple (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  memset (int*,int,int) ; 
- int /*<<< orphan*/  superuser () ; 
- int /*<<< orphan*/  superuser_arg (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int repl_repl ;
+typedef int repl_null ;
+struct TYPE_10__ {int oid; int fdwowner; int fdwname; } ;
+struct TYPE_9__ {int t_self; } ;
+typedef int Relation ;
+typedef int Oid ;
+typedef TYPE_1__* HeapTuple ;
+typedef TYPE_2__* Form_pg_foreign_data_wrapper ;
+typedef int Datum ;
+typedef int Acl ;
+
+
+ int Anum_pg_foreign_data_wrapper_fdwacl ;
+ int Anum_pg_foreign_data_wrapper_fdwowner ;
+ int CatalogTupleUpdate (int ,int *,TYPE_1__*) ;
+ int DatumGetAclP (int ) ;
+ int ERRCODE_INSUFFICIENT_PRIVILEGE ;
+ int ERROR ;
+ int ForeignDataWrapperRelationId ;
+ scalar_t__ GETSTRUCT (TYPE_1__*) ;
+ int InvokeObjectPostAlterHook (int ,int ,int ) ;
+ int NameStr (int ) ;
+ int Natts_pg_foreign_data_wrapper ;
+ int ObjectIdGetDatum (int ) ;
+ int PointerGetDatum (int *) ;
+ int RelationGetDescr (int ) ;
+ int * aclnewowner (int ,int ,int ) ;
+ int changeDependencyOnOwner (int ,int ,int ) ;
+ int ereport (int ,int ) ;
+ int errcode (int ) ;
+ int errhint (char*) ;
+ int errmsg (char*,int ) ;
+ int heap_getattr (TYPE_1__*,int,int ,int*) ;
+ TYPE_1__* heap_modify_tuple (TYPE_1__*,int ,int *,int*,int*) ;
+ int memset (int*,int,int) ;
+ int superuser () ;
+ int superuser_arg (int ) ;
 
 __attribute__((used)) static void
 AlterForeignDataWrapperOwner_internal(Relation rel, HeapTuple tup, Oid newOwnerId)
 {
-	Form_pg_foreign_data_wrapper form;
-	Datum		repl_val[Natts_pg_foreign_data_wrapper];
-	bool		repl_null[Natts_pg_foreign_data_wrapper];
-	bool		repl_repl[Natts_pg_foreign_data_wrapper];
-	Acl		   *newAcl;
-	Datum		aclDatum;
-	bool		isNull;
+ Form_pg_foreign_data_wrapper form;
+ Datum repl_val[Natts_pg_foreign_data_wrapper];
+ bool repl_null[Natts_pg_foreign_data_wrapper];
+ bool repl_repl[Natts_pg_foreign_data_wrapper];
+ Acl *newAcl;
+ Datum aclDatum;
+ bool isNull;
 
-	form = (Form_pg_foreign_data_wrapper) GETSTRUCT(tup);
+ form = (Form_pg_foreign_data_wrapper) GETSTRUCT(tup);
 
-	/* Must be a superuser to change a FDW owner */
-	if (!superuser())
-		ereport(ERROR,
-				(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
-				 errmsg("permission denied to change owner of foreign-data wrapper \"%s\"",
-						NameStr(form->fdwname)),
-				 errhint("Must be superuser to change owner of a foreign-data wrapper.")));
 
-	/* New owner must also be a superuser */
-	if (!superuser_arg(newOwnerId))
-		ereport(ERROR,
-				(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
-				 errmsg("permission denied to change owner of foreign-data wrapper \"%s\"",
-						NameStr(form->fdwname)),
-				 errhint("The owner of a foreign-data wrapper must be a superuser.")));
+ if (!superuser())
+  ereport(ERROR,
+    (errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
+     errmsg("permission denied to change owner of foreign-data wrapper \"%s\"",
+      NameStr(form->fdwname)),
+     errhint("Must be superuser to change owner of a foreign-data wrapper.")));
 
-	if (form->fdwowner != newOwnerId)
-	{
-		memset(repl_null, false, sizeof(repl_null));
-		memset(repl_repl, false, sizeof(repl_repl));
 
-		repl_repl[Anum_pg_foreign_data_wrapper_fdwowner - 1] = true;
-		repl_val[Anum_pg_foreign_data_wrapper_fdwowner - 1] = ObjectIdGetDatum(newOwnerId);
+ if (!superuser_arg(newOwnerId))
+  ereport(ERROR,
+    (errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
+     errmsg("permission denied to change owner of foreign-data wrapper \"%s\"",
+      NameStr(form->fdwname)),
+     errhint("The owner of a foreign-data wrapper must be a superuser.")));
 
-		aclDatum = heap_getattr(tup,
-								Anum_pg_foreign_data_wrapper_fdwacl,
-								RelationGetDescr(rel),
-								&isNull);
-		/* Null ACLs do not require changes */
-		if (!isNull)
-		{
-			newAcl = aclnewowner(DatumGetAclP(aclDatum),
-								 form->fdwowner, newOwnerId);
-			repl_repl[Anum_pg_foreign_data_wrapper_fdwacl - 1] = true;
-			repl_val[Anum_pg_foreign_data_wrapper_fdwacl - 1] = PointerGetDatum(newAcl);
-		}
+ if (form->fdwowner != newOwnerId)
+ {
+  memset(repl_null, 0, sizeof(repl_null));
+  memset(repl_repl, 0, sizeof(repl_repl));
 
-		tup = heap_modify_tuple(tup, RelationGetDescr(rel), repl_val, repl_null,
-								repl_repl);
+  repl_repl[Anum_pg_foreign_data_wrapper_fdwowner - 1] = 1;
+  repl_val[Anum_pg_foreign_data_wrapper_fdwowner - 1] = ObjectIdGetDatum(newOwnerId);
 
-		CatalogTupleUpdate(rel, &tup->t_self, tup);
+  aclDatum = heap_getattr(tup,
+        Anum_pg_foreign_data_wrapper_fdwacl,
+        RelationGetDescr(rel),
+        &isNull);
 
-		/* Update owner dependency reference */
-		changeDependencyOnOwner(ForeignDataWrapperRelationId,
-								form->oid,
-								newOwnerId);
-	}
+  if (!isNull)
+  {
+   newAcl = aclnewowner(DatumGetAclP(aclDatum),
+         form->fdwowner, newOwnerId);
+   repl_repl[Anum_pg_foreign_data_wrapper_fdwacl - 1] = 1;
+   repl_val[Anum_pg_foreign_data_wrapper_fdwacl - 1] = PointerGetDatum(newAcl);
+  }
 
-	InvokeObjectPostAlterHook(ForeignDataWrapperRelationId,
-							  form->oid, 0);
+  tup = heap_modify_tuple(tup, RelationGetDescr(rel), repl_val, repl_null,
+        repl_repl);
+
+  CatalogTupleUpdate(rel, &tup->t_self, tup);
+
+
+  changeDependencyOnOwner(ForeignDataWrapperRelationId,
+        form->oid,
+        newOwnerId);
+ }
+
+ InvokeObjectPostAlterHook(ForeignDataWrapperRelationId,
+         form->oid, 0);
 }

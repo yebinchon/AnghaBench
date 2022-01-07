@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENTER_FUNC () ; 
- int /*<<< orphan*/  LEAVE_FUNC () ; 
- int /*<<< orphan*/  MaskIrqs () ; 
- scalar_t__ OldIntEHandler ; 
- int /*<<< orphan*/  SetGlobalInt (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnmaskIrqs () ; 
+
+
+
+typedef int ULONG ;
+
+
+ int ENTER_FUNC () ;
+ int LEAVE_FUNC () ;
+ int MaskIrqs () ;
+ scalar_t__ OldIntEHandler ;
+ int SetGlobalInt (int,int ) ;
+ int UnmaskIrqs () ;
 
 void DeInstallIntEHook(void)
 {
-	ENTER_FUNC();
+ ENTER_FUNC();
 
-	MaskIrqs();
-	if(OldIntEHandler)
-	{
-		SetGlobalInt(0x0E,(ULONG)OldIntEHandler);
+ MaskIrqs();
+ if(OldIntEHandler)
+ {
+  SetGlobalInt(0x0E,(ULONG)OldIntEHandler);
         OldIntEHandler=0;
-	}
-	UnmaskIrqs();
+ }
+ UnmaskIrqs();
 
     LEAVE_FUNC();
 }

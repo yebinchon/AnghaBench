@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int Event; } ;
-typedef  TYPE_1__ SlWlanEvent_t ;
+typedef TYPE_1__ SlWlanEvent_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LL_INFO ; 
- int /*<<< orphan*/  LOG (int /*<<< orphan*/ ,char*) ; 
-#define  SL_WLAN_CONNECT_EVENT 130 
-#define  SL_WLAN_STA_CONNECTED_EVENT 129 
-#define  SL_WLAN_STA_DISCONNECTED_EVENT 128 
+
+ int LL_INFO ;
+ int LOG (int ,char*) ;
+
+
+
 
 void SimpleLinkWlanEventHandler(SlWlanEvent_t *e) {
   switch (e->Event) {
-    case SL_WLAN_CONNECT_EVENT:
+    case 130:
       LOG(LL_INFO, ("WiFi: connected, getting IP"));
       break;
-    case SL_WLAN_STA_CONNECTED_EVENT:
+    case 129:
       LOG(LL_INFO, ("WiFi: station connected"));
       break;
-    case SL_WLAN_STA_DISCONNECTED_EVENT:
+    case 128:
       LOG(LL_INFO, ("WiFi: station disconnected"));
       break;
     default:

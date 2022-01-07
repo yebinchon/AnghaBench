@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int x1; scalar_t__ x2; struct TYPE_3__* right; struct TYPE_3__* left; } ;
-typedef  TYPE_1__ rev_friends_t ;
+typedef TYPE_1__ rev_friends_t ;
 
-/* Variables and functions */
- size_t rev_friends_intersect_len ; 
- scalar_t__* rev_friends_intersect_list ; 
- size_t rev_friends_intersect_pos ; 
- int unconv_uid (scalar_t__) ; 
+
+ size_t rev_friends_intersect_len ;
+ scalar_t__* rev_friends_intersect_list ;
+ size_t rev_friends_intersect_pos ;
+ int unconv_uid (scalar_t__) ;
 
 __attribute__((used)) static int rev_friends_intersect_constructive (rev_friends_t *T, int x1, int *res, int max_res) {
   if (!T) {

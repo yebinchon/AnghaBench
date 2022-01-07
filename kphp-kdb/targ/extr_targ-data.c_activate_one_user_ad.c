@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  active_ads; int /*<<< orphan*/  clicked_ads; int /*<<< orphan*/  inactive_ads; } ;
-typedef  TYPE_1__ user_t ;
-typedef  scalar_t__ treeref_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int active_ads; int clicked_ads; int inactive_ads; } ;
+typedef TYPE_1__ user_t ;
+typedef scalar_t__ treeref_t ;
 struct intree_node {int x; scalar_t__ z; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AdSpace ; 
- struct intree_node* TNODE (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  active_ad_nodes ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  inactive_ad_nodes ; 
- int /*<<< orphan*/  intree_insert (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ intree_lookup (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  intree_remove (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,scalar_t__*) ; 
- scalar_t__ new_intree_node (int /*<<< orphan*/ ) ; 
+
+ int AdSpace ;
+ struct intree_node* TNODE (int ,scalar_t__) ;
+ int active_ad_nodes ;
+ int assert (int) ;
+ int inactive_ad_nodes ;
+ int intree_insert (int ,int ,scalar_t__) ;
+ scalar_t__ intree_lookup (int ,int ,int) ;
+ int intree_remove (int ,int ,int,scalar_t__*) ;
+ scalar_t__ new_intree_node (int ) ;
 
 __attribute__((used)) static inline void activate_one_user_ad (user_t *U, int ad_id) {
   treeref_t RN;
@@ -42,6 +42,6 @@ __attribute__((used)) static inline void activate_one_user_ad (user_t *U, int ad
     --inactive_ad_nodes;
   }
   ++active_ad_nodes;
-  assert (!intree_lookup (AdSpace, U->active_ads, ad_id));  // !!! remove later
+  assert (!intree_lookup (AdSpace, U->active_ads, ad_id));
   U->active_ads = intree_insert (AdSpace, U->active_ads, RN);
 }

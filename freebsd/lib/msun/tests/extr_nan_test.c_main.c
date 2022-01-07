@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FE_INVALID ; 
- int /*<<< orphan*/  feenableexcept (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  testnan (char*) ; 
+ int FE_INVALID ;
+ int feenableexcept (int ) ;
+ int printf (char*) ;
+ int testnan (char*) ;
 
 int
 main(void)
 {
 
-	printf("1..1\n");
+ printf("1..1\n");
 
-	/* Die if a signalling NaN is returned */
-	feenableexcept(FE_INVALID);
 
-	testnan("0x1234");
-	testnan("");
+ feenableexcept(FE_INVALID);
 
-	printf("ok 1 - nan\n");
+ testnan("0x1234");
+ testnan("");
 
-	return (0);
+ printf("ok 1 - nan\n");
+
+ return (0);
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const u64 ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  XXH64_state_t ;
-typedef  int /*<<< orphan*/  HCFILE ;
 
-/* Variables and functions */
- int FBUFSZ ; 
- int /*<<< orphan*/ * XXH64_createState () ; 
- int /*<<< orphan*/  const XXH64_digest (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  XXH64_freeState (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  XXH64_reset (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XXH64_update (int /*<<< orphan*/ *,char*,size_t const) ; 
- int /*<<< orphan*/  hc_fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hc_feof (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hc_fopen (int /*<<< orphan*/ *,char const*,char*) ; 
- size_t hc_fread (char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int const u64 ;
+typedef int buf ;
+typedef int XXH64_state_t ;
+typedef int HCFILE ;
+
+
+ int FBUFSZ ;
+ int * XXH64_createState () ;
+ int const XXH64_digest (int *) ;
+ int XXH64_freeState (int *) ;
+ int XXH64_reset (int *,int ) ;
+ int XXH64_update (int *,char*,size_t const) ;
+ int hc_fclose (int *) ;
+ int hc_feof (int *) ;
+ int hc_fopen (int *,char const*,char*) ;
+ size_t hc_fread (char*,int,int,int *) ;
+ int memset (char*,int ,int) ;
 
 u64 brain_compute_attack_wordlist (const char *filename)
 {
@@ -34,9 +34,9 @@ u64 brain_compute_attack_wordlist (const char *filename)
 
   XXH64_reset (state, 0);
 
-  #define FBUFSZ 8192
 
-  char buf[FBUFSZ];
+
+  char buf[8192];
 
   HCFILE fp;
 
@@ -46,7 +46,7 @@ u64 brain_compute_attack_wordlist (const char *filename)
   {
     memset (buf, 0, sizeof (buf));
 
-    const size_t nread = hc_fread (buf, 1, FBUFSZ, &fp);
+    const size_t nread = hc_fread (buf, 1, 8192, &fp);
 
     XXH64_update (state, buf, nread);
   }

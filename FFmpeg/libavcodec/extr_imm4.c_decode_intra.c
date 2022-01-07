@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_8__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  bits; int /*<<< orphan*/  table; } ;
+
+
+typedef struct TYPE_13__ TYPE_8__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int bits; int table; } ;
 struct TYPE_12__ {int height; int width; TYPE_2__* priv_data; } ;
 struct TYPE_11__ {int* linesize; scalar_t__* data; } ;
-struct TYPE_9__ {int /*<<< orphan*/  (* idct_put ) (scalar_t__,int,int /*<<< orphan*/ ) ;} ;
-struct TYPE_10__ {scalar_t__ hi; int lo; int factor; int /*<<< orphan*/ * block; TYPE_1__ idsp; } ;
-typedef  TYPE_2__ IMM4Context ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVCodecContext ;
+struct TYPE_9__ {int (* idct_put ) (scalar_t__,int,int ) ;} ;
+struct TYPE_10__ {scalar_t__ hi; int lo; int factor; int * block; TYPE_1__ idsp; } ;
+typedef TYPE_2__ IMM4Context ;
+typedef int GetBitContext ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- TYPE_8__ cbplo_tab ; 
- int decode_blocks (TYPE_4__*,int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ ,int,unsigned int) ; 
- unsigned int get_bits1 (int /*<<< orphan*/ *) ; 
- unsigned int get_cbphi (int /*<<< orphan*/ *,int) ; 
- int get_vlc2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int* intra_cb ; 
- int /*<<< orphan*/  stub1 (scalar_t__,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (scalar_t__,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (scalar_t__,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (scalar_t__,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub5 (scalar_t__,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub6 (scalar_t__,int,int /*<<< orphan*/ ) ; 
+
+ int AVERROR_INVALIDDATA ;
+ TYPE_8__ cbplo_tab ;
+ int decode_blocks (TYPE_4__*,int *,unsigned int,int ,int,unsigned int) ;
+ unsigned int get_bits1 (int *) ;
+ unsigned int get_cbphi (int *,int) ;
+ int get_vlc2 (int *,int ,int ,int) ;
+ int* intra_cb ;
+ int stub1 (scalar_t__,int,int ) ;
+ int stub2 (scalar_t__,int,int ) ;
+ int stub3 (scalar_t__,int,int ) ;
+ int stub4 (scalar_t__,int,int ) ;
+ int stub5 (scalar_t__,int,int ) ;
+ int stub6 (scalar_t__,int,int ) ;
 
 __attribute__((used)) static int decode_intra(AVCodecContext *avctx, GetBitContext *gb, AVFrame *frame)
 {

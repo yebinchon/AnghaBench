@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct device {int /*<<< orphan*/  parent; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  put_device (int /*<<< orphan*/ ) ; 
+
+
+
+struct device {int parent; } ;
+
+
+ int put_device (int ) ;
 
 __attribute__((used)) static inline void ufs_bsg_node_release(struct device *dev)
 {
-	put_device(dev->parent);
+ put_device(dev->parent);
 }

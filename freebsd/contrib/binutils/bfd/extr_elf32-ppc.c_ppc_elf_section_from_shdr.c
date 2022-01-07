@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  flagword ;
-typedef  int /*<<< orphan*/  bfd_boolean ;
-typedef  int /*<<< orphan*/  bfd ;
-typedef  int /*<<< orphan*/  asection ;
-struct TYPE_4__ {int sh_flags; scalar_t__ sh_type; int /*<<< orphan*/ * bfd_section; } ;
-typedef  TYPE_1__ Elf_Internal_Shdr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SEC_EXCLUDE ; 
- int /*<<< orphan*/  SEC_SORT_ENTRIES ; 
- int SHF_EXCLUDE ; 
- scalar_t__ SHT_ORDERED ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _bfd_elf_make_section_from_shdr (int /*<<< orphan*/ *,TYPE_1__*,char const*,int) ; 
- int /*<<< orphan*/  bfd_get_section_flags (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bfd_set_section_flags (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int flagword ;
+typedef int bfd_boolean ;
+typedef int bfd ;
+typedef int asection ;
+struct TYPE_4__ {int sh_flags; scalar_t__ sh_type; int * bfd_section; } ;
+typedef TYPE_1__ Elf_Internal_Shdr ;
+
+
+ int FALSE ;
+ int SEC_EXCLUDE ;
+ int SEC_SORT_ENTRIES ;
+ int SHF_EXCLUDE ;
+ scalar_t__ SHT_ORDERED ;
+ int TRUE ;
+ int _bfd_elf_make_section_from_shdr (int *,TYPE_1__*,char const*,int) ;
+ int bfd_get_section_flags (int *,int *) ;
+ int bfd_set_section_flags (int *,int *,int ) ;
 
 __attribute__((used)) static bfd_boolean
 ppc_elf_section_from_shdr (bfd *abfd,
-			   Elf_Internal_Shdr *hdr,
-			   const char *name,
-			   int shindex)
+      Elf_Internal_Shdr *hdr,
+      const char *name,
+      int shindex)
 {
   asection *newsect;
   flagword flags;

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  js_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  jsR_defproperty (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  js_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  js_toobject (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stackidx (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int js_State ;
+
+
+ int jsR_defproperty (int *,int ,char const*,int,int ,int *,int *) ;
+ int js_pop (int *,int) ;
+ int js_toobject (int *,int) ;
+ int stackidx (int *,int) ;
 
 void js_defproperty(js_State *J, int idx, const char *name, int atts)
 {
-	jsR_defproperty(J, js_toobject(J, idx), name, atts, stackidx(J, -1), NULL, NULL);
-	js_pop(J, 1);
+ jsR_defproperty(J, js_toobject(J, idx), name, atts, stackidx(J, -1), ((void*)0), ((void*)0));
+ js_pop(J, 1);
 }

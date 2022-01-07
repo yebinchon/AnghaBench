@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {char* to_shortname; char* to_longname; char* to_doc; int to_has_all_memory; int to_has_memory; int to_has_stack; int to_has_registers; int to_has_execution; int /*<<< orphan*/  to_magic; int /*<<< orphan*/  to_stratum; int /*<<< orphan*/  to_mourn_inferior; int /*<<< orphan*/  to_create_inferior; int /*<<< orphan*/  to_load; int /*<<< orphan*/  to_kill; int /*<<< orphan*/  to_remove_breakpoint; int /*<<< orphan*/  to_insert_breakpoint; int /*<<< orphan*/  to_files_info; int /*<<< orphan*/  to_xfer_memory; int /*<<< orphan*/  to_prepare_to_store; int /*<<< orphan*/  to_store_registers; int /*<<< orphan*/  to_fetch_registers; int /*<<< orphan*/  to_wait; int /*<<< orphan*/  to_resume; int /*<<< orphan*/  to_attach; int /*<<< orphan*/  to_close; int /*<<< orphan*/  to_open; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPS_MAGIC ; 
- int /*<<< orphan*/  generic_load ; 
- int /*<<< orphan*/  generic_mourn_inferior ; 
- int /*<<< orphan*/  process_stratum ; 
- int /*<<< orphan*/  remote_rdp_attach ; 
- int /*<<< orphan*/  remote_rdp_close ; 
- int /*<<< orphan*/  remote_rdp_create_inferior ; 
- int /*<<< orphan*/  remote_rdp_fetch_register ; 
- int /*<<< orphan*/  remote_rdp_files_info ; 
- int /*<<< orphan*/  remote_rdp_insert_breakpoint ; 
- int /*<<< orphan*/  remote_rdp_kill ; 
- int /*<<< orphan*/  remote_rdp_open ; 
- TYPE_1__ remote_rdp_ops ; 
- int /*<<< orphan*/  remote_rdp_prepare_to_store ; 
- int /*<<< orphan*/  remote_rdp_remove_breakpoint ; 
- int /*<<< orphan*/  remote_rdp_resume ; 
- int /*<<< orphan*/  remote_rdp_store_register ; 
- int /*<<< orphan*/  remote_rdp_wait ; 
- int /*<<< orphan*/  remote_rdp_xfer_inferior_memory ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {char* to_shortname; char* to_longname; char* to_doc; int to_has_all_memory; int to_has_memory; int to_has_stack; int to_has_registers; int to_has_execution; int to_magic; int to_stratum; int to_mourn_inferior; int to_create_inferior; int to_load; int to_kill; int to_remove_breakpoint; int to_insert_breakpoint; int to_files_info; int to_xfer_memory; int to_prepare_to_store; int to_store_registers; int to_fetch_registers; int to_wait; int to_resume; int to_attach; int to_close; int to_open; } ;
+
+
+ int OPS_MAGIC ;
+ int generic_load ;
+ int generic_mourn_inferior ;
+ int process_stratum ;
+ int remote_rdp_attach ;
+ int remote_rdp_close ;
+ int remote_rdp_create_inferior ;
+ int remote_rdp_fetch_register ;
+ int remote_rdp_files_info ;
+ int remote_rdp_insert_breakpoint ;
+ int remote_rdp_kill ;
+ int remote_rdp_open ;
+ TYPE_1__ remote_rdp_ops ;
+ int remote_rdp_prepare_to_store ;
+ int remote_rdp_remove_breakpoint ;
+ int remote_rdp_resume ;
+ int remote_rdp_store_register ;
+ int remote_rdp_wait ;
+ int remote_rdp_xfer_inferior_memory ;
 
 __attribute__((used)) static void
 init_remote_rdp_ops (void)

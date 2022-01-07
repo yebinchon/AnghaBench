@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wined3d_timestamp_query {int /*<<< orphan*/  entry; struct wined3d_context* context; int /*<<< orphan*/  id; } ;
+
+
+
+
+struct wined3d_timestamp_query {int entry; struct wined3d_context* context; int id; } ;
 struct wined3d_gl_info {int dummy; } ;
-struct wined3d_context {int free_timestamp_query_count; int /*<<< orphan*/  timestamp_queries; int /*<<< orphan*/ * free_timestamp_queries; struct wined3d_gl_info* gl_info; } ;
+struct wined3d_context {int free_timestamp_query_count; int timestamp_queries; int * free_timestamp_queries; struct wined3d_gl_info* gl_info; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,struct wined3d_context*) ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- int /*<<< orphan*/  glGenQueries (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_add_head (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int GL_EXTCALL (int ) ;
+ int TRACE (char*,int ,struct wined3d_context*) ;
+ int checkGLcall (char*) ;
+ int glGenQueries (int,int *) ;
+ int list_add_head (int *,int *) ;
 
 void context_alloc_timestamp_query(struct wined3d_context *context, struct wined3d_timestamp_query *query)
 {

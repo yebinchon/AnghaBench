@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_9__ {scalar_t__ priv; } ;
-typedef  TYPE_3__ stream_t ;
-typedef  int /*<<< orphan*/  int16_t ;
-struct TYPE_10__ {int sector; int start_sector; int end_sector; TYPE_2__* cd; int /*<<< orphan*/  cdp; } ;
-typedef  TYPE_4__ cdda_priv ;
+typedef TYPE_3__ stream_t ;
+typedef int int16_t ;
+struct TYPE_10__ {int sector; int start_sector; int end_sector; TYPE_2__* cd; int cdp; } ;
+typedef TYPE_4__ cdda_priv ;
 struct TYPE_8__ {int tracks; TYPE_1__* disc_toc; } ;
 struct TYPE_7__ {int dwStartSector; } ;
 
-/* Variables and functions */
- int CDIO_CD_FRAMESIZE_RAW ; 
- int /*<<< orphan*/  cdparanoia_callback ; 
- int /*<<< orphan*/  memcpy (void*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * paranoia_read (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_track_info (TYPE_3__*,int) ; 
+
+ int CDIO_CD_FRAMESIZE_RAW ;
+ int cdparanoia_callback ;
+ int memcpy (void*,int *,int) ;
+ int * paranoia_read (int ,int ) ;
+ int print_track_info (TYPE_3__*,int) ;
 
 __attribute__((used)) static int fill_buffer(stream_t *s, void *buffer, int max_len)
 {

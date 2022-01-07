@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-struct trapframe {int /*<<< orphan*/  tf_esr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  READ_SPECIALREG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  far_el1 ; 
- int /*<<< orphan*/  panic (char*) ; 
- int /*<<< orphan*/  print_registers (struct trapframe*) ; 
- int /*<<< orphan*/  printf (char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint64_t ;
+struct trapframe {int tf_esr; } ;
+
+
+ int READ_SPECIALREG (int ) ;
+ int far_el1 ;
+ int panic (char*) ;
+ int print_registers (struct trapframe*) ;
+ int printf (char*,int ) ;
 
 void
 do_serror(struct trapframe *frame)
 {
-	uint64_t esr, far;
+ uint64_t esr, far;
 
-	far = READ_SPECIALREG(far_el1);
-	esr = frame->tf_esr;
+ far = READ_SPECIALREG(far_el1);
+ esr = frame->tf_esr;
 
-	print_registers(frame);
-	printf(" far: %16lx\n", far);
-	printf(" esr:         %.8lx\n", esr);
-	panic("Unhandled System Error");
+ print_registers(frame);
+ printf(" far: %16lx\n", far);
+ printf(" esr:         %.8lx\n", esr);
+ panic("Unhandled System Error");
 }

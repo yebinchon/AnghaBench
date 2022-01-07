@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {double day_length; int time_changed; scalar_t__ message_index; int /*<<< orphan*/  messages; scalar_t__ typing; int /*<<< orphan*/  typing_buffer; scalar_t__ item_index; scalar_t__ flying; scalar_t__ observe2; scalar_t__ observe1; scalar_t__ player_count; int /*<<< orphan*/  players; scalar_t__ chunk_count; int /*<<< orphan*/  chunks; } ;
-typedef  int /*<<< orphan*/  Player ;
-typedef  int /*<<< orphan*/  Chunk ;
 
-/* Variables and functions */
- double DAY_LENGTH ; 
- int MAX_CHUNKS ; 
- int MAX_MESSAGES ; 
- int MAX_PLAYERS ; 
- int MAX_TEXT_LENGTH ; 
- TYPE_1__* g ; 
- int /*<<< orphan*/  glfwSetTime (double) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {double day_length; int time_changed; scalar_t__ message_index; int messages; scalar_t__ typing; int typing_buffer; scalar_t__ item_index; scalar_t__ flying; scalar_t__ observe2; scalar_t__ observe1; scalar_t__ player_count; int players; scalar_t__ chunk_count; int chunks; } ;
+typedef int Player ;
+typedef int Chunk ;
+
+
+ double DAY_LENGTH ;
+ int MAX_CHUNKS ;
+ int MAX_MESSAGES ;
+ int MAX_PLAYERS ;
+ int MAX_TEXT_LENGTH ;
+ TYPE_1__* g ;
+ int glfwSetTime (double) ;
+ int memset (int ,int ,int) ;
 
 void reset_model() {
     memset(g->chunks, 0, sizeof(Chunk) * MAX_CHUNKS);

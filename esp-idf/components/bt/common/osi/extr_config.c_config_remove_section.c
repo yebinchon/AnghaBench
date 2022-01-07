@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  section_t ;
-struct TYPE_4__ {int /*<<< orphan*/  sections; } ;
-typedef  TYPE_1__ config_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int list_remove (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * section_find (TYPE_1__*,char const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int section_t ;
+struct TYPE_4__ {int sections; } ;
+typedef TYPE_1__ config_t ;
+
+
+ int assert (int ) ;
+ int list_remove (int ,int *) ;
+ int * section_find (TYPE_1__*,char const*) ;
 
 bool config_remove_section(config_t *config, const char *section)
 {
-    assert(config != NULL);
-    assert(section != NULL);
+    assert(config != ((void*)0));
+    assert(section != ((void*)0));
 
     section_t *sec = section_find(config, section);
     if (!sec) {
-        return false;
+        return 0;
     }
 
     return list_remove(config->sections, sec);

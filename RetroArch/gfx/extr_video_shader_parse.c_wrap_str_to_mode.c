@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum gfx_wrap_type { ____Placeholder_gfx_wrap_type } gfx_wrap_type ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RARCH_WARN (char*,char const*) ; 
- int RARCH_WRAP_BORDER ; 
- int RARCH_WRAP_DEFAULT ; 
- int RARCH_WRAP_EDGE ; 
- int RARCH_WRAP_MIRRORED_REPEAT ; 
- int RARCH_WRAP_REPEAT ; 
- scalar_t__ string_is_equal (char const*,char*) ; 
+
+
+
+typedef enum gfx_wrap_type { ____Placeholder_gfx_wrap_type } gfx_wrap_type ;
+
+
+ int RARCH_WARN (char*,char const*) ;
+ int RARCH_WRAP_BORDER ;
+ int RARCH_WRAP_DEFAULT ;
+ int RARCH_WRAP_EDGE ;
+ int RARCH_WRAP_MIRRORED_REPEAT ;
+ int RARCH_WRAP_REPEAT ;
+ scalar_t__ string_is_equal (char const*,char*) ;
 
 __attribute__((used)) static enum gfx_wrap_type wrap_str_to_mode(const char *wrap_mode)
 {
-   if (string_is_equal(wrap_mode,      "clamp_to_border"))
+   if (string_is_equal(wrap_mode, "clamp_to_border"))
       return RARCH_WRAP_BORDER;
    else if (string_is_equal(wrap_mode, "clamp_to_edge"))
       return RARCH_WRAP_EDGE;

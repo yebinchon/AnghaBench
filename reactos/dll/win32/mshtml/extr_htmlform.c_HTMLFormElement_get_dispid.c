@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsIDOMNode ;
-typedef  int /*<<< orphan*/  nsIDOMHTMLElement ;
-typedef  int /*<<< orphan*/  nsIDOMHTMLCollection ;
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ UINT32 ;
-struct TYPE_4__ {int /*<<< orphan*/  nsform; } ;
-typedef  char PRUnichar ;
-typedef  TYPE_1__ HTMLFormElement ;
-typedef  int /*<<< orphan*/  HTMLDOMNode ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  scalar_t__ DISPID ;
-typedef  char* BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISP_E_UNKNOWNNAME ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_nsIDOMHTMLElement ; 
- scalar_t__ MSHTML_CUSTOM_DISPID_CNT ; 
- scalar_t__ MSHTML_DISPID_CUSTOM_MIN ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ NS_SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  get_elem_attr_value (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,char const**) ; 
- TYPE_1__* impl_from_HTMLDOMNode (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_GetData (int /*<<< orphan*/ *,char const**) ; 
- int /*<<< orphan*/  nsAString_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMHTMLCollection_GetLength (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  nsIDOMHTMLCollection_Item (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  nsIDOMHTMLCollection_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMHTMLElement_GetId (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMHTMLElement_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMHTMLFormElement_GetElements (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  nsIDOMNode_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  nsIDOMNode_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcmpiW (char const*,char*) ; 
- scalar_t__ strtoulW (char*,int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  wine_dbgstr_w (char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int nsresult ;
+typedef int nsIDOMNode ;
+typedef int nsIDOMHTMLElement ;
+typedef int nsIDOMHTMLCollection ;
+typedef int nsAString ;
+typedef int WCHAR ;
+typedef scalar_t__ UINT32 ;
+struct TYPE_4__ {int nsform; } ;
+typedef char PRUnichar ;
+typedef TYPE_1__ HTMLFormElement ;
+typedef int HTMLDOMNode ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef scalar_t__ DISPID ;
+typedef char* BSTR ;
+
+
+ int DISP_E_UNKNOWNNAME ;
+ int E_FAIL ;
+ int FIXME (char*,int ) ;
+ int IID_nsIDOMHTMLElement ;
+ scalar_t__ MSHTML_CUSTOM_DISPID_CNT ;
+ scalar_t__ MSHTML_DISPID_CUSTOM_MIN ;
+ scalar_t__ NS_FAILED (int ) ;
+ scalar_t__ NS_SUCCEEDED (int ) ;
+ int S_OK ;
+ int TRACE (char*,TYPE_1__*,int ,int ,scalar_t__*) ;
+ int get_elem_attr_value (int *,char const*,int *,char const**) ;
+ TYPE_1__* impl_from_HTMLDOMNode (int *) ;
+ int nsAString_Finish (int *) ;
+ int nsAString_GetData (int *,char const**) ;
+ int nsAString_Init (int *,int *) ;
+ int nsIDOMHTMLCollection_GetLength (int *,scalar_t__*) ;
+ int nsIDOMHTMLCollection_Item (int *,scalar_t__,int **) ;
+ int nsIDOMHTMLCollection_Release (int *) ;
+ int nsIDOMHTMLElement_GetId (int *,int *) ;
+ int nsIDOMHTMLElement_Release (int *) ;
+ int nsIDOMHTMLFormElement_GetElements (int ,int **) ;
+ int nsIDOMNode_QueryInterface (int *,int *,void**) ;
+ int nsIDOMNode_Release (int *) ;
+ int strcmpiW (char const*,char*) ;
+ scalar_t__ strtoulW (char*,int **,int) ;
+ int wine_dbgstr_w (char*) ;
 
 __attribute__((used)) static HRESULT HTMLFormElement_get_dispid(HTMLDOMNode *iface,
         BSTR name, DWORD grfdex, DISPID *pid)
@@ -85,7 +85,7 @@ __attribute__((used)) static HRESULT HTMLFormElement_get_dispid(HTMLDOMNode *ifa
     if(len > MSHTML_CUSTOM_DISPID_CNT)
         len = MSHTML_CUSTOM_DISPID_CNT;
 
-    /* FIXME: Implement in more generic way */
+
     if('0' <= *name && *name <= '9') {
         WCHAR *end_ptr;
 
@@ -96,7 +96,7 @@ __attribute__((used)) static HRESULT HTMLFormElement_get_dispid(HTMLDOMNode *ifa
         }
     }
 
-    nsAString_Init(&nsstr, NULL);
+    nsAString_Init(&nsstr, ((void*)0));
     for(i = 0; i < len; ++i) {
         nsIDOMNode *nsitem;
         nsIDOMHTMLElement *nshtml_elem;
@@ -117,7 +117,7 @@ __attribute__((used)) static HRESULT HTMLFormElement_get_dispid(HTMLDOMNode *ifa
             break;
         }
 
-        /* compare by id attr */
+
         nsres = nsIDOMHTMLElement_GetId(nshtml_elem, &nsstr);
         if(NS_FAILED(nsres)) {
             FIXME("GetId failed: 0x%08x\n", nsres);
@@ -128,19 +128,19 @@ __attribute__((used)) static HRESULT HTMLFormElement_get_dispid(HTMLDOMNode *ifa
         nsAString_GetData(&nsstr, &str);
         if(!strcmpiW(str, name)) {
             nsIDOMHTMLElement_Release(nshtml_elem);
-            /* FIXME: using index for dispid */
+
             *pid = MSHTML_DISPID_CUSTOM_MIN + i;
             hres = S_OK;
             break;
         }
 
-        /* compare by name attr */
+
         nsres = get_elem_attr_value(nshtml_elem, nameW, &name_str, &str);
         nsIDOMHTMLElement_Release(nshtml_elem);
         if(NS_SUCCEEDED(nsres)) {
             if(!strcmpiW(str, name)) {
                 nsAString_Finish(&name_str);
-                /* FIXME: using index for dispid */
+
                 *pid = MSHTML_DISPID_CUSTOM_MIN + i;
                 hres = S_OK;
                 break;

@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  nAvgBytesPerSec; int /*<<< orphan*/  nBlockAlign; int /*<<< orphan*/  wFormatTag; } ;
-struct TYPE_6__ {int /*<<< orphan*/  dwSuggestedBufferSize; int /*<<< orphan*/  dwLength; int /*<<< orphan*/  dwStart; int /*<<< orphan*/  rcFrame; scalar_t__ dwQuality; int /*<<< orphan*/  dwRate; int /*<<< orphan*/  dwScale; int /*<<< orphan*/  dwSampleSize; } ;
-struct TYPE_7__ {int cbInFormat; int cbOutFormat; TYPE_1__ sInfo; TYPE_3__* lpOutFormat; int /*<<< orphan*/ * lpInFormat; int /*<<< orphan*/ * has; int /*<<< orphan*/ * pStream; } ;
-typedef  int /*<<< orphan*/  PCMWAVEFORMAT ;
-typedef  TYPE_2__ IAVIStreamImpl ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACM_FORMATSUGGESTF_WFORMATTAG ; 
- int /*<<< orphan*/  ACM_STREAMOPENF_NONREALTIME ; 
- int /*<<< orphan*/  AVIERR_ERROR ; 
- int /*<<< orphan*/  AVIERR_MEMORY ; 
- int /*<<< orphan*/  AVIERR_NOCOMPRESSOR ; 
- int /*<<< orphan*/  AVIERR_OK ; 
- int /*<<< orphan*/  AVIStreamFormatSize (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  CONVERT_STREAM_to_THIS (int /*<<< orphan*/ *) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IAVIStream_ReadFormat (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- scalar_t__ ICQUALITY_DEFAULT ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SetRectEmpty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WAVE_FORMAT_PCM ; 
- scalar_t__ acmFormatSuggest (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_3__*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ acmStreamOpen (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int nAvgBytesPerSec; int nBlockAlign; int wFormatTag; } ;
+struct TYPE_6__ {int dwSuggestedBufferSize; int dwLength; int dwStart; int rcFrame; scalar_t__ dwQuality; int dwRate; int dwScale; int dwSampleSize; } ;
+struct TYPE_7__ {int cbInFormat; int cbOutFormat; TYPE_1__ sInfo; TYPE_3__* lpOutFormat; int * lpInFormat; int * has; int * pStream; } ;
+typedef int PCMWAVEFORMAT ;
+typedef TYPE_2__ IAVIStreamImpl ;
+typedef int HRESULT ;
+typedef scalar_t__ DWORD ;
+
+
+ int ACM_FORMATSUGGESTF_WFORMATTAG ;
+ int ACM_STREAMOPENF_NONREALTIME ;
+ int AVIERR_ERROR ;
+ int AVIERR_MEMORY ;
+ int AVIERR_NOCOMPRESSOR ;
+ int AVIERR_OK ;
+ int AVIStreamFormatSize (int *,int ,int*) ;
+ int CONVERT_STREAM_to_THIS (int *) ;
+ scalar_t__ FAILED (int ) ;
+ int GetProcessHeap () ;
+ void* HeapAlloc (int ,int ,int) ;
+ int IAVIStream_ReadFormat (int *,int ,int *,int*) ;
+ scalar_t__ ICQUALITY_DEFAULT ;
+ scalar_t__ S_OK ;
+ int SetRectEmpty (int *) ;
+ int WAVE_FORMAT_PCM ;
+ scalar_t__ acmFormatSuggest (int *,int *,TYPE_3__*,int,int ) ;
+ scalar_t__ acmStreamOpen (int **,int *,int *,TYPE_3__*,int *,int ,int ,int ) ;
+ int assert (int ) ;
 
 __attribute__((used)) static HRESULT AVIFILE_OpenCompressor(IAVIStreamImpl *This)
 {
   HRESULT hr;
 
-  /* pre-conditions */
-  assert(This != NULL);
-  assert(This->pStream != NULL);
 
-  if (This->has != NULL)
+  assert(This != ((void*)0));
+  assert(This->pStream != ((void*)0));
+
+  if (This->has != ((void*)0))
     return AVIERR_OK;
 
-  if (This->lpInFormat == NULL) {
-    /* decode or encode the data from pStream */
+  if (This->lpInFormat == ((void*)0)) {
+
     hr = AVIStreamFormatSize(This->pStream, This->sInfo.dwStart, &This->cbInFormat);
     if (FAILED(hr))
       return hr;
     This->lpInFormat = HeapAlloc(GetProcessHeap(), 0, This->cbInFormat);
-    if (This->lpInFormat == NULL)
+    if (This->lpInFormat == ((void*)0))
       return AVIERR_MEMORY;
 
     hr = IAVIStream_ReadFormat(This->pStream, This->sInfo.dwStart,
@@ -67,33 +67,33 @@ __attribute__((used)) static HRESULT AVIFILE_OpenCompressor(IAVIStreamImpl *This
     if (FAILED(hr))
       return hr;
 
-    if (This->lpOutFormat == NULL) {
-      /* we must decode to default format */
+    if (This->lpOutFormat == ((void*)0)) {
+
       This->cbOutFormat = sizeof(PCMWAVEFORMAT);
       This->lpOutFormat = HeapAlloc(GetProcessHeap(), 0, This->cbOutFormat);
-      if (This->lpOutFormat == NULL)
+      if (This->lpOutFormat == ((void*)0))
         return AVIERR_MEMORY;
 
       This->lpOutFormat->wFormatTag = WAVE_FORMAT_PCM;
-      if (acmFormatSuggest(NULL, This->lpInFormat, This->lpOutFormat,
+      if (acmFormatSuggest(((void*)0), This->lpInFormat, This->lpOutFormat,
                            This->cbOutFormat, ACM_FORMATSUGGESTF_WFORMATTAG) != S_OK)
         return AVIERR_NOCOMPRESSOR;
     }
-  } else if (This->lpOutFormat == NULL)
-    return AVIERR_ERROR; /* To what should I encode? */
+  } else if (This->lpOutFormat == ((void*)0))
+    return AVIERR_ERROR;
 
-  if (acmStreamOpen(&This->has, NULL, This->lpInFormat, This->lpOutFormat,
-                    NULL, 0, 0, ACM_STREAMOPENF_NONREALTIME) != S_OK)
+  if (acmStreamOpen(&This->has, ((void*)0), This->lpInFormat, This->lpOutFormat,
+                    ((void*)0), 0, 0, ACM_STREAMOPENF_NONREALTIME) != S_OK)
     return AVIERR_NOCOMPRESSOR;
 
-  /* update AVISTREAMINFO structure */
+
   This->sInfo.dwSampleSize = This->lpOutFormat->nBlockAlign;
-  This->sInfo.dwScale      = This->lpOutFormat->nBlockAlign;
-  This->sInfo.dwRate       = This->lpOutFormat->nAvgBytesPerSec;
-  This->sInfo.dwQuality    = (DWORD)ICQUALITY_DEFAULT;
+  This->sInfo.dwScale = This->lpOutFormat->nBlockAlign;
+  This->sInfo.dwRate = This->lpOutFormat->nAvgBytesPerSec;
+  This->sInfo.dwQuality = (DWORD)ICQUALITY_DEFAULT;
   SetRectEmpty(&This->sInfo.rcFrame);
 
-  /* convert positions and sizes to output format */
+
   CONVERT_STREAM_to_THIS(&This->sInfo.dwStart);
   CONVERT_STREAM_to_THIS(&This->sInfo.dwLength);
   CONVERT_STREAM_to_THIS(&This->sInfo.dwSuggestedBufferSize);

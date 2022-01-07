@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  stream_t ;
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+typedef int stream_t ;
 struct TYPE_11__ {scalar_t__ i_chunk_fourcc; TYPE_2__* p_father; } ;
 struct TYPE_12__ {TYPE_1__ common; } ;
-typedef  TYPE_2__ avi_chunk_t ;
-struct TYPE_13__ {int (* AVI_ChunkRead_function ) (int /*<<< orphan*/ *,TYPE_2__*) ;} ;
+typedef TYPE_2__ avi_chunk_t ;
+struct TYPE_13__ {int (* AVI_ChunkRead_function ) (int *,TYPE_2__*) ;} ;
 
-/* Variables and functions */
- scalar_t__ AVIFOURCC_indx ; 
- int AVI_ChunkFunctionFind (scalar_t__) ; 
- scalar_t__ AVI_ChunkReadCommon (int /*<<< orphan*/ *,TYPE_2__*,TYPE_2__*) ; 
- int AVI_ChunkRead_indx (int /*<<< orphan*/ *,TYPE_2__*) ; 
- TYPE_5__* AVI_Chunk_Function ; 
- int AVI_NextChunk (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int AVI_ZERO_FOURCC ; 
- int VLC_EGENERIC ; 
- scalar_t__ VLC_FOURCC (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg_Warn (int /*<<< orphan*/ *,char*,...) ; 
- int stub1 (int /*<<< orphan*/ *,TYPE_2__*) ; 
 
-int  AVI_ChunkRead( stream_t *s, avi_chunk_t *p_chk, avi_chunk_t *p_father )
+ scalar_t__ AVIFOURCC_indx ;
+ int AVI_ChunkFunctionFind (scalar_t__) ;
+ scalar_t__ AVI_ChunkReadCommon (int *,TYPE_2__*,TYPE_2__*) ;
+ int AVI_ChunkRead_indx (int *,TYPE_2__*) ;
+ TYPE_5__* AVI_Chunk_Function ;
+ int AVI_NextChunk (int *,TYPE_2__*) ;
+ int AVI_ZERO_FOURCC ;
+ int VLC_EGENERIC ;
+ scalar_t__ VLC_FOURCC (int ,int ,int ,int ) ;
+ int msg_Warn (int *,char*,...) ;
+ int stub1 (int *,TYPE_2__*) ;
+
+int AVI_ChunkRead( stream_t *s, avi_chunk_t *p_chk, avi_chunk_t *p_father )
 {
     int i_index;
 

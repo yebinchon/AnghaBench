@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fstab {int /*<<< orphan*/  fs_freq; int /*<<< orphan*/  fs_passno; int /*<<< orphan*/ * fs_spec; int /*<<< orphan*/ * fs_type; int /*<<< orphan*/ * fs_file; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  errno ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  quit (char*,int /*<<< orphan*/ ) ; 
- void* strdup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+
+
+struct fstab {int fs_freq; int fs_passno; int * fs_spec; int * fs_type; int * fs_file; } ;
+
+
+ int errno ;
+ scalar_t__ malloc (int) ;
+ int quit (char*,int ) ;
+ void* strdup (int *) ;
+ int strerror (int ) ;
 
 struct fstab *
 allocfsent(const struct fstab *fs)
 {
-	struct fstab *new;
+ struct fstab *new;
 
-	new = (struct fstab *)malloc(sizeof (*fs));
-	if (new == NULL ||
-	    (new->fs_file = strdup(fs->fs_file)) == NULL ||
-	    (new->fs_type = strdup(fs->fs_type)) == NULL ||
-	    (new->fs_spec = strdup(fs->fs_spec)) == NULL)
-		quit("%s\n", strerror(errno));
-	new->fs_passno = fs->fs_passno;
-	new->fs_freq = fs->fs_freq;
-	return (new);
+ new = (struct fstab *)malloc(sizeof (*fs));
+ if (new == ((void*)0) ||
+     (new->fs_file = strdup(fs->fs_file)) == ((void*)0) ||
+     (new->fs_type = strdup(fs->fs_type)) == ((void*)0) ||
+     (new->fs_spec = strdup(fs->fs_spec)) == ((void*)0))
+  quit("%s\n", strerror(errno));
+ new->fs_passno = fs->fs_passno;
+ new->fs_freq = fs->fs_freq;
+ return (new);
 }

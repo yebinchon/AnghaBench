@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ vlc_fourcc_t ;
-typedef  int /*<<< orphan*/  vlc_chroma_description_t ;
-struct TYPE_2__ {scalar_t__* p_fourcc; int /*<<< orphan*/  const description; } ;
 
-/* Variables and functions */
- TYPE_1__* p_list_chroma_description ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ vlc_fourcc_t ;
+typedef int vlc_chroma_description_t ;
+struct TYPE_2__ {scalar_t__* p_fourcc; int const description; } ;
+
+
+ TYPE_1__* p_list_chroma_description ;
 
 const vlc_chroma_description_t *vlc_fourcc_GetChromaDescription( vlc_fourcc_t i_fourcc )
 {
@@ -29,5 +29,5 @@ const vlc_chroma_description_t *vlc_fourcc_GetChromaDescription( vlc_fourcc_t i_
                 return &p_list_chroma_description[i].description;
         }
     }
-    return NULL;
+    return ((void*)0);
 }

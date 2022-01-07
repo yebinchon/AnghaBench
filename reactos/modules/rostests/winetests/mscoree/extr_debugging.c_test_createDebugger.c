@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  ICorDebug ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ E_INVALIDARG ; 
- scalar_t__ ICorDebug_Initialize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ICorDebug_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ ICorDebug_SetManagedHandler (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_ICorDebug ; 
- scalar_t__ IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ManagedCallback ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  check_process_enum (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- scalar_t__ pCreateDebuggingInterfaceFromVersion (int,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  v2_0 ; 
+
+
+
+typedef int IUnknown ;
+typedef int ICorDebug ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ E_INVALIDARG ;
+ scalar_t__ ICorDebug_Initialize (int *) ;
+ int ICorDebug_Release (int *) ;
+ scalar_t__ ICorDebug_SetManagedHandler (int *,int *) ;
+ int IID_ICorDebug ;
+ scalar_t__ IUnknown_QueryInterface (int *,int *,void**) ;
+ int IUnknown_Release (int *) ;
+ int ManagedCallback ;
+ scalar_t__ S_OK ;
+ int check_process_enum (int *,int ) ;
+ int ok (int,char*,scalar_t__) ;
+ scalar_t__ pCreateDebuggingInterfaceFromVersion (int,int ,int **) ;
+ int skip (char*) ;
+ int v2_0 ;
 
 __attribute__((used)) static void test_createDebugger(void)
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static void test_createDebugger(void)
     hr = pCreateDebuggingInterfaceFromVersion(4, v2_0, &pUnk);
     ok(hr == E_INVALIDARG, "CreateDebuggingInterfaceFromVersion returned %08x\n", hr);
 
-    hr = pCreateDebuggingInterfaceFromVersion(3, v2_0, NULL);
+    hr = pCreateDebuggingInterfaceFromVersion(3, v2_0, ((void*)0));
     ok(hr == E_INVALIDARG, "CreateDebuggingInterfaceFromVersion returned %08x\n", hr);
 
     hr = pCreateDebuggingInterfaceFromVersion(3, v2_0, &pUnk);
@@ -62,13 +62,13 @@ __attribute__((used)) static void test_createDebugger(void)
             ok(hr == S_OK, "expected S_OK got %08x\n", hr);
             if(hr == S_OK)
             {
-                hr = ICorDebug_SetManagedHandler(pCorDebug, NULL);
+                hr = ICorDebug_SetManagedHandler(pCorDebug, ((void*)0));
                 ok(hr == E_INVALIDARG, "expected E_INVALIDARG got %08x\n", hr);
 
                 hr = ICorDebug_SetManagedHandler(pCorDebug, &ManagedCallback);
                 ok(hr == S_OK, "expected S_OK got %08x\n", hr);
 
-                /* We should have no processes */
+
                 check_process_enum(pCorDebug, 0);
             }
 

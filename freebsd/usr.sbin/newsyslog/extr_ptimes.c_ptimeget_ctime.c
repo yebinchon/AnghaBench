@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ptime_data {int /*<<< orphan*/  tsecs; } ;
 
-/* Variables and functions */
- char const* ctime (int /*<<< orphan*/ *) ; 
+
+
+
+struct ptime_data {int tsecs; } ;
+
+
+ char const* ctime (int *) ;
 
 const char *
 ptimeget_ctime(const struct ptime_data *ptime)
 {
 
-	if (ptime == NULL)
-		return ("Null time in ptimeget_ctime()\n");
+ if (ptime == ((void*)0))
+  return ("Null time in ptimeget_ctime()\n");
 
-	return (ctime(&ptime->tsecs));
+ return (ctime(&ptime->tsecs));
 }

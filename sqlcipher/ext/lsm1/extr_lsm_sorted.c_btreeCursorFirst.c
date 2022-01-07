@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int u8 ;
 struct TYPE_10__ {scalar_t__ iRoot; } ;
-struct TYPE_9__ {int nDepth; int iPg; TYPE_1__* aPg; TYPE_5__* pSeg; int /*<<< orphan*/ * pFS; } ;
-struct TYPE_8__ {int iCell; int /*<<< orphan*/ * pPage; } ;
-typedef  int /*<<< orphan*/  Page ;
-typedef  int /*<<< orphan*/  FileSystem ;
-typedef  TYPE_1__ BtreePg ;
-typedef  TYPE_2__ BtreeCursor ;
+struct TYPE_9__ {int nDepth; int iPg; TYPE_1__* aPg; TYPE_5__* pSeg; int * pFS; } ;
+struct TYPE_8__ {int iCell; int * pPage; } ;
+typedef int Page ;
+typedef int FileSystem ;
+typedef TYPE_1__ BtreePg ;
+typedef TYPE_2__ BtreeCursor ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int SEGMENT_BTREE_FLAG ; 
- int /*<<< orphan*/  assert (int) ; 
- int btreeCursorNext (TYPE_2__*) ; 
- int /*<<< orphan*/ * fsPageData (int /*<<< orphan*/ *,int*) ; 
- int lsmFsDbPageGet (int /*<<< orphan*/ *,TYPE_5__*,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  lsmFsEnv (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lsmFsPageRelease (int /*<<< orphan*/ *) ; 
- scalar_t__ lsmReallocOrFreeRc (int /*<<< orphan*/ ,TYPE_1__*,int,int*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int pageGetFlags (int /*<<< orphan*/ *,int) ; 
- scalar_t__ pageGetRecordPtr (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+ int LSM_OK ;
+ int SEGMENT_BTREE_FLAG ;
+ int assert (int) ;
+ int btreeCursorNext (TYPE_2__*) ;
+ int * fsPageData (int *,int*) ;
+ int lsmFsDbPageGet (int *,TYPE_5__*,int,int **) ;
+ int lsmFsEnv (int *) ;
+ int lsmFsPageRelease (int *) ;
+ scalar_t__ lsmReallocOrFreeRc (int ,TYPE_1__*,int,int*) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int pageGetFlags (int *,int) ;
+ scalar_t__ pageGetRecordPtr (int *,int,int ) ;
 
 __attribute__((used)) static int btreeCursorFirst(BtreeCursor *pCsr){
   int rc;

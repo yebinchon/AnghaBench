@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  settable_ctx_params; int /*<<< orphan*/  gettable_ctx_params; int /*<<< orphan*/  gettable_params; } ;
-struct TYPE_6__ {int verbose; scalar_t__ first; int /*<<< orphan*/  subindent; int /*<<< orphan*/  label; int /*<<< orphan*/  indent; int /*<<< orphan*/  total; } ;
-typedef  TYPE_1__ META ;
-typedef  TYPE_2__ INFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  bio_out ; 
- int /*<<< orphan*/  print_method_names (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  print_param_types (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int settable_ctx_params; int gettable_ctx_params; int gettable_params; } ;
+struct TYPE_6__ {int verbose; scalar_t__ first; int subindent; int label; int indent; int total; } ;
+typedef TYPE_1__ META ;
+typedef TYPE_2__ INFO ;
+
+
+ int BIO_printf (int ,char*,...) ;
+ int bio_out ;
+ int print_method_names (int ,TYPE_2__*) ;
+ int print_param_types (char*,int ,int ) ;
 
 __attribute__((used)) static void print_caps(META *meta, INFO *info)
 {

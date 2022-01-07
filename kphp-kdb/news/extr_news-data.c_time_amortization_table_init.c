@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int T; int c; double* hi_exp; double* lo_exp; } ;
 
-/* Variables and functions */
- int AMORTIZATION_TABLE_SQRT_SIZE ; 
- int M_LN2 ; 
- TYPE_1__ TAT ; 
- double exp (int) ; 
+
+ int AMORTIZATION_TABLE_SQRT_SIZE ;
+ int M_LN2 ;
+ TYPE_1__ TAT ;
+ double exp (int) ;
 
 __attribute__((used)) static void time_amortization_table_init (int T) {
   int i;

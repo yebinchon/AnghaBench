@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct lro_entry {int /*<<< orphan*/  m_head; } ;
-struct lro_ctrl {unsigned int lro_mbuf_count; TYPE_1__* lro_mbuf_data; scalar_t__ lro_hashsz; TYPE_1__* lro_hash; int /*<<< orphan*/  lro_active; int /*<<< orphan*/  lro_free; } ;
-struct TYPE_2__ {int /*<<< orphan*/  mb; } ;
 
-/* Variables and functions */
- struct lro_entry* LIST_FIRST (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LIST_INIT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  M_LRO ; 
- int /*<<< orphan*/  free (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  m_freem (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tcp_lro_active_remove (struct lro_entry*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct lro_entry {int m_head; } ;
+struct lro_ctrl {unsigned int lro_mbuf_count; TYPE_1__* lro_mbuf_data; scalar_t__ lro_hashsz; TYPE_1__* lro_hash; int lro_active; int lro_free; } ;
+struct TYPE_2__ {int mb; } ;
+
+
+ struct lro_entry* LIST_FIRST (int *) ;
+ int LIST_INIT (int *) ;
+ int M_LRO ;
+ int free (TYPE_1__*,int ) ;
+ int m_freem (int ) ;
+ int tcp_lro_active_remove (struct lro_entry*) ;
 
 void
 tcp_lro_free(struct lro_ctrl *lc)
 {
-	struct lro_entry *le;
-	unsigned x;
+ struct lro_entry *le;
+ unsigned x;
 
-	/* reset LRO free list */
-	LIST_INIT(&lc->lro_free);
 
-	/* free active mbufs, if any */
-	while ((le = LIST_FIRST(&lc->lro_active)) != NULL) {
-		tcp_lro_active_remove(le);
-		m_freem(le->m_head);
-	}
+ LIST_INIT(&lc->lro_free);
 
-	/* free hash table */
-	free(lc->lro_hash, M_LRO);
-	lc->lro_hash = NULL;
-	lc->lro_hashsz = 0;
 
-	/* free mbuf array, if any */
-	for (x = 0; x != lc->lro_mbuf_count; x++)
-		m_freem(lc->lro_mbuf_data[x].mb);
-	lc->lro_mbuf_count = 0;
+ while ((le = LIST_FIRST(&lc->lro_active)) != ((void*)0)) {
+  tcp_lro_active_remove(le);
+  m_freem(le->m_head);
+ }
 
-	/* free allocated memory, if any */
-	free(lc->lro_mbuf_data, M_LRO);
-	lc->lro_mbuf_data = NULL;
+
+ free(lc->lro_hash, M_LRO);
+ lc->lro_hash = ((void*)0);
+ lc->lro_hashsz = 0;
+
+
+ for (x = 0; x != lc->lro_mbuf_count; x++)
+  m_freem(lc->lro_mbuf_data[x].mb);
+ lc->lro_mbuf_count = 0;
+
+
+ free(lc->lro_mbuf_data, M_LRO);
+ lc->lro_mbuf_data = ((void*)0);
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int bitdepth; scalar_t__ colortype; unsigned int key_r; unsigned int key_g; unsigned int key_b; scalar_t__ key_defined; } ;
-typedef  TYPE_1__ LodePNGColorMode ;
+typedef TYPE_1__ LodePNGColorMode ;
 
-/* Variables and functions */
- scalar_t__ LCT_GREY ; 
- scalar_t__ LCT_GREY_ALPHA ; 
- scalar_t__ LCT_RGB ; 
- scalar_t__ LCT_RGBA ; 
+
+ scalar_t__ LCT_GREY ;
+ scalar_t__ LCT_GREY_ALPHA ;
+ scalar_t__ LCT_RGB ;
+ scalar_t__ LCT_RGBA ;
 
 __attribute__((used)) static unsigned getPixelColorRGBA16(unsigned short* r, unsigned short* g, unsigned short* b, unsigned short* a,
                                     const unsigned char* in, size_t i, const LodePNGColorMode* mode)
 {
-  if(mode->bitdepth != 16) return 85; /*error: this function only supports 16-bit input*/
+  if(mode->bitdepth != 16) return 85;
 
   if(mode->colortype == LCT_GREY)
   {
@@ -53,7 +53,7 @@ __attribute__((used)) static unsigned getPixelColorRGBA16(unsigned short* r, uns
     *b = 256 * in[i * 8 + 4] + in[i * 8 + 5];
     *a = 256 * in[i * 8 + 6] + in[i * 8 + 7];
   }
-  else return 85; /*error: this function only supports 16-bit input, not palettes*/
+  else return 85;
 
-  return 0; /*no error*/
+  return 0;
 }

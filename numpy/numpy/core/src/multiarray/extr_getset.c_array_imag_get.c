@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NPY_ARRAY_WRITEABLE ; 
- int /*<<< orphan*/  PyArray_CLEARFLAGS (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PyArray_DESCR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_DIMS (int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_ISCOMPLEX (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_ISFORTRAN (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_NDIM (int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_NewFromDescr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Py_TYPE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * _get_part (int /*<<< orphan*/ *,int) ; 
- scalar_t__ _zerofill (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int PyObject ;
+typedef int PyArrayObject ;
+
+
+ int NPY_ARRAY_WRITEABLE ;
+ int PyArray_CLEARFLAGS (int *,int ) ;
+ int PyArray_DESCR (int *) ;
+ int PyArray_DIMS (int *) ;
+ scalar_t__ PyArray_ISCOMPLEX (int *) ;
+ int PyArray_ISFORTRAN (int *) ;
+ int PyArray_NDIM (int *) ;
+ scalar_t__ PyArray_NewFromDescr (int ,int ,int ,int ,int *,int *,int ,int *) ;
+ int Py_INCREF (int ) ;
+ int Py_TYPE (int *) ;
+ int * _get_part (int *,int) ;
+ scalar_t__ _zerofill (int *) ;
 
 __attribute__((used)) static PyObject *
 array_imag_get(PyArrayObject *self)
@@ -41,14 +41,14 @@ array_imag_get(PyArrayObject *self)
                                                     PyArray_DESCR(self),
                                                     PyArray_NDIM(self),
                                                     PyArray_DIMS(self),
-                                                    NULL, NULL,
+                                                    ((void*)0), ((void*)0),
                                                     PyArray_ISFORTRAN(self),
                                                     (PyObject *)self);
-        if (ret == NULL) {
-            return NULL;
+        if (ret == ((void*)0)) {
+            return ((void*)0);
         }
         if (_zerofill(ret) < 0) {
-            return NULL;
+            return ((void*)0);
         }
         PyArray_CLEARFLAGS(ret, NPY_ARRAY_WRITEABLE);
     }

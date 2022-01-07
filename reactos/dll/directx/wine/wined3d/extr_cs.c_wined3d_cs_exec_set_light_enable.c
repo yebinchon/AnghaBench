@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wined3d_light_info {int glIndex; } ;
 struct wined3d_device {TYPE_1__* adapter; } ;
-struct wined3d_cs_set_light_enable {scalar_t__ enable; int /*<<< orphan*/  idx; } ;
-struct wined3d_cs {int /*<<< orphan*/  state; struct wined3d_device* device; } ;
-struct TYPE_2__ {int /*<<< orphan*/  d3d_info; } ;
+struct wined3d_cs_set_light_enable {scalar_t__ enable; int idx; } ;
+struct wined3d_cs {int state; struct wined3d_device* device; } ;
+struct TYPE_2__ {int d3d_info; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  STATE_ACTIVELIGHT (int) ; 
- int /*<<< orphan*/  STATE_LIGHT_TYPE ; 
- int /*<<< orphan*/  device_invalidate_state (struct wined3d_device*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wined3d_state_enable_light (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct wined3d_light_info*,scalar_t__) ; 
- struct wined3d_light_info* wined3d_state_get_light (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int ERR (char*) ;
+ int STATE_ACTIVELIGHT (int) ;
+ int STATE_LIGHT_TYPE ;
+ int device_invalidate_state (struct wined3d_device*,int ) ;
+ int wined3d_state_enable_light (int *,int *,struct wined3d_light_info*,scalar_t__) ;
+ struct wined3d_light_info* wined3d_state_get_light (int *,int ) ;
 
 __attribute__((used)) static void wined3d_cs_exec_set_light_enable(struct wined3d_cs *cs, const void *data)
 {

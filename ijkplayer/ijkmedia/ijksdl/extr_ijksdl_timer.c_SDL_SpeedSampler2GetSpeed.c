@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
 struct TYPE_3__ {scalar_t__ sample_range; scalar_t__ last_profile_tick; scalar_t__ last_profile_quantity; scalar_t__ last_profile_duration; } ;
-typedef  TYPE_1__ SDL_SpeedSampler2 ;
+typedef TYPE_1__ SDL_SpeedSampler2 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SDL_GetTickHR () ; 
- int /*<<< orphan*/  llabs (scalar_t__) ; 
+
+ int SDL_GetTickHR () ;
+ int llabs (scalar_t__) ;
 
 int64_t SDL_SpeedSampler2GetSpeed(SDL_SpeedSampler2 *sampler)
 {
-    int64_t sample_range  = sampler->sample_range;
-    int64_t last_tick     = sampler->last_profile_tick;
+    int64_t sample_range = sampler->sample_range;
+    int64_t last_tick = sampler->last_profile_tick;
     int64_t last_quantity = sampler->last_profile_quantity;
     int64_t last_duration = sampler->last_profile_duration;
-    int64_t now           = (int64_t)SDL_GetTickHR();
-    int64_t elapsed       = (int64_t)llabs(now - last_tick);
+    int64_t now = (int64_t)SDL_GetTickHR();
+    int64_t elapsed = (int64_t)llabs(now - last_tick);
     if (elapsed < 0 || elapsed >= sample_range)
         return 0;
 

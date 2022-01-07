@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char* gpointer ;
-typedef  int /*<<< orphan*/  fd_set ;
-typedef  int /*<<< orphan*/  cmd ;
-typedef  int /*<<< orphan*/  WatchCommand ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef char* gpointer ;
+typedef int fd_set ;
+typedef int cmd ;
+typedef int WatchCommand ;
 struct TYPE_6__ {int* cmd_pipe; TYPE_1__* priv; } ;
-struct TYPE_5__ {int maxfd; int /*<<< orphan*/  handle_hash; int /*<<< orphan*/  read_fds; } ;
-typedef  TYPE_1__ SeafWTMonitorPriv ;
-typedef  TYPE_2__ SeafWTMonitor ;
-typedef  int /*<<< orphan*/  GHashTableIter ;
+struct TYPE_5__ {int maxfd; int handle_hash; int read_fds; } ;
+typedef TYPE_1__ SeafWTMonitorPriv ;
+typedef TYPE_2__ SeafWTMonitor ;
+typedef int GHashTableIter ;
 
-/* Variables and functions */
- scalar_t__ EINTR ; 
- scalar_t__ FD_ISSET (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_SET (int,int /*<<< orphan*/ *) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  g_hash_table_iter_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ g_hash_table_iter_next (int /*<<< orphan*/ *,char**,char**) ; 
- int /*<<< orphan*/  handle_watch_command (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  process_events (TYPE_1__*,char*,int) ; 
- int seaf_pipe_readn (int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  seaf_warning (char*,...) ; 
- int select (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strerror (scalar_t__) ; 
+
+ scalar_t__ EINTR ;
+ scalar_t__ FD_ISSET (int,int *) ;
+ int FD_SET (int,int *) ;
+ scalar_t__ errno ;
+ int g_hash_table_iter_init (int *,int ) ;
+ scalar_t__ g_hash_table_iter_next (int *,char**,char**) ;
+ int handle_watch_command (TYPE_2__*,int *) ;
+ int process_events (TYPE_1__*,char*,int) ;
+ int seaf_pipe_readn (int,int *,int) ;
+ int seaf_warning (char*,...) ;
+ int select (int,int *,int *,int *,int *) ;
+ int strerror (scalar_t__) ;
 
 __attribute__((used)) static void *
 wt_monitor_job_linux (void *vmonitor)
@@ -57,7 +57,7 @@ wt_monitor_job_linux (void *vmonitor)
     while (1) {
         fds = priv->read_fds;
 
-        rc = select (priv->maxfd + 1, &fds, NULL, NULL, NULL);
+        rc = select (priv->maxfd + 1, &fds, ((void*)0), ((void*)0), ((void*)0));
         if (rc < 0 && errno == EINTR) {
             continue;
         } else if (rc < 0) {
@@ -83,5 +83,5 @@ wt_monitor_job_linux (void *vmonitor)
         }
     }
 
-    return NULL;
+    return ((void*)0);
 }

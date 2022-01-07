@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct regional {int dummy; } ;
 struct edns_option {int opt_len; struct edns_option* next; struct edns_option* opt_data; } ;
 
-/* Variables and functions */
- void* regional_alloc_init (struct regional*,struct edns_option*,int) ; 
+
+ void* regional_alloc_init (struct regional*,struct edns_option*,int) ;
 
 struct edns_option* edns_opt_copy_region(struct edns_option* list,
         struct regional* region)
 {
-	struct edns_option* result = NULL, *cur = NULL, *s;
-	while(list) {
-		/* copy edns option structure */
-		s = regional_alloc_init(region, list, sizeof(*list));
-		if(!s) return NULL;
-		s->next = NULL;
+ struct edns_option* result = ((void*)0), *cur = ((void*)0), *s;
+ while(list) {
 
-		/* copy option data */
-		if(s->opt_data) {
-			s->opt_data = regional_alloc_init(region, s->opt_data,
-				s->opt_len);
-			if(!s->opt_data)
-				return NULL;
-		}
+  s = regional_alloc_init(region, list, sizeof(*list));
+  if(!s) return ((void*)0);
+  s->next = ((void*)0);
 
-		/* link into list */
-		if(cur)
-			cur->next = s;
-		else	result = s;
-		cur = s;
 
-		/* examine next element */
-		list = list->next;
-	}
-	return result;
+  if(s->opt_data) {
+   s->opt_data = regional_alloc_init(region, s->opt_data,
+    s->opt_len);
+   if(!s->opt_data)
+    return ((void*)0);
+  }
+
+
+  if(cur)
+   cur->next = s;
+  else result = s;
+  cur = s;
+
+
+  list = list->next;
+ }
+ return result;
 }

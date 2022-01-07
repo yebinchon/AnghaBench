@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int MUI_LANGUAGE_ID ; 
- int MUI_UI_FALLBACK ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  pGetThreadPreferredUILanguages (int,int*,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int ULONG ;
+typedef int BOOL ;
+
+
+ int GetLastError () ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ int * HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int *) ;
+ int MUI_LANGUAGE_ID ;
+ int MUI_UI_FALLBACK ;
+ int ok (int,char*,...) ;
+ int pGetThreadPreferredUILanguages (int,int*,int *,int*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_GetThreadPreferredUILanguages(void)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static void test_GetThreadPreferredUILanguages(void)
     }
 
     size = count = 0;
-    ret = pGetThreadPreferredUILanguages(MUI_LANGUAGE_ID|MUI_UI_FALLBACK, &count, NULL, &size);
+    ret = pGetThreadPreferredUILanguages(MUI_LANGUAGE_ID|MUI_UI_FALLBACK, &count, ((void*)0), &size);
     ok(ret, "got %u\n", GetLastError());
     ok(count, "expected count > 0\n");
     ok(size, "expected size > 0\n");

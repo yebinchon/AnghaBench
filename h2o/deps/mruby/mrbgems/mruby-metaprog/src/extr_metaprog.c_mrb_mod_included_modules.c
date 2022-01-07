@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct RClass {scalar_t__ tt; struct RClass* super; TYPE_1__* c; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
+typedef int mrb_value ;
+typedef int mrb_state ;
 struct TYPE_2__ {scalar_t__ tt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MRB_CLASS_ORIGIN (struct RClass*) ; 
- scalar_t__ MRB_TT_ICLASS ; 
- scalar_t__ MRB_TT_MODULE ; 
- int /*<<< orphan*/  mrb_ary_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_ary_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct RClass* mrb_class_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_obj_value (TYPE_1__*) ; 
+
+ int MRB_CLASS_ORIGIN (struct RClass*) ;
+ scalar_t__ MRB_TT_ICLASS ;
+ scalar_t__ MRB_TT_MODULE ;
+ int mrb_ary_new (int *) ;
+ int mrb_ary_push (int *,int ,int ) ;
+ struct RClass* mrb_class_ptr (int ) ;
+ int mrb_obj_value (TYPE_1__*) ;
 
 __attribute__((used)) static mrb_value
 mrb_mod_included_modules(mrb_state *mrb, mrb_value self)

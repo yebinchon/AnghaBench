@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct l2cap_chan {int /*<<< orphan*/  conf_state; int /*<<< orphan*/  kref; int /*<<< orphan*/  state; int /*<<< orphan*/  chan_timer; int /*<<< orphan*/  global_l; int /*<<< orphan*/  nesting; int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT_DBG (char*,struct l2cap_chan*) ; 
- int /*<<< orphan*/  BT_OPEN ; 
- int /*<<< orphan*/  CONF_NOT_COMPLETE ; 
- int /*<<< orphan*/  GFP_ATOMIC ; 
- int /*<<< orphan*/  INIT_DELAYED_WORK (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  L2CAP_NESTING_NORMAL ; 
- int /*<<< orphan*/  atomic_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  chan_list ; 
- int /*<<< orphan*/  chan_list_lock ; 
- int /*<<< orphan*/  kref_init (int /*<<< orphan*/ *) ; 
- struct l2cap_chan* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  l2cap_chan_timeout ; 
- int /*<<< orphan*/  list_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct l2cap_chan {int conf_state; int kref; int state; int chan_timer; int global_l; int nesting; int lock; } ;
+
+
+ int BT_DBG (char*,struct l2cap_chan*) ;
+ int BT_OPEN ;
+ int CONF_NOT_COMPLETE ;
+ int GFP_ATOMIC ;
+ int INIT_DELAYED_WORK (int *,int ) ;
+ int L2CAP_NESTING_NORMAL ;
+ int atomic_set (int *,int ) ;
+ int chan_list ;
+ int chan_list_lock ;
+ int kref_init (int *) ;
+ struct l2cap_chan* kzalloc (int,int ) ;
+ int l2cap_chan_timeout ;
+ int list_add (int *,int *) ;
+ int mutex_init (int *) ;
+ int set_bit (int ,int *) ;
+ int write_lock (int *) ;
+ int write_unlock (int *) ;
 
 struct l2cap_chan *l2cap_chan_create(void)
 {
-	struct l2cap_chan *chan;
+ struct l2cap_chan *chan;
 
-	chan = kzalloc(sizeof(*chan), GFP_ATOMIC);
-	if (!chan)
-		return NULL;
+ chan = kzalloc(sizeof(*chan), GFP_ATOMIC);
+ if (!chan)
+  return ((void*)0);
 
-	mutex_init(&chan->lock);
+ mutex_init(&chan->lock);
 
-	/* Set default lock nesting level */
-	atomic_set(&chan->nesting, L2CAP_NESTING_NORMAL);
 
-	write_lock(&chan_list_lock);
-	list_add(&chan->global_l, &chan_list);
-	write_unlock(&chan_list_lock);
+ atomic_set(&chan->nesting, L2CAP_NESTING_NORMAL);
 
-	INIT_DELAYED_WORK(&chan->chan_timer, l2cap_chan_timeout);
+ write_lock(&chan_list_lock);
+ list_add(&chan->global_l, &chan_list);
+ write_unlock(&chan_list_lock);
 
-	chan->state = BT_OPEN;
+ INIT_DELAYED_WORK(&chan->chan_timer, l2cap_chan_timeout);
 
-	kref_init(&chan->kref);
+ chan->state = BT_OPEN;
 
-	/* This flag is cleared in l2cap_chan_ready() */
-	set_bit(CONF_NOT_COMPLETE, &chan->conf_state);
+ kref_init(&chan->kref);
 
-	BT_DBG("chan %p", chan);
 
-	return chan;
+ set_bit(CONF_NOT_COMPLETE, &chan->conf_state);
+
+ BT_DBG("chan %p", chan);
+
+ return chan;
 }

@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {int x0; int y0; int x1; int y1; TYPE_2__* comps; } ;
-typedef  TYPE_1__ opj_image_t ;
-struct TYPE_11__ {unsigned char* data; int prec; scalar_t__ bpp; int /*<<< orphan*/  sgnd; } ;
-typedef  TYPE_2__ opj_image_comp_t ;
+typedef TYPE_1__ opj_image_t ;
+struct TYPE_11__ {unsigned char* data; int prec; scalar_t__ bpp; int sgnd; } ;
+typedef TYPE_2__ opj_image_comp_t ;
 struct TYPE_12__ {int x0; int y0; int w; int h; int sgnd; int prec; int bpp; int dx; int dy; } ;
-typedef  TYPE_3__ opj_image_cmptparm_t ;
+typedef TYPE_3__ opj_image_cmptparm_t ;
 struct TYPE_13__ {int image_offset_x0; int image_offset_y0; int subsampling_dx; int subsampling_dy; } ;
-typedef  TYPE_4__ opj_cparameters_t ;
-typedef  int /*<<< orphan*/  OPJ_COLOR_SPACE ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_4__ opj_cparameters_t ;
+typedef int OPJ_COLOR_SPACE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLRSPC_GRAY ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fgetc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int fscanf (int /*<<< orphan*/ *,char*,char*,char*,char*,char*,int*,char*,int*,char*,int*) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ int_floorlog2 (int) ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- TYPE_1__* opj_image_create (int,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int readuchar (int /*<<< orphan*/ *) ; 
- int readuint (int /*<<< orphan*/ *,int) ; 
- int readushort (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int CLRSPC_GRAY ;
+ int SEEK_SET ;
+ int fclose (int *) ;
+ int fgetc (int *) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int fscanf (int *,char*,char*,char*,char*,char*,int*,char*,int*,char*,int*) ;
+ int fseek (int *,int ,int ) ;
+ scalar_t__ int_floorlog2 (int) ;
+ int memset (TYPE_3__*,int ,int) ;
+ TYPE_1__* opj_image_create (int,TYPE_3__*,int ) ;
+ int readuchar (int *) ;
+ int readuint (int *,int) ;
+ int readushort (int *,int) ;
+ int stderr ;
 
 opj_image_t* pgxtoimage(const char *filename, opj_cparameters_t *parameters)
 {
-    FILE *f = NULL;
+    FILE *f = ((void*)0);
     int w, h, prec;
     int i, numcomps, max;
     OPJ_COLOR_SPACE color_space;
-    opj_image_cmptparm_t cmptparm;  /* maximum of 1 component  */
-    opj_image_t * image = NULL;
+    opj_image_cmptparm_t cmptparm;
+    opj_image_t * image = ((void*)0);
     int adjustS, ushift, dshift, force8;
 
     char endian1, endian2, sign;
@@ -57,7 +57,7 @@ opj_image_t* pgxtoimage(const char *filename, opj_cparameters_t *parameters)
 
     char temp[32];
     int bigendian;
-    opj_image_comp_t *comp = NULL;
+    opj_image_comp_t *comp = ((void*)0);
 
     numcomps = 1;
     color_space = CLRSPC_GRAY;
@@ -69,7 +69,7 @@ opj_image_t* pgxtoimage(const char *filename, opj_cparameters_t *parameters)
     f = fopen(filename, "rb");
     if (!f) {
         fprintf(stderr, "Failed to open %s for reading !\n", filename);
-        return NULL;
+        return ((void*)0);
     }
 
     fseek(f, 0, SEEK_SET);
@@ -78,7 +78,7 @@ opj_image_t* pgxtoimage(const char *filename, opj_cparameters_t *parameters)
         fprintf(stderr,
                 "ERROR: Failed to read the right number of element from the fscanf() function!\n");
         fclose(f);
-        return NULL;
+        return ((void*)0);
     }
 
     i = 0;
@@ -98,10 +98,10 @@ opj_image_t* pgxtoimage(const char *filename, opj_cparameters_t *parameters)
     } else {
         fprintf(stderr, "Bad pgx header, please check input file\n");
         fclose(f);
-        return NULL;
+        return ((void*)0);
     }
 
-    /* initialize image component */
+
 
     cmptparm.x0 = parameters->image_offset_x0;
     cmptparm.y0 = parameters->image_offset_y0;
@@ -135,19 +135,19 @@ opj_image_t* pgxtoimage(const char *filename, opj_cparameters_t *parameters)
     cmptparm.dx = parameters->subsampling_dx;
     cmptparm.dy = parameters->subsampling_dy;
 
-    /* create the image */
+
     image = opj_image_create(numcomps, &cmptparm, color_space);
     if (!image) {
         fclose(f);
-        return NULL;
+        return ((void*)0);
     }
-    /* set image offset and reference grid */
+
     image->x0 = cmptparm.x0;
     image->y0 = cmptparm.x0;
     image->x1 = cmptparm.w;
     image->y1 = cmptparm.h;
 
-    /* set image data */
+
 
     comp = &image->comps[0];
 

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  RPC_STATUS ;
-typedef  int /*<<< orphan*/  HINTERNET ;
 
-/* Variables and functions */
- int ARRAY_SIZE (char const*) ; 
- int /*<<< orphan*/  ERR (char*,int) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int HTTP_ADDREQ_FLAG_ADD ; 
- int HTTP_ADDREQ_FLAG_REPLACE ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ HttpAddRequestHeadersW (int /*<<< orphan*/ ,char*,int,int) ; 
-#define  RPC_C_HTTP_AUTHN_SCHEME_BASIC 130 
-#define  RPC_C_HTTP_AUTHN_SCHEME_NEGOTIATE 129 
-#define  RPC_C_HTTP_AUTHN_SCHEME_NTLM 128 
- int /*<<< orphan*/  RPC_S_OK ; 
- int /*<<< orphan*/  RPC_S_SERVER_UNAVAILABLE ; 
- int encode_base64 (char*,int,char*) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
+
+
+
+typedef char WCHAR ;
+typedef int ULONG ;
+typedef int RPC_STATUS ;
+typedef int HINTERNET ;
+
+
+ int ARRAY_SIZE (char const*) ;
+ int ERR (char*,int) ;
+ int GetProcessHeap () ;
+ int HTTP_ADDREQ_FLAG_ADD ;
+ int HTTP_ADDREQ_FLAG_REPLACE ;
+ char* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,char*) ;
+ scalar_t__ HttpAddRequestHeadersW (int ,char*,int,int) ;
+
+
+
+ int RPC_S_OK ;
+ int RPC_S_SERVER_UNAVAILABLE ;
+ int encode_base64 (char*,int,char*) ;
+ int memcpy (char*,char const*,int) ;
 
 __attribute__((used)) static RPC_STATUS insert_authorization_header(HINTERNET request, ULONG scheme, char *data, int data_len)
 {
@@ -45,15 +45,15 @@ __attribute__((used)) static RPC_STATUS insert_authorization_header(HINTERNET re
 
     switch (scheme)
     {
-    case RPC_C_HTTP_AUTHN_SCHEME_BASIC:
+    case 130:
         scheme_str = basicW;
         scheme_len = ARRAY_SIZE(basicW);
         break;
-    case RPC_C_HTTP_AUTHN_SCHEME_NEGOTIATE:
+    case 129:
         scheme_str = negotiateW;
         scheme_len = ARRAY_SIZE(negotiateW);
         break;
-    case RPC_C_HTTP_AUTHN_SCHEME_NTLM:
+    case 128:
         scheme_str = ntlmW;
         scheme_len = ARRAY_SIZE(ntlmW);
         break;

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nbio_stdio_t {int op; size_t len; size_t progress; void* data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  abort () ; 
- void* realloc (void*,size_t) ; 
+
+ int abort () ;
+ void* realloc (void*,size_t) ;
 
 __attribute__((used)) static void nbio_stdio_resize(void *data, size_t len)
 {
-   void *new_data              = NULL;
+   void *new_data = ((void*)0);
    struct nbio_stdio_t *handle = (struct nbio_stdio_t*)data;
    if (!handle)
       return;
@@ -28,12 +28,12 @@ __attribute__((used)) static void nbio_stdio_resize(void *data, size_t len)
    if (len < handle->len)
       abort();
 
-   handle->len      = len;
+   handle->len = len;
    handle->progress = len;
-   handle->op       = -1;
+   handle->op = -1;
 
-   new_data         = realloc(handle->data, handle->len);
+   new_data = realloc(handle->data, handle->len);
 
    if (new_data)
-      handle->data  = new_data;
+      handle->data = new_data;
 }

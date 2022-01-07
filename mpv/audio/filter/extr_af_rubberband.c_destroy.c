@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct priv {int /*<<< orphan*/  pending; scalar_t__ rubber; } ;
+
+
+
+
+struct priv {int pending; scalar_t__ rubber; } ;
 struct mp_filter {struct priv* priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  rubberband_delete (scalar_t__) ; 
- int /*<<< orphan*/  talloc_free (int /*<<< orphan*/ ) ; 
+
+ int rubberband_delete (scalar_t__) ;
+ int talloc_free (int ) ;
 
 __attribute__((used)) static void destroy(struct mp_filter *f)
 {

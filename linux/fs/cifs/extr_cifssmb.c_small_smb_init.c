@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct smb_hdr {int dummy; } ;
-struct cifs_tcon {int /*<<< orphan*/  num_smbs_sent; } ;
+struct cifs_tcon {int num_smbs_sent; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int cifs_reconnect_tcon (struct cifs_tcon*,int) ; 
- void* cifs_small_buf_get () ; 
- int /*<<< orphan*/  cifs_stats_inc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  header_assemble (struct smb_hdr*,int,struct cifs_tcon*,int) ; 
+
+ int ENOMEM ;
+ int cifs_reconnect_tcon (struct cifs_tcon*,int) ;
+ void* cifs_small_buf_get () ;
+ int cifs_stats_inc (int *) ;
+ int header_assemble (struct smb_hdr*,int,struct cifs_tcon*,int) ;
 
 __attribute__((used)) static int
 small_smb_init(int smb_command, int wct, struct cifs_tcon *tcon,
-		void **request_buf)
+  void **request_buf)
 {
-	int rc;
+ int rc;
 
-	rc = cifs_reconnect_tcon(tcon, smb_command);
-	if (rc)
-		return rc;
+ rc = cifs_reconnect_tcon(tcon, smb_command);
+ if (rc)
+  return rc;
 
-	*request_buf = cifs_small_buf_get();
-	if (*request_buf == NULL) {
-		/* BB should we add a retry in here if not a writepage? */
-		return -ENOMEM;
-	}
+ *request_buf = cifs_small_buf_get();
+ if (*request_buf == ((void*)0)) {
 
-	header_assemble((struct smb_hdr *) *request_buf, smb_command,
-			tcon, wct);
+  return -ENOMEM;
+ }
 
-	if (tcon != NULL)
-		cifs_stats_inc(&tcon->num_smbs_sent);
+ header_assemble((struct smb_hdr *) *request_buf, smb_command,
+   tcon, wct);
 
-	return 0;
+ if (tcon != ((void*)0))
+  cifs_stats_inc(&tcon->num_smbs_sent);
+
+ return 0;
 }

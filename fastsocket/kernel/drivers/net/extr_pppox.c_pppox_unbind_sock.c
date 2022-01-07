@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct sock {int sk_state; } ;
-struct TYPE_2__ {int /*<<< orphan*/  chan; } ;
+struct TYPE_2__ {int chan; } ;
 
-/* Variables and functions */
- int PPPOX_BOUND ; 
- int PPPOX_CONNECTED ; 
- int PPPOX_DEAD ; 
- int PPPOX_ZOMBIE ; 
- int /*<<< orphan*/  ppp_unregister_channel (int /*<<< orphan*/ *) ; 
- TYPE_1__* pppox_sk (struct sock*) ; 
+
+ int PPPOX_BOUND ;
+ int PPPOX_CONNECTED ;
+ int PPPOX_DEAD ;
+ int PPPOX_ZOMBIE ;
+ int ppp_unregister_channel (int *) ;
+ TYPE_1__* pppox_sk (struct sock*) ;
 
 void pppox_unbind_sock(struct sock *sk)
 {
-	/* Clear connection to ppp device, if attached. */
 
-	if (sk->sk_state & (PPPOX_BOUND | PPPOX_CONNECTED | PPPOX_ZOMBIE)) {
-		ppp_unregister_channel(&pppox_sk(sk)->chan);
-		sk->sk_state = PPPOX_DEAD;
-	}
+
+ if (sk->sk_state & (PPPOX_BOUND | PPPOX_CONNECTED | PPPOX_ZOMBIE)) {
+  ppp_unregister_channel(&pppox_sk(sk)->chan);
+  sk->sk_state = PPPOX_DEAD;
+ }
 }

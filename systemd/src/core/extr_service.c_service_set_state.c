@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UnitActiveState ;
-struct TYPE_18__ {int /*<<< orphan*/  manager; scalar_t__ job; } ;
-struct TYPE_17__ {size_t state; scalar_t__ type; scalar_t__ reload_result; scalar_t__ result; scalar_t__ will_auto_restart; void* exec_fd_event_source; int /*<<< orphan*/  control_command_id; int /*<<< orphan*/ * control_command; int /*<<< orphan*/ * main_command; void* timer_event_source; } ;
-typedef  size_t ServiceState ;
-typedef  TYPE_1__ Service ;
 
-/* Variables and functions */
- scalar_t__ IN_SET (size_t,size_t,size_t,size_t,...) ; 
- int /*<<< orphan*/  MANAGER_IS_RELOADING (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SERVICE_AUTO_RESTART ; 
- int /*<<< orphan*/  SERVICE_CLEANING ; 
- int /*<<< orphan*/  SERVICE_CONDITION ; 
- size_t SERVICE_DEAD ; 
- size_t SERVICE_EXITED ; 
- int /*<<< orphan*/  SERVICE_FAILED ; 
- int /*<<< orphan*/  SERVICE_FINAL_SIGKILL ; 
- int /*<<< orphan*/  SERVICE_FINAL_SIGTERM ; 
- scalar_t__ SERVICE_IDLE ; 
- int /*<<< orphan*/  SERVICE_RELOAD ; 
- int /*<<< orphan*/  SERVICE_RUNNING ; 
- scalar_t__ SERVICE_SKIP_CONDITION ; 
- size_t SERVICE_START ; 
- size_t SERVICE_START_POST ; 
- int /*<<< orphan*/  SERVICE_START_PRE ; 
- int /*<<< orphan*/  SERVICE_STOP ; 
- int /*<<< orphan*/  SERVICE_STOP_POST ; 
- int /*<<< orphan*/  SERVICE_STOP_SIGKILL ; 
- int /*<<< orphan*/  SERVICE_STOP_SIGTERM ; 
- int /*<<< orphan*/  SERVICE_STOP_WATCHDOG ; 
- scalar_t__ SERVICE_SUCCESS ; 
- TYPE_2__* UNIT (TYPE_1__*) ; 
- int UNIT_NOTIFY_RELOAD_FAILURE ; 
- int UNIT_NOTIFY_SKIP_CONDITION ; 
- int UNIT_NOTIFY_WILL_AUTO_RESTART ; 
- int /*<<< orphan*/  _SERVICE_EXEC_COMMAND_INVALID ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  bus_unit_send_pending_change_signal (TYPE_2__*,int) ; 
- int /*<<< orphan*/  log_unit_debug (TYPE_2__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* sd_event_source_unref (void*) ; 
- int /*<<< orphan*/  service_close_socket_fd (TYPE_1__*) ; 
- int /*<<< orphan*/  service_state_to_string (size_t) ; 
- int /*<<< orphan*/  service_stop_watchdog (TYPE_1__*) ; 
- int /*<<< orphan*/  service_unwatch_control_pid (TYPE_1__*) ; 
- int /*<<< orphan*/  service_unwatch_main_pid (TYPE_1__*) ; 
- int /*<<< orphan*/  service_unwatch_pid_file (TYPE_1__*) ; 
- int /*<<< orphan*/ * state_translation_table ; 
- int /*<<< orphan*/ * state_translation_table_idle ; 
- int /*<<< orphan*/  unit_dequeue_rewatch_pids (TYPE_2__*) ; 
- int /*<<< orphan*/  unit_notify (TYPE_2__*,int /*<<< orphan*/  const,int /*<<< orphan*/  const,int) ; 
- int /*<<< orphan*/  unit_prune_cgroup (TYPE_2__*) ; 
- int /*<<< orphan*/  unit_unwatch_all_pids (TYPE_2__*) ; 
+
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+typedef int UnitActiveState ;
+struct TYPE_18__ {int manager; scalar_t__ job; } ;
+struct TYPE_17__ {size_t state; scalar_t__ type; scalar_t__ reload_result; scalar_t__ result; scalar_t__ will_auto_restart; void* exec_fd_event_source; int control_command_id; int * control_command; int * main_command; void* timer_event_source; } ;
+typedef size_t ServiceState ;
+typedef TYPE_1__ Service ;
+
+
+ scalar_t__ IN_SET (size_t,size_t,size_t,size_t,...) ;
+ int MANAGER_IS_RELOADING (int ) ;
+ int SERVICE_AUTO_RESTART ;
+ int SERVICE_CLEANING ;
+ int SERVICE_CONDITION ;
+ size_t SERVICE_DEAD ;
+ size_t SERVICE_EXITED ;
+ int SERVICE_FAILED ;
+ int SERVICE_FINAL_SIGKILL ;
+ int SERVICE_FINAL_SIGTERM ;
+ scalar_t__ SERVICE_IDLE ;
+ int SERVICE_RELOAD ;
+ int SERVICE_RUNNING ;
+ scalar_t__ SERVICE_SKIP_CONDITION ;
+ size_t SERVICE_START ;
+ size_t SERVICE_START_POST ;
+ int SERVICE_START_PRE ;
+ int SERVICE_STOP ;
+ int SERVICE_STOP_POST ;
+ int SERVICE_STOP_SIGKILL ;
+ int SERVICE_STOP_SIGTERM ;
+ int SERVICE_STOP_WATCHDOG ;
+ scalar_t__ SERVICE_SUCCESS ;
+ TYPE_2__* UNIT (TYPE_1__*) ;
+ int UNIT_NOTIFY_RELOAD_FAILURE ;
+ int UNIT_NOTIFY_SKIP_CONDITION ;
+ int UNIT_NOTIFY_WILL_AUTO_RESTART ;
+ int _SERVICE_EXEC_COMMAND_INVALID ;
+ int assert (TYPE_1__*) ;
+ int bus_unit_send_pending_change_signal (TYPE_2__*,int) ;
+ int log_unit_debug (TYPE_2__*,char*,int ,int ) ;
+ void* sd_event_source_unref (void*) ;
+ int service_close_socket_fd (TYPE_1__*) ;
+ int service_state_to_string (size_t) ;
+ int service_stop_watchdog (TYPE_1__*) ;
+ int service_unwatch_control_pid (TYPE_1__*) ;
+ int service_unwatch_main_pid (TYPE_1__*) ;
+ int service_unwatch_pid_file (TYPE_1__*) ;
+ int * state_translation_table ;
+ int * state_translation_table_idle ;
+ int unit_dequeue_rewatch_pids (TYPE_2__*) ;
+ int unit_notify (TYPE_2__*,int const,int const,int) ;
+ int unit_prune_cgroup (TYPE_2__*) ;
+ int unit_unwatch_all_pids (TYPE_2__*) ;
 
 __attribute__((used)) static void service_set_state(Service *s, ServiceState state) {
         ServiceState old_state;
@@ -71,7 +71,7 @@ __attribute__((used)) static void service_set_state(Service *s, ServiceState sta
         assert(s);
 
         if (s->state != state)
-                bus_unit_send_pending_change_signal(UNIT(s), false);
+                bus_unit_send_pending_change_signal(UNIT(s), 0);
 
         table = s->type == SERVICE_IDLE ? state_translation_table_idle : state_translation_table;
 
@@ -96,7 +96,7 @@ __attribute__((used)) static void service_set_state(Service *s, ServiceState sta
                     SERVICE_STOP, SERVICE_STOP_WATCHDOG, SERVICE_STOP_SIGTERM, SERVICE_STOP_SIGKILL, SERVICE_STOP_POST,
                     SERVICE_FINAL_SIGTERM, SERVICE_FINAL_SIGKILL)) {
                 service_unwatch_main_pid(s);
-                s->main_command = NULL;
+                s->main_command = ((void*)0);
         }
 
         if (!IN_SET(state,
@@ -106,7 +106,7 @@ __attribute__((used)) static void service_set_state(Service *s, ServiceState sta
                     SERVICE_FINAL_SIGTERM, SERVICE_FINAL_SIGKILL,
                     SERVICE_CLEANING)) {
                 service_unwatch_control_pid(s);
-                s->control_command = NULL;
+                s->control_command = ((void*)0);
                 s->control_command_id = _SERVICE_EXEC_COMMAND_INVALID;
         }
 
@@ -129,8 +129,8 @@ __attribute__((used)) static void service_set_state(Service *s, ServiceState sta
         if (!IN_SET(state, SERVICE_START_POST, SERVICE_RUNNING, SERVICE_RELOAD))
                 service_stop_watchdog(s);
 
-        /* For the inactive states unit_notify() will trim the cgroup,
-         * but for exit we have to do that ourselves... */
+
+
         if (state == SERVICE_EXITED && !MANAGER_IS_RELOADING(UNIT(s)->manager))
                 unit_prune_cgroup(UNIT(s));
 

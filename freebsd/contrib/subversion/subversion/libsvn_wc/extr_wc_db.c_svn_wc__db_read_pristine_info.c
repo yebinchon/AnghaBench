@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_17__ {int /*<<< orphan*/  wc_id; int /*<<< orphan*/  sdb; } ;
-typedef  TYPE_1__ svn_wc__db_wcroot_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  scalar_t__ svn_wc__db_status_t ;
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  scalar_t__ svn_node_kind_t ;
-struct TYPE_18__ {int /*<<< orphan*/  apr_err; } ;
-typedef  TYPE_2__ svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_checksum_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_time_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_PROPERTIES_AVAILABLE (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  STMT_SELECT_NODE_INFO ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_WC_PATH_NOT_FOUND ; 
- int /*<<< orphan*/  VERIFY_USABLE_WCROOT (TYPE_1__*) ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- TYPE_2__* convert_to_working_status (scalar_t__*,scalar_t__) ; 
- int /*<<< orphan*/  depth_map ; 
- int /*<<< orphan*/  kind_map ; 
- int /*<<< orphan*/  path_for_error_message (TYPE_1__*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  presence_map ; 
- int /*<<< orphan*/  svn_depth_unknown ; 
- int /*<<< orphan*/  svn_dirent_is_absolute (char const*) ; 
- TYPE_2__* svn_error_compose_create (TYPE_2__*,TYPE_2__*) ; 
- TYPE_2__* svn_error_createf (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__* svn_error_trace (TYPE_2__*) ; 
- scalar_t__ svn_node_dir ; 
- scalar_t__ svn_node_file ; 
- scalar_t__ svn_node_symlink ; 
- int /*<<< orphan*/  svn_sqlite__bindf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char const*) ; 
- TYPE_2__* svn_sqlite__column_checksum (int /*<<< orphan*/  const**,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int svn_sqlite__column_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__column_int64 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  svn_sqlite__column_is_null (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  svn_sqlite__column_properties (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__column_revnum (int /*<<< orphan*/ *,int) ; 
- char* svn_sqlite__column_text (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_sqlite__column_token (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__column_token_null (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__get_statement (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__* svn_sqlite__reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__step (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__step_row (int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc__db_status_base_deleted ; 
- scalar_t__ svn_wc__db_status_incomplete ; 
- scalar_t__ svn_wc__db_status_normal ; 
- int /*<<< orphan*/  svn_wc__db_wcroot_parse_local_abspath (TYPE_1__**,char const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+struct TYPE_17__ {int wc_id; int sdb; } ;
+typedef TYPE_1__ svn_wc__db_wcroot_t ;
+typedef int svn_wc__db_t ;
+typedef scalar_t__ svn_wc__db_status_t ;
+typedef int svn_sqlite__stmt_t ;
+typedef int svn_revnum_t ;
+typedef scalar_t__ svn_node_kind_t ;
+struct TYPE_18__ {int apr_err; } ;
+typedef TYPE_2__ svn_error_t ;
+typedef int svn_depth_t ;
+typedef int svn_checksum_t ;
+typedef int svn_boolean_t ;
+typedef int apr_time_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int SQLITE_PROPERTIES_AVAILABLE (int *,int) ;
+ int STMT_SELECT_NODE_INFO ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int SVN_ERR_WC_PATH_NOT_FOUND ;
+ int VERIFY_USABLE_WCROOT (TYPE_1__*) ;
+ int _ (char*) ;
+ int * apr_hash_make (int *) ;
+ int assert (int ) ;
+ TYPE_2__* convert_to_working_status (scalar_t__*,scalar_t__) ;
+ int depth_map ;
+ int kind_map ;
+ int path_for_error_message (TYPE_1__*,char const*,int *) ;
+ int presence_map ;
+ int svn_depth_unknown ;
+ int svn_dirent_is_absolute (char const*) ;
+ TYPE_2__* svn_error_compose_create (TYPE_2__*,TYPE_2__*) ;
+ TYPE_2__* svn_error_createf (int ,TYPE_2__*,int ,int ) ;
+ TYPE_2__* svn_error_trace (TYPE_2__*) ;
+ scalar_t__ svn_node_dir ;
+ scalar_t__ svn_node_file ;
+ scalar_t__ svn_node_symlink ;
+ int svn_sqlite__bindf (int *,char*,int ,char const*) ;
+ TYPE_2__* svn_sqlite__column_checksum (int const**,int *,int,int *) ;
+ int svn_sqlite__column_int (int *,int ) ;
+ int svn_sqlite__column_int64 (int *,int) ;
+ int svn_sqlite__column_is_null (int *,int) ;
+ int svn_sqlite__column_properties (int **,int *,int,int *,int *) ;
+ int svn_sqlite__column_revnum (int *,int) ;
+ char* svn_sqlite__column_text (int *,int,int *) ;
+ scalar_t__ svn_sqlite__column_token (int *,int,int ) ;
+ int svn_sqlite__column_token_null (int *,int,int ,int ) ;
+ int svn_sqlite__get_statement (int **,int ,int ) ;
+ TYPE_2__* svn_sqlite__reset (int *) ;
+ int svn_sqlite__step (int *,int *) ;
+ int svn_sqlite__step_row (int *) ;
+ scalar_t__ svn_wc__db_status_base_deleted ;
+ scalar_t__ svn_wc__db_status_incomplete ;
+ scalar_t__ svn_wc__db_status_normal ;
+ int svn_wc__db_wcroot_parse_local_abspath (TYPE_1__**,char const**,int *,char const*,int *,int *) ;
 
 svn_error_t *
 svn_wc__db_read_pristine_info(svn_wc__db_status_t *status,
@@ -76,9 +76,9 @@ svn_wc__db_read_pristine_info(svn_wc__db_status_t *status,
                               svn_revnum_t *changed_rev,
                               apr_time_t *changed_date,
                               const char **changed_author,
-                              svn_depth_t *depth,  /* dirs only */
-                              const svn_checksum_t **checksum, /* files only */
-                              const char **target, /* symlinks only */
+                              svn_depth_t *depth,
+                              const svn_checksum_t **checksum,
+                              const char **target,
                               svn_boolean_t *had_props,
                               apr_hash_t **props,
                               svn_wc__db_t *db,
@@ -90,7 +90,7 @@ svn_wc__db_read_pristine_info(svn_wc__db_status_t *status,
   const char *local_relpath;
   svn_sqlite__stmt_t *stmt;
   svn_boolean_t have_row;
-  svn_error_t *err = NULL;
+  svn_error_t *err = ((void*)0);
   int op_depth;
   svn_wc__db_status_t raw_status;
   svn_node_kind_t node_kind;
@@ -102,8 +102,8 @@ svn_wc__db_read_pristine_info(svn_wc__db_status_t *status,
                                                 scratch_pool, scratch_pool));
   VERIFY_USABLE_WCROOT(wcroot);
 
-  /* Obtain the most likely to exist record first, to make sure we don't
-     have to obtain the SQLite read-lock multiple times */
+
+
   SVN_ERR(svn_sqlite__get_statement(&stmt, wcroot->sdb,
                                     STMT_SELECT_NODE_INFO));
   SVN_ERR(svn_sqlite__bindf(stmt, "is", wcroot->wc_id, local_relpath));
@@ -177,14 +177,14 @@ svn_wc__db_read_pristine_info(svn_wc__db_status_t *status,
     {
       if (node_kind != svn_node_file)
         {
-          *checksum = NULL;
+          *checksum = ((void*)0);
         }
       else
         {
           svn_error_t *err2;
           err2 = svn_sqlite__column_checksum(checksum, stmt, 6, result_pool);
 
-          if (err2 != NULL)
+          if (err2 != ((void*)0))
             {
               if (err)
                 err = svn_error_compose_create(
@@ -202,7 +202,7 @@ svn_wc__db_read_pristine_info(svn_wc__db_status_t *status,
   if (target)
     {
       if (node_kind != svn_node_symlink)
-        *target = NULL;
+        *target = ((void*)0);
       else
         *target = svn_sqlite__column_text(stmt, 12, result_pool);
     }
@@ -217,13 +217,13 @@ svn_wc__db_read_pristine_info(svn_wc__db_status_t *status,
         {
           SVN_ERR(svn_sqlite__column_properties(props, stmt, 14,
                                                 result_pool, scratch_pool));
-          if (*props == NULL)
+          if (*props == ((void*)0))
             *props = apr_hash_make(result_pool);
         }
       else
         {
           assert(svn_sqlite__column_is_null(stmt, 14));
-          *props = NULL;
+          *props = ((void*)0);
         }
     }
 

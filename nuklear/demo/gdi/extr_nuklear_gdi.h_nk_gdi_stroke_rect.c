@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nk_color {int dummy; } ;
-typedef  int /*<<< orphan*/ * HPEN ;
-typedef  int /*<<< orphan*/ * HGDIOBJ ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  COLORREF ;
+typedef int * HPEN ;
+typedef int * HGDIOBJ ;
+typedef int HDC ;
+typedef int COLORREF ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CreatePen (int /*<<< orphan*/ ,unsigned short,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DC_PEN ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * GetStockObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NULL_BRUSH ; 
- int /*<<< orphan*/  PS_SOLID ; 
- int /*<<< orphan*/  Rectangle (int /*<<< orphan*/ ,short,short,short,short) ; 
- int /*<<< orphan*/  RoundRect (int /*<<< orphan*/ ,short,short,short,short,unsigned short,unsigned short) ; 
- int /*<<< orphan*/ * SelectObject (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetDCPenColor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  convert_color (struct nk_color) ; 
+
+ int * CreatePen (int ,unsigned short,int ) ;
+ int DC_PEN ;
+ int DeleteObject (int *) ;
+ int * GetStockObject (int ) ;
+ int NULL_BRUSH ;
+ int PS_SOLID ;
+ int Rectangle (int ,short,short,short,short) ;
+ int RoundRect (int ,short,short,short,short,unsigned short,unsigned short) ;
+ int * SelectObject (int ,int *) ;
+ int SetDCPenColor (int ,int ) ;
+ int convert_color (struct nk_color) ;
 
 __attribute__((used)) static void
 nk_gdi_stroke_rect(HDC dc, short x, short y, unsigned short w,
@@ -35,7 +35,7 @@ nk_gdi_stroke_rect(HDC dc, short x, short y, unsigned short w,
 {
     COLORREF color = convert_color(col);
 
-    HPEN pen = NULL;
+    HPEN pen = ((void*)0);
     if (line_thickness == 1) {
         SetDCPenColor(dc, color);
     } else {
@@ -51,7 +51,7 @@ nk_gdi_stroke_rect(HDC dc, short x, short y, unsigned short w,
     }
     SelectObject(dc, br);
 
-    if (pen) { 
+    if (pen) {
         SelectObject(dc, GetStockObject(DC_PEN));
         DeleteObject(pen);
     }

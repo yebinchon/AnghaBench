@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct gl_core_streamed_texture {unsigned int width; unsigned int height; scalar_t__ tex; } ;
 struct TYPE_4__ {scalar_t__ rgb32; } ;
 struct TYPE_5__ {TYPE_1__ video_info; } ;
-typedef  TYPE_2__ gl_core_t ;
+typedef TYPE_2__ gl_core_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_BLUE ; 
- int /*<<< orphan*/  GL_PIXEL_UNPACK_BUFFER ; 
- int /*<<< orphan*/  GL_RED ; 
- int /*<<< orphan*/  GL_RGB ; 
- int /*<<< orphan*/  GL_RGB565 ; 
- int /*<<< orphan*/  GL_RGBA ; 
- int /*<<< orphan*/  GL_RGBA8 ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  GL_TEXTURE_SWIZZLE_B ; 
- int /*<<< orphan*/  GL_TEXTURE_SWIZZLE_R ; 
- int /*<<< orphan*/  GL_UNPACK_ALIGNMENT ; 
- int /*<<< orphan*/  GL_UNPACK_ROW_LENGTH ; 
- int /*<<< orphan*/  GL_UNSIGNED_BYTE ; 
- int /*<<< orphan*/  GL_UNSIGNED_SHORT_5_6_5 ; 
- int /*<<< orphan*/  glBindBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glBindTexture (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  glDeleteTextures (int,scalar_t__*) ; 
- int /*<<< orphan*/  glGenTextures (int,scalar_t__*) ; 
- int /*<<< orphan*/  glPixelStorei (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  glTexParameteri (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glTexStorage2D (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  glTexSubImage2D (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void const*) ; 
+
+ int GL_BLUE ;
+ int GL_PIXEL_UNPACK_BUFFER ;
+ int GL_RED ;
+ int GL_RGB ;
+ int GL_RGB565 ;
+ int GL_RGBA ;
+ int GL_RGBA8 ;
+ int GL_TEXTURE_2D ;
+ int GL_TEXTURE_SWIZZLE_B ;
+ int GL_TEXTURE_SWIZZLE_R ;
+ int GL_UNPACK_ALIGNMENT ;
+ int GL_UNPACK_ROW_LENGTH ;
+ int GL_UNSIGNED_BYTE ;
+ int GL_UNSIGNED_SHORT_5_6_5 ;
+ int glBindBuffer (int ,int ) ;
+ int glBindTexture (int ,scalar_t__) ;
+ int glDeleteTextures (int,scalar_t__*) ;
+ int glGenTextures (int,scalar_t__*) ;
+ int glPixelStorei (int ,int) ;
+ int glTexParameteri (int ,int ,int ) ;
+ int glTexStorage2D (int ,int,int ,unsigned int,unsigned int) ;
+ int glTexSubImage2D (int ,int ,int ,int ,unsigned int,unsigned int,int ,int ,void const*) ;
 
 __attribute__((used)) static void gl_core_update_cpu_texture(gl_core_t *gl,
                                        struct gl_core_streamed_texture *streamed,

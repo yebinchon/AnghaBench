@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct lpc32xx_gpio_chip {TYPE_1__* gpio_grp; } ;
-struct TYPE_2__ {int /*<<< orphan*/  outp_clr; int /*<<< orphan*/  outp_set; } ;
+struct TYPE_2__ {int outp_clr; int outp_set; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GPIO3_PIN_TO_BIT (unsigned int) ; 
- int /*<<< orphan*/  gpreg_write (struct lpc32xx_gpio_chip*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int GPIO3_PIN_TO_BIT (unsigned int) ;
+ int gpreg_write (struct lpc32xx_gpio_chip*,int ,int ) ;
 
 __attribute__((used)) static void __set_gpio_level_p3(struct lpc32xx_gpio_chip *group,
-	unsigned pin, int high)
+ unsigned pin, int high)
 {
-	u32 u = GPIO3_PIN_TO_BIT(pin);
+ u32 u = GPIO3_PIN_TO_BIT(pin);
 
-	if (high)
-		gpreg_write(group, u, group->gpio_grp->outp_set);
-	else
-		gpreg_write(group, u, group->gpio_grp->outp_clr);
+ if (high)
+  gpreg_write(group, u, group->gpio_grp->outp_set);
+ else
+  gpreg_write(group, u, group->gpio_grp->outp_clr);
 }

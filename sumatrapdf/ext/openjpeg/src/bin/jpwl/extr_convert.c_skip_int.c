@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int atoi (char*) ; 
- int /*<<< orphan*/  isdigit (char) ; 
- char* skip_white (char*) ; 
+ int atoi (char*) ;
+ int isdigit (char) ;
+ char* skip_white (char*) ;
 
 __attribute__((used)) static char *skip_int(char *start, int *out_n)
 {
@@ -25,8 +17,8 @@ __attribute__((used)) static char *skip_int(char *start, int *out_n)
     s = start;
 
     s = skip_white(start);
-    if (s == NULL) {
-        return NULL;
+    if (s == ((void*)0)) {
+        return ((void*)0);
     }
     start = s;
 

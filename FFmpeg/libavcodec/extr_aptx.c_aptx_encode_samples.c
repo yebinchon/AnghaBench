@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  int32_t ;
-struct TYPE_3__ {int /*<<< orphan*/ * channels; int /*<<< orphan*/  hd; int /*<<< orphan*/  sync_idx; } ;
-typedef  TYPE_1__ AptXContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_WB16 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_WB24 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int NB_CHANNELS ; 
- int /*<<< orphan*/  aptx_encode_channel (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  aptx_insert_sync (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aptx_invert_quantize_and_prediction (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  aptx_pack_codeword (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aptxhd_pack_codeword (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int32_t ;
+struct TYPE_3__ {int * channels; int hd; int sync_idx; } ;
+typedef TYPE_1__ AptXContext ;
+
+
+ int AV_WB16 (int *,int ) ;
+ int AV_WB24 (int *,int ) ;
+ int NB_CHANNELS ;
+ int aptx_encode_channel (int *,int *,int ) ;
+ int aptx_insert_sync (int *,int *) ;
+ int aptx_invert_quantize_and_prediction (int *,int ) ;
+ int aptx_pack_codeword (int *) ;
+ int aptxhd_pack_codeword (int *) ;
 
 __attribute__((used)) static void aptx_encode_samples(AptXContext *ctx,
                                 int32_t samples[NB_CHANNELS][4],

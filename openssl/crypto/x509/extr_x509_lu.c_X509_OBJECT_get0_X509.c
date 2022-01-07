@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * x509; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * x509; } ;
 struct TYPE_5__ {scalar_t__ type; TYPE_1__ data; } ;
-typedef  TYPE_2__ X509_OBJECT ;
-typedef  int /*<<< orphan*/  X509 ;
+typedef TYPE_2__ X509_OBJECT ;
+typedef int X509 ;
 
-/* Variables and functions */
- scalar_t__ X509_LU_X509 ; 
+
+ scalar_t__ X509_LU_X509 ;
 
 X509 *X509_OBJECT_get0_X509(const X509_OBJECT *a)
 {
-    if (a == NULL || a->type != X509_LU_X509)
-        return NULL;
+    if (a == ((void*)0) || a->type != X509_LU_X509)
+        return ((void*)0);
     return a->data.x509;
 }

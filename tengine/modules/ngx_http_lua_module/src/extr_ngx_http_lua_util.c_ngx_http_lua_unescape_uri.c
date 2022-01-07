@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char u_char ;
-typedef  int ngx_uint_t ;
 
-/* Variables and functions */
- int NGX_UNESCAPE_REDIRECT ; 
- int NGX_UNESCAPE_URI ; 
+
+
+
+typedef char u_char ;
+typedef int ngx_uint_t ;
+
+
+ int NGX_UNESCAPE_REDIRECT ;
+ int NGX_UNESCAPE_URI ;
 
 void
 ngx_http_lua_unescape_uri(u_char **dst, u_char **src, size_t size,
     ngx_uint_t type)
 {
-    u_char  *d, *s, ch, c, decoded;
+    u_char *d, *s, ch, c, decoded;
     enum {
         sw_usual = 0,
         sw_quoted,
@@ -75,7 +75,7 @@ ngx_http_lua_unescape_uri(u_char **dst, u_char **src, size_t size,
                 break;
             }
 
-            /* the invalid quoted character */
+
 
             state = sw_usual;
 
@@ -139,7 +139,7 @@ ngx_http_lua_unescape_uri(u_char **dst, u_char **src, size_t size,
                 break;
             }
 
-            /* the invalid quoted character */
+
 
             break;
         }

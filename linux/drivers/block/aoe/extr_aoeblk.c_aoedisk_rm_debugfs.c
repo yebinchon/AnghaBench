@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct aoedev {int /*<<< orphan*/ * debugfs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  debugfs_remove (int /*<<< orphan*/ *) ; 
+
+
+
+struct aoedev {int * debugfs; } ;
+
+
+ int debugfs_remove (int *) ;
 
 void
 aoedisk_rm_debugfs(struct aoedev *d)
 {
-	debugfs_remove(d->debugfs);
-	d->debugfs = NULL;
+ debugfs_remove(d->debugfs);
+ d->debugfs = ((void*)0);
 }

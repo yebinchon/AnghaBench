@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  detach_hook ; 
- int /*<<< orphan*/  print_frame_info_listing_hook ; 
- int /*<<< orphan*/  query_hook ; 
- int /*<<< orphan*/  register_changed_hook ; 
- int /*<<< orphan*/  registers_changed_hook ; 
- int /*<<< orphan*/  selected_frame_level_changed_hook ; 
- int /*<<< orphan*/  set_gdb_event_hooks (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  target_wait_hook ; 
- int /*<<< orphan*/  tui_detach_hook ; 
- int /*<<< orphan*/  tui_event_hooks ; 
- int /*<<< orphan*/  tui_old_event_hooks ; 
- int /*<<< orphan*/  tui_print_frame_info_listing_hook ; 
- int /*<<< orphan*/  tui_query_hook ; 
- int /*<<< orphan*/  tui_register_changed_hook ; 
- int /*<<< orphan*/  tui_registers_changed_hook ; 
- int /*<<< orphan*/  tui_selected_frame_level_changed_hook ; 
- int /*<<< orphan*/  tui_target_wait_hook ; 
+ int detach_hook ;
+ int print_frame_info_listing_hook ;
+ int query_hook ;
+ int register_changed_hook ;
+ int registers_changed_hook ;
+ int selected_frame_level_changed_hook ;
+ int set_gdb_event_hooks (int *) ;
+ int target_wait_hook ;
+ int tui_detach_hook ;
+ int tui_event_hooks ;
+ int tui_old_event_hooks ;
+ int tui_print_frame_info_listing_hook ;
+ int tui_query_hook ;
+ int tui_register_changed_hook ;
+ int tui_registers_changed_hook ;
+ int tui_selected_frame_level_changed_hook ;
+ int tui_target_wait_hook ;
 
 void
 tui_install_hooks (void)
@@ -39,7 +31,7 @@ tui_install_hooks (void)
 
   query_hook = tui_query_hook;
 
-  /* Install the event hooks.  */
+
   tui_old_event_hooks = set_gdb_event_hooks (&tui_event_hooks);
 
   registers_changed_hook = tui_registers_changed_hook;

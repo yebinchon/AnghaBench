@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  M_NOWAIT ; 
- int /*<<< orphan*/  devctl_queue_data_f (char*,int /*<<< orphan*/ ) ; 
+ int M_NOWAIT ;
+ int devctl_queue_data_f (char*,int ) ;
 
 void
 devctl_queue_data(char *data)
 {
 
-	devctl_queue_data_f(data, M_NOWAIT);
+ devctl_queue_data_f(data, M_NOWAIT);
 }

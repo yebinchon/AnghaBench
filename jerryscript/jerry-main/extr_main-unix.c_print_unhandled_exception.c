@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  msg ;
-typedef  int /*<<< orphan*/  jerry_value_t ;
-typedef  int jerry_size_t ;
-typedef  char jerry_char_t ;
 
-/* Variables and functions */
- scalar_t__ JERRY_ERROR_SYNTAX ; 
- int /*<<< orphan*/  JERRY_FEATURE_ERROR_MESSAGES ; 
- int /*<<< orphan*/  JERRY_LOG_LEVEL_ERROR ; 
- unsigned int SYNTAX_ERROR_CONTEXT_SIZE ; 
- int /*<<< orphan*/  assert (int) ; 
- char* buffer ; 
- int /*<<< orphan*/  jerry_create_string (char const*) ; 
- int jerry_get_array_length (int /*<<< orphan*/ ) ; 
- scalar_t__ jerry_get_error_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_get_property (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_get_property_by_index (int /*<<< orphan*/ ,int) ; 
- int jerry_get_utf8_string_size (int /*<<< orphan*/ ) ; 
- scalar_t__ jerry_is_feature_enabled (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_port_log (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- int jerry_string_to_utf8_char_buffer (int /*<<< orphan*/ ,char*,int) ; 
- scalar_t__ jerry_value_is_array (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_value_is_error (int /*<<< orphan*/ ) ; 
- scalar_t__ jerry_value_is_object (int /*<<< orphan*/ ) ; 
- scalar_t__ jerry_value_is_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_value_to_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  read_file (char*,size_t*) ; 
- scalar_t__ strtol (char*,char**,int) ; 
+
+
+
+typedef int uint32_t ;
+typedef int msg ;
+typedef int jerry_value_t ;
+typedef int jerry_size_t ;
+typedef char jerry_char_t ;
+
+
+ scalar_t__ JERRY_ERROR_SYNTAX ;
+ int JERRY_FEATURE_ERROR_MESSAGES ;
+ int JERRY_LOG_LEVEL_ERROR ;
+ unsigned int SYNTAX_ERROR_CONTEXT_SIZE ;
+ int assert (int) ;
+ char* buffer ;
+ int jerry_create_string (char const*) ;
+ int jerry_get_array_length (int ) ;
+ scalar_t__ jerry_get_error_type (int ) ;
+ int jerry_get_property (int ,int ) ;
+ int jerry_get_property_by_index (int ,int) ;
+ int jerry_get_utf8_string_size (int ) ;
+ scalar_t__ jerry_is_feature_enabled (int ) ;
+ int jerry_port_log (int ,char*,...) ;
+ int jerry_release_value (int ) ;
+ int jerry_string_to_utf8_char_buffer (int ,char*,int) ;
+ scalar_t__ jerry_value_is_array (int ) ;
+ int jerry_value_is_error (int ) ;
+ scalar_t__ jerry_value_is_object (int ) ;
+ scalar_t__ jerry_value_is_string (int ) ;
+ int jerry_value_to_string (int ) ;
+ int memcpy (char*,char const*,int) ;
+ int printf (char*,...) ;
+ int read_file (char*,size_t*) ;
+ scalar_t__ strtol (char*,char**,int) ;
 
 __attribute__((used)) static void
-print_unhandled_exception (jerry_value_t error_value) /**< error value */
+print_unhandled_exception (jerry_value_t error_value)
 {
   assert (!jerry_value_is_error (error_value));
 
@@ -63,7 +63,7 @@ print_unhandled_exception (jerry_value_t error_value) /**< error value */
 
       uint32_t length = jerry_get_array_length (backtrace_val);
 
-      /* This length should be enough. */
+
       if (length > 32)
       {
         length = 32;
@@ -119,10 +119,10 @@ print_unhandled_exception (jerry_value_t error_value) /**< error value */
       jerry_char_t *string_end_p = err_str_buf + string_end;
       unsigned int err_line = 0;
       unsigned int err_col = 0;
-      char *path_str_p = NULL;
-      char *path_str_end_p = NULL;
+      char *path_str_p = ((void*)0);
+      char *path_str_end_p = ((void*)0);
 
-      /* 1. parse column and line information */
+
       for (jerry_char_t *current_p = err_str_buf; current_p < string_end_p; current_p++)
       {
         if (*current_p == '[')
@@ -146,29 +146,29 @@ print_unhandled_exception (jerry_value_t error_value) /**< error value */
 
           current_p++;
 
-          err_col = (unsigned int) strtol ((char *) current_p, NULL, 10);
+          err_col = (unsigned int) strtol ((char *) current_p, ((void*)0), 10);
           break;
         }
-      } /* for */
+      }
 
       if (err_line != 0 && err_col != 0)
       {
         unsigned int curr_line = 1;
 
-        bool is_printing_context = false;
+        bool is_printing_context = 0;
         unsigned int pos = 0;
 
         size_t source_size;
 
-        /* Temporarily modify the error message, so we can use the path. */
+
         *path_str_end_p = '\0';
 
         read_file (path_str_p, &source_size);
 
-        /* Revert the error message. */
+
         *path_str_end_p = ':';
 
-        /* 2. seek and print */
+
         while ((pos < source_size) && (buffer[pos] != '\0'))
         {
           if (buffer[pos] == '\n')
@@ -180,8 +180,8 @@ print_unhandled_exception (jerry_value_t error_value) /**< error value */
               || (err_line >= curr_line
                   && (err_line - curr_line) <= SYNTAX_ERROR_CONTEXT_SIZE))
           {
-            /* context must be printed */
-            is_printing_context = true;
+
+            is_printing_context = 1;
           }
 
           if (curr_line > err_line)

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int UINT ;
-typedef  int UCHAR ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sprintfW (char*,char const*,int,int,int,int) ; 
+
+
+
+typedef char WCHAR ;
+typedef int UINT ;
+typedef int UCHAR ;
+typedef int DWORD ;
+
+
+ int sprintfW (char*,char const*,int,int,int,int) ;
 
 __attribute__((used)) static DWORD ui2ipv4(WCHAR *dest, UINT address) {
     static const WCHAR formatW[] =

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct uio_info {struct uio_device* uio_dev; } ;
-struct uio_device {int /*<<< orphan*/  async_queue; int /*<<< orphan*/  wait; int /*<<< orphan*/  event; } ;
+struct uio_device {int async_queue; int wait; int event; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  POLL_IN ; 
- int /*<<< orphan*/  SIGIO ; 
- int /*<<< orphan*/  atomic_inc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kill_fasync (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wake_up_interruptible (int /*<<< orphan*/ *) ; 
+
+ int POLL_IN ;
+ int SIGIO ;
+ int atomic_inc (int *) ;
+ int kill_fasync (int *,int ,int ) ;
+ int wake_up_interruptible (int *) ;
 
 void uio_event_notify(struct uio_info *info)
 {
-	struct uio_device *idev = info->uio_dev;
+ struct uio_device *idev = info->uio_dev;
 
-	atomic_inc(&idev->event);
-	wake_up_interruptible(&idev->wait);
-	kill_fasync(&idev->async_queue, SIGIO, POLL_IN);
+ atomic_inc(&idev->event);
+ wake_up_interruptible(&idev->wait);
+ kill_fasync(&idev->async_queue, SIGIO, POLL_IN);
 }

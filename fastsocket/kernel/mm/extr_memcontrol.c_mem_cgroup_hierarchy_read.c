@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u64 ;
 struct cgroup {int dummy; } ;
 struct cftype {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  use_hierarchy; } ;
+struct TYPE_2__ {int use_hierarchy; } ;
 
-/* Variables and functions */
- TYPE_1__* mem_cgroup_from_cont (struct cgroup*) ; 
+
+ TYPE_1__* mem_cgroup_from_cont (struct cgroup*) ;
 
 __attribute__((used)) static u64 mem_cgroup_hierarchy_read(struct cgroup *cont, struct cftype *cft)
 {
-	return mem_cgroup_from_cont(cont)->use_hierarchy;
+ return mem_cgroup_from_cont(cont)->use_hierarchy;
 }

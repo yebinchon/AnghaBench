@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int checkout_strategy; } ;
 
-/* Variables and functions */
- int GIT_CHECKOUT_RECREATE_MISSING ; 
- int GIT_CHECKOUT_SAFE ; 
- int /*<<< orphan*/  assert_name_is (char*) ; 
- TYPE_1__ checkout_opts ; 
- int /*<<< orphan*/  cl_assert (int) ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_must_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_checkout_tree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  git_path_isdir (char*) ; 
- int /*<<< orphan*/  obj ; 
- int /*<<< orphan*/  p_mkdir (char*,int) ; 
- int /*<<< orphan*/  repo ; 
+
+ int GIT_CHECKOUT_RECREATE_MISSING ;
+ int GIT_CHECKOUT_SAFE ;
+ int assert_name_is (char*) ;
+ TYPE_1__ checkout_opts ;
+ int cl_assert (int) ;
+ int cl_git_pass (int ) ;
+ int cl_must_pass (int ) ;
+ int git_checkout_tree (int ,int ,TYPE_1__*) ;
+ int git_path_isdir (char*) ;
+ int obj ;
+ int p_mkdir (char*,int) ;
+ int repo ;
 
 void test_checkout_icase__overwrites_empty_folders_for_files(void)
 {
-	checkout_opts.checkout_strategy = GIT_CHECKOUT_SAFE|GIT_CHECKOUT_RECREATE_MISSING;
+ checkout_opts.checkout_strategy = GIT_CHECKOUT_SAFE|GIT_CHECKOUT_RECREATE_MISSING;
 
-	cl_must_pass(p_mkdir("testrepo/NEW.txt", 0777));
+ cl_must_pass(p_mkdir("testrepo/NEW.txt", 0777));
 
-	cl_git_pass(git_checkout_tree(repo, obj, &checkout_opts));
+ cl_git_pass(git_checkout_tree(repo, obj, &checkout_opts));
 
-	assert_name_is("testrepo/new.txt");
-	cl_assert(!git_path_isdir("testrepo/new.txt"));
+ assert_name_is("testrepo/new.txt");
+ cl_assert(!git_path_isdir("testrepo/new.txt"));
 }

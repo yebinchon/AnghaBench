@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct timeval {int member_0; int member_1; } ;
-struct TYPE_11__ {char* str; scalar_t__ type; unsigned int elements; TYPE_1__** element; int /*<<< orphan*/  integer; } ;
-typedef  TYPE_2__ redisReply ;
+struct TYPE_11__ {char* str; scalar_t__ type; unsigned int elements; TYPE_1__** element; int integer; } ;
+typedef TYPE_2__ redisReply ;
 struct TYPE_12__ {char* errstr; scalar_t__ err; } ;
-typedef  TYPE_3__ redisContext ;
+typedef TYPE_3__ redisContext ;
 struct TYPE_10__ {char* str; } ;
 
-/* Variables and functions */
- scalar_t__ REDIS_REPLY_ARRAY ; 
- int atoi (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  freeReplyObject (TYPE_2__*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- TYPE_2__* redisCommand (TYPE_3__*,char*,...) ; 
- TYPE_3__* redisConnectUnixWithTimeout (char const*,struct timeval) ; 
- TYPE_3__* redisConnectWithTimeout (char const*,int,struct timeval) ; 
- int /*<<< orphan*/  redisFree (TYPE_3__*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,unsigned int) ; 
+
+ scalar_t__ REDIS_REPLY_ARRAY ;
+ int atoi (char*) ;
+ int exit (int) ;
+ int freeReplyObject (TYPE_2__*) ;
+ int printf (char*,...) ;
+ TYPE_2__* redisCommand (TYPE_3__*,char*,...) ;
+ TYPE_3__* redisConnectUnixWithTimeout (char const*,struct timeval) ;
+ TYPE_3__* redisConnectWithTimeout (char const*,int,struct timeval) ;
+ int redisFree (TYPE_3__*) ;
+ int snprintf (char*,int,char*,unsigned int) ;
 
 int main(int argc, char **argv) {
     unsigned int j, isunix = 0;
@@ -41,20 +41,20 @@ int main(int argc, char **argv) {
     if (argc > 2) {
         if (*argv[2] == 'u' || *argv[2] == 'U') {
             isunix = 1;
-            /* in this case, host is the path to the unix socket */
+
             printf("Will connect to unix socket @%s\n", hostname);
         }
     }
 
     int port = (argc > 2) ? atoi(argv[2]) : 6379;
 
-    struct timeval timeout = { 1, 500000 }; // 1.5 seconds
+    struct timeval timeout = { 1, 500000 };
     if (isunix) {
         c = redisConnectUnixWithTimeout(hostname, timeout);
     } else {
         c = redisConnectWithTimeout(hostname, port, timeout);
     }
-    if (c == NULL || c->err) {
+    if (c == ((void*)0) || c->err) {
         if (c) {
             printf("Connection error: %s\n", c->errstr);
             redisFree(c);
@@ -64,22 +64,22 @@ int main(int argc, char **argv) {
         exit(1);
     }
 
-    /* PING server */
+
     reply = redisCommand(c,"PING");
     printf("PING: %s\n", reply->str);
     freeReplyObject(reply);
 
-    /* Set a key */
+
     reply = redisCommand(c,"SET %s %s", "foo", "hello world");
     printf("SET: %s\n", reply->str);
     freeReplyObject(reply);
 
-    /* Set a key using binary safe API */
+
     reply = redisCommand(c,"SET %b %b", "bar", (size_t) 3, "hello", (size_t) 5);
     printf("SET (binary API): %s\n", reply->str);
     freeReplyObject(reply);
 
-    /* Try a GET and two INCR */
+
     reply = redisCommand(c,"GET foo");
     printf("GET foo: %s\n", reply->str);
     freeReplyObject(reply);
@@ -87,12 +87,12 @@ int main(int argc, char **argv) {
     reply = redisCommand(c,"INCR counter");
     printf("INCR counter: %lld\n", reply->integer);
     freeReplyObject(reply);
-    /* again ... */
+
     reply = redisCommand(c,"INCR counter");
     printf("INCR counter: %lld\n", reply->integer);
     freeReplyObject(reply);
 
-    /* Create a list of numbers, from 0 to 9 */
+
     reply = redisCommand(c,"DEL mylist");
     freeReplyObject(reply);
     for (j = 0; j < 10; j++) {
@@ -103,7 +103,7 @@ int main(int argc, char **argv) {
         freeReplyObject(reply);
     }
 
-    /* Let's check what we have inside the list */
+
     reply = redisCommand(c,"LRANGE mylist 0 -1");
     if (reply->type == REDIS_REPLY_ARRAY) {
         for (j = 0; j < reply->elements; j++) {
@@ -112,7 +112,7 @@ int main(int argc, char **argv) {
     }
     freeReplyObject(reply);
 
-    /* Disconnects and frees the context */
+
     redisFree(c);
 
     return 0;

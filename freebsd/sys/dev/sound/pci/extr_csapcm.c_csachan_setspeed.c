@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int32_t ;
-struct csa_chinfo {int /*<<< orphan*/  spd; } ;
-typedef  int /*<<< orphan*/  kobj_t ;
 
-/* Variables and functions */
+
+
+
+typedef int u_int32_t ;
+struct csa_chinfo {int spd; } ;
+typedef int kobj_t ;
+
+
 
 __attribute__((used)) static u_int32_t
 csachan_setspeed(kobj_t obj, void *data, u_int32_t speed)
 {
-	struct csa_chinfo *ch = data;
+ struct csa_chinfo *ch = data;
 
-	ch->spd = speed;
-	return ch->spd; /* XXX calc real speed */
+ ch->spd = speed;
+ return ch->spd;
 }

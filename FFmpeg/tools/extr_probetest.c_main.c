@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int* buf; unsigned int buf_size; char* filename; int /*<<< orphan*/  member_0; } ;
-typedef  int /*<<< orphan*/  PutBitContext ;
-typedef  TYPE_1__ AVProbeData ;
-typedef  int /*<<< orphan*/  AVLFG ;
 
-/* Variables and functions */
- scalar_t__ AVPROBE_PADDING_SIZE ; 
- scalar_t__ AV_READ_TIME () ; 
- scalar_t__ FFMAX (unsigned int,int) ; 
- int av_lfg_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_lfg_init (int /*<<< orphan*/ *,int) ; 
- int* av_realloc (int*,scalar_t__) ; 
- int failures ; 
- int /*<<< orphan*/  flush_put_bits (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  init_put_bits (int /*<<< orphan*/ *,int*,unsigned int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  print_times () ; 
- int /*<<< orphan*/  probe (TYPE_1__*,unsigned int,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int,unsigned int) ; 
- int read_int (char*) ; 
- char* single_format ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int* buf; unsigned int buf_size; char* filename; int member_0; } ;
+typedef int PutBitContext ;
+typedef TYPE_1__ AVProbeData ;
+typedef int AVLFG ;
+
+
+ scalar_t__ AVPROBE_PADDING_SIZE ;
+ scalar_t__ AV_READ_TIME () ;
+ scalar_t__ FFMAX (unsigned int,int) ;
+ int av_lfg_get (int *) ;
+ int av_lfg_init (int *,int) ;
+ int* av_realloc (int*,scalar_t__) ;
+ int failures ;
+ int flush_put_bits (int *) ;
+ int fprintf (int ,char*,...) ;
+ int init_put_bits (int *,int*,unsigned int) ;
+ int memset (int*,int ,scalar_t__) ;
+ int print_times () ;
+ int probe (TYPE_1__*,unsigned int,unsigned int,unsigned int) ;
+ int put_bits (int *,int,unsigned int) ;
+ int read_int (char*) ;
+ char* single_format ;
+ int stderr ;
+ int strcmp (char*,char*) ;
 
 int main(int argc, char **argv)
 {
@@ -73,10 +73,10 @@ int main(int argc, char **argv)
 
     av_lfg_init(&state, 0xdeadbeef);
 
-    pd.buf = NULL;
+    pd.buf = ((void*)0);
     for (size = 1; size < max_size; size *= 2) {
         pd.buf_size = size;
-        pd.buf      = av_realloc(pd.buf, size + AVPROBE_PADDING_SIZE);
+        pd.buf = av_realloc(pd.buf, size + AVPROBE_PADDING_SIZE);
         pd.filename = "";
 
         if (!pd.buf) {
@@ -101,7 +101,7 @@ int main(int argc, char **argv)
                     case 1:
                         for (i = 0; i < size * 8; i++) {
                             unsigned int p2 = hist ? p & 0x3F : (p >> 6);
-                            unsigned int v  = (av_lfg_get(&state) & 0xFFFFFFFF) > p2 << 26;
+                            unsigned int v = (av_lfg_get(&state) & 0xFFFFFFFF) > p2 << 26;
                             put_bits(&pb, 1, v);
                             hist = v;
                         }
@@ -109,7 +109,7 @@ int main(int argc, char **argv)
                     case 2:
                         for (i = 0; i < size * 8; i++) {
                             unsigned int p2 = (p >> (hist * 3)) & 7;
-                            unsigned int v  = (av_lfg_get(&state) & 0xFFFFFFFF) > p2 << 29;
+                            unsigned int v = (av_lfg_get(&state) & 0xFFFFFFFF) > p2 << 29;
                             put_bits(&pb, 1, v);
                             hist = (2 * hist + v) & 3;
                         }

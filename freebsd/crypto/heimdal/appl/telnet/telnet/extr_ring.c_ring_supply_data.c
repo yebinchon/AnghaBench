@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  supply; } ;
-typedef  TYPE_1__ Ring ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memmove (int /*<<< orphan*/ ,unsigned char*,int) ; 
- int min (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ring_empty_consecutive (TYPE_1__*) ; 
- int /*<<< orphan*/  ring_supplied (TYPE_1__*,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int supply; } ;
+typedef TYPE_1__ Ring ;
+
+
+ int memmove (int ,unsigned char*,int) ;
+ int min (int,int ) ;
+ int ring_empty_consecutive (TYPE_1__*) ;
+ int ring_supplied (TYPE_1__*,int) ;
 
 void
 ring_supply_data(Ring *ring, unsigned char *buffer, int count)
@@ -26,10 +26,10 @@ ring_supply_data(Ring *ring, unsigned char *buffer, int count)
     int i;
 
     while (count) {
-	i = min(count, ring_empty_consecutive(ring));
-	memmove(ring->supply, buffer, i);
-	ring_supplied(ring, i);
-	count -= i;
-	buffer += i;
+ i = min(count, ring_empty_consecutive(ring));
+ memmove(ring->supply, buffer, i);
+ ring_supplied(ring, i);
+ count -= i;
+ buffer += i;
     }
 }

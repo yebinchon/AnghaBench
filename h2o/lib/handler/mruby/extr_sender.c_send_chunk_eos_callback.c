@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_7__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {int /*<<< orphan*/  inflight; } ;
-struct TYPE_11__ {int /*<<< orphan*/  final_sent; } ;
-struct st_h2o_mruby_callback_sender_t {int /*<<< orphan*/  receiving; TYPE_7__ sending; TYPE_1__ super; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
+
+
+typedef struct TYPE_15__ TYPE_7__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_15__ {int inflight; } ;
+struct TYPE_11__ {int final_sent; } ;
+struct st_h2o_mruby_callback_sender_t {int receiving; TYPE_7__ sending; TYPE_1__ super; } ;
+typedef int mrb_value ;
+typedef int mrb_state ;
 struct TYPE_13__ {scalar_t__ sender; } ;
-typedef  TYPE_3__ h2o_mruby_generator_t ;
+typedef TYPE_3__ h2o_mruby_generator_t ;
 struct TYPE_14__ {TYPE_2__* shared; } ;
-typedef  TYPE_4__ h2o_mruby_context_t ;
-struct TYPE_12__ {int /*<<< orphan*/ * mrb; } ;
+typedef TYPE_4__ h2o_mruby_context_t ;
+struct TYPE_12__ {int * mrb; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  check_precond (int /*<<< orphan*/ *,TYPE_3__*) ; 
- TYPE_3__* h2o_mruby_get_generator (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  h2o_mruby_sender_close_body (TYPE_3__*) ; 
- int /*<<< orphan*/  h2o_mruby_sender_do_send_buffer (TYPE_3__*,TYPE_7__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mrb_ary_entry (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_nil_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_nil_value () ; 
+
+ int check_precond (int *,TYPE_3__*) ;
+ TYPE_3__* h2o_mruby_get_generator (int *,int ) ;
+ int h2o_mruby_sender_close_body (TYPE_3__*) ;
+ int h2o_mruby_sender_do_send_buffer (TYPE_3__*,TYPE_7__*,int *,int) ;
+ int mrb_ary_entry (int ,int ) ;
+ int mrb_nil_p (int ) ;
+ int mrb_nil_value () ;
 
 __attribute__((used)) static mrb_value send_chunk_eos_callback(h2o_mruby_context_t *mctx, mrb_value input, mrb_value *receiver, mrb_value args,
                                          int *run_again)
@@ -41,7 +41,7 @@ __attribute__((used)) static mrb_value send_chunk_eos_callback(h2o_mruby_context
     mrb_state *mrb = mctx->shared->mrb;
     h2o_mruby_generator_t *generator = h2o_mruby_get_generator(mrb, mrb_ary_entry(args, 0));
 
-    { /* precond check */
+    {
         mrb_value exc = check_precond(mrb, generator);
         if (!mrb_nil_p(exc)) {
             *run_again = 1;

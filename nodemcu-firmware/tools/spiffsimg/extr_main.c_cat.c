@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  spiffs_file ;
-typedef  int /*<<< orphan*/  s32_t ;
-typedef  int /*<<< orphan*/  buff ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SPIFFS_RDONLY ; 
- int /*<<< orphan*/  SPIFFS_close (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SPIFFS_open (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SPIFFS_read (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  STDOUT_FILENO ; 
- int /*<<< orphan*/  fs ; 
- int /*<<< orphan*/  write (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int spiffs_file ;
+typedef int s32_t ;
+typedef int buff ;
+
+
+ int SPIFFS_RDONLY ;
+ int SPIFFS_close (int *,int ) ;
+ int SPIFFS_open (int *,char*,int ,int ) ;
+ int SPIFFS_read (int *,int ,char*,int) ;
+ int STDOUT_FILENO ;
+ int fs ;
+ int write (int ,char*,int ) ;
 
 __attribute__((used)) static void cat (char *fname)
 {

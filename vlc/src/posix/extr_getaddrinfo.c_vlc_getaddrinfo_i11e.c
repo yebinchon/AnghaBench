@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_thread_t ;
-struct vlc_gai_req {char const* name; char* service; int error; struct addrinfo* result; int /*<<< orphan*/  done; struct addrinfo const* hints; } ;
+
+
+
+
+typedef int vlc_thread_t ;
+struct vlc_gai_req {char const* name; char* service; int error; struct addrinfo* result; int done; struct addrinfo const* hints; } ;
 struct addrinfo {int dummy; } ;
-typedef  int /*<<< orphan*/  portbuf ;
+typedef int portbuf ;
 
-/* Variables and functions */
- int EAI_NONAME ; 
- int EAI_SYSTEM ; 
- int /*<<< orphan*/  VLC_THREAD_PRIORITY_LOW ; 
- scalar_t__ snprintf (char*,int,char*,unsigned int) ; 
- int /*<<< orphan*/  vlc_cancel (int /*<<< orphan*/ ) ; 
- scalar_t__ vlc_clone (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct vlc_gai_req*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_gai_thread ; 
- int /*<<< orphan*/  vlc_join (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_sem_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_sem_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_sem_wait_i11e (int /*<<< orphan*/ *) ; 
+
+ int EAI_NONAME ;
+ int EAI_SYSTEM ;
+ int VLC_THREAD_PRIORITY_LOW ;
+ scalar_t__ snprintf (char*,int,char*,unsigned int) ;
+ int vlc_cancel (int ) ;
+ scalar_t__ vlc_clone (int *,int ,struct vlc_gai_req*,int ) ;
+ int vlc_gai_thread ;
+ int vlc_join (int ,int *) ;
+ int vlc_sem_destroy (int *) ;
+ int vlc_sem_init (int *,int ) ;
+ int vlc_sem_wait_i11e (int *) ;
 
 int vlc_getaddrinfo_i11e(const char *name, unsigned port,
                          const struct addrinfo *hints,
@@ -35,7 +35,7 @@ int vlc_getaddrinfo_i11e(const char *name, unsigned port,
     struct vlc_gai_req req =
     {
         .name = name,
-        .service = NULL,
+        .service = ((void*)0),
         .hints = hints,
     };
     char portbuf[6];
@@ -61,7 +61,7 @@ int vlc_getaddrinfo_i11e(const char *name, unsigned port,
     vlc_sem_wait_i11e(&req.done);
 
     vlc_cancel(th);
-    vlc_join(th, NULL);
+    vlc_join(th, ((void*)0));
     vlc_sem_destroy(&req.done);
 
     *res = req.result;

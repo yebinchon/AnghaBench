@@ -1,139 +1,128 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pem_password_cb ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int pem_password_cb ;
 struct TYPE_3__ {char* password; char* prompt_info; } ;
-typedef  int /*<<< orphan*/  RSA ;
-typedef  TYPE_1__ PW_CB_DATA ;
-typedef  int OPTION_CHOICE ;
-typedef  int /*<<< orphan*/  EVP_CIPHER ;
-typedef  int /*<<< orphan*/  ENGINE ;
-typedef  int /*<<< orphan*/  BN_GENCB ;
-typedef  int /*<<< orphan*/  BIO ;
-typedef  int /*<<< orphan*/  BIGNUM ;
+typedef int RSA ;
+typedef TYPE_1__ PW_CB_DATA ;
+typedef int OPTION_CHOICE ;
+typedef int EVP_CIPHER ;
+typedef int ENGINE ;
+typedef int BN_GENCB ;
+typedef int BIO ;
+typedef int BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_free_all (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  BN_GENCB_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_GENCB_new () ; 
- int /*<<< orphan*/  BN_GENCB_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* BN_bn2dec (int /*<<< orphan*/  const*) ; 
- char* BN_bn2hex (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_new () ; 
- int /*<<< orphan*/  BN_set_word (int /*<<< orphan*/ *,unsigned long) ; 
- int DEFBITS ; 
- int DEFPRIMES ; 
- int /*<<< orphan*/  ERR_print_errors (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FORMAT_PEM ; 
- int OPENSSL_RSA_MAX_MODULUS_BITS ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
-#define  OPT_3 138 
-#define  OPT_CIPHER 137 
-#define  OPT_ENGINE 136 
-#define  OPT_EOF 135 
-#define  OPT_ERR 134 
-#define  OPT_F4 133 
-#define  OPT_HELP 132 
-#define  OPT_OUT 131 
-#define  OPT_PASSOUT 130 
-#define  OPT_PRIMES 129 
-#define  OPT_R_CASES 128 
- int /*<<< orphan*/  PEM_write_bio_RSAPrivateKey (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__*) ; 
- unsigned long RSA_F4 ; 
- int /*<<< orphan*/  RSA_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RSA_generate_multi_prime_key (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RSA_get0_key (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * RSA_new () ; 
- int /*<<< orphan*/ * RSA_new_method (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  app_passwd (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,char**) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/ * bio_open_owner (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  genrsa_cb ; 
- int /*<<< orphan*/  genrsa_options ; 
- char* opt_arg () ; 
- int /*<<< orphan*/  opt_cipher (int /*<<< orphan*/ ,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  opt_help (int /*<<< orphan*/ ) ; 
- char* opt_init (int,char**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  opt_int (char*,int*) ; 
- int opt_next () ; 
- int opt_num_rest () ; 
- int /*<<< orphan*/  opt_rand (int) ; 
- char** opt_rest () ; 
- int /*<<< orphan*/  opt_unknown () ; 
- scalar_t__ password_callback ; 
- int /*<<< orphan*/  release_engine (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * setup_engine (char*,int /*<<< orphan*/ ) ; 
+
+ int BIO_free_all (int *) ;
+ int BIO_printf (int ,char*,...) ;
+ int BN_GENCB_free (int *) ;
+ int * BN_GENCB_new () ;
+ int BN_GENCB_set (int *,int ,int ) ;
+ char* BN_bn2dec (int const*) ;
+ char* BN_bn2hex (int const*) ;
+ int BN_free (int *) ;
+ int * BN_new () ;
+ int BN_set_word (int *,unsigned long) ;
+ int DEFBITS ;
+ int DEFPRIMES ;
+ int ERR_print_errors (int ) ;
+ int FORMAT_PEM ;
+ int OPENSSL_RSA_MAX_MODULUS_BITS ;
+ int OPENSSL_free (char*) ;
+ int PEM_write_bio_RSAPrivateKey (int *,int *,int const*,int *,int ,int *,TYPE_1__*) ;
+ unsigned long RSA_F4 ;
+ int RSA_free (int *) ;
+ int RSA_generate_multi_prime_key (int *,int,int,int *,int *) ;
+ int RSA_get0_key (int *,int *,int const**,int *) ;
+ int * RSA_new () ;
+ int * RSA_new_method (int *) ;
+ int app_passwd (int *,char*,int *,char**) ;
+ int assert (int) ;
+ int bio_err ;
+ int * bio_open_owner (char*,int ,int) ;
+ int genrsa_cb ;
+ int genrsa_options ;
+ char* opt_arg () ;
+ int opt_cipher (int ,int const**) ;
+ int opt_help (int ) ;
+ char* opt_init (int,char**,int ) ;
+ int opt_int (char*,int*) ;
+ int opt_next () ;
+ int opt_num_rest () ;
+ int opt_rand (int) ;
+ char** opt_rest () ;
+ int opt_unknown () ;
+ scalar_t__ password_callback ;
+ int release_engine (int *) ;
+ int * setup_engine (char*,int ) ;
 
 int genrsa_main(int argc, char **argv)
 {
     BN_GENCB *cb = BN_GENCB_new();
     PW_CB_DATA cb_data;
-    ENGINE *eng = NULL;
+    ENGINE *eng = ((void*)0);
     BIGNUM *bn = BN_new();
-    BIO *out = NULL;
+    BIO *out = ((void*)0);
     const BIGNUM *e;
-    RSA *rsa = NULL;
-    const EVP_CIPHER *enc = NULL;
+    RSA *rsa = ((void*)0);
+    const EVP_CIPHER *enc = ((void*)0);
     int ret = 1, num = DEFBITS, private = 0, primes = DEFPRIMES;
     unsigned long f4 = RSA_F4;
-    char *outfile = NULL, *passoutarg = NULL, *passout = NULL;
+    char *outfile = ((void*)0), *passoutarg = ((void*)0), *passout = ((void*)0);
     char *prog, *hexe, *dece;
     OPTION_CHOICE o;
 
-    if (bn == NULL || cb == NULL)
+    if (bn == ((void*)0) || cb == ((void*)0))
         goto end;
 
     BN_GENCB_set(cb, genrsa_cb, bio_err);
 
     prog = opt_init(argc, argv, genrsa_options);
-    while ((o = opt_next()) != OPT_EOF) {
+    while ((o = opt_next()) != 135) {
         switch (o) {
-        case OPT_EOF:
-        case OPT_ERR:
+        case 135:
+        case 134:
 opthelp:
             BIO_printf(bio_err, "%s: Use -help for summary.\n", prog);
             goto end;
-        case OPT_HELP:
+        case 132:
             ret = 0;
             opt_help(genrsa_options);
             goto end;
-        case OPT_3:
+        case 138:
             f4 = 3;
             break;
-        case OPT_F4:
+        case 133:
             f4 = RSA_F4;
             break;
-        case OPT_OUT:
+        case 131:
             outfile = opt_arg();
             break;
-        case OPT_ENGINE:
+        case 136:
             eng = setup_engine(opt_arg(), 0);
             break;
-        case OPT_R_CASES:
+        case 128:
             if (!opt_rand(o))
                 goto end;
             break;
-        case OPT_PASSOUT:
+        case 130:
             passoutarg = opt_arg();
             break;
-        case OPT_CIPHER:
+        case 137:
             if (!opt_cipher(opt_unknown(), &enc))
                 goto end;
             break;
-        case OPT_PRIMES:
+        case 129:
             if (!opt_int(opt_arg(), &primes))
                 goto end;
             break;
@@ -156,26 +145,26 @@ opthelp:
     }
 
     private = 1;
-    if (!app_passwd(NULL, passoutarg, NULL, &passout)) {
+    if (!app_passwd(((void*)0), passoutarg, ((void*)0), &passout)) {
         BIO_printf(bio_err, "Error getting password\n");
         goto end;
     }
 
     out = bio_open_owner(outfile, FORMAT_PEM, private);
-    if (out == NULL)
+    if (out == ((void*)0))
         goto end;
 
     BIO_printf(bio_err, "Generating RSA private key, %d bit long modulus (%d primes)\n",
                num, primes);
     rsa = eng ? RSA_new_method(eng) : RSA_new();
-    if (rsa == NULL)
+    if (rsa == ((void*)0))
         goto end;
 
     if (!BN_set_word(bn, f4)
         || !RSA_generate_multi_prime_key(rsa, num, primes, bn, cb))
         goto end;
 
-    RSA_get0_key(rsa, NULL, &e, NULL);
+    RSA_get0_key(rsa, ((void*)0), &e, ((void*)0));
     hexe = BN_bn2hex(e);
     dece = BN_bn2dec(e);
     if (hexe && dece) {
@@ -186,7 +175,7 @@ opthelp:
     cb_data.password = passout;
     cb_data.prompt_info = outfile;
     assert(private);
-    if (!PEM_write_bio_RSAPrivateKey(out, rsa, enc, NULL, 0,
+    if (!PEM_write_bio_RSAPrivateKey(out, rsa, enc, ((void*)0), 0,
                                      (pem_password_cb *)password_callback,
                                      &cb_data))
         goto end;

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  off_t ;
-struct TYPE_3__ {scalar_t__ left; int r_left; size_t id; int /*<<< orphan*/  buf; int /*<<< orphan*/  ptr; scalar_t__ buf_len; } ;
-typedef  TYPE_1__ dl_zin ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * fd ; 
- int* fpos ; 
- scalar_t__ likely (int) ; 
- scalar_t__ min (int /*<<< orphan*/ ,int) ; 
- int read (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int off_t ;
+struct TYPE_3__ {scalar_t__ left; int r_left; size_t id; int buf; int ptr; scalar_t__ buf_len; } ;
+typedef TYPE_1__ dl_zin ;
+
+
+ int assert (int) ;
+ int * fd ;
+ int* fpos ;
+ scalar_t__ likely (int) ;
+ scalar_t__ min (int ,int) ;
+ int read (int ,int ,size_t) ;
 
 __attribute__((used)) static inline int dl_zin_flush (dl_zin *f) {
   assert (f->left == 0);

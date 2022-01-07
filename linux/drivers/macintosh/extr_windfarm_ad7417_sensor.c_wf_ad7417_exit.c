@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  i2c_del_driver (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wf_ad7417_driver ; 
+ int i2c_del_driver (int *) ;
+ int wf_ad7417_driver ;
 
 __attribute__((used)) static void wf_ad7417_exit(void)
 {
-	i2c_del_driver(&wf_ad7417_driver);
+ i2c_del_driver(&wf_ad7417_driver);
 }

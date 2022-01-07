@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_char ;
-typedef  int ngx_uint_t ;
-typedef  scalar_t__ ngx_int_t ;
+
+
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int u_char ;
+typedef int ngx_uint_t ;
+typedef scalar_t__ ngx_int_t ;
 struct TYPE_17__ {int flags; scalar_t__ length; int index; int parse_name; int parse_value; } ;
 struct TYPE_18__ {TYPE_2__ state; TYPE_1__* connection; } ;
-typedef  TYPE_3__ ngx_http_v2_connection_t ;
-struct TYPE_16__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_3__ ngx_http_v2_connection_t ;
+struct TYPE_16__ {int log; } ;
 
-/* Variables and functions */
- scalar_t__ NGX_AGAIN ; 
- scalar_t__ NGX_DECLINED ; 
- int /*<<< orphan*/  NGX_HTTP_V2_COMP_ERROR ; 
- int NGX_HTTP_V2_END_HEADERS_FLAG ; 
- scalar_t__ NGX_HTTP_V2_INT_OCTETS ; 
- int /*<<< orphan*/  NGX_HTTP_V2_SIZE_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_INFO ; 
- scalar_t__ NGX_OK ; 
- int* ngx_http_v2_connection_error (TYPE_3__*,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_http_v2_get_indexed_header (TYPE_3__*,scalar_t__,int) ; 
- int* ngx_http_v2_handle_continuation (TYPE_3__*,int*,int*,int* (*) (TYPE_3__*,int*,int*)) ; 
- scalar_t__ ngx_http_v2_parse_int (TYPE_3__*,int**,int*,int) ; 
- int ngx_http_v2_prefix (int) ; 
- int* ngx_http_v2_state_field_len (TYPE_3__*,int*,int*) ; 
- int* ngx_http_v2_state_header_complete (TYPE_3__*,int*,int*) ; 
- int* ngx_http_v2_state_headers_save (TYPE_3__*,int*,int*,int* (*) (TYPE_3__*,int*,int*)) ; 
- int* ngx_http_v2_state_process_header (TYPE_3__*,int*,int*) ; 
- scalar_t__ ngx_http_v2_table_size (TYPE_3__*,scalar_t__) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
+
+ scalar_t__ NGX_AGAIN ;
+ scalar_t__ NGX_DECLINED ;
+ int NGX_HTTP_V2_COMP_ERROR ;
+ int NGX_HTTP_V2_END_HEADERS_FLAG ;
+ scalar_t__ NGX_HTTP_V2_INT_OCTETS ;
+ int NGX_HTTP_V2_SIZE_ERROR ;
+ int NGX_LOG_INFO ;
+ scalar_t__ NGX_OK ;
+ int* ngx_http_v2_connection_error (TYPE_3__*,int ) ;
+ scalar_t__ ngx_http_v2_get_indexed_header (TYPE_3__*,scalar_t__,int) ;
+ int* ngx_http_v2_handle_continuation (TYPE_3__*,int*,int*,int* (*) (TYPE_3__*,int*,int*)) ;
+ scalar_t__ ngx_http_v2_parse_int (TYPE_3__*,int**,int*,int) ;
+ int ngx_http_v2_prefix (int) ;
+ int* ngx_http_v2_state_field_len (TYPE_3__*,int*,int*) ;
+ int* ngx_http_v2_state_header_complete (TYPE_3__*,int*,int*) ;
+ int* ngx_http_v2_state_headers_save (TYPE_3__*,int*,int*,int* (*) (TYPE_3__*,int*,int*)) ;
+ int* ngx_http_v2_state_process_header (TYPE_3__*,int*,int*) ;
+ scalar_t__ ngx_http_v2_table_size (TYPE_3__*,scalar_t__) ;
+ int ngx_log_error (int ,int ,int ,char*,...) ;
 
 __attribute__((used)) static u_char *
 ngx_http_v2_state_header_block(ngx_http_v2_connection_t *h2c, u_char *pos,
     u_char *end)
 {
-    u_char      ch;
-    ngx_int_t   value;
-    ngx_uint_t  indexed, size_update, prefix;
+    u_char ch;
+    ngx_int_t value;
+    ngx_uint_t indexed, size_update, prefix;
 
     if (end - pos < 1) {
         return ngx_http_v2_state_headers_save(h2c, pos, end,
@@ -68,26 +68,26 @@ ngx_http_v2_state_header_block(ngx_http_v2_connection_t *h2c, u_char *pos,
     ch = *pos;
 
     if (ch >= (1 << 7)) {
-        /* indexed header field */
+
         indexed = 1;
         prefix = ngx_http_v2_prefix(7);
 
     } else if (ch >= (1 << 6)) {
-        /* literal header field with incremental indexing */
+
         h2c->state.index = 1;
         prefix = ngx_http_v2_prefix(6);
 
     } else if (ch >= (1 << 5)) {
-        /* dynamic table size update */
+
         size_update = 1;
         prefix = ngx_http_v2_prefix(5);
 
     } else if (ch >= (1 << 4)) {
-        /* literal header field never indexed */
+
         prefix = ngx_http_v2_prefix(4);
 
     } else {
-        /* literal header field without indexing */
+
         prefix = ngx_http_v2_prefix(4);
     }
 

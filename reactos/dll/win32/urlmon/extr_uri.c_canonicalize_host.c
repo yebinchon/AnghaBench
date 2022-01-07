@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int host_type; int host_len; scalar_t__ host; int /*<<< orphan*/  scheme_type; } ;
-typedef  TYPE_1__ parse_data ;
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int host_type; int host_len; scalar_t__ host; int scheme_type; } ;
+typedef TYPE_1__ parse_data ;
+typedef int WCHAR ;
 struct TYPE_14__ {int host_start; int host_len; int domain_offset; int host_type; int canon_len; int canon_uri; } ;
-typedef  TYPE_2__ Uri ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_2__ Uri ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*,TYPE_1__ const*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  URL_SCHEME_FILE ; 
-#define  Uri_HOST_DNS 131 
-#define  Uri_HOST_IPV4 130 
-#define  Uri_HOST_IPV6 129 
-#define  Uri_HOST_UNKNOWN 128 
- int /*<<< orphan*/  canonicalize_ipv4address (TYPE_1__ const*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  canonicalize_ipv6address (TYPE_1__ const*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  canonicalize_reg_name (TYPE_1__ const*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int,scalar_t__,int) ; 
+
+ int FALSE ;
+ int FIXME (char*,TYPE_1__ const*,TYPE_2__*,int ,int ,int) ;
+ int TRUE ;
+ int URL_SCHEME_FILE ;
+
+
+
+
+ int canonicalize_ipv4address (TYPE_1__ const*,TYPE_2__*,int ,int ) ;
+ int canonicalize_ipv6address (TYPE_1__ const*,TYPE_2__*,int ,int ) ;
+ int canonicalize_reg_name (TYPE_1__ const*,TYPE_2__*,int ,int ) ;
+ int memcpy (int,scalar_t__,int) ;
 
 __attribute__((used)) static BOOL canonicalize_host(const parse_data *data, Uri *uri, DWORD flags, BOOL computeOnly) {
     uri->host_start = -1;
@@ -41,36 +41,36 @@ __attribute__((used)) static BOOL canonicalize_host(const parse_data *data, Uri 
 
     if(data->host) {
         switch(data->host_type) {
-        case Uri_HOST_DNS:
-            uri->host_type = Uri_HOST_DNS;
+        case 131:
+            uri->host_type = 131;
             if(!canonicalize_reg_name(data, uri, flags, computeOnly))
                 return FALSE;
 
             break;
-        case Uri_HOST_IPV4:
-            uri->host_type = Uri_HOST_IPV4;
+        case 130:
+            uri->host_type = 130;
             if(!canonicalize_ipv4address(data, uri, flags, computeOnly))
                 return FALSE;
 
             break;
-        case Uri_HOST_IPV6:
+        case 129:
             if(!canonicalize_ipv6address(data, uri, flags, computeOnly))
                 return FALSE;
 
-            uri->host_type = Uri_HOST_IPV6;
+            uri->host_type = 129;
             break;
-        case Uri_HOST_UNKNOWN:
+        case 128:
             if(data->host_len > 0 || data->scheme_type != URL_SCHEME_FILE) {
                 uri->host_start = uri->canon_len;
 
-                /* Nothing happens to unknown host types. */
+
                 if(!computeOnly)
                     memcpy(uri->canon_uri+uri->canon_len, data->host, data->host_len*sizeof(WCHAR));
                 uri->canon_len += data->host_len;
                 uri->host_len = data->host_len;
             }
 
-            uri->host_type = Uri_HOST_UNKNOWN;
+            uri->host_type = 128;
             break;
         default:
             FIXME("(%p %p %x %d): Canonicalization for host type %d not supported.\n", data,

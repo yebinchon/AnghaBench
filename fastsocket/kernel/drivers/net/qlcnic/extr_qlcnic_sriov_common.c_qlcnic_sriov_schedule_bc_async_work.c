@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  work_func_t ;
-struct qlcnic_back_channel {int /*<<< orphan*/  bc_async_wq; } ;
-struct qlcnic_async_work_list {int /*<<< orphan*/  work; void* ptr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_WORK (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct qlcnic_async_work_list* qlcnic_sriov_get_free_node_async_work (struct qlcnic_back_channel*) ; 
- int /*<<< orphan*/  queue_work (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int work_func_t ;
+struct qlcnic_back_channel {int bc_async_wq; } ;
+struct qlcnic_async_work_list {int work; void* ptr; } ;
+
+
+ int INIT_WORK (int *,int ) ;
+ struct qlcnic_async_work_list* qlcnic_sriov_get_free_node_async_work (struct qlcnic_back_channel*) ;
+ int queue_work (int ,int *) ;
 
 __attribute__((used)) static void qlcnic_sriov_schedule_bc_async_work(struct qlcnic_back_channel *bc,
-						work_func_t func, void *data)
+      work_func_t func, void *data)
 {
-	struct qlcnic_async_work_list *entry = NULL;
+ struct qlcnic_async_work_list *entry = ((void*)0);
 
-	entry = qlcnic_sriov_get_free_node_async_work(bc);
-	if (!entry)
-		return;
+ entry = qlcnic_sriov_get_free_node_async_work(bc);
+ if (!entry)
+  return;
 
-	entry->ptr = data;
-	INIT_WORK(&entry->work, func);
-	queue_work(bc->bc_async_wq, &entry->work);
+ entry->ptr = data;
+ INIT_WORK(&entry->work, func);
+ queue_work(bc->bc_async_wq, &entry->work);
 }

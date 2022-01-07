@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpImageAttributes ;
-typedef  int /*<<< orphan*/  GpImage ;
-typedef  int /*<<< orphan*/  GpGraphics ;
-typedef  int /*<<< orphan*/  GpBitmap ;
-typedef  int /*<<< orphan*/  ARGB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ColorAdjustTypeAny ; 
- int /*<<< orphan*/  ColorAdjustTypeCount ; 
- int /*<<< orphan*/  ColorAdjustTypeDefault ; 
- int /*<<< orphan*/  GdipBitmapGetPixel (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipBitmapSetPixel (int /*<<< orphan*/ *,int,int,int) ; 
- int /*<<< orphan*/  GdipCreateBitmapFromScan0 (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreateImageAttributes (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDisposeImage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDisposeImageAttributes (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDrawImageRectRectI (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetImageGraphicsContext (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipResetImageAttributes (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GdipSetImageAttributesColorKeys (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  InvalidParameter ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  PixelFormat32bppARGB ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  UnitPixel ; 
- int /*<<< orphan*/  color_match (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int GpStatus ;
+typedef int GpImageAttributes ;
+typedef int GpImage ;
+typedef int GpGraphics ;
+typedef int GpBitmap ;
+typedef int ARGB ;
+
+
+ int ColorAdjustTypeAny ;
+ int ColorAdjustTypeCount ;
+ int ColorAdjustTypeDefault ;
+ int GdipBitmapGetPixel (int *,int,int,int *) ;
+ int GdipBitmapSetPixel (int *,int,int,int) ;
+ int GdipCreateBitmapFromScan0 (int,int,int ,int ,int *,int **) ;
+ int GdipCreateImageAttributes (int **) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipDisposeImage (int *) ;
+ int GdipDisposeImageAttributes (int *) ;
+ int GdipDrawImageRectRectI (int *,int *,int ,int ,int,int,int ,int ,int,int,int ,int *,int *,int *) ;
+ int GdipGetImageGraphicsContext (int *,int **) ;
+ int GdipResetImageAttributes (int *,int ) ;
+ int GdipSetImageAttributesColorKeys (int *,int ,int ,int,int) ;
+ int InvalidParameter ;
+ int Ok ;
+ int PixelFormat32bppARGB ;
+ int TRUE ;
+ int UnitPixel ;
+ int color_match (int,int ,int) ;
+ int expect (int ,int ) ;
+ int ok (int ,char*,int ) ;
 
 __attribute__((used)) static void test_colorkey(void)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static void test_colorkey(void)
     GpGraphics *graphics;
     ARGB color;
 
-    stat = GdipSetImageAttributesColorKeys(NULL, ColorAdjustTypeDefault, TRUE, 0xff405060, 0xff708090);
+    stat = GdipSetImageAttributesColorKeys(((void*)0), ColorAdjustTypeDefault, TRUE, 0xff405060, 0xff708090);
     expect(InvalidParameter, stat);
 
     stat = GdipCreateImageAttributes(&imageattr);
@@ -64,10 +64,10 @@ __attribute__((used)) static void test_colorkey(void)
     stat = GdipSetImageAttributesColorKeys(imageattr, ColorAdjustTypeDefault, TRUE, 0xff405060, 0xff708090);
     expect(Ok, stat);
 
-    stat = GdipCreateBitmapFromScan0(2, 2, 0, PixelFormat32bppARGB, NULL, &bitmap1);
+    stat = GdipCreateBitmapFromScan0(2, 2, 0, PixelFormat32bppARGB, ((void*)0), &bitmap1);
     expect(Ok, stat);
 
-    stat = GdipCreateBitmapFromScan0(2, 2, 0, PixelFormat32bppARGB, NULL, &bitmap2);
+    stat = GdipCreateBitmapFromScan0(2, 2, 0, PixelFormat32bppARGB, ((void*)0), &bitmap2);
     expect(Ok, stat);
 
     stat = GdipBitmapSetPixel(bitmap1, 0, 0, 0x20405060);
@@ -86,7 +86,7 @@ __attribute__((used)) static void test_colorkey(void)
     expect(Ok, stat);
 
     stat = GdipDrawImageRectRectI(graphics, (GpImage*)bitmap1, 0,0,2,2, 0,0,2,2,
-	UnitPixel, imageattr, NULL, NULL);
+ UnitPixel, imageattr, ((void*)0), ((void*)0));
     expect(Ok, stat);
 
     stat = GdipBitmapGetPixel(bitmap2, 0, 0, &color);
@@ -109,7 +109,7 @@ __attribute__((used)) static void test_colorkey(void)
     expect(Ok, stat);
 
     stat = GdipDrawImageRectRectI(graphics, (GpImage*)bitmap1, 0,0,2,2, 0,0,2,2,
-	UnitPixel, imageattr, NULL, NULL);
+ UnitPixel, imageattr, ((void*)0), ((void*)0));
     expect(Ok, stat);
 
     stat = GdipBitmapGetPixel(bitmap2, 0, 0, &color);

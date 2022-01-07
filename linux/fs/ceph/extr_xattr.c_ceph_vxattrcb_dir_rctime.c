@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  tv_nsec; int /*<<< orphan*/  tv_sec; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int tv_nsec; int tv_sec; } ;
 struct ceph_inode_info {TYPE_1__ i_rctime; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ceph_fmt_xattr (char*,size_t,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ceph_fmt_xattr (char*,size_t,char*,int ,int ) ;
 
 __attribute__((used)) static ssize_t ceph_vxattrcb_dir_rctime(struct ceph_inode_info *ci, char *val,
-					size_t size)
+     size_t size)
 {
-	return ceph_fmt_xattr(val, size, "%lld.%09ld", ci->i_rctime.tv_sec,
-				ci->i_rctime.tv_nsec);
+ return ceph_fmt_xattr(val, size, "%lld.%09ld", ci->i_rctime.tv_sec,
+    ci->i_rctime.tv_nsec);
 }

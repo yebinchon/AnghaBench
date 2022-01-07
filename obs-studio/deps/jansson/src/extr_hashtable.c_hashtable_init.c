@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  list; TYPE_2__* buckets; int /*<<< orphan*/  order; int /*<<< orphan*/  ordered_list; scalar_t__ size; } ;
-typedef  TYPE_1__ hashtable_t ;
-typedef  int /*<<< orphan*/  bucket_t ;
-struct TYPE_5__ {int /*<<< orphan*/ * last; int /*<<< orphan*/ * first; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INITIAL_HASHTABLE_ORDER ; 
- size_t hashsize (int /*<<< orphan*/ ) ; 
- TYPE_2__* jsonp_malloc (int) ; 
- int /*<<< orphan*/  list_init (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int list; TYPE_2__* buckets; int order; int ordered_list; scalar_t__ size; } ;
+typedef TYPE_1__ hashtable_t ;
+typedef int bucket_t ;
+struct TYPE_5__ {int * last; int * first; } ;
+
+
+ int INITIAL_HASHTABLE_ORDER ;
+ size_t hashsize (int ) ;
+ TYPE_2__* jsonp_malloc (int) ;
+ int list_init (int *) ;
 
 int hashtable_init(hashtable_t *hashtable)
 {

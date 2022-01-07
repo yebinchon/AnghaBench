@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wm97xx {int /*<<< orphan*/  dig; int /*<<< orphan*/  dig_save; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AC97_WM9713_DIG1 ; 
- int /*<<< orphan*/  AC97_WM9713_DIG2 ; 
- int /*<<< orphan*/  AC97_WM9713_DIG3 ; 
- int /*<<< orphan*/  WM97XX_PRP_DET_DIG ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  wm97xx_reg_write (struct wm97xx*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct wm97xx {int dig; int dig_save; } ;
+
+
+ int AC97_WM9713_DIG1 ;
+ int AC97_WM9713_DIG2 ;
+ int AC97_WM9713_DIG3 ;
+ int WM97XX_PRP_DET_DIG ;
+ int memcpy (int ,int ,int) ;
+ int wm97xx_reg_write (struct wm97xx*,int ,int ) ;
 
 __attribute__((used)) static void wm9713_aux_prepare(struct wm97xx *wm)
 {
-	memcpy(wm->dig_save, wm->dig, sizeof(wm->dig));
-	wm97xx_reg_write(wm, AC97_WM9713_DIG1, 0);
-	wm97xx_reg_write(wm, AC97_WM9713_DIG2, 0);
-	wm97xx_reg_write(wm, AC97_WM9713_DIG3, WM97XX_PRP_DET_DIG);
+ memcpy(wm->dig_save, wm->dig, sizeof(wm->dig));
+ wm97xx_reg_write(wm, AC97_WM9713_DIG1, 0);
+ wm97xx_reg_write(wm, AC97_WM9713_DIG2, 0);
+ wm97xx_reg_write(wm, AC97_WM9713_DIG3, WM97XX_PRP_DET_DIG);
 }

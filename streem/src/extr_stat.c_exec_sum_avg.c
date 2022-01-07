@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sum_data {int /*<<< orphan*/  func; scalar_t__ num; scalar_t__ c; scalar_t__ sum; } ;
-typedef  int /*<<< orphan*/  strm_value ;
-typedef  int /*<<< orphan*/  strm_stream ;
 
-/* Variables and functions */
- int STRM_NG ; 
- int STRM_OK ; 
- int /*<<< orphan*/  avg_finish ; 
- int /*<<< orphan*/  iter_sum ; 
- int /*<<< orphan*/  iter_sumf ; 
- struct sum_data* malloc (int) ; 
- int /*<<< orphan*/  strm_filter ; 
- int /*<<< orphan*/  strm_get_args (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strm_nil_value () ; 
- int /*<<< orphan*/  strm_stream_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  strm_stream_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sum_finish ; 
+
+
+
+struct sum_data {int func; scalar_t__ num; scalar_t__ c; scalar_t__ sum; } ;
+typedef int strm_value ;
+typedef int strm_stream ;
+
+
+ int STRM_NG ;
+ int STRM_OK ;
+ int avg_finish ;
+ int iter_sum ;
+ int iter_sumf ;
+ struct sum_data* malloc (int) ;
+ int strm_filter ;
+ int strm_get_args (int *,int,int *,char*,int *) ;
+ int strm_nil_value () ;
+ int strm_stream_new (int ,int ,int ,void*) ;
+ int strm_stream_value (int ) ;
+ int sum_finish ;
 
 __attribute__((used)) static int
 exec_sum_avg(strm_stream* strm, int argc, strm_value* args, strm_value* ret, int avg)

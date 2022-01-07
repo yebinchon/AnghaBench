@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_6__ ;
-typedef  struct TYPE_20__   TYPE_5__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VSTransformData ;
-typedef  int /*<<< orphan*/  VSManyLocalMotions ;
-struct TYPE_16__ {int bytesPerPixel; scalar_t__ log2ChromaH; int /*<<< orphan*/  log2ChromaW; } ;
-typedef  TYPE_1__ VSFrameInfo ;
-struct TYPE_21__ {char* modName; scalar_t__ camPathAlgo; int optZoom; int /*<<< orphan*/  interpolType; int /*<<< orphan*/  zoomSpeed; int /*<<< orphan*/  zoom; scalar_t__ invert; scalar_t__ relative; scalar_t__ crop; int /*<<< orphan*/  maxAngle; int /*<<< orphan*/  maxShift; int /*<<< orphan*/  smoothing; scalar_t__ smoothZoom; scalar_t__ storeTransforms; scalar_t__ simpleMotionCalculation; scalar_t__ verbose; } ;
-struct TYPE_17__ {int /*<<< orphan*/  trans; int /*<<< orphan*/  input; TYPE_6__ conf; scalar_t__ debug; scalar_t__ tripod; int /*<<< orphan*/  td; } ;
-typedef  TYPE_2__ TransformContext ;
+
+
+typedef struct TYPE_21__ TYPE_6__ ;
+typedef struct TYPE_20__ TYPE_5__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int VSTransformData ;
+typedef int VSManyLocalMotions ;
+struct TYPE_16__ {int bytesPerPixel; scalar_t__ log2ChromaH; int log2ChromaW; } ;
+typedef TYPE_1__ VSFrameInfo ;
+struct TYPE_21__ {char* modName; scalar_t__ camPathAlgo; int optZoom; int interpolType; int zoomSpeed; int zoom; scalar_t__ invert; scalar_t__ relative; scalar_t__ crop; int maxAngle; int maxShift; int smoothing; scalar_t__ smoothZoom; scalar_t__ storeTransforms; scalar_t__ simpleMotionCalculation; scalar_t__ verbose; } ;
+struct TYPE_17__ {int trans; int input; TYPE_6__ conf; scalar_t__ debug; scalar_t__ tripod; int td; } ;
+typedef TYPE_2__ TransformContext ;
 struct TYPE_20__ {TYPE_2__* priv; } ;
-struct TYPE_19__ {int /*<<< orphan*/  format; int /*<<< orphan*/  h; int /*<<< orphan*/  w; TYPE_5__* dst; } ;
-struct TYPE_18__ {int flags; scalar_t__ log2_chroma_h; int /*<<< orphan*/  log2_chroma_w; int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  TYPE_3__ AVPixFmtDescriptor ;
-typedef  TYPE_4__ AVFilterLink ;
-typedef  TYPE_5__ AVFilterContext ;
+struct TYPE_19__ {int format; int h; int w; TYPE_5__* dst; } ;
+struct TYPE_18__ {int flags; scalar_t__ log2_chroma_h; int log2_chroma_w; int name; } ;
+typedef int FILE ;
+typedef TYPE_3__ AVPixFmtDescriptor ;
+typedef TYPE_4__ AVFilterLink ;
+typedef TYPE_5__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_INFO ; 
- int AV_PIX_FMT_FLAG_PLANAR ; 
- int /*<<< orphan*/  EINVAL ; 
- scalar_t__ VSGaussian ; 
- scalar_t__ VSOptimalL1 ; 
- scalar_t__ VS_OK ; 
- int av_get_bits_per_pixel (TYPE_3__ const*) ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*,...) ; 
- TYPE_3__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_av2vs_pixfmt (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * fopen (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  getInterpolationTypeName (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vsFrameInfoInit (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ vsLocalmotions2Transforms (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ vsPreprocessTransforms (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ vsReadLocalMotionsFile (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vsReadOldTransforms (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ vsTransformDataInit (int /*<<< orphan*/ *,TYPE_6__*,TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  vsTransformGetConfig (TYPE_6__*,int /*<<< orphan*/ *) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_INFO ;
+ int AV_PIX_FMT_FLAG_PLANAR ;
+ int EINVAL ;
+ scalar_t__ VSGaussian ;
+ scalar_t__ VSOptimalL1 ;
+ scalar_t__ VS_OK ;
+ int av_get_bits_per_pixel (TYPE_3__ const*) ;
+ int av_log (TYPE_5__*,int ,char*,...) ;
+ TYPE_3__* av_pix_fmt_desc_get (int ) ;
+ int errno ;
+ int fclose (int *) ;
+ int ff_av2vs_pixfmt (TYPE_5__*,int ) ;
+ int * fopen (int ,char*) ;
+ int getInterpolationTypeName (int ) ;
+ int vsFrameInfoInit (TYPE_1__*,int ,int ,int ) ;
+ scalar_t__ vsLocalmotions2Transforms (int *,int *,int *) ;
+ scalar_t__ vsPreprocessTransforms (int *,int *) ;
+ scalar_t__ vsReadLocalMotionsFile (int *,int *) ;
+ int vsReadOldTransforms (int *,int *,int *) ;
+ scalar_t__ vsTransformDataInit (int *,TYPE_6__*,TYPE_1__*,TYPE_1__*) ;
+ int vsTransformGetConfig (TYPE_6__*,int *) ;
 
 __attribute__((used)) static int config_input(AVFilterLink *inlink)
 {
@@ -90,17 +90,17 @@ __attribute__((used)) static int config_input(AVFilterLink *inlink)
         return AVERROR(EINVAL);
     }
 
-    // set values that are not initializes by the options
+
     tc->conf.modName = "vidstabtransform";
     tc->conf.verbose = 1 + tc->debug;
     if (tc->tripod) {
         av_log(ctx, AV_LOG_INFO, "Virtual tripod mode: relative=0, smoothing=0\n");
-        tc->conf.relative  = 0;
+        tc->conf.relative = 0;
         tc->conf.smoothing = 0;
     }
     tc->conf.simpleMotionCalculation = 0;
-    tc->conf.storeTransforms         = tc->debug;
-    tc->conf.smoothZoom              = 0;
+    tc->conf.storeTransforms = tc->debug;
+    tc->conf.smoothZoom = 0;
 
     if (vsTransformDataInit(td, &tc->conf, &fi_src, &fi_dest) != VS_OK) {
         av_log(ctx, AV_LOG_ERROR, "initialization of vid.stab transform failed, please report a BUG\n");
@@ -134,13 +134,13 @@ __attribute__((used)) static int config_input(AVFilterLink *inlink)
     } else {
         VSManyLocalMotions mlms;
         if (vsReadLocalMotionsFile(f, &mlms) == VS_OK) {
-            // calculate the actual transforms from the local motions
+
             if (vsLocalmotions2Transforms(td, &mlms, &tc->trans) != VS_OK) {
                 av_log(ctx, AV_LOG_ERROR, "calculating transformations failed\n");
                 return AVERROR(EINVAL);
             }
-        } else { // try to read old format
-            if (!vsReadOldTransforms(td, f, &tc->trans)) { /* read input file */
+        } else {
+            if (!vsReadOldTransforms(td, f, &tc->trans)) {
                 av_log(ctx, AV_LOG_ERROR, "error parsing input file %s\n", tc->input);
                 return AVERROR(EINVAL);
             }
@@ -153,6 +153,6 @@ __attribute__((used)) static int config_input(AVFilterLink *inlink)
         return AVERROR(EINVAL);
     }
 
-    // TODO: add sharpening, so far the user needs to call the unsharp filter manually
+
     return 0;
 }

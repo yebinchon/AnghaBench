@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uid_t ;
+
+
+
+
+typedef int uid_t ;
 struct passwd {char* pw_name; } ;
 
-/* Variables and functions */
- struct passwd* getpwuid (int /*<<< orphan*/ ) ; 
+
+ struct passwd* getpwuid (int ) ;
 
 char *
 getname(uid_t uid)
 {
-	struct passwd *pw;
+ struct passwd *pw;
 
-	if ((pw = getpwuid(uid)) == NULL)
-		return (NULL);
-	return (pw->pw_name);
+ if ((pw = getpwuid(uid)) == ((void*)0))
+  return (((void*)0));
+ return (pw->pw_name);
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int Z_is_one; int /*<<< orphan*/  Z; int /*<<< orphan*/  Y; int /*<<< orphan*/  X; } ;
-typedef  TYPE_1__ EC_POINT ;
-typedef  int /*<<< orphan*/  EC_GROUP ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_copy (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_set_negative (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  const* BN_value_one () ; 
- int /*<<< orphan*/  EC_F_EC_GF2M_SIMPLE_POINT_SET_AFFINE_COORDINATES ; 
- int /*<<< orphan*/  ECerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_PASSED_NULL_PARAMETER ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int Z_is_one; int Z; int Y; int X; } ;
+typedef TYPE_1__ EC_POINT ;
+typedef int EC_GROUP ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_copy (int ,int const*) ;
+ int BN_set_negative (int ,int ) ;
+ int const* BN_value_one () ;
+ int EC_F_EC_GF2M_SIMPLE_POINT_SET_AFFINE_COORDINATES ;
+ int ECerr (int ,int ) ;
+ int ERR_R_PASSED_NULL_PARAMETER ;
 
 int ec_GF2m_simple_point_set_affine_coordinates(const EC_GROUP *group,
                                                 EC_POINT *point,
@@ -31,7 +31,7 @@ int ec_GF2m_simple_point_set_affine_coordinates(const EC_GROUP *group,
                                                 const BIGNUM *y, BN_CTX *ctx)
 {
     int ret = 0;
-    if (x == NULL || y == NULL) {
+    if (x == ((void*)0) || y == ((void*)0)) {
         ECerr(EC_F_EC_GF2M_SIMPLE_POINT_SET_AFFINE_COORDINATES,
               ERR_R_PASSED_NULL_PARAMETER);
         return 0;

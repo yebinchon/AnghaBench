@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  int32_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int int32_t ;
 struct TYPE_4__ {int shifted_ones; int shifted_zeros; int shifted_both; int ordata; int float_shift; int float_flags; int max_exp; int flags; int crc_x; int float_max_exp; scalar_t__ neg_zeros; scalar_t__ false_zeros; } ;
-typedef  TYPE_1__ WavPackEncodeContext ;
+typedef TYPE_1__ WavPackEncodeContext ;
 
-/* Variables and functions */
- int FLOAT_EXCEPTIONS ; 
- int FLOAT_NEG_ZEROS ; 
- int FLOAT_SHIFT_ONES ; 
- int FLOAT_SHIFT_SAME ; 
- int FLOAT_SHIFT_SENT ; 
- int FLOAT_ZEROS_SENT ; 
- int MAG_LSB ; 
- int MAG_MASK ; 
- int WV_MONO_DATA ; 
- int get_exponent (int /*<<< orphan*/ ) ; 
- int get_mantissa (int /*<<< orphan*/ ) ; 
- int get_sign (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  process_float (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  shift_mono (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  shift_stereo (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ; 
+
+ int FLOAT_EXCEPTIONS ;
+ int FLOAT_NEG_ZEROS ;
+ int FLOAT_SHIFT_ONES ;
+ int FLOAT_SHIFT_SAME ;
+ int FLOAT_SHIFT_SENT ;
+ int FLOAT_ZEROS_SENT ;
+ int MAG_LSB ;
+ int MAG_MASK ;
+ int WV_MONO_DATA ;
+ int get_exponent (int ) ;
+ int get_mantissa (int ) ;
+ int get_sign (int ) ;
+ int process_float (TYPE_1__*,int *) ;
+ int shift_mono (int *,int,int) ;
+ int shift_stereo (int *,int *,int,int) ;
 
 __attribute__((used)) static int scan_float(WavPackEncodeContext *s,
                       int32_t *samples_l, int32_t *samples_r,

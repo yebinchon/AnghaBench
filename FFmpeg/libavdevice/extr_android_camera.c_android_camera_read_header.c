@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_14__ {TYPE_1__* priv_data; } ;
-struct TYPE_13__ {int /*<<< orphan*/  camera_mgr; int /*<<< orphan*/  input_queue_size; int /*<<< orphan*/  input_queue; int /*<<< orphan*/  exit; int /*<<< orphan*/  got_image_format; } ;
-typedef  TYPE_1__ AndroidCameraCtx ;
-typedef  int /*<<< orphan*/  AVPacket ;
-typedef  TYPE_2__ AVFormatContext ;
+struct TYPE_13__ {int camera_mgr; int input_queue_size; int input_queue; int exit; int got_image_format; } ;
+typedef TYPE_1__ AndroidCameraCtx ;
+typedef int AVPacket ;
+typedef TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACameraManager_create () ; 
- int AVERROR_EXTERNAL ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int add_video_stream (TYPE_2__*) ; 
- int /*<<< orphan*/  android_camera_read_close (TYPE_2__*) ; 
- int /*<<< orphan*/  atomic_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_err2str (int) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,...) ; 
- int av_thread_message_queue_alloc (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int create_capture_session (TYPE_2__*) ; 
- int create_image_reader (TYPE_2__*) ; 
- int /*<<< orphan*/  get_sensor_orientation (TYPE_2__*) ; 
- int /*<<< orphan*/  match_framerate (TYPE_2__*) ; 
- int /*<<< orphan*/  match_video_size (TYPE_2__*) ; 
- int open_camera (TYPE_2__*) ; 
+
+ int ACameraManager_create () ;
+ int AVERROR_EXTERNAL ;
+ int AV_LOG_ERROR ;
+ int add_video_stream (TYPE_2__*) ;
+ int android_camera_read_close (TYPE_2__*) ;
+ int atomic_init (int *,int ) ;
+ int av_err2str (int) ;
+ int av_log (TYPE_2__*,int ,char*,...) ;
+ int av_thread_message_queue_alloc (int *,int ,int) ;
+ int create_capture_session (TYPE_2__*) ;
+ int create_image_reader (TYPE_2__*) ;
+ int get_sensor_orientation (TYPE_2__*) ;
+ int match_framerate (TYPE_2__*) ;
+ int match_video_size (TYPE_2__*) ;
+ int open_camera (TYPE_2__*) ;
 
 __attribute__((used)) static int android_camera_read_header(AVFormatContext *avctx)
 {

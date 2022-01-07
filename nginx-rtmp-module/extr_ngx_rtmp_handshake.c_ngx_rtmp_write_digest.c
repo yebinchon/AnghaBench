@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u_char ;
-typedef  int /*<<< orphan*/  ngx_str_t ;
-typedef  int /*<<< orphan*/  ngx_log_t ;
-typedef  scalar_t__ ngx_int_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ u_char ;
+typedef int ngx_str_t ;
+typedef int ngx_log_t ;
+typedef scalar_t__ ngx_int_t ;
 struct TYPE_4__ {scalar_t__* pos; } ;
-typedef  TYPE_1__ ngx_buf_t ;
+typedef TYPE_1__ ngx_buf_t ;
 
-/* Variables and functions */
- scalar_t__ NGX_ERROR ; 
- scalar_t__ NGX_OK ; 
- scalar_t__ ngx_rtmp_make_digest (int /*<<< orphan*/ *,TYPE_1__*,scalar_t__*,scalar_t__*,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ NGX_ERROR ;
+ scalar_t__ NGX_OK ;
+ scalar_t__ ngx_rtmp_make_digest (int *,TYPE_1__*,scalar_t__*,scalar_t__*,int *) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_rtmp_write_digest(ngx_buf_t *b, ngx_str_t *key, size_t base,
         ngx_log_t *log)
 {
-    size_t                  n, offs;
-    u_char                 *p;
+    size_t n, offs;
+    u_char *p;
 
     offs = 0;
     for (n = 8; n < 12; ++n) {

@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int UCH (int /*<<< orphan*/ ) ; 
- int _toupper (int) ; 
- scalar_t__ isalpha (int) ; 
- scalar_t__ islower (int) ; 
+ int UCH (int ) ;
+ int _toupper (int) ;
+ scalar_t__ isalpha (int) ;
+ scalar_t__ islower (int) ;
 
 int
 dlg_strcmp(const char *a, const char *b)
@@ -23,15 +15,15 @@ dlg_strcmp(const char *a, const char *b)
     int ac, bc, cmp;
 
     for (;;) {
-	ac = UCH(*a++);
-	bc = UCH(*b++);
-	if (isalpha(ac) && islower(ac))
-	    ac = _toupper(ac);
-	if (isalpha(bc) && islower(bc))
-	    bc = _toupper(bc);
-	cmp = ac - bc;
-	if (ac == 0 || bc == 0 || cmp != 0)
-	    break;
+ ac = UCH(*a++);
+ bc = UCH(*b++);
+ if (isalpha(ac) && islower(ac))
+     ac = _toupper(ac);
+ if (isalpha(bc) && islower(bc))
+     bc = _toupper(bc);
+ cmp = ac - bc;
+ if (ac == 0 || bc == 0 || cmp != 0)
+     break;
     }
     return cmp;
 }

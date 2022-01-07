@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_news_user_comment_hide {int place; int item; int user_id; } ;
 
-/* Variables and functions */
- scalar_t__ LEV_NEWS_SHOWUSERITEM ; 
- int /*<<< orphan*/  NOTIFY_MODE ; 
- struct lev_news_user_comment_hide* alloc_log_event (scalar_t__,int,int) ; 
- int /*<<< orphan*/  check_obj (int,int,int) ; 
- int show_hide_user_notify (int,int,int,int,int,int) ; 
+
+ scalar_t__ LEV_NEWS_SHOWUSERITEM ;
+ int NOTIFY_MODE ;
+ struct lev_news_user_comment_hide* alloc_log_event (scalar_t__,int,int) ;
+ int check_obj (int,int,int) ;
+ int show_hide_user_notify (int,int,int,int,int,int) ;
 
 int do_undelete_user_comment (int user_id, int type, int owner, int place, int item) {
   if (!NOTIFY_MODE || !check_obj (type, owner, place)) {

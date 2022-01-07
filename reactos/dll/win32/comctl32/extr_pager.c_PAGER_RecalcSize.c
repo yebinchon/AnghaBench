@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int nPos; scalar_t__ hwndChild; int /*<<< orphan*/  hwndSelf; } ;
-typedef  TYPE_1__ PAGER_INFO ;
-typedef  int LRESULT ;
-typedef  scalar_t__ INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ PAGER_GetScrollRange (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PAGER_PositionChildWnd (TYPE_1__*) ; 
- int /*<<< orphan*/  PAGER_SetPos (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int nPos; scalar_t__ hwndChild; int hwndSelf; } ;
+typedef TYPE_1__ PAGER_INFO ;
+typedef int LRESULT ;
+typedef scalar_t__ INT ;
+
+
+ int FALSE ;
+ scalar_t__ PAGER_GetScrollRange (TYPE_1__*,int ) ;
+ int PAGER_PositionChildWnd (TYPE_1__*) ;
+ int PAGER_SetPos (TYPE_1__*,int ,int ,int ) ;
+ int TRACE (char*,int ) ;
+ int TRUE ;
 
 __attribute__((used)) static LRESULT
 PAGER_RecalcSize(PAGER_INFO *infoPtr)

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_checksum_t ;
-struct TYPE_6__ {int /*<<< orphan*/ * string_key; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int svn_checksum_t ;
+struct TYPE_6__ {int * string_key; } ;
 struct TYPE_7__ {TYPE_1__ fulltext; } ;
-struct TYPE_8__ {TYPE_2__ contents; void* sha1_checksum; void* md5_checksum; int /*<<< orphan*/  kind; int /*<<< orphan*/ * txn_id; } ;
-typedef  TYPE_3__ representation_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+struct TYPE_8__ {TYPE_2__ contents; void* sha1_checksum; void* md5_checksum; int kind; int * txn_id; } ;
+typedef TYPE_3__ representation_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- TYPE_3__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  rep_kind_fulltext ; 
- void* svn_checksum_dup (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ TYPE_3__* apr_pcalloc (int *,int) ;
+ int * apr_pstrdup (int *,char const*) ;
+ int rep_kind_fulltext ;
+ void* svn_checksum_dup (int *,int *) ;
 
 __attribute__((used)) static representation_t *
 make_fulltext_rep(const char *str_key,
@@ -41,6 +41,6 @@ make_fulltext_rep(const char *str_key,
   rep->md5_checksum = svn_checksum_dup(md5_checksum, pool);
   rep->sha1_checksum = svn_checksum_dup(sha1_checksum, pool);
   rep->contents.fulltext.string_key
-    = str_key ? apr_pstrdup(pool, str_key) : NULL;
+    = str_key ? apr_pstrdup(pool, str_key) : ((void*)0);
   return rep;
 }

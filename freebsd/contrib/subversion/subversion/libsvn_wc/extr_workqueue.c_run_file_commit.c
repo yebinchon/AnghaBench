@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  work_item_baton_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-struct TYPE_5__ {int /*<<< orphan*/  len; int /*<<< orphan*/  data; TYPE_1__* children; } ;
-typedef  TYPE_2__ svn_skel_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int work_item_baton_t ;
+typedef int svn_wc__db_t ;
+struct TYPE_5__ {int len; int data; TYPE_1__* children; } ;
+typedef TYPE_2__ svn_skel_t ;
+typedef int svn_error_t ;
+typedef int svn_cancel_func_t ;
+typedef int apr_pool_t ;
 struct TYPE_4__ {TYPE_2__* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- char* apr_pstrmemdup (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  process_commit_file_install (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_wc__db_from_relpath (char const**,int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ char* apr_pstrmemdup (int *,int ,int ) ;
+ int process_commit_file_install (int *,char const*,int ,void*,int *) ;
+ int * svn_error_trace (int ) ;
+ int svn_wc__db_from_relpath (char const**,int *,char const*,char const*,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 run_file_commit(work_item_baton_t *wqb,
@@ -45,7 +45,7 @@ run_file_commit(work_item_baton_t *wqb,
   SVN_ERR(svn_wc__db_from_relpath(&local_abspath, db, wri_abspath,
                                   local_relpath, scratch_pool, scratch_pool));
 
-  /* We don't both parsing the other two values in the skel. */
+
 
   return svn_error_trace(
                 process_commit_file_install(db, local_abspath,

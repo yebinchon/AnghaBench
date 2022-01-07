@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UINT ;
 struct TYPE_3__ {long QuadPart; int LowPart; } ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  int /*<<< orphan*/ * LPTSTR ;
-typedef  TYPE_1__ LARGE_INTEGER ;
-typedef  size_t INT ;
-typedef  int DWORD ;
+typedef int TCHAR ;
+typedef int * LPTSTR ;
+typedef TYPE_1__ LARGE_INTEGER ;
+typedef size_t INT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- scalar_t__ CHAR_ZERO ; 
- int /*<<< orphan*/  COUNTOF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * LOWORD (int) ; 
- int /*<<< orphan*/  LoadString (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SZ_PERCENTD ; 
- int /*<<< orphan*/  hAppInstance ; 
- int /*<<< orphan*/ * pdwOrders ; 
- int /*<<< orphan*/  szDecimal ; 
- scalar_t__* szFormat ; 
- int wsprintf (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,...) ; 
+
+ scalar_t__ CHAR_ZERO ;
+ int COUNTOF (int *) ;
+ int * LOWORD (int) ;
+ int LoadString (int ,int ,int *,int ) ;
+ int * SZ_PERCENTD ;
+ int hAppInstance ;
+ int * pdwOrders ;
+ int szDecimal ;
+ scalar_t__* szFormat ;
+ int wsprintf (int *,int *,int,...) ;
 
 LPTSTR
 ShortSizeFormatInternal(LPTSTR szBuf, LARGE_INTEGER qw)
@@ -54,9 +54,9 @@ ShortSizeFormatInternal(LPTSTR szBuf, LARGE_INTEGER qw)
 
    for ( i = 1;
          (qw.QuadPart > qConstant.QuadPart);
-		 qw.QuadPart = qw.QuadPart / 1024L, ++i)
+   qw.QuadPart = qw.QuadPart / 1024L, ++i)
 
-      /* do nothing */
+
       ;
 
    dw = qw.LowPart;
@@ -66,19 +66,19 @@ ShortSizeFormatInternal(LPTSTR szBuf, LARGE_INTEGER qw)
    if (uLen < 3) {
       uDec = (dw - uInt * 1024L) * 1000 / 1024;
 
-      //
-      // At this point, uDec should be between 0 and 1000
-      // we want get the top one (or two) digits.
-      //
+
+
+
+
       uDec /= 10;
       if (uLen == 2) {
          uDec /= 10;
       }
 
-      //
-      // Note that we need to set the format before getting the
-      // intl CHAR.
-      //
+
+
+
+
       szFormat[4] = CHAR_ZERO + 3 - uLen;
       uLen += wsprintf(szTemp+uLen, szFormat, szDecimal, uDec);
    }

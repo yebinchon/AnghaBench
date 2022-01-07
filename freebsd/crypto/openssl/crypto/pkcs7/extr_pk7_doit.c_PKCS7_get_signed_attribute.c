@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  auth_attr; } ;
-typedef  TYPE_1__ PKCS7_SIGNER_INFO ;
-typedef  int /*<<< orphan*/  ASN1_TYPE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * get_attribute (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int auth_attr; } ;
+typedef TYPE_1__ PKCS7_SIGNER_INFO ;
+typedef int ASN1_TYPE ;
+
+
+ int * get_attribute (int ,int) ;
 
 ASN1_TYPE *PKCS7_get_signed_attribute(PKCS7_SIGNER_INFO *si, int nid)
 {

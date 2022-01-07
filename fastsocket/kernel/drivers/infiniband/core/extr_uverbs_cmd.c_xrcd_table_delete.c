@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct xrcd_table_entry {int /*<<< orphan*/  node; } ;
+
+
+
+
+struct xrcd_table_entry {int node; } ;
 struct inode {int dummy; } ;
-struct ib_uverbs_device {int /*<<< orphan*/  xrcd_tree; } ;
+struct ib_uverbs_device {int xrcd_tree; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  iput (struct inode*) ; 
- int /*<<< orphan*/  kfree (struct xrcd_table_entry*) ; 
- int /*<<< orphan*/  rb_erase (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- struct xrcd_table_entry* xrcd_table_search (struct ib_uverbs_device*,struct inode*) ; 
+
+ int iput (struct inode*) ;
+ int kfree (struct xrcd_table_entry*) ;
+ int rb_erase (int *,int *) ;
+ struct xrcd_table_entry* xrcd_table_search (struct ib_uverbs_device*,struct inode*) ;
 
 __attribute__((used)) static void xrcd_table_delete(struct ib_uverbs_device *dev,
-			      struct inode *inode)
+         struct inode *inode)
 {
-	struct xrcd_table_entry *entry;
+ struct xrcd_table_entry *entry;
 
-	entry = xrcd_table_search(dev, inode);
-	if (entry) {
-		iput(inode);
-		rb_erase(&entry->node, &dev->xrcd_tree);
-		kfree(entry);
-	}
+ entry = xrcd_table_search(dev, inode);
+ if (entry) {
+  iput(inode);
+  rb_erase(&entry->node, &dev->xrcd_tree);
+  kfree(entry);
+ }
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_6__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_6__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_10__ {TYPE_1__* buffer; } ;
 struct TYPE_9__ {TYPE_1__* joliet_name; TYPE_1__* next_in_memory; } ;
 struct TYPE_8__ {struct TYPE_8__* joliet_name; struct TYPE_8__* next_in_memory; struct TYPE_8__* entry_list; struct TYPE_8__* next_entry; struct TYPE_8__* next_header; } ;
-typedef  TYPE_1__* PDIR_RECORD ;
-typedef  TYPE_1__* PBOOT_HEADER ;
-typedef  TYPE_1__* PBOOT_ENTRY ;
+typedef TYPE_1__* PDIR_RECORD ;
+typedef TYPE_1__* PBOOT_HEADER ;
+typedef TYPE_1__* PBOOT_ENTRY ;
 
-/* Variables and functions */
- TYPE_1__* boot_header_list ; 
- TYPE_6__ cd ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- scalar_t__ joliet ; 
- TYPE_4__ root ; 
+
+ TYPE_1__* boot_header_list ;
+ TYPE_6__ cd ;
+ int free (TYPE_1__*) ;
+ scalar_t__ joliet ;
+ TYPE_4__ root ;
 
 __attribute__((used)) static void release_memory(void)
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static void release_memory(void)
         boot_header_list = next_header;
     }
 
-    while (root.next_in_memory != NULL)
+    while (root.next_in_memory != ((void*)0))
     {
         PDIR_RECORD next = root.next_in_memory->next_in_memory;
         if (joliet)
@@ -55,9 +55,9 @@ __attribute__((used)) static void release_memory(void)
     if (joliet)
         free(root.joliet_name);
 
-    if (cd.buffer != NULL)
+    if (cd.buffer != ((void*)0))
     {
         free(cd.buffer);
-        cd.buffer = NULL;
+        cd.buffer = ((void*)0);
     }
 }

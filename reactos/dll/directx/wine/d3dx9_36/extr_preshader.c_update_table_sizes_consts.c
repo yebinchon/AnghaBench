@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct d3dx_const_tab {unsigned int input_count; unsigned int* regset2table; TYPE_1__* inputs; } ;
 struct TYPE_2__ {int RegisterCount; int RegisterIndex; size_t RegisterSet; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  update_table_size (unsigned int*,unsigned int,unsigned int) ; 
+
+ int update_table_size (unsigned int*,unsigned int,unsigned int) ;
 
 __attribute__((used)) static void update_table_sizes_consts(unsigned int *table_sizes, struct d3dx_const_tab *ctab)
 {

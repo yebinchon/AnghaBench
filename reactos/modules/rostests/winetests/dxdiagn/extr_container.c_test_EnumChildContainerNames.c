@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zerotestW ;
-typedef  int /*<<< orphan*/  testW ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int ARRAY_SIZE (char*) ; 
- int /*<<< orphan*/  DXDIAG_E_INSUFFICIENT_BUFFER ; 
- int /*<<< orphan*/  E_INVALIDARG ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDxDiagContainer_EnumChildContainerNames (int /*<<< orphan*/ ,int,char*,int) ; 
- int /*<<< orphan*/  IDxDiagContainer_GetNumberOfChildContainers (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  IDxDiagContainer_Release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDxDiagProvider_Release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  create_root_IDxDiagContainer () ; 
- int /*<<< orphan*/  memcmp (char*,char const*,int) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
- int /*<<< orphan*/  pddc ; 
- int /*<<< orphan*/  pddp ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  trace (char*,...) ; 
- int /*<<< orphan*/  wine_dbgstr_w (char*) ; 
+
+
+
+typedef int zerotestW ;
+typedef int testW ;
+typedef char WCHAR ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int ARRAY_SIZE (char*) ;
+ int DXDIAG_E_INSUFFICIENT_BUFFER ;
+ int E_INVALIDARG ;
+ scalar_t__ FAILED (int ) ;
+ int IDxDiagContainer_EnumChildContainerNames (int ,int,char*,int) ;
+ int IDxDiagContainer_GetNumberOfChildContainers (int ,int*) ;
+ int IDxDiagContainer_Release (int ) ;
+ int IDxDiagProvider_Release (int ) ;
+ int S_OK ;
+ int create_root_IDxDiagContainer () ;
+ int memcmp (char*,char const*,int) ;
+ int memcpy (char*,char const*,int) ;
+ int ok (int,char*,int,...) ;
+ int pddc ;
+ int pddp ;
+ int skip (char*) ;
+ int trace (char*,...) ;
+ int wine_dbgstr_w (char*) ;
 
 __attribute__((used)) static void test_EnumChildContainerNames(void)
 {
@@ -50,16 +50,16 @@ __attribute__((used)) static void test_EnumChildContainerNames(void)
         return;
     }
 
-    /* Test various combinations of invalid parameters. */
-    hr = IDxDiagContainer_EnumChildContainerNames(pddc, 0, NULL, 0);
+
+    hr = IDxDiagContainer_EnumChildContainerNames(pddc, 0, ((void*)0), 0);
     ok(hr == E_INVALIDARG,
        "Expected IDxDiagContainer::EnumChildContainerNames to return E_INVALIDARG, got 0x%08x\n", hr);
 
-    hr = IDxDiagContainer_EnumChildContainerNames(pddc, 0, NULL, ARRAY_SIZE(container));
+    hr = IDxDiagContainer_EnumChildContainerNames(pddc, 0, ((void*)0), ARRAY_SIZE(container));
     ok(hr == E_INVALIDARG,
        "Expected IDxDiagContainer::EnumChildContainerNames to return E_INVALIDARG, got 0x%08x\n", hr);
 
-    /* Test the conditions in which the output buffer can be modified. */
+
     memcpy(container, testW, sizeof(testW));
     hr = IDxDiagContainer_EnumChildContainerNames(pddc, 0, container, 0);
     ok(hr == E_INVALIDARG,
@@ -91,18 +91,18 @@ __attribute__((used)) static void test_EnumChildContainerNames(void)
 
     trace("Starting child container enumeration of the root container:\n");
 
-    /* We should be able to enumerate as many child containers as the value
-     * that IDxDiagContainer::GetNumberOfChildContainers returns. */
+
+
     for (index = 0; index <= maxcount; index++)
     {
-        /* A buffer size of 1 is unlikely to be valid, as only a null terminator
-         * could be stored, and it is unlikely that a container name could be empty. */
+
+
         DWORD buffersize = 1;
         memcpy(container, testW, sizeof(testW));
         hr = IDxDiagContainer_EnumChildContainerNames(pddc, index, container, buffersize);
         if (hr == E_INVALIDARG)
         {
-            /* We should get here when index is one more than the maximum index value. */
+
             ok(maxcount == index,
                "Expected IDxDiagContainer::EnumChildContainerNames to return E_INVALIDARG "
                "on the last index %d, got 0x%08x\n", index, hr);
@@ -117,16 +117,16 @@ __attribute__((used)) static void test_EnumChildContainerNames(void)
             ok(container[0] == '\0',
                "Expected the container buffer string to be empty, got %s\n", wine_dbgstr_w(container));
 
-            /* Get the container name to compare against. */
+
             hr = IDxDiagContainer_EnumChildContainerNames(pddc, index, temp, ARRAY_SIZE(temp));
             ok(hr == S_OK,
                "Expected IDxDiagContainer::EnumChildContainerNames to return S_OK, got 0x%08x\n", hr);
 
-            /* Show that the DirectX SDK's stipulation that the buffer be at
-             * least 256 characters long is a mere suggestion, and smaller sizes
-             * can be acceptable also. IDxDiagContainer::EnumChildContainerNames
-             * doesn't provide a way of getting the exact size required, so the
-             * buffersize value will be iterated to at most 256 characters. */
+
+
+
+
+
             for (buffersize = 2; buffersize <= 256; buffersize++)
             {
                 memcpy(container, testW, sizeof(testW));

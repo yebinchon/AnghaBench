@@ -1,45 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int EINVAL ;
+ int FREAD ;
+ int FWRITE ;
 
-/* Forward declarations */
 
-/* Type definitions */
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int FREAD ; 
- int FWRITE ; 
-#define  TCIFLUSH 130 
-#define  TCIOFLUSH 129 
-#define  TCOFLUSH 128 
- int /*<<< orphan*/  TIOCFLUSH ; 
- int _ioctl (int,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  errno ; 
+ int TIOCFLUSH ;
+ int _ioctl (int,int ,int*) ;
+ int errno ;
 
 int
 tcflush(int fd, int which)
 {
-	int com;
+ int com;
 
-	switch (which) {
-	case TCIFLUSH:
-		com = FREAD;
-		break;
-	case TCOFLUSH:
-		com = FWRITE;
-		break;
-	case TCIOFLUSH:
-		com = FREAD | FWRITE;
-		break;
-	default:
-		errno = EINVAL;
-		return (-1);
-	}
-	return (_ioctl(fd, TIOCFLUSH, &com));
+ switch (which) {
+ case 130:
+  com = FREAD;
+  break;
+ case 128:
+  com = FWRITE;
+  break;
+ case 129:
+  com = FREAD | FWRITE;
+  break;
+ default:
+  errno = EINVAL;
+  return (-1);
+ }
+ return (_ioctl(fd, TIOCFLUSH, &com));
 }

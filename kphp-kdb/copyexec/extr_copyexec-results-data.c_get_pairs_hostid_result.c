@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int tree_t ;
 struct pair_hostid_result {int host_id; scalar_t__ result; } ;
-typedef  int /*<<< orphan*/  a ;
-struct TYPE_2__ {unsigned long long volume_id; int /*<<< orphan*/  disabled; } ;
+typedef int a ;
+struct TYPE_2__ {unsigned long long volume_id; int disabled; } ;
 
-/* Variables and functions */
- TYPE_1__** HOSTS ; 
- int /*<<< orphan*/  assert (int) ; 
- struct pair_hostid_result* calloc (int,int) ; 
- int hosts ; 
- int /*<<< orphan*/  tree_get_pairs_hostid_result (struct pair_hostid_result*,int*,unsigned long long,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int) ; 
+
+ TYPE_1__** HOSTS ;
+ int assert (int) ;
+ struct pair_hostid_result* calloc (int,int) ;
+ int hosts ;
+ int tree_get_pairs_hostid_result (struct pair_hostid_result*,int*,unsigned long long,int *) ;
+ int vkprintf (int,char*,int) ;
 
 __attribute__((used)) static struct pair_hostid_result *get_pairs_hostid_result (int *k, unsigned long long volume_id, tree_t *P) {
   *k = 0;
   struct pair_hostid_result *a = calloc (hosts, sizeof (a[0]));
-  if (a == NULL) {
-    return NULL;
+  if (a == ((void*)0)) {
+    return ((void*)0);
   }
   tree_get_pairs_hostid_result (a, k, volume_id, P);
   const int first_host_id = (!(*k)) ? 1 : (a[(*k)-1].host_id + 1);

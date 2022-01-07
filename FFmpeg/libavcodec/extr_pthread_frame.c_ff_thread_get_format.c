@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
 struct TYPE_9__ {int active_thread_type; scalar_t__ get_format; scalar_t__ thread_safe_callbacks; TYPE_1__* internal; } ;
-struct TYPE_8__ {int const* available_formats; int result_format; int /*<<< orphan*/  progress_mutex; int /*<<< orphan*/  progress_cond; int /*<<< orphan*/  state; } ;
+struct TYPE_8__ {int const* available_formats; int result_format; int progress_mutex; int progress_cond; int state; } ;
 struct TYPE_7__ {TYPE_2__* thread_ctx; } ;
-typedef  TYPE_2__ PerThreadContext ;
-typedef  TYPE_3__ AVCodecContext ;
+typedef TYPE_2__ PerThreadContext ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int FF_THREAD_FRAME ; 
- int /*<<< orphan*/  STATE_GET_FORMAT ; 
- scalar_t__ STATE_SETTING_UP ; 
- scalar_t__ atomic_load (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atomic_store (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ avcodec_default_get_format ; 
- int ff_get_format (TYPE_3__*,int const*) ; 
- int /*<<< orphan*/  pthread_cond_broadcast (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_cond_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int AV_LOG_ERROR ;
+ int FF_THREAD_FRAME ;
+ int STATE_GET_FORMAT ;
+ scalar_t__ STATE_SETTING_UP ;
+ scalar_t__ atomic_load (int *) ;
+ int atomic_store (int *,int ) ;
+ int av_log (TYPE_3__*,int ,char*) ;
+ scalar_t__ avcodec_default_get_format ;
+ int ff_get_format (TYPE_3__*,int const*) ;
+ int pthread_cond_broadcast (int *) ;
+ int pthread_cond_wait (int *,int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 enum AVPixelFormat ff_thread_get_format(AVCodecContext *avctx, const enum AVPixelFormat *fmt)
 {

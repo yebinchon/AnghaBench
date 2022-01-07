@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stream_t ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int svn_stream_t ;
 struct TYPE_9__ {scalar_t__ number; } ;
 struct TYPE_10__ {TYPE_1__ value; void* kind; } ;
-typedef  TYPE_2__ svn_opt_revision_t ;
+typedef TYPE_2__ svn_opt_revision_t ;
 struct TYPE_11__ {scalar_t__ revision; } ;
-typedef  TYPE_3__ svn_log_entry_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
+typedef TYPE_3__ svn_log_entry_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef int svn_client_ctx_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- char* _ (char*) ; 
- int /*<<< orphan*/  svn_client_diff_peg6 (int /*<<< orphan*/ *,char const*,TYPE_2__ const*,TYPE_2__*,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_cmdline_output_encoding (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_cstring_split (char const*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- void* svn_opt_revision_number ; 
- int /*<<< orphan*/  svn_stream_puts (int /*<<< orphan*/ *,char*) ; 
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ char* _ (char*) ;
+ int svn_client_diff_peg6 (int *,char const*,TYPE_2__ const*,TYPE_2__*,TYPE_2__*,int *,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int *,int *,int *,int *,int *) ;
+ int svn_cmdline_output_encoding (int *) ;
+ int * svn_cstring_split (char const*,char*,int ,int *) ;
+ void* svn_opt_revision_number ;
+ int svn_stream_puts (int *,char*) ;
 
 __attribute__((used)) static svn_error_t *
 display_diff(const svn_log_entry_t *log_entry,
@@ -52,12 +52,12 @@ display_diff(const svn_log_entry_t *log_entry,
   svn_opt_revision_t start_revision;
   svn_opt_revision_t end_revision;
 
-  /* Fall back to "" to get options initialized either way. */
+
   if (diff_extensions)
     diff_options = svn_cstring_split(diff_extensions, " \t\n\r",
                                      TRUE, pool);
   else
-    diff_options = NULL;
+    diff_options = ((void*)0);
 
   start_revision.kind = svn_opt_revision_number;
   start_revision.value.number = log_entry->revision - 1;
@@ -69,20 +69,20 @@ display_diff(const svn_log_entry_t *log_entry,
                                target_path_or_url,
                                target_peg_revision,
                                &start_revision, &end_revision,
-                               NULL,
+                               ((void*)0),
                                depth,
-                               FALSE /* ignore ancestry */,
-                               FALSE /* no diff added */,
-                               TRUE  /* no diff deleted */,
-                               FALSE /* show copies as adds */,
-                               FALSE /* ignore content type */,
-                               FALSE /* ignore prop diff */,
-                               FALSE /* properties only */,
-                               FALSE /* use git diff format */,
+                               FALSE ,
+                               FALSE ,
+                               TRUE ,
+                               FALSE ,
+                               FALSE ,
+                               FALSE ,
+                               FALSE ,
+                               FALSE ,
                                svn_cmdline_output_encoding(pool),
                                outstream,
                                errstream,
-                               NULL,
+                               ((void*)0),
                                ctx, pool));
   SVN_ERR(svn_stream_puts(outstream, _("\n")));
   return SVN_NO_ERROR;

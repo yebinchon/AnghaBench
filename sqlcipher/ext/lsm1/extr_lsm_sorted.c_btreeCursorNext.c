@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct TYPE_6__ {size_t iPg; int nDepth; TYPE_1__* aPg; void* iPtr; int /*<<< orphan*/  pSeg; int /*<<< orphan*/  pFS; } ;
-struct TYPE_5__ {int iCell; int /*<<< orphan*/ * pPage; } ;
-typedef  int /*<<< orphan*/  Page ;
-typedef  void* LsmPgno ;
-typedef  TYPE_1__ BtreePg ;
-typedef  TYPE_2__ BtreeCursor ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int btreeCursorLoadKey (TYPE_2__*) ; 
- void* btreeCursorPtr (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/ * fsPageData (int /*<<< orphan*/ *,int*) ; 
- int lsmFsDbPageGet (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  lsmFsPageRelease (int /*<<< orphan*/ *) ; 
- int pageGetNRec (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct TYPE_6__ {size_t iPg; int nDepth; TYPE_1__* aPg; void* iPtr; int pSeg; int pFS; } ;
+struct TYPE_5__ {int iCell; int * pPage; } ;
+typedef int Page ;
+typedef void* LsmPgno ;
+typedef TYPE_1__ BtreePg ;
+typedef TYPE_2__ BtreeCursor ;
+
+
+ int LSM_OK ;
+ int assert (int) ;
+ int btreeCursorLoadKey (TYPE_2__*) ;
+ void* btreeCursorPtr (int *,int,int) ;
+ int * fsPageData (int *,int*) ;
+ int lsmFsDbPageGet (int ,int ,void*,int **) ;
+ int lsmFsPageRelease (int *) ;
+ int pageGetNRec (int *,int) ;
 
 __attribute__((used)) static int btreeCursorNext(BtreeCursor *pCsr){
   int rc = LSM_OK;
 
   BtreePg *pPg = &pCsr->aPg[pCsr->iPg];
-  int nCell; 
+  int nCell;
   u8 *aData;
   int nData;
 
@@ -48,7 +48,7 @@ __attribute__((used)) static int btreeCursorNext(BtreeCursor *pCsr){
   if( pPg->iCell==nCell ){
     LsmPgno iLoad;
 
-    /* Up to parent. */
+
     lsmFsPageRelease(pPg->pPage);
     pPg->pPage = 0;
     pCsr->iPg--;
@@ -60,11 +60,11 @@ __attribute__((used)) static int btreeCursorNext(BtreeCursor *pCsr){
       pCsr->iPg--;
     }
 
-    /* Read the key */
+
     rc = btreeCursorLoadKey(pCsr);
 
-    /* Unless the cursor is at EOF, descend to cell -1 (yes, negative one) of 
-    ** the left-most most descendent. */
+
+
     if( pCsr->iPg>=0 ){
       pCsr->aPg[pCsr->iPg].iCell++;
 

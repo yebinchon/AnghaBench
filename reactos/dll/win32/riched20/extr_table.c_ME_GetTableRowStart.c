@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_12__ {int nFlags; TYPE_4__* pCell; TYPE_4__* prev_para; } ;
 struct TYPE_10__ {TYPE_4__* prev_cell; } ;
 struct TYPE_11__ {TYPE_3__ para; TYPE_1__ cell; } ;
 struct TYPE_13__ {scalar_t__ type; TYPE_2__ member; } ;
-typedef  TYPE_4__ ME_DisplayItem ;
+typedef TYPE_4__ ME_DisplayItem ;
 
-/* Variables and functions */
- int MEPF_ROWEND ; 
- int MEPF_ROWSTART ; 
- TYPE_4__* ME_FindItemBack (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (TYPE_4__*) ; 
- scalar_t__ diCell ; 
- int /*<<< orphan*/  diParagraph ; 
+
+ int MEPF_ROWEND ;
+ int MEPF_ROWSTART ;
+ TYPE_4__* ME_FindItemBack (TYPE_4__*,int ) ;
+ int assert (TYPE_4__*) ;
+ scalar_t__ diCell ;
+ int diParagraph ;
 
 ME_DisplayItem* ME_GetTableRowStart(ME_DisplayItem *para)
 {

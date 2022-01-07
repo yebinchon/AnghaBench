@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int (* func_write ) (TYPE_3__*,void const*,size_t,size_t*) ;} ;
-struct ssl_async_args {size_t num; TYPE_1__ f; int /*<<< orphan*/  type; void* buf; TYPE_3__* s; } ;
-struct TYPE_10__ {int shutdown; scalar_t__ early_data_state; int mode; size_t asyncrw; TYPE_2__* method; int /*<<< orphan*/  rwstate; int /*<<< orphan*/ * handshake_func; } ;
+struct ssl_async_args {size_t num; TYPE_1__ f; int type; void* buf; TYPE_3__* s; } ;
+struct TYPE_10__ {int shutdown; scalar_t__ early_data_state; int mode; size_t asyncrw; TYPE_2__* method; int rwstate; int * handshake_func; } ;
 struct TYPE_9__ {int (* ssl_write ) (TYPE_3__*,void const*,size_t,size_t*) ;} ;
-typedef  TYPE_3__ SSL ;
+typedef TYPE_3__ SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ASYNC_get_current_job () ; 
- int /*<<< orphan*/  ERR_R_SHOULD_NOT_HAVE_BEEN_CALLED ; 
- scalar_t__ SSL_EARLY_DATA_ACCEPT_RETRY ; 
- scalar_t__ SSL_EARLY_DATA_CONNECT_RETRY ; 
- scalar_t__ SSL_EARLY_DATA_READ_RETRY ; 
- int /*<<< orphan*/  SSL_F_SSL_WRITE_INTERNAL ; 
- int SSL_MODE_ASYNC ; 
- int /*<<< orphan*/  SSL_NOTHING ; 
- int /*<<< orphan*/  SSL_R_PROTOCOL_IS_SHUTDOWN ; 
- int /*<<< orphan*/  SSL_R_UNINITIALIZED ; 
- int SSL_SENT_SHUTDOWN ; 
- int /*<<< orphan*/  SSLerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WRITEFUNC ; 
- int /*<<< orphan*/  ossl_statem_check_finish_init (TYPE_3__*,int) ; 
- int /*<<< orphan*/  ssl_io_intern ; 
- int ssl_start_async_job (TYPE_3__*,struct ssl_async_args*,int /*<<< orphan*/ ) ; 
- int stub1 (TYPE_3__*,void const*,size_t,size_t*) ; 
+
+ int * ASYNC_get_current_job () ;
+ int ERR_R_SHOULD_NOT_HAVE_BEEN_CALLED ;
+ scalar_t__ SSL_EARLY_DATA_ACCEPT_RETRY ;
+ scalar_t__ SSL_EARLY_DATA_CONNECT_RETRY ;
+ scalar_t__ SSL_EARLY_DATA_READ_RETRY ;
+ int SSL_F_SSL_WRITE_INTERNAL ;
+ int SSL_MODE_ASYNC ;
+ int SSL_NOTHING ;
+ int SSL_R_PROTOCOL_IS_SHUTDOWN ;
+ int SSL_R_UNINITIALIZED ;
+ int SSL_SENT_SHUTDOWN ;
+ int SSLerr (int ,int ) ;
+ int WRITEFUNC ;
+ int ossl_statem_check_finish_init (TYPE_3__*,int) ;
+ int ssl_io_intern ;
+ int ssl_start_async_job (TYPE_3__*,struct ssl_async_args*,int ) ;
+ int stub1 (TYPE_3__*,void const*,size_t,size_t*) ;
 
 int ssl_write_internal(SSL *s, const void *buf, size_t num, size_t *written)
 {
-    if (s->handshake_func == NULL) {
+    if (s->handshake_func == ((void*)0)) {
         SSLerr(SSL_F_SSL_WRITE_INTERNAL, SSL_R_UNINITIALIZED);
         return -1;
     }
@@ -57,10 +57,10 @@ int ssl_write_internal(SSL *s, const void *buf, size_t num, size_t *written)
         SSLerr(SSL_F_SSL_WRITE_INTERNAL, ERR_R_SHOULD_NOT_HAVE_BEEN_CALLED);
         return 0;
     }
-    /* If we are a client and haven't sent the Finished we better do that */
+
     ossl_statem_check_finish_init(s, 1);
 
-    if ((s->mode & SSL_MODE_ASYNC) && ASYNC_get_current_job() == NULL) {
+    if ((s->mode & SSL_MODE_ASYNC) && ASYNC_get_current_job() == ((void*)0)) {
         int ret;
         struct ssl_async_args args;
 

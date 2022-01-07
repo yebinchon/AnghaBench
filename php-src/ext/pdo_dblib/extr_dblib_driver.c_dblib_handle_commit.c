@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pdo_dbh_t ;
 
-/* Variables and functions */
- int pdo_dblib_transaction_cmd (char*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int pdo_dbh_t ;
+
+
+ int pdo_dblib_transaction_cmd (char*,int *) ;
 
 __attribute__((used)) static int dblib_handle_commit(pdo_dbh_t *dbh)
 {
-	return pdo_dblib_transaction_cmd("COMMIT TRANSACTION", dbh);
+ return pdo_dblib_transaction_cmd("COMMIT TRANSACTION", dbh);
 }

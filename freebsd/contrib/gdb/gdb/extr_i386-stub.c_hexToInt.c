@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int hex (char) ; 
+ int hex (char) ;
 
 int
 hexToInt (char **ptr, int *intValue)
@@ -26,12 +18,12 @@ hexToInt (char **ptr, int *intValue)
     {
       hexValue = hex (**ptr);
       if (hexValue >= 0)
-	{
-	  *intValue = (*intValue << 4) | hexValue;
-	  numChars++;
-	}
+ {
+   *intValue = (*intValue << 4) | hexValue;
+   numChars++;
+ }
       else
-	break;
+ break;
 
       (*ptr)++;
     }

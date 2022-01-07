@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_tick_t ;
-typedef  int /*<<< orphan*/  input_thread_t ;
-struct TYPE_9__ {int i_last_es_cat; int i_last_es_id; int /*<<< orphan*/  p_es_out_display; int /*<<< orphan*/  slave; int /*<<< orphan*/  i_slave; TYPE_1__* master; } ;
-typedef  TYPE_2__ input_thread_private_t ;
-struct TYPE_10__ {int b_slave_sub; int /*<<< orphan*/  p_demux; } ;
-typedef  TYPE_3__ input_source_t ;
-typedef  enum slave_type { ____Placeholder_slave_type } slave_type ;
-typedef  enum es_format_category_e { ____Placeholder_es_format_category_e } es_format_category_e ;
-struct TYPE_8__ {int /*<<< orphan*/  p_demux; } ;
 
-/* Variables and functions */
- int AUDIO_ES ; 
- int /*<<< orphan*/  DEMUX_GET_TIME ; 
- int /*<<< orphan*/  DEMUX_SET_TIME ; 
- int /*<<< orphan*/  ES_OUT_SET_ES_BY_ID ; 
- int /*<<< orphan*/  ES_OUT_SET_ES_DEFAULT_BY_ID ; 
- int /*<<< orphan*/  InputSourceDestroy (TYPE_3__*) ; 
- TYPE_3__* InputSourceNew (int /*<<< orphan*/ *,char const*,char const*,int const) ; 
- int /*<<< orphan*/  InputUpdateMeta (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- unsigned int SLAVE_ADD_CANFAIL ; 
- unsigned int SLAVE_ADD_FORCED ; 
- unsigned int SLAVE_ADD_SET_TIME ; 
-#define  SLAVE_TYPE_AUDIO 129 
-#define  SLAVE_TYPE_SPU 128 
- int SPU_ES ; 
- int /*<<< orphan*/  TAB_APPEND (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int UNKNOWN_ES ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ demux_Control (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  es_out_Control (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,...) ; 
- TYPE_2__* input_priv (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,char*,char const*,int const) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  msg_Warn (int /*<<< orphan*/ *,char*,char const*) ; 
- int /*<<< orphan*/  vlc_assert_unreachable () ; 
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int vlc_tick_t ;
+typedef int input_thread_t ;
+struct TYPE_9__ {int i_last_es_cat; int i_last_es_id; int p_es_out_display; int slave; int i_slave; TYPE_1__* master; } ;
+typedef TYPE_2__ input_thread_private_t ;
+struct TYPE_10__ {int b_slave_sub; int p_demux; } ;
+typedef TYPE_3__ input_source_t ;
+typedef enum slave_type { ____Placeholder_slave_type } slave_type ;
+typedef enum es_format_category_e { ____Placeholder_es_format_category_e } es_format_category_e ;
+struct TYPE_8__ {int p_demux; } ;
+
+
+ int AUDIO_ES ;
+ int DEMUX_GET_TIME ;
+ int DEMUX_SET_TIME ;
+ int ES_OUT_SET_ES_BY_ID ;
+ int ES_OUT_SET_ES_DEFAULT_BY_ID ;
+ int InputSourceDestroy (TYPE_3__*) ;
+ TYPE_3__* InputSourceNew (int *,char const*,char const*,int const) ;
+ int InputUpdateMeta (int *,int ) ;
+ unsigned int SLAVE_ADD_CANFAIL ;
+ unsigned int SLAVE_ADD_FORCED ;
+ unsigned int SLAVE_ADD_SET_TIME ;
+
+
+ int SPU_ES ;
+ int TAB_APPEND (int ,int ,TYPE_3__*) ;
+ int UNKNOWN_ES ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int assert (int) ;
+ scalar_t__ demux_Control (int ,int ,int ,...) ;
+ int es_out_Control (int ,int ,int,...) ;
+ TYPE_2__* input_priv (int *) ;
+ int msg_Dbg (int *,char*,char*,char const*,int const) ;
+ int msg_Err (int *,char*) ;
+ int msg_Warn (int *,char*,char const*) ;
+ int vlc_assert_unreachable () ;
 
 __attribute__((used)) static int input_SlaveSourceAdd( input_thread_t *p_input,
                                  enum slave_type i_type, const char *psz_uri,
@@ -64,12 +64,12 @@ __attribute__((used)) static int input_SlaveSourceAdd( input_thread_t *p_input,
 
     switch( i_type )
     {
-    case SLAVE_TYPE_SPU:
+    case 128:
         psz_forced_demux = "subtitle";
         i_cat = SPU_ES;
         break;
-    case SLAVE_TYPE_AUDIO:
-        psz_forced_demux = NULL;
+    case 129:
+        psz_forced_demux = ((void*)0);
         i_cat = AUDIO_ES;
         break;
     default:
@@ -85,22 +85,22 @@ __attribute__((used)) static int input_SlaveSourceAdd( input_thread_t *p_input,
                                                psz_forced_demux,
                                                b_can_fail || psz_forced_demux );
 
-    if( psz_forced_demux && p_source == NULL )
-        p_source = InputSourceNew( p_input, psz_uri, NULL, b_can_fail );
+    if( psz_forced_demux && p_source == ((void*)0) )
+        p_source = InputSourceNew( p_input, psz_uri, ((void*)0), b_can_fail );
 
-    if( p_source == NULL )
+    if( p_source == ((void*)0) )
     {
         msg_Warn( p_input, "failed to add %s as slave", psz_uri );
         return VLC_EGENERIC;
     }
 
-    if( i_type == SLAVE_TYPE_AUDIO )
+    if( i_type == 129 )
     {
         if( b_set_time )
         {
             vlc_tick_t i_time;
 
-            /* Set position */
+
             if( demux_Control( priv->master->p_demux, DEMUX_GET_TIME, &i_time ) )
             {
                 msg_Err( p_input, "demux doesn't like DEMUX_GET_TIME" );
@@ -109,7 +109,7 @@ __attribute__((used)) static int input_SlaveSourceAdd( input_thread_t *p_input,
             }
 
             if( demux_Control( p_source->p_demux,
-                               DEMUX_SET_TIME, i_time, true ) )
+                               DEMUX_SET_TIME, i_time, 1 ) )
             {
                 msg_Err( p_input, "seek failed for new slave" );
                 InputSourceDestroy( p_source );
@@ -117,11 +117,11 @@ __attribute__((used)) static int input_SlaveSourceAdd( input_thread_t *p_input,
             }
         }
 
-        /* Get meta (access and demux) */
+
         InputUpdateMeta( p_input, p_source->p_demux );
     }
     else
-        p_source->b_slave_sub = true;
+        p_source->b_slave_sub = 1;
 
     TAB_APPEND( priv->i_slave, priv->slave, p_source );
 
@@ -133,7 +133,7 @@ __attribute__((used)) static int input_SlaveSourceAdd( input_thread_t *p_input,
     es_out_Control( priv->p_es_out_display, ES_OUT_SET_ES_DEFAULT_BY_ID,
                     priv->i_last_es_id );
     es_out_Control( priv->p_es_out_display, ES_OUT_SET_ES_BY_ID,
-                    priv->i_last_es_id, false );
+                    priv->i_last_es_id, 0 );
 
     return VLC_SUCCESS;
 }

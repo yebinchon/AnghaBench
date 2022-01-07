@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  data ;
-struct TYPE_8__ {int /*<<< orphan*/  ip; } ;
-struct TYPE_7__ {int /*<<< orphan*/  net; int /*<<< orphan*/  self_secret_key; int /*<<< orphan*/  self_public_key; } ;
-struct TYPE_6__ {TYPE_3__ ip_port; int /*<<< orphan*/  public_key; } ;
-typedef  TYPE_1__ Node_format ;
-typedef  TYPE_2__ DHT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_TYPE_GETNODE_RES ; 
- int /*<<< orphan*/  CRYPTO_PACKET_HARDENING ; 
- int MAX_CRYPTO_REQUEST_SIZE ; 
- int create_request (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int crypto_box_PUBLICKEYBYTES ; 
- int /*<<< orphan*/  ip_isset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int sendpacket (int /*<<< orphan*/ ,TYPE_3__,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int data ;
+struct TYPE_8__ {int ip; } ;
+struct TYPE_7__ {int net; int self_secret_key; int self_public_key; } ;
+struct TYPE_6__ {TYPE_3__ ip_port; int public_key; } ;
+typedef TYPE_1__ Node_format ;
+typedef TYPE_2__ DHT ;
+
+
+ int CHECK_TYPE_GETNODE_RES ;
+ int CRYPTO_PACKET_HARDENING ;
+ int MAX_CRYPTO_REQUEST_SIZE ;
+ int create_request (int ,int ,int *,int ,int *,int,int ) ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int ip_isset (int *) ;
+ int memcpy (int *,int const*,int) ;
+ int sendpacket (int ,TYPE_3__,int *,int) ;
 
 __attribute__((used)) static int send_hardening_getnode_res(const DHT *dht, const Node_format *sendto, const uint8_t *queried_client_id,
                                       const uint8_t *nodes_data, uint16_t nodes_data_length)

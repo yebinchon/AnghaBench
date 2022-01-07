@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * Snapshot ;
-typedef  int /*<<< orphan*/  HTAB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * HistoricSnapshot ; 
- int /*<<< orphan*/ * tuplecid_data ; 
+
+
+
+typedef int * Snapshot ;
+typedef int HTAB ;
+
+
+ int Assert (int ) ;
+ int * HistoricSnapshot ;
+ int * tuplecid_data ;
 
 void
 SetupHistoricSnapshot(Snapshot historic_snapshot, HTAB *tuplecids)
 {
-	Assert(historic_snapshot != NULL);
+ Assert(historic_snapshot != ((void*)0));
 
-	/* setup the timetravel snapshot */
-	HistoricSnapshot = historic_snapshot;
 
-	/* setup (cmin, cmax) lookup hash */
-	tuplecid_data = tuplecids;
+ HistoricSnapshot = historic_snapshot;
+
+
+ tuplecid_data = tuplecids;
 }

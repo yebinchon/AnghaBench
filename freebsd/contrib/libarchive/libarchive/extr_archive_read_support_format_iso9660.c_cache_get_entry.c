@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {struct file_info* first; struct file_info** last; } ;
 struct iso9660 {TYPE_1__ cache_files; } ;
 struct file_info {struct file_info* next; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static inline struct file_info *
 cache_get_entry(struct iso9660 *iso9660)
 {
-	struct file_info *file;
+ struct file_info *file;
 
-	if ((file = iso9660->cache_files.first) != NULL) {
-		iso9660->cache_files.first = file->next;
-		if (iso9660->cache_files.first == NULL)
-			iso9660->cache_files.last =
-			    &(iso9660->cache_files.first);
-	}
-	return (file);
+ if ((file = iso9660->cache_files.first) != ((void*)0)) {
+  iso9660->cache_files.first = file->next;
+  if (iso9660->cache_files.first == ((void*)0))
+   iso9660->cache_files.last =
+       &(iso9660->cache_files.first);
+ }
+ return (file);
 }

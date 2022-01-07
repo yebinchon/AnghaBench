@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * context; } ;
-typedef  TYPE_1__ svn_sqlite__context_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct function_wrapper_baton_t {int /*<<< orphan*/  baton; int /*<<< orphan*/ * (* func ) (TYPE_1__*,int,void*,int /*<<< orphan*/ ) ;} ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sqlite3_result_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- struct function_wrapper_baton_t* sqlite3_user_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stub1 (TYPE_1__*,int,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_err_best_message (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  svn_error_clear (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * context; } ;
+typedef TYPE_1__ svn_sqlite__context_t ;
+typedef int svn_error_t ;
+struct function_wrapper_baton_t {int baton; int * (* func ) (TYPE_1__*,int,void*,int ) ;} ;
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+typedef int buf ;
+
+
+ int sqlite3_result_error (int *,int ,int) ;
+ struct function_wrapper_baton_t* sqlite3_user_data (int *) ;
+ int * stub1 (TYPE_1__*,int,void*,int ) ;
+ int svn_err_best_message (int *,char*,int) ;
+ int svn_error_clear (int *) ;
 
 __attribute__((used)) static void
 wrapped_func(sqlite3_context *context,

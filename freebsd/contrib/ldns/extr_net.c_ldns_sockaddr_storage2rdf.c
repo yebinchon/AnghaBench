@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+
+
+typedef int uint16_t ;
 struct sockaddr_storage {int ss_family; } ;
-struct sockaddr_in6 {int /*<<< orphan*/  sin6_addr; int /*<<< orphan*/  sin6_port; } ;
-struct sockaddr_in {int /*<<< orphan*/  sin_addr; int /*<<< orphan*/  sin_port; } ;
-typedef  int /*<<< orphan*/  ldns_rdf ;
+struct sockaddr_in6 {int sin6_addr; int sin6_port; } ;
+struct sockaddr_in {int sin_addr; int sin_port; } ;
+typedef int ldns_rdf ;
 
-/* Variables and functions */
-#define  AF_INET 129 
-#define  AF_INET6 128 
- int /*<<< orphan*/  LDNS_IP4ADDRLEN ; 
- int /*<<< orphan*/  LDNS_IP6ADDRLEN ; 
- int /*<<< orphan*/  LDNS_RDF_TYPE_A ; 
- int /*<<< orphan*/  LDNS_RDF_TYPE_AAAA ; 
- int /*<<< orphan*/ * ldns_rdf_new_frm_data (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ntohs (int /*<<< orphan*/ ) ; 
+
+
+
+ int LDNS_IP4ADDRLEN ;
+ int LDNS_IP6ADDRLEN ;
+ int LDNS_RDF_TYPE_A ;
+ int LDNS_RDF_TYPE_AAAA ;
+ int * ldns_rdf_new_frm_data (int ,int ,int *) ;
+ int ntohs (int ) ;
 
 ldns_rdf *
 ldns_sockaddr_storage2rdf(const struct sockaddr_storage *sock, uint16_t *port)
@@ -34,7 +34,7 @@ ldns_sockaddr_storage2rdf(const struct sockaddr_storage *sock, uint16_t *port)
         struct sockaddr_in6 *data_in6;
 
         switch(sock->ss_family) {
-                case AF_INET:
+                case 129:
                         data_in = (struct sockaddr_in*)sock;
                         if (port) {
                                 *port = ntohs((uint16_t)data_in->sin_port);
@@ -42,7 +42,7 @@ ldns_sockaddr_storage2rdf(const struct sockaddr_storage *sock, uint16_t *port)
                         addr = ldns_rdf_new_frm_data(LDNS_RDF_TYPE_A,
                                         LDNS_IP4ADDRLEN, &data_in->sin_addr);
                         break;
-                case AF_INET6:
+                case 128:
                         data_in6 = (struct sockaddr_in6*)sock;
                         if (port) {
                                 *port = ntohs((uint16_t)data_in6->sin6_port);
@@ -54,7 +54,7 @@ ldns_sockaddr_storage2rdf(const struct sockaddr_storage *sock, uint16_t *port)
                         if (port) {
                                 *port = 0;
                         }
-                        return NULL;
+                        return ((void*)0);
         }
         return addr;
 }

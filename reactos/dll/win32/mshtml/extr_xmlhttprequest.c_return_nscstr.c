@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsACString ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/ * BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_UTF8 ; 
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ *,int) ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/ * SysAllocStringLen (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  nsACString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsACString_GetData (int /*<<< orphan*/ *,char const**) ; 
+
+
+
+typedef int nsresult ;
+typedef int nsACString ;
+typedef int HRESULT ;
+typedef int * BSTR ;
+
+
+ int CP_UTF8 ;
+ int ERR (char*,int ) ;
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ int MultiByteToWideChar (int ,int ,char const*,int,int *,int) ;
+ scalar_t__ NS_FAILED (int ) ;
+ int S_OK ;
+ int * SysAllocStringLen (int *,int) ;
+ int nsACString_Finish (int *) ;
+ int nsACString_GetData (int *,char const**) ;
 
 __attribute__((used)) static HRESULT return_nscstr(nsresult nsres, nsACString *nscstr, BSTR *p)
 {
@@ -41,15 +41,15 @@ __attribute__((used)) static HRESULT return_nscstr(nsresult nsres, nsACString *n
     nsACString_GetData(nscstr, &str);
 
     if(*str) {
-        len = MultiByteToWideChar(CP_UTF8, 0, str, -1, NULL, 0);
-        *p = SysAllocStringLen(NULL, len);
+        len = MultiByteToWideChar(CP_UTF8, 0, str, -1, ((void*)0), 0);
+        *p = SysAllocStringLen(((void*)0), len);
         if(!*p) {
             nsACString_Finish(nscstr);
             return E_OUTOFMEMORY;
         }
         MultiByteToWideChar(CP_UTF8, 0, str, -1, *p, len);
     }else {
-        *p = NULL;
+        *p = ((void*)0);
     }
 
     nsACString_Finish(nscstr);

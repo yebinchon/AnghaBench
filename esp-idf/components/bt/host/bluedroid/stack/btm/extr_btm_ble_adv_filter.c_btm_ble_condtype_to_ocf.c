@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT8 ;
 
-/* Variables and functions */
- int BTM_BLE_META_PF_ADDR ; 
- int BTM_BLE_META_PF_ALL ; 
- int BTM_BLE_META_PF_LOCAL_NAME ; 
- int BTM_BLE_META_PF_MANU_DATA ; 
- int BTM_BLE_META_PF_SOL_UUID ; 
- int BTM_BLE_META_PF_SRVC_DATA ; 
- int BTM_BLE_META_PF_UUID ; 
-#define  BTM_BLE_PF_ADDR_FILTER 134 
-#define  BTM_BLE_PF_LOCAL_NAME 133 
-#define  BTM_BLE_PF_MANU_DATA 132 
-#define  BTM_BLE_PF_SRVC_DATA_PATTERN 131 
-#define  BTM_BLE_PF_SRVC_SOL_UUID 130 
-#define  BTM_BLE_PF_SRVC_UUID 129 
-#define  BTM_BLE_PF_TYPE_ALL 128 
- int BTM_BLE_PF_TYPE_MAX ; 
+
+
+
+typedef int UINT8 ;
+
+
+ int BTM_BLE_META_PF_ADDR ;
+ int BTM_BLE_META_PF_ALL ;
+ int BTM_BLE_META_PF_LOCAL_NAME ;
+ int BTM_BLE_META_PF_MANU_DATA ;
+ int BTM_BLE_META_PF_SOL_UUID ;
+ int BTM_BLE_META_PF_SRVC_DATA ;
+ int BTM_BLE_META_PF_UUID ;
+
+
+
+
+
+
+
+ int BTM_BLE_PF_TYPE_MAX ;
 
 UINT8 btm_ble_condtype_to_ocf(UINT8 cond_type)
 {
     UINT8 ocf = 0;
 
     switch (cond_type) {
-    case BTM_BLE_PF_ADDR_FILTER:
+    case 134:
         ocf = BTM_BLE_META_PF_ADDR;
         break;
-    case BTM_BLE_PF_SRVC_UUID:
+    case 129:
         ocf = BTM_BLE_META_PF_UUID;
         break;
-    case BTM_BLE_PF_SRVC_SOL_UUID:
+    case 130:
         ocf = BTM_BLE_META_PF_SOL_UUID;
         break;
-    case BTM_BLE_PF_LOCAL_NAME:
+    case 133:
         ocf = BTM_BLE_META_PF_LOCAL_NAME;
         break;
-    case BTM_BLE_PF_MANU_DATA:
+    case 132:
         ocf = BTM_BLE_META_PF_MANU_DATA;
         break;
-    case BTM_BLE_PF_SRVC_DATA_PATTERN:
+    case 131:
         ocf = BTM_BLE_META_PF_SRVC_DATA;
         break;
-    case BTM_BLE_PF_TYPE_ALL:
+    case 128:
         ocf = BTM_BLE_META_PF_ALL;
         break;
     default:

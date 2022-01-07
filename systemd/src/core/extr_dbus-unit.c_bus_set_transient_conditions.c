@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int UnitWriteFlags ;
-typedef  int /*<<< orphan*/  Unit ;
-typedef  scalar_t__ ConditionType ;
-typedef  int /*<<< orphan*/  Condition ;
 
-/* Variables and functions */
- scalar_t__ CONDITION_NULL ; 
- int ENOMEM ; 
- int /*<<< orphan*/  LIST_PREPEND (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SD_BUS_ERROR_INVALID_ARGS ; 
- int UNIT_ESCAPE_SPECIFIERS ; 
- int /*<<< orphan*/  UNIT_WRITE_FLAGS_NOOP (int) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ **) ; 
- scalar_t__ assert_type_from_string (char const*) ; 
- int /*<<< orphan*/ * condition_free_list (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * condition_new (scalar_t__,char const*,int,int) ; 
- scalar_t__ condition_takes_path (scalar_t__) ; 
- scalar_t__ condition_type_from_string (char const*) ; 
- int /*<<< orphan*/  conditions ; 
- scalar_t__ isempty (char const*) ; 
- int /*<<< orphan*/  path_is_absolute (char const*) ; 
- int sd_bus_error_setf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char const*,...) ; 
- int sd_bus_message_enter_container (int /*<<< orphan*/ *,char,char*) ; 
- int sd_bus_message_exit_container (int /*<<< orphan*/ *) ; 
- int sd_bus_message_read (int /*<<< orphan*/ *,char*,char const**,int*,int*,char const**) ; 
- int /*<<< orphan*/  unit_write_settingf (int /*<<< orphan*/ *,int,char const*,char*,char const*,...) ; 
- int /*<<< orphan*/  yes_no (int) ; 
+
+
+
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
+typedef int UnitWriteFlags ;
+typedef int Unit ;
+typedef scalar_t__ ConditionType ;
+typedef int Condition ;
+
+
+ scalar_t__ CONDITION_NULL ;
+ int ENOMEM ;
+ int LIST_PREPEND (int ,int *,int *) ;
+ int SD_BUS_ERROR_INVALID_ARGS ;
+ int UNIT_ESCAPE_SPECIFIERS ;
+ int UNIT_WRITE_FLAGS_NOOP (int) ;
+ int assert (int **) ;
+ scalar_t__ assert_type_from_string (char const*) ;
+ int * condition_free_list (int *) ;
+ int * condition_new (scalar_t__,char const*,int,int) ;
+ scalar_t__ condition_takes_path (scalar_t__) ;
+ scalar_t__ condition_type_from_string (char const*) ;
+ int conditions ;
+ scalar_t__ isempty (char const*) ;
+ int path_is_absolute (char const*) ;
+ int sd_bus_error_setf (int *,int ,char*,char const*,...) ;
+ int sd_bus_message_enter_container (int *,char,char*) ;
+ int sd_bus_message_exit_container (int *) ;
+ int sd_bus_message_read (int *,char*,char const**,int*,int*,char const**) ;
+ int unit_write_settingf (int *,int,char const*,char*,char const*,...) ;
+ int yes_no (int) ;
 
 __attribute__((used)) static int bus_set_transient_conditions(
                 Unit *u,
@@ -51,7 +51,7 @@ __attribute__((used)) static int bus_set_transient_conditions(
 
         const char *type_name, *param;
         int trigger, negate, r;
-        bool empty = true;
+        bool empty = 1;
 
         assert(list);
 
@@ -73,7 +73,7 @@ __attribute__((used)) static int bus_set_transient_conditions(
                         if (condition_takes_path(t) && !path_is_absolute(param))
                                 return sd_bus_error_setf(error, SD_BUS_ERROR_INVALID_ARGS, "Path in condition %s is not absolute: %s", type_name, param);
                 } else
-                        param = NULL;
+                        param = ((void*)0);
 
                 if (!UNIT_WRITE_FLAGS_NOOP(flags)) {
                         Condition *c;
@@ -94,7 +94,7 @@ __attribute__((used)) static int bus_set_transient_conditions(
                                                     trigger ? "|" : "", yes_no(!negate));
                 }
 
-                empty = false;
+                empty = 0;
         }
         if (r < 0)
                 return r;

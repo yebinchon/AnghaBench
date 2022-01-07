@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  mtd; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int mtd; } ;
 struct intel_spi {TYPE_1__ nor; } ;
 
-/* Variables and functions */
- int mtd_device_unregister (int /*<<< orphan*/ *) ; 
+
+ int mtd_device_unregister (int *) ;
 
 int intel_spi_remove(struct intel_spi *ispi)
 {
-	return mtd_device_unregister(&ispi->nor.mtd);
+ return mtd_device_unregister(&ispi->nor.mtd);
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stbtt__hheap ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int stbtt__hheap ;
 struct TYPE_5__ {float x1; float x0; float y1; float y0; scalar_t__ invert; } ;
-typedef  TYPE_1__ stbtt__edge ;
+typedef TYPE_1__ stbtt__edge ;
 struct TYPE_6__ {float fdx; int fdy; float fx; float direction; float sy; float ey; scalar_t__ next; } ;
-typedef  TYPE_2__ stbtt__active_edge ;
+typedef TYPE_2__ stbtt__active_edge ;
 
-/* Variables and functions */
- scalar_t__ stbtt__hheap_alloc (int /*<<< orphan*/ *,int,void*) ; 
+
+ scalar_t__ stbtt__hheap_alloc (int *,int,void*) ;
 
 __attribute__((used)) static stbtt__active_edge *stbtt__new_active(stbtt__hheap *hh, stbtt__edge *e, int off_x, float start_point, void *userdata)
 {

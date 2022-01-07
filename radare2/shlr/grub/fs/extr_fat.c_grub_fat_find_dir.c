@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct grub_fat_find_dir_closure {int (* hook ) (char const*,struct grub_dirhook_info const*,void*) ;char* dirname; scalar_t__ found; int /*<<< orphan*/  call_hook; void* closure; struct grub_fat_data* data; } ;
+
+
+
+
+struct grub_fat_find_dir_closure {int (* hook ) (char const*,struct grub_dirhook_info const*,void*) ;char* dirname; scalar_t__ found; int call_hook; void* closure; struct grub_fat_data* data; } ;
 struct grub_fat_data {int attr; } ;
-typedef  int /*<<< orphan*/  grub_disk_t ;
+typedef int grub_disk_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GRUB_ERR_BAD_FILE_TYPE ; 
- int /*<<< orphan*/  GRUB_ERR_FILE_NOT_FOUND ; 
- scalar_t__ GRUB_ERR_NONE ; 
- int GRUB_FAT_ATTR_DIRECTORY ; 
- scalar_t__ grub_errno ; 
- int /*<<< orphan*/  grub_error (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  grub_fat_find_dir_hook ; 
- int /*<<< orphan*/  grub_fat_iterate_dir (int /*<<< orphan*/ ,struct grub_fat_data*,int /*<<< orphan*/ ,struct grub_fat_find_dir_closure*) ; 
- int /*<<< orphan*/  grub_free (char*) ; 
- char* grub_malloc (unsigned int) ; 
- int /*<<< orphan*/  grub_memcpy (char*,char const*,unsigned int) ; 
- char* grub_strchr (char const*,char) ; 
- char* grub_strdup (char const*) ; 
+
+ int GRUB_ERR_BAD_FILE_TYPE ;
+ int GRUB_ERR_FILE_NOT_FOUND ;
+ scalar_t__ GRUB_ERR_NONE ;
+ int GRUB_FAT_ATTR_DIRECTORY ;
+ scalar_t__ grub_errno ;
+ int grub_error (int ,char*) ;
+ int grub_fat_find_dir_hook ;
+ int grub_fat_iterate_dir (int ,struct grub_fat_data*,int ,struct grub_fat_find_dir_closure*) ;
+ int grub_free (char*) ;
+ char* grub_malloc (unsigned int) ;
+ int grub_memcpy (char*,char const*,unsigned int) ;
+ char* grub_strchr (char const*,char) ;
+ char* grub_strdup (char const*) ;
 
 __attribute__((used)) static char *
 grub_fat_find_dir (grub_disk_t disk, struct grub_fat_data *data,
-		   const char *path,
-		   int (*hook) (const char *filename,
-				const struct grub_dirhook_info *info,
-				void *closure),
-		   void *closure)
+     const char *path,
+     int (*hook) (const char *filename,
+    const struct grub_dirhook_info *info,
+    void *closure),
+     void *closure)
 {
   char *dirname, *dirp;
   struct grub_fat_find_dir_closure c;
@@ -46,7 +46,7 @@ grub_fat_find_dir (grub_disk_t disk, struct grub_fat_data *data,
       return 0;
     }
 
-  /* Extract a directory name.  */
+
   while (*path == '/')
     path++;
 
@@ -57,13 +57,13 @@ grub_fat_find_dir (grub_disk_t disk, struct grub_fat_data *data,
 
       dirname = grub_malloc (len + 1);
       if (! dirname)
-	return 0;
+ return 0;
 
       grub_memcpy (dirname, path, len);
       dirname[len] = '\0';
     }
   else
-    /* This is actually a file.  */
+
     dirname = grub_strdup (path);
 
   c.data = data;

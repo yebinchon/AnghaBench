@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {scalar_t__ sig_peak; int /*<<< orphan*/  light; int /*<<< orphan*/  levels; int /*<<< orphan*/  gamma; int /*<<< orphan*/  primaries; int /*<<< orphan*/  space; } ;
-struct mp_image_params {int w; int h; scalar_t__ p_w; scalar_t__ p_h; scalar_t__ stereo3d; scalar_t__ rotate; int /*<<< orphan*/  chroma_location; TYPE_1__ color; scalar_t__ hw_subfmt; scalar_t__ imgfmt; } ;
 
-/* Variables and functions */
- scalar_t__ MP_STEREO3D_NAME_DEF (scalar_t__,char*) ; 
- scalar_t__ m_opt_choice_str (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_chroma_names ; 
- int /*<<< orphan*/  mp_csp_levels_names ; 
- int /*<<< orphan*/  mp_csp_light_names ; 
- int /*<<< orphan*/  mp_csp_names ; 
- int /*<<< orphan*/  mp_csp_prim_names ; 
- int /*<<< orphan*/  mp_csp_trc_names ; 
- scalar_t__ mp_imgfmt_to_name (scalar_t__) ; 
- int /*<<< orphan*/  mp_snprintf_cat (char*,size_t,char*,scalar_t__,...) ; 
- int /*<<< orphan*/  snprintf (char*,size_t,char*,...) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {scalar_t__ sig_peak; int light; int levels; int gamma; int primaries; int space; } ;
+struct mp_image_params {int w; int h; scalar_t__ p_w; scalar_t__ p_h; scalar_t__ stereo3d; scalar_t__ rotate; int chroma_location; TYPE_1__ color; scalar_t__ hw_subfmt; scalar_t__ imgfmt; } ;
+
+
+ scalar_t__ MP_STEREO3D_NAME_DEF (scalar_t__,char*) ;
+ scalar_t__ m_opt_choice_str (int ,int ) ;
+ int mp_chroma_names ;
+ int mp_csp_levels_names ;
+ int mp_csp_light_names ;
+ int mp_csp_names ;
+ int mp_csp_prim_names ;
+ int mp_csp_trc_names ;
+ scalar_t__ mp_imgfmt_to_name (scalar_t__) ;
+ int mp_snprintf_cat (char*,size_t,char*,scalar_t__,...) ;
+ int snprintf (char*,size_t,char*,...) ;
 
 char *mp_image_params_to_str_buf(char *b, size_t bs,
                                  const struct mp_image_params *p)

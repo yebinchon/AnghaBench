@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {scalar_t__ (* seek_fn ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  cookie; scalar_t__ cancel_fn; int /*<<< orphan*/  close_fn; int /*<<< orphan*/  read_fn; int /*<<< orphan*/  member_0; } ;
-struct priv {TYPE_2__ info; int /*<<< orphan*/  cancel; } ;
-struct TYPE_10__ {int seekable; int fast_skip; scalar_t__ cancel; int /*<<< orphan*/  close; int /*<<< orphan*/  get_size; int /*<<< orphan*/  fill_buffer; int /*<<< orphan*/  seek; int /*<<< orphan*/  url; int /*<<< orphan*/  global; struct priv* priv; } ;
-typedef  TYPE_1__ stream_t ;
-typedef  int (* mpv_stream_cb_open_ro_fn ) (void*,int /*<<< orphan*/ ,TYPE_2__*) ;
-typedef  TYPE_2__ mpv_stream_cb_info ;
-typedef  int /*<<< orphan*/  bstr ;
 
-/* Variables and functions */
- int MPV_ERROR_LOADING_FAILED ; 
- int /*<<< orphan*/  MP_FATAL (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  MP_WARN (TYPE_1__*,char*) ; 
- int STREAM_ERROR ; 
- int STREAM_OK ; 
- int STREAM_UNSUPPORTED ; 
- int /*<<< orphan*/  bstr0 (int /*<<< orphan*/ ) ; 
- char* bstrto0 (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fill_buffer ; 
- int /*<<< orphan*/  get_size ; 
- int /*<<< orphan*/  mp_cancel_new (struct priv*) ; 
- int /*<<< orphan*/  mp_cancel_set_cb (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_cancel_set_parent (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  mp_split_proto (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_streamcb_lookup (int /*<<< orphan*/ ,char*,void**,int (*) (void*,int /*<<< orphan*/ ,TYPE_2__*)) ; 
- struct priv* p ; 
- int /*<<< orphan*/  s_close ; 
- int /*<<< orphan*/  seek ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct priv* talloc_ptrtype (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_11__ {scalar_t__ (* seek_fn ) (int ,int ) ;int cookie; scalar_t__ cancel_fn; int close_fn; int read_fn; int member_0; } ;
+struct priv {TYPE_2__ info; int cancel; } ;
+struct TYPE_10__ {int seekable; int fast_skip; scalar_t__ cancel; int close; int get_size; int fill_buffer; int seek; int url; int global; struct priv* priv; } ;
+typedef TYPE_1__ stream_t ;
+typedef int (* mpv_stream_cb_open_ro_fn ) (void*,int ,TYPE_2__*) ;
+typedef TYPE_2__ mpv_stream_cb_info ;
+typedef int bstr ;
+
+
+ int MPV_ERROR_LOADING_FAILED ;
+ int MP_FATAL (TYPE_1__*,char*) ;
+ int MP_WARN (TYPE_1__*,char*) ;
+ int STREAM_ERROR ;
+ int STREAM_OK ;
+ int STREAM_UNSUPPORTED ;
+ int bstr0 (int ) ;
+ char* bstrto0 (TYPE_1__*,int ) ;
+ int fill_buffer ;
+ int get_size ;
+ int mp_cancel_new (struct priv*) ;
+ int mp_cancel_set_cb (int ,scalar_t__,int ) ;
+ int mp_cancel_set_parent (int ,scalar_t__) ;
+ int mp_split_proto (int ,int *) ;
+ int mp_streamcb_lookup (int ,char*,void**,int (*) (void*,int ,TYPE_2__*)) ;
+ struct priv* p ;
+ int s_close ;
+ int seek ;
+ scalar_t__ stub1 (int ,int ) ;
+ struct priv* talloc_ptrtype (TYPE_1__*,int ) ;
 
 __attribute__((used)) static int open_cb(stream_t *stream)
 {
     struct priv *p = talloc_ptrtype(stream, p);
     stream->priv = p;
 
-    bstr bproto = mp_split_proto(bstr0(stream->url), NULL);
+    bstr bproto = mp_split_proto(bstr0(stream->url), ((void*)0));
     char *proto = bstrto0(stream, bproto);
 
     void *user_data;
@@ -74,9 +74,9 @@ __attribute__((used)) static int open_cb(stream_t *stream)
 
     if (p->info.seek_fn && p->info.seek_fn(p->info.cookie, 0) >= 0) {
         stream->seek = seek;
-        stream->seekable = true;
+        stream->seekable = 1;
     }
-    stream->fast_skip = true;
+    stream->fast_skip = 1;
     stream->fill_buffer = fill_buffer;
     stream->get_size = get_size;
     stream->close = s_close;

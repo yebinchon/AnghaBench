@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
-typedef  struct TYPE_14__   TYPE_13__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+typedef struct TYPE_14__ TYPE_13__ ;
+
+
 struct TYPE_15__ {scalar_t__ type; char const* str; int elements; struct TYPE_15__** element; } ;
-typedef  TYPE_1__ redisReply ;
+typedef TYPE_1__ redisReply ;
 struct TYPE_16__ {char* errstr; scalar_t__ err; } ;
-typedef  TYPE_2__ redisContext ;
+typedef TYPE_2__ redisContext ;
 struct TYPE_17__ {void* appendonly; void* save; } ;
-typedef  TYPE_3__ redisConfig ;
+typedef TYPE_3__ redisConfig ;
 struct TYPE_14__ {char* auth; } ;
 
-/* Variables and functions */
- int REDIS_OK ; 
- scalar_t__ REDIS_REPLY_ARRAY ; 
- scalar_t__ REDIS_REPLY_ERROR ; 
- TYPE_13__ config ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  freeReplyObject (TYPE_1__*) ; 
- int /*<<< orphan*/  redisAppendCommand (TYPE_2__*,char*,char*) ; 
- TYPE_2__* redisConnect (char const*,int) ; 
- TYPE_2__* redisConnectUnix (char const*) ; 
- int /*<<< orphan*/  redisFree (TYPE_2__*) ; 
- int redisGetReply (TYPE_2__*,void**) ; 
- void* sdsnew (char*) ; 
- int /*<<< orphan*/  stderr ; 
- TYPE_3__* zcalloc (int) ; 
- int /*<<< orphan*/  zfree (TYPE_3__*) ; 
+
+ int REDIS_OK ;
+ scalar_t__ REDIS_REPLY_ARRAY ;
+ scalar_t__ REDIS_REPLY_ERROR ;
+ TYPE_13__ config ;
+ int fprintf (int ,char*,...) ;
+ int freeReplyObject (TYPE_1__*) ;
+ int redisAppendCommand (TYPE_2__*,char*,char*) ;
+ TYPE_2__* redisConnect (char const*,int) ;
+ TYPE_2__* redisConnectUnix (char const*) ;
+ int redisFree (TYPE_2__*) ;
+ int redisGetReply (TYPE_2__*,void**) ;
+ void* sdsnew (char*) ;
+ int stderr ;
+ TYPE_3__* zcalloc (int) ;
+ int zfree (TYPE_3__*) ;
 
 __attribute__((used)) static redisConfig *getRedisConfig(const char *ip, int port,
                                    const char *hostsocket)
 {
     redisConfig *cfg = zcalloc(sizeof(*cfg));
-    if (!cfg) return NULL;
-    redisContext *c = NULL;
-    redisReply *reply = NULL, *sub_reply = NULL;
-    if (hostsocket == NULL)
+    if (!cfg) return ((void*)0);
+    redisContext *c = ((void*)0);
+    redisReply *reply = ((void*)0), *sub_reply = ((void*)0);
+    if (hostsocket == ((void*)0))
         c = redisConnect(ip, port);
     else
         c = redisConnectUnix(hostsocket);
-    if (c == NULL || c->err) {
+    if (c == ((void*)0) || c->err) {
         fprintf(stderr,"Could not connect to Redis at ");
-        char *err = (c != NULL ? c->errstr : "");
-        if (hostsocket == NULL) fprintf(stderr,"%s:%d: %s\n",ip,port,err);
+        char *err = (c != ((void*)0) ? c->errstr : "");
+        if (hostsocket == ((void*)0)) fprintf(stderr,"%s:%d: %s\n",ip,port,err);
         else fprintf(stderr,"%s: %s\n",hostsocket,err);
         goto fail;
     }
 
     if(config.auth) {
-        void *authReply = NULL;
+        void *authReply = ((void*)0);
         redisAppendCommand(c, "AUTH %s", config.auth);
         if (REDIS_OK != redisGetReply(c, &authReply)) goto fail;
         if (reply) freeReplyObject(reply);
@@ -73,7 +73,7 @@ __attribute__((used)) static redisConfig *getRedisConfig(const char *ip, int por
     redisAppendCommand(c, "CONFIG GET %s", "save");
     redisAppendCommand(c, "CONFIG GET %s", "appendonly");
     int i = 0;
-    void *r = NULL;
+    void *r = ((void*)0);
     for (; i < 2; i++) {
         int res = redisGetReply(c, &r);
         if (reply) freeReplyObject(reply);
@@ -97,10 +97,10 @@ __attribute__((used)) static redisConfig *getRedisConfig(const char *ip, int por
     return cfg;
 fail:
     fprintf(stderr, "ERROR: failed to fetch CONFIG from ");
-    if (hostsocket == NULL) fprintf(stderr, "%s:%d\n", ip, port);
+    if (hostsocket == ((void*)0)) fprintf(stderr, "%s:%d\n", ip, port);
     else fprintf(stderr, "%s\n", hostsocket);
     freeReplyObject(reply);
     redisFree(c);
     zfree(cfg);
-    return NULL;
+    return ((void*)0);
 }

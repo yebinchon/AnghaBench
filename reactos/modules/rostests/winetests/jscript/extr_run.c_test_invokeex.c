@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT ;
-struct TYPE_3__ {int /*<<< orphan*/ * member_0; } ;
-typedef  int /*<<< orphan*/  IDispatchEx ;
-typedef  int /*<<< orphan*/  IActiveScript ;
-typedef  int HRESULT ;
-typedef  TYPE_1__ DISPPARAMS ;
-typedef  int /*<<< orphan*/  DISPID ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISPATCH_METHOD ; 
- int /*<<< orphan*/  DISPATCH_PROPERTYGET ; 
- int E_UNEXPECTED ; 
- int /*<<< orphan*/  IActiveScript_Release (int /*<<< orphan*/ *) ; 
- int IActiveScript_SetScriptState (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int IDispatchEx_GetDispID (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int IDispatchEx_InvokeEx (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDispatchEx_Release (int /*<<< orphan*/ *) ; 
- int IDispatch_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IID_IDispatchEx ; 
- int /*<<< orphan*/  SCRIPTSTATE_UNINITIALIZED ; 
- int S_OK ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int VT_DISPATCH ; 
- int VT_I4 ; 
- int /*<<< orphan*/  V_DISPATCH (int /*<<< orphan*/ *) ; 
- int V_I4 (int /*<<< orphan*/ *) ; 
- int V_VT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  a2bstr (char*) ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int parse_script_expr (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int VARIANT ;
+struct TYPE_3__ {int * member_0; } ;
+typedef int IDispatchEx ;
+typedef int IActiveScript ;
+typedef int HRESULT ;
+typedef TYPE_1__ DISPPARAMS ;
+typedef int DISPID ;
+typedef int BSTR ;
+
+
+ int DISPATCH_METHOD ;
+ int DISPATCH_PROPERTYGET ;
+ int E_UNEXPECTED ;
+ int IActiveScript_Release (int *) ;
+ int IActiveScript_SetScriptState (int *,int ) ;
+ int IDispatchEx_GetDispID (int *,int ,int ,int *) ;
+ int IDispatchEx_InvokeEx (int *,int ,int ,int ,TYPE_1__*,int *,int *,int *) ;
+ int IDispatchEx_Release (int *) ;
+ int IDispatch_QueryInterface (int ,int *,void**) ;
+ int IID_IDispatchEx ;
+ int SCRIPTSTATE_UNINITIALIZED ;
+ int S_OK ;
+ int SysFreeString (int ) ;
+ int VT_DISPATCH ;
+ int VT_I4 ;
+ int V_DISPATCH (int *) ;
+ int V_I4 (int *) ;
+ int V_VT (int *) ;
+ int VariantClear (int *) ;
+ int a2bstr (char*) ;
+ scalar_t__ broken (int) ;
+ int ok (int,char*,int) ;
+ int parse_script_expr (char*,int *,int **) ;
 
 __attribute__((used)) static void test_invokeex(void)
 {
     DISPID func_id, prop_id;
-    DISPPARAMS dp = {NULL};
+    DISPPARAMS dp = {((void*)0)};
     IActiveScript *script;
     IDispatchEx *dispex;
     VARIANT v;
@@ -73,12 +73,12 @@ __attribute__((used)) static void test_invokeex(void)
     SysFreeString(str);
     ok(hres == S_OK, "GetDispID failed: %08x\n", hres);
 
-    hres = IDispatchEx_InvokeEx(dispex, func_id, 0, DISPATCH_METHOD, &dp, &v, NULL, NULL);
+    hres = IDispatchEx_InvokeEx(dispex, func_id, 0, DISPATCH_METHOD, &dp, &v, ((void*)0), ((void*)0));
     ok(hres == S_OK, "InvokeEx failed: %08x\n", hres);
     ok(V_VT(&v) == VT_I4, "V_VT(v) = %d\n", V_VT(&v));
     ok(V_I4(&v) == 3, "V_I4(v) = %d\n", V_I4(&v));
 
-    hres = IDispatchEx_InvokeEx(dispex, prop_id, 0, DISPATCH_PROPERTYGET, &dp, &v, NULL, NULL);
+    hres = IDispatchEx_InvokeEx(dispex, prop_id, 0, DISPATCH_PROPERTYGET, &dp, &v, ((void*)0), ((void*)0));
     ok(hres == S_OK, "InvokeEx failed: %08x\n", hres);
     ok(V_VT(&v) == VT_I4, "V_VT(v) = %d\n", V_VT(&v));
     ok(V_I4(&v) == 6, "V_I4(v) = %d\n", V_I4(&v));
@@ -91,10 +91,10 @@ __attribute__((used)) static void test_invokeex(void)
     SysFreeString(str);
     ok(hres == S_OK, "GetDispID failed: %08x\n", hres);
 
-    hres = IDispatchEx_InvokeEx(dispex, func_id, 0, DISPATCH_METHOD, &dp, &v, NULL, NULL);
+    hres = IDispatchEx_InvokeEx(dispex, func_id, 0, DISPATCH_METHOD, &dp, &v, ((void*)0), ((void*)0));
     ok(hres == E_UNEXPECTED || broken(hres == 0x800a1393), "InvokeEx failed: %08x\n", hres);
 
-    hres = IDispatchEx_InvokeEx(dispex, prop_id, 0, DISPATCH_PROPERTYGET, &dp, &v, NULL, NULL);
+    hres = IDispatchEx_InvokeEx(dispex, prop_id, 0, DISPATCH_PROPERTYGET, &dp, &v, ((void*)0), ((void*)0));
     ok(hres == S_OK, "InvokeEx failed: %08x\n", hres);
     ok(V_VT(&v) == VT_I4, "V_VT(v) = %d\n", V_VT(&v));
     ok(V_I4(&v) == 6, "V_I4(v) = %d\n", V_I4(&v));

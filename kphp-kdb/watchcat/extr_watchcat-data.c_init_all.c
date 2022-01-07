@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {struct TYPE_3__* prev_time; struct TYPE_3__* next_time; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- int /*<<< orphan*/  GET_TIME_ID (int /*<<< orphan*/ ) ; 
- int TIME_TABLE_SIZE ; 
- TYPE_1__* alloc_wkey () ; 
- int /*<<< orphan*/  get_utime (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  h_watchcat ; 
- int /*<<< orphan*/  h_watchcat_q ; 
- int /*<<< orphan*/  hset_llp_init (int /*<<< orphan*/ *) ; 
- scalar_t__ keys_cnt ; 
- scalar_t__ keys_memory ; 
- int /*<<< orphan*/  last_del_time ; 
- TYPE_1__** time_st ; 
+
+ int CLOCK_MONOTONIC ;
+ int GET_TIME_ID (int ) ;
+ int TIME_TABLE_SIZE ;
+ TYPE_1__* alloc_wkey () ;
+ int get_utime (int ) ;
+ int h_watchcat ;
+ int h_watchcat_q ;
+ int hset_llp_init (int *) ;
+ scalar_t__ keys_cnt ;
+ scalar_t__ keys_memory ;
+ int last_del_time ;
+ TYPE_1__** time_st ;
 
 void init_all (void) {
   hset_llp_init (&h_watchcat);

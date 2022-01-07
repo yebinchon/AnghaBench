@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int measurements; int accept_after; int load_threads; int retries; int /*<<< orphan*/  physical_offset; int /*<<< orphan*/  load_type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEFAULT_PHYSICAL_OFFSET ; 
- int /*<<< orphan*/  INFO ; 
- int /*<<< orphan*/  NOP ; 
- TYPE_1__ config ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  detect_fault_handling () ; 
- int /*<<< orphan*/  detect_flush_reload_threshold () ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int measurements; int accept_after; int load_threads; int retries; int physical_offset; int load_type; } ;
+
+
+ int DEFAULT_PHYSICAL_OFFSET ;
+ int INFO ;
+ int NOP ;
+ TYPE_1__ config ;
+ int debug (int ,char*) ;
+ int detect_fault_handling () ;
+ int detect_flush_reload_threshold () ;
 
 __attribute__((used)) static void auto_config() {
   debug(INFO, "Auto configuration\n");

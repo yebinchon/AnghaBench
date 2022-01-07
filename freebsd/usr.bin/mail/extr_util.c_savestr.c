@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  bcopy (char*,char*,int) ; 
- char* salloc (int) ; 
- int strlen (char*) ; 
+ int bcopy (char*,char*,int) ;
+ char* salloc (int) ;
+ int strlen (char*) ;
 
 char *
 savestr(char *str)
 {
-	char *new;
-	int size = strlen(str) + 1;
+ char *new;
+ int size = strlen(str) + 1;
 
-	if ((new = salloc(size)) != NULL)
-		bcopy(str, new, size);
-	return (new);
+ if ((new = salloc(size)) != ((void*)0))
+  bcopy(str, new, size);
+ return (new);
 }

@@ -1,244 +1,244 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
-struct smsc9420_pdata {int software_irq_signal; int /*<<< orphan*/  int_lock; int /*<<< orphan*/  napi; int /*<<< orphan*/  phy_dev; } ;
-struct net_device {int /*<<< orphan*/  irq; int /*<<< orphan*/  dev_addr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int /*<<< orphan*/  BUS_CFG ; 
- int BUS_CFG_RXTXWEIGHT_4_1 ; 
- int /*<<< orphan*/  BUS_MODE ; 
- int BUS_MODE_DBO_ ; 
- int BUS_MODE_DMA_BURST_LENGTH_16 ; 
- int /*<<< orphan*/  DMAC_CONTROL ; 
- int DMAC_CONTROL_OSF_ ; 
- int DMAC_CONTROL_SF_ ; 
- int DMAC_CONTROL_SR_ ; 
- int DMAC_CONTROL_ST_ ; 
- int /*<<< orphan*/  DMAC_INTR_ENA ; 
- int DMAC_INTR_ENA_NIS_ ; 
- int DMAC_INTR_ENA_RX_ ; 
- int DMAC_INTR_ENA_TX_ ; 
- int /*<<< orphan*/  DRV_NAME ; 
- int EADDRNOTAVAIL ; 
- int ENODEV ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GPIO_CFG ; 
- int GPIO_CFG_LED_1_ ; 
- int GPIO_CFG_LED_2_ ; 
- int GPIO_CFG_LED_3_ ; 
- int /*<<< orphan*/  IFUP ; 
- int /*<<< orphan*/  INT_CFG ; 
- int INT_CFG_INT_DEAS_MASK ; 
- int INT_CFG_IRQ_EN_ ; 
- int /*<<< orphan*/  INT_CTL ; 
- int INT_CTL_SW_INT_EN_ ; 
- int INT_DEAS_TIME ; 
- int /*<<< orphan*/  INT_STAT ; 
- int IRQF_DISABLED ; 
- int IRQF_SHARED ; 
- int /*<<< orphan*/  MAC_CR ; 
- int MAC_CR_RXEN_ ; 
- int MAC_CR_TXEN_ ; 
- int /*<<< orphan*/  RX_POLL_DEMAND ; 
- int /*<<< orphan*/  free_irq (int /*<<< orphan*/ ,struct smsc9420_pdata*) ; 
- int /*<<< orphan*/  is_valid_ether_addr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msleep (int) ; 
- int /*<<< orphan*/  napi_enable (int /*<<< orphan*/ *) ; 
- struct smsc9420_pdata* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  netif_carrier_off (struct net_device*) ; 
- int /*<<< orphan*/  netif_wake_queue (struct net_device*) ; 
- int /*<<< orphan*/  phy_start (int /*<<< orphan*/ ) ; 
- scalar_t__ request_irq (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,struct smsc9420_pdata*) ; 
- int smsc9420_alloc_rx_ring (struct smsc9420_pdata*) ; 
- int smsc9420_alloc_tx_ring (struct smsc9420_pdata*) ; 
- int /*<<< orphan*/  smsc9420_dmac_soft_reset (struct smsc9420_pdata*) ; 
- int /*<<< orphan*/  smsc9420_free_rx_ring (struct smsc9420_pdata*) ; 
- int /*<<< orphan*/  smsc9420_free_tx_ring (struct smsc9420_pdata*) ; 
- int /*<<< orphan*/  smsc9420_isr ; 
- int smsc9420_mii_init (struct net_device*) ; 
- int /*<<< orphan*/  smsc9420_pci_flush_write (struct smsc9420_pdata*) ; 
- int smsc9420_reg_read (struct smsc9420_pdata*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  smsc9420_reg_write (struct smsc9420_pdata*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  smsc9420_set_mac_address (struct net_device*) ; 
- int /*<<< orphan*/  smsc_dbg (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  smsc_warn (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+typedef int u32 ;
+struct smsc9420_pdata {int software_irq_signal; int int_lock; int napi; int phy_dev; } ;
+struct net_device {int irq; int dev_addr; } ;
+
+
+ int BUG_ON (int) ;
+ int BUS_CFG ;
+ int BUS_CFG_RXTXWEIGHT_4_1 ;
+ int BUS_MODE ;
+ int BUS_MODE_DBO_ ;
+ int BUS_MODE_DMA_BURST_LENGTH_16 ;
+ int DMAC_CONTROL ;
+ int DMAC_CONTROL_OSF_ ;
+ int DMAC_CONTROL_SF_ ;
+ int DMAC_CONTROL_SR_ ;
+ int DMAC_CONTROL_ST_ ;
+ int DMAC_INTR_ENA ;
+ int DMAC_INTR_ENA_NIS_ ;
+ int DMAC_INTR_ENA_RX_ ;
+ int DMAC_INTR_ENA_TX_ ;
+ int DRV_NAME ;
+ int EADDRNOTAVAIL ;
+ int ENODEV ;
+ int ENOMEM ;
+ int GPIO_CFG ;
+ int GPIO_CFG_LED_1_ ;
+ int GPIO_CFG_LED_2_ ;
+ int GPIO_CFG_LED_3_ ;
+ int IFUP ;
+ int INT_CFG ;
+ int INT_CFG_INT_DEAS_MASK ;
+ int INT_CFG_IRQ_EN_ ;
+ int INT_CTL ;
+ int INT_CTL_SW_INT_EN_ ;
+ int INT_DEAS_TIME ;
+ int INT_STAT ;
+ int IRQF_DISABLED ;
+ int IRQF_SHARED ;
+ int MAC_CR ;
+ int MAC_CR_RXEN_ ;
+ int MAC_CR_TXEN_ ;
+ int RX_POLL_DEMAND ;
+ int free_irq (int ,struct smsc9420_pdata*) ;
+ int is_valid_ether_addr (int ) ;
+ int msleep (int) ;
+ int napi_enable (int *) ;
+ struct smsc9420_pdata* netdev_priv (struct net_device*) ;
+ int netif_carrier_off (struct net_device*) ;
+ int netif_wake_queue (struct net_device*) ;
+ int phy_start (int ) ;
+ scalar_t__ request_irq (int ,int ,int,int ,struct smsc9420_pdata*) ;
+ int smsc9420_alloc_rx_ring (struct smsc9420_pdata*) ;
+ int smsc9420_alloc_tx_ring (struct smsc9420_pdata*) ;
+ int smsc9420_dmac_soft_reset (struct smsc9420_pdata*) ;
+ int smsc9420_free_rx_ring (struct smsc9420_pdata*) ;
+ int smsc9420_free_tx_ring (struct smsc9420_pdata*) ;
+ int smsc9420_isr ;
+ int smsc9420_mii_init (struct net_device*) ;
+ int smsc9420_pci_flush_write (struct smsc9420_pdata*) ;
+ int smsc9420_reg_read (struct smsc9420_pdata*,int ) ;
+ int smsc9420_reg_write (struct smsc9420_pdata*,int ,int) ;
+ int smsc9420_set_mac_address (struct net_device*) ;
+ int smsc_dbg (int ,char*,int ) ;
+ int smsc_warn (int ,char*,...) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static int smsc9420_open(struct net_device *dev)
 {
-	struct smsc9420_pdata *pd;
-	u32 bus_mode, mac_cr, dmac_control, int_cfg, dma_intr_ena, int_ctl;
-	unsigned long flags;
-	int result = 0, timeout;
+ struct smsc9420_pdata *pd;
+ u32 bus_mode, mac_cr, dmac_control, int_cfg, dma_intr_ena, int_ctl;
+ unsigned long flags;
+ int result = 0, timeout;
 
-	BUG_ON(!dev);
-	pd = netdev_priv(dev);
-	BUG_ON(!pd);
+ BUG_ON(!dev);
+ pd = netdev_priv(dev);
+ BUG_ON(!pd);
 
-	if (!is_valid_ether_addr(dev->dev_addr)) {
-		smsc_warn(IFUP, "dev_addr is not a valid MAC address");
-		result = -EADDRNOTAVAIL;
-		goto out_0;
-	}
+ if (!is_valid_ether_addr(dev->dev_addr)) {
+  smsc_warn(IFUP, "dev_addr is not a valid MAC address");
+  result = -EADDRNOTAVAIL;
+  goto out_0;
+ }
 
-	netif_carrier_off(dev);
+ netif_carrier_off(dev);
 
-	/* disable, mask and acknowlege all interrupts */
-	spin_lock_irqsave(&pd->int_lock, flags);
-	int_cfg = smsc9420_reg_read(pd, INT_CFG) & (~INT_CFG_IRQ_EN_);
-	smsc9420_reg_write(pd, INT_CFG, int_cfg);
-	smsc9420_reg_write(pd, INT_CTL, 0);
-	spin_unlock_irqrestore(&pd->int_lock, flags);
-	smsc9420_reg_write(pd, DMAC_INTR_ENA, 0);
-	smsc9420_reg_write(pd, INT_STAT, 0xFFFFFFFF);
-	smsc9420_pci_flush_write(pd);
 
-	if (request_irq(dev->irq, smsc9420_isr, IRQF_SHARED | IRQF_DISABLED,
-			DRV_NAME, pd)) {
-		smsc_warn(IFUP, "Unable to use IRQ = %d", dev->irq);
-		result = -ENODEV;
-		goto out_0;
-	}
+ spin_lock_irqsave(&pd->int_lock, flags);
+ int_cfg = smsc9420_reg_read(pd, INT_CFG) & (~INT_CFG_IRQ_EN_);
+ smsc9420_reg_write(pd, INT_CFG, int_cfg);
+ smsc9420_reg_write(pd, INT_CTL, 0);
+ spin_unlock_irqrestore(&pd->int_lock, flags);
+ smsc9420_reg_write(pd, DMAC_INTR_ENA, 0);
+ smsc9420_reg_write(pd, INT_STAT, 0xFFFFFFFF);
+ smsc9420_pci_flush_write(pd);
 
-	smsc9420_dmac_soft_reset(pd);
+ if (request_irq(dev->irq, smsc9420_isr, IRQF_SHARED | IRQF_DISABLED,
+   DRV_NAME, pd)) {
+  smsc_warn(IFUP, "Unable to use IRQ = %d", dev->irq);
+  result = -ENODEV;
+  goto out_0;
+ }
 
-	/* make sure MAC_CR is sane */
-	smsc9420_reg_write(pd, MAC_CR, 0);
+ smsc9420_dmac_soft_reset(pd);
 
-	smsc9420_set_mac_address(dev);
 
-	/* Configure GPIO pins to drive LEDs */
-	smsc9420_reg_write(pd, GPIO_CFG,
-		(GPIO_CFG_LED_3_ | GPIO_CFG_LED_2_ | GPIO_CFG_LED_1_));
+ smsc9420_reg_write(pd, MAC_CR, 0);
 
-	bus_mode = BUS_MODE_DMA_BURST_LENGTH_16;
+ smsc9420_set_mac_address(dev);
 
-#ifdef __BIG_ENDIAN
-	bus_mode |= BUS_MODE_DBO_;
-#endif
 
-	smsc9420_reg_write(pd, BUS_MODE, bus_mode);
+ smsc9420_reg_write(pd, GPIO_CFG,
+  (GPIO_CFG_LED_3_ | GPIO_CFG_LED_2_ | GPIO_CFG_LED_1_));
 
-	smsc9420_pci_flush_write(pd);
+ bus_mode = BUS_MODE_DMA_BURST_LENGTH_16;
 
-	/* set bus master bridge arbitration priority for Rx and TX DMA */
-	smsc9420_reg_write(pd, BUS_CFG, BUS_CFG_RXTXWEIGHT_4_1);
 
-	smsc9420_reg_write(pd, DMAC_CONTROL,
-		(DMAC_CONTROL_SF_ | DMAC_CONTROL_OSF_));
 
-	smsc9420_pci_flush_write(pd);
 
-	/* test the IRQ connection to the ISR */
-	smsc_dbg(IFUP, "Testing ISR using IRQ %d", dev->irq);
-	pd->software_irq_signal = false;
 
-	spin_lock_irqsave(&pd->int_lock, flags);
-	/* configure interrupt deassertion timer and enable interrupts */
-	int_cfg = smsc9420_reg_read(pd, INT_CFG) | INT_CFG_IRQ_EN_;
-	int_cfg &= ~(INT_CFG_INT_DEAS_MASK);
-	int_cfg |= (INT_DEAS_TIME & INT_CFG_INT_DEAS_MASK);
-	smsc9420_reg_write(pd, INT_CFG, int_cfg);
+ smsc9420_reg_write(pd, BUS_MODE, bus_mode);
 
-	/* unmask software interrupt */
-	int_ctl = smsc9420_reg_read(pd, INT_CTL) | INT_CTL_SW_INT_EN_;
-	smsc9420_reg_write(pd, INT_CTL, int_ctl);
-	spin_unlock_irqrestore(&pd->int_lock, flags);
-	smsc9420_pci_flush_write(pd);
+ smsc9420_pci_flush_write(pd);
 
-	timeout = 1000;
-	while (timeout--) {
-		if (pd->software_irq_signal)
-			break;
-		msleep(1);
-	}
 
-	/* disable interrupts */
-	spin_lock_irqsave(&pd->int_lock, flags);
-	int_cfg = smsc9420_reg_read(pd, INT_CFG) & (~INT_CFG_IRQ_EN_);
-	smsc9420_reg_write(pd, INT_CFG, int_cfg);
-	spin_unlock_irqrestore(&pd->int_lock, flags);
+ smsc9420_reg_write(pd, BUS_CFG, BUS_CFG_RXTXWEIGHT_4_1);
 
-	if (!pd->software_irq_signal) {
-		smsc_warn(IFUP, "ISR failed signaling test");
-		result = -ENODEV;
-		goto out_free_irq_1;
-	}
+ smsc9420_reg_write(pd, DMAC_CONTROL,
+  (DMAC_CONTROL_SF_ | DMAC_CONTROL_OSF_));
 
-	smsc_dbg(IFUP, "ISR passed test using IRQ %d", dev->irq);
+ smsc9420_pci_flush_write(pd);
 
-	result = smsc9420_alloc_tx_ring(pd);
-	if (result) {
-		smsc_warn(IFUP, "Failed to Initialize tx dma ring");
-		result = -ENOMEM;
-		goto out_free_irq_1;
-	}
 
-	result = smsc9420_alloc_rx_ring(pd);
-	if (result) {
-		smsc_warn(IFUP, "Failed to Initialize rx dma ring");
-		result = -ENOMEM;
-		goto out_free_tx_ring_2;
-	}
+ smsc_dbg(IFUP, "Testing ISR using IRQ %d", dev->irq);
+ pd->software_irq_signal = 0;
 
-	result = smsc9420_mii_init(dev);
-	if (result) {
-		smsc_warn(IFUP, "Failed to initialize Phy");
-		result = -ENODEV;
-		goto out_free_rx_ring_3;
-	}
+ spin_lock_irqsave(&pd->int_lock, flags);
 
-	/* Bring the PHY up */
-	phy_start(pd->phy_dev);
+ int_cfg = smsc9420_reg_read(pd, INT_CFG) | INT_CFG_IRQ_EN_;
+ int_cfg &= ~(INT_CFG_INT_DEAS_MASK);
+ int_cfg |= (INT_DEAS_TIME & INT_CFG_INT_DEAS_MASK);
+ smsc9420_reg_write(pd, INT_CFG, int_cfg);
 
-	napi_enable(&pd->napi);
 
-	/* start tx and rx */
-	mac_cr = smsc9420_reg_read(pd, MAC_CR) | MAC_CR_TXEN_ | MAC_CR_RXEN_;
-	smsc9420_reg_write(pd, MAC_CR, mac_cr);
+ int_ctl = smsc9420_reg_read(pd, INT_CTL) | INT_CTL_SW_INT_EN_;
+ smsc9420_reg_write(pd, INT_CTL, int_ctl);
+ spin_unlock_irqrestore(&pd->int_lock, flags);
+ smsc9420_pci_flush_write(pd);
 
-	dmac_control = smsc9420_reg_read(pd, DMAC_CONTROL);
-	dmac_control |= DMAC_CONTROL_ST_ | DMAC_CONTROL_SR_;
-	smsc9420_reg_write(pd, DMAC_CONTROL, dmac_control);
-	smsc9420_pci_flush_write(pd);
+ timeout = 1000;
+ while (timeout--) {
+  if (pd->software_irq_signal)
+   break;
+  msleep(1);
+ }
 
-	dma_intr_ena = smsc9420_reg_read(pd, DMAC_INTR_ENA);
-	dma_intr_ena |=
-		(DMAC_INTR_ENA_TX_ | DMAC_INTR_ENA_RX_ | DMAC_INTR_ENA_NIS_);
-	smsc9420_reg_write(pd, DMAC_INTR_ENA, dma_intr_ena);
-	smsc9420_pci_flush_write(pd);
 
-	netif_wake_queue(dev);
+ spin_lock_irqsave(&pd->int_lock, flags);
+ int_cfg = smsc9420_reg_read(pd, INT_CFG) & (~INT_CFG_IRQ_EN_);
+ smsc9420_reg_write(pd, INT_CFG, int_cfg);
+ spin_unlock_irqrestore(&pd->int_lock, flags);
 
-	smsc9420_reg_write(pd, RX_POLL_DEMAND, 1);
+ if (!pd->software_irq_signal) {
+  smsc_warn(IFUP, "ISR failed signaling test");
+  result = -ENODEV;
+  goto out_free_irq_1;
+ }
 
-	/* enable interrupts */
-	spin_lock_irqsave(&pd->int_lock, flags);
-	int_cfg = smsc9420_reg_read(pd, INT_CFG) | INT_CFG_IRQ_EN_;
-	smsc9420_reg_write(pd, INT_CFG, int_cfg);
-	spin_unlock_irqrestore(&pd->int_lock, flags);
+ smsc_dbg(IFUP, "ISR passed test using IRQ %d", dev->irq);
 
-	return 0;
+ result = smsc9420_alloc_tx_ring(pd);
+ if (result) {
+  smsc_warn(IFUP, "Failed to Initialize tx dma ring");
+  result = -ENOMEM;
+  goto out_free_irq_1;
+ }
+
+ result = smsc9420_alloc_rx_ring(pd);
+ if (result) {
+  smsc_warn(IFUP, "Failed to Initialize rx dma ring");
+  result = -ENOMEM;
+  goto out_free_tx_ring_2;
+ }
+
+ result = smsc9420_mii_init(dev);
+ if (result) {
+  smsc_warn(IFUP, "Failed to initialize Phy");
+  result = -ENODEV;
+  goto out_free_rx_ring_3;
+ }
+
+
+ phy_start(pd->phy_dev);
+
+ napi_enable(&pd->napi);
+
+
+ mac_cr = smsc9420_reg_read(pd, MAC_CR) | MAC_CR_TXEN_ | MAC_CR_RXEN_;
+ smsc9420_reg_write(pd, MAC_CR, mac_cr);
+
+ dmac_control = smsc9420_reg_read(pd, DMAC_CONTROL);
+ dmac_control |= DMAC_CONTROL_ST_ | DMAC_CONTROL_SR_;
+ smsc9420_reg_write(pd, DMAC_CONTROL, dmac_control);
+ smsc9420_pci_flush_write(pd);
+
+ dma_intr_ena = smsc9420_reg_read(pd, DMAC_INTR_ENA);
+ dma_intr_ena |=
+  (DMAC_INTR_ENA_TX_ | DMAC_INTR_ENA_RX_ | DMAC_INTR_ENA_NIS_);
+ smsc9420_reg_write(pd, DMAC_INTR_ENA, dma_intr_ena);
+ smsc9420_pci_flush_write(pd);
+
+ netif_wake_queue(dev);
+
+ smsc9420_reg_write(pd, RX_POLL_DEMAND, 1);
+
+
+ spin_lock_irqsave(&pd->int_lock, flags);
+ int_cfg = smsc9420_reg_read(pd, INT_CFG) | INT_CFG_IRQ_EN_;
+ smsc9420_reg_write(pd, INT_CFG, int_cfg);
+ spin_unlock_irqrestore(&pd->int_lock, flags);
+
+ return 0;
 
 out_free_rx_ring_3:
-	smsc9420_free_rx_ring(pd);
+ smsc9420_free_rx_ring(pd);
 out_free_tx_ring_2:
-	smsc9420_free_tx_ring(pd);
+ smsc9420_free_tx_ring(pd);
 out_free_irq_1:
-	free_irq(dev->irq, pd);
+ free_irq(dev->irq, pd);
 out_0:
-	return result;
+ return result;
 }

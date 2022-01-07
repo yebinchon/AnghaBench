@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rewriteConfigState {int dummy; } ;
-typedef  int /*<<< orphan*/  cwd ;
+typedef int cwd ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * getcwd (char*,int) ; 
- int /*<<< orphan*/  rewriteConfigMarkAsProcessed (struct rewriteConfigState*,char*) ; 
- int /*<<< orphan*/  rewriteConfigStringOption (struct rewriteConfigState*,char*,char*,int /*<<< orphan*/ *) ; 
+
+ int * getcwd (char*,int) ;
+ int rewriteConfigMarkAsProcessed (struct rewriteConfigState*,char*) ;
+ int rewriteConfigStringOption (struct rewriteConfigState*,char*,char*,int *) ;
 
 void rewriteConfigDirOption(struct rewriteConfigState *state) {
     char cwd[1024];
 
-    if (getcwd(cwd,sizeof(cwd)) == NULL) {
+    if (getcwd(cwd,sizeof(cwd)) == ((void*)0)) {
         rewriteConfigMarkAsProcessed(state,"dir");
-        return; /* no rewrite on error. */
+        return;
     }
-    rewriteConfigStringOption(state,"dir",cwd,NULL);
+    rewriteConfigStringOption(state,"dir",cwd,((void*)0));
 }

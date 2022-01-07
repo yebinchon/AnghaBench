@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ stype; TYPE_1__* silencers; scalar_t__ all_alarms; } ;
-struct TYPE_3__ {int /*<<< orphan*/  families; int /*<<< orphan*/  hosts; int /*<<< orphan*/  contexts; int /*<<< orphan*/  charts; int /*<<< orphan*/  alarms; struct TYPE_3__* next; } ;
-typedef  TYPE_1__ SILENCER ;
-typedef  int /*<<< orphan*/  BUFFER ;
+struct TYPE_3__ {int families; int hosts; int contexts; int charts; int alarms; struct TYPE_3__* next; } ;
+typedef TYPE_1__ SILENCER ;
+typedef int BUFFER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HEALTH_ALARM_KEY ; 
- int /*<<< orphan*/  HEALTH_CHART_KEY ; 
- int /*<<< orphan*/  HEALTH_CONTEXT_KEY ; 
- int /*<<< orphan*/  HEALTH_FAMILIES_KEY ; 
- int /*<<< orphan*/  HEALTH_HOST_KEY ; 
- scalar_t__ STYPE_DISABLE_ALARMS ; 
- scalar_t__ STYPE_NONE ; 
- int /*<<< orphan*/  buffer_sprintf (int /*<<< orphan*/ *,char*,char*,char*) ; 
- int /*<<< orphan*/  buffer_strcat (int /*<<< orphan*/ *,char*) ; 
- int health_silencers2json_entry (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ likely (int) ; 
- TYPE_2__* silencers ; 
+
+ int HEALTH_ALARM_KEY ;
+ int HEALTH_CHART_KEY ;
+ int HEALTH_CONTEXT_KEY ;
+ int HEALTH_FAMILIES_KEY ;
+ int HEALTH_HOST_KEY ;
+ scalar_t__ STYPE_DISABLE_ALARMS ;
+ scalar_t__ STYPE_NONE ;
+ int buffer_sprintf (int *,char*,char*,char*) ;
+ int buffer_strcat (int *,char*) ;
+ int health_silencers2json_entry (int *,int ,int ,int) ;
+ scalar_t__ likely (int) ;
+ TYPE_2__* silencers ;
 
 void health_silencers2json(BUFFER *wb) {
     buffer_sprintf(wb, "{\n\t\"all\": %s,"

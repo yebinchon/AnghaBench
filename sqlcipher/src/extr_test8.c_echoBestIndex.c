@@ -1,56 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct sqlite3_index_constraint_usage {int argvIndex; int omit; } ;
-struct sqlite3_index_constraint {int iColumn; int op; int /*<<< orphan*/  usable; } ;
-typedef  int /*<<< orphan*/  sqlite3_vtab ;
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-struct TYPE_9__ {int nConstraint; int nOrderBy; int orderByConsumed; char* idxStr; int needToFreeIdxStr; double estimatedCost; int /*<<< orphan*/  idxNum; TYPE_1__* aOrderBy; struct sqlite3_index_constraint_usage* aConstraintUsage; struct sqlite3_index_constraint* aConstraint; } ;
-typedef  TYPE_2__ sqlite3_index_info ;
-struct TYPE_10__ {char* zTableName; char** aCol; int /*<<< orphan*/ * interp; scalar_t__* aIndex; int /*<<< orphan*/  db; } ;
-typedef  TYPE_3__ echo_vtab ;
-typedef  int /*<<< orphan*/  Tcl_Interp ;
+struct sqlite3_index_constraint {int iColumn; int op; int usable; } ;
+typedef int sqlite3_vtab ;
+typedef int sqlite3_stmt ;
+struct TYPE_9__ {int nConstraint; int nOrderBy; int orderByConsumed; char* idxStr; int needToFreeIdxStr; double estimatedCost; int idxNum; TYPE_1__* aOrderBy; struct sqlite3_index_constraint_usage* aConstraintUsage; struct sqlite3_index_constraint* aConstraint; } ;
+typedef TYPE_2__ sqlite3_index_info ;
+struct TYPE_10__ {char* zTableName; char** aCol; int * interp; scalar_t__* aIndex; int db; } ;
+typedef TYPE_3__ echo_vtab ;
+typedef int Tcl_Interp ;
 struct TYPE_8__ {size_t iColumn; scalar_t__ desc; } ;
 
-/* Variables and functions */
- int SQLITE_ERROR ; 
-#define  SQLITE_INDEX_CONSTRAINT_EQ 136 
-#define  SQLITE_INDEX_CONSTRAINT_GE 135 
-#define  SQLITE_INDEX_CONSTRAINT_GLOB 134 
-#define  SQLITE_INDEX_CONSTRAINT_GT 133 
-#define  SQLITE_INDEX_CONSTRAINT_LE 132 
-#define  SQLITE_INDEX_CONSTRAINT_LIKE 131 
-#define  SQLITE_INDEX_CONSTRAINT_LT 130 
-#define  SQLITE_INDEX_CONSTRAINT_MATCH 129 
-#define  SQLITE_INDEX_CONSTRAINT_REGEXP 128 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  TCL_GLOBAL_ONLY ; 
- scalar_t__ Tcl_GetVar (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  appendToEchoModule (int /*<<< orphan*/ *,char*) ; 
- double atof (scalar_t__) ; 
- char* echoSelectList (TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  hashString (char*) ; 
- scalar_t__ simulateVtabError (TYPE_3__*,char*) ; 
- int sqlite3_column_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,char const*,...) ; 
- int sqlite3_prepare (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_step (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  string_concat (char**,char*,int,int*) ; 
+
+ int SQLITE_ERROR ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int TCL_GLOBAL_ONLY ;
+ scalar_t__ Tcl_GetVar (int *,char*,int ) ;
+ int appendToEchoModule (int *,char*) ;
+ double atof (scalar_t__) ;
+ char* echoSelectList (TYPE_3__*,TYPE_2__*) ;
+ int hashString (char*) ;
+ scalar_t__ simulateVtabError (TYPE_3__*,char*) ;
+ int sqlite3_column_int (int *,int ) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,char const*,...) ;
+ int sqlite3_prepare (int ,char*,int,int **,int ) ;
+ int sqlite3_step (int *) ;
+ int string_concat (char**,char*,int,int*) ;
 
 __attribute__((used)) static int echoBestIndex(sqlite3_vtab *tab, sqlite3_index_info *pIdxInfo){
   int ii;
@@ -77,11 +68,11 @@ __attribute__((used)) static int echoBestIndex(sqlite3_vtab *tab, sqlite3_index_
     return SQLITE_ERROR;
   }
 
-  /* Determine the number of rows in the table and store this value in local
-  ** variable nRow. The 'estimated-cost' of the scan will be the number of
-  ** rows in the table for a linear scan, or the log (base 2) of the 
-  ** number of rows if the proposed scan uses an index.  
-  */
+
+
+
+
+
   if( Tcl_GetVar(interp, "echo_module_cost", TCL_GLOBAL_ONLY) ){
     cost = atof(Tcl_GetVar(interp, "echo_module_cost", TCL_GLOBAL_ONLY));
     useCost = 1;
@@ -124,35 +115,35 @@ __attribute__((used)) static int echoBestIndex(sqlite3_vtab *tab, sqlite3_index_
       char *zOp = 0;
       useIdx = 1;
       switch( pConstraint->op ){
-        case SQLITE_INDEX_CONSTRAINT_EQ:
+        case 136:
           zOp = "="; break;
-        case SQLITE_INDEX_CONSTRAINT_LT:
+        case 130:
           zOp = "<"; break;
-        case SQLITE_INDEX_CONSTRAINT_GT:
+        case 133:
           zOp = ">"; break;
-        case SQLITE_INDEX_CONSTRAINT_LE:
+        case 132:
           zOp = "<="; break;
-        case SQLITE_INDEX_CONSTRAINT_GE:
+        case 135:
           zOp = ">="; break;
-        case SQLITE_INDEX_CONSTRAINT_MATCH:
-          /* Purposely translate the MATCH operator into a LIKE, which
-          ** will be used by the next block of code to construct a new
-          ** query.  It should also be noted here that the next block
-          ** of code requires the first letter of this operator to be
-          ** in upper-case to trigger the special MATCH handling (i.e.
-          ** wrapping the bound parameter with literal '%'s).
-          */
+        case 129:
+
+
+
+
+
+
+
           zOp = "LIKE"; break;
-        case SQLITE_INDEX_CONSTRAINT_LIKE:
+        case 131:
           zOp = "like"; break;
-        case SQLITE_INDEX_CONSTRAINT_GLOB:
+        case 134:
           zOp = "glob"; break;
-        case SQLITE_INDEX_CONSTRAINT_REGEXP:
+        case 128:
           zOp = "regexp"; break;
       }
       if( zOp ){
         if( zOp[0]=='L' ){
-          zNew = sqlite3_mprintf(" %s %s LIKE (SELECT '%%'||?||'%%')", 
+          zNew = sqlite3_mprintf(" %s %s LIKE (SELECT '%%'||?||'%%')",
               zSep, zNewCol);
         } else {
           zNew = sqlite3_mprintf(" %s %s %s ?", zSep, zNewCol, zOp);
@@ -165,10 +156,10 @@ __attribute__((used)) static int echoBestIndex(sqlite3_vtab *tab, sqlite3_index_
     }
   }
 
-  /* If there is only one term in the ORDER BY clause, and it is
-  ** on a column that this virtual table has an index for, then consume 
-  ** the ORDER BY clause.
-  */
+
+
+
+
   if( pIdxInfo->nOrderBy==1 && (
         pIdxInfo->aOrderBy->iColumn<0 ||
         pVtab->aIndex[pIdxInfo->aOrderBy->iColumn]) ){
@@ -192,7 +183,7 @@ __attribute__((used)) static int echoBestIndex(sqlite3_vtab *tab, sqlite3_index_
   if( useCost ){
     pIdxInfo->estimatedCost = cost;
   }else if( useIdx ){
-    /* Approximation of log2(nRow). */
+
     for( ii=0; ii<(sizeof(int)*8)-1; ii++ ){
       if( nRow & (1<<ii) ){
         pIdxInfo->estimatedCost = (double)ii;

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  new_band_noise ;
-struct TYPE_7__ {double* matrix_b; double* vector_b; double* matrix_c; float noise_floor; scalar_t__ track_noise; int /*<<< orphan*/  matrix_a; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int new_band_noise ;
+struct TYPE_7__ {double* matrix_b; double* vector_b; double* matrix_c; float noise_floor; scalar_t__ track_noise; int matrix_a; } ;
 struct TYPE_6__ {int* band_noise; } ;
-typedef  TYPE_1__ DeNoiseChannel ;
-typedef  TYPE_2__ AudioFFTDeNoiseContext ;
+typedef TYPE_1__ DeNoiseChannel ;
+typedef TYPE_2__ AudioFFTDeNoiseContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_INFO ; 
- int av_clip (int,int,int) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,...) ; 
- int lrint (double) ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
- int /*<<< orphan*/  solve (int /*<<< orphan*/ ,double*,int) ; 
+
+ int AV_LOG_INFO ;
+ int av_clip (int,int,int) ;
+ int av_log (TYPE_2__*,int ,char*,...) ;
+ int lrint (double) ;
+ int memcpy (int*,int*,int) ;
+ int solve (int ,double*,int) ;
 
 __attribute__((used)) static void set_noise_profile(AudioFFTDeNoiseContext *s,
                               DeNoiseChannel *dnch,

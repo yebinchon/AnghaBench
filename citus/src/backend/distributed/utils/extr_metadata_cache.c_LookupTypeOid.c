@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Value ;
-typedef  int /*<<< orphan*/  TypeName ;
-typedef  int /*<<< orphan*/ * Type ;
-struct TYPE_2__ {int /*<<< orphan*/  oid; } ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  List ;
-typedef  TYPE_1__* Form_pg_type ;
 
-/* Variables and functions */
- scalar_t__ GETSTRUCT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HeapTupleGetOid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InvalidOid ; 
- int /*<<< orphan*/ * LookupTypeName (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ReleaseSysCache (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * list_make2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * makeString (char*) ; 
- int /*<<< orphan*/ * makeTypeNameFromNameList (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int Value ;
+typedef int TypeName ;
+typedef int * Type ;
+struct TYPE_2__ {int oid; } ;
+typedef int Oid ;
+typedef int List ;
+typedef TYPE_1__* Form_pg_type ;
+
+
+ scalar_t__ GETSTRUCT (int *) ;
+ int HeapTupleGetOid (int *) ;
+ int InvalidOid ;
+ int * LookupTypeName (int *,int *,int *,int) ;
+ int ReleaseSysCache (int *) ;
+ int * list_make2 (int *,int *) ;
+ int * makeString (char*) ;
+ int * makeTypeNameFromNameList (int *) ;
 
 __attribute__((used)) static Oid
 LookupTypeOid(char *typeNameString)
 {
-	Value *schemaName = makeString("pg_catalog");
-	Value *typeName = makeString(typeNameString);
-	List *qualifiedName = list_make2(schemaName, typeName);
-	TypeName *enumTypeName = makeTypeNameFromNameList(qualifiedName);
+ Value *schemaName = makeString("pg_catalog");
+ Value *typeName = makeString(typeNameString);
+ List *qualifiedName = list_make2(schemaName, typeName);
+ TypeName *enumTypeName = makeTypeNameFromNameList(qualifiedName);
 
-	Oid nodeRoleTypId;
+ Oid nodeRoleTypId;
 
-	/* typenameTypeId but instead of raising an error return InvalidOid */
-	Type tup = LookupTypeName(NULL, enumTypeName, NULL, false);
-	if (tup == NULL)
-	{
-		return InvalidOid;
-	}
 
-#if PG_VERSION_NUM >= 120000
-	nodeRoleTypId = ((Form_pg_type) GETSTRUCT(tup))->oid;
-#else
-	nodeRoleTypId = HeapTupleGetOid(tup);
-#endif
-	ReleaseSysCache(tup);
+ Type tup = LookupTypeName(((void*)0), enumTypeName, ((void*)0), 0);
+ if (tup == ((void*)0))
+ {
+  return InvalidOid;
+ }
 
-	return nodeRoleTypId;
+
+
+
+ nodeRoleTypId = HeapTupleGetOid(tup);
+
+ ReleaseSysCache(tup);
+
+ return nodeRoleTypId;
 }

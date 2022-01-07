@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct lwan_response {int /*<<< orphan*/  mime_type; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct lwan_response {int mime_type; } ;
 struct lwan_request {TYPE_1__* conn; } ;
-struct lwan_lua_state {int /*<<< orphan*/  L; } ;
-struct lwan_lua_priv {int /*<<< orphan*/  default_type; } ;
+struct lwan_lua_state {int L; } ;
+struct lwan_lua_priv {int default_type; } ;
 struct cache {int dummy; } ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int lua_Integer ;
-typedef  enum lwan_http_status { ____Placeholder_lwan_http_status } lwan_http_status ;
-struct TYPE_2__ {int /*<<< orphan*/  coro; } ;
+typedef int lua_State ;
+typedef int lua_Integer ;
+typedef enum lwan_http_status { ____Placeholder_lwan_http_status } lwan_http_status ;
+struct TYPE_2__ {int coro; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONN_CORO_YIELD ; 
- int HTTP_INTERNAL_ERROR ; 
- int HTTP_NOT_FOUND ; 
- int HTTP_OK ; 
-#define  LUA_YIELD 128 
- scalar_t__ UNLIKELY (int) ; 
- scalar_t__ cache_coro_get_and_ref_entry (struct cache*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  coro_yield (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_handler_function (int /*<<< orphan*/ *,struct lwan_request*) ; 
- struct cache* get_or_create_cache (struct lwan_lua_priv*) ; 
- int /*<<< orphan*/  lua_isnil (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_isnumber (int /*<<< orphan*/ *,int) ; 
- int lua_resume (int /*<<< orphan*/ *,int) ; 
- int lua_tointeger (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_tostring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lwan_lua_state_push_request (int /*<<< orphan*/ *,struct lwan_request*) ; 
- int /*<<< orphan*/  lwan_status_error (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * push_newthread (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CONN_CORO_YIELD ;
+ int HTTP_INTERNAL_ERROR ;
+ int HTTP_NOT_FOUND ;
+ int HTTP_OK ;
+
+ scalar_t__ UNLIKELY (int) ;
+ scalar_t__ cache_coro_get_and_ref_entry (struct cache*,int ,char*) ;
+ int coro_yield (int ,int ) ;
+ int get_handler_function (int *,struct lwan_request*) ;
+ struct cache* get_or_create_cache (struct lwan_lua_priv*) ;
+ int lua_isnil (int *,int) ;
+ int lua_isnumber (int *,int) ;
+ int lua_resume (int *,int) ;
+ int lua_tointeger (int *,int) ;
+ int lua_tostring (int *,int) ;
+ int lwan_lua_state_push_request (int *,struct lwan_request*) ;
+ int lwan_status_error (char*,int ) ;
+ int * push_newthread (int ,int ) ;
 
 __attribute__((used)) static enum lwan_http_status lua_handle_request(struct lwan_request *request,
                                                 struct lwan_response *response,
@@ -67,9 +67,9 @@ __attribute__((used)) static enum lwan_http_status lua_handle_request(struct lwa
     int n_arguments = 1;
     lwan_lua_state_push_request(L, request);
     response->mime_type = priv->default_type;
-    while (true) {
+    while (1) {
         switch (lua_resume(L, n_arguments)) {
-        case LUA_YIELD:
+        case 128:
             coro_yield(request->conn->coro, CONN_CORO_YIELD);
             n_arguments = 0;
             break;

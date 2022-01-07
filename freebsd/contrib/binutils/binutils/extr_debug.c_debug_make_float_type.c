@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct debug_handle {int dummy; } ;
-typedef  int /*<<< orphan*/  debug_type ;
+typedef int debug_type ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG_KIND_FLOAT ; 
- int /*<<< orphan*/  debug_make_type (struct debug_handle*,int /*<<< orphan*/ ,unsigned int) ; 
+
+ int DEBUG_KIND_FLOAT ;
+ int debug_make_type (struct debug_handle*,int ,unsigned int) ;
 
 debug_type
 debug_make_float_type (void *handle, unsigned int size)

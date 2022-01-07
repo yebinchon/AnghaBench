@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {struct nvkm_device* device; } ;
 struct nvkm_timer {TYPE_1__ subdev; } ;
 struct nvkm_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NV04_PTIMER_INTR_EN_0 ; 
- int /*<<< orphan*/  nvkm_wr32 (struct nvkm_device*,int /*<<< orphan*/ ,int) ; 
+
+ int NV04_PTIMER_INTR_EN_0 ;
+ int nvkm_wr32 (struct nvkm_device*,int ,int) ;
 
 void
 nv04_timer_alarm_fini(struct nvkm_timer *tmr)
 {
-	struct nvkm_device *device = tmr->subdev.device;
-	nvkm_wr32(device, NV04_PTIMER_INTR_EN_0, 0x00000000);
+ struct nvkm_device *device = tmr->subdev.device;
+ nvkm_wr32(device, NV04_PTIMER_INTR_EN_0, 0x00000000);
 }

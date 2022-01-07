@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
 struct TYPE_6__ {int* u; } ;
-typedef  TYPE_1__ dw128_t ;
+typedef TYPE_1__ dw128_t ;
 
-/* Variables and functions */
- int DSFMT_MSK1 ; 
- int DSFMT_MSK2 ; 
- int DSFMT_SL1 ; 
- int DSFMT_SR ; 
+
+ int DSFMT_MSK1 ;
+ int DSFMT_MSK2 ;
+ int DSFMT_SL1 ;
+ int DSFMT_SR ;
 
 __attribute__((used)) inline static void do_recursion(dw128_t *r, dw128_t *a, dw128_t * b,
-				dw128_t *lung) {
+    dw128_t *lung) {
     uint64_t t0, t1, L0, L1;
 
     t0 = a->u[0];

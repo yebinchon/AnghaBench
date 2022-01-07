@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct rx_ring_info {scalar_t__ data_addr; } ;
 
-/* Variables and functions */
- scalar_t__ ETH_HLEN ; 
- int /*<<< orphan*/  IS_ALIGNED (scalar_t__,int) ; 
- unsigned int copybreak ; 
+
+ scalar_t__ ETH_HLEN ;
+ int IS_ALIGNED (scalar_t__,int) ;
+ unsigned int copybreak ;
 
 __attribute__((used)) static inline bool needs_copy(const struct rx_ring_info *re,
-			      unsigned length)
+         unsigned length)
 {
-#ifndef CONFIG_HAVE_EFFICIENT_UNALIGNED_ACCESS
-	/* Some architectures need the IP header to be aligned */
-	if (!IS_ALIGNED(re->data_addr + ETH_HLEN, sizeof(u32)))
-		return true;
-#endif
-	return length < copybreak;
+
+
+ if (!IS_ALIGNED(re->data_addr + ETH_HLEN, sizeof(u32)))
+  return 1;
+
+ return length < copybreak;
 }

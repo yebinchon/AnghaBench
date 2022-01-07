@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* name; char* value; } ;
-typedef  TYPE_1__ OPLIST ;
+typedef TYPE_1__ OPLIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
- int /*<<< orphan*/ * ophead ; 
- TYPE_1__* opt_next () ; 
- int /*<<< orphan*/  pax_usage () ; 
- int /*<<< orphan*/  paxwarn (int,char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int fprintf (int ,char*,char*,char*) ;
+ int * ophead ;
+ TYPE_1__* opt_next () ;
+ int pax_usage () ;
+ int paxwarn (int,char*) ;
+ int stderr ;
 
 int
 bad_opt(void)
 {
-	OPLIST *opt;
+ OPLIST *opt;
 
-	if (ophead == NULL)
-		return(0);
-	/*
-	 * print all we were given
-	 */
-	paxwarn(1,"These format options are not supported");
-	while ((opt = opt_next()) != NULL)
-		(void)fprintf(stderr, "\t%s = %s\n", opt->name, opt->value);
-	pax_usage();
-	return(0);
+ if (ophead == ((void*)0))
+  return(0);
+
+
+
+ paxwarn(1,"These format options are not supported");
+ while ((opt = opt_next()) != ((void*)0))
+  (void)fprintf(stderr, "\t%s = %s\n", opt->name, opt->value);
+ pax_usage();
+ return(0);
 }

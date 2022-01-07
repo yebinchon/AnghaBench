@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned long S_IRGRP ; 
- unsigned long S_IROTH ; 
- unsigned long S_IRUSR ; 
- unsigned long S_IWGRP ; 
- unsigned long S_IWOTH ; 
- unsigned long S_IWUSR ; 
- unsigned long S_IXGRP ; 
- unsigned long S_IXOTH ; 
- unsigned long S_IXUSR ; 
- char ftypelet (unsigned long) ; 
- int /*<<< orphan*/  setst (unsigned long,char*) ; 
+ unsigned long S_IRGRP ;
+ unsigned long S_IROTH ;
+ unsigned long S_IRUSR ;
+ unsigned long S_IWGRP ;
+ unsigned long S_IWOTH ;
+ unsigned long S_IWUSR ;
+ unsigned long S_IXGRP ;
+ unsigned long S_IXOTH ;
+ unsigned long S_IXUSR ;
+ char ftypelet (unsigned long) ;
+ int setst (unsigned long,char*) ;
 
 void
 mode_string (unsigned long mode, char *str)

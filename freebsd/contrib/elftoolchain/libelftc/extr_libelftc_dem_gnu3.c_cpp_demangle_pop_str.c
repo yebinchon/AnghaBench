@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cpp_demangle_data {int /*<<< orphan*/  cur_output; } ;
 
-/* Variables and functions */
- int vector_str_pop (int /*<<< orphan*/ ) ; 
+
+
+
+struct cpp_demangle_data {int cur_output; } ;
+
+
+ int vector_str_pop (int ) ;
 
 __attribute__((used)) static int
 cpp_demangle_pop_str(struct cpp_demangle_data *ddata)
 {
 
-	if (ddata == NULL)
-		return (0);
+ if (ddata == ((void*)0))
+  return (0);
 
-	return (vector_str_pop(ddata->cur_output));
+ return (vector_str_pop(ddata->cur_output));
 }

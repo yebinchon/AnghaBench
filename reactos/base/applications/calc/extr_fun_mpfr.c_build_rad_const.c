@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mpfr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MPFR_DEFAULT_RND ; 
- int /*<<< orphan*/  mpfr_const_pi (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpfr_div_ui (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpfr_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpfr_mul_ui (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mpfr_t ;
+
+
+ int MPFR_DEFAULT_RND ;
+ int mpfr_const_pi (int ,int ) ;
+ int mpfr_div_ui (int ,int ,int,int ) ;
+ int mpfr_init (int ) ;
+ int mpfr_mul_ui (int ,int ,int,int ) ;
 
 __attribute__((used)) static void build_rad_const(
     mpfr_t *mp_pi,

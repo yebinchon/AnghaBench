@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct curltime {int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-struct Curl_tree {struct Curl_tree* larger; TYPE_1__* samep; int /*<<< orphan*/  smaller; int /*<<< orphan*/  key; struct Curl_tree* samen; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct curltime {int member_1; int member_0; } ;
+struct Curl_tree {struct Curl_tree* larger; TYPE_1__* samep; int smaller; int key; struct Curl_tree* samen; } ;
 struct TYPE_2__ {struct Curl_tree* samen; } ;
 
-/* Variables and functions */
- struct Curl_tree* Curl_splay (struct curltime,struct Curl_tree*) ; 
- scalar_t__ compare (struct curltime,int /*<<< orphan*/ ) ; 
+
+ struct Curl_tree* Curl_splay (struct curltime,struct Curl_tree*) ;
+ scalar_t__ compare (struct curltime,int ) ;
 
 struct Curl_tree *Curl_splaygetbest(struct curltime i,
                                     struct Curl_tree *t,
@@ -27,24 +27,24 @@ struct Curl_tree *Curl_splaygetbest(struct curltime i,
   struct Curl_tree *x;
 
   if(!t) {
-    *removed = NULL; /* none removed since there was no root */
-    return NULL;
+    *removed = ((void*)0);
+    return ((void*)0);
   }
 
-  /* find smallest */
+
   t = Curl_splay(tv_zero, t);
   if(compare(i, t->key) < 0) {
-    /* even the smallest is too big */
-    *removed = NULL;
+
+    *removed = ((void*)0);
     return t;
   }
 
-  /* FIRST! Check if there is a list with identical keys */
+
   x = t->samen;
   if(x != t) {
-    /* there is, pick one from the list */
 
-    /* 'x' is the new root node */
+
+
 
     x->key = t->key;
     x->larger = t->larger;
@@ -53,10 +53,10 @@ struct Curl_tree *Curl_splaygetbest(struct curltime i,
     t->samep->samen = x;
 
     *removed = t;
-    return x; /* new root */
+    return x;
   }
 
-  /* we splayed the tree to the smallest element, there is no smaller */
+
   x = t->larger;
   *removed = t;
 

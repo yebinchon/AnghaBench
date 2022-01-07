@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int FFABS (int) ; 
- int /*<<< orphan*/  NEXT_BYTE (int const*) ; 
- int SCREEN_HIGH ; 
- int SCREEN_WIDE ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  memcpy (int*,int const*,int) ; 
- int /*<<< orphan*/  memset (int*,unsigned int,int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int FFABS (int) ;
+ int NEXT_BYTE (int const*) ;
+ int SCREEN_HIGH ;
+ int SCREEN_WIDE ;
+ int av_assert0 (int) ;
+ int memcpy (int*,int const*,int) ;
+ int memset (int*,unsigned int,int) ;
 
 __attribute__((used)) static int decode_bmv_frame(const uint8_t *source, int src_len, uint8_t *frame, int frame_off)
 {
@@ -51,14 +51,6 @@ __attribute__((used)) static int decode_bmv_frame(const uint8_t *source, int src
     for (;;) {
         int shift = 0;
         flag = 0;
-
-        /* The mode/len decoding is a bit strange:
-         * values are coded as variable-length codes with nibble units,
-         * code end is signalled by two top bits in the nibble being nonzero.
-         * And since data is bytepacked and we read two nibbles at a time,
-         * we may get a nibble belonging to the next code.
-         * Hence this convoluted loop.
-         */
         if (!mode || (tmplen == 4)) {
             if (src < source || src >= source_end)
                 return AVERROR_INVALIDDATA;
@@ -80,8 +72,8 @@ __attribute__((used)) static int decode_bmv_frame(const uint8_t *source, int src
                     if (*src & 0xC)
                         break;
                 }
-                // two upper bits of the nibble is zero,
-                // so shift top nibble value down into their place
+
+
                 read_two_nibbles = 0;
                 shift += 2;
                 mask = (1 << shift) - 1;

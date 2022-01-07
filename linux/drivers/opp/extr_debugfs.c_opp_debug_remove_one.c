@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dev_pm_opp {int /*<<< orphan*/  dentry; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  debugfs_remove_recursive (int /*<<< orphan*/ ) ; 
+
+
+
+struct dev_pm_opp {int dentry; } ;
+
+
+ int debugfs_remove_recursive (int ) ;
 
 void opp_debug_remove_one(struct dev_pm_opp *opp)
 {
-	debugfs_remove_recursive(opp->dentry);
+ debugfs_remove_recursive(opp->dentry);
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct raw_message {int magic; struct msg_part* first; } ;
 struct msg_part {int dummy; } ;
 
-/* Variables and functions */
- int RM_INIT_MAGIC ; 
- int RM_TMP_MAGIC ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memset (struct raw_message*,int /*<<< orphan*/ ,int) ; 
- int msg_part_decref (struct msg_part*) ; 
- int /*<<< orphan*/  rwm_total_msgs ; 
+
+ int RM_INIT_MAGIC ;
+ int RM_TMP_MAGIC ;
+ int assert (int) ;
+ int memset (struct raw_message*,int ,int) ;
+ int msg_part_decref (struct msg_part*) ;
+ int rwm_total_msgs ;
 
 int rwm_free (struct raw_message *raw) {
   struct msg_part *mp = raw->first;

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct observe_property {int /*<<< orphan*/  async_value; scalar_t__ type; int /*<<< orphan*/  value; int /*<<< orphan*/  async_updating; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  m_option_free (scalar_t__,int /*<<< orphan*/ *) ; 
+
+
+
+struct observe_property {int async_value; scalar_t__ type; int value; int async_updating; } ;
+
+
+ int assert (int) ;
+ int m_option_free (scalar_t__,int *) ;
 
 __attribute__((used)) static void property_free(void *p)
 {

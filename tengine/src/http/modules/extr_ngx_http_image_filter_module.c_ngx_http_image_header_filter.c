@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_7__ ;
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-typedef  int off_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-struct TYPE_17__ {int len; int /*<<< orphan*/  data; } ;
+
+
+typedef struct TYPE_23__ TYPE_7__ ;
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+typedef int u_char ;
+typedef int off_t ;
+typedef int ngx_int_t ;
+struct TYPE_17__ {int len; int data; } ;
 struct TYPE_20__ {scalar_t__ status; int content_length_n; TYPE_3__* refresh; TYPE_1__ content_type; } ;
-struct TYPE_21__ {int main_filter_need_in_memory; scalar_t__ allow_ranges; TYPE_4__ headers_out; TYPE_2__* connection; int /*<<< orphan*/  pool; } ;
-typedef  TYPE_5__ ngx_http_request_t ;
+struct TYPE_21__ {int main_filter_need_in_memory; scalar_t__ allow_ranges; TYPE_4__ headers_out; TYPE_2__* connection; int pool; } ;
+typedef TYPE_5__ ngx_http_request_t ;
 struct TYPE_22__ {size_t length; } ;
-typedef  TYPE_6__ ngx_http_image_filter_ctx_t ;
+typedef TYPE_6__ ngx_http_image_filter_ctx_t ;
 struct TYPE_23__ {scalar_t__ filter; size_t buffer_size; } ;
-typedef  TYPE_7__ ngx_http_image_filter_conf_t ;
+typedef TYPE_7__ ngx_http_image_filter_conf_t ;
 struct TYPE_19__ {scalar_t__ hash; } ;
-struct TYPE_18__ {int /*<<< orphan*/  log; } ;
+struct TYPE_18__ {int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- scalar_t__ NGX_HTTP_IMAGE_OFF ; 
- scalar_t__ NGX_HTTP_NOT_MODIFIED ; 
- int /*<<< orphan*/  NGX_HTTP_UNSUPPORTED_MEDIA_TYPE ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- int /*<<< orphan*/  NGX_OK ; 
- TYPE_6__* ngx_http_get_module_ctx (TYPE_5__*,int /*<<< orphan*/ ) ; 
- TYPE_7__* ngx_http_get_module_loc_conf (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_image_filter_module ; 
- int /*<<< orphan*/  ngx_http_next_header_filter (TYPE_5__*) ; 
- int /*<<< orphan*/  ngx_http_set_ctx (TYPE_5__*,TYPE_6__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- TYPE_6__* ngx_pcalloc (int /*<<< orphan*/ ,int) ; 
- scalar_t__ ngx_strncasecmp (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+ int NGX_ERROR ;
+ scalar_t__ NGX_HTTP_IMAGE_OFF ;
+ scalar_t__ NGX_HTTP_NOT_MODIFIED ;
+ int NGX_HTTP_UNSUPPORTED_MEDIA_TYPE ;
+ int NGX_LOG_ERR ;
+ int NGX_OK ;
+ TYPE_6__* ngx_http_get_module_ctx (TYPE_5__*,int ) ;
+ TYPE_7__* ngx_http_get_module_loc_conf (TYPE_5__*,int ) ;
+ int ngx_http_image_filter_module ;
+ int ngx_http_next_header_filter (TYPE_5__*) ;
+ int ngx_http_set_ctx (TYPE_5__*,TYPE_6__*,int ) ;
+ int ngx_log_error (int ,int ,int ,char*,...) ;
+ TYPE_6__* ngx_pcalloc (int ,int) ;
+ scalar_t__ ngx_strncasecmp (int ,int *,int) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_image_header_filter(ngx_http_request_t *r)
 {
-    off_t                          len;
-    ngx_http_image_filter_ctx_t   *ctx;
-    ngx_http_image_filter_conf_t  *conf;
+    off_t len;
+    ngx_http_image_filter_ctx_t *ctx;
+    ngx_http_image_filter_conf_t *conf;
 
     if (r->headers_out.status == NGX_HTTP_NOT_MODIFIED) {
         return ngx_http_next_header_filter(r);
@@ -61,7 +61,7 @@ ngx_http_image_header_filter(ngx_http_request_t *r)
     ctx = ngx_http_get_module_ctx(r, ngx_http_image_filter_module);
 
     if (ctx) {
-        ngx_http_set_ctx(r, NULL, ngx_http_image_filter_module);
+        ngx_http_set_ctx(r, ((void*)0), ngx_http_image_filter_module);
         return ngx_http_next_header_filter(r);
     }
 
@@ -85,7 +85,7 @@ ngx_http_image_header_filter(ngx_http_request_t *r)
     }
 
     ctx = ngx_pcalloc(r->pool, sizeof(ngx_http_image_filter_ctx_t));
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         return NGX_ERROR;
     }
 

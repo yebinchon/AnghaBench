@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hid_device {int /*<<< orphan*/  dev; } ;
-typedef  int __u8 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dev_info (int /*<<< orphan*/ *,char*) ; 
+
+
+
+struct hid_device {int dev; } ;
+typedef int __u8 ;
+
+
+ int dev_info (int *,char*) ;
 
 __attribute__((used)) static void mr_report_fixup(struct hid_device *hdev, __u8 *rdesc,
-		unsigned int rsize)
+  unsigned int rsize)
 {
-	if (rsize >= 30 && rdesc[29] == 0x05 && rdesc[30] == 0x09) {
-		dev_info(&hdev->dev, "fixing up button/consumer in HID report "
-				"descriptor\n");
-		rdesc[30] = 0x0c;
-	}
+ if (rsize >= 30 && rdesc[29] == 0x05 && rdesc[30] == 0x09) {
+  dev_info(&hdev->dev, "fixing up button/consumer in HID report "
+    "descriptor\n");
+  rdesc[30] = 0x0c;
+ }
 }

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u32 ;
-struct des3_ede_ctx {int /*<<< orphan*/ * expkey; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FP (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IP (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ROUND (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  get_unaligned_le32 (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  put_unaligned_le32 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int u8 ;
+typedef int u32 ;
+struct des3_ede_ctx {int * expkey; } ;
+
+
+ int FP (int ,int ,int ) ;
+ int IP (int ,int ,int ) ;
+ int ROUND (int ,int ,int ,int ,int const*,int) ;
+ int get_unaligned_le32 (int const*) ;
+ int put_unaligned_le32 (int ,int *) ;
 
 void des3_ede_encrypt(const struct des3_ede_ctx *dctx, u8 *dst, const u8 *src)
 {
-	const u32 *K = dctx->expkey;
-	u32 L, R, A, B;
-	int i;
+ const u32 *K = dctx->expkey;
+ u32 L, R, A, B;
+ int i;
 
-	L = get_unaligned_le32(src);
-	R = get_unaligned_le32(src + 4);
+ L = get_unaligned_le32(src);
+ R = get_unaligned_le32(src + 4);
 
-	IP(L, R, A);
-	for (i = 0; i < 8; i++) {
-		ROUND(L, R, A, B, K, 2);
-		ROUND(R, L, A, B, K, 2);
-	}
-	for (i = 0; i < 8; i++) {
-		ROUND(R, L, A, B, K, 2);
-		ROUND(L, R, A, B, K, 2);
-	}
-	for (i = 0; i < 8; i++) {
-		ROUND(L, R, A, B, K, 2);
-		ROUND(R, L, A, B, K, 2);
-	}
-	FP(R, L, A);
+ IP(L, R, A);
+ for (i = 0; i < 8; i++) {
+  ROUND(L, R, A, B, K, 2);
+  ROUND(R, L, A, B, K, 2);
+ }
+ for (i = 0; i < 8; i++) {
+  ROUND(R, L, A, B, K, 2);
+  ROUND(L, R, A, B, K, 2);
+ }
+ for (i = 0; i < 8; i++) {
+  ROUND(L, R, A, B, K, 2);
+  ROUND(R, L, A, B, K, 2);
+ }
+ FP(R, L, A);
 
-	put_unaligned_le32(R, dst);
-	put_unaligned_le32(L, dst + 4);
+ put_unaligned_le32(R, dst);
+ put_unaligned_le32(L, dst + 4);
 }

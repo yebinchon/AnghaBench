@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct results_queue_entry {int dummy; } ;
 
-/* Variables and functions */
- struct results_queue_entry* RQ ; 
- size_t rq_left ; 
- int /*<<< orphan*/  rq_size ; 
+
+ struct results_queue_entry* RQ ;
+ size_t rq_left ;
+ int rq_size ;
 
 struct results_queue_entry *results_queue_front (void) {
   if (!rq_size) {
-    return NULL;
+    return ((void*)0);
   }
   return &RQ[rq_left];
 }

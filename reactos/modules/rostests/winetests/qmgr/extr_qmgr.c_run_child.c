@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-struct TYPE_7__ {int /*<<< orphan*/  hThread; int /*<<< orphan*/  hProcess; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+struct TYPE_7__ {int hThread; int hProcess; } ;
 struct TYPE_6__ {int cb; } ;
-typedef  TYPE_1__ STARTUPINFOW ;
-typedef  TYPE_2__ PROCESS_INFORMATION ;
+typedef TYPE_1__ STARTUPINFOW ;
+typedef TYPE_2__ PROCESS_INFORMATION ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateProcessW (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,long,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  FALSE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  progname ; 
- int /*<<< orphan*/  winetest_wait_child_process (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wsprintfW (char*,char const*,int /*<<< orphan*/ ,char*) ; 
+
+ int CloseHandle (int ) ;
+ int CreateProcessW (int *,char*,int *,int *,int ,long,int *,int *,TYPE_1__*,TYPE_2__*) ;
+ int FALSE ;
+ int MAX_PATH ;
+ int memset (TYPE_1__*,int ,int) ;
+ int ok (int ,char*) ;
+ int progname ;
+ int winetest_wait_child_process (int ) ;
+ int wsprintfW (char*,char const*,int ,char*) ;
 
 __attribute__((used)) static void run_child(WCHAR *secret)
 {
@@ -40,7 +40,7 @@ __attribute__((used)) static void run_child(WCHAR *secret)
     startup.cb = sizeof startup;
 
     wsprintfW(cmdline, format, progname, secret);
-    ok(CreateProcessW(NULL, cmdline, NULL, NULL, FALSE, 0L, NULL, NULL, &startup, &info), "CreateProcess\n");
+    ok(CreateProcessW(((void*)0), cmdline, ((void*)0), ((void*)0), FALSE, 0L, ((void*)0), ((void*)0), &startup, &info), "CreateProcess\n");
     winetest_wait_child_process(info.hProcess);
     ok(CloseHandle(info.hProcess), "CloseHandle\n");
     ok(CloseHandle(info.hThread), "CloseHandle\n");

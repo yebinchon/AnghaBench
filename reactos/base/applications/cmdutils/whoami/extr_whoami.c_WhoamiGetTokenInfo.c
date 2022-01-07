@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int /*<<< orphan*/  TOKEN_INFORMATION_CLASS ;
-typedef  int /*<<< orphan*/ * LPVOID ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- scalar_t__ ERROR_INSUFFICIENT_BUFFER ; 
- int /*<<< orphan*/  GetCurrentProcess () ; 
- int GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  GetTokenInformation (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ OpenProcessToken (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TOKEN_READ ; 
- int /*<<< orphan*/  WhoamiFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  wprintf (char*,...) ; 
+
+
+
+typedef int VOID ;
+typedef int TOKEN_INFORMATION_CLASS ;
+typedef int * LPVOID ;
+typedef int HANDLE ;
+typedef int DWORD ;
+
+
+ int CloseHandle (int ) ;
+ scalar_t__ ERROR_INSUFFICIENT_BUFFER ;
+ int GetCurrentProcess () ;
+ int GetLastError () ;
+ int GetProcessHeap () ;
+ int GetTokenInformation (int ,int ,int *,int ,int *) ;
+ int HEAP_ZERO_MEMORY ;
+ int * HeapAlloc (int ,int ,int ) ;
+ scalar_t__ OpenProcessToken (int ,int ,int *) ;
+ int TOKEN_READ ;
+ int WhoamiFree (int *) ;
+ int exit (int) ;
+ int wprintf (char*,...) ;
 
 VOID* WhoamiGetTokenInfo(TOKEN_INFORMATION_CLASS TokenType)
 {
@@ -41,14 +41,14 @@ VOID* WhoamiGetTokenInfo(TOKEN_INFORMATION_CLASS TokenType)
     {
         GetTokenInformation(hToken,
                             TokenType,
-                            NULL,
+                            ((void*)0),
                             dwLength,
                             &dwLength);
 
         if (GetLastError() == ERROR_INSUFFICIENT_BUFFER)
         {
             pTokenInfo = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, dwLength);
-            if (pTokenInfo == NULL)
+            if (pTokenInfo == ((void*)0))
             {
                 wprintf(L"ERROR: not enough memory to allocate the token structure.\r\n");
                 exit(1);

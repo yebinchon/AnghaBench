@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_6__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_6__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct dirent {char* d_name; } ;
-typedef  int /*<<< orphan*/  sqlite3_vtab_cursor ;
-typedef  int sqlite3_int64 ;
-typedef  int /*<<< orphan*/  mode_t ;
-struct TYPE_9__ {int /*<<< orphan*/  st_mode; } ;
-struct TYPE_7__ {int iLvl; int nLvl; scalar_t__ zPath; TYPE_6__ sStat; TYPE_2__* aLvl; int /*<<< orphan*/  iRowid; } ;
-typedef  TYPE_1__ fsdir_cursor ;
+typedef int sqlite3_vtab_cursor ;
+typedef int sqlite3_int64 ;
+typedef int mode_t ;
+struct TYPE_9__ {int st_mode; } ;
+struct TYPE_7__ {int iLvl; int nLvl; scalar_t__ zPath; TYPE_6__ sStat; TYPE_2__* aLvl; int iRowid; } ;
+typedef TYPE_1__ fsdir_cursor ;
 struct TYPE_8__ {scalar_t__ pDir; scalar_t__ zDir; } ;
-typedef  TYPE_2__ FsdirLevel ;
+typedef TYPE_2__ FsdirLevel ;
 
-/* Variables and functions */
- int SQLITE_ERROR ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  closedir (scalar_t__) ; 
- scalar_t__ fileLinkStat (scalar_t__,TYPE_6__*) ; 
- int /*<<< orphan*/  fsdirSetErrmsg (TYPE_1__*,char*,scalar_t__) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ opendir (scalar_t__) ; 
- struct dirent* readdir (scalar_t__) ; 
- int /*<<< orphan*/  sqlite3_free (scalar_t__) ; 
- scalar_t__ sqlite3_mprintf (char*,scalar_t__,char*) ; 
- scalar_t__ sqlite3_realloc64 (TYPE_2__*,int) ; 
+
+ int SQLITE_ERROR ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ scalar_t__ S_ISDIR (int ) ;
+ int closedir (scalar_t__) ;
+ scalar_t__ fileLinkStat (scalar_t__,TYPE_6__*) ;
+ int fsdirSetErrmsg (TYPE_1__*,char*,scalar_t__) ;
+ int memset (TYPE_2__*,int ,int) ;
+ scalar_t__ opendir (scalar_t__) ;
+ struct dirent* readdir (scalar_t__) ;
+ int sqlite3_free (scalar_t__) ;
+ scalar_t__ sqlite3_mprintf (char*,scalar_t__,char*) ;
+ scalar_t__ sqlite3_realloc64 (TYPE_2__*,int) ;
 
 __attribute__((used)) static int fsdirNext(sqlite3_vtab_cursor *cur){
   fsdir_cursor *pCur = (fsdir_cursor*)cur;
@@ -44,7 +44,7 @@ __attribute__((used)) static int fsdirNext(sqlite3_vtab_cursor *cur){
 
   pCur->iRowid++;
   if( S_ISDIR(m) ){
-    /* Descend into this directory */
+
     int iNew = pCur->iLvl + 1;
     FsdirLevel *pLvl;
     if( iNew>=pCur->nLvl ){
@@ -58,7 +58,7 @@ __attribute__((used)) static int fsdirNext(sqlite3_vtab_cursor *cur){
     }
     pCur->iLvl = iNew;
     pLvl = &pCur->aLvl[iNew];
-    
+
     pLvl->zDir = pCur->zPath;
     pCur->zPath = 0;
     pLvl->pDir = opendir(pLvl->zDir);
@@ -92,7 +92,7 @@ __attribute__((used)) static int fsdirNext(sqlite3_vtab_cursor *cur){
     pCur->iLvl--;
   }
 
-  /* EOF */
+
   sqlite3_free(pCur->zPath);
   pCur->zPath = 0;
   return SQLITE_OK;

@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_31__   TYPE_9__ ;
-typedef  struct TYPE_30__   TYPE_8__ ;
-typedef  struct TYPE_29__   TYPE_7__ ;
-typedef  struct TYPE_28__   TYPE_6__ ;
-typedef  struct TYPE_27__   TYPE_5__ ;
-typedef  struct TYPE_26__   TYPE_4__ ;
-typedef  struct TYPE_25__   TYPE_3__ ;
-typedef  struct TYPE_24__   TYPE_2__ ;
-typedef  struct TYPE_23__   TYPE_1__ ;
-typedef  struct TYPE_22__   TYPE_13__ ;
-typedef  struct TYPE_21__   TYPE_12__ ;
-typedef  struct TYPE_20__   TYPE_11__ ;
-typedef  struct TYPE_19__   TYPE_10__ ;
 
-/* Type definitions */
-struct TYPE_31__ {int sync; void* after; void* before; int /*<<< orphan*/  time_base; } ;
+
+
+typedef struct TYPE_31__ TYPE_9__ ;
+typedef struct TYPE_30__ TYPE_8__ ;
+typedef struct TYPE_29__ TYPE_7__ ;
+typedef struct TYPE_28__ TYPE_6__ ;
+typedef struct TYPE_27__ TYPE_5__ ;
+typedef struct TYPE_26__ TYPE_4__ ;
+typedef struct TYPE_25__ TYPE_3__ ;
+typedef struct TYPE_24__ TYPE_2__ ;
+typedef struct TYPE_23__ TYPE_1__ ;
+typedef struct TYPE_22__ TYPE_13__ ;
+typedef struct TYPE_21__ TYPE_12__ ;
+typedef struct TYPE_20__ TYPE_11__ ;
+typedef struct TYPE_19__ TYPE_10__ ;
+
+
+struct TYPE_31__ {int sync; void* after; void* before; int time_base; } ;
 struct TYPE_30__ {int* planewidth; int* planeheight; int nb_planes; scalar_t__* depth; } ;
-struct TYPE_22__ {int /*<<< orphan*/  on_event; TYPE_7__* opaque; TYPE_9__* in; } ;
+struct TYPE_22__ {int on_event; TYPE_7__* opaque; TYPE_9__* in; } ;
 struct TYPE_29__ {int nb_inputs; int* planewidth; int* planeheight; int nb_planes; int** map; TYPE_13__ fs; TYPE_6__* outdesc; } ;
-struct TYPE_28__ {TYPE_5__* comp; int /*<<< orphan*/  log2_chroma_h; int /*<<< orphan*/  log2_chroma_w; } ;
+struct TYPE_28__ {TYPE_5__* comp; int log2_chroma_h; int log2_chroma_w; } ;
 struct TYPE_27__ {int depth; } ;
 struct TYPE_26__ {scalar_t__ num; scalar_t__ den; } ;
 struct TYPE_25__ {int depth; } ;
-struct TYPE_24__ {int /*<<< orphan*/  name; } ;
-struct TYPE_23__ {int /*<<< orphan*/  name; } ;
+struct TYPE_24__ {int name; } ;
+struct TYPE_23__ {int name; } ;
 struct TYPE_21__ {TYPE_2__* output_pads; TYPE_1__* input_pads; TYPE_11__** inputs; TYPE_7__* priv; } ;
-struct TYPE_20__ {int w; int h; int /*<<< orphan*/  time_base; int /*<<< orphan*/  format; TYPE_4__ sample_aspect_ratio; int /*<<< orphan*/  frame_rate; TYPE_12__* src; } ;
-struct TYPE_19__ {TYPE_3__* comp; int /*<<< orphan*/  log2_chroma_h; int /*<<< orphan*/  log2_chroma_w; } ;
-typedef  TYPE_7__ MergePlanesContext ;
-typedef  TYPE_8__ InputParam ;
-typedef  TYPE_9__ FFFrameSyncIn ;
-typedef  TYPE_10__ AVPixFmtDescriptor ;
-typedef  TYPE_11__ AVFilterLink ;
-typedef  TYPE_12__ AVFilterContext ;
+struct TYPE_20__ {int w; int h; int time_base; int format; TYPE_4__ sample_aspect_ratio; int frame_rate; TYPE_12__* src; } ;
+struct TYPE_19__ {TYPE_3__* comp; int log2_chroma_h; int log2_chroma_w; } ;
+typedef TYPE_7__ MergePlanesContext ;
+typedef TYPE_8__ InputParam ;
+typedef TYPE_9__ FFFrameSyncIn ;
+typedef TYPE_10__ AVPixFmtDescriptor ;
+typedef TYPE_11__ AVFilterLink ;
+typedef TYPE_12__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- void* AV_CEIL_RSHIFT (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- void* EXT_STOP ; 
- int /*<<< orphan*/  av_log (TYPE_12__*,int /*<<< orphan*/ ,char*,int const,int const,...) ; 
- int av_pix_fmt_count_planes (int /*<<< orphan*/ ) ; 
- TYPE_10__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
- int ff_framesync_configure (TYPE_13__*) ; 
- int ff_framesync_init (TYPE_13__*,TYPE_12__*,int) ; 
- int /*<<< orphan*/  process_frame ; 
+
+ int AVERROR (int ) ;
+ void* AV_CEIL_RSHIFT (int,int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ void* EXT_STOP ;
+ int av_log (TYPE_12__*,int ,char*,int const,int const,...) ;
+ int av_pix_fmt_count_planes (int ) ;
+ TYPE_10__* av_pix_fmt_desc_get (int ) ;
+ int ff_framesync_configure (TYPE_13__*) ;
+ int ff_framesync_init (TYPE_13__*,TYPE_12__*,int) ;
+ int process_frame ;
 
 __attribute__((used)) static int config_output(AVFilterLink *outlink)
 {
@@ -77,10 +77,10 @@ __attribute__((used)) static int config_output(AVFilterLink *outlink)
     outlink->frame_rate = ctx->inputs[0]->frame_rate;
     outlink->sample_aspect_ratio = ctx->inputs[0]->sample_aspect_ratio;
 
-    s->planewidth[1]  =
-    s->planewidth[2]  = AV_CEIL_RSHIFT(((s->outdesc->comp[1].depth > 8) + 1) * outlink->w, s->outdesc->log2_chroma_w);
-    s->planewidth[0]  =
-    s->planewidth[3]  = ((s->outdesc->comp[0].depth > 8) + 1) * outlink->w;
+    s->planewidth[1] =
+    s->planewidth[2] = AV_CEIL_RSHIFT(((s->outdesc->comp[1].depth > 8) + 1) * outlink->w, s->outdesc->log2_chroma_w);
+    s->planewidth[0] =
+    s->planewidth[3] = ((s->outdesc->comp[0].depth > 8) + 1) * outlink->w;
     s->planeheight[1] =
     s->planeheight[2] = AV_CEIL_RSHIFT(outlink->h, s->outdesc->log2_chroma_h);
     s->planeheight[0] =
@@ -105,10 +105,10 @@ __attribute__((used)) static int config_output(AVFilterLink *outlink)
             return AVERROR(EINVAL);
         }
 
-        inputp->planewidth[1]  =
-        inputp->planewidth[2]  = AV_CEIL_RSHIFT(((indesc->comp[1].depth > 8) + 1) * inlink->w, indesc->log2_chroma_w);
-        inputp->planewidth[0]  =
-        inputp->planewidth[3]  = ((indesc->comp[0].depth > 8) + 1) * inlink->w;
+        inputp->planewidth[1] =
+        inputp->planewidth[2] = AV_CEIL_RSHIFT(((indesc->comp[1].depth > 8) + 1) * inlink->w, indesc->log2_chroma_w);
+        inputp->planewidth[0] =
+        inputp->planewidth[3] = ((indesc->comp[0].depth > 8) + 1) * inlink->w;
         inputp->planeheight[1] =
         inputp->planeheight[2] = AV_CEIL_RSHIFT(inlink->h, indesc->log2_chroma_h);
         inputp->planeheight[0] =
@@ -119,9 +119,9 @@ __attribute__((used)) static int config_output(AVFilterLink *outlink)
             inputp->depth[j] = indesc->comp[j].depth;
 
         in[i].time_base = inlink->time_base;
-        in[i].sync   = 1;
+        in[i].sync = 1;
         in[i].before = EXT_STOP;
-        in[i].after  = EXT_STOP;
+        in[i].after = EXT_STOP;
     }
 
     for (i = 0; i < s->nb_planes; i++) {

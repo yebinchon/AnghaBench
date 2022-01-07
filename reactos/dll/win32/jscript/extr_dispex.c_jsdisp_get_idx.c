@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int jsval_t ;
+typedef int jsdisp_t ;
 struct TYPE_4__ {scalar_t__ type; } ;
-typedef  TYPE_1__ dispex_prop_t ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  char* DWORD ;
+typedef TYPE_1__ dispex_prop_t ;
+typedef char WCHAR ;
+typedef int HRESULT ;
+typedef char* DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISP_E_UNKNOWNNAME ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ PROP_DELETED ; 
- int /*<<< orphan*/  find_prop_name_prot (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,TYPE_1__**) ; 
- int /*<<< orphan*/  jsval_undefined () ; 
- int /*<<< orphan*/  prop_get (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  string_hash (char*) ; 
- int /*<<< orphan*/  swprintf (char*,char const*,char*) ; 
+
+ int DISP_E_UNKNOWNNAME ;
+ scalar_t__ FAILED (int ) ;
+ scalar_t__ PROP_DELETED ;
+ int find_prop_name_prot (int *,int ,char*,TYPE_1__**) ;
+ int jsval_undefined () ;
+ int prop_get (int *,TYPE_1__*,int *) ;
+ int string_hash (char*) ;
+ int swprintf (char*,char const*,char*) ;
 
 HRESULT jsdisp_get_idx(jsdisp_t *obj, DWORD idx, jsval_t *r)
 {

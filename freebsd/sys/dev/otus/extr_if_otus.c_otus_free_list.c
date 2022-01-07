@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct otus_softc {int dummy; } ;
-struct otus_data {int /*<<< orphan*/ * ni; int /*<<< orphan*/ * buf; } ;
+struct otus_data {int * ni; int * buf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_USBDEV ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ieee80211_free_node (int /*<<< orphan*/ *) ; 
+
+ int M_USBDEV ;
+ int free (int *,int ) ;
+ int ieee80211_free_node (int *) ;
 
 __attribute__((used)) static void
 otus_free_list(struct otus_softc *sc, struct otus_data data[], int ndata)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < ndata; i++) {
-		struct otus_data *dp = &data[i];
+ for (i = 0; i < ndata; i++) {
+  struct otus_data *dp = &data[i];
 
-		if (dp->buf != NULL) {
-			free(dp->buf, M_USBDEV);
-			dp->buf = NULL;
-		}
-		if (dp->ni != NULL) {
-			ieee80211_free_node(dp->ni);
-			dp->ni = NULL;
-		}
-	}
+  if (dp->buf != ((void*)0)) {
+   free(dp->buf, M_USBDEV);
+   dp->buf = ((void*)0);
+  }
+  if (dp->ni != ((void*)0)) {
+   ieee80211_free_node(dp->ni);
+   dp->ni = ((void*)0);
+  }
+ }
 }

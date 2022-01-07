@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ set_param; } ;
 struct TYPE_6__ {scalar_t__ top; scalar_t__ left; } ;
-typedef  TYPE_1__ RECT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ DWORD ;
+typedef TYPE_1__ RECT ;
+typedef int HWND ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- int ARRAY_SIZE (TYPE_2__**) ; 
- int /*<<< orphan*/  CW_USEDEFAULT ; 
- int /*<<< orphan*/  CreateWindowExA (int /*<<< orphan*/ ,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DataObject ; 
- int /*<<< orphan*/  DestroyWindow (int /*<<< orphan*/ ) ; 
- scalar_t__ DoDragDrop (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  DoDragDrop_effect_out ; 
- int /*<<< orphan*/  DoDragDrop_ret ; 
- int /*<<< orphan*/  DropSource ; 
- int /*<<< orphan*/  DropTarget ; 
- scalar_t__ E_INVALIDARG ; 
- int /*<<< orphan*/  GetWindowRect (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  IsWindow (int /*<<< orphan*/ ) ; 
- scalar_t__ OleInitialize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OleUninitialize () ; 
- scalar_t__ RegisterDragDrop (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SW_SHOW ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SetCursorPos (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ShowWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WS_EX_TOPMOST ; 
- TYPE_2__** call_lists ; 
- TYPE_2__* call_ptr ; 
- int /*<<< orphan*/  check_expect (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  trace (char*,int) ; 
+
+ int ARRAY_SIZE (TYPE_2__**) ;
+ int CW_USEDEFAULT ;
+ int CreateWindowExA (int ,char*,char*,int ,int ,int ,int,int,int *,int *,int *,int *) ;
+ int DataObject ;
+ int DestroyWindow (int ) ;
+ scalar_t__ DoDragDrop (int *,int *,scalar_t__,scalar_t__*) ;
+ int DoDragDrop_effect_out ;
+ int DoDragDrop_ret ;
+ int DropSource ;
+ int DropTarget ;
+ scalar_t__ E_INVALIDARG ;
+ int GetWindowRect (int ,TYPE_1__*) ;
+ int IsWindow (int ) ;
+ scalar_t__ OleInitialize (int *) ;
+ int OleUninitialize () ;
+ scalar_t__ RegisterDragDrop (int ,int *) ;
+ int SW_SHOW ;
+ scalar_t__ S_OK ;
+ int SetCursorPos (scalar_t__,scalar_t__) ;
+ int ShowWindow (int ,int ) ;
+ int WS_EX_TOPMOST ;
+ TYPE_2__** call_lists ;
+ TYPE_2__* call_ptr ;
+ int check_expect (int ,scalar_t__,int *) ;
+ int ok (int,char*,...) ;
+ int trace (char*,int) ;
 
 __attribute__((used)) static void test_DoDragDrop(void)
 {
@@ -56,36 +56,36 @@ __attribute__((used)) static void test_DoDragDrop(void)
     int seq;
 
     hwnd = CreateWindowExA(WS_EX_TOPMOST, "WineOleTestClass", "Test", 0,
-        CW_USEDEFAULT, CW_USEDEFAULT, 100, 100, NULL,
-        NULL, NULL, NULL);
+        CW_USEDEFAULT, CW_USEDEFAULT, 100, 100, ((void*)0),
+        ((void*)0), ((void*)0), ((void*)0));
     ok(IsWindow(hwnd), "failed to create window\n");
 
-    hr = OleInitialize(NULL);
+    hr = OleInitialize(((void*)0));
     ok(hr == S_OK, "got 0x%08x\n", hr);
 
     hr = RegisterDragDrop(hwnd, &DropTarget);
     ok(hr == S_OK, "got 0x%08x\n", hr);
 
-    /* incomplete arguments set */
-    hr = DoDragDrop(NULL, NULL, 0, NULL);
+
+    hr = DoDragDrop(((void*)0), ((void*)0), 0, ((void*)0));
     ok(hr == E_INVALIDARG, "got 0x%08x\n", hr);
 
-    hr = DoDragDrop(NULL, &DropSource, 0, NULL);
+    hr = DoDragDrop(((void*)0), &DropSource, 0, ((void*)0));
     ok(hr == E_INVALIDARG, "got 0x%08x\n", hr);
 
-    hr = DoDragDrop(&DataObject, NULL, 0, NULL);
+    hr = DoDragDrop(&DataObject, ((void*)0), 0, ((void*)0));
     ok(hr == E_INVALIDARG, "got 0x%08x\n", hr);
 
-    hr = DoDragDrop(NULL, NULL, 0, &effect);
+    hr = DoDragDrop(((void*)0), ((void*)0), 0, &effect);
     ok(hr == E_INVALIDARG, "got 0x%08x\n", hr);
 
-    hr = DoDragDrop(&DataObject, &DropSource, 0, NULL);
+    hr = DoDragDrop(&DataObject, &DropSource, 0, ((void*)0));
     ok(hr == E_INVALIDARG, "got 0x%08x\n", hr);
 
-    hr = DoDragDrop(NULL, &DropSource, 0, &effect);
+    hr = DoDragDrop(((void*)0), &DropSource, 0, &effect);
     ok(hr == E_INVALIDARG, "got 0x%08x\n", hr);
 
-    hr = DoDragDrop(&DataObject, NULL, 0, &effect);
+    hr = DoDragDrop(&DataObject, ((void*)0), 0, &effect);
     ok(hr == E_INVALIDARG, "got 0x%08x\n", hr);
 
     ShowWindow(hwnd, SW_SHOW);
@@ -101,8 +101,8 @@ __attribute__((used)) static void test_DoDragDrop(void)
         call_ptr++;
 
         hr = DoDragDrop(&DataObject, &DropSource, effect_in, &effect);
-        check_expect(DoDragDrop_ret, hr, NULL);
-        check_expect(DoDragDrop_effect_out, effect, NULL);
+        check_expect(DoDragDrop_ret, hr, ((void*)0));
+        check_expect(DoDragDrop_effect_out, effect, ((void*)0));
     }
 
     OleUninitialize();

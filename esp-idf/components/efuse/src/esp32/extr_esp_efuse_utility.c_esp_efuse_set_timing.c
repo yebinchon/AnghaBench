@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EFUSE_CLK_REG ; 
- int /*<<< orphan*/  EFUSE_CLK_SEL0 ; 
- int /*<<< orphan*/  EFUSE_CLK_SEL1 ; 
- int /*<<< orphan*/  EFUSE_DAC_CLK_DIV ; 
- int /*<<< orphan*/  EFUSE_DAC_CONF_REG ; 
- int /*<<< orphan*/  ESP_OK ; 
- int /*<<< orphan*/  REG_SET_FIELD (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int esp_clk_apb_freq () ; 
+
+
+
+typedef int uint32_t ;
+typedef int esp_err_t ;
+
+
+ int EFUSE_CLK_REG ;
+ int EFUSE_CLK_SEL0 ;
+ int EFUSE_CLK_SEL1 ;
+ int EFUSE_DAC_CLK_DIV ;
+ int EFUSE_DAC_CONF_REG ;
+ int ESP_OK ;
+ int REG_SET_FIELD (int ,int ,int) ;
+ int esp_clk_apb_freq () ;
 
 __attribute__((used)) static esp_err_t esp_efuse_set_timing(void)
 {

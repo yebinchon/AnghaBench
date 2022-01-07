@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int all_slaves_active; int tlb_dynamic_lb; int /*<<< orphan*/  lp_interval; int /*<<< orphan*/  num_grat_arp; int /*<<< orphan*/  packets_per_slave; int /*<<< orphan*/  resend_igmp; int /*<<< orphan*/  primary_reselect; int /*<<< orphan*/  arp_all_targets; int /*<<< orphan*/  arp_validate; int /*<<< orphan*/  fail_over_mac; int /*<<< orphan*/  ad_select; int /*<<< orphan*/  lacp_rate; int /*<<< orphan*/  xmit_hash_policy; int /*<<< orphan*/  mode; } ;
-typedef  TYPE_1__ NetDev ;
-typedef  TYPE_1__ Bond ;
 
-/* Variables and functions */
- TYPE_1__* BOND (TYPE_1__*) ; 
- int /*<<< orphan*/  GRATUITOUS_ARP_DEFAULT ; 
- int /*<<< orphan*/  LEARNING_PACKETS_INTERVAL_MIN_SEC ; 
- int /*<<< orphan*/  PACKETS_PER_SLAVE_DEFAULT ; 
- int /*<<< orphan*/  RESEND_IGMP_DEFAULT ; 
- int /*<<< orphan*/  _NETDEV_BOND_AD_SELECT_INVALID ; 
- int /*<<< orphan*/  _NETDEV_BOND_ARP_ALL_TARGETS_INVALID ; 
- int /*<<< orphan*/  _NETDEV_BOND_ARP_VALIDATE_INVALID ; 
- int /*<<< orphan*/  _NETDEV_BOND_FAIL_OVER_MAC_INVALID ; 
- int /*<<< orphan*/  _NETDEV_BOND_LACP_RATE_INVALID ; 
- int /*<<< orphan*/  _NETDEV_BOND_MODE_INVALID ; 
- int /*<<< orphan*/  _NETDEV_BOND_PRIMARY_RESELECT_INVALID ; 
- int /*<<< orphan*/  _NETDEV_BOND_XMIT_HASH_POLICY_INVALID ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int all_slaves_active; int tlb_dynamic_lb; int lp_interval; int num_grat_arp; int packets_per_slave; int resend_igmp; int primary_reselect; int arp_all_targets; int arp_validate; int fail_over_mac; int ad_select; int lacp_rate; int xmit_hash_policy; int mode; } ;
+typedef TYPE_1__ NetDev ;
+typedef TYPE_1__ Bond ;
+
+
+ TYPE_1__* BOND (TYPE_1__*) ;
+ int GRATUITOUS_ARP_DEFAULT ;
+ int LEARNING_PACKETS_INTERVAL_MIN_SEC ;
+ int PACKETS_PER_SLAVE_DEFAULT ;
+ int RESEND_IGMP_DEFAULT ;
+ int _NETDEV_BOND_AD_SELECT_INVALID ;
+ int _NETDEV_BOND_ARP_ALL_TARGETS_INVALID ;
+ int _NETDEV_BOND_ARP_VALIDATE_INVALID ;
+ int _NETDEV_BOND_FAIL_OVER_MAC_INVALID ;
+ int _NETDEV_BOND_LACP_RATE_INVALID ;
+ int _NETDEV_BOND_MODE_INVALID ;
+ int _NETDEV_BOND_PRIMARY_RESELECT_INVALID ;
+ int _NETDEV_BOND_XMIT_HASH_POLICY_INVALID ;
+ int assert (TYPE_1__*) ;
 
 __attribute__((used)) static void bond_init(NetDev *netdev) {
         Bond *b;
@@ -49,7 +49,7 @@ __attribute__((used)) static void bond_init(NetDev *netdev) {
         b->arp_all_targets = _NETDEV_BOND_ARP_ALL_TARGETS_INVALID;
         b->primary_reselect = _NETDEV_BOND_PRIMARY_RESELECT_INVALID;
 
-        b->all_slaves_active = false;
+        b->all_slaves_active = 0;
         b->tlb_dynamic_lb = -1;
 
         b->resend_igmp = RESEND_IGMP_DEFAULT;

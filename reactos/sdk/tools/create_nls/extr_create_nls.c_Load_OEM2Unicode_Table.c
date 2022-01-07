@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  scalar_t__ WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int buf ;
+typedef scalar_t__ WCHAR ;
+typedef int UINT ;
 struct TYPE_3__ {int CodePage; } ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int DWORD ;
-typedef  TYPE_1__ CPINFOEXA ;
+typedef int FILE ;
+typedef int DWORD ;
+typedef TYPE_1__ CPINFOEXA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  free (scalar_t__*) ; 
- scalar_t__ isspace (char) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,scalar_t__*,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int strtol (char*,char**,int) ; 
+
+ int fclose (int *) ;
+ scalar_t__ fgets (char*,int,int *) ;
+ int * fopen (char*,char*) ;
+ int free (scalar_t__*) ;
+ scalar_t__ isspace (char) ;
+ scalar_t__ malloc (int) ;
+ int memcpy (scalar_t__*,scalar_t__*,int) ;
+ int printf (char*,...) ;
+ int strtol (char*,char**,int) ;
 
 __attribute__((used)) static WCHAR *Load_OEM2Unicode_Table(char *table_name, WCHAR *def_table, UINT cp, CPINFOEXA *cpi)
 {
@@ -44,15 +44,15 @@ __attribute__((used)) static WCHAR *Load_OEM2Unicode_Table(char *table_name, WCH
     table = (WCHAR *)malloc(sizeof(WCHAR) * 65536);
     if(!table) {
         printf("Not enough memory for Codepage to Unicode table\n");
-        return NULL;
+        return ((void*)0);
     }
 
     memcpy(table, def_table, 65536 * sizeof(WCHAR));
 
     file = fopen(table_name, "r");
-    if(file == NULL) {
+    if(file == ((void*)0)) {
         free(table);
-        return NULL;
+        return ((void*)0);
     }
 
     line = 0;
@@ -74,7 +74,7 @@ __attribute__((used)) static WCHAR *Load_OEM2Unicode_Table(char *table_name, WCH
         while(isspace(*p)) p++;
 
         if(!*p || p[0] == '#') {
-            /*printf("Line %d: Entry 0x%02lX has no Unicode value\n", line, n);*/
+
             continue;
         }
         else {
@@ -89,7 +89,7 @@ __attribute__((used)) static WCHAR *Load_OEM2Unicode_Table(char *table_name, WCH
             while(isspace(*p)) p++;
 
             if(!*p || p[0] == '#' || p[0] == '-') {
-                /*printf("Line %d: Entry 0x%02lX has no Unicode value\n", line, n);*/
+
                 continue;
             }
             else {

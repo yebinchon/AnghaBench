@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int lua_State ;
 struct TYPE_4__ {scalar_t__ type; int b_checked; int b_update; TYPE_1__* p_dialog; } ;
-typedef  TYPE_2__ extension_widget_t ;
-struct TYPE_3__ {int /*<<< orphan*/  lock; } ;
+typedef TYPE_2__ extension_widget_t ;
+struct TYPE_3__ {int lock; } ;
 
-/* Variables and functions */
- scalar_t__ EXTENSION_WIDGET_CHECK_BOX ; 
- scalar_t__ luaL_checkudata (int /*<<< orphan*/ *,int,char*) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_SetDialogUpdate (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_isboolean (int /*<<< orphan*/ *,int) ; 
- int lua_toboolean (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ EXTENSION_WIDGET_CHECK_BOX ;
+ scalar_t__ luaL_checkudata (int *,int,char*) ;
+ int luaL_error (int *,char*) ;
+ int lua_SetDialogUpdate (int *,int) ;
+ int lua_isboolean (int *,int) ;
+ int lua_toboolean (int *,int) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 __attribute__((used)) static int vlclua_widget_set_checked( lua_State *L )
 {
-    /* Get dialog */
+
     extension_widget_t **pp_widget =
             (extension_widget_t **) luaL_checkudata( L, 1, "widget" );
     if( !pp_widget || !*pp_widget )
@@ -39,7 +39,7 @@ __attribute__((used)) static int vlclua_widget_set_checked( lua_State *L )
     if( p_widget->type != EXTENSION_WIDGET_CHECK_BOX )
         return luaL_error( L, "method set_checked not valid for this widget" );
 
-    /* Verify arguments */
+
     if( !lua_isboolean( L, 2 ) )
         return luaL_error( L, "widget:set_checked usage: (bool)" );
 
@@ -52,8 +52,8 @@ __attribute__((used)) static int vlclua_widget_set_checked( lua_State *L )
 
     if( b_old_check != p_widget->b_checked )
     {
-        /* Signal interface of the change */
-        p_widget->b_update = true;
+
+        p_widget->b_update = 1;
         lua_SetDialogUpdate( L, 1 );
     }
 

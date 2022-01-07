@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  struct qman_softc* t_Handle ;
-typedef  int /*<<< orphan*/  t_DpaaFD ;
-struct qman_softc {int /*<<< orphan*/  sc_dev; } ;
-typedef  int /*<<< orphan*/  e_RxStoreResponse ;
 
-/* Variables and functions */
- int /*<<< orphan*/  device_printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  e_RX_STORE_RESPONSE_CONTINUE ; 
+
+
+
+typedef int uint32_t ;
+typedef struct qman_softc* t_Handle ;
+typedef int t_DpaaFD ;
+struct qman_softc {int sc_dev; } ;
+typedef int e_RxStoreResponse ;
+
+
+ int device_printf (int ,char*) ;
+ int e_RX_STORE_RESPONSE_CONTINUE ;
 
 e_RxStoreResponse
 qman_received_frame_callback(t_Handle app, t_Handle qm_fqr, t_Handle qm_portal,
     uint32_t fqid_offset, t_DpaaFD *frame)
 {
-	struct qman_softc *sc;
+ struct qman_softc *sc;
 
-	sc = app;
+ sc = app;
 
-	device_printf(sc->sc_dev, "dummy callback for received frame.\n");
-	return (e_RX_STORE_RESPONSE_CONTINUE);
+ device_printf(sc->sc_dev, "dummy callback for received frame.\n");
+ return (e_RX_STORE_RESPONSE_CONTINUE);
 }

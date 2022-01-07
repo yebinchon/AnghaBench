@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int PATH_MAX ; 
- char* getenv (char*) ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  strncat (char*,char*,int) ; 
- int /*<<< orphan*/  strncpy (char*,char*,int) ; 
- char* strstr (char*,char*) ; 
+ int PATH_MAX ;
+ char* getenv (char*) ;
+ char* strchr (char*,char) ;
+ int strncat (char*,char*,int) ;
+ int strncpy (char*,char*,int) ;
+ char* strstr (char*,char*) ;
 
 __attribute__((used)) static char *cpio_replace_env(char *new_location)
 {
@@ -26,7 +18,7 @@ __attribute__((used)) static char *cpio_replace_env(char *new_location)
        char *start;
        char *end;
 
-       for (start = NULL; (start = strstr(new_location, "${")); ) {
+       for (start = ((void*)0); (start = strstr(new_location, "${")); ) {
                end = strchr(start, '}');
                if (start < end) {
                        *env_var = *expanded = '\0';

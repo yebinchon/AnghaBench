@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct iser_mem_reg {int /*<<< orphan*/ * mem_h; } ;
+
+
+
+
+struct iser_mem_reg {int * mem_h; } ;
 struct ib_pool_fmr {int dummy; } ;
 
-/* Variables and functions */
- int ib_fmr_pool_unmap (struct ib_pool_fmr*) ; 
- int /*<<< orphan*/  iser_dbg (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  iser_err (char*,int) ; 
+
+ int ib_fmr_pool_unmap (struct ib_pool_fmr*) ;
+ int iser_dbg (char*,int *) ;
+ int iser_err (char*,int) ;
 
 void iser_unreg_mem(struct iser_mem_reg *reg)
 {
-	int ret;
+ int ret;
 
-	iser_dbg("PHYSICAL Mem.Unregister mem_h %p\n",reg->mem_h);
+ iser_dbg("PHYSICAL Mem.Unregister mem_h %p\n",reg->mem_h);
 
-	ret = ib_fmr_pool_unmap((struct ib_pool_fmr *)reg->mem_h);
-	if (ret)
-		iser_err("ib_fmr_pool_unmap failed %d\n", ret);
+ ret = ib_fmr_pool_unmap((struct ib_pool_fmr *)reg->mem_h);
+ if (ret)
+  iser_err("ib_fmr_pool_unmap failed %d\n", ret);
 
-	reg->mem_h = NULL;
+ reg->mem_h = ((void*)0);
 }

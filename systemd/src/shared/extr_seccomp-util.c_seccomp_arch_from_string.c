@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  SCMP_ARCH_AARCH64 ; 
- int /*<<< orphan*/  SCMP_ARCH_ARM ; 
- int /*<<< orphan*/  SCMP_ARCH_MIPS ; 
- int /*<<< orphan*/  SCMP_ARCH_MIPS64 ; 
- int /*<<< orphan*/  SCMP_ARCH_MIPS64N32 ; 
- int /*<<< orphan*/  SCMP_ARCH_MIPSEL ; 
- int /*<<< orphan*/  SCMP_ARCH_MIPSEL64 ; 
- int /*<<< orphan*/  SCMP_ARCH_MIPSEL64N32 ; 
- int /*<<< orphan*/  SCMP_ARCH_NATIVE ; 
- int /*<<< orphan*/  SCMP_ARCH_PPC ; 
- int /*<<< orphan*/  SCMP_ARCH_PPC64 ; 
- int /*<<< orphan*/  SCMP_ARCH_PPC64LE ; 
- int /*<<< orphan*/  SCMP_ARCH_S390 ; 
- int /*<<< orphan*/  SCMP_ARCH_S390X ; 
- int /*<<< orphan*/  SCMP_ARCH_X32 ; 
- int /*<<< orphan*/  SCMP_ARCH_X86 ; 
- int /*<<< orphan*/  SCMP_ARCH_X86_64 ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- scalar_t__ streq (char const*,char*) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int EINVAL ;
+ int SCMP_ARCH_AARCH64 ;
+ int SCMP_ARCH_ARM ;
+ int SCMP_ARCH_MIPS ;
+ int SCMP_ARCH_MIPS64 ;
+ int SCMP_ARCH_MIPS64N32 ;
+ int SCMP_ARCH_MIPSEL ;
+ int SCMP_ARCH_MIPSEL64 ;
+ int SCMP_ARCH_MIPSEL64N32 ;
+ int SCMP_ARCH_NATIVE ;
+ int SCMP_ARCH_PPC ;
+ int SCMP_ARCH_PPC64 ;
+ int SCMP_ARCH_PPC64LE ;
+ int SCMP_ARCH_S390 ;
+ int SCMP_ARCH_S390X ;
+ int SCMP_ARCH_X32 ;
+ int SCMP_ARCH_X86 ;
+ int SCMP_ARCH_X86_64 ;
+ int assert (int *) ;
+ scalar_t__ streq (char const*,char*) ;
 
 int seccomp_arch_from_string(const char *n, uint32_t *ret) {
         if (!n)

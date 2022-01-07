@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  info ;
-struct TYPE_3__ {int /*<<< orphan*/  GrantedAccess; } ;
-typedef  TYPE_1__ OBJECT_BASIC_INFORMATION ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  ACCESS_MASK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ObjectBasicInformation ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pNtQueryObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int info ;
+struct TYPE_3__ {int GrantedAccess; } ;
+typedef TYPE_1__ OBJECT_BASIC_INFORMATION ;
+typedef int NTSTATUS ;
+typedef int HANDLE ;
+typedef int ACCESS_MASK ;
+
+
+ int ObjectBasicInformation ;
+ int ok (int,char*,int ) ;
+ int pNtQueryObject (int ,int ,TYPE_1__*,int,int *) ;
 
 __attribute__((used)) static ACCESS_MASK get_obj_access(HANDLE obj)
 {
@@ -30,7 +30,7 @@ __attribute__((used)) static ACCESS_MASK get_obj_access(HANDLE obj)
 
     if (!pNtQueryObject) return 0;
 
-    status = pNtQueryObject(obj, ObjectBasicInformation, &info, sizeof(info), NULL);
+    status = pNtQueryObject(obj, ObjectBasicInformation, &info, sizeof(info), ((void*)0));
     ok(!status, "NtQueryObject error %#x\n", status);
 
     return info.GrantedAccess;

@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PF0 ; 
- int /*<<< orphan*/  bfin_write_FIO_DIR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bfin_write_FIO_FLAG_C (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bfin_write_FIO_INEN (int /*<<< orphan*/ ) ; 
+ int PF0 ;
+ int bfin_write_FIO_DIR (int ) ;
+ int bfin_write_FIO_FLAG_C (int ) ;
+ int bfin_write_FIO_INEN (int ) ;
 
 void native_machine_restart(char *cmd)
 {
-	/* workaround pull up on cpld / flash pin not being strong enough */
-	bfin_write_FIO_INEN(~PF0);
-	bfin_write_FIO_DIR(PF0);
-	bfin_write_FIO_FLAG_C(PF0);
+
+ bfin_write_FIO_INEN(~PF0);
+ bfin_write_FIO_DIR(PF0);
+ bfin_write_FIO_FLAG_C(PF0);
 }

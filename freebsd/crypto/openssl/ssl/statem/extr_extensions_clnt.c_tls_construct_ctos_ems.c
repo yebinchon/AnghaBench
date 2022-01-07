@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509 ;
-typedef  int /*<<< orphan*/  WPACKET ;
-typedef  int /*<<< orphan*/  SSL ;
-typedef  int /*<<< orphan*/  EXT_RETURN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_INTERNAL_ERROR ; 
- int /*<<< orphan*/  EXT_RETURN_FAIL ; 
- int /*<<< orphan*/  EXT_RETURN_SENT ; 
- int /*<<< orphan*/  SSL_AD_INTERNAL_ERROR ; 
- int /*<<< orphan*/  SSL_F_TLS_CONSTRUCT_CTOS_EMS ; 
- int /*<<< orphan*/  SSLfatal (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TLSEXT_TYPE_extended_master_secret ; 
- int /*<<< orphan*/  WPACKET_put_bytes_u16 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int X509 ;
+typedef int WPACKET ;
+typedef int SSL ;
+typedef int EXT_RETURN ;
+
+
+ int ERR_R_INTERNAL_ERROR ;
+ int EXT_RETURN_FAIL ;
+ int EXT_RETURN_SENT ;
+ int SSL_AD_INTERNAL_ERROR ;
+ int SSL_F_TLS_CONSTRUCT_CTOS_EMS ;
+ int SSLfatal (int *,int ,int ,int ) ;
+ int TLSEXT_TYPE_extended_master_secret ;
+ int WPACKET_put_bytes_u16 (int *,int ) ;
 
 EXT_RETURN tls_construct_ctos_ems(SSL *s, WPACKET *pkt, unsigned int context,
                                   X509 *x, size_t chainidx)

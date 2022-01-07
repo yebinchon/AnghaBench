@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cache {int dummy; } ;
 struct bio {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  accounted_begin (struct cache*,struct bio*) ; 
- int /*<<< orphan*/  generic_make_request (struct bio*) ; 
+
+ int accounted_begin (struct cache*,struct bio*) ;
+ int generic_make_request (struct bio*) ;
 
 __attribute__((used)) static void accounted_request(struct cache *cache, struct bio *bio)
 {
-	accounted_begin(cache, bio);
-	generic_make_request(bio);
+ accounted_begin(cache, bio);
+ generic_make_request(bio);
 }

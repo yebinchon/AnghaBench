@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum debug_visibility { ____Placeholder_debug_visibility } debug_visibility ;
 
-/* Variables and functions */
-#define  DEBUG_VISIBILITY_IGNORE 131 
-#define  DEBUG_VISIBILITY_PRIVATE 130 
-#define  DEBUG_VISIBILITY_PROTECTED 129 
-#define  DEBUG_VISIBILITY_PUBLIC 128 
- char const* FALSE ; 
- int /*<<< orphan*/  abort () ; 
+
+
+
+typedef enum debug_visibility { ____Placeholder_debug_visibility } debug_visibility ;
+
+
+
+
+
+
+ char const* FALSE ;
+ int abort () ;
 
 __attribute__((used)) static const char *
 visibility_name (enum debug_visibility visibility)
@@ -27,16 +27,16 @@ visibility_name (enum debug_visibility visibility)
 
   switch (visibility)
     {
-    case DEBUG_VISIBILITY_PUBLIC:
+    case 128:
       s = "public";
       break;
-    case DEBUG_VISIBILITY_PRIVATE:
+    case 130:
       s = "private";
       break;
-    case DEBUG_VISIBILITY_PROTECTED:
+    case 129:
       s = "protected";
       break;
-    case DEBUG_VISIBILITY_IGNORE:
+    case 131:
       s = "/* ignore */";
       break;
     default:

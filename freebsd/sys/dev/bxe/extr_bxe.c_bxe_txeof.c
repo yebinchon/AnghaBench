@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint16_t ;
-struct bxe_softc {int /*<<< orphan*/  ifp; } ;
-struct bxe_fastpath {scalar_t__ tx_bd_cons; scalar_t__ tx_pkt_cons; scalar_t__ tx_pkt_prod; scalar_t__ watchdog_timer; int /*<<< orphan*/  index; int /*<<< orphan*/ * tx_cons_sb; } ;
-typedef  int /*<<< orphan*/  if_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOGD (struct bxe_softc*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  BXE_FP_TX_LOCK_ASSERT (struct bxe_fastpath*) ; 
- scalar_t__ BXE_TX_CLEANUP_THRESHOLD ; 
- scalar_t__ BXE_TX_TIMEOUT ; 
- int /*<<< orphan*/  DBG_TX ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IFF_DRV_OACTIVE ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ TX_BD (scalar_t__) ; 
- scalar_t__ bxe_free_tx_pkt (struct bxe_softc*,struct bxe_fastpath*,scalar_t__) ; 
- scalar_t__ bxe_tx_avail (struct bxe_softc*,struct bxe_fastpath*) ; 
- int /*<<< orphan*/  if_setdrvflagbits (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ le16toh (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mb () ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint16_t ;
+struct bxe_softc {int ifp; } ;
+struct bxe_fastpath {scalar_t__ tx_bd_cons; scalar_t__ tx_pkt_cons; scalar_t__ tx_pkt_prod; scalar_t__ watchdog_timer; int index; int * tx_cons_sb; } ;
+typedef int if_t ;
+
+
+ int BLOGD (struct bxe_softc*,int ,char*,int ,scalar_t__,scalar_t__,scalar_t__) ;
+ int BXE_FP_TX_LOCK_ASSERT (struct bxe_fastpath*) ;
+ scalar_t__ BXE_TX_CLEANUP_THRESHOLD ;
+ scalar_t__ BXE_TX_TIMEOUT ;
+ int DBG_TX ;
+ int FALSE ;
+ int IFF_DRV_OACTIVE ;
+ int TRUE ;
+ scalar_t__ TX_BD (scalar_t__) ;
+ scalar_t__ bxe_free_tx_pkt (struct bxe_softc*,struct bxe_fastpath*,scalar_t__) ;
+ scalar_t__ bxe_tx_avail (struct bxe_softc*,struct bxe_fastpath*) ;
+ int if_setdrvflagbits (int ,int ,int ) ;
+ scalar_t__ le16toh (int ) ;
+ int mb () ;
 
 __attribute__((used)) static uint8_t
-bxe_txeof(struct bxe_softc    *sc,
+bxe_txeof(struct bxe_softc *sc,
           struct bxe_fastpath *fp)
 {
     if_t ifp = sc->ifp;
@@ -59,7 +59,7 @@ bxe_txeof(struct bxe_softc    *sc,
     }
 
     fp->tx_pkt_cons = sw_cons;
-    fp->tx_bd_cons  = bd_cons;
+    fp->tx_bd_cons = bd_cons;
 
     BLOGD(sc, DBG_TX,
           "TX done: fp[%d]: hw_cons=%u sw_cons=%u sw_prod=%u\n",
@@ -76,11 +76,11 @@ bxe_txeof(struct bxe_softc    *sc,
     }
 
     if (fp->tx_pkt_prod != fp->tx_pkt_cons) {
-        /* reset the watchdog timer if there are pending transmits */
+
         fp->watchdog_timer = BXE_TX_TIMEOUT;
         return (TRUE);
     } else {
-        /* clear watchdog when there are no pending transmits */
+
         fp->watchdog_timer = 0;
         return (FALSE);
     }

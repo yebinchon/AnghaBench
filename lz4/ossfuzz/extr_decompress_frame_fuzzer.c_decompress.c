@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LZ4F_decompressOptions_t ;
-typedef  int /*<<< orphan*/  LZ4F_dctx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LZ4F_decompress (int /*<<< orphan*/ *,void*,size_t*,void const*,size_t*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  LZ4F_decompress_usingDict (int /*<<< orphan*/ *,void*,size_t*,void const*,size_t*,void const*,size_t,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  LZ4F_resetDecompressionContext (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int LZ4F_decompressOptions_t ;
+typedef int LZ4F_dctx ;
+
+
+ int LZ4F_decompress (int *,void*,size_t*,void const*,size_t*,int const*) ;
+ int LZ4F_decompress_usingDict (int *,void*,size_t*,void const*,size_t*,void const*,size_t,int const*) ;
+ int LZ4F_resetDecompressionContext (int *) ;
 
 __attribute__((used)) static void decompress(LZ4F_dctx* dctx, void* dst, size_t dstCapacity,
                        const void* src, size_t srcSize,

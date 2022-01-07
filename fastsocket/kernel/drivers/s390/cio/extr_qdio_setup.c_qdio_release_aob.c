@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct qaob {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kmem_cache_free (int /*<<< orphan*/ ,struct qaob*) ; 
- int /*<<< orphan*/  qdio_aob_cache ; 
+
+ int kmem_cache_free (int ,struct qaob*) ;
+ int qdio_aob_cache ;
 
 void qdio_release_aob(struct qaob *aob)
 {
-	kmem_cache_free(qdio_aob_cache, aob);
+ kmem_cache_free(qdio_aob_cache, aob);
 }

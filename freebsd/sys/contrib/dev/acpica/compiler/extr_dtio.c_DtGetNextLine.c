@@ -1,66 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT32 ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
 
-/* Variables and functions */
- scalar_t__ ASL_EOF ; 
- int /*<<< orphan*/  ASL_MSG_COMPILER_INTERNAL ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*,scalar_t__) ; 
- char* AslGbl_CurrentLineBuffer ; 
- int /*<<< orphan*/  AslGbl_CurrentLineNumber ; 
- scalar_t__ AslGbl_LineBufferSize ; 
- scalar_t__ AslGbl_NextLineOffset ; 
- scalar_t__ DT_ALLOW_MULTILINE_QUOTES ; 
-#define  DT_END_COMMENT 135 
-#define  DT_ESCAPE_SEQUENCE 134 
-#define  DT_MERGE_LINES 133 
-#define  DT_NORMAL_TEXT 132 
-#define  DT_SLASH_ASTERISK_COMMENT 131 
-#define  DT_SLASH_SLASH_COMMENT 130 
-#define  DT_START_COMMENT 129 
-#define  DT_START_QUOTED_STRING 128 
- int /*<<< orphan*/  DtFatal (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- int EOF ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  UtExpandLineBuffers () ; 
- int /*<<< orphan*/  ftell (int /*<<< orphan*/ *) ; 
- int getc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  ungetc (int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ UINT32 ;
+typedef int FILE ;
+typedef int BOOLEAN ;
+
+
+ scalar_t__ ASL_EOF ;
+ int ASL_MSG_COMPILER_INTERNAL ;
+ int AcpiOsPrintf (char*,scalar_t__) ;
+ char* AslGbl_CurrentLineBuffer ;
+ int AslGbl_CurrentLineNumber ;
+ scalar_t__ AslGbl_LineBufferSize ;
+ scalar_t__ AslGbl_NextLineOffset ;
+ scalar_t__ DT_ALLOW_MULTILINE_QUOTES ;
+ int DtFatal (int ,int *,char*) ;
+ int EOF ;
+ int FALSE ;
+ int TRUE ;
+ int UtExpandLineBuffers () ;
+ int ftell (int *) ;
+ int getc (int *) ;
+ int memset (char*,int ,scalar_t__) ;
+ int ungetc (int,int *) ;
 
 UINT32
 DtGetNextLine (
-    FILE                    *Handle,
-    UINT32                  Flags)
+    FILE *Handle,
+    UINT32 Flags)
 {
-    BOOLEAN                 LineNotAllBlanks = FALSE;
-    UINT32                  State = DT_NORMAL_TEXT;
-    UINT32                  CurrentLineOffset;
-    UINT32                  i;
-    int                     c;
-    int                     c1;
+    BOOLEAN LineNotAllBlanks = FALSE;
+    UINT32 State = 132;
+    UINT32 CurrentLineOffset;
+    UINT32 i;
+    int c;
+    int c1;
 
 
     memset (AslGbl_CurrentLineBuffer, 0, AslGbl_LineBufferSize);
     for (i = 0; ;)
     {
-        /*
-         * If line is too long, expand the line buffers. Also increases
-         * AslGbl_LineBufferSize.
-         */
+
+
+
+
         if (i >= AslGbl_LineBufferSize)
         {
             UtExpandLineBuffers ();
@@ -71,8 +63,8 @@ DtGetNextLine (
         {
             switch (State)
             {
-            case DT_START_QUOTED_STRING:
-            case DT_SLASH_ASTERISK_COMMENT:
+            case 128:
+            case 131:
 
                 AcpiOsPrintf ("**** EOF within comment/string %u\n", State);
                 break;
@@ -82,42 +74,34 @@ DtGetNextLine (
                 break;
             }
 
-            /* Standalone EOF is OK */
+
 
             if (i == 0)
             {
                 return (ASL_EOF);
             }
-
-            /*
-             * Received an EOF in the middle of a line. Terminate the
-             * line with a newline. The next call to this function will
-             * return a standalone EOF. Thus, the upper parsing software
-             * never has to deal with an EOF within a valid line (or
-             * the last line does not get tossed on the floor.)
-             */
             c = '\n';
-            State = DT_NORMAL_TEXT;
+            State = 132;
         }
         else if (c == '\r')
         {
             c1 = getc (Handle);
             if (c1 == '\n')
             {
-                /*
-                 * Skip the carriage return as if it didn't exist. This is
-                 * onlt meant for input files in DOS format in unix. fopen in
-                 * unix may not support "text mode" and leaves CRLF intact.
-                 */
+
+
+
+
+
                 c = '\n';
             }
             else
             {
-                /* This was not a CRLF. Only a CR */
+
 
                 ungetc(c1, Handle);
 
-                DtFatal (ASL_MSG_COMPILER_INTERNAL, NULL,
+                DtFatal (ASL_MSG_COMPILER_INTERNAL, ((void*)0),
                     "Carriage return without linefeed detected");
                 return (ASL_EOF);
             }
@@ -125,31 +109,31 @@ DtGetNextLine (
 
         switch (State)
         {
-        case DT_NORMAL_TEXT:
+        case 132:
 
-            /* Normal text, insert char into line buffer */
+
 
             AslGbl_CurrentLineBuffer[i] = (char) c;
             switch (c)
             {
             case '/':
 
-                State = DT_START_COMMENT;
+                State = 129;
                 break;
 
             case '"':
 
-                State = DT_START_QUOTED_STRING;
+                State = 128;
                 LineNotAllBlanks = TRUE;
                 i++;
                 break;
 
             case '\\':
-                /*
-                 * The continuation char MUST be last char on this line.
-                 * Otherwise, it will be assumed to be a valid ASL char.
-                 */
-                State = DT_MERGE_LINES;
+
+
+
+
+                State = 133;
                 break;
 
             case '\n':
@@ -158,10 +142,10 @@ DtGetNextLine (
                 AslGbl_NextLineOffset = (UINT32) ftell (Handle);
                 AslGbl_CurrentLineNumber++;
 
-                /*
-                 * Exit if line is complete. Ignore empty lines (only \n)
-                 * or lines that contain nothing but blanks.
-                 */
+
+
+
+
                 if ((i != 0) && LineNotAllBlanks)
                 {
                     if ((i + 1) >= AslGbl_LineBufferSize)
@@ -169,11 +153,11 @@ DtGetNextLine (
                         UtExpandLineBuffers ();
                     }
 
-                    AslGbl_CurrentLineBuffer[i+1] = 0; /* Terminate string */
+                    AslGbl_CurrentLineBuffer[i+1] = 0;
                     return (CurrentLineOffset);
                 }
 
-                /* Toss this line and start a new one */
+
 
                 i = 0;
                 LineNotAllBlanks = FALSE;
@@ -191,9 +175,9 @@ DtGetNextLine (
             }
             break;
 
-        case DT_START_QUOTED_STRING:
+        case 128:
 
-            /* Insert raw chars until end of quoted string */
+
 
             AslGbl_CurrentLineBuffer[i] = (char) c;
             i++;
@@ -202,12 +186,12 @@ DtGetNextLine (
             {
             case '"':
 
-                State = DT_NORMAL_TEXT;
+                State = 132;
                 break;
 
             case '\\':
 
-                State = DT_ESCAPE_SEQUENCE;
+                State = 134;
                 break;
 
             case '\n':
@@ -217,44 +201,44 @@ DtGetNextLine (
                     AcpiOsPrintf (
                         "ERROR at line %u: Unterminated quoted string\n",
                         AslGbl_CurrentLineNumber++);
-                    State = DT_NORMAL_TEXT;
+                    State = 132;
                 }
                 break;
 
-            default:    /* Get next character */
+            default:
 
                 break;
             }
             break;
 
-        case DT_ESCAPE_SEQUENCE:
+        case 134:
 
-            /* Just copy the escaped character. TBD: sufficient for table compiler? */
+
 
             AslGbl_CurrentLineBuffer[i] = (char) c;
             i++;
-            State = DT_START_QUOTED_STRING;
+            State = 128;
             break;
 
-        case DT_START_COMMENT:
+        case 129:
 
-            /* Open comment if this character is an asterisk or slash */
+
 
             switch (c)
             {
             case '*':
 
-                State = DT_SLASH_ASTERISK_COMMENT;
+                State = 131;
                 break;
 
             case '/':
 
-                State = DT_SLASH_SLASH_COMMENT;
+                State = 130;
                 break;
 
-            default:    /* Not a comment */
+            default:
 
-                i++;    /* Save the preceding slash */
+                i++;
                 if (i >= AslGbl_LineBufferSize)
                 {
                     UtExpandLineBuffers ();
@@ -262,14 +246,14 @@ DtGetNextLine (
 
                 AslGbl_CurrentLineBuffer[i] = (char) c;
                 i++;
-                State = DT_NORMAL_TEXT;
+                State = 132;
                 break;
             }
             break;
 
-        case DT_SLASH_ASTERISK_COMMENT:
+        case 131:
 
-            /* Ignore chars until an asterisk-slash is found */
+
 
             switch (c)
             {
@@ -281,7 +265,7 @@ DtGetNextLine (
 
             case '*':
 
-                State = DT_END_COMMENT;
+                State = 135;
                 break;
 
             default:
@@ -290,28 +274,28 @@ DtGetNextLine (
             }
             break;
 
-        case DT_SLASH_SLASH_COMMENT:
+        case 130:
 
-            /* Ignore chars until end-of-line */
+
 
             if (c == '\n')
             {
-                /* We will exit via the NORMAL_TEXT path */
+
 
                 ungetc (c, Handle);
-                State = DT_NORMAL_TEXT;
+                State = 132;
             }
             break;
 
-        case DT_END_COMMENT:
+        case 135:
 
-            /* End comment if this char is a slash */
+
 
             switch (c)
             {
             case '/':
 
-                State = DT_NORMAL_TEXT;
+                State = 132;
                 break;
 
             case '\n':
@@ -322,50 +306,50 @@ DtGetNextLine (
 
             case '*':
 
-                /* Consume all adjacent asterisks */
+
                 break;
 
             default:
 
-                State = DT_SLASH_ASTERISK_COMMENT;
+                State = 131;
                 break;
             }
             break;
 
-        case DT_MERGE_LINES:
+        case 133:
 
             if (c != '\n')
             {
-                /*
-                 * This is not a continuation backslash, it is a normal
-                 * normal ASL backslash - for example: Scope(\_SB_)
-                 */
-                i++; /* Keep the backslash that is already in the buffer */
+
+
+
+
+                i++;
 
                 ungetc (c, Handle);
-                State = DT_NORMAL_TEXT;
+                State = 132;
             }
             else
             {
-                /*
-                 * This is a continuation line -- a backlash followed
-                 * immediately by a newline. Insert a space between the
-                 * lines (overwrite the backslash)
-                 */
+
+
+
+
+
                 AslGbl_CurrentLineBuffer[i] = ' ';
                 i++;
 
-                /* Ignore newline, this will merge the lines */
+
 
                 AslGbl_NextLineOffset = (UINT32) ftell (Handle);
                 AslGbl_CurrentLineNumber++;
-                State = DT_NORMAL_TEXT;
+                State = 132;
             }
             break;
 
         default:
 
-            DtFatal (ASL_MSG_COMPILER_INTERNAL, NULL, "Unknown input state");
+            DtFatal (ASL_MSG_COMPILER_INTERNAL, ((void*)0), "Unknown input state");
             return (ASL_EOF);
         }
     }

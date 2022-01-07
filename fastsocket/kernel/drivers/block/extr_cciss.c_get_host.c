@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct gendisk {TYPE_1__* queue; } ;
-typedef  int /*<<< orphan*/  ctlr_info_t ;
-struct TYPE_2__ {int /*<<< orphan*/ * queuedata; } ;
+typedef int ctlr_info_t ;
+struct TYPE_2__ {int * queuedata; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static inline ctlr_info_t *get_host(struct gendisk *disk)
 {
-	return disk->queue->queuedata;
+ return disk->queue->queuedata;
 }

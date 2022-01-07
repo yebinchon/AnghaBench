@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  pFuncArg; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int pFuncArg; } ;
 struct TYPE_6__ {scalar_t__ isTabFunc; } ;
 struct SrcList_item {TYPE_2__ u1; TYPE_1__ fg; scalar_t__ pSelect; } ;
-typedef  int /*<<< orphan*/  Walker ;
+typedef int Walker ;
 struct TYPE_9__ {TYPE_3__* pSrc; } ;
 struct TYPE_8__ {int nSrc; struct SrcList_item* a; } ;
-typedef  TYPE_3__ SrcList ;
-typedef  TYPE_4__ Select ;
+typedef TYPE_3__ SrcList ;
+typedef TYPE_4__ Select ;
 
-/* Variables and functions */
- int WRC_Abort ; 
- int WRC_Continue ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ sqlite3WalkExprList (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3WalkSelect (int /*<<< orphan*/ *,scalar_t__) ; 
+
+ int WRC_Abort ;
+ int WRC_Continue ;
+ int assert (int) ;
+ scalar_t__ sqlite3WalkExprList (int *,int ) ;
+ scalar_t__ sqlite3WalkSelect (int *,scalar_t__) ;
 
 int sqlite3WalkSelectFrom(Walker *pWalker, Select *p){
   SrcList *pSrc;

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gchar ;
-typedef  scalar_t__ gboolean ;
-typedef  int /*<<< orphan*/  GDir ;
 
-/* Variables and functions */
- int /*<<< orphan*/  G_FILE_TEST_IS_DIR ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  g_dir_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * g_dir_open (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * g_dir_read_name (int /*<<< orphan*/ *) ; 
- scalar_t__ g_file_test (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_rmdir (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * g_strdup_printf (char*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  g_unlink (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int gchar ;
+typedef scalar_t__ gboolean ;
+typedef int GDir ;
+
+
+ int G_FILE_TEST_IS_DIR ;
+ scalar_t__ TRUE ;
+ int g_dir_close (int *) ;
+ int * g_dir_open (int const*,int ,int *) ;
+ int * g_dir_read_name (int *) ;
+ scalar_t__ g_file_test (int const*,int ) ;
+ int g_free (int *) ;
+ int g_rmdir (int const*) ;
+ int * g_strdup_printf (char*,int const*,int const*) ;
+ int g_unlink (int const*) ;
 
 __attribute__((used)) static void
 del_tree(const gchar *name, gboolean del_top)
@@ -33,7 +33,7 @@ del_tree(const gchar *name, gboolean del_top)
 
     if (g_file_test(name, G_FILE_TEST_IS_DIR))
     {
-        GDir *gdir = g_dir_open(name, 0, NULL);
+        GDir *gdir = g_dir_open(name, 0, ((void*)0));
         file = g_dir_read_name(gdir);
         while (file)
         {

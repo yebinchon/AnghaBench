@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct alpha_reloc_tag {long sequence; int /*<<< orphan*/  string; int /*<<< orphan*/  segment; } ;
 
-/* Variables and functions */
- int ALPHA_RELOC_DIGITS ; 
- int /*<<< orphan*/  alpha_literal_hash ; 
- int /*<<< orphan*/  as_fatal (char const*) ; 
- scalar_t__ hash_find (int /*<<< orphan*/ ,char*) ; 
- char* hash_insert (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  now_seg ; 
- int /*<<< orphan*/  sprintf (char*,char*,long) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char*) ; 
- size_t strlen (char*) ; 
- struct alpha_reloc_tag* xcalloc (int,int) ; 
+
+
+
+struct alpha_reloc_tag {long sequence; int string; int segment; } ;
+
+
+ int ALPHA_RELOC_DIGITS ;
+ int alpha_literal_hash ;
+ int as_fatal (char const*) ;
+ scalar_t__ hash_find (int ,char*) ;
+ char* hash_insert (int ,int ,void*) ;
+ int now_seg ;
+ int sprintf (char*,char*,long) ;
+ int strcpy (int ,char*) ;
+ size_t strlen (char*) ;
+ struct alpha_reloc_tag* xcalloc (int,int) ;
 
 __attribute__((used)) static struct alpha_reloc_tag *
 get_alpha_reloc_tag (long sequence)
@@ -45,7 +45,7 @@ get_alpha_reloc_tag (long sequence)
       strcpy (info->string, buffer);
       errmsg = hash_insert (alpha_literal_hash, info->string, (void *) info);
       if (errmsg)
-	as_fatal (errmsg);
+ as_fatal (errmsg);
     }
 
   return info;

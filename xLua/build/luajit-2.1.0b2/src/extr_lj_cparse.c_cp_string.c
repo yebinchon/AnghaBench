@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int32_t ;
-struct TYPE_8__ {int /*<<< orphan*/  id; scalar_t__ i32; } ;
-struct TYPE_9__ {char c; TYPE_1__ val; int /*<<< orphan*/  sb; int /*<<< orphan*/  L; int /*<<< orphan*/  str; } ;
-typedef  int /*<<< orphan*/  CPToken ;
-typedef  TYPE_2__ CPState ;
-typedef  char CPChar ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CTID_INT32 ; 
- int /*<<< orphan*/  CTOK_EOF ; 
- int /*<<< orphan*/  CTOK_INTEGER ; 
- int /*<<< orphan*/  CTOK_STRING ; 
- int /*<<< orphan*/  LJ_ERR_XSTR ; 
- int /*<<< orphan*/  cp_err_token (TYPE_2__*,char) ; 
- int /*<<< orphan*/  cp_errmsg (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char cp_get (TYPE_2__*) ; 
- int /*<<< orphan*/  cp_save (TYPE_2__*,char) ; 
- int /*<<< orphan*/  lj_buf_str (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lj_char_isdigit (char) ; 
- int /*<<< orphan*/  lj_char_isxdigit (char) ; 
- scalar_t__* sbufB (int /*<<< orphan*/ *) ; 
- int sbuflen (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ int32_t ;
+struct TYPE_8__ {int id; scalar_t__ i32; } ;
+struct TYPE_9__ {char c; TYPE_1__ val; int sb; int L; int str; } ;
+typedef int CPToken ;
+typedef TYPE_2__ CPState ;
+typedef char CPChar ;
+
+
+ int CTID_INT32 ;
+ int CTOK_EOF ;
+ int CTOK_INTEGER ;
+ int CTOK_STRING ;
+ int LJ_ERR_XSTR ;
+ int cp_err_token (TYPE_2__*,char) ;
+ int cp_errmsg (TYPE_2__*,int ,int ) ;
+ char cp_get (TYPE_2__*) ;
+ int cp_save (TYPE_2__*,char) ;
+ int lj_buf_str (int ,int *) ;
+ int lj_char_isdigit (char) ;
+ int lj_char_isxdigit (char) ;
+ scalar_t__* sbufB (int *) ;
+ int sbuflen (int *) ;
 
 __attribute__((used)) static CPToken cp_string(CPState *cp)
 {
@@ -55,25 +55,25 @@ __attribute__((used)) static CPToken cp_string(CPState *cp)
       case 'v': c = '\v'; break;
       case 'e': c = 27; break;
       case 'x':
-	c = 0;
-	while (lj_char_isxdigit(cp_get(cp)))
-	  c = (c<<4) + (lj_char_isdigit(cp->c) ? cp->c-'0' : (cp->c&15)+9);
-	cp_save(cp, (c & 0xff));
-	continue;
+ c = 0;
+ while (lj_char_isxdigit(cp_get(cp)))
+   c = (c<<4) + (lj_char_isdigit(cp->c) ? cp->c-'0' : (cp->c&15)+9);
+ cp_save(cp, (c & 0xff));
+ continue;
       default:
-	if (lj_char_isdigit(c)) {
-	  c -= '0';
-	  if (lj_char_isdigit(cp_get(cp))) {
-	    c = c*8 + (cp->c - '0');
-	    if (lj_char_isdigit(cp_get(cp))) {
-	      c = c*8 + (cp->c - '0');
-	      cp_get(cp);
-	    }
-	  }
-	  cp_save(cp, (c & 0xff));
-	  continue;
-	}
-	break;
+ if (lj_char_isdigit(c)) {
+   c -= '0';
+   if (lj_char_isdigit(cp_get(cp))) {
+     c = c*8 + (cp->c - '0');
+     if (lj_char_isdigit(cp_get(cp))) {
+       c = c*8 + (cp->c - '0');
+       cp_get(cp);
+     }
+   }
+   cp_save(cp, (c & 0xff));
+   continue;
+ }
+ break;
       }
     }
     cp_save(cp, c);

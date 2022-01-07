@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
 struct TYPE_19__ {TYPE_3__** outputs; TYPE_1__* priv; } ;
 struct TYPE_18__ {int const w; int const h; TYPE_4__* dst; } ;
-struct TYPE_17__ {int /*<<< orphan*/ * linesize; int /*<<< orphan*/ * data; } ;
-struct TYPE_16__ {scalar_t__ luma_strength; scalar_t__ chroma_strength; int /*<<< orphan*/  vsub; int /*<<< orphan*/  hsub; } ;
-typedef  TYPE_1__ OWDenoiseContext ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
+struct TYPE_17__ {int * linesize; int * data; } ;
+struct TYPE_16__ {scalar_t__ luma_strength; scalar_t__ chroma_strength; int vsub; int hsub; } ;
+typedef TYPE_1__ OWDenoiseContext ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AV_CEIL_RSHIFT (int const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_frame_copy_props (TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_2__**) ; 
- scalar_t__ av_frame_is_writable (TYPE_2__*) ; 
- int /*<<< orphan*/  av_image_copy_plane (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int const,int const) ; 
- int ff_filter_frame (TYPE_3__*,TYPE_2__*) ; 
- TYPE_2__* ff_get_video_buffer (TYPE_3__*,int const,int const) ; 
- int /*<<< orphan*/  filter (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int const,int const,scalar_t__) ; 
+
+ int AVERROR (int ) ;
+ int AV_CEIL_RSHIFT (int const,int ) ;
+ int ENOMEM ;
+ int av_frame_copy_props (TYPE_2__*,TYPE_2__*) ;
+ int av_frame_free (TYPE_2__**) ;
+ scalar_t__ av_frame_is_writable (TYPE_2__*) ;
+ int av_image_copy_plane (int ,int ,int ,int ,int const,int const) ;
+ int ff_filter_frame (TYPE_3__*,TYPE_2__*) ;
+ TYPE_2__* ff_get_video_buffer (TYPE_3__*,int const,int const) ;
+ int filter (TYPE_1__*,int ,int ,int ,int ,int const,int const,scalar_t__) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
 {
@@ -50,8 +50,8 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
         if (s->luma_strength > 0)
             filter(s, out->data[0], out->linesize[0], in->data[0], in->linesize[0], inlink->w, inlink->h, s->luma_strength);
         if (s->chroma_strength > 0) {
-            filter(s, out->data[1], out->linesize[1], in->data[1], in->linesize[1], cw,        ch,        s->chroma_strength);
-            filter(s, out->data[2], out->linesize[2], in->data[2], in->linesize[2], cw,        ch,        s->chroma_strength);
+            filter(s, out->data[1], out->linesize[1], in->data[1], in->linesize[1], cw, ch, s->chroma_strength);
+            filter(s, out->data[2], out->linesize[2], in->data[2], in->linesize[2], cw, ch, s->chroma_strength);
         }
     } else {
         out = ff_get_video_buffer(outlink, outlink->w, outlink->h);

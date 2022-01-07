@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {size_t max_processing_chunk; scalar_t__ (* read ) (TYPE_1__*,void*,size_t) ;size_t processed_bytes; int /*<<< orphan*/  (* update_cksum ) (TYPE_1__*,void*,size_t) ;} ;
-typedef  TYPE_1__ rio ;
 
-/* Variables and functions */
- scalar_t__ stub1 (TYPE_1__*,void*,size_t) ; 
- int /*<<< orphan*/  stub2 (TYPE_1__*,void*,size_t) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {size_t max_processing_chunk; scalar_t__ (* read ) (TYPE_1__*,void*,size_t) ;size_t processed_bytes; int (* update_cksum ) (TYPE_1__*,void*,size_t) ;} ;
+typedef TYPE_1__ rio ;
+
+
+ scalar_t__ stub1 (TYPE_1__*,void*,size_t) ;
+ int stub2 (TYPE_1__*,void*,size_t) ;
 
 __attribute__((used)) static inline size_t rioRead(rio *r, void *buf, size_t len) {
     while (len) {

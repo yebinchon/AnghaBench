@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_repos_t ;
-typedef  int /*<<< orphan*/  svn_repos_authz_func_t ;
-typedef  int /*<<< orphan*/  svn_log_entry_receiver_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-struct TYPE_4__ {void* inner_baton; int /*<<< orphan*/  inner; int /*<<< orphan*/ * changes; int /*<<< orphan*/ * changes_pool; } ;
-typedef  TYPE_1__ log_entry_receiver_baton_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  log4_entry_receiver ; 
- int /*<<< orphan*/ * log4_path_change_receiver ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_repos_get_logs5 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,scalar_t__,scalar_t__,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int svn_repos_t ;
+typedef int svn_repos_authz_func_t ;
+typedef int svn_log_entry_receiver_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+struct TYPE_4__ {void* inner_baton; int inner; int * changes; int * changes_pool; } ;
+typedef TYPE_1__ log_entry_receiver_baton_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int log4_entry_receiver ;
+ int * log4_path_change_receiver ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ int svn_repos_get_logs5 (int *,int const*,int ,int ,int,scalar_t__,scalar_t__,int const*,int ,void*,int *,TYPE_1__*,int ,TYPE_1__*,int *) ;
 
 svn_error_t *
 svn_repos__get_logs_compat(svn_repos_t *repos,
@@ -51,7 +51,7 @@ svn_repos__get_logs_compat(svn_repos_t *repos,
 
   log_entry_receiver_baton_t baton;
   baton.changes_pool = changes_pool;
-  baton.changes = NULL;
+  baton.changes = ((void*)0);
   baton.inner = receiver;
   baton.inner_baton = receiver_baton;
 
@@ -62,7 +62,7 @@ svn_repos__get_logs_compat(svn_repos_t *repos,
                               authz_read_func, authz_read_baton,
                               discover_changed_paths
                                 ? log4_path_change_receiver
-                                : NULL,
+                                : ((void*)0),
                               &baton,
                               log4_entry_receiver, &baton,
                               pool));

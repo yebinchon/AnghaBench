@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _tprintf (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- scalar_t__ isspace (char) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
+
+
+
+typedef char CHAR ;
+
+
+ int _T (char*) ;
+ int _tprintf (int ) ;
+ int assert (int ) ;
+ scalar_t__ isspace (char) ;
+ int memcpy (char*,char*,int) ;
 
 void get_file_nameA(CHAR **command_line, CHAR *file_name, int max_filename)
 {
     CHAR *s = *command_line;
-    int pos = 0;                /* position of pointer "s" in *command_line */
+    int pos = 0;
     file_name[0] = 0;
 
     if (!s[0]) {
@@ -35,7 +35,7 @@ void get_file_nameA(CHAR **command_line, CHAR *file_name, int max_filename)
             if (!s[0]) {
                 _tprintf(_T("Unexpected end of file name!\n"));
                 assert(0);
-                //exit(1);
+
             }
             s++;
             pos++;
@@ -47,7 +47,7 @@ void get_file_nameA(CHAR **command_line, CHAR *file_name, int max_filename)
         }
     }
     memcpy(file_name, *command_line, pos * sizeof((*command_line)[0]));
-    /* remove the last backslash */
+
     if (file_name[pos - 1] == '\\') {
         file_name[pos - 1] = '\0';
     } else {

@@ -1,63 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
 
-/* Variables and functions */
-#define  KC_C 137 
-#define  KC_D 136 
-#define  KC_G 135 
-#define  KC_I 134 
-#define  KC_N 133 
-#define  KC_P 132 
-#define  KC_Q 131 
-#define  KC_S 130 
-#define  KC_T 129 
-#define  KC_W 128 
- int /*<<< orphan*/  ReplaceString (char*,char*) ; 
- scalar_t__ TIMER_DIFF_16 (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  addKeyCode (int) ; 
- int /*<<< orphan*/  containsCode (int const) ; 
- int /*<<< orphan*/  deactivateRelativity () ; 
- int /*<<< orphan*/  last2CodeAre (int const) ; 
- int /*<<< orphan*/  last2CodesAre (int const,int const) ; 
- int /*<<< orphan*/  lastCodeIs (int const) ; 
- int /*<<< orphan*/  printString (char*) ; 
- int /*<<< orphan*/  printStringAndQueueChar (char*) ; 
- scalar_t__ relTimeout ; 
- scalar_t__ relativityTimer ; 
- int /*<<< orphan*/  timer_read () ; 
+
+
+
+typedef int uint16_t ;
+ int ReplaceString (char*,char*) ;
+ scalar_t__ TIMER_DIFF_16 (int ,scalar_t__) ;
+ int addKeyCode (int) ;
+ int containsCode (int const) ;
+ int deactivateRelativity () ;
+ int last2CodeAre (int const) ;
+ int last2CodesAre (int const,int const) ;
+ int lastCodeIs (int const) ;
+ int printString (char*) ;
+ int printStringAndQueueChar (char*) ;
+ scalar_t__ relTimeout ;
+ scalar_t__ relativityTimer ;
+ int timer_read () ;
 
 bool processSmartMacroTap(uint16_t kc)
 {
   if (relativityTimer > 0 && TIMER_DIFF_16(timer_read(), relativityTimer) >= relTimeout)
   {
     deactivateRelativity();
-    return true;
+    return 1;
   }
   relativityTimer = 0;
   switch(kc)
   {
-    case KC_C:
-      if (containsCode(KC_D))
+    case 137:
+      if (containsCode(136))
       {
         printString("ribution");
         printStringAndQueueChar("Center");
       }
-      else if (last2CodeAre(KC_C))
+      else if (last2CodeAre(137))
       {
         ReplaceString("Corporation", "Contact");
       }
-      else if(lastCodeIs(KC_C))
+      else if(lastCodeIs(137))
       {
         printString("oration");
       }
@@ -66,12 +54,12 @@ bool processSmartMacroTap(uint16_t kc)
         printStringAndQueueChar("Corp");
       }
       break;
-    case KC_D:
-      if (last2CodeAre(KC_D))
+    case 136:
+      if (last2CodeAre(136))
       {
         ReplaceString("Distribution", "Distributor");
       }
-      else if(lastCodeIs(KC_D))
+      else if(lastCodeIs(136))
       {
         printString("ribution");
       }
@@ -80,29 +68,29 @@ bool processSmartMacroTap(uint16_t kc)
         printStringAndQueueChar("Dist");
       }
       break;
-    case KC_G:
+    case 135:
         printStringAndQueueChar("Global");
         printStringAndQueueChar("Lookup");
       break;
-    case KC_I:
-      if (containsCode(KC_W))
+    case 134:
+      if (containsCode(128))
         printStringAndQueueChar("Instance");
       else
         printStringAndQueueChar("Item");
       break;
-    case KC_N:
+    case 133:
       printStringAndQueueChar("NadRate");
       break;
-    case KC_P:
-      if (last2CodesAre(KC_D, KC_C))
+    case 132:
+      if (last2CodesAre(136, 137))
       {
         ReplaceString("DistributionCenter", "DistCenter");
         printStringAndQueueChar("Pricing");
       }
-      else if (last2CodeAre(KC_P))
+      else if (last2CodeAre(132))
       {
       }
-      else if(lastCodeIs(KC_P))
+      else if(lastCodeIs(132))
       {
         ReplaceString("Product", "Person");
       }
@@ -111,28 +99,28 @@ bool processSmartMacroTap(uint16_t kc)
         printStringAndQueueChar("Product");
       }
       break;
-    case KC_Q:
+    case 131:
       printStringAndQueueChar("Darden");
       break;
-    case KC_S:
-      if (containsCode(KC_W))
-        if (containsCode(KC_S) || containsCode(KC_D))
+    case 130:
+      if (containsCode(128))
+        if (containsCode(130) || containsCode(136))
           printStringAndQueueChar("Step");
         else
           printStringAndQueueChar("Session");
       else
         printStringAndQueueChar("Supplier");
       break;
-    case KC_T:
-      if (containsCode(KC_W))
+    case 129:
+      if (containsCode(128))
         printStringAndQueueChar("Task");
       else
         printStringAndQueueChar("Type");
       break;
-    case KC_W:
+    case 128:
       printStringAndQueueChar("Workflow");
       break;
   }
   addKeyCode(kc);
-  return false;
+  return 0;
 }

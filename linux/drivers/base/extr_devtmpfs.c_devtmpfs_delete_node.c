@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct req {int err; int /*<<< orphan*/  done; struct req* next; struct device* dev; scalar_t__ mode; int /*<<< orphan*/  name; } ;
+
+
+
+
+struct req {int err; int done; struct req* next; struct device* dev; scalar_t__ mode; int name; } ;
 struct device {int dummy; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  device_get_devnode (struct device*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const**) ; 
- int /*<<< orphan*/  init_completion (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (char const*) ; 
- int /*<<< orphan*/  req_lock ; 
- struct req* requests ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  thread ; 
- int /*<<< orphan*/  wait_for_completion (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wake_up_process (int /*<<< orphan*/ ) ; 
+
+ int ENOMEM ;
+ int device_get_devnode (struct device*,int *,int *,int *,char const**) ;
+ int init_completion (int *) ;
+ int kfree (char const*) ;
+ int req_lock ;
+ struct req* requests ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int thread ;
+ int wait_for_completion (int *) ;
+ int wake_up_process (int ) ;
 
 int devtmpfs_delete_node(struct device *dev)
 {
-	const char *tmp = NULL;
-	struct req req;
+ const char *tmp = ((void*)0);
+ struct req req;
 
-	if (!thread)
-		return 0;
+ if (!thread)
+  return 0;
 
-	req.name = device_get_devnode(dev, NULL, NULL, NULL, &tmp);
-	if (!req.name)
-		return -ENOMEM;
+ req.name = device_get_devnode(dev, ((void*)0), ((void*)0), ((void*)0), &tmp);
+ if (!req.name)
+  return -ENOMEM;
 
-	req.mode = 0;
-	req.dev = dev;
+ req.mode = 0;
+ req.dev = dev;
 
-	init_completion(&req.done);
+ init_completion(&req.done);
 
-	spin_lock(&req_lock);
-	req.next = requests;
-	requests = &req;
-	spin_unlock(&req_lock);
+ spin_lock(&req_lock);
+ req.next = requests;
+ requests = &req;
+ spin_unlock(&req_lock);
 
-	wake_up_process(thread);
-	wait_for_completion(&req.done);
+ wake_up_process(thread);
+ wait_for_completion(&req.done);
 
-	kfree(tmp);
-	return req.err;
+ kfree(tmp);
+ return req.err;
 }

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UInt32 ;
-struct TYPE_3__ {int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-typedef  scalar_t__ SizeT ;
-typedef  scalar_t__ SRes ;
-typedef  TYPE_1__ ISzAlloc ;
-typedef  int /*<<< orphan*/  ELzmaStatus ;
-typedef  int Byte ;
 
-/* Variables and functions */
- scalar_t__ LZMA86_HEADER_SIZE ; 
- int /*<<< orphan*/  LZMA_FINISH_ANY ; 
- int /*<<< orphan*/  LZMA_PROPS_SIZE ; 
- scalar_t__ LzmaDecode (int*,scalar_t__*,int const*,scalar_t__*,int const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__*) ; 
- scalar_t__ SZ_ERROR_INPUT_EOF ; 
- scalar_t__ SZ_ERROR_UNSUPPORTED ; 
- scalar_t__ SZ_OK ; 
- int /*<<< orphan*/  SzAlloc ; 
- int /*<<< orphan*/  SzFree ; 
- int /*<<< orphan*/  x86_Convert (int*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  x86_Convert_Init (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UInt32 ;
+struct TYPE_3__ {int member_1; int member_0; } ;
+typedef scalar_t__ SizeT ;
+typedef scalar_t__ SRes ;
+typedef TYPE_1__ ISzAlloc ;
+typedef int ELzmaStatus ;
+typedef int Byte ;
+
+
+ scalar_t__ LZMA86_HEADER_SIZE ;
+ int LZMA_FINISH_ANY ;
+ int LZMA_PROPS_SIZE ;
+ scalar_t__ LzmaDecode (int*,scalar_t__*,int const*,scalar_t__*,int const*,int ,int ,int *,TYPE_1__*) ;
+ scalar_t__ SZ_ERROR_INPUT_EOF ;
+ scalar_t__ SZ_ERROR_UNSUPPORTED ;
+ scalar_t__ SZ_OK ;
+ int SzAlloc ;
+ int SzFree ;
+ int x86_Convert (int*,scalar_t__,int ,int *,int ) ;
+ int x86_Convert_Init (int ) ;
 
 SRes Lzma86_Decode(Byte *dest, SizeT *destLen, const Byte *src, SizeT *srcLen)
 {

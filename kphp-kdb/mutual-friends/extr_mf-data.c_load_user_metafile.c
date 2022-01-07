@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int metafile_len; struct aio_connection* aio; int /*<<< orphan*/ * metafile; } ;
-typedef  TYPE_2__ user ;
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int metafile_len; struct aio_connection* aio; int * metafile; } ;
+typedef TYPE_2__ user ;
 struct connection {int dummy; } ;
 struct aio_connection {void* basic_type; TYPE_2__* extra; } ;
 struct TYPE_9__ {int user_cnt; TYPE_1__* user_index; } ;
-struct TYPE_7__ {int size; int /*<<< orphan*/  shift; } ;
+struct TYPE_7__ {int size; int shift; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- struct aio_connection* WaitAio ; 
- int allocated_metafile_bytes ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  check_aio_completion (struct aio_connection*) ; 
- struct aio_connection* create_aio_read_connection (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,TYPE_2__*) ; 
- void* ct_aio ; 
- int /*<<< orphan*/  ct_metafile_aio ; 
- int /*<<< orphan*/ * fd ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- double get_utime (int) ; 
- TYPE_5__ header ; 
- int /*<<< orphan*/  lseek (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  onload_user_metafile (struct connection*,int) ; 
- int /*<<< orphan*/ * qmalloc (int) ; 
- int read (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ user_loaded (TYPE_2__*) ; 
- int verbosity ; 
+
+ int SEEK_SET ;
+ struct aio_connection* WaitAio ;
+ int allocated_metafile_bytes ;
+ int assert (int) ;
+ int check_aio_completion (struct aio_connection*) ;
+ struct aio_connection* create_aio_read_connection (int ,int *,int ,int,int *,TYPE_2__*) ;
+ void* ct_aio ;
+ int ct_metafile_aio ;
+ int * fd ;
+ int fprintf (int ,char*,...) ;
+ double get_utime (int) ;
+ TYPE_5__ header ;
+ int lseek (int ,int ,int ) ;
+ int onload_user_metafile (struct connection*,int) ;
+ int * qmalloc (int) ;
+ int read (int ,int *,int) ;
+ int stderr ;
+ scalar_t__ user_loaded (TYPE_2__*) ;
+ int verbosity ;
 
 void load_user_metafile (user *u, int local_id, int no_aio) {
   static struct aio_connection empty_aio_conn;
 
-  WaitAio = NULL;
+  WaitAio = ((void*)0);
 
   if (user_loaded (u)) {
     return;
   }
 
   if (local_id > header.user_cnt || header.user_index[local_id].size == 0) {
-    u->metafile = NULL;
+    u->metafile = ((void*)0);
     u->metafile_len = 0;
 
     empty_aio_conn.extra = u;
@@ -62,9 +62,9 @@ void load_user_metafile (user *u, int local_id, int no_aio) {
     return;
   }
 
-  if (u->aio != NULL) {
+  if (u->aio != ((void*)0)) {
     check_aio_completion (u->aio);
-    if (u->aio != NULL) {
+    if (u->aio != ((void*)0)) {
       WaitAio = u->aio;
       return;
     }
@@ -77,11 +77,11 @@ void load_user_metafile (user *u, int local_id, int no_aio) {
   }
 
   u->metafile_len = header.user_index[local_id].size;
-  u->metafile = NULL;
+  u->metafile = ((void*)0);
 
   while (1) {
     u->metafile = qmalloc (u->metafile_len);
-    if (u->metafile != NULL) {
+    if (u->metafile != ((void*)0)) {
       break;
     }
 
@@ -115,14 +115,14 @@ void load_user_metafile (user *u, int local_id, int no_aio) {
     empty_aio_conn.basic_type = ct_aio;
     u->aio = &empty_aio_conn;
 
-    assert (u->aio != NULL);
+    assert (u->aio != ((void*)0));
 
     onload_user_metafile ((struct connection *)(&empty_aio_conn), u->metafile_len);
 
     return;
   } else {
     u->aio = create_aio_read_connection (fd[0], u->metafile, header.user_index[local_id].shift, u->metafile_len, &ct_metafile_aio, u);
-    assert (u->aio != NULL);
+    assert (u->aio != ((void*)0));
     WaitAio = u->aio;
   }
 

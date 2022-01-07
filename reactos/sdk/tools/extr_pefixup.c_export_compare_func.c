@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ export_t ;
 
-/* Variables and functions */
- char* rva_to_ptr (int /*<<< orphan*/ ) ; 
- int strcmp (char*,char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int name; } ;
+typedef TYPE_1__ export_t ;
+
+
+ char* rva_to_ptr (int ) ;
+ int strcmp (char*,char*) ;
 
 int export_compare_func(const void *a, const void *b)
 {

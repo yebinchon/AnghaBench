@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  objset_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dump_zap_stats (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint64_t ;
+typedef int objset_t ;
+
+
+ int dump_zap_stats (int *,int ) ;
 
 __attribute__((used)) static void
 dump_ddt_zap(objset_t *os, uint64_t object, void *data, size_t size)
 {
-	dump_zap_stats(os, object);
-	/* contents are printed elsewhere, properly decoded */
+ dump_zap_stats(os, object);
+
 }

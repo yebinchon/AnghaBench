@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_8__ {int max_alphabet_size; int max_distance; } ;
 struct TYPE_7__ {int distance_postfix_bits; int num_direct_distance_codes; int alphabet_size_max; int alphabet_size_limit; int max_distance; } ;
 struct TYPE_6__ {scalar_t__ large_window; TYPE_2__ dist; } ;
-typedef  TYPE_1__ BrotliEncoderParams ;
-typedef  TYPE_2__ BrotliDistanceParams ;
-typedef  TYPE_3__ BrotliDistanceCodeLimit ;
+typedef TYPE_1__ BrotliEncoderParams ;
+typedef TYPE_2__ BrotliDistanceParams ;
+typedef TYPE_3__ BrotliDistanceCodeLimit ;
 
-/* Variables and functions */
- int BROTLI_DISTANCE_ALPHABET_SIZE (int,int,int) ; 
- int BROTLI_LARGE_MAX_DISTANCE_BITS ; 
- int /*<<< orphan*/  BROTLI_MAX_ALLOWED_DISTANCE ; 
- int BROTLI_MAX_DISTANCE_BITS ; 
- TYPE_3__ BrotliCalculateDistanceCodeLimit (int /*<<< orphan*/ ,int,int) ; 
+
+ int BROTLI_DISTANCE_ALPHABET_SIZE (int,int,int) ;
+ int BROTLI_LARGE_MAX_DISTANCE_BITS ;
+ int BROTLI_MAX_ALLOWED_DISTANCE ;
+ int BROTLI_MAX_DISTANCE_BITS ;
+ TYPE_3__ BrotliCalculateDistanceCodeLimit (int ,int,int) ;
 
 void BrotliInitDistanceParams(BrotliEncoderParams* params,
     uint32_t npostfix, uint32_t ndirect) {

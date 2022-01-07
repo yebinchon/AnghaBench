@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * HeapReAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int InternalGetWindowText (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int WCHAR ;
+typedef int * LPWSTR ;
+typedef int INT ;
+typedef int HWND ;
+
+
+ int ERR (char*) ;
+ int GetProcessHeap () ;
+ int * HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int *) ;
+ int * HeapReAlloc (int ,int ,int *,int) ;
+ int InternalGetWindowText (int ,int *,int) ;
 
 __attribute__((used)) static LPWSTR
 Ghost_GetText(HWND hwndTarget, INT *pcchTextW, INT cchExtra)
 {
-    LPWSTR pszTextW = NULL, pszTextNewW;
+    LPWSTR pszTextW = ((void*)0), pszTextNewW;
     INT cchNonExtra, cchTextW = *pcchTextW;
 
     pszTextNewW = HeapAlloc(GetProcessHeap(), 0, cchTextW * sizeof(WCHAR));
@@ -37,7 +37,7 @@ Ghost_GetText(HWND hwndTarget, INT *pcchTextW, INT cchExtra)
             ERR("HeapAlloc failed\n");
             if (pszTextW)
                 HeapFree(GetProcessHeap(), 0, pszTextW);
-            return NULL;
+            return ((void*)0);
         }
         pszTextW = pszTextNewW;
 

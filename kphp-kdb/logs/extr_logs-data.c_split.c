@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  add (char*) ; 
+ int add (char*) ;
 
 void split (char *s, char **f, int *fn, int limit) {
   int bal = 0;
   int cur = 0;
   int ins = 0;
-#define add(s) if (cur < limit) {f[cur++] = s;} else {*fn = 0; return;}
+
 
   *fn = 0;
-  add (s);
+  if (cur < limit) {f[cur++] = s;} else {*fn = 0; return;};
   while (*s) {
     if (*s == '\'') {
       ins ^= 1;
@@ -35,11 +27,11 @@ void split (char *s, char **f, int *fn, int limit) {
       }
     } else if (*s == ',' && bal == 0 && !ins) {
       *s = 0;
-      add (s + 1);
+      if (cur < limit) {f[cur++] = s + 1;} else {*fn = 0; return;};
     }
     s++;
   }
 
   *fn = cur;
-#undef add
+
 }

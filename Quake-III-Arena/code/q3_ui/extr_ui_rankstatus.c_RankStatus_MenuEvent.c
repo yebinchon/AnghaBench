@@ -1,73 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int id; } ;
-typedef  TYPE_1__ menucommon_s ;
-
-/* Variables and functions */
-#define  ID_OK 135 
-#define  QGR_STATUS_BAD_PASSWORD 134 
-#define  QGR_STATUS_ERROR 133 
-#define  QGR_STATUS_INVALIDUSER 132 
-#define  QGR_STATUS_NO_MEMBERSHIP 131 
-#define  QGR_STATUS_NO_USER 130 
-#define  QGR_STATUS_TIMEOUT 129 
-#define  QGR_STATUS_USER_EXISTS 128 
- int QM_ACTIVATED ; 
- int /*<<< orphan*/  UI_LoginMenu () ; 
- int /*<<< orphan*/  UI_PopMenu () ; 
- int /*<<< orphan*/  UI_RankingsMenu () ; 
- int /*<<< orphan*/  UI_SignupMenu () ; 
- int /*<<< orphan*/  s_status ; 
+typedef TYPE_1__ menucommon_s ;
+ int QM_ACTIVATED ;
+ int UI_LoginMenu () ;
+ int UI_PopMenu () ;
+ int UI_RankingsMenu () ;
+ int UI_SignupMenu () ;
+ int s_status ;
 
 __attribute__((used)) static void RankStatus_MenuEvent( void* ptr, int event ) {
-	if( event != QM_ACTIVATED ) {
-		return;
-	}
+ if( event != QM_ACTIVATED ) {
+  return;
+ }
 
-	switch( ((menucommon_s*)ptr)->id ) {
-	case ID_OK:
-		UI_PopMenu();
-		
-		switch( s_status )
-		{
-		case QGR_STATUS_NO_USER:
-			UI_RankingsMenu();
-			break;
-		case QGR_STATUS_BAD_PASSWORD:
-			UI_RankingsMenu();
-			UI_LoginMenu();
-			break;
-		case QGR_STATUS_USER_EXISTS:
-			UI_RankingsMenu();
-			UI_SignupMenu();
-			break;
-		case QGR_STATUS_NO_MEMBERSHIP:
-			UI_RankingsMenu();
-			break;
-		case QGR_STATUS_TIMEOUT:
-			UI_RankingsMenu();
-			break;
-		case QGR_STATUS_INVALIDUSER:
-			UI_RankingsMenu();
-			break;
-		case QGR_STATUS_ERROR:
-			UI_RankingsMenu();
-			break;
-		default:
-			break;
-		}
+ switch( ((menucommon_s*)ptr)->id ) {
+ case 135:
+  UI_PopMenu();
 
-		break;
-	}
+  switch( s_status )
+  {
+  case 130:
+   UI_RankingsMenu();
+   break;
+  case 134:
+   UI_RankingsMenu();
+   UI_LoginMenu();
+   break;
+  case 128:
+   UI_RankingsMenu();
+   UI_SignupMenu();
+   break;
+  case 131:
+   UI_RankingsMenu();
+   break;
+  case 129:
+   UI_RankingsMenu();
+   break;
+  case 132:
+   UI_RankingsMenu();
+   break;
+  case 133:
+   UI_RankingsMenu();
+   break;
+  default:
+   break;
+  }
+
+  break;
+ }
 }

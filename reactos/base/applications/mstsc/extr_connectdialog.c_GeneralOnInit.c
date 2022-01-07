@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPARAM ;
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_5__ {void* hConn; int /*<<< orphan*/  hGeneralPage; void* hLogon; } ;
-typedef  TYPE_1__* PINFO ;
-typedef  int /*<<< orphan*/  LONG_PTR ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FillServerAddressCombo (TYPE_1__*) ; 
- int /*<<< orphan*/  GWLP_USERDATA ; 
- int /*<<< orphan*/  IDC_CONNICON ; 
- int /*<<< orphan*/  IDC_LOGONICON ; 
- int /*<<< orphan*/  IDI_CONN ; 
- int /*<<< orphan*/  IDI_LOGON ; 
- int /*<<< orphan*/  IMAGE_ICON ; 
- int /*<<< orphan*/  LR_DEFAULTCOLOR ; 
- void* LoadImageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAKEINTRESOURCEW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReLoadGeneralPage (TYPE_1__*) ; 
- int /*<<< orphan*/  STM_SETICON ; 
- int SWP_NOACTIVATE ; 
- int SWP_NOOWNERZORDER ; 
- int SWP_NOSIZE ; 
- int SWP_NOZORDER ; 
- int /*<<< orphan*/  SendDlgItemMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetWindowLongPtrW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetWindowPos (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  hInst ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int WPARAM ;
+typedef int VOID ;
+struct TYPE_5__ {void* hConn; int hGeneralPage; void* hLogon; } ;
+typedef TYPE_1__* PINFO ;
+typedef int LONG_PTR ;
+typedef int HWND ;
+
+
+ int FillServerAddressCombo (TYPE_1__*) ;
+ int GWLP_USERDATA ;
+ int IDC_CONNICON ;
+ int IDC_LOGONICON ;
+ int IDI_CONN ;
+ int IDI_LOGON ;
+ int IMAGE_ICON ;
+ int LR_DEFAULTCOLOR ;
+ void* LoadImageW (int ,int ,int ,int,int,int ) ;
+ int MAKEINTRESOURCEW (int ) ;
+ int ReLoadGeneralPage (TYPE_1__*) ;
+ int STM_SETICON ;
+ int SWP_NOACTIVATE ;
+ int SWP_NOOWNERZORDER ;
+ int SWP_NOSIZE ;
+ int SWP_NOZORDER ;
+ int SendDlgItemMessageW (int ,int ,int ,int ,int ) ;
+ int SetWindowLongPtrW (int ,int ,int ) ;
+ int SetWindowPos (int ,int *,int,int,int ,int ,int) ;
+ int hInst ;
 
 __attribute__((used)) static VOID
 GeneralOnInit(HWND hwnd,
@@ -51,7 +51,7 @@ GeneralOnInit(HWND hwnd,
     pInfo->hGeneralPage = hwnd;
 
     SetWindowPos(pInfo->hGeneralPage,
-                 NULL,
+                 ((void*)0),
                  2,
                  22,
                  0,

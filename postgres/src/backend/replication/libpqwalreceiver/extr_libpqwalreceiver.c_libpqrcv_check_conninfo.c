@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PQconninfoOption ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERRCODE_SYNTAX_ERROR ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  PQconninfoFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PQconninfoParse (char const*,char**) ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*,char*) ; 
+
+
+
+typedef int PQconninfoOption ;
+
+
+ int ERRCODE_SYNTAX_ERROR ;
+ int ERROR ;
+ int PQconninfoFree (int *) ;
+ int * PQconninfoParse (char const*,char**) ;
+ int ereport (int ,int ) ;
+ int errcode (int ) ;
+ int errmsg (char*,char*) ;
 
 __attribute__((used)) static void
 libpqrcv_check_conninfo(const char *conninfo)
 {
-	PQconninfoOption *opts = NULL;
-	char	   *err = NULL;
+ PQconninfoOption *opts = ((void*)0);
+ char *err = ((void*)0);
 
-	opts = PQconninfoParse(conninfo, &err);
-	if (opts == NULL)
-		ereport(ERROR,
-				(errcode(ERRCODE_SYNTAX_ERROR),
-				 errmsg("invalid connection string syntax: %s", err)));
+ opts = PQconninfoParse(conninfo, &err);
+ if (opts == ((void*)0))
+  ereport(ERROR,
+    (errcode(ERRCODE_SYNTAX_ERROR),
+     errmsg("invalid connection string syntax: %s", err)));
 
-	PQconninfoFree(opts);
+ PQconninfoFree(opts);
 }

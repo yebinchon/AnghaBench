@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ tree ;
-typedef  int /*<<< orphan*/  rtx ;
-struct TYPE_2__ {char const* ptr_name; int stub_p; int used; int /*<<< orphan*/  symbol; } ;
-typedef  TYPE_1__ machopic_indirection ;
 
-/* Variables and functions */
- char* IDENTIFIER_POINTER (scalar_t__) ; 
- scalar_t__ IDENTIFIER_TRANSPARENT_ALIAS (scalar_t__) ; 
- int /*<<< orphan*/  INSERT ; 
- char* NON_LAZY_POINTER_SUFFIX ; 
- char* STUB_SUFFIX ; 
- scalar_t__ TREE_CHAIN (scalar_t__) ; 
- char* XSTR (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* alloca (int) ; 
- scalar_t__ ggc_alloc (int) ; 
- scalar_t__ htab_create_ggc (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- void** htab_find_slot_with_hash (scalar_t__,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  htab_hash_string (char*) ; 
- int /*<<< orphan*/  machopic_indirection_eq ; 
- int /*<<< orphan*/  machopic_indirection_hash ; 
- scalar_t__ machopic_indirections ; 
- scalar_t__ maybe_get_identifier (char const*) ; 
- int name_needs_quotes (char const*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char const*,char const*,char const*,char const*,char const*) ; 
- int strlen (char const*) ; 
- char* user_label_prefix ; 
- char const* xstrdup (char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ tree ;
+typedef int rtx ;
+struct TYPE_2__ {char const* ptr_name; int stub_p; int used; int symbol; } ;
+typedef TYPE_1__ machopic_indirection ;
+
+
+ char* IDENTIFIER_POINTER (scalar_t__) ;
+ scalar_t__ IDENTIFIER_TRANSPARENT_ALIAS (scalar_t__) ;
+ int INSERT ;
+ char* NON_LAZY_POINTER_SUFFIX ;
+ char* STUB_SUFFIX ;
+ scalar_t__ TREE_CHAIN (scalar_t__) ;
+ char* XSTR (int ,int ) ;
+ char* alloca (int) ;
+ scalar_t__ ggc_alloc (int) ;
+ scalar_t__ htab_create_ggc (int,int ,int ,int *) ;
+ void** htab_find_slot_with_hash (scalar_t__,char*,int ,int ) ;
+ int htab_hash_string (char*) ;
+ int machopic_indirection_eq ;
+ int machopic_indirection_hash ;
+ scalar_t__ machopic_indirections ;
+ scalar_t__ maybe_get_identifier (char const*) ;
+ int name_needs_quotes (char const*) ;
+ int sprintf (char*,char*,char const*,char const*,char const*,char const*,char const*) ;
+ int strlen (char const*) ;
+ char* user_label_prefix ;
+ char const* xstrdup (char*) ;
 
 const char *
 machopic_indirection_name (rtx sym_ref, bool stub_p)
@@ -47,7 +47,7 @@ machopic_indirection_name (rtx sym_ref, bool stub_p)
   size_t namelen = strlen (name);
   machopic_indirection *p;
   void ** slot;
-  bool saw_star = false;
+  bool saw_star = 0;
   bool needs_quotes;
   const char *suffix;
   const char *prefix = user_label_prefix;
@@ -60,17 +60,17 @@ machopic_indirection_name (rtx sym_ref, bool stub_p)
       tree id_orig = id;
 
       while (IDENTIFIER_TRANSPARENT_ALIAS (id))
-	id = TREE_CHAIN (id);
+ id = TREE_CHAIN (id);
       if (id != id_orig)
-	{
-	  name = IDENTIFIER_POINTER (id);
-	  namelen = strlen (name);
-	}
+ {
+   name = IDENTIFIER_POINTER (id);
+   namelen = strlen (name);
+ }
     }
 
   if (name[0] == '*')
     {
-      saw_star = true;
+      saw_star = 1;
       prefix = "";
       ++name;
       --namelen;
@@ -88,23 +88,23 @@ machopic_indirection_name (rtx sym_ref, bool stub_p)
     suffix = NON_LAZY_POINTER_SUFFIX;
 
   buffer = alloca (strlen ("&L")
-		   + strlen (prefix)
-		   + namelen
-		   + strlen (suffix)
-		   + 2 * strlen (quote)
-		   + 1 /* '\0' */);
+     + strlen (prefix)
+     + namelen
+     + strlen (suffix)
+     + 2 * strlen (quote)
+     + 1 );
 
-  /* Construct the name of the non-lazy pointer or stub.  */
+
   sprintf (buffer, "&%sL%s%s%s%s", quote, prefix, name, suffix, quote);
 
   if (!machopic_indirections)
     machopic_indirections = htab_create_ggc (37,
-					     machopic_indirection_hash,
-					     machopic_indirection_eq,
-					     /*htab_del=*/NULL);
+          machopic_indirection_hash,
+          machopic_indirection_eq,
+                       ((void*)0));
 
   slot = htab_find_slot_with_hash (machopic_indirections, buffer,
-				   htab_hash_string (buffer), INSERT);
+       htab_hash_string (buffer), INSERT);
   if (*slot)
     {
       p = (machopic_indirection *) *slot;
@@ -115,7 +115,7 @@ machopic_indirection_name (rtx sym_ref, bool stub_p)
       p->symbol = sym_ref;
       p->ptr_name = xstrdup (buffer);
       p->stub_p = stub_p;
-      p->used = false;
+      p->used = 0;
       *slot = p;
     }
 

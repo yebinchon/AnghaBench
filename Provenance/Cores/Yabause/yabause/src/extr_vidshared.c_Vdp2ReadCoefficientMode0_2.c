@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int coefdatasize; int msb; } ;
-typedef  TYPE_1__ vdp2rotationparameter_struct ;
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int u32 ;
-typedef  int s32 ;
+typedef TYPE_1__ vdp2rotationparameter_struct ;
+typedef int u8 ;
+typedef int u32 ;
+typedef int s32 ;
 
-/* Variables and functions */
- int T1ReadLong (int /*<<< orphan*/ *,int) ; 
- int T1ReadWord (int /*<<< orphan*/ *,int) ; 
+
+ int T1ReadLong (int *,int) ;
+ int T1ReadWord (int *,int) ;
 
 float Vdp2ReadCoefficientMode0_2(vdp2rotationparameter_struct *parameter, u32 addr, u8 * ram)
 {

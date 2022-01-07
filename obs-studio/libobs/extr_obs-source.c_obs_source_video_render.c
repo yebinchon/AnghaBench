@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  obs_source_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  obs_source_addref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  obs_source_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  obs_source_valid (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  render_video (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int obs_source_t ;
+
+
+ int obs_source_addref (int *) ;
+ int obs_source_release (int *) ;
+ int obs_source_valid (int *,char*) ;
+ int render_video (int *) ;
 
 void obs_source_video_render(obs_source_t *source)
 {
-	if (!obs_source_valid(source, "obs_source_video_render"))
-		return;
+ if (!obs_source_valid(source, "obs_source_video_render"))
+  return;
 
-	obs_source_addref(source);
-	render_video(source);
-	obs_source_release(source);
+ obs_source_addref(source);
+ render_video(source);
+ obs_source_release(source);
 }

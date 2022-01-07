@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint16_t ;
-struct TYPE_2__ {int /*<<< orphan*/  enable; } ;
-typedef  int /*<<< orphan*/  GPTDriver ;
 
-/* Variables and functions */
- scalar_t__ GET_CHANNEL_1_FREQ ; 
- scalar_t__ GET_CHANNEL_2_FREQ ; 
- int /*<<< orphan*/  RESTART_CHANNEL_1 () ; 
- int /*<<< orphan*/  RESTART_CHANNEL_2 () ; 
- int /*<<< orphan*/  STOP_CHANNEL_1 () ; 
- int /*<<< orphan*/  STOP_CHANNEL_2 () ; 
- int /*<<< orphan*/  UPDATE_CHANNEL_1_FREQ (float) ; 
- int /*<<< orphan*/  UPDATE_CHANNEL_2_FREQ (float) ; 
- TYPE_1__ audio_config ; 
- size_t current_note ; 
- int envelope_index ; 
- int* frequencies ; 
- int frequency ; 
- int frequency_alt ; 
- scalar_t__ glissando ; 
- int note_frequency ; 
- int note_length ; 
- int note_position ; 
- int note_resting ; 
- scalar_t__ note_tempo ; 
- size_t notes_count ; 
- int*** notes_pointer ; 
- scalar_t__ notes_repeat ; 
- double place ; 
- int playing_note ; 
- int playing_notes ; 
- int polyphony_rate ; 
- int pow (int,int) ; 
- float vibrato (int) ; 
- scalar_t__ vibrato_strength ; 
- float voice_envelope (float) ; 
- int voice_place ; 
- int voices ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint16_t ;
+struct TYPE_2__ {int enable; } ;
+typedef int GPTDriver ;
+
+
+ scalar_t__ GET_CHANNEL_1_FREQ ;
+ scalar_t__ GET_CHANNEL_2_FREQ ;
+ int RESTART_CHANNEL_1 () ;
+ int RESTART_CHANNEL_2 () ;
+ int STOP_CHANNEL_1 () ;
+ int STOP_CHANNEL_2 () ;
+ int UPDATE_CHANNEL_1_FREQ (float) ;
+ int UPDATE_CHANNEL_2_FREQ (float) ;
+ TYPE_1__ audio_config ;
+ size_t current_note ;
+ int envelope_index ;
+ int* frequencies ;
+ int frequency ;
+ int frequency_alt ;
+ scalar_t__ glissando ;
+ int note_frequency ;
+ int note_length ;
+ int note_position ;
+ int note_resting ;
+ scalar_t__ note_tempo ;
+ size_t notes_count ;
+ int*** notes_pointer ;
+ scalar_t__ notes_repeat ;
+ double place ;
+ int playing_note ;
+ int playing_notes ;
+ int polyphony_rate ;
+ int pow (int,int) ;
+ float vibrato (int) ;
+ scalar_t__ vibrato_strength ;
+ float voice_envelope (float) ;
+ int voice_place ;
+ int voices ;
 
 __attribute__((used)) static void gpt_cb8(GPTDriver *gptp) {
     float freq;
@@ -69,16 +69,8 @@ __attribute__((used)) static void gpt_cb8(GPTDriver *gptp) {
                     } else {
                         frequency_alt = frequencies[voices - 2];
                     }
-
-#ifdef VIBRATO_ENABLE
-                    if (vibrato_strength > 0) {
-                        freq_alt = vibrato(frequency_alt);
-                    } else {
-                        freq_alt = frequency_alt;
-                    }
-#else
                     freq_alt = frequency_alt;
-#endif
+
                 }
 
                 if (envelope_index < 65535) {
@@ -96,7 +88,7 @@ __attribute__((used)) static void gpt_cb8(GPTDriver *gptp) {
                 } else {
                     RESTART_CHANNEL_2();
                 }
-                // note_timbre;
+
             }
 
             if (polyphony_rate > 0) {
@@ -104,19 +96,11 @@ __attribute__((used)) static void gpt_cb8(GPTDriver *gptp) {
                     voice_place %= voices;
                     if (place++ > (frequencies[voice_place] / polyphony_rate)) {
                         voice_place = (voice_place + 1) % voices;
-                        place       = 0.0;
+                        place = 0.0;
                     }
                 }
-
-#ifdef VIBRATO_ENABLE
-                if (vibrato_strength > 0) {
-                    freq = vibrato(frequencies[voice_place]);
-                } else {
-                    freq = frequencies[voice_place];
-                }
-#else
                 freq = frequencies[voice_place];
-#endif
+
             } else {
                 if (glissando) {
                     if (frequency != 0 && frequency < frequencies[voices - 1] && frequency < frequencies[voices - 1] * pow(2, -440 / frequencies[voices - 1] / 12 / 2)) {
@@ -129,16 +113,8 @@ __attribute__((used)) static void gpt_cb8(GPTDriver *gptp) {
                 } else {
                     frequency = frequencies[voices - 1];
                 }
-
-#ifdef VIBRATO_ENABLE
-                if (vibrato_strength > 0) {
-                    freq = vibrato(frequency);
-                } else {
-                    freq = frequency;
-                }
-#else
                 freq = frequency;
-#endif
+
             }
 
             if (envelope_index < 65535) {
@@ -156,21 +132,21 @@ __attribute__((used)) static void gpt_cb8(GPTDriver *gptp) {
             } else {
                 RESTART_CHANNEL_1();
             }
-            // note_timbre;
+
         }
     }
 
     if (playing_notes) {
         if (note_frequency > 0) {
-#ifdef VIBRATO_ENABLE
-            if (vibrato_strength > 0) {
-                freq = vibrato(note_frequency);
-            } else {
-                freq = note_frequency;
-            }
-#else
+
+
+
+
+
+
+
             freq = note_frequency;
-#endif
+
 
             if (envelope_index < 65535) {
                 envelope_index++;
@@ -181,14 +157,14 @@ __attribute__((used)) static void gpt_cb8(GPTDriver *gptp) {
                 UPDATE_CHANNEL_1_FREQ(freq);
                 UPDATE_CHANNEL_2_FREQ(freq);
             }
-            // note_timbre;
+
         } else {
-            // gptStopTimer(&GPTD6);
-            // gptStopTimer(&GPTD7);
+
+
         }
 
         note_position++;
-        bool end_of_note = false;
+        bool end_of_note = 0;
         if (GET_CHANNEL_1_FREQ > 0) {
             if (!note_resting)
                 end_of_note = (note_position >= (note_length * 8 - 1));
@@ -206,26 +182,26 @@ __attribute__((used)) static void gpt_cb8(GPTDriver *gptp) {
                 } else {
                     STOP_CHANNEL_1();
                     STOP_CHANNEL_2();
-                    // gptStopTimer(&GPTD8);
-                    playing_notes = false;
+
+                    playing_notes = 0;
                     return;
                 }
             }
             if (!note_resting) {
-                note_resting = true;
+                note_resting = 1;
                 current_note--;
                 if ((*notes_pointer)[current_note][0] == (*notes_pointer)[current_note + 1][0]) {
                     note_frequency = 0;
-                    note_length    = 1;
+                    note_length = 1;
                 } else {
                     note_frequency = (*notes_pointer)[current_note][0];
-                    note_length    = 1;
+                    note_length = 1;
                 }
             } else {
-                note_resting   = false;
+                note_resting = 0;
                 envelope_index = 0;
                 note_frequency = (*notes_pointer)[current_note][0];
-                note_length    = ((*notes_pointer)[current_note][1] / 4) * (((float)note_tempo) / 100);
+                note_length = ((*notes_pointer)[current_note][1] / 4) * (((float)note_tempo) / 100);
             }
 
             note_position = 0;
@@ -233,7 +209,7 @@ __attribute__((used)) static void gpt_cb8(GPTDriver *gptp) {
     }
 
     if (!audio_config.enable) {
-        playing_notes = false;
-        playing_note  = false;
+        playing_notes = 0;
+        playing_note = 0;
     }
 }

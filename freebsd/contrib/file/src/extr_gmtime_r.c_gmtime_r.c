@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
+
+
+
+
+typedef int time_t ;
 struct tm {int dummy; } ;
 
-/* Variables and functions */
- struct tm* gmtime (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  memcpy (struct tm*,struct tm*,int) ; 
+
+ struct tm* gmtime (int const*) ;
+ int memcpy (struct tm*,struct tm*,int) ;
 
 struct tm *
 gmtime_r(const time_t *t, struct tm *tm)
 {
-	struct tm *tmp = gmtime(t);
-	if (tmp == NULL)
-		return NULL;
-	memcpy(tm, tmp, sizeof(*tm));
-	return tmp;
+ struct tm *tmp = gmtime(t);
+ if (tmp == ((void*)0))
+  return ((void*)0);
+ memcpy(tm, tmp, sizeof(*tm));
+ return tmp;
 }

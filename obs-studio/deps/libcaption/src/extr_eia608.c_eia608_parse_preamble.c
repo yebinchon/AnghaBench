@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
-typedef  int eia608_style_t ;
 
-/* Variables and functions */
- int* eia608_row_map ; 
- int eia608_style_white ; 
+
+
+
+typedef int uint16_t ;
+typedef int eia608_style_t ;
+
+
+ int* eia608_row_map ;
+ int eia608_style_white ;
 
 int eia608_parse_preamble(uint16_t cc_data, int* row, int* col, eia608_style_t* style, int* chan, int* underline)
 {

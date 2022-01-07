@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct neon_type_el {unsigned int size; scalar_t__ type; } ;
-typedef  enum neon_shape { ____Placeholder_neon_shape } neon_shape ;
+typedef enum neon_shape { ____Placeholder_neon_shape } neon_shape ;
 struct TYPE_4__ {TYPE_1__* operands; } ;
 struct TYPE_3__ {int imm; scalar_t__ present; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NS_DDI ; 
- int /*<<< orphan*/  NS_NULL ; 
- int /*<<< orphan*/  NS_QQI ; 
- scalar_t__ NT_unsigned ; 
- int /*<<< orphan*/  N_EQK ; 
- int N_KEY ; 
- int N_SU_ALL ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  constraint (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  do_neon_mov () ; 
- TYPE_2__ inst ; 
- struct neon_type_el neon_check_type (int,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  neon_imm_shift (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,struct neon_type_el,unsigned int) ; 
- int /*<<< orphan*/  neon_quad (int) ; 
- int neon_select_shape (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int NS_DDI ;
+ int NS_NULL ;
+ int NS_QQI ;
+ scalar_t__ NT_unsigned ;
+ int N_EQK ;
+ int N_KEY ;
+ int N_SU_ALL ;
+ int TRUE ;
+ int _ (char*) ;
+ int constraint (int,int ) ;
+ int do_neon_mov () ;
+ TYPE_2__ inst ;
+ struct neon_type_el neon_check_type (int,int,int ,int) ;
+ int neon_imm_shift (int ,int,int ,struct neon_type_el,unsigned int) ;
+ int neon_quad (int) ;
+ int neon_select_shape (int ,int ,int ) ;
 
 __attribute__((used)) static void
 do_neon_rshift_round_imm (void)
@@ -42,7 +42,7 @@ do_neon_rshift_round_imm (void)
   struct neon_type_el et = neon_check_type (2, rs, N_EQK, N_SU_ALL | N_KEY);
   int imm = inst.operands[2].imm;
 
-  /* imm == 0 case is encoded as VMOV for V{R}SHR.  */
+
   if (imm == 0)
     {
       inst.operands[2].present = 0;

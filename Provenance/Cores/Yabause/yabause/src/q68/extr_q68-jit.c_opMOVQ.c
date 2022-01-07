@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  Q68State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INSN_GET_IMM8 ; 
- int /*<<< orphan*/  INSN_GET_REG ; 
- int /*<<< orphan*/  JIT_EMIT_ADD_CYCLES (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  JIT_EMIT_GET_OP1_IMMEDIATE (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JIT_EMIT_MOVE_L (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JIT_EMIT_SETCC_LOGIC_L (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JIT_EMIT_SET_REGISTER_L (int /*<<< orphan*/ ,int) ; 
- int cc_needed (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  current_entry ; 
- int /*<<< orphan*/  imm8 ; 
- int reg ; 
+
+
+
+typedef int uint32_t ;
+typedef int Q68State ;
+
+
+ int INSN_GET_IMM8 ;
+ int INSN_GET_REG ;
+ int JIT_EMIT_ADD_CYCLES (int ,int) ;
+ int JIT_EMIT_GET_OP1_IMMEDIATE (int ,int ) ;
+ int JIT_EMIT_MOVE_L (int ) ;
+ int JIT_EMIT_SETCC_LOGIC_L (int ) ;
+ int JIT_EMIT_SET_REGISTER_L (int ,int) ;
+ int cc_needed (int *,int ) ;
+ int current_entry ;
+ int imm8 ;
+ int reg ;
 
 __attribute__((used)) static int opMOVQ(Q68State *state, uint32_t opcode)
 {

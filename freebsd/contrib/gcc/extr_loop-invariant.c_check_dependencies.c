@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct invariant {struct def* def; } ;
 struct df_ref {int flags; struct df_ref* next_ref; } ;
 struct df_link {struct df_ref* ref; scalar_t__ next; } ;
-struct def {int /*<<< orphan*/  invno; } ;
-typedef  int /*<<< orphan*/  rtx ;
-typedef  int /*<<< orphan*/  bitmap ;
-typedef  int /*<<< orphan*/  basic_block ;
+struct def {int invno; } ;
+typedef int rtx ;
+typedef int bitmap ;
+typedef int basic_block ;
 struct TYPE_2__ {struct df_ref* uses; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOCK_FOR_INSN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CDI_DOMINATORS ; 
- TYPE_1__* DF_INSN_GET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DF_REF_BB (struct df_ref*) ; 
- struct df_link* DF_REF_CHAIN (struct df_ref*) ; 
- struct invariant* DF_REF_DATA (struct df_ref*) ; 
- int DF_REF_READ_WRITE ; 
- int /*<<< orphan*/  bitmap_set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  df ; 
- int /*<<< orphan*/  dominated_by_p (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcc_assert (int /*<<< orphan*/ ) ; 
+
+ int BLOCK_FOR_INSN (int ) ;
+ int CDI_DOMINATORS ;
+ TYPE_1__* DF_INSN_GET (int ,int ) ;
+ int DF_REF_BB (struct df_ref*) ;
+ struct df_link* DF_REF_CHAIN (struct df_ref*) ;
+ struct invariant* DF_REF_DATA (struct df_ref*) ;
+ int DF_REF_READ_WRITE ;
+ int bitmap_set_bit (int ,int ) ;
+ int df ;
+ int dominated_by_p (int ,int ,int ) ;
+ int gcc_assert (int ) ;
 
 __attribute__((used)) static bool
 check_dependencies (rtx insn, bitmap depends_on)
@@ -45,32 +45,32 @@ check_dependencies (rtx insn, bitmap depends_on)
   for (use = DF_INSN_GET (df, insn)->uses; use; use = use->next_ref)
     {
       if (use->flags & DF_REF_READ_WRITE)
-	return false;
+ return 0;
 
       defs = DF_REF_CHAIN (use);
       if (!defs)
-	continue;
+ continue;
 
       if (defs->next)
-	return false;
+ return 0;
 
       def = defs->ref;
       inv = DF_REF_DATA (def);
       if (!inv)
-	return false;
+ return 0;
 
       def_data = inv->def;
-      gcc_assert (def_data != NULL);
+      gcc_assert (def_data != ((void*)0));
 
       def_bb = DF_REF_BB (def);
-      /* Note that in case bb == def_bb, we know that the definition dominates
-	 insn, because def has DF_REF_DATA defined and we process the insns
-	 in the basic block bb sequentially.  */
+
+
+
       if (!dominated_by_p (CDI_DOMINATORS, bb, def_bb))
-	return false;
+ return 0;
 
       bitmap_set_bit (depends_on, def_data->invno);
     }
 
-  return true;
+  return 1;
 }

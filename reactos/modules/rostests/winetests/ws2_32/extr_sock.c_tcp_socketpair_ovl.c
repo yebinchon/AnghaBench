@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  s_addr; } ;
-struct sockaddr_in {TYPE_1__ sin_addr; int /*<<< orphan*/  sin_family; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int s_addr; } ;
+struct sockaddr_in {TYPE_1__ sin_addr; int sin_family; } ;
 struct sockaddr {int dummy; } ;
-typedef  int /*<<< orphan*/  addr ;
-typedef  scalar_t__ SOCKET ;
+typedef int addr ;
+typedef scalar_t__ SOCKET ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- scalar_t__ INVALID_SOCKET ; 
- int /*<<< orphan*/  IPPROTO_TCP ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- scalar_t__ WSASocketW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WSA_FLAG_OVERLAPPED ; 
- scalar_t__ accept (scalar_t__,struct sockaddr*,int*) ; 
- int bind (scalar_t__,struct sockaddr*,int) ; 
- int /*<<< orphan*/  closesocket (scalar_t__) ; 
- int connect (scalar_t__,struct sockaddr*,int) ; 
- int getsockname (scalar_t__,struct sockaddr*,int*) ; 
- int /*<<< orphan*/  inet_addr (char*) ; 
- int listen (scalar_t__,int) ; 
- int /*<<< orphan*/  memset (struct sockaddr_in*,int /*<<< orphan*/ ,int) ; 
+
+ int AF_INET ;
+ scalar_t__ INVALID_SOCKET ;
+ int IPPROTO_TCP ;
+ int SOCK_STREAM ;
+ scalar_t__ WSASocketW (int ,int ,int ,int *,int ,int ) ;
+ int WSA_FLAG_OVERLAPPED ;
+ scalar_t__ accept (scalar_t__,struct sockaddr*,int*) ;
+ int bind (scalar_t__,struct sockaddr*,int) ;
+ int closesocket (scalar_t__) ;
+ int connect (scalar_t__,struct sockaddr*,int) ;
+ int getsockname (scalar_t__,struct sockaddr*,int*) ;
+ int inet_addr (char*) ;
+ int listen (scalar_t__,int) ;
+ int memset (struct sockaddr_in*,int ,int) ;
 
 __attribute__((used)) static int tcp_socketpair_ovl(SOCKET *src, SOCKET *dst)
 {
@@ -42,11 +42,11 @@ __attribute__((used)) static int tcp_socketpair_ovl(SOCKET *src, SOCKET *dst)
     *src = INVALID_SOCKET;
     *dst = INVALID_SOCKET;
 
-    *src = WSASocketW(AF_INET, SOCK_STREAM, IPPROTO_TCP, NULL, 0, WSA_FLAG_OVERLAPPED);
+    *src = WSASocketW(AF_INET, SOCK_STREAM, IPPROTO_TCP, ((void*)0), 0, WSA_FLAG_OVERLAPPED);
     if (*src == INVALID_SOCKET)
         goto end;
 
-    server = WSASocketW(AF_INET, SOCK_STREAM, IPPROTO_TCP, NULL, 0, WSA_FLAG_OVERLAPPED);
+    server = WSASocketW(AF_INET, SOCK_STREAM, IPPROTO_TCP, ((void*)0), 0, WSA_FLAG_OVERLAPPED);
     if (server == INVALID_SOCKET)
         goto end;
 

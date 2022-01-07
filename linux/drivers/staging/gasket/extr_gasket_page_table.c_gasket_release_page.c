@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct page {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PageReserved (struct page*) ; 
- int /*<<< orphan*/  SetPageDirty (struct page*) ; 
- int /*<<< orphan*/  put_page (struct page*) ; 
+
+ int PageReserved (struct page*) ;
+ int SetPageDirty (struct page*) ;
+ int put_page (struct page*) ;
 
 __attribute__((used)) static bool gasket_release_page(struct page *page)
 {
-	if (!page)
-		return false;
+ if (!page)
+  return 0;
 
-	if (!PageReserved(page))
-		SetPageDirty(page);
-	put_page(page);
+ if (!PageReserved(page))
+  SetPageDirty(page);
+ put_page(page);
 
-	return true;
+ return 1;
 }

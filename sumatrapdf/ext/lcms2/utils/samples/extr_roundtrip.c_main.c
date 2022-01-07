@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int cmsUInt8Number ;
-typedef  int /*<<< orphan*/ * cmsHTRANSFORM ;
-typedef  int /*<<< orphan*/ * cmsHPROFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INTENT_RELATIVE_COLORIMETRIC ; 
- int /*<<< orphan*/  TYPE_RGB_8 ; 
- double VecDist (int*,int*) ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cmsCreateTransform (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDeleteTransform (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsDoTransform (int /*<<< orphan*/ *,int*,int*,int) ; 
- int /*<<< orphan*/  cmsFLAGS_NOOPTIMIZE ; 
- int /*<<< orphan*/ * cmsOpenProfileFromFile (char*,char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- double sqrt (double) ; 
 
-int main(int  argc, char* argv[])
+
+
+typedef int cmsUInt8Number ;
+typedef int * cmsHTRANSFORM ;
+typedef int * cmsHPROFILE ;
+
+
+ int INTENT_RELATIVE_COLORIMETRIC ;
+ int TYPE_RGB_8 ;
+ double VecDist (int*,int*) ;
+ int cmsCloseProfile (int *) ;
+ int * cmsCreateTransform (int *,int ,int *,int ,int ,int ) ;
+ int cmsDeleteTransform (int *) ;
+ int cmsDoTransform (int *,int*,int*,int) ;
+ int cmsFLAGS_NOOPTIMIZE ;
+ int * cmsOpenProfileFromFile (char*,char*) ;
+ int printf (char*,...) ;
+ double sqrt (double) ;
+
+int main(int argc, char* argv[])
 {
 
     int r, g, b;
@@ -43,14 +43,14 @@ int main(int  argc, char* argv[])
     }
 
     hProfile = cmsOpenProfileFromFile(argv[1], "r");
-    if (hProfile == NULL)
+    if (hProfile == ((void*)0))
     {
         printf("invalid profile\n");
         return 1;
     }
 
     xform = cmsCreateTransform(hProfile,TYPE_RGB_8, hProfile, TYPE_RGB_8, INTENT_RELATIVE_COLORIMETRIC, cmsFLAGS_NOOPTIMIZE);
-    if (xform == NULL)
+    if (xform == ((void*)0))
     {
         printf("Not a valid RGB profile\n");
         return 1;
@@ -69,7 +69,7 @@ int main(int  argc, char* argv[])
 
                 err = VecDist(RGB, RGB_OUT);
 
-                SumX  += err;
+                SumX += err;
                 SumX2 += err * err;
                 n += 1.0;
                 if (err > Peak)

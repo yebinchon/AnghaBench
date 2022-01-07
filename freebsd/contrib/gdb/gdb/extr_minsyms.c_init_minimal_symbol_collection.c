@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BUNCH_SIZE ; 
- int /*<<< orphan*/ * msym_bunch ; 
- int /*<<< orphan*/  msym_bunch_index ; 
- scalar_t__ msym_count ; 
+ int BUNCH_SIZE ;
+ int * msym_bunch ;
+ int msym_bunch_index ;
+ scalar_t__ msym_count ;
 
 void
 init_minimal_symbol_collection (void)
 {
   msym_count = 0;
-  msym_bunch = NULL;
+  msym_bunch = ((void*)0);
   msym_bunch_index = BUNCH_SIZE;
 }

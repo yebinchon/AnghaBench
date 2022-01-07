@@ -1,62 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GL_BLEND ; 
- int GL_COLOR_BUFFER_BIT ; 
- int /*<<< orphan*/  GL_CULL_FACE ; 
- int /*<<< orphan*/  GL_CW ; 
- int GL_DEPTH_BUFFER_BIT ; 
- int /*<<< orphan*/  GL_DEPTH_TEST ; 
- int /*<<< orphan*/  GL_GREATER ; 
- int /*<<< orphan*/  GL_LESS ; 
- int /*<<< orphan*/  GL_LIGHTING ; 
- int /*<<< orphan*/  GL_MODELVIEW ; 
- int /*<<< orphan*/  GL_ONE_MINUS_SRC_ALPHA ; 
- int /*<<< orphan*/  GL_PROJECTION ; 
- int /*<<< orphan*/  GL_SCISSOR_TEST ; 
- int /*<<< orphan*/  GL_SRC_ALPHA ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  GL_TRUE ; 
- float SDL_GetPerformanceCounter () ; 
- scalar_t__ SDL_GetPerformanceFrequency () ; 
- int /*<<< orphan*/ * camang ; 
- int /*<<< orphan*/ * camloc ; 
- int /*<<< orphan*/  draw_stats () ; 
- float end_time ; 
- int /*<<< orphan*/  glBlendFunc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glClear (int) ; 
- int /*<<< orphan*/  glClearColor (float,float,float,float) ; 
- int /*<<< orphan*/  glClearDepth (int) ; 
- int /*<<< orphan*/  glColor3f (int,int,int) ; 
- int /*<<< orphan*/  glDepthFunc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDepthMask (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDisable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glEnable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glFrontFace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glLoadIdentity () ; 
- int /*<<< orphan*/  glMatrixMode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glRotatef (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  glTranslatef (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gluOrtho2D (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  player_zoom ; 
- int /*<<< orphan*/  render_caves (int /*<<< orphan*/ *) ; 
- float render_time ; 
- int screen_x ; 
- int screen_y ; 
- float start_time ; 
- int /*<<< orphan*/  stbgl_Perspective (int /*<<< orphan*/ ,int,int,double,int) ; 
- int /*<<< orphan*/  stbgl_initCamera_zup_facing_y () ; 
+ int GL_BLEND ;
+ int GL_COLOR_BUFFER_BIT ;
+ int GL_CULL_FACE ;
+ int GL_CW ;
+ int GL_DEPTH_BUFFER_BIT ;
+ int GL_DEPTH_TEST ;
+ int GL_GREATER ;
+ int GL_LESS ;
+ int GL_LIGHTING ;
+ int GL_MODELVIEW ;
+ int GL_ONE_MINUS_SRC_ALPHA ;
+ int GL_PROJECTION ;
+ int GL_SCISSOR_TEST ;
+ int GL_SRC_ALPHA ;
+ int GL_TEXTURE_2D ;
+ int GL_TRUE ;
+ float SDL_GetPerformanceCounter () ;
+ scalar_t__ SDL_GetPerformanceFrequency () ;
+ int * camang ;
+ int * camloc ;
+ int draw_stats () ;
+ float end_time ;
+ int glBlendFunc (int ,int ) ;
+ int glClear (int) ;
+ int glClearColor (float,float,float,float) ;
+ int glClearDepth (int) ;
+ int glColor3f (int,int,int) ;
+ int glDepthFunc (int ) ;
+ int glDepthMask (int ) ;
+ int glDisable (int ) ;
+ int glEnable (int ) ;
+ int glFrontFace (int ) ;
+ int glLoadIdentity () ;
+ int glMatrixMode (int ) ;
+ int glRotatef (int ,int,int ,int) ;
+ int glTranslatef (int ,int ,int ) ;
+ int gluOrtho2D (int ,int,int,int ) ;
+ int player_zoom ;
+ int render_caves (int *) ;
+ float render_time ;
+ int screen_x ;
+ int screen_y ;
+ float start_time ;
+ int stbgl_Perspective (int ,int,int,double,int) ;
+ int stbgl_initCamera_zup_facing_y () ;
 
 void draw_main(void)
 {
@@ -64,13 +56,13 @@ void draw_main(void)
    glDisable(GL_TEXTURE_2D);
    glDisable(GL_LIGHTING);
    glEnable(GL_DEPTH_TEST);
-   #ifdef REVERSE_DEPTH
-   glDepthFunc(GL_GREATER);
-   glClearDepth(0);
-   #else
+
+
+
+
    glDepthFunc(GL_LESS);
    glClearDepth(1);
-   #endif
+
    glDepthMask(GL_TRUE);
    glDisable(GL_SCISSOR_TEST);
    glClearColor(0.6f,0.7f,0.9f,0.0f);
@@ -86,13 +78,13 @@ void draw_main(void)
    glMatrixMode(GL_PROJECTION);
    glLoadIdentity();
 
-   #ifdef REVERSE_DEPTH
-   stbgl_Perspective(player_zoom, 90, 70, 3000, 1.0/16);
-   #else
-   stbgl_Perspective(player_zoom, 90, 70, 1.0/16, 3000);
-   #endif
 
-   // now compute where the camera should be
+
+
+   stbgl_Perspective(player_zoom, 90, 70, 1.0/16, 3000);
+
+
+
    glMatrixMode(GL_MODELVIEW);
    glLoadIdentity();
    stbgl_initCamera_zup_facing_y();

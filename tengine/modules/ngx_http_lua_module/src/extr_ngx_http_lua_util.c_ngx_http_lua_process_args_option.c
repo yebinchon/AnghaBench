@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-typedef  int ssize_t ;
-struct TYPE_5__ {size_t len; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_1__ ngx_str_t ;
-struct TYPE_6__ {int /*<<< orphan*/  pool; } ;
-typedef  TYPE_2__ ngx_http_request_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
-#define  LUA_TBOOLEAN 131 
-#define  LUA_TNUMBER 130 
-#define  LUA_TSTRING 129 
-#define  LUA_TTABLE 128 
- int /*<<< orphan*/  NGX_ESCAPE_URI_COMPONENT ; 
- int /*<<< orphan*/  dd (char*,...) ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  luaL_typename (int /*<<< orphan*/ *,int) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_isboolean (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * lua_newuserdata (int /*<<< orphan*/ *,size_t) ; 
- scalar_t__ lua_next (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_toboolean (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_tolstring (int /*<<< orphan*/ *,int,size_t*) ; 
- int lua_type (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * ngx_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
- int ngx_http_lua_escape_uri (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ngx_palloc (int /*<<< orphan*/ ,size_t) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u_char ;
+typedef int ssize_t ;
+struct TYPE_5__ {size_t len; int * data; } ;
+typedef TYPE_1__ ngx_str_t ;
+struct TYPE_6__ {int pool; } ;
+typedef TYPE_2__ ngx_http_request_t ;
+typedef int lua_State ;
+
+
+
+
+
+
+ int NGX_ESCAPE_URI_COMPONENT ;
+ int dd (char*,...) ;
+ int luaL_error (int *,char*,...) ;
+ int luaL_typename (int *,int) ;
+ int lua_gettop (int *) ;
+ int lua_isboolean (int *,int) ;
+ int * lua_newuserdata (int *,size_t) ;
+ scalar_t__ lua_next (int *,int) ;
+ int lua_pop (int *,int) ;
+ int lua_pushnil (int *) ;
+ int lua_toboolean (int *,int) ;
+ scalar_t__ lua_tolstring (int *,int,size_t*) ;
+ int lua_type (int *,int) ;
+ int * ngx_copy (int *,int *,size_t) ;
+ int ngx_http_lua_escape_uri (int *,int *,size_t,int ) ;
+ int * ngx_palloc (int ,size_t) ;
 
 void
 ngx_http_lua_process_args_option(ngx_http_request_t *r, lua_State *L,
     int table, ngx_str_t *args)
 {
-    u_char              *key;
-    size_t               key_len;
-    u_char              *value;
-    size_t               value_len;
-    size_t               len = 0;
-    size_t               key_escape = 0;
-    uintptr_t            total_escape = 0;
-    int                  n;
-    int                  i;
-    u_char              *p;
+    u_char *key;
+    size_t key_len;
+    u_char *value;
+    size_t value_len;
+    size_t len = 0;
+    size_t key_escape = 0;
+    uintptr_t total_escape = 0;
+    int n;
+    int i;
+    u_char *p;
 
     if (table < 0) {
         table = lua_gettop(L) + table + 1;
@@ -64,7 +64,7 @@ ngx_http_lua_process_args_option(ngx_http_request_t *r, lua_State *L,
     n = 0;
     lua_pushnil(L);
     while (lua_next(L, table) != 0) {
-        if (lua_type(L, -2) != LUA_TSTRING) {
+        if (lua_type(L, -2) != 129) {
             luaL_error(L, "attempt to use a non-string key in the "
                        "\"args\" option table");
             return;
@@ -72,16 +72,16 @@ ngx_http_lua_process_args_option(ngx_http_request_t *r, lua_State *L,
 
         key = (u_char *) lua_tolstring(L, -2, &key_len);
 
-        key_escape = 2 * ngx_http_lua_escape_uri(NULL, key, key_len,
+        key_escape = 2 * ngx_http_lua_escape_uri(((void*)0), key, key_len,
                                                  NGX_ESCAPE_URI_COMPONENT);
         total_escape += key_escape;
 
         switch (lua_type(L, -1)) {
-        case LUA_TNUMBER:
-        case LUA_TSTRING:
+        case 130:
+        case 129:
             value = (u_char *) lua_tolstring(L, -1, &value_len);
 
-            total_escape += 2 * ngx_http_lua_escape_uri(NULL, value, value_len,
+            total_escape += 2 * ngx_http_lua_escape_uri(((void*)0), value, value_len,
                                                       NGX_ESCAPE_URI_COMPONENT);
 
             len += key_len + value_len + (sizeof("=") - 1);
@@ -89,7 +89,7 @@ ngx_http_lua_process_args_option(ngx_http_request_t *r, lua_State *L,
 
             break;
 
-        case LUA_TBOOLEAN:
+        case 131:
             if (lua_toboolean(L, -1)) {
                 len += key_len;
                 n++;
@@ -97,7 +97,7 @@ ngx_http_lua_process_args_option(ngx_http_request_t *r, lua_State *L,
 
             break;
 
-        case LUA_TTABLE:
+        case 128:
 
             i = 0;
             lua_pushnil(L);
@@ -114,14 +114,14 @@ ngx_http_lua_process_args_option(ngx_http_request_t *r, lua_State *L,
                 } else {
                     value = (u_char *) lua_tolstring(L, -1, &value_len);
 
-                    if (value == NULL) {
+                    if (value == ((void*)0)) {
                         luaL_error(L, "attempt to use %s as query arg value",
                                    luaL_typename(L, -1));
                         return;
                     }
 
                     total_escape +=
-                        2 * ngx_http_lua_escape_uri(NULL, value,
+                        2 * ngx_http_lua_escape_uri(((void*)0), value,
                                                     value_len,
                                                     NGX_ESCAPE_URI_COMPONENT);
 
@@ -157,7 +157,7 @@ ngx_http_lua_process_args_option(ngx_http_request_t *r, lua_State *L,
 
     if (r) {
         p = ngx_palloc(r->pool, len);
-        if (p == NULL) {
+        if (p == ((void*)0)) {
             luaL_error(L, "no memory");
             return;
         }
@@ -175,8 +175,8 @@ ngx_http_lua_process_args_option(ngx_http_request_t *r, lua_State *L,
         key = (u_char *) lua_tolstring(L, -2, &key_len);
 
         switch (lua_type(L, -1)) {
-        case LUA_TNUMBER:
-        case LUA_TSTRING:
+        case 130:
+        case 129:
 
             if (total_escape) {
                 p = (u_char *) ngx_http_lua_escape_uri(p, key, key_len,
@@ -203,7 +203,7 @@ ngx_http_lua_process_args_option(ngx_http_request_t *r, lua_State *L,
             }
 
             if (i != n - 1) {
-                /* not the last pair */
+
                 *p++ = '&';
             }
 
@@ -211,7 +211,7 @@ ngx_http_lua_process_args_option(ngx_http_request_t *r, lua_State *L,
 
             break;
 
-        case LUA_TBOOLEAN:
+        case 131:
             if (lua_toboolean(L, -1)) {
                 if (total_escape) {
                     p = (u_char *) ngx_http_lua_escape_uri(p, key, key_len,
@@ -224,7 +224,7 @@ ngx_http_lua_process_args_option(ngx_http_request_t *r, lua_State *L,
                 }
 
                 if (i != n - 1) {
-                    /* not the last pair */
+
                     *p++ = '&';
                 }
 
@@ -233,7 +233,7 @@ ngx_http_lua_process_args_option(ngx_http_request_t *r, lua_State *L,
 
             break;
 
-        case LUA_TTABLE:
+        case 128:
 
             lua_pushnil(L);
             while (lua_next(L, -2) != 0) {
@@ -288,7 +288,7 @@ ngx_http_lua_process_args_option(ngx_http_request_t *r, lua_State *L,
                 }
 
                 if (i != n - 1) {
-                    /* not the last pair */
+
                     *p++ = '&';
                 }
 

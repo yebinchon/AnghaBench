@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct SyncStatusTree {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  S_IFDIR ; 
- int /*<<< orphan*/  S_IFREG ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  sync_status_tree_add (struct SyncStatusTree*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sync_status_tree_del (struct SyncStatusTree*,char*) ; 
- int sync_status_tree_exists (struct SyncStatusTree*,char*) ; 
- struct SyncStatusTree* sync_status_tree_new () ; 
+
+ int S_IFDIR ;
+ int S_IFREG ;
+ int printf (char*,...) ;
+ int sync_status_tree_add (struct SyncStatusTree*,char*,int ) ;
+ int sync_status_tree_del (struct SyncStatusTree*,char*) ;
+ int sync_status_tree_exists (struct SyncStatusTree*,char*) ;
+ struct SyncStatusTree* sync_status_tree_new () ;
 
 int main (int argc, char **argv)
 {

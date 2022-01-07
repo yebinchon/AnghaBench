@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct TYPE_7__ {int /*<<< orphan*/  pEnv; int /*<<< orphan*/  pFS; } ;
-typedef  TYPE_1__ lsm_db ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct TYPE_7__ {int pEnv; int pFS; } ;
+typedef TYPE_1__ lsm_db ;
 struct TYPE_8__ {int nData; scalar_t__ pData; } ;
-typedef  int /*<<< orphan*/  Segment ;
-typedef  int /*<<< orphan*/  Page ;
-typedef  int /*<<< orphan*/  LsmPgno ;
-typedef  TYPE_2__ LsmBlob ;
+typedef int Segment ;
+typedef int Page ;
+typedef int LsmPgno ;
+typedef TYPE_2__ LsmBlob ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * fsPageData (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  lsmFsDbPageGet (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  lsmFsPageRelease (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lsmVarintGet32 (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  lsmVarintGet64 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * pageGetCell (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  pageGetKeyCopy (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*,TYPE_2__*) ; 
- scalar_t__ rtIsWrite (int) ; 
- int /*<<< orphan*/  sortedReadData (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,void**,TYPE_2__*) ; 
+
+ int * fsPageData (int *,int*) ;
+ int lsmFsDbPageGet (int ,int *,int ,int **) ;
+ int lsmFsPageRelease (int *) ;
+ int lsmVarintGet32 (int *,int*) ;
+ int lsmVarintGet64 (int *,int *) ;
+ int * pageGetCell (int *,int,int) ;
+ int pageGetKeyCopy (int ,int *,int *,int ,int*,TYPE_2__*) ;
+ scalar_t__ rtIsWrite (int) ;
+ int sortedReadData (int *,int *,int,int,void**,TYPE_2__*) ;
 
 __attribute__((used)) static void infoCellDump(
-  lsm_db *pDb,                    /* Database handle */
-  Segment *pSeg,                  /* Segment page belongs to */
-  int bIndirect,                  /* True to follow indirect refs */
+  lsm_db *pDb,
+  Segment *pSeg,
+  int bIndirect,
   Page *pPg,
   int iCell,
   int *peType,
@@ -44,12 +44,12 @@ __attribute__((used)) static void infoCellDump(
   u8 **paVal, int *pnVal,
   LsmBlob *pBlob
 ){
-  u8 *aData; int nData;           /* Page data */
-  u8 *aKey; int nKey = 0;         /* Key */
-  u8 *aVal = 0; int nVal = 0;     /* Value */
+  u8 *aData; int nData;
+  u8 *aKey; int nKey = 0;
+  u8 *aVal = 0; int nVal = 0;
   int eType;
   int iPgPtr;
-  Page *pRef = 0;                 /* Pointer to page iRef */
+  Page *pRef = 0;
   u8 *aCell;
 
   aData = fsPageData(pPg, &nData);
@@ -60,7 +60,7 @@ __attribute__((used)) static void infoCellDump(
 
   if( eType==0 ){
     int dummy;
-    LsmPgno iRef;                 /* Page number of referenced page */
+    LsmPgno iRef;
     aCell += lsmVarintGet64(aCell, &iRef);
     if( bIndirect ){
       lsmFsDbPageGet(pDb->pFS, pSeg, iRef, &pRef);

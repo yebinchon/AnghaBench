@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  si ;
-typedef  enum process_result { ____Placeholder_process_result } process_result ;
-typedef  int /*<<< orphan*/  cmd ;
-struct TYPE_7__ {int /*<<< orphan*/ * hProcess; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef int si ;
+typedef enum process_result { ____Placeholder_process_result } process_result ;
+typedef int cmd ;
+struct TYPE_7__ {int * hProcess; } ;
 struct TYPE_6__ {int cb; } ;
-typedef  TYPE_1__ STARTUPINFOW ;
-typedef  TYPE_2__ PROCESS_INFORMATION ;
-typedef  int /*<<< orphan*/ * HANDLE ;
+typedef TYPE_1__ STARTUPINFOW ;
+typedef TYPE_2__ PROCESS_INFORMATION ;
+typedef int * HANDLE ;
 
-/* Variables and functions */
- int CREATE_NO_WINDOW ; 
- int /*<<< orphan*/  CreateProcessW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,TYPE_2__*) ; 
- scalar_t__ ERROR_FILE_NOT_FOUND ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  LOGC (char*) ; 
- int PROCESS_ERROR_GENERIC ; 
- int PROCESS_ERROR_MISSING_BINARY ; 
- int PROCESS_SUCCESS ; 
- int /*<<< orphan*/  SDL_free (int /*<<< orphan*/ *) ; 
- scalar_t__ build_cmd (char*,int,char const* const*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * utf8_to_wide_char (char*) ; 
+
+ int CREATE_NO_WINDOW ;
+ int CreateProcessW (int *,int *,int *,int *,int ,int,int *,int *,TYPE_1__*,TYPE_2__*) ;
+ scalar_t__ ERROR_FILE_NOT_FOUND ;
+ int FALSE ;
+ scalar_t__ GetLastError () ;
+ int LOGC (char*) ;
+ int PROCESS_ERROR_GENERIC ;
+ int PROCESS_ERROR_MISSING_BINARY ;
+ int PROCESS_SUCCESS ;
+ int SDL_free (int *) ;
+ scalar_t__ build_cmd (char*,int,char const* const*) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int * utf8_to_wide_char (char*) ;
 
 enum process_result
 cmd_execute(const char *path, const char *const argv[], HANDLE *handle) {
@@ -46,7 +46,7 @@ cmd_execute(const char *path, const char *const argv[], HANDLE *handle) {
 
     char cmd[256];
     if (build_cmd(cmd, sizeof(cmd), argv)) {
-        *handle = NULL;
+        *handle = ((void*)0);
         return PROCESS_ERROR_GENERIC;
     }
 
@@ -56,15 +56,15 @@ cmd_execute(const char *path, const char *const argv[], HANDLE *handle) {
         return PROCESS_ERROR_GENERIC;
     }
 
-#ifdef WINDOWS_NOCONSOLE
-    int flags = CREATE_NO_WINDOW;
-#else
+
+
+
     int flags = 0;
-#endif
-    if (!CreateProcessW(NULL, wide, NULL, NULL, FALSE, flags, NULL, NULL, &si,
+
+    if (!CreateProcessW(((void*)0), wide, ((void*)0), ((void*)0), FALSE, flags, ((void*)0), ((void*)0), &si,
                         &pi)) {
         SDL_free(wide);
-        *handle = NULL;
+        *handle = ((void*)0);
         if (GetLastError() == ERROR_FILE_NOT_FOUND) {
             return PROCESS_ERROR_MISSING_BINARY;
         }

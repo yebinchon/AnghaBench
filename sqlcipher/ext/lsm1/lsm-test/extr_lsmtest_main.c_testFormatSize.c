@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int i64 ;
 
-/* Variables and functions */
- int snprintf (char*,int,char*,int) ; 
+
+
+
+typedef int i64 ;
+
+
+ int snprintf (char*,int,char*,int) ;
 
 __attribute__((used)) static int testFormatSize(char *aBuf, int nBuf, i64 nByte){
   int res;

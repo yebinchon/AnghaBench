@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pixel_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int pixel_t ;
 struct TYPE_4__ {int CCCTL; int SFPRMD; int LNCLEN; int SDCTL; int PRINA; int PRINB; int PRIR; } ;
-struct TYPE_3__ {int* layer_priority; int /*<<< orphan*/  vdp2height; int /*<<< orphan*/  trans; int /*<<< orphan*/  inited; } ;
+struct TYPE_3__ {int* layer_priority; int vdp2height; int trans; int inited; } ;
 
-/* Variables and functions */
- size_t TITAN_NBG0 ; 
- size_t TITAN_NBG1 ; 
- size_t TITAN_NBG2 ; 
- size_t TITAN_NBG3 ; 
- size_t TITAN_RBG0 ; 
- int /*<<< orphan*/  TitanRenderSimplifiedCheck (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TitanRenderThreads (int /*<<< orphan*/ *,int) ; 
- TYPE_2__* Vdp2Regs ; 
- TYPE_1__ tt_context ; 
- scalar_t__ vidsoft_num_priority_threads ; 
+
+ size_t TITAN_NBG0 ;
+ size_t TITAN_NBG1 ;
+ size_t TITAN_NBG2 ;
+ size_t TITAN_NBG3 ;
+ size_t TITAN_RBG0 ;
+ int TitanRenderSimplifiedCheck (int *,int ,int ,int) ;
+ int TitanRenderThreads (int *,int) ;
+ TYPE_2__* Vdp2Regs ;
+ TYPE_1__ tt_context ;
+ scalar_t__ vidsoft_num_priority_threads ;
 
 void TitanRender(pixel_t * dispbuffer)
 {
@@ -37,19 +37,19 @@ void TitanRender(pixel_t * dispbuffer)
       return;
    }
 
-   //using color calculation
+
    if ((Vdp2Regs->CCCTL & 0x807f) != 0)
       can_use_simplified_rendering = 0;
 
-   //using special priority
+
    if ((Vdp2Regs->SFPRMD & 0x3ff) != 0)
       can_use_simplified_rendering = 0;
 
-   //using line screen
+
    if ((Vdp2Regs->LNCLEN & 0x1f) != 0)
       can_use_simplified_rendering = 0;
 
-   //using shadow
+
    if ((Vdp2Regs->SDCTL & 0x13F) != 0)
       can_use_simplified_rendering = 0;
 

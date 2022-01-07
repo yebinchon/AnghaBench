@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct i2c_client {int /*<<< orphan*/  dev; } ;
+
+
+
+
+struct i2c_client {int dev; } ;
 struct arizona {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  arizona_dev_exit (struct arizona*) ; 
- struct arizona* dev_get_drvdata (int /*<<< orphan*/ *) ; 
+
+ int arizona_dev_exit (struct arizona*) ;
+ struct arizona* dev_get_drvdata (int *) ;
 
 __attribute__((used)) static int arizona_i2c_remove(struct i2c_client *i2c)
 {
-	struct arizona *arizona = dev_get_drvdata(&i2c->dev);
+ struct arizona *arizona = dev_get_drvdata(&i2c->dev);
 
-	arizona_dev_exit(arizona);
+ arizona_dev_exit(arizona);
 
-	return 0;
+ return 0;
 }

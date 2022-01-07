@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_element__payload_t ;
-typedef  int /*<<< orphan*/  svn_element__content_t ;
-struct TYPE_10__ {int /*<<< orphan*/  rev; } ;
-typedef  TYPE_2__ svn_branch__txn_t ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int svn_stream_t ;
+typedef int svn_error_t ;
+typedef int svn_element__payload_t ;
+typedef int svn_element__content_t ;
+struct TYPE_10__ {int rev; } ;
+typedef TYPE_2__ svn_branch__txn_t ;
 struct TYPE_11__ {TYPE_1__* priv; } ;
-typedef  TYPE_3__ svn_branch__state_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_9__ {int /*<<< orphan*/  is_flat; int /*<<< orphan*/  history; } ;
+typedef TYPE_3__ svn_branch__state_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+struct TYPE_9__ {int is_flat; int history; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- TYPE_3__* branch_state_create (char*,int,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  branch_state_set_element (TYPE_3__*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  history_parse (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  parse_branch_line (char*,int*,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  parse_element_line (int*,int /*<<< orphan*/ *,int*,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_element__content_create (int,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_element__payload_create_ref (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_element__payload_create_subbranch (int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ TYPE_3__* branch_state_create (char*,int,TYPE_2__*,int *) ;
+ int branch_state_set_element (TYPE_3__*,int,int *,int *) ;
+ int history_parse (int *,int *,int *,int *) ;
+ int parse_branch_line (char*,int*,int*,int *,int *,int *) ;
+ int parse_element_line (int*,int *,int*,char const**,int *,int *,int *) ;
+ int * svn_element__content_create (int,char const*,int *,int *) ;
+ int * svn_element__payload_create_ref (int ,char*,int,int *) ;
+ int * svn_element__payload_create_subbranch (int *) ;
 
 __attribute__((used)) static svn_error_t *
 svn_branch__state_parse(svn_branch__state_t **new_branch,
@@ -56,12 +56,12 @@ svn_branch__state_parse(svn_branch__state_t **new_branch,
   branch_state = branch_state_create(bid, root_eid, txn,
                                      result_pool);
 
-  /* Read in the merge history. */
+
   SVN_ERR(history_parse(&branch_state->priv->history,
                         stream, result_pool, scratch_pool));
 
-  /* Read in the structure. Set the payload of each normal element to a
-     (branch-relative) reference. */
+
+
   for (i = 0; i < num_eids; i++)
     {
       int eid, this_parent_eid;

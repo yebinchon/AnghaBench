@@ -1,161 +1,146 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int OPTION_CHOICE ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
-typedef  int /*<<< orphan*/  EVP_CIPHER ;
-typedef  int /*<<< orphan*/  ENGINE ;
-typedef  int /*<<< orphan*/  DSA ;
-typedef  int /*<<< orphan*/  BIO ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_free_all (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  BN_print (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  DSA_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DSA_get0_key (int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DSA_print (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_print_errors (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_PKEY_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_PKEY_get1_DSA (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_PKEY_new () ; 
- int /*<<< orphan*/  EVP_PKEY_set1_DSA (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int FORMAT_ASN1 ; 
- int FORMAT_MSBLOB ; 
- int FORMAT_PEM ; 
- int FORMAT_PVK ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
-#define  OPT_CIPHER 146 
-#define  OPT_ENGINE 145 
-#define  OPT_EOF 144 
-#define  OPT_ERR 143 
- int /*<<< orphan*/  OPT_FMT_ANY ; 
-#define  OPT_HELP 142 
-#define  OPT_IN 141 
-#define  OPT_INFORM 140 
-#define  OPT_MODULUS 139 
-#define  OPT_NOOUT 138 
-#define  OPT_OUT 137 
-#define  OPT_OUTFORM 136 
-#define  OPT_PASSIN 135 
-#define  OPT_PASSOUT 134 
-#define  OPT_PUBIN 133 
-#define  OPT_PUBOUT 132 
-#define  OPT_PVK_NONE 131 
-#define  OPT_PVK_STRONG 130 
-#define  OPT_PVK_WEAK 129 
-#define  OPT_TEXT 128 
- int PEM_write_bio_DSAPrivateKey (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- int PEM_write_bio_DSA_PUBKEY (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  app_passwd (char*,char*,char**,char**) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * bio_err ; 
- int /*<<< orphan*/ * bio_open_owner (char*,int,int) ; 
- int /*<<< orphan*/  dsa_options ; 
- int i2b_PVK_bio (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,char*) ; 
- int i2b_PrivateKey_bio (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int i2b_PublicKey_bio (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int i2d_DSAPrivateKey_bio (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int i2d_DSA_PUBKEY_bio (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * load_key (char*,int,int,char*,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * load_pubkey (char*,int,int,char*,int /*<<< orphan*/ *,char*) ; 
- char* opt_arg () ; 
- int /*<<< orphan*/  opt_cipher (int /*<<< orphan*/ ,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  opt_format (char*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  opt_help (int /*<<< orphan*/ ) ; 
- char* opt_init (int,char**,int /*<<< orphan*/ ) ; 
- int opt_next () ; 
- int opt_num_rest () ; 
- int /*<<< orphan*/  opt_unknown () ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  release_engine (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * setup_engine (char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int OPTION_CHOICE ;
+typedef int EVP_PKEY ;
+typedef int EVP_CIPHER ;
+typedef int ENGINE ;
+typedef int DSA ;
+typedef int BIO ;
+typedef int BIGNUM ;
+
+
+ int BIO_free_all (int *) ;
+ int BIO_printf (int *,char*,...) ;
+ int BN_print (int *,int const*) ;
+ int DSA_free (int *) ;
+ int DSA_get0_key (int *,int const**,int *) ;
+ int DSA_print (int *,int *,int ) ;
+ int ERR_print_errors (int *) ;
+ int EVP_PKEY_free (int *) ;
+ int * EVP_PKEY_get1_DSA (int *) ;
+ int * EVP_PKEY_new () ;
+ int EVP_PKEY_set1_DSA (int *,int *) ;
+ int FORMAT_ASN1 ;
+ int FORMAT_MSBLOB ;
+ int FORMAT_PEM ;
+ int FORMAT_PVK ;
+ int OPENSSL_free (char*) ;
+
+
+
+
+ int OPT_FMT_ANY ;
+ int PEM_write_bio_DSAPrivateKey (int *,int *,int const*,int *,int ,int *,char*) ;
+ int PEM_write_bio_DSA_PUBKEY (int *,int *) ;
+ int app_passwd (char*,char*,char**,char**) ;
+ int assert (int) ;
+ int * bio_err ;
+ int * bio_open_owner (char*,int,int) ;
+ int dsa_options ;
+ int i2b_PVK_bio (int *,int *,int,int ,char*) ;
+ int i2b_PrivateKey_bio (int *,int *) ;
+ int i2b_PublicKey_bio (int *,int *) ;
+ int i2d_DSAPrivateKey_bio (int *,int *) ;
+ int i2d_DSA_PUBKEY_bio (int *,int *) ;
+ int * load_key (char*,int,int,char*,int *,char*) ;
+ int * load_pubkey (char*,int,int,char*,int *,char*) ;
+ char* opt_arg () ;
+ int opt_cipher (int ,int const**) ;
+ int opt_format (char*,int ,int*) ;
+ int opt_help (int ) ;
+ char* opt_init (int,char**,int ) ;
+ int opt_next () ;
+ int opt_num_rest () ;
+ int opt_unknown () ;
+ int perror (char*) ;
+ int release_engine (int *) ;
+ int * setup_engine (char*,int ) ;
 
 int dsa_main(int argc, char **argv)
 {
-    BIO *out = NULL;
-    DSA *dsa = NULL;
-    ENGINE *e = NULL;
-    const EVP_CIPHER *enc = NULL;
-    char *infile = NULL, *outfile = NULL, *prog;
-    char *passin = NULL, *passout = NULL, *passinarg = NULL, *passoutarg = NULL;
+    BIO *out = ((void*)0);
+    DSA *dsa = ((void*)0);
+    ENGINE *e = ((void*)0);
+    const EVP_CIPHER *enc = ((void*)0);
+    char *infile = ((void*)0), *outfile = ((void*)0), *prog;
+    char *passin = ((void*)0), *passout = ((void*)0), *passinarg = ((void*)0), *passoutarg = ((void*)0);
     OPTION_CHOICE o;
     int informat = FORMAT_PEM, outformat = FORMAT_PEM, text = 0, noout = 0;
     int i, modulus = 0, pubin = 0, pubout = 0, ret = 1;
-# ifndef OPENSSL_NO_RC4
+
     int pvk_encr = 2;
-# endif
+
     int private = 0;
 
     prog = opt_init(argc, argv, dsa_options);
-    while ((o = opt_next()) != OPT_EOF) {
+    while ((o = opt_next()) != 144) {
         switch (o) {
-        case OPT_EOF:
-        case OPT_ERR:
+        case 144:
+        case 143:
  opthelp:
             ret = 0;
             BIO_printf(bio_err, "%s: Use -help for summary.\n", prog);
             goto end;
-        case OPT_HELP:
+        case 142:
             opt_help(dsa_options);
             ret = 0;
             goto end;
-        case OPT_INFORM:
+        case 140:
             if (!opt_format(opt_arg(), OPT_FMT_ANY, &informat))
                 goto opthelp;
             break;
-        case OPT_IN:
+        case 141:
             infile = opt_arg();
             break;
-        case OPT_OUTFORM:
+        case 136:
             if (!opt_format(opt_arg(), OPT_FMT_ANY, &outformat))
                 goto opthelp;
             break;
-        case OPT_OUT:
+        case 137:
             outfile = opt_arg();
             break;
-        case OPT_ENGINE:
+        case 145:
             e = setup_engine(opt_arg(), 0);
             break;
-        case OPT_PASSIN:
+        case 135:
             passinarg = opt_arg();
             break;
-        case OPT_PASSOUT:
+        case 134:
             passoutarg = opt_arg();
             break;
-        case OPT_PVK_STRONG:    /* pvk_encr:= 2 */
-        case OPT_PVK_WEAK:      /* pvk_encr:= 1 */
-        case OPT_PVK_NONE:      /* pvk_encr:= 0 */
-#ifndef OPENSSL_NO_RC4
-            pvk_encr = (o - OPT_PVK_NONE);
-#endif
+        case 130:
+        case 129:
+        case 131:
+
+            pvk_encr = (o - 131);
+
             break;
-        case OPT_NOOUT:
+        case 138:
             noout = 1;
             break;
-        case OPT_TEXT:
+        case 128:
             text = 1;
             break;
-        case OPT_MODULUS:
+        case 139:
             modulus = 1;
             break;
-        case OPT_PUBIN:
+        case 133:
             pubin = 1;
             break;
-        case OPT_PUBOUT:
+        case 132:
             pubout = 1;
             break;
-        case OPT_CIPHER:
+        case 146:
             if (!opt_cipher(opt_unknown(), &enc))
                 goto end;
             break;
@@ -183,19 +168,19 @@ int dsa_main(int argc, char **argv)
         else
             pkey = load_key(infile, informat, 1, passin, e, "Private Key");
 
-        if (pkey != NULL) {
+        if (pkey != ((void*)0)) {
             dsa = EVP_PKEY_get1_DSA(pkey);
             EVP_PKEY_free(pkey);
         }
     }
-    if (dsa == NULL) {
+    if (dsa == ((void*)0)) {
         BIO_printf(bio_err, "unable to load Key\n");
         ERR_print_errors(bio_err);
         goto end;
     }
 
     out = bio_open_owner(outfile, outformat, private);
-    if (out == NULL)
+    if (out == ((void*)0))
         goto end;
 
     if (text) {
@@ -208,8 +193,8 @@ int dsa_main(int argc, char **argv)
     }
 
     if (modulus) {
-        const BIGNUM *pub_key = NULL;
-        DSA_get0_key(dsa, &pub_key, NULL);
+        const BIGNUM *pub_key = ((void*)0);
+        DSA_get0_key(dsa, &pub_key, ((void*)0));
         BIO_printf(out, "Public Key=");
         BN_print(out, pub_key);
         BIO_printf(out, "\n");
@@ -233,13 +218,13 @@ int dsa_main(int argc, char **argv)
         } else {
             assert(private);
             i = PEM_write_bio_DSAPrivateKey(out, dsa, enc,
-                                            NULL, 0, NULL, passout);
+                                            ((void*)0), 0, ((void*)0), passout);
         }
-# ifndef OPENSSL_NO_RSA
+
     } else if (outformat == FORMAT_MSBLOB || outformat == FORMAT_PVK) {
         EVP_PKEY *pk;
         pk = EVP_PKEY_new();
-        if (pk == NULL)
+        if (pk == ((void*)0))
            goto end;
 
         EVP_PKEY_set1_DSA(pk, dsa);
@@ -250,13 +235,13 @@ int dsa_main(int argc, char **argv)
                 goto end;
             }
             assert(private);
-#  ifdef OPENSSL_NO_RC4
-            BIO_printf(bio_err, "PVK format not supported\n");
-            EVP_PKEY_free(pk);
-            goto end;
-#  else
+
+
+
+
+
             i = i2b_PVK_bio(out, pk, pvk_encr, 0, passout);
-#  endif
+
         } else if (pubin || pubout) {
             i = i2b_PublicKey_bio(out, pk);
         } else {
@@ -264,7 +249,7 @@ int dsa_main(int argc, char **argv)
             i = i2b_PrivateKey_bio(out, pk);
         }
         EVP_PKEY_free(pk);
-# endif
+
     } else {
         BIO_printf(bio_err, "bad output format specified for outfile\n");
         goto end;

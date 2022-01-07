@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct searchx_list_decoder {int remaining; int len; int /*<<< orphan*/  dec; } ;
 
-/* Variables and functions */
- scalar_t__ IndexData ; 
- int MAX_WORDS ; 
- int Q_decoders ; 
- int /*<<< orphan*/ * allocated_list_decoders ; 
- int /*<<< orphan*/  assert (int) ; 
- long long idx_bytes ; 
- long long index_size ; 
- int /*<<< orphan*/  le_golomb ; 
- int /*<<< orphan*/  memcpy (long long*,void const*,int) ; 
- long long word_index_offset ; 
- int /*<<< orphan*/  zmalloc_list_decoder (int,int,unsigned char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct searchx_list_decoder {int remaining; int len; int dec; } ;
+
+
+ scalar_t__ IndexData ;
+ int MAX_WORDS ;
+ int Q_decoders ;
+ int * allocated_list_decoders ;
+ int assert (int) ;
+ long long idx_bytes ;
+ long long index_size ;
+ int le_golomb ;
+ int memcpy (long long*,void const*,int) ;
+ long long word_index_offset ;
+ int zmalloc_list_decoder (int,int,unsigned char*,int ,int ) ;
 
 __attribute__((used)) static void init_decoder (struct searchx_list_decoder *D, int N, int K, int bytes, const void *file_offset) {
   unsigned char *ptr;

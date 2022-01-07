@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct mmci_host {int /*<<< orphan*/  gpio_cd; int /*<<< orphan*/  mmc; TYPE_1__* plat; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct mmci_host {int gpio_cd; int mmc; TYPE_1__* plat; } ;
 struct mmc_host {int dummy; } ;
-struct TYPE_2__ {unsigned int (* status ) (int /*<<< orphan*/ ) ;} ;
+struct TYPE_2__ {unsigned int (* status ) (int ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENOSYS ; 
- unsigned int gpio_get_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mmc_dev (int /*<<< orphan*/ ) ; 
- struct mmci_host* mmc_priv (struct mmc_host*) ; 
- unsigned int stub1 (int /*<<< orphan*/ ) ; 
+
+ int ENOSYS ;
+ unsigned int gpio_get_value (int ) ;
+ int mmc_dev (int ) ;
+ struct mmci_host* mmc_priv (struct mmc_host*) ;
+ unsigned int stub1 (int ) ;
 
 __attribute__((used)) static int mmci_get_cd(struct mmc_host *mmc)
 {
-	struct mmci_host *host = mmc_priv(mmc);
-	unsigned int status;
+ struct mmci_host *host = mmc_priv(mmc);
+ unsigned int status;
 
-	if (host->gpio_cd == -ENOSYS)
-		status = host->plat->status(mmc_dev(host->mmc));
-	else
-		status = gpio_get_value(host->gpio_cd);
+ if (host->gpio_cd == -ENOSYS)
+  status = host->plat->status(mmc_dev(host->mmc));
+ else
+  status = gpio_get_value(host->gpio_cd);
 
-	return !status;
+ return !status;
 }

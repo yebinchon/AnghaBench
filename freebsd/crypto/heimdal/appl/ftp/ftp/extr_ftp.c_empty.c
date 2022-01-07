@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timeval {int tv_sec; scalar_t__ tv_usec; } ;
-typedef  int /*<<< orphan*/  fd_set ;
+typedef int fd_set ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FD_SETSIZE ; 
- int select (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
+
+ int FD_SETSIZE ;
+ int select (int ,int *,int *,int *,struct timeval*) ;
 
 int
 empty (fd_set * mask, int sec)
@@ -24,5 +24,5 @@ empty (fd_set * mask, int sec)
 
     t.tv_sec = sec;
     t.tv_usec = 0;
-    return (select (FD_SETSIZE, mask, NULL, NULL, &t));
+    return (select (FD_SETSIZE, mask, ((void*)0), ((void*)0), &t));
 }

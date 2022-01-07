@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct promptdisk_params {int* PathRequiredSize; int PathBufferSize; int /*<<< orphan*/  PathBuffer; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPROMPT_BUFFERTOOSMALL ; 
- int /*<<< orphan*/  DPROMPT_SUCCESS ; 
- int /*<<< orphan*/  EndDialog (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetWindowTextW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  IDC_PATH ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  NO_ERROR ; 
- int /*<<< orphan*/  TRACE (char*,int) ; 
- int debugstr_w (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcpyW (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int strlenW (int /*<<< orphan*/ *) ; 
+
+
+
+struct promptdisk_params {int* PathRequiredSize; int PathBufferSize; int PathBuffer; } ;
+typedef int WCHAR ;
+typedef int HWND ;
+
+
+ int DPROMPT_BUFFERTOOSMALL ;
+ int DPROMPT_SUCCESS ;
+ int EndDialog (int ,int ) ;
+ int GetDlgItem (int ,int ) ;
+ int GetWindowTextW (int ,int *,int) ;
+ int IDC_PATH ;
+ int MAX_PATH ;
+ int NO_ERROR ;
+ int TRACE (char*,int) ;
+ int debugstr_w (int ) ;
+ int strcpyW (int ,int *) ;
+ int strlenW (int *) ;
 
 __attribute__((used)) static void promptdisk_ok(HWND hwnd, struct promptdisk_params *params)
 {

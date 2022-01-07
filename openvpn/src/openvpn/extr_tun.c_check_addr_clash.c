@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gc_arena {int dummy; } ;
-typedef  int in_addr_t ;
+typedef int in_addr_t ;
 
-/* Variables and functions */
- int DEV_TYPE_TAP ; 
- int DEV_TYPE_TUN ; 
- int /*<<< orphan*/  M_INFO ; 
- int /*<<< orphan*/  M_WARN ; 
- int /*<<< orphan*/  gc_free (struct gc_arena*) ; 
- struct gc_arena gc_new () ; 
- int /*<<< orphan*/  ifconfig_warn_how_to_silence ; 
- int /*<<< orphan*/  msg (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  print_in_addr_t (int,int /*<<< orphan*/ ,struct gc_arena*) ; 
+
+ int DEV_TYPE_TAP ;
+ int DEV_TYPE_TUN ;
+ int M_INFO ;
+ int M_WARN ;
+ int gc_free (struct gc_arena*) ;
+ struct gc_arena gc_new () ;
+ int ifconfig_warn_how_to_silence ;
+ int msg (int ,char*,...) ;
+ int print_in_addr_t (int,int ,struct gc_arena*) ;
 
 __attribute__((used)) static void
 check_addr_clash(const char *name,
@@ -32,14 +32,6 @@ check_addr_clash(const char *name,
                  in_addr_t remote_netmask)
 {
     struct gc_arena gc = gc_new();
-#if 0
-    msg(M_INFO, "CHECK_ADDR_CLASH type=%d public=%s local=%s, remote_netmask=%s",
-        type,
-        print_in_addr_t(public, 0, &gc),
-        print_in_addr_t(local, 0, &gc),
-        print_in_addr_t(remote_netmask, 0, &gc));
-#endif
-
     if (public)
     {
         if (type == DEV_TYPE_TUN)

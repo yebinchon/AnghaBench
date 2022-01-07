@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct g_journal_softc {TYPE_1__* sc_geom; } ;
-struct TYPE_2__ {int /*<<< orphan*/  name; } ;
+struct TYPE_2__ {int name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GJ_DEBUG (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  M_NOWAIT ; 
- int /*<<< orphan*/  g_journal_destroy_event ; 
- int /*<<< orphan*/  g_post_event (int /*<<< orphan*/ ,struct g_journal_softc*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int GJ_DEBUG (int ,char*,int ) ;
+ int M_NOWAIT ;
+ int g_journal_destroy_event ;
+ int g_post_event (int ,struct g_journal_softc*,int ,int *) ;
 
 __attribute__((used)) static void
 g_journal_timeout(void *arg)
 {
-	struct g_journal_softc *sc;
+ struct g_journal_softc *sc;
 
-	sc = arg;
-	GJ_DEBUG(0, "Timeout. Journal %s cannot be completed.",
-	    sc->sc_geom->name);
-	g_post_event(g_journal_destroy_event, sc, M_NOWAIT, NULL);
+ sc = arg;
+ GJ_DEBUG(0, "Timeout. Journal %s cannot be completed.",
+     sc->sc_geom->name);
+ g_post_event(g_journal_destroy_event, sc, M_NOWAIT, ((void*)0));
 }

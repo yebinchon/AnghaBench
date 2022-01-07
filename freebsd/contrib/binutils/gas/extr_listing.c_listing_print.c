@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ EOF ; 
- int /*<<< orphan*/  FOPEN_WT ; 
- int LISTING_LISTING ; 
- int LISTING_NOFORM ; 
- int LISTING_SYMBOLS ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  as_warn (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * last_open_file ; 
- int /*<<< orphan*/ * list_file ; 
- int /*<<< orphan*/  list_symbol_table () ; 
- int listing ; 
- int /*<<< orphan*/  listing_listing (char*) ; 
- scalar_t__ paper_height ; 
- int /*<<< orphan*/ * stdout ; 
- char* subtitle ; 
- char* title ; 
- int /*<<< orphan*/  xstrerror (int /*<<< orphan*/ ) ; 
+ scalar_t__ EOF ;
+ int FOPEN_WT ;
+ int LISTING_LISTING ;
+ int LISTING_NOFORM ;
+ int LISTING_SYMBOLS ;
+ int _ (char*) ;
+ int as_warn (int ,char*,int ) ;
+ int errno ;
+ scalar_t__ fclose (int *) ;
+ int * fopen (char*,int ) ;
+ int * last_open_file ;
+ int * list_file ;
+ int list_symbol_table () ;
+ int listing ;
+ int listing_listing (char*) ;
+ scalar_t__ paper_height ;
+ int * stdout ;
+ char* subtitle ;
+ char* title ;
+ int xstrerror (int ) ;
 
 void
 listing_print (char *name)
@@ -41,7 +33,7 @@ listing_print (char *name)
   title = "";
   subtitle = "";
 
-  if (name == NULL)
+  if (name == ((void*)0))
     {
       list_file = stdout;
       using_stdout = 1;
@@ -49,14 +41,14 @@ listing_print (char *name)
   else
     {
       list_file = fopen (name, FOPEN_WT);
-      if (list_file != NULL)
-	using_stdout = 0;
+      if (list_file != ((void*)0))
+ using_stdout = 0;
       else
-	{
-	  as_warn (_("can't open %s: %s"), name, xstrerror (errno));
-	  list_file = stdout;
-	  using_stdout = 1;
-	}
+ {
+   as_warn (_("can't open %s: %s"), name, xstrerror (errno));
+   list_file = stdout;
+   using_stdout = 1;
+ }
     }
 
   if (listing & LISTING_NOFORM)
@@ -71,7 +63,7 @@ listing_print (char *name)
   if (! using_stdout)
     {
       if (fclose (list_file) == EOF)
-	as_warn (_("can't close %s: %s"), name, xstrerror (errno));
+ as_warn (_("can't close %s: %s"), name, xstrerror (errno));
     }
 
   if (last_open_file)

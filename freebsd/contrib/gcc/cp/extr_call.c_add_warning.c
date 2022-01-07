@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct z_candidate {TYPE_1__* warnings; } ;
 struct TYPE_2__ {struct TYPE_2__* next; struct z_candidate* loser; } ;
-typedef  TYPE_1__ candidate_warning ;
+typedef TYPE_1__ candidate_warning ;
 
-/* Variables and functions */
- scalar_t__ conversion_obstack_alloc (int) ; 
+
+ scalar_t__ conversion_obstack_alloc (int) ;
 
 __attribute__((used)) static void
 add_warning (struct z_candidate *winner, struct z_candidate *loser)

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct gather_entry {int res_read; int num; int res_bytes; scalar_t__ data; } ;
 struct TYPE_5__ {int remaining; unsigned long long value64; scalar_t__ last; scalar_t__ cur; } ;
-typedef  TYPE_1__ gh_entry_t ;
+typedef TYPE_1__ gh_entry_t ;
 
-/* Variables and functions */
- int FLAG_DOUBLE ; 
- TYPE_1__** GH ; 
- TYPE_1__* GH_E ; 
- size_t GH_N ; 
- int GH_mode ; 
- int GH_total ; 
- size_t MAX_CLUSTER_SERVERS ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,...) ; 
- int /*<<< orphan*/  load_heap_v (TYPE_1__*) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+ int FLAG_DOUBLE ;
+ TYPE_1__** GH ;
+ TYPE_1__* GH_E ;
+ size_t GH_N ;
+ int GH_mode ;
+ int GH_total ;
+ size_t MAX_CLUSTER_SERVERS ;
+ int assert (int) ;
+ int fprintf (int ,char*,int,int,...) ;
+ int load_heap_v (TYPE_1__*) ;
+ int stderr ;
+ int verbosity ;
 
 __attribute__((used)) static int gather_heap_insert (struct gather_entry *GE) {
   int cnt, cnt2, sz;
@@ -46,7 +46,7 @@ __attribute__((used)) static int gather_heap_insert (struct gather_entry *GE) {
   if (verbosity >= 3) {
     fprintf (stderr, "gather_heap_insert: %d elements (size %d)\n", cnt, (GE->res_read >> 2) - 1);
   }
-  if (cnt <= 0) { 
+  if (cnt <= 0) {
     return 0;
   }
   GH_total += cnt;

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct mg_connection {int /*<<< orphan*/  flags; } ;
-struct TYPE_4__ {int /*<<< orphan*/  len; int /*<<< orphan*/  p; } ;
-struct TYPE_3__ {int /*<<< orphan*/  len; int /*<<< orphan*/  p; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct mg_connection {int flags; } ;
+struct TYPE_4__ {int len; int p; } ;
+struct TYPE_3__ {int len; int p; } ;
 struct http_message {TYPE_2__ body; TYPE_1__ message; } ;
 
-/* Variables and functions */
-#define  MG_EV_CLOSE 130 
-#define  MG_EV_CONNECT 129 
-#define  MG_EV_HTTP_REPLY 128 
- int /*<<< orphan*/  MG_F_CLOSE_IMMEDIATELY ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  fwrite (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  putchar (char) ; 
- int s_exit_flag ; 
- int /*<<< orphan*/  s_show_headers ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- char* strerror (int) ; 
+
+
+
+
+ int MG_F_CLOSE_IMMEDIATELY ;
+ int fprintf (int ,char*,char*) ;
+ int fwrite (int ,int,int ,int ) ;
+ int printf (char*) ;
+ int putchar (char) ;
+ int s_exit_flag ;
+ int s_show_headers ;
+ int stderr ;
+ int stdout ;
+ char* strerror (int) ;
 
 __attribute__((used)) static void ev_handler(struct mg_connection *nc, int ev, void *ev_data) {
   struct http_message *hm = (struct http_message *) ev_data;
 
   switch (ev) {
-    case MG_EV_CONNECT:
+    case 129:
       if (*(int *) ev_data != 0) {
         fprintf(stderr, "connect() failed: %s\n", strerror(*(int *) ev_data));
         s_exit_flag = 1;
       }
       break;
-    case MG_EV_HTTP_REPLY:
+    case 128:
       nc->flags |= MG_F_CLOSE_IMMEDIATELY;
       if (s_show_headers) {
         fwrite(hm->message.p, 1, hm->message.len, stdout);
@@ -52,7 +52,7 @@ __attribute__((used)) static void ev_handler(struct mg_connection *nc, int ev, v
       putchar('\n');
       s_exit_flag = 1;
       break;
-    case MG_EV_CLOSE:
+    case 130:
       if (s_exit_flag == 0) {
         printf("Server closed connection\n");
         s_exit_flag = 1;

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ int64_t ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
 
-/* Variables and functions */
- scalar_t__ ASF_READ_U16 (int /*<<< orphan*/ *,scalar_t__,char*) ; 
- scalar_t__ ASF_READ_U32 (int /*<<< orphan*/ *,scalar_t__,char*) ; 
- int /*<<< orphan*/  ASF_SKIP_BYTES (int /*<<< orphan*/ *,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ASF_SKIP_GUID (int /*<<< orphan*/ *,scalar_t__,char*) ; 
- int /*<<< orphan*/  ASF_SKIP_STRING (int /*<<< orphan*/ *,scalar_t__,scalar_t__,char*) ; 
- int /*<<< orphan*/  ASF_SKIP_U16 (int /*<<< orphan*/ *,scalar_t__,char*) ; 
- int /*<<< orphan*/  CHECK_POINT (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  VC_CONTAINER_ERROR_CORRUPTED ; 
- int /*<<< orphan*/  VC_CONTAINER_SUCCESS ; 
+
+
+
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ int64_t ;
+typedef int VC_CONTAINER_T ;
+typedef int VC_CONTAINER_STATUS_T ;
+
+
+ scalar_t__ ASF_READ_U16 (int *,scalar_t__,char*) ;
+ scalar_t__ ASF_READ_U32 (int *,scalar_t__,char*) ;
+ int ASF_SKIP_BYTES (int *,scalar_t__,scalar_t__) ;
+ int ASF_SKIP_GUID (int *,scalar_t__,char*) ;
+ int ASF_SKIP_STRING (int *,scalar_t__,scalar_t__,char*) ;
+ int ASF_SKIP_U16 (int *,scalar_t__,char*) ;
+ int CHECK_POINT (int *,scalar_t__) ;
+ int VC_CONTAINER_ERROR_CORRUPTED ;
+ int VC_CONTAINER_SUCCESS ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T asf_read_object_codec_list( VC_CONTAINER_T *p_ctx, int64_t size )
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T asf_read_object_codec_list( V
 
    CHECK_POINT(p_ctx, size);
 
-   /* Codec entries */
+
    for(i = 0; i < count; i++)
    {
       ASF_SKIP_U16(p_ctx, size, "Type");

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ psz; int /*<<< orphan*/  flags; } ;
-struct TYPE_3__ {scalar_t__ lParam; int /*<<< orphan*/  flags; } ;
-typedef  scalar_t__ PCCRYPT_OID_INFO ;
-typedef  TYPE_1__ LVFINDINFOW ;
-typedef  TYPE_2__ LVFINDINFOA ;
-typedef  scalar_t__ LPCSTR ;
-typedef  scalar_t__ LPARAM ;
-typedef  int /*<<< orphan*/  LONG_PTR ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPT_ENHKEY_USAGE_OID_GROUP_ID ; 
- int /*<<< orphan*/  CRYPT_OID_INFO_OID_KEY ; 
- scalar_t__ CryptFindOIDInfo (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LVFI_PARAM ; 
- int /*<<< orphan*/  LVFI_STRING ; 
- int /*<<< orphan*/  LVM_FINDITEMA ; 
- int /*<<< orphan*/  LVM_FINDITEMW ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,scalar_t__) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ psz; int flags; } ;
+struct TYPE_3__ {scalar_t__ lParam; int flags; } ;
+typedef scalar_t__ PCCRYPT_OID_INFO ;
+typedef TYPE_1__ LVFINDINFOW ;
+typedef TYPE_2__ LVFINDINFOA ;
+typedef scalar_t__ LPCSTR ;
+typedef scalar_t__ LPARAM ;
+typedef int LONG_PTR ;
+typedef int HWND ;
+
+
+ int CRYPT_ENHKEY_USAGE_OID_GROUP_ID ;
+ int CRYPT_OID_INFO_OID_KEY ;
+ scalar_t__ CryptFindOIDInfo (int ,void*,int ) ;
+ int LVFI_PARAM ;
+ int LVFI_STRING ;
+ int LVM_FINDITEMA ;
+ int LVM_FINDITEMW ;
+ int SendMessageW (int ,int ,int,scalar_t__) ;
 
 __attribute__((used)) static LONG_PTR find_oid_in_list(HWND lv, LPCSTR oid)
 {

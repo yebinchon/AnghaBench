@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int number_bitwise_logic_op ;
-typedef  int /*<<< orphan*/  int32_t ;
-typedef  int /*<<< orphan*/  ecma_value_t ;
-typedef  int /*<<< orphan*/  ecma_number_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ECMA_IS_VALUE_ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ECMA_NUMBER_ZERO ; 
- int /*<<< orphan*/  ECMA_OP_TO_NUMBER_FINALIZE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ECMA_OP_TO_NUMBER_TRY_CATCH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ECMA_VALUE_EMPTY ; 
- int /*<<< orphan*/  JERRY_ASSERT (int) ; 
-#define  NUMBER_BITWISE_LOGIC_AND 134 
-#define  NUMBER_BITWISE_LOGIC_OR 133 
-#define  NUMBER_BITWISE_LOGIC_XOR 132 
-#define  NUMBER_BITWISE_NOT 131 
-#define  NUMBER_BITWISE_SHIFT_LEFT 130 
-#define  NUMBER_BITWISE_SHIFT_RIGHT 129 
-#define  NUMBER_BITWISE_SHIFT_URIGHT 128 
- int /*<<< orphan*/  ecma_make_number_value (int /*<<< orphan*/ ) ; 
- int ecma_number_to_int32 (int /*<<< orphan*/ ) ; 
- int ecma_number_to_uint32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  num_left ; 
- int /*<<< orphan*/  num_right ; 
+
+
+
+typedef int uint32_t ;
+typedef int number_bitwise_logic_op ;
+typedef int int32_t ;
+typedef int ecma_value_t ;
+typedef int ecma_number_t ;
+
+
+ int ECMA_IS_VALUE_ERROR (int ) ;
+ int ECMA_NUMBER_ZERO ;
+ int ECMA_OP_TO_NUMBER_FINALIZE (int ) ;
+ int ECMA_OP_TO_NUMBER_TRY_CATCH (int ,int ,int ) ;
+ int ECMA_VALUE_EMPTY ;
+ int JERRY_ASSERT (int) ;
+
+
+
+
+
+
+
+ int ecma_make_number_value (int ) ;
+ int ecma_number_to_int32 (int ) ;
+ int ecma_number_to_uint32 (int ) ;
+ int num_left ;
+ int num_right ;
 
 ecma_value_t
-do_number_bitwise_logic (number_bitwise_logic_op op, /**< number bitwise logic operation */
-                         ecma_value_t left_value, /**< left value */
-                         ecma_value_t right_value) /**< right value */
+do_number_bitwise_logic (number_bitwise_logic_op op,
+                         ecma_value_t left_value,
+                         ecma_value_t right_value)
 {
   JERRY_ASSERT (!ECMA_IS_VALUE_ERROR (left_value)
                 && !ECMA_IS_VALUE_ERROR (right_value));
@@ -54,41 +54,41 @@ do_number_bitwise_logic (number_bitwise_logic_op op, /**< number bitwise logic o
 
   switch (op)
   {
-    case NUMBER_BITWISE_LOGIC_AND:
+    case 134:
     {
       uint32_t left_uint32 = ecma_number_to_uint32 (num_left);
       result = (ecma_number_t) ((int32_t) (left_uint32 & right_uint32));
       break;
     }
-    case NUMBER_BITWISE_LOGIC_OR:
+    case 133:
     {
       uint32_t left_uint32 = ecma_number_to_uint32 (num_left);
       result = (ecma_number_t) ((int32_t) (left_uint32 | right_uint32));
       break;
     }
-    case NUMBER_BITWISE_LOGIC_XOR:
+    case 132:
     {
       uint32_t left_uint32 = ecma_number_to_uint32 (num_left);
       result = (ecma_number_t) ((int32_t) (left_uint32 ^ right_uint32));
       break;
     }
-    case NUMBER_BITWISE_SHIFT_LEFT:
+    case 130:
     {
       result = (ecma_number_t) (ecma_number_to_int32 (num_left) << (right_uint32 & 0x1F));
       break;
     }
-    case NUMBER_BITWISE_SHIFT_RIGHT:
+    case 129:
     {
       result = (ecma_number_t) (ecma_number_to_int32 (num_left) >> (right_uint32 & 0x1F));
       break;
     }
-    case NUMBER_BITWISE_SHIFT_URIGHT:
+    case 128:
     {
       uint32_t left_uint32 = ecma_number_to_uint32 (num_left);
       result = (ecma_number_t) (left_uint32 >> (right_uint32 & 0x1F));
       break;
     }
-    case NUMBER_BITWISE_NOT:
+    case 131:
     {
       result = (ecma_number_t) ((int32_t) ~right_uint32);
       break;

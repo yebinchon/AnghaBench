@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {size_t display_idx; TYPE_5__** display_pics; } ;
 struct priv {TYPE_1__ pbo; } ;
 struct TYPE_14__ {int i_planes; TYPE_2__* p; TYPE_6__* p_sys; } ;
-typedef  TYPE_5__ picture_t ;
-struct TYPE_15__ {int /*<<< orphan*/ * buffers; } ;
-typedef  TYPE_6__ picture_sys_t ;
-struct TYPE_16__ {TYPE_4__* vt; TYPE_3__* texs; int /*<<< orphan*/  tex_target; struct priv* priv; } ;
-typedef  TYPE_7__ opengl_tex_converter_t ;
-struct TYPE_13__ {int /*<<< orphan*/  (* BindBuffer ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* TexSubImage2D ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int const,int const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* PixelStorei ) (int /*<<< orphan*/ ,int const) ;int /*<<< orphan*/  (* BindTexture ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* ActiveTexture ) (scalar_t__) ;int /*<<< orphan*/  (* BufferSubData ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/  const*) ;} ;
-struct TYPE_12__ {int /*<<< orphan*/  type; int /*<<< orphan*/  format; } ;
-struct TYPE_11__ {int i_lines; int i_pitch; int i_visible_pitch; int /*<<< orphan*/ * p_pixels; } ;
-typedef  int /*<<< orphan*/  GLvoid ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  int GLsizeiptr ;
-typedef  int GLsizei ;
+typedef TYPE_5__ picture_t ;
+struct TYPE_15__ {int * buffers; } ;
+typedef TYPE_6__ picture_sys_t ;
+struct TYPE_16__ {TYPE_4__* vt; TYPE_3__* texs; int tex_target; struct priv* priv; } ;
+typedef TYPE_7__ opengl_tex_converter_t ;
+struct TYPE_13__ {int (* BindBuffer ) (int ,int ) ;int (* TexSubImage2D ) (int ,int ,int ,int ,int const,int const,int ,int ,int *) ;int (* PixelStorei ) (int ,int const) ;int (* BindTexture ) (int ,int ) ;int (* ActiveTexture ) (scalar_t__) ;int (* BufferSubData ) (int ,int ,int,int const*) ;} ;
+struct TYPE_12__ {int type; int format; } ;
+struct TYPE_11__ {int i_lines; int i_pitch; int i_visible_pitch; int * p_pixels; } ;
+typedef int GLvoid ;
+typedef int GLuint ;
+typedef int GLsizeiptr ;
+typedef int GLsizei ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_PIXEL_UNPACK_BUFFER ; 
- scalar_t__ GL_TEXTURE0 ; 
- int /*<<< orphan*/  GL_UNPACK_ROW_LENGTH ; 
- int PBO_DISPLAY_COUNT ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  stub3 (scalar_t__) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub5 (int /*<<< orphan*/ ,int const) ; 
- int /*<<< orphan*/  stub6 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int const,int const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub7 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int GL_PIXEL_UNPACK_BUFFER ;
+ scalar_t__ GL_TEXTURE0 ;
+ int GL_UNPACK_ROW_LENGTH ;
+ int PBO_DISPLAY_COUNT ;
+ int VLC_SUCCESS ;
+ int assert (int ) ;
+ int stub1 (int ,int ) ;
+ int stub2 (int ,int ,int,int const*) ;
+ int stub3 (scalar_t__) ;
+ int stub4 (int ,int ) ;
+ int stub5 (int ,int const) ;
+ int stub6 (int ,int ,int ,int ,int const,int const,int ,int ,int *) ;
+ int stub7 (int ,int ) ;
 
 __attribute__((used)) static int
 tc_pbo_update(const opengl_tex_converter_t *tc, GLuint *textures,
               const GLsizei *tex_width, const GLsizei *tex_height,
               picture_t *pic, const size_t *plane_offset)
 {
-    (void) plane_offset; assert(plane_offset == NULL);
+    (void) plane_offset; assert(plane_offset == ((void*)0));
     struct priv *priv = tc->priv;
 
     picture_t *display_pic = priv->pbo.display_pics[priv->pbo.display_idx];
@@ -75,10 +75,10 @@ tc_pbo_update(const opengl_tex_converter_t *tc, GLuint *textures,
             * tex_width[i] / (pic->p[i].i_visible_pitch ? pic->p[i].i_visible_pitch : 1));
 
         tc->vt->TexSubImage2D(tc->tex_target, 0, 0, 0, tex_width[i], tex_height[i],
-                              tc->texs[i].format, tc->texs[i].type, NULL);
+                              tc->texs[i].format, tc->texs[i].type, ((void*)0));
     }
 
-    /* turn off pbo */
+
     tc->vt->BindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
 
     return VLC_SUCCESS;

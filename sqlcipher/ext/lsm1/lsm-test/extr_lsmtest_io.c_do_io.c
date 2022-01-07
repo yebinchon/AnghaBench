@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ fd; int nWrite; } ;
-typedef  TYPE_1__ u8 ;
-typedef  TYPE_1__ IoContext ;
+typedef TYPE_1__ u8 ;
+typedef TYPE_1__ IoContext ;
 
-/* Variables and functions */
- int O_CREAT ; 
- int O_RDWR ; 
- int _O_BINARY ; 
- int /*<<< orphan*/  close (scalar_t__) ; 
- int doOneCmd (TYPE_1__*,TYPE_1__*,int,char*,char**) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ getNextSize (char*,int /*<<< orphan*/ ,int*) ; 
- TYPE_1__* malloc (int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int,int) ; 
- scalar_t__ open (char*,int,int) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  printf (char*,int,int) ; 
- int /*<<< orphan*/  readStdin (char**) ; 
- int /*<<< orphan*/  testPrintError (char*,int) ; 
- int /*<<< orphan*/  testPrintUsage (char*) ; 
- int testTimeGet () ; 
- int /*<<< orphan*/  testTimeInit () ; 
+
+ int O_CREAT ;
+ int O_RDWR ;
+ int _O_BINARY ;
+ int close (scalar_t__) ;
+ int doOneCmd (TYPE_1__*,TYPE_1__*,int,char*,char**) ;
+ int free (char*) ;
+ scalar_t__ getNextSize (char*,int ,int*) ;
+ TYPE_1__* malloc (int) ;
+ int memset (TYPE_1__*,int,int) ;
+ scalar_t__ open (char*,int,int) ;
+ int perror (char*) ;
+ int printf (char*,int,int) ;
+ int readStdin (char**) ;
+ int testPrintError (char*,int) ;
+ int testPrintUsage (char*) ;
+ int testTimeGet () ;
+ int testTimeInit () ;
 
 int do_io(int nArg, char **azArg){
   IoContext ctx;

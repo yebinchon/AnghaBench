@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  unsigned int int16_t ;
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  GET_CODE (unsigned int,int,int) ; 
- int* aic_num_band_coeffs ; 
- size_t** aic_scan ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits1 (int /*<<< orphan*/ *) ; 
- int get_bits_left (int /*<<< orphan*/ *) ; 
+
+
+
+typedef size_t uint8_t ;
+typedef unsigned int int16_t ;
+typedef int GetBitContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int GET_CODE (unsigned int,int,int) ;
+ int* aic_num_band_coeffs ;
+ size_t** aic_scan ;
+ int get_bits (int *,int) ;
+ int get_bits1 (int *) ;
+ int get_bits_left (int *) ;
 
 __attribute__((used)) static int aic_decode_coeffs(GetBitContext *gb, int16_t *dst,
                              int band, int slice_width, int force_chroma)
@@ -35,7 +35,7 @@ __attribute__((used)) static int aic_decode_coeffs(GetBitContext *gb, int16_t *d
     if (get_bits_left(gb) < 5)
         return AVERROR_INVALIDDATA;
 
-    has_skips  = get_bits1(gb);
+    has_skips = get_bits1(gb);
     coeff_type = get_bits1(gb);
     coeff_bits = get_bits(gb, 3);
 

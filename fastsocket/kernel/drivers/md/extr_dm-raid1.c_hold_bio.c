@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mirror_set {int /*<<< orphan*/  lock; int /*<<< orphan*/  holds; int /*<<< orphan*/  ti; int /*<<< orphan*/  suspend; } ;
+
+
+
+
+struct mirror_set {int lock; int holds; int ti; int suspend; } ;
 struct bio {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DM_ENDIO_REQUEUE ; 
- int /*<<< orphan*/  EIO ; 
- scalar_t__ atomic_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bio_endio (struct bio*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bio_list_add (int /*<<< orphan*/ *,struct bio*) ; 
- scalar_t__ dm_noflush_suspending (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
+
+ int DM_ENDIO_REQUEUE ;
+ int EIO ;
+ scalar_t__ atomic_read (int *) ;
+ int bio_endio (struct bio*,int ) ;
+ int bio_list_add (int *,struct bio*) ;
+ scalar_t__ dm_noflush_suspending (int ) ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
 
 __attribute__((used)) static void hold_bio(struct mirror_set *ms, struct bio *bio)
 {
-	/*
-	 * Lock is required to avoid race condition during suspend
-	 * process.
-	 */
-	spin_lock_irq(&ms->lock);
 
-	if (atomic_read(&ms->suspend)) {
-		spin_unlock_irq(&ms->lock);
 
-		/*
-		 * If device is suspended, complete the bio.
-		 */
-		if (dm_noflush_suspending(ms->ti))
-			bio_endio(bio, DM_ENDIO_REQUEUE);
-		else
-			bio_endio(bio, -EIO);
-		return;
-	}
 
-	/*
-	 * Hold bio until the suspend is complete.
-	 */
-	bio_list_add(&ms->holds, bio);
-	spin_unlock_irq(&ms->lock);
+
+ spin_lock_irq(&ms->lock);
+
+ if (atomic_read(&ms->suspend)) {
+  spin_unlock_irq(&ms->lock);
+
+
+
+
+  if (dm_noflush_suspending(ms->ti))
+   bio_endio(bio, DM_ENDIO_REQUEUE);
+  else
+   bio_endio(bio, -EIO);
+  return;
+ }
+
+
+
+
+ bio_list_add(&ms->holds, bio);
+ spin_unlock_irq(&ms->lock);
 }

@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConPuts (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  MSG_ACCOUNTS_HELP ; 
- int /*<<< orphan*/  MSG_ACCOUNTS_SYNTAX ; 
- int /*<<< orphan*/  MSG_COMPUTER_HELP ; 
- int /*<<< orphan*/  MSG_COMPUTER_SYNTAX ; 
- int /*<<< orphan*/  MSG_CONFIG_HELP ; 
- int /*<<< orphan*/  MSG_CONFIG_SERVER_HELP ; 
- int /*<<< orphan*/  MSG_CONFIG_SERVER_SYNTAX ; 
- int /*<<< orphan*/  MSG_CONFIG_SYNTAX ; 
- int /*<<< orphan*/  MSG_CONTINUE_HELP ; 
- int /*<<< orphan*/  MSG_CONTINUE_SYNTAX ; 
- int /*<<< orphan*/  MSG_FILE_HELP ; 
- int /*<<< orphan*/  MSG_FILE_SYNTAX ; 
- int /*<<< orphan*/  MSG_GROUP_HELP ; 
- int /*<<< orphan*/  MSG_GROUP_SYNTAX ; 
- int /*<<< orphan*/  MSG_HELPMSG_HELP ; 
- int /*<<< orphan*/  MSG_HELPMSG_SYNTAX ; 
- int /*<<< orphan*/  MSG_HELP_HELP ; 
- int /*<<< orphan*/  MSG_HELP_SYNTAX ; 
- int /*<<< orphan*/  MSG_LOCALGROUP_HELP ; 
- int /*<<< orphan*/  MSG_LOCALGROUP_SYNTAX ; 
- int /*<<< orphan*/  MSG_NAME_HELP ; 
- int /*<<< orphan*/  MSG_NAME_SYNTAX ; 
- int /*<<< orphan*/  MSG_PAUSE_HELP ; 
- int /*<<< orphan*/  MSG_PAUSE_SYNTAX ; 
- int /*<<< orphan*/  MSG_PRINT_HELP ; 
- int /*<<< orphan*/  MSG_PRINT_SYNTAX ; 
- int /*<<< orphan*/  MSG_SEND_HELP ; 
- int /*<<< orphan*/  MSG_SEND_SYNTAX ; 
- int /*<<< orphan*/  MSG_SESSION_HELP ; 
- int /*<<< orphan*/  MSG_SESSION_SYNTAX ; 
- int /*<<< orphan*/  MSG_SHARE_HELP ; 
- int /*<<< orphan*/  MSG_SHARE_SYNTAX ; 
- int /*<<< orphan*/  MSG_START_HELP ; 
- int /*<<< orphan*/  MSG_START_SYNTAX ; 
- int /*<<< orphan*/  MSG_STATISTICS_HELP ; 
- int /*<<< orphan*/  MSG_STATISTICS_SYNTAX ; 
- int /*<<< orphan*/  MSG_STOP_HELP ; 
- int /*<<< orphan*/  MSG_STOP_SYNTAX ; 
- int /*<<< orphan*/  MSG_SYNTAX_HELP ; 
- int /*<<< orphan*/  MSG_TIME_HELP ; 
- int /*<<< orphan*/  MSG_TIME_SYNTAX ; 
- int /*<<< orphan*/  MSG_USER_HELP ; 
- int /*<<< orphan*/  MSG_USER_SYNTAX ; 
- int /*<<< orphan*/  MSG_USE_HELP ; 
- int /*<<< orphan*/  MSG_USE_SYNTAX ; 
- int /*<<< orphan*/  MSG_VIEW_HELP ; 
- int /*<<< orphan*/  MSG_VIEW_SYNTAX ; 
- int /*<<< orphan*/  PrintMessageString (int) ; 
- int /*<<< orphan*/  PrintNetMessage (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StdOut ; 
- scalar_t__ _wcsicmp (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int INT ;
+
+
+ int ConPuts (int ,char*) ;
+ int MSG_ACCOUNTS_HELP ;
+ int MSG_ACCOUNTS_SYNTAX ;
+ int MSG_COMPUTER_HELP ;
+ int MSG_COMPUTER_SYNTAX ;
+ int MSG_CONFIG_HELP ;
+ int MSG_CONFIG_SERVER_HELP ;
+ int MSG_CONFIG_SERVER_SYNTAX ;
+ int MSG_CONFIG_SYNTAX ;
+ int MSG_CONTINUE_HELP ;
+ int MSG_CONTINUE_SYNTAX ;
+ int MSG_FILE_HELP ;
+ int MSG_FILE_SYNTAX ;
+ int MSG_GROUP_HELP ;
+ int MSG_GROUP_SYNTAX ;
+ int MSG_HELPMSG_HELP ;
+ int MSG_HELPMSG_SYNTAX ;
+ int MSG_HELP_HELP ;
+ int MSG_HELP_SYNTAX ;
+ int MSG_LOCALGROUP_HELP ;
+ int MSG_LOCALGROUP_SYNTAX ;
+ int MSG_NAME_HELP ;
+ int MSG_NAME_SYNTAX ;
+ int MSG_PAUSE_HELP ;
+ int MSG_PAUSE_SYNTAX ;
+ int MSG_PRINT_HELP ;
+ int MSG_PRINT_SYNTAX ;
+ int MSG_SEND_HELP ;
+ int MSG_SEND_SYNTAX ;
+ int MSG_SESSION_HELP ;
+ int MSG_SESSION_SYNTAX ;
+ int MSG_SHARE_HELP ;
+ int MSG_SHARE_SYNTAX ;
+ int MSG_START_HELP ;
+ int MSG_START_SYNTAX ;
+ int MSG_STATISTICS_HELP ;
+ int MSG_STATISTICS_SYNTAX ;
+ int MSG_STOP_HELP ;
+ int MSG_STOP_SYNTAX ;
+ int MSG_SYNTAX_HELP ;
+ int MSG_TIME_HELP ;
+ int MSG_TIME_SYNTAX ;
+ int MSG_USER_HELP ;
+ int MSG_USER_SYNTAX ;
+ int MSG_USE_HELP ;
+ int MSG_USE_SYNTAX ;
+ int MSG_VIEW_HELP ;
+ int MSG_VIEW_SYNTAX ;
+ int PrintMessageString (int) ;
+ int PrintNetMessage (int ) ;
+ int StdOut ;
+ scalar_t__ _wcsicmp (int *,char*) ;
 
 INT cmdHelp(INT argc, WCHAR **argv)
 {
@@ -234,14 +234,6 @@ INT cmdHelp(INT argc, WCHAR **argv)
         PrintNetMessage(MSG_VIEW_HELP);
         return 0;
     }
-
-#if 0
-    if (_wcsicmp(argv[2], L"SERVICES") == 0)
-    {
-        return 0;
-    }
-#endif
-
     if (_wcsicmp(argv[2], L"SYNTAX") == 0)
     {
         PrintNetMessage(MSG_SYNTAX_HELP);

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-struct TYPE_5__ {int stride; int /*<<< orphan*/ * rgba; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_5__ {int stride; int * rgba; } ;
 struct TYPE_6__ {TYPE_1__ RGBA; } ;
 struct TYPE_7__ {int width; int height; TYPE_2__ u; } ;
-typedef  TYPE_3__ WebPDecBuffer ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_3__ WebPDecBuffer ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,int const,int const) ; 
- size_t const fwrite (int /*<<< orphan*/  const*,int const,size_t const,int /*<<< orphan*/ *) ; 
+
+ int fprintf (int *,char*,int const,int const) ;
+ size_t const fwrite (int const*,int const,size_t const,int *) ;
 
 __attribute__((used)) static int WritePPMPAM(FILE* fout, const WebPDecBuffer* const buffer,
                        int alpha) {
-  if (fout == NULL || buffer == NULL) {
+  if (fout == ((void*)0) || buffer == ((void*)0)) {
     return 0;
   } else {
     const uint32_t width = buffer->width;
@@ -37,7 +37,7 @@ __attribute__((used)) static int WritePPMPAM(FILE* fout, const WebPDecBuffer* co
     const size_t bytes_per_px = alpha ? 4 : 3;
     uint32_t y;
 
-    if (row == NULL) return 0;
+    if (row == ((void*)0)) return 0;
 
     if (alpha) {
       fprintf(fout, "P7\nWIDTH %u\nHEIGHT %u\nDEPTH 4\nMAXVAL 255\n"

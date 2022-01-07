@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ui_out {int dummy; } ;
-struct captured_execute_command_args {int /*<<< orphan*/  from_tty; int /*<<< orphan*/  command; } ;
+struct captured_execute_command_args {int from_tty; int command; } ;
 
-/* Variables and functions */
- int GDB_RC_OK ; 
- int /*<<< orphan*/  execute_command (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int GDB_RC_OK ;
+ int execute_command (int ,int ) ;
 
 __attribute__((used)) static int
 do_captured_execute_command (struct ui_out *uiout, void *data)

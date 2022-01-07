@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * LPCWSTR ;
-typedef  int /*<<< orphan*/  IMoniker ;
-typedef  int /*<<< orphan*/ * HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CreateURLMoniker (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * E_INVALIDARG ; 
- int /*<<< orphan*/  IMoniker_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * MK_E_SYNTAX ; 
- int /*<<< orphan*/ * S_OK ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/ * emptyW ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * LPCWSTR ;
+typedef int IMoniker ;
+typedef int * HRESULT ;
+
+
+ int * CreateURLMoniker (int *,int *,int **) ;
+ int * E_INVALIDARG ;
+ int IMoniker_Release (int *) ;
+ int * MK_E_SYNTAX ;
+ int * S_OK ;
+ scalar_t__ broken (int) ;
+ int * emptyW ;
+ int ok (int,char*,int *) ;
 
 __attribute__((used)) static void test_CreateURLMoniker(LPCWSTR url1, LPCWSTR url2)
 {
     HRESULT hr;
-    IMoniker *mon1 = NULL;
-    IMoniker *mon2 = NULL;
+    IMoniker *mon1 = ((void*)0);
+    IMoniker *mon2 = ((void*)0);
 
-    hr = CreateURLMoniker(NULL, NULL, NULL);
+    hr = CreateURLMoniker(((void*)0), ((void*)0), ((void*)0));
     ok(hr == E_INVALIDARG,
        "Expected CreateURLMoniker to return E_INVALIDARG, got 0x%08x\n", hr);
 
     mon1 = (IMoniker *)0xdeadbeef;
-    hr = CreateURLMoniker(NULL, NULL, &mon1);
+    hr = CreateURLMoniker(((void*)0), ((void*)0), &mon1);
     ok(hr == E_INVALIDARG,
        "Expected CreateURLMoniker to return E_INVALIDARG, got 0x%08x\n", hr);
-    ok(mon1 == NULL, "Expected the output pointer to be NULL, got %p\n", mon1);
+    ok(mon1 == ((void*)0), "Expected the output pointer to be NULL, got %p\n", mon1);
 
-    hr = CreateURLMoniker(NULL, emptyW, NULL);
+    hr = CreateURLMoniker(((void*)0), emptyW, ((void*)0));
     ok(hr == E_INVALIDARG,
        "Expected CreateURLMoniker to return E_INVALIDARG, got 0x%08x\n", hr);
 
-    hr = CreateURLMoniker(NULL, emptyW, &mon1);
+    hr = CreateURLMoniker(((void*)0), emptyW, &mon1);
     ok(hr == S_OK ||
-       broken(hr == MK_E_SYNTAX), /* IE5/IE5.01/IE6 SP2 */
+       broken(hr == MK_E_SYNTAX),
        "Expected CreateURLMoniker to return S_OK, got 0x%08x\n", hr);
     if(mon1) IMoniker_Release(mon1);
 
-    hr = CreateURLMoniker(NULL, url1, &mon1);
+    hr = CreateURLMoniker(((void*)0), url1, &mon1);
     ok(hr == S_OK, "failed to create moniker: 0x%08x\n", hr);
     if(hr == S_OK) {
         hr = CreateURLMoniker(mon1, url2, &mon2);

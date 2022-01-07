@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int n_devices; int /*<<< orphan*/ ** devices; } ;
-typedef  TYPE_1__ sd_device_enumerator ;
-typedef  int /*<<< orphan*/  sd_device ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  assert_se (int) ; 
- scalar_t__ path_equal (char const*,char const*) ; 
- scalar_t__ sd_device_get_devpath (int /*<<< orphan*/ *,char const**) ; 
- int /*<<< orphan*/  sd_device_unref (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int n_devices; int ** devices; } ;
+typedef TYPE_1__ sd_device_enumerator ;
+typedef int sd_device ;
+
+
+ int assert (TYPE_1__*) ;
+ int assert_se (int) ;
+ scalar_t__ path_equal (char const*,char const*) ;
+ scalar_t__ sd_device_get_devpath (int *,char const**) ;
+ int sd_device_unref (int *) ;
 
 __attribute__((used)) static void device_enumerator_dedup_devices(sd_device_enumerator *enumerator) {
         sd_device **a, **b, **end;

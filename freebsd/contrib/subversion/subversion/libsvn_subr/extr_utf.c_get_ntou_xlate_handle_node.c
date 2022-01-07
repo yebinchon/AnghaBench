@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xlate_handle_node_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_APR_LOCALE_CHARSET ; 
- int /*<<< orphan*/  SVN_APR_UTF8_CHARSET ; 
- int /*<<< orphan*/  SVN_UTF_NTOU_XLATE_HANDLE ; 
- scalar_t__ assume_native_charset_is_utf8 ; 
- int /*<<< orphan*/ * get_xlate_handle_node (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int xlate_handle_node_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_APR_LOCALE_CHARSET ;
+ int SVN_APR_UTF8_CHARSET ;
+ int SVN_UTF_NTOU_XLATE_HANDLE ;
+ scalar_t__ assume_native_charset_is_utf8 ;
+ int * get_xlate_handle_node (int **,int ,int ,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 get_ntou_xlate_handle_node(xlate_handle_node_t **ret, apr_pool_t *pool)

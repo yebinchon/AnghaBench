@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  attr ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-struct TYPE_3__ {int Length; void* RootDirectory; int /*<<< orphan*/ * SecurityQualityOfService; int /*<<< orphan*/ * SecurityDescriptor; scalar_t__ Attributes; int /*<<< orphan*/ * ObjectName; } ;
-typedef  TYPE_1__ OBJECT_ATTRIBUTES ;
-typedef  void* HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KEY_ALL_ACCESS ; 
- int /*<<< orphan*/  NtClose (void*) ; 
- scalar_t__ NtCreateKey (void**,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RtlInitUnicodeString (int /*<<< orphan*/ *,char const*) ; 
- scalar_t__ RtlOpenCurrentUser (int /*<<< orphan*/ ,void**) ; 
- scalar_t__ STATUS_SUCCESS ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int attr ;
+typedef char WCHAR ;
+typedef int UNICODE_STRING ;
+struct TYPE_3__ {int Length; void* RootDirectory; int * SecurityQualityOfService; int * SecurityDescriptor; scalar_t__ Attributes; int * ObjectName; } ;
+typedef TYPE_1__ OBJECT_ATTRIBUTES ;
+typedef void* HANDLE ;
+
+
+ int KEY_ALL_ACCESS ;
+ int NtClose (void*) ;
+ scalar_t__ NtCreateKey (void**,int ,TYPE_1__*,int ,int *,int ,int *) ;
+ int RtlInitUnicodeString (int *,char const*) ;
+ scalar_t__ RtlOpenCurrentUser (int ,void**) ;
+ scalar_t__ STATUS_SUCCESS ;
 
 __attribute__((used)) static inline HANDLE create_registry_key(void)
 {
@@ -40,16 +40,16 @@ __attribute__((used)) static inline HANDLE create_registry_key(void)
     attr.RootDirectory = hkey;
     attr.ObjectName = &nameW;
     attr.Attributes = 0;
-    attr.SecurityDescriptor = NULL;
-    attr.SecurityQualityOfService = NULL;
+    attr.SecurityDescriptor = ((void*)0);
+    attr.SecurityQualityOfService = ((void*)0);
     RtlInitUnicodeString( &nameW, cplW );
 
-    if (!NtCreateKey( &cpl_key, KEY_ALL_ACCESS, &attr, 0, NULL, 0, NULL ))
+    if (!NtCreateKey( &cpl_key, KEY_ALL_ACCESS, &attr, 0, ((void*)0), 0, ((void*)0) ))
     {
         NtClose( attr.RootDirectory );
         attr.RootDirectory = cpl_key;
         RtlInitUnicodeString( &nameW, intlW );
-        if (NtCreateKey( &hkey, KEY_ALL_ACCESS, &attr, 0, NULL, 0, NULL )) hkey = 0;
+        if (NtCreateKey( &hkey, KEY_ALL_ACCESS, &attr, 0, ((void*)0), 0, ((void*)0) )) hkey = 0;
     }
     NtClose( attr.RootDirectory );
     return hkey;

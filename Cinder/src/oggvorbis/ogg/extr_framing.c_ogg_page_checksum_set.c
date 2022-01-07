@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ogg_uint32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ogg_uint32_t ;
 struct TYPE_3__ {int* header; int header_len; int body_len; int* body; } ;
-typedef  TYPE_1__ ogg_page ;
+typedef TYPE_1__ ogg_page ;
 
-/* Variables and functions */
- int* crc_lookup ; 
+
+ int* crc_lookup ;
 
 void ogg_page_checksum_set(ogg_page *og){
   if(og){
     ogg_uint32_t crc_reg=0;
     int i;
 
-    /* safety; needed for API behavior, but not framing code */
+
     og->header[22]=0;
     og->header[23]=0;
     og->header[24]=0;

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char const* name; } ;
-struct filter_kernel {TYPE_1__ f; int /*<<< orphan*/  polar; } ;
+struct filter_kernel {TYPE_1__ f; int polar; } ;
 
-/* Variables and functions */
- char** fixed_scale_filters ; 
- char** fixed_tscale_filters ; 
- struct filter_kernel* mp_find_filter_kernel (char const*) ; 
- scalar_t__ strcmp (char const* const,char const*) ; 
+
+ char** fixed_scale_filters ;
+ char** fixed_tscale_filters ;
+ struct filter_kernel* mp_find_filter_kernel (char const*) ;
+ scalar_t__ strcmp (char const* const,char const*) ;
 
 __attribute__((used)) static const char *handle_scaler_opt(const char *name, bool tscale)
 {
@@ -34,5 +34,5 @@ __attribute__((used)) static const char *handle_scaler_opt(const char *name, boo
                 return *filter;
         }
     }
-    return NULL;
+    return ((void*)0);
 }

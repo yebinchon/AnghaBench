@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  name; int /*<<< orphan*/  pMetricMeta; scalar_t__ pMeterMeta; } ;
-struct TYPE_7__ {int /*<<< orphan*/  cmd; } ;
-typedef  TYPE_1__ SSqlObj ;
-typedef  TYPE_2__ SMeterMetaInfo ;
-typedef  int /*<<< orphan*/  SMeterMeta ;
 
-/* Variables and functions */
- int UTIL_METER_IS_METRIC (TYPE_2__*) ; 
- int /*<<< orphan*/  taosClearDataCache (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * taosGetDataFromCache (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  taosRemoveDataFromCache (int /*<<< orphan*/ ,void**,int) ; 
- int /*<<< orphan*/  tscCacheHandle ; 
- TYPE_2__* tscGetMeterMetaInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tscTrace (char*,TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int name; int pMetricMeta; scalar_t__ pMeterMeta; } ;
+struct TYPE_7__ {int cmd; } ;
+typedef TYPE_1__ SSqlObj ;
+typedef TYPE_2__ SMeterMetaInfo ;
+typedef int SMeterMeta ;
+
+
+ int UTIL_METER_IS_METRIC (TYPE_2__*) ;
+ int taosClearDataCache (int ) ;
+ int * taosGetDataFromCache (int ,int ) ;
+ int taosRemoveDataFromCache (int ,void**,int) ;
+ int tscCacheHandle ;
+ TYPE_2__* tscGetMeterMetaInfo (int *,int ) ;
+ int tscTrace (char*,TYPE_1__*,int ) ;
 
 int tscProcessAlterTableMsgRsp(SSqlObj *pSql) {
   SMeterMetaInfo *pMeterMetaInfo = tscGetMeterMetaInfo(&pSql->cmd, 0);
 
   SMeterMeta *pMeterMeta = taosGetDataFromCache(tscCacheHandle, pMeterMetaInfo->name);
-  if (pMeterMeta == NULL) { /* not in cache, abort */
+  if (pMeterMeta == ((void*)0)) {
     return 0;
   }
 
   tscTrace("%p force release metermeta in cache after alter-table: %s", pSql, pMeterMetaInfo->name);
-  taosRemoveDataFromCache(tscCacheHandle, (void **)&pMeterMeta, true);
+  taosRemoveDataFromCache(tscCacheHandle, (void **)&pMeterMeta, 1);
 
   if (pMeterMetaInfo->pMeterMeta) {
     bool isMetric = UTIL_METER_IS_METRIC(pMeterMetaInfo);
 
-    taosRemoveDataFromCache(tscCacheHandle, (void **)&(pMeterMetaInfo->pMeterMeta), true);
-    taosRemoveDataFromCache(tscCacheHandle, (void **)&(pMeterMetaInfo->pMetricMeta), true);
+    taosRemoveDataFromCache(tscCacheHandle, (void **)&(pMeterMetaInfo->pMeterMeta), 1);
+    taosRemoveDataFromCache(tscCacheHandle, (void **)&(pMeterMetaInfo->pMetricMeta), 1);
 
-    if (isMetric) {  // if it is a metric, reset whole query cache
+    if (isMetric) {
       tscTrace("%p reset query cache since table:%s is stable", pSql, pMeterMetaInfo->name);
       taosClearDataCache(tscCacheHandle);
     }

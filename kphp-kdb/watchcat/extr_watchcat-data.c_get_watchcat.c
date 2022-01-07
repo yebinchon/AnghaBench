@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_11__ {int phrases_cnt; TYPE_2__* phrases; } ;
-typedef  TYPE_1__ watchcat_query_t ;
-struct TYPE_12__ {int words; int /*<<< orphan*/ * H; scalar_t__ minus_flag; } ;
-typedef  TYPE_2__ watchcat_query_phrase_t ;
-struct TYPE_13__ {long long id; scalar_t__ vn; int /*<<< orphan*/  keys; TYPE_1__* query; } ;
-typedef  TYPE_3__ watchcat ;
+typedef TYPE_1__ watchcat_query_t ;
+struct TYPE_12__ {int words; int * H; scalar_t__ minus_flag; } ;
+typedef TYPE_2__ watchcat_query_phrase_t ;
+struct TYPE_13__ {long long id; scalar_t__ vn; int keys; TYPE_1__* query; } ;
+typedef TYPE_3__ watchcat ;
 
-/* Variables and functions */
- TYPE_3__* alloc_watchcat () ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,long long) ; 
- int /*<<< orphan*/  free_watchcat_query (TYPE_1__*) ; 
- TYPE_3__* get_watchcat_q (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  h_watchcat ; 
- scalar_t__ hset_llp_add (int /*<<< orphan*/ *,long long*) ; 
- int my_verbosity ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  watchcat_q_add (TYPE_3__*,TYPE_3__*) ; 
- int /*<<< orphan*/  wkey_set_init (int /*<<< orphan*/ *) ; 
+
+ TYPE_3__* alloc_watchcat () ;
+ int assert (int ) ;
+ int fprintf (int ,char*,long long) ;
+ int free_watchcat_query (TYPE_1__*) ;
+ TYPE_3__* get_watchcat_q (int ,int) ;
+ int h_watchcat ;
+ scalar_t__ hset_llp_add (int *,long long*) ;
+ int my_verbosity ;
+ int stderr ;
+ int watchcat_q_add (TYPE_3__*,TYPE_3__*) ;
+ int wkey_set_init (int *) ;
 
 inline watchcat *get_watchcat (long long id, watchcat_query_t *query) {
   watchcat **b;
@@ -48,7 +48,7 @@ inline watchcat *get_watchcat (long long id, watchcat_query_t *query) {
     }
 
     int i;
-    watchcat *bq = NULL;
+    watchcat *bq = ((void*)0);
 
     int done = 0;
     for (i = 0; i < query->phrases_cnt && !done; i++) {
@@ -59,7 +59,7 @@ inline watchcat *get_watchcat (long long id, watchcat_query_t *query) {
       int j;
       for (j = 0; j < phrase->words && !done; j++) {
         watchcat *q = get_watchcat_q (phrase->H[j], 1);
-        if (bq == NULL || bq->vn > q->vn) {
+        if (bq == ((void*)0) || bq->vn > q->vn) {
           bq = q;
         }
         if (bq->vn == 0) {
@@ -68,7 +68,7 @@ inline watchcat *get_watchcat (long long id, watchcat_query_t *query) {
       }
     }
 
-    assert (bq != NULL);
+    assert (bq != ((void*)0));
     if (my_verbosity > 1) {
       fprintf (stderr, "added to %lld queue\n", bq->id);
     }

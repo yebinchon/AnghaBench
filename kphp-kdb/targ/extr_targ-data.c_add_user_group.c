@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  uid; } ;
-typedef  TYPE_1__ user_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  add_user_word (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  field_value_hash (int /*<<< orphan*/ ,int) ; 
- int max_group_id ; 
- int min_group_id ; 
- int /*<<< orphan*/  q_grp_id ; 
- int /*<<< orphan*/  user_group_pairs ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int uid; } ;
+typedef TYPE_1__ user_t ;
+
+
+ int add_user_word (int ,int ) ;
+ int field_value_hash (int ,int) ;
+ int max_group_id ;
+ int min_group_id ;
+ int q_grp_id ;
+ int user_group_pairs ;
 
 __attribute__((used)) static int add_user_group (user_t *U, int group_id) {
   if (group_id > max_group_id) {

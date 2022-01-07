@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device_node {char const* name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  of_find_property (struct device_node*,char*,int /*<<< orphan*/ *) ; 
- char* of_get_property (struct device_node*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
+
+ int of_find_property (struct device_node*,char*,int *) ;
+ char* of_get_property (struct device_node*,char*,int *) ;
+ int strcmp (char const*,char*) ;
 
 __attribute__((used)) static int of_bus_simba_match(struct device_node *np)
 {
-	const char *model = of_get_property(np, "model", NULL);
+ const char *model = of_get_property(np, "model", ((void*)0));
 
-	if (model && !strcmp(model, "SUNW,simba"))
-		return 1;
+ if (model && !strcmp(model, "SUNW,simba"))
+  return 1;
 
-	/* Treat PCI busses lacking ranges property just like
-	 * simba.
-	 */
-	if (!strcmp(np->name, "pci")) {
-		if (!of_find_property(np, "ranges", NULL))
-			return 1;
-	}
 
-	return 0;
+
+
+ if (!strcmp(np->name, "pci")) {
+  if (!of_find_property(np, "ranges", ((void*)0)))
+   return 1;
+ }
+
+ return 0;
 }

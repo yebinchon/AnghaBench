@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t word ;
-typedef  int /*<<< orphan*/  byte ;
-struct TYPE_3__ {scalar_t__ req_in; scalar_t__ req_in_start; int /*<<< orphan*/ * RBuffer; } ;
-typedef  TYPE_1__ PLCI ;
 
-/* Variables and functions */
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t word ;
+typedef int byte ;
+struct TYPE_3__ {scalar_t__ req_in; scalar_t__ req_in_start; int * RBuffer; } ;
+typedef TYPE_1__ PLCI ;
+
+
 
 __attribute__((used)) static void add_d(PLCI *plci, word length, byte *p)
 {

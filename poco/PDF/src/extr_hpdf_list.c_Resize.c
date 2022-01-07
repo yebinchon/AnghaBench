@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int count; void** obj; int block_siz; int /*<<< orphan*/  mmgr; int /*<<< orphan*/  error; } ;
-typedef  int HPDF_UINT ;
-typedef  int /*<<< orphan*/  HPDF_STATUS ;
-typedef  TYPE_1__* HPDF_List ;
-typedef  int /*<<< orphan*/  HPDF_BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HPDF_Error_GetCode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_FreeMem (int /*<<< orphan*/ ,void**) ; 
- scalar_t__ HPDF_GetMem (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HPDF_INVALID_PARAMETER ; 
- int /*<<< orphan*/  HPDF_MemCpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  HPDF_OK ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int count; void** obj; int block_siz; int mmgr; int error; } ;
+typedef int HPDF_UINT ;
+typedef int HPDF_STATUS ;
+typedef TYPE_1__* HPDF_List ;
+typedef int HPDF_BYTE ;
+
+
+ int HPDF_Error_GetCode (int ) ;
+ int HPDF_FreeMem (int ,void**) ;
+ scalar_t__ HPDF_GetMem (int ,int) ;
+ int HPDF_INVALID_PARAMETER ;
+ int HPDF_MemCpy (int *,int *,int) ;
+ int HPDF_OK ;
+ int HPDF_PTRACE (char*) ;
 
 __attribute__((used)) static HPDF_STATUS
-Resize  (HPDF_List   list,
-         HPDF_UINT   count)
+Resize (HPDF_List list,
+         HPDF_UINT count)
 {
     void **new_obj;
 

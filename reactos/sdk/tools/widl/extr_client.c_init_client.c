@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PACKAGE_VERSION ; 
- scalar_t__ client ; 
- int /*<<< orphan*/  client_name ; 
- int /*<<< orphan*/  error (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ fopen (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  header_name ; 
- int /*<<< orphan*/  input_name ; 
- int /*<<< orphan*/  print_client (char*,...) ; 
+ int PACKAGE_VERSION ;
+ scalar_t__ client ;
+ int client_name ;
+ int error (char*,int ) ;
+ scalar_t__ fopen (int ,char*) ;
+ int header_name ;
+ int input_name ;
+ int print_client (char*,...) ;
 
 __attribute__((used)) static void init_client(void)
 {

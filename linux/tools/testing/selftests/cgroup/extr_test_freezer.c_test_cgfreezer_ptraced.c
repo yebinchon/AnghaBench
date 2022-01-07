@@ -1,86 +1,86 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  siginfo_t ;
 
-/* Variables and functions */
- int KSFT_FAIL ; 
- int KSFT_PASS ; 
- int /*<<< orphan*/  PTRACE_DETACH ; 
- int /*<<< orphan*/  PTRACE_GETSIGINFO ; 
- int /*<<< orphan*/  PTRACE_INTERRUPT ; 
- int /*<<< orphan*/  PTRACE_SEIZE ; 
- scalar_t__ cg_check_frozen (char*,int) ; 
- scalar_t__ cg_create (char*) ; 
- int /*<<< orphan*/  cg_destroy (char*) ; 
- scalar_t__ cg_freeze_wait (char*,int) ; 
- char* cg_name (char const*,char*) ; 
- int cg_run_nowait (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ cg_wait_for_proc_count (char*,int) ; 
- int /*<<< orphan*/  child_fn ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ ptrace (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  waitpid (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int siginfo_t ;
+
+
+ int KSFT_FAIL ;
+ int KSFT_PASS ;
+ int PTRACE_DETACH ;
+ int PTRACE_GETSIGINFO ;
+ int PTRACE_INTERRUPT ;
+ int PTRACE_SEIZE ;
+ scalar_t__ cg_check_frozen (char*,int) ;
+ scalar_t__ cg_create (char*) ;
+ int cg_destroy (char*) ;
+ scalar_t__ cg_freeze_wait (char*,int) ;
+ char* cg_name (char const*,char*) ;
+ int cg_run_nowait (char*,int ,int *) ;
+ scalar_t__ cg_wait_for_proc_count (char*,int) ;
+ int child_fn ;
+ int free (char*) ;
+ scalar_t__ ptrace (int ,int,int *,int *) ;
+ int waitpid (int,int *,int ) ;
 
 __attribute__((used)) static int test_cgfreezer_ptraced(const char *root)
 {
-	int pid, ret = KSFT_FAIL;
-	char *cgroup = NULL;
-	siginfo_t siginfo;
+ int pid, ret = KSFT_FAIL;
+ char *cgroup = ((void*)0);
+ siginfo_t siginfo;
 
-	cgroup = cg_name(root, "cg_test_ptraced");
-	if (!cgroup)
-		goto cleanup;
+ cgroup = cg_name(root, "cg_test_ptraced");
+ if (!cgroup)
+  goto cleanup;
 
-	if (cg_create(cgroup))
-		goto cleanup;
+ if (cg_create(cgroup))
+  goto cleanup;
 
-	pid = cg_run_nowait(cgroup, child_fn, NULL);
+ pid = cg_run_nowait(cgroup, child_fn, ((void*)0));
 
-	if (cg_wait_for_proc_count(cgroup, 1))
-		goto cleanup;
+ if (cg_wait_for_proc_count(cgroup, 1))
+  goto cleanup;
 
-	if (ptrace(PTRACE_SEIZE, pid, NULL, NULL))
-		goto cleanup;
+ if (ptrace(PTRACE_SEIZE, pid, ((void*)0), ((void*)0)))
+  goto cleanup;
 
-	if (ptrace(PTRACE_INTERRUPT, pid, NULL, NULL))
-		goto cleanup;
+ if (ptrace(PTRACE_INTERRUPT, pid, ((void*)0), ((void*)0)))
+  goto cleanup;
 
-	waitpid(pid, NULL, 0);
+ waitpid(pid, ((void*)0), 0);
 
-	if (cg_check_frozen(cgroup, false))
-		goto cleanup;
+ if (cg_check_frozen(cgroup, 0))
+  goto cleanup;
 
-	if (cg_freeze_wait(cgroup, true))
-		goto cleanup;
+ if (cg_freeze_wait(cgroup, 1))
+  goto cleanup;
 
-	/*
-	 * cg_check_frozen(cgroup, true) will fail here,
-	 * because the task in in the TRACEd state.
-	 */
-	if (cg_freeze_wait(cgroup, false))
-		goto cleanup;
 
-	if (ptrace(PTRACE_GETSIGINFO, pid, NULL, &siginfo))
-		goto cleanup;
 
-	if (ptrace(PTRACE_DETACH, pid, NULL, NULL))
-		goto cleanup;
 
-	ret = KSFT_PASS;
+
+ if (cg_freeze_wait(cgroup, 0))
+  goto cleanup;
+
+ if (ptrace(PTRACE_GETSIGINFO, pid, ((void*)0), &siginfo))
+  goto cleanup;
+
+ if (ptrace(PTRACE_DETACH, pid, ((void*)0), ((void*)0)))
+  goto cleanup;
+
+ ret = KSFT_PASS;
 
 cleanup:
-	if (cgroup)
-		cg_destroy(cgroup);
-	free(cgroup);
-	return ret;
+ if (cgroup)
+  cg_destroy(cgroup);
+ free(cgroup);
+ return ret;
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- size_t BY_IDX ; 
- size_t GY_IDX ; 
- int RGB2YUV_SHIFT ; 
- size_t RY_IDX ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int int32_t ;
+
+
+ size_t BY_IDX ;
+ size_t GY_IDX ;
+ int RGB2YUV_SHIFT ;
+ size_t RY_IDX ;
 
 __attribute__((used)) static void planar_rgb_to_y(uint8_t *_dst, const uint8_t *src[4], int width, int32_t *rgb2yuv)
 {

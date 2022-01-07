@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* FullVersionStr ; 
- int /*<<< orphan*/  exit (int) ; 
- int hash_size ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+ char* FullVersionStr ;
+ int exit (int) ;
+ int hash_size ;
+ int printf (char*,...) ;
 
 void usage (void) {
   printf ("%s\n", FullVersionStr);
@@ -31,12 +23,12 @@ void usage (void) {
       "\t[-H<heap-size>]\tdefines maximum heap size\n"
       "\t[-S<hash-slots>]\tset global uries hashtable size, <hash-slots> is a natural number (engine himself finds prime)\n"
       "\t\t\t<hash-slots> should be around half of uries in the engine stats (default value is %d)\n"
-#ifdef CACHE_FEATURE_MONTHLY_COUNTER_PERF_STATS
-      "\t[-M<filename>]\toutput unreasonable downloads percent for monthly counters to the given file and exit\n"
-#endif
-#ifdef CACHE_FEATURE_CORRELATION_STATS
-      "\t[-C<dir>]\toutput correlaction tables and exit\n"
-#endif
+
+
+
+
+
+
       "\t[-D<disable-feature-mask>]\tdisable some features\n"
       "\t[-D 1]\tdisable long queries : get (top|bottom)_(access|disk|stats), delete remote|disk (memory optimization)\n"
       "\t[-D 2]\tdisable uri delete during binlog replaying (fix wrong Garbage Collector logevents)\n"

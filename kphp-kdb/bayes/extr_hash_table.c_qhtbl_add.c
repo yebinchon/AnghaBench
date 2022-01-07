@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int size; int n; TYPE_1__* e; } ;
-typedef  TYPE_2__ qhash_table ;
-typedef  int /*<<< orphan*/  pair ;
-typedef  scalar_t__ ll ;
-struct TYPE_5__ {scalar_t__ h; int /*<<< orphan*/  val; } ;
+typedef TYPE_2__ qhash_table ;
+typedef int pair ;
+typedef scalar_t__ ll ;
+struct TYPE_5__ {scalar_t__ h; int val; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  qhtbl_set_size (TYPE_2__*,int) ; 
+
+ int assert (int) ;
+ int qhtbl_set_size (TYPE_2__*,int) ;
 
 inline pair *qhtbl_add (qhash_table *ht, ll h) {
   assert (ht->size < 400000000);

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  repeat; scalar_t__ stdinarg; } ;
 
-/* Variables and functions */
- int cliSendCommand (int,char**,int /*<<< orphan*/ ) ; 
- TYPE_1__ config ; 
- char* readArgFromStdin () ; 
- char** zrealloc (char**,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int repeat; scalar_t__ stdinarg; } ;
+
+
+ int cliSendCommand (int,char**,int ) ;
+ TYPE_1__ config ;
+ char* readArgFromStdin () ;
+ char** zrealloc (char**,int) ;
 
 __attribute__((used)) static int noninteractive(int argc, char **argv) {
     int retval = 0;
@@ -26,7 +26,7 @@ __attribute__((used)) static int noninteractive(int argc, char **argv) {
         argv[argc] = readArgFromStdin();
         retval = cliSendCommand(argc+1, argv, config.repeat);
     } else {
-        /* stdin is probably a tty, can be tested with S_ISCHR(s.st_mode) */
+
         retval = cliSendCommand(argc, argv, config.repeat);
     }
     return retval;

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {TYPE_3__* k; int /*<<< orphan*/  l30; } ;
-typedef  TYPE_1__ s ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {TYPE_3__* k; int l30; } ;
+typedef TYPE_1__ s ;
 struct TYPE_7__ {unsigned char* j; int* l40; } ;
-typedef  TYPE_2__ l72 ;
-struct TYPE_8__ {int f; size_t v; unsigned long j; size_t p; int /*<<< orphan*/  o; int /*<<< orphan*/  l46; int /*<<< orphan*/  l34; } ;
-typedef  TYPE_3__ e ;
+typedef TYPE_2__ l72 ;
+struct TYPE_8__ {int f; size_t v; unsigned long j; size_t p; int o; int l46; int l34; } ;
+typedef TYPE_3__ e ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,TYPE_2__*,int) ; 
+
+ int memcpy (int *,TYPE_2__*,int) ;
 
 __attribute__((used)) static void l168(s*b){e
  *a;unsigned long j[4]={0,0,0,0},l159[2]={0,0};l72 o[4];int c;{if(!(!

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  num; } ;
-struct mp_codec_params {TYPE_3__ channels; int /*<<< orphan*/  block_align; int /*<<< orphan*/  bitrate; int /*<<< orphan*/  samplerate; int /*<<< orphan*/  disp_h; int /*<<< orphan*/  disp_w; int /*<<< orphan*/  bits_per_coded_sample; int /*<<< orphan*/  extradata; scalar_t__ extradata_size; int /*<<< orphan*/  codec_tag; int /*<<< orphan*/  codec; int /*<<< orphan*/  type; int /*<<< orphan*/  lav_codecpar; } ;
-struct TYPE_8__ {int /*<<< orphan*/  channel_layout; int /*<<< orphan*/  channels; int /*<<< orphan*/  block_align; int /*<<< orphan*/  bit_rate; int /*<<< orphan*/  sample_rate; int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  bits_per_coded_sample; scalar_t__ extradata_size; int /*<<< orphan*/  extradata; int /*<<< orphan*/  codec_tag; int /*<<< orphan*/  codec_id; int /*<<< orphan*/  codec_type; } ;
-typedef  TYPE_1__ AVCodecParameters ;
 
-/* Variables and functions */
- scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ; 
- int /*<<< orphan*/  av_mallocz (scalar_t__) ; 
- TYPE_1__* avcodec_parameters_alloc () ; 
- scalar_t__ avcodec_parameters_copy (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avcodec_parameters_free (TYPE_1__**) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  mp_chmap_is_unknown (TYPE_3__*) ; 
- int /*<<< orphan*/  mp_chmap_to_lavc (TYPE_3__*) ; 
- int /*<<< orphan*/  mp_codec_to_av_codec_id (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_to_av_stream_type (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int num; } ;
+struct mp_codec_params {TYPE_3__ channels; int block_align; int bitrate; int samplerate; int disp_h; int disp_w; int bits_per_coded_sample; int extradata; scalar_t__ extradata_size; int codec_tag; int codec; int type; int lav_codecpar; } ;
+struct TYPE_8__ {int channel_layout; int channels; int block_align; int bit_rate; int sample_rate; int height; int width; int bits_per_coded_sample; scalar_t__ extradata_size; int extradata; int codec_tag; int codec_id; int codec_type; } ;
+typedef TYPE_1__ AVCodecParameters ;
+
+
+ scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ;
+ int av_mallocz (scalar_t__) ;
+ TYPE_1__* avcodec_parameters_alloc () ;
+ scalar_t__ avcodec_parameters_copy (TYPE_1__*,int ) ;
+ int avcodec_parameters_free (TYPE_1__**) ;
+ int memcpy (int ,int ,scalar_t__) ;
+ int mp_chmap_is_unknown (TYPE_3__*) ;
+ int mp_chmap_to_lavc (TYPE_3__*) ;
+ int mp_codec_to_av_codec_id (int ) ;
+ int mp_to_av_stream_type (int ) ;
 
 AVCodecParameters *mp_codec_params_to_av(struct mp_codec_params *c)
 {
     AVCodecParameters *avp = avcodec_parameters_alloc();
     if (!avp)
-        return NULL;
+        return ((void*)0);
 
-    // If we have lavf demuxer params, they overwrite by definition any others.
+
     if (c->lav_codecpar) {
         if (avcodec_parameters_copy(avp, c->lav_codecpar) < 0)
             goto error;
@@ -55,11 +55,11 @@ AVCodecParameters *mp_codec_params_to_av(struct mp_codec_params *c)
     }
     avp->bits_per_coded_sample = c->bits_per_coded_sample;
 
-    // Video only
+
     avp->width = c->disp_w;
     avp->height = c->disp_h;
 
-    // Audio only
+
     avp->sample_rate = c->samplerate;
     avp->bit_rate = c->bitrate;
     avp->block_align = c->block_align;
@@ -70,5 +70,5 @@ AVCodecParameters *mp_codec_params_to_av(struct mp_codec_params *c)
     return avp;
 error:
     avcodec_parameters_free(&avp);
-    return NULL;
+    return ((void*)0);
 }

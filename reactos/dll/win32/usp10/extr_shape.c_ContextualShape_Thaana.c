@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_3__ {scalar_t__ fRTL; int /*<<< orphan*/  fLogicalOrder; } ;
-typedef  int /*<<< orphan*/  ScriptCache ;
-typedef  TYPE_1__ SCRIPT_ANALYSIS ;
-typedef  scalar_t__ INT ;
-typedef  int /*<<< orphan*/  HDC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  combining_lexical_Thaana ; 
- int /*<<< orphan*/  mark_invalid_combinations (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *,scalar_t__*,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WORD ;
+typedef int WCHAR ;
+struct TYPE_3__ {scalar_t__ fRTL; int fLogicalOrder; } ;
+typedef int ScriptCache ;
+typedef TYPE_1__ SCRIPT_ANALYSIS ;
+typedef scalar_t__ INT ;
+typedef int HDC ;
+
+
+ int ERR (char*) ;
+ int combining_lexical_Thaana ;
+ int mark_invalid_combinations (int ,int *,scalar_t__,int *,scalar_t__*,scalar_t__,int *,int ) ;
 
 __attribute__((used)) static void ContextualShape_Thaana(HDC hdc, ScriptCache *psc, SCRIPT_ANALYSIS *psa, WCHAR* pwcChars, INT cChars, WORD* pwOutGlyphs, INT* pcGlyphs, INT cMaxGlyphs, WORD *pwLogClust)
 {

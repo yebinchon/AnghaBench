@@ -1,0 +1,287 @@
+; ModuleID = '/home/carl/AnghaBench/linux/drivers/acpi/acpica/extr_exstore.c_acpi_ex_store_object_to_index.c'
+source_filename = "/home/carl/AnghaBench/linux/drivers/acpi/acpica/extr_exstore.c_acpi_ex_store_object_to_index.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%union.acpi_operand_object = type { %struct.TYPE_8__ }
+%struct.TYPE_8__ = type { i32, i64, %union.acpi_operand_object*, %union.acpi_operand_object**, i32 }
+%struct.acpi_walk_state = type { i32 }
+%struct.TYPE_5__ = type { i32, i32 }
+%struct.TYPE_6__ = type { i32 }
+%struct.TYPE_7__ = type { i32* }
+
+@AE_OK = common dso_local global i32 0, align 4
+@ex_store_object_to_index = common dso_local global i32 0, align 4
+@ACPI_TYPE_LOCAL_REFERENCE = common dso_local global i32 0, align 4
+@ACPI_REFCLASS_TABLE = common dso_local global i32 0, align 4
+@AE_AML_OPERAND_TYPE = common dso_local global i32 0, align 4
+@AE_INFO = common dso_local global i32 0, align 4
+@.str = private unnamed_addr constant [56 x i8] c"Source must be type [Integer/Buffer/String], found [%s]\00", align 1
+@.str.1 = private unnamed_addr constant [44 x i8] c"Target is not of type [Package/BufferField]\00", align 1
+@AE_AML_TARGET_TYPE = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%union.acpi_operand_object*, %union.acpi_operand_object*, %struct.acpi_walk_state*)* @acpi_ex_store_object_to_index to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @acpi_ex_store_object_to_index(%union.acpi_operand_object* %0, %union.acpi_operand_object* %1, %struct.acpi_walk_state* %2) #0 {
+  %4 = alloca i32, align 4
+  %5 = alloca %union.acpi_operand_object*, align 8
+  %6 = alloca %union.acpi_operand_object*, align 8
+  %7 = alloca %struct.acpi_walk_state*, align 8
+  %8 = alloca i32, align 4
+  %9 = alloca %union.acpi_operand_object*, align 8
+  %10 = alloca %union.acpi_operand_object*, align 8
+  %11 = alloca i32, align 4
+  %12 = alloca i32, align 4
+  store %union.acpi_operand_object* %0, %union.acpi_operand_object** %5, align 8
+  store %union.acpi_operand_object* %1, %union.acpi_operand_object** %6, align 8
+  store %struct.acpi_walk_state* %2, %struct.acpi_walk_state** %7, align 8
+  %13 = load i32, i32* @AE_OK, align 4
+  store i32 %13, i32* %8, align 4
+  store i32 0, i32* %11, align 4
+  %14 = load i32, i32* @ex_store_object_to_index, align 4
+  %15 = call i32 @ACPI_FUNCTION_TRACE(i32 %14)
+  %16 = load %union.acpi_operand_object*, %union.acpi_operand_object** %6, align 8
+  %17 = bitcast %union.acpi_operand_object* %16 to %struct.TYPE_8__*
+  %18 = getelementptr inbounds %struct.TYPE_8__, %struct.TYPE_8__* %17, i32 0, i32 0
+  %19 = load i32, i32* %18, align 8
+  switch i32 %19, label %152 [
+    i32 129, label %20
+    i32 131, label %98
+  ]
+
+20:                                               ; preds = %3
+  %21 = load %union.acpi_operand_object*, %union.acpi_operand_object** %6, align 8
+  %22 = bitcast %union.acpi_operand_object* %21 to %struct.TYPE_8__*
+  %23 = getelementptr inbounds %struct.TYPE_8__, %struct.TYPE_8__* %22, i32 0, i32 3
+  %24 = load %union.acpi_operand_object**, %union.acpi_operand_object*** %23, align 8
+  %25 = load %union.acpi_operand_object*, %union.acpi_operand_object** %24, align 8
+  store %union.acpi_operand_object* %25, %union.acpi_operand_object** %9, align 8
+  %26 = load %union.acpi_operand_object*, %union.acpi_operand_object** %5, align 8
+  %27 = bitcast %union.acpi_operand_object* %26 to %struct.TYPE_5__*
+  %28 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %27, i32 0, i32 0
+  %29 = load i32, i32* %28, align 8
+  %30 = load i32, i32* @ACPI_TYPE_LOCAL_REFERENCE, align 4
+  %31 = icmp eq i32 %29, %30
+  br i1 %31, label %32, label %43
+
+32:                                               ; preds = %20
+  %33 = load %union.acpi_operand_object*, %union.acpi_operand_object** %5, align 8
+  %34 = bitcast %union.acpi_operand_object* %33 to %struct.TYPE_8__*
+  %35 = getelementptr inbounds %struct.TYPE_8__, %struct.TYPE_8__* %34, i32 0, i32 4
+  %36 = load i32, i32* %35, align 8
+  %37 = load i32, i32* @ACPI_REFCLASS_TABLE, align 4
+  %38 = icmp eq i32 %36, %37
+  br i1 %38, label %39, label %43
+
+39:                                               ; preds = %32
+  %40 = load %union.acpi_operand_object*, %union.acpi_operand_object** %5, align 8
+  %41 = call i32 @acpi_ut_add_reference(%union.acpi_operand_object* %40)
+  %42 = load %union.acpi_operand_object*, %union.acpi_operand_object** %5, align 8
+  store %union.acpi_operand_object* %42, %union.acpi_operand_object** %10, align 8
+  br label %54
+
+43:                                               ; preds = %32, %20
+  %44 = load %union.acpi_operand_object*, %union.acpi_operand_object** %5, align 8
+  %45 = load %struct.acpi_walk_state*, %struct.acpi_walk_state** %7, align 8
+  %46 = call i32 @acpi_ut_copy_iobject_to_iobject(%union.acpi_operand_object* %44, %union.acpi_operand_object** %10, %struct.acpi_walk_state* %45)
+  store i32 %46, i32* %8, align 4
+  %47 = load i32, i32* %8, align 4
+  %48 = call i32 @ACPI_FAILURE(i32 %47)
+  %49 = icmp ne i32 %48, 0
+  br i1 %49, label %50, label %53
+
+50:                                               ; preds = %43
+  %51 = load i32, i32* %8, align 4
+  %52 = call i32 @return_ACPI_STATUS(i32 %51)
+  br label %53
+
+53:                                               ; preds = %50, %43
+  br label %54
+
+54:                                               ; preds = %53, %39
+  %55 = load %union.acpi_operand_object*, %union.acpi_operand_object** %9, align 8
+  %56 = icmp ne %union.acpi_operand_object* %55, null
+  br i1 %56, label %57, label %75
+
+57:                                               ; preds = %54
+  store i32 0, i32* %12, align 4
+  br label %58
+
+58:                                               ; preds = %71, %57
+  %59 = load i32, i32* %12, align 4
+  %60 = load %union.acpi_operand_object*, %union.acpi_operand_object** %6, align 8
+  %61 = bitcast %union.acpi_operand_object* %60 to %struct.TYPE_8__*
+  %62 = getelementptr inbounds %struct.TYPE_8__, %struct.TYPE_8__* %61, i32 0, i32 2
+  %63 = load %union.acpi_operand_object*, %union.acpi_operand_object** %62, align 8
+  %64 = bitcast %union.acpi_operand_object* %63 to %struct.TYPE_5__*
+  %65 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %64, i32 0, i32 1
+  %66 = load i32, i32* %65, align 4
+  %67 = icmp slt i32 %59, %66
+  br i1 %67, label %68, label %74
+
+68:                                               ; preds = %58
+  %69 = load %union.acpi_operand_object*, %union.acpi_operand_object** %9, align 8
+  %70 = call i32 @acpi_ut_remove_reference(%union.acpi_operand_object* %69)
+  br label %71
+
+71:                                               ; preds = %68
+  %72 = load i32, i32* %12, align 4
+  %73 = add nsw i32 %72, 1
+  store i32 %73, i32* %12, align 4
+  br label %58
+
+74:                                               ; preds = %58
+  br label %75
+
+75:                                               ; preds = %74, %54
+  %76 = load %union.acpi_operand_object*, %union.acpi_operand_object** %10, align 8
+  %77 = load %union.acpi_operand_object*, %union.acpi_operand_object** %6, align 8
+  %78 = bitcast %union.acpi_operand_object* %77 to %struct.TYPE_8__*
+  %79 = getelementptr inbounds %struct.TYPE_8__, %struct.TYPE_8__* %78, i32 0, i32 3
+  %80 = load %union.acpi_operand_object**, %union.acpi_operand_object*** %79, align 8
+  store %union.acpi_operand_object* %76, %union.acpi_operand_object** %80, align 8
+  store i32 1, i32* %12, align 4
+  br label %81
+
+81:                                               ; preds = %94, %75
+  %82 = load i32, i32* %12, align 4
+  %83 = load %union.acpi_operand_object*, %union.acpi_operand_object** %6, align 8
+  %84 = bitcast %union.acpi_operand_object* %83 to %struct.TYPE_8__*
+  %85 = getelementptr inbounds %struct.TYPE_8__, %struct.TYPE_8__* %84, i32 0, i32 2
+  %86 = load %union.acpi_operand_object*, %union.acpi_operand_object** %85, align 8
+  %87 = bitcast %union.acpi_operand_object* %86 to %struct.TYPE_5__*
+  %88 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %87, i32 0, i32 1
+  %89 = load i32, i32* %88, align 4
+  %90 = icmp slt i32 %82, %89
+  br i1 %90, label %91, label %97
+
+91:                                               ; preds = %81
+  %92 = load %union.acpi_operand_object*, %union.acpi_operand_object** %10, align 8
+  %93 = call i32 @acpi_ut_add_reference(%union.acpi_operand_object* %92)
+  br label %94
+
+94:                                               ; preds = %91
+  %95 = load i32, i32* %12, align 4
+  %96 = add nsw i32 %95, 1
+  store i32 %96, i32* %12, align 4
+  br label %81
+
+97:                                               ; preds = %81
+  br label %156
+
+98:                                               ; preds = %3
+  %99 = load %union.acpi_operand_object*, %union.acpi_operand_object** %6, align 8
+  %100 = bitcast %union.acpi_operand_object* %99 to %struct.TYPE_8__*
+  %101 = getelementptr inbounds %struct.TYPE_8__, %struct.TYPE_8__* %100, i32 0, i32 2
+  %102 = load %union.acpi_operand_object*, %union.acpi_operand_object** %101, align 8
+  store %union.acpi_operand_object* %102, %union.acpi_operand_object** %9, align 8
+  %103 = load %union.acpi_operand_object*, %union.acpi_operand_object** %9, align 8
+  %104 = bitcast %union.acpi_operand_object* %103 to %struct.TYPE_5__*
+  %105 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %104, i32 0, i32 0
+  %106 = load i32, i32* %105, align 8
+  %107 = icmp ne i32 %106, 132
+  br i1 %107, label %108, label %117
+
+108:                                              ; preds = %98
+  %109 = load %union.acpi_operand_object*, %union.acpi_operand_object** %9, align 8
+  %110 = bitcast %union.acpi_operand_object* %109 to %struct.TYPE_5__*
+  %111 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %110, i32 0, i32 0
+  %112 = load i32, i32* %111, align 8
+  %113 = icmp ne i32 %112, 128
+  br i1 %113, label %114, label %117
+
+114:                                              ; preds = %108
+  %115 = load i32, i32* @AE_AML_OPERAND_TYPE, align 4
+  %116 = call i32 @return_ACPI_STATUS(i32 %115)
+  br label %117
+
+117:                                              ; preds = %114, %108, %98
+  %118 = load %union.acpi_operand_object*, %union.acpi_operand_object** %5, align 8
+  %119 = bitcast %union.acpi_operand_object* %118 to %struct.TYPE_5__*
+  %120 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %119, i32 0, i32 0
+  %121 = load i32, i32* %120, align 8
+  switch i32 %121, label %134 [
+    i32 130, label %122
+    i32 132, label %127
+    i32 128, label %127
+  ]
+
+122:                                              ; preds = %117
+  %123 = load %union.acpi_operand_object*, %union.acpi_operand_object** %5, align 8
+  %124 = bitcast %union.acpi_operand_object* %123 to %struct.TYPE_6__*
+  %125 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %124, i32 0, i32 0
+  %126 = load i32, i32* %125, align 8
+  store i32 %126, i32* %11, align 4
+  br label %141
+
+127:                                              ; preds = %117, %117
+  %128 = load %union.acpi_operand_object*, %union.acpi_operand_object** %5, align 8
+  %129 = bitcast %union.acpi_operand_object* %128 to %struct.TYPE_7__*
+  %130 = getelementptr inbounds %struct.TYPE_7__, %struct.TYPE_7__* %129, i32 0, i32 0
+  %131 = load i32*, i32** %130, align 8
+  %132 = getelementptr inbounds i32, i32* %131, i64 0
+  %133 = load i32, i32* %132, align 4
+  store i32 %133, i32* %11, align 4
+  br label %141
+
+134:                                              ; preds = %117
+  %135 = load i32, i32* @AE_INFO, align 4
+  %136 = load %union.acpi_operand_object*, %union.acpi_operand_object** %5, align 8
+  %137 = call i32 @acpi_ut_get_object_type_name(%union.acpi_operand_object* %136)
+  %138 = call i32 @ACPI_ERROR(i32 %137)
+  %139 = load i32, i32* @AE_AML_OPERAND_TYPE, align 4
+  %140 = call i32 @return_ACPI_STATUS(i32 %139)
+  br label %141
+
+141:                                              ; preds = %134, %127, %122
+  %142 = load i32, i32* %11, align 4
+  %143 = load %union.acpi_operand_object*, %union.acpi_operand_object** %9, align 8
+  %144 = bitcast %union.acpi_operand_object* %143 to %struct.TYPE_7__*
+  %145 = getelementptr inbounds %struct.TYPE_7__, %struct.TYPE_7__* %144, i32 0, i32 0
+  %146 = load i32*, i32** %145, align 8
+  %147 = load %union.acpi_operand_object*, %union.acpi_operand_object** %6, align 8
+  %148 = bitcast %union.acpi_operand_object* %147 to %struct.TYPE_8__*
+  %149 = getelementptr inbounds %struct.TYPE_8__, %struct.TYPE_8__* %148, i32 0, i32 1
+  %150 = load i64, i64* %149, align 8
+  %151 = getelementptr inbounds i32, i32* %146, i64 %150
+  store i32 %142, i32* %151, align 4
+  br label %156
+
+152:                                              ; preds = %3
+  %153 = load i32, i32* @AE_INFO, align 4
+  %154 = call i32 @ACPI_ERROR(i32 ptrtoint ([44 x i8]* @.str.1 to i32))
+  %155 = load i32, i32* @AE_AML_TARGET_TYPE, align 4
+  store i32 %155, i32* %8, align 4
+  br label %156
+
+156:                                              ; preds = %152, %141, %97
+  %157 = load i32, i32* %8, align 4
+  %158 = call i32 @return_ACPI_STATUS(i32 %157)
+  %159 = load i32, i32* %4, align 4
+  ret i32 %159
+}
+
+declare dso_local i32 @ACPI_FUNCTION_TRACE(i32) #1
+
+declare dso_local i32 @acpi_ut_add_reference(%union.acpi_operand_object*) #1
+
+declare dso_local i32 @acpi_ut_copy_iobject_to_iobject(%union.acpi_operand_object*, %union.acpi_operand_object**, %struct.acpi_walk_state*) #1
+
+declare dso_local i32 @ACPI_FAILURE(i32) #1
+
+declare dso_local i32 @return_ACPI_STATUS(i32) #1
+
+declare dso_local i32 @acpi_ut_remove_reference(%union.acpi_operand_object*) #1
+
+declare dso_local i32 @ACPI_ERROR(i32) #1
+
+declare dso_local i32 @acpi_ut_get_object_type_name(%union.acpi_operand_object*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int nTree; int* aTree; TYPE_1__* pTask; TYPE_2__* aReadr; } ;
-struct TYPE_7__ {scalar_t__ pFd; int /*<<< orphan*/  nKey; int /*<<< orphan*/  aKey; } ;
-struct TYPE_6__ {scalar_t__ pUnpacked; int (* xCompare ) (TYPE_1__*,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_1__ SortSubtask ;
-typedef  TYPE_2__ PmaReader ;
-typedef  TYPE_3__ MergeEngine ;
+struct TYPE_7__ {scalar_t__ pFd; int nKey; int aKey; } ;
+struct TYPE_6__ {scalar_t__ pUnpacked; int (* xCompare ) (TYPE_1__*,int*,int ,int ,int ,int ) ;} ;
+typedef TYPE_1__ SortSubtask ;
+typedef TYPE_2__ PmaReader ;
+typedef TYPE_3__ MergeEngine ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int stub1 (TYPE_1__*,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int assert (int) ;
+ int stub1 (TYPE_1__*,int*,int ,int ,int ,int ) ;
 
 __attribute__((used)) static void vdbeMergeEngineCompare(
-  MergeEngine *pMerger,  /* Merge engine containing PmaReaders to compare */
-  int iOut               /* Store the result in pMerger->aTree[iOut] */
+  MergeEngine *pMerger,
+  int iOut
 ){
   int i1;
   int i2;
@@ -55,7 +55,7 @@ __attribute__((used)) static void vdbeMergeEngineCompare(
     SortSubtask *pTask = pMerger->pTask;
     int bCached = 0;
     int res;
-    assert( pTask->pUnpacked!=0 );  /* from vdbeSortSubtaskMain() */
+    assert( pTask->pUnpacked!=0 );
     res = pTask->xCompare(
         pTask, &bCached, p1->aKey, p1->nKey, p2->aKey, p2->nKey
     );

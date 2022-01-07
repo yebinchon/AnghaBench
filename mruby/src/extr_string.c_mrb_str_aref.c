@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int /*<<< orphan*/  mrb_int ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RSTRING_LEN (int /*<<< orphan*/ ) ; 
-#define  STR_BYTE_RANGE_CORRECTED 131 
-#define  STR_CHAR_RANGE 130 
-#define  STR_CHAR_RANGE_CORRECTED 129 
-#define  STR_OUT_OF_RANGE 128 
- int /*<<< orphan*/  mrb_nil_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_nil_value () ; 
- int /*<<< orphan*/  mrb_str_byte_subseq (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_str_dup (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_string_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_undef_p (int /*<<< orphan*/ ) ; 
- int str_convert_range (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  str_subseq (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  str_substr (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef int mrb_int ;
+
+
+ int RSTRING_LEN (int ) ;
+
+
+
+
+ int mrb_nil_p (int ) ;
+ int mrb_nil_value () ;
+ int mrb_str_byte_subseq (int *,int ,int ,int ) ;
+ int mrb_str_dup (int *,int ) ;
+ int mrb_string_p (int ) ;
+ int mrb_undef_p (int ) ;
+ int str_convert_range (int *,int ,int ,int ,int *,int *) ;
+ int str_subseq (int *,int ,int ,int ) ;
+ int str_substr (int *,int ,int ,int ) ;
 
 __attribute__((used)) static mrb_value
 mrb_str_aref(mrb_state *mrb, mrb_value str, mrb_value indx, mrb_value alen)
@@ -36,20 +36,20 @@ mrb_str_aref(mrb_state *mrb, mrb_value str, mrb_value indx, mrb_value alen)
   mrb_int beg, len;
 
   switch (str_convert_range(mrb, str, indx, alen, &beg, &len)) {
-    case STR_CHAR_RANGE_CORRECTED:
+    case 129:
       return str_subseq(mrb, str, beg, len);
-    case STR_CHAR_RANGE:
+    case 130:
       str = str_substr(mrb, str, beg, len);
       if (mrb_undef_p(alen) && !mrb_nil_p(str) && RSTRING_LEN(str) == 0) return mrb_nil_value();
       return str;
-    case STR_BYTE_RANGE_CORRECTED:
+    case 131:
       if (mrb_string_p(indx)) {
         return mrb_str_dup(mrb, indx);
       }
       else {
         return mrb_str_byte_subseq(mrb, str, beg, len);
       }
-    case STR_OUT_OF_RANGE:
+    case 128:
     default:
       return mrb_nil_value();
   }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_targ_ad_setaud {int aud; } ;
 struct advert {int flags; scalar_t__ price; int ext_users; } ;
 
-/* Variables and functions */
- int ADF_ANCIENT ; 
- int /*<<< orphan*/  LEV_TARG_AD_SETAUD ; 
- int MAX_AD_AUD ; 
- scalar_t__ ad_became_ancient (struct advert*) ; 
- scalar_t__ alloc_log_event (int /*<<< orphan*/ ,int,int) ; 
- struct advert* get_ad_f (int,int /*<<< orphan*/ ) ; 
- int set_ad_aud (struct lev_targ_ad_setaud*) ; 
+
+ int ADF_ANCIENT ;
+ int LEV_TARG_AD_SETAUD ;
+ int MAX_AD_AUD ;
+ scalar_t__ ad_became_ancient (struct advert*) ;
+ scalar_t__ alloc_log_event (int ,int,int) ;
+ struct advert* get_ad_f (int,int ) ;
+ int set_ad_aud (struct lev_targ_ad_setaud*) ;
 
 int do_set_ad_aud (int ad_id, int aud) {
   struct advert *A = get_ad_f (ad_id, 0);

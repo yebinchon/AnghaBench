@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int fgetc (int /*<<< orphan*/ ) ; 
- int portTICK_PERIOD_MS ; 
- int /*<<< orphan*/  stdin ; 
- int /*<<< orphan*/  vTaskDelay (int) ; 
+ int fgetc (int ) ;
+ int portTICK_PERIOD_MS ;
+ int stdin ;
+ int vTaskDelay (int) ;
 
 __attribute__((used)) static void get_string(char *line, size_t size)
 {

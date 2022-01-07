@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ LRESULT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HMENU ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateWindowExA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DestroyWindow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ ID_LISTBOX ; 
- int LBS_HASSTRINGS ; 
- int LBS_NOTIFY ; 
- int LBS_OWNERDRAWVARIABLE ; 
- int LBS_SORT ; 
- int /*<<< orphan*/  LB_ADDSTRING ; 
- int /*<<< orphan*/  LB_GETITEMDATA ; 
- int /*<<< orphan*/  NUM_MSG_SEQUENCES ; 
- int /*<<< orphan*/  PARENT_SEQ_INDEX ; 
- scalar_t__ SendMessageA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WC_LISTBOXA ; 
- int WS_CHILD ; 
- int /*<<< orphan*/  WS_EX_NOPARENTNOTIFY ; 
- int WS_VISIBLE ; 
- int /*<<< orphan*/  create_listbox (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_parent () ; 
- int /*<<< orphan*/  empty_seq ; 
- int /*<<< orphan*/  flush_sequences (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lb_addstring_ownerdraw_parent_seq ; 
- int /*<<< orphan*/  lb_addstring_sort_parent_seq ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,...) ; 
- int /*<<< orphan*/  ok_sequence (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sequences ; 
- scalar_t__* strings ; 
+
+
+
+typedef scalar_t__ LRESULT ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef int HMENU ;
+
+
+ int CreateWindowExA (int ,int ,int *,int,int,int,int,int,int ,int ,int ,int *) ;
+ int DestroyWindow (int ) ;
+ int FALSE ;
+ scalar_t__ ID_LISTBOX ;
+ int LBS_HASSTRINGS ;
+ int LBS_NOTIFY ;
+ int LBS_OWNERDRAWVARIABLE ;
+ int LBS_SORT ;
+ int LB_ADDSTRING ;
+ int LB_GETITEMDATA ;
+ int NUM_MSG_SEQUENCES ;
+ int PARENT_SEQ_INDEX ;
+ scalar_t__ SendMessageA (int ,int ,int ,int ) ;
+ int WC_LISTBOXA ;
+ int WS_CHILD ;
+ int WS_EX_NOPARENTNOTIFY ;
+ int WS_VISIBLE ;
+ int create_listbox (int,int ) ;
+ int create_parent () ;
+ int empty_seq ;
+ int flush_sequences (int ,int ) ;
+ int lb_addstring_ownerdraw_parent_seq ;
+ int lb_addstring_sort_parent_seq ;
+ int ok (int,char*,scalar_t__,...) ;
+ int ok_sequence (int ,int ,int ,char*,int ) ;
+ int sequences ;
+ scalar_t__* strings ;
 
 __attribute__((used)) static void test_WM_MEASUREITEM(void)
 {
@@ -62,11 +62,11 @@ __attribute__((used)) static void test_WM_MEASUREITEM(void)
     data = SendMessageA(listbox, LB_GETITEMDATA, 0, 0);
     ok(!data, "data = %08lx\n", data);
 
-    /* LBS_HASSTRINGS */
+
     parent = create_parent();
-    listbox = CreateWindowExA(WS_EX_NOPARENTNOTIFY, WC_LISTBOXA, NULL,
+    listbox = CreateWindowExA(WS_EX_NOPARENTNOTIFY, WC_LISTBOXA, ((void*)0),
                               WS_CHILD | LBS_NOTIFY | LBS_OWNERDRAWVARIABLE | LBS_HASSTRINGS | WS_VISIBLE,
-                              10, 10, 80, 80, parent, (HMENU)ID_LISTBOX, 0, NULL);
+                              10, 10, 80, 80, parent, (HMENU)ID_LISTBOX, 0, ((void*)0));
 
     flush_sequences(sequences, NUM_MSG_SEQUENCES);
 
@@ -81,10 +81,10 @@ __attribute__((used)) static void test_WM_MEASUREITEM(void)
         "LB_ADDSTRING (LBS_HASSTRINGS, ownerdraw)", FALSE);
     DestroyWindow(listbox);
 
-    /* LBS_SORT, no LBS_HASSTRINGS */
-    listbox = CreateWindowExA(WS_EX_NOPARENTNOTIFY, WC_LISTBOXA, NULL,
+
+    listbox = CreateWindowExA(WS_EX_NOPARENTNOTIFY, WC_LISTBOXA, ((void*)0),
                               WS_CHILD | LBS_NOTIFY | LBS_OWNERDRAWVARIABLE | LBS_SORT | WS_VISIBLE,
-                              10, 10, 80, 80, parent, (HMENU)ID_LISTBOX, 0, NULL);
+                              10, 10, 80, 80, parent, (HMENU)ID_LISTBOX, 0, ((void*)0));
 
     flush_sequences(sequences, NUM_MSG_SEQUENCES);
 
@@ -98,10 +98,10 @@ __attribute__((used)) static void test_WM_MEASUREITEM(void)
     ok_sequence(sequences, PARENT_SEQ_INDEX, lb_addstring_sort_parent_seq, "LB_ADDSTRING (LBS_SORT)", FALSE);
     DestroyWindow(listbox);
 
-    /* LBS_HASSTRINGS */
-    listbox = CreateWindowExA(WS_EX_NOPARENTNOTIFY, WC_LISTBOXA, NULL,
+
+    listbox = CreateWindowExA(WS_EX_NOPARENTNOTIFY, WC_LISTBOXA, ((void*)0),
                               WS_CHILD | LBS_NOTIFY | LBS_HASSTRINGS | WS_VISIBLE,
-                              10, 10, 80, 80, parent, (HMENU)ID_LISTBOX, 0, NULL);
+                              10, 10, 80, 80, parent, (HMENU)ID_LISTBOX, 0, ((void*)0));
 
     flush_sequences(sequences, NUM_MSG_SEQUENCES);
 
@@ -115,10 +115,10 @@ __attribute__((used)) static void test_WM_MEASUREITEM(void)
     ok_sequence(sequences, PARENT_SEQ_INDEX, empty_seq, "LB_ADDSTRING (LBS_HASSTRINGS)", FALSE);
     DestroyWindow(listbox);
 
-    /* LBS_HASSTRINGS, LBS_SORT */
-    listbox = CreateWindowExA(WS_EX_NOPARENTNOTIFY, WC_LISTBOXA, NULL,
+
+    listbox = CreateWindowExA(WS_EX_NOPARENTNOTIFY, WC_LISTBOXA, ((void*)0),
                               WS_CHILD | LBS_NOTIFY | LBS_HASSTRINGS | LBS_SORT | WS_VISIBLE,
-                              10, 10, 80, 80, parent, (HMENU)ID_LISTBOX, 0, NULL);
+                              10, 10, 80, 80, parent, (HMENU)ID_LISTBOX, 0, ((void*)0));
 
     flush_sequences(sequences, NUM_MSG_SEQUENCES);
 

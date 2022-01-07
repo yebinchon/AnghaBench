@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_7__ ;
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  scalar_t__ int32_t ;
-struct TYPE_18__ {scalar_t__ sid; char sversion; scalar_t__ vgid; char numOfColumns; char numOfTags; char rowSize; scalar_t__ meterType; scalar_t__ index; TYPE_1__* vpeerDesc; int /*<<< orphan*/  uid; } ;
+
+
+typedef struct TYPE_18__ TYPE_7__ ;
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef char uint8_t ;
+typedef scalar_t__ int32_t ;
+struct TYPE_18__ {scalar_t__ sid; char sversion; scalar_t__ vgid; char numOfColumns; char numOfTags; char rowSize; scalar_t__ meterType; scalar_t__ index; TYPE_1__* vpeerDesc; int uid; } ;
 struct TYPE_17__ {scalar_t__ numOfMeters; } ;
-struct TYPE_16__ {int /*<<< orphan*/  meterId; TYPE_7__ meta; } ;
+struct TYPE_16__ {int meterId; TYPE_7__ meta; } ;
 struct TYPE_15__ {char bytes; char colId; } ;
 struct TYPE_13__ {char* pRsp; int code; scalar_t__ numOfTotal; } ;
 struct TYPE_14__ {TYPE_2__ res; } ;
 struct TYPE_12__ {scalar_t__ vnode; } ;
-typedef  TYPE_3__ SSqlObj ;
-typedef  TYPE_4__ SSchema ;
-typedef  TYPE_5__ SMultiMeterMeta ;
-typedef  TYPE_6__ SMultiMeterInfoMsg ;
-typedef  TYPE_7__ SMeterMeta ;
+typedef TYPE_3__ SSqlObj ;
+typedef TYPE_4__ SSchema ;
+typedef TYPE_5__ SMultiMeterMeta ;
+typedef TYPE_6__ SMultiMeterInfoMsg ;
+typedef TYPE_7__ SMeterMeta ;
 
-/* Variables and functions */
- int TSDB_CODE_INVALID_IE ; 
- void* TSDB_CODE_INVALID_VALUE ; 
- int TSDB_CODE_OTHERS ; 
- int TSDB_CODE_SUCCESS ; 
- char TSDB_IE_TYPE_META ; 
- char TSDB_MAX_COLUMNS ; 
- char TSDB_MAX_TAGS ; 
- scalar_t__ TSDB_METER_MTABLE ; 
- int TSDB_VNODES_SUPPORT ; 
- int /*<<< orphan*/  htobe64 (int /*<<< orphan*/ ) ; 
- void* htonl (scalar_t__) ; 
- void* htons (char) ; 
- int /*<<< orphan*/  taosAddDataIntoCache (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,scalar_t__,int /*<<< orphan*/ ) ; 
- TYPE_4__* tsGetTagSchema (TYPE_7__*) ; 
- int /*<<< orphan*/  tsMeterMetaKeepTimer ; 
- int /*<<< orphan*/  tscCacheHandle ; 
- int /*<<< orphan*/  tscError (char*,char,...) ; 
- int /*<<< orphan*/  tscTrace (char*,TYPE_3__*,scalar_t__) ; 
+
+ int TSDB_CODE_INVALID_IE ;
+ void* TSDB_CODE_INVALID_VALUE ;
+ int TSDB_CODE_OTHERS ;
+ int TSDB_CODE_SUCCESS ;
+ char TSDB_IE_TYPE_META ;
+ char TSDB_MAX_COLUMNS ;
+ char TSDB_MAX_TAGS ;
+ scalar_t__ TSDB_METER_MTABLE ;
+ int TSDB_VNODES_SUPPORT ;
+ int htobe64 (int ) ;
+ void* htonl (scalar_t__) ;
+ void* htons (char) ;
+ int taosAddDataIntoCache (int ,int ,char*,scalar_t__,int ) ;
+ TYPE_4__* tsGetTagSchema (TYPE_7__*) ;
+ int tsMeterMetaKeepTimer ;
+ int tscCacheHandle ;
+ int tscError (char*,char,...) ;
+ int tscTrace (char*,TYPE_3__*,scalar_t__) ;
 
 int tscProcessMultiMeterMetaRsp(SSqlObj *pSql) {
   SSchema *pSchema;
-  uint8_t  ieType;
-  int32_t  totalNum;
-  int32_t  i;
+  uint8_t ieType;
+  int32_t totalNum;
+  int32_t i;
 
   char *rsp = pSql->res.pRsp;
 
@@ -76,7 +76,7 @@ int tscProcessMultiMeterMetaRsp(SSqlObj *pSql) {
 
   for (i = 0; i < totalNum; i++) {
     SMultiMeterMeta *pMultiMeta = (SMultiMeterMeta *)rsp;
-    SMeterMeta *     pMeta = &pMultiMeta->meta;
+    SMeterMeta * pMeta = &pMultiMeta->meta;
 
     pMeta->sid = htonl(pMeta->sid);
     pMeta->sversion = htons(pMeta->sversion);
@@ -126,7 +126,7 @@ int tscProcessMultiMeterMetaRsp(SSqlObj *pSql) {
       pSchema->bytes = htons(pSchema->bytes);
       pSchema->colId = htons(pSchema->colId);
 
-      // ignore the tags length
+
       if (j < pMeta->numOfColumns) {
         pMeta->rowSize += pSchema->bytes;
       }
@@ -135,7 +135,7 @@ int tscProcessMultiMeterMetaRsp(SSqlObj *pSql) {
 
     rsp += numOfTotalCols * sizeof(SSchema);
 
-    int32_t  tagLen = 0;
+    int32_t tagLen = 0;
     SSchema *pTagsSchema = tsGetTagSchema(pMeta);
 
     if (pMeta->meterType == TSDB_METER_MTABLE) {
@@ -145,7 +145,7 @@ int tscProcessMultiMeterMetaRsp(SSqlObj *pSql) {
     }
 
     rsp += tagLen;
-    int32_t size = (int32_t)(rsp - ((char *)pMeta));  // Consistent with SMeterMeta in cache
+    int32_t size = (int32_t)(rsp - ((char *)pMeta));
 
     pMeta->index = 0;
     (void)taosAddDataIntoCache(tscCacheHandle, pMultiMeta->meterId, (char *)pMeta, size, tsMeterMetaKeepTimer);

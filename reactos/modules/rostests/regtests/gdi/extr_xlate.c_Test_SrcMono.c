@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int WORD ;
-typedef  int ULONG ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int WORD ;
+typedef int ULONG ;
 struct TYPE_2__ {int biSize; int biWidth; int biHeight; int biPlanes; int biBitCount; int biXPelsPerMeter; int biYPelsPerMeter; int biClrUsed; int biClrImportant; void* biCompression; scalar_t__ biSizeImage; } ;
-typedef  scalar_t__ PVOID ;
-typedef  int /*<<< orphan*/  LPBITMAPINFO ;
-typedef  scalar_t__ HBITMAP ;
-typedef  TYPE_1__ BITMAPINFOHEADER ;
+typedef scalar_t__ PVOID ;
+typedef int LPBITMAPINFO ;
+typedef scalar_t__ HBITMAP ;
+typedef TYPE_1__ BITMAPINFOHEADER ;
 
-/* Variables and functions */
- void* BI_BITFIELDS ; 
- void* BI_RGB ; 
- int /*<<< orphan*/  BMF_16BPP_555 ; 
- int /*<<< orphan*/  BMF_16BPP_565 ; 
- int /*<<< orphan*/  BMF_1BPP ; 
- int /*<<< orphan*/  BMF_32BPP_BGR ; 
- scalar_t__ CreateDIBSection (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DIB_RGB_COLORS ; 
- int /*<<< orphan*/  DeleteObject (scalar_t__) ; 
- int GetPixel (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  SetPixel (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  Test_SrcMono1 (int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- scalar_t__ hbmp1bpp_a ; 
- scalar_t__ hbmp1bpp_b ; 
- scalar_t__ hbmpCompat ; 
- int /*<<< orphan*/  hdcDst ; 
- int /*<<< orphan*/  hdcSrc ; 
- int /*<<< orphan*/  iDcFormat ; 
- int iXlateFromRGB (int /*<<< orphan*/ ,int) ; 
- int iXlateToRGB (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (scalar_t__,int,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+ void* BI_BITFIELDS ;
+ void* BI_RGB ;
+ int BMF_16BPP_555 ;
+ int BMF_16BPP_565 ;
+ int BMF_1BPP ;
+ int BMF_32BPP_BGR ;
+ scalar_t__ CreateDIBSection (int ,int ,int ,scalar_t__*,int *,int ) ;
+ int DIB_RGB_COLORS ;
+ int DeleteObject (scalar_t__) ;
+ int GetPixel (int ,int ,int ) ;
+ int SelectObject (int ,scalar_t__) ;
+ int SetPixel (int ,int ,int ,int) ;
+ int Test_SrcMono1 (int ,scalar_t__,scalar_t__) ;
+ scalar_t__ hbmp1bpp_a ;
+ scalar_t__ hbmp1bpp_b ;
+ scalar_t__ hbmpCompat ;
+ int hdcDst ;
+ int hdcSrc ;
+ int iDcFormat ;
+ int iXlateFromRGB (int ,int) ;
+ int iXlateToRGB (int ,int) ;
+ int memset (scalar_t__,int,int) ;
+ int ok (int,char*,...) ;
 
 void
 Test_SrcMono()
@@ -72,7 +72,7 @@ Test_SrcMono()
     bmi.bmiHeader.biYPelsPerMeter = 1;
     bmi.bmiHeader.biClrUsed = 0;
     bmi.bmiHeader.biClrImportant = 0;
-    hbmp = CreateDIBSection(hdcDst, (LPBITMAPINFO)&bmi, DIB_RGB_COLORS, &pvBits, NULL, 0);
+    hbmp = CreateDIBSection(hdcDst, (LPBITMAPINFO)&bmi, DIB_RGB_COLORS, &pvBits, ((void*)0), 0);
     ok(hbmp != 0, "CreateDIBSection failed\n");
     memset(pvBits, 0x55555555, 8 * 8 * 2);
 
@@ -89,17 +89,17 @@ Test_SrcMono()
     ok(c == expected, "expected %lx, got %lx\n", expected, c);
 
     Test_SrcMono1(BMF_16BPP_555, hbmp, pvBits);
- 
+
     DeleteObject(hbmp);
 
-    /* Create a 565 DIB section */
+
     bmi.bmiHeader.biCompression = BI_BITFIELDS;
     bmi.bmiHeader.biClrUsed = 3;
     bmi.bmiHeader.biClrImportant = 3;
     bmi.bmiColors[0] = 0xF800;
     bmi.bmiColors[1] = 0x7E0;
     bmi.bmiColors[2] = 0x1F;
-    hbmp = CreateDIBSection(hdcDst, (LPBITMAPINFO)&bmi, DIB_RGB_COLORS, &pvBits, NULL, 0);
+    hbmp = CreateDIBSection(hdcDst, (LPBITMAPINFO)&bmi, DIB_RGB_COLORS, &pvBits, ((void*)0), 0);
     ok(hbmp != 0, "CreateDIBSection failed\n");
     SelectObject(hdcDst, hbmp);
 
@@ -107,12 +107,12 @@ Test_SrcMono()
 
     DeleteObject(hbmp);
 
-    /* Create a 32 bpp DIB section */
+
     bmi.bmiHeader.biBitCount = 32;
     bmi.bmiHeader.biCompression = BI_RGB;
     bmi.bmiHeader.biClrUsed = 0;
     bmi.bmiHeader.biClrImportant = 0;
-    hbmp = CreateDIBSection(hdcDst, (LPBITMAPINFO)&bmi, DIB_RGB_COLORS, &pvBits, NULL, 0);
+    hbmp = CreateDIBSection(hdcDst, (LPBITMAPINFO)&bmi, DIB_RGB_COLORS, &pvBits, ((void*)0), 0);
     ok(hbmp != 0, "CreateDIBSection failed\n");
     SelectObject(hdcDst, hbmp);
 

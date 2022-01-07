@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int next_merged; struct TYPE_4__* next; } ;
-typedef  TYPE_1__ mbedtls_x509_name ;
+typedef TYPE_1__ mbedtls_x509_name ;
 
-/* Variables and functions */
- int MBEDTLS_ASN1_CONSTRUCTED ; 
- int MBEDTLS_ASN1_SET ; 
- int MBEDTLS_ERR_X509_ALLOC_FAILED ; 
- int MBEDTLS_ERR_X509_INVALID_NAME ; 
- int mbedtls_asn1_get_tag (unsigned char**,unsigned char const*,size_t*,int) ; 
- void* mbedtls_calloc (int,int) ; 
- int x509_get_attr_type_value (unsigned char**,unsigned char const*,TYPE_1__*) ; 
+
+ int MBEDTLS_ASN1_CONSTRUCTED ;
+ int MBEDTLS_ASN1_SET ;
+ int MBEDTLS_ERR_X509_ALLOC_FAILED ;
+ int MBEDTLS_ERR_X509_INVALID_NAME ;
+ int mbedtls_asn1_get_tag (unsigned char**,unsigned char const*,size_t*,int) ;
+ void* mbedtls_calloc (int,int) ;
+ int x509_get_attr_type_value (unsigned char**,unsigned char const*,TYPE_1__*) ;
 
 int mbedtls_x509_get_name( unsigned char **p, const unsigned char *end,
                    mbedtls_x509_name *cur )
@@ -30,17 +30,17 @@ int mbedtls_x509_get_name( unsigned char **p, const unsigned char *end,
     size_t set_len;
     const unsigned char *end_set;
 
-    /* don't use recursion, we'd risk stack overflow if not optimized */
+
     while( 1 )
     {
-        /*
-         * parse SET
-         */
+
+
+
         if( ( ret = mbedtls_asn1_get_tag( p, end, &set_len,
                 MBEDTLS_ASN1_CONSTRUCTED | MBEDTLS_ASN1_SET ) ) != 0 )
             return( MBEDTLS_ERR_X509_INVALID_NAME + ret );
 
-        end_set  = *p + set_len;
+        end_set = *p + set_len;
 
         while( 1 )
         {
@@ -50,26 +50,26 @@ int mbedtls_x509_get_name( unsigned char **p, const unsigned char *end,
             if( *p == end_set )
                 break;
 
-            /* Mark this item as being no the only one in a set */
+
             cur->next_merged = 1;
 
             cur->next = mbedtls_calloc( 1, sizeof( mbedtls_x509_name ) );
 
-            if( cur->next == NULL )
+            if( cur->next == ((void*)0) )
                 return( MBEDTLS_ERR_X509_ALLOC_FAILED );
 
             cur = cur->next;
         }
 
-        /*
-         * continue until end of SEQUENCE is reached
-         */
+
+
+
         if( *p == end )
             return( 0 );
 
         cur->next = mbedtls_calloc( 1, sizeof( mbedtls_x509_name ) );
 
-        if( cur->next == NULL )
+        if( cur->next == ((void*)0) )
             return( MBEDTLS_ERR_X509_ALLOC_FAILED );
 
         cur = cur->next;

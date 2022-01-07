@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * PVOID ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- scalar_t__ ERROR_SERVICE_EXISTS ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  WlanCloseHandle (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ WlanOpenHandle (int,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+
+
+typedef int * PVOID ;
+typedef int HANDLE ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ scalar_t__ ERROR_SERVICE_EXISTS ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ GetLastError () ;
+ int WlanCloseHandle (int ,int *) ;
+ scalar_t__ WlanOpenHandle (int,int *,scalar_t__*,int *) ;
+ int ok (int,char*,scalar_t__) ;
+ int skip (char*) ;
 
 __attribute__((used)) static void WlanOpenHandle_test(void)
 {
@@ -30,25 +30,25 @@ __attribute__((used)) static void WlanOpenHandle_test(void)
     DWORD dwNegotiatedVersion;
     HANDLE hClientHandle;
 
-    /* correct call to determine if WlanSvc is running */
-    ret = WlanOpenHandle(1, NULL, &dwNegotiatedVersion, &hClientHandle);
+
+    ret = WlanOpenHandle(1, ((void*)0), &dwNegotiatedVersion, &hClientHandle);
     if (ret == ERROR_SERVICE_EXISTS)
     {
         skip("Skipping wlanapi tests, WlanSvc is not running\n");
         return;
     }
     ok(ret == ERROR_SUCCESS, "WlanOpenHandle failed, error %ld\n", ret);
-    WlanCloseHandle(hClientHandle, NULL);
+    WlanCloseHandle(hClientHandle, ((void*)0));
 
-    /* invalid pdwNegotiatedVersion */
-    ret = WlanOpenHandle(1, NULL, NULL, &hClientHandle);
+
+    ret = WlanOpenHandle(1, ((void*)0), ((void*)0), &hClientHandle);
     ok(ret == ERROR_INVALID_PARAMETER, "expected ERROR_INVALID_PARAMETER, got %ld\n", GetLastError());
 
-    /* invalid hClientHandle */
-    ret = WlanOpenHandle(1, NULL, &dwNegotiatedVersion, NULL);
+
+    ret = WlanOpenHandle(1, ((void*)0), &dwNegotiatedVersion, ((void*)0));
     ok(ret == ERROR_INVALID_PARAMETER, "expected ERROR_INVALID_PARAMETER, got %ld\n", GetLastError());
 
-    /* invalid pReserved */
+
     ret = WlanOpenHandle(1, (PVOID) 1, &dwNegotiatedVersion, &hClientHandle);
     ok(ret == ERROR_INVALID_PARAMETER, "expected ERROR_INVALID_PARAMETER, got %ld\n", GetLastError());
 }

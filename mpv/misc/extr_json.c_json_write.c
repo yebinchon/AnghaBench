@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mpv_node {int dummy; } ;
 
-/* Variables and functions */
- int json_append_str (char**,struct mpv_node*,int) ; 
+
+ int json_append_str (char**,struct mpv_node*,int) ;
 
 int json_write(char **dst, struct mpv_node *src)
 {

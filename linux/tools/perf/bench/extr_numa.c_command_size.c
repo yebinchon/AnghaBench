@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int MAX_ARGS ; 
+ int BUG_ON (int) ;
+ int MAX_ARGS ;
 
 __attribute__((used)) static int command_size(const char **argv)
 {
-	int size = 0;
+ int size = 0;
 
-	while (*argv) {
-		size++;
-		argv++;
-	}
+ while (*argv) {
+  size++;
+  argv++;
+ }
 
-	BUG_ON(size >= MAX_ARGS);
+ BUG_ON(size >= MAX_ARGS);
 
-	return size;
+ return size;
 }

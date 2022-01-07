@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_5__ ;
-typedef  struct TYPE_24__   TYPE_4__ ;
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_25__ TYPE_5__ ;
+typedef struct TYPE_24__ TYPE_4__ ;
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+
+
 struct TYPE_21__ {int refcount; scalar_t__ encoding; void* ptr; } ;
-typedef  TYPE_1__ robj ;
-struct TYPE_22__ {TYPE_3__* db; int /*<<< orphan*/ * argv; } ;
-typedef  TYPE_2__ client ;
-struct TYPE_25__ {int /*<<< orphan*/  dirty; } ;
+typedef TYPE_1__ robj ;
+struct TYPE_22__ {TYPE_3__* db; int * argv; } ;
+typedef TYPE_2__ client ;
+struct TYPE_25__ {int dirty; } ;
 struct TYPE_24__ {TYPE_1__* crlf; TYPE_1__* colon; } ;
-struct TYPE_23__ {int /*<<< orphan*/  id; } ;
+struct TYPE_23__ {int id; } ;
 
-/* Variables and functions */
- scalar_t__ C_OK ; 
- long long LLONG_MAX ; 
- long long LLONG_MIN ; 
- long long LONG_MAX ; 
- long long LONG_MIN ; 
- int /*<<< orphan*/  NOTIFY_STRING ; 
- scalar_t__ OBJ_ENCODING_INT ; 
- long long OBJ_SHARED_INTEGERS ; 
- int /*<<< orphan*/  OBJ_STRING ; 
- int /*<<< orphan*/  addReply (TYPE_2__*,TYPE_1__*) ; 
- int /*<<< orphan*/  addReplyError (TYPE_2__*,char*) ; 
- scalar_t__ checkType (TYPE_2__*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_1__* createStringObjectFromLongLongForValue (long long) ; 
- int /*<<< orphan*/  dbAdd (TYPE_3__*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  dbOverwrite (TYPE_3__*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ getLongLongFromObjectOrReply (TYPE_2__*,TYPE_1__*,long long*,int /*<<< orphan*/ *) ; 
- TYPE_1__* lookupKeyWrite (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  notifyKeyspaceEvent (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_5__ server ; 
- TYPE_4__ shared ; 
- int /*<<< orphan*/  signalModifiedKey (TYPE_3__*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ C_OK ;
+ long long LLONG_MAX ;
+ long long LLONG_MIN ;
+ long long LONG_MAX ;
+ long long LONG_MIN ;
+ int NOTIFY_STRING ;
+ scalar_t__ OBJ_ENCODING_INT ;
+ long long OBJ_SHARED_INTEGERS ;
+ int OBJ_STRING ;
+ int addReply (TYPE_2__*,TYPE_1__*) ;
+ int addReplyError (TYPE_2__*,char*) ;
+ scalar_t__ checkType (TYPE_2__*,TYPE_1__*,int ) ;
+ TYPE_1__* createStringObjectFromLongLongForValue (long long) ;
+ int dbAdd (TYPE_3__*,int ,TYPE_1__*) ;
+ int dbOverwrite (TYPE_3__*,int ,TYPE_1__*) ;
+ scalar_t__ getLongLongFromObjectOrReply (TYPE_2__*,TYPE_1__*,long long*,int *) ;
+ TYPE_1__* lookupKeyWrite (TYPE_3__*,int ) ;
+ int notifyKeyspaceEvent (int ,char*,int ,int ) ;
+ TYPE_5__ server ;
+ TYPE_4__ shared ;
+ int signalModifiedKey (TYPE_3__*,int ) ;
 
 void incrDecrCommand(client *c, long long incr) {
     long long value, oldvalue;
     robj *o, *new;
 
     o = lookupKeyWrite(c->db,c->argv[1]);
-    if (o != NULL && checkType(c,o,OBJ_STRING)) return;
-    if (getLongLongFromObjectOrReply(c,o,&value,NULL) != C_OK) return;
+    if (o != ((void*)0) && checkType(c,o,OBJ_STRING)) return;
+    if (getLongLongFromObjectOrReply(c,o,&value,((void*)0)) != C_OK) return;
 
     oldvalue = value;
     if ((incr < 0 && oldvalue < 0 && incr < (LLONG_MIN-oldvalue)) ||

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int nb_streams; TYPE_3__** streams; } ;
 struct TYPE_8__ {TYPE_1__* codecpar; } ;
 struct TYPE_7__ {TYPE_5__* fc; } ;
 struct TYPE_6__ {int codec_id; } ;
-typedef  TYPE_2__ MOVContext ;
-typedef  int /*<<< orphan*/  MOVAtom ;
-typedef  TYPE_3__ AVStream ;
-typedef  int /*<<< orphan*/  AVIOContext ;
+typedef TYPE_2__ MOVContext ;
+typedef int MOVAtom ;
+typedef TYPE_3__ AVStream ;
+typedef int AVIOContext ;
 
-/* Variables and functions */
-#define  AV_CODEC_ID_PCM_F32BE 131 
- int AV_CODEC_ID_PCM_F32LE ; 
-#define  AV_CODEC_ID_PCM_F64BE 130 
- int AV_CODEC_ID_PCM_F64LE ; 
-#define  AV_CODEC_ID_PCM_S24BE 129 
- int AV_CODEC_ID_PCM_S24LE ; 
-#define  AV_CODEC_ID_PCM_S32BE 128 
- int AV_CODEC_ID_PCM_S32LE ; 
- int /*<<< orphan*/  AV_LOG_TRACE ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*,int) ; 
- int avio_rb16 (int /*<<< orphan*/ *) ; 
+
+
+ int AV_CODEC_ID_PCM_F32LE ;
+
+ int AV_CODEC_ID_PCM_F64LE ;
+
+ int AV_CODEC_ID_PCM_S24LE ;
+
+ int AV_CODEC_ID_PCM_S32LE ;
+ int AV_LOG_TRACE ;
+ int av_log (TYPE_5__*,int ,char*,int) ;
+ int avio_rb16 (int *) ;
 
 __attribute__((used)) static int mov_read_enda(MOVContext *c, AVIOContext *pb, MOVAtom atom)
 {
@@ -49,16 +49,16 @@ __attribute__((used)) static int mov_read_enda(MOVContext *c, AVIOContext *pb, M
     av_log(c->fc, AV_LOG_TRACE, "enda %d\n", little_endian);
     if (little_endian == 1) {
         switch (st->codecpar->codec_id) {
-        case AV_CODEC_ID_PCM_S24BE:
+        case 129:
             st->codecpar->codec_id = AV_CODEC_ID_PCM_S24LE;
             break;
-        case AV_CODEC_ID_PCM_S32BE:
+        case 128:
             st->codecpar->codec_id = AV_CODEC_ID_PCM_S32LE;
             break;
-        case AV_CODEC_ID_PCM_F32BE:
+        case 131:
             st->codecpar->codec_id = AV_CODEC_ID_PCM_F32LE;
             break;
-        case AV_CODEC_ID_PCM_F64BE:
+        case 130:
             st->codecpar->codec_id = AV_CODEC_ID_PCM_F64LE;
             break;
         default:

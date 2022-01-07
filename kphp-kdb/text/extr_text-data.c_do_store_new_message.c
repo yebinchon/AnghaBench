@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lev_add_message {int type; long long legacy_id; int date; int ua_hash; char* text; int* extra; scalar_t__ text_len; int /*<<< orphan*/  user_id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FITS_AN_INT (long long) ; 
- int LEV_TX_ADD_MESSAGE_EXT ; 
- int LEV_TX_ADD_MESSAGE_EXT_LL ; 
- int LEV_TX_ADD_MESSAGE_LF ; 
- int LEV_TX_ADD_MESSAGE_MF ; 
- int MAX_EXTRA_MASK ; 
- unsigned int MAX_TEXT_LEN ; 
- struct lev_add_message* alloc_log_event (int,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ conv_uid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  copy_adjust_text (char*,char*,scalar_t__) ; 
- int extra_mask_intcount (int) ; 
- int /*<<< orphan*/  memcpy (long long*,long long*,int) ; 
- int store_new_message (struct lev_add_message*,int) ; 
- int write_extra_mask ; 
+
+
+
+struct lev_add_message {int type; long long legacy_id; int date; int ua_hash; char* text; int* extra; scalar_t__ text_len; int user_id; } ;
+
+
+ int FITS_AN_INT (long long) ;
+ int LEV_TX_ADD_MESSAGE_EXT ;
+ int LEV_TX_ADD_MESSAGE_EXT_LL ;
+ int LEV_TX_ADD_MESSAGE_LF ;
+ int LEV_TX_ADD_MESSAGE_MF ;
+ int MAX_EXTRA_MASK ;
+ unsigned int MAX_TEXT_LEN ;
+ struct lev_add_message* alloc_log_event (int,scalar_t__,int ) ;
+ int assert (int) ;
+ scalar_t__ conv_uid (int ) ;
+ int copy_adjust_text (char*,char*,scalar_t__) ;
+ int extra_mask_intcount (int) ;
+ int memcpy (long long*,long long*,int) ;
+ int store_new_message (struct lev_add_message*,int) ;
+ int write_extra_mask ;
 
 int do_store_new_message (struct lev_add_message *M, int random_tag, char *text, long long legacy_id) {
   struct lev_add_message *E;
   char *ptr;
   int i;
-  //user_t *U;
+
 
   if (conv_uid (M->user_id) < 0 || (unsigned) M->text_len >= MAX_TEXT_LEN) {
     return -1;
   }
 
-  //U = get_user (M->user_id);
+
 
   int fmask = M->type >> 16, wmask = fmask & write_extra_mask;
 

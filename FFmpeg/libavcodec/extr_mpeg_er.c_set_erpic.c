@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  field_picture; int /*<<< orphan*/  mb_type; int /*<<< orphan*/ * ref_index; int /*<<< orphan*/ * motion_val; int /*<<< orphan*/ * tf; int /*<<< orphan*/ * f; } ;
-struct TYPE_6__ {int /*<<< orphan*/  field_picture; int /*<<< orphan*/  mb_type; int /*<<< orphan*/ * ref_index; int /*<<< orphan*/ * motion_val; int /*<<< orphan*/  tf; int /*<<< orphan*/ * f; } ;
-typedef  TYPE_1__ Picture ;
-typedef  TYPE_2__ ERPicture ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int field_picture; int mb_type; int * ref_index; int * motion_val; int * tf; int * f; } ;
+struct TYPE_6__ {int field_picture; int mb_type; int * ref_index; int * motion_val; int tf; int * f; } ;
+typedef TYPE_1__ Picture ;
+typedef TYPE_2__ ERPicture ;
+
+
+ int memset (TYPE_2__*,int ,int) ;
 
 __attribute__((used)) static void set_erpic(ERPicture *dst, Picture *src)
 {
@@ -26,8 +26,8 @@ __attribute__((used)) static void set_erpic(ERPicture *dst, Picture *src)
 
     memset(dst, 0, sizeof(*dst));
     if (!src) {
-        dst->f  = NULL;
-        dst->tf = NULL;
+        dst->f = ((void*)0);
+        dst->tf = ((void*)0);
         return;
     }
 

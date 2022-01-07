@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct jv_parser {int eof; char* curr_buf; int bom_strip_position; int flags; scalar_t__ st; scalar_t__ curr_buf_pos; scalar_t__ curr_buf_length; scalar_t__ stacklen; scalar_t__ stackpos; scalar_t__ column; int /*<<< orphan*/  line; int /*<<< orphan*/  last_ch_was_ws; int /*<<< orphan*/  next; int /*<<< orphan*/  path; scalar_t__ curr_buf_is_partial; } ;
-typedef  scalar_t__ presult ;
-typedef  int /*<<< orphan*/  jv ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JV_ARRAY (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ JV_KIND_NUMBER ; 
- scalar_t__ JV_PARSER_NORMAL ; 
- scalar_t__ JV_PARSER_WAITING_FOR_RS ; 
- int JV_PARSE_SEQ ; 
- int JV_PARSE_STREAMING ; 
- scalar_t__ OK ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ check_literal (struct jv_parser*) ; 
- int /*<<< orphan*/  jv_copy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_free (int /*<<< orphan*/ ) ; 
- scalar_t__ jv_get_kind (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_invalid () ; 
- int /*<<< orphan*/  jv_invalid_with_msg (int /*<<< orphan*/ ) ; 
- scalar_t__ jv_is_valid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_string (char*) ; 
- int /*<<< orphan*/  make_error (struct jv_parser*,char*,scalar_t__,scalar_t__,...) ; 
- int /*<<< orphan*/  parser_reset (struct jv_parser*) ; 
- scalar_t__ scan (struct jv_parser*,char,int /*<<< orphan*/ *) ; 
- scalar_t__ stream_check_done (struct jv_parser*,int /*<<< orphan*/ *) ; 
+
+
+
+struct jv_parser {int eof; char* curr_buf; int bom_strip_position; int flags; scalar_t__ st; scalar_t__ curr_buf_pos; scalar_t__ curr_buf_length; scalar_t__ stacklen; scalar_t__ stackpos; scalar_t__ column; int line; int last_ch_was_ws; int next; int path; scalar_t__ curr_buf_is_partial; } ;
+typedef scalar_t__ presult ;
+typedef int jv ;
+
+
+ int JV_ARRAY (int ,int ) ;
+ scalar_t__ JV_KIND_NUMBER ;
+ scalar_t__ JV_PARSER_NORMAL ;
+ scalar_t__ JV_PARSER_WAITING_FOR_RS ;
+ int JV_PARSE_SEQ ;
+ int JV_PARSE_STREAMING ;
+ scalar_t__ OK ;
+ int assert (int) ;
+ scalar_t__ check_literal (struct jv_parser*) ;
+ int jv_copy (int ) ;
+ int jv_free (int ) ;
+ scalar_t__ jv_get_kind (int ) ;
+ int jv_invalid () ;
+ int jv_invalid_with_msg (int ) ;
+ scalar_t__ jv_is_valid (int ) ;
+ int jv_string (char*) ;
+ int make_error (struct jv_parser*,char*,scalar_t__,scalar_t__,...) ;
+ int parser_reset (struct jv_parser*) ;
+ scalar_t__ scan (struct jv_parser*,char,int *) ;
+ scalar_t__ stream_check_done (struct jv_parser*,int *) ;
 
 jv jv_parser_next(struct jv_parser* p) {
   if (p->eof)
     return jv_invalid();
   if (!p->curr_buf)
-    return jv_invalid(); // Need a buffer
+    return jv_invalid();
   if (p->bom_strip_position == 0xff) {
     if (!(p->flags & JV_PARSE_SEQ))
       return jv_invalid_with_msg(jv_string("Malformed BOM"));
@@ -63,7 +63,7 @@ jv jv_parser_next(struct jv_parser* p) {
       }
       if (ch == '\036')
         p->st = JV_PARSER_NORMAL;
-      continue; // need to resync, wait for RS
+      continue;
     }
     msg = scan(p, ch, &value);
   }
@@ -72,7 +72,7 @@ jv jv_parser_next(struct jv_parser* p) {
   } else if (msg) {
     jv_free(value);
     if (ch != '\036' && (p->flags & JV_PARSE_SEQ)) {
-      // Skip to the next RS
+
       p->st = JV_PARSER_WAITING_FOR_RS;
       value = make_error(p, "%s at line %d, column %d (need RS to resync)", msg, p->line, p->column);
       parser_reset(p);
@@ -81,18 +81,18 @@ jv jv_parser_next(struct jv_parser* p) {
     value = make_error(p, "%s at line %d, column %d", msg, p->line, p->column);
     parser_reset(p);
     if (!(p->flags & JV_PARSE_SEQ)) {
-      // We're not parsing a JSON text sequence; throw this buffer away.
-      // XXX We should fail permanently here.
+
+
       p->curr_buf = 0;
       p->curr_buf_pos = 0;
-    } // Else ch must be RS; don't clear buf so we can start parsing again after this ch
+    }
     return value;
   } else if (p->curr_buf_is_partial) {
     assert(p->curr_buf_pos == p->curr_buf_length);
-    // need another buffer
+
     return jv_invalid();
   } else {
-    // at EOF
+
     p->eof = 1;
     assert(p->curr_buf_pos == p->curr_buf_length);
     jv_free(value);
@@ -117,10 +117,10 @@ jv jv_parser_next(struct jv_parser* p) {
       p->st = JV_PARSER_WAITING_FOR_RS;
       return value;
     }
-    // p->next is either invalid (nothing here, but no syntax error)
-    // or valid (this is the value). either way it's the thing to return
+
+
     if ((p->flags & JV_PARSE_STREAMING) && jv_is_valid(p->next)) {
-      value = JV_ARRAY(jv_copy(p->path), p->next); // except in streaming mode we've got to make it [path,value]
+      value = JV_ARRAY(jv_copy(p->path), p->next);
     } else {
       value = p->next;
     }

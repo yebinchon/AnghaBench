@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  COMP_Mode; int /*<<< orphan*/  COMP_Hysteresis; int /*<<< orphan*/  COMP_OutputPol; int /*<<< orphan*/  COMP_Output; int /*<<< orphan*/  COMP_InvertingInput; } ;
-typedef  TYPE_1__ COMP_InitTypeDef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMP_Hysteresis_No ; 
- int /*<<< orphan*/  COMP_InvertingInput_1_4VREFINT ; 
- int /*<<< orphan*/  COMP_Mode_UltraLowPower ; 
- int /*<<< orphan*/  COMP_OutputPol_NonInverted ; 
- int /*<<< orphan*/  COMP_Output_None ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int COMP_Mode; int COMP_Hysteresis; int COMP_OutputPol; int COMP_Output; int COMP_InvertingInput; } ;
+typedef TYPE_1__ COMP_InitTypeDef ;
+
+
+ int COMP_Hysteresis_No ;
+ int COMP_InvertingInput_1_4VREFINT ;
+ int COMP_Mode_UltraLowPower ;
+ int COMP_OutputPol_NonInverted ;
+ int COMP_Output_None ;
 
 void COMP_StructInit(COMP_InitTypeDef* COMP_InitStruct)
 {

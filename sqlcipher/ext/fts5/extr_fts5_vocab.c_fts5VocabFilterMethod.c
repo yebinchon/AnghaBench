@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_12__ {scalar_t__ pVtab; } ;
-typedef  TYPE_3__ sqlite3_vtab_cursor ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-struct TYPE_14__ {scalar_t__ zLeTerm; TYPE_2__* pFts5; int /*<<< orphan*/  bEof; int /*<<< orphan*/  pIter; void* nLeTerm; } ;
+typedef TYPE_3__ sqlite3_vtab_cursor ;
+typedef int sqlite3_value ;
+struct TYPE_14__ {scalar_t__ zLeTerm; TYPE_2__* pFts5; int bEof; int pIter; void* nLeTerm; } ;
 struct TYPE_13__ {int eType; } ;
-struct TYPE_11__ {TYPE_1__* pConfig; int /*<<< orphan*/ * pIndex; } ;
+struct TYPE_11__ {TYPE_1__* pConfig; int * pIndex; } ;
 struct TYPE_10__ {scalar_t__ eDetail; } ;
-typedef  TYPE_4__ Fts5VocabTable ;
-typedef  TYPE_5__ Fts5VocabCursor ;
-typedef  int /*<<< orphan*/  Fts5Index ;
+typedef TYPE_4__ Fts5VocabTable ;
+typedef TYPE_5__ Fts5VocabCursor ;
+typedef int Fts5Index ;
 
-/* Variables and functions */
- int FTS5INDEX_QUERY_SCAN ; 
- scalar_t__ FTS5_DETAIL_NONE ; 
- int FTS5_VOCAB_INSTANCE ; 
- int FTS5_VOCAB_TERM_EQ ; 
- int FTS5_VOCAB_TERM_GE ; 
- int FTS5_VOCAB_TERM_LE ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  UNUSED_PARAM2 (char const*,int) ; 
- int fts5VocabInstanceNewTerm (TYPE_5__*) ; 
- int fts5VocabNextMethod (TYPE_3__*) ; 
- int /*<<< orphan*/  fts5VocabResetCursor (TYPE_5__*) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,char const*,void*) ; 
- int sqlite3Fts5IndexQuery (int /*<<< orphan*/ *,char const*,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_malloc (void*) ; 
- void* sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+ int FTS5INDEX_QUERY_SCAN ;
+ scalar_t__ FTS5_DETAIL_NONE ;
+ int FTS5_VOCAB_INSTANCE ;
+ int FTS5_VOCAB_TERM_EQ ;
+ int FTS5_VOCAB_TERM_GE ;
+ int FTS5_VOCAB_TERM_LE ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int UNUSED_PARAM2 (char const*,int) ;
+ int fts5VocabInstanceNewTerm (TYPE_5__*) ;
+ int fts5VocabNextMethod (TYPE_3__*) ;
+ int fts5VocabResetCursor (TYPE_5__*) ;
+ int memcpy (scalar_t__,char const*,void*) ;
+ int sqlite3Fts5IndexQuery (int *,char const*,int,int,int ,int *) ;
+ scalar_t__ sqlite3_malloc (void*) ;
+ void* sqlite3_value_bytes (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
 
 __attribute__((used)) static int fts5VocabFilterMethod(
-  sqlite3_vtab_cursor *pCursor,   /* The cursor used for this query */
-  int idxNum,                     /* Strategy index */
-  const char *zUnused,            /* Unused */
-  int nUnused,                    /* Number of elements in apVal */
-  sqlite3_value **apVal           /* Arguments for the indexing scheme */
+  sqlite3_vtab_cursor *pCursor,
+  int idxNum,
+  const char *zUnused,
+  int nUnused,
+  sqlite3_value **apVal
 ){
   Fts5VocabTable *pTab = (Fts5VocabTable*)pCursor->pVtab;
   Fts5VocabCursor *pCsr = (Fts5VocabCursor*)pCursor;
@@ -102,8 +102,8 @@ __attribute__((used)) static int fts5VocabFilterMethod(
   if( rc==SQLITE_OK && eType==FTS5_VOCAB_INSTANCE ){
     rc = fts5VocabInstanceNewTerm(pCsr);
   }
-  if( rc==SQLITE_OK && !pCsr->bEof 
-   && (eType!=FTS5_VOCAB_INSTANCE 
+  if( rc==SQLITE_OK && !pCsr->bEof
+   && (eType!=FTS5_VOCAB_INSTANCE
     || pCsr->pFts5->pConfig->eDetail!=FTS5_DETAIL_NONE)
   ){
     rc = fts5VocabNextMethod(pCursor);

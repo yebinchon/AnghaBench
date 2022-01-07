@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ssize_t ;
-typedef  int /*<<< orphan*/  spu_t ;
-struct TYPE_4__ {int /*<<< orphan*/ * sys; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int ssize_t ;
+typedef int spu_t ;
+struct TYPE_4__ {int * sys; } ;
 struct TYPE_5__ {TYPE_1__ owner; } ;
-typedef  TYPE_2__ filter_t ;
+typedef TYPE_2__ filter_t ;
 
-/* Variables and functions */
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spu_ClearChannel (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int VLC_SUCCESS ;
+ int free (int *) ;
+ int spu_ClearChannel (int *,int ) ;
 
 __attribute__((used)) static int SubSourceClean(filter_t *filter, void *data)
 {

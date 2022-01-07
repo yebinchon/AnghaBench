@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  test_av_find_info_tag () ; 
- int /*<<< orphan*/  test_av_get_known_color_name () ; 
- int /*<<< orphan*/  test_av_parse_color () ; 
- int /*<<< orphan*/  test_av_parse_time () ; 
- int /*<<< orphan*/  test_av_parse_video_rate () ; 
- int /*<<< orphan*/  test_av_small_strptime () ; 
+ int printf (char*) ;
+ int test_av_find_info_tag () ;
+ int test_av_get_known_color_name () ;
+ int test_av_parse_color () ;
+ int test_av_parse_time () ;
+ int test_av_parse_video_rate () ;
+ int test_av_small_strptime () ;
 
 int main(void)
 {

@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct wined3d_state {struct wined3d_shader_resource_view*** shader_resource_view; scalar_t__** cb; struct wined3d_shader** shader; } ;
 struct wined3d_shader_sampler_map_entry {size_t resource_idx; } ;
 struct wined3d_shader_resource_view {TYPE_3__* resource; } ;
@@ -22,15 +22,15 @@ struct wined3d_shader {TYPE_2__ reg_maps; } ;
 struct wined3d_context {int dummy; } ;
 struct TYPE_7__ {scalar_t__ type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- unsigned int WINED3D_MAX_CBS ; 
- scalar_t__ WINED3D_RTYPE_BUFFER ; 
- unsigned int WINED3D_SHADER_TYPE_COUNT ; 
- scalar_t__ buffer_from_resource (TYPE_3__*) ; 
- int /*<<< orphan*/  texture_from_resource (TYPE_3__*) ; 
- int /*<<< orphan*/  wined3d_buffer_load (scalar_t__,struct wined3d_context*,struct wined3d_state const*) ; 
- int /*<<< orphan*/  wined3d_texture_load (int /*<<< orphan*/ ,struct wined3d_context*,int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ unsigned int WINED3D_MAX_CBS ;
+ scalar_t__ WINED3D_RTYPE_BUFFER ;
+ unsigned int WINED3D_SHADER_TYPE_COUNT ;
+ scalar_t__ buffer_from_resource (TYPE_3__*) ;
+ int texture_from_resource (TYPE_3__*) ;
+ int wined3d_buffer_load (scalar_t__,struct wined3d_context*,struct wined3d_state const*) ;
+ int wined3d_texture_load (int ,struct wined3d_context*,int ) ;
 
 __attribute__((used)) static void context_load_shader_resources(struct wined3d_context *context, const struct wined3d_state *state,
         unsigned int shader_mask)

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stb_perfect ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free (unsigned char**) ; 
- int /*<<< orphan*/  memset (unsigned char**,int /*<<< orphan*/ ,int) ; 
- scalar_t__ realloc (unsigned char**,int) ; 
- int /*<<< orphan*/  stb_arr_free (char**) ; 
- int stb_arr_len (char**) ; 
- int /*<<< orphan*/  stb_arr_push (char**,char*) ; 
- int stb_perfect_create (int /*<<< orphan*/ *,unsigned int*,int) ; 
- int /*<<< orphan*/  stb_perfect_destroy (int /*<<< orphan*/ *) ; 
- int stb_perfect_hash (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int stb_perfect ;
+
+
+ int assert (int) ;
+ int free (unsigned char**) ;
+ int memset (unsigned char**,int ,int) ;
+ scalar_t__ realloc (unsigned char**,int) ;
+ int stb_arr_free (char**) ;
+ int stb_arr_len (char**) ;
+ int stb_arr_push (char**,char*) ;
+ int stb_perfect_create (int *,unsigned int*,int) ;
+ int stb_perfect_destroy (int *) ;
+ int stb_perfect_hash (int *,int) ;
 
 int stb_ischar(char c, char *set)
 {
    static unsigned char bit[8] = { 1,2,4,8,16,32,64,128 };
    static stb_perfect p;
    static unsigned char (*tables)[256];
-   static char ** sets = NULL;
+   static char ** sets = ((void*)0);
 
    int z = stb_perfect_hash(&p, (int)(size_t) set);
    if (z < 0) {
       int i,k,n,j,f;
-      // special code that means free all existing data
-      if (set == NULL) {
+
+      if (set == ((void*)0)) {
          stb_arr_free(sets);
          free(tables);
-         tables = NULL;
+         tables = ((void*)0);
          stb_perfect_destroy(&p);
          return 0;
       }

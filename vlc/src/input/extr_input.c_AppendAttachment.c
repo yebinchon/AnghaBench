@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const input_attachment_t ;
-typedef  int /*<<< orphan*/  demux_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/  const**) ; 
- scalar_t__ likely (int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/ ** realloc (int /*<<< orphan*/  const**,int) ; 
- int /*<<< orphan*/  vlc_input_attachment_Delete (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int const input_attachment_t ;
+typedef int demux_t ;
+
+
+ int free (int const**) ;
+ scalar_t__ likely (int const**) ;
+ int ** realloc (int const**,int) ;
+ int vlc_input_attachment_Delete (int const*) ;
 
 __attribute__((used)) static void AppendAttachment( int *pi_attachment, input_attachment_t ***ppp_attachment,
                               const demux_t ***ppp_attachment_demux,
@@ -42,14 +42,14 @@ __attribute__((used)) static void AppendAttachment( int *pi_attachment, input_at
                 pp_att[i_attachment] = pp_new[i];
                 pp_attdmx[i_attachment++] = p_demux;
             }
-            /* */
+
             *pi_attachment = i_attachment;
             free( pp_new );
             return;
         }
     }
 
-    /* on alloc errors */
+
     for( i = 0; i < i_new; i++ )
         vlc_input_attachment_Delete( pp_new[i] );
     free( pp_new );

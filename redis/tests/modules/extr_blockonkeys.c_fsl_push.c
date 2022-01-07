@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int length; long long* list; } ;
-typedef  TYPE_1__ fsl_t ;
-typedef  int /*<<< orphan*/  RedisModuleString ;
-typedef  int /*<<< orphan*/  RedisModuleCtx ;
+typedef TYPE_1__ fsl_t ;
+typedef int RedisModuleString ;
+typedef int RedisModuleCtx ;
 
-/* Variables and functions */
- int LIST_SIZE ; 
- scalar_t__ REDISMODULE_OK ; 
- int /*<<< orphan*/  REDISMODULE_WRITE ; 
- int RedisModule_ReplyWithError (int /*<<< orphan*/ *,char*) ; 
- int RedisModule_ReplyWithSimpleString (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  RedisModule_SignalKeyAsReady (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RedisModule_StringToLongLong (int /*<<< orphan*/ *,long long*) ; 
- int RedisModule_WrongArity (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_fsl (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,TYPE_1__**,int) ; 
+
+ int LIST_SIZE ;
+ scalar_t__ REDISMODULE_OK ;
+ int REDISMODULE_WRITE ;
+ int RedisModule_ReplyWithError (int *,char*) ;
+ int RedisModule_ReplyWithSimpleString (int *,char*) ;
+ int RedisModule_SignalKeyAsReady (int *,int *) ;
+ scalar_t__ RedisModule_StringToLongLong (int *,long long*) ;
+ int RedisModule_WrongArity (int *) ;
+ int get_fsl (int *,int *,int ,int,TYPE_1__**,int) ;
 
 int fsl_push(RedisModuleCtx *ctx, RedisModuleString **argv, int argc) {
     if (argc != 3)

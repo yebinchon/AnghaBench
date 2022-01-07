@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char* av_val; int av_len; } ;
-typedef  TYPE_1__ AVal ;
+typedef TYPE_1__ AVal ;
 
-/* Variables and functions */
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  sscanf (char*,char*,unsigned int*) ; 
- char* strchr (char const*,char) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- scalar_t__ strlen (char const*) ; 
- scalar_t__ strncmp (char const*,char*,int) ; 
- char* strstr (char const*,char*) ; 
+
+ scalar_t__ malloc (int) ;
+ int sscanf (char*,char*,unsigned int*) ;
+ char* strchr (char const*,char) ;
+ int strcpy (char*,char*) ;
+ scalar_t__ strlen (char const*) ;
+ scalar_t__ strncmp (char const*,char*,int) ;
+ char* strstr (char const*,char*) ;
 
 void RTMP_ParsePlaypath(AVal *in, AVal *out)
 {
@@ -29,13 +29,13 @@ void RTMP_ParsePlaypath(AVal *in, AVal *out)
     int addMP3 = 0;
     int subExt = 0;
     const char *playpath = in->av_val;
-    const char *temp, *q, *ext = NULL;
+    const char *temp, *q, *ext = ((void*)0);
     const char *ppstart = playpath;
     char *streamname, *destptr, *p;
 
     int pplen = in->av_len;
 
-    out->av_val = NULL;
+    out->av_val = ((void*)0);
     out->av_len = 0;
 
     if (!playpath)
@@ -66,7 +66,7 @@ void RTMP_ParsePlaypath(AVal *in, AVal *out)
         {
             addMP4 = 1;
             subExt = 1;
-            /* Only remove .flv from rtmp URL, not slist params */
+
         }
         else if ((ppstart == playpath) &&
                  (strncmp(ext, ".flv", 4) == 0))
@@ -112,7 +112,7 @@ void RTMP_ParsePlaypath(AVal *in, AVal *out)
 
     for (p=(char *)ppstart; pplen >0;)
     {
-        /* skip extension */
+
         if (subExt && p == ext)
         {
             p += 4;

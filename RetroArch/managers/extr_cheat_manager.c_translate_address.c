@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {unsigned int num_memory_buffers; unsigned int* memory_size_list; unsigned char** memory_buf_list; } ;
 
-/* Variables and functions */
- TYPE_1__ cheat_manager_state ; 
+
+ TYPE_1__ cheat_manager_state ;
 
 __attribute__((used)) static unsigned translate_address(unsigned address, unsigned char **curr)
 {

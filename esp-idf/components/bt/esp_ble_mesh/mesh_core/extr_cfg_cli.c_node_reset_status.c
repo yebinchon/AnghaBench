@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct net_buf_simple {int /*<<< orphan*/  len; int /*<<< orphan*/  data; } ;
-struct bt_mesh_msg_ctx {int /*<<< orphan*/  addr; int /*<<< orphan*/  app_idx; int /*<<< orphan*/  net_idx; } ;
+
+
+
+
+struct net_buf_simple {int len; int data; } ;
+struct bt_mesh_msg_ctx {int addr; int app_idx; int net_idx; } ;
 struct bt_mesh_model {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT_DBG (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bt_hex (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cfg_client_cancel (struct bt_mesh_model*,struct bt_mesh_msg_ctx*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int BT_DBG (char*,int ,int ,int ,int ,int ) ;
+ int bt_hex (int ,int ) ;
+ int cfg_client_cancel (struct bt_mesh_model*,struct bt_mesh_msg_ctx*,int *,int ) ;
 
 __attribute__((used)) static void node_reset_status(struct bt_mesh_model *model,
                               struct bt_mesh_msg_ctx *ctx,
@@ -27,5 +27,5 @@ __attribute__((used)) static void node_reset_status(struct bt_mesh_model *model,
            ctx->net_idx, ctx->app_idx, ctx->addr, buf->len,
            bt_hex(buf->data, buf->len));
 
-    cfg_client_cancel(model, ctx, NULL, 0);
+    cfg_client_cancel(model, ctx, ((void*)0), 0);
 }

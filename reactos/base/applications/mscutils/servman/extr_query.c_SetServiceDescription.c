@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  lpDescription; } ;
-typedef  TYPE_1__ SERVICE_DESCRIPTION ;
-typedef  int /*<<< orphan*/  SC_LOCK ;
-typedef  scalar_t__ SC_HANDLE ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ ChangeServiceConfig2W (scalar_t__,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  CloseServiceHandle (scalar_t__) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetError () ; 
- int /*<<< orphan*/  LockServiceDatabase (scalar_t__) ; 
- scalar_t__ OpenSCManagerW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ OpenServiceW (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SC_MANAGER_LOCK ; 
- int /*<<< orphan*/  SERVICE_CHANGE_CONFIG ; 
- int /*<<< orphan*/  SERVICE_CONFIG_DESCRIPTION ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  UnlockServiceDatabase (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int lpDescription; } ;
+typedef TYPE_1__ SERVICE_DESCRIPTION ;
+typedef int SC_LOCK ;
+typedef scalar_t__ SC_HANDLE ;
+typedef int LPWSTR ;
+typedef int BOOL ;
+
+
+ scalar_t__ ChangeServiceConfig2W (scalar_t__,int ,TYPE_1__*) ;
+ int CloseServiceHandle (scalar_t__) ;
+ int FALSE ;
+ int GetError () ;
+ int LockServiceDatabase (scalar_t__) ;
+ scalar_t__ OpenSCManagerW (int *,int *,int ) ;
+ scalar_t__ OpenServiceW (scalar_t__,int ,int ) ;
+ int SC_MANAGER_LOCK ;
+ int SERVICE_CHANGE_CONFIG ;
+ int SERVICE_CONFIG_DESCRIPTION ;
+ int TRUE ;
+ int UnlockServiceDatabase (int ) ;
 
 BOOL
 SetServiceDescription(LPWSTR lpServiceName,
@@ -42,8 +42,8 @@ SetServiceDescription(LPWSTR lpServiceName,
     SERVICE_DESCRIPTION ServiceDescription;
     BOOL bRet = FALSE;
 
-    hSCManager = OpenSCManagerW(NULL,
-                                NULL,
+    hSCManager = OpenSCManagerW(((void*)0),
+                                ((void*)0),
                                 SC_MANAGER_LOCK);
     if (hSCManager)
     {

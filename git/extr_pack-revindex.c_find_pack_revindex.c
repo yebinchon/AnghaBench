@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct revindex_entry {int dummy; } ;
 struct packed_git {struct revindex_entry* revindex; } ;
-typedef  int /*<<< orphan*/  off_t ;
+typedef int off_t ;
 
-/* Variables and functions */
- int find_revindex_position (struct packed_git*,int /*<<< orphan*/ ) ; 
- scalar_t__ load_pack_revindex (struct packed_git*) ; 
+
+ int find_revindex_position (struct packed_git*,int ) ;
+ scalar_t__ load_pack_revindex (struct packed_git*) ;
 
 struct revindex_entry *find_pack_revindex(struct packed_git *p, off_t ofs)
 {
-	int pos;
+ int pos;
 
-	if (load_pack_revindex(p))
-		return NULL;
+ if (load_pack_revindex(p))
+  return ((void*)0);
 
-	pos = find_revindex_position(p, ofs);
+ pos = find_revindex_position(p, ofs);
 
-	if (pos < 0)
-		return NULL;
+ if (pos < 0)
+  return ((void*)0);
 
-	return p->revindex + pos;
+ return p->revindex + pos;
 }

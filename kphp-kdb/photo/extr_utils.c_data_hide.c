@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  prm; int /*<<< orphan*/  hidden_state; } ;
-typedef  TYPE_1__ data ;
 
-/* Variables and functions */
- int PERM (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int data_get_local_id_by_id (TYPE_1__*,int) ; 
- int data_get_pos_by_local_id (TYPE_1__*,int) ; 
- int /*<<< orphan*/  data_restore_add (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  del ; 
- int /*<<< orphan*/  get_i ; 
- int /*<<< orphan*/  lookup_set (int /*<<< orphan*/ *,int,int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int prm; int hidden_state; } ;
+typedef TYPE_1__ data ;
+
+
+ int PERM (int ,int *,int) ;
+ int assert (int) ;
+ int data_get_local_id_by_id (TYPE_1__*,int) ;
+ int data_get_pos_by_local_id (TYPE_1__*,int) ;
+ int data_restore_add (TYPE_1__*,int,int) ;
+ int del ;
+ int get_i ;
+ int lookup_set (int *,int,int) ;
 
 int data_hide (data *d, int id, int tm) {
   int local_id = data_get_local_id_by_id (d, id);

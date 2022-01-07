@@ -1,120 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* pthread_cond_t ;
-struct TYPE_7__ {scalar_t__ nWaitersBlocked; scalar_t__ nWaitersGone; struct TYPE_7__* prev; struct TYPE_7__* next; int /*<<< orphan*/  mtxUnblockLock; int /*<<< orphan*/  semBlockQueue; int /*<<< orphan*/  semBlockLock; } ;
 
-/* Variables and functions */
- int EBUSY ; 
- int EINVAL ; 
- TYPE_1__* PTHREAD_COND_INITIALIZER ; 
- int errno ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- TYPE_1__* pte_cond_list_head ; 
- int /*<<< orphan*/  pte_cond_list_lock ; 
- TYPE_1__* pte_cond_list_tail ; 
- int /*<<< orphan*/  pte_cond_test_init_lock ; 
- int /*<<< orphan*/  pte_osMutexLock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pte_osMutexUnlock (int /*<<< orphan*/ ) ; 
- int pthread_mutex_destroy (int /*<<< orphan*/ *) ; 
- int pthread_mutex_trylock (int /*<<< orphan*/ *) ; 
- int pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ sem_destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ sem_post (int /*<<< orphan*/ *) ; 
- scalar_t__ sem_wait (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef TYPE_1__* pthread_cond_t ;
+struct TYPE_7__ {scalar_t__ nWaitersBlocked; scalar_t__ nWaitersGone; struct TYPE_7__* prev; struct TYPE_7__* next; int mtxUnblockLock; int semBlockQueue; int semBlockLock; } ;
+
+
+ int EBUSY ;
+ int EINVAL ;
+ TYPE_1__* PTHREAD_COND_INITIALIZER ;
+ int errno ;
+ int free (TYPE_1__*) ;
+ TYPE_1__* pte_cond_list_head ;
+ int pte_cond_list_lock ;
+ TYPE_1__* pte_cond_list_tail ;
+ int pte_cond_test_init_lock ;
+ int pte_osMutexLock (int ) ;
+ int pte_osMutexUnlock (int ) ;
+ int pthread_mutex_destroy (int *) ;
+ int pthread_mutex_trylock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ scalar_t__ sem_destroy (int *) ;
+ scalar_t__ sem_post (int *) ;
+ scalar_t__ sem_wait (int *) ;
 
 int
 pthread_cond_destroy (pthread_cond_t * cond)
-/*
- * ------------------------------------------------------
- * DOCPUBLIC
- *      This function destroys a condition variable
- *
- *
- * PARAMETERS
- *      cond
- *              pointer to an instance of pthread_cond_t
- *
- *
- * DESCRIPTION
- *      This function destroys a condition variable.
- *
- *      NOTES:
- *              1)      A condition variable can be destroyed
- *                      immediately after all the threads that
- *                      are blocked on it are awakened. e.g.
- *
- *                      struct list {
- *                        pthread_mutex_t lm;
- *                        ...
- *                      }
- *
- *                      struct elt {
- *                        key k;
- *                        int busy;
- *                        pthread_cond_t notbusy;
- *                        ...
- *                      }
- *
- *
- *                      struct elt *
- *                      list_find(struct list *lp, key k)
- *                      {
- *                        struct elt *ep;
- *
- *                        pthread_mutex_lock(&lp->lm);
- *                        while ((ep = find_elt(l,k) != NULL) && ep->busy)
- *                          pthread_cond_wait(&ep->notbusy, &lp->lm);
- *                        if (ep != NULL)
- *                          ep->busy = 1;
- *                        pthread_mutex_unlock(&lp->lm);
- *                        return(ep);
- *                      }
- *
- *                      delete_elt(struct list *lp, struct elt *ep)
- *                      {
- *                        pthread_mutex_lock(&lp->lm);
- *                        assert(ep->busy);
- *                        ... remove ep from list ...
- *                        ep->busy = 0;
- *                    (A) pthread_cond_broadcast(&ep->notbusy);
- *                        pthread_mutex_unlock(&lp->lm);
- *                    (B) pthread_cond_destroy(&rp->notbusy);
- *                        free(ep);
- *                      }
- *
- *                      In this example, the condition variable
- *                      and its list element may be freed (line B)
- *                      immediately after all threads waiting for
- *                      it are awakened (line A), since the mutex
- *                      and the code ensure that no other thread
- *                      can touch the element to be deleted.
- *
- * RESULTS
- *              0               successfully released condition variable,
- *              EINVAL          'cond' is invalid,
- *              EBUSY           'cond' is in use,
- *
- * ------------------------------------------------------
- */
 {
    pthread_cond_t cv;
    int result = 0, result1 = 0, result2 = 0;
 
-   /*
-    * Assuming any race condition here is harmless.
-    */
-   if (cond == NULL || *cond == NULL)
+
+
+
+   if (cond == ((void*)0) || *cond == ((void*)0))
       return EINVAL;
 
    if (*cond != PTHREAD_COND_INITIALIZER)
@@ -124,28 +52,28 @@ pthread_cond_destroy (pthread_cond_t * cond)
 
       cv = *cond;
 
-      /*
-       * Close the gate; this will synchronize this thread with
-       * all already signaled waiters to let them retract their
-       * waiter status - SEE NOTE 1 ABOVE!!!
-       */
+
+
+
+
+
       if (sem_wait (&(cv->semBlockLock)) != 0)
          return errno;
 
-      /*
-       * !TRY! lock mtxUnblockLock; try will detect busy condition
-       * and will not cause a deadlock with respect to concurrent
-       * signal/broadcast.
-       */
+
+
+
+
+
       if ((result = pthread_mutex_trylock (&(cv->mtxUnblockLock))) != 0)
       {
          (void) sem_post (&(cv->semBlockLock));
          return result;
       }
 
-      /*
-       * Check whether cv is still busy (still has waiters)
-       */
+
+
+
       if (cv->nWaitersBlocked > cv->nWaitersGone)
       {
          if (sem_post (&(cv->semBlockLock)) != 0)
@@ -155,10 +83,10 @@ pthread_cond_destroy (pthread_cond_t * cond)
       }
       else
       {
-         /*
-          * Now it is safe to destroy
-          */
-         *cond = NULL;
+
+
+
+         *cond = ((void*)0);
 
          if (sem_destroy (&(cv->semBlockLock)) != 0)
             result = errno;
@@ -167,7 +95,7 @@ pthread_cond_destroy (pthread_cond_t * cond)
          if ((result2 = pthread_mutex_unlock (&(cv->mtxUnblockLock))) == 0)
             result2 = pthread_mutex_destroy (&(cv->mtxUnblockLock));
 
-         /* Unlink the CV from the list */
+
 
          if (pte_cond_list_head == cv)
             pte_cond_list_head = cv->next;
@@ -187,31 +115,31 @@ pthread_cond_destroy (pthread_cond_t * cond)
    }
    else
    {
-      /*
-       * See notes in pte_cond_check_need_init() above also.
-       */
+
+
+
 
       pte_osMutexLock (pte_cond_test_init_lock);
 
-      /*
-       * Check again.
-       */
+
+
+
       if (*cond == PTHREAD_COND_INITIALIZER)
       {
-         /*
-          * This is all we need to do to destroy a statically
-          * initialised cond that has not yet been used (initialised).
-          * If we get to here, another thread waiting to initialise
-          * this cond will get an EINVAL. That's OK.
-          */
-         *cond = NULL;
+
+
+
+
+
+
+         *cond = ((void*)0);
       }
       else
       {
-         /*
-          * The cv has been initialised while we were waiting
-          * so assume it's in use.
-          */
+
+
+
+
          result = EBUSY;
       }
 

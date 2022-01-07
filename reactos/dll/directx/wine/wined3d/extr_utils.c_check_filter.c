@@ -1,104 +1,104 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ (* p_glGetError ) () ;int /*<<< orphan*/  (* p_glDisable ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* p_glDeleteTextures ) (int,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* p_glGetTexImage ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ;int /*<<< orphan*/  (* p_glBindTexture ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* p_glEnd ) () ;int /*<<< orphan*/  (* p_glVertex2f ) (float,float) ;int /*<<< orphan*/  (* p_glTexCoord2f ) (double,double) ;int /*<<< orphan*/  (* p_glBegin ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* p_glClear ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* p_glClearColor ) (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* p_glLoadIdentity ) () ;int /*<<< orphan*/  (* p_glMatrixMode ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* p_glViewport ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ;int /*<<< orphan*/  (* p_glDrawBuffer ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* p_glEnable ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* p_glTexParameteri ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* p_glTexImage2D ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int const*) ;int /*<<< orphan*/  (* p_glGenTextures ) (int,int /*<<< orphan*/ *) ;} ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ (* p_glGetError ) () ;int (* p_glDisable ) (int ) ;int (* p_glDeleteTextures ) (int,int *) ;int (* p_glGetTexImage ) (int ,int ,int ,int ,int*) ;int (* p_glBindTexture ) (int ,int ) ;int (* p_glEnd ) () ;int (* p_glVertex2f ) (float,float) ;int (* p_glTexCoord2f ) (double,double) ;int (* p_glBegin ) (int ) ;int (* p_glClear ) (int ) ;int (* p_glClearColor ) (int ,int,int ,int ) ;int (* p_glLoadIdentity ) () ;int (* p_glMatrixMode ) (int ) ;int (* p_glViewport ) (int ,int ,int,int) ;int (* p_glDrawBuffer ) (int ) ;int (* p_glEnable ) (int ) ;int (* p_glTexParameteri ) (int ,int ,int ) ;int (* p_glTexImage2D ) (int ,int ,int ,int,int,int ,int ,int ,int const*) ;int (* p_glGenTextures ) (int,int *) ;} ;
 struct TYPE_6__ {TYPE_2__ gl; } ;
-struct TYPE_4__ {int /*<<< orphan*/  (* glDeleteFramebuffers ) (int,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* glBindFramebuffer ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* glFramebufferTexture2D ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* glGenFramebuffers ) (int,int /*<<< orphan*/ *) ;} ;
+struct TYPE_4__ {int (* glDeleteFramebuffers ) (int,int *) ;int (* glBindFramebuffer ) (int ,int ) ;int (* glFramebufferTexture2D ) (int ,int ,int ,int ,int ) ;int (* glGenFramebuffers ) (int,int *) ;} ;
 struct wined3d_gl_info {TYPE_3__ gl_ops; TYPE_1__ fbo_ops; } ;
-typedef  int /*<<< orphan*/  readback ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  int /*<<< orphan*/  GLenum ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int readback ;
+typedef int GLuint ;
+typedef int GLenum ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_BGRA ; 
- int /*<<< orphan*/  GL_CLAMP_TO_EDGE ; 
- int /*<<< orphan*/  GL_COLOR_ATTACHMENT0 ; 
- int /*<<< orphan*/  GL_COLOR_BUFFER_BIT ; 
- int /*<<< orphan*/  GL_FRAMEBUFFER ; 
- int /*<<< orphan*/  GL_LIGHTING ; 
- int /*<<< orphan*/  GL_LINEAR ; 
- int /*<<< orphan*/  GL_MODELVIEW ; 
- int /*<<< orphan*/  GL_NEAREST ; 
- int /*<<< orphan*/  GL_PROJECTION ; 
- int /*<<< orphan*/  GL_RGBA ; 
- int /*<<< orphan*/  GL_RGBA8 ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  GL_TEXTURE_MAG_FILTER ; 
- int /*<<< orphan*/  GL_TEXTURE_MIN_FILTER ; 
- int /*<<< orphan*/  GL_TEXTURE_WRAP_R ; 
- int /*<<< orphan*/  GL_TEXTURE_WRAP_S ; 
- int /*<<< orphan*/  GL_TEXTURE_WRAP_T ; 
- int /*<<< orphan*/  GL_TRIANGLE_STRIP ; 
- int /*<<< orphan*/  GL_UNSIGNED_INT_8_8_8_8 ; 
- int /*<<< orphan*/  GL_UNSIGNED_INT_8_8_8_8_REV ; 
- int /*<<< orphan*/  TRACE (char*,int,int) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ color_match (int,int,int) ; 
- int /*<<< orphan*/  memset (int*,int,int) ; 
- scalar_t__ stub1 () ; 
- int /*<<< orphan*/  stub10 (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub11 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub12 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int const*) ; 
- int /*<<< orphan*/  stub13 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub14 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub15 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub16 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub17 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub18 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub19 (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub20 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub21 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub22 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub23 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  stub24 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub25 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub26 () ; 
- int /*<<< orphan*/  stub27 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub28 () ; 
- int /*<<< orphan*/  stub29 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub30 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub31 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub32 (double,double) ; 
- int /*<<< orphan*/  stub33 (float,float) ; 
- int /*<<< orphan*/  stub34 (double,double) ; 
- int /*<<< orphan*/  stub35 (float,float) ; 
- int /*<<< orphan*/  stub36 (double,double) ; 
- int /*<<< orphan*/  stub37 (float,float) ; 
- int /*<<< orphan*/  stub38 (double,double) ; 
- int /*<<< orphan*/  stub39 (float,float) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  stub40 () ; 
- int /*<<< orphan*/  stub41 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub42 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  stub43 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub44 (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub45 (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub46 (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub47 (int /*<<< orphan*/ ) ; 
- scalar_t__ stub48 () ; 
- int /*<<< orphan*/  stub5 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub6 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub7 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub8 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub9 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ int FIXME (char*,int ) ;
+ int GL_BGRA ;
+ int GL_CLAMP_TO_EDGE ;
+ int GL_COLOR_ATTACHMENT0 ;
+ int GL_COLOR_BUFFER_BIT ;
+ int GL_FRAMEBUFFER ;
+ int GL_LIGHTING ;
+ int GL_LINEAR ;
+ int GL_MODELVIEW ;
+ int GL_NEAREST ;
+ int GL_PROJECTION ;
+ int GL_RGBA ;
+ int GL_RGBA8 ;
+ int GL_TEXTURE_2D ;
+ int GL_TEXTURE_MAG_FILTER ;
+ int GL_TEXTURE_MIN_FILTER ;
+ int GL_TEXTURE_WRAP_R ;
+ int GL_TEXTURE_WRAP_S ;
+ int GL_TEXTURE_WRAP_T ;
+ int GL_TRIANGLE_STRIP ;
+ int GL_UNSIGNED_INT_8_8_8_8 ;
+ int GL_UNSIGNED_INT_8_8_8_8_REV ;
+ int TRACE (char*,int,int) ;
+ int TRUE ;
+ scalar_t__ color_match (int,int,int) ;
+ int memset (int*,int,int) ;
+ scalar_t__ stub1 () ;
+ int stub10 (int,int *) ;
+ int stub11 (int ,int ) ;
+ int stub12 (int ,int ,int ,int,int,int ,int ,int ,int const*) ;
+ int stub13 (int ,int ,int ) ;
+ int stub14 (int ,int ,int ) ;
+ int stub15 (int ,int ,int ) ;
+ int stub16 (int ,int ,int ) ;
+ int stub17 (int ,int ,int ) ;
+ int stub18 (int ) ;
+ int stub19 (int,int *) ;
+ int stub2 (int,int *) ;
+ int stub20 (int ,int ) ;
+ int stub21 (int ,int ,int ,int ,int ) ;
+ int stub22 (int ) ;
+ int stub23 (int ,int ,int,int) ;
+ int stub24 (int ) ;
+ int stub25 (int ) ;
+ int stub26 () ;
+ int stub27 (int ) ;
+ int stub28 () ;
+ int stub29 (int ,int,int ,int ) ;
+ int stub3 (int ,int ) ;
+ int stub30 (int ) ;
+ int stub31 (int ) ;
+ int stub32 (double,double) ;
+ int stub33 (float,float) ;
+ int stub34 (double,double) ;
+ int stub35 (float,float) ;
+ int stub36 (double,double) ;
+ int stub37 (float,float) ;
+ int stub38 (double,double) ;
+ int stub39 (float,float) ;
+ int stub4 (int ,int ,int ,int,int,int ,int ,int ,int*) ;
+ int stub40 () ;
+ int stub41 (int ,int ) ;
+ int stub42 (int ,int ,int ,int ,int*) ;
+ int stub43 (int ,int ) ;
+ int stub44 (int,int *) ;
+ int stub45 (int,int *) ;
+ int stub46 (int,int *) ;
+ int stub47 (int ) ;
+ scalar_t__ stub48 () ;
+ int stub5 (int ,int ,int ) ;
+ int stub6 (int ,int ,int ) ;
+ int stub7 (int ,int ,int ) ;
+ int stub8 (int ,int ,int ) ;
+ int stub9 (int ,int ,int ) ;
 
 __attribute__((used)) static BOOL check_filter(const struct wined3d_gl_info *gl_info, GLenum internal)
 {
@@ -106,17 +106,6 @@ __attribute__((used)) static BOOL check_filter(const struct wined3d_gl_info *gl_
     GLuint tex, fbo, buffer;
     DWORD readback[16 * 1];
     BOOL ret = FALSE;
-
-    /* Render a filtered texture and see what happens. This is intended to detect the lack of
-     * float16 filtering on ATI X1000 class cards. The drivers disable filtering instead of
-     * falling back to software. If this changes in the future this code will get fooled and
-     * apps might hit the software path due to incorrectly advertised caps.
-     *
-     * Its unlikely that this changes however. GL Games like Mass Effect depend on the filter
-     * disable fallback, if Apple or ATI ever change the driver behavior they will break more
-     * than Wine. The Linux binary <= r500 driver is not maintained any more anyway
-     */
-
     while (gl_info->gl_ops.gl.p_glGetError());
 
     gl_info->gl_ops.gl.p_glGenTextures(1, &buffer);

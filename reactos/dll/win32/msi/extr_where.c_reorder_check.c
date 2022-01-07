@@ -1,44 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {struct expr* left; struct expr* right; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * table; } ;
+struct TYPE_5__ {int * table; } ;
 struct TYPE_6__ {TYPE_1__ parsed; } ;
 struct TYPE_8__ {TYPE_3__ expr; TYPE_2__ column; } ;
 struct expr {int type; TYPE_4__ u; } ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  JOINTABLE ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int UINT ;
+typedef int JOINTABLE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int CONST_EXPR ; 
- int /*<<< orphan*/  ERR (char*,int) ; 
-#define  EXPR_COL_NUMBER 136 
-#define  EXPR_COL_NUMBER32 135 
-#define  EXPR_COL_NUMBER_STRING 134 
-#define  EXPR_COMPLEX 133 
-#define  EXPR_STRCMP 132 
-#define  EXPR_SVAL 131 
-#define  EXPR_UNARY 130 
-#define  EXPR_UVAL 129 
-#define  EXPR_WILDCARD 128 
- int JOIN_TO_CONST_EXPR ; 
- int /*<<< orphan*/  add_to_array (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  in_array (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
+
+ int CONST_EXPR ;
+ int ERR (char*,int) ;
+ int JOIN_TO_CONST_EXPR ;
+ int add_to_array (int **,int *) ;
+ int assert (int ) ;
+ int in_array (int **,int *) ;
 
 __attribute__((used)) static UINT reorder_check( const struct expr *expr, JOINTABLE **ordered_tables,
                            BOOL process_joins, JOINTABLE **lastused )
@@ -47,22 +38,22 @@ __attribute__((used)) static UINT reorder_check( const struct expr *expr, JOINTA
 
     switch (expr->type)
     {
-        case EXPR_WILDCARD:
-        case EXPR_SVAL:
-        case EXPR_UVAL:
+        case 128:
+        case 131:
+        case 129:
             return 0;
-        case EXPR_COL_NUMBER:
-        case EXPR_COL_NUMBER32:
-        case EXPR_COL_NUMBER_STRING:
+        case 136:
+        case 135:
+        case 134:
             if (in_array(ordered_tables, expr->u.column.parsed.table))
                 return JOIN_TO_CONST_EXPR;
             *lastused = expr->u.column.parsed.table;
             return CONST_EXPR;
-        case EXPR_STRCMP:
-        case EXPR_COMPLEX:
+        case 132:
+        case 133:
             res = reorder_check(expr->u.expr.right, ordered_tables, process_joins, lastused);
-            /* fall through */
-        case EXPR_UNARY:
+
+        case 130:
             res += reorder_check(expr->u.expr.left, ordered_tables, process_joins, lastused);
             if (res == 0)
                 return 0;

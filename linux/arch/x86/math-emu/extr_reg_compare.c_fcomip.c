@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FPU_pop () ; 
- int /*<<< orphan*/  FPU_rm ; 
- int /*<<< orphan*/  compare_i_st_st (int /*<<< orphan*/ ) ; 
+ int FPU_pop () ;
+ int FPU_rm ;
+ int compare_i_st_st (int ) ;
 
 void fcomip(void)
 {
-	/* fcomip st(i) */
-	if (!compare_i_st_st(FPU_rm))
-		FPU_pop();
+
+ if (!compare_i_st_st(FPU_rm))
+  FPU_pop();
 }

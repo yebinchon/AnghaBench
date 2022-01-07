@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
-struct TYPE_9__ {scalar_t__ write_prft; int /*<<< orphan*/  fc; TYPE_3__* tracks; } ;
-struct TYPE_8__ {TYPE_2__* cluster; int /*<<< orphan*/  track_id; TYPE_1__* st; int /*<<< orphan*/  entry; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
+struct TYPE_9__ {scalar_t__ write_prft; int fc; TYPE_3__* tracks; } ;
+struct TYPE_8__ {TYPE_2__* cluster; int track_id; TYPE_1__* st; int entry; } ;
 struct TYPE_7__ {scalar_t__ pts; } ;
-struct TYPE_6__ {int /*<<< orphan*/  time_base; } ;
-typedef  TYPE_3__ MOVTrack ;
-typedef  TYPE_4__ MOVMuxContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
+struct TYPE_6__ {int time_base; } ;
+typedef TYPE_3__ MOVTrack ;
+typedef TYPE_4__ MOVMuxContext ;
+typedef int AVIOContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- scalar_t__ AV_NOPTS_VALUE ; 
- int /*<<< orphan*/  AV_TIME_BASE_Q ; 
- scalar_t__ MOV_PRFT_SRC_PTS ; 
- scalar_t__ MOV_PRFT_SRC_WALLCLOCK ; 
- scalar_t__ NTP_OFFSET_US ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ av_rescale_q (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_w8 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wb24 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_wb32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_wb64 (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ ff_get_formatted_ntp_time (scalar_t__) ; 
- scalar_t__ ff_ntp_time () ; 
- int /*<<< orphan*/  ffio_wfourcc (int /*<<< orphan*/ *,char*) ; 
- int update_size (int /*<<< orphan*/ *,scalar_t__) ; 
+
+ int AV_LOG_WARNING ;
+ scalar_t__ AV_NOPTS_VALUE ;
+ int AV_TIME_BASE_Q ;
+ scalar_t__ MOV_PRFT_SRC_PTS ;
+ scalar_t__ MOV_PRFT_SRC_WALLCLOCK ;
+ scalar_t__ NTP_OFFSET_US ;
+ int av_log (int ,int ,char*,...) ;
+ scalar_t__ av_rescale_q (scalar_t__,int ,int ) ;
+ scalar_t__ avio_tell (int *) ;
+ int avio_w8 (int *,int) ;
+ int avio_wb24 (int *,int ) ;
+ int avio_wb32 (int *,int ) ;
+ int avio_wb64 (int *,scalar_t__) ;
+ scalar_t__ ff_get_formatted_ntp_time (scalar_t__) ;
+ scalar_t__ ff_ntp_time () ;
+ int ffio_wfourcc (int *,char*) ;
+ int update_size (int *,scalar_t__) ;
 
 __attribute__((used)) static int mov_write_prft_tag(AVIOContext *pb, MOVMuxContext *mov, int tracks)
 {
     int64_t pos = avio_tell(pb), pts_us, ntp_ts;
     MOVTrack *first_track;
 
-    /* PRFT should be associated with at most one track. So, choosing only the
-     * first track. */
+
+
     if (tracks > 0)
         return 0;
     first_track = &(mov->tracks[0]);
@@ -75,12 +75,12 @@ __attribute__((used)) static int mov_write_prft_tag(AVIOContext *pb, MOVMuxConte
         return 0;
     }
 
-    avio_wb32(pb, 0);                           // Size place holder
-    ffio_wfourcc(pb, "prft");                   // Type
-    avio_w8(pb, 1);                             // Version
-    avio_wb24(pb, 0);                           // Flags
-    avio_wb32(pb, first_track->track_id);       // reference track ID
-    avio_wb64(pb, ntp_ts);                      // NTP time stamp
-    avio_wb64(pb, first_track->cluster[0].pts); //media time
+    avio_wb32(pb, 0);
+    ffio_wfourcc(pb, "prft");
+    avio_w8(pb, 1);
+    avio_wb24(pb, 0);
+    avio_wb32(pb, first_track->track_id);
+    avio_wb64(pb, ntp_ts);
+    avio_wb64(pb, first_track->cluster[0].pts);
     return update_size(pb, pos);
 }

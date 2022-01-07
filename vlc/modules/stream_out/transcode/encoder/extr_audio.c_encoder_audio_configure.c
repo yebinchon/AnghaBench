@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {size_t i_channels; scalar_t__ i_sample_rate; int /*<<< orphan*/  i_bitrate; } ;
-struct TYPE_14__ {TYPE_2__ audio; int /*<<< orphan*/  i_codec; scalar_t__ psz_lang; int /*<<< orphan*/  p_config_chain; } ;
-typedef  TYPE_4__ transcode_encoder_config_t ;
-struct TYPE_16__ {size_t i_channels; void* i_physical_channels; int /*<<< orphan*/  i_format; scalar_t__ i_rate; int /*<<< orphan*/  i_bitspersample; } ;
-struct TYPE_13__ {int /*<<< orphan*/  i_codec; void* psz_language; TYPE_6__ audio; } ;
-struct TYPE_11__ {int /*<<< orphan*/  i_bitrate; TYPE_6__ audio; int /*<<< orphan*/  i_codec; void* psz_language; } ;
-struct TYPE_15__ {TYPE_3__ fmt_in; TYPE_1__ fmt_out; int /*<<< orphan*/  p_cfg; } ;
-typedef  TYPE_5__ encoder_t ;
-typedef  TYPE_6__ audio_format_t ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (void**) ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  aout_FormatPrepare (TYPE_6__*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free (void*) ; 
- void** pi_channels_maps ; 
- void* strdup (scalar_t__) ; 
+
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_12__ {size_t i_channels; scalar_t__ i_sample_rate; int i_bitrate; } ;
+struct TYPE_14__ {TYPE_2__ audio; int i_codec; scalar_t__ psz_lang; int p_config_chain; } ;
+typedef TYPE_4__ transcode_encoder_config_t ;
+struct TYPE_16__ {size_t i_channels; void* i_physical_channels; int i_format; scalar_t__ i_rate; int i_bitspersample; } ;
+struct TYPE_13__ {int i_codec; void* psz_language; TYPE_6__ audio; } ;
+struct TYPE_11__ {int i_bitrate; TYPE_6__ audio; int i_codec; void* psz_language; } ;
+struct TYPE_15__ {TYPE_3__ fmt_in; TYPE_1__ fmt_out; int p_cfg; } ;
+typedef TYPE_5__ encoder_t ;
+typedef TYPE_6__ audio_format_t ;
+
+
+ size_t ARRAY_SIZE (void**) ;
+ int VLC_SUCCESS ;
+ int aout_FormatPrepare (TYPE_6__*) ;
+ int assert (int) ;
+ int free (void*) ;
+ void** pi_channels_maps ;
+ void* strdup (scalar_t__) ;
 
 __attribute__((used)) static int encoder_audio_configure( const transcode_encoder_config_t *p_cfg,
                                     const audio_format_t *p_dec_out,
@@ -52,7 +52,7 @@ __attribute__((used)) static int encoder_audio_configure( const transcode_encode
         p_enc->fmt_out.psz_language = strdup( p_cfg->psz_lang );
     }
 
-    /* Complete destination format */
+
     p_enc->fmt_out.i_codec = p_cfg->i_codec;
     p_enc->fmt_out.audio.i_format = p_cfg->i_codec;
     p_enc->fmt_out.i_bitrate = p_cfg->audio.i_bitrate;
@@ -68,19 +68,19 @@ __attribute__((used)) static int encoder_audio_configure( const transcode_encode
 
     p_enc_out->i_physical_channels = pi_channels_maps[p_enc_out->i_channels];
 
-    if( b_keep_fmtin ) /* This is tested/wanted decoder fmtin */
+    if( b_keep_fmtin )
         return VLC_SUCCESS;
 
     p_enc_in->i_physical_channels = p_enc_out->i_physical_channels;
 
-    /* Initialization of encoder format structures */
+
     p_enc->fmt_in.i_codec = p_dec_out->i_format;
     p_enc_in->i_format = p_dec_out->i_format;
     p_enc_in->i_rate = p_enc_out->i_rate;
     p_enc_in->i_physical_channels = p_enc_out->i_physical_channels;
     aout_FormatPrepare( p_enc_in );
 
-    /* Fix input format */
+
     p_enc_in->i_format = p_enc->fmt_in.i_codec;
     if( !p_enc_in->i_physical_channels )
     {

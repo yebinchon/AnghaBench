@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BN_ULONG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqr64 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const) ; 
+
+
+
+typedef int BN_ULONG ;
+
+
+ int assert (int) ;
+ int sqr64 (int ,int ,int const) ;
 
 void bn_sqr_words(BN_ULONG *r, const BN_ULONG *a, int n)
 {
@@ -22,7 +22,7 @@ void bn_sqr_words(BN_ULONG *r, const BN_ULONG *a, int n)
     if (n <= 0)
         return;
 
-# ifndef OPENSSL_SMALL_FOOTPRINT
+
     while (n & ~3) {
         sqr64(r[0], r[1], a[0]);
         sqr64(r[2], r[3], a[1]);
@@ -32,7 +32,7 @@ void bn_sqr_words(BN_ULONG *r, const BN_ULONG *a, int n)
         r += 8;
         n -= 4;
     }
-# endif
+
     while (n) {
         sqr64(r[0], r[1], a[0]);
         a++;

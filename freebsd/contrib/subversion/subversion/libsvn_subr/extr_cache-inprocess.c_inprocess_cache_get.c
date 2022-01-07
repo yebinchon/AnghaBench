@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct TYPE_3__ {int /*<<< orphan*/ * (* deserialize_func ) (void**,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;int /*<<< orphan*/  mutex; } ;
-typedef  TYPE_1__ inprocess_cache_t ;
-typedef  int /*<<< orphan*/  apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_MUTEX__WITH_LOCK (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  inprocess_cache_get_internal (char**,int /*<<< orphan*/ *,TYPE_1__*,void const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stub1 (void**,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+struct TYPE_3__ {int * (* deserialize_func ) (void**,char*,int ,int *) ;int mutex; } ;
+typedef TYPE_1__ inprocess_cache_t ;
+typedef int apr_size_t ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_MUTEX__WITH_LOCK (int ,int ) ;
+ int * SVN_NO_ERROR ;
+ int inprocess_cache_get_internal (char**,int *,TYPE_1__*,void const*,int *) ;
+ int * stub1 (void**,char*,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 inprocess_cache_get(void **value_p,
@@ -45,17 +45,17 @@ inprocess_cache_get(void **value_p,
                                                         cache,
                                                         key,
                                                         result_pool));
-      /* deserialize the buffer content. Usually, this will directly
-         modify the buffer content directly. */
-      *found = (buffer != NULL);
+
+
+      *found = (buffer != ((void*)0));
       if (!buffer || !size)
-        *value_p = NULL;
+        *value_p = ((void*)0);
       else
         return cache->deserialize_func(value_p, buffer, size, result_pool);
     }
   else
     {
-      *value_p = NULL;
+      *value_p = ((void*)0);
       *found = FALSE;
     }
 

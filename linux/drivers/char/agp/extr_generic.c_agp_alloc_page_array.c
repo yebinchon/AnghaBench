@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct agp_memory {int /*<<< orphan*/  pages; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  kvmalloc (size_t,int /*<<< orphan*/ ) ; 
+
+
+
+struct agp_memory {int pages; } ;
+
+
+ int GFP_KERNEL ;
+ int kvmalloc (size_t,int ) ;
 
 void agp_alloc_page_array(size_t size, struct agp_memory *mem)
 {
-	mem->pages = kvmalloc(size, GFP_KERNEL);
+ mem->pages = kvmalloc(size, GFP_KERNEL);
 }

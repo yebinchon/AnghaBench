@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {struct TYPE_2__* next; struct TYPE_2__* prev; int /*<<< orphan*/  state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * NB_Alloc ; 
- TYPE_1__ NB_Head ; 
- int /*<<< orphan*/  NB_MAGIC_ALLOCA ; 
- int /*<<< orphan*/  NB_max ; 
- int /*<<< orphan*/  NET_BUFFERS ; 
- long NET_BUFFER_ALIGN ; 
- int /*<<< orphan*/ * NetBufferSpace ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {struct TYPE_2__* next; struct TYPE_2__* prev; int state; } ;
+
+
+ int * NB_Alloc ;
+ TYPE_1__ NB_Head ;
+ int NB_MAGIC_ALLOCA ;
+ int NB_max ;
+ int NET_BUFFERS ;
+ long NET_BUFFER_ALIGN ;
+ int * NetBufferSpace ;
 
 void init_netbuffers (void) {
   NB_max = NET_BUFFERS;

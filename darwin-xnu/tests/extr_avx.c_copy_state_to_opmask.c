@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  __fpu_k0; } ;
-typedef  TYPE_1__ X86_AVX512_STATE_T ;
-typedef  int /*<<< orphan*/  OPMASK ;
 
-/* Variables and functions */
- int KARRAY_MAX ; 
- int /*<<< orphan*/  bcopy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int __fpu_k0; } ;
+typedef TYPE_1__ X86_AVX512_STATE_T ;
+typedef int OPMASK ;
+
+
+ int KARRAY_MAX ;
+ int bcopy (int *,int *,int) ;
 
 __attribute__((used)) static void copy_state_to_opmask(X86_AVX512_STATE_T *sp, OPMASK *op) {
-	OPMASK *k = (OPMASK *) &sp->__fpu_k0;
-	for (int i = 0; i < KARRAY_MAX; i++) {
-		bcopy(&k[i], &op[i], sizeof(*op));
-	}
+ OPMASK *k = (OPMASK *) &sp->__fpu_k0;
+ for (int i = 0; i < KARRAY_MAX; i++) {
+  bcopy(&k[i], &op[i], sizeof(*op));
+ }
 }

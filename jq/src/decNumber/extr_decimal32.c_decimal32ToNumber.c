@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uInt ;
-struct TYPE_8__ {int /*<<< orphan*/  bytes; } ;
-typedef  TYPE_1__ decimal32 ;
-struct TYPE_9__ {scalar_t__ exponent; int /*<<< orphan*/  bits; } ;
-typedef  TYPE_2__ decNumber ;
 
-/* Variables and functions */
- int* COMBEXP ; 
- int* COMBMSD ; 
- scalar_t__ DECIMAL32_Bias ; 
- int /*<<< orphan*/  DECINF ; 
- int /*<<< orphan*/  DECNAN ; 
- int /*<<< orphan*/  DECNEG ; 
- int /*<<< orphan*/  DECSNAN ; 
- int UBTOUI (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  decDigitsFromDPD (TYPE_2__*,int*,int) ; 
- int /*<<< orphan*/  decNumberZero (TYPE_2__*) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uInt ;
+struct TYPE_8__ {int bytes; } ;
+typedef TYPE_1__ decimal32 ;
+struct TYPE_9__ {scalar_t__ exponent; int bits; } ;
+typedef TYPE_2__ decNumber ;
+
+
+ int* COMBEXP ;
+ int* COMBMSD ;
+ scalar_t__ DECIMAL32_Bias ;
+ int DECINF ;
+ int DECNAN ;
+ int DECNEG ;
+ int DECSNAN ;
+ int UBTOUI (int ) ;
+ int decDigitsFromDPD (TYPE_2__*,int*,int) ;
+ int decNumberZero (TYPE_2__*) ;
 
 decNumber * decimal32ToNumber(const decimal32 *d32, decNumber *dn) {
-  uInt msd;                        // coefficient MSD
-  uInt exp;                        // exponent top two bits
-  uInt comb;                       // combination field
-  uInt sour;                       // source 32-bit
-  uInt uiwork;                     // for macros
+  uInt msd;
+  uInt exp;
+  uInt comb;
+  uInt sour;
+  uInt uiwork;
 
-  // load source from storage; this is endian
-  sour=UBTOUI(d32->bytes);         // directly load the int
 
-  comb=(sour>>26)&0x1f;            // combination field
+  sour=UBTOUI(d32->bytes);
 
-  decNumberZero(dn);               // clean number
-  if (sour&0x80000000) dn->bits=DECNEG; // set sign if negative
+  comb=(sour>>26)&0x1f;
 
-  msd=COMBMSD[comb];               // decode the combination field
-  exp=COMBEXP[comb];               // ..
+  decNumberZero(dn);
+  if (sour&0x80000000) dn->bits=DECNEG;
 
-  if (exp==3) {                    // is a special
+  msd=COMBMSD[comb];
+  exp=COMBEXP[comb];
+
+  if (exp==3) {
     if (msd==0) {
       dn->bits|=DECINF;
-      return dn;                   // no coefficient needed
+      return dn;
       }
     else if (sour&0x02000000) dn->bits|=DECSNAN;
     else dn->bits|=DECNAN;
-    msd=0;                         // no top digit
+    msd=0;
     }
-   else {                          // is a finite number
-    dn->exponent=(exp<<6)+((sour>>20)&0x3f)-DECIMAL32_Bias; // unbiased
+   else {
+    dn->exponent=(exp<<6)+((sour>>20)&0x3f)-DECIMAL32_Bias;
     }
 
-  // get the coefficient
-  sour&=0x000fffff;                // clean coefficient continuation
-  if (msd) {                       // non-zero msd
-    sour|=msd<<20;                 // prefix to coefficient
-    decDigitsFromDPD(dn, &sour, 3); // process 3 declets
+
+  sour&=0x000fffff;
+  if (msd) {
+    sour|=msd<<20;
+    decDigitsFromDPD(dn, &sour, 3);
     return dn;
     }
-  // msd=0
-  if (!sour) return dn;            // easy: coefficient is 0
-  if (sour&0x000ffc00)             // need 2 declets?
-    decDigitsFromDPD(dn, &sour, 2); // process 2 declets
+
+  if (!sour) return dn;
+  if (sour&0x000ffc00)
+    decDigitsFromDPD(dn, &sour, 2);
    else
-    decDigitsFromDPD(dn, &sour, 1); // process 1 declet
+    decDigitsFromDPD(dn, &sour, 1);
   return dn;
   }

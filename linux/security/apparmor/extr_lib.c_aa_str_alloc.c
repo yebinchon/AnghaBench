@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct counted_str {char* name; int /*<<< orphan*/  count; } ;
-typedef  int /*<<< orphan*/  gfp_t ;
 
-/* Variables and functions */
- struct counted_str* kmalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kref_init (int /*<<< orphan*/ *) ; 
+
+
+
+struct counted_str {char* name; int count; } ;
+typedef int gfp_t ;
+
+
+ struct counted_str* kmalloc (int,int ) ;
+ int kref_init (int *) ;
 
 char *aa_str_alloc(int size, gfp_t gfp)
 {
-	struct counted_str *str;
+ struct counted_str *str;
 
-	str = kmalloc(sizeof(struct counted_str) + size, gfp);
-	if (!str)
-		return NULL;
+ str = kmalloc(sizeof(struct counted_str) + size, gfp);
+ if (!str)
+  return ((void*)0);
 
-	kref_init(&str->count);
-	return str->name;
+ kref_init(&str->count);
+ return str->name;
 }

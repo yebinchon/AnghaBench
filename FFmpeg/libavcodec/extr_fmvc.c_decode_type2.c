@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ buffer_start; scalar_t__ buffer_end; } ;
-typedef  TYPE_1__ PutByteContext ;
-typedef  int /*<<< orphan*/  GetByteContext ;
+typedef TYPE_1__ PutByteContext ;
+typedef int GetByteContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- int bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- scalar_t__ bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int bytestream2_get_le16 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_get_le32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,scalar_t__,scalar_t__) ; 
- int bytestream2_peek_byte (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_put_byte (TYPE_1__*,int) ; 
- int /*<<< orphan*/  bytestream2_put_le32 (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bytestream2_seek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,int) ; 
- int bytestream2_tell (int /*<<< orphan*/ *) ; 
- int bytestream2_tell_p (TYPE_1__*) ; 
+
+ int SEEK_SET ;
+ int bytestream2_get_byte (int *) ;
+ scalar_t__ bytestream2_get_bytes_left (int *) ;
+ int bytestream2_get_le16 (int *) ;
+ int bytestream2_get_le32 (int *) ;
+ int bytestream2_init (int *,scalar_t__,scalar_t__) ;
+ int bytestream2_peek_byte (int *) ;
+ int bytestream2_put_byte (TYPE_1__*,int) ;
+ int bytestream2_put_le32 (TYPE_1__*,int ) ;
+ int bytestream2_seek (int *,int,int ) ;
+ int bytestream2_skip (int *,int) ;
+ int bytestream2_tell (int *) ;
+ int bytestream2_tell_p (TYPE_1__*) ;
 
 __attribute__((used)) static int decode_type2(GetByteContext *gb, PutByteContext *pb)
 {
@@ -129,7 +129,7 @@ __attribute__((used)) static int decode_type2(GetByteContext *gb, PutByteContext
             if (opcode >= 0x40) {
                 bytestream2_skip(gb, 1);
                 pos = - ((opcode >> 2) & 7) - 1 - 8 * bytestream2_get_byte(gb);
-                len =    (opcode >> 5)      - 1;
+                len = (opcode >> 5) - 1;
 
                 bytestream2_init(&gbc, pb->buffer_start, pb->buffer_end - pb->buffer_start);
                 bytestream2_seek(&gbc, bytestream2_tell_p(pb) + pos, SEEK_SET);

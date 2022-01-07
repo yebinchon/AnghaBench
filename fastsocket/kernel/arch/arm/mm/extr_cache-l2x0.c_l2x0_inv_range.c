@@ -1,39 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int CACHE_LINE_SIZE ; 
- int /*<<< orphan*/  L2X0_CLEAN_INV_LINE_PA ; 
- int /*<<< orphan*/  L2X0_INV_LINE_PA ; 
- int /*<<< orphan*/  cache_sync () ; 
- int /*<<< orphan*/  sync_writel (unsigned long,int /*<<< orphan*/ ,int) ; 
+ int CACHE_LINE_SIZE ;
+ int L2X0_CLEAN_INV_LINE_PA ;
+ int L2X0_INV_LINE_PA ;
+ int cache_sync () ;
+ int sync_writel (unsigned long,int ,int) ;
 
 __attribute__((used)) static void l2x0_inv_range(unsigned long start, unsigned long end)
 {
-	unsigned long addr;
+ unsigned long addr;
 
-	if (start & (CACHE_LINE_SIZE - 1)) {
-		start &= ~(CACHE_LINE_SIZE - 1);
-		sync_writel(start, L2X0_CLEAN_INV_LINE_PA, 1);
-		start += CACHE_LINE_SIZE;
-	}
+ if (start & (CACHE_LINE_SIZE - 1)) {
+  start &= ~(CACHE_LINE_SIZE - 1);
+  sync_writel(start, L2X0_CLEAN_INV_LINE_PA, 1);
+  start += CACHE_LINE_SIZE;
+ }
 
-	if (end & (CACHE_LINE_SIZE - 1)) {
-		end &= ~(CACHE_LINE_SIZE - 1);
-		sync_writel(end, L2X0_CLEAN_INV_LINE_PA, 1);
-	}
+ if (end & (CACHE_LINE_SIZE - 1)) {
+  end &= ~(CACHE_LINE_SIZE - 1);
+  sync_writel(end, L2X0_CLEAN_INV_LINE_PA, 1);
+ }
 
-	for (addr = start; addr < end; addr += CACHE_LINE_SIZE)
-		sync_writel(addr, L2X0_INV_LINE_PA, 1);
-	cache_sync();
+ for (addr = start; addr < end; addr += CACHE_LINE_SIZE)
+  sync_writel(addr, L2X0_INV_LINE_PA, 1);
+ cache_sync();
 }

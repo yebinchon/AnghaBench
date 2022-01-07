@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * psz_iso639_1; int /*<<< orphan*/ * psz_eng_name; int /*<<< orphan*/ * psz_iso639_2B; int /*<<< orphan*/ * psz_iso639_2T; } ;
-typedef  TYPE_1__ iso639_lang_t ;
-typedef  int /*<<< orphan*/  demux_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * LANGUAGE_DEFAULT ; 
- int /*<<< orphan*/  free (char*) ; 
- TYPE_1__* p_languages ; 
- int /*<<< orphan*/  strcasecmp (int /*<<< orphan*/ *,char*) ; 
- char* strchr (char*,char) ; 
- char* strdup (int /*<<< orphan*/ *) ; 
- char* var_CreateGetString (int /*<<< orphan*/ *,char const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * psz_iso639_1; int * psz_eng_name; int * psz_iso639_2B; int * psz_iso639_2T; } ;
+typedef TYPE_1__ iso639_lang_t ;
+typedef int demux_t ;
+
+
+ int * LANGUAGE_DEFAULT ;
+ int free (char*) ;
+ TYPE_1__* p_languages ;
+ int strcasecmp (int *,char*) ;
+ char* strchr (char*,char) ;
+ char* strdup (int *) ;
+ char* var_CreateGetString (int *,char const*) ;
 
 __attribute__((used)) static char *DemuxGetLanguageCode( demux_t *p_demux, const char *psz_var )
 {
@@ -34,12 +34,12 @@ __attribute__((used)) static char *DemuxGetLanguageCode( demux_t *p_demux, const
     if( !psz_lang )
         return strdup(LANGUAGE_DEFAULT);
 
-    /* XXX: we will use only the first value
-     * (and ignore other ones in case of a list) */
+
+
     if( ( p = strchr( psz_lang, ',' ) ) )
         *p = '\0';
 
-    for( pl = p_languages; pl->psz_eng_name != NULL; pl++ )
+    for( pl = p_languages; pl->psz_eng_name != ((void*)0); pl++ )
     {
         if( *psz_lang == '\0' )
             continue;
@@ -52,7 +52,7 @@ __attribute__((used)) static char *DemuxGetLanguageCode( demux_t *p_demux, const
 
     free( psz_lang );
 
-    if( pl->psz_eng_name != NULL )
+    if( pl->psz_eng_name != ((void*)0) )
         return strdup( pl->psz_iso639_1 );
 
     return strdup(LANGUAGE_DEFAULT);

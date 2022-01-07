@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  U16 ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int U16 ;
 struct TYPE_4__ {TYPE_1__* state_handlers; } ;
-struct TYPE_3__ {int /*<<< orphan*/  (* start_task_handler ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ;} ;
-typedef  int /*<<< orphan*/  SCI_TASK_STATUS ;
-typedef  scalar_t__ SCI_TASK_REQUEST_HANDLE_T ;
-typedef  int /*<<< orphan*/  SCI_STATUS ;
-typedef  scalar_t__ SCI_REMOTE_DEVICE_HANDLE_T ;
-typedef  scalar_t__ SCI_CONTROLLER_HANDLE_T ;
-typedef  int /*<<< orphan*/  SCI_BASE_REQUEST_T ;
-typedef  int /*<<< orphan*/  SCI_BASE_REMOTE_DEVICE_T ;
-typedef  int /*<<< orphan*/  SCI_BASE_CONTROLLER_T ;
-typedef  TYPE_2__ SCIF_SAS_CONTROLLER_T ;
+struct TYPE_3__ {int (* start_task_handler ) (int *,int *,int *,int ) ;} ;
+typedef int SCI_TASK_STATUS ;
+typedef scalar_t__ SCI_TASK_REQUEST_HANDLE_T ;
+typedef int SCI_STATUS ;
+typedef scalar_t__ SCI_REMOTE_DEVICE_HANDLE_T ;
+typedef scalar_t__ SCI_CONTROLLER_HANDLE_T ;
+typedef int SCI_BASE_REQUEST_T ;
+typedef int SCI_BASE_REMOTE_DEVICE_T ;
+typedef int SCI_BASE_CONTROLLER_T ;
+typedef TYPE_2__ SCIF_SAS_CONTROLLER_T ;
 
-/* Variables and functions */
- int SCIF_LOG_OBJECT_CONTROLLER ; 
- int SCIF_LOG_OBJECT_TASK_MANAGEMENT ; 
- int /*<<< orphan*/  SCIF_LOG_TRACE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SCI_FAILURE_INSUFFICIENT_RESOURCES ; 
- scalar_t__ SCI_INVALID_HANDLE ; 
- int /*<<< orphan*/  SCI_TASK_FAILURE_INVALID_PARAMETER_VALUE ; 
- int /*<<< orphan*/  sci_base_object_get_logger (scalar_t__) ; 
- scalar_t__ scif_sas_controller_sufficient_resource (scalar_t__) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int SCIF_LOG_OBJECT_CONTROLLER ;
+ int SCIF_LOG_OBJECT_TASK_MANAGEMENT ;
+ int SCIF_LOG_TRACE (int ) ;
+ int SCI_FAILURE_INSUFFICIENT_RESOURCES ;
+ scalar_t__ SCI_INVALID_HANDLE ;
+ int SCI_TASK_FAILURE_INVALID_PARAMETER_VALUE ;
+ int sci_base_object_get_logger (scalar_t__) ;
+ scalar_t__ scif_sas_controller_sufficient_resource (scalar_t__) ;
+ int stub1 (int *,int *,int *,int ) ;
 
 SCI_TASK_STATUS scif_controller_start_task(
-   SCI_CONTROLLER_HANDLE_T     controller,
-   SCI_REMOTE_DEVICE_HANDLE_T  remote_device,
-   SCI_TASK_REQUEST_HANDLE_T   task_request,
-   U16                         io_tag
+   SCI_CONTROLLER_HANDLE_T controller,
+   SCI_REMOTE_DEVICE_HANDLE_T remote_device,
+   SCI_TASK_REQUEST_HANDLE_T task_request,
+   U16 io_tag
 )
 {
    SCIF_SAS_CONTROLLER_T * fw_controller = (SCIF_SAS_CONTROLLER_T*) controller;
-   SCI_STATUS              status;
+   SCI_STATUS status;
 
-   // Validate the user supplied parameters.
-   if (  (controller == SCI_INVALID_HANDLE)
+
+   if ( (controller == SCI_INVALID_HANDLE)
       || (remote_device == SCI_INVALID_HANDLE)
       || (task_request == SCI_INVALID_HANDLE) )
    {

@@ -1,121 +1,121 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_6__ ;
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_6__ ;
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct sg_list {int dummy; } ;
 struct scsi_host_template {void* use_clustering; } ;
 struct mscp {int dummy; } ;
 struct hostdata {int dummy; } ;
-struct TYPE_11__ {unsigned char heads; unsigned char sectors; unsigned char subversion; unsigned int board_number; TYPE_5__* cp; int /*<<< orphan*/ * pdev; scalar_t__* board_id; } ;
-struct TYPE_10__ {int /*<<< orphan*/  sglist; int /*<<< orphan*/  cp_dma_addr; } ;
-struct TYPE_9__ {unsigned long io_port; unsigned long unique_id; unsigned long base; unsigned char irq; int sg_tablesize; int this_id; unsigned char can_queue; int unchecked_isa_dma; unsigned char dma_channel; unsigned char max_channel; int max_id; int max_lun; TYPE_1__* hostt; scalar_t__ cmd_per_lun; int /*<<< orphan*/  n_io_port; } ;
+struct TYPE_11__ {unsigned char heads; unsigned char sectors; unsigned char subversion; unsigned int board_number; TYPE_5__* cp; int * pdev; scalar_t__* board_id; } ;
+struct TYPE_10__ {int sglist; int cp_dma_addr; } ;
+struct TYPE_9__ {unsigned long io_port; unsigned long unique_id; unsigned long base; unsigned char irq; int sg_tablesize; int this_id; unsigned char can_queue; int unchecked_isa_dma; unsigned char dma_channel; unsigned char max_channel; int max_id; int max_lun; TYPE_1__* hostt; scalar_t__ cmd_per_lun; int n_io_port; } ;
 struct TYPE_8__ {void* use_clustering; } ;
 
-/* Variables and functions */
- char* BN (unsigned int) ; 
- int /*<<< orphan*/  CMD_ENA_INTR ; 
- void* DISABLE_CLUSTERING ; 
- int /*<<< orphan*/  DMA_MODE_CASCADE ; 
- unsigned char ESA ; 
- int FALSE ; 
- int GFP_ATOMIC ; 
- int GFP_DMA ; 
- TYPE_6__* HD (unsigned int) ; 
- int IRQF_DISABLED ; 
- int IRQF_SHARED ; 
- unsigned char ISA ; 
- unsigned char MAX_CHANNEL ; 
- scalar_t__ MAX_CMD_PER_LUN ; 
- int MAX_LUN ; 
- unsigned char MAX_MAILBOXES ; 
- void* MAX_SAFE_SGLIST ; 
- int MAX_SGLIST ; 
- scalar_t__ MAX_TAGGED_CMD_PER_LUN ; 
- int MAX_TARGET ; 
- unsigned char NO_DMA ; 
- int /*<<< orphan*/  PCI_DMA_BIDIRECTIONAL ; 
- void* PRODUCT_ID1 ; 
- unsigned char PRODUCT_ID2 ; 
- int /*<<< orphan*/  REGION_SIZE ; 
- scalar_t__ REG_CONFIG1 ; 
- scalar_t__ REG_CONFIG2 ; 
- scalar_t__ REG_LCL_MASK ; 
- scalar_t__ REG_PRODUCT_ID1 ; 
- scalar_t__ REG_PRODUCT_ID2 ; 
- scalar_t__ REG_SYS_MASK ; 
- scalar_t__ TAG_DISABLED ; 
- scalar_t__ TAG_ORDERED ; 
- scalar_t__ TAG_SIMPLE ; 
- int TRUE ; 
- int /*<<< orphan*/  YESNO (scalar_t__) ; 
- int /*<<< orphan*/  board_inquiry (unsigned int) ; 
- unsigned long claim_dma_lock () ; 
- int /*<<< orphan*/  clear_dma_ff (unsigned char) ; 
- int /*<<< orphan*/  disable_dma (unsigned char) ; 
- int /*<<< orphan*/  do_interrupt_handler ; 
- int /*<<< orphan*/  driver_lock ; 
- char* driver_name ; 
- int /*<<< orphan*/  enable_dma (unsigned char) ; 
- scalar_t__ ext_tran ; 
- int /*<<< orphan*/  free_dma (unsigned char) ; 
- int /*<<< orphan*/  free_irq (unsigned char,int /*<<< orphan*/ *) ; 
- scalar_t__ have_old_firmware ; 
- void* inb (scalar_t__) ; 
- int /*<<< orphan*/  kmalloc (int,int) ; 
- scalar_t__ linked_comm ; 
- scalar_t__ max_queue_depth ; 
- int /*<<< orphan*/  memset (TYPE_6__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  outb (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  pci_map_single (int /*<<< orphan*/ *,TYPE_5__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printk (char*,...) ; 
- int /*<<< orphan*/  release_dma_lock (unsigned long) ; 
- int /*<<< orphan*/  release_region (unsigned long,int /*<<< orphan*/ ) ; 
- scalar_t__ request_dma (unsigned char,char*) ; 
- scalar_t__ request_irq (unsigned char,int /*<<< orphan*/ ,int,char*,void*) ; 
- int /*<<< orphan*/  request_region (unsigned long,int /*<<< orphan*/ ,char*) ; 
- TYPE_2__* scsi_register (struct scsi_host_template*,int) ; 
- int /*<<< orphan*/  set_dma_mode (unsigned char,int /*<<< orphan*/ ) ; 
- TYPE_2__** sh ; 
- int /*<<< orphan*/ * sha ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
- scalar_t__ strcmp (scalar_t__*,char*) ; 
- scalar_t__ tag_mode ; 
- int /*<<< orphan*/  u14_34f_release (TYPE_2__*) ; 
 
-__attribute__((used)) static int port_detect \
-      (unsigned long port_base, unsigned int j, struct scsi_host_template *tpnt) {
+ char* BN (unsigned int) ;
+ int CMD_ENA_INTR ;
+ void* DISABLE_CLUSTERING ;
+ int DMA_MODE_CASCADE ;
+ unsigned char ESA ;
+ int FALSE ;
+ int GFP_ATOMIC ;
+ int GFP_DMA ;
+ TYPE_6__* HD (unsigned int) ;
+ int IRQF_DISABLED ;
+ int IRQF_SHARED ;
+ unsigned char ISA ;
+ unsigned char MAX_CHANNEL ;
+ scalar_t__ MAX_CMD_PER_LUN ;
+ int MAX_LUN ;
+ unsigned char MAX_MAILBOXES ;
+ void* MAX_SAFE_SGLIST ;
+ int MAX_SGLIST ;
+ scalar_t__ MAX_TAGGED_CMD_PER_LUN ;
+ int MAX_TARGET ;
+ unsigned char NO_DMA ;
+ int PCI_DMA_BIDIRECTIONAL ;
+ void* PRODUCT_ID1 ;
+ unsigned char PRODUCT_ID2 ;
+ int REGION_SIZE ;
+ scalar_t__ REG_CONFIG1 ;
+ scalar_t__ REG_CONFIG2 ;
+ scalar_t__ REG_LCL_MASK ;
+ scalar_t__ REG_PRODUCT_ID1 ;
+ scalar_t__ REG_PRODUCT_ID2 ;
+ scalar_t__ REG_SYS_MASK ;
+ scalar_t__ TAG_DISABLED ;
+ scalar_t__ TAG_ORDERED ;
+ scalar_t__ TAG_SIMPLE ;
+ int TRUE ;
+ int YESNO (scalar_t__) ;
+ int board_inquiry (unsigned int) ;
+ unsigned long claim_dma_lock () ;
+ int clear_dma_ff (unsigned char) ;
+ int disable_dma (unsigned char) ;
+ int do_interrupt_handler ;
+ int driver_lock ;
+ char* driver_name ;
+ int enable_dma (unsigned char) ;
+ scalar_t__ ext_tran ;
+ int free_dma (unsigned char) ;
+ int free_irq (unsigned char,int *) ;
+ scalar_t__ have_old_firmware ;
+ void* inb (scalar_t__) ;
+ int kmalloc (int,int) ;
+ scalar_t__ linked_comm ;
+ scalar_t__ max_queue_depth ;
+ int memset (TYPE_6__*,int ,int) ;
+ int outb (int ,scalar_t__) ;
+ int pci_map_single (int *,TYPE_5__*,int,int ) ;
+ int printk (char*,...) ;
+ int release_dma_lock (unsigned long) ;
+ int release_region (unsigned long,int ) ;
+ scalar_t__ request_dma (unsigned char,char*) ;
+ scalar_t__ request_irq (unsigned char,int ,int,char*,void*) ;
+ int request_region (unsigned long,int ,char*) ;
+ TYPE_2__* scsi_register (struct scsi_host_template*,int) ;
+ int set_dma_mode (unsigned char,int ) ;
+ TYPE_2__** sh ;
+ int * sha ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
+ int sprintf (char*,char*,...) ;
+ scalar_t__ strcmp (scalar_t__*,char*) ;
+ scalar_t__ tag_mode ;
+ int u14_34f_release (TYPE_2__*) ;
+
+__attribute__((used)) static int port_detect (unsigned long port_base, unsigned int j, struct scsi_host_template *tpnt) {
+
    unsigned char irq, dma_channel, subversion, i;
    unsigned char in_byte;
    char *bus_type, dma_name[16];
 
-   /* Allowed BIOS base addresses (NULL indicates reserved) */
+
    unsigned long bios_segment_table[8] = {
       0,
       0xc4000, 0xc8000, 0xcc000, 0xd0000,
       0xd4000, 0xd8000, 0xdc000
       };
 
-   /* Allowed IRQs */
+
    unsigned char interrupt_table[4] = { 15, 14, 11, 10 };
 
-   /* Allowed DMA channels for ISA (0 indicates reserved) */
+
    unsigned char dma_channel_table[4] = { 5, 6, 7, 0 };
 
-   /* Head/sector mappings */
+
    struct {
       unsigned char heads;
       unsigned char sectors;
@@ -125,25 +125,25 @@ __attribute__((used)) static int port_detect \
 
    struct config_1 {
 
-#if defined(__BIG_ENDIAN_BITFIELD)
-      unsigned char dma_channel: 2, interrupt:2,
-                    removable_disks_as_fixed:1, bios_segment: 3;
-#else
+
+
+
+
       unsigned char bios_segment: 3, removable_disks_as_fixed: 1,
                     interrupt: 2, dma_channel: 2;
-#endif
+
 
       } config_1;
 
    struct config_2 {
 
-#if defined(__BIG_ENDIAN_BITFIELD)
-      unsigned char tfr_port: 2, bios_drive_number: 1,
-                    mapping_mode: 2, ha_scsi_id: 3;
-#else
+
+
+
+
       unsigned char ha_scsi_id: 3, mapping_mode: 2,
                     bios_drive_number: 1, tfr_port: 2;
-#endif
+
 
       } config_2;
 
@@ -152,9 +152,9 @@ __attribute__((used)) static int port_detect \
    sprintf(name, "%s%d", driver_name, j);
 
    if (!request_region(port_base, REGION_SIZE, driver_name)) {
-#if defined(DEBUG_DETECT)
-      printk("%s: address 0x%03lx in use, skipping probe.\n", name, port_base);
-#endif
+
+
+
       goto fail;
       }
 
@@ -173,7 +173,7 @@ __attribute__((used)) static int port_detect \
    dma_channel = dma_channel_table[config_1.dma_channel];
    subversion = (in_byte & 0x0f);
 
-   /* Board detected, allocate its IRQ */
+
    if (request_irq(irq, do_interrupt_handler,
              IRQF_DISABLED | ((subversion == ESA) ? IRQF_SHARED : 0),
              driver_name, (void *) &sha[j])) {
@@ -193,7 +193,7 @@ __attribute__((used)) static int port_detect \
    sh[j] = scsi_register(tpnt, sizeof(struct hostdata));
    spin_lock_irq(&driver_lock);
 
-   if (sh[j] == NULL) {
+   if (sh[j] == ((void*)0)) {
       printk("%s: unable to register host, detaching.\n", name);
       goto freedma;
       }
@@ -207,28 +207,16 @@ __attribute__((used)) static int port_detect \
    sh[j]->this_id = config_2.ha_scsi_id;
    sh[j]->can_queue = MAX_MAILBOXES;
    sh[j]->cmd_per_lun = MAX_CMD_PER_LUN;
-
-#if defined(DEBUG_DETECT)
-   {
-   unsigned char sys_mask, lcl_mask;
-
-   sys_mask = inb(sh[j]->io_port + REG_SYS_MASK);
-   lcl_mask = inb(sh[j]->io_port + REG_LCL_MASK);
-   printk("SYS_MASK 0x%x, LCL_MASK 0x%x.\n", sys_mask, lcl_mask);
-   }
-#endif
-
-   /* Probably a bogus host scsi id, set it to the dummy value */
    if (sh[j]->this_id == 0) sh[j]->this_id = -1;
 
-   /* If BIOS is disabled, force enable interrupts */
+
    if (sh[j]->base == 0) outb(CMD_ENA_INTR, sh[j]->io_port + REG_SYS_MASK);
 
    memset(HD(j), 0, sizeof(struct hostdata));
    HD(j)->heads = mapping_table[config_2.mapping_mode].heads;
    HD(j)->sectors = mapping_table[config_2.mapping_mode].sectors;
    HD(j)->subversion = subversion;
-   HD(j)->pdev = NULL;
+   HD(j)->pdev = ((void*)0);
    HD(j)->board_number = j;
 
    if (have_old_firmware) sh[j]->sg_tablesize = MAX_SAFE_SGLIST;
@@ -272,7 +260,7 @@ __attribute__((used)) static int port_detect \
       }
 
    if (dma_channel == NO_DMA) sprintf(dma_name, "%s", "BMST");
-   else                       sprintf(dma_name, "DMA %u", dma_channel);
+   else sprintf(dma_name, "DMA %u", dma_channel);
 
    spin_unlock_irq(&driver_lock);
 

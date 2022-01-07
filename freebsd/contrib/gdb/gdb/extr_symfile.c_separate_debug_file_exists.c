@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buffer ;
 
-/* Variables and functions */
- int O_BINARY ; 
- int O_RDONLY ; 
- int /*<<< orphan*/  close (int) ; 
- unsigned long gnu_debuglink_crc32 (unsigned long,char*,int) ; 
- int open (char const*,int) ; 
- int read (int,char*,int) ; 
+
+
+
+typedef int buffer ;
+
+
+ int O_BINARY ;
+ int O_RDONLY ;
+ int close (int) ;
+ unsigned long gnu_debuglink_crc32 (unsigned long,char*,int) ;
+ int open (char const*,int) ;
+ int read (int,char*,int) ;
 
 __attribute__((used)) static int
 separate_debug_file_exists (const char *name, unsigned long crc)

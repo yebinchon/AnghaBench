@@ -1,65 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ GetProcAddress; scalar_t__ GetDepthBuffer; scalar_t__ GetColorBuffer; scalar_t__ MakeCurrent; scalar_t__ DestroyContext; scalar_t__ CreateContextExt; scalar_t__ handle; scalar_t__ CreateContextAttribs; } ;
 struct TYPE_4__ {TYPE_1__ osmesa; } ;
-typedef  scalar_t__ PFN_OSMesaMakeCurrent ;
-typedef  scalar_t__ PFN_OSMesaGetProcAddress ;
-typedef  scalar_t__ PFN_OSMesaGetDepthBuffer ;
-typedef  scalar_t__ PFN_OSMesaGetColorBuffer ;
-typedef  scalar_t__ PFN_OSMesaDestroyContext ;
-typedef  scalar_t__ PFN_OSMesaCreateContextExt ;
-typedef  scalar_t__ PFN_OSMesaCreateContextAttribs ;
-typedef  int /*<<< orphan*/  GLFWbool ;
+typedef scalar_t__ PFN_OSMesaMakeCurrent ;
+typedef scalar_t__ PFN_OSMesaGetProcAddress ;
+typedef scalar_t__ PFN_OSMesaGetDepthBuffer ;
+typedef scalar_t__ PFN_OSMesaGetColorBuffer ;
+typedef scalar_t__ PFN_OSMesaDestroyContext ;
+typedef scalar_t__ PFN_OSMesaCreateContextExt ;
+typedef scalar_t__ PFN_OSMesaCreateContextAttribs ;
+typedef int GLFWbool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_API_UNAVAILABLE ; 
- int /*<<< orphan*/  GLFW_FALSE ; 
- int /*<<< orphan*/  GLFW_PLATFORM_ERROR ; 
- int /*<<< orphan*/  GLFW_TRUE ; 
- char* _GLFW_OSMESA_LIBRARY ; 
- TYPE_2__ _glfw ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  _glfwTerminateOSMesa () ; 
- scalar_t__ _glfw_dlopen (char const*) ; 
- scalar_t__ _glfw_dlsym (scalar_t__,char*) ; 
+
+ int GLFW_API_UNAVAILABLE ;
+ int GLFW_FALSE ;
+ int GLFW_PLATFORM_ERROR ;
+ int GLFW_TRUE ;
+ char* _GLFW_OSMESA_LIBRARY ;
+ TYPE_2__ _glfw ;
+ int _glfwInputError (int ,char*) ;
+ int _glfwTerminateOSMesa () ;
+ scalar_t__ _glfw_dlopen (char const*) ;
+ scalar_t__ _glfw_dlsym (scalar_t__,char*) ;
 
 GLFWbool _glfwInitOSMesa(void)
 {
     int i;
     const char* sonames[] =
     {
-#if defined(_GLFW_OSMESA_LIBRARY)
-        _GLFW_OSMESA_LIBRARY,
-#elif defined(_WIN32)
-        "libOSMesa.dll",
-        "OSMesa.dll",
-#elif defined(__APPLE__)
-        "libOSMesa.8.dylib",
-#elif defined(__CYGWIN__)
-        "libOSMesa-8.so",
-#else
         "libOSMesa.so.8",
         "libOSMesa.so.6",
-#endif
-        NULL
+
+        ((void*)0)
     };
 
     if (_glfw.osmesa.handle)
         return GLFW_TRUE;
 
-    for (i = 0;  sonames[i];  i++)
+    for (i = 0; sonames[i]; i++)
     {
         _glfw.osmesa.handle = _glfw_dlopen(sonames[i]);
         if (_glfw.osmesa.handle)

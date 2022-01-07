@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_1__* connection; } ;
-typedef  TYPE_2__ ngx_http_request_t ;
-typedef  int /*<<< orphan*/  ngx_http_lua_ctx_t ;
-struct TYPE_9__ {scalar_t__ co_ref; int /*<<< orphan*/  co_status; int /*<<< orphan*/  co; } ;
-typedef  TYPE_3__ ngx_http_lua_co_ctx_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_7__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_2__ ngx_http_request_t ;
+typedef int ngx_http_lua_ctx_t ;
+struct TYPE_9__ {scalar_t__ co_ref; int co_status; int co; } ;
+typedef TYPE_3__ ngx_http_lua_co_ctx_t ;
+typedef int lua_State ;
+struct TYPE_7__ {int log; } ;
 
-/* Variables and functions */
- scalar_t__ LUA_NOREF ; 
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- int /*<<< orphan*/  NGX_HTTP_LUA_CO_DEAD ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  coroutines_key ; 
- int /*<<< orphan*/  luaL_unref (int /*<<< orphan*/ *,int,scalar_t__) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushlightuserdata (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_rawget (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_lua_lightudata_mask (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_lua_probe_thread_delete (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+ scalar_t__ LUA_NOREF ;
+ int LUA_REGISTRYINDEX ;
+ int NGX_HTTP_LUA_CO_DEAD ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int coroutines_key ;
+ int luaL_unref (int *,int,scalar_t__) ;
+ int lua_pop (int *,int) ;
+ int lua_pushlightuserdata (int *,int ) ;
+ int lua_rawget (int *,int ) ;
+ int ngx_http_lua_lightudata_mask (int ) ;
+ int ngx_http_lua_probe_thread_delete (TYPE_2__*,int ,int *) ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
 
 void
 ngx_http_lua_del_thread(ngx_http_request_t *r, lua_State *L,

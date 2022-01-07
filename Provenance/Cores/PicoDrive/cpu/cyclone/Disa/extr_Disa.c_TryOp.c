@@ -1,65 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  Disa4E70 (int) ; 
- int /*<<< orphan*/  DisaAbcd (int) ; 
- int /*<<< orphan*/  DisaAddq (int) ; 
- int /*<<< orphan*/  DisaAddx (int) ; 
- int /*<<< orphan*/  DisaArithImm (int) ; 
- int /*<<< orphan*/  DisaArithReg (int) ; 
- int /*<<< orphan*/  DisaArithSr (int) ; 
- int /*<<< orphan*/  DisaAritha (int) ; 
- int /*<<< orphan*/  DisaAsr (int) ; 
- int /*<<< orphan*/  DisaAsrEa (int) ; 
- int /*<<< orphan*/  DisaBranch (int) ; 
- int /*<<< orphan*/  DisaBtstImm (int) ; 
- int /*<<< orphan*/  DisaBtstReg (int) ; 
- int /*<<< orphan*/  DisaCmpEor (int) ; 
- int /*<<< orphan*/  DisaCmpm (int) ; 
- int /*<<< orphan*/  DisaDbra (int) ; 
- int /*<<< orphan*/  DisaExg (int) ; 
- int /*<<< orphan*/  DisaExt (int) ; 
- int /*<<< orphan*/  DisaJsr (int) ; 
- int /*<<< orphan*/  DisaLea (int) ; 
- int /*<<< orphan*/  DisaLink (int) ; 
- int /*<<< orphan*/  DisaMove (int) ; 
- int /*<<< orphan*/  DisaMoveSr (int) ; 
- int /*<<< orphan*/  DisaMoveUsp (int) ; 
- int /*<<< orphan*/  DisaMovem (int) ; 
- int /*<<< orphan*/  DisaMovep (int) ; 
- int /*<<< orphan*/  DisaMoveq (int) ; 
- int /*<<< orphan*/  DisaMul (int) ; 
- int /*<<< orphan*/  DisaNbcd (int) ; 
- int /*<<< orphan*/  DisaNeg (int) ; 
- int /*<<< orphan*/  DisaPea (int) ; 
- int /*<<< orphan*/  DisaSet (int) ; 
- int /*<<< orphan*/  DisaSwap (int) ; 
- int /*<<< orphan*/  DisaTas (int) ; 
- int /*<<< orphan*/  DisaTrap (int) ; 
- int /*<<< orphan*/  DisaTst (int) ; 
- int /*<<< orphan*/  DisaUnlk (int) ; 
- int /*<<< orphan*/  OpChk (int) ; 
+ int Disa4E70 (int) ;
+ int DisaAbcd (int) ;
+ int DisaAddq (int) ;
+ int DisaAddx (int) ;
+ int DisaArithImm (int) ;
+ int DisaArithReg (int) ;
+ int DisaArithSr (int) ;
+ int DisaAritha (int) ;
+ int DisaAsr (int) ;
+ int DisaAsrEa (int) ;
+ int DisaBranch (int) ;
+ int DisaBtstImm (int) ;
+ int DisaBtstReg (int) ;
+ int DisaCmpEor (int) ;
+ int DisaCmpm (int) ;
+ int DisaDbra (int) ;
+ int DisaExg (int) ;
+ int DisaExt (int) ;
+ int DisaJsr (int) ;
+ int DisaLea (int) ;
+ int DisaLink (int) ;
+ int DisaMove (int) ;
+ int DisaMoveSr (int) ;
+ int DisaMoveUsp (int) ;
+ int DisaMovem (int) ;
+ int DisaMovep (int) ;
+ int DisaMoveq (int) ;
+ int DisaMul (int) ;
+ int DisaNbcd (int) ;
+ int DisaNeg (int) ;
+ int DisaPea (int) ;
+ int DisaSet (int) ;
+ int DisaSwap (int) ;
+ int DisaTas (int) ;
+ int DisaTrap (int) ;
+ int DisaTst (int) ;
+ int DisaUnlk (int) ;
+ int OpChk (int) ;
 
 __attribute__((used)) static int TryOp(int op)
 {
-  if ((op&0xf100)==0x0000) DisaArithImm(op); // Ori/And/Sub/Add/Eor/Cmp Immediate
-  if ((op&0xf5bf)==0x003c) DisaArithSr(op); // Ori/Andi/Eori $nnnn,sr
+  if ((op&0xf100)==0x0000) DisaArithImm(op);
+  if ((op&0xf5bf)==0x003c) DisaArithSr(op);
   if ((op&0xf100)==0x0100) DisaBtstReg(op);
   if ((op&0xf138)==0x0108) DisaMovep(op);
-  if ((op&0xff00)==0x0800) DisaBtstImm(op); // Btst/Bchg/Bclr/Bset
+  if ((op&0xff00)==0x0800) DisaBtstImm(op);
   if ((op&0xc000)==0x0000) DisaMove(op);
-  if ((op&0xf900)==0x4000) DisaNeg(op); // Negx/Clr/Neg/Not
+  if ((op&0xf900)==0x4000) DisaNeg(op);
   if ((op&0xf140)==0x4100) OpChk(op);
   if ((op&0xf1c0)==0x41c0) DisaLea(op);
   if ((op&0xf9c0)==0x40c0) DisaMoveSr(op);
@@ -80,7 +72,7 @@ __attribute__((used)) static int TryOp(int op)
   if ((op&0xf0c0)==0x50c0) DisaSet(op);
   if ((op&0xf0f8)==0x50c8) DisaDbra(op);
   if ((op&0xf000)==0x6000) DisaBranch(op);
-  if ((op&0xa000)==0x8000) DisaArithReg(op); // Or/Sub/And/Add
+  if ((op&0xa000)==0x8000) DisaArithReg(op);
   if ((op&0xb1f0)==0x8100) DisaAbcd(op);
   if ((op&0xb130)==0x9100) DisaAddx(op);
   if ((op&0xb0c0)==0x80c0) DisaMul(op);
@@ -92,6 +84,6 @@ __attribute__((used)) static int TryOp(int op)
   if ((op&0xf000)==0xe000) DisaAsr(op);
   if ((op&0xf8c0)==0xe0c0) DisaAsrEa(op);
 
-  // Unknown opcoode
+
   return 0;
 }

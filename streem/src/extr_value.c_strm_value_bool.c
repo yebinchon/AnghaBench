@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-typedef  int /*<<< orphan*/  strm_value ;
 
-/* Variables and functions */
- int FALSE ; 
-#define  STRM_TAG_BOOL 129 
-#define  STRM_TAG_PTR 128 
- int TRUE ; 
- int /*<<< orphan*/  assert (int) ; 
- int const strm_value_tag (int /*<<< orphan*/ ) ; 
- scalar_t__ strm_value_val (int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ uint64_t ;
+typedef int strm_value ;
+
+
+ int FALSE ;
+
+
+ int TRUE ;
+ int assert (int) ;
+ int const strm_value_tag (int ) ;
+ scalar_t__ strm_value_val (int ) ;
 
 int
 strm_value_bool(strm_value v)
@@ -29,11 +29,11 @@ strm_value_bool(strm_value v)
 
   if (i == 0) {
     switch (strm_value_tag(v)) {
-    case STRM_TAG_BOOL:         /* false */
-    case STRM_TAG_PTR:          /* nil */
+    case 129:
+    case 128:
       break;
     default:
-      assert(strm_value_tag(v) == STRM_TAG_BOOL);
+      assert(strm_value_tag(v) == 129);
       break;
     }
     return FALSE;

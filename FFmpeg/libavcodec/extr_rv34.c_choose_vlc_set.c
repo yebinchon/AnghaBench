@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RV34VLC ;
 
-/* Variables and functions */
- size_t av_clip (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * inter_vlcs ; 
- int /*<<< orphan*/ * intra_vlcs ; 
- size_t** rv34_quant_to_vlc_set ; 
+
+
+
+typedef int RV34VLC ;
+
+
+ size_t av_clip (int,int ,int) ;
+ int * inter_vlcs ;
+ int * intra_vlcs ;
+ size_t** rv34_quant_to_vlc_set ;
 
 __attribute__((used)) static inline RV34VLC* choose_vlc_set(int quant, int mod, int type)
 {

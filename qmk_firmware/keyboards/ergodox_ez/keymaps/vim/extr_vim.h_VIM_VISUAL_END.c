@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  KC_LALT ; 
- int /*<<< orphan*/  KC_NO ; 
- int /*<<< orphan*/  KC_RIGHT ; 
- int /*<<< orphan*/  PRESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RELEASE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SHIFT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VIM_LEADER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print (char*) ; 
+ int KC_LALT ;
+ int KC_NO ;
+ int KC_RIGHT ;
+ int PRESS (int ) ;
+ int RELEASE (int ) ;
+ int SHIFT (int ) ;
+ int VIM_LEADER (int ) ;
+ int print (char*) ;
 
 void VIM_VISUAL_END(void) {
   print("\e[31mve\e[0m");
   VIM_LEADER(KC_NO);
   PRESS(KC_LALT);
-    SHIFT(KC_RIGHT); // select to end of this word
+    SHIFT(KC_RIGHT);
   RELEASE(KC_LALT);
 }

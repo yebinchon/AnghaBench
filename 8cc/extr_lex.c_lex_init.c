@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  buffers ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  error (char*,char*,char*) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  make_file (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  make_vector () ; 
- int /*<<< orphan*/ * stdin ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  stream_push (int /*<<< orphan*/ ) ; 
- char* strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vec_push (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int FILE ;
+
+
+ int buffers ;
+ int errno ;
+ int error (char*,char*,char*) ;
+ int * fopen (char*,char*) ;
+ int make_file (int *,char*) ;
+ int make_vector () ;
+ int * stdin ;
+ int strcmp (char*,char*) ;
+ int stream_push (int ) ;
+ char* strerror (int ) ;
+ int vec_push (int ,int ) ;
 
 void lex_init(char *filename) {
     vec_push(buffers, make_vector());

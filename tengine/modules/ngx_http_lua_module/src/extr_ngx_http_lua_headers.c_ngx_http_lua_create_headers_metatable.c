@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ngx_log_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- int /*<<< orphan*/  headers_metatable_key ; 
- int luaL_loadbuffer (int /*<<< orphan*/ *,char const*,int,char*) ; 
- int /*<<< orphan*/  lua_createtable (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushlightuserdata (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_rawset (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_tostring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ngx_http_lua_lightudata_mask (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ngx_log_t ;
+typedef int lua_State ;
+typedef int buf ;
+
+
+ int LUA_REGISTRYINDEX ;
+ int NGX_LOG_ERR ;
+ int headers_metatable_key ;
+ int luaL_loadbuffer (int *,char const*,int,char*) ;
+ int lua_createtable (int *,int ,int) ;
+ int lua_pop (int *,int) ;
+ int lua_pushlightuserdata (int *,int ) ;
+ int lua_rawset (int *,int ) ;
+ int lua_setfield (int *,int,char*) ;
+ int lua_tostring (int *,int) ;
+ int ngx_http_lua_lightudata_mask (int ) ;
+ int ngx_log_error (int ,int *,int ,char*,int,int ) ;
 
 void
 ngx_http_lua_create_headers_metatable(ngx_log_t *log, lua_State *L)
@@ -40,8 +40,8 @@ ngx_http_lua_create_headers_metatable(ngx_log_t *log, lua_State *L)
     lua_pushlightuserdata(L, ngx_http_lua_lightudata_mask(
                           headers_metatable_key));
 
-    /* metatable for ngx.req.get_headers(_, true) and
-     * ngx.resp.get_headers(_, true) */
+
+
     lua_createtable(L, 0, 1);
 
     rc = luaL_loadbuffer(L, buf, sizeof(buf) - 1, "=headers metatable");

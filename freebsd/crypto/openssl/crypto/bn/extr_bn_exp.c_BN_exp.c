@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  const BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const* BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_FLG_CONSTTIME ; 
- int /*<<< orphan*/  BN_F_BN_EXP ; 
- int /*<<< orphan*/ * BN_copy (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- scalar_t__ BN_get_flags (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- scalar_t__ BN_is_bit_set (int /*<<< orphan*/  const*,int) ; 
- scalar_t__ BN_is_odd (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_mul (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int BN_num_bits (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_one (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_sqr (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BNerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_SHOULD_NOT_HAVE_BEEN_CALLED ; 
- int /*<<< orphan*/  bn_check_top (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int BN_CTX ;
+typedef int const BIGNUM ;
+
+
+ int BN_CTX_end (int *) ;
+ int const* BN_CTX_get (int *) ;
+ int BN_CTX_start (int *) ;
+ int BN_FLG_CONSTTIME ;
+ int BN_F_BN_EXP ;
+ int * BN_copy (int const*,int const*) ;
+ scalar_t__ BN_get_flags (int const*,int ) ;
+ scalar_t__ BN_is_bit_set (int const*,int) ;
+ scalar_t__ BN_is_odd (int const*) ;
+ int BN_mul (int const*,int const*,int const*,int *) ;
+ int BN_num_bits (int const*) ;
+ int BN_one (int const*) ;
+ int BN_sqr (int const*,int const*,int *) ;
+ int BNerr (int ,int ) ;
+ int ERR_R_SHOULD_NOT_HAVE_BEEN_CALLED ;
+ int bn_check_top (int const*) ;
 
 int BN_exp(BIGNUM *r, const BIGNUM *a, const BIGNUM *p, BN_CTX *ctx)
 {
@@ -38,7 +38,7 @@ int BN_exp(BIGNUM *r, const BIGNUM *a, const BIGNUM *p, BN_CTX *ctx)
 
     if (BN_get_flags(p, BN_FLG_CONSTTIME) != 0
             || BN_get_flags(a, BN_FLG_CONSTTIME) != 0) {
-        /* BN_FLG_CONSTTIME only supported by BN_mod_exp_mont() */
+
         BNerr(BN_F_BN_EXP, ERR_R_SHOULD_NOT_HAVE_BEEN_CALLED);
         return 0;
     }
@@ -46,15 +46,15 @@ int BN_exp(BIGNUM *r, const BIGNUM *a, const BIGNUM *p, BN_CTX *ctx)
     BN_CTX_start(ctx);
     rr = ((r == a) || (r == p)) ? BN_CTX_get(ctx) : r;
     v = BN_CTX_get(ctx);
-    if (rr == NULL || v == NULL)
+    if (rr == ((void*)0) || v == ((void*)0))
         goto err;
 
-    if (BN_copy(v, a) == NULL)
+    if (BN_copy(v, a) == ((void*)0))
         goto err;
     bits = BN_num_bits(p);
 
     if (BN_is_odd(p)) {
-        if (BN_copy(rr, a) == NULL)
+        if (BN_copy(rr, a) == ((void*)0))
             goto err;
     } else {
         if (!BN_one(rr))
@@ -69,7 +69,7 @@ int BN_exp(BIGNUM *r, const BIGNUM *a, const BIGNUM *p, BN_CTX *ctx)
                 goto err;
         }
     }
-    if (r != rr && BN_copy(r, rr) == NULL)
+    if (r != rr && BN_copy(r, rr) == ((void*)0))
         goto err;
 
     ret = 1;

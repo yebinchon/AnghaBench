@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64 ;
-typedef  int uint ;
 
-/* Variables and functions */
- int DY ; 
- int FLAG_C ; 
- int /*<<< orphan*/  FLAG_N ; 
- int /*<<< orphan*/  FLAG_V ; 
- int FLAG_Z ; 
- int /*<<< orphan*/  NFLAG_32 (int) ; 
- int REG_IR ; 
- int ROR_32 (int,int) ; 
- int /*<<< orphan*/  VFLAG_CLEAR ; 
+
+
+
+typedef int uint64 ;
+typedef int uint ;
+
+
+ int DY ;
+ int FLAG_C ;
+ int FLAG_N ;
+ int FLAG_V ;
+ int FLAG_Z ;
+ int NFLAG_32 (int) ;
+ int REG_IR ;
+ int ROR_32 (int,int) ;
+ int VFLAG_CLEAR ;
 
 void m68k_op_ror_32_s(void)
 {
-	uint* r_dst = &DY;
-	uint shift = (((REG_IR >> 9) - 1) & 7) + 1;
-	uint64 src = *r_dst;
-	uint res = ROR_32(src, shift);
+ uint* r_dst = &DY;
+ uint shift = (((REG_IR >> 9) - 1) & 7) + 1;
+ uint64 src = *r_dst;
+ uint res = ROR_32(src, shift);
 
-	*r_dst = res;
+ *r_dst = res;
 
-	FLAG_N = NFLAG_32(res);
-	FLAG_Z = res;
-	FLAG_C = src << (9-shift);
-	FLAG_V = VFLAG_CLEAR;
+ FLAG_N = NFLAG_32(res);
+ FLAG_Z = res;
+ FLAG_C = src << (9-shift);
+ FLAG_V = VFLAG_CLEAR;
 }

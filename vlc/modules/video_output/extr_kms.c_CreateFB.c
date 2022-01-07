@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_2__* sys; } ;
-typedef  TYPE_1__ vout_display_t ;
-struct TYPE_6__ {int width; int height; int drm_fourcc; int stride; int* offsets; size_t* handle; scalar_t__* map; int /*<<< orphan*/  drm_fd; scalar_t__* fb; int /*<<< orphan*/  size; } ;
-typedef  TYPE_2__ vout_display_sys_t ;
-typedef  size_t uint32_t ;
-struct drm_mode_map_dumb {int width; int height; int bpp; size_t handle; int /*<<< orphan*/  offset; int /*<<< orphan*/  size; } ;
-struct drm_mode_destroy_dumb {int width; int height; int bpp; size_t handle; int /*<<< orphan*/  offset; int /*<<< orphan*/  size; } ;
-struct drm_mode_create_dumb {int width; int height; int bpp; size_t handle; int /*<<< orphan*/  offset; int /*<<< orphan*/  size; } ;
-typedef  scalar_t__ deviceRval ;
-typedef  int /*<<< orphan*/  destroy_req ;
+typedef TYPE_1__ vout_display_t ;
+struct TYPE_6__ {int width; int height; int drm_fourcc; int stride; int* offsets; size_t* handle; scalar_t__* map; int drm_fd; scalar_t__* fb; int size; } ;
+typedef TYPE_2__ vout_display_sys_t ;
+typedef size_t uint32_t ;
+struct drm_mode_map_dumb {int width; int height; int bpp; size_t handle; int offset; int size; } ;
+struct drm_mode_destroy_dumb {int width; int height; int bpp; size_t handle; int offset; int size; } ;
+struct drm_mode_create_dumb {int width; int height; int bpp; size_t handle; int offset; int size; } ;
+typedef scalar_t__ deviceRval ;
+typedef int destroy_req ;
 
-/* Variables and functions */
- int ALIGN (int,unsigned int) ; 
- size_t ARRAY_SIZE (size_t*) ; 
-#define  DRM_FORMAT_NV12 131 
-#define  DRM_FORMAT_P010 130 
-#define  DRM_FORMAT_P012 129 
-#define  DRM_FORMAT_P016 128 
- int /*<<< orphan*/  DRM_IOCTL_MODE_CREATE_DUMB ; 
- int /*<<< orphan*/  DRM_IOCTL_MODE_DESTROY_DUMB ; 
- int /*<<< orphan*/  DRM_IOCTL_MODE_MAP_DUMB ; 
- scalar_t__ MAP_FAILED ; 
- int /*<<< orphan*/  MAP_SHARED ; 
- int PROT_READ ; 
- int PROT_WRITE ; 
- scalar_t__ drmIoctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct drm_mode_map_dumb*) ; 
- scalar_t__ drmModeAddFB2 (int /*<<< orphan*/ ,int,int,int,size_t*,size_t*,size_t*,scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  drmModeRmFB (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ drvFail ; 
- scalar_t__ drvSuccess ; 
- int /*<<< orphan*/  memset (struct drm_mode_map_dumb*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ mmap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg_Err (TYPE_1__*,char*) ; 
+
+ int ALIGN (int,unsigned int) ;
+ size_t ARRAY_SIZE (size_t*) ;
+
+
+
+
+ int DRM_IOCTL_MODE_CREATE_DUMB ;
+ int DRM_IOCTL_MODE_DESTROY_DUMB ;
+ int DRM_IOCTL_MODE_MAP_DUMB ;
+ scalar_t__ MAP_FAILED ;
+ int MAP_SHARED ;
+ int PROT_READ ;
+ int PROT_WRITE ;
+ scalar_t__ drmIoctl (int ,int ,struct drm_mode_map_dumb*) ;
+ scalar_t__ drmModeAddFB2 (int ,int,int,int,size_t*,size_t*,size_t*,scalar_t__*,int ) ;
+ int drmModeRmFB (int ,scalar_t__) ;
+ scalar_t__ drvFail ;
+ scalar_t__ drvSuccess ;
+ int memset (struct drm_mode_map_dumb*,int ,int) ;
+ scalar_t__ mmap (int ,int ,int,int ,int ,int ) ;
+ int msg_Err (TYPE_1__*,char*) ;
 
 __attribute__((used)) static deviceRval CreateFB(vout_display_t *vd, const int buf)
 {
@@ -61,22 +61,22 @@ __attribute__((used)) static deviceRval CreateFB(vout_display_t *vd, const int b
             pitches[] = {0,0,0,0};
 
     switch(sys->drm_fourcc) {
-#ifdef DRM_FORMAT_P010
-    case DRM_FORMAT_P010:
-#endif
-#ifdef DRM_FORMAT_P012
-    case DRM_FORMAT_P012:
-#endif
-#ifdef DRM_FORMAT_P016
-    case DRM_FORMAT_P016:
-#endif
-#if defined(DRM_FORMAT_P010) || defined(DRM_FORMAT_P012) || defined(DRM_FORMAT_P016)
+
+    case 130:
+
+
+    case 129:
+
+
+    case 128:
+
+
         sys->stride = ALIGN(sys->width*2, tile_width);
         sys->offsets[1] = sys->stride*ALIGN(sys->height, tile_height);
         create_req.height = 2*ALIGN(sys->height, tile_height);
         break;
-#endif
-    case DRM_FORMAT_NV12:
+
+    case 131:
         sys->stride = ALIGN(sys->width, tile_width);
         sys->offsets[1] = sys->stride*ALIGN(sys->height, tile_height);
         create_req.height = 2*ALIGN(sys->height, tile_height);
@@ -84,9 +84,9 @@ __attribute__((used)) static deviceRval CreateFB(vout_display_t *vd, const int b
     default:
         create_req.height = ALIGN(sys->height, tile_height);
 
-        /*
-         * width *4 so there's enough space for anything.
-         */
+
+
+
         sys->stride = ALIGN(sys->width*4, tile_width);
         break;
     }
@@ -100,10 +100,10 @@ __attribute__((used)) static deviceRval CreateFB(vout_display_t *vd, const int b
     sys->size = create_req.size;
     sys->handle[buf] = create_req.handle;
 
-    /*
-     * create framebuffer object for the dumb-buffer
-     * index 0 has to be filled in any case.
-     */
+
+
+
+
     for (i = 0; i < ARRAY_SIZE(handles) && (sys->offsets[i] || i < 1); i++) {
         handles[i] = create_req.handle;
         pitches[i] = sys->stride;

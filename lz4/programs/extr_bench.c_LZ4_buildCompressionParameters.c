@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct compressionParameters {int cLevel; char const* dictBuf; int dictSize; int /*<<< orphan*/  blockFunction; int /*<<< orphan*/  cleanupFunction; int /*<<< orphan*/  resetFunction; int /*<<< orphan*/  initFunction; } ;
 
-/* Variables and functions */
- int LZ4HC_CLEVEL_MIN ; 
- int /*<<< orphan*/  LZ4_compressBlockNoStream ; 
- int /*<<< orphan*/  LZ4_compressBlockNoStreamHC ; 
- int /*<<< orphan*/  LZ4_compressBlockStream ; 
- int /*<<< orphan*/  LZ4_compressBlockStreamHC ; 
- int /*<<< orphan*/  LZ4_compressCleanupNoStream ; 
- int /*<<< orphan*/  LZ4_compressCleanupStream ; 
- int /*<<< orphan*/  LZ4_compressCleanupStreamHC ; 
- int /*<<< orphan*/  LZ4_compressInitNoStream ; 
- int /*<<< orphan*/  LZ4_compressInitStream ; 
- int /*<<< orphan*/  LZ4_compressInitStreamHC ; 
- int /*<<< orphan*/  LZ4_compressResetNoStream ; 
- int /*<<< orphan*/  LZ4_compressResetStream ; 
- int /*<<< orphan*/  LZ4_compressResetStreamHC ; 
+
+
+
+struct compressionParameters {int cLevel; char const* dictBuf; int dictSize; int blockFunction; int cleanupFunction; int resetFunction; int initFunction; } ;
+
+
+ int LZ4HC_CLEVEL_MIN ;
+ int LZ4_compressBlockNoStream ;
+ int LZ4_compressBlockNoStreamHC ;
+ int LZ4_compressBlockStream ;
+ int LZ4_compressBlockStreamHC ;
+ int LZ4_compressCleanupNoStream ;
+ int LZ4_compressCleanupStream ;
+ int LZ4_compressCleanupStreamHC ;
+ int LZ4_compressInitNoStream ;
+ int LZ4_compressInitStream ;
+ int LZ4_compressInitStreamHC ;
+ int LZ4_compressResetNoStream ;
+ int LZ4_compressResetStream ;
+ int LZ4_compressResetStreamHC ;
 
 __attribute__((used)) static void LZ4_buildCompressionParameters(
     struct compressionParameters* pParams,

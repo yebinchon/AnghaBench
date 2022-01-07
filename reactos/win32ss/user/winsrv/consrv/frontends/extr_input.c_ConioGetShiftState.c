@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int* PBYTE ;
-typedef  int LPARAM ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CAPSLOCK_ON ; 
- int /*<<< orphan*/  ENHANCED_KEY ; 
- int /*<<< orphan*/  LEFT_ALT_PRESSED ; 
- int /*<<< orphan*/  LEFT_CTRL_PRESSED ; 
- int /*<<< orphan*/  NUMLOCK_ON ; 
- int /*<<< orphan*/  RIGHT_ALT_PRESSED ; 
- int /*<<< orphan*/  RIGHT_CTRL_PRESSED ; 
- int /*<<< orphan*/  SCROLLLOCK_ON ; 
- int /*<<< orphan*/  SHIFT_PRESSED ; 
- size_t VK_CAPITAL ; 
- size_t VK_LCONTROL ; 
- size_t VK_LMENU ; 
- size_t VK_NUMLOCK ; 
- size_t VK_RCONTROL ; 
- size_t VK_RMENU ; 
- size_t VK_SCROLL ; 
- size_t VK_SHIFT ; 
+
+
+
+typedef int* PBYTE ;
+typedef int LPARAM ;
+typedef int DWORD ;
+
+
+ int CAPSLOCK_ON ;
+ int ENHANCED_KEY ;
+ int LEFT_ALT_PRESSED ;
+ int LEFT_CTRL_PRESSED ;
+ int NUMLOCK_ON ;
+ int RIGHT_ALT_PRESSED ;
+ int RIGHT_CTRL_PRESSED ;
+ int SCROLLLOCK_ON ;
+ int SHIFT_PRESSED ;
+ size_t VK_CAPITAL ;
+ size_t VK_LCONTROL ;
+ size_t VK_LMENU ;
+ size_t VK_NUMLOCK ;
+ size_t VK_RCONTROL ;
+ size_t VK_RMENU ;
+ size_t VK_SCROLL ;
+ size_t VK_SHIFT ;
 
 __attribute__((used)) static DWORD
 ConioGetShiftState(PBYTE KeyState, LPARAM lParam)
@@ -60,7 +60,7 @@ ConioGetShiftState(PBYTE KeyState, LPARAM lParam)
     if (KeyState[VK_RMENU] & 0x80)
         ssOut |= RIGHT_ALT_PRESSED;
 
-    /* See WM_CHAR MSDN documentation for instance */
+
     if (lParam & 0x01000000)
         ssOut |= ENHANCED_KEY;
 

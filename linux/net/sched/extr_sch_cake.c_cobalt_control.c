@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  ktime_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ktime_add_ns (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  reciprocal_scale (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u64 ;
+typedef int u32 ;
+typedef int ktime_t ;
+
+
+ int ktime_add_ns (int ,int ) ;
+ int reciprocal_scale (int ,int ) ;
 
 __attribute__((used)) static ktime_t cobalt_control(ktime_t t,
-			      u64 interval,
-			      u32 rec_inv_sqrt)
+         u64 interval,
+         u32 rec_inv_sqrt)
 {
-	return ktime_add_ns(t, reciprocal_scale(interval,
-						rec_inv_sqrt));
+ return ktime_add_ns(t, reciprocal_scale(interval,
+      rec_inv_sqrt));
 }

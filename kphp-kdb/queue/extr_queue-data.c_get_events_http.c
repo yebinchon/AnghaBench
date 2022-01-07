@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {TYPE_3__* q; TYPE_2__* st; int /*<<< orphan*/  subscribed; scalar_t__ ts; scalar_t__ prev_ts; int /*<<< orphan*/  timeout; } ;
-typedef  TYPE_1__ qkey ;
-struct TYPE_7__ {scalar_t__ data_len; int* data; int /*<<< orphan*/  created; struct TYPE_7__* next; } ;
-typedef  TYPE_2__ event ;
-struct TYPE_8__ {int /*<<< orphan*/  name; int /*<<< orphan*/  extra; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- scalar_t__ Q_WATCHCAT ; 
- scalar_t__ __may_wait ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  buff_overflow_cnt ; 
- int /*<<< orphan*/  cnt_delay ; 
- int /*<<< orphan*/  critical (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debug (char*,...) ; 
- scalar_t__ debug_buff ; 
- int debug_error ; 
- scalar_t__ ds ; 
- int /*<<< orphan*/  events_sent ; 
- scalar_t__ get_qtype (int /*<<< orphan*/ ) ; 
- double get_utime (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_watchcat_id (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * http_failed ; 
- double max (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- double max_delay ; 
- int /*<<< orphan*/  qkey_fix_timeout (TYPE_1__*) ; 
- int /*<<< orphan*/  queue_fix (TYPE_3__*) ; 
- int /*<<< orphan*/  quick_fix ; 
- double sum_delay ; 
- int /*<<< orphan*/  update_watchcat (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ write_str (scalar_t__,int*,scalar_t__) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {TYPE_3__* q; TYPE_2__* st; int subscribed; scalar_t__ ts; scalar_t__ prev_ts; int timeout; } ;
+typedef TYPE_1__ qkey ;
+struct TYPE_7__ {scalar_t__ data_len; int* data; int created; struct TYPE_7__* next; } ;
+typedef TYPE_2__ event ;
+struct TYPE_8__ {int name; int extra; } ;
+
+
+ int CLOCK_MONOTONIC ;
+ scalar_t__ Q_WATCHCAT ;
+ scalar_t__ __may_wait ;
+ int assert (int) ;
+ int buff_overflow_cnt ;
+ int cnt_delay ;
+ int critical (char*,int ) ;
+ int debug (char*,...) ;
+ scalar_t__ debug_buff ;
+ int debug_error ;
+ scalar_t__ ds ;
+ int events_sent ;
+ scalar_t__ get_qtype (int ) ;
+ double get_utime (int ) ;
+ int get_watchcat_id (int ) ;
+ int * http_failed ;
+ double max (int ,int ) ;
+ double max_delay ;
+ int qkey_fix_timeout (TYPE_1__*) ;
+ int queue_fix (TYPE_3__*) ;
+ int quick_fix ;
+ double sum_delay ;
+ int update_watchcat (int ,int ,int ) ;
+ scalar_t__ write_str (scalar_t__,int*,scalar_t__) ;
 
 char *get_events_http (qkey *k) {
   if (!quick_fix) {
@@ -65,7 +65,7 @@ char *get_events_http (qkey *k) {
   event *e = k->st;
 
   double cur_time = get_utime (CLOCK_MONOTONIC);
-  while (e->next != NULL) {
+  while (e->next != ((void*)0)) {
     e = e->next;
 
     if (f) {
@@ -97,7 +97,7 @@ char *get_events_http (qkey *k) {
 
     if (cur_delay > max_delay) {
       max_delay = cur_delay;
-//      fprintf (stderr, "%lf\n", max_delay);
+
     }
   }
   k->st = e;

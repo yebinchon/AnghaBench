@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Display ;
-typedef  int /*<<< orphan*/  Bool ;
 
-/* Variables and functions */
- scalar_t__ True ; 
- scalar_t__ XScreenSaverQueryExtension (int /*<<< orphan*/ *,int*,int*) ; 
- scalar_t__ XScreenSaverQueryVersion (int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  XScreenSaverSuspend (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Display ;
+typedef int Bool ;
+
+
+ scalar_t__ True ;
+ scalar_t__ XScreenSaverQueryExtension (int *,int*,int*) ;
+ scalar_t__ XScreenSaverQueryVersion (int *,int*,int*) ;
+ int XScreenSaverSuspend (int *,int ) ;
 
 __attribute__((used)) static int xss_suspend(Display *mDisplay, Bool suspend)
 {

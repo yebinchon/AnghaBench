@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct subchannel {int /*<<< orphan*/  lock; } ;
+
+
+
+
+struct subchannel {int lock; } ;
 struct ccw_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atomic_inc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ccw_device_init_count ; 
- int /*<<< orphan*/  ccw_device_recognition (struct ccw_device*) ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ ) ; 
+
+ int atomic_inc (int *) ;
+ int ccw_device_init_count ;
+ int ccw_device_recognition (struct ccw_device*) ;
+ int spin_lock_irq (int ) ;
+ int spin_unlock_irq (int ) ;
 
 __attribute__((used)) static void io_subchannel_recog(struct ccw_device *cdev, struct subchannel *sch)
 {
-	/* Increase counter of devices currently in recognition. */
-	atomic_inc(&ccw_device_init_count);
 
-	/* Start async. device sensing. */
-	spin_lock_irq(sch->lock);
-	ccw_device_recognition(cdev);
-	spin_unlock_irq(sch->lock);
+ atomic_inc(&ccw_device_init_count);
+
+
+ spin_lock_irq(sch->lock);
+ ccw_device_recognition(cdev);
+ spin_unlock_irq(sch->lock);
 }

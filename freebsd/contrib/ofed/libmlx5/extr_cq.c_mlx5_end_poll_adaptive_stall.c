@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ibv_cq_ex {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  POLLING_MODE_STALL_ADAPTIVE ; 
- int /*<<< orphan*/  _mlx5_end_poll (struct ibv_cq_ex*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int POLLING_MODE_STALL_ADAPTIVE ;
+ int _mlx5_end_poll (struct ibv_cq_ex*,int ,int ) ;
 
 __attribute__((used)) static inline void mlx5_end_poll_adaptive_stall(struct ibv_cq_ex *ibcq)
 {
-	_mlx5_end_poll(ibcq, 0, POLLING_MODE_STALL_ADAPTIVE);
+ _mlx5_end_poll(ibcq, 0, POLLING_MODE_STALL_ADAPTIVE);
 }

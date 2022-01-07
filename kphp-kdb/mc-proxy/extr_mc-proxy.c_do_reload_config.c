@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mc_config {scalar_t__* config_md5_hex; int /*<<< orphan*/  config_bytes; scalar_t__ config_loaded_at; } ;
 
-/* Variables and functions */
- struct mc_config* CurConf ; 
- struct mc_config* NextConf ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  clear_config (struct mc_config*,int) ; 
- int /*<<< orphan*/  close (scalar_t__) ; 
- int /*<<< orphan*/  config_buff ; 
- int /*<<< orphan*/  config_bytes ; 
- char* config_filename ; 
- int /*<<< orphan*/  create_all_outbound_connections () ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__* fd ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int kdb_load_hosts () ; 
- int /*<<< orphan*/  md5_hex (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ need_reload_config ; 
- scalar_t__ now ; 
- scalar_t__ open (char*,int /*<<< orphan*/ ) ; 
- int parse_config (struct mc_config*,struct mc_config*,int) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  transfer_listening_sockets (struct mc_config*,struct mc_config*) ; 
- int try_open_new_listening_sockets (struct mc_config*) ; 
- scalar_t__ verbosity ; 
- int /*<<< orphan*/  vkprintf (int /*<<< orphan*/ ,char*,char*) ; 
- scalar_t__* zmalloc (int) ; 
+
+
+
+struct mc_config {scalar_t__* config_md5_hex; int config_bytes; scalar_t__ config_loaded_at; } ;
+
+
+ struct mc_config* CurConf ;
+ struct mc_config* NextConf ;
+ int O_RDONLY ;
+ int clear_config (struct mc_config*,int) ;
+ int close (scalar_t__) ;
+ int config_buff ;
+ int config_bytes ;
+ char* config_filename ;
+ int create_all_outbound_connections () ;
+ int exit (int) ;
+ scalar_t__* fd ;
+ int fprintf (int ,char*,...) ;
+ int kdb_load_hosts () ;
+ int md5_hex (int ,int ,scalar_t__*) ;
+ scalar_t__ need_reload_config ;
+ scalar_t__ now ;
+ scalar_t__ open (char*,int ) ;
+ int parse_config (struct mc_config*,struct mc_config*,int) ;
+ int stderr ;
+ scalar_t__ time (int ) ;
+ int transfer_listening_sockets (struct mc_config*,struct mc_config*) ;
+ int try_open_new_listening_sockets (struct mc_config*) ;
+ scalar_t__ verbosity ;
+ int vkprintf (int ,char*,char*) ;
+ scalar_t__* zmalloc (int) ;
 
 int do_reload_config (int create_conn) {
   int res;
@@ -58,8 +58,8 @@ int do_reload_config (int create_conn) {
 
   close (fd[0]);
 
-  //  clear_config (NextConf);
-  
+
+
   if (res < 0) {
     vkprintf (0, "error while re-reading config file %s, new configuration NOT applied\n", config_filename);
     return res;

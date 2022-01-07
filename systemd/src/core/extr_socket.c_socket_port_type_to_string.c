@@ -1,35 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  type; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int type; } ;
 struct TYPE_5__ {int type; TYPE_3__ address; } ;
-typedef  TYPE_1__ SocketPort ;
+typedef TYPE_1__ SocketPort ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_NETLINK ; 
-#define  SOCKET_FIFO 136 
-#define  SOCKET_MQUEUE 135 
-#define  SOCKET_SOCKET 134 
-#define  SOCKET_SPECIAL 133 
-#define  SOCKET_USB_FUNCTION 132 
-#define  SOCK_DGRAM 131 
-#define  SOCK_RAW 130 
-#define  SOCK_SEQPACKET 129 
-#define  SOCK_STREAM 128 
- int /*<<< orphan*/  _fallthrough_ ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  socket_address_family (TYPE_3__*) ; 
+
+ int AF_NETLINK ;
+ int _fallthrough_ ;
+ int assert (TYPE_1__*) ;
+ int socket_address_family (TYPE_3__*) ;
 
 const char* socket_port_type_to_string(SocketPort *p) {
 
@@ -37,41 +28,41 @@ const char* socket_port_type_to_string(SocketPort *p) {
 
         switch (p->type) {
 
-        case SOCKET_SOCKET:
+        case 134:
 
                 switch (p->address.type) {
 
-                case SOCK_STREAM:
+                case 128:
                         return "Stream";
 
-                case SOCK_DGRAM:
+                case 131:
                         return "Datagram";
 
-                case SOCK_SEQPACKET:
+                case 129:
                         return "SequentialPacket";
 
-                case SOCK_RAW:
+                case 130:
                         if (socket_address_family(&p->address) == AF_NETLINK)
                                 return "Netlink";
 
                         _fallthrough_;
                 default:
-                        return NULL;
+                        return ((void*)0);
                 }
 
-        case SOCKET_SPECIAL:
+        case 133:
                 return "Special";
 
-        case SOCKET_MQUEUE:
+        case 135:
                 return "MessageQueue";
 
-        case SOCKET_FIFO:
+        case 136:
                 return "FIFO";
 
-        case SOCKET_USB_FUNCTION:
+        case 132:
                 return "USBFunction";
 
         default:
-                return NULL;
+                return ((void*)0);
         }
 }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  SearchItem ;
-typedef  int /*<<< orphan*/  IStorage ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IStorage_OpenStorage (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IStorage_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  STGM_READ ; 
- int /*<<< orphan*/ * SearchCHM_Storage (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int SearchItem ;
+typedef int IStorage ;
+typedef int HRESULT ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,int ,int ) ;
+ int IStorage_OpenStorage (int *,int const*,int *,int ,int *,int ,int **) ;
+ int IStorage_Release (int *) ;
+ int STGM_READ ;
+ int * SearchCHM_Storage (int *,int *,char const*) ;
+ int debugstr_w (int const*) ;
 
 __attribute__((used)) static SearchItem *SearchCHM_Folder(SearchItem *item, IStorage *pStorage,
                                     const WCHAR *folder, const char *needle)
 {
-    IStorage *temp_storage = NULL;
+    IStorage *temp_storage = ((void*)0);
     HRESULT hres;
 
-    hres = IStorage_OpenStorage(pStorage, folder, NULL, STGM_READ, NULL, 0, &temp_storage);
+    hres = IStorage_OpenStorage(pStorage, folder, ((void*)0), STGM_READ, ((void*)0), 0, &temp_storage);
     if(FAILED(hres))
     {
         FIXME("Could not open '%s' storage object: %08x\n", debugstr_w(folder), hres);
-        return NULL;
+        return ((void*)0);
     }
     item = SearchCHM_Storage(item, temp_storage, needle);
 

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,size_t) ; 
- int secp256k1_rand_bits (int) ; 
+
+
+
+typedef size_t uint32_t ;
+
+
+ int memset (unsigned char*,int ,size_t) ;
+ int secp256k1_rand_bits (int) ;
 
 __attribute__((used)) static void secp256k1_rand_bytes_test(unsigned char *bytes, size_t len) {
     size_t bits = 0;

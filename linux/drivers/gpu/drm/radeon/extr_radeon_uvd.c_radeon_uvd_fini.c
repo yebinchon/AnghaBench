@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * vcpu_bo; } ;
-struct radeon_device {int /*<<< orphan*/  uvd_fw; int /*<<< orphan*/ * ring; TYPE_1__ uvd; } ;
 
-/* Variables and functions */
- size_t R600_RING_TYPE_UVD_INDEX ; 
- int /*<<< orphan*/  radeon_bo_kunmap (int /*<<< orphan*/ *) ; 
- int radeon_bo_reserve (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  radeon_bo_unpin (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  radeon_bo_unref (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  radeon_bo_unreserve (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  radeon_ring_fini (struct radeon_device*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  release_firmware (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * vcpu_bo; } ;
+struct radeon_device {int uvd_fw; int * ring; TYPE_1__ uvd; } ;
+
+
+ size_t R600_RING_TYPE_UVD_INDEX ;
+ int radeon_bo_kunmap (int *) ;
+ int radeon_bo_reserve (int *,int) ;
+ int radeon_bo_unpin (int *) ;
+ int radeon_bo_unref (int **) ;
+ int radeon_bo_unreserve (int *) ;
+ int radeon_ring_fini (struct radeon_device*,int *) ;
+ int release_firmware (int ) ;
 
 void radeon_uvd_fini(struct radeon_device *rdev)
 {
-	int r;
+ int r;
 
-	if (rdev->uvd.vcpu_bo == NULL)
-		return;
+ if (rdev->uvd.vcpu_bo == ((void*)0))
+  return;
 
-	r = radeon_bo_reserve(rdev->uvd.vcpu_bo, false);
-	if (!r) {
-		radeon_bo_kunmap(rdev->uvd.vcpu_bo);
-		radeon_bo_unpin(rdev->uvd.vcpu_bo);
-		radeon_bo_unreserve(rdev->uvd.vcpu_bo);
-	}
+ r = radeon_bo_reserve(rdev->uvd.vcpu_bo, 0);
+ if (!r) {
+  radeon_bo_kunmap(rdev->uvd.vcpu_bo);
+  radeon_bo_unpin(rdev->uvd.vcpu_bo);
+  radeon_bo_unreserve(rdev->uvd.vcpu_bo);
+ }
 
-	radeon_bo_unref(&rdev->uvd.vcpu_bo);
+ radeon_bo_unref(&rdev->uvd.vcpu_bo);
 
-	radeon_ring_fini(rdev, &rdev->ring[R600_RING_TYPE_UVD_INDEX]);
+ radeon_ring_fini(rdev, &rdev->ring[R600_RING_TYPE_UVD_INDEX]);
 
-	release_firmware(rdev->uvd_fw);
+ release_firmware(rdev->uvd_fw);
 }

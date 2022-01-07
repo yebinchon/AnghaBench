@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct fd_lookup_st {struct fd_lookup_st* next; int /*<<< orphan*/  fd; scalar_t__ del; scalar_t__ add; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct fd_lookup_st {struct fd_lookup_st* next; int fd; scalar_t__ del; scalar_t__ add; } ;
 struct TYPE_3__ {size_t numadd; size_t numdel; struct fd_lookup_st* fds; } ;
-typedef  int /*<<< orphan*/  OSSL_ASYNC_FD ;
-typedef  TYPE_1__ ASYNC_WAIT_CTX ;
+typedef int OSSL_ASYNC_FD ;
+typedef TYPE_1__ ASYNC_WAIT_CTX ;
 
-/* Variables and functions */
+
 
 int ASYNC_WAIT_CTX_get_changed_fds(ASYNC_WAIT_CTX *ctx, OSSL_ASYNC_FD *addfd,
                                    size_t *numaddfds, OSSL_ASYNC_FD *delfd,
@@ -26,18 +26,18 @@ int ASYNC_WAIT_CTX_get_changed_fds(ASYNC_WAIT_CTX *ctx, OSSL_ASYNC_FD *addfd,
 
     *numaddfds = ctx->numadd;
     *numdelfds = ctx->numdel;
-    if (addfd == NULL && delfd == NULL)
+    if (addfd == ((void*)0) && delfd == ((void*)0))
         return 1;
 
     curr = ctx->fds;
 
-    while (curr != NULL) {
-        /* We ignore fds that have been marked as both added and deleted */
-        if (curr->del && !curr->add && (delfd != NULL)) {
+    while (curr != ((void*)0)) {
+
+        if (curr->del && !curr->add && (delfd != ((void*)0))) {
             *delfd = curr->fd;
             delfd++;
         }
-        if (curr->add && !curr->del && (addfd != NULL)) {
+        if (curr->add && !curr->del && (addfd != ((void*)0))) {
             *addfd = curr->fd;
             addfd++;
         }

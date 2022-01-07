@@ -1,51 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  lua_Number ;
-typedef  size_t lua_Integer ;
-struct TYPE_6__ {int /*<<< orphan*/  n; int /*<<< orphan*/  d; int /*<<< orphan*/  f; int /*<<< orphan*/  buff; } ;
-struct TYPE_5__ {int /*<<< orphan*/  islittle; } ;
-typedef  int KOption ;
-typedef  TYPE_1__ Header ;
-typedef  TYPE_2__ Ftypes ;
 
-/* Variables and functions */
-#define  Kchar 136 
-#define  Kfloat 135 
-#define  Kint 134 
-#define  Knop 133 
-#define  Kpaddalign 132 
-#define  Kpadding 131 
-#define  Kstring 130 
-#define  Kuint 129 
-#define  Kzstr 128 
- int /*<<< orphan*/  copywithendian (int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ ) ; 
- int getdetails (TYPE_1__*,size_t,char const**,int*,int*) ; 
- int /*<<< orphan*/  initheader (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int,int,char*) ; 
- int /*<<< orphan*/  luaL_argerror (int /*<<< orphan*/ *,int,char*) ; 
- char* luaL_checklstring (int /*<<< orphan*/ *,int,size_t*) ; 
- int /*<<< orphan*/  luaL_checkstack (int /*<<< orphan*/ *,int,char*) ; 
- char* luaL_checkstring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaL_optinteger (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  lua_pushlstring (int /*<<< orphan*/ *,char const*,size_t) ; 
- int /*<<< orphan*/  lua_pushnumber (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ posrelat (int /*<<< orphan*/ ,size_t) ; 
- scalar_t__ strlen (char const*) ; 
- size_t unpackint (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int,int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+typedef int lua_Number ;
+typedef size_t lua_Integer ;
+struct TYPE_6__ {int n; int d; int f; int buff; } ;
+struct TYPE_5__ {int islittle; } ;
+typedef int KOption ;
+typedef TYPE_1__ Header ;
+typedef TYPE_2__ Ftypes ;
+ int copywithendian (int ,char const*,int,int ) ;
+ int getdetails (TYPE_1__*,size_t,char const**,int*,int*) ;
+ int initheader (int *,TYPE_1__*) ;
+ int luaL_argcheck (int *,int,int,char*) ;
+ int luaL_argerror (int *,int,char*) ;
+ char* luaL_checklstring (int *,int,size_t*) ;
+ int luaL_checkstack (int *,int,char*) ;
+ char* luaL_checkstring (int *,int) ;
+ int luaL_optinteger (int *,int,int) ;
+ int lua_pushinteger (int *,size_t) ;
+ int lua_pushlstring (int *,char const*,size_t) ;
+ int lua_pushnumber (int *,int ) ;
+ scalar_t__ posrelat (int ,size_t) ;
+ scalar_t__ strlen (char const*) ;
+ size_t unpackint (int *,char const*,int ,int,int) ;
 
 __attribute__((used)) static int str_unpack (lua_State *L) {
   Header h;
@@ -53,7 +42,7 @@ __attribute__((used)) static int str_unpack (lua_State *L) {
   size_t ld;
   const char *data = luaL_checklstring(L, 2, &ld);
   size_t pos = (size_t)posrelat(luaL_optinteger(L, 3, 1), ld) - 1;
-  int n = 0;  /* number of results */
+  int n = 0;
   luaL_argcheck(L, pos <= ld, 3, "initial position out of string");
   initheader(L, &h);
   while (*fmt != '\0') {
@@ -61,19 +50,19 @@ __attribute__((used)) static int str_unpack (lua_State *L) {
     KOption opt = getdetails(&h, pos, &fmt, &size, &ntoalign);
     if ((size_t)ntoalign + size > ~pos || pos + ntoalign + size > ld)
       luaL_argerror(L, 2, "data string too short");
-    pos += ntoalign;  /* skip alignment */
-    /* stack space for item + next position */
+    pos += ntoalign;
+
     luaL_checkstack(L, 2, "too many results");
     n++;
     switch (opt) {
-      case Kint:
-      case Kuint: {
+      case 134:
+      case 129: {
         lua_Integer res = unpackint(L, data + pos, h.islittle, size,
-                                       (opt == Kint));
+                                       (opt == 134));
         lua_pushinteger(L, res);
         break;
       }
-      case Kfloat: {
+      case 135: {
         volatile Ftypes u;
         lua_Number num;
         copywithendian(u.buff, data + pos, size, h.islittle);
@@ -83,29 +72,29 @@ __attribute__((used)) static int str_unpack (lua_State *L) {
         lua_pushnumber(L, num);
         break;
       }
-      case Kchar: {
+      case 136: {
         lua_pushlstring(L, data + pos, size);
         break;
       }
-      case Kstring: {
+      case 130: {
         size_t len = (size_t)unpackint(L, data + pos, h.islittle, size, 0);
         luaL_argcheck(L, pos + len + size <= ld, 2, "data string too short");
         lua_pushlstring(L, data + pos + size, len);
-        pos += len;  /* skip string */
+        pos += len;
         break;
       }
-      case Kzstr: {
+      case 128: {
         size_t len = (int)strlen(data + pos);
         lua_pushlstring(L, data + pos, len);
-        pos += len + 1;  /* skip string plus final '\0' */
+        pos += len + 1;
         break;
       }
-      case Kpaddalign: case Kpadding: case Knop:
-        n--;  /* undo increment */
+      case 132: case 131: case 133:
+        n--;
         break;
     }
     pos += size;
   }
-  lua_pushinteger(L, pos + 1);  /* next position */
+  lua_pushinteger(L, pos + 1);
   return n + 1;
 }

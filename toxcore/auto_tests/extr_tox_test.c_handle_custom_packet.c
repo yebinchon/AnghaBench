@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  Tox ;
 
-/* Variables and functions */
- size_t TOX_MAX_CUSTOM_PACKET_SIZE ; 
- int /*<<< orphan*/  ck_abort_msg (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  custom_packet ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int Tox ;
+
+
+ size_t TOX_MAX_CUSTOM_PACKET_SIZE ;
+ int ck_abort_msg (char*,int ) ;
+ int custom_packet ;
+ scalar_t__ memcmp (int *,int const*,size_t) ;
+ int memset (int *,int ,size_t) ;
 
 void handle_custom_packet(Tox *m, uint32_t friend_num, const uint8_t *data, size_t len, void *object)
 {

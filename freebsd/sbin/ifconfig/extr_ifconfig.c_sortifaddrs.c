@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ifaddrs {struct ifaddrs* ifa_next; } ;
 struct ifa_queue {int dummy; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static struct ifaddrs *
 sortifaddrs(struct ifaddrs *list,
     int (*compare)(struct ifaddrs *, struct ifaddrs *, struct ifa_queue *),
     struct ifa_queue *q)
 {
-	struct ifaddrs *right, *temp, *last, *result, *next, *tail;
-	
-	right = list;
-	temp = list;
-	last = list;
-	result = NULL;
-	next = NULL;
-	tail = NULL;
+ struct ifaddrs *right, *temp, *last, *result, *next, *tail;
 
-	if (!list || !list->ifa_next)
-		return (list);
+ right = list;
+ temp = list;
+ last = list;
+ result = ((void*)0);
+ next = ((void*)0);
+ tail = ((void*)0);
 
-	while (temp && temp->ifa_next) {
-		last = right;
-		right = right->ifa_next;
-		temp = temp->ifa_next->ifa_next;
-	}
+ if (!list || !list->ifa_next)
+  return (list);
 
-	last->ifa_next = NULL;
+ while (temp && temp->ifa_next) {
+  last = right;
+  right = right->ifa_next;
+  temp = temp->ifa_next->ifa_next;
+ }
 
-	list = sortifaddrs(list, compare, q);
-	right = sortifaddrs(right, compare, q);
+ last->ifa_next = ((void*)0);
 
-	while (list || right) {
+ list = sortifaddrs(list, compare, q);
+ right = sortifaddrs(right, compare, q);
 
-		if (!right) {
-			next = list;
-			list = list->ifa_next;
-		} else if (!list) {
-			next = right;
-			right = right->ifa_next;
-		} else if (compare(list, right, q) <= 0) {
-			next = list;
-			list = list->ifa_next;
-		} else {
-			next = right;
-			right = right->ifa_next;
-		}
+ while (list || right) {
 
-		if (!result)
-			result = next;
-		else
-			tail->ifa_next = next;
+  if (!right) {
+   next = list;
+   list = list->ifa_next;
+  } else if (!list) {
+   next = right;
+   right = right->ifa_next;
+  } else if (compare(list, right, q) <= 0) {
+   next = list;
+   list = list->ifa_next;
+  } else {
+   next = right;
+   right = right->ifa_next;
+  }
 
-		tail = next;
-	}
+  if (!result)
+   result = next;
+  else
+   tail->ifa_next = next;
 
-	return (result);
+  tail = next;
+ }
+
+ return (result);
 }

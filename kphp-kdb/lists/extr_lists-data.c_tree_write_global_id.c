@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree_ext_small_t ;
-typedef  int /*<<< orphan*/  global_id_t ;
-struct TYPE_2__ {int /*<<< orphan*/  global_id; } ;
 
-/* Variables and functions */
- TYPE_1__* LPAYLOAD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  writeout_int (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  writeout_long (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int tree_ext_small_t ;
+typedef int global_id_t ;
+struct TYPE_2__ {int global_id; } ;
+
+
+ TYPE_1__* LPAYLOAD (int *) ;
+ int assert (int ) ;
+ int writeout_int (int ) ;
+ int writeout_long (int ) ;
 
 __attribute__((used)) static int tree_write_global_id (tree_ext_small_t *T) {
   if (sizeof (global_id_t) == sizeof (int)) {

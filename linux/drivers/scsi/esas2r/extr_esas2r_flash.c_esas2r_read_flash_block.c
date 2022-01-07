@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int u32 ;
-struct esas2r_adapter {int /*<<< orphan*/  flags2; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF2_SERIAL_FLASH ; 
- int /*<<< orphan*/  DRBL_FLASH_DONE ; 
- int /*<<< orphan*/  DRBL_FLASH_REQ ; 
- int MW_DATA_ADDR_PAR_FLASH ; 
- int MW_DATA_ADDR_SER_FLASH ; 
- int WINDOW_SIZE ; 
- int /*<<< orphan*/  esas2r_flash_access (struct esas2r_adapter*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esas2r_map_data_window (struct esas2r_adapter*,int) ; 
- int /*<<< orphan*/  esas2r_read_data_byte (struct esas2r_adapter*,int) ; 
- scalar_t__ test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int u8 ;
+typedef int u32 ;
+struct esas2r_adapter {int flags2; } ;
+
+
+ int AF2_SERIAL_FLASH ;
+ int DRBL_FLASH_DONE ;
+ int DRBL_FLASH_REQ ;
+ int MW_DATA_ADDR_PAR_FLASH ;
+ int MW_DATA_ADDR_SER_FLASH ;
+ int WINDOW_SIZE ;
+ int esas2r_flash_access (struct esas2r_adapter*,int ) ;
+ int esas2r_map_data_window (struct esas2r_adapter*,int) ;
+ int esas2r_read_data_byte (struct esas2r_adapter*,int) ;
+ scalar_t__ test_bit (int ,int *) ;
 
 bool esas2r_read_flash_block(struct esas2r_adapter *a,
-			     void *to,
-			     u32 from,
-			     u32 size)
+        void *to,
+        u32 from,
+        u32 size)
 {
-	u8 *end = (u8 *)to;
+ u8 *end = (u8 *)to;
 
-	/* Try to acquire access to the flash */
-	if (!esas2r_flash_access(a, DRBL_FLASH_REQ))
-		return false;
 
-	while (size) {
-		u32 len;
-		u32 offset;
-		u32 iatvr;
+ if (!esas2r_flash_access(a, DRBL_FLASH_REQ))
+  return 0;
 
-		if (test_bit(AF2_SERIAL_FLASH, &a->flags2))
-			iatvr = MW_DATA_ADDR_SER_FLASH + (from & -WINDOW_SIZE);
-		else
-			iatvr = MW_DATA_ADDR_PAR_FLASH + (from & -WINDOW_SIZE);
+ while (size) {
+  u32 len;
+  u32 offset;
+  u32 iatvr;
 
-		esas2r_map_data_window(a, iatvr);
-		offset = from & (WINDOW_SIZE - 1);
-		len = size;
+  if (test_bit(AF2_SERIAL_FLASH, &a->flags2))
+   iatvr = MW_DATA_ADDR_SER_FLASH + (from & -WINDOW_SIZE);
+  else
+   iatvr = MW_DATA_ADDR_PAR_FLASH + (from & -WINDOW_SIZE);
 
-		if (len > WINDOW_SIZE - offset)
-			len = WINDOW_SIZE - offset;
+  esas2r_map_data_window(a, iatvr);
+  offset = from & (WINDOW_SIZE - 1);
+  len = size;
 
-		from += len;
-		size -= len;
+  if (len > WINDOW_SIZE - offset)
+   len = WINDOW_SIZE - offset;
 
-		while (len--) {
-			*end++ = esas2r_read_data_byte(a, offset);
-			offset++;
-		}
-	}
+  from += len;
+  size -= len;
 
-	/* Release flash access */
-	esas2r_flash_access(a, DRBL_FLASH_DONE);
-	return true;
+  while (len--) {
+   *end++ = esas2r_read_data_byte(a, offset);
+   offset++;
+  }
+ }
+
+
+ esas2r_flash_access(a, DRBL_FLASH_DONE);
+ return 1;
 }

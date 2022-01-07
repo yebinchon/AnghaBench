@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t ngx_uint_t ;
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef size_t ngx_uint_t ;
 struct TYPE_10__ {scalar_t__ len; scalar_t__ data; } ;
-typedef  TYPE_2__ ngx_str_t ;
-typedef  scalar_t__ ngx_int_t ;
-struct TYPE_11__ {int /*<<< orphan*/ * conn_pool; } ;
-typedef  TYPE_3__ ngx_http_tfs_main_conf_t ;
-typedef  int /*<<< orphan*/  ngx_http_connection_pool_t ;
-struct TYPE_12__ {int /*<<< orphan*/  pool; TYPE_1__* args; } ;
-typedef  TYPE_4__ ngx_conf_t ;
-struct TYPE_13__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_5__ ngx_command_t ;
+typedef TYPE_2__ ngx_str_t ;
+typedef scalar_t__ ngx_int_t ;
+struct TYPE_11__ {int * conn_pool; } ;
+typedef TYPE_3__ ngx_http_tfs_main_conf_t ;
+typedef int ngx_http_connection_pool_t ;
+struct TYPE_12__ {int pool; TYPE_1__* args; } ;
+typedef TYPE_4__ ngx_conf_t ;
+struct TYPE_13__ {int name; } ;
+typedef TYPE_5__ ngx_command_t ;
 struct TYPE_9__ {size_t nelts; TYPE_2__* elts; } ;
 
-/* Variables and functions */
- char* NGX_CONF_ERROR ; 
- char* NGX_CONF_OK ; 
- scalar_t__ NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_EMERG ; 
- scalar_t__ ngx_atoi (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ngx_conf_log_error (int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/ * ngx_http_connection_pool_init (int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- scalar_t__ ngx_strncmp (scalar_t__,char*,int) ; 
+
+ char* NGX_CONF_ERROR ;
+ char* NGX_CONF_OK ;
+ scalar_t__ NGX_ERROR ;
+ int NGX_LOG_EMERG ;
+ scalar_t__ ngx_atoi (scalar_t__,scalar_t__) ;
+ int ngx_conf_log_error (int ,TYPE_4__*,int ,char*,...) ;
+ int * ngx_http_connection_pool_init (int ,scalar_t__,scalar_t__) ;
+ scalar_t__ ngx_strncmp (scalar_t__,char*,int) ;
 
 __attribute__((used)) static char *
 ngx_http_tfs_keepalive(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 {
-    ngx_http_tfs_main_conf_t  *tmcf = conf;
+    ngx_http_tfs_main_conf_t *tmcf = conf;
 
-    ngx_int_t                    max_cached, bucket_count;
-    ngx_str_t                   *value, s;
-    ngx_uint_t                   i;
-    ngx_http_connection_pool_t  *p;
+    ngx_int_t max_cached, bucket_count;
+    ngx_str_t *value, s;
+    ngx_uint_t i;
+    ngx_http_connection_pool_t *p;
 
     value = cf->args->elts;
     max_cached = 0;
@@ -84,7 +84,7 @@ ngx_http_tfs_keepalive(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
     }
 
     p = ngx_http_connection_pool_init(cf->pool, max_cached, bucket_count);
-    if (p == NULL) {
+    if (p == ((void*)0)) {
         ngx_conf_log_error(NGX_LOG_EMERG, cf, 0, "connection pool init failed");
         return NGX_CONF_ERROR;
     }

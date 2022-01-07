@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int OPJ_UINT8 ;
-typedef  int OPJ_UINT32 ;
-typedef  scalar_t__ OPJ_SIZE_T ;
-typedef  int /*<<< orphan*/  OPJ_BOOL ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int EOF ; 
- int /*<<< orphan*/  OPJ_TRUE ; 
- int getc (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int OPJ_UINT8 ;
+typedef int OPJ_UINT32 ;
+typedef scalar_t__ OPJ_SIZE_T ;
+typedef int OPJ_BOOL ;
+typedef int FILE ;
+
+
+ int EOF ;
+ int OPJ_TRUE ;
+ int getc (int *) ;
 
 __attribute__((used)) static OPJ_BOOL bmp_read_rle4_data(FILE* IN, OPJ_UINT8* pData,
                                    OPJ_UINT32 stride, OPJ_UINT32 width, OPJ_UINT32 height)
@@ -37,7 +37,7 @@ __attribute__((used)) static OPJ_BOOL bmp_read_rle4_data(FILE* IN, OPJ_UINT8* pD
             break;
         }
 
-        if (c) { /* encoded mode */
+        if (c) {
             int j;
             OPJ_UINT8 c1 = (OPJ_UINT8)getc(IN);
 
@@ -45,25 +45,25 @@ __attribute__((used)) static OPJ_BOOL bmp_read_rle4_data(FILE* IN, OPJ_UINT8* pD
                     ((OPJ_SIZE_T)pix < (OPJ_SIZE_T)beyond); j++, x++, pix++) {
                 *pix = (OPJ_UINT8)((j & 1) ? (c1 & 0x0fU) : ((c1 >> 4) & 0x0fU));
             }
-        } else { /* absolute mode */
+        } else {
             c = getc(IN);
             if (c == EOF) {
                 break;
             }
 
-            if (c == 0x00) { /* EOL */
+            if (c == 0x00) {
                 x = 0;
                 y++;
                 pix = pData + y * stride;
-            } else if (c == 0x01) { /* EOP */
+            } else if (c == 0x01) {
                 break;
-            } else if (c == 0x02) { /* MOVE by dxdy */
+            } else if (c == 0x02) {
                 c = getc(IN);
                 x += (OPJ_UINT32)c;
                 c = getc(IN);
                 y += (OPJ_UINT32)c;
                 pix = pData + y * stride + x;
-            } else { /* 03 .. 255 : absolute mode */
+            } else {
                 int j;
                 OPJ_UINT8 c1 = 0U;
 
@@ -74,11 +74,11 @@ __attribute__((used)) static OPJ_BOOL bmp_read_rle4_data(FILE* IN, OPJ_UINT8* pD
                     }
                     *pix = (OPJ_UINT8)((j & 1) ? (c1 & 0x0fU) : ((c1 >> 4) & 0x0fU));
                 }
-                if (((c & 3) == 1) || ((c & 3) == 2)) { /* skip padding byte */
+                if (((c & 3) == 1) || ((c & 3) == 2)) {
                     getc(IN);
                 }
             }
         }
-    }  /* while(y < height) */
+    }
     return OPJ_TRUE;
 }

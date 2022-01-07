@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct connection {int fd; scalar_t__ query_start_time; } ;
 struct TYPE_3__ {scalar_t__ wakeup_time; } ;
-struct conn_query {scalar_t__ start_time; TYPE_1__ timer; int /*<<< orphan*/ * cq_type; scalar_t__ extra; struct connection* requester; struct connection* outbound; int /*<<< orphan*/  custom_type; } ;
-struct TYPE_4__ {int /*<<< orphan*/  query_type; } ;
+struct conn_query {scalar_t__ start_time; TYPE_1__ timer; int * cq_type; scalar_t__ extra; struct connection* requester; struct connection* outbound; int custom_type; } ;
+struct TYPE_4__ {int query_type; } ;
 
-/* Variables and functions */
- TYPE_2__* MCS_DATA (struct connection*) ; 
- int /*<<< orphan*/  active_queries ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  insert_conn_query (struct conn_query*) ; 
- int /*<<< orphan*/  proxy_query_type ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  tot_forwarded_queries ; 
- int verbosity ; 
- struct conn_query* zmalloc (int) ; 
+
+ TYPE_2__* MCS_DATA (struct connection*) ;
+ int active_queries ;
+ int fprintf (int ,char*,...) ;
+ int insert_conn_query (struct conn_query*) ;
+ int proxy_query_type ;
+ int stderr ;
+ int tot_forwarded_queries ;
+ int verbosity ;
+ struct conn_query* zmalloc (int) ;
 
 struct conn_query *create_query (struct connection *d, struct connection *c, double timeout) {
   struct conn_query *Q = zmalloc (sizeof (struct conn_query));

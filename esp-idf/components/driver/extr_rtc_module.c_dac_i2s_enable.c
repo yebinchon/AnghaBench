@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_OK ; 
- int SENS_DAC_CLK_INV_M ; 
- int SENS_DAC_DIG_FORCE_M ; 
- int /*<<< orphan*/  SENS_SAR_DAC_CTRL1_REG ; 
- int /*<<< orphan*/  SET_PERI_REG_MASK (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  portENTER_CRITICAL (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  portEXIT_CRITICAL (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rtc_spinlock ; 
+
+
+
+typedef int esp_err_t ;
+
+
+ int ESP_OK ;
+ int SENS_DAC_CLK_INV_M ;
+ int SENS_DAC_DIG_FORCE_M ;
+ int SENS_SAR_DAC_CTRL1_REG ;
+ int SET_PERI_REG_MASK (int ,int) ;
+ int portENTER_CRITICAL (int *) ;
+ int portEXIT_CRITICAL (int *) ;
+ int rtc_spinlock ;
 
 esp_err_t dac_i2s_enable(void)
 {

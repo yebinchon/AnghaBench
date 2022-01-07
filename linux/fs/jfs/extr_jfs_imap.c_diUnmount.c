@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct inomap {int dummy; } ;
-struct inode {int /*<<< orphan*/  i_mapping; } ;
+struct inode {int i_mapping; } ;
 struct TYPE_2__ {struct inomap* i_imap; } ;
 
-/* Variables and functions */
- TYPE_1__* JFS_IP (struct inode*) ; 
- int /*<<< orphan*/  diSync (struct inode*) ; 
- scalar_t__ isReadOnly (struct inode*) ; 
- int /*<<< orphan*/  kfree (struct inomap*) ; 
- int /*<<< orphan*/  truncate_inode_pages (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ TYPE_1__* JFS_IP (struct inode*) ;
+ int diSync (struct inode*) ;
+ scalar_t__ isReadOnly (struct inode*) ;
+ int kfree (struct inomap*) ;
+ int truncate_inode_pages (int ,int ) ;
 
 int diUnmount(struct inode *ipimap, int mounterror)
 {
-	struct inomap *imap = JFS_IP(ipimap)->i_imap;
+ struct inomap *imap = JFS_IP(ipimap)->i_imap;
 
-	/*
-	 * update the on-disk inode map control structure
-	 */
 
-	if (!(mounterror || isReadOnly(ipimap)))
-		diSync(ipimap);
 
-	/*
-	 * Invalidate the page cache buffers
-	 */
-	truncate_inode_pages(ipimap->i_mapping, 0);
 
-	/*
-	 * free in-memory control structure
-	 */
-	kfree(imap);
 
-	return (0);
+ if (!(mounterror || isReadOnly(ipimap)))
+  diSync(ipimap);
+
+
+
+
+ truncate_inode_pages(ipimap->i_mapping, 0);
+
+
+
+
+ kfree(imap);
+
+ return (0);
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int uint32_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  message ;
-struct TYPE_4__ {scalar_t__ handle_friendrequest_isset; scalar_t__ (* filter_function ) (scalar_t__ const*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  handle_friendrequest_userdata; int /*<<< orphan*/  handle_friendrequest_object; int /*<<< orphan*/  (* handle_friendrequest ) (int /*<<< orphan*/ ,scalar_t__ const*,scalar_t__*,int,int /*<<< orphan*/ ) ;int /*<<< orphan*/  filter_function_userdata; int /*<<< orphan*/  nospam; } ;
-typedef  TYPE_1__ Friend_Requests ;
 
-/* Variables and functions */
- int ONION_CLIENT_MAX_DATA_SIZE ; 
- int /*<<< orphan*/  addto_receivedlist (TYPE_1__*,scalar_t__ const*) ; 
- scalar_t__ memcmp (scalar_t__ const*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,scalar_t__ const*,int) ; 
- scalar_t__ request_received (TYPE_1__*,scalar_t__ const*) ; 
- scalar_t__ stub1 (scalar_t__ const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,scalar_t__ const*,scalar_t__*,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+typedef int message ;
+struct TYPE_4__ {scalar_t__ handle_friendrequest_isset; scalar_t__ (* filter_function ) (scalar_t__ const*,int ) ;int handle_friendrequest_userdata; int handle_friendrequest_object; int (* handle_friendrequest ) (int ,scalar_t__ const*,scalar_t__*,int,int ) ;int filter_function_userdata; int nospam; } ;
+typedef TYPE_1__ Friend_Requests ;
+
+
+ int ONION_CLIENT_MAX_DATA_SIZE ;
+ int addto_receivedlist (TYPE_1__*,scalar_t__ const*) ;
+ scalar_t__ memcmp (scalar_t__ const*,int *,int) ;
+ int memcpy (scalar_t__*,scalar_t__ const*,int) ;
+ scalar_t__ request_received (TYPE_1__*,scalar_t__ const*) ;
+ scalar_t__ stub1 (scalar_t__ const*,int ) ;
+ int stub2 (int ,scalar_t__ const*,scalar_t__*,int,int ) ;
 
 __attribute__((used)) static int friendreq_handlepacket(void *object, const uint8_t *source_pubkey, const uint8_t *packet, uint16_t length)
 {
@@ -55,7 +55,7 @@ __attribute__((used)) static int friendreq_handlepacket(void *object, const uint
     uint32_t message_len = length - sizeof(fr->nospam);
     uint8_t message[message_len + 1];
     memcpy(message, packet + sizeof(fr->nospam), message_len);
-    message[sizeof(message) - 1] = 0; /* Be sure the message is null terminated. */
+    message[sizeof(message) - 1] = 0;
 
     (*fr->handle_friendrequest)(fr->handle_friendrequest_object, source_pubkey, message, message_len,
                                 fr->handle_friendrequest_userdata);

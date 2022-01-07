@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_10__ {scalar_t__ iOp; int fErrorOrAux; scalar_t__ isError; TYPE_2__* pOut; TYPE_4__* pVdbe; } ;
-typedef  TYPE_3__ sqlite3_context ;
-struct TYPE_11__ {TYPE_5__* pAuxData; int /*<<< orphan*/  db; } ;
-typedef  TYPE_4__ Vdbe ;
+typedef TYPE_3__ sqlite3_context ;
+struct TYPE_11__ {TYPE_5__* pAuxData; int db; } ;
+typedef TYPE_4__ Vdbe ;
 struct TYPE_12__ {int iAuxArg; scalar_t__ iAuxOp; void (* xDeleteAux ) (void*) ;void* pAux; struct TYPE_12__* pNextAux; } ;
 struct TYPE_9__ {TYPE_1__* db; } ;
-struct TYPE_8__ {int /*<<< orphan*/  mutex; } ;
-typedef  TYPE_5__ AuxData ;
+struct TYPE_8__ {int mutex; } ;
+typedef TYPE_5__ AuxData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- TYPE_5__* sqlite3DbMallocZero (int /*<<< orphan*/ ,int) ; 
- int sqlite3_mutex_held (int /*<<< orphan*/ ) ; 
- void stub1 (void*) ; 
+
+ int assert (int) ;
+ TYPE_5__* sqlite3DbMallocZero (int ,int) ;
+ int sqlite3_mutex_held (int ) ;
+ void stub1 (void*) ;
 
 void sqlite3_set_auxdata(
   sqlite3_context *pCtx,
@@ -40,11 +40,11 @@ void sqlite3_set_auxdata(
   Vdbe *pVdbe = pCtx->pVdbe;
 
   assert( sqlite3_mutex_held(pCtx->pOut->db->mutex) );
-#ifdef SQLITE_ENABLE_STAT3_OR_STAT4
-  if( pVdbe==0 ) goto failed;
-#else
+
+
+
   assert( pVdbe!=0 );
-#endif
+
 
   for(pAuxData=pVdbe->pAuxData; pAuxData; pAuxData=pAuxData->pNextAux){
     if( pAuxData->iAuxArg==iArg && (pAuxData->iAuxOp==pCtx->iOp || iArg<0) ){

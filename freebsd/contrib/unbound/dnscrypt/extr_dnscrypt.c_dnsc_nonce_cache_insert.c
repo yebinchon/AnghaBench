@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct slabhash {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * data; struct nonce_cache_key* key; int /*<<< orphan*/  hash; int /*<<< orphan*/  lock; } ;
-struct nonce_cache_key {TYPE_1__ entry; int /*<<< orphan*/  client_publickey; int /*<<< orphan*/  magic_query; int /*<<< orphan*/  nonce; } ;
+struct TYPE_2__ {int * data; struct nonce_cache_key* key; int hash; int lock; } ;
+struct nonce_cache_key {TYPE_1__ entry; int client_publickey; int magic_query; int nonce; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DNSCRYPT_MAGIC_HEADER_LEN ; 
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  crypto_box_HALF_NONCEBYTES ; 
- int /*<<< orphan*/  crypto_box_PUBLICKEYBYTES ; 
- int /*<<< orphan*/  free (struct nonce_cache_key*) ; 
- int /*<<< orphan*/  lock_rw_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slabhash_insert (struct slabhash*,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int DNSCRYPT_MAGIC_HEADER_LEN ;
+ scalar_t__ calloc (int,int) ;
+ int crypto_box_HALF_NONCEBYTES ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int free (struct nonce_cache_key*) ;
+ int lock_rw_init (int *) ;
+ int memcpy (int ,int const*,int ) ;
+ int slabhash_insert (struct slabhash*,int ,TYPE_1__*,int *,int *) ;
 
 __attribute__((used)) static void
 dnsc_nonce_cache_insert(struct slabhash *cache,
@@ -46,9 +46,9 @@ dnsc_nonce_cache_insert(struct slabhash *cache,
     memcpy(k->client_publickey, pk, crypto_box_PUBLICKEYBYTES);
     k->entry.hash = hash;
     k->entry.key = k;
-    k->entry.data = NULL;
+    k->entry.data = ((void*)0);
     slabhash_insert(cache,
                     hash, &k->entry,
-                    NULL,
-                    NULL);
+                    ((void*)0),
+                    ((void*)0));
 }

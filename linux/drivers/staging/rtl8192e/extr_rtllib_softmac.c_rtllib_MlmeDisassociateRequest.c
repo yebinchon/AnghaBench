@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
 struct TYPE_2__ {int* bssid; } ;
-struct rtllib_device {TYPE_1__ current_network; int /*<<< orphan*/  dev; int /*<<< orphan*/  (* SetHwRegHandler ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ;void* OpMode; int /*<<< orphan*/  state; } ;
+struct rtllib_device {TYPE_1__ current_network; int dev; int (* SetHwRegHandler ) (int ,int ,int*) ;void* OpMode; int state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HW_VAR_BSSID ; 
- int /*<<< orphan*/  HW_VAR_MEDIA_STATUS ; 
- int /*<<< orphan*/  RTLLIB_NOLINK ; 
- void* RT_OP_MODE_NO_LINK ; 
- int /*<<< orphan*/  RemovePeerTS (struct rtllib_device*,int*) ; 
- scalar_t__ memcmp (int*,int*,int) ; 
- int /*<<< orphan*/  rtllib_disassociate (struct rtllib_device*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
+
+ int HW_VAR_BSSID ;
+ int HW_VAR_MEDIA_STATUS ;
+ int RTLLIB_NOLINK ;
+ void* RT_OP_MODE_NO_LINK ;
+ int RemovePeerTS (struct rtllib_device*,int*) ;
+ scalar_t__ memcmp (int*,int*,int) ;
+ int rtllib_disassociate (struct rtllib_device*) ;
+ int stub1 (int ,int ,int*) ;
+ int stub2 (int ,int ,int*) ;
 
 __attribute__((used)) static void rtllib_MlmeDisassociateRequest(struct rtllib_device *rtllib,
-					   u8 *asSta, u8 asRsn)
+        u8 *asSta, u8 asRsn)
 {
-	u8 i;
-	u8	OpMode;
+ u8 i;
+ u8 OpMode;
 
-	RemovePeerTS(rtllib, asSta);
+ RemovePeerTS(rtllib, asSta);
 
-	if (memcmp(rtllib->current_network.bssid, asSta, 6) == 0) {
-		rtllib->state = RTLLIB_NOLINK;
+ if (memcmp(rtllib->current_network.bssid, asSta, 6) == 0) {
+  rtllib->state = RTLLIB_NOLINK;
 
-		for (i = 0; i < 6; i++)
-			rtllib->current_network.bssid[i] = 0x22;
-		OpMode = RT_OP_MODE_NO_LINK;
-		rtllib->OpMode = RT_OP_MODE_NO_LINK;
-		rtllib->SetHwRegHandler(rtllib->dev, HW_VAR_MEDIA_STATUS,
-					(u8 *)(&OpMode));
-		rtllib_disassociate(rtllib);
+  for (i = 0; i < 6; i++)
+   rtllib->current_network.bssid[i] = 0x22;
+  OpMode = RT_OP_MODE_NO_LINK;
+  rtllib->OpMode = RT_OP_MODE_NO_LINK;
+  rtllib->SetHwRegHandler(rtllib->dev, HW_VAR_MEDIA_STATUS,
+     (u8 *)(&OpMode));
+  rtllib_disassociate(rtllib);
 
-		rtllib->SetHwRegHandler(rtllib->dev, HW_VAR_BSSID,
-					rtllib->current_network.bssid);
+  rtllib->SetHwRegHandler(rtllib->dev, HW_VAR_BSSID,
+     rtllib->current_network.bssid);
 
-	}
+ }
 
 }

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_11__ {scalar_t__ cfFormat; } ;
-struct paste_format {scalar_t__ (* paste ) (TYPE_2__*,TYPE_4__*,int /*<<< orphan*/ *) ;TYPE_4__ fmt; } ;
-typedef  scalar_t__ UINT ;
+struct paste_format {scalar_t__ (* paste ) (TYPE_2__*,TYPE_4__*,int *) ;TYPE_4__ fmt; } ;
+typedef scalar_t__ UINT ;
 struct TYPE_10__ {int styleFlags; } ;
 struct TYPE_9__ {scalar_t__ dwAspect; } ;
-typedef  int /*<<< orphan*/  STGMEDIUM ;
-typedef  TYPE_1__ REPASTESPECIAL ;
-typedef  TYPE_2__ ME_TextEditor ;
-typedef  int /*<<< orphan*/  IDataObject ;
-typedef  scalar_t__ HRESULT ;
-typedef  int BOOL ;
+typedef int STGMEDIUM ;
+typedef TYPE_1__ REPASTESPECIAL ;
+typedef TYPE_2__ ME_TextEditor ;
+typedef int IDataObject ;
+typedef scalar_t__ HRESULT ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ CF_TEXT ; 
- scalar_t__ CF_UNICODETEXT ; 
- scalar_t__ DVASPECT_CONTENT ; 
- int ES_READONLY ; 
- int FALSE ; 
- int /*<<< orphan*/  FIXME (char*,scalar_t__) ; 
- scalar_t__ IDataObject_GetData (int /*<<< orphan*/ *,TYPE_4__*,int /*<<< orphan*/ *) ; 
- scalar_t__ IDataObject_QueryGetData (int /*<<< orphan*/ *,TYPE_4__*) ; 
- int /*<<< orphan*/  IDataObject_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MB_ICONERROR ; 
- int /*<<< orphan*/  MessageBeep (int /*<<< orphan*/ ) ; 
- scalar_t__ OleGetClipboard (int /*<<< orphan*/ **) ; 
- scalar_t__ S_FALSE ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  init_paste_formats () ; 
- struct paste_format* paste_formats ; 
- scalar_t__ stub1 (TYPE_2__*,TYPE_4__*,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ CF_TEXT ;
+ scalar_t__ CF_UNICODETEXT ;
+ scalar_t__ DVASPECT_CONTENT ;
+ int ES_READONLY ;
+ int FALSE ;
+ int FIXME (char*,scalar_t__) ;
+ scalar_t__ IDataObject_GetData (int *,TYPE_4__*,int *) ;
+ scalar_t__ IDataObject_QueryGetData (int *,TYPE_4__*) ;
+ int IDataObject_Release (int *) ;
+ int MB_ICONERROR ;
+ int MessageBeep (int ) ;
+ scalar_t__ OleGetClipboard (int **) ;
+ scalar_t__ S_FALSE ;
+ scalar_t__ S_OK ;
+ int init_paste_formats () ;
+ struct paste_format* paste_formats ;
+ scalar_t__ stub1 (TYPE_2__*,TYPE_4__*,int *) ;
 
 __attribute__((used)) static BOOL paste_special(ME_TextEditor *editor, UINT cf, REPASTESPECIAL *ps, BOOL check_only)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static BOOL paste_special(ME_TextEditor *editor, UINT cf, 
     struct paste_format *format;
     IDataObject *data;
 
-    /* Protect read-only edit control from modification */
+
     if (editor->styleFlags & ES_READONLY)
     {
         if (!check_only)

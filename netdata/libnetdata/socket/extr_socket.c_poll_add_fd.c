@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-struct pollfd {size_t slot; int fd; short events; int flags; int socktype; int port_acl; void (* del_callback ) (struct pollfd*) ;int (* rcv_callback ) (struct pollfd*,short*) ;int (* snd_callback ) (struct pollfd*,short*) ;int /*<<< orphan*/ * data; scalar_t__ send_count; scalar_t__ recv_count; scalar_t__ last_sent_t; scalar_t__ last_received_t; int /*<<< orphan*/  connected_t; int /*<<< orphan*/ * client_host; int /*<<< orphan*/ * client_port; int /*<<< orphan*/ * client_ip; struct pollfd* next; TYPE_1__* p; scalar_t__ revents; } ;
-typedef  size_t ssize_t ;
-typedef  int WEB_CLIENT_ACL ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct pollfd {size_t slot; int fd; short events; int flags; int socktype; int port_acl; void (* del_callback ) (struct pollfd*) ;int (* rcv_callback ) (struct pollfd*,short*) ;int (* snd_callback ) (struct pollfd*,short*) ;int * data; scalar_t__ send_count; scalar_t__ recv_count; scalar_t__ last_sent_t; scalar_t__ last_received_t; int connected_t; int * client_host; int * client_port; int * client_ip; struct pollfd* next; TYPE_1__* p; scalar_t__ revents; } ;
+typedef size_t ssize_t ;
+typedef int WEB_CLIENT_ACL ;
 struct TYPE_3__ {size_t slots; size_t used; size_t min; size_t max; void (* del_callback ) (struct pollfd*) ;int (* rcv_callback ) (struct pollfd*,short*) ;int (* snd_callback ) (struct pollfd*,short*) ;struct pollfd* first_free; struct pollfd* fds; struct pollfd* inf; } ;
-typedef  TYPE_1__ POLLJOB ;
-typedef  struct pollfd POLLINFO ;
+typedef TYPE_1__ POLLJOB ;
+typedef struct pollfd POLLINFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_POLLFD ; 
- short POLLIN ; 
- int POLLINFO_FLAG_CLIENT_SOCKET ; 
- int POLLINFO_FLAG_SERVER_SOCKET ; 
- size_t POLL_FDS_INCREASE_STEP ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,size_t,...) ; 
- int /*<<< orphan*/  netdata_thread_disable_cancelability () ; 
- int /*<<< orphan*/  netdata_thread_enable_cancelability () ; 
- int /*<<< orphan*/  now_boottime_sec () ; 
- void* reallocz (struct pollfd*,int) ; 
- void* strdupz (char const*) ; 
- scalar_t__ unlikely (int) ; 
+
+ int D_POLLFD ;
+ short POLLIN ;
+ int POLLINFO_FLAG_CLIENT_SOCKET ;
+ int POLLINFO_FLAG_SERVER_SOCKET ;
+ size_t POLL_FDS_INCREASE_STEP ;
+ int debug (int ,char*,size_t,...) ;
+ int netdata_thread_disable_cancelability () ;
+ int netdata_thread_enable_cancelability () ;
+ int now_boottime_sec () ;
+ void* reallocz (struct pollfd*,int) ;
+ void* strdupz (char const*) ;
+ scalar_t__ unlikely (int) ;
 
 inline POLLINFO *poll_add_fd(POLLJOB *p
                              , int fd
@@ -41,21 +41,21 @@ inline POLLINFO *poll_add_fd(POLLJOB *p
                              , const char *client_ip
                              , const char *client_port
                              , const char *client_host
-                             , void *(*add_callback)(POLLINFO * /*pi*/, short int * /*events*/, void * /*data*/)
-                             , void  (*del_callback)(POLLINFO * /*pi*/)
-                             , int   (*rcv_callback)(POLLINFO * /*pi*/, short int * /*events*/)
-                             , int   (*snd_callback)(POLLINFO * /*pi*/, short int * /*events*/)
+                             , void *(*add_callback)(POLLINFO * , short int * , void * )
+                             , void (*del_callback)(POLLINFO * )
+                             , int (*rcv_callback)(POLLINFO * , short int * )
+                             , int (*snd_callback)(POLLINFO * , short int * )
                              , void *data
 ) {
     debug(D_POLLFD, "POLLFD: ADD: request to add fd %d, slots = %zu, used = %zu, min = %zu, max = %zu, next free = %zd", fd, p->slots, p->used, p->min, p->max, p->first_free?(ssize_t)p->first_free->slot:(ssize_t)-1);
 
-    if(unlikely(fd < 0)) return NULL;
+    if(unlikely(fd < 0)) return ((void*)0);
 
-    //if(p->limit && p->used >= p->limit) {
-    //    info("Max sockets limit reached (%zu sockets), dropping connection", p->used);
-    //    close(fd);
-    //    return NULL;
-    //}
+
+
+
+
+
 
     if(unlikely(!p->first_free)) {
         size_t new_slots = p->slots + POLL_FDS_INCREASE_STEP;
@@ -64,7 +64,7 @@ inline POLLINFO *poll_add_fd(POLLJOB *p
         p->fds = reallocz(p->fds, sizeof(struct pollfd) * new_slots);
         p->inf = reallocz(p->inf, sizeof(POLLINFO) * new_slots);
 
-        // reset all the newly added slots
+
         ssize_t i;
         for(i = new_slots - 1; i >= (ssize_t)p->slots ; i--) {
             debug(D_POLLFD, "POLLFD: ADD: resetting new slot %zd", i);
@@ -78,16 +78,16 @@ inline POLLINFO *poll_add_fd(POLLJOB *p
             p->inf[i].socktype = -1;
             p->inf[i].port_acl = -1;
 
-            p->inf[i].client_ip = NULL;
-            p->inf[i].client_port = NULL;
-            p->inf[i].client_host = NULL;
+            p->inf[i].client_ip = ((void*)0);
+            p->inf[i].client_port = ((void*)0);
+            p->inf[i].client_host = ((void*)0);
             p->inf[i].del_callback = p->del_callback;
             p->inf[i].rcv_callback = p->rcv_callback;
             p->inf[i].snd_callback = p->snd_callback;
-            p->inf[i].data = NULL;
+            p->inf[i].data = ((void*)0);
 
-            // link them so that the first free will be earlier in the array
-            // (we loop decrementing i)
+
+
             p->inf[i].next = p->first_free;
             p->first_free = &p->inf[i];
         }
@@ -110,8 +110,8 @@ inline POLLINFO *poll_add_fd(POLLJOB *p
     pi->socktype = socktype;
     pi->port_acl = port_acl;
     pi->flags = flags;
-    pi->next = NULL;
-    pi->client_ip   = strdupz(client_ip);
+    pi->next = ((void*)0);
+    pi->client_ip = strdupz(client_ip);
     pi->client_port = strdupz(client_port);
     pi->client_host = strdupz(client_host);
 

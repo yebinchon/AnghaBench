@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct ocrdma_queue_info {int /*<<< orphan*/  dma; int /*<<< orphan*/  va; int /*<<< orphan*/  size; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct ocrdma_queue_info {int dma; int va; int size; } ;
 struct TYPE_4__ {TYPE_1__* pdev; } ;
 struct ocrdma_dev {TYPE_2__ nic_info; } ;
-struct TYPE_3__ {int /*<<< orphan*/  dev; } ;
+struct TYPE_3__ {int dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dma_free_coherent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int dma_free_coherent (int *,int ,int ,int ) ;
 
 __attribute__((used)) static void ocrdma_free_q(struct ocrdma_dev *dev, struct ocrdma_queue_info *q)
 {
-	dma_free_coherent(&dev->nic_info.pdev->dev, q->size, q->va, q->dma);
+ dma_free_coherent(&dev->nic_info.pdev->dev, q->size, q->va, q->dma);
 }

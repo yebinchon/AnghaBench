@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GNode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAXPATHLEN ; 
- int /*<<< orphan*/  Var_Set (char const*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* Var_Value (char const*,int /*<<< orphan*/ *,char**) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/ * get_cached_realpaths () ; 
- char* realpath (char const*,char*) ; 
- int /*<<< orphan*/  strlcpy (char*,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int GNode ;
+
+
+ int MAXPATHLEN ;
+ int Var_Set (char const*,char*,int *,int ) ;
+ char* Var_Value (char const*,int *,char**) ;
+ int free (char*) ;
+ int * get_cached_realpaths () ;
+ char* realpath (char const*,char*) ;
+ int strlcpy (char*,char*,int ) ;
 
 char *
 cached_realpath(const char *pathname, char *resolved)
@@ -28,16 +28,16 @@ cached_realpath(const char *pathname, char *resolved)
     char *rp, *cp;
 
     if (!pathname || !pathname[0])
-	return NULL;
+ return ((void*)0);
 
     cache = get_cached_realpaths();
 
-    if ((rp = Var_Value(pathname, cache, &cp)) != NULL) {
-	/* a hit */
-	strlcpy(resolved, rp, MAXPATHLEN);
-    } else if ((rp = realpath(pathname, resolved)) != NULL) {
-	Var_Set(pathname, rp, cache, 0);
+    if ((rp = Var_Value(pathname, cache, &cp)) != ((void*)0)) {
+
+ strlcpy(resolved, rp, MAXPATHLEN);
+    } else if ((rp = realpath(pathname, resolved)) != ((void*)0)) {
+ Var_Set(pathname, rp, cache, 0);
     }
     free(cp);
-    return rp ? resolved : NULL;
+    return rp ? resolved : ((void*)0);
 }

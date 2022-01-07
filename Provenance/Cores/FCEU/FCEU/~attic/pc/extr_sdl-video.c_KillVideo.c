@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ IconSurface ; 
- int /*<<< orphan*/  KillBlitToHigh () ; 
- int /*<<< orphan*/  KillOpenGL () ; 
- int /*<<< orphan*/  SDL_FreeSurface (scalar_t__) ; 
- int /*<<< orphan*/  SDL_INIT_VIDEO ; 
- int /*<<< orphan*/  SDL_QuitSubSystem (int /*<<< orphan*/ ) ; 
- int curbpp ; 
- int inited ; 
- scalar_t__ usingogl ; 
+ scalar_t__ IconSurface ;
+ int KillBlitToHigh () ;
+ int KillOpenGL () ;
+ int SDL_FreeSurface (scalar_t__) ;
+ int SDL_INIT_VIDEO ;
+ int SDL_QuitSubSystem (int ) ;
+ int curbpp ;
+ int inited ;
+ scalar_t__ usingogl ;
 
 int KillVideo(void)
 {
@@ -32,11 +24,11 @@ int KillVideo(void)
 
  if(inited&1)
  {
-  #ifdef OPENGL
-  if(usingogl)
-   KillOpenGL();
-  else
-  #endif
+
+
+
+
+
   if(curbpp>8)
    KillBlitToHigh();
   SDL_QuitSubSystem(SDL_INIT_VIDEO);

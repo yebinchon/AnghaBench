@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct bps_data {int /*<<< orphan*/  target_checksum; int /*<<< orphan*/  output_offset; int /*<<< orphan*/ * target_data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  encoding_crc32 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint8_t ;
+struct bps_data {int target_checksum; int output_offset; int * target_data; } ;
+
+
+ int encoding_crc32 (int ,int *,int) ;
 
 __attribute__((used)) static void bps_write(struct bps_data *bps, uint8_t data)
 {

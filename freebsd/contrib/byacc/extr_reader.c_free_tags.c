@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FREE (int /*<<< orphan*/ *****) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ****) ; 
- int ntags ; 
- int /*<<< orphan*/ ***** tag_table ; 
+ int FREE (int *****) ;
+ int assert (int ****) ;
+ int ntags ;
+ int ***** tag_table ;
 
 __attribute__((used)) static void
 free_tags(void)
@@ -23,12 +15,12 @@ free_tags(void)
     int i;
 
     if (tag_table == 0)
-	return;
+ return;
 
     for (i = 0; i < ntags; ++i)
     {
-	assert(tag_table[i]);
-	FREE(tag_table[i]);
+ assert(tag_table[i]);
+ FREE(tag_table[i]);
     }
     FREE(tag_table);
 }

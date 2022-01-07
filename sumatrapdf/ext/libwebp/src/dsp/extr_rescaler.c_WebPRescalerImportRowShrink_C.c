@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int rescaler_t ;
-struct TYPE_4__ {int num_channels; int dst_width; int x_sub; int const src_width; int* frow; int /*<<< orphan*/  fx_scale; scalar_t__ x_add; int /*<<< orphan*/  x_expand; } ;
-typedef  TYPE_1__ WebPRescaler ;
 
-/* Variables and functions */
- scalar_t__ MULT_FIX (int const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WebPRescalerInputDone (TYPE_1__* const) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int rescaler_t ;
+struct TYPE_4__ {int num_channels; int dst_width; int x_sub; int const src_width; int* frow; int fx_scale; scalar_t__ x_add; int x_expand; } ;
+typedef TYPE_1__ WebPRescaler ;
+
+
+ scalar_t__ MULT_FIX (int const,int ) ;
+ int WebPRescalerInputDone (TYPE_1__* const) ;
+ int assert (int) ;
 
 void WebPRescalerImportRowShrink_C(WebPRescaler* const wrk,
                                    const uint8_t* src) {
@@ -44,10 +44,10 @@ void WebPRescalerImportRowShrink_C(WebPRescaler* const wrk,
         sum += base;
         x_in += x_stride;
       }
-      {        // Emit next horizontal pixel.
+      {
         const rescaler_t frac = base * (-accum);
         wrk->frow[x_out] = sum * wrk->x_sub - frac;
-        // fresh fractional start for next pixel
+
         sum = (int)MULT_FIX(frac, wrk->fx_scale);
       }
       x_out += x_stride;

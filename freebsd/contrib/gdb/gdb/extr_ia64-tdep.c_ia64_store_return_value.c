@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct type {int dummy; } ;
 struct regcache {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IA64_FR8_REGNUM ; 
- int /*<<< orphan*/  IA64_GR8_REGNUM ; 
- int MAX_REGISTER_SIZE ; 
- scalar_t__ TYPE_CODE (struct type*) ; 
- scalar_t__ TYPE_CODE_FLT ; 
- int /*<<< orphan*/  builtin_type_ia64_ext ; 
- int /*<<< orphan*/  convert_typed_floating (void const*,struct type*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  regcache_cooked_write (struct regcache*,int /*<<< orphan*/ ,void const*) ; 
- int /*<<< orphan*/  target_store_registers (int /*<<< orphan*/ ) ; 
+
+ int IA64_FR8_REGNUM ;
+ int IA64_GR8_REGNUM ;
+ int MAX_REGISTER_SIZE ;
+ scalar_t__ TYPE_CODE (struct type*) ;
+ scalar_t__ TYPE_CODE_FLT ;
+ int builtin_type_ia64_ext ;
+ int convert_typed_floating (void const*,struct type*,char*,int ) ;
+ int regcache_cooked_write (struct regcache*,int ,void const*) ;
+ int target_store_registers (int ) ;
 
 __attribute__((used)) static void
 ia64_store_return_value (struct type *type, struct regcache *regcache, const void *valbuf)

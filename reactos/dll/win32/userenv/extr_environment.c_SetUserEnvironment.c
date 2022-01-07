@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  PWSTR ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AppendUserEnvironmentVariable (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DPRINT1 (char*,scalar_t__) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  KEY_QUERY_VALUE ; 
- int /*<<< orphan*/  LPTR ; 
- int /*<<< orphan*/ * LocalAlloc (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  LocalFree (int /*<<< orphan*/ *) ; 
- scalar_t__ REG_EXPAND_SZ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegEnumValueW (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryInfoKey (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,scalar_t__*,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetLastError (scalar_t__) ; 
- int /*<<< orphan*/  SetUserEnvironmentVariable (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _wcsicmp (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int PWSTR ;
+typedef int * LPWSTR ;
+typedef int LPBYTE ;
+typedef scalar_t__ LONG ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+typedef int BOOL ;
+
+
+ int AppendUserEnvironmentVariable (int *,int *,int *) ;
+ int DPRINT1 (char*,scalar_t__) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int KEY_QUERY_VALUE ;
+ int LPTR ;
+ int * LocalAlloc (int ,scalar_t__) ;
+ int LocalFree (int *) ;
+ scalar_t__ REG_EXPAND_SZ ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegEnumValueW (int ,scalar_t__,int *,scalar_t__*,int *,scalar_t__*,int ,scalar_t__*) ;
+ scalar_t__ RegOpenKeyExW (int ,int *,int ,int ,int *) ;
+ scalar_t__ RegQueryInfoKey (int ,int *,int *,int *,int *,int *,int *,scalar_t__*,scalar_t__*,scalar_t__*,int *,int *) ;
+ int SetLastError (scalar_t__) ;
+ int SetUserEnvironmentVariable (int *,int *,int *,int) ;
+ int TRUE ;
+ int _wcsicmp (int *,char*) ;
 
 __attribute__((used)) static
 BOOL
@@ -69,17 +69,17 @@ SetUserEnvironment(PWSTR* Environment,
     }
 
     Error = RegQueryInfoKey(hEnvKey,
-                            NULL,
-                            NULL,
-                            NULL,
-                            NULL,
-                            NULL,
-                            NULL,
+                            ((void*)0),
+                            ((void*)0),
+                            ((void*)0),
+                            ((void*)0),
+                            ((void*)0),
+                            ((void*)0),
                             &dwValues,
                             &dwMaxValueNameLength,
                             &dwMaxValueDataLength,
-                            NULL,
-                            NULL);
+                            ((void*)0),
+                            ((void*)0));
     if (Error != ERROR_SUCCESS)
     {
         DPRINT1("RegQueryInforKey() failed (Error %ld)\n", Error);
@@ -94,24 +94,24 @@ SetUserEnvironment(PWSTR* Environment,
         return TRUE;
     }
 
-    /* Allocate buffers */
+
     dwMaxValueNameLength++;
     lpValueName = LocalAlloc(LPTR, dwMaxValueNameLength * sizeof(WCHAR));
-    if (lpValueName == NULL)
+    if (lpValueName == ((void*)0))
     {
         RegCloseKey(hEnvKey);
         return FALSE;
     }
 
     lpValueData = LocalAlloc(LPTR, dwMaxValueDataLength);
-    if (lpValueData == NULL)
+    if (lpValueData == ((void*)0))
     {
         LocalFree(lpValueName);
         RegCloseKey(hEnvKey);
         return FALSE;
     }
 
-    /* Enumerate values */
+
     for (i = 0; i < dwValues; i++)
     {
         dwValueNameLength = dwMaxValueNameLength;
@@ -121,7 +121,7 @@ SetUserEnvironment(PWSTR* Environment,
                               i,
                               lpValueName,
                               &dwValueNameLength,
-                              NULL,
+                              ((void*)0),
                               &dwType,
                               (LPBYTE)lpValueData,
                               &dwValueDataLength);
@@ -129,14 +129,14 @@ SetUserEnvironment(PWSTR* Environment,
         {
             if (!_wcsicmp(lpValueName, L"PATH"))
             {
-                /* Append 'Path' environment variable */
+
                 AppendUserEnvironmentVariable(Environment,
                                               lpValueName,
                                               lpValueData);
             }
             else
             {
-                /* Set environment variable */
+
                 SetUserEnvironmentVariable(Environment,
                                            lpValueName,
                                            lpValueData,

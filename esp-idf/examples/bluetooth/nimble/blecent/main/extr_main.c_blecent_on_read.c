@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_2__ {int /*<<< orphan*/  val_handle; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+struct TYPE_2__ {int val_handle; } ;
 struct peer_chr {TYPE_1__ chr; } ;
-struct peer {int /*<<< orphan*/  conn_handle; } ;
+struct peer {int conn_handle; } ;
 struct ble_gatt_error {scalar_t__ status; } ;
-struct ble_gatt_attr {int handle; int /*<<< orphan*/  om; } ;
+struct ble_gatt_attr {int handle; int om; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLECENT_CHR_ALERT_NOT_CTRL_PT ; 
- int /*<<< orphan*/  BLECENT_SVC_ALERT_UUID ; 
- int /*<<< orphan*/  BLE_ERR_REM_USER_CONN_TERM ; 
- int /*<<< orphan*/  BLE_UUID16_DECLARE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  INFO ; 
- int /*<<< orphan*/  MODLOG_DFLT (int /*<<< orphan*/ ,char*,...) ; 
- int ble_gap_terminate (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ble_gattc_write_flat (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  blecent_on_write ; 
- struct peer_chr* peer_chr_find_uuid (struct peer const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct peer* peer_find (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_mbuf (int /*<<< orphan*/ ) ; 
+
+ int BLECENT_CHR_ALERT_NOT_CTRL_PT ;
+ int BLECENT_SVC_ALERT_UUID ;
+ int BLE_ERR_REM_USER_CONN_TERM ;
+ int BLE_UUID16_DECLARE (int ) ;
+ int ERROR ;
+ int INFO ;
+ int MODLOG_DFLT (int ,char*,...) ;
+ int ble_gap_terminate (int ,int ) ;
+ int ble_gattc_write_flat (int ,int ,int*,int,int ,int *) ;
+ int blecent_on_write ;
+ struct peer_chr* peer_chr_find_uuid (struct peer const*,int ,int ) ;
+ struct peer* peer_find (int ) ;
+ int print_mbuf (int ) ;
 
 __attribute__((used)) static int
 blecent_on_read(uint16_t conn_handle,
@@ -48,9 +48,9 @@ blecent_on_read(uint16_t conn_handle,
     }
     MODLOG_DFLT(INFO, "\n");
 
-    /* Write two bytes (99, 100) to the alert-notification-control-point
-     * characteristic.
-     */
+
+
+
     const struct peer_chr *chr;
     uint8_t value[2];
     int rc;
@@ -59,7 +59,7 @@ blecent_on_read(uint16_t conn_handle,
     chr = peer_chr_find_uuid(peer,
                              BLE_UUID16_DECLARE(BLECENT_SVC_ALERT_UUID),
                              BLE_UUID16_DECLARE(BLECENT_CHR_ALERT_NOT_CTRL_PT));
-    if (chr == NULL) {
+    if (chr == ((void*)0)) {
         MODLOG_DFLT(ERROR, "Error: Peer doesn't support the Alert "
                     "Notification Control Point characteristic\n");
         goto err;
@@ -68,7 +68,7 @@ blecent_on_read(uint16_t conn_handle,
     value[0] = 99;
     value[1] = 100;
     rc = ble_gattc_write_flat(conn_handle, chr->chr.val_handle,
-                              value, sizeof value, blecent_on_write, NULL);
+                              value, sizeof value, blecent_on_write, ((void*)0));
     if (rc != 0) {
         MODLOG_DFLT(ERROR, "Error: Failed to write characteristic; rc=%d\n",
                     rc);
@@ -77,6 +77,6 @@ blecent_on_read(uint16_t conn_handle,
 
     return 0;
 err:
-    /* Terminate the connection. */
+
     return ble_gap_terminate(peer->conn_handle, BLE_ERR_REM_USER_CONN_TERM);
 }

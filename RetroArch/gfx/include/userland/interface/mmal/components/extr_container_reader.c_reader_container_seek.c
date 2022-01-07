@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_7__ ;
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_SEEK_FLAGS_T ;
-struct TYPE_18__ {int /*<<< orphan*/  container; } ;
+
+
+typedef struct TYPE_18__ TYPE_7__ ;
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+typedef int VC_CONTAINER_STATUS_T ;
+typedef int VC_CONTAINER_SEEK_FLAGS_T ;
+struct TYPE_18__ {int container; } ;
 struct TYPE_17__ {unsigned int output_num; TYPE_4__** output; TYPE_1__* priv; } ;
-struct TYPE_16__ {int flags; int /*<<< orphan*/  offset; } ;
+struct TYPE_16__ {int flags; int offset; } ;
 struct TYPE_15__ {TYPE_3__* priv; } ;
 struct TYPE_14__ {TYPE_2__* module; } ;
-struct TYPE_13__ {int /*<<< orphan*/  flush; int /*<<< orphan*/  eos; } ;
+struct TYPE_13__ {int flush; int eos; } ;
 struct TYPE_12__ {TYPE_7__* module; } ;
-typedef  int /*<<< orphan*/  MMAL_STATUS_T ;
-typedef  TYPE_5__ MMAL_PARAMETER_SEEK_T ;
-typedef  TYPE_6__ MMAL_COMPONENT_T ;
-typedef  TYPE_7__ MMAL_COMPONENT_MODULE_T ;
+typedef int MMAL_STATUS_T ;
+typedef TYPE_5__ MMAL_PARAMETER_SEEK_T ;
+typedef TYPE_6__ MMAL_COMPONENT_T ;
+typedef TYPE_7__ MMAL_COMPONENT_MODULE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MMAL_FALSE ; 
- int MMAL_PARAM_SEEK_FLAG_FORWARD ; 
- int MMAL_PARAM_SEEK_FLAG_PRECISE ; 
- int /*<<< orphan*/  MMAL_TRUE ; 
- int /*<<< orphan*/  VC_CONTAINER_SEEK_FLAG_FORWARD ; 
- int /*<<< orphan*/  VC_CONTAINER_SEEK_FLAG_PRECISE ; 
- int /*<<< orphan*/  VC_CONTAINER_SEEK_MODE_TIME ; 
- int /*<<< orphan*/  container_map_to_mmal_status (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mmal_component_action_lock (TYPE_6__*) ; 
- int /*<<< orphan*/  mmal_component_action_unlock (TYPE_6__*) ; 
- int /*<<< orphan*/  vc_container_seek (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int MMAL_FALSE ;
+ int MMAL_PARAM_SEEK_FLAG_FORWARD ;
+ int MMAL_PARAM_SEEK_FLAG_PRECISE ;
+ int MMAL_TRUE ;
+ int VC_CONTAINER_SEEK_FLAG_FORWARD ;
+ int VC_CONTAINER_SEEK_FLAG_PRECISE ;
+ int VC_CONTAINER_SEEK_MODE_TIME ;
+ int container_map_to_mmal_status (int ) ;
+ int mmal_component_action_lock (TYPE_6__*) ;
+ int mmal_component_action_unlock (TYPE_6__*) ;
+ int vc_container_seek (int ,int *,int ,int ) ;
 
 __attribute__((used)) static MMAL_STATUS_T reader_container_seek(MMAL_COMPONENT_T *component, const MMAL_PARAMETER_SEEK_T *seek)
 {

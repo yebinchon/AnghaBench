@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int fd; int state; } ;
-typedef  TYPE_1__ event_t ;
+typedef TYPE_1__ event_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EPOLL_CTL_DEL ; 
- int EVT_IN_EPOLL ; 
- TYPE_1__* Events ; 
- int MAX_EVENTS ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ epoll_ctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  epoll_fd ; 
- int /*<<< orphan*/  perror (char*) ; 
+
+ int EPOLL_CTL_DEL ;
+ int EVT_IN_EPOLL ;
+ TYPE_1__* Events ;
+ int MAX_EVENTS ;
+ int assert (int) ;
+ scalar_t__ epoll_ctl (int ,int ,int,int ) ;
+ int epoll_fd ;
+ int perror (char*) ;
 
 int epoll_remove (int fd) {
   event_t *ev;

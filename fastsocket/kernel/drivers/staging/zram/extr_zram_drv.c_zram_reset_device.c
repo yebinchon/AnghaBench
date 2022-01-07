@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct zram {int /*<<< orphan*/  init_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __zram_reset_device (struct zram*) ; 
- int /*<<< orphan*/  down_write (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  up_write (int /*<<< orphan*/ *) ; 
+
+
+
+struct zram {int init_lock; } ;
+
+
+ int __zram_reset_device (struct zram*) ;
+ int down_write (int *) ;
+ int up_write (int *) ;
 
 void zram_reset_device(struct zram *zram)
 {
-	down_write(&zram->init_lock);
-	__zram_reset_device(zram);
-	up_write(&zram->init_lock);
+ down_write(&zram->init_lock);
+ __zram_reset_device(zram);
+ up_write(&zram->init_lock);
 }

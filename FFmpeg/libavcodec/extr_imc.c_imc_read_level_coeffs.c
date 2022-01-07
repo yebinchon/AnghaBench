@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-struct TYPE_5__ {int /*<<< orphan*/  bits; int /*<<< orphan*/  table; } ;
-typedef  TYPE_1__ VLC ;
-struct TYPE_6__ {int /*<<< orphan*/  gb; } ;
-typedef  TYPE_2__ IMCContext ;
 
-/* Variables and functions */
- int BANDS ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int get_vlc2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- TYPE_1__** huffman_vlc ; 
- size_t** imc_cb_select ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
+struct TYPE_5__ {int bits; int table; } ;
+typedef TYPE_1__ VLC ;
+struct TYPE_6__ {int gb; } ;
+typedef TYPE_2__ IMCContext ;
+
+
+ int BANDS ;
+ int get_bits (int *,int) ;
+ int get_vlc2 (int *,int ,int ,int) ;
+ TYPE_1__** huffman_vlc ;
+ size_t** imc_cb_select ;
 
 __attribute__((used)) static void imc_read_level_coeffs(IMCContext *q, int stream_format_code,
                                   int *levlCoeffs)

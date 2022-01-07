@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct panfrost_device {TYPE_1__* perfcnt; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dump_comp; } ;
+struct TYPE_2__ {int dump_comp; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  complete (int /*<<< orphan*/ *) ; 
+
+ int complete (int *) ;
 
 void panfrost_perfcnt_clean_cache_done(struct panfrost_device *pfdev)
 {
-	complete(&pfdev->perfcnt->dump_comp);
+ complete(&pfdev->perfcnt->dump_comp);
 }

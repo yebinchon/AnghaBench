@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  status_suspend; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int status_suspend; } ;
 struct uss820dci_softc {TYPE_1__ sc_flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINTFN (int /*<<< orphan*/ ,char*) ; 
+
+ int DPRINTFN (int ,char*) ;
 
 __attribute__((used)) static void
 uss820dci_wakeup_peer(struct uss820dci_softc *sc)
 {
-	if (!(sc->sc_flags.status_suspend)) {
-		return;
-	}
-	DPRINTFN(0, "not supported\n");
+ if (!(sc->sc_flags.status_suspend)) {
+  return;
+ }
+ DPRINTFN(0, "not supported\n");
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Server ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  server_flush_to_var (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  server_space_usage_message (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  server_sync (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  server_vacuum (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int Server ;
+
+
+ int assert (int *) ;
+ int server_flush_to_var (int *,int) ;
+ int server_space_usage_message (int *,int *) ;
+ int server_sync (int *) ;
+ int server_vacuum (int *,int) ;
 
 __attribute__((used)) static void server_full_flush(Server *s) {
         assert(s);
 
-        (void) server_flush_to_var(s, false);
+        (void) server_flush_to_var(s, 0);
         server_sync(s);
-        server_vacuum(s, false);
+        server_vacuum(s, 0);
 
-        server_space_usage_message(s, NULL);
+        server_space_usage_message(s, ((void*)0));
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {scalar_t__ inTransaction; TYPE_1__* pPage1; int /*<<< orphan*/  pPager; int /*<<< orphan*/  mutex; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {scalar_t__ inTransaction; TYPE_1__* pPage1; int pPager; int mutex; } ;
 struct TYPE_6__ {int aData; } ;
-typedef  TYPE_1__ MemPage ;
-typedef  TYPE_2__ BtShared ;
+typedef TYPE_1__ MemPage ;
+typedef TYPE_2__ BtShared ;
 
-/* Variables and functions */
- scalar_t__ TRANS_NONE ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ countValidCursors (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  releasePageOne (TYPE_1__*) ; 
- int sqlite3PagerRefcount (int /*<<< orphan*/ ) ; 
- int sqlite3_mutex_held (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ TRANS_NONE ;
+ int assert (int) ;
+ scalar_t__ countValidCursors (TYPE_2__*,int ) ;
+ int releasePageOne (TYPE_1__*) ;
+ int sqlite3PagerRefcount (int ) ;
+ int sqlite3_mutex_held (int ) ;
 
 __attribute__((used)) static void unlockBtreeIfUnused(BtShared *pBt){
   assert( sqlite3_mutex_held(pBt->mutex) );

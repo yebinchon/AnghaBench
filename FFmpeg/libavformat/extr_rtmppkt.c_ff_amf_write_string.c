@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AMF_DATA_TYPE_STRING ; 
- int /*<<< orphan*/  bytestream_put_be16 (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bytestream_put_buffer (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bytestream_put_byte (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int AMF_DATA_TYPE_STRING ;
+ int bytestream_put_be16 (int **,int ) ;
+ int bytestream_put_buffer (int **,char const*,int ) ;
+ int bytestream_put_byte (int **,int ) ;
+ int strlen (char const*) ;
 
 void ff_amf_write_string(uint8_t **dst, const char *str)
 {

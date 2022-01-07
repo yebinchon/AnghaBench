@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct utmpx {int ut_pid; int /*<<< orphan*/  ut_type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RUN_LVL ; 
- int /*<<< orphan*/  _PATH_UTMPX ; 
- int /*<<< orphan*/  assert (int*) ; 
- int /*<<< orphan*/  endutxent () ; 
- int errno ; 
- char* getenv (char*) ; 
- struct utmpx* getutxid (struct utmpx*) ; 
- int /*<<< orphan*/  setutxent () ; 
- scalar_t__ utmpxname (int /*<<< orphan*/ ) ; 
+
+
+
+struct utmpx {int ut_pid; int ut_type; } ;
+
+
+ int RUN_LVL ;
+ int _PATH_UTMPX ;
+ int assert (int*) ;
+ int endutxent () ;
+ int errno ;
+ char* getenv (char*) ;
+ struct utmpx* getutxid (struct utmpx*) ;
+ int setutxent () ;
+ scalar_t__ utmpxname (int ) ;
 
 int utmp_get_runlevel(int *runlevel, int *previous) {
         struct utmpx *found, lookup = { .ut_type = RUN_LVL };
@@ -29,20 +29,12 @@ int utmp_get_runlevel(int *runlevel, int *previous) {
         const char *e;
 
         assert(runlevel);
-
-        /* If these values are set in the environment this takes
-         * precedence. Presumably, sysvinit does this to work around a
-         * race condition that would otherwise exist where we'd always
-         * go to disk and hence might read runlevel data that might be
-         * very new and does not apply to the current script being
-         * executed. */
-
         e = getenv("RUNLEVEL");
         if (e && e[0] > 0) {
                 *runlevel = e[0];
 
                 if (previous) {
-                        /* $PREVLEVEL seems to be an Upstart thing */
+
 
                         e = getenv("PREVLEVEL");
                         if (e && e[0] > 0)

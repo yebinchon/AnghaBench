@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_generic {int a; scalar_t__ type; } ;
 struct buff_file {int global_id; } ;
 
-/* Variables and functions */
- scalar_t__ LEV_TX_INCREASE_GLOBAL_ID_LARGE ; 
- scalar_t__ LEV_TX_INCREASE_GLOBAL_ID_SMALL ; 
- int /*<<< orphan*/  assert (int) ; 
- int last_global_id ; 
- int /*<<< orphan*/  tmp_write_lev (struct buff_file*,struct lev_generic*,int) ; 
+
+ scalar_t__ LEV_TX_INCREASE_GLOBAL_ID_LARGE ;
+ scalar_t__ LEV_TX_INCREASE_GLOBAL_ID_SMALL ;
+ int assert (int) ;
+ int last_global_id ;
+ int tmp_write_lev (struct buff_file*,struct lev_generic*,int) ;
 
 void tmp_adjust_global_id (struct buff_file *T, int is_message_event) {
   int v = last_global_id - T->global_id - is_message_event;

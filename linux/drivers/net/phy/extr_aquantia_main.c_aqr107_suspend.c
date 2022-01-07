@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct phy_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MDIO_CTRL1 ; 
- int /*<<< orphan*/  MDIO_CTRL1_LPOWER ; 
- int /*<<< orphan*/  MDIO_MMD_VEND1 ; 
- int phy_set_bits_mmd (struct phy_device*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int MDIO_CTRL1 ;
+ int MDIO_CTRL1_LPOWER ;
+ int MDIO_MMD_VEND1 ;
+ int phy_set_bits_mmd (struct phy_device*,int ,int ,int ) ;
 
 __attribute__((used)) static int aqr107_suspend(struct phy_device *phydev)
 {
-	return phy_set_bits_mmd(phydev, MDIO_MMD_VEND1, MDIO_CTRL1,
-				MDIO_CTRL1_LPOWER);
+ return phy_set_bits_mmd(phydev, MDIO_MMD_VEND1, MDIO_CTRL1,
+    MDIO_CTRL1_LPOWER);
 }

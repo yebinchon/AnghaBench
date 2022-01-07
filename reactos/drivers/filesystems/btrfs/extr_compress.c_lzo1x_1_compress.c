@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-struct TYPE_3__ {int inlen; int outlen; int inpos; int /*<<< orphan*/ * out; int /*<<< orphan*/  wrkmem; int /*<<< orphan*/ * in; } ;
-typedef  TYPE_1__ lzo_stream ;
-typedef  scalar_t__ NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LZO_BYTE (int) ; 
- int M4_MARKER ; 
- scalar_t__ STATUS_SUCCESS ; 
- scalar_t__ lzo_do_compress (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_3__ {int inlen; int outlen; int inpos; int * out; int wrkmem; int * in; } ;
+typedef TYPE_1__ lzo_stream ;
+typedef scalar_t__ NTSTATUS ;
+
+
+ int LZO_BYTE (int) ;
+ int M4_MARKER ;
+ scalar_t__ STATUS_SUCCESS ;
+ scalar_t__ lzo_do_compress (int *,int,int *,int*,int ) ;
 
 __attribute__((used)) static NTSTATUS lzo1x_1_compress(lzo_stream* stream) {
     uint8_t *op = stream->out;

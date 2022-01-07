@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct hash_entry {int next_used; char* key; char* data; int data_len; int next_entry; int key_len; int exp_time; int /*<<< orphan*/  key_hash; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct hash_entry {int next_used; char* key; char* data; int data_len; int next_entry; int key_len; int exp_time; int key_hash; } ;
 struct TYPE_3__ {char* key; int key_len; long long key_hash; char* data; int data_len; int exp_time; } ;
-typedef  TYPE_1__ hash_entry_t ;
+typedef TYPE_1__ hash_entry_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- size_t GET_ENTRY_ID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  add_entry (int) ; 
- int /*<<< orphan*/  add_entry_time (int) ; 
- int /*<<< orphan*/  add_entry_used (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int* buffer_stack ; 
- int /*<<< orphan*/  buffer_stack_size ; 
- int /*<<< orphan*/  del_entry_time (int) ; 
- int /*<<< orphan*/  del_entry_used (int) ; 
- struct hash_entry* entry_buffer ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int get_entry (char*,int,long long) ; 
- TYPE_1__* get_entry_ptr (int) ; 
- long long get_hash (char*,int) ; 
- int get_new_entry () ; 
- int get_utime (int /*<<< orphan*/ ) ; 
- int* hash_st ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  zzfree (char*,int) ; 
- void* zzmalloc (int) ; 
+
+ int CLOCK_MONOTONIC ;
+ size_t GET_ENTRY_ID (int ) ;
+ int add_entry (int) ;
+ int add_entry_time (int) ;
+ int add_entry_used (int) ;
+ int assert (int) ;
+ int* buffer_stack ;
+ int buffer_stack_size ;
+ int del_entry_time (int) ;
+ int del_entry_used (int) ;
+ struct hash_entry* entry_buffer ;
+ int fprintf (int ,char*,...) ;
+ int get_entry (char*,int,long long) ;
+ TYPE_1__* get_entry_ptr (int) ;
+ long long get_hash (char*,int) ;
+ int get_new_entry () ;
+ int get_utime (int ) ;
+ int* hash_st ;
+ int memcpy (char*,char*,int) ;
+ int memset (char*,int ,int) ;
+ int stderr ;
+ int zzfree (char*,int) ;
+ void* zzmalloc (int) ;
 
 void write_stats (void) {
   int now = get_utime (CLOCK_MONOTONIC);

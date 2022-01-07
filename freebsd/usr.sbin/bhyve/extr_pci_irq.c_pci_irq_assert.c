@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct pirq {int active_count; int reg; int /*<<< orphan*/  lock; } ;
-struct TYPE_2__ {int pirq_pin; int /*<<< orphan*/  ioapic_irq; } ;
-struct pci_devinst {TYPE_1__ pi_lintr; int /*<<< orphan*/  pi_vmctx; } ;
 
-/* Variables and functions */
- int PIRQ_IRQ ; 
- int /*<<< orphan*/  assert (int) ; 
- int nitems (struct pirq*) ; 
- scalar_t__ pirq_valid_irq (int) ; 
- struct pirq* pirqs ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vm_ioapic_assert_irq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vm_isa_assert_irq (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct pirq {int active_count; int reg; int lock; } ;
+struct TYPE_2__ {int pirq_pin; int ioapic_irq; } ;
+struct pci_devinst {TYPE_1__ pi_lintr; int pi_vmctx; } ;
+
+
+ int PIRQ_IRQ ;
+ int assert (int) ;
+ int nitems (struct pirq*) ;
+ scalar_t__ pirq_valid_irq (int) ;
+ struct pirq* pirqs ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int vm_ioapic_assert_irq (int ,int ) ;
+ int vm_isa_assert_irq (int ,int,int ) ;
 
 void
 pci_irq_assert(struct pci_devinst *pi)
 {
-	struct pirq *pirq;
+ struct pirq *pirq;
 
-	if (pi->pi_lintr.pirq_pin > 0) {
-		assert(pi->pi_lintr.pirq_pin <= nitems(pirqs));
-		pirq = &pirqs[pi->pi_lintr.pirq_pin - 1];
-		pthread_mutex_lock(&pirq->lock);
-		pirq->active_count++;
-		if (pirq->active_count == 1 && pirq_valid_irq(pirq->reg)) {
-			vm_isa_assert_irq(pi->pi_vmctx, pirq->reg & PIRQ_IRQ,
-			    pi->pi_lintr.ioapic_irq);
-			pthread_mutex_unlock(&pirq->lock);
-			return;
-		}
-		pthread_mutex_unlock(&pirq->lock);
-	}
-	vm_ioapic_assert_irq(pi->pi_vmctx, pi->pi_lintr.ioapic_irq);
+ if (pi->pi_lintr.pirq_pin > 0) {
+  assert(pi->pi_lintr.pirq_pin <= nitems(pirqs));
+  pirq = &pirqs[pi->pi_lintr.pirq_pin - 1];
+  pthread_mutex_lock(&pirq->lock);
+  pirq->active_count++;
+  if (pirq->active_count == 1 && pirq_valid_irq(pirq->reg)) {
+   vm_isa_assert_irq(pi->pi_vmctx, pirq->reg & PIRQ_IRQ,
+       pi->pi_lintr.ioapic_irq);
+   pthread_mutex_unlock(&pirq->lock);
+   return;
+  }
+  pthread_mutex_unlock(&pirq->lock);
+ }
+ vm_ioapic_assert_irq(pi->pi_vmctx, pi->pi_lintr.ioapic_irq);
 }

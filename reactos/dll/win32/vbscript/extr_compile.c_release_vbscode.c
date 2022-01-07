@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {unsigned int bstr_cnt; struct TYPE_5__* instrs; struct TYPE_5__* source; struct TYPE_5__* bstr_pool; int /*<<< orphan*/  heap; scalar_t__ context; int /*<<< orphan*/  entry; } ;
-typedef  TYPE_1__ vbscode_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IDispatch_Release (scalar_t__) ; 
- int /*<<< orphan*/  SysFreeString (TYPE_1__) ; 
- int /*<<< orphan*/  heap_free (TYPE_1__*) ; 
- int /*<<< orphan*/  heap_pool_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_remove (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {unsigned int bstr_cnt; struct TYPE_5__* instrs; struct TYPE_5__* source; struct TYPE_5__* bstr_pool; int heap; scalar_t__ context; int entry; } ;
+typedef TYPE_1__ vbscode_t ;
+
+
+ int IDispatch_Release (scalar_t__) ;
+ int SysFreeString (TYPE_1__) ;
+ int heap_free (TYPE_1__*) ;
+ int heap_pool_free (int *) ;
+ int list_remove (int *) ;
 
 void release_vbscode(vbscode_t *code)
 {

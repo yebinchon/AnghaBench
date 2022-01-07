@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int num_events; } ;
 
-/* Variables and functions */
- int CCBR_DUC ; 
- int /*<<< orphan*/  PPC_CCBR (int) ; 
- int __raw_readl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __raw_writel (int,int /*<<< orphan*/ ) ; 
- TYPE_1__ sh4a_pmu ; 
+
+ int CCBR_DUC ;
+ int PPC_CCBR (int) ;
+ int __raw_readl (int ) ;
+ int __raw_writel (int,int ) ;
+ TYPE_1__ sh4a_pmu ;
 
 __attribute__((used)) static void sh4a_pmu_enable_all(void)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < sh4a_pmu.num_events; i++)
-		__raw_writel(__raw_readl(PPC_CCBR(i)) | CCBR_DUC, PPC_CCBR(i));
+ for (i = 0; i < sh4a_pmu.num_events; i++)
+  __raw_writel(__raw_readl(PPC_CCBR(i)) | CCBR_DUC, PPC_CCBR(i));
 }

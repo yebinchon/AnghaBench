@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPARAM ;
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  INFCONTEXT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ HINF ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  Buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CB_ADDSTRING ; 
- int CB_ERR ; 
- int /*<<< orphan*/  CB_SETCURSEL ; 
- int /*<<< orphan*/  CB_SETITEMDATA ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  IDC_FONTSIZE_COMBO ; 
- int /*<<< orphan*/  IDC_FONTSIZE_CUSTOM ; 
- int /*<<< orphan*/  INF_STYLE_WIN4 ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  KEY_READ ; 
- int LINE_LEN ; 
- scalar_t__ MAX_PATH ; 
- scalar_t__ REG_DWORD ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ ,scalar_t__*) ; 
- int SendMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetWindowText (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetupCloseInfFile (scalar_t__) ; 
- scalar_t__ SetupFindFirstLine (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetupFindNextLine (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ SetupGetIntField (int /*<<< orphan*/ *,int,int*) ; 
- scalar_t__ SetupGetStringField (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- scalar_t__ SetupOpenInfFile (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _stprintf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int WPARAM ;
+typedef int VOID ;
+typedef int TCHAR ;
+typedef int LPBYTE ;
+typedef int LPARAM ;
+typedef int INFCONTEXT ;
+typedef int HWND ;
+typedef int HKEY ;
+typedef scalar_t__ HINF ;
+typedef scalar_t__ DWORD ;
+typedef int Buffer ;
+
+
+ int CB_ADDSTRING ;
+ int CB_ERR ;
+ int CB_SETCURSEL ;
+ int CB_SETITEMDATA ;
+ scalar_t__ ERROR_SUCCESS ;
+ int GetDlgItem (int ,int ) ;
+ int HKEY_LOCAL_MACHINE ;
+ int IDC_FONTSIZE_COMBO ;
+ int IDC_FONTSIZE_CUSTOM ;
+ int INF_STYLE_WIN4 ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int KEY_READ ;
+ int LINE_LEN ;
+ scalar_t__ MAX_PATH ;
+ scalar_t__ REG_DWORD ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegOpenKeyEx (int ,int ,int ,int ,int *) ;
+ scalar_t__ RegQueryValueEx (int ,int ,int *,scalar_t__*,int ,scalar_t__*) ;
+ int SendMessage (int ,int ,int ,int ) ;
+ int SetWindowText (int ,int *) ;
+ int SetupCloseInfFile (scalar_t__) ;
+ scalar_t__ SetupFindFirstLine (scalar_t__,int ,int *,int *) ;
+ int SetupFindNextLine (int *,int *) ;
+ scalar_t__ SetupGetIntField (int *,int,int*) ;
+ scalar_t__ SetupGetStringField (int *,int ,int *,int,int *) ;
+ scalar_t__ SetupOpenInfFile (int ,int *,int ,int *) ;
+ int _T (char*) ;
+ int _stprintf (int *,int ,int *,int) ;
 
 __attribute__((used)) static VOID
 InitFontSizeList(HWND hWnd)
@@ -64,12 +64,12 @@ InitFontSizeList(HWND hWnd)
 
     hFontSize = GetDlgItem(hWnd, IDC_FONTSIZE_COMBO);
 
-    hInf = SetupOpenInfFile(_T("font.inf"), NULL,
-                            INF_STYLE_WIN4, NULL);
+    hInf = SetupOpenInfFile(_T("font.inf"), ((void*)0),
+                            INF_STYLE_WIN4, ((void*)0));
 
     if (hInf != INVALID_HANDLE_VALUE)
     {
-        if (SetupFindFirstLine(hInf, _T("Font Sizes"), NULL, &Context))
+        if (SetupFindFirstLine(hInf, _T("Font Sizes"), ((void*)0), &Context))
         {
             if (RegOpenKeyEx(HKEY_LOCAL_MACHINE, _T("SYSTEM\\CurrentControlSet\\Hardware Profiles\\Current\\Software\\Fonts"),
                              0, KEY_READ, &hKey) == ERROR_SUCCESS)
@@ -77,7 +77,7 @@ InitFontSizeList(HWND hWnd)
                 dwSize = MAX_PATH;
                 dwType = REG_DWORD;
 
-                if (RegQueryValueEx(hKey, _T("LogPixels"), NULL, &dwType,
+                if (RegQueryValueEx(hKey, _T("LogPixels"), ((void*)0), &dwType,
                                     (LPBYTE)&dwValue, &dwSize) != ERROR_SUCCESS)
                 {
                     dwValue = 0;
@@ -91,7 +91,7 @@ InitFontSizeList(HWND hWnd)
                 TCHAR Buffer[LINE_LEN];
                 TCHAR Desc[LINE_LEN];
 
-                if (SetupGetStringField(&Context, 0, Buffer, sizeof(Buffer) / sizeof(TCHAR), NULL) &&
+                if (SetupGetStringField(&Context, 0, Buffer, sizeof(Buffer) / sizeof(TCHAR), ((void*)0)) &&
                     SetupGetIntField(&Context, 1, &ci))
                 {
                     _stprintf(Desc, _T("%s (%d DPI)"), Buffer, ci);

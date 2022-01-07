@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- char* malloc (int) ; 
- int sprintf (char*,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int write_if_change (char*,char*) ; 
+ int fprintf (int ,char*) ;
+ char* malloc (int) ;
+ int sprintf (char*,char*,...) ;
+ int stderr ;
+ int strcat (char*,char*) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strcpy (char*,char*) ;
+ int write_if_change (char*,char*) ;
 
 int
 main(int argc, char* argv[])
@@ -37,7 +29,7 @@ main(int argc, char* argv[])
     }
 
   outbuf = malloc(256 * 1024);
-  if (outbuf == NULL)
+  if (outbuf == ((void*)0))
     {
       fprintf(stderr, "Out of memory 1\n");
       return(1);
@@ -64,16 +56,16 @@ main(int argc, char* argv[])
         }
       strcat(config, argv[i]);
       if (i != (argc - 1))
-	{
-	  strcat(config, " ");
-	}
+ {
+   strcat(config, " ");
+ }
     }
   if (include_tests)
     {
       s = s + sprintf(s, "#ifndef __ASM__\n");
       s = s + sprintf(s, "extern void PrepareTests();\n");
       s = s + sprintf(s, "#define PREPARE_TESTS PrepareTests();\n");
-	  s = s + sprintf(s, "#endif /* __ASM__ */\n");
+   s = s + sprintf(s, "#endif /* __ASM__ */\n");
     }
   else
     {

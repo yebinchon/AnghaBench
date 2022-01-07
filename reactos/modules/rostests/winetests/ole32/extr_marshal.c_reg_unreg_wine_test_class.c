@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int /*<<< orphan*/  LPOLESTR ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSID_WineTest ; 
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  CoTaskMemFree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERROR_ACCESS_DENIED ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  HKEY_CLASSES_ROOT ; 
- int /*<<< orphan*/  KEY_SET_VALUE ; 
- int /*<<< orphan*/  REG_SZ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegCreateKeyExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegDeleteKeyA (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  RegSetValueExA (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char const*,int) ; 
- int /*<<< orphan*/  StringFromCLSID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok_ole_success (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int strlen (char*) ; 
- char* strrchr (char*,char) ; 
+
+
+
+typedef int buffer ;
+typedef int LPOLESTR ;
+typedef int HRESULT ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ int CLSID_WineTest ;
+ int CP_ACP ;
+ int CoTaskMemFree (int ) ;
+ int ERROR_ACCESS_DENIED ;
+ int ERROR_SUCCESS ;
+ int E_FAIL ;
+ int HKEY_CLASSES_ROOT ;
+ int KEY_SET_VALUE ;
+ int REG_SZ ;
+ int RegCloseKey (int ) ;
+ int RegCreateKeyExA (int ,char*,int ,int *,int ,int ,int *,int *,int *) ;
+ int RegDeleteKeyA (int ,char*) ;
+ int RegSetValueExA (int ,int *,int ,int ,unsigned char const*,int) ;
+ int StringFromCLSID (int *,int *) ;
+ int WideCharToMultiByte (int ,int ,int ,int,char*,int,int *,int *) ;
+ int ok (int,char*,int ) ;
+ int ok_ole_success (int ,char*) ;
+ int skip (char*) ;
+ int strcat (char*,char*) ;
+ int strcpy (char*,char*) ;
+ int strlen (char*) ;
+ char* strrchr (char*,char) ;
 
 __attribute__((used)) static HRESULT reg_unreg_wine_test_class(BOOL Register)
 {
@@ -53,12 +53,12 @@ __attribute__((used)) static HRESULT reg_unreg_wine_test_class(BOOL Register)
     hr = StringFromCLSID(&CLSID_WineTest, &pszClsid);
     ok_ole_success(hr, "StringFromCLSID");
     strcpy(buffer, "CLSID\\");
-    WideCharToMultiByte(CP_ACP, 0, pszClsid, -1, buffer + strlen(buffer), sizeof(buffer) - strlen(buffer), NULL, NULL);
+    WideCharToMultiByte(CP_ACP, 0, pszClsid, -1, buffer + strlen(buffer), sizeof(buffer) - strlen(buffer), ((void*)0), ((void*)0));
     CoTaskMemFree(pszClsid);
     strcat(buffer, "\\InprocHandler32");
     if (Register)
     {
-        error = RegCreateKeyExA(HKEY_CLASSES_ROOT, buffer, 0, NULL, 0, KEY_SET_VALUE, NULL, &hkey, &dwDisposition);
+        error = RegCreateKeyExA(HKEY_CLASSES_ROOT, buffer, 0, ((void*)0), 0, KEY_SET_VALUE, ((void*)0), &hkey, &dwDisposition);
         if (error == ERROR_ACCESS_DENIED)
         {
             skip("Not authorized to modify the Classes key\n");
@@ -66,7 +66,7 @@ __attribute__((used)) static HRESULT reg_unreg_wine_test_class(BOOL Register)
         }
         ok(error == ERROR_SUCCESS, "RegCreateKeyEx failed with error %d\n", error);
         if (error != ERROR_SUCCESS) hr = E_FAIL;
-        error = RegSetValueExA(hkey, NULL, 0, REG_SZ, (const unsigned char *)"\"ole32.dll\"", strlen("\"ole32.dll\"") + 1);
+        error = RegSetValueExA(hkey, ((void*)0), 0, REG_SZ, (const unsigned char *)"\"ole32.dll\"", strlen("\"ole32.dll\"") + 1);
         ok(error == ERROR_SUCCESS, "RegSetValueEx failed with error %d\n", error);
         if (error != ERROR_SUCCESS) hr = E_FAIL;
         RegCloseKey(hkey);

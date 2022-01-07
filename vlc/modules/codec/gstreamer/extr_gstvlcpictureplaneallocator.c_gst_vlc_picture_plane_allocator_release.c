@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ guint ;
-struct TYPE_2__ {int /*<<< orphan*/ * p_plane; int /*<<< orphan*/ * p_pic; } ;
-typedef  int /*<<< orphan*/  GstVlcPicturePlaneAllocator ;
-typedef  TYPE_1__ GstVlcPicturePlane ;
-typedef  int /*<<< orphan*/  GstBuffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLC_UNUSED (int /*<<< orphan*/ *) ; 
- scalar_t__ gst_buffer_n_memory (int /*<<< orphan*/ *) ; 
- scalar_t__ gst_buffer_peek_memory (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  picture_Release (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ guint ;
+struct TYPE_2__ {int * p_plane; int * p_pic; } ;
+typedef int GstVlcPicturePlaneAllocator ;
+typedef TYPE_1__ GstVlcPicturePlane ;
+typedef int GstBuffer ;
+
+
+ int VLC_UNUSED (int *) ;
+ scalar_t__ gst_buffer_n_memory (int *) ;
+ scalar_t__ gst_buffer_peek_memory (int *,scalar_t__) ;
+ int picture_Release (int *) ;
 
 void gst_vlc_picture_plane_allocator_release(
     GstVlcPicturePlaneAllocator *p_allocator, GstBuffer *p_buffer )
@@ -41,8 +41,8 @@ void gst_vlc_picture_plane_allocator_release(
         {
             p_mem = (GstVlcPicturePlane*) gst_buffer_peek_memory ( p_buffer,
                     i_plane );
-            p_mem->p_pic = NULL;
-            p_mem->p_plane = NULL;
+            p_mem->p_pic = ((void*)0);
+            p_mem->p_plane = ((void*)0);
         }
     }
 }

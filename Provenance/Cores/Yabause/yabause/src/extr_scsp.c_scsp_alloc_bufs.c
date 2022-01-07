@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct TYPE_2__ {int /*<<< orphan*/ * data32; } ;
 
-/* Variables and functions */
- scalar_t__ calloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- TYPE_1__* scspchannel ; 
- int /*<<< orphan*/  scspsoundbufsize ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct TYPE_2__ {int * data32; } ;
+
+
+ scalar_t__ calloc (int ,int) ;
+ int free (int *) ;
+ TYPE_1__* scspchannel ;
+ int scspsoundbufsize ;
 
 __attribute__((used)) static int
 scsp_alloc_bufs (void)
 {
   if (scspchannel[0].data32)
     free(scspchannel[0].data32);
-  scspchannel[0].data32 = NULL;
+  scspchannel[0].data32 = ((void*)0);
   if (scspchannel[1].data32)
     free(scspchannel[1].data32);
-  scspchannel[1].data32 = NULL;
+  scspchannel[1].data32 = ((void*)0);
 
   scspchannel[0].data32 = (u32 *)calloc(scspsoundbufsize, sizeof(u32));
-  if (scspchannel[0].data32 == NULL)
+  if (scspchannel[0].data32 == ((void*)0))
     return -1;
   scspchannel[1].data32 = (u32 *)calloc(scspsoundbufsize, sizeof(u32));
-  if (scspchannel[1].data32 == NULL)
+  if (scspchannel[1].data32 == ((void*)0))
     return -1;
 
   return 0;

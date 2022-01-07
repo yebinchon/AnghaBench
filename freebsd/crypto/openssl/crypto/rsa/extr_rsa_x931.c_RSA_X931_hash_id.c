@@ -1,35 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  NID_sha1 131 
-#define  NID_sha256 130 
-#define  NID_sha384 129 
-#define  NID_sha512 128 
-
 int RSA_X931_hash_id(int nid)
 {
     switch (nid) {
-    case NID_sha1:
+    case 131:
         return 0x33;
 
-    case NID_sha256:
+    case 130:
         return 0x34;
 
-    case NID_sha384:
+    case 129:
         return 0x36;
 
-    case NID_sha512:
+    case 128:
         return 0x35;
 
     }

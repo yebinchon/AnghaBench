@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jerry_value_t ;
-typedef  int /*<<< orphan*/  jerry_char_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JERRY_BIN_OP_STRICT_EQUAL ; 
- int /*<<< orphan*/  JERRY_FEATURE_LINE_INFO ; 
- int /*<<< orphan*/  JERRY_INIT_EMPTY ; 
- int /*<<< orphan*/  JERRY_LOG_LEVEL_ERROR ; 
- int /*<<< orphan*/  JERRY_PARSE_NO_OPTS ; 
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- int /*<<< orphan*/  TEST_INIT () ; 
- int jerry_binary_operation (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_cleanup () ; 
- int /*<<< orphan*/  jerry_create_external_function (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_create_string (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  jerry_get_global_object () ; 
- int /*<<< orphan*/  jerry_get_resource_name (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_is_feature_enabled (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_parse (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_port_log (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_run (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_set_property (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_value_is_error (int /*<<< orphan*/ ) ; 
- int jerry_value_is_object (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  resource_name_handler ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+
+
+typedef int jerry_value_t ;
+typedef int jerry_char_t ;
+
+
+ int JERRY_BIN_OP_STRICT_EQUAL ;
+ int JERRY_FEATURE_LINE_INFO ;
+ int JERRY_INIT_EMPTY ;
+ int JERRY_LOG_LEVEL_ERROR ;
+ int JERRY_PARSE_NO_OPTS ;
+ int TEST_ASSERT (int) ;
+ int TEST_INIT () ;
+ int jerry_binary_operation (int ,int ,int ) ;
+ int jerry_cleanup () ;
+ int jerry_create_external_function (int ) ;
+ int jerry_create_string (int const*) ;
+ int jerry_get_global_object () ;
+ int jerry_get_resource_name (int ) ;
+ int jerry_init (int ) ;
+ int jerry_is_feature_enabled (int ) ;
+ int jerry_parse (int const*,int ,int const*,int ,int ) ;
+ int jerry_port_log (int ,char*) ;
+ int jerry_release_value (int ) ;
+ int jerry_run (int ) ;
+ int jerry_set_property (int ,int ,int ) ;
+ int jerry_value_is_error (int ) ;
+ int jerry_value_is_object (int ) ;
+ int resource_name_handler ;
+ int strlen (char const*) ;
 
 int
 main (void)
@@ -54,7 +54,7 @@ main (void)
 
   jerry_value_t global = jerry_get_global_object ();
 
-  /* Register the "resourceName" method. */
+
   {
     jerry_value_t func = jerry_create_external_function (resource_name_handler);
     jerry_value_t name = jerry_create_string ((const jerry_char_t *) "resourceName");

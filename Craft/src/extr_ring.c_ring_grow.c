@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int capacity; int /*<<< orphan*/  data; int /*<<< orphan*/  end; int /*<<< orphan*/  start; } ;
-typedef  int /*<<< orphan*/  RingEntry ;
-typedef  TYPE_1__ Ring ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ring_alloc (TYPE_1__*,int) ; 
- scalar_t__ ring_get (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ring_put (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int capacity; int data; int end; int start; } ;
+typedef int RingEntry ;
+typedef TYPE_1__ Ring ;
+
+
+ int free (int ) ;
+ int ring_alloc (TYPE_1__*,int) ;
+ scalar_t__ ring_get (TYPE_1__*,int *) ;
+ int ring_put (TYPE_1__*,int *) ;
 
 void ring_grow(Ring *ring) {
     Ring new_ring;

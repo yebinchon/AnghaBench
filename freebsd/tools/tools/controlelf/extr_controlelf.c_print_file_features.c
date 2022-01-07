@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_int32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u_int32_t ;
 struct TYPE_3__ {char* alias; char* desc; int value; } ;
-typedef  int /*<<< orphan*/  Elf ;
+typedef int Elf ;
 
-/* Variables and functions */
- TYPE_1__* featurelist ; 
- int /*<<< orphan*/  get_file_features (int /*<<< orphan*/ *,int,int,int*,int /*<<< orphan*/ *) ; 
- unsigned long nitems (TYPE_1__*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+ TYPE_1__* featurelist ;
+ int get_file_features (int *,int,int,int*,int *) ;
+ unsigned long nitems (TYPE_1__*) ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static bool
 print_file_features(Elf *elf, int phcount, int fd, char *filename)
 {
-	u_int32_t features;
-	unsigned long i;
+ u_int32_t features;
+ unsigned long i;
 
-	if (!get_file_features(elf, phcount, fd, &features, NULL)) {
-		return (false);
-	}
+ if (!get_file_features(elf, phcount, fd, &features, ((void*)0))) {
+  return (0);
+ }
 
-	printf("File '%s' features:\n", filename);
-	for (i = 0; i < nitems(featurelist); ++i) {
-		printf("%s\t\t'%s' is ", featurelist[i].alias,
-		    featurelist[i].desc);
+ printf("File '%s' features:\n", filename);
+ for (i = 0; i < nitems(featurelist); ++i) {
+  printf("%s\t\t'%s' is ", featurelist[i].alias,
+      featurelist[i].desc);
 
-		if ((featurelist[i].value & features) == 0)
-			printf("un");
+  if ((featurelist[i].value & features) == 0)
+   printf("un");
 
-		printf("set.\n");
-	}
-	return (true);
+  printf("set.\n");
+ }
+ return (1);
 }

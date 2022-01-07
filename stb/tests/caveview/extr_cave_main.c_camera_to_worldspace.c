@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- double* camang ; 
- scalar_t__ cos (double) ; 
- scalar_t__ sin (double) ; 
+ double* camang ;
+ scalar_t__ cos (double) ;
+ scalar_t__ sin (double) ;
 
 void camera_to_worldspace(float world[3], float cam_x, float cam_y, float cam_z)
 {

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dlm_rsb {int /*<<< orphan*/  res_hash; int /*<<< orphan*/  res_ls; } ;
 
-/* Variables and functions */
- int dlm_hash2nodeid (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct dlm_rsb {int res_hash; int res_ls; } ;
+
+
+ int dlm_hash2nodeid (int ,int ) ;
 
 int dlm_dir_nodeid(struct dlm_rsb *r)
 {
-	return dlm_hash2nodeid(r->res_ls, r->res_hash);
+ return dlm_hash2nodeid(r->res_ls, r->res_hash);
 }

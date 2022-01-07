@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct entry_list {scalar_t__ count; int /*<<< orphan*/ * first; int /*<<< orphan*/ ** last; } ;
 
-/* Variables and functions */
+
+
+
+struct entry_list {scalar_t__ count; int * first; int ** last; } ;
+
+
 
 __attribute__((used)) static void
 entry_list_init(struct entry_list *list)
 {
-	list->first = NULL;
-	list->last = &(list->first);
-	list->count = 0;
+ list->first = ((void*)0);
+ list->last = &(list->first);
+ list->count = 0;
 }

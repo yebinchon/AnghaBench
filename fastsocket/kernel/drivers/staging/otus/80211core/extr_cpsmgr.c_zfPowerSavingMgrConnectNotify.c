@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zdev_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int zdev_t ;
 struct TYPE_3__ {int powerSaveMode; } ;
-struct TYPE_4__ {scalar_t__ wlanMode; int /*<<< orphan*/  beaconInterval; TYPE_1__ sta; } ;
+struct TYPE_4__ {scalar_t__ wlanMode; int beaconInterval; TYPE_1__ sta; } ;
 
-/* Variables and functions */
- scalar_t__ ZM_MODE_INFRASTRUCTURE ; 
-#define  ZM_STA_PS_FAST 131 
-#define  ZM_STA_PS_LIGHT 130 
-#define  ZM_STA_PS_MAX 129 
-#define  ZM_STA_PS_NONE 128 
- TYPE_2__* wd ; 
- int /*<<< orphan*/  zfHpPowerSaveSetMode (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zmw_get_wlan_dev (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ ZM_MODE_INFRASTRUCTURE ;
+
+
+
+
+ TYPE_2__* wd ;
+ int zfHpPowerSaveSetMode (int *,int ,int,int ) ;
+ int zmw_get_wlan_dev (int *) ;
 
 void zfPowerSavingMgrConnectNotify(zdev_t *dev)
 {
@@ -34,13 +34,13 @@ void zfPowerSavingMgrConnectNotify(zdev_t *dev)
     {
         switch(wd->sta.powerSaveMode)
         {
-            case ZM_STA_PS_NONE:
+            case 128:
                 zfHpPowerSaveSetMode(dev, 0, 0, wd->beaconInterval);
                 break;
 
-            case ZM_STA_PS_FAST:
-            case ZM_STA_PS_MAX:
-            case ZM_STA_PS_LIGHT:
+            case 131:
+            case 129:
+            case 130:
                 zfHpPowerSaveSetMode(dev, 0, 1, wd->beaconInterval);
                 break;
 

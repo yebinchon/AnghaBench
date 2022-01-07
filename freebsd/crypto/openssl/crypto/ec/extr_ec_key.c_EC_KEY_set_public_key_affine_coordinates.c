@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/ * field; } ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int * field; } ;
 struct TYPE_8__ {TYPE_2__* group; } ;
-typedef  int /*<<< orphan*/  EC_POINT ;
-typedef  TYPE_1__ EC_KEY ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
+typedef int EC_POINT ;
+typedef TYPE_1__ EC_KEY ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_new () ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- scalar_t__ BN_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_F_EC_KEY_SET_PUBLIC_KEY_AFFINE_COORDINATES ; 
- scalar_t__ EC_KEY_check_key (TYPE_1__*) ; 
- int /*<<< orphan*/  EC_KEY_set_public_key (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_get_affine_coordinates (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EC_POINT_new (TYPE_2__*) ; 
- int /*<<< orphan*/  EC_POINT_set_affine_coordinates (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_R_COORDINATES_OUT_OF_RANGE ; 
- int /*<<< orphan*/  ECerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_PASSED_NULL_PARAMETER ; 
+
+ int BN_CTX_end (int *) ;
+ int BN_CTX_free (int *) ;
+ int * BN_CTX_get (int *) ;
+ int * BN_CTX_new () ;
+ int BN_CTX_start (int *) ;
+ scalar_t__ BN_cmp (int *,int *) ;
+ int EC_F_EC_KEY_SET_PUBLIC_KEY_AFFINE_COORDINATES ;
+ scalar_t__ EC_KEY_check_key (TYPE_1__*) ;
+ int EC_KEY_set_public_key (TYPE_1__*,int *) ;
+ int EC_POINT_free (int *) ;
+ int EC_POINT_get_affine_coordinates (TYPE_2__*,int *,int *,int *,int *) ;
+ int * EC_POINT_new (TYPE_2__*) ;
+ int EC_POINT_set_affine_coordinates (TYPE_2__*,int *,int *,int *,int *) ;
+ int EC_R_COORDINATES_OUT_OF_RANGE ;
+ int ECerr (int ,int ) ;
+ int ERR_R_PASSED_NULL_PARAMETER ;
 
 int EC_KEY_set_public_key_affine_coordinates(EC_KEY *key, BIGNUM *x,
                                              BIGNUM *y)
 {
-    BN_CTX *ctx = NULL;
+    BN_CTX *ctx = ((void*)0);
     BIGNUM *tx, *ty;
-    EC_POINT *point = NULL;
+    EC_POINT *point = ((void*)0);
     int ok = 0;
 
-    if (key == NULL || key->group == NULL || x == NULL || y == NULL) {
+    if (key == ((void*)0) || key->group == ((void*)0) || x == ((void*)0) || y == ((void*)0)) {
         ECerr(EC_F_EC_KEY_SET_PUBLIC_KEY_AFFINE_COORDINATES,
               ERR_R_PASSED_NULL_PARAMETER);
         return 0;
     }
     ctx = BN_CTX_new();
-    if (ctx == NULL)
+    if (ctx == ((void*)0))
         return 0;
 
     BN_CTX_start(ctx);
     point = EC_POINT_new(key->group);
 
-    if (point == NULL)
+    if (point == ((void*)0))
         goto err;
 
     tx = BN_CTX_get(ctx);
     ty = BN_CTX_get(ctx);
-    if (ty == NULL)
+    if (ty == ((void*)0))
         goto err;
 
     if (!EC_POINT_set_affine_coordinates(key->group, point, x, y, ctx))
@@ -70,10 +70,10 @@ int EC_KEY_set_public_key_affine_coordinates(EC_KEY *key, BIGNUM *x,
     if (!EC_POINT_get_affine_coordinates(key->group, point, tx, ty, ctx))
         goto err;
 
-    /*
-     * Check if retrieved coordinates match originals and are less than field
-     * order: if not values are out of range.
-     */
+
+
+
+
     if (BN_cmp(x, tx) || BN_cmp(y, ty)
         || (BN_cmp(x, key->group->field) >= 0)
         || (BN_cmp(y, key->group->field) >= 0)) {

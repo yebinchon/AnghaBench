@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ scriptTag; } ;
 struct TYPE_4__ {size_t eScript; } ;
-typedef  int /*<<< orphan*/  ScriptCache ;
-typedef  TYPE_1__ SCRIPT_ANALYSIS ;
-typedef  int /*<<< orphan*/  OPENTYPE_TAG ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int ScriptCache ;
+typedef TYPE_1__ SCRIPT_ANALYSIS ;
+typedef int OPENTYPE_TAG ;
+typedef int HRESULT ;
+typedef int HDC ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FEATURE_ALL_TABLES ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  OpenType_GetFontFeatureTags (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  load_ot_tables (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_2__* scriptInformation ; 
+
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int FEATURE_ALL_TABLES ;
+ int FIXME (char*) ;
+ int OpenType_GetFontFeatureTags (int *,int ,int ,int ,int,int ,int,int *,int*,int *) ;
+ int TRUE ;
+ int load_ot_tables (int ,int *) ;
+ TYPE_2__* scriptInformation ;
 
 HRESULT SHAPE_GetFontFeatureTags( HDC hdc, ScriptCache *psc,
                                   SCRIPT_ANALYSIS *psa, OPENTYPE_TAG tagScript,
@@ -47,7 +47,7 @@ HRESULT SHAPE_GetFontFeatureTags( HDC hdc, ScriptCache *psc,
         filter = TRUE;
     }
 
-    hr = OpenType_GetFontFeatureTags(psc, tagScript, tagLangSys, filter, 0x00000000, FEATURE_ALL_TABLES, cMaxTags, pFeatureTags, pcTags, NULL);
+    hr = OpenType_GetFontFeatureTags(psc, tagScript, tagLangSys, filter, 0x00000000, FEATURE_ALL_TABLES, cMaxTags, pFeatureTags, pcTags, ((void*)0));
 
     if (FAILED(hr))
         *pcTags = 0;

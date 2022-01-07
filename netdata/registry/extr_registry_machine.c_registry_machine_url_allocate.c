@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_8__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ time_t ;
+
+
+typedef struct TYPE_14__ TYPE_8__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ time_t ;
 struct TYPE_14__ {int machines_urls_memory; } ;
-struct TYPE_13__ {int /*<<< orphan*/  machine_urls; int /*<<< orphan*/  guid; } ;
-struct TYPE_12__ {int usages; int /*<<< orphan*/  flags; TYPE_1__* url; scalar_t__ last_t; scalar_t__ first_t; } ;
-struct TYPE_11__ {int /*<<< orphan*/  url; } ;
-typedef  TYPE_1__ REGISTRY_URL ;
-typedef  TYPE_2__ REGISTRY_MACHINE_URL ;
-typedef  TYPE_3__ REGISTRY_MACHINE ;
+struct TYPE_13__ {int machine_urls; int guid; } ;
+struct TYPE_12__ {int usages; int flags; TYPE_1__* url; scalar_t__ last_t; scalar_t__ first_t; } ;
+struct TYPE_11__ {int url; } ;
+typedef TYPE_1__ REGISTRY_URL ;
+typedef TYPE_2__ REGISTRY_MACHINE_URL ;
+typedef TYPE_3__ REGISTRY_MACHINE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_REGISTRY ; 
- int /*<<< orphan*/  REGISTRY_URL_FLAGS_DEFAULT ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  dictionary_set (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,int) ; 
- TYPE_2__* mallocz (int) ; 
- TYPE_8__ registry ; 
- int /*<<< orphan*/  registry_url_link (TYPE_1__*) ; 
+
+ int D_REGISTRY ;
+ int REGISTRY_URL_FLAGS_DEFAULT ;
+ int debug (int ,char*,int ,int ,...) ;
+ int dictionary_set (int ,int ,TYPE_2__*,int) ;
+ TYPE_2__* mallocz (int) ;
+ TYPE_8__ registry ;
+ int registry_url_link (TYPE_1__*) ;
 
 REGISTRY_MACHINE_URL *registry_machine_url_allocate(REGISTRY_MACHINE *m, REGISTRY_URL *u, time_t when) {
     debug(D_REGISTRY, "registry_machine_url_allocate('%s', '%s'): allocating %zu bytes", m->guid, u->url, sizeof(REGISTRY_MACHINE_URL));

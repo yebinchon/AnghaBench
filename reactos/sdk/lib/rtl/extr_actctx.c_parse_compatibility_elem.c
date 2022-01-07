@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xmlstr_t ;
-typedef  int /*<<< orphan*/  xmlbuf_t ;
+
+
+
+
+typedef int xmlstr_t ;
+typedef int xmlbuf_t ;
 struct assembly {int dummy; } ;
 struct actctx_loader {int dummy; } ;
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  scalar_t__ BOOL ;
+typedef int UNICODE_STRING ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT1 (char*,int /*<<< orphan*/ *) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  applicationW ; 
- int /*<<< orphan*/  compatibilityW ; 
- scalar_t__ next_xml_elem (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ parse_compatibility_application_elem (int /*<<< orphan*/ *,struct assembly*,struct actctx_loader*) ; 
- scalar_t__ parse_end_element (int /*<<< orphan*/ *) ; 
- scalar_t__ parse_unknown_elem (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xmlstr2unicode (int /*<<< orphan*/ *) ; 
- scalar_t__ xmlstr_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ xmlstr_cmp_end (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int DPRINT1 (char*,int *) ;
+ scalar_t__ TRUE ;
+ int applicationW ;
+ int compatibilityW ;
+ scalar_t__ next_xml_elem (int *,int *) ;
+ scalar_t__ parse_compatibility_application_elem (int *,struct assembly*,struct actctx_loader*) ;
+ scalar_t__ parse_end_element (int *) ;
+ scalar_t__ parse_unknown_elem (int *,int *) ;
+ int xmlstr2unicode (int *) ;
+ scalar_t__ xmlstr_cmp (int *,int ) ;
+ scalar_t__ xmlstr_cmp_end (int *,int ) ;
 
 __attribute__((used)) static BOOL parse_compatibility_elem(xmlbuf_t* xmlbuf, struct assembly* assembly,
                                      struct actctx_loader* acl)

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned int int64_t ;
-typedef  unsigned int int32_t ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef unsigned int int64_t ;
+typedef unsigned int int32_t ;
 struct TYPE_9__ {scalar_t__ i_nal_type; int i_pic_order_cnt_lsb; scalar_t__ i_nal_ref_idc; unsigned int i_frame_num; unsigned int i_delta_pic_order_cnt0; int i_delta_pic_order_cnt1; scalar_t__ i_bottom_field_flag; scalar_t__ i_field_pic_flag; scalar_t__ has_mmco5; scalar_t__ i_delta_pic_order_cnt_bottom; } ;
-typedef  TYPE_2__ h264_slice_t ;
+typedef TYPE_2__ h264_slice_t ;
 struct TYPE_10__ {int i_pic_order_cnt_type; int i_log2_max_pic_order_cnt_lsb; int i_log2_max_frame_num; int i_num_ref_frames_in_pic_order_cnt_cycle; unsigned int* offset_for_ref_frame; unsigned int offset_for_non_ref_pic; int offset_for_top_to_bottom_field; } ;
-typedef  TYPE_3__ h264_sequence_parameter_set_t ;
+typedef TYPE_3__ h264_sequence_parameter_set_t ;
 struct TYPE_8__ {int lsb; int msb; } ;
 struct TYPE_11__ {int prevRefPictureIsBottomField; int prevRefPictureTFOC; unsigned int prevFrameNum; unsigned int prevFrameNumOffset; TYPE_1__ prevPicOrderCnt; scalar_t__ prevRefPictureHasMMCO5; } ;
-typedef  TYPE_4__ h264_poc_context_t ;
+typedef TYPE_4__ h264_poc_context_t ;
 
-/* Variables and functions */
- scalar_t__ H264_NAL_SLICE_IDR ; 
- int __MIN (int,int) ; 
+
+ scalar_t__ H264_NAL_SLICE_IDR ;
+ int __MIN (int,int) ;
 
 void h264_compute_poc( const h264_sequence_parameter_set_t *p_sps,
                        const h264_slice_t *p_slice, h264_poc_context_t *p_ctx,
@@ -36,9 +36,9 @@ void h264_compute_poc( const h264_sequence_parameter_set_t *p_sps,
 
     if( p_sps->i_pic_order_cnt_type == 0 )
     {
-        unsigned maxPocLSB = 1U << (p_sps->i_log2_max_pic_order_cnt_lsb  + 4);
+        unsigned maxPocLSB = 1U << (p_sps->i_log2_max_pic_order_cnt_lsb + 4);
 
-        /* POC reference */
+
         if( p_slice->i_nal_type == H264_NAL_SLICE_IDR )
         {
             p_ctx->prevPicOrderCnt.lsb = 0;
@@ -53,7 +53,7 @@ void h264_compute_poc( const h264_sequence_parameter_set_t *p_sps,
                 p_ctx->prevPicOrderCnt.lsb = 0;
         }
 
-        /* 8.2.1.1 */
+
         int pocMSB = p_ctx->prevPicOrderCnt.msb;
         int64_t orderDiff = p_slice->i_pic_order_cnt_lsb - p_ctx->prevPicOrderCnt.lsb;
         if( orderDiff < 0 && -orderDiff >= maxPocLSB / 2 )
@@ -65,8 +65,8 @@ void h264_compute_poc( const h264_sequence_parameter_set_t *p_sps,
         if( p_slice->i_field_pic_flag )
             *p_bFOC += p_slice->i_delta_pic_order_cnt_bottom;
 
-        /* Save from ref picture */
-        if( p_slice->i_nal_ref_idc /* Is reference */ )
+
+        if( p_slice->i_nal_ref_idc )
         {
             p_ctx->prevRefPictureIsBottomField = (p_slice->i_field_pic_flag &&
                                                   p_slice->i_bottom_field_flag);
@@ -150,10 +150,10 @@ void h264_compute_poc( const h264_sequence_parameter_set_t *p_sps,
             p_ctx->prevFrameNumOffset = frameNumOffset;
     }
 
-    /* 8.2.1 (8-1) */
-    if( !p_slice->i_field_pic_flag ) /* progressive or contains both fields */
+
+    if( !p_slice->i_field_pic_flag )
         *p_PictureOrderCount = __MIN( *p_bFOC, *p_tFOC );
-    else /* split top or bottom field */
+    else
     if ( p_slice->i_bottom_field_flag )
         *p_PictureOrderCount = *p_bFOC;
     else

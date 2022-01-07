@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_gl_info {scalar_t__* supported; } ;
-typedef  int /*<<< orphan*/  UINT64 ;
-typedef  int /*<<< orphan*/  GLuint64 ;
-typedef  int /*<<< orphan*/  GLuint ;
+typedef int UINT64 ;
+typedef int GLuint64 ;
+typedef int GLuint ;
 
-/* Variables and functions */
- size_t ARB_TIMER_QUERY ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_QUERY_RESULT ; 
- int /*<<< orphan*/  glGetQueryObjectui64v (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glGetQueryObjectuiv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ size_t ARB_TIMER_QUERY ;
+ int GL_EXTCALL (int ) ;
+ int GL_QUERY_RESULT ;
+ int glGetQueryObjectui64v (int ,int ,int *) ;
+ int glGetQueryObjectuiv (int ,int ,int *) ;
 
 __attribute__((used)) static UINT64 get_query_result64(GLuint id, const struct wined3d_gl_info *gl_info)
 {

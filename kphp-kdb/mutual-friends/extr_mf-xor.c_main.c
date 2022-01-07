@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ change_user (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int* fd ; 
- int /*<<< orphan*/  flush_w_buff () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  fsync (int) ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  init_files (int) ; 
- int /*<<< orphan*/  open_file (int,char*,int /*<<< orphan*/ ) ; 
- char* optarg ; 
- int optind ; 
- char* progname ; 
- int /*<<< orphan*/  run () ; 
- int /*<<< orphan*/  set_debug_handlers () ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  usage () ; 
- char* username ; 
+ scalar_t__ change_user (char*) ;
+ int exit (int) ;
+ int* fd ;
+ int flush_w_buff () ;
+ int fprintf (int ,char*,char*) ;
+ int fsync (int) ;
+ int getopt (int,char**,char*) ;
+ int init_files (int) ;
+ int open_file (int,char*,int ) ;
+ char* optarg ;
+ int optind ;
+ char* progname ;
+ int run () ;
+ int set_debug_handlers () ;
+ int stderr ;
+ int usage () ;
+ char* username ;
 
 int main (int argc, char *argv[]) {
   int i;
@@ -71,7 +63,7 @@ int main (int argc, char *argv[]) {
 
   flush_w_buff();
   fsync (fd[2]);
-//  assert (fsync (fd[2]) >= 0);  // fails when stdout is a pipe
+
 
   return 0;
 }

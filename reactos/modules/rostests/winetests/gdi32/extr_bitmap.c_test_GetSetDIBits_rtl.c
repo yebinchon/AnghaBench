@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bits_1 ;
-struct TYPE_5__ {int biSize; int biWidth; int biHeight; int biPlanes; int biBitCount; int /*<<< orphan*/  biCompression; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int bits_1 ;
+struct TYPE_5__ {int biSize; int biWidth; int biHeight; int biPlanes; int biBitCount; int biCompression; } ;
 struct TYPE_6__ {TYPE_1__ bmiHeader; } ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  HBITMAP ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BITMAPINFOHEADER ;
-typedef  TYPE_2__ BITMAPINFO ;
+typedef int HDC ;
+typedef int HBITMAP ;
+typedef int DWORD ;
+typedef int BITMAPINFOHEADER ;
+typedef TYPE_2__ BITMAPINFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BI_RGB ; 
- int /*<<< orphan*/  CreateCompatibleBitmap (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  CreateCompatibleDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DIB_RGB_COLORS ; 
- int /*<<< orphan*/  DeleteDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ *) ; 
- int GetDIBits (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LAYOUT_LTR ; 
- int /*<<< orphan*/  LAYOUT_RTL ; 
- int /*<<< orphan*/  RGB (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int SetDIBits (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetPixel (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcmp (int*,int*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  pSetLayout (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+ int BI_RGB ;
+ int CreateCompatibleBitmap (int ,int,int) ;
+ int CreateCompatibleDC (int ) ;
+ int DIB_RGB_COLORS ;
+ int DeleteDC (int ) ;
+ int DeleteObject (int ) ;
+ int GetDC (int *) ;
+ int GetDIBits (int ,int ,int ,int,int*,TYPE_2__*,int ) ;
+ int LAYOUT_LTR ;
+ int LAYOUT_RTL ;
+ int RGB (int,int ,int ) ;
+ int ReleaseDC (int *,int ) ;
+ int SelectObject (int ,int ) ;
+ int SetDIBits (int ,int ,int ,int,int*,TYPE_2__*,int ) ;
+ int SetPixel (int ,int ,int ,int ) ;
+ int memcmp (int*,int*,int) ;
+ int ok (int,char*,...) ;
+ int pSetLayout (int ,int ) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_GetSetDIBits_rtl(void)
 {
@@ -56,7 +56,7 @@ __attribute__((used)) static void test_GetSetDIBits_rtl(void)
         return;
     }
 
-    hdc = GetDC( NULL );
+    hdc = GetDC( ((void*)0) );
     hdc_mem = CreateCompatibleDC( hdc );
     pSetLayout( hdc_mem, LAYOUT_LTR );
 
@@ -72,11 +72,11 @@ __attribute__((used)) static void test_GetSetDIBits_rtl(void)
     info.bmiHeader.biBitCount = 32;
     info.bmiHeader.biCompression = BI_RGB;
 
-    /* First show that GetDIBits ignores the layout mode. */
+
 
     ret = GetDIBits( hdc_mem, bitmap, 0, 8, bits_1, &info, DIB_RGB_COLORS );
     ok(ret == 8, "got %d\n", ret);
-    ok(bits_1[56] == 0xff0000, "got %08x\n", bits_1[56]); /* check we have a red pixel */
+    ok(bits_1[56] == 0xff0000, "got %08x\n", bits_1[56]);
 
     pSetLayout( hdc_mem, LAYOUT_RTL );
 
@@ -85,8 +85,8 @@ __attribute__((used)) static void test_GetSetDIBits_rtl(void)
 
     ok(!memcmp( bits_1, bits_2, sizeof(bits_1) ), "bits differ\n");
 
-    /* Now to show that SetDIBits also ignores the mode, we perform a SetDIBits
-       followed by a GetDIBits and show that the bits remain unchanged. */
+
+
 
     pSetLayout( hdc_mem, LAYOUT_LTR );
 
@@ -106,5 +106,5 @@ __attribute__((used)) static void test_GetSetDIBits_rtl(void)
 
     DeleteObject( bitmap );
     DeleteDC( hdc_mem );
-    ReleaseDC( NULL, hdc );
+    ReleaseDC( ((void*)0), hdc );
 }

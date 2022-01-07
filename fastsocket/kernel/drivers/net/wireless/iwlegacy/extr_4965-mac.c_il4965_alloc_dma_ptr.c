@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct il_priv {TYPE_1__* pci_dev; } ;
-struct il_dma_ptr {size_t size; int /*<<< orphan*/  addr; int /*<<< orphan*/  dma; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dev; } ;
+struct il_dma_ptr {size_t size; int addr; int dma; } ;
+struct TYPE_2__ {int dev; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  dma_alloc_coherent (int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int dma_alloc_coherent (int *,size_t,int *,int ) ;
 
 __attribute__((used)) static inline int
 il4965_alloc_dma_ptr(struct il_priv *il, struct il_dma_ptr *ptr, size_t size)
 {
-	ptr->addr = dma_alloc_coherent(&il->pci_dev->dev, size, &ptr->dma,
-				       GFP_KERNEL);
-	if (!ptr->addr)
-		return -ENOMEM;
-	ptr->size = size;
-	return 0;
+ ptr->addr = dma_alloc_coherent(&il->pci_dev->dev, size, &ptr->dma,
+           GFP_KERNEL);
+ if (!ptr->addr)
+  return -ENOMEM;
+ ptr->size = size;
+ return 0;
 }

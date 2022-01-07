@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tv ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int tv ;
 struct timeval {int tv_sec; int tv_usec; } ;
-struct TYPE_3__ {int /*<<< orphan*/  socket; } ;
-typedef  TYPE_1__ netconn_t ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  scalar_t__ BOOL ;
+struct TYPE_3__ {int socket; } ;
+typedef TYPE_1__ netconn_t ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  SOL_SOCKET ; 
- int /*<<< orphan*/  SO_RCVTIMEO ; 
- int /*<<< orphan*/  SO_SNDTIMEO ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- int setsockopt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int) ; 
- int /*<<< orphan*/  sock_get_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+ int ERROR_SUCCESS ;
+ int SOL_SOCKET ;
+ int SO_RCVTIMEO ;
+ int SO_SNDTIMEO ;
+ int WARN (char*,int ) ;
+ int errno ;
+ int setsockopt (int ,int ,int ,void*,int) ;
+ int sock_get_error (int ) ;
+ int strerror (int ) ;
 
 DWORD netconn_set_timeout( netconn_t *netconn, BOOL send, int value )
 {
     struct timeval tv;
 
-    /* value is in milliseconds, convert to struct timeval */
+
     tv.tv_sec = value / 1000;
     tv.tv_usec = (value % 1000) * 1000;
 

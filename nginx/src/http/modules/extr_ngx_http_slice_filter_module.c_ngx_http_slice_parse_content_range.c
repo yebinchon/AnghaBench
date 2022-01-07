@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char u_char ;
-typedef  char off_t ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef char u_char ;
+typedef char off_t ;
 struct TYPE_9__ {int len; char* data; } ;
 struct TYPE_10__ {TYPE_2__ value; } ;
-typedef  TYPE_3__ ngx_table_elt_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
+typedef TYPE_3__ ngx_table_elt_t ;
+typedef int ngx_int_t ;
 struct TYPE_11__ {char start; char end; char complete_length; } ;
-typedef  TYPE_4__ ngx_http_slice_content_range_t ;
+typedef TYPE_4__ ngx_http_slice_content_range_t ;
 struct TYPE_8__ {TYPE_3__* content_range; } ;
 struct TYPE_12__ {TYPE_1__ headers_out; } ;
-typedef  TYPE_5__ ngx_http_request_t ;
+typedef TYPE_5__ ngx_http_request_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int NGX_MAX_OFF_T_VALUE ; 
- int /*<<< orphan*/  NGX_OK ; 
- scalar_t__ ngx_strncmp (char*,char*,int) ; 
+
+ int NGX_ERROR ;
+ int NGX_MAX_OFF_T_VALUE ;
+ int NGX_OK ;
+ scalar_t__ ngx_strncmp (char*,char*,int) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_slice_parse_content_range(ngx_http_request_t *r,
     ngx_http_slice_content_range_t *cr)
 {
-    off_t             start, end, complete_length, cutoff, cutlim;
-    u_char           *p;
-    ngx_table_elt_t  *h;
+    off_t start, end, complete_length, cutoff, cutlim;
+    u_char *p;
+    ngx_table_elt_t *h;
 
     h = r->headers_out.content_range;
 
-    if (h == NULL
+    if (h == ((void*)0)
         || h->value.len < 7
         || ngx_strncmp(h->value.data, "bytes ", 6) != 0)
     {

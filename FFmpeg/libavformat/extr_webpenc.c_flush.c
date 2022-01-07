@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_6__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
+
+
+typedef struct TYPE_11__ TYPE_6__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
 struct TYPE_11__ {int size; char* data; scalar_t__ pts; scalar_t__ duration; } ;
-struct TYPE_8__ {int wrote_webp_header; int frame_count; TYPE_6__ last_pkt; int /*<<< orphan*/  loop; } ;
-typedef  TYPE_2__ WebpContext ;
-struct TYPE_10__ {int /*<<< orphan*/  pb; TYPE_3__** streams; TYPE_2__* priv_data; } ;
+struct TYPE_8__ {int wrote_webp_header; int frame_count; TYPE_6__ last_pkt; int loop; } ;
+typedef TYPE_2__ WebpContext ;
+struct TYPE_10__ {int pb; TYPE_3__** streams; TYPE_2__* priv_data; } ;
 struct TYPE_9__ {TYPE_1__* codecpar; } ;
 struct TYPE_7__ {scalar_t__ width; scalar_t__ height; } ;
-typedef  TYPE_3__ AVStream ;
-typedef  TYPE_4__ AVFormatContext ;
+typedef TYPE_3__ AVStream ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- scalar_t__ AV_NOPTS_VALUE ; 
- scalar_t__ AV_RL32 (char*) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_6__*) ; 
- int /*<<< orphan*/  avio_w8 (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  avio_wl16 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_wl24 (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  avio_wl32 (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ ,char*,int) ; 
+
+ scalar_t__ AV_NOPTS_VALUE ;
+ scalar_t__ AV_RL32 (char*) ;
+ int av_packet_unref (TYPE_6__*) ;
+ int avio_w8 (int ,unsigned int) ;
+ int avio_wl16 (int ,int ) ;
+ int avio_wl24 (int ,scalar_t__) ;
+ int avio_wl32 (int ,int) ;
+ int avio_write (int ,char*,int) ;
 
 __attribute__((used)) static int flush(AVFormatContext *s, int trailer, int64_t pts)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static int flush(AVFormatContext *s, int trailer, int64_t 
             skip = 12;
 
         if (w->last_pkt.size < skip + 4)
-            return 0;  // Safe to do this as a valid WebP bitstream is >=30 bytes.
+            return 0;
         if (AV_RL32(w->last_pkt.data + skip) == AV_RL32("VP8X")) {
             flags |= w->last_pkt.data[skip + 4 + 4];
             vp8x = 1;
@@ -61,8 +61,8 @@ __attribute__((used)) static int flush(AVFormatContext *s, int trailer, int64_t 
         if (!w->wrote_webp_header) {
             avio_write(s->pb, "RIFF\0\0\0\0WEBP", 12);
             w->wrote_webp_header = 1;
-            if (w->frame_count > 1)  // first non-empty packet
-                w->frame_count = 1;  // so we don't count previous empty packets.
+            if (w->frame_count > 1)
+                w->frame_count = 1;
         }
 
         if (w->frame_count == 1) {

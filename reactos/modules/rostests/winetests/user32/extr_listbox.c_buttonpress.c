@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WORD ;
-typedef  int LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MK_LBUTTON ; 
- int /*<<< orphan*/  REDRAW ; 
- int /*<<< orphan*/  SendMessageA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  WAIT ; 
- int /*<<< orphan*/  WM_LBUTTONDOWN ; 
- int /*<<< orphan*/  WM_LBUTTONUP ; 
+
+
+
+typedef int WORD ;
+typedef int LPARAM ;
+typedef int HWND ;
+
+
+ int MK_LBUTTON ;
+ int REDRAW ;
+ int SendMessageA (int ,int ,int ,int) ;
+ int WAIT ;
+ int WM_LBUTTONDOWN ;
+ int WM_LBUTTONUP ;
 
 __attribute__((used)) static void
 buttonpress (HWND handle, WORD x, WORD y)

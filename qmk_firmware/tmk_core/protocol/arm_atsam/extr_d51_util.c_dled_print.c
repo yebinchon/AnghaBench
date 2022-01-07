@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int uint32_t ;
-typedef  int int8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DBG_LED_OFF ; 
- int /*<<< orphan*/  DBG_LED_ON ; 
- int DLED_ONTIME ; 
- int DLED_PAUSE ; 
- int w ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint32_t ;
+typedef int int8_t ;
+
+
+ int DBG_LED_OFF ;
+ int DBG_LED_ON ;
+ int DLED_ONTIME ;
+ int DLED_PAUSE ;
+ int w ;
 
 void dled_print(uint32_t x, uint8_t long_pause) {
-    int8_t   t;
+    int8_t t;
     uint32_t n;
     uint32_t p, p2;
 
@@ -49,7 +49,7 @@ void dled_print(uint32_t x, uint8_t long_pause) {
 
     while (t >= 0) {
         p2 = t;
-        p  = 1;
+        p = 1;
         while (p2--) p *= 10;
         n = x / p;
         x -= n * p;

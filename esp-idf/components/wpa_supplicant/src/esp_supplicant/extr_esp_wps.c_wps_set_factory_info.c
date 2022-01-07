@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__* manufacturer; scalar_t__* model_number; scalar_t__* model_name; scalar_t__* device_name; } ;
 struct TYPE_6__ {TYPE_1__ factory_info; } ;
-typedef  TYPE_2__ esp_wps_config_t ;
-struct TYPE_7__ {int /*<<< orphan*/  device_name; int /*<<< orphan*/  model_name; int /*<<< orphan*/  model_number; int /*<<< orphan*/  manufacturer; } ;
+typedef TYPE_2__ esp_wps_config_t ;
+struct TYPE_7__ {int device_name; int model_name; int model_number; int manufacturer; } ;
 
-/* Variables and functions */
- int ESP_OK ; 
- int /*<<< orphan*/  MSG_INFO ; 
- scalar_t__ WPS_MAX_DEVICE_NAME_LEN ; 
- scalar_t__ WPS_MAX_MANUFACTURER_LEN ; 
- scalar_t__ WPS_MAX_MODEL_NAME_LEN ; 
- scalar_t__ WPS_MAX_MODEL_NUMBER_LEN ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,scalar_t__*,scalar_t__) ; 
- TYPE_4__* s_factory_info ; 
- int /*<<< orphan*/  wpa_printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int wps_set_default_factory () ; 
+
+ int ESP_OK ;
+ int MSG_INFO ;
+ scalar_t__ WPS_MAX_DEVICE_NAME_LEN ;
+ scalar_t__ WPS_MAX_MANUFACTURER_LEN ;
+ scalar_t__ WPS_MAX_MODEL_NAME_LEN ;
+ scalar_t__ WPS_MAX_MODEL_NUMBER_LEN ;
+ int memcpy (int ,scalar_t__*,scalar_t__) ;
+ TYPE_4__* s_factory_info ;
+ int wpa_printf (int ,char*,int ,int ,int ,int ) ;
+ int wps_set_default_factory () ;
 
 int wps_set_factory_info(const esp_wps_config_t *config)
 {

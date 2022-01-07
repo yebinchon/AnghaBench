@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_IF_WIFI_AP ; 
- int /*<<< orphan*/  MAC2STR (int /*<<< orphan*/ *) ; 
- char* MACSTR ; 
- int /*<<< orphan*/  TEST_ESP_OK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_wifi_get_mac (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int portTICK_PERIOD_MS ; 
- int /*<<< orphan*/  sprintf (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  start_wifi_as_softap () ; 
- int /*<<< orphan*/  stop_wifi () ; 
- int /*<<< orphan*/  test_case_uses_tcpip () ; 
- int /*<<< orphan*/  unity_send_signal_param (char*,char*) ; 
- int /*<<< orphan*/  unity_wait_for_signal (char*) ; 
- int /*<<< orphan*/  vTaskDelay (int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int ESP_IF_WIFI_AP ;
+ int MAC2STR (int *) ;
+ char* MACSTR ;
+ int TEST_ESP_OK (int ) ;
+ int esp_wifi_get_mac (int ,int *) ;
+ int portTICK_PERIOD_MS ;
+ int sprintf (char*,char*,int ) ;
+ int start_wifi_as_softap () ;
+ int stop_wifi () ;
+ int test_case_uses_tcpip () ;
+ int unity_send_signal_param (char*,char*) ;
+ int unity_wait_for_signal (char*) ;
+ int vTaskDelay (int) ;
 
 __attribute__((used)) static void test_wifi_connection_softap(void)
 {

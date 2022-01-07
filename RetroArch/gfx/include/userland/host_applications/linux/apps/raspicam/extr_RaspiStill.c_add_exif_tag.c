@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int size; int /*<<< orphan*/  id; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int size; int id; } ;
 struct TYPE_8__ {TYPE_4__ hdr; scalar_t__ data; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * output; struct TYPE_7__* encoder_component; } ;
-typedef  TYPE_1__ RASPISTILL_STATE ;
-typedef  int /*<<< orphan*/  MMAL_STATUS_T ;
-typedef  TYPE_2__ MMAL_PARAMETER_EXIF_T ;
+struct TYPE_7__ {int * output; struct TYPE_7__* encoder_component; } ;
+typedef TYPE_1__ RASPISTILL_STATE ;
+typedef int MMAL_STATUS_T ;
+typedef TYPE_2__ MMAL_PARAMETER_EXIF_T ;
 
-/* Variables and functions */
- int MAX_EXIF_PAYLOAD_LENGTH ; 
- int /*<<< orphan*/  MMAL_EINVAL ; 
- int /*<<< orphan*/  MMAL_PARAMETER_EXIF ; 
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  mmal_port_parameter_set (int /*<<< orphan*/ ,TYPE_4__*) ; 
- int /*<<< orphan*/ * strchr (char const*,char) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  strncpy (char*,char const*,int) ; 
- int /*<<< orphan*/  vcos_assert (TYPE_1__*) ; 
+
+ int MAX_EXIF_PAYLOAD_LENGTH ;
+ int MMAL_EINVAL ;
+ int MMAL_PARAMETER_EXIF ;
+ scalar_t__ calloc (int,int) ;
+ int free (TYPE_2__*) ;
+ int mmal_port_parameter_set (int ,TYPE_4__*) ;
+ int * strchr (char const*,char) ;
+ int strlen (char const*) ;
+ int strncpy (char*,char const*,int) ;
+ int vcos_assert (TYPE_1__*) ;
 
 __attribute__((used)) static MMAL_STATUS_T add_exif_tag(RASPISTILL_STATE *state, const char *exif_tag)
 {
@@ -40,8 +40,8 @@ __attribute__((used)) static MMAL_STATUS_T add_exif_tag(RASPISTILL_STATE *state,
    vcos_assert(state);
    vcos_assert(state->encoder_component);
 
-   // Check to see if the tag is present or is indeed a key=value pair.
-   if (!exif_tag || strchr(exif_tag, '=') == NULL || strlen(exif_tag) > MAX_EXIF_PAYLOAD_LENGTH-1)
+
+   if (!exif_tag || strchr(exif_tag, '=') == ((void*)0) || strlen(exif_tag) > MAX_EXIF_PAYLOAD_LENGTH-1)
       return MMAL_EINVAL;
 
    exif_param->hdr.id = MMAL_PARAMETER_EXIF;

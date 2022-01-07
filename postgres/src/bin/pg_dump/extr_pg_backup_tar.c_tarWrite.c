@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {size_t pos; int /*<<< orphan*/  nFH; int /*<<< orphan*/ * zFH; } ;
-typedef  TYPE_1__ TAR_MEMBER ;
 
-/* Variables and functions */
- size_t GZWRITE (void const*,int,size_t,int /*<<< orphan*/ *) ; 
- size_t fwrite (void const*,int,size_t,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {size_t pos; int nFH; int * zFH; } ;
+typedef TYPE_1__ TAR_MEMBER ;
+
+
+ size_t GZWRITE (void const*,int,size_t,int *) ;
+ size_t fwrite (void const*,int,size_t,int ) ;
 
 __attribute__((used)) static size_t
 tarWrite(const void *buf, size_t len, TAR_MEMBER *th)
 {
-	size_t		res;
+ size_t res;
 
-	if (th->zFH != NULL)
-		res = GZWRITE(buf, 1, len, th->zFH);
-	else
-		res = fwrite(buf, 1, len, th->nFH);
+ if (th->zFH != ((void*)0))
+  res = GZWRITE(buf, 1, len, th->zFH);
+ else
+  res = fwrite(buf, 1, len, th->nFH);
 
-	th->pos += res;
-	return res;
+ th->pos += res;
+ return res;
 }

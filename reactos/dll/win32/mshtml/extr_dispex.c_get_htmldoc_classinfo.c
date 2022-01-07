@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ITypeInfo ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSID_HTMLDocument ; 
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ITypeLib_GetTypeInfoOfGuid (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  load_typelib () ; 
- int /*<<< orphan*/  typelib ; 
+
+
+
+typedef int ITypeInfo ;
+typedef int HRESULT ;
+
+
+ int CLSID_HTMLDocument ;
+ int ERR (char*,int ) ;
+ scalar_t__ FAILED (int ) ;
+ int ITypeLib_GetTypeInfoOfGuid (int ,int *,int **) ;
+ int load_typelib () ;
+ int typelib ;
 
 HRESULT get_htmldoc_classinfo(ITypeInfo **typeinfo)
 {

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT32 ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UINT32 ;
 struct TYPE_3__ {scalar_t__ Address; } ;
 struct TYPE_4__ {TYPE_1__ XPm1bControlBlock; TYPE_1__ XPm1aControlBlock; } ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
+typedef int ACPI_STATUS ;
 
-/* Variables and functions */
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_FUNCTION_TRACE (int /*<<< orphan*/ ) ; 
- TYPE_2__ AcpiGbl_FADT ; 
- int /*<<< orphan*/  AcpiHwWrite (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  HwWritePm1Control ; 
- int /*<<< orphan*/  return_ACPI_STATUS (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int ACPI_FUNCTION_TRACE (int ) ;
+ TYPE_2__ AcpiGbl_FADT ;
+ int AcpiHwWrite (int ,TYPE_1__*) ;
+ int HwWritePm1Control ;
+ int return_ACPI_STATUS (int ) ;
 
 ACPI_STATUS
 AcpiHwWritePm1Control (
-    UINT32                  Pm1aControl,
-    UINT32                  Pm1bControl)
+    UINT32 Pm1aControl,
+    UINT32 Pm1bControl)
 {
-    ACPI_STATUS             Status;
+    ACPI_STATUS Status;
 
 
     ACPI_FUNCTION_TRACE (HwWritePm1Control);

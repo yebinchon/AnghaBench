@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct bounce_page {int dummy; } ;
-typedef  TYPE_1__* bus_dmamap_t ;
-typedef  int /*<<< orphan*/  bus_dma_tag_t ;
-struct TYPE_3__ {scalar_t__ sync_count; int /*<<< orphan*/  bpages; } ;
+typedef TYPE_1__* bus_dmamap_t ;
+typedef int bus_dma_tag_t ;
+struct TYPE_3__ {scalar_t__ sync_count; int bpages; } ;
 
-/* Variables and functions */
- struct bounce_page* STAILQ_FIRST (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  STAILQ_REMOVE_HEAD (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_bounce_page (int /*<<< orphan*/ ,struct bounce_page*) ; 
- int /*<<< orphan*/  links ; 
+
+ struct bounce_page* STAILQ_FIRST (int *) ;
+ int STAILQ_REMOVE_HEAD (int *,int ) ;
+ int free_bounce_page (int ,struct bounce_page*) ;
+ int links ;
 
 void
 bus_dmamap_unload(bus_dma_tag_t dmat, bus_dmamap_t map)
 {
-	struct bounce_page *bpage;
+ struct bounce_page *bpage;
 
-	while ((bpage = STAILQ_FIRST(&map->bpages)) != NULL) {
-		STAILQ_REMOVE_HEAD(&map->bpages, links);
-		free_bounce_page(dmat, bpage);
-	}
-	map->sync_count = 0;
-	return;
+ while ((bpage = STAILQ_FIRST(&map->bpages)) != ((void*)0)) {
+  STAILQ_REMOVE_HEAD(&map->bpages, links);
+  free_bounce_page(dmat, bpage);
+ }
+ map->sync_count = 0;
+ return;
 }

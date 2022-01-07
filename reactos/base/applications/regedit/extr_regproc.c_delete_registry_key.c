@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  HKEY ;
 
-/* Variables and functions */
- char* GetMultiByteString (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  SHDeleteKey (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  getAppName () ; 
- int /*<<< orphan*/  parseKeyName (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int WCHAR ;
+typedef int HKEY ;
+
+
+ char* GetMultiByteString (int *) ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,char*) ;
+ int SHDeleteKey (int ,int *) ;
+ int exit (int) ;
+ int fprintf (int ,char*,int ,char*) ;
+ int getAppName () ;
+ int parseKeyName (int *,int *,int **) ;
+ int stderr ;
 
 void delete_registry_key(WCHAR *reg_key_name)
 {
-    WCHAR *key_name = NULL;
+    WCHAR *key_name = ((void*)0);
     HKEY key_class;
 
     if (!reg_key_name || !reg_key_name[0])

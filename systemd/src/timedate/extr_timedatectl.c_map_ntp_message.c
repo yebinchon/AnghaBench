@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int /*<<< orphan*/  sd_bus ;
-typedef  int /*<<< orphan*/  int32_t ;
-struct TYPE_4__ {int /*<<< orphan*/  str; } ;
-struct TYPE_5__ {int /*<<< orphan*/  spike; TYPE_1__ reference; int /*<<< orphan*/  jitter; int /*<<< orphan*/  packet_count; int /*<<< orphan*/  dest; int /*<<< orphan*/  trans; int /*<<< orphan*/  recv; int /*<<< orphan*/  origin; int /*<<< orphan*/  root_dispersion; int /*<<< orphan*/  root_delay; int /*<<< orphan*/  precision; int /*<<< orphan*/  stratum; int /*<<< orphan*/  mode; int /*<<< orphan*/  version; int /*<<< orphan*/  leap; } ;
-typedef  TYPE_2__ NTPStatusInfo ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,void const*,size_t) ; 
- int sd_bus_message_enter_container (int /*<<< orphan*/ *,char,char*) ; 
- int sd_bus_message_exit_container (int /*<<< orphan*/ *) ; 
- int sd_bus_message_read (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int sd_bus_message_read_array (int /*<<< orphan*/ *,char,void const**,size_t*) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
+typedef int sd_bus ;
+typedef int int32_t ;
+struct TYPE_4__ {int str; } ;
+struct TYPE_5__ {int spike; TYPE_1__ reference; int jitter; int packet_count; int dest; int trans; int recv; int origin; int root_dispersion; int root_delay; int precision; int stratum; int mode; int version; int leap; } ;
+typedef TYPE_2__ NTPStatusInfo ;
+
+
+ int EINVAL ;
+ int assert (TYPE_2__*) ;
+ int memcpy (int ,void const*,size_t) ;
+ int sd_bus_message_enter_container (int *,char,char*) ;
+ int sd_bus_message_exit_container (int *) ;
+ int sd_bus_message_read (int *,char*,int *,int *,int *,int *,int *,int *,int *) ;
+ int sd_bus_message_read_array (int *,char,void const**,size_t*) ;
 
 __attribute__((used)) static int map_ntp_message(sd_bus *bus, const char *member, sd_bus_message *m, sd_bus_error *error, void *userdata) {
         NTPStatusInfo *p = userdata;

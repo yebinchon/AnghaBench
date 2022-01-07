@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct shrink_control {int /*<<< orphan*/  gfp_mask; int /*<<< orphan*/  nr_to_scan; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  KMC_REAP_CHUNK ; 
- int /*<<< orphan*/  __spl_kmem_cache_generic_shrinker (int /*<<< orphan*/ *,struct shrink_control*) ; 
+
+
+
+struct shrink_control {int gfp_mask; int nr_to_scan; } ;
+
+
+ int GFP_KERNEL ;
+ int KMC_REAP_CHUNK ;
+ int __spl_kmem_cache_generic_shrinker (int *,struct shrink_control*) ;
 
 void
 spl_kmem_reap(void)
 {
-	struct shrink_control sc;
+ struct shrink_control sc;
 
-	sc.nr_to_scan = KMC_REAP_CHUNK;
-	sc.gfp_mask = GFP_KERNEL;
+ sc.nr_to_scan = KMC_REAP_CHUNK;
+ sc.gfp_mask = GFP_KERNEL;
 
-	(void) __spl_kmem_cache_generic_shrinker(NULL, &sc);
+ (void) __spl_kmem_cache_generic_shrinker(((void*)0), &sc);
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  unw_word ;
 
-/* Variables and functions */
- int /*<<< orphan*/  B3 ; 
- int /*<<< orphan*/  B4 ; 
- int /*<<< orphan*/  UNW_DEC_BAD_CODE (unsigned char) ; 
- int /*<<< orphan*/  UNW_DEC_COPY_STATE (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  UNW_DEC_EPILOGUE (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  UNW_DEC_LABEL_STATE (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  unw_decode_uleb128 (unsigned char**) ; 
- unsigned char* unw_decode_x1 (unsigned char*,unsigned char,void*) ; 
- unsigned char* unw_decode_x2 (unsigned char*,unsigned char,void*) ; 
- unsigned char* unw_decode_x3 (unsigned char*,unsigned char,void*) ; 
- unsigned char* unw_decode_x4 (unsigned char*,unsigned char,void*) ; 
+
+
+
+typedef int unw_word ;
+
+
+ int B3 ;
+ int B4 ;
+ int UNW_DEC_BAD_CODE (unsigned char) ;
+ int UNW_DEC_COPY_STATE (int ,int ,void*) ;
+ int UNW_DEC_EPILOGUE (int ,int ,int ,void*) ;
+ int UNW_DEC_LABEL_STATE (int ,int ,void*) ;
+ int unw_decode_uleb128 (unsigned char**) ;
+ unsigned char* unw_decode_x1 (unsigned char*,unsigned char,void*) ;
+ unsigned char* unw_decode_x2 (unsigned char*,unsigned char,void*) ;
+ unsigned char* unw_decode_x3 (unsigned char*,unsigned char,void*) ;
+ unsigned char* unw_decode_x4 (unsigned char*,unsigned char,void*) ;
 
 __attribute__((used)) static unsigned char *
 unw_decode_b3_x4 (unsigned char *dp, unsigned char code, void *arg)
@@ -40,9 +40,9 @@ unw_decode_b3_x4 (unsigned char *dp, unsigned char code, void *arg)
     {
       label = unw_decode_uleb128 (&dp);
       if ((code & 0x08) != 0)
-	UNW_DEC_COPY_STATE(B4, label, arg);
+ UNW_DEC_COPY_STATE(B4, label, arg);
       else
-	UNW_DEC_LABEL_STATE(B4, label, arg);
+ UNW_DEC_LABEL_STATE(B4, label, arg);
     }
   else
     switch (code & 0x7)

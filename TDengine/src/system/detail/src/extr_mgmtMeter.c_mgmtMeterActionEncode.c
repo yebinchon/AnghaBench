@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* updateEnd; int schemaSize; struct TYPE_3__* schema; } ;
-typedef  TYPE_1__ STabObj ;
+typedef TYPE_1__ STabObj ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcpy (char*,TYPE_1__*,int) ; 
+
+ int assert (int) ;
+ int memcpy (char*,TYPE_1__*,int) ;
 
 void *mgmtMeterActionEncode(void *row, char *str, int size, int *ssize) {
-  assert(row != NULL && str != NULL);
+  assert(row != ((void*)0) && str != ((void*)0));
 
   STabObj *pMeter = (STabObj *)row;
-  int      tsize = pMeter->updateEnd - (char *)pMeter;
+  int tsize = pMeter->updateEnd - (char *)pMeter;
 
   if (size < tsize + pMeter->schemaSize + 1) {
     *ssize = -1;
-    return NULL;
+    return ((void*)0);
   }
 
   memcpy(str, pMeter, tsize);
@@ -34,5 +34,5 @@ void *mgmtMeterActionEncode(void *row, char *str, int size, int *ssize) {
 
   *ssize = tsize + pMeter->schemaSize;
 
-  return NULL;
+  return ((void*)0);
 }

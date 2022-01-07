@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Type ;
-struct TYPE_3__ {int /*<<< orphan*/  align; int /*<<< orphan*/  size; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int Type ;
+struct TYPE_3__ {int align; int size; } ;
 struct TYPE_4__ {TYPE_1__ ptrmetric; } ;
 
-/* Variables and functions */
- TYPE_2__* IR ; 
- int /*<<< orphan*/  POINTER ; 
- int /*<<< orphan*/  pointersym ; 
- int /*<<< orphan*/  type (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ TYPE_2__* IR ;
+ int POINTER ;
+ int pointersym ;
+ int type (int ,int ,int ,int ,int ) ;
 
 Type ptr(Type ty) {
-	return type(POINTER, ty, IR->ptrmetric.size,
-		IR->ptrmetric.align, pointersym);
+ return type(POINTER, ty, IR->ptrmetric.size,
+  IR->ptrmetric.align, pointersym);
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct aout_sys_common {int /*<<< orphan*/ * p_out_chain; int /*<<< orphan*/  flush_sem; } ;
-struct TYPE_5__ {int /*<<< orphan*/  time_get; int /*<<< orphan*/  flush; int /*<<< orphan*/  pause; int /*<<< orphan*/  play; scalar_t__ sys; } ;
-typedef  TYPE_1__ audio_output_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct aout_sys_common {int * p_out_chain; int flush_sem; } ;
+struct TYPE_5__ {int time_get; int flush; int pause; int play; scalar_t__ sys; } ;
+typedef TYPE_1__ audio_output_t ;
 struct TYPE_6__ {scalar_t__ denom; scalar_t__ numer; } ;
 
-/* Variables and functions */
- scalar_t__ KERN_SUCCESS ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  ca_Flush ; 
- int /*<<< orphan*/  ca_Pause ; 
- int /*<<< orphan*/  ca_Play ; 
- int /*<<< orphan*/  ca_TimeGet ; 
- int /*<<< orphan*/  lock_init (struct aout_sys_common*) ; 
- scalar_t__ mach_timebase_info (TYPE_2__*) ; 
- TYPE_2__ tinfo ; 
- int /*<<< orphan*/  vlc_sem_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ KERN_SUCCESS ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int ca_Flush ;
+ int ca_Pause ;
+ int ca_Play ;
+ int ca_TimeGet ;
+ int lock_init (struct aout_sys_common*) ;
+ scalar_t__ mach_timebase_info (TYPE_2__*) ;
+ TYPE_2__ tinfo ;
+ int vlc_sem_init (int *,int ) ;
 
 int
 ca_Open(audio_output_t *p_aout)
@@ -43,7 +43,7 @@ ca_Open(audio_output_t *p_aout)
 
     vlc_sem_init(&p_sys->flush_sem, 0);
     lock_init(p_sys);
-    p_sys->p_out_chain = NULL;
+    p_sys->p_out_chain = ((void*)0);
 
     p_aout->play = ca_Play;
     p_aout->pause = ca_Pause;

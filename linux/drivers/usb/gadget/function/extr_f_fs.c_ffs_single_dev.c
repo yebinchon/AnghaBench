@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ffs_dev {int single; } ;
 
-/* Variables and functions */
- int EBUSY ; 
- int /*<<< orphan*/  ffs_dev_lock () ; 
- int /*<<< orphan*/  ffs_dev_unlock () ; 
- int /*<<< orphan*/  ffs_devices ; 
- int /*<<< orphan*/  list_is_singular (int /*<<< orphan*/ *) ; 
+
+ int EBUSY ;
+ int ffs_dev_lock () ;
+ int ffs_dev_unlock () ;
+ int ffs_devices ;
+ int list_is_singular (int *) ;
 
 int ffs_single_dev(struct ffs_dev *dev)
 {
-	int ret;
+ int ret;
 
-	ret = 0;
-	ffs_dev_lock();
+ ret = 0;
+ ffs_dev_lock();
 
-	if (!list_is_singular(&ffs_devices))
-		ret = -EBUSY;
-	else
-		dev->single = true;
+ if (!list_is_singular(&ffs_devices))
+  ret = -EBUSY;
+ else
+  dev->single = 1;
 
-	ffs_dev_unlock();
-	return ret;
+ ffs_dev_unlock();
+ return ret;
 }

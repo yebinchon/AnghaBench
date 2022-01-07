@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct sub_bitmap {int /*<<< orphan*/  dh; int /*<<< orphan*/  dw; int /*<<< orphan*/  stride; int /*<<< orphan*/  bitmap; int /*<<< orphan*/  h; int /*<<< orphan*/  w; } ;
-struct TYPE_2__ {int /*<<< orphan*/  color; } ;
-struct mp_image {TYPE_1__ params; int /*<<< orphan*/  imgfmt; int /*<<< orphan*/ * stride; int /*<<< orphan*/ * planes; int /*<<< orphan*/  member_0; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IMGFMT_BGR32 ; 
- int /*<<< orphan*/  IMGFMT_Y8 ; 
- int /*<<< orphan*/  SWS_BILINEAR ; 
- struct mp_image* mp_image_alloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_image_set_size (struct mp_image*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_image_setfmt (struct mp_image*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_image_swscale (struct mp_image*,struct mp_image*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  talloc_free (struct mp_image*) ; 
- int /*<<< orphan*/  unpremultiply_and_split_BGR32 (struct mp_image*,struct mp_image*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct sub_bitmap {int dh; int dw; int stride; int bitmap; int h; int w; } ;
+struct TYPE_2__ {int color; } ;
+struct mp_image {TYPE_1__ params; int imgfmt; int * stride; int * planes; int member_0; } ;
+
+
+ int IMGFMT_BGR32 ;
+ int IMGFMT_Y8 ;
+ int SWS_BILINEAR ;
+ struct mp_image* mp_image_alloc (int ,int ,int ) ;
+ int mp_image_set_size (struct mp_image*,int ,int ) ;
+ int mp_image_setfmt (struct mp_image*,int ) ;
+ int mp_image_swscale (struct mp_image*,struct mp_image*,int ) ;
+ int talloc_free (struct mp_image*) ;
+ int unpremultiply_and_split_BGR32 (struct mp_image*,struct mp_image*) ;
 
 __attribute__((used)) static void scale_sb_rgba(struct sub_bitmap *sb, const struct mp_image *dst_format,
                           struct mp_image **out_sbi, struct mp_image **out_sba)

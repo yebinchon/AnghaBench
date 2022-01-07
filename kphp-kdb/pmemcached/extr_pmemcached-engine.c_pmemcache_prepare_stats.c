@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct connection {int dummy; } ;
 struct TYPE_7__ {int pos; } ;
-typedef  TYPE_1__ stats_buffer_t ;
+typedef TYPE_1__ stats_buffer_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AM_GET_MEMORY_USAGE_SELF ; 
- int /*<<< orphan*/  FullVersionStr ; 
- int /*<<< orphan*/  SB_BINLOG ; 
- int /*<<< orphan*/  STATS_BUFF_SIZE ; 
- int /*<<< orphan*/  cmd_decr ; 
- int /*<<< orphan*/  cmd_delete ; 
- int /*<<< orphan*/  cmd_get ; 
- int /*<<< orphan*/  cmd_incr ; 
- int /*<<< orphan*/  cmd_set ; 
- int /*<<< orphan*/  cmd_stats ; 
- int /*<<< orphan*/  cmd_version ; 
- int /*<<< orphan*/  custom_prepare_stats (TYPE_1__*) ; 
- int /*<<< orphan*/  data_prepare_stats (TYPE_1__*) ; 
- int /*<<< orphan*/  engine_snapshot_name ; 
- int /*<<< orphan*/  get_entry_cnt () ; 
- int /*<<< orphan*/  get_hits ; 
- int /*<<< orphan*/  get_memory_used () ; 
- int /*<<< orphan*/  get_missed ; 
- int /*<<< orphan*/  getpid () ; 
- int /*<<< orphan*/  index_load_time ; 
- int /*<<< orphan*/  index_size ; 
- int last_reindex_on_low_memory_time ; 
- scalar_t__ malloc_mem ; 
- int /*<<< orphan*/  max_memory ; 
- int now ; 
- scalar_t__ reindex_on_low_memory ; 
- int /*<<< orphan*/  sb_memory (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sb_prepare (TYPE_1__*,struct connection*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sb_printf (TYPE_1__*,char*,long,...) ; 
- int /*<<< orphan*/  snapshot_size ; 
- int /*<<< orphan*/  stats_buff ; 
- int /*<<< orphan*/  tot_response_bytes ; 
- int /*<<< orphan*/  tot_response_words ; 
- int /*<<< orphan*/  total_items ; 
- int /*<<< orphan*/  wildcard_arrays_allocated ; 
- int /*<<< orphan*/  wildcard_cache_entries ; 
- int /*<<< orphan*/  wildcard_cache_memory ; 
- scalar_t__ zalloc_mem ; 
+
+ int AM_GET_MEMORY_USAGE_SELF ;
+ int FullVersionStr ;
+ int SB_BINLOG ;
+ int STATS_BUFF_SIZE ;
+ int cmd_decr ;
+ int cmd_delete ;
+ int cmd_get ;
+ int cmd_incr ;
+ int cmd_set ;
+ int cmd_stats ;
+ int cmd_version ;
+ int custom_prepare_stats (TYPE_1__*) ;
+ int data_prepare_stats (TYPE_1__*) ;
+ int engine_snapshot_name ;
+ int get_entry_cnt () ;
+ int get_hits ;
+ int get_memory_used () ;
+ int get_missed ;
+ int getpid () ;
+ int index_load_time ;
+ int index_size ;
+ int last_reindex_on_low_memory_time ;
+ scalar_t__ malloc_mem ;
+ int max_memory ;
+ int now ;
+ scalar_t__ reindex_on_low_memory ;
+ int sb_memory (TYPE_1__*,int ) ;
+ int sb_prepare (TYPE_1__*,struct connection*,int ,int ) ;
+ int sb_printf (TYPE_1__*,char*,long,...) ;
+ int snapshot_size ;
+ int stats_buff ;
+ int tot_response_bytes ;
+ int tot_response_words ;
+ int total_items ;
+ int wildcard_arrays_allocated ;
+ int wildcard_cache_entries ;
+ int wildcard_cache_memory ;
+ scalar_t__ zalloc_mem ;
 
 int pmemcache_prepare_stats (struct connection *c) {
   stats_buffer_t sb;

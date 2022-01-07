@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sigset_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SIG_BLOCK ; 
- int sigprocmask (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int sigsuspend (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sigset_t ;
+
+
+ int SIG_BLOCK ;
+ int sigprocmask (int ,int *,int *) ;
+ int sigsuspend (int *) ;
 
 int
 __pause(void)
 {
-	sigset_t oset;
+ sigset_t oset;
 
-	if (sigprocmask(SIG_BLOCK, NULL, &oset) == -1)
-		return (-1);
-	return (sigsuspend(&oset));
+ if (sigprocmask(SIG_BLOCK, ((void*)0), &oset) == -1)
+  return (-1);
+ return (sigsuspend(&oset));
 }

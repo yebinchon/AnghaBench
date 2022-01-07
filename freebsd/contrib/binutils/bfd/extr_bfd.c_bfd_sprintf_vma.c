@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bfd_vma ;
-typedef  int /*<<< orphan*/  bfd ;
-struct TYPE_2__ {int /*<<< orphan*/  (* elf_backend_sprintf_vma ) (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- scalar_t__ bfd_get_flavour (int /*<<< orphan*/ *) ; 
- scalar_t__ bfd_target_elf_flavour ; 
- TYPE_1__* get_elf_backend_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sprintf_vma (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int bfd_vma ;
+typedef int bfd ;
+struct TYPE_2__ {int (* elf_backend_sprintf_vma ) (int *,char*,int ) ;} ;
+
+
+ scalar_t__ bfd_get_flavour (int *) ;
+ scalar_t__ bfd_target_elf_flavour ;
+ TYPE_1__* get_elf_backend_data (int *) ;
+ int sprintf_vma (char*,int ) ;
+ int stub1 (int *,char*,int ) ;
 
 void
 bfd_sprintf_vma (bfd *abfd, char *buf, bfd_vma value)

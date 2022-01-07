@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- char* fgets (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ ) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  stdin ; 
- int /*<<< orphan*/  stdout ; 
- int strlen (char*) ; 
+
+
+
+typedef int buf ;
+
+
+ char* fgets (char*,int,int ) ;
+ int fputs (char*,int ) ;
+ char* malloc (int) ;
+ int memcpy (char*,char*,int) ;
+ int stdin ;
+ int stdout ;
+ int strlen (char*) ;
 
 char *prompt(char *p) {
-    // simple read string
+
     static char buf[256];
     fputs(p, stdout);
     char *s = fgets(buf, sizeof(buf), stdin);
     if (!s) {
-        return NULL;
+        return ((void*)0);
     }
     int l = strlen(buf);
     if (buf[l - 1] == '\n') {

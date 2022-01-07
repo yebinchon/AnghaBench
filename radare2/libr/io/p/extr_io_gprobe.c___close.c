@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ data; } ;
-struct TYPE_4__ {int /*<<< orphan*/  gport; } ;
-typedef  TYPE_1__ RIOGprobe ;
-typedef  TYPE_2__ RIODesc ;
+struct TYPE_4__ {int gport; } ;
+typedef TYPE_1__ RIOGprobe ;
+typedef TYPE_2__ RIODesc ;
 
-/* Variables and functions */
- int /*<<< orphan*/  R_FREE (scalar_t__) ; 
- int /*<<< orphan*/  sp_close (int /*<<< orphan*/ *) ; 
+
+ int R_FREE (scalar_t__) ;
+ int sp_close (int *) ;
 
 __attribute__((used)) static int __close (RIODesc *fd) {
-	RIOGprobe *gprobe;
+ RIOGprobe *gprobe;
 
-	if (!fd || !fd->data) {
-		return -1;
-	}
-	gprobe = (RIOGprobe *)fd->data;
+ if (!fd || !fd->data) {
+  return -1;
+ }
+ gprobe = (RIOGprobe *)fd->data;
 
-	sp_close (&gprobe->gport);
-	R_FREE (fd->data);
+ sp_close (&gprobe->gport);
+ R_FREE (fd->data);
 
-	return 0;
+ return 0;
 }

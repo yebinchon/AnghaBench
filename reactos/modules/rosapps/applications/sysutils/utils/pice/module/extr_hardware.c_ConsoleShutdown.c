@@ -1,53 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int ConsoleShutdownHercules () ;
+ int ConsoleShutdownSerial () ;
+ int ConsoleShutdownVga () ;
+ int ENTER_FUNC () ;
+ int KeStallExecutionProcessor (int) ;
+ int LEAVE_FUNC () ;
 
-/* Forward declarations */
 
-/* Type definitions */
 
-/* Variables and functions */
- int /*<<< orphan*/  ConsoleShutdownHercules () ; 
- int /*<<< orphan*/  ConsoleShutdownSerial () ; 
- int /*<<< orphan*/  ConsoleShutdownVga () ; 
- int /*<<< orphan*/  ENTER_FUNC () ; 
- int /*<<< orphan*/  KeStallExecutionProcessor (int) ; 
- int /*<<< orphan*/  LEAVE_FUNC () ; 
-#define  TERMINAL_MODE_HERCULES_GRAPHICS 132 
-#define  TERMINAL_MODE_HERCULES_TEXT 131 
-#define  TERMINAL_MODE_NONE 130 
-#define  TERMINAL_MODE_SERIAL 129 
-#define  TERMINAL_MODE_VGA_TEXT 128 
- int eTerminalMode ; 
+
+
+ int eTerminalMode ;
 
 void ConsoleShutdown(void)
 {
     ENTER_FUNC();
 
-    // sleep for a few seconds
+
     KeStallExecutionProcessor(1000*5000);
 
-	switch(eTerminalMode)
+ switch(eTerminalMode)
     {
-        case TERMINAL_MODE_HERCULES_GRAPHICS:
+        case 132:
             ConsoleShutdownHercules();
             break;
-        case TERMINAL_MODE_HERCULES_TEXT:
+        case 131:
             break;
-        case TERMINAL_MODE_VGA_TEXT:
+        case 128:
             ConsoleShutdownVga();
             break;
-        case TERMINAL_MODE_SERIAL:
+        case 129:
             ConsoleShutdownSerial();
             break;
-        case TERMINAL_MODE_NONE:
+        case 130:
         default:
-            // fail
+
             break;
     }
 

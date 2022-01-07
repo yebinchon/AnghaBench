@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ intparm; } ;
-struct subchannel {struct subchannel* lock; TYPE_1__ config; int /*<<< orphan*/  schid; } ;
+struct subchannel {struct subchannel* lock; TYPE_1__ config; int schid; } ;
 struct device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cio_commit_config (struct subchannel*) ; 
- int /*<<< orphan*/  cio_is_console (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (struct subchannel*) ; 
- struct subchannel* to_subchannel (struct device*) ; 
+
+ int cio_commit_config (struct subchannel*) ;
+ int cio_is_console (int ) ;
+ int kfree (struct subchannel*) ;
+ struct subchannel* to_subchannel (struct device*) ;
 
 __attribute__((used)) static void
 css_subchannel_release(struct device *dev)
 {
-	struct subchannel *sch;
+ struct subchannel *sch;
 
-	sch = to_subchannel(dev);
-	if (!cio_is_console(sch->schid)) {
-		/* Reset intparm to zeroes. */
-		sch->config.intparm = 0;
-		cio_commit_config(sch);
-		kfree(sch->lock);
-		kfree(sch);
-	}
+ sch = to_subchannel(dev);
+ if (!cio_is_console(sch->schid)) {
+
+  sch->config.intparm = 0;
+  cio_commit_config(sch);
+  kfree(sch->lock);
+  kfree(sch);
+ }
 }

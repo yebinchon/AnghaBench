@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_7__ {int channels; unsigned int in_simd_align_mask; unsigned int out_simd_align_mask; int* ch_map; int /*<<< orphan*/  (* conv_f ) (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int const,int const,int /*<<< orphan*/ *) ;int /*<<< orphan*/ * silence; int /*<<< orphan*/  (* simd_f ) (int /*<<< orphan*/ **,int /*<<< orphan*/  const**,int) ;} ;
-struct TYPE_6__ {scalar_t__ planar; int ch_count; int bps; int /*<<< orphan*/ ** ch; } ;
-typedef  TYPE_1__ AudioData ;
-typedef  TYPE_2__ AudioConvert ;
 
-/* Variables and functions */
- int SWR_CH_MAX ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  av_assert1 (int) ; 
- int /*<<< orphan*/  av_assert2 (int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ **,int /*<<< orphan*/  const**,int) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ **,int /*<<< orphan*/  const**,int) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int const,int const,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_7__ {int channels; unsigned int in_simd_align_mask; unsigned int out_simd_align_mask; int* ch_map; int (* conv_f ) (int *,int const*,int const,int const,int *) ;int * silence; int (* simd_f ) (int **,int const**,int) ;} ;
+struct TYPE_6__ {scalar_t__ planar; int ch_count; int bps; int ** ch; } ;
+typedef TYPE_1__ AudioData ;
+typedef TYPE_2__ AudioConvert ;
+
+
+ int SWR_CH_MAX ;
+ int av_assert0 (int) ;
+ int av_assert1 (int) ;
+ int av_assert2 (int) ;
+ int stub1 (int **,int const**,int) ;
+ int stub2 (int **,int const**,int) ;
+ int stub3 (int *,int const*,int const,int const,int *) ;
 
 int swri_audio_convert(AudioConvert *ctx, AudioData *out, AudioData *in, int len)
 {
@@ -51,7 +51,7 @@ int swri_audio_convert(AudioConvert *ctx, AudioData *out, AudioData *in, int len
         misaligned |= m & ctx->out_simd_align_mask;
     }
 
-    //FIXME optimize common cases
+
 
     if(ctx->simd_f && !ctx->ch_map && !misaligned){
         off = len&~15;
@@ -76,7 +76,7 @@ int swri_audio_convert(AudioConvert *ctx, AudioData *out, AudioData *in, int len
         const int ich= ctx->ch_map ? ctx->ch_map[ch] : ch;
         const int is= ich < 0 ? 0 : (in->planar ? 1 : in->ch_count) * in->bps;
         const uint8_t *pi= ich < 0 ? ctx->silence : in->ch[ich];
-        uint8_t       *po= out->ch[ch];
+        uint8_t *po= out->ch[ch];
         uint8_t *end= po + os*len;
         if(!po)
             continue;

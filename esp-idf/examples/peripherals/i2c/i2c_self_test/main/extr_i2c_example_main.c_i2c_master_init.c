@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  clk_speed; } ;
-struct TYPE_5__ {int /*<<< orphan*/  mode; TYPE_1__ master; void* scl_pullup_en; int /*<<< orphan*/  scl_io_num; void* sda_pullup_en; int /*<<< orphan*/  sda_io_num; } ;
-typedef  TYPE_2__ i2c_config_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- void* GPIO_PULLUP_ENABLE ; 
- int /*<<< orphan*/  I2C_MASTER_FREQ_HZ ; 
- int I2C_MASTER_NUM ; 
- int /*<<< orphan*/  I2C_MASTER_RX_BUF_DISABLE ; 
- int /*<<< orphan*/  I2C_MASTER_SCL_IO ; 
- int /*<<< orphan*/  I2C_MASTER_SDA_IO ; 
- int /*<<< orphan*/  I2C_MASTER_TX_BUF_DISABLE ; 
- int /*<<< orphan*/  I2C_MODE_MASTER ; 
- int /*<<< orphan*/  i2c_driver_install (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_param_config (int,TYPE_2__*) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int clk_speed; } ;
+struct TYPE_5__ {int mode; TYPE_1__ master; void* scl_pullup_en; int scl_io_num; void* sda_pullup_en; int sda_io_num; } ;
+typedef TYPE_2__ i2c_config_t ;
+typedef int esp_err_t ;
+
+
+ void* GPIO_PULLUP_ENABLE ;
+ int I2C_MASTER_FREQ_HZ ;
+ int I2C_MASTER_NUM ;
+ int I2C_MASTER_RX_BUF_DISABLE ;
+ int I2C_MASTER_SCL_IO ;
+ int I2C_MASTER_SDA_IO ;
+ int I2C_MASTER_TX_BUF_DISABLE ;
+ int I2C_MODE_MASTER ;
+ int i2c_driver_install (int,int ,int ,int ,int ) ;
+ int i2c_param_config (int,TYPE_2__*) ;
 
 __attribute__((used)) static esp_err_t i2c_master_init(void)
 {

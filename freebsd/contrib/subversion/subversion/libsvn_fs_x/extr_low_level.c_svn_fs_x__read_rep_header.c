@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {char* data; scalar_t__ len; } ;
-typedef  TYPE_1__ svn_stringbuf_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-struct TYPE_7__ {scalar_t__ base_length; scalar_t__ base_item_index; int /*<<< orphan*/  base_revision; int /*<<< orphan*/  type; scalar_t__ header_size; } ;
-typedef  TYPE_2__ svn_fs_x__rep_header_t ;
-typedef  scalar_t__ svn_filesize_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  scalar_t__ apr_off_t ;
-typedef  scalar_t__ apr_int64_t ;
+typedef TYPE_1__ svn_stringbuf_t ;
+typedef int svn_stream_t ;
+struct TYPE_7__ {scalar_t__ base_length; scalar_t__ base_item_index; int base_revision; int type; scalar_t__ header_size; } ;
+typedef TYPE_2__ svn_fs_x__rep_header_t ;
+typedef scalar_t__ svn_filesize_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef scalar_t__ apr_off_t ;
+typedef scalar_t__ apr_int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  REP_DELTA ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_FS_CORRUPT ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- TYPE_2__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  parse_revnum (int /*<<< orphan*/ *,char const**) ; 
- scalar_t__ strcmp (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_cstring_atoi64 (scalar_t__*,char*) ; 
- char* svn_cstring_tokenize (char*,char**) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_fs_x__rep_delta ; 
- int /*<<< orphan*/  svn_fs_x__rep_self_delta ; 
- int /*<<< orphan*/  svn_stream_readline (int /*<<< orphan*/ *,TYPE_1__**,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int REP_DELTA ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_FS_CORRUPT ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ TYPE_2__* apr_pcalloc (int *,int) ;
+ int parse_revnum (int *,char const**) ;
+ scalar_t__ strcmp (char*,int ) ;
+ int svn_cstring_atoi64 (scalar_t__*,char*) ;
+ char* svn_cstring_tokenize (char*,char**) ;
+ int * svn_error_createf (int ,int *,int ) ;
+ int svn_fs_x__rep_delta ;
+ int svn_fs_x__rep_self_delta ;
+ int svn_stream_readline (int *,TYPE_1__**,char*,int *,int *) ;
 
 svn_error_t *
 svn_fs_x__read_rep_header(svn_fs_x__rep_header_t **header,
@@ -58,14 +58,14 @@ svn_fs_x__read_rep_header(svn_fs_x__rep_header_t **header,
   (*header)->header_size = buffer->len + 1;
   if (strcmp(buffer->data, REP_DELTA) == 0)
     {
-      /* This is a delta against the empty stream. */
+
       (*header)->type = svn_fs_x__rep_self_delta;
       return SVN_NO_ERROR;
     }
 
   (*header)->type = svn_fs_x__rep_delta;
 
-  /* We have hopefully a DELTA vs. a non-empty base revision. */
+
   last_str = buffer->data;
   str = svn_cstring_tokenize(" ", &last_str);
   if (! str || (strcmp(str, REP_DELTA) != 0))
@@ -88,6 +88,6 @@ svn_fs_x__read_rep_header(svn_fs_x__rep_header_t **header,
   return SVN_NO_ERROR;
 
  error:
-  return svn_error_createf(SVN_ERR_FS_CORRUPT, NULL,
+  return svn_error_createf(SVN_ERR_FS_CORRUPT, ((void*)0),
                            _("Malformed representation header"));
 }

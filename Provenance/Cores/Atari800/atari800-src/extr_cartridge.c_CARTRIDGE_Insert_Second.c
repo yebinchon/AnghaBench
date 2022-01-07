@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CARTRIDGE_Remove_Second () ; 
- int /*<<< orphan*/  CARTRIDGE_piggyback ; 
- int InsertCartridge (char const*,int /*<<< orphan*/ *) ; 
+ int CARTRIDGE_Remove_Second () ;
+ int CARTRIDGE_piggyback ;
+ int InsertCartridge (char const*,int *) ;
 
 int CARTRIDGE_Insert_Second(const char *filename)
 {
-	/* remove currently inserted cart */
-	CARTRIDGE_Remove_Second();
-	return InsertCartridge(filename, &CARTRIDGE_piggyback);
+
+ CARTRIDGE_Remove_Second();
+ return InsertCartridge(filename, &CARTRIDGE_piggyback);
 }

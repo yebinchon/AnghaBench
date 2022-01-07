@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  list_t ;
-typedef  int /*<<< orphan*/  list_node_t ;
-struct TYPE_5__ {int /*<<< orphan*/  key; TYPE_1__* hash_map; } ;
-typedef  TYPE_2__ hash_map_entry_t ;
-struct TYPE_4__ {scalar_t__ (* keys_are_equal ) (int /*<<< orphan*/ ,void const*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * list_begin (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const* list_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * list_next (int /*<<< orphan*/  const*) ; 
- scalar_t__ list_node (int /*<<< orphan*/  const*) ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ,void const*) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int list_t ;
+typedef int list_node_t ;
+struct TYPE_5__ {int key; TYPE_1__* hash_map; } ;
+typedef TYPE_2__ hash_map_entry_t ;
+struct TYPE_4__ {scalar_t__ (* keys_are_equal ) (int ,void const*) ;} ;
+
+
+ int * list_begin (int *) ;
+ int const* list_end (int *) ;
+ int * list_next (int const*) ;
+ scalar_t__ list_node (int const*) ;
+ scalar_t__ stub1 (int ,void const*) ;
 
 __attribute__((used)) static hash_map_entry_t *find_bucket_entry_(list_t *hash_bucket_list,
         const void *key)
 {
 
-    if (hash_bucket_list == NULL) {
-        return NULL;
+    if (hash_bucket_list == ((void*)0)) {
+        return ((void*)0);
     }
 
     for (const list_node_t *iter = list_begin(hash_bucket_list);
@@ -41,5 +41,5 @@ __attribute__((used)) static hash_map_entry_t *find_bucket_entry_(list_t *hash_b
             return hash_map_entry;
         }
     }
-    return NULL;
+    return ((void*)0);
 }

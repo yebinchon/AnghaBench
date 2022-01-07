@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct au_class_ent {int /*<<< orphan*/  ac_class; int /*<<< orphan*/  ac_desc; int /*<<< orphan*/  ac_name; } ;
 
-/* Variables and functions */
- scalar_t__ AU_CLASS_DESC_MAX ; 
- scalar_t__ AU_CLASS_NAME_MAX ; 
- int /*<<< orphan*/  classdelim ; 
- int /*<<< orphan*/  strlcpy (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- scalar_t__ strlen (char*) ; 
- char* strtok_r (char*,int /*<<< orphan*/ ,char**) ; 
- int /*<<< orphan*/  strtoul (char*,char**,int /*<<< orphan*/ ) ; 
+
+
+
+struct au_class_ent {int ac_class; int ac_desc; int ac_name; } ;
+
+
+ scalar_t__ AU_CLASS_DESC_MAX ;
+ scalar_t__ AU_CLASS_NAME_MAX ;
+ int classdelim ;
+ int strlcpy (int ,char*,scalar_t__) ;
+ scalar_t__ strlen (char*) ;
+ char* strtok_r (char*,int ,char**) ;
+ int strtoul (char*,char**,int ) ;
 
 __attribute__((used)) static struct au_class_ent *
 classfromstr(char *str, struct au_class_ent *c)
 {
-	char *classname, *classdesc, *classflag;
-	char *last;
+ char *classname, *classdesc, *classflag;
+ char *last;
 
-	/* Each line contains flag:name:desc. */
-	classflag = strtok_r(str, classdelim, &last);
-	classname = strtok_r(NULL, classdelim, &last);
-	classdesc = strtok_r(NULL, classdelim, &last);
 
-	if ((classflag == NULL) || (classname == NULL) || (classdesc == NULL))
-		return (NULL);
+ classflag = strtok_r(str, classdelim, &last);
+ classname = strtok_r(((void*)0), classdelim, &last);
+ classdesc = strtok_r(((void*)0), classdelim, &last);
 
-	/*
-	 * Check for very large classnames.
-	 */
-	if (strlen(classname) >= AU_CLASS_NAME_MAX)
-		return (NULL);
-	strlcpy(c->ac_name, classname, AU_CLASS_NAME_MAX);
+ if ((classflag == ((void*)0)) || (classname == ((void*)0)) || (classdesc == ((void*)0)))
+  return (((void*)0));
 
-	/*
-	 * Check for very large class description.
-	 */
-	if (strlen(classdesc) >= AU_CLASS_DESC_MAX)
-		return (NULL);
-	strlcpy(c->ac_desc, classdesc, AU_CLASS_DESC_MAX);
-	c->ac_class = strtoul(classflag, (char **) NULL, 0);
 
-	return (c);
+
+
+ if (strlen(classname) >= AU_CLASS_NAME_MAX)
+  return (((void*)0));
+ strlcpy(c->ac_name, classname, AU_CLASS_NAME_MAX);
+
+
+
+
+ if (strlen(classdesc) >= AU_CLASS_DESC_MAX)
+  return (((void*)0));
+ strlcpy(c->ac_desc, classdesc, AU_CLASS_DESC_MAX);
+ c->ac_class = strtoul(classflag, (char **) ((void*)0), 0);
+
+ return (c);
 }

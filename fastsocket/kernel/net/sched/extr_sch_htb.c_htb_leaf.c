@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {struct Qdisc* q; } ;
 struct TYPE_4__ {TYPE_1__ leaf; } ;
-struct htb_class {TYPE_2__ un; int /*<<< orphan*/  level; } ;
+struct htb_class {TYPE_2__ un; int level; } ;
 struct Qdisc {int dummy; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static struct Qdisc *htb_leaf(struct Qdisc *sch, unsigned long arg)
 {
-	struct htb_class *cl = (struct htb_class *)arg;
-	return !cl->level ? cl->un.leaf.q : NULL;
+ struct htb_class *cl = (struct htb_class *)arg;
+ return !cl->level ? cl->un.leaf.q : ((void*)0);
 }

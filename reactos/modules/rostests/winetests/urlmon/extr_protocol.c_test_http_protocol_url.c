@@ -1,103 +1,103 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  scalar_t__ ULONG ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IInternetProtocolInfo ;
-typedef  int /*<<< orphan*/  IClassFactory ;
-typedef  scalar_t__ HRESULT ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int BINDF_FROMURLMON ; 
- int BINDINFO_OPTIONS_DISABLEAUTOREDIRECTS ; 
- int /*<<< orphan*/  CHECK_CALLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CHECK_NOT_CALLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CLEAR_CALLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_HttpProtocol ; 
- int /*<<< orphan*/  CLSID_HttpSProtocol ; 
- scalar_t__ CoGetClassObject (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int DeleteUrlCacheEntryW (int /*<<< orphan*/ ) ; 
- scalar_t__ E_ABORT ; 
- scalar_t__ E_NOINTERFACE ; 
- scalar_t__ E_PENDING ; 
- scalar_t__ FAILED (scalar_t__) ; 
- scalar_t__ GetLastError () ; 
- int HTTPS_TEST ; 
- int HTTP_TEST ; 
- scalar_t__ IClassFactory_CreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IClassFactory_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IClassFactory ; 
- int /*<<< orphan*/  IID_IInternetProtocol ; 
- int /*<<< orphan*/  IID_IInternetProtocolInfo ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- scalar_t__ IInternetProtocol_Abort (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ IInternetProtocol_Read (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int*) ; 
- scalar_t__ IInternetProtocol_Release (int /*<<< orphan*/ ) ; 
- scalar_t__ INET_E_REDIRECT_FAILED ; 
- scalar_t__ INET_E_RESULT_DISPATCHED ; 
- scalar_t__ IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OnResponse ; 
- int /*<<< orphan*/  QueryService_HttpSecurity ; 
- int /*<<< orphan*/  ReportData ; 
- int /*<<< orphan*/  ReportProgress_CACHEFILENAMEAVAILABLE ; 
- int /*<<< orphan*/  ReportProgress_CONNECTING ; 
- int /*<<< orphan*/  ReportProgress_COOKIE_SENT ; 
- int /*<<< orphan*/  ReportProgress_FINDINGRESOURCE ; 
- int /*<<< orphan*/  ReportProgress_PROXYDETECTING ; 
- int /*<<< orphan*/  ReportProgress_RAWMIMETYPE ; 
- int /*<<< orphan*/  ReportProgress_REDIRECTING ; 
- int /*<<< orphan*/  ReportProgress_SENDINGREQUEST ; 
- int /*<<< orphan*/  ReportResult ; 
- int /*<<< orphan*/  SET_EXPECT (int /*<<< orphan*/ ) ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_FALSE ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SetEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Switch ; 
- int TEST_DISABLEAUTOREDIRECT ; 
- int TEST_FROMCACHE ; 
- int TEST_USEIURI ; 
- scalar_t__ WAIT_OBJECT_0 ; 
- scalar_t__ WaitForSingleObject (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  async_protocol ; 
- scalar_t__ bind_from_cache ; 
- int bindf ; 
- int bindinfo_options ; 
- int /*<<< orphan*/  call_continue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  continue_protdata ; 
- int /*<<< orphan*/  create_cache_entry (int /*<<< orphan*/ ) ; 
- scalar_t__ direct_read ; 
- int /*<<< orphan*/  event_complete ; 
- int /*<<< orphan*/  event_continue ; 
- int /*<<< orphan*/  event_continue_done ; 
- scalar_t__ expect_hrResult ; 
- scalar_t__ http_is_first ; 
- int http_post_test ; 
- int /*<<< orphan*/  http_protocol_start (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  http_url ; 
- int /*<<< orphan*/  init_test (int,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ test_abort ; 
- int /*<<< orphan*/  test_priority (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_protocol_terminate (int /*<<< orphan*/ ) ; 
- scalar_t__ test_redirect ; 
- scalar_t__ wait_for_switch ; 
+
+
+
+typedef int buf ;
+typedef scalar_t__ ULONG ;
+typedef int LPCWSTR ;
+typedef int IUnknown ;
+typedef int IInternetProtocolInfo ;
+typedef int IClassFactory ;
+typedef scalar_t__ HRESULT ;
+typedef int DWORD ;
+typedef int BYTE ;
+typedef int BOOL ;
+
+
+ int BINDF_FROMURLMON ;
+ int BINDINFO_OPTIONS_DISABLEAUTOREDIRECTS ;
+ int CHECK_CALLED (int ) ;
+ int CHECK_NOT_CALLED (int ) ;
+ int CLEAR_CALLED (int ) ;
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_HttpProtocol ;
+ int CLSID_HttpSProtocol ;
+ scalar_t__ CoGetClassObject (int *,int ,int *,int *,void**) ;
+ int DeleteUrlCacheEntryW (int ) ;
+ scalar_t__ E_ABORT ;
+ scalar_t__ E_NOINTERFACE ;
+ scalar_t__ E_PENDING ;
+ scalar_t__ FAILED (scalar_t__) ;
+ scalar_t__ GetLastError () ;
+ int HTTPS_TEST ;
+ int HTTP_TEST ;
+ scalar_t__ IClassFactory_CreateInstance (int *,int *,int *,void**) ;
+ int IClassFactory_Release (int *) ;
+ int IID_IClassFactory ;
+ int IID_IInternetProtocol ;
+ int IID_IInternetProtocolInfo ;
+ int IID_IUnknown ;
+ scalar_t__ IInternetProtocol_Abort (int ,scalar_t__,int ) ;
+ scalar_t__ IInternetProtocol_Read (int ,int *,int,int*) ;
+ scalar_t__ IInternetProtocol_Release (int ) ;
+ scalar_t__ INET_E_REDIRECT_FAILED ;
+ scalar_t__ INET_E_RESULT_DISPATCHED ;
+ scalar_t__ IUnknown_QueryInterface (int *,int *,void**) ;
+ int IUnknown_Release (int *) ;
+ int OnResponse ;
+ int QueryService_HttpSecurity ;
+ int ReportData ;
+ int ReportProgress_CACHEFILENAMEAVAILABLE ;
+ int ReportProgress_CONNECTING ;
+ int ReportProgress_COOKIE_SENT ;
+ int ReportProgress_FINDINGRESOURCE ;
+ int ReportProgress_PROXYDETECTING ;
+ int ReportProgress_RAWMIMETYPE ;
+ int ReportProgress_REDIRECTING ;
+ int ReportProgress_SENDINGREQUEST ;
+ int ReportResult ;
+ int SET_EXPECT (int ) ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_FALSE ;
+ scalar_t__ S_OK ;
+ int SetEvent (int ) ;
+ int Switch ;
+ int TEST_DISABLEAUTOREDIRECT ;
+ int TEST_FROMCACHE ;
+ int TEST_USEIURI ;
+ scalar_t__ WAIT_OBJECT_0 ;
+ scalar_t__ WaitForSingleObject (int ,int) ;
+ int async_protocol ;
+ scalar_t__ bind_from_cache ;
+ int bindf ;
+ int bindinfo_options ;
+ int call_continue (int *) ;
+ int continue_protdata ;
+ int create_cache_entry (int ) ;
+ scalar_t__ direct_read ;
+ int event_complete ;
+ int event_continue ;
+ int event_continue_done ;
+ scalar_t__ expect_hrResult ;
+ scalar_t__ http_is_first ;
+ int http_post_test ;
+ int http_protocol_start (int ,int) ;
+ int http_url ;
+ int init_test (int,int) ;
+ int ok (int,char*,...) ;
+ scalar_t__ test_abort ;
+ int test_priority (int ) ;
+ int test_protocol_terminate (int ) ;
+ scalar_t__ test_redirect ;
+ scalar_t__ wait_for_switch ;
 
 __attribute__((used)) static void test_http_protocol_url(LPCWSTR url, int prot, DWORD flags, DWORD tymed)
 {
@@ -113,7 +113,7 @@ __attribute__((used)) static void test_http_protocol_url(LPCWSTR url, int prot, 
         create_cache_entry(url);
 
     hres = CoGetClassObject(prot == HTTPS_TEST ? &CLSID_HttpSProtocol : &CLSID_HttpProtocol,
-            CLSCTX_INPROC_SERVER, NULL, &IID_IUnknown, (void**)&unk);
+            CLSCTX_INPROC_SERVER, ((void*)0), &IID_IUnknown, (void**)&unk);
     ok(hres == S_OK, "CoGetClassObject failed: %08x\n", hres);
     if(FAILED(hres))
         return;
@@ -129,7 +129,7 @@ __attribute__((used)) static void test_http_protocol_url(LPCWSTR url, int prot, 
     if(FAILED(hres))
         return;
 
-    hres = IClassFactory_CreateInstance(factory, NULL, &IID_IInternetProtocol,
+    hres = IClassFactory_CreateInstance(factory, ((void*)0), &IID_IInternetProtocol,
                                         (void**)&async_protocol);
     ok(hres == S_OK, "Could not get IInternetProtocol: %08x\n", hres);
     if(SUCCEEDED(hres)) {
@@ -180,7 +180,7 @@ __attribute__((used)) static void test_http_protocol_url(LPCWSTR url, int prot, 
             SET_EXPECT(Switch);
             while(wait_for_switch) {
                 ok( WaitForSingleObject(event_continue, 90000) == WAIT_OBJECT_0, "wait timed out\n" );
-                CHECK_CALLED(Switch); /* Set in ReportData */
+                CHECK_CALLED(Switch);
                 call_continue(&continue_protdata);
                 SetEvent(event_continue_done);
             }
@@ -235,7 +235,7 @@ __attribute__((used)) static void test_http_protocol_url(LPCWSTR url, int prot, 
                         CHECK_CALLED(ReportResult);
 
                         hres = IInternetProtocol_Abort(async_protocol, E_ABORT, 0);
-                        ok(hres == INET_E_RESULT_DISPATCHED || hres == S_OK /* IE10 */, "Abort failed: %08x\n", hres);
+                        ok(hres == INET_E_RESULT_DISPATCHED || hres == S_OK , "Abort failed: %08x\n", hres);
                         break;
                     }
                 }else {
@@ -258,7 +258,7 @@ __attribute__((used)) static void test_http_protocol_url(LPCWSTR url, int prot, 
             CLEAR_CALLED(ReportProgress_COOKIE_SENT);
 
         hres = IInternetProtocol_Abort(async_protocol, E_ABORT, 0);
-        ok(hres == INET_E_RESULT_DISPATCHED || hres == S_OK /* IE10 */, "Abort failed: %08x\n", hres);
+        ok(hres == INET_E_RESULT_DISPATCHED || hres == S_OK , "Abort failed: %08x\n", hres);
 
         test_protocol_terminate(async_protocol);
 

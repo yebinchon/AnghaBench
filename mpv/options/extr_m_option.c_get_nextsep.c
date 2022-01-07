@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bstr {char* start; int len; } ;
 
-/* Variables and functions */
- struct bstr bstr_cut (struct bstr,int) ; 
- struct bstr bstr_splice (struct bstr,int /*<<< orphan*/ ,char*) ; 
- int bstrchr (struct bstr,char) ; 
- int /*<<< orphan*/  memmove (char*,char*,int) ; 
+
+ struct bstr bstr_cut (struct bstr,int) ;
+ struct bstr bstr_splice (struct bstr,int ,char*) ;
+ int bstrchr (struct bstr,char) ;
+ int memmove (char*,char*,int) ;
 
 __attribute__((used)) static struct bstr get_nextsep(struct bstr *ptr, char sep, bool modify)
 {

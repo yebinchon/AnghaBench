@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct bwriter_shader {int num_inputs; TYPE_1__* inputs; } ;
 struct bc_writer {int* v_regnum; int* t_regnum; } ;
-struct TYPE_2__ {int usage; int usage_idx; int writemask; int regnum; int /*<<< orphan*/  builtin; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
+struct TYPE_2__ {int usage; int usage_idx; int writemask; int regnum; int builtin; } ;
+typedef int HRESULT ;
+typedef int DWORD ;
 
-/* Variables and functions */
-#define  BWRITERDECLUSAGE_COLOR 129 
-#define  BWRITERDECLUSAGE_TEXCOORD 128 
- int BWRITERSP_WRITEMASK_0 ; 
- int BWRITERSP_WRITEMASK_1 ; 
- int BWRITERSP_WRITEMASK_2 ; 
- int BWRITERSP_WRITEMASK_ALL ; 
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int,int) ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
+
+
+
+ int BWRITERSP_WRITEMASK_0 ;
+ int BWRITERSP_WRITEMASK_1 ;
+ int BWRITERSP_WRITEMASK_2 ;
+ int BWRITERSP_WRITEMASK_ALL ;
+ int E_INVALIDARG ;
+ int S_OK ;
+ int TRACE (char*,int,int) ;
+ int WARN (char*,...) ;
 
 __attribute__((used)) static HRESULT find_ps_builtin_semantics(struct bc_writer *This,
                                          const struct bwriter_shader *shader,
@@ -47,7 +47,7 @@ __attribute__((used)) static HRESULT find_ps_builtin_semantics(struct bc_writer 
         regnum = shader->inputs[i].regnum;
 
         switch(usage) {
-            case BWRITERDECLUSAGE_COLOR:
+            case 129:
                 if(usage_idx > 1) {
                     WARN("dcl_color%u not supported in sm 1 shaders\n", usage_idx);
                     return E_INVALIDARG;
@@ -60,7 +60,7 @@ __attribute__((used)) static HRESULT find_ps_builtin_semantics(struct bc_writer 
                 This->v_regnum[usage_idx] = regnum;
                 break;
 
-            case BWRITERDECLUSAGE_TEXCOORD:
+            case 128:
                 if(usage_idx > texcoords) {
                     WARN("dcl_texcoord%u not supported in this shader version\n", usage_idx);
                     return E_INVALIDARG;

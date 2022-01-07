@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  msi_dialog ;
-struct TYPE_5__ {int /*<<< orphan*/  hwnd; } ;
-typedef  TYPE_1__ msi_control ;
-typedef  int /*<<< orphan*/  lvc ;
-typedef  char WCHAR ;
-struct TYPE_6__ {int mask; char* pszText; int /*<<< orphan*/  cx; } ;
-typedef  int /*<<< orphan*/  MSIRECORD ;
-typedef  TYPE_2__ LVCOLUMNW ;
-typedef  int LPCWSTR ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int LVCF_SUBITEM ; 
- int LVCF_TEXT ; 
- int LVCF_WIDTH ; 
- int /*<<< orphan*/  LVM_INSERTCOLUMNW ; 
- int MSI_RecordGetString (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_2__*,int) ; 
- int /*<<< orphan*/  atolW (char*) ; 
- int /*<<< orphan*/ * column_keys ; 
- int /*<<< orphan*/  lstrcpynW (char*,int,int) ; 
- char* msi_alloc (int) ; 
- char* msi_dialog_get_uitext (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msi_free (char*) ; 
- int /*<<< orphan*/  str_is_number (char*) ; 
- int strchrW (int,char) ; 
- int /*<<< orphan*/  strcmpW (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strncmpW (char*,char const*,int) ; 
- int /*<<< orphan*/  szZero ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int msi_dialog ;
+struct TYPE_5__ {int hwnd; } ;
+typedef TYPE_1__ msi_control ;
+typedef int lvc ;
+typedef char WCHAR ;
+struct TYPE_6__ {int mask; char* pszText; int cx; } ;
+typedef int MSIRECORD ;
+typedef TYPE_2__ LVCOLUMNW ;
+typedef int LPCWSTR ;
+typedef int LPARAM ;
+typedef int DWORD ;
+
+
+ int LVCF_SUBITEM ;
+ int LVCF_TEXT ;
+ int LVCF_WIDTH ;
+ int LVM_INSERTCOLUMNW ;
+ int MSI_RecordGetString (int *,int) ;
+ int SendMessageW (int ,int ,int ,int ) ;
+ int ZeroMemory (TYPE_2__*,int) ;
+ int atolW (char*) ;
+ int * column_keys ;
+ int lstrcpynW (char*,int,int) ;
+ char* msi_alloc (int) ;
+ char* msi_dialog_get_uitext (int *,int ) ;
+ int msi_free (char*) ;
+ int str_is_number (char*) ;
+ int strchrW (int,char) ;
+ int strcmpW (char*,int ) ;
+ int strncmpW (char*,char const*,int) ;
+ int szZero ;
 
 __attribute__((used)) static void msi_dialog_vcl_add_columns( msi_dialog *dialog, msi_control *control, MSIRECORD *rec )
 {
@@ -68,7 +68,7 @@ __attribute__((used)) static void msi_dialog_vcl_add_columns( msi_dialog *dialog
         lstrcpynW( num, begin + 1, end - begin );
         begin += end - begin + 1;
 
-        /* empty braces or '0' hides the column */ 
+
         if ( !num[0] || !strcmpW( num, szZero ) )
         {
             count++;
@@ -76,9 +76,9 @@ __attribute__((used)) static void msi_dialog_vcl_add_columns( msi_dialog *dialog
             continue;
         }
 
-        /* the width must be a positive number
-         * if a width is invalid, all remaining columns are hidden
-         */
+
+
+
         if ( !strncmpW( num, negative, 1 ) || !str_is_number( num ) ) {
             msi_free( num );
             return;
@@ -89,7 +89,7 @@ __attribute__((used)) static void msi_dialog_vcl_add_columns( msi_dialog *dialog
         lvc.cx = atolW( num );
         lvc.pszText = msi_dialog_get_uitext( dialog, column_keys[count] );
 
-        SendMessageW( control->hwnd,  LVM_INSERTCOLUMNW, count++, (LPARAM)&lvc );
+        SendMessageW( control->hwnd, LVM_INSERTCOLUMNW, count++, (LPARAM)&lvc );
         msi_free( lvc.pszText );
         msi_free( num );
     }

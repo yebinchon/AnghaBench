@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IInternetZoneManager ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_INVALIDARG ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IInternetZoneManager_CreateZoneEnumerator (int /*<<< orphan*/ *,scalar_t__*,scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IInternetZoneManager_DestroyZoneEnumerator (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  IInternetZoneManager_GetZoneAt (int /*<<< orphan*/ *,scalar_t__,scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  IInternetZoneManager_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,...) ; 
- int /*<<< orphan*/  pCoInternetCreateZoneManager (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trace (char*) ; 
+
+
+
+typedef int IInternetZoneManager ;
+typedef int HRESULT ;
+typedef scalar_t__ DWORD ;
+
+
+ int E_INVALIDARG ;
+ scalar_t__ FAILED (int ) ;
+ int IInternetZoneManager_CreateZoneEnumerator (int *,scalar_t__*,scalar_t__*,int ) ;
+ int IInternetZoneManager_DestroyZoneEnumerator (int *,scalar_t__) ;
+ int IInternetZoneManager_GetZoneAt (int *,scalar_t__,scalar_t__,scalar_t__*) ;
+ int IInternetZoneManager_Release (int *) ;
+ int S_OK ;
+ int ok (int,char*,scalar_t__,...) ;
+ int pCoInternetCreateZoneManager (int *,int **,int ) ;
+ int trace (char*) ;
 
 __attribute__((used)) static void test_GetZoneAt(void)
 {
-    IInternetZoneManager *zonemgr = NULL;
+    IInternetZoneManager *zonemgr = ((void*)0);
     HRESULT hr;
     DWORD dwEnum;
     DWORD dwCount;
@@ -37,7 +37,7 @@ __attribute__((used)) static void test_GetZoneAt(void)
 
     trace("testing GetZoneAt...\n");
 
-    hr = pCoInternetCreateZoneManager(NULL, &zonemgr, 0);
+    hr = pCoInternetCreateZoneManager(((void*)0), &zonemgr, 0);
     ok(hr == S_OK, "CoInternetCreateZoneManager result: 0x%x\n", hr);
     if (FAILED(hr))
         return;
@@ -47,8 +47,8 @@ __attribute__((used)) static void test_GetZoneAt(void)
         goto cleanup;
 
     if (0) {
-        /* this crashes with native urlmon */
-        IInternetZoneManager_GetZoneAt(zonemgr, dwEnum, 0, NULL);
+
+        IInternetZoneManager_GetZoneAt(zonemgr, dwEnum, 0, ((void*)0));
     }
 
     dwZone = 0xdeadbeef;
@@ -64,7 +64,7 @@ __attribute__((used)) static void test_GetZoneAt(void)
     }
 
     dwZone = 0xdeadbeef;
-    /* MSDN (index .. must be .. less than or equal to) is wrong */
+
     hr = IInternetZoneManager_GetZoneAt(zonemgr, dwEnum, dwCount, &dwZone);
     ok(hr == E_INVALIDARG,
         "got 0x%x with 0x%x (expected E_INVALIDARG)\n", hr, dwZone);

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_gl_info {scalar_t__* supported; } ;
 struct wined3d_context {struct wined3d_gl_info* gl_info; } ;
-struct wined3d_bo_address {int /*<<< orphan*/ * addr; scalar_t__ buffer_object; } ;
-typedef  int /*<<< orphan*/  GLintptr ;
-typedef  int /*<<< orphan*/  GLenum ;
-typedef  int /*<<< orphan*/  BYTE ;
+struct wined3d_bo_address {int * addr; scalar_t__ buffer_object; } ;
+typedef int GLintptr ;
+typedef int GLenum ;
+typedef int BYTE ;
 
-/* Variables and functions */
- size_t ARB_COPY_BUFFER ; 
- int /*<<< orphan*/  GL_COPY_READ_BUFFER ; 
- int /*<<< orphan*/  GL_COPY_WRITE_BUFFER ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WINED3D_MAP_READ ; 
- int /*<<< orphan*/  WINED3D_MAP_WRITE ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- int /*<<< orphan*/  context_bind_bo (struct wined3d_context*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/ * context_map_bo_address (struct wined3d_context*,struct wined3d_bo_address const*,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  context_unmap_bo_address (struct wined3d_context*,struct wined3d_bo_address const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glBindBuffer (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  glBufferSubData (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glCopyBufferSubData (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  glGetBufferSubData (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
+
+ size_t ARB_COPY_BUFFER ;
+ int GL_COPY_READ_BUFFER ;
+ int GL_COPY_WRITE_BUFFER ;
+ int GL_EXTCALL (int ) ;
+ int WINED3D_MAP_READ ;
+ int WINED3D_MAP_WRITE ;
+ int checkGLcall (char*) ;
+ int context_bind_bo (struct wined3d_context*,int ,scalar_t__) ;
+ int * context_map_bo_address (struct wined3d_context*,struct wined3d_bo_address const*,size_t,int ,int ) ;
+ int context_unmap_bo_address (struct wined3d_context*,struct wined3d_bo_address const*,int ) ;
+ int glBindBuffer (int ,scalar_t__) ;
+ int glBufferSubData (int ,int ,size_t,int *) ;
+ int glCopyBufferSubData (int ,int ,int ,int ,size_t) ;
+ int glGetBufferSubData (int ,int ,size_t,int *) ;
+ int memcpy (int *,int *,size_t) ;
 
 void context_copy_bo_address(struct wined3d_context *context,
         const struct wined3d_bo_address *dst, GLenum dst_binding,

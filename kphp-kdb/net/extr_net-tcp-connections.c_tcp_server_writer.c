@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct raw_message {int total_bytes; } ;
 struct iovec {int dummy; } ;
 struct connection {scalar_t__ status; int flags; int write_low_watermark; int fd; TYPE_1__* type; scalar_t__ crypto; struct raw_message out; struct raw_message out_p; } ;
-struct TYPE_2__ {scalar_t__ (* crypto_encrypt_output ) (struct connection*) ;int /*<<< orphan*/  (* ready_to_write ) (struct connection*) ;} ;
+struct TYPE_2__ {scalar_t__ (* crypto_encrypt_output ) (struct connection*) ;int (* ready_to_write ) (struct connection*) ;} ;
 
-/* Variables and functions */
- int C_FAILED ; 
- int C_NOWR ; 
- int C_WANTRD ; 
- int C_WANTWR ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ conn_connecting ; 
- scalar_t__ conn_write_close ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,int,int) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  rwm_fetch_data (struct raw_message*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ stub1 (struct connection*) ; 
- int /*<<< orphan*/  stub2 (struct connection*) ; 
- scalar_t__ stub3 (struct connection*) ; 
- int tcp_prepare_iovec (struct iovec*,int*,int,struct raw_message*) ; 
- scalar_t__ verbosity ; 
- int writev (int,struct iovec*,int) ; 
+
+ int C_FAILED ;
+ int C_NOWR ;
+ int C_WANTRD ;
+ int C_WANTWR ;
+ int assert (int) ;
+ scalar_t__ conn_connecting ;
+ scalar_t__ conn_write_close ;
+ int fprintf (int ,char*,int,int,int,int) ;
+ int perror (char*) ;
+ int rwm_fetch_data (struct raw_message*,int ,int) ;
+ int stderr ;
+ scalar_t__ stub1 (struct connection*) ;
+ int stub2 (struct connection*) ;
+ scalar_t__ stub3 (struct connection*) ;
+ int tcp_prepare_iovec (struct iovec*,int*,int,struct raw_message*) ;
+ scalar_t__ verbosity ;
+ int writev (int,struct iovec*,int) ;
 
 int tcp_server_writer (struct connection *c) {
   int r, s, t = 0, check_watermark;
@@ -48,7 +48,7 @@ int tcp_server_writer (struct connection *c) {
   do {
     check_watermark = (out->total_bytes >= c->write_low_watermark);
     while ((c->flags & C_WANTWR) != 0) {
-      // write buffer loop
+
       s = out->total_bytes;
       if (!s) {
         c->flags &= ~C_WANTWR;

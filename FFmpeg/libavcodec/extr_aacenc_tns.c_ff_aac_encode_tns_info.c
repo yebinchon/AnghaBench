@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int* n_filt; int** length; int** order; int** direction; int*** coef_idx; int /*<<< orphan*/  present; } ;
-typedef  TYPE_2__ TemporalNoiseShaping ;
-struct TYPE_10__ {int /*<<< orphan*/  pb; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int* n_filt; int** length; int** order; int** direction; int*** coef_idx; int present; } ;
+typedef TYPE_2__ TemporalNoiseShaping ;
+struct TYPE_10__ {int pb; } ;
 struct TYPE_7__ {scalar_t__* window_sequence; int num_windows; } ;
 struct TYPE_9__ {TYPE_2__ tns; TYPE_1__ ics; } ;
-typedef  TYPE_3__ SingleChannelElement ;
-typedef  TYPE_4__ AACEncContext ;
+typedef TYPE_3__ SingleChannelElement ;
+typedef TYPE_4__ AACEncContext ;
 
-/* Variables and functions */
- scalar_t__ EIGHT_SHORT_SEQUENCE ; 
- int TNS_Q_BITS ; 
- int TNS_Q_BITS_IS8 ; 
- int compress_coeffs (int*,int,int const) ; 
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int,int const) ; 
+
+ scalar_t__ EIGHT_SHORT_SEQUENCE ;
+ int TNS_Q_BITS ;
+ int TNS_Q_BITS_IS8 ;
+ int compress_coeffs (int*,int,int const) ;
+ int put_bits (int *,int,int const) ;
 
 void ff_aac_encode_tns_info(AACEncContext *s, SingleChannelElement *sce)
 {

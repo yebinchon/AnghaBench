@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {scalar_t__ last; } ;
-typedef  TYPE_1__ VP8Residual ;
-struct TYPE_11__ {int /*<<< orphan*/ * uv_levels; } ;
-typedef  TYPE_2__ VP8ModeScore ;
-typedef  int /*<<< orphan*/  VP8Encoder ;
-struct TYPE_12__ {int* top_nz_; int* left_nz_; int /*<<< orphan*/ * enc_; } ;
-typedef  TYPE_3__ VP8EncIterator ;
+typedef TYPE_1__ VP8Residual ;
+struct TYPE_11__ {int * uv_levels; } ;
+typedef TYPE_2__ VP8ModeScore ;
+typedef int VP8Encoder ;
+struct TYPE_12__ {int* top_nz_; int* left_nz_; int * enc_; } ;
+typedef TYPE_3__ VP8EncIterator ;
 
-/* Variables and functions */
- scalar_t__ VP8GetResidualCost (int const,TYPE_1__*) ; 
- int /*<<< orphan*/  VP8InitResidual (int /*<<< orphan*/ ,int,int /*<<< orphan*/ * const,TYPE_1__*) ; 
- int /*<<< orphan*/  VP8IteratorNzToBytes (TYPE_3__* const) ; 
- int /*<<< orphan*/  VP8SetResidualCoeffs (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+ scalar_t__ VP8GetResidualCost (int const,TYPE_1__*) ;
+ int VP8InitResidual (int ,int,int * const,TYPE_1__*) ;
+ int VP8IteratorNzToBytes (TYPE_3__* const) ;
+ int VP8SetResidualCoeffs (int ,TYPE_1__*) ;
 
 int VP8GetCostUV(VP8EncIterator* const it, const VP8ModeScore* const rd) {
   VP8Residual res;
@@ -33,7 +33,7 @@ int VP8GetCostUV(VP8EncIterator* const it, const VP8ModeScore* const rd) {
   int ch, x, y;
   int R = 0;
 
-  VP8IteratorNzToBytes(it);  // re-import the non-zero context
+  VP8IteratorNzToBytes(it);
 
   VP8InitResidual(0, 2, enc, &res);
   for (ch = 0; ch <= 2; ch += 2) {

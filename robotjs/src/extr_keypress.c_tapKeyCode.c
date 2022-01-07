@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  MMKeyFlags ;
-typedef  int /*<<< orphan*/  MMKeyCode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  toggleKeyCode (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int MMKeyFlags ;
+typedef int MMKeyCode ;
+
+
+ int toggleKeyCode (int ,int,int ) ;
 
 void tapKeyCode(MMKeyCode code, MMKeyFlags flags)
 {
-	toggleKeyCode(code, true, flags);
-	toggleKeyCode(code, false, flags);
+ toggleKeyCode(code, 1, flags);
+ toggleKeyCode(code, 0, flags);
 }

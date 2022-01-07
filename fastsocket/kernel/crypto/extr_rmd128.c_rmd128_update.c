@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  unsigned int u32 ;
+
+
+
+
+typedef int u8 ;
+typedef unsigned int u32 ;
 struct shash_desc {int dummy; } ;
-struct rmd128_ctx {int byte_count; char* buffer; int /*<<< orphan*/  state; } ;
+struct rmd128_ctx {int byte_count; char* buffer; int state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/  const*,unsigned int const) ; 
- int /*<<< orphan*/  rmd128_transform (int /*<<< orphan*/ ,char*) ; 
- struct rmd128_ctx* shash_desc_ctx (struct shash_desc*) ; 
+
+ int memcpy (char*,int const*,unsigned int const) ;
+ int rmd128_transform (int ,char*) ;
+ struct rmd128_ctx* shash_desc_ctx (struct shash_desc*) ;
 
 __attribute__((used)) static int rmd128_update(struct shash_desc *desc, const u8 *data,
-			 unsigned int len)
+    unsigned int len)
 {
-	struct rmd128_ctx *rctx = shash_desc_ctx(desc);
-	const u32 avail = sizeof(rctx->buffer) - (rctx->byte_count & 0x3f);
+ struct rmd128_ctx *rctx = shash_desc_ctx(desc);
+ const u32 avail = sizeof(rctx->buffer) - (rctx->byte_count & 0x3f);
 
-	rctx->byte_count += len;
+ rctx->byte_count += len;
 
-	/* Enough space in buffer? If so copy and we're done */
-	if (avail > len) {
-		memcpy((char *)rctx->buffer + (sizeof(rctx->buffer) - avail),
-		       data, len);
-		goto out;
-	}
 
-	memcpy((char *)rctx->buffer + (sizeof(rctx->buffer) - avail),
-	       data, avail);
+ if (avail > len) {
+  memcpy((char *)rctx->buffer + (sizeof(rctx->buffer) - avail),
+         data, len);
+  goto out;
+ }
 
-	rmd128_transform(rctx->state, rctx->buffer);
-	data += avail;
-	len -= avail;
+ memcpy((char *)rctx->buffer + (sizeof(rctx->buffer) - avail),
+        data, avail);
 
-	while (len >= sizeof(rctx->buffer)) {
-		memcpy(rctx->buffer, data, sizeof(rctx->buffer));
-		rmd128_transform(rctx->state, rctx->buffer);
-		data += sizeof(rctx->buffer);
-		len -= sizeof(rctx->buffer);
-	}
+ rmd128_transform(rctx->state, rctx->buffer);
+ data += avail;
+ len -= avail;
 
-	memcpy(rctx->buffer, data, len);
+ while (len >= sizeof(rctx->buffer)) {
+  memcpy(rctx->buffer, data, sizeof(rctx->buffer));
+  rmd128_transform(rctx->state, rctx->buffer);
+  data += sizeof(rctx->buffer);
+  len -= sizeof(rctx->buffer);
+ }
+
+ memcpy(rctx->buffer, data, len);
 
 out:
-	return 0;
+ return 0;
 }

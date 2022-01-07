@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ VARIANT_BOOL ;
-typedef  int /*<<< orphan*/  IXMLDOMElement ;
-typedef  int /*<<< orphan*/  IXMLDOMDocument ;
-typedef  scalar_t__ HRESULT ;
-typedef  char CHAR ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IID_IXMLDOMDocument ; 
- int /*<<< orphan*/  IXMLDOMDocument_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IXMLDOMDocument_get_documentElement (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IXMLDOMDocument_loadXML (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  IXMLDOMElement_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IXMLDOMElement_get_xml (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- scalar_t__ VARIANT_TRUE ; 
- int /*<<< orphan*/  _bstr_ (char const*) ; 
- int /*<<< orphan*/ * create_document (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_bstrs () ; 
- int /*<<< orphan*/  lstrcmpW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef scalar_t__ VARIANT_BOOL ;
+typedef int IXMLDOMElement ;
+typedef int IXMLDOMDocument ;
+typedef scalar_t__ HRESULT ;
+typedef char CHAR ;
+typedef int BSTR ;
+
+
+ int IID_IXMLDOMDocument ;
+ int IXMLDOMDocument_Release (int *) ;
+ scalar_t__ IXMLDOMDocument_get_documentElement (int *,int **) ;
+ scalar_t__ IXMLDOMDocument_loadXML (int *,int ,scalar_t__*) ;
+ int IXMLDOMElement_Release (int *) ;
+ scalar_t__ IXMLDOMElement_get_xml (int *,int *) ;
+ scalar_t__ S_OK ;
+ int SysFreeString (int ) ;
+ scalar_t__ VARIANT_TRUE ;
+ int _bstr_ (char const*) ;
+ int * create_document (int *) ;
+ int free_bstrs () ;
+ int lstrcmpW (int ,int ) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_FormattingXML(void)
 {

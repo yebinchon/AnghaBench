@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ XmlNodeType ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ XmlNodeType ;
 struct TYPE_3__ {scalar_t__ count; } ;
-typedef  int LONG_PTR ;
-typedef  int /*<<< orphan*/  IXmlResolver ;
-typedef  int /*<<< orphan*/  IXmlReader ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int HRESULT ;
-typedef  int DtdProcessing ;
+typedef int LONG_PTR ;
+typedef int IXmlResolver ;
+typedef int IXmlReader ;
+typedef int IUnknown ;
+typedef int HRESULT ;
+typedef int DtdProcessing ;
 
-/* Variables and functions */
- int CreateXmlReader (int /*<<< orphan*/ *,void**,int /*<<< orphan*/ *) ; 
- int DtdProcessing_Prohibit ; 
- int E_INVALIDARG ; 
- int E_NOINTERFACE ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IID_IStream ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  IID_IXmlReader ; 
- int IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int IXmlReader_GetNodeType (int /*<<< orphan*/ *,scalar_t__*) ; 
- int IXmlReader_GetProperty (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  IXmlReader_Release (int /*<<< orphan*/ *) ; 
- int IXmlReader_SetInput (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IXmlReader_SetProperty (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IXmlResolver_Release (int /*<<< orphan*/ *) ; 
- int S_FALSE ; 
- int S_OK ; 
- int /*<<< orphan*/  TEST_READER_STATE (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_READER_STATE2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ XmlNodeType_Element ; 
- scalar_t__ XmlNodeType_None ; 
- int /*<<< orphan*/  XmlReadState_Closed ; 
- int /*<<< orphan*/  XmlReadState_Initial ; 
- int /*<<< orphan*/  XmlReaderProperty_DtdProcessing ; 
- int /*<<< orphan*/  XmlReaderProperty_XmlResolver ; 
- TYPE_1__ input_iids ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  ok_iids (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setinput_full ; 
- int /*<<< orphan*/  setinput_full_old ; 
- int testinput_createinstance (void**) ; 
- int /*<<< orphan*/  testresolver ; 
+
+ int CreateXmlReader (int *,void**,int *) ;
+ int DtdProcessing_Prohibit ;
+ int E_INVALIDARG ;
+ int E_NOINTERFACE ;
+ int FALSE ;
+ int IID_IStream ;
+ int IID_IUnknown ;
+ int IID_IXmlReader ;
+ int IUnknown_QueryInterface (int *,int *,void**) ;
+ int IUnknown_Release (int *) ;
+ int IXmlReader_GetNodeType (int *,scalar_t__*) ;
+ int IXmlReader_GetProperty (int *,int ,int*) ;
+ int IXmlReader_Release (int *) ;
+ int IXmlReader_SetInput (int *,int *) ;
+ int IXmlReader_SetProperty (int *,int ,int) ;
+ int IXmlResolver_Release (int *) ;
+ int S_FALSE ;
+ int S_OK ;
+ int TEST_READER_STATE (int *,int ) ;
+ int TEST_READER_STATE2 (int *,int ,int ) ;
+ scalar_t__ XmlNodeType_Element ;
+ scalar_t__ XmlNodeType_None ;
+ int XmlReadState_Closed ;
+ int XmlReadState_Initial ;
+ int XmlReaderProperty_DtdProcessing ;
+ int XmlReaderProperty_XmlResolver ;
+ TYPE_1__ input_iids ;
+ int ok (int,char*,...) ;
+ int ok_iids (TYPE_1__*,int ,int ,int ) ;
+ int setinput_full ;
+ int setinput_full_old ;
+ int testinput_createinstance (void**) ;
+ int testresolver ;
 
 __attribute__((used)) static void test_reader_create(void)
 {
@@ -64,17 +64,17 @@ __attribute__((used)) static void test_reader_create(void)
     XmlNodeType nodetype;
     HRESULT hr;
 
-    /* crashes native */
+
     if (0)
     {
-        CreateXmlReader(&IID_IXmlReader, NULL, NULL);
-        CreateXmlReader(NULL, (void**)&reader, NULL);
+        CreateXmlReader(&IID_IXmlReader, ((void*)0), ((void*)0));
+        CreateXmlReader(((void*)0), (void**)&reader, ((void*)0));
     }
 
-    hr = CreateXmlReader(&IID_IStream, (void **)&unk, NULL);
+    hr = CreateXmlReader(&IID_IStream, (void **)&unk, ((void*)0));
     ok(hr == E_NOINTERFACE, "got %08x\n", hr);
 
-    hr = CreateXmlReader(&IID_IUnknown, (void **)&unk, NULL);
+    hr = CreateXmlReader(&IID_IUnknown, (void **)&unk, ((void*)0));
     ok(hr == S_OK, "Expected S_OK, got %08x\n", hr);
     hr = IUnknown_QueryInterface(unk, &IID_IXmlReader, (void **)&reader);
     ok(hr == S_OK, "Expected S_OK, got %08x\n", hr);
@@ -82,11 +82,11 @@ __attribute__((used)) static void test_reader_create(void)
     IXmlReader_Release(reader);
     IUnknown_Release(unk);
 
-    hr = CreateXmlReader(&IID_IUnknown, (void **)&reader, NULL);
+    hr = CreateXmlReader(&IID_IUnknown, (void **)&reader, ((void*)0));
     ok(hr == S_OK, "Expected S_OK, got %08x\n", hr);
     IXmlReader_Release(reader);
 
-    hr = CreateXmlReader(&IID_IXmlReader, (void**)&reader, NULL);
+    hr = CreateXmlReader(&IID_IXmlReader, (void**)&reader, ((void*)0));
     ok(hr == S_OK, "Expected S_OK, got %08x\n", hr);
 
     TEST_READER_STATE(reader, XmlReadState_Closed);
@@ -96,17 +96,17 @@ __attribute__((used)) static void test_reader_create(void)
     ok(hr == S_FALSE, "got %08x\n", hr);
     ok(nodetype == XmlNodeType_None, "got %d\n", nodetype);
 
-    /* crashes on XP, 2k3, works on newer versions */
+
     if (0)
     {
-        hr = IXmlReader_GetNodeType(reader, NULL);
+        hr = IXmlReader_GetNodeType(reader, ((void*)0));
         ok(hr == E_INVALIDARG, "got %08x\n", hr);
     }
 
     resolver = (void*)0xdeadbeef;
     hr = IXmlReader_GetProperty(reader, XmlReaderProperty_XmlResolver, (LONG_PTR*)&resolver);
     ok(hr == S_OK, "got 0x%08x\n", hr);
-    ok(resolver == NULL, "got %p\n", resolver);
+    ok(resolver == ((void*)0), "got %p\n", resolver);
 
     hr = IXmlReader_SetProperty(reader, XmlReaderProperty_XmlResolver, 0);
     ok(hr == S_OK, "got 0x%08x\n", hr);
@@ -114,7 +114,7 @@ __attribute__((used)) static void test_reader_create(void)
     hr = IXmlReader_SetProperty(reader, XmlReaderProperty_XmlResolver, (LONG_PTR)&testresolver);
     ok(hr == S_OK, "got 0x%08x\n", hr);
 
-    resolver = NULL;
+    resolver = ((void*)0);
     hr = IXmlReader_GetProperty(reader, XmlReaderProperty_XmlResolver, (LONG_PTR*)&resolver);
     ok(hr == S_OK, "got 0x%08x\n", hr);
     ok(resolver == &testresolver, "got %p\n", resolver);
@@ -135,13 +135,13 @@ __attribute__((used)) static void test_reader_create(void)
     hr = IXmlReader_SetProperty(reader, XmlReaderProperty_DtdProcessing, -1);
     ok(hr == E_INVALIDARG, "Expected E_INVALIDARG, got %08x\n", hr);
 
-    /* Null input pointer, releases previous input */
-    hr = IXmlReader_SetInput(reader, NULL);
+
+    hr = IXmlReader_SetInput(reader, ((void*)0));
     ok(hr == S_OK, "Expected S_OK, got %08x\n", hr);
 
     TEST_READER_STATE2(reader, XmlReadState_Initial, XmlReadState_Closed);
 
-    /* test input interface selection sequence */
+
     hr = testinput_createinstance((void**)&input);
     ok(hr == S_OK, "Expected S_OK, got %08x\n", hr);
 

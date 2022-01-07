@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DestroyWindow (int /*<<< orphan*/ ) ; 
- int SendMessageA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WM_GETTEXTLENGTH ; 
- int /*<<< orphan*/  WM_SETTEXT ; 
- int /*<<< orphan*/  is_lang_japanese ; 
- int lstrlenA (char const*) ; 
- int /*<<< orphan*/  new_richedit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+
+
+typedef int LPARAM ;
+typedef int HWND ;
+
+
+ int DestroyWindow (int ) ;
+ int SendMessageA (int ,int ,int ,int ) ;
+ int WM_GETTEXTLENGTH ;
+ int WM_SETTEXT ;
+ int is_lang_japanese ;
+ int lstrlenA (char const*) ;
+ int new_richedit (int *) ;
+ int ok (int,char*,int,...) ;
+ int skip (char*) ;
 
 __attribute__((used)) static void test_WM_GETTEXTLENGTH(void)
 {
-    HWND hwndRichEdit = new_richedit(NULL);
+    HWND hwndRichEdit = new_richedit(((void*)0));
     static const char text1[] = "aaa\r\nbbb\r\nccc\r\nddd\r\neee";
     static const char text2[] = "aaa\r\nbbb\r\nccc\r\nddd\r\neee\r\n";
     static const char text3[] = "abcdef\x8e\xf0";
     int result;
 
-    /* Test for WM_GETTEXTLENGTH */
+
     SendMessageA(hwndRichEdit, WM_SETTEXT, 0, (LPARAM)text1);
     result = SendMessageA(hwndRichEdit, WM_GETTEXTLENGTH, 0, 0);
     ok(result == lstrlenA(text1),
@@ -45,7 +45,7 @@ __attribute__((used)) static void test_WM_GETTEXTLENGTH(void)
        "WM_GETTEXTLENGTH reports incorrect length %d, expected %d\n",
        result, lstrlenA(text2));
 
-    /* Test with multibyte character */
+
     if (!is_lang_japanese)
         skip("Skip multibyte character tests on non-Japanese platform\n");
     else

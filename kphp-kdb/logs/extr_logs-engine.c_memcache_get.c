@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct connection {int dummy; } ;
 struct TYPE_4__ {char* text; int len; } ;
-typedef  TYPE_1__ message ;
+typedef TYPE_1__ message ;
 
-/* Variables and functions */
- int FN ; 
- int /*<<< orphan*/  GET_LOG ; 
- int /*<<< orphan*/  INIT ; 
- int MAX_HISTORY ; 
- int MAX_VALUE_LEN ; 
- TYPE_1__* MESSAGE (struct connection*) ; 
- int /*<<< orphan*/  RETURN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SET_LOG_VERBOSITY ; 
- int STATS_BUFF_SIZE ; 
- char* buf ; 
- double cputime () ; 
- char* dl_pstr (char*,int) ; 
- char* do_add_field (char*) ; 
- char* do_create_type (char*) ; 
- scalar_t__ do_set_color (int,long long,int,int,int) ; 
- int /*<<< orphan*/  eat_at (char const*,int,char**,int*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,double) ; 
- int /*<<< orphan*/  get ; 
- int get_color (int,long long) ; 
- int get_time () ; 
- char* get_type_size (int) ; 
- char* get_types () ; 
- int history_l ; 
- char** history_q ; 
- int /*<<< orphan*/  history_q_add (char*) ; 
- int history_r ; 
- int logs_prepare_stats () ; 
- char* logs_select (char*,int) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- scalar_t__ msg_verify (TYPE_1__*,int) ; 
- int prepare_stats (struct connection*,char*,int) ; 
- int /*<<< orphan*/  return_one_key (struct connection*,char const*,char*,int) ; 
- int /*<<< orphan*/  set ; 
- int sscanf (char*,char*,int*,...) ; 
- char* stats_buff ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- scalar_t__ test_mode ; 
- int verbosity ; 
- int /*<<< orphan*/  write_only ; 
+
+ int FN ;
+ int GET_LOG ;
+ int INIT ;
+ int MAX_HISTORY ;
+ int MAX_VALUE_LEN ;
+ TYPE_1__* MESSAGE (struct connection*) ;
+ int RETURN (int ,int ) ;
+ int SET_LOG_VERBOSITY ;
+ int STATS_BUFF_SIZE ;
+ char* buf ;
+ double cputime () ;
+ char* dl_pstr (char*,int) ;
+ char* do_add_field (char*) ;
+ char* do_create_type (char*) ;
+ scalar_t__ do_set_color (int,long long,int,int,int) ;
+ int eat_at (char const*,int,char**,int*) ;
+ int fprintf (int ,char*,char const*,double) ;
+ int get ;
+ int get_color (int,long long) ;
+ int get_time () ;
+ char* get_type_size (int) ;
+ char* get_types () ;
+ int history_l ;
+ char** history_q ;
+ int history_q_add (char*) ;
+ int history_r ;
+ int logs_prepare_stats () ;
+ char* logs_select (char*,int) ;
+ int memcpy (char*,char const*,int) ;
+ scalar_t__ msg_verify (TYPE_1__*,int) ;
+ int prepare_stats (struct connection*,char*,int) ;
+ int return_one_key (struct connection*,char const*,char*,int) ;
+ int set ;
+ int sscanf (char*,char*,int*,...) ;
+ char* stats_buff ;
+ int stderr ;
+ int strcmp (char*,char*) ;
+ int strlen (char*) ;
+ int strncmp (char*,char*,int) ;
+ scalar_t__ test_mode ;
+ int verbosity ;
+ int write_only ;
 
 int memcache_get (struct connection *c, const char *old_key, int old_key_len) {
   if (verbosity > 1) {

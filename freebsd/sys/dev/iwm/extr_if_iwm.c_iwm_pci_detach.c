@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct iwm_softc {int /*<<< orphan*/ * sc_mem; int /*<<< orphan*/ * sc_irq; int /*<<< orphan*/  sc_ih; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SYS_RES_IRQ ; 
- int /*<<< orphan*/  SYS_RES_MEMORY ; 
- int /*<<< orphan*/  bus_release_resource (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bus_teardown_intr (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct iwm_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pci_release_msi (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rman_get_rid (int /*<<< orphan*/ *) ; 
+
+
+
+struct iwm_softc {int * sc_mem; int * sc_irq; int sc_ih; } ;
+typedef int device_t ;
+
+
+ int SYS_RES_IRQ ;
+ int SYS_RES_MEMORY ;
+ int bus_release_resource (int ,int ,int ,int *) ;
+ int bus_teardown_intr (int ,int *,int ) ;
+ struct iwm_softc* device_get_softc (int ) ;
+ int pci_release_msi (int ) ;
+ int rman_get_rid (int *) ;
 
 __attribute__((used)) static void
 iwm_pci_detach(device_t dev)
 {
-	struct iwm_softc *sc = device_get_softc(dev);
+ struct iwm_softc *sc = device_get_softc(dev);
 
-	if (sc->sc_irq != NULL) {
-		bus_teardown_intr(dev, sc->sc_irq, sc->sc_ih);
-		bus_release_resource(dev, SYS_RES_IRQ,
-		    rman_get_rid(sc->sc_irq), sc->sc_irq);
-		pci_release_msi(dev);
+ if (sc->sc_irq != ((void*)0)) {
+  bus_teardown_intr(dev, sc->sc_irq, sc->sc_ih);
+  bus_release_resource(dev, SYS_RES_IRQ,
+      rman_get_rid(sc->sc_irq), sc->sc_irq);
+  pci_release_msi(dev);
         }
-	if (sc->sc_mem != NULL)
-		bus_release_resource(dev, SYS_RES_MEMORY,
-		    rman_get_rid(sc->sc_mem), sc->sc_mem);
+ if (sc->sc_mem != ((void*)0))
+  bus_release_resource(dev, SYS_RES_MEMORY,
+      rman_get_rid(sc->sc_mem), sc->sc_mem);
 }

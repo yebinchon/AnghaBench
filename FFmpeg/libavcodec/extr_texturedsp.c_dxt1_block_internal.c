@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  ptrdiff_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_RL16 (int /*<<< orphan*/  const*) ; 
- int AV_RL32 (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  AV_WL32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  extract_color (int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+typedef int ptrdiff_t ;
+
+
+ int AV_RL16 (int const*) ;
+ int AV_RL32 (int const*) ;
+ int AV_WL32 (int *,int) ;
+ int extract_color (int*,int ,int ,int ,int ) ;
 
 __attribute__((used)) static inline void dxt1_block_internal(uint8_t *dst, ptrdiff_t stride,
                                        const uint8_t *block, uint8_t alpha)
@@ -28,7 +28,7 @@ __attribute__((used)) static inline void dxt1_block_internal(uint8_t *dst, ptrdi
     uint32_t colors[4];
     uint16_t color0 = AV_RL16(block + 0);
     uint16_t color1 = AV_RL16(block + 2);
-    uint32_t code   = AV_RL32(block + 4);
+    uint32_t code = AV_RL32(block + 4);
 
     extract_color(colors, color0, color1, 0, alpha);
 

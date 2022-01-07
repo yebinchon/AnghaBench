@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int int32_t ;
 struct TYPE_3__ {int rem; int quot; } ;
-typedef  TYPE_1__ div_t ;
+typedef TYPE_1__ div_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSTRTIME_MAX_SIZE ; 
- TYPE_1__ div (int,int) ; 
- int /*<<< orphan*/  snprintf (char*,int /*<<< orphan*/ ,char*,int,int,...) ; 
- scalar_t__ unlikely (int) ; 
+
+ int MSTRTIME_MAX_SIZE ;
+ TYPE_1__ div (int,int) ;
+ int snprintf (char*,int ,char*,int,int,...) ;
+ scalar_t__ unlikely (int) ;
 
 char *secstotimestr( char *psz_buffer, int32_t i_seconds )
 {

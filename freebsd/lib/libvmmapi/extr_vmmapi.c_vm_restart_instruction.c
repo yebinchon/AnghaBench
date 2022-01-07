@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vmctx {int /*<<< orphan*/  fd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VM_RESTART_INSTRUCTION ; 
- int ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
+
+
+
+struct vmctx {int fd; } ;
+
+
+ int VM_RESTART_INSTRUCTION ;
+ int ioctl (int ,int ,int*) ;
 
 int
 vm_restart_instruction(void *arg, int vcpu)
 {
-	struct vmctx *ctx = arg;
+ struct vmctx *ctx = arg;
 
-	return (ioctl(ctx->fd, VM_RESTART_INSTRUCTION, &vcpu));
+ return (ioctl(ctx->fd, VM_RESTART_INSTRUCTION, &vcpu));
 }

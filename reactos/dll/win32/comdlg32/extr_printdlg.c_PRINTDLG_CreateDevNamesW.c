@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
 struct TYPE_2__ {int wDefault; void* wOutputOffset; void* wDeviceOffset; void* wDriverOffset; } ;
-typedef  void* LPWSTR ;
-typedef  TYPE_1__* LPDEVNAMES ;
-typedef  int /*<<< orphan*/  const* LPCWSTR ;
-typedef  int /*<<< orphan*/  HGLOBAL ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  DEVNAMES ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef void* LPWSTR ;
+typedef TYPE_1__* LPDEVNAMES ;
+typedef int const* LPCWSTR ;
+typedef int HGLOBAL ;
+typedef int DWORD ;
+typedef int DEVNAMES ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GMEM_MOVEABLE ; 
- int /*<<< orphan*/  GetDefaultPrinterW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GlobalAlloc (int /*<<< orphan*/ ,long) ; 
- void* GlobalLock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GlobalReAlloc (int /*<<< orphan*/ ,long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GlobalUnlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ lstrcmpW (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  lstrcpyW (void*,int /*<<< orphan*/  const*) ; 
- int lstrlenW (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * wcsrchr (int /*<<< orphan*/  const*,char) ; 
+
+ int ARRAY_SIZE (int *) ;
+ int FALSE ;
+ int GMEM_MOVEABLE ;
+ int GetDefaultPrinterW (int *,int *) ;
+ int GlobalAlloc (int ,long) ;
+ void* GlobalLock (int ) ;
+ int GlobalReAlloc (int ,long,int ) ;
+ int GlobalUnlock (int ) ;
+ int TRUE ;
+ scalar_t__ lstrcmpW (int *,int const*) ;
+ int lstrcpyW (void*,int const*) ;
+ int lstrlenW (int const*) ;
+ int * wcsrchr (int const*,char) ;
 
 __attribute__((used)) static BOOL PRINTDLG_CreateDevNamesW(HGLOBAL *hmem, LPCWSTR DeviceDriverName,
-				    LPCWSTR DeviceName, LPCWSTR OutputPort)
+        LPCWSTR DeviceName, LPCWSTR OutputPort)
 {
     long size;
-    LPWSTR   pDevNamesSpace;
-    LPWSTR   pTempPtr;
+    LPWSTR pDevNamesSpace;
+    LPWSTR pTempPtr;
     LPDEVNAMES lpDevNames;
     WCHAR bufW[260];
     DWORD dwBufLen = ARRAY_SIZE(bufW);

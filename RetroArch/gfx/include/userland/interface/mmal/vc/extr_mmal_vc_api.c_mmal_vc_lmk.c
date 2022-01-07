@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  req ;
-typedef  int /*<<< orphan*/  reply ;
-struct TYPE_3__ {int /*<<< orphan*/  header; int /*<<< orphan*/  alloc_size; } ;
-typedef  TYPE_1__ mmal_worker_lmk ;
-typedef  int /*<<< orphan*/  MMAL_STATUS_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MMAL_FALSE ; 
- int /*<<< orphan*/  MMAL_WORKER_LMK ; 
- int /*<<< orphan*/  mmal_vc_get_client () ; 
- int /*<<< orphan*/  mmal_vc_sendwait_message (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,TYPE_1__*,size_t*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int req ;
+typedef int reply ;
+struct TYPE_3__ {int header; int alloc_size; } ;
+typedef TYPE_1__ mmal_worker_lmk ;
+typedef int MMAL_STATUS_T ;
+
+
+ int MMAL_FALSE ;
+ int MMAL_WORKER_LMK ;
+ int mmal_vc_get_client () ;
+ int mmal_vc_sendwait_message (int ,int *,int,int ,TYPE_1__*,size_t*,int ) ;
 
 MMAL_STATUS_T mmal_vc_lmk(uint32_t alloc_size)
 {

@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  parent_relid; } ;
-typedef  int /*<<< orphan*/ * Relids ;
-typedef  int /*<<< orphan*/  PlannerInfo ;
-typedef  int /*<<< orphan*/  Node ;
-typedef  int /*<<< orphan*/  Bitmapset ;
-typedef  TYPE_1__ AppendRelInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- int /*<<< orphan*/ * adjust_appendrel_attrs (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,TYPE_1__**) ; 
- int /*<<< orphan*/ * bms_add_member (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bms_equal (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ bms_num_members (int /*<<< orphan*/ *) ; 
- TYPE_1__** find_appinfos_by_relids (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  pfree (TYPE_1__**) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int parent_relid; } ;
+typedef int * Relids ;
+typedef int PlannerInfo ;
+typedef int Node ;
+typedef int Bitmapset ;
+typedef TYPE_1__ AppendRelInfo ;
+
+
+ int Assert (int) ;
+ int * adjust_appendrel_attrs (int *,int *,int,TYPE_1__**) ;
+ int * bms_add_member (int *,int ) ;
+ int bms_equal (int *,int *) ;
+ scalar_t__ bms_num_members (int *) ;
+ TYPE_1__** find_appinfos_by_relids (int *,int *,int*) ;
+ int pfree (TYPE_1__**) ;
 
 Node *
 adjust_appendrel_attrs_multilevel(PlannerInfo *root, Node *node,
-								  Relids child_relids,
-								  Relids top_parent_relids)
+          Relids child_relids,
+          Relids top_parent_relids)
 {
-	AppendRelInfo **appinfos;
-	Bitmapset  *parent_relids = NULL;
-	int			nappinfos;
-	int			cnt;
+ AppendRelInfo **appinfos;
+ Bitmapset *parent_relids = ((void*)0);
+ int nappinfos;
+ int cnt;
 
-	Assert(bms_num_members(child_relids) == bms_num_members(top_parent_relids));
+ Assert(bms_num_members(child_relids) == bms_num_members(top_parent_relids));
 
-	appinfos = find_appinfos_by_relids(root, child_relids, &nappinfos);
+ appinfos = find_appinfos_by_relids(root, child_relids, &nappinfos);
 
-	/* Construct relids set for the immediate parent of given child. */
-	for (cnt = 0; cnt < nappinfos; cnt++)
-	{
-		AppendRelInfo *appinfo = appinfos[cnt];
 
-		parent_relids = bms_add_member(parent_relids, appinfo->parent_relid);
-	}
+ for (cnt = 0; cnt < nappinfos; cnt++)
+ {
+  AppendRelInfo *appinfo = appinfos[cnt];
 
-	/* Recurse if immediate parent is not the top parent. */
-	if (!bms_equal(parent_relids, top_parent_relids))
-		node = adjust_appendrel_attrs_multilevel(root, node, parent_relids,
-												 top_parent_relids);
+  parent_relids = bms_add_member(parent_relids, appinfo->parent_relid);
+ }
 
-	/* Now translate for this child */
-	node = adjust_appendrel_attrs(root, node, nappinfos, appinfos);
 
-	pfree(appinfos);
+ if (!bms_equal(parent_relids, top_parent_relids))
+  node = adjust_appendrel_attrs_multilevel(root, node, parent_relids,
+             top_parent_relids);
 
-	return node;
+
+ node = adjust_appendrel_attrs(root, node, nappinfos, appinfos);
+
+ pfree(appinfos);
+
+ return node;
 }

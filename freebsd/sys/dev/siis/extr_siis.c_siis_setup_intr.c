@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct siis_controller {TYPE_1__* interrupt; } ;
 struct resource {int dummy; } ;
-typedef  int /*<<< orphan*/  driver_intr_t ;
-typedef  int /*<<< orphan*/  driver_filter_t ;
-typedef  int /*<<< orphan*/  device_t ;
-struct TYPE_2__ {void* argument; int /*<<< orphan*/ * function; } ;
+typedef int driver_intr_t ;
+typedef int driver_filter_t ;
+typedef int device_t ;
+struct TYPE_2__ {void* argument; int * function; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  device_get_ivars (int /*<<< orphan*/ ) ; 
- struct siis_controller* device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*) ; 
+
+ int EINVAL ;
+ int device_get_ivars (int ) ;
+ struct siis_controller* device_get_softc (int ) ;
+ int printf (char*) ;
 
 __attribute__((used)) static int
-siis_setup_intr(device_t dev, device_t child, struct resource *irq, 
-		   int flags, driver_filter_t *filter, driver_intr_t *function, 
-		   void *argument, void **cookiep)
+siis_setup_intr(device_t dev, device_t child, struct resource *irq,
+     int flags, driver_filter_t *filter, driver_intr_t *function,
+     void *argument, void **cookiep)
 {
-	struct siis_controller *ctlr = device_get_softc(dev);
-	int unit = (intptr_t)device_get_ivars(child);
+ struct siis_controller *ctlr = device_get_softc(dev);
+ int unit = (intptr_t)device_get_ivars(child);
 
-	if (filter != NULL) {
-		printf("siis.c: we cannot use a filter here\n");
-		return (EINVAL);
-	}
-	ctlr->interrupt[unit].function = function;
-	ctlr->interrupt[unit].argument = argument;
-	return (0);
+ if (filter != ((void*)0)) {
+  printf("siis.c: we cannot use a filter here\n");
+  return (EINVAL);
+ }
+ ctlr->interrupt[unit].function = function;
+ ctlr->interrupt[unit].argument = argument;
+ return (0);
 }

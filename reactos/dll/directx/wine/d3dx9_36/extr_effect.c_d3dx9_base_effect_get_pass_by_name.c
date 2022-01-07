@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct d3dx_technique {unsigned int pass_count; struct d3dx_pass* passes; } ;
-struct d3dx_pass {int /*<<< orphan*/  name; } ;
+struct d3dx_pass {int name; } ;
 struct d3dx9_base_effect {int dummy; } ;
-typedef  int /*<<< orphan*/ * D3DXHANDLE ;
+typedef int * D3DXHANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRACE (char*,struct d3dx_pass*) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/ * get_pass_handle (struct d3dx_pass*) ; 
- struct d3dx_technique* get_valid_technique (struct d3dx9_base_effect*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char const*) ; 
+
+ int TRACE (char*,struct d3dx_pass*) ;
+ int WARN (char*) ;
+ int * get_pass_handle (struct d3dx_pass*) ;
+ struct d3dx_technique* get_valid_technique (struct d3dx9_base_effect*,int *) ;
+ int strcmp (int ,char const*) ;
 
 __attribute__((used)) static D3DXHANDLE d3dx9_base_effect_get_pass_by_name(struct d3dx9_base_effect *base,
         D3DXHANDLE technique, const char *name)
@@ -45,5 +45,5 @@ __attribute__((used)) static D3DXHANDLE d3dx9_base_effect_get_pass_by_name(struc
 
     WARN("Pass not found.\n");
 
-    return NULL;
+    return ((void*)0);
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  scalar_t__ uint16_t ;
-struct memac_regs {int /*<<< orphan*/ * pause_thresh; int /*<<< orphan*/ * pause_quanta; int /*<<< orphan*/  command_config; int /*<<< orphan*/  tx_fifo_sections; } ;
 
-/* Variables and functions */
- int CMD_CFG_PFC_MODE ; 
- int /*<<< orphan*/  GET_TX_EMPTY_DEFAULT_VALUE (int) ; 
- int /*<<< orphan*/  GET_TX_EMPTY_PFC_VALUE (int) ; 
- int ioread32be (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  iowrite32be (int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef scalar_t__ uint16_t ;
+struct memac_regs {int * pause_thresh; int * pause_quanta; int command_config; int tx_fifo_sections; } ;
+
+
+ int CMD_CFG_PFC_MODE ;
+ int GET_TX_EMPTY_DEFAULT_VALUE (int) ;
+ int GET_TX_EMPTY_PFC_VALUE (int) ;
+ int ioread32be (int *) ;
+ int iowrite32be (int,int *) ;
 
 void fman_memac_set_tx_pause_frames(struct memac_regs *regs,
                 uint8_t priority,
@@ -29,21 +29,21 @@ void fman_memac_set_tx_pause_frames(struct memac_regs *regs,
 {
     uint32_t tmp;
 
-	tmp = ioread32be(&regs->tx_fifo_sections);
+ tmp = ioread32be(&regs->tx_fifo_sections);
 
-	if (priority == 0xff) {
-		GET_TX_EMPTY_DEFAULT_VALUE(tmp);
-		iowrite32be(tmp, &regs->tx_fifo_sections);
+ if (priority == 0xff) {
+  GET_TX_EMPTY_DEFAULT_VALUE(tmp);
+  iowrite32be(tmp, &regs->tx_fifo_sections);
 
-		tmp = ioread32be(&regs->command_config);
-		tmp &= ~CMD_CFG_PFC_MODE;
-		priority = 0;
-	} else {
-		GET_TX_EMPTY_PFC_VALUE(tmp);
-		iowrite32be(tmp, &regs->tx_fifo_sections);
+  tmp = ioread32be(&regs->command_config);
+  tmp &= ~CMD_CFG_PFC_MODE;
+  priority = 0;
+ } else {
+  GET_TX_EMPTY_PFC_VALUE(tmp);
+  iowrite32be(tmp, &regs->tx_fifo_sections);
 
-		tmp = ioread32be(&regs->command_config);
-		tmp |= CMD_CFG_PFC_MODE;
+  tmp = ioread32be(&regs->command_config);
+  tmp |= CMD_CFG_PFC_MODE;
     }
 
     iowrite32be(tmp, &regs->command_config);

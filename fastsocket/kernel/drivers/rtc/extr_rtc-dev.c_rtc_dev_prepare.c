@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  owner; } ;
-struct TYPE_3__ {int /*<<< orphan*/  devt; } ;
-struct rtc_device {scalar_t__ id; int /*<<< orphan*/  owner; TYPE_2__ char_dev; int /*<<< orphan*/  uie_timer; int /*<<< orphan*/  uie_task; TYPE_1__ dev; int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_WORK (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAJOR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MKDEV (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ RTC_DEV_MAX ; 
- int /*<<< orphan*/  cdev_init (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pr_debug (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rtc_dev_fops ; 
- int /*<<< orphan*/  rtc_devt ; 
- int /*<<< orphan*/  rtc_uie_task ; 
- int /*<<< orphan*/  rtc_uie_timer ; 
- int /*<<< orphan*/  setup_timer (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned long) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int owner; } ;
+struct TYPE_3__ {int devt; } ;
+struct rtc_device {scalar_t__ id; int owner; TYPE_2__ char_dev; int uie_timer; int uie_task; TYPE_1__ dev; int name; } ;
+
+
+ int INIT_WORK (int *,int ) ;
+ int MAJOR (int ) ;
+ int MKDEV (int ,scalar_t__) ;
+ scalar_t__ RTC_DEV_MAX ;
+ int cdev_init (TYPE_2__*,int *) ;
+ int pr_debug (char*,int ) ;
+ int rtc_dev_fops ;
+ int rtc_devt ;
+ int rtc_uie_task ;
+ int rtc_uie_timer ;
+ int setup_timer (int *,int ,unsigned long) ;
 
 void rtc_dev_prepare(struct rtc_device *rtc)
 {
-	if (!rtc_devt)
-		return;
+ if (!rtc_devt)
+  return;
 
-	if (rtc->id >= RTC_DEV_MAX) {
-		pr_debug("%s: too many RTC devices\n", rtc->name);
-		return;
-	}
+ if (rtc->id >= RTC_DEV_MAX) {
+  pr_debug("%s: too many RTC devices\n", rtc->name);
+  return;
+ }
 
-	rtc->dev.devt = MKDEV(MAJOR(rtc_devt), rtc->id);
+ rtc->dev.devt = MKDEV(MAJOR(rtc_devt), rtc->id);
 
-#ifdef CONFIG_RTC_INTF_DEV_UIE_EMUL
-	INIT_WORK(&rtc->uie_task, rtc_uie_task);
-	setup_timer(&rtc->uie_timer, rtc_uie_timer, (unsigned long)rtc);
-#endif
 
-	cdev_init(&rtc->char_dev, &rtc_dev_fops);
-	rtc->char_dev.owner = rtc->owner;
+
+
+
+
+ cdev_init(&rtc->char_dev, &rtc_dev_fops);
+ rtc->char_dev.owner = rtc->owner;
 }

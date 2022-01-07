@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct linux_binprm {int cap_effective; TYPE_1__* cred; } ;
-struct TYPE_2__ {int /*<<< orphan*/  cap_permitted; } ;
+struct TYPE_2__ {int cap_permitted; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cap_clear (int /*<<< orphan*/ ) ; 
+
+ int cap_clear (int ) ;
 
 __attribute__((used)) static inline void bprm_clear_caps(struct linux_binprm *bprm)
 {
-	cap_clear(bprm->cred->cap_permitted);
-	bprm->cap_effective = false;
+ cap_clear(bprm->cred->cap_permitted);
+ bprm->cap_effective = 0;
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int k; } ;
-typedef  TYPE_1__ CombinationGenerator ;
+typedef TYPE_1__ CombinationGenerator ;
 
-/* Variables and functions */
- int /*<<< orphan*/  generate_combinations_recurse (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- scalar_t__ palloc0 (int) ; 
- int /*<<< orphan*/  pfree (int*) ; 
+
+ int generate_combinations_recurse (TYPE_1__*,int ,int ,int*) ;
+ scalar_t__ palloc0 (int) ;
+ int pfree (int*) ;
 
 __attribute__((used)) static void
 generate_combinations(CombinationGenerator *state)
 {
-	int		   *current = (int *) palloc0(sizeof(int) * state->k);
+ int *current = (int *) palloc0(sizeof(int) * state->k);
 
-	generate_combinations_recurse(state, 0, 0, current);
+ generate_combinations_recurse(state, 0, 0, current);
 
-	pfree(current);
+ pfree(current);
 }

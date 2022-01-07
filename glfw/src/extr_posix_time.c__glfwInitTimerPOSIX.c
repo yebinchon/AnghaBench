@@ -1,42 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct timespec {int dummy; } ;
-struct TYPE_4__ {int frequency; int /*<<< orphan*/  monotonic; } ;
+struct TYPE_4__ {int frequency; int monotonic; } ;
 struct TYPE_5__ {TYPE_1__ posix; } ;
 struct TYPE_6__ {TYPE_2__ timer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- int /*<<< orphan*/  GLFW_FALSE ; 
- int /*<<< orphan*/  GLFW_TRUE ; 
- TYPE_3__ _glfw ; 
- scalar_t__ clock_gettime (int /*<<< orphan*/ ,struct timespec*) ; 
+
+ int CLOCK_MONOTONIC ;
+ int GLFW_FALSE ;
+ int GLFW_TRUE ;
+ TYPE_3__ _glfw ;
+ scalar_t__ clock_gettime (int ,struct timespec*) ;
 
 void _glfwInitTimerPOSIX(void)
 {
-#if defined(CLOCK_MONOTONIC)
-    struct timespec ts;
-
-    if (clock_gettime(CLOCK_MONOTONIC, &ts) == 0)
-    {
-        _glfw.timer.posix.monotonic = GLFW_TRUE;
-        _glfw.timer.posix.frequency = 1000000000;
-    }
-    else
-#endif
     {
         _glfw.timer.posix.monotonic = GLFW_FALSE;
         _glfw.timer.posix.frequency = 1000000;

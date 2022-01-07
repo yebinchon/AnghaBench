@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int poweroff_force ; 
- int /*<<< orphan*/  poweroff_work ; 
- int /*<<< orphan*/  schedule_work (int /*<<< orphan*/ *) ; 
+ int poweroff_force ;
+ int poweroff_work ;
+ int schedule_work (int *) ;
 
 void orderly_poweroff(bool force)
 {
-	if (force) /* do not override the pending "true" */
-		poweroff_force = true;
-	schedule_work(&poweroff_work);
+ if (force)
+  poweroff_force = 1;
+ schedule_work(&poweroff_work);
 }

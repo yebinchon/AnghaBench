@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct advert {int flags; int ad_id; int users; int /*<<< orphan*/  disabled_since; } ;
 
-/* Variables and functions */
- int ADF_ANCIENT ; 
- int ADF_DELAYED ; 
- int ADF_ON ; 
- int /*<<< orphan*/  active_ads ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  deactivate_ad (struct advert*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  now ; 
- int /*<<< orphan*/  process_lru_ads () ; 
- int /*<<< orphan*/  reinsert_lru_ad_last (struct advert*) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+
+
+struct advert {int flags; int ad_id; int users; int disabled_since; } ;
+
+
+ int ADF_ANCIENT ;
+ int ADF_DELAYED ;
+ int ADF_ON ;
+ int active_ads ;
+ int assert (int) ;
+ int deactivate_ad (struct advert*) ;
+ int fprintf (int ,char*,int,int) ;
+ int now ;
+ int process_lru_ads () ;
+ int reinsert_lru_ad_last (struct advert*) ;
+ int stderr ;
+ int verbosity ;
 
 __attribute__((used)) static int ad_disable (struct advert *A) {
-  if (!A) { 
-    return 0; 
+  if (!A) {
+    return 0;
   }
-  if (!(A->flags & ADF_ON)) { 
-    return 1; 
+  if (!(A->flags & ADF_ON)) {
+    return 1;
   }
   assert (!(A->flags & ADF_ANCIENT));
 

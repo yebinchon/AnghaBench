@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
-#define  SENSOR_PREVIEW_MODE 130 
-#define  SENSOR_RAW_SNAPSHOT_MODE 129 
-#define  SENSOR_SNAPSHOT_MODE 128 
- int /*<<< orphan*/  s5k3e2fx_raw_snapshot_config (int) ; 
- int /*<<< orphan*/  s5k3e2fx_snapshot_config (int) ; 
- int /*<<< orphan*/  s5k3e2fx_video_config (int,int) ; 
+
+
+
+typedef int int32_t ;
+
+
+ int EINVAL ;
+
+
+
+ int s5k3e2fx_raw_snapshot_config (int) ;
+ int s5k3e2fx_snapshot_config (int) ;
+ int s5k3e2fx_video_config (int,int) ;
 
 __attribute__((used)) static int32_t s5k3e2fx_set_sensor_mode(int mode, int res)
 {
-	int32_t rc = 0;
+ int32_t rc = 0;
 
-	switch (mode) {
-	case SENSOR_PREVIEW_MODE:
-		rc = s5k3e2fx_video_config(mode, res);
-		break;
+ switch (mode) {
+ case 130:
+  rc = s5k3e2fx_video_config(mode, res);
+  break;
 
-	case SENSOR_SNAPSHOT_MODE:
-		rc = s5k3e2fx_snapshot_config(mode);
-		break;
+ case 128:
+  rc = s5k3e2fx_snapshot_config(mode);
+  break;
 
-	case SENSOR_RAW_SNAPSHOT_MODE:
-		rc = s5k3e2fx_raw_snapshot_config(mode);
-		break;
+ case 129:
+  rc = s5k3e2fx_raw_snapshot_config(mode);
+  break;
 
-	default:
-		rc = -EINVAL;
-		break;
-	}
+ default:
+  rc = -EINVAL;
+  break;
+ }
 
-	return rc;
+ return rc;
 }

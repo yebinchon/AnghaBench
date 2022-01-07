@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64 ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint64 ;
 struct TYPE_4__ {struct TYPE_4__* ht_next; } ;
-typedef  TYPE_1__ Job ;
+typedef TYPE_1__ Job ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TUBE_ASSIGN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assertf (int,char*) ; 
- int /*<<< orphan*/  default_tube ; 
- int /*<<< orphan*/  job_free (TYPE_1__*) ; 
- TYPE_1__* make_job_with_id (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  make_tube (char*) ; 
+
+ int TUBE_ASSIGN (int ,int ) ;
+ int assertf (int,char*) ;
+ int default_tube ;
+ int job_free (TYPE_1__*) ;
+ TYPE_1__* make_job_with_id (int ,int ,int,int ,int ,int) ;
+ int make_tube (char*) ;
 
 void
 cttest_job_hash_free_next()
@@ -37,5 +37,5 @@ cttest_job_hash_free_next()
 
     job_free(b);
 
-    assertf(a->ht_next == NULL, "job should be missing");
+    assertf(a->ht_next == ((void*)0), "job should be missing");
 }

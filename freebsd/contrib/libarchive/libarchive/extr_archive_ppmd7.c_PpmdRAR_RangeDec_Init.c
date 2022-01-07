@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int Bottom; } ;
-typedef  TYPE_1__ CPpmd7z_RangeDec ;
-typedef  int /*<<< orphan*/  Bool ;
+typedef TYPE_1__ CPpmd7z_RangeDec ;
+typedef int Bool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  False ; 
- int /*<<< orphan*/  Ppmd_RangeDec_Init (TYPE_1__*) ; 
- int /*<<< orphan*/  True ; 
+
+ int False ;
+ int Ppmd_RangeDec_Init (TYPE_1__*) ;
+ int True ;
 
 __attribute__((used)) static Bool PpmdRAR_RangeDec_Init(CPpmd7z_RangeDec *p)
 {

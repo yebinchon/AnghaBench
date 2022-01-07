@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  IStillImageW ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_ACCESSDENIED ; 
- int /*<<< orphan*/  GetModuleHandleA (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStillImage_RegisterLaunchApplication (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  IStillImage_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStillImage_UnregisterLaunchApplication (int /*<<< orphan*/ *,char*) ; 
- int STI_VERSION_FLAG_UNICODE ; 
- int STI_VERSION_REAL ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (scalar_t__,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pStiCreateInstance (int /*<<< orphan*/ ,int,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * pStiCreateInstanceW ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int IStillImageW ;
+typedef int HRESULT ;
+
+
+ int E_ACCESSDENIED ;
+ int GetModuleHandleA (int *) ;
+ int IStillImage_RegisterLaunchApplication (int *,char*,char*) ;
+ int IStillImage_Release (int *) ;
+ int IStillImage_UnregisterLaunchApplication (int *,char*) ;
+ int STI_VERSION_FLAG_UNICODE ;
+ int STI_VERSION_REAL ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int ok (scalar_t__,char*,int ) ;
+ int pStiCreateInstance (int ,int,int **,int *) ;
+ int * pStiCreateInstanceW ;
+ int skip (char*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_launch_app_registry(void)
 {
     static WCHAR appName[] = {'w','i','n','e','s','t','i','t','e','s','t','a','p','p',0};
-    IStillImageW *pStiW = NULL;
+    IStillImageW *pStiW = ((void*)0);
     HRESULT hr;
 
-    if (pStiCreateInstanceW == NULL)
+    if (pStiCreateInstanceW == ((void*)0))
     {
         win_skip("No StiCreateInstanceW function\n");
         return;
     }
 
-    hr = pStiCreateInstance(GetModuleHandleA(NULL), STI_VERSION_REAL | STI_VERSION_FLAG_UNICODE, &pStiW, NULL);
+    hr = pStiCreateInstance(GetModuleHandleA(((void*)0)), STI_VERSION_REAL | STI_VERSION_FLAG_UNICODE, &pStiW, ((void*)0));
     if (SUCCEEDED(hr))
     {
         hr = IStillImage_RegisterLaunchApplication(pStiW, appName, appName);

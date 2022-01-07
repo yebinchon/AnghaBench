@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int arg_force ; 
- char* arg_repair ; 
- int arg_skip ; 
- int /*<<< orphan*/  assert (char const*) ; 
- int /*<<< orphan*/  log_warning (char*,...) ; 
- int parse_boolean (char const*) ; 
- scalar_t__ proc_cmdline_value_missing (char const*,char const*) ; 
- scalar_t__ streq (char const*,char*) ; 
+ int arg_force ;
+ char* arg_repair ;
+ int arg_skip ;
+ int assert (char const*) ;
+ int log_warning (char*,...) ;
+ int parse_boolean (char const*) ;
+ scalar_t__ proc_cmdline_value_missing (char const*,char const*) ;
+ scalar_t__ streq (char const*,char*) ;
 
 __attribute__((used)) static int parse_proc_cmdline_item(const char *key, const char *value, void *data) {
         int r;
@@ -32,11 +24,11 @@ __attribute__((used)) static int parse_proc_cmdline_item(const char *key, const 
                         return 0;
 
                 if (streq(value, "auto"))
-                        arg_force = arg_skip = false;
+                        arg_force = arg_skip = 0;
                 else if (streq(value, "force"))
-                        arg_force = true;
+                        arg_force = 1;
                 else if (streq(value, "skip"))
-                        arg_skip = true;
+                        arg_skip = 1;
                 else
                         log_warning("Invalid fsck.mode= parameter '%s'. Ignoring.", value);
 
@@ -57,17 +49,5 @@ __attribute__((used)) static int parse_proc_cmdline_item(const char *key, const 
                                 log_warning("Invalid fsck.repair= parameter '%s'. Ignoring.", value);
                 }
         }
-
-#if HAVE_SYSV_COMPAT
-        else if (streq(key, "fastboot") && !value) {
-                log_warning("Please pass 'fsck.mode=skip' rather than 'fastboot' on the kernel command line.");
-                arg_skip = true;
-
-        } else if (streq(key, "forcefsck") && !value) {
-                log_warning("Please pass 'fsck.mode=force' rather than 'forcefsck' on the kernel command line.");
-                arg_force = true;
-        }
-#endif
-
         return 0;
 }

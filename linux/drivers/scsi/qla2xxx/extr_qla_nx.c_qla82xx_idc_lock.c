@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct qla_hw_data {int dummy; } ;
 
-/* Variables and functions */
- int IDC_LOCK_TIMEOUT ; 
- int /*<<< orphan*/  PCIE_SEM5_LOCK ; 
- int /*<<< orphan*/  QLA82XX_PCIE_REG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cpu_relax () ; 
- int /*<<< orphan*/  in_interrupt () ; 
- int qla82xx_rd_32 (struct qla_hw_data*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  schedule () ; 
+
+ int IDC_LOCK_TIMEOUT ;
+ int PCIE_SEM5_LOCK ;
+ int QLA82XX_PCIE_REG (int ) ;
+ int cpu_relax () ;
+ int in_interrupt () ;
+ int qla82xx_rd_32 (struct qla_hw_data*,int ) ;
+ int schedule () ;
 
 int qla82xx_idc_lock(struct qla_hw_data *ha)
 {
-	int i;
-	int done = 0, timeout = 0;
+ int i;
+ int done = 0, timeout = 0;
 
-	while (!done) {
-		/* acquire semaphore5 from PCI HW block */
-		done = qla82xx_rd_32(ha, QLA82XX_PCIE_REG(PCIE_SEM5_LOCK));
-		if (done == 1)
-			break;
-		if (timeout >= IDC_LOCK_TIMEOUT)
-			return -1;
+ while (!done) {
 
-		timeout++;
+  done = qla82xx_rd_32(ha, QLA82XX_PCIE_REG(PCIE_SEM5_LOCK));
+  if (done == 1)
+   break;
+  if (timeout >= IDC_LOCK_TIMEOUT)
+   return -1;
 
-		/* Yield CPU */
-		if (!in_interrupt())
-			schedule();
-		else {
-			for (i = 0; i < 20; i++)
-				cpu_relax();
-		}
-	}
+  timeout++;
 
-	return 0;
+
+  if (!in_interrupt())
+   schedule();
+  else {
+   for (i = 0; i < 20; i++)
+    cpu_relax();
+  }
+ }
+
+ return 0;
 }

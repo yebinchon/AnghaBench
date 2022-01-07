@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gboolean ;
-typedef  int /*<<< orphan*/  TraverseFSTreeCallback ;
-typedef  int /*<<< orphan*/  SeafFSManager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EMPTY_SHA1 ; 
- scalar_t__ strcmp (char const*,int /*<<< orphan*/ ) ; 
- int traverse_dir (int /*<<< orphan*/ *,char const*,int,char const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int gboolean ;
+typedef int TraverseFSTreeCallback ;
+typedef int SeafFSManager ;
+
+
+ int EMPTY_SHA1 ;
+ scalar_t__ strcmp (char const*,int ) ;
+ int traverse_dir (int *,char const*,int,char const*,int ,void*,int ) ;
 
 int
 seaf_fs_manager_traverse_tree (SeafFSManager *mgr,

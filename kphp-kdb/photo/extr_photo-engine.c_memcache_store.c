@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  In; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT ; 
- int MAX_VALUE_LEN ; 
- int /*<<< orphan*/  MESSAGE (struct connection*) ; 
- int /*<<< orphan*/  RETURN (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  buf ; 
- int do_change_album (int,int,int /*<<< orphan*/ ) ; 
- int do_change_photo (int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eat_at (char const*,int,char**,int*) ; 
- int /*<<< orphan*/  get ; 
- int /*<<< orphan*/  hst (char*,char const*,int,int) ; 
- size_t mode ; 
- char** mode_names ; 
- int /*<<< orphan*/  msg_get_buf (int /*<<< orphan*/ ) ; 
- scalar_t__ msg_reinit (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  safe_read_in (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  set ; 
- int sscanf (char*,char*,int*,int*,...) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- scalar_t__ unlikely (int) ; 
+
+
+
+struct connection {int In; } ;
+
+
+ int INIT ;
+ int MAX_VALUE_LEN ;
+ int MESSAGE (struct connection*) ;
+ int RETURN (int ,int) ;
+ int buf ;
+ int do_change_album (int,int,int ) ;
+ int do_change_photo (int,int,int ) ;
+ int eat_at (char const*,int,char**,int*) ;
+ int get ;
+ int hst (char*,char const*,int,int) ;
+ size_t mode ;
+ char** mode_names ;
+ int msg_get_buf (int ) ;
+ scalar_t__ msg_reinit (int ,int,int) ;
+ int safe_read_in (int *,int ,int) ;
+ int set ;
+ int sscanf (char*,char*,int*,int*,...) ;
+ int strncmp (char*,char*,int) ;
+ scalar_t__ unlikely (int) ;
 
 int memcache_store (struct connection *c, int op, const char *old_key, int old_key_len, int flags, int delay, int size) {
   INIT;

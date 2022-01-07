@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  replica_prefix; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int replica_prefix; } ;
 struct TYPE_7__ {TYPE_1__* info; } ;
-struct TYPE_6__ {int /*<<< orphan*/  filename; } ;
+struct TYPE_6__ {int filename; } ;
 
-/* Variables and functions */
- TYPE_2__* Binlog ; 
- scalar_t__ PRIVILEGED_TCP_PORTS ; 
- int binlog_disabled ; 
- int /*<<< orphan*/  binlog_load_time ; 
- int /*<<< orphan*/  binlogname ; 
- scalar_t__ change_user (char*) ; 
- int /*<<< orphan*/  clear_log () ; 
- int /*<<< orphan*/  clear_read_log () ; 
- int /*<<< orphan*/  clear_write_log () ; 
- char* config_name ; 
- scalar_t__ dns_config_load (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dns_reset () ; 
- int dynamic_data_buffer_size ; 
- scalar_t__ engine_preload_filelist (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_3__* engine_replica ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  f_parse_option ; 
- int /*<<< orphan*/  include_binlog_name ; 
- int /*<<< orphan*/  init_dyn_data () ; 
- int /*<<< orphan*/  init_log_data (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_msg_buffers (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jump_log_pos ; 
- int /*<<< orphan*/  keep_going ; 
- int /*<<< orphan*/  kprintf (char*,char*,...) ; 
- scalar_t__ maxconn ; 
- int /*<<< orphan*/  mytime () ; 
- int /*<<< orphan*/  no_argument ; 
- TYPE_2__* open_binlog (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  open_server_sockets () ; 
- size_t optind ; 
- int /*<<< orphan*/ * output_binlog_name ; 
- int /*<<< orphan*/  parse_engine_options_long (int,char**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_option (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char,char*) ; 
- scalar_t__ port ; 
- char* progname ; 
- scalar_t__ raise_file_rlimit (scalar_t__) ; 
- int /*<<< orphan*/  remove_parse_option (int) ; 
- scalar_t__ replay_log (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  required_argument ; 
- int /*<<< orphan*/  signals_init () ; 
- int /*<<< orphan*/  srand48 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  start_server () ; 
- int /*<<< orphan*/  start_time ; 
- scalar_t__ stats_port ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usage () ; 
- char* username ; 
- int /*<<< orphan*/  vkprintf (int,char*) ; 
+
+ TYPE_2__* Binlog ;
+ scalar_t__ PRIVILEGED_TCP_PORTS ;
+ int binlog_disabled ;
+ int binlog_load_time ;
+ int binlogname ;
+ scalar_t__ change_user (char*) ;
+ int clear_log () ;
+ int clear_read_log () ;
+ int clear_write_log () ;
+ char* config_name ;
+ scalar_t__ dns_config_load (char*,int,int *) ;
+ int dns_reset () ;
+ int dynamic_data_buffer_size ;
+ scalar_t__ engine_preload_filelist (int ,int *) ;
+ TYPE_3__* engine_replica ;
+ int exit (int) ;
+ int f_parse_option ;
+ int include_binlog_name ;
+ int init_dyn_data () ;
+ int init_log_data (int ,int ,int ) ;
+ int init_msg_buffers (int ) ;
+ int jump_log_pos ;
+ int keep_going ;
+ int kprintf (char*,char*,...) ;
+ scalar_t__ maxconn ;
+ int mytime () ;
+ int no_argument ;
+ TYPE_2__* open_binlog (TYPE_3__*,int ) ;
+ int open_server_sockets () ;
+ size_t optind ;
+ int * output_binlog_name ;
+ int parse_engine_options_long (int,char**,int ) ;
+ int parse_option (char*,int ,int ,char,char*) ;
+ scalar_t__ port ;
+ char* progname ;
+ scalar_t__ raise_file_rlimit (scalar_t__) ;
+ int remove_parse_option (int) ;
+ scalar_t__ replay_log (int ,int) ;
+ int required_argument ;
+ int signals_init () ;
+ int srand48 (int ) ;
+ int start_server () ;
+ int start_time ;
+ scalar_t__ stats_port ;
+ int time (int *) ;
+ int usage () ;
+ char* username ;
+ int vkprintf (int,char*) ;
 
 int main (int argc, char *argv[]) {
   signals_init ();
@@ -84,7 +84,7 @@ int main (int argc, char *argv[]) {
   if (output_binlog_name) {
     port = stats_port = 0;
   }
-  if (!port && output_binlog_name == NULL) {
+  if (!port && output_binlog_name == ((void*)0)) {
     usage ();
   }
   config_name = argv[optind];
@@ -107,7 +107,7 @@ int main (int argc, char *argv[]) {
   dynamic_data_buffer_size = 64 << 20;
   init_dyn_data ();
   dns_reset ();
-  //TODO: replace config by binlog
+
   if (dns_config_load (config_name, !keep_going, output_binlog_name) < 0) {
     exit (1);
   }
@@ -117,7 +117,7 @@ int main (int argc, char *argv[]) {
   if (include_binlog_name) {
     binlog_load_time = -mytime ();
     binlog_disabled = 1;
-    if (engine_preload_filelist (include_binlog_name, NULL) < 0) {
+    if (engine_preload_filelist (include_binlog_name, ((void*)0)) < 0) {
       kprintf ("cannot open binlog files for %s\n", include_binlog_name);
       exit (1);
     }
@@ -141,7 +141,7 @@ int main (int argc, char *argv[]) {
     clear_write_log ();
   }
   init_msg_buffers (0);
-  start_time = time (NULL);
+  start_time = time (((void*)0));
   start_server ();
   return 0;
 }

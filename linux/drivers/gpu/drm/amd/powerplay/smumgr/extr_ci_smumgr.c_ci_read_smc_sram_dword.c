@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct pp_hwmgr {int /*<<< orphan*/  device; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cgs_read_register (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ci_set_smc_sram_address (struct pp_hwmgr*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mmSMC_IND_DATA_0 ; 
+
+
+
+typedef int uint32_t ;
+struct pp_hwmgr {int device; } ;
+
+
+ int cgs_read_register (int ,int ) ;
+ int ci_set_smc_sram_address (struct pp_hwmgr*,int ,int ) ;
+ int mmSMC_IND_DATA_0 ;
 
 __attribute__((used)) static int ci_read_smc_sram_dword(struct pp_hwmgr *hwmgr, uint32_t smc_addr,
-				uint32_t *value, uint32_t limit)
+    uint32_t *value, uint32_t limit)
 {
-	int result;
+ int result;
 
-	result = ci_set_smc_sram_address(hwmgr, smc_addr, limit);
+ result = ci_set_smc_sram_address(hwmgr, smc_addr, limit);
 
-	if (result)
-		return result;
+ if (result)
+  return result;
 
-	*value = cgs_read_register(hwmgr->device, mmSMC_IND_DATA_0);
-	return 0;
+ *value = cgs_read_register(hwmgr->device, mmSMC_IND_DATA_0);
+ return 0;
 }

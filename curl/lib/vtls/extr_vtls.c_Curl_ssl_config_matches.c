@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ssl_primary_config {scalar_t__ version; scalar_t__ version_max; scalar_t__ verifypeer; scalar_t__ verifyhost; scalar_t__ verifystatus; int /*<<< orphan*/  pinned_key; int /*<<< orphan*/  cipher_list13; int /*<<< orphan*/  cipher_list; int /*<<< orphan*/  egdsocket; int /*<<< orphan*/  random_file; int /*<<< orphan*/  clientcert; int /*<<< orphan*/  CAfile; int /*<<< orphan*/  CApath; } ;
 
-/* Variables and functions */
- scalar_t__ Curl_safe_strcasecompare (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int FALSE ; 
- int TRUE ; 
+
+
+
+struct ssl_primary_config {scalar_t__ version; scalar_t__ version_max; scalar_t__ verifypeer; scalar_t__ verifyhost; scalar_t__ verifystatus; int pinned_key; int cipher_list13; int cipher_list; int egdsocket; int random_file; int clientcert; int CAfile; int CApath; } ;
+
+
+ scalar_t__ Curl_safe_strcasecompare (int ,int ) ;
+ int FALSE ;
+ int TRUE ;
 
 bool
 Curl_ssl_config_matches(struct ssl_primary_config* data,

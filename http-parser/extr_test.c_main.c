@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct message {char* name; char* raw; int http_major; int status_code; char* response_status; int num_headers; int body_size; int num_chunks_complete; int* chunk_lengths; int /*<<< orphan*/  should_keep_alive; int /*<<< orphan*/  headers; int /*<<< orphan*/  http_minor; int /*<<< orphan*/  message_complete_on_eof; int /*<<< orphan*/  type; } ;
-typedef  int /*<<< orphan*/  http_parser ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (struct message*) ; 
- size_t BONJOUR_MADAME_FR ; 
- size_t CHUNKED_W_NONSENSE_AFTER_LENGTH ; 
- size_t CHUNKED_W_TRAILING_HEADERS ; 
- size_t CONNECT_REQUEST ; 
- int /*<<< orphan*/  FALSE ; 
- size_t GET_FUNKY_CONTENT_LENGTH ; 
- size_t GET_NO_HEADERS_NO_BODY ; 
- size_t GET_ONE_HEADER_NO_BODY ; 
- int /*<<< orphan*/  HPE_INVALID_CONSTANT ; 
- int /*<<< orphan*/  HPE_INVALID_CONTENT_LENGTH ; 
- int /*<<< orphan*/  HPE_INVALID_HEADER_TOKEN ; 
- int /*<<< orphan*/  HPE_INVALID_METHOD ; 
- int /*<<< orphan*/  HPE_INVALID_VERSION ; 
- int /*<<< orphan*/  HPE_OK ; 
- int /*<<< orphan*/  HTTP_REQUEST ; 
- int /*<<< orphan*/  HTTP_RESPONSE ; 
- unsigned int MAX_CHUNKS ; 
- size_t NO_BODY_HTTP10_KA_204 ; 
- size_t NO_CARRIAGE_RET ; 
- size_t NO_HEADERS_NO_BODY_404 ; 
- size_t NO_REASON_PHRASE ; 
- size_t POST_CHUNKED_ALL_YOUR_BASE ; 
- size_t POST_IDENTITY_BODY_WORLD ; 
- size_t PREFIX_NEWLINE_GET ; 
- size_t QUERY_URL_WITH_QUESTION_MARK_GET ; 
- size_t TRAILING_SPACE_ON_CHUNKED_BODY ; 
- size_t TWO_CHUNKS_MULT_ZERO_END ; 
- size_t UNDERSTORE_HEADER_KEY ; 
- char* create_large_chunked_message (int,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- unsigned long http_parser_version () ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  puts (char*) ; 
- struct message* requests ; 
- struct message* responses ; 
- int /*<<< orphan*/  sprintf (char*,char*,char const*) ; 
- int /*<<< orphan*/  test_chunk_content_length_overflow_error () ; 
- int /*<<< orphan*/  test_chunked_content_length_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_double_content_length_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_header_content_length_overflow_error () ; 
- int /*<<< orphan*/  test_header_cr_no_lf_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_header_nread_value () ; 
- int /*<<< orphan*/  test_header_overflow_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_invalid_header_field_content_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_invalid_header_field_token_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_message (struct message*) ; 
- int /*<<< orphan*/  test_message_connect (struct message*) ; 
- int /*<<< orphan*/  test_message_count_body (struct message*) ; 
- int /*<<< orphan*/  test_message_pause (struct message*) ; 
- int /*<<< orphan*/  test_method_str () ; 
- int /*<<< orphan*/  test_multiple3 (struct message*,struct message*,struct message*) ; 
- int /*<<< orphan*/  test_no_overflow_long_body (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  test_no_overflow_parse_url () ; 
- int /*<<< orphan*/  test_parse_url () ; 
- int /*<<< orphan*/  test_preserve_data () ; 
- int /*<<< orphan*/  test_scan (struct message*,struct message*,struct message*) ; 
- int /*<<< orphan*/  test_simple (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_simple_type (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_status_str () ; 
+
+
+
+struct message {char* name; char* raw; int http_major; int status_code; char* response_status; int num_headers; int body_size; int num_chunks_complete; int* chunk_lengths; int should_keep_alive; int headers; int http_minor; int message_complete_on_eof; int type; } ;
+typedef int http_parser ;
+
+
+ unsigned int ARRAY_SIZE (struct message*) ;
+ size_t BONJOUR_MADAME_FR ;
+ size_t CHUNKED_W_NONSENSE_AFTER_LENGTH ;
+ size_t CHUNKED_W_TRAILING_HEADERS ;
+ size_t CONNECT_REQUEST ;
+ int FALSE ;
+ size_t GET_FUNKY_CONTENT_LENGTH ;
+ size_t GET_NO_HEADERS_NO_BODY ;
+ size_t GET_ONE_HEADER_NO_BODY ;
+ int HPE_INVALID_CONSTANT ;
+ int HPE_INVALID_CONTENT_LENGTH ;
+ int HPE_INVALID_HEADER_TOKEN ;
+ int HPE_INVALID_METHOD ;
+ int HPE_INVALID_VERSION ;
+ int HPE_OK ;
+ int HTTP_REQUEST ;
+ int HTTP_RESPONSE ;
+ unsigned int MAX_CHUNKS ;
+ size_t NO_BODY_HTTP10_KA_204 ;
+ size_t NO_CARRIAGE_RET ;
+ size_t NO_HEADERS_NO_BODY_404 ;
+ size_t NO_REASON_PHRASE ;
+ size_t POST_CHUNKED_ALL_YOUR_BASE ;
+ size_t POST_IDENTITY_BODY_WORLD ;
+ size_t PREFIX_NEWLINE_GET ;
+ size_t QUERY_URL_WITH_QUESTION_MARK_GET ;
+ size_t TRAILING_SPACE_ON_CHUNKED_BODY ;
+ size_t TWO_CHUNKS_MULT_ZERO_END ;
+ size_t UNDERSTORE_HEADER_KEY ;
+ char* create_large_chunked_message (int,char*) ;
+ int free (char*) ;
+ unsigned long http_parser_version () ;
+ int printf (char*,...) ;
+ int puts (char*) ;
+ struct message* requests ;
+ struct message* responses ;
+ int sprintf (char*,char*,char const*) ;
+ int test_chunk_content_length_overflow_error () ;
+ int test_chunked_content_length_error (int ) ;
+ int test_double_content_length_error (int ) ;
+ int test_header_content_length_overflow_error () ;
+ int test_header_cr_no_lf_error (int ) ;
+ int test_header_nread_value () ;
+ int test_header_overflow_error (int ) ;
+ int test_invalid_header_field_content_error (int ) ;
+ int test_invalid_header_field_token_error (int ) ;
+ int test_message (struct message*) ;
+ int test_message_connect (struct message*) ;
+ int test_message_count_body (struct message*) ;
+ int test_message_pause (struct message*) ;
+ int test_method_str () ;
+ int test_multiple3 (struct message*,struct message*,struct message*) ;
+ int test_no_overflow_long_body (int ,int) ;
+ int test_no_overflow_parse_url () ;
+ int test_parse_url () ;
+ int test_preserve_data () ;
+ int test_scan (struct message*,struct message*,struct message*) ;
+ int test_simple (char const*,int ) ;
+ int test_simple_type (char*,int ,int ) ;
+ int test_status_str () ;
 
 int
 main (void)
@@ -92,16 +92,16 @@ main (void)
 
   printf("sizeof(http_parser) = %u\n", (unsigned int)sizeof(http_parser));
 
-  //// API
+
   test_preserve_data();
   test_parse_url();
   test_method_str();
   test_status_str();
 
-  //// NREAD
+
   test_header_nread_value();
 
-  //// OVERFLOW CONDITIONS
+
   test_no_overflow_parse_url();
 
   test_header_overflow_error(HTTP_REQUEST);
@@ -115,7 +115,7 @@ main (void)
   test_header_content_length_overflow_error();
   test_chunk_content_length_overflow_error();
 
-  //// HEADER FIELD CONDITIONS
+
   test_double_content_length_error(HTTP_REQUEST);
   test_chunked_content_length_error(HTTP_REQUEST);
   test_header_cr_no_lf_error(HTTP_REQUEST);
@@ -129,14 +129,14 @@ main (void)
 
   test_simple_type(
       "POST / HTTP/1.1\r\n"
-      "Content-Length:\r\n"  // empty
+      "Content-Length:\r\n"
       "\r\n",
       HPE_INVALID_CONTENT_LENGTH,
       HTTP_REQUEST);
 
   test_simple_type(
       "POST / HTTP/1.1\r\n"
-      "Content-Length:  42 \r\n"  // Note the surrounding whitespace.
+      "Content-Length:  42 \r\n"
       "\r\n",
       HPE_OK,
       HTTP_REQUEST);
@@ -169,7 +169,7 @@ main (void)
       HPE_OK,
       HTTP_REQUEST);
 
-  //// RESPONSES
+
 
   test_simple_type("HTP/1.1 200 OK\r\n\r\n", HPE_INVALID_VERSION, HTTP_RESPONSE);
   test_simple_type("HTTP/01.1 200 OK\r\n\r\n", HPE_INVALID_VERSION, HTTP_RESPONSE);
@@ -203,7 +203,7 @@ main (void)
   test_message_count_body(&responses[NO_HEADERS_NO_BODY_404]);
   test_message_count_body(&responses[TRAILING_SPACE_ON_CHUNKED_BODY]);
 
-  // test very large chunked response
+
   {
     char * msg = create_large_chunked_message(31337,
       "HTTP/1.0 200 OK\r\n"
@@ -252,7 +252,7 @@ main (void)
   puts("responses okay");
 
 
-  /// REQUESTS
+
 
   test_simple("GET / IHTTP/1.0\r\n\r\n", HPE_INVALID_CONSTANT);
   test_simple("GET / ICE/1.0\r\n\r\n", HPE_INVALID_CONSTANT);
@@ -264,12 +264,12 @@ main (void)
   test_simple("GET / HTTP/1.0\r\nHello: w\1rld\r\n\r\n", HPE_INVALID_HEADER_TOKEN);
   test_simple("GET / HTTP/1.0\r\nHello: woooo\2rld\r\n\r\n", HPE_INVALID_HEADER_TOKEN);
 
-  // Extended characters - see nodejs/test/parallel/test-http-headers-obstext.js
+
   test_simple("GET / HTTP/1.1\r\n"
               "Test: Düsseldorf\r\n",
               HPE_OK);
 
-  // Well-formed but incomplete
+
   test_simple("GET / HTTP/1.1\r\n"
               "Content-Type: text/plain\r\n"
               "Content-Length: 6\r\n"
@@ -283,7 +283,7 @@ main (void)
     "HEAD",
     "POST",
     "PUT",
-    //"CONNECT", //CONNECT can't be tested like other methods, it's a tunnel
+
     "OPTIONS",
     "TRACE",
     "COPY",
@@ -339,7 +339,7 @@ main (void)
     test_simple(buf, HPE_INVALID_METHOD);
   }
 
-  // illegal header field name line folding
+
   test_simple("GET / HTTP/1.1\r\n"
               "name\r\n"
               " : value\r\n"
@@ -398,23 +398,6 @@ main (void)
     "Accept-Encoding: gzip\r\n"
     "\r\n";
   test_simple(corrupted_header_name, HPE_INVALID_HEADER_TOKEN);
-
-#if 0
-  // NOTE(Wed Nov 18 11:57:27 CET 2009) this seems okay. we just read body
-  // until EOF.
-  //
-  // no content-length
-  // error if there is a body without content length
-  const char *bad_get_no_headers_no_body = "GET /bad_get_no_headers_no_body/world HTTP/1.1\r\n"
-                                           "Accept: */*\r\n"
-                                           "\r\n"
-                                           "HELLO";
-  test_simple(bad_get_no_headers_no_body, 0);
-#endif
-  /* TODO sending junk and large headers gets rejected */
-
-
-  /* check to make sure our predefined requests are okay */
   for (i = 0; i < ARRAY_SIZE(requests); i++) {
     test_message(&requests[i]);
   }

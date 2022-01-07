@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  sda_tx; int /*<<< orphan*/  sda_sublist_idx; int /*<<< orphan*/  sda_list; } ;
-typedef  TYPE_1__ sync_dnodes_arg_t ;
-typedef  int /*<<< orphan*/  multilist_sublist_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dmu_objset_sync_dnodes (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kmem_free (TYPE_1__*,int) ; 
- int /*<<< orphan*/ * multilist_sublist_lock (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  multilist_sublist_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int sda_tx; int sda_sublist_idx; int sda_list; } ;
+typedef TYPE_1__ sync_dnodes_arg_t ;
+typedef int multilist_sublist_t ;
+
+
+ int dmu_objset_sync_dnodes (int *,int ) ;
+ int kmem_free (TYPE_1__*,int) ;
+ int * multilist_sublist_lock (int ,int ) ;
+ int multilist_sublist_unlock (int *) ;
 
 __attribute__((used)) static void
 sync_dnodes_task(void *arg)
 {
-	sync_dnodes_arg_t *sda = arg;
+ sync_dnodes_arg_t *sda = arg;
 
-	multilist_sublist_t *ms =
-	    multilist_sublist_lock(sda->sda_list, sda->sda_sublist_idx);
+ multilist_sublist_t *ms =
+     multilist_sublist_lock(sda->sda_list, sda->sda_sublist_idx);
 
-	dmu_objset_sync_dnodes(ms, sda->sda_tx);
+ dmu_objset_sync_dnodes(ms, sda->sda_tx);
 
-	multilist_sublist_unlock(ms);
+ multilist_sublist_unlock(ms);
 
-	kmem_free(sda, sizeof (*sda));
+ kmem_free(sda, sizeof (*sda));
 }

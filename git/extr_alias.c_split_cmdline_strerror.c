@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char const** split_cmdline_errors ; 
+ char const** split_cmdline_errors ;
 
 const char *split_cmdline_strerror(int split_cmdline_errno)
 {
-	return split_cmdline_errors[-split_cmdline_errno - 1];
+ return split_cmdline_errors[-split_cmdline_errno - 1];
 }

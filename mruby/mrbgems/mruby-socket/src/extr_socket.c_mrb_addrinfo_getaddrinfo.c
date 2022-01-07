@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct addrinfo {int ai_flags; int ai_family; int ai_socktype; int ai_protocol; int /*<<< orphan*/  ai_addrlen; scalar_t__ ai_addr; struct addrinfo* ai_next; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  scalar_t__ mrb_int ;
-typedef  int /*<<< orphan*/  hints ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_SOCKET_ERROR ; 
- int /*<<< orphan*/  E_TYPE_ERROR ; 
- char* RSTRING_CSTR (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* RSTRING_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  freeaddrinfo (struct addrinfo*) ; 
- int /*<<< orphan*/  gai_strerror (int) ; 
- int getaddrinfo (char const*,char const*,struct addrinfo*,struct addrinfo**) ; 
- int /*<<< orphan*/  memset (struct addrinfo*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mrb_ary_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_ary_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_cptr (int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_cptr_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_cptr_value (int /*<<< orphan*/ *,struct addrinfo*) ; 
- int /*<<< orphan*/  mrb_cv_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_cv_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_fixnum (int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_fixnum_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_fixnum_to_str (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mrb_fixnum_value (int) ; 
- int /*<<< orphan*/  mrb_funcall (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_gc_arena_restore (int /*<<< orphan*/ *,int) ; 
- int mrb_gc_arena_save (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  mrb_intern_lit (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ mrb_nil_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_nil_value () ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mrb_raisef (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_str_new (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_string_p (int /*<<< orphan*/ ) ; 
+
+
+
+struct addrinfo {int ai_flags; int ai_family; int ai_socktype; int ai_protocol; int ai_addrlen; scalar_t__ ai_addr; struct addrinfo* ai_next; } ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef scalar_t__ mrb_int ;
+typedef int hints ;
+
+
+ int E_SOCKET_ERROR ;
+ int E_TYPE_ERROR ;
+ char* RSTRING_CSTR (int *,int ) ;
+ char* RSTRING_PTR (int ) ;
+ int freeaddrinfo (struct addrinfo*) ;
+ int gai_strerror (int) ;
+ int getaddrinfo (char const*,char const*,struct addrinfo*,struct addrinfo**) ;
+ int memset (struct addrinfo*,int ,int) ;
+ int mrb_ary_new (int *) ;
+ int mrb_ary_push (int *,int ,int ) ;
+ scalar_t__ mrb_cptr (int ) ;
+ scalar_t__ mrb_cptr_p (int ) ;
+ int mrb_cptr_value (int *,struct addrinfo*) ;
+ int mrb_cv_get (int *,int ,int ) ;
+ int mrb_cv_set (int *,int ,int ,int ) ;
+ scalar_t__ mrb_fixnum (int ) ;
+ scalar_t__ mrb_fixnum_p (int ) ;
+ int mrb_fixnum_to_str (int *,int ,int) ;
+ int mrb_fixnum_value (int) ;
+ int mrb_funcall (int *,int ,char*,int,int ,int ,int ,int ) ;
+ int mrb_gc_arena_restore (int *,int) ;
+ int mrb_gc_arena_save (int *) ;
+ int mrb_get_args (int *,char*,int *,int *,int *,int *,int *,scalar_t__*) ;
+ int mrb_intern_lit (int *,char*) ;
+ scalar_t__ mrb_nil_p (int ) ;
+ int mrb_nil_value () ;
+ int mrb_raise (int *,int ,char*) ;
+ int mrb_raisef (int *,int ,char*,int ) ;
+ int mrb_str_new (int *,char*,int ) ;
+ scalar_t__ mrb_string_p (int ) ;
 
 __attribute__((used)) static mrb_value
 mrb_addrinfo_getaddrinfo(mrb_state *mrb, mrb_value klass)
@@ -55,10 +55,10 @@ mrb_addrinfo_getaddrinfo(mrb_state *mrb, mrb_value klass)
   mrb_value ai, ary, family, lastai, nodename, protocol, sa, service, socktype;
   mrb_int flags;
   int arena_idx, error;
-  const char *hostname = NULL, *servname = NULL;
+  const char *hostname = ((void*)0), *servname = ((void*)0);
 
   ary = mrb_ary_new(mrb);
-  arena_idx = mrb_gc_arena_save(mrb);  /* ary must be on arena! */
+  arena_idx = mrb_gc_arena_save(mrb);
 
   family = socktype = protocol = mrb_nil_value();
   flags = 0;
@@ -67,7 +67,7 @@ mrb_addrinfo_getaddrinfo(mrb_state *mrb, mrb_value klass)
   if (mrb_string_p(nodename)) {
     hostname = RSTRING_CSTR(mrb, nodename);
   } else if (mrb_nil_p(nodename)) {
-    hostname = NULL;
+    hostname = ((void*)0);
   } else {
     mrb_raise(mrb, E_TYPE_ERROR, "nodename must be String or nil");
   }
@@ -77,7 +77,7 @@ mrb_addrinfo_getaddrinfo(mrb_state *mrb, mrb_value klass)
   } else if (mrb_fixnum_p(service)) {
     servname = RSTRING_PTR(mrb_fixnum_to_str(mrb, service, 10));
   } else if (mrb_nil_p(service)) {
-    servname = NULL;
+    servname = ((void*)0);
   } else {
     mrb_raise(mrb, E_TYPE_ERROR, "service must be String, Fixnum, or nil");
   }
@@ -109,7 +109,7 @@ mrb_addrinfo_getaddrinfo(mrb_state *mrb, mrb_value klass)
   }
   mrb_cv_set(mrb, klass, mrb_intern_lit(mrb, "_lastai"), mrb_cptr_value(mrb, res0));
 
-  for (res = res0; res != NULL; res = res->ai_next) {
+  for (res = res0; res != ((void*)0); res = res->ai_next) {
     sa = mrb_str_new(mrb, (char*)res->ai_addr, res->ai_addrlen);
     ai = mrb_funcall(mrb, klass, "new", 4, sa, mrb_fixnum_value(res->ai_family), mrb_fixnum_value(res->ai_socktype), mrb_fixnum_value(res->ai_protocol));
     mrb_ary_push(mrb, ary, ai);

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
 
-/* Variables and functions */
- double const VP8LFastLog2 (scalar_t__ const) ; 
- int /*<<< orphan*/  memset (double*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef scalar_t__ uint32_t ;
+
+
+ double const VP8LFastLog2 (scalar_t__ const) ;
+ int memset (double*,int ,int) ;
 
 __attribute__((used)) static void ConvertPopulationCountTableToBitEstimates(
     int num_symbols, const uint32_t population_counts[], double output[]) {

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_5__ {int MaxCharSize; char UnicodeDefaultChar; void** LeadByte; scalar_t__ DefaultChar; int /*<<< orphan*/  CodePage; } ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int DWORD ;
-typedef  TYPE_1__ CPINFOEXA ;
-typedef  void* BYTE ;
 
-/* Variables and functions */
- int MAX_LEADBYTES ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ isspace (char) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  patch_codepage_info (TYPE_1__*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ strstr (char*,char*) ; 
- int strtol (char*,char**,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int buf ;
+typedef char WCHAR ;
+typedef int UINT ;
+struct TYPE_5__ {int MaxCharSize; char UnicodeDefaultChar; void** LeadByte; scalar_t__ DefaultChar; int CodePage; } ;
+typedef int FILE ;
+typedef int DWORD ;
+typedef TYPE_1__ CPINFOEXA ;
+typedef void* BYTE ;
+
+
+ int MAX_LEADBYTES ;
+ int fclose (int *) ;
+ scalar_t__ fgets (char*,int,int *) ;
+ int * fopen (char*,char*) ;
+ int free (char*) ;
+ scalar_t__ isspace (char) ;
+ scalar_t__ malloc (int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int patch_codepage_info (TYPE_1__*) ;
+ int printf (char*,...) ;
+ scalar_t__ strstr (char*,char*) ;
+ int strtol (char*,char**,int ) ;
 
 __attribute__((used)) static WCHAR *Load_CP2Unicode_Table(char *table_name, UINT cp, CPINFOEXA *cpi)
 {
@@ -45,7 +45,7 @@ __attribute__((used)) static WCHAR *Load_CP2Unicode_Table(char *table_name, UINT
 
     printf("Loading translation table \"%s\"\n", table_name);
 
-    /* Init to default values */
+
     memset(cpi, 0, sizeof(CPINFOEXA));
     cpi->CodePage = cp;
     *(WCHAR *)cpi->DefaultChar = '?';
@@ -57,7 +57,7 @@ __attribute__((used)) static WCHAR *Load_CP2Unicode_Table(char *table_name, UINT
     table = (WCHAR *)malloc(sizeof(WCHAR) * 65536);
     if(!table) {
         printf("Not enough memory for Codepage to Unicode table\n");
-        return NULL;
+        return ((void*)0);
     }
 
     for(n = 0; n < 256; n++)
@@ -67,9 +67,9 @@ __attribute__((used)) static WCHAR *Load_CP2Unicode_Table(char *table_name, UINT
         table[n] = cpi->UnicodeDefaultChar;
 
     file = fopen(table_name, "r");
-    if(file == NULL) {
+    if(file == ((void*)0)) {
         free(table);
-        return NULL;
+        return ((void*)0);
     }
 
     line = 0;
@@ -91,14 +91,14 @@ __attribute__((used)) static WCHAR *Load_CP2Unicode_Table(char *table_name, UINT
         }
 
         if(n > 0xFF && cpi->MaxCharSize != 2) {
-            /*printf("Line %d: Entry 0x%04lX: Switching to DBCS\n", line, n);*/
+
             cpi->MaxCharSize = 2;
         }
 
         while(isspace(*p)) p++;
 
         if(!*p || p[0] == '#') {
-            /*printf("Line %d: Entry 0x%02lX has no Unicode value\n", line, n);*/
+
         }
         else {
             value = strtol(p, &p, 0);
@@ -108,11 +108,11 @@ __attribute__((used)) static WCHAR *Load_CP2Unicode_Table(char *table_name, UINT
             table[n] = (WCHAR)value;
         }
 
-        /* wait for comment */
+
         while(*p && *p != '#') p++;
 
         if(*p == '#' && strstr(p, "DBCS LEAD BYTE")) {
-            /*printf("Line %d, entry 0x%02lX DBCS LEAD BYTE\n", line, n);*/
+
             if(n > 0xFF) {
                 printf("Line %d: Entry 0x%04lX: Error: DBCS lead byte overflowed\n", line, n);
                 continue;
@@ -124,7 +124,7 @@ __attribute__((used)) static WCHAR *Load_CP2Unicode_Table(char *table_name, UINT
                 cpi->LeadByte[(lb_ranges - 1) * 2 + 1] = (BYTE)n;
             }
             else {
-                /*printf("Line %d: Starting new DBCS lead byte range, entry 0x%02lX\n", line, n);*/
+
                 if(lb_ranges < MAX_LEADBYTES/2) {
                     lb_ranges++;
                     lb_range_started = 1;

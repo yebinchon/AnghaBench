@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TREE_VEC_ELT (int /*<<< orphan*/ ,int) ; 
- int TREE_VEC_LENGTH (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  template_args_equal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+
+
+ int TREE_VEC_ELT (int ,int) ;
+ int TREE_VEC_LENGTH (int ) ;
+ int template_args_equal (int ,int ) ;
 
 int
 comp_template_args (tree oldargs, tree newargs)
@@ -31,7 +31,7 @@ comp_template_args (tree oldargs, tree newargs)
       tree ot = TREE_VEC_ELT (oldargs, i);
 
       if (! template_args_equal (ot, nt))
-	return 0;
+ return 0;
     }
   return 1;
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vbdisp_t ;
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  VarMonthName (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  return_bstr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  to_int (int /*<<< orphan*/ *,int*) ; 
+
+
+
+typedef int vbdisp_t ;
+typedef int VARIANT ;
+typedef int HRESULT ;
+typedef int BSTR ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int TRACE (char*) ;
+ int VarMonthName (int,int,int ,int *) ;
+ int assert (int) ;
+ int return_bstr (int *,int ) ;
+ int to_int (int *,int*) ;
 
 __attribute__((used)) static HRESULT Global_MonthName(vbdisp_t *This, VARIANT *args, unsigned args_cnt, VARIANT *res)
 {

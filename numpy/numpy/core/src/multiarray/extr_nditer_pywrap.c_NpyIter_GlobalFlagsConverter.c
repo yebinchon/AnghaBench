@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  npy_uint32 ;
-typedef  int Py_ssize_t ;
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NPY_ITER_BUFFERED ; 
- int /*<<< orphan*/  NPY_ITER_COMMON_DTYPE ; 
- int /*<<< orphan*/  NPY_ITER_COPY_IF_OVERLAP ; 
- int /*<<< orphan*/  NPY_ITER_C_INDEX ; 
- int /*<<< orphan*/  NPY_ITER_DELAY_BUFALLOC ; 
- int /*<<< orphan*/  NPY_ITER_EXTERNAL_LOOP ; 
- int /*<<< orphan*/  NPY_ITER_F_INDEX ; 
- int /*<<< orphan*/  NPY_ITER_GROWINNER ; 
- int /*<<< orphan*/  NPY_ITER_MULTI_INDEX ; 
- int /*<<< orphan*/  NPY_ITER_RANGED ; 
- int /*<<< orphan*/  NPY_ITER_REDUCE_OK ; 
- int /*<<< orphan*/  NPY_ITER_REFS_OK ; 
- int /*<<< orphan*/  NPY_ITER_ZEROSIZE_OK ; 
- scalar_t__ PyBytes_AsStringAndSize (int /*<<< orphan*/ *,char**,int*) ; 
- int /*<<< orphan*/  PyErr_Format (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- int /*<<< orphan*/  PyList_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PySequence_GetItem (int /*<<< orphan*/ *,int) ; 
- int PySequence_Size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyTuple_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyUnicode_AsASCIIString (int /*<<< orphan*/ *) ; 
- scalar_t__ PyUnicode_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Py_None ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
+
+
+
+typedef int npy_uint32 ;
+typedef int Py_ssize_t ;
+typedef int PyObject ;
+
+
+ int NPY_ITER_BUFFERED ;
+ int NPY_ITER_COMMON_DTYPE ;
+ int NPY_ITER_COPY_IF_OVERLAP ;
+ int NPY_ITER_C_INDEX ;
+ int NPY_ITER_DELAY_BUFALLOC ;
+ int NPY_ITER_EXTERNAL_LOOP ;
+ int NPY_ITER_F_INDEX ;
+ int NPY_ITER_GROWINNER ;
+ int NPY_ITER_MULTI_INDEX ;
+ int NPY_ITER_RANGED ;
+ int NPY_ITER_REDUCE_OK ;
+ int NPY_ITER_REFS_OK ;
+ int NPY_ITER_ZEROSIZE_OK ;
+ scalar_t__ PyBytes_AsStringAndSize (int *,char**,int*) ;
+ int PyErr_Format (int ,char*,char*) ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_ValueError ;
+ int PyList_Check (int *) ;
+ int * PySequence_GetItem (int *,int) ;
+ int PySequence_Size (int *) ;
+ int PyTuple_Check (int *) ;
+ int * PyUnicode_AsASCIIString (int *) ;
+ scalar_t__ PyUnicode_Check (int *) ;
+ int Py_DECREF (int *) ;
+ int * Py_None ;
+ int strcmp (char*,char*) ;
 
 __attribute__((used)) static int
 NpyIter_GlobalFlagsConverter(PyObject *flags_in, npy_uint32 *flags)
@@ -49,11 +49,11 @@ NpyIter_GlobalFlagsConverter(PyObject *flags_in, npy_uint32 *flags)
     int iflags, nflags;
 
     PyObject *f;
-    char *str = NULL;
+    char *str = ((void*)0);
     Py_ssize_t length = 0;
     npy_uint32 flag;
 
-    if (flags_in == NULL || flags_in == Py_None) {
+    if (flags_in == ((void*)0) || flags_in == Py_None) {
         return 1;
     }
 
@@ -67,15 +67,15 @@ NpyIter_GlobalFlagsConverter(PyObject *flags_in, npy_uint32 *flags)
 
     for (iflags = 0; iflags < nflags; ++iflags) {
         f = PySequence_GetItem(flags_in, iflags);
-        if (f == NULL) {
+        if (f == ((void*)0)) {
             return 0;
         }
 
         if (PyUnicode_Check(f)) {
-            /* accept unicode input */
+
             PyObject *f_str;
             f_str = PyUnicode_AsASCIIString(f);
-            if (f_str == NULL) {
+            if (f_str == ((void*)0)) {
                 Py_DECREF(f);
                 return 0;
             }
@@ -87,7 +87,7 @@ NpyIter_GlobalFlagsConverter(PyObject *flags_in, npy_uint32 *flags)
             Py_DECREF(f);
             return 0;
         }
-        /* Use switch statements to quickly isolate the right flag */
+
         flag = 0;
         switch (str[0]) {
             case 'b':
@@ -130,10 +130,10 @@ NpyIter_GlobalFlagsConverter(PyObject *flags_in, npy_uint32 *flags)
                 }
                 break;
             case 'g':
-                /*
-                 * Documentation is grow_inner, but initial implementation
-                 * was growinner, so allowing for either.
-                 */
+
+
+
+
                 if (strcmp(str, "grow_inner") == 0 ||
                             strcmp(str, "growinner") == 0) {
                     flag = NPY_ITER_GROWINNER;

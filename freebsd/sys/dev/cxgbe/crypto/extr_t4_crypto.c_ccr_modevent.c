@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  module_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CPL_FW6_PLD ; 
- int EOPNOTSUPP ; 
-#define  MOD_LOAD 129 
-#define  MOD_UNLOAD 128 
- int /*<<< orphan*/ * do_cpl6_fw_pld ; 
- int /*<<< orphan*/  t4_register_cpl_handler (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int module_t ;
+
+
+ int CPL_FW6_PLD ;
+ int EOPNOTSUPP ;
+
+
+ int * do_cpl6_fw_pld ;
+ int t4_register_cpl_handler (int ,int *) ;
 
 __attribute__((used)) static int
 ccr_modevent(module_t mod, int cmd, void *arg)
 {
 
-	switch (cmd) {
-	case MOD_LOAD:
-		t4_register_cpl_handler(CPL_FW6_PLD, do_cpl6_fw_pld);
-		return (0);
-	case MOD_UNLOAD:
-		t4_register_cpl_handler(CPL_FW6_PLD, NULL);
-		return (0);
-	default:
-		return (EOPNOTSUPP);
-	}
+ switch (cmd) {
+ case 129:
+  t4_register_cpl_handler(CPL_FW6_PLD, do_cpl6_fw_pld);
+  return (0);
+ case 128:
+  t4_register_cpl_handler(CPL_FW6_PLD, ((void*)0));
+  return (0);
+ default:
+  return (EOPNOTSUPP);
+ }
 }

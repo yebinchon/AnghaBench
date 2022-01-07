@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int* a1 ; 
- int* a2 ; 
- int defaultint ; 
- int /*<<< orphan*/  expect (int,int) ; 
- int /*<<< orphan*/  expect_string (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expectl (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * intp ; 
- int /*<<< orphan*/  l1 ; 
- int* p1 ; 
- int /*<<< orphan*/  print (char*) ; 
- int /*<<< orphan*/  s1 ; 
- int /*<<< orphan*/  s2 ; 
- int val ; 
- int x1 ; 
- int x2 ; 
- int x3 ; 
- int x4 ; 
- int x5 ; 
- int x6 ; 
+ int* a1 ;
+ int* a2 ;
+ int defaultint ;
+ int expect (int,int) ;
+ int expect_string (char*,int ) ;
+ int expectl (int,int ) ;
+ int * intp ;
+ int l1 ;
+ int* p1 ;
+ int print (char*) ;
+ int s1 ;
+ int s2 ;
+ int val ;
+ int x1 ;
+ int x2 ;
+ int x3 ;
+ int x4 ;
+ int x5 ;
+ int x6 ;
 
 void testmain() {
     print("global variable");

@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WORD ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int /*<<< orphan*/  PSDevice ;
-typedef  scalar_t__ BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BBvCaculateParameter (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  CARDvCaculateOFDMRParameter (int /*<<< orphan*/ ,scalar_t__,scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  CONTROLnsRequestOut (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,scalar_t__*) ; 
- int /*<<< orphan*/  MAC_REG_RSPINF_B_1 ; 
- int /*<<< orphan*/  MESSAGE_REQUEST_MACREG ; 
- int /*<<< orphan*/  MESSAGE_TYPE_WRITE ; 
- int /*<<< orphan*/  PK_TYPE_11B ; 
- int /*<<< orphan*/  RATE_11M ; 
- int /*<<< orphan*/  RATE_12M ; 
- int /*<<< orphan*/  RATE_18M ; 
- int /*<<< orphan*/  RATE_1M ; 
- int /*<<< orphan*/  RATE_24M ; 
- int /*<<< orphan*/  RATE_2M ; 
- int /*<<< orphan*/  RATE_36M ; 
- int /*<<< orphan*/  RATE_48M ; 
- int /*<<< orphan*/  RATE_54M ; 
- int /*<<< orphan*/  RATE_5M ; 
- int /*<<< orphan*/  RATE_6M ; 
- int /*<<< orphan*/  RATE_9M ; 
- int /*<<< orphan*/  swGetCCKControlRate (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  swGetOFDMControlRate (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int WORD ;
+typedef int PVOID ;
+typedef int PSDevice ;
+typedef scalar_t__ BYTE ;
+
+
+ int BBvCaculateParameter (int ,int,int ,int ,int*,scalar_t__*,scalar_t__*) ;
+ int CARDvCaculateOFDMRParameter (int ,scalar_t__,scalar_t__*,scalar_t__*) ;
+ int CONTROLnsRequestOut (int ,int ,int ,int ,int,scalar_t__*) ;
+ int MAC_REG_RSPINF_B_1 ;
+ int MESSAGE_REQUEST_MACREG ;
+ int MESSAGE_TYPE_WRITE ;
+ int PK_TYPE_11B ;
+ int RATE_11M ;
+ int RATE_12M ;
+ int RATE_18M ;
+ int RATE_1M ;
+ int RATE_24M ;
+ int RATE_2M ;
+ int RATE_36M ;
+ int RATE_48M ;
+ int RATE_54M ;
+ int RATE_5M ;
+ int RATE_6M ;
+ int RATE_9M ;
+ int swGetCCKControlRate (int ,int ) ;
+ int swGetOFDMControlRate (int ,int ) ;
 
 void CARDvSetRSPINF (PVOID pDeviceHandler, BYTE byBBType)
 {
-    PSDevice    pDevice = (PSDevice) pDeviceHandler;
-    BYTE    abyServ[4] = {0,0,0,0};             // For CCK
-    BYTE    abySignal[4] = {0,0,0,0};
-    WORD    awLen[4] = {0,0,0,0};
-    BYTE    abyTxRate[9] = {0,0,0,0,0,0,0,0,0}; // For OFDM
-    BYTE    abyRsvTime[9] = {0,0,0,0,0,0,0,0,0};
-    BYTE    abyData[34];
-    int     i;
+    PSDevice pDevice = (PSDevice) pDeviceHandler;
+    BYTE abyServ[4] = {0,0,0,0};
+    BYTE abySignal[4] = {0,0,0,0};
+    WORD awLen[4] = {0,0,0,0};
+    BYTE abyTxRate[9] = {0,0,0,0,0,0,0,0,0};
+    BYTE abyRsvTime[9] = {0,0,0,0,0,0,0,0,0};
+    BYTE abyData[34];
+    int i;
 
-    //RSPINF_b_1
+
     BBvCaculateParameter(pDevice,
                          14,
                          swGetCCKControlRate(pDevice, RATE_1M),
@@ -59,7 +59,7 @@ void CARDvSetRSPINF (PVOID pDeviceHandler, BYTE byBBType)
                          &abySignal[0]
     );
 
-    ///RSPINF_b_2
+
     BBvCaculateParameter(pDevice,
                          14,
                          swGetCCKControlRate(pDevice, RATE_2M),
@@ -69,7 +69,7 @@ void CARDvSetRSPINF (PVOID pDeviceHandler, BYTE byBBType)
                          &abySignal[1]
     );
 
-    //RSPINF_b_5
+
     BBvCaculateParameter(pDevice,
                          14,
                          swGetCCKControlRate(pDevice, RATE_5M),
@@ -79,7 +79,7 @@ void CARDvSetRSPINF (PVOID pDeviceHandler, BYTE byBBType)
                          &abySignal[2]
     );
 
-    //RSPINF_b_11
+
     BBvCaculateParameter(pDevice,
                          14,
                          swGetCCKControlRate(pDevice, RATE_11M),
@@ -89,55 +89,55 @@ void CARDvSetRSPINF (PVOID pDeviceHandler, BYTE byBBType)
                          &abySignal[3]
     );
 
-    //RSPINF_a_6
+
     CARDvCaculateOFDMRParameter (RATE_6M,
                                  byBBType,
                                  &abyTxRate[0],
                                  &abyRsvTime[0]);
 
-    //RSPINF_a_9
+
     CARDvCaculateOFDMRParameter (RATE_9M,
                                  byBBType,
                                  &abyTxRate[1],
                                  &abyRsvTime[1]);
 
-    //RSPINF_a_12
+
     CARDvCaculateOFDMRParameter (RATE_12M,
                                  byBBType,
                                  &abyTxRate[2],
                                  &abyRsvTime[2]);
 
-    //RSPINF_a_18
+
     CARDvCaculateOFDMRParameter (RATE_18M,
                                  byBBType,
                                  &abyTxRate[3],
                                  &abyRsvTime[3]);
 
-    //RSPINF_a_24
+
     CARDvCaculateOFDMRParameter (RATE_24M,
                                  byBBType,
                                  &abyTxRate[4],
                                  &abyRsvTime[4]);
 
-    //RSPINF_a_36
+
     CARDvCaculateOFDMRParameter (swGetOFDMControlRate(pDevice, RATE_36M),
                                  byBBType,
                                  &abyTxRate[5],
                                  &abyRsvTime[5]);
 
-    //RSPINF_a_48
+
     CARDvCaculateOFDMRParameter (swGetOFDMControlRate(pDevice, RATE_48M),
                                  byBBType,
                                  &abyTxRate[6],
                                  &abyRsvTime[6]);
 
-    //RSPINF_a_54
+
     CARDvCaculateOFDMRParameter (swGetOFDMControlRate(pDevice, RATE_54M),
                                  byBBType,
                                  &abyTxRate[7],
                                  &abyRsvTime[7]);
 
-    //RSPINF_a_72
+
     CARDvCaculateOFDMRParameter (swGetOFDMControlRate(pDevice, RATE_54M),
                                  byBBType,
                                  &abyTxRate[8],

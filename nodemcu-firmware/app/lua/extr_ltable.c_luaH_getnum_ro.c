@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TValue ;
 
-/* Variables and functions */
- int /*<<< orphan*/  const* luaO_nilobject ; 
+
+
+
+typedef int TValue ;
+
+
+ int const* luaO_nilobject ;
 
 const TValue *luaH_getnum_ro (void *t, int key) {
-  const TValue *res = NULL;  // integer values not supported: luaR_findentryN(t, key, NULL);
+  const TValue *res = ((void*)0);
   return res ? res : luaO_nilobject;
 }

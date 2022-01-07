@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  NameData ;
-typedef  int /*<<< orphan*/  const* Name ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NAMEDATALEN ; 
- int /*<<< orphan*/  NameStr (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  StrNCpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int NameData ;
+typedef int const* Name ;
+
+
+ int NAMEDATALEN ;
+ int NameStr (int const) ;
+ int StrNCpy (int ,int ,int ) ;
 
 int
 namecpy(Name n1, const NameData *n2)
 {
-	if (!n1 || !n2)
-		return -1;
-	StrNCpy(NameStr(*n1), NameStr(*n2), NAMEDATALEN);
-	return 0;
+ if (!n1 || !n2)
+  return -1;
+ StrNCpy(NameStr(*n1), NameStr(*n2), NAMEDATALEN);
+ return 0;
 }

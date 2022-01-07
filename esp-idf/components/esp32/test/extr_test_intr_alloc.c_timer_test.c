@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  timer_isr_handle_t ;
 
-/* Variables and functions */
- int ESP_INTR_FLAG_INTRDISABLED ; 
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- int /*<<< orphan*/  TIMER_0 ; 
- int /*<<< orphan*/  TIMER_1 ; 
- int /*<<< orphan*/  TIMER_GROUP_0 ; 
- int /*<<< orphan*/  TIMER_GROUP_1 ; 
- int* count ; 
- int /*<<< orphan*/  esp_intr_disable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_intr_enable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_intr_free (int /*<<< orphan*/ ) ; 
- int esp_intr_get_intno (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  my_timer_init (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int portTICK_PERIOD_MS ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  timer_isr ; 
- int /*<<< orphan*/  timer_isr_register (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  timer_start (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vTaskDelay (int) ; 
+
+
+
+typedef int timer_isr_handle_t ;
+
+
+ int ESP_INTR_FLAG_INTRDISABLED ;
+ int TEST_ASSERT (int) ;
+ int TIMER_0 ;
+ int TIMER_1 ;
+ int TIMER_GROUP_0 ;
+ int TIMER_GROUP_1 ;
+ int* count ;
+ int esp_intr_disable (int ) ;
+ int esp_intr_enable (int ) ;
+ int esp_intr_free (int ) ;
+ int esp_intr_get_intno (int ) ;
+ int my_timer_init (int ,int ,int) ;
+ int portTICK_PERIOD_MS ;
+ int printf (char*,...) ;
+ int timer_isr ;
+ int timer_isr_register (int ,int ,int ,void*,int,int *) ;
+ int timer_start (int ,int ) ;
+ int vTaskDelay (int) ;
 
 __attribute__((used)) static void timer_test(int flags) {
     int x;

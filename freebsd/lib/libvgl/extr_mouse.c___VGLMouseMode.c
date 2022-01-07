@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  VYsize; int /*<<< orphan*/  VXsize; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INTOFF () ; 
- int /*<<< orphan*/  INTON () ; 
- int /*<<< orphan*/  VGLDisplay ; 
- TYPE_1__* VGLMouseAndMask ; 
- int VGLMouseShown ; 
- int /*<<< orphan*/  VGLMouseXpos ; 
- int /*<<< orphan*/  VGLMouseYpos ; 
- int /*<<< orphan*/  VGLVDisplay ; 
- int VGL_MOUSEHIDE ; 
- int VGL_MOUSESHOW ; 
- int /*<<< orphan*/  __VGLBitmapCopy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int VYsize; int VXsize; } ;
+
+
+ int INTOFF () ;
+ int INTON () ;
+ int VGLDisplay ;
+ TYPE_1__* VGLMouseAndMask ;
+ int VGLMouseShown ;
+ int VGLMouseXpos ;
+ int VGLMouseYpos ;
+ int VGLVDisplay ;
+ int VGL_MOUSEHIDE ;
+ int VGL_MOUSESHOW ;
+ int __VGLBitmapCopy (int *,int ,int ,int ,int ,int ,int ,int ) ;
 
 int
 __VGLMouseMode(int mode)

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SYSTEMTIME ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int /*<<< orphan*/  FILETIME ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CompareFileTime (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SystemTimeToFileTime (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int SYSTEMTIME ;
+typedef int LONG ;
+typedef int FILETIME ;
+
+
+ int CompareFileTime (int *,int *) ;
+ int SystemTimeToFileTime (int const*,int *) ;
 
 LONG MONTHCAL_CompareSystemTime(const SYSTEMTIME *first, const SYSTEMTIME *second)
 {

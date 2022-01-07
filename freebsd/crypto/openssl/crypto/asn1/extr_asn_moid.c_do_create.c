@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_F_DO_CREATE ; 
- int /*<<< orphan*/  ASN1err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int NID_undef ; 
- int OBJ_create (char const*,char const*,char const*) ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
- char* OPENSSL_malloc (int) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- scalar_t__ ossl_isspace (char const) ; 
- char* strrchr (char const*,char) ; 
+ int ASN1_F_DO_CREATE ;
+ int ASN1err (int ,int ) ;
+ int ERR_R_MALLOC_FAILURE ;
+ int NID_undef ;
+ int OBJ_create (char const*,char const*,char const*) ;
+ int OPENSSL_free (char*) ;
+ char* OPENSSL_malloc (int) ;
+ int memcpy (char*,char const*,int) ;
+ scalar_t__ ossl_isspace (char const) ;
+ char* strrchr (char const*,char) ;
 
 __attribute__((used)) static int do_create(const char *value, const char *name)
 {
     int nid;
     const char *ln, *ostr, *p;
-    char *lntmp = NULL;
+    char *lntmp = ((void*)0);
 
     p = strrchr(value, ',');
-    if (p == NULL) {
+    if (p == ((void*)0)) {
         ln = name;
         ostr = value;
     } else {
@@ -49,7 +41,7 @@ __attribute__((used)) static int do_create(const char *value, const char *name)
             p--;
         }
         p++;
-        if ((lntmp = OPENSSL_malloc((p - ln) + 1)) == NULL) {
+        if ((lntmp = OPENSSL_malloc((p - ln) + 1)) == ((void*)0)) {
             ASN1err(ASN1_F_DO_CREATE, ERR_R_MALLOC_FAILURE);
             return 0;
         }

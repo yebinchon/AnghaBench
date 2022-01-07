@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct arguments {int /*<<< orphan*/  with_property; } ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct arguments {int with_property; } ;
 struct TYPE_12__ {char* name; } ;
-struct TYPE_11__ {int /*<<< orphan*/  metric; int /*<<< orphan*/  name; } ;
-struct TYPE_10__ {int /*<<< orphan*/  bytes; } ;
-typedef  scalar_t__* TAOS_ROW ;
-typedef  TYPE_1__ TAOS_FIELD ;
-typedef  TYPE_2__ STableRecord ;
-typedef  TYPE_3__ SDbInfo ;
-typedef  int /*<<< orphan*/  FILE ;
+struct TYPE_11__ {int metric; int name; } ;
+struct TYPE_10__ {int bytes; } ;
+typedef scalar_t__* TAOS_ROW ;
+typedef TYPE_1__ TAOS_FIELD ;
+typedef TYPE_2__ STableRecord ;
+typedef TYPE_3__ SDbInfo ;
+typedef int FILE ;
 
-/* Variables and functions */
- int O_CREAT ; 
- int O_RDWR ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int S_IRGRP ; 
- int S_IROTH ; 
- int S_IRWXU ; 
- int S_IXGRP ; 
- size_t TSDB_SHOW_TABLES_METRIC_INDEX ; 
- size_t TSDB_SHOW_TABLES_NAME_INDEX ; 
- char* command ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  lseek (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int open (char*,int,int) ; 
- scalar_t__ read (int,TYPE_2__*,int) ; 
- int /*<<< orphan*/  remove (char*) ; 
- int /*<<< orphan*/ * result ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strncpy (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  taos ; 
- int /*<<< orphan*/  taosDumpCreateDbClause (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  taosDumpTable (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct arguments*,int /*<<< orphan*/ *) ; 
- TYPE_1__* taos_fetch_fields (int /*<<< orphan*/ *) ; 
- scalar_t__* taos_fetch_row (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  taos_free_result (int /*<<< orphan*/ *) ; 
- scalar_t__ taos_query (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * taos_use_result (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tclose (int) ; 
- int /*<<< orphan*/  twrite (int,TYPE_2__*,int) ; 
+
+ int O_CREAT ;
+ int O_RDWR ;
+ int SEEK_SET ;
+ int S_IRGRP ;
+ int S_IROTH ;
+ int S_IRWXU ;
+ int S_IXGRP ;
+ size_t TSDB_SHOW_TABLES_METRIC_INDEX ;
+ size_t TSDB_SHOW_TABLES_NAME_INDEX ;
+ char* command ;
+ int fprintf (int ,char*,...) ;
+ int lseek (int,int ,int ) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int open (char*,int,int) ;
+ scalar_t__ read (int,TYPE_2__*,int) ;
+ int remove (char*) ;
+ int * result ;
+ int sprintf (char*,char*,...) ;
+ int stderr ;
+ int strncpy (int ,char*,int ) ;
+ int taos ;
+ int taosDumpCreateDbClause (TYPE_3__*,int ,int *) ;
+ int taosDumpTable (int ,int ,struct arguments*,int *) ;
+ TYPE_1__* taos_fetch_fields (int *) ;
+ scalar_t__* taos_fetch_row (int *) ;
+ int taos_free_result (int *) ;
+ scalar_t__ taos_query (int ,char*) ;
+ int * taos_use_result (int ) ;
+ int tclose (int) ;
+ int twrite (int,TYPE_2__*,int) ;
 
 int taosDumpDb(SDbInfo *dbInfo, struct arguments *arguments, FILE *fp) {
   TAOS_ROW row;
@@ -77,7 +77,7 @@ int taosDumpDb(SDbInfo *dbInfo, struct arguments *arguments, FILE *fp) {
   }
 
   result = taos_use_result(taos);
-  if (result == NULL) {
+  if (result == ((void*)0)) {
     fprintf(stderr, "failed to use result\n");
     return -1;
   }
@@ -91,7 +91,7 @@ int taosDumpDb(SDbInfo *dbInfo, struct arguments *arguments, FILE *fp) {
     return -1;
   }
 
-  while ((row = taos_fetch_row(result)) != NULL) {
+  while ((row = taos_fetch_row(result)) != ((void*)0)) {
     memset(&tableRecord, 0, sizeof(STableRecord));
     strncpy(tableRecord.name, (char *)row[TSDB_SHOW_TABLES_NAME_INDEX], fields[TSDB_SHOW_TABLES_NAME_INDEX].bytes);
     strncpy(tableRecord.metric, (char *)row[TSDB_SHOW_TABLES_METRIC_INDEX], fields[TSDB_SHOW_TABLES_METRIC_INDEX].bytes);

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  robj ;
-typedef  int /*<<< orphan*/  rio ;
-typedef  int /*<<< orphan*/  hashTypeIterator ;
 
-/* Variables and functions */
- long long AOF_REWRITE_ITEMS_PER_CMD ; 
- scalar_t__ C_ERR ; 
- int /*<<< orphan*/  OBJ_HASH_KEY ; 
- int /*<<< orphan*/  OBJ_HASH_VALUE ; 
- int /*<<< orphan*/ * hashTypeInitIterator (int /*<<< orphan*/ *) ; 
- long long hashTypeLength (int /*<<< orphan*/ *) ; 
- scalar_t__ hashTypeNext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hashTypeReleaseIterator (int /*<<< orphan*/ *) ; 
- scalar_t__ rioWriteBulkCount (int /*<<< orphan*/ *,char,int) ; 
- scalar_t__ rioWriteBulkObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ rioWriteBulkString (int /*<<< orphan*/ *,char*,int) ; 
- scalar_t__ rioWriteHashIteratorCursor (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int robj ;
+typedef int rio ;
+typedef int hashTypeIterator ;
+
+
+ long long AOF_REWRITE_ITEMS_PER_CMD ;
+ scalar_t__ C_ERR ;
+ int OBJ_HASH_KEY ;
+ int OBJ_HASH_VALUE ;
+ int * hashTypeInitIterator (int *) ;
+ long long hashTypeLength (int *) ;
+ scalar_t__ hashTypeNext (int *) ;
+ int hashTypeReleaseIterator (int *) ;
+ scalar_t__ rioWriteBulkCount (int *,char,int) ;
+ scalar_t__ rioWriteBulkObject (int *,int *) ;
+ scalar_t__ rioWriteBulkString (int *,char*,int) ;
+ scalar_t__ rioWriteHashIteratorCursor (int *,int *,int ) ;
 
 int rewriteHashObject(rio *r, robj *key, robj *o) {
     hashTypeIterator *hi;

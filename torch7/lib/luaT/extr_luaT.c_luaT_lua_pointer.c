@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ luaT_iscdata (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaT_pushpointer (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  luaT_typename (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_isfunction (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_isstring (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_istable (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_isthread (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_isuserdata (int /*<<< orphan*/ *,int) ; 
- void* lua_topointer (int /*<<< orphan*/ *,int) ; 
- char* lua_tostring (int /*<<< orphan*/ *,int) ; 
- void** lua_touserdata (int /*<<< orphan*/ *,int) ; 
- int lua_type (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int luaL_argcheck (int *,int ,int,char*) ;
+ int luaL_error (int *,char*) ;
+ scalar_t__ luaT_iscdata (int *,int) ;
+ int luaT_pushpointer (int *,char const*) ;
+ int luaT_typename (int *,int) ;
+ scalar_t__ lua_isfunction (int *,int) ;
+ scalar_t__ lua_isstring (int *,int) ;
+ scalar_t__ lua_istable (int *,int) ;
+ scalar_t__ lua_isthread (int *,int) ;
+ scalar_t__ lua_isuserdata (int *,int) ;
+ void* lua_topointer (int *,int) ;
+ char* lua_tostring (int *,int) ;
+ void** lua_touserdata (int *,int) ;
+ int lua_type (int *,int) ;
 
 int luaT_lua_pointer(lua_State *L)
 {
-  if(lua_type(L, 1) == 10) /* luajit cdata */
+  if(lua_type(L, 1) == 10)
   {
-    /* we want the pointer holded by cdata */
-    /* not the pointer on the cdata object */
+
+
     const void* ptr = *((void**)lua_topointer(L, 1));
     luaT_pushpointer(L, ptr);
     return 1;
   }
-  else if (luaT_iscdata(L, 1)) /* luaffi cdata */
+  else if (luaT_iscdata(L, 1))
   {
     void** ptr = (void**)lua_touserdata(L, 1);
     luaT_pushpointer(L, ptr[4]);

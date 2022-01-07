@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {scalar_t__ i_table_id; scalar_t__ i_extension_id; int /*<<< orphan*/  p_callback_data; int /*<<< orphan*/  (* pf_callback ) (int /*<<< orphan*/ *,size_t,size_t,size_t,size_t,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_1__ ts_sections_processor_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {scalar_t__ i_table_id; scalar_t__ i_extension_id; int p_callback_data; int (* pf_callback ) (int *,size_t,size_t,size_t,size_t,int ) ;} ;
+typedef TYPE_1__ ts_sections_processor_t ;
 struct TYPE_7__ {scalar_t__ p_sys; } ;
-typedef  TYPE_2__ dvbpsi_t ;
+typedef TYPE_2__ dvbpsi_t ;
 struct TYPE_8__ {size_t p_payload_end; size_t p_data; scalar_t__ i_table_id; scalar_t__ i_extension; size_t p_payload_start; scalar_t__ b_syntax_indicator; struct TYPE_8__* p_next; } ;
-typedef  TYPE_3__ dvbpsi_psi_section_t ;
-typedef  int /*<<< orphan*/  demux_t ;
+typedef TYPE_3__ dvbpsi_psi_section_t ;
+typedef int demux_t ;
 
-/* Variables and functions */
- scalar_t__ likely (int /*<<< orphan*/  (*) (int /*<<< orphan*/ *,size_t,size_t,size_t,size_t,int /*<<< orphan*/ )) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,size_t,size_t,size_t,size_t,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ likely (int (*) (int *,size_t,size_t,size_t,size_t,int )) ;
+ int stub1 (int *,size_t,size_t,size_t,size_t,int ) ;
 
 __attribute__((used)) static void ts_subdecoder_rawsection_Callback( dvbpsi_t *p_dvbpsi,
                                                const dvbpsi_psi_section_t* p_section,

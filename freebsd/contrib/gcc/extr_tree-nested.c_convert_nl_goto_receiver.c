@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree_stmt_iterator ;
-typedef  int /*<<< orphan*/  tree ;
-struct walk_stmt_info {int /*<<< orphan*/  tsi; struct nesting_info* info; } ;
-struct var_map_elt {int /*<<< orphan*/  new; int /*<<< orphan*/  old; } ;
-struct nesting_info {int /*<<< orphan*/  var_map; } ;
 
-/* Variables and functions */
- scalar_t__ GOTO_EXPR ; 
- scalar_t__ LABEL_EXPR ; 
- int /*<<< orphan*/  LABEL_EXPR_LABEL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NULL_TREE ; 
- scalar_t__ TREE_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TSI_SAME_STMT ; 
- scalar_t__ block_may_fallthru (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  build1 (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ htab_find (int /*<<< orphan*/ ,struct var_map_elt*) ; 
- scalar_t__ tsi_end_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tsi_link_before (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tsi_prev (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tsi_stmt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  void_type_node ; 
+
+
+
+typedef int tree_stmt_iterator ;
+typedef int tree ;
+struct walk_stmt_info {int tsi; struct nesting_info* info; } ;
+struct var_map_elt {int new; int old; } ;
+struct nesting_info {int var_map; } ;
+
+
+ scalar_t__ GOTO_EXPR ;
+ scalar_t__ LABEL_EXPR ;
+ int LABEL_EXPR_LABEL (int ) ;
+ int NULL_TREE ;
+ scalar_t__ TREE_CODE (int ) ;
+ int TSI_SAME_STMT ;
+ scalar_t__ block_may_fallthru (int ) ;
+ int build1 (scalar_t__,int ,int ) ;
+ scalar_t__ htab_find (int ,struct var_map_elt*) ;
+ scalar_t__ tsi_end_p (int ) ;
+ int tsi_link_before (int *,int ,int ) ;
+ int tsi_prev (int *) ;
+ int tsi_stmt (int ) ;
+ int void_type_node ;
 
 __attribute__((used)) static tree
 convert_nl_goto_receiver (tree *tp, int *walk_subtrees, void *data)
@@ -52,8 +52,8 @@ convert_nl_goto_receiver (tree *tp, int *walk_subtrees, void *data)
     return NULL_TREE;
   new_label = elt->new;
 
-  /* If there's any possibility that the previous statement falls through,
-     then we must branch around the new non-local label.  */
+
+
   tmp_tsi = wi->tsi;
   tsi_prev (&tmp_tsi);
   if (tsi_end_p (tmp_tsi) || block_may_fallthru (tsi_stmt (tmp_tsi)))

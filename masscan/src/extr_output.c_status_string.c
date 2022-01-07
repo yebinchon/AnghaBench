@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum PortStatus { ____Placeholder_PortStatus } PortStatus ;
 
-/* Variables and functions */
-#define  PortStatus_Arp 130 
-#define  PortStatus_Closed 129 
-#define  PortStatus_Open 128 
+
+
+
+typedef enum PortStatus { ____Placeholder_PortStatus } PortStatus ;
+
+
+
+
+
 
 const char *
 status_string(enum PortStatus status)
 {
     switch (status) {
-        case PortStatus_Open: return "open";
-        case PortStatus_Closed: return "closed";
-        case PortStatus_Arp: return "up";
+        case 128: return "open";
+        case 129: return "closed";
+        case 130: return "up";
         default: return "unknown";
     }
 }

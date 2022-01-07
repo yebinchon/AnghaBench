@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
 
-/* Variables and functions */
- scalar_t__ NSEC_PER_SEC ; 
- int /*<<< orphan*/  clock_lock_init () ; 
- int /*<<< orphan*/  clock_oldconfig () ; 
- int /*<<< orphan*/  lck_attr_alloc_init () ; 
- int /*<<< orphan*/  lck_grp_alloc_init (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lck_grp_attr_alloc_init () ; 
- int /*<<< orphan*/  lck_mtx_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nanoseconds_to_absolutetime (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ntp_init () ; 
- int /*<<< orphan*/  settime_lock ; 
- int /*<<< orphan*/  settime_lock_attr ; 
- int /*<<< orphan*/  settime_lock_grp ; 
- int /*<<< orphan*/  settime_lock_grp_attr ; 
- int /*<<< orphan*/  ticks_per_sec ; 
+
+
+
+typedef int uint64_t ;
+
+
+ scalar_t__ NSEC_PER_SEC ;
+ int clock_lock_init () ;
+ int clock_oldconfig () ;
+ int lck_attr_alloc_init () ;
+ int lck_grp_alloc_init (char*,int ) ;
+ int lck_grp_attr_alloc_init () ;
+ int lck_mtx_init (int *,int ,int ) ;
+ int nanoseconds_to_absolutetime (int ,int *) ;
+ int ntp_init () ;
+ int settime_lock ;
+ int settime_lock_attr ;
+ int settime_lock_grp ;
+ int settime_lock_grp_attr ;
+ int ticks_per_sec ;
 
 void
 clock_config(void)
 {
 
-	clock_lock_init();
+ clock_lock_init();
 
-	settime_lock_grp_attr = lck_grp_attr_alloc_init();
-	settime_lock_grp = lck_grp_alloc_init("settime grp", settime_lock_grp_attr);
-	settime_lock_attr = lck_attr_alloc_init();
-	lck_mtx_init(&settime_lock, settime_lock_grp, settime_lock_attr);
+ settime_lock_grp_attr = lck_grp_attr_alloc_init();
+ settime_lock_grp = lck_grp_alloc_init("settime grp", settime_lock_grp_attr);
+ settime_lock_attr = lck_attr_alloc_init();
+ lck_mtx_init(&settime_lock, settime_lock_grp, settime_lock_attr);
 
-	clock_oldconfig();
+ clock_oldconfig();
 
-	ntp_init();
+ ntp_init();
 
-	nanoseconds_to_absolutetime((uint64_t)NSEC_PER_SEC, &ticks_per_sec);
+ nanoseconds_to_absolutetime((uint64_t)NSEC_PER_SEC, &ticks_per_sec);
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
-struct TYPE_8__ {int /*<<< orphan*/  dwInFlags; int /*<<< orphan*/  cDig; } ;
-typedef  int /*<<< orphan*/  OLECHAR ;
-typedef  TYPE_1__ NUMPARSE ;
-typedef  int /*<<< orphan*/  LCID ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_1__ BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CP_ACP ; 
- int FAILDIG ; 
- int /*<<< orphan*/  LOCALE_NOUSEROVERRIDE ; 
- int /*<<< orphan*/  MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  pVarParseNumFromStr (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,TYPE_1__*) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int ULONG ;
+struct TYPE_8__ {int dwInFlags; int cDig; } ;
+typedef int OLECHAR ;
+typedef TYPE_1__ NUMPARSE ;
+typedef int LCID ;
+typedef int INT ;
+typedef int HRESULT ;
+typedef TYPE_1__ BYTE ;
+
+
+ int ARRAY_SIZE (int *) ;
+ int CP_ACP ;
+ int FAILDIG ;
+ int LOCALE_NOUSEROVERRIDE ;
+ int MultiByteToWideChar (int ,int ,char const*,int,int *,int ) ;
+ int memset (TYPE_1__*,int,int) ;
+ int pVarParseNumFromStr (int *,int ,int ,TYPE_1__*,TYPE_1__*) ;
 
 __attribute__((used)) static HRESULT convert_str( const char *str, INT dig, ULONG flags,
                             NUMPARSE *np, BYTE rgb[128], LCID lcid )

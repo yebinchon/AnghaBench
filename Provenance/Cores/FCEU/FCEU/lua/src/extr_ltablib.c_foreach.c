@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_TFUNCTION ; 
- int /*<<< orphan*/  LUA_TTABLE ; 
- int /*<<< orphan*/  luaL_checktype (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_call (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  lua_isnil (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_next (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int LUA_TFUNCTION ;
+ int LUA_TTABLE ;
+ int luaL_checktype (int *,int,int ) ;
+ int lua_call (int *,int,int) ;
+ int lua_isnil (int *,int) ;
+ scalar_t__ lua_next (int *,int) ;
+ int lua_pop (int *,int) ;
+ int lua_pushnil (int *) ;
+ int lua_pushvalue (int *,int) ;
 
 __attribute__((used)) static int foreach (lua_State *L) {
   luaL_checktype(L, 1, LUA_TTABLE);
   luaL_checktype(L, 2, LUA_TFUNCTION);
-  lua_pushnil(L);  /* first key */
+  lua_pushnil(L);
   while (lua_next(L, 1)) {
-    lua_pushvalue(L, 2);  /* function */
-    lua_pushvalue(L, -3);  /* key */
-    lua_pushvalue(L, -3);  /* value */
+    lua_pushvalue(L, 2);
+    lua_pushvalue(L, -3);
+    lua_pushvalue(L, -3);
     lua_call(L, 2, 1);
     if (!lua_isnil(L, -1))
       return 1;
-    lua_pop(L, 2);  /* remove value and result */
+    lua_pop(L, 2);
   }
   return 0;
 }

@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct usb_interface {int dummy; } ;
-struct kingsun_cb {int /*<<< orphan*/  netdev; int /*<<< orphan*/  in_buf; int /*<<< orphan*/  out_buf; int /*<<< orphan*/ * rx_urb; int /*<<< orphan*/ * tx_urb; } ;
+struct kingsun_cb {int netdev; int in_buf; int out_buf; int * rx_urb; int * tx_urb; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free_netdev (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unregister_netdev (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usb_free_urb (int /*<<< orphan*/ *) ; 
- struct kingsun_cb* usb_get_intfdata (struct usb_interface*) ; 
- int /*<<< orphan*/  usb_kill_urb (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usb_set_intfdata (struct usb_interface*,int /*<<< orphan*/ *) ; 
+
+ int free_netdev (int ) ;
+ int kfree (int ) ;
+ int unregister_netdev (int ) ;
+ int usb_free_urb (int *) ;
+ struct kingsun_cb* usb_get_intfdata (struct usb_interface*) ;
+ int usb_kill_urb (int *) ;
+ int usb_set_intfdata (struct usb_interface*,int *) ;
 
 __attribute__((used)) static void kingsun_disconnect(struct usb_interface *intf)
 {
-	struct kingsun_cb *kingsun = usb_get_intfdata(intf);
+ struct kingsun_cb *kingsun = usb_get_intfdata(intf);
 
-	if (!kingsun)
-		return;
+ if (!kingsun)
+  return;
 
-	unregister_netdev(kingsun->netdev);
+ unregister_netdev(kingsun->netdev);
 
-	/* Mop up receive && transmit urb's */
-	if (kingsun->tx_urb != NULL) {
-		usb_kill_urb(kingsun->tx_urb);
-		usb_free_urb(kingsun->tx_urb);
-		kingsun->tx_urb = NULL;
-	}
-	if (kingsun->rx_urb != NULL) {
-		usb_kill_urb(kingsun->rx_urb);
-		usb_free_urb(kingsun->rx_urb);
-		kingsun->rx_urb = NULL;
-	}
 
-	kfree(kingsun->out_buf);
-	kfree(kingsun->in_buf);
-	free_netdev(kingsun->netdev);
+ if (kingsun->tx_urb != ((void*)0)) {
+  usb_kill_urb(kingsun->tx_urb);
+  usb_free_urb(kingsun->tx_urb);
+  kingsun->tx_urb = ((void*)0);
+ }
+ if (kingsun->rx_urb != ((void*)0)) {
+  usb_kill_urb(kingsun->rx_urb);
+  usb_free_urb(kingsun->rx_urb);
+  kingsun->rx_urb = ((void*)0);
+ }
 
-	usb_set_intfdata(intf, NULL);
+ kfree(kingsun->out_buf);
+ kfree(kingsun->in_buf);
+ free_netdev(kingsun->netdev);
+
+ usb_set_intfdata(intf, ((void*)0));
 }

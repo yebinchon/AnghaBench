@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  npy_off_t ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * NpyPath_PathlikeToFspath (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArg_ParseTupleAndKeywords (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,char**,int /*<<< orphan*/ **,char**,char**) ; 
- scalar_t__ PyArray_ToFile (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,char*) ; 
- scalar_t__ PyBytes_Check (int /*<<< orphan*/ *) ; 
- scalar_t__ PyUnicode_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_RETURN_NONE ; 
- int /*<<< orphan*/  Py_SETREF (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ npy_PyFile_CloseFile (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * npy_PyFile_Dup2 (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- scalar_t__ npy_PyFile_DupClose2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  npy_PyFile_OpenFile (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int npy_off_t ;
+typedef int PyObject ;
+typedef int PyArrayObject ;
+typedef int FILE ;
+
+
+ int * NpyPath_PathlikeToFspath (int *) ;
+ int PyArg_ParseTupleAndKeywords (int *,int *,char*,char**,int **,char**,char**) ;
+ scalar_t__ PyArray_ToFile (int *,int *,char*,char*) ;
+ scalar_t__ PyBytes_Check (int *) ;
+ scalar_t__ PyUnicode_Check (int *) ;
+ int Py_DECREF (int *) ;
+ int Py_RETURN_NONE ;
+ int Py_SETREF (int *,int ) ;
+ scalar_t__ npy_PyFile_CloseFile (int *) ;
+ int * npy_PyFile_Dup2 (int *,char*,int *) ;
+ scalar_t__ npy_PyFile_DupClose2 (int *,int *,int ) ;
+ int npy_PyFile_OpenFile (int *,char*) ;
 
 __attribute__((used)) static PyObject *
 array_tofile(PyArrayObject *self, PyObject *args, PyObject *kwds)
@@ -38,23 +38,23 @@ array_tofile(PyArrayObject *self, PyObject *args, PyObject *kwds)
     char *sep = "";
     char *format = "";
     npy_off_t orig_pos = 0;
-    static char *kwlist[] = {"file", "sep", "format", NULL};
+    static char *kwlist[] = {"file", "sep", "format", ((void*)0)};
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O|ss:tofile", kwlist,
                                      &file,
                                      &sep,
                                      &format)) {
-        return NULL;
+        return ((void*)0);
     }
 
     file = NpyPath_PathlikeToFspath(file);
-    if (file == NULL) {
-        return NULL;
+    if (file == ((void*)0)) {
+        return ((void*)0);
     }
     if (PyBytes_Check(file) || PyUnicode_Check(file)) {
         Py_SETREF(file, npy_PyFile_OpenFile(file, "wb"));
-        if (file == NULL) {
-            return NULL;
+        if (file == ((void*)0)) {
+            return ((void*)0);
         }
         own = 1;
     }
@@ -63,7 +63,7 @@ array_tofile(PyArrayObject *self, PyObject *args, PyObject *kwds)
     }
 
     fd = npy_PyFile_Dup2(file, "wb", &orig_pos);
-    if (fd == NULL) {
+    if (fd == ((void*)0)) {
         goto fail;
     }
     if (PyArray_ToFile(self, fd, sep, format) < 0) {
@@ -80,5 +80,5 @@ array_tofile(PyArrayObject *self, PyObject *args, PyObject *kwds)
 
 fail:
     Py_DECREF(file);
-    return NULL;
+    return ((void*)0);
 }

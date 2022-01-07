@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_3__* gsskrb5_ctx ;
-typedef  int /*<<< orphan*/  gss_buffer_set_t ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef TYPE_3__* gsskrb5_ctx ;
+typedef int gss_buffer_set_t ;
 struct TYPE_10__ {int length; unsigned char* value; } ;
-typedef  TYPE_4__ gss_buffer_desc ;
-typedef  int /*<<< orphan*/  buf ;
-struct TYPE_9__ {int /*<<< orphan*/  ctx_id_mutex; TYPE_2__* ticket; } ;
-struct TYPE_7__ {int /*<<< orphan*/  flags; } ;
+typedef TYPE_4__ gss_buffer_desc ;
+typedef int buf ;
+struct TYPE_9__ {int ctx_id_mutex; TYPE_2__* ticket; } ;
+struct TYPE_7__ {int flags; } ;
 struct TYPE_8__ {TYPE_1__ ticket; } ;
-typedef  int /*<<< orphan*/  OM_uint32 ;
+typedef int OM_uint32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  GSS_S_BAD_MECH ; 
- int /*<<< orphan*/  HEIMDAL_MUTEX_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HEIMDAL_MUTEX_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TicketFlags2int (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _gsskrb5_encode_om_uint32 (int /*<<< orphan*/ ,unsigned char*) ; 
- int /*<<< orphan*/  _gsskrb5_set_status (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  gss_add_buffer_set_member (int /*<<< orphan*/ *,TYPE_4__*,int /*<<< orphan*/ *) ; 
+
+ int EINVAL ;
+ int GSS_S_BAD_MECH ;
+ int HEIMDAL_MUTEX_lock (int *) ;
+ int HEIMDAL_MUTEX_unlock (int *) ;
+ int TicketFlags2int (int ) ;
+ int _gsskrb5_encode_om_uint32 (int ,unsigned char*) ;
+ int _gsskrb5_set_status (int ,char*) ;
+ int gss_add_buffer_set_member (int *,TYPE_4__*,int *) ;
 
 __attribute__((used)) static OM_uint32 inquire_sec_context_tkt_flags
            (OM_uint32 *minor_status,
@@ -45,11 +45,11 @@ __attribute__((used)) static OM_uint32 inquire_sec_context_tkt_flags
 
     HEIMDAL_MUTEX_lock(&context_handle->ctx_id_mutex);
 
-    if (context_handle->ticket == NULL) {
-	HEIMDAL_MUTEX_unlock(&context_handle->ctx_id_mutex);
-	_gsskrb5_set_status(EINVAL, "No ticket from which to obtain flags");
-	*minor_status = EINVAL;
-	return GSS_S_BAD_MECH;
+    if (context_handle->ticket == ((void*)0)) {
+ HEIMDAL_MUTEX_unlock(&context_handle->ctx_id_mutex);
+ _gsskrb5_set_status(EINVAL, "No ticket from which to obtain flags");
+ *minor_status = EINVAL;
+ return GSS_S_BAD_MECH;
     }
 
     tkt_flags = TicketFlags2int(context_handle->ticket->ticket.flags);
@@ -60,6 +60,6 @@ __attribute__((used)) static OM_uint32 inquire_sec_context_tkt_flags
     value.value = buf;
 
     return gss_add_buffer_set_member(minor_status,
-				     &value,
-				     data_set);
+         &value,
+         data_set);
 }

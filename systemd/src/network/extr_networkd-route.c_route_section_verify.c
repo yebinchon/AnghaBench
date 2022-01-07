@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  line; int /*<<< orphan*/  filename; } ;
-struct TYPE_8__ {scalar_t__ n_static_addresses; int /*<<< orphan*/  filename; } ;
-struct TYPE_7__ {scalar_t__ family; int gateway_onlink; int /*<<< orphan*/  gw; int /*<<< orphan*/  scope; int /*<<< orphan*/  type; int /*<<< orphan*/  scope_set; int /*<<< orphan*/  table; int /*<<< orphan*/  table_set; TYPE_3__* section; } ;
-typedef  TYPE_1__ Route ;
-typedef  TYPE_2__ Network ;
 
-/* Variables and functions */
- scalar_t__ AF_INET6 ; 
- scalar_t__ AF_UNSPEC ; 
- int EINVAL ; 
- scalar_t__ IN_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  RTN_ANYCAST ; 
- int /*<<< orphan*/  RTN_BROADCAST ; 
- int /*<<< orphan*/  RTN_LOCAL ; 
- int /*<<< orphan*/  RTN_NAT ; 
- int /*<<< orphan*/  RT_SCOPE_HOST ; 
- int /*<<< orphan*/  RT_SCOPE_LINK ; 
- int /*<<< orphan*/  RT_TABLE_LOCAL ; 
- int /*<<< orphan*/  SYNTHETIC_ERRNO (int) ; 
- int /*<<< orphan*/  assert (TYPE_3__*) ; 
- scalar_t__ in_addr_is_null (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  log_warning (char*,int /*<<< orphan*/ ) ; 
- int log_warning_errno (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ section_is_invalid (TYPE_3__*) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int line; int filename; } ;
+struct TYPE_8__ {scalar_t__ n_static_addresses; int filename; } ;
+struct TYPE_7__ {scalar_t__ family; int gateway_onlink; int gw; int scope; int type; int scope_set; int table; int table_set; TYPE_3__* section; } ;
+typedef TYPE_1__ Route ;
+typedef TYPE_2__ Network ;
+
+
+ scalar_t__ AF_INET6 ;
+ scalar_t__ AF_UNSPEC ;
+ int EINVAL ;
+ scalar_t__ IN_SET (int ,int ,int ,...) ;
+ int RTN_ANYCAST ;
+ int RTN_BROADCAST ;
+ int RTN_LOCAL ;
+ int RTN_NAT ;
+ int RT_SCOPE_HOST ;
+ int RT_SCOPE_LINK ;
+ int RT_TABLE_LOCAL ;
+ int SYNTHETIC_ERRNO (int) ;
+ int assert (TYPE_3__*) ;
+ scalar_t__ in_addr_is_null (scalar_t__,int *) ;
+ int log_warning (char*,int ) ;
+ int log_warning_errno (int ,char*,int ,int ) ;
+ scalar_t__ section_is_invalid (TYPE_3__*) ;
 
 int route_section_verify(Route *route, Network *network) {
         if (section_is_invalid(route->section))
@@ -70,7 +70,7 @@ int route_section_verify(Route *route, Network *network) {
                 log_warning("%s: Gateway= without static address configured. "
                             "Enabling GatewayOnLink= option.",
                             network->filename);
-                route->gateway_onlink = true;
+                route->gateway_onlink = 1;
         }
 
         return 0;

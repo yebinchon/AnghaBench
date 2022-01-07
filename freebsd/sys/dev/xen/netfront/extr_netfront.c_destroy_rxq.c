@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  sring; } ;
-struct netfront_rxq {TYPE_1__ ring; int /*<<< orphan*/  rx_refill; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_DEVBUF ; 
- int /*<<< orphan*/  callout_drain (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int sring; } ;
+struct netfront_rxq {TYPE_1__ ring; int rx_refill; } ;
+
+
+ int M_DEVBUF ;
+ int callout_drain (int *) ;
+ int free (int ,int ) ;
 
 __attribute__((used)) static void
 destroy_rxq(struct netfront_rxq *rxq)
 {
 
-	callout_drain(&rxq->rx_refill);
-	free(rxq->ring.sring, M_DEVBUF);
+ callout_drain(&rxq->rx_refill);
+ free(rxq->ring.sring, M_DEVBUF);
 }

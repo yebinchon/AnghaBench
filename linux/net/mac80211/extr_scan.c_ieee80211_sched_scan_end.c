@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  wiphy; } ;
-struct ieee80211_local {TYPE_1__ hw; int /*<<< orphan*/  mtx; int /*<<< orphan*/  sched_scan_req; int /*<<< orphan*/  sched_scan_sdata; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RCU_INIT_POINTER (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cfg80211_sched_scan_stopped (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rcu_access_pointer (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int wiphy; } ;
+struct ieee80211_local {TYPE_1__ hw; int mtx; int sched_scan_req; int sched_scan_sdata; } ;
+
+
+ int RCU_INIT_POINTER (int ,int *) ;
+ int cfg80211_sched_scan_stopped (int ,int ) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int rcu_access_pointer (int ) ;
 
 void ieee80211_sched_scan_end(struct ieee80211_local *local)
 {
-	mutex_lock(&local->mtx);
+ mutex_lock(&local->mtx);
 
-	if (!rcu_access_pointer(local->sched_scan_sdata)) {
-		mutex_unlock(&local->mtx);
-		return;
-	}
+ if (!rcu_access_pointer(local->sched_scan_sdata)) {
+  mutex_unlock(&local->mtx);
+  return;
+ }
 
-	RCU_INIT_POINTER(local->sched_scan_sdata, NULL);
+ RCU_INIT_POINTER(local->sched_scan_sdata, ((void*)0));
 
-	/* If sched scan was aborted by the driver. */
-	RCU_INIT_POINTER(local->sched_scan_req, NULL);
 
-	mutex_unlock(&local->mtx);
+ RCU_INIT_POINTER(local->sched_scan_req, ((void*)0));
 
-	cfg80211_sched_scan_stopped(local->hw.wiphy, 0);
+ mutex_unlock(&local->mtx);
+
+ cfg80211_sched_scan_stopped(local->hw.wiphy, 0);
 }

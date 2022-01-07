@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  kobj; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int kobj; } ;
 struct platform_device {TYPE_1__ dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dcdbas_attr_group ; 
- int /*<<< orphan*/  dcdbas_reboot_nb ; 
- int /*<<< orphan*/  sysfs_remove_group (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  unregister_reboot_notifier (int /*<<< orphan*/ *) ; 
+
+ int dcdbas_attr_group ;
+ int dcdbas_reboot_nb ;
+ int sysfs_remove_group (int *,int *) ;
+ int unregister_reboot_notifier (int *) ;
 
 __attribute__((used)) static int dcdbas_remove(struct platform_device *dev)
 {
-	unregister_reboot_notifier(&dcdbas_reboot_nb);
-	sysfs_remove_group(&dev->dev.kobj, &dcdbas_attr_group);
+ unregister_reboot_notifier(&dcdbas_reboot_nb);
+ sysfs_remove_group(&dev->dev.kobj, &dcdbas_attr_group);
 
-	return 0;
+ return 0;
 }

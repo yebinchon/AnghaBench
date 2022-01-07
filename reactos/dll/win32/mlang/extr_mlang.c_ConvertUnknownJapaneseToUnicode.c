@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/ * LPCSTR ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  CHAR ;
 
-/* Variables and functions */
- int CP_ACP ; 
- int /*<<< orphan*/  ConvertJIS2SJIS (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int DetectJapaneseCode (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MultiByteToWideChar (int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int) ; 
- int debugstr_an (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT ;
+typedef int LPWSTR ;
+typedef int * LPCSTR ;
+typedef int DWORD ;
+typedef int CHAR ;
+
+
+ int CP_ACP ;
+ int ConvertJIS2SJIS (int *,int ,int *) ;
+ int DetectJapaneseCode (int *,int ) ;
+ int GetProcessHeap () ;
+ int * HeapAlloc (int ,int ,int ) ;
+ int HeapFree (int ,int ,int *) ;
+ int MultiByteToWideChar (int,int ,int *,int ,int ,int ) ;
+ int TRACE (char*,int) ;
+ int debugstr_an (int *,int ) ;
 
 __attribute__((used)) static UINT ConvertUnknownJapaneseToUnicode(LPCSTR input, DWORD count,
                                             LPWSTR output, DWORD out_count)

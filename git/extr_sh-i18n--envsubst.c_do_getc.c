@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EOF ; 
- int /*<<< orphan*/  error (char*) ; 
- scalar_t__ ferror (int /*<<< orphan*/ ) ; 
- int getc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stdin ; 
+ int EOF ;
+ int error (char*) ;
+ scalar_t__ ferror (int ) ;
+ int getc (int ) ;
+ int stdin ;
 
 __attribute__((used)) static int
 do_getc (void)
@@ -26,7 +18,7 @@ do_getc (void)
   if (c == EOF)
     {
       if (ferror (stdin))
-	error ("error while reading standard input");
+ error ("error while reading standard input");
     }
 
   return c;

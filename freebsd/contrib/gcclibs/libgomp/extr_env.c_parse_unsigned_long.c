@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ errno ; 
- char* getenv (char const*) ; 
- int /*<<< orphan*/  gomp_error (char*,char const*) ; 
- scalar_t__ isspace (unsigned char) ; 
- unsigned long strtoul (char*,char**,int) ; 
+ scalar_t__ errno ;
+ char* getenv (char const*) ;
+ int gomp_error (char*,char const*) ;
+ scalar_t__ isspace (unsigned char) ;
+ unsigned long strtoul (char*,char**,int) ;
 
 __attribute__((used)) static bool
 parse_unsigned_long (const char *name, unsigned long *pvalue)
@@ -25,8 +17,8 @@ parse_unsigned_long (const char *name, unsigned long *pvalue)
   unsigned long value;
 
   env = getenv (name);
-  if (env == NULL)
-    return false;
+  if (env == ((void*)0))
+    return 0;
 
   while (isspace ((unsigned char) *env))
     ++env;
@@ -44,9 +36,9 @@ parse_unsigned_long (const char *name, unsigned long *pvalue)
     goto invalid;
 
   *pvalue = value;
-  return true;
+  return 1;
 
  invalid:
   gomp_error ("Invalid value for environment variable %s", name);
-  return false;
+  return 0;
 }

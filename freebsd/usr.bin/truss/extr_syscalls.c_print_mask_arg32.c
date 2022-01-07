@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,int) ; 
+
+
+
+typedef int uint32_t ;
+typedef int FILE ;
+
+
+ int fprintf (int *,char*,int) ;
 
 __attribute__((used)) static void
 print_mask_arg32(bool (*decoder)(FILE *, uint32_t, uint32_t *), FILE *fp,
     uint32_t value)
 {
-	uint32_t rem;
+ uint32_t rem;
 
-	if (!decoder(fp, value, &rem))
-		fprintf(fp, "0x%x", rem);
-	else if (rem != 0)
-		fprintf(fp, "|0x%x", rem);
+ if (!decoder(fp, value, &rem))
+  fprintf(fp, "0x%x", rem);
+ else if (rem != 0)
+  fprintf(fp, "|0x%x", rem);
 }

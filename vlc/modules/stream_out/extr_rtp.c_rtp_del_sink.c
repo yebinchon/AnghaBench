@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int sinkc; int /*<<< orphan*/  lock_sink; TYPE_2__* sinkv; } ;
-typedef  TYPE_1__ sout_stream_id_sys_t ;
-struct TYPE_6__ {int member_0; int rtp_fd; int /*<<< orphan*/  rtcp; int /*<<< orphan*/ * member_1; } ;
-typedef  TYPE_2__ rtp_sink_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseRTCP (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TAB_ERASE (int,TYPE_2__*,int) ; 
- int /*<<< orphan*/  net_Close (int) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int sinkc; int lock_sink; TYPE_2__* sinkv; } ;
+typedef TYPE_1__ sout_stream_id_sys_t ;
+struct TYPE_6__ {int member_0; int rtp_fd; int rtcp; int * member_1; } ;
+typedef TYPE_2__ rtp_sink_t ;
+
+
+ int CloseRTCP (int ) ;
+ int TAB_ERASE (int,TYPE_2__*,int) ;
+ int net_Close (int) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 void rtp_del_sink( sout_stream_id_sys_t *id, int fd )
 {
-    rtp_sink_t sink = { fd, NULL };
+    rtp_sink_t sink = { fd, ((void*)0) };
 
-    /* NOTE: must be safe to use if fd is not included */
+
     vlc_mutex_lock( &id->lock_sink );
     for( int i = 0; i < id->sinkc; i++ )
     {

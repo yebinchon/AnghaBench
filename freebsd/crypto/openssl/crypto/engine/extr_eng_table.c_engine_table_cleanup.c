@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  piles; } ;
-typedef  TYPE_1__ ENGINE_TABLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPTO_THREAD_unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CRYPTO_THREAD_write_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  global_engine_lock ; 
- int /*<<< orphan*/  int_cleanup_cb_doall ; 
- int /*<<< orphan*/  lh_ENGINE_PILE_doall (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lh_ENGINE_PILE_free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int piles; } ;
+typedef TYPE_1__ ENGINE_TABLE ;
+
+
+ int CRYPTO_THREAD_unlock (int ) ;
+ int CRYPTO_THREAD_write_lock (int ) ;
+ int global_engine_lock ;
+ int int_cleanup_cb_doall ;
+ int lh_ENGINE_PILE_doall (int *,int ) ;
+ int lh_ENGINE_PILE_free (int *) ;
 
 void engine_table_cleanup(ENGINE_TABLE **table)
 {
@@ -28,7 +28,7 @@ void engine_table_cleanup(ENGINE_TABLE **table)
     if (*table) {
         lh_ENGINE_PILE_doall(&(*table)->piles, int_cleanup_cb_doall);
         lh_ENGINE_PILE_free(&(*table)->piles);
-        *table = NULL;
+        *table = ((void*)0);
     }
     CRYPTO_THREAD_unlock(global_engine_lock);
 }

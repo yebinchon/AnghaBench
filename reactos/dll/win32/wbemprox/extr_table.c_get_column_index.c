@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct table {size_t num_cols; TYPE_1__* columns; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  size_t UINT ;
-struct TYPE_2__ {int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef int WCHAR ;
+typedef size_t UINT ;
+struct TYPE_2__ {int name; } ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  WBEM_E_INVALID_QUERY ; 
- int /*<<< orphan*/  strcmpiW (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
+
+ int S_OK ;
+ int WBEM_E_INVALID_QUERY ;
+ int strcmpiW (int ,int const*) ;
 
 HRESULT get_column_index( const struct table *table, const WCHAR *name, UINT *column )
 {

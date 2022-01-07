@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int const u8 ;
-typedef  int u32 ;
+
+
+
+
+typedef int const u8 ;
+typedef int u32 ;
 struct device_node {int dummy; } ;
 
-/* Variables and functions */
- int* of_get_property (struct device_node*,char*,int /*<<< orphan*/ *) ; 
+
+ int* of_get_property (struct device_node*,char*,int *) ;
 
 u8 pmac_i2c_get_dev_addr(struct device_node *device)
 {
-	const u32 *reg = of_get_property(device, "reg", NULL);
+ const u32 *reg = of_get_property(device, "reg", ((void*)0));
 
-	if (reg == NULL)
-		return 0;
+ if (reg == ((void*)0))
+  return 0;
 
-	return (*reg) & 0xff;
+ return (*reg) & 0xff;
 }

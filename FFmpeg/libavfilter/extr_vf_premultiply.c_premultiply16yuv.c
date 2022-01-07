@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint16_t ;
-typedef  int ptrdiff_t ;
-typedef  int const int64_t ;
 
-/* Variables and functions */
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int ptrdiff_t ;
+typedef int const int64_t ;
+
+
 
 __attribute__((used)) static void premultiply16yuv(const uint8_t *mmsrc, const uint8_t *aasrc,
                              uint8_t *ddst,
@@ -34,7 +34,7 @@ __attribute__((used)) static void premultiply16yuv(const uint8_t *mmsrc, const u
             dst[x] = ((((msrc[x] - half) * (int64_t)(((asrc[x] >> 1) & 1) + asrc[x]))) >> shift) + half;
         }
 
-        dst  += dlinesize / 2;
+        dst += dlinesize / 2;
         msrc += mlinesize / 2;
         asrc += alinesize / 2;
     }

@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
 struct keylist {int dummy; } ;
 struct btree_op {int lock; } ;
 struct TYPE_2__ {scalar_t__* ptr; } ;
-struct btree {unsigned long seq; int level; int /*<<< orphan*/  lock; TYPE_1__ key; } ;
-struct bkey {int /*<<< orphan*/ * ptr; } ;
+struct btree {unsigned long seq; int level; int lock; TYPE_1__ key; } ;
+struct bkey {int * ptr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int EINTR ; 
- int /*<<< orphan*/  PTR_CHECK_DEV ; 
- int /*<<< orphan*/  SET_KEY_PTRS (struct bkey*,int) ; 
- int /*<<< orphan*/  SET_PTR_DEV (struct bkey*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int bch_btree_insert_node (struct btree*,struct btree_op*,struct keylist*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bch_keylist_add (struct keylist*,struct bkey*) ; 
- int /*<<< orphan*/  bch_keylist_empty (struct keylist*) ; 
- int /*<<< orphan*/  bch_keylist_init (struct keylist*) ; 
- int /*<<< orphan*/  downgrade_write (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_random_bytes (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  rw_lock (int,struct btree*,int) ; 
- int /*<<< orphan*/  rw_unlock (int,struct btree*) ; 
+
+ int BUG_ON (int) ;
+ int EINTR ;
+ int PTR_CHECK_DEV ;
+ int SET_KEY_PTRS (struct bkey*,int) ;
+ int SET_PTR_DEV (struct bkey*,int ,int ) ;
+ int bch_btree_insert_node (struct btree*,struct btree_op*,struct keylist*,int *,int *) ;
+ int bch_keylist_add (struct keylist*,struct bkey*) ;
+ int bch_keylist_empty (struct keylist*) ;
+ int bch_keylist_init (struct keylist*) ;
+ int downgrade_write (int *) ;
+ int get_random_bytes (int *,int) ;
+ int rw_lock (int,struct btree*,int) ;
+ int rw_unlock (int,struct btree*) ;
 
 int bch_btree_insert_check_key(struct btree *b, struct btree_op *op,
-			       struct bkey *check_key)
+          struct bkey *check_key)
 {
-	int ret = -EINTR;
-	uint64_t btree_ptr = b->key.ptr[0];
-	unsigned long seq = b->seq;
-	struct keylist insert;
-	bool upgrade = op->lock == -1;
+ int ret = -EINTR;
+ uint64_t btree_ptr = b->key.ptr[0];
+ unsigned long seq = b->seq;
+ struct keylist insert;
+ bool upgrade = op->lock == -1;
 
-	bch_keylist_init(&insert);
+ bch_keylist_init(&insert);
 
-	if (upgrade) {
-		rw_unlock(false, b);
-		rw_lock(true, b, b->level);
+ if (upgrade) {
+  rw_unlock(0, b);
+  rw_lock(1, b, b->level);
 
-		if (b->key.ptr[0] != btree_ptr ||
-		    b->seq != seq + 1) {
-			op->lock = b->level;
-			goto out;
-		}
-	}
+  if (b->key.ptr[0] != btree_ptr ||
+      b->seq != seq + 1) {
+   op->lock = b->level;
+   goto out;
+  }
+ }
 
-	SET_KEY_PTRS(check_key, 1);
-	get_random_bytes(&check_key->ptr[0], sizeof(uint64_t));
+ SET_KEY_PTRS(check_key, 1);
+ get_random_bytes(&check_key->ptr[0], sizeof(uint64_t));
 
-	SET_PTR_DEV(check_key, 0, PTR_CHECK_DEV);
+ SET_PTR_DEV(check_key, 0, PTR_CHECK_DEV);
 
-	bch_keylist_add(&insert, check_key);
+ bch_keylist_add(&insert, check_key);
 
-	ret = bch_btree_insert_node(b, op, &insert, NULL, NULL);
+ ret = bch_btree_insert_node(b, op, &insert, ((void*)0), ((void*)0));
 
-	BUG_ON(!ret && !bch_keylist_empty(&insert));
+ BUG_ON(!ret && !bch_keylist_empty(&insert));
 out:
-	if (upgrade)
-		downgrade_write(&b->lock);
-	return ret;
+ if (upgrade)
+  downgrade_write(&b->lock);
+ return ret;
 }

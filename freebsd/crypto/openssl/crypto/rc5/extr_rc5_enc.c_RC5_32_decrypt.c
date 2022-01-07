@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {unsigned long* data; int rounds; } ;
-typedef  TYPE_1__ RC5_32_KEY ;
-typedef  unsigned long RC5_32_INT ;
+typedef TYPE_1__ RC5_32_KEY ;
+typedef unsigned long RC5_32_INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_RC5_32 (unsigned long,unsigned long,unsigned long*,int) ; 
+
+ int D_RC5_32 (unsigned long,unsigned long,unsigned long*,int) ;
 
 void RC5_32_decrypt(unsigned long *d, RC5_32_KEY *key)
 {
@@ -31,7 +31,7 @@ void RC5_32_decrypt(unsigned long *d, RC5_32_KEY *key)
         D_RC5_32(a, b, s, 30);
         D_RC5_32(a, b, s, 28);
         D_RC5_32(a, b, s, 26);
-        /* Do a full expansion to avoid a jump */
+
         D_RC5_32(a, b, s, 24);
         D_RC5_32(a, b, s, 22);
         D_RC5_32(a, b, s, 20);

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rfcomm_dlc {int /*<<< orphan*/  tx_queue; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT_DBG (char*,struct rfcomm_dlc*) ; 
- int /*<<< orphan*/  kfree (struct rfcomm_dlc*) ; 
- int /*<<< orphan*/  skb_queue_purge (int /*<<< orphan*/ *) ; 
+
+
+
+struct rfcomm_dlc {int tx_queue; } ;
+
+
+ int BT_DBG (char*,struct rfcomm_dlc*) ;
+ int kfree (struct rfcomm_dlc*) ;
+ int skb_queue_purge (int *) ;
 
 void rfcomm_dlc_free(struct rfcomm_dlc *d)
 {
-	BT_DBG("%p", d);
+ BT_DBG("%p", d);
 
-	skb_queue_purge(&d->tx_queue);
-	kfree(d);
+ skb_queue_purge(&d->tx_queue);
+ kfree(d);
 }

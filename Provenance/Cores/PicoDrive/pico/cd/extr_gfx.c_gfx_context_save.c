@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8 ;
-typedef  int /*<<< orphan*/ * uint32 ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8 ;
+typedef int * uint32 ;
 struct TYPE_4__ {int word_ram2M; } ;
-struct TYPE_3__ {int /*<<< orphan*/ * y_step; scalar_t__ mapPtr; scalar_t__ tracePtr; int /*<<< orphan*/ * bufferStart; int /*<<< orphan*/ * bufferOffset; int /*<<< orphan*/ * mapShift; int /*<<< orphan*/ * stampShift; int /*<<< orphan*/ * dotMask; } ;
+struct TYPE_3__ {int * y_step; scalar_t__ mapPtr; scalar_t__ tracePtr; int * bufferStart; int * bufferOffset; int * mapShift; int * stampShift; int * dotMask; } ;
 
-/* Variables and functions */
- TYPE_2__* Pico_mcd ; 
- TYPE_1__ gfx ; 
- int /*<<< orphan*/  save_param (int /*<<< orphan*/ **,int) ; 
+
+ TYPE_2__* Pico_mcd ;
+ TYPE_1__ gfx ;
+ int save_param (int **,int) ;
 
 int gfx_context_save(uint8 *state)
 {
   uint32 tmp32;
   int bufferptr = 0;
 
-  //save_param(&gfx.cycles, sizeof(gfx.cycles));
-  //save_param(&gfx.cyclesPerLine, sizeof(gfx.cyclesPerLine));
+
+
   save_param(&gfx.dotMask, sizeof(gfx.dotMask));
   save_param(&gfx.stampShift, sizeof(gfx.stampShift));
   save_param(&gfx.mapShift, sizeof(gfx.mapShift));

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lsm_file ;
-typedef  int /*<<< orphan*/  lsm_env ;
-struct TYPE_5__ {char const* zName; int /*<<< orphan*/  fd; int /*<<< orphan*/ * pEnv; } ;
-typedef  TYPE_1__ PosixFile ;
 
-/* Variables and functions */
- scalar_t__ ENOENT ; 
- int LSM_IOERR_BKPT ; 
- int /*<<< orphan*/  LSM_IOERR_NOENT ; 
- int LSM_NOMEM ; 
- int LSM_OK ; 
- int LSM_OPEN_READONLY ; 
- int O_CREAT ; 
- int O_RDONLY ; 
- int O_RDWR ; 
- scalar_t__ errno ; 
- int lsmErrorBkpt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lsm_free (int /*<<< orphan*/ *,TYPE_1__*) ; 
- TYPE_1__* lsm_malloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  open (char const*,int,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int lsm_file ;
+typedef int lsm_env ;
+struct TYPE_5__ {char const* zName; int fd; int * pEnv; } ;
+typedef TYPE_1__ PosixFile ;
+
+
+ scalar_t__ ENOENT ;
+ int LSM_IOERR_BKPT ;
+ int LSM_IOERR_NOENT ;
+ int LSM_NOMEM ;
+ int LSM_OK ;
+ int LSM_OPEN_READONLY ;
+ int O_CREAT ;
+ int O_RDONLY ;
+ int O_RDWR ;
+ scalar_t__ errno ;
+ int lsmErrorBkpt (int ) ;
+ int lsm_free (int *,TYPE_1__*) ;
+ TYPE_1__* lsm_malloc (int *,int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int open (char const*,int,int) ;
 
 __attribute__((used)) static int lsmPosixOsOpen(
   lsm_env *pEnv,

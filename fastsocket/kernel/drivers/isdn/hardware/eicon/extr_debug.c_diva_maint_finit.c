@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ pmem; } ;
 
-/* Variables and functions */
- int ARRAY_SIZE (TYPE_1__*) ; 
- TYPE_1__* clients ; 
- int /*<<< orphan*/  dbg_adapter_lock ; 
- int /*<<< orphan*/ * dbg_base ; 
- int /*<<< orphan*/  dbg_q_lock ; 
- int /*<<< orphan*/ * dbg_queue ; 
- int /*<<< orphan*/  diva_os_destroy_spin_lock (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  diva_os_free (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ external_dbg_queue ; 
+
+ int ARRAY_SIZE (TYPE_1__*) ;
+ TYPE_1__* clients ;
+ int dbg_adapter_lock ;
+ int * dbg_base ;
+ int dbg_q_lock ;
+ int * dbg_queue ;
+ int diva_os_destroy_spin_lock (int *,char*) ;
+ int diva_os_free (int ,scalar_t__) ;
+ scalar_t__ external_dbg_queue ;
 
 void* diva_maint_finit (void) {
   void* ret = (void*)dbg_base;
   int i;
 
-  dbg_queue = NULL;
-  dbg_base  = NULL;
+  dbg_queue = ((void*)0);
+  dbg_base = ((void*)0);
 
   if (ret) {
     diva_os_destroy_spin_lock(&dbg_q_lock, "dbg_finit");
@@ -37,7 +37,7 @@ void* diva_maint_finit (void) {
   }
 
   if (external_dbg_queue) {
-    ret = NULL;
+    ret = ((void*)0);
   }
   external_dbg_queue = 0;
 

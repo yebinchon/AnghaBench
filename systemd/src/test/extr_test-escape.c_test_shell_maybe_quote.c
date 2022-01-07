@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ESCAPE_BACKSLASH ; 
- int /*<<< orphan*/  ESCAPE_POSIX ; 
- int /*<<< orphan*/  test_shell_maybe_quote_one (char*,int /*<<< orphan*/ ,char*) ; 
+ int ESCAPE_BACKSLASH ;
+ int ESCAPE_POSIX ;
+ int test_shell_maybe_quote_one (char*,int ,char*) ;
 
 __attribute__((used)) static void test_shell_maybe_quote(void) {
 
@@ -37,9 +29,9 @@ __attribute__((used)) static void test_shell_maybe_quote(void) {
         test_shell_maybe_quote_one("foo$bar", ESCAPE_BACKSLASH, "\"foo\\$bar\"");
         test_shell_maybe_quote_one("foo$bar", ESCAPE_POSIX, "$'foo$bar'");
 
-        /* Note that current users disallow control characters, so this "test"
-         * is here merely to establish current behaviour. If control characters
-         * were allowed, they should be quoted, i.e. \001 should become \\001. */
+
+
+
         test_shell_maybe_quote_one("a\nb\001", ESCAPE_BACKSLASH, "\"a\nb\001\"");
         test_shell_maybe_quote_one("a\nb\001", ESCAPE_POSIX, "$'a\\nb\001'");
 

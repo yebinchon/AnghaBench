@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct nn_parse_context {struct nn_option* options; TYPE_1__* def; } ;
 struct nn_option {char* longname; char* group; int shortname; char* metavar; char* description; } ;
 struct TYPE_2__ {char* short_description; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ *) ; 
- scalar_t__ nn_has_arg (struct nn_option*) ; 
- char* nn_print_line (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  nn_print_usage (struct nn_parse_context*,int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int strlen (char*) ; 
+
+ int fprintf (int *,char*,...) ;
+ int fputs (char*,int *) ;
+ scalar_t__ nn_has_arg (struct nn_option*) ;
+ char* nn_print_line (int *,char*,int) ;
+ int nn_print_usage (struct nn_parse_context*,int *) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static void nn_print_help (struct nn_parse_context *ctx, FILE *stream)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static void nn_print_help (struct nn_parse_context *ctx, F
     nn_print_usage (ctx, stream);
     fprintf (stream, "\n%s\n", ctx->def->short_description);
 
-    last_group = NULL;
+    last_group = ((void*)0);
     for (i = 0;; ++i) {
         opt = &ctx->options[i];
         if (!opt->longname)

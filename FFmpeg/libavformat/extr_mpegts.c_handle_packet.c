@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_8__ ;
-typedef  struct TYPE_23__   TYPE_7__ ;
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
-typedef  struct TYPE_16__   TYPE_14__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int int64_t ;
+
+
+typedef struct TYPE_24__ TYPE_8__ ;
+typedef struct TYPE_23__ TYPE_7__ ;
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+typedef struct TYPE_16__ TYPE_14__ ;
+
+
+typedef int uint8_t ;
+typedef int int64_t ;
 struct TYPE_24__ {TYPE_4__* codecpar; } ;
 struct TYPE_23__ {int current_pid; int pos47_full; scalar_t__ scan_all_pmts; int nb_prg; int raw_packet_size; TYPE_14__* stream; TYPE_3__* prg; TYPE_6__** pids; scalar_t__ auto_guess; } ;
 struct TYPE_17__ {int (* pes_cb ) (TYPE_6__*,int const*,int,int,int) ;TYPE_5__* opaque; } ;
 struct TYPE_18__ {TYPE_1__ pes_filter; } ;
 struct TYPE_22__ {int last_cc; scalar_t__ type; int last_pcr; TYPE_2__ u; scalar_t__ discard; } ;
-struct TYPE_21__ {int /*<<< orphan*/  flags; } ;
+struct TYPE_21__ {int flags; } ;
 struct TYPE_20__ {int codec_type; } ;
-struct TYPE_19__ {int /*<<< orphan*/  pmt_found; } ;
-struct TYPE_16__ {int ctx_flags; int nb_streams; TYPE_8__** streams; int /*<<< orphan*/  pb; } ;
-typedef  TYPE_5__ PESContext ;
-typedef  TYPE_6__ MpegTSFilter ;
-typedef  TYPE_7__ MpegTSContext ;
-typedef  TYPE_8__ AVStream ;
+struct TYPE_19__ {int pmt_found; } ;
+struct TYPE_16__ {int ctx_flags; int nb_streams; TYPE_8__** streams; int pb; } ;
+typedef TYPE_5__ PESContext ;
+typedef TYPE_6__ MpegTSFilter ;
+typedef TYPE_7__ MpegTSContext ;
+typedef TYPE_8__ AVStream ;
 
-/* Variables and functions */
- int AVFMTCTX_NOHEADER ; 
- int AVMEDIA_TYPE_AUDIO ; 
- int AVMEDIA_TYPE_VIDEO ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_PKT_FLAG_CORRUPT ; 
- int AV_RB16 (int const*) ; 
- scalar_t__ MPEGTS_PES ; 
- scalar_t__ MPEGTS_SECTION ; 
- int TS_PACKET_SIZE ; 
- int /*<<< orphan*/  add_pes_stream (TYPE_7__*,int,int) ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  av_log (TYPE_14__*,int /*<<< orphan*/ ,char*,...) ; 
- int avio_tell (int /*<<< orphan*/ ) ; 
- scalar_t__ discard_pid (TYPE_7__*,int) ; 
- scalar_t__ parse_pcr (int*,int*,int const*) ; 
- int stub1 (TYPE_6__*,int const*,int,int,int) ; 
- int /*<<< orphan*/  write_section_data (TYPE_7__*,TYPE_6__*,int const*,int,int) ; 
+
+ int AVFMTCTX_NOHEADER ;
+ int AVMEDIA_TYPE_AUDIO ;
+ int AVMEDIA_TYPE_VIDEO ;
+ int AV_LOG_DEBUG ;
+ int AV_PKT_FLAG_CORRUPT ;
+ int AV_RB16 (int const*) ;
+ scalar_t__ MPEGTS_PES ;
+ scalar_t__ MPEGTS_SECTION ;
+ int TS_PACKET_SIZE ;
+ int add_pes_stream (TYPE_7__*,int,int) ;
+ int av_assert0 (int) ;
+ int av_log (TYPE_14__*,int ,char*,...) ;
+ int avio_tell (int ) ;
+ scalar_t__ discard_pid (TYPE_7__*,int) ;
+ scalar_t__ parse_pcr (int*,int*,int const*) ;
+ int stub1 (TYPE_6__*,int const*,int,int,int) ;
+ int write_section_data (TYPE_7__*,TYPE_6__*,int const*,int,int) ;
 
 __attribute__((used)) static int handle_packet(MpegTSContext *ts, const uint8_t *packet)
 {
@@ -78,18 +78,18 @@ __attribute__((used)) static int handle_packet(MpegTSContext *ts, const uint8_t 
     ts->current_pid = pid;
 
     afc = (packet[3] >> 4) & 3;
-    if (afc == 0) /* reserved value */
+    if (afc == 0)
         return 0;
-    has_adaptation   = afc & 2;
-    has_payload      = afc & 1;
+    has_adaptation = afc & 2;
+    has_payload = afc & 1;
     is_discontinuity = has_adaptation &&
-                       packet[4] != 0 && /* with length > 0 */
-                       (packet[5] & 0x80); /* and discontinuity indicated */
+                       packet[4] != 0 &&
+                       (packet[5] & 0x80);
 
-    /* continuity check (currently not used) */
+
     cc = (packet[3] & 0xf);
     expected_cc = has_payload ? (tss->last_cc + 1) & 0x0f : tss->last_cc;
-    cc_ok = pid == 0x1FFF || // null packet PID
+    cc_ok = pid == 0x1FFF ||
             is_discontinuity ||
             tss->last_cc < 0 ||
             expected_cc == cc;
@@ -119,10 +119,10 @@ __attribute__((used)) static int handle_packet(MpegTSContext *ts, const uint8_t 
         int pcr_l;
         if (parse_pcr(&pcr_h, &pcr_l, packet) == 0)
             tss->last_pcr = pcr_h * 300 + pcr_l;
-        /* skip adaptation field */
+
         p += p[0] + 1;
     }
-    /* if past the end of packet, ignore */
+
     p_end = packet + TS_PACKET_SIZE;
     if (p >= p_end || !has_payload)
         return 0;
@@ -135,15 +135,15 @@ __attribute__((used)) static int handle_packet(MpegTSContext *ts, const uint8_t 
 
     if (tss->type == MPEGTS_SECTION) {
         if (is_start) {
-            /* pointer field present */
+
             len = *p++;
             if (len > p_end - p)
                 return 0;
             if (len && cc_ok) {
-                /* write remaining section bytes */
+
                 write_section_data(ts, tss,
                                    p, len, 0);
-                /* check whether filter has been closed */
+
                 if (!ts->pids[pid])
                     return 0;
             }
@@ -159,8 +159,8 @@ __attribute__((used)) static int handle_packet(MpegTSContext *ts, const uint8_t 
             }
         }
 
-        // stop find_stream_info from waiting for more streams
-        // when all programs have received a PMT
+
+
         if (ts->stream->ctx_flags & AVFMTCTX_NOHEADER && ts->scan_all_pmts <= 0) {
             int i;
             for (i = 0; i < ts->nb_prg; i++) {
@@ -183,7 +183,7 @@ __attribute__((used)) static int handle_packet(MpegTSContext *ts, const uint8_t 
 
     } else {
         int ret;
-        // Note: The position here points actually behind the current packet.
+
         if (tss->type == MPEGTS_PES) {
             if ((ret = tss->u.pes_filter.pes_cb(tss, p, p_end - p, is_start,
                                                 pos - ts->raw_packet_size)) < 0)

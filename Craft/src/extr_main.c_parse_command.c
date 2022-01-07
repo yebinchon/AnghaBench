@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int mode_changed; char* server_addr; int server_port; int create_radius; int render_radius; int delete_radius; int /*<<< orphan*/  block1; int /*<<< orphan*/  block0; int /*<<< orphan*/  db_path; void* mode; } ;
 
-/* Variables and functions */
- char* DB_PATH ; 
- int DEFAULT_PORT ; 
- int MAX_ADDR_LENGTH ; 
- int MAX_PATH_LENGTH ; 
- void* MODE_OFFLINE ; 
- void* MODE_ONLINE ; 
- int /*<<< orphan*/  add_message (char*) ; 
- int /*<<< orphan*/  array (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int) ; 
- int /*<<< orphan*/  client_talk (char const*) ; 
- int /*<<< orphan*/  copy () ; 
- int /*<<< orphan*/  cube (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  cylinder (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ; 
- scalar_t__ db_auth_select (char*) ; 
- int /*<<< orphan*/  db_auth_select_none () ; 
- int /*<<< orphan*/  db_auth_set (char*,char*) ; 
- TYPE_1__* g ; 
- int /*<<< orphan*/  login () ; 
- int /*<<< orphan*/  paste () ; 
- int /*<<< orphan*/  snprintf (int /*<<< orphan*/ ,int,char*,char*,...) ; 
- int /*<<< orphan*/  sphere (int /*<<< orphan*/ *,int,int,int,int,int) ; 
- int sscanf (char const*,char*,...) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/  strncpy (char*,char*,int) ; 
- int /*<<< orphan*/  tree (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int mode_changed; char* server_addr; int server_port; int create_radius; int render_radius; int delete_radius; int block1; int block0; int db_path; void* mode; } ;
+
+
+ char* DB_PATH ;
+ int DEFAULT_PORT ;
+ int MAX_ADDR_LENGTH ;
+ int MAX_PATH_LENGTH ;
+ void* MODE_OFFLINE ;
+ void* MODE_ONLINE ;
+ int add_message (char*) ;
+ int array (int *,int *,int,int,int) ;
+ int client_talk (char const*) ;
+ int copy () ;
+ int cube (int *,int *,int) ;
+ int cylinder (int *,int *,int,int) ;
+ scalar_t__ db_auth_select (char*) ;
+ int db_auth_select_none () ;
+ int db_auth_set (char*,char*) ;
+ TYPE_1__* g ;
+ int login () ;
+ int paste () ;
+ int snprintf (int ,int,char*,char*,...) ;
+ int sphere (int *,int,int,int,int,int) ;
+ int sscanf (char const*,char*,...) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int strncpy (char*,char*,int) ;
+ int tree (int *) ;
 
 void parse_command(const char *buffer, int forward) {
     char username[128] = {0};

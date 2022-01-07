@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct mii_bus {struct mdiobb_ctrl* priv; } ;
 struct mdiobb_ctrl {TYPE_1__* ops; } ;
-struct TYPE_2__ {int /*<<< orphan*/  owner; } ;
+struct TYPE_2__ {int owner; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mdiobus_free (struct mii_bus*) ; 
- int /*<<< orphan*/  module_put (int /*<<< orphan*/ ) ; 
+
+ int mdiobus_free (struct mii_bus*) ;
+ int module_put (int ) ;
 
 void free_mdio_bitbang(struct mii_bus *bus)
 {
-	struct mdiobb_ctrl *ctrl = bus->priv;
+ struct mdiobb_ctrl *ctrl = bus->priv;
 
-	module_put(ctrl->ops->owner);
-	mdiobus_free(bus);
+ module_put(ctrl->ops->owner);
+ mdiobus_free(bus);
 }

@@ -1,0 +1,222 @@
+; ModuleID = '/home/carl/AnghaBench/fastsocket/kernel/drivers/net/chelsio/extr_pm3393.c_pm3393_update_statistics.c'
+source_filename = "/home/carl/AnghaBench/fastsocket/kernel/drivers/net/chelsio/extr_pm3393.c_pm3393_update_statistics.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.cmac_statistics = type { i32 }
+%struct.cmac = type { %struct.cmac_statistics }
+
+@SUNI1x10GEXP_REG_MSTAT_CONTROL = common dso_local global i32 0, align 4
+@SUNI1x10GEXP_BITMSK_MSTAT_SNAP = common dso_local global i32 0, align 4
+@SUNI1x10GEXP_REG_MSTAT_COUNTER_ROLLOVER_0 = common dso_local global i32 0, align 4
+@SUNI1x10GEXP_REG_MSTAT_COUNTER_ROLLOVER_1 = common dso_local global i32 0, align 4
+@SUNI1x10GEXP_REG_MSTAT_COUNTER_ROLLOVER_2 = common dso_local global i32 0, align 4
+@SUNI1x10GEXP_REG_MSTAT_COUNTER_ROLLOVER_3 = common dso_local global i32 0, align 4
+@RxOctetsReceivedOK = common dso_local global i32 0, align 4
+@RxOctetsOK = common dso_local global i32 0, align 4
+@RxUnicastFramesReceivedOK = common dso_local global i32 0, align 4
+@RxUnicastFramesOK = common dso_local global i32 0, align 4
+@RxMulticastFramesReceivedOK = common dso_local global i32 0, align 4
+@RxMulticastFramesOK = common dso_local global i32 0, align 4
+@RxBroadcastFramesReceivedOK = common dso_local global i32 0, align 4
+@RxBroadcastFramesOK = common dso_local global i32 0, align 4
+@RxPAUSEMACCtrlFramesReceived = common dso_local global i32 0, align 4
+@RxPauseFrames = common dso_local global i32 0, align 4
+@RxFrameCheckSequenceErrors = common dso_local global i32 0, align 4
+@RxFCSErrors = common dso_local global i32 0, align 4
+@RxFramesLostDueToInternalMACErrors = common dso_local global i32 0, align 4
+@RxInternalMACRcvError = common dso_local global i32 0, align 4
+@RxSymbolErrors = common dso_local global i32 0, align 4
+@RxInRangeLengthErrors = common dso_local global i32 0, align 4
+@RxFramesTooLongErrors = common dso_local global i32 0, align 4
+@RxFrameTooLongErrors = common dso_local global i32 0, align 4
+@RxJabbers = common dso_local global i32 0, align 4
+@RxJabberErrors = common dso_local global i32 0, align 4
+@RxFragments = common dso_local global i32 0, align 4
+@RxRuntErrors = common dso_local global i32 0, align 4
+@RxUndersizedFrames = common dso_local global i32 0, align 4
+@RxJumboFramesReceivedOK = common dso_local global i32 0, align 4
+@RxJumboFramesOK = common dso_local global i32 0, align 4
+@RxJumboOctetsReceivedOK = common dso_local global i32 0, align 4
+@RxJumboOctetsOK = common dso_local global i32 0, align 4
+@TxOctetsTransmittedOK = common dso_local global i32 0, align 4
+@TxOctetsOK = common dso_local global i32 0, align 4
+@TxFramesLostDueToInternalMACTransmissionError = common dso_local global i32 0, align 4
+@TxInternalMACXmitError = common dso_local global i32 0, align 4
+@TxTransmitSystemError = common dso_local global i32 0, align 4
+@TxFCSErrors = common dso_local global i32 0, align 4
+@TxUnicastFramesTransmittedOK = common dso_local global i32 0, align 4
+@TxUnicastFramesOK = common dso_local global i32 0, align 4
+@TxMulticastFramesTransmittedOK = common dso_local global i32 0, align 4
+@TxMulticastFramesOK = common dso_local global i32 0, align 4
+@TxBroadcastFramesTransmittedOK = common dso_local global i32 0, align 4
+@TxBroadcastFramesOK = common dso_local global i32 0, align 4
+@TxPAUSEMACCtrlFramesTransmitted = common dso_local global i32 0, align 4
+@TxPauseFrames = common dso_local global i32 0, align 4
+@TxJumboFramesReceivedOK = common dso_local global i32 0, align 4
+@TxJumboFramesOK = common dso_local global i32 0, align 4
+@TxJumboOctetsReceivedOK = common dso_local global i32 0, align 4
+@TxJumboOctetsOK = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (%struct.cmac_statistics* (%struct.cmac*, i32)* @pm3393_update_statistics to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal %struct.cmac_statistics* @pm3393_update_statistics(%struct.cmac* %0, i32 %1) #0 {
+  %3 = alloca %struct.cmac*, align 8
+  %4 = alloca i32, align 4
+  %5 = alloca i32, align 4
+  %6 = alloca i64, align 8
+  %7 = alloca i64, align 8
+  %8 = alloca i64, align 8
+  %9 = alloca i64, align 8
+  store %struct.cmac* %0, %struct.cmac** %3, align 8
+  store i32 %1, i32* %4, align 4
+  %10 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %11 = load i32, i32* @SUNI1x10GEXP_REG_MSTAT_CONTROL, align 4
+  %12 = load i32, i32* @SUNI1x10GEXP_BITMSK_MSTAT_SNAP, align 4
+  %13 = call i32 @pmwrite(%struct.cmac* %10, i32 %11, i32 %12)
+  %14 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %15 = load i32, i32* @SUNI1x10GEXP_REG_MSTAT_COUNTER_ROLLOVER_0, align 4
+  %16 = call i32 @pmread(%struct.cmac* %14, i32 %15, i64* %6)
+  %17 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %18 = load i32, i32* @SUNI1x10GEXP_REG_MSTAT_COUNTER_ROLLOVER_1, align 4
+  %19 = call i32 @pmread(%struct.cmac* %17, i32 %18, i64* %7)
+  %20 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %21 = load i32, i32* @SUNI1x10GEXP_REG_MSTAT_COUNTER_ROLLOVER_2, align 4
+  %22 = call i32 @pmread(%struct.cmac* %20, i32 %21, i64* %8)
+  %23 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %24 = load i32, i32* @SUNI1x10GEXP_REG_MSTAT_COUNTER_ROLLOVER_3, align 4
+  %25 = call i32 @pmread(%struct.cmac* %23, i32 %24, i64* %9)
+  %26 = load i64, i64* %6, align 8
+  %27 = trunc i64 %26 to i32
+  %28 = and i32 %27, 65535
+  %29 = load i64, i64* %7, align 8
+  %30 = trunc i64 %29 to i32
+  %31 = and i32 %30, 65535
+  %32 = shl i32 %31, 16
+  %33 = or i32 %28, %32
+  %34 = load i64, i64* %8, align 8
+  %35 = trunc i64 %34 to i32
+  %36 = and i32 %35, 65535
+  %37 = shl i32 %36, 32
+  %38 = or i32 %33, %37
+  %39 = load i64, i64* %9, align 8
+  %40 = trunc i64 %39 to i32
+  %41 = and i32 %40, 65535
+  %42 = shl i32 %41, 48
+  %43 = or i32 %38, %42
+  store i32 %43, i32* %5, align 4
+  %44 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %45 = load i32, i32* @RxOctetsReceivedOK, align 4
+  %46 = load i32, i32* @RxOctetsOK, align 4
+  %47 = call i32 @RMON_UPDATE(%struct.cmac* %44, i32 %45, i32 %46)
+  %48 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %49 = load i32, i32* @RxUnicastFramesReceivedOK, align 4
+  %50 = load i32, i32* @RxUnicastFramesOK, align 4
+  %51 = call i32 @RMON_UPDATE(%struct.cmac* %48, i32 %49, i32 %50)
+  %52 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %53 = load i32, i32* @RxMulticastFramesReceivedOK, align 4
+  %54 = load i32, i32* @RxMulticastFramesOK, align 4
+  %55 = call i32 @RMON_UPDATE(%struct.cmac* %52, i32 %53, i32 %54)
+  %56 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %57 = load i32, i32* @RxBroadcastFramesReceivedOK, align 4
+  %58 = load i32, i32* @RxBroadcastFramesOK, align 4
+  %59 = call i32 @RMON_UPDATE(%struct.cmac* %56, i32 %57, i32 %58)
+  %60 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %61 = load i32, i32* @RxPAUSEMACCtrlFramesReceived, align 4
+  %62 = load i32, i32* @RxPauseFrames, align 4
+  %63 = call i32 @RMON_UPDATE(%struct.cmac* %60, i32 %61, i32 %62)
+  %64 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %65 = load i32, i32* @RxFrameCheckSequenceErrors, align 4
+  %66 = load i32, i32* @RxFCSErrors, align 4
+  %67 = call i32 @RMON_UPDATE(%struct.cmac* %64, i32 %65, i32 %66)
+  %68 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %69 = load i32, i32* @RxFramesLostDueToInternalMACErrors, align 4
+  %70 = load i32, i32* @RxInternalMACRcvError, align 4
+  %71 = call i32 @RMON_UPDATE(%struct.cmac* %68, i32 %69, i32 %70)
+  %72 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %73 = load i32, i32* @RxSymbolErrors, align 4
+  %74 = load i32, i32* @RxSymbolErrors, align 4
+  %75 = call i32 @RMON_UPDATE(%struct.cmac* %72, i32 %73, i32 %74)
+  %76 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %77 = load i32, i32* @RxInRangeLengthErrors, align 4
+  %78 = load i32, i32* @RxInRangeLengthErrors, align 4
+  %79 = call i32 @RMON_UPDATE(%struct.cmac* %76, i32 %77, i32 %78)
+  %80 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %81 = load i32, i32* @RxFramesTooLongErrors, align 4
+  %82 = load i32, i32* @RxFrameTooLongErrors, align 4
+  %83 = call i32 @RMON_UPDATE(%struct.cmac* %80, i32 %81, i32 %82)
+  %84 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %85 = load i32, i32* @RxJabbers, align 4
+  %86 = load i32, i32* @RxJabberErrors, align 4
+  %87 = call i32 @RMON_UPDATE(%struct.cmac* %84, i32 %85, i32 %86)
+  %88 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %89 = load i32, i32* @RxFragments, align 4
+  %90 = load i32, i32* @RxRuntErrors, align 4
+  %91 = call i32 @RMON_UPDATE(%struct.cmac* %88, i32 %89, i32 %90)
+  %92 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %93 = load i32, i32* @RxUndersizedFrames, align 4
+  %94 = load i32, i32* @RxRuntErrors, align 4
+  %95 = call i32 @RMON_UPDATE(%struct.cmac* %92, i32 %93, i32 %94)
+  %96 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %97 = load i32, i32* @RxJumboFramesReceivedOK, align 4
+  %98 = load i32, i32* @RxJumboFramesOK, align 4
+  %99 = call i32 @RMON_UPDATE(%struct.cmac* %96, i32 %97, i32 %98)
+  %100 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %101 = load i32, i32* @RxJumboOctetsReceivedOK, align 4
+  %102 = load i32, i32* @RxJumboOctetsOK, align 4
+  %103 = call i32 @RMON_UPDATE(%struct.cmac* %100, i32 %101, i32 %102)
+  %104 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %105 = load i32, i32* @TxOctetsTransmittedOK, align 4
+  %106 = load i32, i32* @TxOctetsOK, align 4
+  %107 = call i32 @RMON_UPDATE(%struct.cmac* %104, i32 %105, i32 %106)
+  %108 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %109 = load i32, i32* @TxFramesLostDueToInternalMACTransmissionError, align 4
+  %110 = load i32, i32* @TxInternalMACXmitError, align 4
+  %111 = call i32 @RMON_UPDATE(%struct.cmac* %108, i32 %109, i32 %110)
+  %112 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %113 = load i32, i32* @TxTransmitSystemError, align 4
+  %114 = load i32, i32* @TxFCSErrors, align 4
+  %115 = call i32 @RMON_UPDATE(%struct.cmac* %112, i32 %113, i32 %114)
+  %116 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %117 = load i32, i32* @TxUnicastFramesTransmittedOK, align 4
+  %118 = load i32, i32* @TxUnicastFramesOK, align 4
+  %119 = call i32 @RMON_UPDATE(%struct.cmac* %116, i32 %117, i32 %118)
+  %120 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %121 = load i32, i32* @TxMulticastFramesTransmittedOK, align 4
+  %122 = load i32, i32* @TxMulticastFramesOK, align 4
+  %123 = call i32 @RMON_UPDATE(%struct.cmac* %120, i32 %121, i32 %122)
+  %124 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %125 = load i32, i32* @TxBroadcastFramesTransmittedOK, align 4
+  %126 = load i32, i32* @TxBroadcastFramesOK, align 4
+  %127 = call i32 @RMON_UPDATE(%struct.cmac* %124, i32 %125, i32 %126)
+  %128 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %129 = load i32, i32* @TxPAUSEMACCtrlFramesTransmitted, align 4
+  %130 = load i32, i32* @TxPauseFrames, align 4
+  %131 = call i32 @RMON_UPDATE(%struct.cmac* %128, i32 %129, i32 %130)
+  %132 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %133 = load i32, i32* @TxJumboFramesReceivedOK, align 4
+  %134 = load i32, i32* @TxJumboFramesOK, align 4
+  %135 = call i32 @RMON_UPDATE(%struct.cmac* %132, i32 %133, i32 %134)
+  %136 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %137 = load i32, i32* @TxJumboOctetsReceivedOK, align 4
+  %138 = load i32, i32* @TxJumboOctetsOK, align 4
+  %139 = call i32 @RMON_UPDATE(%struct.cmac* %136, i32 %137, i32 %138)
+  %140 = load %struct.cmac*, %struct.cmac** %3, align 8
+  %141 = getelementptr inbounds %struct.cmac, %struct.cmac* %140, i32 0, i32 0
+  ret %struct.cmac_statistics* %141
+}
+
+declare dso_local i32 @pmwrite(%struct.cmac*, i32, i32) #1
+
+declare dso_local i32 @pmread(%struct.cmac*, i32, i64*) #1
+
+declare dso_local i32 @RMON_UPDATE(%struct.cmac*, i32, i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

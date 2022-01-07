@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct FILELIST {struct FILELIST* next; int /*<<< orphan*/  DoExtract; int /*<<< orphan*/  FileName; } ;
-struct TYPE_4__ {int /*<<< orphan*/  Operation; struct FILELIST* FileList; } ;
-typedef  TYPE_1__ SESSION ;
-typedef  int /*<<< orphan*/  LPCSTR ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXTRACT_FILLFILELIST ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  file_in_list (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ pExtract (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct FILELIST {struct FILELIST* next; int DoExtract; int FileName; } ;
+struct TYPE_4__ {int Operation; struct FILELIST* FileList; } ;
+typedef TYPE_1__ SESSION ;
+typedef int LPCSTR ;
+typedef int DWORD ;
+
+
+ int EXTRACT_FILLFILELIST ;
+ int FALSE ;
+ scalar_t__ S_OK ;
+ int file_in_list (int ,int ) ;
+ scalar_t__ pExtract (TYPE_1__*,int ) ;
 
 __attribute__((used)) static DWORD fill_file_list(SESSION *session, LPCSTR szCabName, LPCSTR szFileList)
 {

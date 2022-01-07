@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
 
-/* Variables and functions */
- scalar_t__ TAPPING_TERM ; 
- int /*<<< orphan*/  register_code (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tap_code (int /*<<< orphan*/ ) ; 
- scalar_t__ timer_elapsed (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timer_read () ; 
- int /*<<< orphan*/  unregister_code (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint16_t ;
+
+
+ scalar_t__ TAPPING_TERM ;
+ int register_code (int ) ;
+ int tap_code (int ) ;
+ scalar_t__ timer_elapsed (int ) ;
+ int timer_read () ;
+ int unregister_code (int ) ;
 
 bool mod_key_press(uint16_t code, uint16_t mod_code, bool pressed, uint16_t this_timer) {
     if (pressed) {
@@ -32,5 +32,5 @@ bool mod_key_press(uint16_t code, uint16_t mod_code, bool pressed, uint16_t this
             unregister_code(mod_code);
         }
     }
-    return false;
+    return 0;
 }

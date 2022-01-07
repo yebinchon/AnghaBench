@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct gb_connection {int dummy; } ;
-struct gb_audio_enable_widget_request {int /*<<< orphan*/  widget_id; } ;
-typedef  int /*<<< orphan*/  req ;
+struct gb_audio_enable_widget_request {int widget_id; } ;
+typedef int req ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GB_AUDIO_TYPE_ENABLE_WIDGET ; 
- int gb_operation_sync (struct gb_connection*,int /*<<< orphan*/ ,struct gb_audio_enable_widget_request*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int GB_AUDIO_TYPE_ENABLE_WIDGET ;
+ int gb_operation_sync (struct gb_connection*,int ,struct gb_audio_enable_widget_request*,int,int *,int ) ;
 
 int gb_audio_gb_enable_widget(struct gb_connection *connection,
-			      u8 widget_id)
+         u8 widget_id)
 {
-	struct gb_audio_enable_widget_request req;
+ struct gb_audio_enable_widget_request req;
 
-	req.widget_id = widget_id;
+ req.widget_id = widget_id;
 
-	return gb_operation_sync(connection, GB_AUDIO_TYPE_ENABLE_WIDGET,
-				 &req, sizeof(req), NULL, 0);
+ return gb_operation_sync(connection, GB_AUDIO_TYPE_ENABLE_WIDGET,
+     &req, sizeof(req), ((void*)0), 0);
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- char const* debug_file ; 
- long debug_line ; 
- int /*<<< orphan*/ * debug_output ; 
- int /*<<< orphan*/  quiet_mode () ; 
- char* strrchr (char const*,char) ; 
+
+
+
+typedef int FILE ;
+
+
+ char const* debug_file ;
+ long debug_line ;
+ int * debug_output ;
+ int quiet_mode () ;
+ char* strrchr (char const*,char) ;
 
 void
 svn_dbg__preamble(const char *file, long line, FILE *output)
 {
   debug_output = output;
 
-  if (output != NULL && !quiet_mode())
+  if (output != ((void*)0) && !quiet_mode())
     {
-      /* Quick and dirty basename() code.  */
+
       const char *slash = strrchr(file, '/');
 
-      if (slash == NULL)
+      if (slash == ((void*)0))
         slash = strrchr(file, '\\');
       if (slash)
         debug_file = slash + 1;

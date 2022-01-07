@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  cancel_event; int /*<<< orphan*/  async_data; int /*<<< orphan*/  out_request; } ;
-typedef  TYPE_1__ RpcConnection_http ;
-typedef  int /*<<< orphan*/  RpcConnection ;
 
-/* Variables and functions */
- int rpcrt4_http_async_read (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,unsigned int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int cancel_event; int async_data; int out_request; } ;
+typedef TYPE_1__ RpcConnection_http ;
+typedef int RpcConnection ;
+
+
+ int rpcrt4_http_async_read (int ,int ,int ,void*,unsigned int) ;
 
 __attribute__((used)) static int rpcrt4_ncacn_http_read(RpcConnection *Connection,
                                 void *buffer, unsigned int count)

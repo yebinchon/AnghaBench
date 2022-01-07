@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct v4l2_buffer {int dummy; } ;
-struct omap24xxcam_fh {int /*<<< orphan*/  vbq; } ;
+struct omap24xxcam_fh {int vbq; } ;
 struct file {int dummy; } ;
 
-/* Variables and functions */
- int videobuf_querybuf (int /*<<< orphan*/ *,struct v4l2_buffer*) ; 
+
+ int videobuf_querybuf (int *,struct v4l2_buffer*) ;
 
 __attribute__((used)) static int vidioc_querybuf(struct file *file, void *fh,
-			   struct v4l2_buffer *b)
+      struct v4l2_buffer *b)
 {
-	struct omap24xxcam_fh *ofh = fh;
+ struct omap24xxcam_fh *ofh = fh;
 
-	return videobuf_querybuf(&ofh->vbq, b);
+ return videobuf_querybuf(&ofh->vbq, b);
 }

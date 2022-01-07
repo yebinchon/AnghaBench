@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- size_t SINGLE_EXT_LEN ; 
- char* ag_malloc (int) ; 
- char* ag_realloc (char*,int) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int strlen (char*) ; 
+ size_t SINGLE_EXT_LEN ;
+ char* ag_malloc (int) ;
+ char* ag_realloc (char*,int) ;
+ int strcpy (char*,char*) ;
+ int strlen (char*) ;
 
 char *make_lang_regex(char *ext_array, size_t num_exts) {
     int regex_capacity = 100;

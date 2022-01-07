@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct platform_device {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- scalar_t__ of_device_get_match_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sun4i_a10_pinctrl_data ; 
- int sunxi_pinctrl_init_with_variant (struct platform_device*,int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct platform_device {int dev; } ;
+
+
+ scalar_t__ of_device_get_match_data (int *) ;
+ int sun4i_a10_pinctrl_data ;
+ int sunxi_pinctrl_init_with_variant (struct platform_device*,int *,unsigned long) ;
 
 __attribute__((used)) static int sun4i_a10_pinctrl_probe(struct platform_device *pdev)
 {
-	unsigned long variant = (unsigned long)of_device_get_match_data(&pdev->dev);
+ unsigned long variant = (unsigned long)of_device_get_match_data(&pdev->dev);
 
-	return sunxi_pinctrl_init_with_variant(pdev, &sun4i_a10_pinctrl_data,
-					       variant);
+ return sunxi_pinctrl_init_with_variant(pdev, &sun4i_a10_pinctrl_data,
+            variant);
 }

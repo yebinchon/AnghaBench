@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {void** D; scalar_t__ CD; } ;
-typedef  TYPE_1__ TM2Context ;
-typedef  int /*<<< orphan*/  AVFrame ;
+typedef TYPE_1__ TM2Context ;
+typedef int AVFrame ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TM2_INIT_POINTERS_2 () ; 
- int /*<<< orphan*/  TM2_RECALC_BLOCK (int /*<<< orphan*/ *,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/ * U ; 
- int /*<<< orphan*/ * Uo ; 
- int Ustride ; 
- int /*<<< orphan*/ * V ; 
- int /*<<< orphan*/ * Vo ; 
- int Vstride ; 
- void** Y ; 
- void** Yo ; 
- int /*<<< orphan*/  Ystride ; 
- scalar_t__ clast ; 
- void** last ; 
- int /*<<< orphan*/  oUstride ; 
- int /*<<< orphan*/  oVstride ; 
- int oYstride ; 
+
+ int TM2_INIT_POINTERS_2 () ;
+ int TM2_RECALC_BLOCK (int *,int,scalar_t__,scalar_t__) ;
+ int * U ;
+ int * Uo ;
+ int Ustride ;
+ int * V ;
+ int * Vo ;
+ int Vstride ;
+ void** Y ;
+ void** Yo ;
+ int Ystride ;
+ scalar_t__ clast ;
+ void** last ;
+ int oUstride ;
+ int oVstride ;
+ int oYstride ;
 
 __attribute__((used)) static inline void tm2_still_block(TM2Context *ctx, AVFrame *pic, int bx, int by)
 {
     int i, j;
     TM2_INIT_POINTERS_2();
 
-    /* update chroma */
+
     for (j = 0; j < 2; j++) {
         for (i = 0; i < 2; i++){
             U[i] = Uo[i];
             V[i] = Vo[i];
         }
-        U  += Ustride; V += Vstride;
+        U += Ustride; V += Vstride;
         Uo += oUstride; Vo += oVstride;
     }
     U -= Ustride * 2;
@@ -52,7 +52,7 @@ __attribute__((used)) static inline void tm2_still_block(TM2Context *ctx, AVFram
     TM2_RECALC_BLOCK(U, Ustride, clast, ctx->CD);
     TM2_RECALC_BLOCK(V, Vstride, (clast + 2), (ctx->CD + 2));
 
-    /* update deltas */
+
     ctx->D[0] = Yo[3] - last[3];
     ctx->D[1] = Yo[3 + oYstride] - Yo[3];
     ctx->D[2] = Yo[3 + oYstride * 2] - Yo[3 + oYstride];
@@ -60,10 +60,10 @@ __attribute__((used)) static inline void tm2_still_block(TM2Context *ctx, AVFram
 
     for (j = 0; j < 4; j++) {
         for (i = 0; i < 4; i++) {
-            Y[i]    = Yo[i];
+            Y[i] = Yo[i];
             last[i] = Yo[i];
         }
-        Y  += Ystride;
+        Y += Ystride;
         Yo += oYstride;
     }
 }

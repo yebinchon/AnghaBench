@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IXMLDOMNodeList ;
-typedef  int /*<<< orphan*/  IXMLDOMNode ;
-typedef  int /*<<< orphan*/  IXMLDOMDocument2 ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IXMLDOMDocument2_selectNodes (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMNodeList_get_item (int /*<<< orphan*/ *,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMNodeList_reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMNode_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMNode_get_childNodes (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMNode_get_text (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _bstr_ (char*) ; 
- int /*<<< orphan*/  helper_expect_bstr_and_release (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  helper_expect_list_and_release (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  helper_ole_check_ver (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int IXMLDOMNodeList ;
+typedef int IXMLDOMNode ;
+typedef int IXMLDOMDocument2 ;
+typedef int BSTR ;
+
+
+ int IXMLDOMDocument2_selectNodes (int *,int ,int **) ;
+ int IXMLDOMNodeList_get_item (int *,int,int **) ;
+ int IXMLDOMNodeList_reset (int *) ;
+ int IXMLDOMNode_Release (int *) ;
+ int IXMLDOMNode_get_childNodes (int *,int **) ;
+ int IXMLDOMNode_get_text (int *,int *) ;
+ int _bstr_ (char*) ;
+ int helper_expect_bstr_and_release (int ,char const*) ;
+ int helper_expect_list_and_release (int *,char*) ;
+ int helper_ole_check_ver (int ) ;
 
 __attribute__((used)) static inline void _check_ws_ignored(int line, const char *ver, IXMLDOMDocument2* doc, char const* str)
 {

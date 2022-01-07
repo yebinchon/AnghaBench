@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_28__   TYPE_5__ ;
-typedef  struct TYPE_27__   TYPE_4__ ;
-typedef  struct TYPE_26__   TYPE_3__ ;
-typedef  struct TYPE_25__   TYPE_2__ ;
-typedef  struct TYPE_24__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONGLONG ;
-typedef  scalar_t__ ULONG ;
+
+
+typedef struct TYPE_28__ TYPE_5__ ;
+typedef struct TYPE_27__ TYPE_4__ ;
+typedef struct TYPE_26__ TYPE_3__ ;
+typedef struct TYPE_25__ TYPE_2__ ;
+typedef struct TYPE_24__ TYPE_1__ ;
+
+
+typedef int ULONGLONG ;
+typedef scalar_t__ ULONG ;
 struct TYPE_28__ {TYPE_4__* RootNode; } ;
 struct TYPE_27__ {scalar_t__ KeyCount; TYPE_3__* FirstKey; void* DiskNeedsUpdating; } ;
 struct TYPE_26__ {struct TYPE_26__* NextKey; TYPE_4__* LesserChild; TYPE_2__* IndexEntry; } ;
-struct TYPE_24__ {int /*<<< orphan*/  Name; int /*<<< orphan*/  NameLength; } ;
+struct TYPE_24__ {int Name; int NameLength; } ;
 struct TYPE_25__ {TYPE_1__ FileName; } ;
-typedef  int /*<<< orphan*/  PFILENAME_ATTRIBUTE ;
-typedef  TYPE_3__* PB_TREE_KEY ;
-typedef  TYPE_4__* PB_TREE_FILENAME_NODE ;
-typedef  TYPE_5__* PB_TREE ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+typedef int PFILENAME_ATTRIBUTE ;
+typedef TYPE_3__* PB_TREE_KEY ;
+typedef TYPE_4__* PB_TREE_FILENAME_NODE ;
+typedef TYPE_5__* PB_TREE ;
+typedef int NTSTATUS ;
+typedef scalar_t__ LONG ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- scalar_t__ CompareTreeKeys (TYPE_3__*,TYPE_3__*,int /*<<< orphan*/ ) ; 
- TYPE_3__* CreateBTreeKeyFromFilename (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPRINT (char*,TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_4__*,char*,scalar_t__,scalar_t__,TYPE_3__**,TYPE_4__**) ; 
- int /*<<< orphan*/  DPRINT1 (char*,...) ; 
- int /*<<< orphan*/  DumpBTree (TYPE_5__*) ; 
- int /*<<< orphan*/  ExFreePoolWithTag (TYPE_3__*,int /*<<< orphan*/ ) ; 
- scalar_t__ FIELD_OFFSET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ GetSizeOfIndexEntries (TYPE_4__*) ; 
- int /*<<< orphan*/  Header ; 
- int /*<<< orphan*/  INDEX_BUFFER ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATUS_INSUFFICIENT_RESOURCES ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  SplitBTreeNode (TYPE_5__*,TYPE_4__*,TYPE_3__**,TYPE_4__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TAG_NTFS ; 
- void* TRUE ; 
+
+ int ASSERT (int) ;
+ scalar_t__ CompareTreeKeys (TYPE_3__*,TYPE_3__*,int ) ;
+ TYPE_3__* CreateBTreeKeyFromFilename (int ,int ) ;
+ int DPRINT (char*,TYPE_5__*,int ,int ,TYPE_4__*,char*,scalar_t__,scalar_t__,TYPE_3__**,TYPE_4__**) ;
+ int DPRINT1 (char*,...) ;
+ int DumpBTree (TYPE_5__*) ;
+ int ExFreePoolWithTag (TYPE_3__*,int ) ;
+ scalar_t__ FIELD_OFFSET (int ,int ) ;
+ scalar_t__ GetSizeOfIndexEntries (TYPE_4__*) ;
+ int Header ;
+ int INDEX_BUFFER ;
+ int NT_SUCCESS (int ) ;
+ int STATUS_INSUFFICIENT_RESOURCES ;
+ int STATUS_SUCCESS ;
+ int SplitBTreeNode (TYPE_5__*,TYPE_4__*,TYPE_3__**,TYPE_4__**,int ) ;
+ int TAG_NTFS ;
+ void* TRUE ;
 
 NTSTATUS
 NtfsInsertKey(PB_TREE Tree,
@@ -67,8 +67,8 @@ NtfsInsertKey(PB_TREE Tree,
     ULONG MaxNodeSizeWithoutHeader;
     ULONG i;
 
-    *MedianKey = NULL;
-    *NewRightHandSibling = NULL;
+    *MedianKey = ((void*)0);
+    *NewRightHandSibling = ((void*)0);
 
     DPRINT("NtfsInsertKey(%p, 0x%I64x, %p, %p, %s, %lu, %lu, %p, %p)\n",
            Tree,
@@ -81,17 +81,17 @@ NtfsInsertKey(PB_TREE Tree,
            MedianKey,
            NewRightHandSibling);
 
-    // Create the key for the filename attribute
+
     NewKey = CreateBTreeKeyFromFilename(FileReference, FileNameAttribute);
     if (!NewKey)
         return STATUS_INSUFFICIENT_RESOURCES;
 
-    // Find where to insert the key
+
     CurrentKey = Node->FirstKey;
-    PreviousKey = NULL;
+    PreviousKey = ((void*)0);
     for (i = 0; i < Node->KeyCount; i++)
     {
-        // Should the New Key go before the current key?
+
         LONG Comparison = CompareTreeKeys(NewKey, CurrentKey, CaseSensitive);
 
         if (Comparison == 0)
@@ -101,16 +101,16 @@ NtfsInsertKey(PB_TREE Tree,
         }
         ASSERT(Comparison != 0);
 
-        // Is NewKey < CurrentKey?
+
         if (Comparison < 0)
         {
-            // Does CurrentKey have a sub-node?
+
             if (CurrentKey->LesserChild)
             {
                 PB_TREE_KEY NewLeftKey;
                 PB_TREE_FILENAME_NODE NewChild;
 
-                // Insert the key into the child node
+
                 Status = NtfsInsertKey(Tree,
                                        FileReference,
                                        FileNameAttribute,
@@ -118,7 +118,7 @@ NtfsInsertKey(PB_TREE Tree,
                                        CaseSensitive,
                                        MaxIndexRootSize,
                                        IndexRecordSize,
-                                       &NewLeftKey, 
+                                       &NewLeftKey,
                                        &NewChild);
                 if (!NT_SUCCESS(Status))
                 {
@@ -127,41 +127,41 @@ NtfsInsertKey(PB_TREE Tree,
                     return Status;
                 }
 
-                // Did the child node get split?
+
                 if (NewLeftKey)
                 {
-                    ASSERT(NewChild != NULL);
+                    ASSERT(NewChild != ((void*)0));
 
-                    // Insert the new left key to the left of the current key
+
                     NewLeftKey->NextKey = CurrentKey;
 
-                    // Is CurrentKey the first key?
+
                     if (!PreviousKey)
                         Node->FirstKey = NewLeftKey;
                     else
                         PreviousKey->NextKey = NewLeftKey;
 
-                    // CurrentKey->LesserChild will be the right-hand sibling
+
                     CurrentKey->LesserChild = NewChild;
 
                     Node->KeyCount++;
                     Node->DiskNeedsUpdating = TRUE;
 
-#ifndef NDEBUG
+
                     DumpBTree(Tree);
-#endif
+
                 }
             }
             else
             {
-                // Insert New Key before Current Key
+
                 NewKey->NextKey = CurrentKey;
 
-                // Increase KeyCount and mark node as dirty
+
                 Node->KeyCount++;
                 Node->DiskNeedsUpdating = TRUE;
 
-                // was CurrentKey the first key?
+
                 if (CurrentKey == Node->FirstKey)
                     Node->FirstKey = NewKey;
                 else
@@ -174,19 +174,19 @@ NtfsInsertKey(PB_TREE Tree,
         CurrentKey = CurrentKey->NextKey;
     }
 
-    // Determine how much space the index entries will need
+
     NodeSize = GetSizeOfIndexEntries(Node);
 
-    // Is Node not the root node?
+
     if (Node != Tree->RootNode)
     {
-        // Calculate maximum size of index entries without any headers
+
         AllocatedNodeSize = IndexRecordSize - FIELD_OFFSET(INDEX_BUFFER, Header);
 
-        // TODO: Replace magic with math 
+
         MaxNodeSizeWithoutHeader = AllocatedNodeSize - 0x28;
-        
-        // Has the node grown larger than its allocated size?
+
+
         if (NodeSize > MaxNodeSizeWithoutHeader)
         {
             NTSTATUS Status;
@@ -202,7 +202,7 @@ NtfsInsertKey(PB_TREE Tree,
         }
     }
 
-    // NewEntry and NewKey will be destroyed later by DestroyBTree()
+
 
     return Status;
 }

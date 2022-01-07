@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {char const* data; } ;
-typedef  TYPE_1__ svn_stringbuf_t ;
+typedef TYPE_1__ svn_stringbuf_t ;
 struct TYPE_8__ {char* data; int len; } ;
-typedef  TYPE_2__ svn_string_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_2__ svn_string_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  svn_stringbuf_appendbytes (TYPE_1__*,char const*,int) ; 
- int /*<<< orphan*/  svn_stringbuf_appendcstr (TYPE_1__*,char*) ; 
- TYPE_1__* svn_stringbuf_create_empty (int /*<<< orphan*/ *) ; 
+
+ int svn_stringbuf_appendbytes (TYPE_1__*,char const*,int) ;
+ int svn_stringbuf_appendcstr (TYPE_1__*,char*) ;
+ TYPE_1__* svn_stringbuf_create_empty (int *) ;
 
 __attribute__((used)) static const char *
 nul_escape(const svn_string_t *src, apr_pool_t *result_pool)
@@ -44,11 +44,11 @@ nul_escape(const svn_string_t *src, apr_pool_t *result_pool)
     {
       q = p;
 
-      /* Traverse till either unsafe character or eos. */
+
       while (q < end && *q != '\0')
         q++;
 
-      /* copy chunk before marker */
+
       svn_stringbuf_appendbytes(outstr, p, q - p);
 
       if (q == end)

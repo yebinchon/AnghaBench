@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct lev_filesys_xfs_file_chunk {int part; int size; int /*<<< orphan*/ * data; } ;
-struct TYPE_2__ {int chunk; int chunks; size_t M; int /*<<< orphan*/  name; int /*<<< orphan*/ * data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- TYPE_1__ curfile ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  process_file () ; 
- int /*<<< orphan*/  vkprintf (int,char*,int,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct lev_filesys_xfs_file_chunk {int part; int size; int * data; } ;
+struct TYPE_2__ {int chunk; int chunks; size_t M; int name; int * data; } ;
+
+
+ int assert (int) ;
+ TYPE_1__ curfile ;
+ int memcpy (int *,int *,int) ;
+ int process_file () ;
+ int vkprintf (int,char*,int,int,int ) ;
 
 __attribute__((used)) static void filesys_xfs_file_chunk (struct lev_filesys_xfs_file_chunk *E) {
   assert (E->part == curfile.chunk);

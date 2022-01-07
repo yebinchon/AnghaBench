@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_7__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  gboolean ;
-struct TYPE_18__ {int /*<<< orphan*/  repo_mgr; } ;
-struct TYPE_17__ {int enc_version; scalar_t__ repo_version; int /*<<< orphan*/  repo_id; scalar_t__ server_url; TYPE_2__* manager; } ;
-struct TYPE_16__ {int /*<<< orphan*/  tasks; } ;
-struct TYPE_15__ {int /*<<< orphan*/ * head; } ;
-typedef  TYPE_1__ SeafRepo ;
-typedef  TYPE_2__ SeafCloneManager ;
-typedef  TYPE_3__ CloneTask ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLONE_STATE_DONE ; 
- int /*<<< orphan*/  SYNC_ERROR_ID_GENERAL_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  check_http_protocol (TYPE_3__*) ; 
- int /*<<< orphan*/  clone_task_free (TYPE_3__*) ; 
- TYPE_3__* clone_task_new (char const*,char const*,char const*,char const*,char const*,char const*,char const*,char const*,char const*) ; 
- int /*<<< orphan*/  g_hash_table_insert (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  g_strdup (int /*<<< orphan*/ ) ; 
- scalar_t__ load_clone_enc_info (TYPE_3__*) ; 
- int /*<<< orphan*/  load_clone_more_info (TYPE_3__*) ; 
- int /*<<< orphan*/  load_clone_repo_version_info (TYPE_3__*) ; 
- TYPE_7__* seaf ; 
- TYPE_1__* seaf_repo_manager_get_repo (int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ sqlite3_column_text (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  transition_state (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  transition_to_error (TYPE_3__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_18__ TYPE_7__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+typedef int gboolean ;
+struct TYPE_18__ {int repo_mgr; } ;
+struct TYPE_17__ {int enc_version; scalar_t__ repo_version; int repo_id; scalar_t__ server_url; TYPE_2__* manager; } ;
+struct TYPE_16__ {int tasks; } ;
+struct TYPE_15__ {int * head; } ;
+typedef TYPE_1__ SeafRepo ;
+typedef TYPE_2__ SeafCloneManager ;
+typedef TYPE_3__ CloneTask ;
+
+
+ int CLONE_STATE_DONE ;
+ int SYNC_ERROR_ID_GENERAL_ERROR ;
+ int TRUE ;
+ int check_http_protocol (TYPE_3__*) ;
+ int clone_task_free (TYPE_3__*) ;
+ TYPE_3__* clone_task_new (char const*,char const*,char const*,char const*,char const*,char const*,char const*,char const*,char const*) ;
+ int g_hash_table_insert (int ,int ,TYPE_3__*) ;
+ int g_strdup (int ) ;
+ scalar_t__ load_clone_enc_info (TYPE_3__*) ;
+ int load_clone_more_info (TYPE_3__*) ;
+ int load_clone_repo_version_info (TYPE_3__*) ;
+ TYPE_7__* seaf ;
+ TYPE_1__* seaf_repo_manager_get_repo (int ,char const*) ;
+ scalar_t__ sqlite3_column_text (int *,int) ;
+ int transition_state (TYPE_3__*,int ) ;
+ int transition_to_error (TYPE_3__*,int ) ;
 
 __attribute__((used)) static gboolean
 restart_task (sqlite3_stmt *stmt, void *data)
@@ -61,11 +61,11 @@ restart_task (sqlite3_stmt *stmt, void *data)
     peer_port = (const char *)sqlite3_column_text (stmt, 7);
     email = (const char *)sqlite3_column_text (stmt, 8);
 
-    task = clone_task_new (repo_id, peer_id, repo_name, 
+    task = clone_task_new (repo_id, peer_id, repo_name,
                            token, worktree, passwd,
                            peer_addr, peer_port, email);
     task->manager = mgr;
-    /* Default to 1. */
+
     task->enc_version = 1;
 
     if (passwd && load_clone_enc_info (task) < 0) {
@@ -80,7 +80,7 @@ restart_task (sqlite3_stmt *stmt, void *data)
 
     repo = seaf_repo_manager_get_repo (seaf->repo_mgr, repo_id);
 
-    if (repo != NULL && repo->head != NULL) {
+    if (repo != ((void*)0) && repo->head != ((void*)0)) {
         transition_state (task, CLONE_STATE_DONE);
         return TRUE;
     }

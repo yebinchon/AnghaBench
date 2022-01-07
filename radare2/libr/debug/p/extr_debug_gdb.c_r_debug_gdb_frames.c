@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ut64 ;
-typedef  int /*<<< orphan*/  RList ;
-typedef  int /*<<< orphan*/  RDebug ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * r_debug_native_frames (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ut64 ;
+typedef int RList ;
+typedef int RDebug ;
+
+
+ int * r_debug_native_frames (int *,int ) ;
 
 __attribute__((used)) static RList* r_debug_gdb_frames(RDebug *dbg, ut64 at) {
-	return r_debug_native_frames (dbg, at);
+ return r_debug_native_frames (dbg, at);
 }

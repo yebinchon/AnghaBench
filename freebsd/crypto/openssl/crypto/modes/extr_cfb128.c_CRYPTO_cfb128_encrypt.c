@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  (* block128_f ) (unsigned char*,unsigned char*,void const*) ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (unsigned char*,unsigned char*,void const*) ; 
- int /*<<< orphan*/  stub2 (unsigned char*,unsigned char*,void const*) ; 
- int /*<<< orphan*/  stub3 (unsigned char*,unsigned char*,void const*) ; 
- int /*<<< orphan*/  stub4 (unsigned char*,unsigned char*,void const*) ; 
- int /*<<< orphan*/  stub5 (unsigned char*,unsigned char*,void const*) ; 
- int /*<<< orphan*/  stub6 (unsigned char*,unsigned char*,void const*) ; 
+
+
+
+typedef int (* block128_f ) (unsigned char*,unsigned char*,void const*) ;
+
+
+ int stub1 (unsigned char*,unsigned char*,void const*) ;
+ int stub2 (unsigned char*,unsigned char*,void const*) ;
+ int stub3 (unsigned char*,unsigned char*,void const*) ;
+ int stub4 (unsigned char*,unsigned char*,void const*) ;
+ int stub5 (unsigned char*,unsigned char*,void const*) ;
+ int stub6 (unsigned char*,unsigned char*,void const*) ;
 
 void CRYPTO_cfb128_encrypt(const unsigned char *in, unsigned char *out,
                            size_t len, const void *key,
@@ -31,19 +31,19 @@ void CRYPTO_cfb128_encrypt(const unsigned char *in, unsigned char *out,
     n = *num;
 
     if (enc) {
-#if !defined(OPENSSL_SMALL_FOOTPRINT)
-        if (16 % sizeof(size_t) == 0) { /* always true actually */
+
+        if (16 % sizeof(size_t) == 0) {
             do {
                 while (n && len) {
                     *(out++) = ivec[n] ^= *(in++);
                     --len;
                     n = (n + 1) % 16;
                 }
-# if defined(STRICT_ALIGNMENT)
-                if (((size_t)in | (size_t)out | (size_t)ivec) %
-                    sizeof(size_t) != 0)
-                    break;
-# endif
+
+
+
+
+
                 while (len >= 16) {
                     (*block) (ivec, ivec, key);
                     for (; n < 16; n += sizeof(size_t)) {
@@ -66,8 +66,8 @@ void CRYPTO_cfb128_encrypt(const unsigned char *in, unsigned char *out,
                 return;
             } while (0);
         }
-        /* the rest would be commonly eliminated by x86* compiler */
-#endif
+
+
         while (l < len) {
             if (n == 0) {
                 (*block) (ivec, ivec, key);
@@ -78,8 +78,8 @@ void CRYPTO_cfb128_encrypt(const unsigned char *in, unsigned char *out,
         }
         *num = n;
     } else {
-#if !defined(OPENSSL_SMALL_FOOTPRINT)
-        if (16 % sizeof(size_t) == 0) { /* always true actually */
+
+        if (16 % sizeof(size_t) == 0) {
             do {
                 while (n && len) {
                     unsigned char c;
@@ -88,11 +88,11 @@ void CRYPTO_cfb128_encrypt(const unsigned char *in, unsigned char *out,
                     --len;
                     n = (n + 1) % 16;
                 }
-# if defined(STRICT_ALIGNMENT)
-                if (((size_t)in | (size_t)out | (size_t)ivec) %
-                    sizeof(size_t) != 0)
-                    break;
-# endif
+
+
+
+
+
                 while (len >= 16) {
                     (*block) (ivec, ivec, key);
                     for (; n < 16; n += sizeof(size_t)) {
@@ -118,8 +118,8 @@ void CRYPTO_cfb128_encrypt(const unsigned char *in, unsigned char *out,
                 return;
             } while (0);
         }
-        /* the rest would be commonly eliminated by x86* compiler */
-#endif
+
+
         while (l < len) {
             unsigned char c;
             if (n == 0) {

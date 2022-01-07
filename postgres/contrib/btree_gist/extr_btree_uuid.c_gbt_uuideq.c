@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pg_uuid_t ;
-typedef  int /*<<< orphan*/  FmgrInfo ;
 
-/* Variables and functions */
- scalar_t__ uuid_internal_cmp (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int pg_uuid_t ;
+typedef int FmgrInfo ;
+
+
+ scalar_t__ uuid_internal_cmp (int const*,int const*) ;
 
 __attribute__((used)) static bool
 gbt_uuideq(const void *a, const void *b, FmgrInfo *flinfo)
 {
-	return uuid_internal_cmp((const pg_uuid_t *) a, (const pg_uuid_t *) b) == 0;
+ return uuid_internal_cmp((const pg_uuid_t *) a, (const pg_uuid_t *) b) == 0;
 }

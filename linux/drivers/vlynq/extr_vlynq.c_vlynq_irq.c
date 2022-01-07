@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct vlynq_device {scalar_t__ irq_start; TYPE_1__* local; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
-struct TYPE_2__ {int /*<<< orphan*/  int_status; } ;
+typedef int irqreturn_t ;
+struct TYPE_2__ {int int_status; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  do_IRQ (scalar_t__) ; 
- int readl (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spurious_interrupt () ; 
- scalar_t__ unlikely (int) ; 
- int /*<<< orphan*/  writel (int,int /*<<< orphan*/ *) ; 
+
+ int IRQ_HANDLED ;
+ int do_IRQ (scalar_t__) ;
+ int readl (int *) ;
+ int spurious_interrupt () ;
+ scalar_t__ unlikely (int) ;
+ int writel (int,int *) ;
 
 __attribute__((used)) static irqreturn_t vlynq_irq(int irq, void *dev_id)
 {
-	struct vlynq_device *dev = dev_id;
-	u32 status;
-	int virq = 0;
+ struct vlynq_device *dev = dev_id;
+ u32 status;
+ int virq = 0;
 
-	status = readl(&dev->local->int_status);
-	writel(status, &dev->local->int_status);
+ status = readl(&dev->local->int_status);
+ writel(status, &dev->local->int_status);
 
-	if (unlikely(!status))
-		spurious_interrupt();
+ if (unlikely(!status))
+  spurious_interrupt();
 
-	while (status) {
-		if (status & 1)
-			do_IRQ(dev->irq_start + virq);
-		status >>= 1;
-		virq++;
-	}
+ while (status) {
+  if (status & 1)
+   do_IRQ(dev->irq_start + virq);
+  status >>= 1;
+  virq++;
+ }
 
-	return IRQ_HANDLED;
+ return IRQ_HANDLED;
 }

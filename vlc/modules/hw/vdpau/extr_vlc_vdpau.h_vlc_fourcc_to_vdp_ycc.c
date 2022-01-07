@@ -1,78 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int vlc_fourcc_t ;
-typedef  int /*<<< orphan*/  VdpYCbCrFormat ;
-typedef  int /*<<< orphan*/  VdpChromaType ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VDP_CHROMA_TYPE_420 ; 
- int /*<<< orphan*/  VDP_CHROMA_TYPE_422 ; 
- int /*<<< orphan*/  VDP_CHROMA_TYPE_444 ; 
- int /*<<< orphan*/  VDP_YCBCR_FORMAT_NV12 ; 
- int /*<<< orphan*/  VDP_YCBCR_FORMAT_UYVY ; 
- int /*<<< orphan*/  VDP_YCBCR_FORMAT_YUYV ; 
- int /*<<< orphan*/  VDP_YCBCR_FORMAT_YV12 ; 
-#define  VLC_CODEC_I420 136 
-#define  VLC_CODEC_I422 135 
-#define  VLC_CODEC_I444 134 
-#define  VLC_CODEC_NV12 133 
-#define  VLC_CODEC_NV16 132 
-#define  VLC_CODEC_NV24 131 
-#define  VLC_CODEC_UYVY 130 
-#define  VLC_CODEC_YUYV 129 
-#define  VLC_CODEC_YV12 128 
 
+
+
+typedef int vlc_fourcc_t ;
+typedef int VdpYCbCrFormat ;
+typedef int VdpChromaType ;
+
+
+ int VDP_CHROMA_TYPE_420 ;
+ int VDP_CHROMA_TYPE_422 ;
+ int VDP_CHROMA_TYPE_444 ;
+ int VDP_YCBCR_FORMAT_NV12 ;
+ int VDP_YCBCR_FORMAT_UYVY ;
+ int VDP_YCBCR_FORMAT_YUYV ;
+ int VDP_YCBCR_FORMAT_YV12 ;
 __attribute__((used)) static inline
 bool vlc_fourcc_to_vdp_ycc(vlc_fourcc_t fourcc,
                  VdpChromaType *restrict type, VdpYCbCrFormat *restrict format)
 {
     switch (fourcc)
     {
-        case VLC_CODEC_I420:
-        case VLC_CODEC_YV12:
+        case 136:
+        case 128:
             *type = VDP_CHROMA_TYPE_420;
             *format = VDP_YCBCR_FORMAT_YV12;
             break;
-        case VLC_CODEC_NV12:
+        case 133:
             *type = VDP_CHROMA_TYPE_420;
             *format = VDP_YCBCR_FORMAT_NV12;
             break;
-        case VLC_CODEC_I422:
+        case 135:
             *type = VDP_CHROMA_TYPE_422;
             *format = VDP_YCBCR_FORMAT_YV12;
             break;
-        case VLC_CODEC_NV16:
+        case 132:
             *type = VDP_CHROMA_TYPE_422;
             *format = VDP_YCBCR_FORMAT_NV12;
             break;
-        case VLC_CODEC_YUYV:
+        case 129:
             *type = VDP_CHROMA_TYPE_422;
             *format = VDP_YCBCR_FORMAT_YUYV;
             break;
-        case VLC_CODEC_UYVY:
+        case 130:
             *type = VDP_CHROMA_TYPE_422;
             *format = VDP_YCBCR_FORMAT_UYVY;
             break;
-        case VLC_CODEC_I444:
+        case 134:
             *type = VDP_CHROMA_TYPE_444;
             *format = VDP_YCBCR_FORMAT_YV12;
             break;
-        case VLC_CODEC_NV24:
+        case 131:
             *type = VDP_CHROMA_TYPE_444;
             *format = VDP_YCBCR_FORMAT_NV12;
             break;
         default:
-            return false;
+            return 0;
     }
-    return true;
+    return 1;
 }

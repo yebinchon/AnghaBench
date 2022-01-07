@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {struct TYPE_5__* p_next; int /*<<< orphan*/  psz_rt; int /*<<< orphan*/  psz_base; } ;
-typedef  TYPE_1__ text_segment_ruby_t ;
 
-/* Variables and functions */
- TYPE_1__* text_segment_ruby_New (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {struct TYPE_5__* p_next; int psz_rt; int psz_base; } ;
+typedef TYPE_1__ text_segment_ruby_t ;
+
+
+ TYPE_1__* text_segment_ruby_New (int ,int ) ;
 
 __attribute__((used)) static text_segment_ruby_t *text_segment_ruby_Duplicate( const text_segment_ruby_t *p_src )
 {
-    text_segment_ruby_t *p_dup = NULL;
+    text_segment_ruby_t *p_dup = ((void*)0);
     text_segment_ruby_t **pp_append = &p_dup;
     for ( ; p_src ; p_src = p_src->p_next )
     {

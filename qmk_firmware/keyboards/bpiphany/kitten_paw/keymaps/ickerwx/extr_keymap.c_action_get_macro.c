@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  macro_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int macro_t ;
+struct TYPE_4__ {int pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
+typedef TYPE_2__ keyrecord_t ;
 
-/* Variables and functions */
-#define  CFLEX 129 
- int /*<<< orphan*/  D (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  END ; 
- int const EQL ; 
-#define  GRV 128 
- int /*<<< orphan*/  LSFT ; 
- int /*<<< orphan*/  const* MACRO (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  const* MACRO_NONE ; 
- int /*<<< orphan*/  RALT ; 
- int const SPC ; 
- int /*<<< orphan*/  T (int const) ; 
- int /*<<< orphan*/  U (int /*<<< orphan*/ ) ; 
+
+
+ int D (int ) ;
+ int END ;
+ int const EQL ;
+
+ int LSFT ;
+ int const* MACRO (int ,int ,int ,...) ;
+ int const* MACRO_NONE ;
+ int RALT ;
+ int const SPC ;
+ int T (int const) ;
+ int U (int ) ;
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
-  // MACRODOWN only works in this function
+
       switch(id) {
-        case GRV: // macro to print accent grave
+        case 128:
             return (record->event.pressed ?
                     MACRO( D(LSFT), T(EQL), U(RALT), T(SPC), END) :
                     MACRO_NONE );
-        case CFLEX: // print accent circonflex
+        case 129:
             return (record->event.pressed ?
-                    MACRO( T(GRV), T(SPC), END ) :
+                    MACRO( T(128), T(SPC), END ) :
                     MACRO_NONE );
       }
     return MACRO_NONE;

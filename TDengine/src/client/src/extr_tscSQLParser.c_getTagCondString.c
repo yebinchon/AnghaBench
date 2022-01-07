@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {struct TYPE_6__* pRight; struct TYPE_6__* pLeft; } ;
-typedef  TYPE_1__ tSQLExpr ;
-typedef  scalar_t__ int32_t ;
-typedef  int /*<<< orphan*/  SSqlCmd ;
+typedef TYPE_1__ tSQLExpr ;
+typedef scalar_t__ int32_t ;
+typedef int SSqlCmd ;
 
-/* Variables and functions */
- scalar_t__ TSDB_CODE_SUCCESS ; 
- int /*<<< orphan*/  isExprDirectParentOfLeaftNode (TYPE_1__*) ; 
- int /*<<< orphan*/  relToString (int /*<<< orphan*/ *,TYPE_1__*,char**) ; 
- scalar_t__ tSQLExprLeafToString (TYPE_1__*,int,char**) ; 
+
+ scalar_t__ TSDB_CODE_SUCCESS ;
+ int isExprDirectParentOfLeaftNode (TYPE_1__*) ;
+ int relToString (int *,TYPE_1__*,char**) ;
+ scalar_t__ tSQLExprLeafToString (TYPE_1__*,int,char**) ;
 
 __attribute__((used)) static int32_t getTagCondString(SSqlCmd* pCmd, tSQLExpr* pExpr, char** str) {
-  if (pExpr == NULL) {
+  if (pExpr == ((void*)0)) {
     return TSDB_CODE_SUCCESS;
   }
 
@@ -46,5 +46,5 @@ __attribute__((used)) static int32_t getTagCondString(SSqlCmd* pCmd, tSQLExpr* p
     return ret;
   }
 
-  return tSQLExprLeafToString(pExpr, true, str);
+  return tSQLExprLeafToString(pExpr, 1, str);
 }

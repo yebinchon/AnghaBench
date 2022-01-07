@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
 struct TYPE_9__ {scalar_t__ err; TYPE_2__* data; } ;
-typedef  TYPE_1__ redisAsyncContext ;
-struct TYPE_10__ {scalar_t__ state; scalar_t__ connect_timeout; int /*<<< orphan*/  _timeout_entry; int /*<<< orphan*/  loop; TYPE_1__* _redis; } ;
-typedef  TYPE_2__ h2o_redis_client_t ;
+typedef TYPE_1__ redisAsyncContext ;
+struct TYPE_10__ {scalar_t__ state; scalar_t__ connect_timeout; int _timeout_entry; int loop; TYPE_1__* _redis; } ;
+typedef TYPE_2__ h2o_redis_client_t ;
 
-/* Variables and functions */
- scalar_t__ H2O_REDIS_CONNECTION_STATE_CLOSED ; 
- scalar_t__ H2O_REDIS_CONNECTION_STATE_CONNECTING ; 
- scalar_t__ REDIS_OK ; 
- int /*<<< orphan*/  attach_loop (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  disconnect (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  h2o_fatal (char*) ; 
- int /*<<< orphan*/  h2o_redis_error_connection ; 
- int /*<<< orphan*/  h2o_timer_link (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  on_connect ; 
- int /*<<< orphan*/  on_disconnect ; 
- TYPE_1__* redisAsyncConnect (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  redisAsyncSetConnectCallback (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  redisAsyncSetDisconnectCallback (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ H2O_REDIS_CONNECTION_STATE_CLOSED ;
+ scalar_t__ H2O_REDIS_CONNECTION_STATE_CONNECTING ;
+ scalar_t__ REDIS_OK ;
+ int attach_loop (TYPE_1__*,int ) ;
+ int disconnect (TYPE_2__*,int ) ;
+ int h2o_fatal (char*) ;
+ int h2o_redis_error_connection ;
+ int h2o_timer_link (int ,scalar_t__,int *) ;
+ int on_connect ;
+ int on_disconnect ;
+ TYPE_1__* redisAsyncConnect (char const*,int ) ;
+ int redisAsyncSetConnectCallback (TYPE_1__*,int ) ;
+ int redisAsyncSetDisconnectCallback (TYPE_1__*,int ) ;
 
 void h2o_redis_connect(h2o_redis_client_t *client, const char *host, uint16_t port)
 {
@@ -40,7 +40,7 @@ void h2o_redis_connect(h2o_redis_client_t *client, const char *host, uint16_t po
     }
 
     redisAsyncContext *redis = redisAsyncConnect(host, port);
-    if (redis == NULL) {
+    if (redis == ((void*)0)) {
         h2o_fatal("no memory");
     }
 
@@ -53,7 +53,7 @@ void h2o_redis_connect(h2o_redis_client_t *client, const char *host, uint16_t po
     redisAsyncSetDisconnectCallback(redis, on_disconnect);
 
     if (redis->err != REDIS_OK) {
-        /* some connection failures can be detected at this time */
+
         disconnect(client, h2o_redis_error_connection);
         return;
     }

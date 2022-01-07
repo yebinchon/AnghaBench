@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  caddr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  SESIOC_GETNOBJ ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,unsigned int) ; 
- scalar_t__ ioctl (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+typedef int caddr_t ;
+
+
+ int O_RDONLY ;
+ int SESIOC_GETNOBJ ;
+ int close (int) ;
+ int fprintf (int ,char*,char*,unsigned int) ;
+ scalar_t__ ioctl (int,int ,int ) ;
+ int open (char*,int ) ;
+ int perror (char*) ;
+ int stdout ;
 
 int
 main(int argc, char **argv)
 {
-	unsigned int nobj;
-	int fd;
+ unsigned int nobj;
+ int fd;
 
-	while (*++argv != NULL) {
-		char *name = *argv;
-		fd = open(name, O_RDONLY);
-		if (fd < 0) {
-			perror(name);
-			continue;
-		}
-		if (ioctl(fd, SESIOC_GETNOBJ, (caddr_t) &nobj) < 0) {
-			perror("SESIOC_GETNOBJ");
-		} else {
-			fprintf(stdout, "%s: %d objects\n", name, nobj);
-		}
-		close (fd);
-	}
-	return (0);
+ while (*++argv != ((void*)0)) {
+  char *name = *argv;
+  fd = open(name, O_RDONLY);
+  if (fd < 0) {
+   perror(name);
+   continue;
+  }
+  if (ioctl(fd, SESIOC_GETNOBJ, (caddr_t) &nobj) < 0) {
+   perror("SESIOC_GETNOBJ");
+  } else {
+   fprintf(stdout, "%s: %d objects\n", name, nobj);
+  }
+  close (fd);
+ }
+ return (0);
 }

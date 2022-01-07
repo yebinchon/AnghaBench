@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int /*<<< orphan*/  header ;
-struct TYPE_3__ {int /*<<< orphan*/  pb; } ;
-typedef  TYPE_1__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int /*<<< orphan*/  memset (char*,char,int) ; 
- int snprintf (char*,int,char*,int) ; 
- int strlen (char const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef char uint8_t ;
+typedef int header ;
+struct TYPE_3__ {int pb; } ;
+typedef TYPE_1__ AVFormatContext ;
+
+
+ int avio_write (int ,char*,int) ;
+ int memcpy (char*,char const*,int) ;
+ int memset (char*,char,int) ;
+ int snprintf (char*,int,char*,int) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static int write_keyword_value(AVFormatContext *s, const char *keyword, int value, int *lines_written)
 {

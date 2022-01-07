@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uma_zone_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SKIP_NONE ; 
- int /*<<< orphan*/  sx_slock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sx_sunlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uma_reclaim_lock ; 
- int /*<<< orphan*/  zone_free_item (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zones ; 
+
+
+
+typedef int uma_zone_t ;
+
+
+ int SKIP_NONE ;
+ int sx_slock (int *) ;
+ int sx_sunlock (int *) ;
+ int uma_reclaim_lock ;
+ int zone_free_item (int ,int ,int *,int ) ;
+ int zones ;
 
 void
 uma_zdestroy(uma_zone_t zone)
 {
 
-	sx_slock(&uma_reclaim_lock);
-	zone_free_item(zones, zone, NULL, SKIP_NONE);
-	sx_sunlock(&uma_reclaim_lock);
+ sx_slock(&uma_reclaim_lock);
+ zone_free_item(zones, zone, ((void*)0), SKIP_NONE);
+ sx_sunlock(&uma_reclaim_lock);
 }

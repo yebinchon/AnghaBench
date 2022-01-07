@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_4__ {struct TYPE_4__* zSpan; int /*<<< orphan*/  pUpsert; int /*<<< orphan*/  pIdList; int /*<<< orphan*/  pSelect; int /*<<< orphan*/  pExprList; int /*<<< orphan*/  pWhere; struct TYPE_4__* pNext; } ;
-typedef  TYPE_1__ TriggerStep ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sqlite3DbFree (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3ExprDelete (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3ExprListDelete (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3IdListDelete (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3SelectDelete (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3UpsertDelete (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sqlite3 ;
+struct TYPE_4__ {struct TYPE_4__* zSpan; int pUpsert; int pIdList; int pSelect; int pExprList; int pWhere; struct TYPE_4__* pNext; } ;
+typedef TYPE_1__ TriggerStep ;
+
+
+ int sqlite3DbFree (int *,TYPE_1__*) ;
+ int sqlite3ExprDelete (int *,int ) ;
+ int sqlite3ExprListDelete (int *,int ) ;
+ int sqlite3IdListDelete (int *,int ) ;
+ int sqlite3SelectDelete (int *,int ) ;
+ int sqlite3UpsertDelete (int *,int ) ;
 
 void sqlite3DeleteTriggerStep(sqlite3 *db, TriggerStep *pTriggerStep){
   while( pTriggerStep ){

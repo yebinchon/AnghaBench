@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pcm {scalar_t__ running; scalar_t__ prepared; int /*<<< orphan*/  fd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RARCH_ERR (char*) ; 
- int /*<<< orphan*/  SNDRV_PCM_IOCTL_DROP ; 
- scalar_t__ ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct pcm {scalar_t__ running; scalar_t__ prepared; int fd; } ;
+
+
+ int RARCH_ERR (char*) ;
+ int SNDRV_PCM_IOCTL_DROP ;
+ scalar_t__ ioctl (int ,int ) ;
 
 __attribute__((used)) static int pcm_stop(struct pcm *pcm)
 {

@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/ * utime_p; int /*<<< orphan*/ * rmdir_p; int /*<<< orphan*/ * mkdir_p; int /*<<< orphan*/ * telldir_p; int /*<<< orphan*/ * seekdir_p; int /*<<< orphan*/ * readdir_r_p; int /*<<< orphan*/ * readdir_p; int /*<<< orphan*/ * closedir_p; int /*<<< orphan*/ * opendir_p; int /*<<< orphan*/ * rename_p; int /*<<< orphan*/ * unlink_p; int /*<<< orphan*/ * link_p; int /*<<< orphan*/ * stat_p; int /*<<< orphan*/ * fstat_p; int /*<<< orphan*/ * close_p; int /*<<< orphan*/ * open_p; int /*<<< orphan*/ * read_p; int /*<<< orphan*/ * lseek_p; int /*<<< orphan*/ * write_p; int /*<<< orphan*/  flags; } ;
-typedef  TYPE_1__ esp_vfs_t ;
-struct TYPE_10__ {int /*<<< orphan*/  base_path; int /*<<< orphan*/  partition_label; } ;
-typedef  TYPE_2__ esp_vfs_spiffs_conf_t ;
-typedef  scalar_t__ esp_err_t ;
-struct TYPE_11__ {int /*<<< orphan*/  base_path; } ;
 
-/* Variables and functions */
- scalar_t__ ESP_ERR_INVALID_STATE ; 
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  ESP_VFS_FLAG_CONTEXT_PTR ; 
- scalar_t__ ESP_VFS_PATH_MAX ; 
- TYPE_5__** _efs ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- scalar_t__ esp_spiffs_by_label (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  esp_spiffs_free (TYPE_5__**) ; 
- scalar_t__ esp_spiffs_init (TYPE_2__ const*) ; 
- scalar_t__ esp_vfs_register (int /*<<< orphan*/ ,TYPE_1__ const*,TYPE_5__*) ; 
- int /*<<< orphan*/  strlcat (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  vfs_spiffs_close ; 
- int /*<<< orphan*/  vfs_spiffs_closedir ; 
- int /*<<< orphan*/  vfs_spiffs_fstat ; 
- int /*<<< orphan*/  vfs_spiffs_link ; 
- int /*<<< orphan*/  vfs_spiffs_lseek ; 
- int /*<<< orphan*/  vfs_spiffs_mkdir ; 
- int /*<<< orphan*/  vfs_spiffs_open ; 
- int /*<<< orphan*/  vfs_spiffs_opendir ; 
- int /*<<< orphan*/  vfs_spiffs_read ; 
- int /*<<< orphan*/  vfs_spiffs_readdir ; 
- int /*<<< orphan*/  vfs_spiffs_readdir_r ; 
- int /*<<< orphan*/  vfs_spiffs_rename ; 
- int /*<<< orphan*/  vfs_spiffs_rmdir ; 
- int /*<<< orphan*/  vfs_spiffs_seekdir ; 
- int /*<<< orphan*/  vfs_spiffs_stat ; 
- int /*<<< orphan*/  vfs_spiffs_telldir ; 
- int /*<<< orphan*/  vfs_spiffs_unlink ; 
- int /*<<< orphan*/  vfs_spiffs_utime ; 
- int /*<<< orphan*/  vfs_spiffs_write ; 
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int * utime_p; int * rmdir_p; int * mkdir_p; int * telldir_p; int * seekdir_p; int * readdir_r_p; int * readdir_p; int * closedir_p; int * opendir_p; int * rename_p; int * unlink_p; int * link_p; int * stat_p; int * fstat_p; int * close_p; int * open_p; int * read_p; int * lseek_p; int * write_p; int flags; } ;
+typedef TYPE_1__ esp_vfs_t ;
+struct TYPE_10__ {int base_path; int partition_label; } ;
+typedef TYPE_2__ esp_vfs_spiffs_conf_t ;
+typedef scalar_t__ esp_err_t ;
+struct TYPE_11__ {int base_path; } ;
+
+
+ scalar_t__ ESP_ERR_INVALID_STATE ;
+ scalar_t__ ESP_OK ;
+ int ESP_VFS_FLAG_CONTEXT_PTR ;
+ scalar_t__ ESP_VFS_PATH_MAX ;
+ TYPE_5__** _efs ;
+ int assert (int ) ;
+ scalar_t__ esp_spiffs_by_label (int ,int*) ;
+ int esp_spiffs_free (TYPE_5__**) ;
+ scalar_t__ esp_spiffs_init (TYPE_2__ const*) ;
+ scalar_t__ esp_vfs_register (int ,TYPE_1__ const*,TYPE_5__*) ;
+ int strlcat (int ,int ,scalar_t__) ;
+ int vfs_spiffs_close ;
+ int vfs_spiffs_closedir ;
+ int vfs_spiffs_fstat ;
+ int vfs_spiffs_link ;
+ int vfs_spiffs_lseek ;
+ int vfs_spiffs_mkdir ;
+ int vfs_spiffs_open ;
+ int vfs_spiffs_opendir ;
+ int vfs_spiffs_read ;
+ int vfs_spiffs_readdir ;
+ int vfs_spiffs_readdir_r ;
+ int vfs_spiffs_rename ;
+ int vfs_spiffs_rmdir ;
+ int vfs_spiffs_seekdir ;
+ int vfs_spiffs_stat ;
+ int vfs_spiffs_telldir ;
+ int vfs_spiffs_unlink ;
+ int vfs_spiffs_utime ;
+ int vfs_spiffs_write ;
 
 esp_err_t esp_vfs_spiffs_register(const esp_vfs_spiffs_conf_t * conf)
 {
@@ -75,11 +75,11 @@ esp_err_t esp_vfs_spiffs_register(const esp_vfs_spiffs_conf_t * conf)
         .telldir_p = &vfs_spiffs_telldir,
         .mkdir_p = &vfs_spiffs_mkdir,
         .rmdir_p = &vfs_spiffs_rmdir,
-#ifdef CONFIG_SPIFFS_USE_MTIME
-        .utime_p = &vfs_spiffs_utime,
-#else
-        .utime_p = NULL,
-#endif // CONFIG_SPIFFS_USE_MTIME
+
+
+
+        .utime_p = ((void*)0),
+
     };
 
     esp_err_t err = esp_spiffs_init(conf);

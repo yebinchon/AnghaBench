@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int X; int Y; } ;
-typedef  int /*<<< orphan*/ * HDC ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpSolidFill ;
-typedef  TYPE_1__ GpPoint ;
-typedef  int /*<<< orphan*/  GpGraphics ;
-typedef  int /*<<< orphan*/  GpBrush ;
-typedef  int /*<<< orphan*/  ARGB ;
+typedef int * HDC ;
+typedef int GpStatus ;
+typedef int GpSolidFill ;
+typedef TYPE_1__ GpPoint ;
+typedef int GpGraphics ;
+typedef int GpBrush ;
+typedef int ARGB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GdipCreateFromHDC (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreateSolidFill (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteBrush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipFillClosedCurveI (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,int) ; 
- int /*<<< orphan*/ * GetDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InvalidParameter ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  OutOfMemory ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hwnd ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*) ; 
+
+ int GdipCreateFromHDC (int *,int **) ;
+ int GdipCreateSolidFill (int ,int **) ;
+ int GdipDeleteBrush (int *) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipFillClosedCurveI (int *,int *,TYPE_1__*,int) ;
+ int * GetDC (int ) ;
+ int InvalidParameter ;
+ int Ok ;
+ int OutOfMemory ;
+ int ReleaseDC (int ,int *) ;
+ int expect (int ,int ) ;
+ int hwnd ;
+ int ok (int ,char*) ;
 
 __attribute__((used)) static void test_GdipFillClosedCurveI(void)
 {
     GpStatus status;
-    GpGraphics *graphics = NULL;
-    GpSolidFill *brush = NULL;
+    GpGraphics *graphics = ((void*)0);
+    GpSolidFill *brush = ((void*)0);
     HDC hdc = GetDC( hwnd );
     GpPoint points[3];
 
@@ -52,36 +52,36 @@ __attribute__((used)) static void test_GdipFillClosedCurveI(void)
     points[2].X = 10;
     points[2].Y = 40;
 
-    /* make a graphics object and brush object */
-    ok(hdc != NULL, "Expected HDC to be initialized\n");
+
+    ok(hdc != ((void*)0), "Expected HDC to be initialized\n");
 
     status = GdipCreateFromHDC(hdc, &graphics);
     expect(Ok, status);
-    ok(graphics != NULL, "Expected graphics to be initialized\n");
+    ok(graphics != ((void*)0), "Expected graphics to be initialized\n");
 
     GdipCreateSolidFill((ARGB)0xdeadbeef, &brush);
 
-    /* InvalidParameter cases: null graphics, null brush */
-    /* Note: GdipFillClosedCurveI and GdipFillClosedCurve2I hang in Windows
-             when points == NULL, so don't test this condition */
-    status = GdipFillClosedCurveI(NULL, NULL, points, 3);
+
+
+
+    status = GdipFillClosedCurveI(((void*)0), ((void*)0), points, 3);
     expect(InvalidParameter, status);
 
-    status = GdipFillClosedCurveI(graphics, NULL, points, 3);
+    status = GdipFillClosedCurveI(graphics, ((void*)0), points, 3);
     expect(InvalidParameter, status);
 
-    status = GdipFillClosedCurveI(NULL, (GpBrush*)brush, points, 3);
+    status = GdipFillClosedCurveI(((void*)0), (GpBrush*)brush, points, 3);
     expect(InvalidParameter, status);
 
-    /* InvalidParameter cases: invalid count */
+
     status = GdipFillClosedCurveI(graphics, (GpBrush*)brush, points, 0);
     expect(InvalidParameter, status);
 
-    /* OutOfMemory cases: large (unsigned) int */
+
     status = GdipFillClosedCurveI(graphics, (GpBrush*)brush, points, -1);
     expect(OutOfMemory, status);
 
-    /* Valid test cases */
+
     status = GdipFillClosedCurveI(graphics, (GpBrush*)brush, points, 1);
     expect(Ok, status);
 

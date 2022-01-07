@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  edit_clear_line () ; 
- char* search_buf ; 
- int /*<<< orphan*/  search_redraw () ; 
- scalar_t__ search_skip ; 
+ int edit_clear_line () ;
+ char* search_buf ;
+ int search_redraw () ;
+ scalar_t__ search_skip ;
 
 __attribute__((used)) static void search_start(void)
 {
-	edit_clear_line();
-	search_buf[0] = '\0';
-	search_skip = 0;
-	search_redraw();
+ edit_clear_line();
+ search_buf[0] = '\0';
+ search_skip = 0;
+ search_redraw();
 }

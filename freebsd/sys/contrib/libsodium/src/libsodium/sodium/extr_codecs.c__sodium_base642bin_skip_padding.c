@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ERANGE ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/ * strchr (char const* const,int) ; 
+ int EINVAL ;
+ int ERANGE ;
+ int errno ;
+ int * strchr (char const* const,int) ;
 
 __attribute__((used)) static int
 _sodium_base642bin_skip_padding(const char * const b64, const size_t b64_len,
@@ -32,7 +24,7 @@ _sodium_base642bin_skip_padding(const char * const b64, const size_t b64_len,
         c = b64[*b64_pos_p];
         if (c == '=') {
             padding_len--;
-        } else if (ignore == NULL || strchr(ignore, c) == NULL) {
+        } else if (ignore == ((void*)0) || strchr(ignore, c) == ((void*)0)) {
             errno = EINVAL;
             return -1;
         }

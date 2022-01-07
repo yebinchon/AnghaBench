@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct scsi_cmnd {int dummy; } ;
 
-/* Variables and functions */
- int PARITY_MASK ; 
- scalar_t__ SCSI_Cntl ; 
- scalar_t__ SCSI_Mode_Cntl ; 
- int SUCCESS ; 
- scalar_t__ TMC_Cntl ; 
- int /*<<< orphan*/  do_pause (int) ; 
- int /*<<< orphan*/  local_irq_restore (unsigned long) ; 
- int /*<<< orphan*/  local_irq_save (unsigned long) ; 
- int /*<<< orphan*/  outb (int,scalar_t__) ; 
- scalar_t__ port_base ; 
+
+ int PARITY_MASK ;
+ scalar_t__ SCSI_Cntl ;
+ scalar_t__ SCSI_Mode_Cntl ;
+ int SUCCESS ;
+ scalar_t__ TMC_Cntl ;
+ int do_pause (int) ;
+ int local_irq_restore (unsigned long) ;
+ int local_irq_save (unsigned long) ;
+ int outb (int,scalar_t__) ;
+ scalar_t__ port_base ;
 
 int fdomain_16x0_bus_reset(struct scsi_cmnd *SCpnt)
 {

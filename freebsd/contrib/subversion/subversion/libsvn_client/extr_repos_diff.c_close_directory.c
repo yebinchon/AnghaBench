@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct edit_baton {TYPE_2__* processor; int /*<<< orphan*/  ra_session; int /*<<< orphan*/ * empty_hash; } ;
-struct dir_baton {int /*<<< orphan*/ * pool; int /*<<< orphan*/  pdb; int /*<<< orphan*/  right_source; int /*<<< orphan*/  left_source; int /*<<< orphan*/  path; int /*<<< orphan*/  skip; TYPE_1__* propchanges; scalar_t__ added; int /*<<< orphan*/  base_revision; scalar_t__ has_propchange; struct edit_baton* edit_baton; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-struct TYPE_8__ {int /*<<< orphan*/  (* dir_closed ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* dir_changed ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* dir_added ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *) ;} ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+struct edit_baton {TYPE_2__* processor; int ra_session; int * empty_hash; } ;
+struct dir_baton {int * pool; int pdb; int right_source; int left_source; int path; int skip; TYPE_1__* propchanges; scalar_t__ added; int base_revision; scalar_t__ has_propchange; struct edit_baton* edit_baton; } ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+struct TYPE_8__ {int (* dir_closed ) (int ,int ,int ,int ,TYPE_2__*,int *) ;int (* dir_changed ) (int ,int ,int ,int *,int *,TYPE_1__*,int ,TYPE_2__*,int *) ;int (* dir_added ) (int ,int *,int ,int *,int *,int ,TYPE_2__*,int *) ;} ;
 struct TYPE_7__ {scalar_t__ nelts; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  release_dir (struct dir_baton*) ; 
- int /*<<< orphan*/  remove_non_prop_changes (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_prop__patch (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_get_dir2 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int release_dir (struct dir_baton*) ;
+ int remove_non_prop_changes (int *,TYPE_1__*) ;
+ int stub1 (int ,int *,int ,int *,int *,int ,TYPE_2__*,int *) ;
+ int stub2 (int ,int ,int ,int *,int *,TYPE_1__*,int ,TYPE_2__*,int *) ;
+ int stub3 (int ,int ,int ,int ,TYPE_2__*,int *) ;
+ int * svn_prop__patch (int *,TYPE_1__*,int *) ;
+ int svn_ra_get_dir2 (int ,int *,int *,int **,int ,int ,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 close_directory(void *dir_baton,
@@ -54,7 +54,7 @@ close_directory(void *dir_baton,
         }
       else
         {
-          SVN_ERR(svn_ra_get_dir2(eb->ra_session, NULL, NULL, &pristine_props,
+          SVN_ERR(svn_ra_get_dir2(eb->ra_session, ((void*)0), ((void*)0), &pristine_props,
                                   db->path, db->base_revision, 0, scratch_pool));
         }
 
@@ -73,9 +73,9 @@ close_directory(void *dir_baton,
           if (db->added)
             {
               SVN_ERR(eb->processor->dir_added(db->path,
-                                           NULL /* copyfrom */,
+                                           ((void*)0) ,
                                            db->right_source,
-                                           NULL /* copyfrom props */,
+                                           ((void*)0) ,
                                            right_props,
                                            db->pdb,
                                            eb->processor,
@@ -94,7 +94,7 @@ close_directory(void *dir_baton,
                                                  db->pool));
             }
 
-          send_changed = TRUE; /* Skip dir_closed */
+          send_changed = TRUE;
         }
     }
 

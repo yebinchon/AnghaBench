@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * password; } ;
-typedef  TYPE_1__ CB_PARAM ;
 
-/* Variables and functions */
- int StrCpy (char*,int,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * password; } ;
+typedef TYPE_1__ CB_PARAM ;
+
+
+ int StrCpy (char*,int,int *) ;
 
 int PKeyPasswordCallbackFunction(char *buf, int bufsize, int verify, void *param)
 {
-	CB_PARAM *cb;
-	// Validate arguments
-	if (buf == NULL || param == NULL || bufsize == 0)
-	{
-		return 0;
-	}
+ CB_PARAM *cb;
 
-	cb = (CB_PARAM *)param;
-	if (cb->password == NULL)
-	{
-		return 0;
-	}
+ if (buf == ((void*)0) || param == ((void*)0) || bufsize == 0)
+ {
+  return 0;
+ }
 
-	return StrCpy(buf, bufsize, cb->password);
+ cb = (CB_PARAM *)param;
+ if (cb->password == ((void*)0))
+ {
+  return 0;
+ }
+
+ return StrCpy(buf, bufsize, cb->password);
 }

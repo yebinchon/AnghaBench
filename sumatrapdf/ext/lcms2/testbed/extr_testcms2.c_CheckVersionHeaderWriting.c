@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  test_versions ;
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/ * cmsHPROFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  Fail (char*,float,scalar_t__) ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cmsCreateProfilePlaceholder (int /*<<< orphan*/ ) ; 
- scalar_t__ cmsGetProfileVersion (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cmsOpenProfileFromFile (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  cmsSaveProfileToFile (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  cmsSetProfileVersion (int /*<<< orphan*/ ,int /*<<< orphan*/ *,float) ; 
- double fabs (scalar_t__) ; 
- int /*<<< orphan*/  remove (char*) ; 
+
+
+
+typedef int test_versions ;
+typedef int cmsInt32Number ;
+typedef int * cmsHPROFILE ;
+
+
+ int DbgThread () ;
+ int Fail (char*,float,scalar_t__) ;
+ int cmsCloseProfile (int ,int *) ;
+ int * cmsCreateProfilePlaceholder (int ) ;
+ scalar_t__ cmsGetProfileVersion (int ,int *) ;
+ int * cmsOpenProfileFromFile (int ,char*,char*) ;
+ int cmsSaveProfileToFile (int ,int *,char*) ;
+ int cmsSetProfileVersion (int ,int *,float) ;
+ double fabs (scalar_t__) ;
+ int remove (char*) ;
 
 __attribute__((used)) static
 cmsInt32Number CheckVersionHeaderWriting(void)
@@ -41,7 +41,7 @@ cmsInt32Number CheckVersionHeaderWriting(void)
     for (index = 0; index < sizeof(test_versions)/sizeof(test_versions[0]); index++) {
 
       h = cmsCreateProfilePlaceholder(DbgThread());
-      if (h == NULL) return 0;
+      if (h == ((void*)0)) return 0;
 
       cmsSetProfileVersion(DbgThread(), h, test_versions[index]);
 
@@ -50,7 +50,7 @@ cmsInt32Number CheckVersionHeaderWriting(void)
 
       h = cmsOpenProfileFromFile(DbgThread(), "versions.icc", "r");
 
-      // Only the first 3 digits are significant
+
       if (fabs(cmsGetProfileVersion(DbgThread(), h) - test_versions[index]) > 0.005) {
         Fail("Version failed to round-trip: wrote %.2f, read %.2f",
              test_versions[index], cmsGetProfileVersion(DbgThread(), h));

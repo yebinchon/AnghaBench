@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ WCHAR ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ WCHAR ;
 struct TYPE_3__ {scalar_t__* directory; scalar_t__* options; scalar_t__* std_input; } ;
-typedef  TYPE_1__ STARTUP_DATA ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ STARTUP_DATA ;
+typedef int HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_STARTUP_DATA ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  M_ERR ; 
- int /*<<< orphan*/  M_SYSERR ; 
- int /*<<< orphan*/  MsgToEventLog (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int PeekNamedPipeAsync (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int ReadPipeAsync (int /*<<< orphan*/ ,scalar_t__*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReturnError (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReturnLastError (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TEXT (char*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  exit_event ; 
- int /*<<< orphan*/  free (scalar_t__*) ; 
- scalar_t__* malloc (int) ; 
- int wcslen (scalar_t__*) ; 
+
+ int ERROR_STARTUP_DATA ;
+ int FALSE ;
+ int M_ERR ;
+ int M_SYSERR ;
+ int MsgToEventLog (int ,int ) ;
+ int PeekNamedPipeAsync (int ,int,int *) ;
+ int ReadPipeAsync (int ,scalar_t__*,int,int,int *) ;
+ int ReturnError (int ,int ,char*,int,int *) ;
+ int ReturnLastError (int ,char*) ;
+ int TEXT (char*) ;
+ int TRUE ;
+ int exit_event ;
+ int free (scalar_t__*) ;
+ scalar_t__* malloc (int) ;
+ int wcslen (scalar_t__*) ;
 
 __attribute__((used)) static BOOL
 GetStartupData(HANDLE pipe, STARTUP_DATA *sud)
 {
     size_t size, len;
-    WCHAR *data = NULL;
+    WCHAR *data = ((void*)0);
     DWORD bytes, read;
 
     bytes = PeekNamedPipeAsync(pipe, 1, &exit_event);
@@ -59,7 +59,7 @@ GetStartupData(HANDLE pipe, STARTUP_DATA *sud)
     }
 
     data = malloc(bytes);
-    if (data == NULL)
+    if (data == ((void*)0))
     {
         MsgToEventLog(M_SYSERR, TEXT("malloc failed"));
         ReturnLastError(pipe, L"malloc");
@@ -105,7 +105,7 @@ GetStartupData(HANDLE pipe, STARTUP_DATA *sud)
     return TRUE;
 
 err:
-    sud->directory = NULL;              /* caller must not free() */
+    sud->directory = ((void*)0);
     free(data);
     return FALSE;
 }

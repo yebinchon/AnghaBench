@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  Tox ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef char uint8_t ;
+typedef int uint64_t ;
+typedef scalar_t__ uint32_t ;
+typedef int uint16_t ;
+typedef int Tox ;
 struct TYPE_2__ {void* file; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TOX_FILE_CONTROL_CANCEL ; 
- int /*<<< orphan*/  TOX_FILE_CONTROL_RESUME ; 
- scalar_t__ TOX_FILE_KIND_DATA ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- TYPE_1__* file_recv ; 
- void* fopen (char*,char*) ; 
- char* path ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,char const*) ; 
- size_t strlen (char*) ; 
- scalar_t__ tox_file_control (int /*<<< orphan*/ *,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int TOX_FILE_CONTROL_CANCEL ;
+ int TOX_FILE_CONTROL_RESUME ;
+ scalar_t__ TOX_FILE_KIND_DATA ;
+ int fclose (int *) ;
+ TYPE_1__* file_recv ;
+ void* fopen (char*,char*) ;
+ char* path ;
+ int printf (char*,...) ;
+ int sprintf (char*,char*,char*,char const*) ;
+ size_t strlen (char*) ;
+ scalar_t__ tox_file_control (int *,scalar_t__,scalar_t__,int ,int ) ;
 
 void file_request_accept(Tox *tox, uint32_t friend_number, uint32_t file_number, uint32_t type, uint64_t file_size,
                          const uint8_t *filename, size_t filename_length, void *user_data)

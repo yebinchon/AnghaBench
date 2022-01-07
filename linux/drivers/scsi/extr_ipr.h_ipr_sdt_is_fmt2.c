@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
 
-/* Variables and functions */
- int IPR_GET_FMT2_BAR_SEL (int) ; 
-#define  IPR_SDT_FMT2_BAR0_SEL 134 
-#define  IPR_SDT_FMT2_BAR1_SEL 133 
-#define  IPR_SDT_FMT2_BAR2_SEL 132 
-#define  IPR_SDT_FMT2_BAR3_SEL 131 
-#define  IPR_SDT_FMT2_BAR4_SEL 130 
-#define  IPR_SDT_FMT2_BAR5_SEL 129 
-#define  IPR_SDT_FMT2_EXP_ROM_SEL 128 
 
+
+
+typedef int u32 ;
+
+
+ int IPR_GET_FMT2_BAR_SEL (int) ;
 __attribute__((used)) static inline int ipr_sdt_is_fmt2(u32 sdt_word)
 {
-	u32 bar_sel = IPR_GET_FMT2_BAR_SEL(sdt_word);
+ u32 bar_sel = IPR_GET_FMT2_BAR_SEL(sdt_word);
 
-	switch (bar_sel) {
-	case IPR_SDT_FMT2_BAR0_SEL:
-	case IPR_SDT_FMT2_BAR1_SEL:
-	case IPR_SDT_FMT2_BAR2_SEL:
-	case IPR_SDT_FMT2_BAR3_SEL:
-	case IPR_SDT_FMT2_BAR4_SEL:
-	case IPR_SDT_FMT2_BAR5_SEL:
-	case IPR_SDT_FMT2_EXP_ROM_SEL:
-		return 1;
-	};
+ switch (bar_sel) {
+ case 134:
+ case 133:
+ case 132:
+ case 131:
+ case 130:
+ case 129:
+ case 128:
+  return 1;
+ };
 
-	return 0;
+ return 0;
 }

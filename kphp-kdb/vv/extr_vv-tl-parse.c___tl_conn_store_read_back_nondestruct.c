@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  Out; } ;
 
-/* Variables and functions */
- TYPE_1__* TL_OUT_CONN ; 
- int /*<<< orphan*/  assert (int) ; 
- int read_back_nondestruct (int /*<<< orphan*/ *,void*,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int Out; } ;
+
+
+ TYPE_1__* TL_OUT_CONN ;
+ int assert (int) ;
+ int read_back_nondestruct (int *,void*,int) ;
 
 __attribute__((used)) static inline void __tl_conn_store_read_back_nondestruct (void *buf, int len) {
   assert (read_back_nondestruct (&TL_OUT_CONN->Out, buf, len) == len);

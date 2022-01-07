@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* proc_t ;
-typedef  int /*<<< orphan*/  pid_t ;
-struct TYPE_3__ {int /*<<< orphan*/  p_pgrpid; } ;
 
-/* Variables and functions */
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* proc_t ;
+typedef int pid_t ;
+struct TYPE_3__ {int p_pgrpid; } ;
+
+
 
 pid_t
 proc_pgrpid(proc_t p)
 {
-	return p->p_pgrpid;
+ return p->p_pgrpid;
 }

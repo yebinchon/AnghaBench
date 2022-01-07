@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  Lst_ForEach (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SuffPrintSuff ; 
- int /*<<< orphan*/  SuffPrintTrans ; 
- int /*<<< orphan*/  debug_file ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  sufflist ; 
- int /*<<< orphan*/  transforms ; 
+ int Lst_ForEach (int ,int ,int *) ;
+ int SuffPrintSuff ;
+ int SuffPrintTrans ;
+ int debug_file ;
+ int fprintf (int ,char*) ;
+ int sufflist ;
+ int transforms ;
 
 void
 Suff_PrintAll(void)
 {
     fprintf(debug_file, "#*** Suffixes:\n");
-    Lst_ForEach(sufflist, SuffPrintSuff, NULL);
+    Lst_ForEach(sufflist, SuffPrintSuff, ((void*)0));
 
     fprintf(debug_file, "#*** Transformations:\n");
-    Lst_ForEach(transforms, SuffPrintTrans, NULL);
+    Lst_ForEach(transforms, SuffPrintTrans, ((void*)0));
 }

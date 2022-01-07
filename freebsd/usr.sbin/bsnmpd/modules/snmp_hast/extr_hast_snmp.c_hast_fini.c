@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  cfgpath ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_resources () ; 
- int /*<<< orphan*/  hast_index ; 
- int /*<<< orphan*/  or_unregister (int /*<<< orphan*/ ) ; 
+ int cfgpath ;
+ int free (int ) ;
+ int free_resources () ;
+ int hast_index ;
+ int or_unregister (int ) ;
 
 __attribute__((used)) static int
 hast_fini(void)
 {
 
-	or_unregister(hast_index);
-	free_resources();
-	free(cfgpath);
-	return (0);
+ or_unregister(hast_index);
+ free_resources();
+ free(cfgpath);
+ return (0);
 }

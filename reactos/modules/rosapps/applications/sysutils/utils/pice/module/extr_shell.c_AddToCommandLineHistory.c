@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t ULONG ;
-typedef  int /*<<< orphan*/  LPSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENTER_FUNC () ; 
- int /*<<< orphan*/  LEAVE_FUNC () ; 
- size_t LINES_IN_COMMAND_BUFFER ; 
- scalar_t__ PICE_strcmpi (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PICE_strcpy (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ PICE_strlen (int /*<<< orphan*/ ) ; 
- char** aszCommandLines ; 
- size_t ulCommandCurrentPos ; 
- size_t ulCommandInPos ; 
- size_t ulCommandLastPos ; 
+
+
+
+typedef size_t ULONG ;
+typedef int LPSTR ;
+
+
+ int DPRINT (int ) ;
+ int ENTER_FUNC () ;
+ int LEAVE_FUNC () ;
+ size_t LINES_IN_COMMAND_BUFFER ;
+ scalar_t__ PICE_strcmpi (char*,int ) ;
+ int PICE_strcpy (char*,int ) ;
+ scalar_t__ PICE_strlen (int ) ;
+ char** aszCommandLines ;
+ size_t ulCommandCurrentPos ;
+ size_t ulCommandInPos ;
+ size_t ulCommandLastPos ;
 
 void AddToCommandLineHistory(LPSTR s)
 {

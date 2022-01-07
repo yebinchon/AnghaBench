@@ -1,39 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
-typedef  enum rtx_code { ____Placeholder_rtx_code } rtx_code ;
 
-/* Variables and functions */
-#define  ASM_OPERANDS 139 
-#define  CALL 138 
-#define  CC0 137 
-#define  CONST 136 
-#define  CONST_DOUBLE 135 
-#define  CONST_INT 134 
- int GET_CODE (int /*<<< orphan*/ ) ; 
- char* GET_RTX_FORMAT (int) ; 
- int GET_RTX_LENGTH (int) ; 
-#define  LABEL_REF 133 
-#define  MEM 132 
- int /*<<< orphan*/  MEM_READONLY_P (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MEM_VOLATILE_P (int /*<<< orphan*/ ) ; 
-#define  PC 131 
-#define  REG 130 
-#define  SYMBOL_REF 129 
-#define  UNSPEC_VOLATILE 128 
- int /*<<< orphan*/  XEXP (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  XVECEXP (int /*<<< orphan*/ ,int,int) ; 
- int XVECLEN (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int rtx ;
+typedef enum rtx_code { ____Placeholder_rtx_code } rtx_code ;
+ int GET_CODE (int ) ;
+ char* GET_RTX_FORMAT (int) ;
+ int GET_RTX_LENGTH (int) ;
+
+
+ int MEM_READONLY_P (int ) ;
+ int MEM_VOLATILE_P (int ) ;
+
+
+
+
+ int XEXP (int ,int) ;
+ int XVECEXP (int ,int,int) ;
+ int XVECLEN (int ,int) ;
 
 __attribute__((used)) static bool
 check_maybe_invariant (rtx x)
@@ -44,37 +36,37 @@ check_maybe_invariant (rtx x)
 
   switch (code)
     {
-    case CONST_INT:
-    case CONST_DOUBLE:
-    case SYMBOL_REF:
-    case CONST:
-    case LABEL_REF:
-      return true;
+    case 134:
+    case 135:
+    case 129:
+    case 136:
+    case 133:
+      return 1;
 
-    case PC:
-    case CC0:
-    case UNSPEC_VOLATILE:
-    case CALL:
-      return false;
+    case 131:
+    case 137:
+    case 128:
+    case 138:
+      return 0;
 
-    case REG:
-      return true;
+    case 130:
+      return 1;
 
-    case MEM:
-      /* Load/store motion is done elsewhere.  ??? Perhaps also add it here?
-	 It should not be hard, and might be faster than "elsewhere".  */
+    case 132:
 
-      /* Just handle the most trivial case where we load from an unchanging
-	 location (most importantly, pic tables).  */
+
+
+
+
       if (MEM_READONLY_P (x))
-	break;
+ break;
 
-      return false;
+      return 0;
 
-    case ASM_OPERANDS:
-      /* Don't mess with insns declared volatile.  */
+    case 139:
+
       if (MEM_VOLATILE_P (x))
-	return false;
+ return 0;
       break;
 
     default:
@@ -85,17 +77,17 @@ check_maybe_invariant (rtx x)
   for (i = GET_RTX_LENGTH (code) - 1; i >= 0; i--)
     {
       if (fmt[i] == 'e')
-	{
-	  if (!check_maybe_invariant (XEXP (x, i)))
-	    return false;
-	}
+ {
+   if (!check_maybe_invariant (XEXP (x, i)))
+     return 0;
+ }
       else if (fmt[i] == 'E')
-	{
-	  for (j = 0; j < XVECLEN (x, i); j++)
-	    if (!check_maybe_invariant (XVECEXP (x, i, j)))
-	      return false;
-	}
+ {
+   for (j = 0; j < XVECLEN (x, i); j++)
+     if (!check_maybe_invariant (XVECEXP (x, i, j)))
+       return 0;
+ }
     }
 
-  return true;
+  return 1;
 }

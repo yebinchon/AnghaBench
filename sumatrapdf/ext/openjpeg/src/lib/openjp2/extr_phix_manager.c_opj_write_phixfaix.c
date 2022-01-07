@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int* ph; int* pw; TYPE_2__* packet; } ;
-typedef  TYPE_1__ opj_tile_info_t ;
-typedef  int /*<<< orphan*/  opj_stream_private_t ;
+typedef TYPE_1__ opj_tile_info_t ;
+typedef int opj_stream_private_t ;
 struct TYPE_6__ {int end_ph_pos; int start_pos; } ;
-typedef  TYPE_2__ opj_packet_info_t ;
-typedef  int /*<<< orphan*/  opj_event_mgr_t ;
+typedef TYPE_2__ opj_packet_info_t ;
+typedef int opj_event_mgr_t ;
 struct TYPE_7__ {int* numdecompos; int numlayers; int tw; int th; int prog; int numcomps; TYPE_1__* tile; } ;
-typedef  TYPE_3__ opj_codestream_info_t ;
-typedef  size_t OPJ_UINT32 ;
-typedef  scalar_t__ OPJ_OFF_T ;
-typedef  int /*<<< orphan*/  OPJ_BYTE ;
-typedef  int /*<<< orphan*/  OPJ_BOOL ;
+typedef TYPE_3__ opj_codestream_info_t ;
+typedef size_t OPJ_UINT32 ;
+typedef scalar_t__ OPJ_OFF_T ;
+typedef int OPJ_BYTE ;
+typedef int OPJ_BOOL ;
 
-/* Variables and functions */
- size_t JPIP_FAIX ; 
-#define  OPJ_CPRL 132 
-#define  OPJ_LRCP 131 
-#define  OPJ_PCRL 130 
-#define  OPJ_RLCP 129 
-#define  OPJ_RPCL 128 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  opj_stream_seek (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  opj_stream_skip (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- scalar_t__ opj_stream_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  opj_stream_write_data (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  opj_write_bytes (int /*<<< orphan*/ *,size_t,int) ; 
- int pow (int,int) ; 
- int /*<<< orphan*/  stderr ; 
+
+ size_t JPIP_FAIX ;
+
+
+
+
+
+ int fprintf (int ,char*) ;
+ int opj_stream_seek (int *,scalar_t__,int *) ;
+ int opj_stream_skip (int *,int,int *) ;
+ scalar_t__ opj_stream_tell (int *) ;
+ int opj_stream_write_data (int *,int *,int,int *) ;
+ int opj_write_bytes (int *,size_t,int) ;
+ int pow (int,int) ;
+ int stderr ;
 
 int opj_write_phixfaix(int coff, int compno, opj_codestream_info_t cstr_info,
                        OPJ_BOOL EPHused, int j2klen, opj_stream_private_t *cio,
                        opj_event_mgr_t * p_manager)
 {
-    OPJ_UINT32 tileno, version, i, nmax, size_of_coding; /* 4 or 8 */
+    OPJ_UINT32 tileno, version, i, nmax, size_of_coding;
     opj_tile_info_t *tile_Idx;
     opj_packet_info_t packet;
     int resno, precno, layno;
@@ -57,11 +57,11 @@ int opj_write_phixfaix(int coff, int compno, opj_codestream_info_t cstr_info,
     OPJ_UINT32 len;
 
     packet.end_ph_pos = packet.start_pos = -1;
-    (void)EPHused; /* unused ? */
+    (void)EPHused;
 
 
     if (j2klen > pow(2, 32)) {
-        size_of_coding =  8;
+        size_of_coding = 8;
         version = 1;
     } else {
         size_of_coding = 4;
@@ -69,10 +69,10 @@ int opj_write_phixfaix(int coff, int compno, opj_codestream_info_t cstr_info,
     }
 
     lenp = opj_stream_tell(cio);
-    opj_stream_skip(cio, 4, p_manager);         /* L [at the end]      */
-    opj_write_bytes(l_data_header, JPIP_FAIX, 4); /* FAIX */
+    opj_stream_skip(cio, 4, p_manager);
+    opj_write_bytes(l_data_header, JPIP_FAIX, 4);
     opj_stream_write_data(cio, l_data_header, 4, p_manager);
-    opj_write_bytes(l_data_header, version, 1); /* Version 0 = 4 bytes */
+    opj_write_bytes(l_data_header, version, 1);
     opj_stream_write_data(cio, l_data_header, 1, p_manager);
 
     nmax = 0;
@@ -81,10 +81,10 @@ int opj_write_phixfaix(int coff, int compno, opj_codestream_info_t cstr_info,
                              cstr_info.numlayers);
     }
 
-    opj_write_bytes(l_data_header, nmax, size_of_coding);       /* NMAX           */
+    opj_write_bytes(l_data_header, nmax, size_of_coding);
     opj_stream_write_data(cio, l_data_header, size_of_coding, p_manager);
     opj_write_bytes(l_data_header, (OPJ_UINT32)(cstr_info.tw * cstr_info.th),
-                    size_of_coding);  /* M              */
+                    size_of_coding);
     opj_stream_write_data(cio, l_data_header, size_of_coding, p_manager);
 
     for (tileno = 0; tileno < (OPJ_UINT32)(cstr_info.tw * cstr_info.th); tileno++) {
@@ -100,23 +100,23 @@ int opj_write_phixfaix(int coff, int compno, opj_codestream_info_t cstr_info,
                 for (layno = 0; layno < numOflayers; layno++) {
 
                     switch (cstr_info.prog) {
-                    case OPJ_LRCP:
+                    case 131:
                         packet = tile_Idx->packet[((layno * numOfres + resno) * cstr_info.numcomps +
                                                                                compno) * numOfprec + precno];
                         break;
-                    case OPJ_RLCP:
+                    case 129:
                         packet = tile_Idx->packet[((resno * numOflayers + layno) * cstr_info.numcomps +
                                                                                   compno) * numOfprec + precno];
                         break;
-                    case OPJ_RPCL:
+                    case 128:
                         packet = tile_Idx->packet[((resno * numOfprec + precno) * cstr_info.numcomps +
                                                                                  compno) * numOflayers + layno];
                         break;
-                    case OPJ_PCRL:
+                    case 130:
                         packet = tile_Idx->packet[((precno * cstr_info.numcomps + compno) * numOfres +
                                                                                            resno) * numOflayers + layno];
                         break;
-                    case OPJ_CPRL:
+                    case 132:
                         packet = tile_Idx->packet[((compno * numOfprec + precno) * numOfres + resno) *
                                                                                  numOflayers + layno];
                         break;
@@ -125,11 +125,11 @@ int opj_write_phixfaix(int coff, int compno, opj_codestream_info_t cstr_info,
                     }
 
                     opj_write_bytes(l_data_header, (OPJ_UINT32)(packet.start_pos - coff),
-                                    size_of_coding);            /* start position */
+                                    size_of_coding);
                     opj_stream_write_data(cio, l_data_header, size_of_coding, p_manager);
                     opj_write_bytes(l_data_header,
                                     (OPJ_UINT32)(packet.end_ph_pos - packet.start_pos + 1),
-                                    size_of_coding); /* length         */
+                                    size_of_coding);
                     opj_stream_write_data(cio, l_data_header, size_of_coding, p_manager);
 
                     num_packet++;
@@ -137,13 +137,13 @@ int opj_write_phixfaix(int coff, int compno, opj_codestream_info_t cstr_info,
             }
         }
 
-        /* PADDING */
+
         while (num_packet < nmax) {
             opj_write_bytes(l_data_header, 0,
-                            size_of_coding); /* start position            */
+                            size_of_coding);
             opj_stream_write_data(cio, l_data_header, size_of_coding, p_manager);
             opj_write_bytes(l_data_header, 0,
-                            size_of_coding); /* length                    */
+                            size_of_coding);
             opj_stream_write_data(cio, l_data_header, size_of_coding, p_manager);
             num_packet++;
         }
@@ -151,7 +151,7 @@ int opj_write_phixfaix(int coff, int compno, opj_codestream_info_t cstr_info,
 
     len = (OPJ_UINT32)(opj_stream_tell(cio) - lenp);
     opj_stream_seek(cio, lenp, p_manager);
-    opj_write_bytes(l_data_header, len, 4); /* L  */
+    opj_write_bytes(l_data_header, len, 4);
     opj_stream_write_data(cio, l_data_header, 4, p_manager);
     opj_stream_seek(cio, lenp + len, p_manager);
 

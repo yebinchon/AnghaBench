@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct tgl_message {TYPE_1__* reply_markup; } ;
-struct TYPE_2__ {size_t rows; int* row_start; int /*<<< orphan*/ * buttons; } ;
+struct TYPE_2__ {size_t rows; int* row_start; int * buttons; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (char*) ; 
- char* strdup (int /*<<< orphan*/ ) ; 
- scalar_t__ strncmp (int /*<<< orphan*/ ,char const*,int) ; 
+
+ int assert (char*) ;
+ char* strdup (int ) ;
+ scalar_t__ strncmp (int ,char const*,int) ;
 
 int complete_spec_message_answer (struct tgl_message *M, int index, const char *text, int len, char **R) {
   if (!M || !M->reply_markup || !M->reply_markup->rows) {
-    *R = NULL;
+    *R = ((void*)0);
     return -1;
   }
   index ++;
@@ -30,13 +30,13 @@ int complete_spec_message_answer (struct tgl_message *M, int index, const char *
   while (index < total && strncmp (M->reply_markup->buttons[index], text, len)) {
     index ++;
   }
-  
+
   if (index < total) {
     *R = strdup (M->reply_markup->buttons[index]);
     assert (*R);
     return index;
   } else {
-    *R = NULL;
+    *R = ((void*)0);
     return -1;
   }
 }

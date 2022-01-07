@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_6__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  entry; } ;
-struct TYPE_8__ {int /*<<< orphan*/  style; TYPE_3__* clusters; TYPE_3__* glyphs; TYPE_6__* reobj; } ;
+
+
+typedef struct TYPE_10__ TYPE_6__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int entry; } ;
+struct TYPE_8__ {int style; TYPE_3__* clusters; TYPE_3__* glyphs; TYPE_6__* reobj; } ;
 struct TYPE_7__ {TYPE_2__ run; } ;
 struct TYPE_9__ {scalar_t__ type; TYPE_1__ member; } ;
-typedef  TYPE_3__ ME_DisplayItem ;
+typedef TYPE_3__ ME_DisplayItem ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ME_DeleteReObject (TYPE_6__*) ; 
- int /*<<< orphan*/  ME_GetDITypeName (scalar_t__) ; 
- int /*<<< orphan*/  ME_ReleaseStyle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ diRun ; 
- int /*<<< orphan*/  heap_free (TYPE_3__*) ; 
- int /*<<< orphan*/  list_remove (int /*<<< orphan*/ *) ; 
+
+ int ME_DeleteReObject (TYPE_6__*) ;
+ int ME_GetDITypeName (scalar_t__) ;
+ int ME_ReleaseStyle (int ) ;
+ int TRACE (char*,int ) ;
+ scalar_t__ diRun ;
+ int heap_free (TYPE_3__*) ;
+ int list_remove (int *) ;
 
 void ME_DestroyDisplayItem(ME_DisplayItem *item)
 {

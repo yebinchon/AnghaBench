@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  copy_info; int /*<<< orphan*/  repos; } ;
-typedef  TYPE_1__ svnlook_ctxt_t ;
-typedef  scalar_t__ svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_repos_node_t ;
-typedef  int /*<<< orphan*/  svn_fs_root_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- scalar_t__ SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  generate_delta_tree (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_base_rev (scalar_t__*,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_root (int /*<<< orphan*/ **,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  print_changed_tree (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int copy_info; int repos; } ;
+typedef TYPE_1__ svnlook_ctxt_t ;
+typedef scalar_t__ svn_revnum_t ;
+typedef int svn_repos_node_t ;
+typedef int svn_fs_root_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ scalar_t__ SVN_INVALID_REVNUM ;
+ int * SVN_NO_ERROR ;
+ int generate_delta_tree (int **,int ,int *,scalar_t__,int *) ;
+ int get_base_rev (scalar_t__*,TYPE_1__*,int *) ;
+ int get_root (int **,TYPE_1__*,int *) ;
+ int print_changed_tree (int *,char*,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 do_changed(svnlook_ctxt_t *c, apr_pool_t *pool)

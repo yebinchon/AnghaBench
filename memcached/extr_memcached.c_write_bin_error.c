@@ -1,43 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int protocol_binary_response_status ;
-struct TYPE_7__ {int sfd; int sbytes; int /*<<< orphan*/  write_and_go; } ;
-typedef  TYPE_1__ conn ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int protocol_binary_response_status ;
+struct TYPE_7__ {int sfd; int sbytes; int write_and_go; } ;
+typedef TYPE_1__ conn ;
 struct TYPE_8__ {int verbose; } ;
-
-/* Variables and functions */
-#define  PROTOCOL_BINARY_RESPONSE_AUTH_ERROR 136 
-#define  PROTOCOL_BINARY_RESPONSE_DELTA_BADVAL 135 
-#define  PROTOCOL_BINARY_RESPONSE_E2BIG 134 
-#define  PROTOCOL_BINARY_RESPONSE_EINVAL 133 
-#define  PROTOCOL_BINARY_RESPONSE_ENOMEM 132 
-#define  PROTOCOL_BINARY_RESPONSE_KEY_EEXISTS 131 
-#define  PROTOCOL_BINARY_RESPONSE_KEY_ENOENT 130 
-#define  PROTOCOL_BINARY_RESPONSE_NOT_STORED 129 
-#define  PROTOCOL_BINARY_RESPONSE_UNKNOWN_COMMAND 128 
- int /*<<< orphan*/  add_bin_header (TYPE_1__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  add_iov (TYPE_1__*,char const*,size_t) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  conn_mwrite ; 
- int /*<<< orphan*/  conn_new_cmd ; 
- int /*<<< orphan*/  conn_set_state (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  conn_swallow ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,...) ; 
- TYPE_3__ settings ; 
- int /*<<< orphan*/  stderr ; 
- size_t strlen (char const*) ; 
+ int add_bin_header (TYPE_1__*,int,int ,int ,size_t) ;
+ int add_iov (TYPE_1__*,char const*,size_t) ;
+ int assert (int) ;
+ int conn_mwrite ;
+ int conn_new_cmd ;
+ int conn_set_state (TYPE_1__*,int ) ;
+ int conn_swallow ;
+ int fprintf (int ,char*,int,...) ;
+ TYPE_3__ settings ;
+ int stderr ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static void write_bin_error(conn *c, protocol_binary_response_status err,
                             const char *errstr, int swallow) {
@@ -45,35 +34,35 @@ __attribute__((used)) static void write_bin_error(conn *c, protocol_binary_respo
 
     if (!errstr) {
         switch (err) {
-        case PROTOCOL_BINARY_RESPONSE_ENOMEM:
+        case 132:
             errstr = "Out of memory";
             break;
-        case PROTOCOL_BINARY_RESPONSE_UNKNOWN_COMMAND:
+        case 128:
             errstr = "Unknown command";
             break;
-        case PROTOCOL_BINARY_RESPONSE_KEY_ENOENT:
+        case 130:
             errstr = "Not found";
             break;
-        case PROTOCOL_BINARY_RESPONSE_EINVAL:
+        case 133:
             errstr = "Invalid arguments";
             break;
-        case PROTOCOL_BINARY_RESPONSE_KEY_EEXISTS:
+        case 131:
             errstr = "Data exists for key.";
             break;
-        case PROTOCOL_BINARY_RESPONSE_E2BIG:
+        case 134:
             errstr = "Too large.";
             break;
-        case PROTOCOL_BINARY_RESPONSE_DELTA_BADVAL:
+        case 135:
             errstr = "Non-numeric server-side value for incr or decr";
             break;
-        case PROTOCOL_BINARY_RESPONSE_NOT_STORED:
+        case 129:
             errstr = "Not stored.";
             break;
-        case PROTOCOL_BINARY_RESPONSE_AUTH_ERROR:
+        case 136:
             errstr = "Auth failure.";
             break;
         default:
-            assert(false);
+            assert(0);
             errstr = "UNHANDLED ERROR";
             fprintf(stderr, ">%d UNHANDLED ERROR: %d\n", c->sfd, err);
         }

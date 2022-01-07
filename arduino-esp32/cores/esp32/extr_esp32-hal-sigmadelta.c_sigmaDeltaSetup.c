@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct TYPE_5__ {int clk_en; } ;
 struct TYPE_6__ {TYPE_2__ cg; TYPE_1__* channel; } ;
 struct TYPE_4__ {int prescale; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SD_MUTEX_LOCK () ; 
- int /*<<< orphan*/  SD_MUTEX_UNLOCK () ; 
- TYPE_3__ SIGMADELTA ; 
- int /*<<< orphan*/  _on_apb_change ; 
- int /*<<< orphan*/  _sd_sys_lock ; 
- int /*<<< orphan*/  addApbChangeCallback (void*,int /*<<< orphan*/ ) ; 
- int getApbFrequency () ; 
- int /*<<< orphan*/  xSemaphoreCreateMutex () ; 
 
-uint32_t sigmaDeltaSetup(uint8_t channel, uint32_t freq) //chan 0-7 freq 1220-312500
+ int SD_MUTEX_LOCK () ;
+ int SD_MUTEX_UNLOCK () ;
+ TYPE_3__ SIGMADELTA ;
+ int _on_apb_change ;
+ int _sd_sys_lock ;
+ int addApbChangeCallback (void*,int ) ;
+ int getApbFrequency () ;
+ int xSemaphoreCreateMutex () ;
+
+uint32_t sigmaDeltaSetup(uint8_t channel, uint32_t freq)
 {
     if(channel > 7) {
         return 0;
     }
-#if !CONFIG_DISABLE_HAL_LOCKS
-    static bool tHasStarted = false;
+
+    static bool tHasStarted = 0;
     if(!tHasStarted) {
-        tHasStarted = true;
+        tHasStarted = 1;
         _sd_sys_lock = xSemaphoreCreateMutex();
     }
-#endif
+
     uint32_t apb_freq = getApbFrequency();
     uint32_t prescale = (apb_freq/(freq*256)) - 1;
     if(prescale > 0xFF) {

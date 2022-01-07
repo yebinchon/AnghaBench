@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X ;
-typedef  int /*<<< orphan*/  BUF ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BioToX (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * BufToBio (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeBio (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeBuf (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int X ;
+typedef int BUF ;
+typedef int BIO ;
+
+
+ int * BioToX (int *,int) ;
+ int * BufToBio (int *) ;
+ int FreeBio (int *) ;
+ int FreeBuf (int *) ;
 
 X *BufToX(BUF *b, bool text)
 {
-	X *x;
-	BIO *bio;
-	// Validate arguments
-	if (b == NULL)
-	{
-		return NULL;
-	}
+ X *x;
+ BIO *bio;
 
-	bio = BufToBio(b);
-	if (bio == NULL)
-	{
-		FreeBuf(b);
-		return NULL;
-	}
+ if (b == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	x = BioToX(bio, text);
+ bio = BufToBio(b);
+ if (bio == ((void*)0))
+ {
+  FreeBuf(b);
+  return ((void*)0);
+ }
 
-	FreeBio(bio);
+ x = BioToX(bio, text);
 
-	return x;
+ FreeBio(bio);
+
+ return x;
 }

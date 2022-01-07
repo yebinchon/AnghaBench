@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  alpha_supply_int_regs (int,char*,char*,int /*<<< orphan*/ *) ; 
+ int alpha_supply_int_regs (int,char*,char*,int *) ;
 
 void
 alphabsd_supply_reg (char *regs, int regno)
 {
-  /* PC is at slot 32; UNIQUE not present.  */
-  alpha_supply_int_regs (regno, regs, regs + 31*8, NULL);
+
+  alpha_supply_int_regs (regno, regs, regs + 31*8, ((void*)0));
 }

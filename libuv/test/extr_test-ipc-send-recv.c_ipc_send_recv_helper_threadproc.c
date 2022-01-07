@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_loop_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int run_ipc_send_recv_helper (int /*<<< orphan*/ *,int) ; 
- int uv_loop_close (int /*<<< orphan*/ *) ; 
- int uv_loop_init (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uv_loop_t ;
+
+
+ int ASSERT (int) ;
+ int run_ipc_send_recv_helper (int *,int) ;
+ int uv_loop_close (int *) ;
+ int uv_loop_init (int *) ;
 
 void ipc_send_recv_helper_threadproc(void* arg) {
   int r;

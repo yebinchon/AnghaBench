@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int DoingCopyOut ; 
- int /*<<< orphan*/  pq_putbytes (char*,int) ; 
+ int DoingCopyOut ;
+ int pq_putbytes (char*,int) ;
 
 __attribute__((used)) static void
 socket_endcopyout(bool errorAbort)
 {
-	if (!DoingCopyOut)
-		return;
-	if (errorAbort)
-		pq_putbytes("\n\n\\.\n", 5);
-	/* in non-error case, copy.c will have emitted the terminator line */
-	DoingCopyOut = false;
+ if (!DoingCopyOut)
+  return;
+ if (errorAbort)
+  pq_putbytes("\n\n\\.\n", 5);
+
+ DoingCopyOut = 0;
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* dl_prm_ptr ;
-struct TYPE_19__ {int n; int len; TYPE_1__* v; int /*<<< orphan*/  rv; } ;
-typedef  TYPE_2__ dl_perm ;
-struct TYPE_18__ {int a; int b; int len; int /*<<< orphan*/  y; } ;
 
-/* Variables and functions */
- scalar_t__ LEN (TYPE_1__*) ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_1__* dl_alloc_prm () ; 
- int dl_perm_get_rev_i (TYPE_2__*,int) ; 
- int /*<<< orphan*/  dl_prm_extract (TYPE_1__*,TYPE_1__**,TYPE_1__**,TYPE_1__**,int) ; 
- int /*<<< orphan*/  dl_prm_merge (TYPE_1__**,TYPE_1__*,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dl_prm_rev_add (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  dl_prm_split_node (TYPE_1__*,TYPE_1__**,TYPE_1__**,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rand () ; 
+
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+typedef TYPE_1__* dl_prm_ptr ;
+struct TYPE_19__ {int n; int len; TYPE_1__* v; int rv; } ;
+typedef TYPE_2__ dl_perm ;
+struct TYPE_18__ {int a; int b; int len; int y; } ;
+
+
+ scalar_t__ LEN (TYPE_1__*) ;
+ int assert (int) ;
+ TYPE_1__* dl_alloc_prm () ;
+ int dl_perm_get_rev_i (TYPE_2__*,int) ;
+ int dl_prm_extract (TYPE_1__*,TYPE_1__**,TYPE_1__**,TYPE_1__**,int) ;
+ int dl_prm_merge (TYPE_1__**,TYPE_1__*,TYPE_1__*,int *) ;
+ int dl_prm_rev_add (int *,TYPE_1__*) ;
+ int dl_prm_split_node (TYPE_1__*,TYPE_1__**,TYPE_1__**,int,int *) ;
+ int rand () ;
 
 int dl_perm_move_and_create (dl_perm *pp, int id, int i) {
   if (!(0 <= id && id < pp->n)) {
@@ -35,13 +35,13 @@ int dl_perm_move_and_create (dl_perm *pp, int id, int i) {
   if (!(0 <= i && i <= pp->len)) {
     return -1;
   }
-  //TODO: replace "assert" with "return -1"
+
   assert (dl_perm_get_rev_i (pp, id) == -1);
 
-  //dbg ("dl_perm_move_and_create (id = %d) (i = %d) (len = %d)\n", id, i, pp->len);
-  //dl_perm_dbg (pp);
 
-  dl_prm_ptr p[10] = {NULL};
+
+
+  dl_prm_ptr p[10] = {((void*)0)};
   if (i == pp->len) {
     p[0] = pp->v;
   } else {

@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_6__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ vlc_fourcc_t ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-struct TYPE_9__ {int /*<<< orphan*/  s; TYPE_3__* p_sys; } ;
-typedef  TYPE_2__ demux_t ;
+
+
+typedef struct TYPE_11__ TYPE_6__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ vlc_fourcc_t ;
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_9__ {int s; TYPE_3__* p_sys; } ;
+typedef TYPE_2__ demux_t ;
 struct TYPE_8__ {unsigned int i_rate; int i_channels; int i_bytes_per_frame; int i_frame_length; int i_bitspersample; int i_blockalign; } ;
 struct TYPE_11__ {scalar_t__ i_codec; int i_bitrate; TYPE_1__ audio; } ;
 struct TYPE_10__ {int i_max_frames; TYPE_6__ fmt; } ;
-typedef  TYPE_3__ demux_sys_t ;
+typedef TYPE_3__ demux_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AUDIO_ES ; 
- int /*<<< orphan*/  GetDBLBE (int /*<<< orphan*/  const*) ; 
- int GetDWBE (int /*<<< orphan*/  const*) ; 
- scalar_t__ ReadFOURCC (int /*<<< orphan*/  const*) ; 
- double UINT_MAX ; 
- scalar_t__ VLC_CODEC_DVD_LPCM ; 
- scalar_t__ VLC_CODEC_F32B ; 
- scalar_t__ VLC_CODEC_F32L ; 
- scalar_t__ VLC_CODEC_F64B ; 
- scalar_t__ VLC_CODEC_F64L ; 
- scalar_t__ VLC_CODEC_MP4A ; 
- scalar_t__ VLC_CODEC_OPUS ; 
- int VLC_EGENERIC ; 
- scalar_t__ VLC_FOURCC (char,char,char,char) ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  es_format_Init (TYPE_6__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ lround (double) ; 
- int /*<<< orphan*/  msg_Err (TYPE_2__*,char*,...) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_2__*,char*,int) ; 
- double round (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_fourcc_GetCodecAudio (scalar_t__,int) ; 
- int vlc_stream_Peek (int /*<<< orphan*/ ,int /*<<< orphan*/  const**,int) ; 
+
+ int AUDIO_ES ;
+ int GetDBLBE (int const*) ;
+ int GetDWBE (int const*) ;
+ scalar_t__ ReadFOURCC (int const*) ;
+ double UINT_MAX ;
+ scalar_t__ VLC_CODEC_DVD_LPCM ;
+ scalar_t__ VLC_CODEC_F32B ;
+ scalar_t__ VLC_CODEC_F32L ;
+ scalar_t__ VLC_CODEC_F64B ;
+ scalar_t__ VLC_CODEC_F64L ;
+ scalar_t__ VLC_CODEC_MP4A ;
+ scalar_t__ VLC_CODEC_OPUS ;
+ int VLC_EGENERIC ;
+ scalar_t__ VLC_FOURCC (char,char,char,char) ;
+ int VLC_SUCCESS ;
+ int es_format_Init (TYPE_6__*,int ,int ) ;
+ scalar_t__ lround (double) ;
+ int msg_Err (TYPE_2__*,char*,...) ;
+ int msg_Warn (TYPE_2__*,char*,int) ;
+ double round (int ) ;
+ int vlc_fourcc_GetCodecAudio (scalar_t__,int) ;
+ int vlc_stream_Peek (int ,int const**,int) ;
 
 __attribute__((used)) static int ReadDescChunk( demux_t *p_demux )
 {
@@ -133,9 +133,9 @@ __attribute__((used)) static int ReadDescChunk( demux_t *p_demux )
         return VLC_EGENERIC;
     }
     p_sys->fmt.audio.i_channels = i_channels_per_frame;
-    p_sys->fmt.audio.i_bytes_per_frame = i_bytes_per_packet; /* "mBytesPerPacket" in Apple parlance */
-    p_sys->fmt.audio.i_frame_length = i_frames_per_packet; /* "mFramesPerPacket" in Apple parlance */
-    p_sys->fmt.audio.i_bitspersample = i_bits_per_channel; /* mBitsPerChannel */
+    p_sys->fmt.audio.i_bytes_per_frame = i_bytes_per_packet;
+    p_sys->fmt.audio.i_frame_length = i_frames_per_packet;
+    p_sys->fmt.audio.i_bitspersample = i_bits_per_channel;
     p_sys->fmt.audio.i_blockalign = i_bytes_per_packet;
     p_sys->fmt.i_bitrate = i_bits_per_channel * p_sys->fmt.audio.i_rate * i_channels_per_frame;
 

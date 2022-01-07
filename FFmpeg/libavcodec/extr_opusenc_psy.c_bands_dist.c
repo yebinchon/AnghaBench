@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  pvq; } ;
-struct TYPE_7__ {int /*<<< orphan*/  lambda; } ;
-typedef  int /*<<< orphan*/  OpusRangeCoder ;
-typedef  TYPE_1__ OpusPsyContext ;
-typedef  TYPE_2__ CeltFrame ;
 
-/* Variables and functions */
- int CELT_MAX_BANDS ; 
- int /*<<< orphan*/  ff_celt_bitalloc (TYPE_2__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ff_opus_rc_enc_init (int /*<<< orphan*/ *) ; 
- float pvq_band_cost (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *,int,float*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int pvq; } ;
+struct TYPE_7__ {int lambda; } ;
+typedef int OpusRangeCoder ;
+typedef TYPE_1__ OpusPsyContext ;
+typedef TYPE_2__ CeltFrame ;
+
+
+ int CELT_MAX_BANDS ;
+ int ff_celt_bitalloc (TYPE_2__*,int *,int) ;
+ int ff_opus_rc_enc_init (int *) ;
+ float pvq_band_cost (int ,TYPE_2__*,int *,int,float*,int ) ;
 
 __attribute__((used)) static int bands_dist(OpusPsyContext *s, CeltFrame *f, float *total_dist)
 {

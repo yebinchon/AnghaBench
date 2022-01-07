@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct inode {int /*<<< orphan*/  i_rdev; int /*<<< orphan*/  i_gid; int /*<<< orphan*/  i_uid; int /*<<< orphan*/  i_mode; TYPE_1__* i_sb; int /*<<< orphan*/  i_ino; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct inode {int i_rdev; int i_gid; int i_uid; int i_mode; TYPE_1__* i_sb; int i_ino; } ;
 struct dentry {int dummy; } ;
-struct audit_names {int /*<<< orphan*/  osid; int /*<<< orphan*/  rdev; int /*<<< orphan*/  gid; int /*<<< orphan*/  uid; int /*<<< orphan*/  mode; int /*<<< orphan*/  dev; int /*<<< orphan*/  ino; } ;
-struct TYPE_2__ {int /*<<< orphan*/  s_dev; } ;
+struct audit_names {int osid; int rdev; int gid; int uid; int mode; int dev; int ino; } ;
+struct TYPE_2__ {int s_dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  audit_copy_fcaps (struct audit_names*,struct dentry const*) ; 
- int /*<<< orphan*/  security_inode_getsecid (struct inode const*,int /*<<< orphan*/ *) ; 
+
+ int audit_copy_fcaps (struct audit_names*,struct dentry const*) ;
+ int security_inode_getsecid (struct inode const*,int *) ;
 
 __attribute__((used)) static void audit_copy_inode(struct audit_names *name, const struct dentry *dentry,
-			     const struct inode *inode)
+        const struct inode *inode)
 {
-	name->ino   = inode->i_ino;
-	name->dev   = inode->i_sb->s_dev;
-	name->mode  = inode->i_mode;
-	name->uid   = inode->i_uid;
-	name->gid   = inode->i_gid;
-	name->rdev  = inode->i_rdev;
-	security_inode_getsecid(inode, &name->osid);
-	audit_copy_fcaps(name, dentry);
+ name->ino = inode->i_ino;
+ name->dev = inode->i_sb->s_dev;
+ name->mode = inode->i_mode;
+ name->uid = inode->i_uid;
+ name->gid = inode->i_gid;
+ name->rdev = inode->i_rdev;
+ security_inode_getsecid(inode, &name->osid);
+ audit_copy_fcaps(name, dentry);
 }

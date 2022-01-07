@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_3__ {int len; int code; } ;
-typedef  int /*<<< orphan*/  PutBitContext ;
-typedef  TYPE_1__ HuffEntry ;
+typedef int PutBitContext ;
+typedef TYPE_1__ HuffEntry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  flush_put_bits (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_put_bits (int /*<<< orphan*/ *,int*,int) ; 
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int,int) ; 
- int put_bits_count (int /*<<< orphan*/ *) ; 
+
+ int flush_put_bits (int *) ;
+ int init_put_bits (int *,int*,int) ;
+ int put_bits (int *,int,int) ;
+ int put_bits_count (int *) ;
 
 __attribute__((used)) static int encode_slice(uint8_t *src, uint8_t *dst, int dst_size,
                         int width, int height, HuffEntry *he, int prediction)

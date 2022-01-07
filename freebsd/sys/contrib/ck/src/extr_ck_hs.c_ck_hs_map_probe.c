@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ck_hs_map {unsigned long mask; int /*<<< orphan*/ * entries; } ;
+
+
+
+
+struct ck_hs_map {unsigned long mask; int * entries; } ;
 struct ck_hs {int mode; int (* compare ) (void const*,void const*) ;} ;
-typedef  enum ck_hs_probe_behavior { ____Placeholder_ck_hs_probe_behavior } ck_hs_probe_behavior ;
+typedef enum ck_hs_probe_behavior { ____Placeholder_ck_hs_probe_behavior } ck_hs_probe_behavior ;
 
-/* Variables and functions */
- void const* CK_HS_EMPTY ; 
- unsigned long CK_HS_KEY_MASK ; 
- int CK_HS_MODE_OBJECT ; 
- int CK_HS_PROBE_INSERT ; 
- unsigned long CK_HS_PROBE_L1 ; 
- int CK_HS_PROBE_TOMBSTONE ; 
- void const* CK_HS_TOMBSTONE ; 
- void* CK_HS_VMA (void const*) ; 
- int CK_MD_CACHELINE ; 
- uintptr_t CK_MD_VMA_BITS ; 
- unsigned long ck_hs_map_bound_get (struct ck_hs_map*,unsigned long) ; 
- unsigned long ck_hs_map_probe_next (struct ck_hs_map*,unsigned long,unsigned long,int /*<<< orphan*/ ,unsigned long) ; 
- void* ck_pr_load_ptr (void const**) ; 
- int stub1 (void const*,void const*) ; 
+
+ void const* CK_HS_EMPTY ;
+ unsigned long CK_HS_KEY_MASK ;
+ int CK_HS_MODE_OBJECT ;
+ int CK_HS_PROBE_INSERT ;
+ unsigned long CK_HS_PROBE_L1 ;
+ int CK_HS_PROBE_TOMBSTONE ;
+ void const* CK_HS_TOMBSTONE ;
+ void* CK_HS_VMA (void const*) ;
+ int CK_MD_CACHELINE ;
+ uintptr_t CK_MD_VMA_BITS ;
+ unsigned long ck_hs_map_bound_get (struct ck_hs_map*,unsigned long) ;
+ unsigned long ck_hs_map_probe_next (struct ck_hs_map*,unsigned long,unsigned long,int ,unsigned long) ;
+ void* ck_pr_load_ptr (void const**) ;
+ int stub1 (void const*,void const*) ;
 
 __attribute__((used)) static const void **
 ck_hs_map_probe(struct ck_hs *hs,
@@ -41,101 +41,79 @@ ck_hs_map_probe(struct ck_hs *hs,
     unsigned long probe_limit,
     enum ck_hs_probe_behavior behavior)
 {
-	const void **bucket, **cursor, *k, *compare;
-	const void **pr = NULL;
-	unsigned long offset, j, i, probes, opl;
+ const void **bucket, **cursor, *k, *compare;
+ const void **pr = ((void*)0);
+ unsigned long offset, j, i, probes, opl;
+ compare = key;
 
-#ifdef CK_HS_PP
-	/* If we are storing object pointers, then we may leverage pointer packing. */
-	unsigned long hv = 0;
 
-	if (hs->mode & CK_HS_MODE_OBJECT) {
-		hv = (h >> 25) & CK_HS_KEY_MASK;
-		compare = CK_HS_VMA(key);
-	} else {
-		compare = key;
-	}
-#else
-	compare = key;
-#endif
+ offset = h & map->mask;
+ *object = ((void*)0);
+ i = probes = 0;
 
-	offset = h & map->mask;
-	*object = NULL;
-	i = probes = 0;
+ opl = probe_limit;
+ if (behavior == CK_HS_PROBE_INSERT)
+  probe_limit = ck_hs_map_bound_get(map, h);
 
-	opl = probe_limit;
-	if (behavior == CK_HS_PROBE_INSERT)
-		probe_limit = ck_hs_map_bound_get(map, h);
+ for (;;) {
+  bucket = (const void **)((uintptr_t)&map->entries[offset] & ~(CK_MD_CACHELINE - 1));
 
-	for (;;) {
-		bucket = (const void **)((uintptr_t)&map->entries[offset] & ~(CK_MD_CACHELINE - 1));
+  for (j = 0; j < CK_HS_PROBE_L1; j++) {
+   cursor = bucket + ((j + offset) & (CK_HS_PROBE_L1 - 1));
 
-		for (j = 0; j < CK_HS_PROBE_L1; j++) {
-			cursor = bucket + ((j + offset) & (CK_HS_PROBE_L1 - 1));
+   if (probes++ == probe_limit) {
+    if (probe_limit == opl || pr != ((void*)0)) {
+     k = CK_HS_EMPTY;
+     goto leave;
+    }
 
-			if (probes++ == probe_limit) {
-				if (probe_limit == opl || pr != NULL) {
-					k = CK_HS_EMPTY;
-					goto leave;
-				}
 
-				/*
-				 * If no eligible slot has been found yet, continue probe
-				 * sequence with original probe limit.
-				 */
-				probe_limit = opl;
-			}
 
-			k = ck_pr_load_ptr(cursor);
-			if (k == CK_HS_EMPTY)
-				goto leave;
 
-			if (k == CK_HS_TOMBSTONE) {
-				if (pr == NULL) {
-					pr = cursor;
-					*n_probes = probes;
 
-					if (behavior == CK_HS_PROBE_TOMBSTONE) {
-						k = CK_HS_EMPTY;
-						goto leave;
-					}
-				}
+    probe_limit = opl;
+   }
 
-				continue;
-			}
+   k = ck_pr_load_ptr(cursor);
+   if (k == CK_HS_EMPTY)
+    goto leave;
 
-#ifdef CK_HS_PP
-			if (hs->mode & CK_HS_MODE_OBJECT) {
-				if (((uintptr_t)k >> CK_MD_VMA_BITS) != hv)
-					continue;
+   if (k == CK_HS_TOMBSTONE) {
+    if (pr == ((void*)0)) {
+     pr = cursor;
+     *n_probes = probes;
 
-				k = CK_HS_VMA(k);
-			}
-#endif
+     if (behavior == CK_HS_PROBE_TOMBSTONE) {
+      k = CK_HS_EMPTY;
+      goto leave;
+     }
+    }
 
-			if (k == compare)
-				goto leave;
+    continue;
+   }
+   if (k == compare)
+    goto leave;
 
-			if (hs->compare == NULL)
-				continue;
+   if (hs->compare == ((void*)0))
+    continue;
 
-			if (hs->compare(k, key) == true)
-				goto leave;
-		}
+   if (hs->compare(k, key) == 1)
+    goto leave;
+  }
 
-		offset = ck_hs_map_probe_next(map, offset, h, i++, probes);
-	}
+  offset = ck_hs_map_probe_next(map, offset, h, i++, probes);
+ }
 
 leave:
-	if (probes > probe_limit) {
-		cursor = NULL;
-	} else {
-		*object = k;
-	}
+ if (probes > probe_limit) {
+  cursor = ((void*)0);
+ } else {
+  *object = k;
+ }
 
-	if (pr == NULL)
-		*n_probes = probes;
+ if (pr == ((void*)0))
+  *n_probes = probes;
 
-	*priority = pr;
-	return cursor;
+ *priority = pr;
+ return cursor;
 }

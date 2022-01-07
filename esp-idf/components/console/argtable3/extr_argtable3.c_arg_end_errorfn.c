@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
-#define  ARG_ELIMIT 132 
-#define  ARG_ELONGOPT 131 
-#define  ARG_EMALLOC 130 
-#define  ARG_EMISSARG 129 
-#define  ARG_ENOMATCH 128 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  fputc (char,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int FILE ;
+
+
+
+
+
+
+
+ int fprintf (int *,char*,...) ;
+ int fputc (char,int *) ;
+ int fputs (char*,int *) ;
 
 __attribute__((used)) static void arg_end_errorfn(
     void *parent,
@@ -29,7 +29,7 @@ __attribute__((used)) static void arg_end_errorfn(
     const char *argval,
     const char *progname)
 {
-    /* suppress unreferenced formal parameter warning */
+
     (void)parent;
 
     progname = progname ? progname : "";
@@ -38,25 +38,25 @@ __attribute__((used)) static void arg_end_errorfn(
     fprintf(fp, "%s: ", progname);
     switch(error)
     {
-    case ARG_ELIMIT:
+    case 132:
         fputs("too many errors to display", fp);
         break;
-    case ARG_EMALLOC:
+    case 130:
         fputs("insufficent memory", fp);
         break;
-    case ARG_ENOMATCH:
+    case 128:
         fprintf(fp, "unexpected argument \"%s\"", argval);
         break;
-    case ARG_EMISSARG:
+    case 129:
         fprintf(fp, "option \"%s\" requires an argument", argval);
         break;
-    case ARG_ELONGOPT:
+    case 131:
         fprintf(fp, "invalid option \"%s\"", argval);
         break;
     default:
         fprintf(fp, "invalid option \"-%c\"", error);
         break;
     }
-    
+
     fputc('\n', fp);
 }

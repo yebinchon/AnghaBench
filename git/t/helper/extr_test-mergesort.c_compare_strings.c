@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct line {int /*<<< orphan*/  text; } ;
 
-/* Variables and functions */
- int strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct line {int text; } ;
+
+
+ int strcmp (int ,int ) ;
 
 __attribute__((used)) static int compare_strings(const void *a, const void *b)
 {
-	const struct line *x = a, *y = b;
-	return strcmp(x->text, y->text);
+ const struct line *x = a, *y = b;
+ return strcmp(x->text, y->text);
 }

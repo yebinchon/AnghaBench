@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timeval {int dummy; } ;
-struct strm_time {int /*<<< orphan*/  tv; } ;
-typedef  int /*<<< orphan*/  strm_value ;
-typedef  int /*<<< orphan*/  strm_stream ;
+struct strm_time {int tv; } ;
+typedef int strm_value ;
+typedef int strm_stream ;
 
-/* Variables and functions */
- int STRM_NG ; 
- int STRM_OK ; 
- struct strm_time* get_time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_float_value (double) ; 
- scalar_t__ strm_number_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_raise (int /*<<< orphan*/ *,char*) ; 
- double strm_value_float (int /*<<< orphan*/ ) ; 
- int time_plus (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  timersub (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
- double timeval_to_num (struct timeval*) ; 
+
+ int STRM_NG ;
+ int STRM_OK ;
+ struct strm_time* get_time (int ) ;
+ int strm_float_value (double) ;
+ scalar_t__ strm_number_p (int ) ;
+ int strm_raise (int *,char*) ;
+ double strm_value_float (int ) ;
+ int time_plus (int *,int,int *,int *) ;
+ int timersub (int *,int *,struct timeval*) ;
+ double timeval_to_num (struct timeval*) ;
 
 __attribute__((used)) static int
 time_minus(strm_stream* strm, int argc, strm_value* args, strm_value* ret)

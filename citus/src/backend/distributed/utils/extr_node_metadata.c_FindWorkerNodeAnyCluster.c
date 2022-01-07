@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32 ;
-typedef  int /*<<< orphan*/  WorkerNode ;
-typedef  int /*<<< orphan*/  TupleDesc ;
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/ * HeapTuple ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AccessShareLock ; 
- int /*<<< orphan*/  DistNodeRelationId () ; 
- int /*<<< orphan*/ * GetNodeTuple (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NoLock ; 
- int /*<<< orphan*/  RelationGetDescr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * TupleToWorkerNode (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  heap_close (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int int32 ;
+typedef int WorkerNode ;
+typedef int TupleDesc ;
+typedef int Relation ;
+typedef int * HeapTuple ;
+
+
+ int AccessShareLock ;
+ int DistNodeRelationId () ;
+ int * GetNodeTuple (char const*,int ) ;
+ int NoLock ;
+ int RelationGetDescr (int ) ;
+ int * TupleToWorkerNode (int ,int *) ;
+ int heap_close (int ,int ) ;
+ int heap_open (int ,int ) ;
 
 WorkerNode *
 FindWorkerNodeAnyCluster(const char *nodeName, int32 nodePort)
 {
-	WorkerNode *workerNode = NULL;
+ WorkerNode *workerNode = ((void*)0);
 
-	Relation pgDistNode = heap_open(DistNodeRelationId(), AccessShareLock);
-	TupleDesc tupleDescriptor = RelationGetDescr(pgDistNode);
+ Relation pgDistNode = heap_open(DistNodeRelationId(), AccessShareLock);
+ TupleDesc tupleDescriptor = RelationGetDescr(pgDistNode);
 
-	HeapTuple heapTuple = GetNodeTuple(nodeName, nodePort);
-	if (heapTuple != NULL)
-	{
-		workerNode = TupleToWorkerNode(tupleDescriptor, heapTuple);
-	}
+ HeapTuple heapTuple = GetNodeTuple(nodeName, nodePort);
+ if (heapTuple != ((void*)0))
+ {
+  workerNode = TupleToWorkerNode(tupleDescriptor, heapTuple);
+ }
 
-	heap_close(pgDistNode, NoLock);
-	return workerNode;
+ heap_close(pgDistNode, NoLock);
+ return workerNode;
 }

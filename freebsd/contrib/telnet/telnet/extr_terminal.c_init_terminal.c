@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TerminalAutoFlush () ; 
- int /*<<< orphan*/  autoflush ; 
- int /*<<< orphan*/  exit (int) ; 
- int ring_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ttyibuf ; 
- int /*<<< orphan*/  ttyiring ; 
- int /*<<< orphan*/  ttyobuf ; 
- int /*<<< orphan*/  ttyoring ; 
+ int TerminalAutoFlush () ;
+ int autoflush ;
+ int exit (int) ;
+ int ring_init (int *,int ,int) ;
+ int ttyibuf ;
+ int ttyiring ;
+ int ttyobuf ;
+ int ttyoring ;
 
 void
 init_terminal(void)
 {
     if (ring_init(&ttyoring, ttyobuf, sizeof ttyobuf) != 1) {
-	exit(1);
+ exit(1);
     }
     if (ring_init(&ttyiring, ttyibuf, sizeof ttyibuf) != 1) {
-	exit(1);
+ exit(1);
     }
     autoflush = TerminalAutoFlush();
 }

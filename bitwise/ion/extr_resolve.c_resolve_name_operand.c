@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  type; } ;
-struct TYPE_11__ {scalar_t__ kind; int /*<<< orphan*/  type; int /*<<< orphan*/  val; } ;
-typedef  TYPE_1__ Sym ;
-typedef  int /*<<< orphan*/  SrcPos ;
-typedef  TYPE_2__ Operand ;
 
-/* Variables and functions */
- scalar_t__ SYM_CONST ; 
- scalar_t__ SYM_FUNC ; 
- scalar_t__ SYM_VAR ; 
- int /*<<< orphan*/  fatal_error (int /*<<< orphan*/ ,char*,char const*) ; 
- scalar_t__ is_array_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_incomplete_array_type (int /*<<< orphan*/ ) ; 
- TYPE_2__ operand_const (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__ operand_decay (TYPE_2__) ; 
- TYPE_2__ operand_lvalue (int /*<<< orphan*/ ) ; 
- TYPE_2__ operand_null ; 
- TYPE_2__ operand_rvalue (int /*<<< orphan*/ ) ; 
- TYPE_1__* resolve_name (char const*) ; 
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int type; } ;
+struct TYPE_11__ {scalar_t__ kind; int type; int val; } ;
+typedef TYPE_1__ Sym ;
+typedef int SrcPos ;
+typedef TYPE_2__ Operand ;
+
+
+ scalar_t__ SYM_CONST ;
+ scalar_t__ SYM_FUNC ;
+ scalar_t__ SYM_VAR ;
+ int fatal_error (int ,char*,char const*) ;
+ scalar_t__ is_array_type (int ) ;
+ int is_incomplete_array_type (int ) ;
+ TYPE_2__ operand_const (int ,int ) ;
+ TYPE_2__ operand_decay (TYPE_2__) ;
+ TYPE_2__ operand_lvalue (int ) ;
+ TYPE_2__ operand_null ;
+ TYPE_2__ operand_rvalue (int ) ;
+ TYPE_1__* resolve_name (char const*) ;
 
 Operand resolve_name_operand(SrcPos pos, const char *name) {
     Sym *sym = resolve_name(name);

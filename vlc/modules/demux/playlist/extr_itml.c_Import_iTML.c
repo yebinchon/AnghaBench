@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_6__ {int /*<<< orphan*/  force; } ;
-struct TYPE_7__ {int /*<<< orphan*/  pf_control; int /*<<< orphan*/  pf_readdir; int /*<<< orphan*/  s; TYPE_1__ obj; } ;
-typedef  TYPE_2__ stream_t ;
-typedef  int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_FILE (TYPE_2__*) ; 
- int /*<<< orphan*/  ReadDir ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  access_vaDirectoryControlHelper ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  stream_HasExtension (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  strnstr (char const*,char*,int const) ; 
- int vlc_stream_Peek (int /*<<< orphan*/ ,int /*<<< orphan*/  const**,int) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+typedef int uint8_t ;
+struct TYPE_6__ {int force; } ;
+struct TYPE_7__ {int pf_control; int pf_readdir; int s; TYPE_1__ obj; } ;
+typedef TYPE_2__ stream_t ;
+typedef int ssize_t ;
+
+
+ int CHECK_FILE (TYPE_2__*) ;
+ int ReadDir ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int access_vaDirectoryControlHelper ;
+ int msg_Dbg (TYPE_2__*,char*) ;
+ int stream_HasExtension (TYPE_2__*,char*) ;
+ int strnstr (char const*,char*,int const) ;
+ int vlc_stream_Peek (int ,int const**,int) ;
 
 int Import_iTML( vlc_object_t *p_this )
 {

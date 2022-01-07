@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bitwriter {int m; int* ptr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bwrite_append (struct bitwriter*,int /*<<< orphan*/ ) ; 
+
+ int bwrite_append (struct bitwriter*,int ) ;
 
 void bwrite_interpolative_encode_value (struct bitwriter *bw, int a, int r) {
   int b[32], k = 0, x = r >> 1;

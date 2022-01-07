@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nlmsg_list {struct nlmsg_list* nlm_next; struct nlmsg_list* nlh; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __set_errno (int) ; 
- int errno ; 
- int /*<<< orphan*/  free (struct nlmsg_list*) ; 
+
+ int __set_errno (int) ;
+ int errno ;
+ int free (struct nlmsg_list*) ;
 
 __attribute__((used)) static void
 free_nlmsglist(struct nlmsg_list *nlm0)

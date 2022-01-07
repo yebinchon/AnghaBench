@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ version; int flags; } ;
-typedef  TYPE_1__ ole_stream_header_t ;
-typedef  int /*<<< orphan*/  header ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  IStorage ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  DefaultHandler ;
-typedef  int DWORD ;
+typedef TYPE_1__ ole_stream_header_t ;
+typedef int header ;
+typedef int IStream ;
+typedef int IStorage ;
+typedef scalar_t__ HRESULT ;
+typedef int DefaultHandler ;
+typedef int DWORD ;
 
-/* Variables and functions */
- scalar_t__ DV_E_CLIPFORMAT ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- scalar_t__ IStorage_OpenStream (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ IStream_Read (int /*<<< orphan*/ *,TYPE_1__*,int,int*) ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OleStream ; 
- int STGM_READ ; 
- int STGM_SHARE_EXCLUSIVE ; 
- scalar_t__ STORAGE_CreateOleStream (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  WARN (char*) ; 
- scalar_t__ ole_stream_version ; 
+
+ scalar_t__ DV_E_CLIPFORMAT ;
+ int FIXME (char*) ;
+ scalar_t__ IStorage_OpenStream (int *,int ,int *,int,int ,int **) ;
+ scalar_t__ IStream_Read (int *,TYPE_1__*,int,int*) ;
+ int IStream_Release (int *) ;
+ int OleStream ;
+ int STGM_READ ;
+ int STGM_SHARE_EXCLUSIVE ;
+ scalar_t__ STORAGE_CreateOleStream (int *,int ) ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_OK ;
+ int WARN (char*) ;
+ scalar_t__ ole_stream_version ;
 
 __attribute__((used)) static HRESULT load_ole_stream(DefaultHandler *This, IStorage *storage)
 {
     IStream *stream;
     HRESULT hr;
 
-    hr = IStorage_OpenStream(storage, OleStream, NULL, STGM_READ | STGM_SHARE_EXCLUSIVE, 0, &stream);
+    hr = IStorage_OpenStream(storage, OleStream, ((void*)0), STGM_READ | STGM_SHARE_EXCLUSIVE, 0, &stream);
 
     if(SUCCEEDED(hr))
     {
@@ -52,7 +52,7 @@ __attribute__((used)) static HRESULT load_ole_stream(DefaultHandler *This, IStor
         {
             if(header.flags & 1)
             {
-                /* FIXME: Read the moniker and deal with the link */
+
                 FIXME("Linked objects are not supported yet\n");
             }
         }

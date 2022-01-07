@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ MAX_INTERMEDIATE_SIZE ; 
- int* Q ; 
- scalar_t__* Qc ; 
- scalar_t__* Ql ; 
- int Qw ; 
- int* Res ; 
- int* ResBuff ; 
- int ResL ; 
- size_t ResR ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int* intersect_lists (int*,int*,scalar_t__,scalar_t__,int*,int*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbosity ; 
+ scalar_t__ MAX_INTERMEDIATE_SIZE ;
+ int* Q ;
+ scalar_t__* Qc ;
+ scalar_t__* Ql ;
+ int Qw ;
+ int* Res ;
+ int* ResBuff ;
+ int ResL ;
+ size_t ResR ;
+ int fprintf (int ,char*,...) ;
+ int* intersect_lists (int*,int*,scalar_t__,scalar_t__,int*,int*) ;
+ int stderr ;
+ scalar_t__ verbosity ;
 
 int do_search (int first_pos, int first_neg, int last_pos, int last_neg) {
   int i, j, t;
@@ -71,7 +63,7 @@ int do_search (int first_pos, int first_neg, int last_pos, int last_neg) {
   Res = ResBuff + ResR;
   ResL = j;
 
-  
+
   if (!ResL) {
     if (verbosity) {
       fprintf (stderr, "empty list for %llu\n", Q[0]);
@@ -98,5 +90,5 @@ int do_search (int first_pos, int first_neg, int last_pos, int last_neg) {
   }
 
   return ResL;
-      
+
 }

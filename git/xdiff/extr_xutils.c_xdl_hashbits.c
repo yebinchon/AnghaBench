@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int CHAR_BIT ; 
+ int CHAR_BIT ;
 
 unsigned int xdl_hashbits(unsigned int size) {
-	unsigned int val = 1, bits = 0;
+ unsigned int val = 1, bits = 0;
 
-	for (; val < size && bits < CHAR_BIT * sizeof(unsigned int); val <<= 1, bits++);
-	return bits ? bits: 1;
+ for (; val < size && bits < CHAR_BIT * sizeof(unsigned int); val <<= 1, bits++);
+ return bits ? bits: 1;
 }

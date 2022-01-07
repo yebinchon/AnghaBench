@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONG_PTR ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IObjContext ;
-typedef  int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APTTYPEQUALIFIER_NONE ; 
- int /*<<< orphan*/  APTTYPE_CURRENT ; 
- int /*<<< orphan*/  APTTYPE_MAINSTA ; 
- int CO_E_NOTINITIALIZED ; 
- int /*<<< orphan*/  CoInitialize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CoUninitialize () ; 
- int E_POINTER ; 
- int /*<<< orphan*/  IID_IObjContext ; 
- int IObjContext_AddRef (int /*<<< orphan*/ *) ; 
- int IObjContext_Release (int /*<<< orphan*/ *) ; 
- int IUnknown_AddRef (int /*<<< orphan*/ *) ; 
- int IUnknown_Release (int /*<<< orphan*/ *) ; 
- int S_OK ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int pCoGetContextToken (int*) ; 
- int pCoGetObjectContext (int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  test_apt_type (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int ULONG_PTR ;
+typedef int ULONG ;
+typedef int IUnknown ;
+typedef int IObjContext ;
+typedef int HRESULT ;
+
+
+ int APTTYPEQUALIFIER_NONE ;
+ int APTTYPE_CURRENT ;
+ int APTTYPE_MAINSTA ;
+ int CO_E_NOTINITIALIZED ;
+ int CoInitialize (int *) ;
+ int CoUninitialize () ;
+ int E_POINTER ;
+ int IID_IObjContext ;
+ int IObjContext_AddRef (int *) ;
+ int IObjContext_Release (int *) ;
+ int IUnknown_AddRef (int *) ;
+ int IUnknown_Release (int *) ;
+ int S_OK ;
+ int ok (int,char*,...) ;
+ int pCoGetContextToken (int*) ;
+ int pCoGetObjectContext (int *,void**) ;
+ int test_apt_type (int ,int ) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_CoGetContextToken(void)
 {
@@ -56,11 +56,11 @@ __attribute__((used)) static void test_CoGetContextToken(void)
 
     test_apt_type(APTTYPE_CURRENT, APTTYPEQUALIFIER_NONE);
 
-    CoInitialize(NULL);
+    CoInitialize(((void*)0));
 
     test_apt_type(APTTYPE_MAINSTA, APTTYPEQUALIFIER_NONE);
 
-    hr = pCoGetContextToken(NULL);
+    hr = pCoGetContextToken(((void*)0));
     ok(hr == E_POINTER, "Expected E_POINTER, got 0x%08x\n", hr);
 
     token = 0;
@@ -89,7 +89,7 @@ __attribute__((used)) static void test_CoGetContextToken(void)
     refs = IUnknown_Release((IUnknown *)token);
     ok(refs == 1, "Expected 1, got %u\n", refs);
 
-    /* CoGetContextToken does not add a reference */
+
     token = 0;
     hr = pCoGetContextToken(&token);
     ok(hr == S_OK, "Expected S_OK, got 0x%08x\n", hr);

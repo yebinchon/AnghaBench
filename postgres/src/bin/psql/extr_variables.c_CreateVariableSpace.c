@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct _variable {int /*<<< orphan*/ * next; int /*<<< orphan*/ * assign_hook; int /*<<< orphan*/ * substitute_hook; int /*<<< orphan*/ * value; int /*<<< orphan*/ * name; } ;
-typedef  struct _variable* VariableSpace ;
 
-/* Variables and functions */
- struct _variable* pg_malloc (int) ; 
+
+
+
+struct _variable {int * next; int * assign_hook; int * substitute_hook; int * value; int * name; } ;
+typedef struct _variable* VariableSpace ;
+
+
+ struct _variable* pg_malloc (int) ;
 
 VariableSpace
 CreateVariableSpace(void)
 {
-	struct _variable *ptr;
+ struct _variable *ptr;
 
-	ptr = pg_malloc(sizeof *ptr);
-	ptr->name = NULL;
-	ptr->value = NULL;
-	ptr->substitute_hook = NULL;
-	ptr->assign_hook = NULL;
-	ptr->next = NULL;
+ ptr = pg_malloc(sizeof *ptr);
+ ptr->name = ((void*)0);
+ ptr->value = ((void*)0);
+ ptr->substitute_hook = ((void*)0);
+ ptr->assign_hook = ((void*)0);
+ ptr->next = ((void*)0);
 
-	return ptr;
+ return ptr;
 }

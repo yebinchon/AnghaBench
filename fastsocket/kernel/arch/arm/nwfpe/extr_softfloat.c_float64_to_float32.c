@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct roundingData {int dummy; } ;
-typedef  int int16 ;
-typedef  int /*<<< orphan*/  float64 ;
-typedef  int /*<<< orphan*/  float32 ;
-typedef  int /*<<< orphan*/  flag ;
-typedef  int bits64 ;
-typedef  int bits32 ;
+typedef int int16 ;
+typedef int float64 ;
+typedef int float32 ;
+typedef int flag ;
+typedef int bits64 ;
+typedef int bits32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  commonNaNToFloat32 (int /*<<< orphan*/ ) ; 
- int extractFloat64Exp (int /*<<< orphan*/ ) ; 
- int extractFloat64Frac (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  extractFloat64Sign (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  float64ToCommonNaN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  packFloat32 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  roundAndPackFloat32 (struct roundingData*,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  shift64RightJamming (int,int,int*) ; 
+
+ int commonNaNToFloat32 (int ) ;
+ int extractFloat64Exp (int ) ;
+ int extractFloat64Frac (int ) ;
+ int extractFloat64Sign (int ) ;
+ int float64ToCommonNaN (int ) ;
+ int packFloat32 (int ,int,int ) ;
+ int roundAndPackFloat32 (struct roundingData*,int ,int,int) ;
+ int shift64RightJamming (int,int,int*) ;
 
 float32 float64_to_float32( struct roundingData *roundData, float64 a )
 {

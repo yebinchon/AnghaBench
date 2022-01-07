@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_12__ {TYPE_2__* pList; } ;
-struct TYPE_13__ {int /*<<< orphan*/  op; int /*<<< orphan*/  iTable; TYPE_3__ x; struct TYPE_13__* pRight; struct TYPE_13__* pLeft; } ;
+struct TYPE_13__ {int op; int iTable; TYPE_3__ x; struct TYPE_13__* pRight; struct TYPE_13__* pLeft; } ;
 struct TYPE_11__ {TYPE_1__* a; } ;
 struct TYPE_10__ {TYPE_4__* pExpr; } ;
-typedef  int /*<<< orphan*/  Parse ;
-typedef  TYPE_4__ Expr ;
+typedef int Parse ;
+typedef TYPE_4__ Expr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EP_xIsSelect ; 
- int /*<<< orphan*/  ExprHasProperty (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TK_AND ; 
- int /*<<< orphan*/  TK_GE ; 
- int /*<<< orphan*/  TK_LE ; 
- int /*<<< orphan*/  TK_REGISTER ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3ExprCodeTemp (int /*<<< orphan*/ *,TYPE_4__*,int*) ; 
- int /*<<< orphan*/  sqlite3ExprIfFalse (int /*<<< orphan*/ *,TYPE_4__*,int,int) ; 
- int /*<<< orphan*/  sqlite3ExprIfTrue (int /*<<< orphan*/ *,TYPE_4__*,int,int) ; 
- int /*<<< orphan*/  sqlite3ReleaseTempReg (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  testcase (int) ; 
+
+ int EP_xIsSelect ;
+ int ExprHasProperty (TYPE_4__*,int ) ;
+ int TK_AND ;
+ int TK_GE ;
+ int TK_LE ;
+ int TK_REGISTER ;
+ int assert (int) ;
+ int sqlite3ExprCodeTemp (int *,TYPE_4__*,int*) ;
+ int sqlite3ExprIfFalse (int *,TYPE_4__*,int,int) ;
+ int sqlite3ExprIfTrue (int *,TYPE_4__*,int,int) ;
+ int sqlite3ReleaseTempReg (int *,int) ;
+ int testcase (int) ;
 
 __attribute__((used)) static void exprCodeBetween(
-  Parse *pParse,    /* Parsing and code generating context */
-  Expr *pExpr,      /* The BETWEEN expression */
-  int dest,         /* Jump here if the jump is taken */
-  int jumpIfTrue,   /* Take the jump if the BETWEEN is true */
-  int jumpIfNull    /* Take the jump if the BETWEEN is NULL */
+  Parse *pParse,
+  Expr *pExpr,
+  int dest,
+  int jumpIfTrue,
+  int jumpIfNull
 ){
-  Expr exprAnd;     /* The AND operator in  x>=y AND x<=z  */
-  Expr compLeft;    /* The  x>=y  term */
-  Expr compRight;   /* The  x<=z  term */
-  Expr exprX;       /* The  x  subexpression */
-  int regFree1 = 0; /* Temporary use register */
+  Expr exprAnd;
+  Expr compLeft;
+  Expr compRight;
+  Expr exprX;
+  int regFree1 = 0;
 
   assert( !ExprHasProperty(pExpr, EP_xIsSelect) );
   exprX = *pExpr->pLeft;
@@ -68,7 +68,7 @@ __attribute__((used)) static void exprCodeBetween(
   }
   sqlite3ReleaseTempReg(pParse, regFree1);
 
-  /* Ensure adequate test coverage */
+
   testcase( jumpIfTrue==0 && jumpIfNull==0 && regFree1==0 );
   testcase( jumpIfTrue==0 && jumpIfNull==0 && regFree1!=0 );
   testcase( jumpIfTrue==0 && jumpIfNull!=0 && regFree1==0 );

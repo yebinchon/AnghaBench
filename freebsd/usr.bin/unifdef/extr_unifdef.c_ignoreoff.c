@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  abort () ; 
- size_t depth ; 
- int /*<<< orphan*/ * ignoring ; 
+ int abort () ;
+ size_t depth ;
+ int * ignoring ;
 
 __attribute__((used)) static void
 ignoreoff(void)
 {
-	if (depth == 0)
-		abort(); /* bug */
-	ignoring[depth] = ignoring[depth-1];
+ if (depth == 0)
+  abort();
+ ignoring[depth] = ignoring[depth-1];
 }

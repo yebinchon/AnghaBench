@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  attr; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * tag; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int attr; } ;
+struct TYPE_9__ {int * tag; } ;
 struct TYPE_7__ {scalar_t__ num_tables; TYPE_3__* table; } ;
 struct TYPE_8__ {TYPE_1__ offset_tbl; } ;
-typedef  scalar_t__ HPDF_UINT ;
-typedef  TYPE_2__* HPDF_TTFontDefAttr ;
-typedef  TYPE_3__ HPDF_TTFTable ;
-typedef  TYPE_4__* HPDF_FontDef ;
-typedef  int /*<<< orphan*/  HPDF_BYTE ;
+typedef scalar_t__ HPDF_UINT ;
+typedef TYPE_2__* HPDF_TTFontDefAttr ;
+typedef TYPE_3__ HPDF_TTFTable ;
+typedef TYPE_4__* HPDF_FontDef ;
+typedef int HPDF_BYTE ;
 
-/* Variables and functions */
- scalar_t__ HPDF_MemCmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
+
+ scalar_t__ HPDF_MemCmp (int *,int *,int) ;
+ int HPDF_PTRACE (char*) ;
 
 __attribute__((used)) static HPDF_TTFTable*
-FindTable (HPDF_FontDef      fontdef,
-           const char  *tag)
+FindTable (HPDF_FontDef fontdef,
+           const char *tag)
 {
     HPDF_TTFontDefAttr attr = (HPDF_TTFontDefAttr)fontdef->attr;
     HPDF_TTFTable* tbl = attr->offset_tbl.table;
@@ -44,5 +44,5 @@ FindTable (HPDF_FontDef      fontdef,
         }
     }
 
-    return NULL;
+    return ((void*)0);
 }

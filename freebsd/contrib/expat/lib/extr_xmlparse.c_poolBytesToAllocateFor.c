@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  XML_Char ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOCK ; 
- size_t const INT_MAX ; 
- unsigned int offsetof (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  s ; 
+
+
+
+typedef int XML_Char ;
+
+
+ int BLOCK ;
+ size_t const INT_MAX ;
+ unsigned int offsetof (int ,int ) ;
+ int s ;
 
 __attribute__((used)) static size_t
 poolBytesToAllocateFor(int blockSize)
 {
-  /* Unprotected math would be:
-  ** return offsetof(BLOCK, s) + blockSize * sizeof(XML_Char);
-  **
-  ** Detect overflow, avoiding _signed_ overflow undefined behavior
-  ** For a + b * c we check b * c in isolation first, so that addition of a
-  ** on top has no chance of making us accept a small non-negative number
-  */
-  const size_t stretch = sizeof(XML_Char);  /* can be 4 bytes */
+
+
+
+
+
+
+
+  const size_t stretch = sizeof(XML_Char);
 
   if (blockSize <= 0)
     return 0;

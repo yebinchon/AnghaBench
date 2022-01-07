@@ -1,62 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct comedi_subdevice {void* lock; void* busy; int (* cancel ) (struct comedi_device*,struct comedi_subdevice*) ;TYPE_1__* async; } ;
 struct comedi_device {unsigned int n_subdevices; struct comedi_subdevice* subdevices; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * inttrig; } ;
+struct TYPE_2__ {int * inttrig; } ;
 
-/* Variables and functions */
- int EACCES ; 
- int EBUSY ; 
- int EINVAL ; 
- int SRF_RT ; 
- int SRF_RUNNING ; 
- int /*<<< orphan*/  comedi_set_subdevice_runflags (struct comedi_subdevice*,int,int /*<<< orphan*/ ) ; 
- int stub1 (struct comedi_device*,struct comedi_subdevice*) ; 
+
+ int EACCES ;
+ int EBUSY ;
+ int EINVAL ;
+ int SRF_RT ;
+ int SRF_RUNNING ;
+ int comedi_set_subdevice_runflags (struct comedi_subdevice*,int,int ) ;
+ int stub1 (struct comedi_device*,struct comedi_subdevice*) ;
 
 int comedi_cancel(void *d, unsigned int subdevice)
 {
-	struct comedi_device *dev = (struct comedi_device *)d;
-	struct comedi_subdevice *s;
-	int ret = 0;
+ struct comedi_device *dev = (struct comedi_device *)d;
+ struct comedi_subdevice *s;
+ int ret = 0;
 
-	if (subdevice >= dev->n_subdevices)
-		return -EINVAL;
+ if (subdevice >= dev->n_subdevices)
+  return -EINVAL;
 
-	s = dev->subdevices + subdevice;
+ s = dev->subdevices + subdevice;
 
-	if (s->lock && s->lock != d)
-		return -EACCES;
+ if (s->lock && s->lock != d)
+  return -EACCES;
+ if (!s->cancel || !s->async)
+  return -EINVAL;
 
-#if 0
-	if (!s->busy)
-		return 0;
+ ret = s->cancel(dev, s);
 
-	if (s->busy != d)
-		return -EBUSY;
-#endif
+ if (ret)
+  return ret;
 
-	if (!s->cancel || !s->async)
-		return -EINVAL;
+ comedi_set_subdevice_runflags(s, SRF_RUNNING | SRF_RT, 0);
+ s->async->inttrig = ((void*)0);
+ s->busy = ((void*)0);
 
-	ret = s->cancel(dev, s);
-
-	if (ret)
-		return ret;
-
-	comedi_set_subdevice_runflags(s, SRF_RUNNING | SRF_RT, 0);
-	s->async->inttrig = NULL;
-	s->busy = NULL;
-
-	return 0;
+ return 0;
 }

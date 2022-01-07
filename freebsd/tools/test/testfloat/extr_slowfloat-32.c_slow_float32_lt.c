@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ isNaN; } ;
-typedef  TYPE_1__ floatX ;
-typedef  int /*<<< orphan*/  float32 ;
-typedef  int /*<<< orphan*/  flag ;
+typedef TYPE_1__ floatX ;
+typedef int float32 ;
+typedef int flag ;
 
-/* Variables and functions */
- TYPE_1__ float32ToFloatX (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  floatXLt (TYPE_1__,TYPE_1__) ; 
- int /*<<< orphan*/  float_flag_invalid ; 
- int /*<<< orphan*/  slow_float_exception_flags ; 
+
+ TYPE_1__ float32ToFloatX (int ) ;
+ int floatXLt (TYPE_1__,TYPE_1__) ;
+ int float_flag_invalid ;
+ int slow_float_exception_flags ;
 
 flag slow_float32_lt( float32 a, float32 b )
 {

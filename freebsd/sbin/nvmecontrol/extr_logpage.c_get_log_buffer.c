@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  errx (int,char*,int /*<<< orphan*/ ) ; 
- void* malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int errx (int,char*,int ) ;
+ void* malloc (int ) ;
+ int memset (void*,int ,int ) ;
 
 __attribute__((used)) static void *
 get_log_buffer(uint32_t size)
 {
-	void	*buf;
+ void *buf;
 
-	if ((buf = malloc(size)) == NULL)
-		errx(1, "unable to malloc %u bytes", size);
+ if ((buf = malloc(size)) == ((void*)0))
+  errx(1, "unable to malloc %u bytes", size);
 
-	memset(buf, 0, size);
-	return (buf);
+ memset(buf, 0, size);
+ return (buf);
 }

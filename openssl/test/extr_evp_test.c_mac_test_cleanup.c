@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* data; } ;
-struct TYPE_4__ {int /*<<< orphan*/  output; int /*<<< orphan*/  input; int /*<<< orphan*/  salt; int /*<<< orphan*/  custom; int /*<<< orphan*/  iv; int /*<<< orphan*/  key; int /*<<< orphan*/  alg; int /*<<< orphan*/  controls; int /*<<< orphan*/  mac_name; int /*<<< orphan*/  mac; } ;
-typedef  TYPE_1__ MAC_DATA ;
-typedef  TYPE_2__ EVP_TEST ;
+struct TYPE_4__ {int output; int input; int salt; int custom; int iv; int key; int alg; int controls; int mac_name; int mac; } ;
+typedef TYPE_1__ MAC_DATA ;
+typedef TYPE_2__ EVP_TEST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_MAC_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  openssl_free ; 
- int /*<<< orphan*/  sk_OPENSSL_STRING_pop_free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int EVP_MAC_free (int ) ;
+ int OPENSSL_free (int ) ;
+ int openssl_free ;
+ int sk_OPENSSL_STRING_pop_free (int ,int ) ;
 
 __attribute__((used)) static void mac_test_cleanup(EVP_TEST *t)
 {

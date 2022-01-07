@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int ULONG ;
-struct TYPE_3__ {int /*<<< orphan*/  subtype; int /*<<< orphan*/  type; } ;
-typedef  int /*<<< orphan*/ * LPCWSTR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
-typedef  TYPE_1__ DMO_PARTIAL_MEDIATYPE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSIDFromString (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ ERROR_MORE_DATA ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  HRESULT_FROM_WIN32 (scalar_t__) ; 
- int /*<<< orphan*/  KEY_READ ; 
- int MAX_PATH ; 
- int MSDMO_MAJOR_VERSION ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegEnumKeyExW (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueExW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  S_FALSE ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  szToGuidFmt ; 
- int /*<<< orphan*/  wsprintfW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int ULONG ;
+struct TYPE_3__ {int subtype; int type; } ;
+typedef int * LPCWSTR ;
+typedef int LPBYTE ;
+typedef scalar_t__ LONG ;
+typedef int HRESULT ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef TYPE_1__ DMO_PARTIAL_MEDIATYPE ;
+
+
+ int CLSIDFromString (int *,int *) ;
+ scalar_t__ ERROR_MORE_DATA ;
+ scalar_t__ ERROR_SUCCESS ;
+ int HRESULT_FROM_WIN32 (scalar_t__) ;
+ int KEY_READ ;
+ int MAX_PATH ;
+ int MSDMO_MAJOR_VERSION ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegEnumKeyExW (int ,int,int *,int*,int *,int *,int *,int *) ;
+ scalar_t__ RegOpenKeyExW (int ,int *,int ,int ,int *) ;
+ scalar_t__ RegQueryValueExW (int ,int *,int *,int *,int ,int*) ;
+ int S_FALSE ;
+ int S_OK ;
+ int TRACE (char*,int ,int ,int) ;
+ int debugstr_guid (int *) ;
+ int szToGuidFmt ;
+ int wsprintfW (int *,int ,int *) ;
 
 HRESULT read_types(HKEY root, LPCWSTR key, ULONG *supplied, ULONG requested, DMO_PARTIAL_MEDIATYPE* types )
 {
@@ -51,7 +51,7 @@ HRESULT read_types(HKEY root, LPCWSTR key, ULONG *supplied, ULONG requested, DMO
         LONG rc;
 
         len = requested * sizeof(DMO_PARTIAL_MEDIATYPE);
-        rc = RegQueryValueExW(root, key, NULL, NULL, (LPBYTE) types, &len);
+        rc = RegQueryValueExW(root, key, ((void*)0), ((void*)0), (LPBYTE) types, &len);
         ret = HRESULT_FROM_WIN32(rc);
 
         *supplied = len / sizeof(DMO_PARTIAL_MEDIATYPE);
@@ -72,7 +72,7 @@ HRESULT read_types(HKEY root, LPCWSTR key, ULONG *supplied, ULONG requested, DMO
           while (rc == ERROR_SUCCESS)
           {
             len = MAX_PATH;
-            rc = RegEnumKeyExW(hkey, index, szNextKey, &len, NULL, NULL, NULL, NULL);
+            rc = RegEnumKeyExW(hkey, index, szNextKey, &len, ((void*)0), ((void*)0), ((void*)0), ((void*)0));
             if (rc == ERROR_SUCCESS)
             {
               HKEY subk;
@@ -84,12 +84,12 @@ HRESULT read_types(HKEY root, LPCWSTR key, ULONG *supplied, ULONG requested, DMO
               while (rcs == ERROR_SUCCESS)
               {
                 len = MAX_PATH;
-                rcs = RegEnumKeyExW(subk, sub_index, szSubKey, &len, NULL, NULL, NULL, NULL);
+                rcs = RegEnumKeyExW(subk, sub_index, szSubKey, &len, ((void*)0), ((void*)0), ((void*)0), ((void*)0));
                 if (rcs == ERROR_SUCCESS)
                 {
                   if (*supplied >= requested)
                   {
-                    /* Bailing */
+
                     ret = S_FALSE;
                     rc = ERROR_MORE_DATA;
                     rcs = ERROR_MORE_DATA;

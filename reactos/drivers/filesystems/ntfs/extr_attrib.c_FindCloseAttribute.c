@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_3__ {int /*<<< orphan*/ * NonResidentStart; } ;
-typedef  TYPE_1__* PFIND_ATTR_CONTXT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ExFreePoolWithTag (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TAG_NTFS ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int VOID ;
+struct TYPE_3__ {int * NonResidentStart; } ;
+typedef TYPE_1__* PFIND_ATTR_CONTXT ;
+
+
+ int ExFreePoolWithTag (int *,int ) ;
+ int TAG_NTFS ;
 
 VOID
 FindCloseAttribute(PFIND_ATTR_CONTXT Context)
 {
-    if (Context->NonResidentStart != NULL)
+    if (Context->NonResidentStart != ((void*)0))
     {
         ExFreePoolWithTag(Context->NonResidentStart, TAG_NTFS);
-        Context->NonResidentStart = NULL;
+        Context->NonResidentStart = ((void*)0);
     }
 }

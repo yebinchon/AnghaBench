@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EINVAL ; 
- scalar_t__ UNLIKELY (int) ; 
- int /*<<< orphan*/  lwan_char_isdigit (char const) ; 
+ int EINVAL ;
+ scalar_t__ UNLIKELY (int) ;
+ int lwan_char_isdigit (char const) ;
 
 __attribute__((used)) static int parse_2_digit_num(const char *str, const char end_chr, int min, int max)
 {

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_4__ {int bits_per_coded_sample; void* sample_rate; } ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  TYPE_1__ AVCodecContext ;
+typedef int GetByteContext ;
+typedef TYPE_1__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_INFO ; 
- int /*<<< orphan*/  ENOSYS ; 
- void* MKTAG (float,char,char,char) ; 
-#define  WAVE_FORMAT_PCM 128 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*,...) ; 
- int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- void* bytestream2_get_le16 (int /*<<< orphan*/ *) ; 
- void* bytestream2_get_le32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_INFO ;
+ int ENOSYS ;
+ void* MKTAG (float,char,char,char) ;
+
+ int av_log (TYPE_1__*,int ,char*,...) ;
+ int bytestream2_get_bytes_left (int *) ;
+ void* bytestream2_get_le16 (int *) ;
+ void* bytestream2_get_le32 (int *) ;
+ int bytestream2_init (int *,int const*,int) ;
+ int bytestream2_skip (int *,int) ;
 
 __attribute__((used)) static int decode_wave_header(AVCodecContext *avctx, const uint8_t *header,
                               int header_size)
@@ -45,7 +45,7 @@ __attribute__((used)) static int decode_wave_header(AVCodecContext *avctx, const
         return AVERROR_INVALIDDATA;
     }
 
-    bytestream2_skip(&gb, 4); /* chunk size */
+    bytestream2_skip(&gb, 4);
 
     if (bytestream2_get_le32(&gb) != MKTAG('W', 'A', 'V', 'E')) {
         av_log(avctx, AV_LOG_ERROR, "missing WAVE tag\n");
@@ -70,17 +70,17 @@ __attribute__((used)) static int decode_wave_header(AVCodecContext *avctx, const
     wave_format = bytestream2_get_le16(&gb);
 
     switch (wave_format) {
-    case WAVE_FORMAT_PCM:
+    case 128:
         break;
     default:
         av_log(avctx, AV_LOG_ERROR, "unsupported wave format\n");
         return AVERROR(ENOSYS);
     }
 
-    bytestream2_skip(&gb, 2); // skip channels    (already got from shorten header)
+    bytestream2_skip(&gb, 2);
     avctx->sample_rate = bytestream2_get_le32(&gb);
-    bytestream2_skip(&gb, 4); // skip bit rate    (represents original uncompressed bit rate)
-    bytestream2_skip(&gb, 2); // skip block align (not needed)
+    bytestream2_skip(&gb, 4);
+    bytestream2_skip(&gb, 2);
     bps = bytestream2_get_le16(&gb);
     avctx->bits_per_coded_sample = bps;
 

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
-struct fchs_s {int type; int /*<<< orphan*/  ox_id; } ;
+
+
+
+
+typedef int u16 ;
+struct fchs_s {int type; int ox_id; } ;
 struct fc_els_cmd_s {int els_code; } ;
-struct bfa_fcs_itnim_s {int /*<<< orphan*/  rport; int /*<<< orphan*/  fcs; } ;
+struct bfa_fcs_itnim_s {int rport; int fcs; } ;
 
-/* Variables and functions */
-#define  FC_ELS_PRLO 128 
- scalar_t__ FC_TYPE_ELS ; 
- int /*<<< orphan*/  WARN_ON (int) ; 
- int /*<<< orphan*/  bfa_fcs_rport_prlo (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bfa_trc (int /*<<< orphan*/ ,int) ; 
+
+
+ scalar_t__ FC_TYPE_ELS ;
+ int WARN_ON (int) ;
+ int bfa_fcs_rport_prlo (int ,int ) ;
+ int bfa_trc (int ,int) ;
 
 void
 bfa_fcs_fcpim_uf_recv(struct bfa_fcs_itnim_s *itnim,
-			struct fchs_s *fchs, u16 len)
+   struct fchs_s *fchs, u16 len)
 {
-	struct fc_els_cmd_s *els_cmd;
+ struct fc_els_cmd_s *els_cmd;
 
-	bfa_trc(itnim->fcs, fchs->type);
+ bfa_trc(itnim->fcs, fchs->type);
 
-	if (fchs->type != FC_TYPE_ELS)
-		return;
+ if (fchs->type != FC_TYPE_ELS)
+  return;
 
-	els_cmd = (struct fc_els_cmd_s *) (fchs + 1);
+ els_cmd = (struct fc_els_cmd_s *) (fchs + 1);
 
-	bfa_trc(itnim->fcs, els_cmd->els_code);
+ bfa_trc(itnim->fcs, els_cmd->els_code);
 
-	switch (els_cmd->els_code) {
-	case FC_ELS_PRLO:
-		bfa_fcs_rport_prlo(itnim->rport, fchs->ox_id);
-		break;
+ switch (els_cmd->els_code) {
+ case 128:
+  bfa_fcs_rport_prlo(itnim->rport, fchs->ox_id);
+  break;
 
-	default:
-		WARN_ON(1);
-	}
+ default:
+  WARN_ON(1);
+ }
 }

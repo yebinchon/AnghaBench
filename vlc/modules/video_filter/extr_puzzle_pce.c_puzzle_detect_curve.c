@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  scalar_t__ uint32_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
 struct TYPE_4__ {float f_x; float f_y; } ;
-typedef  TYPE_1__ point_t ;
-typedef  int int8_t ;
-typedef  scalar_t__ int32_t ;
-typedef  int /*<<< orphan*/  filter_t ;
+typedef TYPE_1__ point_t ;
+typedef int int8_t ;
+typedef scalar_t__ int32_t ;
+typedef int filter_t ;
 
-/* Variables and functions */
- int MAX_SECT ; 
- float bezier_val (TYPE_1__*,float,int,int /*<<< orphan*/ ) ; 
- void* floor (float) ; 
- int puzzle_SHAPE_TOP ; 
- scalar_t__ puzzle_diagonal_limit (int /*<<< orphan*/ *,scalar_t__,int,int) ; 
- int /*<<< orphan*/  x ; 
- int /*<<< orphan*/  y ; 
+
+ int MAX_SECT ;
+ float bezier_val (TYPE_1__*,float,int,int ) ;
+ void* floor (float) ;
+ int puzzle_SHAPE_TOP ;
+ scalar_t__ puzzle_diagonal_limit (int *,scalar_t__,int,int) ;
+ int x ;
+ int y ;
 
 int puzzle_detect_curve( filter_t *p_filter, int32_t i_y, float f_x_ratio, float f_y_ratio, point_t *ps_pt, uint8_t i_pts_nbr, uint8_t i_border, uint8_t i_plane, int32_t *pi_sects)
 {
@@ -57,16 +57,16 @@ int puzzle_detect_curve( filter_t *p_filter, int32_t i_y, float f_x_ratio, float
     f_xd = ps_pt[i_pts_nbr - 1].f_x * f_x_ratio;
     f_yd = ps_pt[i_pts_nbr - 1].f_y * f_y_ratio;
 
-    /* ...fill from this junction to next junction */
+
     if ( i_y >= 0 ) {
-        /* last diagonal intersection */
-        pi_sects[i_sect] = (i_border==puzzle_SHAPE_TOP)?puzzle_diagonal_limit( p_filter, i_y, false, i_plane )
-                                                       :puzzle_diagonal_limit( p_filter, i_y, true,  i_plane );
+
+        pi_sects[i_sect] = (i_border==puzzle_SHAPE_TOP)?puzzle_diagonal_limit( p_filter, i_y, 0, i_plane )
+                                                       :puzzle_diagonal_limit( p_filter, i_y, 1, i_plane );
         if (i_sect < MAX_SECT - 1)
             i_sect++;
     }
 
-    /* ...reorder the list of intersection */
+
     int32_t i_s = 0;
 
     while (i_s < (i_sect - 1)) {

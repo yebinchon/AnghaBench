@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct timespec {long tv_sec; int tv_nsec; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct timespec {long tv_sec; int tv_nsec; int member_1; int member_0; } ;
 struct TYPE_3__ {int const millitm; scalar_t__ time; } ;
-typedef  TYPE_1__ PTW32_STRUCT_TIMEB ;
-typedef  int DWORD ;
+typedef TYPE_1__ PTW32_STRUCT_TIMEB ;
+typedef int DWORD ;
 
-/* Variables and functions */
- scalar_t__ ETIMEDOUT ; 
- int /*<<< orphan*/  PTW32_FTIME (TYPE_1__*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int bankAccount ; 
- scalar_t__ pthread_rwlock_timedrdlock (int /*<<< orphan*/ *,struct timespec*) ; 
- scalar_t__ pthread_rwlock_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rwlock1 ; 
+
+ scalar_t__ ETIMEDOUT ;
+ int PTW32_FTIME (TYPE_1__*) ;
+ int assert (int) ;
+ int bankAccount ;
+ scalar_t__ pthread_rwlock_timedrdlock (int *,struct timespec*) ;
+ scalar_t__ pthread_rwlock_unlock (int *) ;
+ int rwlock1 ;
 
 void * rdfunc(void * arg)
 {

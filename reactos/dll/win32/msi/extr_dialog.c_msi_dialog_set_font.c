@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ hfont; } ;
-typedef  TYPE_1__ msi_font ;
-typedef  int /*<<< orphan*/  msi_dialog ;
-typedef  int /*<<< orphan*/  WPARAM ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  HWND ;
+typedef TYPE_1__ msi_font ;
+typedef int msi_dialog ;
+typedef int WPARAM ;
+typedef int UINT ;
+typedef int LPCWSTR ;
+typedef int HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WM_SETFONT ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- TYPE_1__* msi_dialog_find_font (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int ERR (char*,int ) ;
+ int ERROR_SUCCESS ;
+ int SendMessageW (int ,int ,int ,int ) ;
+ int TRUE ;
+ int WM_SETFONT ;
+ int debugstr_w (int ) ;
+ TYPE_1__* msi_dialog_find_font (int *,int ) ;
 
 __attribute__((used)) static UINT msi_dialog_set_font( msi_dialog *dialog, HWND hwnd, LPCWSTR name )
 {

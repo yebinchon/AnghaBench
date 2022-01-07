@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int sqlite3_int64 ;
+
+
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+typedef int sqlite3_int64 ;
 struct TYPE_19__ {scalar_t__ mallocFailed; } ;
-typedef  TYPE_2__ sqlite3 ;
+typedef TYPE_2__ sqlite3 ;
 struct TYPE_20__ {int nCte; TYPE_1__* a; } ;
-typedef  TYPE_3__ With ;
-typedef  int /*<<< orphan*/  Token ;
+typedef TYPE_3__ With ;
+typedef int Token ;
 struct TYPE_21__ {TYPE_2__* db; } ;
-struct TYPE_18__ {char* zName; scalar_t__ zCteErr; int /*<<< orphan*/ * pCols; int /*<<< orphan*/ * pSelect; } ;
-typedef  int /*<<< orphan*/  Select ;
-typedef  TYPE_4__ Parse ;
-typedef  int /*<<< orphan*/  ExprList ;
+struct TYPE_18__ {char* zName; scalar_t__ zCteErr; int * pCols; int * pSelect; } ;
+typedef int Select ;
+typedef TYPE_4__ Parse ;
+typedef int ExprList ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3DbFree (TYPE_2__*,char*) ; 
- TYPE_3__* sqlite3DbMallocZero (TYPE_2__*,int) ; 
- TYPE_3__* sqlite3DbRealloc (TYPE_2__*,TYPE_3__*,int) ; 
- int /*<<< orphan*/  sqlite3ErrorMsg (TYPE_4__*,char*,char*) ; 
- int /*<<< orphan*/  sqlite3ExprListDelete (TYPE_2__*,int /*<<< orphan*/ *) ; 
- char* sqlite3NameFromToken (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3SelectDelete (TYPE_2__*,int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3StrICmp (char*,char*) ; 
+
+ int assert (int) ;
+ int sqlite3DbFree (TYPE_2__*,char*) ;
+ TYPE_3__* sqlite3DbMallocZero (TYPE_2__*,int) ;
+ TYPE_3__* sqlite3DbRealloc (TYPE_2__*,TYPE_3__*,int) ;
+ int sqlite3ErrorMsg (TYPE_4__*,char*,char*) ;
+ int sqlite3ExprListDelete (TYPE_2__*,int *) ;
+ char* sqlite3NameFromToken (TYPE_2__*,int *) ;
+ int sqlite3SelectDelete (TYPE_2__*,int *) ;
+ scalar_t__ sqlite3StrICmp (char*,char*) ;
 
 With *sqlite3WithAdd(
-  Parse *pParse,          /* Parsing context */
-  With *pWith,            /* Existing WITH clause, or NULL */
-  Token *pName,           /* Name of the common-table */
-  ExprList *pArglist,     /* Optional column name list for the table */
-  Select *pQuery          /* Query used to initialize the table */
+  Parse *pParse,
+  With *pWith,
+  Token *pName,
+  ExprList *pArglist,
+  Select *pQuery
 ){
   sqlite3 *db = pParse->db;
   With *pNew;
   char *zName;
 
-  /* Check that the CTE name is unique within this WITH clause. If
-  ** not, store an error in the Parse structure. */
+
+
   zName = sqlite3NameFromToken(pParse->db, pName);
   if( zName && pWith ){
     int i;

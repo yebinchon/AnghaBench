@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* sec_ptr ;
-typedef  scalar_t__ file_ptr ;
-typedef  scalar_t__ bfd_size_type ;
-typedef  int /*<<< orphan*/  bfd_boolean ;
-typedef  int /*<<< orphan*/  bfd ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* sec_ptr ;
+typedef scalar_t__ file_ptr ;
+typedef scalar_t__ bfd_size_type ;
+typedef int bfd_boolean ;
+typedef int bfd ;
 struct TYPE_3__ {int flags; scalar_t__ rawsize; scalar_t__ size; scalar_t__ contents; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BFD_SEND (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int SEC_CONSTRUCTOR ; 
- int SEC_HAS_CONTENTS ; 
- int SEC_IN_MEMORY ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _bfd_get_section_contents ; 
- int /*<<< orphan*/  bfd_error_bad_value ; 
- int /*<<< orphan*/  bfd_set_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (void*,scalar_t__,size_t) ; 
- int /*<<< orphan*/  memset (void*,int /*<<< orphan*/ ,size_t) ; 
+
+ int BFD_SEND (int *,int ,int *) ;
+ int FALSE ;
+ int SEC_CONSTRUCTOR ;
+ int SEC_HAS_CONTENTS ;
+ int SEC_IN_MEMORY ;
+ int TRUE ;
+ int _bfd_get_section_contents ;
+ int bfd_error_bad_value ;
+ int bfd_set_error (int ) ;
+ int memcpy (void*,scalar_t__,size_t) ;
+ int memset (void*,int ,size_t) ;
 
 bfd_boolean
 bfd_get_section_contents (bfd *abfd,
-			  sec_ptr section,
-			  void *location,
-			  file_ptr offset,
-			  bfd_size_type count)
+     sec_ptr section,
+     void *location,
+     file_ptr offset,
+     bfd_size_type count)
 {
   bfd_size_type sz;
 
@@ -57,7 +57,7 @@ bfd_get_section_contents (bfd *abfd,
     }
 
   if (count == 0)
-    /* Don't bother.  */
+
     return TRUE;
 
   if ((section->flags & SEC_HAS_CONTENTS) == 0)
@@ -73,5 +73,5 @@ bfd_get_section_contents (bfd *abfd,
     }
 
   return BFD_SEND (abfd, _bfd_get_section_contents,
-		   (abfd, section, location, offset, count));
+     (abfd, section, location, offset, count));
 }

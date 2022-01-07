@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ phase; scalar_t__ build; } ;
 struct bfi_ioc_image_hdr_s {TYPE_1__ fwver; } ;
-typedef  int /*<<< orphan*/  bfa_boolean_t ;
+typedef int bfa_boolean_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BFA_FALSE ; 
- int /*<<< orphan*/  BFA_TRUE ; 
+
+ int BFA_FALSE ;
+ int BFA_TRUE ;
 
 __attribute__((used)) static bfa_boolean_t fwhdr_is_ga(struct bfi_ioc_image_hdr_s *fwhdr)
 {
-	if (fwhdr->fwver.phase == 0 &&
-		fwhdr->fwver.build == 0)
-		return BFA_TRUE;
+ if (fwhdr->fwver.phase == 0 &&
+  fwhdr->fwver.build == 0)
+  return BFA_TRUE;
 
-	return BFA_FALSE;
+ return BFA_FALSE;
 }

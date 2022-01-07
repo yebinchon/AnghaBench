@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_12__ {size_t httpVersion; size_t httpKeepAlive; } ;
 struct TYPE_11__ {char* lst; char* buf; } ;
-typedef  TYPE_1__ JsonBuf ;
-typedef  int /*<<< orphan*/  HttpSqlCmd ;
-typedef  TYPE_2__ HttpContext ;
+typedef TYPE_1__ JsonBuf ;
+typedef int HttpSqlCmd ;
+typedef TYPE_2__ HttpContext ;
 
-/* Variables and functions */
- size_t HTTP_RESPONSE_GRAFANA ; 
- int /*<<< orphan*/  JsonObjEnd ; 
- int /*<<< orphan*/  JsonObjStt ; 
- int /*<<< orphan*/  httpInitJsonBuf (TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  httpJsonPair (TYPE_1__*,char*,int,char*,int) ; 
- int /*<<< orphan*/  httpJsonToken (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * httpKeepAliveStr ; 
- TYPE_1__* httpMallocJsonBuf (TYPE_2__*) ; 
- char** httpRespTemplate ; 
- int /*<<< orphan*/ * httpVersionStr ; 
- int /*<<< orphan*/  httpWriteBuf (TYPE_2__*,char*,int) ; 
- int sprintf (char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ strlen (char*) ; 
+
+ size_t HTTP_RESPONSE_GRAFANA ;
+ int JsonObjEnd ;
+ int JsonObjStt ;
+ int httpInitJsonBuf (TYPE_1__*,TYPE_2__*) ;
+ int httpJsonPair (TYPE_1__*,char*,int,char*,int) ;
+ int httpJsonToken (TYPE_1__*,int ) ;
+ int * httpKeepAliveStr ;
+ TYPE_1__* httpMallocJsonBuf (TYPE_2__*) ;
+ char** httpRespTemplate ;
+ int * httpVersionStr ;
+ int httpWriteBuf (TYPE_2__*,char*,int) ;
+ int sprintf (char*,char*,int ,int ,int) ;
+ scalar_t__ strlen (char*) ;
 
 void gcSendHeartBeatResp(HttpContext *pContext, HttpSqlCmd *cmd) {
   JsonBuf *jsonBuf = httpMallocJsonBuf(pContext);
-  if (jsonBuf == NULL) return;
+  if (jsonBuf == ((void*)0)) return;
 
   char *desc = "Grafana server receive a quest from you!";
 

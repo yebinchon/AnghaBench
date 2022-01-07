@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
-typedef  struct TYPE_13__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+typedef struct TYPE_13__ TYPE_10__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_16__ {int width; int height; TYPE_1__* priv_data; } ;
-struct TYPE_15__ {int size; int /*<<< orphan*/ * data; } ;
-struct TYPE_14__ {int quality; TYPE_10__* pic; int /*<<< orphan*/  dc_cache; int /*<<< orphan*/  prev_vec; int /*<<< orphan*/ * quant_mat; } ;
-struct TYPE_13__ {int key_frame; int* linesize; int /*<<< orphan*/ ** data; int /*<<< orphan*/  pict_type; } ;
-typedef  TYPE_1__ MSS4Context ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVCodecContext ;
+struct TYPE_15__ {int size; int * data; } ;
+struct TYPE_14__ {int quality; TYPE_10__* pic; int dc_cache; int prev_vec; int * quant_mat; } ;
+struct TYPE_13__ {int key_frame; int* linesize; int ** data; int pict_type; } ;
+typedef TYPE_1__ MSS4Context ;
+typedef int GetByteContext ;
+typedef int GetBitContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_I ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_P ; 
-#define  DCT_BLOCK 130 
- int FFALIGN (int,int) ; 
- int HEADER_SIZE ; 
-#define  IMAGE_BLOCK 129 
- int INTRA_FRAME ; 
-#define  SKIP_BLOCK 128 
- int SKIP_FRAME ; 
- int av_frame_ref (void*,TYPE_10__*) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,...) ; 
- int bytestream2_get_be16 (int /*<<< orphan*/ *) ; 
- int bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,int) ; 
- int decode012 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_mss34_gen_quant_mat (int /*<<< orphan*/ ,int,int) ; 
- int ff_reget_buffer (TYPE_3__*,TYPE_10__*,int /*<<< orphan*/ ) ; 
- int init_get_bits8 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mss4_decode_dct_block (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int,int) ; 
- int /*<<< orphan*/  mss4_decode_image_block (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int,int) ; 
- int /*<<< orphan*/  mss4_update_dc_cache (TYPE_1__*,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_PICTURE_TYPE_I ;
+ int AV_PICTURE_TYPE_P ;
+
+ int FFALIGN (int,int) ;
+ int HEADER_SIZE ;
+
+ int INTRA_FRAME ;
+
+ int SKIP_FRAME ;
+ int av_frame_ref (void*,TYPE_10__*) ;
+ int av_log (TYPE_3__*,int ,char*,...) ;
+ int bytestream2_get_be16 (int *) ;
+ int bytestream2_get_byte (int *) ;
+ int bytestream2_get_bytes_left (int *) ;
+ int bytestream2_init (int *,int const*,int) ;
+ int bytestream2_skip (int *,int) ;
+ int decode012 (int *) ;
+ int ff_mss34_gen_quant_mat (int ,int,int) ;
+ int ff_reget_buffer (TYPE_3__*,TYPE_10__*,int ) ;
+ int init_get_bits8 (int *,int const*,int) ;
+ int memset (int ,int ,int) ;
+ int mss4_decode_dct_block (TYPE_1__*,int *,int **,int,int) ;
+ int mss4_decode_image_block (TYPE_1__*,int *,int **,int,int) ;
+ int mss4_update_dc_cache (TYPE_1__*,int) ;
 
 __attribute__((used)) static int mss4_decode_frame(AVCodecContext *avctx, void *data, int *got_frame,
                              AVPacket *avpkt)
@@ -74,10 +74,10 @@ __attribute__((used)) static int mss4_decode_frame(AVCodecContext *avctx, void *
     }
 
     bytestream2_init(&bc, buf, buf_size);
-    width      = bytestream2_get_be16(&bc);
-    height     = bytestream2_get_be16(&bc);
+    width = bytestream2_get_be16(&bc);
+    height = bytestream2_get_be16(&bc);
     bytestream2_skip(&bc, 2);
-    quality    = bytestream2_get_byte(&bc);
+    quality = bytestream2_get_byte(&bc);
     frame_type = bytestream2_get_byte(&bc);
 
     if (width > avctx->width ||
@@ -100,7 +100,7 @@ __attribute__((used)) static int mss4_decode_frame(AVCodecContext *avctx, void *
                "Empty frame found but it is not a skip frame.\n");
         return AVERROR_INVALIDDATA;
     }
-    mb_width  = FFALIGN(width,  16) >> 4;
+    mb_width = FFALIGN(width, 16) >> 4;
     mb_height = FFALIGN(height, 16) >> 4;
 
     if (frame_type != SKIP_FRAME && 8*buf_size < 8*HEADER_SIZE + mb_width*mb_height)
@@ -112,7 +112,7 @@ __attribute__((used)) static int mss4_decode_frame(AVCodecContext *avctx, void *
     c->pic->pict_type = (frame_type == INTRA_FRAME) ? AV_PICTURE_TYPE_I
                                                    : AV_PICTURE_TYPE_P;
     if (frame_type == SKIP_FRAME) {
-        *got_frame      = 1;
+        *got_frame = 1;
         if ((ret = av_frame_ref(data, c->pic)) < 0)
             return ret;
 
@@ -137,7 +137,7 @@ __attribute__((used)) static int mss4_decode_frame(AVCodecContext *avctx, void *
         for (x = 0; x < mb_width; x++) {
             blk_type = decode012(&gb);
             switch (blk_type) {
-            case DCT_BLOCK:
+            case 130:
                 if (mss4_decode_dct_block(c, &gb, dst, x, y) < 0) {
                     av_log(avctx, AV_LOG_ERROR,
                            "Error decoding DCT block %d,%d\n",
@@ -145,7 +145,7 @@ __attribute__((used)) static int mss4_decode_frame(AVCodecContext *avctx, void *
                     return AVERROR_INVALIDDATA;
                 }
                 break;
-            case IMAGE_BLOCK:
+            case 129:
                 if (mss4_decode_image_block(c, &gb, dst, x, y) < 0) {
                     av_log(avctx, AV_LOG_ERROR,
                            "Error decoding VQ block %d,%d\n",
@@ -153,14 +153,14 @@ __attribute__((used)) static int mss4_decode_frame(AVCodecContext *avctx, void *
                     return AVERROR_INVALIDDATA;
                 }
                 break;
-            case SKIP_BLOCK:
+            case 128:
                 if (frame_type == INTRA_FRAME) {
                     av_log(avctx, AV_LOG_ERROR, "Skip block in intra frame\n");
                     return AVERROR_INVALIDDATA;
                 }
                 break;
             }
-            if (blk_type != DCT_BLOCK)
+            if (blk_type != 130)
                 mss4_update_dc_cache(c, x);
         }
         dst[0] += c->pic->linesize[0] * 16;
@@ -171,7 +171,7 @@ __attribute__((used)) static int mss4_decode_frame(AVCodecContext *avctx, void *
     if ((ret = av_frame_ref(data, c->pic)) < 0)
         return ret;
 
-    *got_frame      = 1;
+    *got_frame = 1;
 
     return buf_size;
 }

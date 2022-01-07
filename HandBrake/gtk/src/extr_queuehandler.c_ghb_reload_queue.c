@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/ * queue; int /*<<< orphan*/  builder; } ;
-typedef  TYPE_1__ signal_user_data_t ;
-typedef  scalar_t__ gint ;
-typedef  int /*<<< orphan*/  gboolean ;
-typedef  int /*<<< orphan*/  GtkWidget ;
-typedef  int /*<<< orphan*/  GhbValue ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GHB_QUEUE_CANCELED ; 
- scalar_t__ GHB_QUEUE_DONE ; 
- int /*<<< orphan*/  GHB_QUEUE_PENDING ; 
- int /*<<< orphan*/ * GHB_WIDGET (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  GTK_TOGGLE_TOOL_BUTTON (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  add_to_queue_list (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_debug (char*) ; 
- int /*<<< orphan*/ * ghb_array_get (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ ghb_array_len (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ghb_array_remove (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/ * ghb_dict_get (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ ghb_dict_get_int (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * ghb_dict_get_value (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ghb_dict_set_int (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ ghb_find_pid_file () ; 
- int /*<<< orphan*/ * ghb_load_old_queue (scalar_t__) ; 
- int /*<<< orphan*/  ghb_queue_buttons_grey (TYPE_1__*) ; 
- int /*<<< orphan*/  ghb_queue_selection_init (TYPE_1__*) ; 
- int /*<<< orphan*/  ghb_remove_old_queue_file (scalar_t__) ; 
- int /*<<< orphan*/  ghb_save_queue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ghb_update_pending (TYPE_1__*) ; 
- int /*<<< orphan*/  ghb_value_free (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ghb_write_pid_file () ; 
- int /*<<< orphan*/  gtk_toggle_tool_button_set_active (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int * queue; int builder; } ;
+typedef TYPE_1__ signal_user_data_t ;
+typedef scalar_t__ gint ;
+typedef int gboolean ;
+typedef int GtkWidget ;
+typedef int GhbValue ;
+
+
+ int FALSE ;
+ scalar_t__ GHB_QUEUE_CANCELED ;
+ scalar_t__ GHB_QUEUE_DONE ;
+ int GHB_QUEUE_PENDING ;
+ int * GHB_WIDGET (int ,char*) ;
+ int GTK_TOGGLE_TOOL_BUTTON (int *) ;
+ int TRUE ;
+ int add_to_queue_list (TYPE_1__*,int *) ;
+ int g_debug (char*) ;
+ int * ghb_array_get (int *,scalar_t__) ;
+ scalar_t__ ghb_array_len (int *) ;
+ int ghb_array_remove (int *,scalar_t__) ;
+ int * ghb_dict_get (int *,char*) ;
+ scalar_t__ ghb_dict_get_int (int *,char*) ;
+ int * ghb_dict_get_value (int *,char*) ;
+ int ghb_dict_set_int (int *,char*,int ) ;
+ scalar_t__ ghb_find_pid_file () ;
+ int * ghb_load_old_queue (scalar_t__) ;
+ int ghb_queue_buttons_grey (TYPE_1__*) ;
+ int ghb_queue_selection_init (TYPE_1__*) ;
+ int ghb_remove_old_queue_file (scalar_t__) ;
+ int ghb_save_queue (int *) ;
+ int ghb_update_pending (TYPE_1__*) ;
+ int ghb_value_free (int **) ;
+ int ghb_write_pid_file () ;
+ int gtk_toggle_tool_button_set_active (int ,int ) ;
 
 gboolean
 ghb_reload_queue(signal_user_data_t *ud)
@@ -65,14 +65,14 @@ find_pid:
     queue = ghb_load_old_queue(pid);
     ghb_remove_old_queue_file(pid);
 
-    // Look for unfinished entries
+
     count = ghb_array_len(queue);
     for (ii = count-1; ii >= 0; ii--)
     {
         queueDict = ghb_array_get(queue, ii);
         uiDict = ghb_dict_get(queueDict, "uiSettings");
-        if (uiDict == NULL ||
-            ghb_dict_get_value(uiDict, "job_status") == NULL)
+        if (uiDict == ((void*)0) ||
+            ghb_dict_get_value(uiDict, "job_status") == ((void*)0))
         {
             ghb_array_remove(queue, ii);
             continue;

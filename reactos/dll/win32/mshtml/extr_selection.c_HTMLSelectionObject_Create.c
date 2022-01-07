@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsISelection ;
-struct TYPE_11__ {int /*<<< orphan*/  selection_list; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_10__ {int ref; TYPE_2__ IHTMLSelectionObject_iface; int /*<<< orphan*/  entry; TYPE_4__* doc; int /*<<< orphan*/ * nsselection; TYPE_1__ IHTMLSelectionObject2_iface; int /*<<< orphan*/  dispex; } ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  TYPE_2__ IHTMLSelectionObject ;
-typedef  TYPE_3__ HTMLSelectionObject ;
-typedef  TYPE_4__ HTMLDocumentNode ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  HTMLSelectionObject2Vtbl ; 
- int /*<<< orphan*/  HTMLSelectionObjectVtbl ; 
- int /*<<< orphan*/  HTMLSelectionObject_dispex ; 
- int /*<<< orphan*/  S_OK ; 
- TYPE_3__* heap_alloc (int) ; 
- int /*<<< orphan*/  init_dispex (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_add_head (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int nsISelection ;
+struct TYPE_11__ {int selection_list; } ;
+struct TYPE_9__ {int * lpVtbl; } ;
+struct TYPE_8__ {int * lpVtbl; } ;
+struct TYPE_10__ {int ref; TYPE_2__ IHTMLSelectionObject_iface; int entry; TYPE_4__* doc; int * nsselection; TYPE_1__ IHTMLSelectionObject2_iface; int dispex; } ;
+typedef int IUnknown ;
+typedef TYPE_2__ IHTMLSelectionObject ;
+typedef TYPE_3__ HTMLSelectionObject ;
+typedef TYPE_4__ HTMLDocumentNode ;
+typedef int HRESULT ;
+
+
+ int E_OUTOFMEMORY ;
+ int HTMLSelectionObject2Vtbl ;
+ int HTMLSelectionObjectVtbl ;
+ int HTMLSelectionObject_dispex ;
+ int S_OK ;
+ TYPE_3__* heap_alloc (int) ;
+ int init_dispex (int *,int *,int *) ;
+ int list_add_head (int *,int *) ;
 
 HRESULT HTMLSelectionObject_Create(HTMLDocumentNode *doc, nsISelection *nsselection, IHTMLSelectionObject **ret)
 {
@@ -48,7 +48,7 @@ HRESULT HTMLSelectionObject_Create(HTMLDocumentNode *doc, nsISelection *nsselect
     selection->IHTMLSelectionObject_iface.lpVtbl = &HTMLSelectionObjectVtbl;
     selection->IHTMLSelectionObject2_iface.lpVtbl = &HTMLSelectionObject2Vtbl;
     selection->ref = 1;
-    selection->nsselection = nsselection; /* We shouldn't call AddRef here */
+    selection->nsselection = nsselection;
 
     selection->doc = doc;
     list_add_head(&doc->selection_list, &selection->entry);

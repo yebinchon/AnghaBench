@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct mlx4_icm_chunk {int npages; TYPE_2__* mem; } ;
 struct mlx4_dev {TYPE_1__* pdev; } ;
-struct TYPE_5__ {int /*<<< orphan*/  length; } ;
-struct TYPE_4__ {int /*<<< orphan*/  dev; } ;
+struct TYPE_5__ {int length; } ;
+struct TYPE_4__ {int dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dma_free_coherent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lowmem_page_address (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sg_dma_address (TYPE_2__*) ; 
- int /*<<< orphan*/  sg_page (TYPE_2__*) ; 
+
+ int dma_free_coherent (int *,int ,int ,int ) ;
+ int lowmem_page_address (int ) ;
+ int sg_dma_address (TYPE_2__*) ;
+ int sg_page (TYPE_2__*) ;
 
 __attribute__((used)) static void mlx4_free_icm_coherent(struct mlx4_dev *dev, struct mlx4_icm_chunk *chunk)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < chunk->npages; ++i)
-		dma_free_coherent(&dev->pdev->dev, chunk->mem[i].length,
-				  lowmem_page_address(sg_page(&chunk->mem[i])),
-				  sg_dma_address(&chunk->mem[i]));
+ for (i = 0; i < chunk->npages; ++i)
+  dma_free_coherent(&dev->pdev->dev, chunk->mem[i].length,
+      lowmem_page_address(sg_page(&chunk->mem[i])),
+      sg_dma_address(&chunk->mem[i]));
 }

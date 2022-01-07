@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LLVMValueRef ;
-typedef  int /*<<< orphan*/ * LLVMTypeRef ;
-typedef  int /*<<< orphan*/  LLVMModuleRef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/ * LLVMGetElementType (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LLVMGetNamedFunction (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/ * LLVMGetReturnType (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * LLVMTypeOf (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*,char const*) ; 
+
+
+
+typedef int LLVMValueRef ;
+typedef int * LLVMTypeRef ;
+typedef int LLVMModuleRef ;
+
+
+ int Assert (int ) ;
+ int ERROR ;
+ int * LLVMGetElementType (int *) ;
+ int LLVMGetNamedFunction (int ,char const*) ;
+ int * LLVMGetReturnType (int *) ;
+ int * LLVMTypeOf (int ) ;
+ int elog (int ,char*,char const*) ;
 
 __attribute__((used)) static LLVMTypeRef
 load_return_type(LLVMModuleRef mod, const char *name)
 {
-	LLVMValueRef value;
-	LLVMTypeRef typ;
+ LLVMValueRef value;
+ LLVMTypeRef typ;
 
-	/* this'll return a *pointer* to the function */
-	value = LLVMGetNamedFunction(mod, name);
-	if (!value)
-		elog(ERROR, "function %s is unknown", name);
 
-	/* get type of function pointer */
-	typ = LLVMTypeOf(value);
-	Assert(typ != NULL);
-	/* dereference pointer */
-	typ = LLVMGetElementType(typ);
-	Assert(typ != NULL);
-	/* and look at return type */
-	typ = LLVMGetReturnType(typ);
-	Assert(typ != NULL);
+ value = LLVMGetNamedFunction(mod, name);
+ if (!value)
+  elog(ERROR, "function %s is unknown", name);
 
-	return typ;
+
+ typ = LLVMTypeOf(value);
+ Assert(typ != ((void*)0));
+
+ typ = LLVMGetElementType(typ);
+ Assert(typ != ((void*)0));
+
+ typ = LLVMGetReturnType(typ);
+ Assert(typ != ((void*)0));
+
+ return typ;
 }

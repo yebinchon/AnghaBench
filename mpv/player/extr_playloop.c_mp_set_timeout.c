@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct MPContext {double sleeptime; int /*<<< orphan*/  dispatch; } ;
-typedef  int /*<<< orphan*/  int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mp_add_timeout (int /*<<< orphan*/ ,double) ; 
- int /*<<< orphan*/  mp_dispatch_adjust_timeout (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_time_us () ; 
+
+
+
+struct MPContext {double sleeptime; int dispatch; } ;
+typedef int int64_t ;
+
+
+ int mp_add_timeout (int ,double) ;
+ int mp_dispatch_adjust_timeout (int ,int ) ;
+ int mp_time_us () ;
 
 void mp_set_timeout(struct MPContext *mpctx, double sleeptime)
 {

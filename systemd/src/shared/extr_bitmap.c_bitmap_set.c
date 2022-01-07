@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-struct TYPE_4__ {unsigned int n_bitmaps; int* bitmaps; int /*<<< orphan*/  bitmaps_allocated; } ;
-typedef  TYPE_1__ Bitmap ;
 
-/* Variables and functions */
- unsigned int BITMAPS_MAX_ENTRY ; 
- unsigned int BITMAP_NUM_TO_OFFSET (unsigned int) ; 
- int BITMAP_NUM_TO_REM (unsigned int) ; 
- int ENOMEM ; 
- int ERANGE ; 
- int /*<<< orphan*/  GREEDY_REALLOC0 (int*,int /*<<< orphan*/ ,unsigned int) ; 
- int UINT64_C (int) ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct TYPE_4__ {unsigned int n_bitmaps; int* bitmaps; int bitmaps_allocated; } ;
+typedef TYPE_1__ Bitmap ;
+
+
+ unsigned int BITMAPS_MAX_ENTRY ;
+ unsigned int BITMAP_NUM_TO_OFFSET (unsigned int) ;
+ int BITMAP_NUM_TO_REM (unsigned int) ;
+ int ENOMEM ;
+ int ERANGE ;
+ int GREEDY_REALLOC0 (int*,int ,unsigned int) ;
+ int UINT64_C (int) ;
+ int assert (TYPE_1__*) ;
 
 int bitmap_set(Bitmap *b, unsigned n) {
         uint64_t bitmask;
@@ -31,7 +31,7 @@ int bitmap_set(Bitmap *b, unsigned n) {
 
         assert(b);
 
-        /* we refuse to allocate huge bitmaps */
+
         if (n > BITMAPS_MAX_ENTRY)
                 return -ERANGE;
 

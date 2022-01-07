@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct section {int flags; char* name; } ;
-struct TYPE_4__ {int within_tag; int /*<<< orphan*/  indent_level; scalar_t__ fully_qualified; } ;
-typedef  TYPE_1__ XMLContext ;
+struct TYPE_4__ {int within_tag; int indent_level; scalar_t__ fully_qualified; } ;
+typedef TYPE_1__ XMLContext ;
 struct TYPE_5__ {size_t level; scalar_t__* nb_item; struct section** section; TYPE_1__* priv; } ;
-typedef  TYPE_2__ WriterContext ;
+typedef TYPE_2__ WriterContext ;
 
-/* Variables and functions */
- int SECTION_FLAG_HAS_VARIABLE_FIELDS ; 
- int SECTION_FLAG_IS_ARRAY ; 
- int SECTION_FLAG_IS_WRAPPER ; 
- int /*<<< orphan*/  XML_INDENT () ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+ int SECTION_FLAG_HAS_VARIABLE_FIELDS ;
+ int SECTION_FLAG_IS_ARRAY ;
+ int SECTION_FLAG_IS_WRAPPER ;
+ int XML_INDENT () ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static void xml_print_section_header(WriterContext *wctx)
 {
     XMLContext *xml = wctx->priv;
     const struct section *section = wctx->section[wctx->level];
     const struct section *parent_section = wctx->level ?
-        wctx->section[wctx->level-1] : NULL;
+        wctx->section[wctx->level-1] : ((void*)0);
 
     if (wctx->level == 0) {
         const char *qual = " xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' "

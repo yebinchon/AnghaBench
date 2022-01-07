@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_30__   TYPE_2__ ;
-typedef  struct TYPE_29__   TYPE_1__ ;
-typedef  struct TYPE_28__   TYPE_15__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * jstring ;
-typedef  int /*<<< orphan*/ * jobject ;
-typedef  int /*<<< orphan*/ * jmethodID ;
-struct TYPE_28__ {int /*<<< orphan*/  init_id; int /*<<< orphan*/  mediainfo_class; scalar_t__ get_output_buffer_id; scalar_t__ get_input_buffer_id; int /*<<< orphan*/  mediacodec_class; int /*<<< orphan*/ * create_encoder_by_type_id; int /*<<< orphan*/ * create_decoder_by_type_id; int /*<<< orphan*/ * create_by_codec_name_id; } ;
-struct TYPE_30__ {int has_get_i_o_buffer; TYPE_15__ jfields; scalar_t__ buffer_info; scalar_t__ object; int /*<<< orphan*/ * class; } ;
-struct TYPE_29__ {int /*<<< orphan*/  (* DeleteGlobalRef ) (TYPE_1__**,scalar_t__) ;int /*<<< orphan*/  (* DeleteLocalRef ) (TYPE_1__**,int /*<<< orphan*/ *) ;scalar_t__ (* NewGlobalRef ) (TYPE_1__**,int /*<<< orphan*/ *) ;int /*<<< orphan*/ * (* NewObject ) (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/ * (* CallStaticObjectMethod ) (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_1__* JNIEnv ;
-typedef  TYPE_2__ FFAMediaCodec ;
 
-/* Variables and functions */
-#define  CREATE_CODEC_BY_NAME 130 
-#define  CREATE_DECODER_BY_TYPE 129 
-#define  CREATE_ENCODER_BY_TYPE 128 
- int /*<<< orphan*/  amediacodec_class ; 
- int /*<<< orphan*/  av_assert0 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_freep (TYPE_2__**) ; 
- TYPE_2__* av_mallocz (int) ; 
- scalar_t__ codec_init_static_fields (TYPE_2__*) ; 
- scalar_t__ ff_jni_exception_check (TYPE_1__**,int,TYPE_2__*) ; 
- TYPE_1__** ff_jni_get_env (TYPE_2__*) ; 
- scalar_t__ ff_jni_init_jfields (TYPE_1__**,TYPE_15__*,int /*<<< orphan*/ ,int,TYPE_2__*) ; 
- int /*<<< orphan*/  ff_jni_reset_jfields (TYPE_1__**,TYPE_15__*,int /*<<< orphan*/ ,int,TYPE_2__*) ; 
- int /*<<< orphan*/ * ff_jni_utf_chars_to_jstring (TYPE_1__**,char const*,TYPE_2__*) ; 
- int /*<<< orphan*/  jni_amediacodec_mapping ; 
- int /*<<< orphan*/ * stub1 (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ stub2 (TYPE_1__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stub3 (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ stub4 (TYPE_1__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub5 (TYPE_1__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub6 (TYPE_1__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub7 (TYPE_1__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub8 (TYPE_1__**,scalar_t__) ; 
- int /*<<< orphan*/  stub9 (TYPE_1__**,scalar_t__) ; 
+
+typedef struct TYPE_30__ TYPE_2__ ;
+typedef struct TYPE_29__ TYPE_1__ ;
+typedef struct TYPE_28__ TYPE_15__ ;
+
+
+typedef int * jstring ;
+typedef int * jobject ;
+typedef int * jmethodID ;
+struct TYPE_28__ {int init_id; int mediainfo_class; scalar_t__ get_output_buffer_id; scalar_t__ get_input_buffer_id; int mediacodec_class; int * create_encoder_by_type_id; int * create_decoder_by_type_id; int * create_by_codec_name_id; } ;
+struct TYPE_30__ {int has_get_i_o_buffer; TYPE_15__ jfields; scalar_t__ buffer_info; scalar_t__ object; int * class; } ;
+struct TYPE_29__ {int (* DeleteGlobalRef ) (TYPE_1__**,scalar_t__) ;int (* DeleteLocalRef ) (TYPE_1__**,int *) ;scalar_t__ (* NewGlobalRef ) (TYPE_1__**,int *) ;int * (* NewObject ) (TYPE_1__**,int ,int ) ;int * (* CallStaticObjectMethod ) (TYPE_1__**,int ,int *,int *) ;} ;
+typedef TYPE_1__* JNIEnv ;
+typedef TYPE_2__ FFAMediaCodec ;
+
+
+
+
+
+ int amediacodec_class ;
+ int av_assert0 (int ) ;
+ int av_freep (TYPE_2__**) ;
+ TYPE_2__* av_mallocz (int) ;
+ scalar_t__ codec_init_static_fields (TYPE_2__*) ;
+ scalar_t__ ff_jni_exception_check (TYPE_1__**,int,TYPE_2__*) ;
+ TYPE_1__** ff_jni_get_env (TYPE_2__*) ;
+ scalar_t__ ff_jni_init_jfields (TYPE_1__**,TYPE_15__*,int ,int,TYPE_2__*) ;
+ int ff_jni_reset_jfields (TYPE_1__**,TYPE_15__*,int ,int,TYPE_2__*) ;
+ int * ff_jni_utf_chars_to_jstring (TYPE_1__**,char const*,TYPE_2__*) ;
+ int jni_amediacodec_mapping ;
+ int * stub1 (TYPE_1__**,int ,int *,int *) ;
+ scalar_t__ stub2 (TYPE_1__**,int *) ;
+ int * stub3 (TYPE_1__**,int ,int ) ;
+ scalar_t__ stub4 (TYPE_1__**,int *) ;
+ int stub5 (TYPE_1__**,int *) ;
+ int stub6 (TYPE_1__**,int *) ;
+ int stub7 (TYPE_1__**,int *) ;
+ int stub8 (TYPE_1__**,scalar_t__) ;
+ int stub9 (TYPE_1__**,scalar_t__) ;
 
 __attribute__((used)) static inline FFAMediaCodec *codec_create(int method, const char *arg)
 {
     int ret = -1;
-    JNIEnv *env = NULL;
-    FFAMediaCodec *codec = NULL;
-    jstring jarg = NULL;
-    jobject object = NULL;
-    jobject buffer_info = NULL;
-    jmethodID create_id = NULL;
+    JNIEnv *env = ((void*)0);
+    FFAMediaCodec *codec = ((void*)0);
+    jstring jarg = ((void*)0);
+    jobject object = ((void*)0);
+    jobject buffer_info = ((void*)0);
+    jmethodID create_id = ((void*)0);
 
     codec = av_mallocz(sizeof(FFAMediaCodec));
     if (!codec) {
-        return NULL;
+        return ((void*)0);
     }
     codec->class = &amediacodec_class;
 
     env = ff_jni_get_env(codec);
     if (!env) {
         av_freep(&codec);
-        return NULL;
+        return ((void*)0);
     }
 
     if (ff_jni_init_jfields(env, &codec->jfields, jni_amediacodec_mapping, 1, codec) < 0) {
@@ -79,9 +79,9 @@ __attribute__((used)) static inline FFAMediaCodec *codec_create(int method, cons
     }
 
     switch (method) {
-    case CREATE_CODEC_BY_NAME:   create_id = codec->jfields.create_by_codec_name_id;   break;
-    case CREATE_DECODER_BY_TYPE: create_id = codec->jfields.create_decoder_by_type_id; break;
-    case CREATE_ENCODER_BY_TYPE: create_id = codec->jfields.create_encoder_by_type_id; break;
+    case 130: create_id = codec->jfields.create_by_codec_name_id; break;
+    case 129: create_id = codec->jfields.create_decoder_by_type_id; break;
+    case 128: create_id = codec->jfields.create_encoder_by_type_id; break;
     default:
         av_assert0(0);
     }

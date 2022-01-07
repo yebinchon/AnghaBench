@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- double MEDIUM_REQUEST_DELAY ; 
- double* REQUEST_DELAY ; 
- double SLOW_REQUEST_DELAY ; 
- int /*<<< orphan*/  assert (int) ; 
- double drand48 () ; 
- double log (double) ; 
+ double MEDIUM_REQUEST_DELAY ;
+ double* REQUEST_DELAY ;
+ double SLOW_REQUEST_DELAY ;
+ int assert (int) ;
+ double drand48 () ;
+ double log (double) ;
 
 void generate_delays (void) {
   double e = drand48 ();

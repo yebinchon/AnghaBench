@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetWindowsDirectoryW (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  _countof (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * wcsstr (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int BOOL ;
+
+
+ int GetWindowsDirectoryW (int *,int ) ;
+ int MAX_PATH ;
+ int _countof (int *) ;
+ int * wcsstr (int *,char*) ;
 
 __attribute__((used)) static BOOL IsReactOS(void)
 {
     WCHAR szWinDir[MAX_PATH];
     GetWindowsDirectoryW(szWinDir, _countof(szWinDir));
-    return (wcsstr(szWinDir, L"ReactOS") != NULL);
+    return (wcsstr(szWinDir, L"ReactOS") != ((void*)0));
 }

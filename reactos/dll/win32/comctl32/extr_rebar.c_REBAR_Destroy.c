@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-struct TYPE_7__ {scalar_t__ uNumBands; int /*<<< orphan*/  hwndSelf; scalar_t__ hDefaultFont; int /*<<< orphan*/  hcurDrag; int /*<<< orphan*/  hcurVert; int /*<<< orphan*/  hcurHorz; int /*<<< orphan*/  hcurArrow; int /*<<< orphan*/ * bands; int /*<<< orphan*/  hwndChild; struct TYPE_7__* lpText; } ;
-typedef  TYPE_1__ REBAR_INFO ;
-typedef  TYPE_1__ REBAR_BAND ;
-typedef  int /*<<< orphan*/  LRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseThemeData (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPA_Destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteObject (scalar_t__) ; 
- int /*<<< orphan*/  DestroyCursor (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DestroyWindow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Free (TYPE_1__*) ; 
- int /*<<< orphan*/  GetWindowTheme (int /*<<< orphan*/ ) ; 
- TYPE_1__* REBAR_GetBand (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  SetWindowLongPtrW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+struct TYPE_7__ {scalar_t__ uNumBands; int hwndSelf; scalar_t__ hDefaultFont; int hcurDrag; int hcurVert; int hcurHorz; int hcurArrow; int * bands; int hwndChild; struct TYPE_7__* lpText; } ;
+typedef TYPE_1__ REBAR_INFO ;
+typedef TYPE_1__ REBAR_BAND ;
+typedef int LRESULT ;
+
+
+ int CloseThemeData (int ) ;
+ int DPA_Destroy (int *) ;
+ int DeleteObject (scalar_t__) ;
+ int DestroyCursor (int ) ;
+ int DestroyWindow (int ) ;
+ int Free (TYPE_1__*) ;
+ int GetWindowTheme (int ) ;
+ TYPE_1__* REBAR_GetBand (TYPE_1__*,scalar_t__) ;
+ int SetWindowLongPtrW (int ,int ,int ) ;
+ int TRACE (char*) ;
 
 __attribute__((used)) static LRESULT
 REBAR_Destroy (REBAR_INFO *infoPtr)
@@ -35,21 +35,21 @@ REBAR_Destroy (REBAR_INFO *infoPtr)
     REBAR_BAND *lpBand;
     UINT i;
 
-    /* clean up each band */
-    for (i = 0; i < infoPtr->uNumBands; i++) {
-	lpBand = REBAR_GetBand(infoPtr, i);
 
-	/* delete text strings */
+    for (i = 0; i < infoPtr->uNumBands; i++) {
+ lpBand = REBAR_GetBand(infoPtr, i);
+
+
         Free (lpBand->lpText);
-	lpBand->lpText = NULL;
-	/* destroy child window */
-	DestroyWindow (lpBand->hwndChild);
-	Free (lpBand);
+ lpBand->lpText = ((void*)0);
+
+ DestroyWindow (lpBand->hwndChild);
+ Free (lpBand);
     }
 
-    /* free band array */
+
     DPA_Destroy (infoPtr->bands);
-    infoPtr->bands = NULL;
+    infoPtr->bands = ((void*)0);
 
     DestroyCursor (infoPtr->hcurArrow);
     DestroyCursor (infoPtr->hcurHorz);
@@ -57,10 +57,10 @@ REBAR_Destroy (REBAR_INFO *infoPtr)
     DestroyCursor (infoPtr->hcurDrag);
     if (infoPtr->hDefaultFont) DeleteObject (infoPtr->hDefaultFont);
     SetWindowLongPtrW (infoPtr->hwndSelf, 0, 0);
-    
+
     CloseThemeData (GetWindowTheme (infoPtr->hwndSelf));
 
-    /* free rebar info data */
+
     Free (infoPtr);
     TRACE("destroyed!\n");
     return 0;

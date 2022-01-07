@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct ao_push_state {int paused; int /*<<< orphan*/  lock; scalar_t__ expected_end_time; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct ao_push_state {int paused; int lock; scalar_t__ expected_end_time; } ;
 struct ao {TYPE_1__* driver; struct ao_push_state* api_priv; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* resume ) (struct ao*) ;} ;
+struct TYPE_2__ {int (* resume ) (struct ao*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (struct ao*) ; 
- int /*<<< orphan*/  wakeup_playthread (struct ao*) ; 
+
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int stub1 (struct ao*) ;
+ int wakeup_playthread (struct ao*) ;
 
 __attribute__((used)) static void resume(struct ao *ao)
 {
@@ -27,7 +27,7 @@ __attribute__((used)) static void resume(struct ao *ao)
     pthread_mutex_lock(&p->lock);
     if (ao->driver->resume)
         ao->driver->resume(ao);
-    p->paused = false;
+    p->paused = 0;
     p->expected_end_time = 0;
     wakeup_playthread(ao);
     pthread_mutex_unlock(&p->lock);

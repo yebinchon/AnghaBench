@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16 ;
-struct TYPE_3__ {long bitspersample; int /*<<< orphan*/ * bluecmap; int /*<<< orphan*/ * greencmap; int /*<<< orphan*/ * redcmap; } ;
-typedef  TYPE_1__ TIFFRGBAImage ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CVT (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint16 ;
+struct TYPE_3__ {long bitspersample; int * bluecmap; int * greencmap; int * redcmap; } ;
+typedef TYPE_1__ TIFFRGBAImage ;
+
+
+ int CVT (int ) ;
 
 __attribute__((used)) static void
 cvtcmap(TIFFRGBAImage* img)
@@ -27,10 +27,10 @@ cvtcmap(TIFFRGBAImage* img)
     long i;
 
     for (i = (1L<<img->bitspersample)-1; i >= 0; i--) {
-#define	CVT(x)		((uint16)((x)>>8))
-	r[i] = CVT(r[i]);
-	g[i] = CVT(g[i]);
-	b[i] = CVT(b[i]);
-#undef	CVT
+
+ r[i] = ((uint16)((r[i])>>8));
+ g[i] = ((uint16)((g[i])>>8));
+ b[i] = ((uint16)((b[i])>>8));
+
     }
 }

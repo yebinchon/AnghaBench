@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct nfp_reprs {int dummy; } ;
-struct nfp_app {TYPE_1__* pf; int /*<<< orphan*/ * reprs; } ;
-typedef  enum nfp_repr_type { ____Placeholder_nfp_repr_type } nfp_repr_type ;
-struct TYPE_2__ {int /*<<< orphan*/  lock; } ;
+struct nfp_app {TYPE_1__* pf; int * reprs; } ;
+typedef enum nfp_repr_type { ____Placeholder_nfp_repr_type } nfp_repr_type ;
+struct TYPE_2__ {int lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lockdep_is_held (int /*<<< orphan*/ *) ; 
- struct nfp_reprs* rcu_dereference_protected (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int lockdep_is_held (int *) ;
+ struct nfp_reprs* rcu_dereference_protected (int ,int ) ;
 
 struct nfp_reprs *
 nfp_reprs_get_locked(struct nfp_app *app, enum nfp_repr_type type)
 {
-	return rcu_dereference_protected(app->reprs[type],
-					 lockdep_is_held(&app->pf->lock));
+ return rcu_dereference_protected(app->reprs[type],
+      lockdep_is_held(&app->pf->lock));
 }

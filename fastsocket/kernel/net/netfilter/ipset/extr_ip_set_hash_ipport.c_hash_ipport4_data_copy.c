@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hash_ipport4_elem {int /*<<< orphan*/  proto; int /*<<< orphan*/  port; int /*<<< orphan*/  ip; } ;
 
-/* Variables and functions */
+
+
+
+struct hash_ipport4_elem {int proto; int port; int ip; } ;
+
+
 
 __attribute__((used)) static inline void
 hash_ipport4_data_copy(struct hash_ipport4_elem *dst,
-		       const struct hash_ipport4_elem *src)
+         const struct hash_ipport4_elem *src)
 {
-	dst->ip = src->ip;
-	dst->port = src->port;
-	dst->proto = src->proto;
+ dst->ip = src->ip;
+ dst->port = src->port;
+ dst->proto = src->proto;
 }

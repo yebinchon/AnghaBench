@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ lPos; int flags; } ;
-typedef  TYPE_1__ TRACKBAR_INFO ;
-typedef  int /*<<< orphan*/  POINT ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ TRACKBAR_INFO ;
+typedef int POINT ;
+typedef scalar_t__ LONG ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int TB_AUTO_PAGE_LEFT ; 
- int TB_AUTO_PAGE_RIGHT ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ TRACKBAR_GetAutoPageDirection (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACKBAR_InvalidateThumbMove (TYPE_1__*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  TRACKBAR_PageDown (TYPE_1__*) ; 
- int /*<<< orphan*/  TRACKBAR_PageUp (TYPE_1__*) ; 
- int /*<<< orphan*/  TRACKBAR_UpdateThumb (TYPE_1__*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  wine_dbgstr_point (int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int TB_AUTO_PAGE_LEFT ;
+ int TB_AUTO_PAGE_RIGHT ;
+ int TRACE (char*,int ,scalar_t__) ;
+ scalar_t__ TRACKBAR_GetAutoPageDirection (TYPE_1__*,int ) ;
+ int TRACKBAR_InvalidateThumbMove (TYPE_1__*,scalar_t__,scalar_t__) ;
+ int TRACKBAR_PageDown (TYPE_1__*) ;
+ int TRACKBAR_PageUp (TYPE_1__*) ;
+ int TRACKBAR_UpdateThumb (TYPE_1__*) ;
+ int TRUE ;
+ int wine_dbgstr_point (int *) ;
 
 __attribute__((used)) static BOOL
 TRACKBAR_AutoPage (TRACKBAR_INFO *infoPtr, POINT clickPoint)
@@ -39,9 +39,9 @@ TRACKBAR_AutoPage (TRACKBAR_INFO *infoPtr, POINT clickPoint)
     TRACE("clickPoint=%s, dir=%d\n", wine_dbgstr_point(&clickPoint), dir);
 
     if (dir > 0 && (infoPtr->flags & TB_AUTO_PAGE_RIGHT))
-	TRACKBAR_PageDown(infoPtr);
+ TRACKBAR_PageDown(infoPtr);
     else if (dir < 0 && (infoPtr->flags & TB_AUTO_PAGE_LEFT))
-	TRACKBAR_PageUp(infoPtr);
+ TRACKBAR_PageUp(infoPtr);
     else return FALSE;
 
     TRACKBAR_UpdateThumb (infoPtr);

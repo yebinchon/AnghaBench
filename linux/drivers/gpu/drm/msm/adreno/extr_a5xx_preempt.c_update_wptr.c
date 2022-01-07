@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct msm_ringbuffer {int /*<<< orphan*/  lock; } ;
+
+
+
+
+typedef int uint32_t ;
+struct msm_ringbuffer {int lock; } ;
 struct msm_gpu {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REG_A5XX_CP_RB_WPTR ; 
- int /*<<< orphan*/  get_wptr (struct msm_ringbuffer*) ; 
- int /*<<< orphan*/  gpu_write (struct msm_gpu*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int REG_A5XX_CP_RB_WPTR ;
+ int get_wptr (struct msm_ringbuffer*) ;
+ int gpu_write (struct msm_gpu*,int ,int ) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static inline void update_wptr(struct msm_gpu *gpu, struct msm_ringbuffer *ring)
 {
-	unsigned long flags;
-	uint32_t wptr;
+ unsigned long flags;
+ uint32_t wptr;
 
-	if (!ring)
-		return;
+ if (!ring)
+  return;
 
-	spin_lock_irqsave(&ring->lock, flags);
-	wptr = get_wptr(ring);
-	spin_unlock_irqrestore(&ring->lock, flags);
+ spin_lock_irqsave(&ring->lock, flags);
+ wptr = get_wptr(ring);
+ spin_unlock_irqrestore(&ring->lock, flags);
 
-	gpu_write(gpu, REG_A5XX_CP_RB_WPTR, wptr);
+ gpu_write(gpu, REG_A5XX_CP_RB_WPTR, wptr);
 }

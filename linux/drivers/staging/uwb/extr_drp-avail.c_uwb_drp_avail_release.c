@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int ie_valid; int /*<<< orphan*/  pending; int /*<<< orphan*/  local; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int ie_valid; int pending; int local; } ;
 struct uwb_rc {TYPE_1__ drp_avail; } ;
-struct uwb_mas_bm {int /*<<< orphan*/  bm; } ;
+struct uwb_mas_bm {int bm; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UWB_NUM_MAS ; 
- int /*<<< orphan*/  bitmap_or (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uwb_rsv_handle_drp_avail_change (struct uwb_rc*) ; 
+
+ int UWB_NUM_MAS ;
+ int bitmap_or (int ,int ,int ,int ) ;
+ int uwb_rsv_handle_drp_avail_change (struct uwb_rc*) ;
 
 void uwb_drp_avail_release(struct uwb_rc *rc, struct uwb_mas_bm *mas)
 {
-	bitmap_or(rc->drp_avail.local, rc->drp_avail.local, mas->bm, UWB_NUM_MAS);
-	bitmap_or(rc->drp_avail.pending, rc->drp_avail.pending, mas->bm, UWB_NUM_MAS);
-	rc->drp_avail.ie_valid = false;
-	uwb_rsv_handle_drp_avail_change(rc);
+ bitmap_or(rc->drp_avail.local, rc->drp_avail.local, mas->bm, UWB_NUM_MAS);
+ bitmap_or(rc->drp_avail.pending, rc->drp_avail.pending, mas->bm, UWB_NUM_MAS);
+ rc->drp_avail.ie_valid = 0;
+ uwb_rsv_handle_drp_avail_change(rc);
 }

@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ ULONG ;
-typedef  int /*<<< orphan*/  IBackgroundCopyManager ;
-typedef  int /*<<< orphan*/  IBackgroundCopyJob ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  GUID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BG_JOB_TYPE_DOWNLOAD ; 
- int /*<<< orphan*/  CLSCTX_LOCAL_SERVER ; 
- int /*<<< orphan*/  CLSID_BackgroundCopyManager ; 
- scalar_t__ CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ IBackgroundCopyJob_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IBackgroundCopyManager_CreateJob (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IBackgroundCopyManager_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IBackgroundCopyManager ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
+
+
+
+typedef char WCHAR ;
+typedef scalar_t__ ULONG ;
+typedef int IBackgroundCopyManager ;
+typedef int IBackgroundCopyJob ;
+typedef scalar_t__ HRESULT ;
+typedef int GUID ;
+
+
+ int BG_JOB_TYPE_DOWNLOAD ;
+ int CLSCTX_LOCAL_SERVER ;
+ int CLSID_BackgroundCopyManager ;
+ scalar_t__ CoCreateInstance (int *,int *,int ,int *,void**) ;
+ scalar_t__ IBackgroundCopyJob_Release (int *) ;
+ scalar_t__ IBackgroundCopyManager_CreateJob (int *,char const*,int ,int *,int **) ;
+ int IBackgroundCopyManager_Release (int *) ;
+ int IID_IBackgroundCopyManager ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,scalar_t__) ;
 
 __attribute__((used)) static void test_CreateJob(void)
 {
-    /* Job information */
+
     static const WCHAR copyNameW[] = {'T', 'e', 's', 't', 0};
-    IBackgroundCopyJob* job = NULL;
+    IBackgroundCopyJob* job = ((void*)0);
     GUID tmpId;
     HRESULT hres;
     ULONG res;
-    IBackgroundCopyManager* manager = NULL;
+    IBackgroundCopyManager* manager = ((void*)0);
 
-    /* Setup */
-    hres = CoCreateInstance(&CLSID_BackgroundCopyManager, NULL,
+
+    hres = CoCreateInstance(&CLSID_BackgroundCopyManager, ((void*)0),
                             CLSCTX_LOCAL_SERVER, &IID_IBackgroundCopyManager,
                             (void **) &manager);
     ok(hres == S_OK, "got 0x%08x\n", hres);
 
-    /* Create bits job */
+
     hres = IBackgroundCopyManager_CreateJob(manager, copyNameW,
                                             BG_JOB_TYPE_DOWNLOAD, &tmpId,
                                             &job);

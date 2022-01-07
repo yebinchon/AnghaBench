@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct plink {struct plink* next; } ;
 
-/* Variables and functions */
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- struct plink* plink_freelist ; 
- int /*<<< orphan*/  stderr ; 
+
+ scalar_t__ calloc (int,int) ;
+ int exit (int) ;
+ int fprintf (int ,char*) ;
+ struct plink* plink_freelist ;
+ int stderr ;
 
 struct plink *Plink_new(void){
   struct plink *newlink;

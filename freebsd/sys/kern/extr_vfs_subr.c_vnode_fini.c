@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bufobj {int dummy; } ;
-struct vnode {struct bufobj v_bufobj; int /*<<< orphan*/  v_interlock; int /*<<< orphan*/  v_vnlock; int /*<<< orphan*/  v_rl; } ;
+struct vnode {struct bufobj v_bufobj; int v_interlock; int v_vnlock; int v_rl; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BO_LOCKPTR (struct bufobj*) ; 
- int /*<<< orphan*/  lockdestroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mtx_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rangelock_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rw_destroy (int /*<<< orphan*/ ) ; 
+
+ int BO_LOCKPTR (struct bufobj*) ;
+ int lockdestroy (int ) ;
+ int mtx_destroy (int *) ;
+ int rangelock_destroy (int *) ;
+ int rw_destroy (int ) ;
 
 __attribute__((used)) static void
 vnode_fini(void *mem, int size)
 {
-	struct vnode *vp;
-	struct bufobj *bo;
+ struct vnode *vp;
+ struct bufobj *bo;
 
-	vp = mem;
-	rangelock_destroy(&vp->v_rl);
-	lockdestroy(vp->v_vnlock);
-	mtx_destroy(&vp->v_interlock);
-	bo = &vp->v_bufobj;
-	rw_destroy(BO_LOCKPTR(bo));
+ vp = mem;
+ rangelock_destroy(&vp->v_rl);
+ lockdestroy(vp->v_vnlock);
+ mtx_destroy(&vp->v_interlock);
+ bo = &vp->v_bufobj;
+ rw_destroy(BO_LOCKPTR(bo));
 }

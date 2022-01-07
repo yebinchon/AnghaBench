@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  get_ue_golomb_long (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip_bits1 (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int GetBitContext ;
+
+
+ int get_ue_golomb_long (int *) ;
+ int skip_bits1 (int *) ;
 
 __attribute__((used)) static void decode_sublayer_hrd(GetBitContext *gb, unsigned int nb_cpb,
                                 int subpic_params_present)
@@ -22,13 +22,13 @@ __attribute__((used)) static void decode_sublayer_hrd(GetBitContext *gb, unsigne
     int i;
 
     for (i = 0; i < nb_cpb; i++) {
-        get_ue_golomb_long(gb); // bit_rate_value_minus1
-        get_ue_golomb_long(gb); // cpb_size_value_minus1
+        get_ue_golomb_long(gb);
+        get_ue_golomb_long(gb);
 
         if (subpic_params_present) {
-            get_ue_golomb_long(gb); // cpb_size_du_value_minus1
-            get_ue_golomb_long(gb); // bit_rate_du_value_minus1
+            get_ue_golomb_long(gb);
+            get_ue_golomb_long(gb);
         }
-        skip_bits1(gb); // cbr_flag
+        skip_bits1(gb);
     }
 }

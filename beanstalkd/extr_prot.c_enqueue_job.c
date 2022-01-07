@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_8__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64 ;
-struct TYPE_16__ {int /*<<< orphan*/  urgent_ct; } ;
-struct TYPE_11__ {scalar_t__ pri; int /*<<< orphan*/  state; scalar_t__ deadline_at; } ;
-struct TYPE_15__ {TYPE_3__* tube; TYPE_1__ r; int /*<<< orphan*/ * reserver; } ;
-struct TYPE_14__ {int /*<<< orphan*/  wal; } ;
-struct TYPE_12__ {int /*<<< orphan*/  urgent_ct; } ;
-struct TYPE_13__ {TYPE_2__ stat; int /*<<< orphan*/  ready; int /*<<< orphan*/  delay; } ;
-typedef  TYPE_4__ Server ;
-typedef  TYPE_5__ Job ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Delayed ; 
- int /*<<< orphan*/  Ready ; 
- scalar_t__ URGENT_THRESHOLD ; 
- TYPE_8__ global_stat ; 
- int heapinsert (int /*<<< orphan*/ *,TYPE_5__*) ; 
- scalar_t__ nanoseconds () ; 
- int /*<<< orphan*/  process_queue () ; 
- int /*<<< orphan*/  ready_ct ; 
- int /*<<< orphan*/  walmaint (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  walwrite (int /*<<< orphan*/ *,TYPE_5__*) ; 
+
+typedef struct TYPE_16__ TYPE_8__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64 ;
+struct TYPE_16__ {int urgent_ct; } ;
+struct TYPE_11__ {scalar_t__ pri; int state; scalar_t__ deadline_at; } ;
+struct TYPE_15__ {TYPE_3__* tube; TYPE_1__ r; int * reserver; } ;
+struct TYPE_14__ {int wal; } ;
+struct TYPE_12__ {int urgent_ct; } ;
+struct TYPE_13__ {TYPE_2__ stat; int ready; int delay; } ;
+typedef TYPE_4__ Server ;
+typedef TYPE_5__ Job ;
+
+
+ int Delayed ;
+ int Ready ;
+ scalar_t__ URGENT_THRESHOLD ;
+ TYPE_8__ global_stat ;
+ int heapinsert (int *,TYPE_5__*) ;
+ scalar_t__ nanoseconds () ;
+ int process_queue () ;
+ int ready_ct ;
+ int walmaint (int *) ;
+ int walwrite (int *,TYPE_5__*) ;
 
 __attribute__((used)) static int
 enqueue_job(Server *s, Job *j, int64 delay, char update_store)
 {
     int r;
 
-    j->reserver = NULL;
+    j->reserver = ((void*)0);
     if (delay) {
         j->r.deadline_at = nanoseconds() + delay;
         r = heapinsert(&j->tube->delay, j);
@@ -69,8 +69,8 @@ enqueue_job(Server *s, Job *j, int64 delay, char update_store)
         walmaint(&s->wal);
     }
 
-    // The call below makes this function do too much.
-    // TODO: refactor this call outside so the call is explicit (not hidden)?
+
+
     process_queue();
     return 1;
 }

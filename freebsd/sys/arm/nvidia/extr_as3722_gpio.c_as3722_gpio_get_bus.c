@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct as3722_softc {int /*<<< orphan*/  gpio_busdev; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- struct as3722_softc* device_get_softc (int /*<<< orphan*/ ) ; 
+
+
+
+struct as3722_softc {int gpio_busdev; } ;
+typedef int device_t ;
+
+
+ struct as3722_softc* device_get_softc (int ) ;
 
 device_t
 as3722_gpio_get_bus(device_t dev)
 {
-	struct as3722_softc *sc;
+ struct as3722_softc *sc;
 
-	sc = device_get_softc(dev);
-	return (sc->gpio_busdev);
+ sc = device_get_softc(dev);
+ return (sc->gpio_busdev);
 }

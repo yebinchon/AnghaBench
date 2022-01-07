@@ -1,80 +1,80 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  float WCHAR ;
-typedef  scalar_t__ ULONG ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IInternetProtocolInfo ;
-typedef  int /*<<< orphan*/  IInternetProtocolEx ;
-typedef  int /*<<< orphan*/  IClassFactory ;
-typedef  scalar_t__ HRESULT ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int BINDF_ASYNCHRONOUS ; 
- int BINDF_ASYNCSTORAGE ; 
- int BINDF_FROMURLMON ; 
- int BINDF_NOWRITECACHE ; 
- int BINDF_PULLDATA ; 
- int /*<<< orphan*/  CHECK_CALLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_FtpProtocol ; 
- scalar_t__ CoGetClassObject (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ E_NOINTERFACE ; 
- scalar_t__ E_PENDING ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  FTP_TEST ; 
- int /*<<< orphan*/  GetBindInfo ; 
- scalar_t__ IClassFactory_CreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IClassFactory_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IClassFactory ; 
- int /*<<< orphan*/  IID_IInternetProtocol ; 
- int /*<<< orphan*/  IID_IInternetProtocolEx ; 
- int /*<<< orphan*/  IID_IInternetProtocolInfo ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  IInternetProtocolEx_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IInternetProtocol_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ IInternetProtocol_Read (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int*) ; 
- scalar_t__ IInternetProtocol_Release (int /*<<< orphan*/ ) ; 
- scalar_t__ IInternetProtocol_Start (int /*<<< orphan*/ ,float const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReportProgress_CONNECTING ; 
- int /*<<< orphan*/  ReportProgress_FINDINGRESOURCE ; 
- int /*<<< orphan*/  ReportProgress_SENDINGREQUEST ; 
- int /*<<< orphan*/  ReportResult ; 
- int /*<<< orphan*/  SET_EXPECT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATE_STARTDOWNLOADING ; 
- scalar_t__ S_FALSE ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  Switch ; 
- scalar_t__ WAIT_OBJECT_0 ; 
- scalar_t__ WaitForSingleObject (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  async_protocol ; 
- int /*<<< orphan*/  bind_info ; 
- int bindf ; 
- int /*<<< orphan*/  event_complete ; 
- scalar_t__ expect_hrResult ; 
- int /*<<< orphan*/  init_test (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ pCreateUri ; 
- int /*<<< orphan*/  protocol_sink ; 
- int /*<<< orphan*/  state ; 
- int /*<<< orphan*/  test_early_abort (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_priority (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_protocol_terminate (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trace (char*) ; 
+
+
+
+typedef int buf ;
+typedef float WCHAR ;
+typedef scalar_t__ ULONG ;
+typedef int IUnknown ;
+typedef int IInternetProtocolInfo ;
+typedef int IInternetProtocolEx ;
+typedef int IClassFactory ;
+typedef scalar_t__ HRESULT ;
+typedef int DWORD ;
+typedef int BYTE ;
+
+
+ int BINDF_ASYNCHRONOUS ;
+ int BINDF_ASYNCSTORAGE ;
+ int BINDF_FROMURLMON ;
+ int BINDF_NOWRITECACHE ;
+ int BINDF_PULLDATA ;
+ int CHECK_CALLED (int ) ;
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_FtpProtocol ;
+ scalar_t__ CoGetClassObject (int *,int ,int *,int *,void**) ;
+ scalar_t__ E_NOINTERFACE ;
+ scalar_t__ E_PENDING ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int FTP_TEST ;
+ int GetBindInfo ;
+ scalar_t__ IClassFactory_CreateInstance (int *,int *,int *,void**) ;
+ int IClassFactory_Release (int *) ;
+ int IID_IClassFactory ;
+ int IID_IInternetProtocol ;
+ int IID_IInternetProtocolEx ;
+ int IID_IInternetProtocolInfo ;
+ int IID_IUnknown ;
+ int IInternetProtocolEx_Release (int *) ;
+ scalar_t__ IInternetProtocol_QueryInterface (int ,int *,void**) ;
+ scalar_t__ IInternetProtocol_Read (int ,int *,int,int*) ;
+ scalar_t__ IInternetProtocol_Release (int ) ;
+ scalar_t__ IInternetProtocol_Start (int ,float const*,int *,int *,int ,int ) ;
+ scalar_t__ IUnknown_QueryInterface (int *,int *,void**) ;
+ int IUnknown_Release (int *) ;
+ int ReportProgress_CONNECTING ;
+ int ReportProgress_FINDINGRESOURCE ;
+ int ReportProgress_SENDINGREQUEST ;
+ int ReportResult ;
+ int SET_EXPECT (int ) ;
+ int STATE_STARTDOWNLOADING ;
+ scalar_t__ S_FALSE ;
+ scalar_t__ S_OK ;
+ int Switch ;
+ scalar_t__ WAIT_OBJECT_0 ;
+ scalar_t__ WaitForSingleObject (int ,int) ;
+ int async_protocol ;
+ int bind_info ;
+ int bindf ;
+ int event_complete ;
+ scalar_t__ expect_hrResult ;
+ int init_test (int ,int ) ;
+ int ok (int,char*,...) ;
+ scalar_t__ pCreateUri ;
+ int protocol_sink ;
+ int state ;
+ int test_early_abort (int *) ;
+ int test_priority (int ) ;
+ int test_protocol_terminate (int ) ;
+ int trace (char*) ;
 
 __attribute__((used)) static void test_ftp_protocol(void)
 {
@@ -98,7 +98,7 @@ __attribute__((used)) static void test_ftp_protocol(void)
     state = STATE_STARTDOWNLOADING;
     expect_hrResult = E_PENDING;
 
-    hres = CoGetClassObject(&CLSID_FtpProtocol, CLSCTX_INPROC_SERVER, NULL, &IID_IUnknown, (void**)&unk);
+    hres = CoGetClassObject(&CLSID_FtpProtocol, CLSCTX_INPROC_SERVER, ((void*)0), &IID_IUnknown, (void**)&unk);
     ok(hres == S_OK, "CoGetClassObject failed: %08x\n", hres);
     if(FAILED(hres))
         return;
@@ -112,7 +112,7 @@ __attribute__((used)) static void test_ftp_protocol(void)
     if(FAILED(hres))
         return;
 
-    hres = IClassFactory_CreateInstance(factory, NULL, &IID_IInternetProtocol,
+    hres = IClassFactory_CreateInstance(factory, ((void*)0), &IID_IInternetProtocol,
                                         (void**)&async_protocol);
     IClassFactory_Release(factory);
     ok(hres == S_OK, "Could not get IInternetProtocol: %08x\n", hres);

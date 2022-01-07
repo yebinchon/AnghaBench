@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct seq_file {int dummy; } ;
 struct nf_conntrack_tuple {int dummy; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static int generic_print_tuple(struct seq_file *s,
-			    const struct nf_conntrack_tuple *tuple)
+       const struct nf_conntrack_tuple *tuple)
 {
-	return 0;
+ return 0;
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int buf ;
 struct TYPE_3__ {int flags; char* argname; char* help; scalar_t__ name; } ;
-typedef  TYPE_1__ OptionDef ;
+typedef TYPE_1__ OptionDef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_strlcat (char*,char*,int) ; 
- int /*<<< orphan*/  av_strlcpy (char*,scalar_t__,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+ int av_strlcat (char*,char*,int) ;
+ int av_strlcpy (char*,scalar_t__,int) ;
+ int printf (char*,...) ;
 
 void show_help_options(const OptionDef *options, const char *msg, int req_flags,
                        int rej_flags, int alt_flags)

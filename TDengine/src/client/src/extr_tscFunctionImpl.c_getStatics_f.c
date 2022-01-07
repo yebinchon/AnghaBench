@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  scalar_t__ int32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
 
-/* Variables and functions */
- float DBL_MAX ; 
- scalar_t__ INT16_MAX ; 
- int /*<<< orphan*/  TSDB_DATA_TYPE_FLOAT ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ isNull (float*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int int64_t ;
+typedef scalar_t__ int32_t ;
+typedef int int16_t ;
+
+
+ float DBL_MAX ;
+ scalar_t__ INT16_MAX ;
+ int TSDB_DATA_TYPE_FLOAT ;
+ int assert (int) ;
+ scalar_t__ isNull (float*,int ) ;
 
 __attribute__((used)) static void getStatics_f(int64_t *primaryKey, float *data, int32_t numOfRow, double *min, double *max, double *sum,
                          int16_t *minIndex, int16_t *maxIndex, int32_t *numOfNull) {
-  float fmin      = DBL_MAX;
-  float fmax      = -DBL_MAX;
+  float fmin = DBL_MAX;
+  float fmax = -DBL_MAX;
   float fminIndex = 0;
   float fmaxIndex = 0;
-  double dsum     = 0;
+  double dsum = 0;
 
   assert(numOfRow <= INT16_MAX);
 
@@ -40,7 +40,7 @@ __attribute__((used)) static void getStatics_f(int64_t *primaryKey, float *data,
     float fv = 0;
     *(int32_t*)(&fv) = *(int32_t*)(&(data[i]));
 
-    //*sum += data[i];
+
     dsum += fv;
     if (fmin > fv) {
       fmin = fv;
@@ -51,15 +51,6 @@ __attribute__((used)) static void getStatics_f(int64_t *primaryKey, float *data,
       fmax = fv;
       fmaxIndex = i;
     }
-
-    //    if (isNull(&lastVal, TSDB_DATA_TYPE_FLOAT)) {
-    //      lastKey = primaryKey[i];
-    //      lastVal = data[i];
-    //    } else {
-    //      *wsum = lastVal * (primaryKey[i] - lastKey);
-    //      lastKey = primaryKey[i];
-    //      lastVal = data[i];
-    //    }
   }
 
   double csum = 0;

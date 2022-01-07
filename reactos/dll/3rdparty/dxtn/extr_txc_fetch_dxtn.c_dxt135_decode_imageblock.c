@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GLvoid ;
-typedef  int GLushort ;
-typedef  int GLuint ;
-typedef  int GLubyte ;
-typedef  int GLint ;
-typedef  int /*<<< orphan*/  GLchan ;
 
-/* Variables and functions */
- size_t ACOMP ; 
- size_t BCOMP ; 
- int /*<<< orphan*/  CHAN_MAX ; 
- int EXP5TO8B (int const) ; 
- int EXP5TO8R (int const) ; 
- int EXP6TO8G (int const) ; 
- size_t GCOMP ; 
- size_t RCOMP ; 
- int /*<<< orphan*/  UBYTE_TO_CHAN (int) ; 
+
+
+
+typedef int GLvoid ;
+typedef int GLushort ;
+typedef int GLuint ;
+typedef int GLubyte ;
+typedef int GLint ;
+typedef int GLchan ;
+
+
+ size_t ACOMP ;
+ size_t BCOMP ;
+ int CHAN_MAX ;
+ int EXP5TO8B (int const) ;
+ int EXP5TO8R (int const) ;
+ int EXP6TO8G (int const) ;
+ size_t GCOMP ;
+ size_t RCOMP ;
+ int UBYTE_TO_CHAN (int) ;
 
 __attribute__((used)) static void dxt135_decode_imageblock ( const GLubyte *img_block_src,
                          GLint i, GLint j, GLuint dxt_type, GLvoid *texel ) {
@@ -35,7 +35,7 @@ __attribute__((used)) static void dxt135_decode_imageblock ( const GLubyte *img_
    const GLushort color1 = img_block_src[2] | (img_block_src[3] << 8);
    const GLuint bits = img_block_src[4] | (img_block_src[5] << 8) |
       (img_block_src[6] << 16) | (img_block_src[7] << 24);
-   /* What about big/little endian? */
+
    GLubyte bit_pos = 2 * (j * 4 + i) ;
    GLubyte code = (GLubyte) ((bits >> bit_pos) & 3);
 
@@ -77,7 +77,7 @@ __attribute__((used)) static void dxt135_decode_imageblock ( const GLubyte *img_
       }
       break;
    default:
-   /* CANNOT happen (I hope) */
+
       break;
    }
 }

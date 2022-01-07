@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int /*<<< orphan*/  function_endW ;
-typedef  int /*<<< orphan*/  function_beginW ;
-typedef  int /*<<< orphan*/  function_anonymousW ;
-struct TYPE_6__ {int func_cnt; int var_cnt; int /*<<< orphan*/  funcs; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int jsstr_t ;
+typedef int jsdisp_t ;
+typedef int function_endW ;
+typedef int function_beginW ;
+typedef int function_anonymousW ;
+struct TYPE_6__ {int func_cnt; int var_cnt; int funcs; } ;
 struct TYPE_7__ {TYPE_1__ global_code; } ;
-typedef  TYPE_2__ bytecode_t ;
-typedef  float WCHAR ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_2__ bytecode_t ;
+typedef float WCHAR ;
+typedef int IDispatch ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int ARRAY_SIZE (float const*) ; 
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  E_UNEXPECTED ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  compile_script (int /*<<< orphan*/ *,float*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__**) ; 
- int /*<<< orphan*/  create_source_function (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  debugstr_w (float*) ; 
- void* heap_alloc (unsigned int) ; 
- int /*<<< orphan*/  heap_free (float*) ; 
- int /*<<< orphan*/  jsstr_flush (int /*<<< orphan*/ *,float*) ; 
- scalar_t__ jsstr_length (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsstr_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (float*,float const*,int) ; 
- int /*<<< orphan*/  release_bytecode (TYPE_2__*) ; 
- int /*<<< orphan*/ * to_disp (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  to_string (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
+
+ int ARRAY_SIZE (float const*) ;
+ int ERR (char*) ;
+ int E_OUTOFMEMORY ;
+ int E_UNEXPECTED ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int TRACE (char*,int ) ;
+ int compile_script (int *,float*,int *,int *,int ,int ,TYPE_2__**) ;
+ int create_source_function (int *,TYPE_2__*,int ,int *,int **) ;
+ int debugstr_w (float*) ;
+ void* heap_alloc (unsigned int) ;
+ int heap_free (float*) ;
+ int jsstr_flush (int *,float*) ;
+ scalar_t__ jsstr_length (int *) ;
+ int jsstr_release (int *) ;
+ int memcpy (float*,float const*,int) ;
+ int release_bytecode (TYPE_2__*) ;
+ int * to_disp (int *) ;
+ int to_string (int *,int ,int **) ;
 
 __attribute__((used)) static HRESULT construct_function(script_ctx_t *ctx, unsigned argc, jsval_t *argv, IDispatch **ret)
 {
-    WCHAR *str = NULL, *ptr;
+    WCHAR *str = ((void*)0), *ptr;
     unsigned len = 0, i = 0;
     bytecode_t *code;
     jsdisp_t *function;
-    jsstr_t **params = NULL;
+    jsstr_t **params = ((void*)0);
     int j = 0;
     HRESULT hres = S_OK;
 
@@ -69,7 +69,7 @@ __attribute__((used)) static HRESULT construct_function(script_ctx_t *ctx, unsig
             return E_OUTOFMEMORY;
 
         if(argc > 2)
-            len = (argc-2)*2; /* separating commas */
+            len = (argc-2)*2;
         for(i=0; i < argc; i++) {
             hres = to_string(ctx, argv[i], params+i);
             if(FAILED(hres))
@@ -111,7 +111,7 @@ __attribute__((used)) static HRESULT construct_function(script_ctx_t *ctx, unsig
     if(FAILED(hres))
         return hres;
 
-    hres = compile_script(ctx, str, NULL, NULL, FALSE, FALSE, &code);
+    hres = compile_script(ctx, str, ((void*)0), ((void*)0), FALSE, FALSE, &code);
     heap_free(str);
     if(FAILED(hres))
         return hres;
@@ -122,7 +122,7 @@ __attribute__((used)) static HRESULT construct_function(script_ctx_t *ctx, unsig
         return E_UNEXPECTED;
     }
 
-    hres = create_source_function(ctx, code, code->global_code.funcs, NULL, &function);
+    hres = create_source_function(ctx, code, code->global_code.funcs, ((void*)0), &function);
     release_bytecode(code);
     if(FAILED(hres))
         return hres;

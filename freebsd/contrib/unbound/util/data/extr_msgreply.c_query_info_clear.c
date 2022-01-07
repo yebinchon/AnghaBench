@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct query_info {int /*<<< orphan*/ * qname; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
 
-void 
+
+
+struct query_info {int * qname; } ;
+
+
+ int free (int *) ;
+
+void
 query_info_clear(struct query_info* m)
 {
-	free(m->qname);
-	m->qname = NULL;
+ free(m->qname);
+ m->qname = ((void*)0);
 }

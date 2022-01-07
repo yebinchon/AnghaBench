@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct list_entry {int dummy; } ;
-struct idmap_lookup {int /*<<< orphan*/  compare; int /*<<< orphan*/  value; } ;
-struct idmap_cache {int /*<<< orphan*/  lock; TYPE_1__* ops; int /*<<< orphan*/  head; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* entry_copy ) (struct list_entry*,struct list_entry*) ;} ;
+struct idmap_lookup {int compare; int value; } ;
+struct idmap_cache {int lock; TYPE_1__* ops; int head; } ;
+struct TYPE_2__ {int (* entry_copy ) (struct list_entry*,struct list_entry*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AcquireSRWLockShared (int /*<<< orphan*/ *) ; 
- int ERROR_NOT_FOUND ; 
- int NO_ERROR ; 
- int /*<<< orphan*/  ReleaseSRWLockShared (int /*<<< orphan*/ *) ; 
- struct list_entry* list_search (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (struct list_entry*,struct list_entry*) ; 
+
+ int AcquireSRWLockShared (int *) ;
+ int ERROR_NOT_FOUND ;
+ int NO_ERROR ;
+ int ReleaseSRWLockShared (int *) ;
+ struct list_entry* list_search (int *,int ,int ) ;
+ int stub1 (struct list_entry*,struct list_entry*) ;
 
 __attribute__((used)) static int cache_lookup(
     struct idmap_cache *cache,
@@ -36,7 +36,7 @@ __attribute__((used)) static int cache_lookup(
 
     entry = list_search(&cache->head, lookup->value, lookup->compare);
     if (entry) {
-        /* make a copy for use outside of the lock */
+
         cache->ops->entry_copy(entry_out, entry);
         status = NO_ERROR;
     }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct controller {int dummy; } ;
 struct TYPE_2__ {char* text; } ;
-struct control_msg {TYPE_1__ inject_text; int /*<<< orphan*/  type; } ;
+struct control_msg {TYPE_1__ inject_text; int type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONTROL_MSG_TYPE_INJECT_TEXT ; 
- int /*<<< orphan*/  LOGW (char*,...) ; 
- char* SDL_GetClipboardText () ; 
- int /*<<< orphan*/  SDL_GetError () ; 
- int /*<<< orphan*/  SDL_free (char*) ; 
- int /*<<< orphan*/  controller_push_msg (struct controller*,struct control_msg*) ; 
+
+ int CONTROL_MSG_TYPE_INJECT_TEXT ;
+ int LOGW (char*,...) ;
+ char* SDL_GetClipboardText () ;
+ int SDL_GetError () ;
+ int SDL_free (char*) ;
+ int controller_push_msg (struct controller*,struct control_msg*) ;
 
 __attribute__((used)) static void
 clipboard_paste(struct controller *controller) {
@@ -31,7 +31,7 @@ clipboard_paste(struct controller *controller) {
         return;
     }
     if (!*text) {
-        // empty text
+
         SDL_free(text);
         return;
     }

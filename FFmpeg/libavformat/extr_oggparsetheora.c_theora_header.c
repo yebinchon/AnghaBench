@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct ogg_stream {int psize; int* buf; size_t pstart; TYPE_3__* private; } ;
 struct ogg {struct ogg_stream* streams; } ;
 struct TYPE_15__ {int version; int gpshift; unsigned int gpmask; } ;
-typedef  TYPE_3__ TheoraParams ;
+typedef TYPE_3__ TheoraParams ;
 struct TYPE_18__ {TYPE_4__** streams; struct ogg* priv_data; } ;
 struct TYPE_17__ {int den; int num; } ;
 struct TYPE_13__ {void* den; void* num; } ;
-struct TYPE_16__ {TYPE_2__* codecpar; int /*<<< orphan*/  need_parsing; TYPE_1__ sample_aspect_ratio; } ;
-struct TYPE_14__ {int extradata_size; int width; int height; int /*<<< orphan*/ * extradata; int /*<<< orphan*/  codec_id; int /*<<< orphan*/  codec_type; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_4__ AVStream ;
-typedef  TYPE_5__ AVRational ;
-typedef  TYPE_6__ AVFormatContext ;
+struct TYPE_16__ {TYPE_2__* codecpar; int need_parsing; TYPE_1__ sample_aspect_ratio; } ;
+struct TYPE_14__ {int extradata_size; int width; int height; int * extradata; int codec_id; int codec_type; } ;
+typedef int GetBitContext ;
+typedef TYPE_4__ AVStream ;
+typedef TYPE_5__ AVRational ;
+typedef TYPE_6__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_VIDEO ; 
- int /*<<< orphan*/  AVSTREAM_PARSE_HEADERS ; 
- int /*<<< orphan*/  AV_CODEC_ID_THEORA ; 
- scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  ENOSYS ; 
- int /*<<< orphan*/  av_log (TYPE_6__*,int /*<<< orphan*/ ,char*,...) ; 
- TYPE_3__* av_mallocz (int) ; 
- int av_reallocp (int /*<<< orphan*/ **,scalar_t__) ; 
- int /*<<< orphan*/  avpriv_set_pts_info (TYPE_4__*,int,int,int) ; 
- int /*<<< orphan*/  ff_vorbis_stream_comment (TYPE_6__*,TYPE_4__*,int*,int) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- void* get_bits_long (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  init_get_bits (int /*<<< orphan*/ *,int*,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int*,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  skip_bits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  skip_bits_long (int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVMEDIA_TYPE_VIDEO ;
+ int AVSTREAM_PARSE_HEADERS ;
+ int AV_CODEC_ID_THEORA ;
+ scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ int ENOMEM ;
+ int ENOSYS ;
+ int av_log (TYPE_6__*,int ,char*,...) ;
+ TYPE_3__* av_mallocz (int) ;
+ int av_reallocp (int **,scalar_t__) ;
+ int avpriv_set_pts_info (TYPE_4__*,int,int,int) ;
+ int ff_vorbis_stream_comment (TYPE_6__*,TYPE_4__*,int*,int) ;
+ int get_bits (int *,int) ;
+ void* get_bits_long (int *,int) ;
+ int init_get_bits (int *,int*,int) ;
+ int memcpy (int *,int*,int) ;
+ int memset (int *,int ,scalar_t__) ;
+ int skip_bits (int *,int) ;
+ int skip_bits_long (int *,int) ;
 
 __attribute__((used)) static int theora_header(AVFormatContext *s, int idx)
 {
-    struct ogg *ogg       = s->priv_data;
+    struct ogg *ogg = s->priv_data;
     struct ogg_stream *os = ogg->streams + idx;
-    AVStream *st          = s->streams[idx];
-    TheoraParams *thp     = os->private;
-    int cds               = st->codecpar->extradata_size + os->psize + 2;
+    AVStream *st = s->streams[idx];
+    TheoraParams *thp = os->private;
+    int cds = st->codecpar->extradata_size + os->psize + 2;
     int err;
     uint8_t *cdp;
 
@@ -82,7 +82,7 @@ __attribute__((used)) static int theora_header(AVFormatContext *s, int idx)
 
         init_get_bits(&gb, os->buf + os->pstart, os->psize * 8);
 
-        /* 0x80"theora" */
+
         skip_bits_long(&gb, 7 * 8);
 
         thp->version = get_bits_long(&gb, 24);
@@ -92,18 +92,18 @@ __attribute__((used)) static int theora_header(AVFormatContext *s, int idx)
             return AVERROR(ENOSYS);
         }
 
-        st->codecpar->width  = get_bits(&gb, 16) << 4;
+        st->codecpar->width = get_bits(&gb, 16) << 4;
         st->codecpar->height = get_bits(&gb, 16) << 4;
 
         if (thp->version >= 0x030400)
             skip_bits(&gb, 100);
 
         if (thp->version >= 0x030200) {
-            int width  = get_bits_long(&gb, 24);
+            int width = get_bits_long(&gb, 24);
             int height = get_bits_long(&gb, 24);
-            if (width  <= st->codecpar->width  && width  > st->codecpar->width  - 16 &&
+            if (width <= st->codecpar->width && width > st->codecpar->width - 16 &&
                 height <= st->codecpar->height && height > st->codecpar->height - 16) {
-                st->codecpar->width  = width;
+                st->codecpar->width = width;
                 st->codecpar->height = height;
             }
 
@@ -128,11 +128,11 @@ __attribute__((used)) static int theora_header(AVFormatContext *s, int idx)
             skip_bits(&gb, 2);
 
         thp->gpshift = get_bits(&gb, 5);
-        thp->gpmask  = (1U << thp->gpshift) - 1;
+        thp->gpmask = (1U << thp->gpshift) - 1;
 
         st->codecpar->codec_type = AVMEDIA_TYPE_VIDEO;
-        st->codecpar->codec_id   = AV_CODEC_ID_THEORA;
-        st->need_parsing      = AVSTREAM_PARSE_HEADERS;
+        st->codecpar->codec_id = AV_CODEC_ID_THEORA;
+        st->need_parsing = AVSTREAM_PARSE_HEADERS;
     }
     break;
     case 0x81:
@@ -153,7 +153,7 @@ __attribute__((used)) static int theora_header(AVFormatContext *s, int idx)
     }
     memset(st->codecpar->extradata + cds, 0, AV_INPUT_BUFFER_PADDING_SIZE);
 
-    cdp    = st->codecpar->extradata + st->codecpar->extradata_size;
+    cdp = st->codecpar->extradata + st->codecpar->extradata_size;
     *cdp++ = os->psize >> 8;
     *cdp++ = os->psize & 0xff;
     memcpy(cdp, os->buf + os->pstart, os->psize);

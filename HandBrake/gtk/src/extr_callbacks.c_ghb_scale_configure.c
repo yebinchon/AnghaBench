@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  builder; } ;
-typedef  TYPE_1__ signal_user_data_t ;
-typedef  int /*<<< orphan*/  gboolean ;
-typedef  int /*<<< orphan*/  GtkScale ;
-typedef  int /*<<< orphan*/  GtkAdjustment ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GHB_WIDGET (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  GTK_RANGE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * GTK_SCALE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  adjustment_configure (int /*<<< orphan*/ *,double,double,double,double,double,double) ; 
- double gtk_adjustment_get_page_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * gtk_range_get_adjustment (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gtk_range_set_inverted (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gtk_scale_set_digits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  gtk_scale_set_draw_value (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int builder; } ;
+typedef TYPE_1__ signal_user_data_t ;
+typedef int gboolean ;
+typedef int GtkScale ;
+typedef int GtkAdjustment ;
+
+
+ int FALSE ;
+ int GHB_WIDGET (int ,char*) ;
+ int GTK_RANGE (int *) ;
+ int * GTK_SCALE (int ) ;
+ int TRUE ;
+ int adjustment_configure (int *,double,double,double,double,double,double) ;
+ double gtk_adjustment_get_page_size (int *) ;
+ int * gtk_range_get_adjustment (int ) ;
+ int gtk_range_set_inverted (int ,int ) ;
+ int gtk_scale_set_digits (int *,int) ;
+ int gtk_scale_set_draw_value (int *,int ) ;
 
 void
 ghb_scale_configure(

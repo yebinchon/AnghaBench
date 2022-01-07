@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  var_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- unsigned short IsBasetype ; 
- unsigned short IsByValue ; 
- unsigned short IsIn ; 
- unsigned short IsOut ; 
- unsigned short IsPipe ; 
- unsigned short IsReturn ; 
- unsigned short IsSimpleRef ; 
- unsigned short MustFree ; 
- unsigned short MustSize ; 
- unsigned char get_parameter_fc (int /*<<< orphan*/  const*,int,unsigned short*,unsigned int*,unsigned int*) ; 
- scalar_t__ max (unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pointer_size ; 
- int /*<<< orphan*/  print_file (int /*<<< orphan*/ *,int,char*,...) ; 
- int /*<<< orphan*/  sprintf (char*,char*,unsigned short) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- unsigned int string_of_type (unsigned char) ; 
- int strlen (char*) ; 
+
+
+
+typedef int var_t ;
+typedef int FILE ;
+
+
+ unsigned short IsBasetype ;
+ unsigned short IsByValue ;
+ unsigned short IsIn ;
+ unsigned short IsOut ;
+ unsigned short IsPipe ;
+ unsigned short IsReturn ;
+ unsigned short IsSimpleRef ;
+ unsigned short MustFree ;
+ unsigned short MustSize ;
+ unsigned char get_parameter_fc (int const*,int,unsigned short*,unsigned int*,unsigned int*) ;
+ scalar_t__ max (unsigned int,int ) ;
+ int pointer_size ;
+ int print_file (int *,int,char*,...) ;
+ int sprintf (char*,char*,unsigned short) ;
+ int strcat (char*,char*) ;
+ int strcpy (char*,char*) ;
+ unsigned int string_of_type (unsigned char) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static unsigned int write_new_procformatstring_type(FILE *file, int indent, const var_t *var,
                                                     int is_return, unsigned int *stack_offset)

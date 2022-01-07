@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u16 ;
+
+
+
+
+typedef int u16 ;
 struct net_device {unsigned int base_addr; } ;
-struct ethtool_cmd {int supported; int /*<<< orphan*/  duplex; scalar_t__ phy_address; int /*<<< orphan*/  speed; int /*<<< orphan*/  transceiver; int /*<<< orphan*/  port; } ;
+struct ethtool_cmd {int supported; int duplex; scalar_t__ phy_address; int speed; int transceiver; int port; } ;
 
-/* Variables and functions */
- int CFG_AUI_SELECT ; 
- scalar_t__ CONFIG ; 
- int /*<<< orphan*/  DUPLEX_FULL ; 
- int /*<<< orphan*/  DUPLEX_HALF ; 
- scalar_t__ MGMT ; 
- int /*<<< orphan*/  PORT_AUI ; 
- int /*<<< orphan*/  PORT_TP ; 
- int /*<<< orphan*/  SMC_SELECT_BANK (int) ; 
- int /*<<< orphan*/  SPEED_10 ; 
- int SUPPORTED_10baseT_Full ; 
- int SUPPORTED_10baseT_Half ; 
- int SUPPORTED_AUI ; 
- int SUPPORTED_TP ; 
- scalar_t__ TCR ; 
- int TCR_FDUPLX ; 
- int /*<<< orphan*/  XCVR_INTERNAL ; 
- int inw (scalar_t__) ; 
+
+ int CFG_AUI_SELECT ;
+ scalar_t__ CONFIG ;
+ int DUPLEX_FULL ;
+ int DUPLEX_HALF ;
+ scalar_t__ MGMT ;
+ int PORT_AUI ;
+ int PORT_TP ;
+ int SMC_SELECT_BANK (int) ;
+ int SPEED_10 ;
+ int SUPPORTED_10baseT_Full ;
+ int SUPPORTED_10baseT_Half ;
+ int SUPPORTED_AUI ;
+ int SUPPORTED_TP ;
+ scalar_t__ TCR ;
+ int TCR_FDUPLX ;
+ int XCVR_INTERNAL ;
+ int inw (scalar_t__) ;
 
 __attribute__((used)) static int smc_netdev_get_ecmd(struct net_device *dev, struct ethtool_cmd *ecmd)
 {
@@ -39,8 +39,8 @@ __attribute__((used)) static int smc_netdev_get_ecmd(struct net_device *dev, str
     unsigned int ioaddr = dev->base_addr;
 
     ecmd->supported = (SUPPORTED_TP | SUPPORTED_AUI |
-	SUPPORTED_10baseT_Half | SUPPORTED_10baseT_Full);
-		
+ SUPPORTED_10baseT_Half | SUPPORTED_10baseT_Full);
+
     SMC_SELECT_BANK(1);
     tmp = inw(ioaddr + CONFIG);
     ecmd->port = (tmp & CFG_AUI_SELECT) ? PORT_AUI : PORT_TP;

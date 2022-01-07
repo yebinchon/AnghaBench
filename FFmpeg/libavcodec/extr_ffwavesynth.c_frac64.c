@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
 
-/* Variables and functions */
+
+
+
+typedef int uint64_t ;
+
+
 
 __attribute__((used)) static uint64_t frac64(uint64_t a, uint64_t b)
 {
     uint64_t r = 0;
     int i;
 
-    if (b < (uint64_t)1 << 32) { /* b small, use two 32-bits steps */
+    if (b < (uint64_t)1 << 32) {
         a <<= 32;
         return ((a / b) << 32) | ((a % b) << 32) / b;
     }
-    if (b < (uint64_t)1 << 48) { /* b medium, use four 16-bits steps */
+    if (b < (uint64_t)1 << 48) {
         for (i = 0; i < 4; i++) {
             a <<= 16;
             r = (r << 16) | (a / b);

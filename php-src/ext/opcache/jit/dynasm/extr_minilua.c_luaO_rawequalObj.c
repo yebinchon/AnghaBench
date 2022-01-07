@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TValue ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bvalue (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  gcvalue (int /*<<< orphan*/  const*) ; 
- int luai_numeq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nvalue (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  pvalue (int /*<<< orphan*/  const*) ; 
- int ttype (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int TValue ;
+
+
+ int bvalue (int const*) ;
+ int gcvalue (int const*) ;
+ int luai_numeq (int ,int ) ;
+ int nvalue (int const*) ;
+ int pvalue (int const*) ;
+ int ttype (int const*) ;
 
 __attribute__((used)) static int luaO_rawequalObj(const TValue*t1,const TValue*t2){
 if(ttype(t1)!=ttype(t2))return 0;

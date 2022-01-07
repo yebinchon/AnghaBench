@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/ * LPOLESTR ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  scalar_t__ HRESULT ;
-typedef  int DISPID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ IDispatch_GetIDsOfNames (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  IID_NULL ; 
- int MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ *,int) ; 
- scalar_t__ S_OK ; 
+
+
+
+typedef int WCHAR ;
+typedef int UINT ;
+typedef int * LPOLESTR ;
+typedef int IDispatch ;
+typedef scalar_t__ HRESULT ;
+typedef int DISPID ;
+
+
+ int CP_ACP ;
+ int GetProcessHeap () ;
+ int * HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int *) ;
+ scalar_t__ IDispatch_GetIDsOfNames (int *,int *,int **,int,int ,int*) ;
+ int IID_NULL ;
+ int MultiByteToWideChar (int ,int ,char const*,int,int *,int) ;
+ scalar_t__ S_OK ;
 
 __attribute__((used)) static DISPID get_dispid( IDispatch *disp, const char *name )
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static DISPID get_dispid( IDispatch *disp, const char *nam
     DISPID id = -1;
     HRESULT r;
 
-    len = MultiByteToWideChar(CP_ACP, 0, name, -1, NULL, 0 );
+    len = MultiByteToWideChar(CP_ACP, 0, name, -1, ((void*)0), 0 );
     str = HeapAlloc(GetProcessHeap(), 0, len*sizeof(WCHAR) );
     if (str)
     {

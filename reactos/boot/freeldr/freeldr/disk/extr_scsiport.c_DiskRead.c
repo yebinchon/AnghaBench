@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int ULONG ;
-struct TYPE_11__ {int SectorSize; int SectorNumber; int SectorCount; int /*<<< orphan*/  DeviceExtension; int /*<<< orphan*/  Lun; int /*<<< orphan*/  TargetId; int /*<<< orphan*/  PathId; scalar_t__ SectorOffset; } ;
-struct TYPE_8__ {int LogicalBlockByte0; int LogicalBlockByte1; int LogicalBlockByte2; int LogicalBlockByte3; int TransferBlocksMsb; int TransferBlocksLsb; int /*<<< orphan*/  LogicalUnitNumber; void* OperationCode; } ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int VOID ;
+typedef int ULONG ;
+struct TYPE_11__ {int SectorSize; int SectorNumber; int SectorCount; int DeviceExtension; int Lun; int TargetId; int PathId; scalar_t__ SectorOffset; } ;
+struct TYPE_8__ {int LogicalBlockByte0; int LogicalBlockByte1; int LogicalBlockByte2; int LogicalBlockByte3; int TransferBlocksMsb; int TransferBlocksLsb; int LogicalUnitNumber; void* OperationCode; } ;
 struct TYPE_10__ {TYPE_1__ CDB10; } ;
-struct TYPE_9__ {int Length; int CdbLength; int DataTransferLength; int TimeOutValue; int /*<<< orphan*/  Lun; scalar_t__ Cdb; int /*<<< orphan*/ * DataBuffer; void* SrbFlags; int /*<<< orphan*/  TargetId; int /*<<< orphan*/  PathId; void* Function; } ;
-typedef  int /*<<< orphan*/  SCSI_REQUEST_BLOCK ;
-typedef  void* PUCHAR ;
-typedef  TYPE_2__* PSCSI_REQUEST_BLOCK ;
-typedef  TYPE_3__* PCDB ;
-typedef  TYPE_4__ DISKCONTEXT ;
-typedef  int /*<<< orphan*/  ARC_STATUS ;
+struct TYPE_9__ {int Length; int CdbLength; int DataTransferLength; int TimeOutValue; int Lun; scalar_t__ Cdb; int * DataBuffer; void* SrbFlags; int TargetId; int PathId; void* Function; } ;
+typedef int SCSI_REQUEST_BLOCK ;
+typedef void* PUCHAR ;
+typedef TYPE_2__* PSCSI_REQUEST_BLOCK ;
+typedef TYPE_3__* PCDB ;
+typedef TYPE_4__ DISKCONTEXT ;
+typedef int ARC_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  ESUCCESS ; 
- void* ExAllocatePool (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ExFreePool (void*) ; 
- TYPE_4__* FsGetDeviceSpecific (int) ; 
- int /*<<< orphan*/  PagedPool ; 
- int /*<<< orphan*/  RtlCopyMemory (int /*<<< orphan*/ *,void*,int) ; 
- int /*<<< orphan*/  RtlZeroMemory (TYPE_2__*,int) ; 
- void* SCSIOP_READ ; 
- void* SRB_FLAGS_DATA_IN ; 
- void* SRB_FUNCTION_EXECUTE_SCSI ; 
- int /*<<< orphan*/  SpiSendSynchronousSrb (int /*<<< orphan*/ ,TYPE_2__*) ; 
+
+ int ASSERT (int) ;
+ int EINVAL ;
+ int EIO ;
+ int ENOMEM ;
+ int ESUCCESS ;
+ void* ExAllocatePool (int ,int) ;
+ int ExFreePool (void*) ;
+ TYPE_4__* FsGetDeviceSpecific (int) ;
+ int PagedPool ;
+ int RtlCopyMemory (int *,void*,int) ;
+ int RtlZeroMemory (TYPE_2__*,int) ;
+ void* SCSIOP_READ ;
+ void* SRB_FLAGS_DATA_IN ;
+ void* SRB_FUNCTION_EXECUTE_SCSI ;
+ int SpiSendSynchronousSrb (int ,TYPE_2__*) ;
 
 __attribute__((used)) static ARC_STATUS DiskRead(ULONG FileId, VOID* Buffer, ULONG N, ULONG* Count)
 {
@@ -64,7 +64,7 @@ __attribute__((used)) static ARC_STATUS DiskRead(ULONG FileId, VOID* Buffer, ULO
     if (FullSectors > 0xffff)
         return EINVAL;
 
-    /* Read full sectors */
+
     ASSERT(Context->SectorNumber < 0xFFFFFFFF);
     Lba = (ULONG)(Context->SectorOffset + Context->SectorNumber);
     if (FullSectors > 0)
@@ -82,7 +82,7 @@ __attribute__((used)) static ARC_STATUS DiskRead(ULONG FileId, VOID* Buffer, ULO
         Srb->CdbLength = 10;
         Srb->SrbFlags = SRB_FLAGS_DATA_IN;
         Srb->DataTransferLength = FullSectors * Context->SectorSize;
-        Srb->TimeOutValue = 5; /* in seconds */
+        Srb->TimeOutValue = 5;
         Srb->DataBuffer = Buffer;
         Cdb = (PCDB)Srb->Cdb;
         Cdb->CDB10.OperationCode = SCSIOP_READ;
@@ -104,7 +104,7 @@ __attribute__((used)) static ARC_STATUS DiskRead(ULONG FileId, VOID* Buffer, ULO
         Lba += FullSectors;
     }
 
-    /* Read incomplete last sector */
+
     if (N > 0)
     {
         PUCHAR Sector;
@@ -129,7 +129,7 @@ __attribute__((used)) static ARC_STATUS DiskRead(ULONG FileId, VOID* Buffer, ULO
         Srb->CdbLength = 10;
         Srb->SrbFlags = SRB_FLAGS_DATA_IN;
         Srb->DataTransferLength = Context->SectorSize;
-        Srb->TimeOutValue = 5; /* in seconds */
+        Srb->TimeOutValue = 5;
         Srb->DataBuffer = Sector;
         Cdb = (PCDB)Srb->Cdb;
         Cdb->CDB10.OperationCode = SCSIOP_READ;
@@ -147,7 +147,7 @@ __attribute__((used)) static ARC_STATUS DiskRead(ULONG FileId, VOID* Buffer, ULO
         }
         RtlCopyMemory(Buffer, Sector, N);
         *Count += N;
-        /* Context->SectorNumber remains untouched (incomplete sector read) */
+
         ExFreePool(Sector);
     }
 

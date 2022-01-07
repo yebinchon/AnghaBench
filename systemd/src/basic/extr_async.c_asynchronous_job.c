@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sigset_t ;
-typedef  int /*<<< orphan*/  pthread_t ;
-typedef  int /*<<< orphan*/  pthread_attr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PTHREAD_CREATE_DETACHED ; 
- int /*<<< orphan*/  SIG_BLOCK ; 
- int /*<<< orphan*/  SIG_SETMASK ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/  pthread_attr_destroy (int /*<<< orphan*/ *) ; 
- int pthread_attr_init (int /*<<< orphan*/ *) ; 
- int pthread_attr_setdetachstate (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int pthread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void* (*) (void*),void*) ; 
- int pthread_sigmask (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ sigfillset (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sigset_t ;
+typedef int pthread_t ;
+typedef int pthread_attr_t ;
+
+
+ int PTHREAD_CREATE_DETACHED ;
+ int SIG_BLOCK ;
+ int SIG_SETMASK ;
+ int assert_se (int) ;
+ int pthread_attr_destroy (int *) ;
+ int pthread_attr_init (int *) ;
+ int pthread_attr_setdetachstate (int *,int ) ;
+ int pthread_create (int *,int *,void* (*) (void*),void*) ;
+ int pthread_sigmask (int ,int *,int *) ;
+ scalar_t__ sigfillset (int *) ;
 
 int asynchronous_job(void* (*func)(void *p), void *arg) {
         sigset_t ss, saved_ss;
@@ -32,8 +32,8 @@ int asynchronous_job(void* (*func)(void *p), void *arg) {
         pthread_t t;
         int r, k;
 
-        /* It kinda sucks that we have to resort to threads to implement an asynchronous close(), but well, such is
-         * life. */
+
+
 
         r = pthread_attr_init(&a);
         if (r > 0)
@@ -47,8 +47,8 @@ int asynchronous_job(void* (*func)(void *p), void *arg) {
 
         assert_se(sigfillset(&ss) >= 0);
 
-        /* Block all signals before forking off the thread, so that the new thread is started with all signals
-         * blocked. This way the existence of the new thread won't affect signal handling in other threads. */
+
+
 
         r = pthread_sigmask(SIG_BLOCK, &ss, &saved_ss);
         if (r > 0) {
@@ -58,7 +58,7 @@ int asynchronous_job(void* (*func)(void *p), void *arg) {
 
         r = pthread_create(&t, &a, func, arg);
 
-        k = pthread_sigmask(SIG_SETMASK, &saved_ss, NULL);
+        k = pthread_sigmask(SIG_SETMASK, &saved_ss, ((void*)0));
 
         if (r > 0)
                 r = -r;

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  MSIHANDLE ;
-typedef  scalar_t__ MSICONDITION ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileA (int /*<<< orphan*/ ) ; 
- scalar_t__ ERROR_BAD_QUERY_SYNTAX ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ MSICONDITION_FALSE ; 
- int /*<<< orphan*/  MsiCloseHandle (int /*<<< orphan*/ ) ; 
- scalar_t__ MsiDatabaseIsTablePersistentA (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  create_db () ; 
- int /*<<< orphan*/  msifile ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ run_query (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int MSIHANDLE ;
+typedef scalar_t__ MSICONDITION ;
+
+
+ int DeleteFileA (int ) ;
+ scalar_t__ ERROR_BAD_QUERY_SYNTAX ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ MSICONDITION_FALSE ;
+ int MsiCloseHandle (int ) ;
+ scalar_t__ MsiDatabaseIsTablePersistentA (int ,char*) ;
+ int create_db () ;
+ int msifile ;
+ int ok (int,char*,...) ;
+ scalar_t__ run_query (int ,int ,char const*) ;
 
 __attribute__((used)) static void test_alter(void)
 {
@@ -63,22 +63,22 @@ __attribute__((used)) static void test_alter(void)
     r = run_query(hdb, 0, query);
     ok(r == ERROR_BAD_QUERY_SYNTAX, "failed to hold table %d\n", r);
 
-    /* table T is removed */
+
     query = "SELECT * FROM `T`";
     r = run_query(hdb, 0, query);
     ok(r == ERROR_BAD_QUERY_SYNTAX, "Expected ERROR_BAD_QUERY_SYNTAX, got %d\n", r);
 
-    /* create the table again */
+
     query = "CREATE TABLE `U` ( `A` INTEGER, `B` INTEGER PRIMARY KEY `B`)";
     r = run_query(hdb, 0, query);
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);
 
-    /* up the ref count */
+
     query = "ALTER TABLE `U` HOLD";
     r = run_query(hdb, 0, query);
     ok(r == ERROR_SUCCESS, "failed to free table\n");
 
-    /* add column, no data type */
+
     query = "ALTER TABLE `U` ADD `C`";
     r = run_query(hdb, 0, query);
     ok(r == ERROR_BAD_QUERY_SYNTAX, "Expected ERROR_BAD_QUERY_SYNTAX, got %d\n", r);
@@ -87,7 +87,7 @@ __attribute__((used)) static void test_alter(void)
     r = run_query(hdb, 0, query);
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);
 
-    /* add column C again */
+
     query = "ALTER TABLE `U` ADD `C` INTEGER";
     r = run_query(hdb, 0, query);
     ok(r == ERROR_BAD_QUERY_SYNTAX, "Expected ERROR_BAD_QUERY_SYNTAX, got %d\n", r);
@@ -120,17 +120,17 @@ __attribute__((used)) static void test_alter(void)
     r = run_query(hdb, 0, query);
     ok(r == ERROR_BAD_QUERY_SYNTAX, "Expected ERROR_BAD_QUERY_SYNTAX, got %d\n", r);
 
-    /* drop the ref count */
+
     query = "ALTER TABLE `U` FREE";
     r = run_query(hdb, 0, query);
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);
 
-    /* table is not empty */
+
     query = "SELECT * FROM `U`";
     r = run_query(hdb, 0, query);
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);
 
-    /* column D is removed */
+
     query = "SELECT * FROM `U` WHERE `D` = 8";
     r = run_query(hdb, 0, query);
     ok(r == ERROR_BAD_QUERY_SYNTAX, "Expected ERROR_BAD_QUERY_SYNTAX, got %d\n", r);
@@ -139,12 +139,12 @@ __attribute__((used)) static void test_alter(void)
     r = run_query(hdb, 0, query);
     ok(r == ERROR_BAD_QUERY_SYNTAX, "Expected ERROR_BAD_QUERY_SYNTAX, got %d\n", r);
 
-    /* add the column again */
+
     query = "ALTER TABLE `U` ADD `E` INTEGER TEMPORARY HOLD";
     r = run_query(hdb, 0, query);
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);
 
-    /* up the ref count */
+
     query = "ALTER TABLE `U` HOLD";
     r = run_query(hdb, 0, query);
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);
@@ -157,7 +157,7 @@ __attribute__((used)) static void test_alter(void)
     r = run_query(hdb, 0, query);
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);
 
-    /* drop the ref count */
+
     query = "ALTER TABLE `U` FREE";
     r = run_query(hdb, 0, query);
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);
@@ -170,17 +170,17 @@ __attribute__((used)) static void test_alter(void)
     r = run_query(hdb, 0, query);
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);
 
-    /* drop the ref count */
+
     query = "ALTER TABLE `U` FREE";
     r = run_query(hdb, 0, query);
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);
 
-    /* table still exists */
+
     query = "SELECT * FROM `U`";
     r = run_query(hdb, 0, query);
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);
 
-    /* col E is removed */
+
     query = "SELECT * FROM `U` WHERE `E` = 20";
     r = run_query(hdb, 0, query);
     ok(r == ERROR_BAD_QUERY_SYNTAX, "Expected ERROR_BAD_QUERY_SYNTAX, got %d\n", r);
@@ -189,12 +189,12 @@ __attribute__((used)) static void test_alter(void)
     r = run_query(hdb, 0, query);
     ok(r == ERROR_BAD_QUERY_SYNTAX, "Expected ERROR_BAD_QUERY_SYNTAX, got %d\n", r);
 
-    /* drop the ref count once more */
+
     query = "ALTER TABLE `U` FREE";
     r = run_query(hdb, 0, query);
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);
 
-    /* table still exists */
+
     query = "SELECT * FROM `U`";
     r = run_query(hdb, 0, query);
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);

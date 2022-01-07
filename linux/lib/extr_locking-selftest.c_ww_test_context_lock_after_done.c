@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  WWAD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WWAI (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WWL (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  o ; 
- int /*<<< orphan*/  t ; 
+ int WWAD (int *) ;
+ int WWAI (int *) ;
+ int WWL (int *,int *) ;
+ int o ;
+ int t ;
 
 __attribute__((used)) static void ww_test_context_lock_after_done(void)
 {
-	WWAI(&t);
-	WWAD(&t);
-	WWL(&o, &t);
+ WWAI(&t);
+ WWAD(&t);
+ WWL(&o, &t);
 }

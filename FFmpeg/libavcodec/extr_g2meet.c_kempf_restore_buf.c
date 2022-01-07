@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
- int FFALIGN (int,int) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int init_get_bits8 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  skip_bits_long (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int GetBitContext ;
+
+
+ int FFALIGN (int,int) ;
+ int get_bits (int *,int) ;
+ int init_get_bits8 (int *,int const*,int) ;
+ int memcpy (int *,int const*,int) ;
+ int skip_bits_long (int *,int) ;
 
 __attribute__((used)) static int kempf_restore_buf(const uint8_t *src, int len,
                               uint8_t *dst, int stride,
@@ -34,10 +34,10 @@ __attribute__((used)) static int kempf_restore_buf(const uint8_t *src, int len,
     if ((ret = init_get_bits8(&gb, src, len)) < 0)
         return ret;
 
-    if (npal <= 2)       nb = 1;
-    else if (npal <= 4)  nb = 2;
+    if (npal <= 2) nb = 1;
+    else if (npal <= 4) nb = 2;
     else if (npal <= 16) nb = 4;
-    else                 nb = 8;
+    else nb = 8;
 
     for (j = 0; j < height; j++, dst += stride, jpeg_tile += tile_stride) {
         if (get_bits(&gb, 8))

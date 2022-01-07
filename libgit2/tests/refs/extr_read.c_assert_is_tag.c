@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_reference ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cl_assert_equal_i (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_repo ; 
- int /*<<< orphan*/  git_reference_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_reference_is_tag (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_reference_lookup (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*) ; 
+
+
+
+typedef int git_reference ;
+
+
+ int cl_assert_equal_i (int,int ) ;
+ int cl_git_pass (int ) ;
+ int g_repo ;
+ int git_reference_free (int *) ;
+ int git_reference_is_tag (int *) ;
+ int git_reference_lookup (int **,int ,char const*) ;
 
 __attribute__((used)) static void assert_is_tag(const char *name, bool expected_tagness)
 {
-	git_reference *reference;
-	cl_git_pass(git_reference_lookup(&reference, g_repo, name));
-	cl_assert_equal_i(expected_tagness, git_reference_is_tag(reference));
-	git_reference_free(reference);
+ git_reference *reference;
+ cl_git_pass(git_reference_lookup(&reference, g_repo, name));
+ cl_assert_equal_i(expected_tagness, git_reference_is_tag(reference));
+ git_reference_free(reference);
 }

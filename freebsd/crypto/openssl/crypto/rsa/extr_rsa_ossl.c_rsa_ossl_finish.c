@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  prime_infos; int /*<<< orphan*/  _method_mod_q; int /*<<< orphan*/  _method_mod_p; int /*<<< orphan*/  _method_mod_n; } ;
-struct TYPE_5__ {int /*<<< orphan*/  m; } ;
-typedef  TYPE_1__ RSA_PRIME_INFO ;
-typedef  TYPE_2__ RSA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_MONT_CTX_free (int /*<<< orphan*/ ) ; 
- int sk_RSA_PRIME_INFO_num (int /*<<< orphan*/ ) ; 
- TYPE_1__* sk_RSA_PRIME_INFO_value (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int prime_infos; int _method_mod_q; int _method_mod_p; int _method_mod_n; } ;
+struct TYPE_5__ {int m; } ;
+typedef TYPE_1__ RSA_PRIME_INFO ;
+typedef TYPE_2__ RSA ;
+
+
+ int BN_MONT_CTX_free (int ) ;
+ int sk_RSA_PRIME_INFO_num (int ) ;
+ TYPE_1__* sk_RSA_PRIME_INFO_value (int ,int) ;
 
 __attribute__((used)) static int rsa_ossl_finish(RSA *rsa)
 {

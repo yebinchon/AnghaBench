@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uiWindow ;
-typedef  int /*<<< orphan*/  uiInitOptions ;
-typedef  int /*<<< orphan*/  uiButton ;
-typedef  int /*<<< orphan*/  uiBox ;
 
-/* Variables and functions */
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/ * e ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  onClosing ; 
- int /*<<< orphan*/  saySomething ; 
- int /*<<< orphan*/  sayTime ; 
- int /*<<< orphan*/  uiBoxAppend (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  uiBoxSetPadded (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  uiButtonOnClicked (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uiControl (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uiControlShow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * uiInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uiMain () ; 
- int /*<<< orphan*/  uiMultilineEntrySetReadOnly (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * uiNewButton (char*) ; 
- int /*<<< orphan*/ * uiNewMultilineEntry () ; 
- int /*<<< orphan*/ * uiNewVerticalBox () ; 
- int /*<<< orphan*/ * uiNewWindow (char*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uiTimer (int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uiWindowOnClosing (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uiWindowSetChild (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uiWindowSetMargined (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uiWindow ;
+typedef int uiInitOptions ;
+typedef int uiButton ;
+typedef int uiBox ;
+
+
+ int abort () ;
+ int * e ;
+ int memset (int *,int ,int) ;
+ int onClosing ;
+ int saySomething ;
+ int sayTime ;
+ int uiBoxAppend (int *,int ,int) ;
+ int uiBoxSetPadded (int *,int) ;
+ int uiButtonOnClicked (int *,int ,int *) ;
+ int uiControl (int *) ;
+ int uiControlShow (int ) ;
+ int * uiInit (int *) ;
+ int uiMain () ;
+ int uiMultilineEntrySetReadOnly (int *,int) ;
+ int * uiNewButton (char*) ;
+ int * uiNewMultilineEntry () ;
+ int * uiNewVerticalBox () ;
+ int * uiNewWindow (char*,int,int,int ) ;
+ int uiTimer (int,int ,int *) ;
+ int uiWindowOnClosing (int *,int ,int *) ;
+ int uiWindowSetChild (int *,int ) ;
+ int uiWindowSetMargined (int *,int) ;
 
 int main(void)
 {
-	uiInitOptions o;
-	uiWindow *w;
-	uiBox *b;
-	uiButton *btn;
+ uiInitOptions o;
+ uiWindow *w;
+ uiBox *b;
+ uiButton *btn;
 
-	memset(&o, 0, sizeof (uiInitOptions));
-	if (uiInit(&o) != NULL)
-		abort();
+ memset(&o, 0, sizeof (uiInitOptions));
+ if (uiInit(&o) != ((void*)0))
+  abort();
 
-	w = uiNewWindow("Hello", 320, 240, 0);
-	uiWindowSetMargined(w, 1);
+ w = uiNewWindow("Hello", 320, 240, 0);
+ uiWindowSetMargined(w, 1);
 
-	b = uiNewVerticalBox();
-	uiBoxSetPadded(b, 1);
-	uiWindowSetChild(w, uiControl(b));
+ b = uiNewVerticalBox();
+ uiBoxSetPadded(b, 1);
+ uiWindowSetChild(w, uiControl(b));
 
-	e = uiNewMultilineEntry();
-	uiMultilineEntrySetReadOnly(e, 1);
+ e = uiNewMultilineEntry();
+ uiMultilineEntrySetReadOnly(e, 1);
 
-	btn = uiNewButton("Say Something");
-	uiButtonOnClicked(btn, saySomething, NULL);
-	uiBoxAppend(b, uiControl(btn), 0);
+ btn = uiNewButton("Say Something");
+ uiButtonOnClicked(btn, saySomething, ((void*)0));
+ uiBoxAppend(b, uiControl(btn), 0);
 
-	uiBoxAppend(b, uiControl(e), 1);
+ uiBoxAppend(b, uiControl(e), 1);
 
-	uiTimer(1000, sayTime, NULL);
+ uiTimer(1000, sayTime, ((void*)0));
 
-	uiWindowOnClosing(w, onClosing, NULL);
-	uiControlShow(uiControl(w));
-	uiMain();
-	return 0;
+ uiWindowOnClosing(w, onClosing, ((void*)0));
+ uiControlShow(uiControl(w));
+ uiMain();
+ return 0;
 }

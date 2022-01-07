@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int vlc_sysdir_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOCALEDIR ; 
- int /*<<< orphan*/  SYSDATADIR ; 
-#define  VLC_LOCALE_DIR 132 
-#define  VLC_PKG_DATA_DIR 131 
-#define  VLC_PKG_LIBEXEC_DIR 130 
-#define  VLC_PKG_LIB_DIR 129 
-#define  VLC_SYSDATA_DIR 128 
- int /*<<< orphan*/  asprintf (char**,char*,char*,char const*) ; 
- char* config_GetDataDir () ; 
- char* config_GetLibDir () ; 
- char* config_GetLibExecDir () ; 
- char* config_GetRealDir (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_assert_unreachable () ; 
+
+
+
+typedef int vlc_sysdir_t ;
+
+
+ int LOCALEDIR ;
+ int SYSDATADIR ;
+
+
+
+
+
+ int asprintf (char**,char*,char*,char const*) ;
+ char* config_GetDataDir () ;
+ char* config_GetLibDir () ;
+ char* config_GetLibExecDir () ;
+ char* config_GetRealDir (int ) ;
+ int free (char*) ;
+ scalar_t__ unlikely (int ) ;
+ int vlc_assert_unreachable () ;
 
 char *config_GetSysPath(vlc_sysdir_t type, const char *filename)
 {
-    char *dir = NULL;
+    char *dir = ((void*)0);
 
     switch (type)
     {
-        case VLC_PKG_DATA_DIR:
+        case 131:
             dir = config_GetDataDir();
             break;
-        case VLC_PKG_LIB_DIR:
+        case 129:
             dir = config_GetLibDir();
             break;
-        case VLC_PKG_LIBEXEC_DIR:
+        case 130:
             dir = config_GetLibExecDir();
             break;
-        case VLC_SYSDATA_DIR:
+        case 128:
             dir = config_GetRealDir( SYSDATADIR );
             break;
-        case VLC_LOCALE_DIR:
+        case 132:
             dir = config_GetRealDir( LOCALEDIR );
             break;
         default:
             vlc_assert_unreachable();
     }
 
-    if (filename == NULL || unlikely(dir == NULL))
+    if (filename == ((void*)0) || unlikely(dir == ((void*)0)))
         return dir;
 
     char *path;

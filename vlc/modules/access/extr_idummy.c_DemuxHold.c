@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  demux_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLC_HARD_MIN_SLEEP ; 
- int /*<<< orphan*/  vlc_tick_sleep (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int demux_t ;
+
+
+ int VLC_HARD_MIN_SLEEP ;
+ int vlc_tick_sleep (int ) ;
 
 __attribute__((used)) static int DemuxHold( demux_t *demux )
 {
     (void) demux;
-    vlc_tick_sleep( VLC_HARD_MIN_SLEEP ); /* FIXME!!! */
+    vlc_tick_sleep( VLC_HARD_MIN_SLEEP );
     return 1;
 }

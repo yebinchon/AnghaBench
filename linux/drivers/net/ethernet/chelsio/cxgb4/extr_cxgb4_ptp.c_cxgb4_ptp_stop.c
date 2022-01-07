@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct adapter {int /*<<< orphan*/ * ptp_clock; int /*<<< orphan*/ * ptp_tx_skb; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dev_kfree_skb_any (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ptp_clock_unregister (int /*<<< orphan*/ *) ; 
+
+
+
+struct adapter {int * ptp_clock; int * ptp_tx_skb; } ;
+
+
+ int dev_kfree_skb_any (int *) ;
+ int ptp_clock_unregister (int *) ;
 
 void cxgb4_ptp_stop(struct adapter *adapter)
 {
-	if (adapter->ptp_tx_skb) {
-		dev_kfree_skb_any(adapter->ptp_tx_skb);
-		adapter->ptp_tx_skb = NULL;
-	}
+ if (adapter->ptp_tx_skb) {
+  dev_kfree_skb_any(adapter->ptp_tx_skb);
+  adapter->ptp_tx_skb = ((void*)0);
+ }
 
-	if (adapter->ptp_clock) {
-		ptp_clock_unregister(adapter->ptp_clock);
-		adapter->ptp_clock = NULL;
-	}
+ if (adapter->ptp_clock) {
+  ptp_clock_unregister(adapter->ptp_clock);
+  adapter->ptp_clock = ((void*)0);
+ }
 }

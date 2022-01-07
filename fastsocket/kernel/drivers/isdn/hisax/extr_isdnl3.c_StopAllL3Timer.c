@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct l3_process {int /*<<< orphan*/  timer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  L3DelTimer (int /*<<< orphan*/ *) ; 
+
+
+
+struct l3_process {int timer; } ;
+
+
+ int L3DelTimer (int *) ;
 
 void
 StopAllL3Timer(struct l3_process *pc)
 {
-	L3DelTimer(&pc->timer);
+ L3DelTimer(&pc->timer);
 }

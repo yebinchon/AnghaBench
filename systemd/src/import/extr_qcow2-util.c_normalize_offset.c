@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  Header ;
 
-/* Variables and functions */
- int EOPNOTSUPP ; 
- int HEADER_CLUSTER_BITS (int /*<<< orphan*/  const*) ; 
- int QCOW2_COMPRESSED ; 
- int QCOW2_COPIED ; 
- int QCOW2_ZERO ; 
- int be64toh (int) ; 
+
+
+
+typedef int uint64_t ;
+typedef int Header ;
+
+
+ int EOPNOTSUPP ;
+ int HEADER_CLUSTER_BITS (int const*) ;
+ int QCOW2_COMPRESSED ;
+ int QCOW2_COPIED ;
+ int QCOW2_ZERO ;
+ int be64toh (int) ;
 
 __attribute__((used)) static int normalize_offset(
                 const Header *header,
@@ -46,16 +46,16 @@ __attribute__((used)) static int normalize_offset(
                 if (compressed_size)
                         *compressed_size = sz;
 
-                *compressed = true;
+                *compressed = 1;
 
         } else {
-                if (compressed)  {
-                        *compressed = false;
+                if (compressed) {
+                        *compressed = 0;
                         *compressed_size = 0;
                 }
 
                 if (q & QCOW2_ZERO) {
-                        /* We make no distinction between zero blocks and holes */
+
                         *ret = 0;
                         return 0;
                 }
@@ -64,5 +64,5 @@ __attribute__((used)) static int normalize_offset(
         }
 
         *ret = q;
-        return q > 0;  /* returns positive if not a hole */
+        return q > 0;
 }

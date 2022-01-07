@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ state; int binary_file_len; } ;
-typedef  TYPE_1__ esp_https_ota_t ;
-typedef  scalar_t__ esp_https_ota_handle_t ;
+typedef TYPE_1__ esp_https_ota_t ;
+typedef scalar_t__ esp_https_ota_handle_t ;
 
-/* Variables and functions */
- scalar_t__ ESP_HTTPS_OTA_IN_PROGRESS ; 
+
+ scalar_t__ ESP_HTTPS_OTA_IN_PROGRESS ;
 
 int esp_https_ota_get_image_len_read(esp_https_ota_handle_t https_ota_handle)
 {
     esp_https_ota_t *handle = (esp_https_ota_t *)https_ota_handle;
-    if (handle == NULL) {
+    if (handle == ((void*)0)) {
         return -1;
     }
     if (handle->state < ESP_HTTPS_OTA_IN_PROGRESS) {

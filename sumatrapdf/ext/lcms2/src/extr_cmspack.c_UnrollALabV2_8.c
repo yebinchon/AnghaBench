@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsUInt8Number ;
-typedef  int /*<<< orphan*/ * cmsUInt32Number ;
-typedef  int /*<<< orphan*/  cmsUInt16Number ;
-typedef  int /*<<< orphan*/  cmsContext ;
-typedef  int /*<<< orphan*/  _cmsTRANSFORM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FROM_8_TO_16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FomLabV2ToLabV4 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsUNUSED_PARAMETER (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int cmsUInt8Number ;
+typedef int * cmsUInt32Number ;
+typedef int cmsUInt16Number ;
+typedef int cmsContext ;
+typedef int _cmsTRANSFORM ;
+
+
+ int FROM_8_TO_16 (int ) ;
+ int FomLabV2ToLabV4 (int ) ;
+ int cmsUNUSED_PARAMETER (int *) ;
 
 __attribute__((used)) static
 cmsUInt8Number* UnrollALabV2_8(cmsContext ContextID, register _cmsTRANSFORM* info,
@@ -27,10 +27,10 @@ cmsUInt8Number* UnrollALabV2_8(cmsContext ContextID, register _cmsTRANSFORM* inf
                                register cmsUInt8Number* accum,
                                register cmsUInt32Number Stride)
 {
-    accum++;  // A
-    wIn[0] = FomLabV2ToLabV4(FROM_8_TO_16(*accum)); accum++;     // L
-    wIn[1] = FomLabV2ToLabV4(FROM_8_TO_16(*accum)); accum++;     // a
-    wIn[2] = FomLabV2ToLabV4(FROM_8_TO_16(*accum)); accum++;     // b
+    accum++;
+    wIn[0] = FomLabV2ToLabV4(FROM_8_TO_16(*accum)); accum++;
+    wIn[1] = FomLabV2ToLabV4(FROM_8_TO_16(*accum)); accum++;
+    wIn[2] = FomLabV2ToLabV4(FROM_8_TO_16(*accum)); accum++;
 
     return accum;
 

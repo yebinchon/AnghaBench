@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum status_code { ____Placeholder_status_code } status_code ;
 
-/* Variables and functions */
- int SUCCESS ; 
- int reload_refs (int) ; 
+
+
+
+typedef enum status_code { ____Placeholder_status_code } status_code ;
+
+
+ int SUCCESS ;
+ int reload_refs (int) ;
 
 enum status_code
 load_refs(bool force)
 {
-	static bool loaded = false;
+ static bool loaded = 0;
 
-	if (!force && loaded)
-		return SUCCESS;
+ if (!force && loaded)
+  return SUCCESS;
 
-	loaded = true;
-	return reload_refs(force);
+ loaded = 1;
+ return reload_refs(force);
 }

@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PF_LOCAL ; 
- int /*<<< orphan*/  SOCK_DGRAM ; 
- int /*<<< orphan*/  atexit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cleanup ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  connect_uds_server (int,int /*<<< orphan*/ ) ; 
- int create_uds_server (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  err (int,char*) ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int mkstemp (int /*<<< orphan*/ ) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uds_name1 ; 
- int /*<<< orphan*/  uds_name2 ; 
- int /*<<< orphan*/  unlink (int /*<<< orphan*/ ) ; 
+ int PF_LOCAL ;
+ int SOCK_DGRAM ;
+ int atexit (int ) ;
+ int cleanup ;
+ int close (int) ;
+ int connect_uds_server (int,int ) ;
+ int create_uds_server (int ) ;
+ int err (int,char*) ;
+ int exit (int ) ;
+ int mkstemp (int ) ;
+ int socket (int ,int ,int ) ;
+ int uds_name1 ;
+ int uds_name2 ;
+ int unlink (int ) ;
 
 int
 main(void)
@@ -35,7 +27,7 @@ main(void)
     atexit(cleanup);
 
     if (mkstemp(uds_name1) == -1)
-	err(1, "mkstemp");
+ err(1, "mkstemp");
     unlink(uds_name1);
     s_sock1 = create_uds_server(uds_name1);
 

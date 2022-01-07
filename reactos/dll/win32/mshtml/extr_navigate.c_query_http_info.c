@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsChannelBSC ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  IWinInetHttpInfo ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HTTP_QUERY_RAW_HEADERS_CRLF ; 
- int /*<<< orphan*/  IWinInetHttpInfo_QueryInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* heap_alloc (scalar_t__) ; 
- int /*<<< orphan*/  heap_free (char*) ; 
- int /*<<< orphan*/  process_response_headers (int /*<<< orphan*/ *,char const*) ; 
- char* strchrW (char*,char) ; 
+
+
+
+typedef int nsChannelBSC ;
+typedef char WCHAR ;
+typedef int IWinInetHttpInfo ;
+typedef scalar_t__ DWORD ;
+
+
+ int HTTP_QUERY_RAW_HEADERS_CRLF ;
+ int IWinInetHttpInfo_QueryInfo (int *,int ,char*,scalar_t__*,int *,int *) ;
+ char* heap_alloc (scalar_t__) ;
+ int heap_free (char*) ;
+ int process_response_headers (int *,char const*) ;
+ char* strchrW (char*,char) ;
 
 __attribute__((used)) static void query_http_info(nsChannelBSC *This, IWinInetHttpInfo *wininet_info)
 {
@@ -29,7 +29,7 @@ __attribute__((used)) static void query_http_info(nsChannelBSC *This, IWinInetHt
     DWORD len = 0;
     WCHAR *buf;
 
-    IWinInetHttpInfo_QueryInfo(wininet_info, HTTP_QUERY_RAW_HEADERS_CRLF, NULL, &len, NULL, NULL);
+    IWinInetHttpInfo_QueryInfo(wininet_info, HTTP_QUERY_RAW_HEADERS_CRLF, ((void*)0), &len, ((void*)0), ((void*)0));
     if(!len)
         return;
 
@@ -37,7 +37,7 @@ __attribute__((used)) static void query_http_info(nsChannelBSC *This, IWinInetHt
     if(!buf)
         return;
 
-    IWinInetHttpInfo_QueryInfo(wininet_info, HTTP_QUERY_RAW_HEADERS_CRLF, buf, &len, NULL, NULL);
+    IWinInetHttpInfo_QueryInfo(wininet_info, HTTP_QUERY_RAW_HEADERS_CRLF, buf, &len, ((void*)0), ((void*)0));
     if(!len) {
         heap_free(buf);
         return;

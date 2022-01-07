@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct efx_nic {TYPE_2__* net_dev; TYPE_1__* type; int /*<<< orphan*/  phy_mode; } ;
-struct TYPE_4__ {int /*<<< orphan*/  perm_addr; int /*<<< orphan*/  dev_addr; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct efx_nic {TYPE_2__* net_dev; TYPE_1__* type; int phy_mode; } ;
+struct TYPE_4__ {int perm_addr; int dev_addr; } ;
 struct TYPE_3__ {int (* probe_port ) (struct efx_nic*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ETH_ALEN ; 
- int /*<<< orphan*/  PHY_MODE_SPECIAL ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  netif_dbg (struct efx_nic*,int /*<<< orphan*/ ,TYPE_2__*,char*) ; 
- scalar_t__ phy_flash_cfg ; 
- int /*<<< orphan*/  probe ; 
- int stub1 (struct efx_nic*) ; 
+
+ int ETH_ALEN ;
+ int PHY_MODE_SPECIAL ;
+ int memcpy (int ,int ,int ) ;
+ int netif_dbg (struct efx_nic*,int ,TYPE_2__*,char*) ;
+ scalar_t__ phy_flash_cfg ;
+ int probe ;
+ int stub1 (struct efx_nic*) ;
 
 __attribute__((used)) static int efx_probe_port(struct efx_nic *efx)
 {
-	int rc;
+ int rc;
 
-	netif_dbg(efx, probe, efx->net_dev, "create port\n");
+ netif_dbg(efx, probe, efx->net_dev, "create port\n");
 
-	if (phy_flash_cfg)
-		efx->phy_mode = PHY_MODE_SPECIAL;
+ if (phy_flash_cfg)
+  efx->phy_mode = PHY_MODE_SPECIAL;
 
-	/* Connect up MAC/PHY operations table */
-	rc = efx->type->probe_port(efx);
-	if (rc)
-		return rc;
 
-	/* Initialise MAC address to permanent address */
-	memcpy(efx->net_dev->dev_addr, efx->net_dev->perm_addr, ETH_ALEN);
+ rc = efx->type->probe_port(efx);
+ if (rc)
+  return rc;
 
-	return 0;
+
+ memcpy(efx->net_dev->dev_addr, efx->net_dev->perm_addr, ETH_ALEN);
+
+ return 0;
 }

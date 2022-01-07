@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int cbp; size_t qp; int /*<<< orphan*/  c_stride; int /*<<< orphan*/  cv; int /*<<< orphan*/  gb; int /*<<< orphan*/  cu; } ;
-typedef  TYPE_1__ AVSContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  chroma_dec ; 
- int decode_residual_block (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ff_cavs_chroma_qp ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int cbp; size_t qp; int c_stride; int cv; int gb; int cu; } ;
+typedef TYPE_1__ AVSContext ;
+
+
+ int chroma_dec ;
+ int decode_residual_block (TYPE_1__*,int *,int ,int ,int ,int ,int ) ;
+ int * ff_cavs_chroma_qp ;
 
 __attribute__((used)) static inline int decode_residual_chroma(AVSContext *h)
 {

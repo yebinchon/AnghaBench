@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  __u32 ;
-typedef  int /*<<< orphan*/  __be32 ;
 
-/* Variables and functions */
- scalar_t__ IN_CLASSA (int /*<<< orphan*/ ) ; 
- scalar_t__ IN_CLASSB (int /*<<< orphan*/ ) ; 
- scalar_t__ IN_CLASSC (int /*<<< orphan*/ ) ; 
- scalar_t__ IN_CLASSE (int /*<<< orphan*/ ) ; 
- scalar_t__ ipv4_is_lbcast (int /*<<< orphan*/ ) ; 
- scalar_t__ ipv4_is_zeronet (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ntohl (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int __u32 ;
+typedef int __be32 ;
+
+
+ scalar_t__ IN_CLASSA (int ) ;
+ scalar_t__ IN_CLASSB (int ) ;
+ scalar_t__ IN_CLASSC (int ) ;
+ scalar_t__ IN_CLASSE (int ) ;
+ scalar_t__ ipv4_is_lbcast (int ) ;
+ scalar_t__ ipv4_is_zeronet (int ) ;
+ int ntohl (int ) ;
 
 __attribute__((used)) static int inet_abc_len(__be32 addr)
 {
-	int rc = -1;	/* Something else, probably a multicast. */
+ int rc = -1;
 
-	if (ipv4_is_zeronet(addr) || ipv4_is_lbcast(addr))
-		rc = 0;
-	else {
-		__u32 haddr = ntohl(addr);
-		if (IN_CLASSA(haddr))
-			rc = 8;
-		else if (IN_CLASSB(haddr))
-			rc = 16;
-		else if (IN_CLASSC(haddr))
-			rc = 24;
-		else if (IN_CLASSE(haddr))
-			rc = 32;
-	}
+ if (ipv4_is_zeronet(addr) || ipv4_is_lbcast(addr))
+  rc = 0;
+ else {
+  __u32 haddr = ntohl(addr);
+  if (IN_CLASSA(haddr))
+   rc = 8;
+  else if (IN_CLASSB(haddr))
+   rc = 16;
+  else if (IN_CLASSC(haddr))
+   rc = 24;
+  else if (IN_CLASSE(haddr))
+   rc = 32;
+ }
 
-	return rc;
+ return rc;
 }

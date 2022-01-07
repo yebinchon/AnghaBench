@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VC_CONTAINER_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASF_OBJECT_TYPE_HEADER_EXT_INTERNAL ; 
- int /*<<< orphan*/  WRITE_GUID (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  WRITE_U16 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  asf_write_object (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  guid_null ; 
+
+
+
+typedef int VC_CONTAINER_T ;
+typedef int VC_CONTAINER_STATUS_T ;
+
+
+ int ASF_OBJECT_TYPE_HEADER_EXT_INTERNAL ;
+ int WRITE_GUID (int *,int *,char*) ;
+ int WRITE_U16 (int *,int ,char*) ;
+ int asf_write_object (int *,int ) ;
+ int guid_null ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T asf_write_object_header_ext( VC_CONTAINER_T *p_ctx )
 {

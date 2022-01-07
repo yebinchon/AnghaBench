@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Tube ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * make_and_insert_tube (char const*) ; 
- int /*<<< orphan*/ * tube_find (char const*) ; 
+
+
+
+typedef int Tube ;
+
+
+ int * make_and_insert_tube (char const*) ;
+ int * tube_find (char const*) ;
 
 Tube *
 tube_find_or_make(const char *name)

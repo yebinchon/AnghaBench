@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned char WCHAR ;
-typedef  int UINT ;
-typedef  int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_INSUFFICIENT_BUFFER ; 
- int E_INVALIDARG ; 
- int /*<<< orphan*/  GUID_MetadataFormatUnknown ; 
- int /*<<< orphan*/  GUID_NULL ; 
- int HRESULT_FROM_WIN32 (int /*<<< orphan*/ ) ; 
- int S_OK ; 
- int WICMapGuidToShortName (int /*<<< orphan*/ *,int,unsigned char*,int*) ; 
- int WINCODEC_ERR_PROPERTYNOTFOUND ; 
- int /*<<< orphan*/  lstrcmpW (unsigned char*,unsigned char const*) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int wine_dbgstr_w (unsigned char*) ; 
+
+
+
+typedef unsigned char WCHAR ;
+typedef int UINT ;
+typedef int HRESULT ;
+
+
+ int ERROR_INSUFFICIENT_BUFFER ;
+ int E_INVALIDARG ;
+ int GUID_MetadataFormatUnknown ;
+ int GUID_NULL ;
+ int HRESULT_FROM_WIN32 (int ) ;
+ int S_OK ;
+ int WICMapGuidToShortName (int *,int,unsigned char*,int*) ;
+ int WINCODEC_ERR_PROPERTYNOTFOUND ;
+ int lstrcmpW (unsigned char*,unsigned char const*) ;
+ int ok (int,char*,int) ;
+ int wine_dbgstr_w (unsigned char*) ;
 
 __attribute__((used)) static void test_WICMapGuidToShortName(void)
 {
@@ -43,27 +43,27 @@ __attribute__((used)) static void test_WICMapGuidToShortName(void)
     ok(!lstrcmpW(name, unknownW), "got %s\n", wine_dbgstr_w(name));
 
     name[0] = 0;
-    hr = WICMapGuidToShortName(&GUID_MetadataFormatUnknown, 8, name, NULL);
+    hr = WICMapGuidToShortName(&GUID_MetadataFormatUnknown, 8, name, ((void*)0));
     ok(hr == S_OK, "got %#x\n", hr);
     ok(!lstrcmpW(name, unknownW), "got %s\n", wine_dbgstr_w(name));
 
     len = 0xdeadbeef;
-    hr = WICMapGuidToShortName(&GUID_MetadataFormatUnknown, 8, NULL, &len);
+    hr = WICMapGuidToShortName(&GUID_MetadataFormatUnknown, 8, ((void*)0), &len);
     ok(hr == S_OK, "got %#x\n", hr);
     ok(len == 8, "got %u\n", len);
 
     len = 0xdeadbeef;
-    hr = WICMapGuidToShortName(&GUID_MetadataFormatUnknown, 0, NULL, &len);
+    hr = WICMapGuidToShortName(&GUID_MetadataFormatUnknown, 0, ((void*)0), &len);
     ok(hr == S_OK, "got %#x\n", hr);
     ok(len == 8, "got %u\n", len);
 
-    hr = WICMapGuidToShortName(&GUID_MetadataFormatUnknown, 0, NULL, NULL);
+    hr = WICMapGuidToShortName(&GUID_MetadataFormatUnknown, 0, ((void*)0), ((void*)0));
     ok(hr == S_OK, "got %#x\n", hr);
 
-    hr = WICMapGuidToShortName(&GUID_MetadataFormatUnknown, 8, NULL, NULL);
+    hr = WICMapGuidToShortName(&GUID_MetadataFormatUnknown, 8, ((void*)0), ((void*)0));
     ok(hr == S_OK, "got %#x\n", hr);
 
-    hr = WICMapGuidToShortName(&GUID_NULL, 0, NULL, NULL);
+    hr = WICMapGuidToShortName(&GUID_NULL, 0, ((void*)0), ((void*)0));
     ok(hr == WINCODEC_ERR_PROPERTYNOTFOUND, "got %#x\n", hr);
 
     name[0] = 0;
@@ -80,6 +80,6 @@ __attribute__((used)) static void test_WICMapGuidToShortName(void)
     ok(len == 0xdeadbeef, "got %u\n", len);
     ok(!name[0], "got %s\n", wine_dbgstr_w(name));
 
-    hr = WICMapGuidToShortName(NULL, 8, name, NULL);
+    hr = WICMapGuidToShortName(((void*)0), 8, name, ((void*)0));
     ok(hr == E_INVALIDARG, "got %#x\n", hr);
 }

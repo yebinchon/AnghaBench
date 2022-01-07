@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  optdata; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int optdata; } ;
 struct TYPE_8__ {TYPE_1__ statetable; } ;
-struct TYPE_7__ {int /*<<< orphan*/  ligatureTable_length; int /*<<< orphan*/  ligatureTable; int /*<<< orphan*/  componentTable_length; int /*<<< orphan*/  componentTable; int /*<<< orphan*/  ligActionTable_length; int /*<<< orphan*/  ligActionTable; } ;
-typedef  TYPE_2__* GXV_mort_subtable_type2_StateOptRecData ;
-typedef  TYPE_3__* GXV_Validator ;
-typedef  int /*<<< orphan*/  FT_UShort ;
+struct TYPE_7__ {int ligatureTable_length; int ligatureTable; int componentTable_length; int componentTable; int ligActionTable_length; int ligActionTable; } ;
+typedef TYPE_2__* GXV_mort_subtable_type2_StateOptRecData ;
+typedef TYPE_3__* GXV_Validator ;
+typedef int FT_UShort ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GXV_EXIT ; 
- int /*<<< orphan*/  GXV_NAME_ENTER (char*) ; 
- int /*<<< orphan*/  GXV_TRACE (char*) ; 
- int /*<<< orphan*/  gxv_set_length_by_ushort_offset (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,TYPE_3__*) ; 
+
+ int GXV_EXIT ;
+ int GXV_NAME_ENTER (char*) ;
+ int GXV_TRACE (char*) ;
+ int gxv_set_length_by_ushort_offset (int *,int **,int *,int,int ,TYPE_3__*) ;
 
 __attribute__((used)) static void
-  gxv_mort_subtable_type2_subtable_setup( FT_UShort      table_size,
-                                          FT_UShort      classTable,
-                                          FT_UShort      stateArray,
-                                          FT_UShort      entryTable,
-                                          FT_UShort      *classTable_length_p,
-                                          FT_UShort      *stateArray_length_p,
-                                          FT_UShort      *entryTable_length_p,
-                                          GXV_Validator  gxvalid )
+  gxv_mort_subtable_type2_subtable_setup( FT_UShort table_size,
+                                          FT_UShort classTable,
+                                          FT_UShort stateArray,
+                                          FT_UShort entryTable,
+                                          FT_UShort *classTable_length_p,
+                                          FT_UShort *stateArray_length_p,
+                                          FT_UShort *entryTable_length_p,
+                                          GXV_Validator gxvalid )
   {
-    FT_UShort  o[6];
-    FT_UShort  *l[6];
-    FT_UShort  buff[7];
+    FT_UShort o[6];
+    FT_UShort *l[6];
+    FT_UShort buff[7];
 
-    GXV_mort_subtable_type2_StateOptRecData  optdata =
+    GXV_mort_subtable_type2_StateOptRecData optdata =
       (GXV_mort_subtable_type2_StateOptRecData)gxvalid->statetable.optdata;
 
 

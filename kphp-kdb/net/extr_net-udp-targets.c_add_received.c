@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct udp_target {int received_prefix; scalar_t__ received_tree; } ;
 struct TYPE_2__ {int x; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  lrand48 () ; 
- int /*<<< orphan*/  start_rx_timer (struct udp_target*) ; 
- int /*<<< orphan*/  stop_rx_timer (struct udp_target*) ; 
- scalar_t__ tree_delete_int (scalar_t__,int) ; 
- TYPE_1__* tree_get_min_int (scalar_t__) ; 
- scalar_t__ tree_insert_int (scalar_t__,int,int /*<<< orphan*/ ) ; 
+
+ int assert (int) ;
+ int lrand48 () ;
+ int start_rx_timer (struct udp_target*) ;
+ int stop_rx_timer (struct udp_target*) ;
+ scalar_t__ tree_delete_int (scalar_t__,int) ;
+ TYPE_1__* tree_get_min_int (scalar_t__) ;
+ scalar_t__ tree_insert_int (scalar_t__,int,int ) ;
 
 void add_received (struct udp_target *S, int x) {
   if (x == S->received_prefix + 1) {

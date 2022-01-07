@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uintmax_t ;
-typedef  int /*<<< orphan*/  u ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ uintmax_t ;
+typedef int u ;
 struct TYPE_7__ {scalar_t__ unsig; } ;
 struct TYPE_8__ {TYPE_1__ value; } ;
-typedef  TYPE_2__ JsonVariant ;
+typedef TYPE_2__ JsonVariant ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- TYPE_2__* JSON_VARIANT_MAGIC_ZERO_UNSIGNED ; 
- int /*<<< orphan*/  JSON_VARIANT_UNSIGNED ; 
- int /*<<< orphan*/  assert_return (TYPE_2__**,int /*<<< orphan*/ ) ; 
- int json_variant_new (TYPE_2__**,int /*<<< orphan*/ ,int) ; 
+
+ int EINVAL ;
+ TYPE_2__* JSON_VARIANT_MAGIC_ZERO_UNSIGNED ;
+ int JSON_VARIANT_UNSIGNED ;
+ int assert_return (TYPE_2__**,int ) ;
+ int json_variant_new (TYPE_2__**,int ,int) ;
 
 int json_variant_new_unsigned(JsonVariant **ret, uintmax_t u) {
         JsonVariant *v;

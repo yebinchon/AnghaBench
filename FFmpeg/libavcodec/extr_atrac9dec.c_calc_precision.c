@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int q_unit_cnt; int grad_mode; scalar_t__* gradient; int grad_boundary; } ;
 struct TYPE_5__ {scalar_t__* precision_mask; scalar_t__* scalefactors; scalar_t__* precision_coarse; int* precision_fine; } ;
-typedef  int /*<<< orphan*/  ATRAC9Context ;
-typedef  TYPE_1__ ATRAC9ChannelData ;
-typedef  TYPE_2__ ATRAC9BlockData ;
+typedef int ATRAC9Context ;
+typedef TYPE_1__ ATRAC9ChannelData ;
+typedef TYPE_2__ ATRAC9BlockData ;
 
-/* Variables and functions */
- int FFABS (scalar_t__) ; 
- scalar_t__ FFMAX (scalar_t__,int) ; 
- scalar_t__ FFMIN (int const,int) ; 
- int /*<<< orphan*/  memset (scalar_t__*,int /*<<< orphan*/ ,int) ; 
+
+ int FFABS (scalar_t__) ;
+ scalar_t__ FFMAX (scalar_t__,int) ;
+ scalar_t__ FFMIN (int const,int) ;
+ int memset (scalar_t__*,int ,int) ;
 
 __attribute__((used)) static inline void calc_precision(ATRAC9Context *s, ATRAC9BlockData *b,
                                   ATRAC9ChannelData *c)

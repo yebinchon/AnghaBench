@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsIDOMNodeList ;
-typedef  int /*<<< orphan*/  nsIDOMNode ;
-typedef  int /*<<< orphan*/  elem_vector_t ;
-typedef  scalar_t__ UINT32 ;
-struct TYPE_5__ {int /*<<< orphan*/  nsnode; } ;
-typedef  int /*<<< orphan*/  HTMLDocumentNode ;
-typedef  TYPE_1__ HTMLDOMNode ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  elem_from_HTMLDOMNode (TYPE_1__*) ; 
- int /*<<< orphan*/  elem_vector_add (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_node (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__**) ; 
- scalar_t__ is_elem_node (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMNodeList_GetLength (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  nsIDOMNodeList_Item (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  nsIDOMNode_GetChildNodes (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int nsresult ;
+typedef int nsIDOMNodeList ;
+typedef int nsIDOMNode ;
+typedef int elem_vector_t ;
+typedef scalar_t__ UINT32 ;
+struct TYPE_5__ {int nsnode; } ;
+typedef int HTMLDocumentNode ;
+typedef TYPE_1__ HTMLDOMNode ;
+typedef int HRESULT ;
+
+
+ int ERR (char*,int ) ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,int ) ;
+ scalar_t__ NS_FAILED (int ) ;
+ int TRUE ;
+ int elem_from_HTMLDOMNode (TYPE_1__*) ;
+ int elem_vector_add (int *,int ) ;
+ int get_node (int *,int *,int ,TYPE_1__**) ;
+ scalar_t__ is_elem_node (int *) ;
+ int nsIDOMNodeList_GetLength (int *,scalar_t__*) ;
+ int nsIDOMNodeList_Item (int *,scalar_t__,int **) ;
+ int nsIDOMNode_GetChildNodes (int ,int **) ;
 
 __attribute__((used)) static void create_all_list(HTMLDocumentNode *doc, HTMLDOMNode *elem, elem_vector_t *buf)
 {

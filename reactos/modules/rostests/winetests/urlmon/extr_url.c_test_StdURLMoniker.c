@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPOLESTR ;
-typedef  int /*<<< orphan*/  IUriContainer ;
-typedef  int /*<<< orphan*/  IUri ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IMoniker ;
-typedef  int /*<<< orphan*/  IBindStatusCallback ;
-typedef  int /*<<< orphan*/  IBindCtx ;
-typedef  int /*<<< orphan*/ * HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_CALLED (int /*<<< orphan*/ ) ; 
- int CLSCTX_INPROC_HANDLER ; 
- int CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/ * CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/ * CreateAsyncBindCtx (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IAsyncMoniker ; 
- int /*<<< orphan*/  IID_IInternet ; 
- int /*<<< orphan*/  IID_IMoniker ; 
- int /*<<< orphan*/  IID_IStream ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  IID_IUriContainer ; 
- int /*<<< orphan*/ * IMoniker_BindToObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/ * IMoniker_BindToStorage (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/ * IMoniker_GetDisplayName (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * IMoniker_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IMoniker_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * IUriContainer_GetIUri (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IUriContainer_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * MK_E_SYNTAX ; 
- int /*<<< orphan*/  QueryInterface_IServiceProvider ; 
- int /*<<< orphan*/  SET_EXPECT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * S_FALSE ; 
- int /*<<< orphan*/ * S_OK ; 
- int /*<<< orphan*/  bsc ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ pCreateUri ; 
+
+
+
+typedef int LPOLESTR ;
+typedef int IUriContainer ;
+typedef int IUri ;
+typedef int IUnknown ;
+typedef int IMoniker ;
+typedef int IBindStatusCallback ;
+typedef int IBindCtx ;
+typedef int * HRESULT ;
+
+
+ int CHECK_CALLED (int ) ;
+ int CLSCTX_INPROC_HANDLER ;
+ int CLSCTX_INPROC_SERVER ;
+ int * CoCreateInstance (int *,int *,int,int *,void**) ;
+ int * CreateAsyncBindCtx (int ,int *,int *,int **) ;
+ int * E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int *) ;
+ int IID_IAsyncMoniker ;
+ int IID_IInternet ;
+ int IID_IMoniker ;
+ int IID_IStream ;
+ int IID_IUnknown ;
+ int IID_IUriContainer ;
+ int * IMoniker_BindToObject (int *,int *,int *,int *,void**) ;
+ int * IMoniker_BindToStorage (int *,int *,int *,int *,void**) ;
+ int * IMoniker_GetDisplayName (int *,int *,int *,int *) ;
+ int * IMoniker_QueryInterface (int *,int *,void**) ;
+ int IMoniker_Release (int *) ;
+ int * IUriContainer_GetIUri (int *,int **) ;
+ int IUriContainer_Release (int *) ;
+ int * MK_E_SYNTAX ;
+ int QueryInterface_IServiceProvider ;
+ int SET_EXPECT (int ) ;
+ int * S_FALSE ;
+ int * S_OK ;
+ int bsc ;
+ int ok (int,char*,...) ;
+ scalar_t__ pCreateUri ;
 
 __attribute__((used)) static void test_StdURLMoniker(void)
 {
@@ -57,7 +57,7 @@ __attribute__((used)) static void test_StdURLMoniker(void)
     IUnknown *unk;
     HRESULT hres;
 
-    hres = CoCreateInstance(&IID_IInternet, NULL, CLSCTX_INPROC_SERVER|CLSCTX_INPROC_HANDLER,
+    hres = CoCreateInstance(&IID_IInternet, ((void*)0), CLSCTX_INPROC_SERVER|CLSCTX_INPROC_HANDLER,
             &IID_IMoniker, (void**)&mon);
     ok(hres == S_OK, "Could not create IInternet instance: %08x\n", hres);
     if(FAILED(hres))
@@ -68,7 +68,7 @@ __attribute__((used)) static void test_StdURLMoniker(void)
     ok(mon == async_mon, "mon != async_mon\n");
     IMoniker_Release(async_mon);
 
-    hres = IMoniker_GetDisplayName(mon, NULL, NULL, &display_name);
+    hres = IMoniker_GetDisplayName(mon, ((void*)0), ((void*)0), &display_name);
     ok(hres == E_OUTOFMEMORY, "GetDisplayName failed: %08x, expected E_OUTOFMEMORY\n", hres);
 
     if(pCreateUri) {
@@ -88,18 +88,18 @@ __attribute__((used)) static void test_StdURLMoniker(void)
     }
 
     SET_EXPECT(QueryInterface_IServiceProvider);
-    hres = CreateAsyncBindCtx(0, (IBindStatusCallback*)&bsc, NULL, &bctx);
+    hres = CreateAsyncBindCtx(0, (IBindStatusCallback*)&bsc, ((void*)0), &bctx);
     ok(hres == S_OK, "CreateAsyncBindCtx failed: %08x\n\n", hres);
     CHECK_CALLED(QueryInterface_IServiceProvider);
 
-    if(pCreateUri) { /* Skip these tests on old IEs */
+    if(pCreateUri) {
         unk = (void*)0xdeadbeef;
-        hres = IMoniker_BindToStorage(mon, bctx, NULL, &IID_IStream, (void**)&unk);
+        hres = IMoniker_BindToStorage(mon, bctx, ((void*)0), &IID_IStream, (void**)&unk);
         ok(hres == MK_E_SYNTAX, "BindToStorage failed: %08x, expected MK_E_SYNTAX\n", hres);
         ok(!unk, "unk = %p\n", unk);
 
         unk = (void*)0xdeadbeef;
-        hres = IMoniker_BindToObject(mon, bctx, NULL, &IID_IUnknown, (void**)&unk);
+        hres = IMoniker_BindToObject(mon, bctx, ((void*)0), &IID_IUnknown, (void**)&unk);
         ok(hres == MK_E_SYNTAX, "BindToStorage failed: %08x, expected MK_E_SYNTAX\n", hres);
         ok(!unk, "unk = %p\n", unk);
     }

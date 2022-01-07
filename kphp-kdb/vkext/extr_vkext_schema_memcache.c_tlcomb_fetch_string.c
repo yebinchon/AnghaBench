@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int len; char* val; } ;
 struct TYPE_6__ {TYPE_2__ str; } ;
-struct TYPE_8__ {TYPE_1__ value; int /*<<< orphan*/  type; } ;
-typedef  TYPE_3__ zval ;
+struct TYPE_8__ {TYPE_1__ value; int type; } ;
+typedef TYPE_3__ zval ;
 struct tl_tree {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IS_STRING ; 
- int /*<<< orphan*/  MAKE_STD_ZVAL (TYPE_3__*) ; 
- int /*<<< orphan*/  TLUNI_NEXT ; 
- int tl_eparse_string (char**) ; 
- scalar_t__ tl_parse_error () ; 
+
+ int IS_STRING ;
+ int MAKE_STD_ZVAL (TYPE_3__*) ;
+ int TLUNI_NEXT ;
+ int tl_eparse_string (char**) ;
+ scalar_t__ tl_parse_error () ;
 
 void *tlcomb_fetch_string (void **IP, void **Data, zval **arr, struct tl_tree **vars) {
   char *a;

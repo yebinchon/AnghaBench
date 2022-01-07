@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int* LPWSTR ;
-typedef  int INT ;
-typedef  void* BOOL ;
 
-/* Variables and functions */
- void* FALSE ; 
- void* Full ; 
- int* Image ; 
- void* Set ; 
- void* TRUE ; 
- void* Unset ; 
- scalar_t__ wcscmp (int*,char*) ; 
- int /*<<< orphan*/  wprintf (char*,...) ; 
+
+
+
+typedef int* LPWSTR ;
+typedef int INT ;
+typedef void* BOOL ;
+
+
+ void* FALSE ;
+ void* Full ;
+ int* Image ;
+ void* Set ;
+ void* TRUE ;
+ void* Unset ;
+ scalar_t__ wcscmp (int*,char*) ;
+ int wprintf (char*,...) ;
 
 BOOL PageHeap_ParseCmdline(INT i, int argc, LPWSTR argv[])
 {
@@ -43,7 +43,7 @@ BOOL PageHeap_ParseCmdline(INT i, int argc, LPWSTR argv[])
                 Full = TRUE;
             }
         }
-        else if (Image == NULL)
+        else if (Image == ((void*)0))
         {
             Image = argv[i];
         }
@@ -60,7 +60,7 @@ BOOL PageHeap_ParseCmdline(INT i, int argc, LPWSTR argv[])
         return FALSE;
     }
 
-    if (Image == NULL && (Set || Unset || Full))
+    if (Image == ((void*)0) && (Set || Unset || Full))
     {
         wprintf(L"Can't ENABLE or DISABLE with no image\n");
         return FALSE;

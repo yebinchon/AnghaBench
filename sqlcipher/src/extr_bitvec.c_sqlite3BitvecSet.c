@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t u32 ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef size_t u32 ;
 struct TYPE_6__ {int* aBitmap; int* aHash; TYPE_2__** apSub; } ;
 struct TYPE_7__ {size_t iSize; size_t iDivisor; int nSet; TYPE_1__ u; } ;
-typedef  TYPE_2__ Bitvec ;
+typedef TYPE_2__ Bitvec ;
 
-/* Variables and functions */
- size_t BITVEC_HASH (int /*<<< orphan*/ ) ; 
- scalar_t__ BITVEC_MXHASH ; 
- size_t BITVEC_NBIT ; 
- int BITVEC_NINT ; 
- int BITVEC_NPTR ; 
- size_t BITVEC_SZELEM ; 
- int SQLITE_NOMEM_BKPT ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcpy (size_t*,size_t*,int) ; 
- int /*<<< orphan*/  memset (TYPE_2__**,int /*<<< orphan*/ ,int) ; 
- TYPE_2__* sqlite3BitvecCreate (size_t) ; 
- size_t* sqlite3StackAllocRaw (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3StackFree (int /*<<< orphan*/ ,size_t*) ; 
+
+ size_t BITVEC_HASH (int ) ;
+ scalar_t__ BITVEC_MXHASH ;
+ size_t BITVEC_NBIT ;
+ int BITVEC_NINT ;
+ int BITVEC_NPTR ;
+ size_t BITVEC_SZELEM ;
+ int SQLITE_NOMEM_BKPT ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int memcpy (size_t*,size_t*,int) ;
+ int memset (TYPE_2__**,int ,int) ;
+ TYPE_2__* sqlite3BitvecCreate (size_t) ;
+ size_t* sqlite3StackAllocRaw (int ,int) ;
+ int sqlite3StackFree (int ,size_t*) ;
 
 int sqlite3BitvecSet(Bitvec *p, u32 i){
   u32 h;
@@ -53,9 +53,9 @@ int sqlite3BitvecSet(Bitvec *p, u32 i){
     return SQLITE_OK;
   }
   h = BITVEC_HASH(i++);
-  /* if there wasn't a hash collision, and this doesn't */
-  /* completely fill the hash, then just add it without */
-  /* worring about sub-dividing and re-hashing. */
+
+
+
   if( !p->u.aHash[h] ){
     if (p->nSet<(BITVEC_NINT-1)) {
       goto bitvec_set_end;
@@ -63,16 +63,16 @@ int sqlite3BitvecSet(Bitvec *p, u32 i){
       goto bitvec_set_rehash;
     }
   }
-  /* there was a collision, check to see if it's already */
-  /* in hash, if not, try to find a spot for it */
+
+
   do {
     if( p->u.aHash[h]==i ) return SQLITE_OK;
     h++;
     if( h>=BITVEC_NINT ) h = 0;
   } while( p->u.aHash[h] );
-  /* we didn't find it in the hash.  h points to the first */
-  /* available free spot. check to see if this is going to */
-  /* make our hash too "full".  */
+
+
+
 bitvec_set_rehash:
   if( p->nSet>=BITVEC_MXHASH ){
     unsigned int j;

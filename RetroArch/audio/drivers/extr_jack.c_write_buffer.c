@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ nonblock; int /*<<< orphan*/  cond_lock; int /*<<< orphan*/  cond; int /*<<< orphan*/ * buffer; scalar_t__ shutdown; } ;
-typedef  TYPE_1__ jack_t ;
-typedef  float jack_default_audio_sample_t ;
 
-/* Variables and functions */
- int AUDIO_CHUNK_SIZE_NONBLOCKING ; 
- int AUDIO_MAX_RATIO ; 
- size_t FRAMES (size_t) ; 
- int /*<<< orphan*/  jack_ringbuffer_write (int /*<<< orphan*/ ,char const*,size_t) ; 
- size_t jack_ringbuffer_write_space (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scond_wait (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slock_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slock_unlock (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ nonblock; int cond_lock; int cond; int * buffer; scalar_t__ shutdown; } ;
+typedef TYPE_1__ jack_t ;
+typedef float jack_default_audio_sample_t ;
+
+
+ int AUDIO_CHUNK_SIZE_NONBLOCKING ;
+ int AUDIO_MAX_RATIO ;
+ size_t FRAMES (size_t) ;
+ int jack_ringbuffer_write (int ,char const*,size_t) ;
+ size_t jack_ringbuffer_write_space (int ) ;
+ int scond_wait (int ,int ) ;
+ int slock_lock (int ) ;
+ int slock_unlock (int ) ;
 
 __attribute__((used)) static size_t write_buffer(jack_t *jd, const float *buf, size_t size)
 {
@@ -32,7 +32,7 @@ __attribute__((used)) static size_t write_buffer(jack_t *jd, const float *buf, s
    jack_default_audio_sample_t out_deinterleaved_buffer[2][AUDIO_CHUNK_SIZE_NONBLOCKING * AUDIO_MAX_RATIO];
    size_t frames = FRAMES(size);
 
-   /* Avoid buffer overflow if a DSP plugin generated a huge number of frames. */
+
    if (frames > AUDIO_CHUNK_SIZE_NONBLOCKING * AUDIO_MAX_RATIO)
       frames = AUDIO_CHUNK_SIZE_NONBLOCKING * AUDIO_MAX_RATIO;
 
@@ -63,15 +63,6 @@ __attribute__((used)) static size_t write_buffer(jack_t *jd, const float *buf, s
          }
          written += write_frames;
       }
-#ifdef HAVE_THREADS
-      else
-      {
-         slock_lock(jd->cond_lock);
-         scond_wait(jd->cond, jd->cond_lock);
-         slock_unlock(jd->cond_lock);
-      }
-#endif
-
       if (jd->nonblock)
          break;
    }

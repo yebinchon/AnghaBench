@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int STATUS_UNMERGED_BOTH_ADDED ; 
- int STATUS_UNMERGED_BOTH_CHANGED ; 
- int STATUS_UNMERGED_DFC_I_ADDED_FILE ; 
- int STATUS_UNMERGED_DFC_OTHERS_ADDED_FILE ; 
- int STATUS_UNMERGED_I_REMOVED ; 
- int STATUS_UNMERGED_OTHERS_REMOVED ; 
- int /*<<< orphan*/  seaf_warning (char*) ; 
+ int STATUS_UNMERGED_BOTH_ADDED ;
+ int STATUS_UNMERGED_BOTH_CHANGED ;
+ int STATUS_UNMERGED_DFC_I_ADDED_FILE ;
+ int STATUS_UNMERGED_DFC_OTHERS_ADDED_FILE ;
+ int STATUS_UNMERGED_I_REMOVED ;
+ int STATUS_UNMERGED_OTHERS_REMOVED ;
+ int seaf_warning (char*) ;
 
 int diff_unmerged_state(int mask)
 {

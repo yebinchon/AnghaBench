@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * keyword; } ;
-typedef  TYPE_1__ PQconninfoOption ;
 
-/* Variables and functions */
- scalar_t__ strcmp (int /*<<< orphan*/ *,char const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * keyword; } ;
+typedef TYPE_1__ PQconninfoOption ;
+
+
+ scalar_t__ strcmp (int *,char const*) ;
 
 __attribute__((used)) static PQconninfoOption *
 conninfo_find(PQconninfoOption *connOptions, const char *keyword)
 {
-	PQconninfoOption *option;
+ PQconninfoOption *option;
 
-	for (option = connOptions; option->keyword != NULL; option++)
-	{
-		if (strcmp(option->keyword, keyword) == 0)
-			return option;
-	}
+ for (option = connOptions; option->keyword != ((void*)0); option++)
+ {
+  if (strcmp(option->keyword, keyword) == 0)
+   return option;
+ }
 
-	return NULL;
+ return ((void*)0);
 }

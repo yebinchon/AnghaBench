@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  airo_driver ; 
- int /*<<< orphan*/  pcmcia_unregister_driver (int /*<<< orphan*/ *) ; 
+ int airo_driver ;
+ int pcmcia_unregister_driver (int *) ;
 
 __attribute__((used)) static void airo_cs_cleanup(void)
 {
-	pcmcia_unregister_driver(&airo_driver);
+ pcmcia_unregister_driver(&airo_driver);
 }

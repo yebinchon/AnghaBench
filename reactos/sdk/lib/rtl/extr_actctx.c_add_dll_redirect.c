@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dll_redirect {int dummy; } ;
 struct assembly {int allocated_dlls; int num_dlls; struct dll_redirect* dlls; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,struct assembly*,int) ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- void* RtlAllocateHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  RtlGetProcessHeap () ; 
- void* RtlReAllocateHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct dll_redirect*,unsigned int) ; 
+
+ int DPRINT (char*,struct assembly*,int) ;
+ int HEAP_ZERO_MEMORY ;
+ void* RtlAllocateHeap (int ,int ,unsigned int) ;
+ int RtlGetProcessHeap () ;
+ void* RtlReAllocateHeap (int ,int ,struct dll_redirect*,unsigned int) ;
 
 __attribute__((used)) static struct dll_redirect* add_dll_redirect(struct assembly* assembly)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static struct dll_redirect* add_dll_redirect(struct assemb
             new_count = 4;
             ptr = RtlAllocateHeap( RtlGetProcessHeap(), HEAP_ZERO_MEMORY, new_count * sizeof(*assembly->dlls) );
         }
-        if (!ptr) return NULL;
+        if (!ptr) return ((void*)0);
         assembly->dlls = ptr;
         assembly->allocated_dlls = new_count;
     }

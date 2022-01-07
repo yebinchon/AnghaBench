@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct correl_data {scalar_t__ sxy; scalar_t__ syy; scalar_t__ sxx; scalar_t__ sy; scalar_t__ sx; scalar_t__ n; } ;
-typedef  int /*<<< orphan*/  strm_value ;
-typedef  int /*<<< orphan*/  strm_stream ;
+typedef int strm_value ;
+typedef int strm_stream ;
 
-/* Variables and functions */
- int STRM_NG ; 
- int STRM_OK ; 
- int /*<<< orphan*/  correl_finish ; 
- int /*<<< orphan*/  iter_correl ; 
- struct correl_data* malloc (int) ; 
- int /*<<< orphan*/  strm_filter ; 
- int /*<<< orphan*/  strm_get_args (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  strm_stream_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  strm_stream_value (int /*<<< orphan*/ ) ; 
+
+ int STRM_NG ;
+ int STRM_OK ;
+ int correl_finish ;
+ int iter_correl ;
+ struct correl_data* malloc (int) ;
+ int strm_filter ;
+ int strm_get_args (int *,int,int *,char*) ;
+ int strm_stream_new (int ,int ,int ,void*) ;
+ int strm_stream_value (int ) ;
 
 __attribute__((used)) static int
 exec_correl(strm_stream* strm, int argc, strm_value* args, strm_value* ret)

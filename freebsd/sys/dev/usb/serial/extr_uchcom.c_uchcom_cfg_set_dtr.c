@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+
+
+typedef int uint8_t ;
 struct ucom_softc {struct uchcom_softc* sc_parent; } ;
-struct uchcom_softc {int /*<<< orphan*/  sc_dtr; } ;
+struct uchcom_softc {int sc_dtr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINTF (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uchcom_set_dtr_rts (struct uchcom_softc*) ; 
+
+ int DPRINTF (char*,int ) ;
+ int uchcom_set_dtr_rts (struct uchcom_softc*) ;
 
 __attribute__((used)) static void
 uchcom_cfg_set_dtr(struct ucom_softc *ucom, uint8_t onoff)
 {
-	struct uchcom_softc *sc = ucom->sc_parent;
+ struct uchcom_softc *sc = ucom->sc_parent;
 
-	DPRINTF("onoff = %d\n", onoff);
+ DPRINTF("onoff = %d\n", onoff);
 
-	sc->sc_dtr = onoff;
-	uchcom_set_dtr_rts(sc);
+ sc->sc_dtr = onoff;
+ uchcom_set_dtr_rts(sc);
 }

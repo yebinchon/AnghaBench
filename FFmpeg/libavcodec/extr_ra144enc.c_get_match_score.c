@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int BLOCKSIZE ; 
- int /*<<< orphan*/  LPC_ORDER ; 
- int /*<<< orphan*/  ff_celp_lp_synthesis_filterf (float*,float const*,float*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  orthogonalize (float*,float const*) ; 
+ int BLOCKSIZE ;
+ int LPC_ORDER ;
+ int ff_celp_lp_synthesis_filterf (float*,float const*,float*,int,int ) ;
+ int orthogonalize (float*,float const*) ;
 
 __attribute__((used)) static void get_match_score(float *work, const float *coefs, float *vect,
                             const float *ortho1, const float *ortho2,

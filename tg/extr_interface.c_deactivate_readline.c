@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (scalar_t__*) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- scalar_t__* malloc (int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  printf (char*) ; 
- scalar_t__ read_one_string ; 
- int rl_end ; 
- int /*<<< orphan*/  rl_line_buffer ; 
- int /*<<< orphan*/  rl_point ; 
- int /*<<< orphan*/  rl_redisplay () ; 
- int /*<<< orphan*/  rl_replace_line (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rl_save_prompt () ; 
- scalar_t__* saved_line ; 
- int /*<<< orphan*/  saved_point ; 
- int /*<<< orphan*/  stdout ; 
+ int assert (scalar_t__*) ;
+ int fflush (int ) ;
+ scalar_t__* malloc (int) ;
+ int memcpy (scalar_t__*,int ,int) ;
+ int printf (char*) ;
+ scalar_t__ read_one_string ;
+ int rl_end ;
+ int rl_line_buffer ;
+ int rl_point ;
+ int rl_redisplay () ;
+ int rl_replace_line (char*,int ) ;
+ int rl_save_prompt () ;
+ scalar_t__* saved_line ;
+ int saved_point ;
+ int stdout ;
 
 void deactivate_readline (void) {
   if (read_one_string) {

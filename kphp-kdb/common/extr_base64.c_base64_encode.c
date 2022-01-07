@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int next_input_uchar (unsigned char const* const,int,int*) ; 
- char* symbols64 ; 
+ int assert (int) ;
+ int memcpy (char*,char*,int) ;
+ int next_input_uchar (unsigned char const* const,int,int*) ;
+ char* symbols64 ;
 
 int base64_encode (const unsigned char *const input, int ilen, char *output, int olen) {
   int i, j = 0;
@@ -34,11 +26,11 @@ int base64_encode (const unsigned char *const input, int ilen, char *output, int
       buf[u] = symbols64[o & 63];
       o >>= 6;
     }
-    if (l == 1) { 
-      buf[2] = buf[3] = '='; 
+    if (l == 1) {
+      buf[2] = buf[3] = '=';
     }
-    else if (l == 2) { 
-      buf[3] = '='; 
+    else if (l == 2) {
+      buf[3] = '=';
     }
     if (j + 3 >= olen) {
       return -1;

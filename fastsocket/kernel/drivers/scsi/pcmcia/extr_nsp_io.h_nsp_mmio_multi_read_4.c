@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ unsigned long readl (unsigned long*) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned long readl (unsigned long*) ; 
-
-__attribute__((used)) static inline void nsp_mmio_multi_read_4(unsigned long  base,
-					 unsigned int   Register,
-					 void          *buf,
-					 unsigned long  count)
+__attribute__((used)) static inline void nsp_mmio_multi_read_4(unsigned long base,
+      unsigned int Register,
+      void *buf,
+      unsigned long count)
 {
-	unsigned long *ptr = (unsigned long *)(base + Register);
-	unsigned long *tmp = (unsigned long *)buf;
-	int i;
+ unsigned long *ptr = (unsigned long *)(base + Register);
+ unsigned long *tmp = (unsigned long *)buf;
+ int i;
 
-	//nsp_dbg(NSP_DEBUG_DATA_IO, "base 0x%0lx ptr 0x%p",base,ptr);
 
-	for (i = 0; i < count; i++) {
-		*tmp = readl(ptr);
-		//nsp_dbg(NSP_DEBUG_DATA_IO, "<%d,%p,%p,%lx>", i, ptr, tmp, *tmp);
-		tmp++;
-	}
+
+ for (i = 0; i < count; i++) {
+  *tmp = readl(ptr);
+
+  tmp++;
+ }
 }

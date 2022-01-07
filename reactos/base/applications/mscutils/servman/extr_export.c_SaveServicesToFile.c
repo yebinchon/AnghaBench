@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  newl ;
-typedef  int WCHAR ;
-struct TYPE_4__ {int /*<<< orphan*/  hListView; } ;
-typedef  TYPE_1__* PMAIN_WND_INFO ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  scalar_t__ INT ;
-typedef  scalar_t__ HANDLE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CREATE_ALWAYS ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFileW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_NORMAL ; 
- int /*<<< orphan*/  GENERIC_WRITE ; 
- int GetTextFromListView (TYPE_1__*,int*,scalar_t__,scalar_t__) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- scalar_t__ ListView_GetItemCount (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WriteFile (scalar_t__,int*,int,int*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int newl ;
+typedef int WCHAR ;
+struct TYPE_4__ {int hListView; } ;
+typedef TYPE_1__* PMAIN_WND_INFO ;
+typedef int LPCWSTR ;
+typedef scalar_t__ INT ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int CREATE_ALWAYS ;
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFileW (int ,int ,int ,int *,int ,int ,int *) ;
+ int FALSE ;
+ int FILE_ATTRIBUTE_NORMAL ;
+ int GENERIC_WRITE ;
+ int GetTextFromListView (TYPE_1__*,int*,scalar_t__,scalar_t__) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ scalar_t__ ListView_GetItemCount (int ) ;
+ int TRUE ;
+ int WriteFile (scalar_t__,int*,int,int*,int *) ;
 
 __attribute__((used)) static BOOL
 SaveServicesToFile(PMAIN_WND_INFO Info,
@@ -44,10 +44,10 @@ SaveServicesToFile(PMAIN_WND_INFO Info,
     hFile = CreateFileW(pszFileName,
                        GENERIC_WRITE,
                        0,
-                       NULL,
+                       ((void*)0),
                        CREATE_ALWAYS,
                        FILE_ATTRIBUTE_NORMAL,
-                       NULL);
+                       ((void*)0));
 
     if(hFile != INVALID_HANDLE_VALUE)
     {
@@ -74,20 +74,20 @@ SaveServicesToFile(PMAIN_WND_INFO Info,
                               LVText,
                               sizeof(WCHAR) * dwTextLength,
                               &dwWritten,
-                              NULL);
+                              ((void*)0));
 
                     WriteFile(hFile,
                               &tab,
                               sizeof(WCHAR),
                               &dwWritten,
-                              NULL);
+                              ((void*)0));
                 }
             }
             WriteFile(hFile,
                       newl,
                       sizeof(newl),
                       &dwWritten,
-                      NULL);
+                      ((void*)0));
         }
 
         CloseHandle(hFile);

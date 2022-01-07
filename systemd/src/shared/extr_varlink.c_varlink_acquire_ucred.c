@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int ucred_acquired; int /*<<< orphan*/  ucred; int /*<<< orphan*/  fd; } ;
-typedef  TYPE_1__ Varlink ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int getpeercred (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int ucred_acquired; int ucred; int fd; } ;
+typedef TYPE_1__ Varlink ;
+
+
+ int assert (TYPE_1__*) ;
+ int getpeercred (int ,int *) ;
 
 __attribute__((used)) static int varlink_acquire_ucred(Varlink *v) {
         int r;
@@ -30,6 +30,6 @@ __attribute__((used)) static int varlink_acquire_ucred(Varlink *v) {
         if (r < 0)
                 return r;
 
-        v->ucred_acquired = true;
+        v->ucred_acquired = 1;
         return 0;
 }

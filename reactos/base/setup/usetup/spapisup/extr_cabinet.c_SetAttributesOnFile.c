@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
-struct TYPE_7__ {int /*<<< orphan*/  FileAttributes; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int ULONG ;
+struct TYPE_7__ {int FileAttributes; } ;
 struct TYPE_6__ {int Attributes; } ;
-typedef  TYPE_1__* PCFFILE ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  IO_STATUS_BLOCK ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  TYPE_2__ FILE_BASIC_INFORMATION ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__* PCFFILE ;
+typedef int NTSTATUS ;
+typedef int IO_STATUS_BLOCK ;
+typedef int HANDLE ;
+typedef TYPE_2__ FILE_BASIC_INFORMATION ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int CAB_ATTRIB_ARCHIVE ; 
- int CAB_ATTRIB_DIRECTORY ; 
- int CAB_ATTRIB_HIDDEN ; 
- int CAB_ATTRIB_READONLY ; 
- int CAB_ATTRIB_SYSTEM ; 
- int /*<<< orphan*/  DPRINT (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_ARCHIVE ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_DIRECTORY ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_HIDDEN ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_READONLY ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_SYSTEM ; 
- int /*<<< orphan*/  FileBasicInformation ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtQueryInformationFile (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtSetInformationFile (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__*,int,int /*<<< orphan*/ ) ; 
+
+ int CAB_ATTRIB_ARCHIVE ;
+ int CAB_ATTRIB_DIRECTORY ;
+ int CAB_ATTRIB_HIDDEN ;
+ int CAB_ATTRIB_READONLY ;
+ int CAB_ATTRIB_SYSTEM ;
+ int DPRINT (char*,int ) ;
+ int FILE_ATTRIBUTE_ARCHIVE ;
+ int FILE_ATTRIBUTE_DIRECTORY ;
+ int FILE_ATTRIBUTE_HIDDEN ;
+ int FILE_ATTRIBUTE_READONLY ;
+ int FILE_ATTRIBUTE_SYSTEM ;
+ int FileBasicInformation ;
+ int NT_SUCCESS (int ) ;
+ int NtQueryInformationFile (int ,int *,TYPE_2__*,int,int ) ;
+ int NtSetInformationFile (int ,int *,TYPE_2__*,int,int ) ;
 
 __attribute__((used)) static BOOL
 SetAttributesOnFile(PCFFILE File,

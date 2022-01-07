@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ivopts_data {int dummy; } ;
-typedef  int /*<<< orphan*/  block_stmt_iterator ;
-typedef  int /*<<< orphan*/  basic_block ;
+typedef int block_stmt_iterator ;
+typedef int basic_block ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bsi_end_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bsi_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bsi_start (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bsi_stmt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  find_givs_in_stmt (struct ivopts_data*,int /*<<< orphan*/ ) ; 
+
+ int bsi_end_p (int ) ;
+ int bsi_next (int *) ;
+ int bsi_start (int ) ;
+ int bsi_stmt (int ) ;
+ int find_givs_in_stmt (struct ivopts_data*,int ) ;
 
 __attribute__((used)) static void
 find_givs_in_bb (struct ivopts_data *data, basic_block bb)

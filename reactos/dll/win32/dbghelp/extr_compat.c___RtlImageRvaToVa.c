@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG_PTR ;
-typedef  scalar_t__ ULONG ;
-struct TYPE_4__ {int /*<<< orphan*/  VirtualAddress; int /*<<< orphan*/  PointerToRawData; int /*<<< orphan*/  SizeOfRawData; } ;
-typedef  int /*<<< orphan*/ * PVOID ;
-typedef  TYPE_1__* PIMAGE_SECTION_HEADER ;
-typedef  int /*<<< orphan*/  IMAGE_NT_HEADERS ;
 
-/* Variables and functions */
- TYPE_1__* RtlImageRvaToSection (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ SWAPD (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG_PTR ;
+typedef scalar_t__ ULONG ;
+struct TYPE_4__ {int VirtualAddress; int PointerToRawData; int SizeOfRawData; } ;
+typedef int * PVOID ;
+typedef TYPE_1__* PIMAGE_SECTION_HEADER ;
+typedef int IMAGE_NT_HEADERS ;
+
+
+ TYPE_1__* RtlImageRvaToSection (int const*,int *,scalar_t__) ;
+ scalar_t__ SWAPD (int ) ;
 
 PVOID
 __RtlImageRvaToVa
-(const IMAGE_NT_HEADERS* NtHeader, 
- PVOID BaseAddress, 
+(const IMAGE_NT_HEADERS* NtHeader,
+ PVOID BaseAddress,
  ULONG Rva,
  PIMAGE_SECTION_HEADER *SectionHeader)
 {
-    PIMAGE_SECTION_HEADER Section = NULL;
+    PIMAGE_SECTION_HEADER Section = ((void*)0);
 
     if (SectionHeader)
         Section = *SectionHeader;
 
-    if ((Section == NULL) ||
+    if ((Section == ((void*)0)) ||
         (Rva < SWAPD(Section->VirtualAddress)) ||
         (Rva >= SWAPD(Section->VirtualAddress) + SWAPD(Section->SizeOfRawData)))
     {
         Section = RtlImageRvaToSection(NtHeader, BaseAddress, Rva);
-        if (Section == NULL)
-            return NULL;
+        if (Section == ((void*)0))
+            return ((void*)0);
 
         if (SectionHeader)
             *SectionHeader = Section;

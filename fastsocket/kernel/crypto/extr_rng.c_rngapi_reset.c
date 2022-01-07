@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
 struct crypto_rng {int dummy; } ;
-struct TYPE_2__ {int (* rng_reset ) (struct crypto_rng*,int /*<<< orphan*/ *,unsigned int) ;} ;
+struct TYPE_2__ {int (* rng_reset ) (struct crypto_rng*,int *,unsigned int) ;} ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- TYPE_1__* crypto_rng_alg (struct crypto_rng*) ; 
- int /*<<< orphan*/  get_random_bytes (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * kmalloc (unsigned int,int /*<<< orphan*/ ) ; 
- int stub1 (struct crypto_rng*,int /*<<< orphan*/ *,unsigned int) ; 
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ TYPE_1__* crypto_rng_alg (struct crypto_rng*) ;
+ int get_random_bytes (int *,unsigned int) ;
+ int kfree (int *) ;
+ int * kmalloc (unsigned int,int ) ;
+ int stub1 (struct crypto_rng*,int *,unsigned int) ;
 
 __attribute__((used)) static int rngapi_reset(struct crypto_rng *tfm, u8 *seed, unsigned int slen)
 {
-	u8 *buf = NULL;
-	int err;
+ u8 *buf = ((void*)0);
+ int err;
 
-	if (!seed && slen) {
-		buf = kmalloc(slen, GFP_KERNEL);
-		if (!buf)
-			return -ENOMEM;
+ if (!seed && slen) {
+  buf = kmalloc(slen, GFP_KERNEL);
+  if (!buf)
+   return -ENOMEM;
 
-		get_random_bytes(buf, slen);
-		seed = buf;
-	}
+  get_random_bytes(buf, slen);
+  seed = buf;
+ }
 
-	err = crypto_rng_alg(tfm)->rng_reset(tfm, seed, slen);
+ err = crypto_rng_alg(tfm)->rng_reset(tfm, seed, slen);
 
-	kfree(buf);
-	return err;
+ kfree(buf);
+ return err;
 }

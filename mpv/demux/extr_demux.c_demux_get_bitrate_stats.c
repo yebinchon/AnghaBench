@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct demuxer {struct demux_internal* in; } ;
 struct demux_stream {double bitrate; size_t type; scalar_t__ selected; } ;
-struct demux_internal {int num_streams; int /*<<< orphan*/  lock; TYPE_1__** streams; struct demuxer* d_user; } ;
+struct demux_internal {int num_streams; int lock; TYPE_1__** streams; struct demuxer* d_user; } ;
 struct TYPE_2__ {struct demux_stream* ds; } ;
 
-/* Variables and functions */
- double MPMAX (int /*<<< orphan*/ ,double) ; 
- int STREAM_TYPE_COUNT ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ double MPMAX (int ,double) ;
+ int STREAM_TYPE_COUNT ;
+ int assert (int) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 void demux_get_bitrate_stats(struct demuxer *demuxer, double *rates)
 {

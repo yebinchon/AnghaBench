@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  IInternetProtocol ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_CALLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetBindInfo ; 
- int /*<<< orphan*/  IInternetProtocol_Start (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReportResult ; 
- int /*<<< orphan*/  SET_EXPECT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bind_info ; 
- int /*<<< orphan*/  expect_hrResult ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  protocol_sink ; 
+
+
+
+typedef int LPCWSTR ;
+typedef int IInternetProtocol ;
+typedef int HRESULT ;
+
+
+ int CHECK_CALLED (int ) ;
+ int GetBindInfo ;
+ int IInternetProtocol_Start (int *,int ,int *,int *,int ,int ) ;
+ int ReportResult ;
+ int SET_EXPECT (int ) ;
+ int bind_info ;
+ int expect_hrResult ;
+ int ok (int,char*,int ,int ) ;
+ int protocol_sink ;
 
 __attribute__((used)) static void test_protocol_fail(IInternetProtocol *protocol, LPCWSTR url, HRESULT expected_hres)
 {

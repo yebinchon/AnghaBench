@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ EINTR ; 
- int WEXITSTATUS (int) ; 
- scalar_t__ WIFEXITED (int) ; 
- scalar_t__ WIFSIGNALED (int) ; 
- int /*<<< orphan*/  WNOHANG ; 
- int child_pid ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbosity ; 
- int waitpid (int,int*,int /*<<< orphan*/ ) ; 
+ scalar_t__ EINTR ;
+ int WEXITSTATUS (int) ;
+ scalar_t__ WIFEXITED (int) ;
+ scalar_t__ WIFSIGNALED (int) ;
+ int WNOHANG ;
+ int child_pid ;
+ scalar_t__ errno ;
+ int fprintf (int ,char*,int,...) ;
+ int stderr ;
+ scalar_t__ verbosity ;
+ int waitpid (int,int*,int ) ;
 
 void check_child_status (void) {
   if (!child_pid) {

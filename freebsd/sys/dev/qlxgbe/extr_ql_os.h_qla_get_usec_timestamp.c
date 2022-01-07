@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
+
+
+
+
+typedef int uint64_t ;
 struct timeval {scalar_t__ tv_usec; scalar_t__ tv_sec; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  microuptime (struct timeval*) ; 
+
+ int microuptime (struct timeval*) ;
 
 __attribute__((used)) static __inline uint64_t qla_get_usec_timestamp(void)
 {
-	struct timeval tv;
+ struct timeval tv;
 
-	microuptime(&tv);
+ microuptime(&tv);
 
-	return ((uint64_t)(((uint64_t)tv.tv_sec) * 1000000 + tv.tv_usec));
+ return ((uint64_t)(((uint64_t)tv.tv_sec) * 1000000 + tv.tv_usec));
 }

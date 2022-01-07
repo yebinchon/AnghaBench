@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* config_GetLibDir () ; 
- char* getenv (char*) ; 
- char* strdup (char const*) ; 
+ char* config_GetLibDir () ;
+ char* getenv (char*) ;
+ char* strdup (char const*) ;
 
 __attribute__((used)) static char *config_GetDataDir(void)
 {
     const char *path = getenv ("VLC_DATA_PATH");
-    return (path != NULL) ? strdup (path) : config_GetLibDir ();
+    return (path != ((void*)0)) ? strdup (path) : config_GetLibDir ();
 }

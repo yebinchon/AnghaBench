@@ -1,41 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  SWAPCTL 130 
-#define  SWAPOFF 129 
-#define  SWAPON 128 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- char* getprogname () ; 
- int orig_prog ; 
- int /*<<< orphan*/  stderr ; 
+ int exit (int) ;
+ int fprintf (int ,char*,...) ;
+ char* getprogname () ;
+ int orig_prog ;
+ int stderr ;
 
 __attribute__((used)) static void
 usage(void)
 {
 
-	fprintf(stderr, "usage: %s ", getprogname());
-	switch(orig_prog) {
-	case SWAPON:
-	    fprintf(stderr, "[-F fstab] -aLq | [-E] file ...\n");
-	    break;
-	case SWAPOFF:
-	    fprintf(stderr, "[-F fstab] -aLq | file ...\n");
-	    break;
-	case SWAPCTL:
-	    fprintf(stderr, "[-AghklmsU] [-a file ... | -d file ...]\n");
-	    break;
-	}
-	exit(1);
+ fprintf(stderr, "usage: %s ", getprogname());
+ switch(orig_prog) {
+ case 128:
+     fprintf(stderr, "[-F fstab] -aLq | [-E] file ...\n");
+     break;
+ case 129:
+     fprintf(stderr, "[-F fstab] -aLq | file ...\n");
+     break;
+ case 130:
+     fprintf(stderr, "[-AghklmsU] [-a file ... | -d file ...]\n");
+     break;
+ }
+ exit(1);
 }

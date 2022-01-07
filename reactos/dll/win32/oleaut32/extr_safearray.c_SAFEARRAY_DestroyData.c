@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  scalar_t__ ULONG ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int VARIANT ;
+typedef scalar_t__ ULONG ;
 struct TYPE_5__ {int fFeatures; scalar_t__ pvData; scalar_t__ cbElements; } ;
-typedef  TYPE_1__ SAFEARRAY ;
-typedef  scalar_t__ PBYTE ;
-typedef  scalar_t__ LPUNKNOWN ;
-typedef  int /*<<< orphan*/  IRecordInfo ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
+typedef TYPE_1__ SAFEARRAY ;
+typedef scalar_t__ PBYTE ;
+typedef scalar_t__ LPUNKNOWN ;
+typedef int IRecordInfo ;
+typedef int HRESULT ;
+typedef int BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_UNEXPECTED ; 
- int FADF_BSTR ; 
- int FADF_DATADELETED ; 
- int FADF_DISPATCH ; 
- int FADF_RECORD ; 
- int FADF_UNKNOWN ; 
- int FADF_VARIANT ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  IRecordInfo_RecordClear (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  IRecordInfo_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_Release (scalar_t__) ; 
- scalar_t__ SAFEARRAY_GetCellCount (TYPE_1__*) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  SafeArrayGetRecordInfo (TYPE_1__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VariantClear (int /*<<< orphan*/ *) ; 
+
+ int E_UNEXPECTED ;
+ int FADF_BSTR ;
+ int FADF_DATADELETED ;
+ int FADF_DISPATCH ;
+ int FADF_RECORD ;
+ int FADF_UNKNOWN ;
+ int FADF_VARIANT ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,...) ;
+ int IRecordInfo_RecordClear (int *,scalar_t__) ;
+ int IRecordInfo_Release (int *) ;
+ int IUnknown_Release (scalar_t__) ;
+ scalar_t__ SAFEARRAY_GetCellCount (TYPE_1__*) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int SafeArrayGetRecordInfo (TYPE_1__*,int **) ;
+ int SysFreeString (int ) ;
+ int VariantClear (int *) ;
 
 __attribute__((used)) static HRESULT SAFEARRAY_DestroyData(SAFEARRAY *psa, ULONG ulStartCell)
 {

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ uint16_t ;
-typedef  int /*<<< orphan*/  depth ;
-typedef  int /*<<< orphan*/  HuffmanTree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BrotliConvertBitDepthsToSymbols (scalar_t__*,size_t const,scalar_t__*) ; 
- int /*<<< orphan*/  BrotliCreateHuffmanTree (scalar_t__ const*,size_t const,int,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  BrotliStoreHuffmanTree (scalar_t__*,size_t const,int /*<<< orphan*/ *,size_t*,scalar_t__*) ; 
- int /*<<< orphan*/  BrotliWriteBits (size_t,size_t,size_t*,scalar_t__*) ; 
- int /*<<< orphan*/  StoreSimpleHuffmanTree (scalar_t__*,size_t*,size_t,size_t,size_t*,scalar_t__*) ; 
- int /*<<< orphan*/  memset (scalar_t__*,int /*<<< orphan*/ ,size_t const) ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ uint16_t ;
+typedef int depth ;
+typedef int HuffmanTree ;
+
+
+ int BrotliConvertBitDepthsToSymbols (scalar_t__*,size_t const,scalar_t__*) ;
+ int BrotliCreateHuffmanTree (scalar_t__ const*,size_t const,int,int *,scalar_t__*) ;
+ int BrotliStoreHuffmanTree (scalar_t__*,size_t const,int *,size_t*,scalar_t__*) ;
+ int BrotliWriteBits (size_t,size_t,size_t*,scalar_t__*) ;
+ int StoreSimpleHuffmanTree (scalar_t__*,size_t*,size_t,size_t,size_t*,scalar_t__*) ;
+ int memset (scalar_t__*,int ,size_t const) ;
 
 __attribute__((used)) static void BuildAndStoreHuffmanTree(const uint32_t *histogram,
                                      const size_t length,

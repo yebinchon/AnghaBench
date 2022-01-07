@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ int32_t ;
 struct TYPE_3__ {int numOfTags; scalar_t__* tagColumnIndex; } ;
-typedef  int /*<<< orphan*/  SSqlCmd ;
-typedef  TYPE_1__ SMeterMetaInfo ;
+typedef int SSqlCmd ;
+typedef TYPE_1__ SMeterMetaInfo ;
 
-/* Variables and functions */
- scalar_t__ TSDB_MAX_TAGS ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memmove (scalar_t__*,scalar_t__*,int) ; 
- TYPE_1__* tscGetMeterMetaInfo (int /*<<< orphan*/ *,scalar_t__) ; 
+
+ scalar_t__ TSDB_MAX_TAGS ;
+ int assert (int) ;
+ int memmove (scalar_t__*,scalar_t__*,int) ;
+ TYPE_1__* tscGetMeterMetaInfo (int *,scalar_t__) ;
 
 void addRequiredTagColumn(SSqlCmd* pCmd, int32_t tagColIndex, int32_t tableIndex) {
   SMeterMetaInfo* pMeterMetaInfo = tscGetMeterMetaInfo(pCmd, tableIndex);
 
   if (pMeterMetaInfo->numOfTags == 0 || pMeterMetaInfo->tagColumnIndex[pMeterMetaInfo->numOfTags - 1] < tagColIndex) {
     pMeterMetaInfo->tagColumnIndex[pMeterMetaInfo->numOfTags++] = tagColIndex;
-  } else {  // find the appropriate position
+  } else {
     for (int32_t i = 0; i < pMeterMetaInfo->numOfTags; ++i) {
       if (tagColIndex > pMeterMetaInfo->tagColumnIndex[i]) {
         continue;
@@ -45,6 +45,6 @@ void addRequiredTagColumn(SSqlCmd* pCmd, int32_t tagColIndex, int32_t tableIndex
     }
   }
 
-  // plus one means tbname
+
   assert(tagColIndex >= -1 && tagColIndex < TSDB_MAX_TAGS && pMeterMetaInfo->numOfTags <= TSDB_MAX_TAGS + 1);
 }

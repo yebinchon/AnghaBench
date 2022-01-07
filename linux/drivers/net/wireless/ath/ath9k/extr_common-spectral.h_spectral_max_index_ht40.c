@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
 
-/* Variables and functions */
- int SPECTRAL_HT20_40_NUM_BINS ; 
- int spectral_max_index (int*,int) ; 
+
+
+
+typedef int u8 ;
+
+
+ int SPECTRAL_HT20_40_NUM_BINS ;
+ int spectral_max_index (int*,int) ;
 
 __attribute__((used)) static inline u8 spectral_max_index_ht40(u8 *bins)
 {
-	u8 idx;
+ u8 idx;
 
-	idx = spectral_max_index(bins, SPECTRAL_HT20_40_NUM_BINS);
+ idx = spectral_max_index(bins, SPECTRAL_HT20_40_NUM_BINS);
 
-	/* positive values and zero are starting at the beginning
-	 * of the data field.
-	 */
-	return idx % (SPECTRAL_HT20_40_NUM_BINS / 2);
+
+
+
+ return idx % (SPECTRAL_HT20_40_NUM_BINS / 2);
 }

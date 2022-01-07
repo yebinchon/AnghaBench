@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {int dummy; } ;
-struct nb8800_priv {int /*<<< orphan*/  tx_lock; } ;
+struct nb8800_priv {int tx_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __nb8800_tx_dma_start (struct net_device*) ; 
- struct nb8800_priv* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+ int __nb8800_tx_dma_start (struct net_device*) ;
+ struct nb8800_priv* netdev_priv (struct net_device*) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 __attribute__((used)) static void nb8800_tx_dma_start_irq(struct net_device *dev)
 {
-	struct nb8800_priv *priv = netdev_priv(dev);
+ struct nb8800_priv *priv = netdev_priv(dev);
 
-	spin_lock(&priv->tx_lock);
-	__nb8800_tx_dma_start(dev);
-	spin_unlock(&priv->tx_lock);
+ spin_lock(&priv->tx_lock);
+ __nb8800_tx_dma_start(dev);
+ spin_unlock(&priv->tx_lock);
 }

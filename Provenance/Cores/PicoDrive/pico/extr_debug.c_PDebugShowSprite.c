@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct PicoVideo {int* reg; } ;
 struct TYPE_2__ {int* cram; scalar_t__ vram; struct PicoVideo video; } ;
 
-/* Variables and functions */
- int DRAW2_LINE_WIDTH ; 
- unsigned short* HighPal ; 
- int PDRAW_SPRITES_LOW_ON ; 
- TYPE_1__ Pico ; 
- unsigned char* PicoDraw2FB ; 
- int PicoDrawMask ; 
- int /*<<< orphan*/  PicoFrameFull () ; 
+
+ int DRAW2_LINE_WIDTH ;
+ unsigned short* HighPal ;
+ int PDRAW_SPRITES_LOW_ON ;
+ TYPE_1__ Pico ;
+ unsigned char* PicoDraw2FB ;
+ int PicoDrawMask ;
+ int PicoFrameFull () ;
 
 void PDebugShowSprite(unsigned short *screen, int stride, int which)
 {
@@ -33,15 +33,15 @@ void PDebugShowSprite(unsigned short *screen, int stride, int which)
     max_sprites = 64;
 
   table=pvid->reg[5]&0x7f;
-  if (pvid->reg[12]&1) table&=0x7e; // Lowest bit 0 in 40-cell mode
-  table<<=8; // Get sprite table address/2
+  if (pvid->reg[12]&1) table&=0x7e;
+  table<<=8;
 
   for (u=0; u < max_sprites && u <= which; u++)
   {
-    sprite=(int *)(Pico.vram+((table+(link<<2))&0x7ffc)); // Find sprite
+    sprite=(int *)(Pico.vram+((table+(link<<2))&0x7ffc));
 
     link=(sprite[0]>>16)&0x7f;
-    if (!link) break; // End of sprites
+    if (!link) break;
   }
   if (u >= max_sprites) return;
 

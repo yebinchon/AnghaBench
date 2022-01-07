@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int CODE_32BIT ; 
- int CODE_64BIT ; 
- int Cpu386 ; 
- int Cpu64 ; 
- int CpuNo64 ; 
- int CpuSledgehammer ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  as_bad (int /*<<< orphan*/ ) ; 
- int cpu_arch_flags ; 
- int flag_code ; 
- char stackop_size ; 
+ int CODE_32BIT ;
+ int CODE_64BIT ;
+ int Cpu386 ;
+ int Cpu64 ;
+ int CpuNo64 ;
+ int CpuSledgehammer ;
+ int _ (char*) ;
+ int as_bad (int ) ;
+ int cpu_arch_flags ;
+ int flag_code ;
+ char stackop_size ;
 
 __attribute__((used)) static void
 set_code_flag (int value)

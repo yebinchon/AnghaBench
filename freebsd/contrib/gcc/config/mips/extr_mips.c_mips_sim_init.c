@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mips_sim {int /*<<< orphan*/  dfa_state; int /*<<< orphan*/  issue_rate; } ;
-typedef  int /*<<< orphan*/  state_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mips_issue_rate () ; 
- int /*<<< orphan*/  mips_sim_reset (struct mips_sim*) ; 
+
+
+
+struct mips_sim {int dfa_state; int issue_rate; } ;
+typedef int state_t ;
+
+
+ int mips_issue_rate () ;
+ int mips_sim_reset (struct mips_sim*) ;
 
 __attribute__((used)) static void
 mips_sim_init (struct mips_sim *state, state_t dfa_state)

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct physical {int /*<<< orphan*/  handler; } ;
+
+
+
+
+struct physical {int handler; } ;
 struct etherdevice {int cs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  close (int) ; 
- struct etherdevice* device2ether (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (struct etherdevice*) ; 
- int /*<<< orphan*/  physical_SetDescriptor (struct physical*) ; 
+
+ int close (int) ;
+ struct etherdevice* device2ether (int ) ;
+ int free (struct etherdevice*) ;
+ int physical_SetDescriptor (struct physical*) ;
 
 __attribute__((used)) static void
 ether_Free(struct physical *p)

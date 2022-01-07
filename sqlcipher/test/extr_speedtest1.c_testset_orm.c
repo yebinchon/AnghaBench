@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zNum ;
-struct TYPE_2__ {int szTest; int /*<<< orphan*/  pStmt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_STATIC ; 
- int /*<<< orphan*/  SQLITE_UTF8 ; 
- TYPE_1__ g ; 
- int /*<<< orphan*/  speedtest1_begin_test (int,char*,unsigned int) ; 
- int /*<<< orphan*/  speedtest1_end_test () ; 
- int /*<<< orphan*/  speedtest1_exec (char*) ; 
- int /*<<< orphan*/  speedtest1_numbername (unsigned int,char*,int) ; 
- int /*<<< orphan*/  speedtest1_prepare (char*) ; 
- unsigned int speedtest1_random () ; 
- int /*<<< orphan*/  speedtest1_run () ; 
- int /*<<< orphan*/  sqlite3_bind_double (int /*<<< orphan*/ ,unsigned int,double) ; 
- int /*<<< orphan*/  sqlite3_bind_int (int /*<<< orphan*/ ,int,unsigned int) ; 
- int /*<<< orphan*/  sqlite3_bind_int64 (int /*<<< orphan*/ ,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  sqlite3_bind_text64 (int /*<<< orphan*/ ,unsigned int,char*,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ strlen (char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int zNum ;
+struct TYPE_2__ {int szTest; int pStmt; } ;
+
+
+ int SQLITE_STATIC ;
+ int SQLITE_UTF8 ;
+ TYPE_1__ g ;
+ int speedtest1_begin_test (int,char*,unsigned int) ;
+ int speedtest1_end_test () ;
+ int speedtest1_exec (char*) ;
+ int speedtest1_numbername (unsigned int,char*,int) ;
+ int speedtest1_prepare (char*) ;
+ unsigned int speedtest1_random () ;
+ int speedtest1_run () ;
+ int sqlite3_bind_double (int ,unsigned int,double) ;
+ int sqlite3_bind_int (int ,int,unsigned int) ;
+ int sqlite3_bind_int64 (int ,unsigned int,unsigned int) ;
+ int sqlite3_bind_text64 (int ,unsigned int,char*,unsigned int,int ,int ) ;
+ scalar_t__ strlen (char*) ;
 
 void testset_orm(void){
   unsigned i, j, n;
   unsigned nRow;
   unsigned x1, len;
-  char zNum[2000];              /* A number name */
-  static const char zType[] =   /* Types for all non-PK columns, in order */
+  char zNum[2000];
+  static const char zType[] =
     "IBBIIITIVVITBTBFBFITTFBTBVBVIFTBBFITFFVBIFIVBVVVBTVTIBBFFIVIBTB"
     "TVTTFTVTVFFIITIFBITFTTFFFVBIIBTTITFTFFVVVFIIITVBBVFFTVVB";
 

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int first_field; int nb_planes; TYPE_2__* prev; scalar_t__ double_weave; int /*<<< orphan*/ * planeheight; int /*<<< orphan*/ * linesize; } ;
-typedef  TYPE_1__ WeaveContext ;
+
+
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int first_field; int nb_planes; TYPE_2__* prev; scalar_t__ double_weave; int * planeheight; int * linesize; } ;
+typedef TYPE_1__ WeaveContext ;
 struct TYPE_17__ {TYPE_3__** outputs; TYPE_1__* priv; } ;
-struct TYPE_16__ {int frame_count_out; int /*<<< orphan*/  h; int /*<<< orphan*/  w; TYPE_4__* dst; } ;
+struct TYPE_16__ {int frame_count_out; int h; int w; TYPE_4__* dst; } ;
 struct TYPE_15__ {int* linesize; int pts; int interlaced_frame; int top_field_first; scalar_t__* data; } ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_frame_copy_props (TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_2__**) ; 
- int /*<<< orphan*/  av_image_copy_plane (scalar_t__,int,scalar_t__,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ff_filter_frame (TYPE_3__*,TYPE_2__*) ; 
- TYPE_2__* ff_get_video_buffer (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int av_frame_copy_props (TYPE_2__*,TYPE_2__*) ;
+ int av_frame_free (TYPE_2__**) ;
+ int av_image_copy_plane (scalar_t__,int,scalar_t__,int,int ,int ) ;
+ int ff_filter_frame (TYPE_3__*,TYPE_2__*) ;
+ TYPE_2__* ff_get_video_buffer (TYPE_3__*,int ,int ) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
 {

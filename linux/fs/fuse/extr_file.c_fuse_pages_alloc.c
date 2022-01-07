@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct page {int dummy; } ;
 struct fuse_page_desc {int dummy; } ;
-typedef  int /*<<< orphan*/  gfp_t ;
+typedef int gfp_t ;
 
-/* Variables and functions */
- struct page** kzalloc (unsigned int,int /*<<< orphan*/ ) ; 
+
+ struct page** kzalloc (unsigned int,int ) ;
 
 __attribute__((used)) static struct page **fuse_pages_alloc(unsigned int npages, gfp_t flags,
-				      struct fuse_page_desc **desc)
+          struct fuse_page_desc **desc)
 {
-	struct page **pages;
+ struct page **pages;
 
-	pages = kzalloc(npages * (sizeof(struct page *) +
-				  sizeof(struct fuse_page_desc)), flags);
-	*desc = (void *) (pages + npages);
+ pages = kzalloc(npages * (sizeof(struct page *) +
+      sizeof(struct fuse_page_desc)), flags);
+ *desc = (void *) (pages + npages);
 
-	return pages;
+ return pages;
 }

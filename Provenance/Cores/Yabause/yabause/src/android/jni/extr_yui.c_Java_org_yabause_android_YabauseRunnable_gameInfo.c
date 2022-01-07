@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jstring ;
-typedef  int /*<<< orphan*/ * jobject ;
-typedef  int /*<<< orphan*/  jmethodID ;
-typedef  int /*<<< orphan*/  jclass ;
-typedef  int /*<<< orphan*/  jboolean ;
-struct TYPE_19__ {int /*<<< orphan*/  gamename; int /*<<< orphan*/  peripheral; int /*<<< orphan*/  region; int /*<<< orphan*/  cdinfo; int /*<<< orphan*/  date; int /*<<< orphan*/  version; int /*<<< orphan*/  itemnum; int /*<<< orphan*/  company; int /*<<< orphan*/  system; } ;
-struct TYPE_18__ {char* (* GetStringUTFChars ) (TYPE_1__**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;int /*<<< orphan*/ * (* NewObject ) (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* NewStringUTF ) (TYPE_1__**,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* GetMethodID ) (TYPE_1__**,int /*<<< orphan*/ ,char*,char*) ;int /*<<< orphan*/  (* FindClass ) (TYPE_1__**,char*) ;} ;
-typedef  TYPE_1__* JNIEnv ;
-typedef  TYPE_2__ GameInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GameInfoFromPath (char const*,TYPE_2__*) ; 
- char* stub1 (TYPE_1__**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub10 (TYPE_1__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub11 (TYPE_1__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub12 (TYPE_1__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * stub13 (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (TYPE_1__**,char*) ; 
- int /*<<< orphan*/  stub3 (TYPE_1__**,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stub4 (TYPE_1__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub5 (TYPE_1__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub6 (TYPE_1__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub7 (TYPE_1__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub8 (TYPE_1__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub9 (TYPE_1__**,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+typedef int jstring ;
+typedef int * jobject ;
+typedef int jmethodID ;
+typedef int jclass ;
+typedef int jboolean ;
+struct TYPE_19__ {int gamename; int peripheral; int region; int cdinfo; int date; int version; int itemnum; int company; int system; } ;
+struct TYPE_18__ {char* (* GetStringUTFChars ) (TYPE_1__**,int *,int *) ;int * (* NewObject ) (TYPE_1__**,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;int (* NewStringUTF ) (TYPE_1__**,int ) ;int (* GetMethodID ) (TYPE_1__**,int ,char*,char*) ;int (* FindClass ) (TYPE_1__**,char*) ;} ;
+typedef TYPE_1__* JNIEnv ;
+typedef TYPE_2__ GameInfo ;
+
+
+ int GameInfoFromPath (char const*,TYPE_2__*) ;
+ char* stub1 (TYPE_1__**,int *,int *) ;
+ int stub10 (TYPE_1__**,int ) ;
+ int stub11 (TYPE_1__**,int ) ;
+ int stub12 (TYPE_1__**,int ) ;
+ int * stub13 (TYPE_1__**,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int stub2 (TYPE_1__**,char*) ;
+ int stub3 (TYPE_1__**,int ,char*,char*) ;
+ int stub4 (TYPE_1__**,int ) ;
+ int stub5 (TYPE_1__**,int ) ;
+ int stub6 (TYPE_1__**,int ) ;
+ int stub7 (TYPE_1__**,int ) ;
+ int stub8 (TYPE_1__**,int ) ;
+ int stub9 (TYPE_1__**,int ) ;
 
 jobject Java_org_yabause_android_YabauseRunnable_gameInfo( JNIEnv* env, jobject obj, jobject path )
 {
@@ -49,7 +49,7 @@ jobject Java_org_yabause_android_YabauseRunnable_gameInfo( JNIEnv* env, jobject 
 
     if (! GameInfoFromPath(filename, &info))
     {
-       return NULL;
+       return ((void*)0);
     }
 
     c = (*env)->FindClass(env, "org/yabause/android/GameInfo");

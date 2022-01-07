@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct inode {int dummy; } ;
 struct dentry {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PDE (struct inode*) ; 
- struct dentry* proc_lookup_de (struct inode*,struct dentry*,int /*<<< orphan*/ ) ; 
+
+ int PDE (struct inode*) ;
+ struct dentry* proc_lookup_de (struct inode*,struct dentry*,int ) ;
 
 struct dentry *proc_lookup(struct inode *dir, struct dentry *dentry,
-		unsigned int flags)
+  unsigned int flags)
 {
-	return proc_lookup_de(dir, dentry, PDE(dir));
+ return proc_lookup_de(dir, dentry, PDE(dir));
 }

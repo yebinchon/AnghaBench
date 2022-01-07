@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  mg_mk_str (char*) ; 
- int mg_mqtt_vmatch_topic_expression (char*,int /*<<< orphan*/ ) ; 
+ int ASSERT (int) ;
+ int mg_mk_str (char*) ;
+ int mg_mqtt_vmatch_topic_expression (char*,int ) ;
 
 __attribute__((used)) static const char *test_mqtt_match_topic_expression(void) {
   ASSERT(mg_mqtt_vmatch_topic_expression("foo", mg_mk_str("foo")));
@@ -48,5 +40,5 @@ __attribute__((used)) static const char *test_mqtt_match_topic_expression(void) 
   ASSERT(!mg_mqtt_vmatch_topic_expression("#/foo", mg_mk_str("foo")));
   ASSERT(!mg_mqtt_vmatch_topic_expression("#/foo", mg_mk_str("bar/foo")));
 
-  return NULL;
+  return ((void*)0);
 }

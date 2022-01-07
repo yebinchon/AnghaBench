@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int PRIME ; 
- int* User ; 
- int* UserList ; 
- int /*<<< orphan*/  assert (int) ; 
- int tot_users ; 
+ int PRIME ;
+ int* User ;
+ int* UserList ;
+ int assert (int) ;
+ int tot_users ;
 
 int get_hash (int x) {
   assert (x > 0);
@@ -30,6 +22,6 @@ int get_hash (int x) {
     assert (tot_users < PRIME / 2);
     UserList[tot_users++] = x;
   };
-  
+
   return h1;
 }

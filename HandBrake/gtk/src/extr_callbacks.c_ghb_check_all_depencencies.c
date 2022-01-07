@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  builder; } ;
-typedef  TYPE_1__ signal_user_data_t ;
-typedef  int /*<<< orphan*/  gchar ;
-typedef  scalar_t__ gboolean ;
-typedef  int /*<<< orphan*/  GhbValue ;
-typedef  int /*<<< orphan*/  GhbDictIter ;
-typedef  int /*<<< orphan*/  GObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GTK_WIDGET (int /*<<< orphan*/ *) ; 
- scalar_t__ dep_check (TYPE_1__*,int /*<<< orphan*/  const*,scalar_t__*) ; 
- int /*<<< orphan*/  g_debug (char*) ; 
- int /*<<< orphan*/  g_message (char*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ghb_dict_iter_init (int /*<<< orphan*/ *) ; 
- scalar_t__ ghb_dict_iter_next (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * gtk_builder_get_object (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  gtk_widget_hide (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gtk_widget_set_can_focus (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  gtk_widget_set_sensitive (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  gtk_widget_show (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * rev_map ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int builder; } ;
+typedef TYPE_1__ signal_user_data_t ;
+typedef int gchar ;
+typedef scalar_t__ gboolean ;
+typedef int GhbValue ;
+typedef int GhbDictIter ;
+typedef int GObject ;
+
+
+ int GTK_WIDGET (int *) ;
+ scalar_t__ dep_check (TYPE_1__*,int const*,scalar_t__*) ;
+ int g_debug (char*) ;
+ int g_message (char*,int const*) ;
+ int ghb_dict_iter_init (int *) ;
+ scalar_t__ ghb_dict_iter_next (int *,int *,int const**,int **) ;
+ int * gtk_builder_get_object (int ,int const*) ;
+ int gtk_widget_hide (int ) ;
+ int gtk_widget_set_can_focus (int ,scalar_t__) ;
+ int gtk_widget_set_sensitive (int ,scalar_t__) ;
+ int gtk_widget_show (int ) ;
+ int * rev_map ;
 
 void
 ghb_check_all_depencencies(signal_user_data_t *ud)
@@ -42,7 +42,7 @@ ghb_check_all_depencencies(signal_user_data_t *ud)
     GObject *dep_object;
 
     g_debug("ghb_check_all_depencencies ()");
-    if (rev_map == NULL) return;
+    if (rev_map == ((void*)0)) return;
     iter = ghb_dict_iter_init(rev_map);
     while (ghb_dict_iter_next(rev_map, &iter, &dep_name, &value))
     {
@@ -50,7 +50,7 @@ ghb_check_all_depencencies(signal_user_data_t *ud)
         gboolean hide;
 
         dep_object = gtk_builder_get_object (ud->builder, dep_name);
-        if (dep_object == NULL)
+        if (dep_object == ((void*)0))
         {
             g_message("Failed to find dependent widget %s", dep_name);
             continue;

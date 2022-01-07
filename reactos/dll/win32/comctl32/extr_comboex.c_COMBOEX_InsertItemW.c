@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_19__ {int /*<<< orphan*/  mask; } ;
-struct TYPE_18__ {int mask; int /*<<< orphan*/  lParam; int /*<<< orphan*/  iIndent; int /*<<< orphan*/  iOverlay; int /*<<< orphan*/  iSelectedImage; int /*<<< orphan*/  iImage; int /*<<< orphan*/  cchTextMax; void* pszText; struct TYPE_18__* next; } ;
-struct TYPE_17__ {int iItem; int mask; int /*<<< orphan*/  lParam; int /*<<< orphan*/  iIndent; int /*<<< orphan*/  iOverlay; int /*<<< orphan*/  iSelectedImage; int /*<<< orphan*/  iImage; int /*<<< orphan*/  cchTextMax; void* pszText; } ;
-struct TYPE_16__ {int nb_items; int /*<<< orphan*/  hwndCombo; TYPE_4__* items; } ;
+
+
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_19__ {int mask; } ;
+struct TYPE_18__ {int mask; int lParam; int iIndent; int iOverlay; int iSelectedImage; int iImage; int cchTextMax; void* pszText; struct TYPE_18__* next; } ;
+struct TYPE_17__ {int iItem; int mask; int lParam; int iIndent; int iOverlay; int iSelectedImage; int iImage; int cchTextMax; void* pszText; } ;
+struct TYPE_16__ {int nb_items; int hwndCombo; TYPE_4__* items; } ;
 struct TYPE_15__ {TYPE_5__ ceItem; } ;
-typedef  TYPE_1__ NMCOMBOBOXEXW ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int INT_PTR ;
-typedef  int INT ;
-typedef  TYPE_2__ COMBOEX_INFO ;
-typedef  TYPE_3__ COMBOBOXEXITEMW ;
-typedef  TYPE_4__ CBE_ITEMDATA ;
+typedef TYPE_1__ NMCOMBOBOXEXW ;
+typedef int LPARAM ;
+typedef int INT_PTR ;
+typedef int INT ;
+typedef TYPE_2__ COMBOEX_INFO ;
+typedef TYPE_3__ COMBOBOXEXITEMW ;
+typedef TYPE_4__ CBE_ITEMDATA ;
 
-/* Variables and functions */
- void* Alloc (int) ; 
- int CBEIF_IMAGE ; 
- int CBEIF_INDENT ; 
- int CBEIF_LPARAM ; 
- int CBEIF_OVERLAY ; 
- int CBEIF_SELECTEDIMAGE ; 
- int CBEIF_TEXT ; 
- int /*<<< orphan*/  CBEN_INSERTITEM ; 
- int /*<<< orphan*/  CB_INSERTSTRING ; 
- int /*<<< orphan*/  COMBOEX_CopyItem (TYPE_4__*,TYPE_5__*) ; 
- int /*<<< orphan*/  COMBOEX_DumpInput (TYPE_3__ const*) ; 
- int /*<<< orphan*/  COMBOEX_DumpItem (TYPE_4__*) ; 
- int /*<<< orphan*/  COMBOEX_NotifyItem (TYPE_2__*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  Free (TYPE_4__*) ; 
- void* LPSTR_TEXTCALLBACKW ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- scalar_t__ TRACE_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  comboex ; 
- scalar_t__ is_textW (void*) ; 
- int /*<<< orphan*/  memset (TYPE_5__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  strcpyW (void*,void*) ; 
- int strlenW (void*) ; 
+
+ void* Alloc (int) ;
+ int CBEIF_IMAGE ;
+ int CBEIF_INDENT ;
+ int CBEIF_LPARAM ;
+ int CBEIF_OVERLAY ;
+ int CBEIF_SELECTEDIMAGE ;
+ int CBEIF_TEXT ;
+ int CBEN_INSERTITEM ;
+ int CB_INSERTSTRING ;
+ int COMBOEX_CopyItem (TYPE_4__*,TYPE_5__*) ;
+ int COMBOEX_DumpInput (TYPE_3__ const*) ;
+ int COMBOEX_DumpItem (TYPE_4__*) ;
+ int COMBOEX_NotifyItem (TYPE_2__*,int ,TYPE_1__*) ;
+ int ERR (char*) ;
+ int Free (TYPE_4__*) ;
+ void* LPSTR_TEXTCALLBACKW ;
+ int SendMessageW (int ,int ,int,int ) ;
+ int TRACE (char*) ;
+ scalar_t__ TRACE_ON (int ) ;
+ int comboex ;
+ scalar_t__ is_textW (void*) ;
+ int memset (TYPE_5__*,int ,int) ;
+ int strcpyW (void*,void*) ;
+ int strlenW (void*) ;
 
 __attribute__((used)) static INT COMBOEX_InsertItemW (COMBOEX_INFO *infoPtr, COMBOBOXEXITEMW const *cit)
 {
@@ -65,53 +65,53 @@ __attribute__((used)) static INT COMBOEX_InsertItemW (COMBOEX_INFO *infoPtr, COM
 
     if (TRACE_ON(comboex)) COMBOEX_DumpInput (cit);
 
-    /* get real index of item to insert */
+
     index = cit->iItem;
     if (index == -1) index = infoPtr->nb_items;
     if (index > infoPtr->nb_items) return -1;
 
-    /* get zero-filled space and chain it in */
+
     if(!(item = Alloc (sizeof(*item)))) return -1;
 
-    /* locate position to insert new item in */
+
     if (index == infoPtr->nb_items) {
-        /* fast path for iItem = -1 */
+
         item->next = infoPtr->items;
-	infoPtr->items = item;
+ infoPtr->items = item;
     }
     else {
         INT i = infoPtr->nb_items-1;
-	CBE_ITEMDATA *moving = infoPtr->items;
+ CBE_ITEMDATA *moving = infoPtr->items;
 
-	while ((i > index) && moving) {
-	    moving = moving->next;
-	    i--;
-	}
-	if (!moving) {
-	    ERR("COMBOBOXEX item structures broken. Please report!\n");
-	    Free(item);
-	    return -1;
-	}
-	item->next = moving->next;
-	moving->next = item;
+ while ((i > index) && moving) {
+     moving = moving->next;
+     i--;
+ }
+ if (!moving) {
+     ERR("COMBOBOXEX item structures broken. Please report!\n");
+     Free(item);
+     return -1;
+ }
+ item->next = moving->next;
+ moving->next = item;
     }
 
-    /* fill in our hidden item structure */
+
     item->mask = cit->mask;
     if (item->mask & CBEIF_TEXT) {
-	INT len = 0;
+ INT len = 0;
 
         if (is_textW(cit->pszText)) len = strlenW (cit->pszText);
-	if (len > 0) {
+ if (len > 0) {
             item->pszText = Alloc ((len + 1)*sizeof(WCHAR));
-	    if (!item->pszText) {
-		Free(item);
-		return -1;
-	    }
-	    strcpyW (item->pszText, cit->pszText);
-	}
-	else if (cit->pszText == LPSTR_TEXTCALLBACKW)
-	    item->pszText = LPSTR_TEXTCALLBACKW;
+     if (!item->pszText) {
+  Free(item);
+  return -1;
+     }
+     strcpyW (item->pszText, cit->pszText);
+ }
+ else if (cit->pszText == LPSTR_TEXTCALLBACKW)
+     item->pszText = LPSTR_TEXTCALLBACKW;
         item->cchTextMax = cit->cchTextMax;
     }
     if (item->mask & CBEIF_IMAGE)

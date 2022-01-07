@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
+
+
+
+
+typedef int u64 ;
 struct extent_buffer {int dummy; } ;
-struct btrfs_root {int /*<<< orphan*/  fs_info; } ;
+struct btrfs_root {int fs_info; } ;
 
-/* Variables and functions */
- int __readahead_hook (struct btrfs_root*,struct extent_buffer*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  reada_start_machine (int /*<<< orphan*/ ) ; 
+
+ int __readahead_hook (struct btrfs_root*,struct extent_buffer*,int ,int) ;
+ int reada_start_machine (int ) ;
 
 int btree_readahead_hook(struct btrfs_root *root, struct extent_buffer *eb,
-			 u64 start, int err)
+    u64 start, int err)
 {
-	int ret;
+ int ret;
 
-	ret = __readahead_hook(root, eb, start, err);
+ ret = __readahead_hook(root, eb, start, err);
 
-	reada_start_machine(root->fs_info);
+ reada_start_machine(root->fs_info);
 
-	return ret;
+ return ret;
 }

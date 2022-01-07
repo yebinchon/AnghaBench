@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
-typedef  struct TYPE_20__   TYPE_12__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gint64 ;
-struct TYPE_23__ {scalar_t__ state; int /*<<< orphan*/  repo_id; int /*<<< orphan*/  host; int /*<<< orphan*/  n_blocks; int /*<<< orphan*/  use_fileserver_port; void* error; int /*<<< orphan*/  head; } ;
-struct TYPE_22__ {int /*<<< orphan*/  commit_id; } ;
-struct TYPE_21__ {int /*<<< orphan*/ * priv; } ;
-struct TYPE_20__ {int /*<<< orphan*/  branch_mgr; TYPE_1__* http_tx_mgr; } ;
-typedef  TYPE_2__ SeafBranch ;
-typedef  TYPE_3__ HttpTxTask ;
-typedef  int /*<<< orphan*/  HttpTxPriv ;
-typedef  int /*<<< orphan*/  GList ;
-typedef  int /*<<< orphan*/  GHashTable ;
-typedef  int /*<<< orphan*/  ConnectionPool ;
-typedef  int /*<<< orphan*/  Connection ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HTTP_TASK_RT_STATE_BLOCK ; 
- int /*<<< orphan*/  HTTP_TASK_RT_STATE_CHECK ; 
- int /*<<< orphan*/  HTTP_TASK_RT_STATE_COMMIT ; 
- int /*<<< orphan*/  HTTP_TASK_RT_STATE_FS ; 
- int /*<<< orphan*/  HTTP_TASK_RT_STATE_UPDATE_BRANCH ; 
- scalar_t__ HTTP_TASK_STATE_CANCELED ; 
- void* SYNC_ERROR_ID_LOCAL_DATA_CORRUPT ; 
- void* SYNC_ERROR_ID_NOT_ENOUGH_MEMORY ; 
- scalar_t__ calculate_block_list (TYPE_3__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * calculate_send_fs_object_list (TYPE_3__*) ; 
- scalar_t__ calculate_upload_size_delta_and_active_paths (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ check_permission (TYPE_3__*,int /*<<< orphan*/ *) ; 
- scalar_t__ check_quota (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * connection_pool_get_connection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  connection_pool_return_connection (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * find_connection_pool (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- int /*<<< orphan*/  g_hash_table_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_hash_table_foreach (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/ * g_hash_table_new_full (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  (*) (char*),int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_list_length (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_str_equal ; 
- int /*<<< orphan*/  g_str_hash ; 
- char* g_strdup_printf (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ multi_threaded_send_blocks (TYPE_3__*,int /*<<< orphan*/ *) ; 
- TYPE_12__* seaf ; 
- TYPE_2__* seaf_branch_manager_get_branch (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  seaf_branch_unref (TYPE_2__*) ; 
- int /*<<< orphan*/  seaf_debug (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seaf_warning (char*,int /*<<< orphan*/ ,...) ; 
- scalar_t__ send_commit_object (TYPE_3__*,int /*<<< orphan*/ *) ; 
- scalar_t__ send_fs_objects (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  set_path_status_synced ; 
- int /*<<< orphan*/  set_path_status_syncing ; 
- int /*<<< orphan*/  string_list_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  transition_state (TYPE_3__*,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ update_branch (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  update_master_branch (TYPE_3__*) ; 
- scalar_t__ upload_check_id_list_segment (TYPE_3__*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
+
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+typedef struct TYPE_20__ TYPE_12__ ;
+
+
+typedef int gint64 ;
+struct TYPE_23__ {scalar_t__ state; int repo_id; int host; int n_blocks; int use_fileserver_port; void* error; int head; } ;
+struct TYPE_22__ {int commit_id; } ;
+struct TYPE_21__ {int * priv; } ;
+struct TYPE_20__ {int branch_mgr; TYPE_1__* http_tx_mgr; } ;
+typedef TYPE_2__ SeafBranch ;
+typedef TYPE_3__ HttpTxTask ;
+typedef int HttpTxPriv ;
+typedef int GList ;
+typedef int GHashTable ;
+typedef int ConnectionPool ;
+typedef int Connection ;
+
+
+ int HTTP_TASK_RT_STATE_BLOCK ;
+ int HTTP_TASK_RT_STATE_CHECK ;
+ int HTTP_TASK_RT_STATE_COMMIT ;
+ int HTTP_TASK_RT_STATE_FS ;
+ int HTTP_TASK_RT_STATE_UPDATE_BRANCH ;
+ scalar_t__ HTTP_TASK_STATE_CANCELED ;
+ void* SYNC_ERROR_ID_LOCAL_DATA_CORRUPT ;
+ void* SYNC_ERROR_ID_NOT_ENOUGH_MEMORY ;
+ scalar_t__ calculate_block_list (TYPE_3__*,int **) ;
+ int * calculate_send_fs_object_list (TYPE_3__*) ;
+ scalar_t__ calculate_upload_size_delta_and_active_paths (TYPE_3__*,int *,int *) ;
+ scalar_t__ check_permission (TYPE_3__*,int *) ;
+ scalar_t__ check_quota (TYPE_3__*,int *,int ) ;
+ int * connection_pool_get_connection (int *) ;
+ int connection_pool_return_connection (int *,int *) ;
+ int * find_connection_pool (int *,int ) ;
+ int g_free (char*) ;
+ int g_hash_table_destroy (int *) ;
+ int g_hash_table_foreach (int *,int ,TYPE_3__*) ;
+ int * g_hash_table_new_full (int ,int ,int (*) (char*),int *) ;
+ int g_list_length (int *) ;
+ int g_str_equal ;
+ int g_str_hash ;
+ char* g_strdup_printf (char*,int ,int ) ;
+ int memcpy (int ,int ,int) ;
+ scalar_t__ multi_threaded_send_blocks (TYPE_3__*,int *) ;
+ TYPE_12__* seaf ;
+ TYPE_2__* seaf_branch_manager_get_branch (int ,int ,char*) ;
+ int seaf_branch_unref (TYPE_2__*) ;
+ int seaf_debug (char*,int ,int ,int ) ;
+ int seaf_warning (char*,int ,...) ;
+ scalar_t__ send_commit_object (TYPE_3__*,int *) ;
+ scalar_t__ send_fs_objects (TYPE_3__*,int *,int **) ;
+ int set_path_status_synced ;
+ int set_path_status_syncing ;
+ int string_list_free (int *) ;
+ int transition_state (TYPE_3__*,scalar_t__,int ) ;
+ scalar_t__ update_branch (TYPE_3__*,int *) ;
+ int update_master_branch (TYPE_3__*) ;
+ scalar_t__ upload_check_id_list_segment (TYPE_3__*,int *,char*,int **,int **) ;
 
 __attribute__((used)) static void *
 http_upload_thread (void *vdata)
@@ -75,18 +75,18 @@ http_upload_thread (void *vdata)
     HttpTxTask *task = vdata;
     HttpTxPriv *priv = seaf->http_tx_mgr->priv;
     ConnectionPool *pool;
-    Connection *conn = NULL;
-    char *url = NULL;
-    GList *send_fs_list = NULL, *needed_fs_list = NULL;
-    GList *block_list = NULL, *needed_block_list = NULL;
-    GHashTable *active_paths = NULL;
+    Connection *conn = ((void*)0);
+    char *url = ((void*)0);
+    GList *send_fs_list = ((void*)0), *needed_fs_list = ((void*)0);
+    GList *block_list = ((void*)0), *needed_block_list = ((void*)0);
+    GHashTable *active_paths = ((void*)0);
 
     SeafBranch *local = seaf_branch_manager_get_branch (seaf->branch_mgr,
                                                         task->repo_id, "local");
     if (!local) {
         seaf_warning ("Failed to get branch local of repo %.8s.\n", task->repo_id);
         task->error = SYNC_ERROR_ID_LOCAL_DATA_CORRUPT;
-        return NULL;
+        return ((void*)0);
     }
     memcpy (task->head, local->commit_id, 40);
     seaf_branch_unref (local);
@@ -105,13 +105,13 @@ http_upload_thread (void *vdata)
         goto out;
     }
 
-    /* seaf_message ("Upload with HTTP sync protocol version %d.\n", */
-    /*               task->protocol_version); */
+
+
 
     transition_state (task, task->state, HTTP_TASK_RT_STATE_CHECK);
 
     gint64 delta = 0;
-    active_paths = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
+    active_paths = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, ((void*)0));
 
     if (calculate_upload_size_delta_and_active_paths (task, &delta, active_paths) < 0) {
         seaf_warning ("Failed to calculate upload size delta for repo %s.\n",
@@ -164,7 +164,7 @@ http_upload_thread (void *vdata)
         url = g_strdup_printf ("%s/repo/%s/check-fs/",
                                task->host, task->repo_id);
 
-    while (send_fs_list != NULL) {
+    while (send_fs_list != ((void*)0)) {
         if (upload_check_id_list_segment (task, conn, url,
                                           &send_fs_list, &needed_fs_list) < 0) {
             seaf_warning ("Failed to check fs list for repo %.8s.\n", task->repo_id);
@@ -175,9 +175,9 @@ http_upload_thread (void *vdata)
             goto out;
     }
     g_free (url);
-    url = NULL;
+    url = ((void*)0);
 
-    while (needed_fs_list != NULL) {
+    while (needed_fs_list != ((void*)0)) {
         if (send_fs_objects (task, conn, &needed_fs_list) < 0) {
             seaf_warning ("Failed to send fs objects for repo %.8s.\n", task->repo_id);
             goto out;
@@ -203,7 +203,7 @@ http_upload_thread (void *vdata)
         url = g_strdup_printf ("%s/repo/%s/check-blocks/",
                                task->host, task->repo_id);
 
-    while (block_list != NULL) {
+    while (block_list != ((void*)0)) {
         if (upload_check_id_list_segment (task, conn, url,
                                           &block_list, &needed_block_list) < 0) {
             seaf_warning ("Failed to check block list for repo %.8s.\n",
@@ -215,7 +215,7 @@ http_upload_thread (void *vdata)
             goto out;
     }
     g_free (url);
-    url = NULL;
+    url = ((void*)0);
 
     task->n_blocks = g_list_length (needed_block_list);
 
@@ -233,12 +233,12 @@ http_upload_thread (void *vdata)
         goto out;
     }
 
-    /* After successful upload, the cached 'master' branch should be updated to
-     * the head commit of 'local' branch.
-     */
+
+
+
     update_master_branch (task);
 
-    if (active_paths != NULL)
+    if (active_paths != ((void*)0))
         g_hash_table_foreach (active_paths, set_path_status_synced, task);
 
 out:

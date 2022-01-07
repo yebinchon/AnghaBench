@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mp_log {int dummy; } ;
-typedef  int /*<<< orphan*/  errstr ;
+typedef int errstr ;
 
-/* Variables and functions */
- int AVERROR_OPTION_NOT_FOUND ; 
- int /*<<< orphan*/  AV_OPT_SEARCH_CHILDREN ; 
- int av_opt_set (void*,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_strerror (int,char*,int) ; 
- int /*<<< orphan*/  mp_err (struct mp_log*,char*,char*,...) ; 
- int /*<<< orphan*/  resolve_positional_arg (void*,char**) ; 
+
+ int AVERROR_OPTION_NOT_FOUND ;
+ int AV_OPT_SEARCH_CHILDREN ;
+ int av_opt_set (void*,char*,char*,int ) ;
+ int av_strerror (int,char*,int) ;
+ int mp_err (struct mp_log*,char*,char*,...) ;
+ int resolve_positional_arg (void*,char**) ;
 
 int mp_set_avopts_pos(struct mp_log *log, void *avobj, void *posargs, char **kv)
 {

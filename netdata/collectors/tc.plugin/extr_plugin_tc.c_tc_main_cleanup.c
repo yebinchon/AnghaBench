@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct netdata_static_thread {int /*<<< orphan*/  enabled; } ;
-typedef  int /*<<< orphan*/  (* siginfo_t ) (char*,scalar_t__) ;
-typedef  int /*<<< orphan*/  id_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NETDATA_MAIN_THREAD_EXITED ; 
- int /*<<< orphan*/  NETDATA_MAIN_THREAD_EXITING ; 
- int /*<<< orphan*/  P_PID ; 
- int /*<<< orphan*/  WEXITED ; 
- int /*<<< orphan*/  info (char*,...) ; 
- int killpid (scalar_t__) ; 
- scalar_t__ tc_child_pid ; 
- int /*<<< orphan*/  waitid (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  (*) (char*,scalar_t__),int /*<<< orphan*/ ) ; 
+
+
+
+struct netdata_static_thread {int enabled; } ;
+typedef int (* siginfo_t ) (char*,scalar_t__) ;
+typedef int id_t ;
+
+
+ int NETDATA_MAIN_THREAD_EXITED ;
+ int NETDATA_MAIN_THREAD_EXITING ;
+ int P_PID ;
+ int WEXITED ;
+ int info (char*,...) ;
+ int killpid (scalar_t__) ;
+ scalar_t__ tc_child_pid ;
+ int waitid (int ,int ,int (*) (char*,scalar_t__),int ) ;
 
 __attribute__((used)) static void tc_main_cleanup(void *ptr) {
     struct netdata_static_thread *static_thread = (struct netdata_static_thread *)ptr;

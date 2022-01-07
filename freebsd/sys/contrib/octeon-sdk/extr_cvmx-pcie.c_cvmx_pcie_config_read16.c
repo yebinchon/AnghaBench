@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-typedef  int uint16_t ;
 
-/* Variables and functions */
- scalar_t__ __cvmx_pcie_build_config_addr (int,int,int,int,int) ; 
- int cvmx_le16_to_cpu (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cvmx_read64_uint16 (scalar_t__) ; 
+
+
+
+typedef scalar_t__ uint64_t ;
+typedef int uint16_t ;
+
+
+ scalar_t__ __cvmx_pcie_build_config_addr (int,int,int,int,int) ;
+ int cvmx_le16_to_cpu (int ) ;
+ int cvmx_read64_uint16 (scalar_t__) ;
 
 uint16_t cvmx_pcie_config_read16(int pcie_port, int bus, int dev, int fn, int reg)
 {

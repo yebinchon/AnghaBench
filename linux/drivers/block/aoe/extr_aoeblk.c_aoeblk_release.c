@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ulong ;
+
+
+
+
+typedef int ulong ;
 struct gendisk {struct aoedev* private_data; } ;
-struct aoedev {scalar_t__ nopen; int /*<<< orphan*/  lock; int /*<<< orphan*/  aoeminor; int /*<<< orphan*/  aoemajor; } ;
-typedef  int /*<<< orphan*/  fmode_t ;
+struct aoedev {scalar_t__ nopen; int lock; int aoeminor; int aoemajor; } ;
+typedef int fmode_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  aoecmd_cfg (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int aoecmd_cfg (int ,int ) ;
+ int spin_lock_irqsave (int *,int ) ;
+ int spin_unlock_irqrestore (int *,int ) ;
 
 __attribute__((used)) static void
 aoeblk_release(struct gendisk *disk, fmode_t mode)
 {
-	struct aoedev *d = disk->private_data;
-	ulong flags;
+ struct aoedev *d = disk->private_data;
+ ulong flags;
 
-	spin_lock_irqsave(&d->lock, flags);
+ spin_lock_irqsave(&d->lock, flags);
 
-	if (--d->nopen == 0) {
-		spin_unlock_irqrestore(&d->lock, flags);
-		aoecmd_cfg(d->aoemajor, d->aoeminor);
-		return;
-	}
-	spin_unlock_irqrestore(&d->lock, flags);
+ if (--d->nopen == 0) {
+  spin_unlock_irqrestore(&d->lock, flags);
+  aoecmd_cfg(d->aoemajor, d->aoeminor);
+  return;
+ }
+ spin_unlock_irqrestore(&d->lock, flags);
 }

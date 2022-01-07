@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int UINT ;
 
-/* Variables and functions */
- scalar_t__ ERROR_CALL_NOT_IMPLEMENTED ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int pGetLogicalDriveStringsW (int,char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int UINT ;
+
+
+ scalar_t__ ERROR_CALL_NOT_IMPLEMENTED ;
+ scalar_t__ GetLastError () ;
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,char*) ;
+ int SetLastError (int) ;
+ int ok (int,char*,...) ;
+ int pGetLogicalDriveStringsW (int,char*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_GetLogicalDriveStringsW(void)
 {
     UINT size, size2;
     WCHAR *buf, *ptr;
 
-    ok( pGetLogicalDriveStringsW != NULL, "GetLogicalDriveStringsW not available\n");
+    ok( pGetLogicalDriveStringsW != ((void*)0), "GetLogicalDriveStringsW not available\n");
     if(!pGetLogicalDriveStringsW) {
         return;
     }
 
     SetLastError(0xdeadbeef);
-    size = pGetLogicalDriveStringsW(0, NULL);
+    size = pGetLogicalDriveStringsW(0, ((void*)0));
     if (size == 0 && GetLastError() == ERROR_CALL_NOT_IMPLEMENTED) {
         win_skip("GetLogicalDriveStringsW not implemented\n");
         return;

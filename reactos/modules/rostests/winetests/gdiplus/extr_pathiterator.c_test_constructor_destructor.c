@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpPathIterator ;
-typedef  int /*<<< orphan*/  GpPath ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FillModeAlternate ; 
- int /*<<< orphan*/  GdipAddPathRectangle (int /*<<< orphan*/ *,double,double,double,double) ; 
- int /*<<< orphan*/  GdipCreatePath (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreatePathIter (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeletePath (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeletePathIter (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InvalidParameter ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int GpStatus ;
+typedef int GpPathIterator ;
+typedef int GpPath ;
+
+
+ int FillModeAlternate ;
+ int GdipAddPathRectangle (int *,double,double,double,double) ;
+ int GdipCreatePath (int ,int **) ;
+ int GdipCreatePathIter (int **,int *) ;
+ int GdipDeletePath (int *) ;
+ int GdipDeletePathIter (int *) ;
+ int InvalidParameter ;
+ int Ok ;
+ int expect (int ,int ) ;
+ int ok (int ,char*) ;
 
 __attribute__((used)) static void test_constructor_destructor(void)
 {
@@ -35,20 +35,20 @@ __attribute__((used)) static void test_constructor_destructor(void)
     GdipCreatePath(FillModeAlternate, &path);
     GdipAddPathRectangle(path, 5.0, 5.0, 100.0, 50.0);
 
-    /* NULL args */
-    stat = GdipCreatePathIter(NULL, NULL);
+
+    stat = GdipCreatePathIter(((void*)0), ((void*)0));
     expect(InvalidParameter, stat);
-    iter = NULL;
-    stat = GdipCreatePathIter(&iter, NULL);
+    iter = ((void*)0);
+    stat = GdipCreatePathIter(&iter, ((void*)0));
     expect(Ok, stat);
-    ok(iter != NULL, "Expected iterator to be created\n");
+    ok(iter != ((void*)0), "Expected iterator to be created\n");
     GdipDeletePathIter(iter);
-    stat = GdipCreatePathIter(NULL, path);
+    stat = GdipCreatePathIter(((void*)0), path);
     expect(InvalidParameter, stat);
-    stat = GdipDeletePathIter(NULL);
+    stat = GdipDeletePathIter(((void*)0));
     expect(InvalidParameter, stat);
 
-    /* valid args */
+
     stat = GdipCreatePathIter(&iter, path);
     expect(Ok, stat);
 

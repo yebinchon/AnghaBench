@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * lpCreateParams; } ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  FileDialogImpl ;
-typedef  TYPE_1__ CREATESTRUCTW ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GWLP_USERDATA ; 
- int /*<<< orphan*/  SetWindowLongPtrW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * lpCreateParams; } ;
+typedef int LRESULT ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef int FileDialogImpl ;
+typedef TYPE_1__ CREATESTRUCTW ;
+
+
+ int GWLP_USERDATA ;
+ int SetWindowLongPtrW (int ,int ,int ) ;
+ int TRACE (char*,int *) ;
+ int TRUE ;
 
 __attribute__((used)) static LRESULT notifysink_on_create(HWND hwnd, CREATESTRUCTW *crs)
 {

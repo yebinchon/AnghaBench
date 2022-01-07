@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  referenced; struct TYPE_5__* bound_by; } ;
-typedef  TYPE_1__ inst ;
-typedef  int /*<<< orphan*/  block ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOCK (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  block_mark_referenced (int /*<<< orphan*/ ) ; 
- TYPE_1__* block_take (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gen_noop () ; 
- int /*<<< orphan*/  inst_block (TYPE_1__*) ; 
- int /*<<< orphan*/  inst_free (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int referenced; struct TYPE_5__* bound_by; } ;
+typedef TYPE_1__ inst ;
+typedef int block ;
+
+
+ int BLOCK (int ,int ) ;
+ int block_mark_referenced (int ) ;
+ TYPE_1__* block_take (int *) ;
+ int gen_noop () ;
+ int inst_block (TYPE_1__*) ;
+ int inst_free (TYPE_1__*) ;
 
 block block_drop_unreferenced(block body) {
   block_mark_referenced(body);

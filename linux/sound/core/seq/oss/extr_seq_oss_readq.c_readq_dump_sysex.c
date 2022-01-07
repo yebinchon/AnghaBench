@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct readq_sysex_ctx {int /*<<< orphan*/  dev; int /*<<< orphan*/  readq; } ;
 
-/* Variables and functions */
- int snd_seq_oss_readq_puts (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int) ; 
+
+
+
+struct readq_sysex_ctx {int dev; int readq; } ;
+
+
+ int snd_seq_oss_readq_puts (int ,int ,void*,int) ;
 
 __attribute__((used)) static int readq_dump_sysex(void *ptr, void *buf, int count)
 {
-	struct readq_sysex_ctx *ctx = ptr;
+ struct readq_sysex_ctx *ctx = ptr;
 
-	return snd_seq_oss_readq_puts(ctx->readq, ctx->dev, buf, count);
+ return snd_seq_oss_readq_puts(ctx->readq, ctx->dev, buf, count);
 }

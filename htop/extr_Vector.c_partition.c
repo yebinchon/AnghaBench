@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ (* Object_Compare ) (int /*<<< orphan*/ *,void*) ;
-typedef  int /*<<< orphan*/  Object ;
 
-/* Variables and functions */
- int /*<<< orphan*/  comparisons ; 
- int /*<<< orphan*/  swap (int /*<<< orphan*/ **,int,int) ; 
+
+
+
+typedef scalar_t__ (* Object_Compare ) (int *,void*) ;
+typedef int Object ;
+
+
+ int comparisons ;
+ int swap (int **,int,int) ;
 
 __attribute__((used)) static int partition(Object** array, int left, int right, int pivotIndex, Object_Compare compare) {
    void* pivotValue = array[pivotIndex];

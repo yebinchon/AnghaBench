@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct scmi_msg_hdr {int /*<<< orphan*/  protocol_id; int /*<<< orphan*/  seq; int /*<<< orphan*/  id; } ;
+
+
+
+
+struct scmi_msg_hdr {int protocol_id; int seq; int id; } ;
 struct device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dev_dbg (struct device*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int dev_dbg (struct device*,char*,int ,int ,int ) ;
 
 __attribute__((used)) static inline void scmi_dump_header_dbg(struct device *dev,
-					struct scmi_msg_hdr *hdr)
+     struct scmi_msg_hdr *hdr)
 {
-	dev_dbg(dev, "Message ID: %x Sequence ID: %x Protocol: %x\n",
-		hdr->id, hdr->seq, hdr->protocol_id);
+ dev_dbg(dev, "Message ID: %x Sequence ID: %x Protocol: %x\n",
+  hdr->id, hdr->seq, hdr->protocol_id);
 }

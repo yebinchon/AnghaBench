@@ -1,107 +1,97 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_5__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_5__ {int pressed; } ;
 struct TYPE_6__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
-struct TYPE_7__ {int nkro; int /*<<< orphan*/  raw; } ;
+typedef TYPE_2__ keyrecord_t ;
+struct TYPE_7__ {int nkro; int raw; } ;
+ int KC_RSFT ;
+ int PLAY_SONG (int ) ;
 
-/* Variables and functions */
-#define  AUTO_CB 138 
-#define  AUTO_PA 137 
-#define  AUTO_SQ 136 
-#define  BACKLIT 135 
-#define  COLEMAK 134 
-#define  DVORAK 133 
-#define  EXT_PLV 132 
-#define  F4R 131 
- int /*<<< orphan*/  KC_RSFT ; 
- int /*<<< orphan*/  PLAY_SONG (int /*<<< orphan*/ ) ; 
-#define  PLOVER 130 
- int PORTE ; 
-#define  QWERTY 129 
- int /*<<< orphan*/  SEND_STRING (char*) ; 
-#define  SHRUG 128 
- int /*<<< orphan*/  _ADJUST ; 
- int /*<<< orphan*/  _COLEMAK ; 
- int /*<<< orphan*/  _DVORAK ; 
- int /*<<< orphan*/  _LOWER ; 
- int /*<<< orphan*/  _PLOVER ; 
- int /*<<< orphan*/  _QWERTY ; 
- int /*<<< orphan*/  _RAISE ; 
- int /*<<< orphan*/  backlight_step () ; 
- int /*<<< orphan*/  eeconfig_init () ; 
- int /*<<< orphan*/  eeconfig_is_enabled () ; 
- int /*<<< orphan*/  eeconfig_read_keymap () ; 
- int /*<<< orphan*/  eeconfig_update_keymap (int /*<<< orphan*/ ) ; 
- TYPE_4__ keymap_config ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  plover_gb_song ; 
- int /*<<< orphan*/  plover_song ; 
- int /*<<< orphan*/  print (char*) ; 
- int /*<<< orphan*/  register_code (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_single_persistent_default_layer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stop_all_notes () ; 
- int /*<<< orphan*/  unregister_code (int /*<<< orphan*/ ) ; 
+ int PORTE ;
+
+ int SEND_STRING (char*) ;
+
+ int _ADJUST ;
+ int _COLEMAK ;
+ int _DVORAK ;
+ int _LOWER ;
+ int _PLOVER ;
+ int _QWERTY ;
+ int _RAISE ;
+ int backlight_step () ;
+ int eeconfig_init () ;
+ int eeconfig_is_enabled () ;
+ int eeconfig_read_keymap () ;
+ int eeconfig_update_keymap (int ) ;
+ TYPE_4__ keymap_config ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ int plover_gb_song ;
+ int plover_song ;
+ int print (char*) ;
+ int register_code (int ) ;
+ int set_single_persistent_default_layer (int ) ;
+ int stop_all_notes () ;
+ int unregister_code (int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case QWERTY:
+    case 129:
       if (record->event.pressed) {
         print("mode just switched to qwerty and this is a huge string\n");
         set_single_persistent_default_layer(_QWERTY);
       }
-      return false;
+      return 0;
       break;
-    case COLEMAK:
+    case 134:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_COLEMAK);
       }
-      return false;
+      return 0;
       break;
-    case DVORAK:
+    case 133:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_DVORAK);
       }
-      return false;
+      return 0;
       break;
-    case BACKLIT:
+    case 135:
       if (record->event.pressed) {
         register_code(KC_RSFT);
-        #ifdef BACKLIGHT_ENABLE
-          backlight_step();
-        #endif
-        #ifdef KEYBOARD_planck_rev5
-          PORTE &= ~(1<<6);
-        #endif
+
+
+
+
+
+
       } else {
         unregister_code(KC_RSFT);
-        #ifdef KEYBOARD_planck_rev5
-          PORTE |= (1<<6);
-        #endif
+
+
+
       }
-      return false;
+      return 0;
       break;
-    case PLOVER:
+    case 130:
       if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          stop_all_notes();
-          PLAY_SONG(plover_song);
-        #endif
+
+
+
+
         layer_off(_RAISE);
         layer_off(_LOWER);
         layer_off(_ADJUST);
@@ -113,47 +103,47 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         keymap_config.nkro = 1;
         eeconfig_update_keymap(keymap_config.raw);
       }
-      return false;
+      return 0;
       break;
-    case EXT_PLV:
+    case 132:
       if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(plover_gb_song);
-        #endif
+
+
+
         layer_off(_PLOVER);
       }
-      return false;
+      return 0;
       break;
-    case AUTO_SQ:
+    case 136:
       if (record->event.pressed) {
         SEND_STRING("[]SS_TAP(X_LEFT)");
       }
-      return false;
+      return 0;
       break;
-    case AUTO_CB:
+    case 138:
       if (record->event.pressed) {
         SEND_STRING("{}SS_TAP(X_LEFT)");
       }
-      return false;
+      return 0;
       break;
-    case AUTO_PA:
+    case 137:
       if (record->event.pressed) {
         SEND_STRING("()SS_TAP(X_LEFT)");
       }
-      return false;
+      return 0;
       break;
-    case SHRUG:
+    case 128:
       if (record->event.pressed) {
         SEND_STRING("/shrugSS_TAP(X_ENT)");
       }
-      return false;
+      return 0;
       break;
-    case F4R:
+    case 131:
       if (record->event.pressed) {
         SEND_STRING(":f-for-respects:");
       }
-      return false;
+      return 0;
       break;
   }
-  return true;
+  return 1;
 }

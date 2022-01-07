@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct unwind_table {int /*<<< orphan*/  list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct unwind_table*) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  unwind_lock ; 
+
+
+
+struct unwind_table {int list; } ;
+
+
+ int kfree (struct unwind_table*) ;
+ int list_del (int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int unwind_lock ;
 
 void unwind_table_del(struct unwind_table *tab)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	if (!tab)
-		return;
+ if (!tab)
+  return;
 
-	spin_lock_irqsave(&unwind_lock, flags);
-	list_del(&tab->list);
-	spin_unlock_irqrestore(&unwind_lock, flags);
+ spin_lock_irqsave(&unwind_lock, flags);
+ list_del(&tab->list);
+ spin_unlock_irqrestore(&unwind_lock, flags);
 
-	kfree(tab);
+ kfree(tab);
 }

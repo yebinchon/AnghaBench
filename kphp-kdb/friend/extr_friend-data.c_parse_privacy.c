@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int CAT_FR_ALL ; 
- int CAT_FR_FR ; 
- size_t MAX_PRIVACY_LEN ; 
- int* P ; 
- size_t PL ; 
- int PL_M_ALLOW ; 
- int PL_M_CAT ; 
- int PL_M_DENY ; 
- int PL_M_MASK ; 
- int PL_M_USER ; 
+ int CAT_FR_ALL ;
+ int CAT_FR_FR ;
+ size_t MAX_PRIVACY_LEN ;
+ int* P ;
+ size_t PL ;
+ int PL_M_ALLOW ;
+ int PL_M_CAT ;
+ int PL_M_DENY ;
+ int PL_M_MASK ;
+ int PL_M_USER ;
 
 __attribute__((used)) static int parse_privacy (const char *text, int len) {
   const char *end = text + len;
@@ -78,7 +70,7 @@ __attribute__((used)) static int parse_privacy (const char *text, int len) {
         return -1;
       }
     }
-    P[PL++] = x | y;  
+    P[PL++] = x | y;
     if (PL >= MAX_PRIVACY_LEN) {
       return -1;
     }

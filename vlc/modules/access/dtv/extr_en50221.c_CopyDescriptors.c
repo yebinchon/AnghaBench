@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  system_ids_t ;
 
-/* Variables and functions */
- scalar_t__ CheckSystemID (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetWBE (int const*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcpy (int*,int const*,size_t) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int system_ids_t ;
+
+
+ scalar_t__ CheckSystemID (int const*,int ) ;
+ int GetWBE (int const*) ;
+ int assert (int) ;
+ int memcpy (int*,int const*,size_t) ;
 
 __attribute__((used)) static size_t CopyDescriptors( const uint8_t *p_drdata, size_t i_drdata,
                                const system_ids_t *p_ids, uint8_t *p_dest )
@@ -31,7 +31,7 @@ __attribute__((used)) static size_t CopyDescriptors( const uint8_t *p_drdata, si
         uint16_t i_sysid = GetWBE( &p_drdata[2] );
         if( CheckSystemID( p_ids, i_sysid ) )
         {
-            if( p_dest ) /* if p_dest is NULL, just count required space */
+            if( p_dest )
                 memcpy( &p_dest[i_total], p_drdata, (size_t) i_dr_len + 2 );
             i_total += i_dr_len + 2;
         }

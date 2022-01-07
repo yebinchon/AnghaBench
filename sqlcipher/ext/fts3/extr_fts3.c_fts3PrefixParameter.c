@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct Fts3Index {int nPrefix; } ;
 
-/* Variables and functions */
- int SQLITE_ERROR ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ fts3GobbleInt (char const**,int*) ; 
- int /*<<< orphan*/  memset (struct Fts3Index*,int /*<<< orphan*/ ,int) ; 
- struct Fts3Index* sqlite3_malloc64 (int) ; 
+
+ int SQLITE_ERROR ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ scalar_t__ fts3GobbleInt (char const**,int*) ;
+ int memset (struct Fts3Index*,int ,int) ;
+ struct Fts3Index* sqlite3_malloc64 (int) ;
 
 __attribute__((used)) static int fts3PrefixParameter(
-  const char *zParam,             /* ABC in prefix=ABC parameter to parse */
-  int *pnIndex,                   /* OUT: size of *apIndex[] array */
-  struct Fts3Index **apIndex      /* OUT: Array of indexes for this table */
+  const char *zParam,
+  int *pnIndex,
+  struct Fts3Index **apIndex
 ){
-  struct Fts3Index *aIndex;       /* Allocated array */
-  int nIndex = 1;                 /* Number of entries in array */
+  struct Fts3Index *aIndex;
+  int nIndex = 1;
 
   if( zParam && zParam[0] ){
     const char *p;

@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT32 ;
-typedef  scalar_t__ UINT16 ;
-struct TYPE_6__ {scalar_t__ ReferenceCount; int /*<<< orphan*/  Type; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int UINT32 ;
+typedef scalar_t__ UINT16 ;
+struct TYPE_6__ {scalar_t__ ReferenceCount; int Type; } ;
 struct TYPE_7__ {TYPE_1__ Common; } ;
-typedef  TYPE_2__ ACPI_OPERAND_OBJECT ;
-typedef  int /*<<< orphan*/  ACPI_CPU_FLAGS ;
+typedef TYPE_2__ ACPI_OPERAND_OBJECT ;
+typedef int ACPI_CPU_FLAGS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_DB_ALLOCATIONS ; 
- int /*<<< orphan*/  ACPI_DEBUG_PRINT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_DEBUG_PRINT_RAW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_FUNCTION_NAME (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_GET_FUNCTION_NAME ; 
- scalar_t__ ACPI_MAX_REFERENCE_COUNT ; 
- int /*<<< orphan*/  ACPI_WARNING (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AE_INFO ; 
- int /*<<< orphan*/  AcpiGbl_ReferenceCountLock ; 
- int /*<<< orphan*/  AcpiOsAcquireLock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiOsReleaseLock (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiUtDeleteInternalObj (TYPE_2__*) ; 
- int /*<<< orphan*/  AcpiUtGetObjectTypeName (TYPE_2__*) ; 
-#define  REF_DECREMENT 129 
-#define  REF_INCREMENT 128 
- int /*<<< orphan*/  UtUpdateRefCount ; 
+
+ int ACPI_DB_ALLOCATIONS ;
+ int ACPI_DEBUG_PRINT (int ) ;
+ int ACPI_DEBUG_PRINT_RAW (int ) ;
+ int ACPI_ERROR (int ) ;
+ int ACPI_FUNCTION_NAME (int ) ;
+ int ACPI_GET_FUNCTION_NAME ;
+ scalar_t__ ACPI_MAX_REFERENCE_COUNT ;
+ int ACPI_WARNING (int ) ;
+ int AE_INFO ;
+ int AcpiGbl_ReferenceCountLock ;
+ int AcpiOsAcquireLock (int ) ;
+ int AcpiOsReleaseLock (int ,int ) ;
+ int AcpiUtDeleteInternalObj (TYPE_2__*) ;
+ int AcpiUtGetObjectTypeName (TYPE_2__*) ;
+
+
+ int UtUpdateRefCount ;
 
 __attribute__((used)) static void
 AcpiUtUpdateRefCount (
-    ACPI_OPERAND_OBJECT     *Object,
-    UINT32                  Action)
+    ACPI_OPERAND_OBJECT *Object,
+    UINT32 Action)
 {
-    UINT16                  OriginalCount;
-    UINT16                  NewCount = 0;
-    ACPI_CPU_FLAGS          LockFlags;
-    char                    *Message;
+    UINT16 OriginalCount;
+    UINT16 NewCount = 0;
+    ACPI_CPU_FLAGS LockFlags;
+    char *Message;
 
 
     ACPI_FUNCTION_NAME (UtUpdateRefCount);
@@ -57,24 +57,24 @@ AcpiUtUpdateRefCount (
         return;
     }
 
-    /*
-     * Always get the reference count lock. Note: Interpreter and/or
-     * Namespace is not always locked when this function is called.
-     */
+
+
+
+
     LockFlags = AcpiOsAcquireLock (AcpiGbl_ReferenceCountLock);
     OriginalCount = Object->Common.ReferenceCount;
 
-    /* Perform the reference count action (increment, decrement) */
+
 
     switch (Action)
     {
-    case REF_INCREMENT:
+    case 128:
 
         NewCount = OriginalCount + 1;
         Object->Common.ReferenceCount = NewCount;
         AcpiOsReleaseLock (AcpiGbl_ReferenceCountLock, LockFlags);
 
-        /* The current reference count should never be zero here */
+
 
         if (!OriginalCount)
         {
@@ -90,9 +90,9 @@ AcpiUtUpdateRefCount (
         Message = "Incremement";
         break;
 
-    case REF_DECREMENT:
+    case 129:
 
-        /* The current reference count must be non-zero */
+
 
         if (OriginalCount)
         {
@@ -113,7 +113,7 @@ AcpiUtUpdateRefCount (
             "%s: Obj %p Type %.2X Refs %.2X [Decremented]\n",
             ACPI_GET_FUNCTION_NAME, Object, Object->Common.Type, NewCount));
 
-        /* Actually delete the object on a reference count of zero */
+
 
         if (NewCount == 0)
         {
@@ -130,10 +130,10 @@ AcpiUtUpdateRefCount (
         return;
     }
 
-    /*
-     * Sanity check the reference count, for debug purposes only.
-     * (A deleted object will have a huge reference count)
-     */
+
+
+
+
     if (NewCount > ACPI_MAX_REFERENCE_COUNT)
     {
         ACPI_WARNING ((AE_INFO,

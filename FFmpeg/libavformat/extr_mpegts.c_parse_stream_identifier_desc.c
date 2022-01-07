@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
- int get16 (int /*<<< orphan*/  const**,int /*<<< orphan*/  const*) ; 
- int get8 (int /*<<< orphan*/  const**,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int get16 (int const**,int const*) ;
+ int get8 (int const**,int const*) ;
 
 __attribute__((used)) static int parse_stream_identifier_desc(const uint8_t *p, const uint8_t *p_end)
 {
@@ -28,7 +28,7 @@ __attribute__((used)) static int parse_stream_identifier_desc(const uint8_t *p, 
     if (desc_list_len < 0)
         return -1;
     desc_list_len &= 0xfff;
-    desc_list_end  = p + desc_list_len;
+    desc_list_end = p + desc_list_len;
     if (desc_list_end > p_end)
         return -1;
 

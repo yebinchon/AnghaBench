@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ display; int /*<<< orphan*/  KHR_create_context; int /*<<< orphan*/  minor; int /*<<< orphan*/  major; scalar_t__ handle; void* GetProcAddress; void* QueryString; void* SwapInterval; void* SwapBuffers; void* MakeCurrent; void* CreateWindowSurface; void* DestroyContext; void* DestroySurface; void* CreateContext; void* BindAPI; void* Terminate; void* Initialize; void* GetError; void* GetDisplay; void* GetConfigs; void* GetConfigAttrib; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ display; int KHR_create_context; int minor; int major; scalar_t__ handle; void* GetProcAddress; void* QueryString; void* SwapInterval; void* SwapBuffers; void* MakeCurrent; void* CreateWindowSurface; void* DestroyContext; void* DestroySurface; void* CreateContext; void* BindAPI; void* Terminate; void* Initialize; void* GetError; void* GetDisplay; void* GetConfigs; void* GetConfigAttrib; } ;
 struct TYPE_4__ {TYPE_1__ egl; } ;
-typedef  int /*<<< orphan*/  EGLNativeDisplayType ;
+typedef int EGLNativeDisplayType ;
 
-/* Variables and functions */
- scalar_t__ EGL_NO_DISPLAY ; 
- int /*<<< orphan*/  GLFW_API_UNAVAILABLE ; 
- int GL_FALSE ; 
- int GL_TRUE ; 
- scalar_t__ _GLFW_EGL_NATIVE_DISPLAY ; 
- TYPE_2__ _glfw ; 
- int /*<<< orphan*/  _glfwCreateContextTLS () ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  _glfwPlatformExtensionSupported (char*) ; 
- scalar_t__ _glfw_dlopen (char const*) ; 
- void* _glfw_dlsym (scalar_t__,char*) ; 
- scalar_t__ _glfw_eglGetDisplay (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _glfw_eglGetError () ; 
- int /*<<< orphan*/  _glfw_eglInitialize (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  getErrorString (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ EGL_NO_DISPLAY ;
+ int GLFW_API_UNAVAILABLE ;
+ int GL_FALSE ;
+ int GL_TRUE ;
+ scalar_t__ _GLFW_EGL_NATIVE_DISPLAY ;
+ TYPE_2__ _glfw ;
+ int _glfwCreateContextTLS () ;
+ int _glfwInputError (int ,char*,...) ;
+ int _glfwPlatformExtensionSupported (char*) ;
+ scalar_t__ _glfw_dlopen (char const*) ;
+ void* _glfw_dlsym (scalar_t__,char*) ;
+ scalar_t__ _glfw_eglGetDisplay (int ) ;
+ int _glfw_eglGetError () ;
+ int _glfw_eglInitialize (scalar_t__,int *,int *) ;
+ int getErrorString (int ) ;
 
 int _glfwInitContextAPI(void)
 {
     int i;
     const char* sonames[] =
     {
-#if defined(_GLFW_WIN32)
-        "libEGL.dll",
-        "EGL.dll",
-#elif defined(_GLFW_COCOA)
-        "libEGL.dylib",
-#else
+
+
+
+
+
+
         "libEGL.so.1",
-#endif
-        NULL
+
+        ((void*)0)
     };
 
     if (!_glfwCreateContextTLS())
         return GL_FALSE;
 
-    for (i = 0;  sonames[i];  i++)
+    for (i = 0; sonames[i]; i++)
     {
         _glfw.egl.handle = _glfw_dlopen(sonames[i]);
         if (_glfw.egl.handle)

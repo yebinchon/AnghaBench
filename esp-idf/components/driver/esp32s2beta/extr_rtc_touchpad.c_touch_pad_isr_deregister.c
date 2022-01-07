@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  intr_handler_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  rtc_isr_deregister (int /*<<< orphan*/ ,void*) ; 
+
+
+
+typedef int intr_handler_t ;
+typedef int esp_err_t ;
+
+
+ int rtc_isr_deregister (int ,void*) ;
 
 esp_err_t touch_pad_isr_deregister(intr_handler_t fn, void *arg)
 {

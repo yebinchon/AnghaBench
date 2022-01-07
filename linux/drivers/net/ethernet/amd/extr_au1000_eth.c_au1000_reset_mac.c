@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {int dummy; } ;
-struct au1000_private {int /*<<< orphan*/  lock; } ;
+struct au1000_private {int lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  au1000_reset_mac_unlocked (struct net_device*) ; 
- int /*<<< orphan*/  hw ; 
- struct au1000_private* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  netif_dbg (struct au1000_private* const,int /*<<< orphan*/ ,struct net_device*,char*,unsigned int) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int au1000_reset_mac_unlocked (struct net_device*) ;
+ int hw ;
+ struct au1000_private* netdev_priv (struct net_device*) ;
+ int netif_dbg (struct au1000_private* const,int ,struct net_device*,char*,unsigned int) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void au1000_reset_mac(struct net_device *dev)
 {
-	struct au1000_private *const aup = netdev_priv(dev);
-	unsigned long flags;
+ struct au1000_private *const aup = netdev_priv(dev);
+ unsigned long flags;
 
-	netif_dbg(aup, hw, dev, "reset mac, aup %x\n",
-					(unsigned)aup);
+ netif_dbg(aup, hw, dev, "reset mac, aup %x\n",
+     (unsigned)aup);
 
-	spin_lock_irqsave(&aup->lock, flags);
+ spin_lock_irqsave(&aup->lock, flags);
 
-	au1000_reset_mac_unlocked(dev);
+ au1000_reset_mac_unlocked(dev);
 
-	spin_unlock_irqrestore(&aup->lock, flags);
+ spin_unlock_irqrestore(&aup->lock, flags);
 }

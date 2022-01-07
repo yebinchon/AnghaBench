@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct module_env {int /*<<< orphan*/  cfg; void** modinfo; } ;
-struct dns64_env {int /*<<< orphan*/  ignore_aaaa; } ;
 
-/* Variables and functions */
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  dns64_apply_cfg (struct dns64_env*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_err (char*) ; 
- int /*<<< orphan*/  name_tree_init (int /*<<< orphan*/ *) ; 
+
+
+
+struct module_env {int cfg; void** modinfo; } ;
+struct dns64_env {int ignore_aaaa; } ;
+
+
+ scalar_t__ calloc (int,int) ;
+ int dns64_apply_cfg (struct dns64_env*,int ) ;
+ int log_err (char*) ;
+ int name_tree_init (int *) ;
 
 int
 dns64_init(struct module_env* env, int id)

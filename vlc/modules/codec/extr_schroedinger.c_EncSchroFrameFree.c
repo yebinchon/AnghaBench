@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct enc_picture_free_t {int /*<<< orphan*/  p_pic; } ;
-typedef  int /*<<< orphan*/  SchroFrame ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (struct enc_picture_free_t*) ; 
- int /*<<< orphan*/  picture_Release (int /*<<< orphan*/ ) ; 
+
+
+
+struct enc_picture_free_t {int p_pic; } ;
+typedef int SchroFrame ;
+
+
+ int free (struct enc_picture_free_t*) ;
+ int picture_Release (int ) ;
 
 __attribute__((used)) static void EncSchroFrameFree( SchroFrame *frame, void *priv )
 {

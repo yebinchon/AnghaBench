@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  int UCHAR ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int ULONG ;
+typedef int UCHAR ;
 struct TYPE_6__ {int dsp_version; } ;
-typedef  TYPE_1__* PSOUND_BLASTER_PARAMETERS ;
+typedef TYPE_1__* PSOUND_BLASTER_PARAMETERS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,...) ; 
- int /*<<< orphan*/  NotDetected ; 
- int /*<<< orphan*/  SbGetDspVersion ; 
- scalar_t__ SbReadData (TYPE_1__*,int*) ; 
- int /*<<< orphan*/  SbWriteData (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SoundBlaster ; 
- int /*<<< orphan*/  SoundBlaster16 ; 
- int /*<<< orphan*/  SoundBlaster2 ; 
- int /*<<< orphan*/  SoundBlasterPro ; 
- int /*<<< orphan*/  WaitToRead (TYPE_1__*) ; 
+
+ int DPRINT (char*,...) ;
+ int NotDetected ;
+ int SbGetDspVersion ;
+ scalar_t__ SbReadData (TYPE_1__*,int*) ;
+ int SbWriteData (TYPE_1__*,int ) ;
+ int SoundBlaster ;
+ int SoundBlaster16 ;
+ int SoundBlaster2 ;
+ int SoundBlasterPro ;
+ int WaitToRead (TYPE_1__*) ;
 
 ULONG
 GetSoundBlasterModel(

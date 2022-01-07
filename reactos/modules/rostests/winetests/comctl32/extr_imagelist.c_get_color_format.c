@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bmi ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int bmi ;
 struct TYPE_5__ {int biSize; int biBitCount; } ;
 struct TYPE_6__ {TYPE_1__ bmiHeader; } ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  HBITMAP ;
-typedef  int /*<<< orphan*/  BITMAPINFOHEADER ;
-typedef  TYPE_2__ BITMAPINFO ;
+typedef int HDC ;
+typedef int HBITMAP ;
+typedef int BITMAPINFOHEADER ;
+typedef TYPE_2__ BITMAPINFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateCompatibleDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DIB_RGB_COLORS ; 
- int /*<<< orphan*/  DeleteDC (int /*<<< orphan*/ ) ; 
- int GetDIBits (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
+
+ int CreateCompatibleDC (int ) ;
+ int DIB_RGB_COLORS ;
+ int DeleteDC (int ) ;
+ int GetDIBits (int ,int ,int ,int ,int ,TYPE_2__*,int ) ;
+ int SelectObject (int ,int ) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int ok (int,char*) ;
 
 __attribute__((used)) static int get_color_format(HBITMAP bmp)
 {

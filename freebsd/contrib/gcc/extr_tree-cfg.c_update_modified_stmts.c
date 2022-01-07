@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree_stmt_iterator ;
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- scalar_t__ STATEMENT_LIST ; 
- scalar_t__ TREE_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tsi_end_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tsi_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tsi_start (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tsi_stmt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_stmt_if_modified (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree_stmt_iterator ;
+typedef int tree ;
+
+
+ scalar_t__ STATEMENT_LIST ;
+ scalar_t__ TREE_CODE (int ) ;
+ int tsi_end_p (int ) ;
+ int tsi_next (int *) ;
+ int tsi_start (int ) ;
+ int tsi_stmt (int ) ;
+ int update_stmt_if_modified (int ) ;
 
 __attribute__((used)) static inline void
 update_modified_stmts (tree t)
@@ -31,9 +31,9 @@ update_modified_stmts (tree t)
       tree stmt;
       for (i = tsi_start (t); !tsi_end_p (i); tsi_next (&i))
         {
-	  stmt = tsi_stmt (i);
-	  update_stmt_if_modified (stmt);
-	}
+   stmt = tsi_stmt (i);
+   update_stmt_if_modified (stmt);
+ }
     }
   else
     update_stmt_if_modified (t);

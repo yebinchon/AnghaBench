@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int VOID ;
 struct TYPE_9__ {size_t left; size_t top; size_t right; size_t bottom; } ;
 struct TYPE_6__ {size_t cx; size_t cy; } ;
 struct TYPE_8__ {TYPE_2__** Cells; TYPE_1__ CellSize; } ;
-struct TYPE_7__ {int /*<<< orphan*/  CellInt; TYPE_5__ CellExt; } ;
-typedef  TYPE_3__* PMAP ;
-typedef  size_t INT ;
+struct TYPE_7__ {int CellInt; TYPE_5__ CellExt; } ;
+typedef TYPE_3__* PMAP ;
+typedef size_t INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CopyRect (int /*<<< orphan*/ *,TYPE_5__*) ; 
- int /*<<< orphan*/  InflateRect (int /*<<< orphan*/ *,int,int) ; 
- size_t XCELLS ; 
- size_t YCELLS ; 
+
+ int CopyRect (int *,TYPE_5__*) ;
+ int InflateRect (int *,int,int) ;
+ size_t XCELLS ;
+ size_t YCELLS ;
 
 __attribute__((used)) static
 VOID

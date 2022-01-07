@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ossl_ssize_t ;
-typedef  int /*<<< orphan*/  linktarget ;
 
-/* Variables and functions */
- scalar_t__ OPENSSL_hexchar2int (unsigned char) ; 
- int OSSL_NELEM (char const**) ; 
- int PATH_MAX ; 
- int add_entry (int,unsigned int,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  isxdigit (unsigned char) ; 
- int readlink (char const*,char*,int) ; 
- scalar_t__ strlen (char const*) ; 
- scalar_t__ strncasecmp (char const*,char const*,scalar_t__) ; 
- int strtoul (char const*,char**,int) ; 
- char const** suffixes ; 
+
+
+
+typedef int ossl_ssize_t ;
+typedef int linktarget ;
+
+
+ scalar_t__ OPENSSL_hexchar2int (unsigned char) ;
+ int OSSL_NELEM (char const**) ;
+ int PATH_MAX ;
+ int add_entry (int,unsigned int,char*,int *,int ,int) ;
+ int isxdigit (unsigned char) ;
+ int readlink (char const*,char*,int) ;
+ scalar_t__ strlen (char const*) ;
+ scalar_t__ strncasecmp (char const*,char const*,scalar_t__) ;
+ int strtoul (char const*,char**,int) ;
+ char const** suffixes ;
 
 __attribute__((used)) static int handle_symlink(const char *filename, const char *fullpath)
 {
@@ -58,5 +58,5 @@ __attribute__((used)) static int handle_symlink(const char *filename, const char
         return -1;
     linktarget[n] = 0;
 
-    return add_entry(type, hash, linktarget, NULL, 0, id);
+    return add_entry(type, hash, linktarget, ((void*)0), 0, id);
 }

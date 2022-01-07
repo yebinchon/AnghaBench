@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int iConstExprReg; } ;
-struct ExprList_item {int reusable; TYPE_1__ u; int /*<<< orphan*/  pExpr; } ;
+struct ExprList_item {int reusable; TYPE_1__ u; int pExpr; } ;
 struct TYPE_11__ {int nExpr; struct ExprList_item* a; } ;
-struct TYPE_10__ {int nMem; TYPE_3__* pConstExpr; int /*<<< orphan*/  db; } ;
-typedef  TYPE_2__ Parse ;
-typedef  TYPE_3__ ExprList ;
-typedef  int /*<<< orphan*/  Expr ;
+struct TYPE_10__ {int nMem; TYPE_3__* pConstExpr; int db; } ;
+typedef TYPE_2__ Parse ;
+typedef TYPE_3__ ExprList ;
+typedef int Expr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConstFactorOk (TYPE_2__*) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3ExprCompare (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * sqlite3ExprDup (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_3__* sqlite3ExprListAppend (TYPE_2__*,TYPE_3__*,int /*<<< orphan*/ *) ; 
+
+ int ConstFactorOk (TYPE_2__*) ;
+ int assert (int ) ;
+ scalar_t__ sqlite3ExprCompare (int ,int ,int *,int) ;
+ int * sqlite3ExprDup (int ,int *,int ) ;
+ TYPE_3__* sqlite3ExprListAppend (TYPE_2__*,TYPE_3__*,int *) ;
 
 int sqlite3ExprCodeAtInit(
-  Parse *pParse,    /* Parsing context */
-  Expr *pExpr,      /* The expression to code when the VDBE initializes */
-  int regDest       /* Store the value in this register */
+  Parse *pParse,
+  Expr *pExpr,
+  int regDest
 ){
   ExprList *p;
   assert( ConstFactorOk(pParse) );

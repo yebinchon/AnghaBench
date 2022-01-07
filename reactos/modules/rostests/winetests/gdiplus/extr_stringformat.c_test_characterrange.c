@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int INT ;
-typedef  int /*<<< orphan*/  GpStringFormat ;
-typedef  int GpStatus ;
-typedef  int /*<<< orphan*/  CharacterRange ;
 
-/* Variables and functions */
- int GdipCreateStringFormat (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int GdipDeleteStringFormat (int /*<<< orphan*/ *) ; 
- int GdipGetStringFormatMeasurableCharacterRangeCount (int /*<<< orphan*/ *,int*) ; 
- int GdipSetStringFormatMeasurableCharacterRanges (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int InvalidParameter ; 
- int /*<<< orphan*/  LANG_NEUTRAL ; 
- int Ok ; 
- int /*<<< orphan*/  expect (int,int) ; 
+
+
+
+typedef int INT ;
+typedef int GpStringFormat ;
+typedef int GpStatus ;
+typedef int CharacterRange ;
+
+
+ int GdipCreateStringFormat (int ,int ,int **) ;
+ int GdipDeleteStringFormat (int *) ;
+ int GdipGetStringFormatMeasurableCharacterRangeCount (int *,int*) ;
+ int GdipSetStringFormatMeasurableCharacterRanges (int *,int,int *) ;
+ int InvalidParameter ;
+ int LANG_NEUTRAL ;
+ int Ok ;
+ int expect (int,int) ;
 
 __attribute__((used)) static void test_characterrange(void)
 {
@@ -34,11 +34,11 @@ __attribute__((used)) static void test_characterrange(void)
 
     stat = GdipCreateStringFormat(0, LANG_NEUTRAL, &format);
     expect(Ok, stat);
-    stat = GdipSetStringFormatMeasurableCharacterRanges(NULL, 3, ranges);
+    stat = GdipSetStringFormatMeasurableCharacterRanges(((void*)0), 3, ranges);
     expect(InvalidParameter, stat);
     stat = GdipSetStringFormatMeasurableCharacterRanges(format, 0, ranges);
     expect(Ok, stat);
-    stat = GdipSetStringFormatMeasurableCharacterRanges(format, 3, NULL);
+    stat = GdipSetStringFormatMeasurableCharacterRanges(format, 3, ((void*)0));
     expect(InvalidParameter, stat);
 
     stat = GdipSetStringFormatMeasurableCharacterRanges(format, 3, ranges);

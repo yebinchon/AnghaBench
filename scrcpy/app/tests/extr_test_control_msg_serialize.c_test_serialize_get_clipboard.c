@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct control_msg {unsigned char const type; } ;
-typedef  int /*<<< orphan*/  expected ;
+typedef int expected ;
 
-/* Variables and functions */
- int CONTROL_MSG_SERIALIZED_MAX_SIZE ; 
- unsigned char const CONTROL_MSG_TYPE_GET_CLIPBOARD ; 
- int /*<<< orphan*/  assert (int) ; 
- int control_msg_serialize (struct control_msg*,unsigned char*) ; 
- int /*<<< orphan*/  memcmp (unsigned char*,unsigned char const*,int) ; 
+
+ int CONTROL_MSG_SERIALIZED_MAX_SIZE ;
+ unsigned char const CONTROL_MSG_TYPE_GET_CLIPBOARD ;
+ int assert (int) ;
+ int control_msg_serialize (struct control_msg*,unsigned char*) ;
+ int memcmp (unsigned char*,unsigned char const*,int) ;
 
 __attribute__((used)) static void test_serialize_get_clipboard(void) {
     struct control_msg msg = {

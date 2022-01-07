@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hostapd_iface {int /*<<< orphan*/  sta_seen; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dl_list_init (int /*<<< orphan*/ *) ; 
- struct hostapd_iface* os_zalloc (int) ; 
+
+
+
+struct hostapd_iface {int sta_seen; } ;
+
+
+ int dl_list_init (int *) ;
+ struct hostapd_iface* os_zalloc (int) ;
 
 struct hostapd_iface * hostapd_alloc_iface(void)
 {
-	struct hostapd_iface *hapd_iface;
+ struct hostapd_iface *hapd_iface;
 
-	hapd_iface = os_zalloc(sizeof(*hapd_iface));
-	if (!hapd_iface)
-		return NULL;
+ hapd_iface = os_zalloc(sizeof(*hapd_iface));
+ if (!hapd_iface)
+  return ((void*)0);
 
-	dl_list_init(&hapd_iface->sta_seen);
+ dl_list_init(&hapd_iface->sta_seen);
 
-	return hapd_iface;
+ return hapd_iface;
 }

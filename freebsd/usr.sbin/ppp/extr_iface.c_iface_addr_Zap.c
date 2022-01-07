@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct sockaddr_storage {int dummy; } ;
-struct TYPE_3__ {int /*<<< orphan*/  s_addr; } ;
+struct TYPE_3__ {int s_addr; } ;
 struct sockaddr_in {int sin_family; int sin_len; scalar_t__ sin6_family; TYPE_1__ sin_addr; } ;
 struct TYPE_4__ {void* ia6t_pltime; void* ia6t_vltime; } ;
-struct in6_aliasreq {char const* ifra_name; TYPE_2__ ifra_lifetime; struct sockaddr_in ifra_dstaddr; struct sockaddr_in ifra_prefixmask; struct sockaddr_in ifra_addr; int /*<<< orphan*/  ifra_broadaddr; int /*<<< orphan*/  ifra_mask; } ;
-struct ifaliasreq {char const* ifra_name; TYPE_2__ ifra_lifetime; struct sockaddr_in ifra_dstaddr; struct sockaddr_in ifra_prefixmask; struct sockaddr_in ifra_addr; int /*<<< orphan*/  ifra_broadaddr; int /*<<< orphan*/  ifra_mask; } ;
-struct iface_addr {int /*<<< orphan*/  ifa; int /*<<< orphan*/  peer; } ;
+struct in6_aliasreq {char const* ifra_name; TYPE_2__ ifra_lifetime; struct sockaddr_in ifra_dstaddr; struct sockaddr_in ifra_prefixmask; struct sockaddr_in ifra_addr; int ifra_broadaddr; int ifra_mask; } ;
+struct ifaliasreq {char const* ifra_name; TYPE_2__ ifra_lifetime; struct sockaddr_in ifra_dstaddr; struct sockaddr_in ifra_prefixmask; struct sockaddr_in ifra_addr; int ifra_broadaddr; int ifra_mask; } ;
+struct iface_addr {int ifa; int peer; } ;
 
-/* Variables and functions */
-#define  AF_INET 129 
-#define  AF_INET6 128 
- scalar_t__ AF_UNSPEC ; 
- int ID0ioctl (int,int /*<<< orphan*/ ,struct in6_aliasreq*) ; 
- int /*<<< orphan*/  INADDR_NONE ; 
- int /*<<< orphan*/  LogDEBUG ; 
- int /*<<< orphan*/  LogWARN ; 
- int NCP_ASCIIBUFFERSIZE ; 
- void* ND6_INFINITE_LIFETIME ; 
- int /*<<< orphan*/  SIOCDIFADDR ; 
- int /*<<< orphan*/  SIOCDIFADDR_IN6 ; 
- int errno ; 
- int /*<<< orphan*/  log_IsKept (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,char const*,char*,...) ; 
- int /*<<< orphan*/  memcpy (struct sockaddr_in*,struct sockaddr_storage*,int) ; 
- int /*<<< orphan*/  memset (struct in6_aliasreq*,char,int) ; 
- scalar_t__ ncpaddr_family (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ncpaddr_getsa (int /*<<< orphan*/ *,struct sockaddr_storage*) ; 
- char* ncpaddr_ntoa (int /*<<< orphan*/ *) ; 
- int const ncprange_family (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ncprange_getsa (int /*<<< orphan*/ *,struct sockaddr_storage*,struct sockaddr_storage*) ; 
- char* ncprange_ntoa (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
- int strerror (int) ; 
- int /*<<< orphan*/  strncpy (char const*,char const*,int) ; 
+
+
+
+ scalar_t__ AF_UNSPEC ;
+ int ID0ioctl (int,int ,struct in6_aliasreq*) ;
+ int INADDR_NONE ;
+ int LogDEBUG ;
+ int LogWARN ;
+ int NCP_ASCIIBUFFERSIZE ;
+ void* ND6_INFINITE_LIFETIME ;
+ int SIOCDIFADDR ;
+ int SIOCDIFADDR_IN6 ;
+ int errno ;
+ int log_IsKept (int ) ;
+ int log_Printf (int ,char*,char const*,char*,...) ;
+ int memcpy (struct sockaddr_in*,struct sockaddr_storage*,int) ;
+ int memset (struct in6_aliasreq*,char,int) ;
+ scalar_t__ ncpaddr_family (int *) ;
+ int ncpaddr_getsa (int *,struct sockaddr_storage*) ;
+ char* ncpaddr_ntoa (int *) ;
+ int const ncprange_family (int *) ;
+ int ncprange_getsa (int *,struct sockaddr_storage*,struct sockaddr_storage*) ;
+ char* ncprange_ntoa (int *) ;
+ int snprintf (char*,int,char*,char*) ;
+ int strerror (int) ;
+ int strncpy (char const*,char const*,int) ;
 
 __attribute__((used)) static int
 iface_addr_Zap(const char *name, struct iface_addr *addr, int s)
 {
   struct ifaliasreq ifra;
-#ifndef NOINET6
+
   struct in6_aliasreq ifra6;
-#endif
+
   struct sockaddr_in *me4, *msk4, *peer4;
   struct sockaddr_storage ssme, sspeer, ssmsk;
   int res, saved_errno;
@@ -63,7 +63,7 @@ iface_addr_Zap(const char *name, struct iface_addr *addr, int s)
   res = 0;
 
   switch (ncprange_family(&addr->ifa)) {
-  case AF_INET:
+  case 129:
     memset(&ifra, '\0', sizeof ifra);
     strncpy(ifra.ifra_name, name, sizeof ifra.ifra_name - 1);
 
@@ -75,7 +75,7 @@ iface_addr_Zap(const char *name, struct iface_addr *addr, int s)
 
     peer4 = (struct sockaddr_in *)&ifra.ifra_broadaddr;
     if (ncpaddr_family(&addr->peer) == AF_UNSPEC) {
-      peer4->sin_family = AF_INET;
+      peer4->sin_family = 129;
       peer4->sin_len = sizeof(*peer4);
       peer4->sin_addr.s_addr = INADDR_NONE;
     } else
@@ -92,8 +92,8 @@ iface_addr_Zap(const char *name, struct iface_addr *addr, int s)
     }
     break;
 
-#ifndef NOINET6
-  case AF_INET6:
+
+  case 128:
     memset(&ifra6, '\0', sizeof ifra6);
     strncpy(ifra6.ifra_name, name, sizeof ifra6.ifra_name - 1);
 
@@ -110,15 +110,15 @@ iface_addr_Zap(const char *name, struct iface_addr *addr, int s)
     res = ID0ioctl(s, SIOCDIFADDR_IN6, &ifra6);
     saved_errno = errno;
     break;
-#endif
+
   }
 
   if (res == -1) {
     char dst[NCP_ASCIIBUFFERSIZE];
     const char *end =
-#ifndef NOINET6
-      ncprange_family(&addr->ifa) == AF_INET6 ? "_IN6" :
-#endif
+
+      ncprange_family(&addr->ifa) == 128 ? "_IN6" :
+
       "";
 
     if (ncpaddr_family(&addr->peer) == AF_UNSPEC)

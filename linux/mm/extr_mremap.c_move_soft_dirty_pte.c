@@ -1,34 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pte_t ;
 
-/* Variables and functions */
- scalar_t__ is_swap_pte (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pte_mksoft_dirty (int /*<<< orphan*/ ) ; 
- scalar_t__ pte_present (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pte_swp_mksoft_dirty (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int pte_t ;
+
+
+ scalar_t__ is_swap_pte (int ) ;
+ int pte_mksoft_dirty (int ) ;
+ scalar_t__ pte_present (int ) ;
+ int pte_swp_mksoft_dirty (int ) ;
 
 __attribute__((used)) static pte_t move_soft_dirty_pte(pte_t pte)
 {
-	/*
-	 * Set soft dirty bit so we can notice
-	 * in userspace the ptes were moved.
-	 */
-#ifdef CONFIG_MEM_SOFT_DIRTY
-	if (pte_present(pte))
-		pte = pte_mksoft_dirty(pte);
-	else if (is_swap_pte(pte))
-		pte = pte_swp_mksoft_dirty(pte);
-#endif
-	return pte;
+ return pte;
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct device {int /*<<< orphan*/  dma_mask; } ;
 
-/* Variables and functions */
- int amd_iommu_last_bdf ; 
- int /*<<< orphan*/ ** amd_iommu_rlookup_table ; 
- int get_device_id (struct device*) ; 
+
+
+
+struct device {int dma_mask; } ;
+
+
+ int amd_iommu_last_bdf ;
+ int ** amd_iommu_rlookup_table ;
+ int get_device_id (struct device*) ;
 
 __attribute__((used)) static bool check_device(struct device *dev)
 {
-	int devid;
+ int devid;
 
-	if (!dev || !dev->dma_mask)
-		return false;
+ if (!dev || !dev->dma_mask)
+  return 0;
 
-	devid = get_device_id(dev);
-	if (devid < 0)
-		return false;
+ devid = get_device_id(dev);
+ if (devid < 0)
+  return 0;
 
-	/* Out of our scope? */
-	if (devid > amd_iommu_last_bdf)
-		return false;
 
-	if (amd_iommu_rlookup_table[devid] == NULL)
-		return false;
+ if (devid > amd_iommu_last_bdf)
+  return 0;
 
-	return true;
+ if (amd_iommu_rlookup_table[devid] == ((void*)0))
+  return 0;
+
+ return 1;
 }

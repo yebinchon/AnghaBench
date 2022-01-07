@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int nid; } ;
-struct TYPE_8__ {TYPE_1__* obj; int /*<<< orphan*/  type; } ;
+struct TYPE_8__ {TYPE_1__* obj; int type; } ;
 struct TYPE_7__ {char const* ln; int nid; } ;
-typedef  TYPE_1__ ASN1_OBJECT ;
-typedef  TYPE_2__ ADDED_OBJ ;
+typedef TYPE_1__ ASN1_OBJECT ;
+typedef TYPE_2__ ADDED_OBJ ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADDED_LNAME ; 
- int NID_undef ; 
- int /*<<< orphan*/  NUM_LN ; 
- unsigned int* OBJ_bsearch_ln (TYPE_1__ const**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_INIT_LOAD_CONFIG ; 
- int /*<<< orphan*/  OPENSSL_init_crypto (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * added ; 
- TYPE_2__* lh_ADDED_OBJ_retrieve (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  ln_objs ; 
- TYPE_3__* nid_objs ; 
+
+ int ADDED_LNAME ;
+ int NID_undef ;
+ int NUM_LN ;
+ unsigned int* OBJ_bsearch_ln (TYPE_1__ const**,int ,int ) ;
+ int OPENSSL_INIT_LOAD_CONFIG ;
+ int OPENSSL_init_crypto (int ,int *) ;
+ int * added ;
+ TYPE_2__* lh_ADDED_OBJ_retrieve (int *,TYPE_2__*) ;
+ int ln_objs ;
+ TYPE_3__* nid_objs ;
 
 int OBJ_ln2nid(const char *s)
 {
@@ -38,19 +38,19 @@ int OBJ_ln2nid(const char *s)
     ADDED_OBJ ad, *adp;
     const unsigned int *op;
 
-    /* Make sure we've loaded config before checking for any "added" objects */
-    OPENSSL_init_crypto(OPENSSL_INIT_LOAD_CONFIG, NULL);
+
+    OPENSSL_init_crypto(OPENSSL_INIT_LOAD_CONFIG, ((void*)0));
 
     o.ln = s;
-    if (added != NULL) {
+    if (added != ((void*)0)) {
         ad.type = ADDED_LNAME;
         ad.obj = &o;
         adp = lh_ADDED_OBJ_retrieve(added, &ad);
-        if (adp != NULL)
+        if (adp != ((void*)0))
             return adp->obj->nid;
     }
     op = OBJ_bsearch_ln(&oo, ln_objs, NUM_LN);
-    if (op == NULL)
+    if (op == ((void*)0))
         return NID_undef;
     return nid_objs[*op].nid;
 }

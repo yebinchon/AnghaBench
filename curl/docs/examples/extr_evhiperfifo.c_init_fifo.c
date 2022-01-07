@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct stat {int st_mode; } ;
-typedef  int curl_socket_t ;
-struct TYPE_3__ {int /*<<< orphan*/  fifo_event; int /*<<< orphan*/  loop; int /*<<< orphan*/  input; } ;
-typedef  TYPE_1__ GlobalInfo ;
+typedef int curl_socket_t ;
+struct TYPE_3__ {int fifo_event; int loop; int input; } ;
+typedef TYPE_1__ GlobalInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EEXIST ; 
- int /*<<< orphan*/  EV_READ ; 
- int /*<<< orphan*/  MSG_OUT ; 
- int O_NONBLOCK ; 
- int O_RDWR ; 
- int S_IFMT ; 
- int S_IFREG ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  ev_io_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ev_io_start (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fdopen (int,char*) ; 
- int /*<<< orphan*/  fifo_cb ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- scalar_t__ lstat (char const*,struct stat*) ; 
- int mkfifo (char const*,int) ; 
- int open (char const*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  unlink (char const*) ; 
+
+ int EEXIST ;
+ int EV_READ ;
+ int MSG_OUT ;
+ int O_NONBLOCK ;
+ int O_RDWR ;
+ int S_IFMT ;
+ int S_IFREG ;
+ int errno ;
+ int ev_io_init (int *,int ,int,int ) ;
+ int ev_io_start (int ,int *) ;
+ int exit (int) ;
+ int fdopen (int,char*) ;
+ int fifo_cb ;
+ int fprintf (int ,char*,char const*) ;
+ scalar_t__ lstat (char const*,struct stat*) ;
+ int mkfifo (char const*,int) ;
+ int open (char const*,int,int ) ;
+ int perror (char*) ;
+ int unlink (char const*) ;
 
 __attribute__((used)) static int init_fifo(GlobalInfo *g)
 {

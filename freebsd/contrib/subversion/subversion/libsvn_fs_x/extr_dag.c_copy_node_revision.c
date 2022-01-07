@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {void* created_path; void* prop_rep; void* data_rep; void* copyroot_path; void* copyfrom_path; } ;
-typedef  TYPE_1__ svn_fs_x__noderev_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_fs_x__noderev_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- TYPE_1__* apr_pmemdup (int /*<<< orphan*/ *,TYPE_1__*,int) ; 
- void* apr_pstrdup (int /*<<< orphan*/ *,void*) ; 
- void* svn_fs_x__rep_copy (void*,int /*<<< orphan*/ *) ; 
+
+ TYPE_1__* apr_pmemdup (int *,TYPE_1__*,int) ;
+ void* apr_pstrdup (int *,void*) ;
+ void* svn_fs_x__rep_copy (void*,int *) ;
 
 __attribute__((used)) static svn_fs_x__noderev_t *
 copy_node_revision(svn_fs_x__noderev_t *noderev,

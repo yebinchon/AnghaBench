@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * lpVtbl; } ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int * lpVtbl; } ;
+struct TYPE_9__ {int * lpVtbl; } ;
+struct TYPE_8__ {int * lpVtbl; } ;
 struct TYPE_11__ {int ref; TYPE_3__ IUnknown_inner; TYPE_3__* outer; TYPE_2__ IInternetProtocolInfo_iface; TYPE_1__ IInternetProtocol_iface; } ;
-typedef  TYPE_3__ IUnknown ;
-typedef  TYPE_4__ ITSProtocol ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_3__ IUnknown ;
+typedef TYPE_4__ ITSProtocol ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_4__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ITSProtocolInfoVtbl ; 
- int /*<<< orphan*/  ITSProtocolUnkVtbl ; 
- int /*<<< orphan*/  ITSProtocolVtbl ; 
- int /*<<< orphan*/  ITSS_LockModule () ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_3__*,void**) ; 
+
+ int E_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_4__* HeapAlloc (int ,int ,int) ;
+ int ITSProtocolInfoVtbl ;
+ int ITSProtocolUnkVtbl ;
+ int ITSProtocolVtbl ;
+ int ITSS_LockModule () ;
+ int S_OK ;
+ int TRACE (char*,TYPE_3__*,void**) ;
 
 HRESULT ITSProtocol_create(IUnknown *outer, void **ppv)
 {

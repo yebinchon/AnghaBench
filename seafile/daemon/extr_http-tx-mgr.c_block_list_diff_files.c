@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_7__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  fs_mgr; } ;
-struct TYPE_12__ {int /*<<< orphan*/  added_blocks; int /*<<< orphan*/  block_list; TYPE_3__* task; } ;
-struct TYPE_11__ {int /*<<< orphan*/  repo_id; int /*<<< orphan*/  repo_version; } ;
-struct TYPE_10__ {int /*<<< orphan*/  id; } ;
-struct TYPE_9__ {int n_blocks; int /*<<< orphan*/ * blk_sha1s; } ;
-typedef  TYPE_1__ Seafile ;
-typedef  TYPE_2__ SeafDirent ;
-typedef  TYPE_3__ HttpTxTask ;
-typedef  int /*<<< orphan*/  GHashTable ;
-typedef  TYPE_4__ CalcBlockListData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EMPTY_SHA1 ; 
- int /*<<< orphan*/  add_to_block_list (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_hash_table_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_hash_table_insert (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  g_hash_table_lookup (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * g_hash_table_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_str_equal ; 
- int /*<<< orphan*/  g_str_hash ; 
- TYPE_7__* seaf ; 
- TYPE_1__* seaf_fs_manager_get_seafile (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seaf_warning (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seafile_unref (TYPE_1__*) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_13__ TYPE_7__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int fs_mgr; } ;
+struct TYPE_12__ {int added_blocks; int block_list; TYPE_3__* task; } ;
+struct TYPE_11__ {int repo_id; int repo_version; } ;
+struct TYPE_10__ {int id; } ;
+struct TYPE_9__ {int n_blocks; int * blk_sha1s; } ;
+typedef TYPE_1__ Seafile ;
+typedef TYPE_2__ SeafDirent ;
+typedef TYPE_3__ HttpTxTask ;
+typedef int GHashTable ;
+typedef TYPE_4__ CalcBlockListData ;
+
+
+ int EMPTY_SHA1 ;
+ int add_to_block_list (int *,int ,int ) ;
+ int g_hash_table_destroy (int *) ;
+ int g_hash_table_insert (int *,int ,int*) ;
+ int g_hash_table_lookup (int *,int ) ;
+ int * g_hash_table_new (int ,int ) ;
+ int g_str_equal ;
+ int g_str_hash ;
+ TYPE_7__* seaf ;
+ TYPE_1__* seaf_fs_manager_get_seafile (int ,int ,int ,int ) ;
+ int seaf_warning (char*,int ,int ) ;
+ int seafile_unref (TYPE_1__*) ;
+ scalar_t__ strcmp (int ,int ) ;
 
 __attribute__((used)) static int
 block_list_diff_files (int n, const char *basedir, SeafDirent *files[], void *vdata)
@@ -48,7 +48,7 @@ block_list_diff_files (int n, const char *basedir, SeafDirent *files[], void *vd
     SeafDirent *file2 = files[1];
     CalcBlockListData *data = vdata;
     HttpTxTask *task = data->task;
-    Seafile *f1 = NULL, *f2 = NULL;
+    Seafile *f1 = ((void*)0), *f2 = ((void*)0);
     int i;
 
     if (file1 && strcmp (file1->id, EMPTY_SHA1) != 0) {

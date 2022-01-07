@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {int dummy; } ;
-struct e1000_adapter {int /*<<< orphan*/  reset_task; int /*<<< orphan*/  tx_timeout_count; } ;
+struct e1000_adapter {int reset_task; int tx_timeout_count; } ;
 
-/* Variables and functions */
- struct e1000_adapter* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  schedule_work (int /*<<< orphan*/ *) ; 
+
+ struct e1000_adapter* netdev_priv (struct net_device*) ;
+ int schedule_work (int *) ;
 
 __attribute__((used)) static void e1000_tx_timeout(struct net_device *netdev)
 {
-	struct e1000_adapter *adapter = netdev_priv(netdev);
+ struct e1000_adapter *adapter = netdev_priv(netdev);
 
-	/* Do the reset outside of interrupt context */
-	adapter->tx_timeout_count++;
-	schedule_work(&adapter->reset_task);
+
+ adapter->tx_timeout_count++;
+ schedule_work(&adapter->reset_task);
 }

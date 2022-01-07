@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mk_timer_data_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  Z_NOENCRYPT ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * mk_timer_zone ; 
- int /*<<< orphan*/ * zinit (int,int,int,char*) ; 
- int /*<<< orphan*/  zone_change (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mk_timer_data_t ;
+
+
+ int TRUE ;
+ int Z_NOENCRYPT ;
+ int assert (int) ;
+ int * mk_timer_zone ;
+ int * zinit (int,int,int,char*) ;
+ int zone_change (int *,int ,int ) ;
 
 void
 mk_timer_init(void)
 {
-	int			s = sizeof (mk_timer_data_t);
+ int s = sizeof (mk_timer_data_t);
 
-	assert(!(mk_timer_zone != NULL));
+ assert(!(mk_timer_zone != ((void*)0)));
 
-	mk_timer_zone = zinit(s, (4096 * s), (16 * s), "mk_timer");
+ mk_timer_zone = zinit(s, (4096 * s), (16 * s), "mk_timer");
 
-	zone_change(mk_timer_zone, Z_NOENCRYPT, TRUE);
+ zone_change(mk_timer_zone, Z_NOENCRYPT, TRUE);
 }

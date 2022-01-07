@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_4__ {int pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
+typedef TYPE_2__ keyrecord_t ;
 
-/* Variables and functions */
-#define  CHIKA 140 
-#define  DIA 139 
- int /*<<< orphan*/  IS_LAYER_ON (int /*<<< orphan*/ ) ; 
-#define  KANAN 138 
- int /*<<< orphan*/  LED_default_set () ; 
- int /*<<< orphan*/  LED_layer_set (int) ; 
-#define  MARI 137 
-#define  RETURN_SCHOOL_IDOL_FESTIVAL 136 
-#define  RIKO 135 
-#define  RUBY 134 
-#define  RUBY_SUB1 133 
-#define  RUBY_SUB2 132 
- int /*<<< orphan*/  SEND_CHIKA ; 
- int /*<<< orphan*/  SEND_DIA ; 
- int /*<<< orphan*/  SEND_KANAN ; 
- int /*<<< orphan*/  SEND_MARI ; 
- int /*<<< orphan*/  SEND_RIKO ; 
- int /*<<< orphan*/  SEND_RUBY ; 
- int /*<<< orphan*/  SEND_YOHANE ; 
- int /*<<< orphan*/  SEND_YOU ; 
- int /*<<< orphan*/  SEND_ZURA ; 
-#define  TO_SCHOOL_IDOL_FESTIVAL 131 
-#define  YOHANE 130 
-#define  YOU 129 
-#define  ZURA 128 
- int /*<<< orphan*/  _CHIKA ; 
- int /*<<< orphan*/  _DIA ; 
- int /*<<< orphan*/  _KANAN ; 
- int /*<<< orphan*/  _MARI ; 
- int /*<<< orphan*/  _RIKO ; 
- int /*<<< orphan*/  _RUBY ; 
- int /*<<< orphan*/  _RUBY_SUB1 ; 
- int /*<<< orphan*/  _RUBY_SUB2 ; 
- int /*<<< orphan*/  _RUBY_SUB3 ; 
- int /*<<< orphan*/  _SCHOOL_IDOL_FESTIVAL ; 
- int /*<<< orphan*/  _YOHANE ; 
- int /*<<< orphan*/  _YOU ; 
- int /*<<< orphan*/  _ZURA ; 
- int /*<<< orphan*/  check_tap_and_send_key (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- int long_tap_timer ; 
+
+
+
+ int IS_LAYER_ON (int ) ;
+
+ int LED_default_set () ;
+ int LED_layer_set (int) ;
+
+
+
+
+
+
+ int SEND_CHIKA ;
+ int SEND_DIA ;
+ int SEND_KANAN ;
+ int SEND_MARI ;
+ int SEND_RIKO ;
+ int SEND_RUBY ;
+ int SEND_YOHANE ;
+ int SEND_YOU ;
+ int SEND_ZURA ;
+
+
+
+
+ int _CHIKA ;
+ int _DIA ;
+ int _KANAN ;
+ int _MARI ;
+ int _RIKO ;
+ int _RUBY ;
+ int _RUBY_SUB1 ;
+ int _RUBY_SUB2 ;
+ int _RUBY_SUB3 ;
+ int _SCHOOL_IDOL_FESTIVAL ;
+ int _YOHANE ;
+ int _YOU ;
+ int _ZURA ;
+ int check_tap_and_send_key (int ) ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ int long_tap_timer ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   switch (keycode) {
 
-    case DIA:
+    case 139:
       if (record->event.pressed) {
         long_tap_timer = 1;
         layer_on(_DIA);
@@ -77,7 +77,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       break;
 
-    case YOU:
+    case 129:
       if (record->event.pressed) {
         long_tap_timer = 1;
         layer_on(_YOU);
@@ -89,7 +89,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       break;
 
-    case CHIKA:
+    case 140:
       if (record->event.pressed) {
         long_tap_timer = 1;
         layer_on(_CHIKA);
@@ -101,7 +101,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       break;
 
-    case ZURA:
+    case 128:
       if (record->event.pressed) {
         long_tap_timer = 1;
         layer_on(_ZURA);
@@ -113,7 +113,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       break;
 
-    case RUBY:
+    case 134:
       if (record->event.pressed) {
         long_tap_timer = 1;
         layer_on(_RUBY);
@@ -124,7 +124,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         LED_default_set();
       }
       break;
-    case RUBY_SUB1:
+    case 133:
       if (record->event.pressed) {
         layer_on(_RUBY_SUB1);
         if (IS_LAYER_ON(_RUBY_SUB1) && IS_LAYER_ON(_RUBY_SUB2)) {
@@ -136,7 +136,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_off(_RUBY_SUB1);
       }
       break;
-    case RUBY_SUB2:
+    case 132:
       if (record->event.pressed) {
         layer_on(_RUBY_SUB2);
         if (IS_LAYER_ON(_RUBY_SUB1) && IS_LAYER_ON(_RUBY_SUB2)) {
@@ -149,7 +149,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       break;
 
-    case YOHANE:
+    case 130:
       if (record->event.pressed) {
         long_tap_timer = 1;
         layer_on(_YOHANE);
@@ -161,7 +161,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       break;
 
-    case RIKO:
+    case 135:
       if (record->event.pressed) {
         long_tap_timer = 1;
         layer_on(_RIKO);
@@ -173,7 +173,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       break;
 
-    case MARI:
+    case 137:
       if (record->event.pressed) {
         long_tap_timer = 1;
         layer_on(_MARI);
@@ -185,7 +185,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       break;
 
-    case KANAN:
+    case 138:
       if (record->event.pressed) {
         long_tap_timer = 1;
         layer_on(_KANAN);
@@ -197,18 +197,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       break;
 
-    case TO_SCHOOL_IDOL_FESTIVAL:
+    case 131:
       if (record->event.pressed) {
         LED_default_set();
         layer_on(_SCHOOL_IDOL_FESTIVAL);
       }
       break;
-    case RETURN_SCHOOL_IDOL_FESTIVAL:
+    case 136:
       if (record->event.pressed) {
         layer_off(_SCHOOL_IDOL_FESTIVAL);
       }
       break;
   }
 
-  return true;
+  return 1;
 }

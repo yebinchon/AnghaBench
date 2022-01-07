@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct php_gz_stream_data_t {int /*<<< orphan*/  gz_file; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct php_gz_stream_data_t {int gz_file; } ;
 struct TYPE_3__ {scalar_t__ abstract; } ;
-typedef  TYPE_1__ php_stream ;
+typedef TYPE_1__ php_stream ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Z_SYNC_FLUSH ; 
- int gzflush (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int Z_SYNC_FLUSH ;
+ int gzflush (int ,int ) ;
 
 __attribute__((used)) static int php_gziop_flush(php_stream *stream)
 {
-	struct php_gz_stream_data_t *self = (struct php_gz_stream_data_t *) stream->abstract;
+ struct php_gz_stream_data_t *self = (struct php_gz_stream_data_t *) stream->abstract;
 
-	return gzflush(self->gz_file, Z_SYNC_FLUSH);
+ return gzflush(self->gz_file, Z_SYNC_FLUSH);
 }

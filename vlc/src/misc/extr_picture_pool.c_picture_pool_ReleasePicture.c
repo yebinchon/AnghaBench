@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  picture_t ;
-struct TYPE_5__ {int /*<<< orphan*/  opaque; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int picture_t ;
+struct TYPE_5__ {int opaque; } ;
 struct TYPE_6__ {TYPE_1__ gc; } ;
-typedef  TYPE_2__ picture_priv_t ;
-struct TYPE_7__ {unsigned long long available; int /*<<< orphan*/  lock; int /*<<< orphan*/  wait; int /*<<< orphan*/  (* pic_unlock ) (int /*<<< orphan*/ *) ;int /*<<< orphan*/ ** picture; } ;
-typedef  TYPE_3__ picture_pool_t ;
+typedef TYPE_2__ picture_priv_t ;
+struct TYPE_7__ {unsigned long long available; int lock; int wait; int (* pic_unlock ) (int *) ;int ** picture; } ;
+typedef TYPE_3__ picture_pool_t ;
 
-/* Variables and functions */
- int POOL_MAX ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  picture_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  picture_pool_Destroy (TYPE_3__*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_cond_signal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int POOL_MAX ;
+ int assert (int) ;
+ int picture_Release (int *) ;
+ int picture_pool_Destroy (TYPE_3__*) ;
+ int stub1 (int *) ;
+ int vlc_cond_signal (int *) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 __attribute__((used)) static void picture_pool_ReleasePicture(picture_t *clone)
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static void picture_pool_ReleasePicture(picture_t *clone)
     unsigned offset = sys & (POOL_MAX - 1);
     picture_t *picture = pool->picture[offset];
 
-    if (pool->pic_unlock != NULL)
+    if (pool->pic_unlock != ((void*)0))
         pool->pic_unlock(picture);
     picture_Release(picture);
 

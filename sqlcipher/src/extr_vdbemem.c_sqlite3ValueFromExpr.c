@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-typedef  int /*<<< orphan*/  Expr ;
 
-/* Variables and functions */
- int valueFromExpr (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u8 ;
+typedef int sqlite3_value ;
+typedef int sqlite3 ;
+typedef int Expr ;
+
+
+ int valueFromExpr (int *,int *,int ,int ,int **,int ) ;
 
 int sqlite3ValueFromExpr(
-  sqlite3 *db,              /* The database connection */
-  Expr *pExpr,              /* The expression to evaluate */
-  u8 enc,                   /* Encoding to use */
-  u8 affinity,              /* Affinity to use */
-  sqlite3_value **ppVal     /* Write the new value here */
+  sqlite3 *db,
+  Expr *pExpr,
+  u8 enc,
+  u8 affinity,
+  sqlite3_value **ppVal
 ){
   return pExpr ? valueFromExpr(db, pExpr, enc, affinity, ppVal, 0) : 0;
 }

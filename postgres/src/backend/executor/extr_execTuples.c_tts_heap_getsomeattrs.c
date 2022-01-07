@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TupleTableSlot ;
-struct TYPE_2__ {int /*<<< orphan*/  off; int /*<<< orphan*/  tuple; } ;
-typedef  TYPE_1__ HeapTupleTableSlot ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- int /*<<< orphan*/  TTS_EMPTY (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  slot_deform_heap_tuple (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int TupleTableSlot ;
+struct TYPE_2__ {int off; int tuple; } ;
+typedef TYPE_1__ HeapTupleTableSlot ;
+
+
+ int Assert (int) ;
+ int TTS_EMPTY (int *) ;
+ int slot_deform_heap_tuple (int *,int ,int *,int) ;
 
 __attribute__((used)) static void
 tts_heap_getsomeattrs(TupleTableSlot *slot, int natts)
 {
-	HeapTupleTableSlot *hslot = (HeapTupleTableSlot *) slot;
+ HeapTupleTableSlot *hslot = (HeapTupleTableSlot *) slot;
 
-	Assert(!TTS_EMPTY(slot));
+ Assert(!TTS_EMPTY(slot));
 
-	slot_deform_heap_tuple(slot, hslot->tuple, &hslot->off, natts);
+ slot_deform_heap_tuple(slot, hslot->tuple, &hslot->off, natts);
 }

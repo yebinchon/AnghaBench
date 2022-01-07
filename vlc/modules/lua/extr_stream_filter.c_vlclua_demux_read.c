@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  s; } ;
-typedef  TYPE_1__ stream_t ;
-typedef  int /*<<< orphan*/  ssize_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- int luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushlstring (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  vlc_stream_Read (int /*<<< orphan*/ ,char*,int) ; 
- scalar_t__ vlclua_get_this (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int s; } ;
+typedef TYPE_1__ stream_t ;
+typedef int ssize_t ;
+typedef int lua_State ;
+
+
+ int free (char*) ;
+ int luaL_checkinteger (int *,int) ;
+ int lua_pushlstring (int *,char*,int ) ;
+ int lua_pushnil (int *) ;
+ char* malloc (int) ;
+ int vlc_stream_Read (int ,char*,int) ;
+ scalar_t__ vlclua_get_this (int *) ;
 
 __attribute__((used)) static int vlclua_demux_read( lua_State *L )
 {
@@ -31,7 +31,7 @@ __attribute__((used)) static int vlclua_demux_read( lua_State *L )
     int n = luaL_checkinteger( L, 1 );
     char *buf = malloc(n);
 
-    if (buf != NULL)
+    if (buf != ((void*)0))
     {
         ssize_t val = vlc_stream_Read(s->s, buf, n);
         if (val > 0)

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pp_cam_entry {int /*<<< orphan*/  port; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IEEE1284_MODE_COMPAT ; 
- int /*<<< orphan*/  parport_negotiate (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct pp_cam_entry {int port; } ;
+
+
+ int IEEE1284_MODE_COMPAT ;
+ int parport_negotiate (int ,int ) ;
 
 __attribute__((used)) static void EndTransferMode(struct pp_cam_entry *cam)
 {
-	parport_negotiate(cam->port, IEEE1284_MODE_COMPAT);
+ parport_negotiate(cam->port, IEEE1284_MODE_COMPAT);
 }

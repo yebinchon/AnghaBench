@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int* v; } ;
-typedef  TYPE_1__ AVInteger ;
+typedef TYPE_1__ AVInteger ;
 
-/* Variables and functions */
- int AV_INTEGER_SIZE ; 
+
+ int AV_INTEGER_SIZE ;
 
 AVInteger av_shr_i(AVInteger a, int s){
     AVInteger out;
@@ -25,7 +25,7 @@ AVInteger av_shr_i(AVInteger a, int s){
         unsigned int index= i + (s>>4);
         unsigned int v=0;
         if(index+1<AV_INTEGER_SIZE) v = a.v[index+1]<<16;
-        if(index  <AV_INTEGER_SIZE) v+= a.v[index  ];
+        if(index <AV_INTEGER_SIZE) v+= a.v[index ];
         out.v[i]= v >> (s&15);
     }
     return out;

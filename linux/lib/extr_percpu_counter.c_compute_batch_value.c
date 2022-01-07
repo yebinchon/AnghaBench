@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  max (int,int) ; 
- int num_online_cpus () ; 
- int /*<<< orphan*/  percpu_counter_batch ; 
+ int max (int,int) ;
+ int num_online_cpus () ;
+ int percpu_counter_batch ;
 
 __attribute__((used)) static int compute_batch_value(unsigned int cpu)
 {
-	int nr = num_online_cpus();
+ int nr = num_online_cpus();
 
-	percpu_counter_batch = max(32, nr*2);
-	return 0;
+ percpu_counter_batch = max(32, nr*2);
+ return 0;
 }

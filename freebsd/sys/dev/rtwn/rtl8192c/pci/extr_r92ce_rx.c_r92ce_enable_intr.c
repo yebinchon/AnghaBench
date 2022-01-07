@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rtwn_softc {int dummy; } ;
 struct rtwn_pci_softc {struct rtwn_softc pc_sc; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  R92C_HIMR ; 
- int /*<<< orphan*/  R92C_INT_ENABLE ; 
- int /*<<< orphan*/  rtwn_write_4 (struct rtwn_softc*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int R92C_HIMR ;
+ int R92C_INT_ENABLE ;
+ int rtwn_write_4 (struct rtwn_softc*,int ,int ) ;
 
 void
 r92ce_enable_intr(struct rtwn_pci_softc *pc)
 {
-	struct rtwn_softc *sc = &pc->pc_sc;
+ struct rtwn_softc *sc = &pc->pc_sc;
 
-	/* Enable interrupts. */
-	rtwn_write_4(sc, R92C_HIMR, R92C_INT_ENABLE);
+
+ rtwn_write_4(sc, R92C_HIMR, R92C_INT_ENABLE);
 }

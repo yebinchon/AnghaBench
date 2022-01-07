@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  intel_button_array_enable (struct device*,int) ; 
- int /*<<< orphan*/  intel_hid_set_enable (struct device*,int) ; 
- int /*<<< orphan*/  pm_suspend_no_platform () ; 
+
+ int intel_button_array_enable (struct device*,int) ;
+ int intel_hid_set_enable (struct device*,int) ;
+ int pm_suspend_no_platform () ;
 
 __attribute__((used)) static int intel_hid_pl_suspend_handler(struct device *device)
 {
-	intel_button_array_enable(device, false);
+ intel_button_array_enable(device, 0);
 
-	if (!pm_suspend_no_platform())
-		intel_hid_set_enable(device, false);
+ if (!pm_suspend_no_platform())
+  intel_hid_set_enable(device, 0);
 
-	return 0;
+ return 0;
 }

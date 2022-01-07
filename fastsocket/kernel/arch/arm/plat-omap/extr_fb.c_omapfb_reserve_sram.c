@@ -1,23 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 unsigned long omapfb_reserve_sram(unsigned long sram_pstart,
-				  unsigned long sram_vstart,
-				  unsigned long sram_size,
-				  unsigned long start_avail,
-				  unsigned long size_avail)
+      unsigned long sram_vstart,
+      unsigned long sram_size,
+      unsigned long start_avail,
+      unsigned long size_avail)
 {
-	return 0;
+ return 0;
 }

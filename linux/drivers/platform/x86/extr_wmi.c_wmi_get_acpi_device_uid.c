@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wmi_block {int /*<<< orphan*/  acpi_device; } ;
 
-/* Variables and functions */
- char* acpi_device_uid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  find_guid (char const*,struct wmi_block**) ; 
+
+
+
+struct wmi_block {int acpi_device; } ;
+
+
+ char* acpi_device_uid (int ) ;
+ int find_guid (char const*,struct wmi_block**) ;
 
 char *wmi_get_acpi_device_uid(const char *guid_string)
 {
-	struct wmi_block *wblock = NULL;
+ struct wmi_block *wblock = ((void*)0);
 
-	if (!find_guid(guid_string, &wblock))
-		return NULL;
+ if (!find_guid(guid_string, &wblock))
+  return ((void*)0);
 
-	return acpi_device_uid(wblock->acpi_device);
+ return acpi_device_uid(wblock->acpi_device);
 }

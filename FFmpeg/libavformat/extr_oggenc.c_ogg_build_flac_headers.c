@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_6__ {int extradata_size; char* extradata; } ;
-struct TYPE_5__ {int* header_len; int /*<<< orphan*/ ** header; } ;
-typedef  TYPE_1__ OGGStreamContext ;
-typedef  int /*<<< orphan*/  AVDictionary ;
-typedef  TYPE_2__ AVCodecParameters ;
+struct TYPE_5__ {int* header_len; int ** header; } ;
+typedef TYPE_1__ OGGStreamContext ;
+typedef int AVDictionary ;
+typedef TYPE_2__ AVCodecParameters ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FLAC_STREAMINFO_SIZE ; 
- int /*<<< orphan*/ * av_mallocz (int) ; 
- int /*<<< orphan*/  bytestream_put_be16 (int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  bytestream_put_be24 (int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  bytestream_put_buffer (int /*<<< orphan*/ **,char*,int) ; 
- int /*<<< orphan*/  bytestream_put_byte (int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/ * ogg_write_vorbiscomment (int,int,int*,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int EINVAL ;
+ int ENOMEM ;
+ int FLAC_STREAMINFO_SIZE ;
+ int * av_mallocz (int) ;
+ int bytestream_put_be16 (int **,int) ;
+ int bytestream_put_be24 (int **,int) ;
+ int bytestream_put_buffer (int **,char*,int) ;
+ int bytestream_put_byte (int **,int) ;
+ int * ogg_write_vorbiscomment (int,int,int*,int **,int ,int *,int ) ;
 
 __attribute__((used)) static int ogg_build_flac_headers(AVCodecParameters *par,
                                   OGGStreamContext *oggstream, int bitexact,
@@ -40,28 +40,28 @@ __attribute__((used)) static int ogg_build_flac_headers(AVCodecParameters *par,
     if (par->extradata_size < FLAC_STREAMINFO_SIZE)
         return AVERROR(EINVAL);
 
-    // first packet: STREAMINFO
+
     oggstream->header_len[0] = 51;
-    oggstream->header[0] = av_mallocz(51); // per ogg flac specs
+    oggstream->header[0] = av_mallocz(51);
     p = oggstream->header[0];
     if (!p)
         return AVERROR(ENOMEM);
     bytestream_put_byte(&p, 0x7F);
     bytestream_put_buffer(&p, "FLAC", 4);
-    bytestream_put_byte(&p, 1); // major version
-    bytestream_put_byte(&p, 0); // minor version
-    bytestream_put_be16(&p, 1); // headers packets without this one
+    bytestream_put_byte(&p, 1);
+    bytestream_put_byte(&p, 0);
+    bytestream_put_be16(&p, 1);
     bytestream_put_buffer(&p, "fLaC", 4);
-    bytestream_put_byte(&p, 0x00); // streaminfo
+    bytestream_put_byte(&p, 0x00);
     bytestream_put_be24(&p, 34);
     bytestream_put_buffer(&p, par->extradata, FLAC_STREAMINFO_SIZE);
 
-    // second packet: VorbisComment
-    p = ogg_write_vorbiscomment(4, bitexact, &oggstream->header_len[1], m, 0, NULL, 0);
+
+    p = ogg_write_vorbiscomment(4, bitexact, &oggstream->header_len[1], m, 0, ((void*)0), 0);
     if (!p)
         return AVERROR(ENOMEM);
     oggstream->header[1] = p;
-    bytestream_put_byte(&p, 0x84); // last metadata block and vorbis comment
+    bytestream_put_byte(&p, 0x84);
     bytestream_put_be24(&p, oggstream->header_len[1] - 4);
 
     return 0;

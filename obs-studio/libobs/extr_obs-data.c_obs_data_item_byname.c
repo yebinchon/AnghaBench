@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct obs_data_item {int /*<<< orphan*/  ref; } ;
-typedef  int /*<<< orphan*/  obs_data_t ;
-typedef  struct obs_data_item obs_data_item_t ;
 
-/* Variables and functions */
- struct obs_data_item* get_item (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  os_atomic_inc_long (int /*<<< orphan*/ *) ; 
+
+
+
+struct obs_data_item {int ref; } ;
+typedef int obs_data_t ;
+typedef struct obs_data_item obs_data_item_t ;
+
+
+ struct obs_data_item* get_item (int *,char const*) ;
+ int os_atomic_inc_long (int *) ;
 
 obs_data_item_t *obs_data_item_byname(obs_data_t *data, const char *name)
 {
-	if (!data)
-		return NULL;
+ if (!data)
+  return ((void*)0);
 
-	struct obs_data_item *item = get_item(data, name);
-	if (item)
-		os_atomic_inc_long(&item->ref);
-	return item;
+ struct obs_data_item *item = get_item(data, name);
+ if (item)
+  os_atomic_inc_long(&item->ref);
+ return item;
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TimeStamp ;
-struct TYPE_4__ {int /*<<< orphan*/  cred; int /*<<< orphan*/  id; } ;
-typedef  TYPE_1__ SspiData ;
-typedef  int /*<<< orphan*/  SecPkgInfoA ;
-typedef  int /*<<< orphan*/  SEC_CHAR ;
-typedef  scalar_t__ SECURITY_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SECPKG_CRED_OUTBOUND ; 
- scalar_t__ SEC_E_OK ; 
- int /*<<< orphan*/  getSecError (scalar_t__) ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ pAcquireCredentialsHandleA (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pFreeContextBuffer (int /*<<< orphan*/ *) ; 
- scalar_t__ pQuerySecurityPackageInfoA (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  setupBuffers (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  trace (char*,...) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int TimeStamp ;
+struct TYPE_4__ {int cred; int id; } ;
+typedef TYPE_1__ SspiData ;
+typedef int SecPkgInfoA ;
+typedef int SEC_CHAR ;
+typedef scalar_t__ SECURITY_STATUS ;
+
+
+ int SECPKG_CRED_OUTBOUND ;
+ scalar_t__ SEC_E_OK ;
+ int getSecError (scalar_t__) ;
+ int ok (int,char*,int ) ;
+ scalar_t__ pAcquireCredentialsHandleA (int *,int *,int ,int *,int ,int *,int *,int *,int *) ;
+ int pFreeContextBuffer (int *) ;
+ scalar_t__ pQuerySecurityPackageInfoA (int *,int **) ;
+ int setupBuffers (TYPE_1__*,int *) ;
+ int trace (char*,...) ;
 
 __attribute__((used)) static SECURITY_STATUS setupClient(SspiData *sspi_data, SEC_CHAR *provider)
 {
@@ -36,16 +36,16 @@ __attribute__((used)) static SECURITY_STATUS setupClient(SspiData *sspi_data, SE
     SecPkgInfoA *sec_pkg_info;
 
     trace("Running setupClient\n");
-    
+
     ret = pQuerySecurityPackageInfoA(provider, &sec_pkg_info);
 
     ok(ret == SEC_E_OK, "QuerySecurityPackageInfo returned %s\n", getSecError(ret));
 
     setupBuffers(sspi_data, sec_pkg_info);
     pFreeContextBuffer(sec_pkg_info);
-    
-    if((ret = pAcquireCredentialsHandleA(NULL, provider, SECPKG_CRED_OUTBOUND,
-            NULL, sspi_data->id, NULL, NULL, &sspi_data->cred, &ttl))
+
+    if((ret = pAcquireCredentialsHandleA(((void*)0), provider, SECPKG_CRED_OUTBOUND,
+            ((void*)0), sspi_data->id, ((void*)0), ((void*)0), &sspi_data->cred, &ttl))
             != SEC_E_OK)
     {
         trace("AcquireCredentialsHandle() returned %s\n", getSecError(ret));

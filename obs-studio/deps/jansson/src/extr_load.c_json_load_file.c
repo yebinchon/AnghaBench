@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
-typedef  int /*<<< orphan*/  json_error_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  error_set (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/ * json_loadf (int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsonp_error_init (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int json_t ;
+typedef int json_error_t ;
+typedef int FILE ;
+
+
+ int errno ;
+ int error_set (int *,int *,char*,...) ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int * json_loadf (int *,size_t,int *) ;
+ int jsonp_error_init (int *,char const*) ;
+ int strerror (int ) ;
 
 json_t *json_load_file(const char *path, size_t flags, json_error_t *error)
 {
@@ -30,17 +30,17 @@ json_t *json_load_file(const char *path, size_t flags, json_error_t *error)
 
     jsonp_error_init(error, path);
 
-    if (path == NULL) {
-        error_set(error, NULL, "wrong arguments");
-        return NULL;
+    if (path == ((void*)0)) {
+        error_set(error, ((void*)0), "wrong arguments");
+        return ((void*)0);
     }
 
     fp = fopen(path, "rb");
     if(!fp)
     {
-        error_set(error, NULL, "unable to open %s: %s",
+        error_set(error, ((void*)0), "unable to open %s: %s",
                   path, strerror(errno));
-        return NULL;
+        return ((void*)0);
     }
 
     result = json_loadf(fp, flags, error);

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vo {struct priv* priv; } ;
 struct priv {scalar_t__ renderer_index; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_ERR (struct vo*,char*) ; 
- int /*<<< orphan*/ * SDL_GetHint (int /*<<< orphan*/ ) ; 
- int SDL_GetNumRenderDrivers () ; 
- int /*<<< orphan*/  SDL_HINT_RENDER_DRIVER ; 
- scalar_t__ try_create_renderer (struct vo*,int,int /*<<< orphan*/ *) ; 
+
+ int MP_ERR (struct vo*,char*) ;
+ int * SDL_GetHint (int ) ;
+ int SDL_GetNumRenderDrivers () ;
+ int SDL_HINT_RENDER_DRIVER ;
+ scalar_t__ try_create_renderer (struct vo*,int,int *) ;
 
 __attribute__((used)) static int init_renderer(struct vo *vo)
 {
@@ -28,7 +28,7 @@ __attribute__((used)) static int init_renderer(struct vo *vo)
     int i;
 
     if (vc->renderer_index >= 0)
-        if (try_create_renderer(vo, vc->renderer_index, NULL))
+        if (try_create_renderer(vo, vc->renderer_index, ((void*)0)))
             return 0;
 
     for (i = 0; i < n; ++i)
@@ -36,7 +36,7 @@ __attribute__((used)) static int init_renderer(struct vo *vo)
             return 0;
 
     for (i = 0; i < n; ++i)
-        if (try_create_renderer(vo, i, NULL))
+        if (try_create_renderer(vo, i, ((void*)0)))
             return 0;
 
     MP_ERR(vo, "No supported renderer\n");

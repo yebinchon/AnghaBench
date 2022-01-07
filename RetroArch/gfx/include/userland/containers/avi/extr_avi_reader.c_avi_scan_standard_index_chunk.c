@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int uint64_t ;
-typedef  int uint32_t ;
-typedef  unsigned int uint16_t ;
-typedef  int /*<<< orphan*/  int64_t ;
-struct TYPE_21__ {int offs; int /*<<< orphan*/  time_pos; int /*<<< orphan*/  index; scalar_t__ flags; int /*<<< orphan*/  member_0; } ;
+
+
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef unsigned int uint16_t ;
+typedef int int64_t ;
+struct TYPE_21__ {int offs; int time_pos; int index; scalar_t__ flags; int member_0; } ;
 struct TYPE_19__ {TYPE_5__ chunk; } ;
-typedef  TYPE_3__ VC_CONTAINER_TRACK_MODULE_T ;
+typedef TYPE_3__ VC_CONTAINER_TRACK_MODULE_T ;
 struct TYPE_20__ {TYPE_2__** tracks; } ;
-typedef  TYPE_4__ VC_CONTAINER_T ;
-typedef  scalar_t__ VC_CONTAINER_STATUS_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_SEEK_FLAGS_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_FOURCC_T ;
+typedef TYPE_4__ VC_CONTAINER_T ;
+typedef scalar_t__ VC_CONTAINER_STATUS_T ;
+typedef int VC_CONTAINER_SEEK_FLAGS_T ;
+typedef int VC_CONTAINER_FOURCC_T ;
 struct TYPE_18__ {TYPE_1__* priv; } ;
 struct TYPE_17__ {TYPE_3__* module; } ;
-typedef  TYPE_5__ AVI_TRACK_CHUNK_STATE_T ;
+typedef TYPE_5__ AVI_TRACK_CHUNK_STATE_T ;
 
-/* Variables and functions */
- int AVI_INDEX_DELTAFRAME ; 
- scalar_t__ AVI_INDEX_OF_CHUNKS ; 
- int INT64_C (int /*<<< orphan*/ ) ; 
- int MIN (int,int) ; 
- int /*<<< orphan*/  READ_FOURCC (TYPE_4__*,char*) ; 
- unsigned int READ_U16 (TYPE_4__*,char*) ; 
- int READ_U32 (TYPE_4__*,char*) ; 
- int READ_U64 (TYPE_4__*,char*) ; 
- scalar_t__ READ_U8 (TYPE_4__*,char*) ; 
- int /*<<< orphan*/  SEEK (TYPE_4__*,int) ; 
- int /*<<< orphan*/  SKIP_U32 (TYPE_4__*,char*) ; 
- scalar_t__ STREAM_STATUS (TYPE_4__*) ; 
- int UINT64_C (int /*<<< orphan*/ ) ; 
- scalar_t__ VC_CONTAINER_ERROR_FORMAT_INVALID ; 
- scalar_t__ VC_CONTAINER_ERROR_FORMAT_NOT_SUPPORTED ; 
- scalar_t__ VC_CONTAINER_ERROR_NOT_FOUND ; 
- scalar_t__ VC_CONTAINER_PACKET_FLAG_KEYFRAME ; 
- scalar_t__ VC_CONTAINER_SUCCESS ; 
- int /*<<< orphan*/  avi_calculate_chunk_time (TYPE_3__*) ; 
- scalar_t__ avi_check_track (TYPE_4__*,unsigned int,unsigned int) ; 
- int avi_compare_seek_time (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avi_track_from_chunk_id (int /*<<< orphan*/ ,unsigned int*,unsigned int*) ; 
+
+ int AVI_INDEX_DELTAFRAME ;
+ scalar_t__ AVI_INDEX_OF_CHUNKS ;
+ int INT64_C (int ) ;
+ int MIN (int,int) ;
+ int READ_FOURCC (TYPE_4__*,char*) ;
+ unsigned int READ_U16 (TYPE_4__*,char*) ;
+ int READ_U32 (TYPE_4__*,char*) ;
+ int READ_U64 (TYPE_4__*,char*) ;
+ scalar_t__ READ_U8 (TYPE_4__*,char*) ;
+ int SEEK (TYPE_4__*,int) ;
+ int SKIP_U32 (TYPE_4__*,char*) ;
+ scalar_t__ STREAM_STATUS (TYPE_4__*) ;
+ int UINT64_C (int ) ;
+ scalar_t__ VC_CONTAINER_ERROR_FORMAT_INVALID ;
+ scalar_t__ VC_CONTAINER_ERROR_FORMAT_NOT_SUPPORTED ;
+ scalar_t__ VC_CONTAINER_ERROR_NOT_FOUND ;
+ scalar_t__ VC_CONTAINER_PACKET_FLAG_KEYFRAME ;
+ scalar_t__ VC_CONTAINER_SUCCESS ;
+ int avi_calculate_chunk_time (TYPE_3__*) ;
+ scalar_t__ avi_check_track (TYPE_4__*,unsigned int,unsigned int) ;
+ int avi_compare_seek_time (int ,int ,int,int ) ;
+ int avi_track_from_chunk_id (int ,unsigned int*,unsigned int*) ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T avi_scan_standard_index_chunk(VC_CONTAINER_T *p_ctx, uint64_t index_offset,
    unsigned seek_track_num, int64_t *time, VC_CONTAINER_SEEK_FLAGS_T flags, uint64_t *pos)
 {
    VC_CONTAINER_STATUS_T status = VC_CONTAINER_ERROR_NOT_FOUND;
-   VC_CONTAINER_TRACK_MODULE_T *track_module = NULL;
+   VC_CONTAINER_TRACK_MODULE_T *track_module = ((void*)0);
    VC_CONTAINER_FOURCC_T chunk_id;
    uint32_t chunk_size;
    uint16_t data_type, track_num;
@@ -124,7 +124,7 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T avi_scan_standard_index_chunk
       else
          track_module->chunk.flags = 0;
 
-      if (time != NULL)
+      if (time != ((void*)0))
       {
          int res;
          status = VC_CONTAINER_ERROR_NOT_FOUND;
@@ -157,9 +157,9 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T avi_scan_standard_index_chunk
       }
       else
       {
-         /* Not seeking to a time position, but scanning
-            track chunk state up to a certain file position
-            instead */
+
+
+
          if (position >= *pos)
          {
             status = VC_CONTAINER_SUCCESS;

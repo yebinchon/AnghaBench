@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  state_machine; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int state_machine; } ;
 struct TYPE_5__ {TYPE_1__ parent; } ;
-typedef  int /*<<< orphan*/  SCI_STATUS ;
-typedef  int /*<<< orphan*/  SCI_CONTROLLER_HANDLE_T ;
-typedef  TYPE_2__ SCIF_SAS_CONTROLLER_T ;
+typedef int SCI_STATUS ;
+typedef int SCI_CONTROLLER_HANDLE_T ;
+typedef TYPE_2__ SCIF_SAS_CONTROLLER_T ;
 
-/* Variables and functions */
- int SCIF_LOG_OBJECT_CONTROLLER ; 
- int SCIF_LOG_OBJECT_SHUTDOWN ; 
- int /*<<< orphan*/  SCIF_LOG_TRACE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SCI_BASE_CONTROLLER_STATE_FAILED ; 
- int /*<<< orphan*/  SCI_BASE_CONTROLLER_STATE_STOPPED ; 
- int /*<<< orphan*/  SCI_SUCCESS ; 
- int /*<<< orphan*/  sci_base_object_get_logger (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sci_base_state_machine_change_state (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ sci_object_get_association (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scif_cb_controller_stop_complete (TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+ int SCIF_LOG_OBJECT_CONTROLLER ;
+ int SCIF_LOG_OBJECT_SHUTDOWN ;
+ int SCIF_LOG_TRACE (int ) ;
+ int SCI_BASE_CONTROLLER_STATE_FAILED ;
+ int SCI_BASE_CONTROLLER_STATE_STOPPED ;
+ int SCI_SUCCESS ;
+ int sci_base_object_get_logger (int ) ;
+ int sci_base_state_machine_change_state (int *,int ) ;
+ scalar_t__ sci_object_get_association (int ) ;
+ int scif_cb_controller_stop_complete (TYPE_2__*,int ) ;
 
 void scic_cb_controller_stop_complete(
-   SCI_CONTROLLER_HANDLE_T  controller,
-   SCI_STATUS               completion_status
+   SCI_CONTROLLER_HANDLE_T controller,
+   SCI_STATUS completion_status
 )
 {
    SCIF_SAS_CONTROLLER_T *fw_controller = (SCIF_SAS_CONTROLLER_T*)

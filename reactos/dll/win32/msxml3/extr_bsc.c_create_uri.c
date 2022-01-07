@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  IUri ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CreateUri (int /*<<< orphan*/  const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  E_FAIL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int INTERNET_MAX_URL_LENGTH ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  PathIsURLW (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  PathSearchAndQualifyW (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int Uri_CREATE_ALLOW_IMPLICIT_FILE_SCHEME ; 
- int Uri_CREATE_ALLOW_RELATIVE ; 
- int /*<<< orphan*/  UrlCreateFromPathW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int IUri ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int ARRAY_SIZE (int *) ;
+ int CreateUri (int const*,int,int ,int **) ;
+ int ERR (char*) ;
+ int E_FAIL ;
+ scalar_t__ FAILED (int ) ;
+ int INTERNET_MAX_URL_LENGTH ;
+ int MAX_PATH ;
+ int PathIsURLW (int const*) ;
+ int PathSearchAndQualifyW (int const*,int *,int ) ;
+ int TRACE (char*,int ) ;
+ int Uri_CREATE_ALLOW_IMPLICIT_FILE_SCHEME ;
+ int Uri_CREATE_ALLOW_RELATIVE ;
+ int UrlCreateFromPathW (int *,int *,int *,int ) ;
+ int WARN (char*) ;
+ int debugstr_w (int const*) ;
 
 HRESULT create_uri(const WCHAR *url, IUri **uri)
 {

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct crypto_tfm {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  crypto_tfm_ctx (struct crypto_tfm*) ; 
- int /*<<< orphan*/  des3_ede_dec_blk (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
+
+ int crypto_tfm_ctx (struct crypto_tfm*) ;
+ int des3_ede_dec_blk (int ,int *,int const*) ;
 
 __attribute__((used)) static void des3_ede_x86_decrypt(struct crypto_tfm *tfm, u8 *dst, const u8 *src)
 {
-	des3_ede_dec_blk(crypto_tfm_ctx(tfm), dst, src);
+ des3_ede_dec_blk(crypto_tfm_ctx(tfm), dst, src);
 }

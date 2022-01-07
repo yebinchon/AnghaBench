@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ rw_type; int /*<<< orphan*/  block_id; int /*<<< orphan*/  store_id; int /*<<< orphan*/  tmp_file; int /*<<< orphan*/  version; } ;
-typedef  int /*<<< orphan*/  BlockBackend ;
-typedef  TYPE_1__ BHandle ;
 
-/* Variables and functions */
- scalar_t__ BLOCK_WRITE ; 
- int SEAF_PATH_MAX ; 
- scalar_t__ create_parent_path (char*) ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ g_rename (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  g_return_val_if_fail (int,int) ; 
- int /*<<< orphan*/  get_block_path (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seaf_warning (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ rw_type; int block_id; int store_id; int tmp_file; int version; } ;
+typedef int BlockBackend ;
+typedef TYPE_1__ BHandle ;
+
+
+ scalar_t__ BLOCK_WRITE ;
+ int SEAF_PATH_MAX ;
+ scalar_t__ create_parent_path (char*) ;
+ int errno ;
+ scalar_t__ g_rename (int ,char*) ;
+ int g_return_val_if_fail (int,int) ;
+ int get_block_path (int *,int ,char*,int ,int ) ;
+ int seaf_warning (char*,int ,int ,...) ;
+ int strerror (int ) ;
 
 __attribute__((used)) static int
 block_backend_fs_commit_block (BlockBackend *bend,

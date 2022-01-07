@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_7__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_7__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {char* scratch; } ;
-typedef  TYPE_1__ rest_server_context_t ;
+typedef TYPE_1__ rest_server_context_t ;
 struct TYPE_9__ {int content_len; scalar_t__ user_ctx; } ;
-typedef  TYPE_2__ httpd_req_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
-typedef  int /*<<< orphan*/  cJSON ;
+typedef TYPE_2__ httpd_req_t ;
+typedef int esp_err_t ;
+typedef int cJSON ;
 struct TYPE_10__ {int valueint; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_FAIL ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,int,int,int) ; 
- int /*<<< orphan*/  ESP_OK ; 
- int /*<<< orphan*/  HTTPD_500_INTERNAL_SERVER_ERROR ; 
- int /*<<< orphan*/  REST_TAG ; 
- int SCRATCH_BUFSIZE ; 
- int /*<<< orphan*/  cJSON_Delete (int /*<<< orphan*/ *) ; 
- TYPE_7__* cJSON_GetObjectItem (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * cJSON_Parse (char*) ; 
- int httpd_req_recv (TYPE_2__*,char*,int) ; 
- int /*<<< orphan*/  httpd_resp_send_err (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  httpd_resp_sendstr (TYPE_2__*,char*) ; 
+
+ int ESP_FAIL ;
+ int ESP_LOGI (int ,char*,int,int,int) ;
+ int ESP_OK ;
+ int HTTPD_500_INTERNAL_SERVER_ERROR ;
+ int REST_TAG ;
+ int SCRATCH_BUFSIZE ;
+ int cJSON_Delete (int *) ;
+ TYPE_7__* cJSON_GetObjectItem (int *,char*) ;
+ int * cJSON_Parse (char*) ;
+ int httpd_req_recv (TYPE_2__*,char*,int) ;
+ int httpd_resp_send_err (TYPE_2__*,int ,char*) ;
+ int httpd_resp_sendstr (TYPE_2__*,char*) ;
 
 __attribute__((used)) static esp_err_t light_brightness_post_handler(httpd_req_t *req)
 {
@@ -42,14 +42,14 @@ __attribute__((used)) static esp_err_t light_brightness_post_handler(httpd_req_t
     char *buf = ((rest_server_context_t *)(req->user_ctx))->scratch;
     int received = 0;
     if (total_len >= SCRATCH_BUFSIZE) {
-        /* Respond with 500 Internal Server Error */
+
         httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "content too long");
         return ESP_FAIL;
     }
     while (cur_len < total_len) {
         received = httpd_req_recv(req, buf + cur_len, total_len);
         if (received <= 0) {
-            /* Respond with 500 Internal Server Error */
+
             httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Failed to post control value");
             return ESP_FAIL;
         }

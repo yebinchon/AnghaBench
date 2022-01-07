@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ type; } ;
-typedef  TYPE_1__ wiiu_attach_event ;
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  int32_t ;
-typedef  int /*<<< orphan*/  HIDDevice ;
-typedef  int /*<<< orphan*/  HIDClient ;
+typedef TYPE_1__ wiiu_attach_event ;
+typedef scalar_t__ uint32_t ;
+typedef int int32_t ;
+typedef int HIDDevice ;
+typedef int HIDClient ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEVICE_UNUSED ; 
- int /*<<< orphan*/  DEVICE_USED ; 
- int /*<<< orphan*/  RARCH_LOG (char*) ; 
- int /*<<< orphan*/  delete_attach_event (TYPE_1__*) ; 
- int /*<<< orphan*/  log_device (int /*<<< orphan*/ *) ; 
- TYPE_1__* new_attach_event (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  synchronized_add_event (TYPE_1__*) ; 
+
+ int DEVICE_UNUSED ;
+ int DEVICE_USED ;
+ int RARCH_LOG (char*) ;
+ int delete_attach_event (TYPE_1__*) ;
+ int log_device (int *) ;
+ TYPE_1__* new_attach_event (int *) ;
+ int synchronized_add_event (TYPE_1__*) ;
 
 __attribute__((used)) static int32_t wiiu_attach_callback(HIDClient *client,
       HIDDevice *device, uint32_t attach)
 {
-   wiiu_attach_event *event = NULL;
+   wiiu_attach_event *event = ((void*)0);
 
    if (attach)
    {

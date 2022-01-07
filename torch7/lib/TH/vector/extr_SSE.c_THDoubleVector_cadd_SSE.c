@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  z ;
-typedef  int /*<<< orphan*/  y ;
-typedef  int /*<<< orphan*/  x ;
-typedef  int ptrdiff_t ;
-typedef  int n ;
-typedef  int /*<<< orphan*/  __m128d ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _mm_add_pd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _mm_loadu_pd (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _mm_mul_pd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _mm_set1_pd (double const) ; 
- int /*<<< orphan*/  _mm_storeu_pd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int z ;
+typedef int y ;
+typedef int x ;
+typedef int ptrdiff_t ;
+typedef int n ;
+typedef int __m128d ;
+
+
+ int _mm_add_pd (int ,int ) ;
+ int _mm_loadu_pd (int ) ;
+ int _mm_mul_pd (int ,int ) ;
+ int _mm_set1_pd (double const) ;
+ int _mm_storeu_pd (int ,int ) ;
 
 __attribute__((used)) static void THDoubleVector_cadd_SSE(double *z, const double *x, const double *y, const double c, const ptrdiff_t n) {
   ptrdiff_t i;

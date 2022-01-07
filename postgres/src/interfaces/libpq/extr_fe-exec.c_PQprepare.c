@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PGresult ;
-typedef  int /*<<< orphan*/  PGconn ;
-typedef  int /*<<< orphan*/  Oid ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * PQexecFinish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PQexecStart (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PQsendPrepare (int /*<<< orphan*/ *,char const*,char const*,int,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int PGresult ;
+typedef int PGconn ;
+typedef int Oid ;
+
+
+ int * PQexecFinish (int *) ;
+ int PQexecStart (int *) ;
+ int PQsendPrepare (int *,char const*,char const*,int,int const*) ;
 
 PGresult *
 PQprepare(PGconn *conn,
-		  const char *stmtName, const char *query,
-		  int nParams, const Oid *paramTypes)
+    const char *stmtName, const char *query,
+    int nParams, const Oid *paramTypes)
 {
-	if (!PQexecStart(conn))
-		return NULL;
-	if (!PQsendPrepare(conn, stmtName, query, nParams, paramTypes))
-		return NULL;
-	return PQexecFinish(conn);
+ if (!PQexecStart(conn))
+  return ((void*)0);
+ if (!PQsendPrepare(conn, stmtName, query, nParams, paramTypes))
+  return ((void*)0);
+ return PQexecFinish(conn);
 }

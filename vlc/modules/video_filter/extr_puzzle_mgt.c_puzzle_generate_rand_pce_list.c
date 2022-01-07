@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t int32_t ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef size_t int32_t ;
 struct TYPE_6__ {TYPE_3__* p_sys; } ;
-typedef  TYPE_2__ filter_t ;
+typedef TYPE_2__ filter_t ;
 struct TYPE_5__ {size_t i_pieces_nbr; } ;
 struct TYPE_7__ {TYPE_1__ s_allocated; } ;
-typedef  TYPE_3__ filter_sys_t ;
+typedef TYPE_3__ filter_sys_t ;
 
-/* Variables and functions */
- size_t NO_PCE ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- size_t* calloc (size_t,int) ; 
- int /*<<< orphan*/  free (size_t*) ; 
- scalar_t__ vlc_mrand48 () ; 
+
+ size_t NO_PCE ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ size_t* calloc (size_t,int) ;
+ int free (size_t*) ;
+ scalar_t__ vlc_mrand48 () ;
 
 int puzzle_generate_rand_pce_list( filter_t *p_filter, int32_t **pi_pce_lst )
 {

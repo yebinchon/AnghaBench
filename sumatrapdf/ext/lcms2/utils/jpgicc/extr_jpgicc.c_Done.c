@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ cmsBool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Compressor ; 
- int /*<<< orphan*/  Decompressor ; 
- int /*<<< orphan*/  InFile ; 
- int /*<<< orphan*/  OutFile ; 
- scalar_t__ fclose (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jpeg_destroy_compress (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jpeg_destroy_decompress (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ cmsBool ;
+
+
+ int Compressor ;
+ int Decompressor ;
+ int InFile ;
+ int OutFile ;
+ scalar_t__ fclose (int ) ;
+ int jpeg_destroy_compress (int *) ;
+ int jpeg_destroy_decompress (int *) ;
 
 __attribute__((used)) static
 cmsBool Done(void)

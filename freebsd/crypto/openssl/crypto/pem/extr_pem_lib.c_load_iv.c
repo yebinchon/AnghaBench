@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int OPENSSL_hexchar2int (char) ; 
- int /*<<< orphan*/  PEM_F_LOAD_IV ; 
- int /*<<< orphan*/  PEM_R_BAD_IV_CHARS ; 
- int /*<<< orphan*/  PEMerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int OPENSSL_hexchar2int (char) ;
+ int PEM_F_LOAD_IV ;
+ int PEM_R_BAD_IV_CHARS ;
+ int PEMerr (int ,int ) ;
 
 __attribute__((used)) static int load_iv(char **fromp, unsigned char *to, int num)
 {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct dw_hdmi_cec {int /*<<< orphan*/  hdmi; TYPE_1__* ops; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* read ) (int /*<<< orphan*/ ,int) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct dw_hdmi_cec {int hdmi; TYPE_1__* ops; } ;
+struct TYPE_2__ {int (* read ) (int ,int) ;} ;
+
+
+ int stub1 (int ,int) ;
 
 __attribute__((used)) static u8 dw_hdmi_read(struct dw_hdmi_cec *cec, int offset)
 {
-	return cec->ops->read(cec->hdmi, offset);
+ return cec->ops->read(cec->hdmi, offset);
 }

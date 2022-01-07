@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
+
+
+
+
+typedef scalar_t__ uint32_t ;
 struct timeval {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_CONNECT_TO ; 
- int IPPROTO_TCP ; 
- int IPPROTO_UDP ; 
- int SOCK_DGRAM ; 
- int SOCK_STREAM ; 
- int connect_to_this_ip46 (int,int,char*,scalar_t__,char*,struct timeval*) ; 
- int connect_to_unix (char*,struct timeval*) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,char*,char*,char*,int,int,int) ; 
- int /*<<< orphan*/  error (char*,char const*) ; 
- scalar_t__ if_nametoindex (char*) ; 
- int /*<<< orphan*/  snprintfz (char*,int,char*,int) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
+
+ int D_CONNECT_TO ;
+ int IPPROTO_TCP ;
+ int IPPROTO_UDP ;
+ int SOCK_DGRAM ;
+ int SOCK_STREAM ;
+ int connect_to_this_ip46 (int,int,char*,scalar_t__,char*,struct timeval*) ;
+ int connect_to_unix (char*,struct timeval*) ;
+ int debug (int ,char*,char*,char*,char*,int,int,int) ;
+ int error (char*,char const*) ;
+ scalar_t__ if_nametoindex (char*) ;
+ int snprintfz (char*,int,char*,int) ;
+ int strcpy (char*,char const*) ;
+ int strlen (char const*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
 
 int connect_to_this(const char *definition, int default_port, struct timeval *timeout) {
     char buffer[strlen(definition) + 1];

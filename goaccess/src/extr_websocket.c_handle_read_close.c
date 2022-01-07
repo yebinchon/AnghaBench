@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int closing; } ;
-typedef  TYPE_1__ WSServer ;
+typedef TYPE_1__ WSServer ;
 struct TYPE_8__ {int status; } ;
-typedef  TYPE_2__ WSClient ;
+typedef TYPE_2__ WSClient ;
 
-/* Variables and functions */
- int WS_SENDING ; 
- int /*<<< orphan*/  handle_tcp_close (int,TYPE_2__*,TYPE_1__*) ; 
+
+ int WS_SENDING ;
+ int handle_tcp_close (int,TYPE_2__*,TYPE_1__*) ;
 
 __attribute__((used)) static void
 handle_read_close (int conn, WSClient * client, WSServer * server)

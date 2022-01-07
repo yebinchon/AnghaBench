@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dyn_string_t ;
 
-/* Variables and functions */
- int dyn_string_insert_cstr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
+
+
+
+typedef int dyn_string_t ;
+
+
+ int dyn_string_insert_cstr (int ,int ,char const*) ;
 
 int
 dyn_string_prepend_cstr (dyn_string_t dest, const char *src)

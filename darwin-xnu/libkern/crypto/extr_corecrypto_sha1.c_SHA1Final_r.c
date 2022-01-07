@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SHA1_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SHA1Final (void*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int SHA1_CTX ;
+
+
+ int SHA1Final (void*,int *) ;
 
 void SHA1Final_r(SHA1_CTX *context, void *digest)
 {
-	SHA1Final(digest, context);
+ SHA1Final(digest, context);
 }

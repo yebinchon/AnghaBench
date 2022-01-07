@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ USHORT ;
-typedef  scalar_t__ ULONG ;
-typedef  int /*<<< orphan*/ * PVOID ;
-typedef  int /*<<< orphan*/  PUCHAR ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ ISAPNP_IS_SMALL_TAG (scalar_t__) ; 
- scalar_t__ ISAPNP_LARGE_TAG_NAME (scalar_t__) ; 
- scalar_t__ ISAPNP_SMALL_TAG_LEN (scalar_t__) ; 
- scalar_t__ ISAPNP_SMALL_TAG_NAME (scalar_t__) ; 
- scalar_t__ ISAPNP_TAG_END ; 
- int /*<<< orphan*/  Peek (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__) ; 
- int PeekByte (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
+
+
+
+typedef scalar_t__ USHORT ;
+typedef scalar_t__ ULONG ;
+typedef int * PVOID ;
+typedef int PUCHAR ;
+typedef int BOOLEAN ;
+
+
+ int FALSE ;
+ scalar_t__ ISAPNP_IS_SMALL_TAG (scalar_t__) ;
+ scalar_t__ ISAPNP_LARGE_TAG_NAME (scalar_t__) ;
+ scalar_t__ ISAPNP_SMALL_TAG_LEN (scalar_t__) ;
+ scalar_t__ ISAPNP_SMALL_TAG_NAME (scalar_t__) ;
+ scalar_t__ ISAPNP_TAG_END ;
+ int Peek (int ,int *,scalar_t__) ;
+ int PeekByte (int ) ;
+ int TRUE ;
 
 __attribute__((used)) static
 BOOLEAN
@@ -58,7 +58,7 @@ FindTag(PUCHAR ReadDataPort, USHORT WantedTag, PVOID Buffer, ULONG Length)
     }
     else
     {
-      Peek(ReadDataPort, NULL, Length);
+      Peek(ReadDataPort, ((void*)0), Length);
     }
   } while (Tag != ISAPNP_TAG_END);
 

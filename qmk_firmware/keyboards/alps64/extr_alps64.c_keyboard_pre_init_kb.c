@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  C5 ; 
- int /*<<< orphan*/  keyboard_pre_init_user () ; 
- int /*<<< orphan*/  setPinOutput (int /*<<< orphan*/ ) ; 
+ int C5 ;
+ int keyboard_pre_init_user () ;
+ int setPinOutput (int ) ;
 
 void keyboard_pre_init_kb(void) {
-	// put your keyboard start-up code here
-	// runs once when the firmware starts up
+
+
     setPinOutput(C5);
     keyboard_pre_init_user();
 }

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  time_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int time_t ;
 struct tm {int dummy; } ;
-struct TYPE_4__ {void* len; int /*<<< orphan*/ * str; } ;
-struct TYPE_5__ {TYPE_1__ filename; int /*<<< orphan*/  volume_sequence_number; void* file_flags; int /*<<< orphan*/  recording_time; void* size; void* extent; void* length; } ;
-typedef  TYPE_2__ iso9660_dir_t ;
+struct TYPE_4__ {void* len; int * str; } ;
+struct TYPE_5__ {TYPE_1__ filename; int volume_sequence_number; void* file_flags; int recording_time; void* size; void* extent; void* length; } ;
+typedef TYPE_2__ iso9660_dir_t ;
 
-/* Variables and functions */
- int ISO_BLOCKSIZE ; 
- scalar_t__ MAX_ISOPATHNAME ; 
- int _cdio_ceil2block (int,int) ; 
- unsigned int _cdio_ofs_add (unsigned int,int,int) ; 
- int /*<<< orphan*/  cdio_assert (int) ; 
- int /*<<< orphan*/  from_711 (void*) ; 
- int from_733 (void*) ; 
- int /*<<< orphan*/  gmtime_r (int /*<<< orphan*/  const*,struct tm*) ; 
- int /*<<< orphan*/  iso9660_set_dtime (struct tm*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int*,void const*,unsigned int) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int strlen (char const*) ; 
- void* to_711 (int) ; 
- int /*<<< orphan*/  to_723 (int) ; 
- void* to_733 (int) ; 
+
+ int ISO_BLOCKSIZE ;
+ scalar_t__ MAX_ISOPATHNAME ;
+ int _cdio_ceil2block (int,int) ;
+ unsigned int _cdio_ofs_add (unsigned int,int,int) ;
+ int cdio_assert (int) ;
+ int from_711 (void*) ;
+ int from_733 (void*) ;
+ int gmtime_r (int const*,struct tm*) ;
+ int iso9660_set_dtime (struct tm*,int *) ;
+ int memcpy (int*,void const*,unsigned int) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int strlen (char const*) ;
+ void* to_711 (int) ;
+ int to_723 (int) ;
+ void* to_733 (int) ;
 
 void
 iso9660_dir_add_entry_su(void *dir,
@@ -56,22 +56,22 @@ iso9660_dir_add_entry_su(void *dir,
   cdio_assert (sizeof(iso9660_dir_t) == 33);
 
   if (!dsize && !idr->length)
-    dsize = ISO_BLOCKSIZE; /* for when dir lacks '.' entry */
+    dsize = ISO_BLOCKSIZE;
 
   cdio_assert (dsize > 0 && !(dsize % ISO_BLOCKSIZE));
-  cdio_assert (dir != NULL);
+  cdio_assert (dir != ((void*)0));
   cdio_assert (extent > 17);
-  cdio_assert (filename != NULL);
+  cdio_assert (filename != ((void*)0));
   cdio_assert (strlen(filename) <= MAX_ISOPATHNAME);
 
   length = sizeof(iso9660_dir_t);
   length += strlen(filename);
-  length = _cdio_ceil2block (length, 2); /* pad to word boundary */
+  length = _cdio_ceil2block (length, 2);
   su_offset = length;
   length += su_size;
-  length = _cdio_ceil2block (length, 2); /* pad to word boundary again */
+  length = _cdio_ceil2block (length, 2);
 
-  /* find the last entry's end */
+
   {
     unsigned int ofs_last_rec = 0;
 
@@ -93,7 +93,7 @@ iso9660_dir_add_entry_su(void *dir,
     offset = ofs_last_rec;
   }
 
-  /* be sure we don't cross sectors boundaries */
+
   offset = _cdio_ofs_add (offset, length, ISO_BLOCKSIZE);
   offset -= length;
 
@@ -117,7 +117,7 @@ iso9660_dir_add_entry_su(void *dir,
   idr->volume_sequence_number = to_723(1);
 
   idr->filename.len = to_711(strlen(filename)
-                             ? strlen(filename) : 1); /* working hack! */
+                             ? strlen(filename) : 1);
 
   memcpy(&idr->filename.str[1], filename, from_711(idr->filename.len));
   if (su_size > 0 && su_data)

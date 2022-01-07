@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rpc_authops {int /*<<< orphan*/  owner; } ;
-typedef  size_t rpc_authflavor_t ;
 
-/* Variables and functions */
- size_t RPC_AUTH_MAXFLAVOR ; 
- int /*<<< orphan*/ * auth_flavors ; 
- struct rpc_authops* rcu_dereference (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rcu_read_lock () ; 
- int /*<<< orphan*/  rcu_read_unlock () ; 
- int /*<<< orphan*/  request_module (char*,size_t) ; 
- int /*<<< orphan*/  try_module_get (int /*<<< orphan*/ ) ; 
+
+
+
+struct rpc_authops {int owner; } ;
+typedef size_t rpc_authflavor_t ;
+
+
+ size_t RPC_AUTH_MAXFLAVOR ;
+ int * auth_flavors ;
+ struct rpc_authops* rcu_dereference (int ) ;
+ int rcu_read_lock () ;
+ int rcu_read_unlock () ;
+ int request_module (char*,size_t) ;
+ int try_module_get (int ) ;
 
 __attribute__((used)) static const struct rpc_authops *
 rpcauth_get_authops(rpc_authflavor_t flavor)
 {
-	const struct rpc_authops *ops;
+ const struct rpc_authops *ops;
 
-	if (flavor >= RPC_AUTH_MAXFLAVOR)
-		return NULL;
+ if (flavor >= RPC_AUTH_MAXFLAVOR)
+  return ((void*)0);
 
-	rcu_read_lock();
-	ops = rcu_dereference(auth_flavors[flavor]);
-	if (ops == NULL) {
-		rcu_read_unlock();
-		request_module("rpc-auth-%u", flavor);
-		rcu_read_lock();
-		ops = rcu_dereference(auth_flavors[flavor]);
-		if (ops == NULL)
-			goto out;
-	}
-	if (!try_module_get(ops->owner))
-		ops = NULL;
+ rcu_read_lock();
+ ops = rcu_dereference(auth_flavors[flavor]);
+ if (ops == ((void*)0)) {
+  rcu_read_unlock();
+  request_module("rpc-auth-%u", flavor);
+  rcu_read_lock();
+  ops = rcu_dereference(auth_flavors[flavor]);
+  if (ops == ((void*)0))
+   goto out;
+ }
+ if (!try_module_get(ops->owner))
+  ops = ((void*)0);
 out:
-	rcu_read_unlock();
-	return ops;
+ rcu_read_unlock();
+ return ops;
 }

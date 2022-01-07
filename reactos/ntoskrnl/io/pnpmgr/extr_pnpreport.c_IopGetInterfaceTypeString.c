@@ -1,92 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char* PWCHAR ;
-typedef  int INTERFACE_TYPE ;
 
-/* Variables and functions */
-#define  CBus 143 
- int /*<<< orphan*/  DPRINT1 (char*,int) ; 
-#define  Eisa 142 
-#define  Internal 141 
-#define  Isa 140 
-#define  MPIBus 139 
-#define  MPSABus 138 
-#define  MicroChannel 137 
-#define  NuBus 136 
-#define  PCIBus 135 
-#define  PCMCIABus 134 
-#define  PNPBus 133 
-#define  PNPISABus 132 
-#define  ProcessorInternal 131 
-#define  TurboChannel 130 
-#define  VMEBus 129 
-#define  Vmcs 128 
 
+
+
+typedef char* PWCHAR ;
+typedef int INTERFACE_TYPE ;
+
+
+
+ int DPRINT1 (char*,int) ;
 PWCHAR
 IopGetInterfaceTypeString(INTERFACE_TYPE IfType)
 {
     switch (IfType)
     {
-       case Internal:
+       case 141:
          return L"Internal";
 
-       case Isa:
+       case 140:
          return L"Isa";
 
-       case Eisa:
+       case 142:
          return L"Eisa";
 
-       case MicroChannel:
+       case 137:
          return L"MicroChannel";
 
-       case TurboChannel:
+       case 130:
          return L"TurboChannel";
 
-       case PCIBus:
+       case 135:
          return L"PCIBus";
 
-       case VMEBus:
+       case 129:
          return L"VMEBus";
 
-       case NuBus:
+       case 136:
          return L"NuBus";
 
-       case PCMCIABus:
+       case 134:
          return L"PCMCIABus";
 
-       case CBus:
+       case 143:
          return L"CBus";
 
-       case MPIBus:
+       case 139:
          return L"MPIBus";
 
-       case MPSABus:
+       case 138:
          return L"MPSABus";
 
-       case ProcessorInternal:
+       case 131:
          return L"ProcessorInternal";
 
-       case PNPISABus:
+       case 132:
          return L"PNPISABus";
 
-       case PNPBus:
+       case 133:
          return L"PNPBus";
 
-       case Vmcs:
+       case 128:
          return L"Vmcs";
 
        default:
          DPRINT1("Invalid bus type: %d\n", IfType);
-         return NULL;
+         return ((void*)0);
     }
 }

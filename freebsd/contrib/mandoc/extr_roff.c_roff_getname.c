@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct roff {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MANDOCERR_NAMESC ; 
- int /*<<< orphan*/  mandoc_escape (char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mandoc_msg (int /*<<< orphan*/ ,int,int,char*,int,char*) ; 
+
+ int MANDOCERR_NAMESC ;
+ int mandoc_escape (char const**,int *,int *) ;
+ int mandoc_msg (int ,int,int,char*,int,char*) ;
 
 __attribute__((used)) static size_t
 roff_getname(struct roff *r, char **cpp, int ln, int pos)
 {
-	char	 *name, *cp;
-	size_t	  namesz;
+ char *name, *cp;
+ size_t namesz;
 
-	name = *cpp;
-	if (*name == '\0')
-		return 0;
+ name = *cpp;
+ if (*name == '\0')
+  return 0;
 
-	/* Advance cp to the byte after the end of the name. */
 
-	for (cp = name; 1; cp++) {
-		namesz = cp - name;
-		if (*cp == '\0')
-			break;
-		if (*cp == ' ' || *cp == '\t') {
-			cp++;
-			break;
-		}
-		if (*cp != '\\')
-			continue;
-		if (cp[1] == '{' || cp[1] == '}')
-			break;
-		if (*++cp == '\\')
-			continue;
-		mandoc_msg(MANDOCERR_NAMESC, ln, pos,
-		    "%.*s", (int)(cp - name + 1), name);
-		mandoc_escape((const char **)&cp, NULL, NULL);
-		break;
-	}
 
-	/* Read past spaces. */
+ for (cp = name; 1; cp++) {
+  namesz = cp - name;
+  if (*cp == '\0')
+   break;
+  if (*cp == ' ' || *cp == '\t') {
+   cp++;
+   break;
+  }
+  if (*cp != '\\')
+   continue;
+  if (cp[1] == '{' || cp[1] == '}')
+   break;
+  if (*++cp == '\\')
+   continue;
+  mandoc_msg(MANDOCERR_NAMESC, ln, pos,
+      "%.*s", (int)(cp - name + 1), name);
+  mandoc_escape((const char **)&cp, ((void*)0), ((void*)0));
+  break;
+ }
 
-	while (*cp == ' ')
-		cp++;
 
-	*cpp = cp;
-	return namesz;
+
+ while (*cp == ' ')
+  cp++;
+
+ *cpp = cp;
+ return namesz;
 }

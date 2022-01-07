@@ -1,180 +1,180 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct SN_env {int l; int c; int ket; int bra; int /*<<< orphan*/  lb; int /*<<< orphan*/  p; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  a_0 ; 
- int find_among_b (struct SN_env*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  s_0 ; 
- int /*<<< orphan*/  s_1 ; 
- int /*<<< orphan*/  s_10 ; 
- int /*<<< orphan*/  s_11 ; 
- int /*<<< orphan*/  s_12 ; 
- int /*<<< orphan*/  s_13 ; 
- int /*<<< orphan*/  s_14 ; 
- int /*<<< orphan*/  s_15 ; 
- int /*<<< orphan*/  s_16 ; 
- int /*<<< orphan*/  s_17 ; 
- int /*<<< orphan*/  s_18 ; 
- int /*<<< orphan*/  s_19 ; 
- int /*<<< orphan*/  s_2 ; 
- int /*<<< orphan*/  s_20 ; 
- int /*<<< orphan*/  s_21 ; 
- int /*<<< orphan*/  s_22 ; 
- int /*<<< orphan*/  s_23 ; 
- int /*<<< orphan*/  s_3 ; 
- int /*<<< orphan*/  s_4 ; 
- int /*<<< orphan*/  s_5 ; 
- int /*<<< orphan*/  s_6 ; 
- int /*<<< orphan*/  s_7 ; 
- int /*<<< orphan*/  s_8 ; 
- int /*<<< orphan*/  s_9 ; 
- int skip_utf8 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int slice_from_s (struct SN_env*,int,int /*<<< orphan*/ ) ; 
 
-__attribute__((used)) static int r_tolower(struct SN_env * z) { /* backwardmode */
+
+
+struct SN_env {int l; int c; int ket; int bra; int lb; int p; } ;
+
+
+ int a_0 ;
+ int find_among_b (struct SN_env*,int ,int) ;
+ int s_0 ;
+ int s_1 ;
+ int s_10 ;
+ int s_11 ;
+ int s_12 ;
+ int s_13 ;
+ int s_14 ;
+ int s_15 ;
+ int s_16 ;
+ int s_17 ;
+ int s_18 ;
+ int s_19 ;
+ int s_2 ;
+ int s_20 ;
+ int s_21 ;
+ int s_22 ;
+ int s_23 ;
+ int s_3 ;
+ int s_4 ;
+ int s_5 ;
+ int s_6 ;
+ int s_7 ;
+ int s_8 ;
+ int s_9 ;
+ int skip_utf8 (int ,int,int ,int ,int) ;
+ int slice_from_s (struct SN_env*,int,int ) ;
+
+__attribute__((used)) static int r_tolower(struct SN_env * z) {
     int among_var;
-    while(1) { /* repeat, line 115 */
+    while(1) {
         int m1 = z->l - z->c; (void)m1;
-        z->ket = z->c; /* [, line 116 */
-        among_var = find_among_b(z, a_0, 46); /* substring, line 116 */
+        z->ket = z->c;
+        among_var = find_among_b(z, a_0, 46);
         if (!(among_var)) goto lab0;
-        z->bra = z->c; /* ], line 116 */
-        switch (among_var) { /* among, line 116 */
+        z->bra = z->c;
+        switch (among_var) {
             case 1:
-                {   int ret = slice_from_s(z, 2, s_0); /* <-, line 117 */
+                { int ret = slice_from_s(z, 2, s_0);
                     if (ret < 0) return ret;
                 }
                 break;
             case 2:
-                {   int ret = slice_from_s(z, 2, s_1); /* <-, line 118 */
+                { int ret = slice_from_s(z, 2, s_1);
                     if (ret < 0) return ret;
                 }
                 break;
             case 3:
-                {   int ret = slice_from_s(z, 2, s_2); /* <-, line 119 */
+                { int ret = slice_from_s(z, 2, s_2);
                     if (ret < 0) return ret;
                 }
                 break;
             case 4:
-                {   int ret = slice_from_s(z, 2, s_3); /* <-, line 120 */
+                { int ret = slice_from_s(z, 2, s_3);
                     if (ret < 0) return ret;
                 }
                 break;
             case 5:
-                {   int ret = slice_from_s(z, 2, s_4); /* <-, line 121 */
+                { int ret = slice_from_s(z, 2, s_4);
                     if (ret < 0) return ret;
                 }
                 break;
             case 6:
-                {   int ret = slice_from_s(z, 2, s_5); /* <-, line 122 */
+                { int ret = slice_from_s(z, 2, s_5);
                     if (ret < 0) return ret;
                 }
                 break;
             case 7:
-                {   int ret = slice_from_s(z, 2, s_6); /* <-, line 123 */
+                { int ret = slice_from_s(z, 2, s_6);
                     if (ret < 0) return ret;
                 }
                 break;
             case 8:
-                {   int ret = slice_from_s(z, 2, s_7); /* <-, line 124 */
+                { int ret = slice_from_s(z, 2, s_7);
                     if (ret < 0) return ret;
                 }
                 break;
             case 9:
-                {   int ret = slice_from_s(z, 2, s_8); /* <-, line 125 */
+                { int ret = slice_from_s(z, 2, s_8);
                     if (ret < 0) return ret;
                 }
                 break;
             case 10:
-                {   int ret = slice_from_s(z, 2, s_9); /* <-, line 126 */
+                { int ret = slice_from_s(z, 2, s_9);
                     if (ret < 0) return ret;
                 }
                 break;
             case 11:
-                {   int ret = slice_from_s(z, 2, s_10); /* <-, line 127 */
+                { int ret = slice_from_s(z, 2, s_10);
                     if (ret < 0) return ret;
                 }
                 break;
             case 12:
-                {   int ret = slice_from_s(z, 2, s_11); /* <-, line 128 */
+                { int ret = slice_from_s(z, 2, s_11);
                     if (ret < 0) return ret;
                 }
                 break;
             case 13:
-                {   int ret = slice_from_s(z, 2, s_12); /* <-, line 129 */
+                { int ret = slice_from_s(z, 2, s_12);
                     if (ret < 0) return ret;
                 }
                 break;
             case 14:
-                {   int ret = slice_from_s(z, 2, s_13); /* <-, line 130 */
+                { int ret = slice_from_s(z, 2, s_13);
                     if (ret < 0) return ret;
                 }
                 break;
             case 15:
-                {   int ret = slice_from_s(z, 2, s_14); /* <-, line 131 */
+                { int ret = slice_from_s(z, 2, s_14);
                     if (ret < 0) return ret;
                 }
                 break;
             case 16:
-                {   int ret = slice_from_s(z, 2, s_15); /* <-, line 132 */
+                { int ret = slice_from_s(z, 2, s_15);
                     if (ret < 0) return ret;
                 }
                 break;
             case 17:
-                {   int ret = slice_from_s(z, 2, s_16); /* <-, line 133 */
+                { int ret = slice_from_s(z, 2, s_16);
                     if (ret < 0) return ret;
                 }
                 break;
             case 18:
-                {   int ret = slice_from_s(z, 2, s_17); /* <-, line 134 */
+                { int ret = slice_from_s(z, 2, s_17);
                     if (ret < 0) return ret;
                 }
                 break;
             case 19:
-                {   int ret = slice_from_s(z, 2, s_18); /* <-, line 135 */
+                { int ret = slice_from_s(z, 2, s_18);
                     if (ret < 0) return ret;
                 }
                 break;
             case 20:
-                {   int ret = slice_from_s(z, 2, s_19); /* <-, line 136 */
+                { int ret = slice_from_s(z, 2, s_19);
                     if (ret < 0) return ret;
                 }
                 break;
             case 21:
-                {   int ret = slice_from_s(z, 2, s_20); /* <-, line 137 */
+                { int ret = slice_from_s(z, 2, s_20);
                     if (ret < 0) return ret;
                 }
                 break;
             case 22:
-                {   int ret = slice_from_s(z, 2, s_21); /* <-, line 138 */
+                { int ret = slice_from_s(z, 2, s_21);
                     if (ret < 0) return ret;
                 }
                 break;
             case 23:
-                {   int ret = slice_from_s(z, 2, s_22); /* <-, line 139 */
+                { int ret = slice_from_s(z, 2, s_22);
                     if (ret < 0) return ret;
                 }
                 break;
             case 24:
-                {   int ret = slice_from_s(z, 2, s_23); /* <-, line 140 */
+                { int ret = slice_from_s(z, 2, s_23);
                     if (ret < 0) return ret;
                 }
                 break;
             case 25:
-                {   int ret = skip_utf8(z->p, z->c, z->lb, 0, -1);
+                { int ret = skip_utf8(z->p, z->c, z->lb, 0, -1);
                     if (ret < 0) goto lab0;
-                    z->c = ret; /* next, line 162 */
+                    z->c = ret;
                 }
                 break;
         }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+
+
+typedef int uint16_t ;
 struct in_addr {int dummy; } ;
 struct in6_addr {int dummy; } ;
 
-/* Variables and functions */
- int UV_EINVAL ; 
- int inet_pton4 (char const*,unsigned char*) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,char,int) ; 
- char* strchr (char const*,int) ; 
+
+ int UV_EINVAL ;
+ int inet_pton4 (char const*,unsigned char*) ;
+ int memcpy (unsigned char*,unsigned char*,int) ;
+ int memset (unsigned char*,char,int) ;
+ char* strchr (char const*,int) ;
 
 __attribute__((used)) static int inet_pton6(const char *src, unsigned char *dst) {
   static const char xdigits_l[] = "0123456789abcdef",
@@ -31,8 +31,8 @@ __attribute__((used)) static int inet_pton6(const char *src, unsigned char *dst)
 
   memset((tp = tmp), '\0', sizeof tmp);
   endp = tp + sizeof tmp;
-  colonp = NULL;
-  /* Leading :: requires some special handling. */
+  colonp = ((void*)0);
+
   if (*src == ':')
     if (*++src != ':')
       return UV_EINVAL;
@@ -42,9 +42,9 @@ __attribute__((used)) static int inet_pton6(const char *src, unsigned char *dst)
   while ((ch = *src++) != '\0') {
     const char *pch;
 
-    if ((pch = strchr((xdigits = xdigits_l), ch)) == NULL)
+    if ((pch = strchr((xdigits = xdigits_l), ch)) == ((void*)0))
       pch = strchr((xdigits = xdigits_u), ch);
-    if (pch != NULL) {
+    if (pch != ((void*)0)) {
       val <<= 4;
       val |= (pch - xdigits);
       if (++seen_xdigits > 4)
@@ -74,7 +74,7 @@ __attribute__((used)) static int inet_pton6(const char *src, unsigned char *dst)
       if (err == 0) {
         tp += sizeof(struct in_addr);
         seen_xdigits = 0;
-        break;  /*%< '\\0' was seen by inet_pton4(). */
+        break;
       }
     }
     return UV_EINVAL;
@@ -85,11 +85,11 @@ __attribute__((used)) static int inet_pton6(const char *src, unsigned char *dst)
     *tp++ = (unsigned char) (val >> 8) & 0xff;
     *tp++ = (unsigned char) val & 0xff;
   }
-  if (colonp != NULL) {
-    /*
-     * Since some memmove()'s erroneously fail to handle
-     * overlapping regions, we'll do the shift by hand.
-     */
+  if (colonp != ((void*)0)) {
+
+
+
+
     const int n = tp - colonp;
     int i;
 

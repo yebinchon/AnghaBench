@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int PITCH_BUF_SIZE ;
+ int celt_pitch_xcorr (float const*,float const*,float*,int,int) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int PITCH_BUF_SIZE ; 
- int /*<<< orphan*/  celt_pitch_xcorr (float const*,float const*,float*,int,int) ; 
-
-__attribute__((used)) static int celt_autocorr(const float *x,   /*  in: [0...n-1] samples x   */
-                         float       *ac,  /* out: [0...lag-1] ac values */
+__attribute__((used)) static int celt_autocorr(const float *x,
+                         float *ac,
                          const float *window,
-                         int          overlap,
-                         int          lag,
-                         int          n)
+                         int overlap,
+                         int lag,
+                         int n)
 {
     int fastN = n - lag;
     int shift;

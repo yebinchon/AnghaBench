@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cpx_board {char* model; char* name; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int EXIT_SUCCESS ; 
- struct cpx_board* boards ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- char* progname ; 
- int /*<<< orphan*/ * stderr ; 
- int /*<<< orphan*/ * stdout ; 
+
+ int EXIT_SUCCESS ;
+ struct cpx_board* boards ;
+ int exit (int) ;
+ int fprintf (int *,char*,...) ;
+ char* progname ;
+ int * stderr ;
+ int * stdout ;
 
 void
 usage(int status)
 {
-	FILE *stream = (status != EXIT_SUCCESS) ? stderr : stdout;
-	struct cpx_board *board;
+ FILE *stream = (status != EXIT_SUCCESS) ? stderr : stdout;
+ struct cpx_board *board;
 
-	fprintf(stream, "Usage: %s [OPTION...] <file>\n", progname);
-	fprintf(stream,
+ fprintf(stream, "Usage: %s [OPTION...] <file>\n", progname);
+ fprintf(stream,
 "\n"
 "  <file>          write output to the <file>\n"
 "\n"
@@ -38,12 +38,12 @@ usage(int status)
 "                  This option set vendor id, device id, subvendor id,\n"
 "                  subdevice id, and flash size options to the right value.\n"
 "                  valid <board> values:\n");
-	for (board = boards; board->model != NULL; board++){
-		fprintf(stream,
+ for (board = boards; board->model != ((void*)0); board++){
+  fprintf(stream,
 "                      %-12s: %s\n",
-		 board->model, board->name);
-	};
-	fprintf(stream,
+   board->model, board->name);
+ };
+ fprintf(stream,
 "  -i <vid>:<did>[:<svid>[:<sdid>]]\n"
 "                  create firmware for board with vendor id <vid>, device\n"
 "                  id <did>, subvendor id <svid> and subdevice id <sdid>.\n"
@@ -67,7 +67,7 @@ usage(int status)
 "                      p:  the bootloader loads data from this partition to\n"
 "                          the RAM before decompress it.\n"
 "  -h              show this screen\n"
-	);
+ );
 
-	exit(status);
+ exit(status);
 }

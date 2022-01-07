@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  config_parse_duration (char*,int*) ; 
- int /*<<< orphan*/  error (char*,size_t,char const*,char*,...) ; 
- scalar_t__ isinf (float) ; 
- scalar_t__ islessequal (float,int /*<<< orphan*/ ) ; 
- scalar_t__ isnan (float) ; 
- scalar_t__ isspace (char) ; 
- int /*<<< orphan*/  strcasecmp (char*,char*) ; 
- float strtof (char*,int /*<<< orphan*/ *) ; 
+ int config_parse_duration (char*,int*) ;
+ int error (char*,size_t,char const*,char*,...) ;
+ scalar_t__ isinf (float) ;
+ scalar_t__ islessequal (float,int ) ;
+ scalar_t__ isnan (float) ;
+ scalar_t__ isspace (char) ;
+ int strcasecmp (char*,char*) ;
+ float strtof (char*,int *) ;
 
 __attribute__((used)) static inline int health_parse_delay(
         size_t line, const char *filename, char *string,
@@ -61,7 +53,7 @@ __attribute__((used)) static inline int health_parse_delay(
             else given_down = 1;
         }
         else if(!strcasecmp(key, "multiplier")) {
-            *delay_multiplier = strtof(value, NULL);
+            *delay_multiplier = strtof(value, ((void*)0));
             if(isnan(*delay_multiplier) || isinf(*delay_multiplier) || islessequal(*delay_multiplier, 0)) {
                 error("Health configuration at line %zu of file '%s': invalid value '%s' for '%s' keyword",
                         line, filename, value, key);

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int si_code; int si_status; } ;
-typedef  TYPE_1__ siginfo_t ;
-typedef  int /*<<< orphan*/  pid_t ;
-typedef  int /*<<< orphan*/  ContainerStatus ;
+typedef TYPE_1__ siginfo_t ;
+typedef int pid_t ;
+typedef int ContainerStatus ;
 
-/* Variables and functions */
-#define  CLD_DUMPED 130 
-#define  CLD_EXITED 129 
-#define  CLD_KILLED 128 
- int /*<<< orphan*/  CONTAINER_REBOOTED ; 
- int /*<<< orphan*/  CONTAINER_TERMINATED ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  LOG_DEBUG ; 
- int /*<<< orphan*/  LOG_INFO ; 
- int SIGHUP ; 
- int SIGINT ; 
- int /*<<< orphan*/  SYNTHETIC_ERRNO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _fallthrough_ ; 
- int /*<<< orphan*/  arg_machine ; 
- int /*<<< orphan*/  arg_quiet ; 
- int log_error_errno (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  log_full (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,...) ; 
- int log_warning_errno (int,char*) ; 
- int /*<<< orphan*/  signal_to_string (int) ; 
- int wait_for_terminate (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+
+
+
+ int CONTAINER_REBOOTED ;
+ int CONTAINER_TERMINATED ;
+ int EIO ;
+ int LOG_DEBUG ;
+ int LOG_INFO ;
+ int SIGHUP ;
+ int SIGINT ;
+ int SYNTHETIC_ERRNO (int ) ;
+ int _fallthrough_ ;
+ int arg_machine ;
+ int arg_quiet ;
+ int log_error_errno (int ,char*,int ,...) ;
+ int log_full (int ,char*,int ,...) ;
+ int log_warning_errno (int,char*) ;
+ int signal_to_string (int) ;
+ int wait_for_terminate (int ,TYPE_1__*) ;
 
 __attribute__((used)) static int wait_for_container(pid_t pid, ContainerStatus *container) {
         siginfo_t status;
@@ -47,7 +47,7 @@ __attribute__((used)) static int wait_for_container(pid_t pid, ContainerStatus *
 
         switch (status.si_code) {
 
-        case CLD_EXITED:
+        case 129:
                 if (status.si_status == 0)
                         log_full(arg_quiet ? LOG_DEBUG : LOG_INFO, "Container %s exited successfully.", arg_machine);
                 else
@@ -56,7 +56,7 @@ __attribute__((used)) static int wait_for_container(pid_t pid, ContainerStatus *
                 *container = CONTAINER_TERMINATED;
                 return status.si_status;
 
-        case CLD_KILLED:
+        case 128:
                 if (status.si_status == SIGINT) {
                         log_full(arg_quiet ? LOG_DEBUG : LOG_INFO, "Container %s has been shut down.", arg_machine);
                         *container = CONTAINER_TERMINATED;
@@ -69,7 +69,7 @@ __attribute__((used)) static int wait_for_container(pid_t pid, ContainerStatus *
                 }
 
                 _fallthrough_;
-        case CLD_DUMPED:
+        case 130:
                 return log_error_errno(SYNTHETIC_ERRNO(EIO),
                                        "Container %s terminated by signal %s.", arg_machine, signal_to_string(status.si_status));
 

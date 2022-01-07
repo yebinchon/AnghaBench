@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int json_t ;
 struct TYPE_5__ {TYPE_1__* data; struct TYPE_5__* next; } ;
-struct TYPE_4__ {int /*<<< orphan*/  timestamp; int /*<<< orphan*/  token; int /*<<< orphan*/  repo_id; } ;
-typedef  TYPE_1__ HttpLockedFilesReq ;
-typedef  TYPE_2__ GList ;
+struct TYPE_4__ {int timestamp; int token; int repo_id; } ;
+typedef TYPE_1__ HttpLockedFilesReq ;
+typedef TYPE_2__ GList ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * json_array () ; 
- int /*<<< orphan*/  json_array_append_new (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- char* json_dumps (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  json_integer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * json_object () ; 
- int /*<<< orphan*/  json_object_set_new (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  json_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seaf_warning (char*) ; 
+
+ int * json_array () ;
+ int json_array_append_new (int *,int *) ;
+ int json_decref (int *) ;
+ char* json_dumps (int *,int ) ;
+ int json_integer (int ) ;
+ int * json_object () ;
+ int json_object_set_new (int *,char*,int ) ;
+ int json_string (int ) ;
+ int seaf_warning (char*) ;
 
 __attribute__((used)) static char *
 compose_get_locked_files_request (GList *requests)
@@ -35,7 +35,7 @@ compose_get_locked_files_request (GList *requests)
     GList *ptr;
     HttpLockedFilesReq *req;
     json_t *object, *array;
-    char *req_str = NULL;
+    char *req_str = ((void*)0);
 
     array = json_array ();
 

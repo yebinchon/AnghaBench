@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ numresolutions; } ;
-typedef  TYPE_1__ opj_tcd_tilecomp_t ;
-typedef  scalar_t__ OPJ_UINT32 ;
+typedef TYPE_1__ opj_tcd_tilecomp_t ;
+typedef scalar_t__ OPJ_UINT32 ;
 
-/* Variables and functions */
- scalar_t__ opj_uint_ceildivpow2 (scalar_t__,scalar_t__) ; 
+
+ scalar_t__ opj_uint_ceildivpow2 (scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static void opj_dwt_get_band_coordinates(opj_tcd_tilecomp_t* tilec,
         OPJ_UINT32 resno,
@@ -30,12 +30,12 @@ __attribute__((used)) static void opj_dwt_get_band_coordinates(opj_tcd_tilecomp_
         OPJ_UINT32* tbx1,
         OPJ_UINT32* tby1)
 {
-    /* Compute number of decomposition for this band. See table F-1 */
+
     OPJ_UINT32 nb = (resno == 0) ?
                     tilec->numresolutions - 1 :
                     tilec->numresolutions - resno;
-    /* Map above tile-based coordinates to sub-band-based coordinates per */
-    /* equation B-15 of the standard */
+
+
     OPJ_UINT32 x0b = bandno & 1;
     OPJ_UINT32 y0b = bandno >> 1;
     if (tbx0) {

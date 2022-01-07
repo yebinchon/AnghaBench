@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3D_OK ; 
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_an (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  read_dword (char const**,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int D3D_OK ;
+ int ERR (char*) ;
+ int E_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,int ) ;
+ int TRACE (char*,int ) ;
+ int debugstr_an (char const*,int ) ;
+ int memcpy (char*,char const*,int ) ;
+ int read_dword (char const**,int *) ;
 
 __attribute__((used)) static HRESULT d3dx9_parse_name(char **name, const char *ptr)
 {

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  void iso_path_table_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cdio_assert (int) ; 
- scalar_t__ from_711 (int /*<<< orphan*/  const) ; 
+
+
+
+typedef int uint8_t ;
+typedef void iso_path_table_t ;
+
+
+ int cdio_assert (int) ;
+ scalar_t__ from_711 (int const) ;
 
 __attribute__((used)) static const iso_path_table_t *
 pathtable_get_entry (const void *pt, unsigned int entrynum)
@@ -24,7 +24,7 @@ pathtable_get_entry (const void *pt, unsigned int entrynum)
   unsigned int offset = 0;
   unsigned int count = 0;
 
-  cdio_assert (pt != NULL);
+  cdio_assert (pt != ((void*)0));
 
   while (from_711 (*tmp))
     {
@@ -42,7 +42,7 @@ pathtable_get_entry (const void *pt, unsigned int entrynum)
     }
 
   if (!from_711 (*tmp))
-    return NULL;
+    return ((void*)0);
 
   return (const void *) tmp;
 }

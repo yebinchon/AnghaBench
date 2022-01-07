@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int pf_period_old; int pf_period; double* pf_gains; double* pf_gains_old; } ;
-typedef  TYPE_1__ CeltBlock ;
+typedef TYPE_1__ CeltBlock ;
 
-/* Variables and functions */
- int CELT_OVERLAP ; 
- float* ff_celt_window2 ; 
+
+ int CELT_OVERLAP ;
+ float* ff_celt_window2 ;
 
 __attribute__((used)) static void celt_postfilter_apply_transition(CeltBlock *block, float *data)
 {
@@ -30,7 +30,7 @@ __attribute__((used)) static void celt_postfilter_apply_transition(CeltBlock *bl
 
     int i;
 
-    if (block->pf_gains[0]     == 0.0 &&
+    if (block->pf_gains[0] == 0.0 &&
         block->pf_gains_old[0] == 0.0)
         return;
 
@@ -50,12 +50,12 @@ __attribute__((used)) static void celt_postfilter_apply_transition(CeltBlock *bl
         float w = ff_celt_window2[i];
         x0 = data[i - T1 + 2];
 
-        data[i] +=  (1.0 - w) * g00 * data[i - T0]                          +
+        data[i] += (1.0 - w) * g00 * data[i - T0] +
                     (1.0 - w) * g01 * (data[i - T0 - 1] + data[i - T0 + 1]) +
                     (1.0 - w) * g02 * (data[i - T0 - 2] + data[i - T0 + 2]) +
-                    w         * g10 * x2                                    +
-                    w         * g11 * (x1 + x3)                             +
-                    w         * g12 * (x0 + x4);
+                    w * g10 * x2 +
+                    w * g11 * (x1 + x3) +
+                    w * g12 * (x0 + x4);
         x4 = x3;
         x3 = x2;
         x2 = x1;

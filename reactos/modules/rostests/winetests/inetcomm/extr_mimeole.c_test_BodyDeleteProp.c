@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {void* pszVal; } ;
 struct TYPE_8__ {TYPE_1__ u; void* vt; } ;
-typedef  TYPE_2__ PROPVARIANT ;
-typedef  int /*<<< orphan*/  IMimeMessage ;
-typedef  int /*<<< orphan*/  IMimeBody ;
-typedef  scalar_t__ HRESULT ;
+typedef TYPE_2__ PROPVARIANT ;
+typedef int IMimeMessage ;
+typedef int IMimeBody ;
+typedef scalar_t__ HRESULT ;
 
-/* Variables and functions */
- void* CoTaskMemAlloc (scalar_t__) ; 
- int /*<<< orphan*/  HBODY_ROOT ; 
- int /*<<< orphan*/  IID_IMimeBody ; 
- scalar_t__ IMimeBody_DeleteProp (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ IMimeBody_GetProp (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  IMimeBody_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IMimeBody_SetProp (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,TYPE_2__*) ; 
- scalar_t__ IMimeMessage_BindToObject (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IMimeMessage_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ MIME_E_NOT_FOUND ; 
- scalar_t__ MimeOleCreateMessage (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- char* PIDTOSTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PID_HDR_SUBJECT ; 
- int /*<<< orphan*/  PropVariantClear (TYPE_2__*) ; 
- int /*<<< orphan*/  PropVariantInit (TYPE_2__*) ; 
- scalar_t__ S_OK ; 
- void* VT_LPSTR ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  strcpy (void*,char const*) ; 
- scalar_t__ strlen (char const*) ; 
+
+ void* CoTaskMemAlloc (scalar_t__) ;
+ int HBODY_ROOT ;
+ int IID_IMimeBody ;
+ scalar_t__ IMimeBody_DeleteProp (int *,char*) ;
+ scalar_t__ IMimeBody_GetProp (int *,char*,int ,TYPE_2__*) ;
+ int IMimeBody_Release (int *) ;
+ scalar_t__ IMimeBody_SetProp (int *,char*,int ,TYPE_2__*) ;
+ scalar_t__ IMimeMessage_BindToObject (int *,int ,int *,void**) ;
+ int IMimeMessage_Release (int *) ;
+ scalar_t__ MIME_E_NOT_FOUND ;
+ scalar_t__ MimeOleCreateMessage (int *,int **) ;
+ char* PIDTOSTR (int ) ;
+ int PID_HDR_SUBJECT ;
+ int PropVariantClear (TYPE_2__*) ;
+ int PropVariantInit (TYPE_2__*) ;
+ scalar_t__ S_OK ;
+ void* VT_LPSTR ;
+ int ok (int,char*,scalar_t__) ;
+ int strcpy (void*,char const*) ;
+ scalar_t__ strlen (char const*) ;
 
 __attribute__((used)) static void test_BodyDeleteProp(void)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static void test_BodyDeleteProp(void)
     IMimeBody *body;
     PROPVARIANT prop;
 
-    hr = MimeOleCreateMessage(NULL, &msg);
+    hr = MimeOleCreateMessage(((void*)0), &msg);
     ok(hr == S_OK, "ret %08x\n", hr);
 
     PropVariantInit(&prop);

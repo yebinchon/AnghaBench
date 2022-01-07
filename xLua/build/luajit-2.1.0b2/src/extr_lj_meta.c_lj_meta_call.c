@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  cTValue ;
-typedef  int /*<<< orphan*/  TValue ;
 
-/* Variables and functions */
- int LJ_FR2 ; 
- int /*<<< orphan*/  MM_call ; 
- int /*<<< orphan*/  copyTV (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lj_err_optype_call (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * lj_meta_lookup (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tvisfunc (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int lua_State ;
+typedef int cTValue ;
+typedef int TValue ;
+
+
+ int LJ_FR2 ;
+ int MM_call ;
+ int copyTV (int *,int *,int *) ;
+ int lj_err_optype_call (int *,int *) ;
+ int * lj_meta_lookup (int *,int *,int ) ;
+ int tvisfunc (int *) ;
 
 void lj_meta_call(lua_State *L, TValue *func, TValue *top)
 {

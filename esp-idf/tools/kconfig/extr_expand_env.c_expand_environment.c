@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MAX_LEN ; 
- scalar_t__ allowed_env_var_name (char const) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- char* calloc (int,size_t) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* getenv (char*) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  printf (char*,char const*,int,...) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  strncpy (char*,char const*,size_t) ; 
+ int MAX_LEN ;
+ scalar_t__ allowed_env_var_name (char const) ;
+ int assert (int ) ;
+ char* calloc (int,size_t) ;
+ int exit (int) ;
+ int free (char*) ;
+ char* getenv (char*) ;
+ char* malloc (int) ;
+ int printf (char*,char const*,int,...) ;
+ int strcpy (char*,char const*) ;
+ int strlen (char const*) ;
+ int strncpy (char*,char const*,size_t) ;
 
 char *expand_environment(const char *input, const char *src_name, int src_line_no)
 {
@@ -33,34 +25,34 @@ char *expand_environment(const char *input, const char *src_name, int src_line_n
   const char *in = input;
 
   while (*in != '\0') {
-    // check for buffer overflow
+
     if (out >= result + MAX_LEN - 1) {
       goto too_long;
     }
 
     if (*in != '$') {
-      // not part of an environment variable name, copy directly
+
       *out++ = *in++;
       continue;
     }
 
-    // *in points to start of an environment variable reference
+
     in++;
     const char *env_start = in;
-    while (allowed_env_var_name(*in)) { // scan to the end of the name
+    while (allowed_env_var_name(*in)) {
       in++;
     }
     size_t env_len = in - env_start;
 
-    // make a buffer to hold the environment variable name
-    //
-    // strndup is not available on mingw32, apparently.
+
+
+
     char *env_name = calloc(1, env_len + 1);
-    assert(env_name != NULL);
+    assert(env_name != ((void*)0));
     strncpy(env_name, env_start, env_len);
 
     const char *value = getenv(env_name);
-    if (value == NULL || strlen(value) == 0) {
+    if (value == ((void*)0) || strlen(value) == 0) {
       printf("%s:%d: undefined environment variable \"%s\"\n",
              src_name, src_line_no, env_name);
       exit(1);
@@ -69,11 +61,11 @@ char *expand_environment(const char *input, const char *src_name, int src_line_n
     if (out + strlen(value) >= result + MAX_LEN - 1) {
       goto too_long;
     }
-    strcpy(out, value); // append the value to the result (range checked in previous statement)
+    strcpy(out, value);
     out += strlen(value);
   }
 
-  *out = '\0'; // null terminate the result string
+  *out = '\0';
 
   return result;
 

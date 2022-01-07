@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  ifv_magic ;
-struct TYPE_3__ {int /*<<< orphan*/  buf; } ;
-typedef  TYPE_1__ AVProbeData ;
 
-/* Variables and functions */
- int AVPROBE_SCORE_MAX ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ ,int const*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int ifv_magic ;
+struct TYPE_3__ {int buf; } ;
+typedef TYPE_1__ AVProbeData ;
+
+
+ int AVPROBE_SCORE_MAX ;
+ int memcmp (int ,int const*,int) ;
 
 __attribute__((used)) static int ifv_probe(const AVProbeData *p)
 {

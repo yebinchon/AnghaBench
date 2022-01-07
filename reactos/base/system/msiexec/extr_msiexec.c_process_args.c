@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int chomp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int lstrlenW (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int WCHAR ;
+
+
+ int GetProcessHeap () ;
+ void* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int *) ;
+ int chomp (int *,int *) ;
+ int lstrlenW (int *) ;
 
 __attribute__((used)) static void process_args( WCHAR *cmdline, int *pargc, WCHAR ***pargv )
 {
@@ -25,9 +25,9 @@ __attribute__((used)) static void process_args( WCHAR *cmdline, int *pargc, WCHA
     int i, count;
 
     *pargc = 0;
-    *pargv = NULL;
+    *pargv = ((void*)0);
 
-    count = chomp( cmdline, NULL );
+    count = chomp( cmdline, ((void*)0) );
     if (!(p = HeapAlloc( GetProcessHeap(), 0, (lstrlenW(cmdline) + count + 1) * sizeof(WCHAR) )))
         return;
 
@@ -42,7 +42,7 @@ __attribute__((used)) static void process_args( WCHAR *cmdline, int *pargc, WCHA
         argv[i] = p;
         p += lstrlenW( p ) + 1;
     }
-    argv[i] = NULL;
+    argv[i] = ((void*)0);
 
     *pargc = count;
     *pargv = argv;

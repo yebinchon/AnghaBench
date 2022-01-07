@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GLFWwindow ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- double MAX_DELTA_T ; 
- int /*<<< orphan*/  adjust_grid () ; 
- int /*<<< orphan*/  calc_grid () ; 
- int /*<<< orphan*/  cursor_position_callback ; 
- int /*<<< orphan*/  draw_scene (int /*<<< orphan*/ *) ; 
- double dt ; 
- int /*<<< orphan*/  error_callback ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  framebuffer_size_callback (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  gladLoadGL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * glfwCreateWindow (int,int,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwGetFramebufferSize (int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  glfwGetProcAddress ; 
- double glfwGetTime () ; 
- int /*<<< orphan*/  glfwInit () ; 
- int /*<<< orphan*/  glfwMakeContextCurrent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwPollEvents () ; 
- int /*<<< orphan*/  glfwSetCursorPosCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetErrorCallback (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetFramebufferSizeCallback (int /*<<< orphan*/ *,int /*<<< orphan*/  (*) (int /*<<< orphan*/ *,int,int)) ; 
- int /*<<< orphan*/  glfwSetKeyCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetMouseButtonCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetScrollCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSwapInterval (int) ; 
- int /*<<< orphan*/  glfwTerminate () ; 
- int /*<<< orphan*/  glfwWindowShouldClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_grid () ; 
- int /*<<< orphan*/  init_opengl () ; 
- int /*<<< orphan*/  init_vertices () ; 
- int /*<<< orphan*/  key_callback ; 
- int /*<<< orphan*/  mouse_button_callback ; 
- int /*<<< orphan*/  scroll_callback ; 
+
+
+
+typedef int GLFWwindow ;
+
+
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ double MAX_DELTA_T ;
+ int adjust_grid () ;
+ int calc_grid () ;
+ int cursor_position_callback ;
+ int draw_scene (int *) ;
+ double dt ;
+ int error_callback ;
+ int exit (int ) ;
+ int framebuffer_size_callback (int *,int,int) ;
+ int gladLoadGL (int ) ;
+ int * glfwCreateWindow (int,int,char*,int *,int *) ;
+ int glfwGetFramebufferSize (int *,int*,int*) ;
+ int glfwGetProcAddress ;
+ double glfwGetTime () ;
+ int glfwInit () ;
+ int glfwMakeContextCurrent (int *) ;
+ int glfwPollEvents () ;
+ int glfwSetCursorPosCallback (int *,int ) ;
+ int glfwSetErrorCallback (int ) ;
+ int glfwSetFramebufferSizeCallback (int *,int (*) (int *,int,int)) ;
+ int glfwSetKeyCallback (int *,int ) ;
+ int glfwSetMouseButtonCallback (int *,int ) ;
+ int glfwSetScrollCallback (int *,int ) ;
+ int glfwSwapInterval (int) ;
+ int glfwTerminate () ;
+ int glfwWindowShouldClose (int *) ;
+ int init_grid () ;
+ int init_opengl () ;
+ int init_vertices () ;
+ int key_callback ;
+ int mouse_button_callback ;
+ int scroll_callback ;
 
 int main(int argc, char* argv[])
 {
@@ -59,7 +59,7 @@ int main(int argc, char* argv[])
     if (!glfwInit())
         exit(EXIT_FAILURE);
 
-    window = glfwCreateWindow(640, 480, "Wave Simulation", NULL, NULL);
+    window = glfwCreateWindow(640, 480, "Wave Simulation", ((void*)0), ((void*)0));
     if (!window)
     {
         glfwTerminate();
@@ -79,15 +79,15 @@ int main(int argc, char* argv[])
     glfwGetFramebufferSize(window, &width, &height);
     framebuffer_size_callback(window, width, height);
 
-    // Initialize OpenGL
+
     init_opengl();
 
-    // Initialize simulation
+
     init_vertices();
     init_grid();
     adjust_grid();
 
-    // Initialize timer
+
     t_old = glfwGetTime() - 0.01;
 
     while (!glfwWindowShouldClose(window))
@@ -96,21 +96,21 @@ int main(int argc, char* argv[])
         dt_total = t - t_old;
         t_old = t;
 
-        // Safety - iterate if dt_total is too large
+
         while (dt_total > 0.f)
         {
-            // Select iteration time step
+
             dt = dt_total > MAX_DELTA_T ? MAX_DELTA_T : dt_total;
             dt_total -= dt;
 
-            // Calculate wave propagation
+
             calc_grid();
         }
 
-        // Compute height of each vertex
+
         adjust_grid();
 
-        // Draw wave grid to OpenGL display
+
         draw_scene(window);
 
         glfwPollEvents();

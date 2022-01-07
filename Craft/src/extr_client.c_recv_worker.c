@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ QUEUE_SIZE ; 
- int RECV_SIZE ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,char*,int) ; 
- int /*<<< orphan*/  mtx_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mtx_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex ; 
- int /*<<< orphan*/  perror (char*) ; 
- scalar_t__ qsize ; 
- scalar_t__ queue ; 
- int recv (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ running ; 
- int /*<<< orphan*/  sd ; 
- int /*<<< orphan*/  sleep (int /*<<< orphan*/ ) ; 
+ scalar_t__ QUEUE_SIZE ;
+ int RECV_SIZE ;
+ int exit (int) ;
+ int free (char*) ;
+ char* malloc (int) ;
+ int memcpy (scalar_t__,char*,int) ;
+ int mtx_lock (int *) ;
+ int mtx_unlock (int *) ;
+ int mutex ;
+ int perror (char*) ;
+ scalar_t__ qsize ;
+ scalar_t__ queue ;
+ int recv (int ,char*,int,int ) ;
+ scalar_t__ running ;
+ int sd ;
+ int sleep (int ) ;
 
 int recv_worker(void *arg) {
     char *data = malloc(sizeof(char) * RECV_SIZE);

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct md_rdev {int /*<<< orphan*/  blocked_wait; int /*<<< orphan*/  flags; int /*<<< orphan*/  badblocks; } ;
-typedef  int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BlockedBadBlocks ; 
- int badblocks_store (int /*<<< orphan*/ *,char const*,size_t,int /*<<< orphan*/ ) ; 
- scalar_t__ test_and_clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wake_up (int /*<<< orphan*/ *) ; 
+
+
+
+struct md_rdev {int blocked_wait; int flags; int badblocks; } ;
+typedef int ssize_t ;
+
+
+ int BlockedBadBlocks ;
+ int badblocks_store (int *,char const*,size_t,int ) ;
+ scalar_t__ test_and_clear_bit (int ,int *) ;
+ int wake_up (int *) ;
 
 __attribute__((used)) static ssize_t bb_store(struct md_rdev *rdev, const char *page, size_t len)
 {
-	int rv = badblocks_store(&rdev->badblocks, page, len, 0);
-	/* Maybe that ack was all we needed */
-	if (test_and_clear_bit(BlockedBadBlocks, &rdev->flags))
-		wake_up(&rdev->blocked_wait);
-	return rv;
+ int rv = badblocks_store(&rdev->badblocks, page, len, 0);
+
+ if (test_and_clear_bit(BlockedBadBlocks, &rdev->flags))
+  wake_up(&rdev->blocked_wait);
+ return rv;
 }

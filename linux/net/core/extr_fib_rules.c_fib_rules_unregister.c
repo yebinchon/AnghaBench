@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct net {int /*<<< orphan*/  rules_mod_lock; } ;
-struct fib_rules_ops {int /*<<< orphan*/  list; struct net* fro_net; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fib_rules_cleanup_ops (struct fib_rules_ops*) ; 
- int /*<<< orphan*/  kfree_rcu (struct fib_rules_ops*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_del_rcu (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rcu ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct net {int rules_mod_lock; } ;
+struct fib_rules_ops {int list; struct net* fro_net; } ;
+
+
+ int fib_rules_cleanup_ops (struct fib_rules_ops*) ;
+ int kfree_rcu (struct fib_rules_ops*,int ) ;
+ int list_del_rcu (int *) ;
+ int rcu ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 void fib_rules_unregister(struct fib_rules_ops *ops)
 {
-	struct net *net = ops->fro_net;
+ struct net *net = ops->fro_net;
 
-	spin_lock(&net->rules_mod_lock);
-	list_del_rcu(&ops->list);
-	spin_unlock(&net->rules_mod_lock);
+ spin_lock(&net->rules_mod_lock);
+ list_del_rcu(&ops->list);
+ spin_unlock(&net->rules_mod_lock);
 
-	fib_rules_cleanup_ops(ops);
-	kfree_rcu(ops, rcu);
+ fib_rules_cleanup_ops(ops);
+ kfree_rcu(ops, rcu);
 }

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ mstime_t ;
-typedef  int /*<<< orphan*/  RedisModuleString ;
-typedef  int /*<<< orphan*/  RedisModuleKey ;
-typedef  int /*<<< orphan*/  RedisModuleCtx ;
 
-/* Variables and functions */
- scalar_t__ REDISMODULE_NO_EXPIRE ; 
- scalar_t__ REDISMODULE_OK ; 
- int REDISMODULE_READ ; 
- int REDISMODULE_WRITE ; 
- int /*<<< orphan*/  RedisModule_AutoMemory (int /*<<< orphan*/ *) ; 
- scalar_t__ RedisModule_GetExpire (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * RedisModule_OpenKey (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int RedisModule_ReplyWithError (int /*<<< orphan*/ *,char*) ; 
- int RedisModule_ReplyWithSimpleString (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  RedisModule_SetExpire (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ RedisModule_StringToLongLong (int /*<<< orphan*/ *,scalar_t__*) ; 
- int RedisModule_WrongArity (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ mstime_t ;
+typedef int RedisModuleString ;
+typedef int RedisModuleKey ;
+typedef int RedisModuleCtx ;
+
+
+ scalar_t__ REDISMODULE_NO_EXPIRE ;
+ scalar_t__ REDISMODULE_OK ;
+ int REDISMODULE_READ ;
+ int REDISMODULE_WRITE ;
+ int RedisModule_AutoMemory (int *) ;
+ scalar_t__ RedisModule_GetExpire (int *) ;
+ int * RedisModule_OpenKey (int *,int *,int) ;
+ int RedisModule_ReplyWithError (int *,char*) ;
+ int RedisModule_ReplyWithSimpleString (int *,char*) ;
+ int RedisModule_SetExpire (int *,scalar_t__) ;
+ scalar_t__ RedisModule_StringToLongLong (int *,scalar_t__*) ;
+ int RedisModule_WrongArity (int *) ;
 
 int HelloMoreExpire_RedisCommand(RedisModuleCtx *ctx, RedisModuleString **argv, int argc) {
-    RedisModule_AutoMemory(ctx); /* Use automatic memory management. */
+    RedisModule_AutoMemory(ctx);
     if (argc != 3) return RedisModule_WrongArity(ctx);
 
     mstime_t addms, expire;

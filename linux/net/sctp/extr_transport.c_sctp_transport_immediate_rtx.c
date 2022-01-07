@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct sctp_transport {scalar_t__ rto; int /*<<< orphan*/  T3_rtx_timer; TYPE_1__* asoc; } ;
-struct TYPE_2__ {int /*<<< orphan*/  outqueue; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCTP_RTXR_T3_RTX ; 
- scalar_t__ del_timer (int /*<<< orphan*/ *) ; 
- scalar_t__ jiffies ; 
- int /*<<< orphan*/  mod_timer (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  sctp_retransmit (int /*<<< orphan*/ *,struct sctp_transport*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sctp_transport_hold (struct sctp_transport*) ; 
- int /*<<< orphan*/  sctp_transport_put (struct sctp_transport*) ; 
- int /*<<< orphan*/  timer_pending (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct sctp_transport {scalar_t__ rto; int T3_rtx_timer; TYPE_1__* asoc; } ;
+struct TYPE_2__ {int outqueue; } ;
+
+
+ int SCTP_RTXR_T3_RTX ;
+ scalar_t__ del_timer (int *) ;
+ scalar_t__ jiffies ;
+ int mod_timer (int *,scalar_t__) ;
+ int sctp_retransmit (int *,struct sctp_transport*,int ) ;
+ int sctp_transport_hold (struct sctp_transport*) ;
+ int sctp_transport_put (struct sctp_transport*) ;
+ int timer_pending (int *) ;
 
 void sctp_transport_immediate_rtx(struct sctp_transport *t)
 {
-	/* Stop pending T3_rtx_timer */
-	if (del_timer(&t->T3_rtx_timer))
-		sctp_transport_put(t);
 
-	sctp_retransmit(&t->asoc->outqueue, t, SCTP_RTXR_T3_RTX);
-	if (!timer_pending(&t->T3_rtx_timer)) {
-		if (!mod_timer(&t->T3_rtx_timer, jiffies + t->rto))
-			sctp_transport_hold(t);
-	}
+ if (del_timer(&t->T3_rtx_timer))
+  sctp_transport_put(t);
+
+ sctp_retransmit(&t->asoc->outqueue, t, SCTP_RTXR_T3_RTX);
+ if (!timer_pending(&t->T3_rtx_timer)) {
+  if (!mod_timer(&t->T3_rtx_timer, jiffies + t->rto))
+   sctp_transport_hold(t);
+ }
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CREATE_ALWAYS ; 
- scalar_t__ CreateFileW (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_NORMAL ; 
- int FILE_SHARE_READ ; 
- int FILE_SHARE_WRITE ; 
- int /*<<< orphan*/  GENERIC_WRITE ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  WriteFile (scalar_t__,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int WCHAR ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+
+
+ int CREATE_ALWAYS ;
+ scalar_t__ CreateFileW (int const*,int ,int,int *,int ,int ,int *) ;
+ int FILE_ATTRIBUTE_NORMAL ;
+ int FILE_SHARE_READ ;
+ int FILE_SHARE_WRITE ;
+ int GENERIC_WRITE ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int WriteFile (scalar_t__,char*,int,int *,int *) ;
 
 __attribute__((used)) static HANDLE
 BestFit_CreateFile(const WCHAR *pszFile)
@@ -33,14 +33,14 @@ BestFit_CreateFile(const WCHAR *pszFile)
     hFile = CreateFileW(pszFile,
                         GENERIC_WRITE,
                         FILE_SHARE_READ | FILE_SHARE_WRITE,
-                        NULL,
+                        ((void*)0),
                         CREATE_ALWAYS,
                         FILE_ATTRIBUTE_NORMAL,
-                        NULL);
+                        ((void*)0));
     if (hFile != INVALID_HANDLE_VALUE)
     {
-        /* Write UTF-8 BOM */
-        WriteFile(hFile, "\xEF\xBB\xBF", 3, &dwBytesWritten, NULL);
+
+        WriteFile(hFile, "\xEF\xBB\xBF", 3, &dwBytesWritten, ((void*)0));
     }
 
     return hFile;

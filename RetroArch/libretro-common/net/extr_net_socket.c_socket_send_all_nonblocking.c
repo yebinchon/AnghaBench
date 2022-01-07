@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSG_NOSIGNAL ; 
- scalar_t__ isagain (int) ; 
- scalar_t__ send (int,char const*,size_t,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ ssize_t ;
+
+
+ int MSG_NOSIGNAL ;
+ scalar_t__ isagain (int) ;
+ scalar_t__ send (int,char const*,size_t,int ) ;
 
 ssize_t socket_send_all_nonblocking(int fd, const void *data_, size_t size,
       bool no_signal)

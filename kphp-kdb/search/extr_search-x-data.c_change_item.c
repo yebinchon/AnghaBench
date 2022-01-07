@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct item {int extra; int /*<<< orphan*/  words; int /*<<< orphan*/  sum_sqr_freq_text; int /*<<< orphan*/  sum_freq_title_freq_text; int /*<<< orphan*/  sum_sqr_freq_title; } ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct item {int extra; int words; int sum_sqr_freq_text; int sum_freq_title_freq_text; int sum_sqr_freq_title; } ;
 struct index_item {int extra; } ;
-struct TYPE_4__ {int /*<<< orphan*/  freqs; int /*<<< orphan*/  word; } ;
+struct TYPE_4__ {int freqs; int word; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD_NOT_FOUND_ITEM ; 
- int FLAG_DELETED ; 
- int /*<<< orphan*/  ONLY_FIND ; 
- TYPE_1__* Q ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  clear_cur_wordlist () ; 
- int /*<<< orphan*/  cur_wordlist_head ; 
- int /*<<< orphan*/  del_items ; 
- int /*<<< orphan*/  evaluate_freq_sqr_sums (TYPE_1__*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int extract_words (char const*,int,int /*<<< orphan*/ ,TYPE_1__*,int,int /*<<< orphan*/ ,long long) ; 
- int /*<<< orphan*/  fits (long long) ; 
- struct index_item* get_idx_item (long long) ; 
- struct item* get_item_f (long long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  item_add_word (struct item*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  item_clear_wordlist (struct item*) ; 
- int /*<<< orphan*/  mod_items ; 
- int /*<<< orphan*/  move_item_rates (struct item*,struct index_item*) ; 
- int now ; 
- int /*<<< orphan*/  set_multiple_rates_item (struct item*,int,int*) ; 
- int /*<<< orphan*/  tag_owner ; 
- int /*<<< orphan*/  universal ; 
- int /*<<< orphan*/  vkprintf (int,char*,char const*,int,long long,int,int) ; 
+
+ int ADD_NOT_FOUND_ITEM ;
+ int FLAG_DELETED ;
+ int ONLY_FIND ;
+ TYPE_1__* Q ;
+ int assert (int) ;
+ int clear_cur_wordlist () ;
+ int cur_wordlist_head ;
+ int del_items ;
+ int evaluate_freq_sqr_sums (TYPE_1__*,int,int *,int *,int *) ;
+ int extract_words (char const*,int,int ,TYPE_1__*,int,int ,long long) ;
+ int fits (long long) ;
+ struct index_item* get_idx_item (long long) ;
+ struct item* get_item_f (long long,int ) ;
+ int item_add_word (struct item*,int ,int ) ;
+ int item_clear_wordlist (struct item*) ;
+ int mod_items ;
+ int move_item_rates (struct item*,struct index_item*) ;
+ int now ;
+ int set_multiple_rates_item (struct item*,int,int*) ;
+ int tag_owner ;
+ int universal ;
+ int vkprintf (int,char*,char const*,int,long long,int,int) ;
 
 __attribute__((used)) static int change_item (const char *text, int len, long long item_id, int rate, int rate2) {
   struct item *I;
@@ -83,11 +83,11 @@ __attribute__((used)) static int change_item (const char *text, int len, long lo
   rates[2] = now;
   set_multiple_rates_item (I, 1 + 2 + 4, rates);
 
-  /*
-  set_rate_item (I, 0, rate);
-  set_rate_item (I, 1, rate2);
-  set_rate_item (I, 2, now);
-  */
+
+
+
+
+
 
   clear_cur_wordlist ();
   int i, Wc = extract_words (text, len, universal, Q, 65536, tag_owner, item_id);

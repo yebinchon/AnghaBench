@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sscfu {int /*<<< orphan*/  sigs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MEMFREE (struct sscfu*) ; 
- int /*<<< orphan*/  SIGQ_CLEAR (int /*<<< orphan*/ *) ; 
+
+
+
+struct sscfu {int sigs; } ;
+
+
+ int MEMFREE (struct sscfu*) ;
+ int SIGQ_CLEAR (int *) ;
 
 void
 sscfu_destroy(struct sscfu *sscf)
 {
-	SIGQ_CLEAR(&sscf->sigs);
-	MEMFREE(sscf);
+ SIGQ_CLEAR(&sscf->sigs);
+ MEMFREE(sscf);
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int numpoints; int /*<<< orphan*/ * p; } ;
-typedef  TYPE_1__ winding_accu_t ;
 
-/* Variables and functions */
- TYPE_1__* AllocWindingAccu (int) ; 
- int /*<<< orphan*/  Error (char*) ; 
- int /*<<< orphan*/  FreeWindingAccu (TYPE_1__*) ; 
- int /*<<< orphan*/  VectorCopyAccu (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int numpoints; int * p; } ;
+typedef TYPE_1__ winding_accu_t ;
+
+
+ TYPE_1__* AllocWindingAccu (int) ;
+ int Error (char*) ;
+ int FreeWindingAccu (TYPE_1__*) ;
+ int VectorCopyAccu (int ,int ) ;
 
 winding_accu_t *CopyWindingAccuIncreaseSizeAndFreeOld( winding_accu_t *w ){
-	int i;
-	winding_accu_t  *c;
+ int i;
+ winding_accu_t *c;
 
-	if ( !w ) {
-		Error( "CopyWindingAccuIncreaseSizeAndFreeOld: winding is NULL" );
-	}
+ if ( !w ) {
+  Error( "CopyWindingAccuIncreaseSizeAndFreeOld: winding is NULL" );
+ }
 
-	c = AllocWindingAccu( w->numpoints + 1 );
-	c->numpoints = w->numpoints;
-	for ( i = 0; i < c->numpoints; i++ )
-	{
-		VectorCopyAccu( w->p[i], c->p[i] );
-	}
-	FreeWindingAccu( w );
-	return c;
+ c = AllocWindingAccu( w->numpoints + 1 );
+ c->numpoints = w->numpoints;
+ for ( i = 0; i < c->numpoints; i++ )
+ {
+  VectorCopyAccu( w->p[i], c->p[i] );
+ }
+ FreeWindingAccu( w );
+ return c;
 }

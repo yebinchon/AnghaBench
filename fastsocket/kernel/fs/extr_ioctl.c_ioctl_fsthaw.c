@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct super_block {int /*<<< orphan*/ * s_bdev; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct super_block {int * s_bdev; } ;
 struct TYPE_6__ {TYPE_2__* dentry; } ;
 struct file {TYPE_3__ f_path; } ;
 struct TYPE_5__ {TYPE_1__* d_inode; } ;
 struct TYPE_4__ {struct super_block* i_sb; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CAP_SYS_ADMIN ; 
- int EINVAL ; 
- int EPERM ; 
- int /*<<< orphan*/  capable (int /*<<< orphan*/ ) ; 
- int thaw_bdev (int /*<<< orphan*/ *,struct super_block*) ; 
+
+ int CAP_SYS_ADMIN ;
+ int EINVAL ;
+ int EPERM ;
+ int capable (int ) ;
+ int thaw_bdev (int *,struct super_block*) ;
 
 __attribute__((used)) static int ioctl_fsthaw(struct file *filp)
 {
-	struct super_block *sb = filp->f_path.dentry->d_inode->i_sb;
+ struct super_block *sb = filp->f_path.dentry->d_inode->i_sb;
 
-	if (!capable(CAP_SYS_ADMIN))
-		return -EPERM;
+ if (!capable(CAP_SYS_ADMIN))
+  return -EPERM;
 
-	/* If a blockdevice-backed filesystem isn't specified, return EINVAL. */
-	if (sb->s_bdev == NULL)
-		return -EINVAL;
 
-	/* Thaw */
-	return thaw_bdev(sb->s_bdev, sb);
+ if (sb->s_bdev == ((void*)0))
+  return -EINVAL;
+
+
+ return thaw_bdev(sb->s_bdev, sb);
 }

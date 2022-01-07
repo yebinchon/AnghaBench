@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint_8t ;
-typedef  int uint_32t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  block_copy (void*,void const*) ; 
- int /*<<< orphan*/  xor_block (void*,void const*) ; 
+
+
+
+typedef int uint_8t ;
+typedef int uint_32t ;
+
+
+ int block_copy (void*,void const*) ;
+ int xor_block (void*,void const*) ;
 
 __attribute__((used)) static void copy_and_key( void *d, const void *s, const void *k )
 {
-#if defined( HAVE_UINT_32T )
-    ((uint_32t *)d)[ 0] = ((uint_32t *)s)[ 0] ^ ((uint_32t *)k)[ 0];
-    ((uint_32t *)d)[ 1] = ((uint_32t *)s)[ 1] ^ ((uint_32t *)k)[ 1];
-    ((uint_32t *)d)[ 2] = ((uint_32t *)s)[ 2] ^ ((uint_32t *)k)[ 2];
-    ((uint_32t *)d)[ 3] = ((uint_32t *)s)[ 3] ^ ((uint_32t *)k)[ 3];
-#elif 1
+
+
+
+
+
+
     ((uint_8t *)d)[ 0] = ((uint_8t *)s)[ 0] ^ ((uint_8t *)k)[ 0];
     ((uint_8t *)d)[ 1] = ((uint_8t *)s)[ 1] ^ ((uint_8t *)k)[ 1];
     ((uint_8t *)d)[ 2] = ((uint_8t *)s)[ 2] ^ ((uint_8t *)k)[ 2];
@@ -41,8 +41,8 @@ __attribute__((used)) static void copy_and_key( void *d, const void *s, const vo
     ((uint_8t *)d)[13] = ((uint_8t *)s)[13] ^ ((uint_8t *)k)[13];
     ((uint_8t *)d)[14] = ((uint_8t *)s)[14] ^ ((uint_8t *)k)[14];
     ((uint_8t *)d)[15] = ((uint_8t *)s)[15] ^ ((uint_8t *)k)[15];
-#else
-    block_copy(d, s);
-    xor_block(d, k);
-#endif
+
+
+
+
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uni_char_t ;
-typedef  int /*<<< orphan*/  text_style_t ;
-typedef  int /*<<< orphan*/  paragraph_t ;
-typedef  int /*<<< orphan*/  line_desc_t ;
-typedef  int /*<<< orphan*/  filter_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BuildParagraph (int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int,unsigned int*) ; 
- int /*<<< orphan*/  FreeParagraph (int /*<<< orphan*/ *) ; 
- scalar_t__ LayoutLine (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ **) ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ ** malloc (int) ; 
+
+
+
+typedef int uni_char_t ;
+typedef int text_style_t ;
+typedef int paragraph_t ;
+typedef int line_desc_t ;
+typedef int filter_t ;
+
+
+ int * BuildParagraph (int *,int,int const*,int **,int *,int,unsigned int*) ;
+ int FreeParagraph (int *) ;
+ scalar_t__ LayoutLine (int *,int *,int ,int,int,int **) ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int free (int **) ;
+ int ** malloc (int) ;
 
 __attribute__((used)) static int LayoutRubyText( filter_t *p_filter,
                            const uni_char_t *p_uchars,
@@ -39,7 +39,7 @@ __attribute__((used)) static int LayoutRubyText( filter_t *p_filter,
 
     paragraph_t *p_paragraph = BuildParagraph( p_filter, i_uchars,
                                                p_uchars, pp_styles,
-                                               NULL, 1,
+                                               ((void*)0), 1,
                                                &i_max_advance_x );
     if( !p_paragraph )
     {
@@ -49,7 +49,7 @@ __attribute__((used)) static int LayoutRubyText( filter_t *p_filter,
 
     if( LayoutLine( p_filter, p_paragraph,
                     0, i_uchars - 1,
-                    false, pp_line ) )
+                    0, pp_line ) )
     {
         free( pp_styles );
         FreeParagraph( p_paragraph );

@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct resource {unsigned short start; char* name; int /*<<< orphan*/  flags; int /*<<< orphan*/  end; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  IORESOURCE_IO ; 
- int /*<<< orphan*/  VT8231_EXTENT ; 
- int acpi_check_resource_conflict (struct resource*) ; 
- int /*<<< orphan*/  pdev ; 
- int platform_device_add (int /*<<< orphan*/ ) ; 
- int platform_device_add_resources (int /*<<< orphan*/ ,struct resource*,int) ; 
- int /*<<< orphan*/  platform_device_alloc (char*,unsigned short) ; 
- int /*<<< orphan*/  platform_device_put (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pr_err (char*,...) ; 
+
+
+
+struct resource {unsigned short start; char* name; int flags; int end; } ;
+
+
+ int ENOMEM ;
+ int IORESOURCE_IO ;
+ int VT8231_EXTENT ;
+ int acpi_check_resource_conflict (struct resource*) ;
+ int pdev ;
+ int platform_device_add (int ) ;
+ int platform_device_add_resources (int ,struct resource*,int) ;
+ int platform_device_alloc (char*,unsigned short) ;
+ int platform_device_put (int ) ;
+ int pr_err (char*,...) ;
 
 __attribute__((used)) static int vt8231_device_add(unsigned short address)
 {
-	struct resource res = {
-		.start	= address,
-		.end	= address + VT8231_EXTENT - 1,
-		.name	= "vt8231",
-		.flags	= IORESOURCE_IO,
-	};
-	int err;
+ struct resource res = {
+  .start = address,
+  .end = address + VT8231_EXTENT - 1,
+  .name = "vt8231",
+  .flags = IORESOURCE_IO,
+ };
+ int err;
 
-	err = acpi_check_resource_conflict(&res);
-	if (err)
-		goto exit;
+ err = acpi_check_resource_conflict(&res);
+ if (err)
+  goto exit;
 
-	pdev = platform_device_alloc("vt8231", address);
-	if (!pdev) {
-		err = -ENOMEM;
-		pr_err("Device allocation failed\n");
-		goto exit;
-	}
+ pdev = platform_device_alloc("vt8231", address);
+ if (!pdev) {
+  err = -ENOMEM;
+  pr_err("Device allocation failed\n");
+  goto exit;
+ }
 
-	err = platform_device_add_resources(pdev, &res, 1);
-	if (err) {
-		pr_err("Device resource addition failed (%d)\n", err);
-		goto exit_device_put;
-	}
+ err = platform_device_add_resources(pdev, &res, 1);
+ if (err) {
+  pr_err("Device resource addition failed (%d)\n", err);
+  goto exit_device_put;
+ }
 
-	err = platform_device_add(pdev);
-	if (err) {
-		pr_err("Device addition failed (%d)\n", err);
-		goto exit_device_put;
-	}
+ err = platform_device_add(pdev);
+ if (err) {
+  pr_err("Device addition failed (%d)\n", err);
+  goto exit_device_put;
+ }
 
-	return 0;
+ return 0;
 
 exit_device_put:
-	platform_device_put(pdev);
+ platform_device_put(pdev);
 exit:
-	return err;
+ return err;
 }

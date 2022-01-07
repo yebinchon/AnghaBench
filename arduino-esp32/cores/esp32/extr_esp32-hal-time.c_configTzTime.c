@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SNTP_OPMODE_POLL ; 
- int /*<<< orphan*/  setenv (char*,char const*,int) ; 
- scalar_t__ sntp_enabled () ; 
- int /*<<< orphan*/  sntp_init () ; 
- int /*<<< orphan*/  sntp_setoperatingmode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sntp_setservername (int,char*) ; 
- int /*<<< orphan*/  sntp_stop () ; 
- int /*<<< orphan*/  tcpip_adapter_init () ; 
- int /*<<< orphan*/  tzset () ; 
+ int SNTP_OPMODE_POLL ;
+ int setenv (char*,char const*,int) ;
+ scalar_t__ sntp_enabled () ;
+ int sntp_init () ;
+ int sntp_setoperatingmode (int ) ;
+ int sntp_setservername (int,char*) ;
+ int sntp_stop () ;
+ int tcpip_adapter_init () ;
+ int tzset () ;
 
 void configTzTime(const char* tz, const char* server1, const char* server2, const char* server3)
 {
-    tcpip_adapter_init();  // Should not hurt anything if already inited
+    tcpip_adapter_init();
     if(sntp_enabled()){
         sntp_stop();
     }

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {struct TYPE_6__* l_next; } ;
-typedef  TYPE_1__ LINE ;
+typedef TYPE_1__ LINE ;
 
-/* Variables and functions */
- int NALLOC ; 
- int /*<<< orphan*/  err (int,int /*<<< orphan*/ *) ; 
- TYPE_1__* line_freelist ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- TYPE_1__* realloc (int /*<<< orphan*/ *,int) ; 
+
+ int NALLOC ;
+ int err (int,int *) ;
+ TYPE_1__* line_freelist ;
+ int memset (TYPE_1__*,int ,int) ;
+ TYPE_1__* realloc (int *,int) ;
 
 __attribute__((used)) static LINE *
 alloc_line(void)
 {
-	LINE *l;
-	int i;
+ LINE *l;
+ int i;
 
-	if (!line_freelist) {
-		if ((l = realloc(NULL, sizeof(LINE) * NALLOC)) == NULL)
-			err(1, NULL);
-		line_freelist = l;
-		for (i = 1; i < NALLOC; i++, l++)
-			l->l_next = l + 1;
-		l->l_next = NULL;
-	}
-	l = line_freelist;
-	line_freelist = l->l_next;
+ if (!line_freelist) {
+  if ((l = realloc(((void*)0), sizeof(LINE) * NALLOC)) == ((void*)0))
+   err(1, ((void*)0));
+  line_freelist = l;
+  for (i = 1; i < NALLOC; i++, l++)
+   l->l_next = l + 1;
+  l->l_next = ((void*)0);
+ }
+ l = line_freelist;
+ line_freelist = l->l_next;
 
-	memset(l, 0, sizeof(LINE));
-	return (l);
+ memset(l, 0, sizeof(LINE));
+ return (l);
 }

@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  s_addr; } ;
 
-/* Variables and functions */
- scalar_t__ CS ; 
- int CSN ; 
- int NB_alloc ; 
- int NB_max ; 
- int NB_used ; 
- int /*<<< orphan*/  SIGHUP ; 
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  SIGPIPE ; 
- int /*<<< orphan*/  SIGTERM ; 
- int /*<<< orphan*/  SIGUSR1 ; 
- int /*<<< orphan*/  SIG_IGN ; 
- int /*<<< orphan*/  accept_new_connections ; 
- int active_connections ; 
- int /*<<< orphan*/  backlog ; 
- scalar_t__ change_user (char*) ; 
- int /*<<< orphan*/  close (scalar_t__) ; 
- char* conv_addr (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  create_client (scalar_t__) ; 
- int /*<<< orphan*/  cron () ; 
- scalar_t__ daemonize ; 
- int /*<<< orphan*/  epoll_close (scalar_t__) ; 
- int /*<<< orphan*/  epoll_insert (scalar_t__,int) ; 
- int /*<<< orphan*/  epoll_sethandler (scalar_t__,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  epoll_work (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  init_epoll () ; 
- int /*<<< orphan*/  init_netbuffers () ; 
- int /*<<< orphan*/  interactive ; 
- int maxconn ; 
- int now ; 
- int port ; 
- scalar_t__ quit_steps ; 
- int /*<<< orphan*/  reopen_logs () ; 
- scalar_t__ sdf ; 
- scalar_t__ server_socket (int,TYPE_1__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setsid () ; 
- TYPE_1__ settings_addr ; 
- int /*<<< orphan*/  sighup_handler ; 
- int /*<<< orphan*/  sigint_handler ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sigterm_handler ; 
- int /*<<< orphan*/  sigusr1_handler ; 
- int /*<<< orphan*/  stderr ; 
- char* username ; 
- scalar_t__ verbosity ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int s_addr; } ;
+
+
+ scalar_t__ CS ;
+ int CSN ;
+ int NB_alloc ;
+ int NB_max ;
+ int NB_used ;
+ int SIGHUP ;
+ int SIGINT ;
+ int SIGPIPE ;
+ int SIGTERM ;
+ int SIGUSR1 ;
+ int SIG_IGN ;
+ int accept_new_connections ;
+ int active_connections ;
+ int backlog ;
+ scalar_t__ change_user (char*) ;
+ int close (scalar_t__) ;
+ char* conv_addr (int ,char*) ;
+ int create_client (scalar_t__) ;
+ int cron () ;
+ scalar_t__ daemonize ;
+ int epoll_close (scalar_t__) ;
+ int epoll_insert (scalar_t__,int) ;
+ int epoll_sethandler (scalar_t__,int,int ,int ) ;
+ int epoll_work (int) ;
+ int exit (int) ;
+ int fprintf (int ,char*,...) ;
+ int init_epoll () ;
+ int init_netbuffers () ;
+ int interactive ;
+ int maxconn ;
+ int now ;
+ int port ;
+ scalar_t__ quit_steps ;
+ int reopen_logs () ;
+ scalar_t__ sdf ;
+ scalar_t__ server_socket (int,TYPE_1__,int ,int ) ;
+ int setsid () ;
+ TYPE_1__ settings_addr ;
+ int sighup_handler ;
+ int sigint_handler ;
+ int signal (int ,int ) ;
+ int sigterm_handler ;
+ int sigusr1_handler ;
+ int stderr ;
+ char* username ;
+ scalar_t__ verbosity ;
 
 void start_server (void) {
-  //  struct sigaction sa;
+
   char buf[64];
   int i;
   int prev_time;
@@ -126,5 +126,5 @@ void start_server (void) {
   epoll_close (sdf);
   close(sdf);
 
-  //  flush_binlog_ts();
+
 }

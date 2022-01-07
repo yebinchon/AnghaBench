@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IServiceProvider ;
-typedef  int /*<<< orphan*/  IHlinkFrame ;
-typedef  int /*<<< orphan*/  IHTMLWindow2 ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ E_NOINTERFACE ; 
- int /*<<< orphan*/  HlinkFrame ; 
- scalar_t__ IHTMLDocument2_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ IHTMLDocument2_get_parentWindow (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IHTMLWindow2_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IHTMLWindow2_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IHlinkFrame_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IHTMLWindow2 ; 
- int /*<<< orphan*/  IID_IHlinkFrame ; 
- int /*<<< orphan*/  IID_IServiceProvider ; 
- scalar_t__ IServiceProvider_QueryService (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IServiceProvider_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int IServiceProvider ;
+typedef int IHlinkFrame ;
+typedef int IHTMLWindow2 ;
+typedef int IHTMLDocument2 ;
+typedef scalar_t__ HRESULT ;
+typedef int BOOL ;
+
+
+ scalar_t__ E_NOINTERFACE ;
+ int HlinkFrame ;
+ scalar_t__ IHTMLDocument2_QueryInterface (int *,int *,void**) ;
+ scalar_t__ IHTMLDocument2_get_parentWindow (int *,int **) ;
+ scalar_t__ IHTMLWindow2_QueryInterface (int *,int *,void**) ;
+ int IHTMLWindow2_Release (int *) ;
+ int IHlinkFrame_Release (int *) ;
+ int IID_IHTMLWindow2 ;
+ int IID_IHlinkFrame ;
+ int IID_IServiceProvider ;
+ scalar_t__ IServiceProvider_QueryService (int *,int *,int *,void**) ;
+ int IServiceProvider_Release (int *) ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_QueryService(IHTMLDocument2 *doc, BOOL success)
 {
@@ -64,7 +64,7 @@ __attribute__((used)) static void test_QueryService(IHTMLDocument2 *doc, BOOL su
 
     hres = IServiceProvider_QueryService(sp, &IID_IHTMLWindow2, &IID_IHTMLWindow2, (void**)&sp_window);
     ok(hres == S_OK, "QueryService(IID_IHTMLWindow2) failed: %08x\n", hres);
-    /* FIXME: test returned window */
+
     IHTMLWindow2_Release(sp_window);
 
     hres = IServiceProvider_QueryService(sp, &IID_IHlinkFrame, &IID_IHlinkFrame, (void**)&hf);

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char u_char ;
-typedef  scalar_t__ ngx_int_t ;
-struct TYPE_6__ {int /*<<< orphan*/  pool; } ;
-typedef  TYPE_1__ ngx_http_request_t ;
-typedef  int /*<<< orphan*/  ngx_array_t ;
-struct TYPE_7__ {int /*<<< orphan*/  sockaddr; } ;
-typedef  TYPE_2__ ngx_addr_t ;
 
-/* Variables and functions */
- scalar_t__ NGX_DECLINED ; 
- scalar_t__ NGX_DONE ; 
- scalar_t__ NGX_OK ; 
- scalar_t__ ngx_cidr_match (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ ngx_parse_addr_port (int /*<<< orphan*/ ,TYPE_2__*,char*,size_t) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef char u_char ;
+typedef scalar_t__ ngx_int_t ;
+struct TYPE_6__ {int pool; } ;
+typedef TYPE_1__ ngx_http_request_t ;
+typedef int ngx_array_t ;
+struct TYPE_7__ {int sockaddr; } ;
+typedef TYPE_2__ ngx_addr_t ;
+
+
+ scalar_t__ NGX_DECLINED ;
+ scalar_t__ NGX_DONE ;
+ scalar_t__ NGX_OK ;
+ scalar_t__ ngx_cidr_match (int ,int *) ;
+ scalar_t__ ngx_parse_addr_port (int ,TYPE_2__*,char*,size_t) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_get_forwarded_addr_internal(ngx_http_request_t *r, ngx_addr_t *addr,
     u_char *xff, size_t xfflen, ngx_array_t *proxies, int recursive)
 {
-    u_char      *p;
-    ngx_int_t    rc;
-    ngx_addr_t   paddr;
+    u_char *p;
+    ngx_int_t rc;
+    ngx_addr_t paddr;
 
     if (ngx_cidr_match(addr->sockaddr, proxies) != NGX_OK) {
         return NGX_DECLINED;
@@ -45,7 +45,7 @@ ngx_http_get_forwarded_addr_internal(ngx_http_request_t *r, ngx_addr_t *addr,
         }
     }
 
-    for ( /* void */ ; p > xff; p--) {
+    for ( ; p > xff; p--) {
         if (*p == ' ' || *p == ',') {
             p++;
             break;
@@ -66,7 +66,7 @@ ngx_http_get_forwarded_addr_internal(ngx_http_request_t *r, ngx_addr_t *addr,
             return NGX_DONE;
         }
 
-        /* rc == NGX_OK || rc == NGX_DONE  */
+
         return rc;
     }
 

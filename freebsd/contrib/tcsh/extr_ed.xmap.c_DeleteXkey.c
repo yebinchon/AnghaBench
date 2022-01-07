@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ len; } ;
-typedef  TYPE_1__ CStr ;
+typedef TYPE_1__ CStr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CGETS (int,int,char*) ; 
- int /*<<< orphan*/  TryDeleteNode (int /*<<< orphan*/ **,TYPE_1__*) ; 
- int /*<<< orphan*/ * Xmap ; 
- int /*<<< orphan*/  xprintf (char*,int /*<<< orphan*/ ) ; 
+
+ int CGETS (int,int,char*) ;
+ int TryDeleteNode (int **,TYPE_1__*) ;
+ int * Xmap ;
+ int xprintf (char*,int ) ;
 
 int
 DeleteXkey(const CStr *Xkey)
@@ -27,13 +27,13 @@ DeleteXkey(const CStr *Xkey)
 
     s = *Xkey;
     if (s.len == 0) {
-	xprintf("%s",
-	        CGETS(9, 3, "DeleteXkey: Null extended-key not allowed.\n"));
-	return (-1);
+ xprintf("%s",
+         CGETS(9, 3, "DeleteXkey: Null extended-key not allowed.\n"));
+ return (-1);
     }
 
-    if (Xmap == NULL)
-	return (0);
+    if (Xmap == ((void*)0))
+ return (0);
 
     (void) TryDeleteNode(&Xmap, &s);
     return (0);

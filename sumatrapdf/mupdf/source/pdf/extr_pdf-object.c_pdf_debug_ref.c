@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pdf_obj ;
-typedef  int /*<<< orphan*/  fz_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pdf_debug_encrypted_obj (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  putchar (char) ; 
+
+
+
+typedef int pdf_obj ;
+typedef int fz_context ;
+
+
+ int pdf_debug_encrypted_obj (int *,int *,int ,int *,int ,int ) ;
+ int putchar (char) ;
 
 void pdf_debug_ref(fz_context *ctx, pdf_obj *obj)
 {
-	pdf_debug_encrypted_obj(ctx, obj, 0, NULL, 0, 0);
-	putchar('\n');
+ pdf_debug_encrypted_obj(ctx, obj, 0, ((void*)0), 0, 0);
+ putchar('\n');
 }

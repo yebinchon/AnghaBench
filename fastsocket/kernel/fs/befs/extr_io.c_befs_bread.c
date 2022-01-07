@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct super_block {int dummy; } ;
 struct buffer_head {int dummy; } ;
-typedef  int /*<<< orphan*/  befs_blocknr_t ;
+typedef int befs_blocknr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  befs_debug (struct super_block*,char*,...) ; 
- int /*<<< orphan*/  befs_error (struct super_block*,char*,int /*<<< orphan*/ ) ; 
- struct buffer_head* sb_bread (struct super_block*,int /*<<< orphan*/ ) ; 
+
+ int befs_debug (struct super_block*,char*,...) ;
+ int befs_error (struct super_block*,char*,int ) ;
+ struct buffer_head* sb_bread (struct super_block*,int ) ;
 
 struct buffer_head *
 befs_bread(struct super_block *sb, befs_blocknr_t block)
 {
-	struct buffer_head *bh = NULL;
+ struct buffer_head *bh = ((void*)0);
 
-	befs_debug(sb, "---> Enter befs_read() %Lu", block);
+ befs_debug(sb, "---> Enter befs_read() %Lu", block);
 
-	bh = sb_bread(sb, block);
+ bh = sb_bread(sb, block);
 
-	if (bh == NULL) {
-		befs_error(sb, "Failed to read block %lu", block);
-		goto error;
-	}
+ if (bh == ((void*)0)) {
+  befs_error(sb, "Failed to read block %lu", block);
+  goto error;
+ }
 
-	befs_debug(sb, "<--- befs_read()");
+ befs_debug(sb, "<--- befs_read()");
 
-	return bh;
+ return bh;
 
       error:
-	befs_debug(sb, "<--- befs_read() ERROR");
-	return NULL;
+ befs_debug(sb, "<--- befs_read() ERROR");
+ return ((void*)0);
 }

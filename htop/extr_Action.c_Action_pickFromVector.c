@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_6__ ;
-typedef  struct TYPE_23__   TYPE_5__ ;
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_24__ {TYPE_1__* pl; int /*<<< orphan*/  height; } ;
+
+
+typedef struct TYPE_24__ TYPE_6__ ;
+typedef struct TYPE_23__ TYPE_5__ ;
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
+struct TYPE_24__ {TYPE_1__* pl; int height; } ;
 struct TYPE_23__ {int y; } ;
 struct TYPE_22__ {int pid; } ;
 struct TYPE_21__ {int allowFocusChange; } ;
-struct TYPE_20__ {int /*<<< orphan*/ * settings; TYPE_6__* header; TYPE_5__* panel; } ;
+struct TYPE_20__ {int * settings; TYPE_6__* header; TYPE_5__* panel; } ;
 struct TYPE_19__ {int following; } ;
-typedef  TYPE_2__ State ;
-typedef  int /*<<< orphan*/  Settings ;
-typedef  TYPE_3__ ScreenManager ;
-typedef  TYPE_4__ Process ;
-typedef  TYPE_5__ Panel ;
-typedef  int /*<<< orphan*/  Object ;
-typedef  int /*<<< orphan*/  MainPanel ;
-typedef  TYPE_6__ Header ;
+typedef TYPE_2__ State ;
+typedef int Settings ;
+typedef TYPE_3__ ScreenManager ;
+typedef TYPE_4__ Process ;
+typedef TYPE_5__ Panel ;
+typedef int Object ;
+typedef int MainPanel ;
+typedef TYPE_6__ Header ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COLS ; 
- int /*<<< orphan*/  HORIZONTAL ; 
- int LINES ; 
- int MainPanel_selectedPid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Panel_getSelected (TYPE_5__*) ; 
- int /*<<< orphan*/  Panel_move (TYPE_5__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  Panel_resize (TYPE_5__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ScreenManager_add (TYPE_3__*,TYPE_5__*,int) ; 
- int /*<<< orphan*/  ScreenManager_delete (TYPE_3__*) ; 
- TYPE_3__* ScreenManager_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,TYPE_6__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ScreenManager_run (TYPE_3__*,TYPE_5__**,int*) ; 
- int /*<<< orphan*/  beep () ; 
+
+ int COLS ;
+ int HORIZONTAL ;
+ int LINES ;
+ int MainPanel_selectedPid (int *) ;
+ int * Panel_getSelected (TYPE_5__*) ;
+ int Panel_move (TYPE_5__*,int ,int) ;
+ int Panel_resize (TYPE_5__*,int ,int) ;
+ int ScreenManager_add (TYPE_3__*,TYPE_5__*,int) ;
+ int ScreenManager_delete (TYPE_3__*) ;
+ TYPE_3__* ScreenManager_new (int ,int ,int ,int,int ,TYPE_6__*,int *,int) ;
+ int ScreenManager_run (TYPE_3__*,TYPE_5__**,int*) ;
+ int beep () ;
 
 Object* Action_pickFromVector(State* st, Panel* list, int x) {
    Panel* panel = st->panel;
    Header* header = st->header;
    Settings* settings = st->settings;
-   
+
    int y = panel->y;
-   ScreenManager* scr = ScreenManager_new(0, header->height, 0, -1, HORIZONTAL, header, settings, false);
-   scr->allowFocusChange = false;
+   ScreenManager* scr = ScreenManager_new(0, header->height, 0, -1, HORIZONTAL, header, settings, 0);
+   scr->allowFocusChange = 0;
    ScreenManager_add(scr, list, x - 1);
    ScreenManager_add(scr, panel, -1);
    Panel* panelFocus;
    int ch;
-   bool unfollow = false;
+   bool unfollow = 0;
    int pid = MainPanel_selectedPid((MainPanel*)panel);
    if (header->pl->following == -1) {
       header->pl->following = pid;
-      unfollow = true;
+      unfollow = 1;
    }
    ScreenManager_run(scr, &panelFocus, &ch);
    if (unfollow) {
@@ -77,5 +77,5 @@ Object* Action_pickFromVector(State* st, Panel* list, int x) {
       else
          beep();
    }
-   return NULL;
+   return ((void*)0);
 }

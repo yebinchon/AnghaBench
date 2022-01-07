@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_id128_t ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  IN_SET (char const,int /*<<< orphan*/ ,char,char) ; 
- int /*<<< orphan*/  SD_ID128_NULL ; 
- int safe_atoi (char const*,int*) ; 
- int sd_id128_from_string (char*,int /*<<< orphan*/ *) ; 
- scalar_t__ streq (char const*,char*) ; 
- int strlen (char const*) ; 
- char* strndupa (char const*,int) ; 
+
+
+
+typedef int sd_id128_t ;
+
+
+ int EINVAL ;
+ int IN_SET (char const,int ,char,char) ;
+ int SD_ID128_NULL ;
+ int safe_atoi (char const*,int*) ;
+ int sd_id128_from_string (char*,int *) ;
+ scalar_t__ streq (char const*,char*) ;
+ int strlen (char const*) ;
+ char* strndupa (char const*,int) ;
 
 __attribute__((used)) static int parse_boot_descriptor(const char *x, sd_id128_t *boot_id, int *offset) {
         sd_id128_t id = SD_ID128_NULL;

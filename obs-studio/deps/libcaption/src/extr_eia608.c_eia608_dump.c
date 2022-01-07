@@ -1,53 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
-typedef  int eia608_style_t ;
 
-/* Variables and functions */
-#define  eia608_control_alarm_off 146 
-#define  eia608_control_alarm_on 145 
-#define  eia608_control_backspace 144 
-#define  eia608_control_carriage_return 143 
-#define  eia608_control_delete_to_end_of_row 142 
-#define  eia608_control_end_of_caption 141 
-#define  eia608_control_erase_display_memory 140 
-#define  eia608_control_erase_non_displayed_memory 139 
-#define  eia608_control_resume_caption_loading 138 
-#define  eia608_control_resume_direct_captioning 137 
-#define  eia608_control_roll_up_2 136 
-#define  eia608_control_roll_up_3 135 
-#define  eia608_control_roll_up_4 134 
-#define  eia608_control_text_restart 133 
-#define  eia608_control_text_resume_text_display 132 
- scalar_t__ eia608_is_basicna (int) ; 
- scalar_t__ eia608_is_control (int) ; 
- scalar_t__ eia608_is_midrowchange (int) ; 
- scalar_t__ eia608_is_norpak (int) ; 
- scalar_t__ eia608_is_preamble (int) ; 
- scalar_t__ eia608_is_specialna (int) ; 
- scalar_t__ eia608_is_westeu (int) ; 
- scalar_t__ eia608_is_xds (int) ; 
- int eia608_parity_strip (int) ; 
- int /*<<< orphan*/  eia608_parity_varify (int) ; 
- int eia608_parse_control (int,int*) ; 
- int /*<<< orphan*/  eia608_parse_preamble (int,int*,int*,int*,int*,int*) ; 
-#define  eia608_tab_offset_0 131 
-#define  eia608_tab_offset_1 130 
-#define  eia608_tab_offset_2 129 
-#define  eia608_tab_offset_3 128 
- int /*<<< orphan*/  eia608_to_utf8 (int,int*,char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,...) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int uint16_t ;
+typedef int eia608_style_t ;
+ scalar_t__ eia608_is_basicna (int) ;
+ scalar_t__ eia608_is_control (int) ;
+ scalar_t__ eia608_is_midrowchange (int) ;
+ scalar_t__ eia608_is_norpak (int) ;
+ scalar_t__ eia608_is_preamble (int) ;
+ scalar_t__ eia608_is_specialna (int) ;
+ scalar_t__ eia608_is_westeu (int) ;
+ scalar_t__ eia608_is_xds (int) ;
+ int eia608_parity_strip (int) ;
+ int eia608_parity_varify (int) ;
+ int eia608_parse_control (int,int*) ;
+ int eia608_parse_preamble (int,int*,int*,int*,int*,int*) ;
+
+
+
+
+ int eia608_to_utf8 (int,int*,char*,char*) ;
+ int fprintf (int ,char*,int,int,...) ;
+ int stderr ;
 
 void eia608_dump(uint16_t cc_data)
 {
@@ -88,79 +71,79 @@ void eia608_dump(uint16_t cc_data)
             text = "unknown_control";
             break;
 
-        case eia608_tab_offset_0:
+        case 131:
             text = "eia608_tab_offset_0";
             break;
 
-        case eia608_tab_offset_1:
+        case 130:
             text = "eia608_tab_offset_1";
             break;
 
-        case eia608_tab_offset_2:
+        case 129:
             text = "eia608_tab_offset_2";
             break;
 
-        case eia608_tab_offset_3:
+        case 128:
             text = "eia608_tab_offset_3";
             break;
 
-        case eia608_control_resume_caption_loading:
+        case 138:
             text = "eia608_control_resume_caption_loading";
             break;
 
-        case eia608_control_backspace:
+        case 144:
             text = "eia608_control_backspace";
             break;
 
-        case eia608_control_alarm_off:
+        case 146:
             text = "eia608_control_alarm_off";
             break;
 
-        case eia608_control_alarm_on:
+        case 145:
             text = "eia608_control_alarm_on";
             break;
 
-        case eia608_control_delete_to_end_of_row:
+        case 142:
             text = "eia608_control_delete_to_end_of_row";
             break;
 
-        case eia608_control_roll_up_2:
+        case 136:
             text = "eia608_control_roll_up_2";
             break;
 
-        case eia608_control_roll_up_3:
+        case 135:
             text = "eia608_control_roll_up_3";
             break;
 
-        case eia608_control_roll_up_4:
+        case 134:
             text = "eia608_control_roll_up_4";
             break;
 
-        case eia608_control_resume_direct_captioning:
+        case 137:
             text = "eia608_control_resume_direct_captioning";
             break;
 
-        case eia608_control_text_restart:
+        case 133:
             text = "eia608_control_text_restart";
             break;
 
-        case eia608_control_text_resume_text_display:
+        case 132:
             text = "eia608_control_text_resume_text_display";
             break;
 
-        case eia608_control_erase_display_memory:
+        case 140:
             text = "eia608_control_erase_display_memory";
             break;
 
-        case eia608_control_carriage_return:
+        case 143:
             text = "eia608_control_carriage_return";
             break;
 
-        case eia608_control_erase_non_displayed_memory:
+        case 139:
             text = "eia608_control_erase_non_displayed_memory";
             break;
 
-        case eia608_control_end_of_caption:
+        case 141:
             text = "eia608_control_end_of_caption";
             break;
         }

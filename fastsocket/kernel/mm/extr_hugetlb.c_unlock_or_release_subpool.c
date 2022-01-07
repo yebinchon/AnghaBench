@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hugepage_subpool {scalar_t__ count; scalar_t__ used_hpages; int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct hugepage_subpool*) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct hugepage_subpool {scalar_t__ count; scalar_t__ used_hpages; int lock; } ;
+
+
+ int kfree (struct hugepage_subpool*) ;
+ int spin_unlock (int *) ;
 
 __attribute__((used)) static inline void unlock_or_release_subpool(struct hugepage_subpool *spool)
 {
-	bool free = (spool->count == 0) && (spool->used_hpages == 0);
+ bool free = (spool->count == 0) && (spool->used_hpages == 0);
 
-	spin_unlock(&spool->lock);
+ spin_unlock(&spool->lock);
 
-	/* If no pages are used, and no other handles to the subpool
-	 * remain, free the subpool the subpool remain */
-	if (free)
-		kfree(spool);
+
+
+ if (free)
+  kfree(spool);
 }

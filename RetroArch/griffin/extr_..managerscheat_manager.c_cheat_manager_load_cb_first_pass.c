@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {unsigned int loading_cheat_size; } ;
 
-/* Variables and functions */
- TYPE_1__ cheat_manager_state ; 
- scalar_t__ errno ; 
- scalar_t__ string_is_equal (char*,char*) ; 
- scalar_t__ strtoul (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ TYPE_1__ cheat_manager_state ;
+ scalar_t__ errno ;
+ scalar_t__ string_is_equal (char*,char*) ;
+ scalar_t__ strtoul (char*,int *,int ) ;
 
 __attribute__((used)) static void cheat_manager_load_cb_first_pass(char *key, char *value)
 {
@@ -25,7 +25,7 @@ __attribute__((used)) static void cheat_manager_load_cb_first_pass(char *key, ch
 
    if (string_is_equal(key, "cheats"))
    {
-      cheat_manager_state.loading_cheat_size = (unsigned)strtoul(value, NULL, 0);
+      cheat_manager_state.loading_cheat_size = (unsigned)strtoul(value, ((void*)0), 0);
 
       if (errno != 0)
          cheat_manager_state.loading_cheat_size = 0;

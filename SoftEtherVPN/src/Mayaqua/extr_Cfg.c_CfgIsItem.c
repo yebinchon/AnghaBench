@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ITEM ;
-typedef  int /*<<< orphan*/  FOLDER ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CfgFindItem (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int ITEM ;
+typedef int FOLDER ;
+
+
+ int * CfgFindItem (int *,char*) ;
 
 bool CfgIsItem(FOLDER *f, char *name)
 {
-	ITEM *t;
-	// Validate arguments
-	if (f == NULL || name == NULL)
-	{
-		return false;
-	}
+ ITEM *t;
 
-	t = CfgFindItem(f, name);
-	if (t == NULL)
-	{
-		return false;
-	}
+ if (f == ((void*)0) || name == ((void*)0))
+ {
+  return 0;
+ }
 
-	return true;
+ t = CfgFindItem(f, name);
+ if (t == ((void*)0))
+ {
+  return 0;
+ }
+
+ return 1;
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  close_work; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int close_work; } ;
 struct smc_sock {TYPE_1__ conn; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_WORK (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  smc_close_passive_work ; 
+
+ int INIT_WORK (int *,int ) ;
+ int smc_close_passive_work ;
 
 void smc_close_init(struct smc_sock *smc)
 {
-	INIT_WORK(&smc->conn.close_work, smc_close_passive_work);
+ INIT_WORK(&smc->conn.close_work, smc_close_passive_work);
 }

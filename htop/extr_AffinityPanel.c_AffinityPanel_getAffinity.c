@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ProcessList ;
-typedef  int /*<<< orphan*/  Panel ;
-typedef  int /*<<< orphan*/  CheckItem ;
-typedef  int /*<<< orphan*/  Affinity ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Affinity_add (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * Affinity_new (int /*<<< orphan*/ *) ; 
- scalar_t__ CheckItem_get (int /*<<< orphan*/ *) ; 
- scalar_t__ Panel_get (int /*<<< orphan*/ *,int) ; 
- int Panel_size (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int ProcessList ;
+typedef int Panel ;
+typedef int CheckItem ;
+typedef int Affinity ;
+
+
+ int Affinity_add (int *,int) ;
+ int * Affinity_new (int *) ;
+ scalar_t__ CheckItem_get (int *) ;
+ scalar_t__ Panel_get (int *,int) ;
+ int Panel_size (int *) ;
 
 Affinity* AffinityPanel_getAffinity(Panel* this, ProcessList* pl) {
    Affinity* affinity = Affinity_new(pl);

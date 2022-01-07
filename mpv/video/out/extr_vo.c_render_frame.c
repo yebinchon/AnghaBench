@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct vo_vsync_info {int last_queue_display_time; int skipped_vsyncs; } ;
-struct vo_internal {scalar_t__ flip_queue_offset; int dropped_frame; scalar_t__ prev_vsync; int hasframe_rendered; int expecting_vsync; int drop_count; int rendering; int request_redraw; struct vo_frame* frame_queued; int /*<<< orphan*/  lock; int /*<<< orphan*/  wakeup; struct vo_frame* current_frame; scalar_t__ paused; int /*<<< orphan*/  hasframe; } ;
-struct vo_frame {int num_vsyncs; scalar_t__ pts; int duration; int can_drop; int repeat; scalar_t__ display_synced; int /*<<< orphan*/  current; scalar_t__ vsync_interval; int /*<<< orphan*/  vsync_offset; } ;
+struct vo_internal {scalar_t__ flip_queue_offset; int dropped_frame; scalar_t__ prev_vsync; int hasframe_rendered; int expecting_vsync; int drop_count; int rendering; int request_redraw; struct vo_frame* frame_queued; int lock; int wakeup; struct vo_frame* current_frame; scalar_t__ paused; int hasframe; } ;
+struct vo_frame {int num_vsyncs; scalar_t__ pts; int duration; int can_drop; int repeat; scalar_t__ display_synced; int current; scalar_t__ vsync_interval; int vsync_offset; } ;
 struct vo {TYPE_1__* driver; struct vo_internal* in; } ;
-typedef  scalar_t__ int64_t ;
-struct TYPE_2__ {int caps; int /*<<< orphan*/  (* get_vsync ) (struct vo*,struct vo_vsync_info*) ;int /*<<< orphan*/  (* flip_page ) (struct vo*) ;int /*<<< orphan*/  (* draw_image ) (struct vo*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* draw_frame ) (struct vo*,struct vo_frame*) ;} ;
+typedef scalar_t__ int64_t ;
+struct TYPE_2__ {int caps; int (* get_vsync ) (struct vo*,struct vo_vsync_info*) ;int (* flip_page ) (struct vo*) ;int (* draw_image ) (struct vo*,int ) ;int (* draw_frame ) (struct vo*,struct vo_frame*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_STATS (struct vo*,char*) ; 
- int VO_CAP_FRAMEDROP ; 
- int VO_CAP_NORETAIN ; 
- int /*<<< orphan*/  assert (struct vo_frame*) ; 
- int /*<<< orphan*/  mp_image_new_ref (int /*<<< orphan*/ ) ; 
- scalar_t__ mp_time_us () ; 
- int /*<<< orphan*/  pthread_cond_broadcast (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (struct vo*,struct vo_frame*) ; 
- int /*<<< orphan*/  stub2 (struct vo*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (struct vo*) ; 
- int /*<<< orphan*/  stub4 (struct vo*,struct vo_vsync_info*) ; 
- int /*<<< orphan*/  talloc_free (struct vo_frame*) ; 
- int /*<<< orphan*/  update_display_fps (struct vo*) ; 
- int /*<<< orphan*/  update_vsync_timing_after_swap (struct vo*,struct vo_vsync_info*) ; 
- struct vo_frame* vo_frame_ref (struct vo_frame*) ; 
- int /*<<< orphan*/  wait_until (struct vo*,scalar_t__) ; 
- int /*<<< orphan*/  wakeup_core (struct vo*) ; 
+
+ int MP_STATS (struct vo*,char*) ;
+ int VO_CAP_FRAMEDROP ;
+ int VO_CAP_NORETAIN ;
+ int assert (struct vo_frame*) ;
+ int mp_image_new_ref (int ) ;
+ scalar_t__ mp_time_us () ;
+ int pthread_cond_broadcast (int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int stub1 (struct vo*,struct vo_frame*) ;
+ int stub2 (struct vo*,int ) ;
+ int stub3 (struct vo*) ;
+ int stub4 (struct vo*,struct vo_vsync_info*) ;
+ int talloc_free (struct vo_frame*) ;
+ int update_display_fps (struct vo*) ;
+ int update_vsync_timing_after_swap (struct vo*,struct vo_vsync_info*) ;
+ struct vo_frame* vo_frame_ref (struct vo_frame*) ;
+ int wait_until (struct vo*,scalar_t__) ;
+ int wakeup_core (struct vo*) ;
 
 __attribute__((used)) static bool render_frame(struct vo *vo)
 {
     struct vo_internal *in = vo->in;
-    struct vo_frame *frame = NULL;
-    bool got_frame = false;
+    struct vo_frame *frame = ((void*)0);
+    bool got_frame = 0;
 
     update_display_fps(vo);
 
@@ -52,7 +52,7 @@ __attribute__((used)) static bool render_frame(struct vo *vo)
     if (in->frame_queued) {
         talloc_free(in->current_frame);
         in->current_frame = in->frame_queued;
-        in->frame_queued = NULL;
+        in->frame_queued = ((void*)0);
     } else if (in->paused || !in->current_frame || !in->hasframe ||
                (in->current_frame->display_synced && in->current_frame->num_vsyncs < 1) ||
                !in->current_frame->display_synced)
@@ -73,23 +73,23 @@ __attribute__((used)) static bool render_frame(struct vo *vo)
     int64_t duration = frame->duration;
     int64_t end_time = pts + duration;
 
-    // Time at which we should flip_page on the VO.
+
     int64_t target = frame->display_synced ? 0 : pts - in->flip_queue_offset;
 
-    // "normal" strict drop threshold.
+
     in->dropped_frame = duration >= 0 && end_time < now;
 
     in->dropped_frame &= !frame->display_synced;
     in->dropped_frame &= !(vo->driver->caps & VO_CAP_FRAMEDROP);
     in->dropped_frame &= frame->can_drop;
-    // Even if we're hopelessly behind, rather degrade to 10 FPS playback,
-    // instead of just freezing the display forever.
+
+
     in->dropped_frame &= now - in->prev_vsync < 100 * 1000;
     in->dropped_frame &= in->hasframe_rendered;
 
-    // Setup parameters for the next time this frame is drawn. ("frame" is the
-    // frame currently drawn, while in->current_frame is the potentially next.)
-    in->current_frame->repeat = true;
+
+
+    in->current_frame->repeat = 1;
     if (frame->display_synced) {
         in->current_frame->vsync_offset += in->current_frame->vsync_interval;
         in->dropped_frame |= in->current_frame->num_vsyncs < 1;
@@ -98,18 +98,18 @@ __attribute__((used)) static bool render_frame(struct vo *vo)
         in->current_frame->num_vsyncs -= 1;
 
     bool use_vsync = in->current_frame->display_synced && !in->paused;
-    if (use_vsync && !in->expecting_vsync) // first DS frame in a row
+    if (use_vsync && !in->expecting_vsync)
         in->prev_vsync = now;
     in->expecting_vsync = use_vsync;
 
     if (in->dropped_frame) {
         in->drop_count += 1;
     } else {
-        in->rendering = true;
-        in->hasframe_rendered = true;
+        in->rendering = 1;
+        in->hasframe_rendered = 1;
         int64_t prev_drop_count = vo->in->drop_count;
         pthread_mutex_unlock(&in->lock);
-        wakeup_core(vo); // core can queue new video now
+        wakeup_core(vo);
 
         MP_STATS(vo, "start video-draw");
 
@@ -134,7 +134,7 @@ __attribute__((used)) static bool render_frame(struct vo *vo)
         if (vo->driver->get_vsync)
             vo->driver->get_vsync(vo, &vsync);
 
-        // Make up some crap if presentation feedback is missing.
+
         if (vsync.last_queue_display_time < 0)
             vsync.last_queue_display_time = mp_time_us();
 
@@ -142,26 +142,26 @@ __attribute__((used)) static bool render_frame(struct vo *vo)
 
         pthread_mutex_lock(&in->lock);
         in->dropped_frame = prev_drop_count < vo->in->drop_count;
-        in->rendering = false;
+        in->rendering = 0;
 
         update_vsync_timing_after_swap(vo, &vsync);
     }
 
     if (vo->driver->caps & VO_CAP_NORETAIN) {
         talloc_free(in->current_frame);
-        in->current_frame = NULL;
+        in->current_frame = ((void*)0);
     }
 
     if (in->dropped_frame) {
         MP_STATS(vo, "drop-vo");
     } else {
-        in->request_redraw = false;
+        in->request_redraw = 0;
     }
 
-    pthread_cond_broadcast(&in->wakeup); // for vo_wait_frame()
+    pthread_cond_broadcast(&in->wakeup);
     wakeup_core(vo);
 
-    got_frame = true;
+    got_frame = 1;
 
 done:
     talloc_free(frame);

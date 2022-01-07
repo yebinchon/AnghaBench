@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vdisp_t ;
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISP_E_UNKNOWNNAME ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  get_length (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,unsigned int*) ; 
- int /*<<< orphan*/  jsdisp_get_idx (int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_number (int) ; 
- int /*<<< orphan*/  jsval_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_strict_equal (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_undefined () ; 
- unsigned int max (double,int /*<<< orphan*/ ) ; 
- unsigned int min (double,unsigned int) ; 
- int /*<<< orphan*/  to_integer (int /*<<< orphan*/ *,int /*<<< orphan*/ ,double*) ; 
+
+
+
+typedef int vdisp_t ;
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int jsdisp_t ;
+typedef int WORD ;
+typedef int HRESULT ;
+typedef int BOOL ;
+
+
+ int DISP_E_UNKNOWNNAME ;
+ scalar_t__ FAILED (int ) ;
+ int S_OK ;
+ int TRACE (char*) ;
+ int get_length (int *,int *,int **,unsigned int*) ;
+ int jsdisp_get_idx (int *,unsigned int,int *) ;
+ int jsval_number (int) ;
+ int jsval_release (int ) ;
+ int jsval_strict_equal (int ,int ,int *) ;
+ int jsval_undefined () ;
+ unsigned int max (double,int ) ;
+ unsigned int min (double,unsigned int) ;
+ int to_integer (int *,int ,double*) ;
 
 __attribute__((used)) static HRESULT Array_indexOf(script_ctx_t *ctx, vdisp_t *vthis, WORD flags, unsigned argc, jsval_t *argv,
         jsval_t *r)

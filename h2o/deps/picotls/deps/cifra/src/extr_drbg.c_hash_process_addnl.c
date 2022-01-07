@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  cf_chash_ctx ;
-struct TYPE_3__ {int /*<<< orphan*/  hashsz; int /*<<< orphan*/  (* digest ) (int /*<<< orphan*/ *,int*) ;int /*<<< orphan*/  (* update ) (int /*<<< orphan*/ *,void const*,size_t) ;int /*<<< orphan*/  (* init ) (int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_1__ cf_chash ;
 
-/* Variables and functions */
- int CF_MAXHASH ; 
- int /*<<< orphan*/  add (int*,size_t,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *,int*,int) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ *,int*,size_t) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ *,void const*,size_t) ; 
- int /*<<< orphan*/  stub5 (int /*<<< orphan*/ *,int*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int cf_chash_ctx ;
+struct TYPE_3__ {int hashsz; int (* digest ) (int *,int*) ;int (* update ) (int *,void const*,size_t) ;int (* init ) (int *) ;} ;
+typedef TYPE_1__ cf_chash ;
+
+
+ int CF_MAXHASH ;
+ int add (int*,size_t,int*,int ) ;
+ int stub1 (int *) ;
+ int stub2 (int *,int*,int) ;
+ int stub3 (int *,int*,size_t) ;
+ int stub4 (int *,void const*,size_t) ;
+ int stub5 (int *,int*) ;
 
 __attribute__((used)) static void hash_process_addnl(const cf_chash *H,
                                const void *input, size_t ninput,
@@ -32,7 +32,7 @@ __attribute__((used)) static void hash_process_addnl(const cf_chash *H,
   if (!ninput)
     return;
 
-  /* 2.1. w = Hash(0x02 || V || additional_input) */
+
   uint8_t two = 2;
   uint8_t w[CF_MAXHASH];
   cf_chash_ctx ctx;
@@ -42,6 +42,6 @@ __attribute__((used)) static void hash_process_addnl(const cf_chash *H,
   H->update(&ctx, input, ninput);
   H->digest(&ctx, w);
 
-  /* 2.2. V = (V + w) mod 2 ^ seedlen */
+
   add(V, nV, w, H->hashsz);
 }

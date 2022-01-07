@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct stat {int st_size; } ;
-typedef  int /*<<< orphan*/  sqlite3_vtab_cursor ;
-typedef  int sqlite3_int64 ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-struct TYPE_2__ {int nAlloc; char* zBuf; int nBuf; int /*<<< orphan*/  pStmt; } ;
-typedef  TYPE_1__ fs_cursor ;
+typedef int sqlite3_vtab_cursor ;
+typedef int sqlite3_int64 ;
+typedef int sqlite3_context ;
+struct TYPE_2__ {int nAlloc; char* zBuf; int nBuf; int pStmt; } ;
+typedef TYPE_1__ fs_cursor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  O_RDONLY ; 
- int SQLITE_ERROR ; 
- int SQLITE_IOERR ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  SQLITE_TRANSIENT ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  fstat (int,struct stat*) ; 
- int open (char const*,int /*<<< orphan*/ ) ; 
- scalar_t__ read (int,char*,int) ; 
- char* sqlite3Realloc (char*,int) ; 
- scalar_t__ sqlite3_column_text (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3_column_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_value (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int O_RDONLY ;
+ int SQLITE_ERROR ;
+ int SQLITE_IOERR ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int SQLITE_TRANSIENT ;
+ int assert (int) ;
+ int close (int) ;
+ int fstat (int,struct stat*) ;
+ int open (char const*,int ) ;
+ scalar_t__ read (int,char*,int) ;
+ char* sqlite3Realloc (char*,int) ;
+ scalar_t__ sqlite3_column_text (int ,int) ;
+ int sqlite3_column_value (int ,int ) ;
+ int sqlite3_result_text (int *,char*,int,int ) ;
+ int sqlite3_result_value (int *,int ) ;
 
 __attribute__((used)) static int fsColumn(sqlite3_vtab_cursor *cur, sqlite3_context *ctx, int i){
   fs_cursor *pCur = (fs_cursor*)cur;

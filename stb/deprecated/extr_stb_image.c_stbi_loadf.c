@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- float* epf (char*,char*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- float* stbi_loadf_from_file (int /*<<< orphan*/ *,int*,int*,int*,int) ; 
+
+
+
+typedef int FILE ;
+
+
+ float* epf (char*,char*) ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ float* stbi_loadf_from_file (int *,int*,int*,int*,int) ;
 
 float *stbi_loadf(char const *filename, int *x, int *y, int *comp, int req_comp)
 {

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
+
+
+
+
+typedef int svn_revnum_t ;
+typedef int svn_error_t ;
 struct file_baton {char const* path; struct edit_baton* edit_baton; } ;
-struct edit_baton {int /*<<< orphan*/  txn_root; int /*<<< orphan*/  base_path; } ;
+struct edit_baton {int txn_root; int base_path; } ;
 struct dir_baton {struct edit_baton* edit_baton; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- scalar_t__ SVN_IS_VALID_REVNUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- struct file_baton* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  check_authz (struct edit_baton*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  check_out_of_date (struct edit_baton*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_authz_read ; 
- int /*<<< orphan*/  svn_fs_node_created_rev (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- char* svn_fspath__join (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_node_file ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_relpath_canonicalize (char const*,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ scalar_t__ SVN_IS_VALID_REVNUM (int ) ;
+ int * SVN_NO_ERROR ;
+ struct file_baton* apr_pcalloc (int *,int) ;
+ int check_authz (struct edit_baton*,char const*,int ,int ,int *) ;
+ int check_out_of_date (struct edit_baton*,char const*,int ,int ,int ) ;
+ int svn_authz_read ;
+ int svn_fs_node_created_rev (int *,int ,char const*,int *) ;
+ char* svn_fspath__join (int ,int ,int *) ;
+ int svn_node_file ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ int svn_relpath_canonicalize (char const*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 open_file(const char *path,
@@ -49,28 +49,28 @@ open_file(const char *path,
   full_path = svn_fspath__join(eb->base_path,
                                svn_relpath_canonicalize(path, pool), pool);
 
-  /* Check for read authorization. */
+
   SVN_ERR(check_authz(eb, full_path, eb->txn_root,
                       svn_authz_read, subpool));
 
-  /* Get this node's creation revision (doubles as an existence check). */
+
   SVN_ERR(svn_fs_node_created_rev(&cr_rev, eb->txn_root, full_path,
                                   subpool));
 
-  /* If the node our caller has is an older revision number than the
-     one in our transaction, return an out-of-dateness error. */
+
+
   if (SVN_IS_VALID_REVNUM(base_revision))
     SVN_ERR(check_out_of_date(eb, full_path, svn_node_file,
                               base_revision, cr_rev));
 
-  /* Build a new file baton */
+
   new_fb = apr_pcalloc(pool, sizeof(*new_fb));
   new_fb->edit_baton = eb;
   new_fb->path = full_path;
 
   *file_baton = new_fb;
 
-  /* Destory the work subpool. */
+
   svn_pool_destroy(subpool);
 
   return SVN_NO_ERROR;

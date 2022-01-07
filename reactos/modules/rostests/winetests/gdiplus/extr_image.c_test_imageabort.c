@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpImage ;
-typedef  int /*<<< orphan*/  GpBitmap ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GdipCreateBitmapFromScan0 (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDisposeImage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InvalidParameter ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  PixelFormat24bppRGB ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pGdipImageSetAbort (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int GpStatus ;
+typedef int GpImage ;
+typedef int GpBitmap ;
+
+
+ int GdipCreateBitmapFromScan0 (int,int,int ,int ,int *,int **) ;
+ int GdipDisposeImage (int *) ;
+ int InvalidParameter ;
+ int Ok ;
+ int PixelFormat24bppRGB ;
+ int expect (int ,int ) ;
+ int pGdipImageSetAbort (int *,int *) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_imageabort(void)
 {
@@ -35,14 +35,14 @@ __attribute__((used)) static void test_imageabort(void)
         return;
     }
 
-    bm = NULL;
-    stat = GdipCreateBitmapFromScan0(8, 8, 0, PixelFormat24bppRGB, NULL, &bm);
+    bm = ((void*)0);
+    stat = GdipCreateBitmapFromScan0(8, 8, 0, PixelFormat24bppRGB, ((void*)0), &bm);
     expect(Ok, stat);
 
-    stat = pGdipImageSetAbort(NULL, NULL);
+    stat = pGdipImageSetAbort(((void*)0), ((void*)0));
     expect(InvalidParameter, stat);
 
-    stat = pGdipImageSetAbort((GpImage*)bm, NULL);
+    stat = pGdipImageSetAbort((GpImage*)bm, ((void*)0));
     expect(Ok, stat);
 
     GdipDisposeImage((GpImage*)bm);

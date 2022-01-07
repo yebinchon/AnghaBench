@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {void* instance; scalar_t__ DwmFlush; scalar_t__ DwmIsCompositionEnabled; } ;
 struct TYPE_7__ {void* instance; scalar_t__ ChangeWindowMessageFilterEx; scalar_t__ SetProcessDPIAware; } ;
 struct TYPE_6__ {scalar_t__ timeGetTime; scalar_t__ joyGetPosEx; scalar_t__ joyGetPos; scalar_t__ joyGetDevCaps; void* instance; } ;
 struct TYPE_9__ {TYPE_3__ dwmapi; TYPE_2__ user32; TYPE_1__ winmm; } ;
 struct TYPE_10__ {TYPE_4__ win32; } ;
-typedef  scalar_t__ TIMEGETTIME_T ;
-typedef  scalar_t__ SETPROCESSDPIAWARE_T ;
-typedef  scalar_t__ JOYGETPOS_T ;
-typedef  scalar_t__ JOYGETPOSEX_T ;
-typedef  scalar_t__ JOYGETDEVCAPS_T ;
-typedef  int /*<<< orphan*/  GLboolean ;
-typedef  scalar_t__ DWMISCOMPOSITIONENABLED_T ;
-typedef  scalar_t__ DWMFLUSH_T ;
-typedef  scalar_t__ CHANGEWINDOWMESSAGEFILTEREX_T ;
+typedef scalar_t__ TIMEGETTIME_T ;
+typedef scalar_t__ SETPROCESSDPIAWARE_T ;
+typedef scalar_t__ JOYGETPOS_T ;
+typedef scalar_t__ JOYGETPOSEX_T ;
+typedef scalar_t__ JOYGETDEVCAPS_T ;
+typedef int GLboolean ;
+typedef scalar_t__ DWMISCOMPOSITIONENABLED_T ;
+typedef scalar_t__ DWMFLUSH_T ;
+typedef scalar_t__ CHANGEWINDOWMESSAGEFILTEREX_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_PLATFORM_ERROR ; 
- int /*<<< orphan*/  GL_FALSE ; 
- int /*<<< orphan*/  GL_TRUE ; 
- scalar_t__ GetProcAddress (void*,char*) ; 
- void* LoadLibraryW (char*) ; 
- TYPE_5__ _glfw ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*) ; 
+
+ int GLFW_PLATFORM_ERROR ;
+ int GL_FALSE ;
+ int GL_TRUE ;
+ scalar_t__ GetProcAddress (void*,char*) ;
+ void* LoadLibraryW (char*) ;
+ TYPE_5__ _glfw ;
+ int _glfwInputError (int ,char*) ;
 
 __attribute__((used)) static GLboolean initLibraries(void)
 {

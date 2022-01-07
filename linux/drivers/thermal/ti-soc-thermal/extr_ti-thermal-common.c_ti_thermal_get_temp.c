@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ti_thermal_data {int dummy; } ;
 struct thermal_zone_device {struct ti_thermal_data* devdata; } ;
 
-/* Variables and functions */
- int __ti_thermal_get_temp (struct ti_thermal_data*,int*) ; 
+
+ int __ti_thermal_get_temp (struct ti_thermal_data*,int*) ;
 
 __attribute__((used)) static inline int ti_thermal_get_temp(struct thermal_zone_device *thermal,
-				      int *temp)
+          int *temp)
 {
-	struct ti_thermal_data *data = thermal->devdata;
+ struct ti_thermal_data *data = thermal->devdata;
 
-	return __ti_thermal_get_temp(data, temp);
+ return __ti_thermal_get_temp(data, temp);
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int TEST_STATUS ;
 
-/* Variables and functions */
-#define  FAILED 130 
- int /*<<< orphan*/  OUTPUT_Line (char*) ; 
-#define  PASSED 129 
-#define  SKIPPED 128 
+
+
+
+typedef int TEST_STATUS ;
+
+
+
+ int OUTPUT_Line (char*) ;
+
+
 
 void OUTPUT_Result(TEST_STATUS status)
 {
     switch (status)
     {
-    case PASSED:  OUTPUT_Line("==> PASSED"); break;
-    case FAILED:  OUTPUT_Line("*** FAILED"); break;
-    case SKIPPED: OUTPUT_Line("==> SKIPPED"); break;
+    case 129: OUTPUT_Line("==> PASSED"); break;
+    case 130: OUTPUT_Line("*** FAILED"); break;
+    case 128: OUTPUT_Line("==> SKIPPED"); break;
     }
     OUTPUT_Line("");
 }

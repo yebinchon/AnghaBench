@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-struct umac_ctx {int /*<<< orphan*/  hash; int /*<<< orphan*/  pdf; struct umac_ctx* free_ptr; } ;
-typedef  int ptrdiff_t ;
-typedef  int /*<<< orphan*/  prf_key ;
-typedef  int /*<<< orphan*/  aes_int_key ;
 
-/* Variables and functions */
- int ALLOC_BOUNDARY ; 
- int /*<<< orphan*/  aes_key_setup (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  explicit_bzero (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pdf_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uhash_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct umac_ctx* xcalloc (int,int) ; 
+
+
+
+typedef int u_char ;
+struct umac_ctx {int hash; int pdf; struct umac_ctx* free_ptr; } ;
+typedef int ptrdiff_t ;
+typedef int prf_key ;
+typedef int aes_int_key ;
+
+
+ int ALLOC_BOUNDARY ;
+ int aes_key_setup (int const*,int ) ;
+ int explicit_bzero (int ,int) ;
+ int pdf_init (int *,int ) ;
+ int uhash_init (int *,int ) ;
+ struct umac_ctx* xcalloc (int,int) ;
 
 struct umac_ctx *umac_new(const u_char key[])
-/* Dynamically allocate a umac_ctx struct, initialize variables,
- * generate subkeys from key. Align to 16-byte boundary.
- */
+
+
+
 {
     struct umac_ctx *ctx, *octx;
     size_t bytes_to_add;

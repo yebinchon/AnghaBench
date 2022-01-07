@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned long long crypto_aead_chacha20poly1305_ietf_ABYTES ; 
- unsigned long long crypto_aead_chacha20poly1305_ietf_MESSAGEBYTES_MAX ; 
- int crypto_aead_chacha20poly1305_ietf_encrypt_detached (unsigned char*,unsigned char*,int /*<<< orphan*/ *,unsigned char const*,unsigned long long,unsigned char const*,unsigned long long,unsigned char const*,unsigned char const*,unsigned char const*) ; 
- int /*<<< orphan*/  sodium_misuse () ; 
+ unsigned long long crypto_aead_chacha20poly1305_ietf_ABYTES ;
+ unsigned long long crypto_aead_chacha20poly1305_ietf_MESSAGEBYTES_MAX ;
+ int crypto_aead_chacha20poly1305_ietf_encrypt_detached (unsigned char*,unsigned char*,int *,unsigned char const*,unsigned long long,unsigned char const*,unsigned long long,unsigned char const*,unsigned char const*,unsigned char const*) ;
+ int sodium_misuse () ;
 
 int
 crypto_aead_chacha20poly1305_ietf_encrypt(unsigned char *c,
@@ -29,17 +21,17 @@ crypto_aead_chacha20poly1305_ietf_encrypt(unsigned char *c,
                                           const unsigned char *k)
 {
     unsigned long long clen = 0ULL;
-    int                ret;
+    int ret;
 
     if (mlen > crypto_aead_chacha20poly1305_ietf_MESSAGEBYTES_MAX) {
         sodium_misuse();
     }
     ret = crypto_aead_chacha20poly1305_ietf_encrypt_detached(c,
-                                                             c + mlen, NULL,
+                                                             c + mlen, ((void*)0),
                                                              m, mlen,
                                                              ad, adlen,
                                                              nsec, npub, k);
-    if (clen_p != NULL) {
+    if (clen_p != ((void*)0)) {
         if (ret == 0) {
             clen = mlen + crypto_aead_chacha20poly1305_ietf_ABYTES;
         }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  handlers ;
-struct TYPE_4__ {int /*<<< orphan*/  joinRequest; int /*<<< orphan*/  spectateGame; int /*<<< orphan*/  joinGame; int /*<<< orphan*/  errored; int /*<<< orphan*/  disconnected; int /*<<< orphan*/  ready; } ;
-typedef  TYPE_1__ DiscordEventHandlers ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APPLICATION_ID ; 
- int /*<<< orphan*/  Discord_Initialize (int /*<<< orphan*/ ,TYPE_1__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  handleDiscordDisconnected ; 
- int /*<<< orphan*/  handleDiscordError ; 
- int /*<<< orphan*/  handleDiscordJoin ; 
- int /*<<< orphan*/  handleDiscordJoinRequest ; 
- int /*<<< orphan*/  handleDiscordReady ; 
- int /*<<< orphan*/  handleDiscordSpectate ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int handlers ;
+struct TYPE_4__ {int joinRequest; int spectateGame; int joinGame; int errored; int disconnected; int ready; } ;
+typedef TYPE_1__ DiscordEventHandlers ;
+
+
+ int APPLICATION_ID ;
+ int Discord_Initialize (int ,TYPE_1__*,int,int *) ;
+ int handleDiscordDisconnected ;
+ int handleDiscordError ;
+ int handleDiscordJoin ;
+ int handleDiscordJoinRequest ;
+ int handleDiscordReady ;
+ int handleDiscordSpectate ;
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static void discordInit()
 {
@@ -36,5 +36,5 @@ __attribute__((used)) static void discordInit()
     handlers.joinGame = handleDiscordJoin;
     handlers.spectateGame = handleDiscordSpectate;
     handlers.joinRequest = handleDiscordJoinRequest;
-    Discord_Initialize(APPLICATION_ID, &handlers, 1, NULL);
+    Discord_Initialize(APPLICATION_ID, &handlers, 1, ((void*)0));
 }

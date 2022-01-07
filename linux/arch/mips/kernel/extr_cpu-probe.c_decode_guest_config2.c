@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  conf; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int conf; } ;
 struct cpuinfo_mips {TYPE_1__ guest; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIT (int) ; 
- unsigned int MIPS_CONF_M ; 
- int /*<<< orphan*/  probe_gc0_config (unsigned int,unsigned int,unsigned int) ; 
+
+ int BIT (int) ;
+ unsigned int MIPS_CONF_M ;
+ int probe_gc0_config (unsigned int,unsigned int,unsigned int) ;
 
 __attribute__((used)) static inline unsigned int decode_guest_config2(struct cpuinfo_mips *c)
 {
-	unsigned int config2;
+ unsigned int config2;
 
-	probe_gc0_config(config2, config2, MIPS_CONF_M);
+ probe_gc0_config(config2, config2, MIPS_CONF_M);
 
-	if (config2 & MIPS_CONF_M)
-		c->guest.conf |= BIT(3);
-	return config2 & MIPS_CONF_M;
+ if (config2 & MIPS_CONF_M)
+  c->guest.conf |= BIT(3);
+ return config2 & MIPS_CONF_M;
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * paddrs_ring_64; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * paddrs_ring_64; } ;
 struct ath10k_htt {TYPE_1__ rx_ring; } ;
-typedef  int /*<<< orphan*/  dma_addr_t ;
+typedef int dma_addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __cpu_to_le64 (int /*<<< orphan*/ ) ; 
+
+ int __cpu_to_le64 (int ) ;
 
 __attribute__((used)) static void ath10k_htt_set_paddrs_ring_64(struct ath10k_htt *htt,
-					  dma_addr_t paddr, int idx)
+       dma_addr_t paddr, int idx)
 {
-	htt->rx_ring.paddrs_ring_64[idx] = __cpu_to_le64(paddr);
+ htt->rx_ring.paddrs_ring_64[idx] = __cpu_to_le64(paddr);
 }

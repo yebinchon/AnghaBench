@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  settings; int /*<<< orphan*/  builder; } ;
-typedef  TYPE_1__ signal_user_data_t ;
-typedef  int /*<<< orphan*/  GtkWidget ;
-typedef  int /*<<< orphan*/  GtkTreeView ;
-typedef  int /*<<< orphan*/  GtkTreeSelection ;
-typedef  int /*<<< orphan*/  GtkTreePath ;
-typedef  int /*<<< orphan*/  GtkTreeModel ;
-typedef  int /*<<< orphan*/  GtkTreeIter ;
-typedef  scalar_t__ GtkResponseType ;
-typedef  int /*<<< orphan*/  GhbValue ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * GHB_WIDGET (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  GTK_DIALOG (int /*<<< orphan*/ *) ; 
- scalar_t__ GTK_RESPONSE_OK ; 
- int /*<<< orphan*/  ghb_dict_set (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ghb_get_job_settings (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ghb_get_job_subtitle_settings (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ghb_update_summary_info (TYPE_1__*) ; 
- int /*<<< orphan*/ * ghb_value_dup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ghb_value_free (int /*<<< orphan*/ **) ; 
- scalar_t__ gtk_dialog_run (int /*<<< orphan*/ ) ; 
- scalar_t__ gtk_tree_model_get_iter (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int gtk_tree_path_get_depth (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_tree_selection_select_iter (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * gtk_tree_view_get_model (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * gtk_tree_view_get_selection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_widget_hide (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * subtitle_get_selected_settings (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  subtitle_refresh_list_ui (TYPE_1__*) ; 
- int /*<<< orphan*/  subtitle_update_dialog_widgets (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int settings; int builder; } ;
+typedef TYPE_1__ signal_user_data_t ;
+typedef int GtkWidget ;
+typedef int GtkTreeView ;
+typedef int GtkTreeSelection ;
+typedef int GtkTreePath ;
+typedef int GtkTreeModel ;
+typedef int GtkTreeIter ;
+typedef scalar_t__ GtkResponseType ;
+typedef int GhbValue ;
+
+
+ int * GHB_WIDGET (int ,char*) ;
+ int GTK_DIALOG (int *) ;
+ scalar_t__ GTK_RESPONSE_OK ;
+ int ghb_dict_set (int ,char*,int *) ;
+ int ghb_get_job_settings (int ) ;
+ int ghb_get_job_subtitle_settings (int ) ;
+ int ghb_update_summary_info (TYPE_1__*) ;
+ int * ghb_value_dup (int ) ;
+ int ghb_value_free (int **) ;
+ scalar_t__ gtk_dialog_run (int ) ;
+ scalar_t__ gtk_tree_model_get_iter (int *,int *,int *) ;
+ int gtk_tree_path_get_depth (int *) ;
+ int gtk_tree_selection_select_iter (int *,int *) ;
+ int * gtk_tree_view_get_model (int *) ;
+ int * gtk_tree_view_get_selection (int *) ;
+ int gtk_widget_hide (int *) ;
+ int * subtitle_get_selected_settings (TYPE_1__*,int *) ;
+ int subtitle_refresh_list_ui (TYPE_1__*) ;
+ int subtitle_update_dialog_widgets (TYPE_1__*,int *) ;
 
 __attribute__((used)) static void
 subtitle_edit(GtkTreeView *tv, GtkTreePath *tp, signal_user_data_t *ud)
@@ -59,10 +59,10 @@ subtitle_edit(GtkTreeView *tv, GtkTreePath *tp, signal_user_data_t *ud)
 
         gtk_tree_selection_select_iter(ts, &ti);
 
-        // Back up settings in case we need to revert.
+
         backup = ghb_value_dup(ghb_get_job_subtitle_settings(ud->settings));
 
-        // Pop up the edit dialog
+
         GtkResponseType response;
         GtkWidget *dialog = GHB_WIDGET(ud->builder, "subtitle_dialog");
         response = gtk_dialog_run(GTK_DIALOG(dialog));
@@ -71,8 +71,8 @@ subtitle_edit(GtkTreeView *tv, GtkTreePath *tp, signal_user_data_t *ud)
         {
             ghb_dict_set(ghb_get_job_settings(ud->settings),
                          "Subtitle", backup);
-            subsettings = subtitle_get_selected_settings(ud, NULL);
-            if (subsettings != NULL)
+            subsettings = subtitle_get_selected_settings(ud, ((void*)0));
+            if (subsettings != ((void*)0))
             {
                 subtitle_update_dialog_widgets(ud, subsettings);
             }

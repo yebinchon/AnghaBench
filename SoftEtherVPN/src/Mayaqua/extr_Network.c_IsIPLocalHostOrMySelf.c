@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  int /*<<< orphan*/  IP ;
 
-/* Variables and functions */
- scalar_t__ CmpIpAddr (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeHostIPAddressList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * GetHostIPAddressList () ; 
- scalar_t__ IsLocalHostIP4 (int /*<<< orphan*/ *) ; 
- scalar_t__ IsLocalHostIP6 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int LIST ;
+typedef int IP ;
+
+
+ scalar_t__ CmpIpAddr (int *,int *) ;
+ int FreeHostIPAddressList (int *) ;
+ int * GetHostIPAddressList () ;
+ scalar_t__ IsLocalHostIP4 (int *) ;
+ scalar_t__ IsLocalHostIP6 (int *) ;
+ int * LIST_DATA (int *,scalar_t__) ;
+ scalar_t__ LIST_NUM (int *) ;
 
 bool IsIPLocalHostOrMySelf(IP *ip)
 {
-	LIST *o;
-	bool ret = false;
-	UINT i;
-	// Validate arguments
-	if (ip == NULL)
-	{
-		return false;
-	}
+ LIST *o;
+ bool ret = 0;
+ UINT i;
 
-	o = GetHostIPAddressList();
-	if (o == NULL)
-	{
-		return false;
-	}
+ if (ip == ((void*)0))
+ {
+  return 0;
+ }
 
-	for (i = 0;i < LIST_NUM(o);i++)
-	{
-		IP *p = LIST_DATA(o, i);
+ o = GetHostIPAddressList();
+ if (o == ((void*)0))
+ {
+  return 0;
+ }
 
-		if (CmpIpAddr(p, ip) == 0)
-		{
-			ret = true;
+ for (i = 0;i < LIST_NUM(o);i++)
+ {
+  IP *p = LIST_DATA(o, i);
 
-			break;
-		}
-	}
+  if (CmpIpAddr(p, ip) == 0)
+  {
+   ret = 1;
 
-	FreeHostIPAddressList(o);
+   break;
+  }
+ }
 
-	if (IsLocalHostIP4(ip) || IsLocalHostIP6(ip))
-	{
-		ret = true;
-	}
+ FreeHostIPAddressList(o);
 
-	return ret;
+ if (IsLocalHostIP4(ip) || IsLocalHostIP6(ip))
+ {
+  ret = 1;
+ }
+
+ return ret;
 }

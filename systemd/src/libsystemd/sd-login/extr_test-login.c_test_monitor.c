@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ usec_t ;
-typedef  scalar_t__ uint64_t ;
-struct pollfd {int /*<<< orphan*/  events; int /*<<< orphan*/  fd; } ;
-typedef  int /*<<< orphan*/  sd_login_monitor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- int /*<<< orphan*/  assert_se (int) ; 
- scalar_t__ now (int /*<<< orphan*/ ) ; 
- int poll (struct pollfd*,int,int) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  sd_login_monitor_flush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sd_login_monitor_get_events (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sd_login_monitor_get_fd (int /*<<< orphan*/ *) ; 
- scalar_t__ sd_login_monitor_get_timeout (int /*<<< orphan*/ *,scalar_t__*) ; 
- int sd_login_monitor_new (char*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  sd_login_monitor_unref (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ usec_t ;
+typedef scalar_t__ uint64_t ;
+struct pollfd {int events; int fd; } ;
+typedef int sd_login_monitor ;
+
+
+ int CLOCK_MONOTONIC ;
+ int assert_se (int) ;
+ scalar_t__ now (int ) ;
+ int poll (struct pollfd*,int,int) ;
+ int printf (char*) ;
+ int sd_login_monitor_flush (int *) ;
+ int sd_login_monitor_get_events (int *) ;
+ int sd_login_monitor_get_fd (int *) ;
+ scalar_t__ sd_login_monitor_get_timeout (int *,scalar_t__*) ;
+ int sd_login_monitor_new (char*,int **) ;
+ int sd_login_monitor_unref (int *) ;
 
 __attribute__((used)) static void test_monitor(void) {
-        sd_login_monitor *m = NULL;
+        sd_login_monitor *m = ((void*)0);
         unsigned n;
         int r;
 

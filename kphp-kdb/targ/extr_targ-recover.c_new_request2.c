@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  Out; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  flush_connection_output (struct connection*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int next_ad_id ; 
- int sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ *,char*,int) ; 
+
+
+
+struct connection {int Out; } ;
+
+
+ int flush_connection_output (struct connection*) ;
+ int fprintf (int ,char*,int) ;
+ int next_ad_id ;
+ int sprintf (char*,char*,int) ;
+ int stderr ;
+ int verbosity ;
+ int write_out (int *,char*,int) ;
 
 void new_request2 (struct connection *c) {
   static char buff[256];

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUGASSERT (int) ; 
- int /*<<< orphan*/  ENOSPC ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  msnprintf (char*,int,char*,int,int,int,int) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- size_t strlen (char*) ; 
+
+
+
+typedef int tmp ;
+
+
+ int DEBUGASSERT (int) ;
+ int ENOSPC ;
+ int errno ;
+ int msnprintf (char*,int,char*,int,int,int,int) ;
+ int strcpy (char*,char*) ;
+ size_t strlen (char*) ;
 
 __attribute__((used)) static char *inet_ntop4 (const unsigned char *src, char *dst, size_t size)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static char *inet_ntop4 (const unsigned char *src, char *d
   len = strlen(tmp);
   if(len == 0 || len >= size) {
     errno = ENOSPC;
-    return (NULL);
+    return (((void*)0));
   }
   strcpy(dst, tmp);
   return dst;

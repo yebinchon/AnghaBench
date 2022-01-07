@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char* png_const_charp ;
-typedef  scalar_t__** png_bytepp ;
-typedef  scalar_t__* png_bytep ;
-typedef  scalar_t__ png_byte ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int EOF ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ ferror (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  free (scalar_t__*) ; 
- int getc (int /*<<< orphan*/ *) ; 
- scalar_t__* malloc (size_t) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  putc (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rewind (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/ * tmpfile () ; 
+
+
+
+typedef char* png_const_charp ;
+typedef scalar_t__** png_bytepp ;
+typedef scalar_t__* png_bytep ;
+typedef scalar_t__ png_byte ;
+typedef int FILE ;
+
+
+ int EOF ;
+ int exit (int) ;
+ int fclose (int *) ;
+ scalar_t__ ferror (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int free (scalar_t__*) ;
+ int getc (int *) ;
+ scalar_t__* malloc (size_t) ;
+ int perror (char*) ;
+ int putc (int,int *) ;
+ int rewind (int *) ;
+ int stderr ;
+ int * tmpfile () ;
 
 __attribute__((used)) static size_t
 load_file(png_const_charp name, png_bytepp result)
 {
    FILE *fp = tmpfile();
 
-   if (fp != NULL)
+   if (fp != ((void*)0))
    {
       FILE *ip = fopen(name, "rb");
 
-      if (ip != NULL)
+      if (ip != ((void*)0))
       {
          size_t total = 0;
          int ch;
@@ -77,12 +77,12 @@ load_file(png_const_charp name, png_bytepp result)
 
                if (total > 0)
                {
-                  /* Round up to a multiple of 4 here to allow an iCCP profile
-                   * to be padded to a 4x boundary.
-                   */
+
+
+
                   png_bytep data = malloc((total+3)&~3);
 
-                  if (data != NULL)
+                  if (data != ((void*)0))
                   {
                      size_t new_size = 0;
 

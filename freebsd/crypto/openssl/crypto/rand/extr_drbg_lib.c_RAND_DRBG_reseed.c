@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {scalar_t__ state; size_t max_adinlen; int reseed_next_counter; size_t (* get_entropy ) (TYPE_2__*,unsigned char**,int /*<<< orphan*/ ,size_t,size_t,int) ;size_t min_entropylen; size_t max_entropylen; int reseed_gen_counter; int /*<<< orphan*/  (* cleanup_entropy ) (TYPE_2__*,unsigned char*,size_t) ;int /*<<< orphan*/  reseed_prop_counter; int /*<<< orphan*/  reseed_time; TYPE_1__* meth; int /*<<< orphan*/  strength; } ;
-struct TYPE_7__ {int /*<<< orphan*/  (* reseed ) (TYPE_2__*,unsigned char*,size_t,unsigned char const*,size_t) ;} ;
-typedef  TYPE_2__ RAND_DRBG ;
 
-/* Variables and functions */
- scalar_t__ DRBG_ERROR ; 
- scalar_t__ DRBG_READY ; 
- scalar_t__ DRBG_UNINITIALISED ; 
- int /*<<< orphan*/  RAND_F_RAND_DRBG_RESEED ; 
- int /*<<< orphan*/  RAND_R_ADDITIONAL_INPUT_TOO_LONG ; 
- int /*<<< orphan*/  RAND_R_ERROR_RETRIEVING_ENTROPY ; 
- int /*<<< orphan*/  RAND_R_IN_ERROR_STATE ; 
- int /*<<< orphan*/  RAND_R_NOT_INSTANTIATED ; 
- int /*<<< orphan*/  RANDerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t stub1 (TYPE_2__*,unsigned char**,int /*<<< orphan*/ ,size_t,size_t,int) ; 
- int /*<<< orphan*/  stub2 (TYPE_2__*,unsigned char*,size_t,unsigned char const*,size_t) ; 
- int /*<<< orphan*/  stub3 (TYPE_2__*,unsigned char*,size_t) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
- int tsan_load (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tsan_store (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {scalar_t__ state; size_t max_adinlen; int reseed_next_counter; size_t (* get_entropy ) (TYPE_2__*,unsigned char**,int ,size_t,size_t,int) ;size_t min_entropylen; size_t max_entropylen; int reseed_gen_counter; int (* cleanup_entropy ) (TYPE_2__*,unsigned char*,size_t) ;int reseed_prop_counter; int reseed_time; TYPE_1__* meth; int strength; } ;
+struct TYPE_7__ {int (* reseed ) (TYPE_2__*,unsigned char*,size_t,unsigned char const*,size_t) ;} ;
+typedef TYPE_2__ RAND_DRBG ;
+
+
+ scalar_t__ DRBG_ERROR ;
+ scalar_t__ DRBG_READY ;
+ scalar_t__ DRBG_UNINITIALISED ;
+ int RAND_F_RAND_DRBG_RESEED ;
+ int RAND_R_ADDITIONAL_INPUT_TOO_LONG ;
+ int RAND_R_ERROR_RETRIEVING_ENTROPY ;
+ int RAND_R_IN_ERROR_STATE ;
+ int RAND_R_NOT_INSTANTIATED ;
+ int RANDerr (int ,int ) ;
+ size_t stub1 (TYPE_2__*,unsigned char**,int ,size_t,size_t,int) ;
+ int stub2 (TYPE_2__*,unsigned char*,size_t,unsigned char const*,size_t) ;
+ int stub3 (TYPE_2__*,unsigned char*,size_t) ;
+ int time (int *) ;
+ int tsan_load (int *) ;
+ int tsan_store (int *,int) ;
 
 int RAND_DRBG_reseed(RAND_DRBG *drbg,
                      const unsigned char *adin, size_t adinlen,
                      int prediction_resistance)
 {
-    unsigned char *entropy = NULL;
+    unsigned char *entropy = ((void*)0);
     size_t entropylen = 0;
 
     if (drbg->state == DRBG_ERROR) {
@@ -49,7 +49,7 @@ int RAND_DRBG_reseed(RAND_DRBG *drbg,
         return 0;
     }
 
-    if (adin == NULL) {
+    if (adin == ((void*)0)) {
         adinlen = 0;
     } else if (adinlen > drbg->max_adinlen) {
         RANDerr(RAND_F_RAND_DRBG_RESEED, RAND_R_ADDITIONAL_INPUT_TOO_LONG);
@@ -65,7 +65,7 @@ int RAND_DRBG_reseed(RAND_DRBG *drbg,
             drbg->reseed_next_counter = 1;
     }
 
-    if (drbg->get_entropy != NULL)
+    if (drbg->get_entropy != ((void*)0))
         entropylen = drbg->get_entropy(drbg, &entropy, drbg->strength,
                                        drbg->min_entropylen,
                                        drbg->max_entropylen,
@@ -81,11 +81,11 @@ int RAND_DRBG_reseed(RAND_DRBG *drbg,
 
     drbg->state = DRBG_READY;
     drbg->reseed_gen_counter = 1;
-    drbg->reseed_time = time(NULL);
+    drbg->reseed_time = time(((void*)0));
     tsan_store(&drbg->reseed_prop_counter, drbg->reseed_next_counter);
 
  end:
-    if (entropy != NULL && drbg->cleanup_entropy != NULL)
+    if (entropy != ((void*)0) && drbg->cleanup_entropy != ((void*)0))
         drbg->cleanup_entropy(drbg, entropy, entropylen);
     if (drbg->state == DRBG_READY)
         return 1;

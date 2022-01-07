@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  audio; } ;
-struct TYPE_9__ {int /*<<< orphan*/  audio; } ;
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int audio; } ;
+struct TYPE_9__ {int audio; } ;
 struct TYPE_11__ {TYPE_4__* p_sys; TYPE_2__ fmt_out; TYPE_1__ fmt_in; } ;
-typedef  TYPE_3__ filter_t ;
+typedef TYPE_3__ filter_t ;
 struct TYPE_12__ {int* channel_map; } ;
-typedef  TYPE_4__ filter_sys_t ;
+typedef TYPE_4__ filter_sys_t ;
 struct TYPE_13__ {size_t i_nb_samples; unsigned int i_buffer; scalar_t__ p_buffer; } ;
-typedef  TYPE_5__ block_t ;
+typedef TYPE_5__ block_t ;
 
-/* Variables and functions */
- unsigned int aout_FormatNbChannels (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcpy (float*,float*,unsigned int) ; 
+
+ unsigned int aout_FormatNbChannels (int *) ;
+ int assert (int) ;
+ int memcpy (float*,float*,unsigned int) ;
 
 __attribute__((used)) static block_t *Downmix( filter_t *p_filter, block_t *p_buf )
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static block_t *Downmix( filter_t *p_filter, block_t *p_bu
     float *p_dest = (float *)p_buf->p_buffer;
     const float *p_src = p_dest;
     const int *channel_map = p_sys->channel_map;
-    /* Use an extra buffer to avoid overlapping */
+
     float buffer[i_output_nb];
 
     for( size_t i = 0; i < p_buf->i_nb_samples; i++ )

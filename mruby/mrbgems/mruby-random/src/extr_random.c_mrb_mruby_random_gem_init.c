@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct RClass {int dummy; } ;
-typedef  int /*<<< orphan*/  rand_state ;
-struct TYPE_9__ {int /*<<< orphan*/  object_class; struct RClass* kernel_module; struct RClass* array_class; } ;
-typedef  TYPE_1__ mrb_state ;
+typedef int rand_state ;
+struct TYPE_9__ {int object_class; struct RClass* kernel_module; struct RClass* array_class; } ;
+typedef TYPE_1__ mrb_state ;
 
-/* Variables and functions */
- int ISTRUCT_DATA_SIZE ; 
- int /*<<< orphan*/  MRB_ARGS_OPT (int) ; 
- int /*<<< orphan*/  MRB_SET_INSTANCE_TT (struct RClass*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MRB_TT_ISTRUCT ; 
- int /*<<< orphan*/  mrb_ary_sample ; 
- int /*<<< orphan*/  mrb_ary_shuffle ; 
- int /*<<< orphan*/  mrb_ary_shuffle_bang ; 
- int /*<<< orphan*/  mrb_assert (int) ; 
- int /*<<< orphan*/  mrb_const_set (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct RClass* mrb_define_class (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_define_class_method (TYPE_1__*,struct RClass*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_define_method (TYPE_1__*,struct RClass*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_intern_lit (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  mrb_obj_new (TYPE_1__*,struct RClass*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_obj_value (struct RClass*) ; 
- int /*<<< orphan*/  random_f_rand ; 
- int /*<<< orphan*/  random_f_srand ; 
- int /*<<< orphan*/  random_m_init ; 
- int /*<<< orphan*/  random_m_rand ; 
- int /*<<< orphan*/  random_m_srand ; 
+
+ int ISTRUCT_DATA_SIZE ;
+ int MRB_ARGS_OPT (int) ;
+ int MRB_SET_INSTANCE_TT (struct RClass*,int ) ;
+ int MRB_TT_ISTRUCT ;
+ int mrb_ary_sample ;
+ int mrb_ary_shuffle ;
+ int mrb_ary_shuffle_bang ;
+ int mrb_assert (int) ;
+ int mrb_const_set (TYPE_1__*,int ,int ,int ) ;
+ struct RClass* mrb_define_class (TYPE_1__*,char*,int ) ;
+ int mrb_define_class_method (TYPE_1__*,struct RClass*,char*,int ,int ) ;
+ int mrb_define_method (TYPE_1__*,struct RClass*,char*,int ,int ) ;
+ int mrb_intern_lit (TYPE_1__*,char*) ;
+ int mrb_obj_new (TYPE_1__*,struct RClass*,int ,int *) ;
+ int mrb_obj_value (struct RClass*) ;
+ int random_f_rand ;
+ int random_f_srand ;
+ int random_m_init ;
+ int random_m_rand ;
+ int random_m_srand ;
 
 void mrb_mruby_random_gem_init(mrb_state *mrb)
 {
@@ -62,5 +62,5 @@ void mrb_mruby_random_gem_init(mrb_state *mrb)
   mrb_define_method(mrb, array, "sample", mrb_ary_sample, MRB_ARGS_OPT(2));
 
   mrb_const_set(mrb, mrb_obj_value(random), mrb_intern_lit(mrb, "DEFAULT"),
-          mrb_obj_new(mrb, random, 0, NULL));
+          mrb_obj_new(mrb, random, 0, ((void*)0)));
 }

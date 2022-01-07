@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vmw_validation_context {int /*<<< orphan*/  bo_list; int /*<<< orphan*/  ticket; } ;
 
-/* Variables and functions */
- int ttm_eu_reserve_buffers (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int) ; 
+
+
+
+struct vmw_validation_context {int bo_list; int ticket; } ;
+
+
+ int ttm_eu_reserve_buffers (int *,int *,int,int *,int) ;
 
 __attribute__((used)) static inline int
 vmw_validation_bo_reserve(struct vmw_validation_context *ctx,
-			  bool intr)
+     bool intr)
 {
-	return ttm_eu_reserve_buffers(&ctx->ticket, &ctx->bo_list, intr,
-				      NULL, true);
+ return ttm_eu_reserve_buffers(&ctx->ticket, &ctx->bo_list, intr,
+          ((void*)0), 1);
 }

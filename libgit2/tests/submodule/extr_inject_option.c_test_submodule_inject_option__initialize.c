@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  g_repo ; 
- int /*<<< orphan*/  setup_fixture_submodule_simple () ; 
+ int g_repo ;
+ int setup_fixture_submodule_simple () ;
 
 void test_submodule_inject_option__initialize(void)
 {
-	g_repo = setup_fixture_submodule_simple();
+ g_repo = setup_fixture_submodule_simple();
 }

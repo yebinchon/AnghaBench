@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __CHECK_APP_SMDR ; 
- int /*<<< orphan*/  __cvmx_shmem_smdr_display_dscptr ; 
- TYPE_1__* __smdr ; 
- int /*<<< orphan*/  __smdr_iterator (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cvmx_dprintf (char*) ; 
- int /*<<< orphan*/  cvmx_spinlock_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cvmx_spinlock_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int lock; } ;
+
+
+ int __CHECK_APP_SMDR ;
+ int __cvmx_shmem_smdr_display_dscptr ;
+ TYPE_1__* __smdr ;
+ int __smdr_iterator (int ,int *) ;
+ int cvmx_dprintf (char*) ;
+ int cvmx_spinlock_lock (int *) ;
+ int cvmx_spinlock_unlock (int *) ;
 
 void cvmx_shmem_show(void)
 {
     __CHECK_APP_SMDR;
-
-#ifdef DEBUG
-    cvmx_dprintf("SMDR descriptor list: \n");
-    cvmx_spinlock_lock(&__smdr->lock);
-    __smdr_iterator(__cvmx_shmem_smdr_display_dscptr, NULL);
-    cvmx_spinlock_unlock(&__smdr->lock);
-    cvmx_dprintf("\n\n");
-#endif
 }

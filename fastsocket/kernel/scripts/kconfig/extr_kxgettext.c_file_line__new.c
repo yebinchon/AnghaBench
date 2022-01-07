@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct file_line {char* file; int lineno; int /*<<< orphan*/ * next; } ;
 
-/* Variables and functions */
- struct file_line* malloc (int) ; 
+
+
+
+struct file_line {char* file; int lineno; int * next; } ;
+
+
+ struct file_line* malloc (int) ;
 
 __attribute__((used)) static struct file_line *file_line__new(char *file, int lineno)
 {
-	struct file_line *self = malloc(sizeof(*self));
+ struct file_line *self = malloc(sizeof(*self));
 
-	if (self == NULL)
-		goto out;
+ if (self == ((void*)0))
+  goto out;
 
-	self->file   = file;
-	self->lineno = lineno;
-	self->next   = NULL;
+ self->file = file;
+ self->lineno = lineno;
+ self->next = ((void*)0);
 out:
-	return self;
+ return self;
 }

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  secp256k1_scalar ;
-typedef  int /*<<< orphan*/  secp256k1_gej ;
-typedef  int /*<<< orphan*/  secp256k1_ge ;
-struct TYPE_3__ {int /*<<< orphan*/ * expected_output; int /*<<< orphan*/ * output; int /*<<< orphan*/ * seckeys; int /*<<< orphan*/ * pubkeys; int /*<<< orphan*/ * scalars; int /*<<< orphan*/  ctx; int /*<<< orphan*/ * scratch; void* ecmult_multi; } ;
-typedef  TYPE_1__ bench_data ;
 
-/* Variables and functions */
- int ITERS ; 
- int POINTS ; 
- int SECP256K1_CONTEXT_SIGN ; 
- int SECP256K1_CONTEXT_VERIFY ; 
- int STRAUSS_SCRATCH_OBJECTS ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  generate_scalar (int,int /*<<< orphan*/ *) ; 
- scalar_t__ have_flag (int,char**,char*) ; 
- void* malloc (int) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  run_test (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  secp256k1_context_create (int) ; 
- int /*<<< orphan*/  secp256k1_context_destroy (int /*<<< orphan*/ ) ; 
- void* secp256k1_ecmult_multi_var ; 
- void* secp256k1_ecmult_pippenger_batch_single ; 
- void* secp256k1_ecmult_strauss_batch_single ; 
- int /*<<< orphan*/  secp256k1_ge_const_g ; 
- int /*<<< orphan*/  secp256k1_ge_set_all_gej_var (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  secp256k1_gej_double_var (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_gej_set_ge (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_scalar_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_scalar_set_int (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * secp256k1_scratch_space_create (int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  secp256k1_scratch_space_destroy (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int secp256k1_strauss_scratch_size (int) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int secp256k1_scalar ;
+typedef int secp256k1_gej ;
+typedef int secp256k1_ge ;
+struct TYPE_3__ {int * expected_output; int * output; int * seckeys; int * pubkeys; int * scalars; int ctx; int * scratch; void* ecmult_multi; } ;
+typedef TYPE_1__ bench_data ;
+
+
+ int ITERS ;
+ int POINTS ;
+ int SECP256K1_CONTEXT_SIGN ;
+ int SECP256K1_CONTEXT_VERIFY ;
+ int STRAUSS_SCRATCH_OBJECTS ;
+ int fprintf (int ,char*,...) ;
+ int free (int *) ;
+ int generate_scalar (int,int *) ;
+ scalar_t__ have_flag (int,char**,char*) ;
+ void* malloc (int) ;
+ int printf (char*) ;
+ int run_test (TYPE_1__*,int,int) ;
+ int secp256k1_context_create (int) ;
+ int secp256k1_context_destroy (int ) ;
+ void* secp256k1_ecmult_multi_var ;
+ void* secp256k1_ecmult_pippenger_batch_single ;
+ void* secp256k1_ecmult_strauss_batch_single ;
+ int secp256k1_ge_const_g ;
+ int secp256k1_ge_set_all_gej_var (int *,int *,int) ;
+ int secp256k1_gej_double_var (int *,int *,int *) ;
+ int secp256k1_gej_set_ge (int *,int *) ;
+ int secp256k1_scalar_add (int *,int *,int *) ;
+ int secp256k1_scalar_set_int (int *,int) ;
+ int * secp256k1_scratch_space_create (int ,size_t) ;
+ int secp256k1_scratch_space_destroy (int ,int *) ;
+ int secp256k1_strauss_scratch_size (int) ;
+ int stderr ;
 
 int main(int argc, char **argv) {
     bench_data data;
@@ -68,7 +68,7 @@ int main(int argc, char **argv) {
             printf("Using simple algorithm:\n");
             data.ecmult_multi = secp256k1_ecmult_multi_var;
             secp256k1_scratch_space_destroy(data.ctx, data.scratch);
-            data.scratch = NULL;
+            data.scratch = ((void*)0);
         } else {
             fprintf(stderr, "%s: unrecognized argument '%s'.\n", argv[0], argv[1]);
             fprintf(stderr, "Use 'pippenger_wnaf', 'strauss_wnaf', 'simple' or no argument to benchmark a combined algorithm.\n");
@@ -76,21 +76,21 @@ int main(int argc, char **argv) {
         }
     }
 
-    /* Allocate stuff */
+
     data.scalars = malloc(sizeof(secp256k1_scalar) * POINTS);
     data.seckeys = malloc(sizeof(secp256k1_scalar) * POINTS);
     data.pubkeys = malloc(sizeof(secp256k1_ge) * POINTS);
     data.expected_output = malloc(sizeof(secp256k1_gej) * (ITERS + 1));
     data.output = malloc(sizeof(secp256k1_gej) * (ITERS + 1));
 
-    /* Generate a set of scalars, and private/public keypairs. */
+
     pubkeys_gej = malloc(sizeof(secp256k1_gej) * POINTS);
     secp256k1_gej_set_ge(&pubkeys_gej[0], &secp256k1_ge_const_g);
     secp256k1_scalar_set_int(&data.seckeys[0], 1);
     for (i = 0; i < POINTS; ++i) {
         generate_scalar(i, &data.scalars[i]);
         if (i) {
-            secp256k1_gej_double_var(&pubkeys_gej[i], &pubkeys_gej[i - 1], NULL);
+            secp256k1_gej_double_var(&pubkeys_gej[i], &pubkeys_gej[i - 1], ((void*)0));
             secp256k1_scalar_add(&data.seckeys[i], &data.seckeys[i - 1], &data.seckeys[i - 1]);
         }
     }
@@ -106,7 +106,7 @@ int main(int argc, char **argv) {
             run_test(&data, i << p, 1);
         }
     }
-    if (data.scratch != NULL) {
+    if (data.scratch != ((void*)0)) {
         secp256k1_scratch_space_destroy(data.ctx, data.scratch);
     }
     secp256k1_context_destroy(data.ctx);

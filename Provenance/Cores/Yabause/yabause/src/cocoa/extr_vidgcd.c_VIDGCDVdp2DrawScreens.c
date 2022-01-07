@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int PRINA; int PRINB; int PRIR; int /*<<< orphan*/  TVMD; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int PRINA; int PRINB; int PRIR; int TVMD; } ;
 struct TYPE_3__ {scalar_t__* priosused; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VIDGCDVdp2SetPriorityNBG0 (int) ; 
- int /*<<< orphan*/  VIDGCDVdp2SetPriorityNBG1 (int) ; 
- int /*<<< orphan*/  VIDGCDVdp2SetPriorityNBG2 (int) ; 
- int /*<<< orphan*/  VIDGCDVdp2SetPriorityNBG3 (int) ; 
- int /*<<< orphan*/  VIDGCDVdp2SetPriorityRBG0 (int) ; 
- int /*<<< orphan*/  VIDGCDVdp2SetResolution (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Vdp1DrawPriority (int) ; 
- int /*<<< orphan*/  Vdp2DrawNBG0 () ; 
- int /*<<< orphan*/  Vdp2DrawNBG1 () ; 
- int /*<<< orphan*/  Vdp2DrawNBG2 () ; 
- int /*<<< orphan*/  Vdp2DrawNBG3 () ; 
- int /*<<< orphan*/  Vdp2DrawRBG0 () ; 
- TYPE_2__* Vdp2Regs ; 
- int nbg0priority ; 
- int nbg1priority ; 
- int nbg2priority ; 
- int nbg3priority ; 
- int rbg0priority ; 
- TYPE_1__ vdp1draw_info ; 
+
+ int VIDGCDVdp2SetPriorityNBG0 (int) ;
+ int VIDGCDVdp2SetPriorityNBG1 (int) ;
+ int VIDGCDVdp2SetPriorityNBG2 (int) ;
+ int VIDGCDVdp2SetPriorityNBG3 (int) ;
+ int VIDGCDVdp2SetPriorityRBG0 (int) ;
+ int VIDGCDVdp2SetResolution (int ) ;
+ int Vdp1DrawPriority (int) ;
+ int Vdp2DrawNBG0 () ;
+ int Vdp2DrawNBG1 () ;
+ int Vdp2DrawNBG2 () ;
+ int Vdp2DrawNBG3 () ;
+ int Vdp2DrawRBG0 () ;
+ TYPE_2__* Vdp2Regs ;
+ int nbg0priority ;
+ int nbg1priority ;
+ int nbg2priority ;
+ int nbg3priority ;
+ int rbg0priority ;
+ TYPE_1__ vdp1draw_info ;
 
 void VIDGCDVdp2DrawScreens(void)
 {
@@ -47,7 +47,7 @@ void VIDGCDVdp2DrawScreens(void)
    VIDGCDVdp2SetPriorityNBG3((Vdp2Regs->PRINB >> 8) & 0x7);
    VIDGCDVdp2SetPriorityRBG0(Vdp2Regs->PRIR & 0x7);
 
-    /* Draw all the screens, from the lowest priority one forward. */
+
     for(i = 1; i < 8; ++i)
     {
         if (nbg3priority == i)
@@ -61,7 +61,7 @@ void VIDGCDVdp2DrawScreens(void)
         if (rbg0priority == i)
             Vdp2DrawRBG0();
 
-        /* Draw anything in VDP1 that should be shown at this priority level. */
+
         if(vdp1draw_info.priosused[i])
             Vdp1DrawPriority(i);
         vdp1draw_info.priosused[i] = 0;

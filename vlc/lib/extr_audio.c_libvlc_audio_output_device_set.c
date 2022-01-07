@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  libvlc_media_player_t ;
-typedef  int /*<<< orphan*/  audio_output_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * GetAOut (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VLC_VAR_STRING ; 
- int /*<<< orphan*/  aout_DeviceSet (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  aout_Release (int /*<<< orphan*/ *) ; 
- int asprintf (char**,char*,char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  var_Create (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  var_SetString (int /*<<< orphan*/ *,char*,char const*) ; 
- int /*<<< orphan*/  var_Type (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int libvlc_media_player_t ;
+typedef int audio_output_t ;
+
+
+ int * GetAOut (int *) ;
+ int VLC_VAR_STRING ;
+ int aout_DeviceSet (int *,char const*) ;
+ int aout_Release (int *) ;
+ int asprintf (char**,char*,char const*) ;
+ int free (char*) ;
+ int var_Create (int *,char*,int ) ;
+ int var_SetString (int *,char*,char const*) ;
+ int var_Type (int *,char*) ;
 
 void libvlc_audio_output_device_set( libvlc_media_player_t *mp,
                                      const char *module, const char *devid )
 {
-    if( devid == NULL )
+    if( devid == ((void*)0) )
         return;
 
-    if( module != NULL )
+    if( module != ((void*)0) )
     {
         char *cfg_name;
 
@@ -38,7 +38,7 @@ void libvlc_audio_output_device_set( libvlc_media_player_t *mp,
             return;
 
         if( !var_Type( mp, cfg_name ) )
-            /* Don't recreate the same variable over and over and over... */
+
             var_Create( mp, cfg_name, VLC_VAR_STRING );
         var_SetString( mp, cfg_name, devid );
         free( cfg_name );
@@ -46,7 +46,7 @@ void libvlc_audio_output_device_set( libvlc_media_player_t *mp,
     }
 
     audio_output_t *aout = GetAOut( mp );
-    if( aout == NULL )
+    if( aout == ((void*)0) )
         return;
 
     aout_DeviceSet( aout, devid );

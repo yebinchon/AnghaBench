@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ s32 ;
-typedef  int /*<<< orphan*/  _node ;
 
-/* Variables and functions */
- scalar_t__ __lwp_queue_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _queue ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ s32 ;
+typedef int _node ;
+
+
+ scalar_t__ __lwp_queue_get (int *) ;
+ int _queue ;
+ int free (int *) ;
 
 s32 KEYBOARD_FlushEvents(void)
 {
-	s32 res;
-	_node *n;
+ s32 res;
+ _node *n;
 
-	res = 0;
-	while (true) {
-		n = (_node *) __lwp_queue_get(&_queue);
+ res = 0;
+ while (1) {
+  n = (_node *) __lwp_queue_get(&_queue);
 
-		if (!n)
-			break;
+  if (!n)
+   break;
 
-		free(n);
-		res++;
-	}
+  free(n);
+  res++;
+ }
 
-	return res;
+ return res;
 }

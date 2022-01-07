@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int height; } ;
 struct TYPE_4__ {TYPE_1__ font; } ;
 
-/* Variables and functions */
- int border_width ; 
- TYPE_2__ config ; 
- int dialog_height ; 
- int dialog_width ; 
- void* i3string_from_utf8 (char*) ; 
- int logical_px (int) ; 
- int margin ; 
- void* message_intro ; 
- void* message_intro2 ; 
- void* message_option_backtrace ; 
- void* message_option_forget ; 
- void* message_option_restart ; 
- int predict_text_width (void*) ; 
+
+ int border_width ;
+ TYPE_2__ config ;
+ int dialog_height ;
+ int dialog_width ;
+ void* i3string_from_utf8 (char*) ;
+ int logical_px (int) ;
+ int margin ;
+ void* message_intro ;
+ void* message_intro2 ;
+ void* message_option_backtrace ;
+ void* message_option_forget ;
+ void* message_option_restart ;
+ int predict_text_width (void*) ;
 
 __attribute__((used)) static void sighandler_setup(void) {
     border_width = logical_px(border_width);

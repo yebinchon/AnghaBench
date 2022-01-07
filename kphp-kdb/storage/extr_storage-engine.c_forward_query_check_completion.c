@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rpc_get_file_data {int /*<<< orphan*/  out; } ;
+
+
+
+
+struct rpc_get_file_data {int out; } ;
 struct rpc_forward_query {double deadline; struct rpc_forward_query* prev; struct rpc_forward_query* next; struct rpc_get_file_data* L; } ;
 struct connection {int dummy; } ;
 
-/* Variables and functions */
- struct connection* find_target_connection (struct rpc_get_file_data*) ; 
- int /*<<< orphan*/  rpc_forward_file_content (struct connection*,struct rpc_get_file_data*) ; 
- int /*<<< orphan*/  rpc_send_file_content (int /*<<< orphan*/ ,struct rpc_get_file_data*) ; 
+
+ struct connection* find_target_connection (struct rpc_get_file_data*) ;
+ int rpc_forward_file_content (struct connection*,struct rpc_get_file_data*) ;
+ int rpc_send_file_content (int ,struct rpc_get_file_data*) ;
 
 __attribute__((used)) static int forward_query_check_completion (struct rpc_forward_query *F, double t) {
   int r = 0;

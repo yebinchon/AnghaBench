@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ svn_string_t ;
-struct TYPE_12__ {int /*<<< orphan*/  apr_err; } ;
-typedef  TYPE_2__ svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_EOL_STR ; 
- scalar_t__ APR_STATUS_IS_EINVAL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- TYPE_2__* SVN_NO_ERROR ; 
- TYPE_2__* svn_cmdline_cstring_from_utf8 (char const**,char const*,int /*<<< orphan*/ *) ; 
- char* svn_cmdline_cstring_from_utf8_fuzzy (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_2__*) ; 
- TYPE_1__* svn_string_create (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_subst_translate_cstring2 (int /*<<< orphan*/ ,char const**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_2__* svn_utf_cstring_from_utf8 (char const**,char const*,int /*<<< orphan*/ *) ; 
- char* svn_utf_cstring_from_utf8_fuzzy (char const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int data; } ;
+typedef TYPE_1__ svn_string_t ;
+struct TYPE_12__ {int apr_err; } ;
+typedef TYPE_2__ svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int APR_EOL_STR ;
+ scalar_t__ APR_STATUS_IS_EINVAL (int ) ;
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ TYPE_2__* SVN_NO_ERROR ;
+ TYPE_2__* svn_cmdline_cstring_from_utf8 (char const**,char const*,int *) ;
+ char* svn_cmdline_cstring_from_utf8_fuzzy (char const*,int *) ;
+ int svn_error_clear (TYPE_2__*) ;
+ TYPE_1__* svn_string_create (char const*,int *) ;
+ int svn_subst_translate_cstring2 (int ,char const**,int ,int ,int *,int ,int *) ;
+ TYPE_2__* svn_utf_cstring_from_utf8 (char const**,char const*,int *) ;
+ char* svn_utf_cstring_from_utf8_fuzzy (char const*,int *) ;
 
 svn_error_t *
 svn_subst_detranslate_string(svn_string_t **new_value,
@@ -43,18 +43,18 @@ svn_subst_detranslate_string(svn_string_t **new_value,
   const char *val_neol;
   const char *val_nlocale_neol;
 
-  if (value == NULL)
+  if (value == ((void*)0))
     {
-      *new_value = NULL;
+      *new_value = ((void*)0);
       return SVN_NO_ERROR;
     }
 
   SVN_ERR(svn_subst_translate_cstring2(value->data,
                                        &val_neol,
-                                       APR_EOL_STR,  /* 'native' eol */
-                                       FALSE, /* no repair */
-                                       NULL,  /* no keywords */
-                                       FALSE, /* no expansion */
+                                       APR_EOL_STR,
+                                       FALSE,
+                                       ((void*)0),
+                                       FALSE,
                                        pool));
 
   if (for_output)

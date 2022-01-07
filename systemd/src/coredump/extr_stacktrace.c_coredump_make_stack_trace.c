@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  dwfl_errmsg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dwfl_errno () ; 
- int /*<<< orphan*/  log_warning (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_warning_errno (int,char*) ; 
- int make_stack_trace (int,char const*,char**) ; 
+ int EINVAL ;
+ int dwfl_errmsg (int ) ;
+ int dwfl_errno () ;
+ int log_warning (char*,int ) ;
+ int log_warning_errno (int,char*) ;
+ int make_stack_trace (int,char const*,char**) ;
 
 void coredump_make_stack_trace(int fd, const char *executable, char **ret) {
         int r;

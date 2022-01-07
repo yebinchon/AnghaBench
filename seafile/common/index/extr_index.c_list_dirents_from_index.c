@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct index_state {int cache_nr; struct cache_entry** cache; } ;
-struct cache_entry {char* name; int /*<<< orphan*/  ce_mode; } ;
-typedef  int /*<<< orphan*/  gboolean ;
-typedef  int /*<<< orphan*/  IndexDirent ;
-typedef  int /*<<< orphan*/  GList ;
+struct cache_entry {char* name; int ce_mode; } ;
+typedef int gboolean ;
+typedef int IndexDirent ;
+typedef int GList ;
 
-/* Variables and functions */
- int /*<<< orphan*/  S_ISDIR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  compare_index_dents ; 
- int /*<<< orphan*/  g_free (char*) ; 
- int /*<<< orphan*/ * g_list_prepend (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * g_list_sort (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* g_strconcat (char const*,char*,int /*<<< orphan*/ *) ; 
- char* g_strdup (char const*) ; 
- char* g_strndup (char*,int) ; 
- int /*<<< orphan*/ * index_dirent_new (char*,int /*<<< orphan*/ ,struct cache_entry*) ; 
- int index_name_pos (struct index_state*,char const*,int) ; 
- scalar_t__ is_duplicate_dirent (int /*<<< orphan*/ *,char*) ; 
- char* strchr (char*,char) ; 
- int strlen (char const*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
+
+ int S_ISDIR (int ) ;
+ int TRUE ;
+ int compare_index_dents ;
+ int g_free (char*) ;
+ int * g_list_prepend (int *,int *) ;
+ int * g_list_sort (int *,int ) ;
+ char* g_strconcat (char const*,char*,int *) ;
+ char* g_strdup (char const*) ;
+ char* g_strndup (char*,int) ;
+ int * index_dirent_new (char*,int ,struct cache_entry*) ;
+ int index_name_pos (struct index_state*,char const*,int) ;
+ scalar_t__ is_duplicate_dirent (int *,char*) ;
+ char* strchr (char*,char) ;
+ int strlen (char const*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
 
 GList *
 list_dirents_from_index (struct index_state *istate, const char *dir)
@@ -40,7 +40,7 @@ list_dirents_from_index (struct index_state *istate, const char *dir)
     int pathlen;
     int pos;
     struct cache_entry *ce;
-    GList *dirents = NULL;
+    GList *dirents = ((void*)0);
     char *path, *slash, *dname;
     gboolean is_dir;
     IndexDirent *dirent;
@@ -55,23 +55,23 @@ list_dirents_from_index (struct index_state *istate, const char *dir)
         pos = index_name_pos (istate, dir, pathlen);
     }
 
-    /* Exact match, it's an empty dir. */
+
     if (pos >= 0) {
-        return NULL;
+        return ((void*)0);
     }
 
-    /* Otherwise it may be a prefix match, there may be dirents under the dir.
-     */
 
-    /* -pos = (the position this entry *should* be) + 1.
-     * So -pos-1 is the first entry larger than this entry.
-     */
+
+
+
+
+
     pos = -pos-1;
 
-    /* Add '/' to the end of prefix so that we won't match a partial path component.
-     * e.g. we don't want to match 'abc' with 'abcd/ef'
-     */
-    full_dir = g_strconcat (dir, "/", NULL);
+
+
+
+    full_dir = g_strconcat (dir, "/", ((void*)0));
     ++pathlen;
 
     while (pos < istate->cache_nr) {
@@ -82,10 +82,10 @@ list_dirents_from_index (struct index_state *istate, const char *dir)
             break;
     }
 
-    /* The dir actually doesn't exist. */
+
     if (pos == istate->cache_nr) {
         g_free (full_dir);
-        return NULL;
+        return ((void*)0);
     }
 
 collect_dents:
@@ -104,7 +104,7 @@ collect_dents:
                 continue;
             }
 
-            dirent = index_dirent_new (dname, TRUE, NULL);
+            dirent = index_dirent_new (dname, TRUE, ((void*)0));
             dirents = g_list_prepend (dirents, dirent);
         } else {
             dname = g_strdup(path);

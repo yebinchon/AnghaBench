@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  printf (char*) ; 
+ int printf (char*) ;
 
 __attribute__((used)) static void HelpLong(void) {
   printf("Usage:\n");
   printf(" cwebp [-preset <...>] [options] in_file [-o out_file]\n\n");
   printf("If input size (-s) for an image is not specified, it is\n"
          "assumed to be a PNG, JPEG, TIFF or WebP file.\n");
-#ifdef HAVE_WINCODEC_H
-  printf("Windows builds can take as input any of the files handled by WIC.\n");
-#endif
+
+
+
   printf("\nOptions:\n");
   printf("  -h / -help ............. short help\n");
   printf("  -H / -longhelp ......... long help\n");
@@ -97,9 +89,9 @@ __attribute__((used)) static void HelpLong(void) {
   printf("  -short ................. condense printed message\n");
   printf("  -quiet ................. don't print anything\n");
   printf("  -version ............... print version number and exit\n");
-#ifndef WEBP_DLL
+
   printf("  -noasm ................. disable all assembly optimizations\n");
-#endif
+
   printf("  -v ..................... verbose, e.g. print encoding/decoding "
          "times\n");
   printf("  -progress .............. report encoding progress\n");

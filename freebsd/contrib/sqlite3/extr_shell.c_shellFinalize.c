@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int /*<<< orphan*/  raw_printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * sqlite3_db_handle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_errmsg (int /*<<< orphan*/ *) ; 
- int sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
+
+
+ int SQLITE_OK ;
+ int raw_printf (int ,char*,int ) ;
+ int * sqlite3_db_handle (int *) ;
+ int sqlite3_errmsg (int *) ;
+ int sqlite3_finalize (int *) ;
+ int stderr ;
 
 void shellFinalize(
-  int *pRc, 
+  int *pRc,
   sqlite3_stmt *pStmt
 ){
   if( pStmt ){

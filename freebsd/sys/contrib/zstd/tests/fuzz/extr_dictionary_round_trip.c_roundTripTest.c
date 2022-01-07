@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ZSTD_dictLoadMethod_e ;
-typedef  scalar_t__ ZSTD_dictContentType_e ;
-struct TYPE_3__ {int /*<<< orphan*/  buff; int /*<<< orphan*/  size; } ;
-typedef  TYPE_1__ FUZZ_dict_t ;
-typedef  int /*<<< orphan*/  FUZZ_dataProducer_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FUZZ_ZASSERT (size_t) ; 
- int FUZZ_dataProducer_int32Range (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ FUZZ_dataProducer_uint32Range (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  FUZZ_setRandomParameters (int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ *) ; 
- TYPE_1__ FUZZ_train (void const*,size_t,int /*<<< orphan*/ *) ; 
- size_t ZSTD_CCtx_loadDictionary_advanced (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- size_t ZSTD_CCtx_setParameter (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t ZSTD_DCtx_loadDictionary_advanced (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  ZSTD_c_checksumFlag ; 
- size_t ZSTD_compress2 (int /*<<< orphan*/ ,void*,size_t,void const*,size_t) ; 
- size_t ZSTD_compress_usingDict (int /*<<< orphan*/ ,void*,size_t,void const*,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int const) ; 
- scalar_t__ ZSTD_dct_auto ; 
- size_t ZSTD_decompressDCtx (int /*<<< orphan*/ ,void*,size_t,void*,size_t) ; 
- int /*<<< orphan*/  cctx ; 
- int /*<<< orphan*/  dctx ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kMaxClevel ; 
- int /*<<< orphan*/  kMinClevel ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ZSTD_dictLoadMethod_e ;
+typedef scalar_t__ ZSTD_dictContentType_e ;
+struct TYPE_3__ {int buff; int size; } ;
+typedef TYPE_1__ FUZZ_dict_t ;
+typedef int FUZZ_dataProducer_t ;
+
+
+ int FUZZ_ZASSERT (size_t) ;
+ int FUZZ_dataProducer_int32Range (int *,int ,int ) ;
+ scalar_t__ FUZZ_dataProducer_uint32Range (int *,int ,int) ;
+ int FUZZ_setRandomParameters (int ,size_t,int *) ;
+ TYPE_1__ FUZZ_train (void const*,size_t,int *) ;
+ size_t ZSTD_CCtx_loadDictionary_advanced (int ,int ,int ,int ,scalar_t__) ;
+ size_t ZSTD_CCtx_setParameter (int ,int ,int ) ;
+ size_t ZSTD_DCtx_loadDictionary_advanced (int ,int ,int ,int ,scalar_t__) ;
+ int ZSTD_c_checksumFlag ;
+ size_t ZSTD_compress2 (int ,void*,size_t,void const*,size_t) ;
+ size_t ZSTD_compress_usingDict (int ,void*,size_t,void const*,size_t,int ,int ,int const) ;
+ scalar_t__ ZSTD_dct_auto ;
+ size_t ZSTD_decompressDCtx (int ,void*,size_t,void*,size_t) ;
+ int cctx ;
+ int dctx ;
+ int free (int ) ;
+ int kMaxClevel ;
+ int kMinClevel ;
 
 __attribute__((used)) static size_t roundTripTest(void *result, size_t resultCapacity,
                             void *compressed, size_t compressedCapacity,
@@ -56,7 +56,7 @@ __attribute__((used)) static size_t roundTripTest(void *result, size_t resultCap
     } else {
         dictContentType = FUZZ_dataProducer_uint32Range(producer, 0, 2);
         FUZZ_setRandomParameters(cctx, srcSize, producer);
-        /* Disable checksum so we can use sizes smaller than compress bound. */
+
         FUZZ_ZASSERT(ZSTD_CCtx_setParameter(cctx, ZSTD_c_checksumFlag, 0));
         FUZZ_ZASSERT(ZSTD_CCtx_loadDictionary_advanced(
                 cctx, dict.buff, dict.size,

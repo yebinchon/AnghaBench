@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pcmcia_device {scalar_t__ priv; int /*<<< orphan*/  dev; } ;
+
+
+
+
+struct pcmcia_device {scalar_t__ priv; int dev; } ;
 struct net_device {int dummy; } ;
 struct local_info {struct net_device* eth_dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dev_dbg (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  pcmcia_disable_device (struct pcmcia_device*) ; 
- int /*<<< orphan*/  stop_atmel_card (struct net_device*) ; 
+
+ int dev_dbg (int *,char*) ;
+ int pcmcia_disable_device (struct pcmcia_device*) ;
+ int stop_atmel_card (struct net_device*) ;
 
 __attribute__((used)) static void atmel_release(struct pcmcia_device *link)
 {
-	struct net_device *dev = ((struct local_info *)link->priv)->eth_dev;
+ struct net_device *dev = ((struct local_info *)link->priv)->eth_dev;
 
-	dev_dbg(&link->dev, "atmel_release\n");
+ dev_dbg(&link->dev, "atmel_release\n");
 
-	if (dev)
-		stop_atmel_card(dev);
-	((struct local_info *)link->priv)->eth_dev = NULL;
+ if (dev)
+  stop_atmel_card(dev);
+ ((struct local_info *)link->priv)->eth_dev = ((void*)0);
 
-	pcmcia_disable_device(link);
+ pcmcia_disable_device(link);
 }

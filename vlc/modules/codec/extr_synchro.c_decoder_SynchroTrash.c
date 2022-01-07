@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  i_trash_nb_ref; int /*<<< orphan*/  i_nb_ref; int /*<<< orphan*/  i_trashed_pic; } ;
-typedef  TYPE_1__ decoder_synchro_t ;
 
-/* Variables and functions */
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int i_trash_nb_ref; int i_nb_ref; int i_trashed_pic; } ;
+typedef TYPE_1__ decoder_synchro_t ;
+
+
 
 void decoder_SynchroTrash( decoder_synchro_t * p_synchro )
 {

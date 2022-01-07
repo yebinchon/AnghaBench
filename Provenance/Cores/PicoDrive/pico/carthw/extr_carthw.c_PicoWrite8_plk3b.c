@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct TYPE_2__ {int romsize; scalar_t__ rom; } ;
 
-/* Variables and functions */
- int EL_ANOMALY ; 
- int EL_UIO ; 
- TYPE_1__ Pico ; 
- int /*<<< orphan*/  SekPc ; 
- int /*<<< orphan*/  elprintf (int,char*,int,...) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,scalar_t__,int) ; 
+
+ int EL_ANOMALY ;
+ int EL_UIO ;
+ TYPE_1__ Pico ;
+ int SekPc ;
+ int elprintf (int,char*,int,...) ;
+ int memcpy (scalar_t__,scalar_t__,int) ;
 
 __attribute__((used)) static void PicoWrite8_plk3b(u32 a, u32 d)
 {

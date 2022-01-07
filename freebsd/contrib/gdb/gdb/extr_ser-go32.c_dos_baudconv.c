@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int COMTICK ; 
- long SPEED_TOLERANCE ; 
- int divrnd (int,long) ; 
+ int COMTICK ;
+ long SPEED_TOLERANCE ;
+ int divrnd (int,long) ;
 
 __attribute__((used)) static int
 dos_baudconv (int rate)
@@ -24,16 +16,16 @@ dos_baudconv (int rate)
   if (rate <= 0)
     return -1;
 
-#define divrnd(n, q)	(((n) * 2 / (q) + 1) / 2) /* divide and round off */
-  x = divrnd (COMTICK, rate);
+
+  x = (((COMTICK) * 2 / (rate) + 1) / 2);
   if (x <= 0)
     return -1;
 
-  err = divrnd (1000 * COMTICK, x * rate) - 1000;
+  err = (((1000 * COMTICK) * 2 / (x * rate) + 1) / 2) - 1000;
   if (err < 0)
     err = -err;
   if (err > SPEED_TOLERANCE)
     return -1;
-#undef divrnd
+
   return x;
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {float* error_energy; } ;
 struct TYPE_4__ {int start_band; int end_band; scalar_t__ framebits; scalar_t__ channels; int* fine_priority; int* fine_bits; TYPE_2__* block; } ;
-typedef  int /*<<< orphan*/  OpusRangeCoder ;
-typedef  int /*<<< orphan*/  OpusEncContext ;
-typedef  TYPE_1__ CeltFrame ;
-typedef  TYPE_2__ CeltBlock ;
+typedef int OpusRangeCoder ;
+typedef int OpusEncContext ;
+typedef TYPE_1__ CeltFrame ;
+typedef TYPE_2__ CeltBlock ;
 
-/* Variables and functions */
- int CELT_MAX_FINE_BITS ; 
- scalar_t__ FFABS (float const) ; 
- int /*<<< orphan*/  ff_opus_rc_put_raw (int /*<<< orphan*/ *,int const,int) ; 
- scalar_t__ opus_rc_tell (int /*<<< orphan*/ *) ; 
+
+ int CELT_MAX_FINE_BITS ;
+ scalar_t__ FFABS (float const) ;
+ int ff_opus_rc_put_raw (int *,int const,int) ;
+ scalar_t__ opus_rc_tell (int *) ;
 
 __attribute__((used)) static void celt_quant_final(OpusEncContext *s, OpusRangeCoder *rc, CeltFrame *f)
 {

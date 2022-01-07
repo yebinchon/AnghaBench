@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dllpath ;
-typedef  int /*<<< orphan*/ * HINSTANCE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetModuleFileName (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/ * LoadLibrary (char*) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- char* strrchr (char*,char) ; 
+
+
+
+typedef int dllpath ;
+typedef int * HINSTANCE ;
+
+
+ int GetModuleFileName (int *,char*,int) ;
+ int * LoadLibrary (char*) ;
+ int MAX_PATH ;
+ int strcat (char*,char*) ;
+ char* strrchr (char*,char) ;
 
 __attribute__((used)) static HINSTANCE load_hook_dll()
 {
@@ -27,19 +27,19 @@ __attribute__((used)) static HINSTANCE load_hook_dll()
     char* p;
 
     hinstDll=LoadLibrary("hook.dll");
-    if (hinstDll != NULL)
+    if (hinstDll != ((void*)0))
         return hinstDll;
 
-    if (!GetModuleFileName(NULL,dllpath,sizeof(dllpath)))
-        return NULL;
+    if (!GetModuleFileName(((void*)0),dllpath,sizeof(dllpath)))
+        return ((void*)0);
 
     p=strrchr(dllpath,'\\');
     if (!p)
-        return NULL;
+        return ((void*)0);
     *p='\0';
     p=strrchr(dllpath,'\\');
     if (!p)
-        return NULL;
+        return ((void*)0);
     *p='\0';
     strcat(dllpath,"\\hookdll\\hook.dll");
     hinstDll=LoadLibrary(dllpath);

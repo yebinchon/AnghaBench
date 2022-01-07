@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct table_data {size_t size; int /*<<< orphan*/  data; int /*<<< orphan*/  name; } ;
-typedef  size_t UINT ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  IStorage ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  size_t DWORD ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IStorage_CreateStream (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStream_Write (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t,size_t*) ; 
- int STGM_SHARE_EXCLUSIVE ; 
- int STGM_WRITE ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*,...) ; 
+
+
+
+struct table_data {size_t size; int data; int name; } ;
+typedef size_t UINT ;
+typedef int IStream ;
+typedef int IStorage ;
+typedef int HRESULT ;
+typedef size_t DWORD ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int IStorage_CreateStream (int *,int ,int,int ,int ,int **) ;
+ int IStream_Release (int *) ;
+ int IStream_Write (int *,int ,size_t,size_t*) ;
+ int STGM_SHARE_EXCLUSIVE ;
+ int STGM_WRITE ;
+ int ok (int ,char*,...) ;
 
 __attribute__((used)) static void write_tables( IStorage *stg, const struct table_data *tables, UINT num_tables )
 {

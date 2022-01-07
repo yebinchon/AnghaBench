@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct protoent {char* p_name; char** p_aliases; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bt_endprotoent () ; 
- struct protoent* bt_getprotoent () ; 
- int /*<<< orphan*/  bt_setprotoent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  proto_stayopen ; 
- scalar_t__ strcmp (char*,char const*) ; 
+
+ int bt_endprotoent () ;
+ struct protoent* bt_getprotoent () ;
+ int bt_setprotoent (int ) ;
+ int proto_stayopen ;
+ scalar_t__ strcmp (char*,char const*) ;
 
 struct protoent *
 bt_getprotobyname(char const *name)
 {
-	struct protoent	 *p;
-	char		**cp;
+ struct protoent *p;
+ char **cp;
 
-	bt_setprotoent(proto_stayopen);
-	while ((p = bt_getprotoent()) != NULL) {
-		if (strcmp(p->p_name, name) == 0)
-			break;
-		for (cp = p->p_aliases; *cp != NULL; cp++)
-			if (strcmp(*cp, name) == 0)
-				goto found;
-	}
+ bt_setprotoent(proto_stayopen);
+ while ((p = bt_getprotoent()) != ((void*)0)) {
+  if (strcmp(p->p_name, name) == 0)
+   break;
+  for (cp = p->p_aliases; *cp != ((void*)0); cp++)
+   if (strcmp(*cp, name) == 0)
+    goto found;
+ }
 found:
-	bt_endprotoent();
+ bt_endprotoent();
 
-	return (p);
+ return (p);
 }

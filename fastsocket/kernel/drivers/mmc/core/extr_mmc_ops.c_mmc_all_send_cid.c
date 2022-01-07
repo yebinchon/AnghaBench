@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct mmc_host {int dummy; } ;
-struct mmc_command {int flags; int /*<<< orphan*/  resp; scalar_t__ arg; int /*<<< orphan*/  opcode; } ;
+struct mmc_command {int flags; int resp; scalar_t__ arg; int opcode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int /*<<< orphan*/  MMC_ALL_SEND_CID ; 
- int MMC_CMD_BCR ; 
- int /*<<< orphan*/  MMC_CMD_RETRIES ; 
- int MMC_RSP_R2 ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (struct mmc_command*,int /*<<< orphan*/ ,int) ; 
- int mmc_wait_for_cmd (struct mmc_host*,struct mmc_command*,int /*<<< orphan*/ ) ; 
+
+ int BUG_ON (int) ;
+ int MMC_ALL_SEND_CID ;
+ int MMC_CMD_BCR ;
+ int MMC_CMD_RETRIES ;
+ int MMC_RSP_R2 ;
+ int memcpy (int *,int ,int) ;
+ int memset (struct mmc_command*,int ,int) ;
+ int mmc_wait_for_cmd (struct mmc_host*,struct mmc_command*,int ) ;
 
 int mmc_all_send_cid(struct mmc_host *host, u32 *cid)
 {
-	int err;
-	struct mmc_command cmd;
+ int err;
+ struct mmc_command cmd;
 
-	BUG_ON(!host);
-	BUG_ON(!cid);
+ BUG_ON(!host);
+ BUG_ON(!cid);
 
-	memset(&cmd, 0, sizeof(struct mmc_command));
+ memset(&cmd, 0, sizeof(struct mmc_command));
 
-	cmd.opcode = MMC_ALL_SEND_CID;
-	cmd.arg = 0;
-	cmd.flags = MMC_RSP_R2 | MMC_CMD_BCR;
+ cmd.opcode = MMC_ALL_SEND_CID;
+ cmd.arg = 0;
+ cmd.flags = MMC_RSP_R2 | MMC_CMD_BCR;
 
-	err = mmc_wait_for_cmd(host, &cmd, MMC_CMD_RETRIES);
-	if (err)
-		return err;
+ err = mmc_wait_for_cmd(host, &cmd, MMC_CMD_RETRIES);
+ if (err)
+  return err;
 
-	memcpy(cid, cmd.resp, sizeof(u32) * 4);
+ memcpy(cid, cmd.resp, sizeof(u32) * 4);
 
-	return 0;
+ return 0;
 }

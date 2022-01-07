@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct orinoco_scan_data {int len; int /*<<< orphan*/  list; } ;
-struct orinoco_private {int /*<<< orphan*/  process_scan; int /*<<< orphan*/  scan_lock; int /*<<< orphan*/  scan_list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_ATOMIC ; 
- struct orinoco_scan_data* kmalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  schedule_work (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct orinoco_scan_data {int len; int list; } ;
+struct orinoco_private {int process_scan; int scan_lock; int scan_list; } ;
+
+
+ int GFP_ATOMIC ;
+ struct orinoco_scan_data* kmalloc (int,int ) ;
+ int list_add_tail (int *,int *) ;
+ int schedule_work (int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void qabort_scan(struct orinoco_private *priv)
 {
-	struct orinoco_scan_data *sd;
-	unsigned long flags;
+ struct orinoco_scan_data *sd;
+ unsigned long flags;
 
-	sd = kmalloc(sizeof(*sd), GFP_ATOMIC);
-	if (!sd)
-		return;
+ sd = kmalloc(sizeof(*sd), GFP_ATOMIC);
+ if (!sd)
+  return;
 
-	sd->len = -1; /* Abort */
+ sd->len = -1;
 
-	spin_lock_irqsave(&priv->scan_lock, flags);
-	list_add_tail(&sd->list, &priv->scan_list);
-	spin_unlock_irqrestore(&priv->scan_lock, flags);
+ spin_lock_irqsave(&priv->scan_lock, flags);
+ list_add_tail(&sd->list, &priv->scan_list);
+ spin_unlock_irqrestore(&priv->scan_lock, flags);
 
-	schedule_work(&priv->process_scan);
+ schedule_work(&priv->process_scan);
 }

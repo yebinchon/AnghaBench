@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct g_eli_worker {int /*<<< orphan*/  w_sid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  crypto_freesession (int /*<<< orphan*/ ) ; 
+
+
+
+struct g_eli_worker {int w_sid; } ;
+
+
+ int crypto_freesession (int ) ;
 
 __attribute__((used)) static void
 g_eli_freesession(struct g_eli_worker *wr)
 {
 
-	crypto_freesession(wr->w_sid);
+ crypto_freesession(wr->w_sid);
 }

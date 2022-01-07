@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rid ;
-typedef  int /*<<< orphan*/  _GLFWwindow ;
-struct TYPE_3__ {int member_0; int member_1; int /*<<< orphan*/ * member_3; int /*<<< orphan*/  member_2; } ;
-typedef  TYPE_1__ RAWINPUTDEVICE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_PLATFORM_ERROR ; 
- int /*<<< orphan*/  RIDEV_REMOVE ; 
- int /*<<< orphan*/  RegisterRawInputDevices (TYPE_1__ const*,int,int) ; 
- int /*<<< orphan*/  _glfwInputErrorWin32 (int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int rid ;
+typedef int _GLFWwindow ;
+struct TYPE_3__ {int member_0; int member_1; int * member_3; int member_2; } ;
+typedef TYPE_1__ RAWINPUTDEVICE ;
+
+
+ int GLFW_PLATFORM_ERROR ;
+ int RIDEV_REMOVE ;
+ int RegisterRawInputDevices (TYPE_1__ const*,int,int) ;
+ int _glfwInputErrorWin32 (int ,char*) ;
 
 __attribute__((used)) static void disableRawMouseMotion(_GLFWwindow* window)
 {
-    const RAWINPUTDEVICE rid = { 0x01, 0x02, RIDEV_REMOVE, NULL };
+    const RAWINPUTDEVICE rid = { 0x01, 0x02, RIDEV_REMOVE, ((void*)0) };
 
     if (!RegisterRawInputDevices(&rid, 1, sizeof(rid)))
     {

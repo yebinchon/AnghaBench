@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_wc_adm_access_t ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int svn_wc_context_t ;
+typedef int svn_wc_adm_access_t ;
 struct TYPE_6__ {scalar_t__ apr_err; } ;
-typedef  TYPE_1__ svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_error_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- scalar_t__ SVN_ERR_WC_PATH_NOT_FOUND ; 
- TYPE_1__* SVN_NO_ERROR ; 
- int /*<<< orphan*/  svn_dirent_get_absolute (char const**,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_1__*) ; 
- int /*<<< orphan*/  svn_wc__adm_get_db (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__context_create_with_db (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_1__* svn_wc_conflicted_p3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ scalar_t__ SVN_ERR_WC_PATH_NOT_FOUND ;
+ TYPE_1__* SVN_NO_ERROR ;
+ int svn_dirent_get_absolute (char const**,char const*,int *) ;
+ int svn_error_clear (TYPE_1__*) ;
+ int svn_wc__adm_get_db (int *) ;
+ int svn_wc__context_create_with_db (int **,int *,int ,int *) ;
+ TYPE_1__* svn_wc_conflicted_p3 (int *,int *,int *,int *,char const*,int *) ;
 
 svn_error_t *
 svn_wc_conflicted_p2(svn_boolean_t *text_conflicted_p,
@@ -42,7 +42,7 @@ svn_wc_conflicted_p2(svn_boolean_t *text_conflicted_p,
   svn_error_t *err;
 
   SVN_ERR(svn_dirent_get_absolute(&local_abspath, path, pool));
-  SVN_ERR(svn_wc__context_create_with_db(&wc_ctx, NULL /* config */,
+  SVN_ERR(svn_wc__context_create_with_db(&wc_ctx, ((void*)0) ,
                                          svn_wc__adm_get_db(adm_access),
                                          pool));
 

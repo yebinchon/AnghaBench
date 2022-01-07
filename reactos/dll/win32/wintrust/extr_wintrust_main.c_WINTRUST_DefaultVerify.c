@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct wintrust_step {int dummy; } ;
 struct TYPE_11__ {TYPE_3__* hWVTStateData; } ;
-typedef  TYPE_2__ WINTRUST_DATA ;
+typedef TYPE_2__ WINTRUST_DATA ;
 struct TYPE_10__ {TYPE_3__* pPDSip; } ;
-struct TYPE_12__ {struct TYPE_12__* psPfns; TYPE_1__ u; struct TYPE_12__* padwTrustStepErrors; int /*<<< orphan*/  dwRegPolicySettings; int /*<<< orphan*/ * pgActionID; scalar_t__ hWndParent; TYPE_2__* pWintrustData; } ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  scalar_t__ HWND ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  TYPE_3__ CRYPT_PROVIDER_DATA ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct TYPE_12__ {struct TYPE_12__* psPfns; TYPE_1__ u; struct TYPE_12__* padwTrustStepErrors; int dwRegPolicySettings; int * pgActionID; scalar_t__ hWndParent; TYPE_2__* pWintrustData; } ;
+typedef int LONG ;
+typedef scalar_t__ HWND ;
+typedef int GUID ;
+typedef int DWORD ;
+typedef TYPE_3__ CRYPT_PROVIDER_DATA ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_OUTOFMEMORY ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- scalar_t__ GetDesktopWindow () ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__,...) ; 
- int /*<<< orphan*/  WINTRUST_AddTrustStepsFromFunctions (struct wintrust_step*,TYPE_3__*) ; 
- TYPE_3__* WINTRUST_AllocateProviderData () ; 
- int /*<<< orphan*/  WINTRUST_ExecuteSteps (struct wintrust_step*,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  WINTRUST_Free (TYPE_3__*) ; 
- int /*<<< orphan*/  WintrustGetRegPolicyFlags (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WintrustLoadFunctionPointers (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ *) ; 
+
+ int ERROR_OUTOFMEMORY ;
+ int ERROR_SUCCESS ;
+ scalar_t__ GetDesktopWindow () ;
+ int GetLastError () ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int TRACE (char*,scalar_t__,...) ;
+ int WINTRUST_AddTrustStepsFromFunctions (struct wintrust_step*,TYPE_3__*) ;
+ TYPE_3__* WINTRUST_AllocateProviderData () ;
+ int WINTRUST_ExecuteSteps (struct wintrust_step*,int ,TYPE_3__*) ;
+ int WINTRUST_Free (TYPE_3__*) ;
+ int WintrustGetRegPolicyFlags (int *) ;
+ int WintrustLoadFunctionPointers (int *,TYPE_3__*) ;
+ int debugstr_guid (int *) ;
 
 __attribute__((used)) static LONG WINTRUST_DefaultVerify(HWND hwnd, GUID *actionID,
  WINTRUST_DATA *data)

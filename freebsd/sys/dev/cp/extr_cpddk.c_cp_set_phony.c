@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int f; int l52; int l36; int l26; int /*<<< orphan*/  l134; int /*<<< orphan*/  y; int /*<<< orphan*/  l64; int /*<<< orphan*/  d; scalar_t__ x; int /*<<< orphan*/  v; int /*<<< orphan*/  p; } ;
-typedef  TYPE_1__ e ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cp_set_baud (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cp_set_dir (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cp_set_scrambler (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  l (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int f; int l52; int l36; int l26; int l134; int y; int l64; int d; scalar_t__ x; int v; int p; } ;
+typedef TYPE_1__ e ;
+
+
+ int cp_set_baud (TYPE_1__*,int ) ;
+ int cp_set_dir (TYPE_1__*,int ) ;
+ int cp_set_scrambler (TYPE_1__*,int ) ;
+ int l (int ,int ,int) ;
 
 void
 cp_set_phony(e*a,int m){{if(!(a->f==3))goto l679;a->l52=(m!=0);l679:;

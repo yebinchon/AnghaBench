@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPARAM ;
-struct TYPE_3__ {int bottom; int top; int /*<<< orphan*/  right; } ;
-typedef  TYPE_1__ RECT ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  scalar_t__ HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DefWindowProcW (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetClientRect (scalar_t__,TYPE_1__*) ; 
- scalar_t__ GetDlgItem (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_EDITOR ; 
- int /*<<< orphan*/  IDC_PREVIEW ; 
- int /*<<< orphan*/  IDC_REBAR ; 
- int /*<<< orphan*/  IDC_RULER ; 
- int /*<<< orphan*/  IDC_STATUSBAR ; 
- scalar_t__ IsWindowVisible (scalar_t__) ; 
- int /*<<< orphan*/  LOWORD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MoveWindow (scalar_t__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RB_GETBARHEIGHT ; 
- int SendMessageW (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WM_SIZE ; 
- scalar_t__ preview_isactive () ; 
- int /*<<< orphan*/  redraw_ruler (scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WPARAM ;
+struct TYPE_3__ {int bottom; int top; int right; } ;
+typedef TYPE_1__ RECT ;
+typedef int LRESULT ;
+typedef int LPARAM ;
+typedef scalar_t__ HWND ;
+
+
+ int DefWindowProcW (scalar_t__,int ,int ,int ) ;
+ int GetClientRect (scalar_t__,TYPE_1__*) ;
+ scalar_t__ GetDlgItem (scalar_t__,int ) ;
+ int IDC_EDITOR ;
+ int IDC_PREVIEW ;
+ int IDC_REBAR ;
+ int IDC_RULER ;
+ int IDC_STATUSBAR ;
+ scalar_t__ IsWindowVisible (scalar_t__) ;
+ int LOWORD (int ) ;
+ int MoveWindow (scalar_t__,int ,int,int ,int,int ) ;
+ int RB_GETBARHEIGHT ;
+ int SendMessageW (scalar_t__,int ,int ,int ) ;
+ int TRUE ;
+ int WM_SIZE ;
+ scalar_t__ preview_isactive () ;
+ int redraw_ruler (scalar_t__) ;
 
 __attribute__((used)) static LRESULT OnSize( HWND hWnd, WPARAM wParam, LPARAM lParam )
 {

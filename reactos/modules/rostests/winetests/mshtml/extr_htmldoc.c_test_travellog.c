@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  ITravelLogClient ;
-typedef  int /*<<< orphan*/  IHTMLWindow2 ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ E_FAIL ; 
- scalar_t__ E_NOINTERFACE ; 
- scalar_t__ IHTMLDocument2_get_parentWindow (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IHTMLWindow2_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IHTMLWindow2_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLWindow2_get_top (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IID_ITravelLogClient ; 
- scalar_t__ ITravelLogClient_FindWindowByIndex (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ITravelLogClient_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  no_travellog ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int IUnknown ;
+typedef int ITravelLogClient ;
+typedef int IHTMLWindow2 ;
+typedef int IHTMLDocument2 ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ E_FAIL ;
+ scalar_t__ E_NOINTERFACE ;
+ scalar_t__ IHTMLDocument2_get_parentWindow (int *,int **) ;
+ scalar_t__ IHTMLWindow2_QueryInterface (int *,int *,void**) ;
+ int IHTMLWindow2_Release (int *) ;
+ scalar_t__ IHTMLWindow2_get_top (int *,int **) ;
+ int IID_ITravelLogClient ;
+ scalar_t__ ITravelLogClient_FindWindowByIndex (int *,int ,int **) ;
+ int ITravelLogClient_Release (int *) ;
+ scalar_t__ S_OK ;
+ int TRUE ;
+ int no_travellog ;
+ int ok (int,char*,...) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_travellog(IHTMLDocument2 *doc)
 {
@@ -39,10 +39,10 @@ __attribute__((used)) static void test_travellog(IHTMLDocument2 *doc)
     IUnknown *unk;
     HRESULT hres;
 
-    window = NULL;
+    window = ((void*)0);
     hres = IHTMLDocument2_get_parentWindow(doc, &window);
     ok(hres == S_OK, "get_parentWindow failed: %08x\n", hres);
-    ok(window != NULL, "window = NULL\n");
+    ok(window != ((void*)0), "window = NULL\n");
 
     hres = IHTMLWindow2_get_top(window, &top_window);
     IHTMLWindow2_Release(window);

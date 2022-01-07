@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_26__   TYPE_4__ ;
-typedef  struct TYPE_25__   TYPE_3__ ;
-typedef  struct TYPE_24__   TYPE_2__ ;
-typedef  struct TYPE_23__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  value ;
+
+
+typedef struct TYPE_26__ TYPE_4__ ;
+typedef struct TYPE_25__ TYPE_3__ ;
+typedef struct TYPE_24__ TYPE_2__ ;
+typedef struct TYPE_23__ TYPE_1__ ;
+
+
+typedef int value ;
 struct TYPE_26__ {TYPE_1__* priv; TYPE_3__** outputs; } ;
 struct TYPE_25__ {TYPE_4__* dst; } ;
-struct TYPE_24__ {int /*<<< orphan*/ * metadata; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
-struct TYPE_23__ {int nb_frames; int* history; int history_pos; int badness_threshold; TYPE_2__* last_frame_av; void* last_frame_e; int /*<<< orphan*/  skip; scalar_t__ bypass; } ;
-typedef  void* PhotosensitivityFrame ;
-typedef  TYPE_1__ PhotosensitivityContext ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
-typedef  int /*<<< orphan*/  AVDictionary ;
+struct TYPE_24__ {int * metadata; int height; int width; } ;
+struct TYPE_23__ {int nb_frames; int* history; int history_pos; int badness_threshold; TYPE_2__* last_frame_av; void* last_frame_e; int skip; scalar_t__ bypass; } ;
+typedef void* PhotosensitivityFrame ;
+typedef TYPE_1__ PhotosensitivityContext ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
+typedef int AVDictionary ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_VERBOSE ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_dict_set (int /*<<< orphan*/ **,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_frame_copy (TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  av_frame_copy_props (TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_2__**) ; 
- int av_frame_make_writable (TYPE_2__*) ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*,int,int,int,int,...) ; 
- int /*<<< orphan*/  blend_frame (TYPE_4__*,TYPE_2__*,TYPE_2__*,float) ; 
- int /*<<< orphan*/  convert_frame (TYPE_4__*,TYPE_2__*,void**,int /*<<< orphan*/ ) ; 
- int ff_filter_frame (TYPE_3__*,TYPE_2__*) ; 
- TYPE_2__* ff_get_video_buffer (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int get_badness (void**,void**) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,float) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_VERBOSE ;
+ int ENOMEM ;
+ int av_dict_set (int **,char*,char*,int ) ;
+ int av_frame_copy (TYPE_2__*,TYPE_2__*) ;
+ int av_frame_copy_props (TYPE_2__*,TYPE_2__*) ;
+ int av_frame_free (TYPE_2__**) ;
+ int av_frame_make_writable (TYPE_2__*) ;
+ int av_log (TYPE_1__*,int ,char*,int,int,int,int,...) ;
+ int blend_frame (TYPE_4__*,TYPE_2__*,TYPE_2__*,float) ;
+ int convert_frame (TYPE_4__*,TYPE_2__*,void**,int ) ;
+ int ff_filter_frame (TYPE_3__*,TYPE_2__*) ;
+ TYPE_2__* ff_get_video_buffer (TYPE_3__*,int ,int ) ;
+ int get_badness (void**,void**) ;
+ int snprintf (char*,int,char*,float) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
 {
@@ -56,7 +56,7 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
     AVFilterLink *outlink = ctx->outputs[0];
     PhotosensitivityContext *s = ctx->priv;
 
-    /* weighted moving average */
+
     current_badness = 0;
     for (i = 1; i < s->nb_frames; i++)
         current_badness += i * s->history[(s->history_pos + i) % s->nb_frames];
@@ -71,7 +71,7 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
 
     fixed_badness = new_badness;
     if (new_badness < s->badness_threshold || !s->last_frame_av || s->bypass) {
-        factor = 1; /* for metadata */
+        factor = 1;
         av_frame_free(&s->last_frame_av);
         s->last_frame_av = src = in;
         s->last_frame_e = ef;
@@ -79,8 +79,8 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
     } else {
         factor = (float)(s->badness_threshold - current_badness) / (new_badness - current_badness);
         if (factor <= 0) {
-            /* just duplicate the frame */
-            s->history[s->history_pos] = 0; /* frame was duplicated, thus, delta is zero */
+
+            s->history[s->history_pos] = 0;
         } else {
             res = av_frame_make_writable(s->last_frame_av);
             if (res) {

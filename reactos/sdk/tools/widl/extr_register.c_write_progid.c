@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char* name; int /*<<< orphan*/  attrs; } ;
-typedef  TYPE_1__ type_t ;
-typedef  int /*<<< orphan*/  UUID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATTR_HELPSTRING ; 
- int /*<<< orphan*/  ATTR_PROGID ; 
- int /*<<< orphan*/  ATTR_UUID ; 
- int /*<<< orphan*/  ATTR_VIPROGID ; 
- int /*<<< orphan*/  format_uuid (int /*<<< orphan*/  const*) ; 
- void* get_attrp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  indent ; 
- int /*<<< orphan*/  put_str (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ strcmp (char const*,char const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char* name; int attrs; } ;
+typedef TYPE_1__ type_t ;
+typedef int UUID ;
+
+
+ int ATTR_HELPSTRING ;
+ int ATTR_PROGID ;
+ int ATTR_UUID ;
+ int ATTR_VIPROGID ;
+ int format_uuid (int const*) ;
+ void* get_attrp (int ,int ) ;
+ int indent ;
+ int put_str (int ,char*,...) ;
+ scalar_t__ strcmp (char const*,char const*) ;
 
 __attribute__((used)) static int write_progid( const type_t *class )
 {

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int prime_len; int subprime_len; int use_dsa; int /*<<< orphan*/ * md; } ;
-typedef  int /*<<< orphan*/  EVP_MD ;
-typedef  int /*<<< orphan*/  DSA ;
-typedef  TYPE_1__ DH_PKEY_CTX ;
-typedef  int /*<<< orphan*/  BN_GENCB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DSA_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * DSA_new () ; 
- int /*<<< orphan*/ * EVP_sha1 () ; 
- int /*<<< orphan*/ * EVP_sha256 () ; 
- int dsa_builtin_paramgen (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int dsa_builtin_paramgen2 (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int prime_len; int subprime_len; int use_dsa; int * md; } ;
+typedef int EVP_MD ;
+typedef int DSA ;
+typedef TYPE_1__ DH_PKEY_CTX ;
+typedef int BN_GENCB ;
+
+
+ int DSA_free (int *) ;
+ int * DSA_new () ;
+ int * EVP_sha1 () ;
+ int * EVP_sha256 () ;
+ int dsa_builtin_paramgen (int *,int,int,int const*,int *,int ,int *,int *,int *,int *) ;
+ int dsa_builtin_paramgen2 (int *,int,int,int const*,int *,int ,int,int *,int *,int *,int *) ;
 
 __attribute__((used)) static DSA *dsa_dh_generate(DH_PKEY_CTX *dctx, BN_GENCB *pcb)
 {
@@ -33,17 +33,17 @@ __attribute__((used)) static DSA *dsa_dh_generate(DH_PKEY_CTX *dctx, BN_GENCB *p
     int subprime_len = dctx->subprime_len;
     const EVP_MD *md = dctx->md;
     if (dctx->use_dsa > 2)
-        return NULL;
+        return ((void*)0);
     ret = DSA_new();
-    if (ret == NULL)
-        return NULL;
+    if (ret == ((void*)0))
+        return ((void*)0);
     if (subprime_len == -1) {
         if (prime_len >= 2048)
             subprime_len = 256;
         else
             subprime_len = 160;
     }
-    if (md == NULL) {
+    if (md == ((void*)0)) {
         if (prime_len >= 2048)
             md = EVP_sha256();
         else
@@ -51,13 +51,13 @@ __attribute__((used)) static DSA *dsa_dh_generate(DH_PKEY_CTX *dctx, BN_GENCB *p
     }
     if (dctx->use_dsa == 1)
         rv = dsa_builtin_paramgen(ret, prime_len, subprime_len, md,
-                                  NULL, 0, NULL, NULL, NULL, pcb);
+                                  ((void*)0), 0, ((void*)0), ((void*)0), ((void*)0), pcb);
     else if (dctx->use_dsa == 2)
         rv = dsa_builtin_paramgen2(ret, prime_len, subprime_len, md,
-                                   NULL, 0, -1, NULL, NULL, NULL, pcb);
+                                   ((void*)0), 0, -1, ((void*)0), ((void*)0), ((void*)0), pcb);
     if (rv <= 0) {
         DSA_free(ret);
-        return NULL;
+        return ((void*)0);
     }
     return ret;
 }

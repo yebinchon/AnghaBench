@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct urtw_softc {int dummy; } ;
-struct urtw_data {int /*<<< orphan*/ * ni; int /*<<< orphan*/ * buf; int /*<<< orphan*/ * m; } ;
+struct urtw_data {int * ni; int * buf; int * m; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ieee80211_free_node (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  m_freem (int /*<<< orphan*/ *) ; 
+
+ int ieee80211_free_node (int *) ;
+ int m_freem (int *) ;
 
 __attribute__((used)) static void
 urtw_free_data_list(struct urtw_softc *sc, struct urtw_data data[], int ndata,
     int fillmbuf)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < ndata; i++) {
-		struct urtw_data *dp = &data[i];
+ for (i = 0; i < ndata; i++) {
+  struct urtw_data *dp = &data[i];
 
-		if (fillmbuf == 1) {
-			if (dp->m != NULL) {
-				m_freem(dp->m);
-				dp->m = NULL;
-				dp->buf = NULL;
-			}
-		} else {
-			dp->buf = NULL;
-		}
-		if (dp->ni != NULL) {
-			ieee80211_free_node(dp->ni);
-			dp->ni = NULL;
-		}
-	}
+  if (fillmbuf == 1) {
+   if (dp->m != ((void*)0)) {
+    m_freem(dp->m);
+    dp->m = ((void*)0);
+    dp->buf = ((void*)0);
+   }
+  } else {
+   dp->buf = ((void*)0);
+  }
+  if (dp->ni != ((void*)0)) {
+   ieee80211_free_node(dp->ni);
+   dp->ni = ((void*)0);
+  }
+ }
 }

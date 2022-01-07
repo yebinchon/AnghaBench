@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- char* REPORT_BUGS_TO ; 
- char* _ (char*) ; 
- int /*<<< orphan*/  ar_emul_usage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  is_ranlib ; 
- int /*<<< orphan*/  list_supported_targets (char*,int /*<<< orphan*/ *) ; 
- char* program_name ; 
- int /*<<< orphan*/ * stderr ; 
- int /*<<< orphan*/ * stdout ; 
- int /*<<< orphan*/  xexit (int) ; 
+
+
+
+typedef int FILE ;
+
+
+ char* REPORT_BUGS_TO ;
+ char* _ (char*) ;
+ int ar_emul_usage (int *) ;
+ int fprintf (int *,char*,...) ;
+ int is_ranlib ;
+ int list_supported_targets (char*,int *) ;
+ char* program_name ;
+ int * stderr ;
+ int * stdout ;
+ int xexit (int) ;
 
 __attribute__((used)) static void
 usage (int help)
@@ -33,10 +33,10 @@ usage (int help)
 
   if (! is_ranlib)
     {
-      /* xgettext:c-format */
+
       fprintf (s, _("Usage: %s [emulation options] [-]{dmpqrstx}[abcfilNoPsSuvV] [member-name] [count] archive-file file...\n"),
-	       program_name);
-      /* xgettext:c-format */
+        program_name);
+
       fprintf (s, _("       %s -M [<mri-script]\n"), program_name);
       fprintf (s, _(" commands:\n"));
       fprintf (s, _("  d            - delete file(s) from the archive\n"));
@@ -61,18 +61,18 @@ usage (int help)
       fprintf (s, _("  [v]          - be verbose\n"));
       fprintf (s, _("  [V]          - display the version number\n"));
       fprintf (s, _("  @<file>      - read options from <file>\n"));
- 
+
       ar_emul_usage (s);
     }
   else
     {
-      /* xgettext:c-format */
+
       fprintf (s, _("Usage: %s [options] archive\n"), program_name);
       fprintf (s, _(" Generate an index to speed access to archives\n"));
-      fprintf (s, _(" The options are:\n\
-  @<file>                      Read options from <file>\n\
-  -h --help                    Print this help message\n\
-  -V --version                 Print version information\n"));
+      fprintf (s, _(" The options are:\n  @<file>                      Read options from <file>\n  -h --help                    Print this help message\n  -V --version                 Print version information\n"));
+
+
+
     }
 
   list_supported_targets (program_name, s);

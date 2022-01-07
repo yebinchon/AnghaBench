@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int buf ;
 struct TYPE_4__ {scalar_t__ unique_subject; } ;
-struct TYPE_5__ {TYPE_1__ attributes; int /*<<< orphan*/  db; } ;
-typedef  TYPE_2__ CA_DB ;
-typedef  int /*<<< orphan*/  BIO ;
+struct TYPE_5__ {TYPE_1__ attributes; int db; } ;
+typedef TYPE_2__ CA_DB ;
+typedef int BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_new_file (char*,char*) ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ *,char*,...) ; 
- int BIO_snprintf (char*,int,char*,char const*,...) ; 
- int BSIZE ; 
- int TXT_DB_write (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * bio_err ; 
- int /*<<< orphan*/  perror (char const*) ; 
- int strlen (char const*) ; 
+
+ int BIO_free (int *) ;
+ int * BIO_new_file (char*,char*) ;
+ int BIO_printf (int *,char*,...) ;
+ int BIO_snprintf (char*,int,char*,char const*,...) ;
+ int BSIZE ;
+ int TXT_DB_write (int *,int ) ;
+ int * bio_err ;
+ int perror (char const*) ;
+ int strlen (char const*) ;
 
 int save_index(const char *dbfile, const char *suffix, CA_DB *db)
 {
@@ -40,17 +40,17 @@ int save_index(const char *dbfile, const char *suffix, CA_DB *db)
         BIO_printf(bio_err, "file name too long\n");
         goto err;
     }
-#ifndef OPENSSL_SYS_VMS
+
     j = BIO_snprintf(buf[2], sizeof(buf[2]), "%s.attr", dbfile);
     j = BIO_snprintf(buf[1], sizeof(buf[1]), "%s.attr.%s", dbfile, suffix);
     j = BIO_snprintf(buf[0], sizeof(buf[0]), "%s.%s", dbfile, suffix);
-#else
-    j = BIO_snprintf(buf[2], sizeof(buf[2]), "%s-attr", dbfile);
-    j = BIO_snprintf(buf[1], sizeof(buf[1]), "%s-attr-%s", dbfile, suffix);
-    j = BIO_snprintf(buf[0], sizeof(buf[0]), "%s-%s", dbfile, suffix);
-#endif
+
+
+
+
+
     out = BIO_new_file(buf[0], "w");
-    if (out == NULL) {
+    if (out == ((void*)0)) {
         perror(dbfile);
         BIO_printf(bio_err, "unable to open '%s'\n", dbfile);
         goto err;
@@ -61,7 +61,7 @@ int save_index(const char *dbfile, const char *suffix, CA_DB *db)
         goto err;
 
     out = BIO_new_file(buf[1], "w");
-    if (out == NULL) {
+    if (out == ((void*)0)) {
         perror(buf[2]);
         BIO_printf(bio_err, "unable to open '%s'\n", buf[2]);
         goto err;

@@ -1,35 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  PT_MIPS_OPTIONS 130 
-#define  PT_MIPS_REGINFO 129 
-#define  PT_MIPS_RTPROC 128 
-
 __attribute__((used)) static const char *
 get_mips_segment_type (unsigned long type)
 {
   switch (type)
     {
-    case PT_MIPS_REGINFO:
+    case 129:
       return "REGINFO";
-    case PT_MIPS_RTPROC:
+    case 128:
       return "RTPROC";
-    case PT_MIPS_OPTIONS:
+    case 130:
       return "OPTIONS";
     default:
       break;
     }
 
-  return NULL;
+  return ((void*)0);
 }

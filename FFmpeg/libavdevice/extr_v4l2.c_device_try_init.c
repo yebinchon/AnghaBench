@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
-typedef  enum AVCodecID { ____Placeholder_AVCodecID } AVCodecID ;
-struct TYPE_7__ {scalar_t__ codec_id; int ff_fmt; int /*<<< orphan*/  v4l2_fmt; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+typedef enum AVCodecID { ____Placeholder_AVCodecID } AVCodecID ;
+struct TYPE_7__ {scalar_t__ codec_id; int ff_fmt; int v4l2_fmt; } ;
 struct TYPE_6__ {scalar_t__ video_codec_id; } ;
-typedef  TYPE_1__ AVFormatContext ;
+typedef TYPE_1__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ AV_CODEC_ID_NONE ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  av_get_pix_fmt_name (int) ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,scalar_t__,...) ; 
- scalar_t__ av_x_if_null (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  avcodec_get_name (scalar_t__) ; 
- int device_init (TYPE_1__*,int*,int*,int /*<<< orphan*/ ) ; 
- TYPE_2__* ff_fmt_conversion_table ; 
- int /*<<< orphan*/  ff_fmt_ff2v4l (int,scalar_t__) ; 
- int ff_fmt_v4l2codec (int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ scalar_t__ AV_CODEC_ID_NONE ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int av_assert0 (int) ;
+ int av_get_pix_fmt_name (int) ;
+ int av_log (TYPE_1__*,int ,char*,int ,scalar_t__,...) ;
+ scalar_t__ av_x_if_null (int ,char*) ;
+ int avcodec_get_name (scalar_t__) ;
+ int device_init (TYPE_1__*,int*,int*,int ) ;
+ TYPE_2__* ff_fmt_conversion_table ;
+ int ff_fmt_ff2v4l (int,scalar_t__) ;
+ int ff_fmt_v4l2codec (int ) ;
 
 __attribute__((used)) static int device_try_init(AVFormatContext *ctx,
                            enum AVPixelFormat pix_fmt,

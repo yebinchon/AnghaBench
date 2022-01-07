@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  scalar_t__ ULONG_PTR ;
-typedef  int /*<<< orphan*/  ULONGLONG ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int VOID ;
+typedef scalar_t__ ULONG_PTR ;
+typedef int ULONGLONG ;
 struct TYPE_3__ {int Flags; scalar_t__ Length; } ;
-typedef  int /*<<< orphan*/ * PULONGLONG ;
-typedef  TYPE_1__* PINDEX_ENTRY_ATTRIBUTE ;
+typedef int * PULONGLONG ;
+typedef TYPE_1__* PINDEX_ENTRY_ATTRIBUTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int NTFS_INDEX_ENTRY_NODE ; 
+
+ int ASSERT (int) ;
+ int NTFS_INDEX_ENTRY_NODE ;
 
 VOID
 SetIndexEntryVCN(PINDEX_ENTRY_ATTRIBUTE IndexEntry, ULONGLONG VCN)

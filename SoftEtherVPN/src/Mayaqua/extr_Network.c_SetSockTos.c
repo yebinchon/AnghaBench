@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int CurrentTos; int /*<<< orphan*/  socket; } ;
-typedef  TYPE_1__ SOCK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPPROTO_IP ; 
- int /*<<< orphan*/  IP_TOS ; 
- int /*<<< orphan*/  setsockopt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int CurrentTos; int socket; } ;
+typedef TYPE_1__ SOCK ;
+
+
+ int IPPROTO_IP ;
+ int IP_TOS ;
+ int setsockopt (int ,int ,int ,char*,int) ;
 
 void SetSockTos(SOCK *s, int tos)
 {
-	// Validate arguments
-	if (s == NULL)
-	{
-		return;
-	}
 
-	if (s->CurrentTos == tos)
-	{
-		return;
-	}
+ if (s == ((void*)0))
+ {
+  return;
+ }
 
-#ifdef	IP_TOS
-	(void)setsockopt(s->socket, IPPROTO_IP, IP_TOS, (char *)&tos, sizeof(int));
-#endif	// IP_TOS
+ if (s->CurrentTos == tos)
+ {
+  return;
+ }
 
-	s->CurrentTos = tos;
+
+
+
+
+ s->CurrentTos = tos;
 }

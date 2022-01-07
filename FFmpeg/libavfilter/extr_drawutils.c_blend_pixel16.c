@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned int uint8_t ;
-typedef  int uint16_t ;
 
-/* Variables and functions */
- int AV_RL16 (unsigned int*) ; 
- int /*<<< orphan*/  AV_WL16 (unsigned int*,int) ; 
+
+
+
+typedef unsigned int uint8_t ;
+typedef int uint16_t ;
+
+
+ int AV_RL16 (unsigned int*) ;
+ int AV_WL16 (unsigned int*,int) ;
 
 __attribute__((used)) static void blend_pixel16(uint8_t *dst, unsigned src, unsigned alpha,
                           const uint8_t *mask, int mask_linesize, int l2depth,

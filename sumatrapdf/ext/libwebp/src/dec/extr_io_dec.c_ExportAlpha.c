@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_10__ {int stride; int /*<<< orphan*/ * rgba; } ;
-typedef  TYPE_3__ WebPRGBABuffer ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_10__ {int stride; int * rgba; } ;
+typedef TYPE_3__ WebPRGBABuffer ;
 struct TYPE_11__ {TYPE_5__* scaler_a; TYPE_2__* output; } ;
-typedef  TYPE_4__ WebPDecParams ;
-typedef  scalar_t__ WEBP_CSP_MODE ;
-struct TYPE_12__ {int dst_width; int /*<<< orphan*/  dst; } ;
+typedef TYPE_4__ WebPDecParams ;
+typedef scalar_t__ WEBP_CSP_MODE ;
+struct TYPE_12__ {int dst_width; int dst; } ;
 struct TYPE_8__ {TYPE_3__ RGBA; } ;
 struct TYPE_9__ {scalar_t__ colorspace; int height; TYPE_1__ u; } ;
 
-/* Variables and functions */
- scalar_t__ const MODE_ARGB ; 
- scalar_t__ const MODE_Argb ; 
- int /*<<< orphan*/  WebPApplyAlphaMultiply (int /*<<< orphan*/ * const,int const,int const,int,int) ; 
- int /*<<< orphan*/  WebPDispatchAlpha (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int const,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int WebPIsPremultipliedMode (scalar_t__ const) ; 
- int /*<<< orphan*/  WebPRescalerExportRow (TYPE_5__*) ; 
- scalar_t__ WebPRescalerHasPendingOutput (TYPE_5__*) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ scalar_t__ const MODE_ARGB ;
+ scalar_t__ const MODE_Argb ;
+ int WebPApplyAlphaMultiply (int * const,int const,int const,int,int) ;
+ int WebPDispatchAlpha (int ,int ,int const,int,int *,int ) ;
+ int WebPIsPremultipliedMode (scalar_t__ const) ;
+ int WebPRescalerExportRow (TYPE_5__*) ;
+ scalar_t__ WebPRescalerHasPendingOutput (TYPE_5__*) ;
+ int assert (int) ;
 
 __attribute__((used)) static int ExportAlpha(WebPDecParams* const p, int y_pos, int max_lines_out) {
   const WebPRGBABuffer* const buf = &p->output->u.RGBA;

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stb_vorbis_alloc ;
-typedef  int /*<<< orphan*/  stb_vorbis ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ ) ; 
- unsigned int ftell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stb_vorbis_open_file_section (int /*<<< orphan*/ *,int,int*,int /*<<< orphan*/  const*,unsigned int) ; 
+
+
+
+typedef int stb_vorbis_alloc ;
+typedef int stb_vorbis ;
+typedef int FILE ;
+
+
+ int SEEK_END ;
+ int SEEK_SET ;
+ int fseek (int *,unsigned int,int ) ;
+ unsigned int ftell (int *) ;
+ int * stb_vorbis_open_file_section (int *,int,int*,int const*,unsigned int) ;
 
 stb_vorbis * stb_vorbis_open_file(FILE *file, int close_on_free, int *error, const stb_vorbis_alloc *alloc)
 {

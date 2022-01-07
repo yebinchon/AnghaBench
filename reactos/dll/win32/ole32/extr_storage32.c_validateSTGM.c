@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int) ; 
- int /*<<< orphan*/  E_FAIL ; 
- int STGM_ACCESS_MODE (int) ; 
- int STGM_CONVERT ; 
-#define  STGM_CREATE 136 
- int STGM_CREATE_MODE (int) ; 
-#define  STGM_FAILIFTHERE 135 
- int STGM_KNOWN_FLAGS ; 
- int STGM_NOSCRATCH ; 
- int STGM_NOSNAPSHOT ; 
-#define  STGM_READ 134 
-#define  STGM_READWRITE 133 
-#define  STGM_SHARE_DENY_NONE 132 
-#define  STGM_SHARE_DENY_READ 131 
-#define  STGM_SHARE_DENY_WRITE 130 
-#define  STGM_SHARE_EXCLUSIVE 129 
- int STGM_SHARE_MODE (int) ; 
- int STGM_SIMPLE ; 
- int STGM_TRANSACTED ; 
-#define  STGM_WRITE 128 
- int /*<<< orphan*/  S_OK ; 
+
+
+
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int ERR (char*,int) ;
+ int E_FAIL ;
+ int STGM_ACCESS_MODE (int) ;
+ int STGM_CONVERT ;
+
+ int STGM_CREATE_MODE (int) ;
+
+ int STGM_KNOWN_FLAGS ;
+ int STGM_NOSCRATCH ;
+ int STGM_NOSNAPSHOT ;
+
+
+
+
+
+
+ int STGM_SHARE_MODE (int) ;
+ int STGM_SIMPLE ;
+ int STGM_TRANSACTED ;
+
+ int S_OK ;
 
 __attribute__((used)) static HRESULT validateSTGM(DWORD stgm)
 {
   DWORD access = STGM_ACCESS_MODE(stgm);
-  DWORD share  = STGM_SHARE_MODE(stgm);
+  DWORD share = STGM_SHARE_MODE(stgm);
   DWORD create = STGM_CREATE_MODE(stgm);
 
   if (stgm&~STGM_KNOWN_FLAGS)
@@ -50,9 +50,9 @@ __attribute__((used)) static HRESULT validateSTGM(DWORD stgm)
 
   switch (access)
   {
-  case STGM_READ:
-  case STGM_WRITE:
-  case STGM_READWRITE:
+  case 134:
+  case 128:
+  case 133:
     break;
   default:
     return E_FAIL;
@@ -60,10 +60,10 @@ __attribute__((used)) static HRESULT validateSTGM(DWORD stgm)
 
   switch (share)
   {
-  case STGM_SHARE_DENY_NONE:
-  case STGM_SHARE_DENY_READ:
-  case STGM_SHARE_DENY_WRITE:
-  case STGM_SHARE_EXCLUSIVE:
+  case 132:
+  case 131:
+  case 130:
+  case 129:
     break;
   case 0:
     if (!(stgm & STGM_TRANSACTED))
@@ -75,40 +75,40 @@ __attribute__((used)) static HRESULT validateSTGM(DWORD stgm)
 
   switch (create)
   {
-  case STGM_CREATE:
-  case STGM_FAILIFTHERE:
+  case 136:
+  case 135:
     break;
   default:
     return E_FAIL;
   }
 
-  /*
-   * STGM_DIRECT | STGM_TRANSACTED | STGM_SIMPLE
-   */
+
+
+
   if ( (stgm & STGM_TRANSACTED) && (stgm & STGM_SIMPLE) )
       return E_FAIL;
 
-  /*
-   * STGM_CREATE | STGM_CONVERT
-   * if both are false, STGM_FAILIFTHERE is set to TRUE
-   */
-  if ( create == STGM_CREATE && (stgm & STGM_CONVERT) )
+
+
+
+
+  if ( create == 136 && (stgm & STGM_CONVERT) )
     return E_FAIL;
 
-  /*
-   * STGM_NOSCRATCH requires STGM_TRANSACTED
-   */
+
+
+
   if ( (stgm & STGM_NOSCRATCH) && !(stgm & STGM_TRANSACTED) )
     return E_FAIL;
 
-  /*
-   * STGM_NOSNAPSHOT requires STGM_TRANSACTED and
-   * not STGM_SHARE_EXCLUSIVE or STGM_SHARE_DENY_WRITE`
-   */
+
+
+
+
   if ( (stgm & STGM_NOSNAPSHOT) &&
         (!(stgm & STGM_TRANSACTED) ||
-         share == STGM_SHARE_EXCLUSIVE ||
-         share == STGM_SHARE_DENY_WRITE) )
+         share == 129 ||
+         share == 130) )
     return E_FAIL;
 
   return S_OK;

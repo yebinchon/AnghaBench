@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  UCHAR ;
-struct TYPE_7__ {int /*<<< orphan*/  Size; int /*<<< orphan*/  Buf; } ;
-typedef  TYPE_1__ BUF ;
 
-/* Variables and functions */
- scalar_t__ CalcCompress (int /*<<< orphan*/ ) ; 
- scalar_t__ Compress (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Malloc (scalar_t__) ; 
- TYPE_1__* NewBuf () ; 
- int /*<<< orphan*/  WriteBuf (TYPE_1__*,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  WriteBufInt (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+typedef int UCHAR ;
+struct TYPE_7__ {int Size; int Buf; } ;
+typedef TYPE_1__ BUF ;
+
+
+ scalar_t__ CalcCompress (int ) ;
+ scalar_t__ Compress (int *,scalar_t__,int ,int ) ;
+ int Free (int *) ;
+ int * Malloc (scalar_t__) ;
+ TYPE_1__* NewBuf () ;
+ int WriteBuf (TYPE_1__*,int *,scalar_t__) ;
+ int WriteBufInt (TYPE_1__*,int ) ;
 
 BUF *CompressBuf(BUF *src_buf)
 {
-	UINT dst_size;
-	UCHAR *dst_buf;
-	BUF *b;
-	// Validate arguments
-	if (src_buf == NULL)
-	{
-		return NULL;
-	}
+ UINT dst_size;
+ UCHAR *dst_buf;
+ BUF *b;
 
-	dst_size = CalcCompress(src_buf->Size);
-	dst_buf = Malloc(dst_size);
+ if (src_buf == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	dst_size = Compress(dst_buf, dst_size, src_buf->Buf, src_buf->Size);
+ dst_size = CalcCompress(src_buf->Size);
+ dst_buf = Malloc(dst_size);
 
-	if (dst_size == 0)
-	{
-		Free(dst_buf);
-		return NULL;
-	}
+ dst_size = Compress(dst_buf, dst_size, src_buf->Buf, src_buf->Size);
 
-	b = NewBuf();
-	WriteBufInt(b, src_buf->Size);
-	WriteBuf(b, dst_buf, dst_size);
+ if (dst_size == 0)
+ {
+  Free(dst_buf);
+  return ((void*)0);
+ }
 
-	Free(dst_buf);
+ b = NewBuf();
+ WriteBufInt(b, src_buf->Size);
+ WriteBuf(b, dst_buf, dst_size);
 
-	return b;
+ Free(dst_buf);
+
+ return b;
 }

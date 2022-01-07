@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fsg_config {int nluns; int /*<<< orphan*/ * luns; } ;
+
+
+
+
+struct fsg_config {int nluns; int * luns; } ;
 struct fsg_common {int dummy; } ;
-typedef  int /*<<< orphan*/  buf ;
+typedef int buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _fsg_common_remove_luns (struct fsg_common*,int) ; 
- int fsg_common_create_lun (struct fsg_common*,int /*<<< orphan*/ *,int,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fsg_common_remove_luns (struct fsg_common*) ; 
- int /*<<< orphan*/  pr_info (char*,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
+
+ int _fsg_common_remove_luns (struct fsg_common*,int) ;
+ int fsg_common_create_lun (struct fsg_common*,int *,int,char*,int *) ;
+ int fsg_common_remove_luns (struct fsg_common*) ;
+ int pr_info (char*,int) ;
+ int snprintf (char*,int,char*,int) ;
 
 int fsg_common_create_luns(struct fsg_common *common, struct fsg_config *cfg)
 {
-	char buf[8]; /* enough for 100000000 different numbers, decimal */
-	int i, rc;
+ char buf[8];
+ int i, rc;
 
-	fsg_common_remove_luns(common);
+ fsg_common_remove_luns(common);
 
-	for (i = 0; i < cfg->nluns; ++i) {
-		snprintf(buf, sizeof(buf), "lun%d", i);
-		rc = fsg_common_create_lun(common, &cfg->luns[i], i, buf, NULL);
-		if (rc)
-			goto fail;
-	}
+ for (i = 0; i < cfg->nluns; ++i) {
+  snprintf(buf, sizeof(buf), "lun%d", i);
+  rc = fsg_common_create_lun(common, &cfg->luns[i], i, buf, ((void*)0));
+  if (rc)
+   goto fail;
+ }
 
-	pr_info("Number of LUNs=%d\n", cfg->nluns);
+ pr_info("Number of LUNs=%d\n", cfg->nluns);
 
-	return 0;
+ return 0;
 
 fail:
-	_fsg_common_remove_luns(common, i);
-	return rc;
+ _fsg_common_remove_luns(common, i);
+ return rc;
 }

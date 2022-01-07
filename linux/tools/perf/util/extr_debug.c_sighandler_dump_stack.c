@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SIG_DFL ; 
- int /*<<< orphan*/  dump_stack () ; 
- int /*<<< orphan*/  psignal (int,char*) ; 
- int /*<<< orphan*/  raise (int) ; 
- int /*<<< orphan*/  signal (int,int /*<<< orphan*/ ) ; 
+ int SIG_DFL ;
+ int dump_stack () ;
+ int psignal (int,char*) ;
+ int raise (int) ;
+ int signal (int,int ) ;
 
 void sighandler_dump_stack(int sig)
 {
-	psignal(sig, "perf");
-	dump_stack();
-	signal(sig, SIG_DFL);
-	raise(sig);
+ psignal(sig, "perf");
+ dump_stack();
+ signal(sig, SIG_DFL);
+ raise(sig);
 }

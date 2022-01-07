@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct notifier_block {int dummy; } ;
 
-/* Variables and functions */
- int NOTIFY_DONE ; 
- unsigned long SYS_DOWN ; 
- unsigned long SYS_HALT ; 
- int /*<<< orphan*/  pc87413_disable () ; 
+
+ int NOTIFY_DONE ;
+ unsigned long SYS_DOWN ;
+ unsigned long SYS_HALT ;
+ int pc87413_disable () ;
 
 __attribute__((used)) static int pc87413_notify_sys(struct notifier_block *this,
-			      unsigned long code,
-			      void *unused)
+         unsigned long code,
+         void *unused)
 {
-	if (code == SYS_DOWN || code == SYS_HALT)
-		/* Turn the card off */
-		pc87413_disable();
-	return NOTIFY_DONE;
+ if (code == SYS_DOWN || code == SYS_HALT)
+
+  pc87413_disable();
+ return NOTIFY_DONE;
 }

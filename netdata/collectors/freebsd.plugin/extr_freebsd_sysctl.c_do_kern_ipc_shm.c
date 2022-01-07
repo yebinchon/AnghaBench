@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  usec_t ;
-typedef  int u_long ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int usec_t ;
+typedef int u_long ;
 struct TYPE_3__ {int mode; } ;
 struct TYPE_4__ {scalar_t__ shm_segsz; TYPE_1__ shm_perm; } ;
 struct shmid_kernel {TYPE_2__ u; } ;
-typedef  int collected_number ;
-typedef  int /*<<< orphan*/  RRDSET ;
-typedef  int /*<<< orphan*/  RRDDIM ;
+typedef int collected_number ;
+typedef int RRDSET ;
+typedef int RRDDIM ;
 
-/* Variables and functions */
- int GETSYSCTL_SIMPLE (char*,int*,int) ; 
- int GETSYSCTL_WSIZE (char*,int*,struct shmid_kernel*,int) ; 
- int KILO_FACTOR ; 
- int /*<<< orphan*/  NETDATA_CHART_PRIO_SYSTEM_IPC_SHARED_MEM_SEGS ; 
- int /*<<< orphan*/  NETDATA_CHART_PRIO_SYSTEM_IPC_SHARED_MEM_SIZE ; 
- int /*<<< orphan*/  RRDSET_TYPE_AREA ; 
- int /*<<< orphan*/  RRD_ALGORITHM_ABSOLUTE ; 
- int /*<<< orphan*/  error (char*) ; 
- struct shmid_kernel* reallocz (struct shmid_kernel*,int) ; 
- int /*<<< orphan*/ * rrddim_add (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrddim_set_by_pointer (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * rrdset_create_localhost (char*,char*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,char*,char*,char*,char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrdset_done (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rrdset_next (int /*<<< orphan*/ *) ; 
- scalar_t__ unlikely (int) ; 
+
+ int GETSYSCTL_SIMPLE (char*,int*,int) ;
+ int GETSYSCTL_WSIZE (char*,int*,struct shmid_kernel*,int) ;
+ int KILO_FACTOR ;
+ int NETDATA_CHART_PRIO_SYSTEM_IPC_SHARED_MEM_SEGS ;
+ int NETDATA_CHART_PRIO_SYSTEM_IPC_SHARED_MEM_SIZE ;
+ int RRDSET_TYPE_AREA ;
+ int RRD_ALGORITHM_ABSOLUTE ;
+ int error (char*) ;
+ struct shmid_kernel* reallocz (struct shmid_kernel*,int) ;
+ int * rrddim_add (int *,char*,int *,int,int,int ) ;
+ int rrddim_set_by_pointer (int *,int *,int) ;
+ int * rrdset_create_localhost (char*,char*,int *,char*,int *,char*,char*,char*,char*,int ,int,int ) ;
+ int rrdset_done (int *) ;
+ int rrdset_next (int *) ;
+ scalar_t__ unlikely (int) ;
 
 int do_kern_ipc_shm(int update_every, usec_t dt) {
     (void)dt;
@@ -53,7 +53,7 @@ int do_kern_ipc_shm(int update_every, usec_t dt) {
         error("DISABLED: kern.ipc.shmmodule");
         return 1;
     } else {
-        static struct shmid_kernel *ipc_shm_data = NULL;
+        static struct shmid_kernel *ipc_shm_data = ((void*)0);
         static u_long old_shmmni = 0;
         static int mib_shmsegs[3] = {0, 0, 0};
 
@@ -77,18 +77,18 @@ int do_kern_ipc_shm(int update_every, usec_t dt) {
                 }
             }
 
-            // --------------------------------------------------------------------
 
-            static RRDSET *st_segs = NULL, *st_size = NULL;
-            static RRDDIM *rd_segments = NULL, *rd_allocated = NULL;
+
+            static RRDSET *st_segs = ((void*)0), *st_size = ((void*)0);
+            static RRDDIM *rd_segments = ((void*)0), *rd_allocated = ((void*)0);
 
             if (unlikely(!st_segs)) {
                 st_segs = rrdset_create_localhost(
                         "system",
                         "ipc_shared_mem_segs",
-                        NULL,
+                        ((void*)0),
                         "ipc shared memory",
-                        NULL,
+                        ((void*)0),
                         "IPC Shared Memory Segments",
                         "segments",
                         "freebsd.plugin",
@@ -98,22 +98,22 @@ int do_kern_ipc_shm(int update_every, usec_t dt) {
                         RRDSET_TYPE_AREA
                 );
 
-                rd_segments = rrddim_add(st_segs, "segments", NULL, 1, 1, RRD_ALGORITHM_ABSOLUTE);
+                rd_segments = rrddim_add(st_segs, "segments", ((void*)0), 1, 1, RRD_ALGORITHM_ABSOLUTE);
             }
             else rrdset_next(st_segs);
 
             rrddim_set_by_pointer(st_segs, rd_segments, ipc_shm.segs);
             rrdset_done(st_segs);
 
-            // --------------------------------------------------------------------
+
 
             if (unlikely(!st_size)) {
                 st_size = rrdset_create_localhost(
                         "system",
                         "ipc_shared_mem_size",
-                        NULL,
+                        ((void*)0),
                         "ipc shared memory",
-                        NULL,
+                        ((void*)0),
                         "IPC Shared Memory Segments Size",
                         "KiB",
                         "freebsd.plugin",
@@ -123,7 +123,7 @@ int do_kern_ipc_shm(int update_every, usec_t dt) {
                         RRDSET_TYPE_AREA
                 );
 
-                rd_allocated = rrddim_add(st_size, "allocated", NULL, 1, KILO_FACTOR, RRD_ALGORITHM_ABSOLUTE);
+                rd_allocated = rrddim_add(st_size, "allocated", ((void*)0), 1, KILO_FACTOR, RRD_ALGORITHM_ABSOLUTE);
             }
             else rrdset_next(st_size);
 

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  E_FAIL ; 
- int KEY_READ ; 
- int KEY_WOW64_64KEY ; 
- int KEY_WRITE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  StringFromGUID2 (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ *) ; 
- scalar_t__ eRender ; 
- int /*<<< orphan*/  key_capture ; 
- int /*<<< orphan*/  key_render ; 
- int /*<<< orphan*/ * reg_properties ; 
+
+
+
+typedef int WCHAR ;
+typedef scalar_t__ LONG ;
+typedef int HRESULT ;
+typedef int HKEY ;
+typedef int GUID ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int E_FAIL ;
+ int KEY_READ ;
+ int KEY_WOW64_64KEY ;
+ int KEY_WRITE ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegOpenKeyExW (int ,int *,int ,int,int *) ;
+ int S_OK ;
+ int StringFromGUID2 (int const*,int *,int) ;
+ int WARN (char*,int ,scalar_t__) ;
+ int debugstr_w (int *) ;
+ scalar_t__ eRender ;
+ int key_capture ;
+ int key_render ;
+ int * reg_properties ;
 
 __attribute__((used)) static HRESULT MMDevPropStore_OpenPropKey(const GUID *guid, DWORD flow, HKEY *propkey)
 {

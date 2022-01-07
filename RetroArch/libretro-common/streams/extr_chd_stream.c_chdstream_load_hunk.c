@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_4__ {scalar_t__ hunknum; scalar_t__ hunkmem; int /*<<< orphan*/  chd; scalar_t__ swab; } ;
-typedef  TYPE_1__ chdstream_t ;
-typedef  scalar_t__ chd_error ;
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+typedef int uint16_t ;
+struct TYPE_4__ {scalar_t__ hunknum; scalar_t__ hunkmem; int chd; scalar_t__ swab; } ;
+typedef TYPE_1__ chdstream_t ;
+typedef scalar_t__ chd_error ;
 struct TYPE_5__ {int hunkbytes; } ;
 
-/* Variables and functions */
- scalar_t__ CHDERR_NONE ; 
- int /*<<< orphan*/  SWAP16 (int /*<<< orphan*/ ) ; 
- TYPE_3__* chd_get_header (int /*<<< orphan*/ ) ; 
- scalar_t__ chd_read (int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
+
+ scalar_t__ CHDERR_NONE ;
+ int SWAP16 (int ) ;
+ TYPE_3__* chd_get_header (int ) ;
+ scalar_t__ chd_read (int ,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static bool
 chdstream_load_hunk(chdstream_t *stream, uint32_t hunknum)
@@ -34,11 +34,11 @@ chdstream_load_hunk(chdstream_t *stream, uint32_t hunknum)
    uint32_t count;
 
    if (hunknum == stream->hunknum)
-      return true;
+      return 1;
 
    err = chd_read(stream->chd, hunknum, stream->hunkmem);
    if (err != CHDERR_NONE)
-      return false;
+      return 0;
 
    if (stream->swab)
    {
@@ -49,5 +49,5 @@ chdstream_load_hunk(chdstream_t *stream, uint32_t hunknum)
    }
 
    stream->hunknum = hunknum;
-   return true;
+   return 1;
 }

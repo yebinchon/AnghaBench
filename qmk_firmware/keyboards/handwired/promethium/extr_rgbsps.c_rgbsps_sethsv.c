@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  rgbsps_set (int,int,int,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+
+
+ int rgbsps_set (int,int,int,int) ;
 
 void rgbsps_sethsv(uint8_t index, uint16_t hue, uint8_t sat, uint8_t val) {
   uint8_t r = 0, g = 0, b = 0, base, color;
 
-  if (sat == 0) { // Acromatic color (gray). Hue doesn't mind.
+  if (sat == 0) {
     r = val;
     g = val;
     b = val;

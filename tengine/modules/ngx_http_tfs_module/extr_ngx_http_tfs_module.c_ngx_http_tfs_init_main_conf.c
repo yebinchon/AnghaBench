@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int tfs_connect_timeout; int tfs_send_timeout; int tfs_read_timeout; int tair_timeout; scalar_t__ send_lowat; scalar_t__ buffer_size; scalar_t__ body_buffer_size; } ;
-typedef  TYPE_1__ ngx_http_tfs_main_conf_t ;
-typedef  int /*<<< orphan*/  ngx_conf_t ;
+typedef TYPE_1__ ngx_http_tfs_main_conf_t ;
+typedef int ngx_conf_t ;
 
-/* Variables and functions */
- char* NGX_CONF_OK ; 
- int NGX_CONF_UNSET_MSEC ; 
- scalar_t__ NGX_CONF_UNSET_SIZE ; 
- scalar_t__ NGX_HTTP_TFS_DEFAULT_BODY_BUFFER_SIZE ; 
- scalar_t__ ngx_pagesize ; 
+
+ char* NGX_CONF_OK ;
+ int NGX_CONF_UNSET_MSEC ;
+ scalar_t__ NGX_CONF_UNSET_SIZE ;
+ scalar_t__ NGX_HTTP_TFS_DEFAULT_BODY_BUFFER_SIZE ;
+ scalar_t__ ngx_pagesize ;
 
 __attribute__((used)) static char *
 ngx_http_tfs_init_main_conf(ngx_conf_t *cf, void *conf)

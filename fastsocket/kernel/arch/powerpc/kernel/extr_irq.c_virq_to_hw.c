@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  irq_hw_number_t ;
-struct TYPE_2__ {int /*<<< orphan*/  hwirq; } ;
 
-/* Variables and functions */
- TYPE_1__* irq_map ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int irq_hw_number_t ;
+struct TYPE_2__ {int hwirq; } ;
+
+
+ TYPE_1__* irq_map ;
 
 irq_hw_number_t virq_to_hw(unsigned int virq)
 {
-	return irq_map[virq].hwirq;
+ return irq_map[virq].hwirq;
 }

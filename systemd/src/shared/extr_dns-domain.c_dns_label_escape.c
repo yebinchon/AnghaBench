@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- size_t DNS_LABEL_MAX ; 
- int EINVAL ; 
- int ENOBUFS ; 
- scalar_t__ IN_SET (char const,char,char) ; 
- int /*<<< orphan*/  assert (char const*) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ size_t DNS_LABEL_MAX ;
+ int EINVAL ;
+ int ENOBUFS ;
+ scalar_t__ IN_SET (char const,char,char) ;
+ int assert (char const*) ;
 
 int dns_label_escape(const char *p, size_t l, char *dest, size_t sz) {
         char *q;
 
-        /* DNS labels must be between 1 and 63 characters long. A
-         * zero-length label does not exist. See RFC 2182, Section
-         * 11. */
+
+
+
 
         if (l <= 0 || l > DNS_LABEL_MAX)
                 return -EINVAL;
@@ -39,7 +39,7 @@ int dns_label_escape(const char *p, size_t l, char *dest, size_t sz) {
 
                 if (IN_SET(*p, '.', '\\')) {
 
-                        /* Dot or backslash */
+
 
                         if (sz < 3)
                                 return -ENOBUFS;
@@ -54,7 +54,7 @@ int dns_label_escape(const char *p, size_t l, char *dest, size_t sz) {
                            (*p >= 'a' && *p <= 'z') ||
                            (*p >= 'A' && *p <= 'Z')) {
 
-                        /* Proper character */
+
 
                         if (sz < 2)
                                 return -ENOBUFS;
@@ -64,7 +64,7 @@ int dns_label_escape(const char *p, size_t l, char *dest, size_t sz) {
 
                 } else {
 
-                        /* Everything else */
+
 
                         if (sz < 5)
                                 return -ENOBUFS;

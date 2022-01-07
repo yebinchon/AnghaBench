@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sh_eth_private {int /*<<< orphan*/  timer; } ;
+
+
+
+
+struct sh_eth_private {int timer; } ;
 struct net_device {int dummy; } ;
 
-/* Variables and functions */
- int HZ ; 
- scalar_t__ jiffies ; 
- int /*<<< orphan*/  mod_timer (int /*<<< orphan*/ *,scalar_t__) ; 
- struct sh_eth_private* netdev_priv (struct net_device*) ; 
+
+ int HZ ;
+ scalar_t__ jiffies ;
+ int mod_timer (int *,scalar_t__) ;
+ struct sh_eth_private* netdev_priv (struct net_device*) ;
 
 __attribute__((used)) static void sh_eth_timer(unsigned long data)
 {
-	struct net_device *ndev = (struct net_device *)data;
-	struct sh_eth_private *mdp = netdev_priv(ndev);
+ struct net_device *ndev = (struct net_device *)data;
+ struct sh_eth_private *mdp = netdev_priv(ndev);
 
-	mod_timer(&mdp->timer, jiffies + (10 * HZ));
+ mod_timer(&mdp->timer, jiffies + (10 * HZ));
 }

@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_operation_t ;
-typedef  int /*<<< orphan*/  svn_wc_conflict_version_t ;
-typedef  int /*<<< orphan*/  svn_wc_conflict_action_t ;
-struct TYPE_5__ {int /*<<< orphan*/  wc_id; int /*<<< orphan*/  sdb; } ;
-typedef  TYPE_1__ svn_wc__db_wcroot_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-typedef  int /*<<< orphan*/  svn_skel_t ;
-typedef  int /*<<< orphan*/  svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STMT_CREATE_UPDATE_MOVE_LIST ; 
- int /*<<< orphan*/  STMT_SELECT_MOVED_DESCENDANTS_SRC ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/ * create_tree_conflict (int /*<<< orphan*/ **,TYPE_1__*,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kind_map ; 
- int /*<<< orphan*/ * svn_error_compose_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_relpath_prefix (char const*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__bindf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char const*,int) ; 
- int svn_sqlite__column_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* svn_sqlite__column_text (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__column_token (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__exec_statements (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__get_statement (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__step (scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_conflict_reason_moved_away ; 
- int /*<<< orphan*/  svn_wc_notify_state_inapplicable ; 
- int /*<<< orphan*/  svn_wc_notify_tree_conflict ; 
- int /*<<< orphan*/ * update_move_list_add (TYPE_1__*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int svn_wc_operation_t ;
+typedef int svn_wc_conflict_version_t ;
+typedef int svn_wc_conflict_action_t ;
+struct TYPE_5__ {int wc_id; int sdb; } ;
+typedef TYPE_1__ svn_wc__db_wcroot_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_sqlite__stmt_t ;
+typedef int svn_skel_t ;
+typedef int svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int STMT_CREATE_UPDATE_MOVE_LIST ;
+ int STMT_SELECT_MOVED_DESCENDANTS_SRC ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int * SVN_NO_ERROR ;
+ int * create_tree_conflict (int **,TYPE_1__*,char const*,char const*,int *,int const*,int const*,int ,int ,int ,char const*,int ,int ,int ,int *,int *) ;
+ int kind_map ;
+ int * svn_error_compose_create (int *,int ) ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ int svn_relpath_prefix (char const*,int,int *) ;
+ int svn_sqlite__bindf (int *,char*,int ,char const*,int) ;
+ int svn_sqlite__column_int (int *,int ) ;
+ char* svn_sqlite__column_text (int *,int,int *) ;
+ int svn_sqlite__column_token (int *,int,int ) ;
+ int svn_sqlite__exec_statements (int ,int ) ;
+ int svn_sqlite__get_statement (int **,int ,int ) ;
+ int svn_sqlite__reset (int *) ;
+ int svn_sqlite__step (scalar_t__*,int *) ;
+ int svn_wc_conflict_reason_moved_away ;
+ int svn_wc_notify_state_inapplicable ;
+ int svn_wc_notify_tree_conflict ;
+ int * update_move_list_add (TYPE_1__*,char const*,int *,int ,int ,int ,int ,int *,int *,int *) ;
 
 svn_error_t *
 svn_wc__db_op_raise_moved_away_internal(
@@ -78,19 +78,19 @@ svn_wc__db_op_raise_moved_away_internal(
     {
       svn_error_t *err;
       int delete_op_depth = svn_sqlite__column_int(stmt, 0);
-      const char *src_relpath = svn_sqlite__column_text(stmt, 1, NULL);
+      const char *src_relpath = svn_sqlite__column_text(stmt, 1, ((void*)0));
       svn_node_kind_t src_kind = svn_sqlite__column_token(stmt, 2, kind_map);
-      const char *src_repos_relpath = svn_sqlite__column_text(stmt, 3, NULL);
-      const char *dst_relpath = svn_sqlite__column_text(stmt, 4, NULL);
+      const char *src_repos_relpath = svn_sqlite__column_text(stmt, 3, ((void*)0));
+      const char *dst_relpath = svn_sqlite__column_text(stmt, 4, ((void*)0));
       svn_skel_t *conflict;
       svn_pool_clear(iterpool);
 
-      SVN_ERR_ASSERT(src_repos_relpath != NULL);
+      SVN_ERR_ASSERT(src_repos_relpath != ((void*)0));
 
       err = create_tree_conflict(&conflict, wcroot, src_relpath, dst_relpath,
                                  db, old_version, new_version, operation,
-                                 src_kind /* ### old kind */,
-                                 src_kind /* ### new kind */,
+                                 src_kind ,
+                                 src_kind ,
                                  src_repos_relpath,
                                  svn_wc_conflict_reason_moved_away,
                                  action,
@@ -105,7 +105,7 @@ svn_wc__db_op_raise_moved_away_internal(
                                    src_kind,
                                    svn_wc_notify_state_inapplicable,
                                    svn_wc_notify_state_inapplicable,
-                                   conflict, NULL, scratch_pool);
+                                   conflict, ((void*)0), scratch_pool);
 
       if (err)
         return svn_error_compose_create(err, svn_sqlite__reset(stmt));

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct udpcb {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  V_udpcb_zone ; 
- int /*<<< orphan*/  uma_zfree (int /*<<< orphan*/ ,struct udpcb*) ; 
+
+ int V_udpcb_zone ;
+ int uma_zfree (int ,struct udpcb*) ;
 
 void
 udp_discardcb(struct udpcb *up)
 {
 
-	uma_zfree(V_udpcb_zone, up);
+ uma_zfree(V_udpcb_zone, up);
 }

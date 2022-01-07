@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct stream {int dummy; } ;
 struct mpv_global {int dummy; } ;
 struct mp_cancel {int dummy; } ;
-struct TYPE_3__ {int /*<<< orphan*/  len; int /*<<< orphan*/  start; } ;
-typedef  TYPE_1__ bstr ;
+struct TYPE_3__ {int len; int start; } ;
+typedef TYPE_1__ bstr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (struct stream*) ; 
- int /*<<< orphan*/  free_stream (struct stream*) ; 
- struct stream* stream_concat_open (struct mpv_global*,struct mp_cancel*,struct stream**,int) ; 
- struct stream* stream_memory_open (struct mpv_global*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int assert (struct stream*) ;
+ int free_stream (struct stream*) ;
+ struct stream* stream_concat_open (struct mpv_global*,struct mp_cancel*,struct stream**,int) ;
+ struct stream* stream_memory_open (struct mpv_global*,int ,int ) ;
 
 __attribute__((used)) static struct stream *create_webshit_concat_stream(struct mpv_global *global,
                                                    struct mp_cancel *c,

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  cache; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int cache; } ;
 struct TYPE_9__ {TYPE_2__* manager; TYPE_1__* link; } ;
 struct TYPE_8__ {TYPE_4__* unicast_scope; TYPE_3__* current_dns_server; } ;
 struct TYPE_7__ {TYPE_4__* unicast_scope; TYPE_3__* current_dns_server; } ;
-typedef  TYPE_3__ DnsServer ;
-typedef  TYPE_4__ DnsScope ;
+typedef TYPE_3__ DnsServer ;
+typedef TYPE_4__ DnsScope ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_3__*) ; 
- int /*<<< orphan*/  dns_cache_flush (int /*<<< orphan*/ *) ; 
+
+ int assert (TYPE_3__*) ;
+ int dns_cache_flush (int *) ;
 
 void dns_server_flush_cache(DnsServer *s) {
         DnsServer *current;
@@ -31,7 +31,7 @@ void dns_server_flush_cache(DnsServer *s) {
 
         assert(s);
 
-        /* Flush the cache of the scope this server belongs to */
+
 
         current = s->link ? s->link->current_dns_server : s->manager->current_dns_server;
         if (current != s)

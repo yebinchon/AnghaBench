@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct drive {int ref; char* root; TYPE_1__ IDrive_iface; int /*<<< orphan*/  classinfo; } ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  TYPE_1__ IDrive ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSID_Drive ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  S_OK ; 
- char* SysAllocStringLen (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  drivevtbl ; 
- struct drive* heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (struct drive*) ; 
- int /*<<< orphan*/  init_classinfo (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * lpVtbl; } ;
+struct drive {int ref; char* root; TYPE_1__ IDrive_iface; int classinfo; } ;
+typedef char WCHAR ;
+typedef int IUnknown ;
+typedef TYPE_1__ IDrive ;
+typedef int HRESULT ;
+
+
+ int CLSID_Drive ;
+ int E_OUTOFMEMORY ;
+ int S_OK ;
+ char* SysAllocStringLen (int *,int) ;
+ int drivevtbl ;
+ struct drive* heap_alloc (int) ;
+ int heap_free (struct drive*) ;
+ int init_classinfo (int *,int *,int *) ;
 
 __attribute__((used)) static HRESULT create_drive(WCHAR letter, IDrive **drive)
 {
     struct drive *This;
 
-    *drive = NULL;
+    *drive = ((void*)0);
 
     This = heap_alloc(sizeof(*This));
     if (!This) return E_OUTOFMEMORY;
 
     This->IDrive_iface.lpVtbl = &drivevtbl;
     This->ref = 1;
-    This->root = SysAllocStringLen(NULL, 3);
+    This->root = SysAllocStringLen(((void*)0), 3);
     if (!This->root)
     {
         heap_free(This);

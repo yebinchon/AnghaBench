@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ supports_deadprop_count; } ;
-typedef  TYPE_1__ svn_ra_serf__session_t ;
+typedef TYPE_1__ svn_ra_serf__session_t ;
 struct TYPE_6__ {char* xmlns; char* name; } ;
-typedef  TYPE_2__ svn_ra_serf__dav_props_t ;
-typedef  int apr_uint32_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
+typedef TYPE_2__ svn_ra_serf__dav_props_t ;
+typedef int apr_uint32_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
 
-/* Variables and functions */
- char* SVN_DAV_PROP_NS_DAV ; 
- char* SVN_DAV__CREATIONDATE ; 
- char* SVN_DAV__VERSION_NAME ; 
- int SVN_DIRENT_CREATED_REV ; 
- int SVN_DIRENT_HAS_PROPS ; 
- int SVN_DIRENT_KIND ; 
- int SVN_DIRENT_LAST_AUTHOR ; 
- int SVN_DIRENT_SIZE ; 
- int SVN_DIRENT_TIME ; 
- int /*<<< orphan*/ * apr_array_make (int /*<<< orphan*/ *,int,int) ; 
- TYPE_2__* apr_array_push (int /*<<< orphan*/ *) ; 
- scalar_t__ svn_tristate_false ; 
+
+ char* SVN_DAV_PROP_NS_DAV ;
+ char* SVN_DAV__CREATIONDATE ;
+ char* SVN_DAV__VERSION_NAME ;
+ int SVN_DIRENT_CREATED_REV ;
+ int SVN_DIRENT_HAS_PROPS ;
+ int SVN_DIRENT_KIND ;
+ int SVN_DIRENT_LAST_AUTHOR ;
+ int SVN_DIRENT_SIZE ;
+ int SVN_DIRENT_TIME ;
+ int * apr_array_make (int *,int,int) ;
+ TYPE_2__* apr_array_push (int *) ;
+ scalar_t__ svn_tristate_false ;
 
 apr_array_header_t *
 svn_ra_serf__get_dirent_props(apr_uint32_t dirent_fields,
@@ -90,10 +90,10 @@ svn_ra_serf__get_dirent_props(apr_uint32_t dirent_fields,
     }
   else
     {
-      /* We found an old subversion server that can't handle
-         the deadprop-count property in the way we expect.
 
-         The neon behavior is to retrieve all properties in this case */
+
+
+
       prop = apr_array_push(props);
       prop->xmlns = "DAV:";
       prop->name = "allprop";

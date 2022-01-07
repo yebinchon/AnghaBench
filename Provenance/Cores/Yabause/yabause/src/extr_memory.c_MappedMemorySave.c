@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  size_t u32 ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MappedMemoryReadByte (size_t) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fwrite (void*,int,size_t,int /*<<< orphan*/ *) ; 
- scalar_t__ malloc (size_t) ; 
+
+
+
+typedef int u8 ;
+typedef size_t u32 ;
+typedef int FILE ;
+
+
+ int MappedMemoryReadByte (size_t) ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int free (int *) ;
+ int fwrite (void*,int,size_t,int *) ;
+ scalar_t__ malloc (size_t) ;
 
 int MappedMemorySave(const char *filename, u32 addr, u32 size)
 {
@@ -31,10 +31,10 @@ int MappedMemorySave(const char *filename, u32 addr, u32 size)
    if (!filename)
       return -1;
 
-   if ((fp = fopen(filename, "wb")) == NULL)
+   if ((fp = fopen(filename, "wb")) == ((void*)0))
       return -1;
 
-   if ((buffer = (u8 *)malloc(size)) == NULL)
+   if ((buffer = (u8 *)malloc(size)) == ((void*)0))
    {
       fclose(fp);
       return -2;

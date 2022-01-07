@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  session_t ;
-typedef  int /*<<< orphan*/  protocomm_security_pop_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int session_t ;
+typedef int protocomm_security_pop_t ;
+typedef int esp_err_t ;
 struct TYPE_10__ {int msg; } ;
 struct TYPE_9__ {scalar_t__ sec1; } ;
-typedef  TYPE_1__ SessionData ;
-typedef  TYPE_2__ Sec1Payload ;
+typedef TYPE_1__ SessionData ;
+typedef TYPE_2__ Sec1Payload ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERR_INVALID_ARG ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*) ; 
-#define  SEC1_MSG_TYPE__Session_Command0 129 
-#define  SEC1_MSG_TYPE__Session_Command1 128 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  handle_session_command0 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,TYPE_1__*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  handle_session_command1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,TYPE_1__*) ; 
+
+ int ESP_ERR_INVALID_ARG ;
+ int ESP_LOGE (int ,char*) ;
+
+
+ int TAG ;
+ int handle_session_command0 (int *,int ,TYPE_1__*,TYPE_1__*,int const*) ;
+ int handle_session_command1 (int *,int ,TYPE_1__*,TYPE_1__*) ;
 
 __attribute__((used)) static esp_err_t sec1_session_setup(session_t *cur_session,
                                     uint32_t session_id,
@@ -44,10 +44,10 @@ __attribute__((used)) static esp_err_t sec1_session_setup(session_t *cur_session
     }
 
     switch (in->msg) {
-        case SEC1_MSG_TYPE__Session_Command0:
+        case 129:
             ret = handle_session_command0(cur_session, session_id, req, resp, pop);
             break;
-        case SEC1_MSG_TYPE__Session_Command1:
+        case 128:
             ret = handle_session_command1(cur_session, session_id, req, resp);
             break;
         default:

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {size_t band_index; float* noise_buffer; } ;
-typedef  TYPE_1__ QDMCContext ;
+typedef TYPE_1__ QDMCContext ;
 
-/* Variables and functions */
- int* noise_bands_size ; 
- int* qdmc_nodes ; 
+
+ int* noise_bands_size ;
+ int* qdmc_nodes ;
 
 __attribute__((used)) static void make_noises(QDMCContext *s)
 {
@@ -24,7 +24,7 @@ __attribute__((used)) static void make_noises(QDMCContext *s)
     float *nptr;
 
     for (j = 0; j < noise_bands_size[s->band_index]; j++) {
-        n0 = qdmc_nodes[j + 21 * s->band_index    ];
+        n0 = qdmc_nodes[j + 21 * s->band_index ];
         n1 = qdmc_nodes[j + 21 * s->band_index + 1];
         n2 = qdmc_nodes[j + 21 * s->band_index + 2];
         nptr = s->noise_buffer + 256 * j;

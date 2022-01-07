@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KC_LALT ; 
- int /*<<< orphan*/  KC_LCTL ; 
- int /*<<< orphan*/  KC_LSFT ; 
- int /*<<< orphan*/  KC_PPLS ; 
- int /*<<< orphan*/  KC_U ; 
-#define  UC_MODE_LINUX 130 
-#define  UC_MODE_OSX 129 
-#define  UC_MODE_WIN 128 
- int /*<<< orphan*/  hextokeycode (int) ; 
- int /*<<< orphan*/  register_code (int /*<<< orphan*/ ) ; 
- int unicode_mode ; 
- int /*<<< orphan*/  unregister_code (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint16_t ;
+
+
+ int KC_LALT ;
+ int KC_LCTL ;
+ int KC_LSFT ;
+ int KC_PPLS ;
+ int KC_U ;
+
+
+
+ int hextokeycode (int) ;
+ int register_code (int ) ;
+ int unicode_mode ;
+ int unregister_code (int ) ;
 
 void unicode_action_function(uint16_t hi, uint16_t lo) {
     switch (unicode_mode) {
-    case UC_MODE_WIN:
+    case 128:
         register_code(KC_LALT);
 
         register_code(KC_PPLS);
@@ -45,7 +45,7 @@ void unicode_action_function(uint16_t hi, uint16_t lo) {
 
         unregister_code(KC_LALT);
         break;
-    case UC_MODE_LINUX:
+    case 130:
         register_code(KC_LCTL);
         register_code(KC_LSFT);
 
@@ -64,7 +64,7 @@ void unicode_action_function(uint16_t hi, uint16_t lo) {
         unregister_code(KC_LCTL);
         unregister_code(KC_LSFT);
         break;
-    case UC_MODE_OSX:
+    case 129:
         break;
     }
 }

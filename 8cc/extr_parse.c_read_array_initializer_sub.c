@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vector ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int Vector ;
 struct TYPE_4__ {int len; int size; TYPE_2__* ptr; } ;
-typedef  TYPE_1__ Type ;
-typedef  int /*<<< orphan*/  Token ;
+typedef TYPE_1__ Type ;
+typedef int Token ;
 struct TYPE_5__ {int size; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  errort (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  expect (char) ; 
- int /*<<< orphan*/ * get () ; 
- scalar_t__ is_keyword (int /*<<< orphan*/ *,char) ; 
- int maybe_read_brace () ; 
- int /*<<< orphan*/  maybe_skip_comma () ; 
- int /*<<< orphan*/ * peek () ; 
- int /*<<< orphan*/  read_initializer_elem (int /*<<< orphan*/ *,TYPE_2__*,int,int) ; 
- int read_intexpr () ; 
- int /*<<< orphan*/  skip_to_brace () ; 
- int /*<<< orphan*/  unget_token (int /*<<< orphan*/ *) ; 
+
+ int errort (int *,char*,int) ;
+ int expect (char) ;
+ int * get () ;
+ scalar_t__ is_keyword (int *,char) ;
+ int maybe_read_brace () ;
+ int maybe_skip_comma () ;
+ int * peek () ;
+ int read_initializer_elem (int *,TYPE_2__*,int,int) ;
+ int read_intexpr () ;
+ int skip_to_brace () ;
+ int unget_token (int *) ;
 
 __attribute__((used)) static void read_array_initializer_sub(Vector *inits, Type *ty, int off, bool designated) {
     bool has_brace = maybe_read_brace();
@@ -54,13 +54,13 @@ __attribute__((used)) static void read_array_initializer_sub(Vector *inits, Type
                 errort(tok, "array designator exceeds array bounds: %d", idx);
             i = idx;
             expect(']');
-            designated = true;
+            designated = 1;
         } else {
             unget_token(tok);
         }
         read_initializer_elem(inits, ty->ptr, off + elemsize * i, designated);
         maybe_skip_comma();
-        designated = false;
+        designated = 0;
     }
     if (has_brace)
         skip_to_brace();

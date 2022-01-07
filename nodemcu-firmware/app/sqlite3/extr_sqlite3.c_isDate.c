@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-struct TYPE_9__ {int /*<<< orphan*/  iJD; scalar_t__ isError; } ;
-typedef  TYPE_1__ DateTime ;
 
-/* Variables and functions */
- int SQLITE_FLOAT ; 
- int SQLITE_INTEGER ; 
- int /*<<< orphan*/  computeJD (TYPE_1__*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ parseDateOrTime (int /*<<< orphan*/ *,char*,TYPE_1__*) ; 
- scalar_t__ parseModifier (int /*<<< orphan*/ *,char*,int,TYPE_1__*) ; 
- int setDateTimeToCurrent (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  setRawDateNumber (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_value_double (int /*<<< orphan*/ *) ; 
- unsigned char* sqlite3_value_text (int /*<<< orphan*/ *) ; 
- int sqlite3_value_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  validJulianDay (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+struct TYPE_9__ {int iJD; scalar_t__ isError; } ;
+typedef TYPE_1__ DateTime ;
+
+
+ int SQLITE_FLOAT ;
+ int SQLITE_INTEGER ;
+ int computeJD (TYPE_1__*) ;
+ int memset (TYPE_1__*,int ,int) ;
+ scalar_t__ parseDateOrTime (int *,char*,TYPE_1__*) ;
+ scalar_t__ parseModifier (int *,char*,int,TYPE_1__*) ;
+ int setDateTimeToCurrent (int *,TYPE_1__*) ;
+ int setRawDateNumber (TYPE_1__*,int ) ;
+ int sqlite3_value_bytes (int *) ;
+ int sqlite3_value_double (int *) ;
+ unsigned char* sqlite3_value_text (int *) ;
+ int sqlite3_value_type (int *) ;
+ int validJulianDay (int ) ;
 
 __attribute__((used)) static int isDate(
   sqlite3_context *context,

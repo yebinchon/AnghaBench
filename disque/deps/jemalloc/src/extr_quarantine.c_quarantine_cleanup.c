@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tsd_t ;
-typedef  int /*<<< orphan*/  quarantine_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  config_fill ; 
- int /*<<< orphan*/  idalloctm (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  quarantine_drain (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tcache_get (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * tsd_quarantine_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tsd_quarantine_set (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int tsd_t ;
+typedef int quarantine_t ;
+
+
+ int config_fill ;
+ int idalloctm (int *,int *,int ,int) ;
+ int quarantine_drain (int *,int *,int ) ;
+ int tcache_get (int *,int) ;
+ int * tsd_quarantine_get (int *) ;
+ int tsd_quarantine_set (int *,int *) ;
 
 void
 quarantine_cleanup(tsd_t *tsd)
 {
-	quarantine_t *quarantine;
+ quarantine_t *quarantine;
 
-	if (!config_fill)
-		return;
+ if (!config_fill)
+  return;
 
-	quarantine = tsd_quarantine_get(tsd);
-	if (quarantine != NULL) {
-		quarantine_drain(tsd, quarantine, 0);
-		idalloctm(tsd, quarantine, tcache_get(tsd, false), true);
-		tsd_quarantine_set(tsd, NULL);
-	}
+ quarantine = tsd_quarantine_get(tsd);
+ if (quarantine != ((void*)0)) {
+  quarantine_drain(tsd, quarantine, 0);
+  idalloctm(tsd, quarantine, tcache_get(tsd, 0), 1);
+  tsd_quarantine_set(tsd, ((void*)0));
+ }
 }

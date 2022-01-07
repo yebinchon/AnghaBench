@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct output_buffer {int allocated; unsigned int codepage; scalar_t__ written; int /*<<< orphan*/  data; } ;
-struct TYPE_4__ {int /*<<< orphan*/  encoding; struct output_buffer buffer; } ;
-typedef  TYPE_1__ xmlwriteroutput ;
-typedef  unsigned int UINT ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  get_code_page (int /*<<< orphan*/ ,unsigned int*) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  writeroutput_alloc (TYPE_1__*,int const) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct output_buffer {int allocated; unsigned int codepage; scalar_t__ written; int data; } ;
+struct TYPE_4__ {int encoding; struct output_buffer buffer; } ;
+typedef TYPE_1__ xmlwriteroutput ;
+typedef unsigned int UINT ;
+typedef int HRESULT ;
+
+
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int S_OK ;
+ int WARN (char*) ;
+ int get_code_page (int ,unsigned int*) ;
+ int memset (int ,int ,int) ;
+ int writeroutput_alloc (TYPE_1__*,int const) ;
 
 __attribute__((used)) static HRESULT init_output_buffer(xmlwriteroutput *output)
 {

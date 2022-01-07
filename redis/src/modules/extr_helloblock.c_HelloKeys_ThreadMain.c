@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RedisModuleString ;
-typedef  int /*<<< orphan*/  RedisModuleCtx ;
-typedef  int /*<<< orphan*/  RedisModuleCallReply ;
-typedef  int /*<<< orphan*/  RedisModuleBlockedClient ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REDISMODULE_POSTPONED_ARRAY_LEN ; 
- int /*<<< orphan*/ * RedisModule_Call (int /*<<< orphan*/ *,char*,char*,long long) ; 
- int /*<<< orphan*/ * RedisModule_CallReplyArrayElement (int /*<<< orphan*/ *,size_t) ; 
- size_t RedisModule_CallReplyLength (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * RedisModule_CreateStringFromCallReply (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_FreeCallReply (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_FreeString (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_FreeThreadSafeContext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * RedisModule_GetThreadSafeContext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_ReplySetArrayLength (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  RedisModule_ReplyWithArray (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RedisModule_ReplyWithCallReply (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_StringToLongLong (int /*<<< orphan*/ *,long long*) ; 
- int /*<<< orphan*/  RedisModule_ThreadSafeContextLock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_ThreadSafeContextUnlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_UnblockClient (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int RedisModuleString ;
+typedef int RedisModuleCtx ;
+typedef int RedisModuleCallReply ;
+typedef int RedisModuleBlockedClient ;
+
+
+ int REDISMODULE_POSTPONED_ARRAY_LEN ;
+ int * RedisModule_Call (int *,char*,char*,long long) ;
+ int * RedisModule_CallReplyArrayElement (int *,size_t) ;
+ size_t RedisModule_CallReplyLength (int *) ;
+ int * RedisModule_CreateStringFromCallReply (int *) ;
+ int RedisModule_FreeCallReply (int *) ;
+ int RedisModule_FreeString (int *,int *) ;
+ int RedisModule_FreeThreadSafeContext (int *) ;
+ int * RedisModule_GetThreadSafeContext (int *) ;
+ int RedisModule_ReplySetArrayLength (int *,size_t) ;
+ int RedisModule_ReplyWithArray (int *,int ) ;
+ int RedisModule_ReplyWithCallReply (int *,int *) ;
+ int RedisModule_StringToLongLong (int *,long long*) ;
+ int RedisModule_ThreadSafeContextLock (int *) ;
+ int RedisModule_ThreadSafeContextUnlock (int *) ;
+ int RedisModule_UnblockClient (int *,int *) ;
 
 void *HelloKeys_ThreadMain(void *arg) {
     RedisModuleBlockedClient *bc = arg;
@@ -67,6 +67,6 @@ void *HelloKeys_ThreadMain(void *arg) {
     RedisModule_ReplySetArrayLength(ctx,replylen);
 
     RedisModule_FreeThreadSafeContext(ctx);
-    RedisModule_UnblockClient(bc,NULL);
-    return NULL;
+    RedisModule_UnblockClient(bc,((void*)0));
+    return ((void*)0);
 }

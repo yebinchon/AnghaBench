@@ -1,60 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  MOD_BFG 146 
-#define  MOD_BFG_SPLASH 145 
-#define  MOD_CHAINGUN 144 
-#define  MOD_GAUNTLET 143 
-#define  MOD_GRAPPLE 142 
-#define  MOD_GRENADE 141 
-#define  MOD_GRENADE_SPLASH 140 
-#define  MOD_JUICED 139 
-#define  MOD_KAMIKAZE 138 
-#define  MOD_LIGHTNING 137 
-#define  MOD_MACHINEGUN 136 
-#define  MOD_NAIL 135 
-#define  MOD_PLASMA 134 
-#define  MOD_PLASMA_SPLASH 133 
-#define  MOD_PROXIMITY_MINE 132 
-#define  MOD_RAILGUN 131 
-#define  MOD_ROCKET 130 
-#define  MOD_ROCKET_SPLASH 129 
-#define  MOD_SHOTGUN 128 
-
 char *BotWeaponNameForMeansOfDeath(int mod) {
-	switch(mod) {
-		case MOD_SHOTGUN: return "Shotgun";
-		case MOD_GAUNTLET: return "Gauntlet";
-		case MOD_MACHINEGUN: return "Machinegun";
-		case MOD_GRENADE:
-		case MOD_GRENADE_SPLASH: return "Grenade Launcher";
-		case MOD_ROCKET:
-		case MOD_ROCKET_SPLASH: return "Rocket Launcher";
-		case MOD_PLASMA:
-		case MOD_PLASMA_SPLASH: return "Plasmagun";
-		case MOD_RAILGUN: return "Railgun";
-		case MOD_LIGHTNING: return "Lightning Gun";
-		case MOD_BFG:
-		case MOD_BFG_SPLASH: return "BFG10K";
-#ifdef MISSIONPACK
-		case MOD_NAIL: return "Nailgun";
-		case MOD_CHAINGUN: return "Chaingun";
-		case MOD_PROXIMITY_MINE: return "Proximity Launcher";
-		case MOD_KAMIKAZE: return "Kamikaze";
-		case MOD_JUICED: return "Prox mine";
-#endif
-		case MOD_GRAPPLE: return "Grapple";
-		default: return "[unknown weapon]";
-	}
+ switch(mod) {
+  case 128: return "Shotgun";
+  case 143: return "Gauntlet";
+  case 136: return "Machinegun";
+  case 141:
+  case 140: return "Grenade Launcher";
+  case 130:
+  case 129: return "Rocket Launcher";
+  case 134:
+  case 133: return "Plasmagun";
+  case 131: return "Railgun";
+  case 137: return "Lightning Gun";
+  case 146:
+  case 145: return "BFG10K";
+
+
+
+
+
+
+
+  case 142: return "Grapple";
+  default: return "[unknown weapon]";
+ }
 }

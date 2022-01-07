@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509 ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ *,char*,char const*,char*) ; 
- scalar_t__ X509_check_email (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int X509_check_host (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ X509_check_ip_asc (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int X509 ;
+typedef int BIO ;
+
+
+ int BIO_printf (int *,char*,char const*,char*) ;
+ scalar_t__ X509_check_email (int *,char const*,int ,int ) ;
+ int X509_check_host (int *,char const*,int ,int ,int *) ;
+ scalar_t__ X509_check_ip_asc (int *,char const*,int ) ;
 
 void print_cert_checks(BIO *bio, X509 *x,
                        const char *checkhost,
                        const char *checkemail, const char *checkip)
 {
-    if (x == NULL)
+    if (x == ((void*)0))
         return;
     if (checkhost) {
         BIO_printf(bio, "Hostname %s does%s match certificate\n",
                    checkhost,
-                   X509_check_host(x, checkhost, 0, 0, NULL) == 1
+                   X509_check_host(x, checkhost, 0, 0, ((void*)0)) == 1
                        ? "" : " NOT");
     }
 

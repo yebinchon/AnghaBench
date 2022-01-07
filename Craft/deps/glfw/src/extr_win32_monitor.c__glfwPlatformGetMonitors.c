@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  publicDisplayName; int /*<<< orphan*/  publicAdapterName; int /*<<< orphan*/  displayName; int /*<<< orphan*/  adapterName; int /*<<< orphan*/  modesPruned; } ;
+
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int publicDisplayName; int publicAdapterName; int displayName; int adapterName; int modesPruned; } ;
 struct TYPE_13__ {TYPE_1__ win32; } ;
-typedef  TYPE_2__ _GLFWmonitor ;
-struct TYPE_14__ {int cb; int StateFlags; int /*<<< orphan*/ * DeviceName; int /*<<< orphan*/  DeviceString; } ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  scalar_t__ DWORD ;
-typedef  TYPE_3__ DISPLAY_DEVICEW ;
+typedef TYPE_2__ _GLFWmonitor ;
+struct TYPE_14__ {int cb; int StateFlags; int * DeviceName; int DeviceString; } ;
+typedef int HDC ;
+typedef scalar_t__ DWORD ;
+typedef TYPE_3__ DISPLAY_DEVICEW ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_UTF8 ; 
- int /*<<< orphan*/  CreateDCW (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int DISPLAY_DEVICE_ACTIVE ; 
- int DISPLAY_DEVICE_MODESPRUNED ; 
- int DISPLAY_DEVICE_PRIMARY_DEVICE ; 
- int /*<<< orphan*/  DeleteDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EnumDisplayDevicesW (int /*<<< orphan*/ *,scalar_t__,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GLFW_PLATFORM_ERROR ; 
- int /*<<< orphan*/  GL_TRUE ; 
- int /*<<< orphan*/  GetDeviceCaps (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HORZSIZE ; 
- int /*<<< orphan*/  VERTSIZE ; 
- int /*<<< orphan*/  WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_3__*,int) ; 
- int /*<<< orphan*/  _GLFW_SWAP_POINTERS (TYPE_2__*,TYPE_2__*) ; 
- TYPE_2__* _glfwAllocMonitor (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* _glfwCreateUTF8FromWideString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- TYPE_2__** realloc (TYPE_2__**,int) ; 
- int /*<<< orphan*/  wcscpy (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int CP_UTF8 ;
+ int CreateDCW (char*,int *,int *,int *) ;
+ int DISPLAY_DEVICE_ACTIVE ;
+ int DISPLAY_DEVICE_MODESPRUNED ;
+ int DISPLAY_DEVICE_PRIMARY_DEVICE ;
+ int DeleteDC (int ) ;
+ int EnumDisplayDevicesW (int *,scalar_t__,TYPE_3__*,int ) ;
+ int GLFW_PLATFORM_ERROR ;
+ int GL_TRUE ;
+ int GetDeviceCaps (int ,int ) ;
+ int HORZSIZE ;
+ int VERTSIZE ;
+ int WideCharToMultiByte (int ,int ,int *,int,int ,int,int *,int *) ;
+ int ZeroMemory (TYPE_3__*,int) ;
+ int _GLFW_SWAP_POINTERS (TYPE_2__*,TYPE_2__*) ;
+ TYPE_2__* _glfwAllocMonitor (char*,int ,int ) ;
+ char* _glfwCreateUTF8FromWideString (int ) ;
+ int _glfwInputError (int ,char*) ;
+ int free (char*) ;
+ TYPE_2__** realloc (TYPE_2__**,int) ;
+ int wcscpy (int ,int *) ;
 
 _GLFWmonitor** _glfwPlatformGetMonitors(int* count)
 {
     int found = 0;
-    _GLFWmonitor** monitors = NULL;
+    _GLFWmonitor** monitors = ((void*)0);
     DWORD adapterIndex, displayIndex;
 
     *count = 0;
 
-    for (adapterIndex = 0;  ;  adapterIndex++)
+    for (adapterIndex = 0; ; adapterIndex++)
     {
         DISPLAY_DEVICEW adapter;
 
         ZeroMemory(&adapter, sizeof(DISPLAY_DEVICEW));
         adapter.cb = sizeof(DISPLAY_DEVICEW);
 
-        if (!EnumDisplayDevicesW(NULL, adapterIndex, &adapter, 0))
+        if (!EnumDisplayDevicesW(((void*)0), adapterIndex, &adapter, 0))
             break;
 
         if (!(adapter.StateFlags & DISPLAY_DEVICE_ACTIVE))
             continue;
 
-        for (displayIndex = 0;  ;  displayIndex++)
+        for (displayIndex = 0; ; displayIndex++)
         {
             DISPLAY_DEVICEW display;
             _GLFWmonitor* monitor;
@@ -86,7 +86,7 @@ _GLFWmonitor** _glfwPlatformGetMonitors(int* count)
                 continue;
             }
 
-            dc = CreateDCW(L"DISPLAY", adapter.DeviceName, NULL, NULL);
+            dc = CreateDCW(L"DISPLAY", adapter.DeviceName, ((void*)0), ((void*)0));
 
             monitor = _glfwAllocMonitor(name,
                                         GetDeviceCaps(dc, HORZSIZE),
@@ -105,13 +105,13 @@ _GLFWmonitor** _glfwPlatformGetMonitors(int* count)
                                 adapter.DeviceName, -1,
                                 monitor->win32.publicAdapterName,
                                 sizeof(monitor->win32.publicAdapterName),
-                                NULL, NULL);
+                                ((void*)0), ((void*)0));
 
             WideCharToMultiByte(CP_UTF8, 0,
                                 display.DeviceName, -1,
                                 monitor->win32.publicDisplayName,
                                 sizeof(monitor->win32.publicDisplayName),
-                                NULL, NULL);
+                                ((void*)0), ((void*)0));
 
             found++;
             monitors = realloc(monitors, sizeof(_GLFWmonitor*) * found);

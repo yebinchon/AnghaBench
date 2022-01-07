@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct filemon {int /*<<< orphan*/  lock; int /*<<< orphan*/ * cred; int /*<<< orphan*/  refcnt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_FILEMON ; 
- int /*<<< orphan*/  SA_UNLOCKED ; 
- int /*<<< orphan*/  crfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (struct filemon*,int /*<<< orphan*/ ) ; 
- scalar_t__ refcount_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sx_assert (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sx_destroy (int /*<<< orphan*/ *) ; 
+
+
+
+struct filemon {int lock; int * cred; int refcnt; } ;
+
+
+ int M_FILEMON ;
+ int SA_UNLOCKED ;
+ int crfree (int *) ;
+ int free (struct filemon*,int ) ;
+ scalar_t__ refcount_release (int *) ;
+ int sx_assert (int *,int ) ;
+ int sx_destroy (int *) ;
 
 __attribute__((used)) static void
 filemon_release(struct filemon *filemon)
 {
 
-	if (refcount_release(&filemon->refcnt) == 0)
-		return;
-	/*
-	 * There are valid cases of releasing while locked, such as in
-	 * filemon_untrack_processes, but none which are done where there
-	 * is not at least 1 reference remaining.
-	 */
-	sx_assert(&filemon->lock, SA_UNLOCKED);
+ if (refcount_release(&filemon->refcnt) == 0)
+  return;
 
-	if (filemon->cred != NULL)
-		crfree(filemon->cred);
-	sx_destroy(&filemon->lock);
-	free(filemon, M_FILEMON);
+
+
+
+
+ sx_assert(&filemon->lock, SA_UNLOCKED);
+
+ if (filemon->cred != ((void*)0))
+  crfree(filemon->cred);
+ sx_destroy(&filemon->lock);
+ free(filemon, M_FILEMON);
 }

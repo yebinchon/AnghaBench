@@ -1,54 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int umode_t ;
-typedef  int /*<<< orphan*/  u32 ;
-typedef  enum hwmon_sensor_types { ____Placeholder_hwmon_sensor_types } hwmon_sensor_types ;
 
-/* Variables and functions */
-#define  hwmon_chip 135 
-#define  hwmon_chip_update_interval 134 
-#define  hwmon_temp 133 
-#define  hwmon_temp_fault 132 
-#define  hwmon_temp_input 131 
-#define  hwmon_temp_max 130 
-#define  hwmon_temp_min 129 
-#define  hwmon_temp_type 128 
 
+
+
+typedef int umode_t ;
+typedef int u32 ;
+typedef enum hwmon_sensor_types { ____Placeholder_hwmon_sensor_types } hwmon_sensor_types ;
 __attribute__((used)) static umode_t lm95241_is_visible(const void *data,
-				  enum hwmon_sensor_types type,
-				  u32 attr, int channel)
+      enum hwmon_sensor_types type,
+      u32 attr, int channel)
 {
-	switch (type) {
-	case hwmon_chip:
-		switch (attr) {
-		case hwmon_chip_update_interval:
-			return 0644;
-		}
-		break;
-	case hwmon_temp:
-		switch (attr) {
-		case hwmon_temp_input:
-			return 0444;
-		case hwmon_temp_fault:
-			return 0444;
-		case hwmon_temp_min:
-		case hwmon_temp_max:
-		case hwmon_temp_type:
-			return 0644;
-		}
-		break;
-	default:
-		break;
-	}
-	return 0;
+ switch (type) {
+ case 135:
+  switch (attr) {
+  case 134:
+   return 0644;
+  }
+  break;
+ case 133:
+  switch (attr) {
+  case 131:
+   return 0444;
+  case 132:
+   return 0444;
+  case 129:
+  case 130:
+  case 128:
+   return 0644;
+  }
+  break;
+ default:
+  break;
+ }
+ return 0;
 }

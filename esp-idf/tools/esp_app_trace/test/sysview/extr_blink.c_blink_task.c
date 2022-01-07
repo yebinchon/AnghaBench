@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TaskHandle_t ;
 
-/* Variables and functions */
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  HEAP_TRACE_ALL ; 
- int /*<<< orphan*/  blink_task2 ; 
- int /*<<< orphan*/  eNoAction ; 
- int /*<<< orphan*/  free (void*) ; 
- scalar_t__ heap_trace_init_tohost () ; 
- int /*<<< orphan*/  heap_trace_start (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_trace_stop () ; 
- void* malloc (int) ; 
- scalar_t__ pdPASS ; 
- int /*<<< orphan*/  portMAX_DELAY ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  xTaskCreatePinnedToCore (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  xTaskGetCurrentTaskHandle () ; 
- scalar_t__ xTaskNotify (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ xTaskNotifyWait (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int TaskHandle_t ;
+
+
+ scalar_t__ ESP_OK ;
+ int HEAP_TRACE_ALL ;
+ int blink_task2 ;
+ int eNoAction ;
+ int free (void*) ;
+ scalar_t__ heap_trace_init_tohost () ;
+ int heap_trace_start (int ) ;
+ int heap_trace_stop () ;
+ void* malloc (int) ;
+ scalar_t__ pdPASS ;
+ int portMAX_DELAY ;
+ int printf (char*,...) ;
+ int xTaskCreatePinnedToCore (int *,char*,int,int ,int,int *,int) ;
+ int xTaskGetCurrentTaskHandle () ;
+ scalar_t__ xTaskNotify (int ,int ,int ) ;
+ scalar_t__ xTaskNotifyWait (int ,int ,int *,int ) ;
 
 void blink_task(void *pvParameter)
 {
@@ -58,7 +58,7 @@ void blink_task(void *pvParameter)
         printf("Alloced 23 bytes @ %p\n", b);
         free(b);
         printf("Freed @ %p\n", b);
-        if (xTaskNotifyWait(0, 0, NULL, portMAX_DELAY) != pdPASS) {
+        if (xTaskNotifyWait(0, 0, ((void*)0), portMAX_DELAY) != pdPASS) {
             printf("Failed to wait for slave task!\n");
             return;
         }

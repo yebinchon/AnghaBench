@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct proc_user_info {int flags; int /*<<< orphan*/  updated_at; } ;
-struct TYPE_4__ {int flags; int /*<<< orphan*/  updated_at; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct proc_user_info {int flags; int updated_at; } ;
+struct TYPE_4__ {int flags; int updated_at; } ;
 struct TYPE_3__ {struct proc_user_info* uinfo; } ;
 
-/* Variables and functions */
- TYPE_2__ CDataUserInfo ; 
- TYPE_1__* MyCData ; 
- int /*<<< orphan*/  begin_update_copy (struct proc_user_info*) ; 
- int /*<<< orphan*/  end_update_copy (struct proc_user_info*) ; 
- int /*<<< orphan*/  get_precise_time (int) ; 
+
+ TYPE_2__ CDataUserInfo ;
+ TYPE_1__* MyCData ;
+ int begin_update_copy (struct proc_user_info*) ;
+ int end_update_copy (struct proc_user_info*) ;
+ int get_precise_time (int) ;
 
 int cstatus_set (int set_flags, int clear_flags) {
   if (!MyCData) {

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
-#define  BEPO 132 
-#define  DVORAK_ON_BEPO 131 
-#define  LAYERS 130 
-#define  MDIA 129 
-#define  SYMB 128 
- int biton32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ergodox_board_led_off () ; 
- int /*<<< orphan*/  ergodox_right_led_1_off () ; 
- int /*<<< orphan*/  ergodox_right_led_1_on () ; 
- int /*<<< orphan*/  ergodox_right_led_2_off () ; 
- int /*<<< orphan*/  ergodox_right_led_2_on () ; 
- int /*<<< orphan*/  ergodox_right_led_3_off () ; 
- int /*<<< orphan*/  ergodox_right_led_3_on () ; 
- int /*<<< orphan*/  layer_state ; 
- int /*<<< orphan*/  on_qwerty () ; 
+
+
+
+typedef int uint8_t ;
+
+
+
+
+
+
+
+ int biton32 (int ) ;
+ int ergodox_board_led_off () ;
+ int ergodox_right_led_1_off () ;
+ int ergodox_right_led_1_on () ;
+ int ergodox_right_led_2_off () ;
+ int ergodox_right_led_2_on () ;
+ int ergodox_right_led_3_off () ;
+ int ergodox_right_led_3_on () ;
+ int layer_state ;
+ int on_qwerty () ;
 
 void matrix_scan_user(void) {
 
@@ -40,27 +40,27 @@ void matrix_scan_user(void) {
   if(!on_qwerty())
     ergodox_right_led_1_on();
   switch (layer) {
-    //case DVORAK:
-    //ergodox_right_led_1_off();
-    //break;
-    // first led on for a bepo software keyboard layer
-  case DVORAK_ON_BEPO:
+
+
+
+
+  case 131:
     ergodox_right_led_2_on();
     break;
-  case BEPO:
+  case 132:
     ergodox_right_led_1_on();
     ergodox_right_led_1_off();
     ergodox_right_led_1_on();
     ergodox_right_led_1_off();
     ergodox_right_led_1_on();
     break;
-  case SYMB:
+  case 128:
     ergodox_right_led_3_on();
     break;
-  case MDIA:
+  case 129:
     ergodox_right_led_3_on();
     break;
-  case LAYERS:
+  case 130:
     ergodox_right_led_1_on();
     ergodox_right_led_2_on();
     ergodox_right_led_3_on();
@@ -69,9 +69,9 @@ void matrix_scan_user(void) {
     ergodox_board_led_off();
     break;
 
-    /* default: */
-    /*   // none */
-    /*   break; */
+
+
+
 
   }
 }

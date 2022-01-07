@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct panel_drv_data {struct omap_dss_device* in; } ;
 struct omap_video_timings {int dummy; } ;
 struct TYPE_4__ {TYPE_1__* atv; } ;
-struct omap_dss_device {TYPE_2__ ops; int /*<<< orphan*/  dev; } ;
+struct omap_dss_device {TYPE_2__ ops; int dev; } ;
 struct TYPE_3__ {int (* check_timings ) (struct omap_dss_device*,struct omap_video_timings*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dev_dbg (int /*<<< orphan*/ ,char*) ; 
- int stub1 (struct omap_dss_device*,struct omap_video_timings*) ; 
- struct panel_drv_data* to_panel_data (struct omap_dss_device*) ; 
+
+ int dev_dbg (int ,char*) ;
+ int stub1 (struct omap_dss_device*,struct omap_video_timings*) ;
+ struct panel_drv_data* to_panel_data (struct omap_dss_device*) ;
 
 __attribute__((used)) static int opa362_check_timings(struct omap_dss_device *dssdev,
-		struct omap_video_timings *timings)
+  struct omap_video_timings *timings)
 {
-	struct panel_drv_data *ddata = to_panel_data(dssdev);
-	struct omap_dss_device *in = ddata->in;
+ struct panel_drv_data *ddata = to_panel_data(dssdev);
+ struct omap_dss_device *in = ddata->in;
 
-	dev_dbg(dssdev->dev, "check_timings\n");
+ dev_dbg(dssdev->dev, "check_timings\n");
 
-	return in->ops.atv->check_timings(in, timings);
+ return in->ops.atv->check_timings(in, timings);
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
-struct tm {scalar_t__ tm_year; scalar_t__ tm_mon; int /*<<< orphan*/  tm_mday; int /*<<< orphan*/  tm_hour; int /*<<< orphan*/  tm_min; int /*<<< orphan*/  tm_sec; } ;
-struct TYPE_3__ {scalar_t__ year; scalar_t__ month; int /*<<< orphan*/  day; int /*<<< orphan*/  hour; int /*<<< orphan*/  minute; int /*<<< orphan*/  second; } ;
-typedef  TYPE_1__* PDATE_AND_TIME ;
 
-/* Variables and functions */
- struct tm* gmtime (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int time_t ;
+struct tm {scalar_t__ tm_year; scalar_t__ tm_mon; int tm_mday; int tm_hour; int tm_min; int tm_sec; } ;
+struct TYPE_3__ {scalar_t__ year; scalar_t__ month; int day; int hour; int minute; int second; } ;
+typedef TYPE_1__* PDATE_AND_TIME ;
+
+
+ struct tm* gmtime (int *) ;
 
 __attribute__((used)) static void convert_date_and_time(PDATE_AND_TIME dt, time_t *time)
 {

@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct TYPE_11__ {void* den; void* num; } ;
-struct TYPE_14__ {int err_recognition; int /*<<< orphan*/  pix_fmt; TYPE_1__ sample_aspect_ratio; } ;
-struct TYPE_13__ {int** data; unsigned int* linesize; int /*<<< orphan*/  pict_type; } ;
-struct TYPE_12__ {int size; int /*<<< orphan*/  data; } ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVCodecContext ;
+struct TYPE_14__ {int err_recognition; int pix_fmt; TYPE_1__ sample_aspect_ratio; } ;
+struct TYPE_13__ {int** data; unsigned int* linesize; int pict_type; } ;
+struct TYPE_12__ {int size; int data; } ;
+typedef int GetByteContext ;
+typedef int GetBitContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int AV_EF_EXPLODE ; 
- scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_I ; 
- int /*<<< orphan*/  AV_PIX_FMT_PAL8 ; 
- int /*<<< orphan*/  AV_PIX_FMT_RGB24 ; 
- int /*<<< orphan*/  AV_WN32A (int*,int) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int PCX_HEADER_SIZE ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  av_free (int*) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*) ; 
- int* av_malloc (scalar_t__) ; 
- int bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- unsigned int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int bytestream2_get_byteu (int /*<<< orphan*/ *) ; 
- void* bytestream2_get_le16u (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  bytestream2_seek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bytestream2_skipu (int /*<<< orphan*/ *,int) ; 
- int bytestream2_tell (int /*<<< orphan*/ *) ; 
- int ff_get_buffer (TYPE_4__*,TYPE_3__* const,int /*<<< orphan*/ ) ; 
- int ff_set_dimensions (TYPE_4__*,unsigned int,unsigned int) ; 
- int get_bits (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  init_get_bits8 (int /*<<< orphan*/ *,int*,unsigned int) ; 
- int /*<<< orphan*/  memcpy (int*,int*,unsigned int) ; 
- int /*<<< orphan*/  pcx_palette (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int pcx_rle_decode (int /*<<< orphan*/ *,int*,unsigned int,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_EF_EXPLODE ;
+ scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ int AV_PICTURE_TYPE_I ;
+ int AV_PIX_FMT_PAL8 ;
+ int AV_PIX_FMT_RGB24 ;
+ int AV_WN32A (int*,int) ;
+ int ENOMEM ;
+ int PCX_HEADER_SIZE ;
+ int SEEK_SET ;
+ int av_free (int*) ;
+ int av_log (TYPE_4__*,int ,char*) ;
+ int* av_malloc (scalar_t__) ;
+ int bytestream2_get_byte (int *) ;
+ unsigned int bytestream2_get_bytes_left (int *) ;
+ int bytestream2_get_byteu (int *) ;
+ void* bytestream2_get_le16u (int *) ;
+ int bytestream2_init (int *,int ,int) ;
+ int bytestream2_seek (int *,int,int ) ;
+ int bytestream2_skipu (int *,int) ;
+ int bytestream2_tell (int *) ;
+ int ff_get_buffer (TYPE_4__*,TYPE_3__* const,int ) ;
+ int ff_set_dimensions (TYPE_4__*,unsigned int,unsigned int) ;
+ int get_bits (int *,unsigned int) ;
+ int init_get_bits8 (int *,int*,unsigned int) ;
+ int memcpy (int*,int*,unsigned int) ;
+ int pcx_palette (int *,int *,int) ;
+ int pcx_rle_decode (int *,int*,unsigned int,int) ;
 
 __attribute__((used)) static int pcx_decode_frame(AVCodecContext *avctx, void *data, int *got_frame,
                             AVPacket *avpkt)
 {
     GetByteContext gb;
-    AVFrame * const p  = data;
+    AVFrame * const p = data;
     int compressed, xmin, ymin, xmax, ymax;
     int ret;
     unsigned int w, h, bits_per_pixel, bytes_per_line, nplanes, stride, y, x,
@@ -82,12 +82,12 @@ __attribute__((used)) static int pcx_decode_frame(AVCodecContext *avctx, void *d
         return AVERROR_INVALIDDATA;
     }
 
-    compressed                     = bytestream2_get_byteu(&gb);
-    bits_per_pixel                 = bytestream2_get_byteu(&gb);
-    xmin                           = bytestream2_get_le16u(&gb);
-    ymin                           = bytestream2_get_le16u(&gb);
-    xmax                           = bytestream2_get_le16u(&gb);
-    ymax                           = bytestream2_get_le16u(&gb);
+    compressed = bytestream2_get_byteu(&gb);
+    bits_per_pixel = bytestream2_get_byteu(&gb);
+    xmin = bytestream2_get_le16u(&gb);
+    ymin = bytestream2_get_le16u(&gb);
+    xmax = bytestream2_get_le16u(&gb);
+    ymax = bytestream2_get_le16u(&gb);
     avctx->sample_aspect_ratio.num = bytestream2_get_le16u(&gb);
     avctx->sample_aspect_ratio.den = bytestream2_get_le16u(&gb);
 
@@ -100,8 +100,8 @@ __attribute__((used)) static int pcx_decode_frame(AVCodecContext *avctx, void *d
     h = ymax - ymin + 1;
 
     bytestream2_skipu(&gb, 49);
-    nplanes            = bytestream2_get_byteu(&gb);
-    bytes_per_line     = bytestream2_get_le16u(&gb);
+    nplanes = bytestream2_get_byteu(&gb);
+    bytes_per_line = bytestream2_get_le16u(&gb);
     bytes_per_scanline = nplanes * bytes_per_line;
 
     if (bytes_per_scanline < (w * bits_per_pixel * nplanes + 7) / 8 ||
@@ -138,7 +138,7 @@ __attribute__((used)) static int pcx_decode_frame(AVCodecContext *avctx, void *d
 
     p->pict_type = AV_PICTURE_TYPE_I;
 
-    ptr    = p->data[0];
+    ptr = p->data[0];
     stride = p->linesize[0];
 
     scanline = av_malloc(bytes_per_scanline + AV_INPUT_BUFFER_PADDING_SIZE);
@@ -152,7 +152,7 @@ __attribute__((used)) static int pcx_decode_frame(AVCodecContext *avctx, void *d
                 goto end;
 
             for (x = 0; x < w; x++) {
-                ptr[3 * x]     = scanline[x];
+                ptr[3 * x] = scanline[x];
                 ptr[3 * x + 1] = scanline[x + bytes_per_line];
                 ptr[3 * x + 2] = scanline[x + (bytes_per_line << 1)];
             }
@@ -186,7 +186,7 @@ __attribute__((used)) static int pcx_decode_frame(AVCodecContext *avctx, void *d
                   AVERROR_INVALIDDATA : avpkt->size;
             goto end;
         }
-    } else if (nplanes == 1) {   /* all packed formats, max. 16 colors */
+    } else if (nplanes == 1) {
         GetBitContext s;
 
         for (y = 0; y < h; y++) {
@@ -200,7 +200,7 @@ __attribute__((used)) static int pcx_decode_frame(AVCodecContext *avctx, void *d
                 ptr[x] = get_bits(&s, bits_per_pixel);
             ptr += stride;
         }
-    } else {    /* planar, 4, 8 or 16 colors */
+    } else {
         int i;
 
         for (y = 0; y < h; y++) {
@@ -212,7 +212,7 @@ __attribute__((used)) static int pcx_decode_frame(AVCodecContext *avctx, void *d
                 int m = 0x80 >> (x & 7), v = 0;
                 for (i = nplanes - 1; i >= 0; i--) {
                     v <<= 1;
-                    v  += !!(scanline[i * bytes_per_line + (x >> 3)] & m);
+                    v += !!(scanline[i * bytes_per_line + (x >> 3)] & m);
                 }
                 ptr[x] = v;
             }
@@ -225,7 +225,7 @@ __attribute__((used)) static int pcx_decode_frame(AVCodecContext *avctx, void *d
         pcx_palette(&gb, (uint32_t *)p->data[1], 256);
         ret += 256 * 3;
     } else if (bits_per_pixel * nplanes == 1) {
-        AV_WN32A(p->data[1]  , 0xFF000000);
+        AV_WN32A(p->data[1] , 0xFF000000);
         AV_WN32A(p->data[1]+4, 0xFFFFFFFF);
     } else if (bits_per_pixel < 8) {
         bytestream2_seek(&gb, 16, SEEK_SET);

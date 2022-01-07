@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
 
-/* Variables and functions */
+
+
+
+typedef int uint32_t ;
+
+
 
 uint32_t
 hash_murmur(const char *key, size_t length)
 {
-    /*
-     * 'm' and 'r' are mixing constants generated offline.  They're not
-     * really 'magic', they just happen to work well.
-     */
+
+
+
+
 
     const unsigned int m = 0x5bd1e995;
     const uint32_t seed = (0xdeadbeef * (uint32_t)length);
     const int r = 24;
 
 
-    /* Initialize the hash to a 'random' value */
+
 
     uint32_t h = seed ^ (uint32_t)length;
 
-    /* Mix 4 bytes at a time into the hash */
+
 
     const unsigned char * data = (const unsigned char *)key;
 
@@ -49,7 +49,7 @@ hash_murmur(const char *key, size_t length)
         length -= 4;
     }
 
-    /* Handle the last few bytes of the input array */
+
 
     switch(length) {
     case 3:
@@ -66,10 +66,10 @@ hash_murmur(const char *key, size_t length)
         break;
     };
 
-    /*
-     * Do a few final mixes of the hash to ensure the last few bytes are
-     * well-incorporated.
-     */
+
+
+
+
 
     h ^= h >> 13;
     h *= m;

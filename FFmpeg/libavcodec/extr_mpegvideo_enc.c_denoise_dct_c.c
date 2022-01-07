@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int16_t ;
-struct TYPE_3__ {int mb_intra; int** dct_error_sum; scalar_t__** dct_offset; int /*<<< orphan*/ * dct_count; } ;
-typedef  TYPE_1__ MpegEncContext ;
 
-/* Variables and functions */
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int int16_t ;
+struct TYPE_3__ {int mb_intra; int** dct_error_sum; scalar_t__** dct_offset; int * dct_count; } ;
+typedef TYPE_1__ MpegEncContext ;
+
+
 
 __attribute__((used)) static void denoise_dct_c(MpegEncContext *s, int16_t *block){
     const int intra= s->mb_intra;

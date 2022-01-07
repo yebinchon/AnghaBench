@@ -1,126 +1,91 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSCH (int*,int,int) ; 
- int /*<<< orphan*/  RNDr (int*,int*,int,int) ; 
- int /*<<< orphan*/  be32dec_vect (int*,unsigned char const*,int) ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int MSCH (int*,int,int) ;
+ int RNDr (int*,int*,int,int) ;
+ int be32dec_vect (int*,unsigned char const*,int) ;
+ int memcpy (int*,int*,int) ;
 
 __attribute__((used)) static void
 SHA256_Transform(uint32_t * state, const unsigned char block[64])
 {
-	/* SHA256 round constants. */
-	static const uint32_t K[64] = {
-		0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5,
-		0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
-		0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3,
-		0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
-		0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc,
-		0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
-		0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7,
-		0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
-		0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13,
-		0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
-		0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3,
-		0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
-		0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5,
-		0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
-		0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208,
-		0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
-	};
-	uint32_t W[64];
-	uint32_t S[8];
-	int i;
 
-#define S0(x)		(ROTR(x, 2) ^ ROTR(x, 13) ^ ROTR(x, 22))
-#define S1(x)		(ROTR(x, 6) ^ ROTR(x, 11) ^ ROTR(x, 25))
-#define s0(x)		(ROTR(x, 7) ^ ROTR(x, 18) ^ (x >> 3))
-#define s1(x)		(ROTR(x, 17) ^ ROTR(x, 19) ^ (x >> 10))
+ static const uint32_t K[64] = {
+  0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5,
+  0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
+  0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3,
+  0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
+  0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc,
+  0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
+  0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7,
+  0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
+  0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13,
+  0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
+  0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3,
+  0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
+  0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5,
+  0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
+  0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208,
+  0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
+ };
+ uint32_t W[64];
+ uint32_t S[8];
+ int i;
+ be32dec_vect(W, block, 64);
 
-/* SHA256 round function */
-#define RND(a, b, c, d, e, f, g, h, k)			\
-	h += S1(e) + Ch(e, f, g) + k;			\
-	d += h;						\
-	h += S0(a) + Maj(a, b, c);
 
-/* Adjusted round function for rotating state */
-#define RNDr(S, W, i, ii)			\
-	RND(S[(64 - i) % 8], S[(65 - i) % 8],	\
-	    S[(66 - i) % 8], S[(67 - i) % 8],	\
-	    S[(68 - i) % 8], S[(69 - i) % 8],	\
-	    S[(70 - i) % 8], S[(71 - i) % 8],	\
-	    W[i + ii] + K[i + ii])
+ memcpy(S, state, 32);
 
-/* Message schedule computation */
-#define MSCH(W, ii, i)				\
-	W[i + ii + 16] = s1(W[i + ii + 14]) + W[i + ii + 9] + s0(W[i + ii + 1]) + W[i + ii]
 
-	/* 1. Prepare the first part of the message schedule W. */
-	be32dec_vect(W, block, 64);
+ for (i = 0; i < 64; i += 16) {
+  S[(71 - 0) % 8] += (ROTR(S[(68 - 0) % 8], 6) ^ ROTR(S[(68 - 0) % 8], 11) ^ ROTR(S[(68 - 0) % 8], 25)) + Ch(S[(68 - 0) % 8], S[(69 - 0) % 8], S[(70 - 0) % 8]) + W[0 + i] + K[0 + i]; S[(67 - 0) % 8] += S[(71 - 0) % 8]; S[(71 - 0) % 8] += (ROTR(S[(64 - 0) % 8], 2) ^ ROTR(S[(64 - 0) % 8], 13) ^ ROTR(S[(64 - 0) % 8], 22)) + Maj(S[(64 - 0) % 8], S[(65 - 0) % 8], S[(66 - 0) % 8]);;
+  S[(71 - 1) % 8] += (ROTR(S[(68 - 1) % 8], 6) ^ ROTR(S[(68 - 1) % 8], 11) ^ ROTR(S[(68 - 1) % 8], 25)) + Ch(S[(68 - 1) % 8], S[(69 - 1) % 8], S[(70 - 1) % 8]) + W[1 + i] + K[1 + i]; S[(67 - 1) % 8] += S[(71 - 1) % 8]; S[(71 - 1) % 8] += (ROTR(S[(64 - 1) % 8], 2) ^ ROTR(S[(64 - 1) % 8], 13) ^ ROTR(S[(64 - 1) % 8], 22)) + Maj(S[(64 - 1) % 8], S[(65 - 1) % 8], S[(66 - 1) % 8]);;
+  S[(71 - 2) % 8] += (ROTR(S[(68 - 2) % 8], 6) ^ ROTR(S[(68 - 2) % 8], 11) ^ ROTR(S[(68 - 2) % 8], 25)) + Ch(S[(68 - 2) % 8], S[(69 - 2) % 8], S[(70 - 2) % 8]) + W[2 + i] + K[2 + i]; S[(67 - 2) % 8] += S[(71 - 2) % 8]; S[(71 - 2) % 8] += (ROTR(S[(64 - 2) % 8], 2) ^ ROTR(S[(64 - 2) % 8], 13) ^ ROTR(S[(64 - 2) % 8], 22)) + Maj(S[(64 - 2) % 8], S[(65 - 2) % 8], S[(66 - 2) % 8]);;
+  S[(71 - 3) % 8] += (ROTR(S[(68 - 3) % 8], 6) ^ ROTR(S[(68 - 3) % 8], 11) ^ ROTR(S[(68 - 3) % 8], 25)) + Ch(S[(68 - 3) % 8], S[(69 - 3) % 8], S[(70 - 3) % 8]) + W[3 + i] + K[3 + i]; S[(67 - 3) % 8] += S[(71 - 3) % 8]; S[(71 - 3) % 8] += (ROTR(S[(64 - 3) % 8], 2) ^ ROTR(S[(64 - 3) % 8], 13) ^ ROTR(S[(64 - 3) % 8], 22)) + Maj(S[(64 - 3) % 8], S[(65 - 3) % 8], S[(66 - 3) % 8]);;
+  S[(71 - 4) % 8] += (ROTR(S[(68 - 4) % 8], 6) ^ ROTR(S[(68 - 4) % 8], 11) ^ ROTR(S[(68 - 4) % 8], 25)) + Ch(S[(68 - 4) % 8], S[(69 - 4) % 8], S[(70 - 4) % 8]) + W[4 + i] + K[4 + i]; S[(67 - 4) % 8] += S[(71 - 4) % 8]; S[(71 - 4) % 8] += (ROTR(S[(64 - 4) % 8], 2) ^ ROTR(S[(64 - 4) % 8], 13) ^ ROTR(S[(64 - 4) % 8], 22)) + Maj(S[(64 - 4) % 8], S[(65 - 4) % 8], S[(66 - 4) % 8]);;
+  S[(71 - 5) % 8] += (ROTR(S[(68 - 5) % 8], 6) ^ ROTR(S[(68 - 5) % 8], 11) ^ ROTR(S[(68 - 5) % 8], 25)) + Ch(S[(68 - 5) % 8], S[(69 - 5) % 8], S[(70 - 5) % 8]) + W[5 + i] + K[5 + i]; S[(67 - 5) % 8] += S[(71 - 5) % 8]; S[(71 - 5) % 8] += (ROTR(S[(64 - 5) % 8], 2) ^ ROTR(S[(64 - 5) % 8], 13) ^ ROTR(S[(64 - 5) % 8], 22)) + Maj(S[(64 - 5) % 8], S[(65 - 5) % 8], S[(66 - 5) % 8]);;
+  S[(71 - 6) % 8] += (ROTR(S[(68 - 6) % 8], 6) ^ ROTR(S[(68 - 6) % 8], 11) ^ ROTR(S[(68 - 6) % 8], 25)) + Ch(S[(68 - 6) % 8], S[(69 - 6) % 8], S[(70 - 6) % 8]) + W[6 + i] + K[6 + i]; S[(67 - 6) % 8] += S[(71 - 6) % 8]; S[(71 - 6) % 8] += (ROTR(S[(64 - 6) % 8], 2) ^ ROTR(S[(64 - 6) % 8], 13) ^ ROTR(S[(64 - 6) % 8], 22)) + Maj(S[(64 - 6) % 8], S[(65 - 6) % 8], S[(66 - 6) % 8]);;
+  S[(71 - 7) % 8] += (ROTR(S[(68 - 7) % 8], 6) ^ ROTR(S[(68 - 7) % 8], 11) ^ ROTR(S[(68 - 7) % 8], 25)) + Ch(S[(68 - 7) % 8], S[(69 - 7) % 8], S[(70 - 7) % 8]) + W[7 + i] + K[7 + i]; S[(67 - 7) % 8] += S[(71 - 7) % 8]; S[(71 - 7) % 8] += (ROTR(S[(64 - 7) % 8], 2) ^ ROTR(S[(64 - 7) % 8], 13) ^ ROTR(S[(64 - 7) % 8], 22)) + Maj(S[(64 - 7) % 8], S[(65 - 7) % 8], S[(66 - 7) % 8]);;
+  S[(71 - 8) % 8] += (ROTR(S[(68 - 8) % 8], 6) ^ ROTR(S[(68 - 8) % 8], 11) ^ ROTR(S[(68 - 8) % 8], 25)) + Ch(S[(68 - 8) % 8], S[(69 - 8) % 8], S[(70 - 8) % 8]) + W[8 + i] + K[8 + i]; S[(67 - 8) % 8] += S[(71 - 8) % 8]; S[(71 - 8) % 8] += (ROTR(S[(64 - 8) % 8], 2) ^ ROTR(S[(64 - 8) % 8], 13) ^ ROTR(S[(64 - 8) % 8], 22)) + Maj(S[(64 - 8) % 8], S[(65 - 8) % 8], S[(66 - 8) % 8]);;
+  S[(71 - 9) % 8] += (ROTR(S[(68 - 9) % 8], 6) ^ ROTR(S[(68 - 9) % 8], 11) ^ ROTR(S[(68 - 9) % 8], 25)) + Ch(S[(68 - 9) % 8], S[(69 - 9) % 8], S[(70 - 9) % 8]) + W[9 + i] + K[9 + i]; S[(67 - 9) % 8] += S[(71 - 9) % 8]; S[(71 - 9) % 8] += (ROTR(S[(64 - 9) % 8], 2) ^ ROTR(S[(64 - 9) % 8], 13) ^ ROTR(S[(64 - 9) % 8], 22)) + Maj(S[(64 - 9) % 8], S[(65 - 9) % 8], S[(66 - 9) % 8]);;
+  S[(71 - 10) % 8] += (ROTR(S[(68 - 10) % 8], 6) ^ ROTR(S[(68 - 10) % 8], 11) ^ ROTR(S[(68 - 10) % 8], 25)) + Ch(S[(68 - 10) % 8], S[(69 - 10) % 8], S[(70 - 10) % 8]) + W[10 + i] + K[10 + i]; S[(67 - 10) % 8] += S[(71 - 10) % 8]; S[(71 - 10) % 8] += (ROTR(S[(64 - 10) % 8], 2) ^ ROTR(S[(64 - 10) % 8], 13) ^ ROTR(S[(64 - 10) % 8], 22)) + Maj(S[(64 - 10) % 8], S[(65 - 10) % 8], S[(66 - 10) % 8]);;
+  S[(71 - 11) % 8] += (ROTR(S[(68 - 11) % 8], 6) ^ ROTR(S[(68 - 11) % 8], 11) ^ ROTR(S[(68 - 11) % 8], 25)) + Ch(S[(68 - 11) % 8], S[(69 - 11) % 8], S[(70 - 11) % 8]) + W[11 + i] + K[11 + i]; S[(67 - 11) % 8] += S[(71 - 11) % 8]; S[(71 - 11) % 8] += (ROTR(S[(64 - 11) % 8], 2) ^ ROTR(S[(64 - 11) % 8], 13) ^ ROTR(S[(64 - 11) % 8], 22)) + Maj(S[(64 - 11) % 8], S[(65 - 11) % 8], S[(66 - 11) % 8]);;
+  S[(71 - 12) % 8] += (ROTR(S[(68 - 12) % 8], 6) ^ ROTR(S[(68 - 12) % 8], 11) ^ ROTR(S[(68 - 12) % 8], 25)) + Ch(S[(68 - 12) % 8], S[(69 - 12) % 8], S[(70 - 12) % 8]) + W[12 + i] + K[12 + i]; S[(67 - 12) % 8] += S[(71 - 12) % 8]; S[(71 - 12) % 8] += (ROTR(S[(64 - 12) % 8], 2) ^ ROTR(S[(64 - 12) % 8], 13) ^ ROTR(S[(64 - 12) % 8], 22)) + Maj(S[(64 - 12) % 8], S[(65 - 12) % 8], S[(66 - 12) % 8]);;
+  S[(71 - 13) % 8] += (ROTR(S[(68 - 13) % 8], 6) ^ ROTR(S[(68 - 13) % 8], 11) ^ ROTR(S[(68 - 13) % 8], 25)) + Ch(S[(68 - 13) % 8], S[(69 - 13) % 8], S[(70 - 13) % 8]) + W[13 + i] + K[13 + i]; S[(67 - 13) % 8] += S[(71 - 13) % 8]; S[(71 - 13) % 8] += (ROTR(S[(64 - 13) % 8], 2) ^ ROTR(S[(64 - 13) % 8], 13) ^ ROTR(S[(64 - 13) % 8], 22)) + Maj(S[(64 - 13) % 8], S[(65 - 13) % 8], S[(66 - 13) % 8]);;
+  S[(71 - 14) % 8] += (ROTR(S[(68 - 14) % 8], 6) ^ ROTR(S[(68 - 14) % 8], 11) ^ ROTR(S[(68 - 14) % 8], 25)) + Ch(S[(68 - 14) % 8], S[(69 - 14) % 8], S[(70 - 14) % 8]) + W[14 + i] + K[14 + i]; S[(67 - 14) % 8] += S[(71 - 14) % 8]; S[(71 - 14) % 8] += (ROTR(S[(64 - 14) % 8], 2) ^ ROTR(S[(64 - 14) % 8], 13) ^ ROTR(S[(64 - 14) % 8], 22)) + Maj(S[(64 - 14) % 8], S[(65 - 14) % 8], S[(66 - 14) % 8]);;
+  S[(71 - 15) % 8] += (ROTR(S[(68 - 15) % 8], 6) ^ ROTR(S[(68 - 15) % 8], 11) ^ ROTR(S[(68 - 15) % 8], 25)) + Ch(S[(68 - 15) % 8], S[(69 - 15) % 8], S[(70 - 15) % 8]) + W[15 + i] + K[15 + i]; S[(67 - 15) % 8] += S[(71 - 15) % 8]; S[(71 - 15) % 8] += (ROTR(S[(64 - 15) % 8], 2) ^ ROTR(S[(64 - 15) % 8], 13) ^ ROTR(S[(64 - 15) % 8], 22)) + Maj(S[(64 - 15) % 8], S[(65 - 15) % 8], S[(66 - 15) % 8]);;
 
-	/* 2. Initialize working variables. */
-	memcpy(S, state, 32);
-
-	/* 3. Mix. */
-	for (i = 0; i < 64; i += 16) {
-		RNDr(S, W, 0, i);
-		RNDr(S, W, 1, i);
-		RNDr(S, W, 2, i);
-		RNDr(S, W, 3, i);
-		RNDr(S, W, 4, i);
-		RNDr(S, W, 5, i);
-		RNDr(S, W, 6, i);
-		RNDr(S, W, 7, i);
-		RNDr(S, W, 8, i);
-		RNDr(S, W, 9, i);
-		RNDr(S, W, 10, i);
-		RNDr(S, W, 11, i);
-		RNDr(S, W, 12, i);
-		RNDr(S, W, 13, i);
-		RNDr(S, W, 14, i);
-		RNDr(S, W, 15, i);
-
-		if (i == 48)
-			break;
-		MSCH(W, 0, i);
-		MSCH(W, 1, i);
-		MSCH(W, 2, i);
-		MSCH(W, 3, i);
-		MSCH(W, 4, i);
-		MSCH(W, 5, i);
-		MSCH(W, 6, i);
-		MSCH(W, 7, i);
-		MSCH(W, 8, i);
-		MSCH(W, 9, i);
-		MSCH(W, 10, i);
-		MSCH(W, 11, i);
-		MSCH(W, 12, i);
-		MSCH(W, 13, i);
-		MSCH(W, 14, i);
-		MSCH(W, 15, i);
-	}
-
-#undef S0
-#undef s0
-#undef S1
-#undef s1
-#undef RND
-#undef RNDr
-#undef MSCH
-
-	/* 4. Mix local working variables into global state */
-	for (i = 0; i < 8; i++)
-		state[i] += S[i];
+  if (i == 48)
+   break;
+  W[i + 0 + 16] = (ROTR(W[i + 0 + 14], 17) ^ ROTR(W[i + 0 + 14], 19) ^ (W[i + 0 + 14] >> 10)) + W[i + 0 + 9] + (ROTR(W[i + 0 + 1], 7) ^ ROTR(W[i + 0 + 1], 18) ^ (W[i + 0 + 1] >> 3)) + W[i + 0];
+  W[i + 1 + 16] = (ROTR(W[i + 1 + 14], 17) ^ ROTR(W[i + 1 + 14], 19) ^ (W[i + 1 + 14] >> 10)) + W[i + 1 + 9] + (ROTR(W[i + 1 + 1], 7) ^ ROTR(W[i + 1 + 1], 18) ^ (W[i + 1 + 1] >> 3)) + W[i + 1];
+  W[i + 2 + 16] = (ROTR(W[i + 2 + 14], 17) ^ ROTR(W[i + 2 + 14], 19) ^ (W[i + 2 + 14] >> 10)) + W[i + 2 + 9] + (ROTR(W[i + 2 + 1], 7) ^ ROTR(W[i + 2 + 1], 18) ^ (W[i + 2 + 1] >> 3)) + W[i + 2];
+  W[i + 3 + 16] = (ROTR(W[i + 3 + 14], 17) ^ ROTR(W[i + 3 + 14], 19) ^ (W[i + 3 + 14] >> 10)) + W[i + 3 + 9] + (ROTR(W[i + 3 + 1], 7) ^ ROTR(W[i + 3 + 1], 18) ^ (W[i + 3 + 1] >> 3)) + W[i + 3];
+  W[i + 4 + 16] = (ROTR(W[i + 4 + 14], 17) ^ ROTR(W[i + 4 + 14], 19) ^ (W[i + 4 + 14] >> 10)) + W[i + 4 + 9] + (ROTR(W[i + 4 + 1], 7) ^ ROTR(W[i + 4 + 1], 18) ^ (W[i + 4 + 1] >> 3)) + W[i + 4];
+  W[i + 5 + 16] = (ROTR(W[i + 5 + 14], 17) ^ ROTR(W[i + 5 + 14], 19) ^ (W[i + 5 + 14] >> 10)) + W[i + 5 + 9] + (ROTR(W[i + 5 + 1], 7) ^ ROTR(W[i + 5 + 1], 18) ^ (W[i + 5 + 1] >> 3)) + W[i + 5];
+  W[i + 6 + 16] = (ROTR(W[i + 6 + 14], 17) ^ ROTR(W[i + 6 + 14], 19) ^ (W[i + 6 + 14] >> 10)) + W[i + 6 + 9] + (ROTR(W[i + 6 + 1], 7) ^ ROTR(W[i + 6 + 1], 18) ^ (W[i + 6 + 1] >> 3)) + W[i + 6];
+  W[i + 7 + 16] = (ROTR(W[i + 7 + 14], 17) ^ ROTR(W[i + 7 + 14], 19) ^ (W[i + 7 + 14] >> 10)) + W[i + 7 + 9] + (ROTR(W[i + 7 + 1], 7) ^ ROTR(W[i + 7 + 1], 18) ^ (W[i + 7 + 1] >> 3)) + W[i + 7];
+  W[i + 8 + 16] = (ROTR(W[i + 8 + 14], 17) ^ ROTR(W[i + 8 + 14], 19) ^ (W[i + 8 + 14] >> 10)) + W[i + 8 + 9] + (ROTR(W[i + 8 + 1], 7) ^ ROTR(W[i + 8 + 1], 18) ^ (W[i + 8 + 1] >> 3)) + W[i + 8];
+  W[i + 9 + 16] = (ROTR(W[i + 9 + 14], 17) ^ ROTR(W[i + 9 + 14], 19) ^ (W[i + 9 + 14] >> 10)) + W[i + 9 + 9] + (ROTR(W[i + 9 + 1], 7) ^ ROTR(W[i + 9 + 1], 18) ^ (W[i + 9 + 1] >> 3)) + W[i + 9];
+  W[i + 10 + 16] = (ROTR(W[i + 10 + 14], 17) ^ ROTR(W[i + 10 + 14], 19) ^ (W[i + 10 + 14] >> 10)) + W[i + 10 + 9] + (ROTR(W[i + 10 + 1], 7) ^ ROTR(W[i + 10 + 1], 18) ^ (W[i + 10 + 1] >> 3)) + W[i + 10];
+  W[i + 11 + 16] = (ROTR(W[i + 11 + 14], 17) ^ ROTR(W[i + 11 + 14], 19) ^ (W[i + 11 + 14] >> 10)) + W[i + 11 + 9] + (ROTR(W[i + 11 + 1], 7) ^ ROTR(W[i + 11 + 1], 18) ^ (W[i + 11 + 1] >> 3)) + W[i + 11];
+  W[i + 12 + 16] = (ROTR(W[i + 12 + 14], 17) ^ ROTR(W[i + 12 + 14], 19) ^ (W[i + 12 + 14] >> 10)) + W[i + 12 + 9] + (ROTR(W[i + 12 + 1], 7) ^ ROTR(W[i + 12 + 1], 18) ^ (W[i + 12 + 1] >> 3)) + W[i + 12];
+  W[i + 13 + 16] = (ROTR(W[i + 13 + 14], 17) ^ ROTR(W[i + 13 + 14], 19) ^ (W[i + 13 + 14] >> 10)) + W[i + 13 + 9] + (ROTR(W[i + 13 + 1], 7) ^ ROTR(W[i + 13 + 1], 18) ^ (W[i + 13 + 1] >> 3)) + W[i + 13];
+  W[i + 14 + 16] = (ROTR(W[i + 14 + 14], 17) ^ ROTR(W[i + 14 + 14], 19) ^ (W[i + 14 + 14] >> 10)) + W[i + 14 + 9] + (ROTR(W[i + 14 + 1], 7) ^ ROTR(W[i + 14 + 1], 18) ^ (W[i + 14 + 1] >> 3)) + W[i + 14];
+  W[i + 15 + 16] = (ROTR(W[i + 15 + 14], 17) ^ ROTR(W[i + 15 + 14], 19) ^ (W[i + 15 + 14] >> 10)) + W[i + 15 + 9] + (ROTR(W[i + 15 + 1], 7) ^ ROTR(W[i + 15 + 1], 18) ^ (W[i + 15 + 1] >> 3)) + W[i + 15];
+ }
+ for (i = 0; i < 8; i++)
+  state[i] += S[i];
 }

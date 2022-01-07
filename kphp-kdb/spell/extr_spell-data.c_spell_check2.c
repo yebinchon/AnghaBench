@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dyn_mark_t ;
-struct TYPE_5__ {int /*<<< orphan*/  name; int /*<<< orphan*/  spell_checker; } ;
-struct TYPE_4__ {int offset; int /*<<< orphan*/  len; } ;
-typedef  TYPE_1__ AspellToken ;
-typedef  int /*<<< orphan*/  AspellDocumentChecker ;
-typedef  int /*<<< orphan*/  AspellCanHaveError ;
 
-/* Variables and functions */
- TYPE_3__** SC ; 
- TYPE_1__ aspell_document_checker_next_misspelling (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aspell_document_checker_process (int /*<<< orphan*/ *,char*,int) ; 
- scalar_t__ aspell_error (int /*<<< orphan*/ *) ; 
- int aspell_error_message (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  delete_aspell_document_checker (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dyn_mark (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dyn_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * new_aspell_document_checker (int /*<<< orphan*/ ) ; 
- int spellers ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/ * to_aspell_document_checker (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vkprintf (int,char*,...) ; 
- char* zmalloc (int) ; 
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int dyn_mark_t ;
+struct TYPE_5__ {int name; int spell_checker; } ;
+struct TYPE_4__ {int offset; int len; } ;
+typedef TYPE_1__ AspellToken ;
+typedef int AspellDocumentChecker ;
+typedef int AspellCanHaveError ;
+
+
+ TYPE_3__** SC ;
+ TYPE_1__ aspell_document_checker_next_misspelling (int *) ;
+ int aspell_document_checker_process (int *,char*,int) ;
+ scalar_t__ aspell_error (int *) ;
+ int aspell_error_message (int *) ;
+ int delete_aspell_document_checker (int *) ;
+ int dyn_mark (int ) ;
+ int dyn_release (int ) ;
+ int memcpy (char*,char*,int ) ;
+ int * new_aspell_document_checker (int ) ;
+ int spellers ;
+ int strcpy (char*,char const*) ;
+ int strlen (char const*) ;
+ int * to_aspell_document_checker (int *) ;
+ int vkprintf (int,char*,...) ;
+ char* zmalloc (int) ;
 
 int spell_check2 (const char *text, int res[3]) {
   int l = strlen (text);
@@ -47,7 +47,7 @@ int spell_check2 (const char *text, int res[3]) {
   int i, words = 0;
   for (i = 0; i < spellers; i++) {
     words = 0;
-    vkprintf (3, "%s (%s)\n",  a, SC[i]->name);
+    vkprintf (3, "%s (%s)\n", a, SC[i]->name);
     char *p = b;
     AspellCanHaveError *ret = new_aspell_document_checker (SC[i]->spell_checker);
     if (aspell_error (ret) != 0) {

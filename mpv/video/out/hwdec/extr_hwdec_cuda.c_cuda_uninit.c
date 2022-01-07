@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct ra_hwdec {int /*<<< orphan*/  devs; struct cuda_hw_priv* priv; } ;
-struct TYPE_5__ {int /*<<< orphan*/  av_device_ref; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct ra_hwdec {int devs; struct cuda_hw_priv* priv; } ;
+struct TYPE_5__ {int av_device_ref; } ;
 struct cuda_hw_priv {scalar_t__ decode_ctx; scalar_t__ display_ctx; TYPE_1__* cu; TYPE_2__ hwctx; } ;
-struct TYPE_4__ {int /*<<< orphan*/  (* cuCtxDestroy ) (scalar_t__) ;} ;
-typedef  TYPE_1__ CudaFunctions ;
+struct TYPE_4__ {int (* cuCtxDestroy ) (scalar_t__) ;} ;
+typedef TYPE_1__ CudaFunctions ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_CU (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_buffer_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cuda_free_functions (TYPE_1__**) ; 
- int /*<<< orphan*/  hwdec_devices_remove (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  stub1 (scalar_t__) ; 
- int /*<<< orphan*/  stub2 (scalar_t__) ; 
+
+ int CHECK_CU (int ) ;
+ int av_buffer_unref (int *) ;
+ int cuda_free_functions (TYPE_1__**) ;
+ int hwdec_devices_remove (int ,TYPE_2__*) ;
+ int stub1 (scalar_t__) ;
+ int stub2 (scalar_t__) ;
 
 __attribute__((used)) static void cuda_uninit(struct ra_hwdec *hw)
 {

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  z_streamp ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int z_streamp ;
 struct TYPE_5__ {struct TYPE_5__* hufts; struct TYPE_5__* window; } ;
-typedef  TYPE_1__ inflate_blocks_statef ;
+typedef TYPE_1__ inflate_blocks_statef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Tracev (char*) ; 
- int /*<<< orphan*/  ZFREE (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  Z_NULL ; 
- int Z_OK ; 
- int /*<<< orphan*/  inflate_blocks_reset (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int Tracev (char*) ;
+ int ZFREE (int ,TYPE_1__*) ;
+ int Z_NULL ;
+ int Z_OK ;
+ int inflate_blocks_reset (TYPE_1__*,int ,int ) ;
 
 int inflate_blocks_free(inflate_blocks_statef *s, z_streamp z)
 {

@@ -1,87 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ptr_t ;
-struct TYPE_4__ {char* name; int /*<<< orphan*/ * long_name; } ;
-struct TYPE_3__ {char* name; int /*<<< orphan*/ * long_name; } ;
 
-/* Variables and functions */
- void* CSAVS (int,int,char*) ; 
- size_t T_DC ; 
- size_t T_DO ; 
- size_t T_IC ; 
- size_t T_LE ; 
- size_t T_RI ; 
- size_t T_UP ; 
- size_t T_al ; 
- size_t T_am ; 
- size_t T_at7 ; 
- size_t T_bl ; 
- size_t T_cd ; 
- size_t T_ce ; 
- size_t T_ch ; 
- size_t T_cl ; 
- size_t T_co ; 
- size_t T_dc ; 
- size_t T_dl ; 
- size_t T_dm ; 
- size_t T_ed ; 
- size_t T_ei ; 
- size_t T_fs ; 
- size_t T_ho ; 
- size_t T_ic ; 
- size_t T_im ; 
- size_t T_ip ; 
- size_t T_kd ; 
- size_t T_kh ; 
- size_t T_kl ; 
- size_t T_km ; 
- size_t T_kr ; 
- size_t T_ku ; 
- size_t T_li ; 
- size_t T_md ; 
- size_t T_me ; 
- size_t T_mr ; 
- size_t T_nd ; 
- size_t T_pt ; 
- size_t T_se ; 
- size_t T_so ; 
- int T_str ; 
- size_t T_ts ; 
- size_t T_ue ; 
- size_t T_up ; 
- size_t T_us ; 
- int T_val ; 
- size_t T_vb ; 
- size_t T_xn ; 
- TYPE_2__* tstr ; 
- TYPE_1__* tval ; 
- int /*<<< orphan*/  xfree (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ptr_t ;
+struct TYPE_4__ {char* name; int * long_name; } ;
+struct TYPE_3__ {char* name; int * long_name; } ;
+
+
+ void* CSAVS (int,int,char*) ;
+ size_t T_DC ;
+ size_t T_DO ;
+ size_t T_IC ;
+ size_t T_LE ;
+ size_t T_RI ;
+ size_t T_UP ;
+ size_t T_al ;
+ size_t T_am ;
+ size_t T_at7 ;
+ size_t T_bl ;
+ size_t T_cd ;
+ size_t T_ce ;
+ size_t T_ch ;
+ size_t T_cl ;
+ size_t T_co ;
+ size_t T_dc ;
+ size_t T_dl ;
+ size_t T_dm ;
+ size_t T_ed ;
+ size_t T_ei ;
+ size_t T_fs ;
+ size_t T_ho ;
+ size_t T_ic ;
+ size_t T_im ;
+ size_t T_ip ;
+ size_t T_kd ;
+ size_t T_kh ;
+ size_t T_kl ;
+ size_t T_km ;
+ size_t T_kr ;
+ size_t T_ku ;
+ size_t T_li ;
+ size_t T_md ;
+ size_t T_me ;
+ size_t T_mr ;
+ size_t T_nd ;
+ size_t T_pt ;
+ size_t T_se ;
+ size_t T_so ;
+ int T_str ;
+ size_t T_ts ;
+ size_t T_ue ;
+ size_t T_up ;
+ size_t T_us ;
+ int T_val ;
+ size_t T_vb ;
+ size_t T_xn ;
+ TYPE_2__* tstr ;
+ TYPE_1__* tval ;
+ int xfree (int ) ;
 
 void
 terminit(void)
 {
-#ifdef NLS_CATALOGS
-    int i;
-
-    for (i = 0; i < T_str + 1; i++)
-	xfree((ptr_t)(intptr_t)tstr[i].long_name);
-
-    for (i = 0; i < T_val + 1; i++)
-	xfree((ptr_t)(intptr_t)tval[i].long_name);
-#endif
-
     tstr[T_al].name = "al";
     tstr[T_al].long_name = CSAVS(4, 1, "add new blank line");
 
@@ -199,8 +189,8 @@ terminit(void)
     tstr[T_mr].name = "mr";
     tstr[T_mr].long_name = CSAVS(4, 45, "begin reverse video");
 
-    tstr[T_str].name = NULL;
-    tstr[T_str].long_name = NULL;
+    tstr[T_str].name = ((void*)0);
+    tstr[T_str].long_name = ((void*)0);
 
 
     tval[T_am].name = "am";
@@ -221,6 +211,6 @@ terminit(void)
     tval[T_xn].name = "xn";
     tval[T_xn].long_name = CSAVS(4, 42, "Newline ignored at right margin");
 
-    tval[T_val].name = NULL;
-    tval[T_val].long_name = NULL;
+    tval[T_val].name = ((void*)0);
+    tval[T_val].long_name = ((void*)0);
 }

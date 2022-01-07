@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nvc0_graph_priv {int /*<<< orphan*/  base; int /*<<< orphan*/  unk4188b4; int /*<<< orphan*/  unk4188b8; int /*<<< orphan*/  fuc41ad; int /*<<< orphan*/  fuc41ac; int /*<<< orphan*/  fuc409d; int /*<<< orphan*/  fuc409c; int /*<<< orphan*/  data; } ;
+
+
+
+
+struct nvc0_graph_priv {int base; int unk4188b4; int unk4188b8; int fuc41ad; int fuc41ac; int fuc409d; int fuc409c; int data; } ;
 struct nouveau_object {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nouveau_gpuobj_ref (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nouveau_graph_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nvc0_graph_dtor_fw (int /*<<< orphan*/ *) ; 
+
+ int kfree (int ) ;
+ int nouveau_gpuobj_ref (int *,int *) ;
+ int nouveau_graph_destroy (int *) ;
+ int nvc0_graph_dtor_fw (int *) ;
 
 void
 nvc0_graph_dtor(struct nouveau_object *object)
 {
-	struct nvc0_graph_priv *priv = (void *)object;
+ struct nvc0_graph_priv *priv = (void *)object;
 
-	kfree(priv->data);
+ kfree(priv->data);
 
-	nvc0_graph_dtor_fw(&priv->fuc409c);
-	nvc0_graph_dtor_fw(&priv->fuc409d);
-	nvc0_graph_dtor_fw(&priv->fuc41ac);
-	nvc0_graph_dtor_fw(&priv->fuc41ad);
+ nvc0_graph_dtor_fw(&priv->fuc409c);
+ nvc0_graph_dtor_fw(&priv->fuc409d);
+ nvc0_graph_dtor_fw(&priv->fuc41ac);
+ nvc0_graph_dtor_fw(&priv->fuc41ad);
 
-	nouveau_gpuobj_ref(NULL, &priv->unk4188b8);
-	nouveau_gpuobj_ref(NULL, &priv->unk4188b4);
+ nouveau_gpuobj_ref(((void*)0), &priv->unk4188b8);
+ nouveau_gpuobj_ref(((void*)0), &priv->unk4188b4);
 
-	nouveau_graph_destroy(&priv->base);
+ nouveau_graph_destroy(&priv->base);
 }

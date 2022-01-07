@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  frag6_drain () ; 
- int /*<<< orphan*/  in6_rtqdrain () ; 
- int /*<<< orphan*/  nd6_drain (int /*<<< orphan*/ *) ; 
+ int frag6_drain () ;
+ int in6_rtqdrain () ;
+ int nd6_drain (int *) ;
 
 void
 ip6_drain(void)
 {
-	frag6_drain();		/* fragments */
-	in6_rtqdrain();		/* protocol cloned routes */
-	nd6_drain(NULL);	/* cloned routes: ND6 */
+ frag6_drain();
+ in6_rtqdrain();
+ nd6_drain(((void*)0));
 }

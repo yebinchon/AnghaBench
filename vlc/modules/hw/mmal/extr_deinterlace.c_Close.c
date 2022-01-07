@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  picture_t ;
+
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int picture_t ;
 struct TYPE_10__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ filter_t ;
-struct TYPE_11__ {int /*<<< orphan*/  sem; TYPE_6__* component; scalar_t__ filtered_pictures; TYPE_5__* output; TYPE_5__* input; } ;
-typedef  TYPE_2__ filter_sys_t ;
+typedef TYPE_1__ filter_t ;
+struct TYPE_11__ {int sem; TYPE_6__* component; scalar_t__ filtered_pictures; TYPE_5__* output; TYPE_5__* input; } ;
+typedef TYPE_2__ filter_sys_t ;
 struct TYPE_14__ {scalar_t__ is_enabled; TYPE_5__* control; } ;
 struct TYPE_13__ {scalar_t__ is_enabled; } ;
 struct TYPE_12__ {scalar_t__ user_data; } ;
-typedef  TYPE_3__ MMAL_BUFFER_HEADER_T ;
+typedef TYPE_3__ MMAL_BUFFER_HEADER_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bcm_host_deinit () ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  mmal_component_disable (TYPE_6__*) ; 
- int /*<<< orphan*/  mmal_component_release (TYPE_6__*) ; 
- int /*<<< orphan*/  mmal_port_disable (TYPE_5__*) ; 
- int /*<<< orphan*/  mmal_queue_destroy (scalar_t__) ; 
- TYPE_3__* mmal_queue_get (scalar_t__) ; 
- int /*<<< orphan*/  picture_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_sem_destroy (int /*<<< orphan*/ *) ; 
+
+ int bcm_host_deinit () ;
+ int free (TYPE_2__*) ;
+ int mmal_component_disable (TYPE_6__*) ;
+ int mmal_component_release (TYPE_6__*) ;
+ int mmal_port_disable (TYPE_5__*) ;
+ int mmal_queue_destroy (scalar_t__) ;
+ TYPE_3__* mmal_queue_get (scalar_t__) ;
+ int picture_Release (int *) ;
+ int vlc_sem_destroy (int *) ;
 
 __attribute__((used)) static void Close(filter_t *filter)
 {

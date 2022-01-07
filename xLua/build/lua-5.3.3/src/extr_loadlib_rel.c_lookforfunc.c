@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/ * lua_CFunction ;
 
-/* Variables and functions */
- int ERRFUNC ; 
- int ERRLIB ; 
- int /*<<< orphan*/  addtoclib (int /*<<< orphan*/ *,char const*,void*) ; 
- void* checkclib (int /*<<< orphan*/ *,char const*) ; 
- void* lsys_load (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/ * lsys_sym (int /*<<< orphan*/ *,void*,char const*) ; 
- int /*<<< orphan*/  lua_pushboolean (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushcfunction (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int lua_State ;
+typedef int * lua_CFunction ;
+
+
+ int ERRFUNC ;
+ int ERRLIB ;
+ int addtoclib (int *,char const*,void*) ;
+ void* checkclib (int *,char const*) ;
+ void* lsys_load (int *,char const*,int) ;
+ int * lsys_sym (int *,void*,char const*) ;
+ int lua_pushboolean (int *,int) ;
+ int lua_pushcfunction (int *,int *) ;
 
 __attribute__((used)) static int lookforfunc (lua_State *L, const char *path, const char *sym) {
-  void *reg = checkclib(L, path);  /* check loaded C libraries */
-  if (reg == NULL) {  /* must load library? */
-    reg = lsys_load(L, path, *sym == '*');  /* global symbols if 'sym'=='*' */
-    if (reg == NULL) return ERRLIB;  /* unable to load library */
+  void *reg = checkclib(L, path);
+  if (reg == ((void*)0)) {
+    reg = lsys_load(L, path, *sym == '*');
+    if (reg == ((void*)0)) return ERRLIB;
     addtoclib(L, path, reg);
   }
-  if (*sym == '*') {  /* loading only library (no function)? */
-    lua_pushboolean(L, 1);  /* return 'true' */
-    return 0;  /* no errors */
+  if (*sym == '*') {
+    lua_pushboolean(L, 1);
+    return 0;
   }
   else {
     lua_CFunction f = lsys_sym(L, reg, sym);
-    if (f == NULL)
-      return ERRFUNC;  /* unable to find function */
-    lua_pushcfunction(L, f);  /* else create new function */
-    return 0;  /* no errors */
+    if (f == ((void*)0))
+      return ERRFUNC;
+    lua_pushcfunction(L, f);
+    return 0;
   }
 }

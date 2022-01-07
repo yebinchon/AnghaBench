@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ int32_t ;
-typedef  scalar_t__ JsonVariant ;
-typedef  int /*<<< orphan*/  JsonDispatchFlags ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ERANGE ; 
- scalar_t__ INT32_MAX ; 
- scalar_t__ INT32_MIN ; 
- int /*<<< orphan*/  SYNTHETIC_ERRNO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (scalar_t__*) ; 
- int json_log (scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ json_variant_integer (scalar_t__*) ; 
- int /*<<< orphan*/  json_variant_is_integer (scalar_t__*) ; 
- int /*<<< orphan*/  strna (char const*) ; 
+
+
+
+typedef scalar_t__ int32_t ;
+typedef scalar_t__ JsonVariant ;
+typedef int JsonDispatchFlags ;
+
+
+ int EINVAL ;
+ int ERANGE ;
+ scalar_t__ INT32_MAX ;
+ scalar_t__ INT32_MIN ;
+ int SYNTHETIC_ERRNO (int ) ;
+ int assert (scalar_t__*) ;
+ int json_log (scalar_t__*,int ,int ,char*,int ) ;
+ scalar_t__ json_variant_integer (scalar_t__*) ;
+ int json_variant_is_integer (scalar_t__*) ;
+ int strna (char const*) ;
 
 int json_dispatch_int32(const char *name, JsonVariant *variant, JsonDispatchFlags flags, void *userdata) {
         int32_t *i = userdata;

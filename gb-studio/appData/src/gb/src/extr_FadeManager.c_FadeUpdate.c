@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ApplyPaletteChange (int) ; 
- scalar_t__ FADE_IN ; 
- scalar_t__ FALSE ; 
- scalar_t__ fade_direction ; 
- int fade_frame ; 
- int fade_frames_per_step ; 
- scalar_t__ fade_running ; 
- int fade_timer ; 
+ int ApplyPaletteChange (int) ;
+ scalar_t__ FADE_IN ;
+ scalar_t__ FALSE ;
+ scalar_t__ fade_direction ;
+ int fade_frame ;
+ int fade_frames_per_step ;
+ scalar_t__ fade_running ;
+ int fade_timer ;
 
 void FadeUpdate()
 {

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct ra_renderpass_params {scalar_t__ type; int num_vertex_attribs; TYPE_1__* vertex_attribs; int /*<<< orphan*/  frag_shader; int /*<<< orphan*/  vertex_shader; int /*<<< orphan*/  compute_shader; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct ra_renderpass_params {scalar_t__ type; int num_vertex_attribs; TYPE_1__* vertex_attribs; int frag_shader; int vertex_shader; int compute_shader; } ;
 struct ra {int dummy; } ;
-struct TYPE_5__ {int /*<<< orphan*/  (* DeleteProgram ) (scalar_t__) ;int /*<<< orphan*/  (* BindAttribLocation ) (scalar_t__,int,int /*<<< orphan*/ ) ;scalar_t__ (* CreateProgram ) () ;} ;
-struct TYPE_4__ {int /*<<< orphan*/  name; } ;
-typedef  scalar_t__ GLuint ;
-typedef  TYPE_2__ GL ;
+struct TYPE_5__ {int (* DeleteProgram ) (scalar_t__) ;int (* BindAttribLocation ) (scalar_t__,int,int ) ;scalar_t__ (* CreateProgram ) () ;} ;
+struct TYPE_4__ {int name; } ;
+typedef scalar_t__ GLuint ;
+typedef TYPE_2__ GL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_COMPUTE_SHADER ; 
- int /*<<< orphan*/  GL_FRAGMENT_SHADER ; 
- int /*<<< orphan*/  GL_VERTEX_SHADER ; 
- scalar_t__ RA_RENDERPASS_TYPE_COMPUTE ; 
- scalar_t__ RA_RENDERPASS_TYPE_RASTER ; 
- int /*<<< orphan*/  compile_attach_shader (struct ra*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  link_shader (struct ra*,scalar_t__,int*) ; 
- TYPE_2__* ra_gl_get (struct ra*) ; 
- scalar_t__ stub1 () ; 
- int /*<<< orphan*/  stub2 (scalar_t__,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (scalar_t__) ; 
+
+ int GL_COMPUTE_SHADER ;
+ int GL_FRAGMENT_SHADER ;
+ int GL_VERTEX_SHADER ;
+ scalar_t__ RA_RENDERPASS_TYPE_COMPUTE ;
+ scalar_t__ RA_RENDERPASS_TYPE_RASTER ;
+ int compile_attach_shader (struct ra*,scalar_t__,int ,int ,int*) ;
+ int link_shader (struct ra*,scalar_t__,int*) ;
+ TYPE_2__* ra_gl_get (struct ra*) ;
+ scalar_t__ stub1 () ;
+ int stub2 (scalar_t__,int,int ) ;
+ int stub3 (scalar_t__) ;
 
 __attribute__((used)) static GLuint compile_program(struct ra *ra, const struct ra_renderpass_params *p)
 {
     GL *gl = ra_gl_get(ra);
 
     GLuint prog = gl->CreateProgram();
-    bool ok = true;
+    bool ok = 1;
     if (p->type == RA_RENDERPASS_TYPE_COMPUTE)
         compile_attach_shader(ra, prog, GL_COMPUTE_SHADER, p->compute_shader, &ok);
     if (p->type == RA_RENDERPASS_TYPE_RASTER) {

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct drm_mode_set {TYPE_1__* crtc; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dev; } ;
+struct TYPE_2__ {int dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WARN_ON (int /*<<< orphan*/ ) ; 
- int __drm_mode_set_config_internal (struct drm_mode_set*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  drm_drv_uses_atomic_modeset (int /*<<< orphan*/ ) ; 
+
+ int WARN_ON (int ) ;
+ int __drm_mode_set_config_internal (struct drm_mode_set*,int *) ;
+ int drm_drv_uses_atomic_modeset (int ) ;
 
 int drm_mode_set_config_internal(struct drm_mode_set *set)
 {
-	WARN_ON(drm_drv_uses_atomic_modeset(set->crtc->dev));
+ WARN_ON(drm_drv_uses_atomic_modeset(set->crtc->dev));
 
-	return __drm_mode_set_config_internal(set, NULL);
+ return __drm_mode_set_config_internal(set, ((void*)0));
 }

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  exec_start; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int exec_start; } ;
 struct task_struct {TYPE_1__ se; } ;
 struct rq {TYPE_2__* curr; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * sched_class; } ;
+struct TYPE_4__ {int * sched_class; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dequeue_pushable_task (struct rq*,struct task_struct*) ; 
- int /*<<< orphan*/  rq_clock_pelt (struct rq*) ; 
- int /*<<< orphan*/  rq_clock_task (struct rq*) ; 
- int /*<<< orphan*/  rt_queue_push_tasks (struct rq*) ; 
- int /*<<< orphan*/  rt_sched_class ; 
- int /*<<< orphan*/  update_rt_rq_load_avg (int /*<<< orphan*/ ,struct rq*,int /*<<< orphan*/ ) ; 
+
+ int dequeue_pushable_task (struct rq*,struct task_struct*) ;
+ int rq_clock_pelt (struct rq*) ;
+ int rq_clock_task (struct rq*) ;
+ int rt_queue_push_tasks (struct rq*) ;
+ int rt_sched_class ;
+ int update_rt_rq_load_avg (int ,struct rq*,int ) ;
 
 __attribute__((used)) static inline void set_next_task_rt(struct rq *rq, struct task_struct *p)
 {
-	p->se.exec_start = rq_clock_task(rq);
+ p->se.exec_start = rq_clock_task(rq);
 
-	/* The running task is never eligible for pushing */
-	dequeue_pushable_task(rq, p);
 
-	/*
-	 * If prev task was rt, put_prev_task() has already updated the
-	 * utilization. We only care of the case where we start to schedule a
-	 * rt task
-	 */
-	if (rq->curr->sched_class != &rt_sched_class)
-		update_rt_rq_load_avg(rq_clock_pelt(rq), rq, 0);
+ dequeue_pushable_task(rq, p);
 
-	rt_queue_push_tasks(rq);
+
+
+
+
+
+ if (rq->curr->sched_class != &rt_sched_class)
+  update_rt_rq_load_avg(rq_clock_pelt(rq), rq, 0);
+
+ rt_queue_push_tasks(rq);
 }

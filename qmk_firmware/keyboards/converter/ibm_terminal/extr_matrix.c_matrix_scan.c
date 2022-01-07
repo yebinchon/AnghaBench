@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  debug (char*) ; 
- int /*<<< orphan*/  debug_hex (int) ; 
- int /*<<< orphan*/  matrix_break (int) ; 
- int /*<<< orphan*/  matrix_make (int) ; 
- int ps2_host_recv () ; 
- int ps2_host_send (int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int debug (char*) ;
+ int debug_hex (int) ;
+ int matrix_break (int) ;
+ int matrix_make (int) ;
+ int ps2_host_recv () ;
+ int ps2_host_send (int) ;
 
 uint8_t matrix_scan(void)
 {
 
-    // scan code reading states
+
     static enum {
         RESET,
         RESET_RESPONSE,
@@ -56,7 +56,7 @@ uint8_t matrix_scan(void)
                 state = RESET;
             }
             break;
-        // after reset receive keyboard ID(2 bytes)
+
         case KBD_ID0:
             if (code) {
                 state = KBD_ID1;
@@ -83,7 +83,7 @@ uint8_t matrix_scan(void)
                     state = F0;
                     debug(" ");
                     break;
-                default:    // normal key make
+                default:
                     if (code < 0x88) {
                         matrix_make(code);
                     } else {
@@ -93,7 +93,7 @@ uint8_t matrix_scan(void)
                     debug("\n");
             }
             break;
-        case F0:    // Break code
+        case F0:
             switch (code) {
                 case 0x00:
                     break;

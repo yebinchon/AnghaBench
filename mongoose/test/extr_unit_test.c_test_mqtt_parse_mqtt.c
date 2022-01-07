@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int len; } ;
-struct mg_connection {int* user_data; int flags; TYPE_1__ recv_mbuf; int /*<<< orphan*/  (* proto_handler ) (struct mg_connection*,int /*<<< orphan*/ ,int*) ;TYPE_1__ send_mbuf; int /*<<< orphan*/  handler; } ;
-typedef  int /*<<< orphan*/  msg ;
+struct mg_connection {int* user_data; int flags; TYPE_1__ recv_mbuf; int (* proto_handler ) (struct mg_connection*,int ,int*) ;TYPE_1__ send_mbuf; int handler; } ;
+typedef int msg ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  ASSERT_EQ (int,int) ; 
- int /*<<< orphan*/  MG_EV_RECV ; 
- int MG_F_CLOSE_IMMEDIATELY ; 
- int MG_MQTT_CMD_PUBLISH ; 
- int MG_MQTT_CMD_SUBACK ; 
- struct mg_connection* create_test_connection () ; 
- int /*<<< orphan*/  destroy_test_connection (struct mg_connection*) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  mbuf_append (TYPE_1__*,char*,int) ; 
- int /*<<< orphan*/  mbuf_free (TYPE_1__*) ; 
- int /*<<< orphan*/  mbuf_init (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mbuf_remove (TYPE_1__*,int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  memset (char*,char,int) ; 
- int /*<<< orphan*/  mg_mqtt_connack (struct mg_connection*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mg_mqtt_publish (struct mg_connection*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  mg_set_protocol_mqtt (struct mg_connection*) ; 
- int /*<<< orphan*/  mqtt_eh ; 
- int mqtt_long_payload_len ; 
- int mqtt_very_long_payload_len ; 
- int /*<<< orphan*/  stub1 (struct mg_connection*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  stub2 (struct mg_connection*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  stub3 (struct mg_connection*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  stub4 (struct mg_connection*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  stub5 (struct mg_connection*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  stub6 (struct mg_connection*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  stub7 (struct mg_connection*,int /*<<< orphan*/ ,int*) ; 
+
+ int ASSERT (int) ;
+ int ASSERT_EQ (int,int) ;
+ int MG_EV_RECV ;
+ int MG_F_CLOSE_IMMEDIATELY ;
+ int MG_MQTT_CMD_PUBLISH ;
+ int MG_MQTT_CMD_SUBACK ;
+ struct mg_connection* create_test_connection () ;
+ int destroy_test_connection (struct mg_connection*) ;
+ int free (char*) ;
+ scalar_t__ malloc (int) ;
+ int mbuf_append (TYPE_1__*,char*,int) ;
+ int mbuf_free (TYPE_1__*) ;
+ int mbuf_init (TYPE_1__*,int ) ;
+ int mbuf_remove (TYPE_1__*,int) ;
+ int memcpy (char*,char*,int) ;
+ int memset (char*,char,int) ;
+ int mg_mqtt_connack (struct mg_connection*,int ) ;
+ int mg_mqtt_publish (struct mg_connection*,char*,int ,int ,char*,int) ;
+ int mg_set_protocol_mqtt (struct mg_connection*) ;
+ int mqtt_eh ;
+ int mqtt_long_payload_len ;
+ int mqtt_very_long_payload_len ;
+ int stub1 (struct mg_connection*,int ,int*) ;
+ int stub2 (struct mg_connection*,int ,int*) ;
+ int stub3 (struct mg_connection*,int ,int*) ;
+ int stub4 (struct mg_connection*,int ,int*) ;
+ int stub5 (struct mg_connection*,int ,int*) ;
+ int stub6 (struct mg_connection*,int ,int*) ;
+ int stub7 (struct mg_connection*,int ,int*) ;
 
 __attribute__((used)) static const char *test_mqtt_parse_mqtt(void) {
   struct mg_connection *nc = create_test_connection();
@@ -63,7 +63,7 @@ __attribute__((used)) static const char *test_mqtt_parse_mqtt(void) {
   ASSERT_EQ(check, 1);
   mbuf_free(&nc->recv_mbuf);
 
-  /* test a payload whose length encodes as two bytes */
+
   rest_len = 2 + 6 + mqtt_long_payload_len;
   long_msg = (char *) malloc(512);
   long_msg[0] = (char) (MG_MQTT_CMD_PUBLISH << 4);
@@ -75,7 +75,7 @@ __attribute__((used)) static const char *test_mqtt_parse_mqtt(void) {
   num_bytes = 3 + rest_len;
   mbuf_append(&nc->recv_mbuf, long_msg, num_bytes);
 
-  /* Short read: handler is not run and data is not consumed */
+
   for (i = 0; i < num_bytes; i++) {
     check = 123;
     nc->recv_mbuf.len = i;
@@ -90,7 +90,7 @@ __attribute__((used)) static const char *test_mqtt_parse_mqtt(void) {
   mbuf_free(&nc->recv_mbuf);
   free(long_msg);
 
-  /* test a payload whose length encodes as two bytes */
+
   rest_len = 8 + mqtt_very_long_payload_len;
   long_msg = (char *) malloc(20100);
   long_msg[0] = (char) (MG_MQTT_CMD_PUBLISH << 4);
@@ -107,8 +107,8 @@ __attribute__((used)) static const char *test_mqtt_parse_mqtt(void) {
   ASSERT_EQ(check, 3);
   mbuf_remove(&nc->recv_mbuf, nc->recv_mbuf.len);
 
-  /* Message length encodings > 4 bytes are not allowed by the standard,
-   * connections should be closed immediately. */
+
+
   long_msg[0] = (char) (MG_MQTT_CMD_PUBLISH << 4);
   long_msg[1] = 0xff;
   long_msg[2] = 0xff;
@@ -122,7 +122,7 @@ __attribute__((used)) static const char *test_mqtt_parse_mqtt(void) {
   mbuf_free(&nc->recv_mbuf);
   free(long_msg);
 
-  /* test encoding a large payload */
+
   long_msg = (char *) malloc(mqtt_very_long_payload_len);
   memset(long_msg, 'A', mqtt_very_long_payload_len);
   mg_mqtt_publish(nc, "/topic", 0, 0, long_msg, mqtt_very_long_payload_len);
@@ -135,7 +135,7 @@ __attribute__((used)) static const char *test_mqtt_parse_mqtt(void) {
   mbuf_free(&nc->recv_mbuf);
   free(long_msg);
 
-  /* test connack parsing */
+
   mg_mqtt_connack(nc, 0);
   nc->recv_mbuf = nc->send_mbuf;
   mbuf_init(&nc->send_mbuf, 0);
@@ -146,5 +146,5 @@ __attribute__((used)) static const char *test_mqtt_parse_mqtt(void) {
   mbuf_free(&nc->recv_mbuf);
 
   destroy_test_connection(nc);
-  return NULL;
+  return ((void*)0);
 }

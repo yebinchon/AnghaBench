@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct page {int dummy; } ;
 struct TYPE_4__ {TYPE_1__* mm; } ;
-struct TYPE_3__ {int /*<<< orphan*/  mmap_sem; } ;
+struct TYPE_3__ {int mmap_sem; } ;
 
-/* Variables and functions */
- int __ipath_get_user_pages (unsigned long,size_t,struct page**,int /*<<< orphan*/ *) ; 
- TYPE_2__* current ; 
- int /*<<< orphan*/  down_write (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  up_write (int /*<<< orphan*/ *) ; 
+
+ int __ipath_get_user_pages (unsigned long,size_t,struct page**,int *) ;
+ TYPE_2__* current ;
+ int down_write (int *) ;
+ int up_write (int *) ;
 
 int ipath_get_user_pages(unsigned long start_page, size_t num_pages,
-			 struct page **p)
+    struct page **p)
 {
-	int ret;
+ int ret;
 
-	down_write(&current->mm->mmap_sem);
+ down_write(&current->mm->mmap_sem);
 
-	ret = __ipath_get_user_pages(start_page, num_pages, p, NULL);
+ ret = __ipath_get_user_pages(start_page, num_pages, p, ((void*)0));
 
-	up_write(&current->mm->mmap_sem);
+ up_write(&current->mm->mmap_sem);
 
-	return ret;
+ return ret;
 }

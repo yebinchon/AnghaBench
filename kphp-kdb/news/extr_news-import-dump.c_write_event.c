@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int LEV_BOOKMARK_INSERT ; 
- int MAXUSERS ; 
- int USERMOD ; 
- int /*<<< orphan*/ * a ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * c ; 
- int gen_split_param (int,int,int) ; 
- int log_split_mod ; 
- int /*<<< orphan*/ * u ; 
- int /*<<< orphan*/  write_int (int,int) ; 
- int /*<<< orphan*/ * z ; 
+ int LEV_BOOKMARK_INSERT ;
+ int MAXUSERS ;
+ int USERMOD ;
+ int * a ;
+ int assert (int) ;
+ int * c ;
+ int gen_split_param (int,int,int) ;
+ int log_split_mod ;
+ int * u ;
+ int write_int (int,int) ;
+ int * z ;
 
 void write_event (int user_id, int type, int owner, int place) {
   int x;

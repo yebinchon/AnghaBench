@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct section_table {scalar_t__ addr; scalar_t__ endaddr; struct bfd_section* the_bfd_section; int /*<<< orphan*/ * bfd; } ;
+
+
+
+
+struct section_table {scalar_t__ addr; scalar_t__ endaddr; struct bfd_section* the_bfd_section; int * bfd; } ;
 struct bfd_section {int dummy; } ;
-typedef  int flagword ;
-typedef  int /*<<< orphan*/  bfd ;
+typedef int flagword ;
+typedef int bfd ;
 
-/* Variables and functions */
- int SEC_ALLOC ; 
- int bfd_get_section_flags (int /*<<< orphan*/ *,struct bfd_section*) ; 
- scalar_t__ bfd_section_size (int /*<<< orphan*/ *,struct bfd_section*) ; 
- scalar_t__ bfd_section_vma (int /*<<< orphan*/ *,struct bfd_section*) ; 
+
+ int SEC_ALLOC ;
+ int bfd_get_section_flags (int *,struct bfd_section*) ;
+ scalar_t__ bfd_section_size (int *,struct bfd_section*) ;
+ scalar_t__ bfd_section_vma (int *,struct bfd_section*) ;
 
 __attribute__((used)) static void
 add_to_section_table (bfd *abfd, struct bfd_section *asect,
-		      void *table_pp_char)
+        void *table_pp_char)
 {
   struct section_table **table_pp = (struct section_table **) table_pp_char;
   flagword aflag;

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tl_query_header {int flags; int kitten_php_delay; int string_forward_keys_num; char** string_forward_keys; int int_forward_keys_num; char* string_forward; int custom_timeout; void* wait_binlog_time; void* int_forward; void** int_forward_keys; void* wait_binlog_pos; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TL_ERROR_HEADER ; 
- int TL_QUERY_HEADER_FLAG_CUSTOM_TIMEOUT ; 
- int TL_QUERY_HEADER_FLAG_INT_FORWARD ; 
- int TL_QUERY_HEADER_FLAG_INT_FORWARD_KEYS ; 
- int TL_QUERY_HEADER_FLAG_KPHP_DELAY ; 
- int TL_QUERY_HEADER_FLAG_MASK ; 
- int TL_QUERY_HEADER_FLAG_STRING_FORWARD ; 
- int TL_QUERY_HEADER_FLAG_STRING_FORWARD_KEYS ; 
- int TL_QUERY_HEADER_FLAG_WAIT_BINLOG ; 
- int TL_QUERY_HEADER_FLAG_WAIT_BINLOG_TIME ; 
- scalar_t__ malloc (int) ; 
- scalar_t__ tl_fetch_error () ; 
- void* tl_fetch_int () ; 
- void* tl_fetch_long () ; 
- int /*<<< orphan*/  tl_fetch_set_error_format (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  tl_fetch_string_data (char*,int) ; 
- int tl_fetch_string_len (int) ; 
+
+ int TL_ERROR_HEADER ;
+ int TL_QUERY_HEADER_FLAG_CUSTOM_TIMEOUT ;
+ int TL_QUERY_HEADER_FLAG_INT_FORWARD ;
+ int TL_QUERY_HEADER_FLAG_INT_FORWARD_KEYS ;
+ int TL_QUERY_HEADER_FLAG_KPHP_DELAY ;
+ int TL_QUERY_HEADER_FLAG_MASK ;
+ int TL_QUERY_HEADER_FLAG_STRING_FORWARD ;
+ int TL_QUERY_HEADER_FLAG_STRING_FORWARD_KEYS ;
+ int TL_QUERY_HEADER_FLAG_WAIT_BINLOG ;
+ int TL_QUERY_HEADER_FLAG_WAIT_BINLOG_TIME ;
+ scalar_t__ malloc (int) ;
+ scalar_t__ tl_fetch_error () ;
+ void* tl_fetch_int () ;
+ void* tl_fetch_long () ;
+ int tl_fetch_set_error_format (int ,char*,int) ;
+ int tl_fetch_string_data (char*,int) ;
+ int tl_fetch_string_len (int) ;
 
 int tl_fetch_query_flags (struct tl_query_header *header) {
   int flags = tl_fetch_int ();

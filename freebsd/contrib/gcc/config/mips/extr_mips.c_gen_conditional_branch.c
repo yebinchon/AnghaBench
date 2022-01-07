@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
-typedef  enum rtx_code { ____Placeholder_rtx_code } rtx_code ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TARGET_MIPS16 ; 
- int /*<<< orphan*/  VOIDmode ; 
- int /*<<< orphan*/  emit_jump_insn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_condjump (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_fmt_ee (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mips_emit_compare (int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rtx ;
+typedef enum rtx_code { ____Placeholder_rtx_code } rtx_code ;
+
+
+ int TARGET_MIPS16 ;
+ int VOIDmode ;
+ int emit_jump_insn (int ) ;
+ int gen_condjump (int ,int ) ;
+ int gen_rtx_fmt_ee (int,int ,int ,int ) ;
+ int mips_emit_compare (int*,int *,int *,int ) ;
 
 void
 gen_conditional_branch (rtx *operands, enum rtx_code code)

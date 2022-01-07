@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gather_data {scalar_t__ new_key_len; int /*<<< orphan*/  new_key; } ;
+
+
+
+
+struct gather_data {scalar_t__ new_key_len; int new_key; } ;
 struct connection {scalar_t__ generation; struct conn_query* first_query; } ;
 struct conn_query {scalar_t__ req_generation; struct conn_query* next; scalar_t__ extra; struct connection* requester; } ;
 
-/* Variables and functions */
- struct gather_data* GATHER_QUERY (struct conn_query*) ; 
- int /*<<< orphan*/  cur_key ; 
- scalar_t__ cur_key_len ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  get_key (char const*,int) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbosity ; 
+
+ struct gather_data* GATHER_QUERY (struct conn_query*) ;
+ int cur_key ;
+ scalar_t__ cur_key_len ;
+ int fprintf (int ,char*) ;
+ int get_key (char const*,int) ;
+ int memcmp (int ,int ,scalar_t__) ;
+ int stderr ;
+ scalar_t__ verbosity ;
 
 struct conn_query* get_conn_query (struct connection *c, const char *data, int len) {
   if (!get_key (data, len)) {

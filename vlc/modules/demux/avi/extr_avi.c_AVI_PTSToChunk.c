@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_tick_t ;
-typedef  int /*<<< orphan*/  int64_t ;
-struct TYPE_3__ {int /*<<< orphan*/  i_rate; int /*<<< orphan*/  i_scale; } ;
-typedef  TYPE_1__ avi_track_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVI_Rescale (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SEC_FROM_VLC_TICK (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int vlc_tick_t ;
+typedef int int64_t ;
+struct TYPE_3__ {int i_rate; int i_scale; } ;
+typedef TYPE_1__ avi_track_t ;
+
+
+ int AVI_Rescale (int ,int ,int ) ;
+ int SEC_FROM_VLC_TICK (int ) ;
 
 __attribute__((used)) static int64_t AVI_PTSToChunk( avi_track_t *tk, vlc_tick_t i_pts )
 {

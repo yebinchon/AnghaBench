@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {float int_result; float str_result; scalar_t__ bool_result; scalar_t__ double_result; scalar_t__ test_double; } ;
-typedef  TYPE_1__ conv_results_t ;
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  scalar_t__ UINT16 ;
-typedef  int /*<<< orphan*/  IVariantChangeType ;
-typedef  float INT16 ;
+typedef TYPE_1__ conv_results_t ;
+typedef int VARIANT ;
+typedef scalar_t__ UINT16 ;
+typedef int IVariantChangeType ;
+typedef float INT16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_NOTIMPL ; 
- scalar_t__ VT_BOOL ; 
- scalar_t__ VT_BSTR ; 
- scalar_t__ VT_EMPTY ; 
- scalar_t__ VT_I2 ; 
- scalar_t__ VT_I4 ; 
- scalar_t__ VT_NULL ; 
- scalar_t__ VT_R4 ; 
- scalar_t__ VT_R8 ; 
- scalar_t__ VT_UI2 ; 
- float V_BOOL (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  V_BSTR (int /*<<< orphan*/ *) ; 
- float V_I2 (int /*<<< orphan*/ *) ; 
- float V_I4 (int /*<<< orphan*/ *) ; 
- float V_R4 (int /*<<< orphan*/ *) ; 
- float V_R8 (int /*<<< orphan*/ *) ; 
- float V_UI2 (int /*<<< orphan*/ *) ; 
- scalar_t__ V_VT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  call_change_type (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  change_type_fail (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,float,float) ; 
- int /*<<< orphan*/  strcmp_wa (int /*<<< orphan*/ ,float) ; 
- float wine_dbgstr_w (int /*<<< orphan*/ ) ; 
+
+ int E_NOTIMPL ;
+ scalar_t__ VT_BOOL ;
+ scalar_t__ VT_BSTR ;
+ scalar_t__ VT_EMPTY ;
+ scalar_t__ VT_I2 ;
+ scalar_t__ VT_I4 ;
+ scalar_t__ VT_NULL ;
+ scalar_t__ VT_R4 ;
+ scalar_t__ VT_R8 ;
+ scalar_t__ VT_UI2 ;
+ float V_BOOL (int *) ;
+ int V_BSTR (int *) ;
+ float V_I2 (int *) ;
+ float V_I4 (int *) ;
+ float V_R4 (int *) ;
+ float V_R8 (int *) ;
+ float V_UI2 (int *) ;
+ scalar_t__ V_VT (int *) ;
+ int VariantClear (int *) ;
+ int call_change_type (int *,int *,int *,scalar_t__) ;
+ int change_type_fail (int *,int *,scalar_t__,int ) ;
+ int ok (int,char*,float,float) ;
+ int strcmp_wa (int ,float) ;
+ float wine_dbgstr_w (int ) ;
 
 __attribute__((used)) static void test_change_type(IVariantChangeType *change_type, VARIANT *src, const conv_results_t *ex)
 {

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
-typedef  size_t ht_slot ;
-typedef  int /*<<< orphan*/  aSub ;
 
-/* Variables and functions */
- int ArraySize (struct Sublist*) ; 
- int const HASHTABLE_NPAGE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memset (struct Sublist*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  walMerge (int const*,size_t*,int,size_t**,int*,size_t*) ; 
+
+
+
+typedef int u32 ;
+typedef size_t ht_slot ;
+typedef int aSub ;
+
+
+ int ArraySize (struct Sublist*) ;
+ int const HASHTABLE_NPAGE ;
+ int assert (int) ;
+ int memset (struct Sublist*,int ,int) ;
+ int walMerge (int const*,size_t*,int,size_t**,int*,size_t*) ;
 
 __attribute__((used)) static void walMergesort(
-  const u32 *aContent,            /* Pages in wal */
-  ht_slot *aBuffer,               /* Buffer of at least *pnList items to use */
-  ht_slot *aList,                 /* IN/OUT: List to sort */
-  int *pnList                     /* IN/OUT: Number of elements in aList[] */
+  const u32 *aContent,
+  ht_slot *aBuffer,
+  ht_slot *aList,
+  int *pnList
 ){
   struct Sublist {
-    int nList;                    /* Number of elements in aList */
-    ht_slot *aList;               /* Pointer to sub-list content */
+    int nList;
+    ht_slot *aList;
   };
 
-  const int nList = *pnList;      /* Size of input list */
-  int nMerge = 0;                 /* Number of elements in list aMerge */
-  ht_slot *aMerge = 0;            /* List to be merged */
-  int iList;                      /* Index into input list */
-  u32 iSub = 0;                   /* Index into aSub array */
-  struct Sublist aSub[13];        /* Array of sub-lists */
+  const int nList = *pnList;
+  int nMerge = 0;
+  ht_slot *aMerge = 0;
+  int iList;
+  u32 iSub = 0;
+  struct Sublist aSub[13];
 
   memset(aSub, 0, sizeof(aSub));
   assert( nList<=HASHTABLE_NPAGE && nList>0 );
@@ -70,13 +70,4 @@ __attribute__((used)) static void walMergesort(
   }
   assert( aMerge==aList );
   *pnList = nMerge;
-
-#ifdef SQLITE_DEBUG
-  {
-    int i;
-    for(i=1; i<*pnList; i++){
-      assert( aContent[aList[i]] > aContent[aList[i-1]] );
-    }
-  }
-#endif
 }

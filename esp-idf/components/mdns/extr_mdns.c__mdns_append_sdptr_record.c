@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  scalar_t__ uint16_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef scalar_t__ uint16_t ;
 struct TYPE_3__ {char* service; char* proto; } ;
-typedef  TYPE_1__ mdns_service_t ;
+typedef TYPE_1__ mdns_service_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MDNS_ANSWER_PTR ; 
- int /*<<< orphan*/  MDNS_ANSWER_PTR_TTL ; 
- char* MDNS_DEFAULT_DOMAIN ; 
- scalar_t__ _mdns_append_fqdn (scalar_t__*,scalar_t__*,char const**,int) ; 
- scalar_t__ _mdns_append_type (scalar_t__*,scalar_t__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _mdns_set_u16 (scalar_t__*,scalar_t__,scalar_t__) ; 
+
+ int MDNS_ANSWER_PTR ;
+ int MDNS_ANSWER_PTR_TTL ;
+ char* MDNS_DEFAULT_DOMAIN ;
+ scalar_t__ _mdns_append_fqdn (scalar_t__*,scalar_t__*,char const**,int) ;
+ scalar_t__ _mdns_append_type (scalar_t__*,scalar_t__*,int ,int,int ) ;
+ int _mdns_set_u16 (scalar_t__*,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static uint16_t _mdns_append_sdptr_record(uint8_t * packet, uint16_t * index, mdns_service_t * service, bool flush, bool bye)
 {
@@ -31,7 +31,7 @@ __attribute__((used)) static uint16_t _mdns_append_sdptr_record(uint8_t * packet
     uint16_t record_length = 0;
     uint8_t part_length;
 
-    if (service == NULL) {
+    if (service == ((void*)0)) {
         return 0;
     }
 

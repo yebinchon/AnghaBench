@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-typedef  int MSize ;
 
-/* Variables and functions */
- scalar_t__ LJ_UNLIKELY (int) ; 
- int /*<<< orphan*/  lj_strfmt_wuint9 (char*,size_t) ; 
- int /*<<< orphan*/  lua_assert (int) ; 
- int /*<<< orphan*/  memcmp (char*,char*,int) ; 
+
+
+
+typedef size_t uint32_t ;
+typedef int MSize ;
+
+
+ scalar_t__ LJ_UNLIKELY (int) ;
+ int lj_strfmt_wuint9 (char*,size_t) ;
+ int lua_assert (int) ;
+ int memcmp (char*,char*,int) ;
 
 __attribute__((used)) static int nd_similar(uint32_t* nd, uint32_t ndhi, uint32_t* ref, MSize hilen,
-		      MSize prec)
+        MSize prec)
 {
   char nd9[9], ref9[9];
   if (hilen <= prec) {

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int retries; int measurements; } ;
-typedef  TYPE_1__ libkdump_config_t ;
+typedef TYPE_1__ libkdump_config_t ;
 
-/* Variables and functions */
- size_t DEFAULT_PHYSICAL_OFFSET ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  libkdump_cleanup () ; 
- int /*<<< orphan*/  libkdump_enable_debug (int /*<<< orphan*/ ) ; 
- TYPE_1__ libkdump_get_autoconfig () ; 
- int /*<<< orphan*/  libkdump_init (TYPE_1__) ; 
- int libkdump_read (size_t) ; 
- size_t libkdump_virt_to_phys (size_t) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stdout ; 
+
+ size_t DEFAULT_PHYSICAL_OFFSET ;
+ int exit (int) ;
+ int fflush (int ) ;
+ int libkdump_cleanup () ;
+ int libkdump_enable_debug (int ) ;
+ TYPE_1__ libkdump_get_autoconfig () ;
+ int libkdump_init (TYPE_1__) ;
+ int libkdump_read (size_t) ;
+ size_t libkdump_virt_to_phys (size_t) ;
+ int printf (char*,...) ;
+ int stdout ;
 
 int main(int argc, char *argv[]) {
   size_t scratch[4096];
   libkdump_config_t config;
   size_t offset = DEFAULT_PHYSICAL_OFFSET;
-#ifdef __x86_64__
+
   size_t step = 0x800000000ll;
-#else
-  size_t step = 0x1000000;
-#endif
+
+
+
   size_t delta = -2 * step;
   int progress = 0;
 

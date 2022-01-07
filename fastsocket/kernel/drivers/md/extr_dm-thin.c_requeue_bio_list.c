@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct thin_c {int /*<<< orphan*/  lock; } ;
+
+
+
+
+struct thin_c {int lock; } ;
 struct bio_list {int dummy; } ;
 struct bio {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DM_ENDIO_REQUEUE ; 
- int /*<<< orphan*/  bio_endio (struct bio*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bio_list_init (struct bio_list*) ; 
- int /*<<< orphan*/  bio_list_merge (struct bio_list*,struct bio_list*) ; 
- struct bio* bio_list_pop (struct bio_list*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int DM_ENDIO_REQUEUE ;
+ int bio_endio (struct bio*,int ) ;
+ int bio_list_init (struct bio_list*) ;
+ int bio_list_merge (struct bio_list*,struct bio_list*) ;
+ struct bio* bio_list_pop (struct bio_list*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void requeue_bio_list(struct thin_c *tc, struct bio_list *master)
 {
-	struct bio *bio;
-	struct bio_list bios;
-	unsigned long flags;
+ struct bio *bio;
+ struct bio_list bios;
+ unsigned long flags;
 
-	bio_list_init(&bios);
+ bio_list_init(&bios);
 
-	spin_lock_irqsave(&tc->lock, flags);
-	bio_list_merge(&bios, master);
-	bio_list_init(master);
-	spin_unlock_irqrestore(&tc->lock, flags);
+ spin_lock_irqsave(&tc->lock, flags);
+ bio_list_merge(&bios, master);
+ bio_list_init(master);
+ spin_unlock_irqrestore(&tc->lock, flags);
 
-	while ((bio = bio_list_pop(&bios)))
-		bio_endio(bio, DM_ENDIO_REQUEUE);
+ while ((bio = bio_list_pop(&bios)))
+  bio_endio(bio, DM_ENDIO_REQUEUE);
 }

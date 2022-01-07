@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char* string; } ;
-struct mpv_node {TYPE_1__ u; int /*<<< orphan*/  format; } ;
+struct mpv_node {TYPE_1__ u; int format; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MPV_FORMAT_STRING ; 
- scalar_t__ mp_isalnum (char) ; 
- int /*<<< orphan*/  mp_isalpha (char) ; 
- char* talloc_strndup (void*,char*,int) ; 
+
+ int MPV_FORMAT_STRING ;
+ scalar_t__ mp_isalnum (char) ;
+ int mp_isalpha (char) ;
+ char* talloc_strndup (void*,char*,int) ;
 
 __attribute__((used)) static int read_id(void *ta_parent, struct mpv_node *dst, char **src)
 {
@@ -28,7 +28,7 @@ __attribute__((used)) static int read_id(void *ta_parent, struct mpv_node *dst, 
     while (mp_isalnum(**src) || **src == '_')
         *src += 1;
     if (**src == ' ') {
-        **src = '\0'; // we're allowed to mutate it => can avoid the strndup
+        **src = '\0';
         *src += 1;
     } else {
         start = talloc_strndup(ta_parent, start, *src - start);

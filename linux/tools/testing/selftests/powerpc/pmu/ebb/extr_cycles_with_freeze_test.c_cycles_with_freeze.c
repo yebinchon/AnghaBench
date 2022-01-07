@@ -1,113 +1,113 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
 struct TYPE_4__ {int exclude_kernel; int exclude_hv; int exclude_idle; } ;
 struct event {TYPE_1__ attr; } ;
 struct TYPE_5__ {int ebb_count; } ;
 struct TYPE_6__ {TYPE_2__ stats; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FAIL_IF (int) ; 
- int MMCR0_FC ; 
- int /*<<< orphan*/  SKIP_IF (int) ; 
- int /*<<< orphan*/  SPRN_MMCR0 ; 
- int /*<<< orphan*/  SPRN_PMC1 ; 
- int core_busy_loop () ; 
- int /*<<< orphan*/  count_pmc (int,int /*<<< orphan*/ ) ; 
- int counters_frozen ; 
- int /*<<< orphan*/  dump_ebb_state () ; 
- int /*<<< orphan*/  ebb_callee ; 
- int ebb_event_enable (struct event*) ; 
- int /*<<< orphan*/  ebb_freeze_pmcs () ; 
- int /*<<< orphan*/  ebb_global_disable () ; 
- int /*<<< orphan*/  ebb_global_enable () ; 
- int /*<<< orphan*/  ebb_is_supported () ; 
- TYPE_3__ ebb_state ; 
- int ebbs_while_frozen ; 
- int /*<<< orphan*/  event_close (struct event*) ; 
- int /*<<< orphan*/  event_init_named (struct event*,int,char*) ; 
- int /*<<< orphan*/  event_leader_ebb_init (struct event*) ; 
- int event_open (struct event*) ; 
- int /*<<< orphan*/  mb () ; 
- int mfspr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mtspr (int /*<<< orphan*/ ,int) ; 
- int pmc_sample_period (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,int) ; 
- int /*<<< orphan*/  sample_period ; 
- int /*<<< orphan*/  setup_ebb_handler (int /*<<< orphan*/ ) ; 
+
+ int FAIL_IF (int) ;
+ int MMCR0_FC ;
+ int SKIP_IF (int) ;
+ int SPRN_MMCR0 ;
+ int SPRN_PMC1 ;
+ int core_busy_loop () ;
+ int count_pmc (int,int ) ;
+ int counters_frozen ;
+ int dump_ebb_state () ;
+ int ebb_callee ;
+ int ebb_event_enable (struct event*) ;
+ int ebb_freeze_pmcs () ;
+ int ebb_global_disable () ;
+ int ebb_global_enable () ;
+ int ebb_is_supported () ;
+ TYPE_3__ ebb_state ;
+ int ebbs_while_frozen ;
+ int event_close (struct event*) ;
+ int event_init_named (struct event*,int,char*) ;
+ int event_leader_ebb_init (struct event*) ;
+ int event_open (struct event*) ;
+ int mb () ;
+ int mfspr (int ) ;
+ int mtspr (int ,int) ;
+ int pmc_sample_period (int ) ;
+ int printf (char*,int) ;
+ int sample_period ;
+ int setup_ebb_handler (int ) ;
 
 int cycles_with_freeze(void)
 {
-	struct event event;
-	uint64_t val;
-	bool fc_cleared;
+ struct event event;
+ uint64_t val;
+ bool fc_cleared;
 
-	SKIP_IF(!ebb_is_supported());
+ SKIP_IF(!ebb_is_supported());
 
-	event_init_named(&event, 0x1001e, "cycles");
-	event_leader_ebb_init(&event);
+ event_init_named(&event, 0x1001e, "cycles");
+ event_leader_ebb_init(&event);
 
-	event.attr.exclude_kernel = 1;
-	event.attr.exclude_hv = 1;
-	event.attr.exclude_idle = 1;
+ event.attr.exclude_kernel = 1;
+ event.attr.exclude_hv = 1;
+ event.attr.exclude_idle = 1;
 
-	FAIL_IF(event_open(&event));
+ FAIL_IF(event_open(&event));
 
-	setup_ebb_handler(ebb_callee);
-	ebb_global_enable();
-	FAIL_IF(ebb_event_enable(&event));
+ setup_ebb_handler(ebb_callee);
+ ebb_global_enable();
+ FAIL_IF(ebb_event_enable(&event));
 
-	mtspr(SPRN_PMC1, pmc_sample_period(sample_period));
+ mtspr(SPRN_PMC1, pmc_sample_period(sample_period));
 
-	fc_cleared = false;
+ fc_cleared = 0;
 
-	/* Make sure we loop until we take at least one EBB */
-	while ((ebb_state.stats.ebb_count < 20 && !fc_cleared) ||
-		ebb_state.stats.ebb_count < 1)
-	{
-		counters_frozen = false;
-		mb();
-		mtspr(SPRN_MMCR0, mfspr(SPRN_MMCR0) & ~MMCR0_FC);
 
-		FAIL_IF(core_busy_loop());
+ while ((ebb_state.stats.ebb_count < 20 && !fc_cleared) ||
+  ebb_state.stats.ebb_count < 1)
+ {
+  counters_frozen = 0;
+  mb();
+  mtspr(SPRN_MMCR0, mfspr(SPRN_MMCR0) & ~MMCR0_FC);
 
-		counters_frozen = true;
-		mb();
-		mtspr(SPRN_MMCR0, mfspr(SPRN_MMCR0) |  MMCR0_FC);
+  FAIL_IF(core_busy_loop());
 
-		val = mfspr(SPRN_MMCR0);
-		if (! (val & MMCR0_FC)) {
-			printf("Outside of loop, FC NOT set MMCR0 0x%lx\n", val);
-			fc_cleared = true;
-		}
-	}
+  counters_frozen = 1;
+  mb();
+  mtspr(SPRN_MMCR0, mfspr(SPRN_MMCR0) | MMCR0_FC);
 
-	ebb_global_disable();
-	ebb_freeze_pmcs();
+  val = mfspr(SPRN_MMCR0);
+  if (! (val & MMCR0_FC)) {
+   printf("Outside of loop, FC NOT set MMCR0 0x%lx\n", val);
+   fc_cleared = 1;
+  }
+ }
 
-	count_pmc(1, sample_period);
+ ebb_global_disable();
+ ebb_freeze_pmcs();
 
-	dump_ebb_state();
+ count_pmc(1, sample_period);
 
-	printf("EBBs while frozen %d\n", ebbs_while_frozen);
+ dump_ebb_state();
 
-	event_close(&event);
+ printf("EBBs while frozen %d\n", ebbs_while_frozen);
 
-	FAIL_IF(ebb_state.stats.ebb_count == 0);
-	FAIL_IF(fc_cleared);
+ event_close(&event);
 
-	return 0;
+ FAIL_IF(ebb_state.stats.ebb_count == 0);
+ FAIL_IF(fc_cleared);
+
+ return 0;
 }

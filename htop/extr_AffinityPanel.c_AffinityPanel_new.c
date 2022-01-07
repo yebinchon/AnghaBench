@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int used; int* cpus; } ;
-struct TYPE_5__ {int cpuCount; int /*<<< orphan*/  settings; } ;
-typedef  TYPE_1__ ProcessList ;
-typedef  int /*<<< orphan*/  Panel ;
-typedef  int /*<<< orphan*/  Object ;
-typedef  TYPE_2__ Affinity ;
+struct TYPE_5__ {int cpuCount; int settings; } ;
+typedef TYPE_1__ ProcessList ;
+typedef int Panel ;
+typedef int Object ;
+typedef TYPE_2__ Affinity ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AffinityPanel ; 
- int /*<<< orphan*/  CheckItem ; 
- scalar_t__ CheckItem_newByVal (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  Class (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FunctionBar_newEnterEsc (char*,char*) ; 
- int /*<<< orphan*/  Object_setClass (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Panel_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Panel_new (int,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Panel_setHeader (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  Settings_cpuId (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  xSnprintf (char*,int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xStrdup (char*) ; 
+
+ int AffinityPanel ;
+ int CheckItem ;
+ scalar_t__ CheckItem_newByVal (int ,int) ;
+ int Class (int ) ;
+ int FunctionBar_newEnterEsc (char*,char*) ;
+ int Object_setClass (int *,int ) ;
+ int Panel_add (int *,int *) ;
+ int * Panel_new (int,int,int,int,int,int ,int ) ;
+ int Panel_setHeader (int *,char*) ;
+ int Settings_cpuId (int ,int) ;
+ int xSnprintf (char*,int,char*,int ) ;
+ int xStrdup (char*) ;
 
 Panel* AffinityPanel_new(ProcessList* pl, Affinity* affinity) {
-   Panel* this = Panel_new(1, 1, 1, 1, true, Class(CheckItem), FunctionBar_newEnterEsc("Set    ", "Cancel "));
+   Panel* this = Panel_new(1, 1, 1, 1, 1, Class(CheckItem), FunctionBar_newEnterEsc("Set    ", "Cancel "));
    Object_setClass(this, Class(AffinityPanel));
 
    Panel_setHeader(this, "Use CPUs:");
@@ -44,10 +44,10 @@ Panel* AffinityPanel_new(ProcessList* pl, Affinity* affinity) {
       xSnprintf(number, 9, "%d", Settings_cpuId(pl->settings, i));
       bool mode;
       if (curCpu < affinity->used && affinity->cpus[curCpu] == i) {
-         mode = true;
+         mode = 1;
          curCpu++;
       } else {
-         mode = false;
+         mode = 0;
       }
       Panel_add(this, (Object*) CheckItem_newByVal(xStrdup(number), mode));
    }

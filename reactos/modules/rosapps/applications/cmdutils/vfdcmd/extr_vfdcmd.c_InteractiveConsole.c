@@ -1,291 +1,291 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  input ;
-typedef  int /*<<< orphan*/  args ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConvertPathCase (char*,char*) ; 
- scalar_t__ ERROR_FILE_NOT_FOUND ; 
- scalar_t__ ERROR_PATH_NOT_FOUND ; 
- int /*<<< orphan*/  GetCurrentDirectory (int,char*) ; 
- scalar_t__ GetLastError () ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MSG_CONSOLE_HINT ; 
- int /*<<< orphan*/  PrintMessage (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ProcessCommandLine (int,char const**) ; 
- int /*<<< orphan*/  SetConsoleCtrlHandler (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetConsoleTitle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetCurrentDirectory (char*) ; 
- char* SystemError (scalar_t__) ; 
- int /*<<< orphan*/  TRUE ; 
- int VFD_OK ; 
- int /*<<< orphan*/  VFD_PRODUCT_DESC ; 
- int /*<<< orphan*/  Version (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ZeroMemory (char**,int) ; 
- scalar_t__ _stricmp (char*,char*) ; 
- int /*<<< orphan*/  _strnicmp (char*,char*,int) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- char* fgets (char*,int,int /*<<< orphan*/ ) ; 
- char* help_progname ; 
- scalar_t__ isalpha (char) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stdin ; 
- int /*<<< orphan*/  stdout ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  system (char*) ; 
- scalar_t__ toupper (char) ; 
+
+
+
+typedef int input ;
+typedef int args ;
+typedef scalar_t__ DWORD ;
+
+
+ int ConvertPathCase (char*,char*) ;
+ scalar_t__ ERROR_FILE_NOT_FOUND ;
+ scalar_t__ ERROR_PATH_NOT_FOUND ;
+ int GetCurrentDirectory (int,char*) ;
+ scalar_t__ GetLastError () ;
+ int MAX_PATH ;
+ int MSG_CONSOLE_HINT ;
+ int PrintMessage (int ) ;
+ int ProcessCommandLine (int,char const**) ;
+ int SetConsoleCtrlHandler (int *,int ) ;
+ int SetConsoleTitle (int ) ;
+ int SetCurrentDirectory (char*) ;
+ char* SystemError (scalar_t__) ;
+ int TRUE ;
+ int VFD_OK ;
+ int VFD_PRODUCT_DESC ;
+ int Version (int *) ;
+ int ZeroMemory (char**,int) ;
+ scalar_t__ _stricmp (char*,char*) ;
+ int _strnicmp (char*,char*,int) ;
+ int fflush (int ) ;
+ char* fgets (char*,int,int ) ;
+ char* help_progname ;
+ scalar_t__ isalpha (char) ;
+ int printf (char*,...) ;
+ int stdin ;
+ int stdout ;
+ int strlen (char*) ;
+ int system (char*) ;
+ scalar_t__ toupper (char) ;
 
 int InteractiveConsole()
 {
-	char		input[1024];	//	user input buffer
+ char input[1024];
 
-	int			argc;			//	number of args in the user input
-	char		*args[10];		//	args to pass to command functions
+ int argc;
+ char *args[10];
 
-	char		sepa;			//	argument separator
-	char		*p;				//	work pointer
+ char sepa;
+ char *p;
 
-	//	Disable the system default Ctrl+C handler
 
-	SetConsoleCtrlHandler(NULL, TRUE);
 
-	//	Set the console title
+ SetConsoleCtrlHandler(((void*)0), TRUE);
 
-	SetConsoleTitle(VFD_PRODUCT_DESC);
 
-	//	print version information and the console hint text
 
-	Version(NULL);
+ SetConsoleTitle(VFD_PRODUCT_DESC);
 
-	PrintMessage(MSG_CONSOLE_HINT);
 
-	//	set interactive flag to exclude "VFD.EXE" from help text
 
-	help_progname = "";
+ Version(((void*)0));
 
-	//	process user input
+ PrintMessage(MSG_CONSOLE_HINT);
 
-	for (;;) {
 
-		//	print the prompt
 
-		printf("[VFD] ");
-		fflush(stdout);
+ help_progname = "";
 
-		//	read user input
 
-		fflush(stdin);
-		p = fgets(input, sizeof(input), stdin);
 
-		if (p == NULL) {
+ for (;;) {
 
-			//	most likely <ctrl+c>
 
-			printf("exit\n");
-			break;
-		}
 
-		//	skip leading blank characters
+  printf("[VFD] ");
+  fflush(stdout);
 
-		while (*p == ' ' || *p == '\t' || *p == '\n') {
-			p++;
-		}
-		
-		if (*p == '\0') {
 
-			//	empty input
 
-			continue;
-		}
+  fflush(stdin);
+  p = fgets(input, sizeof(input), stdin);
 
-		//	handle external commands
+  if (p == ((void*)0)) {
 
-		if (!_strnicmp(p, "dir", 3) ||
-			!_strnicmp(p, "attrib", 6)) {
 
-			//	special cases - frequently used commands
-			//	pass these to system() even without '.'
 
-			system(p);
-			printf("\n");
-			continue;
-		}
-		else if (*p == '.') {
+   printf("exit\n");
+   break;
+  }
 
-			//	external command
 
-			system(p + 1);
-			printf("\n");
-			continue;
-		}
 
-		//	split the input line into parameters (10 parameters max)
+  while (*p == ' ' || *p == '\t' || *p == '\n') {
+   p++;
+  }
 
-		argc = 0;
-		ZeroMemory(args, sizeof(args));
+  if (*p == '\0') {
 
-		do {
-			//	top of a parameter
 
-			args[argc++] = p;
 
-			//	is the parameter quoted?
+   continue;
+  }
 
-			if (*p == '\"' || *p == '\'') {
-				sepa = *(p++);
-			}
-			else {
-				sepa = ' ';
-			}
 
-			//	search the end of the parameter
 
-			while (*p && *p != '\n') {
-				if (sepa == ' ') {
-					if (*p == '\t' || *p == ' ') {
-						break;			//	tail of a non-quoted parameter
-					}
-				}
-				else {
-					if (*p == sepa) {
-						sepa = ' ';		//	close quote
-					}
-				}
-				p++;
-			}
+  if (!_strnicmp(p, "dir", 3) ||
+   !_strnicmp(p, "attrib", 6)) {
 
-			//	terminate the parameter
-
-			if (*p) {
-				*(p++) = '\0';
-			}
 
-			//	skip trailing blank characters
 
-			while (*p == ' ' || *p == '\t' || *p == '\n') {
-				p++;
-			}
 
-			if (*p == '\0') {
-
-				//	end of the input line - no more args
+   system(p);
+   printf("\n");
+   continue;
+  }
+  else if (*p == '.') {
 
-				break;
-			}
-		}
-		while (argc < sizeof(args) / sizeof(args[0]));
 
-		//	check the first parameter for special commands
 
-		if (!_stricmp(args[0], "exit") ||
-			!_stricmp(args[0], "quit") ||
-			!_stricmp(args[0], "bye")) {
+   system(p + 1);
+   printf("\n");
+   continue;
+  }
 
-			//	exit command
 
-			break;
-		}
-		else if (!_stricmp(args[0], "cd") ||
-			!_stricmp(args[0], "chdir")) {
 
-			//	internal change directory command
+  argc = 0;
+  ZeroMemory(args, sizeof(args));
 
-			if (args[1]) {
-				char path[MAX_PATH];
-				int i;
+  do {
 
-				//	ignore the /d option (of the standard cd command)
 
-				if (_stricmp(args[1], "/d")) {
-					i = 1;
-				}
-				else {
-					i = 2;
-				}
+   args[argc++] = p;
 
-				p = args[i];
 
-				if (*p == '\"' || *p == '\'') {
 
-					//	the parameter is quoted -- remove quotations
+   if (*p == '\"' || *p == '\'') {
+    sepa = *(p++);
+   }
+   else {
+    sepa = ' ';
+   }
 
-					p++;
 
-					while (*p && *p != *args[i]) {
-						p++;
-					}
 
-					args[i]++;		// skip a leading quote
-					*p = '\0';		// remove a trailing quote
-				}
-				else {
+   while (*p && *p != '\n') {
+    if (sepa == ' ') {
+     if (*p == '\t' || *p == ' ') {
+      break;
+     }
+    }
+    else {
+     if (*p == sepa) {
+      sepa = ' ';
+     }
+    }
+    p++;
+   }
 
-					//	the parameter is not quoted
-					//	-- concatenate params to allow spaces in unquoted path
 
-					while (i < argc - 1) {
-						*(args[i] + strlen(args[i])) = ' ';
-						i++;
-					}
-				}
 
-				//	Match the case of the path to the name on the disk
-				
-				ConvertPathCase(p, path);
+   if (*p) {
+    *(p++) = '\0';
+   }
 
-				if (!SetCurrentDirectory(path)) {
-					DWORD ret = GetLastError();
 
-					if (ret == ERROR_FILE_NOT_FOUND) {
-						ret = ERROR_PATH_NOT_FOUND;
-					}
 
-					printf("%s", SystemError(ret));
-				}
-			}
-			else {
-				if (!GetCurrentDirectory(sizeof(input), input)) {
-					printf("%s", SystemError(GetLastError()));
-				}
-				else {
-					printf("%s\n", input);
-				}
-			}
-		}
-		else if (isalpha(*args[0]) &&
-			*(args[0] + 1) == ':' &&
-			*(args[0] + 2) == '\0') {
+   while (*p == ' ' || *p == '\t' || *p == '\n') {
+    p++;
+   }
 
-			//	internal change drive command
+   if (*p == '\0') {
 
-			*args[0] = (char)toupper(*args[0]);
-			*(args[0] + 2) = '\\';
-			*(args[0] + 3) = '\0';
 
-			if (!SetCurrentDirectory(args[0])) {
-				printf("%s", SystemError(GetLastError()));
-			}
-		}
-		else {
 
-			//	perform the requested VFD command
+    break;
+   }
+  }
+  while (argc < sizeof(args) / sizeof(args[0]));
 
-			ProcessCommandLine(argc, (const char **)args);
-		}
 
-		printf("\n");
-	}
-	
-	return VFD_OK;
+
+  if (!_stricmp(args[0], "exit") ||
+   !_stricmp(args[0], "quit") ||
+   !_stricmp(args[0], "bye")) {
+
+
+
+   break;
+  }
+  else if (!_stricmp(args[0], "cd") ||
+   !_stricmp(args[0], "chdir")) {
+
+
+
+   if (args[1]) {
+    char path[MAX_PATH];
+    int i;
+
+
+
+    if (_stricmp(args[1], "/d")) {
+     i = 1;
+    }
+    else {
+     i = 2;
+    }
+
+    p = args[i];
+
+    if (*p == '\"' || *p == '\'') {
+
+
+
+     p++;
+
+     while (*p && *p != *args[i]) {
+      p++;
+     }
+
+     args[i]++;
+     *p = '\0';
+    }
+    else {
+
+
+
+
+     while (i < argc - 1) {
+      *(args[i] + strlen(args[i])) = ' ';
+      i++;
+     }
+    }
+
+
+
+    ConvertPathCase(p, path);
+
+    if (!SetCurrentDirectory(path)) {
+     DWORD ret = GetLastError();
+
+     if (ret == ERROR_FILE_NOT_FOUND) {
+      ret = ERROR_PATH_NOT_FOUND;
+     }
+
+     printf("%s", SystemError(ret));
+    }
+   }
+   else {
+    if (!GetCurrentDirectory(sizeof(input), input)) {
+     printf("%s", SystemError(GetLastError()));
+    }
+    else {
+     printf("%s\n", input);
+    }
+   }
+  }
+  else if (isalpha(*args[0]) &&
+   *(args[0] + 1) == ':' &&
+   *(args[0] + 2) == '\0') {
+
+
+
+   *args[0] = (char)toupper(*args[0]);
+   *(args[0] + 2) = '\\';
+   *(args[0] + 3) = '\0';
+
+   if (!SetCurrentDirectory(args[0])) {
+    printf("%s", SystemError(GetLastError()));
+   }
+  }
+  else {
+
+
+
+   ProcessCommandLine(argc, (const char **)args);
+  }
+
+  printf("\n");
+ }
+
+ return VFD_OK;
 }

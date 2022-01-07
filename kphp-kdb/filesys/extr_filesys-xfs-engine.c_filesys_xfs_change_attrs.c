@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_gid; int /*<<< orphan*/  st_uid; int /*<<< orphan*/  st_mtime; int /*<<< orphan*/  st_atime; int /*<<< orphan*/  st_mode; } ;
-struct lev_filesys_xfs_change_attrs {int filename_size; int /*<<< orphan*/  gid; int /*<<< orphan*/  uid; int /*<<< orphan*/  modtime; int /*<<< orphan*/  actime; int /*<<< orphan*/  mode; int /*<<< orphan*/  filename; } ;
 
-/* Variables and functions */
- int PATH_MAX ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pending_operation_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,struct stat*) ; 
- int /*<<< orphan*/  pending_operation_push (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pot_copy_attrs ; 
- int /*<<< orphan*/  vkprintf (int,char*,char*) ; 
+
+
+
+struct stat {int st_gid; int st_uid; int st_mtime; int st_atime; int st_mode; } ;
+struct lev_filesys_xfs_change_attrs {int filename_size; int gid; int uid; int modtime; int actime; int mode; int filename; } ;
+
+
+ int PATH_MAX ;
+ int assert (int) ;
+ int memcpy (char*,int ,int) ;
+ int pending_operation_create (int ,int *,char*,struct stat*) ;
+ int pending_operation_push (int ) ;
+ int pot_copy_attrs ;
+ int vkprintf (int,char*,char*) ;
 
 __attribute__((used)) static void filesys_xfs_change_attrs (struct lev_filesys_xfs_change_attrs *E) {
   char name[PATH_MAX];
@@ -34,5 +34,5 @@ __attribute__((used)) static void filesys_xfs_change_attrs (struct lev_filesys_x
   st.st_mtime = E->modtime;
   st.st_uid = E->uid;
   st.st_gid = E->gid;
-  pending_operation_push (pending_operation_create (pot_copy_attrs, NULL, name, &st));
+  pending_operation_push (pending_operation_create (pot_copy_attrs, ((void*)0), name, &st));
 }

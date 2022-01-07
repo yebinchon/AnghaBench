@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int w; int x; int h; int y; scalar_t__ changed; } ;
 struct TYPE_6__ {scalar_t__ remap; TYPE_1__ viewport; } ;
 struct TYPE_5__ {scalar_t__ scanlines; scalar_t__ vsync; } ;
 
-/* Variables and functions */
- int SCREEN_H ; 
- int SCREEN_W ; 
- TYPE_3__ bitmap ; 
- int /*<<< orphan*/  blit (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  clear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  clear_to_color (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  dos_update_palette () ; 
- int /*<<< orphan*/  frame_rate ; 
- int /*<<< orphan*/  gen_bmp ; 
- scalar_t__ interlaced ; 
- int /*<<< orphan*/  msg_print (int,int,char*,int /*<<< orphan*/ ) ; 
- TYPE_2__ option ; 
- int /*<<< orphan*/  screen ; 
- int /*<<< orphan*/  stretch_blit (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  vsync () ; 
+
+ int SCREEN_H ;
+ int SCREEN_W ;
+ TYPE_3__ bitmap ;
+ int blit (int ,int ,int,int,int,int,int,int) ;
+ int clear (int ) ;
+ int clear_to_color (int ,int) ;
+ int dos_update_palette () ;
+ int frame_rate ;
+ int gen_bmp ;
+ scalar_t__ interlaced ;
+ int msg_print (int,int,char*,int ) ;
+ TYPE_2__ option ;
+ int screen ;
+ int stretch_blit (int ,int ,int ,int ,int,int,int,int,int,int) ;
+ int vsync () ;
 
 void dos_update_video(void)
 {
@@ -41,7 +41,7 @@ void dos_update_video(void)
   int center_x = (SCREEN_W - width) / 2;
   int center_y = (SCREEN_H / (option.scanlines ? 4 : 2)) - (height / 2);
 
-  /* Wait for VSync */
+
   if(option.vsync) vsync();
 
   if(bitmap.viewport.changed)
@@ -56,14 +56,6 @@ void dos_update_video(void)
       clear_to_color(screen, 0xFF);
     }
   }
-
-#if 0
-  if(bitmap.remap == 0)
-  {
-  dos_update_palette();
-  }
-#endif
-
   msg_print(2, 2, "%d", frame_rate);
 
   if(option.scanlines)

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct parser {int flags; } ;
-struct lwan_var_descriptor {int /*<<< orphan*/  list_desc; } ;
-struct TYPE_2__ {int /*<<< orphan*/  value; scalar_t__ len; } ;
+struct lwan_var_descriptor {int list_desc; } ;
+struct TYPE_2__ {int value; scalar_t__ len; } ;
 struct lexeme {scalar_t__ type; TYPE_1__ value; } ;
-typedef  enum flags { ____Placeholder_flags } flags ;
+typedef enum flags { ____Placeholder_flags } flags ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACTION_START_ITER ; 
- int ENODEV ; 
- int FLAGS_NEGATE ; 
- int FLAGS_NO_FREE ; 
- scalar_t__ LEXEME_IDENTIFIER ; 
- int /*<<< orphan*/  emit_chunk (struct parser*,int /*<<< orphan*/ ,int,struct lwan_var_descriptor*) ; 
- void* error_lexeme (struct lexeme*,char*,...) ; 
- int /*<<< orphan*/  parser_push_lexeme (struct parser*,struct lexeme*) ; 
- void* parser_right_meta ; 
- struct lwan_var_descriptor* symtab_lookup_lexeme (struct parser*,struct lexeme*) ; 
- int symtab_push (struct parser*,int /*<<< orphan*/ ) ; 
- void* unexpected_lexeme (struct lexeme*) ; 
+
+ int ACTION_START_ITER ;
+ int ENODEV ;
+ int FLAGS_NEGATE ;
+ int FLAGS_NO_FREE ;
+ scalar_t__ LEXEME_IDENTIFIER ;
+ int emit_chunk (struct parser*,int ,int,struct lwan_var_descriptor*) ;
+ void* error_lexeme (struct lexeme*,char*,...) ;
+ int parser_push_lexeme (struct parser*,struct lexeme*) ;
+ void* parser_right_meta ;
+ struct lwan_var_descriptor* symtab_lookup_lexeme (struct parser*,struct lexeme*) ;
+ int symtab_push (struct parser*,int ) ;
+ void* unexpected_lexeme (struct lexeme*) ;
 
 __attribute__((used)) static void *parser_iter(struct parser *parser, struct lexeme *lexeme)
 {

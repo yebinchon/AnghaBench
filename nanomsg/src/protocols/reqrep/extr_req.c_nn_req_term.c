@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  request; int /*<<< orphan*/  reply; int /*<<< orphan*/  timer; } ;
-struct nn_req {int /*<<< orphan*/  xreq; int /*<<< orphan*/  fsm; TYPE_1__ task; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  nn_fsm_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_msg_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_task_term (TYPE_1__*) ; 
- int /*<<< orphan*/  nn_timer_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_xreq_term (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int request; int reply; int timer; } ;
+struct nn_req {int xreq; int fsm; TYPE_1__ task; } ;
+
+
+ int nn_fsm_term (int *) ;
+ int nn_msg_term (int *) ;
+ int nn_task_term (TYPE_1__*) ;
+ int nn_timer_term (int *) ;
+ int nn_xreq_term (int *) ;
 
 void nn_req_term (struct nn_req *self)
 {

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum tc_part { ____Placeholder_tc_part } tc_part ;
-typedef  int /*<<< orphan*/  atf_error_t ;
 
-/* Variables and functions */
- int BODY ; 
- int CLEANUP ; 
- int /*<<< orphan*/  atf_no_error () ; 
- int /*<<< orphan*/  atf_no_memory_error () ; 
- char* strchr (char*,char) ; 
- scalar_t__ strcmp (char*,char*) ; 
- char* strdup (char const*) ; 
- int /*<<< orphan*/  usage_error (char*,char*) ; 
+
+
+
+typedef enum tc_part { ____Placeholder_tc_part } tc_part ;
+typedef int atf_error_t ;
+
+
+ int BODY ;
+ int CLEANUP ;
+ int atf_no_error () ;
+ int atf_no_memory_error () ;
+ char* strchr (char*,char) ;
+ scalar_t__ strcmp (char*,char*) ;
+ char* strdup (char const*) ;
+ int usage_error (char*,char*) ;
 
 __attribute__((used)) static
 atf_error_t
@@ -32,13 +32,13 @@ handle_tcarg(const char *tcarg, char **tcname, enum tc_part *tcpart)
     err = atf_no_error();
 
     *tcname = strdup(tcarg);
-    if (*tcname == NULL) {
+    if (*tcname == ((void*)0)) {
         err = atf_no_memory_error();
         goto out;
     }
 
     char *delim = strchr(*tcname, ':');
-    if (delim != NULL) {
+    if (delim != ((void*)0)) {
         *delim = '\0';
 
         delim++;

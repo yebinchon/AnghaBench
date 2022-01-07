@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct kvm {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KVM_REQ_MMU_RELOAD ; 
- int /*<<< orphan*/  make_all_cpus_request (struct kvm*,int /*<<< orphan*/ ) ; 
+
+ int KVM_REQ_MMU_RELOAD ;
+ int make_all_cpus_request (struct kvm*,int ) ;
 
 void kvm_reload_remote_mmus(struct kvm *kvm)
 {
-	make_all_cpus_request(kvm, KVM_REQ_MMU_RELOAD);
+ make_all_cpus_request(kvm, KVM_REQ_MMU_RELOAD);
 }

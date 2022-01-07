@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  REGKEY_HKCU ; 
- char* ReadIniKeyStr (char const*) ; 
- char* ReadRegistryKeyStr (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/ * ini_file ; 
+ int REGKEY_HKCU ;
+ char* ReadIniKeyStr (char const*) ;
+ char* ReadRegistryKeyStr (int ,char const*) ;
+ int * ini_file ;
 
 __attribute__((used)) static __inline char* ReadSettingStr(const char* key) {
-	return (ini_file != NULL)?ReadIniKeyStr(key):ReadRegistryKeyStr(REGKEY_HKCU, key);
+ return (ini_file != ((void*)0))?ReadIniKeyStr(key):ReadRegistryKeyStr(REGKEY_HKCU, key);
 }

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ peek_len; int /*<<< orphan*/  socket; int /*<<< orphan*/ * peek_msg; int /*<<< orphan*/ * peek_msg_mem; scalar_t__ secure; } ;
-typedef  TYPE_1__ netconn_t ;
-typedef  size_t SIZE_T ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int MSG_WAITALL ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (void*,int /*<<< orphan*/ *,int) ; 
- int min (size_t,scalar_t__) ; 
- scalar_t__ read_ssl_chunk (TYPE_1__*,int /*<<< orphan*/ *,size_t,size_t*,scalar_t__*) ; 
- int /*<<< orphan*/  set_last_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sock_get_error (int /*<<< orphan*/ ) ; 
- int sock_recv (int /*<<< orphan*/ ,void*,size_t,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ peek_len; int socket; int * peek_msg; int * peek_msg_mem; scalar_t__ secure; } ;
+typedef TYPE_1__ netconn_t ;
+typedef size_t SIZE_T ;
+typedef int BYTE ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ FALSE ;
+ int MSG_WAITALL ;
+ int TRACE (char*,...) ;
+ scalar_t__ TRUE ;
+ int WARN (char*) ;
+ int errno ;
+ int heap_free (int *) ;
+ int memcpy (void*,int *,int) ;
+ int min (size_t,scalar_t__) ;
+ scalar_t__ read_ssl_chunk (TYPE_1__*,int *,size_t,size_t*,scalar_t__*) ;
+ int set_last_error (int ) ;
+ int sock_get_error (int ) ;
+ int sock_recv (int ,void*,size_t,int) ;
 
 BOOL netconn_recv( netconn_t *conn, void *buf, size_t len, int flags, int *recvd )
 {
@@ -52,10 +52,10 @@ BOOL netconn_recv( netconn_t *conn, void *buf, size_t len, int flags, int *recvd
             if (conn->peek_len == 0)
             {
                 heap_free( conn->peek_msg_mem );
-                conn->peek_msg_mem = NULL;
-                conn->peek_msg = NULL;
+                conn->peek_msg_mem = ((void*)0);
+                conn->peek_msg = ((void*)0);
             }
-            /* check if we have enough data from the peek buffer */
+
             if (!(flags & MSG_WAITALL) || *recvd == len) return TRUE;
         }
         size = *recvd;

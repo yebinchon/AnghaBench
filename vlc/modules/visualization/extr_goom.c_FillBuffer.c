@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int16_t ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int int16_t ;
 struct TYPE_7__ {int i_blocks; int i_channels; TYPE_2__** pp_blocks; } ;
-typedef  TYPE_1__ goom_thread_t ;
-typedef  int /*<<< orphan*/  date_t ;
+typedef TYPE_1__ goom_thread_t ;
+typedef int date_t ;
 struct TYPE_8__ {int i_buffer; scalar_t__ i_pts; int p_buffer; } ;
-typedef  TYPE_2__ block_t ;
+typedef TYPE_2__ block_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FloatToInt16 (float) ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- scalar_t__ VLC_TICK_INVALID ; 
- int __MIN (unsigned int,int) ; 
- int /*<<< orphan*/  block_Release (TYPE_2__*) ; 
- scalar_t__ date_Get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  date_Increment (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  date_Set (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  memmove (TYPE_2__**,TYPE_2__**,int) ; 
+
+ int FloatToInt16 (float) ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ scalar_t__ VLC_TICK_INVALID ;
+ int __MIN (unsigned int,int) ;
+ int block_Release (TYPE_2__*) ;
+ scalar_t__ date_Get (int *) ;
+ int date_Increment (int *,int) ;
+ int date_Set (int *,scalar_t__) ;
+ int memmove (TYPE_2__**,TYPE_2__**,int) ;
 
 __attribute__((used)) static int FillBuffer( int16_t *p_data, int *pi_data,
                        date_t *pi_date, date_t *pi_date_end,
@@ -46,7 +46,7 @@ __attribute__((used)) static int FillBuffer( int16_t *p_data, int *pi_data,
         i_samples = __MIN( (unsigned)(512 - *pi_data),
                 p_block->i_buffer / sizeof(float) / p_this->i_channels );
 
-        /* Date management */
+
         if( p_block->i_pts != VLC_TICK_INVALID &&
             p_block->i_pts != date_Get( pi_date_end ) )
         {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t ssize_t ;
 
-/* Variables and functions */
- scalar_t__ EINTR ; 
- int UV_EIO ; 
- int UV__ERR (scalar_t__) ; 
- scalar_t__ errno ; 
- size_t uv__getrandom (char*,size_t,int /*<<< orphan*/ ) ; 
- int uv__random_getrandom_init () ; 
+
+
+
+typedef size_t ssize_t ;
+
+
+ scalar_t__ EINTR ;
+ int UV_EIO ;
+ int UV__ERR (scalar_t__) ;
+ scalar_t__ errno ;
+ size_t uv__getrandom (char*,size_t,int ) ;
+ int uv__random_getrandom_init () ;
 
 int uv__random_getrandom(void* buf, size_t buflen) {
   ssize_t n;
@@ -33,11 +33,11 @@ int uv__random_getrandom(void* buf, size_t buflen) {
     do {
       n = buflen - pos;
 
-      /* Most getrandom() implementations promise that reads <= 256 bytes
-       * will always succeed and won't be interrupted by signals.
-       * It's therefore useful to split it up in smaller reads because
-       * one big read may, in theory, continuously fail with EINTR.
-       */
+
+
+
+
+
       if (n > 256)
         n = 256;
 

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int mrb_int ;
 
-/* Variables and functions */
- int NUMERIC_SHIFT_WIDTH_MAX ; 
- int /*<<< orphan*/  mrb_fixnum_value (int) ; 
+
+
+
+typedef int mrb_value ;
+typedef int mrb_int ;
+
+
+ int NUMERIC_SHIFT_WIDTH_MAX ;
+ int mrb_fixnum_value (int) ;
 
 __attribute__((used)) static mrb_value
 rshift(mrb_int val, mrb_int width)
 {
-  if (width < 0) {              /* mrb_int overflow */
+  if (width < 0) {
     return mrb_fixnum_value(0);
   }
   if (width >= NUMERIC_SHIFT_WIDTH_MAX) {

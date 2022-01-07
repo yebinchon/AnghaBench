@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  t; } ;
-typedef  TYPE_1__ IRIns ;
-typedef  int /*<<< orphan*/  ASMState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XO_XORPS ; 
- int /*<<< orphan*/  XOg_NEG ; 
- int /*<<< orphan*/  asm_fparith (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  asm_neg_not (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ irt_isnum (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int t; } ;
+typedef TYPE_1__ IRIns ;
+typedef int ASMState ;
+
+
+ int XO_XORPS ;
+ int XOg_NEG ;
+ int asm_fparith (int *,TYPE_1__*,int ) ;
+ int asm_neg_not (int *,TYPE_1__*,int ) ;
+ scalar_t__ irt_isnum (int ) ;
 
 __attribute__((used)) static void asm_neg(ASMState *as, IRIns *ir)
 {

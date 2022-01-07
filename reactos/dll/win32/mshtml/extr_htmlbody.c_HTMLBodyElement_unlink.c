@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsIDOMHTMLBodyElement ;
-struct TYPE_3__ {int /*<<< orphan*/ * nsbody; } ;
-typedef  int /*<<< orphan*/  HTMLDOMNode ;
-typedef  TYPE_1__ HTMLBodyElement ;
 
-/* Variables and functions */
- TYPE_1__* impl_from_HTMLDOMNode (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMHTMLBodyElement_Release (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int nsIDOMHTMLBodyElement ;
+struct TYPE_3__ {int * nsbody; } ;
+typedef int HTMLDOMNode ;
+typedef TYPE_1__ HTMLBodyElement ;
+
+
+ TYPE_1__* impl_from_HTMLDOMNode (int *) ;
+ int nsIDOMHTMLBodyElement_Release (int *) ;
 
 __attribute__((used)) static void HTMLBodyElement_unlink(HTMLDOMNode *iface)
 {
@@ -26,7 +26,7 @@ __attribute__((used)) static void HTMLBodyElement_unlink(HTMLDOMNode *iface)
 
     if(This->nsbody) {
         nsIDOMHTMLBodyElement *nsbody = This->nsbody;
-        This->nsbody = NULL;
+        This->nsbody = ((void*)0);
         nsIDOMHTMLBodyElement_Release(nsbody);
     }
 }

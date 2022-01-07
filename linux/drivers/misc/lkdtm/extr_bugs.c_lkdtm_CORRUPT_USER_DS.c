@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  KERNEL_DS ; 
- int /*<<< orphan*/  SIGKILL ; 
- int /*<<< orphan*/  force_sig (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pr_info (char*) ; 
- int /*<<< orphan*/  set_fs (int /*<<< orphan*/ ) ; 
+ int KERNEL_DS ;
+ int SIGKILL ;
+ int force_sig (int ) ;
+ int pr_info (char*) ;
+ int set_fs (int ) ;
 
 void lkdtm_CORRUPT_USER_DS(void)
 {
-	pr_info("setting bad task size limit\n");
-	set_fs(KERNEL_DS);
+ pr_info("setting bad task size limit\n");
+ set_fs(KERNEL_DS);
 
-	/* Make sure we do not keep running with a KERNEL_DS! */
-	force_sig(SIGKILL);
+
+ force_sig(SIGKILL);
 }

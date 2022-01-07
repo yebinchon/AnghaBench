@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  slave_addr; scalar_t__ addr_10bit_en; } ;
-struct TYPE_5__ {int /*<<< orphan*/  mode; TYPE_1__ slave; void* scl_pullup_en; int /*<<< orphan*/  scl_io_num; void* sda_pullup_en; int /*<<< orphan*/  sda_io_num; } ;
-typedef  TYPE_2__ i2c_config_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_SLAVE_ADDR ; 
- void* GPIO_PULLUP_ENABLE ; 
- int /*<<< orphan*/  I2C_MODE_SLAVE ; 
- int I2C_SLAVE_NUM ; 
- int /*<<< orphan*/  I2C_SLAVE_RX_BUF_LEN ; 
- int /*<<< orphan*/  I2C_SLAVE_SCL_IO ; 
- int /*<<< orphan*/  I2C_SLAVE_SDA_IO ; 
- int /*<<< orphan*/  I2C_SLAVE_TX_BUF_LEN ; 
- int /*<<< orphan*/  i2c_driver_install (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_param_config (int,TYPE_2__*) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int slave_addr; scalar_t__ addr_10bit_en; } ;
+struct TYPE_5__ {int mode; TYPE_1__ slave; void* scl_pullup_en; int scl_io_num; void* sda_pullup_en; int sda_io_num; } ;
+typedef TYPE_2__ i2c_config_t ;
+typedef int esp_err_t ;
+
+
+ int ESP_SLAVE_ADDR ;
+ void* GPIO_PULLUP_ENABLE ;
+ int I2C_MODE_SLAVE ;
+ int I2C_SLAVE_NUM ;
+ int I2C_SLAVE_RX_BUF_LEN ;
+ int I2C_SLAVE_SCL_IO ;
+ int I2C_SLAVE_SDA_IO ;
+ int I2C_SLAVE_TX_BUF_LEN ;
+ int i2c_driver_install (int,int ,int ,int ,int ) ;
+ int i2c_param_config (int,TYPE_2__*) ;
 
 __attribute__((used)) static esp_err_t i2c_slave_init(void)
 {

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_device ;
-struct TYPE_5__ {int /*<<< orphan*/  buttons; } ;
-typedef  TYPE_1__ Manager ;
-typedef  int /*<<< orphan*/  Button ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEVICE_ACTION_REMOVE ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  button_free (int /*<<< orphan*/ *) ; 
- int button_open (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  button_set_seat (int /*<<< orphan*/ *,char const*) ; 
- scalar_t__ device_for_action (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * hashmap_get (int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ isempty (char const*) ; 
- int manager_add_button (TYPE_1__*,char const*,int /*<<< orphan*/ **) ; 
- scalar_t__ sd_device_get_property_value (int /*<<< orphan*/ *,char*,char const**) ; 
- int sd_device_get_sysname (int /*<<< orphan*/ *,char const**) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int sd_device ;
+struct TYPE_5__ {int buttons; } ;
+typedef TYPE_1__ Manager ;
+typedef int Button ;
+
+
+ int DEVICE_ACTION_REMOVE ;
+ int assert (TYPE_1__*) ;
+ int button_free (int *) ;
+ int button_open (int *) ;
+ int button_set_seat (int *,char const*) ;
+ scalar_t__ device_for_action (int *,int ) ;
+ int * hashmap_get (int ,char const*) ;
+ scalar_t__ isempty (char const*) ;
+ int manager_add_button (TYPE_1__*,char const*,int **) ;
+ scalar_t__ sd_device_get_property_value (int *,char*,char const**) ;
+ int sd_device_get_sysname (int *,char const**) ;
 
 int manager_process_button_device(Manager *m, sd_device *d) {
         const char *sysname;
@@ -61,8 +61,8 @@ int manager_process_button_device(Manager *m, sd_device *d) {
                 button_set_seat(b, sn);
 
                 r = button_open(b);
-                if (r < 0) /* event device doesn't have any keys or switches relevant to us? (or any other error
-                            * opening the device?) let's close the button again. */
+                if (r < 0)
+
                         button_free(b);
         }
 

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  psz_HA1; int /*<<< orphan*/  psz_cnonce; int /*<<< orphan*/  psz_qop; int /*<<< orphan*/  psz_algorithm; int /*<<< orphan*/  psz_stale; int /*<<< orphan*/  psz_opaque; int /*<<< orphan*/  psz_nonce; int /*<<< orphan*/  psz_domain; int /*<<< orphan*/  psz_realm; } ;
-typedef  TYPE_1__ vlc_http_auth_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int psz_HA1; int psz_cnonce; int psz_qop; int psz_algorithm; int psz_stale; int psz_opaque; int psz_nonce; int psz_domain; int psz_realm; } ;
+typedef TYPE_1__ vlc_http_auth_t ;
+
+
+ int free (int ) ;
 
 void vlc_http_auth_Deinit( vlc_http_auth_t *p_auth )
 {

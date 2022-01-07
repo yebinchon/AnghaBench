@@ -1,40 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  MP_OBJ_NEW_QSTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MP_OBJ_TO_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MP_PYTHON_PRINTER ; 
- int /*<<< orphan*/  MP_QSTR_ ; 
- scalar_t__ PYEXEC_MODE_RAW_REPL ; 
- int /*<<< orphan*/  _eheap ; 
- int /*<<< orphan*/  _estack ; 
- int /*<<< orphan*/  _sheap ; 
- int /*<<< orphan*/  _sstack ; 
- int /*<<< orphan*/  gc_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gc_sweep_all () ; 
- int /*<<< orphan*/  mp_deinit () ; 
- int /*<<< orphan*/  mp_init () ; 
- int /*<<< orphan*/  mp_obj_list_append (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_obj_list_init (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mp_stack_set_limit (int) ; 
- int /*<<< orphan*/  mp_stack_set_top (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_sys_argv ; 
- int /*<<< orphan*/  mp_sys_path ; 
- scalar_t__ pyexec_friendly_repl () ; 
- scalar_t__ pyexec_mode_kind ; 
- scalar_t__ pyexec_raw_repl () ; 
+ int MP_OBJ_NEW_QSTR (int ) ;
+ int MP_OBJ_TO_PTR (int ) ;
+ int MP_PYTHON_PRINTER ;
+ int MP_QSTR_ ;
+ scalar_t__ PYEXEC_MODE_RAW_REPL ;
+ int _eheap ;
+ int _estack ;
+ int _sheap ;
+ int _sstack ;
+ int gc_init (int *,int *) ;
+ int gc_sweep_all () ;
+ int mp_deinit () ;
+ int mp_init () ;
+ int mp_obj_list_append (int ,int ) ;
+ int mp_obj_list_init (int ,int ) ;
+ int mp_printf (int ,char*) ;
+ int mp_stack_set_limit (int) ;
+ int mp_stack_set_top (int *) ;
+ int mp_sys_argv ;
+ int mp_sys_path ;
+ scalar_t__ pyexec_friendly_repl () ;
+ scalar_t__ pyexec_mode_kind ;
+ scalar_t__ pyexec_raw_repl () ;
 
 void samd_main(void) {
     mp_stack_set_top(&_estack);

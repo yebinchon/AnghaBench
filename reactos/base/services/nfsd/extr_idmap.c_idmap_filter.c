@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct idmap_lookup {int type; size_t klass; size_t attr; int /*<<< orphan*/  value; } ;
-struct idmap_config {int /*<<< orphan*/ * attributes; int /*<<< orphan*/ * classes; } ;
-typedef  int /*<<< orphan*/  UINT_PTR ;
-typedef  int /*<<< orphan*/  UINT ;
 
-/* Variables and functions */
- int ERROR_BUFFER_OVERFLOW ; 
- int ERROR_INVALID_PARAMETER ; 
- int /*<<< orphan*/  FAILED (int /*<<< orphan*/ ) ; 
- int NO_ERROR ; 
- int /*<<< orphan*/  StringCchPrintfA (char*,size_t,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
-#define  TYPE_INT 129 
-#define  TYPE_STR 128 
- int /*<<< orphan*/  eprintf (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct idmap_lookup {int type; size_t klass; size_t attr; int value; } ;
+struct idmap_config {int * attributes; int * classes; } ;
+typedef int UINT_PTR ;
+typedef int UINT ;
+
+
+ int ERROR_BUFFER_OVERFLOW ;
+ int ERROR_INVALID_PARAMETER ;
+ int FAILED (int ) ;
+ int NO_ERROR ;
+ int StringCchPrintfA (char*,size_t,char*,int ,int ,int ) ;
+
+
+ int eprintf (char*,int ,int ) ;
 
 __attribute__((used)) static int idmap_filter(
     struct idmap_config *config,
@@ -35,7 +35,7 @@ __attribute__((used)) static int idmap_filter(
     int status = NO_ERROR;
 
     switch (lookup->type) {
-    case TYPE_INT:
+    case 129:
         i = (UINT_PTR)lookup->value;
         if (FAILED(StringCchPrintfA(filter, filter_len,
                 "(&(objectClass=%s)(%s=%u))",
@@ -47,7 +47,7 @@ __attribute__((used)) static int idmap_filter(
         }
         break;
 
-    case TYPE_STR:
+    case 128:
         if (FAILED(StringCchPrintfA(filter, filter_len,
                 "(&(objectClass=%s)(%s=%s))",
                 config->classes[lookup->klass],

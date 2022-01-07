@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FREE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cursor ; 
- int /*<<< orphan*/  ev_io_stop (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ev_prepare_stop (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_font () ; 
- int /*<<< orphan*/  free_outputs () ; 
- int /*<<< orphan*/  main_loop ; 
- int /*<<< orphan*/  xcb_aux_sync (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xcb_connection ; 
- int /*<<< orphan*/  xcb_disconnect (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xcb_flush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xcb_free_cursor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xcb_io ; 
- int /*<<< orphan*/  xcb_prep ; 
+ int FREE (int ) ;
+ int cursor ;
+ int ev_io_stop (int ,int ) ;
+ int ev_prepare_stop (int ,int ) ;
+ int free_font () ;
+ int free_outputs () ;
+ int main_loop ;
+ int xcb_aux_sync (int ) ;
+ int xcb_connection ;
+ int xcb_disconnect (int ) ;
+ int xcb_flush (int ) ;
+ int xcb_free_cursor (int ,int ) ;
+ int xcb_io ;
+ int xcb_prep ;
 
 void clean_xcb(void) {
     free_outputs();

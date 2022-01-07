@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsISelection ;
-typedef  int /*<<< orphan*/  nsIDOMNode ;
-typedef  int /*<<< orphan*/  nsIDOMHTMLElement ;
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  scalar_t__ WCHAR ;
-typedef  scalar_t__ UINT16 ;
-typedef  scalar_t__ PRUnichar ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  HTMLDocument ;
 
-/* Variables and functions */
- scalar_t__ DOCUMENT_NODE ; 
- scalar_t__ ELEMENT_NODE ; 
- int /*<<< orphan*/  IID_nsIDOMHTMLElement ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * debugstr_w (scalar_t__ const*) ; 
- int /*<<< orphan*/  fontW ; 
- int /*<<< orphan*/  get_elem_attr_value (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__ const**) ; 
- int /*<<< orphan*/ * get_ns_selection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_GetData (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMHTMLElement_GetTagName (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMHTMLElement_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMNode_GetNodeType (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  nsIDOMNode_GetParentNode (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  nsIDOMNode_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  nsIDOMNode_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsISelection_GetFocusNode (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  nsISelection_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sizeW ; 
- int /*<<< orphan*/  strcmpiW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcpyW (scalar_t__*,scalar_t__ const*) ; 
+
+
+
+typedef int nsresult ;
+typedef int nsISelection ;
+typedef int nsIDOMNode ;
+typedef int nsIDOMHTMLElement ;
+typedef int nsAString ;
+typedef scalar_t__ WCHAR ;
+typedef scalar_t__ UINT16 ;
+typedef scalar_t__ PRUnichar ;
+typedef int LPCWSTR ;
+typedef int HTMLDocument ;
+
+
+ scalar_t__ DOCUMENT_NODE ;
+ scalar_t__ ELEMENT_NODE ;
+ int IID_nsIDOMHTMLElement ;
+ scalar_t__ NS_FAILED (int ) ;
+ int TRACE (char*,int *) ;
+ int * debugstr_w (scalar_t__ const*) ;
+ int fontW ;
+ int get_elem_attr_value (int *,int ,int *,scalar_t__ const**) ;
+ int * get_ns_selection (int *) ;
+ int nsAString_Finish (int *) ;
+ int nsAString_GetData (int *,int *) ;
+ int nsAString_Init (int *,int *) ;
+ int nsIDOMHTMLElement_GetTagName (int *,int *) ;
+ int nsIDOMHTMLElement_Release (int *) ;
+ int nsIDOMNode_GetNodeType (int *,scalar_t__*) ;
+ int nsIDOMNode_GetParentNode (int *,int **) ;
+ int nsIDOMNode_QueryInterface (int *,int *,void**) ;
+ int nsIDOMNode_Release (int *) ;
+ int nsISelection_GetFocusNode (int *,int **) ;
+ int nsISelection_Release (int *) ;
+ int sizeW ;
+ int strcmpiW (int ,int ) ;
+ int strcpyW (scalar_t__*,scalar_t__ const*) ;
 
 __attribute__((used)) static void get_font_size(HTMLDocument *This, WCHAR *ret)
 {
     nsISelection *nsselection = get_ns_selection(This);
-    nsIDOMHTMLElement *elem = NULL;
-    nsIDOMNode *node = NULL, *tmp_node;
+    nsIDOMHTMLElement *elem = ((void*)0);
+    nsIDOMNode *node = ((void*)0), *tmp_node;
     nsAString tag_str;
     LPCWSTR tag;
     UINT16 node_type;
@@ -72,7 +72,7 @@ __attribute__((used)) static void get_font_size(HTMLDocument *This, WCHAR *ret)
         if(node_type == ELEMENT_NODE) {
             nsIDOMNode_QueryInterface(node, &IID_nsIDOMHTMLElement, (void**)&elem);
 
-            nsAString_Init(&tag_str, NULL);
+            nsAString_Init(&tag_str, ((void*)0));
             nsIDOMHTMLElement_GetTagName(elem, &tag_str);
             nsAString_GetData(&tag_str, &tag);
 

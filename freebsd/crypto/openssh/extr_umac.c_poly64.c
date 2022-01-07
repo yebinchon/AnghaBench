@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT64 ;
-typedef  int UINT32 ;
 
-/* Variables and functions */
- int MUL64 (int,int) ; 
+
+
+
+typedef int UINT64 ;
+typedef int UINT32 ;
+
+
+ int MUL64 (int,int) ;
 
 __attribute__((used)) static UINT64 poly64(UINT64 cur, UINT64 key, UINT64 data)
 {
@@ -26,7 +26,7 @@ __attribute__((used)) static UINT64 poly64(UINT64 cur, UINT64 key, UINT64 data)
            x_hi;
     UINT64 X,T,res;
 
-    X =  MUL64(key_hi, cur_lo) + MUL64(cur_hi, key_lo);
+    X = MUL64(key_hi, cur_lo) + MUL64(cur_hi, key_lo);
     x_lo = (UINT32)X;
     x_hi = (UINT32)(X >> 32);
 

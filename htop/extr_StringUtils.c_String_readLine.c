@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- scalar_t__ feof (int /*<<< orphan*/ *) ; 
- char* fgets (char*,int const,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* strrchr (char*,char) ; 
- char* xMalloc (int const) ; 
- char* xRealloc (char*,int) ; 
+
+
+
+typedef int FILE ;
+
+
+ scalar_t__ feof (int *) ;
+ char* fgets (char*,int const,int *) ;
+ int free (char*) ;
+ char* strrchr (char*,char) ;
+ char* xMalloc (int const) ;
+ char* xRealloc (char*,int) ;
 
 char* String_readLine(FILE* fd) {
    const int step = 1024;
@@ -29,7 +29,7 @@ char* String_readLine(FILE* fd) {
       char* ok = fgets(at, step + 1, fd);
       if (!ok) {
          free(buffer);
-         return NULL;
+         return ((void*)0);
       }
       char* newLine = strrchr(at, '\n');
       if (newLine) {

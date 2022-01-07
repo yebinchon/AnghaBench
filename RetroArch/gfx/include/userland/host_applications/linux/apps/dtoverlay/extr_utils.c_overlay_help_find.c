@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int line_pos; int rec_pos; int /*<<< orphan*/  fp; scalar_t__ blank_count; } ;
-typedef  TYPE_1__ OVERLAY_HELP_STATE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ftell (int /*<<< orphan*/ ) ; 
- char* overlay_help_field_data (TYPE_1__*) ; 
- scalar_t__ overlay_help_find_field (TYPE_1__*,char*) ; 
- scalar_t__ strcmp (char const*,char const*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int line_pos; int rec_pos; int fp; scalar_t__ blank_count; } ;
+typedef TYPE_1__ OVERLAY_HELP_STATE_T ;
+
+
+ int SEEK_SET ;
+ int fseek (int ,int ,int ) ;
+ scalar_t__ ftell (int ) ;
+ char* overlay_help_field_data (TYPE_1__*) ;
+ scalar_t__ overlay_help_find_field (TYPE_1__*,char*) ;
+ scalar_t__ strcmp (char const*,char const*) ;
 
 int overlay_help_find(OVERLAY_HELP_STATE_T *state, const char *name)
 {

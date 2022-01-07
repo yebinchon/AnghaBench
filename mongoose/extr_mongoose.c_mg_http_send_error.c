@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mg_connection {int /*<<< orphan*/  flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LL_DEBUG ; 
- int /*<<< orphan*/  LOG (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  MG_F_SEND_AND_CLOSE ; 
- int /*<<< orphan*/  mg_send (struct mg_connection*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mg_send_head (struct mg_connection*,int,int /*<<< orphan*/ ,char*) ; 
- char* mg_status_message (int) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+
+
+struct mg_connection {int flags; } ;
+
+
+ int LL_DEBUG ;
+ int LOG (int ,char*) ;
+ int MG_F_SEND_AND_CLOSE ;
+ int mg_send (struct mg_connection*,char const*,int ) ;
+ int mg_send_head (struct mg_connection*,int,int ,char*) ;
+ char* mg_status_message (int) ;
+ int strlen (char const*) ;
 
 void mg_http_send_error(struct mg_connection *nc, int code,
                         const char *reason) {

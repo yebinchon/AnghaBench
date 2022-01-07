@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_8__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
-struct TYPE_13__ {scalar_t__ ip; scalar_t__ publicIp; int /*<<< orphan*/  vnode; } ;
+
+
+typedef struct TYPE_13__ TYPE_8__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int int32_t ;
+typedef int int16_t ;
+struct TYPE_13__ {scalar_t__ ip; scalar_t__ publicIp; int vnode; } ;
 struct TYPE_12__ {TYPE_1__* pDb; } ;
 struct TYPE_11__ {int* offset; int* bytes; int numOfReads; void* pNode; } ;
-struct TYPE_10__ {int numOfVnodes; TYPE_8__* vnodeGid; scalar_t__ lbState; int /*<<< orphan*/  numOfMeters; int /*<<< orphan*/  vgId; struct TYPE_10__* next; } ;
+struct TYPE_10__ {int numOfVnodes; TYPE_8__* vnodeGid; scalar_t__ lbState; int numOfMeters; int vgId; struct TYPE_10__* next; } ;
 struct TYPE_9__ {TYPE_2__* pHead; } ;
-typedef  TYPE_2__ SVgObj ;
-typedef  TYPE_3__ SShowObj ;
-typedef  TYPE_4__ SConnObj ;
+typedef TYPE_2__ SVgObj ;
+typedef TYPE_3__ SShowObj ;
+typedef TYPE_4__ SConnObj ;
 
-/* Variables and functions */
- int mgmtCheckVnodeReady (int /*<<< orphan*/ *,TYPE_2__*,TYPE_8__*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int /*<<< orphan*/  tinet_ntoa (char*,scalar_t__) ; 
+
+ int mgmtCheckVnodeReady (int *,TYPE_2__*,TYPE_8__*) ;
+ int strcpy (char*,char*) ;
+ int tinet_ntoa (char*,scalar_t__) ;
 
 int mgmtRetrieveVgroups(SShowObj *pShow, char *data, int rows, SConnObj *pConn) {
-  int     numOfRows = 0;
-  SVgObj *pVgroup = NULL;
-  char *  pWrite;
-  int     cols = 0;
-  char    ipstr[20];
+  int numOfRows = 0;
+  SVgObj *pVgroup = ((void*)0);
+  char * pWrite;
+  int cols = 0;
+  char ipstr[20];
 
   int maxReplica = 0;
   pVgroup = pConn->pDb->pHead;
-  while (pVgroup != NULL) {
+  while (pVgroup != ((void*)0)) {
     maxReplica = pVgroup->numOfVnodes > maxReplica ? pVgroup->numOfVnodes : maxReplica;
     pVgroup = pVgroup->next;
   }
 
   while (numOfRows < rows) {
-    //    pShow->pNode = sdbFetchRow(vgSdb, pShow->pNode, (void **)&pVgroup);
+
     pVgroup = (SVgObj *)pShow->pNode;
-    if (pVgroup == NULL) break;
+    if (pVgroup == ((void*)0)) break;
     pShow->pNode = (void *)pVgroup->next;
 
     cols = 0;
@@ -77,7 +77,7 @@ int mgmtRetrieveVgroups(SShowObj *pShow, char *data, int rows, SConnObj *pConn) 
 
       pWrite = data + pShow->offset[cols] * rows + pShow->bytes[cols] * numOfRows;
       if (pVgroup->vnodeGid[i].ip != 0) {
-        bool ready = mgmtCheckVnodeReady(NULL, pVgroup, pVgroup->vnodeGid + i);
+        bool ready = mgmtCheckVnodeReady(((void*)0), pVgroup, pVgroup->vnodeGid + i);
         strcpy(pWrite, ready ? "ready" : "unsynced");
       } else {
         strcpy(pWrite, "null");

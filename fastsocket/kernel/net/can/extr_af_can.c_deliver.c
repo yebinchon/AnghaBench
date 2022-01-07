@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sk_buff {int dummy; } ;
-struct receiver {int /*<<< orphan*/  matches; int /*<<< orphan*/  data; int /*<<< orphan*/  (* func ) (struct sk_buff*,int /*<<< orphan*/ ) ;} ;
+struct receiver {int matches; int data; int (* func ) (struct sk_buff*,int ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (struct sk_buff*,int /*<<< orphan*/ ) ; 
+
+ int stub1 (struct sk_buff*,int ) ;
 
 __attribute__((used)) static inline void deliver(struct sk_buff *skb, struct receiver *r)
 {
-	r->func(skb, r->data);
-	r->matches++;
+ r->func(skb, r->data);
+ r->matches++;
 }

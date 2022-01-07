@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct fdt_property {char* data; } ;
-typedef  int /*<<< orphan*/  overlay_path ;
-typedef  int /*<<< orphan*/  base_path ;
-struct TYPE_4__ {int /*<<< orphan*/  fdt; } ;
-typedef  TYPE_1__ DTBLOB_T ;
+typedef int overlay_path ;
+typedef int base_path ;
+struct TYPE_4__ {int fdt; } ;
+typedef TYPE_1__ DTBLOB_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dtoverlay_debug (char*,...) ; 
- scalar_t__ dtoverlay_debug_enabled ; 
- int fdt_add_subnode_namelen (int /*<<< orphan*/ ,int,char const*,int) ; 
- int fdt_appendprop (int /*<<< orphan*/ ,int,char const*,void const*,int) ; 
- int fdt_first_property_offset (int /*<<< orphan*/ ,int) ; 
- int fdt_first_subnode (int /*<<< orphan*/ ,int) ; 
- char* fdt_get_name (int /*<<< orphan*/ ,int,int*) ; 
- int /*<<< orphan*/  fdt_get_path (int /*<<< orphan*/ ,int,char*,int) ; 
- struct fdt_property* fdt_get_property_w (int /*<<< orphan*/ ,int,char const*,int*) ; 
- void* fdt_getprop_by_offset (int /*<<< orphan*/ ,int,char const**,int*) ; 
- int fdt_next_property_offset (int /*<<< orphan*/ ,int) ; 
- int fdt_next_subnode (int /*<<< orphan*/ ,int) ; 
- int fdt_setprop (int /*<<< orphan*/ ,int,char const*,void const*,int) ; 
- int fdt_subnode_offset_namelen (int /*<<< orphan*/ ,int,char const*,int) ; 
- scalar_t__ strcmp (char const*,char*) ; 
+
+ int dtoverlay_debug (char*,...) ;
+ scalar_t__ dtoverlay_debug_enabled ;
+ int fdt_add_subnode_namelen (int ,int,char const*,int) ;
+ int fdt_appendprop (int ,int,char const*,void const*,int) ;
+ int fdt_first_property_offset (int ,int) ;
+ int fdt_first_subnode (int ,int) ;
+ char* fdt_get_name (int ,int,int*) ;
+ int fdt_get_path (int ,int,char*,int) ;
+ struct fdt_property* fdt_get_property_w (int ,int,char const*,int*) ;
+ void* fdt_getprop_by_offset (int ,int,char const**,int*) ;
+ int fdt_next_property_offset (int ,int) ;
+ int fdt_next_subnode (int ,int) ;
+ int fdt_setprop (int ,int,char const*,void const*,int) ;
+ int fdt_subnode_offset_namelen (int ,int,char const*,int) ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 __attribute__((used)) static int dtoverlay_merge_fragment(DTBLOB_T *base_dtb, int target_off,
                                     const DTBLOB_T *overlay_dtb,
@@ -53,7 +53,7 @@ __attribute__((used)) static int dtoverlay_merge_fragment(DTBLOB_T *base_dtb, in
                       overlay_path);
    }
 
-   // Merge each property of the node
+
    for (prop_off = fdt_first_property_offset(overlay_dtb->fdt, overlay_off);
         (prop_off >= 0) && (err == 0);
         prop_off = fdt_next_property_offset(overlay_dtb->fdt, prop_off))
@@ -67,16 +67,16 @@ __attribute__((used)) static int dtoverlay_merge_fragment(DTBLOB_T *base_dtb, in
       prop_val = fdt_getprop_by_offset(overlay_dtb->fdt, prop_off,
                                        &prop_name, &prop_len);
 
-      /* Skip these system properties (only phandles in the first level) */
+
       if ((strcmp(prop_name, "name") == 0) ||
           ((depth == 0) && ((strcmp(prop_name, "phandle") == 0) ||
-			    (strcmp(prop_name, "linux,phandle") == 0))))
+       (strcmp(prop_name, "linux,phandle") == 0))))
           continue;
 
       dtoverlay_debug("  +prop(%s)", prop_name);
 
       if ((strcmp(prop_name, "bootargs") == 0) &&
-         ((target_prop = fdt_get_property_w(base_dtb->fdt, target_off, prop_name, &target_len)) != NULL) &&
+         ((target_prop = fdt_get_property_w(base_dtb->fdt, target_off, prop_name, &target_len)) != ((void*)0)) &&
          (target_len > 0) && *target_prop->data)
       {
          target_prop->data[target_len - 1] = ' ';
@@ -86,7 +86,7 @@ __attribute__((used)) static int dtoverlay_merge_fragment(DTBLOB_T *base_dtb, in
          err = fdt_setprop(base_dtb->fdt, target_off, prop_name, prop_val, prop_len);
    }
 
-   // Merge each subnode of the node
+
    for (subnode_off = fdt_first_subnode(overlay_dtb->fdt, overlay_off);
         (subnode_off >= 0) && (err == 0);
         subnode_off = fdt_next_subnode(overlay_dtb->fdt, subnode_off))

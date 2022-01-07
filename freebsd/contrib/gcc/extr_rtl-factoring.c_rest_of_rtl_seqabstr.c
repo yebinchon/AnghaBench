@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int CLEANUP_CROSSJUMP ; 
- int CLEANUP_EXPENSIVE ; 
- int CLEANUP_UPDATE_LIFE ; 
- int PROP_DEATH_NOTES ; 
- int PROP_KILL_DEAD_CODE ; 
- int PROP_SCAN_DEAD_CODE ; 
- int /*<<< orphan*/  cleanup_cfg (int) ; 
- scalar_t__ flag_crossjumping ; 
- int /*<<< orphan*/  life_analysis (int) ; 
- int /*<<< orphan*/  rtl_seqabstr () ; 
+ int CLEANUP_CROSSJUMP ;
+ int CLEANUP_EXPENSIVE ;
+ int CLEANUP_UPDATE_LIFE ;
+ int PROP_DEATH_NOTES ;
+ int PROP_KILL_DEAD_CODE ;
+ int PROP_SCAN_DEAD_CODE ;
+ int cleanup_cfg (int) ;
+ scalar_t__ flag_crossjumping ;
+ int life_analysis (int) ;
+ int rtl_seqabstr () ;
 
 __attribute__((used)) static unsigned int
 rest_of_rtl_seqabstr (void)
@@ -32,7 +24,7 @@ rest_of_rtl_seqabstr (void)
                CLEANUP_UPDATE_LIFE |
                (flag_crossjumping ? CLEANUP_CROSSJUMP : 0));
 
-  /* Abstract out common insn sequences. */
+
   rtl_seqabstr ();
   return 0;
 }

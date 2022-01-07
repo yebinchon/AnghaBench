@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device {int dummy; } ;
 struct counter_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WARN_ON (int) ; 
- int /*<<< orphan*/  devm_counter_match ; 
- int /*<<< orphan*/  devm_counter_unreg ; 
- int devres_release (struct device*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct counter_device* const) ; 
+
+ int WARN_ON (int) ;
+ int devm_counter_match ;
+ int devm_counter_unreg ;
+ int devres_release (struct device*,int ,int ,struct counter_device* const) ;
 
 void devm_counter_unregister(struct device *dev,
-			     struct counter_device *const counter)
+        struct counter_device *const counter)
 {
-	int rc;
+ int rc;
 
-	rc = devres_release(dev, devm_counter_unreg, devm_counter_match,
-			    counter);
-	WARN_ON(rc);
+ rc = devres_release(dev, devm_counter_unreg, devm_counter_match,
+       counter);
+ WARN_ON(rc);
 }

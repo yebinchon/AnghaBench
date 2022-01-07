@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {unsigned int IMR; unsigned int RTSR; unsigned int FTSR; } ;
-struct TYPE_3__ {int /*<<< orphan*/ * EXTICR; } ;
+struct TYPE_3__ {int * EXTICR; } ;
 
-/* Variables and functions */
- TYPE_2__* EXTI ; 
- int /*<<< orphan*/  EXTI0_IRQn ; 
- int /*<<< orphan*/  EXTI1_IRQn ; 
- int /*<<< orphan*/  EXTI3_IRQn ; 
- scalar_t__ HARNESS_STATUS_FLIPPED ; 
- scalar_t__ HARNESS_STATUS_NORMAL ; 
- int /*<<< orphan*/  NVIC_EnableIRQ (int /*<<< orphan*/ ) ; 
- TYPE_1__* SYSCFG ; 
- int /*<<< orphan*/  SYSCFG_EXTICR1_EXTI0_PC ; 
- int /*<<< orphan*/  SYSCFG_EXTICR1_EXTI3_PC ; 
- scalar_t__ car_harness_status ; 
- int /*<<< orphan*/  puts (char*) ; 
+
+ TYPE_2__* EXTI ;
+ int EXTI0_IRQn ;
+ int EXTI1_IRQn ;
+ int EXTI3_IRQn ;
+ scalar_t__ HARNESS_STATUS_FLIPPED ;
+ scalar_t__ HARNESS_STATUS_NORMAL ;
+ int NVIC_EnableIRQ (int ) ;
+ TYPE_1__* SYSCFG ;
+ int SYSCFG_EXTICR1_EXTI0_PC ;
+ int SYSCFG_EXTICR1_EXTI3_PC ;
+ scalar_t__ car_harness_status ;
+ int puts (char*) ;
 
 void harness_setup_ignition_interrupts(void){
   if(car_harness_status == HARNESS_STATUS_NORMAL){

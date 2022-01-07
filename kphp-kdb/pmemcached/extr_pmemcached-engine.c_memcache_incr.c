@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct data {int data_len; char* data; } ;
-struct connection {int /*<<< orphan*/  Out; int /*<<< orphan*/  flags; } ;
+struct connection {int Out; int flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  C_INTIMEOUT ; 
- int /*<<< orphan*/  DELAY_INFINITY ; 
- int /*<<< orphan*/  assert (int) ; 
- int binlog_disabled ; 
- int /*<<< orphan*/  cmd_decr ; 
- int /*<<< orphan*/  cmd_incr ; 
- struct data do_pmemcached_get (char const*,int) ; 
- int do_pmemcached_incr (int,char const*,int,long long) ; 
- int do_pmemcached_preload (char const*,int,int) ; 
- int do_pmemcached_store (int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  mct_add ; 
- int memcache_wait (struct connection*) ; 
- scalar_t__ protected_mode ; 
- int /*<<< orphan*/  sprintf (char*,char*,long long) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int) ; 
- int verbosity ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ *,char*,int) ; 
+
+ int C_INTIMEOUT ;
+ int DELAY_INFINITY ;
+ int assert (int) ;
+ int binlog_disabled ;
+ int cmd_decr ;
+ int cmd_incr ;
+ struct data do_pmemcached_get (char const*,int) ;
+ int do_pmemcached_incr (int,char const*,int,long long) ;
+ int do_pmemcached_preload (char const*,int,int) ;
+ int do_pmemcached_store (int ,char const*,int,int ,int ,char*,int ) ;
+ int fprintf (int ,char*,int,...) ;
+ int mct_add ;
+ int memcache_wait (struct connection*) ;
+ scalar_t__ protected_mode ;
+ int sprintf (char*,char*,long long) ;
+ int stderr ;
+ int strlen (char*) ;
+ int strncmp (char const*,char*,int) ;
+ int verbosity ;
+ int write_out (int *,char*,int) ;
 
 int memcache_incr (struct connection *c, int op, const char *key, int key_len, long long arg) {
   if (binlog_disabled == 1) {

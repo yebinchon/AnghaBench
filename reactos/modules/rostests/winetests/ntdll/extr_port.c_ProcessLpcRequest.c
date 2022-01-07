@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ MessageType; scalar_t__ Data; } ;
 struct TYPE_3__ {scalar_t__ MessageType; scalar_t__ Data; } ;
 union lpc_message {TYPE_2__ msg; TYPE_1__ msg64; } ;
-typedef  scalar_t__ NTSTATUS ;
-typedef  int /*<<< orphan*/  LPSTR ;
-typedef  int /*<<< orphan*/  HANDLE ;
+typedef scalar_t__ NTSTATUS ;
+typedef int LPSTR ;
+typedef int HANDLE ;
 
-/* Variables and functions */
- scalar_t__ LPC_REQUEST ; 
- int /*<<< orphan*/  REPLY ; 
- int /*<<< orphan*/  REQUEST2 ; 
- scalar_t__ STATUS_SUCCESS ; 
- scalar_t__ is_wow64 ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,...) ; 
- scalar_t__ pNtReplyPort (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ LPC_REQUEST ;
+ int REPLY ;
+ int REQUEST2 ;
+ scalar_t__ STATUS_SUCCESS ;
+ scalar_t__ is_wow64 ;
+ int ok (int,char*,scalar_t__,...) ;
+ scalar_t__ pNtReplyPort (int ,TYPE_2__*) ;
+ int strcmp (int ,int ) ;
+ int strcpy (int ,int ) ;
 
 __attribute__((used)) static void ProcessLpcRequest(HANDLE PortHandle, union lpc_message *LpcMessage)
 {

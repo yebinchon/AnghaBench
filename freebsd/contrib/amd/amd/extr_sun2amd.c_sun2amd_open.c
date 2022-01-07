@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XLOG_ERROR ; 
- int /*<<< orphan*/ * fopen (char const*,char const*) ; 
- int /*<<< orphan*/  plog (int /*<<< orphan*/ ,char*,char const*) ; 
+
+
+
+typedef int FILE ;
+
+
+ int XLOG_ERROR ;
+ int * fopen (char const*,char const*) ;
+ int plog (int ,char*,char const*) ;
 
 __attribute__((used)) static FILE *
 sun2amd_open(const char *path, const char *mode)
 {
-  FILE *retval = NULL;
+  FILE *retval = ((void*)0);
 
-  if ((retval = fopen(path,mode)) == NULL) {
+  if ((retval = fopen(path,mode)) == ((void*)0)) {
     plog(XLOG_ERROR,"could not open file %s",path);
   }
 

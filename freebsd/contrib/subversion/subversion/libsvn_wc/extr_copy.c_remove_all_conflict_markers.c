@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/ * (* svn_cancel_func_t ) (void*) ;
+
+
+
+
+typedef int svn_wc__db_t ;
+typedef int svn_error_t ;
+typedef int * (* svn_cancel_func_t ) (void*) ;
 struct svn_wc__db_info_t {scalar_t__ kind; scalar_t__ conflicted; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_hash_index_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- char* apr_hash_this_key (int /*<<< orphan*/ *) ; 
- struct svn_wc__db_info_t* apr_hash_this_val (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * remove_node_conflict_markers (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ *) ; 
- char* svn_dirent_join (char const*,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_dir ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc__db_read_children_info (int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int SVN_ERR (int *) ;
+ int * SVN_NO_ERROR ;
+ int * apr_hash_first (int *,int *) ;
+ int * apr_hash_next (int *) ;
+ char* apr_hash_this_key (int *) ;
+ struct svn_wc__db_info_t* apr_hash_this_val (int *) ;
+ int * remove_node_conflict_markers (int *,char*,char*,int *) ;
+ char* svn_dirent_join (char const*,char const*,int *) ;
+ scalar_t__ svn_node_dir ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ int * svn_wc__db_read_children_info (int **,int **,int *,char const*,int ,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 remove_all_conflict_markers(svn_wc__db_t *db,
@@ -44,16 +44,16 @@ remove_all_conflict_markers(svn_wc__db_t *db,
 {
   apr_pool_t *iterpool = svn_pool_create(scratch_pool);
   apr_hash_t *nodes;
-  apr_hash_t *conflicts; /* Unused */
+  apr_hash_t *conflicts;
   apr_hash_index_t *hi;
 
-  /* Reuse a status helper to obtain all subdirs and conflicts in a single
-     db transaction. */
-  /* ### This uses a rifle to kill a fly. But at least it doesn't use heavy
-          artillery. */
+
+
+
+
   SVN_ERR(svn_wc__db_read_children_info(&nodes, &conflicts, db,
                                         src_dir_abspath,
-                                        FALSE /* base_tree_only */,
+                                        FALSE ,
                                         scratch_pool, iterpool));
 
   for (hi = apr_hash_first(scratch_pool, nodes);

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  res ;
-typedef  int /*<<< orphan*/  dyn_mark_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int check_word (char*,int) ; 
- int /*<<< orphan*/ * check_word_stat ; 
- int /*<<< orphan*/  dyn_mark (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dyn_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  filter_re (char*,int /*<<< orphan*/ *) ; 
- int get_notword (char*) ; 
- int get_word (char*) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- int my_lc_str (char*,char*,int) ; 
- int /*<<< orphan*/  re_email ; 
- int /*<<< orphan*/  re_url ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- scalar_t__ strlen (char*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,...) ; 
- char* zmalloc (scalar_t__) ; 
+
+
+
+typedef int res ;
+typedef int dyn_mark_t ;
+
+
+ int assert (int) ;
+ int check_word (char*,int) ;
+ int * check_word_stat ;
+ int dyn_mark (int ) ;
+ int dyn_release (int ) ;
+ int filter_re (char*,int *) ;
+ int get_notword (char*) ;
+ int get_word (char*) ;
+ int memset (int*,int ,int) ;
+ int my_lc_str (char*,char*,int) ;
+ int re_email ;
+ int re_url ;
+ int strcpy (char*,char*) ;
+ scalar_t__ strlen (char*) ;
+ int vkprintf (int,char*,...) ;
+ char* zmalloc (scalar_t__) ;
 
 int spell_check (char *original_text, int res[3], int destroy_original) {
   static char buff[16384];

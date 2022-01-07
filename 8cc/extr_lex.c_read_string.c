@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Token ;
-typedef  int /*<<< orphan*/  Buffer ;
 
-/* Variables and functions */
- int EOF ; 
- int /*<<< orphan*/  buf_body (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  buf_len (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  buf_write (int /*<<< orphan*/ *,char) ; 
- int /*<<< orphan*/  errorp (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * make_buffer () ; 
- int /*<<< orphan*/ * make_strtok (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- unsigned char peek () ; 
- int /*<<< orphan*/  pos ; 
- int read_escaped_char () ; 
- int readc () ; 
- int /*<<< orphan*/  write_utf8 (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int Token ;
+typedef int Buffer ;
+
+
+ int EOF ;
+ int buf_body (int *) ;
+ int buf_len (int *) ;
+ int buf_write (int *,char) ;
+ int errorp (int ,char*) ;
+ int * make_buffer () ;
+ int * make_strtok (int ,int ,int) ;
+ unsigned char peek () ;
+ int pos ;
+ int read_escaped_char () ;
+ int readc () ;
+ int write_utf8 (int *,int) ;
 
 __attribute__((used)) static Token *read_string(int enc) {
     Buffer *b = make_buffer();

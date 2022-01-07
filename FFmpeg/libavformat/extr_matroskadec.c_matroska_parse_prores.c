@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  MatroskaTrack ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ; 
- int AV_RB32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AV_WB32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int MKBETAG (char,char,char,float) ; 
- int /*<<< orphan*/ * av_malloc (scalar_t__) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
+
+
+
+typedef int uint8_t ;
+typedef int MatroskaTrack ;
+
+
+ int AVERROR (int ) ;
+ scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ;
+ int AV_RB32 (int *) ;
+ int AV_WB32 (int *,int) ;
+ int ENOMEM ;
+ int MKBETAG (char,char,char,float) ;
+ int * av_malloc (scalar_t__) ;
+ int memcpy (int *,int *,int) ;
+ int memset (int *,int ,scalar_t__) ;
 
 __attribute__((used)) static int matroska_parse_prores(MatroskaTrack *track, uint8_t *src,
                                  uint8_t **pdst, int *size)

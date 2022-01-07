@@ -1,103 +1,103 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct dirent {scalar_t__ d_type; scalar_t__ d_name; } ;
-typedef  int /*<<< orphan*/  mfilters ;
-typedef  int /*<<< orphan*/  buff ;
+typedef int mfilters ;
+typedef int buff ;
 struct TYPE_2__ {char const** hwfilters; } ;
-typedef  int /*<<< orphan*/  DIR ;
+typedef int DIR ;
 
-/* Variables and functions */
- scalar_t__ DT_LNK ; 
- scalar_t__ DT_REG ; 
- char** calloc (int,int) ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/ * opendir (char*) ; 
- int /*<<< orphan*/  perror (char*) ; 
- TYPE_1__ plat_target ; 
- struct dirent* readdir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rewinddir (int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (scalar_t__,char*) ; 
- char* strdup (char*) ; 
- size_t strlen (scalar_t__) ; 
- int /*<<< orphan*/  strncpy (char*,scalar_t__,size_t) ; 
+
+ scalar_t__ DT_LNK ;
+ scalar_t__ DT_REG ;
+ char** calloc (int,int) ;
+ int closedir (int *) ;
+ scalar_t__ errno ;
+ int * opendir (char*) ;
+ int perror (char*) ;
+ TYPE_1__ plat_target ;
+ struct dirent* readdir (int *) ;
+ int rewinddir (int *) ;
+ scalar_t__ strcmp (scalar_t__,char*) ;
+ char* strdup (char*) ;
+ size_t strlen (scalar_t__) ;
+ int strncpy (char*,scalar_t__,size_t) ;
 
 __attribute__((used)) static void scan_for_filters(void)
 {
-	struct dirent *ent;
-	int i, count = 0;
-	const char **mfilters;
-	char buff[64];
-	DIR *dir;
+ struct dirent *ent;
+ int i, count = 0;
+ const char **mfilters;
+ char buff[64];
+ DIR *dir;
 
-	dir = opendir("/etc/pandora/conf/dss_fir");
-	if (dir == NULL) {
-		perror("filter opendir");
-		return;
-	}
+ dir = opendir("/etc/pandora/conf/dss_fir");
+ if (dir == ((void*)0)) {
+  perror("filter opendir");
+  return;
+ }
 
-	while (1) {
-		errno = 0;
-		ent = readdir(dir);
-		if (ent == NULL) {
-			if (errno != 0)
-				perror("readdir");
-			break;
-		}
+ while (1) {
+  errno = 0;
+  ent = readdir(dir);
+  if (ent == ((void*)0)) {
+   if (errno != 0)
+    perror("readdir");
+   break;
+  }
 
-		if (ent->d_type != DT_REG && ent->d_type != DT_LNK)
-			continue;
+  if (ent->d_type != DT_REG && ent->d_type != DT_LNK)
+   continue;
 
-		count++;
-	}
+  count++;
+ }
 
-	if (count == 0)
-		return;
+ if (count == 0)
+  return;
 
-	mfilters = calloc(count + 1, sizeof(mfilters[0]));
-	if (mfilters == NULL)
-		return;
+ mfilters = calloc(count + 1, sizeof(mfilters[0]));
+ if (mfilters == ((void*)0))
+  return;
 
-	rewinddir(dir);
-	for (i = 0; (ent = readdir(dir)); ) {
-		size_t len;
+ rewinddir(dir);
+ for (i = 0; (ent = readdir(dir)); ) {
+  size_t len;
 
-		if (ent->d_type != DT_REG && ent->d_type != DT_LNK)
-			continue;
+  if (ent->d_type != DT_REG && ent->d_type != DT_LNK)
+   continue;
 
-		len = strlen(ent->d_name);
+  len = strlen(ent->d_name);
 
-		// skip pre-HF5 extra files
-		if (len >= 3 && strcmp(ent->d_name + len - 3, "_v3") == 0)
-			continue;
-		if (len >= 3 && strcmp(ent->d_name + len - 3, "_v5") == 0)
-			continue;
 
-		// have to cut "_up_h" for pre-HF5
-		if (len > 5 && strcmp(ent->d_name + len - 5, "_up_h") == 0)
-			len -= 5;
+  if (len >= 3 && strcmp(ent->d_name + len - 3, "_v3") == 0)
+   continue;
+  if (len >= 3 && strcmp(ent->d_name + len - 3, "_v5") == 0)
+   continue;
 
-		if (len > sizeof(buff) - 1)
-			continue;
 
-		strncpy(buff, ent->d_name, len);
-		buff[len] = 0;
-		mfilters[i] = strdup(buff);
-		if (mfilters[i] != NULL)
-			i++;
-	}
-	closedir(dir);
+  if (len > 5 && strcmp(ent->d_name + len - 5, "_up_h") == 0)
+   len -= 5;
 
-	plat_target.hwfilters = mfilters;
+  if (len > sizeof(buff) - 1)
+   continue;
+
+  strncpy(buff, ent->d_name, len);
+  buff[len] = 0;
+  mfilters[i] = strdup(buff);
+  if (mfilters[i] != ((void*)0))
+   i++;
+ }
+ closedir(dir);
+
+ plat_target.hwfilters = mfilters;
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct vdp_functions {scalar_t__ (* video_mixer_set_attribute_values ) (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,void const**) ;int /*<<< orphan*/  (* get_error_string ) (scalar_t__) ;} ;
-struct mp_vdpau_mixer {int /*<<< orphan*/  video_mixer; TYPE_1__* ctx; } ;
-typedef  int /*<<< orphan*/  VdpVideoMixerAttribute ;
-typedef  scalar_t__ VdpStatus ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct vdp_functions {scalar_t__ (* video_mixer_set_attribute_values ) (int ,int,int *,void const**) ;int (* get_error_string ) (scalar_t__) ;} ;
+struct mp_vdpau_mixer {int video_mixer; TYPE_1__* ctx; } ;
+typedef int VdpVideoMixerAttribute ;
+typedef scalar_t__ VdpStatus ;
 struct TYPE_2__ {struct vdp_functions vdp; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_ERR (struct mp_vdpau_mixer*,char*,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ VDP_STATUS_OK ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,void const**) ; 
- int /*<<< orphan*/  stub2 (scalar_t__) ; 
+
+ int MP_ERR (struct mp_vdpau_mixer*,char*,char*,int ) ;
+ scalar_t__ VDP_STATUS_OK ;
+ scalar_t__ stub1 (int ,int,int *,void const**) ;
+ int stub2 (scalar_t__) ;
 
 __attribute__((used)) static int set_video_attribute(struct mp_vdpau_mixer *mixer,
                                VdpVideoMixerAttribute attr,

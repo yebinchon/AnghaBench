@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ppc_trap_frame_t ;
 
-/* Variables and functions */
- scalar_t__ Continue ; 
- int /*<<< orphan*/  PacketWriteSignal (int) ; 
- int /*<<< orphan*/ * RegisterSaveArea ; 
- scalar_t__ SendSignal ; 
- int /*<<< orphan*/  SerialInterrupt (int,int /*<<< orphan*/ *) ; 
- int Signal ; 
+
+
+
+typedef int ppc_trap_frame_t ;
+
+
+ scalar_t__ Continue ;
+ int PacketWriteSignal (int) ;
+ int * RegisterSaveArea ;
+ scalar_t__ SendSignal ;
+ int SerialInterrupt (int,int *) ;
+ int Signal ;
 
 int TakeException(int n, ppc_trap_frame_t *tf)
 {

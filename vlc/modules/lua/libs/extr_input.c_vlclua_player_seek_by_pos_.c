@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_player_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  enum vlc_player_whence { ____Placeholder_vlc_player_whence } vlc_player_whence ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLC_PLAYER_SEEK_PRECISE ; 
- float luaL_checknumber (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vlc_player_Lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_player_SeekByPos (int /*<<< orphan*/ *,float,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  vlc_player_Unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vlclua_get_player_internal (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vlc_player_t ;
+typedef int lua_State ;
+typedef enum vlc_player_whence { ____Placeholder_vlc_player_whence } vlc_player_whence ;
+
+
+ int VLC_PLAYER_SEEK_PRECISE ;
+ float luaL_checknumber (int *,int) ;
+ int vlc_player_Lock (int *) ;
+ int vlc_player_SeekByPos (int *,float,int ,int) ;
+ int vlc_player_Unlock (int *) ;
+ int * vlclua_get_player_internal (int *) ;
 
 __attribute__((used)) static int vlclua_player_seek_by_pos_(lua_State *L,
                                       enum vlc_player_whence whence)

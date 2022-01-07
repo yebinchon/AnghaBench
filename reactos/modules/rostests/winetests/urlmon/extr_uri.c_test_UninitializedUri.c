@@ -1,77 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int LowPart; } ;
 struct TYPE_5__ {TYPE_1__ u; } ;
-typedef  TYPE_2__ ULARGE_INTEGER ;
-typedef  int /*<<< orphan*/  IUriBuilderFactory ;
-typedef  int /*<<< orphan*/  IUriBuilder ;
-typedef  int /*<<< orphan*/  IUri ;
-typedef  int /*<<< orphan*/  IPersistStream ;
-typedef  int HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_2__ ULARGE_INTEGER ;
+typedef int IUriBuilderFactory ;
+typedef int IUriBuilder ;
+typedef int IUri ;
+typedef int IPersistStream ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef int BSTR ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int CLSCTX_INPROC_HANDLER ; 
- int CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_CUri ; 
- int CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,void**) ; 
- int E_UNEXPECTED ; 
- scalar_t__ FAILED (int) ; 
- int /*<<< orphan*/  IID_IPersistStream ; 
- int /*<<< orphan*/  IID_IUri ; 
- int /*<<< orphan*/  IID_IUriBuilderFactory ; 
- int IPersistStream_GetSizeMax (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int IPersistStream_IsDirty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IPersistStream_Release (int /*<<< orphan*/ *) ; 
- int IUriBuilderFactory_CreateIUriBuilder (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int IUriBuilderFactory_CreateInitializedIUriBuilder (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IUriBuilderFactory_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUriBuilder_Release (int /*<<< orphan*/ *) ; 
- int IUri_GetAbsoluteUri (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IUri_GetAuthority (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IUri_GetDisplayUri (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IUri_GetDomain (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IUri_GetExtension (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IUri_GetFragment (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IUri_GetHost (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IUri_GetHostType (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IUri_GetPassword (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IUri_GetPathAndQuery (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IUri_GetPort (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IUri_GetProperties (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IUri_GetPropertyBSTR (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int IUri_GetPropertyDWORD (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int IUri_GetPropertyLength (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int IUri_GetQuery (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IUri_GetRawUri (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IUri_GetScheme (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IUri_GetSchemeName (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IUri_GetUserInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IUri_GetUserName (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IUri_GetZone (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IUri_IsEqual (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IUri_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IUri_Release (int /*<<< orphan*/ *) ; 
- int S_FALSE ; 
- int S_OK ; 
- int /*<<< orphan*/  Uri_PROPERTY_PORT ; 
- int /*<<< orphan*/  Uri_PROPERTY_RAW_URI ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+ int CLSCTX_INPROC_HANDLER ;
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_CUri ;
+ int CoCreateInstance (int *,int *,int,int *,void**) ;
+ int E_UNEXPECTED ;
+ scalar_t__ FAILED (int) ;
+ int IID_IPersistStream ;
+ int IID_IUri ;
+ int IID_IUriBuilderFactory ;
+ int IPersistStream_GetSizeMax (int *,TYPE_2__*) ;
+ int IPersistStream_IsDirty (int *) ;
+ int IPersistStream_Release (int *) ;
+ int IUriBuilderFactory_CreateIUriBuilder (int *,int ,int ,int **) ;
+ int IUriBuilderFactory_CreateInitializedIUriBuilder (int *,int ,int ,int **) ;
+ int IUriBuilderFactory_Release (int *) ;
+ int IUriBuilder_Release (int *) ;
+ int IUri_GetAbsoluteUri (int *,int *) ;
+ int IUri_GetAuthority (int *,int *) ;
+ int IUri_GetDisplayUri (int *,int *) ;
+ int IUri_GetDomain (int *,int *) ;
+ int IUri_GetExtension (int *,int *) ;
+ int IUri_GetFragment (int *,int *) ;
+ int IUri_GetHost (int *,int *) ;
+ int IUri_GetHostType (int *,int *) ;
+ int IUri_GetPassword (int *,int *) ;
+ int IUri_GetPathAndQuery (int *,int *) ;
+ int IUri_GetPort (int *,int *) ;
+ int IUri_GetProperties (int *,int *) ;
+ int IUri_GetPropertyBSTR (int *,int ,int *,int ) ;
+ int IUri_GetPropertyDWORD (int *,int ,int *,int ) ;
+ int IUri_GetPropertyLength (int *,int ,int *,int ) ;
+ int IUri_GetQuery (int *,int *) ;
+ int IUri_GetRawUri (int *,int *) ;
+ int IUri_GetScheme (int *,int *) ;
+ int IUri_GetSchemeName (int *,int *) ;
+ int IUri_GetUserInfo (int *,int *) ;
+ int IUri_GetUserName (int *,int *) ;
+ int IUri_GetZone (int *,int *) ;
+ int IUri_IsEqual (int *,int *,int *) ;
+ int IUri_QueryInterface (int *,int *,void**) ;
+ int IUri_Release (int *) ;
+ int S_FALSE ;
+ int S_OK ;
+ int Uri_PROPERTY_PORT ;
+ int Uri_PROPERTY_RAW_URI ;
+ int ok (int,char*,int) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_UninitializedUri(void)
 {
@@ -85,7 +85,7 @@ __attribute__((used)) static void test_UninitializedUri(void)
     ULARGE_INTEGER ui;
     HRESULT hr;
 
-    hr = CoCreateInstance(&CLSID_CUri, NULL, CLSCTX_INPROC_SERVER|CLSCTX_INPROC_HANDLER,
+    hr = CoCreateInstance(&CLSID_CUri, ((void*)0), CLSCTX_INPROC_SERVER|CLSCTX_INPROC_HANDLER,
             &IID_IUri, (void**)&uri);
     if(FAILED(hr)) {
         win_skip("Skipping uninitialized Uri tests.\n");
@@ -97,7 +97,7 @@ __attribute__((used)) static void test_UninitializedUri(void)
     hr = IUri_QueryInterface(uri, &IID_IPersistStream, (void**)&ps);
     ok(hr == S_OK, "QueryInterface(IID_IPersistStream) failed: %x.\n", hr);
 
-    hr = IUri_GetAbsoluteUri(uri, NULL);
+    hr = IUri_GetAbsoluteUri(uri, ((void*)0));
     ok(hr == E_UNEXPECTED, "GetAbsoluteUri returned %x, expected E_UNEXPECTED.\n", hr);
     hr = IUri_GetAbsoluteUri(uri, &bstr);
     ok(hr == E_UNEXPECTED, "GetAbsoluteUri returned %x, expected E_UNEXPECTED.\n", hr);

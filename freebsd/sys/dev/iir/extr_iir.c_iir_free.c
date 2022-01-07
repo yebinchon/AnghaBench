@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct gdt_softc {int sc_init_level; int /*<<< orphan*/  sc_parent_dmat; int /*<<< orphan*/  sc_buffer_dmat; int /*<<< orphan*/  sc_gcscratch_dmat; int /*<<< orphan*/  sc_gcscratch_dmamap; int /*<<< orphan*/  sc_gcscratch; TYPE_1__* sc_gccbs; int /*<<< orphan*/  sc_dev; } ;
-struct TYPE_2__ {int /*<<< orphan*/  gc_dmamap; int /*<<< orphan*/  gc_timeout; int /*<<< orphan*/  gc_map_flag; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GDT_DPRINTF (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  GDT_D_INIT ; 
- int /*<<< orphan*/  GDT_MAXCMDS ; 
- int /*<<< orphan*/  M_GDTBUF ; 
- int /*<<< orphan*/  bus_dma_tag_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bus_dmamap_destroy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bus_dmamap_unload (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bus_dmamem_free (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  callout_drain (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gdt_destroy_dev (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct gdt_softc {int sc_init_level; int sc_parent_dmat; int sc_buffer_dmat; int sc_gcscratch_dmat; int sc_gcscratch_dmamap; int sc_gcscratch; TYPE_1__* sc_gccbs; int sc_dev; } ;
+struct TYPE_2__ {int gc_dmamap; int gc_timeout; int gc_map_flag; } ;
+
+
+ int GDT_DPRINTF (int ,char*) ;
+ int GDT_D_INIT ;
+ int GDT_MAXCMDS ;
+ int M_GDTBUF ;
+ int bus_dma_tag_destroy (int ) ;
+ int bus_dmamap_destroy (int ,int ) ;
+ int bus_dmamap_unload (int ,int ) ;
+ int bus_dmamem_free (int ,int ,int ) ;
+ int callout_drain (int *) ;
+ int free (TYPE_1__*,int ) ;
+ int gdt_destroy_dev (int ) ;
 
 void
 iir_free(struct gdt_softc *gdt)
@@ -38,12 +38,12 @@ iir_free(struct gdt_softc *gdt)
       default:
         gdt_destroy_dev(gdt->sc_dev);
       case 5:
-        for (i = GDT_MAXCMDS-1; i >= 0; i--) 
+        for (i = GDT_MAXCMDS-1; i >= 0; i--)
             if (gdt->sc_gccbs[i].gc_map_flag) {
-		callout_drain(&gdt->sc_gccbs[i].gc_timeout);
+  callout_drain(&gdt->sc_gccbs[i].gc_timeout);
                 bus_dmamap_destroy(gdt->sc_buffer_dmat,
                                    gdt->sc_gccbs[i].gc_dmamap);
-	    }
+     }
         bus_dmamap_unload(gdt->sc_gcscratch_dmat, gdt->sc_gcscratch_dmamap);
         free(gdt->sc_gccbs, M_GDTBUF);
       case 4:

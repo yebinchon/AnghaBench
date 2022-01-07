@@ -1,0 +1,554 @@
+; ModuleID = '/home/carl/AnghaBench/freebsd/sys/dev/ath/extr_if_ath_sysctl.c_ath_sysctlattach.c'
+source_filename = "/home/carl/AnghaBench/freebsd/sys/dev/ath/extr_if_ath_sysctl.c_ath_sysctlattach.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.ath_softc = type { i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, %struct.ath_hal*, i32 }
+%struct.ath_hal = type { i32 }
+%struct.sysctl_ctx_list = type { i32 }
+%struct.sysctl_oid = type { i32 }
+
+@OID_AUTO = common dso_local global i32 0, align 4
+@.str = private unnamed_addr constant [12 x i8] c"countrycode\00", align 1
+@CTLFLAG_RD = common dso_local global i32 0, align 4
+@.str.1 = private unnamed_addr constant [20 x i8] c"EEPROM country code\00", align 1
+@.str.2 = private unnamed_addr constant [10 x i8] c"regdomain\00", align 1
+@.str.3 = private unnamed_addr constant [22 x i8] c"EEPROM regdomain code\00", align 1
+@.str.4 = private unnamed_addr constant [9 x i8] c"slottime\00", align 1
+@CTLTYPE_INT = common dso_local global i32 0, align 4
+@CTLFLAG_RW = common dso_local global i32 0, align 4
+@ath_sysctl_slottime = common dso_local global i32 0, align 4
+@.str.5 = private unnamed_addr constant [2 x i8] c"I\00", align 1
+@.str.6 = private unnamed_addr constant [22 x i8] c"802.11 slot time (us)\00", align 1
+@.str.7 = private unnamed_addr constant [11 x i8] c"acktimeout\00", align 1
+@ath_sysctl_acktimeout = common dso_local global i32 0, align 4
+@.str.8 = private unnamed_addr constant [24 x i8] c"802.11 ACK timeout (us)\00", align 1
+@.str.9 = private unnamed_addr constant [11 x i8] c"ctstimeout\00", align 1
+@ath_sysctl_ctstimeout = common dso_local global i32 0, align 4
+@.str.10 = private unnamed_addr constant [24 x i8] c"802.11 CTS timeout (us)\00", align 1
+@.str.11 = private unnamed_addr constant [8 x i8] c"softled\00", align 1
+@ath_sysctl_softled = common dso_local global i32 0, align 4
+@.str.12 = private unnamed_addr constant [36 x i8] c"enable/disable software LED support\00", align 1
+@.str.13 = private unnamed_addr constant [7 x i8] c"ledpin\00", align 1
+@ath_sysctl_ledpin = common dso_local global i32 0, align 4
+@.str.14 = private unnamed_addr constant [26 x i8] c"GPIO pin connected to LED\00", align 1
+@.str.15 = private unnamed_addr constant [6 x i8] c"ledon\00", align 1
+@.str.16 = private unnamed_addr constant [23 x i8] c"setting to turn LED on\00", align 1
+@.str.17 = private unnamed_addr constant [8 x i8] c"ledidle\00", align 1
+@.str.18 = private unnamed_addr constant [37 x i8] c"idle time for inactivity LED (ticks)\00", align 1
+@.str.19 = private unnamed_addr constant [8 x i8] c"hardled\00", align 1
+@ath_sysctl_hardled = common dso_local global i32 0, align 4
+@.str.20 = private unnamed_addr constant [36 x i8] c"enable/disable hardware LED support\00", align 1
+@.str.21 = private unnamed_addr constant [12 x i8] c"led_net_pin\00", align 1
+@.str.22 = private unnamed_addr constant [38 x i8] c"MAC Network LED pin, or -1 to disable\00", align 1
+@.str.23 = private unnamed_addr constant [12 x i8] c"led_pwr_pin\00", align 1
+@.str.24 = private unnamed_addr constant [36 x i8] c"MAC Power LED pin, or -1 to disable\00", align 1
+@.str.25 = private unnamed_addr constant [10 x i8] c"txantenna\00", align 1
+@ath_sysctl_txantenna = common dso_local global i32 0, align 4
+@.str.26 = private unnamed_addr constant [15 x i8] c"antenna switch\00", align 1
+@.str.27 = private unnamed_addr constant [10 x i8] c"rxantenna\00", align 1
+@ath_sysctl_rxantenna = common dso_local global i32 0, align 4
+@.str.28 = private unnamed_addr constant [19 x i8] c"default/rx antenna\00", align 1
+@.str.29 = private unnamed_addr constant [10 x i8] c"diversity\00", align 1
+@ath_sysctl_diversity = common dso_local global i32 0, align 4
+@.str.30 = private unnamed_addr constant [18 x i8] c"antenna diversity\00", align 1
+@ATH_TXINTR_PERIOD = common dso_local global i32 0, align 4
+@.str.31 = private unnamed_addr constant [13 x i8] c"txintrperiod\00", align 1
+@.str.32 = private unnamed_addr constant [23 x i8] c"tx descriptor batching\00", align 1
+@.str.33 = private unnamed_addr constant [5 x i8] c"diag\00", align 1
+@ath_sysctl_diag = common dso_local global i32 0, align 4
+@.str.34 = private unnamed_addr constant [23 x i8] c"h/w diagnostic control\00", align 1
+@.str.35 = private unnamed_addr constant [8 x i8] c"tpscale\00", align 1
+@ath_sysctl_tpscale = common dso_local global i32 0, align 4
+@.str.36 = private unnamed_addr constant [17 x i8] c"tx power scaling\00", align 1
+@.str.37 = private unnamed_addr constant [4 x i8] c"tpc\00", align 1
+@ath_sysctl_tpc = common dso_local global i32 0, align 4
+@.str.38 = private unnamed_addr constant [30 x i8] c"enable/disable per-packet TPC\00", align 1
+@.str.39 = private unnamed_addr constant [6 x i8] c"tpack\00", align 1
+@ath_sysctl_tpack = common dso_local global i32 0, align 4
+@.str.40 = private unnamed_addr constant [24 x i8] c"tx power for ack frames\00", align 1
+@.str.41 = private unnamed_addr constant [6 x i8] c"tpcts\00", align 1
+@ath_sysctl_tpcts = common dso_local global i32 0, align 4
+@.str.42 = private unnamed_addr constant [24 x i8] c"tx power for cts frames\00", align 1
+@.str.43 = private unnamed_addr constant [9 x i8] c"rfsilent\00", align 1
+@ath_sysctl_rfsilent = common dso_local global i32 0, align 4
+@.str.44 = private unnamed_addr constant [21 x i8] c"h/w RF silent config\00", align 1
+@.str.45 = private unnamed_addr constant [7 x i8] c"rfkill\00", align 1
+@ath_sysctl_rfkill = common dso_local global i32 0, align 4
+@.str.46 = private unnamed_addr constant [30 x i8] c"enable/disable RF kill switch\00", align 1
+@.str.47 = private unnamed_addr constant [6 x i8] c"txagg\00", align 1
+@ath_sysctl_txagg = common dso_local global i32 0, align 4
+@.str.48 = private unnamed_addr constant [1 x i8] zeroinitializer, align 1
+@.str.49 = private unnamed_addr constant [12 x i8] c"forcebstuck\00", align 1
+@ath_sysctl_forcebstuck = common dso_local global i32 0, align 4
+@.str.50 = private unnamed_addr constant [10 x i8] c"hangcheck\00", align 1
+@ath_sysctl_hangcheck = common dso_local global i32 0, align 4
+@.str.51 = private unnamed_addr constant [7 x i8] c"intmit\00", align 1
+@ath_sysctl_intmit = common dso_local global i32 0, align 4
+@.str.52 = private unnamed_addr constant [24 x i8] c"interference mitigation\00", align 1
+@HAL_RXERR_DECRYPT = common dso_local global i32 0, align 4
+@HAL_RXERR_MIC = common dso_local global i32 0, align 4
+@.str.53 = private unnamed_addr constant [8 x i8] c"monpass\00", align 1
+@.str.54 = private unnamed_addr constant [45 x i8] c"mask of error frames to pass when monitoring\00", align 1
+@.str.55 = private unnamed_addr constant [18 x i8] c"hwq_limit_nonaggr\00", align 1
+@.str.56 = private unnamed_addr constant [65 x i8] c"Hardware non-AMPDU queue depth before software-queuing TX frames\00", align 1
+@.str.57 = private unnamed_addr constant [15 x i8] c"hwq_limit_aggr\00", align 1
+@.str.58 = private unnamed_addr constant [61 x i8] c"Hardware AMPDU queue depth before software-queuing TX frames\00", align 1
+@.str.59 = private unnamed_addr constant [11 x i8] c"tid_hwq_lo\00", align 1
+@.str.60 = private unnamed_addr constant [11 x i8] c"tid_hwq_hi\00", align 1
+@.str.61 = private unnamed_addr constant [11 x i8] c"aggr_limit\00", align 1
+@.str.62 = private unnamed_addr constant [40 x i8] c"Maximum A-MPDU size, or 0 for 'default'\00", align 1
+@.str.63 = private unnamed_addr constant [15 x i8] c"rts_aggr_limit\00", align 1
+@.str.64 = private unnamed_addr constant [65 x i8] c"Maximum A-MPDU size for RTS-protected frames, or '0' for default\00", align 1
+@.str.65 = private unnamed_addr constant [14 x i8] c"delim_min_pad\00", align 1
+@.str.66 = private unnamed_addr constant [61 x i8] c"Enforce a minimum number of delimiters per A-MPDU  sub-frame\00", align 1
+@.str.67 = private unnamed_addr constant [17 x i8] c"txq_data_minfree\00", align 1
+@.str.68 = private unnamed_addr constant [64 x i8] c"Minimum free buffers before adding a data frame to the TX queue\00", align 1
+@.str.69 = private unnamed_addr constant [20 x i8] c"txq_mcastq_maxdepth\00", align 1
+@.str.70 = private unnamed_addr constant [52 x i8] c"Maximum buffer depth for multicast/broadcast frames\00", align 1
+@.str.71 = private unnamed_addr constant [18 x i8] c"txq_node_maxdepth\00", align 1
+@.str.72 = private unnamed_addr constant [39 x i8] c"Maximum buffer depth for a single node\00", align 1
+@ath_sysctl_setcca = common dso_local global i32 0, align 4
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local void @ath_sysctlattach(%struct.ath_softc* %0) #0 {
+  %2 = alloca %struct.ath_softc*, align 8
+  %3 = alloca %struct.sysctl_ctx_list*, align 8
+  %4 = alloca %struct.sysctl_oid*, align 8
+  %5 = alloca %struct.ath_hal*, align 8
+  store %struct.ath_softc* %0, %struct.ath_softc** %2, align 8
+  %6 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %7 = getelementptr inbounds %struct.ath_softc, %struct.ath_softc* %6, i32 0, i32 26
+  %8 = load i32, i32* %7, align 8
+  %9 = call %struct.sysctl_ctx_list* @device_get_sysctl_ctx(i32 %8)
+  store %struct.sysctl_ctx_list* %9, %struct.sysctl_ctx_list** %3, align 8
+  %10 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %11 = getelementptr inbounds %struct.ath_softc, %struct.ath_softc* %10, i32 0, i32 26
+  %12 = load i32, i32* %11, align 8
+  %13 = call %struct.sysctl_oid* @device_get_sysctl_tree(i32 %12)
+  store %struct.sysctl_oid* %13, %struct.sysctl_oid** %4, align 8
+  %14 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %15 = getelementptr inbounds %struct.ath_softc, %struct.ath_softc* %14, i32 0, i32 25
+  %16 = load %struct.ath_hal*, %struct.ath_hal** %15, align 8
+  store %struct.ath_hal* %16, %struct.ath_hal** %5, align 8
+  %17 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %18 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %19 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %18)
+  %20 = load i32, i32* @OID_AUTO, align 4
+  %21 = load i32, i32* @CTLFLAG_RD, align 4
+  %22 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %23 = getelementptr inbounds %struct.ath_softc, %struct.ath_softc* %22, i32 0, i32 0
+  %24 = call i32 @SYSCTL_ADD_UINT(%struct.sysctl_ctx_list* %17, i32 %19, i32 %20, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str, i64 0, i64 0), i32 %21, i32* %23, i32 0, i8* getelementptr inbounds ([20 x i8], [20 x i8]* @.str.1, i64 0, i64 0))
+  %25 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %26 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %27 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %26)
+  %28 = load i32, i32* @OID_AUTO, align 4
+  %29 = load i32, i32* @CTLFLAG_RD, align 4
+  %30 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %31 = getelementptr inbounds %struct.ath_softc, %struct.ath_softc* %30, i32 0, i32 1
+  %32 = call i32 @SYSCTL_ADD_UINT(%struct.sysctl_ctx_list* %25, i32 %27, i32 %28, i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.2, i64 0, i64 0), i32 %29, i32* %31, i32 0, i8* getelementptr inbounds ([22 x i8], [22 x i8]* @.str.3, i64 0, i64 0))
+  %33 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %34 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %35 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %34)
+  %36 = load i32, i32* @OID_AUTO, align 4
+  %37 = load i32, i32* @CTLTYPE_INT, align 4
+  %38 = load i32, i32* @CTLFLAG_RW, align 4
+  %39 = or i32 %37, %38
+  %40 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %41 = load i32, i32* @ath_sysctl_slottime, align 4
+  %42 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %33, i32 %35, i32 %36, i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str.4, i64 0, i64 0), i32 %39, %struct.ath_softc* %40, i32 0, i32 %41, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.5, i64 0, i64 0), i8* getelementptr inbounds ([22 x i8], [22 x i8]* @.str.6, i64 0, i64 0))
+  %43 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %44 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %45 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %44)
+  %46 = load i32, i32* @OID_AUTO, align 4
+  %47 = load i32, i32* @CTLTYPE_INT, align 4
+  %48 = load i32, i32* @CTLFLAG_RW, align 4
+  %49 = or i32 %47, %48
+  %50 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %51 = load i32, i32* @ath_sysctl_acktimeout, align 4
+  %52 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %43, i32 %45, i32 %46, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.7, i64 0, i64 0), i32 %49, %struct.ath_softc* %50, i32 0, i32 %51, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.5, i64 0, i64 0), i8* getelementptr inbounds ([24 x i8], [24 x i8]* @.str.8, i64 0, i64 0))
+  %53 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %54 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %55 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %54)
+  %56 = load i32, i32* @OID_AUTO, align 4
+  %57 = load i32, i32* @CTLTYPE_INT, align 4
+  %58 = load i32, i32* @CTLFLAG_RW, align 4
+  %59 = or i32 %57, %58
+  %60 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %61 = load i32, i32* @ath_sysctl_ctstimeout, align 4
+  %62 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %53, i32 %55, i32 %56, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.9, i64 0, i64 0), i32 %59, %struct.ath_softc* %60, i32 0, i32 %61, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.5, i64 0, i64 0), i8* getelementptr inbounds ([24 x i8], [24 x i8]* @.str.10, i64 0, i64 0))
+  %63 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %64 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %65 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %64)
+  %66 = load i32, i32* @OID_AUTO, align 4
+  %67 = load i32, i32* @CTLTYPE_INT, align 4
+  %68 = load i32, i32* @CTLFLAG_RW, align 4
+  %69 = or i32 %67, %68
+  %70 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %71 = load i32, i32* @ath_sysctl_softled, align 4
+  %72 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %63, i32 %65, i32 %66, i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.11, i64 0, i64 0), i32 %69, %struct.ath_softc* %70, i32 0, i32 %71, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.5, i64 0, i64 0), i8* getelementptr inbounds ([36 x i8], [36 x i8]* @.str.12, i64 0, i64 0))
+  %73 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %74 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %75 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %74)
+  %76 = load i32, i32* @OID_AUTO, align 4
+  %77 = load i32, i32* @CTLTYPE_INT, align 4
+  %78 = load i32, i32* @CTLFLAG_RW, align 4
+  %79 = or i32 %77, %78
+  %80 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %81 = load i32, i32* @ath_sysctl_ledpin, align 4
+  %82 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %73, i32 %75, i32 %76, i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.13, i64 0, i64 0), i32 %79, %struct.ath_softc* %80, i32 0, i32 %81, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.5, i64 0, i64 0), i8* getelementptr inbounds ([26 x i8], [26 x i8]* @.str.14, i64 0, i64 0))
+  %83 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %84 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %85 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %84)
+  %86 = load i32, i32* @OID_AUTO, align 4
+  %87 = load i32, i32* @CTLFLAG_RW, align 4
+  %88 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %89 = getelementptr inbounds %struct.ath_softc, %struct.ath_softc* %88, i32 0, i32 2
+  %90 = call i32 @SYSCTL_ADD_UINT(%struct.sysctl_ctx_list* %83, i32 %85, i32 %86, i8* getelementptr inbounds ([6 x i8], [6 x i8]* @.str.15, i64 0, i64 0), i32 %87, i32* %89, i32 0, i8* getelementptr inbounds ([23 x i8], [23 x i8]* @.str.16, i64 0, i64 0))
+  %91 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %92 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %93 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %92)
+  %94 = load i32, i32* @OID_AUTO, align 4
+  %95 = load i32, i32* @CTLFLAG_RW, align 4
+  %96 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %97 = getelementptr inbounds %struct.ath_softc, %struct.ath_softc* %96, i32 0, i32 3
+  %98 = call i32 @SYSCTL_ADD_UINT(%struct.sysctl_ctx_list* %91, i32 %93, i32 %94, i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.17, i64 0, i64 0), i32 %95, i32* %97, i32 0, i8* getelementptr inbounds ([37 x i8], [37 x i8]* @.str.18, i64 0, i64 0))
+  %99 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %100 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %101 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %100)
+  %102 = load i32, i32* @OID_AUTO, align 4
+  %103 = load i32, i32* @CTLTYPE_INT, align 4
+  %104 = load i32, i32* @CTLFLAG_RW, align 4
+  %105 = or i32 %103, %104
+  %106 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %107 = load i32, i32* @ath_sysctl_hardled, align 4
+  %108 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %99, i32 %101, i32 %102, i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.19, i64 0, i64 0), i32 %105, %struct.ath_softc* %106, i32 0, i32 %107, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.5, i64 0, i64 0), i8* getelementptr inbounds ([36 x i8], [36 x i8]* @.str.20, i64 0, i64 0))
+  %109 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %110 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %111 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %110)
+  %112 = load i32, i32* @OID_AUTO, align 4
+  %113 = load i32, i32* @CTLFLAG_RW, align 4
+  %114 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %115 = getelementptr inbounds %struct.ath_softc, %struct.ath_softc* %114, i32 0, i32 22
+  %116 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %109, i32 %111, i32 %112, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.21, i64 0, i64 0), i32 %113, i32* %115, i32 0, i8* getelementptr inbounds ([38 x i8], [38 x i8]* @.str.22, i64 0, i64 0))
+  %117 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %118 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %119 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %118)
+  %120 = load i32, i32* @OID_AUTO, align 4
+  %121 = load i32, i32* @CTLFLAG_RW, align 4
+  %122 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %123 = getelementptr inbounds %struct.ath_softc, %struct.ath_softc* %122, i32 0, i32 21
+  %124 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %117, i32 %119, i32 %120, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.23, i64 0, i64 0), i32 %121, i32* %123, i32 0, i8* getelementptr inbounds ([36 x i8], [36 x i8]* @.str.24, i64 0, i64 0))
+  %125 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %126 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %127 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %126)
+  %128 = load i32, i32* @OID_AUTO, align 4
+  %129 = load i32, i32* @CTLTYPE_INT, align 4
+  %130 = load i32, i32* @CTLFLAG_RW, align 4
+  %131 = or i32 %129, %130
+  %132 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %133 = load i32, i32* @ath_sysctl_txantenna, align 4
+  %134 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %125, i32 %127, i32 %128, i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.25, i64 0, i64 0), i32 %131, %struct.ath_softc* %132, i32 0, i32 %133, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.5, i64 0, i64 0), i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.26, i64 0, i64 0))
+  %135 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %136 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %137 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %136)
+  %138 = load i32, i32* @OID_AUTO, align 4
+  %139 = load i32, i32* @CTLTYPE_INT, align 4
+  %140 = load i32, i32* @CTLFLAG_RW, align 4
+  %141 = or i32 %139, %140
+  %142 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %143 = load i32, i32* @ath_sysctl_rxantenna, align 4
+  %144 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %135, i32 %137, i32 %138, i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.27, i64 0, i64 0), i32 %141, %struct.ath_softc* %142, i32 0, i32 %143, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.5, i64 0, i64 0), i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.28, i64 0, i64 0))
+  %145 = load %struct.ath_hal*, %struct.ath_hal** %5, align 8
+  %146 = call i64 @ath_hal_hasdiversity(%struct.ath_hal* %145)
+  %147 = icmp ne i64 %146, 0
+  br i1 %147, label %148, label %159
+
+148:                                              ; preds = %1
+  %149 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %150 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %151 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %150)
+  %152 = load i32, i32* @OID_AUTO, align 4
+  %153 = load i32, i32* @CTLTYPE_INT, align 4
+  %154 = load i32, i32* @CTLFLAG_RW, align 4
+  %155 = or i32 %153, %154
+  %156 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %157 = load i32, i32* @ath_sysctl_diversity, align 4
+  %158 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %149, i32 %151, i32 %152, i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.29, i64 0, i64 0), i32 %155, %struct.ath_softc* %156, i32 0, i32 %157, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.5, i64 0, i64 0), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.30, i64 0, i64 0))
+  br label %159
+
+159:                                              ; preds = %148, %1
+  %160 = load i32, i32* @ATH_TXINTR_PERIOD, align 4
+  %161 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %162 = getelementptr inbounds %struct.ath_softc, %struct.ath_softc* %161, i32 0, i32 4
+  store i32 %160, i32* %162, align 8
+  %163 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %164 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %165 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %164)
+  %166 = load i32, i32* @OID_AUTO, align 4
+  %167 = load i32, i32* @CTLFLAG_RW, align 4
+  %168 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %169 = getelementptr inbounds %struct.ath_softc, %struct.ath_softc* %168, i32 0, i32 4
+  %170 = call i32 @SYSCTL_ADD_UINT(%struct.sysctl_ctx_list* %163, i32 %165, i32 %166, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.31, i64 0, i64 0), i32 %167, i32* %169, i32 0, i8* getelementptr inbounds ([23 x i8], [23 x i8]* @.str.32, i64 0, i64 0))
+  %171 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %172 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %173 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %172)
+  %174 = load i32, i32* @OID_AUTO, align 4
+  %175 = load i32, i32* @CTLTYPE_INT, align 4
+  %176 = load i32, i32* @CTLFLAG_RW, align 4
+  %177 = or i32 %175, %176
+  %178 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %179 = load i32, i32* @ath_sysctl_diag, align 4
+  %180 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %171, i32 %173, i32 %174, i8* getelementptr inbounds ([5 x i8], [5 x i8]* @.str.33, i64 0, i64 0), i32 %177, %struct.ath_softc* %178, i32 0, i32 %179, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.5, i64 0, i64 0), i8* getelementptr inbounds ([23 x i8], [23 x i8]* @.str.34, i64 0, i64 0))
+  %181 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %182 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %183 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %182)
+  %184 = load i32, i32* @OID_AUTO, align 4
+  %185 = load i32, i32* @CTLTYPE_INT, align 4
+  %186 = load i32, i32* @CTLFLAG_RW, align 4
+  %187 = or i32 %185, %186
+  %188 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %189 = load i32, i32* @ath_sysctl_tpscale, align 4
+  %190 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %181, i32 %183, i32 %184, i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.35, i64 0, i64 0), i32 %187, %struct.ath_softc* %188, i32 0, i32 %189, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.5, i64 0, i64 0), i8* getelementptr inbounds ([17 x i8], [17 x i8]* @.str.36, i64 0, i64 0))
+  %191 = load %struct.ath_hal*, %struct.ath_hal** %5, align 8
+  %192 = call i64 @ath_hal_hastpc(%struct.ath_hal* %191)
+  %193 = icmp ne i64 %192, 0
+  br i1 %193, label %194, label %225
+
+194:                                              ; preds = %159
+  %195 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %196 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %197 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %196)
+  %198 = load i32, i32* @OID_AUTO, align 4
+  %199 = load i32, i32* @CTLTYPE_INT, align 4
+  %200 = load i32, i32* @CTLFLAG_RW, align 4
+  %201 = or i32 %199, %200
+  %202 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %203 = load i32, i32* @ath_sysctl_tpc, align 4
+  %204 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %195, i32 %197, i32 %198, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.37, i64 0, i64 0), i32 %201, %struct.ath_softc* %202, i32 0, i32 %203, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.5, i64 0, i64 0), i8* getelementptr inbounds ([30 x i8], [30 x i8]* @.str.38, i64 0, i64 0))
+  %205 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %206 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %207 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %206)
+  %208 = load i32, i32* @OID_AUTO, align 4
+  %209 = load i32, i32* @CTLTYPE_INT, align 4
+  %210 = load i32, i32* @CTLFLAG_RW, align 4
+  %211 = or i32 %209, %210
+  %212 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %213 = load i32, i32* @ath_sysctl_tpack, align 4
+  %214 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %205, i32 %207, i32 %208, i8* getelementptr inbounds ([6 x i8], [6 x i8]* @.str.39, i64 0, i64 0), i32 %211, %struct.ath_softc* %212, i32 0, i32 %213, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.5, i64 0, i64 0), i8* getelementptr inbounds ([24 x i8], [24 x i8]* @.str.40, i64 0, i64 0))
+  %215 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %216 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %217 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %216)
+  %218 = load i32, i32* @OID_AUTO, align 4
+  %219 = load i32, i32* @CTLTYPE_INT, align 4
+  %220 = load i32, i32* @CTLFLAG_RW, align 4
+  %221 = or i32 %219, %220
+  %222 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %223 = load i32, i32* @ath_sysctl_tpcts, align 4
+  %224 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %215, i32 %217, i32 %218, i8* getelementptr inbounds ([6 x i8], [6 x i8]* @.str.41, i64 0, i64 0), i32 %221, %struct.ath_softc* %222, i32 0, i32 %223, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.5, i64 0, i64 0), i8* getelementptr inbounds ([24 x i8], [24 x i8]* @.str.42, i64 0, i64 0))
+  br label %225
+
+225:                                              ; preds = %194, %159
+  %226 = load %struct.ath_hal*, %struct.ath_hal** %5, align 8
+  %227 = call i64 @ath_hal_hasrfsilent(%struct.ath_hal* %226)
+  %228 = icmp ne i64 %227, 0
+  br i1 %228, label %229, label %250
+
+229:                                              ; preds = %225
+  %230 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %231 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %232 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %231)
+  %233 = load i32, i32* @OID_AUTO, align 4
+  %234 = load i32, i32* @CTLTYPE_INT, align 4
+  %235 = load i32, i32* @CTLFLAG_RW, align 4
+  %236 = or i32 %234, %235
+  %237 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %238 = load i32, i32* @ath_sysctl_rfsilent, align 4
+  %239 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %230, i32 %232, i32 %233, i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str.43, i64 0, i64 0), i32 %236, %struct.ath_softc* %237, i32 0, i32 %238, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.5, i64 0, i64 0), i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.44, i64 0, i64 0))
+  %240 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %241 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %242 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %241)
+  %243 = load i32, i32* @OID_AUTO, align 4
+  %244 = load i32, i32* @CTLTYPE_INT, align 4
+  %245 = load i32, i32* @CTLFLAG_RW, align 4
+  %246 = or i32 %244, %245
+  %247 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %248 = load i32, i32* @ath_sysctl_rfkill, align 4
+  %249 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %240, i32 %242, i32 %243, i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.45, i64 0, i64 0), i32 %246, %struct.ath_softc* %247, i32 0, i32 %248, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.5, i64 0, i64 0), i8* getelementptr inbounds ([30 x i8], [30 x i8]* @.str.46, i64 0, i64 0))
+  br label %250
+
+250:                                              ; preds = %229, %225
+  %251 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %252 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %253 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %252)
+  %254 = load i32, i32* @OID_AUTO, align 4
+  %255 = load i32, i32* @CTLTYPE_INT, align 4
+  %256 = load i32, i32* @CTLFLAG_RW, align 4
+  %257 = or i32 %255, %256
+  %258 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %259 = load i32, i32* @ath_sysctl_txagg, align 4
+  %260 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %251, i32 %253, i32 %254, i8* getelementptr inbounds ([6 x i8], [6 x i8]* @.str.47, i64 0, i64 0), i32 %257, %struct.ath_softc* %258, i32 0, i32 %259, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.5, i64 0, i64 0), i8* getelementptr inbounds ([1 x i8], [1 x i8]* @.str.48, i64 0, i64 0))
+  %261 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %262 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %263 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %262)
+  %264 = load i32, i32* @OID_AUTO, align 4
+  %265 = load i32, i32* @CTLTYPE_INT, align 4
+  %266 = load i32, i32* @CTLFLAG_RW, align 4
+  %267 = or i32 %265, %266
+  %268 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %269 = load i32, i32* @ath_sysctl_forcebstuck, align 4
+  %270 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %261, i32 %263, i32 %264, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.49, i64 0, i64 0), i32 %267, %struct.ath_softc* %268, i32 0, i32 %269, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.5, i64 0, i64 0), i8* getelementptr inbounds ([1 x i8], [1 x i8]* @.str.48, i64 0, i64 0))
+  %271 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %272 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %273 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %272)
+  %274 = load i32, i32* @OID_AUTO, align 4
+  %275 = load i32, i32* @CTLTYPE_INT, align 4
+  %276 = load i32, i32* @CTLFLAG_RW, align 4
+  %277 = or i32 %275, %276
+  %278 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %279 = load i32, i32* @ath_sysctl_hangcheck, align 4
+  %280 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %271, i32 %273, i32 %274, i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.50, i64 0, i64 0), i32 %277, %struct.ath_softc* %278, i32 0, i32 %279, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.5, i64 0, i64 0), i8* getelementptr inbounds ([1 x i8], [1 x i8]* @.str.48, i64 0, i64 0))
+  %281 = load %struct.ath_hal*, %struct.ath_hal** %5, align 8
+  %282 = call i64 @ath_hal_hasintmit(%struct.ath_hal* %281)
+  %283 = icmp ne i64 %282, 0
+  br i1 %283, label %284, label %295
+
+284:                                              ; preds = %250
+  %285 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %286 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %287 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %286)
+  %288 = load i32, i32* @OID_AUTO, align 4
+  %289 = load i32, i32* @CTLTYPE_INT, align 4
+  %290 = load i32, i32* @CTLFLAG_RW, align 4
+  %291 = or i32 %289, %290
+  %292 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %293 = load i32, i32* @ath_sysctl_intmit, align 4
+  %294 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %285, i32 %287, i32 %288, i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.51, i64 0, i64 0), i32 %291, %struct.ath_softc* %292, i32 0, i32 %293, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.5, i64 0, i64 0), i8* getelementptr inbounds ([24 x i8], [24 x i8]* @.str.52, i64 0, i64 0))
+  br label %295
+
+295:                                              ; preds = %284, %250
+  %296 = load i32, i32* @HAL_RXERR_DECRYPT, align 4
+  %297 = load i32, i32* @HAL_RXERR_MIC, align 4
+  %298 = or i32 %296, %297
+  %299 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %300 = getelementptr inbounds %struct.ath_softc, %struct.ath_softc* %299, i32 0, i32 5
+  store i32 %298, i32* %300, align 4
+  %301 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %302 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %303 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %302)
+  %304 = load i32, i32* @OID_AUTO, align 4
+  %305 = load i32, i32* @CTLFLAG_RW, align 4
+  %306 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %307 = getelementptr inbounds %struct.ath_softc, %struct.ath_softc* %306, i32 0, i32 5
+  %308 = call i32 @SYSCTL_ADD_UINT(%struct.sysctl_ctx_list* %301, i32 %303, i32 %304, i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.53, i64 0, i64 0), i32 %305, i32* %307, i32 0, i8* getelementptr inbounds ([45 x i8], [45 x i8]* @.str.54, i64 0, i64 0))
+  %309 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %310 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %311 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %310)
+  %312 = load i32, i32* @OID_AUTO, align 4
+  %313 = load i32, i32* @CTLFLAG_RW, align 4
+  %314 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %315 = getelementptr inbounds %struct.ath_softc, %struct.ath_softc* %314, i32 0, i32 20
+  %316 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %309, i32 %311, i32 %312, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.55, i64 0, i64 0), i32 %313, i32* %315, i32 0, i8* getelementptr inbounds ([65 x i8], [65 x i8]* @.str.56, i64 0, i64 0))
+  %317 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %318 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %319 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %318)
+  %320 = load i32, i32* @OID_AUTO, align 4
+  %321 = load i32, i32* @CTLFLAG_RW, align 4
+  %322 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %323 = getelementptr inbounds %struct.ath_softc, %struct.ath_softc* %322, i32 0, i32 19
+  %324 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %317, i32 %319, i32 %320, i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.57, i64 0, i64 0), i32 %321, i32* %323, i32 0, i8* getelementptr inbounds ([61 x i8], [61 x i8]* @.str.58, i64 0, i64 0))
+  %325 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %326 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %327 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %326)
+  %328 = load i32, i32* @OID_AUTO, align 4
+  %329 = load i32, i32* @CTLFLAG_RW, align 4
+  %330 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %331 = getelementptr inbounds %struct.ath_softc, %struct.ath_softc* %330, i32 0, i32 18
+  %332 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %325, i32 %327, i32 %328, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.59, i64 0, i64 0), i32 %329, i32* %331, i32 0, i8* getelementptr inbounds ([1 x i8], [1 x i8]* @.str.48, i64 0, i64 0))
+  %333 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %334 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %335 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %334)
+  %336 = load i32, i32* @OID_AUTO, align 4
+  %337 = load i32, i32* @CTLFLAG_RW, align 4
+  %338 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %339 = getelementptr inbounds %struct.ath_softc, %struct.ath_softc* %338, i32 0, i32 17
+  %340 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %333, i32 %335, i32 %336, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.60, i64 0, i64 0), i32 %337, i32* %339, i32 0, i8* getelementptr inbounds ([1 x i8], [1 x i8]* @.str.48, i64 0, i64 0))
+  %341 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %342 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %343 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %342)
+  %344 = load i32, i32* @OID_AUTO, align 4
+  %345 = load i32, i32* @CTLFLAG_RW, align 4
+  %346 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %347 = getelementptr inbounds %struct.ath_softc, %struct.ath_softc* %346, i32 0, i32 16
+  %348 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %341, i32 %343, i32 %344, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.61, i64 0, i64 0), i32 %345, i32* %347, i32 0, i8* getelementptr inbounds ([40 x i8], [40 x i8]* @.str.62, i64 0, i64 0))
+  %349 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %350 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %351 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %350)
+  %352 = load i32, i32* @OID_AUTO, align 4
+  %353 = load i32, i32* @CTLFLAG_RW, align 4
+  %354 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %355 = getelementptr inbounds %struct.ath_softc, %struct.ath_softc* %354, i32 0, i32 15
+  %356 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %349, i32 %351, i32 %352, i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.63, i64 0, i64 0), i32 %353, i32* %355, i32 0, i8* getelementptr inbounds ([65 x i8], [65 x i8]* @.str.64, i64 0, i64 0))
+  %357 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %358 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %359 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %358)
+  %360 = load i32, i32* @OID_AUTO, align 4
+  %361 = load i32, i32* @CTLFLAG_RW, align 4
+  %362 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %363 = getelementptr inbounds %struct.ath_softc, %struct.ath_softc* %362, i32 0, i32 14
+  %364 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %357, i32 %359, i32 %360, i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.65, i64 0, i64 0), i32 %361, i32* %363, i32 0, i8* getelementptr inbounds ([61 x i8], [61 x i8]* @.str.66, i64 0, i64 0))
+  %365 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %366 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %367 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %366)
+  %368 = load i32, i32* @OID_AUTO, align 4
+  %369 = load i32, i32* @CTLFLAG_RW, align 4
+  %370 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %371 = getelementptr inbounds %struct.ath_softc, %struct.ath_softc* %370, i32 0, i32 13
+  %372 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %365, i32 %367, i32 %368, i8* getelementptr inbounds ([17 x i8], [17 x i8]* @.str.67, i64 0, i64 0), i32 %369, i32* %371, i32 0, i8* getelementptr inbounds ([64 x i8], [64 x i8]* @.str.68, i64 0, i64 0))
+  %373 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %374 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %375 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %374)
+  %376 = load i32, i32* @OID_AUTO, align 4
+  %377 = load i32, i32* @CTLFLAG_RW, align 4
+  %378 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %379 = getelementptr inbounds %struct.ath_softc, %struct.ath_softc* %378, i32 0, i32 12
+  %380 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %373, i32 %375, i32 %376, i8* getelementptr inbounds ([20 x i8], [20 x i8]* @.str.69, i64 0, i64 0), i32 %377, i32* %379, i32 0, i8* getelementptr inbounds ([52 x i8], [52 x i8]* @.str.70, i64 0, i64 0))
+  %381 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %382 = load %struct.sysctl_oid*, %struct.sysctl_oid** %4, align 8
+  %383 = call i32 @SYSCTL_CHILDREN(%struct.sysctl_oid* %382)
+  %384 = load i32, i32* @OID_AUTO, align 4
+  %385 = load i32, i32* @CTLFLAG_RW, align 4
+  %386 = load %struct.ath_softc*, %struct.ath_softc** %2, align 8
+  %387 = getelementptr inbounds %struct.ath_softc, %struct.ath_softc* %386, i32 0, i32 11
+  %388 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %381, i32 %383, i32 %384, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.71, i64 0, i64 0), i32 %385, i32* %387, i32 0, i8* getelementptr inbounds ([39 x i8], [39 x i8]* @.str.72, i64 0, i64 0))
+  ret void
+}
+
+declare dso_local %struct.sysctl_ctx_list* @device_get_sysctl_ctx(i32) #1
+
+declare dso_local %struct.sysctl_oid* @device_get_sysctl_tree(i32) #1
+
+declare dso_local i32 @SYSCTL_ADD_UINT(%struct.sysctl_ctx_list*, i32, i32, i8*, i32, i32*, i32, i8*) #1
+
+declare dso_local i32 @SYSCTL_CHILDREN(%struct.sysctl_oid*) #1
+
+declare dso_local i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list*, i32, i32, i8*, i32, %struct.ath_softc*, i32, i32, i8*, i8*) #1
+
+declare dso_local i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list*, i32, i32, i8*, i32, i32*, i32, i8*) #1
+
+declare dso_local i64 @ath_hal_hasdiversity(%struct.ath_hal*) #1
+
+declare dso_local i64 @ath_hal_hastpc(%struct.ath_hal*) #1
+
+declare dso_local i64 @ath_hal_hasrfsilent(%struct.ath_hal*) #1
+
+declare dso_local i64 @ath_hal_hasintmit(%struct.ath_hal*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

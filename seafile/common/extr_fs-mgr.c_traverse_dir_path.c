@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ gboolean ;
-typedef  int /*<<< orphan*/  (* TraverseFSPathCallback ) (int /*<<< orphan*/ *,char*,TYPE_1__*,void*,scalar_t__*) ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef scalar_t__ gboolean ;
+typedef int (* TraverseFSPathCallback ) (int *,char*,TYPE_1__*,void*,scalar_t__*) ;
 struct TYPE_11__ {scalar_t__ data; struct TYPE_11__* next; } ;
 struct TYPE_10__ {TYPE_4__* entries; } ;
-struct TYPE_9__ {int /*<<< orphan*/  mode; int /*<<< orphan*/  name; int /*<<< orphan*/  id; } ;
-typedef  int /*<<< orphan*/  SeafFSManager ;
-typedef  TYPE_1__ SeafDirent ;
-typedef  TYPE_3__ SeafDir ;
-typedef  TYPE_4__ GList ;
+struct TYPE_9__ {int mode; int name; int id; } ;
+typedef int SeafFSManager ;
+typedef TYPE_1__ SeafDirent ;
+typedef TYPE_3__ SeafDir ;
+typedef TYPE_4__ GList ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- scalar_t__ S_ISREG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- char* g_strconcat (char const*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  seaf_dir_free (TYPE_3__*) ; 
- TYPE_3__* seaf_fs_manager_get_seafdir (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seaf_warning (char*,char const*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ FALSE ;
+ scalar_t__ S_ISDIR (int ) ;
+ scalar_t__ S_ISREG (int ) ;
+ int g_free (char*) ;
+ char* g_strconcat (char const*,char*,int ,int *) ;
+ int seaf_dir_free (TYPE_3__*) ;
+ TYPE_3__* seaf_fs_manager_get_seafdir (int *,char const*,int,int ) ;
+ int seaf_warning (char*,char const*,int ) ;
 
 __attribute__((used)) static int
 traverse_dir_path (SeafFSManager *mgr,
@@ -63,7 +63,7 @@ traverse_dir_path (SeafFSManager *mgr,
 
     for (p = dir->entries; p; p = p->next) {
         seaf_dent = (SeafDirent *)p->data;
-        sub_path = g_strconcat (dir_path, "/", seaf_dent->name, NULL);
+        sub_path = g_strconcat (dir_path, "/", seaf_dent->name, ((void*)0));
 
         if (S_ISREG(seaf_dent->mode)) {
             if (!callback (mgr, sub_path, seaf_dent, user_data, &stop)) {

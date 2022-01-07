@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
 
-/* Variables and functions */
+
+
+
+typedef int uint16_t ;
+
+
 
 __attribute__((used)) static void decode_8_pulses_35bits(const uint16_t *fixed_index, float *cod)
 {
@@ -27,9 +27,9 @@ __attribute__((used)) static void decode_8_pulses_35bits(const uint16_t *fixed_i
         cod[pos1] = (fixed_index[i] & 0x80) ? -1.0 : 1.0;
 
         if (pos2 < pos1)
-            cod[pos2]  = -cod[pos1];
+            cod[pos2] = -cod[pos1];
         else
-            cod[pos2] +=  cod[pos1];
+            cod[pos2] += cod[pos1];
     }
 
     pos1 = ((fixed_index[3] & 0x7f) / 11) * 5 + ((3 + offset) % 5);

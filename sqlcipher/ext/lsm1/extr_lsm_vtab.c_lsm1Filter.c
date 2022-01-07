@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  sqlite3_vtab_cursor ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_uint64 ;
-typedef  int /*<<< orphan*/  sqlite3_int64 ;
-struct TYPE_5__ {int /*<<< orphan*/  keyType; } ;
-typedef  TYPE_2__ lsm1_vtab ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int sqlite3_vtab_cursor ;
+typedef int sqlite3_value ;
+typedef int sqlite3_uint64 ;
+typedef int sqlite3_int64 ;
+struct TYPE_5__ {int keyType; } ;
+typedef TYPE_2__ lsm1_vtab ;
 struct TYPE_4__ {scalar_t__ pVtab; } ;
-struct TYPE_6__ {int atEof; scalar_t__ pKey2; int isDesc; int bUnique; int /*<<< orphan*/  pLsmCur; int /*<<< orphan*/  nKey2; TYPE_1__ base; } ;
-typedef  TYPE_3__ lsm1_cursor ;
+struct TYPE_6__ {int atEof; scalar_t__ pKey2; int isDesc; int bUnique; int pLsmCur; int nKey2; TYPE_1__ base; } ;
+typedef TYPE_3__ lsm1_cursor ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int LSM_SEEK_EQ ; 
- int LSM_SEEK_GE ; 
- int LSM_SEEK_LE ; 
- int /*<<< orphan*/  SQLITE_BLOB ; 
- int SQLITE_ERROR ; 
- int /*<<< orphan*/  SQLITE_INTEGER ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  lsm1KeyFromValue (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int*) ; 
- int /*<<< orphan*/  lsm1PutVarint64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int lsm_csr_first (int /*<<< orphan*/ ) ; 
- int lsm_csr_seek (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int,int) ; 
- scalar_t__ lsm_csr_valid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_free (scalar_t__) ; 
- void* sqlite3_malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * sqlite3_value_blob (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_value_int64 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+ int LSM_OK ;
+ int LSM_SEEK_EQ ;
+ int LSM_SEEK_GE ;
+ int LSM_SEEK_LE ;
+ int SQLITE_BLOB ;
+ int SQLITE_ERROR ;
+ int SQLITE_INTEGER ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int lsm1KeyFromValue (int ,int *,int *,int const**,int*) ;
+ int lsm1PutVarint64 (int *,int ) ;
+ int lsm_csr_first (int ) ;
+ int lsm_csr_seek (int ,int const*,int,int) ;
+ scalar_t__ lsm_csr_valid (int ) ;
+ int memcpy (scalar_t__,int *,int ) ;
+ int sqlite3_free (scalar_t__) ;
+ void* sqlite3_malloc (int ) ;
+ int * sqlite3_value_blob (int *) ;
+ int sqlite3_value_bytes (int *) ;
+ int sqlite3_value_int64 (int *) ;
+ int * sqlite3_value_text (int *) ;
 
 __attribute__((used)) static int lsm1Filter(
-  sqlite3_vtab_cursor *pVtabCursor, 
+  sqlite3_vtab_cursor *pVtabCursor,
   int idxNum, const char *idxStr,
   int argc, sqlite3_value **argv
 ){
@@ -69,14 +69,14 @@ __attribute__((used)) static int lsm1Filter(
     lsm1KeyFromValue(keyType, argv[0], aKey1, &pVal, &nVal);
   }
   switch( idxNum ){
-    case 0: {   /* key==argv[0] */
+    case 0: {
       assert( argc==1 );
       seekType = LSM_SEEK_EQ;
       pCur->isDesc = 0;
       pCur->bUnique = 1;
       break;
     }
-    case 1: {  /* key>=argv[0] AND key<=argv[1] */
+    case 1: {
       u8 aKey[12];
       seekType = LSM_SEEK_GE;
       pCur->isDesc = 0;
@@ -100,19 +100,19 @@ __attribute__((used)) static int lsm1Filter(
       }
       break;
     }
-    case 2: {  /* key>=argv[0] */
+    case 2: {
       seekType = LSM_SEEK_GE;
       pCur->isDesc = 0;
       pCur->bUnique = 0;
       break;
     }
-    case 3: {  /* key<=argv[0] */
+    case 3: {
       seekType = LSM_SEEK_LE;
       pCur->isDesc = 1;
       pCur->bUnique = 0;
       break;
     }
-    default: { /* full table scan */
+    default: {
       pCur->isDesc = 0;
       pCur->bUnique = 0;
       break;

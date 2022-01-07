@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  attrs; } ;
-typedef  TYPE_1__ typelib_t ;
-struct TYPE_7__ {char* name; int /*<<< orphan*/  attrs; } ;
-typedef  TYPE_2__ type_t ;
-typedef  int /*<<< orphan*/  UUID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATTR_HELPSTRING ; 
- int /*<<< orphan*/  ATTR_PROGID ; 
- int /*<<< orphan*/  ATTR_UUID ; 
- int /*<<< orphan*/  ATTR_VERSION ; 
- int /*<<< orphan*/  ATTR_VIPROGID ; 
- int /*<<< orphan*/  MAJORVERSION (unsigned int) ; 
- int /*<<< orphan*/  MINORVERSION (unsigned int) ; 
- int /*<<< orphan*/  format_uuid (int /*<<< orphan*/  const*) ; 
- void* get_attrp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned int get_attrv (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* get_coclass_threading (TYPE_2__ const*) ; 
- int /*<<< orphan*/  indent ; 
- int /*<<< orphan*/  put_str (int /*<<< orphan*/ ,char*,...) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int attrs; } ;
+typedef TYPE_1__ typelib_t ;
+struct TYPE_7__ {char* name; int attrs; } ;
+typedef TYPE_2__ type_t ;
+typedef int UUID ;
+
+
+ int ATTR_HELPSTRING ;
+ int ATTR_PROGID ;
+ int ATTR_UUID ;
+ int ATTR_VERSION ;
+ int ATTR_VIPROGID ;
+ int MAJORVERSION (unsigned int) ;
+ int MINORVERSION (unsigned int) ;
+ int format_uuid (int const*) ;
+ void* get_attrp (int ,int ) ;
+ unsigned int get_attrv (int ,int ) ;
+ char* get_coclass_threading (TYPE_2__ const*) ;
+ int indent ;
+ int put_str (int ,char*,...) ;
 
 __attribute__((used)) static int write_coclass( const type_t *class, const typelib_t *typelib )
 {

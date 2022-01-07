@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ble_npl_eventq {struct ble_npl_event* head; struct ble_npl_eventq* nextq; } ;
-struct ble_npl_event {int /*<<< orphan*/  (* fn ) (struct ble_npl_event*) ;int /*<<< orphan*/ * prev; struct ble_npl_event* next; } ;
+struct ble_npl_event {int (* fn ) (struct ble_npl_event*) ;int * prev; struct ble_npl_event* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG_EVENT_printf (char*,struct ble_npl_event*) ; 
- struct ble_npl_eventq* global_eventq ; 
- int /*<<< orphan*/  stub1 (struct ble_npl_event*) ; 
+
+ int DEBUG_EVENT_printf (char*,struct ble_npl_event*) ;
+ struct ble_npl_eventq* global_eventq ;
+ int stub1 (struct ble_npl_event*) ;
 
 void os_eventq_run_all(void) {
-    for (struct ble_npl_eventq *evq = global_eventq; evq != NULL; evq = evq->nextq) {
-        while (evq->head != NULL) {
+    for (struct ble_npl_eventq *evq = global_eventq; evq != ((void*)0); evq = evq->nextq) {
+        while (evq->head != ((void*)0)) {
             struct ble_npl_event *ev = evq->head;
             evq->head = ev->next;
             if (ev->next) {
-                ev->next->prev = NULL;
-                ev->next = NULL;
+                ev->next->prev = ((void*)0);
+                ev->next = ((void*)0);
             }
-            ev->prev = NULL;
+            ev->prev = ((void*)0);
             DEBUG_EVENT_printf("event_run(%p)\n", ev);
             ev->fn(ev);
             DEBUG_EVENT_printf("event_run(%p) done\n", ev);

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void WCHAR ;
-typedef  int /*<<< orphan*/  ISAXAttributes ;
-typedef  int /*<<< orphan*/  IMXAttributes ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_SAXAttributes ; 
- int /*<<< orphan*/  CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  EXPECT_HR (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  E_POINTER ; 
- int /*<<< orphan*/  IID_IMXAttributes ; 
- int /*<<< orphan*/  IID_ISAXAttributes ; 
- int /*<<< orphan*/  IMXAttributes_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IMXAttributes_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMXAttributes_addAttribute (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IMXAttributes_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ISAXAttributes_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ISAXAttributes_getLength (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  ISAXAttributes_getQName (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void const**,int*) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  _bstr_ (char*) ; 
- int /*<<< orphan*/  free_bstrs () ; 
- int /*<<< orphan*/  lstrcmpW (void const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,void const*) ; 
- void const* wine_dbgstr_w (void const*) ; 
+
+
+
+typedef void WCHAR ;
+typedef int ISAXAttributes ;
+typedef int IMXAttributes ;
+typedef int HRESULT ;
+
+
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_SAXAttributes ;
+ int CoCreateInstance (int *,int *,int ,int *,void**) ;
+ int EXPECT_HR (int ,int ) ;
+ int E_INVALIDARG ;
+ int E_POINTER ;
+ int IID_IMXAttributes ;
+ int IID_ISAXAttributes ;
+ int IMXAttributes_QueryInterface (int *,int *,void**) ;
+ int IMXAttributes_Release (int *) ;
+ int IMXAttributes_addAttribute (int *,int ,int ,int ,int ,int ) ;
+ int IMXAttributes_clear (int *) ;
+ int ISAXAttributes_Release (int *) ;
+ int ISAXAttributes_getLength (int *,int*) ;
+ int ISAXAttributes_getQName (int *,int ,void const**,int*) ;
+ int S_OK ;
+ int _bstr_ (char*) ;
+ int free_bstrs () ;
+ int lstrcmpW (void const*,int ) ;
+ int ok (int,char*,void const*) ;
+ void const* wine_dbgstr_w (void const*) ;
 
 __attribute__((used)) static void test_mxattr_clear(void)
 {
@@ -46,14 +46,14 @@ __attribute__((used)) static void test_mxattr_clear(void)
     HRESULT hr;
     int len;
 
-    hr = CoCreateInstance(&CLSID_SAXAttributes, NULL, CLSCTX_INPROC_SERVER,
+    hr = CoCreateInstance(&CLSID_SAXAttributes, ((void*)0), CLSCTX_INPROC_SERVER,
         &IID_IMXAttributes, (void**)&mxattr);
     EXPECT_HR(hr, S_OK);
 
     hr = IMXAttributes_QueryInterface(mxattr, &IID_ISAXAttributes, (void**)&saxattr);
     EXPECT_HR(hr, S_OK);
 
-    hr = ISAXAttributes_getQName(saxattr, 0, NULL, NULL);
+    hr = ISAXAttributes_getQName(saxattr, 0, ((void*)0), ((void*)0));
     EXPECT_HR(hr, E_INVALIDARG);
 
     hr = ISAXAttributes_getQName(saxattr, 0, &ptr, &len);
@@ -72,12 +72,12 @@ __attribute__((used)) static void test_mxattr_clear(void)
     ok(len == 1, "got %d\n", len);
 
     len = -1;
-    hr = ISAXAttributes_getQName(saxattr, 0, NULL, &len);
+    hr = ISAXAttributes_getQName(saxattr, 0, ((void*)0), &len);
     EXPECT_HR(hr, E_POINTER);
     ok(len == -1, "got %d\n", len);
 
     ptr = (void*)0xdeadbeef;
-    hr = ISAXAttributes_getQName(saxattr, 0, &ptr, NULL);
+    hr = ISAXAttributes_getQName(saxattr, 0, &ptr, ((void*)0));
     EXPECT_HR(hr, E_POINTER);
     ok(ptr == (void*)0xdeadbeef, "got %p\n", ptr);
 

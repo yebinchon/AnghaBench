@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  debugfs_create_dir (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mlx5_debugfs_root ; 
+ int debugfs_create_dir (char*,int *) ;
+ int mlx5_debugfs_root ;
 
 void mlx5_register_debugfs(void)
 {
-	mlx5_debugfs_root = debugfs_create_dir("mlx5", NULL);
+ mlx5_debugfs_root = debugfs_create_dir("mlx5", ((void*)0));
 }

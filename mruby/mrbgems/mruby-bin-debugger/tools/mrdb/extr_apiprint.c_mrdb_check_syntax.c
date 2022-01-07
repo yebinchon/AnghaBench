@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  lineno; void* capture_errors; void* no_exec; } ;
-typedef  TYPE_1__ mrbc_context ;
-typedef  int /*<<< orphan*/  mrb_state ;
-struct TYPE_9__ {int /*<<< orphan*/  prvline; scalar_t__ prvfile; } ;
-typedef  TYPE_2__ mrb_debug_context ;
 
-/* Variables and functions */
- void* TRUE ; 
- int /*<<< orphan*/  mrb_load_nstring_cxt (int /*<<< orphan*/ *,char const*,size_t,TYPE_1__*) ; 
- int /*<<< orphan*/  mrbc_context_free (int /*<<< orphan*/ *,TYPE_1__*) ; 
- TYPE_1__* mrbc_context_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrbc_filename (int /*<<< orphan*/ *,TYPE_1__*,char const*) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int lineno; void* capture_errors; void* no_exec; } ;
+typedef TYPE_1__ mrbc_context ;
+typedef int mrb_state ;
+struct TYPE_9__ {int prvline; scalar_t__ prvfile; } ;
+typedef TYPE_2__ mrb_debug_context ;
+
+
+ void* TRUE ;
+ int mrb_load_nstring_cxt (int *,char const*,size_t,TYPE_1__*) ;
+ int mrbc_context_free (int *,TYPE_1__*) ;
+ TYPE_1__* mrbc_context_new (int *) ;
+ int mrbc_filename (int *,TYPE_1__*,char const*) ;
 
 __attribute__((used)) static void
 mrdb_check_syntax(mrb_state *mrb, mrb_debug_context *dbg, const char *expr, size_t len)
@@ -36,7 +36,7 @@ mrdb_check_syntax(mrb_state *mrb, mrb_debug_context *dbg, const char *expr, size
   mrbc_filename(mrb, c, (const char*)dbg->prvfile);
   c->lineno = dbg->prvline;
 
-  /* Load program */
+
   mrb_load_nstring_cxt(mrb, expr, len, c);
 
   mrbc_context_free(mrb, c);

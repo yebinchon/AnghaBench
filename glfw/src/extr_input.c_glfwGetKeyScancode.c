@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_INVALID_ENUM ; 
- int GLFW_KEY_LAST ; 
- int GLFW_KEY_SPACE ; 
- int GLFW_RELEASE ; 
- int /*<<< orphan*/  _GLFW_REQUIRE_INIT_OR_RETURN (int) ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*,int) ; 
- int _glfwPlatformGetKeyScancode (int) ; 
+ int GLFW_INVALID_ENUM ;
+ int GLFW_KEY_LAST ;
+ int GLFW_KEY_SPACE ;
+ int GLFW_RELEASE ;
+ int _GLFW_REQUIRE_INIT_OR_RETURN (int) ;
+ int _glfwInputError (int ,char*,int) ;
+ int _glfwPlatformGetKeyScancode (int) ;
 
 int glfwGetKeyScancode(int key)
 {

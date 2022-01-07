@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_15__ {scalar_t__ decoding; } ;
 struct TYPE_13__ {char content_length; scalar_t__ content_read; } ;
-struct TYPE_17__ {scalar_t__ status_code; char contentLength; int /*<<< orphan*/  headers_section; TYPE_4__* custHeaders; TYPE_3__ hdr; TYPE_2__* data_stream; scalar_t__ read_pos; scalar_t__ read_size; scalar_t__ read_buf; TYPE_1__ netconn_stream; int /*<<< orphan*/  verb; } ;
-typedef  TYPE_5__ http_request_t ;
-typedef  int /*<<< orphan*/  encoding ;
-struct TYPE_14__ {int /*<<< orphan*/ * vtbl; } ;
-struct TYPE_18__ {TYPE_2__ data_stream; scalar_t__ buf_size; int /*<<< orphan*/  buf; int /*<<< orphan*/  state; scalar_t__ chunk_size; scalar_t__ buf_pos; } ;
-typedef  TYPE_6__ chunked_stream_t ;
-typedef  char WCHAR ;
+struct TYPE_17__ {scalar_t__ status_code; char contentLength; int headers_section; TYPE_4__* custHeaders; TYPE_3__ hdr; TYPE_2__* data_stream; scalar_t__ read_pos; scalar_t__ read_size; scalar_t__ read_buf; TYPE_1__ netconn_stream; int verb; } ;
+typedef TYPE_5__ http_request_t ;
+typedef int encoding ;
+struct TYPE_14__ {int * vtbl; } ;
+struct TYPE_18__ {TYPE_2__ data_stream; scalar_t__ buf_size; int buf; int state; scalar_t__ chunk_size; scalar_t__ buf_pos; } ;
+typedef TYPE_6__ chunked_stream_t ;
+typedef char WCHAR ;
 struct TYPE_16__ {char* lpszValue; } ;
-typedef  scalar_t__ DWORD ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHUNKED_STREAM_STATE_READING_CHUNK_SIZE ; 
- scalar_t__ ERROR_OUTOFMEMORY ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  HTTP_DeleteCustomHeader (TYPE_5__*,int) ; 
- int HTTP_GetCustomHeaderIndex (TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ HTTP_HttpQueryInfoW (TYPE_5__*,int,char*,scalar_t__*,int /*<<< orphan*/ *) ; 
- int HTTP_QUERY_CONTENT_LENGTH ; 
- int HTTP_QUERY_FLAG_NUMBER ; 
- int HTTP_QUERY_TRANSFER_ENCODING ; 
- scalar_t__ HTTP_STATUS_NO_CONTENT ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  chunked_stream_vtbl ; 
- TYPE_6__* heap_alloc (int) ; 
- scalar_t__ init_gzip_stream (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  strcmpW (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  strcmpiW (char*,char const*) ; 
- int /*<<< orphan*/  szContent_Encoding ; 
+
+ int CHUNKED_STREAM_STATE_READING_CHUNK_SIZE ;
+ scalar_t__ ERROR_OUTOFMEMORY ;
+ scalar_t__ ERROR_SUCCESS ;
+ int EnterCriticalSection (int *) ;
+ int FALSE ;
+ int HTTP_DeleteCustomHeader (TYPE_5__*,int) ;
+ int HTTP_GetCustomHeaderIndex (TYPE_5__*,int ,int ,int ) ;
+ scalar_t__ HTTP_HttpQueryInfoW (TYPE_5__*,int,char*,scalar_t__*,int *) ;
+ int HTTP_QUERY_CONTENT_LENGTH ;
+ int HTTP_QUERY_FLAG_NUMBER ;
+ int HTTP_QUERY_TRANSFER_ENCODING ;
+ scalar_t__ HTTP_STATUS_NO_CONTENT ;
+ int LeaveCriticalSection (int *) ;
+ int TRUE ;
+ int chunked_stream_vtbl ;
+ TYPE_6__* heap_alloc (int) ;
+ scalar_t__ init_gzip_stream (TYPE_5__*,int ) ;
+ int memcpy (int ,scalar_t__,scalar_t__) ;
+ int strcmpW (int ,char const*) ;
+ int strcmpiW (char*,char const*) ;
+ int szContent_Encoding ;
 
 __attribute__((used)) static DWORD set_content_length(http_request_t *request)
 {
@@ -65,13 +65,13 @@ __attribute__((used)) static DWORD set_content_length(http_request_t *request)
 
     size = sizeof(request->contentLength);
     if (HTTP_HttpQueryInfoW(request, HTTP_QUERY_FLAG_NUMBER|HTTP_QUERY_CONTENT_LENGTH,
-                            &request->contentLength, &size, NULL) != ERROR_SUCCESS)
+                            &request->contentLength, &size, ((void*)0)) != ERROR_SUCCESS)
         request->contentLength = ~0u;
     request->netconn_stream.content_length = request->contentLength;
     request->netconn_stream.content_read = request->read_size;
 
     size = sizeof(encoding);
-    if (HTTP_HttpQueryInfoW(request, HTTP_QUERY_TRANSFER_ENCODING, encoding, &size, NULL) == ERROR_SUCCESS &&
+    if (HTTP_HttpQueryInfoW(request, HTTP_QUERY_TRANSFER_ENCODING, encoding, &size, ((void*)0)) == ERROR_SUCCESS &&
         !strcmpiW(encoding, szChunked))
     {
         chunked_stream_t *chunked_stream;

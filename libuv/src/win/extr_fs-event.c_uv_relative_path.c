@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_OUTOFMEMORY ; 
- int /*<<< orphan*/  _wcsnicmp (char const*,char const*,size_t) ; 
- int /*<<< orphan*/  assert (int) ; 
- char* uv__malloc (size_t) ; 
- int /*<<< orphan*/  uv_fatal_error (int /*<<< orphan*/ ,char*) ; 
- size_t wcslen (char const*) ; 
- int /*<<< orphan*/  wcsncpy (char*,char const*,size_t) ; 
+
+
+
+typedef char WCHAR ;
+
+
+ int ERROR_OUTOFMEMORY ;
+ int _wcsnicmp (char const*,char const*,size_t) ;
+ int assert (int) ;
+ char* uv__malloc (size_t) ;
+ int uv_fatal_error (int ,char*) ;
+ size_t wcslen (char const*) ;
+ int wcsncpy (char*,char const*,size_t) ;
 
 __attribute__((used)) static void uv_relative_path(const WCHAR* filename,
                              const WCHAR* dir,

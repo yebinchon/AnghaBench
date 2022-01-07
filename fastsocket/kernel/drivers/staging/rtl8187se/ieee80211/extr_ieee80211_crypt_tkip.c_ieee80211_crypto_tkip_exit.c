@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ieee80211_crypt_tkip ; 
- int /*<<< orphan*/  ieee80211_unregister_crypto_ops (int /*<<< orphan*/ *) ; 
+ int ieee80211_crypt_tkip ;
+ int ieee80211_unregister_crypto_ops (int *) ;
 
 void ieee80211_crypto_tkip_exit(void)
 {
-	ieee80211_unregister_crypto_ops(&ieee80211_crypt_tkip);
+ ieee80211_unregister_crypto_ops(&ieee80211_crypt_tkip);
 }

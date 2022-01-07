@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {TYPE_1__* package; struct TYPE_6__* target; struct TYPE_6__* source; struct TYPE_6__* action; scalar_t__ handle; int /*<<< orphan*/  entry; int /*<<< orphan*/  refs; } ;
-typedef  TYPE_2__ msi_custom_action_info ;
-struct TYPE_5__ {int /*<<< orphan*/  hdr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_remove (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msi_custom_action_cs ; 
- int /*<<< orphan*/  msi_free (TYPE_2__*) ; 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {TYPE_1__* package; struct TYPE_6__* target; struct TYPE_6__* source; struct TYPE_6__* action; scalar_t__ handle; int entry; int refs; } ;
+typedef TYPE_2__ msi_custom_action_info ;
+struct TYPE_5__ {int hdr; } ;
+
+
+ int CloseHandle (scalar_t__) ;
+ int EnterCriticalSection (int *) ;
+ int LeaveCriticalSection (int *) ;
+ int list_remove (int *) ;
+ int msi_custom_action_cs ;
+ int msi_free (TYPE_2__*) ;
+ int msiobj_release (int *) ;
 
 __attribute__((used)) static void release_custom_action_data( msi_custom_action_info *info )
 {

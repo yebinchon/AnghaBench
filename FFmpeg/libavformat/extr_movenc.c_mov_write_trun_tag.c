@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_6__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  int64_t ;
+
+
+typedef struct TYPE_10__ TYPE_6__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int int64_t ;
 struct TYPE_10__ {int size; int pos; int cts; } ;
 struct TYPE_9__ {int flags; scalar_t__ first_trun; } ;
 struct TYPE_8__ {int default_duration; int default_size; int default_sample_flags; scalar_t__ entry; int flags; int data_offset; TYPE_6__* cluster; } ;
-typedef  TYPE_1__ MOVTrack ;
-typedef  TYPE_2__ MOVMuxContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
+typedef TYPE_1__ MOVTrack ;
+typedef TYPE_2__ MOVMuxContext ;
+typedef int AVIOContext ;
 
-/* Variables and functions */
- int FF_MOV_FLAG_DEFAULT_BASE_MOOF ; 
- int FF_MOV_FLAG_NEGATIVE_CTS_OFFSETS ; 
- int FF_MOV_FLAG_OMIT_TFHD_OFFSET ; 
- int MOV_TRACK_CTTS ; 
- int MOV_TRUN_DATA_OFFSET ; 
- int MOV_TRUN_FIRST_SAMPLE_FLAGS ; 
- int MOV_TRUN_SAMPLE_CTS ; 
- int MOV_TRUN_SAMPLE_DURATION ; 
- int MOV_TRUN_SAMPLE_FLAGS ; 
- int MOV_TRUN_SAMPLE_SIZE ; 
- int /*<<< orphan*/  avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_w8 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wb24 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wb32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ffio_wfourcc (int /*<<< orphan*/ *,char*) ; 
- int get_cluster_duration (TYPE_1__*,int) ; 
- int get_sample_flags (TYPE_1__*,TYPE_6__*) ; 
- int update_size (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int FF_MOV_FLAG_DEFAULT_BASE_MOOF ;
+ int FF_MOV_FLAG_NEGATIVE_CTS_OFFSETS ;
+ int FF_MOV_FLAG_OMIT_TFHD_OFFSET ;
+ int MOV_TRACK_CTTS ;
+ int MOV_TRUN_DATA_OFFSET ;
+ int MOV_TRUN_FIRST_SAMPLE_FLAGS ;
+ int MOV_TRUN_SAMPLE_CTS ;
+ int MOV_TRUN_SAMPLE_DURATION ;
+ int MOV_TRUN_SAMPLE_FLAGS ;
+ int MOV_TRUN_SAMPLE_SIZE ;
+ int avio_tell (int *) ;
+ int avio_w8 (int *,int) ;
+ int avio_wb24 (int *,int) ;
+ int avio_wb32 (int *,int) ;
+ int ffio_wfourcc (int *,char*) ;
+ int get_cluster_duration (TYPE_1__*,int) ;
+ int get_sample_flags (TYPE_1__*,TYPE_6__*) ;
+ int update_size (int *,int ) ;
 
 __attribute__((used)) static int mov_write_trun_tag(AVIOContext *pb, MOVMuxContext *mov,
                               MOVTrack *track, int moof_size,
@@ -64,22 +64,22 @@ __attribute__((used)) static int mov_write_trun_tag(AVIOContext *pb, MOVMuxConte
     if (track->flags & MOV_TRACK_CTTS)
         flags |= MOV_TRUN_SAMPLE_CTS;
 
-    avio_wb32(pb, 0); /* size placeholder */
+    avio_wb32(pb, 0);
     ffio_wfourcc(pb, "trun");
     if (mov->flags & FF_MOV_FLAG_NEGATIVE_CTS_OFFSETS)
-        avio_w8(pb, 1); /* version */
+        avio_w8(pb, 1);
     else
-        avio_w8(pb, 0); /* version */
+        avio_w8(pb, 0);
     avio_wb24(pb, flags);
 
-    avio_wb32(pb, end - first); /* sample count */
+    avio_wb32(pb, end - first);
     if (mov->flags & FF_MOV_FLAG_OMIT_TFHD_OFFSET &&
         !(mov->flags & FF_MOV_FLAG_DEFAULT_BASE_MOOF) &&
         !mov->first_trun)
-        avio_wb32(pb, 0); /* Later tracks follow immediately after the previous one */
+        avio_wb32(pb, 0);
     else
         avio_wb32(pb, moof_size + 8 + track->data_offset +
-                      track->cluster[first].pos); /* data offset */
+                      track->cluster[first].pos);
     if (flags & MOV_TRUN_FIRST_SAMPLE_FLAGS)
         avio_wb32(pb, get_sample_flags(track, &track->cluster[first]));
 

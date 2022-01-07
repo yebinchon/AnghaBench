@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct i387_fxsave {unsigned long fioff; unsigned long fooff; unsigned long mxcsr; unsigned long fop; int /*<<< orphan*/  foseg; int /*<<< orphan*/  fiseg; int /*<<< orphan*/  ftag; int /*<<< orphan*/  fstat; int /*<<< orphan*/  fctrl; int /*<<< orphan*/ * xmm_space; int /*<<< orphan*/ * st_space; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  collect_register (int,char*) ; 
- int /*<<< orphan*/  collect_register_by_name (char*,unsigned long*) ; 
- int find_regno (char*) ; 
- int num_xmm_registers ; 
+
+
+
+struct i387_fxsave {unsigned long fioff; unsigned long fooff; unsigned long mxcsr; unsigned long fop; int foseg; int fiseg; int ftag; int fstat; int fctrl; int * xmm_space; int * st_space; } ;
+
+
+ int collect_register (int,char*) ;
+ int collect_register_by_name (char*,unsigned long*) ;
+ int find_regno (char*) ;
+ int num_xmm_registers ;
 
 void
 i387_cache_to_fxsave (void *buf)
@@ -35,12 +35,12 @@ i387_cache_to_fxsave (void *buf)
   collect_register_by_name ("fioff", &fp->fioff);
   collect_register_by_name ("fooff", &fp->fooff);
   collect_register_by_name ("mxcsr", &fp->mxcsr);
-  
-  /* This one's 11 bits... */
+
+
   collect_register_by_name ("fop", &val2);
   fp->fop = (val2 & 0x7FF) | (fp->fop & 0xF800);
 
-  /* Some registers are 16-bit.  */
+
   collect_register_by_name ("fctrl", &val);
   *(unsigned short *) &fp->fctrl = val;
 
@@ -48,7 +48,7 @@ i387_cache_to_fxsave (void *buf)
   val &= 0xFFFF;
   *(unsigned short *) &fp->fstat = val;
 
-  /* Convert to the simplifed tag form stored in fxsave data.  */
+
   collect_register_by_name ("ftag", &val);
   val &= 0xFFFF;
   for (i = 7; i >= 0; i--)
@@ -56,7 +56,7 @@ i387_cache_to_fxsave (void *buf)
       int tag = (val >> (i * 2)) & 3;
 
       if (tag != 3)
-	val2 |= (1 << i);
+ val2 |= (1 << i);
     }
   *(unsigned short *) &fp->ftag = val2;
 

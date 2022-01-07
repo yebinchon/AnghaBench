@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct vlc_demux_private {int /*<<< orphan*/ * module; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * out; int /*<<< orphan*/ * psz_filepath; int /*<<< orphan*/ * psz_location; int /*<<< orphan*/ * psz_url; int /*<<< orphan*/ * psz_name; int /*<<< orphan*/ * p_sys; int /*<<< orphan*/ * p_input_item; struct TYPE_9__* p_next; } ;
-typedef  TYPE_1__ demux_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLC_OBJECT (TYPE_1__*) ; 
- int /*<<< orphan*/  demux_DestroyDemux ; 
- int /*<<< orphan*/ * module_need (TYPE_1__*,char*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stream_CommonDelete (TYPE_1__*) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- TYPE_1__* vlc_stream_CustomNew (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*) ; 
- struct vlc_demux_private* vlc_stream_Private (TYPE_1__*) ; 
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct vlc_demux_private {int * module; } ;
+struct TYPE_9__ {int * out; int * psz_filepath; int * psz_location; int * psz_url; int * psz_name; int * p_sys; int * p_input_item; struct TYPE_9__* p_next; } ;
+typedef TYPE_1__ demux_t ;
+
+
+ int VLC_OBJECT (TYPE_1__*) ;
+ int demux_DestroyDemux ;
+ int * module_need (TYPE_1__*,char*,char const*,int ) ;
+ int stream_CommonDelete (TYPE_1__*) ;
+ scalar_t__ unlikely (int ) ;
+ TYPE_1__* vlc_stream_CustomNew (int ,int ,int,char*) ;
+ struct vlc_demux_private* vlc_stream_Private (TYPE_1__*) ;
 
 __attribute__((used)) static demux_t *demux_FilterNew( demux_t *p_next, const char *p_name )
 {
@@ -30,26 +30,26 @@ __attribute__((used)) static demux_t *demux_FilterNew( demux_t *p_next, const ch
     demux_t *p_demux = vlc_stream_CustomNew(VLC_OBJECT(p_next),
                                             demux_DestroyDemux, sizeof (*priv),
                                             "demux filter");
-    if (unlikely(p_demux == NULL))
-        return NULL;
+    if (unlikely(p_demux == ((void*)0)))
+        return ((void*)0);
 
     priv = vlc_stream_Private(p_demux);
-    p_demux->p_next       = p_next;
-    p_demux->p_input_item = NULL;
-    p_demux->p_sys        = NULL;
-    p_demux->psz_name     = NULL;
-    p_demux->psz_url      = NULL;
-    p_demux->psz_location = NULL;
-    p_demux->psz_filepath = NULL;
-    p_demux->out          = NULL;
+    p_demux->p_next = p_next;
+    p_demux->p_input_item = ((void*)0);
+    p_demux->p_sys = ((void*)0);
+    p_demux->psz_name = ((void*)0);
+    p_demux->psz_url = ((void*)0);
+    p_demux->psz_location = ((void*)0);
+    p_demux->psz_filepath = ((void*)0);
+    p_demux->out = ((void*)0);
 
     priv->module = module_need(p_demux, "demux_filter", p_name,
-                               p_name != NULL);
-    if (priv->module == NULL)
+                               p_name != ((void*)0));
+    if (priv->module == ((void*)0))
         goto error;
 
     return p_demux;
 error:
     stream_CommonDelete( p_demux );
-    return NULL;
+    return ((void*)0);
 }

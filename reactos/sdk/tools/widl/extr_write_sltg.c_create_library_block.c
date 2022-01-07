@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int helpcontext; int version; int /*<<< orphan*/  uuid; int /*<<< orphan*/  libflags; int /*<<< orphan*/  lcid; int /*<<< orphan*/  syskind; int /*<<< orphan*/  helpfile; int /*<<< orphan*/  helpstring; int /*<<< orphan*/  name; } ;
-struct sltg_typelib {int /*<<< orphan*/  index; TYPE_1__ library; } ;
-typedef  int /*<<< orphan*/  GUID ;
 
-/* Variables and functions */
- int add_index (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  strcpy (char*,int /*<<< orphan*/ ) ; 
- short strlen (int /*<<< orphan*/ ) ; 
- void* xmalloc (int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int helpcontext; int version; int uuid; int libflags; int lcid; int syskind; int helpfile; int helpstring; int name; } ;
+struct sltg_typelib {int index; TYPE_1__ library; } ;
+typedef int GUID ;
+
+
+ int add_index (int *,char*) ;
+ int strcpy (char*,int ) ;
+ short strlen (int ) ;
+ void* xmalloc (int) ;
 
 __attribute__((used)) static void *create_library_block(struct sltg_typelib *typelib, int *size, int *index)
 {
@@ -32,10 +32,10 @@ __attribute__((used)) static void *create_library_block(struct sltg_typelib *typ
 
     block = xmalloc(*size);
     p = block;
-    *p++ = 0x51cc; /* magic */
-    *p++ = 3; /* res02 */
+    *p++ = 0x51cc;
+    *p++ = 3;
     *p++ = typelib->library.name;
-    *p++ = 0xffff; /* res06 */
+    *p++ = 0xffff;
     if (typelib->library.helpstring)
     {
         *p++ = strlen(typelib->library.helpstring);
@@ -56,7 +56,7 @@ __attribute__((used)) static void *create_library_block(struct sltg_typelib *typ
     p += 2;
     *p++ = typelib->library.syskind;
     *p++ = typelib->library.lcid;
-    *(int *)p = 0; /* res12 */
+    *(int *)p = 0;
     p += 2;
     *p++ = typelib->library.libflags;
     *(int *)p = typelib->library.version;

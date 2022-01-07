@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct stream {int dummy; } ;
 struct mpv_global {int dummy; } ;
 struct mp_cancel {int dummy; } ;
 struct TYPE_2__ {scalar_t__ len; } ;
-struct demuxer_params {int stream_flags; int demuxer_failed; struct stream* external_stream; TYPE_1__ init_fragment; int /*<<< orphan*/  member_0; } ;
-struct demuxer {int /*<<< orphan*/  cancel; int /*<<< orphan*/  in; } ;
+struct demuxer_params {int stream_flags; int demuxer_failed; struct stream* external_stream; TYPE_1__ init_fragment; int member_0; } ;
+struct demuxer {int cancel; int in; } ;
 
-/* Variables and functions */
- int STREAM_READ ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- struct stream* create_webshit_concat_stream (struct mpv_global*,struct mp_cancel*,TYPE_1__,struct stream*) ; 
- struct demuxer* demux_open (struct stream*,struct mp_cancel*,struct demuxer_params*,struct mpv_global*) ; 
- int /*<<< orphan*/  free_stream (struct stream*) ; 
- struct mp_cancel* mp_cancel_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_cancel_set_parent (struct mp_cancel*,struct mp_cancel*) ; 
- struct stream* stream_create (char const*,int,struct mp_cancel*,struct mpv_global*) ; 
- int /*<<< orphan*/  talloc_free (struct mp_cancel*) ; 
- int /*<<< orphan*/  talloc_steal (int /*<<< orphan*/ ,struct mp_cancel*) ; 
+
+ int STREAM_READ ;
+ int assert (int ) ;
+ struct stream* create_webshit_concat_stream (struct mpv_global*,struct mp_cancel*,TYPE_1__,struct stream*) ;
+ struct demuxer* demux_open (struct stream*,struct mp_cancel*,struct demuxer_params*,struct mpv_global*) ;
+ int free_stream (struct stream*) ;
+ struct mp_cancel* mp_cancel_new (int *) ;
+ int mp_cancel_set_parent (struct mp_cancel*,struct mp_cancel*) ;
+ struct stream* stream_create (char const*,int,struct mp_cancel*,struct mpv_global*) ;
+ int talloc_free (struct mp_cancel*) ;
+ int talloc_steal (int ,struct mp_cancel*) ;
 
 struct demuxer *demux_open_url(const char *url,
                                struct demuxer_params *params,
@@ -38,7 +38,7 @@ struct demuxer *demux_open_url(const char *url,
     struct demuxer_params dummy = {0};
     if (!params)
         params = &dummy;
-    struct mp_cancel *priv_cancel = mp_cancel_new(NULL);
+    struct mp_cancel *priv_cancel = mp_cancel_new(((void*)0));
     if (cancel)
         mp_cancel_set_parent(priv_cancel, cancel);
     struct stream *s = params->external_stream;
@@ -52,14 +52,14 @@ struct demuxer *demux_open_url(const char *url,
     }
     if (!s) {
         talloc_free(priv_cancel);
-        return NULL;
+        return ((void*)0);
     }
     struct demuxer *d = demux_open(s, priv_cancel, params, global);
     if (d) {
         talloc_steal(d->in, priv_cancel);
         assert(d->cancel);
     } else {
-        params->demuxer_failed = true;
+        params->demuxer_failed = 1;
         if (!params->external_stream)
             free_stream(s);
         talloc_free(priv_cancel);

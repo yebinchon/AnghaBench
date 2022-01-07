@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
 struct TYPE_8__ {TYPE_1__* priv_data; } ;
-struct TYPE_7__ {scalar_t__ last_sdt_ts; scalar_t__ sdt_period; scalar_t__ last_pat_ts; scalar_t__ pat_period; int nb_services; int /*<<< orphan*/ * services; } ;
-typedef  TYPE_1__ MpegTSWrite ;
-typedef  TYPE_2__ AVFormatContext ;
+struct TYPE_7__ {scalar_t__ last_sdt_ts; scalar_t__ sdt_period; scalar_t__ last_pat_ts; scalar_t__ pat_period; int nb_services; int * services; } ;
+typedef TYPE_1__ MpegTSWrite ;
+typedef TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- scalar_t__ AV_NOPTS_VALUE ; 
- void* FFMAX (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  mpegts_write_pat (TYPE_2__*) ; 
- int /*<<< orphan*/  mpegts_write_pmt (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpegts_write_sdt (TYPE_2__*) ; 
+
+ scalar_t__ AV_NOPTS_VALUE ;
+ void* FFMAX (scalar_t__,scalar_t__) ;
+ int mpegts_write_pat (TYPE_2__*) ;
+ int mpegts_write_pmt (TYPE_2__*,int ) ;
+ int mpegts_write_sdt (TYPE_2__*) ;
 
 __attribute__((used)) static void retransmit_si_info(AVFormatContext *s, int force_pat, int force_sdt, int64_t pcr)
 {

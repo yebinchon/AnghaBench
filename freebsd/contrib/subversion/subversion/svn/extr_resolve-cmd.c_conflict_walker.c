@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_client_conflict_t ;
-struct conflict_walker_baton {scalar_t__ quit; int /*<<< orphan*/  ctx; int /*<<< orphan*/  conflict_stats; int /*<<< orphan*/  pb; int /*<<< orphan*/  path_prefix; int /*<<< orphan*/  editor_cmd; int /*<<< orphan*/  accept_which; int /*<<< orphan*/  printed_summary; int /*<<< orphan*/  external_failed; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_CANCELLED ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  svn_cl__resolve_conflict (scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_error_t ;
+typedef int svn_client_conflict_t ;
+struct conflict_walker_baton {scalar_t__ quit; int ctx; int conflict_stats; int pb; int path_prefix; int editor_cmd; int accept_which; int printed_summary; int external_failed; } ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_CANCELLED ;
+ int * SVN_NO_ERROR ;
+ int svn_cl__resolve_conflict (scalar_t__*,int *,int *,int *,int ,int ,int ,int ,int ,int ,int *) ;
+ int * svn_error_create (int ,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 conflict_walker(void *baton, svn_client_conflict_t *conflict,
@@ -35,7 +35,7 @@ conflict_walker(void *baton, svn_client_conflict_t *conflict,
                                    cwb->conflict_stats,
                                    cwb->ctx, scratch_pool));
   if (cwb->quit)
-    return svn_error_create(SVN_ERR_CANCELLED, NULL, NULL);
+    return svn_error_create(SVN_ERR_CANCELLED, ((void*)0), ((void*)0));
 
   return SVN_NO_ERROR;
 }

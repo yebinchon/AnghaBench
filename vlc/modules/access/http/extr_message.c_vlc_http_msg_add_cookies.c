@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_http_cookie_jar_t ;
-struct vlc_http_msg {char* authority; int /*<<< orphan*/ * path; int /*<<< orphan*/ * scheme; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  strcasecmp (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  strcspn (char*,char*) ; 
- char* strndup (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- char* vlc_http_cookies_fetch (int /*<<< orphan*/ *,int,char*,int /*<<< orphan*/ *) ; 
- int vlc_http_msg_add_header (struct vlc_http_msg*,char*,char*,char*) ; 
+
+
+
+typedef int vlc_http_cookie_jar_t ;
+struct vlc_http_msg {char* authority; int * path; int * scheme; } ;
+
+
+ int EINVAL ;
+ int errno ;
+ int free (char*) ;
+ int strcasecmp (int *,char*) ;
+ int strcspn (char*,char*) ;
+ char* strndup (char*,int ) ;
+ scalar_t__ unlikely (int ) ;
+ char* vlc_http_cookies_fetch (int *,int,char*,int *) ;
+ int vlc_http_msg_add_header (struct vlc_http_msg*,char*,char*,char*) ;
 
 int vlc_http_msg_add_cookies(struct vlc_http_msg *m,
                              vlc_http_cookie_jar_t *jar)
@@ -31,33 +31,33 @@ int vlc_http_msg_add_cookies(struct vlc_http_msg *m,
     int val = 0;
     bool secure;
 
-    if (m->scheme == NULL || m->authority == NULL || m->path == NULL)
+    if (m->scheme == ((void*)0) || m->authority == ((void*)0) || m->path == ((void*)0))
     {
         errno = EINVAL;
         return -1;
     }
 
     if (!strcasecmp(m->scheme, "https"))
-        secure = true;
+        secure = 1;
     else if (!strcasecmp(m->scheme, "http"))
-        secure = false;
+        secure = 0;
     else
         return 0;
 
-    if (jar == NULL)
+    if (jar == ((void*)0))
         return 0;
 
     if (m->authority[0] == '[')
         host = strndup(m->authority + 1, strcspn(m->authority + 1, "]"));
     else
         host = strndup(m->authority, strcspn(m->authority, ":"));
-    if (unlikely(host == NULL))
+    if (unlikely(host == ((void*)0)))
         return -1;
 
     cookies = vlc_http_cookies_fetch(jar, secure, host, m->path);
     free(host);
 
-    if (cookies != NULL)
+    if (cookies != ((void*)0))
     {
         val = vlc_http_msg_add_header(m, "Cookie", "%s", cookies);
         free(cookies);

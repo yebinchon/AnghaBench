@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  szCommandFormat ;
-struct TYPE_9__ {int /*<<< orphan*/  hrServerError; } ;
+
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int szCommandFormat ;
+struct TYPE_9__ {int hrServerError; } ;
 struct TYPE_14__ {TYPE_1__ rIxpResult; } ;
 struct TYPE_11__ {size_t cAddress; TYPE_2__* prgAddress; } ;
 struct TYPE_12__ {TYPE_3__ rAddressList; } ;
-struct TYPE_13__ {size_t ulCurrentAddressIndex; int /*<<< orphan*/  InetTransport; TYPE_4__ pending_message; } ;
-struct TYPE_10__ {int addrtype; int /*<<< orphan*/  szEmail; } ;
-typedef  TYPE_5__ SMTPTransport ;
-typedef  TYPE_6__ SMTPRESPONSE ;
-typedef  int /*<<< orphan*/  IInternetTransport ;
-typedef  int /*<<< orphan*/  HRESULT ;
+struct TYPE_13__ {size_t ulCurrentAddressIndex; int InetTransport; TYPE_4__ pending_message; } ;
+struct TYPE_10__ {int addrtype; int szEmail; } ;
+typedef TYPE_5__ SMTPTransport ;
+typedef TYPE_6__ SMTPRESPONSE ;
+typedef int IInternetTransport ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int ADDR_TO ; 
- int ADDR_TOFROM_MASK ; 
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  InternetTransport_DoCommand (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SMTPTransport_CallbackMessageReadDataResponse ; 
- int /*<<< orphan*/  SMTPTransport_CallbackMessageReadToResponse ; 
- int /*<<< orphan*/  SMTPTransport_ParseResponse (TYPE_5__*,char*,TYPE_6__*) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  debugstr_a (char*) ; 
- int /*<<< orphan*/  sprintf (char*,char const*,int /*<<< orphan*/ ) ; 
- int strlen (int /*<<< orphan*/ ) ; 
+
+ int ADDR_TO ;
+ int ADDR_TOFROM_MASK ;
+ int ERR (char*,int ) ;
+ scalar_t__ FAILED (int ) ;
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,char*) ;
+ int InternetTransport_DoCommand (int *,char*,int ) ;
+ int SMTPTransport_CallbackMessageReadDataResponse ;
+ int SMTPTransport_CallbackMessageReadToResponse ;
+ int SMTPTransport_ParseResponse (TYPE_5__*,char*,TYPE_6__*) ;
+ int TRACE (char*,...) ;
+ int debugstr_a (char*) ;
+ int sprintf (char*,char const*,int ) ;
+ int strlen (int ) ;
 
 __attribute__((used)) static void SMTPTransport_CallbackMessageSendTo(IInternetTransport *iface, char *pBuffer, int cbBuffer)
 {
@@ -56,14 +56,14 @@ __attribute__((used)) static void SMTPTransport_CallbackMessageSendTo(IInternetT
     hr = SMTPTransport_ParseResponse(This, pBuffer, &response);
     if (FAILED(hr))
     {
-        /* FIXME: handle error */
+
         return;
     }
 
     if (FAILED(response.rIxpResult.hrServerError))
     {
         ERR("server error: %s\n", debugstr_a(pBuffer));
-        /* FIXME: handle error */
+
         return;
     }
 
@@ -76,7 +76,7 @@ __attribute__((used)) static void SMTPTransport_CallbackMessageSendTo(IInternetT
         {
             static const char szCommandFormat[] = "RCPT TO: <%s>\n";
             char *szCommand;
-            int len = sizeof(szCommandFormat) - 2 /* "%s" */ +
+            int len = sizeof(szCommandFormat) - 2 +
                 strlen(This->pending_message.rAddressList.prgAddress[This->ulCurrentAddressIndex].szEmail);
 
             szCommand = HeapAlloc(GetProcessHeap(), 0, len);

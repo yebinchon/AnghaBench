@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {char* maxconns; char* port; char* udpport; char* inter; char* verbose; char* socketpath; char* access; char* factor; char* chunk_size; char* num_threads; char* num_threads_per_udp; char* prefix_delimiter; char* reqs_per_event; char* backlog; char* auth_file; char* item_size_max; char* hashpower_init; char* slab_automove; char* slab_automove_ratio; char* slab_automove_window; char* slab_chunk_size_max; char* lru_crawler_sleep; char* tail_repair_time; char* hash_algorithm; char* hot_lru_pct; char* warm_lru_pct; char* hot_max_factor; char* warm_max_factor; char* temporary_ttl; char* idle_timeout; char* logger_watcher_buf_size; char* logger_buf_size; char* ext_item_size; char* ext_item_age; char* ext_low_ttl; char* ext_recache_rate; char* ext_wbuf_size; char* ext_compact_under; char* ext_drop_under; char* ext_max_frag; char* slab_automove_freeratio; char* ssl_chain_cert; char* ssl_key; char* ssl_verify_mode; char* ssl_keyformat; char* ssl_ciphers; char* ssl_ca_cert; char* ssl_wbuf_size; scalar_t__ ssl_enabled; scalar_t__ ext_drop_unread; scalar_t__ drop_privileges; scalar_t__ temp_lru; scalar_t__ lru_segmented; scalar_t__ lru_maintainer_thread; scalar_t__ dump_enabled; scalar_t__ flush_enabled; scalar_t__ lru_crawler_tocrawl; scalar_t__ lru_crawler; scalar_t__ slab_reassign; scalar_t__ maxconns_fast; scalar_t__ sasl; int /*<<< orphan*/  binding_protocol; scalar_t__ use_cas; scalar_t__ detail_enabled; scalar_t__ evict_to_free; scalar_t__ oldest_live; scalar_t__ maxbytes; } ;
-typedef  int /*<<< orphan*/  ADD_STAT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APPEND_STAT (char*,char*,...) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- scalar_t__ item_stats_sizes_status () ; 
- char* prot_text (int /*<<< orphan*/ ) ; 
- TYPE_1__ settings ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {char* maxconns; char* port; char* udpport; char* inter; char* verbose; char* socketpath; char* access; char* factor; char* chunk_size; char* num_threads; char* num_threads_per_udp; char* prefix_delimiter; char* reqs_per_event; char* backlog; char* auth_file; char* item_size_max; char* hashpower_init; char* slab_automove; char* slab_automove_ratio; char* slab_automove_window; char* slab_chunk_size_max; char* lru_crawler_sleep; char* tail_repair_time; char* hash_algorithm; char* hot_lru_pct; char* warm_lru_pct; char* hot_max_factor; char* warm_max_factor; char* temporary_ttl; char* idle_timeout; char* logger_watcher_buf_size; char* logger_buf_size; char* ext_item_size; char* ext_item_age; char* ext_low_ttl; char* ext_recache_rate; char* ext_wbuf_size; char* ext_compact_under; char* ext_drop_under; char* ext_max_frag; char* slab_automove_freeratio; char* ssl_chain_cert; char* ssl_key; char* ssl_verify_mode; char* ssl_keyformat; char* ssl_ciphers; char* ssl_ca_cert; char* ssl_wbuf_size; scalar_t__ ssl_enabled; scalar_t__ ext_drop_unread; scalar_t__ drop_privileges; scalar_t__ temp_lru; scalar_t__ lru_segmented; scalar_t__ lru_maintainer_thread; scalar_t__ dump_enabled; scalar_t__ flush_enabled; scalar_t__ lru_crawler_tocrawl; scalar_t__ lru_crawler; scalar_t__ slab_reassign; scalar_t__ maxconns_fast; scalar_t__ sasl; int binding_protocol; scalar_t__ use_cas; scalar_t__ detail_enabled; scalar_t__ evict_to_free; scalar_t__ oldest_live; scalar_t__ maxbytes; } ;
+typedef int ADD_STAT ;
+
+
+ int APPEND_STAT (char*,char*,...) ;
+ int assert (int ) ;
+ scalar_t__ item_stats_sizes_status () ;
+ char* prot_text (int ) ;
+ TYPE_1__ settings ;
 
 __attribute__((used)) static void process_stat_settings(ADD_STAT add_stats, void *c) {
     assert(add_stats);
@@ -75,30 +75,5 @@ __attribute__((used)) static void process_stat_settings(ADD_STAT add_stats, void
     APPEND_STAT("watcher_logbuf_size", "%u", settings.logger_watcher_buf_size);
     APPEND_STAT("worker_logbuf_size", "%u", settings.logger_buf_size);
     APPEND_STAT("track_sizes", "%s", item_stats_sizes_status() ? "yes" : "no");
-    APPEND_STAT("inline_ascii_response", "%s", "no"); // setting is dead, cannot be yes.
-#ifdef HAVE_DROP_PRIVILEGES
-    APPEND_STAT("drop_privileges", "%s", settings.drop_privileges ? "yes" : "no");
-#endif
-#ifdef EXTSTORE
-    APPEND_STAT("ext_item_size", "%u", settings.ext_item_size);
-    APPEND_STAT("ext_item_age", "%u", settings.ext_item_age);
-    APPEND_STAT("ext_low_ttl", "%u", settings.ext_low_ttl);
-    APPEND_STAT("ext_recache_rate", "%u", settings.ext_recache_rate);
-    APPEND_STAT("ext_wbuf_size", "%u", settings.ext_wbuf_size);
-    APPEND_STAT("ext_compact_under", "%u", settings.ext_compact_under);
-    APPEND_STAT("ext_drop_under", "%u", settings.ext_drop_under);
-    APPEND_STAT("ext_max_frag", "%.2f", settings.ext_max_frag);
-    APPEND_STAT("slab_automove_freeratio", "%.3f", settings.slab_automove_freeratio);
-    APPEND_STAT("ext_drop_unread", "%s", settings.ext_drop_unread ? "yes" : "no");
-#endif
-#ifdef TLS
-    APPEND_STAT("ssl_enabled", "%s", settings.ssl_enabled ? "yes" : "no");
-    APPEND_STAT("ssl_chain_cert", "%s", settings.ssl_chain_cert);
-    APPEND_STAT("ssl_key", "%s", settings.ssl_key);
-    APPEND_STAT("ssl_verify_mode", "%d", settings.ssl_verify_mode);
-    APPEND_STAT("ssl_keyformat", "%d", settings.ssl_keyformat);
-    APPEND_STAT("ssl_ciphers", "%s", settings.ssl_ciphers ? settings.ssl_ciphers : "NULL");
-    APPEND_STAT("ssl_ca_cert", "%s", settings.ssl_ca_cert ? settings.ssl_ca_cert : "NULL");
-    APPEND_STAT("ssl_wbuf_size", "%u", settings.ssl_wbuf_size);
-#endif
+    APPEND_STAT("inline_ascii_response", "%s", "no");
 }

@@ -1,40 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LoadBSPFile (char*) ; 
- int /*<<< orphan*/  LoadMapFile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetLightStyles () ; 
- int /*<<< orphan*/  SetModelNumbers () ; 
- int /*<<< orphan*/  UnparseEntities () ; 
- int /*<<< orphan*/  WriteBSPFile (char*) ; 
- int /*<<< orphan*/  name ; 
- scalar_t__ num_entities ; 
- char* source ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
+ int LoadBSPFile (char*) ;
+ int LoadMapFile (int ) ;
+ int SetLightStyles () ;
+ int SetModelNumbers () ;
+ int UnparseEntities () ;
+ int WriteBSPFile (char*) ;
+ int name ;
+ scalar_t__ num_entities ;
+ char* source ;
+ int sprintf (char*,char*,char*) ;
 
 void OnlyEnts( void ) {
-	char out[1024];
+ char out[1024];
 
-	sprintf (out, "%s.bsp", source);
-	LoadBSPFile (out);
-	num_entities = 0;
+ sprintf (out, "%s.bsp", source);
+ LoadBSPFile (out);
+ num_entities = 0;
 
-	LoadMapFile (name);
-	SetModelNumbers ();
-	SetLightStyles ();
+ LoadMapFile (name);
+ SetModelNumbers ();
+ SetLightStyles ();
 
-	UnparseEntities ();
+ UnparseEntities ();
 
-	WriteBSPFile (out);
+ WriteBSPFile (out);
 }

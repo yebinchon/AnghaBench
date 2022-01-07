@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mlx5_hv_vhca_agent {size_t type; int /*<<< orphan*/  (* cleanup ) (struct mlx5_hv_vhca_agent*) ;struct mlx5_hv_vhca* hv_vhca; } ;
-struct mlx5_hv_vhca {int /*<<< orphan*/  agents_lock; struct mlx5_hv_vhca_agent** agents; } ;
 
-/* Variables and functions */
- scalar_t__ WARN_ON (int) ; 
- int /*<<< orphan*/  kfree (struct mlx5_hv_vhca_agent*) ; 
- int /*<<< orphan*/  mlx5_hv_vhca_agents_update (struct mlx5_hv_vhca*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (struct mlx5_hv_vhca_agent*) ; 
+
+
+
+struct mlx5_hv_vhca_agent {size_t type; int (* cleanup ) (struct mlx5_hv_vhca_agent*) ;struct mlx5_hv_vhca* hv_vhca; } ;
+struct mlx5_hv_vhca {int agents_lock; struct mlx5_hv_vhca_agent** agents; } ;
+
+
+ scalar_t__ WARN_ON (int) ;
+ int kfree (struct mlx5_hv_vhca_agent*) ;
+ int mlx5_hv_vhca_agents_update (struct mlx5_hv_vhca*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int stub1 (struct mlx5_hv_vhca_agent*) ;
 
 void mlx5_hv_vhca_agent_destroy(struct mlx5_hv_vhca_agent *agent)
 {
-	struct mlx5_hv_vhca *hv_vhca = agent->hv_vhca;
+ struct mlx5_hv_vhca *hv_vhca = agent->hv_vhca;
 
-	mutex_lock(&hv_vhca->agents_lock);
+ mutex_lock(&hv_vhca->agents_lock);
 
-	if (WARN_ON(agent != hv_vhca->agents[agent->type])) {
-		mutex_unlock(&hv_vhca->agents_lock);
-		return;
-	}
+ if (WARN_ON(agent != hv_vhca->agents[agent->type])) {
+  mutex_unlock(&hv_vhca->agents_lock);
+  return;
+ }
 
-	hv_vhca->agents[agent->type] = NULL;
-	mutex_unlock(&hv_vhca->agents_lock);
+ hv_vhca->agents[agent->type] = ((void*)0);
+ mutex_unlock(&hv_vhca->agents_lock);
 
-	if (agent->cleanup)
-		agent->cleanup(agent);
+ if (agent->cleanup)
+  agent->cleanup(agent);
 
-	kfree(agent);
+ kfree(agent);
 
-	mlx5_hv_vhca_agents_update(hv_vhca);
+ mlx5_hv_vhca_agents_update(hv_vhca);
 }

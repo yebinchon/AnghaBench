@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct video_data {int fd; } ;
 struct v4l2_capability {char* card; } ;
 struct dirent {char* d_name; } ;
-typedef  int /*<<< orphan*/  device_name ;
+typedef int device_name ;
 struct TYPE_13__ {struct TYPE_13__* device_description; struct TYPE_13__* device_name; } ;
-struct TYPE_12__ {int /*<<< orphan*/  nb_devices; int /*<<< orphan*/  devices; } ;
+struct TYPE_12__ {int nb_devices; int devices; } ;
 struct TYPE_11__ {struct video_data* priv_data; } ;
-typedef  int /*<<< orphan*/  DIR ;
-typedef  TYPE_1__ AVFormatContext ;
-typedef  TYPE_2__ AVDeviceInfoList ;
-typedef  TYPE_3__ AVDeviceInfo ;
+typedef int DIR ;
+typedef TYPE_1__ AVFormatContext ;
+typedef TYPE_2__ AVDeviceInfoList ;
+typedef TYPE_3__ AVDeviceInfo ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  VIDIOC_QUERYCAP ; 
- int av_dynarray_add_nofree (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  av_err2str (int) ; 
- int /*<<< orphan*/  av_freep (TYPE_3__**) ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- TYPE_3__* av_mallocz (int) ; 
- void* av_strdup (char*) ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- int device_open (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/ * opendir (char*) ; 
- struct dirent* readdir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
- int /*<<< orphan*/  v4l2_close (int) ; 
- scalar_t__ v4l2_ioctl (int,int /*<<< orphan*/ ,struct v4l2_capability*) ; 
- int /*<<< orphan*/  v4l2_is_v4l_dev (char*) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int ENOMEM ;
+ int VIDIOC_QUERYCAP ;
+ int av_dynarray_add_nofree (int *,int *,TYPE_3__*) ;
+ int av_err2str (int) ;
+ int av_freep (TYPE_3__**) ;
+ int av_log (TYPE_1__*,int ,char*,int ) ;
+ TYPE_3__* av_mallocz (int) ;
+ void* av_strdup (char*) ;
+ int closedir (int *) ;
+ int device_open (TYPE_1__*,char*) ;
+ int errno ;
+ int * opendir (char*) ;
+ struct dirent* readdir (int *) ;
+ int snprintf (char*,int,char*,char*) ;
+ int v4l2_close (int) ;
+ scalar_t__ v4l2_ioctl (int,int ,struct v4l2_capability*) ;
+ int v4l2_is_v4l_dev (char*) ;
 
 __attribute__((used)) static int v4l2_get_device_list(AVFormatContext *ctx, AVDeviceInfoList *device_list)
 {
     struct video_data *s = ctx->priv_data;
     DIR *dir;
     struct dirent *entry;
-    AVDeviceInfo *device = NULL;
+    AVDeviceInfo *device = ((void*)0);
     struct v4l2_capability cap;
     int ret = 0;
 

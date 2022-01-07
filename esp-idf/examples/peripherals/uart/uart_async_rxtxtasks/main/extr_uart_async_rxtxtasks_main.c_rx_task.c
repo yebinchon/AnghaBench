@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGI (char const*,char*,int const,scalar_t__*) ; 
- int /*<<< orphan*/  ESP_LOG_BUFFER_HEXDUMP (char const*,scalar_t__*,int const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ESP_LOG_INFO ; 
- scalar_t__ RX_BUF_SIZE ; 
- int /*<<< orphan*/  UART_NUM_1 ; 
- int /*<<< orphan*/  esp_log_level_set (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (scalar_t__*) ; 
- scalar_t__ malloc (scalar_t__) ; 
- int portTICK_RATE_MS ; 
- int uart_read_bytes (int /*<<< orphan*/ ,scalar_t__*,scalar_t__,int) ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+
+
+ int ESP_LOGI (char const*,char*,int const,scalar_t__*) ;
+ int ESP_LOG_BUFFER_HEXDUMP (char const*,scalar_t__*,int const,int ) ;
+ int ESP_LOG_INFO ;
+ scalar_t__ RX_BUF_SIZE ;
+ int UART_NUM_1 ;
+ int esp_log_level_set (char const*,int ) ;
+ int free (scalar_t__*) ;
+ scalar_t__ malloc (scalar_t__) ;
+ int portTICK_RATE_MS ;
+ int uart_read_bytes (int ,scalar_t__*,scalar_t__,int) ;
 
 __attribute__((used)) static void rx_task(void *arg)
 {

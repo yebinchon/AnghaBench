@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ERR_CYRILIC_SYMBOL ; 
- int ERR_UNKNOWN_RESERVED_WORD ; 
- char const** RESERVED_WORDS_H ; 
- int RESERVED_WORDS_HASHTABLE_SIZE ; 
- scalar_t__ islower (char) ; 
- int /*<<< orphan*/  reserved_words ; 
- int /*<<< orphan*/  strcasecmp (char const*,char const*) ; 
- char toupper (char) ; 
- int /*<<< orphan*/  unperfect_hash ; 
+ int ERR_CYRILIC_SYMBOL ;
+ int ERR_UNKNOWN_RESERVED_WORD ;
+ char const** RESERVED_WORDS_H ;
+ int RESERVED_WORDS_HASHTABLE_SIZE ;
+ scalar_t__ islower (char) ;
+ int reserved_words ;
+ int strcasecmp (char const*,char const*) ;
+ char toupper (char) ;
+ int unperfect_hash ;
 
 __attribute__((used)) static int get_cmd_f (const char* cmd, int force) {
   unsigned hc = 0;

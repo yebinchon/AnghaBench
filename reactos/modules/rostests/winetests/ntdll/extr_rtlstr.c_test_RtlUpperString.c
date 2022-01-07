@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int Length; int MaximumLength; char* Buffer; } ;
-typedef  TYPE_1__ STRING ;
-typedef  char CHAR ;
+typedef TYPE_1__ STRING ;
+typedef char CHAR ;
 
-/* Variables and functions */
- scalar_t__ memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- int /*<<< orphan*/  pRtlUpperString (TYPE_1__*,TYPE_1__*) ; 
+
+ scalar_t__ memcmp (char*,char*,int) ;
+ int ok (int,char*) ;
+ int pRtlUpperString (TYPE_1__*,TYPE_1__*) ;
 
 __attribute__((used)) static void test_RtlUpperString(void)
 {
@@ -33,15 +33,15 @@ __attribute__((used)) static void test_RtlUpperString(void)
     STRING upper_str;
 
     for (i = 0; i <= 255; i++) {
-	ch = (CHAR) i;
-	if (ch >= 'a' && ch <= 'z') {
-	    upper_ch = ch - 'a' + 'A';
-	} else {
-	    upper_ch = ch;
-	}
-	ascii_buf[i] = ch;
-	result_buf[i] = '\0';
-	upper_buf[i] = upper_ch;
+ ch = (CHAR) i;
+ if (ch >= 'a' && ch <= 'z') {
+     upper_ch = ch - 'a' + 'A';
+ } else {
+     upper_ch = ch;
+ }
+ ascii_buf[i] = ch;
+ result_buf[i] = '\0';
+ upper_buf[i] = upper_ch;
     }
     ascii_buf[i] = '\0';
     result_buf[i] = '\0';

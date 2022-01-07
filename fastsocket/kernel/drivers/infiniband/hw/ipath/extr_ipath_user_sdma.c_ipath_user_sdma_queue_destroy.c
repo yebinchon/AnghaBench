@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ipath_user_sdma_queue {int /*<<< orphan*/  header_cache; int /*<<< orphan*/  pkt_slab; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dma_pool_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (struct ipath_user_sdma_queue*) ; 
- int /*<<< orphan*/  kmem_cache_destroy (int /*<<< orphan*/ ) ; 
+
+
+
+struct ipath_user_sdma_queue {int header_cache; int pkt_slab; } ;
+
+
+ int dma_pool_destroy (int ) ;
+ int kfree (struct ipath_user_sdma_queue*) ;
+ int kmem_cache_destroy (int ) ;
 
 void ipath_user_sdma_queue_destroy(struct ipath_user_sdma_queue *pq)
 {
-	if (!pq)
-		return;
+ if (!pq)
+  return;
 
-	kmem_cache_destroy(pq->pkt_slab);
-	dma_pool_destroy(pq->header_cache);
-	kfree(pq);
+ kmem_cache_destroy(pq->pkt_slab);
+ dma_pool_destroy(pq->header_cache);
+ kfree(pq);
 }

@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int cur_buff_len ; 
- int* win_to_utf8_convert ; 
- int /*<<< orphan*/  write_buff_char_pos (char,int) ; 
- int write_buff_get_pos () ; 
- int /*<<< orphan*/  write_buff_set_pos (int) ; 
- int /*<<< orphan*/  write_char_utf8 (int) ; 
+ int assert (int) ;
+ int cur_buff_len ;
+ int* win_to_utf8_convert ;
+ int write_buff_char_pos (char,int) ;
+ int write_buff_get_pos () ;
+ int write_buff_set_pos (int) ;
+ int write_char_utf8 (int) ;
 
 int win_to_utf8 (const char *s, int len) {
   int i;
@@ -51,7 +43,7 @@ int win_to_utf8 (const char *s, int len) {
     } else {
       write_char_utf8 (win_to_utf8_convert[(unsigned char)(s[i])]);
     }
-    if (state == 3) {      
+    if (state == 3) {
       state = 0;
     }
   }

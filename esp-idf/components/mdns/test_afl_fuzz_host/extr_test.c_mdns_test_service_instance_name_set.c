@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mdns_action_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetLastItem (int /*<<< orphan*/ **) ; 
- int mdns_service_instance_name_set (char const*,char const*,char const*) ; 
- int /*<<< orphan*/  mdns_test_execute_action (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int mdns_action_t ;
+
+
+ int GetLastItem (int **) ;
+ int mdns_service_instance_name_set (char const*,char const*,char const*) ;
+ int mdns_test_execute_action (int *) ;
 
 __attribute__((used)) static int mdns_test_service_instance_name_set(const char * service, const char * proto, const char * instance)
 {
     int ret = mdns_service_instance_name_set(service, proto, instance);
-    mdns_action_t * a = NULL;
+    mdns_action_t * a = ((void*)0);
     GetLastItem(&a);
     mdns_test_execute_action(a);
     return ret;

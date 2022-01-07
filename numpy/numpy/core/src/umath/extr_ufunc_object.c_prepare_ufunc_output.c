@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ufunc_full_args ;
-typedef  int /*<<< orphan*/  PyUFuncObject ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyArray_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_CompareLists (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  PyArray_DESCR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_DIMS (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_EquivTypes (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ PyArray_NDIM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_STRIDES (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_TypeError ; 
- int /*<<< orphan*/ * PyObject_CallFunction (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Py_None ; 
- int /*<<< orphan*/ * _get_wrap_prepare_args (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ufunc_full_args ;
+typedef int PyUFuncObject ;
+typedef int PyObject ;
+typedef int PyArrayObject ;
+
+
+ int PyArray_Check (int *) ;
+ int PyArray_CompareLists (int ,int ,scalar_t__) ;
+ int PyArray_DESCR (int *) ;
+ int PyArray_DIMS (int *) ;
+ int PyArray_EquivTypes (int ,int ) ;
+ scalar_t__ PyArray_NDIM (int *) ;
+ int PyArray_STRIDES (int *) ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_TypeError ;
+ int * PyObject_CallFunction (int *,char*,int *,int *,int *,int) ;
+ int Py_DECREF (int *) ;
+ int * Py_None ;
+ int * _get_wrap_prepare_args (int ) ;
 
 __attribute__((used)) static int
 prepare_ufunc_output(PyUFuncObject *ufunc,
@@ -37,21 +37,21 @@ prepare_ufunc_output(PyUFuncObject *ufunc,
                     ufunc_full_args full_args,
                     int i)
 {
-    if (arr_prep != NULL && arr_prep != Py_None) {
+    if (arr_prep != ((void*)0) && arr_prep != Py_None) {
         PyObject *res;
         PyArrayObject *arr;
         PyObject *args_tup;
 
-        /* Call with the context argument */
+
         args_tup = _get_wrap_prepare_args(full_args);
-        if (args_tup == NULL) {
+        if (args_tup == ((void*)0)) {
             return -1;
         }
         res = PyObject_CallFunction(
             arr_prep, "O(OOi)", *op, ufunc, args_tup, i);
         Py_DECREF(args_tup);
 
-        if (res == NULL) {
+        if (res == ((void*)0)) {
             return -1;
         }
         else if (!PyArray_Check(res)) {
@@ -63,11 +63,11 @@ prepare_ufunc_output(PyUFuncObject *ufunc,
         }
         arr = (PyArrayObject *)res;
 
-        /* If the same object was returned, nothing to do */
+
         if (arr == *op) {
             Py_DECREF(arr);
         }
-        /* If the result doesn't match, throw an error */
+
         else if (PyArray_NDIM(arr) != PyArray_NDIM(*op) ||
                 !PyArray_CompareLists(PyArray_DIMS(arr),
                                       PyArray_DIMS(*op),
@@ -84,7 +84,7 @@ prepare_ufunc_output(PyUFuncObject *ufunc,
             Py_DECREF(arr);
             return -1;
         }
-        /* Replace the op value */
+
         else {
             Py_DECREF(*op);
             *op = arr;

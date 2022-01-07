@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {unsigned int idx; int /*<<< orphan*/  len; scalar_t__* s; } ;
-typedef  TYPE_3__ rcheevos_ctx_desc_t ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_9__ {unsigned int idx; int len; scalar_t__* s; } ;
+typedef TYPE_3__ rcheevos_ctx_desc_t ;
 struct TYPE_10__ {TYPE_1__* info; } ;
-typedef  TYPE_4__ rcheevos_cheevo_t ;
+typedef TYPE_4__ rcheevos_cheevo_t ;
 struct TYPE_8__ {unsigned int core_count; unsigned int unofficial_count; } ;
 struct TYPE_11__ {TYPE_4__* unofficial; TYPE_2__ patchdata; TYPE_4__* core; } ;
-struct TYPE_7__ {int /*<<< orphan*/  description; } ;
+struct TYPE_7__ {int description; } ;
 
-/* Variables and functions */
- scalar_t__ rcheevos_loaded ; 
- TYPE_5__ rcheevos_locals ; 
- int /*<<< orphan*/  strlcpy (scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ rcheevos_loaded ;
+ TYPE_5__ rcheevos_locals ;
+ int strlcpy (scalar_t__*,int ,int ) ;
 
 bool rcheevos_get_description(rcheevos_ctx_desc_t* desc)
 {
@@ -34,7 +34,7 @@ bool rcheevos_get_description(rcheevos_ctx_desc_t* desc)
    const rcheevos_cheevo_t* cheevo;
 
    if (!desc)
-      return false;
+      return 0;
 
    *desc->s = 0;
 
@@ -51,11 +51,11 @@ bool rcheevos_get_description(rcheevos_ctx_desc_t* desc)
          if (idx < rcheevos_locals.patchdata.unofficial_count)
             cheevo = rcheevos_locals.unofficial + idx;
          else
-            return true;
+            return 1;
       }
 
       strlcpy(desc->s, cheevo->info->description, desc->len);
    }
 
-   return true;
+   return 1;
 }

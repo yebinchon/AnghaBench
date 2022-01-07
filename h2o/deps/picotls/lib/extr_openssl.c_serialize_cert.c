@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {unsigned char* base; int len; } ;
-typedef  TYPE_1__ ptls_iovec_t ;
-typedef  int /*<<< orphan*/  X509 ;
+typedef TYPE_1__ ptls_iovec_t ;
+typedef int X509 ;
 
-/* Variables and functions */
- int PTLS_ERROR_NO_MEMORY ; 
- int /*<<< orphan*/  assert (int) ; 
- void* i2d_X509 (int /*<<< orphan*/ *,unsigned char**) ; 
- unsigned char* malloc (int) ; 
+
+ int PTLS_ERROR_NO_MEMORY ;
+ int assert (int) ;
+ void* i2d_X509 (int *,unsigned char**) ;
+ unsigned char* malloc (int) ;
 
 __attribute__((used)) static int serialize_cert(X509 *cert, ptls_iovec_t *dst)
 {
-    int len = i2d_X509(cert, NULL);
+    int len = i2d_X509(cert, ((void*)0));
     assert(len > 0);
 
-    if ((dst->base = malloc(len)) == NULL)
+    if ((dst->base = malloc(len)) == ((void*)0))
         return PTLS_ERROR_NO_MEMORY;
     unsigned char *p = dst->base;
     dst->len = i2d_X509(cert, &p);

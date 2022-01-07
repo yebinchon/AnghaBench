@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * route; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  TYPE_1__ MatcherEntry ;
-typedef  int /*<<< orphan*/  Matcher ;
-typedef  int /*<<< orphan*/  MatchDictEntry ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * MatchDict_entries_to_dict (int /*<<< orphan*/ *,size_t) ; 
- TYPE_1__* Matcher_match_request (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,size_t*) ; 
- int /*<<< orphan*/ * PyTuple_New (int) ; 
- int /*<<< orphan*/  PyTuple_SET_ITEM (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_RETURN_NONE ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * route; } ;
+typedef int PyObject ;
+typedef TYPE_1__ MatcherEntry ;
+typedef int Matcher ;
+typedef int MatchDictEntry ;
+
+
+ int * MatchDict_entries_to_dict (int *,size_t) ;
+ TYPE_1__* Matcher_match_request (int *,int *,int **,size_t*) ;
+ int * PyTuple_New (int) ;
+ int PyTuple_SET_ITEM (int *,int,int *) ;
+ int Py_INCREF (int *) ;
+ int Py_RETURN_NONE ;
+ int Py_XDECREF (int *) ;
 
 __attribute__((used)) static PyObject*
 _Matcher_match_request(Matcher* self, PyObject* request)
 {
   MatcherEntry* matcher_entry;
   MatchDictEntry* entries;
-  PyObject* route = NULL;
+  PyObject* route = ((void*)0);
   size_t length;
-  PyObject* match_dict = NULL;
-  PyObject* route_dict = NULL;
+  PyObject* match_dict = ((void*)0);
+  PyObject* route_dict = ((void*)0);
 
   if(!(matcher_entry = Matcher_match_request(
        self, request, &entries, &length)))
@@ -55,7 +55,7 @@ _Matcher_match_request(Matcher* self, PyObject* request)
 
   error:
   Py_XDECREF(match_dict);
-  route = NULL;
+  route = ((void*)0);
 
   finally:
   if(route)

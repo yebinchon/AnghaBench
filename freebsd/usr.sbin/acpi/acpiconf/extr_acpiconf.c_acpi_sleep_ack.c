@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ACPIIO_ACKSLPSTATE ; 
- int /*<<< orphan*/  EX_IOERR ; 
- int /*<<< orphan*/  acpifd ; 
- int /*<<< orphan*/  err (int /*<<< orphan*/ ,char*) ; 
- int ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
+ int ACPIIO_ACKSLPSTATE ;
+ int EX_IOERR ;
+ int acpifd ;
+ int err (int ,char*) ;
+ int ioctl (int ,int ,int*) ;
 
 __attribute__((used)) static void
 acpi_sleep_ack(int err_val)
 {
-	int ret;
+ int ret;
 
-	ret = ioctl(acpifd, ACPIIO_ACKSLPSTATE, &err_val);
-	if (ret != 0)
-		err(EX_IOERR, "ack sleep type failed");
+ ret = ioctl(acpifd, ACPIIO_ACKSLPSTATE, &err_val);
+ if (ret != 0)
+  err(EX_IOERR, "ack sleep type failed");
 }

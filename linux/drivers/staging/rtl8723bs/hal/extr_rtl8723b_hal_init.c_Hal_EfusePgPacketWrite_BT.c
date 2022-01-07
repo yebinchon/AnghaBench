@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u16 ;
+
+
+
+
+typedef int u8 ;
+typedef int u16 ;
 struct adapter {int dummy; } ;
-typedef  int /*<<< orphan*/  PGPKT_STRUCT ;
+typedef int PGPKT_STRUCT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EFUSE_BT ; 
- int /*<<< orphan*/  hal_EfuseConstructPGPkt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hal_EfusePartialWriteCheck (struct adapter*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  hal_EfusePgCheckAvailableAddr (struct adapter*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  hal_EfusePgPacketWriteData (struct adapter*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  hal_EfusePgPacketWriteHeader (struct adapter*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int EFUSE_BT ;
+ int hal_EfuseConstructPGPkt (int ,int ,int *,int *) ;
+ int hal_EfusePartialWriteCheck (struct adapter*,int ,int *,int *,int) ;
+ int hal_EfusePgCheckAvailableAddr (struct adapter*,int ,int) ;
+ int hal_EfusePgPacketWriteData (struct adapter*,int ,int *,int *,int) ;
+ int hal_EfusePgPacketWriteHeader (struct adapter*,int ,int *,int *,int) ;
 
 __attribute__((used)) static bool Hal_EfusePgPacketWrite_BT(
-	struct adapter *padapter,
-	u8 offset,
-	u8 word_en,
-	u8 *pData,
-	bool bPseudoTest
+ struct adapter *padapter,
+ u8 offset,
+ u8 word_en,
+ u8 *pData,
+ bool bPseudoTest
 )
 {
-	PGPKT_STRUCT targetPkt;
-	u16 startAddr = 0;
-	u8 efuseType = EFUSE_BT;
+ PGPKT_STRUCT targetPkt;
+ u16 startAddr = 0;
+ u8 efuseType = EFUSE_BT;
 
-	if (!hal_EfusePgCheckAvailableAddr(padapter, efuseType, bPseudoTest))
-		return false;
+ if (!hal_EfusePgCheckAvailableAddr(padapter, efuseType, bPseudoTest))
+  return 0;
 
-	hal_EfuseConstructPGPkt(offset, word_en, pData, &targetPkt);
+ hal_EfuseConstructPGPkt(offset, word_en, pData, &targetPkt);
 
-	if (!hal_EfusePartialWriteCheck(padapter, efuseType, &startAddr, &targetPkt, bPseudoTest))
-		return false;
+ if (!hal_EfusePartialWriteCheck(padapter, efuseType, &startAddr, &targetPkt, bPseudoTest))
+  return 0;
 
-	if (!hal_EfusePgPacketWriteHeader(padapter, efuseType, &startAddr, &targetPkt, bPseudoTest))
-		return false;
+ if (!hal_EfusePgPacketWriteHeader(padapter, efuseType, &startAddr, &targetPkt, bPseudoTest))
+  return 0;
 
-	if (!hal_EfusePgPacketWriteData(padapter, efuseType, &startAddr, &targetPkt, bPseudoTest))
-		return false;
+ if (!hal_EfusePgPacketWriteData(padapter, efuseType, &startAddr, &targetPkt, bPseudoTest))
+  return 0;
 
-	return true;
+ return 1;
 }

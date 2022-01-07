@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rk_iommu {int num_mmu; int /*<<< orphan*/ * bases; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RK_MMU_STATUS ; 
- int RK_MMU_STATUS_PAGING_ENABLED ; 
- int rk_iommu_read (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct rk_iommu {int num_mmu; int * bases; } ;
+
+
+ int RK_MMU_STATUS ;
+ int RK_MMU_STATUS_PAGING_ENABLED ;
+ int rk_iommu_read (int ,int ) ;
 
 __attribute__((used)) static bool rk_iommu_is_paging_enabled(struct rk_iommu *iommu)
 {
-	bool enable = true;
-	int i;
+ bool enable = 1;
+ int i;
 
-	for (i = 0; i < iommu->num_mmu; i++)
-		enable &= !!(rk_iommu_read(iommu->bases[i], RK_MMU_STATUS) &
-					   RK_MMU_STATUS_PAGING_ENABLED);
+ for (i = 0; i < iommu->num_mmu; i++)
+  enable &= !!(rk_iommu_read(iommu->bases[i], RK_MMU_STATUS) &
+        RK_MMU_STATUS_PAGING_ENABLED);
 
-	return enable;
+ return enable;
 }

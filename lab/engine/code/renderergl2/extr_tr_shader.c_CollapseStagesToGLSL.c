@@ -1,359 +1,359 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int stateBits; int alphaGen; scalar_t__ type; scalar_t__ rgbGen; int /*<<< orphan*/  glslShaderIndex; TYPE_1__* bundle; int /*<<< orphan*/  glslShaderGroup; scalar_t__ adjustColorsForFog; void* active; } ;
-typedef  TYPE_2__ shaderStage_t ;
-typedef  void* qboolean ;
+
+
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int stateBits; int alphaGen; scalar_t__ type; scalar_t__ rgbGen; int glslShaderIndex; TYPE_1__* bundle; int glslShaderGroup; scalar_t__ adjustColorsForFog; void* active; } ;
+typedef TYPE_2__ shaderStage_t ;
+typedef void* qboolean ;
 struct TYPE_15__ {scalar_t__ integer; } ;
 struct TYPE_14__ {scalar_t__ numDeforms; } ;
-struct TYPE_13__ {int /*<<< orphan*/  lightallShader; int /*<<< orphan*/  whiteImage; } ;
-struct TYPE_11__ {scalar_t__ tcGen; scalar_t__ numTexMods; void* isLightmap; int /*<<< orphan*/ * image; } ;
+struct TYPE_13__ {int lightallShader; int whiteImage; } ;
+struct TYPE_11__ {scalar_t__ tcGen; scalar_t__ numTexMods; void* isLightmap; int * image; } ;
 
-/* Variables and functions */
-#define  AGEN_LIGHTING_SPECULAR 137 
-#define  AGEN_PORTAL 136 
- scalar_t__ CGEN_EXACT_VERTEX_LIT ; 
- scalar_t__ CGEN_LIGHTING_DIFFUSE ; 
- scalar_t__ CGEN_VERTEX_LIT ; 
- int /*<<< orphan*/  CollapseStagesToLightall (TYPE_2__*,TYPE_2__*,TYPE_2__*,TYPE_2__*,void*,void*,void*,void*) ; 
- int GLS_DSTBLEND_BITS ; 
- int GLS_DSTBLEND_SRC_COLOR ; 
- int GLS_DSTBLEND_ZERO ; 
- int GLS_SRCBLEND_BITS ; 
- int GLS_SRCBLEND_DST_COLOR ; 
- int GLS_SRCBLEND_ZERO ; 
- int /*<<< orphan*/  LIGHTDEF_USE_LIGHTMAP ; 
- int /*<<< orphan*/  LIGHTDEF_USE_LIGHT_VECTOR ; 
- int /*<<< orphan*/  LIGHTDEF_USE_TCGEN_AND_TCMOD ; 
- int MAX_SHADER_STAGES ; 
-#define  ST_COLORMAP 135 
-#define  ST_NORMALMAP 134 
-#define  ST_NORMALPARALLAXMAP 133 
-#define  ST_SPECULARMAP 132 
- size_t TB_DIFFUSEMAP ; 
- size_t TB_LIGHTMAP ; 
-#define  TCGEN_ENVIRONMENT_MAPPED 131 
-#define  TCGEN_LIGHTMAP 130 
-#define  TCGEN_TEXTURE 129 
-#define  TCGEN_VECTOR 128 
- void* qfalse ; 
- void* qtrue ; 
- TYPE_6__* r_sunlightMode ; 
- TYPE_5__ shader ; 
- TYPE_2__* stages ; 
- TYPE_3__ tr ; 
+
+
+
+ scalar_t__ CGEN_EXACT_VERTEX_LIT ;
+ scalar_t__ CGEN_LIGHTING_DIFFUSE ;
+ scalar_t__ CGEN_VERTEX_LIT ;
+ int CollapseStagesToLightall (TYPE_2__*,TYPE_2__*,TYPE_2__*,TYPE_2__*,void*,void*,void*,void*) ;
+ int GLS_DSTBLEND_BITS ;
+ int GLS_DSTBLEND_SRC_COLOR ;
+ int GLS_DSTBLEND_ZERO ;
+ int GLS_SRCBLEND_BITS ;
+ int GLS_SRCBLEND_DST_COLOR ;
+ int GLS_SRCBLEND_ZERO ;
+ int LIGHTDEF_USE_LIGHTMAP ;
+ int LIGHTDEF_USE_LIGHT_VECTOR ;
+ int LIGHTDEF_USE_TCGEN_AND_TCMOD ;
+ int MAX_SHADER_STAGES ;
+
+
+
+
+ size_t TB_DIFFUSEMAP ;
+ size_t TB_LIGHTMAP ;
+
+
+
+
+ void* qfalse ;
+ void* qtrue ;
+ TYPE_6__* r_sunlightMode ;
+ TYPE_5__ shader ;
+ TYPE_2__* stages ;
+ TYPE_3__ tr ;
 
 __attribute__((used)) static int CollapseStagesToGLSL(void)
 {
-	int i, j, numStages;
-	qboolean skip = qfalse;
+ int i, j, numStages;
+ qboolean skip = qfalse;
 
-	// skip shaders with deforms
-	if (shader.numDeforms != 0)
-	{
-		skip = qtrue;
-	}
 
-	if (!skip)
-	{
-		// if 2+ stages and first stage is lightmap, switch them
-		// this makes it easier for the later bits to process
-		if (stages[0].active && stages[0].bundle[0].tcGen == TCGEN_LIGHTMAP && stages[1].active)
-		{
-			int blendBits = stages[1].stateBits & ( GLS_DSTBLEND_BITS | GLS_SRCBLEND_BITS );
+ if (shader.numDeforms != 0)
+ {
+  skip = qtrue;
+ }
 
-			if (blendBits == (GLS_DSTBLEND_SRC_COLOR | GLS_SRCBLEND_ZERO)
-				|| blendBits == (GLS_DSTBLEND_ZERO | GLS_SRCBLEND_DST_COLOR))
-			{
-				int stateBits0 = stages[0].stateBits;
-				int stateBits1 = stages[1].stateBits;
-				shaderStage_t swapStage;
+ if (!skip)
+ {
 
-				swapStage = stages[0];
-				stages[0] = stages[1];
-				stages[1] = swapStage;
 
-				stages[0].stateBits = stateBits0;
-				stages[1].stateBits = stateBits1;
-			}
-		}
-	}
+  if (stages[0].active && stages[0].bundle[0].tcGen == 130 && stages[1].active)
+  {
+   int blendBits = stages[1].stateBits & ( GLS_DSTBLEND_BITS | GLS_SRCBLEND_BITS );
 
-	if (!skip)
-	{
-		// scan for shaders that aren't supported
-		for (i = 0; i < MAX_SHADER_STAGES; i++)
-		{
-			shaderStage_t *pStage = &stages[i];
+   if (blendBits == (GLS_DSTBLEND_SRC_COLOR | GLS_SRCBLEND_ZERO)
+    || blendBits == (GLS_DSTBLEND_ZERO | GLS_SRCBLEND_DST_COLOR))
+   {
+    int stateBits0 = stages[0].stateBits;
+    int stateBits1 = stages[1].stateBits;
+    shaderStage_t swapStage;
 
-			if (!pStage->active)
-				continue;
+    swapStage = stages[0];
+    stages[0] = stages[1];
+    stages[1] = swapStage;
 
-			if (pStage->adjustColorsForFog)
-			{
-				skip = qtrue;
-				break;
-			}
+    stages[0].stateBits = stateBits0;
+    stages[1].stateBits = stateBits1;
+   }
+  }
+ }
 
-			if (pStage->bundle[0].tcGen == TCGEN_LIGHTMAP)
-			{
-				int blendBits = pStage->stateBits & ( GLS_DSTBLEND_BITS | GLS_SRCBLEND_BITS );
-				
-				if (blendBits != (GLS_DSTBLEND_SRC_COLOR | GLS_SRCBLEND_ZERO)
-					&& blendBits != (GLS_DSTBLEND_ZERO | GLS_SRCBLEND_DST_COLOR))
-				{
-					skip = qtrue;
-					break;
-				}
-			}
+ if (!skip)
+ {
 
-			switch(pStage->bundle[0].tcGen)
-			{
-				case TCGEN_TEXTURE:
-				case TCGEN_LIGHTMAP:
-				case TCGEN_ENVIRONMENT_MAPPED:
-				case TCGEN_VECTOR:
-					break;
-				default:
-					skip = qtrue;
-					break;
-			}
+  for (i = 0; i < MAX_SHADER_STAGES; i++)
+  {
+   shaderStage_t *pStage = &stages[i];
 
-			switch(pStage->alphaGen)
-			{
-				case AGEN_LIGHTING_SPECULAR:
-				case AGEN_PORTAL:
-					skip = qtrue;
-					break;
-				default:
-					break;
-			}
-		}
-	}
+   if (!pStage->active)
+    continue;
 
-	if (!skip)
-	{
-		qboolean usedLightmap = qfalse;
+   if (pStage->adjustColorsForFog)
+   {
+    skip = qtrue;
+    break;
+   }
 
-		for (i = 0; i < MAX_SHADER_STAGES; i++)
-		{
-			shaderStage_t *pStage = &stages[i];
-			shaderStage_t *diffuse, *normal, *specular, *lightmap;
-			qboolean parallax, tcgen, diffuselit, vertexlit;
+   if (pStage->bundle[0].tcGen == 130)
+   {
+    int blendBits = pStage->stateBits & ( GLS_DSTBLEND_BITS | GLS_SRCBLEND_BITS );
 
-			if (!pStage->active)
-				continue;
+    if (blendBits != (GLS_DSTBLEND_SRC_COLOR | GLS_SRCBLEND_ZERO)
+     && blendBits != (GLS_DSTBLEND_ZERO | GLS_SRCBLEND_DST_COLOR))
+    {
+     skip = qtrue;
+     break;
+    }
+   }
 
-			// skip normal and specular maps
-			if (pStage->type != ST_COLORMAP)
-				continue;
+   switch(pStage->bundle[0].tcGen)
+   {
+    case 129:
+    case 130:
+    case 131:
+    case 128:
+     break;
+    default:
+     skip = qtrue;
+     break;
+   }
 
-			// skip lightmaps
-			if (pStage->bundle[0].tcGen == TCGEN_LIGHTMAP)
-				continue;
+   switch(pStage->alphaGen)
+   {
+    case 137:
+    case 136:
+     skip = qtrue;
+     break;
+    default:
+     break;
+   }
+  }
+ }
 
-			diffuse  = pStage;
-			normal   = NULL;
-			parallax = qfalse;
-			specular = NULL;
-			lightmap = NULL;
+ if (!skip)
+ {
+  qboolean usedLightmap = qfalse;
 
-			// we have a diffuse map, find matching normal, specular, and lightmap
-			for (j = i + 1; j < MAX_SHADER_STAGES; j++)
-			{
-				shaderStage_t *pStage2 = &stages[j];
+  for (i = 0; i < MAX_SHADER_STAGES; i++)
+  {
+   shaderStage_t *pStage = &stages[i];
+   shaderStage_t *diffuse, *normal, *specular, *lightmap;
+   qboolean parallax, tcgen, diffuselit, vertexlit;
 
-				if (!pStage2->active)
-					continue;
+   if (!pStage->active)
+    continue;
 
-				switch(pStage2->type)
-				{
-					case ST_NORMALMAP:
-						if (!normal)
-						{
-							normal = pStage2;
-						}
-						break;
 
-					case ST_NORMALPARALLAXMAP:
-						if (!normal)
-						{
-							normal = pStage2;
-							parallax = qtrue;
-						}
-						break;
+   if (pStage->type != 135)
+    continue;
 
-					case ST_SPECULARMAP:
-						if (!specular)
-						{
-							specular = pStage2;
-						}
-						break;
 
-					case ST_COLORMAP:
-						if (pStage2->bundle[0].tcGen == TCGEN_LIGHTMAP)
-						{
-							int blendBits = pStage->stateBits & ( GLS_DSTBLEND_BITS | GLS_SRCBLEND_BITS );
+   if (pStage->bundle[0].tcGen == 130)
+    continue;
 
-							// Only add lightmap to blendfunc filter stage if it's the first time lightmap is used
-							// otherwise it will cause the shader to be darkened by the lightmap multiple times.
-							if (!usedLightmap || (blendBits != (GLS_DSTBLEND_SRC_COLOR | GLS_SRCBLEND_ZERO)
-								&& blendBits != (GLS_DSTBLEND_ZERO | GLS_SRCBLEND_DST_COLOR)))
-							{
-								lightmap = pStage2;
-								usedLightmap = qtrue;
-							}
-						}
-						break;
+   diffuse = pStage;
+   normal = ((void*)0);
+   parallax = qfalse;
+   specular = ((void*)0);
+   lightmap = ((void*)0);
 
-					default:
-						break;
-				}
-			}
 
-			tcgen = qfalse;
-			if (diffuse->bundle[0].tcGen == TCGEN_ENVIRONMENT_MAPPED
-			    || diffuse->bundle[0].tcGen == TCGEN_LIGHTMAP
-			    || diffuse->bundle[0].tcGen == TCGEN_VECTOR)
-			{
-				tcgen = qtrue;
-			}
+   for (j = i + 1; j < MAX_SHADER_STAGES; j++)
+   {
+    shaderStage_t *pStage2 = &stages[j];
 
-			diffuselit = qfalse;
-			if (diffuse->rgbGen == CGEN_LIGHTING_DIFFUSE)
-			{
-				diffuselit = qtrue;
-			}
+    if (!pStage2->active)
+     continue;
 
-			vertexlit = qfalse;
-			if (diffuse->rgbGen == CGEN_VERTEX_LIT || diffuse->rgbGen == CGEN_EXACT_VERTEX_LIT)
-			{
-				vertexlit = qtrue;
-			}
+    switch(pStage2->type)
+    {
+     case 134:
+      if (!normal)
+      {
+       normal = pStage2;
+      }
+      break;
 
-			CollapseStagesToLightall(diffuse, normal, specular, lightmap, diffuselit, vertexlit, parallax, tcgen);
-		}
+     case 133:
+      if (!normal)
+      {
+       normal = pStage2;
+       parallax = qtrue;
+      }
+      break;
 
-		// deactivate lightmap stages
-		for (i = 0; i < MAX_SHADER_STAGES; i++)
-		{
-			shaderStage_t *pStage = &stages[i];
+     case 132:
+      if (!specular)
+      {
+       specular = pStage2;
+      }
+      break;
 
-			if (!pStage->active)
-				continue;
+     case 135:
+      if (pStage2->bundle[0].tcGen == 130)
+      {
+       int blendBits = pStage->stateBits & ( GLS_DSTBLEND_BITS | GLS_SRCBLEND_BITS );
 
-			if (pStage->bundle[0].tcGen == TCGEN_LIGHTMAP)
-			{
-				pStage->active = qfalse;
-			}
-		}
-	}
 
-	// deactivate normal and specular stages
-	for (i = 0; i < MAX_SHADER_STAGES; i++)
-	{
-		shaderStage_t *pStage = &stages[i];
 
-		if (!pStage->active)
-			continue;
+       if (!usedLightmap || (blendBits != (GLS_DSTBLEND_SRC_COLOR | GLS_SRCBLEND_ZERO)
+        && blendBits != (GLS_DSTBLEND_ZERO | GLS_SRCBLEND_DST_COLOR)))
+       {
+        lightmap = pStage2;
+        usedLightmap = qtrue;
+       }
+      }
+      break;
 
-		if (pStage->type == ST_NORMALMAP)
-		{
-			pStage->active = qfalse;
-		}
+     default:
+      break;
+    }
+   }
 
-		if (pStage->type == ST_NORMALPARALLAXMAP)
-		{
-			pStage->active = qfalse;
-		}
+   tcgen = qfalse;
+   if (diffuse->bundle[0].tcGen == 131
+       || diffuse->bundle[0].tcGen == 130
+       || diffuse->bundle[0].tcGen == 128)
+   {
+    tcgen = qtrue;
+   }
 
-		if (pStage->type == ST_SPECULARMAP)
-		{
-			pStage->active = qfalse;
-		}			
-	}
+   diffuselit = qfalse;
+   if (diffuse->rgbGen == CGEN_LIGHTING_DIFFUSE)
+   {
+    diffuselit = qtrue;
+   }
 
-	// remove inactive stages
-	numStages = 0;
-	for (i = 0; i < MAX_SHADER_STAGES; i++)
-	{
-		if (!stages[i].active)
-			continue;
+   vertexlit = qfalse;
+   if (diffuse->rgbGen == CGEN_VERTEX_LIT || diffuse->rgbGen == CGEN_EXACT_VERTEX_LIT)
+   {
+    vertexlit = qtrue;
+   }
 
-		if (i == numStages)
-		{
-			numStages++;
-			continue;
-		}
+   CollapseStagesToLightall(diffuse, normal, specular, lightmap, diffuselit, vertexlit, parallax, tcgen);
+  }
 
-		stages[numStages] = stages[i];
-		stages[i].active = qfalse;
-		numStages++;
-	}
 
-	// convert any remaining lightmap stages to a lighting pass with a white texture
-	// only do this with r_sunlightMode non-zero, as it's only for correct shadows.
-	if (r_sunlightMode->integer && shader.numDeforms == 0)
-	{
-		for (i = 0; i < MAX_SHADER_STAGES; i++)
-		{
-			shaderStage_t *pStage = &stages[i];
+  for (i = 0; i < MAX_SHADER_STAGES; i++)
+  {
+   shaderStage_t *pStage = &stages[i];
 
-			if (!pStage->active)
-				continue;
+   if (!pStage->active)
+    continue;
 
-			if (pStage->adjustColorsForFog)
-				continue;
+   if (pStage->bundle[0].tcGen == 130)
+   {
+    pStage->active = qfalse;
+   }
+  }
+ }
 
-			if (pStage->bundle[TB_DIFFUSEMAP].tcGen == TCGEN_LIGHTMAP)
-			{
-				pStage->glslShaderGroup = tr.lightallShader;
-				pStage->glslShaderIndex = LIGHTDEF_USE_LIGHTMAP;
-				pStage->bundle[TB_LIGHTMAP] = pStage->bundle[TB_DIFFUSEMAP];
-				pStage->bundle[TB_DIFFUSEMAP].image[0] = tr.whiteImage;
-				pStage->bundle[TB_DIFFUSEMAP].isLightmap = qfalse;
-				pStage->bundle[TB_DIFFUSEMAP].tcGen = TCGEN_TEXTURE;
-			}
-		}
-	}
 
-	// convert any remaining lightingdiffuse stages to a lighting pass
-	if (shader.numDeforms == 0)
-	{
-		for (i = 0; i < MAX_SHADER_STAGES; i++)
-		{
-			shaderStage_t *pStage = &stages[i];
+ for (i = 0; i < MAX_SHADER_STAGES; i++)
+ {
+  shaderStage_t *pStage = &stages[i];
 
-			if (!pStage->active)
-				continue;
+  if (!pStage->active)
+   continue;
 
-			if (pStage->adjustColorsForFog)
-				continue;
+  if (pStage->type == 134)
+  {
+   pStage->active = qfalse;
+  }
 
-			if (pStage->rgbGen == CGEN_LIGHTING_DIFFUSE)
-			{
-				pStage->glslShaderGroup = tr.lightallShader;
-				pStage->glslShaderIndex = LIGHTDEF_USE_LIGHT_VECTOR;
+  if (pStage->type == 133)
+  {
+   pStage->active = qfalse;
+  }
 
-				if (pStage->bundle[0].tcGen != TCGEN_TEXTURE || pStage->bundle[0].numTexMods != 0)
-					pStage->glslShaderIndex |= LIGHTDEF_USE_TCGEN_AND_TCMOD;
-			}
-		}
-	}
+  if (pStage->type == 132)
+  {
+   pStage->active = qfalse;
+  }
+ }
 
-	return numStages;
+
+ numStages = 0;
+ for (i = 0; i < MAX_SHADER_STAGES; i++)
+ {
+  if (!stages[i].active)
+   continue;
+
+  if (i == numStages)
+  {
+   numStages++;
+   continue;
+  }
+
+  stages[numStages] = stages[i];
+  stages[i].active = qfalse;
+  numStages++;
+ }
+
+
+
+ if (r_sunlightMode->integer && shader.numDeforms == 0)
+ {
+  for (i = 0; i < MAX_SHADER_STAGES; i++)
+  {
+   shaderStage_t *pStage = &stages[i];
+
+   if (!pStage->active)
+    continue;
+
+   if (pStage->adjustColorsForFog)
+    continue;
+
+   if (pStage->bundle[TB_DIFFUSEMAP].tcGen == 130)
+   {
+    pStage->glslShaderGroup = tr.lightallShader;
+    pStage->glslShaderIndex = LIGHTDEF_USE_LIGHTMAP;
+    pStage->bundle[TB_LIGHTMAP] = pStage->bundle[TB_DIFFUSEMAP];
+    pStage->bundle[TB_DIFFUSEMAP].image[0] = tr.whiteImage;
+    pStage->bundle[TB_DIFFUSEMAP].isLightmap = qfalse;
+    pStage->bundle[TB_DIFFUSEMAP].tcGen = 129;
+   }
+  }
+ }
+
+
+ if (shader.numDeforms == 0)
+ {
+  for (i = 0; i < MAX_SHADER_STAGES; i++)
+  {
+   shaderStage_t *pStage = &stages[i];
+
+   if (!pStage->active)
+    continue;
+
+   if (pStage->adjustColorsForFog)
+    continue;
+
+   if (pStage->rgbGen == CGEN_LIGHTING_DIFFUSE)
+   {
+    pStage->glslShaderGroup = tr.lightallShader;
+    pStage->glslShaderIndex = LIGHTDEF_USE_LIGHT_VECTOR;
+
+    if (pStage->bundle[0].tcGen != 129 || pStage->bundle[0].numTexMods != 0)
+     pStage->glslShaderIndex |= LIGHTDEF_USE_TCGEN_AND_TCMOD;
+   }
+  }
+ }
+
+ return numStages;
 }

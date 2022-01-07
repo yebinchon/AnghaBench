@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct option {int dummy; } ;
 
-/* Variables and functions */
- int trailer_set_where (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  where ; 
+
+ int trailer_set_where (int *,char const*) ;
+ int where ;
 
 __attribute__((used)) static int option_parse_where(const struct option *opt,
-			      const char *arg, int unset)
+         const char *arg, int unset)
 {
-	return trailer_set_where(&where, arg);
+ return trailer_set_where(&where, arg);
 }

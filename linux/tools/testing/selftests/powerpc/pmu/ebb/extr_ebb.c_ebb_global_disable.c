@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BESCR_PME ; 
- int /*<<< orphan*/  SPRN_BESCRR ; 
- int /*<<< orphan*/  mb () ; 
- int /*<<< orphan*/  mtspr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int BESCR_PME ;
+ int SPRN_BESCRR ;
+ int mb () ;
+ int mtspr (int ,int ) ;
 
 void ebb_global_disable(void)
 {
-	/* Disable EBBs & freeze counters, events are still scheduled */
-	mtspr(SPRN_BESCRR, BESCR_PME);
-	mb();
+
+ mtspr(SPRN_BESCRR, BESCR_PME);
+ mb();
 }

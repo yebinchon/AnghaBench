@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gchar ;
-struct TYPE_4__ {struct TYPE_4__* next; int /*<<< orphan*/  data; } ;
-typedef  int /*<<< orphan*/  GtkWidget ;
-typedef  TYPE_1__ GList ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GTK_CONTAINER (int /*<<< orphan*/ *) ; 
- scalar_t__ GTK_IS_CONTAINER (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * GTK_WIDGET (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_list_free (TYPE_1__*) ; 
- TYPE_1__* gtk_container_get_children (int /*<<< orphan*/ ) ; 
- char* gtk_widget_get_name (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strncmp (char const*,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int gchar ;
+struct TYPE_4__ {struct TYPE_4__* next; int data; } ;
+typedef int GtkWidget ;
+typedef TYPE_1__ GList ;
+
+
+ int GTK_CONTAINER (int *) ;
+ scalar_t__ GTK_IS_CONTAINER (int *) ;
+ int * GTK_WIDGET (int ) ;
+ int g_list_free (TYPE_1__*) ;
+ TYPE_1__* gtk_container_get_children (int ) ;
+ char* gtk_widget_get_name (int *) ;
+ int strncmp (char const*,int *,int) ;
 
 __attribute__((used)) static GtkWidget *find_widget(GtkWidget *widget, gchar *name)
 {
     const char *wname;
-    GtkWidget *result = NULL;
+    GtkWidget *result = ((void*)0);
 
-    if (widget == NULL || name == NULL)
-        return NULL;
+    if (widget == ((void*)0) || name == ((void*)0))
+        return ((void*)0);
 
     wname = gtk_widget_get_name(widget);
-    if (wname != NULL && !strncmp(wname, name, 80))
+    if (wname != ((void*)0) && !strncmp(wname, name, 80))
     {
         return widget;
     }
@@ -45,7 +45,7 @@ __attribute__((used)) static GtkWidget *find_widget(GtkWidget *widget, gchar *na
         while (link)
         {
             result = find_widget(GTK_WIDGET(link->data), name);
-            if (result != NULL)
+            if (result != ((void*)0))
                 break;
             link = link->next;
         }

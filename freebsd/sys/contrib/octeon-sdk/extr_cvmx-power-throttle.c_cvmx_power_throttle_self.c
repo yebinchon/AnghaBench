@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CVMX_PTH_AVAILABLE ; 
- int /*<<< orphan*/  cvmx_get_core_num () ; 
- scalar_t__ cvmx_power_throttle_set_powlim (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int CVMX_PTH_AVAILABLE ;
+ int cvmx_get_core_num () ;
+ scalar_t__ cvmx_power_throttle_set_powlim (int ,int ) ;
 
 int cvmx_power_throttle_self(uint8_t percentage)
 {
@@ -24,7 +24,7 @@ int cvmx_power_throttle_self(uint8_t percentage)
 
     if (cvmx_power_throttle_set_powlim(cvmx_get_core_num(),
         percentage) == 0)
-	return -1;
+ return -1;
 
     return 0;
 }

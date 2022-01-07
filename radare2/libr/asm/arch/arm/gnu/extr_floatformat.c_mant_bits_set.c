@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct floatformat {unsigned int man_start; int man_len; int /*<<< orphan*/  totalsize; int /*<<< orphan*/  byteorder; } ;
 
-/* Variables and functions */
- scalar_t__ get_field (unsigned char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,unsigned int) ; 
- unsigned int min (int,int) ; 
+
+
+
+struct floatformat {unsigned int man_start; int man_len; int totalsize; int byteorder; } ;
+
+
+ scalar_t__ get_field (unsigned char const*,int ,int ,unsigned int,unsigned int) ;
+ unsigned int min (int,int) ;
 
 __attribute__((used)) static int
 mant_bits_set (const struct floatformat *fmt, const unsigned char *ufrom)
@@ -29,8 +29,8 @@ mant_bits_set (const struct floatformat *fmt, const unsigned char *ufrom)
       mant_bits = min (mant_bits_left, 32);
 
       if (get_field (ufrom, fmt->byteorder, fmt->totalsize,
-		  mant_off, mant_bits) != 0) {
-	      return 1;
+    mant_off, mant_bits) != 0) {
+       return 1;
       }
 
       mant_off += mant_bits;

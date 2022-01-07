@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct msghdr {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
-struct TYPE_3__ {int /*<<< orphan*/  sfd; } ;
-typedef  TYPE_1__ conn ;
+typedef int ssize_t ;
+struct TYPE_3__ {int sfd; } ;
+typedef TYPE_1__ conn ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sendmsg (int /*<<< orphan*/ ,struct msghdr*,int) ; 
+
+ int assert (int ) ;
+ int sendmsg (int ,struct msghdr*,int) ;
 
 ssize_t tcp_sendmsg(conn *c, struct msghdr *msg, int flags) {
-    assert (c != NULL);
+    assert (c != ((void*)0));
     return sendmsg(c->sfd, msg, flags);
 }

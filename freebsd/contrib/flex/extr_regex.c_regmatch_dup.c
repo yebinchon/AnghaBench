@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ rm_so; int rm_eo; } ;
-typedef  TYPE_1__ regmatch_t ;
+typedef TYPE_1__ regmatch_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _ (char*) ; 
- scalar_t__ flex_alloc (int) ; 
- int /*<<< orphan*/  flexfatal (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strncpy (char*,char const*,int) ; 
 
-char   *regmatch_dup (regmatch_t * m, const char *src)
+ int _ (char*) ;
+ scalar_t__ flex_alloc (int) ;
+ int flexfatal (int ) ;
+ int strncpy (char*,char const*,int) ;
+
+char *regmatch_dup (regmatch_t * m, const char *src)
 {
-	char   *str;
-	int     len;
+ char *str;
+ int len;
 
-	if (m == NULL || m->rm_so < 0)
-		return NULL;
-	len = m->rm_eo - m->rm_so;
-	str = (char *) flex_alloc ((len + 1) * sizeof (char));
-	if (!str)
-		flexfatal(_("Unable to allocate a copy of the match"));
-	strncpy (str, src + m->rm_so, len);
-	str[len] = 0;
-	return str;
+ if (m == ((void*)0) || m->rm_so < 0)
+  return ((void*)0);
+ len = m->rm_eo - m->rm_so;
+ str = (char *) flex_alloc ((len + 1) * sizeof (char));
+ if (!str)
+  flexfatal(_("Unable to allocate a copy of the match"));
+ strncpy (str, src + m->rm_so, len);
+ str[len] = 0;
+ return str;
 }

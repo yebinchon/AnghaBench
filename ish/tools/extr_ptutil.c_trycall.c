@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ errno ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  perror (char const*) ; 
- int /*<<< orphan*/  printf (char*) ; 
+ scalar_t__ errno ;
+ int exit (int) ;
+ int perror (char const*) ;
+ int printf (char*) ;
 
 long trycall(long res, const char *msg) {
     if (res == -1 && errno != 0) {

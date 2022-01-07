@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int* map; scalar_t__* setup; } ;
 
-/* Variables and functions */
- int MAX_LEDS ; 
- int /*<<< orphan*/  RARCH_LOG (char*,int,int,int) ; 
- int /*<<< orphan*/  RARCH_WARN (char*,int,...) ; 
- TYPE_1__* cur ; 
- int /*<<< orphan*/  set_gpio (int,int) ; 
- scalar_t__ setup_gpio (int) ; 
+
+ int MAX_LEDS ;
+ int RARCH_LOG (char*,int,int,int) ;
+ int RARCH_WARN (char*,int,...) ;
+ TYPE_1__* cur ;
+ int set_gpio (int,int) ;
+ scalar_t__ setup_gpio (int) ;
 
 __attribute__((used)) static void rpi_set(int led, int state)
 {

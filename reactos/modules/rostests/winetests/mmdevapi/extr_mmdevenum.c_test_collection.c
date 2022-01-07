@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  temp ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int ULONG ;
-typedef  scalar_t__ UINT ;
-typedef  scalar_t__ LONG_PTR ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IMMDeviceEnumerator ;
-typedef  int /*<<< orphan*/  IMMDeviceCollection ;
-typedef  int /*<<< orphan*/  IMMDevice ;
-typedef  int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  CoTaskMemFree (int /*<<< orphan*/ *) ; 
- int E_INVALIDARG ; 
- int E_NOINTERFACE ; 
- int E_POINTER ; 
- int /*<<< orphan*/  IID_IMMDeviceCollection ; 
- int /*<<< orphan*/  IID_IMMDeviceEnumerator ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int IMMDeviceCollection_AddRef (int /*<<< orphan*/ *) ; 
- int IMMDeviceCollection_GetCount (int /*<<< orphan*/ *,scalar_t__*) ; 
- int IMMDeviceCollection_Item (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ **) ; 
- int IMMDeviceCollection_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IMMDeviceCollection_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMMDeviceEnumerator_AddRef (int /*<<< orphan*/ *) ; 
- int IMMDeviceEnumerator_GetDevice (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int IMMDeviceEnumerator_Release (int /*<<< orphan*/ *) ; 
- int IMMDevice_GetId (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IMMDevice_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int S_OK ; 
- int /*<<< orphan*/  WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  trace (char*,char*) ; 
+
+
+
+typedef int temp ;
+typedef int WCHAR ;
+typedef int ULONG ;
+typedef scalar_t__ UINT ;
+typedef scalar_t__ LONG_PTR ;
+typedef int IUnknown ;
+typedef int IMMDeviceEnumerator ;
+typedef int IMMDeviceCollection ;
+typedef int IMMDevice ;
+typedef int HRESULT ;
+
+
+ int CP_ACP ;
+ int CoTaskMemFree (int *) ;
+ int E_INVALIDARG ;
+ int E_NOINTERFACE ;
+ int E_POINTER ;
+ int IID_IMMDeviceCollection ;
+ int IID_IMMDeviceEnumerator ;
+ int IID_IUnknown ;
+ int IMMDeviceCollection_AddRef (int *) ;
+ int IMMDeviceCollection_GetCount (int *,scalar_t__*) ;
+ int IMMDeviceCollection_Item (int *,scalar_t__,int **) ;
+ int IMMDeviceCollection_QueryInterface (int *,int *,void**) ;
+ int IMMDeviceCollection_Release (int *) ;
+ int IMMDeviceEnumerator_AddRef (int *) ;
+ int IMMDeviceEnumerator_GetDevice (int *,int *,int **) ;
+ int IMMDeviceEnumerator_Release (int *) ;
+ int IMMDevice_GetId (int *,int **) ;
+ int IMMDevice_Release (int *) ;
+ int IUnknown_Release (int *) ;
+ int S_OK ;
+ int WideCharToMultiByte (int ,int ,int *,int,char*,int,int *,int *) ;
+ int ok (int,char*,...) ;
+ int trace (char*,char*) ;
 
 __attribute__((used)) static void test_collection(IMMDeviceEnumerator *mme, IMMDeviceCollection *col)
 {
@@ -56,7 +56,7 @@ __attribute__((used)) static void test_collection(IMMDeviceEnumerator *mme, IMMD
     UINT numdev;
     IMMDevice *dev;
 
-    /* collection doesn't keep a ref on parent */
+
     IMMDeviceEnumerator_AddRef(mme);
     ref = IMMDeviceEnumerator_Release(mme);
     ok(ref == 2, "Reference count on parent is %u\n", ref);
@@ -65,7 +65,7 @@ __attribute__((used)) static void test_collection(IMMDeviceEnumerator *mme, IMMD
     IMMDeviceCollection_Release(col);
     ok(ref == 2, "Invalid reference count %u on collection\n", ref);
 
-    hr = IMMDeviceCollection_QueryInterface(col, &IID_IUnknown, NULL);
+    hr = IMMDeviceCollection_QueryInterface(col, &IID_IUnknown, ((void*)0));
     ok(hr == E_POINTER, "Null ppv returns %08x\n", hr);
 
     hr = IMMDeviceCollection_QueryInterface(col, &IID_IUnknown, (void**)&unk);
@@ -86,7 +86,7 @@ __attribute__((used)) static void test_collection(IMMDeviceEnumerator *mme, IMMD
     if (hr == S_OK)
         IMMDeviceEnumerator_Release(mme2);
 
-    hr = IMMDeviceCollection_GetCount(col, NULL);
+    hr = IMMDeviceCollection_GetCount(col, ((void*)0));
     ok(hr == E_POINTER, "GetCount returned 0x%08x\n", hr);
 
     hr = IMMDeviceCollection_GetCount(col, &numdev);
@@ -95,26 +95,26 @@ __attribute__((used)) static void test_collection(IMMDeviceEnumerator *mme, IMMD
     dev = (void*)(LONG_PTR)0x12345678;
     hr = IMMDeviceCollection_Item(col, numdev, &dev);
     ok(hr == E_INVALIDARG, "Asking for too high device returned 0x%08x\n", hr);
-    ok(dev == NULL, "Returned non-null device\n");
+    ok(dev == ((void*)0), "Returned non-null device\n");
 
     if (numdev)
     {
-        hr = IMMDeviceCollection_Item(col, 0, NULL);
+        hr = IMMDeviceCollection_Item(col, 0, ((void*)0));
         ok(hr == E_POINTER, "Query with null pointer returned 0x%08x\n", hr);
 
         hr = IMMDeviceCollection_Item(col, 0, &dev);
         ok(hr == S_OK, "Valid Item returned 0x%08x\n", hr);
-        ok(dev != NULL, "Device is null!\n");
-        if (dev != NULL)
+        ok(dev != ((void*)0), "Device is null!\n");
+        if (dev != ((void*)0))
         {
             char temp[128];
-            WCHAR *id = NULL;
+            WCHAR *id = ((void*)0);
             if (IMMDevice_GetId(dev, &id) == S_OK)
             {
                 IMMDevice *dev2;
 
                 temp[sizeof(temp)-1] = 0;
-                WideCharToMultiByte(CP_ACP, 0, id, -1, temp, sizeof(temp)-1, NULL, NULL);
+                WideCharToMultiByte(CP_ACP, 0, id, -1, temp, sizeof(temp)-1, ((void*)0), ((void*)0));
                 trace("Device found: %s\n", temp);
 
                 hr = IMMDeviceEnumerator_GetDevice(mme, id, &dev2);

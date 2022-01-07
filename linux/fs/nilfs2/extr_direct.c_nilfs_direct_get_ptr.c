@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nilfs_bmap {int dummy; } ;
-typedef  int __u64 ;
+typedef int __u64 ;
 
-/* Variables and functions */
- int le64_to_cpu (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * nilfs_direct_dptrs (struct nilfs_bmap const*) ; 
+
+ int le64_to_cpu (int ) ;
+ int * nilfs_direct_dptrs (struct nilfs_bmap const*) ;
 
 __attribute__((used)) static inline __u64
 nilfs_direct_get_ptr(const struct nilfs_bmap *direct, __u64 key)
 {
-	return le64_to_cpu(*(nilfs_direct_dptrs(direct) + key));
+ return le64_to_cpu(*(nilfs_direct_dptrs(direct) + key));
 }

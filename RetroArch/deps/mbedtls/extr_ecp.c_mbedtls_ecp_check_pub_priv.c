@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_7__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  Z; int /*<<< orphan*/  Y; int /*<<< orphan*/  X; } ;
-typedef  TYPE_2__ mbedtls_ecp_point ;
-struct TYPE_10__ {int /*<<< orphan*/  Z; int /*<<< orphan*/  Y; int /*<<< orphan*/  X; } ;
-struct TYPE_13__ {scalar_t__ id; int /*<<< orphan*/  G; } ;
-struct TYPE_12__ {TYPE_1__ Q; TYPE_7__ grp; int /*<<< orphan*/  d; } ;
-typedef  TYPE_3__ mbedtls_ecp_keypair ;
-typedef  int /*<<< orphan*/  mbedtls_ecp_group ;
 
-/* Variables and functions */
- scalar_t__ MBEDTLS_ECP_DP_NONE ; 
- int MBEDTLS_ERR_ECP_BAD_INPUT_DATA ; 
- int /*<<< orphan*/  MBEDTLS_MPI_CHK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mbedtls_ecp_group_copy (int /*<<< orphan*/ *,TYPE_7__*) ; 
- int /*<<< orphan*/  mbedtls_ecp_group_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_ecp_group_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_ecp_mul (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_ecp_point_free (TYPE_2__*) ; 
- int /*<<< orphan*/  mbedtls_ecp_point_init (TYPE_2__*) ; 
- scalar_t__ mbedtls_mpi_cmp_mpi (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_13__ TYPE_7__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int Z; int Y; int X; } ;
+typedef TYPE_2__ mbedtls_ecp_point ;
+struct TYPE_10__ {int Z; int Y; int X; } ;
+struct TYPE_13__ {scalar_t__ id; int G; } ;
+struct TYPE_12__ {TYPE_1__ Q; TYPE_7__ grp; int d; } ;
+typedef TYPE_3__ mbedtls_ecp_keypair ;
+typedef int mbedtls_ecp_group ;
+
+
+ scalar_t__ MBEDTLS_ECP_DP_NONE ;
+ int MBEDTLS_ERR_ECP_BAD_INPUT_DATA ;
+ int MBEDTLS_MPI_CHK (int ) ;
+ int mbedtls_ecp_group_copy (int *,TYPE_7__*) ;
+ int mbedtls_ecp_group_free (int *) ;
+ int mbedtls_ecp_group_init (int *) ;
+ int mbedtls_ecp_mul (int *,TYPE_2__*,int *,int *,int *,int *) ;
+ int mbedtls_ecp_point_free (TYPE_2__*) ;
+ int mbedtls_ecp_point_init (TYPE_2__*) ;
+ scalar_t__ mbedtls_mpi_cmp_mpi (int *,int *) ;
 
 int mbedtls_ecp_check_pub_priv( const mbedtls_ecp_keypair *pub, const mbedtls_ecp_keypair *prv )
 {
@@ -52,11 +52,11 @@ int mbedtls_ecp_check_pub_priv( const mbedtls_ecp_keypair *pub, const mbedtls_ec
     mbedtls_ecp_point_init( &Q );
     mbedtls_ecp_group_init( &grp );
 
-    /* mbedtls_ecp_mul() needs a non-const group... */
+
     mbedtls_ecp_group_copy( &grp, &prv->grp );
 
-    /* Also checks d is valid */
-    MBEDTLS_MPI_CHK( mbedtls_ecp_mul( &grp, &Q, &prv->d, &prv->grp.G, NULL, NULL ) );
+
+    MBEDTLS_MPI_CHK( mbedtls_ecp_mul( &grp, &Q, &prv->d, &prv->grp.G, ((void*)0), ((void*)0) ) );
 
     if( mbedtls_mpi_cmp_mpi( &Q.X, &prv->Q.X ) ||
         mbedtls_mpi_cmp_mpi( &Q.Y, &prv->Q.Y ) ||

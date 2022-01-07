@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- double LCMS_VERSION ; 
- int /*<<< orphan*/  PrintBuiltins () ; 
- int /*<<< orphan*/  PrintRenderingIntents (int /*<<< orphan*/ *) ; 
- int SW ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
+ double LCMS_VERSION ;
+ int PrintBuiltins () ;
+ int PrintRenderingIntents (int *) ;
+ int SW ;
+ int exit (int ) ;
+ int fprintf (int ,char*,...) ;
+ int stderr ;
 
 __attribute__((used)) static
 void Help(int level)
@@ -37,7 +29,7 @@ void Help(int level)
      fprintf(stderr, "%ci<profile> - Input profile (defaults to sRGB)\n", SW);
      fprintf(stderr, "%co<profile> - Output profile (defaults to sRGB)\n", SW);
 
-     PrintRenderingIntents(NULL);
+     PrintRenderingIntents(((void*)0));
 
 
      fprintf(stderr, "%cb - Black point compensation\n", SW);

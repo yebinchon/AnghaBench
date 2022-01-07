@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lfs1_t ;
-struct TYPE_9__ {int off; int /*<<< orphan*/  d; } ;
-typedef  TYPE_2__ lfs1_entry_t ;
-struct TYPE_8__ {int size; int /*<<< orphan*/  tail; } ;
-struct TYPE_10__ {int off; int pos; int /*<<< orphan*/ * pair; TYPE_1__ d; } ;
-typedef  TYPE_3__ lfs1_dir_t ;
 
-/* Variables and functions */
- int LFS1_ERR_NOENT ; 
- int lfs1_bd_read (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- int lfs1_dir_fetch (int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lfs1_entry_fromle32 (int /*<<< orphan*/ *) ; 
- scalar_t__ lfs1_entry_size (TYPE_2__*) ; 
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int lfs1_t ;
+struct TYPE_9__ {int off; int d; } ;
+typedef TYPE_2__ lfs1_entry_t ;
+struct TYPE_8__ {int size; int tail; } ;
+struct TYPE_10__ {int off; int pos; int * pair; TYPE_1__ d; } ;
+typedef TYPE_3__ lfs1_dir_t ;
+
+
+ int LFS1_ERR_NOENT ;
+ int lfs1_bd_read (int *,int ,int,int *,int) ;
+ int lfs1_dir_fetch (int *,TYPE_3__*,int ) ;
+ int lfs1_entry_fromle32 (int *) ;
+ scalar_t__ lfs1_entry_size (TYPE_2__*) ;
 
 __attribute__((used)) static int lfs1_dir_next(lfs1_t *lfs1, lfs1_dir_t *dir, lfs1_entry_t *entry) {
     while (dir->off + sizeof(entry->d) > (0x7fffffff & dir->d.size)-4) {

@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENOENT ; 
- int WEXITSTATUS (int) ; 
- int /*<<< orphan*/  WIFEXITED (int) ; 
- int /*<<< orphan*/  WIFSIGNALED (int) ; 
- size_t WTERMSIG (int) ; 
- int /*<<< orphan*/  _PATH_SYSPATH ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  execvP (char const*,int /*<<< orphan*/ ,char* const*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fork () ; 
- int /*<<< orphan*/ * sys_siglist ; 
- int /*<<< orphan*/  waitpid (int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  warn (char*,...) ; 
- int /*<<< orphan*/  warnx (char*,char const*,...) ; 
+
+
+
+typedef int pid_t ;
+
+
+ int ENOENT ;
+ int WEXITSTATUS (int) ;
+ int WIFEXITED (int) ;
+ int WIFSIGNALED (int) ;
+ size_t WTERMSIG (int) ;
+ int _PATH_SYSPATH ;
+ int errno ;
+ int execvP (char const*,int ,char* const*) ;
+ int exit (int) ;
+ int fork () ;
+ int * sys_siglist ;
+ int waitpid (int ,int*,int ) ;
+ int warn (char*,...) ;
+ int warnx (char*,char const*,...) ;
 
 __attribute__((used)) static int
 exec_mountprog(const char *name, const char *execname, char *const argv[])
 {
-	pid_t pid;
-	int status;
+ pid_t pid;
+ int status;
 
-	switch (pid = fork()) {
-	case -1:				/* Error. */
-		warn("fork");
-		exit (1);
-	case 0:					/* Child. */
-		/* Go find an executable. */
-		execvP(execname, _PATH_SYSPATH, argv);
-		if (errno == ENOENT) {
-			warn("exec %s not found", execname);
-			if (execname[0] != '/') {
-				warnx("in path: %s", _PATH_SYSPATH);
-			}
-		}
-		exit(1);
-	default:				/* Parent. */
-		if (waitpid(pid, &status, 0) < 0) {
-			warn("waitpid");
-			return (1);
-		}
+ switch (pid = fork()) {
+ case -1:
+  warn("fork");
+  exit (1);
+ case 0:
 
-		if (WIFEXITED(status)) {
-			if (WEXITSTATUS(status) != 0)
-				return (WEXITSTATUS(status));
-		} else if (WIFSIGNALED(status)) {
-			warnx("%s: %s", name, sys_siglist[WTERMSIG(status)]);
-			return (1);
-		}
-		break;
-	}
+  execvP(execname, _PATH_SYSPATH, argv);
+  if (errno == ENOENT) {
+   warn("exec %s not found", execname);
+   if (execname[0] != '/') {
+    warnx("in path: %s", _PATH_SYSPATH);
+   }
+  }
+  exit(1);
+ default:
+  if (waitpid(pid, &status, 0) < 0) {
+   warn("waitpid");
+   return (1);
+  }
 
-	return (0);
+  if (WIFEXITED(status)) {
+   if (WEXITSTATUS(status) != 0)
+    return (WEXITSTATUS(status));
+  } else if (WIFSIGNALED(status)) {
+   warnx("%s: %s", name, sys_siglist[WTERMSIG(status)]);
+   return (1);
+  }
+  break;
+ }
+
+ return (0);
 }

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lev_targ_target {size_t ad_query_len; scalar_t__ ad_id; int ad_price; int /*<<< orphan*/ * ad_query; } ;
+
+
+
+
+struct lev_targ_target {size_t ad_query_len; scalar_t__ ad_id; int ad_price; int * ad_query; } ;
 struct advert {scalar_t__ price; int flags; scalar_t__ query; } ;
 
-/* Variables and functions */
- int ADF_ON ; 
- size_t MAX_QUERY_STRING_LEN ; 
- int /*<<< orphan*/  ad_enable (struct advert*,scalar_t__) ; 
- int /*<<< orphan*/  adjust_ctr_counters (struct advert*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  change_ad_target (struct advert*) ; 
- int /*<<< orphan*/  compute_estimated_gain (struct advert*) ; 
- scalar_t__ exact_strdup (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  exact_strfree (scalar_t__) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,scalar_t__,int) ; 
- struct advert* get_ad_f (scalar_t__,int) ; 
- int load_ancient_ad (struct advert*) ; 
- int /*<<< orphan*/  remove_queue_ad (struct advert*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ targeting_disabled ; 
- int verbosity ; 
+
+ int ADF_ON ;
+ size_t MAX_QUERY_STRING_LEN ;
+ int ad_enable (struct advert*,scalar_t__) ;
+ int adjust_ctr_counters (struct advert*) ;
+ int assert (int) ;
+ int change_ad_target (struct advert*) ;
+ int compute_estimated_gain (struct advert*) ;
+ scalar_t__ exact_strdup (int *,int) ;
+ int exact_strfree (scalar_t__) ;
+ int fprintf (int ,char*,scalar_t__,int) ;
+ struct advert* get_ad_f (scalar_t__,int) ;
+ int load_ancient_ad (struct advert*) ;
+ int remove_queue_ad (struct advert*) ;
+ int stderr ;
+ scalar_t__ strcmp (scalar_t__,int *) ;
+ scalar_t__ targeting_disabled ;
+ int verbosity ;
 
 __attribute__((used)) static int perform_targeting (struct lev_targ_target *E) {
   struct advert *A;
@@ -52,8 +52,8 @@ __attribute__((used)) static int perform_targeting (struct lev_targ_target *E) {
     return res;
   }
 
-  if (A->price != E->ad_price && E->ad_price != 0) { 
-    A->price = E->ad_price; 
+  if (A->price != E->ad_price && E->ad_price != 0) {
+    A->price = E->ad_price;
   }
 
   if (!A->query || strcmp (A->query, E->ad_query)) {
@@ -69,7 +69,7 @@ __attribute__((used)) static int perform_targeting (struct lev_targ_target *E) {
   } else if (!(A->flags & ADF_ON) && A->price) {
     ad_enable (A, A->price);
   }
-  
+
   compute_estimated_gain (A);
 
   return 15 + E->ad_query_len;

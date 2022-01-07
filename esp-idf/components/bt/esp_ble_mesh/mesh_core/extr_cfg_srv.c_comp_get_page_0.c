@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned int u16_t ;
+
+
+
+
+typedef unsigned int u16_t ;
 struct net_buf_simple {int dummy; } ;
-struct bt_mesh_comp {unsigned int cid; unsigned int pid; unsigned int vid; int elem_count; int /*<<< orphan*/ * elem; } ;
+struct bt_mesh_comp {unsigned int cid; unsigned int pid; unsigned int vid; int elem_count; int * elem; } ;
 
-/* Variables and functions */
- unsigned int BLE_MESH_FEAT_FRIEND ; 
- unsigned int BLE_MESH_FEAT_LOW_POWER ; 
- unsigned int BLE_MESH_FEAT_PROXY ; 
- unsigned int BLE_MESH_FEAT_RELAY ; 
- unsigned int CONFIG_BLE_MESH_CRPL ; 
- int /*<<< orphan*/  CONFIG_BLE_MESH_FRIEND ; 
- int /*<<< orphan*/  CONFIG_BLE_MESH_GATT_PROXY_SERVER ; 
- int /*<<< orphan*/  CONFIG_BLE_MESH_LOW_POWER ; 
- int /*<<< orphan*/  CONFIG_BLE_MESH_RELAY ; 
- scalar_t__ IS_ENABLED (int /*<<< orphan*/ ) ; 
- struct bt_mesh_comp* bt_mesh_comp_get () ; 
- int comp_add_elem (struct net_buf_simple*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  net_buf_simple_add_le16 (struct net_buf_simple*,unsigned int) ; 
+
+ unsigned int BLE_MESH_FEAT_FRIEND ;
+ unsigned int BLE_MESH_FEAT_LOW_POWER ;
+ unsigned int BLE_MESH_FEAT_PROXY ;
+ unsigned int BLE_MESH_FEAT_RELAY ;
+ unsigned int CONFIG_BLE_MESH_CRPL ;
+ int CONFIG_BLE_MESH_FRIEND ;
+ int CONFIG_BLE_MESH_GATT_PROXY_SERVER ;
+ int CONFIG_BLE_MESH_LOW_POWER ;
+ int CONFIG_BLE_MESH_RELAY ;
+ scalar_t__ IS_ENABLED (int ) ;
+ struct bt_mesh_comp* bt_mesh_comp_get () ;
+ int comp_add_elem (struct net_buf_simple*,int *,int) ;
+ int net_buf_simple_add_le16 (struct net_buf_simple*,unsigned int) ;
 
 __attribute__((used)) static int comp_get_page_0(struct net_buf_simple *buf)
 {

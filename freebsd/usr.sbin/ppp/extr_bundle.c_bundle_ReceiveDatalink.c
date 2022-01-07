@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct msghdr {int msg_iovlen; char* msg_control; int msg_controllen; struct iovec* msg_iov; scalar_t__ msg_namelen; int /*<<< orphan*/ * msg_name; } ;
-struct iovec {int /*<<< orphan*/ * iov_base; scalar_t__ iov_len; } ;
-struct datalink {int /*<<< orphan*/  bundle; } ;
+
+
+
+
+struct msghdr {int msg_iovlen; char* msg_control; int msg_controllen; struct iovec* msg_iov; scalar_t__ msg_namelen; int * msg_name; } ;
+struct iovec {int * iov_base; scalar_t__ iov_len; } ;
+struct datalink {int bundle; } ;
 struct cmsghdr {int cmsg_len; scalar_t__ cmsg_level; scalar_t__ cmsg_type; } ;
 struct bundle {int dummy; } ;
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  pid_t ;
-typedef  int caddr_t ;
+typedef int ssize_t ;
+typedef int pid_t ;
+typedef int caddr_t ;
 
-/* Variables and functions */
- scalar_t__ CMSG_DATA (struct cmsghdr*) ; 
- int /*<<< orphan*/  LogDEBUG ; 
- int /*<<< orphan*/  LogERROR ; 
- int /*<<< orphan*/  LogPHASE ; 
- int /*<<< orphan*/  LogWARN ; 
- int /*<<< orphan*/  MSG_WAITALL ; 
- int SCATTER_SEGMENTS ; 
- scalar_t__ SCM_RIGHTS ; 
- int SEND_MAXFD ; 
- scalar_t__ SOL_SOCKET ; 
- int /*<<< orphan*/  Version ; 
- int /*<<< orphan*/  bundle_CalculateBandwidth (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bundle_DatalinkLinkin (struct bundle*,struct datalink*) ; 
- int /*<<< orphan*/  close (int) ; 
- int datalink2iov (int /*<<< orphan*/ *,struct iovec*,int*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  datalink_AuthOk (struct datalink*) ; 
- int /*<<< orphan*/  datalink_Destroy (struct datalink*) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  getpid () ; 
- struct datalink* iov2datalink (struct bundle*,struct iovec*,int*,int,int,int*,int*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/ * malloc (scalar_t__) ; 
- int /*<<< orphan*/  memset (struct msghdr*,char,int) ; 
- int readv (int,struct iovec*,int) ; 
- int recvmsg (int,struct msghdr*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- scalar_t__ strlen (int /*<<< orphan*/ ) ; 
- scalar_t__ strncmp (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__) ; 
- int write (int,int /*<<< orphan*/ *,int) ; 
+
+ scalar_t__ CMSG_DATA (struct cmsghdr*) ;
+ int LogDEBUG ;
+ int LogERROR ;
+ int LogPHASE ;
+ int LogWARN ;
+ int MSG_WAITALL ;
+ int SCATTER_SEGMENTS ;
+ scalar_t__ SCM_RIGHTS ;
+ int SEND_MAXFD ;
+ scalar_t__ SOL_SOCKET ;
+ int Version ;
+ int bundle_CalculateBandwidth (int ) ;
+ int bundle_DatalinkLinkin (struct bundle*,struct datalink*) ;
+ int close (int) ;
+ int datalink2iov (int *,struct iovec*,int*,int,int *,int *) ;
+ int datalink_AuthOk (struct datalink*) ;
+ int datalink_Destroy (struct datalink*) ;
+ int errno ;
+ int free (int *) ;
+ int getpid () ;
+ struct datalink* iov2datalink (struct bundle*,struct iovec*,int*,int,int,int*,int*) ;
+ int log_Printf (int ,char*,...) ;
+ int * malloc (scalar_t__) ;
+ int memset (struct msghdr*,char,int) ;
+ int readv (int,struct iovec*,int) ;
+ int recvmsg (int,struct msghdr*,int ) ;
+ int strerror (int ) ;
+ scalar_t__ strlen (int ) ;
+ scalar_t__ strncmp (int ,int *,scalar_t__) ;
+ int write (int,int *,int) ;
 
 void
 bundle_ReceiveDatalink(struct bundle *bundle, int s)
@@ -65,22 +65,22 @@ bundle_ReceiveDatalink(struct bundle *bundle, int s)
 
   log_Printf(LogPHASE, "Receiving datalink\n");
 
-  /*
-   * Create our scatter/gather array - passing NULL gets the space
-   * allocation requirement rather than actually flattening the
-   * structures.
-   */
+
+
+
+
+
   iov[0].iov_len = strlen(Version) + 1;
-  iov[0].iov_base = NULL;
+  iov[0].iov_base = ((void*)0);
   niov = 1;
-  if (datalink2iov(NULL, iov, &niov, SCATTER_SEGMENTS, NULL, NULL) == -1) {
+  if (datalink2iov(((void*)0), iov, &niov, SCATTER_SEGMENTS, ((void*)0), ((void*)0)) == -1) {
     log_Printf(LogERROR, "Cannot determine space required for link\n");
     return;
   }
 
-  /* Allocate the scatter/gather array for recvmsg() */
+
   for (f = expect = 0; f < niov; f++) {
-    if ((iov[f].iov_base = malloc(iov[f].iov_len)) == NULL) {
+    if ((iov[f].iov_base = malloc(iov[f].iov_len)) == ((void*)0)) {
       log_Printf(LogERROR, "Cannot allocate space to receive link\n");
       return;
     }
@@ -88,17 +88,17 @@ bundle_ReceiveDatalink(struct bundle *bundle, int s)
       expect += iov[f].iov_len;
   }
 
-  /* Set up our message */
+
   cmsg = (struct cmsghdr *)cmsgbuf;
   cmsg->cmsg_len = sizeof cmsgbuf;
   cmsg->cmsg_level = SOL_SOCKET;
   cmsg->cmsg_type = 0;
 
   memset(&msg, '\0', sizeof msg);
-  msg.msg_name = NULL;
+  msg.msg_name = ((void*)0);
   msg.msg_namelen = 0;
   msg.msg_iov = iov;
-  msg.msg_iovlen = 1;		/* Only send the version at the first pass */
+  msg.msg_iovlen = 1;
   msg.msg_control = cmsgbuf;
   msg.msg_controllen = sizeof cmsgbuf;
 
@@ -136,11 +136,11 @@ bundle_ReceiveDatalink(struct bundle *bundle, int s)
     return;
   }
 
-  /*
-   * We've successfully received two or more open file descriptors
-   * through our socket, plus a version string.  Make sure it's the
-   * correct version, and drop the connection if it's not.
-   */
+
+
+
+
+
   if (strncmp(Version, iov[0].iov_base, iov[0].iov_len)) {
     log_Printf(LogWARN, "Cannot receive datalink, incorrect version"
                " (\"%.*s\", not \"%s\")\n", (int)iov[0].iov_len,
@@ -152,11 +152,11 @@ bundle_ReceiveDatalink(struct bundle *bundle, int s)
     return;
   }
 
-  /*
-   * Everything looks good.  Send the other side our process id so that
-   * they can transfer lock ownership, and wait for them to send the
-   * actual link data.
-   */
+
+
+
+
+
   pid = getpid();
   if ((got = write(fd[1], &pid, sizeof pid)) != sizeof pid) {
     if (got == -1)
@@ -184,9 +184,9 @@ bundle_ReceiveDatalink(struct bundle *bundle, int s)
   }
   close(fd[1]);
 
-  onfd = nfd;	/* We've got this many in our array */
-  nfd -= 2;	/* Don't include p->fd and our reply descriptor */
-  niov = 1;	/* Skip the version id */
+  onfd = nfd;
+  nfd -= 2;
+  niov = 1;
   dl = iov2datalink(bundle, iov, &niov, sizeof iov / sizeof *iov, fd[0],
                     fd + 2, &nfd);
   if (dl) {

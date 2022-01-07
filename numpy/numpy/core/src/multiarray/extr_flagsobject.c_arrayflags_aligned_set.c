@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * arr; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  TYPE_1__ PyArrayFlagsObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_AttributeError ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- int /*<<< orphan*/ * PyObject_CallMethod (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ PyObject_IsTrue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_False ; 
- int /*<<< orphan*/  Py_None ; 
- int /*<<< orphan*/  Py_True ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * arr; } ;
+typedef int PyObject ;
+typedef TYPE_1__ PyArrayFlagsObject ;
+
+
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_AttributeError ;
+ int PyExc_ValueError ;
+ int * PyObject_CallMethod (int *,char*,char*,int ,int ,int ) ;
+ scalar_t__ PyObject_IsTrue (int *) ;
+ int Py_DECREF (int *) ;
+ int Py_False ;
+ int Py_None ;
+ int Py_True ;
 
 __attribute__((used)) static int
 arrayflags_aligned_set(PyArrayFlagsObject *self, PyObject *obj)
 {
     PyObject *res;
 
-    if (obj == NULL) {
+    if (obj == ((void*)0)) {
         PyErr_SetString(PyExc_AttributeError,
                 "Cannot delete flags aligned attribute");
         return -1;
     }
-    if (self->arr == NULL) {
+    if (self->arr == ((void*)0)) {
         PyErr_SetString(PyExc_ValueError,
                 "Cannot set flags on array scalars.");
         return -1;
@@ -44,7 +44,7 @@ arrayflags_aligned_set(PyArrayFlagsObject *self, PyObject *obj)
     res = PyObject_CallMethod(self->arr, "setflags", "OOO", Py_None,
                               (PyObject_IsTrue(obj) ? Py_True : Py_False),
                               Py_None);
-    if (res == NULL) {
+    if (res == ((void*)0)) {
         return -1;
     }
     Py_DECREF(res);

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  bt_status_t ;
 
-/* Variables and functions */
- char* BTC_BLE_STORAGE_LE_LOCAL_KEY_DHK_STR ; 
- char* BTC_BLE_STORAGE_LE_LOCAL_KEY_ER_STR ; 
- char* BTC_BLE_STORAGE_LE_LOCAL_KEY_IRK_STR ; 
- char* BTC_BLE_STORAGE_LE_LOCAL_KEY_IR_STR ; 
- int /*<<< orphan*/  BTC_BLE_STORAGE_LOCAL_ADAPTER_STR ; 
-#define  BTC_LE_LOCAL_KEY_DHK 131 
-#define  BTC_LE_LOCAL_KEY_ER 130 
-#define  BTC_LE_LOCAL_KEY_IR 129 
-#define  BTC_LE_LOCAL_KEY_IRK 128 
- int /*<<< orphan*/  BT_STATUS_FAIL ; 
- int /*<<< orphan*/  BT_STATUS_SUCCESS ; 
- int /*<<< orphan*/  _btc_storage_save () ; 
- int btc_config_set_bin (int /*<<< orphan*/ ,char const*,int const*,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int bt_status_t ;
+
+
+ char* BTC_BLE_STORAGE_LE_LOCAL_KEY_DHK_STR ;
+ char* BTC_BLE_STORAGE_LE_LOCAL_KEY_ER_STR ;
+ char* BTC_BLE_STORAGE_LE_LOCAL_KEY_IRK_STR ;
+ char* BTC_BLE_STORAGE_LE_LOCAL_KEY_IR_STR ;
+ int BTC_BLE_STORAGE_LOCAL_ADAPTER_STR ;
+
+
+
+
+ int BT_STATUS_FAIL ;
+ int BT_STATUS_SUCCESS ;
+ int _btc_storage_save () ;
+ int btc_config_set_bin (int ,char const*,int const*,int) ;
 
 __attribute__((used)) static bt_status_t _btc_storage_add_ble_local_key(char *key,
                                           uint8_t key_type,
@@ -34,16 +34,16 @@ __attribute__((used)) static bt_status_t _btc_storage_add_ble_local_key(char *ke
 {
     const char* name;
     switch (key_type) {
-    case BTC_LE_LOCAL_KEY_IR:
+    case 129:
         name = BTC_BLE_STORAGE_LE_LOCAL_KEY_IR_STR;
         break;
-    case BTC_LE_LOCAL_KEY_IRK:
+    case 128:
         name = BTC_BLE_STORAGE_LE_LOCAL_KEY_IRK_STR;
         break;
-    case BTC_LE_LOCAL_KEY_DHK:
+    case 131:
         name = BTC_BLE_STORAGE_LE_LOCAL_KEY_DHK_STR;
         break;
-    case BTC_LE_LOCAL_KEY_ER:
+    case 130:
         name = BTC_BLE_STORAGE_LE_LOCAL_KEY_ER_STR;
         break;
     default:

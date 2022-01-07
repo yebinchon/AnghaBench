@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  In; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ binlog_disabled ; 
- int /*<<< orphan*/  cache_do_delete_local_copy (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cache_do_set_new_local_copy (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cache_do_set_size (char*,long long) ; 
- int /*<<< orphan*/  cache_do_set_yellow_light_remaining (char*,char*,int) ; 
- int cache_id ; 
- int /*<<< orphan*/  memcmp (char const*,char*,int) ; 
- int read_in (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  set_delete_local_copy_queries ; 
- int /*<<< orphan*/  set_file_size_queries ; 
- int /*<<< orphan*/  set_new_local_copy_queries ; 
- int /*<<< orphan*/  set_queries ; 
- int /*<<< orphan*/  set_yellow_time_remaining_queries ; 
- int sscanf (char const*,char*,...) ; 
- int /*<<< orphan*/ * value_buff ; 
+
+
+
+struct connection {int In; } ;
+
+
+ int assert (int) ;
+ scalar_t__ binlog_disabled ;
+ int cache_do_delete_local_copy (char*,int *) ;
+ int cache_do_set_new_local_copy (char*,int *) ;
+ int cache_do_set_size (char*,long long) ;
+ int cache_do_set_yellow_light_remaining (char*,char*,int) ;
+ int cache_id ;
+ int memcmp (char const*,char*,int) ;
+ int read_in (int *,int *,int) ;
+ int set_delete_local_copy_queries ;
+ int set_file_size_queries ;
+ int set_new_local_copy_queries ;
+ int set_queries ;
+ int set_yellow_time_remaining_queries ;
+ int sscanf (char const*,char*,...) ;
+ int * value_buff ;
 
 int memcache_store (struct connection *c, int op, const char *key, int key_len, int flags, int delay, int size) {
   int id;

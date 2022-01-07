@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  out ;
-typedef  scalar_t__ UINTFLOAT ;
-struct TYPE_3__ {int /*<<< orphan*/  (* hybrid_synthesis_deint ) (scalar_t__***,scalar_t__***,int,int) ;} ;
-typedef  TYPE_1__ PSDSPContext ;
-typedef  scalar_t__ INTFLOAT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (scalar_t__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub1 (scalar_t__***,scalar_t__***,int,int) ; 
- int /*<<< orphan*/  stub2 (scalar_t__***,scalar_t__***,int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int out ;
+typedef scalar_t__ UINTFLOAT ;
+struct TYPE_3__ {int (* hybrid_synthesis_deint ) (scalar_t__***,scalar_t__***,int,int) ;} ;
+typedef TYPE_1__ PSDSPContext ;
+typedef scalar_t__ INTFLOAT ;
+
+
+ int memset (scalar_t__*,int ,int) ;
+ int stub1 (scalar_t__***,scalar_t__***,int,int) ;
+ int stub2 (scalar_t__***,scalar_t__***,int,int) ;
 
 __attribute__((used)) static void hybrid_synthesis(PSDSPContext *dsp, INTFLOAT out[2][38][64],
                              INTFLOAT in[91][32][2], int is34, int len)
@@ -31,8 +31,8 @@ __attribute__((used)) static void hybrid_synthesis(PSDSPContext *dsp, INTFLOAT o
             memset(out[0][n], 0, 5*sizeof(out[0][n][0]));
             memset(out[1][n], 0, 5*sizeof(out[1][n][0]));
             for (i = 0; i < 12; i++) {
-                out[0][n][0] += (UINTFLOAT)in[   i][n][0];
-                out[1][n][0] += (UINTFLOAT)in[   i][n][1];
+                out[0][n][0] += (UINTFLOAT)in[ i][n][0];
+                out[1][n][0] += (UINTFLOAT)in[ i][n][1];
             }
             for (i = 0; i < 8; i++) {
                 out[0][n][1] += (UINTFLOAT)in[12+i][n][0];

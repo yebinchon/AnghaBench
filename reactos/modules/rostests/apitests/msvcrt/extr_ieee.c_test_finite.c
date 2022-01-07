@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int l; double d; } ;
-typedef  TYPE_1__ ieee_double ;
+typedef TYPE_1__ ieee_double ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
- scalar_t__ _finite (double) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
+
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
+ scalar_t__ _finite (double) ;
+ int ok (int,char*) ;
 
 void test_finite(void)
 {
@@ -67,6 +67,6 @@ void test_finite(void)
     tested.l = 0x7FFFFFFFFFFFFFFFLL;
     ok(_finite(tested.d) == FALSE, "_finite = TRUE\n");
 
-    /* MSDN example */
+
     ok(_finite(2.387000) == TRUE, "_finite = FALSE\n");
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  s_addr; } ;
-struct TYPE_8__ {int /*<<< orphan*/  s_addr; } ;
+
+
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int s_addr; } ;
+struct TYPE_8__ {int s_addr; } ;
 struct ip_mreq {TYPE_4__ imr_interface; TYPE_1__ imr_multiaddr; } ;
 struct TYPE_12__ {TYPE_6__* p_sys; } ;
-typedef  TYPE_5__ stream_t ;
-typedef  int /*<<< orphan*/  imr ;
-struct TYPE_9__ {int /*<<< orphan*/  s_addr; } ;
+typedef TYPE_5__ stream_t ;
+typedef int imr ;
+struct TYPE_9__ {int s_addr; } ;
 struct TYPE_10__ {TYPE_2__ sin_addr; } ;
-struct TYPE_13__ {int /*<<< orphan*/  sAMT; TYPE_3__ mcastGroupAddr; } ;
-typedef  TYPE_6__ access_sys_t ;
+struct TYPE_13__ {int sAMT; TYPE_3__ mcastGroupAddr; } ;
+typedef TYPE_6__ access_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INADDR_ANY ; 
- int /*<<< orphan*/  IPPROTO_IP ; 
- int /*<<< orphan*/  IP_DROP_MEMBERSHIP ; 
- int setsockopt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
+
+ int INADDR_ANY ;
+ int IPPROTO_IP ;
+ int IP_DROP_MEMBERSHIP ;
+ int setsockopt (int ,int ,int ,char*,int) ;
 
 __attribute__((used)) static int amt_leaveASM_group( stream_t *p_access )
 {

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_skel_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  build_text_conflict_resolve_items (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_wc__db_op_mark_resolved (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_read_conflict (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__wq_run (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_conflict_choose_merged ; 
+
+
+
+typedef int svn_wc__db_t ;
+typedef int svn_skel_t ;
+typedef int svn_error_t ;
+typedef int svn_cancel_func_t ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int build_text_conflict_resolve_items (int **,int *,int *,char const*,int *,int ,int *,int ,int *,int ,void*,int *,int *) ;
+ int * svn_error_trace (int ) ;
+ int svn_wc__db_op_mark_resolved (int *,char const*,int ,int ,int ,int *,int *) ;
+ int svn_wc__db_read_conflict (int **,int *,int *,int *,char const*,int *,int *) ;
+ int svn_wc__wq_run (int *,char const*,int ,void*,int *) ;
+ int svn_wc_conflict_choose_merged ;
 
 svn_error_t *
 svn_wc__mark_resolved_text_conflict(svn_wc__db_t *db,
@@ -38,17 +38,17 @@ svn_wc__mark_resolved_text_conflict(svn_wc__db_t *db,
   svn_skel_t *work_items;
   svn_skel_t *conflict;
 
-  SVN_ERR(svn_wc__db_read_conflict(&conflict, NULL, NULL,
+  SVN_ERR(svn_wc__db_read_conflict(&conflict, ((void*)0), ((void*)0),
                                    db, local_abspath,
                                    scratch_pool, scratch_pool));
 
   if (!conflict)
     return SVN_NO_ERROR;
 
-  SVN_ERR(build_text_conflict_resolve_items(&work_items, NULL,
+  SVN_ERR(build_text_conflict_resolve_items(&work_items, ((void*)0),
                                             db, local_abspath, conflict,
                                             svn_wc_conflict_choose_merged,
-                                            NULL, FALSE, NULL,
+                                            ((void*)0), FALSE, ((void*)0),
                                             cancel_func, cancel_baton,
                                             scratch_pool, scratch_pool));
 

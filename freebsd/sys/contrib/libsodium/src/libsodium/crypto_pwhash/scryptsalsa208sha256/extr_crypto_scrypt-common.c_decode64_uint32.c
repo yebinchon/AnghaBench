@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint32_t ;
 
-/* Variables and functions */
- scalar_t__ decode64_one (scalar_t__*,int /*<<< orphan*/  const) ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+
+
+ scalar_t__ decode64_one (scalar_t__*,int const) ;
 
 __attribute__((used)) static const uint8_t *
 decode64_uint32(uint32_t *dst, uint32_t dstbits, const uint8_t *src)
@@ -27,7 +27,7 @@ decode64_uint32(uint32_t *dst, uint32_t dstbits, const uint8_t *src)
         uint32_t one;
         if (decode64_one(&one, *src)) {
             *dst = 0;
-            return NULL;
+            return ((void*)0);
         }
         src++;
         value |= one << bit;

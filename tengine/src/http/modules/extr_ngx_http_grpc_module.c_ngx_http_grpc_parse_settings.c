@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_char ;
-typedef  int ssize_t ;
-typedef  int ngx_uint_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
+
+
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int u_char ;
+typedef int ssize_t ;
+typedef int ngx_uint_t ;
+typedef int ngx_int_t ;
 struct TYPE_13__ {TYPE_2__* connection; } ;
-typedef  TYPE_3__ ngx_http_request_t ;
-struct TYPE_14__ {int rest; int frame_state; scalar_t__ stream_id; int flags; int setting_id; int setting_value; int send_window; void* state; TYPE_1__* connection; int /*<<< orphan*/  settings; int /*<<< orphan*/ * free; } ;
-typedef  TYPE_4__ ngx_http_grpc_ctx_t ;
+typedef TYPE_3__ ngx_http_request_t ;
+struct TYPE_14__ {int rest; int frame_state; scalar_t__ stream_id; int flags; int setting_id; int setting_value; int send_window; void* state; TYPE_1__* connection; int settings; int * free; } ;
+typedef TYPE_4__ ngx_http_grpc_ctx_t ;
 struct TYPE_15__ {int* last; int* pos; } ;
-typedef  TYPE_5__ ngx_buf_t ;
-struct TYPE_12__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_5__ ngx_buf_t ;
+struct TYPE_12__ {int log; } ;
 struct TYPE_11__ {int init_window; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_AGAIN ; 
- int /*<<< orphan*/  NGX_ERROR ; 
- int NGX_HTTP_V2_ACK_FLAG ; 
- int NGX_HTTP_V2_MAX_WINDOW ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/  ngx_http_grpc_send_settings_ack (TYPE_3__*,TYPE_4__*) ; 
- void* ngx_http_grpc_st_start ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
+
+ int NGX_AGAIN ;
+ int NGX_ERROR ;
+ int NGX_HTTP_V2_ACK_FLAG ;
+ int NGX_HTTP_V2_MAX_WINDOW ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_LOG_ERR ;
+ int NGX_OK ;
+ int ngx_http_grpc_send_settings_ack (TYPE_3__*,TYPE_4__*) ;
+ void* ngx_http_grpc_st_start ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int ngx_log_debug2 (int ,int ,int ,char*,int,int) ;
+ int ngx_log_error (int ,int ,int ,char*,...) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_grpc_parse_settings(ngx_http_request_t *r, ngx_http_grpc_ctx_t *ctx,
     ngx_buf_t *b)
 {
-    u_char   ch, *p, *last;
-    ssize_t  window_update;
+    u_char ch, *p, *last;
+    ssize_t window_update;
     enum {
         sw_start = 0,
         sw_id,
@@ -102,7 +102,7 @@ ngx_http_grpc_parse_settings(ngx_http_request_t *r, ngx_http_grpc_ctx_t *ctx,
             return NGX_ERROR;
         }
 
-        if (ctx->free == NULL && ctx->settings++ > 1000) {
+        if (ctx->free == ((void*)0) && ctx->settings++ > 1000) {
             ngx_log_error(NGX_LOG_ERR, r->connection->log, 0,
                           "upstream sent too many settings frames");
             return NGX_ERROR;
@@ -112,10 +112,10 @@ ngx_http_grpc_parse_settings(ngx_http_request_t *r, ngx_http_grpc_ctx_t *ctx,
     for (p = b->pos; p < last; p++) {
         ch = *p;
 
-#if 0
-        ngx_log_debug2(NGX_LOG_DEBUG_HTTP, r->connection->log, 0,
-                       "grpc settings byte: %02Xd s:%d", ch, state);
-#endif
+
+
+
+
 
         switch (state) {
 
@@ -152,20 +152,8 @@ ngx_http_grpc_parse_settings(ngx_http_request_t *r, ngx_http_grpc_ctx_t *ctx,
             ngx_log_debug2(NGX_LOG_DEBUG_HTTP, r->connection->log, 0,
                            "grpc setting: %ui %ui",
                            ctx->setting_id, ctx->setting_value);
-
-            /*
-             * The following settings are defined by the protocol:
-             *
-             * SETTINGS_HEADER_TABLE_SIZE, SETTINGS_ENABLE_PUSH,
-             * SETTINGS_MAX_CONCURRENT_STREAMS, SETTINGS_INITIAL_WINDOW_SIZE,
-             * SETTINGS_MAX_FRAME_SIZE, SETTINGS_MAX_HEADER_LIST_SIZE
-             *
-             * Only SETTINGS_INITIAL_WINDOW_SIZE seems to be needed in
-             * a simple client.
-             */
-
             if (ctx->setting_id == 0x04) {
-                /* SETTINGS_INITIAL_WINDOW_SIZE */
+
 
                 if (ctx->setting_value > NGX_HTTP_V2_MAX_WINDOW) {
                     ngx_log_error(NGX_LOG_ERR, r->connection->log, 0,

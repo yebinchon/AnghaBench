@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  conn; } ;
-typedef  TYPE_1__ lwIP_sock ;
-typedef  scalar_t__ err_t ;
 
-/* Variables and functions */
- scalar_t__ ERR_OK ; 
- int /*<<< orphan*/  ESP_LOG (char*,int,...) ; 
- TYPE_1__* get_socket (int) ; 
- scalar_t__ netconn_listen (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int conn; } ;
+typedef TYPE_1__ lwIP_sock ;
+typedef scalar_t__ err_t ;
+
+
+ scalar_t__ ERR_OK ;
+ int ESP_LOG (char*,int,...) ;
+ TYPE_1__* get_socket (int) ;
+ scalar_t__ netconn_listen (int ) ;
 
 int lwip_listen(int s, int backlog)
 {
-    lwIP_sock *sock = NULL;
+    lwIP_sock *sock = ((void*)0);
     err_t err = ERR_OK;
     sock = get_socket(s);
     if (!sock)

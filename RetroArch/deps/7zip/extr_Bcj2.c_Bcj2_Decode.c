@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  p ;
 
-/* Variables and functions */
- scalar_t__ IsJ (int,int) ; 
- int RC_READ_BYTE ; 
- int SZ_ERROR_DATA ; 
- int SZ_OK ; 
- int kBitModelTotal ; 
- int kNumBitModelTotalBits ; 
- int kNumMoveBits ; 
- int kTopValue ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+typedef int p ;
+
+
+ scalar_t__ IsJ (int,int) ;
+ int RC_READ_BYTE ;
+ int SZ_ERROR_DATA ;
+ int SZ_OK ;
+ int kBitModelTotal ;
+ int kNumBitModelTotalBits ;
+ int kNumMoveBits ;
+ int kTopValue ;
 
 int Bcj2_Decode(
       const uint8_t *buf0, size_t size0,

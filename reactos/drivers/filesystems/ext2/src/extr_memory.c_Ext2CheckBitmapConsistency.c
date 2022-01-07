@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct buffer_head {int dummy; } ;
-typedef  scalar_t__ ULONG ;
+typedef scalar_t__ ULONG ;
 struct TYPE_5__ {scalar_t__ s_groups_count; } ;
-struct TYPE_6__ {int InodeSize; int BlockSize; int /*<<< orphan*/  sb; TYPE_1__ sbi; } ;
-typedef  TYPE_2__* PEXT2_VCB ;
-typedef  int /*<<< orphan*/  PEXT2_IRP_CONTEXT ;
-typedef  int /*<<< orphan*/  PEXT2_GROUP_DESC ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+struct TYPE_6__ {int InodeSize; int BlockSize; int sb; TYPE_1__ sbi; } ;
+typedef TYPE_2__* PEXT2_VCB ;
+typedef int PEXT2_IRP_CONTEXT ;
+typedef int PEXT2_GROUP_DESC ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Ext2CheckSetBlock (int /*<<< orphan*/ ,TYPE_2__*,scalar_t__) ; 
- int INODES_COUNT ; 
- int INODES_PER_GROUP ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ ext4_block_bitmap (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ext4_get_group_desc (int /*<<< orphan*/ *,scalar_t__,struct buffer_head**) ; 
- scalar_t__ ext4_inode_bitmap (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ ext4_inode_table (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fini_bh (struct buffer_head**) ; 
+
+ int Ext2CheckSetBlock (int ,TYPE_2__*,scalar_t__) ;
+ int INODES_COUNT ;
+ int INODES_PER_GROUP ;
+ int TRUE ;
+ scalar_t__ ext4_block_bitmap (int *,int ) ;
+ int ext4_get_group_desc (int *,scalar_t__,struct buffer_head**) ;
+ scalar_t__ ext4_inode_bitmap (int *,int ) ;
+ scalar_t__ ext4_inode_table (int *,int ) ;
+ int fini_bh (struct buffer_head**) ;
 
 BOOLEAN
 Ext2CheckBitmapConsistency(PEXT2_IRP_CONTEXT IrpContext, PEXT2_VCB Vcb)
@@ -39,8 +39,8 @@ Ext2CheckBitmapConsistency(PEXT2_IRP_CONTEXT IrpContext, PEXT2_VCB Vcb)
 
     for (i = 0; i < Vcb->sbi.s_groups_count; i++) {
 
-        PEXT2_GROUP_DESC    gd;
-        struct buffer_head  *bh = NULL;
+        PEXT2_GROUP_DESC gd;
+        struct buffer_head *bh = ((void*)0);
 
         gd = ext4_get_group_desc(&Vcb->sb, i, &bh);
         if (!gd)

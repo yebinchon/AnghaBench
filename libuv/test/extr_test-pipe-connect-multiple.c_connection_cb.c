@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  loop; } ;
-typedef  TYPE_1__ uv_stream_t ;
-typedef  int /*<<< orphan*/  uv_pipe_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- size_t NUM_CLIENTS ; 
- size_t connect_cb_called ; 
- size_t connection_cb_called ; 
- int /*<<< orphan*/ * connections ; 
- int uv_accept (TYPE_1__*,TYPE_1__*) ; 
- int uv_pipe_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv_stop (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int loop; } ;
+typedef TYPE_1__ uv_stream_t ;
+typedef int uv_pipe_t ;
+
+
+ int ASSERT (int) ;
+ size_t NUM_CLIENTS ;
+ size_t connect_cb_called ;
+ size_t connection_cb_called ;
+ int * connections ;
+ int uv_accept (TYPE_1__*,TYPE_1__*) ;
+ int uv_pipe_init (int ,int *,int ) ;
+ int uv_stop (int ) ;
 
 __attribute__((used)) static void connection_cb(uv_stream_t* server, int status) {
   int r;

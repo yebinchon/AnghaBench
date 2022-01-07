@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  second ;
-typedef  int /*<<< orphan*/  first ;
-typedef  int /*<<< orphan*/  dest ;
 
-/* Variables and functions */
- int EBADF ; 
- int EINVAL ; 
- int ERANGE ; 
- int errno ; 
- int /*<<< orphan*/  memcmp (unsigned char*,...) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,char,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int p_mbsnbcat_s (unsigned char*,int,unsigned char const*,int) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int second ;
+typedef int first ;
+typedef int dest ;
+
+
+ int EBADF ;
+ int EINVAL ;
+ int ERANGE ;
+ int errno ;
+ int memcmp (unsigned char*,...) ;
+ int memcpy (unsigned char*,unsigned char const*,int) ;
+ int memset (unsigned char*,char,int) ;
+ int ok (int,char*,...) ;
+ int p_mbsnbcat_s (unsigned char*,int,unsigned char const*,int) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test__mbsnbcat_s(void)
 {
@@ -39,23 +39,23 @@ __attribute__((used)) static void test__mbsnbcat_s(void)
         return;
     }
 
-    /* Test invalid arguments. */
-    ret = p_mbsnbcat_s(NULL, 0, NULL, 0);
+
+    ret = p_mbsnbcat_s(((void*)0), 0, ((void*)0), 0);
     ok(ret == 0, "Expected _mbsnbcat_s to return 0, got %d\n", ret);
 
     errno = EBADF;
-    ret = p_mbsnbcat_s(NULL, 10, NULL, 0);
+    ret = p_mbsnbcat_s(((void*)0), 10, ((void*)0), 0);
     ok(ret == EINVAL, "Expected _mbsnbcat_s to return EINVAL, got %d\n", ret);
     ok(errno == EINVAL, "Expected errno to be EINVAL, got %d\n", errno);
 
     errno = EBADF;
-    ret = p_mbsnbcat_s(NULL, 0, NULL, 10);
+    ret = p_mbsnbcat_s(((void*)0), 0, ((void*)0), 10);
     ok(ret == EINVAL, "Expected _mbsnbcat_s to return EINVAL, got %d\n", ret);
     ok(errno == EINVAL, "Expected errno to be EINVAL, got %d\n", errno);
 
     memset(dest, 'X', sizeof(dest));
     errno = EBADF;
-    ret = p_mbsnbcat_s(dest, 0, NULL, 0);
+    ret = p_mbsnbcat_s(dest, 0, ((void*)0), 0);
     ok(ret == EINVAL, "Expected _mbsnbcat_s to return EINVAL, got %d\n", ret);
     ok(errno == EINVAL, "Expected errno to be EINVAL, got %d\n", errno);
     ok(dest[0] == 'X', "Expected the output buffer to be untouched\n");
@@ -69,14 +69,14 @@ __attribute__((used)) static void test__mbsnbcat_s(void)
 
     memset(dest, 'X', sizeof(dest));
     errno = EBADF;
-    ret = p_mbsnbcat_s(dest, sizeof(dest), NULL, 0);
+    ret = p_mbsnbcat_s(dest, sizeof(dest), ((void*)0), 0);
     ok(ret == EINVAL, "Expected _mbsnbcat_s to return EINVAL, got %d\n", ret);
     ok(errno == EINVAL, "Expected errno to be EINVAL, got %d\n", errno);
     ok(dest[0] == '\0', "Expected the output buffer to be null terminated\n");
 
     memset(dest, 'X', sizeof(dest));
     errno = EBADF;
-    ret = p_mbsnbcat_s(dest, sizeof(dest), NULL, 10);
+    ret = p_mbsnbcat_s(dest, sizeof(dest), ((void*)0), 10);
     ok(ret == EINVAL, "Expected _mbsnbcat_s to return EINVAL, got %d\n", ret);
     ok(errno == EINVAL, "Expected errno to be EINVAL, got %d\n", errno);
     ok(dest[0] == '\0', "Expected the output buffer to be null terminated\n");
@@ -88,7 +88,7 @@ __attribute__((used)) static void test__mbsnbcat_s(void)
     ok(!memcmp(dest, second, sizeof(second)),
        "Expected the output buffer string to be \"duck\"\n");
 
-    /* Test source truncation behavior. */
+
     memset(dest, 'X', sizeof(dest));
     memcpy(dest, first, sizeof(first));
     ret = p_mbsnbcat_s(dest, sizeof(dest), second, 0);
@@ -124,7 +124,7 @@ __attribute__((used)) static void test__mbsnbcat_s(void)
     ok(!memcmp(dest, "dinosaurduc", sizeof("dinosaurduc")),
        "Expected the output buffer string to be \"dinosaurduc\"\n");
 
-    /* Test destination truncation behavior. */
+
     memset(dest, 'X', sizeof(dest));
     memcpy(dest, first, sizeof(first));
     errno = EBADF;

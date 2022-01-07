@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int8_t ;
-struct TYPE_6__ {int /*<<< orphan*/  name; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int int8_t ;
+struct TYPE_6__ {int name; } ;
 struct TYPE_5__ {unsigned int component_num; scalar_t__* topology; TYPE_2__** component; } ;
-typedef  int /*<<< orphan*/  MMAL_STATUS_T ;
-typedef  scalar_t__ MMAL_GRAPH_TOPOLOGY_T ;
-typedef  int /*<<< orphan*/  MMAL_GRAPH_T ;
-typedef  TYPE_1__ MMAL_GRAPH_PRIVATE_T ;
-typedef  TYPE_2__ MMAL_COMPONENT_T ;
+typedef int MMAL_STATUS_T ;
+typedef scalar_t__ MMAL_GRAPH_TOPOLOGY_T ;
+typedef int MMAL_GRAPH_T ;
+typedef TYPE_1__ MMAL_GRAPH_PRIVATE_T ;
+typedef TYPE_2__ MMAL_COMPONENT_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_TRACE (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  MMAL_EINVAL ; 
- int /*<<< orphan*/  MMAL_ENOSYS ; 
- scalar_t__ MMAL_GRAPH_TOPOLOGY_STRAIGHT ; 
- int /*<<< orphan*/  MMAL_PARAM_UNUSED (unsigned int) ; 
- int /*<<< orphan*/  MMAL_SUCCESS ; 
+
+ int LOG_TRACE (char*,int *,int ,TYPE_2__*) ;
+ int MMAL_EINVAL ;
+ int MMAL_ENOSYS ;
+ scalar_t__ MMAL_GRAPH_TOPOLOGY_STRAIGHT ;
+ int MMAL_PARAM_UNUSED (unsigned int) ;
+ int MMAL_SUCCESS ;
 
 MMAL_STATUS_T mmal_graph_component_topology(MMAL_GRAPH_T *graph, MMAL_COMPONENT_T *component,
     MMAL_GRAPH_TOPOLOGY_T topology, int8_t *input, unsigned int input_num,
@@ -48,10 +48,10 @@ MMAL_STATUS_T mmal_graph_component_topology(MMAL_GRAPH_T *graph, MMAL_COMPONENT_
          break;
 
    if (i == private->component_num)
-      return MMAL_EINVAL; /* Component not found */
+      return MMAL_EINVAL;
 
    if (topology > MMAL_GRAPH_TOPOLOGY_STRAIGHT)
-      return MMAL_ENOSYS; /* Currently not supported */
+      return MMAL_ENOSYS;
 
    private->topology[i] = topology;
 

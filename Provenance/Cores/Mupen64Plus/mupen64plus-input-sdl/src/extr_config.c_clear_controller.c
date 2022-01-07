@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {double* mouse_sens; int* axis_deadzone; int* axis_peak; TYPE_3__* axis; TYPE_2__* button; TYPE_1__* control; int /*<<< orphan*/  device; } ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_8__ {double* mouse_sens; int* axis_deadzone; int* axis_peak; TYPE_3__* axis; TYPE_2__* button; TYPE_1__* control; int device; } ;
 struct TYPE_7__ {int button_a; int button_b; int axis_a; int axis_dir_a; int axis_b; int axis_dir_b; int hat; int hat_pos_a; int hat_pos_b; void* key_b; void* key_a; } ;
 struct TYPE_6__ {int button; int axis; int axis_deadzone; int hat; int hat_pos; int mouse; void* key; } ;
-struct TYPE_5__ {int /*<<< orphan*/  Plugin; scalar_t__ RawData; scalar_t__ Present; } ;
+struct TYPE_5__ {int Plugin; scalar_t__ RawData; scalar_t__ Present; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEVICE_NO_JOYSTICK ; 
- int /*<<< orphan*/  PLUGIN_NONE ; 
- void* SDL_SCANCODE_UNKNOWN ; 
- TYPE_4__* controller ; 
+
+ int DEVICE_NO_JOYSTICK ;
+ int PLUGIN_NONE ;
+ void* SDL_SCANCODE_UNKNOWN ;
+ TYPE_4__* controller ;
 
 __attribute__((used)) static void clear_controller(int iCtrlIdx)
 {

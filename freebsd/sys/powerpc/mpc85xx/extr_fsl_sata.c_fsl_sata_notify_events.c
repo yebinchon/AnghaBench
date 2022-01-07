@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_int32_t ;
-struct fsl_sata_channel {int /*<<< orphan*/  path; int /*<<< orphan*/  dev; int /*<<< orphan*/  r_mem; } ;
+
+
+
+
+typedef int u_int32_t ;
+struct fsl_sata_channel {int path; int dev; int r_mem; } ;
 struct cam_path {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AC_SCSI_AEN ; 
- int /*<<< orphan*/  ATA_OUTL (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ CAM_REQ_CMP ; 
- int /*<<< orphan*/  FSL_SATA_P_SNTF ; 
- scalar_t__ bootverbose ; 
- int /*<<< orphan*/  device_printf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  xpt_async (int /*<<< orphan*/ ,struct cam_path*,int /*<<< orphan*/ *) ; 
- scalar_t__ xpt_create_path (struct cam_path**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xpt_free_path (struct cam_path*) ; 
- int /*<<< orphan*/  xpt_path_path_id (int /*<<< orphan*/ ) ; 
+
+ int AC_SCSI_AEN ;
+ int ATA_OUTL (int ,int ,int) ;
+ scalar_t__ CAM_REQ_CMP ;
+ int FSL_SATA_P_SNTF ;
+ scalar_t__ bootverbose ;
+ int device_printf (int ,char*,int) ;
+ int xpt_async (int ,struct cam_path*,int *) ;
+ scalar_t__ xpt_create_path (struct cam_path**,int *,int ,int,int ) ;
+ int xpt_free_path (struct cam_path*) ;
+ int xpt_path_path_id (int ) ;
 
 __attribute__((used)) static void
 fsl_sata_notify_events(struct fsl_sata_channel *ch, u_int32_t status)
 {
-	struct cam_path *dpath;
-	int i;
+ struct cam_path *dpath;
+ int i;
 
-	ATA_OUTL(ch->r_mem, FSL_SATA_P_SNTF, status);
-	if (bootverbose)
-		device_printf(ch->dev, "SNTF 0x%04x\n", status);
-	for (i = 0; i < 16; i++) {
-		if ((status & (1 << i)) == 0)
-			continue;
-		if (xpt_create_path(&dpath, NULL,
-		    xpt_path_path_id(ch->path), i, 0) == CAM_REQ_CMP) {
-			xpt_async(AC_SCSI_AEN, dpath, NULL);
-			xpt_free_path(dpath);
-		}
-	}
+ ATA_OUTL(ch->r_mem, FSL_SATA_P_SNTF, status);
+ if (bootverbose)
+  device_printf(ch->dev, "SNTF 0x%04x\n", status);
+ for (i = 0; i < 16; i++) {
+  if ((status & (1 << i)) == 0)
+   continue;
+  if (xpt_create_path(&dpath, ((void*)0),
+      xpt_path_path_id(ch->path), i, 0) == CAM_REQ_CMP) {
+   xpt_async(AC_SCSI_AEN, dpath, ((void*)0));
+   xpt_free_path(dpath);
+  }
+ }
 }

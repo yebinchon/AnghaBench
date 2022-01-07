@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__* dump_opt ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  zfs_dbgmsg_print (char*) ; 
+ scalar_t__* dump_opt ;
+ int fflush (int ) ;
+ int printf (char*) ;
+ int stdout ;
+ int zfs_dbgmsg_print (char*) ;
 
 __attribute__((used)) static void
 dump_debug_buffer(void)
 {
-	if (dump_opt['G']) {
-		(void) printf("\n");
-		(void) fflush(stdout);
-		zfs_dbgmsg_print("zdb");
-	}
+ if (dump_opt['G']) {
+  (void) printf("\n");
+  (void) fflush(stdout);
+  zfs_dbgmsg_print("zdb");
+ }
 }

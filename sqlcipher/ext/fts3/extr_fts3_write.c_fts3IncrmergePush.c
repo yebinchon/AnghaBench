@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int sqlite3_int64 ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int sqlite3_int64 ;
 struct TYPE_12__ {char* a; scalar_t__ n; scalar_t__ nAlloc; } ;
 struct TYPE_11__ {scalar_t__ nNodeSize; } ;
 struct TYPE_10__ {TYPE_1__* aNodeWriter; } ;
 struct TYPE_9__ {int iBlock; TYPE_4__ key; TYPE_4__ block; } ;
-typedef  TYPE_1__ NodeWriter ;
-typedef  TYPE_2__ IncrmergeWriter ;
-typedef  TYPE_3__ Fts3Table ;
-typedef  TYPE_4__ Blob ;
+typedef TYPE_1__ NodeWriter ;
+typedef TYPE_2__ IncrmergeWriter ;
+typedef TYPE_3__ Fts3Table ;
+typedef TYPE_4__ Blob ;
 
-/* Variables and functions */
- scalar_t__ ALWAYS (int) ; 
- int FTS_MAX_APPENDABLE_HEIGHT ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  blobGrowBuffer (TYPE_4__*,int,int*) ; 
- int fts3PrefixCompress (char*,scalar_t__,char const*,int) ; 
- int fts3WriteSegment (TYPE_3__*,int,char*,int) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- void* sqlite3Fts3PutVarint (char*,int) ; 
- int sqlite3Fts3VarintLen (int) ; 
+
+ scalar_t__ ALWAYS (int) ;
+ int FTS_MAX_APPENDABLE_HEIGHT ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int blobGrowBuffer (TYPE_4__*,int,int*) ;
+ int fts3PrefixCompress (char*,scalar_t__,char const*,int) ;
+ int fts3WriteSegment (TYPE_3__*,int,char*,int) ;
+ int memcpy (char*,char const*,int) ;
+ void* sqlite3Fts3PutVarint (char*,int) ;
+ int sqlite3Fts3VarintLen (int) ;
 
 __attribute__((used)) static int fts3IncrmergePush(
-  Fts3Table *p,                   /* Fts3 table handle */
-  IncrmergeWriter *pWriter,       /* Writer object */
-  const char *zTerm,              /* Term to write to internal node */
-  int nTerm                       /* Bytes at zTerm */
+  Fts3Table *p,
+  IncrmergeWriter *pWriter,
+  const char *zTerm,
+  int nTerm
 ){
   sqlite3_int64 iPtr = pWriter->aNodeWriter[0].iBlock;
   int iLayer;
@@ -54,19 +54,19 @@ __attribute__((used)) static int fts3IncrmergePush(
     int nSuffix;
     int nSpace;
 
-    /* Figure out how much space the key will consume if it is written to
-    ** the current node of layer iLayer. Due to the prefix compression, 
-    ** the space required changes depending on which node the key is to
-    ** be added to.  */
+
+
+
+
     nPrefix = fts3PrefixCompress(pNode->key.a, pNode->key.n, zTerm, nTerm);
     nSuffix = nTerm - nPrefix;
-    nSpace  = sqlite3Fts3VarintLen(nPrefix);
+    nSpace = sqlite3Fts3VarintLen(nPrefix);
     nSpace += sqlite3Fts3VarintLen(nSuffix) + nSuffix;
 
-    if( pNode->key.n==0 || (pNode->block.n + nSpace)<=p->nNodeSize ){ 
-      /* If the current node of layer iLayer contains zero keys, or if adding
-      ** the key to it will not cause it to grow to larger than nNodeSize 
-      ** bytes in size, write the key here.  */
+    if( pNode->key.n==0 || (pNode->block.n + nSpace)<=p->nNodeSize ){
+
+
+
 
       Blob *pBlk = &pNode->block;
       if( pBlk->n==0 ){
@@ -91,9 +91,9 @@ __attribute__((used)) static int fts3IncrmergePush(
         pNode->key.n = nTerm;
       }
     }else{
-      /* Otherwise, flush the current node of layer iLayer to disk.
-      ** Then allocate a new, empty sibling node. The key will be written
-      ** into the parent of this node. */
+
+
+
       rc = fts3WriteSegment(p, pNode->iBlock, pNode->block.a, pNode->block.n);
 
       assert( pNode->block.nAlloc>=p->nNodeSize );

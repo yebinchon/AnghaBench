@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct spi_device {int /*<<< orphan*/  controller_state; int /*<<< orphan*/  cs_gpio; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gpio_free (int /*<<< orphan*/ ) ; 
- scalar_t__ gpio_is_valid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
+
+
+
+struct spi_device {int controller_state; int cs_gpio; } ;
+
+
+ int gpio_free (int ) ;
+ scalar_t__ gpio_is_valid (int ) ;
+ int kfree (int ) ;
 
 __attribute__((used)) static void mpc512x_psc_spi_cleanup(struct spi_device *spi)
 {
-	if (gpio_is_valid(spi->cs_gpio))
-		gpio_free(spi->cs_gpio);
-	kfree(spi->controller_state);
+ if (gpio_is_valid(spi->cs_gpio))
+  gpio_free(spi->cs_gpio);
+ kfree(spi->controller_state);
 }

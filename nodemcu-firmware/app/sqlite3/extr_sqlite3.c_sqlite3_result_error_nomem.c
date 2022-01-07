@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int fErrorOrAux; TYPE_3__* pOut; int /*<<< orphan*/  isError; } ;
-typedef  TYPE_1__ sqlite3_context ;
-struct TYPE_7__ {int /*<<< orphan*/  mutex; } ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int fErrorOrAux; TYPE_3__* pOut; int isError; } ;
+typedef TYPE_1__ sqlite3_context ;
+struct TYPE_7__ {int mutex; } ;
 struct TYPE_6__ {TYPE_4__* db; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_NOMEM_BKPT ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3OomFault (TYPE_4__*) ; 
- int /*<<< orphan*/  sqlite3VdbeMemSetNull (TYPE_3__*) ; 
- int /*<<< orphan*/  sqlite3_mutex_held (int /*<<< orphan*/ ) ; 
+
+ int SQLITE_NOMEM_BKPT ;
+ int assert (int ) ;
+ int sqlite3OomFault (TYPE_4__*) ;
+ int sqlite3VdbeMemSetNull (TYPE_3__*) ;
+ int sqlite3_mutex_held (int ) ;
 
 void sqlite3_result_error_nomem(sqlite3_context *pCtx){
   assert( sqlite3_mutex_held(pCtx->pOut->db->mutex) );

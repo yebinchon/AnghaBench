@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct kobj {int dummy; } ;
 struct iconv_xlat {TYPE_1__* d_csp; } ;
-struct TYPE_2__ {int /*<<< orphan*/  cp_refcount; } ;
+struct TYPE_2__ {int cp_refcount; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_ICONV ; 
- int /*<<< orphan*/  kobj_delete (struct kobj*,int /*<<< orphan*/ ) ; 
+
+ int M_ICONV ;
+ int kobj_delete (struct kobj*,int ) ;
 
 __attribute__((used)) static int
 iconv_xlat_close(void *data)
 {
-	struct iconv_xlat *dp = data;
+ struct iconv_xlat *dp = data;
 
-	dp->d_csp->cp_refcount--;
-	kobj_delete((struct kobj*)data, M_ICONV);
-	return 0;
+ dp->d_csp->cp_refcount--;
+ kobj_delete((struct kobj*)data, M_ICONV);
+ return 0;
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * svn_mergeinfo_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ apr_hash_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_mergeinfo__add_suffix_to_mergeinfo (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_mergeinfo__equals (int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * svn_mergeinfo_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ scalar_t__ apr_hash_count (int *) ;
+ int svn_mergeinfo__add_suffix_to_mergeinfo (int **,int *,char const*,int *,int *) ;
+ int svn_mergeinfo__equals (int*,int *,int *,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 should_elide_mergeinfo(svn_boolean_t *elides,
@@ -31,31 +31,31 @@ should_elide_mergeinfo(svn_boolean_t *elides,
                        const char *path_suffix,
                        apr_pool_t *scratch_pool)
 {
-  /* Easy out: No child mergeinfo to elide. */
-  if (child_mergeinfo == NULL)
+
+  if (child_mergeinfo == ((void*)0))
     {
       *elides = FALSE;
     }
   else if (apr_hash_count(child_mergeinfo) == 0)
     {
-      /* Empty mergeinfo elides to empty mergeinfo or to "nothing",
-         i.e. it isn't overriding any parent. Otherwise it doesn't
-         elide. */
+
+
+
       *elides = (!parent_mergeinfo || apr_hash_count(parent_mergeinfo) == 0);
     }
   else if (!parent_mergeinfo || apr_hash_count(parent_mergeinfo) == 0)
     {
-      /* Non-empty mergeinfo never elides to empty mergeinfo
-         or no mergeinfo. */
+
+
       *elides = FALSE;
     }
   else
     {
-      /* Both CHILD_MERGEINFO and PARENT_MERGEINFO are non-NULL and
-         non-empty. */
+
+
       svn_mergeinfo_t path_tweaked_parent_mergeinfo;
 
-      /* If we need to adjust the paths in PARENT_MERGEINFO do it now. */
+
       if (path_suffix)
         SVN_ERR(svn_mergeinfo__add_suffix_to_mergeinfo(
                   &path_tweaked_parent_mergeinfo, parent_mergeinfo,

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  _errno; int /*<<< orphan*/  peer; scalar_t__ connected; } ;
-typedef  TYPE_1__ bio_dgram_data ;
-struct TYPE_7__ {int /*<<< orphan*/  num; scalar_t__ ptr; } ;
-typedef  TYPE_2__ BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_ADDR_sockaddr (int /*<<< orphan*/ *) ; 
- int BIO_ADDR_sockaddr_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_clear_retry_flags (TYPE_2__*) ; 
- scalar_t__ BIO_dgram_should_retry (int) ; 
- int /*<<< orphan*/  BIO_set_retry_write (TYPE_2__*) ; 
- int /*<<< orphan*/  clear_socket_error () ; 
- int /*<<< orphan*/  get_last_socket_error () ; 
- int sendto (int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int writesocket (int /*<<< orphan*/ ,char const*,int) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int _errno; int peer; scalar_t__ connected; } ;
+typedef TYPE_1__ bio_dgram_data ;
+struct TYPE_7__ {int num; scalar_t__ ptr; } ;
+typedef TYPE_2__ BIO ;
+
+
+ int BIO_ADDR_sockaddr (int *) ;
+ int BIO_ADDR_sockaddr_size (int *) ;
+ int BIO_clear_retry_flags (TYPE_2__*) ;
+ scalar_t__ BIO_dgram_should_retry (int) ;
+ int BIO_set_retry_write (TYPE_2__*) ;
+ int clear_socket_error () ;
+ int get_last_socket_error () ;
+ int sendto (int ,char const*,int,int ,int ,int) ;
+ int writesocket (int ,char const*,int) ;
 
 __attribute__((used)) static int dgram_write(BIO *b, const char *in, int inl)
 {

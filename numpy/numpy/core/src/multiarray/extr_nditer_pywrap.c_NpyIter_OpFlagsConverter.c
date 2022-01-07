@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  npy_uint32 ;
-typedef  int Py_ssize_t ;
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NPY_ITER_ALIGNED ; 
- int /*<<< orphan*/  NPY_ITER_ALLOCATE ; 
- int /*<<< orphan*/  NPY_ITER_ARRAYMASK ; 
- int /*<<< orphan*/  NPY_ITER_CONTIG ; 
- int /*<<< orphan*/  NPY_ITER_COPY ; 
- int /*<<< orphan*/  NPY_ITER_NBO ; 
- int /*<<< orphan*/  NPY_ITER_NO_BROADCAST ; 
- int /*<<< orphan*/  NPY_ITER_NO_SUBTYPE ; 
- int /*<<< orphan*/  NPY_ITER_OVERLAP_ASSUME_ELEMENTWISE ; 
- int /*<<< orphan*/  NPY_ITER_READONLY ; 
- int /*<<< orphan*/  NPY_ITER_READWRITE ; 
- int /*<<< orphan*/  NPY_ITER_UPDATEIFCOPY ; 
- int /*<<< orphan*/  NPY_ITER_VIRTUAL ; 
- int /*<<< orphan*/  NPY_ITER_WRITEMASKED ; 
- int /*<<< orphan*/  NPY_ITER_WRITEONLY ; 
- scalar_t__ PyBytes_AsStringAndSize (int /*<<< orphan*/ *,char**,int*) ; 
- int /*<<< orphan*/  PyErr_Clear () ; 
- int /*<<< orphan*/  PyErr_Format (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- int /*<<< orphan*/  PyList_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PySequence_GetItem (int /*<<< orphan*/ *,int) ; 
- int PySequence_Size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyTuple_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyUnicode_AsASCIIString (int /*<<< orphan*/ *) ; 
- scalar_t__ PyUnicode_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
+
+
+
+typedef int npy_uint32 ;
+typedef int Py_ssize_t ;
+typedef int PyObject ;
+
+
+ int NPY_ITER_ALIGNED ;
+ int NPY_ITER_ALLOCATE ;
+ int NPY_ITER_ARRAYMASK ;
+ int NPY_ITER_CONTIG ;
+ int NPY_ITER_COPY ;
+ int NPY_ITER_NBO ;
+ int NPY_ITER_NO_BROADCAST ;
+ int NPY_ITER_NO_SUBTYPE ;
+ int NPY_ITER_OVERLAP_ASSUME_ELEMENTWISE ;
+ int NPY_ITER_READONLY ;
+ int NPY_ITER_READWRITE ;
+ int NPY_ITER_UPDATEIFCOPY ;
+ int NPY_ITER_VIRTUAL ;
+ int NPY_ITER_WRITEMASKED ;
+ int NPY_ITER_WRITEONLY ;
+ scalar_t__ PyBytes_AsStringAndSize (int *,char**,int*) ;
+ int PyErr_Clear () ;
+ int PyErr_Format (int ,char*,char*) ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_ValueError ;
+ int PyList_Check (int *) ;
+ int * PySequence_GetItem (int *,int) ;
+ int PySequence_Size (int *) ;
+ int PyTuple_Check (int *) ;
+ int * PyUnicode_AsASCIIString (int *) ;
+ scalar_t__ PyUnicode_Check (int *) ;
+ int Py_DECREF (int *) ;
+ int strcmp (char*,char*) ;
 
 __attribute__((used)) static int
 NpyIter_OpFlagsConverter(PyObject *op_flags_in,
@@ -62,19 +62,19 @@ NpyIter_OpFlagsConverter(PyObject *op_flags_in,
     *op_flags = 0;
     for (iflags = 0; iflags < nflags; ++iflags) {
         PyObject *f;
-        char *str = NULL;
+        char *str = ((void*)0);
         Py_ssize_t length = 0;
 
         f = PySequence_GetItem(op_flags_in, iflags);
-        if (f == NULL) {
+        if (f == ((void*)0)) {
             return 0;
         }
 
         if (PyUnicode_Check(f)) {
-            /* accept unicode input */
+
             PyObject *f_str;
             f_str = PyUnicode_AsASCIIString(f);
-            if (f_str == NULL) {
+            if (f_str == ((void*)0)) {
                 Py_DECREF(f);
                 return 0;
             }
@@ -90,7 +90,7 @@ NpyIter_OpFlagsConverter(PyObject *op_flags_in,
             return 0;
         }
 
-        /* Use switch statements to quickly isolate the right flag */
+
         flag = 0;
         switch (str[0]) {
             case 'a':

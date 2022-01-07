@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  URLContext ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int URLContext ;
 struct TYPE_5__ {size_t channel_id; scalar_t__ extra; scalar_t__ timestamp; int ts_field; int type; int size; int* data; } ;
-typedef  TYPE_1__ RTMPPacket ;
+typedef TYPE_1__ RTMPPacket ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_WB32 (int*,int) ; 
- int FFMIN (int,int) ; 
- int RTMP_PS_EIGHTBYTES ; 
- int RTMP_PS_FOURBYTES ; 
- int RTMP_PS_ONEBYTE ; 
- int RTMP_PS_TWELVEBYTES ; 
- int /*<<< orphan*/  bytestream_put_be24 (int**,int) ; 
- int /*<<< orphan*/  bytestream_put_be32 (int**,int) ; 
- int /*<<< orphan*/  bytestream_put_byte (int**,int) ; 
- int /*<<< orphan*/  bytestream_put_le16 (int**,int) ; 
- int /*<<< orphan*/  bytestream_put_le32 (int**,scalar_t__) ; 
- int ff_rtmp_check_alloc_array (TYPE_1__**,int*,size_t) ; 
- int ffurl_write (int /*<<< orphan*/ *,int*,int) ; 
+
+ int AV_WB32 (int*,int) ;
+ int FFMIN (int,int) ;
+ int RTMP_PS_EIGHTBYTES ;
+ int RTMP_PS_FOURBYTES ;
+ int RTMP_PS_ONEBYTE ;
+ int RTMP_PS_TWELVEBYTES ;
+ int bytestream_put_be24 (int**,int) ;
+ int bytestream_put_be32 (int**,int) ;
+ int bytestream_put_byte (int**,int) ;
+ int bytestream_put_le16 (int**,int) ;
+ int bytestream_put_le32 (int**,scalar_t__) ;
+ int ff_rtmp_check_alloc_array (TYPE_1__**,int*,size_t) ;
+ int ffurl_write (int *,int*,int) ;
 
 int ff_rtmp_packet_write(URLContext *h, RTMPPacket *pkt,
                          int chunk_size, RTMPPacket **prev_pkt_ptr,
@@ -42,15 +42,15 @@ int ff_rtmp_packet_write(URLContext *h, RTMPPacket *pkt,
     int written = 0;
     int ret;
     RTMPPacket *prev_pkt;
-    int use_delta; // flag if using timestamp delta, not RTMP_PS_TWELVEBYTES
-    uint32_t timestamp; // full 32-bit timestamp or delta value
+    int use_delta;
+    uint32_t timestamp;
 
     if ((ret = ff_rtmp_check_alloc_array(prev_pkt_ptr, nb_prev_pkt,
                                          pkt->channel_id)) < 0)
         return ret;
     prev_pkt = *prev_pkt_ptr;
 
-    //if channel_id = 0, this is first presentation of prev_pkt, send full hdr.
+
     use_delta = prev_pkt[pkt->channel_id].channel_id &&
         pkt->extra == prev_pkt[pkt->channel_id].extra &&
         pkt->timestamp >= prev_pkt[pkt->channel_id].timestamp;
@@ -79,10 +79,10 @@ int ff_rtmp_packet_write(URLContext *h, RTMPPacket *pkt,
     if (pkt->channel_id < 64) {
         bytestream_put_byte(&p, pkt->channel_id | (mode << 6));
     } else if (pkt->channel_id < 64 + 256) {
-        bytestream_put_byte(&p, 0               | (mode << 6));
+        bytestream_put_byte(&p, 0 | (mode << 6));
         bytestream_put_byte(&p, pkt->channel_id - 64);
     } else {
-        bytestream_put_byte(&p, 1               | (mode << 6));
+        bytestream_put_byte(&p, 1 | (mode << 6));
         bytestream_put_le16(&p, pkt->channel_id - 64);
     }
     if (mode != RTMP_PS_ONEBYTE) {
@@ -96,13 +96,13 @@ int ff_rtmp_packet_write(URLContext *h, RTMPPacket *pkt,
     }
     if (pkt->ts_field == 0xFFFFFF)
         bytestream_put_be32(&p, timestamp);
-    // save history
+
     prev_pkt[pkt->channel_id].channel_id = pkt->channel_id;
-    prev_pkt[pkt->channel_id].type       = pkt->type;
-    prev_pkt[pkt->channel_id].size       = pkt->size;
-    prev_pkt[pkt->channel_id].timestamp  = pkt->timestamp;
-    prev_pkt[pkt->channel_id].ts_field   = pkt->ts_field;
-    prev_pkt[pkt->channel_id].extra      = pkt->extra;
+    prev_pkt[pkt->channel_id].type = pkt->type;
+    prev_pkt[pkt->channel_id].size = pkt->size;
+    prev_pkt[pkt->channel_id].timestamp = pkt->timestamp;
+    prev_pkt[pkt->channel_id].ts_field = pkt->ts_field;
+    prev_pkt[pkt->channel_id].extra = pkt->extra;
 
     if ((ret = ffurl_write(h, pkt_hdr, p - pkt_hdr)) < 0)
         return ret;

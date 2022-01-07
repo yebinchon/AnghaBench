@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR_FS_PATH_SYNTAX ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- scalar_t__ svn_ctype_iscntrl (char const) ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned char,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_path_illegal_path_escape (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR_FS_PATH_SYNTAX ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ scalar_t__ svn_ctype_iscntrl (char const) ;
+ int svn_dirent_local_style (char const*,int *) ;
+ int * svn_error_createf (int ,int *,int ,unsigned char,int ) ;
+ int svn_path_illegal_path_escape (int ,int *) ;
 
 svn_error_t *
 svn_path_check_valid(const char *path, apr_pool_t *pool)
@@ -31,7 +31,7 @@ svn_path_check_valid(const char *path, apr_pool_t *pool)
     {
       if (svn_ctype_iscntrl(*c))
         {
-          return svn_error_createf(SVN_ERR_FS_PATH_SYNTAX, NULL,
+          return svn_error_createf(SVN_ERR_FS_PATH_SYNTAX, ((void*)0),
              _("Invalid control character '0x%02x' in path '%s'"),
              (unsigned char)*c,
              svn_path_illegal_path_escape(svn_dirent_local_style(path, pool),

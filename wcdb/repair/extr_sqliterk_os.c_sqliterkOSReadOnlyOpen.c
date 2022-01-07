@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ fd; void* path; } ;
-typedef  TYPE_1__ sqliterk_file ;
+typedef TYPE_1__ sqliterk_file ;
 
-/* Variables and functions */
- int /*<<< orphan*/  O_RDONLY ; 
- int SQLITERK_CANTOPEN ; 
- int SQLITERK_MISUSE ; 
- int SQLITERK_NOMEM ; 
- int SQLITERK_OK ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ open (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqliterkOSClose (TYPE_1__*) ; 
- int /*<<< orphan*/  sqliterkOSError (int,char*,int,...) ; 
- void* sqliterkOSMalloc (size_t) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  strncpy (void*,char const*,size_t) ; 
+
+ int O_RDONLY ;
+ int SQLITERK_CANTOPEN ;
+ int SQLITERK_MISUSE ;
+ int SQLITERK_NOMEM ;
+ int SQLITERK_OK ;
+ int errno ;
+ scalar_t__ open (void*,int ) ;
+ int sqliterkOSClose (TYPE_1__*) ;
+ int sqliterkOSError (int,char*,int,...) ;
+ void* sqliterkOSMalloc (size_t) ;
+ int strerror (int ) ;
+ int strlen (char const*) ;
+ int strncpy (void*,char const*,size_t) ;
 
 int sqliterkOSReadOnlyOpen(const char *path, sqliterk_file **file)
 {
@@ -52,7 +52,7 @@ int sqliterkOSReadOnlyOpen(const char *path, sqliterk_file **file)
     }
     strncpy(theFile->path, path, len);
 
-    // Open the file in read-only mode, since we do not intend to modify it
+
     theFile->fd = open(theFile->path, O_RDONLY);
     if (theFile->fd < 0) {
         rc = SQLITERK_CANTOPEN;
@@ -67,6 +67,6 @@ sqliterkOSReadOnlyOpen_Failed:
     if (theFile) {
         sqliterkOSClose(theFile);
     }
-    *file = NULL;
+    *file = ((void*)0);
     return rc;
 }

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
-typedef  struct TYPE_12__   TYPE_11__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+typedef struct TYPE_12__ TYPE_11__ ;
+
+
 struct tagMSIVIEW {TYPE_2__* ops; } ;
-typedef  int UINT ;
+typedef int UINT ;
 struct TYPE_16__ {int value; int row; struct TYPE_16__* next; } ;
 struct TYPE_15__ {int num_cols; scalar_t__ row_size; TYPE_11__* columns; TYPE_1__* table; } ;
 struct TYPE_14__ {scalar_t__ (* fetch_int ) (struct tagMSIVIEW*,int,int,int*) ;} ;
 struct TYPE_13__ {int row_count; } ;
 struct TYPE_12__ {scalar_t__ offset; TYPE_4__** hash_table; } ;
-typedef  TYPE_3__ MSITABLEVIEW ;
-typedef  TYPE_4__ const* MSIITERHANDLE ;
-typedef  TYPE_4__ MSICOLUMNHASHENTRY ;
+typedef TYPE_3__ MSITABLEVIEW ;
+typedef TYPE_4__ const* MSIITERHANDLE ;
+typedef TYPE_4__ MSICOLUMNHASHENTRY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,TYPE_3__*,TYPE_11__*) ; 
- int ERROR_FUNCTION_FAILED ; 
- int ERROR_INVALID_PARAMETER ; 
- int ERROR_NO_MORE_ITEMS ; 
- int ERROR_OUTOFMEMORY ; 
- scalar_t__ ERROR_SUCCESS ; 
- int MSITABLE_HASH_TABLE_SIZE ; 
- int /*<<< orphan*/  TRACE (char*,struct tagMSIVIEW*,int,int,TYPE_4__ const*) ; 
- int /*<<< orphan*/  memset (TYPE_4__**,int /*<<< orphan*/ ,int) ; 
- TYPE_4__** msi_alloc (int) ; 
- scalar_t__ stub1 (struct tagMSIVIEW*,int,int,int*) ; 
+
+ int ERR (char*,TYPE_3__*,TYPE_11__*) ;
+ int ERROR_FUNCTION_FAILED ;
+ int ERROR_INVALID_PARAMETER ;
+ int ERROR_NO_MORE_ITEMS ;
+ int ERROR_OUTOFMEMORY ;
+ scalar_t__ ERROR_SUCCESS ;
+ int MSITABLE_HASH_TABLE_SIZE ;
+ int TRACE (char*,struct tagMSIVIEW*,int,int,TYPE_4__ const*) ;
+ int memset (TYPE_4__**,int ,int) ;
+ TYPE_4__** msi_alloc (int) ;
+ scalar_t__ stub1 (struct tagMSIVIEW*,int,int,int*) ;
 
 __attribute__((used)) static UINT TABLE_find_matching_rows( struct tagMSIVIEW *view, UINT col,
     UINT val, UINT *row, MSIITERHANDLE *handle )
@@ -67,8 +67,8 @@ __attribute__((used)) static UINT TABLE_find_matching_rows( struct tagMSIVIEW *v
             return ERROR_FUNCTION_FAILED;
         }
 
-        /* allocate contiguous memory for the table and its entries so we
-         * don't have to do an expensive cleanup */
+
+
         hash_table = msi_alloc(MSITABLE_HASH_TABLE_SIZE * sizeof(MSICOLUMNHASHENTRY*) +
             num_rows * sizeof(MSICOLUMNHASHENTRY));
         if (!hash_table)
@@ -86,7 +86,7 @@ __attribute__((used)) static UINT TABLE_find_matching_rows( struct tagMSIVIEW *v
             if (view->ops->fetch_int( view, i, col, &row_value ) != ERROR_SUCCESS)
                 continue;
 
-            new_entry->next = NULL;
+            new_entry->next = ((void*)0);
             new_entry->value = row_value;
             new_entry->row = i;
             if (hash_table[row_value % MSITABLE_HASH_TABLE_SIZE])

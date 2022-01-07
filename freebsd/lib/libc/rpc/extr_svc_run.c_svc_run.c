@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timeval {int tv_sec; scalar_t__ tv_usec; } ;
-typedef  int /*<<< orphan*/  fd_set ;
+typedef int fd_set ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINTR ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  __svc_clean_idle (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int _select (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
- int /*<<< orphan*/  _warn (char*) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  rwlock_rdlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rwlock_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svc_fd_lock ; 
- int /*<<< orphan*/  svc_fdset ; 
- int /*<<< orphan*/  svc_getreqset (int /*<<< orphan*/ *) ; 
- scalar_t__ svc_maxfd ; 
+
+ int EINTR ;
+ int FALSE ;
+ int FD_ZERO (int *) ;
+ int __svc_clean_idle (int *,int,int ) ;
+ int _select (scalar_t__,int *,int *,int *,struct timeval*) ;
+ int _warn (char*) ;
+ int errno ;
+ int rwlock_rdlock (int *) ;
+ int rwlock_unlock (int *) ;
+ int svc_fd_lock ;
+ int svc_fdset ;
+ int svc_getreqset (int *) ;
+ scalar_t__ svc_maxfd ;
 
 void
 svc_run(void)
 {
-	fd_set readfds, cleanfds;
-	struct timeval timeout;
+ fd_set readfds, cleanfds;
+ struct timeval timeout;
 
-	timeout.tv_sec = 30;
-	timeout.tv_usec = 0;
+ timeout.tv_sec = 30;
+ timeout.tv_usec = 0;
 
-	for (;;) {
-		rwlock_rdlock(&svc_fd_lock);
-		readfds = svc_fdset;
-		cleanfds = svc_fdset;
-		rwlock_unlock(&svc_fd_lock);
-		switch (_select(svc_maxfd+1, &readfds, NULL, NULL, &timeout)) {
-		case -1:
-			FD_ZERO(&readfds);
-			if (errno == EINTR) {
-				continue;
-			}
-			_warn("svc_run: - select failed");
-			return;
-		case 0:
-			__svc_clean_idle(&cleanfds, 30, FALSE);
-			continue;
-		default:
-			svc_getreqset(&readfds);
-		}
-	}
+ for (;;) {
+  rwlock_rdlock(&svc_fd_lock);
+  readfds = svc_fdset;
+  cleanfds = svc_fdset;
+  rwlock_unlock(&svc_fd_lock);
+  switch (_select(svc_maxfd+1, &readfds, ((void*)0), ((void*)0), &timeout)) {
+  case -1:
+   FD_ZERO(&readfds);
+   if (errno == EINTR) {
+    continue;
+   }
+   _warn("svc_run: - select failed");
+   return;
+  case 0:
+   __svc_clean_idle(&cleanfds, 30, FALSE);
+   continue;
+  default:
+   svc_getreqset(&readfds);
+  }
+ }
 }

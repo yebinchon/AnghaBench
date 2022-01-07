@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct condition_iterator {int /*<<< orphan*/  Cond; } ;
-typedef  TYPE_1__* iterator_t ;
-typedef  int /*<<< orphan*/  condition_t ;
-struct TYPE_3__ {int pos; int /*<<< orphan*/  jump_to; } ;
 
-/* Variables and functions */
- int INFTY ; 
- int /*<<< orphan*/ * User ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  empty_iterator_jump_to ; 
- int max_uid ; 
- int /*<<< orphan*/  user_matches_condition (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct condition_iterator {int Cond; } ;
+typedef TYPE_1__* iterator_t ;
+typedef int condition_t ;
+struct TYPE_3__ {int pos; int jump_to; } ;
+
+
+ int INFTY ;
+ int * User ;
+ int assert (int) ;
+ int empty_iterator_jump_to ;
+ int max_uid ;
+ int user_matches_condition (int ,int ,int) ;
 
 int condition_iterator_jump_to (iterator_t I, int req_pos) {
   assert (req_pos > I->pos);

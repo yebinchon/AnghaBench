@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG_PTR ;
-typedef  scalar_t__ ULONG ;
-typedef  int /*<<< orphan*/  UCHAR ;
-struct TYPE_5__ {scalar_t__ RecordLength; int FileIdLength; int* FileId; int FileFlags; int /*<<< orphan*/  DataLengthL; int /*<<< orphan*/  ExtentLocationL; } ;
-struct TYPE_4__ {int Directory; scalar_t__ FilePointer; int /*<<< orphan*/  FileSize; int /*<<< orphan*/  FileStart; } ;
-typedef  scalar_t__ PVOID ;
-typedef  TYPE_1__* PISO_FILE_INFO ;
-typedef  TYPE_2__* PDIR_RECORD ;
-typedef  char* PCHAR ;
-typedef  char CHAR ;
-typedef  scalar_t__ BOOLEAN ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- scalar_t__ ROUND_UP (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RtlZeroMemory (char*,int) ; 
- int /*<<< orphan*/  SECTORSIZE ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- scalar_t__ TRUE ; 
- scalar_t__ _stricmp (char*,char*) ; 
- scalar_t__ strlen (char*) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG_PTR ;
+typedef scalar_t__ ULONG ;
+typedef int UCHAR ;
+struct TYPE_5__ {scalar_t__ RecordLength; int FileIdLength; int* FileId; int FileFlags; int DataLengthL; int ExtentLocationL; } ;
+struct TYPE_4__ {int Directory; scalar_t__ FilePointer; int FileSize; int FileStart; } ;
+typedef scalar_t__ PVOID ;
+typedef TYPE_1__* PISO_FILE_INFO ;
+typedef TYPE_2__* PDIR_RECORD ;
+typedef char* PCHAR ;
+typedef char CHAR ;
+typedef scalar_t__ BOOLEAN ;
+
+
+ scalar_t__ FALSE ;
+ scalar_t__ ROUND_UP (scalar_t__,int ) ;
+ int RtlZeroMemory (char*,int) ;
+ int SECTORSIZE ;
+ int TRACE (char*,...) ;
+ scalar_t__ TRUE ;
+ scalar_t__ _stricmp (char*,char*) ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static BOOLEAN IsoSearchDirectoryBufferForFile(PVOID DirectoryBuffer, ULONG DirectoryLength, PCHAR FileName, PISO_FILE_INFO IsoFileInfoPointer)
 {
-    PDIR_RECORD    Record;
-    ULONG        Offset;
+    PDIR_RECORD Record;
+    ULONG Offset;
     ULONG i;
     CHAR Name[32];
 

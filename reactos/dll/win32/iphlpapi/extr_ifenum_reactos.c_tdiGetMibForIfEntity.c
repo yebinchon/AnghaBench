@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  req ;
-struct TYPE_12__ {int* if_physaddr; int /*<<< orphan*/  if_descr; int /*<<< orphan*/  if_descrlen; int /*<<< orphan*/  if_physaddrlen; int /*<<< orphan*/  if_speed; int /*<<< orphan*/  if_mtu; int /*<<< orphan*/  if_type; int /*<<< orphan*/  if_index; } ;
+
+
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int req ;
+struct TYPE_12__ {int* if_physaddr; int if_descr; int if_descrlen; int if_physaddrlen; int if_speed; int if_mtu; int if_type; int if_index; } ;
 struct TYPE_15__ {TYPE_2__ ent; } ;
-struct TYPE_13__ {int /*<<< orphan*/  tei_instance; } ;
-struct TYPE_11__ {TYPE_3__ toi_entity; int /*<<< orphan*/  toi_id; int /*<<< orphan*/  toi_type; int /*<<< orphan*/  toi_class; } ;
+struct TYPE_13__ {int tei_instance; } ;
+struct TYPE_11__ {TYPE_3__ toi_entity; int toi_id; int toi_type; int toi_class; } ;
 struct TYPE_14__ {TYPE_1__ ID; } ;
-typedef  TYPE_3__ TDIEntityID ;
-typedef  TYPE_4__ TCP_REQUEST_QUERY_INFORMATION_EX ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  TYPE_5__ IFEntrySafelySized ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef TYPE_3__ TDIEntityID ;
+typedef TYPE_4__ TCP_REQUEST_QUERY_INFORMATION_EX ;
+typedef int NTSTATUS ;
+typedef TYPE_5__ IFEntrySafelySized ;
+typedef int HANDLE ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeviceIoControl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_4__*,int,TYPE_5__*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IF_MIB_STATS_ID ; 
- int /*<<< orphan*/  INFO_CLASS_PROTOCOL ; 
- int /*<<< orphan*/  INFO_TYPE_PROVIDER ; 
- int /*<<< orphan*/  IOCTL_TCP_QUERY_INFORMATION_EX ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  STATUS_UNSUCCESSFUL ; 
- TYPE_4__ TCP_REQUEST_QUERY_INFORMATION_INIT ; 
- int /*<<< orphan*/  TRACE (char*,int,...) ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
+
+ int DeviceIoControl (int ,int ,TYPE_4__*,int,TYPE_5__*,int,int *,int *) ;
+ int IF_MIB_STATS_ID ;
+ int INFO_CLASS_PROTOCOL ;
+ int INFO_TYPE_PROVIDER ;
+ int IOCTL_TCP_QUERY_INFORMATION_EX ;
+ int STATUS_SUCCESS ;
+ int STATUS_UNSUCCESSFUL ;
+ TYPE_4__ TCP_REQUEST_QUERY_INFORMATION_INIT ;
+ int TRACE (char*,int,...) ;
+ int WARN (char*,...) ;
 
 NTSTATUS tdiGetMibForIfEntity
 ( HANDLE tcpFile, TDIEntityID *ent, IFEntrySafelySized *entry ) {
@@ -49,10 +49,10 @@ NTSTATUS tdiGetMibForIfEntity
     WARN("TdiGetMibForIfEntity(tcpFile %p,entityId %p)\n",
            tcpFile, ent->tei_instance);
 
-    req.ID.toi_class                = INFO_CLASS_PROTOCOL;
-    req.ID.toi_type                 = INFO_TYPE_PROVIDER;
-    req.ID.toi_id                   = IF_MIB_STATS_ID;
-    req.ID.toi_entity               = *ent;
+    req.ID.toi_class = INFO_CLASS_PROTOCOL;
+    req.ID.toi_type = INFO_TYPE_PROVIDER;
+    req.ID.toi_id = IF_MIB_STATS_ID;
+    req.ID.toi_entity = *ent;
 
     status = DeviceIoControl( tcpFile,
                               IOCTL_TCP_QUERY_INFORMATION_EX,
@@ -61,7 +61,7 @@ NTSTATUS tdiGetMibForIfEntity
                               entry,
                               sizeof(*entry),
                               &returnSize,
-                              NULL );
+                              ((void*)0) );
 
     if(!status)
     {

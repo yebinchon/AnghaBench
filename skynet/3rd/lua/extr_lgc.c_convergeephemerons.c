@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/ * ephemeron; } ;
-typedef  TYPE_1__ global_State ;
-struct TYPE_8__ {int /*<<< orphan*/ * gclist; } ;
-typedef  int /*<<< orphan*/  GCObject ;
 
-/* Variables and functions */
- TYPE_3__* gco2t (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  propagateall (TYPE_1__*) ; 
- scalar_t__ traverseephemeron (TYPE_1__*,TYPE_3__*) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int * ephemeron; } ;
+typedef TYPE_1__ global_State ;
+struct TYPE_8__ {int * gclist; } ;
+typedef int GCObject ;
+
+
+ TYPE_3__* gco2t (int *) ;
+ int propagateall (TYPE_1__*) ;
+ scalar_t__ traverseephemeron (TYPE_1__*,TYPE_3__*) ;
 
 __attribute__((used)) static void convergeephemerons (global_State *g) {
   int changed;
   do {
     GCObject *w;
-    GCObject *next = g->ephemeron;  /* get ephemeron list */
-    g->ephemeron = NULL;  /* tables may return to this list when traversed */
+    GCObject *next = g->ephemeron;
+    g->ephemeron = ((void*)0);
     changed = 0;
-    while ((w = next) != NULL) {
+    while ((w = next) != ((void*)0)) {
       next = gco2t(w)->gclist;
-      if (traverseephemeron(g, gco2t(w))) {  /* traverse marked some value? */
-        propagateall(g);  /* propagate changes */
-        changed = 1;  /* will have to revisit all ephemeron tables */
+      if (traverseephemeron(g, gco2t(w))) {
+        propagateall(g);
+        changed = 1;
       }
     }
   } while (changed);

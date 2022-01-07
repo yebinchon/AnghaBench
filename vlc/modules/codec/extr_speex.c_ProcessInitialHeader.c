@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_8__ ;
-typedef  struct TYPE_23__   TYPE_7__ ;
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_19__ {int /*<<< orphan*/  bytes; scalar_t__ packet; } ;
-typedef  TYPE_3__ ogg_packet ;
-struct TYPE_17__ {size_t i_channels; int /*<<< orphan*/  i_rate; int /*<<< orphan*/  i_physical_channels; } ;
+
+
+typedef struct TYPE_24__ TYPE_8__ ;
+typedef struct TYPE_23__ TYPE_7__ ;
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+struct TYPE_19__ {int bytes; scalar_t__ packet; } ;
+typedef TYPE_3__ ogg_packet ;
+struct TYPE_17__ {size_t i_channels; int i_rate; int i_physical_channels; } ;
 struct TYPE_18__ {TYPE_1__ audio; } ;
 struct TYPE_20__ {TYPE_2__ fmt_out; TYPE_5__* p_sys; } ;
-typedef  TYPE_4__ decoder_t ;
-struct TYPE_21__ {int /*<<< orphan*/  end_date; int /*<<< orphan*/  stereo; void* p_state; int /*<<< orphan*/  bits; TYPE_7__* p_header; } ;
-typedef  TYPE_5__ decoder_sys_t ;
-struct TYPE_24__ {int /*<<< orphan*/ * data; int /*<<< orphan*/  func; int /*<<< orphan*/  callback_id; } ;
-struct TYPE_23__ {size_t mode; int speex_version_id; scalar_t__ mode_bitstream_version; int nb_channels; int /*<<< orphan*/  rate; scalar_t__ vbr; } ;
-struct TYPE_22__ {scalar_t__ bitstream_version; int /*<<< orphan*/  modeName; } ;
-typedef  int /*<<< orphan*/  SpeexStereoState ;
-typedef  TYPE_6__ SpeexMode ;
-typedef  TYPE_7__ SpeexHeader ;
-typedef  TYPE_8__ SpeexCallback ;
+typedef TYPE_4__ decoder_t ;
+struct TYPE_21__ {int end_date; int stereo; void* p_state; int bits; TYPE_7__* p_header; } ;
+typedef TYPE_5__ decoder_sys_t ;
+struct TYPE_24__ {int * data; int func; int callback_id; } ;
+struct TYPE_23__ {size_t mode; int speex_version_id; scalar_t__ mode_bitstream_version; int nb_channels; int rate; scalar_t__ vbr; } ;
+struct TYPE_22__ {scalar_t__ bitstream_version; int modeName; } ;
+typedef int SpeexStereoState ;
+typedef TYPE_6__ SpeexMode ;
+typedef TYPE_7__ SpeexHeader ;
+typedef TYPE_8__ SpeexCallback ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SPEEX_INBAND_STEREO ; 
- size_t SPEEX_NB_MODES ; 
- int /*<<< orphan*/  SPEEX_SET_HANDLER ; 
- int /*<<< orphan*/  SPEEX_STEREO_STATE_INIT ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  date_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_4__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  msg_Err (TYPE_4__*,char*,...) ; 
- int /*<<< orphan*/  speex_bits_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  speex_decoder_ctl (void*,int /*<<< orphan*/ ,TYPE_8__*) ; 
- void* speex_decoder_init (TYPE_6__ const*) ; 
- TYPE_6__** speex_mode_list ; 
- TYPE_7__* speex_packet_to_header (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  speex_std_stereo_request_handler ; 
- int /*<<< orphan*/ * vlc_chan_maps ; 
+
+ int SPEEX_INBAND_STEREO ;
+ size_t SPEEX_NB_MODES ;
+ int SPEEX_SET_HANDLER ;
+ int SPEEX_STEREO_STATE_INIT ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int date_Init (int *,int ,int) ;
+ int msg_Dbg (TYPE_4__*,char*,int ,int ,char*,char*) ;
+ int msg_Err (TYPE_4__*,char*,...) ;
+ int speex_bits_init (int *) ;
+ int speex_decoder_ctl (void*,int ,TYPE_8__*) ;
+ void* speex_decoder_init (TYPE_6__ const*) ;
+ TYPE_6__** speex_mode_list ;
+ TYPE_7__* speex_packet_to_header (char*,int ) ;
+ int speex_std_stereo_request_handler ;
+ int * vlc_chan_maps ;
 
 __attribute__((used)) static int ProcessInitialHeader( decoder_t *p_dec, ogg_packet *p_oggpacket )
 {
@@ -77,7 +77,7 @@ __attribute__((used)) static int ProcessInitialHeader( decoder_t *p_dec, ogg_pac
     }
 
     p_mode = speex_mode_list[p_header->mode];
-    if( p_mode == NULL )
+    if( p_mode == ((void*)0) )
         return VLC_EGENERIC;
 
     if( p_header->speex_version_id > 1 )
@@ -104,7 +104,7 @@ __attribute__((used)) static int ProcessInitialHeader( decoder_t *p_dec, ogg_pac
              ( p_header->nb_channels == 1 ) ? " (mono" : " (stereo",
              p_header->vbr ? ", VBR)" : ")" );
 
-    /* Take care of speex decoder init */
+
     speex_bits_init( &p_sys->bits );
     p_sys->p_state = p_state = speex_decoder_init( p_mode );
     if( !p_state )
@@ -130,7 +130,7 @@ __attribute__((used)) static int ProcessInitialHeader( decoder_t *p_dec, ogg_pac
         return VLC_EGENERIC;
     }
 
-    /* Setup the format */
+
     p_dec->fmt_out.audio.i_physical_channels =
         vlc_chan_maps[p_header->nb_channels];
     p_dec->fmt_out.audio.i_channels = p_header->nb_channels;

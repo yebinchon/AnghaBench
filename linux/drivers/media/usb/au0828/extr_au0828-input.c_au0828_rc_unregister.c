@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct au0828_rc {int /*<<< orphan*/  rc; } ;
+
+
+
+
+struct au0828_rc {int rc; } ;
 struct au0828_dev {struct au0828_rc* ir; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct au0828_rc*) ; 
- int /*<<< orphan*/  rc_unregister_device (int /*<<< orphan*/ ) ; 
+
+ int kfree (struct au0828_rc*) ;
+ int rc_unregister_device (int ) ;
 
 void au0828_rc_unregister(struct au0828_dev *dev)
 {
-	struct au0828_rc *ir = dev->ir;
+ struct au0828_rc *ir = dev->ir;
 
-	/* skip detach on non attached boards */
-	if (!ir)
-		return;
 
-	rc_unregister_device(ir->rc);
+ if (!ir)
+  return;
 
-	/* done */
-	kfree(ir);
-	dev->ir = NULL;
+ rc_unregister_device(ir->rc);
+
+
+ kfree(ir);
+ dev->ir = ((void*)0);
 }

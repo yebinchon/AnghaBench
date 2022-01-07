@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_3__ {int /*<<< orphan*/  dbg; } ;
-typedef  TYPE_1__ mrdb_state ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int /*<<< orphan*/  mrb_debug_breakpoint ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BREAK_ERR_MSG_NOBPNO_INFOALL ; 
- int /*<<< orphan*/  BREAK_INFO_MSG_HEADER ; 
- int MRB_DEBUG_OK ; 
- int mrb_debug_get_break_all (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int mrb_debug_get_breaknum (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_free (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ mrb_malloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  print_api_common_error (int) ; 
- int /*<<< orphan*/  print_breakpoint (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  puts (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_3__ {int dbg; } ;
+typedef TYPE_1__ mrdb_state ;
+typedef int mrb_state ;
+typedef int mrb_debug_breakpoint ;
+typedef int int32_t ;
+
+
+ int BREAK_ERR_MSG_NOBPNO_INFOALL ;
+ int BREAK_INFO_MSG_HEADER ;
+ int MRB_DEBUG_OK ;
+ int mrb_debug_get_break_all (int *,int ,int ,int *) ;
+ int mrb_debug_get_breaknum (int *,int ) ;
+ int mrb_free (int *,int *) ;
+ scalar_t__ mrb_malloc (int *,int) ;
+ int print_api_common_error (int) ;
+ int print_breakpoint (int *) ;
+ int puts (int ) ;
 
 __attribute__((used)) static void
 info_break_all(mrb_state *mrb, mrdb_state *mrdb)

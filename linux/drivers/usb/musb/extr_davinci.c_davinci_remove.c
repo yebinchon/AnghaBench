@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct platform_device {int dummy; } ;
-struct davinci_glue {int /*<<< orphan*/  clk; int /*<<< orphan*/  musb; } ;
+struct davinci_glue {int clk; int musb; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clk_disable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  platform_device_unregister (int /*<<< orphan*/ ) ; 
- struct davinci_glue* platform_get_drvdata (struct platform_device*) ; 
- int /*<<< orphan*/  usb_phy_generic_unregister () ; 
+
+ int clk_disable (int ) ;
+ int platform_device_unregister (int ) ;
+ struct davinci_glue* platform_get_drvdata (struct platform_device*) ;
+ int usb_phy_generic_unregister () ;
 
 __attribute__((used)) static int davinci_remove(struct platform_device *pdev)
 {
-	struct davinci_glue		*glue = platform_get_drvdata(pdev);
+ struct davinci_glue *glue = platform_get_drvdata(pdev);
 
-	platform_device_unregister(glue->musb);
-	usb_phy_generic_unregister();
-	clk_disable(glue->clk);
+ platform_device_unregister(glue->musb);
+ usb_phy_generic_unregister();
+ clk_disable(glue->clk);
 
-	return 0;
+ return 0;
 }

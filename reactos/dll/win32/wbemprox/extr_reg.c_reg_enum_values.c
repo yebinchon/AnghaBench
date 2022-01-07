@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  IWbemClassObject ;
-typedef  scalar_t__ INT_PTR ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  HKEY ;
 
-/* Variables and functions */
- int CIM_FLAG_ARRAY ; 
- int CIM_SINT32 ; 
- int CIM_STRING ; 
- int CIM_UINT32 ; 
- int /*<<< orphan*/  IWbemClassObject_AddRef (int /*<<< orphan*/ *) ; 
- scalar_t__ IWbemClassObject_Get (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IWbemClassObject_Put (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  IWbemClassObject_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IWbemClassObject_SpawnInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  PARAM_OUT ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  V_BSTR (int /*<<< orphan*/ *) ; 
- scalar_t__ V_I4 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  V_UI4 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  class_stdregprovW ; 
- scalar_t__ create_signature (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ enum_values (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  method_enumvaluesW ; 
- int /*<<< orphan*/  param_defkeyW ; 
- int /*<<< orphan*/  param_namesW ; 
- int /*<<< orphan*/  param_returnvalueW ; 
- int /*<<< orphan*/  param_subkeynameW ; 
- int /*<<< orphan*/  param_typesW ; 
+
+
+
+typedef int VARIANT ;
+typedef int IWbemClassObject ;
+typedef scalar_t__ INT_PTR ;
+typedef scalar_t__ HRESULT ;
+typedef int HKEY ;
+
+
+ int CIM_FLAG_ARRAY ;
+ int CIM_SINT32 ;
+ int CIM_STRING ;
+ int CIM_UINT32 ;
+ int IWbemClassObject_AddRef (int *) ;
+ scalar_t__ IWbemClassObject_Get (int *,int ,int ,int *,int *,int *) ;
+ scalar_t__ IWbemClassObject_Put (int *,int ,int ,int *,int) ;
+ int IWbemClassObject_Release (int *) ;
+ scalar_t__ IWbemClassObject_SpawnInstance (int *,int ,int **) ;
+ int PARAM_OUT ;
+ scalar_t__ S_OK ;
+ int TRACE (char*,int *,int **) ;
+ int V_BSTR (int *) ;
+ scalar_t__ V_I4 (int *) ;
+ int V_UI4 (int *) ;
+ int VariantClear (int *) ;
+ int VariantInit (int *) ;
+ int class_stdregprovW ;
+ scalar_t__ create_signature (int ,int ,int ,int **) ;
+ scalar_t__ enum_values (int ,int ,int *,int *,int *) ;
+ int method_enumvaluesW ;
+ int param_defkeyW ;
+ int param_namesW ;
+ int param_returnvalueW ;
+ int param_subkeynameW ;
+ int param_typesW ;
 
 HRESULT reg_enum_values( IWbemClassObject *obj, IWbemClassObject *in, IWbemClassObject **out )
 {
     VARIANT defkey, subkey, names, types, retval;
-    IWbemClassObject *sig, *out_params = NULL;
+    IWbemClassObject *sig, *out_params = ((void*)0);
     HRESULT hr;
 
     TRACE("%p, %p\n", in, out);
 
-    hr = IWbemClassObject_Get( in, param_defkeyW, 0, &defkey, NULL, NULL );
+    hr = IWbemClassObject_Get( in, param_defkeyW, 0, &defkey, ((void*)0), ((void*)0) );
     if (hr != S_OK) return hr;
-    hr = IWbemClassObject_Get( in, param_subkeynameW, 0, &subkey, NULL, NULL );
+    hr = IWbemClassObject_Get( in, param_subkeynameW, 0, &subkey, ((void*)0), ((void*)0) );
     if (hr != S_OK) return hr;
 
     hr = create_signature( class_stdregprovW, method_enumvaluesW, PARAM_OUT, &sig );

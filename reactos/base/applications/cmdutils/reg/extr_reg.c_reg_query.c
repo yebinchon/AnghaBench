@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  KEY_READ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  STRING_CANNOT_FIND ; 
- int /*<<< orphan*/  STRING_MATCHES_FOUND ; 
- int /*<<< orphan*/  newlineW ; 
- int /*<<< orphan*/  num_values_found ; 
- int /*<<< orphan*/  output_message (int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  output_string (int /*<<< orphan*/ ) ; 
- int query_all (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__) ; 
- int query_value (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
+
+
+
+typedef int WCHAR ;
+typedef int HKEY ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int KEY_READ ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegOpenKeyExW (int ,int *,int ,int ,int *) ;
+ int STRING_CANNOT_FIND ;
+ int STRING_MATCHES_FOUND ;
+ int newlineW ;
+ int num_values_found ;
+ int output_message (int ,...) ;
+ int output_string (int ) ;
+ int query_all (int ,int *,scalar_t__) ;
+ int query_value (int ,int *,int *,scalar_t__) ;
 
 __attribute__((used)) static int reg_query(HKEY root, WCHAR *path, WCHAR *key_name, WCHAR *value_name,
                      BOOL value_empty, BOOL recurse)

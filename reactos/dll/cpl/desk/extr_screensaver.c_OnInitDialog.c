@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int UINT ;
 struct TYPE_8__ {int Selection; TYPE_1__* ScreenSaverItems; } ;
-struct TYPE_7__ {scalar_t__ szDisplayName; int /*<<< orphan*/  szFilename; } ;
-typedef  TYPE_2__* PDATA ;
-typedef  scalar_t__ LPTSTR ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  LONG_PTR ;
-typedef  size_t INT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  DATA ;
-typedef  scalar_t__ BOOL ;
+struct TYPE_7__ {scalar_t__ szDisplayName; int szFilename; } ;
+typedef TYPE_2__* PDATA ;
+typedef scalar_t__ LPTSTR ;
+typedef int LPARAM ;
+typedef int LONG_PTR ;
+typedef size_t INT ;
+typedef int HWND ;
+typedef int DATA ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddScreenSavers (int /*<<< orphan*/ ,TYPE_2__*) ; 
- size_t CB_ERR ; 
- int /*<<< orphan*/  CB_FINDSTRINGEXACT ; 
- int /*<<< orphan*/  CB_SETCURSEL ; 
- int /*<<< orphan*/  CheckRegScreenSaverIsSecure (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DWLP_USER ; 
- int /*<<< orphan*/  EndDialog (int /*<<< orphan*/ ,int) ; 
- scalar_t__ FALSE ; 
- scalar_t__ GetCurrentScreenSaverValue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_2__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  IDC_SCREENS_LIST ; 
- int /*<<< orphan*/  IDC_SCREENS_TIME ; 
- int MAKELONG (short,short) ; 
- size_t MAX_SCREENSAVERS ; 
- int /*<<< orphan*/  SelectionChanged (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  SendDlgItemMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- size_t SendMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetWindowLongPtr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  UDM_SETPOS32 ; 
- int /*<<< orphan*/  UDM_SETRANGE ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _tcscmp (scalar_t__,int /*<<< orphan*/ ) ; 
- int _ttoi (scalar_t__) ; 
+
+ int AddScreenSavers (int ,TYPE_2__*) ;
+ size_t CB_ERR ;
+ int CB_FINDSTRINGEXACT ;
+ int CB_SETCURSEL ;
+ int CheckRegScreenSaverIsSecure (int ) ;
+ int DWLP_USER ;
+ int EndDialog (int ,int) ;
+ scalar_t__ FALSE ;
+ scalar_t__ GetCurrentScreenSaverValue (int ) ;
+ int GetDlgItem (int ,int ) ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_2__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,scalar_t__) ;
+ int IDC_SCREENS_LIST ;
+ int IDC_SCREENS_TIME ;
+ int MAKELONG (short,short) ;
+ size_t MAX_SCREENSAVERS ;
+ int SelectionChanged (int ,TYPE_2__*) ;
+ int SendDlgItemMessage (int ,int ,int ,int ,int) ;
+ size_t SendMessage (int ,int ,size_t,int ) ;
+ int SetWindowLongPtr (int ,int ,int ) ;
+ scalar_t__ TRUE ;
+ int UDM_SETPOS32 ;
+ int UDM_SETRANGE ;
+ int _T (char*) ;
+ int _tcscmp (scalar_t__,int ) ;
+ int _ttoi (scalar_t__) ;
 
 __attribute__((used)) static BOOL
 OnInitDialog(HWND hwndDlg, PDATA pData)
@@ -88,7 +88,7 @@ OnInitDialog(HWND hwndDlg, PDATA pData)
 
     CheckRegScreenSaverIsSecure(hwndDlg);
 
-    /* Set the current screensaver in the combo box */
+
     lpCurSs = GetCurrentScreenSaverValue(_T("SCRNSAVE.EXE"));
     if (lpCurSs)
     {
@@ -130,14 +130,14 @@ OnInitDialog(HWND hwndDlg, PDATA pData)
     }
     else
     {
-        /* Set screensaver to (none) */
+
         SendMessage(hwndSSCombo,
                     CB_SETCURSEL,
                     0,
                     0);
     }
 
-    /* Set the current timeout */
+
     lpCurSs = GetCurrentScreenSaverValue(_T("ScreenSaveTimeOut"));
     if (lpCurSs)
     {

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct handle_table {int dummy; } ;
-struct TYPE_6__ {int /*<<< orphan*/  destructor; scalar_t__ refcount; int /*<<< orphan*/  dwType; } ;
-typedef  TYPE_1__ OBJECTHDR ;
-typedef  int /*<<< orphan*/  HCRYPTKEY ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  DESTRUCTOR ;
+struct TYPE_6__ {int destructor; scalar_t__ refcount; int dwType; } ;
+typedef TYPE_1__ OBJECTHDR ;
+typedef int HCRYPTKEY ;
+typedef int DWORD ;
+typedef int DESTRUCTOR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  alloc_handle (struct handle_table*,TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+ int GetProcessHeap () ;
+ TYPE_1__* HeapAlloc (int ,int ,size_t) ;
+ int HeapFree (int ,int ,TYPE_1__*) ;
+ int INVALID_HANDLE_VALUE ;
+ int alloc_handle (struct handle_table*,TYPE_1__*,int *) ;
 
 HCRYPTKEY new_object(struct handle_table *lpTable, size_t cbSize, DWORD dwType, DESTRUCTOR destructor,
                         OBJECTHDR **ppObject)
@@ -32,7 +32,7 @@ HCRYPTKEY new_object(struct handle_table *lpTable, size_t cbSize, DWORD dwType, 
     HCRYPTKEY hObject;
 
     if (ppObject)
-        *ppObject = NULL;
+        *ppObject = ((void*)0);
 
     pObject = HeapAlloc(GetProcessHeap(), 0, cbSize);
     if (!pObject)

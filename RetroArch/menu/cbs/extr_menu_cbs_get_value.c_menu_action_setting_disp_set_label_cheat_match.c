@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  file_list_t ;
-struct TYPE_2__ {int /*<<< orphan*/  match_idx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHEAT_MATCH_ACTION_TYPE_VIEW ; 
- int /*<<< orphan*/  cheat_manager_match_action (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int*,unsigned int*,unsigned int*,unsigned int*) ; 
- TYPE_1__ cheat_manager_state ; 
- int /*<<< orphan*/  snprintf (char*,size_t,char*,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  strlcpy (char*,char const*,size_t) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int file_list_t ;
+struct TYPE_2__ {int match_idx; } ;
+
+
+ int CHEAT_MATCH_ACTION_TYPE_VIEW ;
+ int cheat_manager_match_action (int ,int ,unsigned int*,unsigned int*,unsigned int*,unsigned int*) ;
+ TYPE_1__ cheat_manager_state ;
+ int snprintf (char*,size_t,char*,unsigned int,unsigned int) ;
+ int strlcpy (char*,char const*,size_t) ;
 
 __attribute__((used)) static void menu_action_setting_disp_set_label_cheat_match(
       file_list_t* list,

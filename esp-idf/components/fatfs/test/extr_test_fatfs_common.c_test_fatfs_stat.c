@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ time_t ;
+
+
+
+
+typedef scalar_t__ time_t ;
 struct tm {int tm_year; int tm_mon; int tm_mday; int tm_hour; int tm_min; int tm_sec; } ;
 struct timeval {scalar_t__ tv_sec; } ;
 struct stat {int st_mode; scalar_t__ st_mtime; } ;
-typedef  int /*<<< orphan*/  st ;
+typedef int st ;
 
-/* Variables and functions */
- int S_IFDIR ; 
- int S_IFREG ; 
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- int /*<<< orphan*/  TEST_ASSERT_EQUAL (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ASSERT_FALSE (int) ; 
- int abs (scalar_t__) ; 
- char* asctime (struct tm*) ; 
- int /*<<< orphan*/  localtime_r (scalar_t__*,struct tm*) ; 
- int /*<<< orphan*/  memset (struct stat*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ mktime (struct tm*) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  settimeofday (struct timeval*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stat (char const*,struct stat*) ; 
- int /*<<< orphan*/  test_fatfs_create_file_with_text (char const*,char*) ; 
+
+ int S_IFDIR ;
+ int S_IFREG ;
+ int TEST_ASSERT (int) ;
+ int TEST_ASSERT_EQUAL (int ,int ) ;
+ int TEST_ASSERT_FALSE (int) ;
+ int abs (scalar_t__) ;
+ char* asctime (struct tm*) ;
+ int localtime_r (scalar_t__*,struct tm*) ;
+ int memset (struct stat*,int ,int) ;
+ scalar_t__ mktime (struct tm*) ;
+ int printf (char*,char*) ;
+ int settimeofday (struct timeval*,int *) ;
+ int stat (char const*,struct stat*) ;
+ int test_fatfs_create_file_with_text (char const*,char*) ;
 
 void test_fatfs_stat(const char* filename, const char* root_dir)
 {
@@ -44,7 +44,7 @@ void test_fatfs_stat(const char* filename, const char* root_dir)
     time_t t = mktime(&tm);
     printf("Setting time: %s", asctime(&tm));
     struct timeval now = { .tv_sec = t };
-    settimeofday(&now, NULL);
+    settimeofday(&now, ((void*)0));
 
     test_fatfs_create_file_with_text(filename, "foo\n");
 
@@ -54,7 +54,7 @@ void test_fatfs_stat(const char* filename, const char* root_dir)
     struct tm mtm;
     localtime_r(&mtime, &mtm);
     printf("File time: %s", asctime(&mtm));
-    TEST_ASSERT(abs(mtime - t) < 2);    // fatfs library stores time with 2 second precision
+    TEST_ASSERT(abs(mtime - t) < 2);
 
     TEST_ASSERT(st.st_mode & S_IFREG);
     TEST_ASSERT_FALSE(st.st_mode & S_IFDIR);

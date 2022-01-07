@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_playlist_t ;
-struct TYPE_3__ {int /*<<< orphan*/  lock; int /*<<< orphan*/ * main_playlist; } ;
-typedef  TYPE_1__ libvlc_priv_t ;
-typedef  int /*<<< orphan*/  libvlc_int_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PlaylistConfigureFromVariables (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VLC_OBJECT (int /*<<< orphan*/ *) ; 
- TYPE_1__* libvlc_priv (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vlc_playlist_New (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int vlc_playlist_t ;
+struct TYPE_3__ {int lock; int * main_playlist; } ;
+typedef TYPE_1__ libvlc_priv_t ;
+typedef int libvlc_int_t ;
+
+
+ int PlaylistConfigureFromVariables (int *,int ) ;
+ int VLC_OBJECT (int *) ;
+ TYPE_1__* libvlc_priv (int *) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
+ int * vlc_playlist_New (int ) ;
 
 __attribute__((used)) static vlc_playlist_t *
 libvlc_GetMainPlaylist(libvlc_int_t *libvlc)
@@ -31,7 +31,7 @@ libvlc_GetMainPlaylist(libvlc_int_t *libvlc)
 
     vlc_mutex_lock(&priv->lock);
     vlc_playlist_t *playlist = priv->main_playlist;
-    if (priv->main_playlist == NULL)
+    if (priv->main_playlist == ((void*)0))
     {
         playlist = priv->main_playlist = vlc_playlist_New(VLC_OBJECT(libvlc));
         if (playlist)

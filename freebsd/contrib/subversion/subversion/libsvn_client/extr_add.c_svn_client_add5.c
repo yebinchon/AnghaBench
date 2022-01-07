@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_node_kind_t ;
+
+
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int svn_node_kind_t ;
 struct TYPE_13__ {scalar_t__ apr_err; } ;
-typedef  TYPE_1__ svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-struct TYPE_14__ {int /*<<< orphan*/  wc_ctx; } ;
-typedef  TYPE_2__ svn_client_ctx_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_error_t ;
+typedef int svn_depth_t ;
+struct TYPE_14__ {int wc_ctx; } ;
+typedef TYPE_2__ svn_client_ctx_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ENTRY_EXISTS ; 
- int /*<<< orphan*/  SVN_ERR_ILLEGAL_TARGET ; 
- scalar_t__ SVN_ERR_WC_NOT_WORKING_COPY ; 
- scalar_t__ SVN_ERR_WC_PATH_NOT_FOUND ; 
- TYPE_1__* SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_WC__CALL_WITH_WRITE_LOCK (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  add (char const*,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__,char const*,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  find_existing_parent (char const**,TYPE_2__*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (char const*,char const*) ; 
- char* svn_dirent_dirname (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_get_absolute (char const**,char const*,int /*<<< orphan*/ *) ; 
- char const* svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_1__*) ; 
- TYPE_1__* svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
- TYPE_1__* svn_error_trace (TYPE_1__*) ; 
- int /*<<< orphan*/  svn_io_check_special_path (char const*,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_path_is_url (char const*) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- TYPE_1__* svn_wc__is_wcroot (scalar_t__*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ENTRY_EXISTS ;
+ int SVN_ERR_ILLEGAL_TARGET ;
+ scalar_t__ SVN_ERR_WC_NOT_WORKING_COPY ;
+ scalar_t__ SVN_ERR_WC_PATH_NOT_FOUND ;
+ TYPE_1__* SVN_NO_ERROR ;
+ int SVN_WC__CALL_WITH_WRITE_LOCK (int ,int ,char const*,scalar_t__,int *) ;
+ int _ (char*) ;
+ int add (char const*,int ,scalar_t__,scalar_t__,scalar_t__,char const*,TYPE_2__*,int *) ;
+ int find_existing_parent (char const**,TYPE_2__*,char const*,int *,int *) ;
+ scalar_t__ strcmp (char const*,char const*) ;
+ char* svn_dirent_dirname (char const*,int *) ;
+ int svn_dirent_get_absolute (char const**,char const*,int *) ;
+ char const* svn_dirent_local_style (char const*,int *) ;
+ int svn_error_clear (TYPE_1__*) ;
+ TYPE_1__* svn_error_createf (int ,int *,int ,char const*) ;
+ TYPE_1__* svn_error_trace (TYPE_1__*) ;
+ int svn_io_check_special_path (char const*,int *,scalar_t__*,int *) ;
+ scalar_t__ svn_path_is_url (char const*) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ TYPE_1__* svn_wc__is_wcroot (scalar_t__*,int ,char const*,int *) ;
 
 svn_error_t *
 svn_client_add5(const char *path,
@@ -63,15 +63,15 @@ svn_client_add5(const char *path,
   svn_error_t *err;
 
   if (svn_path_is_url(path))
-    return svn_error_createf(SVN_ERR_ILLEGAL_TARGET, NULL,
+    return svn_error_createf(SVN_ERR_ILLEGAL_TARGET, ((void*)0),
                              _("'%s' is not a local path"), path);
 
   SVN_ERR(svn_dirent_get_absolute(&local_abspath, path, scratch_pool));
 
-  /* See if we're being asked to add a wc-root.  That's typically not
-     okay, unless we're in "force" mode.  svn_wc__is_wcroot()
-     will return TRUE even if LOCAL_ABSPATH is a *symlink* to a working
-     copy root, which is a scenario we want to treat differently.  */
+
+
+
+
   err = svn_wc__is_wcroot(&is_wc_root, ctx->wc_ctx, local_abspath,
                           scratch_pool);
   if (err)
@@ -83,28 +83,15 @@ svn_client_add5(const char *path,
         }
 
       svn_error_clear(err);
-      err = NULL; /* SVN_NO_ERROR */
+      err = ((void*)0);
       is_wc_root = FALSE;
     }
   if (is_wc_root)
     {
-#ifdef HAVE_SYMLINK
-      svn_node_kind_t disk_kind;
-      svn_boolean_t is_special;
-
-      SVN_ERR(svn_io_check_special_path(local_abspath, &disk_kind, &is_special,
-                                        scratch_pool));
-
-      /* A symlink can be an unversioned target and a wcroot. Lets try to add
-         the symlink, which can't be a wcroot. */
-      if (is_special)
-        is_wc_root = FALSE;
-      else
-#endif
         {
           if (! force)
             return svn_error_createf(
-                                 SVN_ERR_ENTRY_EXISTS, NULL,
+                                 SVN_ERR_ENTRY_EXISTS, ((void*)0),
                                  _("'%s' is already under version control"),
                                  svn_dirent_local_style(local_abspath,
                                                         scratch_pool));
@@ -112,11 +99,11 @@ svn_client_add5(const char *path,
     }
 
   if (is_wc_root)
-    parent_abspath = local_abspath; /* We will only add children */
+    parent_abspath = local_abspath;
   else
     parent_abspath = svn_dirent_dirname(local_abspath, scratch_pool);
 
-  existing_parent_abspath = NULL;
+  existing_parent_abspath = ((void*)0);
   if (add_parents && !is_wc_root)
     {
       apr_pool_t *subpool;
@@ -135,6 +122,6 @@ svn_client_add5(const char *path,
         existing_parent_abspath, ctx, scratch_pool),
     ctx->wc_ctx, (existing_parent_abspath ? existing_parent_abspath
                                           : parent_abspath),
-    FALSE /* lock_anchor */, scratch_pool);
+    FALSE , scratch_pool);
   return SVN_NO_ERROR;
 }

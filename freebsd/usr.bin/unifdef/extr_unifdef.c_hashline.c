@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  closeio () ; 
- int fprintf (int /*<<< orphan*/ ,char*,int,char*,...) ; 
- char* linefile ; 
- int linenum ; 
- char* newline ; 
- int /*<<< orphan*/  output ; 
+ int closeio () ;
+ int fprintf (int ,char*,int,char*,...) ;
+ char* linefile ;
+ int linenum ;
+ char* newline ;
+ int output ;
 
 __attribute__((used)) static void
 hashline(void)
 {
-	int e;
+ int e;
 
-	if (linefile == NULL)
-		e = fprintf(output, "#line %d%s", linenum, newline);
-	else
-		e = fprintf(output, "#line %d \"%s\"%s",
-		    linenum, linefile, newline);
-	if (e < 0)
-		closeio();
+ if (linefile == ((void*)0))
+  e = fprintf(output, "#line %d%s", linenum, newline);
+ else
+  e = fprintf(output, "#line %d \"%s\"%s",
+      linenum, linefile, newline);
+ if (e < 0)
+  closeio();
 }

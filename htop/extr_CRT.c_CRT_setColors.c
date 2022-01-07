@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int COLORS ; 
- int COLORSCHEME_BLACKNIGHT ; 
- int CRT_colorScheme ; 
- int /*<<< orphan*/ * CRT_colorSchemes ; 
- int /*<<< orphan*/  CRT_colors ; 
- scalar_t__ ColorIndex (int,int) ; 
- scalar_t__ ColorIndexGrayBlack ; 
- scalar_t__ ColorPairGrayBlack ; 
- int /*<<< orphan*/  init_pair (scalar_t__,int,int) ; 
+ int COLORS ;
+ int COLORSCHEME_BLACKNIGHT ;
+ int CRT_colorScheme ;
+ int * CRT_colorSchemes ;
+ int CRT_colors ;
+ scalar_t__ ColorIndex (int,int) ;
+ scalar_t__ ColorIndexGrayBlack ;
+ scalar_t__ ColorPairGrayBlack ;
+ int init_pair (scalar_t__,int,int) ;
 
 void CRT_setColors(int colorScheme) {
    CRT_colorScheme = colorScheme;

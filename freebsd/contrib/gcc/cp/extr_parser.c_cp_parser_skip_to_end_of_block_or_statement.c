@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int type; } ;
-typedef  TYPE_1__ cp_token ;
-struct TYPE_6__ {int /*<<< orphan*/  lexer; } ;
-typedef  TYPE_2__ cp_parser ;
+typedef TYPE_1__ cp_token ;
+struct TYPE_6__ {int lexer; } ;
+typedef TYPE_2__ cp_parser ;
 
-/* Variables and functions */
-#define  CPP_CLOSE_BRACE 132 
-#define  CPP_EOF 131 
-#define  CPP_OPEN_BRACE 130 
-#define  CPP_PRAGMA_EOL 129 
-#define  CPP_SEMICOLON 128 
- int /*<<< orphan*/  cp_lexer_consume_token (int /*<<< orphan*/ ) ; 
- TYPE_1__* cp_lexer_peek_token (int /*<<< orphan*/ ) ; 
+
+
+
+
+
+
+ int cp_lexer_consume_token (int ) ;
+ TYPE_1__* cp_lexer_peek_token (int ) ;
 
 __attribute__((used)) static void
 cp_parser_skip_to_end_of_block_or_statement (cp_parser* parser)
@@ -36,36 +36,36 @@ cp_parser_skip_to_end_of_block_or_statement (cp_parser* parser)
       cp_token *token = cp_lexer_peek_token (parser->lexer);
 
       switch (token->type)
-	{
-	case CPP_EOF:
-	case CPP_PRAGMA_EOL:
-	  /* If we've run out of tokens, stop.  */
-	  return;
+ {
+ case 131:
+ case 129:
 
-	case CPP_SEMICOLON:
-	  /* Stop if this is an unnested ';'. */
-	  if (!nesting_depth)
-	    nesting_depth = -1;
-	  break;
+   return;
 
-	case CPP_CLOSE_BRACE:
-	  /* Stop if this is an unnested '}', or closes the outermost
-	     nesting level.  */
-	  nesting_depth--;
-	  if (!nesting_depth)
-	    nesting_depth = -1;
-	  break;
+ case 128:
 
-	case CPP_OPEN_BRACE:
-	  /* Nest. */
-	  nesting_depth++;
-	  break;
+   if (!nesting_depth)
+     nesting_depth = -1;
+   break;
 
-	default:
-	  break;
-	}
+ case 132:
 
-      /* Consume the token.  */
+
+   nesting_depth--;
+   if (!nesting_depth)
+     nesting_depth = -1;
+   break;
+
+ case 130:
+
+   nesting_depth++;
+   break;
+
+ default:
+   break;
+ }
+
+
       cp_lexer_consume_token (parser->lexer);
     }
 }

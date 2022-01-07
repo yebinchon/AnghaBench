@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  double cmsInt32Number ;
-typedef  int /*<<< orphan*/  cmsHTRANSFORM ;
-typedef  int /*<<< orphan*/  cmsFloat64Number ;
-typedef  scalar_t__ cmsFloat32Number ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- scalar_t__ IsGoodVal (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDoTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef double cmsInt32Number ;
+typedef int cmsHTRANSFORM ;
+typedef int cmsFloat64Number ;
+typedef scalar_t__ cmsFloat32Number ;
+
+
+ int DbgThread () ;
+ scalar_t__ IsGoodVal (char*,int ,int ,int ) ;
+ int cmsDoTransform (int ,int ,scalar_t__*,int *,int) ;
 
 __attribute__((used)) static
 cmsInt32Number CheckOneRGB_f(cmsHTRANSFORM xform, cmsInt32Number R, cmsInt32Number G, cmsInt32Number B, cmsFloat64Number X, cmsFloat64Number Y, cmsFloat64Number Z, cmsFloat64Number err)

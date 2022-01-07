@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct info_sector {void* boot_sign; void* next_cluster; void* free_clusters; void* signature; void* magic; } ;
 
-/* Variables and functions */
- void* htole32 (int) ; 
- int /*<<< orphan*/  memset (struct info_sector*,int /*<<< orphan*/ ,int) ; 
+
+ void* htole32 (int) ;
+ int memset (struct info_sector*,int ,int) ;
 
 __attribute__((used)) static void init_fsinfo(struct info_sector *i)
 {

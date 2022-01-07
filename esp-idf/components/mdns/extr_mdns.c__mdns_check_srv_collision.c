@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
 struct TYPE_4__ {int priority; int weight; int port; } ;
-typedef  TYPE_1__ mdns_service_t ;
+typedef TYPE_1__ mdns_service_t ;
 struct TYPE_5__ {char const* hostname; } ;
 
-/* Variables and functions */
- char const* MDNS_DEFAULT_DOMAIN ; 
- int /*<<< orphan*/  _mdns_append_u16 (int*,int*,int) ; 
- TYPE_2__* _mdns_server ; 
- scalar_t__ _str_null_or_empty (char const*) ; 
- int memcmp (int*,int*,size_t) ; 
- int /*<<< orphan*/  memcpy (int*,char const*,size_t) ; 
- size_t strlen (char const*) ; 
+
+ char const* MDNS_DEFAULT_DOMAIN ;
+ int _mdns_append_u16 (int*,int*,int) ;
+ TYPE_2__* _mdns_server ;
+ scalar_t__ _str_null_or_empty (char const*) ;
+ int memcmp (int*,int*,size_t) ;
+ int memcpy (int*,char const*,size_t) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static int _mdns_check_srv_collision(mdns_service_t * service, uint16_t priority, uint16_t weight, uint16_t port, const char * host, const char * domain)
 {
@@ -41,9 +41,9 @@ __attribute__((used)) static int _mdns_check_srv_collision(mdns_service_t * serv
     size_t their_len = 9 + their_host_len + their_domain_len;
 
     if (their_len > our_len) {
-        return 1;//they win
+        return 1;
     } else if (their_len < our_len) {
-        return -1;//we win
+        return -1;
     }
 
     uint16_t our_index = 0;
@@ -74,9 +74,9 @@ __attribute__((used)) static int _mdns_check_srv_collision(mdns_service_t * serv
 
     int ret = memcmp(our_data, their_data, our_len);
     if (ret > 0) {
-        return -1;//we win
+        return -1;
     } else if (ret < 0) {
-        return 1;//they win
+        return 1;
     }
-    return 0;//same
+    return 0;
 }

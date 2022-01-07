@@ -1,42 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 void
 ascii_safe_strlcpy(char *dest, const char *src, size_t destsiz)
 {
-	if (destsiz == 0)			/* corner case: no room for trailing nul */
-		return;
+ if (destsiz == 0)
+  return;
 
-	while (--destsiz > 0)
-	{
-		/* use unsigned char here to avoid compiler warning */
-		unsigned char ch = *src++;
+ while (--destsiz > 0)
+ {
 
-		if (ch == '\0')
-			break;
-		/* Keep printable ASCII characters */
-		if (32 <= ch && ch <= 127)
-			*dest = ch;
-		/* White-space is also OK */
-		else if (ch == '\n' || ch == '\r' || ch == '\t')
-			*dest = ch;
-		/* Everything else is replaced with '?' */
-		else
-			*dest = '?';
-		dest++;
-	}
+  unsigned char ch = *src++;
 
-	*dest = '\0';
+  if (ch == '\0')
+   break;
+
+  if (32 <= ch && ch <= 127)
+   *dest = ch;
+
+  else if (ch == '\n' || ch == '\r' || ch == '\t')
+   *dest = ch;
+
+  else
+   *dest = '?';
+  dest++;
+ }
+
+ *dest = '\0';
 }

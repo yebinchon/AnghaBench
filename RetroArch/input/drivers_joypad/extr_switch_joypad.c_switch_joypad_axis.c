@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  int int16_t ;
 
-/* Variables and functions */
- int AXIS_NEG_GET (scalar_t__) ; 
- scalar_t__ AXIS_NONE ; 
- int AXIS_POS_GET (scalar_t__) ; 
- unsigned int DEFAULT_MAX_PADS ; 
- int*** analog_state ; 
+
+
+
+typedef scalar_t__ uint32_t ;
+typedef int int16_t ;
+
+
+ int AXIS_NEG_GET (scalar_t__) ;
+ scalar_t__ AXIS_NONE ;
+ int AXIS_POS_GET (scalar_t__) ;
+ unsigned int DEFAULT_MAX_PADS ;
+ int*** analog_state ;
 
 __attribute__((used)) static int16_t switch_joypad_axis(unsigned port_num, uint32_t joyaxis)
 {
-   int val     = 0;
-   int axis    = -1;
-   bool is_neg = false;
-   bool is_pos = false;
+   int val = 0;
+   int axis = -1;
+   bool is_neg = 0;
+   bool is_pos = 0;
 
-#if 0
-   /* TODO/FIXME - implement */
-   if (joyaxis == AXIS_NONE || port_num >= DEFAULT_MAX_PADS) { }
-#endif
+
+
+
+
 
    if (AXIS_NEG_GET(joyaxis) < 4)
    {
       axis = AXIS_NEG_GET(joyaxis);
-      is_neg = true;
+      is_neg = 1;
    }
    else if (AXIS_POS_GET(joyaxis) < 4)
    {
       axis = AXIS_POS_GET(joyaxis);
-      is_pos = true;
+      is_pos = 1;
    }
 
    switch(axis)

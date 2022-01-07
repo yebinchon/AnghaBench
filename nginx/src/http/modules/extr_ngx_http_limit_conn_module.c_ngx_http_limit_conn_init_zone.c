@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_9__ ;
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/ * log_ctx; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_3__ ngx_slab_pool_t ;
+
+
+typedef struct TYPE_18__ TYPE_9__ ;
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int * log_ctx; int * data; } ;
+typedef TYPE_3__ ngx_slab_pool_t ;
 struct TYPE_17__ {size_t len; } ;
-struct TYPE_13__ {TYPE_6__ name; scalar_t__ exists; scalar_t__ addr; int /*<<< orphan*/  log; } ;
+struct TYPE_13__ {TYPE_6__ name; scalar_t__ exists; scalar_t__ addr; int log; } ;
 struct TYPE_15__ {TYPE_2__ shm; TYPE_5__* data; } ;
-typedef  TYPE_4__ ngx_shm_zone_t ;
-typedef  int /*<<< orphan*/  ngx_rbtree_t ;
-typedef  int /*<<< orphan*/  ngx_rbtree_node_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-struct TYPE_18__ {scalar_t__ len; int /*<<< orphan*/  data; } ;
+typedef TYPE_4__ ngx_shm_zone_t ;
+typedef int ngx_rbtree_t ;
+typedef int ngx_rbtree_node_t ;
+typedef int ngx_int_t ;
+struct TYPE_18__ {scalar_t__ len; int data; } ;
 struct TYPE_12__ {TYPE_9__ value; } ;
-struct TYPE_16__ {int /*<<< orphan*/ * rbtree; TYPE_1__ key; } ;
-typedef  TYPE_5__ ngx_http_limit_conn_ctx_t ;
+struct TYPE_16__ {int * rbtree; TYPE_1__ key; } ;
+typedef TYPE_5__ ngx_http_limit_conn_ctx_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_EMERG ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/  ngx_http_limit_conn_rbtree_insert_value ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,TYPE_6__*,TYPE_9__*,TYPE_9__*) ; 
- int /*<<< orphan*/  ngx_rbtree_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- void* ngx_slab_alloc (TYPE_3__*,size_t) ; 
- int /*<<< orphan*/  ngx_sprintf (int /*<<< orphan*/ *,char*,TYPE_6__*) ; 
- scalar_t__ ngx_strncmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int NGX_ERROR ;
+ int NGX_LOG_EMERG ;
+ int NGX_OK ;
+ int ngx_http_limit_conn_rbtree_insert_value ;
+ int ngx_log_error (int ,int ,int ,char*,TYPE_6__*,TYPE_9__*,TYPE_9__*) ;
+ int ngx_rbtree_init (int *,int *,int ) ;
+ void* ngx_slab_alloc (TYPE_3__*,size_t) ;
+ int ngx_sprintf (int *,char*,TYPE_6__*) ;
+ scalar_t__ ngx_strncmp (int ,int ,scalar_t__) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_limit_conn_init_zone(ngx_shm_zone_t *shm_zone, void *data)
 {
-    ngx_http_limit_conn_ctx_t  *octx = data;
+    ngx_http_limit_conn_ctx_t *octx = data;
 
-    size_t                      len;
-    ngx_slab_pool_t            *shpool;
-    ngx_rbtree_node_t          *sentinel;
-    ngx_http_limit_conn_ctx_t  *ctx;
+    size_t len;
+    ngx_slab_pool_t *shpool;
+    ngx_rbtree_node_t *sentinel;
+    ngx_http_limit_conn_ctx_t *ctx;
 
     ctx = shm_zone->data;
 
@@ -82,14 +82,14 @@ ngx_http_limit_conn_init_zone(ngx_shm_zone_t *shm_zone, void *data)
     }
 
     ctx->rbtree = ngx_slab_alloc(shpool, sizeof(ngx_rbtree_t));
-    if (ctx->rbtree == NULL) {
+    if (ctx->rbtree == ((void*)0)) {
         return NGX_ERROR;
     }
 
     shpool->data = ctx->rbtree;
 
     sentinel = ngx_slab_alloc(shpool, sizeof(ngx_rbtree_node_t));
-    if (sentinel == NULL) {
+    if (sentinel == ((void*)0)) {
         return NGX_ERROR;
     }
 
@@ -99,7 +99,7 @@ ngx_http_limit_conn_init_zone(ngx_shm_zone_t *shm_zone, void *data)
     len = sizeof(" in limit_conn_zone \"\"") + shm_zone->shm.name.len;
 
     shpool->log_ctx = ngx_slab_alloc(shpool, len);
-    if (shpool->log_ctx == NULL) {
+    if (shpool->log_ctx == ((void*)0)) {
         return NGX_ERROR;
     }
 

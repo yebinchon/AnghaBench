@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-struct cosm_device {int /*<<< orphan*/  sysfs_heartbeat_enable; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+struct cosm_device {int sysfs_heartbeat_enable; } ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  PAGE_SIZE ; 
- struct cosm_device* dev_get_drvdata (struct device*) ; 
- int /*<<< orphan*/  scnprintf (char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ int PAGE_SIZE ;
+ struct cosm_device* dev_get_drvdata (struct device*) ;
+ int scnprintf (char*,int ,char*,int ) ;
 
 __attribute__((used)) static ssize_t
 heartbeat_enable_show(struct device *dev,
-		      struct device_attribute *attr, char *buf)
+        struct device_attribute *attr, char *buf)
 {
-	struct cosm_device *cdev = dev_get_drvdata(dev);
+ struct cosm_device *cdev = dev_get_drvdata(dev);
 
-	if (!cdev)
-		return -EINVAL;
+ if (!cdev)
+  return -EINVAL;
 
-	return scnprintf(buf, PAGE_SIZE, "%d\n", cdev->sysfs_heartbeat_enable);
+ return scnprintf(buf, PAGE_SIZE, "%d\n", cdev->sysfs_heartbeat_enable);
 }

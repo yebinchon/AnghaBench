@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ VARIANT_BOOL ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  IXMLDOMNodeList ;
-typedef  void IXMLDOMNode ;
-typedef  int /*<<< orphan*/  IXMLDOMNamedNodeMap ;
-typedef  int /*<<< orphan*/  IXMLDOMElement ;
-typedef  int /*<<< orphan*/  IXMLDOMDocument ;
-typedef  int HRESULT ;
-typedef  int /*<<< orphan*/ * BSTR ;
 
-/* Variables and functions */
- int E_INVALIDARG ; 
- int /*<<< orphan*/  IID_IXMLDOMDocument ; 
- int /*<<< orphan*/  IXMLDOMDocument_Release (int /*<<< orphan*/ *) ; 
- int IXMLDOMDocument_get_documentElement (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int IXMLDOMDocument_loadXML (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  IXMLDOMElement_Release (int /*<<< orphan*/ *) ; 
- int IXMLDOMElement_get_childNodes (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMNamedNodeMap_Release (int /*<<< orphan*/ *) ; 
- int IXMLDOMNamedNodeMap_get_length (int /*<<< orphan*/ *,int*) ; 
- int IXMLDOMNamedNodeMap_removeNamedItem (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int IXMLDOMNamedNodeMap_setNamedItem (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMNodeList_Release (int /*<<< orphan*/ *) ; 
- int IXMLDOMNodeList_get_item (int /*<<< orphan*/ *,int,void**) ; 
- int /*<<< orphan*/  IXMLDOMNode_Release (void*) ; 
- int IXMLDOMNode_get_attributes (void*,int /*<<< orphan*/ **) ; 
- int S_FALSE ; 
- int S_OK ; 
- int /*<<< orphan*/ * SysAllocString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ *) ; 
- scalar_t__ VARIANT_TRUE ; 
- int /*<<< orphan*/  _bstr_ (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  complete4A ; 
- int /*<<< orphan*/ * create_document (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_bstrs () ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  szvr ; 
+
+
+
+typedef scalar_t__ VARIANT_BOOL ;
+typedef int LONG ;
+typedef int IXMLDOMNodeList ;
+typedef void IXMLDOMNode ;
+typedef int IXMLDOMNamedNodeMap ;
+typedef int IXMLDOMElement ;
+typedef int IXMLDOMDocument ;
+typedef int HRESULT ;
+typedef int * BSTR ;
+
+
+ int E_INVALIDARG ;
+ int IID_IXMLDOMDocument ;
+ int IXMLDOMDocument_Release (int *) ;
+ int IXMLDOMDocument_get_documentElement (int *,int **) ;
+ int IXMLDOMDocument_loadXML (int *,int ,scalar_t__*) ;
+ int IXMLDOMElement_Release (int *) ;
+ int IXMLDOMElement_get_childNodes (int *,int **) ;
+ int IXMLDOMNamedNodeMap_Release (int *) ;
+ int IXMLDOMNamedNodeMap_get_length (int *,int*) ;
+ int IXMLDOMNamedNodeMap_removeNamedItem (int *,int *,void**) ;
+ int IXMLDOMNamedNodeMap_setNamedItem (int *,void*,int *) ;
+ int IXMLDOMNodeList_Release (int *) ;
+ int IXMLDOMNodeList_get_item (int *,int,void**) ;
+ int IXMLDOMNode_Release (void*) ;
+ int IXMLDOMNode_get_attributes (void*,int **) ;
+ int S_FALSE ;
+ int S_OK ;
+ int * SysAllocString (int ) ;
+ int SysFreeString (int *) ;
+ scalar_t__ VARIANT_TRUE ;
+ int _bstr_ (int ) ;
+ int complete4A ;
+ int * create_document (int *) ;
+ int free_bstrs () ;
+ int ok (int,char*,...) ;
+ int szvr ;
 
 __attribute__((used)) static void test_removeNamedItem(void)
 {
@@ -83,7 +83,7 @@ __attribute__((used)) static void test_removeNamedItem(void)
     ok( len == 3, "length %d\n", len);
 
     removed_node = (void*)0xdeadbeef;
-    r = IXMLDOMNamedNodeMap_removeNamedItem( pr_attrs, NULL, &removed_node);
+    r = IXMLDOMNamedNodeMap_removeNamedItem( pr_attrs, ((void*)0), &removed_node);
     ok ( r == E_INVALIDARG, "ret %08x\n", r);
     ok ( removed_node == (void*)0xdeadbeef, "got %p\n", removed_node);
 
@@ -95,13 +95,13 @@ __attribute__((used)) static void test_removeNamedItem(void)
     removed_node2 = (void*)0xdeadbeef;
     r = IXMLDOMNamedNodeMap_removeNamedItem( pr_attrs, str, &removed_node2);
     ok ( r == S_FALSE, "ret %08x\n", r);
-    ok ( removed_node2 == NULL, "got %p\n", removed_node2 );
+    ok ( removed_node2 == ((void*)0), "got %p\n", removed_node2 );
 
     r = IXMLDOMNamedNodeMap_get_length( pr_attrs, &len );
     ok( r == S_OK, "ret %08x\n", r);
     ok( len == 2, "length %d\n", len);
 
-    r = IXMLDOMNamedNodeMap_setNamedItem( pr_attrs, removed_node, NULL);
+    r = IXMLDOMNamedNodeMap_setNamedItem( pr_attrs, removed_node, ((void*)0));
     ok ( r == S_OK, "ret %08x\n", r);
     IXMLDOMNode_Release(removed_node);
 
@@ -109,14 +109,14 @@ __attribute__((used)) static void test_removeNamedItem(void)
     ok( r == S_OK, "ret %08x\n", r);
     ok( len == 3, "length %d\n", len);
 
-    r = IXMLDOMNamedNodeMap_removeNamedItem( pr_attrs, str, NULL);
+    r = IXMLDOMNamedNodeMap_removeNamedItem( pr_attrs, str, ((void*)0));
     ok ( r == S_OK, "ret %08x\n", r);
 
     r = IXMLDOMNamedNodeMap_get_length( pr_attrs, &len );
     ok( r == S_OK, "ret %08x\n", r);
     ok( len == 2, "length %d\n", len);
 
-    r = IXMLDOMNamedNodeMap_removeNamedItem( pr_attrs, str, NULL);
+    r = IXMLDOMNamedNodeMap_removeNamedItem( pr_attrs, str, ((void*)0));
     ok ( r == S_FALSE, "ret %08x\n", r);
 
     SysFreeString(str);

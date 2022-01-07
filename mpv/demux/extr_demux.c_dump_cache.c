@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct demux_stream {scalar_t__ index; struct demux_packet* dump_pos; } ;
 struct demux_queue {struct demux_stream* ds; } ;
-struct demux_packet {scalar_t__ stream; struct demux_packet* next; scalar_t__ keyframe; int /*<<< orphan*/  pts; int /*<<< orphan*/  dts; } ;
-struct demux_internal {scalar_t__ dumper_status; int num_streams; scalar_t__ dumper; struct demux_cached_range* current_range; TYPE_1__** streams; struct demux_cached_range** ranges; int /*<<< orphan*/  num_ranges; } ;
+struct demux_packet {scalar_t__ stream; struct demux_packet* next; scalar_t__ keyframe; int pts; int dts; } ;
+struct demux_internal {scalar_t__ dumper_status; int num_streams; scalar_t__ dumper; struct demux_cached_range* current_range; TYPE_1__** streams; struct demux_cached_range** ranges; int num_ranges; } ;
 struct demux_cached_range {double seek_start; double seek_end; int num_streams; struct demux_queue** streams; } ;
-typedef  int /*<<< orphan*/  ranges ;
+typedef int ranges ;
 struct TYPE_2__ {struct demux_stream* ds; } ;
 
-/* Variables and functions */
- void* CONTROL_ERROR ; 
- scalar_t__ CONTROL_OK ; 
- void* CONTROL_TRUE ; 
- int MAX_SEEK_RANGES ; 
- int MPMIN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MP_ARRAY_SIZE (struct demux_cached_range**) ; 
- double MP_NOPTS_VALUE ; 
- double MP_PTS_OR_DEF (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  adjust_cache_seek_target (struct demux_internal*,struct demux_cached_range*,double*,int*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  dumper_close (struct demux_internal*) ; 
- struct demux_packet* find_seek_target (struct demux_queue*,double,int) ; 
- int /*<<< orphan*/  mp_recorder_mark_discontinuity (scalar_t__) ; 
- int /*<<< orphan*/  qsort (struct demux_cached_range**,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  range_time_compare ; 
- struct demux_packet* read_packet_from_cache (struct demux_internal*,struct demux_packet*) ; 
- int /*<<< orphan*/  talloc_free (struct demux_packet*) ; 
- int /*<<< orphan*/  write_dump_packet (struct demux_internal*,struct demux_packet*) ; 
+
+ void* CONTROL_ERROR ;
+ scalar_t__ CONTROL_OK ;
+ void* CONTROL_TRUE ;
+ int MAX_SEEK_RANGES ;
+ int MPMIN (int ,int ) ;
+ int MP_ARRAY_SIZE (struct demux_cached_range**) ;
+ double MP_NOPTS_VALUE ;
+ double MP_PTS_OR_DEF (int ,int ) ;
+ int adjust_cache_seek_target (struct demux_internal*,struct demux_cached_range*,double*,int*) ;
+ int assert (int) ;
+ int dumper_close (struct demux_internal*) ;
+ struct demux_packet* find_seek_target (struct demux_queue*,double,int) ;
+ int mp_recorder_mark_discontinuity (scalar_t__) ;
+ int qsort (struct demux_cached_range**,int,int,int ) ;
+ int range_time_compare ;
+ struct demux_packet* read_packet_from_cache (struct demux_internal*,struct demux_packet*) ;
+ int talloc_free (struct demux_packet*) ;
+ int write_dump_packet (struct demux_internal*,struct demux_packet*) ;
 
 __attribute__((used)) static void dump_cache(struct demux_internal *in, double start, double end)
 {
@@ -45,7 +45,7 @@ __attribute__((used)) static void dump_cache(struct demux_internal *in, double s
     if (!in->dumper)
         return;
 
-    // (only in pathological cases there might be more ranges than allowed)
+
     struct demux_cached_range *ranges[MAX_SEEK_RANGES];
     int num_ranges = 0;
     for (int n = 0; n < MPMIN(MP_ARRAY_SIZE(ranges), in->num_ranges); n++)
@@ -74,10 +74,10 @@ __attribute__((used)) static void dump_cache(struct demux_internal *in, double s
             ds->dump_pos = find_seek_target(q, pts, flags);
         }
 
-        // We need to reinterleave the separate streams somehow, which makes
-        // everything more complex.
+
+
         while (1) {
-            struct demux_packet *next = NULL;
+            struct demux_packet *next = ((void*)0);
             double next_dts = MP_NOPTS_VALUE;
 
             for (int i = 0; i < r->num_streams; i++) {
@@ -90,14 +90,14 @@ __attribute__((used)) static void dump_cache(struct demux_internal *in, double s
 
                 double pdts = MP_PTS_OR_DEF(dp->dts, dp->pts);
 
-                // Check for stream EOF. Note that we don't try to EOF
-                // streams at the same point (e.g. video can take longer
-                // to finish than audio, so the output file will have no
-                // audio for the last part of the video). Too much effort.
+
+
+
+
                 if (pdts != MP_NOPTS_VALUE && end != MP_NOPTS_VALUE &&
                     pdts >= end && dp->keyframe)
                 {
-                    ds->dump_pos = NULL;
+                    ds->dump_pos = ((void*)0);
                     continue;
                 }
 
@@ -130,17 +130,17 @@ __attribute__((used)) static void dump_cache(struct demux_internal *in, double s
             break;
     }
 
-    // (strictly speaking unnecessary; for clarity)
-    for (int n = 0; n < in->num_streams; n++)
-        in->streams[n]->ds->dump_pos = NULL;
 
-    // If dumping (in end==NOPTS mode) doesn't continue at the range that
-    // was written last, we have a discontinuity.
+    for (int n = 0; n < in->num_streams; n++)
+        in->streams[n]->ds->dump_pos = ((void*)0);
+
+
+
     if (num_ranges && ranges[num_ranges - 1] != in->current_range)
         mp_recorder_mark_discontinuity(in->dumper);
 
-    // end=NOPTS means the demuxer output continues to be written to the
-    // dump file.
+
+
     if (end != MP_NOPTS_VALUE || in->dumper_status != CONTROL_OK)
         dumper_close(in);
 }

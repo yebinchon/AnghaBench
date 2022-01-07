@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_22__ {int Attributes; TYPE_1__* assembly; int /*<<< orphan*/  Action; } ;
-struct TYPE_21__ {int /*<<< orphan*/  db; } ;
-struct TYPE_20__ {int /*<<< orphan*/  hdr; } ;
-struct TYPE_19__ {int /*<<< orphan*/  application; } ;
-typedef  TYPE_2__ MSIRECORD ;
-typedef  TYPE_3__ MSIPACKAGE ;
-typedef  TYPE_4__ MSICOMPONENT ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  TYPE_3__* LPVOID ;
-typedef  int /*<<< orphan*/ * LPCWSTR ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERROR_OUTOFMEMORY ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  INSTALLMESSAGE_ACTIONDATA ; 
- TYPE_2__* MSI_CreateRecord (int) ; 
- int /*<<< orphan*/  MSI_ProcessMessage (TYPE_3__*,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  MSI_RecordGetInteger (TYPE_2__*,int) ; 
- int /*<<< orphan*/ * MSI_RecordGetString (TYPE_2__*,int) ; 
- int /*<<< orphan*/  MSI_RecordSetStringW (TYPE_2__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PathAddBackslashW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RemoveDirectoryW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lstrcatW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lstrcpyW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int lstrlenW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * msi_alloc (int) ; 
- int /*<<< orphan*/ * msi_dup_property (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msi_get_component_action (TYPE_3__*,TYPE_4__*) ; 
- TYPE_4__* msi_get_loaded_component (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msi_reduce_to_long_filename (int /*<<< orphan*/ *) ; 
- int msidbComponentAttributesPermanent ; 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * strdupW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  verify_comp_for_removal (TYPE_4__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int UINT ;
+struct TYPE_22__ {int Attributes; TYPE_1__* assembly; int Action; } ;
+struct TYPE_21__ {int db; } ;
+struct TYPE_20__ {int hdr; } ;
+struct TYPE_19__ {int application; } ;
+typedef TYPE_2__ MSIRECORD ;
+typedef TYPE_3__ MSIPACKAGE ;
+typedef TYPE_4__ MSICOMPONENT ;
+typedef int * LPWSTR ;
+typedef TYPE_3__* LPVOID ;
+typedef int * LPCWSTR ;
+typedef int DWORD ;
+
+
+ int DeleteFileW (int *) ;
+ int ERROR_OUTOFMEMORY ;
+ int ERROR_SUCCESS ;
+ int INSTALLMESSAGE_ACTIONDATA ;
+ TYPE_2__* MSI_CreateRecord (int) ;
+ int MSI_ProcessMessage (TYPE_3__*,int ,TYPE_2__*) ;
+ int MSI_RecordGetInteger (TYPE_2__*,int) ;
+ int * MSI_RecordGetString (TYPE_2__*,int) ;
+ int MSI_RecordSetStringW (TYPE_2__*,int,int *) ;
+ int PathAddBackslashW (int *) ;
+ int RemoveDirectoryW (int *) ;
+ int TRACE (char*,...) ;
+ int WARN (char*) ;
+ int debugstr_w (int *) ;
+ int lstrcatW (int *,int *) ;
+ int lstrcpyW (int *,int *) ;
+ int lstrlenW (int *) ;
+ int * msi_alloc (int) ;
+ int * msi_dup_property (int ,int *) ;
+ int msi_free (int *) ;
+ int msi_get_component_action (TYPE_3__*,TYPE_4__*) ;
+ TYPE_4__* msi_get_loaded_component (TYPE_3__*,int *) ;
+ int msi_reduce_to_long_filename (int *) ;
+ int msidbComponentAttributesPermanent ;
+ int msiobj_release (int *) ;
+ int * strdupW (int *) ;
+ int verify_comp_for_removal (TYPE_4__*,int ) ;
 
 __attribute__((used)) static UINT ITERATE_RemoveFiles(MSIRECORD *row, LPVOID param)
 {
@@ -64,7 +64,7 @@ __attribute__((used)) static UINT ITERATE_RemoveFiles(MSIRECORD *row, LPVOID par
     MSIRECORD *uirow;
     LPCWSTR component, dirprop;
     UINT install_mode;
-    LPWSTR dir = NULL, path = NULL, filename = NULL;
+    LPWSTR dir = ((void*)0), path = ((void*)0), filename = ((void*)0);
     DWORD size;
     UINT ret = ERROR_SUCCESS;
 

@@ -1,213 +1,200 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t uint_t ;
-typedef  scalar_t__ uint64_t ;
-typedef  int /*<<< orphan*/  nvpair_t ;
-typedef  int /*<<< orphan*/  nvlist_t ;
-typedef  int /*<<< orphan*/  boolean_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  B_TRUE ; 
-#define  DATA_TYPE_STRING 129 
-#define  DATA_TYPE_UINT64 128 
- int /*<<< orphan*/  ZPOOL_CONFIG_CHILDREN ; 
- char* ZPOOL_CONFIG_GUID ; 
- char* ZPOOL_CONFIG_ID ; 
- char* ZPOOL_CONFIG_IS_LOG ; 
- int /*<<< orphan*/  ZPOOL_CONFIG_L2CACHE ; 
- char* ZPOOL_CONFIG_PATH ; 
- int /*<<< orphan*/  ZPOOL_CONFIG_SPARES ; 
- char* ZPOOL_CONFIG_TYPE ; 
- char* ZPOOL_CONFIG_WHOLE_DISK ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ nvlist_lookup_nvlist_array (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ***,size_t*) ; 
- int /*<<< orphan*/  nvlist_lookup_string (int /*<<< orphan*/ *,char*,char**) ; 
- scalar_t__ nvlist_lookup_uint64 (int /*<<< orphan*/ *,char*,scalar_t__*) ; 
- int /*<<< orphan*/ * nvlist_next_nvpair (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* nvpair_name (int /*<<< orphan*/ *) ; 
- int nvpair_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nvpair_value_string (int /*<<< orphan*/ *,char**) ; 
- int /*<<< orphan*/  nvpair_value_uint64 (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- char* strdup (char*) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int /*<<< orphan*/ ) ; 
- char* strrchr (char*,char) ; 
- scalar_t__ strtoull (char*,char**,int) ; 
- int /*<<< orphan*/  verify (int) ; 
- int /*<<< orphan*/  zfs_strcmp_pathname (char*,char*,scalar_t__) ; 
- int zpool_vdev_is_interior (char*) ; 
+
+
+
+typedef size_t uint_t ;
+typedef scalar_t__ uint64_t ;
+typedef int nvpair_t ;
+typedef int nvlist_t ;
+typedef int boolean_t ;
+
+
+ int B_TRUE ;
+
+
+ int ZPOOL_CONFIG_CHILDREN ;
+ char* ZPOOL_CONFIG_GUID ;
+ char* ZPOOL_CONFIG_ID ;
+ char* ZPOOL_CONFIG_IS_LOG ;
+ int ZPOOL_CONFIG_L2CACHE ;
+ char* ZPOOL_CONFIG_PATH ;
+ int ZPOOL_CONFIG_SPARES ;
+ char* ZPOOL_CONFIG_TYPE ;
+ char* ZPOOL_CONFIG_WHOLE_DISK ;
+ int errno ;
+ int free (char*) ;
+ scalar_t__ nvlist_lookup_nvlist_array (int *,int ,int ***,size_t*) ;
+ int nvlist_lookup_string (int *,char*,char**) ;
+ scalar_t__ nvlist_lookup_uint64 (int *,char*,scalar_t__*) ;
+ int * nvlist_next_nvpair (int *,int *) ;
+ char* nvpair_name (int *) ;
+ int nvpair_type (int *) ;
+ int nvpair_value_string (int *,char**) ;
+ int nvpair_value_uint64 (int *,scalar_t__*) ;
+ int strcmp (char*,char*) ;
+ char* strdup (char*) ;
+ int strlen (char*) ;
+ int strncmp (char*,char*,int ) ;
+ char* strrchr (char*,char) ;
+ scalar_t__ strtoull (char*,char**,int) ;
+ int verify (int) ;
+ int zfs_strcmp_pathname (char*,char*,scalar_t__) ;
+ int zpool_vdev_is_interior (char*) ;
 
 __attribute__((used)) static nvlist_t *
 vdev_to_nvlist_iter(nvlist_t *nv, nvlist_t *search, boolean_t *avail_spare,
     boolean_t *l2cache, boolean_t *log)
 {
-	uint_t c, children;
-	nvlist_t **child;
-	nvlist_t *ret;
-	uint64_t is_log;
-	char *srchkey;
-	nvpair_t *pair = nvlist_next_nvpair(search, NULL);
+ uint_t c, children;
+ nvlist_t **child;
+ nvlist_t *ret;
+ uint64_t is_log;
+ char *srchkey;
+ nvpair_t *pair = nvlist_next_nvpair(search, ((void*)0));
 
-	/* Nothing to look for */
-	if (search == NULL || pair == NULL)
-		return (NULL);
 
-	/* Obtain the key we will use to search */
-	srchkey = nvpair_name(pair);
+ if (search == ((void*)0) || pair == ((void*)0))
+  return (((void*)0));
 
-	switch (nvpair_type(pair)) {
-	case DATA_TYPE_UINT64:
-		if (strcmp(srchkey, ZPOOL_CONFIG_GUID) == 0) {
-			uint64_t srchval, theguid;
 
-			verify(nvpair_value_uint64(pair, &srchval) == 0);
-			verify(nvlist_lookup_uint64(nv, ZPOOL_CONFIG_GUID,
-			    &theguid) == 0);
-			if (theguid == srchval)
-				return (nv);
-		}
-		break;
+ srchkey = nvpair_name(pair);
 
-	case DATA_TYPE_STRING: {
-		char *srchval, *val;
+ switch (nvpair_type(pair)) {
+ case 128:
+  if (strcmp(srchkey, ZPOOL_CONFIG_GUID) == 0) {
+   uint64_t srchval, theguid;
 
-		verify(nvpair_value_string(pair, &srchval) == 0);
-		if (nvlist_lookup_string(nv, srchkey, &val) != 0)
-			break;
+   verify(nvpair_value_uint64(pair, &srchval) == 0);
+   verify(nvlist_lookup_uint64(nv, ZPOOL_CONFIG_GUID,
+       &theguid) == 0);
+   if (theguid == srchval)
+    return (nv);
+  }
+  break;
 
-		/*
-		 * Search for the requested value. Special cases:
-		 *
-		 * - ZPOOL_CONFIG_PATH for whole disk entries.  These end in
-		 *   "-part1", or "p1".  The suffix is hidden from the user,
-		 *   but included in the string, so this matches around it.
-		 * - ZPOOL_CONFIG_PATH for short names zfs_strcmp_shortname()
-		 *   is used to check all possible expanded paths.
-		 * - looking for a top-level vdev name (i.e. ZPOOL_CONFIG_TYPE).
-		 *
-		 * Otherwise, all other searches are simple string compares.
-		 */
-		if (strcmp(srchkey, ZPOOL_CONFIG_PATH) == 0) {
-			uint64_t wholedisk = 0;
+ case 129: {
+  char *srchval, *val;
 
-			(void) nvlist_lookup_uint64(nv, ZPOOL_CONFIG_WHOLE_DISK,
-			    &wholedisk);
-			if (zfs_strcmp_pathname(srchval, val, wholedisk) == 0)
-				return (nv);
+  verify(nvpair_value_string(pair, &srchval) == 0);
+  if (nvlist_lookup_string(nv, srchkey, &val) != 0)
+   break;
+  if (strcmp(srchkey, ZPOOL_CONFIG_PATH) == 0) {
+   uint64_t wholedisk = 0;
 
-		} else if (strcmp(srchkey, ZPOOL_CONFIG_TYPE) == 0 && val) {
-			char *type, *idx, *end, *p;
-			uint64_t id, vdev_id;
+   (void) nvlist_lookup_uint64(nv, ZPOOL_CONFIG_WHOLE_DISK,
+       &wholedisk);
+   if (zfs_strcmp_pathname(srchval, val, wholedisk) == 0)
+    return (nv);
 
-			/*
-			 * Determine our vdev type, keeping in mind
-			 * that the srchval is composed of a type and
-			 * vdev id pair (i.e. mirror-4).
-			 */
-			if ((type = strdup(srchval)) == NULL)
-				return (NULL);
+  } else if (strcmp(srchkey, ZPOOL_CONFIG_TYPE) == 0 && val) {
+   char *type, *idx, *end, *p;
+   uint64_t id, vdev_id;
 
-			if ((p = strrchr(type, '-')) == NULL) {
-				free(type);
-				break;
-			}
-			idx = p + 1;
-			*p = '\0';
 
-			/*
-			 * If the types don't match then keep looking.
-			 */
-			if (strncmp(val, type, strlen(val)) != 0) {
-				free(type);
-				break;
-			}
 
-			verify(zpool_vdev_is_interior(type));
-			verify(nvlist_lookup_uint64(nv, ZPOOL_CONFIG_ID,
-			    &id) == 0);
 
-			errno = 0;
-			vdev_id = strtoull(idx, &end, 10);
 
-			free(type);
-			if (errno != 0)
-				return (NULL);
 
-			/*
-			 * Now verify that we have the correct vdev id.
-			 */
-			if (vdev_id == id)
-				return (nv);
-		}
+   if ((type = strdup(srchval)) == ((void*)0))
+    return (((void*)0));
 
-		/*
-		 * Common case
-		 */
-		if (strcmp(srchval, val) == 0)
-			return (nv);
-		break;
-	}
+   if ((p = strrchr(type, '-')) == ((void*)0)) {
+    free(type);
+    break;
+   }
+   idx = p + 1;
+   *p = '\0';
 
-	default:
-		break;
-	}
 
-	if (nvlist_lookup_nvlist_array(nv, ZPOOL_CONFIG_CHILDREN,
-	    &child, &children) != 0)
-		return (NULL);
 
-	for (c = 0; c < children; c++) {
-		if ((ret = vdev_to_nvlist_iter(child[c], search,
-		    avail_spare, l2cache, NULL)) != NULL) {
-			/*
-			 * The 'is_log' value is only set for the toplevel
-			 * vdev, not the leaf vdevs.  So we always lookup the
-			 * log device from the root of the vdev tree (where
-			 * 'log' is non-NULL).
-			 */
-			if (log != NULL &&
-			    nvlist_lookup_uint64(child[c],
-			    ZPOOL_CONFIG_IS_LOG, &is_log) == 0 &&
-			    is_log) {
-				*log = B_TRUE;
-			}
-			return (ret);
-		}
-	}
 
-	if (nvlist_lookup_nvlist_array(nv, ZPOOL_CONFIG_SPARES,
-	    &child, &children) == 0) {
-		for (c = 0; c < children; c++) {
-			if ((ret = vdev_to_nvlist_iter(child[c], search,
-			    avail_spare, l2cache, NULL)) != NULL) {
-				*avail_spare = B_TRUE;
-				return (ret);
-			}
-		}
-	}
+   if (strncmp(val, type, strlen(val)) != 0) {
+    free(type);
+    break;
+   }
 
-	if (nvlist_lookup_nvlist_array(nv, ZPOOL_CONFIG_L2CACHE,
-	    &child, &children) == 0) {
-		for (c = 0; c < children; c++) {
-			if ((ret = vdev_to_nvlist_iter(child[c], search,
-			    avail_spare, l2cache, NULL)) != NULL) {
-				*l2cache = B_TRUE;
-				return (ret);
-			}
-		}
-	}
+   verify(zpool_vdev_is_interior(type));
+   verify(nvlist_lookup_uint64(nv, ZPOOL_CONFIG_ID,
+       &id) == 0);
 
-	return (NULL);
+   errno = 0;
+   vdev_id = strtoull(idx, &end, 10);
+
+   free(type);
+   if (errno != 0)
+    return (((void*)0));
+
+
+
+
+   if (vdev_id == id)
+    return (nv);
+  }
+
+
+
+
+  if (strcmp(srchval, val) == 0)
+   return (nv);
+  break;
+ }
+
+ default:
+  break;
+ }
+
+ if (nvlist_lookup_nvlist_array(nv, ZPOOL_CONFIG_CHILDREN,
+     &child, &children) != 0)
+  return (((void*)0));
+
+ for (c = 0; c < children; c++) {
+  if ((ret = vdev_to_nvlist_iter(child[c], search,
+      avail_spare, l2cache, ((void*)0))) != ((void*)0)) {
+
+
+
+
+
+
+   if (log != ((void*)0) &&
+       nvlist_lookup_uint64(child[c],
+       ZPOOL_CONFIG_IS_LOG, &is_log) == 0 &&
+       is_log) {
+    *log = B_TRUE;
+   }
+   return (ret);
+  }
+ }
+
+ if (nvlist_lookup_nvlist_array(nv, ZPOOL_CONFIG_SPARES,
+     &child, &children) == 0) {
+  for (c = 0; c < children; c++) {
+   if ((ret = vdev_to_nvlist_iter(child[c], search,
+       avail_spare, l2cache, ((void*)0))) != ((void*)0)) {
+    *avail_spare = B_TRUE;
+    return (ret);
+   }
+  }
+ }
+
+ if (nvlist_lookup_nvlist_array(nv, ZPOOL_CONFIG_L2CACHE,
+     &child, &children) == 0) {
+  for (c = 0; c < children; c++) {
+   if ((ret = vdev_to_nvlist_iter(child[c], search,
+       avail_spare, l2cache, ((void*)0))) != ((void*)0)) {
+    *l2cache = B_TRUE;
+    return (ret);
+   }
+  }
+ }
+
+ return (((void*)0));
 }

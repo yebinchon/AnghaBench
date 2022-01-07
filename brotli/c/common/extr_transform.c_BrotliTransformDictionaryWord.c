@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
 struct TYPE_6__ {unsigned int* params; } ;
-typedef  TYPE_1__ BrotliTransforms ;
+typedef TYPE_1__ BrotliTransforms ;
 
-/* Variables and functions */
- int const BROTLI_TRANSFORM_OMIT_FIRST_1 ; 
- int const BROTLI_TRANSFORM_OMIT_FIRST_9 ; 
- int const BROTLI_TRANSFORM_OMIT_LAST_9 ; 
- int* BROTLI_TRANSFORM_PREFIX (TYPE_1__ const*,int) ; 
- int const BROTLI_TRANSFORM_SHIFT_ALL ; 
- int const BROTLI_TRANSFORM_SHIFT_FIRST ; 
- int* BROTLI_TRANSFORM_SUFFIX (TYPE_1__ const*,int) ; 
- int BROTLI_TRANSFORM_TYPE (TYPE_1__ const*,int) ; 
- int const BROTLI_TRANSFORM_UPPERCASE_ALL ; 
- int const BROTLI_TRANSFORM_UPPERCASE_FIRST ; 
- int Shift (int*,int,int /*<<< orphan*/ ) ; 
- int ToUpperCase (int*) ; 
+
+ int const BROTLI_TRANSFORM_OMIT_FIRST_1 ;
+ int const BROTLI_TRANSFORM_OMIT_FIRST_9 ;
+ int const BROTLI_TRANSFORM_OMIT_LAST_9 ;
+ int* BROTLI_TRANSFORM_PREFIX (TYPE_1__ const*,int) ;
+ int const BROTLI_TRANSFORM_SHIFT_ALL ;
+ int const BROTLI_TRANSFORM_SHIFT_FIRST ;
+ int* BROTLI_TRANSFORM_SUFFIX (TYPE_1__ const*,int) ;
+ int BROTLI_TRANSFORM_TYPE (TYPE_1__ const*,int) ;
+ int const BROTLI_TRANSFORM_UPPERCASE_ALL ;
+ int const BROTLI_TRANSFORM_UPPERCASE_FIRST ;
+ int Shift (int*,int,int ) ;
+ int ToUpperCase (int*) ;
 
 int BrotliTransformDictionaryWord(uint8_t* dst, const uint8_t* word, int len,
     const BrotliTransforms* transforms, int transform_idx) {

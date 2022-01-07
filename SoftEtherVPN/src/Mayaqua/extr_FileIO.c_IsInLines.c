@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- char* CfgReadNextLine (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Free (char*) ; 
- scalar_t__ InStr (char*,char*) ; 
- int IsEmptyStr (char*) ; 
- int /*<<< orphan*/  SeekBufToBegin (int /*<<< orphan*/ *) ; 
- scalar_t__ StrCmpi (char*,char*) ; 
- int /*<<< orphan*/  Trim (char*) ; 
+
+
+
+typedef int BUF ;
+
+
+ char* CfgReadNextLine (int *) ;
+ int Free (char*) ;
+ scalar_t__ InStr (char*,char*) ;
+ int IsEmptyStr (char*) ;
+ int SeekBufToBegin (int *) ;
+ scalar_t__ StrCmpi (char*,char*) ;
+ int Trim (char*) ;
 
 bool IsInLines(BUF *buf, char *str, bool instr)
 {
-	bool ret = false;
-	// Validate arguments
-	if (buf == NULL || str == NULL)
-	{
-		return false;
-	}
+ bool ret = 0;
 
-	if (IsEmptyStr(str))
-	{
-		return false;
-	}
+ if (buf == ((void*)0) || str == ((void*)0))
+ {
+  return 0;
+ }
 
-	SeekBufToBegin(buf);
+ if (IsEmptyStr(str))
+ {
+  return 0;
+ }
 
-	while (ret == false)
-	{
-		char *line = CfgReadNextLine(buf);
+ SeekBufToBegin(buf);
 
-		if (line == NULL)
-		{
-			break;
-		}
+ while (ret == 0)
+ {
+  char *line = CfgReadNextLine(buf);
 
-		Trim(line);
+  if (line == ((void*)0))
+  {
+   break;
+  }
 
-		if (IsEmptyStr(line) == false)
-		{
-			if (StrCmpi(line, str) == 0)
-			{
-				ret = true;
-			}
+  Trim(line);
 
-			if (instr)
-			{
-				if (InStr(str, line))
-				{
-					ret = true;
-				}
+  if (IsEmptyStr(line) == 0)
+  {
+   if (StrCmpi(line, str) == 0)
+   {
+    ret = 1;
+   }
 
-				if (InStr(line, str))
-				{
-					ret = true;
-				}
-			}
-		}
+   if (instr)
+   {
+    if (InStr(str, line))
+    {
+     ret = 1;
+    }
 
-		Free(line);
-	}
+    if (InStr(line, str))
+    {
+     ret = 1;
+    }
+   }
+  }
 
-	return ret;
+  Free(line);
+ }
+
+ return ret;
 }

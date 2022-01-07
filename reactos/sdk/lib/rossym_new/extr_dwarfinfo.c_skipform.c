@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uchar ;
-struct TYPE_2__ {int /*<<< orphan*/  b; int /*<<< orphan*/  s; int /*<<< orphan*/  c; } ;
-typedef  TYPE_1__ DwarfVal ;
-typedef  int /*<<< orphan*/  DwarfBuf ;
-typedef  int /*<<< orphan*/  Dwarf ;
 
-/* Variables and functions */
- scalar_t__ getblock (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- scalar_t__ getstring (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- scalar_t__ getuchar (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- scalar_t__ getulong (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uchar ;
+struct TYPE_2__ {int b; int s; int c; } ;
+typedef TYPE_1__ DwarfVal ;
+typedef int DwarfBuf ;
+typedef int Dwarf ;
+
+
+ scalar_t__ getblock (int *,int,int *) ;
+ scalar_t__ getstring (int *,int *,int,int *) ;
+ scalar_t__ getuchar (int *,int,int *) ;
+ scalar_t__ getulong (int *,int,int ,int *,int*) ;
 
 __attribute__((used)) static int
 skipform(Dwarf *d, DwarfBuf *b, int form)

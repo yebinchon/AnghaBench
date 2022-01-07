@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct retro_perf_counter {int dummy; } ;
-typedef  int /*<<< orphan*/  file_list_t ;
+typedef int file_list_t ;
 
-/* Variables and functions */
- unsigned int MENU_SETTINGS_LIBRETRO_PERF_COUNTERS_BEGIN ; 
- int /*<<< orphan*/  general_disp_set_label_perf_counters (struct retro_perf_counter**,unsigned int,char*,size_t,char*,size_t,char const*,unsigned int*) ; 
- struct retro_perf_counter** retro_get_perf_counter_libretro () ; 
+
+ unsigned int MENU_SETTINGS_LIBRETRO_PERF_COUNTERS_BEGIN ;
+ int general_disp_set_label_perf_counters (struct retro_perf_counter**,unsigned int,char*,size_t,char*,size_t,char const*,unsigned int*) ;
+ struct retro_perf_counter** retro_get_perf_counter_libretro () ;
 
 __attribute__((used)) static void menu_action_setting_disp_set_label_libretro_perf_counters(
       file_list_t* list,

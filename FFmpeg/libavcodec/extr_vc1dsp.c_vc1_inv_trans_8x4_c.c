@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  size_t ptrdiff_t ;
-typedef  int int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_clip_uint8 (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef size_t ptrdiff_t ;
+typedef int int16_t ;
+
+
+ int av_clip_uint8 (int ) ;
 
 __attribute__((used)) static void vc1_inv_trans_8x4_c(uint8_t *dest, ptrdiff_t stride, int16_t *block)
 {
@@ -29,18 +29,18 @@ __attribute__((used)) static void vc1_inv_trans_8x4_c(uint8_t *dest, ptrdiff_t s
     for (i = 0; i < 4; i++) {
         t1 = 12 * (src[0] + src[4]) + 4;
         t2 = 12 * (src[0] - src[4]) + 4;
-        t3 = 16 * src[2] +  6 * src[6];
-        t4 =  6 * src[2] - 16 * src[6];
+        t3 = 16 * src[2] + 6 * src[6];
+        t4 = 6 * src[2] - 16 * src[6];
 
         t5 = t1 + t3;
         t6 = t2 + t4;
         t7 = t2 - t4;
         t8 = t1 - t3;
 
-        t1 = 16 * src[1] + 15 * src[3] +  9 * src[5] +  4 * src[7];
-        t2 = 15 * src[1] -  4 * src[3] - 16 * src[5] -  9 * src[7];
-        t3 =  9 * src[1] - 16 * src[3] +  4 * src[5] + 15 * src[7];
-        t4 =  4 * src[1] -  9 * src[3] + 15 * src[5] - 16 * src[7];
+        t1 = 16 * src[1] + 15 * src[3] + 9 * src[5] + 4 * src[7];
+        t2 = 15 * src[1] - 4 * src[3] - 16 * src[5] - 9 * src[7];
+        t3 = 9 * src[1] - 16 * src[3] + 4 * src[5] + 15 * src[7];
+        t4 = 4 * src[1] - 9 * src[3] + 15 * src[5] - 16 * src[7];
 
         dst[0] = (t5 + t1) >> 3;
         dst[1] = (t6 + t2) >> 3;

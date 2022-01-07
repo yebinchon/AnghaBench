@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const uint8_t ;
-typedef  int off_t ;
-struct TYPE_3__ {int packetsize; int /*<<< orphan*/  file_handle; int /*<<< orphan*/  h; } ;
-typedef  TYPE_1__ hb_stream_t ;
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HB_ERROR_READ ; 
- int MAX_HOLE ; 
- int /*<<< orphan*/  SEEK_CUR ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int ferror (int /*<<< orphan*/ ) ; 
- int fread (int /*<<< orphan*/  const*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fseeko (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int ftello (int /*<<< orphan*/ ) ; 
- scalar_t__ have_ts_sync (int /*<<< orphan*/  const*,int,int) ; 
- int /*<<< orphan*/  hb_error (char*,int) ; 
- int /*<<< orphan*/  hb_set_work_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int const uint8_t ;
+typedef int off_t ;
+struct TYPE_3__ {int packetsize; int file_handle; int h; } ;
+typedef TYPE_1__ hb_stream_t ;
+typedef int buf ;
+
+
+ int HB_ERROR_READ ;
+ int MAX_HOLE ;
+ int SEEK_CUR ;
+ int SEEK_SET ;
+ int ferror (int ) ;
+ int fread (int const*,int,int,int ) ;
+ int fseeko (int ,int,int ) ;
+ int ftello (int ) ;
+ scalar_t__ have_ts_sync (int const*,int,int) ;
+ int hb_error (char*,int) ;
+ int hb_set_work_error (int ,int ) ;
 
 __attribute__((used)) static off_t align_to_next_packet(hb_stream_t *stream)
 {

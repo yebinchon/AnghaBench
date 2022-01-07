@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stmp_spi {int /*<<< orphan*/  done; int /*<<< orphan*/  dma; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  complete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stmp3xxx_dma_clear_interrupt (int /*<<< orphan*/ ) ; 
+
+
+
+struct stmp_spi {int done; int dma; } ;
+typedef int irqreturn_t ;
+
+
+ int IRQ_HANDLED ;
+ int complete (int *) ;
+ int stmp3xxx_dma_clear_interrupt (int ) ;
 
 __attribute__((used)) static irqreturn_t stmp_spi_irq(int irq, void *dev_id)
 {
-	struct stmp_spi *ss = dev_id;
+ struct stmp_spi *ss = dev_id;
 
-	stmp3xxx_dma_clear_interrupt(ss->dma);
-	complete(&ss->done);
-	return IRQ_HANDLED;
+ stmp3xxx_dma_clear_interrupt(ss->dma);
+ complete(&ss->done);
+ return IRQ_HANDLED;
 }

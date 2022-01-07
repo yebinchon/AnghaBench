@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  private_drbg; int /*<<< orphan*/  master_drbg; } ;
-typedef  int /*<<< orphan*/  RAND_DRBG ;
-typedef  int /*<<< orphan*/  OPENSSL_CTX ;
-typedef  TYPE_1__ DRBG_GLOBAL ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CRYPTO_THREAD_get_local (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CRYPTO_THREAD_set_local (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RAND_DRBG_TYPE_PRIVATE ; 
- int /*<<< orphan*/  drbg_delete_thread_state ; 
- TYPE_1__* drbg_get_global (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * drbg_setup (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * openssl_ctx_get_concrete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ossl_init_thread_start (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int private_drbg; int master_drbg; } ;
+typedef int RAND_DRBG ;
+typedef int OPENSSL_CTX ;
+typedef TYPE_1__ DRBG_GLOBAL ;
+
+
+ int * CRYPTO_THREAD_get_local (int *) ;
+ int CRYPTO_THREAD_set_local (int *,int *) ;
+ int RAND_DRBG_TYPE_PRIVATE ;
+ int drbg_delete_thread_state ;
+ TYPE_1__* drbg_get_global (int *) ;
+ int * drbg_setup (int *,int ,int ) ;
+ int * openssl_ctx_get_concrete (int *) ;
+ int ossl_init_thread_start (int *,int *,int ) ;
 
 RAND_DRBG *OPENSSL_CTX_get0_private_drbg(OPENSSL_CTX *ctx)
 {
     DRBG_GLOBAL *dgbl = drbg_get_global(ctx);
     RAND_DRBG *drbg;
 
-    if (dgbl == NULL)
-        return NULL;
+    if (dgbl == ((void*)0))
+        return ((void*)0);
 
     drbg = CRYPTO_THREAD_get_local(&dgbl->private_drbg);
-    if (drbg == NULL) {
+    if (drbg == ((void*)0)) {
         ctx = openssl_ctx_get_concrete(ctx);
-        if (!ossl_init_thread_start(NULL, ctx, drbg_delete_thread_state))
-            return NULL;
+        if (!ossl_init_thread_start(((void*)0), ctx, drbg_delete_thread_state))
+            return ((void*)0);
         drbg = drbg_setup(ctx, dgbl->master_drbg, RAND_DRBG_TYPE_PRIVATE);
         CRYPTO_THREAD_set_local(&dgbl->private_drbg, drbg);
     }

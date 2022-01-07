@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_FAIL ; 
- int /*<<< orphan*/  ESP_OK ; 
- int btc_init () ; 
- int osi_alarm_create_mux () ; 
- int /*<<< orphan*/  osi_alarm_init () ; 
+
+
+
+typedef int esp_err_t ;
+
+
+ int ESP_FAIL ;
+ int ESP_OK ;
+ int btc_init () ;
+ int osi_alarm_create_mux () ;
+ int osi_alarm_init () ;
 
 esp_err_t bt_mesh_host_init(void)
 {

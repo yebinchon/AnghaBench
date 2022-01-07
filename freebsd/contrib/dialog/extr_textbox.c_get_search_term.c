@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WINDOW ;
-typedef  int /*<<< orphan*/  DLG_KEYS_BINDING ;
 
-/* Variables and functions */
-#define  DLGK_ENTER 133 
- int DLG_EXIT_CANCEL ; 
- int DLG_EXIT_ESC ; 
- int DLG_EXIT_OK ; 
- int DLG_EXIT_UNKNOWN ; 
-#define  END_KEYS_BINDING 132 
-#define  ENTERKEY_BINDINGS 131 
- int ERR ; 
- int ESC ; 
- int FALSE ; 
-#define  HELPKEY_BINDINGS 130 
-#define  INPUTSTR_BINDINGS 129 
-#define  KEY_RESIZE 128 
- int MARGIN ; 
- int MAX (int,int) ; 
- int MIN (int,int) ; 
- int TRUE ; 
- char* _ (char*) ; 
- int /*<<< orphan*/  dlg_attrset (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int dlg_count_columns (char const*) ; 
- int /*<<< orphan*/  dlg_del_window (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dlg_draw_box2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ dlg_edit_string (char*,int*,int,int,int) ; 
- int dlg_getc (int /*<<< orphan*/ *,int*) ; 
- int* dlg_index_wchars (char const*) ; 
- int dlg_limit_columns (char const*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * dlg_new_modal_window (int /*<<< orphan*/ *,int,int,int,int) ; 
- int /*<<< orphan*/  dlg_register_window (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dlg_show_string (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ,int,int,int,int,int) ; 
- int /*<<< orphan*/  getbegyx (int /*<<< orphan*/ *,int,int) ; 
- int getmaxx (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  keypad (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  napms (int) ; 
- int /*<<< orphan*/  searchbox_attr ; 
- int /*<<< orphan*/  searchbox_border2_attr ; 
- int /*<<< orphan*/  searchbox_border_attr ; 
- int /*<<< orphan*/  searchbox_title_attr ; 
- int /*<<< orphan*/  waddnstr (int /*<<< orphan*/ *,char const*,int const) ; 
- int /*<<< orphan*/  wmove (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int WINDOW ;
+typedef int DLG_KEYS_BINDING ;
+
+
+
+ int DLG_EXIT_CANCEL ;
+ int DLG_EXIT_ESC ;
+ int DLG_EXIT_OK ;
+ int DLG_EXIT_UNKNOWN ;
+
+
+ int ERR ;
+ int ESC ;
+ int FALSE ;
+
+
+
+ int MARGIN ;
+ int MAX (int,int) ;
+ int MIN (int,int) ;
+ int TRUE ;
+ char* _ (char*) ;
+ int dlg_attrset (int *,int ) ;
+ int dlg_count_columns (char const*) ;
+ int dlg_del_window (int *) ;
+ int dlg_draw_box2 (int *,int ,int ,int,int,int ,int ,int ) ;
+ scalar_t__ dlg_edit_string (char*,int*,int,int,int) ;
+ int dlg_getc (int *,int*) ;
+ int* dlg_index_wchars (char const*) ;
+ int dlg_limit_columns (char const*,int,int ) ;
+ int * dlg_new_modal_window (int *,int,int,int,int) ;
+ int dlg_register_window (int *,char*,int *) ;
+ int dlg_show_string (int *,char*,int,int ,int,int,int,int,int) ;
+ int getbegyx (int *,int,int) ;
+ int getmaxx (int *) ;
+ int keypad (int *,int) ;
+ int napms (int) ;
+ int searchbox_attr ;
+ int searchbox_border2_attr ;
+ int searchbox_border_attr ;
+ int searchbox_title_attr ;
+ int waddnstr (int *,char const*,int const) ;
+ int wmove (int *,int ,int) ;
 
 __attribute__((used)) static int
 get_search_term(WINDOW *dialog, char *input, int height, int width)
 {
-    /* *INDENT-OFF* */
+
     static DLG_KEYS_BINDING binding[] = {
-	INPUTSTR_BINDINGS,
-	HELPKEY_BINDINGS,
-	ENTERKEY_BINDINGS,
-	END_KEYS_BINDING
+ 129,
+ 130,
+ 131,
+ 132
     };
-    /* *INDENT-ON* */
+
 
     int old_x, old_y;
     int box_x, box_y;
@@ -91,15 +91,15 @@ get_search_term(WINDOW *dialog, char *input, int height, int width)
     box_x = (width - box_width) / 2;
     box_y = (height - box_height) / 2;
     widget = dlg_new_modal_window(dialog,
-				  box_height, box_width,
-				  old_y + box_y, old_x + box_x);
+      box_height, box_width,
+      old_y + box_y, old_x + box_x);
     keypad(widget, TRUE);
     dlg_register_window(widget, "searchbox", binding);
 
     dlg_draw_box2(widget, 0, 0, box_height, box_width,
-		  searchbox_attr,
-		  searchbox_border_attr,
-		  searchbox_border2_attr);
+    searchbox_attr,
+    searchbox_border_attr,
+    searchbox_border2_attr);
     dlg_attrset(widget, searchbox_title_attr);
     (void) wmove(widget, 0, (box_width - len_caption) / 2);
 
@@ -111,32 +111,32 @@ get_search_term(WINDOW *dialog, char *input, int height, int width)
     offset = dlg_count_columns(input);
 
     while (result == DLG_EXIT_UNKNOWN) {
-	if (!first) {
-	    key = dlg_getc(widget, &fkey);
-	    if (fkey) {
-		switch (fkey) {
-#ifdef KEY_RESIZE
-		case KEY_RESIZE:
-		    result = DLG_EXIT_CANCEL;
-		    continue;
-#endif
-		case DLGK_ENTER:
-		    result = DLG_EXIT_OK;
-		    continue;
-		}
-	    } else if (key == ESC) {
-		result = DLG_EXIT_ESC;
-		continue;
-	    } else if (key == ERR) {
-		napms(50);
-		continue;
-	    }
-	}
-	if (dlg_edit_string(input, &offset, key, fkey, first)) {
-	    dlg_show_string(widget, input, offset, searchbox_attr,
-			    1, 1, box_width, FALSE, first);
-	    first = FALSE;
-	}
+ if (!first) {
+     key = dlg_getc(widget, &fkey);
+     if (fkey) {
+  switch (fkey) {
+
+  case 128:
+      result = DLG_EXIT_CANCEL;
+      continue;
+
+  case 133:
+      result = DLG_EXIT_OK;
+      continue;
+  }
+     } else if (key == ESC) {
+  result = DLG_EXIT_ESC;
+  continue;
+     } else if (key == ERR) {
+  napms(50);
+  continue;
+     }
+ }
+ if (dlg_edit_string(input, &offset, key, fkey, first)) {
+     dlg_show_string(widget, input, offset, searchbox_attr,
+       1, 1, box_width, FALSE, first);
+     first = FALSE;
+ }
     }
     dlg_del_window(widget);
     return result;

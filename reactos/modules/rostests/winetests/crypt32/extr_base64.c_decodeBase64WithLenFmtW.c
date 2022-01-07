@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/ * LPCSTR ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ CryptStringToBinaryW (int /*<<< orphan*/ *,int,scalar_t__,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ memcmp (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int buf ;
+typedef int WCHAR ;
+typedef int * LPCSTR ;
+typedef scalar_t__ DWORD ;
+typedef int BYTE ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ CryptStringToBinaryW (int *,int,scalar_t__,int *,scalar_t__*,int *,scalar_t__*) ;
+ scalar_t__ memcmp (int const*,int *,scalar_t__) ;
+ int ok (int,char*,int *,int) ;
 
 __attribute__((used)) static void decodeBase64WithLenFmtW(LPCSTR strA, int len, DWORD fmt, BOOL retA,
  const BYTE *bufA, DWORD bufLenA, DWORD fmtUsedA)
@@ -31,7 +31,7 @@ __attribute__((used)) static void decodeBase64WithLenFmtW(LPCSTR strA, int len, 
     WCHAR strW[64];
     int i;
     for (i = 0; (strW[i] = strA[i]) != 0; ++i);
-    ret = CryptStringToBinaryW(strW, len, fmt, buf, &bufLen, NULL, &fmtUsed);
+    ret = CryptStringToBinaryW(strW, len, fmt, buf, &bufLen, ((void*)0), &fmtUsed);
     ok(ret == retA && bufLen == bufLenA && memcmp(bufA, buf, bufLen) == 0
      && fmtUsed == fmtUsedA, "base64 \"%s\" len %d: W and A differ\n", strA, len);
 }

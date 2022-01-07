@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ CURLcode ;
-typedef  scalar_t__ CURLSHcode ;
-typedef  scalar_t__ CURLMcode ;
 
-/* Variables and functions */
- scalar_t__ CURLE_OK ; 
- scalar_t__ CURLM_CALL_MULTI_PERFORM ; 
- scalar_t__ CURLM_LAST ; 
- scalar_t__ CURLSHE_LAST ; 
- scalar_t__ CURLSHE_OK ; 
- scalar_t__ CURL_LAST ; 
- scalar_t__ INT_MAX ; 
- char* curl_easy_strerror (scalar_t__) ; 
- char* curl_multi_strerror (scalar_t__) ; 
- char* curl_share_strerror (scalar_t__) ; 
- int /*<<< orphan*/  printf (char*,int,char*) ; 
+
+
+
+typedef scalar_t__ CURLcode ;
+typedef scalar_t__ CURLSHcode ;
+typedef scalar_t__ CURLMcode ;
+
+
+ scalar_t__ CURLE_OK ;
+ scalar_t__ CURLM_CALL_MULTI_PERFORM ;
+ scalar_t__ CURLM_LAST ;
+ scalar_t__ CURLSHE_LAST ;
+ scalar_t__ CURLSHE_OK ;
+ scalar_t__ CURL_LAST ;
+ scalar_t__ INT_MAX ;
+ char* curl_easy_strerror (scalar_t__) ;
+ char* curl_multi_strerror (scalar_t__) ;
+ char* curl_share_strerror (scalar_t__) ;
+ int printf (char*,int,char*) ;
 
 int test(char *URL)
 {

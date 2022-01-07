@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  int SIZE_T ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int /*<<< orphan*/  OBJECT_ATTRIBUTES ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  scalar_t__ LPCWSTR ;
-typedef  int /*<<< orphan*/ * HANDLE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BaseSetLastNTError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  InitializeObjectAttributes (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KEY_WRITE ; 
- int MAXULONG ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NtCreateKey (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NtFlushKey (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NtOpenKey (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NtSetValueKey (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  OBJ_CASE_INSENSITIVE ; 
- int /*<<< orphan*/  REG_OPTION_VOLATILE ; 
- int /*<<< orphan*/  REG_SZ ; 
- int /*<<< orphan*/  RtlInitUnicodeString (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  TRUE ; 
- int wcslen (scalar_t__) ; 
+
+
+
+typedef int WCHAR ;
+typedef int UNICODE_STRING ;
+typedef int ULONG ;
+typedef int SIZE_T ;
+typedef int PVOID ;
+typedef int OBJECT_ATTRIBUTES ;
+typedef int NTSTATUS ;
+typedef scalar_t__ LPCWSTR ;
+typedef int * HANDLE ;
+typedef int BOOL ;
+
+
+ int BaseSetLastNTError (int ) ;
+ int FALSE ;
+ int InitializeObjectAttributes (int *,int *,int ,int *,int *) ;
+ int KEY_WRITE ;
+ int MAXULONG ;
+ int NT_SUCCESS (int ) ;
+ int NtClose (int *) ;
+ int NtCreateKey (int **,int ,int *,int ,int *,int ,int *) ;
+ int NtFlushKey (int *) ;
+ int NtOpenKey (int **,int ,int *) ;
+ int NtSetValueKey (int *,int *,int ,int ,int ,int) ;
+ int OBJ_CASE_INSENSITIVE ;
+ int REG_OPTION_VOLATILE ;
+ int REG_SZ ;
+ int RtlInitUnicodeString (int *,scalar_t__) ;
+ int TRUE ;
+ int wcslen (scalar_t__) ;
 
 __attribute__((used)) static
 BOOL
@@ -65,8 +65,8 @@ SetActiveComputerNameToRegistry(LPCWSTR RegistryKey,
     InitializeObjectAttributes(&ObjectAttributes,
                                &KeyName,
                                OBJ_CASE_INSENSITIVE,
-                               NULL,
-                               NULL);
+                               ((void*)0),
+                               ((void*)0));
 
     Status = NtOpenKey(&KeyHandle,
                        KEY_WRITE,
@@ -82,13 +82,13 @@ SetActiveComputerNameToRegistry(LPCWSTR RegistryKey,
                                &KeyName,
                                OBJ_CASE_INSENSITIVE,
                                KeyHandle,
-                               NULL);
+                               ((void*)0));
 
     Status = NtCreateKey(&SubKeyHandle,
                          KEY_WRITE,
                          &ObjectAttributes,
                          0,
-                         NULL,
+                         ((void*)0),
                          REG_OPTION_VOLATILE,
                          &Disposition);
     if (!NT_SUCCESS(Status))

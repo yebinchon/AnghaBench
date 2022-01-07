@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct table {int data; int num_rows; } ;
-struct record_logicaldisk {int drivetype; int size; int /*<<< orphan*/  volumeserialnumber; int /*<<< orphan*/  volumename; void* name; int /*<<< orphan*/  freespace; int /*<<< orphan*/  filesystem; void* device_id; } ;
+struct record_logicaldisk {int drivetype; int size; int volumeserialnumber; int volumename; void* name; int freespace; int filesystem; void* device_id; } ;
 struct expr {int dummy; } ;
-typedef  enum fill_status { ____Placeholder_fill_status } fill_status ;
-typedef  char WCHAR ;
-typedef  int UINT64 ;
-typedef  int UINT ;
-typedef  int DWORD ;
+typedef enum fill_status { ____Placeholder_fill_status } fill_status ;
+typedef char WCHAR ;
+typedef int UINT64 ;
+typedef int UINT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int DRIVE_CDROM ; 
- int DRIVE_FIXED ; 
- int DRIVE_REMOVABLE ; 
- int FILL_STATUS_FAILED ; 
- int FILL_STATUS_UNFILTERED ; 
- int GetDriveTypeW (char*) ; 
- int GetLogicalDrives () ; 
- int /*<<< orphan*/  TRACE (char*,int) ; 
- int /*<<< orphan*/  free_row_values (struct table*,int) ; 
- int /*<<< orphan*/  get_filesystem (char*) ; 
- int /*<<< orphan*/  get_freespace (char*,int*) ; 
- int /*<<< orphan*/  get_volumename (char*) ; 
- int /*<<< orphan*/  get_volumeserialnumber (char*) ; 
- void* heap_strdupW (char*) ; 
- int /*<<< orphan*/  match_row (struct table*,int,struct expr const*,int*) ; 
- int /*<<< orphan*/  resize_table (struct table*,int,int) ; 
- int /*<<< orphan*/  sprintfW (char*,char const*,char) ; 
+
+ int DRIVE_CDROM ;
+ int DRIVE_FIXED ;
+ int DRIVE_REMOVABLE ;
+ int FILL_STATUS_FAILED ;
+ int FILL_STATUS_UNFILTERED ;
+ int GetDriveTypeW (char*) ;
+ int GetLogicalDrives () ;
+ int TRACE (char*,int) ;
+ int free_row_values (struct table*,int) ;
+ int get_filesystem (char*) ;
+ int get_freespace (char*,int*) ;
+ int get_volumename (char*) ;
+ int get_volumeserialnumber (char*) ;
+ void* heap_strdupW (char*) ;
+ int match_row (struct table*,int,struct expr const*,int*) ;
+ int resize_table (struct table*,int,int) ;
+ int sprintfW (char*,char const*,char) ;
 
 __attribute__((used)) static enum fill_status fill_logicaldisk( struct table *table, const struct expr *cond )
 {
@@ -63,13 +63,13 @@ __attribute__((used)) static enum fill_status fill_logicaldisk( struct table *ta
 
             rec = (struct record_logicaldisk *)(table->data + offset);
             sprintfW( device_id, fmtW, 'A' + i );
-            rec->device_id          = heap_strdupW( device_id );
-            rec->drivetype          = type;
-            rec->filesystem         = get_filesystem( root );
-            rec->freespace          = get_freespace( root, &size );
-            rec->name               = heap_strdupW( device_id );
-            rec->size               = size;
-            rec->volumename         = get_volumename( root );
+            rec->device_id = heap_strdupW( device_id );
+            rec->drivetype = type;
+            rec->filesystem = get_filesystem( root );
+            rec->freespace = get_freespace( root, &size );
+            rec->name = heap_strdupW( device_id );
+            rec->size = size;
+            rec->volumename = get_volumename( root );
             rec->volumeserialnumber = get_volumeserialnumber( root );
             if (!match_row( table, row, cond, &status ))
             {

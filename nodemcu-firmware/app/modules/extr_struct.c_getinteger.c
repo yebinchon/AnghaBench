@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_Number ;
-typedef  int Uinttype ;
-typedef  int /*<<< orphan*/  Inttype ;
 
-/* Variables and functions */
- int BIG ; 
+
+
+
+typedef int lua_Number ;
+typedef int Uinttype ;
+typedef int Inttype ;
+
+
+ int BIG ;
 
 __attribute__((used)) static lua_Number getinteger (const char *buff, int endian,
                         int issigned, int size) {
@@ -35,10 +35,10 @@ __attribute__((used)) static lua_Number getinteger (const char *buff, int endian
   }
   if (!issigned)
     return (lua_Number)l;
-  else {  /* signed format */
+  else {
     Uinttype mask = (Uinttype)(~((Uinttype)0)) << (size*8 - 1);
-    if (l & mask)  /* negative value? */
-      l |= mask;  /* signal extension */
+    if (l & mask)
+      l |= mask;
     return (lua_Number)(Inttype)l;
   }
 }

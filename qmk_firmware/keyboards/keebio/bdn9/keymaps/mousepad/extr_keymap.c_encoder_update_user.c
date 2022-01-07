@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KC_MS_D ; 
- int /*<<< orphan*/  KC_MS_LEFT ; 
- int /*<<< orphan*/  KC_MS_RIGHT ; 
- int /*<<< orphan*/  KC_MS_U ; 
- int /*<<< orphan*/  tap_code (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int KC_MS_D ;
+ int KC_MS_LEFT ;
+ int KC_MS_RIGHT ;
+ int KC_MS_U ;
+ int tap_code (int ) ;
 
 void encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {

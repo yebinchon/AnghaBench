@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct mrb_context {int /*<<< orphan*/  eidx; TYPE_2__* ci; TYPE_2__* cibase; TYPE_2__* ciend; } ;
-typedef  int ptrdiff_t ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct mrb_context {int eidx; TYPE_2__* ci; TYPE_2__* cibase; TYPE_2__* ciend; } ;
+typedef int ptrdiff_t ;
 struct TYPE_7__ {struct mrb_context* c; } ;
-typedef  TYPE_1__ mrb_state ;
-struct TYPE_8__ {int ridx; int /*<<< orphan*/  epos; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ mrb_callinfo ;
+typedef TYPE_1__ mrb_state ;
+struct TYPE_8__ {int ridx; int epos; int member_0; } ;
+typedef TYPE_2__ mrb_callinfo ;
 
-/* Variables and functions */
- scalar_t__ mrb_realloc (TYPE_1__*,TYPE_2__*,int) ; 
+
+ scalar_t__ mrb_realloc (TYPE_1__*,TYPE_2__*,int) ;
 
 __attribute__((used)) static inline mrb_callinfo*
 cipush(mrb_state *mrb)

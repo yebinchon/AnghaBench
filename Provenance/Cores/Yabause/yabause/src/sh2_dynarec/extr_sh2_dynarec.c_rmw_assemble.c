@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct regstat {scalar_t__* regmap; int wasdoingcp; long long u; } ;
 
-/* Variables and functions */
- scalar_t__ GBRIND ; 
- unsigned int HOST_REGS ; 
- int MMREG ; 
- int MOREG ; 
- int RMWA_STUB ; 
- int RMWO_STUB ; 
- int RMWT_STUB ; 
- int RMWX_STUB ; 
- int SR ; 
- long long TBIT ; 
- int /*<<< orphan*/  add_stub (int,int,int,int,int,int,int /*<<< orphan*/ ,int) ; 
- scalar_t__* addrmode ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * ccadj ; 
- int** cpmap ; 
- int do_map_w (int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  do_map_w_branch (int,int,int,int*) ; 
- int /*<<< orphan*/  emit_rmw_andimm (int,int,int) ; 
- int /*<<< orphan*/  emit_rmw_orimm (int,int,int) ; 
- int /*<<< orphan*/  emit_rmw_xorimm (int,int,int) ; 
- int /*<<< orphan*/  emit_sh2tas (int,int,char) ; 
- void* get_reg (scalar_t__*,int) ; 
- int* imm ; 
- int* opcode2 ; 
- scalar_t__ out ; 
- int* rs1 ; 
- int* rs2 ; 
- long long* rt1 ; 
+
+ scalar_t__ GBRIND ;
+ unsigned int HOST_REGS ;
+ int MMREG ;
+ int MOREG ;
+ int RMWA_STUB ;
+ int RMWO_STUB ;
+ int RMWT_STUB ;
+ int RMWX_STUB ;
+ int SR ;
+ long long TBIT ;
+ int add_stub (int,int,int,int,int,int,int ,int) ;
+ scalar_t__* addrmode ;
+ int assert (int) ;
+ int * ccadj ;
+ int** cpmap ;
+ int do_map_w (int,int,int,int,int,int,int) ;
+ int do_map_w_branch (int,int,int,int*) ;
+ int emit_rmw_andimm (int,int,int) ;
+ int emit_rmw_orimm (int,int,int) ;
+ int emit_rmw_xorimm (int,int,int) ;
+ int emit_sh2tas (int,int,char) ;
+ void* get_reg (scalar_t__*,int) ;
+ int* imm ;
+ int* opcode2 ;
+ scalar_t__ out ;
+ int* rs1 ;
+ int* rs2 ;
+ long long* rt1 ;
 
 void rmw_assemble(int i,struct regstat *i_regs)
 {
@@ -69,8 +69,8 @@ void rmw_assemble(int i,struct regstat *i_regs)
       else
          constaddr=cpmap[i][s];
     }
-    //printf("constaddr=%x offset=%x\n",constaddr,offset);
-    memtarget=1; // FIXME
+
+    memtarget=1;
   }
   if(dualindex||s<0||c) addr=t;
   else addr=s;
@@ -78,31 +78,31 @@ void rmw_assemble(int i,struct regstat *i_regs)
   reglist&=~(1<<t);
   {
     int x=0;
-    if (!c) x=1; // MOV.B
+    if (!c) x=1;
     map=get_reg(i_regs->regmap,MOREG);
     cache=get_reg(i_regs->regmap,MMREG);
     assert(map>=0);
     reglist&=~(1<<map);
     map=do_map_w(addr,t,map,cache,x,c,constaddr);
-    if (!c) addr=t; // MOV.B
+    if (!c) addr=t;
     do_map_w_branch(map,c,constaddr,&jaddr);
   }
-  if(opcode2[i]==11) type=RMWT_STUB; // TAS.B
-  if(opcode2[i]==13) type=RMWA_STUB; // AND.B
-  if(opcode2[i]==14) type=RMWX_STUB; // XOR.B
-  if(opcode2[i]==15) type=RMWO_STUB; // OR.B
+  if(opcode2[i]==11) type=RMWT_STUB;
+  if(opcode2[i]==13) type=RMWA_STUB;
+  if(opcode2[i]==14) type=RMWX_STUB;
+  if(opcode2[i]==15) type=RMWO_STUB;
   if(!c||memtarget) {
-    if(opcode2[i]==11) { // TAS.B
+    if(opcode2[i]==11) {
       signed char sr;
       sr=get_reg(i_regs->regmap,SR);
-      assert(sr>=0); // Liveness analysis?
+      assert(sr>=0);
       assert(rt1[i]==TBIT);
       if(sr>=0&&!(i_regs->u&(1LL<<TBIT))) emit_sh2tas(addr,map,sr);
-      else emit_rmw_orimm(addr,map,0x80); // T ignored, set only
+      else emit_rmw_orimm(addr,map,0x80);
     }
-    if(opcode2[i]==13) emit_rmw_andimm(addr,map,imm[i]); // AND.B
-    if(opcode2[i]==14) emit_rmw_xorimm(addr,map,imm[i]); // XOR.B
-    if(opcode2[i]==15) emit_rmw_orimm(addr,map,imm[i]); // OR.B
+    if(opcode2[i]==13) emit_rmw_andimm(addr,map,imm[i]);
+    if(opcode2[i]==14) emit_rmw_xorimm(addr,map,imm[i]);
+    if(opcode2[i]==15) emit_rmw_orimm(addr,map,imm[i]);
   }
   if(jaddr)
     add_stub(type,jaddr,(int)out,i,addr,(int)i_regs,ccadj[i],reglist);

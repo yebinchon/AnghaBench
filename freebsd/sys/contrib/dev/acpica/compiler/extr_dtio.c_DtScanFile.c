@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT32 ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  DT_FIELD ;
-typedef  scalar_t__ ACPI_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_DB_PARSE ; 
- int /*<<< orphan*/  ACPI_DEBUG_PRINT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_FUNCTION_NAME (int /*<<< orphan*/ * (*) (int /*<<< orphan*/ *)) ; 
- scalar_t__ ACPI_UINT32_MAX ; 
- scalar_t__ AE_NOT_FOUND ; 
- int /*<<< orphan*/  ASL_EOF ; 
- int /*<<< orphan*/  AslAbort () ; 
- int /*<<< orphan*/  AslGbl_CurrentLineBuffer ; 
- scalar_t__ AslGbl_CurrentLineNumber ; 
- scalar_t__ AslGbl_CurrentLineOffset ; 
- int /*<<< orphan*/ * AslGbl_FieldList ; 
- scalar_t__ AslGbl_InputByteCount ; 
- scalar_t__ AslGbl_NextLineOffset ; 
- scalar_t__ CmGetFileSize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DtDumpFieldList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DtGetNextLine (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ DtParseLine (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT32 ;
+typedef int FILE ;
+typedef int DT_FIELD ;
+typedef scalar_t__ ACPI_STATUS ;
+
+
+ int ACPI_DB_PARSE ;
+ int ACPI_DEBUG_PRINT (int ) ;
+ int ACPI_FUNCTION_NAME (int * (*) (int *)) ;
+ scalar_t__ ACPI_UINT32_MAX ;
+ scalar_t__ AE_NOT_FOUND ;
+ int ASL_EOF ;
+ int AslAbort () ;
+ int AslGbl_CurrentLineBuffer ;
+ scalar_t__ AslGbl_CurrentLineNumber ;
+ scalar_t__ AslGbl_CurrentLineOffset ;
+ int * AslGbl_FieldList ;
+ scalar_t__ AslGbl_InputByteCount ;
+ scalar_t__ AslGbl_NextLineOffset ;
+ scalar_t__ CmGetFileSize (int *) ;
+ int DtDumpFieldList (int *) ;
+ int DtGetNextLine (int *,int ) ;
+ scalar_t__ DtParseLine (int ,scalar_t__,int ) ;
 
 DT_FIELD *
 DtScanFile (
-    FILE                    *Handle)
+    FILE *Handle)
 {
-    ACPI_STATUS             Status;
-    UINT32                  Offset;
+    ACPI_STATUS Status;
+    UINT32 Offset;
 
 
     ACPI_FUNCTION_NAME (DtScanFile);
 
 
-    /* Get the file size */
+
 
     AslGbl_InputByteCount = CmGetFileSize (Handle);
     if (AslGbl_InputByteCount == ACPI_UINT32_MAX)
@@ -57,7 +57,7 @@ DtScanFile (
     AslGbl_CurrentLineOffset = 0;
     AslGbl_NextLineOffset = 0;
 
-    /* Scan line-by-line */
+
 
     while ((Offset = DtGetNextLine (Handle, 0)) != ASL_EOF)
     {
@@ -72,7 +72,7 @@ DtScanFile (
         }
     }
 
-    /* Dump the parse tree if debug enabled */
+
 
     DtDumpFieldList (AslGbl_FieldList);
     return (AslGbl_FieldList);

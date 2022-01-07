@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_depth_t ;
-struct TYPE_5__ {int /*<<< orphan*/  close_edit; int /*<<< orphan*/  absent_file; int /*<<< orphan*/  close_file; int /*<<< orphan*/  change_file_prop; int /*<<< orphan*/  apply_textdelta; int /*<<< orphan*/  open_file; int /*<<< orphan*/  add_file; int /*<<< orphan*/  absent_directory; int /*<<< orphan*/  close_directory; int /*<<< orphan*/  change_dir_prop; int /*<<< orphan*/  open_directory; int /*<<< orphan*/  add_directory; int /*<<< orphan*/  delete_entry; int /*<<< orphan*/  open_root; int /*<<< orphan*/  set_target_revision; } ;
-typedef  TYPE_1__ svn_delta_editor_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct edit_baton {scalar_t__ requested_depth; int /*<<< orphan*/  has_target; void* wrapped_edit_baton; TYPE_1__ const* wrapped_editor; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  absent_directory ; 
- int /*<<< orphan*/  absent_file ; 
- int /*<<< orphan*/  add_directory ; 
- int /*<<< orphan*/  add_file ; 
- int /*<<< orphan*/  apply_textdelta ; 
- struct edit_baton* apr_palloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  change_dir_prop ; 
- int /*<<< orphan*/  change_file_prop ; 
- int /*<<< orphan*/  close_directory ; 
- int /*<<< orphan*/  close_edit ; 
- int /*<<< orphan*/  close_file ; 
- int /*<<< orphan*/  delete_entry ; 
- int /*<<< orphan*/  open_directory ; 
- int /*<<< orphan*/  open_file ; 
- int /*<<< orphan*/  open_root ; 
- int /*<<< orphan*/  set_target_revision ; 
- TYPE_1__* svn_delta_default_editor (int /*<<< orphan*/ *) ; 
- scalar_t__ svn_depth_infinity ; 
- scalar_t__ svn_depth_unknown ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+typedef scalar_t__ svn_depth_t ;
+struct TYPE_5__ {int close_edit; int absent_file; int close_file; int change_file_prop; int apply_textdelta; int open_file; int add_file; int absent_directory; int close_directory; int change_dir_prop; int open_directory; int add_directory; int delete_entry; int open_root; int set_target_revision; } ;
+typedef TYPE_1__ svn_delta_editor_t ;
+typedef int svn_boolean_t ;
+struct edit_baton {scalar_t__ requested_depth; int has_target; void* wrapped_edit_baton; TYPE_1__ const* wrapped_editor; } ;
+typedef int apr_pool_t ;
+
+
+ int * SVN_NO_ERROR ;
+ int absent_directory ;
+ int absent_file ;
+ int add_directory ;
+ int add_file ;
+ int apply_textdelta ;
+ struct edit_baton* apr_palloc (int *,int) ;
+ int change_dir_prop ;
+ int change_file_prop ;
+ int close_directory ;
+ int close_edit ;
+ int close_file ;
+ int delete_entry ;
+ int open_directory ;
+ int open_file ;
+ int open_root ;
+ int set_target_revision ;
+ TYPE_1__* svn_delta_default_editor (int *) ;
+ scalar_t__ svn_depth_infinity ;
+ scalar_t__ svn_depth_unknown ;
 
 svn_error_t *
 svn_delta_depth_filter_editor(const svn_delta_editor_t **editor,
@@ -53,10 +53,10 @@ svn_delta_depth_filter_editor(const svn_delta_editor_t **editor,
   svn_delta_editor_t *depth_filter_editor;
   struct edit_baton *eb;
 
-  /* Easy out: if the caller wants infinite depth, there's nothing to
-     filter, so just return the editor we were supposed to wrap.  And
-     if they've asked for an unknown depth, we can't possibly know
-     what that means, so why bother?  */
+
+
+
+
   if ((requested_depth == svn_depth_unknown)
       || (requested_depth == svn_depth_infinity))
     {

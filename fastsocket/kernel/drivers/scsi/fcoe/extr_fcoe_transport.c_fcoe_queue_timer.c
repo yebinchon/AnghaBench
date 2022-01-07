@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ulong ;
+
+
+
+
+typedef scalar_t__ ulong ;
 struct fc_lport {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fcoe_check_wait_queue (struct fc_lport*,int /*<<< orphan*/ *) ; 
+
+ int fcoe_check_wait_queue (struct fc_lport*,int *) ;
 
 void fcoe_queue_timer(ulong lport)
 {
-	fcoe_check_wait_queue((struct fc_lport *)lport, NULL);
+ fcoe_check_wait_queue((struct fc_lport *)lport, ((void*)0));
 }

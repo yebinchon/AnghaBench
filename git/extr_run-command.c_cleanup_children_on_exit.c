@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SIGTERM ; 
- int /*<<< orphan*/  cleanup_children (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int SIGTERM ;
+ int cleanup_children (int ,int ) ;
 
 __attribute__((used)) static void cleanup_children_on_exit(void)
 {
-	cleanup_children(SIGTERM, 0);
+ cleanup_children(SIGTERM, 0);
 }

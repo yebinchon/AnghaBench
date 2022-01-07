@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lvi ;
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_7__ {int mask; scalar_t__ iImage; scalar_t__ state; int /*<<< orphan*/  pszText; } ;
-struct TYPE_6__ {int /*<<< orphan*/  lgrpi1_comment; int /*<<< orphan*/  lgrpi1_name; } ;
-typedef  TYPE_1__* PLOCALGROUP_INFO_1 ;
-typedef  int /*<<< orphan*/  NET_API_STATUS ;
-typedef  TYPE_2__ LV_ITEM ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  DWORD_PTR ;
-typedef  size_t DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_MORE_DATA ; 
- int LVIF_IMAGE ; 
- int LVIF_STATE ; 
- int LVIF_TEXT ; 
- int /*<<< orphan*/  ListView_InsertItem (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  ListView_SetItemText (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NERR_Success ; 
- int /*<<< orphan*/  NetApiBufferFree (TYPE_1__*) ; 
- int /*<<< orphan*/  NetLocalGroupEnum (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,size_t*,size_t*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int,int) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int lvi ;
+typedef int VOID ;
+struct TYPE_7__ {int mask; scalar_t__ iImage; scalar_t__ state; int pszText; } ;
+struct TYPE_6__ {int lgrpi1_comment; int lgrpi1_name; } ;
+typedef TYPE_1__* PLOCALGROUP_INFO_1 ;
+typedef int NET_API_STATUS ;
+typedef TYPE_2__ LV_ITEM ;
+typedef int LPBYTE ;
+typedef int INT ;
+typedef int HWND ;
+typedef int DWORD_PTR ;
+typedef size_t DWORD ;
+
+
+ int ERROR_MORE_DATA ;
+ int LVIF_IMAGE ;
+ int LVIF_STATE ;
+ int LVIF_TEXT ;
+ int ListView_InsertItem (int ,TYPE_2__*) ;
+ int ListView_SetItemText (int ,int ,int,int ) ;
+ int NERR_Success ;
+ int NetApiBufferFree (TYPE_1__*) ;
+ int NetLocalGroupEnum (int *,int,int *,int,size_t*,size_t*,int *) ;
+ int memset (TYPE_2__*,int,int) ;
 
 __attribute__((used)) static VOID
 UpdateGroupsList(HWND hwndListView)
@@ -51,7 +51,7 @@ UpdateGroupsList(HWND hwndListView)
 
     for (;;)
     {
-        netStatus = NetLocalGroupEnum(NULL, 1, (LPBYTE*)&pBuffer,
+        netStatus = NetLocalGroupEnum(((void*)0), 1, (LPBYTE*)&pBuffer,
                                       1024, &entriesread,
                                       &totalentries, &resume_handle);
         if (netStatus != NERR_Success && netStatus != ERROR_MORE_DATA)
@@ -72,7 +72,7 @@ UpdateGroupsList(HWND hwndListView)
 
         NetApiBufferFree(pBuffer);
 
-        /* No more data left */
+
         if (netStatus != ERROR_MORE_DATA)
             break;
     }

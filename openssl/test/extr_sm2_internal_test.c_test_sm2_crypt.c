@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned char uint8_t ;
-typedef  int /*<<< orphan*/  EVP_MD ;
-typedef  unsigned char EC_POINT ;
-typedef  unsigned char EC_KEY ;
-typedef  int /*<<< orphan*/  EC_GROUP ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_hex2bn (int /*<<< orphan*/ **,char const*) ; 
- int /*<<< orphan*/  EC_KEY_free (unsigned char*) ; 
- unsigned char* EC_KEY_new () ; 
- int /*<<< orphan*/  EC_KEY_set_group (unsigned char*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EC_KEY_set_private_key (unsigned char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_KEY_set_public_key (unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  EC_POINT_free (unsigned char*) ; 
- int /*<<< orphan*/  EC_POINT_mul (int /*<<< orphan*/  const*,unsigned char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- unsigned char* EC_POINT_new (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- unsigned char* OPENSSL_hexstr2buf (char const*,int /*<<< orphan*/ *) ; 
- unsigned char* OPENSSL_zalloc (size_t) ; 
- int /*<<< orphan*/  TEST_int_eq (size_t,size_t const) ; 
- int /*<<< orphan*/  TEST_mem_eq (unsigned char*,size_t,...) ; 
- int /*<<< orphan*/  TEST_ptr (unsigned char*) ; 
- int /*<<< orphan*/  TEST_size_t_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fake_rand_bytes_offset ; 
- int /*<<< orphan*/  fake_rand_size ; 
- int /*<<< orphan*/  restore_rand () ; 
- int /*<<< orphan*/  sm2_ciphertext_size (unsigned char*,int /*<<< orphan*/  const*,size_t const,size_t*) ; 
- int /*<<< orphan*/  sm2_decrypt (unsigned char*,int /*<<< orphan*/  const*,unsigned char*,size_t,unsigned char*,size_t*) ; 
- int /*<<< orphan*/  sm2_encrypt (unsigned char*,int /*<<< orphan*/  const*,unsigned char const*,size_t const,unsigned char*,size_t*) ; 
- int /*<<< orphan*/  sm2_plaintext_size (unsigned char*,int /*<<< orphan*/  const*,size_t,size_t*) ; 
- int /*<<< orphan*/  start_fake_rand (char const*) ; 
- size_t strlen (char const*) ; 
+
+
+
+typedef unsigned char uint8_t ;
+typedef int EVP_MD ;
+typedef unsigned char EC_POINT ;
+typedef unsigned char EC_KEY ;
+typedef int EC_GROUP ;
+typedef int BIGNUM ;
+
+
+ int BN_free (int *) ;
+ int BN_hex2bn (int **,char const*) ;
+ int EC_KEY_free (unsigned char*) ;
+ unsigned char* EC_KEY_new () ;
+ int EC_KEY_set_group (unsigned char*,int const*) ;
+ int EC_KEY_set_private_key (unsigned char*,int *) ;
+ int EC_KEY_set_public_key (unsigned char*,unsigned char*) ;
+ int EC_POINT_free (unsigned char*) ;
+ int EC_POINT_mul (int const*,unsigned char*,int *,int *,int *,int *) ;
+ unsigned char* EC_POINT_new (int const*) ;
+ int OPENSSL_free (unsigned char*) ;
+ unsigned char* OPENSSL_hexstr2buf (char const*,int *) ;
+ unsigned char* OPENSSL_zalloc (size_t) ;
+ int TEST_int_eq (size_t,size_t const) ;
+ int TEST_mem_eq (unsigned char*,size_t,...) ;
+ int TEST_ptr (unsigned char*) ;
+ int TEST_size_t_eq (int ,int ) ;
+ int TEST_true (int ) ;
+ int fake_rand_bytes_offset ;
+ int fake_rand_size ;
+ int restore_rand () ;
+ int sm2_ciphertext_size (unsigned char*,int const*,size_t const,size_t*) ;
+ int sm2_decrypt (unsigned char*,int const*,unsigned char*,size_t,unsigned char*,size_t*) ;
+ int sm2_encrypt (unsigned char*,int const*,unsigned char const*,size_t const,unsigned char*,size_t*) ;
+ int sm2_plaintext_size (unsigned char*,int const*,size_t,size_t*) ;
+ int start_fake_rand (char const*) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static int test_sm2_crypt(const EC_GROUP *group,
                           const EVP_MD *digest,
@@ -53,14 +53,14 @@ __attribute__((used)) static int test_sm2_crypt(const EC_GROUP *group,
                           const char *k_hex, const char *ctext_hex)
 {
     const size_t msg_len = strlen(message);
-    BIGNUM *priv = NULL;
-    EC_KEY *key = NULL;
-    EC_POINT *pt = NULL;
-    unsigned char *expected = OPENSSL_hexstr2buf(ctext_hex, NULL);
+    BIGNUM *priv = ((void*)0);
+    EC_KEY *key = ((void*)0);
+    EC_POINT *pt = ((void*)0);
+    unsigned char *expected = OPENSSL_hexstr2buf(ctext_hex, ((void*)0));
     size_t ctext_len = 0;
     size_t ptext_len = 0;
-    uint8_t *ctext = NULL;
-    uint8_t *recovered = NULL;
+    uint8_t *ctext = ((void*)0);
+    uint8_t *recovered = ((void*)0);
     size_t recovered_len = msg_len;
     int rc = 0;
 
@@ -76,7 +76,7 @@ __attribute__((used)) static int test_sm2_crypt(const EC_GROUP *group,
 
     pt = EC_POINT_new(group);
     if (!TEST_ptr(pt)
-            || !TEST_true(EC_POINT_mul(group, pt, priv, NULL, NULL, NULL))
+            || !TEST_true(EC_POINT_mul(group, pt, priv, ((void*)0), ((void*)0), ((void*)0)))
             || !TEST_true(EC_KEY_set_public_key(key, pt))
             || !TEST_true(sm2_ciphertext_size(key, digest, msg_len, &ctext_len)))
         goto done;

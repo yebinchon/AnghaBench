@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct svc_req {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AUTH_TOOWEAK ; 
- int /*<<< orphan*/  svcerr_auth (struct svc_req*,int /*<<< orphan*/ ) ; 
+
+ int AUTH_TOOWEAK ;
+ int svcerr_auth (struct svc_req*,int ) ;
 
 void
 svcerr_weakauth(struct svc_req *rqstp)
 {
 
-	svcerr_auth(rqstp, AUTH_TOOWEAK);
+ svcerr_auth(rqstp, AUTH_TOOWEAK);
 }

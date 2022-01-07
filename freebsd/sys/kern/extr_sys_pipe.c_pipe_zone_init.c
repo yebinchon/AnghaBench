@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pipepair {int /*<<< orphan*/  pp_mtx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KASSERT (int,char*) ; 
- int MTX_DEF ; 
- int MTX_NEW ; 
- int /*<<< orphan*/  mtx_init (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int) ; 
+
+
+
+struct pipepair {int pp_mtx; } ;
+
+
+ int KASSERT (int,char*) ;
+ int MTX_DEF ;
+ int MTX_NEW ;
+ int mtx_init (int *,char*,int *,int) ;
 
 __attribute__((used)) static int
 pipe_zone_init(void *mem, int size, int flags)
 {
-	struct pipepair *pp;
+ struct pipepair *pp;
 
-	KASSERT(size == sizeof(*pp), ("pipe_zone_init: wrong size"));
+ KASSERT(size == sizeof(*pp), ("pipe_zone_init: wrong size"));
 
-	pp = (struct pipepair *)mem;
+ pp = (struct pipepair *)mem;
 
-	mtx_init(&pp->pp_mtx, "pipe mutex", NULL, MTX_DEF | MTX_NEW);
-	return (0);
+ mtx_init(&pp->pp_mtx, "pipe mutex", ((void*)0), MTX_DEF | MTX_NEW);
+ return (0);
 }

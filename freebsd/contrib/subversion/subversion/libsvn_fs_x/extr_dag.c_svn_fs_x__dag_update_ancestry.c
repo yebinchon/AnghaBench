@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  predecessor_count; int /*<<< orphan*/  noderev_id; int /*<<< orphan*/  predecessor_id; } ;
-typedef  TYPE_1__ svn_fs_x__noderev_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int predecessor_count; int noderev_id; int predecessor_id; } ;
+typedef TYPE_1__ svn_fs_x__noderev_t ;
+typedef int svn_error_t ;
 struct TYPE_8__ {TYPE_1__* node_revision; } ;
-typedef  TYPE_2__ dag_node_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_2__ dag_node_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR_FS_NOT_MUTABLE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/ * noderev_changed (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_fs_x__dag_check_mutable (TYPE_2__*) ; 
+
+ int SVN_ERR_FS_NOT_MUTABLE ;
+ int _ (char*) ;
+ int * noderev_changed (TYPE_2__*,int *) ;
+ int * svn_error_createf (int ,int *,int ) ;
+ int svn_fs_x__dag_check_mutable (TYPE_2__*) ;
 
 svn_error_t *
 svn_fs_x__dag_update_ancestry(dag_node_t *target,
@@ -36,7 +36,7 @@ svn_fs_x__dag_update_ancestry(dag_node_t *target,
 
   if (! svn_fs_x__dag_check_mutable(target))
     return svn_error_createf
-      (SVN_ERR_FS_NOT_MUTABLE, NULL,
+      (SVN_ERR_FS_NOT_MUTABLE, ((void*)0),
        _("Attempted to update ancestry of non-mutable node"));
 
   target_noderev->predecessor_id = source_noderev->noderev_id;

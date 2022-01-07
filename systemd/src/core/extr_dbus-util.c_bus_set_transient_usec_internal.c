@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  usec_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  ts ;
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int /*<<< orphan*/  UnitWriteFlags ;
-typedef  int /*<<< orphan*/  Unit ;
 
-/* Variables and functions */
- int FORMAT_TIMESPAN_MAX ; 
- int /*<<< orphan*/  UNIT_WRITE_FLAGS_NOOP (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  USEC_INFINITY ; 
- int /*<<< orphan*/  USEC_PER_MSEC ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  format_timespan (char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int sd_bus_message_read (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- scalar_t__ strlen (char const*) ; 
- char* strndupa (char const*,scalar_t__) ; 
- int /*<<< orphan*/  unit_write_settingf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,char*,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int usec_t ;
+typedef int uint64_t ;
+typedef int ts ;
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
+typedef int UnitWriteFlags ;
+typedef int Unit ;
+
+
+ int FORMAT_TIMESPAN_MAX ;
+ int UNIT_WRITE_FLAGS_NOOP (int ) ;
+ int USEC_INFINITY ;
+ int USEC_PER_MSEC ;
+ int assert (int *) ;
+ int format_timespan (char*,int,int ,int ) ;
+ int sd_bus_message_read (int *,char*,int *) ;
+ scalar_t__ strlen (char const*) ;
+ char* strndupa (char const*,scalar_t__) ;
+ int unit_write_settingf (int *,int ,char const*,char*,char*,int ) ;
 
 int bus_set_transient_usec_internal(
                 Unit *u,

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int int64_t ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int int64_t ;
 struct TYPE_9__ {scalar_t__ buffer; } ;
-struct TYPE_8__ {int val2; int next; int /*<<< orphan*/  val1; } ;
-typedef  TYPE_1__ OpcodeTable ;
-typedef  TYPE_2__ GetByteContext ;
+struct TYPE_8__ {int val2; int next; int val1; } ;
+typedef TYPE_1__ OpcodeTable ;
+typedef TYPE_2__ GetByteContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- unsigned int AV_RL32 (int /*<<< orphan*/ *) ; 
- unsigned int bytestream2_get_bytes_left (TYPE_2__*) ; 
- int bytestream2_get_le32 (TYPE_2__*) ; 
- int /*<<< orphan*/  bytestream2_skip (TYPE_2__*,int) ; 
- int fill_optable (int /*<<< orphan*/ *,TYPE_1__*,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ unsigned int AV_RL32 (int *) ;
+ unsigned int bytestream2_get_bytes_left (TYPE_2__*) ;
+ int bytestream2_get_le32 (TYPE_2__*) ;
+ int bytestream2_skip (TYPE_2__*,int) ;
+ int fill_optable (int *,TYPE_1__*,int) ;
 
 __attribute__((used)) static int get_opcodes(GetByteContext *gb, uint32_t *table, uint8_t *dst, int op_size, int nb_elements)
 {

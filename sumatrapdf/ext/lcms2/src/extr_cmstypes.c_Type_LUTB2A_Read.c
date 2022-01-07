@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct _cms_typehandler_struct {int dummy; } ;
-typedef  scalar_t__ cmsUInt8Number ;
-typedef  scalar_t__ cmsUInt32Number ;
-typedef  void cmsPipeline ;
-struct TYPE_10__ {scalar_t__ (* Tell ) (int /*<<< orphan*/ ,TYPE_1__*) ;} ;
-typedef  TYPE_1__ cmsIOHANDLER ;
-typedef  int /*<<< orphan*/  cmsContext ;
-typedef  int /*<<< orphan*/  _cmsTagBase ;
+typedef scalar_t__ cmsUInt8Number ;
+typedef scalar_t__ cmsUInt32Number ;
+typedef void cmsPipeline ;
+struct TYPE_10__ {scalar_t__ (* Tell ) (int ,TYPE_1__*) ;} ;
+typedef TYPE_1__ cmsIOHANDLER ;
+typedef int cmsContext ;
+typedef int _cmsTagBase ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ReadCLUT (int /*<<< orphan*/ ,struct _cms_typehandler_struct*,TYPE_1__*,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ReadMatrix (int /*<<< orphan*/ ,struct _cms_typehandler_struct*,TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  ReadSetOfCurves (int /*<<< orphan*/ ,struct _cms_typehandler_struct*,TYPE_1__*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  _cmsReadUInt16Number (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _cmsReadUInt32Number (int /*<<< orphan*/ ,TYPE_1__*,scalar_t__*) ; 
- int /*<<< orphan*/  _cmsReadUInt8Number (int /*<<< orphan*/ ,TYPE_1__*,scalar_t__*) ; 
- int /*<<< orphan*/  cmsAT_END ; 
- scalar_t__ cmsMAXCHANNELS ; 
- void* cmsPipelineAlloc (int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  cmsPipelineFree (int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  cmsPipelineInsertStage (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsUNUSED_PARAMETER (scalar_t__) ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+ int ReadCLUT (int ,struct _cms_typehandler_struct*,TYPE_1__*,scalar_t__,scalar_t__,scalar_t__) ;
+ int ReadMatrix (int ,struct _cms_typehandler_struct*,TYPE_1__*,scalar_t__) ;
+ int ReadSetOfCurves (int ,struct _cms_typehandler_struct*,TYPE_1__*,scalar_t__,scalar_t__) ;
+ int _cmsReadUInt16Number (int ,TYPE_1__*,int *) ;
+ int _cmsReadUInt32Number (int ,TYPE_1__*,scalar_t__*) ;
+ int _cmsReadUInt8Number (int ,TYPE_1__*,scalar_t__*) ;
+ int cmsAT_END ;
+ scalar_t__ cmsMAXCHANNELS ;
+ void* cmsPipelineAlloc (int ,scalar_t__,scalar_t__) ;
+ int cmsPipelineFree (int ,void*) ;
+ int cmsPipelineInsertStage (int ,void*,int ,int ) ;
+ int cmsUNUSED_PARAMETER (scalar_t__) ;
+ scalar_t__ stub1 (int ,TYPE_1__*) ;
 
 __attribute__((used)) static
 void* Type_LUTB2A_Read(cmsContext ContextID, struct _cms_typehandler_struct* self, cmsIOHANDLER* io, cmsUInt32Number* nItems, cmsUInt32Number SizeOfTag)
 {
-    cmsUInt8Number       inputChan;      // Number of input channels
-    cmsUInt8Number       outputChan;     // Number of output channels
-    cmsUInt32Number      BaseOffset;     // Actual position in file
-    cmsUInt32Number      offsetB;        // Offset to first "B" curve
-    cmsUInt32Number      offsetMat;      // Offset to matrix
-    cmsUInt32Number      offsetM;        // Offset to first "M" curve
-    cmsUInt32Number      offsetC;        // Offset to CLUT
-    cmsUInt32Number      offsetA;        // Offset to first "A" curve
-    cmsPipeline* NewLUT = NULL;
+    cmsUInt8Number inputChan;
+    cmsUInt8Number outputChan;
+    cmsUInt32Number BaseOffset;
+    cmsUInt32Number offsetB;
+    cmsUInt32Number offsetMat;
+    cmsUInt32Number offsetM;
+    cmsUInt32Number offsetC;
+    cmsUInt32Number offsetA;
+    cmsPipeline* NewLUT = ((void*)0);
 
 
     BaseOffset = io ->Tell(ContextID, io) - sizeof(_cmsTagBase);
 
-    if (!_cmsReadUInt8Number(ContextID, io, &inputChan)) return NULL;
-    if (!_cmsReadUInt8Number(ContextID, io, &outputChan)) return NULL;
+    if (!_cmsReadUInt8Number(ContextID, io, &inputChan)) return ((void*)0);
+    if (!_cmsReadUInt8Number(ContextID, io, &outputChan)) return ((void*)0);
 
-    if (inputChan == 0 || inputChan >= cmsMAXCHANNELS) return NULL;
-    if (outputChan == 0 || outputChan >= cmsMAXCHANNELS) return NULL;
+    if (inputChan == 0 || inputChan >= cmsMAXCHANNELS) return ((void*)0);
+    if (outputChan == 0 || outputChan >= cmsMAXCHANNELS) return ((void*)0);
 
-    // Padding
-    if (!_cmsReadUInt16Number(ContextID, io, NULL)) return NULL;
 
-    if (!_cmsReadUInt32Number(ContextID, io, &offsetB)) return NULL;
-    if (!_cmsReadUInt32Number(ContextID, io, &offsetMat)) return NULL;
-    if (!_cmsReadUInt32Number(ContextID, io, &offsetM)) return NULL;
-    if (!_cmsReadUInt32Number(ContextID, io, &offsetC)) return NULL;
-    if (!_cmsReadUInt32Number(ContextID, io, &offsetA)) return NULL;
+    if (!_cmsReadUInt16Number(ContextID, io, ((void*)0))) return ((void*)0);
 
-    // Allocates an empty LUT
+    if (!_cmsReadUInt32Number(ContextID, io, &offsetB)) return ((void*)0);
+    if (!_cmsReadUInt32Number(ContextID, io, &offsetMat)) return ((void*)0);
+    if (!_cmsReadUInt32Number(ContextID, io, &offsetM)) return ((void*)0);
+    if (!_cmsReadUInt32Number(ContextID, io, &offsetC)) return ((void*)0);
+    if (!_cmsReadUInt32Number(ContextID, io, &offsetA)) return ((void*)0);
+
+
     NewLUT = cmsPipelineAlloc(ContextID, inputChan, outputChan);
-    if (NewLUT == NULL) return NULL;
+    if (NewLUT == ((void*)0)) return ((void*)0);
 
     if (offsetB != 0) {
         if (!cmsPipelineInsertStage(ContextID, NewLUT, cmsAT_END, ReadSetOfCurves(ContextID, self, io, BaseOffset + offsetB, inputChan)))
@@ -99,7 +99,7 @@ void* Type_LUTB2A_Read(cmsContext ContextID, struct _cms_typehandler_struct* sel
     return NewLUT;
 Error:
     cmsPipelineFree(ContextID, NewLUT);
-    return NULL;
+    return ((void*)0);
 
     cmsUNUSED_PARAMETER(SizeOfTag);
 }

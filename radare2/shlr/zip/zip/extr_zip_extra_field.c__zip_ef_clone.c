@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct zip_extra_field {struct zip_extra_field* next; int /*<<< orphan*/  flags; int /*<<< orphan*/  data; int /*<<< orphan*/  size; int /*<<< orphan*/  id; } ;
+
+
+
+
+struct zip_extra_field {struct zip_extra_field* next; int flags; int data; int size; int id; } ;
 struct zip_error {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZIP_ER_MEMORY ; 
- int /*<<< orphan*/  _zip_ef_free (struct zip_extra_field*) ; 
- struct zip_extra_field* _zip_ef_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _zip_error_set (struct zip_error*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ZIP_ER_MEMORY ;
+ int _zip_ef_free (struct zip_extra_field*) ;
+ struct zip_extra_field* _zip_ef_new (int ,int ,int ,int ) ;
+ int _zip_error_set (struct zip_error*,int ,int ) ;
 
 struct zip_extra_field *
 _zip_ef_clone(const struct zip_extra_field *ef, struct zip_error *error)
 {
     struct zip_extra_field *head, *prev, *def;
-    
-    head = prev = NULL;
-    
+
+    head = prev = ((void*)0);
+
     while (ef) {
-        if ((def=_zip_ef_new(ef->id, ef->size, ef->data, ef->flags)) == NULL) {
+        if ((def=_zip_ef_new(ef->id, ef->size, ef->data, ef->flags)) == ((void*)0)) {
             _zip_error_set(error, ZIP_ER_MEMORY, 0);
             _zip_ef_free(head);
-            return NULL;
+            return ((void*)0);
         }
-        
-        if (head == NULL)
+
+        if (head == ((void*)0))
             head = def;
         if (prev)
             prev->next = def;
         prev = def;
 
-	ef = ef->next;
+ ef = ef->next;
     }
-    
+
     return head;
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  szTempMessage ;
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  int /*<<< orphan*/  MCIERROR ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAYSIZE (int /*<<< orphan*/ *) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  IDS_DEFAULTMCIERRMSG ; 
- int /*<<< orphan*/  LoadString (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int MAX_MCISTR ; 
- int MB_ICONEXCLAMATION ; 
- int MB_OK ; 
- int /*<<< orphan*/  MessageBox (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  StringCbPrintf (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  hInstance ; 
- scalar_t__ mciGetErrorString (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  szAppTitle ; 
+
+
+
+typedef int szTempMessage ;
+typedef int VOID ;
+typedef int TCHAR ;
+typedef int MCIERROR ;
+typedef int HWND ;
+
+
+ int ARRAYSIZE (int *) ;
+ scalar_t__ FALSE ;
+ int IDS_DEFAULTMCIERRMSG ;
+ int LoadString (int ,int ,int *,int ) ;
+ int MAX_MCISTR ;
+ int MB_ICONEXCLAMATION ;
+ int MB_OK ;
+ int MessageBox (int ,int *,int ,int) ;
+ int StringCbPrintf (int *,int,int ,int ,int *) ;
+ int _T (char*) ;
+ int hInstance ;
+ scalar_t__ mciGetErrorString (int ,int *,int ) ;
+ int szAppTitle ;
 
 __attribute__((used)) static VOID
 ShowMCIError(HWND hwnd, MCIERROR mciError)

@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ MY_BUFF_SIZE ; 
- int /*<<< orphan*/  assert (int) ; 
- int engineN ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- scalar_t__* f_buff ; 
- int* f_buff_i ; 
- int* f_buff_r ; 
- int* f_buff_size ; 
- scalar_t__** f_header ; 
- int /*<<< orphan*/ * fd ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,scalar_t__,int,int,int) ; 
- int /*<<< orphan*/  memcpy (int*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  read (int /*<<< orphan*/ ,scalar_t__,int) ; 
- int /*<<< orphan*/  stderr ; 
- int un ; 
+ scalar_t__ MY_BUFF_SIZE ;
+ int assert (int) ;
+ int engineN ;
+ int exit (int ) ;
+ scalar_t__* f_buff ;
+ int* f_buff_i ;
+ int* f_buff_r ;
+ int* f_buff_size ;
+ scalar_t__** f_header ;
+ int * fd ;
+ int fprintf (int ,char*,scalar_t__,int,int,int) ;
+ int memcpy (int*,scalar_t__,scalar_t__) ;
+ int read (int ,scalar_t__,int) ;
+ int stderr ;
+ int un ;
 
 int load (int en, int id, int *a) {
   int r = f_buff_r[en];
@@ -39,7 +31,7 @@ int load (int en, int id, int *a) {
     }
     if (f_header[en][r] > MY_BUFF_SIZE) {
       fprintf (stderr, "BIG USER DETECTED %d, r = %d, en = %d, id= %d\n", f_header[en][r], r, en, r * engineN + en);
-      exit (0);    	
+      exit (0);
     }
     read (fd[en], f_buff[en], sz * sizeof (unsigned char));
     f_buff_i[en] = 0;

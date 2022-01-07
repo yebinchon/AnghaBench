@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vmbus_rxbr {int /*<<< orphan*/  rxbr_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MTX_SPIN ; 
- int /*<<< orphan*/  mtx_init (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct vmbus_rxbr {int rxbr_lock; } ;
+
+
+ int MTX_SPIN ;
+ int mtx_init (int *,char*,int *,int ) ;
 
 void
 vmbus_rxbr_init(struct vmbus_rxbr *rbr)
 {
-	mtx_init(&rbr->rxbr_lock, "vmbus_rxbr", NULL, MTX_SPIN);
+ mtx_init(&rbr->rxbr_lock, "vmbus_rxbr", ((void*)0), MTX_SPIN);
 }

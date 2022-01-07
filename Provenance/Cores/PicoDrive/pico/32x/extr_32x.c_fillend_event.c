@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * vdp_regs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  P32XV_nFEN ; 
- TYPE_1__ Pico32x ; 
- int /*<<< orphan*/  SH2_STATE_VPOLL ; 
- int /*<<< orphan*/  msh2 ; 
- int /*<<< orphan*/  p32x_sh2_poll_event (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  ssh2 ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * vdp_regs; } ;
+
+
+ int P32XV_nFEN ;
+ TYPE_1__ Pico32x ;
+ int SH2_STATE_VPOLL ;
+ int msh2 ;
+ int p32x_sh2_poll_event (int *,int ,unsigned int) ;
+ int ssh2 ;
 
 __attribute__((used)) static void fillend_event(unsigned int now)
 {

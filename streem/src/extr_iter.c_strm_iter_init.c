@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  strm_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ary_each ; 
- int /*<<< orphan*/  ary_flatmap ; 
- int /*<<< orphan*/  ary_map ; 
- int /*<<< orphan*/  exec_consec ; 
- int /*<<< orphan*/  exec_count ; 
- int /*<<< orphan*/  exec_cycle ; 
- int /*<<< orphan*/  exec_drop ; 
- int /*<<< orphan*/  exec_each ; 
- int /*<<< orphan*/  exec_filter ; 
- int /*<<< orphan*/  exec_flatmap ; 
- int /*<<< orphan*/  exec_map ; 
- int /*<<< orphan*/  exec_max ; 
- int /*<<< orphan*/  exec_min ; 
- int /*<<< orphan*/  exec_rbk ; 
- int /*<<< orphan*/  exec_reduce ; 
- int /*<<< orphan*/  exec_repeat ; 
- int /*<<< orphan*/  exec_seq ; 
- int /*<<< orphan*/  exec_slice ; 
- int /*<<< orphan*/  exec_take ; 
- int /*<<< orphan*/  exec_uniq ; 
- int /*<<< orphan*/  strm_cfunc_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * strm_ns_array ; 
- int /*<<< orphan*/  strm_stat_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strm_var_def (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int strm_state ;
+
+
+ int ary_each ;
+ int ary_flatmap ;
+ int ary_map ;
+ int exec_consec ;
+ int exec_count ;
+ int exec_cycle ;
+ int exec_drop ;
+ int exec_each ;
+ int exec_filter ;
+ int exec_flatmap ;
+ int exec_map ;
+ int exec_max ;
+ int exec_min ;
+ int exec_rbk ;
+ int exec_reduce ;
+ int exec_repeat ;
+ int exec_seq ;
+ int exec_slice ;
+ int exec_take ;
+ int exec_uniq ;
+ int strm_cfunc_value (int ) ;
+ int * strm_ns_array ;
+ int strm_stat_init (int *) ;
+ int strm_var_def (int *,char*,int ) ;
 
 void
 strm_iter_init(strm_state* state)

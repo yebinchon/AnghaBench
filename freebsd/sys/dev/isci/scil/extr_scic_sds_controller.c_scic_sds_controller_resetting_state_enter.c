@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SCI_BASE_OBJECT_T ;
-typedef  int /*<<< orphan*/  SCIC_SDS_CONTROLLER_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCIC_LOG_OBJECT_CONTROLLER ; 
- int /*<<< orphan*/  SCIC_LOG_TRACE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SCI_BASE_CONTROLLER_STATE_RESET ; 
- int /*<<< orphan*/  SCI_BASE_CONTROLLER_STATE_RESETTING ; 
- int /*<<< orphan*/  sci_base_object_get_logger (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sci_base_state_machine_change_state (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scic_sds_controller_get_base_state_machine (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scic_sds_controller_reset_hardware (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scic_sds_controller_set_base_state_handlers (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int SCI_BASE_OBJECT_T ;
+typedef int SCIC_SDS_CONTROLLER_T ;
+
+
+ int SCIC_LOG_OBJECT_CONTROLLER ;
+ int SCIC_LOG_TRACE (int ) ;
+ int SCI_BASE_CONTROLLER_STATE_RESET ;
+ int SCI_BASE_CONTROLLER_STATE_RESETTING ;
+ int sci_base_object_get_logger (int *) ;
+ int sci_base_state_machine_change_state (int ,int ) ;
+ int scic_sds_controller_get_base_state_machine (int *) ;
+ int scic_sds_controller_reset_hardware (int *) ;
+ int scic_sds_controller_set_base_state_handlers (int *,int ) ;
 
 __attribute__((used)) static
 void scic_sds_controller_resetting_state_enter(

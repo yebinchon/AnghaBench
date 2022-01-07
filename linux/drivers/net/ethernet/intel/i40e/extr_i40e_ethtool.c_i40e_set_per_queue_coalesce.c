@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct net_device {int dummy; } ;
 struct ethtool_coalesce {int dummy; } ;
 
-/* Variables and functions */
- int __i40e_set_coalesce (struct net_device*,struct ethtool_coalesce*,int /*<<< orphan*/ ) ; 
+
+ int __i40e_set_coalesce (struct net_device*,struct ethtool_coalesce*,int ) ;
 
 __attribute__((used)) static int i40e_set_per_queue_coalesce(struct net_device *netdev, u32 queue,
-				       struct ethtool_coalesce *ec)
+           struct ethtool_coalesce *ec)
 {
-	return __i40e_set_coalesce(netdev, ec, queue);
+ return __i40e_set_coalesce(netdev, ec, queue);
 }

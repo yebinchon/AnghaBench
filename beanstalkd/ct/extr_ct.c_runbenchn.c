@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int status; int /*<<< orphan*/  bytes; int /*<<< orphan*/  dur; int /*<<< orphan*/  dir; int /*<<< orphan*/  (* f ) (int) ;} ;
-typedef  TYPE_1__ Benchmark ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  SIGKILL ; 
- int /*<<< orphan*/  TmpDirPat ; 
- int /*<<< orphan*/  bbytes ; 
- int /*<<< orphan*/  bdur ; 
- int close (int) ; 
- int /*<<< orphan*/  copyfd (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ctstarttimer () ; 
- int /*<<< orphan*/  ctstoptimer () ; 
- int /*<<< orphan*/  curdir ; 
- int /*<<< orphan*/  die (int,int /*<<< orphan*/ ,char*) ; 
- int dup2 (int,int) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ *) ; 
- int fork () ; 
- int /*<<< orphan*/  killpg (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lseek (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * mkdtemp (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  putchar (char) ; 
- int read (int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  rmtree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setpgid (int,int) ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int) ; 
- int tmpfd () ; 
- int waitpid (int,int*,int /*<<< orphan*/ ) ; 
- int write (int,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int status; int bytes; int dur; int dir; int (* f ) (int) ;} ;
+typedef TYPE_1__ Benchmark ;
+
+
+ int SEEK_SET ;
+ int SIGKILL ;
+ int TmpDirPat ;
+ int bbytes ;
+ int bdur ;
+ int close (int) ;
+ int copyfd (int ,int) ;
+ int ctstarttimer () ;
+ int ctstoptimer () ;
+ int curdir ;
+ int die (int,int ,char*) ;
+ int dup2 (int,int) ;
+ int errno ;
+ int exit (int ) ;
+ int fflush (int *) ;
+ int fork () ;
+ int killpg (int,int ) ;
+ int lseek (int,int ,int ) ;
+ int * mkdtemp (int ) ;
+ int perror (char*) ;
+ int putchar (char) ;
+ int read (int,int *,int) ;
+ int rmtree (int ) ;
+ int setpgid (int,int) ;
+ int stdout ;
+ int strcpy (int ,int ) ;
+ int stub1 (int) ;
+ int tmpfd () ;
+ int waitpid (int,int*,int ) ;
+ int write (int,int *,int) ;
 
 __attribute__((used)) static void
 runbenchn(Benchmark *b, int n)
@@ -52,10 +52,10 @@ runbenchn(Benchmark *b, int n)
     int outfd = tmpfd();
     int durfd = tmpfd();
     strcpy(b->dir, TmpDirPat);
-    if (mkdtemp(b->dir) == NULL) {
-	die(1, errno, "mkdtemp");
+    if (mkdtemp(b->dir) == ((void*)0)) {
+ die(1, errno, "mkdtemp");
     }
-    fflush(NULL);
+    fflush(((void*)0));
     int pid = fork();
     if (pid < 0) {
         die(1, errno, "fork");

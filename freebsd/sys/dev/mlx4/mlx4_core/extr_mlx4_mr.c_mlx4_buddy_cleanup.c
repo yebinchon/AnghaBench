@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mlx4_buddy {int max_order; int /*<<< orphan*/ * num_free; int /*<<< orphan*/ * bits; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kvfree (int /*<<< orphan*/ ) ; 
+
+
+
+struct mlx4_buddy {int max_order; int * num_free; int * bits; } ;
+
+
+ int kfree (int *) ;
+ int kvfree (int ) ;
 
 __attribute__((used)) static void mlx4_buddy_cleanup(struct mlx4_buddy *buddy)
 {
-	int i;
+ int i;
 
-	for (i = 0; i <= buddy->max_order; ++i)
-		kvfree(buddy->bits[i]);
+ for (i = 0; i <= buddy->max_order; ++i)
+  kvfree(buddy->bits[i]);
 
-	kfree(buddy->bits);
-	kfree(buddy->num_free);
+ kfree(buddy->bits);
+ kfree(buddy->num_free);
 }

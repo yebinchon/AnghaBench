@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sockaddr_in6 {int /*<<< orphan*/  sin6_scope_id; } ;
+
+
+
+
+struct sockaddr_in6 {int sin6_scope_id; } ;
 struct sockaddr {scalar_t__ sa_family; } ;
 struct rtattr {int rta_type; } ;
 struct nlmsghdr {int dummy; } ;
 struct in6_addr {int dummy; } ;
-struct ifaddrs {char* ifa_name; struct sockaddr* ifa_netmask; struct sockaddr* ifa_addr; struct sockaddr* ifa_broadaddr; struct sockaddr* ifa_dstaddr; int /*<<< orphan*/  ifa_flags; } ;
-struct ifaddrmsg {scalar_t__ ifa_family; unsigned int ifa_prefixlen; int /*<<< orphan*/  ifa_index; int /*<<< orphan*/  ifa_flags; } ;
+struct ifaddrs {char* ifa_name; struct sockaddr* ifa_netmask; struct sockaddr* ifa_addr; struct sockaddr* ifa_broadaddr; struct sockaddr* ifa_dstaddr; int ifa_flags; } ;
+struct ifaddrmsg {scalar_t__ ifa_family; unsigned int ifa_prefixlen; int ifa_index; int ifa_flags; } ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- scalar_t__ AF_INET6 ; 
- scalar_t__ AF_PACKET ; 
-#define  IFA_ADDRESS 131 
-#define  IFA_BROADCAST 130 
-#define  IFA_LABEL 129 
-#define  IFA_LOCAL 128 
- struct rtattr* IFA_RTA (struct ifaddrmsg*) ; 
- int /*<<< orphan*/  IN6_IS_ADDR_LINKLOCAL (struct in6_addr*) ; 
- int /*<<< orphan*/  IN6_IS_ADDR_MC_LINKLOCAL (struct in6_addr*) ; 
- size_t NLMSG_ALIGN (size_t) ; 
- scalar_t__ NLMSG_DATA (struct nlmsghdr*) ; 
- size_t NLMSG_PAYLOAD (struct nlmsghdr*,int) ; 
- void* RTA_DATA (struct rtattr*) ; 
- struct rtattr* RTA_NEXT (struct rtattr*,size_t) ; 
- scalar_t__ RTA_OK (struct rtattr*,size_t) ; 
- size_t RTA_PAYLOAD (struct rtattr*) ; 
- int /*<<< orphan*/  addToEnd (struct ifaddrs**,struct ifaddrs*) ; 
- size_t calcAddrLen (scalar_t__,size_t) ; 
- struct ifaddrs* findInterface (int /*<<< orphan*/ ,struct ifaddrs**,int) ; 
- int /*<<< orphan*/  makeSockaddr (scalar_t__,struct sockaddr*,char*,unsigned int) ; 
- struct ifaddrs* malloc (int) ; 
- int /*<<< orphan*/  memset (struct ifaddrs*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  strncpy (char*,void*,size_t) ; 
+
+ scalar_t__ AF_INET ;
+ scalar_t__ AF_INET6 ;
+ scalar_t__ AF_PACKET ;
+
+
+
+
+ struct rtattr* IFA_RTA (struct ifaddrmsg*) ;
+ int IN6_IS_ADDR_LINKLOCAL (struct in6_addr*) ;
+ int IN6_IS_ADDR_MC_LINKLOCAL (struct in6_addr*) ;
+ size_t NLMSG_ALIGN (size_t) ;
+ scalar_t__ NLMSG_DATA (struct nlmsghdr*) ;
+ size_t NLMSG_PAYLOAD (struct nlmsghdr*,int) ;
+ void* RTA_DATA (struct rtattr*) ;
+ struct rtattr* RTA_NEXT (struct rtattr*,size_t) ;
+ scalar_t__ RTA_OK (struct rtattr*,size_t) ;
+ size_t RTA_PAYLOAD (struct rtattr*) ;
+ int addToEnd (struct ifaddrs**,struct ifaddrs*) ;
+ size_t calcAddrLen (scalar_t__,size_t) ;
+ struct ifaddrs* findInterface (int ,struct ifaddrs**,int) ;
+ int makeSockaddr (scalar_t__,struct sockaddr*,char*,unsigned int) ;
+ struct ifaddrs* malloc (int) ;
+ int memset (struct ifaddrs*,int ,int) ;
+ int strncpy (char*,void*,size_t) ;
 
 __attribute__((used)) static int interpretAddr(struct nlmsghdr *p_hdr, struct ifaddrs **p_resultList, int p_numLinks)
 {
@@ -64,18 +64,18 @@ __attribute__((used)) static int interpretAddr(struct nlmsghdr *p_hdr, struct if
 
       switch(l_rta->rta_type)
       {
-         case IFA_ADDRESS:
-         case IFA_LOCAL:
+         case 131:
+         case 128:
             if((l_info->ifa_family == AF_INET || l_info->ifa_family == AF_INET6) && !l_addedNetmask)
             {
-               /* make room for netmask */
+
                l_addrSize += NLMSG_ALIGN(calcAddrLen(l_info->ifa_family, l_rtaDataSize));
                l_addedNetmask = 1;
             }
-         case IFA_BROADCAST:
+         case 130:
             l_addrSize += NLMSG_ALIGN(calcAddrLen(l_info->ifa_family, l_rtaDataSize));
             break;
-         case IFA_LABEL:
+         case 129:
             l_nameSize += NLMSG_ALIGN(l_rtaSize + 1);
             break;
          default:
@@ -84,7 +84,7 @@ __attribute__((used)) static int interpretAddr(struct nlmsghdr *p_hdr, struct if
    }
 
    struct ifaddrs *l_entry = malloc(sizeof(struct ifaddrs) + l_nameSize + l_addrSize);
-   if (l_entry == NULL)
+   if (l_entry == ((void*)0))
       return -1;
 
    memset(l_entry, 0, sizeof(struct ifaddrs));
@@ -104,9 +104,9 @@ __attribute__((used)) static int interpretAddr(struct nlmsghdr *p_hdr, struct if
       size_t l_rtaDataSize = RTA_PAYLOAD(l_rta);
       switch(l_rta->rta_type)
       {
-         case IFA_ADDRESS:
-         case IFA_BROADCAST:
-         case IFA_LOCAL:
+         case 131:
+         case 130:
+         case 128:
             {
                size_t l_addrLen = calcAddrLen(l_info->ifa_family, l_rtaDataSize);
                makeSockaddr(l_info->ifa_family, (struct sockaddr *)l_addr, l_rtaData, l_rtaDataSize);
@@ -116,16 +116,16 @@ __attribute__((used)) static int interpretAddr(struct nlmsghdr *p_hdr, struct if
                      ((struct sockaddr_in6 *)l_addr)->sin6_scope_id = l_info->ifa_index;
                }
 
-               if(l_rta->rta_type == IFA_ADDRESS)
+               if(l_rta->rta_type == 131)
                {
-                  /* apparently in a point-to-point network IFA_ADDRESS
-                   * contains the dest address and IFA_LOCAL contains the local address */
+
+
                   if(l_entry->ifa_addr)
                      l_entry->ifa_dstaddr = (struct sockaddr *)l_addr;
                   else
                      l_entry->ifa_addr = (struct sockaddr *)l_addr;
                }
-               else if(l_rta->rta_type == IFA_LOCAL)
+               else if(l_rta->rta_type == 128)
                {
                   if(l_entry->ifa_addr)
                      l_entry->ifa_dstaddr = l_entry->ifa_addr;
@@ -136,7 +136,7 @@ __attribute__((used)) static int interpretAddr(struct nlmsghdr *p_hdr, struct if
                l_addr += NLMSG_ALIGN(l_addrLen);
                break;
             }
-         case IFA_LABEL:
+         case 129:
             strncpy(l_name, l_rtaData, l_rtaDataSize);
             l_name[l_rtaDataSize] = '\0';
             l_entry->ifa_name = l_name;
@@ -147,14 +147,14 @@ __attribute__((used)) static int interpretAddr(struct nlmsghdr *p_hdr, struct if
    }
 
    if(l_entry->ifa_addr &&
-         (   l_entry->ifa_addr->sa_family == AF_INET
+         ( l_entry->ifa_addr->sa_family == AF_INET
           || l_entry->ifa_addr->sa_family == AF_INET6))
    {
       unsigned i;
       char l_mask[16];
       unsigned l_maxPrefix = (l_entry->ifa_addr->sa_family == AF_INET
             ? 32 : 128);
-      unsigned l_prefix    = (l_info->ifa_prefixlen > l_maxPrefix
+      unsigned l_prefix = (l_info->ifa_prefixlen > l_maxPrefix
             ? l_maxPrefix : l_info->ifa_prefixlen);
 
       l_mask[0] = '\0';

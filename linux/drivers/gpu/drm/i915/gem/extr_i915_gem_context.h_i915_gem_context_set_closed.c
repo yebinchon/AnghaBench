@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct i915_gem_context {int /*<<< orphan*/  flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONTEXT_CLOSED ; 
- int /*<<< orphan*/  GEM_BUG_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i915_gem_context_is_closed (struct i915_gem_context*) ; 
- int /*<<< orphan*/  set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct i915_gem_context {int flags; } ;
+
+
+ int CONTEXT_CLOSED ;
+ int GEM_BUG_ON (int ) ;
+ int i915_gem_context_is_closed (struct i915_gem_context*) ;
+ int set_bit (int ,int *) ;
 
 __attribute__((used)) static inline void i915_gem_context_set_closed(struct i915_gem_context *ctx)
 {
-	GEM_BUG_ON(i915_gem_context_is_closed(ctx));
-	set_bit(CONTEXT_CLOSED, &ctx->flags);
+ GEM_BUG_ON(i915_gem_context_is_closed(ctx));
+ set_bit(CONTEXT_CLOSED, &ctx->flags);
 }

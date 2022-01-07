@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t uint8_t ;
+
+
+
+
+typedef size_t uint8_t ;
 struct table_value {int val_len; size_t* val; int locked; } ;
 
-/* Variables and functions */
- struct table_value* table ; 
- int table_key ; 
+
+ struct table_value* table ;
+ int table_key ;
 
 __attribute__((used)) static void toggle_obf(uint8_t id)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static void toggle_obf(uint8_t id)
         val->val[i] ^= k4;
     }
 
-#ifdef DEBUG
-    val->locked = !val->locked;
-#endif
+
+
+
 }

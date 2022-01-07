@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Type ;
 
-/* Variables and functions */
- scalar_t__ flag_notypeinfo ; 
- int /*<<< orphan*/  gen_indent ; 
- int /*<<< orphan*/  gen_typeinfo (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  genf (char*) ; 
- int /*<<< orphan*/  genln () ; 
- int /*<<< orphan*/  genlnf (char*,...) ; 
- int /*<<< orphan*/ * get_type_from_typeid (int) ; 
- int /*<<< orphan*/  is_excluded_typeinfo (int /*<<< orphan*/ *) ; 
- int next_typeid ; 
+
+
+
+typedef int Type ;
+
+
+ scalar_t__ flag_notypeinfo ;
+ int gen_indent ;
+ int gen_typeinfo (int *) ;
+ int genf (char*) ;
+ int genln () ;
+ int genlnf (char*,...) ;
+ int * get_type_from_typeid (int) ;
+ int is_excluded_typeinfo (int *) ;
+ int next_typeid ;
 
 void gen_typeinfos(void) {
     genlnf("#define TYPEID0(index, kind) ((ullong)(index) | ((ullong)(kind) << 24))");

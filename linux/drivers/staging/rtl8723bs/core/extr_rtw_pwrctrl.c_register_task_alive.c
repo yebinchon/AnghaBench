@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct pwrctrl_priv {int /*<<< orphan*/  alives; } ;
 
-/* Variables and functions */
+
+
+
+typedef int u32 ;
+struct pwrctrl_priv {int alives; } ;
+
+
 
 __attribute__((used)) static inline void register_task_alive(struct pwrctrl_priv *pwrctrl, u32 tag)
 {
-	pwrctrl->alives |= tag;
+ pwrctrl->alives |= tag;
 }

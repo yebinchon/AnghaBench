@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ec_call_function_single ; 
- int /*<<< orphan*/  smp_ext_bitcall (int,int /*<<< orphan*/ ) ; 
+ int ec_call_function_single ;
+ int smp_ext_bitcall (int,int ) ;
 
 void arch_send_call_function_single_ipi(int cpu)
 {
-	smp_ext_bitcall(cpu, ec_call_function_single);
+ smp_ext_bitcall(cpu, ec_call_function_single);
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IStream ;
-typedef  scalar_t__ GpStatus ;
-typedef  int /*<<< orphan*/  GpMetafile ;
-typedef  int /*<<< orphan*/  GpImage ;
 
-/* Variables and functions */
- scalar_t__ InvalidParameter ; 
- scalar_t__ Ok ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- scalar_t__ load_wmf (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int IStream ;
+typedef scalar_t__ GpStatus ;
+typedef int GpMetafile ;
+typedef int GpImage ;
+
+
+ scalar_t__ InvalidParameter ;
+ scalar_t__ Ok ;
+ int TRACE (char*,...) ;
+ scalar_t__ load_wmf (int *,int **) ;
 
 __attribute__((used)) static GpStatus decode_image_wmf(IStream *stream, GpImage **image)
 {

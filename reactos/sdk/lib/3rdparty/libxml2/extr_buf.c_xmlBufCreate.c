@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ xmlChar ;
-typedef  TYPE_1__* xmlBufPtr ;
-typedef  int /*<<< orphan*/  xmlBuf ;
-struct TYPE_5__ {int size; int /*<<< orphan*/ * contentIO; scalar_t__* content; int /*<<< orphan*/  alloc; void* compat_size; int /*<<< orphan*/ * buffer; scalar_t__ error; scalar_t__ use; scalar_t__ compat_use; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  xmlBufMemoryError (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  xmlBufferAllocScheme ; 
- void* xmlDefaultBufferSize ; 
- int /*<<< orphan*/  xmlFree (TYPE_1__*) ; 
- scalar_t__ xmlMalloc (int) ; 
- scalar_t__ xmlMallocAtomic (int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ xmlChar ;
+typedef TYPE_1__* xmlBufPtr ;
+typedef int xmlBuf ;
+struct TYPE_5__ {int size; int * contentIO; scalar_t__* content; int alloc; void* compat_size; int * buffer; scalar_t__ error; scalar_t__ use; scalar_t__ compat_use; } ;
+
+
+ int xmlBufMemoryError (TYPE_1__*,char*) ;
+ int xmlBufferAllocScheme ;
+ void* xmlDefaultBufferSize ;
+ int xmlFree (TYPE_1__*) ;
+ scalar_t__ xmlMalloc (int) ;
+ scalar_t__ xmlMallocAtomic (int) ;
 
 xmlBufPtr
 xmlBufCreate(void) {
     xmlBufPtr ret;
 
     ret = (xmlBufPtr) xmlMalloc(sizeof(xmlBuf));
-    if (ret == NULL) {
-	xmlBufMemoryError(NULL, "creating buffer");
-        return(NULL);
+    if (ret == ((void*)0)) {
+ xmlBufMemoryError(((void*)0), "creating buffer");
+        return(((void*)0));
     }
     ret->compat_use = 0;
     ret->use = 0;
     ret->error = 0;
-    ret->buffer = NULL;
+    ret->buffer = ((void*)0);
     ret->size = xmlDefaultBufferSize;
     ret->compat_size = xmlDefaultBufferSize;
     ret->alloc = xmlBufferAllocScheme;
     ret->content = (xmlChar *) xmlMallocAtomic(ret->size * sizeof(xmlChar));
-    if (ret->content == NULL) {
-	xmlBufMemoryError(ret, "creating buffer");
-	xmlFree(ret);
-        return(NULL);
+    if (ret->content == ((void*)0)) {
+ xmlBufMemoryError(ret, "creating buffer");
+ xmlFree(ret);
+        return(((void*)0));
     }
     ret->content[0] = 0;
-    ret->contentIO = NULL;
+    ret->contentIO = ((void*)0);
     return(ret);
 }

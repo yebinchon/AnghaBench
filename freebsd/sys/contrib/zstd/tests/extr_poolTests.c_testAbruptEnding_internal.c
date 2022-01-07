@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ val; } ;
-typedef  TYPE_1__ abruptEndCanary_t ;
-typedef  int /*<<< orphan*/  POOL_ctx ;
+typedef TYPE_1__ abruptEndCanary_t ;
+typedef int POOL_ctx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_EQ (scalar_t__,int const) ; 
- int /*<<< orphan*/  ASSERT_TRUE (int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  POOL_add (int /*<<< orphan*/ * const,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/ * POOL_create (int,int const) ; 
- int /*<<< orphan*/  POOL_free (int /*<<< orphan*/ * const) ; 
- scalar_t__ POOL_resize (int /*<<< orphan*/ * const,int) ; 
- int /*<<< orphan*/  waitIncFn ; 
+
+ int ASSERT_EQ (scalar_t__,int const) ;
+ int ASSERT_TRUE (int * const) ;
+ int POOL_add (int * const,int *,TYPE_1__*) ;
+ int * POOL_create (int,int const) ;
+ int POOL_free (int * const) ;
+ scalar_t__ POOL_resize (int * const,int) ;
+ int waitIncFn ;
 
 __attribute__((used)) static int testAbruptEnding_internal(abruptEndCanary_t test)
 {
     int const nbWaits = 16;
 
-    POOL_ctx* const ctx = POOL_create(3 /*numThreads*/, nbWaits /*queueSize*/);
+    POOL_ctx* const ctx = POOL_create(3 , nbWaits );
     ASSERT_TRUE(ctx);
     test.val = 0;
 
-    {   int i;
+    { int i;
         for (i=0; i<nbWaits; i++)
-            POOL_add(ctx, &waitIncFn, &test);  /* all jobs pushed into queue */
+            POOL_add(ctx, &waitIncFn, &test);
     }
-    ASSERT_EQ( POOL_resize(ctx, 1 /*numThreads*/) , 0 );   /* downsize numThreads, to try to break end condition */
+    ASSERT_EQ( POOL_resize(ctx, 1 ) , 0 );
 
-    POOL_free(ctx);  /* must finish all jobs in queue before giving back control */
+    POOL_free(ctx);
     ASSERT_EQ(test.val, nbWaits);
     return 0;
 }

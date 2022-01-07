@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COLUMN ; 
- int /*<<< orphan*/  ROW ; 
- scalar_t__ read32_le (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  write32_le (scalar_t__,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+
+
+ int COLUMN ;
+ int ROW ;
+ scalar_t__ read32_le (int const*) ;
+ int write32_le (scalar_t__,int *) ;
 
 void cf_salsa20_core(const uint8_t key0[16],
                      const uint8_t key1[16],
@@ -25,19 +25,6 @@ void cf_salsa20_core(const uint8_t key0[16],
                      const uint8_t constant[16],
                      uint8_t out[64])
 {
-  /* unpack sequence is:
-   *
-   * c0
-   * key0
-   * c1
-   * nonce
-   * c2
-   * key1
-   * c3
-   *
-   * where c0, c1, c2, c3 = constant
-   */
-  
   uint32_t z0, z1, z2, z3, z4, z5, z6, z7,
            z8, z9, za, zb, zc, zd, ze, zf;
 
@@ -57,29 +44,10 @@ void cf_salsa20_core(const uint8_t key0[16],
            xd = zd = read32_le(key1 + 8),
            xe = ze = read32_le(key1 + 12),
            xf = zf = read32_le(constant + 12);
-
-#define QUARTER(v0, v1, v2, v3) \
-  v1 ^= rotl32(v0 + v3, 7); \
-  v2 ^= rotl32(v1 + v0, 9); \
-  v3 ^= rotl32(v2 + v1, 13);\
-  v0 ^= rotl32(v3 + v2, 18)
-
-#define ROW \
-  QUARTER(z0, z1, z2, z3); \
-  QUARTER(z5, z6, z7, z4); \
-  QUARTER(za, zb, z8, z9); \
-  QUARTER(zf, zc, zd, ze)
-
-#define COLUMN\
-  QUARTER(z0, z4, z8, zc); \
-  QUARTER(z5, z9, zd, z1); \
-  QUARTER(za, ze, z2, z6); \
-  QUARTER(zf, z3, z7, zb)
-
   for (int i = 0; i < 10; i++)
   {
-    COLUMN;
-    ROW;
+    z4 ^= rotl32(z0 + zc, 7); z8 ^= rotl32(z4 + z0, 9); zc ^= rotl32(z8 + z4, 13); z0 ^= rotl32(zc + z8, 18); z9 ^= rotl32(z5 + z1, 7); zd ^= rotl32(z9 + z5, 9); z1 ^= rotl32(zd + z9, 13); z5 ^= rotl32(z1 + zd, 18); ze ^= rotl32(za + z6, 7); z2 ^= rotl32(ze + za, 9); z6 ^= rotl32(z2 + ze, 13); za ^= rotl32(z6 + z2, 18); z3 ^= rotl32(zf + zb, 7); z7 ^= rotl32(z3 + zf, 9); zb ^= rotl32(z7 + z3, 13); zf ^= rotl32(zb + z7, 18);
+    z1 ^= rotl32(z0 + z3, 7); z2 ^= rotl32(z1 + z0, 9); z3 ^= rotl32(z2 + z1, 13); z0 ^= rotl32(z3 + z2, 18); z6 ^= rotl32(z5 + z4, 7); z7 ^= rotl32(z6 + z5, 9); z4 ^= rotl32(z7 + z6, 13); z5 ^= rotl32(z4 + z7, 18); zb ^= rotl32(za + z9, 7); z8 ^= rotl32(zb + za, 9); z9 ^= rotl32(z8 + zb, 13); za ^= rotl32(z9 + z8, 18); zc ^= rotl32(zf + ze, 7); zd ^= rotl32(zc + zf, 9); ze ^= rotl32(zd + zc, 13); zf ^= rotl32(ze + zd, 18);
   }
 
   x0 += z0;

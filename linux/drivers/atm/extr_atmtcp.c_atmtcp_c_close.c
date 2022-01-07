@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct atmtcp_dev_data {scalar_t__ persist; int /*<<< orphan*/ * vcc; } ;
-struct atm_vcc {int /*<<< orphan*/ * dev_data; } ;
-struct atm_dev {int /*<<< orphan*/ * dev_data; } ;
 
-/* Variables and functions */
- struct atmtcp_dev_data* PRIV (struct atm_dev*) ; 
- int /*<<< orphan*/  THIS_MODULE ; 
- int /*<<< orphan*/  atm_dev_deregister (struct atm_dev*) ; 
- int /*<<< orphan*/  kfree (struct atmtcp_dev_data*) ; 
- int /*<<< orphan*/  module_put (int /*<<< orphan*/ ) ; 
+
+
+
+struct atmtcp_dev_data {scalar_t__ persist; int * vcc; } ;
+struct atm_vcc {int * dev_data; } ;
+struct atm_dev {int * dev_data; } ;
+
+
+ struct atmtcp_dev_data* PRIV (struct atm_dev*) ;
+ int THIS_MODULE ;
+ int atm_dev_deregister (struct atm_dev*) ;
+ int kfree (struct atmtcp_dev_data*) ;
+ int module_put (int ) ;
 
 __attribute__((used)) static void atmtcp_c_close(struct atm_vcc *vcc)
 {
-	struct atm_dev *atmtcp_dev;
-	struct atmtcp_dev_data *dev_data;
+ struct atm_dev *atmtcp_dev;
+ struct atmtcp_dev_data *dev_data;
 
-	atmtcp_dev = (struct atm_dev *) vcc->dev_data;
-	dev_data = PRIV(atmtcp_dev);
-	dev_data->vcc = NULL;
-	if (dev_data->persist) return;
-	atmtcp_dev->dev_data = NULL;
-	kfree(dev_data);
-	atm_dev_deregister(atmtcp_dev);
-	vcc->dev_data = NULL;
-	module_put(THIS_MODULE);
+ atmtcp_dev = (struct atm_dev *) vcc->dev_data;
+ dev_data = PRIV(atmtcp_dev);
+ dev_data->vcc = ((void*)0);
+ if (dev_data->persist) return;
+ atmtcp_dev->dev_data = ((void*)0);
+ kfree(dev_data);
+ atm_dev_deregister(atmtcp_dev);
+ vcc->dev_data = ((void*)0);
+ module_put(THIS_MODULE);
 }

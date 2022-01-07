@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RRDVAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FILENAME_MAX ; 
- int /*<<< orphan*/  _SC_PAGESIZE ; 
- int /*<<< orphan*/  localhost ; 
- int /*<<< orphan*/  netdata_configured_host_prefix ; 
- scalar_t__ read_file (char*,char*,int) ; 
- int /*<<< orphan*/ * rrdvar_custom_host_variable_create (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  rrdvar_custom_host_variable_set (int /*<<< orphan*/ ,int /*<<< orphan*/ *,unsigned long long) ; 
- int /*<<< orphan*/  snprintfz (char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- char* strdupz (char*) ; 
- unsigned long long strtoull (char*,char**,int) ; 
- unsigned long long sysconf (int /*<<< orphan*/ ) ; 
- scalar_t__ unlikely (int) ; 
+
+
+
+typedef int RRDVAR ;
+
+
+ int FILENAME_MAX ;
+ int _SC_PAGESIZE ;
+ int localhost ;
+ int netdata_configured_host_prefix ;
+ scalar_t__ read_file (char*,char*,int) ;
+ int * rrdvar_custom_host_variable_create (int ,char*) ;
+ int rrdvar_custom_host_variable_set (int ,int *,unsigned long long) ;
+ int snprintfz (char*,int ,char*,int ) ;
+ char* strdupz (char*) ;
+ unsigned long long strtoull (char*,char**,int) ;
+ unsigned long long sysconf (int ) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static int read_tcp_mem(void) {
-    static char *filename = NULL;
-    static RRDVAR *tcp_mem_low_threshold = NULL,
-                  *tcp_mem_pressure_threshold = NULL,
-                  *tcp_mem_high_threshold = NULL;
+    static char *filename = ((void*)0);
+    static RRDVAR *tcp_mem_low_threshold = ((void*)0),
+                  *tcp_mem_pressure_threshold = ((void*)0),
+                  *tcp_mem_high_threshold = ((void*)0);
 
     if(unlikely(!tcp_mem_low_threshold)) {
-        tcp_mem_low_threshold      = rrdvar_custom_host_variable_create(localhost, "tcp_mem_low");
+        tcp_mem_low_threshold = rrdvar_custom_host_variable_create(localhost, "tcp_mem_low");
         tcp_mem_pressure_threshold = rrdvar_custom_host_variable_create(localhost, "tcp_mem_pressure");
-        tcp_mem_high_threshold     = rrdvar_custom_host_variable_create(localhost, "tcp_mem_high");
+        tcp_mem_high_threshold = rrdvar_custom_host_variable_create(localhost, "tcp_mem_high");
     }
 
     if(unlikely(!filename)) {
@@ -59,7 +59,7 @@ __attribute__((used)) static int read_tcp_mem(void) {
     start = end;
     high = strtoull(start, &end, 10);
 
-    // fprintf(stderr, "TCP MEM low = %llu, pressure = %llu, high = %llu\n", low, pressure, high);
+
 
     rrdvar_custom_host_variable_set(localhost, tcp_mem_low_threshold, low * sysconf(_SC_PAGESIZE) / 1024.0);
     rrdvar_custom_host_variable_set(localhost, tcp_mem_pressure_threshold, pressure * sysconf(_SC_PAGESIZE) / 1024.0);

@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int dq_list_lock_cnt ; 
- int /*<<< orphan*/  lck_mtx_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  quota_list_mtx_lock ; 
+ int dq_list_lock_cnt ;
+ int lck_mtx_lock (int ) ;
+ int quota_list_mtx_lock ;
 
 __attribute__((used)) static int
 dq_list_lock(void)
 {
-	lck_mtx_lock(quota_list_mtx_lock);
-	return ++dq_list_lock_cnt;
+ lck_mtx_lock(quota_list_mtx_lock);
+ return ++dq_list_lock_cnt;
 }

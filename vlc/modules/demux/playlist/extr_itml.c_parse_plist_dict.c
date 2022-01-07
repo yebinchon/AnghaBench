@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xml_reader_t ;
-typedef  char const xml_elem_hnd_t ;
-typedef  char const track_elem_t ;
-typedef  int /*<<< orphan*/  stream_t ;
-typedef  int /*<<< orphan*/  input_item_node_t ;
-struct TYPE_2__ {int /*<<< orphan*/ * member_0; int /*<<< orphan*/  cmplx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMPLEX_CONTENT ; 
- int /*<<< orphan*/  SIMPLE_CONTENT ; 
- int /*<<< orphan*/  UNKNOWN_CONTENT ; 
- int /*<<< orphan*/  VLC_UNUSED (char const*) ; 
- int parse_dict (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,char const*) ; 
- int /*<<< orphan*/  parse_tracks_dict ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int xml_reader_t ;
+typedef char const xml_elem_hnd_t ;
+typedef char const track_elem_t ;
+typedef int stream_t ;
+typedef int input_item_node_t ;
+struct TYPE_2__ {int * member_0; int cmplx; } ;
+
+
+ int COMPLEX_CONTENT ;
+ int SIMPLE_CONTENT ;
+ int UNKNOWN_CONTENT ;
+ int VLC_UNUSED (char const*) ;
+ int parse_dict (int *,int *,int *,int *,char*,char const*) ;
+ int parse_tracks_dict ;
 
 __attribute__((used)) static bool parse_plist_dict( stream_t *p_demux, input_item_node_t *p_input_node,
                               track_elem_t *p_track, xml_reader_t *p_xml_reader,
@@ -33,17 +33,17 @@ __attribute__((used)) static bool parse_plist_dict( stream_t *p_demux, input_ite
 {
     VLC_UNUSED(p_track); VLC_UNUSED(psz_element); VLC_UNUSED(p_handlers);
     xml_elem_hnd_t pl_elements[] =
-        { {"dict",    COMPLEX_CONTENT, {.cmplx = parse_tracks_dict} },
-          {"array",   SIMPLE_CONTENT,  {NULL} },
-          {"key",     SIMPLE_CONTENT,  {NULL} },
-          {"integer", SIMPLE_CONTENT,  {NULL} },
-          {"string",  SIMPLE_CONTENT,  {NULL} },
-          {"date",    SIMPLE_CONTENT,  {NULL} },
-          {"true",    SIMPLE_CONTENT,  {NULL} },
-          {"false",   SIMPLE_CONTENT,  {NULL} },
-          {NULL,      UNKNOWN_CONTENT, {NULL} }
+        { {"dict", COMPLEX_CONTENT, {.cmplx = parse_tracks_dict} },
+          {"array", SIMPLE_CONTENT, {((void*)0)} },
+          {"key", SIMPLE_CONTENT, {((void*)0)} },
+          {"integer", SIMPLE_CONTENT, {((void*)0)} },
+          {"string", SIMPLE_CONTENT, {((void*)0)} },
+          {"date", SIMPLE_CONTENT, {((void*)0)} },
+          {"true", SIMPLE_CONTENT, {((void*)0)} },
+          {"false", SIMPLE_CONTENT, {((void*)0)} },
+          {((void*)0), UNKNOWN_CONTENT, {((void*)0)} }
         };
 
-    return parse_dict( p_demux, p_input_node, NULL, p_xml_reader,
+    return parse_dict( p_demux, p_input_node, ((void*)0), p_xml_reader,
                        "dict", pl_elements );
 }

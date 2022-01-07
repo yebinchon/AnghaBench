@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  err (int,char*,char const*) ; 
- int /*<<< orphan*/ * fopen (char const*,char const*) ; 
+
+
+
+typedef int FILE ;
+
+
+ int assert (int ) ;
+ int err (int,char*,char const*) ;
+ int * fopen (char const*,char const*) ;
 
 FILE *
 checked_fopen(const char *path, const char *mode)
 {
-	FILE *fp;
+ FILE *fp;
 
-	assert(path != NULL);
+ assert(path != ((void*)0));
 
-	fp = fopen(path, mode);
-	if (fp == NULL)
-		err(1, "%s", path);
-	return (fp);
+ fp = fopen(path, mode);
+ if (fp == ((void*)0))
+  err(1, "%s", path);
+ return (fp);
 }

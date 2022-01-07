@@ -1,125 +1,125 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  UCHAR ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int tmp ;
+typedef int UINT ;
+typedef int UCHAR ;
 struct TYPE_7__ {int size; } ;
-struct TYPE_6__ {int IsDisconnected; int /*<<< orphan*/  RecvFifo; int /*<<< orphan*/  bio; TYPE_3__* SendFifo; } ;
-typedef  TYPE_1__ SSL_BIO ;
+struct TYPE_6__ {int IsDisconnected; int RecvFifo; int bio; TYPE_3__* SendFifo; } ;
+typedef TYPE_1__ SSL_BIO ;
 
-/* Variables and functions */
- int BIO_read (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- scalar_t__ BIO_should_retry (int /*<<< orphan*/ ) ; 
- int BIO_write (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Debug (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_error_string (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERR_peek_last_error () ; 
- int /*<<< orphan*/  FifoSize (TYPE_3__*) ; 
- int /*<<< orphan*/  GetFifoPointer (TYPE_3__*) ; 
- int /*<<< orphan*/  ReadFifo (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WHERE ; 
- int /*<<< orphan*/  WriteFifo (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int BIO_read (int ,int *,int) ;
+ scalar_t__ BIO_should_retry (int ) ;
+ int BIO_write (int ,int ,int ) ;
+ int Debug (char*,int ) ;
+ int ERR_error_string (int ,int *) ;
+ int ERR_peek_last_error () ;
+ int FifoSize (TYPE_3__*) ;
+ int GetFifoPointer (TYPE_3__*) ;
+ int ReadFifo (TYPE_3__*,int *,int ) ;
+ int WHERE ;
+ int WriteFifo (int ,int *,int ) ;
 
 bool SslBioSync(SSL_BIO *b, bool sync_send, bool sync_recv)
 {
-	// Validate arguments
-	if (b == NULL)
-	{
-		return false;
-	}
 
-	if (b->IsDisconnected)
-	{
-		return false;
-	}
+ if (b == ((void*)0))
+ {
+  return 0;
+ }
 
-	// Write the contents of the SendFifo to the BIO
-	if (sync_send)
-	{
-		while (b->SendFifo->size >= 1)
-		{
-			int r = BIO_write(b->bio, GetFifoPointer(b->SendFifo), FifoSize(b->SendFifo));
+ if (b->IsDisconnected)
+ {
+  return 0;
+ }
 
-			if (r == 0)
-			{
-				b->IsDisconnected = true;
-				WHERE;
-				return false;
-			}
-			else
-			{
-				if (r < 0)
-				{
-					if (BIO_should_retry(b->bio))
-					{
-						break;
-					}
-					else
-					{
-						b->IsDisconnected = true;
-						WHERE;
-						return false;
-					}
-				}
-				else
-				{
-					ReadFifo(b->SendFifo, NULL, (UINT)r);
-				}
-			}
-		}
-	}
 
-	// Save to the RecvFifo by reading from the BIO
-	if (sync_recv)
-	{
-		while (true)
-		{
-			UCHAR tmp[4096];
-			int r;
+ if (sync_send)
+ {
+  while (b->SendFifo->size >= 1)
+  {
+   int r = BIO_write(b->bio, GetFifoPointer(b->SendFifo), FifoSize(b->SendFifo));
 
-			r = BIO_read(b->bio, tmp, sizeof(tmp));
+   if (r == 0)
+   {
+    b->IsDisconnected = 1;
+    WHERE;
+    return 0;
+   }
+   else
+   {
+    if (r < 0)
+    {
+     if (BIO_should_retry(b->bio))
+     {
+      break;
+     }
+     else
+     {
+      b->IsDisconnected = 1;
+      WHERE;
+      return 0;
+     }
+    }
+    else
+    {
+     ReadFifo(b->SendFifo, ((void*)0), (UINT)r);
+    }
+   }
+  }
+ }
 
-			if (r == 0)
-			{
-				b->IsDisconnected = true;
-				WHERE;
-				return false;
-			}
-			else
-			{
-				if (r < 0)
-				{
-					if (BIO_should_retry(b->bio))
-					{
-						break;
-					}
-					else
-					{
-						b->IsDisconnected = true;
-						WHERE;
-						Debug("OpenSSL Error: %s\n", ERR_error_string(ERR_peek_last_error(), NULL));
-						return false;
-					}
-				}
-				else
-				{
-					WriteFifo(b->RecvFifo, tmp, (UINT)r);
-				}
-			}
-		}
-	}
 
-	return true;
+ if (sync_recv)
+ {
+  while (1)
+  {
+   UCHAR tmp[4096];
+   int r;
+
+   r = BIO_read(b->bio, tmp, sizeof(tmp));
+
+   if (r == 0)
+   {
+    b->IsDisconnected = 1;
+    WHERE;
+    return 0;
+   }
+   else
+   {
+    if (r < 0)
+    {
+     if (BIO_should_retry(b->bio))
+     {
+      break;
+     }
+     else
+     {
+      b->IsDisconnected = 1;
+      WHERE;
+      Debug("OpenSSL Error: %s\n", ERR_error_string(ERR_peek_last_error(), ((void*)0)));
+      return 0;
+     }
+    }
+    else
+    {
+     WriteFifo(b->RecvFifo, tmp, (UINT)r);
+    }
+   }
+  }
+ }
+
+ return 1;
 }

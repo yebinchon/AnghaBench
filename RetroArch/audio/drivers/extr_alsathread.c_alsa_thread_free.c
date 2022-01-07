@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int thread_dead; scalar_t__ pcm; scalar_t__ cond_lock; scalar_t__ fifo_lock; scalar_t__ cond; scalar_t__ buffer; scalar_t__ worker_thread; } ;
-typedef  TYPE_1__ alsa_thread_t ;
+typedef TYPE_1__ alsa_thread_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fifo_free (scalar_t__) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  scond_free (scalar_t__) ; 
- int /*<<< orphan*/  slock_free (scalar_t__) ; 
- int /*<<< orphan*/  slock_lock (scalar_t__) ; 
- int /*<<< orphan*/  slock_unlock (scalar_t__) ; 
- int /*<<< orphan*/  snd_pcm_close (scalar_t__) ; 
- int /*<<< orphan*/  snd_pcm_drop (scalar_t__) ; 
- int /*<<< orphan*/  sthread_join (scalar_t__) ; 
+
+ int fifo_free (scalar_t__) ;
+ int free (TYPE_1__*) ;
+ int scond_free (scalar_t__) ;
+ int slock_free (scalar_t__) ;
+ int slock_lock (scalar_t__) ;
+ int slock_unlock (scalar_t__) ;
+ int snd_pcm_close (scalar_t__) ;
+ int snd_pcm_drop (scalar_t__) ;
+ int sthread_join (scalar_t__) ;
 
 __attribute__((used)) static void alsa_thread_free(void *data)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static void alsa_thread_free(void *data)
       if (alsa->worker_thread)
       {
          slock_lock(alsa->cond_lock);
-         alsa->thread_dead = true;
+         alsa->thread_dead = 1;
          slock_unlock(alsa->cond_lock);
          sthread_join(alsa->worker_thread);
       }

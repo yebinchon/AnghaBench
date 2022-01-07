@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-struct TYPE_5__ {int /*<<< orphan*/  start_revision; int /*<<< orphan*/  is_packed; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+struct TYPE_5__ {int start_revision; int is_packed; } ;
 struct TYPE_6__ {TYPE_1__ file_info; } ;
-typedef  TYPE_2__ svn_fs_x__revision_file_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_2__ svn_fs_x__revision_file_t ;
+typedef int svn_fs_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- TYPE_2__* create_revision_file (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_x__is_packed_rev (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_fs_x__packed_base_rev (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ TYPE_2__* create_revision_file (int *,int *) ;
+ int svn_fs_x__is_packed_rev (int *,int ) ;
+ int svn_fs_x__packed_base_rev (int *,int ) ;
 
 __attribute__((used)) static svn_fs_x__revision_file_t *
 init_revision_file(svn_fs_t *fs,

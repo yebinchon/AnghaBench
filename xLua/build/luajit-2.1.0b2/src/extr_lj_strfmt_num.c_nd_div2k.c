@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  SFormat ;
 
-/* Variables and functions */
- scalar_t__ STRFMT_FP (int /*<<< orphan*/ ) ; 
- scalar_t__ STRFMT_PREC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STRFMT_T_FP_F ; 
- int lj_ffs (int) ; 
- int lj_fls (int) ; 
+
+
+
+typedef int uint32_t ;
+typedef int int32_t ;
+typedef int SFormat ;
+
+
+ scalar_t__ STRFMT_FP (int ) ;
+ scalar_t__ STRFMT_PREC (int ) ;
+ int STRFMT_T_FP_F ;
+ int lj_ffs (int) ;
+ int lj_fls (int) ;
 
 __attribute__((used)) static uint32_t nd_div2k(uint32_t* nd, uint32_t ndhi, uint32_t k, SFormat sf)
 {
   uint32_t ndlo = 0, stop1 = ~0, stop2 = ~0;
-  /* Performance hacks. */
+
   if (!ndhi) {
     if (!nd[0]) {
       return 0;
@@ -44,7 +44,7 @@ __attribute__((used)) static uint32_t nd_div2k(uint32_t* nd, uint32_t ndhi, uint
       stop2 = 61 + ndhi - (int32_t)STRFMT_PREC(sf) / 8;
     }
   }
-  /* Real logic. */
+
   while (k >= 9) {
     uint32_t i = ndhi, carry = 0;
     for (;;) {

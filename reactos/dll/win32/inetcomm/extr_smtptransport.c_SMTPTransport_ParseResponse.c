@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {char* pszResponse; int uiServerError; void* hrServerError; void* hrResult; scalar_t__ dwSocketError; } ;
-struct TYPE_12__ {int fDone; TYPE_1__ rIxpResult; int /*<<< orphan*/ * pTransport; } ;
-struct TYPE_9__ {int /*<<< orphan*/  vtbl; int /*<<< orphan*/  vtblSMTP2; } ;
+struct TYPE_12__ {int fDone; TYPE_1__ rIxpResult; int * pTransport; } ;
+struct TYPE_9__ {int vtbl; int vtblSMTP2; } ;
 struct TYPE_10__ {TYPE_2__ u; scalar_t__ pCallback; scalar_t__ fCommandLogging; } ;
 struct TYPE_11__ {TYPE_3__ InetTransport; } ;
-typedef  TYPE_4__ SMTPTransport ;
-typedef  TYPE_5__ SMTPRESPONSE ;
-typedef  int /*<<< orphan*/  ISMTPTransport ;
-typedef  int /*<<< orphan*/  IInternetTransport ;
-typedef  void* HRESULT ;
+typedef TYPE_4__ SMTPTransport ;
+typedef TYPE_5__ SMTPRESPONSE ;
+typedef int ISMTPTransport ;
+typedef int IInternetTransport ;
+typedef void* HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CMD_RESP ; 
- int /*<<< orphan*/  ITransportCallback_OnCommand (scalar_t__,int /*<<< orphan*/ ,char*,void*,int /*<<< orphan*/ *) ; 
- void* IXP_E_SMTP_211_SYSTEM_STATUS ; 
- void* IXP_E_SMTP_214_HELP_MESSAGE ; 
- void* IXP_E_SMTP_220_READY ; 
- void* IXP_E_SMTP_221_CLOSING ; 
- void* IXP_E_SMTP_245_AUTH_SUCCESS ; 
- void* IXP_E_SMTP_250_MAIL_ACTION_OKAY ; 
- void* IXP_E_SMTP_251_FORWARDING_MAIL ; 
- void* IXP_E_SMTP_334_AUTH_READY_RESPONSE ; 
- void* IXP_E_SMTP_354_START_MAIL_INPUT ; 
- void* IXP_E_SMTP_421_NOT_AVAILABLE ; 
- void* IXP_E_SMTP_450_MAILBOX_BUSY ; 
- void* IXP_E_SMTP_451_ERROR_PROCESSING ; 
- void* IXP_E_SMTP_452_NO_SYSTEM_STORAGE ; 
- void* IXP_E_SMTP_454_STARTTLS_FAILED ; 
- void* IXP_E_SMTP_500_SYNTAX_ERROR ; 
- void* IXP_E_SMTP_501_PARAM_SYNTAX ; 
- void* IXP_E_SMTP_502_COMMAND_NOTIMPL ; 
- void* IXP_E_SMTP_503_COMMAND_SEQ ; 
- void* IXP_E_SMTP_504_COMMAND_PARAM_NOTIMPL ; 
- void* IXP_E_SMTP_530_STARTTLS_REQUIRED ; 
- void* IXP_E_SMTP_550_MAILBOX_NOT_FOUND ; 
- void* IXP_E_SMTP_551_USER_NOT_LOCAL ; 
- void* IXP_E_SMTP_552_STORAGE_OVERFLOW ; 
- void* IXP_E_SMTP_553_MAILBOX_NAME_SYNTAX ; 
- void* IXP_E_SMTP_554_TRANSACT_FAILED ; 
- void* IXP_E_SMTP_RESPONSE_ERROR ; 
- void* S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_a (char*) ; 
- int /*<<< orphan*/  isdigit (char) ; 
- int strtol (char*,char**,int) ; 
+
+ int CMD_RESP ;
+ int ITransportCallback_OnCommand (scalar_t__,int ,char*,void*,int *) ;
+ void* IXP_E_SMTP_211_SYSTEM_STATUS ;
+ void* IXP_E_SMTP_214_HELP_MESSAGE ;
+ void* IXP_E_SMTP_220_READY ;
+ void* IXP_E_SMTP_221_CLOSING ;
+ void* IXP_E_SMTP_245_AUTH_SUCCESS ;
+ void* IXP_E_SMTP_250_MAIL_ACTION_OKAY ;
+ void* IXP_E_SMTP_251_FORWARDING_MAIL ;
+ void* IXP_E_SMTP_334_AUTH_READY_RESPONSE ;
+ void* IXP_E_SMTP_354_START_MAIL_INPUT ;
+ void* IXP_E_SMTP_421_NOT_AVAILABLE ;
+ void* IXP_E_SMTP_450_MAILBOX_BUSY ;
+ void* IXP_E_SMTP_451_ERROR_PROCESSING ;
+ void* IXP_E_SMTP_452_NO_SYSTEM_STORAGE ;
+ void* IXP_E_SMTP_454_STARTTLS_FAILED ;
+ void* IXP_E_SMTP_500_SYNTAX_ERROR ;
+ void* IXP_E_SMTP_501_PARAM_SYNTAX ;
+ void* IXP_E_SMTP_502_COMMAND_NOTIMPL ;
+ void* IXP_E_SMTP_503_COMMAND_SEQ ;
+ void* IXP_E_SMTP_504_COMMAND_PARAM_NOTIMPL ;
+ void* IXP_E_SMTP_530_STARTTLS_REQUIRED ;
+ void* IXP_E_SMTP_550_MAILBOX_NOT_FOUND ;
+ void* IXP_E_SMTP_551_USER_NOT_LOCAL ;
+ void* IXP_E_SMTP_552_STORAGE_OVERFLOW ;
+ void* IXP_E_SMTP_553_MAILBOX_NAME_SYNTAX ;
+ void* IXP_E_SMTP_554_TRANSACT_FAILED ;
+ void* IXP_E_SMTP_RESPONSE_ERROR ;
+ void* S_OK ;
+ int TRACE (char*,int ) ;
+ int debugstr_a (char*) ;
+ int isdigit (char) ;
+ int strtol (char*,char**,int) ;
 
 __attribute__((used)) static HRESULT SMTPTransport_ParseResponse(SMTPTransport *This, char *pszResponse, SMTPRESPONSE *pResponse)
 {

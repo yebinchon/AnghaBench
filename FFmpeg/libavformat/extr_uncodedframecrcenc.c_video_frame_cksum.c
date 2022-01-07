@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_6__ {int height; int /*<<< orphan*/ * linesize; int /*<<< orphan*/ ** data; int /*<<< orphan*/  width; int /*<<< orphan*/  format; } ;
-struct TYPE_5__ {unsigned int name; int nb_components; int /*<<< orphan*/  log2_chroma_h; } ;
-typedef  TYPE_1__ AVPixFmtDescriptor ;
-typedef  TYPE_2__ AVFrame ;
-typedef  int /*<<< orphan*/  AVBPrint ;
 
-/* Variables and functions */
- int AV_CEIL_RSHIFT (int,int /*<<< orphan*/ ) ; 
- unsigned int av_adler32_update (unsigned int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  av_bprintf (int /*<<< orphan*/ *,char*,...) ; 
- scalar_t__ av_image_fill_linesizes (int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_6__ {int height; int * linesize; int ** data; int width; int format; } ;
+struct TYPE_5__ {unsigned int name; int nb_components; int log2_chroma_h; } ;
+typedef TYPE_1__ AVPixFmtDescriptor ;
+typedef TYPE_2__ AVFrame ;
+typedef int AVBPrint ;
+
+
+ int AV_CEIL_RSHIFT (int,int ) ;
+ unsigned int av_adler32_update (unsigned int,int *,int) ;
+ int av_bprintf (int *,char*,...) ;
+ scalar_t__ av_image_fill_linesizes (int*,int ,int ) ;
+ TYPE_1__* av_pix_fmt_desc_get (int ) ;
 
 __attribute__((used)) static void video_frame_cksum(AVBPrint *bp, AVFrame *frame)
 {

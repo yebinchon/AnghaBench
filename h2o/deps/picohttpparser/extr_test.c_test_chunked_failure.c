@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct phr_chunked_decoder {int /*<<< orphan*/  member_0; } ;
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  dec ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  memset (struct phr_chunked_decoder*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  note (char*,int) ; 
- int /*<<< orphan*/  ok (int) ; 
- int phr_decode_chunked (struct phr_chunked_decoder*,char*,size_t*) ; 
- char* strdup (char const*) ; 
- size_t strlen (char*) ; 
+
+
+
+struct phr_chunked_decoder {int member_0; } ;
+typedef int ssize_t ;
+typedef int dec ;
+
+
+ int free (char*) ;
+ int memset (struct phr_chunked_decoder*,int ,int) ;
+ int note (char*,int) ;
+ int ok (int) ;
+ int phr_decode_chunked (struct phr_chunked_decoder*,char*,size_t*) ;
+ char* strdup (char const*) ;
+ size_t strlen (char*) ;
 
 __attribute__((used)) static void test_chunked_failure(int line, const char *encoded, ssize_t expected)
 {
@@ -45,7 +45,7 @@ __attribute__((used)) static void test_chunked_failure(int line, const char *enc
             ok(ret == expected);
             goto cleanup;
         } else if (ret == -2) {
-            /* continue */
+
         } else {
             ok(0);
             goto cleanup;

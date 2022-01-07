@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int npy_uint32 ;
-typedef  int npy_intp ;
-typedef  int /*<<< orphan*/  NpyIter_AxisData ;
-typedef  int /*<<< orphan*/  NpyIter ;
 
-/* Variables and functions */
- scalar_t__* NAD_PTRS (int /*<<< orphan*/ *) ; 
- int NAD_SHAPE (int /*<<< orphan*/ *) ; 
- int* NAD_STRIDES (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NIT_ADVANCE_AXISDATA (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * NIT_AXISDATA (int /*<<< orphan*/ *) ; 
- int NIT_AXISDATA_SIZEOF (int,int,int) ; 
- int /*<<< orphan*/ * NIT_INDEX_AXISDATA (int /*<<< orphan*/ *,int) ; 
- int NIT_ITERSIZE (int /*<<< orphan*/ *) ; 
- int NIT_ITFLAGS (int /*<<< orphan*/ *) ; 
- int NIT_NDIM (int /*<<< orphan*/ *) ; 
- int NIT_NOP (int /*<<< orphan*/ *) ; 
- int NPY_ITER_C_INDEX ; 
- int NPY_ITER_F_INDEX ; 
- int NPY_ITFLAG_HASINDEX ; 
+
+
+
+typedef int npy_uint32 ;
+typedef int npy_intp ;
+typedef int NpyIter_AxisData ;
+typedef int NpyIter ;
+
+
+ scalar_t__* NAD_PTRS (int *) ;
+ int NAD_SHAPE (int *) ;
+ int* NAD_STRIDES (int *) ;
+ int NIT_ADVANCE_AXISDATA (int *,int) ;
+ int * NIT_AXISDATA (int *) ;
+ int NIT_AXISDATA_SIZEOF (int,int,int) ;
+ int * NIT_INDEX_AXISDATA (int *,int) ;
+ int NIT_ITERSIZE (int *) ;
+ int NIT_ITFLAGS (int *) ;
+ int NIT_NDIM (int *) ;
+ int NIT_NOP (int *) ;
+ int NPY_ITER_C_INDEX ;
+ int NPY_ITER_F_INDEX ;
+ int NPY_ITFLAG_HASINDEX ;
 
 __attribute__((used)) static void
 npyiter_compute_index_strides(NpyIter *iter, npy_uint32 flags)
@@ -42,11 +42,11 @@ npyiter_compute_index_strides(NpyIter *iter, npy_uint32 flags)
     NpyIter_AxisData *axisdata;
     npy_intp sizeof_axisdata;
 
-    /*
-     * If there is only one element being iterated, we just have
-     * to touch the first AXISDATA because nothing will ever be
-     * incremented. This also initializes the data for the 0-d case.
-     */
+
+
+
+
+
     if (NIT_ITERSIZE(iter) == 1) {
         if (itflags & NPY_ITFLAG_HASINDEX) {
             axisdata = NIT_AXISDATA(iter);

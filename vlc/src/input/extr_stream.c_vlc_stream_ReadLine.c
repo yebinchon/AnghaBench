@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ vlc_iconv_t ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint16_t ;
-struct TYPE_12__ {int /*<<< orphan*/ * pf_block; int /*<<< orphan*/ * pf_read; } ;
-typedef  TYPE_2__ stream_t ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef scalar_t__ vlc_iconv_t ;
+typedef int uint8_t ;
+typedef int uint16_t ;
+struct TYPE_12__ {int * pf_block; int * pf_read; } ;
+typedef TYPE_2__ stream_t ;
 struct TYPE_11__ {scalar_t__ conv; int little_endian; int char_width; } ;
 struct TYPE_13__ {TYPE_1__ text; } ;
-typedef  TYPE_3__ stream_priv_t ;
-typedef  scalar_t__ int64_t ;
+typedef TYPE_3__ stream_priv_t ;
+typedef scalar_t__ int64_t ;
 
-/* Variables and functions */
- int STREAM_LINE_MAX ; 
- int STREAM_PROBE_LINE ; 
- int U16_AT (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (int) ; 
- char* memchr (int /*<<< orphan*/  const*,char,int) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/  const*,char*,int) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_2__*,char*,...) ; 
- int /*<<< orphan*/  msg_Err (TYPE_2__*,char*,...) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_2__*,char*) ; 
- char* realloc_or_free (char*,int) ; 
- scalar_t__ unlikely (int) ; 
- size_t vlc_iconv (scalar_t__,char const**,size_t*,char**,size_t*) ; 
- int /*<<< orphan*/  vlc_iconv_close (scalar_t__) ; 
- scalar_t__ vlc_iconv_open (char*,char const*) ; 
- int vlc_stream_Peek (TYPE_2__*,int /*<<< orphan*/  const**,int) ; 
- int vlc_stream_Read (TYPE_2__*,char*,int) ; 
- scalar_t__ vlc_stream_Tell (TYPE_2__*) ; 
- int /*<<< orphan*/  vlc_strerror_c (int /*<<< orphan*/ ) ; 
+
+ int STREAM_LINE_MAX ;
+ int STREAM_PROBE_LINE ;
+ int U16_AT (int const*) ;
+ int assert (int) ;
+ int errno ;
+ int free (char*) ;
+ char* malloc (int) ;
+ char* memchr (int const*,char,int) ;
+ int memcmp (int const*,char*,int) ;
+ int msg_Dbg (TYPE_2__*,char*,...) ;
+ int msg_Err (TYPE_2__*,char*,...) ;
+ int msg_Warn (TYPE_2__*,char*) ;
+ char* realloc_or_free (char*,int) ;
+ scalar_t__ unlikely (int) ;
+ size_t vlc_iconv (scalar_t__,char const**,size_t*,char**,size_t*) ;
+ int vlc_iconv_close (scalar_t__) ;
+ scalar_t__ vlc_iconv_open (char*,char const*) ;
+ int vlc_stream_Peek (TYPE_2__*,int const**,int) ;
+ int vlc_stream_Read (TYPE_2__*,char*,int) ;
+ scalar_t__ vlc_stream_Tell (TYPE_2__*) ;
+ int vlc_strerror_c (int ) ;
 
 char *vlc_stream_ReadLine( stream_t *s )
 {
     stream_priv_t *priv = (stream_priv_t *)s;
-    char *p_line = NULL;
+    char *p_line = ((void*)0);
     int i_line = 0, i_read = 0;
 
-    /* Let's fail quickly if this is a readdir access */
-    if( s->pf_read == NULL && s->pf_block == NULL )
-        return NULL;
+
+    if( s->pf_read == ((void*)0) && s->pf_block == ((void*)0) )
+        return ((void*)0);
 
     for( ;; )
     {
@@ -63,18 +63,18 @@ char *vlc_stream_ReadLine( stream_t *s )
         int i_data;
         int64_t i_pos;
 
-        /* Probe new data */
-        i_data = vlc_stream_Peek( s, &p_data, STREAM_PROBE_LINE );
-        if( i_data <= 0 ) break; /* No more data */
 
-        /* BOM detection */
+        i_data = vlc_stream_Peek( s, &p_data, STREAM_PROBE_LINE );
+        if( i_data <= 0 ) break;
+
+
         i_pos = vlc_stream_Tell( s );
         if( i_pos == 0 && i_data >= 2 )
         {
-            const char *psz_encoding = NULL;
+            const char *psz_encoding = ((void*)0);
 
             if( unlikely(priv->text.conv != (vlc_iconv_t)-1) )
-            {   /* seek back to beginning? reset */
+            {
                 vlc_iconv_close( priv->text.conv );
                 priv->text.conv = (vlc_iconv_t)-1;
             }
@@ -82,15 +82,15 @@ char *vlc_stream_ReadLine( stream_t *s )
             if( !memcmp( p_data, "\xFF\xFE", 2 ) )
             {
                 psz_encoding = "UTF-16LE";
-                priv->text.little_endian = true;
+                priv->text.little_endian = 1;
             }
             else if( !memcmp( p_data, "\xFE\xFF", 2 ) )
             {
                 psz_encoding = "UTF-16BE";
             }
 
-            /* Open the converter if we need it */
-            if( psz_encoding != NULL )
+
+            if( psz_encoding != ((void*)0) )
             {
                 msg_Dbg( s, "UTF-16 BOM detected" );
                 priv->text.conv = vlc_iconv_open( "UTF-8", psz_encoding );
@@ -105,7 +105,7 @@ char *vlc_stream_ReadLine( stream_t *s )
 
         if( i_data % priv->text.char_width )
         {
-            /* keep i_char_width boundary */
+
             i_data = i_data - ( i_data % priv->text.char_width );
             msg_Warn( s, "the read is not i_char_width compatible");
         }
@@ -113,13 +113,13 @@ char *vlc_stream_ReadLine( stream_t *s )
         if( i_data == 0 )
             break;
 
-        /* Check if there is an EOL */
+
         if( priv->text.char_width == 1 )
         {
-            /* UTF-8: 0A <LF> */
+
             psz_eol = memchr( p_data, '\n', i_data );
-            if( psz_eol == NULL )
-                /* UTF-8: 0D <CR> */
+            if( psz_eol == ((void*)0) )
+
                 psz_eol = memchr( p_data, '\r', i_data );
         }
         else
@@ -128,8 +128,8 @@ char *vlc_stream_ReadLine( stream_t *s )
             uint16_t eol = priv->text.little_endian ? 0x0A00 : 0x00A0;
 
             assert( priv->text.char_width == 2 );
-            psz_eol = NULL;
-            /* UTF-16: 000A <LF> */
+            psz_eol = ((void*)0);
+
             for( const uint8_t *p = p_data; p <= p_last; p += 2 )
             {
                 if( U16_AT( p ) == eol )
@@ -139,8 +139,8 @@ char *vlc_stream_ReadLine( stream_t *s )
                 }
             }
 
-            if( psz_eol == NULL )
-            {   /* UTF-16: 000D <CR> */
+            if( psz_eol == ((void*)0) )
+            {
                 eol = priv->text.little_endian ? 0x0D00 : 0x00D0;
                 for( const uint8_t *p = p_data; p <= p_last; p += 2 )
                 {
@@ -157,30 +157,30 @@ char *vlc_stream_ReadLine( stream_t *s )
         {
             i_data = (psz_eol - (char *)p_data) + 1;
             p_line = realloc_or_free( p_line,
-                        i_line + i_data + priv->text.char_width ); /* add \0 */
+                        i_line + i_data + priv->text.char_width );
             if( !p_line )
                 goto error;
             i_data = vlc_stream_Read( s, &p_line[i_line], i_data );
-            if( i_data <= 0 ) break; /* Hmmm */
-            i_line += i_data - priv->text.char_width; /* skip \n */;
+            if( i_data <= 0 ) break;
+            i_line += i_data - priv->text.char_width; ;
             i_read += i_data;
 
-            /* We have our line */
+
             break;
         }
 
-        /* Read data (+1 for easy \0 append) */
+
         p_line = realloc_or_free( p_line,
                           i_line + STREAM_PROBE_LINE + priv->text.char_width );
         if( !p_line )
             goto error;
         i_data = vlc_stream_Read( s, &p_line[i_line], STREAM_PROBE_LINE );
-        if( i_data <= 0 ) break; /* Hmmm */
+        if( i_data <= 0 ) break;
         i_line += i_data;
         i_read += i_data;
 
         if( i_read >= STREAM_LINE_MAX )
-            goto error; /* line too long */
+            goto error;
     }
 
     if( i_read > 0 )
@@ -189,15 +189,15 @@ char *vlc_stream_ReadLine( stream_t *s )
         {
             int i_new_line = 0;
             size_t i_in = 0, i_out = 0;
-            const char * p_in = NULL;
-            char * p_out = NULL;
-            char * psz_new_line = NULL;
+            const char * p_in = ((void*)0);
+            char * p_out = ((void*)0);
+            char * psz_new_line = ((void*)0);
 
-            /* iconv */
-            /* UTF-8 needs at most 150% of the buffer as many as UTF-16 */
+
+
             i_new_line = i_line * 3 / 2 + 1;
             psz_new_line = malloc( i_new_line );
-            if( psz_new_line == NULL )
+            if( psz_new_line == ((void*)0) )
                 goto error;
             i_in = (size_t)i_line;
             i_out = (size_t)i_new_line;
@@ -211,29 +211,29 @@ char *vlc_stream_ReadLine( stream_t *s )
             }
             free( p_line );
             p_line = psz_new_line;
-            i_line = (size_t)i_new_line - i_out; /* does not include \0 */
+            i_line = (size_t)i_new_line - i_out;
         }
 
-        /* Remove trailing LF/CR */
+
         while( i_line >= 1 &&
                (p_line[i_line - 1] == '\r' || p_line[i_line - 1] == '\n') )
             i_line--;
 
-        /* Make sure the \0 is there */
+
         p_line[i_line] = '\0';
 
         return p_line;
     }
 
 error:
-    /* We failed to read any data, probably EOF */
+
     free( p_line );
 
-    /* */
+
     if( priv->text.conv != (vlc_iconv_t)(-1) )
     {
         vlc_iconv_close( priv->text.conv );
         priv->text.conv = (vlc_iconv_t)(-1);
     }
-    return NULL;
+    return ((void*)0);
 }

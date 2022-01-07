@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
-typedef  int /*<<< orphan*/  int32_t ;
-struct TYPE_9__ {int /*<<< orphan*/ ** paddings; } ;
-struct TYPE_8__ {int /*<<< orphan*/  status; int /*<<< orphan*/  graph; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * oper; scalar_t__ index; } ;
-typedef  int /*<<< orphan*/  TF_Tensor ;
-typedef  TYPE_1__ TF_Output ;
-typedef  int /*<<< orphan*/  TF_OperationDescription ;
-typedef  int /*<<< orphan*/  TF_Operation ;
-typedef  TYPE_2__ TFModel ;
-typedef  TYPE_3__ LayerPadParams ;
-typedef  int /*<<< orphan*/  DNNReturnType ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DNN_ERROR ; 
- int /*<<< orphan*/  DNN_SUCCESS ; 
- int NAME_BUFFER_SIZE ; 
- int /*<<< orphan*/  TF_AddInput (int /*<<< orphan*/ *,TYPE_1__) ; 
- int /*<<< orphan*/ * TF_AllocateTensor (int /*<<< orphan*/ ,int*,int,int) ; 
- int /*<<< orphan*/  TF_FLOAT ; 
- int /*<<< orphan*/ * TF_FinishOperation (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ TF_GetCode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TF_INT32 ; 
- int /*<<< orphan*/ * TF_NewOperation (int /*<<< orphan*/ ,char*,char*) ; 
- scalar_t__ TF_OK ; 
- int /*<<< orphan*/  TF_SetAttrString (int /*<<< orphan*/ *,char*,char*,int) ; 
- int /*<<< orphan*/  TF_SetAttrTensor (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TF_SetAttrType (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ TF_TensorData (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int const) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+typedef int int32_t ;
+struct TYPE_9__ {int ** paddings; } ;
+struct TYPE_8__ {int status; int graph; } ;
+struct TYPE_7__ {int * oper; scalar_t__ index; } ;
+typedef int TF_Tensor ;
+typedef TYPE_1__ TF_Output ;
+typedef int TF_OperationDescription ;
+typedef int TF_Operation ;
+typedef TYPE_2__ TFModel ;
+typedef TYPE_3__ LayerPadParams ;
+typedef int DNNReturnType ;
+
+
+ int DNN_ERROR ;
+ int DNN_SUCCESS ;
+ int NAME_BUFFER_SIZE ;
+ int TF_AddInput (int *,TYPE_1__) ;
+ int * TF_AllocateTensor (int ,int*,int,int) ;
+ int TF_FLOAT ;
+ int * TF_FinishOperation (int *,int ) ;
+ scalar_t__ TF_GetCode (int ) ;
+ int TF_INT32 ;
+ int * TF_NewOperation (int ,char*,char*) ;
+ scalar_t__ TF_OK ;
+ int TF_SetAttrString (int *,char*,char*,int) ;
+ int TF_SetAttrTensor (int *,char*,int *,int ) ;
+ int TF_SetAttrType (int *,char*,int ) ;
+ scalar_t__ TF_TensorData (int *) ;
+ int snprintf (char*,int,char*,int const) ;
 
 __attribute__((used)) static DNNReturnType add_pad_layer(TFModel *tf_model, TF_Operation **cur_op,
                                               LayerPadParams *params, const int layer)

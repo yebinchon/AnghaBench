@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ssize_t ;
-struct TYPE_3__ {int /*<<< orphan*/ * stdout_file; int /*<<< orphan*/  name; scalar_t__ pid; scalar_t__ status; scalar_t__ terminated; } ;
-typedef  TYPE_1__ process_info_t ;
-typedef  scalar_t__ pid_t ;
-typedef  int /*<<< orphan*/  fdstr ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- scalar_t__ EINTR ; 
- int /*<<< orphan*/  STDERR_FILENO ; 
- int /*<<< orphan*/  STDOUT_FILENO ; 
- int /*<<< orphan*/  _exit (int) ; 
- scalar_t__ atoi (char const*) ; 
- int /*<<< orphan*/  closefd (int) ; 
- int /*<<< orphan*/  dup2 (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  environ ; 
- scalar_t__ errno ; 
- char* executable_path ; 
- int /*<<< orphan*/  execve (char*,char**,int /*<<< orphan*/ ) ; 
- int fileno (int /*<<< orphan*/ *) ; 
- scalar_t__ fork () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- char* getenv (char*) ; 
- int /*<<< orphan*/  perror (char*) ; 
- scalar_t__ pipe (int*) ; 
- int read (int,int*,int) ; 
- scalar_t__ setenv (char*,char*,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strdup (char*) ; 
- int /*<<< orphan*/ * tmpfile () ; 
- int /*<<< orphan*/  unsetenv (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ssize_t ;
+struct TYPE_3__ {int * stdout_file; int name; scalar_t__ pid; scalar_t__ status; scalar_t__ terminated; } ;
+typedef TYPE_1__ process_info_t ;
+typedef scalar_t__ pid_t ;
+typedef int fdstr ;
+typedef int FILE ;
+
+
+ scalar_t__ EINTR ;
+ int STDERR_FILENO ;
+ int STDOUT_FILENO ;
+ int _exit (int) ;
+ scalar_t__ atoi (char const*) ;
+ int closefd (int) ;
+ int dup2 (int,int ) ;
+ int environ ;
+ scalar_t__ errno ;
+ char* executable_path ;
+ int execve (char*,char**,int ) ;
+ int fileno (int *) ;
+ scalar_t__ fork () ;
+ int fprintf (int ,char*) ;
+ char* getenv (char*) ;
+ int perror (char*) ;
+ scalar_t__ pipe (int*) ;
+ int read (int,int*,int) ;
+ scalar_t__ setenv (char*,char*,int) ;
+ int snprintf (char*,int,char*,int) ;
+ int stderr ;
+ int strdup (char*) ;
+ int * tmpfile () ;
+ int unsetenv (char*) ;
 
 int process_start(char* name, char* part, process_info_t* p, int is_helper) {
   FILE* stdout_file;
@@ -58,10 +58,10 @@ int process_start(char* name, char* part, process_info_t* p, int is_helper) {
   arg = getenv("UV_USE_VALGRIND");
   n = 0;
 
-  /* Disable valgrind for helpers, it complains about helpers leaking memory.
-   * They're killed after the test and as such never get a chance to clean up.
-   */
-  if (is_helper == 0 && arg != NULL && atoi(arg) != 0) {
+
+
+
+  if (is_helper == 0 && arg != ((void*)0) && atoi(arg) != 0) {
     args[n++] = "valgrind";
     args[n++] = "--quiet";
     args[n++] = "--leak-check=full";
@@ -72,7 +72,7 @@ int process_start(char* name, char* part, process_info_t* p, int is_helper) {
   args[n++] = executable_path;
   args[n++] = name;
   args[n++] = part;
-  args[n++] = NULL;
+  args[n++] = ((void*)0);
 
   stdout_file = tmpfile();
   stdout_fd = fileno(stdout_file);
@@ -88,7 +88,7 @@ int process_start(char* name, char* part, process_info_t* p, int is_helper) {
     }
 
     snprintf(fdstr, sizeof(fdstr), "%d", pipefd[1]);
-    if (setenv("UV_TEST_RUNNER_FD", fdstr, /* overwrite */ 1)) {
+    if (setenv("UV_TEST_RUNNER_FD", fdstr, 1)) {
       perror("setenv");
       return -1;
     }
@@ -105,7 +105,7 @@ int process_start(char* name, char* part, process_info_t* p, int is_helper) {
   }
 
   if (pid == 0) {
-    /* child */
+
     if (is_helper)
       closefd(pipefd[0]);
     dup2(stdout_fd, STDOUT_FILENO);
@@ -115,7 +115,7 @@ int process_start(char* name, char* part, process_info_t* p, int is_helper) {
     _exit(127);
   }
 
-  /* parent */
+
   p->pid = pid;
   p->name = strdup(name);
   p->stdout_file = stdout_file;

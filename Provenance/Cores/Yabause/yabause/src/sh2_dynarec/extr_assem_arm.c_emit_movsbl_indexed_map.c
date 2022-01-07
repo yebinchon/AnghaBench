@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- size_t HOST_TEMPREG ; 
- int /*<<< orphan*/  assem_debug (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  emit_movsbl_indexed (int,int,int) ; 
- int /*<<< orphan*/  emit_shlimm (int,int,size_t) ; 
- int /*<<< orphan*/  output_w32 (int) ; 
- int rd_rn_rm (int,int,int) ; 
- int /*<<< orphan*/ * regname ; 
+ size_t HOST_TEMPREG ;
+ int assem_debug (char*,int ,int ,int ) ;
+ int assert (int) ;
+ int emit_movsbl_indexed (int,int,int) ;
+ int emit_shlimm (int,int,size_t) ;
+ int output_w32 (int) ;
+ int rd_rn_rm (int,int,int) ;
+ int * regname ;
 
 void emit_movsbl_indexed_map(int addr, int rs, int map, int rt)
 {

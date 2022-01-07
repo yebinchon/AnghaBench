@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct test {int /*<<< orphan*/  desc; } ;
 
-/* Variables and functions */
- scalar_t__ strcasestr (int /*<<< orphan*/ ,char const*) ; 
- long strtoul (char const*,char**,int) ; 
+
+
+
+struct test {int desc; } ;
+
+
+ scalar_t__ strcasestr (int ,char const*) ;
+ long strtoul (char const*,char**,int) ;
 
 __attribute__((used)) static bool perf_test__matches(struct test *test, int curr, int argc, const char *argv[])
 {
-	int i;
+ int i;
 
-	if (argc == 0)
-		return true;
+ if (argc == 0)
+  return 1;
 
-	for (i = 0; i < argc; ++i) {
-		char *end;
-		long nr = strtoul(argv[i], &end, 10);
+ for (i = 0; i < argc; ++i) {
+  char *end;
+  long nr = strtoul(argv[i], &end, 10);
 
-		if (*end == '\0') {
-			if (nr == curr + 1)
-				return true;
-			continue;
-		}
+  if (*end == '\0') {
+   if (nr == curr + 1)
+    return 1;
+   continue;
+  }
 
-		if (strcasestr(test->desc, argv[i]))
-			return true;
-	}
+  if (strcasestr(test->desc, argv[i]))
+   return 1;
+ }
 
-	return false;
+ return 0;
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char TCHAR ;
-typedef  int INT ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVENTLOG_ERROR_TYPE ; 
- int /*<<< orphan*/  EVENTLOG_INFORMATION_TYPE ; 
- int /*<<< orphan*/  EVENTLOG_SUCCESS ; 
- int /*<<< orphan*/  EVENTLOG_WARNING_TYPE ; 
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  Usage () ; 
- void* atoi (char*) ; 
- void* m_Category ; 
- void* m_EventID ; 
- char* m_MachineName ; 
- int /*<<< orphan*/  m_Severity ; 
- char* m_Source ; 
- char* m_Text ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+
+
+typedef char TCHAR ;
+typedef int INT ;
+typedef scalar_t__ BOOL ;
+
+
+ int EVENTLOG_ERROR_TYPE ;
+ int EVENTLOG_INFORMATION_TYPE ;
+ int EVENTLOG_SUCCESS ;
+ int EVENTLOG_WARNING_TYPE ;
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
+ int Usage () ;
+ void* atoi (char*) ;
+ void* m_Category ;
+ void* m_EventID ;
+ char* m_MachineName ;
+ int m_Severity ;
+ char* m_Source ;
+ char* m_Text ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static BOOL ParseCmdline(int argc, TCHAR **argv)
 {
@@ -102,7 +102,7 @@ __attribute__((used)) static BOOL ParseCmdline(int argc, TCHAR **argv)
                     break;
                 case 'e':
                 case 'E':
-                    m_EventID  = atoi(argv[i + 1]);
+                    m_EventID = atoi(argv[i + 1]);
                     i++;
                     break;
                 case '?':

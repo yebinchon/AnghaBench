@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  HUF_TABLELOG_DEFAULT ; 
- size_t HUF_compress2 (void*,size_t,void const*,size_t,int,int /*<<< orphan*/ ) ; 
+ int HUF_TABLELOG_DEFAULT ;
+ size_t HUF_compress2 (void*,size_t,void const*,size_t,int,int ) ;
 
 size_t HUF_compress (void* dst, size_t maxDstSize, const void* src, size_t srcSize)
 {

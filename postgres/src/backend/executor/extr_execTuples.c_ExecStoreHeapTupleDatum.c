@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  tts_isnull; int /*<<< orphan*/  tts_values; int /*<<< orphan*/  tts_tupleDescriptor; } ;
-typedef  TYPE_1__ TupleTableSlot ;
-struct TYPE_12__ {TYPE_2__* t_data; int /*<<< orphan*/  t_self; int /*<<< orphan*/  t_len; int /*<<< orphan*/  member_0; } ;
-struct TYPE_11__ {int /*<<< orphan*/  t_ctid; } ;
-typedef  TYPE_2__* HeapTupleHeader ;
-typedef  TYPE_3__ HeapTupleData ;
-typedef  int /*<<< orphan*/  Datum ;
 
-/* Variables and functions */
- TYPE_2__* DatumGetHeapTupleHeader (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExecClearTuple (TYPE_1__*) ; 
- int /*<<< orphan*/  ExecStoreVirtualTuple (TYPE_1__*) ; 
- int /*<<< orphan*/  HeapTupleHeaderGetDatumLength (TYPE_2__*) ; 
- int /*<<< orphan*/  heap_deform_tuple (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int tts_isnull; int tts_values; int tts_tupleDescriptor; } ;
+typedef TYPE_1__ TupleTableSlot ;
+struct TYPE_12__ {TYPE_2__* t_data; int t_self; int t_len; int member_0; } ;
+struct TYPE_11__ {int t_ctid; } ;
+typedef TYPE_2__* HeapTupleHeader ;
+typedef TYPE_3__ HeapTupleData ;
+typedef int Datum ;
+
+
+ TYPE_2__* DatumGetHeapTupleHeader (int ) ;
+ int ExecClearTuple (TYPE_1__*) ;
+ int ExecStoreVirtualTuple (TYPE_1__*) ;
+ int HeapTupleHeaderGetDatumLength (TYPE_2__*) ;
+ int heap_deform_tuple (TYPE_3__*,int ,int ,int ) ;
 
 void
 ExecStoreHeapTupleDatum(Datum data, TupleTableSlot *slot)
 {
-	HeapTupleData tuple = {0};
-	HeapTupleHeader td;
+ HeapTupleData tuple = {0};
+ HeapTupleHeader td;
 
-	td = DatumGetHeapTupleHeader(data);
+ td = DatumGetHeapTupleHeader(data);
 
-	tuple.t_len = HeapTupleHeaderGetDatumLength(td);
-	tuple.t_self = td->t_ctid;
-	tuple.t_data = td;
+ tuple.t_len = HeapTupleHeaderGetDatumLength(td);
+ tuple.t_self = td->t_ctid;
+ tuple.t_data = td;
 
-	ExecClearTuple(slot);
+ ExecClearTuple(slot);
 
-	heap_deform_tuple(&tuple, slot->tts_tupleDescriptor,
-					  slot->tts_values, slot->tts_isnull);
-	ExecStoreVirtualTuple(slot);
+ heap_deform_tuple(&tuple, slot->tts_tupleDescriptor,
+       slot->tts_values, slot->tts_isnull);
+ ExecStoreVirtualTuple(slot);
 }

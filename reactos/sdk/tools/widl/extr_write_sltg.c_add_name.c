@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int size; int allocated; scalar_t__* data; } ;
 struct sltg_typelib {TYPE_1__ name_table; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  chat (char*,char const*) ; 
- int max (int,int) ; 
- int /*<<< orphan*/  memset (scalar_t__*,int,int) ; 
- int /*<<< orphan*/  strcpy (scalar_t__*,char const*) ; 
- int strlen (char const*) ; 
- scalar_t__* xrealloc (scalar_t__*,int) ; 
+
+ int chat (char*,char const*) ;
+ int max (int,int) ;
+ int memset (scalar_t__*,int,int) ;
+ int strcpy (scalar_t__*,char const*) ;
+ int strlen (char const*) ;
+ scalar_t__* xrealloc (scalar_t__*,int) ;
 
 __attribute__((used)) static int add_name(struct sltg_typelib *sltg, const char *name)
 {
@@ -45,7 +45,7 @@ __attribute__((used)) static int add_name(struct sltg_typelib *sltg, const char 
     memset(sltg->name_table.data + sltg->name_table.size, 0xff, 8);
     strcpy(sltg->name_table.data + sltg->name_table.size + 8, name);
     sltg->name_table.size = new_size;
-    sltg->name_table.data[sltg->name_table.size - 1] = 0; /* clear alignment */
+    sltg->name_table.data[sltg->name_table.size - 1] = 0;
 
     return name_offset;
 }

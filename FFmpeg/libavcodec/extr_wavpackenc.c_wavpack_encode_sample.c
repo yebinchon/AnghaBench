@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  WvChannel ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int int32_t ;
+typedef int WvChannel ;
 struct TYPE_7__ {int holding_zero; int zeros_acc; int holding_one; int pend_data; int pend_count; TYPE_1__* c; } ;
-typedef  TYPE_2__ WavPackWords ;
-struct TYPE_8__ {TYPE_2__ w; int /*<<< orphan*/  pb; } ;
-typedef  TYPE_3__ WavPackEncodeContext ;
+typedef TYPE_2__ WavPackWords ;
+struct TYPE_8__ {TYPE_2__ w; int pb; } ;
+typedef TYPE_3__ WavPackEncodeContext ;
 struct TYPE_6__ {int* median; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLEAR (int*) ; 
- int /*<<< orphan*/  DEC_MED (int) ; 
- int GET_MED (int) ; 
- int /*<<< orphan*/  INC_MED (int) ; 
- int count_bits (int) ; 
- int /*<<< orphan*/  encode_flush (TYPE_3__*) ; 
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+ int CLEAR (int*) ;
+ int DEC_MED (int) ;
+ int GET_MED (int) ;
+ int INC_MED (int) ;
+ int count_bits (int) ;
+ int encode_flush (TYPE_3__*) ;
+ int put_bits (int *,int,int ) ;
 
 __attribute__((used)) static void wavpack_encode_sample(WavPackEncodeContext *s, WvChannel *c, int32_t sample)
 {

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int fd; void* state; int /*<<< orphan*/  last_errno; } ;
-typedef  TYPE_1__ connection ;
 
-/* Variables and functions */
- int AE_WRITABLE ; 
- void* CONN_STATE_CONNECTED ; 
- void* CONN_STATE_ERROR ; 
- int C_ERR ; 
- int C_OK ; 
- int /*<<< orphan*/  ETIMEDOUT ; 
- int aeWait (int,int,long long) ; 
- int anetTcpNonBlockConnect (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  errno ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int fd; void* state; int last_errno; } ;
+typedef TYPE_1__ connection ;
+
+
+ int AE_WRITABLE ;
+ void* CONN_STATE_CONNECTED ;
+ void* CONN_STATE_ERROR ;
+ int C_ERR ;
+ int C_OK ;
+ int ETIMEDOUT ;
+ int aeWait (int,int,long long) ;
+ int anetTcpNonBlockConnect (int *,char const*,int) ;
+ int errno ;
 
 __attribute__((used)) static int connSocketBlockingConnect(connection *conn, const char *addr, int port, long long timeout) {
-    int fd = anetTcpNonBlockConnect(NULL,addr,port);
+    int fd = anetTcpNonBlockConnect(((void*)0),addr,port);
     if (fd == -1) {
         conn->state = CONN_STATE_ERROR;
         conn->last_errno = errno;

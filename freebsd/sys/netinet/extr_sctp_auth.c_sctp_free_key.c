@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sctp_key_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCTP_FREE (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SCTP_M_AUTH_KY ; 
+
+
+
+typedef int sctp_key_t ;
+
+
+ int SCTP_FREE (int *,int ) ;
+ int SCTP_M_AUTH_KY ;
 
 void
 sctp_free_key(sctp_key_t *key)
 {
-	if (key != NULL)
-		SCTP_FREE(key, SCTP_M_AUTH_KY);
+ if (key != ((void*)0))
+  SCTP_FREE(key, SCTP_M_AUTH_KY);
 }

@@ -1,81 +1,81 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {char const* p_sourcetext; int /*<<< orphan*/ * p_queryEnv; } ;
-typedef  int /*<<< orphan*/  RawStmt ;
-typedef  int /*<<< orphan*/  QueryEnvironment ;
-typedef  int /*<<< orphan*/  Query ;
-typedef  int /*<<< orphan*/  (* ParserSetupHook ) (TYPE_1__*,void*) ;
-typedef  TYPE_1__ ParseState ;
-typedef  int /*<<< orphan*/  List ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ResetUsage () ; 
- int /*<<< orphan*/  ShowUsage (char*) ; 
- int /*<<< orphan*/  TRACE_POSTGRESQL_QUERY_REWRITE_DONE (char const*) ; 
- int /*<<< orphan*/  TRACE_POSTGRESQL_QUERY_REWRITE_START (char const*) ; 
- int /*<<< orphan*/  free_parsestate (TYPE_1__*) ; 
- scalar_t__ log_parser_stats ; 
- TYPE_1__* make_parsestate (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * pg_rewrite_query (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  post_parse_analyze_hook (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,void*) ; 
- int /*<<< orphan*/  stub2 (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * transformTopLevelStmt (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {char const* p_sourcetext; int * p_queryEnv; } ;
+typedef int RawStmt ;
+typedef int QueryEnvironment ;
+typedef int Query ;
+typedef int (* ParserSetupHook ) (TYPE_1__*,void*) ;
+typedef TYPE_1__ ParseState ;
+typedef int List ;
+
+
+ int Assert (int ) ;
+ int ResetUsage () ;
+ int ShowUsage (char*) ;
+ int TRACE_POSTGRESQL_QUERY_REWRITE_DONE (char const*) ;
+ int TRACE_POSTGRESQL_QUERY_REWRITE_START (char const*) ;
+ int free_parsestate (TYPE_1__*) ;
+ scalar_t__ log_parser_stats ;
+ TYPE_1__* make_parsestate (int *) ;
+ int * pg_rewrite_query (int *) ;
+ int post_parse_analyze_hook (TYPE_1__*,int *) ;
+ int stub1 (TYPE_1__*,void*) ;
+ int stub2 (TYPE_1__*,int *) ;
+ int * transformTopLevelStmt (TYPE_1__*,int *) ;
 
 List *
 pg_analyze_and_rewrite_params(RawStmt *parsetree,
-							  const char *query_string,
-							  ParserSetupHook parserSetup,
-							  void *parserSetupArg,
-							  QueryEnvironment *queryEnv)
+         const char *query_string,
+         ParserSetupHook parserSetup,
+         void *parserSetupArg,
+         QueryEnvironment *queryEnv)
 {
-	ParseState *pstate;
-	Query	   *query;
-	List	   *querytree_list;
+ ParseState *pstate;
+ Query *query;
+ List *querytree_list;
 
-	Assert(query_string != NULL);	/* required as of 8.4 */
+ Assert(query_string != ((void*)0));
 
-	TRACE_POSTGRESQL_QUERY_REWRITE_START(query_string);
+ TRACE_POSTGRESQL_QUERY_REWRITE_START(query_string);
 
-	/*
-	 * (1) Perform parse analysis.
-	 */
-	if (log_parser_stats)
-		ResetUsage();
 
-	pstate = make_parsestate(NULL);
-	pstate->p_sourcetext = query_string;
-	pstate->p_queryEnv = queryEnv;
-	(*parserSetup) (pstate, parserSetupArg);
 
-	query = transformTopLevelStmt(pstate, parsetree);
 
-	if (post_parse_analyze_hook)
-		(*post_parse_analyze_hook) (pstate, query);
+ if (log_parser_stats)
+  ResetUsage();
 
-	free_parsestate(pstate);
+ pstate = make_parsestate(((void*)0));
+ pstate->p_sourcetext = query_string;
+ pstate->p_queryEnv = queryEnv;
+ (*parserSetup) (pstate, parserSetupArg);
 
-	if (log_parser_stats)
-		ShowUsage("PARSE ANALYSIS STATISTICS");
+ query = transformTopLevelStmt(pstate, parsetree);
 
-	/*
-	 * (2) Rewrite the queries, as necessary
-	 */
-	querytree_list = pg_rewrite_query(query);
+ if (post_parse_analyze_hook)
+  (*post_parse_analyze_hook) (pstate, query);
 
-	TRACE_POSTGRESQL_QUERY_REWRITE_DONE(query_string);
+ free_parsestate(pstate);
 
-	return querytree_list;
+ if (log_parser_stats)
+  ShowUsage("PARSE ANALYSIS STATISTICS");
+
+
+
+
+ querytree_list = pg_rewrite_query(query);
+
+ TRACE_POSTGRESQL_QUERY_REWRITE_DONE(query_string);
+
+ return querytree_list;
 }

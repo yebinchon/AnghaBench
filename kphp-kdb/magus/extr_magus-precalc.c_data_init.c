@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  fid_id ; 
- int /*<<< orphan*/  fid_name_id ; 
- int /*<<< orphan*/  fids ; 
- int /*<<< orphan*/  map_int_int_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  map_string_int_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scores ; 
- int /*<<< orphan*/  users ; 
- int /*<<< orphan*/  vector_init (int /*<<< orphan*/ ) ; 
+ int fid_id ;
+ int fid_name_id ;
+ int fids ;
+ int map_int_int_init (int *) ;
+ int map_string_int_init (int *) ;
+ int scores ;
+ int users ;
+ int vector_init (int ) ;
 
 void data_init (void) {
   map_string_int_init (&fid_name_id);

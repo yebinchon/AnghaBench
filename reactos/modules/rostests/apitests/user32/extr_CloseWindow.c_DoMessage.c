@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ WPARAM ;
-typedef  scalar_t__ UINT ;
-typedef  scalar_t__ LPARAM ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- scalar_t__ WM_ACTIVATE ; 
- scalar_t__ WM_NCACTIVATE ; 
- scalar_t__ WM_SYSCOMMAND ; 
- scalar_t__ WM_TIMER ; 
- scalar_t__ WM_WINDOWPOSCHANGING ; 
- int /*<<< orphan*/  s_bTracing ; 
- int /*<<< orphan*/  s_nWM_ACTIVATE ; 
- int /*<<< orphan*/  s_nWM_NCACTIVATE ; 
- int /*<<< orphan*/  s_nWM_SYSCOMMAND ; 
- int /*<<< orphan*/  s_nWM_WINDOWPOSCHANGING ; 
- int /*<<< orphan*/  trace (char*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ WPARAM ;
+typedef scalar_t__ UINT ;
+typedef scalar_t__ LPARAM ;
+typedef int LONG ;
+typedef int HWND ;
+
+
+ scalar_t__ WM_ACTIVATE ;
+ scalar_t__ WM_NCACTIVATE ;
+ scalar_t__ WM_SYSCOMMAND ;
+ scalar_t__ WM_TIMER ;
+ scalar_t__ WM_WINDOWPOSCHANGING ;
+ int s_bTracing ;
+ int s_nWM_ACTIVATE ;
+ int s_nWM_NCACTIVATE ;
+ int s_nWM_SYSCOMMAND ;
+ int s_nWM_WINDOWPOSCHANGING ;
+ int trace (char*,scalar_t__,int ,int ) ;
 
 __attribute__((used)) static void
 DoMessage(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)

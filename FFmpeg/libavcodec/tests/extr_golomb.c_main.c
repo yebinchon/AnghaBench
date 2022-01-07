@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  PutBitContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
- int COUNT ; 
- int EXTEND (int) ; 
- int EXTEND_L (int) ; 
- int SIZE ; 
- int /*<<< orphan*/  av_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * av_malloc (int) ; 
- int /*<<< orphan*/  flush_put_bits (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,int) ; 
- int get_se_golomb (int /*<<< orphan*/ *) ; 
- int get_ue_golomb (int /*<<< orphan*/ *) ; 
- int get_ue_golomb_long (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_get_bits (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  init_put_bits (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  set_se_golomb (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  set_ue_golomb (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  set_ue_golomb_long (int /*<<< orphan*/ *,int) ; 
- int show_bits (int /*<<< orphan*/ *,int) ; 
- int show_bits_long (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int uint8_t ;
+typedef int PutBitContext ;
+typedef int GetBitContext ;
+
+
+ int COUNT ;
+ int EXTEND (int) ;
+ int EXTEND_L (int) ;
+ int SIZE ;
+ int av_free (int *) ;
+ int * av_malloc (int) ;
+ int flush_put_bits (int *) ;
+ int fprintf (int ,char*,int,int,int) ;
+ int get_se_golomb (int *) ;
+ int get_ue_golomb (int *) ;
+ int get_ue_golomb_long (int *) ;
+ int init_get_bits (int *,int *,int) ;
+ int init_put_bits (int *,int *,int) ;
+ int set_se_golomb (int *,int) ;
+ int set_ue_golomb (int *,int) ;
+ int set_ue_golomb_long (int *,int) ;
+ int show_bits (int *,int) ;
+ int show_bits_long (int *,int) ;
+ int stderr ;
 
 int main(void)
 {
@@ -63,10 +63,10 @@ int main(void)
         }
     }
 
-#define EXTEND(i) ((i) << 3 | (i) & 7)
+
     init_put_bits(&pb, temp, SIZE);
     for (i = 0; i < COUNT; i++)
-        set_ue_golomb(&pb, EXTEND(i));
+        set_ue_golomb(&pb, ((i) << 3 | (i) & 7));
     flush_put_bits(&pb);
 
     init_get_bits(&gb, temp, 8 * SIZE);
@@ -74,17 +74,17 @@ int main(void)
         int j, s = show_bits_long(&gb, 32);
 
         j = get_ue_golomb_long(&gb);
-        if (j != EXTEND(i)) {
+        if (j != ((i) << 3 | (i) & 7)) {
             fprintf(stderr, "get_ue_golomb_long: expected %d, got %d. "
-                    "bits: %8x\n", EXTEND(i), j, s);
+                    "bits: %8x\n", ((i) << 3 | (i) & 7), j, s);
             ret = 1;
         }
     }
 
-#define EXTEND_L(i) ((i) << 4 | (i) & 15)
+
     init_put_bits(&pb, temp, SIZE);
     for (i = 0; i < COUNT; i++)
-        set_ue_golomb_long(&pb, EXTEND_L(i));
+        set_ue_golomb_long(&pb, ((i) << 4 | (i) & 15));
     flush_put_bits(&pb);
 
     init_get_bits(&gb, temp, 8 * SIZE);
@@ -92,9 +92,9 @@ int main(void)
         int j, s = show_bits_long(&gb, 32);
 
         j = get_ue_golomb_long(&gb);
-        if (j != EXTEND_L(i)) {
+        if (j != ((i) << 4 | (i) & 15)) {
             fprintf(stderr, "get_ue_golomb_long: expected %d, got %d. "
-                    "bits: %8x\n", EXTEND_L(i), j, s);
+                    "bits: %8x\n", ((i) << 4 | (i) & 15), j, s);
             ret = 1;
         }
     }

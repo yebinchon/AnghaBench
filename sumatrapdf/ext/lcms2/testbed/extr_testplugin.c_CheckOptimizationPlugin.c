@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int cmsUInt8Number ;
-typedef  int /*<<< orphan*/  cmsToneCurve ;
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/  cmsHTRANSFORM ;
-typedef  int /*<<< orphan*/  cmsHPROFILE ;
-typedef  int /*<<< orphan*/  cmsContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DupContext (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INTENT_PERCEPTUAL ; 
- int /*<<< orphan*/  OptimizationPluginSample ; 
- int /*<<< orphan*/  TYPE_GRAY_8 ; 
- int /*<<< orphan*/  WatchDogContext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cmsBuildGamma (int /*<<< orphan*/ ,double) ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsCreateLinearizationDeviceLink (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  cmsCreateTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDeleteContext (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDeleteTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDoTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int*,int) ; 
- int /*<<< orphan*/  cmsFreeToneCurve (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsPlugin (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsSigGrayData ; 
+
+
+
+typedef int cmsUInt8Number ;
+typedef int cmsToneCurve ;
+typedef int cmsInt32Number ;
+typedef int cmsHTRANSFORM ;
+typedef int cmsHPROFILE ;
+typedef int cmsContext ;
+
+
+ int DupContext (int ,int *) ;
+ int INTENT_PERCEPTUAL ;
+ int OptimizationPluginSample ;
+ int TYPE_GRAY_8 ;
+ int WatchDogContext (int *) ;
+ int * cmsBuildGamma (int ,double) ;
+ int cmsCloseProfile (int ,int ) ;
+ int cmsCreateLinearizationDeviceLink (int ,int ,int **) ;
+ int cmsCreateTransform (int ,int ,int ,int ,int ,int ,int ) ;
+ int cmsDeleteContext (int ) ;
+ int cmsDeleteTransform (int ,int ) ;
+ int cmsDoTransform (int ,int ,int*,int*,int) ;
+ int cmsFreeToneCurve (int ,int *) ;
+ int cmsPlugin (int ,int *) ;
+ int cmsSigGrayData ;
 
 cmsInt32Number CheckOptimizationPlugin(void)
 {
-    cmsContext ctx = WatchDogContext(NULL);
+    cmsContext ctx = WatchDogContext(((void*)0));
     cmsContext cpy;
     cmsHTRANSFORM xform;
     cmsUInt8Number In[]= { 10, 20, 30, 40 };
@@ -47,7 +47,7 @@ cmsInt32Number CheckOptimizationPlugin(void)
 
     cmsPlugin(ctx, &OptimizationPluginSample);
 
-    cpy = DupContext(ctx, NULL);
+    cpy = DupContext(ctx, ((void*)0));
 
     Linear[0] = cmsBuildGamma(cpy, 1.0);
     h = cmsCreateLinearizationDeviceLink(cpy, cmsSigGrayData, Linear);

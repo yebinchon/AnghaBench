@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG ;
 struct TYPE_5__ {scalar_t__ QuadPart; } ;
-typedef  TYPE_1__ ULARGE_INTEGER ;
-typedef  scalar_t__ UINT ;
+typedef TYPE_1__ ULARGE_INTEGER ;
+typedef scalar_t__ UINT ;
 struct TYPE_6__ {scalar_t__ QuadPart; } ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  LPCVOID ;
-typedef  TYPE_2__ LARGE_INTEGER ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  IStorage ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int LPWSTR ;
+typedef int LPCWSTR ;
+typedef int LPCVOID ;
+typedef TYPE_2__ LARGE_INTEGER ;
+typedef int IStream ;
+typedef int IStorage ;
+typedef int HRESULT ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_FUNCTION_FAILED ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IStorage_CreateStream (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IStorage_OpenStream (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStream_Seek (int /*<<< orphan*/ *,TYPE_2__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStream_SetSize (int /*<<< orphan*/ *,TYPE_1__) ; 
- int /*<<< orphan*/  IStream_Write (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,scalar_t__*) ; 
- int STGM_SHARE_EXCLUSIVE ; 
- int STGM_WRITE ; 
- int /*<<< orphan*/  STREAM_SEEK_SET ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
- int /*<<< orphan*/  encode_streamname (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ERROR_FUNCTION_FAILED ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ FAILED (int ) ;
+ int IStorage_CreateStream (int *,int ,int,int ,int ,int **) ;
+ int IStorage_OpenStream (int *,int ,int *,int,int ,int **) ;
+ int IStream_Release (int *) ;
+ int IStream_Seek (int *,TYPE_2__,int ,int *) ;
+ int IStream_SetSize (int *,TYPE_1__) ;
+ int IStream_Write (int *,int ,scalar_t__,scalar_t__*) ;
+ int STGM_SHARE_EXCLUSIVE ;
+ int STGM_WRITE ;
+ int STREAM_SEEK_SET ;
+ int WARN (char*,...) ;
+ int encode_streamname (int ,int ) ;
+ int msi_free (int ) ;
 
 UINT write_stream_data( IStorage *stg, LPCWSTR stname,
                         LPCVOID data, UINT sz, BOOL bTable )
@@ -49,13 +49,13 @@ UINT write_stream_data( IStorage *stg, LPCWSTR stname,
     HRESULT r;
     UINT ret = ERROR_FUNCTION_FAILED;
     ULONG count;
-    IStream *stm = NULL;
+    IStream *stm = ((void*)0);
     ULARGE_INTEGER size;
     LARGE_INTEGER pos;
     LPWSTR encname;
 
     encname = encode_streamname(bTable, stname );
-    r = IStorage_OpenStream( stg, encname, NULL, 
+    r = IStorage_OpenStream( stg, encname, ((void*)0),
             STGM_WRITE | STGM_SHARE_EXCLUSIVE, 0, &stm);
     if( FAILED(r) )
     {
@@ -78,7 +78,7 @@ UINT write_stream_data( IStorage *stg, LPCWSTR stname,
     }
 
     pos.QuadPart = 0;
-    r = IStream_Seek( stm, pos, STREAM_SEEK_SET, NULL );
+    r = IStream_Seek( stm, pos, STREAM_SEEK_SET, ((void*)0) );
     if( FAILED( r ) )
     {
         WARN("Failed to Seek\n");

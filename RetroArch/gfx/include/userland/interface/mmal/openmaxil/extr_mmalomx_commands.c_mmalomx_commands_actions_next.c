@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {unsigned int ports_num; int /*<<< orphan*/  omx; } ;
-typedef  unsigned int OMX_U32 ;
-typedef  int /*<<< orphan*/  OMX_HANDLETYPE ;
-typedef  scalar_t__ OMX_ERRORTYPE ;
-typedef  scalar_t__ OMX_COMMANDTYPE ;
-typedef  TYPE_1__ MMALOMX_COMPONENT_T ;
 
-/* Variables and functions */
- unsigned int OMX_ALL ; 
- scalar_t__ OMX_CommandFlush ; 
- scalar_t__ OMX_CommandPortDisable ; 
- scalar_t__ OMX_CommandPortEnable ; 
- scalar_t__ OMX_CommandStateSet ; 
- scalar_t__ OMX_ErrorNone ; 
- scalar_t__ mmalomx_command_dequeue (TYPE_1__*,unsigned int*,unsigned int*) ; 
- int /*<<< orphan*/  mmalomx_command_port_disable (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  mmalomx_command_port_enable (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  mmalomx_command_port_flush (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  mmalomx_command_state_set (int /*<<< orphan*/ ,unsigned int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {unsigned int ports_num; int omx; } ;
+typedef unsigned int OMX_U32 ;
+typedef int OMX_HANDLETYPE ;
+typedef scalar_t__ OMX_ERRORTYPE ;
+typedef scalar_t__ OMX_COMMANDTYPE ;
+typedef TYPE_1__ MMALOMX_COMPONENT_T ;
+
+
+ unsigned int OMX_ALL ;
+ scalar_t__ OMX_CommandFlush ;
+ scalar_t__ OMX_CommandPortDisable ;
+ scalar_t__ OMX_CommandPortEnable ;
+ scalar_t__ OMX_CommandStateSet ;
+ scalar_t__ OMX_ErrorNone ;
+ scalar_t__ mmalomx_command_dequeue (TYPE_1__*,unsigned int*,unsigned int*) ;
+ int mmalomx_command_port_disable (int ,unsigned int) ;
+ int mmalomx_command_port_enable (int ,unsigned int) ;
+ int mmalomx_command_port_flush (int ,unsigned int) ;
+ int mmalomx_command_state_set (int ,unsigned int) ;
 
 void mmalomx_commands_actions_next(MMALOMX_COMPONENT_T *component)
 {

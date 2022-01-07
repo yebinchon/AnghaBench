@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  alloc_text (int,char*,char*) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
+ int alloc_text (int,char*,char*) ;
+ int strcat (char*,char*) ;
 
 __attribute__((used)) static void
 set_bat_text(int idx, char *batpath, char *name)

@@ -1,39 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int COST_TYPE ;
 
-/* Variables and functions */
-#define  L1 133 
-#define  MASKED 132 
-#define  SEG 131 
-#define  SMOOTH 130 
-#define  SSE 129 
-#define  WGAN 128 
 
+
+
+typedef int COST_TYPE ;
 char *get_cost_string(COST_TYPE a)
 {
     switch(a){
-        case SEG:
+        case 131:
             return "seg";
-        case SSE:
+        case 129:
             return "sse";
-        case MASKED:
+        case 132:
             return "masked";
-        case SMOOTH:
+        case 130:
             return "smooth";
-        case L1:
+        case 133:
             return "L1";
-        case WGAN:
+        case 128:
             return "wgan";
     }
     return "sse";

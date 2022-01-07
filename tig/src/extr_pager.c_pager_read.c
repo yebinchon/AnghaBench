@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct view {int /*<<< orphan*/  private; } ;
-struct buffer {int /*<<< orphan*/  data; } ;
 
-/* Variables and functions */
- int diff_common_read (struct view*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  diff_done_highlight (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  opt_diff_highlight ; 
- int /*<<< orphan*/  report (char*,int /*<<< orphan*/ ) ; 
+
+
+
+struct view {int private; } ;
+struct buffer {int data; } ;
+
+
+ int diff_common_read (struct view*,int ,int ) ;
+ int diff_done_highlight (int ) ;
+ int opt_diff_highlight ;
+ int report (char*,int ) ;
 
 bool
 pager_read(struct view *view, struct buffer *buf, bool force_stop)
 {
-	if (!buf) {
-		if (!diff_done_highlight(view->private)) {
-			report("Failed run the diff-highlight program: %s", opt_diff_highlight);
-			return false;
-		}
+ if (!buf) {
+  if (!diff_done_highlight(view->private)) {
+   report("Failed run the diff-highlight program: %s", opt_diff_highlight);
+   return 0;
+  }
 
-		return true;
-	}
+  return 1;
+ }
 
-	return diff_common_read(view, buf->data, view->private);
+ return diff_common_read(view, buf->data, view->private);
 }

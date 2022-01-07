@@ -1,63 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct dasd_oos_message {int code; } ;
 struct dasd_device {TYPE_1__* discipline; TYPE_2__* cdev; } ;
-typedef  int /*<<< orphan*/  __u8 ;
-struct TYPE_4__ {int /*<<< orphan*/  dev; } ;
-struct TYPE_3__ {int /*<<< orphan*/  (* check_attention ) (struct dasd_device*,int /*<<< orphan*/ ) ;} ;
-
-/* Variables and functions */
-#define  POOL_EXHAUST 133 
-#define  POOL_RELIEVE 132 
-#define  POOL_WARN 131 
-#define  REPO_EXHAUST 130 
-#define  REPO_RELIEVE 129 
-#define  REPO_WARN 128 
- int /*<<< orphan*/  dasd_eckd_oos_resume (struct dasd_device*) ; 
- int /*<<< orphan*/  dasd_eckd_read_ext_pool_info (struct dasd_device*) ; 
- int /*<<< orphan*/  dev_info (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  dev_warn (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  stub1 (struct dasd_device*,int /*<<< orphan*/ ) ; 
+typedef int __u8 ;
+struct TYPE_4__ {int dev; } ;
+struct TYPE_3__ {int (* check_attention ) (struct dasd_device*,int ) ;} ;
+ int dasd_eckd_oos_resume (struct dasd_device*) ;
+ int dasd_eckd_read_ext_pool_info (struct dasd_device*) ;
+ int dev_info (int *,char*) ;
+ int dev_warn (int *,char*) ;
+ int stub1 (struct dasd_device*,int ) ;
 
 __attribute__((used)) static void dasd_eckd_handle_oos(struct dasd_device *device, void *messages,
-				 __u8 lpum)
+     __u8 lpum)
 {
-	struct dasd_oos_message *oos = messages;
+ struct dasd_oos_message *oos = messages;
 
-	switch (oos->code) {
-	case REPO_WARN:
-	case POOL_WARN:
-		dev_warn(&device->cdev->dev,
-			 "Extent pool usage has reached a critical value\n");
-		dasd_eckd_oos_resume(device);
-		break;
-	case REPO_EXHAUST:
-	case POOL_EXHAUST:
-		dev_warn(&device->cdev->dev,
-			 "Extent pool is exhausted\n");
-		break;
-	case REPO_RELIEVE:
-	case POOL_RELIEVE:
-		dev_info(&device->cdev->dev,
-			 "Extent pool physical space constraint has been relieved\n");
-		break;
-	}
+ switch (oos->code) {
+ case 128:
+ case 131:
+  dev_warn(&device->cdev->dev,
+    "Extent pool usage has reached a critical value\n");
+  dasd_eckd_oos_resume(device);
+  break;
+ case 130:
+ case 133:
+  dev_warn(&device->cdev->dev,
+    "Extent pool is exhausted\n");
+  break;
+ case 129:
+ case 132:
+  dev_info(&device->cdev->dev,
+    "Extent pool physical space constraint has been relieved\n");
+  break;
+ }
 
-	/* In any case, update related data */
-	dasd_eckd_read_ext_pool_info(device);
 
-	/* to make sure there is no attention left schedule work again */
-	device->discipline->check_attention(device, lpum);
+ dasd_eckd_read_ext_pool_info(device);
+
+
+ device->discipline->check_attention(device, lpum);
 }

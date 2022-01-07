@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
+
+
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
 struct TYPE_16__ {TYPE_3__* sys; } ;
-typedef  TYPE_2__ audio_output_t ;
+typedef TYPE_2__ audio_output_t ;
 struct TYPE_17__ {size_t i_stream_index; } ;
-typedef  TYPE_3__ aout_sys_t ;
-struct TYPE_18__ {int mFlags; int /*<<< orphan*/  mHostTime; TYPE_1__* mBuffers; } ;
-struct TYPE_15__ {size_t mDataByteSize; int /*<<< orphan*/ * mData; } ;
-typedef  int /*<<< orphan*/  OSStatus ;
-typedef  TYPE_4__ AudioTimeStamp ;
-typedef  TYPE_4__ const* AudioDeviceID ;
-typedef  TYPE_4__ AudioBufferList ;
+typedef TYPE_3__ aout_sys_t ;
+struct TYPE_18__ {int mFlags; int mHostTime; TYPE_1__* mBuffers; } ;
+struct TYPE_15__ {size_t mDataByteSize; int * mData; } ;
+typedef int OSStatus ;
+typedef TYPE_4__ AudioTimeStamp ;
+typedef TYPE_4__ const* AudioDeviceID ;
+typedef TYPE_4__ AudioBufferList ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLC_UNUSED (TYPE_4__ const*) ; 
- int /*<<< orphan*/  ca_Render (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t) ; 
- int kAudioTimeStampHostTimeValid ; 
- int /*<<< orphan*/  noErr ; 
+
+ int VLC_UNUSED (TYPE_4__ const*) ;
+ int ca_Render (TYPE_2__*,int ,int ,int *,size_t) ;
+ int kAudioTimeStampHostTimeValid ;
+ int noErr ;
 
 __attribute__((used)) static OSStatus
 RenderCallbackSPDIF(AudioDeviceID inDevice, const AudioTimeStamp * inNow,

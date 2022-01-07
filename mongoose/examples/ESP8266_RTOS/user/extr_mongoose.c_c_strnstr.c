@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- size_t strlen (char const*) ; 
- scalar_t__ strncmp (char const*,char const*,size_t) ; 
+ size_t strlen (char const*) ;
+ scalar_t__ strncmp (char const*,char const*,size_t) ;
 
 const char *c_strnstr(const char *s, const char *find, size_t slen) {
   size_t find_length = strlen(find);
@@ -21,7 +13,7 @@ const char *c_strnstr(const char *s, const char *find, size_t slen) {
 
   for (i = 0; i < slen; i++) {
     if (i + find_length > slen) {
-      return NULL;
+      return ((void*)0);
     }
 
     if (strncmp(&s[i], find, find_length) == 0) {
@@ -29,5 +21,5 @@ const char *c_strnstr(const char *s, const char *find, size_t slen) {
     }
   }
 
-  return NULL;
+  return ((void*)0);
 }

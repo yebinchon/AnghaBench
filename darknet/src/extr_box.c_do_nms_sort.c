@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ objectness; int sort_class; scalar_t__* prob; int /*<<< orphan*/  bbox; } ;
-typedef  TYPE_1__ detection ;
-typedef  int /*<<< orphan*/  box ;
 
-/* Variables and functions */
- float box_iou (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nms_comparator ; 
- int /*<<< orphan*/  qsort (TYPE_1__*,int,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ objectness; int sort_class; scalar_t__* prob; int bbox; } ;
+typedef TYPE_1__ detection ;
+typedef int box ;
+
+
+ float box_iou (int ,int ) ;
+ int nms_comparator ;
+ int qsort (TYPE_1__*,int,int,int ) ;
 
 void do_nms_sort(detection *dets, int total, int classes, float thresh)
 {

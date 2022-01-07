@@ -1,157 +1,142 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_32__   TYPE_9__ ;
-typedef  struct TYPE_31__   TYPE_8__ ;
-typedef  struct TYPE_30__   TYPE_7__ ;
-typedef  struct TYPE_29__   TYPE_6__ ;
-typedef  struct TYPE_28__   TYPE_5__ ;
-typedef  struct TYPE_27__   TYPE_4__ ;
-typedef  struct TYPE_26__   TYPE_3__ ;
-typedef  struct TYPE_25__   TYPE_2__ ;
-typedef  struct TYPE_24__   TYPE_1__ ;
-typedef  struct TYPE_23__   TYPE_16__ ;
-typedef  struct TYPE_22__   TYPE_15__ ;
-typedef  struct TYPE_21__   TYPE_14__ ;
-typedef  struct TYPE_20__   TYPE_13__ ;
-typedef  struct TYPE_19__   TYPE_12__ ;
-typedef  struct TYPE_18__   TYPE_11__ ;
-typedef  struct TYPE_17__   TYPE_10__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_32__ TYPE_9__ ;
+typedef struct TYPE_31__ TYPE_8__ ;
+typedef struct TYPE_30__ TYPE_7__ ;
+typedef struct TYPE_29__ TYPE_6__ ;
+typedef struct TYPE_28__ TYPE_5__ ;
+typedef struct TYPE_27__ TYPE_4__ ;
+typedef struct TYPE_26__ TYPE_3__ ;
+typedef struct TYPE_25__ TYPE_2__ ;
+typedef struct TYPE_24__ TYPE_1__ ;
+typedef struct TYPE_23__ TYPE_16__ ;
+typedef struct TYPE_22__ TYPE_15__ ;
+typedef struct TYPE_21__ TYPE_14__ ;
+typedef struct TYPE_20__ TYPE_13__ ;
+typedef struct TYPE_19__ TYPE_12__ ;
+typedef struct TYPE_18__ TYPE_11__ ;
+typedef struct TYPE_17__ TYPE_10__ ;
+
+
 struct wined3d_map_desc {unsigned int* data; } ;
-struct wined3d_buffer_desc {unsigned int byte_width; int usage; int access; int /*<<< orphan*/  structure_byte_stride; int /*<<< orphan*/  misc_flags; int /*<<< orphan*/  bind_flags; } ;
+struct wined3d_buffer_desc {unsigned int byte_width; int usage; int access; int structure_byte_stride; int misc_flags; int bind_flags; } ;
 struct wined3d_buffer {int dummy; } ;
-struct wined3d_box {unsigned int left; unsigned int right; int bottom; int back; int /*<<< orphan*/  front; int /*<<< orphan*/  top; int /*<<< orphan*/  member_0; } ;
-struct ddraw_surface {int /*<<< orphan*/  IDirect3DTexture2_iface; } ;
+struct wined3d_box {unsigned int left; unsigned int right; int bottom; int back; int front; int top; int member_0; } ;
+struct ddraw_surface {int IDirect3DTexture2_iface; } ;
 struct d3d_viewport {struct d3d_device* active_device; } ;
 struct TYPE_32__ {int dwStatus; } ;
 struct TYPE_23__ {int dwInstructionOffset; TYPE_9__ dsStatus; } ;
 struct TYPE_24__ {scalar_t__ lpData; } ;
 struct d3d_execute_buffer {unsigned int index_pos; unsigned int index_size; int src_vertex_pos; TYPE_16__ data; struct wined3d_buffer* src_vertex_buffer; struct wined3d_buffer* dst_vertex_buffer; struct wined3d_buffer* index_buffer; TYPE_1__ desc; } ;
-struct d3d_device {int world; int view; int proj; int /*<<< orphan*/  handle_table; int /*<<< orphan*/  wined3d_device; int /*<<< orphan*/  ddraw; int /*<<< orphan*/  IDirect3DDevice3_iface; } ;
-typedef  unsigned int WORD ;
+struct d3d_device {int world; int view; int proj; int handle_table; int wined3d_device; int ddraw; int IDirect3DDevice3_iface; } ;
+typedef unsigned int WORD ;
 struct TYPE_31__ {unsigned int hDestTexture; unsigned int hSrcTexture; } ;
 struct TYPE_27__ {unsigned int v1; } ;
 struct TYPE_26__ {unsigned int v2; } ;
 struct TYPE_25__ {unsigned int v3; } ;
 struct TYPE_30__ {int wFlags; TYPE_4__ u1; TYPE_3__ u2; TYPE_2__ u3; } ;
 struct TYPE_29__ {int* dwArg; } ;
-struct TYPE_28__ {int /*<<< orphan*/  drstRenderStateType; int /*<<< orphan*/  dlstLightStateType; int /*<<< orphan*/  dtstTransformStateType; } ;
-struct TYPE_22__ {int dwMask; int dwValue; unsigned int dwOffset; int /*<<< orphan*/  bNegate; } ;
+struct TYPE_28__ {int drstRenderStateType; int dlstLightStateType; int dtstTransformStateType; } ;
+struct TYPE_22__ {int dwMask; int dwValue; unsigned int dwOffset; int bNegate; } ;
 struct TYPE_21__ {unsigned int wCount; unsigned int bSize; int bOpcode; } ;
-struct TYPE_20__ {int /*<<< orphan*/  hSrcMatrix2; int /*<<< orphan*/  hSrcMatrix1; int /*<<< orphan*/  hDestMatrix; } ;
-struct TYPE_19__ {int /*<<< orphan*/  wCount; int /*<<< orphan*/  wFirst; } ;
+struct TYPE_20__ {int hSrcMatrix2; int hSrcMatrix1; int hDestMatrix; } ;
+struct TYPE_19__ {int wCount; int wFirst; } ;
 struct TYPE_18__ {int dwFlags; int wStart; int wDest; int dwCount; } ;
 struct TYPE_17__ {TYPE_6__ u2; TYPE_5__ u1; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  D3DVERTEX ;
-typedef  TYPE_7__ D3DTRIANGLE ;
-typedef  int /*<<< orphan*/  D3DTLVERTEX ;
-typedef  TYPE_8__ D3DTEXTURELOAD ;
-typedef  TYPE_9__ D3DSTATUS ;
-typedef  TYPE_10__ D3DSTATE ;
-typedef  TYPE_11__ D3DPROCESSVERTICES ;
-typedef  TYPE_12__ D3DPOINT ;
-typedef  TYPE_13__ D3DMATRIXMULTIPLY ;
-typedef  int /*<<< orphan*/  D3DMATRIX ;
-typedef  TYPE_14__ D3DINSTRUCTION ;
-typedef  TYPE_15__ D3DBRANCH ;
-typedef  unsigned int BYTE ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef int D3DVERTEX ;
+typedef TYPE_7__ D3DTRIANGLE ;
+typedef int D3DTLVERTEX ;
+typedef TYPE_8__ D3DTEXTURELOAD ;
+typedef TYPE_9__ D3DSTATUS ;
+typedef TYPE_10__ D3DSTATE ;
+typedef TYPE_11__ D3DPROCESSVERTICES ;
+typedef TYPE_12__ D3DPOINT ;
+typedef TYPE_13__ D3DMATRIXMULTIPLY ;
+typedef int D3DMATRIX ;
+typedef TYPE_14__ D3DINSTRUCTION ;
+typedef TYPE_15__ D3DBRANCH ;
+typedef unsigned int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DFVF_LVERTEX ; 
- int /*<<< orphan*/  D3DFVF_TLVERTEX ; 
- int /*<<< orphan*/  D3DFVF_VERTEX ; 
-#define  D3DOP_BRANCHFORWARD 144 
-#define  D3DOP_EXIT 143 
-#define  D3DOP_LINE 142 
-#define  D3DOP_MATRIXLOAD 141 
-#define  D3DOP_MATRIXMULTIPLY 140 
-#define  D3DOP_POINT 139 
-#define  D3DOP_PROCESSVERTICES 138 
-#define  D3DOP_SETSTATUS 137 
-#define  D3DOP_SPAN 136 
-#define  D3DOP_STATELIGHT 135 
-#define  D3DOP_STATERENDER 134 
-#define  D3DOP_STATETRANSFORM 133 
-#define  D3DOP_TEXTURELOAD 132 
-#define  D3DOP_TRIANGLE 131 
-#define  D3DPROCESSVERTICES_COPY 130 
- int D3DPROCESSVERTICES_NOCOLOR ; 
- int D3DPROCESSVERTICES_OPMASK ; 
-#define  D3DPROCESSVERTICES_TRANSFORM 129 
-#define  D3DPROCESSVERTICES_TRANSFORMLIGHT 128 
- int D3DPROCESSVERTICES_UPDATEEXTENTS ; 
- int /*<<< orphan*/  D3DTRANSFORMSTATE_PROJECTION ; 
- int /*<<< orphan*/  D3DTRANSFORMSTATE_VIEW ; 
- int /*<<< orphan*/  D3DTRANSFORMSTATE_WORLD ; 
- int D3DTRIFLAG_EDGEENABLE1 ; 
- int D3DTRIFLAG_EDGEENABLE2 ; 
- int D3DTRIFLAG_EVEN ; 
- int D3DTRIFLAG_ODD ; 
- int D3DTRIFLAG_START ; 
- int /*<<< orphan*/  D3D_OK ; 
- int /*<<< orphan*/  DDERR_INVALIDPARAMS ; 
- int /*<<< orphan*/  DDRAW_HANDLE_MATRIX ; 
- int /*<<< orphan*/  DDRAW_HANDLE_SURFACE ; 
- int /*<<< orphan*/  ERR (char*,int,...) ; 
- int /*<<< orphan*/  FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  IDirect3DDevice3_SetLightState (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IDirect3DDevice3_SetRenderState (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IDirect3DDevice3_SetTransform (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirect3DTexture2_Load (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- scalar_t__ TRACE_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
- int /*<<< orphan*/  WINED3DFMT_R16_UINT ; 
- int WINED3DUSAGE_DYNAMIC ; 
- int WINED3DUSAGE_STATICDECL ; 
- int WINED3DUSAGE_WRITEONLY ; 
- int /*<<< orphan*/  WINED3D_BIND_INDEX_BUFFER ; 
- int WINED3D_MAP_DISCARD ; 
- int WINED3D_MAP_NOOVERWRITE ; 
- int WINED3D_MAP_WRITE ; 
- int /*<<< orphan*/  WINED3D_PT_LINELIST ; 
- int /*<<< orphan*/  WINED3D_PT_POINTLIST ; 
- int /*<<< orphan*/  WINED3D_PT_TRIANGLELIST ; 
- int WINED3D_RESOURCE_ACCESS_GPU ; 
- int WINED3D_RESOURCE_ACCESS_MAP_R ; 
- int WINED3D_RESOURCE_ACCESS_MAP_W ; 
- int /*<<< orphan*/  WINED3D_RS_LIGHTING ; 
- int /*<<< orphan*/  _dump_executedata (TYPE_16__*) ; 
- int /*<<< orphan*/  ddraw ; 
- int /*<<< orphan*/  ddraw_find_decl (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* ddraw_get_object (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ddraw_null_wined3d_parent_ops ; 
- unsigned int max (int,unsigned int) ; 
- int /*<<< orphan*/  multiply_matrix (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  viewport_activate (struct d3d_viewport*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wined3d_buffer_create (int /*<<< orphan*/ ,struct wined3d_buffer_desc*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct wined3d_buffer**) ; 
- int /*<<< orphan*/  wined3d_buffer_decref (struct wined3d_buffer*) ; 
- int /*<<< orphan*/  wined3d_buffer_get_resource (struct wined3d_buffer*) ; 
- int /*<<< orphan*/  wined3d_device_copy_sub_resource_region (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct wined3d_box*) ; 
- int /*<<< orphan*/  wined3d_device_draw_indexed_primitive (int /*<<< orphan*/ ,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  wined3d_device_draw_primitive (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wined3d_device_process_vertices (int /*<<< orphan*/ ,int,int,int,struct wined3d_buffer*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wined3d_device_set_index_buffer (int /*<<< orphan*/ ,struct wined3d_buffer*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wined3d_device_set_primitive_type (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wined3d_device_set_render_state (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wined3d_device_set_stream_source (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct wined3d_buffer*,int,int) ; 
- int /*<<< orphan*/  wined3d_device_set_vertex_declaration (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wined3d_resource_map (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct wined3d_map_desc*,struct wined3d_box*,int) ; 
- int /*<<< orphan*/  wined3d_resource_unmap (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int D3DFVF_LVERTEX ;
+ int D3DFVF_TLVERTEX ;
+ int D3DFVF_VERTEX ;
+ int D3DPROCESSVERTICES_NOCOLOR ;
+ int D3DPROCESSVERTICES_OPMASK ;
+
+
+ int D3DPROCESSVERTICES_UPDATEEXTENTS ;
+ int D3DTRANSFORMSTATE_PROJECTION ;
+ int D3DTRANSFORMSTATE_VIEW ;
+ int D3DTRANSFORMSTATE_WORLD ;
+ int D3DTRIFLAG_EDGEENABLE1 ;
+ int D3DTRIFLAG_EDGEENABLE2 ;
+ int D3DTRIFLAG_EVEN ;
+ int D3DTRIFLAG_ODD ;
+ int D3DTRIFLAG_START ;
+ int D3D_OK ;
+ int DDERR_INVALIDPARAMS ;
+ int DDRAW_HANDLE_MATRIX ;
+ int DDRAW_HANDLE_SURFACE ;
+ int ERR (char*,int,...) ;
+ int FAILED (int ) ;
+ int FALSE ;
+ int FIXME (char*,...) ;
+ int IDirect3DDevice3_SetLightState (int *,int ,int) ;
+ int IDirect3DDevice3_SetRenderState (int *,int ,int) ;
+ int IDirect3DDevice3_SetTransform (int *,int ,int *) ;
+ int IDirect3DTexture2_Load (int *,int *) ;
+ int TRACE (char*,...) ;
+ scalar_t__ TRACE_ON (int ) ;
+ int TRUE ;
+ int WARN (char*,...) ;
+ int WINED3DFMT_R16_UINT ;
+ int WINED3DUSAGE_DYNAMIC ;
+ int WINED3DUSAGE_STATICDECL ;
+ int WINED3DUSAGE_WRITEONLY ;
+ int WINED3D_BIND_INDEX_BUFFER ;
+ int WINED3D_MAP_DISCARD ;
+ int WINED3D_MAP_NOOVERWRITE ;
+ int WINED3D_MAP_WRITE ;
+ int WINED3D_PT_LINELIST ;
+ int WINED3D_PT_POINTLIST ;
+ int WINED3D_PT_TRIANGLELIST ;
+ int WINED3D_RESOURCE_ACCESS_GPU ;
+ int WINED3D_RESOURCE_ACCESS_MAP_R ;
+ int WINED3D_RESOURCE_ACCESS_MAP_W ;
+ int WINED3D_RS_LIGHTING ;
+ int _dump_executedata (TYPE_16__*) ;
+ int ddraw ;
+ int ddraw_find_decl (int ,int ) ;
+ void* ddraw_get_object (int *,int ,int ) ;
+ int ddraw_null_wined3d_parent_ops ;
+ unsigned int max (int,unsigned int) ;
+ int multiply_matrix (int *,int *,int *) ;
+ int viewport_activate (struct d3d_viewport*,int ) ;
+ int wined3d_buffer_create (int ,struct wined3d_buffer_desc*,int *,int *,int *,struct wined3d_buffer**) ;
+ int wined3d_buffer_decref (struct wined3d_buffer*) ;
+ int wined3d_buffer_get_resource (struct wined3d_buffer*) ;
+ int wined3d_device_copy_sub_resource_region (int ,int ,int ,int,int ,int ,int ,int ,struct wined3d_box*) ;
+ int wined3d_device_draw_indexed_primitive (int ,unsigned int,unsigned int) ;
+ int wined3d_device_draw_primitive (int ,int ,int ) ;
+ int wined3d_device_process_vertices (int ,int,int,int,struct wined3d_buffer*,int *,int ,int ) ;
+ int wined3d_device_set_index_buffer (int ,struct wined3d_buffer*,int ,int ) ;
+ int wined3d_device_set_primitive_type (int ,int ,int ) ;
+ int wined3d_device_set_render_state (int ,int ,int ) ;
+ int wined3d_device_set_stream_source (int ,int ,struct wined3d_buffer*,int,int) ;
+ int wined3d_device_set_vertex_declaration (int ,int ) ;
+ int wined3d_resource_map (int ,int ,struct wined3d_map_desc*,struct wined3d_box*,int) ;
+ int wined3d_resource_unmap (int ,int ) ;
 
 HRESULT d3d_execute_buffer_execute(struct d3d_execute_buffer *buffer,
         struct d3d_device *device, struct d3d_viewport *viewport)
@@ -170,7 +155,7 @@ HRESULT d3d_execute_buffer_execute(struct d3d_execute_buffer *buffer,
         return DDERR_INVALIDPARAMS;
     }
 
-    /* Activate the viewport */
+
     viewport_activate(viewport, FALSE);
 
     TRACE("ExecuteData :\n");
@@ -190,7 +175,7 @@ HRESULT d3d_execute_buffer_execute(struct d3d_execute_buffer *buffer,
 
         switch (current->bOpcode)
         {
-            case D3DOP_POINT:
+            case 139:
             {
                 const D3DPOINT *p = (D3DPOINT *)instr;
                 wined3d_device_set_primitive_type(device->wined3d_device, WINED3D_PT_POINTLIST, 0);
@@ -206,11 +191,11 @@ HRESULT d3d_execute_buffer_execute(struct d3d_execute_buffer *buffer,
                 break;
             }
 
-            case D3DOP_LINE:
+            case 142:
                 primitive_size = 2;
                 wined3d_device_set_primitive_type(device->wined3d_device, WINED3D_PT_LINELIST, 0);
-                /* Drop through. */
-            case D3DOP_TRIANGLE:
+
+            case 131:
             {
                 WORD *indices;
                 unsigned int index_pos = buffer->index_pos, index_count;
@@ -242,7 +227,7 @@ HRESULT d3d_execute_buffer_execute(struct d3d_execute_buffer *buffer,
                     desc.structure_byte_stride = 0;
 
                     if (FAILED(hr = wined3d_buffer_create(device->wined3d_device, &desc,
-                            NULL, NULL, &ddraw_null_wined3d_parent_ops, &new_buffer)))
+                            ((void*)0), ((void*)0), &ddraw_null_wined3d_parent_ops, &new_buffer)))
                         return hr;
 
                     buffer->index_size = new_size;
@@ -270,14 +255,14 @@ HRESULT d3d_execute_buffer_execute(struct d3d_execute_buffer *buffer,
                     TRACE("  Flags : ");
                     if (TRACE_ON(ddraw))
                     {
-                        /* Wireframe */
+
                         if (ci->wFlags & D3DTRIFLAG_EDGEENABLE1)
                             TRACE("EDGEENABLE1 ");
                         if (ci->wFlags & D3DTRIFLAG_EDGEENABLE2)
                             TRACE("EDGEENABLE2 ");
                         if (ci->wFlags & D3DTRIFLAG_EDGEENABLE1)
                             TRACE("EDGEENABLE3 ");
-                        /* Strips / Fans */
+
                         if (ci->wFlags == D3DTRIFLAG_EVEN)
                             TRACE("EVEN ");
                         if (ci->wFlags == D3DTRIFLAG_ODD)
@@ -293,10 +278,10 @@ HRESULT d3d_execute_buffer_execute(struct d3d_execute_buffer *buffer,
                     {
                         case 3:
                             indices[(i * primitive_size) + 2] = ci->u3.v3;
-                            /* Drop through. */
+
                         case 2:
                             indices[(i * primitive_size) + 1] = ci->u2.v2;
-                            indices[(i * primitive_size)    ] = ci->u1.v1;
+                            indices[(i * primitive_size) ] = ci->u1.v1;
                     }
                     instr += size;
                 }
@@ -314,12 +299,12 @@ HRESULT d3d_execute_buffer_execute(struct d3d_execute_buffer *buffer,
                 break;
             }
 
-            case D3DOP_MATRIXLOAD:
+            case 141:
                 WARN("MATRIXLOAD-s     (%u)\n", count);
                 instr += count * size;
                 break;
 
-            case D3DOP_MATRIXMULTIPLY:
+            case 140:
                 TRACE("MATRIXMULTIPLY   (%d)\n", count);
                 for (i = 0; i < count; ++i)
                 {
@@ -345,7 +330,7 @@ HRESULT d3d_execute_buffer_execute(struct d3d_execute_buffer *buffer,
                 }
                 break;
 
-            case D3DOP_STATETRANSFORM:
+            case 133:
                 TRACE("STATETRANSFORM   (%d)\n", count);
                 for (i = 0; i < count; ++i)
                 {
@@ -373,7 +358,7 @@ HRESULT d3d_execute_buffer_execute(struct d3d_execute_buffer *buffer,
                 }
                 break;
 
-            case D3DOP_STATELIGHT:
+            case 135:
                 TRACE("STATELIGHT       (%d)\n", count);
                 for (i = 0; i < count; ++i)
                 {
@@ -387,7 +372,7 @@ HRESULT d3d_execute_buffer_execute(struct d3d_execute_buffer *buffer,
                 }
                 break;
 
-            case D3DOP_STATERENDER:
+            case 134:
                 TRACE("STATERENDER      (%d)\n", count);
                 for (i = 0; i < count; ++i)
                 {
@@ -401,7 +386,7 @@ HRESULT d3d_execute_buffer_execute(struct d3d_execute_buffer *buffer,
                 }
                 break;
 
-            case D3DOP_PROCESSVERTICES:
+            case 138:
                 TRACE("PROCESSVERTICES  (%d)\n", count);
 
                 for (i = 0; i < count; ++i)
@@ -422,11 +407,11 @@ HRESULT d3d_execute_buffer_execute(struct d3d_execute_buffer *buffer,
 
                     switch (op)
                     {
-                        case D3DPROCESSVERTICES_TRANSFORMLIGHT:
-                        case D3DPROCESSVERTICES_TRANSFORM:
+                        case 128:
+                        case 129:
                             wined3d_device_set_stream_source(device->wined3d_device, 0,
                                     buffer->src_vertex_buffer, buffer->src_vertex_pos, sizeof(D3DVERTEX));
-                            if (op == D3DPROCESSVERTICES_TRANSFORMLIGHT)
+                            if (op == 128)
                             {
                                 wined3d_device_set_vertex_declaration(device->wined3d_device,
                                         ddraw_find_decl(device->ddraw, D3DFVF_VERTEX));
@@ -442,10 +427,10 @@ HRESULT d3d_execute_buffer_execute(struct d3d_execute_buffer *buffer,
                             }
 
                             wined3d_device_process_vertices(device->wined3d_device, ci->wStart, ci->wDest,
-                                    ci->dwCount, buffer->dst_vertex_buffer, NULL, 0, D3DFVF_TLVERTEX);
+                                    ci->dwCount, buffer->dst_vertex_buffer, ((void*)0), 0, D3DFVF_TLVERTEX);
                             break;
 
-                        case D3DPROCESSVERTICES_COPY:
+                        case 130:
                             box.left = (buffer->src_vertex_pos + ci->wStart) * sizeof(D3DTLVERTEX);
                             box.right = box.left + ci->dwCount * sizeof(D3DTLVERTEX);
                             box.top = box.front = 0;
@@ -465,7 +450,7 @@ HRESULT d3d_execute_buffer_execute(struct d3d_execute_buffer *buffer,
                 }
                 break;
 
-            case D3DOP_TEXTURELOAD:
+            case 132:
                 TRACE("TEXTURELOAD    (%u)\n", count);
 
                 for (i = 0; i < count; ++i)
@@ -492,12 +477,12 @@ HRESULT d3d_execute_buffer_execute(struct d3d_execute_buffer *buffer,
                 }
                 break;
 
-            case D3DOP_EXIT:
+            case 143:
                 TRACE("EXIT             (%u)\n", count);
                 instr += size;
                 goto end_of_buffer;
 
-            case D3DOP_BRANCHFORWARD:
+            case 144:
                 TRACE("BRANCHFORWARD    (%d)\n", count);
                 for (i = 0; i < count; ++i)
                 {
@@ -530,12 +515,12 @@ HRESULT d3d_execute_buffer_execute(struct d3d_execute_buffer *buffer,
                 }
                 break;
 
-            case D3DOP_SPAN:
+            case 136:
                 WARN("SPAN-s           (%u)\n", count);
                 instr += count * size;
                 break;
 
-            case D3DOP_SETSTATUS:
+            case 137:
                 TRACE("SETSTATUS        (%d)\n", count);
                 for (i = 0; i < count; ++i)
                 {

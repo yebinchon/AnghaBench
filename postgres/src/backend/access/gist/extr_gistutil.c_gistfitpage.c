@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ Size ;
-typedef  int /*<<< orphan*/  ItemIdData ;
-typedef  int /*<<< orphan*/  IndexTuple ;
 
-/* Variables and functions */
- scalar_t__ GiSTPageSize ; 
- scalar_t__ IndexTupleSize (int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ Size ;
+typedef int ItemIdData ;
+typedef int IndexTuple ;
+
+
+ scalar_t__ GiSTPageSize ;
+ scalar_t__ IndexTupleSize (int ) ;
 
 bool
 gistfitpage(IndexTuple *itvec, int len)
 {
-	int			i;
-	Size		size = 0;
+ int i;
+ Size size = 0;
 
-	for (i = 0; i < len; i++)
-		size += IndexTupleSize(itvec[i]) + sizeof(ItemIdData);
+ for (i = 0; i < len; i++)
+  size += IndexTupleSize(itvec[i]) + sizeof(ItemIdData);
 
-	/* TODO: Consider fillfactor */
-	return (size <= GiSTPageSize);
+
+ return (size <= GiSTPageSize);
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int length; int* data; } ;
-typedef  TYPE_1__ mqtt_message_t ;
+typedef TYPE_1__ mqtt_message_t ;
 struct TYPE_6__ {int* buffer; TYPE_1__ message; } ;
-typedef  TYPE_2__ mqtt_connection_t ;
+typedef TYPE_2__ mqtt_connection_t ;
 
-/* Variables and functions */
- int MQTT_MAX_FIXED_HEADER_SIZE ; 
+
+ int MQTT_MAX_FIXED_HEADER_SIZE ;
 
 __attribute__((used)) static mqtt_message_t* fini_message(mqtt_connection_t* connection, int type, int dup, int qos, int retain)
 {

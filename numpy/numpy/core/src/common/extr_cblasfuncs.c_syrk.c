@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int npy_intp ;
-typedef  int /*<<< orphan*/  npy_float ;
-typedef  int /*<<< orphan*/  npy_double ;
-typedef  int /*<<< orphan*/  npy_cfloat ;
-typedef  int /*<<< orphan*/  npy_cdouble ;
-typedef  enum CBLAS_TRANSPOSE { ____Placeholder_CBLAS_TRANSPOSE } CBLAS_TRANSPOSE ;
-typedef  enum CBLAS_ORDER { ____Placeholder_CBLAS_ORDER } CBLAS_ORDER ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CblasUpper ; 
-#define  NPY_CDOUBLE 131 
-#define  NPY_CFLOAT 130 
-#define  NPY_DOUBLE 129 
-#define  NPY_FLOAT 128 
- void* PyArray_DATA (int /*<<< orphan*/ *) ; 
- int PyArray_DIM (int /*<<< orphan*/ *,int) ; 
- scalar_t__ PyArray_GETPTR2 (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  cblas_csyrk (int,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ,void const*,int,int /*<<< orphan*/ ,void*,int) ; 
- int /*<<< orphan*/  cblas_dsyrk (int,int /*<<< orphan*/ ,int,int,int,int,void const*,int,int,void*,int) ; 
- int /*<<< orphan*/  cblas_ssyrk (int,int /*<<< orphan*/ ,int,int,int,float,void const*,int,float,void*,int) ; 
- int /*<<< orphan*/  cblas_zsyrk (int,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ,void const*,int,int /*<<< orphan*/ ,void*,int) ; 
- int /*<<< orphan*/  oneD ; 
- int /*<<< orphan*/  oneF ; 
- int /*<<< orphan*/  zeroD ; 
- int /*<<< orphan*/  zeroF ; 
+
+
+
+typedef int npy_intp ;
+typedef int npy_float ;
+typedef int npy_double ;
+typedef int npy_cfloat ;
+typedef int npy_cdouble ;
+typedef enum CBLAS_TRANSPOSE { ____Placeholder_CBLAS_TRANSPOSE } CBLAS_TRANSPOSE ;
+typedef enum CBLAS_ORDER { ____Placeholder_CBLAS_ORDER } CBLAS_ORDER ;
+typedef int PyArrayObject ;
+
+
+ int CblasUpper ;
+
+
+
+
+ void* PyArray_DATA (int *) ;
+ int PyArray_DIM (int *,int) ;
+ scalar_t__ PyArray_GETPTR2 (int *,int,int) ;
+ int cblas_csyrk (int,int ,int,int,int,int ,void const*,int,int ,void*,int) ;
+ int cblas_dsyrk (int,int ,int,int,int,int,void const*,int,int,void*,int) ;
+ int cblas_ssyrk (int,int ,int,int,int,float,void const*,int,float,void*,int) ;
+ int cblas_zsyrk (int,int ,int,int,int,int ,void const*,int,int ,void*,int) ;
+ int oneD ;
+ int oneF ;
+ int zeroD ;
+ int zeroF ;
 
 __attribute__((used)) static void
 syrk(int typenum, enum CBLAS_ORDER order, enum CBLAS_TRANSPOSE trans,
@@ -50,7 +50,7 @@ syrk(int typenum, enum CBLAS_ORDER order, enum CBLAS_TRANSPOSE trans,
     npy_intp j;
 
     switch (typenum) {
-        case NPY_DOUBLE:
+        case 129:
             cblas_dsyrk(order, CblasUpper, trans, n, k, 1.,
                         Adata, lda, 0., Rdata, ldc);
 
@@ -61,7 +61,7 @@ syrk(int typenum, enum CBLAS_ORDER order, enum CBLAS_TRANSPOSE trans,
                 }
             }
             break;
-        case NPY_FLOAT:
+        case 128:
             cblas_ssyrk(order, CblasUpper, trans, n, k, 1.f,
                         Adata, lda, 0.f, Rdata, ldc);
 
@@ -72,7 +72,7 @@ syrk(int typenum, enum CBLAS_ORDER order, enum CBLAS_TRANSPOSE trans,
                 }
             }
             break;
-        case NPY_CDOUBLE:
+        case 131:
             cblas_zsyrk(order, CblasUpper, trans, n, k, oneD,
                         Adata, lda, zeroD, Rdata, ldc);
 
@@ -83,7 +83,7 @@ syrk(int typenum, enum CBLAS_ORDER order, enum CBLAS_TRANSPOSE trans,
                 }
             }
             break;
-        case NPY_CFLOAT:
+        case 130:
             cblas_csyrk(order, CblasUpper, trans, n, k, oneF,
                         Adata, lda, zeroF, Rdata, ldc);
 

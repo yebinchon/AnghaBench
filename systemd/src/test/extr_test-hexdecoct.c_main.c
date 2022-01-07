@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  test_base32hexchar () ; 
- int /*<<< orphan*/  test_base32hexmem () ; 
- int /*<<< orphan*/  test_base64char () ; 
- int /*<<< orphan*/  test_base64mem () ; 
- int /*<<< orphan*/  test_decchar () ; 
- int /*<<< orphan*/  test_hexchar () ; 
- int /*<<< orphan*/  test_hexdump () ; 
- int /*<<< orphan*/  test_octchar () ; 
- int /*<<< orphan*/  test_unbase32hexchar () ; 
- int /*<<< orphan*/  test_unbase32hexmem () ; 
- int /*<<< orphan*/  test_unbase64char () ; 
- int /*<<< orphan*/  test_unbase64mem () ; 
- int /*<<< orphan*/  test_undecchar () ; 
- int /*<<< orphan*/  test_unhexchar () ; 
- int /*<<< orphan*/  test_unhexmem () ; 
- int /*<<< orphan*/  test_unoctchar () ; 
+ int test_base32hexchar () ;
+ int test_base32hexmem () ;
+ int test_base64char () ;
+ int test_base64mem () ;
+ int test_decchar () ;
+ int test_hexchar () ;
+ int test_hexdump () ;
+ int test_octchar () ;
+ int test_unbase32hexchar () ;
+ int test_unbase32hexmem () ;
+ int test_unbase64char () ;
+ int test_unbase64mem () ;
+ int test_undecchar () ;
+ int test_unhexchar () ;
+ int test_unhexmem () ;
+ int test_unoctchar () ;
 
 int main(int argc, char *argv[]) {
         test_hexchar();

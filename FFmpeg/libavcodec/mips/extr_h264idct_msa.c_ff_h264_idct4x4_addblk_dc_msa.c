@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ v8i16 ;
-struct TYPE_4__ {int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ v16u8 ;
-typedef  int /*<<< orphan*/  v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int int32_t ;
-typedef  int int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD2 (scalar_t__,scalar_t__ const,scalar_t__,scalar_t__ const,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  CLIP_SH2_0_255 (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  INSERT_W4_UB (int /*<<< orphan*/  const,int /*<<< orphan*/  const,int /*<<< orphan*/  const,int /*<<< orphan*/  const,TYPE_1__) ; 
- int /*<<< orphan*/  LW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ST_W4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  UNPCK_UB_SH (TYPE_1__,scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_fill_h (int const) ; 
- int /*<<< orphan*/  __msa_pckev_b (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ v8i16 ;
+struct TYPE_4__ {int member_0; } ;
+typedef TYPE_1__ v16u8 ;
+typedef int v16i8 ;
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int int32_t ;
+typedef int int16_t ;
+
+
+ int ADD2 (scalar_t__,scalar_t__ const,scalar_t__,scalar_t__ const,scalar_t__,scalar_t__) ;
+ int CLIP_SH2_0_255 (scalar_t__,scalar_t__) ;
+ int INSERT_W4_UB (int const,int const,int const,int const,TYPE_1__) ;
+ int LW (int *) ;
+ int ST_W4 (int ,int ,int,int,int,int *,int) ;
+ int UNPCK_UB_SH (TYPE_1__,scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_fill_h (int const) ;
+ int __msa_pckev_b (int ,int ) ;
 
 void ff_h264_idct4x4_addblk_dc_msa(uint8_t *dst, int16_t *src,
                                    int32_t dst_stride)

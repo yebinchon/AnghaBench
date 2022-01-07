@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int LITTLENUM_NUMBER_OF_BITS ; 
- int bits_left_in_littlenum ; 
- int* littlenum_end ; 
- int* littlenum_pointer ; 
- int* mask ; 
+ int LITTLENUM_NUMBER_OF_BITS ;
+ int bits_left_in_littlenum ;
+ int* littlenum_end ;
+ int* littlenum_pointer ;
+ int* mask ;
 
 __attribute__((used)) static int
 next_bits (int number_of_bits)
@@ -33,7 +25,7 @@ next_bits (int number_of_bits)
       bits_left_in_littlenum = LITTLENUM_NUMBER_OF_BITS - number_of_bits;
       littlenum_pointer--;
       if (littlenum_pointer >= littlenum_end)
-	return_value |= ((*littlenum_pointer) >> (bits_left_in_littlenum)) & mask[number_of_bits];
+ return_value |= ((*littlenum_pointer) >> (bits_left_in_littlenum)) & mask[number_of_bits];
     }
   else
     {

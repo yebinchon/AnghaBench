@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * vm_page_t ;
-typedef  int /*<<< orphan*/  vm_memattr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pmap_page_set_memattr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * vm_page_alloc (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  vm_wait (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * vm_page_t ;
+typedef int vm_memattr_t ;
+
+
+ int pmap_page_set_memattr (int *,int ) ;
+ int * vm_page_alloc (int *,int ,int) ;
+ int vm_wait (int *) ;
 
 __attribute__((used)) static vm_page_t
 ttm_vm_page_alloc_any(int req, vm_memattr_t memattr)
 {
-	vm_page_t p;
+ vm_page_t p;
 
-	while (1) {
-		p = vm_page_alloc(NULL, 0, req);
-		if (p != NULL)
-			break;
-		vm_wait(NULL);
-	}
-	pmap_page_set_memattr(p, memattr);
-	return (p);
+ while (1) {
+  p = vm_page_alloc(((void*)0), 0, req);
+  if (p != ((void*)0))
+   break;
+  vm_wait(((void*)0));
+ }
+ pmap_page_set_memattr(p, memattr);
+ return (p);
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IShellLinkW ;
-typedef  int /*<<< orphan*/  IShellLinkA ;
-typedef  int /*<<< orphan*/  IPropertyStoreCache ;
-typedef  int /*<<< orphan*/  IPropertyStore ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_ShellLink ; 
- scalar_t__ CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ E_NOINTERFACE ; 
- int /*<<< orphan*/  IID_IPropertyStore ; 
- int /*<<< orphan*/  IID_IPropertyStoreCache ; 
- int /*<<< orphan*/  IID_IShellLinkA ; 
- int /*<<< orphan*/  IID_IShellLinkW ; 
- scalar_t__ IPropertyStore_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IPropertyStore_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IShellLinkA_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IShellLinkA_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IShellLinkW_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IShellLinkW_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int IShellLinkW ;
+typedef int IShellLinkA ;
+typedef int IPropertyStoreCache ;
+typedef int IPropertyStore ;
+typedef scalar_t__ HRESULT ;
+
+
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_ShellLink ;
+ scalar_t__ CoCreateInstance (int *,int *,int ,int *,void**) ;
+ scalar_t__ E_NOINTERFACE ;
+ int IID_IPropertyStore ;
+ int IID_IPropertyStoreCache ;
+ int IID_IShellLinkA ;
+ int IID_IShellLinkW ;
+ scalar_t__ IPropertyStore_QueryInterface (int *,int *,void**) ;
+ int IPropertyStore_Release (int *) ;
+ scalar_t__ IShellLinkA_QueryInterface (int *,int *,void**) ;
+ int IShellLinkA_Release (int *) ;
+ scalar_t__ IShellLinkW_QueryInterface (int *,int *,void**) ;
+ int IShellLinkW_Release (int *) ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,scalar_t__) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_propertystore(void)
 {
@@ -42,7 +42,7 @@ __attribute__((used)) static void test_propertystore(void)
     IPropertyStore *ps;
     HRESULT hr;
 
-    hr = CoCreateInstance(&CLSID_ShellLink, NULL, CLSCTX_INPROC_SERVER,
+    hr = CoCreateInstance(&CLSID_ShellLink, ((void*)0), CLSCTX_INPROC_SERVER,
                          &IID_IShellLinkA, (void**)&linkA);
     ok(hr == S_OK, "got 0x%08x\n", hr);
 

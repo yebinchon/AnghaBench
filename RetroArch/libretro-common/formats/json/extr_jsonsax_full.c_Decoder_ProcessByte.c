@@ -1,80 +1,80 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int byte ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int byte ;
 struct TYPE_4__ {int state; int bits; } ;
-typedef  int Encoding ;
-typedef  int /*<<< orphan*/  DecoderOutput ;
-typedef  TYPE_1__* Decoder ;
+typedef int Encoding ;
+typedef int DecoderOutput ;
+typedef TYPE_1__* Decoder ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BOTTOM_3_BITS (int) ; 
- int /*<<< orphan*/  BOTTOM_4_BITS (int) ; 
- int /*<<< orphan*/  BOTTOM_5_BITS (int) ; 
- int BOTTOM_6_BITS (int) ; 
- int CODEPOINT_FROM_SURROGATES (int) ; 
-#define  DECODED_1_OF_2 139 
-#define  DECODED_1_OF_3 138 
-#define  DECODED_1_OF_4 137 
-#define  DECODED_2_OF_3 136 
-#define  DECODED_2_OF_4 135 
-#define  DECODED_3_OF_4 134 
- int /*<<< orphan*/  DECODER_OUTPUT (int /*<<< orphan*/ ,int,int) ; 
-#define  DECODER_RESET 133 
- int /*<<< orphan*/  Decoder_Reset (TYPE_1__*) ; 
- int FIRST_2_BYTE_UTF8_CODEPOINT ; 
- int FIRST_3_BYTE_UTF8_CODEPOINT ; 
- int FIRST_4_BYTE_UTF8_CODEPOINT ; 
- int /*<<< orphan*/  IS_LEADING_SURROGATE (int) ; 
- int /*<<< orphan*/  IS_SURROGATE (int) ; 
- int /*<<< orphan*/  IS_TRAILING_SURROGATE (int) ; 
- int /*<<< orphan*/  IS_UTF8_CONTINUATION_BYTE (int) ; 
- int /*<<< orphan*/  IS_UTF8_FIRST_BYTE_OF_2 (int) ; 
- int /*<<< orphan*/  IS_UTF8_FIRST_BYTE_OF_3 (int) ; 
- int /*<<< orphan*/  IS_UTF8_FIRST_BYTE_OF_4 (int) ; 
- int /*<<< orphan*/  IS_UTF8_SINGLE_BYTE (int) ; 
-#define  JSON_UTF16BE 132 
-#define  JSON_UTF16LE 131 
-#define  JSON_UTF32BE 130 
-#define  JSON_UTF32LE 129 
-#define  JSON_UTF8 128 
- int MAX_CODEPOINT ; 
- int /*<<< orphan*/  SEQUENCE_COMPLETE ; 
- int /*<<< orphan*/  SEQUENCE_INVALID_EXCLUSIVE ; 
- int /*<<< orphan*/  SEQUENCE_INVALID_INCLUSIVE ; 
- int /*<<< orphan*/  SEQUENCE_PENDING ; 
+
+ int BOTTOM_3_BITS (int) ;
+ int BOTTOM_4_BITS (int) ;
+ int BOTTOM_5_BITS (int) ;
+ int BOTTOM_6_BITS (int) ;
+ int CODEPOINT_FROM_SURROGATES (int) ;
+
+
+
+
+
+
+ int DECODER_OUTPUT (int ,int,int) ;
+
+ int Decoder_Reset (TYPE_1__*) ;
+ int FIRST_2_BYTE_UTF8_CODEPOINT ;
+ int FIRST_3_BYTE_UTF8_CODEPOINT ;
+ int FIRST_4_BYTE_UTF8_CODEPOINT ;
+ int IS_LEADING_SURROGATE (int) ;
+ int IS_SURROGATE (int) ;
+ int IS_TRAILING_SURROGATE (int) ;
+ int IS_UTF8_CONTINUATION_BYTE (int) ;
+ int IS_UTF8_FIRST_BYTE_OF_2 (int) ;
+ int IS_UTF8_FIRST_BYTE_OF_3 (int) ;
+ int IS_UTF8_FIRST_BYTE_OF_4 (int) ;
+ int IS_UTF8_SINGLE_BYTE (int) ;
+
+
+
+
+
+ int MAX_CODEPOINT ;
+ int SEQUENCE_COMPLETE ;
+ int SEQUENCE_INVALID_EXCLUSIVE ;
+ int SEQUENCE_INVALID_INCLUSIVE ;
+ int SEQUENCE_PENDING ;
 
 __attribute__((used)) static DecoderOutput Decoder_ProcessByte(Decoder decoder, Encoding encoding, byte b)
 {
    DecoderOutput output = DECODER_OUTPUT(SEQUENCE_PENDING, 0, 0);
    switch (encoding)
    {
-      case JSON_UTF8:
-         /* When the input encoding is UTF-8, the decoded codepoint's bits are
-            recorded in the bottom 3 bytes of bits as they are decoded.
-            The top byte is not used. */
+      case 128:
+
+
+
          switch (decoder->state)
          {
-            case DECODER_RESET:
+            case 133:
                if (IS_UTF8_SINGLE_BYTE(b))
                {
                   output = DECODER_OUTPUT(SEQUENCE_COMPLETE, 1, b);
                }
                else if (IS_UTF8_FIRST_BYTE_OF_2(b))
                {
-                  /* UTF-8 2-byte sequences that are overlong encodings can be
-                     detected from just the first byte (C0 or C1). */
+
+
                   decoder->bits = (uint32_t)BOTTOM_5_BITS(b) << 6;
                   if (decoder->bits < FIRST_2_BYTE_UTF8_CODEPOINT)
                   {
@@ -82,20 +82,20 @@ __attribute__((used)) static DecoderOutput Decoder_ProcessByte(Decoder decoder, 
                   }
                   else
                   {
-                     decoder->state = DECODED_1_OF_2;
+                     decoder->state = 139;
                      goto noreset;
                   }
                }
                else if (IS_UTF8_FIRST_BYTE_OF_3(b))
                {
                   decoder->bits = (uint32_t)BOTTOM_4_BITS(b) << 12;
-                  decoder->state = DECODED_1_OF_3;
+                  decoder->state = 138;
                   goto noreset;
                }
                else if (IS_UTF8_FIRST_BYTE_OF_4(b))
                {
-                  /* Some UTF-8 4-byte sequences that encode out-of-range
-                     codepoints can be detected from the first byte (F5 - FF). */
+
+
                   decoder->bits = (uint32_t)BOTTOM_3_BITS(b) << 18;
                   if (decoder->bits > MAX_CODEPOINT)
                   {
@@ -103,19 +103,19 @@ __attribute__((used)) static DecoderOutput Decoder_ProcessByte(Decoder decoder, 
                   }
                   else
                   {
-                     decoder->state = DECODED_1_OF_4;
+                     decoder->state = 137;
                      goto noreset;
                   }
                }
                else
                {
-                  /* The byte is of the form 11111xxx or 10xxxxxx, and is not
-                     a valid first byte for a UTF-8 sequence. */
+
+
                   output = DECODER_OUTPUT(SEQUENCE_INVALID_INCLUSIVE, 1, 0);
                }
                break;
 
-            case DECODED_1_OF_2:
+            case 139:
                if (IS_UTF8_CONTINUATION_BYTE(b))
                {
                   output = DECODER_OUTPUT(SEQUENCE_COMPLETE, 2, decoder->bits | BOTTOM_6_BITS(b));
@@ -127,11 +127,11 @@ __attribute__((used)) static DecoderOutput Decoder_ProcessByte(Decoder decoder, 
                }
                break;
 
-            case DECODED_1_OF_3:
+            case 138:
                if (IS_UTF8_CONTINUATION_BYTE(b))
                {
-                  /* UTF-8 3-byte sequences that are overlong encodings or encode
-                     surrogate codepoints can be detected after 2 bytes. */
+
+
                   decoder->bits |= (uint32_t)BOTTOM_6_BITS(b) << 6;
                   if ((decoder->bits < FIRST_3_BYTE_UTF8_CODEPOINT) || IS_SURROGATE(decoder->bits))
                   {
@@ -139,7 +139,7 @@ __attribute__((used)) static DecoderOutput Decoder_ProcessByte(Decoder decoder, 
                   }
                   else
                   {
-                     decoder->state = DECODED_2_OF_3;
+                     decoder->state = 136;
                      goto noreset;
                   }
                }
@@ -149,7 +149,7 @@ __attribute__((used)) static DecoderOutput Decoder_ProcessByte(Decoder decoder, 
                }
                break;
 
-            case DECODED_2_OF_3:
+            case 136:
                if (IS_UTF8_CONTINUATION_BYTE(b))
                {
                   output = DECODER_OUTPUT(SEQUENCE_COMPLETE, 3, decoder->bits | BOTTOM_6_BITS(b));
@@ -160,11 +160,11 @@ __attribute__((used)) static DecoderOutput Decoder_ProcessByte(Decoder decoder, 
                }
                break;
 
-            case DECODED_1_OF_4:
+            case 137:
                if (IS_UTF8_CONTINUATION_BYTE(b))
                {
-                  /* UTF-8 4-byte sequences that are overlong encodings or encode
-                     out-of-range codepoints can be detected after 2 bytes. */
+
+
                   decoder->bits |= (uint32_t)BOTTOM_6_BITS(b) << 12;
                   if ((decoder->bits < FIRST_4_BYTE_UTF8_CODEPOINT) || (decoder->bits > MAX_CODEPOINT))
                   {
@@ -172,7 +172,7 @@ __attribute__((used)) static DecoderOutput Decoder_ProcessByte(Decoder decoder, 
                   }
                   else
                   {
-                     decoder->state = DECODED_2_OF_4;
+                     decoder->state = 135;
                      goto noreset;
                   }
                }
@@ -182,11 +182,11 @@ __attribute__((used)) static DecoderOutput Decoder_ProcessByte(Decoder decoder, 
                }
                break;
 
-            case DECODED_2_OF_4:
+            case 135:
                if (IS_UTF8_CONTINUATION_BYTE(b))
                {
                   decoder->bits |= (uint32_t)BOTTOM_6_BITS(b) << 6;
-                  decoder->state = DECODED_3_OF_4;
+                  decoder->state = 134;
                   goto noreset;
                }
                else
@@ -195,7 +195,7 @@ __attribute__((used)) static DecoderOutput Decoder_ProcessByte(Decoder decoder, 
                }
                break;
 
-            case DECODED_3_OF_4:
+            case 134:
                if (IS_UTF8_CONTINUATION_BYTE(b))
                {
                   output = DECODER_OUTPUT(SEQUENCE_COMPLETE, 4, decoder->bits | BOTTOM_6_BITS(b));
@@ -208,32 +208,32 @@ __attribute__((used)) static DecoderOutput Decoder_ProcessByte(Decoder decoder, 
          }
          break;
 
-      case JSON_UTF16LE:
-         /* When the input encoding is UTF-16, the decoded codepoint's bits are
-            recorded in the bottom 2 bytes of bits as they are decoded.
-            If those 2 bytes form a leading surrogate, the decoder treats the
-            surrogate pair as a single 4-byte sequence, shifts the leading
-            surrogate into the high 2 bytes of bits, and decodes the
-            trailing surrogate's bits in the bottom 2 bytes of bits. */
+      case 131:
+
+
+
+
+
+
          switch (decoder->state)
          {
-            case DECODER_RESET:
+            case 133:
                decoder->bits = b;
-               decoder->state = DECODED_1_OF_2;
+               decoder->state = 139;
                goto noreset;
 
-            case DECODED_1_OF_2:
+            case 139:
                decoder->bits |= (uint32_t)b << 8;
                if (IS_TRAILING_SURROGATE(decoder->bits))
                {
-                  /* A trailing surrogate cannot appear on its own. */
+
                   output = DECODER_OUTPUT(SEQUENCE_INVALID_INCLUSIVE, 2, 0);
                }
                else if (IS_LEADING_SURROGATE(decoder->bits))
                {
-                  /* A leading surrogate implies a 4-byte surrogate pair. */
+
                   decoder->bits <<= 16;
-                  decoder->state = DECODED_2_OF_4;
+                  decoder->state = 135;
                   goto noreset;
                }
                else
@@ -242,20 +242,20 @@ __attribute__((used)) static DecoderOutput Decoder_ProcessByte(Decoder decoder, 
                }
                break;
 
-            case DECODED_2_OF_4:
+            case 135:
                decoder->bits |= b;
-               decoder->state = DECODED_3_OF_4;
+               decoder->state = 134;
                goto noreset;
 
-            case DECODED_3_OF_4:
+            case 134:
                decoder->bits |= (uint32_t)b << 8;
                if (!IS_TRAILING_SURROGATE(decoder->bits & 0xFFFF))
                {
-                  /* A leading surrogate must be followed by a trailing one.
-                     Treat the previous 3 bytes as an invalid 2-byte sequence
-                     followed by the first byte of a new sequence. */
+
+
+
                   decoder->bits &= 0xFF;
-                  decoder->state = DECODED_1_OF_2;
+                  decoder->state = 139;
                   output = DECODER_OUTPUT(SEQUENCE_INVALID_EXCLUSIVE, 2, 0);
                   goto noreset;
                }
@@ -267,32 +267,32 @@ __attribute__((used)) static DecoderOutput Decoder_ProcessByte(Decoder decoder, 
          }
          break;
 
-      case JSON_UTF16BE:
-         /* When the input encoding is UTF-16, the decoded codepoint's bits are
-            recorded in the bottom 2 bytes of bits as they are decoded.
-            If those 2 bytes form a leading surrogate, the decoder treats the
-            surrogate pair as a single 4-byte sequence, shifts the leading
-            surrogate into the high 2 bytes of bits, and decodes the
-            trailing surrogate's bits in the bottom 2 bytes of bits. */
+      case 132:
+
+
+
+
+
+
          switch (decoder->state)
          {
-            case DECODER_RESET:
+            case 133:
                decoder->bits = (uint32_t)b << 8;
-               decoder->state = DECODED_1_OF_2;
+               decoder->state = 139;
                goto noreset;
 
-            case DECODED_1_OF_2:
+            case 139:
                decoder->bits |= b;
                if (IS_TRAILING_SURROGATE(decoder->bits))
                {
-                  /* A trailing surrogate cannot appear on its own. */
+
                   output = DECODER_OUTPUT(SEQUENCE_INVALID_INCLUSIVE, 2, 0);
                }
                else if (IS_LEADING_SURROGATE(decoder->bits))
                {
-                  /* A leading surrogate implies a 4-byte surrogate pair. */
+
                   decoder->bits <<= 16;
-                  decoder->state = DECODED_2_OF_4;
+                  decoder->state = 135;
                   goto noreset;
                }
                else
@@ -301,20 +301,20 @@ __attribute__((used)) static DecoderOutput Decoder_ProcessByte(Decoder decoder, 
                }
                break;
 
-            case DECODED_2_OF_4:
+            case 135:
                decoder->bits |= (uint32_t)b << 8;
-               decoder->state = DECODED_3_OF_4;
+               decoder->state = 134;
                goto noreset;
 
-            case DECODED_3_OF_4:
+            case 134:
                decoder->bits |= b;
                if (!IS_TRAILING_SURROGATE(decoder->bits & 0xFFFF))
                {
-                  /* A leading surrogate must be followed by a trailing one.
-                     Treat the previous 3 bytes as an invalid 2-byte sequence
-                     followed by the first byte of a new sequence. */
+
+
+
                   decoder->bits &= 0xFF00;
-                  decoder->state = DECODED_1_OF_2;
+                  decoder->state = 139;
                   output = DECODER_OUTPUT(SEQUENCE_INVALID_EXCLUSIVE, 2, 0);
                   goto noreset;
                }
@@ -326,27 +326,27 @@ __attribute__((used)) static DecoderOutput Decoder_ProcessByte(Decoder decoder, 
          }
          break;
 
-      case JSON_UTF32LE:
-         /* When the input encoding is UTF-32, the decoded codepoint's bits are
-            recorded in bits as they are decoded. */
+      case 129:
+
+
          switch (decoder->state)
          {
-            case DECODER_RESET:
-               decoder->state = DECODED_1_OF_4;
+            case 133:
+               decoder->state = 137;
                decoder->bits = (uint32_t)b;
                goto noreset;
 
-            case DECODED_1_OF_4:
-               decoder->state = DECODED_2_OF_4;
+            case 137:
+               decoder->state = 135;
                decoder->bits |= (uint32_t)b << 8;
                goto noreset;
 
-            case DECODED_2_OF_4:
-               decoder->state = DECODED_3_OF_4;
+            case 135:
+               decoder->state = 134;
                decoder->bits |= (uint32_t)b << 16;
                goto noreset;
 
-            case DECODED_3_OF_4:
+            case 134:
                decoder->bits |= (uint32_t)b << 24;
                output = (IS_SURROGATE(decoder->bits) || (decoder->bits > MAX_CODEPOINT))
                   ? DECODER_OUTPUT(SEQUENCE_INVALID_INCLUSIVE, 4, 0)
@@ -355,27 +355,27 @@ __attribute__((used)) static DecoderOutput Decoder_ProcessByte(Decoder decoder, 
          }
          break;
 
-      case JSON_UTF32BE:
-         /* When the input encoding is UTF-32, the decoded codepoint's bits are
-            recorded in bits as they are decoded. */
+      case 130:
+
+
          switch (decoder->state)
          {
-            case DECODER_RESET:
-               decoder->state = DECODED_1_OF_4;
+            case 133:
+               decoder->state = 137;
                decoder->bits = (uint32_t)b << 24;
                goto noreset;
 
-            case DECODED_1_OF_4:
-               decoder->state = DECODED_2_OF_4;
+            case 137:
+               decoder->state = 135;
                decoder->bits |= (uint32_t)b << 16;
                goto noreset;
 
-            case DECODED_2_OF_4:
-               decoder->state = DECODED_3_OF_4;
+            case 135:
+               decoder->state = 134;
                decoder->bits |= (uint32_t)b << 8;
                goto noreset;
 
-            case DECODED_3_OF_4:
+            case 134:
                decoder->bits |= b;
                output = (IS_SURROGATE(decoder->bits) || (decoder->bits > MAX_CODEPOINT))
                   ? DECODER_OUTPUT(SEQUENCE_INVALID_INCLUSIVE, 4, 0)
@@ -385,7 +385,7 @@ __attribute__((used)) static DecoderOutput Decoder_ProcessByte(Decoder decoder, 
          break;
    }
 
-   /* Reset the decoder for the next sequence. */
+
    Decoder_Reset(decoder);
 
 noreset:

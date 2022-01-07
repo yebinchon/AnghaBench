@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int const uint8_t ;
+typedef int uint32_t ;
 struct TYPE_3__ {int rounds; } ;
-typedef  TYPE_1__ AVCAST5 ;
+typedef TYPE_1__ AVCAST5 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_RB32 (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  AV_WB32 (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  F1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  F2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  F3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int) ; 
+
+ int AV_RB32 (int const*) ;
+ int AV_WB32 (int const*,int ) ;
+ int F1 (int ,int ,int) ;
+ int F2 (int ,int ,int) ;
+ int F3 (int ,int ,int) ;
+ int memcpy (int const*,int const*,int) ;
 
 __attribute__((used)) static void decipher(AVCAST5* cs, uint8_t* dst, const uint8_t* src, uint8_t *iv)
 {

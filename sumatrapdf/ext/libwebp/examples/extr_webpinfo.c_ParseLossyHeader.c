@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint64_t ;
-typedef  int const uint32_t ;
-typedef  scalar_t__ WebPInfoStatus ;
-typedef  int /*<<< orphan*/  WebPInfo ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int const uint32_t ;
+typedef scalar_t__ WebPInfoStatus ;
+typedef int WebPInfo ;
 struct TYPE_3__ {int* payload_; scalar_t__ size_; } ;
-typedef  TYPE_1__ ChunkData ;
+typedef TYPE_1__ ChunkData ;
 
-/* Variables and functions */
- scalar_t__ CHUNK_HEADER_SIZE ; 
- int /*<<< orphan*/  GET_BITS (int,int) ; 
- int /*<<< orphan*/  GET_SIGNED_BITS (int,int) ; 
- int /*<<< orphan*/  LOG_ERROR (char*) ; 
- scalar_t__ ParseLossyFilterHeader (int /*<<< orphan*/  const* const,int const*,size_t,int* const) ; 
- scalar_t__ ParseLossySegmentHeader (int /*<<< orphan*/  const* const,int const*,size_t,int* const) ; 
- scalar_t__ WEBP_INFO_BITSTREAM_ERROR ; 
- scalar_t__ WEBP_INFO_OK ; 
- scalar_t__ WEBP_INFO_TRUNCATED_DATA ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+ scalar_t__ CHUNK_HEADER_SIZE ;
+ int GET_BITS (int,int) ;
+ int GET_SIGNED_BITS (int,int) ;
+ int LOG_ERROR (char*) ;
+ scalar_t__ ParseLossyFilterHeader (int const* const,int const*,size_t,int* const) ;
+ scalar_t__ ParseLossySegmentHeader (int const* const,int const*,size_t,int* const) ;
+ scalar_t__ WEBP_INFO_BITSTREAM_ERROR ;
+ scalar_t__ WEBP_INFO_OK ;
+ scalar_t__ WEBP_INFO_TRUNCATED_DATA ;
+ int assert (int) ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static WebPInfoStatus ParseLossyHeader(const ChunkData* const chunk_data,
                                        const WebPInfo* const webp_info) {
@@ -46,7 +46,7 @@ __attribute__((used)) static WebPInfoStatus ParseLossyHeader(const ChunkData* co
   uint64_t* const bit_pos = &bit_position;
   int colorspace, clamp_type;
   printf("  Parsing lossy bitstream...\n");
-  // Calling WebPGetFeatures() in ProcessImageChunk() should ensure this.
+
   assert(chunk_data->size_ >= CHUNK_HEADER_SIZE + 10);
   if (profile > 3) {
     LOG_ERROR("Unknown profile.");
@@ -93,7 +93,7 @@ __attribute__((used)) static WebPInfoStatus ParseLossyHeader(const ChunkData* co
   if (status != WEBP_INFO_OK) return status;
   status = ParseLossyFilterHeader(webp_info, data, data_size, bit_pos);
   if (status != WEBP_INFO_OK) return status;
-  {  // Partition number and size.
+  {
     const uint8_t* part_size = data + partition0_length;
     int num_parts, i;
     size_t part_data_size;
@@ -117,7 +117,7 @@ __attribute__((used)) static WebPInfoStatus ParseLossyHeader(const ChunkData* co
       part_size += 3;
     }
   }
-  // Quantizer.
+
   {
     int base_q, bit;
     int dq_y1_dc = 0, dq_y2_dc = 0, dq_y2_ac = 0, dq_uv_dc = 0, dq_uv_ac = 0;

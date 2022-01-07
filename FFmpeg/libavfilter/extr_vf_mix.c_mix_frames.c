@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
 struct TYPE_6__ {TYPE_3__* out; TYPE_3__** in; } ;
-typedef  TYPE_1__ ThreadData ;
+typedef TYPE_1__ ThreadData ;
 struct TYPE_9__ {TYPE_2__* priv; } ;
 struct TYPE_8__ {int** data; int const* linesize; } ;
-struct TYPE_7__ {int depth; int nb_planes; int* height; int* linesize; int nb_inputs; int* weights; int wfactor; int /*<<< orphan*/  max; } ;
-typedef  TYPE_2__ MixContext ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVFilterContext ;
+struct TYPE_7__ {int depth; int nb_planes; int* height; int* linesize; int nb_inputs; int* weights; int wfactor; int max; } ;
+typedef TYPE_2__ MixContext ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int AV_RN16 (int*) ; 
- int av_clip (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int av_clip_uint8 (int) ; 
+
+ int AV_RN16 (int*) ;
+ int av_clip (int,int ,int ) ;
+ int av_clip_uint8 (int) ;
 
 __attribute__((used)) static int mix_frames(AVFilterContext *ctx, void *arg, int jobnr, int nb_jobs)
 {

@@ -1,86 +1,86 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xmlstr_t ;
-typedef  int /*<<< orphan*/  xmlbuf_t ;
-struct TYPE_6__ {scalar_t__ build; scalar_t__ revision; int /*<<< orphan*/  minor; int /*<<< orphan*/  major; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int xmlstr_t ;
+typedef int xmlbuf_t ;
+struct TYPE_6__ {scalar_t__ build; scalar_t__ revision; int minor; int major; } ;
 struct assembly_identity {TYPE_3__ version; } ;
-struct TYPE_5__ {scalar_t__ build; scalar_t__ revision; int /*<<< orphan*/  minor; int /*<<< orphan*/  major; } ;
+struct TYPE_5__ {scalar_t__ build; scalar_t__ revision; int minor; int major; } ;
 struct TYPE_4__ {TYPE_2__ version; } ;
 struct assembly {scalar_t__ type; TYPE_1__ id; void* no_inherit; } ;
-struct actctx_loader {int /*<<< orphan*/  actctx; } ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  void* BOOL ;
+struct actctx_loader {int actctx; } ;
+typedef char WCHAR ;
+typedef int UNICODE_STRING ;
+typedef void* BOOL ;
 
-/* Variables and functions */
- scalar_t__ APPLICATION_MANIFEST ; 
- scalar_t__ ASSEMBLY_MANIFEST ; 
- scalar_t__ ASSEMBLY_SHARED_MANIFEST ; 
- int /*<<< orphan*/  DPRINT (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DPRINT1 (char*,...) ; 
- void* FALSE ; 
- void* TRUE ; 
- int /*<<< orphan*/  asmv1W ; 
- int /*<<< orphan*/  asmv2W ; 
- int /*<<< orphan*/  assemblyIdentityW ; 
- int /*<<< orphan*/  assemblyW ; 
- int /*<<< orphan*/  clrClassW ; 
- int /*<<< orphan*/  clrSurrogateW ; 
- int /*<<< orphan*/  comInterfaceExternalProxyStubW ; 
- int /*<<< orphan*/  compatibilityNSW ; 
- int /*<<< orphan*/  compatibilityW ; 
- int /*<<< orphan*/  dependencyW ; 
- int /*<<< orphan*/  descriptionW ; 
- int /*<<< orphan*/  fileW ; 
- char const* manifestVersionW ; 
- char const* manifestv1W ; 
- char const* manifestv2W ; 
- char const* manifestv3W ; 
- scalar_t__ memcmp (TYPE_2__*,TYPE_3__*,int) ; 
- scalar_t__ next_xml_attr (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**,void**) ; 
- void* next_xml_elem (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char const* noInheritW ; 
- int /*<<< orphan*/  noInheritableW ; 
- int /*<<< orphan*/  parse_assembly_identity_elem (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- void* parse_clr_class_elem (int /*<<< orphan*/ *,struct assembly*,struct actctx_loader*) ; 
- void* parse_clr_surrogate_elem (int /*<<< orphan*/ *,struct assembly*,struct actctx_loader*) ; 
- void* parse_com_interface_external_proxy_stub_elem (int /*<<< orphan*/ *,struct assembly*,struct actctx_loader*) ; 
- void* parse_compatibility_elem (int /*<<< orphan*/ *,struct assembly*,struct actctx_loader*) ; 
- void* parse_dependency_elem (int /*<<< orphan*/ *,struct actctx_loader*) ; 
- void* parse_description_elem (int /*<<< orphan*/ *) ; 
- void* parse_end_element (int /*<<< orphan*/ *) ; 
- void* parse_file_elem (int /*<<< orphan*/ *,struct assembly*,struct actctx_loader*) ; 
- int /*<<< orphan*/  parse_noinherit_elem (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  parse_noinheritable_elem (int /*<<< orphan*/ *) ; 
- void* parse_trust_info_elem (int /*<<< orphan*/ *,struct assembly*,struct actctx_loader*) ; 
- void* parse_unknown_elem (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  trustInfoW ; 
- scalar_t__ xml_elem_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ xml_elem_cmp_end (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char const* xmlnsW ; 
- int /*<<< orphan*/  xmlstr2unicode (int /*<<< orphan*/ *) ; 
- scalar_t__ xmlstr_cmp (int /*<<< orphan*/ *,char const*) ; 
+
+ scalar_t__ APPLICATION_MANIFEST ;
+ scalar_t__ ASSEMBLY_MANIFEST ;
+ scalar_t__ ASSEMBLY_SHARED_MANIFEST ;
+ int DPRINT (char*,int *) ;
+ int DPRINT1 (char*,...) ;
+ void* FALSE ;
+ void* TRUE ;
+ int asmv1W ;
+ int asmv2W ;
+ int assemblyIdentityW ;
+ int assemblyW ;
+ int clrClassW ;
+ int clrSurrogateW ;
+ int comInterfaceExternalProxyStubW ;
+ int compatibilityNSW ;
+ int compatibilityW ;
+ int dependencyW ;
+ int descriptionW ;
+ int fileW ;
+ char const* manifestVersionW ;
+ char const* manifestv1W ;
+ char const* manifestv2W ;
+ char const* manifestv3W ;
+ scalar_t__ memcmp (TYPE_2__*,TYPE_3__*,int) ;
+ scalar_t__ next_xml_attr (int *,int *,int *,void**,void**) ;
+ void* next_xml_elem (int *,int *) ;
+ char const* noInheritW ;
+ int noInheritableW ;
+ int parse_assembly_identity_elem (int *,int ,TYPE_1__*) ;
+ void* parse_clr_class_elem (int *,struct assembly*,struct actctx_loader*) ;
+ void* parse_clr_surrogate_elem (int *,struct assembly*,struct actctx_loader*) ;
+ void* parse_com_interface_external_proxy_stub_elem (int *,struct assembly*,struct actctx_loader*) ;
+ void* parse_compatibility_elem (int *,struct assembly*,struct actctx_loader*) ;
+ void* parse_dependency_elem (int *,struct actctx_loader*) ;
+ void* parse_description_elem (int *) ;
+ void* parse_end_element (int *) ;
+ void* parse_file_elem (int *,struct assembly*,struct actctx_loader*) ;
+ int parse_noinherit_elem (int *) ;
+ int parse_noinheritable_elem (int *) ;
+ void* parse_trust_info_elem (int *,struct assembly*,struct actctx_loader*) ;
+ void* parse_unknown_elem (int *,int *) ;
+ int trustInfoW ;
+ scalar_t__ xml_elem_cmp (int *,int ,int ) ;
+ scalar_t__ xml_elem_cmp_end (int *,int ,int ) ;
+ char const* xmlnsW ;
+ int xmlstr2unicode (int *) ;
+ scalar_t__ xmlstr_cmp (int *,char const*) ;
 
 __attribute__((used)) static BOOL parse_assembly_elem(xmlbuf_t* xmlbuf, struct actctx_loader* acl,
                                 struct assembly* assembly,
                                 struct assembly_identity* expected_ai)
 {
-    xmlstr_t    attr_name, attr_value, elem;
+    xmlstr_t attr_name, attr_value, elem;
     UNICODE_STRING attr_nameU, attr_valueU;
-    BOOL        end = FALSE, error, version = FALSE, xmlns = FALSE, ret = TRUE;
+    BOOL end = FALSE, error, version = FALSE, xmlns = FALSE, ret = TRUE;
 
     DPRINT("(%p)\n", xmlbuf);
 
@@ -177,7 +177,7 @@ __attribute__((used)) static BOOL parse_assembly_elem(xmlbuf_t* xmlbuf, struct a
 
             if (expected_ai)
             {
-                /* FIXME: more tests */
+
                 if (assembly->type == ASSEMBLY_MANIFEST &&
                     memcmp(&assembly->id.version, &expected_ai->version, sizeof(assembly->id.version)))
                 {

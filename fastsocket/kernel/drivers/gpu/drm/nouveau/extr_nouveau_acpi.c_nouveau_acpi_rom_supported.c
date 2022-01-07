@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct pci_dev {int /*<<< orphan*/  dev; } ;
-typedef  int /*<<< orphan*/  acpi_status ;
-typedef  int /*<<< orphan*/  acpi_handle ;
-struct TYPE_2__ {int /*<<< orphan*/  rom_handle; int /*<<< orphan*/  optimus_detected; int /*<<< orphan*/  dsm_detected; } ;
 
-/* Variables and functions */
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DEVICE_ACPI_HANDLE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  acpi_get_handle (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- TYPE_1__ nouveau_dsm_priv ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct pci_dev {int dev; } ;
+typedef int acpi_status ;
+typedef int acpi_handle ;
+struct TYPE_2__ {int rom_handle; int optimus_detected; int dsm_detected; } ;
+
+
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int DEVICE_ACPI_HANDLE (int *) ;
+ int acpi_get_handle (int ,char*,int *) ;
+ TYPE_1__ nouveau_dsm_priv ;
 
 bool nouveau_acpi_rom_supported(struct pci_dev *pdev)
 {
-	acpi_status status;
-	acpi_handle dhandle, rom_handle;
+ acpi_status status;
+ acpi_handle dhandle, rom_handle;
 
-	if (!nouveau_dsm_priv.dsm_detected && !nouveau_dsm_priv.optimus_detected)
-		return false;
+ if (!nouveau_dsm_priv.dsm_detected && !nouveau_dsm_priv.optimus_detected)
+  return 0;
 
-	dhandle = DEVICE_ACPI_HANDLE(&pdev->dev);
-	if (!dhandle)
-		return false;
+ dhandle = DEVICE_ACPI_HANDLE(&pdev->dev);
+ if (!dhandle)
+  return 0;
 
-	status = acpi_get_handle(dhandle, "_ROM", &rom_handle);
-	if (ACPI_FAILURE(status))
-		return false;
+ status = acpi_get_handle(dhandle, "_ROM", &rom_handle);
+ if (ACPI_FAILURE(status))
+  return 0;
 
-	nouveau_dsm_priv.rom_handle = rom_handle;
-	return true;
+ nouveau_dsm_priv.rom_handle = rom_handle;
+ return 1;
 }

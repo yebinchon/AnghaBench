@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT32 ;
-typedef  int /*<<< orphan*/  REFERENCE_TIME ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IAudioClient ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  HANDLE ;
 
-/* Variables and functions */
- scalar_t__ AUDCLNT_E_NOT_INITIALIZED ; 
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateEventW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ IAudioClient_GetBufferSize (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IAudioClient_GetCurrentPadding (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IAudioClient_GetService (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ IAudioClient_GetStreamLatency (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IAudioClient_Reset (int /*<<< orphan*/ *) ; 
- scalar_t__ IAudioClient_SetEventHandle (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ IAudioClient_Start (int /*<<< orphan*/ *) ; 
- scalar_t__ IAudioClient_Stop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IAudioStreamVolume ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
+
+
+
+typedef int UINT32 ;
+typedef int REFERENCE_TIME ;
+typedef int IUnknown ;
+typedef int IAudioClient ;
+typedef scalar_t__ HRESULT ;
+typedef int HANDLE ;
+
+
+ scalar_t__ AUDCLNT_E_NOT_INITIALIZED ;
+ int CloseHandle (int ) ;
+ int CreateEventW (int *,int ,int ,int *) ;
+ int FALSE ;
+ scalar_t__ IAudioClient_GetBufferSize (int *,int *) ;
+ scalar_t__ IAudioClient_GetCurrentPadding (int *,int *) ;
+ scalar_t__ IAudioClient_GetService (int *,int *,void**) ;
+ scalar_t__ IAudioClient_GetStreamLatency (int *,int *) ;
+ scalar_t__ IAudioClient_Reset (int *) ;
+ scalar_t__ IAudioClient_SetEventHandle (int *,int ) ;
+ scalar_t__ IAudioClient_Start (int *) ;
+ scalar_t__ IAudioClient_Stop (int *) ;
+ int IID_IAudioStreamVolume ;
+ int ok (int,char*,scalar_t__) ;
 
 __attribute__((used)) static void test_uninitialized(IAudioClient *ac)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static void test_uninitialized(IAudioClient *ac)
     UINT32 num;
     REFERENCE_TIME t1;
 
-    HANDLE handle = CreateEventW(NULL, FALSE, FALSE, NULL);
+    HANDLE handle = CreateEventW(((void*)0), FALSE, FALSE, ((void*)0));
     IUnknown *unk;
 
     hr = IAudioClient_GetBufferSize(ac, &num);

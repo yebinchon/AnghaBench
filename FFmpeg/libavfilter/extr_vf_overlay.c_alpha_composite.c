@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_4__ {int** data; int* linesize; } ;
-typedef  TYPE_1__ AVFrame ;
+typedef TYPE_1__ AVFrame ;
 
-/* Variables and functions */
- int FAST_DIV255 (int) ; 
- int FFMAX (int,int /*<<< orphan*/ ) ; 
- int FFMIN (int,int) ; 
- int UNPREMULTIPLY_ALPHA (int,int) ; 
+
+ int FAST_DIV255 (int) ;
+ int FFMAX (int,int ) ;
+ int FFMIN (int,int) ;
+ int UNPREMULTIPLY_ALPHA (int,int) ;
 
 __attribute__((used)) static inline void alpha_composite(const AVFrame *src, const AVFrame *dst,
                                    int src_w, int src_h,
@@ -27,7 +27,7 @@ __attribute__((used)) static inline void alpha_composite(const AVFrame *src, con
                                    int x, int y,
                                    int jobnr, int nb_jobs)
 {
-    uint8_t alpha;          ///< the amount of overlay to blend on to main
+    uint8_t alpha;
     uint8_t *s, *sa, *d, *da;
     int i, imax, j, jmax;
     int slice_start, slice_end;
@@ -58,7 +58,7 @@ __attribute__((used)) static inline void alpha_composite(const AVFrame *src, con
                 *d = *s;
                 break;
             default:
-                // apply alpha compositing: main_alpha += (1-main_alpha) * overlay_alpha
+
                 *d += FAST_DIV255((255 - *d) * *s);
             }
             d += 1;

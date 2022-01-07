@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_4__ {int /*<<< orphan*/  sub_version; } ;
-struct TYPE_3__ {int /*<<< orphan*/  version; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_4__ {int sub_version; } ;
+struct TYPE_3__ {int version; } ;
 struct autofs_dev_ioctl {int ioctlfd; TYPE_2__ protosubver; TYPE_1__ protover; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AUTOFS_DEV_IOCTL_PROTOSUBVER ; 
- int /*<<< orphan*/  AUTOFS_DEV_IOCTL_PROTOVER ; 
- int /*<<< orphan*/  assert (int) ; 
- int errno ; 
- int /*<<< orphan*/  init_autofs_dev_ioctl (struct autofs_dev_ioctl*) ; 
- scalar_t__ ioctl (int,int /*<<< orphan*/ ,struct autofs_dev_ioctl*) ; 
- int /*<<< orphan*/  log_debug (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AUTOFS_DEV_IOCTL_PROTOSUBVER ;
+ int AUTOFS_DEV_IOCTL_PROTOVER ;
+ int assert (int) ;
+ int errno ;
+ int init_autofs_dev_ioctl (struct autofs_dev_ioctl*) ;
+ scalar_t__ ioctl (int,int ,struct autofs_dev_ioctl*) ;
+ int log_debug (char*,int ,int ) ;
 
 __attribute__((used)) static int autofs_protocol(int dev_autofs_fd, int ioctl_fd) {
         uint32_t major, minor;

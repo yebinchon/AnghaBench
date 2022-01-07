@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  Size; int /*<<< orphan*/  Buf; } ;
-struct TYPE_6__ {int /*<<< orphan*/  PayloadList; } ;
-typedef  int /*<<< orphan*/  IKE_PACKET_PAYLOAD ;
-typedef  TYPE_1__ IKE_PACKET ;
-typedef  TYPE_2__ BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Add (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeBuf (TYPE_2__*) ; 
- int /*<<< orphan*/  IKE_PAYLOAD_VENDOR_ID ; 
- int /*<<< orphan*/ * IkeNewDataPayload (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__* IkeStrToVendorId (char*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int Size; int Buf; } ;
+struct TYPE_6__ {int PayloadList; } ;
+typedef int IKE_PACKET_PAYLOAD ;
+typedef TYPE_1__ IKE_PACKET ;
+typedef TYPE_2__ BUF ;
+
+
+ int Add (int ,int *) ;
+ int FreeBuf (TYPE_2__*) ;
+ int IKE_PAYLOAD_VENDOR_ID ;
+ int * IkeNewDataPayload (int ,int ,int ) ;
+ TYPE_2__* IkeStrToVendorId (char*) ;
 
 void IkeAddVendorId(IKE_PACKET *p, char *str)
 {
-	BUF *buf;
-	IKE_PACKET_PAYLOAD *payload;
-	// Validate arguments
-	if (p == NULL || str == NULL)
-	{
-		return;
-	}
+ BUF *buf;
+ IKE_PACKET_PAYLOAD *payload;
 
-	buf = IkeStrToVendorId(str);
-	if (buf == NULL)
-	{
-		return;
-	}
+ if (p == ((void*)0) || str == ((void*)0))
+ {
+  return;
+ }
 
-	payload = IkeNewDataPayload(IKE_PAYLOAD_VENDOR_ID, buf->Buf, buf->Size);
+ buf = IkeStrToVendorId(str);
+ if (buf == ((void*)0))
+ {
+  return;
+ }
 
-	Add(p->PayloadList, payload);
+ payload = IkeNewDataPayload(IKE_PAYLOAD_VENDOR_ID, buf->Buf, buf->Size);
 
-	FreeBuf(buf);
+ Add(p->PayloadList, payload);
+
+ FreeBuf(buf);
 }

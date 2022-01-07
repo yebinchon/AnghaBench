@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {size_t num_contours; TYPE_1__* contours; } ;
 struct TYPE_7__ {scalar_t__ org_u; scalar_t__ org_v; struct TYPE_7__* next; struct TYPE_7__* prev; } ;
 struct TYPE_6__ {int count; TYPE_2__* start; } ;
-typedef  TYPE_2__* PSH_Point ;
-typedef  TYPE_3__* PSH_Glyph ;
-typedef  size_t FT_UInt ;
-typedef  scalar_t__ FT_Pos ;
-typedef  int FT_Int ;
+typedef TYPE_2__* PSH_Point ;
+typedef TYPE_3__* PSH_Glyph ;
+typedef size_t FT_UInt ;
+typedef scalar_t__ FT_Pos ;
+typedef int FT_Int ;
 
-/* Variables and functions */
- int psh_corner_orientation (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  psh_point_set_inflex (TYPE_2__*) ; 
+
+ int psh_corner_orientation (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int psh_point_set_inflex (TYPE_2__*) ;
 
 __attribute__((used)) static void
-  psh_glyph_compute_inflections( PSH_Glyph  glyph )
+  psh_glyph_compute_inflections( PSH_Glyph glyph )
   {
-    FT_UInt  n;
+    FT_UInt n;
 
 
     for ( n = 0; n < glyph->num_contours; n++ )
     {
-      PSH_Point  first, start, end, before, after;
-      FT_Pos     in_x, in_y, out_x, out_y;
-      FT_Int     orient_prev, orient_cur;
-      FT_Int     finished = 0;
+      PSH_Point first, start, end, before, after;
+      FT_Pos in_x, in_y, out_x, out_y;
+      FT_Int orient_prev, orient_cur;
+      FT_Int finished = 0;
 
 
-      /* we need at least 4 points to create an inflection point */
+
       if ( glyph->contours[n].count < 4 )
         continue;
 
-      /* compute first segment in contour */
+
       first = glyph->contours[n].start;
 
       start = end = first;
@@ -59,13 +59,13 @@ __attribute__((used)) static void
 
       } while ( in_x == 0 && in_y == 0 );
 
-      /* extend the segment start whenever possible */
+
       before = start;
       do
       {
         do
         {
-          start  = before;
+          start = before;
           before = before->prev;
           if ( before == first )
             goto Skip;
@@ -80,19 +80,19 @@ __attribute__((used)) static void
       } while ( orient_prev == 0 );
 
       first = start;
-      in_x  = out_x;
-      in_y  = out_y;
+      in_x = out_x;
+      in_y = out_y;
 
-      /* now, process all segments in the contour */
+
       do
       {
-        /* first, extend current segment's end whenever possible */
+
         after = end;
         do
         {
           do
           {
-            end   = after;
+            end = after;
             after = after->next;
             if ( after == first )
               finished = 1;
@@ -118,11 +118,11 @@ __attribute__((used)) static void
           psh_point_set_inflex( start );
         }
 
-        start       = end;
-        end         = after;
+        start = end;
+        end = after;
         orient_prev = orient_cur;
-        in_x        = out_x;
-        in_y        = out_y;
+        in_x = out_x;
+        in_y = out_y;
 
       } while ( !finished );
 

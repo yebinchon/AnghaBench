@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct radeonfb_info {TYPE_1__* i2c; } ;
-struct TYPE_2__ {int /*<<< orphan*/  ddc_reg; struct radeonfb_info* rinfo; } ;
+struct TYPE_2__ {int ddc_reg; struct radeonfb_info* rinfo; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GPIO_CRT2_DDC ; 
- int /*<<< orphan*/  GPIO_DVI_DDC ; 
- int /*<<< orphan*/  GPIO_MONID ; 
- int /*<<< orphan*/  GPIO_VGA_DDC ; 
- int /*<<< orphan*/  radeon_setup_i2c_bus (TYPE_1__*,char*) ; 
+
+ int GPIO_CRT2_DDC ;
+ int GPIO_DVI_DDC ;
+ int GPIO_MONID ;
+ int GPIO_VGA_DDC ;
+ int radeon_setup_i2c_bus (TYPE_1__*,char*) ;
 
 void radeon_create_i2c_busses(struct radeonfb_info *rinfo)
 {
-	rinfo->i2c[0].rinfo	= rinfo;
-	rinfo->i2c[0].ddc_reg	= GPIO_MONID;
-	radeon_setup_i2c_bus(&rinfo->i2c[0], "monid");
+ rinfo->i2c[0].rinfo = rinfo;
+ rinfo->i2c[0].ddc_reg = GPIO_MONID;
+ radeon_setup_i2c_bus(&rinfo->i2c[0], "monid");
 
-	rinfo->i2c[1].rinfo	= rinfo;
-	rinfo->i2c[1].ddc_reg	= GPIO_DVI_DDC;
-	radeon_setup_i2c_bus(&rinfo->i2c[1], "dvi");
+ rinfo->i2c[1].rinfo = rinfo;
+ rinfo->i2c[1].ddc_reg = GPIO_DVI_DDC;
+ radeon_setup_i2c_bus(&rinfo->i2c[1], "dvi");
 
-	rinfo->i2c[2].rinfo	= rinfo;
-	rinfo->i2c[2].ddc_reg	= GPIO_VGA_DDC;
-	radeon_setup_i2c_bus(&rinfo->i2c[2], "vga");
+ rinfo->i2c[2].rinfo = rinfo;
+ rinfo->i2c[2].ddc_reg = GPIO_VGA_DDC;
+ radeon_setup_i2c_bus(&rinfo->i2c[2], "vga");
 
-	rinfo->i2c[3].rinfo	= rinfo;
-	rinfo->i2c[3].ddc_reg	= GPIO_CRT2_DDC;
-	radeon_setup_i2c_bus(&rinfo->i2c[3], "crt2");
+ rinfo->i2c[3].rinfo = rinfo;
+ rinfo->i2c[3].ddc_reg = GPIO_CRT2_DDC;
+ radeon_setup_i2c_bus(&rinfo->i2c[3], "crt2");
 }

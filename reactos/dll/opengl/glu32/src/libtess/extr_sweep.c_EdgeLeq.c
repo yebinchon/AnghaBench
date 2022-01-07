@@ -1,45 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_9__ {TYPE_2__* eUp; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * Org; int /*<<< orphan*/ * Dst; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * event; } ;
-typedef  scalar_t__ GLdouble ;
-typedef  int /*<<< orphan*/  GLUvertex ;
-typedef  TYPE_1__ GLUtesselator ;
-typedef  TYPE_2__ GLUhalfEdge ;
-typedef  TYPE_3__ ActiveRegion ;
+struct TYPE_8__ {int * Org; int * Dst; } ;
+struct TYPE_7__ {int * event; } ;
+typedef scalar_t__ GLdouble ;
+typedef int GLUvertex ;
+typedef TYPE_1__ GLUtesselator ;
+typedef TYPE_2__ GLUhalfEdge ;
+typedef TYPE_3__ ActiveRegion ;
 
-/* Variables and functions */
- scalar_t__ EdgeEval (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ EdgeSign (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ VertLeq (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ EdgeEval (int *,int *,int *) ;
+ scalar_t__ EdgeSign (int *,int *,int *) ;
+ scalar_t__ VertLeq (int *,int *) ;
 
 __attribute__((used)) static int EdgeLeq( GLUtesselator *tess, ActiveRegion *reg1,
-		    ActiveRegion *reg2 )
-/*
- * Both edges must be directed from right to left (this is the canonical
- * direction for the upper edge of each region).
- *
- * The strategy is to evaluate a "t" value for each edge at the
- * current sweep line position, given by tess->event.  The calculations
- * are designed to be very stable, but of course they are not perfect.
- *
- * Special case: if both edge destinations are at the sweep event,
- * we sort the edges by slope (they would otherwise compare equally).
- */
+      ActiveRegion *reg2 )
 {
   GLUvertex *event = tess->event;
   GLUhalfEdge *e1, *e2;
@@ -50,11 +39,11 @@ __attribute__((used)) static int EdgeLeq( GLUtesselator *tess, ActiveRegion *reg
 
   if( e1->Dst == event ) {
     if( e2->Dst == event ) {
-      /* Two edges right of the sweep line which meet at the sweep event.
-       * Sort them by slope.
-       */
+
+
+
       if( VertLeq( e1->Org, e2->Org )) {
-	return EdgeSign( e2->Dst, e1->Org, e2->Org ) <= 0;
+ return EdgeSign( e2->Dst, e1->Org, e2->Org ) <= 0;
       }
       return EdgeSign( e1->Dst, e2->Org, e1->Org ) >= 0;
     }
@@ -64,7 +53,7 @@ __attribute__((used)) static int EdgeLeq( GLUtesselator *tess, ActiveRegion *reg
     return EdgeSign( e1->Dst, event, e1->Org ) >= 0;
   }
 
-  /* General case - compute signed distance *from* e1, e2 to event */
+
   t1 = EdgeEval( e1->Dst, event, e1->Org );
   t2 = EdgeEval( e2->Dst, event, e2->Org );
   return (t1 >= t2);

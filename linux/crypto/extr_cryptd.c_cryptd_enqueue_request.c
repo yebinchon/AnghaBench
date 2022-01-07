@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct crypto_async_request {int /*<<< orphan*/  tfm; } ;
-struct cryptd_queue {int /*<<< orphan*/  cpu_queue; } ;
-struct cryptd_cpu_queue {int /*<<< orphan*/  work; int /*<<< orphan*/  queue; } ;
-typedef  int /*<<< orphan*/  refcount_t ;
 
-/* Variables and functions */
- int ENOSPC ; 
- int /*<<< orphan*/  cryptd_wq ; 
- int crypto_enqueue_request (int /*<<< orphan*/ *,struct crypto_async_request*) ; 
- int /*<<< orphan*/ * crypto_tfm_ctx (int /*<<< orphan*/ ) ; 
- int get_cpu () ; 
- int /*<<< orphan*/  put_cpu () ; 
- int /*<<< orphan*/  queue_work_on (int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  refcount_inc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  refcount_read (int /*<<< orphan*/ *) ; 
- struct cryptd_cpu_queue* this_cpu_ptr (int /*<<< orphan*/ ) ; 
+
+
+
+struct crypto_async_request {int tfm; } ;
+struct cryptd_queue {int cpu_queue; } ;
+struct cryptd_cpu_queue {int work; int queue; } ;
+typedef int refcount_t ;
+
+
+ int ENOSPC ;
+ int cryptd_wq ;
+ int crypto_enqueue_request (int *,struct crypto_async_request*) ;
+ int * crypto_tfm_ctx (int ) ;
+ int get_cpu () ;
+ int put_cpu () ;
+ int queue_work_on (int,int ,int *) ;
+ int refcount_inc (int *) ;
+ int refcount_read (int *) ;
+ struct cryptd_cpu_queue* this_cpu_ptr (int ) ;
 
 __attribute__((used)) static int cryptd_enqueue_request(struct cryptd_queue *queue,
-				  struct crypto_async_request *request)
+      struct crypto_async_request *request)
 {
-	int cpu, err;
-	struct cryptd_cpu_queue *cpu_queue;
-	refcount_t *refcnt;
+ int cpu, err;
+ struct cryptd_cpu_queue *cpu_queue;
+ refcount_t *refcnt;
 
-	cpu = get_cpu();
-	cpu_queue = this_cpu_ptr(queue->cpu_queue);
-	err = crypto_enqueue_request(&cpu_queue->queue, request);
+ cpu = get_cpu();
+ cpu_queue = this_cpu_ptr(queue->cpu_queue);
+ err = crypto_enqueue_request(&cpu_queue->queue, request);
 
-	refcnt = crypto_tfm_ctx(request->tfm);
+ refcnt = crypto_tfm_ctx(request->tfm);
 
-	if (err == -ENOSPC)
-		goto out_put_cpu;
+ if (err == -ENOSPC)
+  goto out_put_cpu;
 
-	queue_work_on(cpu, cryptd_wq, &cpu_queue->work);
+ queue_work_on(cpu, cryptd_wq, &cpu_queue->work);
 
-	if (!refcount_read(refcnt))
-		goto out_put_cpu;
+ if (!refcount_read(refcnt))
+  goto out_put_cpu;
 
-	refcount_inc(refcnt);
+ refcount_inc(refcnt);
 
 out_put_cpu:
-	put_cpu();
+ put_cpu();
 
-	return err;
+ return err;
 }

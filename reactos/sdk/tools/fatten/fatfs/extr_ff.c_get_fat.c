@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int UINT ;
 struct TYPE_5__ {int n_fatent; int fs_type; int fatbase; int* win; } ;
-typedef  TYPE_1__ FATFS ;
-typedef  int DWORD ;
-typedef  int BYTE ;
+typedef TYPE_1__ FATFS ;
+typedef int DWORD ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FR_OK ; 
-#define  FS_FAT12 130 
-#define  FS_FAT16 129 
-#define  FS_FAT32 128 
- int LD_DWORD (int*) ; 
- int LD_WORD (int*) ; 
- int SS (TYPE_1__*) ; 
- int /*<<< orphan*/  move_window (TYPE_1__*,int) ; 
 
-DWORD get_fat (	/* 0xFFFFFFFF:Disk error, 1:Internal error, 2..0x0FFFFFFF:Cluster status */
-	FATFS* fs,	/* File system object */
-	DWORD clst	/* FAT index number (cluster number) to get the value */
+ int FR_OK ;
+
+
+
+ int LD_DWORD (int*) ;
+ int LD_WORD (int*) ;
+ int SS (TYPE_1__*) ;
+ int move_window (TYPE_1__*,int) ;
+
+DWORD get_fat (
+ FATFS* fs,
+ DWORD clst
 )
 {
-	UINT wc, bc;
-	BYTE *p;
-	DWORD val;
+ UINT wc, bc;
+ BYTE *p;
+ DWORD val;
 
 
-	if (clst < 2 || clst >= fs->n_fatent) {	/* Check if in valid range */
-		val = 1;	/* Internal error */
+ if (clst < 2 || clst >= fs->n_fatent) {
+  val = 1;
 
-	} else {
-		val = 0xFFFFFFFF;	/* Default value falls on disk error */
+ } else {
+  val = 0xFFFFFFFF;
 
-		switch (fs->fs_type) {
-		case FS_FAT12 :
-			bc = (UINT)clst; bc += bc / 2;
-			if (move_window(fs, fs->fatbase + (bc / SS(fs))) != FR_OK) break;
-			wc = fs->win[bc++ % SS(fs)];
-			if (move_window(fs, fs->fatbase + (bc / SS(fs))) != FR_OK) break;
-			wc |= fs->win[bc % SS(fs)] << 8;
-			val = clst & 1 ? wc >> 4 : (wc & 0xFFF);
-			break;
+  switch (fs->fs_type) {
+  case 130 :
+   bc = (UINT)clst; bc += bc / 2;
+   if (move_window(fs, fs->fatbase + (bc / SS(fs))) != FR_OK) break;
+   wc = fs->win[bc++ % SS(fs)];
+   if (move_window(fs, fs->fatbase + (bc / SS(fs))) != FR_OK) break;
+   wc |= fs->win[bc % SS(fs)] << 8;
+   val = clst & 1 ? wc >> 4 : (wc & 0xFFF);
+   break;
 
-		case FS_FAT16 :
-			if (move_window(fs, fs->fatbase + (clst / (SS(fs) / 2))) != FR_OK) break;
-			p = &fs->win[clst * 2 % SS(fs)];
-			val = LD_WORD(p);
-			break;
+  case 129 :
+   if (move_window(fs, fs->fatbase + (clst / (SS(fs) / 2))) != FR_OK) break;
+   p = &fs->win[clst * 2 % SS(fs)];
+   val = LD_WORD(p);
+   break;
 
-		case FS_FAT32 :
-			if (move_window(fs, fs->fatbase + (clst / (SS(fs) / 4))) != FR_OK) break;
-			p = &fs->win[clst * 4 % SS(fs)];
-			val = LD_DWORD(p) & 0x0FFFFFFF;
-			break;
+  case 128 :
+   if (move_window(fs, fs->fatbase + (clst / (SS(fs) / 4))) != FR_OK) break;
+   p = &fs->win[clst * 4 % SS(fs)];
+   val = LD_DWORD(p) & 0x0FFFFFFF;
+   break;
 
-		default:
-			val = 1;	/* Internal error */
-		}
-	}
+  default:
+   val = 1;
+  }
+ }
 
-	return val;
+ return val;
 }

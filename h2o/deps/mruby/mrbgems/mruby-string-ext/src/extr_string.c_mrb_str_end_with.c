@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  size_t mrb_int ;
 
-/* Variables and functions */
- size_t RSTRING_LEN (int /*<<< orphan*/ ) ; 
- size_t RSTRING_PTR (int /*<<< orphan*/ ) ; 
- scalar_t__ memcmp (size_t,size_t,size_t) ; 
- int /*<<< orphan*/  mrb_ensure_string_type (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_false_value () ; 
- int /*<<< orphan*/  mrb_gc_arena_restore (int /*<<< orphan*/ *,int) ; 
- int mrb_gc_arena_save (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ **,size_t*) ; 
- int /*<<< orphan*/  mrb_true_value () ; 
+
+
+
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef size_t mrb_int ;
+
+
+ size_t RSTRING_LEN (int ) ;
+ size_t RSTRING_PTR (int ) ;
+ scalar_t__ memcmp (size_t,size_t,size_t) ;
+ int mrb_ensure_string_type (int *,int ) ;
+ int mrb_false_value () ;
+ int mrb_gc_arena_restore (int *,int) ;
+ int mrb_gc_arena_save (int *) ;
+ int mrb_get_args (int *,char*,int **,size_t*) ;
+ int mrb_true_value () ;
 
 __attribute__((used)) static mrb_value
 mrb_str_end_with(mrb_state *mrb, mrb_value self)

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  biCompression; } ;
-typedef  TYPE_1__ BITMAPINFOHEADER ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  biBitCount ; 
- int /*<<< orphan*/  biClrImportant ; 
- int /*<<< orphan*/  biClrUsed ; 
- int /*<<< orphan*/  biCompression ; 
- int /*<<< orphan*/  biHeight ; 
- int /*<<< orphan*/  biPlanes ; 
- int /*<<< orphan*/  biSize ; 
- int /*<<< orphan*/  biSizeImage ; 
- int /*<<< orphan*/  biWidth ; 
- int /*<<< orphan*/  biXPelsPerMeter ; 
- int /*<<< orphan*/  biYPelsPerMeter ; 
- int /*<<< orphan*/  dstruct (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int biCompression; } ;
+typedef TYPE_1__ BITMAPINFOHEADER ;
+typedef int AVFormatContext ;
+
+
+ int AV_LOG_DEBUG ;
+ int av_log (int *,int ,char*,...) ;
+ int biBitCount ;
+ int biClrImportant ;
+ int biClrUsed ;
+ int biCompression ;
+ int biHeight ;
+ int biPlanes ;
+ int biSize ;
+ int biSizeImage ;
+ int biWidth ;
+ int biXPelsPerMeter ;
+ int biYPelsPerMeter ;
+ int dstruct (int *,TYPE_1__*,int ,char*) ;
 
 __attribute__((used)) static void dump_bih(AVFormatContext *s, BITMAPINFOHEADER *bih)
 {

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IHTMLWindow2 ;
-typedef  int /*<<< orphan*/  IHTMLFrameElement3 ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IDispatch_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IHTMLDocument2_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IHTMLFrameElement3_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IHTMLFrameElement3_get_contentDocument (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IHTMLWindow2_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IHTMLFrameElement3 ; 
- int /*<<< orphan*/  IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/ * get_elem_doc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * get_frame_content_window (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * get_window_doc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  iface_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  test_ifaces (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
- int /*<<< orphan*/  window_iids ; 
+
+
+
+typedef int IUnknown ;
+typedef int IHTMLWindow2 ;
+typedef int IHTMLFrameElement3 ;
+typedef int IHTMLDocument2 ;
+typedef int IDispatch ;
+typedef int HRESULT ;
+typedef int BOOL ;
+
+
+ int IDispatch_Release (int *) ;
+ int IHTMLDocument2_Release (int *) ;
+ int IHTMLFrameElement3_Release (int *) ;
+ int IHTMLFrameElement3_get_contentDocument (int *,int **) ;
+ int IHTMLWindow2_Release (int *) ;
+ int IID_IHTMLFrameElement3 ;
+ int IUnknown_QueryInterface (int *,int *,void**) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int * get_elem_doc (int *) ;
+ int * get_frame_content_window (int *) ;
+ int * get_window_doc (int *) ;
+ int iface_cmp (int *,int *) ;
+ int ok (int,char*,...) ;
+ int test_ifaces (int *,int ) ;
+ int win_skip (char*) ;
+ int window_iids ;
 
 __attribute__((used)) static void test_frame_doc(IUnknown *frame_elem, BOOL iframe)
 {
@@ -55,11 +55,11 @@ __attribute__((used)) static void test_frame_doc(IUnknown *frame_elem, BOOL ifra
     if(!iframe) {
         hres = IUnknown_QueryInterface(frame_elem, &IID_IHTMLFrameElement3, (void**)&frame_elem3);
         if(SUCCEEDED(hres)) {
-            IDispatch *disp = NULL;
+            IDispatch *disp = ((void*)0);
 
             hres = IHTMLFrameElement3_get_contentDocument(frame_elem3, &disp);
             ok(hres == S_OK, "get_contentDocument failed: %08x\n", hres);
-            ok(disp != NULL, "contentDocument == NULL\n");
+            ok(disp != ((void*)0), "contentDocument == NULL\n");
             ok(iface_cmp((IUnknown*)disp, (IUnknown*)window_doc), "contentDocument != contentWindow.document\n");
 
             IDispatch_Release(disp);

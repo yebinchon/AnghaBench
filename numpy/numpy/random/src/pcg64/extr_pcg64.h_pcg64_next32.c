@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  scalar_t__ uint32_t ;
-struct TYPE_3__ {int has_uint32; scalar_t__ uinteger; int /*<<< orphan*/  pcg_state; } ;
-typedef  TYPE_1__ pcg64_state ;
 
-/* Variables and functions */
- int pcg64_random_r (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef scalar_t__ uint32_t ;
+struct TYPE_3__ {int has_uint32; scalar_t__ uinteger; int pcg_state; } ;
+typedef TYPE_1__ pcg64_state ;
+
+
+ int pcg64_random_r (int ) ;
 
 __attribute__((used)) static inline uint32_t pcg64_next32(pcg64_state *state) {
   uint64_t next;

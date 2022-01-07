@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  binlog_disabled ; 
- int /*<<< orphan*/  create_all_outbound_connections () ; 
- int /*<<< orphan*/  dyn_garbage_collector () ; 
- int /*<<< orphan*/  flush_binlog () ; 
- int /*<<< orphan*/  last_collect_garbage_time ; 
- int /*<<< orphan*/  news_collect_garbage (int) ; 
- int /*<<< orphan*/  now ; 
- int /*<<< orphan*/  update_offsets (int) ; 
+ int binlog_disabled ;
+ int create_all_outbound_connections () ;
+ int dyn_garbage_collector () ;
+ int flush_binlog () ;
+ int last_collect_garbage_time ;
+ int news_collect_garbage (int) ;
+ int now ;
+ int update_offsets (int) ;
 
 void cron (void) {
   create_all_outbound_connections ();

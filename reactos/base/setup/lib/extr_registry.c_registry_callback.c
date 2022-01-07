@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ WCHAR ;
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/ * PUNICODE_STRING ;
-typedef  int /*<<< orphan*/  PINT ;
-typedef  int /*<<< orphan*/  PCWSTR ;
-typedef  int /*<<< orphan*/  OBJECT_ATTRIBUTES ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  INFCONTEXT ;
-typedef  int /*<<< orphan*/  HINF ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  Buffer ;
-typedef  scalar_t__ BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateNestedKey (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPRINT (char*,int,...) ; 
- int /*<<< orphan*/  DPRINT1 (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- int FLG_ADDREG_OVERWRITEONLY ; 
- int /*<<< orphan*/  GetRootKeyByName (scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InitializeObjectAttributes (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KEY_ALL_ACCESS ; 
- int MAX_INF_STRING_LENGTH ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtClose (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtOpenKey (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OBJ_CASE_INSENSITIVE ; 
- int /*<<< orphan*/  REG_OPTION_NON_VOLATILE ; 
- int /*<<< orphan*/  RtlInitUnicodeString (int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ SpInfFindFirstLine (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ SpInfFindNextLine (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SpInfGetIntField (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- scalar_t__ SpInfGetStringField (int /*<<< orphan*/ *,int,scalar_t__*,int,int /*<<< orphan*/ *) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  do_reg_operation (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef scalar_t__ WCHAR ;
+typedef int UNICODE_STRING ;
+typedef int UINT ;
+typedef int * PUNICODE_STRING ;
+typedef int PINT ;
+typedef int PCWSTR ;
+typedef int OBJECT_ATTRIBUTES ;
+typedef int NTSTATUS ;
+typedef int INFCONTEXT ;
+typedef int HINF ;
+typedef int HANDLE ;
+typedef int Buffer ;
+typedef scalar_t__ BOOLEAN ;
+
+
+ int CreateNestedKey (int *,int ,int *,int ) ;
+ int DPRINT (char*,int,...) ;
+ int DPRINT1 (char*,int *,int ) ;
+ scalar_t__ FALSE ;
+ int FLG_ADDREG_OVERWRITEONLY ;
+ int GetRootKeyByName (scalar_t__*,int *) ;
+ int InitializeObjectAttributes (int *,int *,int ,int ,int *) ;
+ int KEY_ALL_ACCESS ;
+ int MAX_INF_STRING_LENGTH ;
+ int NT_SUCCESS (int ) ;
+ int NtClose (int ) ;
+ int NtOpenKey (int *,int ,int *) ;
+ int OBJ_CASE_INSENSITIVE ;
+ int REG_OPTION_NON_VOLATILE ;
+ int RtlInitUnicodeString (int *,scalar_t__*) ;
+ scalar_t__ SpInfFindFirstLine (int ,int ,int *,int *) ;
+ scalar_t__ SpInfFindNextLine (int *,int *) ;
+ int SpInfGetIntField (int *,int,int ) ;
+ scalar_t__ SpInfGetStringField (int *,int,scalar_t__*,int,int *) ;
+ scalar_t__ TRUE ;
+ int do_reg_operation (int ,int *,int *,int) ;
 
 __attribute__((used)) static BOOLEAN
 registry_callback(HINF hInf, PCWSTR Section, BOOLEAN Delete)
@@ -62,26 +62,26 @@ registry_callback(HINF hInf, PCWSTR Section, BOOLEAN Delete)
     HANDLE RootKeyHandle, KeyHandle;
     BOOLEAN Ok;
 
-    Ok = SpInfFindFirstLine(hInf, Section, NULL, &Context);
+    Ok = SpInfFindFirstLine(hInf, Section, ((void*)0), &Context);
     if (!Ok)
-        return TRUE; /* Don't fail if the section isn't present */
+        return TRUE;
 
     for (;Ok; Ok = SpInfFindNextLine(&Context, &Context))
     {
-        /* get root */
-        if (!SpInfGetStringField(&Context, 1, Buffer, sizeof(Buffer)/sizeof(WCHAR), NULL))
+
+        if (!SpInfGetStringField(&Context, 1, Buffer, sizeof(Buffer)/sizeof(WCHAR), ((void*)0)))
             continue;
         RootKeyHandle = GetRootKeyByName(Buffer, &RootKeyName);
         if (!RootKeyHandle)
             continue;
 
-        /* get key */
-        if (!SpInfGetStringField(&Context, 2, Buffer, sizeof(Buffer)/sizeof(WCHAR), NULL))
+
+        if (!SpInfGetStringField(&Context, 2, Buffer, sizeof(Buffer)/sizeof(WCHAR), ((void*)0)))
             *Buffer = 0;
 
         DPRINT("KeyName: <%S\\%S>\n", RootKeyName, Buffer);
 
-        /* get flags */
+
         if (!SpInfGetIntField(&Context, 4, (PINT)&Flags))
             Flags = 0;
 
@@ -92,7 +92,7 @@ registry_callback(HINF hInf, PCWSTR Section, BOOLEAN Delete)
                                    &Name,
                                    OBJ_CASE_INSENSITIVE,
                                    RootKeyHandle,
-                                   NULL);
+                                   ((void*)0));
 
         if (Delete || (Flags & FLG_ADDREG_OVERWRITEONLY))
         {
@@ -102,7 +102,7 @@ registry_callback(HINF hInf, PCWSTR Section, BOOLEAN Delete)
             if (!NT_SUCCESS(Status))
             {
                 DPRINT1("NtOpenKey(%wZ) failed (Status %lx)\n", &Name, Status);
-                continue;  /* ignore if it doesn't exist */
+                continue;
             }
         }
         else
@@ -118,18 +118,18 @@ registry_callback(HINF hInf, PCWSTR Section, BOOLEAN Delete)
             }
         }
 
-        /* get value name */
-        if (SpInfGetStringField(&Context, 3, Buffer, sizeof(Buffer)/sizeof(WCHAR), NULL))
+
+        if (SpInfGetStringField(&Context, 3, Buffer, sizeof(Buffer)/sizeof(WCHAR), ((void*)0)))
         {
             RtlInitUnicodeString(&Value, Buffer);
             ValuePtr = &Value;
         }
         else
         {
-            ValuePtr = NULL;
+            ValuePtr = ((void*)0);
         }
 
-        /* and now do it */
+
         if (!do_reg_operation(KeyHandle, ValuePtr, &Context, Flags))
         {
             NtClose(KeyHandle);

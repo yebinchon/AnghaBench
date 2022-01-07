@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct thunder_mdio_softc {int /*<<< orphan*/  phy_desc_head; } ;
-struct phy_desc {int /*<<< orphan*/  ifp; int /*<<< orphan*/  miibus; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  MDIO_LOCK (struct thunder_mdio_softc*) ; 
- int /*<<< orphan*/  MDIO_UNLOCK (struct thunder_mdio_softc*) ; 
- int /*<<< orphan*/  M_THUNDER_MDIO ; 
- int /*<<< orphan*/  TAILQ_REMOVE (int /*<<< orphan*/ *,struct phy_desc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bus_generic_detach (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_delete_child (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct thunder_mdio_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (struct phy_desc*,int /*<<< orphan*/ ) ; 
- struct phy_desc* get_phy_desc (struct thunder_mdio_softc*,int) ; 
- int /*<<< orphan*/  if_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  phy_desc_list ; 
+
+
+
+struct thunder_mdio_softc {int phy_desc_head; } ;
+struct phy_desc {int ifp; int miibus; } ;
+typedef int device_t ;
+
+
+ int EINVAL ;
+ int MDIO_LOCK (struct thunder_mdio_softc*) ;
+ int MDIO_UNLOCK (struct thunder_mdio_softc*) ;
+ int M_THUNDER_MDIO ;
+ int TAILQ_REMOVE (int *,struct phy_desc*,int ) ;
+ int bus_generic_detach (int ) ;
+ int device_delete_child (int ,int ) ;
+ struct thunder_mdio_softc* device_get_softc (int ) ;
+ int free (struct phy_desc*,int ) ;
+ struct phy_desc* get_phy_desc (struct thunder_mdio_softc*,int) ;
+ int if_free (int ) ;
+ int phy_desc_list ;
 
 __attribute__((used)) static int
 thunder_mdio_phy_disconnect(device_t dev, int lmacid, int phy)
 {
-	struct thunder_mdio_softc *sc;
-	struct phy_desc *pd;
+ struct thunder_mdio_softc *sc;
+ struct phy_desc *pd;
 
-	sc = device_get_softc(dev);
-	MDIO_LOCK(sc);
+ sc = device_get_softc(dev);
+ MDIO_LOCK(sc);
 
-	pd = get_phy_desc(sc, lmacid);
-	if (pd == NULL) {
-		MDIO_UNLOCK(sc);
-		return (EINVAL);
-	}
+ pd = get_phy_desc(sc, lmacid);
+ if (pd == ((void*)0)) {
+  MDIO_UNLOCK(sc);
+  return (EINVAL);
+ }
 
-	/* Remove this PHY descriptor from the list */
-	TAILQ_REMOVE(&sc->phy_desc_head, pd, phy_desc_list);
 
-	/* Detach miibus */
-	bus_generic_detach(dev);
-	device_delete_child(dev, pd->miibus);
-	/* Free fake ifnet */
-	if_free(pd->ifp);
-	/* Free memory under phy descriptor */
-	free(pd, M_THUNDER_MDIO);
-	MDIO_UNLOCK(sc);
+ TAILQ_REMOVE(&sc->phy_desc_head, pd, phy_desc_list);
 
-	return (0);
+
+ bus_generic_detach(dev);
+ device_delete_child(dev, pd->miibus);
+
+ if_free(pd->ifp);
+
+ free(pd, M_THUNDER_MDIO);
+ MDIO_UNLOCK(sc);
+
+ return (0);
 }

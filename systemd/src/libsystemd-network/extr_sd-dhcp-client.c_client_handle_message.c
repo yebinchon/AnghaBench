@@ -1,65 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_2__ ;
-typedef  struct TYPE_24__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_25__ {int state; int start_delay; int fd; int /*<<< orphan*/  ip_service_type; int /*<<< orphan*/  port; TYPE_1__* lease; int /*<<< orphan*/  ifindex; int /*<<< orphan*/  last_addr; int /*<<< orphan*/  attempt; int /*<<< orphan*/  receive_message; int /*<<< orphan*/  timeout_resend; int /*<<< orphan*/  event_priority; struct TYPE_25__* event; } ;
-typedef  TYPE_2__ sd_dhcp_client ;
-struct TYPE_24__ {int /*<<< orphan*/  address; } ;
-typedef  TYPE_2__ DHCPMessage ;
 
-/* Variables and functions */
- int CLAMP (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DHCP_CLIENT_DONT_DESTROY (TYPE_2__*) ; 
-#define  DHCP_STATE_BOUND 136 
-#define  DHCP_STATE_INIT 135 
-#define  DHCP_STATE_INIT_REBOOT 134 
-#define  DHCP_STATE_REBINDING 133 
-#define  DHCP_STATE_REBOOTING 132 
-#define  DHCP_STATE_RENEWING 131 
-#define  DHCP_STATE_REQUESTING 130 
-#define  DHCP_STATE_SELECTING 129 
-#define  DHCP_STATE_STOPPED 128 
- int EADDRNOTAVAIL ; 
- int EINVAL ; 
- int ENOMSG ; 
- int FORMAT_TIMESPAN_MAX ; 
- int /*<<< orphan*/  IN_SET (int,int const,int const) ; 
- int /*<<< orphan*/  RESTART_AFTER_NAK_MAX_USEC ; 
- int /*<<< orphan*/  RESTART_AFTER_NAK_MIN_USEC ; 
- int SD_DHCP_CLIENT_EVENT_EXPIRED ; 
- int SD_DHCP_CLIENT_EVENT_IP_ACQUIRE ; 
- int /*<<< orphan*/  USEC_PER_SEC ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int asynchronous_close (int) ; 
- int client_handle_ack (TYPE_2__*,TYPE_2__*,int) ; 
- int client_handle_forcerenew (TYPE_2__*,TYPE_2__*,int) ; 
- int client_handle_offer (TYPE_2__*,TYPE_2__*,int) ; 
- int client_initialize (TYPE_2__*) ; 
- int /*<<< orphan*/  client_initialize_io_events (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  client_notify (TYPE_2__*,int) ; 
- int /*<<< orphan*/  client_receive_message_udp ; 
- int client_set_lease_timeouts (TYPE_2__*) ; 
- int client_start_delayed (TYPE_2__*) ; 
- int /*<<< orphan*/  client_stop (TYPE_2__*,int) ; 
- int /*<<< orphan*/  client_timeout_resend ; 
- int client_timeout_t1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  clock_boottime_or_monotonic () ; 
- int dhcp_network_bind_udp_socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int event_reset_time (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  event_source_disable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  format_timespan (char*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_dhcp_client (TYPE_2__*,char*,...) ; 
- int /*<<< orphan*/  sd_event_source_unref (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_25__ TYPE_2__ ;
+typedef struct TYPE_24__ TYPE_1__ ;
+
+
+struct TYPE_25__ {int state; int start_delay; int fd; int ip_service_type; int port; TYPE_1__* lease; int ifindex; int last_addr; int attempt; int receive_message; int timeout_resend; int event_priority; struct TYPE_25__* event; } ;
+typedef TYPE_2__ sd_dhcp_client ;
+struct TYPE_24__ {int address; } ;
+typedef TYPE_2__ DHCPMessage ;
+
+
+ int CLAMP (int,int ,int ) ;
+ int DHCP_CLIENT_DONT_DESTROY (TYPE_2__*) ;
+ int EADDRNOTAVAIL ;
+ int EINVAL ;
+ int ENOMSG ;
+ int FORMAT_TIMESPAN_MAX ;
+ int IN_SET (int,int const,int const) ;
+ int RESTART_AFTER_NAK_MAX_USEC ;
+ int RESTART_AFTER_NAK_MIN_USEC ;
+ int SD_DHCP_CLIENT_EVENT_EXPIRED ;
+ int SD_DHCP_CLIENT_EVENT_IP_ACQUIRE ;
+ int USEC_PER_SEC ;
+ int assert (TYPE_2__*) ;
+ int asynchronous_close (int) ;
+ int client_handle_ack (TYPE_2__*,TYPE_2__*,int) ;
+ int client_handle_forcerenew (TYPE_2__*,TYPE_2__*,int) ;
+ int client_handle_offer (TYPE_2__*,TYPE_2__*,int) ;
+ int client_initialize (TYPE_2__*) ;
+ int client_initialize_io_events (TYPE_2__*,int ) ;
+ int client_notify (TYPE_2__*,int) ;
+ int client_receive_message_udp ;
+ int client_set_lease_timeouts (TYPE_2__*) ;
+ int client_start_delayed (TYPE_2__*) ;
+ int client_stop (TYPE_2__*,int) ;
+ int client_timeout_resend ;
+ int client_timeout_t1 (int *,int ,TYPE_2__*) ;
+ int clock_boottime_or_monotonic () ;
+ int dhcp_network_bind_udp_socket (int ,int ,int ,int ) ;
+ int event_reset_time (TYPE_2__*,int *,int ,int ,int ,int ,TYPE_2__*,int ,char*,int) ;
+ int event_source_disable (int ) ;
+ int format_timespan (char*,int,int,int ) ;
+ int log_dhcp_client (TYPE_2__*,char*,...) ;
+ int sd_event_source_unref (int ) ;
 
 __attribute__((used)) static int client_handle_message(sd_dhcp_client *client, DHCPMessage *message, int len) {
         DHCP_CLIENT_DONT_DESTROY(client);
@@ -71,31 +62,31 @@ __attribute__((used)) static int client_handle_message(sd_dhcp_client *client, D
         assert(message);
 
         switch (client->state) {
-        case DHCP_STATE_SELECTING:
+        case 129:
 
                 r = client_handle_offer(client, message, len);
                 if (r >= 0) {
 
-                        client->state = DHCP_STATE_REQUESTING;
+                        client->state = 130;
                         client->attempt = 0;
 
                         r = event_reset_time(client->event, &client->timeout_resend,
                                              clock_boottime_or_monotonic(),
                                              0, 0,
                                              client_timeout_resend, client,
-                                             client->event_priority, "dhcp4-resend-timer", true);
+                                             client->event_priority, "dhcp4-resend-timer", 1);
                         if (r < 0)
                                 goto error;
                 } else if (r == -ENOMSG)
-                        /* invalid message, let's ignore it */
+
                         return 0;
 
                 break;
 
-        case DHCP_STATE_REBOOTING:
-        case DHCP_STATE_REQUESTING:
-        case DHCP_STATE_RENEWING:
-        case DHCP_STATE_REBINDING:
+        case 132:
+        case 130:
+        case 131:
+        case 133:
 
                 r = client_handle_ack(client, message, len);
                 if (r >= 0) {
@@ -105,13 +96,13 @@ __attribute__((used)) static int client_handle_message(sd_dhcp_client *client, D
                                 sd_event_source_unref(client->receive_message);
                         client->fd = asynchronous_close(client->fd);
 
-                        if (IN_SET(client->state, DHCP_STATE_REQUESTING,
-                                   DHCP_STATE_REBOOTING))
+                        if (IN_SET(client->state, 130,
+                                   132))
                                 notify_event = SD_DHCP_CLIENT_EVENT_IP_ACQUIRE;
                         else if (r != SD_DHCP_CLIENT_EVENT_IP_ACQUIRE)
                                 notify_event = r;
 
-                        client->state = DHCP_STATE_BOUND;
+                        client->state = 136;
                         client->attempt = 0;
 
                         client->last_addr = client->lease->address;
@@ -134,12 +125,12 @@ __attribute__((used)) static int client_handle_message(sd_dhcp_client *client, D
 
                         if (notify_event) {
                                 client_notify(client, notify_event);
-                                if (client->state == DHCP_STATE_STOPPED)
+                                if (client->state == 128)
                                         return 0;
                         }
 
                 } else if (r == -EADDRNOTAVAIL) {
-                        /* got a NAK, let's restart the client */
+
                         client_notify(client, SD_DHCP_CLIENT_EVENT_EXPIRED);
 
                         r = client_initialize(client);
@@ -158,29 +149,29 @@ __attribute__((used)) static int client_handle_message(sd_dhcp_client *client, D
 
                         return 0;
                 } else if (r == -ENOMSG)
-                        /* invalid message, let's ignore it */
+
                         return 0;
 
                 break;
 
-        case DHCP_STATE_BOUND:
+        case 136:
                 r = client_handle_forcerenew(client, message, len);
                 if (r >= 0) {
-                        r = client_timeout_t1(NULL, 0, client);
+                        r = client_timeout_t1(((void*)0), 0, client);
                         if (r < 0)
                                 goto error;
                 } else if (r == -ENOMSG)
-                        /* invalid message, let's ignore it */
+
                         return 0;
 
                 break;
 
-        case DHCP_STATE_INIT:
-        case DHCP_STATE_INIT_REBOOT:
+        case 135:
+        case 134:
 
                 break;
 
-        case DHCP_STATE_STOPPED:
+        case 128:
                 r = -EINVAL;
                 goto error;
         }

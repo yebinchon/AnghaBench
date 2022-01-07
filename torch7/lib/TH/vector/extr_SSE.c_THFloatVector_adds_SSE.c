@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ y ;
-typedef  scalar_t__ x ;
-typedef  int ptrdiff_t ;
-typedef  int n ;
-typedef  int /*<<< orphan*/  __m128 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _mm_add_ps (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _mm_loadu_ps (scalar_t__) ; 
- int /*<<< orphan*/  _mm_set1_ps (float const) ; 
- int /*<<< orphan*/  _mm_storeu_ps (scalar_t__,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ y ;
+typedef scalar_t__ x ;
+typedef int ptrdiff_t ;
+typedef int n ;
+typedef int __m128 ;
+
+
+ int _mm_add_ps (int ,int ) ;
+ int _mm_loadu_ps (scalar_t__) ;
+ int _mm_set1_ps (float const) ;
+ int _mm_storeu_ps (scalar_t__,int ) ;
 
 __attribute__((used)) static void THFloatVector_adds_SSE(float *y, const float *x, const float c, const ptrdiff_t n) {
   ptrdiff_t i;

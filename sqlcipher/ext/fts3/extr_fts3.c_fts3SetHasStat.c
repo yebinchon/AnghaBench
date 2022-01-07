@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int bHasStat; int /*<<< orphan*/  zDb; int /*<<< orphan*/  db; int /*<<< orphan*/  zName; } ;
-typedef  TYPE_1__ Fts3Table ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,int /*<<< orphan*/ ) ; 
- int sqlite3_table_column_metadata (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int bHasStat; int zDb; int db; int zName; } ;
+typedef TYPE_1__ Fts3Table ;
+
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,int ) ;
+ int sqlite3_table_column_metadata (int ,int ,char*,int ,int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static int fts3SetHasStat(Fts3Table *p){
   int rc = SQLITE_OK;

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct section_fixture {int /*<<< orphan*/  section; int /*<<< orphan*/  name; } ;
+
+
+
+
+typedef int uint8_t ;
+struct section_fixture {int section; int name; } ;
 struct ptunit_result {int dummy; } ;
 
-/* Variables and functions */
- int pt_mk_section (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int pt_section_map (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pte_bad_image ; 
- int /*<<< orphan*/  ptu_int_eq (int,int /*<<< orphan*/ ) ; 
- struct ptunit_result ptu_passed () ; 
- int /*<<< orphan*/  ptu_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sfix_write (struct section_fixture*,int*) ; 
+
+ int pt_mk_section (int *,int ,int,int) ;
+ int pt_section_map (int ) ;
+ int pte_bad_image ;
+ int ptu_int_eq (int,int ) ;
+ struct ptunit_result ptu_passed () ;
+ int ptu_ptr (int ) ;
+ int sfix_write (struct section_fixture*,int*) ;
 
 __attribute__((used)) static struct ptunit_result map_change(struct section_fixture *sfix)
 {
-	uint8_t bytes[] = { 0xcc, 0x2, 0x4, 0x6 };
-	int errcode;
+ uint8_t bytes[] = { 0xcc, 0x2, 0x4, 0x6 };
+ int errcode;
 
-	sfix_write(sfix, bytes);
+ sfix_write(sfix, bytes);
 
-	errcode = pt_mk_section(&sfix->section, sfix->name, 0x1ull, 0x3ull);
-	ptu_int_eq(errcode, 0);
-	ptu_ptr(sfix->section);
+ errcode = pt_mk_section(&sfix->section, sfix->name, 0x1ull, 0x3ull);
+ ptu_int_eq(errcode, 0);
+ ptu_ptr(sfix->section);
 
-	sfix_write(sfix, bytes);
+ sfix_write(sfix, bytes);
 
-	errcode = pt_section_map(sfix->section);
-	ptu_int_eq(errcode, -pte_bad_image);
+ errcode = pt_section_map(sfix->section);
+ ptu_int_eq(errcode, -pte_bad_image);
 
-	return ptu_passed();
+ return ptu_passed();
 }

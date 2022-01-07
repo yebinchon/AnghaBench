@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  genl_unregister_family (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  irda_nl_family ; 
+ int genl_unregister_family (int *) ;
+ int irda_nl_family ;
 
 void irda_nl_unregister(void)
 {
-	genl_unregister_family(&irda_nl_family);
+ genl_unregister_family(&irda_nl_family);
 }

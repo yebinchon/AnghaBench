@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct ccb_scsiio {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  scsi_mode_sense_subpage (struct ccb_scsiio*,int /*<<< orphan*/ ,void (*) (struct cam_periph*,union ccb*),int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int scsi_mode_sense_subpage (struct ccb_scsiio*,int ,void (*) (struct cam_periph*,union ccb*),int ,int,int ,int ,int ,int *,int ,int,int ,int ) ;
 
 void
 scsi_mode_sense_len(struct ccb_scsiio *csio, uint32_t retries,
@@ -24,7 +24,7 @@ scsi_mode_sense_len(struct ccb_scsiio *csio, uint32_t retries,
     int minimum_cmd_size, uint8_t sense_len, uint32_t timeout)
 {
 
-	scsi_mode_sense_subpage(csio, retries, cbfcnp, tag_action, dbd,
-	    pc, page, 0, param_buf, param_len, minimum_cmd_size,
-	    sense_len, timeout);
+ scsi_mode_sense_subpage(csio, retries, cbfcnp, tag_action, dbd,
+     pc, page, 0, param_buf, param_len, minimum_cmd_size,
+     sense_len, timeout);
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmd ;
-struct TYPE_6__ {int /*<<< orphan*/  type; int /*<<< orphan*/  repo_id; } ;
-typedef  TYPE_1__ WatchCommand ;
-struct TYPE_7__ {int /*<<< orphan*/ * res_pipe; int /*<<< orphan*/ * cmd_pipe; } ;
-typedef  TYPE_2__ SeafWTMonitor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CMD_REFRESH_WATCH ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  seaf_debug (char*,char const*) ; 
- int seaf_pipe_readn (int /*<<< orphan*/ ,int*,int) ; 
- int seaf_pipe_writen (int /*<<< orphan*/ ,TYPE_1__*,int) ; 
- int /*<<< orphan*/  seaf_warning (char*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int cmd ;
+struct TYPE_6__ {int type; int repo_id; } ;
+typedef TYPE_1__ WatchCommand ;
+struct TYPE_7__ {int * res_pipe; int * cmd_pipe; } ;
+typedef TYPE_2__ SeafWTMonitor ;
+
+
+ int CMD_REFRESH_WATCH ;
+ int memcpy (int ,char const*,int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int seaf_debug (char*,char const*) ;
+ int seaf_pipe_readn (int ,int*,int) ;
+ int seaf_pipe_writen (int ,TYPE_1__*,int) ;
+ int seaf_warning (char*) ;
 
 int
 seaf_wt_monitor_refresh_repo (SeafWTMonitor *monitor, const char *repo_id)

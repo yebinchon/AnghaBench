@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct wined3d_surface {TYPE_1__* container; } ;
 struct wined3d_resource {int format_flags; TYPE_2__* format; struct wined3d_device* device; } ;
 struct wined3d_device {int dummy; } ;
-struct wined3d_context {int /*<<< orphan*/  gl_info; } ;
+struct wined3d_context {int gl_info; } ;
 struct wined3d_color_key {int dummy; } ;
 struct wined3d_blitter {TYPE_3__* ops; struct wined3d_blitter* next; } ;
-typedef  enum wined3d_texture_filter_type { ____Placeholder_wined3d_texture_filter_type } wined3d_texture_filter_type ;
-typedef  enum wined3d_blit_op { ____Placeholder_wined3d_blit_op } wined3d_blit_op ;
-struct TYPE_6__ {int /*<<< orphan*/  (* blitter_blit ) (struct wined3d_blitter*,int,struct wined3d_context*,struct wined3d_surface*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,struct wined3d_surface*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,struct wined3d_color_key const*,int) ;} ;
+typedef enum wined3d_texture_filter_type { ____Placeholder_wined3d_texture_filter_type } wined3d_texture_filter_type ;
+typedef enum wined3d_blit_op { ____Placeholder_wined3d_blit_op } wined3d_blit_op ;
+struct TYPE_6__ {int (* blitter_blit ) (struct wined3d_blitter*,int,struct wined3d_context*,struct wined3d_surface*,int ,int const*,struct wined3d_surface*,int ,int const*,struct wined3d_color_key const*,int) ;} ;
 struct TYPE_5__ {scalar_t__ id; } ;
 struct TYPE_4__ {struct wined3d_resource resource; } ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef int RECT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int WINED3DFMT_FLAG_DEPTH ; 
- int WINED3DFMT_FLAG_STENCIL ; 
- int WINED3D_BLIT_OP_COLOR_BLIT ; 
- int WINED3D_BLIT_OP_DEPTH_BLIT ; 
- int WINED3D_BLIT_OP_RAW_BLIT ; 
- int /*<<< orphan*/  fbo_blitter_supported (int,int /*<<< orphan*/ ,struct wined3d_resource*,int /*<<< orphan*/ ,struct wined3d_resource*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (struct wined3d_blitter*,int,struct wined3d_context*,struct wined3d_surface*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,struct wined3d_surface*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,struct wined3d_color_key const*,int) ; 
- int /*<<< orphan*/  surface_blt_fbo (struct wined3d_device*,struct wined3d_context*,int,struct wined3d_surface*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,struct wined3d_surface*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  surface_depth_blt_fbo (struct wined3d_device*,struct wined3d_surface*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,struct wined3d_surface*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
+
+ int ERR (char*,int) ;
+ int TRACE (char*) ;
+ int WINED3DFMT_FLAG_DEPTH ;
+ int WINED3DFMT_FLAG_STENCIL ;
+ int WINED3D_BLIT_OP_COLOR_BLIT ;
+ int WINED3D_BLIT_OP_DEPTH_BLIT ;
+ int WINED3D_BLIT_OP_RAW_BLIT ;
+ int fbo_blitter_supported (int,int ,struct wined3d_resource*,int ,struct wined3d_resource*,int ) ;
+ int stub1 (struct wined3d_blitter*,int,struct wined3d_context*,struct wined3d_surface*,int ,int const*,struct wined3d_surface*,int ,int const*,struct wined3d_color_key const*,int) ;
+ int surface_blt_fbo (struct wined3d_device*,struct wined3d_context*,int,struct wined3d_surface*,int ,int const*,struct wined3d_surface*,int ,int const*) ;
+ int surface_depth_blt_fbo (struct wined3d_device*,struct wined3d_surface*,int ,int const*,struct wined3d_surface*,int ,int const*) ;
 
 __attribute__((used)) static DWORD fbo_blitter_blit(struct wined3d_blitter *blitter, enum wined3d_blit_op op,
         struct wined3d_context *context, struct wined3d_surface *src_surface, DWORD src_location,

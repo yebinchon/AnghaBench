@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_serf__session_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  scalar_t__ apr_int64_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- char* SVN_DAV__VERSION_NAME ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_RA_DAV_PROPS_NOT_FOUND ; 
- int /*<<< orphan*/  SVN_IS_VALID_REVNUM (scalar_t__) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/ * apr_hash_get (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  baseline_props ; 
- int /*<<< orphan*/  svn_cstring_atoi64 (scalar_t__*,char const*) ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* svn_prop_get_value (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  svn_ra_serf__fetch_node_props (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_urlpath__canonicalize (char const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ svn_revnum_t ;
+typedef int svn_ra_serf__session_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+typedef scalar_t__ apr_int64_t ;
+typedef int apr_hash_t ;
+
+
+ char* SVN_DAV__VERSION_NAME ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_RA_DAV_PROPS_NOT_FOUND ;
+ int SVN_IS_VALID_REVNUM (scalar_t__) ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int * apr_hash_get (int *,char*,int) ;
+ int baseline_props ;
+ int svn_cstring_atoi64 (scalar_t__*,char const*) ;
+ int * svn_error_create (int ,int *,int ) ;
+ char* svn_prop_get_value (int *,char*) ;
+ int svn_ra_serf__fetch_node_props (int **,int *,char const*,scalar_t__,int ,int *,int *) ;
+ char* svn_urlpath__canonicalize (char const*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 retrieve_baseline_info(svn_revnum_t *actual_revision,
@@ -50,12 +50,12 @@ retrieve_baseline_info(svn_revnum_t *actual_revision,
                                         baseline_props,
                                         scratch_pool, scratch_pool));
   dav_props = apr_hash_get(props, "DAV:", 4);
-  /* If DAV_PROPS is NULL, then svn_prop_get_value() will return NULL.  */
+
 
   basecoll_url = svn_prop_get_value(dav_props, "baseline-collection");
   if (!basecoll_url)
     {
-      return svn_error_create(SVN_ERR_RA_DAV_PROPS_NOT_FOUND, NULL,
+      return svn_error_create(SVN_ERR_RA_DAV_PROPS_NOT_FOUND, ((void*)0),
                               _("The PROPFIND response did not include "
                                 "the requested baseline-collection value"));
     }
@@ -75,7 +75,7 @@ retrieve_baseline_info(svn_revnum_t *actual_revision,
         }
 
       if (!version_name || !SVN_IS_VALID_REVNUM(*actual_revision))
-        return svn_error_create(SVN_ERR_RA_DAV_PROPS_NOT_FOUND, NULL,
+        return svn_error_create(SVN_ERR_RA_DAV_PROPS_NOT_FOUND, ((void*)0),
                                 _("The PROPFIND response did not include "
                                   "the requested version-name value"));
     }

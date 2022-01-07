@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * hIcon; int /*<<< orphan*/ * lpszFI; } ;
-typedef  char TCHAR ;
-typedef  TYPE_1__* PDOCBUCKET ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/ * HICON ;
 
-/* Variables and functions */
- int ExtractIconEx (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  atoi (char*) ; 
- char* wcsrchr (int /*<<< orphan*/ *,char) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * hIcon; int * lpszFI; } ;
+typedef char TCHAR ;
+typedef TYPE_1__* PDOCBUCKET ;
+typedef int INT ;
+typedef int * HICON ;
+
+
+ int ExtractIconEx (int *,int ,int *,int **,int) ;
+ int atoi (char*) ;
+ char* wcsrchr (int *,char) ;
 
 HICON DocGetIcon(PDOCBUCKET pDocBucket)
 {
-   if (pDocBucket == NULL)
-		return NULL;
+   if (pDocBucket == ((void*)0))
+  return ((void*)0);
 
-   if (pDocBucket->hIcon == NULL && pDocBucket->lpszFI != NULL)
+   if (pDocBucket->hIcon == ((void*)0) && pDocBucket->lpszFI != ((void*)0))
    {
       TCHAR *pchT = wcsrchr(pDocBucket->lpszFI, ',');
 
-      if (pchT != NULL)
+      if (pchT != ((void*)0))
       {
-      	  INT index = atoi(pchT+1);
-      	  HICON hIcon;
+         INT index = atoi(pchT+1);
+         HICON hIcon;
 
-		  *pchT = '\0';
-      	  if (ExtractIconEx(pDocBucket->lpszFI, index, NULL, &hIcon, 1) == 1)
-      	  	pDocBucket->hIcon = hIcon;
+    *pchT = '\0';
+         if (ExtractIconEx(pDocBucket->lpszFI, index, ((void*)0), &hIcon, 1) == 1)
+          pDocBucket->hIcon = hIcon;
       }
    }
    return pDocBucket->hIcon;

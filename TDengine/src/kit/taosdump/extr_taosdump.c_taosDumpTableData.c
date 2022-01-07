@@ -1,63 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct arguments {int data_batch; int /*<<< orphan*/  end_time; int /*<<< orphan*/  start_time; scalar_t__ schemaonly; } ;
-typedef  int /*<<< orphan*/  int64_t ;
-struct TYPE_3__ {int type; int /*<<< orphan*/  bytes; } ;
-typedef  int /*<<< orphan*/ ** TAOS_ROW ;
-typedef  TYPE_1__ TAOS_FIELD ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMMAND_SIZE ; 
-#define  TSDB_DATA_TYPE_BIGINT 137 
-#define  TSDB_DATA_TYPE_BINARY 136 
-#define  TSDB_DATA_TYPE_BOOL 135 
-#define  TSDB_DATA_TYPE_DOUBLE 134 
-#define  TSDB_DATA_TYPE_FLOAT 133 
-#define  TSDB_DATA_TYPE_INT 132 
-#define  TSDB_DATA_TYPE_NCHAR 131 
-#define  TSDB_DATA_TYPE_SMALLINT 130 
-#define  TSDB_DATA_TYPE_TIMESTAMP 129 
-#define  TSDB_DATA_TYPE_TINYINT 128 
- int /*<<< orphan*/  assert (int) ; 
- char* buffer ; 
- char* command ; 
- int /*<<< orphan*/  converStringToReadable (char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  convertNCharToReadable (char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * result ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
- int /*<<< orphan*/ * stderr ; 
- char* stpcpy (char*,char*) ; 
- int /*<<< orphan*/  taos ; 
- char* taos_errstr (int /*<<< orphan*/ ) ; 
- TYPE_1__* taos_fetch_fields (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ ** taos_fetch_row (int /*<<< orphan*/ *) ; 
- int taos_field_count (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  taos_free_result (int /*<<< orphan*/ *) ; 
- scalar_t__ taos_query (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * taos_use_result (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct arguments {int data_batch; int end_time; int start_time; scalar_t__ schemaonly; } ;
+typedef int int64_t ;
+struct TYPE_3__ {int type; int bytes; } ;
+typedef int ** TAOS_ROW ;
+typedef TYPE_1__ TAOS_FIELD ;
+typedef int FILE ;
+
+
+ int COMMAND_SIZE ;
+ int assert (int) ;
+ char* buffer ;
+ char* command ;
+ int converStringToReadable (char*,int ,char*,int ) ;
+ int convertNCharToReadable (char*,int ,char*,int ) ;
+ int fprintf (int *,char*,...) ;
+ int free (char*) ;
+ scalar_t__ malloc (int ) ;
+ int * result ;
+ int sprintf (char*,char*,...) ;
+ int * stderr ;
+ char* stpcpy (char*,char*) ;
+ int taos ;
+ char* taos_errstr (int ) ;
+ TYPE_1__* taos_fetch_fields (int *) ;
+ int ** taos_fetch_row (int *) ;
+ int taos_field_count (int ) ;
+ int taos_free_result (int *) ;
+ scalar_t__ taos_query (int ,char*) ;
+ int * taos_use_result (int ) ;
 
 int taosDumpTableData(FILE *fp, char *tbname, struct arguments *arguments) {
-  /* char       temp[MAX_COMMAND_SIZE] = "\0"; */
+
   int count = 0;
-  char *pstr = NULL;
-  TAOS_ROW row = NULL;
+  char *pstr = ((void*)0);
+  TAOS_ROW row = ((void*)0);
   int numFields = 0;
-  char *tbuf = NULL;
+  char *tbuf = ((void*)0);
 
   if (arguments->schemaonly) return 0;
 
@@ -69,7 +59,7 @@ int taosDumpTableData(FILE *fp, char *tbname, struct arguments *arguments) {
   }
 
   result = taos_use_result(taos);
-  if (result == NULL) {
+  if (result == ((void*)0)) {
     fprintf(stderr, "failed to use result\n");
     return -1;
   }
@@ -78,13 +68,13 @@ int taosDumpTableData(FILE *fp, char *tbname, struct arguments *arguments) {
   assert(numFields > 0);
   TAOS_FIELD *fields = taos_fetch_fields(result);
   tbuf = (char *)malloc(COMMAND_SIZE);
-  if (tbuf == NULL) {
+  if (tbuf == ((void*)0)) {
     fprintf(stderr, "No enough memory\n");
     return -1;
   }
 
   count = 0;
-  while ((row = taos_fetch_row(result)) != NULL) {
+  while ((row = taos_fetch_row(result)) != ((void*)0)) {
     pstr = buffer;
 
     if (count == 0) {
@@ -96,44 +86,44 @@ int taosDumpTableData(FILE *fp, char *tbname, struct arguments *arguments) {
     for (int col = 0; col < numFields; col++) {
       if (col != 0) pstr += sprintf(pstr, ", ");
 
-      if (row[col] == NULL) {
+      if (row[col] == ((void*)0)) {
         pstr += sprintf(pstr, "NULL");
         continue;
       }
 
       switch (fields[col].type) {
-        case TSDB_DATA_TYPE_BOOL:
+        case 135:
           pstr += sprintf(pstr, "%d", ((((int)(*((char *)row[col]))) == 1) ? 1 : 0));
           break;
-        case TSDB_DATA_TYPE_TINYINT:
+        case 128:
           pstr += sprintf(pstr, "%d", (int)(*((char *)row[col])));
           break;
-        case TSDB_DATA_TYPE_SMALLINT:
+        case 130:
           pstr += sprintf(pstr, "%d", (int)(*((short *)row[col])));
           break;
-        case TSDB_DATA_TYPE_INT:
+        case 132:
           pstr += sprintf(pstr, "%d", *((int *)row[col]));
           break;
-        case TSDB_DATA_TYPE_BIGINT:
+        case 137:
           pstr += sprintf(pstr, "%ld", *((int64_t *)row[col]));
           break;
-        case TSDB_DATA_TYPE_FLOAT:
+        case 133:
           pstr += sprintf(pstr, "%f", *((float *)row[col]));
           break;
-        case TSDB_DATA_TYPE_DOUBLE:
+        case 134:
           pstr += sprintf(pstr, "%f", *((double *)row[col]));
           break;
-        case TSDB_DATA_TYPE_BINARY:
+        case 136:
           *(pstr++) = '\'';
           converStringToReadable((char *)row[col], fields[col].bytes, tbuf, COMMAND_SIZE);
           pstr = stpcpy(pstr, tbuf);
           *(pstr++) = '\'';
           break;
-        case TSDB_DATA_TYPE_NCHAR:
+        case 131:
           convertNCharToReadable((char *)row[col], fields[col].bytes, tbuf, COMMAND_SIZE);
           pstr += sprintf(pstr, "\'%s\'", tbuf);
           break;
-        case TSDB_DATA_TYPE_TIMESTAMP:
+        case 129:
           pstr += sprintf(pstr, "%ld", *(int64_t *)row[col]);
           break;
         default:
@@ -157,6 +147,6 @@ int taosDumpTableData(FILE *fp, char *tbname, struct arguments *arguments) {
 
   if (tbuf) free(tbuf);
   taos_free_result(result);
-  result = NULL;
+  result = ((void*)0);
   return 0;
 }

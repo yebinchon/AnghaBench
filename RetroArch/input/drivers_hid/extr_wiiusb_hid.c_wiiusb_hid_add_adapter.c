@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  connections; struct wiiusb_adapter* adapters_head; } ;
-typedef  TYPE_1__ wiiusb_hid_t ;
-struct TYPE_15__ {int /*<<< orphan*/  device_id; int /*<<< orphan*/  pid; int /*<<< orphan*/  vid; } ;
-typedef  TYPE_2__ usb_device_entry ;
-struct TYPE_16__ {int /*<<< orphan*/  idProduct; int /*<<< orphan*/  idVendor; } ;
-typedef  TYPE_3__ usb_devdesc ;
-struct wiiusb_adapter {scalar_t__ endpoint_in; int slot; int /*<<< orphan*/  handle; struct wiiusb_adapter* send_control_buffer; int /*<<< orphan*/  device_id; struct wiiusb_adapter* next; TYPE_1__* hid; void* data; int /*<<< orphan*/  send_control_type; } ;
-typedef  int int32_t ;
-struct TYPE_17__ {int /*<<< orphan*/  ident; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RARCH_ERR (char*,...) ; 
- int /*<<< orphan*/  RARCH_LOG (char*,...) ; 
- int /*<<< orphan*/  USB_CloseDevice (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  USB_DeviceRemovalNotifyAsync (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct wiiusb_adapter*) ; 
- int /*<<< orphan*/  USB_FreeDescriptors (TYPE_3__*) ; 
- int /*<<< orphan*/  USB_GetDescriptors (int /*<<< orphan*/ ,TYPE_3__*) ; 
- scalar_t__ USB_OpenDevice (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WIIUSB_SC_NONE ; 
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  free (struct wiiusb_adapter*) ; 
- scalar_t__ isRetrodeGamepad (TYPE_3__) ; 
- scalar_t__ isRetrodeMouse (TYPE_3__) ; 
- void* memalign (int,int) ; 
- int /*<<< orphan*/  pad_connection_has_interface (int /*<<< orphan*/ ,int) ; 
- void* pad_connection_pad_init (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct wiiusb_adapter*,TYPE_6__*) ; 
- int /*<<< orphan*/  wiiusb_get_description (TYPE_2__*,struct wiiusb_adapter*,TYPE_3__*) ; 
- TYPE_6__ wiiusb_hid ; 
- int /*<<< orphan*/  wiiusb_hid_device_add_autodetect (int,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* wiiusb_hid_joypad_name (TYPE_1__*,int) ; 
- int /*<<< orphan*/  wiiusb_hid_removal_cb ; 
+
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int connections; struct wiiusb_adapter* adapters_head; } ;
+typedef TYPE_1__ wiiusb_hid_t ;
+struct TYPE_15__ {int device_id; int pid; int vid; } ;
+typedef TYPE_2__ usb_device_entry ;
+struct TYPE_16__ {int idProduct; int idVendor; } ;
+typedef TYPE_3__ usb_devdesc ;
+struct wiiusb_adapter {scalar_t__ endpoint_in; int slot; int handle; struct wiiusb_adapter* send_control_buffer; int device_id; struct wiiusb_adapter* next; TYPE_1__* hid; void* data; int send_control_type; } ;
+typedef int int32_t ;
+struct TYPE_17__ {int ident; } ;
+
+
+ int RARCH_ERR (char*,...) ;
+ int RARCH_LOG (char*,...) ;
+ int USB_CloseDevice (int *) ;
+ int USB_DeviceRemovalNotifyAsync (int ,int ,struct wiiusb_adapter*) ;
+ int USB_FreeDescriptors (TYPE_3__*) ;
+ int USB_GetDescriptors (int ,TYPE_3__*) ;
+ scalar_t__ USB_OpenDevice (int ,int ,int ,int *) ;
+ int WIIUSB_SC_NONE ;
+ scalar_t__ calloc (int,int) ;
+ int free (struct wiiusb_adapter*) ;
+ scalar_t__ isRetrodeGamepad (TYPE_3__) ;
+ scalar_t__ isRetrodeMouse (TYPE_3__) ;
+ void* memalign (int,int) ;
+ int pad_connection_has_interface (int ,int) ;
+ void* pad_connection_pad_init (int ,char*,int ,int ,struct wiiusb_adapter*,TYPE_6__*) ;
+ int wiiusb_get_description (TYPE_2__*,struct wiiusb_adapter*,TYPE_3__*) ;
+ TYPE_6__ wiiusb_hid ;
+ int wiiusb_hid_device_add_autodetect (int,char const*,int ,int ,int ) ;
+ char* wiiusb_hid_joypad_name (TYPE_1__*,int) ;
+ int wiiusb_hid_removal_cb ;
 
 __attribute__((used)) static int wiiusb_hid_add_adapter(void *data, usb_device_entry *dev)
 {
    usb_devdesc desc;
-   const char        *device_name = NULL;
-   wiiusb_hid_t              *hid = (wiiusb_hid_t*)data;
+   const char *device_name = ((void*)0);
+   wiiusb_hid_t *hid = (wiiusb_hid_t*)data;
    struct wiiusb_adapter *adapter = (struct wiiusb_adapter*)
       calloc(1, sizeof(struct wiiusb_adapter));
    int i;
@@ -92,8 +92,8 @@ __attribute__((used)) static int wiiusb_hid_add_adapter(void *data, usb_device_e
       goto error;
    }
 
-   /* Allocate mem for the send control buffer, 32bit aligned */
-   adapter->send_control_type   = WIIUSB_SC_NONE;
+
+   adapter->send_control_type = WIIUSB_SC_NONE;
    adapter->send_control_buffer = memalign(32, 128);
 
    if (!adapter->send_control_buffer)
@@ -102,8 +102,8 @@ __attribute__((used)) static int wiiusb_hid_add_adapter(void *data, usb_device_e
       goto error;
    }
 
-   /* Sent the pad name as dummy, we don't know the
-    * control name until we get its interface */
+
+
    adapter->slot = pad_connection_pad_init(hid->connections,
          "hid", desc.idVendor, desc.idProduct,
          adapter, &wiiusb_hid);
@@ -117,12 +117,12 @@ __attribute__((used)) static int wiiusb_hid_add_adapter(void *data, usb_device_e
       goto error;
    }
 
-   adapter->data      = memalign(32, 128);
-   adapter->hid       = hid;
-   adapter->next      = hid->adapters_head;
+   adapter->data = memalign(32, 128);
+   adapter->hid = hid;
+   adapter->next = hid->adapters_head;
    hid->adapters_head = adapter;
 
-   /*  Get the name from the interface */
+
    device_name = wiiusb_hid_joypad_name(hid, adapter->slot);
 
    RARCH_LOG("Interface found: [%s].\n", device_name);
@@ -132,10 +132,10 @@ __attribute__((used)) static int wiiusb_hid_add_adapter(void *data, usb_device_e
 
    if (isRetrodeGamepad(desc))
    {
-       /* Retrode port #1 */
+
        RARCH_LOG("Interface Retrode1 gamepad slot: %d\n", adapter->slot);
        wiiusb_hid_device_add_autodetect(adapter->slot, device_name, wiiusb_hid.ident, desc.idVendor, desc.idProduct);
-       /* Retrode port #2, #3, #4 */
+
        for (i = 2; i <= 4; i++)
        {
            slot1 = pad_connection_pad_init(hid->connections, "hid", desc.idVendor, desc.idProduct, adapter, &wiiusb_hid);

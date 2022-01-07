@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* z_zfsvfs; } ;
-typedef  TYPE_2__ znode_t ;
-struct TYPE_4__ {int /*<<< orphan*/  z_version; } ;
+typedef TYPE_2__ znode_t ;
+struct TYPE_4__ {int z_version; } ;
 
-/* Variables and functions */
- int zfs_acl_version (int /*<<< orphan*/ ) ; 
+
+ int zfs_acl_version (int ) ;
 
 __attribute__((used)) static int
 zfs_acl_version_zp(znode_t *zp)
 {
-	return (zfs_acl_version(zp->z_zfsvfs->z_version));
+ return (zfs_acl_version(zp->z_zfsvfs->z_version));
 }

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct drm_crtc_state {int dummy; } ;
 struct drm_crtc {TYPE_2__* dev; TYPE_1__* state; } ;
-struct TYPE_4__ {int /*<<< orphan*/  event_lock; } ;
-struct TYPE_3__ {int /*<<< orphan*/ * event; } ;
+struct TYPE_4__ {int event_lock; } ;
+struct TYPE_3__ {int * event; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  drm_crtc_send_vblank_event (struct drm_crtc*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int drm_crtc_send_vblank_event (struct drm_crtc*,int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void hibmc_crtc_atomic_flush(struct drm_crtc *crtc,
-				    struct drm_crtc_state *old_state)
+        struct drm_crtc_state *old_state)
 
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	spin_lock_irqsave(&crtc->dev->event_lock, flags);
-	if (crtc->state->event)
-		drm_crtc_send_vblank_event(crtc, crtc->state->event);
-	crtc->state->event = NULL;
-	spin_unlock_irqrestore(&crtc->dev->event_lock, flags);
+ spin_lock_irqsave(&crtc->dev->event_lock, flags);
+ if (crtc->state->event)
+  drm_crtc_send_vblank_event(crtc, crtc->state->event);
+ crtc->state->event = ((void*)0);
+ spin_unlock_irqrestore(&crtc->dev->event_lock, flags);
 }

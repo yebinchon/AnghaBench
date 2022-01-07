@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  psp ;
-typedef  int /*<<< orphan*/  WORD ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int psp ;
+typedef int WORD ;
 struct TYPE_7__ {scalar_t__ nPages; } ;
-struct TYPE_6__ {int dwSize; int /*<<< orphan*/  pfnDlgProc; int /*<<< orphan*/  pszTemplate; int /*<<< orphan*/  hInstance; int /*<<< orphan*/  dwFlags; } ;
-typedef  TYPE_1__ PROPSHEETPAGE ;
-typedef  TYPE_2__ PROPSHEETHEADER ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/ * HPROPSHEETPAGE ;
-typedef  int /*<<< orphan*/  DLGPROC ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct TYPE_6__ {int dwSize; int pfnDlgProc; int pszTemplate; int hInstance; int dwFlags; } ;
+typedef TYPE_1__ PROPSHEETPAGE ;
+typedef TYPE_2__ PROPSHEETHEADER ;
+typedef int LPARAM ;
+typedef int * HPROPSHEETPAGE ;
+typedef int DLGPROC ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CreatePropertySheetPage (TYPE_1__*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  MAKEINTRESOURCE (int /*<<< orphan*/ ) ; 
- scalar_t__ MAX_CPL_PAGES ; 
- int /*<<< orphan*/  PSP_DEFAULT ; 
- int /*<<< orphan*/  PropSheetAddPage (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_1__*,int) ; 
- int /*<<< orphan*/  hApplet ; 
+
+ int * CreatePropertySheetPage (TYPE_1__*) ;
+ int FALSE ;
+ int MAKEINTRESOURCE (int ) ;
+ scalar_t__ MAX_CPL_PAGES ;
+ int PSP_DEFAULT ;
+ int PropSheetAddPage (int *,int ) ;
+ int ZeroMemory (TYPE_1__*,int) ;
+ int hApplet ;
 
 BOOL
 InitPropSheetPage(PROPSHEETHEADER *ppsh, WORD idDlg, DLGPROC DlgProc)
@@ -49,7 +49,7 @@ InitPropSheetPage(PROPSHEETHEADER *ppsh, WORD idDlg, DLGPROC DlgProc)
         psp.pfnDlgProc = DlgProc;
 
         hPage = CreatePropertySheetPage(&psp);
-        if (hPage != NULL)
+        if (hPage != ((void*)0))
         {
             return PropSheetAddPage(hPage, (LPARAM)ppsh);
         }

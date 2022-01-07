@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct params {int /*<<< orphan*/  seq; int /*<<< orphan*/  tx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  err (int,char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int inject (int /*<<< orphan*/ ,void*,int) ; 
- int /*<<< orphan*/  printf (char*,int,int) ; 
+
+
+
+struct params {int seq; int tx; } ;
+
+
+ int err (int,char*) ;
+ int exit (int) ;
+ int inject (int ,void*,int) ;
+ int printf (char*,int,int) ;
 
 void send_frame(struct params *p, void *buf, int len)
-{       
+{
         int rc;
-        
+
         rc = inject(p->tx, buf, len);
         if (rc == -1)
                 err(1, "inject()");

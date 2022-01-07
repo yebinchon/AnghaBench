@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct inode {int i_nlink; TYPE_1__* i_sb; int /*<<< orphan*/  i_ino; } ;
-struct ext3_dir_entry_2 {int name_len; int /*<<< orphan*/  name; void* rec_len; void* inode; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct inode {int i_nlink; TYPE_1__* i_sb; int i_ino; } ;
+struct ext3_dir_entry_2 {int name_len; int name; void* rec_len; void* inode; } ;
 struct ext2_icb {int dummy; } ;
 struct buffer_head {scalar_t__ b_data; } ;
-typedef  int /*<<< orphan*/  ext3_lblk_t ;
+typedef int ext3_lblk_t ;
 struct TYPE_2__ {scalar_t__ s_blocksize; } ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
+typedef int NTSTATUS ;
 
-/* Variables and functions */
- scalar_t__ EXT3_DIR_REC_LEN (int) ; 
- int /*<<< orphan*/  Ext2WinntError (int) ; 
- int /*<<< orphan*/  S_IFDIR ; 
- int /*<<< orphan*/  __brelse (struct buffer_head*) ; 
- void* cpu_to_le16 (scalar_t__) ; 
- void* cpu_to_le32 (int /*<<< orphan*/ ) ; 
- struct buffer_head* ext3_append (struct ext2_icb*,struct inode*,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  ext3_mark_inode_dirty (struct ext2_icb*,struct inode*) ; 
- int /*<<< orphan*/  ext3_set_de_type (TYPE_1__*,struct ext3_dir_entry_2*,int /*<<< orphan*/ ) ; 
- int le16_to_cpu (void*) ; 
- int /*<<< orphan*/  set_buffer_dirty (struct buffer_head*) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char*) ; 
+
+ scalar_t__ EXT3_DIR_REC_LEN (int) ;
+ int Ext2WinntError (int) ;
+ int S_IFDIR ;
+ int __brelse (struct buffer_head*) ;
+ void* cpu_to_le16 (scalar_t__) ;
+ void* cpu_to_le32 (int ) ;
+ struct buffer_head* ext3_append (struct ext2_icb*,struct inode*,int *,int*) ;
+ int ext3_mark_inode_dirty (struct ext2_icb*,struct inode*) ;
+ int ext3_set_de_type (TYPE_1__*,struct ext3_dir_entry_2*,int ) ;
+ int le16_to_cpu (void*) ;
+ int set_buffer_dirty (struct buffer_head*) ;
+ int strcpy (int ,char*) ;
 
 NTSTATUS Ext2AddDotEntries(struct ext2_icb *icb, struct inode *dir,
                            struct inode *inode)

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int ctx_valid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONTROL ; 
- int /*<<< orphan*/  DSSDBG (char*) ; 
- int OMAP_DISPLAY_TYPE_SDI ; 
- int /*<<< orphan*/  OMAP_DSS_CHANNEL_LCD ; 
- int /*<<< orphan*/  PLL_CONTROL ; 
- int /*<<< orphan*/  SDI_CONTROL ; 
- int /*<<< orphan*/  SR (int /*<<< orphan*/ ) ; 
- TYPE_1__ dss ; 
- int dss_feat_get_supported_displays (int /*<<< orphan*/ ) ; 
+
+ int CONTROL ;
+ int DSSDBG (char*) ;
+ int OMAP_DISPLAY_TYPE_SDI ;
+ int OMAP_DSS_CHANNEL_LCD ;
+ int PLL_CONTROL ;
+ int SDI_CONTROL ;
+ int SR (int ) ;
+ TYPE_1__ dss ;
+ int dss_feat_get_supported_displays (int ) ;
 
 __attribute__((used)) static void dss_save_context(void)
 {
-	DSSDBG("dss_save_context\n");
+ DSSDBG("dss_save_context\n");
 
-	SR(CONTROL);
+ SR(CONTROL);
 
-	if (dss_feat_get_supported_displays(OMAP_DSS_CHANNEL_LCD) &
-			OMAP_DISPLAY_TYPE_SDI) {
-		SR(SDI_CONTROL);
-		SR(PLL_CONTROL);
-	}
+ if (dss_feat_get_supported_displays(OMAP_DSS_CHANNEL_LCD) &
+   OMAP_DISPLAY_TYPE_SDI) {
+  SR(SDI_CONTROL);
+  SR(PLL_CONTROL);
+ }
 
-	dss.ctx_valid = true;
+ dss.ctx_valid = 1;
 
-	DSSDBG("context saved\n");
+ DSSDBG("context saved\n");
 }

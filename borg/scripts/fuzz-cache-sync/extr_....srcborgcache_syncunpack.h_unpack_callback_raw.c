@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  key; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int key; } ;
 struct TYPE_5__ {int expect; int inside_chunks; int has_chunks; int part; TYPE_1__ current; } ;
-typedef  TYPE_2__ unpack_user ;
+typedef TYPE_2__ unpack_user ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SET_LAST_ERROR (char*) ; 
- int expect_chunks_begin ; 
-#define  expect_key 129 
- void* expect_map_item_end ; 
-#define  expect_map_key 128 
- int expect_size ; 
- int /*<<< orphan*/  memcmp (char*,char const*,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,char const*,int) ; 
+
+ int SET_LAST_ERROR (char*) ;
+ int expect_chunks_begin ;
+
+ void* expect_map_item_end ;
+
+ int expect_size ;
+ int memcmp (char*,char const*,int) ;
+ int memcpy (int ,char const*,int) ;
 
 __attribute__((used)) static inline int unpack_callback_raw(unpack_user* u, const char* b, const char* p, unsigned int length)
 {
-    /* raw = what Borg uses for binary stuff and strings as well */
-    /* Note: p points to an internal buffer which contains l bytes. */
+
+
     (void)b;
 
     switch(u->expect) {
-    case expect_key:
+    case 129:
         if(length != 32) {
             SET_LAST_ERROR("Incorrect key length");
             return -1;
@@ -41,7 +41,7 @@ __attribute__((used)) static inline int unpack_callback_raw(unpack_user* u, cons
         memcpy(u->current.key, p, 32);
         u->expect = expect_size;
         break;
-    case expect_map_key:
+    case 128:
         if(length == 6 && !memcmp("chunks", p, 6)) {
             u->expect = expect_chunks_begin;
             u->inside_chunks = 1;

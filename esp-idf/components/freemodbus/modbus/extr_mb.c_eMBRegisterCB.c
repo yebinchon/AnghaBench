@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * pxMBFunctionHandler ;
-typedef  int /*<<< orphan*/  eMBErrorCode ;
-typedef  int UCHAR ;
-struct TYPE_2__ {int ucFunctionCode; int /*<<< orphan*/ * pxHandler; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENTER_CRITICAL_SECTION () ; 
- int /*<<< orphan*/  EXIT_CRITICAL_SECTION () ; 
- int /*<<< orphan*/  MB_EINVAL ; 
- int /*<<< orphan*/  MB_ENOERR ; 
- int /*<<< orphan*/  MB_ENORES ; 
- int MB_FUNC_HANDLERS_MAX ; 
- TYPE_1__* xFuncHandlers ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int * pxMBFunctionHandler ;
+typedef int eMBErrorCode ;
+typedef int UCHAR ;
+struct TYPE_2__ {int ucFunctionCode; int * pxHandler; } ;
+
+
+ int ENTER_CRITICAL_SECTION () ;
+ int EXIT_CRITICAL_SECTION () ;
+ int MB_EINVAL ;
+ int MB_ENOERR ;
+ int MB_ENORES ;
+ int MB_FUNC_HANDLERS_MAX ;
+ TYPE_1__* xFuncHandlers ;
 
 eMBErrorCode
 eMBRegisterCB( UCHAR ucFunctionCode, pxMBFunctionHandler pxHandler )
 {
-    int             i;
-    eMBErrorCode    eStatus;
+    int i;
+    eMBErrorCode eStatus;
 
     if( ( 0 < ucFunctionCode ) && ( ucFunctionCode <= 127 ) )
     {
-        ENTER_CRITICAL_SECTION(  );
-        if( pxHandler != NULL )
+        ENTER_CRITICAL_SECTION( );
+        if( pxHandler != ((void*)0) )
         {
             for( i = 0; i < MB_FUNC_HANDLERS_MAX; i++ )
             {
-                if( ( xFuncHandlers[i].pxHandler == NULL ) ||
+                if( ( xFuncHandlers[i].pxHandler == ((void*)0) ) ||
                     ( xFuncHandlers[i].pxHandler == pxHandler ) )
                 {
                     xFuncHandlers[i].ucFunctionCode = ucFunctionCode;
@@ -55,14 +55,14 @@ eMBRegisterCB( UCHAR ucFunctionCode, pxMBFunctionHandler pxHandler )
                 if( xFuncHandlers[i].ucFunctionCode == ucFunctionCode )
                 {
                     xFuncHandlers[i].ucFunctionCode = 0;
-                    xFuncHandlers[i].pxHandler = NULL;
+                    xFuncHandlers[i].pxHandler = ((void*)0);
                     break;
                 }
             }
-            /* Remove can't fail. */
+
             eStatus = MB_ENOERR;
         }
-        EXIT_CRITICAL_SECTION(  );
+        EXIT_CRITICAL_SECTION( );
     }
     else
     {

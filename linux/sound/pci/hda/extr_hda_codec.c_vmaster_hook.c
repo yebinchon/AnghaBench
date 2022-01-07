@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hda_vmaster_mute_hook {int mute_mode; int /*<<< orphan*/  codec; int /*<<< orphan*/  (* hook ) (int /*<<< orphan*/ ,int) ;} ;
 
-/* Variables and functions */
- int HDA_VMUTE_FOLLOW_MASTER ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int) ; 
+
+
+
+struct hda_vmaster_mute_hook {int mute_mode; int codec; int (* hook ) (int ,int) ;} ;
+
+
+ int HDA_VMUTE_FOLLOW_MASTER ;
+ int stub1 (int ,int) ;
 
 __attribute__((used)) static void vmaster_hook(void *private_data, int enabled)
 {
-	struct hda_vmaster_mute_hook *hook = private_data;
+ struct hda_vmaster_mute_hook *hook = private_data;
 
-	if (hook->mute_mode != HDA_VMUTE_FOLLOW_MASTER)
-		enabled = hook->mute_mode;
-	hook->hook(hook->codec, enabled);
+ if (hook->mute_mode != HDA_VMUTE_FOLLOW_MASTER)
+  enabled = hook->mute_mode;
+ hook->hook(hook->codec, enabled);
 }

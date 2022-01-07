@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ REG_GET_FIELD (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int REG_READ (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UART_FIFO_AHB_REG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UART_NUM ; 
- int /*<<< orphan*/  UART_RXFIFO_CNT ; 
- int /*<<< orphan*/  UART_STATUS_REG (int /*<<< orphan*/ ) ; 
+ scalar_t__ REG_GET_FIELD (int ,int ) ;
+ int REG_READ (int ) ;
+ int UART_FIFO_AHB_REG (int ) ;
+ int UART_NUM ;
+ int UART_RXFIFO_CNT ;
+ int UART_STATUS_REG (int ) ;
 
 int esp_gdbstub_getchar()
 {

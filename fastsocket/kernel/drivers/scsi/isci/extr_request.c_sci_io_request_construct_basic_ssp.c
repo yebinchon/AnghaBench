@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sas_task {int /*<<< orphan*/  total_xfer_len; int /*<<< orphan*/  data_dir; } ;
-struct isci_request {int /*<<< orphan*/  sm; int /*<<< orphan*/  protocol; } ;
-typedef  enum sci_status { ____Placeholder_sci_status } sci_status ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SAS_PROTOCOL_SSP ; 
- int /*<<< orphan*/  SCI_REQ_CONSTRUCTED ; 
- int SCI_SUCCESS ; 
- struct sas_task* isci_request_access_task (struct isci_request*) ; 
- int /*<<< orphan*/  sci_change_state (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sci_io_request_build_ssp_command_iu (struct isci_request*) ; 
- int /*<<< orphan*/  scu_ssp_io_request_construct_task_context (struct isci_request*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct sas_task {int total_xfer_len; int data_dir; } ;
+struct isci_request {int sm; int protocol; } ;
+typedef enum sci_status { ____Placeholder_sci_status } sci_status ;
+
+
+ int SAS_PROTOCOL_SSP ;
+ int SCI_REQ_CONSTRUCTED ;
+ int SCI_SUCCESS ;
+ struct sas_task* isci_request_access_task (struct isci_request*) ;
+ int sci_change_state (int *,int ) ;
+ int sci_io_request_build_ssp_command_iu (struct isci_request*) ;
+ int scu_ssp_io_request_construct_task_context (struct isci_request*,int ,int ) ;
 
 __attribute__((used)) static enum sci_status sci_io_request_construct_basic_ssp(struct isci_request *ireq)
 {
-	struct sas_task *task = isci_request_access_task(ireq);
+ struct sas_task *task = isci_request_access_task(ireq);
 
-	ireq->protocol = SAS_PROTOCOL_SSP;
+ ireq->protocol = SAS_PROTOCOL_SSP;
 
-	scu_ssp_io_request_construct_task_context(ireq,
-						  task->data_dir,
-						  task->total_xfer_len);
+ scu_ssp_io_request_construct_task_context(ireq,
+        task->data_dir,
+        task->total_xfer_len);
 
-	sci_io_request_build_ssp_command_iu(ireq);
+ sci_io_request_build_ssp_command_iu(ireq);
 
-	sci_change_state(&ireq->sm, SCI_REQ_CONSTRUCTED);
+ sci_change_state(&ireq->sm, SCI_REQ_CONSTRUCTED);
 
-	return SCI_SUCCESS;
+ return SCI_SUCCESS;
 }

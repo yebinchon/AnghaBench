@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ngx_int_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int ngx_int_t ;
 struct TYPE_2__ {scalar_t__ hash; } ;
-typedef  TYPE_1__ ngx_http_upstream_chash_server_t ;
+typedef TYPE_1__ ngx_http_upstream_chash_server_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_CHASH_EQUAL ; 
- int /*<<< orphan*/  NGX_CHASH_GREAT ; 
- int /*<<< orphan*/  NGX_CHASH_LESS ; 
+
+ int NGX_CHASH_EQUAL ;
+ int NGX_CHASH_GREAT ;
+ int NGX_CHASH_LESS ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_upstream_chash_cmp(const void *one, const void *two)

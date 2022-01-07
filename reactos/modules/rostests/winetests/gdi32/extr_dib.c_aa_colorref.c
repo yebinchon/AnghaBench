@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  COLORREF ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetBValue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetGValue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetRValue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RGB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  aa_comp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int COLORREF ;
+typedef int BYTE ;
+
+
+ int GetBValue (int ) ;
+ int GetGValue (int ) ;
+ int GetRValue (int ) ;
+ int RGB (int ,int ,int ) ;
+ int aa_comp (int ,int ,int ) ;
 
 __attribute__((used)) static inline COLORREF aa_colorref( COLORREF dst, COLORREF text, BYTE glyph )
 {

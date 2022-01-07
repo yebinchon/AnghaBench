@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cpumask {int dummy; } ;
 
-/* Variables and functions */
- struct cpumask const* cpu_online_mask ; 
- struct cpumask const* cpumask_of (int /*<<< orphan*/ ) ; 
+
+ struct cpumask const* cpu_online_mask ;
+ struct cpumask const* cpumask_of (int ) ;
 
 __attribute__((used)) static const struct cpumask *bigsmp_target_cpus(void)
 {
-#ifdef CONFIG_SMP
-	return cpu_online_mask;
-#else
-	return cpumask_of(0);
-#endif
+
+
+
+ return cpumask_of(0);
+
 }

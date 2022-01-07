@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uni_iterator ;
 
-/* Variables and functions */
- int MAX_WORDS ; 
- int /*<<< orphan*/  assert (int) ; 
- int* intersect_buff ; 
- int uni_iter_val_and_next (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uni_iterator ;
+
+
+ int MAX_WORDS ;
+ int assert (int) ;
+ int* intersect_buff ;
+ int uni_iter_val_and_next (int *) ;
 
 int *uni_iter_intersect (uni_iterator *a, int n, int max_cnt) {
-//  fprintf (stderr, "uni inter intersect %d\n", n);
+
 
   intersect_buff[0] = 0;
   if (n >= MAX_WORDS || n == 0) {
@@ -28,7 +28,7 @@ int *uni_iter_intersect (uni_iterator *a, int n, int max_cnt) {
 
   if (n == 1) {
     int val;
-//    fprintf (stderr, "stupid case\n");
+
     while (intersect_buff[0] < max_cnt && (val = uni_iter_val_and_next (&a[0]))) {
       intersect_buff[++intersect_buff[0]] = val;
     }
@@ -36,7 +36,7 @@ int *uni_iter_intersect (uni_iterator *a, int n, int max_cnt) {
     int i, j;
 
     int val;
-//    fprintf (stderr, "intersect %d\n", n);
+
     while ( (val = uni_iter_val_and_next (&a[0])) ) {
       intersect_buff[++intersect_buff[0]] = val;
     }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-struct netplay_connection {int /*<<< orphan*/  fd; int /*<<< orphan*/  send_packet_buffer; } ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct netplay_connection {int fd; int send_packet_buffer; } ;
 struct delta_frame {scalar_t__* have_real; } ;
-typedef  int /*<<< orphan*/  payload ;
-struct TYPE_5__ {size_t self_ptr; int connected_players; scalar_t__ self_mode; int self_client_num; int /*<<< orphan*/  self_frame_count; struct netplay_connection* connections; scalar_t__ is_server; struct delta_frame* buffer; } ;
-typedef  TYPE_1__ netplay_t ;
+typedef int payload ;
+struct TYPE_5__ {size_t self_ptr; int connected_players; scalar_t__ self_mode; int self_client_num; int self_frame_count; struct netplay_connection* connections; scalar_t__ is_server; struct delta_frame* buffer; } ;
+typedef TYPE_1__ netplay_t ;
 
-/* Variables and functions */
- int MAX_CLIENTS ; 
- int /*<<< orphan*/  NETPLAY_CMD_NOINPUT ; 
- scalar_t__ NETPLAY_CONNECTION_PLAYING ; 
- scalar_t__ NETPLAY_CONNECTION_SLAVE ; 
- int htonl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  netplay_send_flush (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  netplay_send_raw_cmd (TYPE_1__*,struct netplay_connection*,int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  send_input_frame (TYPE_1__*,struct delta_frame*,struct netplay_connection*,int /*<<< orphan*/ *,int,int) ; 
+
+ int MAX_CLIENTS ;
+ int NETPLAY_CMD_NOINPUT ;
+ scalar_t__ NETPLAY_CONNECTION_PLAYING ;
+ scalar_t__ NETPLAY_CONNECTION_SLAVE ;
+ int htonl (int ) ;
+ int netplay_send_flush (int *,int ,int) ;
+ int netplay_send_raw_cmd (TYPE_1__*,struct netplay_connection*,int ,int*,int) ;
+ int send_input_frame (TYPE_1__*,struct delta_frame*,struct netplay_connection*,int *,int,int) ;
 
 bool netplay_send_cur_input(netplay_t *netplay,
    struct netplay_connection *connection)
@@ -38,8 +38,8 @@ bool netplay_send_cur_input(netplay_t *netplay,
    {
       to_client = (uint32_t)(connection - netplay->connections + 1);
 
-      /* Send the other players' input data (FIXME: This involves an
-       * unacceptable amount of recalculating) */
+
+
       for (from_client = 1; from_client < MAX_CLIENTS; from_client++)
       {
          if (from_client == to_client)
@@ -49,36 +49,36 @@ bool netplay_send_cur_input(netplay_t *netplay,
          {
             if (dframe->have_real[from_client])
             {
-               if (!send_input_frame(netplay, dframe, connection, NULL, from_client, false))
-                  return false;
+               if (!send_input_frame(netplay, dframe, connection, ((void*)0), from_client, 0))
+                  return 0;
             }
          }
       }
 
-      /* If we're not playing, send a NOINPUT */
+
       if (netplay->self_mode != NETPLAY_CONNECTION_PLAYING)
       {
          uint32_t payload = htonl(netplay->self_frame_count);
          if (!netplay_send_raw_cmd(netplay, connection, NETPLAY_CMD_NOINPUT,
                &payload, sizeof(payload)))
-            return false;
+            return 0;
       }
 
    }
 
-   /* Send our own data */
+
    if (netplay->self_mode == NETPLAY_CONNECTION_PLAYING
          || netplay->self_mode == NETPLAY_CONNECTION_SLAVE)
    {
-      if (!send_input_frame(netplay, dframe, connection, NULL,
+      if (!send_input_frame(netplay, dframe, connection, ((void*)0),
             netplay->self_client_num,
             netplay->self_mode == NETPLAY_CONNECTION_SLAVE))
-         return false;
+         return 0;
    }
 
    if (!netplay_send_flush(&connection->send_packet_buffer, connection->fd,
-         false))
-      return false;
+         0))
+      return 0;
 
-   return true;
+   return 1;
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zero_byte ;
-typedef  int /*<<< orphan*/  FILETIME ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int CommitUrlCacheEntryA (char*,int /*<<< orphan*/ *,int /*<<< orphan*/  const,int /*<<< orphan*/  const,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int CreateUrlCacheEntryA (char*,int /*<<< orphan*/ ,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteFileA (char*) ; 
- int DeleteUrlCacheEntryA (char*) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  NORMAL_CACHE_ENTRY ; 
- int cache_entry_exists (char*) ; 
- int /*<<< orphan*/  create_and_write_file (char*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int zero_byte ;
+typedef int FILETIME ;
+typedef int BYTE ;
+typedef int BOOL ;
+
+
+ int CommitUrlCacheEntryA (char*,int *,int const,int const,int ,int *,int ,char*,int *) ;
+ int CreateUrlCacheEntryA (char*,int ,char*,char*,int ) ;
+ int DeleteFileA (char*) ;
+ int DeleteUrlCacheEntryA (char*) ;
+ int GetLastError () ;
+ int MAX_PATH ;
+ int NORMAL_CACHE_ENTRY ;
+ int cache_entry_exists (char*) ;
+ int create_and_write_file (char*,int *,int) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_trailing_slash(void)
 {
@@ -42,8 +42,8 @@ __attribute__((used)) static void test_trailing_slash(void)
 
     create_and_write_file(filename, &zero_byte, sizeof(zero_byte));
 
-    ret = CommitUrlCacheEntryA("Visited: http://testing.cache.com/", NULL, filetime_zero, filetime_zero,
-            NORMAL_CACHE_ENTRY, NULL, 0, "html", NULL);
+    ret = CommitUrlCacheEntryA("Visited: http://testing.cache.com/", ((void*)0), filetime_zero, filetime_zero,
+            NORMAL_CACHE_ENTRY, ((void*)0), 0, "html", ((void*)0));
     ok(ret, "CommitUrlCacheEntry failed with error %d\n", GetLastError());
 
     ok(cache_entry_exists("Visited: http://testing.cache.com/"), "cache entry does not exist\n");

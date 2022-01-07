@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  colormap; scalar_t__ border_pixel; } ;
-typedef  TYPE_1__ XSetWindowAttributes ;
-struct TYPE_9__ {int /*<<< orphan*/  visual; int /*<<< orphan*/  depth; int /*<<< orphan*/  screen; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * ctx; int /*<<< orphan*/  wnd; int /*<<< orphan*/ * dpy; TYPE_3__* vi; int /*<<< orphan*/  cmap; } ;
-typedef  int /*<<< orphan*/  GLboolean ;
-typedef  TYPE_2__ GLContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AllocNone ; 
- int CWBorderPixel ; 
- int CWColormap ; 
- int /*<<< orphan*/  DefaultScreen (int /*<<< orphan*/ *) ; 
- int GLX_DOUBLEBUFFER ; 
- int GLX_RGBA ; 
- int /*<<< orphan*/  GL_FALSE ; 
- int /*<<< orphan*/  GL_TRUE ; 
- int /*<<< orphan*/  InputOutput ; 
- int None ; 
- int /*<<< orphan*/  RootWindow (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  True ; 
- int /*<<< orphan*/  XCreateColormap (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XCreateWindow (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,TYPE_1__*) ; 
- int /*<<< orphan*/ * XOpenDisplay (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  display ; 
- TYPE_3__* glXChooseVisual (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/ * glXCreateContext (int /*<<< orphan*/ *,TYPE_3__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glXMakeCurrent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glXQueryExtension (int /*<<< orphan*/ *,int*,int*) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int colormap; scalar_t__ border_pixel; } ;
+typedef TYPE_1__ XSetWindowAttributes ;
+struct TYPE_9__ {int visual; int depth; int screen; } ;
+struct TYPE_8__ {int * ctx; int wnd; int * dpy; TYPE_3__* vi; int cmap; } ;
+typedef int GLboolean ;
+typedef TYPE_2__ GLContext ;
+
+
+ int AllocNone ;
+ int CWBorderPixel ;
+ int CWColormap ;
+ int DefaultScreen (int *) ;
+ int GLX_DOUBLEBUFFER ;
+ int GLX_RGBA ;
+ int GL_FALSE ;
+ int GL_TRUE ;
+ int InputOutput ;
+ int None ;
+ int RootWindow (int *,int ) ;
+ int True ;
+ int XCreateColormap (int *,int ,int ,int ) ;
+ int XCreateWindow (int *,int ,int ,int ,int,int,int ,int ,int ,int ,int,TYPE_1__*) ;
+ int * XOpenDisplay (int ) ;
+ int display ;
+ TYPE_3__* glXChooseVisual (int *,int ,int*) ;
+ int * glXCreateContext (int *,TYPE_3__*,int,int ) ;
+ int glXMakeCurrent (int *,int ,int *) ;
+ int glXQueryExtension (int *,int*,int*) ;
 
 GLboolean CreateContext (GLContext* ctx)
 {
   int attrib[] = { GLX_RGBA, GLX_DOUBLEBUFFER, None };
   int erb, evb;
   XSetWindowAttributes swa;
-  /* check input */
-  if (NULL == ctx) return GL_TRUE;
-  /* open display */
+
+  if (((void*)0) == ctx) return GL_TRUE;
+
   ctx->dpy = XOpenDisplay(display);
-  if (NULL == ctx->dpy) return GL_TRUE;
-  /* query for glx */
+  if (((void*)0) == ctx->dpy) return GL_TRUE;
+
   if (!glXQueryExtension(ctx->dpy, &erb, &evb)) return GL_TRUE;
-  /* choose visual */
+
   ctx->vi = glXChooseVisual(ctx->dpy, DefaultScreen(ctx->dpy), attrib);
-  if (NULL == ctx->vi) return GL_TRUE;
-  /* create context */
+  if (((void*)0) == ctx->vi) return GL_TRUE;
+
   ctx->ctx = glXCreateContext(ctx->dpy, ctx->vi, None, True);
-  if (NULL == ctx->ctx) return GL_TRUE;
-  /* create window */
-  /*wnd = XCreateSimpleWindow(dpy, RootWindow(dpy, vi->screen), 0, 0, 1, 1, 1, 0, 0);*/
+  if (((void*)0) == ctx->ctx) return GL_TRUE;
+
+
   ctx->cmap = XCreateColormap(ctx->dpy, RootWindow(ctx->dpy, ctx->vi->screen),
                               ctx->vi->visual, AllocNone);
   swa.border_pixel = 0;
   swa.colormap = ctx->cmap;
-  ctx->wnd = XCreateWindow(ctx->dpy, RootWindow(ctx->dpy, ctx->vi->screen), 
-                           0, 0, 1, 1, 0, ctx->vi->depth, InputOutput, ctx->vi->visual, 
+  ctx->wnd = XCreateWindow(ctx->dpy, RootWindow(ctx->dpy, ctx->vi->screen),
+                           0, 0, 1, 1, 0, ctx->vi->depth, InputOutput, ctx->vi->visual,
                            CWBorderPixel | CWColormap, &swa);
-  /* make context current */
+
   if (!glXMakeCurrent(ctx->dpy, ctx->wnd, ctx->ctx)) return GL_TRUE;
   return GL_FALSE;
 }

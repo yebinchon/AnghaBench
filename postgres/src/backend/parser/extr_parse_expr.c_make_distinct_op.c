@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ opresulttype; scalar_t__ opretset; } ;
-struct TYPE_6__ {int /*<<< orphan*/  p_last_srf; } ;
-typedef  TYPE_1__ ParseState ;
-typedef  TYPE_2__ OpExpr ;
-typedef  int /*<<< orphan*/  Node ;
-typedef  int /*<<< orphan*/  List ;
-typedef  int /*<<< orphan*/  Expr ;
+struct TYPE_6__ {int p_last_srf; } ;
+typedef TYPE_1__ ParseState ;
+typedef TYPE_2__ OpExpr ;
+typedef int Node ;
+typedef int List ;
+typedef int Expr ;
 
-/* Variables and functions */
- scalar_t__ BOOLOID ; 
- int /*<<< orphan*/  ERRCODE_DATATYPE_MISMATCH ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  NodeSetTag (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  T_DistinctExpr ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*,...) ; 
- int /*<<< orphan*/ * make_op (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  parser_errposition (TYPE_1__*,int) ; 
+
+ scalar_t__ BOOLOID ;
+ int ERRCODE_DATATYPE_MISMATCH ;
+ int ERROR ;
+ int NodeSetTag (int *,int ) ;
+ int T_DistinctExpr ;
+ int ereport (int ,int ) ;
+ int errcode (int ) ;
+ int errmsg (char*,...) ;
+ int * make_op (TYPE_1__*,int *,int *,int *,int ,int) ;
+ int parser_errposition (TYPE_1__*,int) ;
 
 __attribute__((used)) static Expr *
 make_distinct_op(ParseState *pstate, List *opname, Node *ltree, Node *rtree,
-				 int location)
+     int location)
 {
-	Expr	   *result;
+ Expr *result;
 
-	result = make_op(pstate, opname, ltree, rtree,
-					 pstate->p_last_srf, location);
-	if (((OpExpr *) result)->opresulttype != BOOLOID)
-		ereport(ERROR,
-				(errcode(ERRCODE_DATATYPE_MISMATCH),
-				 errmsg("IS DISTINCT FROM requires = operator to yield boolean"),
-				 parser_errposition(pstate, location)));
-	if (((OpExpr *) result)->opretset)
-		ereport(ERROR,
-				(errcode(ERRCODE_DATATYPE_MISMATCH),
-		/* translator: %s is name of a SQL construct, eg NULLIF */
-				 errmsg("%s must not return a set", "IS DISTINCT FROM"),
-				 parser_errposition(pstate, location)));
+ result = make_op(pstate, opname, ltree, rtree,
+      pstate->p_last_srf, location);
+ if (((OpExpr *) result)->opresulttype != BOOLOID)
+  ereport(ERROR,
+    (errcode(ERRCODE_DATATYPE_MISMATCH),
+     errmsg("IS DISTINCT FROM requires = operator to yield boolean"),
+     parser_errposition(pstate, location)));
+ if (((OpExpr *) result)->opretset)
+  ereport(ERROR,
+    (errcode(ERRCODE_DATATYPE_MISMATCH),
 
-	/*
-	 * We rely on DistinctExpr and OpExpr being same struct
-	 */
-	NodeSetTag(result, T_DistinctExpr);
+     errmsg("%s must not return a set", "IS DISTINCT FROM"),
+     parser_errposition(pstate, location)));
 
-	return result;
+
+
+
+ NodeSetTag(result, T_DistinctExpr);
+
+ return result;
 }

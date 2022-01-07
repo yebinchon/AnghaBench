@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct tween {int /*<<< orphan*/ * subject; } ;
-typedef  int /*<<< orphan*/  menu_animation_t ;
-typedef  enum menu_animation_ctl_state { ____Placeholder_menu_animation_ctl_state } menu_animation_ctl_state ;
-struct TYPE_3__ {int /*<<< orphan*/  pending; int /*<<< orphan*/  list; } ;
 
-/* Variables and functions */
-#define  MENU_ANIMATION_CTL_CLEAR_ACTIVE 131 
-#define  MENU_ANIMATION_CTL_DEINIT 130 
-#define  MENU_ANIMATION_CTL_NONE 129 
-#define  MENU_ANIMATION_CTL_SET_ACTIVE 128 
- TYPE_1__ anim ; 
- int animation_is_active ; 
- int /*<<< orphan*/  cur_time ; 
- size_t da_count (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  da_free (int /*<<< orphan*/ ) ; 
- struct tween* da_getptr (int /*<<< orphan*/ ,size_t) ; 
- float delta_time ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  old_time ; 
- int ticker_is_active ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct tween {int * subject; } ;
+typedef int menu_animation_t ;
+typedef enum menu_animation_ctl_state { ____Placeholder_menu_animation_ctl_state } menu_animation_ctl_state ;
+struct TYPE_3__ {int pending; int list; } ;
+
+
+
+
+
+
+ TYPE_1__ anim ;
+ int animation_is_active ;
+ int cur_time ;
+ size_t da_count (int ) ;
+ int da_free (int ) ;
+ struct tween* da_getptr (int ,size_t) ;
+ float delta_time ;
+ int memset (TYPE_1__*,int ,int) ;
+ int old_time ;
+ int ticker_is_active ;
 
 bool menu_animation_ctl(enum menu_animation_ctl_state state, void *data)
 {
    switch (state)
    {
-      case MENU_ANIMATION_CTL_DEINIT:
+      case 130:
          {
             size_t i;
 
@@ -47,7 +47,7 @@ bool menu_animation_ctl(enum menu_animation_ctl_state state, void *data)
                   continue;
 
                if (t->subject)
-                  t->subject = NULL;
+                  t->subject = ((void*)0);
             }
 
             da_free(anim.list);
@@ -55,22 +55,22 @@ bool menu_animation_ctl(enum menu_animation_ctl_state state, void *data)
 
             memset(&anim, 0, sizeof(menu_animation_t));
          }
-         cur_time                  = 0;
-         old_time                  = 0;
-         delta_time                = 0.0f;
+         cur_time = 0;
+         old_time = 0;
+         delta_time = 0.0f;
          break;
-      case MENU_ANIMATION_CTL_CLEAR_ACTIVE:
-         animation_is_active       = false;
-         ticker_is_active          = false;
+      case 131:
+         animation_is_active = 0;
+         ticker_is_active = 0;
          break;
-      case MENU_ANIMATION_CTL_SET_ACTIVE:
-         animation_is_active       = true;
-         ticker_is_active          = true;
+      case 128:
+         animation_is_active = 1;
+         ticker_is_active = 1;
          break;
-      case MENU_ANIMATION_CTL_NONE:
+      case 129:
       default:
          break;
    }
 
-   return true;
+   return 1;
 }

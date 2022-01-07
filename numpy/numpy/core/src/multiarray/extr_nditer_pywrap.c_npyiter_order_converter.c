@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int Py_ssize_t ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  NPY_ORDER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NPY_ANYORDER ; 
- int /*<<< orphan*/  NPY_CORDER ; 
- int /*<<< orphan*/  NPY_FORTRANORDER ; 
- int /*<<< orphan*/  NPY_KEEPORDER ; 
- scalar_t__ PyBytes_AsStringAndSize (int /*<<< orphan*/ *,char**,int*) ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- int /*<<< orphan*/ * PyUnicode_AsASCIIString (int /*<<< orphan*/ *) ; 
- scalar_t__ PyUnicode_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int Py_ssize_t ;
+typedef int PyObject ;
+typedef int NPY_ORDER ;
+
+
+ int NPY_ANYORDER ;
+ int NPY_CORDER ;
+ int NPY_FORTRANORDER ;
+ int NPY_KEEPORDER ;
+ scalar_t__ PyBytes_AsStringAndSize (int *,char**,int*) ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_ValueError ;
+ int * PyUnicode_AsASCIIString (int *) ;
+ scalar_t__ PyUnicode_Check (int *) ;
+ int Py_DECREF (int *) ;
 
 __attribute__((used)) static int
 npyiter_order_converter(PyObject *order_in, NPY_ORDER *order)
 {
-    char *str = NULL;
+    char *str = ((void*)0);
     Py_ssize_t length = 0;
 
     if (PyUnicode_Check(order_in)) {
-        /* accept unicode input */
+
         PyObject *str_obj;
         int ret;
         str_obj = PyUnicode_AsASCIIString(order_in);
-        if (str_obj == NULL) {
+        if (str_obj == ((void*)0)) {
             return 0;
         }
         ret = npyiter_order_converter(str_obj, order);

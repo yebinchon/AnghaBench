@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int u32 ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u32 ;
 struct TYPE_4__ {TYPE_1__* slot; } ;
-struct TYPE_3__ {int ssctl; int sbctl; int lpctl; scalar_t__ krs; int /*<<< orphan*/  mdy; int /*<<< orphan*/  mdx; int /*<<< orphan*/  mdl; scalar_t__ tl; scalar_t__ sdir; scalar_t__ swe; scalar_t__ rr; scalar_t__ lslnk; scalar_t__ ar; scalar_t__ eghold; scalar_t__ sr; scalar_t__ dr; scalar_t__ lea; scalar_t__ lsa; scalar_t__ sa; scalar_t__ pcm8b; } ;
+struct TYPE_3__ {int ssctl; int sbctl; int lpctl; scalar_t__ krs; int mdy; int mdx; int mdl; scalar_t__ tl; scalar_t__ sdir; scalar_t__ swe; scalar_t__ rr; scalar_t__ lslnk; scalar_t__ ar; scalar_t__ eghold; scalar_t__ sr; scalar_t__ dr; scalar_t__ lea; scalar_t__ lsa; scalar_t__ sa; scalar_t__ pcm8b; } ;
 
-/* Variables and functions */
- char* AddSoundLFO (char*,char*,int,int) ; 
- char* AddSoundLevel (char*,int) ; 
- char* AddSoundPan (char*,int) ; 
- int /*<<< orphan*/  AddString (char*,char*,...) ; 
- unsigned long SCSP_FREQ_LB ; 
- TYPE_2__ scsp ; 
- int scsp_r_w (int) ; 
+
+ char* AddSoundLFO (char*,char*,int,int) ;
+ char* AddSoundLevel (char*,int) ;
+ char* AddSoundPan (char*,int) ;
+ int AddString (char*,char*,...) ;
+ unsigned long SCSP_FREQ_LB ;
+ TYPE_2__ scsp ;
+ int scsp_r_w (int) ;
 
 void
 ScspSlotDebugStats (u8 slotnum, char *outstring)
@@ -65,7 +65,7 @@ ScspSlotDebugStats (u8 slotnum, char *outstring)
       break;
     }
 
-  // Loop Control
+
   AddString (outstring, "Loop Mode = ");
   switch (scsp.slot[slotnum].lpctl)
     {
@@ -83,8 +83,8 @@ ScspSlotDebugStats (u8 slotnum, char *outstring)
       break;
     }
 
-  // PCM8B
-  // NOTE: Need curly braces here, as AddString is a macro.
+
+
   if (scsp.slot[slotnum].pcm8b)
     {
       AddString (outstring, "8-bit samples\r\n");

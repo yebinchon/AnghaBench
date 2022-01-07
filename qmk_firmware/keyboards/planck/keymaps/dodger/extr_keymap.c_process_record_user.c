@@ -1,106 +1,90 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_4__ {int pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
+typedef TYPE_2__ keyrecord_t ;
+ int PLAY_SONG (int ) ;
 
-/* Variables and functions */
-#define  CABBAGE 143 
-#define  COLEMAK 142 
-#define  COMMENTHEAD 141 
-#define  DISNEY 140 
-#define  DOOM 139 
-#define  GCTOGG 138 
-#define  LENNY 137 
-#define  LOWER 136 
-#define  MARIO 135 
-#define  MARIOE 134 
-#define  MCTOGG 133 
-#define  NUMBERONE 132 
-#define  OLDSPICE 131 
-#define  OVERWATCH 130 
- int /*<<< orphan*/  PLAY_SONG (int /*<<< orphan*/ ) ; 
-#define  RAISE 129 
-#define  RICKANDMORT 128 
- int /*<<< orphan*/  SEND_STRING (char*) ; 
- int /*<<< orphan*/  _ADJUST ; 
- int /*<<< orphan*/  _COLEMAK ; 
- int /*<<< orphan*/  _GAME ; 
- int /*<<< orphan*/  _LOWER ; 
- int /*<<< orphan*/  _MUSIC ; 
- int /*<<< orphan*/  _RAISE ; 
- int /*<<< orphan*/  backlight_set (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cabbage ; 
- int /*<<< orphan*/  disney ; 
- int /*<<< orphan*/  doom ; 
- int isGame ; 
- int isMusic ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mario ; 
- int /*<<< orphan*/  marioe ; 
- int /*<<< orphan*/  numberone ; 
- int /*<<< orphan*/  oldspice ; 
- int /*<<< orphan*/  overwatch ; 
- int /*<<< orphan*/  setLayer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_single_persistent_default_layer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_tri_layer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int SEND_STRING (char*) ;
+ int _ADJUST ;
+ int _COLEMAK ;
+ int _GAME ;
+ int _LOWER ;
+ int _MUSIC ;
+ int _RAISE ;
+ int backlight_set (int ) ;
+ int cabbage ;
+ int disney ;
+ int doom ;
+ int isGame ;
+ int isMusic ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ int mario ;
+ int marioe ;
+ int numberone ;
+ int oldspice ;
+ int overwatch ;
+ int setLayer (int ) ;
+ int set_single_persistent_default_layer (int ) ;
+ int update_tri_layer (int ,int ,int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case COLEMAK:
+    case 142:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_COLEMAK);
-        #ifdef BACKLIGHT_ENABLE
-		  backlight_set(0);
-        #endif
+
+
+
       }
-      return false;
+      return 0;
       break;
-	case GCTOGG:
+ case 138:
       if (record->event.pressed) {
-		  if (isGame) {
+    if (isGame) {
               if (isMusic)
                   setLayer(_MUSIC);
               else
                   setLayer(_COLEMAK);
-              isGame = false;
+              isGame = 0;
           } else {
               setLayer(_GAME);
-              isGame = true;
+              isGame = 1;
           }
       }
-      return false;
+      return 0;
       break;
-    case MCTOGG:
+    case 133:
         if (record->event.pressed) {
             if (isMusic) {
                 if (isGame)
                     setLayer(_GAME);
                 else
                     setLayer(_COLEMAK);
-                isMusic = false;
+                isMusic = 0;
             } else {
                 setLayer(_MUSIC);
-                isMusic = true;
+                isMusic = 1;
             }
         }
-        return false;
+        return 0;
         break;
-    case LOWER:
+    case 136:
       if (record->event.pressed) {
         layer_on(_LOWER);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
@@ -108,9 +92,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_off(_LOWER);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
       }
-      return false;
+      return 0;
       break;
-    case RAISE:
+    case 129:
       if (record->event.pressed) {
         layer_on(_RAISE);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
@@ -118,79 +102,79 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_off(_RAISE);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
       }
-      return false;
+      return 0;
       break;
-    case LENNY:
-    	if (record->event.pressed) {
-    		SEND_STRING("()");
-    	}
-    	return false; break;
-    case COMMENTHEAD:
-    	if (record->event.pressed) {
-    		SEND_STRING("// ---------------------------------------------------------------");
-    	}
-    	return false; break;
-    case RICKANDMORT:
-    	if (record->event.pressed) {
-    		SEND_STRING("// ***************************************************************");
-    	}
-    	return false; break;
-    case MARIO:
+    case 137:
+     if (record->event.pressed) {
+      SEND_STRING("()");
+     }
+     return 0; break;
+    case 141:
+     if (record->event.pressed) {
+      SEND_STRING("// ---------------------------------------------------------------");
+     }
+     return 0; break;
+    case 128:
+     if (record->event.pressed) {
+      SEND_STRING("// ***************************************************************");
+     }
+     return 0; break;
+    case 135:
         if(record->event.pressed) {
-          #ifdef AUDIO_ENABLE
-            PLAY_SONG(mario);
-          #endif
+
+
+
         }
-        return false; break;
-      case MARIOE:
+        return 0; break;
+      case 134:
           if(record->event.pressed) {
-            #ifdef AUDIO_ENABLE
-              PLAY_SONG(marioe);
-            #endif
+
+
+
           }
-          return false; break;
-      case OVERWATCH:
+          return 0; break;
+      case 130:
           if(record->event.pressed) {
-            #ifdef AUDIO_ENABLE
-              PLAY_SONG(overwatch);
-            #endif
+
+
+
           }
-          return false; break;
-      case DOOM:
+          return 0; break;
+      case 139:
           if(record->event.pressed) {
-            #ifdef AUDIO_ENABLE
-              PLAY_SONG(doom);
-            #endif
+
+
+
           }
-          return false; break;
-      case DISNEY:
+          return 0; break;
+      case 140:
           if(record->event.pressed) {
-            #ifdef AUDIO_ENABLE
-              PLAY_SONG(disney);
-            #endif
+
+
+
           }
-          return false; break;
-      case NUMBERONE:
+          return 0; break;
+      case 132:
           if(record->event.pressed) {
-            #ifdef AUDIO_ENABLE
-              PLAY_SONG(numberone);
-            #endif
+
+
+
           }
-          return false; break;
-      case CABBAGE:
+          return 0; break;
+      case 143:
           if(record->event.pressed) {
-            #ifdef AUDIO_ENABLE
-              PLAY_SONG(cabbage);
-            #endif
+
+
+
           }
-          return false; break;
-      case OLDSPICE:
+          return 0; break;
+      case 131:
           if(record->event.pressed) {
-            #ifdef AUDIO_ENABLE
-              PLAY_SONG(oldspice);
-            #endif
+
+
+
           }
-          return false; break;
+          return 0; break;
   }
-  return true;
+  return 1;
 }

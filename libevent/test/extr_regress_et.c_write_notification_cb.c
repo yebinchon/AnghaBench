@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  evutil_socket_t ;
 
-/* Variables and functions */
- short EV_ET ; 
- short last_write_notification_was_et ; 
- int /*<<< orphan*/  write_notification_count ; 
+
+
+
+typedef int evutil_socket_t ;
+
+
+ short EV_ET ;
+ short last_write_notification_was_et ;
+ int write_notification_count ;
 
 __attribute__((used)) static void
 write_notification_cb(evutil_socket_t fd, short event, void *arg)
 {
-	write_notification_count++;
-	last_write_notification_was_et = (event & EV_ET);
+ write_notification_count++;
+ last_write_notification_was_et = (event & EV_ET);
 }

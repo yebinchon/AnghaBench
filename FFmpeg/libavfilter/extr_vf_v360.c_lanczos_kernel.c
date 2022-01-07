@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  int16_t ;
-struct TYPE_3__ {int /*<<< orphan*/ ** v; int /*<<< orphan*/ ** u; } ;
-typedef  TYPE_1__ XYRemap ;
 
-/* Variables and functions */
- int /*<<< orphan*/  calculate_lanczos_coeffs (float,float*) ; 
- int /*<<< orphan*/  lrintf (float) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+typedef int int16_t ;
+struct TYPE_3__ {int ** v; int ** u; } ;
+typedef TYPE_1__ XYRemap ;
+
+
+ int calculate_lanczos_coeffs (float,float*) ;
+ int lrintf (float) ;
 
 __attribute__((used)) static void lanczos_kernel(float du, float dv, const XYRemap *rmap,
                            uint16_t *u, uint16_t *v, int16_t *ker)

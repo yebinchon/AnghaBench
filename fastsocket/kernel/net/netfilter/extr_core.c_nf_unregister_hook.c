@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nf_hook_ops {int /*<<< orphan*/  list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  list_del_rcu (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nf_hook_mutex ; 
- int /*<<< orphan*/  synchronize_net () ; 
+
+
+
+struct nf_hook_ops {int list; } ;
+
+
+ int list_del_rcu (int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int nf_hook_mutex ;
+ int synchronize_net () ;
 
 void nf_unregister_hook(struct nf_hook_ops *reg)
 {
-	mutex_lock(&nf_hook_mutex);
-	list_del_rcu(&reg->list);
-	mutex_unlock(&nf_hook_mutex);
+ mutex_lock(&nf_hook_mutex);
+ list_del_rcu(&reg->list);
+ mutex_unlock(&nf_hook_mutex);
 
-	synchronize_net();
+ synchronize_net();
 }

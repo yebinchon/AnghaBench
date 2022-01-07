@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ v8u16 ;
-typedef  int /*<<< orphan*/  v8i16 ;
-typedef  scalar_t__ v16u8 ;
-typedef  int /*<<< orphan*/  const uint8_t ;
-typedef  int uint32_t ;
-typedef  int ptrdiff_t ;
-typedef  int /*<<< orphan*/  int8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DOTP_UB2_UH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ILVL_B2_UB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ILVR_B2_UB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  LD_UB2 (int /*<<< orphan*/  const*,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  LD_UB4 (int /*<<< orphan*/  const*,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ LD_UH (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  PCKEV_AVG_ST_UB (scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  SAT_UH2_UH (scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  SRARI_H2_UH (scalar_t__,scalar_t__,int) ; 
- scalar_t__ __msa_splati_h (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ ** vp9_bilinear_filters_msa ; 
+
+
+
+typedef scalar_t__ v8u16 ;
+typedef int v8i16 ;
+typedef scalar_t__ v16u8 ;
+typedef int const uint8_t ;
+typedef int uint32_t ;
+typedef int ptrdiff_t ;
+typedef int int8_t ;
+
+
+ int DOTP_UB2_UH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ILVL_B2_UB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ILVR_B2_UB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int LD_UB2 (int const*,int,scalar_t__,scalar_t__) ;
+ int LD_UB4 (int const*,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ LD_UH (int const*) ;
+ int PCKEV_AVG_ST_UB (scalar_t__,scalar_t__,scalar_t__,int const*) ;
+ int SAT_UH2_UH (scalar_t__,scalar_t__,int) ;
+ int SRARI_H2_UH (scalar_t__,scalar_t__,int) ;
+ scalar_t__ __msa_splati_h (int ,int ) ;
+ int ** vp9_bilinear_filters_msa ;
 
 void ff_avg_bilin_64v_msa(uint8_t *dst, ptrdiff_t dst_stride,
                           const uint8_t *src, ptrdiff_t src_stride,
@@ -44,7 +44,7 @@ void ff_avg_bilin_64v_msa(uint8_t *dst, ptrdiff_t dst_stride,
     v8u16 tmp0, tmp1, tmp2, tmp3, tmp4, tmp5, tmp6, tmp7;
     v8u16 filt;
 
-    /* rearranging filter_y */
+
     filt = LD_UH(filter);
     filt0 = (v16u8) __msa_splati_h((v8i16) filt, 0);
 

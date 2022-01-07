@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct etap_pre_exec_data {int /*<<< orphan*/  control_me; int /*<<< orphan*/  data_me; int /*<<< orphan*/  control_remote; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dup2 (int /*<<< orphan*/ ,int) ; 
+
+
+
+struct etap_pre_exec_data {int control_me; int data_me; int control_remote; } ;
+
+
+ int close (int ) ;
+ int dup2 (int ,int) ;
 
 __attribute__((used)) static void etap_pre_exec(void *arg)
 {
-	struct etap_pre_exec_data *data = arg;
+ struct etap_pre_exec_data *data = arg;
 
-	dup2(data->control_remote, 1);
-	close(data->data_me);
-	close(data->control_me);
+ dup2(data->control_remote, 1);
+ close(data->data_me);
+ close(data->control_me);
 }

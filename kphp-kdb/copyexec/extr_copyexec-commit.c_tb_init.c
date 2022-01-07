@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct transaction_buffer {long long size; scalar_t__ p; int /*<<< orphan*/  buff; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  kprintf (char*,long long) ; 
- int /*<<< orphan*/  malloc (long long) ; 
+
+
+
+struct transaction_buffer {long long size; scalar_t__ p; int buff; } ;
+
+
+ int exit (int) ;
+ int kprintf (char*,long long) ;
+ int malloc (long long) ;
 
 __attribute__((used)) static void tb_init (struct transaction_buffer *B, long long size) {
   B->buff = malloc (size);

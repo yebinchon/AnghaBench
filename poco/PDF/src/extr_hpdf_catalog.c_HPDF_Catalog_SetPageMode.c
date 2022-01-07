@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HPDF_STATUS ;
-typedef  scalar_t__ HPDF_PageMode ;
-typedef  size_t HPDF_INT ;
-typedef  int /*<<< orphan*/  HPDF_Catalog ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HPDF_Dict_AddName (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * HPDF_PAGE_MODE_NAMES ; 
+
+
+
+typedef int HPDF_STATUS ;
+typedef scalar_t__ HPDF_PageMode ;
+typedef size_t HPDF_INT ;
+typedef int HPDF_Catalog ;
+
+
+ int HPDF_Dict_AddName (int ,char*,int ) ;
+ int * HPDF_PAGE_MODE_NAMES ;
 
 HPDF_STATUS
-HPDF_Catalog_SetPageMode  (HPDF_Catalog   catalog,
-                           HPDF_PageMode  mode)
+HPDF_Catalog_SetPageMode (HPDF_Catalog catalog,
+                           HPDF_PageMode mode)
 {
     return HPDF_Dict_AddName (catalog, "PageMode",
                     HPDF_PAGE_MODE_NAMES[(HPDF_INT)mode]);

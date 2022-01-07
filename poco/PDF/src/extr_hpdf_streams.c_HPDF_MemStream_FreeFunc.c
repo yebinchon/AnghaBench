@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  buf; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * attr; int /*<<< orphan*/  mmgr; } ;
-typedef  TYPE_1__* HPDF_Stream ;
-typedef  TYPE_2__* HPDF_MemStreamAttr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HPDF_FreeMem (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  HPDF_List_Free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_MemStream_FreeData (TYPE_1__*) ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int buf; } ;
+struct TYPE_6__ {int * attr; int mmgr; } ;
+typedef TYPE_1__* HPDF_Stream ;
+typedef TYPE_2__* HPDF_MemStreamAttr ;
+
+
+ int HPDF_FreeMem (int ,TYPE_2__*) ;
+ int HPDF_List_Free (int ) ;
+ int HPDF_MemStream_FreeData (TYPE_1__*) ;
+ int HPDF_PTRACE (char*) ;
 
 void
-HPDF_MemStream_FreeFunc  (HPDF_Stream  stream)
+HPDF_MemStream_FreeFunc (HPDF_Stream stream)
 {
     HPDF_MemStreamAttr attr;
 
@@ -34,5 +34,5 @@ HPDF_MemStream_FreeFunc  (HPDF_Stream  stream)
     HPDF_MemStream_FreeData (stream);
     HPDF_List_Free (attr->buf);
     HPDF_FreeMem (stream->mmgr, attr);
-    stream->attr = NULL;
+    stream->attr = ((void*)0);
 }

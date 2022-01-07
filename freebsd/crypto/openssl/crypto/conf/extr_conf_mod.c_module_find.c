@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ CONF_MODULE ;
 
-/* Variables and functions */
- int sk_CONF_MODULE_num (int /*<<< orphan*/ ) ; 
- TYPE_1__* sk_CONF_MODULE_value (int /*<<< orphan*/ ,int) ; 
- int strlen (char const*) ; 
- scalar_t__ strncmp (int /*<<< orphan*/ ,char const*,int) ; 
- char* strrchr (char const*,char) ; 
- int /*<<< orphan*/  supported_modules ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int name; } ;
+typedef TYPE_1__ CONF_MODULE ;
+
+
+ int sk_CONF_MODULE_num (int ) ;
+ TYPE_1__* sk_CONF_MODULE_value (int ,int) ;
+ int strlen (char const*) ;
+ scalar_t__ strncmp (int ,char const*,int) ;
+ char* strrchr (char const*,char) ;
+ int supported_modules ;
 
 __attribute__((used)) static CONF_MODULE *module_find(const char *name)
 {
@@ -40,6 +40,6 @@ __attribute__((used)) static CONF_MODULE *module_find(const char *name)
             return tmod;
     }
 
-    return NULL;
+    return ((void*)0);
 
 }

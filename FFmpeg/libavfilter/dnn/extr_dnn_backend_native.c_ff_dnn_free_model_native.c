@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-typedef  size_t int32_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
+typedef size_t int32_t ;
 struct TYPE_7__ {TYPE_1__* biases; TYPE_1__* kernel; } ;
 struct TYPE_6__ {size_t layers_num; scalar_t__ type; size_t operands_num; struct TYPE_6__* output_indexes; struct TYPE_6__* operands; struct TYPE_6__* data; struct TYPE_6__* layers; struct TYPE_6__* params; scalar_t__ model; } ;
-typedef  TYPE_1__ DNNModel ;
-typedef  TYPE_2__ ConvolutionalParams ;
-typedef  TYPE_1__ ConvolutionalNetwork ;
+typedef TYPE_1__ DNNModel ;
+typedef TYPE_2__ ConvolutionalParams ;
+typedef TYPE_1__ ConvolutionalNetwork ;
 
-/* Variables and functions */
- scalar_t__ DLT_CONV2D ; 
- int /*<<< orphan*/  av_freep (TYPE_1__**) ; 
+
+ scalar_t__ DLT_CONV2D ;
+ int av_freep (TYPE_1__**) ;
 
 void ff_dnn_free_model_native(DNNModel **model)
 {

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zBuf ;
-struct snippetMatch {int /*<<< orphan*/  nByte; int /*<<< orphan*/  iStart; int /*<<< orphan*/  iTerm; int /*<<< orphan*/  iCol; } ;
-struct TYPE_3__ {int nMatch; int /*<<< orphan*/  nOffset; int /*<<< orphan*/  zOffset; struct snippetMatch* aMatch; } ;
-typedef  int /*<<< orphan*/  StringBuffer ;
-typedef  TYPE_1__ Snippet ;
 
-/* Variables and functions */
- int /*<<< orphan*/  append (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  initStringBuffer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_snprintf (int,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stringBufferData (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stringBufferLength (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int zBuf ;
+struct snippetMatch {int nByte; int iStart; int iTerm; int iCol; } ;
+struct TYPE_3__ {int nMatch; int nOffset; int zOffset; struct snippetMatch* aMatch; } ;
+typedef int StringBuffer ;
+typedef TYPE_1__ Snippet ;
+
+
+ int append (int *,char*) ;
+ int initStringBuffer (int *) ;
+ int sqlite3_snprintf (int,char*,char*,int ,int ,int ,int ) ;
+ int stringBufferData (int *) ;
+ int stringBufferLength (int *) ;
 
 __attribute__((used)) static void snippetOffsetText(Snippet *p){
   int i;

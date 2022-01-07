@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pthread_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Sleep (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ bankAccount ; 
- scalar_t__ pthread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*) ; 
- scalar_t__ pthread_join (int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  rdfunc ; 
- int /*<<< orphan*/  wrfunc ; 
+
+
+
+typedef int pthread_t ;
+
+
+ int Sleep (int) ;
+ int assert (int) ;
+ scalar_t__ bankAccount ;
+ scalar_t__ pthread_create (int *,int *,int ,void*) ;
+ scalar_t__ pthread_join (int ,void**) ;
+ int rdfunc ;
+ int wrfunc ;
 
 int
 main()
@@ -35,13 +35,13 @@ main()
 
   bankAccount = 0;
 
-  assert(pthread_create(&wrt1, NULL, wrfunc, NULL) == 0);
+  assert(pthread_create(&wrt1, ((void*)0), wrfunc, ((void*)0)) == 0);
   Sleep(500);
-  assert(pthread_create(&rdt1, NULL, rdfunc, (void *)(size_t)1) == 0);
+  assert(pthread_create(&rdt1, ((void*)0), rdfunc, (void *)(size_t)1) == 0);
   Sleep(500);
-  assert(pthread_create(&wrt2, NULL, wrfunc, NULL) == 0);
+  assert(pthread_create(&wrt2, ((void*)0), wrfunc, ((void*)0)) == 0);
   Sleep(500);
-  assert(pthread_create(&rdt2, NULL, rdfunc, (void *)(size_t)2) == 0);
+  assert(pthread_create(&rdt2, ((void*)0), rdfunc, (void *)(size_t)2) == 0);
 
   assert(pthread_join(wrt1, &wr1Result) == 0);
   assert(pthread_join(rdt1, &rd1Result) == 0);

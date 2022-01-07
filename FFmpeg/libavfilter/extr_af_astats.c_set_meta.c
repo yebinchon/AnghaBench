@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  value ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  key2 ;
-typedef  int /*<<< orphan*/  AVDictionary ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_dict_set (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (int /*<<< orphan*/ *,int,char const*,...) ; 
+
+
+
+typedef int value ;
+typedef int uint8_t ;
+typedef int key2 ;
+typedef int AVDictionary ;
+
+
+ int av_dict_set (int **,int *,int *,int ) ;
+ int snprintf (int *,int,char const*,...) ;
 
 __attribute__((used)) static void set_meta(AVDictionary **metadata, int chan, const char *key,
                      const char *fmt, double val)

@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int strlen (char*) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int strlen (char*) ;
 
 bool str_2_mac(uint8_t *str, uint8_t *dest)
 {
@@ -21,14 +21,14 @@ bool str_2_mac(uint8_t *str, uint8_t *dest)
     uint8_t tmp = 0;
     uint8_t *src_p = str;
 
-    if (strlen((char *)src_p) != 17) { // must be like 12:34:56:78:90:AB
-        return false;
+    if (strlen((char *)src_p) != 17) {
+        return 0;
     }
 
     for (loop = 0; loop < 17 ; loop++) {
         if (loop % 3 == 2) {
             if (src_p[loop] != ':') {
-                return false;
+                return 0;
             }
 
             continue;
@@ -41,7 +41,7 @@ bool str_2_mac(uint8_t *str, uint8_t *dest)
         } else if ((src_p[loop] >= 'a') && (src_p[loop] <= 'f')) {
             tmp = tmp * 16 + src_p[loop] - 'a' + 10;
         } else {
-            return false;
+            return 0;
         }
 
         if (loop % 3 == 1) {
@@ -50,5 +50,5 @@ bool str_2_mac(uint8_t *str, uint8_t *dest)
         }
     }
 
-    return true;
+    return 1;
 }

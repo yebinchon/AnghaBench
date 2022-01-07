@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct si470x_device {int /*<<< orphan*/ * usb_buf; int /*<<< orphan*/ * registers; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  REGISTER_REPORT (int) ; 
- int /*<<< orphan*/  REGISTER_REPORT_SIZE ; 
- int /*<<< orphan*/  put_unaligned_be16 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int si470x_set_report (struct si470x_device*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct si470x_device {int * usb_buf; int * registers; } ;
+
+
+ int EINVAL ;
+ int REGISTER_REPORT (int) ;
+ int REGISTER_REPORT_SIZE ;
+ int put_unaligned_be16 (int ,int *) ;
+ int si470x_set_report (struct si470x_device*,int *,int ) ;
 
 __attribute__((used)) static int si470x_set_register(struct si470x_device *radio, int regnr)
 {
-	int retval;
+ int retval;
 
-	radio->usb_buf[0] = REGISTER_REPORT(regnr);
-	put_unaligned_be16(radio->registers[regnr], &radio->usb_buf[1]);
+ radio->usb_buf[0] = REGISTER_REPORT(regnr);
+ put_unaligned_be16(radio->registers[regnr], &radio->usb_buf[1]);
 
-	retval = si470x_set_report(radio, radio->usb_buf, REGISTER_REPORT_SIZE);
+ retval = si470x_set_report(radio, radio->usb_buf, REGISTER_REPORT_SIZE);
 
-	return (retval < 0) ? -EINVAL : 0;
+ return (retval < 0) ? -EINVAL : 0;
 }

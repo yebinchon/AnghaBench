@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EC_GROUP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EC_GROUP_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * create_EC_group (char*,char*,char*,char*,char*,char*,char*) ; 
- int /*<<< orphan*/  test_sm2_sign (int /*<<< orphan*/ *,char*,char*,char*,char*,char*,char*) ; 
+
+
+
+typedef int EC_GROUP ;
+
+
+ int EC_GROUP_free (int *) ;
+ int TEST_ptr (int *) ;
+ int TEST_true (int ) ;
+ int * create_EC_group (char*,char*,char*,char*,char*,char*,char*) ;
+ int test_sm2_sign (int *,char*,char*,char*,char*,char*,char*) ;
 
 __attribute__((used)) static int sm2_sig_test(void)
 {
     int testresult = 0;
-    /* From draft-shen-sm2-ecdsa-02 */
+
     EC_GROUP *test_group =
         create_EC_group
         ("8542D69E4C044F18E8B92435BF6FF7DE457283915C45517D722EDB8B08F1DFC3",

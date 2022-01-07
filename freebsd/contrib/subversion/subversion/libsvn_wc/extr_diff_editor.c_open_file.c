@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct svn_wc__db_info_t {scalar_t__ kind; int status; int /*<<< orphan*/  have_more_work; } ;
-struct file_baton_t {int /*<<< orphan*/  pool; void* right_src; void* left_src; int /*<<< orphan*/  relpath; void* skip; int /*<<< orphan*/  pfb; int /*<<< orphan*/  local_abspath; int /*<<< orphan*/  base_props; int /*<<< orphan*/  base_checksum; int /*<<< orphan*/  name; void* repos_only; void* ignoring_ancestry; } ;
-struct edit_baton_t {TYPE_1__* processor; int /*<<< orphan*/  db; int /*<<< orphan*/  revnum; int /*<<< orphan*/  ignore_ancestry; } ;
-struct dir_baton_t {int /*<<< orphan*/  pdb; int /*<<< orphan*/  pool; int /*<<< orphan*/  compared; int /*<<< orphan*/  local_info; scalar_t__ repos_only; scalar_t__ skip_children; struct edit_baton_t* eb; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_2__ {int /*<<< orphan*/  (* file_opened ) (int /*<<< orphan*/ *,void**,int /*<<< orphan*/ ,void*,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ NOT_PRESENT (int) ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_MALFUNCTION () ; 
- int /*<<< orphan*/  SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- void* TRUE ; 
- int /*<<< orphan*/  apr_pstrdup (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ensure_local_info (struct dir_baton_t*,int /*<<< orphan*/ *) ; 
- struct file_baton_t* make_file_baton (char const*,int /*<<< orphan*/ ,struct dir_baton_t*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,void**,int /*<<< orphan*/ ,void*,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* svn_diff__source_create (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct svn_wc__db_info_t* svn_hash_gets (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ svn_node_file ; 
- int /*<<< orphan*/  svn_wc__db_base_get_info (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
-#define  svn_wc__db_status_added 131 
-#define  svn_wc__db_status_deleted 130 
-#define  svn_wc__db_status_incomplete 129 
-#define  svn_wc__db_status_normal 128 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int svn_error_t ;
+struct svn_wc__db_info_t {scalar_t__ kind; int status; int have_more_work; } ;
+struct file_baton_t {int pool; void* right_src; void* left_src; int relpath; void* skip; int pfb; int local_abspath; int base_props; int base_checksum; int name; void* repos_only; void* ignoring_ancestry; } ;
+struct edit_baton_t {TYPE_1__* processor; int db; int revnum; int ignore_ancestry; } ;
+struct dir_baton_t {int pdb; int pool; int compared; int local_info; scalar_t__ repos_only; scalar_t__ skip_children; struct edit_baton_t* eb; } ;
+typedef int apr_pool_t ;
+struct TYPE_2__ {int (* file_opened ) (int *,void**,int ,void*,void*,int *,int ,TYPE_1__*,int ,int ) ;} ;
+
+
+ int FALSE ;
+ scalar_t__ NOT_PRESENT (int) ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_MALFUNCTION () ;
+ int SVN_INVALID_REVNUM ;
+ int * SVN_NO_ERROR ;
+ void* TRUE ;
+ int apr_pstrdup (int ,int ) ;
+ int ensure_local_info (struct dir_baton_t*,int *) ;
+ struct file_baton_t* make_file_baton (char const*,int ,struct dir_baton_t*,int *) ;
+ int stub1 (int *,void**,int ,void*,void*,int *,int ,TYPE_1__*,int ,int ) ;
+ void* svn_diff__source_create (int ,int ) ;
+ struct svn_wc__db_info_t* svn_hash_gets (int ,int ) ;
+ int svn_hash_sets (int ,int ,char*) ;
+ scalar_t__ svn_node_file ;
+ int svn_wc__db_base_get_info (int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int ,int ,int ,int ) ;
+
+
+
+
 
 __attribute__((used)) static svn_error_t *
 open_file(const char *path,
@@ -73,16 +73,16 @@ open_file(const char *path,
       if (!fb->repos_only)
         switch (info->status)
           {
-            case svn_wc__db_status_normal:
-            case svn_wc__db_status_incomplete:
+            case 128:
+            case 129:
               break;
-            case svn_wc__db_status_deleted:
+            case 130:
               fb->repos_only = TRUE;
               if (!info->have_more_work)
                 svn_hash_sets(pb->compared,
                               apr_pstrdup(pb->pool, fb->name), "");
               break;
-            case svn_wc__db_status_added:
+            case 131:
               if (eb->ignore_ancestry)
                 fb->ignoring_ancestry = TRUE;
               else
@@ -94,8 +94,8 @@ open_file(const char *path,
 
       if (!fb->repos_only)
         {
-          /* Add this path to the parent directory's list of elements that
-             have been compared. */
+
+
           fb->right_src = svn_diff__source_create(SVN_INVALID_REVNUM, fb->pool);
           svn_hash_sets(pb->compared, apr_pstrdup(pb->pool, fb->name), "");
         }
@@ -103,9 +103,9 @@ open_file(const char *path,
 
   fb->left_src = svn_diff__source_create(eb->revnum, fb->pool);
 
-  SVN_ERR(svn_wc__db_base_get_info(NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-                                   NULL, NULL, NULL, &fb->base_checksum, NULL,
-                                   NULL, NULL, &fb->base_props, NULL,
+  SVN_ERR(svn_wc__db_base_get_info(((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                                   ((void*)0), ((void*)0), ((void*)0), &fb->base_checksum, ((void*)0),
+                                   ((void*)0), ((void*)0), &fb->base_props, ((void*)0),
                                    eb->db, fb->local_abspath,
                                    fb->pool, fb->pool));
 
@@ -113,7 +113,7 @@ open_file(const char *path,
                                      fb->relpath,
                                      fb->left_src,
                                      fb->right_src,
-                                     NULL /* copyfrom src */,
+                                     ((void*)0) ,
                                      pb->pdb,
                                      eb->processor,
                                      fb->pool, fb->pool));

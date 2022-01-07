@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_1__* pDb; } ;
-struct TYPE_7__ {int /*<<< orphan*/  nKey; int /*<<< orphan*/  pKey; int /*<<< orphan*/  eType; scalar_t__ pPg; } ;
-struct TYPE_6__ {int /*<<< orphan*/  xCmp; } ;
-typedef  TYPE_2__ SegmentPtr ;
-typedef  TYPE_3__ MultiCursor ;
+struct TYPE_7__ {int nKey; int pKey; int eType; scalar_t__ pPg; } ;
+struct TYPE_6__ {int xCmp; } ;
+typedef TYPE_2__ SegmentPtr ;
+typedef TYPE_3__ MultiCursor ;
 
-/* Variables and functions */
- int LSM_SEEK_EQ ; 
- int LSM_SEEK_GE ; 
- int LSM_SEEK_LE ; 
- int /*<<< orphan*/  rtTopic (int /*<<< orphan*/ ) ; 
- int sortedKeyCompare (int /*<<< orphan*/ ,int,void*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int LSM_SEEK_EQ ;
+ int LSM_SEEK_GE ;
+ int LSM_SEEK_LE ;
+ int rtTopic (int ) ;
+ int sortedKeyCompare (int ,int,void*,int,int ,int ,int ) ;
 
 __attribute__((used)) static int assertSeekResult(
   MultiCursor *pCsr,

@@ -1,124 +1,124 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/ * cmsHPROFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CheckCHAD (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CheckCRDinfo (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CheckChromaticity (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CheckColorantOrder (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CheckData (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CheckDateTime (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CheckDictionary24 (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CheckGamma (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CheckICCViewingConditions (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CheckLUT (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CheckMPE (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CheckMeasurement (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CheckNamedColor (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CheckProfileSequenceIDTag (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CheckProfileSequenceTag (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CheckRAWtags (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CheckScreening (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CheckSignature (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CheckText (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CheckTextSingle (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CheckUcrBg (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CheckVCGT (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CheckXYZ (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  Fail (char*) ; 
- scalar_t__ INTENT_SATURATION ; 
- int /*<<< orphan*/  SubTest (char*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cmsCreateProfilePlaceholder (int /*<<< orphan*/ ) ; 
- scalar_t__ cmsGetColorSpace (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ cmsGetDeviceClass (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ cmsGetHeaderRenderingIntent (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ cmsGetPCS (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ cmsGetTagCount (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ cmsIsTag (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * cmsOpenProfileFromFile (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  cmsSaveProfileToFile (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  cmsSetColorSpace (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  cmsSetDeviceClass (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  cmsSetHeaderRenderingIntent (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  cmsSetPCS (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  cmsSetProfileVersion (int /*<<< orphan*/ ,int /*<<< orphan*/ *,double) ; 
- int /*<<< orphan*/  cmsSigAToB0Tag ; 
- int /*<<< orphan*/  cmsSigAToB1Tag ; 
- int /*<<< orphan*/  cmsSigAToB2Tag ; 
- int /*<<< orphan*/  cmsSigBToA0Tag ; 
- int /*<<< orphan*/  cmsSigBToA1Tag ; 
- int /*<<< orphan*/  cmsSigBToA2Tag ; 
- int /*<<< orphan*/  cmsSigBToD0Tag ; 
- int /*<<< orphan*/  cmsSigBToD1Tag ; 
- int /*<<< orphan*/  cmsSigBToD2Tag ; 
- int /*<<< orphan*/  cmsSigBToD3Tag ; 
- int /*<<< orphan*/  cmsSigBlueColorantTag ; 
- int /*<<< orphan*/  cmsSigBlueTRCTag ; 
- int /*<<< orphan*/  cmsSigCalibrationDateTimeTag ; 
- int /*<<< orphan*/  cmsSigCharTargetTag ; 
- int /*<<< orphan*/  cmsSigChromaticAdaptationTag ; 
- int /*<<< orphan*/  cmsSigChromaticityTag ; 
- int /*<<< orphan*/  cmsSigColorantOrderTag ; 
- int /*<<< orphan*/  cmsSigColorantTableOutTag ; 
- int /*<<< orphan*/  cmsSigColorantTableTag ; 
- int /*<<< orphan*/  cmsSigColorimetricIntentImageStateTag ; 
- int /*<<< orphan*/  cmsSigCopyrightTag ; 
- int /*<<< orphan*/  cmsSigCrdInfoTag ; 
- int /*<<< orphan*/  cmsSigDToB0Tag ; 
- int /*<<< orphan*/  cmsSigDToB1Tag ; 
- int /*<<< orphan*/  cmsSigDToB2Tag ; 
- int /*<<< orphan*/  cmsSigDToB3Tag ; 
- int /*<<< orphan*/  cmsSigDateTimeTag ; 
- int /*<<< orphan*/  cmsSigDeviceMfgDescTag ; 
- int /*<<< orphan*/  cmsSigDeviceModelDescTag ; 
- scalar_t__ cmsSigDisplayClass ; 
- int /*<<< orphan*/  cmsSigGamutTag ; 
- int /*<<< orphan*/  cmsSigGrayTRCTag ; 
- int /*<<< orphan*/  cmsSigGreenColorantTag ; 
- int /*<<< orphan*/  cmsSigGreenTRCTag ; 
- scalar_t__ cmsSigLabData ; 
- int /*<<< orphan*/  cmsSigLuminanceTag ; 
- int /*<<< orphan*/  cmsSigMeasurementTag ; 
- int /*<<< orphan*/  cmsSigMediaBlackPointTag ; 
- int /*<<< orphan*/  cmsSigMediaWhitePointTag ; 
- int /*<<< orphan*/  cmsSigNamedColor2Tag ; 
- int /*<<< orphan*/  cmsSigPerceptualRenderingIntentGamutTag ; 
- int /*<<< orphan*/  cmsSigPreview0Tag ; 
- int /*<<< orphan*/  cmsSigPreview1Tag ; 
- int /*<<< orphan*/  cmsSigPreview2Tag ; 
- int /*<<< orphan*/  cmsSigProfileDescriptionTag ; 
- int /*<<< orphan*/  cmsSigPs2CRD0Tag ; 
- int /*<<< orphan*/  cmsSigPs2CRD1Tag ; 
- int /*<<< orphan*/  cmsSigPs2CRD2Tag ; 
- int /*<<< orphan*/  cmsSigPs2CRD3Tag ; 
- int /*<<< orphan*/  cmsSigPs2CSATag ; 
- int /*<<< orphan*/  cmsSigPs2RenderingIntentTag ; 
- int /*<<< orphan*/  cmsSigRedColorantTag ; 
- int /*<<< orphan*/  cmsSigRedTRCTag ; 
- scalar_t__ cmsSigRgbData ; 
- int /*<<< orphan*/  cmsSigSaturationRenderingIntentGamutTag ; 
- int /*<<< orphan*/  cmsSigScreeningDescTag ; 
- int /*<<< orphan*/  cmsSigScreeningTag ; 
- int /*<<< orphan*/  cmsSigTechnologyTag ; 
- int /*<<< orphan*/  cmsSigUcrBgTag ; 
- int /*<<< orphan*/  cmsSigViewingCondDescTag ; 
- int /*<<< orphan*/  remove (char*) ; 
+
+
+
+typedef int cmsInt32Number ;
+typedef int * cmsHPROFILE ;
+
+
+ int CheckCHAD (int,int *,int ) ;
+ int CheckCRDinfo (int,int *,int ) ;
+ int CheckChromaticity (int,int *,int ) ;
+ int CheckColorantOrder (int,int *,int ) ;
+ int CheckData (int,int *,int ) ;
+ int CheckDateTime (int,int *,int ) ;
+ int CheckDictionary24 (int,int *) ;
+ int CheckGamma (int,int *,int ) ;
+ int CheckICCViewingConditions (int,int *) ;
+ int CheckLUT (int,int *,int ) ;
+ int CheckMPE (int,int *,int ) ;
+ int CheckMeasurement (int,int *,int ) ;
+ int CheckNamedColor (int,int *,int ,int,int ) ;
+ int CheckProfileSequenceIDTag (int,int *) ;
+ int CheckProfileSequenceTag (int,int *) ;
+ int CheckRAWtags (int,int *) ;
+ int CheckScreening (int,int *,int ) ;
+ int CheckSignature (int,int *,int ) ;
+ int CheckText (int,int *,int ) ;
+ int CheckTextSingle (int,int *,int ) ;
+ int CheckUcrBg (int,int *,int ) ;
+ int CheckVCGT (int,int *) ;
+ int CheckXYZ (int,int *,int ) ;
+ int DbgThread () ;
+ int FALSE ;
+ int Fail (char*) ;
+ scalar_t__ INTENT_SATURATION ;
+ int SubTest (char*) ;
+ int TRUE ;
+ int cmsCloseProfile (int ,int *) ;
+ int * cmsCreateProfilePlaceholder (int ) ;
+ scalar_t__ cmsGetColorSpace (int ,int *) ;
+ scalar_t__ cmsGetDeviceClass (int ,int *) ;
+ scalar_t__ cmsGetHeaderRenderingIntent (int ,int *) ;
+ scalar_t__ cmsGetPCS (int ,int *) ;
+ scalar_t__ cmsGetTagCount (int ,int *) ;
+ scalar_t__ cmsIsTag (int ,int *,int ) ;
+ int * cmsOpenProfileFromFile (int ,char*,char*) ;
+ int cmsSaveProfileToFile (int ,int *,char*) ;
+ int cmsSetColorSpace (int ,int *,scalar_t__) ;
+ int cmsSetDeviceClass (int ,int *,scalar_t__) ;
+ int cmsSetHeaderRenderingIntent (int ,int *,scalar_t__) ;
+ int cmsSetPCS (int ,int *,scalar_t__) ;
+ int cmsSetProfileVersion (int ,int *,double) ;
+ int cmsSigAToB0Tag ;
+ int cmsSigAToB1Tag ;
+ int cmsSigAToB2Tag ;
+ int cmsSigBToA0Tag ;
+ int cmsSigBToA1Tag ;
+ int cmsSigBToA2Tag ;
+ int cmsSigBToD0Tag ;
+ int cmsSigBToD1Tag ;
+ int cmsSigBToD2Tag ;
+ int cmsSigBToD3Tag ;
+ int cmsSigBlueColorantTag ;
+ int cmsSigBlueTRCTag ;
+ int cmsSigCalibrationDateTimeTag ;
+ int cmsSigCharTargetTag ;
+ int cmsSigChromaticAdaptationTag ;
+ int cmsSigChromaticityTag ;
+ int cmsSigColorantOrderTag ;
+ int cmsSigColorantTableOutTag ;
+ int cmsSigColorantTableTag ;
+ int cmsSigColorimetricIntentImageStateTag ;
+ int cmsSigCopyrightTag ;
+ int cmsSigCrdInfoTag ;
+ int cmsSigDToB0Tag ;
+ int cmsSigDToB1Tag ;
+ int cmsSigDToB2Tag ;
+ int cmsSigDToB3Tag ;
+ int cmsSigDateTimeTag ;
+ int cmsSigDeviceMfgDescTag ;
+ int cmsSigDeviceModelDescTag ;
+ scalar_t__ cmsSigDisplayClass ;
+ int cmsSigGamutTag ;
+ int cmsSigGrayTRCTag ;
+ int cmsSigGreenColorantTag ;
+ int cmsSigGreenTRCTag ;
+ scalar_t__ cmsSigLabData ;
+ int cmsSigLuminanceTag ;
+ int cmsSigMeasurementTag ;
+ int cmsSigMediaBlackPointTag ;
+ int cmsSigMediaWhitePointTag ;
+ int cmsSigNamedColor2Tag ;
+ int cmsSigPerceptualRenderingIntentGamutTag ;
+ int cmsSigPreview0Tag ;
+ int cmsSigPreview1Tag ;
+ int cmsSigPreview2Tag ;
+ int cmsSigProfileDescriptionTag ;
+ int cmsSigPs2CRD0Tag ;
+ int cmsSigPs2CRD1Tag ;
+ int cmsSigPs2CRD2Tag ;
+ int cmsSigPs2CRD3Tag ;
+ int cmsSigPs2CSATag ;
+ int cmsSigPs2RenderingIntentTag ;
+ int cmsSigRedColorantTag ;
+ int cmsSigRedTRCTag ;
+ scalar_t__ cmsSigRgbData ;
+ int cmsSigSaturationRenderingIntentGamutTag ;
+ int cmsSigScreeningDescTag ;
+ int cmsSigScreeningTag ;
+ int cmsSigTechnologyTag ;
+ int cmsSigUcrBgTag ;
+ int cmsSigViewingCondDescTag ;
+ int remove (char*) ;
 
 __attribute__((used)) static
 cmsInt32Number CheckProfileCreation(void)
@@ -127,17 +127,17 @@ cmsInt32Number CheckProfileCreation(void)
     cmsInt32Number Pass;
 
     h = cmsCreateProfilePlaceholder(DbgThread());
-    if (h == NULL) return 0;
+    if (h == ((void*)0)) return 0;
 
     cmsSetProfileVersion(DbgThread(), h, 4.3);
     if (cmsGetTagCount(DbgThread(), h) != 0) { Fail("Empty profile with nonzero number of tags"); goto Error; }
     if (cmsIsTag(DbgThread(), h, cmsSigAToB0Tag)) { Fail("Found a tag in an empty profile"); goto Error; }
 
     cmsSetColorSpace(DbgThread(), h, cmsSigRgbData);
-    if (cmsGetColorSpace(DbgThread(), h) !=  cmsSigRgbData) { Fail("Unable to set colorspace"); goto Error; }
+    if (cmsGetColorSpace(DbgThread(), h) != cmsSigRgbData) { Fail("Unable to set colorspace"); goto Error; }
 
     cmsSetPCS(DbgThread(), h, cmsSigLabData);
-    if (cmsGetPCS(DbgThread(), h) !=  cmsSigLabData) { Fail("Unable to set colorspace"); goto Error; }
+    if (cmsGetPCS(DbgThread(), h) != cmsSigLabData) { Fail("Unable to set colorspace"); goto Error; }
 
     cmsSetDeviceClass(DbgThread(), h, cmsSigDisplayClass);
     if (cmsGetDeviceClass(DbgThread(), h) != cmsSigDisplayClass) { Fail("Unable to set deviceclass"); goto Error; }
@@ -261,7 +261,7 @@ cmsInt32Number CheckProfileCreation(void)
         if (!CheckRAWtags(Pass, h)) goto Error;
 
         SubTest("Dictionary meta tags");
-        // if (!CheckDictionary16(Pass, h)) goto Error;
+
         if (!CheckDictionary24(Pass, h)) goto Error;
 
         if (Pass == 1) {
@@ -271,16 +271,6 @@ cmsInt32Number CheckProfileCreation(void)
         }
 
     }
-
-    /*
-    Not implemented (by design):
-
-    cmsSigDataTag                           = 0x64617461,  // 'data'  -- Unused
-    cmsSigDeviceSettingsTag                 = 0x64657673,  // 'devs'  -- Unused
-    cmsSigNamedColorTag                     = 0x6E636f6C,  // 'ncol'  -- Don't use this one, deprecated by ICC
-    cmsSigOutputResponseTag                 = 0x72657370,  // 'resp'  -- Possible patent on this
-    */
-
     cmsCloseProfile(DbgThread(), h);
     remove("alltags.icc");
     return 1;

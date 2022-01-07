@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assem_debug (char*,...) ; 
- int /*<<< orphan*/  const_one ; 
- int /*<<< orphan*/  const_zero ; 
- int /*<<< orphan*/  output_byte (int) ; 
- int /*<<< orphan*/  output_modrm (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  output_w32 (int) ; 
- int /*<<< orphan*/ * regname ; 
+
+
+
+typedef int u32 ;
+
+
+ int assem_debug (char*,...) ;
+ int const_one ;
+ int const_zero ;
+ int output_byte (int) ;
+ int output_modrm (int ,int,int) ;
+ int output_w32 (int) ;
+ int * regname ;
 
 void emit_cmovs(u32 *addr,int rt)
 {

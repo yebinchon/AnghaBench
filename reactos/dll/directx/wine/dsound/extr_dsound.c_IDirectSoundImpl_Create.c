@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * device; scalar_t__ ref; } ;
-typedef  int /*<<< orphan*/ * LPDIRECTSOUND8 ;
-typedef  TYPE_1__ IDirectSoundImpl ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DSERR_OUTOFMEMORY ; 
- int /*<<< orphan*/  DS_OK ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  WARN (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * device; scalar_t__ ref; } ;
+typedef int * LPDIRECTSOUND8 ;
+typedef TYPE_1__ IDirectSoundImpl ;
+typedef int HRESULT ;
+
+
+ int DSERR_OUTOFMEMORY ;
+ int DS_OK ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_1__* HeapAlloc (int ,int ,int) ;
+ int TRACE (char*,int **) ;
+ int WARN (char*) ;
 
 __attribute__((used)) static HRESULT IDirectSoundImpl_Create(
     LPDIRECTSOUND8 * ppDS)
@@ -31,16 +31,16 @@ __attribute__((used)) static HRESULT IDirectSoundImpl_Create(
     IDirectSoundImpl* pDS;
     TRACE("(%p)\n",ppDS);
 
-    /* Allocate memory */
+
     pDS = HeapAlloc(GetProcessHeap(),HEAP_ZERO_MEMORY,sizeof(IDirectSoundImpl));
-    if (pDS == NULL) {
+    if (pDS == ((void*)0)) {
         WARN("out of memory\n");
-        *ppDS = NULL;
+        *ppDS = ((void*)0);
         return DSERR_OUTOFMEMORY;
     }
 
-    pDS->ref    = 0;
-    pDS->device = NULL;
+    pDS->ref = 0;
+    pDS->device = ((void*)0);
 
     *ppDS = (LPDIRECTSOUND8)pDS;
 

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  Z; } ;
-typedef  TYPE_1__ mbedtls_ecp_point ;
-typedef  int /*<<< orphan*/  mbedtls_ecp_group ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MBEDTLS_MPI_CHK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ecp_add_mixed (int /*<<< orphan*/  const*,TYPE_1__*,TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  ecp_double_jac (int /*<<< orphan*/  const*,TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  ecp_randomize_jac (int /*<<< orphan*/  const*,TYPE_1__*,int (*) (void*,unsigned char*,size_t),void*) ; 
- int /*<<< orphan*/  ecp_select_comb (int /*<<< orphan*/  const*,TYPE_1__*,TYPE_1__ const*,unsigned char,unsigned char const) ; 
- int /*<<< orphan*/  mbedtls_ecp_point_free (TYPE_1__*) ; 
- int /*<<< orphan*/  mbedtls_ecp_point_init (TYPE_1__*) ; 
- int /*<<< orphan*/  mbedtls_mpi_lset (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int Z; } ;
+typedef TYPE_1__ mbedtls_ecp_point ;
+typedef int mbedtls_ecp_group ;
+
+
+ int MBEDTLS_MPI_CHK (int ) ;
+ int ecp_add_mixed (int const*,TYPE_1__*,TYPE_1__*,TYPE_1__*) ;
+ int ecp_double_jac (int const*,TYPE_1__*,TYPE_1__*) ;
+ int ecp_randomize_jac (int const*,TYPE_1__*,int (*) (void*,unsigned char*,size_t),void*) ;
+ int ecp_select_comb (int const*,TYPE_1__*,TYPE_1__ const*,unsigned char,unsigned char const) ;
+ int mbedtls_ecp_point_free (TYPE_1__*) ;
+ int mbedtls_ecp_point_init (TYPE_1__*) ;
+ int mbedtls_mpi_lset (int *,int) ;
 
 __attribute__((used)) static int ecp_mul_comb_core( const mbedtls_ecp_group *grp, mbedtls_ecp_point *R,
                               const mbedtls_ecp_point T[], unsigned char t_len,
@@ -37,7 +37,7 @@ __attribute__((used)) static int ecp_mul_comb_core( const mbedtls_ecp_group *grp
 
     mbedtls_ecp_point_init( &Txi );
 
-    /* Start with a non-zero point and randomize its coordinates */
+
     i = d;
     MBEDTLS_MPI_CHK( ecp_select_comb( grp, R, T, t_len, x[i] ) );
     MBEDTLS_MPI_CHK( mbedtls_mpi_lset( &R->Z, 1 ) );

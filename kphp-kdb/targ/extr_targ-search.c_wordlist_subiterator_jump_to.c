@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wordlist_subiterator {int pos; int /*<<< orphan*/  mult; int /*<<< orphan*/  mdec; } ;
 
-/* Variables and functions */
- int INFTY ; 
- int /*<<< orphan*/  assert (int) ; 
- int mlist_forward_decode_idx (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int wordlist_subiterator_next (struct wordlist_subiterator*) ; 
+
+
+
+struct wordlist_subiterator {int pos; int mult; int mdec; } ;
+
+
+ int INFTY ;
+ int assert (int) ;
+ int mlist_forward_decode_idx (int ,int,int *) ;
+ int wordlist_subiterator_next (struct wordlist_subiterator*) ;
 
 int wordlist_subiterator_jump_to (struct wordlist_subiterator *WI, int req_pos) {
   if (req_pos == WI->pos + 1) {

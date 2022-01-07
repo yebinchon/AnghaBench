@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tl_change_album {scalar_t__ changes_len; int /*<<< orphan*/  album_id; int /*<<< orphan*/  user_id; int /*<<< orphan*/  changes; int /*<<< orphan*/  mask; } ;
+
+
+
+
+struct tl_change_album {scalar_t__ changes_len; int album_id; int user_id; int changes; int mask; } ;
 struct tl_act_extra {scalar_t__ extra; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALBUM_TYPE ; 
- int /*<<< orphan*/  LEV_PHOTO_CHANGE_ALBUM ; 
- scalar_t__ MAX_EVENT_SIZE ; 
- int /*<<< orphan*/  TL_BOOL_FALSE ; 
- int /*<<< orphan*/  TL_BOOL_TRUE ; 
- int /*<<< orphan*/  TL_ERROR_BAD_VALUE ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ check_album_id (int /*<<< orphan*/ ) ; 
- int do_change_data (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ field_changes_n ; 
- scalar_t__ location_changes_n ; 
- scalar_t__ rpc_get_fields (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  tl_fetch_set_error_format (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  tl_store_int (int /*<<< orphan*/ ) ; 
+
+ int ALBUM_TYPE ;
+ int LEV_PHOTO_CHANGE_ALBUM ;
+ scalar_t__ MAX_EVENT_SIZE ;
+ int TL_BOOL_FALSE ;
+ int TL_BOOL_TRUE ;
+ int TL_ERROR_BAD_VALUE ;
+ int assert (int) ;
+ scalar_t__ check_album_id (int ) ;
+ int do_change_data (int ,int ,int ) ;
+ scalar_t__ field_changes_n ;
+ scalar_t__ location_changes_n ;
+ scalar_t__ rpc_get_fields (int ,int ,int ,scalar_t__) ;
+ int tl_fetch_set_error_format (int ,char*) ;
+ int tl_store_int (int ) ;
 
 int tl_do_change_album (struct tl_act_extra *extra) {
   struct tl_change_album *e = (struct tl_change_album *)extra->extra;

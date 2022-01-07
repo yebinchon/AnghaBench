@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int PortState ;
 
-/* Variables and functions */
-#define  Authorized 129 
-#define  Unauthorized 128 
+
+
+
+typedef int PortState ;
+
+
+
+
 
 __attribute__((used)) static inline const char * port_state_txt(PortState ps)
 {
-	switch (ps) {
-	case Unauthorized: return "Unauthorized";
-	case Authorized: return "Authorized";
-	default: return "Unknown";
-	}
+ switch (ps) {
+ case 128: return "Unauthorized";
+ case 129: return "Authorized";
+ default: return "Unknown";
+ }
 }

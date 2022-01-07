@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  SAFEARRAY ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  IWbemClassObject ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- scalar_t__ IWbemClassObject_GetNames (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SafeArrayDestroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SafeArrayGetElement (int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SafeArrayGetUBound (int /*<<< orphan*/ *,int,scalar_t__*) ; 
- int /*<<< orphan*/  WBEM_FLAG_ALWAYS ; 
- int /*<<< orphan*/  strcmpiW (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * strdupW (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int WCHAR ;
+typedef int SAFEARRAY ;
+typedef scalar_t__ LONG ;
+typedef int IWbemClassObject ;
+typedef int BSTR ;
+
+
+ scalar_t__ IWbemClassObject_GetNames (int *,int *,int ,int *,int **) ;
+ scalar_t__ S_OK ;
+ int SafeArrayDestroy (int *) ;
+ int SafeArrayGetElement (int *,scalar_t__*,int *) ;
+ int SafeArrayGetUBound (int *,int,scalar_t__*) ;
+ int WBEM_FLAG_ALWAYS ;
+ int strcmpiW (int ,int const*) ;
+ int * strdupW (int ) ;
 
 __attribute__((used)) static WCHAR *find_prop( IWbemClassObject *class, const WCHAR *prop )
 {
     SAFEARRAY *sa;
-    WCHAR *ret = NULL;
+    WCHAR *ret = ((void*)0);
     LONG i, last_index = 0;
     BSTR str;
 
-    if (IWbemClassObject_GetNames( class, NULL, WBEM_FLAG_ALWAYS, NULL, &sa ) != S_OK) return NULL;
+    if (IWbemClassObject_GetNames( class, ((void*)0), WBEM_FLAG_ALWAYS, ((void*)0), &sa ) != S_OK) return ((void*)0);
 
     SafeArrayGetUBound( sa, 1, &last_index );
     for (i = 0; i <= last_index; i++)

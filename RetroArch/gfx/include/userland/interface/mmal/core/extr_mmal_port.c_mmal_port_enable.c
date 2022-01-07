@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_28__   TYPE_3__ ;
-typedef  struct TYPE_27__   TYPE_2__ ;
-typedef  struct TYPE_26__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_28__ TYPE_3__ ;
+typedef struct TYPE_27__ TYPE_2__ ;
+typedef struct TYPE_26__ TYPE_1__ ;
+
+
 struct TYPE_28__ {scalar_t__ core_owns_connection; TYPE_2__* connected_port; } ;
 struct TYPE_27__ {scalar_t__ type; scalar_t__ is_enabled; struct TYPE_27__* name; TYPE_1__* priv; scalar_t__ buffer_size_min; scalar_t__ buffer_size_recommended; scalar_t__ buffer_size; scalar_t__ buffer_num_min; scalar_t__ buffer_num_recommended; scalar_t__ buffer_num; } ;
-struct TYPE_26__ {TYPE_3__* core; int /*<<< orphan*/  pf_enable; } ;
-typedef  scalar_t__ MMAL_STATUS_T ;
-typedef  TYPE_2__ MMAL_PORT_T ;
-typedef  TYPE_3__ MMAL_PORT_PRIVATE_CORE_T ;
-typedef  TYPE_2__* MMAL_PORT_BH_CB_T ;
+struct TYPE_26__ {TYPE_3__* core; int pf_enable; } ;
+typedef scalar_t__ MMAL_STATUS_T ;
+typedef TYPE_2__ MMAL_PORT_T ;
+typedef TYPE_3__ MMAL_PORT_PRIVATE_CORE_T ;
+typedef TYPE_2__* MMAL_PORT_BH_CB_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOCK_CONNECTION (TYPE_2__*) ; 
- int /*<<< orphan*/  LOG_ERROR (char*,TYPE_2__*,TYPE_2__*,...) ; 
- int /*<<< orphan*/  LOG_TRACE (char*,TYPE_2__*,TYPE_2__*,TYPE_2__*,int,int,int,int,int,int) ; 
- scalar_t__ MMAL_EINVAL ; 
- scalar_t__ MMAL_ENOSYS ; 
- scalar_t__ MMAL_PORT_TYPE_INPUT ; 
- scalar_t__ MMAL_SUCCESS ; 
- int /*<<< orphan*/  UNLOCK_CONNECTION (TYPE_2__*) ; 
- TYPE_2__* mmal_port_connected_input_cb ; 
- TYPE_2__* mmal_port_connected_output_cb ; 
- int /*<<< orphan*/  mmal_port_connection_disable (TYPE_2__*,TYPE_2__*) ; 
- scalar_t__ mmal_port_connection_enable (TYPE_2__*,TYPE_2__*) ; 
- scalar_t__ mmal_port_connection_start (TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  mmal_port_disable_internal (TYPE_2__*) ; 
- scalar_t__ mmal_port_enable_internal (TYPE_2__*,TYPE_2__*) ; 
- TYPE_2__* mmal_status_to_string (scalar_t__) ; 
+
+ int LOCK_CONNECTION (TYPE_2__*) ;
+ int LOG_ERROR (char*,TYPE_2__*,TYPE_2__*,...) ;
+ int LOG_TRACE (char*,TYPE_2__*,TYPE_2__*,TYPE_2__*,int,int,int,int,int,int) ;
+ scalar_t__ MMAL_EINVAL ;
+ scalar_t__ MMAL_ENOSYS ;
+ scalar_t__ MMAL_PORT_TYPE_INPUT ;
+ scalar_t__ MMAL_SUCCESS ;
+ int UNLOCK_CONNECTION (TYPE_2__*) ;
+ TYPE_2__* mmal_port_connected_input_cb ;
+ TYPE_2__* mmal_port_connected_output_cb ;
+ int mmal_port_connection_disable (TYPE_2__*,TYPE_2__*) ;
+ scalar_t__ mmal_port_connection_enable (TYPE_2__*,TYPE_2__*) ;
+ scalar_t__ mmal_port_connection_start (TYPE_2__*,TYPE_2__*) ;
+ int mmal_port_disable_internal (TYPE_2__*) ;
+ scalar_t__ mmal_port_enable_internal (TYPE_2__*,TYPE_2__*) ;
+ TYPE_2__* mmal_status_to_string (scalar_t__) ;
 
 MMAL_STATUS_T mmal_port_enable(MMAL_PORT_T *port, MMAL_PORT_BH_CB_T cb)
 {
@@ -60,14 +60,14 @@ MMAL_STATUS_T mmal_port_enable(MMAL_PORT_T *port, MMAL_PORT_BH_CB_T cb)
    LOCK_CONNECTION(port);
    connected_port = core->connected_port;
 
-   /* Sanity checking */
+
    if (port->is_enabled)
    {
       UNLOCK_CONNECTION(port);
       LOG_ERROR("%s(%p) already enabled", port->name, port);
       return MMAL_EINVAL;
    }
-   if (connected_port && cb) /* Callback must be NULL for connected ports */
+   if (connected_port && cb)
    {
       UNLOCK_CONNECTION(port);
       LOG_ERROR("callback (%p) not allowed for connected port (%s)%p",
@@ -75,8 +75,8 @@ MMAL_STATUS_T mmal_port_enable(MMAL_PORT_T *port, MMAL_PORT_BH_CB_T cb)
       return MMAL_EINVAL;
    }
 
-   /* Start by preparing the port connection so that everything is ready for when
-    * both ports are enabled */
+
+
    if (connected_port)
    {
       LOCK_CONNECTION(connected_port);
@@ -92,7 +92,7 @@ MMAL_STATUS_T mmal_port_enable(MMAL_PORT_T *port, MMAL_PORT_BH_CB_T cb)
          mmal_port_connected_output_cb : mmal_port_connected_input_cb;
    }
 
-   /* Enable the input port of a connection first */
+
    if (connected_port && connected_port->type == MMAL_PORT_TYPE_INPUT)
    {
       status = mmal_port_enable_internal(connected_port, mmal_port_connected_input_cb);
@@ -112,7 +112,7 @@ MMAL_STATUS_T mmal_port_enable(MMAL_PORT_T *port, MMAL_PORT_BH_CB_T cb)
       goto error;
    }
 
-   /* Enable the output port of a connection last */
+
    if (connected_port && connected_port->type != MMAL_PORT_TYPE_INPUT)
    {
       status = mmal_port_enable_internal(connected_port, mmal_port_connected_output_cb);
@@ -124,7 +124,7 @@ MMAL_STATUS_T mmal_port_enable(MMAL_PORT_T *port, MMAL_PORT_BH_CB_T cb)
       }
    }
 
-   /* Kick off the connection */
+
    if (connected_port && core->core_owns_connection)
    {
       status = mmal_port_connection_start(port, connected_port);

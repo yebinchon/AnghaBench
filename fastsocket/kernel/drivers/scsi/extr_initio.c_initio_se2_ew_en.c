@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ TUL_NVRAM ; 
- int /*<<< orphan*/  initio_se2_instr (unsigned long,int) ; 
- int /*<<< orphan*/  outb (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  udelay (int) ; 
+ scalar_t__ TUL_NVRAM ;
+ int initio_se2_instr (unsigned long,int) ;
+ int outb (int ,scalar_t__) ;
+ int udelay (int) ;
 
 void initio_se2_ew_en(unsigned long base)
 {
-	initio_se2_instr(base, 0x30);	/* EWEN */
-	outb(0, base + TUL_NVRAM);	/* -CS  */
-	udelay(30);
+ initio_se2_instr(base, 0x30);
+ outb(0, base + TUL_NVRAM);
+ udelay(30);
 }

@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct Range6 {int /*<<< orphan*/  end; int /*<<< orphan*/  begin; } ;
 
-/* Variables and functions */
- scalar_t__ LESSEQ (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct Range6 {int end; int begin; } ;
+
+
+ scalar_t__ LESSEQ (int ,int ) ;
 
 __attribute__((used)) static void
 range6_combine(struct Range6 *lhs, const struct Range6 rhs)

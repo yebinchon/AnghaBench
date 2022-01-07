@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  field; int /*<<< orphan*/  meth; } ;
-struct TYPE_5__ {TYPE_3__* group; int /*<<< orphan*/  pub_key; } ;
-typedef  TYPE_1__ EC_KEY ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- scalar_t__ BN_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ BN_is_negative (int /*<<< orphan*/ *) ; 
- int BN_num_bits (int /*<<< orphan*/ *) ; 
- int EC_GROUP_get_degree (TYPE_3__*) ; 
- scalar_t__ EC_METHOD_get_field_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EC_POINT_get_affine_coordinates (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ NID_X9_62_prime_field ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int field; int meth; } ;
+struct TYPE_5__ {TYPE_3__* group; int pub_key; } ;
+typedef TYPE_1__ EC_KEY ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_CTX_end (int *) ;
+ int * BN_CTX_get (int *) ;
+ int BN_CTX_start (int *) ;
+ scalar_t__ BN_cmp (int *,int ) ;
+ scalar_t__ BN_is_negative (int *) ;
+ int BN_num_bits (int *) ;
+ int EC_GROUP_get_degree (TYPE_3__*) ;
+ scalar_t__ EC_METHOD_get_field_type (int ) ;
+ int EC_POINT_get_affine_coordinates (TYPE_3__*,int ,int *,int *,int *) ;
+ scalar_t__ NID_X9_62_prime_field ;
 
 __attribute__((used)) static int ec_key_public_range_check(BN_CTX *ctx, const EC_KEY *key)
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static int ec_key_public_range_check(BN_CTX *ctx, const EC
     BN_CTX_start(ctx);
     x = BN_CTX_get(ctx);
     y = BN_CTX_get(ctx);
-    if (y == NULL)
+    if (y == ((void*)0))
         goto err;
 
     if (!EC_POINT_get_affine_coordinates(key->group, key->pub_key, x, y, ctx))

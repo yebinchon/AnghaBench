@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ulong32 ;
-struct TYPE_3__ {int /*<<< orphan*/ * dk; } ;
-typedef  TYPE_1__ des3_key ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOAD32H (int /*<<< orphan*/ ,unsigned char const*) ; 
- int /*<<< orphan*/  STORE32H (int /*<<< orphan*/ ,unsigned char*) ; 
- int /*<<< orphan*/  desfunc (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ulong32 ;
+struct TYPE_3__ {int * dk; } ;
+typedef TYPE_1__ des3_key ;
+
+
+ int LOAD32H (int ,unsigned char const*) ;
+ int STORE32H (int ,unsigned char*) ;
+ int desfunc (int *,int ) ;
 
 void des3_ecb_decrypt(const unsigned char *ct, unsigned char *pt, const des3_key *des3)
 {

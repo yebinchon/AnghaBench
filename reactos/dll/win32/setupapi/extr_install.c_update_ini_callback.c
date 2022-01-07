@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  section ;
-typedef  int /*<<< orphan*/  filename ;
-typedef  int /*<<< orphan*/  buffer ;
-typedef  scalar_t__ WCHAR ;
-typedef  int /*<<< orphan*/  PCWSTR ;
-typedef  scalar_t__* LPWSTR ;
-typedef  int /*<<< orphan*/  INFCONTEXT ;
-typedef  int /*<<< orphan*/  HINF ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int MAX_INF_STRING_LENGTH ; 
- scalar_t__ SetupFindFirstLineW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ SetupFindNextLine (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetupGetStringFieldW (int /*<<< orphan*/ *,int,scalar_t__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  WritePrivateProfileStringW (scalar_t__*,scalar_t__*,scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  debugstr_w (scalar_t__*) ; 
- scalar_t__* strchrW (scalar_t__*,char) ; 
- int /*<<< orphan*/  strcpyW (scalar_t__*,scalar_t__*) ; 
+
+
+
+typedef int section ;
+typedef int filename ;
+typedef int buffer ;
+typedef scalar_t__ WCHAR ;
+typedef int PCWSTR ;
+typedef scalar_t__* LPWSTR ;
+typedef int INFCONTEXT ;
+typedef int HINF ;
+typedef scalar_t__ BOOL ;
+
+
+ int MAX_INF_STRING_LENGTH ;
+ scalar_t__ SetupFindFirstLineW (int ,int ,int *,int *) ;
+ scalar_t__ SetupFindNextLine (int *,int *) ;
+ int SetupGetStringFieldW (int *,int,scalar_t__*,int,int *) ;
+ int TRACE (char*,int ,int ,int ,int ) ;
+ scalar_t__ TRUE ;
+ int WritePrivateProfileStringW (scalar_t__*,scalar_t__*,scalar_t__*,scalar_t__*) ;
+ int debugstr_w (scalar_t__*) ;
+ scalar_t__* strchrW (scalar_t__*,char) ;
+ int strcpyW (scalar_t__*,scalar_t__*) ;
 
 __attribute__((used)) static BOOL update_ini_callback( HINF hinf, PCWSTR field, void *arg )
 {
     INFCONTEXT context;
 
-    BOOL ok = SetupFindFirstLineW( hinf, field, NULL, &context );
+    BOOL ok = SetupFindFirstLineW( hinf, field, ((void*)0), &context );
 
     for (; ok; ok = SetupFindNextLine( &context, &context ))
     {
         WCHAR buffer[MAX_INF_STRING_LENGTH];
-        WCHAR  filename[MAX_INF_STRING_LENGTH];
-        WCHAR  section[MAX_INF_STRING_LENGTH];
-        WCHAR  entry[MAX_INF_STRING_LENGTH];
-        WCHAR  string[MAX_INF_STRING_LENGTH];
+        WCHAR filename[MAX_INF_STRING_LENGTH];
+        WCHAR section[MAX_INF_STRING_LENGTH];
+        WCHAR entry[MAX_INF_STRING_LENGTH];
+        WCHAR string[MAX_INF_STRING_LENGTH];
         LPWSTR divider;
 
         if (!SetupGetStringFieldW( &context, 1, filename,
-                                   sizeof(filename)/sizeof(WCHAR), NULL ))
+                                   sizeof(filename)/sizeof(WCHAR), ((void*)0) ))
             continue;
 
         if (!SetupGetStringFieldW( &context, 2, section,
-                                   sizeof(section)/sizeof(WCHAR), NULL ))
+                                   sizeof(section)/sizeof(WCHAR), ((void*)0) ))
             continue;
 
         if (!SetupGetStringFieldW( &context, 4, buffer,
-                                   sizeof(buffer)/sizeof(WCHAR), NULL ))
+                                   sizeof(buffer)/sizeof(WCHAR), ((void*)0) ))
             continue;
 
         divider = strchrW(buffer,'=');

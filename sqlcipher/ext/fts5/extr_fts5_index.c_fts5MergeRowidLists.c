@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  out ;
-typedef  scalar_t__ i64 ;
+
+
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int out ;
+typedef scalar_t__ i64 ;
 struct TYPE_14__ {scalar_t__ n; } ;
 struct TYPE_13__ {scalar_t__ rc; } ;
-typedef  TYPE_1__ Fts5Index ;
-typedef  TYPE_2__ Fts5Buffer ;
+typedef TYPE_1__ Fts5Index ;
+typedef TYPE_2__ Fts5Buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fts5BufferFree (TYPE_2__*) ; 
- int /*<<< orphan*/  fts5BufferSafeAppendVarint (TYPE_2__*,scalar_t__) ; 
- int /*<<< orphan*/  fts5BufferSwap (TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  fts5NextRowid (TYPE_2__*,int*,scalar_t__*) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3Fts5BufferSize (scalar_t__*,TYPE_2__*,scalar_t__) ; 
+
+ int assert (int) ;
+ int fts5BufferFree (TYPE_2__*) ;
+ int fts5BufferSafeAppendVarint (TYPE_2__*,scalar_t__) ;
+ int fts5BufferSwap (TYPE_2__*,TYPE_2__*) ;
+ int fts5NextRowid (TYPE_2__*,int*,scalar_t__*) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int sqlite3Fts5BufferSize (scalar_t__*,TYPE_2__*,scalar_t__) ;
 
 __attribute__((used)) static void fts5MergeRowidLists(
-  Fts5Index *p,                   /* FTS5 backend object */
-  Fts5Buffer *p1,                 /* First list to merge */
-  Fts5Buffer *p2                  /* Second list to merge */
+  Fts5Index *p,
+  Fts5Buffer *p1,
+  Fts5Buffer *p2
 ){
   int i1 = 0;
   int i2 = 0;

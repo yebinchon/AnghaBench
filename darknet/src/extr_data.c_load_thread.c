@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct load_args {int exposure; int saturation; int aspect; scalar_t__ type; int /*<<< orphan*/  hue; int /*<<< orphan*/  angle; int /*<<< orphan*/  size; int /*<<< orphan*/  max; int /*<<< orphan*/  min; int /*<<< orphan*/  classes; int /*<<< orphan*/  m; int /*<<< orphan*/  n; int /*<<< orphan*/  paths; int /*<<< orphan*/ * d; int /*<<< orphan*/  h; int /*<<< orphan*/  w; void** im; int /*<<< orphan*/ * resized; int /*<<< orphan*/  path; int /*<<< orphan*/  jitter; int /*<<< orphan*/  num_boxes; int /*<<< orphan*/  scale; int /*<<< orphan*/  coords; int /*<<< orphan*/  out_h; int /*<<< orphan*/  out_w; int /*<<< orphan*/  center; int /*<<< orphan*/  hierarchy; int /*<<< orphan*/  labels; } ;
-typedef  struct load_args load_args ;
 
-/* Variables and functions */
- scalar_t__ CLASSIFICATION_DATA ; 
- scalar_t__ COMPARE_DATA ; 
- scalar_t__ DETECTION_DATA ; 
- scalar_t__ IMAGE_DATA ; 
- scalar_t__ INSTANCE_DATA ; 
- scalar_t__ ISEG_DATA ; 
- scalar_t__ LETTERBOX_DATA ; 
- scalar_t__ OLD_CLASSIFICATION_DATA ; 
- scalar_t__ REGION_DATA ; 
- scalar_t__ REGRESSION_DATA ; 
- scalar_t__ SEGMENTATION_DATA ; 
- scalar_t__ SUPER_DATA ; 
- scalar_t__ SWAG_DATA ; 
- scalar_t__ TAG_DATA ; 
- scalar_t__ WRITING_DATA ; 
- int /*<<< orphan*/  free (void*) ; 
- int /*<<< orphan*/  letterbox_image (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  load_data_augment (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  load_data_compare (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  load_data_detection (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  load_data_iseg (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  load_data_mask (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  load_data_old (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  load_data_region (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  load_data_regression (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  load_data_seg (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  load_data_super (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  load_data_swag (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  load_data_tag (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  load_data_writing (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* load_image_color (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  resize_image (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct load_args {int exposure; int saturation; int aspect; scalar_t__ type; int hue; int angle; int size; int max; int min; int classes; int m; int n; int paths; int * d; int h; int w; void** im; int * resized; int path; int jitter; int num_boxes; int scale; int coords; int out_h; int out_w; int center; int hierarchy; int labels; } ;
+typedef struct load_args load_args ;
+
+
+ scalar_t__ CLASSIFICATION_DATA ;
+ scalar_t__ COMPARE_DATA ;
+ scalar_t__ DETECTION_DATA ;
+ scalar_t__ IMAGE_DATA ;
+ scalar_t__ INSTANCE_DATA ;
+ scalar_t__ ISEG_DATA ;
+ scalar_t__ LETTERBOX_DATA ;
+ scalar_t__ OLD_CLASSIFICATION_DATA ;
+ scalar_t__ REGION_DATA ;
+ scalar_t__ REGRESSION_DATA ;
+ scalar_t__ SEGMENTATION_DATA ;
+ scalar_t__ SUPER_DATA ;
+ scalar_t__ SWAG_DATA ;
+ scalar_t__ TAG_DATA ;
+ scalar_t__ WRITING_DATA ;
+ int free (void*) ;
+ int letterbox_image (void*,int ,int ) ;
+ int load_data_augment (int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int,int ,int,int,int ) ;
+ int load_data_compare (int ,int ,int ,int ,int ,int ) ;
+ int load_data_detection (int ,int ,int ,int ,int ,int ,int ,int ,int ,int,int) ;
+ int load_data_iseg (int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int,int ,int,int) ;
+ int load_data_mask (int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int,int ,int,int) ;
+ int load_data_old (int ,int ,int ,int ,int ,int ,int ) ;
+ int load_data_region (int ,int ,int ,int ,int ,int ,int ,int ,int ,int,int) ;
+ int load_data_regression (int ,int ,int ,int ,int ,int ,int ,int ,int,int ,int,int) ;
+ int load_data_seg (int ,int ,int ,int ,int ,int ,int ,int ,int ,int,int ,int,int,int ) ;
+ int load_data_super (int ,int ,int ,int ,int ,int ) ;
+ int load_data_swag (int ,int ,int ,int ) ;
+ int load_data_tag (int ,int ,int ,int ,int ,int ,int ,int ,int,int ,int,int) ;
+ int load_data_writing (int ,int ,int ,int ,int ,int ,int ) ;
+ void* load_image_color (int ,int ,int ) ;
+ int resize_image (void*,int ,int ) ;
 
 void *load_thread(void *ptr)
 {
-    //printf("Loading data: %d\n", rand());
+
     load_args a = *(struct load_args*)ptr;
     if(a.exposure == 0) a.exposure = 1;
     if(a.saturation == 0) a.saturation = 1;

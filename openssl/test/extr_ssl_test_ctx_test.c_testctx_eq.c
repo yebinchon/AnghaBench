@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  session_id_expected; int /*<<< orphan*/  resumption_expected; int /*<<< orphan*/  expected_session_ticket_app_data; int /*<<< orphan*/  expected_cipher; int /*<<< orphan*/  expected_alpn_protocol; int /*<<< orphan*/  expected_npn_protocol; int /*<<< orphan*/  compression_expected; int /*<<< orphan*/  session_ticket_expected; int /*<<< orphan*/  expected_servername; int /*<<< orphan*/  expected_protocol; int /*<<< orphan*/  expected_server_alert; int /*<<< orphan*/  expected_client_alert; int /*<<< orphan*/  expected_result; int /*<<< orphan*/  resume_extra; int /*<<< orphan*/  extra; int /*<<< orphan*/  max_fragment_size; int /*<<< orphan*/  app_data_size; int /*<<< orphan*/  handshake_mode; int /*<<< orphan*/  method; } ;
-typedef  TYPE_1__ SSL_TEST_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_int_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_str_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  extraconf_eq (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int session_id_expected; int resumption_expected; int expected_session_ticket_app_data; int expected_cipher; int expected_alpn_protocol; int expected_npn_protocol; int compression_expected; int session_ticket_expected; int expected_servername; int expected_protocol; int expected_server_alert; int expected_client_alert; int expected_result; int resume_extra; int extra; int max_fragment_size; int app_data_size; int handshake_mode; int method; } ;
+typedef TYPE_1__ SSL_TEST_CTX ;
+
+
+ int TEST_int_eq (int ,int ) ;
+ int TEST_str_eq (int ,int ) ;
+ int extraconf_eq (int *,int *) ;
 
 __attribute__((used)) static int testctx_eq(SSL_TEST_CTX *ctx, SSL_TEST_CTX *ctx2)
 {

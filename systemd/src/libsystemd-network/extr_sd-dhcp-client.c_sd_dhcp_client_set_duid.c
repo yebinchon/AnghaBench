@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  sd_dhcp_client ;
 
-/* Variables and functions */
- int dhcp_client_set_iaid_duid_internal (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void const*,size_t,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint16_t ;
+typedef int sd_dhcp_client ;
+
+
+ int dhcp_client_set_iaid_duid_internal (int *,int,int,int ,int ,void const*,size_t,int ) ;
 
 int sd_dhcp_client_set_duid(
                 sd_dhcp_client *client,
                 uint16_t duid_type,
                 const void *duid,
                 size_t duid_len) {
-        return dhcp_client_set_iaid_duid_internal(client, false, false, 0, duid_type, duid, duid_len, 0);
+        return dhcp_client_set_iaid_duid_internal(client, 0, 0, 0, duid_type, duid, duid_len, 0);
 }

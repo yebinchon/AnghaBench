@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_48__   TYPE_9__ ;
-typedef  struct TYPE_47__   TYPE_8__ ;
-typedef  struct TYPE_46__   TYPE_3__ ;
-typedef  struct TYPE_45__   TYPE_2__ ;
-typedef  struct TYPE_44__   TYPE_1__ ;
-typedef  struct TYPE_43__   TYPE_12__ ;
 
-/* Type definitions */
-struct TYPE_47__ {int /*<<< orphan*/  ctx; int /*<<< orphan*/  log; } ;
+
+
+typedef struct TYPE_48__ TYPE_9__ ;
+typedef struct TYPE_47__ TYPE_8__ ;
+typedef struct TYPE_46__ TYPE_3__ ;
+typedef struct TYPE_45__ TYPE_2__ ;
+typedef struct TYPE_44__ TYPE_1__ ;
+typedef struct TYPE_43__ TYPE_12__ ;
+
+
+struct TYPE_47__ {int ctx; int log; } ;
 struct TYPE_48__ {scalar_t__ len; } ;
-struct TYPE_44__ {int verify; int verify_depth; TYPE_12__* session_ticket_keys; TYPE_8__ ssl; int /*<<< orphan*/  session_tickets; int /*<<< orphan*/  session_timeout; int /*<<< orphan*/ * shm_zone; int /*<<< orphan*/  builtin_session_cache; TYPE_12__* certificates; TYPE_9__ ecdh_curve; TYPE_9__ dhparam; TYPE_9__ crl; TYPE_9__ trusted_certificate; TYPE_9__ client_certificate; int /*<<< orphan*/  prefer_server_ciphers; TYPE_9__ ciphers; TYPE_12__* passwords; TYPE_12__* certificate_keys; scalar_t__ certificate_values; int /*<<< orphan*/  protocols; int /*<<< orphan*/  line; int /*<<< orphan*/  file; int /*<<< orphan*/  listen; int /*<<< orphan*/  handshake_timeout; } ;
-typedef  TYPE_1__ ngx_stream_ssl_conf_t ;
-typedef  int /*<<< orphan*/  ngx_str_t ;
-struct TYPE_45__ {TYPE_8__* data; int /*<<< orphan*/  (* handler ) (TYPE_8__*) ;} ;
-typedef  TYPE_2__ ngx_pool_cleanup_t ;
-struct TYPE_46__ {int /*<<< orphan*/  log; int /*<<< orphan*/  pool; } ;
-typedef  TYPE_3__ ngx_conf_t ;
+struct TYPE_44__ {int verify; int verify_depth; TYPE_12__* session_ticket_keys; TYPE_8__ ssl; int session_tickets; int session_timeout; int * shm_zone; int builtin_session_cache; TYPE_12__* certificates; TYPE_9__ ecdh_curve; TYPE_9__ dhparam; TYPE_9__ crl; TYPE_9__ trusted_certificate; TYPE_9__ client_certificate; int prefer_server_ciphers; TYPE_9__ ciphers; TYPE_12__* passwords; TYPE_12__* certificate_keys; scalar_t__ certificate_values; int protocols; int line; int file; int listen; int handshake_timeout; } ;
+typedef TYPE_1__ ngx_stream_ssl_conf_t ;
+typedef int ngx_str_t ;
+struct TYPE_45__ {TYPE_8__* data; int (* handler ) (TYPE_8__*) ;} ;
+typedef TYPE_2__ ngx_pool_cleanup_t ;
+struct TYPE_46__ {int log; int pool; } ;
+typedef TYPE_3__ ngx_conf_t ;
 struct TYPE_43__ {scalar_t__ nelts; scalar_t__ elts; } ;
 
-/* Variables and functions */
- int NGX_CONF_BITMASK_SET ; 
- char* NGX_CONF_ERROR ; 
- char* NGX_CONF_OK ; 
- char* NGX_DEFAULT_CIPHERS ; 
- char* NGX_DEFAULT_ECDH_CURVE ; 
- int /*<<< orphan*/  NGX_LOG_EMERG ; 
- scalar_t__ NGX_OK ; 
- int NGX_SSL_NONE_SCACHE ; 
- int NGX_SSL_TLSv1 ; 
- int NGX_SSL_TLSv1_1 ; 
- int NGX_SSL_TLSv1_2 ; 
- int /*<<< orphan*/  SSL_CTX_set_cert_cb (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  SSL_CTX_set_options (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_CTX_set_tlsext_servername_callback (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_OP_NO_TICKET ; 
- int /*<<< orphan*/  ngx_conf_merge_bitmask_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ngx_conf_merge_msec_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ngx_conf_merge_ptr_value (TYPE_12__*,TYPE_12__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_conf_merge_str_value (TYPE_9__,TYPE_9__,char*) ; 
- int /*<<< orphan*/  ngx_conf_merge_uint_value (int,int,int) ; 
- int /*<<< orphan*/  ngx_conf_merge_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- TYPE_2__* ngx_pool_cleanup_add (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_ssl_certificates (TYPE_3__*,TYPE_8__*,TYPE_12__*,TYPE_12__*,TYPE_12__*) ; 
- scalar_t__ ngx_ssl_ciphers (TYPE_3__*,TYPE_8__*,TYPE_9__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_ssl_cleanup_ctx (TYPE_8__*) ; 
- scalar_t__ ngx_ssl_client_certificate (TYPE_3__*,TYPE_8__*,TYPE_9__*,int) ; 
- scalar_t__ ngx_ssl_create (TYPE_8__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ ngx_ssl_crl (TYPE_3__*,TYPE_8__*,TYPE_9__*) ; 
- scalar_t__ ngx_ssl_dhparam (TYPE_3__*,TYPE_8__*,TYPE_9__*) ; 
- scalar_t__ ngx_ssl_ecdh_curve (TYPE_3__*,TYPE_8__*,TYPE_9__*) ; 
- scalar_t__ ngx_ssl_session_cache (TYPE_8__*,int /*<<< orphan*/ *,TYPE_12__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_ssl_session_ticket_keys (TYPE_3__*,TYPE_8__*,TYPE_12__*) ; 
- scalar_t__ ngx_ssl_trusted_certificate (TYPE_3__*,TYPE_8__*,TYPE_9__*,int) ; 
- int /*<<< orphan*/  ngx_stream_ssl_certificate ; 
- scalar_t__ ngx_stream_ssl_compile_certificates (TYPE_3__*,TYPE_1__*) ; 
- int /*<<< orphan*/  ngx_stream_ssl_servername ; 
- int /*<<< orphan*/  ngx_stream_ssl_sess_id_ctx ; 
+
+ int NGX_CONF_BITMASK_SET ;
+ char* NGX_CONF_ERROR ;
+ char* NGX_CONF_OK ;
+ char* NGX_DEFAULT_CIPHERS ;
+ char* NGX_DEFAULT_ECDH_CURVE ;
+ int NGX_LOG_EMERG ;
+ scalar_t__ NGX_OK ;
+ int NGX_SSL_NONE_SCACHE ;
+ int NGX_SSL_TLSv1 ;
+ int NGX_SSL_TLSv1_1 ;
+ int NGX_SSL_TLSv1_2 ;
+ int SSL_CTX_set_cert_cb (int ,int ,TYPE_1__*) ;
+ int SSL_CTX_set_options (int ,int ) ;
+ int SSL_CTX_set_tlsext_servername_callback (int ,int ) ;
+ int SSL_OP_NO_TICKET ;
+ int ngx_conf_merge_bitmask_value (int ,int ,int) ;
+ int ngx_conf_merge_msec_value (int ,int ,int) ;
+ int ngx_conf_merge_ptr_value (TYPE_12__*,TYPE_12__*,int *) ;
+ int ngx_conf_merge_str_value (TYPE_9__,TYPE_9__,char*) ;
+ int ngx_conf_merge_uint_value (int,int,int) ;
+ int ngx_conf_merge_value (int ,int ,int) ;
+ int ngx_log_error (int ,int ,int ,char*,...) ;
+ TYPE_2__* ngx_pool_cleanup_add (int ,int ) ;
+ scalar_t__ ngx_ssl_certificates (TYPE_3__*,TYPE_8__*,TYPE_12__*,TYPE_12__*,TYPE_12__*) ;
+ scalar_t__ ngx_ssl_ciphers (TYPE_3__*,TYPE_8__*,TYPE_9__*,int ) ;
+ int ngx_ssl_cleanup_ctx (TYPE_8__*) ;
+ scalar_t__ ngx_ssl_client_certificate (TYPE_3__*,TYPE_8__*,TYPE_9__*,int) ;
+ scalar_t__ ngx_ssl_create (TYPE_8__*,int ,int *) ;
+ scalar_t__ ngx_ssl_crl (TYPE_3__*,TYPE_8__*,TYPE_9__*) ;
+ scalar_t__ ngx_ssl_dhparam (TYPE_3__*,TYPE_8__*,TYPE_9__*) ;
+ scalar_t__ ngx_ssl_ecdh_curve (TYPE_3__*,TYPE_8__*,TYPE_9__*) ;
+ scalar_t__ ngx_ssl_session_cache (TYPE_8__*,int *,TYPE_12__*,int ,int *,int ) ;
+ scalar_t__ ngx_ssl_session_ticket_keys (TYPE_3__*,TYPE_8__*,TYPE_12__*) ;
+ scalar_t__ ngx_ssl_trusted_certificate (TYPE_3__*,TYPE_8__*,TYPE_9__*,int) ;
+ int ngx_stream_ssl_certificate ;
+ scalar_t__ ngx_stream_ssl_compile_certificates (TYPE_3__*,TYPE_1__*) ;
+ int ngx_stream_ssl_servername ;
+ int ngx_stream_ssl_sess_id_ctx ;
 
 __attribute__((used)) static char *
 ngx_stream_ssl_merge_conf(ngx_conf_t *cf, void *parent, void *child)
@@ -73,7 +73,7 @@ ngx_stream_ssl_merge_conf(ngx_conf_t *cf, void *parent, void *child)
     ngx_stream_ssl_conf_t *prev = parent;
     ngx_stream_ssl_conf_t *conf = child;
 
-    ngx_pool_cleanup_t  *cln;
+    ngx_pool_cleanup_t *cln;
 
     ngx_conf_merge_msec_value(conf->handshake_timeout,
                          prev->handshake_timeout, 60000);
@@ -91,11 +91,11 @@ ngx_stream_ssl_merge_conf(ngx_conf_t *cf, void *parent, void *child)
     ngx_conf_merge_uint_value(conf->verify, prev->verify, 0);
     ngx_conf_merge_uint_value(conf->verify_depth, prev->verify_depth, 1);
 
-    ngx_conf_merge_ptr_value(conf->certificates, prev->certificates, NULL);
+    ngx_conf_merge_ptr_value(conf->certificates, prev->certificates, ((void*)0));
     ngx_conf_merge_ptr_value(conf->certificate_keys, prev->certificate_keys,
-                         NULL);
+                         ((void*)0));
 
-    ngx_conf_merge_ptr_value(conf->passwords, prev->passwords, NULL);
+    ngx_conf_merge_ptr_value(conf->passwords, prev->passwords, ((void*)0));
 
     ngx_conf_merge_str_value(conf->dhparam, prev->dhparam, "");
 
@@ -117,7 +117,7 @@ ngx_stream_ssl_merge_conf(ngx_conf_t *cf, void *parent, void *child)
         return NGX_CONF_OK;
     }
 
-    if (conf->certificates == NULL) {
+    if (conf->certificates == ((void*)0)) {
         ngx_log_error(NGX_LOG_EMERG, cf->log, 0,
                       "no \"ssl_certificate\" is defined for "
                       "the \"listen ... ssl\" directive in %s:%ui",
@@ -125,7 +125,7 @@ ngx_stream_ssl_merge_conf(ngx_conf_t *cf, void *parent, void *child)
         return NGX_CONF_ERROR;
     }
 
-    if (conf->certificate_keys == NULL) {
+    if (conf->certificate_keys == ((void*)0)) {
         ngx_log_error(NGX_LOG_EMERG, cf->log, 0,
                       "no \"ssl_certificate_key\" is defined for "
                       "the \"listen ... ssl\" directive in %s:%ui",
@@ -144,12 +144,12 @@ ngx_stream_ssl_merge_conf(ngx_conf_t *cf, void *parent, void *child)
         return NGX_CONF_ERROR;
     }
 
-    if (ngx_ssl_create(&conf->ssl, conf->protocols, NULL) != NGX_OK) {
+    if (ngx_ssl_create(&conf->ssl, conf->protocols, ((void*)0)) != NGX_OK) {
         return NGX_CONF_ERROR;
     }
 
     cln = ngx_pool_cleanup_add(cf->pool, 0);
-    if (cln == NULL) {
+    if (cln == ((void*)0)) {
         ngx_ssl_cleanup_ctx(&conf->ssl);
         return NGX_CONF_ERROR;
     }
@@ -157,34 +157,26 @@ ngx_stream_ssl_merge_conf(ngx_conf_t *cf, void *parent, void *child)
     cln->handler = ngx_ssl_cleanup_ctx;
     cln->data = &conf->ssl;
 
-#ifdef SSL_CTRL_SET_TLSEXT_HOSTNAME
-    SSL_CTX_set_tlsext_servername_callback(conf->ssl.ctx,
-                                           ngx_stream_ssl_servername);
-#endif
+
+
+
+
 
     if (ngx_stream_ssl_compile_certificates(cf, conf) != NGX_OK) {
         return NGX_CONF_ERROR;
     }
 
     if (conf->certificate_values) {
-
-#ifdef SSL_R_CERT_CB_ERROR
-
-        /* install callback to lookup certificates */
-
-        SSL_CTX_set_cert_cb(conf->ssl.ctx, ngx_stream_ssl_certificate, conf);
-
-#else
         ngx_log_error(NGX_LOG_EMERG, cf->log, 0,
                       "variables in "
                       "\"ssl_certificate\" and \"ssl_certificate_key\" "
                       "directives are not supported on this platform");
         return NGX_CONF_ERROR;
-#endif
+
 
     } else {
 
-        /* configure certificates */
+
 
         if (ngx_ssl_certificates(cf, &conf->ssl, conf->certificates,
                                  conf->certificate_keys, conf->passwords)
@@ -241,7 +233,7 @@ ngx_stream_ssl_merge_conf(ngx_conf_t *cf, void *parent, void *child)
     ngx_conf_merge_value(conf->builtin_session_cache,
                          prev->builtin_session_cache, NGX_SSL_NONE_SCACHE);
 
-    if (conf->shm_zone == NULL) {
+    if (conf->shm_zone == ((void*)0)) {
         conf->shm_zone = prev->shm_zone;
     }
 
@@ -256,14 +248,14 @@ ngx_stream_ssl_merge_conf(ngx_conf_t *cf, void *parent, void *child)
     ngx_conf_merge_value(conf->session_tickets,
                          prev->session_tickets, 1);
 
-#ifdef SSL_OP_NO_TICKET
-    if (!conf->session_tickets) {
-        SSL_CTX_set_options(conf->ssl.ctx, SSL_OP_NO_TICKET);
-    }
-#endif
+
+
+
+
+
 
     ngx_conf_merge_ptr_value(conf->session_ticket_keys,
-                         prev->session_ticket_keys, NULL);
+                         prev->session_ticket_keys, ((void*)0));
 
     if (ngx_ssl_session_ticket_keys(cf, &conf->ssl, conf->session_ticket_keys)
         != NGX_OK)

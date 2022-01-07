@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct xfs_log_item {int /*<<< orphan*/  li_trans; int /*<<< orphan*/  li_flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XFS_LI_DIRTY ; 
- int /*<<< orphan*/  clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_del_init (int /*<<< orphan*/ *) ; 
+
+
+
+struct xfs_log_item {int li_trans; int li_flags; } ;
+
+
+ int XFS_LI_DIRTY ;
+ int clear_bit (int ,int *) ;
+ int list_del_init (int *) ;
 
 void
 xfs_trans_del_item(
-	struct xfs_log_item	*lip)
+ struct xfs_log_item *lip)
 {
-	clear_bit(XFS_LI_DIRTY, &lip->li_flags);
-	list_del_init(&lip->li_trans);
+ clear_bit(XFS_LI_DIRTY, &lip->li_flags);
+ list_del_init(&lip->li_trans);
 }

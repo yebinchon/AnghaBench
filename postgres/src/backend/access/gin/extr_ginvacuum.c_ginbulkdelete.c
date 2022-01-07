@@ -1,194 +1,194 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
-typedef  struct TYPE_11__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  size_t uint32 ;
-struct TYPE_14__ {TYPE_2__* result; int /*<<< orphan*/  tmpCxt; int /*<<< orphan*/  index; int /*<<< orphan*/  ginstate; int /*<<< orphan*/  strategy; void* callback_state; int /*<<< orphan*/  callback; } ;
+
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+typedef struct TYPE_11__ TYPE_10__ ;
+
+
+typedef size_t uint32 ;
+struct TYPE_14__ {TYPE_2__* result; int tmpCxt; int index; int ginstate; int strategy; void* callback_state; int callback; } ;
 struct TYPE_13__ {scalar_t__ num_index_tuples; } ;
-struct TYPE_12__ {int /*<<< orphan*/  strategy; int /*<<< orphan*/  index; } ;
+struct TYPE_12__ {int strategy; int index; } ;
 struct TYPE_11__ {scalar_t__ rightlink; } ;
-typedef  int /*<<< orphan*/  Relation ;
-typedef  scalar_t__ Page ;
-typedef  int /*<<< orphan*/  ItemId ;
-typedef  TYPE_1__ IndexVacuumInfo ;
-typedef  int /*<<< orphan*/  IndexTupleData ;
-typedef  scalar_t__ IndexTuple ;
-typedef  TYPE_2__ IndexBulkDeleteResult ;
-typedef  int /*<<< orphan*/  IndexBulkDeleteCallback ;
-typedef  TYPE_3__ GinVacuumState ;
-typedef  int /*<<< orphan*/  Buffer ;
-typedef  scalar_t__ BlockNumber ;
+typedef int Relation ;
+typedef scalar_t__ Page ;
+typedef int ItemId ;
+typedef TYPE_1__ IndexVacuumInfo ;
+typedef int IndexTupleData ;
+typedef scalar_t__ IndexTuple ;
+typedef TYPE_2__ IndexBulkDeleteResult ;
+typedef int IndexBulkDeleteCallback ;
+typedef TYPE_3__ GinVacuumState ;
+typedef int Buffer ;
+typedef scalar_t__ BlockNumber ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALLOCSET_DEFAULT_SIZES ; 
- int /*<<< orphan*/  AllocSetContextCreate (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Assert (int) ; 
- int BLCKSZ ; 
- scalar_t__ BufferGetPage (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CurrentMemoryContext ; 
- int /*<<< orphan*/  END_CRIT_SECTION () ; 
- scalar_t__ FirstOffsetNumber ; 
- int /*<<< orphan*/  GIN_EXCLUSIVE ; 
- scalar_t__ GIN_ROOT_BLKNO ; 
- int /*<<< orphan*/  GIN_SHARE ; 
- int /*<<< orphan*/  GIN_UNLOCK ; 
- scalar_t__ GinGetDownlink (scalar_t__) ; 
- TYPE_10__* GinPageGetOpaque (scalar_t__) ; 
- int /*<<< orphan*/  GinPageIsData (scalar_t__) ; 
- scalar_t__ GinPageIsLeaf (scalar_t__) ; 
- scalar_t__ InvalidBlockNumber ; 
- int /*<<< orphan*/  IsAutoVacuumWorkerProcess () ; 
- int /*<<< orphan*/  LockBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAIN_FORKNUM ; 
- int /*<<< orphan*/  MarkBufferDirty (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MemoryContextDelete (int /*<<< orphan*/ ) ; 
- scalar_t__ PageGetItem (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PageGetItemId (scalar_t__,scalar_t__) ; 
- scalar_t__ PageGetMaxOffsetNumber (scalar_t__) ; 
- int /*<<< orphan*/  PageRestoreTempPage (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  RBM_NORMAL ; 
- int /*<<< orphan*/  ReadBufferExtended (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  START_CRIT_SECTION () ; 
- int /*<<< orphan*/  UnlockReleaseBuffer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ginInsertCleanup (int /*<<< orphan*/ *,int,int,int,TYPE_2__*) ; 
- scalar_t__ ginVacuumEntryPage (TYPE_3__*,int /*<<< orphan*/ ,scalar_t__*,size_t*) ; 
- int /*<<< orphan*/  ginVacuumPostingTree (TYPE_3__*,scalar_t__) ; 
- int /*<<< orphan*/  initGinState (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ palloc0 (int) ; 
- int /*<<< orphan*/  vacuum_delay_point () ; 
- int /*<<< orphan*/  xlogVacuumPage (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ALLOCSET_DEFAULT_SIZES ;
+ int AllocSetContextCreate (int ,char*,int ) ;
+ int Assert (int) ;
+ int BLCKSZ ;
+ scalar_t__ BufferGetPage (int ) ;
+ int CurrentMemoryContext ;
+ int END_CRIT_SECTION () ;
+ scalar_t__ FirstOffsetNumber ;
+ int GIN_EXCLUSIVE ;
+ scalar_t__ GIN_ROOT_BLKNO ;
+ int GIN_SHARE ;
+ int GIN_UNLOCK ;
+ scalar_t__ GinGetDownlink (scalar_t__) ;
+ TYPE_10__* GinPageGetOpaque (scalar_t__) ;
+ int GinPageIsData (scalar_t__) ;
+ scalar_t__ GinPageIsLeaf (scalar_t__) ;
+ scalar_t__ InvalidBlockNumber ;
+ int IsAutoVacuumWorkerProcess () ;
+ int LockBuffer (int ,int ) ;
+ int MAIN_FORKNUM ;
+ int MarkBufferDirty (int ) ;
+ int MemoryContextDelete (int ) ;
+ scalar_t__ PageGetItem (scalar_t__,int ) ;
+ int PageGetItemId (scalar_t__,scalar_t__) ;
+ scalar_t__ PageGetMaxOffsetNumber (scalar_t__) ;
+ int PageRestoreTempPage (scalar_t__,scalar_t__) ;
+ int RBM_NORMAL ;
+ int ReadBufferExtended (int ,int ,scalar_t__,int ,int ) ;
+ int START_CRIT_SECTION () ;
+ int UnlockReleaseBuffer (int ) ;
+ int ginInsertCleanup (int *,int,int,int,TYPE_2__*) ;
+ scalar_t__ ginVacuumEntryPage (TYPE_3__*,int ,scalar_t__*,size_t*) ;
+ int ginVacuumPostingTree (TYPE_3__*,scalar_t__) ;
+ int initGinState (int *,int ) ;
+ scalar_t__ palloc0 (int) ;
+ int vacuum_delay_point () ;
+ int xlogVacuumPage (int ,int ) ;
 
 IndexBulkDeleteResult *
 ginbulkdelete(IndexVacuumInfo *info, IndexBulkDeleteResult *stats,
-			  IndexBulkDeleteCallback callback, void *callback_state)
+     IndexBulkDeleteCallback callback, void *callback_state)
 {
-	Relation	index = info->index;
-	BlockNumber blkno = GIN_ROOT_BLKNO;
-	GinVacuumState gvs;
-	Buffer		buffer;
-	BlockNumber rootOfPostingTree[BLCKSZ / (sizeof(IndexTupleData) + sizeof(ItemId))];
-	uint32		nRoot;
+ Relation index = info->index;
+ BlockNumber blkno = GIN_ROOT_BLKNO;
+ GinVacuumState gvs;
+ Buffer buffer;
+ BlockNumber rootOfPostingTree[BLCKSZ / (sizeof(IndexTupleData) + sizeof(ItemId))];
+ uint32 nRoot;
 
-	gvs.tmpCxt = AllocSetContextCreate(CurrentMemoryContext,
-									   "Gin vacuum temporary context",
-									   ALLOCSET_DEFAULT_SIZES);
-	gvs.index = index;
-	gvs.callback = callback;
-	gvs.callback_state = callback_state;
-	gvs.strategy = info->strategy;
-	initGinState(&gvs.ginstate, index);
+ gvs.tmpCxt = AllocSetContextCreate(CurrentMemoryContext,
+            "Gin vacuum temporary context",
+            ALLOCSET_DEFAULT_SIZES);
+ gvs.index = index;
+ gvs.callback = callback;
+ gvs.callback_state = callback_state;
+ gvs.strategy = info->strategy;
+ initGinState(&gvs.ginstate, index);
 
-	/* first time through? */
-	if (stats == NULL)
-	{
-		/* Yes, so initialize stats to zeroes */
-		stats = (IndexBulkDeleteResult *) palloc0(sizeof(IndexBulkDeleteResult));
 
-		/*
-		 * and cleanup any pending inserts
-		 */
-		ginInsertCleanup(&gvs.ginstate, !IsAutoVacuumWorkerProcess(),
-						 false, true, stats);
-	}
+ if (stats == ((void*)0))
+ {
 
-	/* we'll re-count the tuples each time */
-	stats->num_index_tuples = 0;
-	gvs.result = stats;
+  stats = (IndexBulkDeleteResult *) palloc0(sizeof(IndexBulkDeleteResult));
 
-	buffer = ReadBufferExtended(index, MAIN_FORKNUM, blkno,
-								RBM_NORMAL, info->strategy);
 
-	/* find leaf page */
-	for (;;)
-	{
-		Page		page = BufferGetPage(buffer);
-		IndexTuple	itup;
 
-		LockBuffer(buffer, GIN_SHARE);
 
-		Assert(!GinPageIsData(page));
+  ginInsertCleanup(&gvs.ginstate, !IsAutoVacuumWorkerProcess(),
+       0, 1, stats);
+ }
 
-		if (GinPageIsLeaf(page))
-		{
-			LockBuffer(buffer, GIN_UNLOCK);
-			LockBuffer(buffer, GIN_EXCLUSIVE);
 
-			if (blkno == GIN_ROOT_BLKNO && !GinPageIsLeaf(page))
-			{
-				LockBuffer(buffer, GIN_UNLOCK);
-				continue;		/* check it one more */
-			}
-			break;
-		}
+ stats->num_index_tuples = 0;
+ gvs.result = stats;
 
-		Assert(PageGetMaxOffsetNumber(page) >= FirstOffsetNumber);
+ buffer = ReadBufferExtended(index, MAIN_FORKNUM, blkno,
+        RBM_NORMAL, info->strategy);
 
-		itup = (IndexTuple) PageGetItem(page, PageGetItemId(page, FirstOffsetNumber));
-		blkno = GinGetDownlink(itup);
-		Assert(blkno != InvalidBlockNumber);
 
-		UnlockReleaseBuffer(buffer);
-		buffer = ReadBufferExtended(index, MAIN_FORKNUM, blkno,
-									RBM_NORMAL, info->strategy);
-	}
+ for (;;)
+ {
+  Page page = BufferGetPage(buffer);
+  IndexTuple itup;
 
-	/* right now we found leftmost page in entry's BTree */
+  LockBuffer(buffer, GIN_SHARE);
 
-	for (;;)
-	{
-		Page		page = BufferGetPage(buffer);
-		Page		resPage;
-		uint32		i;
+  Assert(!GinPageIsData(page));
 
-		Assert(!GinPageIsData(page));
+  if (GinPageIsLeaf(page))
+  {
+   LockBuffer(buffer, GIN_UNLOCK);
+   LockBuffer(buffer, GIN_EXCLUSIVE);
 
-		resPage = ginVacuumEntryPage(&gvs, buffer, rootOfPostingTree, &nRoot);
+   if (blkno == GIN_ROOT_BLKNO && !GinPageIsLeaf(page))
+   {
+    LockBuffer(buffer, GIN_UNLOCK);
+    continue;
+   }
+   break;
+  }
 
-		blkno = GinPageGetOpaque(page)->rightlink;
+  Assert(PageGetMaxOffsetNumber(page) >= FirstOffsetNumber);
 
-		if (resPage)
-		{
-			START_CRIT_SECTION();
-			PageRestoreTempPage(resPage, page);
-			MarkBufferDirty(buffer);
-			xlogVacuumPage(gvs.index, buffer);
-			UnlockReleaseBuffer(buffer);
-			END_CRIT_SECTION();
-		}
-		else
-		{
-			UnlockReleaseBuffer(buffer);
-		}
+  itup = (IndexTuple) PageGetItem(page, PageGetItemId(page, FirstOffsetNumber));
+  blkno = GinGetDownlink(itup);
+  Assert(blkno != InvalidBlockNumber);
 
-		vacuum_delay_point();
+  UnlockReleaseBuffer(buffer);
+  buffer = ReadBufferExtended(index, MAIN_FORKNUM, blkno,
+         RBM_NORMAL, info->strategy);
+ }
 
-		for (i = 0; i < nRoot; i++)
-		{
-			ginVacuumPostingTree(&gvs, rootOfPostingTree[i]);
-			vacuum_delay_point();
-		}
 
-		if (blkno == InvalidBlockNumber)	/* rightmost page */
-			break;
 
-		buffer = ReadBufferExtended(index, MAIN_FORKNUM, blkno,
-									RBM_NORMAL, info->strategy);
-		LockBuffer(buffer, GIN_EXCLUSIVE);
-	}
+ for (;;)
+ {
+  Page page = BufferGetPage(buffer);
+  Page resPage;
+  uint32 i;
 
-	MemoryContextDelete(gvs.tmpCxt);
+  Assert(!GinPageIsData(page));
 
-	return gvs.result;
+  resPage = ginVacuumEntryPage(&gvs, buffer, rootOfPostingTree, &nRoot);
+
+  blkno = GinPageGetOpaque(page)->rightlink;
+
+  if (resPage)
+  {
+   START_CRIT_SECTION();
+   PageRestoreTempPage(resPage, page);
+   MarkBufferDirty(buffer);
+   xlogVacuumPage(gvs.index, buffer);
+   UnlockReleaseBuffer(buffer);
+   END_CRIT_SECTION();
+  }
+  else
+  {
+   UnlockReleaseBuffer(buffer);
+  }
+
+  vacuum_delay_point();
+
+  for (i = 0; i < nRoot; i++)
+  {
+   ginVacuumPostingTree(&gvs, rootOfPostingTree[i]);
+   vacuum_delay_point();
+  }
+
+  if (blkno == InvalidBlockNumber)
+   break;
+
+  buffer = ReadBufferExtended(index, MAIN_FORKNUM, blkno,
+         RBM_NORMAL, info->strategy);
+  LockBuffer(buffer, GIN_EXCLUSIVE);
+ }
+
+ MemoryContextDelete(gvs.tmpCxt);
+
+ return gvs.result;
 }

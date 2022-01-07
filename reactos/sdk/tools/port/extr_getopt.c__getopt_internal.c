@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct option {int dummy; } ;
-struct TYPE_3__ {int /*<<< orphan*/  optopt; int /*<<< orphan*/  optarg; int /*<<< orphan*/  optind; int /*<<< orphan*/  opterr; } ;
+struct TYPE_3__ {int optopt; int optarg; int optind; int opterr; } ;
 
-/* Variables and functions */
- int _getopt_internal_r (int,char**,char const*,struct option const*,int*,int,TYPE_1__*,int) ; 
- TYPE_1__ getopt_data ; 
- int /*<<< orphan*/  optarg ; 
- int /*<<< orphan*/  opterr ; 
- int /*<<< orphan*/  optind ; 
- int /*<<< orphan*/  optopt ; 
+
+ int _getopt_internal_r (int,char**,char const*,struct option const*,int*,int,TYPE_1__*,int) ;
+ TYPE_1__ getopt_data ;
+ int optarg ;
+ int opterr ;
+ int optind ;
+ int optopt ;
 
 int
 _getopt_internal (int argc, char **argv, const char *optstring,
-		  const struct option *longopts, int *longind, int long_only,
-		  int posixly_correct)
+    const struct option *longopts, int *longind, int long_only,
+    int posixly_correct)
 {
   int result;
 
@@ -33,8 +33,8 @@ _getopt_internal (int argc, char **argv, const char *optstring,
   getopt_data.opterr = opterr;
 
   result = _getopt_internal_r (argc, argv, optstring, longopts,
-			       longind, long_only, &getopt_data,
-			       posixly_correct);
+          longind, long_only, &getopt_data,
+          posixly_correct);
 
   optind = getopt_data.optind;
   optarg = getopt_data.optarg;

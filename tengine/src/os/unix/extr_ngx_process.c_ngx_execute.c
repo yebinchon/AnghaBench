@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ngx_pid_t ;
-struct TYPE_4__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ ngx_exec_ctx_t ;
-typedef  int /*<<< orphan*/  ngx_cycle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_PROCESS_DETACHED ; 
- int /*<<< orphan*/  ngx_execute_proc ; 
- int /*<<< orphan*/  ngx_spawn_process (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int ngx_pid_t ;
+struct TYPE_4__ {int name; } ;
+typedef TYPE_1__ ngx_exec_ctx_t ;
+typedef int ngx_cycle_t ;
+
+
+ int NGX_PROCESS_DETACHED ;
+ int ngx_execute_proc ;
+ int ngx_spawn_process (int *,int ,TYPE_1__*,int ,int ) ;
 
 ngx_pid_t
 ngx_execute(ngx_cycle_t *cycle, ngx_exec_ctx_t *ctx)

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mc_api_sys ;
-struct TYPE_4__ {int b_support_rotation; int /*<<< orphan*/  set_output_surface; int /*<<< orphan*/ * release_out_ts; int /*<<< orphan*/  release_out; int /*<<< orphan*/  get_out; int /*<<< orphan*/  dequeue_out; int /*<<< orphan*/  queue_in; int /*<<< orphan*/  dequeue_in; int /*<<< orphan*/  flush; int /*<<< orphan*/  stop; int /*<<< orphan*/  start; int /*<<< orphan*/  configure_decoder; int /*<<< orphan*/  prepare; int /*<<< orphan*/  clean; int /*<<< orphan*/  p_sys; int /*<<< orphan*/  p_obj; } ;
-typedef  TYPE_1__ mc_api ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int mc_api_sys ;
+struct TYPE_4__ {int b_support_rotation; int set_output_surface; int * release_out_ts; int release_out; int get_out; int dequeue_out; int queue_in; int dequeue_in; int flush; int stop; int start; int configure_decoder; int prepare; int clean; int p_sys; int p_obj; } ;
+typedef TYPE_1__ mc_api ;
 struct TYPE_5__ {scalar_t__ get_output_buffer; scalar_t__ get_input_buffer; } ;
-typedef  int /*<<< orphan*/  JNIEnv ;
+typedef int JNIEnv ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Clean ; 
- int /*<<< orphan*/  ConfigureDecoder ; 
- int /*<<< orphan*/  DequeueInput ; 
- int /*<<< orphan*/  DequeueOutput ; 
- int /*<<< orphan*/  Flush ; 
- int /*<<< orphan*/  GET_ENV () ; 
- int /*<<< orphan*/  GetOutput ; 
- int /*<<< orphan*/  InitJNIFields (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int MC_API_ERROR ; 
- int /*<<< orphan*/  Prepare ; 
- int /*<<< orphan*/  QueueInput ; 
- int /*<<< orphan*/  ReleaseOutput ; 
- int /*<<< orphan*/  SetOutputSurface ; 
- int /*<<< orphan*/  Start ; 
- int /*<<< orphan*/  Stop ; 
- int /*<<< orphan*/  calloc (int,int) ; 
- TYPE_2__ jfields ; 
+
+ int Clean ;
+ int ConfigureDecoder ;
+ int DequeueInput ;
+ int DequeueOutput ;
+ int Flush ;
+ int GET_ENV () ;
+ int GetOutput ;
+ int InitJNIFields (int ,int *) ;
+ int MC_API_ERROR ;
+ int Prepare ;
+ int QueueInput ;
+ int ReleaseOutput ;
+ int SetOutputSurface ;
+ int Start ;
+ int Stop ;
+ int calloc (int,int) ;
+ TYPE_2__ jfields ;
 
 int MediaCodecJni_Init(mc_api *api)
 {
@@ -61,11 +61,11 @@ int MediaCodecJni_Init(mc_api *api)
     api->dequeue_out = DequeueOutput;
     api->get_out = GetOutput;
     api->release_out = ReleaseOutput;
-    api->release_out_ts = NULL;
+    api->release_out_ts = ((void*)0);
     api->set_output_surface = SetOutputSurface;
 
-    /* Allow rotation only after API 21 */
+
     if (jfields.get_input_buffer && jfields.get_output_buffer)
-        api->b_support_rotation = true;
+        api->b_support_rotation = 1;
     return 0;
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wpa2_funcs {int /*<<< orphan*/  wpa2_deinit; int /*<<< orphan*/  wpa2_init; int /*<<< orphan*/  wpa2_start; int /*<<< orphan*/  wpa2_sm_rx_eapol; } ;
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERR_NO_MEM ; 
- int /*<<< orphan*/  ESP_OK ; 
- int /*<<< orphan*/  MSG_DEBUG ; 
- int /*<<< orphan*/  MSG_ERROR ; 
- int /*<<< orphan*/  MSG_INFO ; 
- int /*<<< orphan*/  WPA2_VERSION ; 
- scalar_t__ eap_peer_register_methods () ; 
- int /*<<< orphan*/  eap_peer_sm_deinit ; 
- int /*<<< orphan*/  eap_peer_sm_init ; 
- int /*<<< orphan*/  esp_wifi_register_wpa2_cb_internal (struct wpa2_funcs*) ; 
- scalar_t__ os_zalloc (int) ; 
- int /*<<< orphan*/  wpa2_ent_rx_eapol ; 
- int /*<<< orphan*/  wpa2_start_eapol ; 
- int /*<<< orphan*/  wpa_printf (int /*<<< orphan*/ ,char*,...) ; 
+
+
+
+struct wpa2_funcs {int wpa2_deinit; int wpa2_init; int wpa2_start; int wpa2_sm_rx_eapol; } ;
+typedef int esp_err_t ;
+
+
+ int ESP_ERR_NO_MEM ;
+ int ESP_OK ;
+ int MSG_DEBUG ;
+ int MSG_ERROR ;
+ int MSG_INFO ;
+ int WPA2_VERSION ;
+ scalar_t__ eap_peer_register_methods () ;
+ int eap_peer_sm_deinit ;
+ int eap_peer_sm_init ;
+ int esp_wifi_register_wpa2_cb_internal (struct wpa2_funcs*) ;
+ scalar_t__ os_zalloc (int) ;
+ int wpa2_ent_rx_eapol ;
+ int wpa2_start_eapol ;
+ int wpa_printf (int ,char*,...) ;
 
 esp_err_t esp_wifi_sta_wpa2_ent_enable_fn(void *arg)
 {
@@ -37,7 +37,7 @@ esp_err_t esp_wifi_sta_wpa2_ent_enable_fn(void *arg)
                WPA2_VERSION);
 
     wpa2_cb = (struct wpa2_funcs *)os_zalloc(sizeof(struct wpa2_funcs));
-    if (wpa2_cb == NULL) {
+    if (wpa2_cb == ((void*)0)) {
         wpa_printf(MSG_ERROR, "WPA2: no mem for wpa2 cb\n");
         return ESP_ERR_NO_MEM;
     }
@@ -51,10 +51,10 @@ esp_err_t esp_wifi_sta_wpa2_ent_enable_fn(void *arg)
 
     wpa_printf(MSG_DEBUG, "WPA2 ENTERPRISE CRYPTO INIT.\r\n");
 
-#ifdef EAP_PEER_METHOD
-    if (eap_peer_register_methods()) {
-        wpa_printf(MSG_ERROR, "Register EAP Peer methods Failure\n");
-    }
-#endif
+
+
+
+
+
     return ESP_OK;
 }

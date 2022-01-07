@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_11__ {int /*<<< orphan*/  kind; } ;
-typedef  TYPE_1__ svn_checksum_t ;
-struct TYPE_12__ {int /*<<< orphan*/  created_path; } ;
-typedef  TYPE_2__ dag_node_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  svn_checksum_match (TYPE_1__ const*,TYPE_1__*) ; 
- int /*<<< orphan*/ * svn_checksum_mismatch_err (TYPE_1__ const*,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_fs_fs__dag_file_checksum (TYPE_1__**,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+struct TYPE_11__ {int kind; } ;
+typedef TYPE_1__ svn_checksum_t ;
+struct TYPE_12__ {int created_path; } ;
+typedef TYPE_2__ dag_node_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int svn_checksum_match (TYPE_1__ const*,TYPE_1__*) ;
+ int * svn_checksum_mismatch_err (TYPE_1__ const*,TYPE_1__*,int *,int ,int ) ;
+ int svn_fs_fs__dag_file_checksum (TYPE_1__**,TYPE_2__*,int ,int *) ;
 
 svn_error_t *
 svn_fs_fs__dag_finalize_edits(dag_node_t *file,

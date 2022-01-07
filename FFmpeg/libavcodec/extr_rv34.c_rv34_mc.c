@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_9__ ;
-typedef  struct TYPE_20__   TYPE_8__ ;
-typedef  struct TYPE_19__   TYPE_7__ ;
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
-typedef  struct TYPE_12__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  (* qpel_mc_func ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int const) ;
-typedef  int /*<<< orphan*/  (* h264_chroma_mc_func ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int const,int,int) ;
-typedef  int /*<<< orphan*/  ThreadFrame ;
-struct TYPE_20__ {int /*<<< orphan*/  (* emulated_edge_mc ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int const,int const,int,int,int,int) ;} ;
-struct TYPE_19__ {int /*<<< orphan*/ * edge_emu_buffer; } ;
-struct TYPE_12__ {int mb_x; int mb_y; int b8_stride; int linesize; int uvlinesize; int const h_edge_pos; int const v_edge_pos; TYPE_8__ vdsp; TYPE_7__ sc; int /*<<< orphan*/ ** dest; TYPE_6__* last_picture_ptr; TYPE_4__* next_picture_ptr; TYPE_2__* avctx; TYPE_1__* current_picture_ptr; } ;
-struct TYPE_21__ {int /*<<< orphan*/ ** tmp_b_block_uv; int /*<<< orphan*/ ** tmp_b_block_y; TYPE_10__ s; } ;
-struct TYPE_18__ {TYPE_5__* f; int /*<<< orphan*/  tf; } ;
-struct TYPE_17__ {int /*<<< orphan*/ ** data; } ;
-struct TYPE_16__ {TYPE_3__* f; int /*<<< orphan*/  tf; } ;
-struct TYPE_15__ {int /*<<< orphan*/ ** data; } ;
+
+
+typedef struct TYPE_21__ TYPE_9__ ;
+typedef struct TYPE_20__ TYPE_8__ ;
+typedef struct TYPE_19__ TYPE_7__ ;
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+typedef struct TYPE_12__ TYPE_10__ ;
+
+
+typedef int uint8_t ;
+typedef int (* qpel_mc_func ) (int *,int *,int const) ;
+typedef int (* h264_chroma_mc_func ) (int *,int *,int,int const,int,int) ;
+typedef int ThreadFrame ;
+struct TYPE_20__ {int (* emulated_edge_mc ) (int *,int *,int,int,int const,int const,int,int,int,int) ;} ;
+struct TYPE_19__ {int * edge_emu_buffer; } ;
+struct TYPE_12__ {int mb_x; int mb_y; int b8_stride; int linesize; int uvlinesize; int const h_edge_pos; int const v_edge_pos; TYPE_8__ vdsp; TYPE_7__ sc; int ** dest; TYPE_6__* last_picture_ptr; TYPE_4__* next_picture_ptr; TYPE_2__* avctx; TYPE_1__* current_picture_ptr; } ;
+struct TYPE_21__ {int ** tmp_b_block_uv; int ** tmp_b_block_y; TYPE_10__ s; } ;
+struct TYPE_18__ {TYPE_5__* f; int tf; } ;
+struct TYPE_17__ {int ** data; } ;
+struct TYPE_16__ {TYPE_3__* f; int tf; } ;
+struct TYPE_15__ {int ** data; } ;
 struct TYPE_14__ {int active_thread_type; } ;
 struct TYPE_13__ {int*** motion_val; } ;
-typedef  TYPE_9__ RV34DecContext ;
-typedef  TYPE_10__ MpegEncContext ;
+typedef TYPE_9__ RV34DecContext ;
+typedef TYPE_10__ MpegEncContext ;
 
-/* Variables and functions */
- int FF_THREAD_FRAME ; 
- scalar_t__ HAVE_THREADS ; 
- int const RV34_MB_P_16x8 ; 
- int const RV34_MB_P_8x16 ; 
- int const RV34_MB_P_8x8 ; 
- int* chroma_coeffs ; 
- int /*<<< orphan*/  ff_thread_await_progress (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int const,int const,int,int,int,int) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int const) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int const) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int const) ; 
- int /*<<< orphan*/  stub5 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int const,int const,int const,int const,int,int,int,int) ; 
- int /*<<< orphan*/  stub6 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int const,int const,int,int,int,int) ; 
- int /*<<< orphan*/  stub7 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int const,int,int) ; 
- int /*<<< orphan*/  stub8 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int const,int,int) ; 
+
+ int FF_THREAD_FRAME ;
+ scalar_t__ HAVE_THREADS ;
+ int const RV34_MB_P_16x8 ;
+ int const RV34_MB_P_8x16 ;
+ int const RV34_MB_P_8x8 ;
+ int* chroma_coeffs ;
+ int ff_thread_await_progress (int *,int,int ) ;
+ int stub1 (int *,int *,int,int,int const,int const,int,int,int,int) ;
+ int stub2 (int *,int *,int const) ;
+ int stub3 (int *,int *,int const) ;
+ int stub4 (int *,int *,int const) ;
+ int stub5 (int *,int *,int const,int const,int const,int const,int,int,int,int) ;
+ int stub6 (int *,int *,int,int,int const,int const,int,int,int,int) ;
+ int stub7 (int *,int *,int,int const,int,int) ;
+ int stub8 (int *,int *,int,int const,int,int) ;
 
 __attribute__((used)) static inline void rv34_mc(RV34DecContext *r, const int block_type,
                           const int xoff, const int yoff, int mv_off,
@@ -92,13 +92,13 @@ __attribute__((used)) static inline void rv34_mc(RV34DecContext *r, const int bl
         umy = cy >> 2;
         uvmx = (cx & 3) << 1;
         uvmy = (cy & 3) << 1;
-        //due to some flaw RV40 uses the same MC compensation routine for H2V2 and H3V3
+
         if(uvmx == 6 && uvmy == 6)
             uvmx = uvmy = 4;
     }
 
     if (HAVE_THREADS && (s->avctx->active_thread_type & FF_THREAD_FRAME)) {
-        /* wait for the referenced mb row to be finished */
+
         int mb_row = s->mb_y + ((yoff + my + 5 + 8 * height) >> 4);
         ThreadFrame *f = dir ? &s->next_picture_ptr->tf : &s->last_picture_ptr->tf;
         ff_thread_await_progress(f, mb_row, 0);
@@ -128,22 +128,22 @@ __attribute__((used)) static inline void rv34_mc(RV34DecContext *r, const int bl
         emu = 1;
     }
     if(!weighted){
-        Y = s->dest[0] + xoff      + yoff     *s->linesize;
+        Y = s->dest[0] + xoff + yoff *s->linesize;
         U = s->dest[1] + (xoff>>1) + (yoff>>1)*s->uvlinesize;
         V = s->dest[2] + (xoff>>1) + (yoff>>1)*s->uvlinesize;
     }else{
-        Y = r->tmp_b_block_y [dir]     +  xoff     +  yoff    *s->linesize;
-        U = r->tmp_b_block_uv[dir*2]   + (xoff>>1) + (yoff>>1)*s->uvlinesize;
+        Y = r->tmp_b_block_y [dir] + xoff + yoff *s->linesize;
+        U = r->tmp_b_block_uv[dir*2] + (xoff>>1) + (yoff>>1)*s->uvlinesize;
         V = r->tmp_b_block_uv[dir*2+1] + (xoff>>1) + (yoff>>1)*s->uvlinesize;
     }
 
     if(block_type == RV34_MB_P_16x8){
         qpel_mc[1][dxy](Y, srcY, s->linesize);
-        Y    += 8;
+        Y += 8;
         srcY += 8;
     }else if(block_type == RV34_MB_P_8x16){
         qpel_mc[1][dxy](Y, srcY, s->linesize);
-        Y    += 8 * s->linesize;
+        Y += 8 * s->linesize;
         srcY += 8 * s->linesize;
     }
     is16x16 = (block_type != RV34_MB_P_8x8) && (block_type != RV34_MB_P_16x8) && (block_type != RV34_MB_P_8x16);
@@ -166,6 +166,6 @@ __attribute__((used)) static inline void rv34_mc(RV34DecContext *r, const int bl
                                  s->h_edge_pos >> 1, s->v_edge_pos >> 1);
         srcV = uvbuf;
     }
-    chroma_mc[2-width]   (U, srcU, s->uvlinesize, height*4, uvmx, uvmy);
-    chroma_mc[2-width]   (V, srcV, s->uvlinesize, height*4, uvmx, uvmy);
+    chroma_mc[2-width] (U, srcU, s->uvlinesize, height*4, uvmx, uvmy);
+    chroma_mc[2-width] (V, srcV, s->uvlinesize, height*4, uvmx, uvmy);
 }

@@ -1,23 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 int
 rgetmsg(int msgnum, char *s, int maxsize)
 {
-	(void) msgnum;				/* keep the compiler quiet */
-	(void) s;					/* keep the compiler quiet */
-	(void) maxsize;				/* keep the compiler quiet */
-	return 0;
+ (void) msgnum;
+ (void) s;
+ (void) maxsize;
+ return 0;
 }

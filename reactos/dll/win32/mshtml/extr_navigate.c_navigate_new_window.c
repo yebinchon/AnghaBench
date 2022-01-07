@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  post_data_len; int /*<<< orphan*/ * post_data; int /*<<< orphan*/ * headers; } ;
-typedef  TYPE_2__ request_data_t ;
-struct TYPE_6__ {int /*<<< orphan*/  IBindStatusCallback_iface; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int post_data_len; int * post_data; int * headers; } ;
+typedef TYPE_2__ request_data_t ;
+struct TYPE_6__ {int IBindStatusCallback_iface; } ;
 struct TYPE_8__ {TYPE_1__ bsc; } ;
-typedef  TYPE_3__ nsChannelBSC ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  IWebBrowser2 ;
-typedef  int /*<<< orphan*/  IUri ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  ITargetFramePriv2 ;
-typedef  int /*<<< orphan*/  IHTMLWindow2 ;
-typedef  int /*<<< orphan*/  IBindCtx ;
-typedef  int /*<<< orphan*/  HTMLOuterWindow ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_3__ nsChannelBSC ;
+typedef int WCHAR ;
+typedef int IWebBrowser2 ;
+typedef int IUri ;
+typedef int IUnknown ;
+typedef int ITargetFramePriv2 ;
+typedef int IHTMLWindow2 ;
+typedef int IBindCtx ;
+typedef int HTMLOuterWindow ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_LOCAL_SERVER ; 
- int /*<<< orphan*/  CLSID_InternetExplorer ; 
- int /*<<< orphan*/  CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  CreateAsyncBindCtx (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int HLNF_DISABLEWINDOWRESTRICTIONS ; 
- int HLNF_OPENINNEWWINDOW ; 
- int /*<<< orphan*/  IBindCtx_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IBindStatusCallback_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IHTMLWindow2_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IHTMLWindow2 ; 
- int /*<<< orphan*/  IID_ITargetFramePriv2 ; 
- int /*<<< orphan*/  IID_IWebBrowser2 ; 
- int /*<<< orphan*/  ITargetFramePriv2_AggregatedNavigation2 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ITargetFramePriv2_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWebBrowser2_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IWebBrowser2_Quit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWebBrowser2_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWebBrowser2_put_Visible (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SID_SHTMLWindow ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  VARIANT_TRUE ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_channelbsc (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__**) ; 
- int /*<<< orphan*/  do_query_service (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  emptyW ; 
+
+ int CLSCTX_LOCAL_SERVER ;
+ int CLSID_InternetExplorer ;
+ int CoCreateInstance (int *,int *,int ,int *,void**) ;
+ int CreateAsyncBindCtx (int ,int *,int *,int **) ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int HLNF_DISABLEWINDOWRESTRICTIONS ;
+ int HLNF_OPENINNEWWINDOW ;
+ int IBindCtx_Release (int *) ;
+ int IBindStatusCallback_Release (int *) ;
+ int IHTMLWindow2_Release (int *) ;
+ int IID_IHTMLWindow2 ;
+ int IID_ITargetFramePriv2 ;
+ int IID_IWebBrowser2 ;
+ int ITargetFramePriv2_AggregatedNavigation2 (int *,int,int *,int *,int const*,int *,int ) ;
+ int ITargetFramePriv2_Release (int *) ;
+ int IWebBrowser2_QueryInterface (int *,int *,void**) ;
+ int IWebBrowser2_Quit (int *) ;
+ int IWebBrowser2_Release (int *) ;
+ int IWebBrowser2_put_Visible (int *,int ) ;
+ int SID_SHTMLWindow ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int VARIANT_TRUE ;
+ int WARN (char*,int ) ;
+ int create_channelbsc (int *,int *,int *,int ,int ,TYPE_3__**) ;
+ int do_query_service (int *,int *,int *,void**) ;
+ int emptyW ;
 
 HRESULT navigate_new_window(HTMLOuterWindow *window, IUri *uri, const WCHAR *name, request_data_t *request_data, IHTMLWindow2 **ret)
 {
@@ -67,21 +67,21 @@ HRESULT navigate_new_window(HTMLOuterWindow *window, IUri *uri, const WCHAR *nam
     HRESULT hres;
 
     if(request_data)
-        hres = create_channelbsc(NULL, request_data->headers,
+        hres = create_channelbsc(((void*)0), request_data->headers,
                 request_data->post_data, request_data->post_data_len, FALSE,
                 &bsc);
     else
-        hres = create_channelbsc(NULL, NULL, NULL, 0, FALSE, &bsc);
+        hres = create_channelbsc(((void*)0), ((void*)0), ((void*)0), 0, FALSE, &bsc);
     if(FAILED(hres))
         return hres;
 
-    hres = CreateAsyncBindCtx(0, &bsc->bsc.IBindStatusCallback_iface, NULL, &bind_ctx);
+    hres = CreateAsyncBindCtx(0, &bsc->bsc.IBindStatusCallback_iface, ((void*)0), &bind_ctx);
     if(FAILED(hres)) {
         IBindStatusCallback_Release(&bsc->bsc.IBindStatusCallback_iface);
         return hres;
     }
 
-    hres = CoCreateInstance(&CLSID_InternetExplorer, NULL, CLSCTX_LOCAL_SERVER,
+    hres = CoCreateInstance(&CLSID_InternetExplorer, ((void*)0), CLSCTX_LOCAL_SERVER,
             &IID_IWebBrowser2, (void**)&web_browser);
     if(SUCCEEDED(hres)) {
         ITargetFramePriv2 *target_frame_priv;

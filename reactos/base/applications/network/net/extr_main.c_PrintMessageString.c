@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int /*<<< orphan*/ * PWSTR ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConPuts (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int FORMAT_MESSAGE_ALLOCATE_BUFFER ; 
- int FORMAT_MESSAGE_FROM_HMODULE ; 
- int FORMAT_MESSAGE_IGNORE_INSERTS ; 
- int /*<<< orphan*/  FormatMessageW (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LANG_USER_DEFAULT ; 
- int /*<<< orphan*/  LocalFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  StdOut ; 
- int /*<<< orphan*/  hModuleNetMsg ; 
+
+
+
+typedef int VOID ;
+typedef int * PWSTR ;
+typedef int LPWSTR ;
+typedef int DWORD ;
+
+
+ int ConPuts (int ,int *) ;
+ int FORMAT_MESSAGE_ALLOCATE_BUFFER ;
+ int FORMAT_MESSAGE_FROM_HMODULE ;
+ int FORMAT_MESSAGE_IGNORE_INSERTS ;
+ int FormatMessageW (int,int ,int ,int ,int ,int ,int *) ;
+ int LANG_USER_DEFAULT ;
+ int LocalFree (int *) ;
+ int StdOut ;
+ int hModuleNetMsg ;
 
 VOID
 PrintMessageString(
@@ -39,11 +39,11 @@ PrintMessageString(
                    LANG_USER_DEFAULT,
                    (LPWSTR)&pBuffer,
                    0,
-                   NULL);
+                   ((void*)0));
     if (pBuffer)
     {
         ConPuts(StdOut, pBuffer);
         LocalFree(pBuffer);
-        pBuffer = NULL;
+        pBuffer = ((void*)0);
     }
 }

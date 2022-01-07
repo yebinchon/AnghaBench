@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  msi_dialog ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  FIXME (char*) ; 
+
+
+
+typedef int msi_dialog ;
+typedef int WCHAR ;
+typedef int UINT ;
+
+
+ int ERROR_SUCCESS ;
+ int FIXME (char*) ;
 
 __attribute__((used)) static UINT event_spawn_wait_dialog( msi_dialog *dialog, const WCHAR *argument )
 {

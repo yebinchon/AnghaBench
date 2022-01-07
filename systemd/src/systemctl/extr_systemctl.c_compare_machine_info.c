@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct machine_info {int /*<<< orphan*/  name; int /*<<< orphan*/  is_host; } ;
 
-/* Variables and functions */
- int CMP (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int strcasecmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct machine_info {int name; int is_host; } ;
+
+
+ int CMP (int ,int ) ;
+ int strcasecmp (int ,int ) ;
 
 __attribute__((used)) static int compare_machine_info(const struct machine_info *a, const struct machine_info *b) {
         int r;

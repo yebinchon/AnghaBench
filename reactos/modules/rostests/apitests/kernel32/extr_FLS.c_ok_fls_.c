@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__* FlsCallback; } ;
 struct TYPE_5__ {scalar_t__ FlsData; } ;
-struct TYPE_4__ {scalar_t__ lpCallback; int /*<<< orphan*/ * Unknown; } ;
-typedef  int /*<<< orphan*/ * PVOID ;
-typedef  TYPE_1__* PFLS_CALLBACK_INFO ;
-typedef  scalar_t__ PFLS_CALLBACK_FUNCTION ;
-typedef  size_t DWORD ;
+struct TYPE_4__ {scalar_t__ lpCallback; int * Unknown; } ;
+typedef int * PVOID ;
+typedef TYPE_1__* PFLS_CALLBACK_INFO ;
+typedef scalar_t__ PFLS_CALLBACK_FUNCTION ;
+typedef size_t DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FlsCallback3 ; 
- TYPE_3__* NtCurrentPeb () ; 
- TYPE_2__* NtCurrentTeb () ; 
- scalar_t__ WINVER_2003 ; 
- int /*<<< orphan*/  g_FlsExcept3 ; 
- scalar_t__ g_WinVersion ; 
- int /*<<< orphan*/ * pFlsGetValue (size_t) ; 
- int /*<<< orphan*/  winetest_ok (int,char*,...) ; 
- int /*<<< orphan*/  winetest_skip (char*) ; 
+
+ int FlsCallback3 ;
+ TYPE_3__* NtCurrentPeb () ;
+ TYPE_2__* NtCurrentTeb () ;
+ scalar_t__ WINVER_2003 ;
+ int g_FlsExcept3 ;
+ scalar_t__ g_WinVersion ;
+ int * pFlsGetValue (size_t) ;
+ int winetest_ok (int,char*,...) ;
+ int winetest_skip (char*) ;
 
 void ok_fls_(DWORD dwIndex, PVOID pValue, PFLS_CALLBACK_FUNCTION lpCallback)
 {
@@ -41,10 +41,10 @@ void ok_fls_(DWORD dwIndex, PVOID pValue, PFLS_CALLBACK_FUNCTION lpCallback)
     FlsCallback = (PFLS_CALLBACK_INFO)NtCurrentPeb()->FlsCallback;
     FlsData = (PVOID*)NtCurrentTeb()->FlsData;
 
-    winetest_ok(FlsData != NULL, "Expected FlsData\n");
-    winetest_ok(FlsCallback != NULL, "Expected FlsCallback\n");
+    winetest_ok(FlsData != ((void*)0), "Expected FlsData\n");
+    winetest_ok(FlsCallback != ((void*)0), "Expected FlsCallback\n");
 
-    if (FlsData == NULL || FlsCallback == NULL)
+    if (FlsData == ((void*)0) || FlsCallback == ((void*)0))
     {
         winetest_skip("Unable to continue test\n");
         return;
@@ -67,10 +67,10 @@ void ok_fls_(DWORD dwIndex, PVOID pValue, PFLS_CALLBACK_FUNCTION lpCallback)
                     FlsCallback[dwIndex].lpCallback);
         if (lpCallback != &FlsCallback3 || !g_FlsExcept3)
         {
-            winetest_ok(FlsCallback[dwIndex].Unknown == NULL,
+            winetest_ok(FlsCallback[dwIndex].Unknown == ((void*)0),
                         "Expected FlsCallback[%lu].Unknown to be %p, was %p\n",
                         dwIndex,
-                        NULL,
+                        ((void*)0),
                         FlsCallback[dwIndex].Unknown);
         }
     }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tls_multi {int /*<<< orphan*/ * session; struct tls_multi* remote_ciphername; int /*<<< orphan*/  locked_cert_hash_set; struct tls_multi* locked_username; struct tls_multi* locked_cn; struct tls_multi* peer_info; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (struct tls_multi*) ; 
- int TM_SIZE ; 
- int /*<<< orphan*/  auth_set_client_reason (struct tls_multi*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cert_hash_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (struct tls_multi*) ; 
- int /*<<< orphan*/  secure_memzero (struct tls_multi*,int) ; 
- int /*<<< orphan*/  tls_session_free (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  wipe_auth_token (struct tls_multi*) ; 
+
+
+
+struct tls_multi {int * session; struct tls_multi* remote_ciphername; int locked_cert_hash_set; struct tls_multi* locked_username; struct tls_multi* locked_cn; struct tls_multi* peer_info; } ;
+
+
+ int ASSERT (struct tls_multi*) ;
+ int TM_SIZE ;
+ int auth_set_client_reason (struct tls_multi*,int *) ;
+ int cert_hash_free (int ) ;
+ int free (struct tls_multi*) ;
+ int secure_memzero (struct tls_multi*,int) ;
+ int tls_session_free (int *,int) ;
+ int wipe_auth_token (struct tls_multi*) ;
 
 void
 tls_multi_free(struct tls_multi *multi, bool clear)
@@ -29,11 +29,11 @@ tls_multi_free(struct tls_multi *multi, bool clear)
 
     ASSERT(multi);
 
-#if P2MP_SERVER
-    auth_set_client_reason(multi, NULL);
 
-    free(multi->peer_info);
-#endif
+
+
+
+
 
     if (multi->locked_cn)
     {
@@ -53,7 +53,7 @@ tls_multi_free(struct tls_multi *multi, bool clear)
 
     for (i = 0; i < TM_SIZE; ++i)
     {
-        tls_session_free(&multi->session[i], false);
+        tls_session_free(&multi->session[i], 0);
     }
 
     if (clear)

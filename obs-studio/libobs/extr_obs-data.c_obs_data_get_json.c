@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char const* json; } ;
-typedef  TYPE_1__ obs_data_t ;
-typedef  int /*<<< orphan*/  json_t ;
+typedef TYPE_1__ obs_data_t ;
+typedef int json_t ;
 
-/* Variables and functions */
- int JSON_INDENT (int) ; 
- int JSON_PRESERVE_ORDER ; 
- int /*<<< orphan*/  free (char const*) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- char const* json_dumps (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * obs_data_to_json (TYPE_1__*) ; 
+
+ int JSON_INDENT (int) ;
+ int JSON_PRESERVE_ORDER ;
+ int free (char const*) ;
+ int json_decref (int *) ;
+ char const* json_dumps (int *,int) ;
+ int * obs_data_to_json (TYPE_1__*) ;
 
 const char *obs_data_get_json(obs_data_t *data)
 {
-	if (!data)
-		return NULL;
+ if (!data)
+  return ((void*)0);
 
-	/* NOTE: don't use libobs bfree for json text */
-	free(data->json);
-	data->json = NULL;
 
-	json_t *root = obs_data_to_json(data);
-	data->json = json_dumps(root, JSON_PRESERVE_ORDER | JSON_INDENT(4));
-	json_decref(root);
+ free(data->json);
+ data->json = ((void*)0);
 
-	return data->json;
+ json_t *root = obs_data_to_json(data);
+ data->json = json_dumps(root, JSON_PRESERVE_ORDER | JSON_INDENT(4));
+ json_decref(root);
+
+ return data->json;
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_10__ {int x; int y; } ;
 struct TYPE_9__ {int bottom; int top; int right; int left; } ;
 struct TYPE_8__ {int dwStyle; TYPE_2__ rcThumb; } ;
-typedef  TYPE_1__ TRACKBAR_INFO ;
-typedef  TYPE_2__ RECT ;
-typedef  TYPE_3__ POINT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  HBRUSH ;
+typedef TYPE_1__ TRACKBAR_INFO ;
+typedef TYPE_2__ RECT ;
+typedef TYPE_3__ POINT ;
+typedef int HDC ;
+typedef int HBRUSH ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (TYPE_3__*) ; 
- int /*<<< orphan*/  FillRect (int /*<<< orphan*/ ,TYPE_2__ const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Polygon (int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetPolyFillMode (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int TBS_BOTH ; 
- int TBS_LEFT ; 
- int TBS_TOP ; 
- int TBS_VERT ; 
- int /*<<< orphan*/  WINDING ; 
+
+ int ARRAY_SIZE (TYPE_3__*) ;
+ int FillRect (int ,TYPE_2__ const*,int ) ;
+ int Polygon (int ,TYPE_3__*,int ) ;
+ int SelectObject (int ,int ) ;
+ int SetPolyFillMode (int ,int ) ;
+ int TBS_BOTH ;
+ int TBS_LEFT ;
+ int TBS_TOP ;
+ int TBS_VERT ;
+ int WINDING ;
 
 __attribute__((used)) static int
 TRACKBAR_FillThumb (const TRACKBAR_INFO *infoPtr, HDC hdc, HBRUSH hbrush)

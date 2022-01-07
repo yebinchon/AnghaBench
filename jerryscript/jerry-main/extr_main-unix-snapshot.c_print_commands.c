@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  cli_help (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  main_opts ; 
- int /*<<< orphan*/  printf (char*) ; 
+ int cli_help (char*,int *,int ) ;
+ int main_opts ;
+ int printf (char*) ;
 
 __attribute__((used)) static void
-print_commands (char *prog_name_p) /**< program name */
+print_commands (char *prog_name_p)
 {
-  cli_help (prog_name_p, NULL, main_opts);
+  cli_help (prog_name_p, ((void*)0), main_opts);
 
   printf ("\nAvailable commands:\n"
           "  generate\n"

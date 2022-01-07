@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct snd_ac97 {int dummy; } ;
 
-/* Variables and functions */
- int patch_build_controls (struct snd_ac97*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  snd_ac97_ad198x_spdif_source ; 
+
+ int patch_build_controls (struct snd_ac97*,int *,int) ;
+ int snd_ac97_ad198x_spdif_source ;
 
 __attribute__((used)) static int patch_ad198x_post_spdif(struct snd_ac97 * ac97)
 {
- 	return patch_build_controls(ac97, &snd_ac97_ad198x_spdif_source, 1);
+  return patch_build_controls(ac97, &snd_ac97_ad198x_spdif_source, 1);
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum attr_type { ____Placeholder_attr_type } attr_type ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef enum attr_type { ____Placeholder_attr_type } attr_type ;
 struct TYPE_5__ {scalar_t__ ival; } ;
 struct TYPE_6__ {int type; TYPE_1__ u; } ;
-typedef  TYPE_2__ attr_t ;
+typedef TYPE_2__ attr_t ;
 
-/* Variables and functions */
- TYPE_2__* xmalloc (int) ; 
+
+ TYPE_2__* xmalloc (int) ;
 
 __attribute__((used)) static attr_t *make_attr(enum attr_type type)
 {

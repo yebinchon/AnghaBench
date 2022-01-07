@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char* pcap_payloads_filename; } ;
 struct Masscan {TYPE_1__ payloads; scalar_t__ echo; scalar_t__ echo_all; } ;
 
-/* Variables and functions */
- int CONF_OK ; 
- int /*<<< orphan*/  UNUSEDPARM (char const*) ; 
- int /*<<< orphan*/  fprintf (scalar_t__,char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* strdup (char const*) ; 
+
+ int CONF_OK ;
+ int UNUSEDPARM (char const*) ;
+ int fprintf (scalar_t__,char*,char*) ;
+ int free (char*) ;
+ char* strdup (char const*) ;
 
 __attribute__((used)) static int SET_pcap_payloads(struct Masscan *masscan, const char *name, const char *value)
 {
@@ -29,12 +29,12 @@ __attribute__((used)) static int SET_pcap_payloads(struct Masscan *masscan, cons
             fprintf(masscan->echo, "pcap-payloads = %s\n", masscan->payloads.pcap_payloads_filename);
         return 0;
     }
-    
+
     if (masscan->payloads.pcap_payloads_filename)
         free(masscan->payloads.pcap_payloads_filename);
     masscan->payloads.pcap_payloads_filename = strdup(value);
-    
-    /* file will be loaded in "masscan_load_database_files()" */
-    
+
+
+
     return CONF_OK;
 }

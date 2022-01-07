@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_8__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uuid ;
-typedef  int uint8_t ;
-typedef  int int64_t ;
-struct TYPE_13__ {int nb_streams; int /*<<< orphan*/  metadata; TYPE_4__** streams; } ;
+
+
+typedef struct TYPE_13__ TYPE_8__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uuid ;
+typedef int uint8_t ;
+typedef int int64_t ;
+struct TYPE_13__ {int nb_streams; int metadata; TYPE_4__** streams; } ;
 struct TYPE_12__ {TYPE_1__* priv_data; } ;
 struct TYPE_11__ {int size; } ;
 struct TYPE_10__ {int bitrates_count; int* bitrates; TYPE_8__* fc; scalar_t__ export_xmp; } ;
-struct TYPE_9__ {int /*<<< orphan*/  spherical; } ;
-typedef  TYPE_1__ MOVStreamContext ;
-typedef  TYPE_2__ MOVContext ;
-typedef  TYPE_3__ MOVAtom ;
-typedef  TYPE_4__ AVStream ;
-typedef  int /*<<< orphan*/  AVIOContext ;
+struct TYPE_9__ {int spherical; } ;
+typedef TYPE_1__ MOVStreamContext ;
+typedef TYPE_2__ MOVContext ;
+typedef TYPE_3__ MOVAtom ;
+typedef TYPE_4__ AVStream ;
+typedef int AVIOContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFMIN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INT_MAX ; 
- int /*<<< orphan*/  SIZE_MAX ; 
- int /*<<< orphan*/  av_dict_set (int /*<<< orphan*/ *,char*,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_free (int*) ; 
- int /*<<< orphan*/  av_log (TYPE_8__*,int /*<<< orphan*/ ,char*) ; 
- int* av_mallocz (size_t) ; 
- int* av_realloc_f (int*,int,int) ; 
- int* av_stristr (int*,char*) ; 
- int avio_read (int /*<<< orphan*/ *,int*,size_t) ; 
- int avio_skip (int /*<<< orphan*/ *,size_t) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  memcmp (int*,int const*,int) ; 
- int mov_parse_uuid_spherical (TYPE_1__*,int /*<<< orphan*/ *,size_t) ; 
- int strtol (int*,char**,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_WARNING ;
+ int ENOMEM ;
+ int FFMIN (int ,int ) ;
+ int INT_MAX ;
+ int SIZE_MAX ;
+ int av_dict_set (int *,char*,int*,int ) ;
+ int av_free (int*) ;
+ int av_log (TYPE_8__*,int ,char*) ;
+ int* av_mallocz (size_t) ;
+ int* av_realloc_f (int*,int,int) ;
+ int* av_stristr (int*,char*) ;
+ int avio_read (int *,int*,size_t) ;
+ int avio_skip (int *,size_t) ;
+ scalar_t__ errno ;
+ int memcmp (int*,int const*,int) ;
+ int mov_parse_uuid_spherical (TYPE_1__*,int *,size_t) ;
+ int strtol (int*,char**,int) ;
 
 __attribute__((used)) static int mov_read_uuid(MOVContext *c, AVIOContext *pb, MOVAtom atom)
 {
@@ -91,7 +91,7 @@ __attribute__((used)) static int mov_read_uuid(MOVContext *c, AVIOContext *pb, M
         if (len < 4) {
             return AVERROR_INVALIDDATA;
         }
-        ret = avio_skip(pb, 4); // zeroes
+        ret = avio_skip(pb, 4);
         len -= 4;
 
         buffer = av_mallocz(len + 1);
@@ -147,7 +147,7 @@ __attribute__((used)) static int mov_read_uuid(MOVContext *c, AVIOContext *pb, M
             av_dict_set(&c->fc->metadata, "xmp", buffer, 0);
             av_free(buffer);
         } else {
-            // skip all uuid atom, which makes it fast for long uuid-xmp file
+
             ret = avio_skip(pb, len);
             if (ret < 0)
                 return ret;

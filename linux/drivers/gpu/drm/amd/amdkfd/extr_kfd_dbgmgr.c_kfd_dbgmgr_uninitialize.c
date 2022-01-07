@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct kfd_dbgmgr {int /*<<< orphan*/ * dev; scalar_t__ pasid; int /*<<< orphan*/ * dbgdev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
+
+
+
+struct kfd_dbgmgr {int * dev; scalar_t__ pasid; int * dbgdev; } ;
+
+
+ int kfree (int *) ;
 
 __attribute__((used)) static void kfd_dbgmgr_uninitialize(struct kfd_dbgmgr *pmgr)
 {
-	kfree(pmgr->dbgdev);
+ kfree(pmgr->dbgdev);
 
-	pmgr->dbgdev = NULL;
-	pmgr->pasid = 0;
-	pmgr->dev = NULL;
+ pmgr->dbgdev = ((void*)0);
+ pmgr->pasid = 0;
+ pmgr->dev = ((void*)0);
 }

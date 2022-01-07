@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct addrinfo {scalar_t__ ai_family; int /*<<< orphan*/  ai_addrlen; int /*<<< orphan*/  ai_addr; } ;
-typedef  int /*<<< orphan*/  serv_buf ;
-typedef  int /*<<< orphan*/  host_buf ;
 
-/* Variables and functions */
- scalar_t__ AF_INET6 ; 
- int NI_MAXHOST ; 
- int NI_MAXSERV ; 
- int NI_NUMERICHOST ; 
- int NI_NUMERICSERV ; 
- int /*<<< orphan*/  gai_strerror (int) ; 
- int /*<<< orphan*/  get_backlog_size () ; 
- int getnameinfo (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,char*,int,int) ; 
- scalar_t__ listen (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lwan_status_critical (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lwan_status_critical_perror (char*) ; 
- int /*<<< orphan*/  lwan_status_info (char*,char*,char*) ; 
- int set_socket_flags (int) ; 
+
+
+
+struct addrinfo {scalar_t__ ai_family; int ai_addrlen; int ai_addr; } ;
+typedef int serv_buf ;
+typedef int host_buf ;
+
+
+ scalar_t__ AF_INET6 ;
+ int NI_MAXHOST ;
+ int NI_MAXSERV ;
+ int NI_NUMERICHOST ;
+ int NI_NUMERICSERV ;
+ int gai_strerror (int) ;
+ int get_backlog_size () ;
+ int getnameinfo (int ,int ,char*,int,char*,int,int) ;
+ scalar_t__ listen (int,int ) ;
+ int lwan_status_critical (char*,int ) ;
+ int lwan_status_critical_perror (char*) ;
+ int lwan_status_info (char*,char*,char*) ;
+ int set_socket_flags (int) ;
 
 __attribute__((used)) static int listen_addrinfo(int fd, const struct addrinfo *addr)
 {

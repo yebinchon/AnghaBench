@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ ptr; } ;
 struct epoll_event {int events; TYPE_1__ data; } ;
-typedef  int /*<<< orphan*/  Server ;
-typedef  int /*<<< orphan*/  Fifo ;
+typedef int Server ;
+typedef int Fifo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EIO ; 
- int EPOLLIN ; 
- int SYNTHETIC_ERRNO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fifo_free (int /*<<< orphan*/ *) ; 
- int fifo_process (int /*<<< orphan*/ *) ; 
- int log_info_errno (int,char*) ; 
+
+ int EIO ;
+ int EPOLLIN ;
+ int SYNTHETIC_ERRNO (int ) ;
+ int assert (int *) ;
+ int fifo_free (int *) ;
+ int fifo_process (int *) ;
+ int log_info_errno (int,char*) ;
 
 __attribute__((used)) static int process_event(Server *s, struct epoll_event *ev) {
         int r;

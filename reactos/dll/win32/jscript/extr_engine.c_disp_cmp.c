@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IObjectIdentity ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int FALSE ; 
- int /*<<< orphan*/  IDispatch_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IID_IObjectIdentity ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  IObjectIdentity_IsEqualObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IObjectIdentity_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int TRUE ; 
+
+
+
+typedef int IUnknown ;
+typedef int IObjectIdentity ;
+typedef int IDispatch ;
+typedef int HRESULT ;
+typedef int BOOL ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int IDispatch_QueryInterface (int *,int *,void**) ;
+ int IID_IObjectIdentity ;
+ int IID_IUnknown ;
+ int IObjectIdentity_IsEqualObject (int *,int *) ;
+ int IObjectIdentity_Release (int *) ;
+ int IUnknown_QueryInterface (int *,int *,void**) ;
+ int IUnknown_Release (int *) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int TRUE ;
 
 __attribute__((used)) static HRESULT disp_cmp(IDispatch *disp1, IDispatch *disp2, BOOL *ret)
 {

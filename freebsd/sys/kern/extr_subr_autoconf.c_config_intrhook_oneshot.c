@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {struct oneshot_config_hook* ich_arg; int /*<<< orphan*/  ich_func; } ;
-struct oneshot_config_hook {TYPE_1__ och_hook; void* och_arg; int /*<<< orphan*/  och_func; } ;
-typedef  int /*<<< orphan*/  ich_func_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_DEVBUF ; 
- int /*<<< orphan*/  M_WAITOK ; 
- int /*<<< orphan*/  config_intrhook_establish (TYPE_1__*) ; 
- int /*<<< orphan*/  config_intrhook_oneshot_func ; 
- struct oneshot_config_hook* malloc (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {struct oneshot_config_hook* ich_arg; int ich_func; } ;
+struct oneshot_config_hook {TYPE_1__ och_hook; void* och_arg; int och_func; } ;
+typedef int ich_func_t ;
+
+
+ int M_DEVBUF ;
+ int M_WAITOK ;
+ int config_intrhook_establish (TYPE_1__*) ;
+ int config_intrhook_oneshot_func ;
+ struct oneshot_config_hook* malloc (int,int ,int ) ;
 
 void
 config_intrhook_oneshot(ich_func_t func, void *arg)
 {
-	struct oneshot_config_hook *ohook;
+ struct oneshot_config_hook *ohook;
 
-	ohook = malloc(sizeof(*ohook), M_DEVBUF, M_WAITOK);
-	ohook->och_func = func;
-	ohook->och_arg  = arg;
-	ohook->och_hook.ich_func = config_intrhook_oneshot_func;
-	ohook->och_hook.ich_arg  = ohook;
-	config_intrhook_establish(&ohook->och_hook);
+ ohook = malloc(sizeof(*ohook), M_DEVBUF, M_WAITOK);
+ ohook->och_func = func;
+ ohook->och_arg = arg;
+ ohook->och_hook.ich_func = config_intrhook_oneshot_func;
+ ohook->och_hook.ich_arg = ohook;
+ config_intrhook_establish(&ohook->och_hook);
 }

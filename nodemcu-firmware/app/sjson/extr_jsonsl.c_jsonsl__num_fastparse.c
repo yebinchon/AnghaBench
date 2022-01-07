@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct jsonsl_state_st {int nelem; } ;
-typedef  int jsonsl_uchar_t ;
-typedef  TYPE_1__* jsonsl_t ;
-struct TYPE_3__ {int /*<<< orphan*/  pos; } ;
+typedef int jsonsl_uchar_t ;
+typedef TYPE_1__* jsonsl_t ;
+struct TYPE_3__ {int pos; } ;
 
-/* Variables and functions */
- int FASTPARSE_BREAK ; 
- int FASTPARSE_EXHAUSTED ; 
- int /*<<< orphan*/  INCR_METRIC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NUMBER_FASTPATH ; 
- int /*<<< orphan*/  TOTAL ; 
- scalar_t__ isdigit (int) ; 
+
+ int FASTPARSE_BREAK ;
+ int FASTPARSE_EXHAUSTED ;
+ int INCR_METRIC (int ) ;
+ int NUMBER_FASTPATH ;
+ int TOTAL ;
+ scalar_t__ isdigit (int) ;
 
 __attribute__((used)) static int
 jsonsl__num_fastparse(jsonsl_t jsn,

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int p; int i; int v; } ;
-typedef  TYPE_1__ vgareg ;
+typedef TYPE_1__ vgareg ;
 
-/* Variables and functions */
- int /*<<< orphan*/  inportb (int) ; 
- int /*<<< orphan*/  outportb (int,int) ; 
- int /*<<< orphan*/  outportw (int,int) ; 
+
+ int inportb (int) ;
+ int outportb (int,int) ;
+ int outportw (int,int) ;
 
 __attribute__((used)) static void VGAPortSet(vgareg R)
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static void VGAPortSet(vgareg R)
                 break;
     case 0x3C2:
     case 0x3C3:
-    default:    outportb(p, v);
+    default: outportb(p, v);
                 break;
     case 0x3C4: if(i==1)
                 {

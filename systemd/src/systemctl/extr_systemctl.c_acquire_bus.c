@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus ;
-typedef  size_t BusFocus ;
 
-/* Variables and functions */
- size_t BUS_FULL ; 
- size_t BUS_MANAGER ; 
- scalar_t__ BUS_TRANSPORT_LOCAL ; 
- scalar_t__ UNIT_FILE_SYSTEM ; 
- size_t _BUS_FOCUS_MAX ; 
- int /*<<< orphan*/  arg_ask_password ; 
- int /*<<< orphan*/  arg_host ; 
- scalar_t__ arg_scope ; 
- scalar_t__ arg_transport ; 
- int /*<<< orphan*/  assert (int) ; 
- int bus_connect_transport (scalar_t__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ **) ; 
- int bus_connect_transport_systemd (scalar_t__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ ** buses ; 
- scalar_t__ getenv_bool (char*) ; 
- int log_error_errno (int,char*) ; 
- int /*<<< orphan*/  sd_bus_set_allow_interactive_authorization (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int sd_bus ;
+typedef size_t BusFocus ;
+
+
+ size_t BUS_FULL ;
+ size_t BUS_MANAGER ;
+ scalar_t__ BUS_TRANSPORT_LOCAL ;
+ scalar_t__ UNIT_FILE_SYSTEM ;
+ size_t _BUS_FOCUS_MAX ;
+ int arg_ask_password ;
+ int arg_host ;
+ scalar_t__ arg_scope ;
+ scalar_t__ arg_transport ;
+ int assert (int) ;
+ int bus_connect_transport (scalar_t__,int ,int,int **) ;
+ int bus_connect_transport_systemd (scalar_t__,int ,int,int **) ;
+ int ** buses ;
+ scalar_t__ getenv_bool (char*) ;
+ int log_error_errno (int,char*) ;
+ int sd_bus_set_allow_interactive_authorization (int *,int ) ;
 
 __attribute__((used)) static int acquire_bus(BusFocus focus, sd_bus **ret) {
         int r;
@@ -37,7 +37,7 @@ __attribute__((used)) static int acquire_bus(BusFocus focus, sd_bus **ret) {
         assert(focus < _BUS_FOCUS_MAX);
         assert(ret);
 
-        /* We only go directly to the manager, if we are using a local transport */
+
         if (arg_transport != BUS_TRANSPORT_LOCAL)
                 focus = BUS_FULL;
 

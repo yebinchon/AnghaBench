@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct fd {int /*<<< orphan*/  lock; TYPE_1__* ops; } ;
-typedef  int off_t_ ;
-typedef  int /*<<< orphan*/  fd_t ;
-typedef  int dword_t ;
-typedef  int /*<<< orphan*/  addr_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct fd {int lock; TYPE_1__* ops; } ;
+typedef int off_t_ ;
+typedef int fd_t ;
+typedef int dword_t ;
+typedef int addr_t ;
 struct TYPE_2__ {int (* lseek ) (struct fd*,int,int) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STRACE (char*,int,...) ; 
- int _EBADF ; 
- int _EFAULT ; 
- int _ESPIPE ; 
- struct fd* f_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lock (int /*<<< orphan*/ *) ; 
- int stub1 (struct fd*,int,int) ; 
- int /*<<< orphan*/  unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ user_put (int /*<<< orphan*/ ,int) ; 
+
+ int STRACE (char*,int,...) ;
+ int _EBADF ;
+ int _EFAULT ;
+ int _ESPIPE ;
+ struct fd* f_get (int ) ;
+ int lock (int *) ;
+ int stub1 (struct fd*,int,int) ;
+ int unlock (int *) ;
+ scalar_t__ user_put (int ,int) ;
 
 dword_t sys__llseek(fd_t f, dword_t off_high, dword_t off_low, addr_t res_addr, dword_t whence) {
     struct fd *fd = f_get(f);
-    if (fd == NULL)
+    if (fd == ((void*)0))
         return _EBADF;
     if (!fd->ops->lseek)
         return _ESPIPE;

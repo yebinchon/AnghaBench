@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  do_free; int /*<<< orphan*/ * name; int /*<<< orphan*/ * vtable; } ;
-typedef  TYPE_1__ exception ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  MSVCRT_exception_vtable ; 
- int /*<<< orphan*/ * MSVCRT_malloc (size_t) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,char const*,size_t) ; 
- int strlen (char const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int do_free; int * name; int * vtable; } ;
+typedef TYPE_1__ exception ;
+
+
+ int FALSE ;
+ int MSVCRT_exception_vtable ;
+ int * MSVCRT_malloc (size_t) ;
+ int TRUE ;
+ int memcpy (int *,char const*,size_t) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static void EXCEPTION_ctor(exception *_this, const char** name)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static void EXCEPTION_ctor(exception *_this, const char** 
   }
   else
   {
-    _this->name = NULL;
+    _this->name = ((void*)0);
     _this->do_free = FALSE;
   }
 }

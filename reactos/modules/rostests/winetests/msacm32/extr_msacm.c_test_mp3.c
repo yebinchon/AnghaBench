@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int nSamplesPerSec; int wBitsPerSample; int nChannels; int nBlockAlign; int nAvgBytesPerSec; int /*<<< orphan*/  wFormatTag; scalar_t__ cbSize; } ;
-typedef  TYPE_2__ WAVEFORMATEX ;
-struct TYPE_6__ {int nSamplesPerSec; int nChannels; int nBlockAlign; int nAvgBytesPerSec; scalar_t__ cbSize; scalar_t__ wBitsPerSample; int /*<<< orphan*/  wFormatTag; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int nSamplesPerSec; int wBitsPerSample; int nChannels; int nBlockAlign; int nAvgBytesPerSec; int wFormatTag; scalar_t__ cbSize; } ;
+typedef TYPE_2__ WAVEFORMATEX ;
+struct TYPE_6__ {int nSamplesPerSec; int nChannels; int nBlockAlign; int nAvgBytesPerSec; scalar_t__ cbSize; scalar_t__ wBitsPerSample; int wFormatTag; } ;
 struct TYPE_8__ {int nBlockSize; int nFramesPerBlock; TYPE_1__ wfx; void* wID; scalar_t__ nCodecDelay; scalar_t__ fdwFlags; } ;
-typedef  TYPE_3__ MPEGLAYER3WAVEFORMAT ;
-typedef  scalar_t__ MMRESULT ;
-typedef  int /*<<< orphan*/  HACMSTREAM ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef TYPE_3__ MPEGLAYER3WAVEFORMAT ;
+typedef scalar_t__ MMRESULT ;
+typedef int HACMSTREAM ;
+typedef int DWORD ;
 
-/* Variables and functions */
- scalar_t__ ACMERR_NOTPOSSIBLE ; 
- int /*<<< orphan*/  ACM_STREAMSIZEF_SOURCE ; 
- scalar_t__ MMSYSERR_NOERROR ; 
- void* MPEGLAYER3_ID_MPEG ; 
- scalar_t__ MPEGLAYER3_WFX_EXTRA_BYTES ; 
- int /*<<< orphan*/  WAVE_FORMAT_MPEGLAYER3 ; 
- int /*<<< orphan*/  WAVE_FORMAT_PCM ; 
- scalar_t__ acmStreamClose (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ acmStreamOpen (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ acmStreamSize (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
+
+ scalar_t__ ACMERR_NOTPOSSIBLE ;
+ int ACM_STREAMSIZEF_SOURCE ;
+ scalar_t__ MMSYSERR_NOERROR ;
+ void* MPEGLAYER3_ID_MPEG ;
+ scalar_t__ MPEGLAYER3_WFX_EXTRA_BYTES ;
+ int WAVE_FORMAT_MPEGLAYER3 ;
+ int WAVE_FORMAT_PCM ;
+ scalar_t__ acmStreamClose (int ,int ) ;
+ scalar_t__ acmStreamOpen (int *,int *,TYPE_2__*,TYPE_2__*,int *,int ,int ,int ) ;
+ scalar_t__ acmStreamSize (int ,int,int *,int ) ;
+ scalar_t__ broken (int) ;
+ int ok (int,char*,scalar_t__) ;
 
 __attribute__((used)) static void test_mp3(void)
 {
@@ -67,22 +67,22 @@ __attribute__((used)) static void test_mp3(void)
 
     src.wfx.cbSize = 0;
 
-    mr = acmStreamOpen(&has, NULL, (WAVEFORMATEX*)&src, &dst, NULL, 0, 0, 0);
+    mr = acmStreamOpen(&has, ((void*)0), (WAVEFORMATEX*)&src, &dst, ((void*)0), 0, 0, 0);
     ok(mr == ACMERR_NOTPOSSIBLE, "expected error ACMERR_NOTPOSSIBLE, got 0x%x\n", mr);
     if (mr == MMSYSERR_NOERROR) acmStreamClose(has, 0);
 
     src.wfx.cbSize = MPEGLAYER3_WFX_EXTRA_BYTES;
     src.wID = 0;
 
-    mr = acmStreamOpen(&has, NULL, (WAVEFORMATEX*)&src, &dst, NULL, 0, 0, 0);
+    mr = acmStreamOpen(&has, ((void*)0), (WAVEFORMATEX*)&src, &dst, ((void*)0), 0, 0, 0);
     ok(mr == ACMERR_NOTPOSSIBLE, "expected error ACMERR_NOTPOSSIBLE, got 0x%x\n", mr);
     if (mr == MMSYSERR_NOERROR) acmStreamClose(has, 0);
 
     src.wID = MPEGLAYER3_ID_MPEG;
     src.nBlockSize = 0;
 
-    mr = acmStreamOpen(&has, NULL, (WAVEFORMATEX*)&src, &dst, NULL, 0, 0, 0);
-    ok(mr == MMSYSERR_NOERROR || broken(mr == ACMERR_NOTPOSSIBLE) /* Win 2008 */,
+    mr = acmStreamOpen(&has, ((void*)0), (WAVEFORMATEX*)&src, &dst, ((void*)0), 0, 0, 0);
+    ok(mr == MMSYSERR_NOERROR || broken(mr == ACMERR_NOTPOSSIBLE) ,
        "failed with error 0x%x\n", mr);
     if (mr == MMSYSERR_NOERROR)
     {
@@ -92,13 +92,13 @@ __attribute__((used)) static void test_mp3(void)
     src.nBlockSize = 576;
     src.wfx.nAvgBytesPerSec = 0;
 
-    mr = acmStreamOpen(&has, NULL, (WAVEFORMATEX*)&src, &dst, NULL, 0, 0, 0);
-    ok(mr == MMSYSERR_NOERROR || broken(mr == ACMERR_NOTPOSSIBLE) /* Win 2008 */,
+    mr = acmStreamOpen(&has, ((void*)0), (WAVEFORMATEX*)&src, &dst, ((void*)0), 0, 0, 0);
+    ok(mr == MMSYSERR_NOERROR || broken(mr == ACMERR_NOTPOSSIBLE) ,
        "failed with error 0x%x\n", mr);
     if (mr == MMSYSERR_NOERROR)
     {
-       /* causes a division by zero exception in XP, Vista,
-          but throws ACMERR_NOTPOSSIBLE on others */
+
+
        if (0) acmStreamSize(has, 4000, &output, ACM_STREAMSIZEF_SOURCE);
        mr = acmStreamClose(has, 0);
        ok(mr == MMSYSERR_NOERROR, "failed with error 0x%x\n", mr);
@@ -106,8 +106,8 @@ __attribute__((used)) static void test_mp3(void)
 
     src.wfx.nAvgBytesPerSec = 2000;
 
-    mr = acmStreamOpen(&has, NULL, (WAVEFORMATEX*)&src, &dst, NULL, 0, 0, 0);
-    ok(mr == MMSYSERR_NOERROR || broken(mr == ACMERR_NOTPOSSIBLE) /* Win 2008 */,
+    mr = acmStreamOpen(&has, ((void*)0), (WAVEFORMATEX*)&src, &dst, ((void*)0), 0, 0, 0);
+    ok(mr == MMSYSERR_NOERROR || broken(mr == ACMERR_NOTPOSSIBLE) ,
        "failed with error 0x%x\n", mr);
     if (mr == MMSYSERR_NOERROR)
     {

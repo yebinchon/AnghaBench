@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int (* openssl_ctx_run_once_fn ) (TYPE_1__*) ;
-struct TYPE_7__ {int* run_once_done; int* run_once_ret; int /*<<< orphan*/  oncelock; } ;
-typedef  TYPE_1__ OPENSSL_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPTO_THREAD_read_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CRYPTO_THREAD_unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CRYPTO_THREAD_write_lock (int /*<<< orphan*/ ) ; 
- TYPE_1__* openssl_ctx_get_concrete (TYPE_1__*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int (* openssl_ctx_run_once_fn ) (TYPE_1__*) ;
+struct TYPE_7__ {int* run_once_done; int* run_once_ret; int oncelock; } ;
+typedef TYPE_1__ OPENSSL_CTX ;
+
+
+ int CRYPTO_THREAD_read_lock (int ) ;
+ int CRYPTO_THREAD_unlock (int ) ;
+ int CRYPTO_THREAD_write_lock (int ) ;
+ TYPE_1__* openssl_ctx_get_concrete (TYPE_1__*) ;
 
 int openssl_ctx_run_once(OPENSSL_CTX *ctx, unsigned int idx,
                          openssl_ctx_run_once_fn run_once_fn)
@@ -27,7 +27,7 @@ int openssl_ctx_run_once(OPENSSL_CTX *ctx, unsigned int idx,
     int done = 0, ret = 0;
 
     ctx = openssl_ctx_get_concrete(ctx);
-    if (ctx == NULL)
+    if (ctx == ((void*)0))
         return 0;
 
     CRYPTO_THREAD_read_lock(ctx->oncelock);

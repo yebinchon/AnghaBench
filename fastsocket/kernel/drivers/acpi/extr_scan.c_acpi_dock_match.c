@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct acpi_device {int /*<<< orphan*/  handle; } ;
-typedef  int /*<<< orphan*/  acpi_handle ;
 
-/* Variables and functions */
- int acpi_get_handle (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
+
+
+
+struct acpi_device {int handle; } ;
+typedef int acpi_handle ;
+
+
+ int acpi_get_handle (int ,char*,int *) ;
 
 __attribute__((used)) static int acpi_dock_match(struct acpi_device *device)
 {
-	acpi_handle tmp;
-	return acpi_get_handle(device->handle, "_DCK", &tmp);
+ acpi_handle tmp;
+ return acpi_get_handle(device->handle, "_DCK", &tmp);
 }

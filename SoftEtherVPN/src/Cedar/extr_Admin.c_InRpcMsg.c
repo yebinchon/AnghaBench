@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-struct TYPE_4__ {int /*<<< orphan*/  Msg; int /*<<< orphan*/  HubName; } ;
-typedef  TYPE_1__ RPC_MSG ;
-typedef  int /*<<< orphan*/  PACK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CopyUtfToUni (char*) ; 
- int /*<<< orphan*/  Free (char*) ; 
- int /*<<< orphan*/  PackGetData (int /*<<< orphan*/ *,char*,char*) ; 
- scalar_t__ PackGetDataSize (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  PackGetStr (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  Zero (TYPE_1__*,int) ; 
- char* ZeroMalloc (scalar_t__) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+struct TYPE_4__ {int Msg; int HubName; } ;
+typedef TYPE_1__ RPC_MSG ;
+typedef int PACK ;
+
+
+ int CopyUtfToUni (char*) ;
+ int Free (char*) ;
+ int PackGetData (int *,char*,char*) ;
+ scalar_t__ PackGetDataSize (int *,char*) ;
+ int PackGetStr (int *,char*,int ,int) ;
+ int Zero (TYPE_1__*,int) ;
+ char* ZeroMalloc (scalar_t__) ;
 
 void InRpcMsg(RPC_MSG *t, PACK *p)
 {
-	UINT size;
-	char *utf8;
-	// Validate arguments
-	if (t == NULL || p == NULL)
-	{
-		return;
-	}
+ UINT size;
+ char *utf8;
 
-	Zero(t, sizeof(RPC_MSG));
+ if (t == ((void*)0) || p == ((void*)0))
+ {
+  return;
+ }
 
-	PackGetStr(p, "HubName", t->HubName, sizeof(t->HubName));
-	size = PackGetDataSize(p, "Msg");
-	utf8 = ZeroMalloc(size + 8);
-	PackGetData(p, "Msg", utf8);
-	t->Msg = CopyUtfToUni(utf8);
-	Free(utf8);
+ Zero(t, sizeof(RPC_MSG));
+
+ PackGetStr(p, "HubName", t->HubName, sizeof(t->HubName));
+ size = PackGetDataSize(p, "Msg");
+ utf8 = ZeroMalloc(size + 8);
+ PackGetData(p, "Msg", utf8);
+ t->Msg = CopyUtfToUni(utf8);
+ Free(utf8);
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int mask; } ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  TYPE_1__ HDITEMA ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef TYPE_1__ HDITEMA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HDM_DELETEITEM ; 
- int /*<<< orphan*/  HDM_GETITEMA ; 
- int /*<<< orphan*/  HDM_INSERTITEMA ; 
- int SendMessageA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_1__*,int) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
+
+ int HDM_DELETEITEM ;
+ int HDM_GETITEMA ;
+ int HDM_INSERTITEMA ;
+ int SendMessageA (int ,int ,int ,int ) ;
+ int ZeroMemory (TYPE_1__*,int) ;
+ int ok (int,char*) ;
 
 __attribute__((used)) static void addReadDelItem(HWND hdex, HDITEMA *phdiCreate, int maskRead, HDITEMA *phdiRead)
 {

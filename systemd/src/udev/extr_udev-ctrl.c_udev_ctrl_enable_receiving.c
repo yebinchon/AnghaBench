@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  sa; int /*<<< orphan*/  un; } ;
-struct udev_ctrl {int bound; int cleanup_socket; int /*<<< orphan*/  sock; int /*<<< orphan*/  addrlen; TYPE_1__ saddr; } ;
 
-/* Variables and functions */
- scalar_t__ EADDRINUSE ; 
- int /*<<< orphan*/  assert (struct udev_ctrl*) ; 
- int bind (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ errno ; 
- scalar_t__ listen (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int log_error_errno (scalar_t__,char*) ; 
- int /*<<< orphan*/  sockaddr_un_unlink (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int sa; int un; } ;
+struct udev_ctrl {int bound; int cleanup_socket; int sock; int addrlen; TYPE_1__ saddr; } ;
+
+
+ scalar_t__ EADDRINUSE ;
+ int assert (struct udev_ctrl*) ;
+ int bind (int ,int *,int ) ;
+ scalar_t__ errno ;
+ scalar_t__ listen (int ,int ) ;
+ int log_error_errno (scalar_t__,char*) ;
+ int sockaddr_un_unlink (int *) ;
 
 int udev_ctrl_enable_receiving(struct udev_ctrl *uctrl) {
         int r;
@@ -43,8 +43,8 @@ int udev_ctrl_enable_receiving(struct udev_ctrl *uctrl) {
         if (listen(uctrl->sock, 0) < 0)
                 return log_error_errno(errno, "Failed to listen udev control socket: %m");
 
-        uctrl->bound = true;
-        uctrl->cleanup_socket = true;
+        uctrl->bound = 1;
+        uctrl->cleanup_socket = 1;
 
         return 0;
 }

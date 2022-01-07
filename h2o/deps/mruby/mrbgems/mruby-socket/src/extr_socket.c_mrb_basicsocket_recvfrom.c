@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr_storage {int dummy; } ;
 struct sockaddr {int dummy; } ;
-typedef  int ssize_t ;
-typedef  int socklen_t ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int mrb_int ;
-typedef  int /*<<< orphan*/  fsize_t ;
+typedef int ssize_t ;
+typedef int socklen_t ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef int mrb_int ;
+typedef int fsize_t ;
 
-/* Variables and functions */
- scalar_t__ RSTRING_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_ary_new_capa (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mrb_ary_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int*,int*) ; 
- int /*<<< orphan*/  mrb_str_buf_new (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mrb_str_resize (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mrb_sys_fail (int /*<<< orphan*/ *,char*) ; 
- int recvfrom (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int,struct sockaddr*,int*) ; 
- int /*<<< orphan*/  socket_fd (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ RSTRING_PTR (int ) ;
+ int mrb_ary_new_capa (int *,int) ;
+ int mrb_ary_push (int *,int ,int ) ;
+ int mrb_get_args (int *,char*,int*,int*) ;
+ int mrb_str_buf_new (int *,int) ;
+ int mrb_str_resize (int *,int ,int) ;
+ int mrb_sys_fail (int *,char*) ;
+ int recvfrom (int ,scalar_t__,int ,int,struct sockaddr*,int*) ;
+ int socket_fd (int *,int ) ;
 
 __attribute__((used)) static mrb_value
 mrb_basicsocket_recvfrom(mrb_state *mrb, mrb_value self)

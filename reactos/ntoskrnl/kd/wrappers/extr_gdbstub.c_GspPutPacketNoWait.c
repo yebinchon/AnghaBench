@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int* PCHAR ;
-typedef  size_t LONG ;
-typedef  int CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GdbPutChar (char) ; 
- char* HexChars ; 
+
+
+
+typedef int VOID ;
+typedef int* PCHAR ;
+typedef size_t LONG ;
+typedef int CHAR ;
+
+
+ int GdbPutChar (char) ;
+ char* HexChars ;
 
 VOID
 GspPutPacketNoWait(PCHAR Buffer)
@@ -26,7 +26,7 @@ GspPutPacketNoWait(PCHAR Buffer)
     LONG Count;
     CHAR ch;
 
-    /* $<packet info>#<Checksum>. */
+
     GdbPutChar('$');
     Checksum = 0;
     Count = 0;

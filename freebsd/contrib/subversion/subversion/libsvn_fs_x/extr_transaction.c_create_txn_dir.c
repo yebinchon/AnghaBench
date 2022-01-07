@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_fs_x__txn_id_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_3__ {int /*<<< orphan*/  txn_number; int /*<<< orphan*/ * fs; } ;
-typedef  TYPE_1__ get_and_increment_txn_key_baton_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  get_and_increment_txn_key_body ; 
- char* svn_fs_x__txn_name (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_x__with_txn_current_lock (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_fs_x__txn_id_t ;
+typedef int svn_fs_t ;
+typedef int svn_error_t ;
+struct TYPE_3__ {int txn_number; int * fs; } ;
+typedef TYPE_1__ get_and_increment_txn_key_baton_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int get_and_increment_txn_key_body ;
+ char* svn_fs_x__txn_name (int ,int *) ;
+ int svn_fs_x__with_txn_current_lock (int *,int ,TYPE_1__*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 create_txn_dir(const char **id_p,
@@ -34,10 +34,10 @@ create_txn_dir(const char **id_p,
 {
   get_and_increment_txn_key_baton_t cb;
 
-  /* Get the current transaction sequence value, which is a base-36
-    number, from the txn-current file, and write an
-    incremented value back out to the file.  Place the revision
-    number the transaction is based off into the transaction id. */
+
+
+
+
   cb.fs = fs;
   SVN_ERR(svn_fs_x__with_txn_current_lock(fs,
                                           get_and_increment_txn_key_body,

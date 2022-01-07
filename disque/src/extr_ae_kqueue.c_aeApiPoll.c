@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct timeval {int tv_usec; int /*<<< orphan*/  tv_sec; } ;
-struct timespec {int tv_nsec; int /*<<< orphan*/  tv_sec; } ;
-struct kevent {scalar_t__ filter; int /*<<< orphan*/  ident; } ;
-struct TYPE_6__ {TYPE_1__* fired; int /*<<< orphan*/  setsize; TYPE_3__* apidata; } ;
-typedef  TYPE_2__ aeEventLoop ;
-struct TYPE_7__ {struct kevent* events; int /*<<< orphan*/  kqfd; } ;
-typedef  TYPE_3__ aeApiState ;
-struct TYPE_5__ {int mask; int /*<<< orphan*/  fd; } ;
 
-/* Variables and functions */
- int AE_READABLE ; 
- int AE_WRITABLE ; 
- scalar_t__ EVFILT_READ ; 
- scalar_t__ EVFILT_WRITE ; 
- int kevent (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct kevent*,int /*<<< orphan*/ ,struct timespec*) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct timeval {int tv_usec; int tv_sec; } ;
+struct timespec {int tv_nsec; int tv_sec; } ;
+struct kevent {scalar_t__ filter; int ident; } ;
+struct TYPE_6__ {TYPE_1__* fired; int setsize; TYPE_3__* apidata; } ;
+typedef TYPE_2__ aeEventLoop ;
+struct TYPE_7__ {struct kevent* events; int kqfd; } ;
+typedef TYPE_3__ aeApiState ;
+struct TYPE_5__ {int mask; int fd; } ;
+
+
+ int AE_READABLE ;
+ int AE_WRITABLE ;
+ scalar_t__ EVFILT_READ ;
+ scalar_t__ EVFILT_WRITE ;
+ int kevent (int ,int *,int ,struct kevent*,int ,struct timespec*) ;
 
 __attribute__((used)) static int aeApiPoll(aeEventLoop *eventLoop, struct timeval *tvp) {
     aeApiState *state = eventLoop->apidata;
     int retval, numevents = 0;
 
-    if (tvp != NULL) {
+    if (tvp != ((void*)0)) {
         struct timespec timeout;
         timeout.tv_sec = tvp->tv_sec;
         timeout.tv_nsec = tvp->tv_usec * 1000;
-        retval = kevent(state->kqfd, NULL, 0, state->events, eventLoop->setsize,
+        retval = kevent(state->kqfd, ((void*)0), 0, state->events, eventLoop->setsize,
                         &timeout);
     } else {
-        retval = kevent(state->kqfd, NULL, 0, state->events, eventLoop->setsize,
-                        NULL);
+        retval = kevent(state->kqfd, ((void*)0), 0, state->events, eventLoop->setsize,
+                        ((void*)0));
     }
 
     if (retval > 0) {

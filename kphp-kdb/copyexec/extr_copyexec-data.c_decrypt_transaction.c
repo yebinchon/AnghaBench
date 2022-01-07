@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {int dummy; } ;
 struct lev_copyexec_aux_transaction_header {int transaction_id; long long binlog_pos; scalar_t__ size; } ;
-struct lev_copyexec_aux_transaction_footer {int /*<<< orphan*/  sha1; } ;
+struct lev_copyexec_aux_transaction_footer {int sha1; } ;
 
-/* Variables and functions */
- int COPYEXEC_ERR_ALIGN ; 
- int COPYEXEC_ERR_DECRYPT ; 
- int COPYEXEC_ERR_PUBKEY_PERMISSIONS ; 
- int COPYEXEC_ERR_SHA1 ; 
- int COPYEXEC_ERR_SIZE ; 
- int COPYEXEC_ERR_STAT ; 
- int PATH_MAX ; 
- int /*<<< orphan*/  SHA1 (void*,int,unsigned char*) ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ check_file_permissions (char*,struct stat*,int) ; 
- int /*<<< orphan*/  free (void*) ; 
- int /*<<< orphan*/  kprintf (char*,...) ; 
- scalar_t__ memcmp (unsigned char*,int /*<<< orphan*/ ,int) ; 
- char* public_key_prefix ; 
- int rsa_decrypt (char*,int,unsigned char*,int,void**,int*,int) ; 
- int snprintf (char*,int,char*,char*,int) ; 
- scalar_t__ stat (char*,struct stat*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,char*) ; 
+
+ int COPYEXEC_ERR_ALIGN ;
+ int COPYEXEC_ERR_DECRYPT ;
+ int COPYEXEC_ERR_PUBKEY_PERMISSIONS ;
+ int COPYEXEC_ERR_SHA1 ;
+ int COPYEXEC_ERR_SIZE ;
+ int COPYEXEC_ERR_STAT ;
+ int PATH_MAX ;
+ int SHA1 (void*,int,unsigned char*) ;
+ int assert (int) ;
+ scalar_t__ check_file_permissions (char*,struct stat*,int) ;
+ int free (void*) ;
+ int kprintf (char*,...) ;
+ scalar_t__ memcmp (unsigned char*,int ,int) ;
+ char* public_key_prefix ;
+ int rsa_decrypt (char*,int,unsigned char*,int,void**,int*,int) ;
+ int snprintf (char*,int,char*,char*,int) ;
+ scalar_t__ stat (char*,struct stat*) ;
+ int vkprintf (int,char*,char*) ;
 
 int decrypt_transaction (unsigned char *input, int ilen, int key_id, long long offset, int transaction_id, unsigned char **output, int *olen) {
-  *output = NULL;
+  *output = ((void*)0);
   *olen = -1;
 
   char public_key_name[PATH_MAX];

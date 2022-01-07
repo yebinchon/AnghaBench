@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {unsigned int prec; int /*<<< orphan*/  mode; } ;
-typedef  TYPE_1__ opj_precision ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {unsigned int prec; int mode; } ;
+typedef TYPE_1__ opj_precision ;
 struct TYPE_7__ {unsigned int nb_precision; TYPE_1__* precision; } ;
-typedef  TYPE_2__ opj_decompress_parameters ;
-typedef  unsigned int OPJ_UINT32 ;
-typedef  int /*<<< orphan*/  OPJ_BOOL ;
+typedef TYPE_2__ opj_decompress_parameters ;
+typedef unsigned int OPJ_UINT32 ;
+typedef int OPJ_BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPJ_FALSE ; 
- int /*<<< orphan*/  OPJ_PREC_MODE_CLIP ; 
- int /*<<< orphan*/  OPJ_PREC_MODE_SCALE ; 
- int /*<<< orphan*/  OPJ_TRUE ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- scalar_t__ malloc (int) ; 
- scalar_t__ realloc (TYPE_1__*,unsigned int) ; 
- int sscanf (char const*,char*,int*,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- char* strchr (char const*,char) ; 
+
+ int OPJ_FALSE ;
+ int OPJ_PREC_MODE_CLIP ;
+ int OPJ_PREC_MODE_SCALE ;
+ int OPJ_TRUE ;
+ int fprintf (int ,char*,...) ;
+ int free (TYPE_1__*) ;
+ scalar_t__ malloc (int) ;
+ scalar_t__ realloc (TYPE_1__*,unsigned int) ;
+ int sscanf (char const*,char*,int*,char*,char*) ;
+ int stderr ;
+ char* strchr (char const*,char) ;
 
 __attribute__((used)) static OPJ_BOOL parse_precision(const char* option,
                                 opj_decompress_parameters* parameters)
@@ -38,10 +38,10 @@ __attribute__((used)) static OPJ_BOOL parse_precision(const char* option,
     const char* l_remaining = option;
     OPJ_BOOL l_result = OPJ_TRUE;
 
-    /* reset */
+
     if (parameters->precision) {
         free(parameters->precision);
-        parameters->precision = NULL;
+        parameters->precision = ((void*)0);
     }
     parameters->nb_precision = 0U;
 
@@ -81,10 +81,10 @@ __attribute__((used)) static OPJ_BOOL parse_precision(const char* option,
                 break;
             }
 
-            if (parameters->precision == NULL) {
-                /* first one */
+            if (parameters->precision == ((void*)0)) {
+
                 parameters->precision = (opj_precision *)malloc(sizeof(opj_precision));
-                if (parameters->precision == NULL) {
+                if (parameters->precision == ((void*)0)) {
                     fprintf(stderr, "Could not allocate memory for precision option\n");
                     l_result = OPJ_FALSE;
                     break;
@@ -101,7 +101,7 @@ __attribute__((used)) static OPJ_BOOL parse_precision(const char* option,
 
                 l_new = (opj_precision *)realloc(parameters->precision,
                                                  l_new_size * sizeof(opj_precision));
-                if (l_new == NULL) {
+                if (l_new == ((void*)0)) {
                     fprintf(stderr, "Could not allocate memory for precision option\n");
                     l_result = OPJ_FALSE;
                     break;
@@ -123,7 +123,7 @@ __attribute__((used)) static OPJ_BOOL parse_precision(const char* option,
             parameters->nb_precision++;
 
             l_remaining = strchr(l_remaining, ',');
-            if (l_remaining == NULL) {
+            if (l_remaining == ((void*)0)) {
                 break;
             }
             l_remaining += 1;

@@ -1,0 +1,414 @@
+; ModuleID = '/home/carl/AnghaBench/linux/net/wireless/extr_sme.c_cfg80211_connect.c'
+source_filename = "/home/carl/AnghaBench/linux/net/wireless/extr_sme.c_cfg80211_connect.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.cfg80211_registered_device = type { %struct.TYPE_11__*, %struct.TYPE_8__ }
+%struct.TYPE_11__ = type { i32 }
+%struct.TYPE_8__ = type { i32, i32 }
+%struct.net_device = type { %struct.wireless_dev* }
+%struct.wireless_dev = type { i64, %struct.TYPE_12__*, %struct.cfg80211_cached_keys*, i32, i32 }
+%struct.TYPE_12__ = type { %struct.TYPE_7__ }
+%struct.TYPE_7__ = type { i32 }
+%struct.cfg80211_connect_params = type { i64, i32, i64, i32, %struct.TYPE_10__, i32, i32, i32, i32 }
+%struct.TYPE_10__ = type { i64, i32, i32, %struct.TYPE_9__*, i64* }
+%struct.TYPE_9__ = type { i64, i32, i32 }
+%struct.cfg80211_cached_keys = type { i64, %struct.TYPE_9__* }
+
+@EALREADY = common dso_local global i32 0, align 4
+@ENOTCONN = common dso_local global i32 0, align 4
+@EINPROGRESS = common dso_local global i32 0, align 4
+@WLAN_CIPHER_SUITE_WEP40 = common dso_local global i64 0, align 8
+@WLAN_CIPHER_SUITE_WEP104 = common dso_local global i64 0, align 8
+@EINVAL = common dso_local global i32 0, align 4
+@IEEE80211_BSS_TYPE_PBSS = common dso_local global i32 0, align 4
+@IEEE80211_BSS_TYPE_ESS = common dso_local global i32 0, align 4
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local i32 @cfg80211_connect(%struct.cfg80211_registered_device* %0, %struct.net_device* %1, %struct.cfg80211_connect_params* %2, %struct.cfg80211_cached_keys* %3, i32* %4) #0 {
+  %6 = alloca i32, align 4
+  %7 = alloca %struct.cfg80211_registered_device*, align 8
+  %8 = alloca %struct.net_device*, align 8
+  %9 = alloca %struct.cfg80211_connect_params*, align 8
+  %10 = alloca %struct.cfg80211_cached_keys*, align 8
+  %11 = alloca i32*, align 8
+  %12 = alloca %struct.wireless_dev*, align 8
+  %13 = alloca i32, align 4
+  %14 = alloca i32, align 4
+  %15 = alloca i64, align 8
+  store %struct.cfg80211_registered_device* %0, %struct.cfg80211_registered_device** %7, align 8
+  store %struct.net_device* %1, %struct.net_device** %8, align 8
+  store %struct.cfg80211_connect_params* %2, %struct.cfg80211_connect_params** %9, align 8
+  store %struct.cfg80211_cached_keys* %3, %struct.cfg80211_cached_keys** %10, align 8
+  store i32* %4, i32** %11, align 8
+  %16 = load %struct.net_device*, %struct.net_device** %8, align 8
+  %17 = getelementptr inbounds %struct.net_device, %struct.net_device* %16, i32 0, i32 0
+  %18 = load %struct.wireless_dev*, %struct.wireless_dev** %17, align 8
+  store %struct.wireless_dev* %18, %struct.wireless_dev** %12, align 8
+  %19 = load %struct.wireless_dev*, %struct.wireless_dev** %12, align 8
+  %20 = call i32 @ASSERT_WDEV_LOCK(%struct.wireless_dev* %19)
+  %21 = load %struct.wireless_dev*, %struct.wireless_dev** %12, align 8
+  %22 = getelementptr inbounds %struct.wireless_dev, %struct.wireless_dev* %21, i32 0, i32 0
+  %23 = load i64, i64* %22, align 8
+  %24 = icmp ne i64 %23, 0
+  br i1 %24, label %25, label %48
+
+25:                                               ; preds = %5
+  %26 = load %struct.wireless_dev*, %struct.wireless_dev** %12, align 8
+  %27 = getelementptr inbounds %struct.wireless_dev, %struct.wireless_dev* %26, i32 0, i32 0
+  %28 = load i64, i64* %27, align 8
+  %29 = load %struct.cfg80211_connect_params*, %struct.cfg80211_connect_params** %9, align 8
+  %30 = getelementptr inbounds %struct.cfg80211_connect_params, %struct.cfg80211_connect_params* %29, i32 0, i32 0
+  %31 = load i64, i64* %30, align 8
+  %32 = icmp ne i64 %28, %31
+  br i1 %32, label %45, label %33
+
+33:                                               ; preds = %25
+  %34 = load %struct.wireless_dev*, %struct.wireless_dev** %12, align 8
+  %35 = getelementptr inbounds %struct.wireless_dev, %struct.wireless_dev* %34, i32 0, i32 4
+  %36 = load i32, i32* %35, align 4
+  %37 = load %struct.cfg80211_connect_params*, %struct.cfg80211_connect_params** %9, align 8
+  %38 = getelementptr inbounds %struct.cfg80211_connect_params, %struct.cfg80211_connect_params* %37, i32 0, i32 3
+  %39 = load i32, i32* %38, align 8
+  %40 = load %struct.wireless_dev*, %struct.wireless_dev** %12, align 8
+  %41 = getelementptr inbounds %struct.wireless_dev, %struct.wireless_dev* %40, i32 0, i32 0
+  %42 = load i64, i64* %41, align 8
+  %43 = call i64 @memcmp(i32 %36, i32 %39, i64 %42)
+  %44 = icmp ne i64 %43, 0
+  br i1 %44, label %45, label %48
+
+45:                                               ; preds = %33, %25
+  %46 = load i32, i32* @EALREADY, align 4
+  %47 = sub nsw i32 0, %46
+  store i32 %47, i32* %6, align 4
+  br label %259
+
+48:                                               ; preds = %33, %5
+  %49 = load %struct.wireless_dev*, %struct.wireless_dev** %12, align 8
+  %50 = getelementptr inbounds %struct.wireless_dev, %struct.wireless_dev* %49, i32 0, i32 1
+  %51 = load %struct.TYPE_12__*, %struct.TYPE_12__** %50, align 8
+  %52 = icmp ne %struct.TYPE_12__* %51, null
+  br i1 %52, label %53, label %73
+
+53:                                               ; preds = %48
+  %54 = load i32*, i32** %11, align 8
+  %55 = icmp ne i32* %54, null
+  br i1 %55, label %59, label %56
+
+56:                                               ; preds = %53
+  %57 = load i32, i32* @EALREADY, align 4
+  %58 = sub nsw i32 0, %57
+  store i32 %58, i32* %6, align 4
+  br label %259
+
+59:                                               ; preds = %53
+  %60 = load i32*, i32** %11, align 8
+  %61 = load %struct.wireless_dev*, %struct.wireless_dev** %12, align 8
+  %62 = getelementptr inbounds %struct.wireless_dev, %struct.wireless_dev* %61, i32 0, i32 1
+  %63 = load %struct.TYPE_12__*, %struct.TYPE_12__** %62, align 8
+  %64 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %63, i32 0, i32 0
+  %65 = getelementptr inbounds %struct.TYPE_7__, %struct.TYPE_7__* %64, i32 0, i32 0
+  %66 = load i32, i32* %65, align 4
+  %67 = call i32 @ether_addr_equal(i32* %60, i32 %66)
+  %68 = icmp ne i32 %67, 0
+  br i1 %68, label %72, label %69
+
+69:                                               ; preds = %59
+  %70 = load i32, i32* @ENOTCONN, align 4
+  %71 = sub nsw i32 0, %70
+  store i32 %71, i32* %6, align 4
+  br label %259
+
+72:                                               ; preds = %59
+  br label %73
+
+73:                                               ; preds = %72, %48
+  %74 = load %struct.wireless_dev*, %struct.wireless_dev** %12, align 8
+  %75 = getelementptr inbounds %struct.wireless_dev, %struct.wireless_dev* %74, i32 0, i32 2
+  %76 = load %struct.cfg80211_cached_keys*, %struct.cfg80211_cached_keys** %75, align 8
+  %77 = icmp ne %struct.cfg80211_cached_keys* %76, null
+  br i1 %77, label %78, label %81
+
+78:                                               ; preds = %73
+  %79 = load i32, i32* @EINPROGRESS, align 4
+  %80 = sub nsw i32 0, %79
+  store i32 %80, i32* %6, align 4
+  br label %259
+
+81:                                               ; preds = %73
+  %82 = load %struct.cfg80211_connect_params*, %struct.cfg80211_connect_params** %9, align 8
+  %83 = getelementptr inbounds %struct.cfg80211_connect_params, %struct.cfg80211_connect_params* %82, i32 0, i32 8
+  %84 = load %struct.cfg80211_registered_device*, %struct.cfg80211_registered_device** %7, align 8
+  %85 = getelementptr inbounds %struct.cfg80211_registered_device, %struct.cfg80211_registered_device* %84, i32 0, i32 1
+  %86 = getelementptr inbounds %struct.TYPE_8__, %struct.TYPE_8__* %85, i32 0, i32 1
+  %87 = load i32, i32* %86, align 4
+  %88 = call i32 @cfg80211_oper_and_ht_capa(i32* %83, i32 %87)
+  %89 = load %struct.cfg80211_connect_params*, %struct.cfg80211_connect_params** %9, align 8
+  %90 = getelementptr inbounds %struct.cfg80211_connect_params, %struct.cfg80211_connect_params* %89, i32 0, i32 7
+  %91 = load %struct.cfg80211_registered_device*, %struct.cfg80211_registered_device** %7, align 8
+  %92 = getelementptr inbounds %struct.cfg80211_registered_device, %struct.cfg80211_registered_device* %91, i32 0, i32 1
+  %93 = getelementptr inbounds %struct.TYPE_8__, %struct.TYPE_8__* %92, i32 0, i32 0
+  %94 = load i32, i32* %93, align 8
+  %95 = call i32 @cfg80211_oper_and_vht_capa(i32* %90, i32 %94)
+  %96 = load %struct.cfg80211_cached_keys*, %struct.cfg80211_cached_keys** %10, align 8
+  %97 = icmp ne %struct.cfg80211_cached_keys* %96, null
+  br i1 %97, label %98, label %188
+
+98:                                               ; preds = %81
+  %99 = load %struct.cfg80211_cached_keys*, %struct.cfg80211_cached_keys** %10, align 8
+  %100 = getelementptr inbounds %struct.cfg80211_cached_keys, %struct.cfg80211_cached_keys* %99, i32 0, i32 0
+  %101 = load i64, i64* %100, align 8
+  %102 = icmp sge i64 %101, 0
+  br i1 %102, label %103, label %188
+
+103:                                              ; preds = %98
+  %104 = load %struct.cfg80211_cached_keys*, %struct.cfg80211_cached_keys** %10, align 8
+  %105 = getelementptr inbounds %struct.cfg80211_cached_keys, %struct.cfg80211_cached_keys* %104, i32 0, i32 0
+  %106 = load i64, i64* %105, align 8
+  %107 = trunc i64 %106 to i32
+  store i32 %107, i32* %14, align 4
+  %108 = load %struct.cfg80211_cached_keys*, %struct.cfg80211_cached_keys** %10, align 8
+  %109 = getelementptr inbounds %struct.cfg80211_cached_keys, %struct.cfg80211_cached_keys* %108, i32 0, i32 1
+  %110 = load %struct.TYPE_9__*, %struct.TYPE_9__** %109, align 8
+  %111 = load i32, i32* %14, align 4
+  %112 = sext i32 %111 to i64
+  %113 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %110, i64 %112
+  %114 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %113, i32 0, i32 0
+  %115 = load i64, i64* %114, align 8
+  store i64 %115, i64* %15, align 8
+  %116 = load i64, i64* %15, align 8
+  %117 = load i64, i64* @WLAN_CIPHER_SUITE_WEP40, align 8
+  %118 = icmp eq i64 %116, %117
+  br i1 %118, label %123, label %119
+
+119:                                              ; preds = %103
+  %120 = load i64, i64* %15, align 8
+  %121 = load i64, i64* @WLAN_CIPHER_SUITE_WEP104, align 8
+  %122 = icmp eq i64 %120, %121
+  br i1 %122, label %123, label %174
+
+123:                                              ; preds = %119, %103
+  %124 = load i32, i32* %14, align 4
+  %125 = load %struct.cfg80211_connect_params*, %struct.cfg80211_connect_params** %9, align 8
+  %126 = getelementptr inbounds %struct.cfg80211_connect_params, %struct.cfg80211_connect_params* %125, i32 0, i32 1
+  store i32 %124, i32* %126, align 8
+  %127 = load %struct.cfg80211_cached_keys*, %struct.cfg80211_cached_keys** %10, align 8
+  %128 = getelementptr inbounds %struct.cfg80211_cached_keys, %struct.cfg80211_cached_keys* %127, i32 0, i32 1
+  %129 = load %struct.TYPE_9__*, %struct.TYPE_9__** %128, align 8
+  %130 = load i32, i32* %14, align 4
+  %131 = sext i32 %130 to i64
+  %132 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %129, i64 %131
+  %133 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %132, i32 0, i32 2
+  %134 = load i32, i32* %133, align 4
+  %135 = load %struct.cfg80211_connect_params*, %struct.cfg80211_connect_params** %9, align 8
+  %136 = getelementptr inbounds %struct.cfg80211_connect_params, %struct.cfg80211_connect_params* %135, i32 0, i32 6
+  store i32 %134, i32* %136, align 4
+  %137 = load %struct.cfg80211_cached_keys*, %struct.cfg80211_cached_keys** %10, align 8
+  %138 = getelementptr inbounds %struct.cfg80211_cached_keys, %struct.cfg80211_cached_keys* %137, i32 0, i32 1
+  %139 = load %struct.TYPE_9__*, %struct.TYPE_9__** %138, align 8
+  %140 = load i32, i32* %14, align 4
+  %141 = sext i32 %140 to i64
+  %142 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %139, i64 %141
+  %143 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %142, i32 0, i32 1
+  %144 = load i32, i32* %143, align 8
+  %145 = load %struct.cfg80211_connect_params*, %struct.cfg80211_connect_params** %9, align 8
+  %146 = getelementptr inbounds %struct.cfg80211_connect_params, %struct.cfg80211_connect_params* %145, i32 0, i32 5
+  store i32 %144, i32* %146, align 8
+  %147 = load %struct.cfg80211_connect_params*, %struct.cfg80211_connect_params** %9, align 8
+  %148 = getelementptr inbounds %struct.cfg80211_connect_params, %struct.cfg80211_connect_params* %147, i32 0, i32 4
+  %149 = getelementptr inbounds %struct.TYPE_10__, %struct.TYPE_10__* %148, i32 0, i32 0
+  %150 = load i64, i64* %149, align 8
+  %151 = icmp eq i64 %150, 0
+  br i1 %151, label %152, label %157
+
+152:                                              ; preds = %123
+  %153 = load i64, i64* %15, align 8
+  %154 = load %struct.cfg80211_connect_params*, %struct.cfg80211_connect_params** %9, align 8
+  %155 = getelementptr inbounds %struct.cfg80211_connect_params, %struct.cfg80211_connect_params* %154, i32 0, i32 4
+  %156 = getelementptr inbounds %struct.TYPE_10__, %struct.TYPE_10__* %155, i32 0, i32 0
+  store i64 %153, i64* %156, align 8
+  br label %157
+
+157:                                              ; preds = %152, %123
+  %158 = load %struct.cfg80211_connect_params*, %struct.cfg80211_connect_params** %9, align 8
+  %159 = getelementptr inbounds %struct.cfg80211_connect_params, %struct.cfg80211_connect_params* %158, i32 0, i32 4
+  %160 = getelementptr inbounds %struct.TYPE_10__, %struct.TYPE_10__* %159, i32 0, i32 1
+  %161 = load i32, i32* %160, align 8
+  %162 = icmp eq i32 %161, 0
+  br i1 %162, label %163, label %173
+
+163:                                              ; preds = %157
+  %164 = load %struct.cfg80211_connect_params*, %struct.cfg80211_connect_params** %9, align 8
+  %165 = getelementptr inbounds %struct.cfg80211_connect_params, %struct.cfg80211_connect_params* %164, i32 0, i32 4
+  %166 = getelementptr inbounds %struct.TYPE_10__, %struct.TYPE_10__* %165, i32 0, i32 1
+  store i32 1, i32* %166, align 8
+  %167 = load i64, i64* %15, align 8
+  %168 = load %struct.cfg80211_connect_params*, %struct.cfg80211_connect_params** %9, align 8
+  %169 = getelementptr inbounds %struct.cfg80211_connect_params, %struct.cfg80211_connect_params* %168, i32 0, i32 4
+  %170 = getelementptr inbounds %struct.TYPE_10__, %struct.TYPE_10__* %169, i32 0, i32 4
+  %171 = load i64*, i64** %170, align 8
+  %172 = getelementptr inbounds i64, i64* %171, i64 0
+  store i64 %167, i64* %172, align 8
+  br label %173
+
+173:                                              ; preds = %163, %157
+  br label %174
+
+174:                                              ; preds = %173, %119
+  %175 = load %struct.cfg80211_cached_keys*, %struct.cfg80211_cached_keys** %10, align 8
+  %176 = getelementptr inbounds %struct.cfg80211_cached_keys, %struct.cfg80211_cached_keys* %175, i32 0, i32 1
+  %177 = load %struct.TYPE_9__*, %struct.TYPE_9__** %176, align 8
+  %178 = load %struct.cfg80211_connect_params*, %struct.cfg80211_connect_params** %9, align 8
+  %179 = getelementptr inbounds %struct.cfg80211_connect_params, %struct.cfg80211_connect_params* %178, i32 0, i32 4
+  %180 = getelementptr inbounds %struct.TYPE_10__, %struct.TYPE_10__* %179, i32 0, i32 3
+  store %struct.TYPE_9__* %177, %struct.TYPE_9__** %180, align 8
+  %181 = load %struct.cfg80211_cached_keys*, %struct.cfg80211_cached_keys** %10, align 8
+  %182 = getelementptr inbounds %struct.cfg80211_cached_keys, %struct.cfg80211_cached_keys* %181, i32 0, i32 0
+  %183 = load i64, i64* %182, align 8
+  %184 = trunc i64 %183 to i32
+  %185 = load %struct.cfg80211_connect_params*, %struct.cfg80211_connect_params** %9, align 8
+  %186 = getelementptr inbounds %struct.cfg80211_connect_params, %struct.cfg80211_connect_params* %185, i32 0, i32 4
+  %187 = getelementptr inbounds %struct.TYPE_10__, %struct.TYPE_10__* %186, i32 0, i32 2
+  store i32 %184, i32* %187, align 4
+  br label %196
+
+188:                                              ; preds = %98, %81
+  %189 = load %struct.cfg80211_cached_keys*, %struct.cfg80211_cached_keys** %10, align 8
+  %190 = call i64 @WARN_ON(%struct.cfg80211_cached_keys* %189)
+  %191 = icmp ne i64 %190, 0
+  br i1 %191, label %192, label %195
+
+192:                                              ; preds = %188
+  %193 = load i32, i32* @EINVAL, align 4
+  %194 = sub nsw i32 0, %193
+  store i32 %194, i32* %6, align 4
+  br label %259
+
+195:                                              ; preds = %188
+  br label %196
+
+196:                                              ; preds = %195, %174
+  %197 = load %struct.cfg80211_cached_keys*, %struct.cfg80211_cached_keys** %10, align 8
+  %198 = load %struct.wireless_dev*, %struct.wireless_dev** %12, align 8
+  %199 = getelementptr inbounds %struct.wireless_dev, %struct.wireless_dev* %198, i32 0, i32 2
+  store %struct.cfg80211_cached_keys* %197, %struct.cfg80211_cached_keys** %199, align 8
+  %200 = load %struct.wireless_dev*, %struct.wireless_dev** %12, align 8
+  %201 = getelementptr inbounds %struct.wireless_dev, %struct.wireless_dev* %200, i32 0, i32 4
+  %202 = load i32, i32* %201, align 4
+  %203 = load %struct.cfg80211_connect_params*, %struct.cfg80211_connect_params** %9, align 8
+  %204 = getelementptr inbounds %struct.cfg80211_connect_params, %struct.cfg80211_connect_params* %203, i32 0, i32 3
+  %205 = load i32, i32* %204, align 8
+  %206 = load %struct.cfg80211_connect_params*, %struct.cfg80211_connect_params** %9, align 8
+  %207 = getelementptr inbounds %struct.cfg80211_connect_params, %struct.cfg80211_connect_params* %206, i32 0, i32 0
+  %208 = load i64, i64* %207, align 8
+  %209 = call i32 @memcpy(i32 %202, i32 %205, i64 %208)
+  %210 = load %struct.cfg80211_connect_params*, %struct.cfg80211_connect_params** %9, align 8
+  %211 = getelementptr inbounds %struct.cfg80211_connect_params, %struct.cfg80211_connect_params* %210, i32 0, i32 0
+  %212 = load i64, i64* %211, align 8
+  %213 = load %struct.wireless_dev*, %struct.wireless_dev** %12, align 8
+  %214 = getelementptr inbounds %struct.wireless_dev, %struct.wireless_dev* %213, i32 0, i32 0
+  store i64 %212, i64* %214, align 8
+  %215 = load %struct.cfg80211_connect_params*, %struct.cfg80211_connect_params** %9, align 8
+  %216 = getelementptr inbounds %struct.cfg80211_connect_params, %struct.cfg80211_connect_params* %215, i32 0, i32 2
+  %217 = load i64, i64* %216, align 8
+  %218 = icmp ne i64 %217, 0
+  br i1 %218, label %219, label %221
+
+219:                                              ; preds = %196
+  %220 = load i32, i32* @IEEE80211_BSS_TYPE_PBSS, align 4
+  br label %223
+
+221:                                              ; preds = %196
+  %222 = load i32, i32* @IEEE80211_BSS_TYPE_ESS, align 4
+  br label %223
+
+223:                                              ; preds = %221, %219
+  %224 = phi i32 [ %220, %219 ], [ %222, %221 ]
+  %225 = load %struct.wireless_dev*, %struct.wireless_dev** %12, align 8
+  %226 = getelementptr inbounds %struct.wireless_dev, %struct.wireless_dev* %225, i32 0, i32 3
+  store i32 %224, i32* %226, align 8
+  %227 = load %struct.cfg80211_registered_device*, %struct.cfg80211_registered_device** %7, align 8
+  %228 = getelementptr inbounds %struct.cfg80211_registered_device, %struct.cfg80211_registered_device* %227, i32 0, i32 0
+  %229 = load %struct.TYPE_11__*, %struct.TYPE_11__** %228, align 8
+  %230 = getelementptr inbounds %struct.TYPE_11__, %struct.TYPE_11__* %229, i32 0, i32 0
+  %231 = load i32, i32* %230, align 4
+  %232 = icmp ne i32 %231, 0
+  br i1 %232, label %238, label %233
+
+233:                                              ; preds = %223
+  %234 = load %struct.wireless_dev*, %struct.wireless_dev** %12, align 8
+  %235 = load %struct.cfg80211_connect_params*, %struct.cfg80211_connect_params** %9, align 8
+  %236 = load i32*, i32** %11, align 8
+  %237 = call i32 @cfg80211_sme_connect(%struct.wireless_dev* %234, %struct.cfg80211_connect_params* %235, i32* %236)
+  store i32 %237, i32* %13, align 4
+  br label %243
+
+238:                                              ; preds = %223
+  %239 = load %struct.cfg80211_registered_device*, %struct.cfg80211_registered_device** %7, align 8
+  %240 = load %struct.net_device*, %struct.net_device** %8, align 8
+  %241 = load %struct.cfg80211_connect_params*, %struct.cfg80211_connect_params** %9, align 8
+  %242 = call i32 @rdev_connect(%struct.cfg80211_registered_device* %239, %struct.net_device* %240, %struct.cfg80211_connect_params* %241)
+  store i32 %242, i32* %13, align 4
+  br label %243
+
+243:                                              ; preds = %238, %233
+  %244 = load i32, i32* %13, align 4
+  %245 = icmp ne i32 %244, 0
+  br i1 %245, label %246, label %258
+
+246:                                              ; preds = %243
+  %247 = load %struct.wireless_dev*, %struct.wireless_dev** %12, align 8
+  %248 = getelementptr inbounds %struct.wireless_dev, %struct.wireless_dev* %247, i32 0, i32 2
+  store %struct.cfg80211_cached_keys* null, %struct.cfg80211_cached_keys** %248, align 8
+  %249 = load %struct.wireless_dev*, %struct.wireless_dev** %12, align 8
+  %250 = getelementptr inbounds %struct.wireless_dev, %struct.wireless_dev* %249, i32 0, i32 1
+  %251 = load %struct.TYPE_12__*, %struct.TYPE_12__** %250, align 8
+  %252 = icmp ne %struct.TYPE_12__* %251, null
+  br i1 %252, label %256, label %253
+
+253:                                              ; preds = %246
+  %254 = load %struct.wireless_dev*, %struct.wireless_dev** %12, align 8
+  %255 = getelementptr inbounds %struct.wireless_dev, %struct.wireless_dev* %254, i32 0, i32 0
+  store i64 0, i64* %255, align 8
+  br label %256
+
+256:                                              ; preds = %253, %246
+  %257 = load i32, i32* %13, align 4
+  store i32 %257, i32* %6, align 4
+  br label %259
+
+258:                                              ; preds = %243
+  store i32 0, i32* %6, align 4
+  br label %259
+
+259:                                              ; preds = %258, %256, %192, %78, %69, %56, %45
+  %260 = load i32, i32* %6, align 4
+  ret i32 %260
+}
+
+declare dso_local i32 @ASSERT_WDEV_LOCK(%struct.wireless_dev*) #1
+
+declare dso_local i64 @memcmp(i32, i32, i64) #1
+
+declare dso_local i32 @ether_addr_equal(i32*, i32) #1
+
+declare dso_local i32 @cfg80211_oper_and_ht_capa(i32*, i32) #1
+
+declare dso_local i32 @cfg80211_oper_and_vht_capa(i32*, i32) #1
+
+declare dso_local i64 @WARN_ON(%struct.cfg80211_cached_keys*) #1
+
+declare dso_local i32 @memcpy(i32, i32, i64) #1
+
+declare dso_local i32 @cfg80211_sme_connect(%struct.wireless_dev*, %struct.cfg80211_connect_params*, i32*) #1
+
+declare dso_local i32 @rdev_connect(%struct.cfg80211_registered_device*, %struct.net_device*, %struct.cfg80211_connect_params*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int enabled_planes; } ;
 
-/* Variables and functions */
- TYPE_1__ blizzard ; 
+
+ TYPE_1__ blizzard ;
 
 __attribute__((used)) static int blizzard_enable_plane(int plane, int enable)
 {
-	if (enable)
-		blizzard.enabled_planes |= 1 << plane;
-	else
-		blizzard.enabled_planes &= ~(1 << plane);
+ if (enable)
+  blizzard.enabled_planes |= 1 << plane;
+ else
+  blizzard.enabled_planes &= ~(1 << plane);
 
-	return 0;
+ return 0;
 }

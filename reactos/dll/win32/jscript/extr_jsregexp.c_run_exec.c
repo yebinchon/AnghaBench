@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_8__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vdisp_t ;
-struct TYPE_9__ {int /*<<< orphan*/  tmp_heap; } ;
-typedef  TYPE_1__ script_ctx_t ;
-typedef  int /*<<< orphan*/  match_state_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_11__ TYPE_8__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int vdisp_t ;
+struct TYPE_9__ {int tmp_heap; } ;
+typedef TYPE_1__ script_ctx_t ;
+typedef int match_state_t ;
+typedef int jsval_t ;
+typedef int jsstr_t ;
+typedef int WCHAR ;
 struct TYPE_11__ {int flags; } ;
-struct TYPE_10__ {scalar_t__ last_index; int /*<<< orphan*/  dispex; TYPE_8__* jsregexp; } ;
-typedef  TYPE_2__ RegExpInstance ;
-typedef  scalar_t__ HRESULT ;
-typedef  int DWORD ;
-typedef  int BOOL ;
+struct TYPE_10__ {scalar_t__ last_index; int dispex; TYPE_8__* jsregexp; } ;
+typedef TYPE_2__ RegExpInstance ;
+typedef scalar_t__ HRESULT ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ E_NOTIMPL ; 
- scalar_t__ E_OUTOFMEMORY ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int FALSE ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  JSCLASS_REGEXP ; 
- int REG_GLOB ; 
- int /*<<< orphan*/  REM_RESET_INDEX ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/ * alloc_match_state (TYPE_8__*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  is_vclass (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * jsstr_empty () ; 
- int /*<<< orphan*/  jsstr_release (int /*<<< orphan*/ *) ; 
- TYPE_2__* regexp_from_vdisp (int /*<<< orphan*/ *) ; 
- scalar_t__ regexp_match_next (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  set_last_index (TYPE_2__*,int /*<<< orphan*/ ) ; 
- scalar_t__ to_flat_string (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/  const**) ; 
+
+ scalar_t__ E_NOTIMPL ;
+ scalar_t__ E_OUTOFMEMORY ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int FALSE ;
+ int FIXME (char*) ;
+ int JSCLASS_REGEXP ;
+ int REG_GLOB ;
+ int REM_RESET_INDEX ;
+ scalar_t__ S_OK ;
+ int * alloc_match_state (TYPE_8__*,int *,int const*) ;
+ int is_vclass (int *,int ) ;
+ int * jsstr_empty () ;
+ int jsstr_release (int *) ;
+ TYPE_2__* regexp_from_vdisp (int *) ;
+ scalar_t__ regexp_match_next (TYPE_1__*,int *,int ,int *,int **) ;
+ int set_last_index (TYPE_2__*,int ) ;
+ scalar_t__ to_flat_string (TYPE_1__*,int ,int **,int const**) ;
 
 __attribute__((used)) static HRESULT run_exec(script_ctx_t *ctx, vdisp_t *jsthis, jsval_t arg,
         jsstr_t **input, match_state_t **result, BOOL *ret)

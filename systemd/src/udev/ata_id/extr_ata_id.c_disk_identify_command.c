@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct sg_io_v4 {char guard; int request_len; uintptr_t request; int max_response_len; uintptr_t response; size_t din_xfer_len; uintptr_t din_xferp; char interface_id; unsigned char* cmdp; int cmd_len; void* dxferp; size_t dxfer_len; int* sbp; int mx_sb_len; int /*<<< orphan*/  timeout; int /*<<< orphan*/  dxfer_direction; int /*<<< orphan*/  subprotocol; int /*<<< orphan*/  protocol; } ;
-struct sg_io_hdr {char guard; int request_len; uintptr_t request; int max_response_len; uintptr_t response; size_t din_xfer_len; uintptr_t din_xferp; char interface_id; unsigned char* cmdp; int cmd_len; void* dxferp; size_t dxfer_len; int* sbp; int mx_sb_len; int /*<<< orphan*/  timeout; int /*<<< orphan*/  dxfer_direction; int /*<<< orphan*/  subprotocol; int /*<<< orphan*/  protocol; } ;
-typedef  int /*<<< orphan*/  sense ;
-typedef  int /*<<< orphan*/  cdb ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BSG_PROTOCOL_SCSI ; 
- int /*<<< orphan*/  BSG_SUB_PROTOCOL_SCSI_CMD ; 
- int /*<<< orphan*/  COMMAND_TIMEOUT_MSEC ; 
- scalar_t__ EINVAL ; 
- scalar_t__ EIO ; 
- int /*<<< orphan*/  SG_DXFER_FROM_DEV ; 
- int /*<<< orphan*/  SG_IO ; 
- scalar_t__ errno ; 
- int ioctl (int,int /*<<< orphan*/ ,struct sg_io_v4*) ; 
+
+
+
+typedef int uint8_t ;
+struct sg_io_v4 {char guard; int request_len; uintptr_t request; int max_response_len; uintptr_t response; size_t din_xfer_len; uintptr_t din_xferp; char interface_id; unsigned char* cmdp; int cmd_len; void* dxferp; size_t dxfer_len; int* sbp; int mx_sb_len; int timeout; int dxfer_direction; int subprotocol; int protocol; } ;
+struct sg_io_hdr {char guard; int request_len; uintptr_t request; int max_response_len; uintptr_t response; size_t din_xfer_len; uintptr_t din_xferp; char interface_id; unsigned char* cmdp; int cmd_len; void* dxferp; size_t dxfer_len; int* sbp; int mx_sb_len; int timeout; int dxfer_direction; int subprotocol; int protocol; } ;
+typedef int sense ;
+typedef int cdb ;
+
+
+ int BSG_PROTOCOL_SCSI ;
+ int BSG_SUB_PROTOCOL_SCSI_CMD ;
+ int COMMAND_TIMEOUT_MSEC ;
+ scalar_t__ EINVAL ;
+ scalar_t__ EIO ;
+ int SG_DXFER_FROM_DEV ;
+ int SG_IO ;
+ scalar_t__ errno ;
+ int ioctl (int,int ,struct sg_io_v4*) ;
 
 __attribute__((used)) static int disk_identify_command(
                 int fd,
@@ -33,23 +33,23 @@ __attribute__((used)) static int disk_identify_command(
                 size_t buf_len) {
 
         uint8_t cdb[12] = {
-                /*
-                 * ATA Pass-Through 12 byte command, as described in
-                 *
-                 *  T10 04-262r8 ATA Command Pass-Through
-                 *
-                 * from http://www.t10.org/ftp/t10/document.04/04-262r8.pdf
-                 */
-                [0] = 0xa1,     /* OPERATION CODE: 12 byte pass through */
-                [1] = 4 << 1,   /* PROTOCOL: PIO Data-in */
-                [2] = 0x2e,     /* OFF_LINE=0, CK_COND=1, T_DIR=1, BYT_BLOK=1, T_LENGTH=2 */
-                [3] = 0,        /* FEATURES */
-                [4] = 1,        /* SECTORS */
-                [5] = 0,        /* LBA LOW */
-                [6] = 0,        /* LBA MID */
-                [7] = 0,        /* LBA HIGH */
-                [8] = 0 & 0x4F, /* SELECT */
-                [9] = 0xEC,     /* Command: ATA IDENTIFY DEVICE */
+
+
+
+
+
+
+
+                [0] = 0xa1,
+                [1] = 4 << 1,
+                [2] = 0x2e,
+                [3] = 0,
+                [4] = 1,
+                [5] = 0,
+                [6] = 0,
+                [7] = 0,
+                [8] = 0 & 0x4F,
+                [9] = 0xEC,
         };
         uint8_t sense[32] = {};
         uint8_t *desc = sense + 8;
@@ -69,7 +69,7 @@ __attribute__((used)) static int disk_identify_command(
 
         ret = ioctl(fd, SG_IO, &io_v4);
         if (ret != 0) {
-                /* could be that the driver doesn't do version 4, try version 3 */
+
                 if (errno == EINVAL) {
                         struct sg_io_hdr io_hdr = {
                                 .interface_id = 'S',

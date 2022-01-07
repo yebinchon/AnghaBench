@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ath10k_htt_txbuf_32 {int dummy; } ;
-struct TYPE_2__ {size_t size; int /*<<< orphan*/  vaddr_txbuff_32; int /*<<< orphan*/  paddr; } ;
+struct TYPE_2__ {size_t size; int vaddr_txbuff_32; int paddr; } ;
 struct ath10k_htt {int max_num_pending_tx; TYPE_1__ txbuf; struct ath10k* ar; } ;
-struct ath10k {int /*<<< orphan*/  dev; } ;
+struct ath10k {int dev; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  dma_alloc_coherent (int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int dma_alloc_coherent (int ,size_t,int *,int ) ;
 
 __attribute__((used)) static int ath10k_htt_tx_alloc_cont_txbuf_32(struct ath10k_htt *htt)
 {
-	struct ath10k *ar = htt->ar;
-	size_t size;
+ struct ath10k *ar = htt->ar;
+ size_t size;
 
-	size = htt->max_num_pending_tx *
-			sizeof(struct ath10k_htt_txbuf_32);
+ size = htt->max_num_pending_tx *
+   sizeof(struct ath10k_htt_txbuf_32);
 
-	htt->txbuf.vaddr_txbuff_32 = dma_alloc_coherent(ar->dev, size,
-							&htt->txbuf.paddr,
-							GFP_KERNEL);
-	if (!htt->txbuf.vaddr_txbuff_32)
-		return -ENOMEM;
+ htt->txbuf.vaddr_txbuff_32 = dma_alloc_coherent(ar->dev, size,
+       &htt->txbuf.paddr,
+       GFP_KERNEL);
+ if (!htt->txbuf.vaddr_txbuff_32)
+  return -ENOMEM;
 
-	htt->txbuf.size = size;
+ htt->txbuf.size = size;
 
-	return 0;
+ return 0;
 }

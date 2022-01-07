@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int mrb_int ;
 
-/* Variables and functions */
- int mrb_cloexec_open (int /*<<< orphan*/ *,char const*,int,int) ; 
- int /*<<< orphan*/  mrb_fixnum_value (int) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int mrb_io_flags_to_modenum (int /*<<< orphan*/ *,int) ; 
- int mrb_io_modestr_to_flags (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ mrb_nil_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_nil_value () ; 
- int /*<<< orphan*/  mrb_str_new_cstr (int /*<<< orphan*/ *,char*) ; 
- char* mrb_string_value_cstr (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef int mrb_int ;
+
+
+ int mrb_cloexec_open (int *,char const*,int,int) ;
+ int mrb_fixnum_value (int) ;
+ int mrb_get_args (int *,char*,int *,int *,int*) ;
+ int mrb_io_flags_to_modenum (int *,int) ;
+ int mrb_io_modestr_to_flags (int *,char*) ;
+ scalar_t__ mrb_nil_p (int ) ;
+ int mrb_nil_value () ;
+ int mrb_str_new_cstr (int *,char*) ;
+ char* mrb_string_value_cstr (int *,int *) ;
 
 mrb_value
 mrb_io_s_sysopen(mrb_state *mrb, mrb_value klass)

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_17__ {scalar_t__ priv_class; int /*<<< orphan*/  (* close ) (TYPE_2__*) ;} ;
+
+
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+struct TYPE_17__ {scalar_t__ priv_class; int (* close ) (TYPE_2__*) ;} ;
 struct TYPE_16__ {TYPE_5__* codec; scalar_t__ priv_data; TYPE_1__* internal; } ;
-struct TYPE_15__ {int is_copy; int die; int /*<<< orphan*/  async_cond; int /*<<< orphan*/  async_mutex; int /*<<< orphan*/  hwaccel_mutex; int /*<<< orphan*/  buffer_mutex; struct TYPE_15__* threads; struct TYPE_15__* avctx; int /*<<< orphan*/  hw_frames_ctx; struct TYPE_15__* internal; struct TYPE_15__* slice_offset; struct TYPE_15__* priv_data; struct TYPE_15__* released_buffers; int /*<<< orphan*/  avpkt; int /*<<< orphan*/  output_cond; int /*<<< orphan*/  progress_cond; int /*<<< orphan*/  input_cond; int /*<<< orphan*/  progress_mutex; int /*<<< orphan*/  mutex; int /*<<< orphan*/  frame; scalar_t__ thread_init; int /*<<< orphan*/  thread; struct TYPE_15__* prev_thread; } ;
+struct TYPE_15__ {int is_copy; int die; int async_cond; int async_mutex; int hwaccel_mutex; int buffer_mutex; struct TYPE_15__* threads; struct TYPE_15__* avctx; int hw_frames_ctx; struct TYPE_15__* internal; struct TYPE_15__* slice_offset; struct TYPE_15__* priv_data; struct TYPE_15__* released_buffers; int avpkt; int output_cond; int progress_cond; int input_cond; int progress_mutex; int mutex; int frame; scalar_t__ thread_init; int thread; struct TYPE_15__* prev_thread; } ;
 struct TYPE_14__ {TYPE_2__* thread_ctx; } ;
-typedef  TYPE_2__ PerThreadContext ;
-typedef  TYPE_2__ FrameThreadContext ;
-typedef  TYPE_4__ AVCodecContext ;
-typedef  TYPE_5__ AVCodec ;
+typedef TYPE_2__ PerThreadContext ;
+typedef TYPE_2__ FrameThreadContext ;
+typedef TYPE_4__ AVCodecContext ;
+typedef TYPE_5__ AVCodec ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_buffer_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_frame_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_freep (TYPE_2__**) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  av_opt_free (scalar_t__) ; 
- int /*<<< orphan*/  av_packet_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  park_frame_worker_threads (TYPE_2__*,int) ; 
- int /*<<< orphan*/  pthread_cond_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_cond_signal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_join (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  release_delayed_buffers (TYPE_2__*) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*) ; 
- scalar_t__ update_context_from_thread (TYPE_2__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+ int AV_LOG_ERROR ;
+ int av_buffer_unref (int *) ;
+ int av_frame_free (int *) ;
+ int av_freep (TYPE_2__**) ;
+ int av_log (TYPE_4__*,int ,char*) ;
+ int av_opt_free (scalar_t__) ;
+ int av_packet_unref (int *) ;
+ int park_frame_worker_threads (TYPE_2__*,int) ;
+ int pthread_cond_destroy (int *) ;
+ int pthread_cond_signal (int *) ;
+ int pthread_join (int ,int *) ;
+ int pthread_mutex_destroy (int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int release_delayed_buffers (TYPE_2__*) ;
+ int stub1 (TYPE_2__*) ;
+ scalar_t__ update_context_from_thread (TYPE_2__*,TYPE_2__*,int ) ;
 
 void ff_frame_thread_free(AVCodecContext *avctx, int thread_count)
 {
@@ -66,7 +66,7 @@ void ff_frame_thread_free(AVCodecContext *avctx, int thread_count)
         pthread_mutex_unlock(&p->mutex);
 
         if (p->thread_init)
-            pthread_join(p->thread, NULL);
+            pthread_join(p->thread, ((void*)0));
         p->thread_init=0;
 
         if (codec->close && p->avctx)
@@ -110,5 +110,5 @@ void ff_frame_thread_free(AVCodecContext *avctx, int thread_count)
 
     if (avctx->priv_data && avctx->codec && avctx->codec->priv_class)
         av_opt_free(avctx->priv_data);
-    avctx->codec = NULL;
+    avctx->codec = ((void*)0);
 }

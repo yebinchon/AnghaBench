@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct mtk_mdp_ctx {int /*<<< orphan*/  work; TYPE_1__* mdp_dev; } ;
-struct TYPE_2__ {int /*<<< orphan*/  job_wq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  queue_work (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct mtk_mdp_ctx {int work; TYPE_1__* mdp_dev; } ;
+struct TYPE_2__ {int job_wq; } ;
+
+
+ int queue_work (int ,int *) ;
 
 __attribute__((used)) static void mtk_mdp_m2m_device_run(void *priv)
 {
-	struct mtk_mdp_ctx *ctx = priv;
+ struct mtk_mdp_ctx *ctx = priv;
 
-	queue_work(ctx->mdp_dev->job_wq, &ctx->work);
+ queue_work(ctx->mdp_dev->job_wq, &ctx->work);
 }

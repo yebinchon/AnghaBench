@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int AddERExcludedApplicationA (char*) ; 
- scalar_t__ ERROR_ACCESS_DENIED ; 
- int GetLastError () ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegCreateKeyA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegDeleteValueA (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ RegOpenKeyA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- scalar_t__ is_process_limited () ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
- int /*<<< orphan*/  regpath_exclude ; 
- int /*<<< orphan*/  regpath_root ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+
+
+typedef scalar_t__ LONG ;
+typedef int HKEY ;
+typedef int BOOL ;
+
+
+ int AddERExcludedApplicationA (char*) ;
+ scalar_t__ ERROR_ACCESS_DENIED ;
+ int GetLastError () ;
+ int HKEY_LOCAL_MACHINE ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegCreateKeyA (int ,int ,int *) ;
+ int RegDeleteValueA (int ,char*) ;
+ scalar_t__ RegOpenKeyA (int ,int ,int *) ;
+ int SetLastError (int) ;
+ scalar_t__ is_process_limited () ;
+ int ok (int,char*,int,...) ;
+ int regpath_exclude ;
+ int regpath_root ;
+ int skip (char*) ;
 
 __attribute__((used)) static void test_AddERExcludedApplicationA(void)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static void test_AddERExcludedApplicationA(void)
     HKEY hroot;
     HKEY hexclude = 0;
 
-    /* clean state */
+
     lres = RegCreateKeyA(HKEY_LOCAL_MACHINE, regpath_root, &hroot);
     if (lres == ERROR_ACCESS_DENIED)
     {
@@ -53,7 +53,7 @@ __attribute__((used)) static void test_AddERExcludedApplicationA(void)
 
 
     SetLastError(0xdeadbeef);
-    res = AddERExcludedApplicationA(NULL);
+    res = AddERExcludedApplicationA(((void*)0));
     ok(!res, "got %d and 0x%x (expected FALSE)\n", res, GetLastError());
 
     SetLastError(0xdeadbeef);
@@ -61,24 +61,24 @@ __attribute__((used)) static void test_AddERExcludedApplicationA(void)
     ok(!res, "got %d and 0x%x (expected FALSE)\n", res, GetLastError());
 
     SetLastError(0xdeadbeef);
-    /* existence of the path doesn't matter this function succeeded */
+
     res = AddERExcludedApplicationA("winetest_faultrep.exe");
     if (is_process_limited())
     {
-        /* LastError is not set! */
+
         ok(!res, "AddERExcludedApplicationA should have failed got %d\n", res);
     }
     else
     {
         ok(res, "AddERExcludedApplicationA failed (le=0x%x)\n", GetLastError());
 
-        /* add, when already present */
+
         SetLastError(0xdeadbeef);
         res = AddERExcludedApplicationA("winetest_faultrep.exe");
         ok(res, "AddERExcludedApplicationA failed (le=0x%x)\n", GetLastError());
     }
 
-    /* cleanup */
+
     RegDeleteValueA(hexclude, "winetest_faultrep.exe");
 
     RegCloseKey(hexclude);

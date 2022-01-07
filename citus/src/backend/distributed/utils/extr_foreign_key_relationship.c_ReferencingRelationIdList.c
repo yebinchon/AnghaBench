@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  List ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * GetForeignConstraintRelationshipHelper (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int Oid ;
+typedef int List ;
+
+
+ int * GetForeignConstraintRelationshipHelper (int ,int) ;
 
 List *
 ReferencingRelationIdList(Oid relationId)
 {
-	return GetForeignConstraintRelationshipHelper(relationId, true);
+ return GetForeignConstraintRelationshipHelper(relationId, 1);
 }

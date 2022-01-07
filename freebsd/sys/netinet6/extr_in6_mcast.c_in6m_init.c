@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SLIST_INIT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_gtask ; 
- int /*<<< orphan*/  in6m_free_list ; 
- int /*<<< orphan*/  in6m_release_task ; 
- int /*<<< orphan*/  taskqgroup_config_gtask_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
+ int SLIST_INIT (int *) ;
+ int free_gtask ;
+ int in6m_free_list ;
+ int in6m_release_task ;
+ int taskqgroup_config_gtask_init (int *,int *,int ,char*) ;
 
 __attribute__((used)) static void in6m_init(void)
 {
-	SLIST_INIT(&in6m_free_list);
-	taskqgroup_config_gtask_init(NULL, &free_gtask, in6m_release_task, "in6m release task");
+ SLIST_INIT(&in6m_free_list);
+ taskqgroup_config_gtask_init(((void*)0), &free_gtask, in6m_release_task, "in6m release task");
 }

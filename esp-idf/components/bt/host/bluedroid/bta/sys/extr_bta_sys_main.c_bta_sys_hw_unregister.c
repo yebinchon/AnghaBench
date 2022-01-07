@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t tBTA_SYS_HW_MODULE ;
-struct TYPE_2__ {int /*<<< orphan*/ ** sys_hw_cback; } ;
 
-/* Variables and functions */
- TYPE_1__ bta_sys_cb ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef size_t tBTA_SYS_HW_MODULE ;
+struct TYPE_2__ {int ** sys_hw_cback; } ;
+
+
+ TYPE_1__ bta_sys_cb ;
 
 void bta_sys_hw_unregister( tBTA_SYS_HW_MODULE module )
 {
-    bta_sys_cb.sys_hw_cback[module] = NULL;
+    bta_sys_cb.sys_hw_cback[module] = ((void*)0);
 }

@@ -1,58 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int OPTION_CHOICE ;
 
-/* Variables and functions */
- char* BF_options () ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- char* BN_options () ; 
- char* DES_options () ; 
- char* IDEA_options () ; 
- char* MD2_options () ; 
- int /*<<< orphan*/  OPENSSL_BUILT_ON ; 
- int /*<<< orphan*/  OPENSSL_CFLAGS ; 
- int /*<<< orphan*/  OPENSSL_CPU_INFO ; 
- int /*<<< orphan*/  OPENSSL_DIR ; 
- int /*<<< orphan*/  OPENSSL_ENGINES_DIR ; 
- int /*<<< orphan*/  OPENSSL_INFO_SEED_SOURCE ; 
- int /*<<< orphan*/  OPENSSL_MODULES_DIR ; 
- int /*<<< orphan*/  OPENSSL_PLATFORM ; 
- int /*<<< orphan*/  OPENSSL_VERSION ; 
- char* OPENSSL_VERSION_TEXT ; 
- char* OPENSSL_info (int /*<<< orphan*/ ) ; 
-#define  OPT_A 141 
-#define  OPT_B 140 
-#define  OPT_C 139 
-#define  OPT_D 138 
-#define  OPT_E 137 
-#define  OPT_EOF 136 
-#define  OPT_ERR 135 
-#define  OPT_F 134 
-#define  OPT_HELP 133 
-#define  OPT_M 132 
-#define  OPT_O 131 
-#define  OPT_P 130 
-#define  OPT_R 129 
-#define  OPT_V 128 
- char* OpenSSL_version (int /*<<< orphan*/ ) ; 
- char* RC4_options () ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/  opt_help (int /*<<< orphan*/ ) ; 
- char* opt_init (int,char**,int /*<<< orphan*/ ) ; 
- int opt_next () ; 
- scalar_t__ opt_num_rest () ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  version_options ; 
+
+
+
+typedef int OPTION_CHOICE ;
+
+
+ char* BF_options () ;
+ int BIO_printf (int ,char*,...) ;
+ char* BN_options () ;
+ char* DES_options () ;
+ char* IDEA_options () ;
+ char* MD2_options () ;
+ int OPENSSL_BUILT_ON ;
+ int OPENSSL_CFLAGS ;
+ int OPENSSL_CPU_INFO ;
+ int OPENSSL_DIR ;
+ int OPENSSL_ENGINES_DIR ;
+ int OPENSSL_INFO_SEED_SOURCE ;
+ int OPENSSL_MODULES_DIR ;
+ int OPENSSL_PLATFORM ;
+ int OPENSSL_VERSION ;
+ char* OPENSSL_VERSION_TEXT ;
+ char* OPENSSL_info (int ) ;
+ char* OpenSSL_version (int ) ;
+ char* RC4_options () ;
+ int bio_err ;
+ int opt_help (int ) ;
+ char* opt_init (int,char**,int ) ;
+ int opt_next () ;
+ scalar_t__ opt_num_rest () ;
+ int printf (char*,...) ;
+ int version_options ;
 
 int version_main(int argc, char **argv)
 {
@@ -63,48 +49,48 @@ int version_main(int argc, char **argv)
     OPTION_CHOICE o;
 
     prog = opt_init(argc, argv, version_options);
-    while ((o = opt_next()) != OPT_EOF) {
+    while ((o = opt_next()) != 136) {
         switch (o) {
-        case OPT_EOF:
-        case OPT_ERR:
+        case 136:
+        case 135:
 opthelp:
             BIO_printf(bio_err, "%s: Use -help for summary.\n", prog);
             goto end;
-        case OPT_HELP:
+        case 133:
             opt_help(version_options);
             ret = 0;
             goto end;
-        case OPT_B:
+        case 140:
             dirty = date = 1;
             break;
-        case OPT_D:
+        case 138:
             dirty = dir = 1;
             break;
-        case OPT_E:
+        case 137:
             dirty = engdir = 1;
             break;
-        case OPT_M:
+        case 132:
             dirty = moddir = 1;
             break;
-        case OPT_F:
+        case 134:
             dirty = cflags = 1;
             break;
-        case OPT_O:
+        case 131:
             dirty = options = 1;
             break;
-        case OPT_P:
+        case 130:
             dirty = platform = 1;
             break;
-        case OPT_R:
+        case 129:
             dirty = seed = 1;
             break;
-        case OPT_V:
+        case 128:
             dirty = version = 1;
             break;
-        case OPT_C:
+        case 139:
             dirty = cpuinfo = 1;
             break;
-        case OPT_A:
+        case 141:
             seed = options = cflags = version = date = platform
                 = dir = engdir = moddir = cpuinfo
                 = 1;
@@ -128,21 +114,21 @@ opthelp:
     if (options) {
         printf("options: ");
         printf(" %s", BN_options());
-#ifndef OPENSSL_NO_MD2
+
         printf(" %s", MD2_options());
-#endif
-#ifndef OPENSSL_NO_RC4
+
+
         printf(" %s", RC4_options());
-#endif
-#ifndef OPENSSL_NO_DES
+
+
         printf(" %s", DES_options());
-#endif
-#ifndef OPENSSL_NO_IDEA
+
+
         printf(" %s", IDEA_options());
-#endif
-#ifndef OPENSSL_NO_BF
+
+
         printf(" %s", BF_options());
-#endif
+
         printf("\n");
     }
     if (cflags)

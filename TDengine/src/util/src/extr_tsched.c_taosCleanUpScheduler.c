@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int numOfThreads; struct TYPE_5__* qthread; struct TYPE_5__* queue; int /*<<< orphan*/  queueMutex; int /*<<< orphan*/  fullSem; int /*<<< orphan*/  emptySem; } ;
-typedef  TYPE_1__ SSchedQueue ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  pthread_cancel (TYPE_1__) ; 
- int /*<<< orphan*/  pthread_join (TYPE_1__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tsem_destroy (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int numOfThreads; struct TYPE_5__* qthread; struct TYPE_5__* queue; int queueMutex; int fullSem; int emptySem; } ;
+typedef TYPE_1__ SSchedQueue ;
+
+
+ int free (TYPE_1__*) ;
+ int pthread_cancel (TYPE_1__) ;
+ int pthread_join (TYPE_1__,int *) ;
+ int pthread_mutex_destroy (int *) ;
+ int tsem_destroy (int *) ;
 
 void taosCleanUpScheduler(void *param) {
   SSchedQueue *pSched = (SSchedQueue *)param;
-  if (pSched == NULL) return;
+  if (pSched == ((void*)0)) return;
 
   for (int i = 0; i < pSched->numOfThreads; ++i) {
     pthread_cancel(pSched->qthread[i]);
   }
   for (int i = 0; i < pSched->numOfThreads; ++i) {
-    pthread_join(pSched->qthread[i], NULL);
+    pthread_join(pSched->qthread[i], ((void*)0));
   }
 
   tsem_destroy(&pSched->emptySem);
@@ -38,5 +38,5 @@ void taosCleanUpScheduler(void *param) {
 
   free(pSched->queue);
   free(pSched->qthread);
-  free(pSched); // fix memory leak
+  free(pSched);
 }

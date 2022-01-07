@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  ctx; struct TYPE_6__* priv_data; int /*<<< orphan*/  const* filter; } ;
-typedef  TYPE_1__ BSFCompatContext ;
-typedef  TYPE_1__ AVBitStreamFilterContext ;
-typedef  int /*<<< orphan*/  AVBitStreamFilter ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_bsf_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * av_bsf_get_by_name (char const*) ; 
- int /*<<< orphan*/  av_freep (TYPE_1__**) ; 
- TYPE_1__* av_mallocz (int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int ctx; struct TYPE_6__* priv_data; int const* filter; } ;
+typedef TYPE_1__ BSFCompatContext ;
+typedef TYPE_1__ AVBitStreamFilterContext ;
+typedef int AVBitStreamFilter ;
+
+
+ int av_bsf_free (int *) ;
+ int * av_bsf_get_by_name (char const*) ;
+ int av_freep (TYPE_1__**) ;
+ TYPE_1__* av_mallocz (int) ;
 
 AVBitStreamFilterContext *av_bitstream_filter_init(const char *name)
 {
-    AVBitStreamFilterContext *ctx = NULL;
-    BSFCompatContext         *priv = NULL;
+    AVBitStreamFilterContext *ctx = ((void*)0);
+    BSFCompatContext *priv = ((void*)0);
     const AVBitStreamFilter *bsf;
 
     bsf = av_bsf_get_by_name(name);
     if (!bsf)
-        return NULL;
+        return ((void*)0);
 
     ctx = av_mallocz(sizeof(*ctx));
     if (!ctx)
-        return NULL;
+        return ((void*)0);
 
     priv = av_mallocz(sizeof(*priv));
     if (!priv)
         goto fail;
 
 
-    ctx->filter    = bsf;
+    ctx->filter = bsf;
     ctx->priv_data = priv;
 
     return ctx;
@@ -51,5 +51,5 @@ fail:
         av_bsf_free(&priv->ctx);
     av_freep(&priv);
     av_freep(&ctx);
-    return NULL;
+    return ((void*)0);
 }

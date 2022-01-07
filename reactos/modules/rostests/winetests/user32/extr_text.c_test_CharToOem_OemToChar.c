@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tests ;
-typedef  int /*<<< orphan*/  helloWorldW ;
-typedef  int /*<<< orphan*/  helloWorld ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  char WCHAR ;
-typedef  char BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_OEMCP ; 
- char CharToOemA (char const*,char*) ; 
- char CharToOemBuffA (char const*,char*,int) ; 
- char CharToOemBuffW (char const*,char*,int) ; 
- char CharToOemW (char const*,char*) ; 
-#define  FALSE 129 
- int MB_PRECOMPOSED ; 
- int MB_USEGLYPHCHARS ; 
- int /*<<< orphan*/  MultiByteToWideChar (int /*<<< orphan*/ ,int,char*,int,char*,int) ; 
- char OemToCharA (char const*,char*) ; 
- char OemToCharBuffA (char const*,char*,int) ; 
- char OemToCharBuffW (char const*,char*,int) ; 
- char OemToCharW (char const*,char*) ; 
-#define  TRUE 128 
- int /*<<< orphan*/  lstrcmpW (char*,char const*) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
- int /*<<< orphan*/  strcmp (char*,char const*) ; 
- int /*<<< orphan*/  wine_dbgstr_w (char*) ; 
+
+
+
+typedef int tests ;
+typedef int helloWorldW ;
+typedef int helloWorld ;
+typedef int buf ;
+typedef char WCHAR ;
+typedef char BOOL ;
+
+
+ int CP_OEMCP ;
+ char CharToOemA (char const*,char*) ;
+ char CharToOemBuffA (char const*,char*,int) ;
+ char CharToOemBuffW (char const*,char*,int) ;
+ char CharToOemW (char const*,char*) ;
+
+ int MB_PRECOMPOSED ;
+ int MB_USEGLYPHCHARS ;
+ int MultiByteToWideChar (int ,int,char*,int,char*,int) ;
+ char OemToCharA (char const*,char*) ;
+ char OemToCharBuffA (char const*,char*,int) ;
+ char OemToCharBuffW (char const*,char*,int) ;
+ char OemToCharW (char const*,char*) ;
+
+ int lstrcmpW (char*,char const*) ;
+ int memset (char*,int ,int) ;
+ int ok (int,char*,int,...) ;
+ int strcmp (char*,char const*) ;
+ int wine_dbgstr_w (char*) ;
 
 __attribute__((used)) static void test_CharToOem_OemToChar(void)
 {
@@ -49,10 +49,10 @@ __attribute__((used)) static void test_CharToOem_OemToChar(void)
     }
     tests[] =
     {
-        { FALSE, FALSE, FALSE },
-        { TRUE,  FALSE, FALSE },
-        { FALSE, TRUE,  FALSE },
-        { TRUE,  TRUE,  TRUE  },
+        { 129, 129, 129 },
+        { 128, 129, 129 },
+        { 129, 128, 129 },
+        { 128, 128, 128 },
     };
     BOOL ret;
     int i;
@@ -62,8 +62,8 @@ __attribute__((used)) static void test_CharToOem_OemToChar(void)
     for (i = 0; i < sizeof(tests)/sizeof(tests[0]); i++)
     {
         const char *expected = tests[i].ret ? helloWorld : "";
-        const char *src = tests[i].src ? helloWorld : NULL;
-        char buf[64], *dst = tests[i].dst ? buf : NULL;
+        const char *src = tests[i].src ? helloWorld : ((void*)0);
+        char buf[64], *dst = tests[i].dst ? buf : ((void*)0);
 
         memset(buf, 0, sizeof(buf));
         ret = CharToOemA(src, dst);
@@ -89,8 +89,8 @@ __attribute__((used)) static void test_CharToOem_OemToChar(void)
     for (i = 0; i < sizeof(tests)/sizeof(tests[0]); i++)
     {
         const char *expected = tests[i].ret ? helloWorld : "";
-        const WCHAR *src = tests[i].src ? helloWorldW : NULL;
-        char buf[64], *dst = tests[i].dst ? buf : NULL;
+        const WCHAR *src = tests[i].src ? helloWorldW : ((void*)0);
+        char buf[64], *dst = tests[i].dst ? buf : ((void*)0);
 
         memset(buf, 0, sizeof(buf));
         ret = CharToOemW(src, dst);
@@ -106,8 +106,8 @@ __attribute__((used)) static void test_CharToOem_OemToChar(void)
     for (i = 0; i < sizeof(tests)/sizeof(tests[0]); i++)
     {
         const WCHAR *expected = tests[i].ret ? helloWorldW : emptyW;
-        const char *src = tests[i].src ? helloWorld : NULL;
-        WCHAR buf[64], *dst = tests[i].dst ? buf : NULL;
+        const char *src = tests[i].src ? helloWorld : ((void*)0);
+        WCHAR buf[64], *dst = tests[i].dst ? buf : ((void*)0);
 
         memset(buf, 0, sizeof(buf));
         ret = OemToCharW(src, dst);

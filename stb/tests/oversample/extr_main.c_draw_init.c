@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GL_COLOR_BUFFER_BIT ; 
- int /*<<< orphan*/  GL_CULL_FACE ; 
- int /*<<< orphan*/  GL_DEPTH_TEST ; 
- int /*<<< orphan*/  GL_LIGHTING ; 
- int /*<<< orphan*/  GL_MODELVIEW ; 
- int /*<<< orphan*/  GL_PROJECTION ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- scalar_t__ black_on_white ; 
- int /*<<< orphan*/  glClear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glClearColor (int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDisable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glLoadIdentity () ; 
- int /*<<< orphan*/  glMatrixMode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glViewport (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gluOrtho2D (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sx ; 
- int /*<<< orphan*/  sy ; 
+ int GL_COLOR_BUFFER_BIT ;
+ int GL_CULL_FACE ;
+ int GL_DEPTH_TEST ;
+ int GL_LIGHTING ;
+ int GL_MODELVIEW ;
+ int GL_PROJECTION ;
+ int GL_TEXTURE_2D ;
+ scalar_t__ black_on_white ;
+ int glClear (int ) ;
+ int glClearColor (int,int,int,int ) ;
+ int glDisable (int ) ;
+ int glLoadIdentity () ;
+ int glMatrixMode (int ) ;
+ int glViewport (int ,int ,int ,int ) ;
+ int gluOrtho2D (int ,int ,int ,int ) ;
+ int sx ;
+ int sy ;
 
 void draw_init(void)
 {

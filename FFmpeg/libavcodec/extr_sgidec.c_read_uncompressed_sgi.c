@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned char uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_3__ {unsigned int height; unsigned int width; unsigned int bytes_per_channel; unsigned int depth; int linesize; int /*<<< orphan*/  g; } ;
-typedef  TYPE_1__ SgiState ;
-typedef  int /*<<< orphan*/  GetByteContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- unsigned int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_get_byteu (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_get_ne16u (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef unsigned char uint8_t ;
+typedef int uint16_t ;
+struct TYPE_3__ {unsigned int height; unsigned int width; unsigned int bytes_per_channel; unsigned int depth; int linesize; int g; } ;
+typedef TYPE_1__ SgiState ;
+typedef int GetByteContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ unsigned int bytestream2_get_bytes_left (int *) ;
+ int bytestream2_get_byteu (int *) ;
+ int bytestream2_get_ne16u (int *) ;
+ int bytestream2_skip (int *,int) ;
 
 __attribute__((used)) static int read_uncompressed_sgi(unsigned char *out_buf, SgiState *s)
 {
@@ -31,11 +31,11 @@ __attribute__((used)) static int read_uncompressed_sgi(unsigned char *out_buf, S
     GetByteContext gp[4];
     uint8_t *out_end;
 
-    /* Test buffer size. */
+
     if (offset * s->depth > bytestream2_get_bytes_left(&s->g))
         return AVERROR_INVALIDDATA;
 
-    /* Create a reader for each plane */
+
     for (z = 0; z < s->depth; z++) {
         gp[z] = s->g;
         bytestream2_skip(&gp[z], z * offset);

@@ -1,92 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  union kvmppc_one_reg {int dummy; } kvmppc_one_reg ;
-typedef  int u64 ;
-struct TYPE_4__ {int /*<<< orphan*/ * tlbps; int /*<<< orphan*/ * tlbcfg; int /*<<< orphan*/  eptcfg; int /*<<< orphan*/  mmucfg; TYPE_1__* shared; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef union kvmppc_one_reg {int dummy; } kvmppc_one_reg ;
+typedef int u64 ;
+struct TYPE_4__ {int * tlbps; int * tlbcfg; int eptcfg; int mmucfg; TYPE_1__* shared; } ;
 struct kvm_vcpu {TYPE_2__ arch; } ;
-struct TYPE_3__ {int /*<<< orphan*/  mas6; int /*<<< orphan*/  mas4; int /*<<< orphan*/  mas7_3; int /*<<< orphan*/  mas2; int /*<<< orphan*/  mas1; int /*<<< orphan*/  mas0; } ;
+struct TYPE_3__ {int mas6; int mas4; int mas7_3; int mas2; int mas1; int mas0; } ;
 
-/* Variables and functions */
- int EINVAL ; 
-#define  KVM_REG_PPC_EPTCFG 143 
-#define  KVM_REG_PPC_MAS0 142 
-#define  KVM_REG_PPC_MAS1 141 
-#define  KVM_REG_PPC_MAS2 140 
-#define  KVM_REG_PPC_MAS4 139 
-#define  KVM_REG_PPC_MAS6 138 
-#define  KVM_REG_PPC_MAS7_3 137 
-#define  KVM_REG_PPC_MMUCFG 136 
-#define  KVM_REG_PPC_TLB0CFG 135 
-#define  KVM_REG_PPC_TLB0PS 134 
-#define  KVM_REG_PPC_TLB1CFG 133 
-#define  KVM_REG_PPC_TLB1PS 132 
-#define  KVM_REG_PPC_TLB2CFG 131 
-#define  KVM_REG_PPC_TLB2PS 130 
-#define  KVM_REG_PPC_TLB3CFG 129 
-#define  KVM_REG_PPC_TLB3PS 128 
- union kvmppc_one_reg get_reg_val (int,int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ union kvmppc_one_reg get_reg_val (int,int ) ;
 
 int kvmppc_get_one_reg_e500_tlb(struct kvm_vcpu *vcpu, u64 id,
-				union kvmppc_one_reg *val)
+    union kvmppc_one_reg *val)
 {
-	int r = 0;
-	long int i;
+ int r = 0;
+ long int i;
 
-	switch (id) {
-	case KVM_REG_PPC_MAS0:
-		*val = get_reg_val(id, vcpu->arch.shared->mas0);
-		break;
-	case KVM_REG_PPC_MAS1:
-		*val = get_reg_val(id, vcpu->arch.shared->mas1);
-		break;
-	case KVM_REG_PPC_MAS2:
-		*val = get_reg_val(id, vcpu->arch.shared->mas2);
-		break;
-	case KVM_REG_PPC_MAS7_3:
-		*val = get_reg_val(id, vcpu->arch.shared->mas7_3);
-		break;
-	case KVM_REG_PPC_MAS4:
-		*val = get_reg_val(id, vcpu->arch.shared->mas4);
-		break;
-	case KVM_REG_PPC_MAS6:
-		*val = get_reg_val(id, vcpu->arch.shared->mas6);
-		break;
-	case KVM_REG_PPC_MMUCFG:
-		*val = get_reg_val(id, vcpu->arch.mmucfg);
-		break;
-	case KVM_REG_PPC_EPTCFG:
-		*val = get_reg_val(id, vcpu->arch.eptcfg);
-		break;
-	case KVM_REG_PPC_TLB0CFG:
-	case KVM_REG_PPC_TLB1CFG:
-	case KVM_REG_PPC_TLB2CFG:
-	case KVM_REG_PPC_TLB3CFG:
-		i = id - KVM_REG_PPC_TLB0CFG;
-		*val = get_reg_val(id, vcpu->arch.tlbcfg[i]);
-		break;
-	case KVM_REG_PPC_TLB0PS:
-	case KVM_REG_PPC_TLB1PS:
-	case KVM_REG_PPC_TLB2PS:
-	case KVM_REG_PPC_TLB3PS:
-		i = id - KVM_REG_PPC_TLB0PS;
-		*val = get_reg_val(id, vcpu->arch.tlbps[i]);
-		break;
-	default:
-		r = -EINVAL;
-		break;
-	}
+ switch (id) {
+ case 142:
+  *val = get_reg_val(id, vcpu->arch.shared->mas0);
+  break;
+ case 141:
+  *val = get_reg_val(id, vcpu->arch.shared->mas1);
+  break;
+ case 140:
+  *val = get_reg_val(id, vcpu->arch.shared->mas2);
+  break;
+ case 137:
+  *val = get_reg_val(id, vcpu->arch.shared->mas7_3);
+  break;
+ case 139:
+  *val = get_reg_val(id, vcpu->arch.shared->mas4);
+  break;
+ case 138:
+  *val = get_reg_val(id, vcpu->arch.shared->mas6);
+  break;
+ case 136:
+  *val = get_reg_val(id, vcpu->arch.mmucfg);
+  break;
+ case 143:
+  *val = get_reg_val(id, vcpu->arch.eptcfg);
+  break;
+ case 135:
+ case 133:
+ case 131:
+ case 129:
+  i = id - 135;
+  *val = get_reg_val(id, vcpu->arch.tlbcfg[i]);
+  break;
+ case 134:
+ case 132:
+ case 130:
+ case 128:
+  i = id - 134;
+  *val = get_reg_val(id, vcpu->arch.tlbps[i]);
+  break;
+ default:
+  r = -EINVAL;
+  break;
+ }
 
-	return r;
+ return r;
 }

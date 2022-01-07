@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LOG_ERR ; 
- int define_macro (char*,char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  syslog (int /*<<< orphan*/ ,char*) ; 
+ int LOG_ERR ;
+ int define_macro (char*,char*) ;
+ int exit (int) ;
+ char* strchr (char*,char) ;
+ int syslog (int ,char*) ;
 
 __attribute__((used)) static void
 do_macro(char *arg)
 {
-	char *eq;
-	int err;
+ char *eq;
+ int err;
 
-	if ((eq = strchr(arg, '=')) == NULL)
-		err = define_macro(arg, "");
-	else {
-		*eq++ = '\0';
-		err = define_macro(arg, eq);
-	}
-	if (err == -1) {
-		syslog(LOG_ERR, "cannot save macro: %m");
-		exit(1);
-	}
+ if ((eq = strchr(arg, '=')) == ((void*)0))
+  err = define_macro(arg, "");
+ else {
+  *eq++ = '\0';
+  err = define_macro(arg, eq);
+ }
+ if (err == -1) {
+  syslog(LOG_ERR, "cannot save macro: %m");
+  exit(1);
+ }
 }

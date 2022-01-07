@@ -1,53 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * BiosRom ; 
- int /*<<< orphan*/ * BupRam ; 
- int /*<<< orphan*/  CartDeInit () ; 
- int /*<<< orphan*/  CheatDeInit () ; 
- int /*<<< orphan*/  Cs2DeInit () ; 
- int /*<<< orphan*/ * HighWram ; 
- int /*<<< orphan*/ * LowWram ; 
- int /*<<< orphan*/  PerDeInit () ; 
- int /*<<< orphan*/  SH2DeInit () ; 
- int /*<<< orphan*/  ScspDeInit () ; 
- int /*<<< orphan*/  ScuDeInit () ; 
- int /*<<< orphan*/  SmpcDeInit () ; 
- scalar_t__ T123Save (int /*<<< orphan*/ *,int,int,scalar_t__) ; 
- int /*<<< orphan*/  T1MemoryDeInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  T2MemoryDeInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Vdp1DeInit () ; 
- int /*<<< orphan*/  Vdp2DeInit () ; 
- int /*<<< orphan*/  VideoDeInit () ; 
- int /*<<< orphan*/  YAB_ERR_FILEWRITE ; 
- int /*<<< orphan*/  YabSetError (int /*<<< orphan*/ ,void*) ; 
- scalar_t__ bupfilename ; 
+ int * BiosRom ;
+ int * BupRam ;
+ int CartDeInit () ;
+ int CheatDeInit () ;
+ int Cs2DeInit () ;
+ int * HighWram ;
+ int * LowWram ;
+ int PerDeInit () ;
+ int SH2DeInit () ;
+ int ScspDeInit () ;
+ int ScuDeInit () ;
+ int SmpcDeInit () ;
+ scalar_t__ T123Save (int *,int,int,scalar_t__) ;
+ int T1MemoryDeInit (int *) ;
+ int T2MemoryDeInit (int *) ;
+ int Vdp1DeInit () ;
+ int Vdp2DeInit () ;
+ int VideoDeInit () ;
+ int YAB_ERR_FILEWRITE ;
+ int YabSetError (int ,void*) ;
+ scalar_t__ bupfilename ;
 
 void YabauseDeInit(void) {
    SH2DeInit();
 
    if (BiosRom)
       T2MemoryDeInit(BiosRom);
-   BiosRom = NULL;
+   BiosRom = ((void*)0);
 
    if (HighWram)
       T2MemoryDeInit(HighWram);
-   HighWram = NULL;
+   HighWram = ((void*)0);
 
    if (LowWram)
       T2MemoryDeInit(LowWram);
-   LowWram = NULL;
+   LowWram = ((void*)0);
 
    if (BupRam)
    {
@@ -56,7 +48,7 @@ void YabauseDeInit(void) {
 
       T1MemoryDeInit(BupRam);
    }
-   BupRam = NULL;
+   BupRam = ((void*)0);
 
    CartDeInit();
    Cs2DeInit();

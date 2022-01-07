@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct f2fs_sb_info {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __f2fs_crc32 (struct f2fs_sb_info*,int /*<<< orphan*/ ,void const*,unsigned int) ; 
+
+ int __f2fs_crc32 (struct f2fs_sb_info*,int ,void const*,unsigned int) ;
 
 __attribute__((used)) static inline u32 f2fs_chksum(struct f2fs_sb_info *sbi, u32 crc,
-			      const void *address, unsigned int length)
+         const void *address, unsigned int length)
 {
-	return __f2fs_crc32(sbi, crc, address, length);
+ return __f2fs_crc32(sbi, crc, address, length);
 }

@@ -1,39 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  check_mailmap_entries (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  check_mailmap_resolve (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  entries ; 
- int /*<<< orphan*/  g_mailmap ; 
- int /*<<< orphan*/  git_mailmap_from_buffer (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  resolved ; 
- int /*<<< orphan*/  resolved_untracked ; 
- int /*<<< orphan*/  string_mailmap ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
+ int ARRAY_SIZE (int ) ;
+ int check_mailmap_entries (int ,int ,int ) ;
+ int check_mailmap_resolve (int ,int ,int ) ;
+ int cl_git_pass (int ) ;
+ int entries ;
+ int g_mailmap ;
+ int git_mailmap_from_buffer (int *,int ,int ) ;
+ int resolved ;
+ int resolved_untracked ;
+ int string_mailmap ;
+ int strlen (int ) ;
 
 void test_mailmap_parsing__string(void)
 {
-	cl_git_pass(git_mailmap_from_buffer(
-		&g_mailmap, string_mailmap, strlen(string_mailmap)));
+ cl_git_pass(git_mailmap_from_buffer(
+  &g_mailmap, string_mailmap, strlen(string_mailmap)));
 
-	/* We should have parsed all of the entries */
-	check_mailmap_entries(g_mailmap, entries, ARRAY_SIZE(entries));
 
-	/* Check that resolving the entries works */
-	check_mailmap_resolve(g_mailmap, resolved, ARRAY_SIZE(resolved));
-	check_mailmap_resolve(
-		g_mailmap, resolved_untracked, ARRAY_SIZE(resolved_untracked));
+ check_mailmap_entries(g_mailmap, entries, ARRAY_SIZE(entries));
+
+
+ check_mailmap_resolve(g_mailmap, resolved, ARRAY_SIZE(resolved));
+ check_mailmap_resolve(
+  g_mailmap, resolved_untracked, ARRAY_SIZE(resolved_untracked));
 }

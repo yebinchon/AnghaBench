@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u16 ;
-struct isci_host {TYPE_1__* smu_registers; int /*<<< orphan*/  scic_lock; } ;
-struct TYPE_2__ {int /*<<< orphan*/  interrupt_coalesce_control; } ;
 
-/* Variables and functions */
- scalar_t__ ISCI_COALESCE_BASE ; 
- int /*<<< orphan*/  NUMBER ; 
- int SMU_ICC_GEN_VAL (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  TIMER ; 
- scalar_t__ ilog2 (scalar_t__) ; 
- scalar_t__ isci_tci_active (struct isci_host*) ; 
- int /*<<< orphan*/  sci_controller_completion_handler (struct isci_host*) ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  writel (int,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ u16 ;
+struct isci_host {TYPE_1__* smu_registers; int scic_lock; } ;
+struct TYPE_2__ {int interrupt_coalesce_control; } ;
+
+
+ scalar_t__ ISCI_COALESCE_BASE ;
+ int NUMBER ;
+ int SMU_ICC_GEN_VAL (int ,scalar_t__) ;
+ int TIMER ;
+ scalar_t__ ilog2 (scalar_t__) ;
+ scalar_t__ isci_tci_active (struct isci_host*) ;
+ int sci_controller_completion_handler (struct isci_host*) ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
+ int writel (int,int *) ;
 
 void isci_host_completion_routine(unsigned long data)
 {
-	struct isci_host *ihost = (struct isci_host *)data;
-	u16 active;
+ struct isci_host *ihost = (struct isci_host *)data;
+ u16 active;
 
-	spin_lock_irq(&ihost->scic_lock);
-	sci_controller_completion_handler(ihost);
-	spin_unlock_irq(&ihost->scic_lock);
+ spin_lock_irq(&ihost->scic_lock);
+ sci_controller_completion_handler(ihost);
+ spin_unlock_irq(&ihost->scic_lock);
 
-	/* the coalesence timeout doubles at each encoding step, so
-	 * update it based on the ilog2 value of the outstanding requests
-	 */
-	active = isci_tci_active(ihost);
-	writel(SMU_ICC_GEN_VAL(NUMBER, active) |
-	       SMU_ICC_GEN_VAL(TIMER, ISCI_COALESCE_BASE + ilog2(active)),
-	       &ihost->smu_registers->interrupt_coalesce_control);
+
+
+
+ active = isci_tci_active(ihost);
+ writel(SMU_ICC_GEN_VAL(NUMBER, active) |
+        SMU_ICC_GEN_VAL(TIMER, ISCI_COALESCE_BASE + ilog2(active)),
+        &ihost->smu_registers->interrupt_coalesce_control);
 }

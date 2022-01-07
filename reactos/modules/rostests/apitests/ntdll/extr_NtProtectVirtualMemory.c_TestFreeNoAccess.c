@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONG ;
-typedef  int SIZE_T ;
-typedef  int* PVOID ;
-typedef  int* PUCHAR ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MEM_COMMIT ; 
- int /*<<< orphan*/  MEM_RELEASE ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtAllocateVirtualMemory (int /*<<< orphan*/ ,int**,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtCurrentProcess () ; 
- int /*<<< orphan*/  NtFreeVirtualMemory (int /*<<< orphan*/ ,int**,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtProtectVirtualMemory (int /*<<< orphan*/ ,int**,int*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  PAGE_NOACCESS ; 
- int /*<<< orphan*/  PAGE_READWRITE ; 
- int PAGE_SIZE ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  ok (int,char*,int,int,int,int*) ; 
- int /*<<< orphan*/  ok_hex (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok_ntstatus (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ULONG ;
+typedef int SIZE_T ;
+typedef int* PVOID ;
+typedef int* PUCHAR ;
+typedef int NTSTATUS ;
+
+
+ int MEM_COMMIT ;
+ int MEM_RELEASE ;
+ int NT_SUCCESS (int ) ;
+ int NtAllocateVirtualMemory (int ,int**,int ,int*,int ,int ) ;
+ int NtCurrentProcess () ;
+ int NtFreeVirtualMemory (int ,int**,int*,int ) ;
+ int NtProtectVirtualMemory (int ,int**,int*,int ,int*) ;
+ int PAGE_NOACCESS ;
+ int PAGE_READWRITE ;
+ int PAGE_SIZE ;
+ int STATUS_SUCCESS ;
+ int ok (int,char*,int,int,int,int*) ;
+ int ok_hex (int,int ) ;
+ int ok_ntstatus (int ,int ) ;
 
 __attribute__((used)) static
 void
@@ -45,7 +45,7 @@ TestFreeNoAccess(void)
 
     for (Iteration = 0; Iteration < 50000; Iteration++)
     {
-        Mem = NULL;
+        Mem = ((void*)0);
         Size = 16 * PAGE_SIZE;
         Status = NtAllocateVirtualMemory(NtCurrentProcess(),
                                          &Mem,

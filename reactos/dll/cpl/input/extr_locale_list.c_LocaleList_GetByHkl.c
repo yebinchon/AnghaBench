@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  dwId; struct TYPE_4__* pNext; } ;
-typedef  TYPE_1__ LOCALE_LIST_NODE ;
-typedef  int /*<<< orphan*/  HKL ;
 
-/* Variables and functions */
- scalar_t__ LOWORD (int /*<<< orphan*/ ) ; 
- TYPE_1__* _LocaleList ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int dwId; struct TYPE_4__* pNext; } ;
+typedef TYPE_1__ LOCALE_LIST_NODE ;
+typedef int HKL ;
+
+
+ scalar_t__ LOWORD (int ) ;
+ TYPE_1__* _LocaleList ;
 
 LOCALE_LIST_NODE*
 LocaleList_GetByHkl(HKL hkl)
 {
     LOCALE_LIST_NODE *pCurrent;
 
-    for (pCurrent = _LocaleList; pCurrent != NULL; pCurrent = pCurrent->pNext)
+    for (pCurrent = _LocaleList; pCurrent != ((void*)0); pCurrent = pCurrent->pNext)
     {
         if (LOWORD(pCurrent->dwId) == LOWORD(hkl))
         {
@@ -32,5 +32,5 @@ LocaleList_GetByHkl(HKL hkl)
         }
     }
 
-    return NULL;
+    return ((void*)0);
 }

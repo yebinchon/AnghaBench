@@ -1,86 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* xmlParserInputPtr ;
-typedef  int /*<<< orphan*/  xmlParserCtxtPtr ;
-typedef  TYPE_2__* xmlEntityPtr ;
-typedef  int /*<<< orphan*/  xmlChar ;
-struct TYPE_8__ {int etype; scalar_t__ length; int /*<<< orphan*/ * content; int /*<<< orphan*/ * URI; int /*<<< orphan*/ * name; scalar_t__ ExternalID; } ;
-struct TYPE_7__ {char* filename; scalar_t__ length; int /*<<< orphan*/ * end; int /*<<< orphan*/ * cur; int /*<<< orphan*/ * base; } ;
 
-/* Variables and functions */
-#define  XML_EXTERNAL_GENERAL_PARSED_ENTITY 133 
-#define  XML_EXTERNAL_GENERAL_UNPARSED_ENTITY 132 
-#define  XML_EXTERNAL_PARAMETER_ENTITY 131 
-#define  XML_INTERNAL_GENERAL_ENTITY 130 
-#define  XML_INTERNAL_PARAMETER_ENTITY 129 
-#define  XML_INTERNAL_PREDEFINED_ENTITY 128 
- int /*<<< orphan*/  xmlErrInternal (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xmlGenericError (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xmlGenericErrorContext ; 
- TYPE_1__* xmlLoadExternalEntity (char*,char*,int /*<<< orphan*/ ) ; 
- TYPE_1__* xmlNewInputStream (int /*<<< orphan*/ ) ; 
- scalar_t__ xmlParserDebugEntities ; 
- scalar_t__ xmlStrdup (int /*<<< orphan*/ *) ; 
- scalar_t__ xmlStrlen (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef TYPE_1__* xmlParserInputPtr ;
+typedef int xmlParserCtxtPtr ;
+typedef TYPE_2__* xmlEntityPtr ;
+typedef int xmlChar ;
+struct TYPE_8__ {int etype; scalar_t__ length; int * content; int * URI; int * name; scalar_t__ ExternalID; } ;
+struct TYPE_7__ {char* filename; scalar_t__ length; int * end; int * cur; int * base; } ;
+ int xmlErrInternal (int ,char*,int *) ;
+ int xmlGenericError (int ,char*,int *) ;
+ int xmlGenericErrorContext ;
+ TYPE_1__* xmlLoadExternalEntity (char*,char*,int ) ;
+ TYPE_1__* xmlNewInputStream (int ) ;
+ scalar_t__ xmlParserDebugEntities ;
+ scalar_t__ xmlStrdup (int *) ;
+ scalar_t__ xmlStrlen (int *) ;
 
 xmlParserInputPtr
 xmlNewEntityInputStream(xmlParserCtxtPtr ctxt, xmlEntityPtr entity) {
     xmlParserInputPtr input;
 
-    if (entity == NULL) {
+    if (entity == ((void*)0)) {
         xmlErrInternal(ctxt, "xmlNewEntityInputStream entity = NULL\n",
-	               NULL);
-	return(NULL);
+                ((void*)0));
+ return(((void*)0));
     }
     if (xmlParserDebugEntities)
-	xmlGenericError(xmlGenericErrorContext,
-		"new input from entity: %s\n", entity->name);
-    if (entity->content == NULL) {
-	switch (entity->etype) {
-            case XML_EXTERNAL_GENERAL_UNPARSED_ENTITY:
-	        xmlErrInternal(ctxt, "Cannot parse entity %s\n",
-		               entity->name);
+ xmlGenericError(xmlGenericErrorContext,
+  "new input from entity: %s\n", entity->name);
+    if (entity->content == ((void*)0)) {
+ switch (entity->etype) {
+            case 132:
+         xmlErrInternal(ctxt, "Cannot parse entity %s\n",
+                 entity->name);
                 break;
-            case XML_EXTERNAL_GENERAL_PARSED_ENTITY:
-            case XML_EXTERNAL_PARAMETER_ENTITY:
-		return(xmlLoadExternalEntity((char *) entity->URI,
-		       (char *) entity->ExternalID, ctxt));
-            case XML_INTERNAL_GENERAL_ENTITY:
-	        xmlErrInternal(ctxt,
-		      "Internal entity %s without content !\n",
-		               entity->name);
+            case 133:
+            case 131:
+  return(xmlLoadExternalEntity((char *) entity->URI,
+         (char *) entity->ExternalID, ctxt));
+            case 130:
+         xmlErrInternal(ctxt,
+        "Internal entity %s without content !\n",
+                 entity->name);
                 break;
-            case XML_INTERNAL_PARAMETER_ENTITY:
-	        xmlErrInternal(ctxt,
-		      "Internal parameter entity %s without content !\n",
-		               entity->name);
+            case 129:
+         xmlErrInternal(ctxt,
+        "Internal parameter entity %s without content !\n",
+                 entity->name);
                 break;
-            case XML_INTERNAL_PREDEFINED_ENTITY:
-	        xmlErrInternal(ctxt,
-		      "Predefined entity %s without content !\n",
-		               entity->name);
+            case 128:
+         xmlErrInternal(ctxt,
+        "Predefined entity %s without content !\n",
+                 entity->name);
                 break;
-	}
-	return(NULL);
+ }
+ return(((void*)0));
     }
     input = xmlNewInputStream(ctxt);
-    if (input == NULL) {
-	return(NULL);
+    if (input == ((void*)0)) {
+ return(((void*)0));
     }
-    if (entity->URI != NULL)
-	input->filename = (char *) xmlStrdup((xmlChar *) entity->URI);
+    if (entity->URI != ((void*)0))
+ input->filename = (char *) xmlStrdup((xmlChar *) entity->URI);
     input->base = entity->content;
     if (entity->length == 0)
         entity->length = xmlStrlen(entity->content);

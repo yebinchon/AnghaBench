@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
-typedef  scalar_t__ SDL_LogPriority ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOGC (char*) ; 
- int /*<<< orphan*/  SDL_LOG_CATEGORY_VIDEO ; 
- int /*<<< orphan*/  SDL_LogMessageV (int /*<<< orphan*/ ,scalar_t__,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SDL_free (char*) ; 
- char* SDL_malloc (scalar_t__) ; 
- scalar_t__ sdl_priority_from_av_level (int) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- scalar_t__ strlen (char const*) ; 
+
+
+
+typedef int va_list ;
+typedef scalar_t__ SDL_LogPriority ;
+
+
+ int LOGC (char*) ;
+ int SDL_LOG_CATEGORY_VIDEO ;
+ int SDL_LogMessageV (int ,scalar_t__,char*,int ) ;
+ int SDL_free (char*) ;
+ char* SDL_malloc (scalar_t__) ;
+ scalar_t__ sdl_priority_from_av_level (int) ;
+ int strcpy (char*,char const*) ;
+ scalar_t__ strlen (char const*) ;
 
 __attribute__((used)) static void
 av_log_callback(void *avcl, int level, const char *fmt, va_list vl) {
@@ -34,7 +34,7 @@ av_log_callback(void *avcl, int level, const char *fmt, va_list vl) {
         LOGC("Could not allocate string");
         return;
     }
-    // strcpy is safe here, the destination is large enough
+
     strcpy(local_fmt, "[FFmpeg] ");
     strcpy(local_fmt + 9, fmt);
     SDL_LogMessageV(SDL_LOG_CATEGORY_VIDEO, priority, local_fmt, vl);

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_2__ {int disable_after_timeout; int brightness; int effect; int effect_speed; int /*<<< orphan*/  color_1; int /*<<< orphan*/  disable_when_usb_suspended; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _get_color (int /*<<< orphan*/ *,int*) ; 
- TYPE_1__ g_config ; 
-#define  id_brightness 133 
-#define  id_color_1 132 
-#define  id_disable_after_timeout 131 
-#define  id_disable_when_usb_suspended 130 
-#define  id_effect 129 
-#define  id_effect_speed 128 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_2__ {int disable_after_timeout; int brightness; int effect; int effect_speed; int color_1; int disable_when_usb_suspended; } ;
+
+
+ int _get_color (int *,int*) ;
+ TYPE_1__ g_config ;
+
+
+
+
+
+
 
 void backlight_config_get_value( uint8_t *data )
 {
@@ -30,32 +30,32 @@ void backlight_config_get_value( uint8_t *data )
     uint8_t *value_data = &(data[1]);
     switch ( *value_id )
     {
-        case id_disable_when_usb_suspended:
+        case 130:
         {
             *value_data = ( g_config.disable_when_usb_suspended ? 1 : 0 );
             break;
         }
-        case id_disable_after_timeout:
+        case 131:
         {
             *value_data = g_config.disable_after_timeout;
             break;
         }
-        case id_brightness:
+        case 133:
         {
             *value_data = g_config.brightness;
             break;
         }
-        case id_effect:
+        case 129:
         {
             *value_data = g_config.effect;
             break;
         }
-        case id_effect_speed:
+        case 128:
         {
             *value_data = g_config.effect_speed;
             break;
         }
-        case id_color_1:
+        case 132:
         {
             _get_color( &(g_config.color_1), value_data );
             break;

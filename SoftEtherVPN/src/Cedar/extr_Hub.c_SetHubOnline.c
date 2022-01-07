@@ -1,113 +1,113 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-struct TYPE_16__ {scalar_t__ Type; int Offline; TYPE_2__* Cedar; int /*<<< orphan*/  lock_online; int /*<<< orphan*/  Name; int /*<<< orphan*/  SecureNATOption; int /*<<< orphan*/ * SecureNAT; scalar_t__ EnableSecureNAT; } ;
-struct TYPE_15__ {int /*<<< orphan*/  LimitBroadcast; int /*<<< orphan*/  TapMacAddress; int /*<<< orphan*/  TapMode; int /*<<< orphan*/  Monitor; int /*<<< orphan*/  Local; int /*<<< orphan*/  DeviceName; int /*<<< orphan*/ * Bridge; int /*<<< orphan*/  HubName; } ;
-struct TYPE_14__ {TYPE_1__* Server; int /*<<< orphan*/  LocalBridgeList; } ;
+
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+struct TYPE_16__ {scalar_t__ Type; int Offline; TYPE_2__* Cedar; int lock_online; int Name; int SecureNATOption; int * SecureNAT; scalar_t__ EnableSecureNAT; } ;
+struct TYPE_15__ {int LimitBroadcast; int TapMacAddress; int TapMode; int Monitor; int Local; int DeviceName; int * Bridge; int HubName; } ;
+struct TYPE_14__ {TYPE_1__* Server; int LocalBridgeList; } ;
 struct TYPE_13__ {scalar_t__ ServerType; } ;
-typedef  TYPE_3__ LOCALBRIDGE ;
-typedef  TYPE_4__ HUB ;
+typedef TYPE_3__ LOCALBRIDGE ;
+typedef TYPE_4__ HUB ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BrNewBridge (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  HLog (TYPE_4__*,char*) ; 
- scalar_t__ HUB_TYPE_FARM_DYNAMIC ; 
- TYPE_3__* LIST_DATA (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ ) ; 
- scalar_t__ SERVER_TYPE_FARM_CONTROLLER ; 
- int /*<<< orphan*/  SiHubOnlineProc (TYPE_4__*) ; 
- int /*<<< orphan*/ * SnNewSecureNAT (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StartAllLink (TYPE_4__*) ; 
- scalar_t__ StrCmpi (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ ) ; 
+
+ int * BrNewBridge (TYPE_4__*,int ,int *,int ,int ,int ,int ,int ,TYPE_3__*) ;
+ int HLog (TYPE_4__*,char*) ;
+ scalar_t__ HUB_TYPE_FARM_DYNAMIC ;
+ TYPE_3__* LIST_DATA (int ,scalar_t__) ;
+ scalar_t__ LIST_NUM (int ) ;
+ int Lock (int ) ;
+ int LockList (int ) ;
+ scalar_t__ SERVER_TYPE_FARM_CONTROLLER ;
+ int SiHubOnlineProc (TYPE_4__*) ;
+ int * SnNewSecureNAT (TYPE_4__*,int ) ;
+ int StartAllLink (TYPE_4__*) ;
+ scalar_t__ StrCmpi (int ,int ) ;
+ int Unlock (int ) ;
+ int UnlockList (int ) ;
 
 void SetHubOnline(HUB *h)
 {
-	bool for_cluster = false;
-	// Validate arguments
-	if (h == NULL)
-	{
-		return;
-	}
+ bool for_cluster = 0;
 
-	if (h->Cedar->Server != NULL && h->Cedar->Server->ServerType == SERVER_TYPE_FARM_CONTROLLER)
-	{
-		if (h->Type == HUB_TYPE_FARM_DYNAMIC)
-		{
-			for_cluster = true;
-		}
-	}
+ if (h == ((void*)0))
+ {
+  return;
+ }
 
-	Lock(h->lock_online);
-	{
-		if (h->Offline == false)
-		{
-			Unlock(h->lock_online);
-			return;
-		}
-		HLog(h, "LH_ONLINE");
+ if (h->Cedar->Server != ((void*)0) && h->Cedar->Server->ServerType == SERVER_TYPE_FARM_CONTROLLER)
+ {
+  if (h->Type == HUB_TYPE_FARM_DYNAMIC)
+  {
+   for_cluster = 1;
+  }
+ }
 
-		// Start all links
-		StartAllLink(h);
+ Lock(h->lock_online);
+ {
+  if (h->Offline == 0)
+  {
+   Unlock(h->lock_online);
+   return;
+  }
+  HLog(h, "LH_ONLINE");
 
-		// Start the SecureNAT
-		if (h->EnableSecureNAT)
-		{
-			if (h->SecureNAT == NULL)
-			{
-				if (for_cluster == false)
-				{
-					h->SecureNAT = SnNewSecureNAT(h, h->SecureNATOption);
-				}
-			}
-		}
 
-		// Start all of the local bridges that is associated with this HUB
-		if (h->Type != HUB_TYPE_FARM_DYNAMIC)
-		{
-			LockList(h->Cedar->LocalBridgeList);
-			{
-				UINT i;
-				for (i = 0;i < LIST_NUM(h->Cedar->LocalBridgeList);i++)
-				{
-					LOCALBRIDGE *br = LIST_DATA(h->Cedar->LocalBridgeList, i);
+  StartAllLink(h);
 
-					if (StrCmpi(br->HubName, h->Name) == 0)
-					{
-						if (br->Bridge == NULL)
-						{
-							br->Bridge = BrNewBridge(h, br->DeviceName, NULL, br->Local, br->Monitor,
-								br->TapMode, br->TapMacAddress, br->LimitBroadcast, br);
-						}
-					}
-				}
-			}
-			UnlockList(h->Cedar->LocalBridgeList);
-		}
 
-		h->Offline = false;
-	}
-	Unlock(h->lock_online);
+  if (h->EnableSecureNAT)
+  {
+   if (h->SecureNAT == ((void*)0))
+   {
+    if (for_cluster == 0)
+    {
+     h->SecureNAT = SnNewSecureNAT(h, h->SecureNATOption);
+    }
+   }
+  }
 
-	if (h->Cedar->Server != NULL)
-	{
-		SiHubOnlineProc(h);
-	}
+
+  if (h->Type != HUB_TYPE_FARM_DYNAMIC)
+  {
+   LockList(h->Cedar->LocalBridgeList);
+   {
+    UINT i;
+    for (i = 0;i < LIST_NUM(h->Cedar->LocalBridgeList);i++)
+    {
+     LOCALBRIDGE *br = LIST_DATA(h->Cedar->LocalBridgeList, i);
+
+     if (StrCmpi(br->HubName, h->Name) == 0)
+     {
+      if (br->Bridge == ((void*)0))
+      {
+       br->Bridge = BrNewBridge(h, br->DeviceName, ((void*)0), br->Local, br->Monitor,
+        br->TapMode, br->TapMacAddress, br->LimitBroadcast, br);
+      }
+     }
+    }
+   }
+   UnlockList(h->Cedar->LocalBridgeList);
+  }
+
+  h->Offline = 0;
+ }
+ Unlock(h->lock_online);
+
+ if (h->Cedar->Server != ((void*)0))
+ {
+  SiHubOnlineProc(h);
+ }
 }

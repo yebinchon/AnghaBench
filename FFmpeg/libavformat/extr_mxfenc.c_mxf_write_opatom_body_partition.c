@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_11__ {TYPE_3__** streams; int /*<<< orphan*/ * pb; TYPE_2__* priv_data; } ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_11__ {TYPE_3__** streams; int * pb; TYPE_2__* priv_data; } ;
 struct TYPE_10__ {TYPE_1__* priv_data; } ;
-struct TYPE_9__ {int /*<<< orphan*/  body_offset; int /*<<< orphan*/  header_written; } ;
-struct TYPE_8__ {int /*<<< orphan*/  track_essence_element_key; } ;
-typedef  TYPE_1__ MXFStreamContext ;
-typedef  TYPE_2__ MXFContext ;
-typedef  TYPE_3__ AVStream ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_4__ AVFormatContext ;
+struct TYPE_9__ {int body_offset; int header_written; } ;
+struct TYPE_8__ {int track_essence_element_key; } ;
+typedef TYPE_1__ MXFStreamContext ;
+typedef TYPE_2__ MXFContext ;
+typedef TYPE_3__ AVStream ;
+typedef int AVIOContext ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * body_partition_key ; 
- int /*<<< orphan*/  klv_encode_ber9_length (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mxf_write_klv_fill (TYPE_4__*) ; 
- int mxf_write_partition (TYPE_4__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+ int avio_write (int *,int ,int) ;
+ int * body_partition_key ;
+ int klv_encode_ber9_length (int *,int ) ;
+ int mxf_write_klv_fill (TYPE_4__*) ;
+ int mxf_write_partition (TYPE_4__*,int,int ,int const*,int ) ;
 
 __attribute__((used)) static int mxf_write_opatom_body_partition(AVFormatContext *s)
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static int mxf_write_opatom_body_partition(AVFormatContext
     AVIOContext *pb = s->pb;
     AVStream *st = s->streams[0];
     MXFStreamContext *sc = st->priv_data;
-    const uint8_t *key = NULL;
+    const uint8_t *key = ((void*)0);
 
     int err;
 

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct vlc_http_stream {int dummy; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * tls; } ;
-struct vlc_h1_conn {size_t content_length; TYPE_1__ conn; int /*<<< orphan*/  active; } ;
-typedef  scalar_t__ ssize_t ;
-struct TYPE_8__ {scalar_t__ i_buffer; int /*<<< orphan*/  p_buffer; } ;
-typedef  TYPE_2__ block_t ;
+struct TYPE_7__ {int * tls; } ;
+struct vlc_h1_conn {size_t content_length; TYPE_1__ conn; int active; } ;
+typedef scalar_t__ ssize_t ;
+struct TYPE_8__ {scalar_t__ i_buffer; int p_buffer; } ;
+typedef TYPE_2__ block_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ECONNRESET ; 
- size_t UINTMAX_MAX ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- TYPE_2__* block_Alloc (size_t) ; 
- int /*<<< orphan*/  block_Release (TYPE_2__*) ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- struct vlc_h1_conn* vlc_h1_stream_conn (struct vlc_http_stream*) ; 
- TYPE_2__* vlc_http_error ; 
- scalar_t__ vlc_tls_Read (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t,int) ; 
+
+ int ECONNRESET ;
+ size_t UINTMAX_MAX ;
+ int assert (int ) ;
+ TYPE_2__* block_Alloc (size_t) ;
+ int block_Release (TYPE_2__*) ;
+ int errno ;
+ scalar_t__ unlikely (int ) ;
+ struct vlc_h1_conn* vlc_h1_stream_conn (struct vlc_http_stream*) ;
+ TYPE_2__* vlc_http_error ;
+ scalar_t__ vlc_tls_Read (int *,int ,size_t,int) ;
 
 __attribute__((used)) static block_t *vlc_h1_stream_read(struct vlc_http_stream *stream)
 {
@@ -38,19 +38,19 @@ __attribute__((used)) static block_t *vlc_h1_stream_read(struct vlc_http_stream 
 
     assert(conn->active);
 
-    if (conn->conn.tls == NULL)
+    if (conn->conn.tls == ((void*)0))
         return vlc_http_error;
 
     if (size > conn->content_length)
         size = conn->content_length;
     if (size == 0)
-        return NULL;
+        return ((void*)0);
 
     block_t *block = block_Alloc(size);
-    if (unlikely(block == NULL))
+    if (unlikely(block == ((void*)0)))
         return vlc_http_error;
 
-    ssize_t val = vlc_tls_Read(conn->conn.tls, block->p_buffer, size, false);
+    ssize_t val = vlc_tls_Read(conn->conn.tls, block->p_buffer, size, 0);
     if (val <= 0)
     {
         block_Release(block);
@@ -61,7 +61,7 @@ __attribute__((used)) static block_t *vlc_h1_stream_read(struct vlc_http_stream 
             errno = ECONNRESET;
             return vlc_http_error;
         }
-        return NULL;
+        return ((void*)0);
     }
 
     block->i_buffer = val;

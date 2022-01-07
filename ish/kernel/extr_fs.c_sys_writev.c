@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct iovec_ {unsigned int len; int /*<<< orphan*/  base; } ;
-typedef  int /*<<< orphan*/  fd_t ;
-typedef  int dword_t ;
-typedef  int /*<<< orphan*/  addr_t ;
 
-/* Variables and functions */
- int _EFAULT ; 
- int _ENOMEM ; 
- int /*<<< orphan*/  free (struct iovec_*) ; 
- struct iovec_* malloc (int) ; 
- int sys_write (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
- scalar_t__ user_read (int /*<<< orphan*/ ,struct iovec_*,int) ; 
+
+
+
+struct iovec_ {unsigned int len; int base; } ;
+typedef int fd_t ;
+typedef int dword_t ;
+typedef int addr_t ;
+
+
+ int _EFAULT ;
+ int _ENOMEM ;
+ int free (struct iovec_*) ;
+ struct iovec_* malloc (int) ;
+ int sys_write (int ,int ,unsigned int) ;
+ scalar_t__ user_read (int ,struct iovec_*,int) ;
 
 dword_t sys_writev(fd_t fd_no, addr_t iovec_addr, dword_t iovec_count) {
     dword_t iovec_size = sizeof(struct iovec_) * iovec_count;
     struct iovec_ *iovecs = malloc(iovec_size);
-    if (iovecs == NULL)
+    if (iovecs == ((void*)0))
         return _ENOMEM;
     int res = 0;
     if (user_read(iovec_addr, iovecs, iovec_size)) {

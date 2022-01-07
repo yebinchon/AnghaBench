@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ REAL ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpPath ;
-typedef  int /*<<< orphan*/  GpCustomLineCap ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FillModeAlternate ; 
- int /*<<< orphan*/  GdipAddPathRectangle (int /*<<< orphan*/ *,double,double,double,double) ; 
- int /*<<< orphan*/  GdipCreateCustomLineCap (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,double,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreatePath (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteCustomLineCap (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeletePath (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetCustomLineCapBaseInset (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  InvalidParameter ; 
- int /*<<< orphan*/  LineCapFlat ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expectf (double,scalar_t__) ; 
+
+
+
+typedef scalar_t__ REAL ;
+typedef int GpStatus ;
+typedef int GpPath ;
+typedef int GpCustomLineCap ;
+
+
+ int FillModeAlternate ;
+ int GdipAddPathRectangle (int *,double,double,double,double) ;
+ int GdipCreateCustomLineCap (int *,int *,int ,double,int **) ;
+ int GdipCreatePath (int ,int **) ;
+ int GdipDeleteCustomLineCap (int *) ;
+ int GdipDeletePath (int *) ;
+ int GdipGetCustomLineCapBaseInset (int *,scalar_t__*) ;
+ int InvalidParameter ;
+ int LineCapFlat ;
+ int Ok ;
+ int expect (int ,int ) ;
+ int expectf (double,scalar_t__) ;
 
 __attribute__((used)) static void test_inset(void)
 {
@@ -41,17 +41,17 @@ __attribute__((used)) static void test_inset(void)
     stat = GdipAddPathRectangle(path, 5.0, 5.0, 10.0, 10.0);
     expect(Ok, stat);
 
-    stat = GdipCreateCustomLineCap(NULL, path, LineCapFlat, 0.0, &custom);
+    stat = GdipCreateCustomLineCap(((void*)0), path, LineCapFlat, 0.0, &custom);
     expect(Ok, stat);
 
-    /* NULL args */
-    stat = GdipGetCustomLineCapBaseInset(NULL, NULL);
+
+    stat = GdipGetCustomLineCapBaseInset(((void*)0), ((void*)0));
     expect(InvalidParameter, stat);
-    stat = GdipGetCustomLineCapBaseInset(NULL, &inset);
+    stat = GdipGetCustomLineCapBaseInset(((void*)0), &inset);
     expect(InvalidParameter, stat);
-    stat = GdipGetCustomLineCapBaseInset(custom, NULL);
+    stat = GdipGetCustomLineCapBaseInset(custom, ((void*)0));
     expect(InvalidParameter, stat);
-    /* valid args */
+
     inset = (REAL)0xdeadbeef;
     stat = GdipGetCustomLineCapBaseInset(custom, &inset);
     expect(Ok, stat);

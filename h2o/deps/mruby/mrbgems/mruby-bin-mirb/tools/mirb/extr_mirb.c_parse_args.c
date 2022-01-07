@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct _args {char** libv; char** argv; int argc; int /*<<< orphan*/ * rfp; void* verbose; int /*<<< orphan*/  libc; void* debug; int /*<<< orphan*/  member_0; } ;
-typedef  int /*<<< orphan*/  mrb_state ;
 
-/* Variables and functions */
- int EXIT_FAILURE ; 
- int EXIT_SUCCESS ; 
- void* TRUE ; 
- char* dup_arg_item (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  memcpy (char**,char**,int) ; 
- scalar_t__ mrb_malloc (int /*<<< orphan*/ *,int) ; 
- scalar_t__ mrb_realloc (int /*<<< orphan*/ *,char**,int) ; 
- int /*<<< orphan*/  mrb_show_copyright (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_show_version (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
+
+
+
+struct _args {char** libv; char** argv; int argc; int * rfp; void* verbose; int libc; void* debug; int member_0; } ;
+typedef int mrb_state ;
+
+
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ void* TRUE ;
+ char* dup_arg_item (int *,char*) ;
+ int exit (int) ;
+ int * fopen (char*,char*) ;
+ int memcpy (char**,char**,int) ;
+ scalar_t__ mrb_malloc (int *,int) ;
+ scalar_t__ mrb_realloc (int *,char**,int) ;
+ int mrb_show_copyright (int *) ;
+ int mrb_show_version (int *) ;
+ int printf (char*,char*) ;
+ int strcmp (char*,char*) ;
 
 __attribute__((used)) static int
 parse_args(mrb_state *mrb, int argc, char **argv, struct _args *args)
@@ -84,10 +84,10 @@ parse_args(mrb_state *mrb, int argc, char **argv, struct _args *args)
     }
   }
 
-  if (args->rfp == NULL) {
-    if (*argv != NULL) {
+  if (args->rfp == ((void*)0)) {
+    if (*argv != ((void*)0)) {
       args->rfp = fopen(argv[0], "r");
-      if (args->rfp == NULL) {
+      if (args->rfp == ((void*)0)) {
         printf("Cannot open program file. (%s)\n", *argv);
         return EXIT_FAILURE;
       }

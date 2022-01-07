@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  process; struct android_app* app; int /*<<< orphan*/  id; } ;
-struct TYPE_5__ {int /*<<< orphan*/  process; struct android_app* app; int /*<<< orphan*/  id; } ;
-struct android_app {int running; int /*<<< orphan*/  mutex; int /*<<< orphan*/  cond; int /*<<< orphan*/ * looper; TYPE_3__ cmdPollSource; int /*<<< orphan*/  msgread; TYPE_2__ inputPollSource; TYPE_1__* activity; int /*<<< orphan*/  config; } ;
-struct TYPE_4__ {int /*<<< orphan*/  assetManager; } ;
-typedef  int /*<<< orphan*/  ALooper ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AConfiguration_fromAssetManager (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AConfiguration_new () ; 
- int /*<<< orphan*/  ALOOPER_EVENT_INPUT ; 
- int /*<<< orphan*/  ALOOPER_PREPARE_ALLOW_NON_CALLBACKS ; 
- int /*<<< orphan*/  ALooper_addFd (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/ * ALooper_prepare (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOOPER_ID_INPUT ; 
- int /*<<< orphan*/  LOOPER_ID_MAIN ; 
- int /*<<< orphan*/  android_app_destroy (struct android_app*) ; 
- int /*<<< orphan*/  android_main (struct android_app*) ; 
- int /*<<< orphan*/  print_cur_config (struct android_app*) ; 
- int /*<<< orphan*/  process_cmd ; 
- int /*<<< orphan*/  process_input ; 
- int /*<<< orphan*/  pthread_cond_broadcast (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_exit (void*) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int process; struct android_app* app; int id; } ;
+struct TYPE_5__ {int process; struct android_app* app; int id; } ;
+struct android_app {int running; int mutex; int cond; int * looper; TYPE_3__ cmdPollSource; int msgread; TYPE_2__ inputPollSource; TYPE_1__* activity; int config; } ;
+struct TYPE_4__ {int assetManager; } ;
+typedef int ALooper ;
+
+
+ int AConfiguration_fromAssetManager (int ,int ) ;
+ int AConfiguration_new () ;
+ int ALOOPER_EVENT_INPUT ;
+ int ALOOPER_PREPARE_ALLOW_NON_CALLBACKS ;
+ int ALooper_addFd (int *,int ,int ,int ,int *,TYPE_3__*) ;
+ int * ALooper_prepare (int ) ;
+ int LOOPER_ID_INPUT ;
+ int LOOPER_ID_MAIN ;
+ int android_app_destroy (struct android_app*) ;
+ int android_main (struct android_app*) ;
+ int print_cur_config (struct android_app*) ;
+ int process_cmd ;
+ int process_input ;
+ int pthread_cond_broadcast (int *) ;
+ int pthread_exit (void*) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 __attribute__((used)) static void* android_app_entry(void* param) {
     struct android_app* android_app = (struct android_app*)param;
@@ -54,7 +54,7 @@ __attribute__((used)) static void* android_app_entry(void* param) {
     android_app->inputPollSource.process = process_input;
 
     ALooper* looper = ALooper_prepare(ALOOPER_PREPARE_ALLOW_NON_CALLBACKS);
-    ALooper_addFd(looper, android_app->msgread, LOOPER_ID_MAIN, ALOOPER_EVENT_INPUT, NULL,
+    ALooper_addFd(looper, android_app->msgread, LOOPER_ID_MAIN, ALOOPER_EVENT_INPUT, ((void*)0),
             &android_app->cmdPollSource);
     android_app->looper = looper;
 
@@ -67,8 +67,8 @@ __attribute__((used)) static void* android_app_entry(void* param) {
 
     android_app_destroy(android_app);
 
-    // In the case where the activity successfully gets destroyed (on config changes)
-    // this will cause the destructors setup using pthread_key_create to fire.
-    pthread_exit((void*)NULL);
-    return NULL;
+
+
+    pthread_exit((void*)((void*)0));
+    return ((void*)0);
 }

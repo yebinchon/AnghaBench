@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int hi; } ;
 struct TYPE_4__ {double dbl; TYPE_1__ as_int; } ;
-typedef  TYPE_2__ double_accessor ;
+typedef TYPE_2__ double_accessor ;
 
-/* Variables and functions */
- double Lg1 ; 
- double Lg2 ; 
- double Lg3 ; 
- double Lg4 ; 
- double Lg5 ; 
- double Lg6 ; 
- double Lg7 ; 
- int __HI (double) ; 
- unsigned int __LO (double) ; 
- double ln2_hi ; 
- double ln2_lo ; 
- double two54 ; 
- double zero ; 
+
+ double Lg1 ;
+ double Lg2 ;
+ double Lg3 ;
+ double Lg4 ;
+ double Lg5 ;
+ double Lg6 ;
+ double Lg7 ;
+ int __HI (double) ;
+ unsigned int __LO (double) ;
+ double ln2_hi ;
+ double ln2_lo ;
+ double two54 ;
+ double zero ;
 
 double
 log (double x)
@@ -38,23 +38,23 @@ log (double x)
   int k, hx, i, j;
   unsigned lx;
 
-  hx = __HI (x); /* high word of x */
-  lx = __LO (x); /* low  word of x */
+  hx = __HI (x);
+  lx = __LO (x);
 
   k = 0;
-  if (hx < 0x00100000) /* x < 2**-1022  */
+  if (hx < 0x00100000)
   {
-    if (((hx & 0x7fffffff) | lx) == 0) /* log(+-0) = -inf */
+    if (((hx & 0x7fffffff) | lx) == 0)
     {
       return -two54 / zero;
     }
-    if (hx < 0) /* log(-#) = NaN */
+    if (hx < 0)
     {
       return (x - x) / zero;
     }
     k -= 54;
-    x *= two54; /* subnormal number, scale up x */
-    hx = __HI (x); /* high word of x */
+    x *= two54;
+    hx = __HI (x);
   }
   if (hx >= 0x7ff00000)
   {
@@ -66,11 +66,11 @@ log (double x)
 
   double_accessor temp;
   temp.dbl = x;
-  temp.as_int.hi = hx | (i ^ 0x3ff00000); /* normalize x or x / 2 */
+  temp.as_int.hi = hx | (i ^ 0x3ff00000);
   k += (i >> 20);
   f = temp.dbl - 1.0;
 
-  if ((0x000fffff & (2 + hx)) < 3) /* |f| < 2**-20 */
+  if ((0x000fffff & (2 + hx)) < 3)
   {
     if (f == zero)
     {

@@ -1,101 +1,101 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct snd_soc_card {int /*<<< orphan*/  probe; int /*<<< orphan*/  num_dapm_widgets; int /*<<< orphan*/  dapm_widgets; struct device* dev; int /*<<< orphan*/  owner; } ;
+
+
+
+
+struct snd_soc_card {int probe; int num_dapm_widgets; int dapm_widgets; struct device* dev; int owner; } ;
 struct device {int dummy; } ;
 struct platform_device {struct device dev; } ;
-struct link_info {int /*<<< orphan*/  dais; int /*<<< orphan*/  link; } ;
-struct asoc_simple_priv {int /*<<< orphan*/  pa_gpio; } ;
-typedef  int /*<<< orphan*/  li ;
+struct link_info {int dais; int link; } ;
+struct asoc_simple_priv {int pa_gpio; } ;
+typedef int li ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ ) ; 
- int EINVAL ; 
- int ENOMEM ; 
- int EPROBE_DEFER ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  GPIOD_OUT_LOW ; 
- scalar_t__ IS_ERR (int /*<<< orphan*/ ) ; 
- int PTR_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  THIS_MODULE ; 
- int /*<<< orphan*/  asoc_simple_clean_reference (struct snd_soc_card*) ; 
- int /*<<< orphan*/  asoc_simple_debug_info (struct asoc_simple_priv*) ; 
- int asoc_simple_init_priv (struct asoc_simple_priv*,struct link_info*) ; 
- int /*<<< orphan*/  dev_err (struct device*,char*,int) ; 
- int /*<<< orphan*/  devm_gpiod_get_optional (struct device*,char*,int /*<<< orphan*/ ) ; 
- struct asoc_simple_priv* devm_kzalloc (struct device*,int,int /*<<< orphan*/ ) ; 
- int devm_snd_soc_register_card (struct device*,struct snd_soc_card*) ; 
- int /*<<< orphan*/  graph_card_probe ; 
- int /*<<< orphan*/  graph_dapm_widgets ; 
- int /*<<< orphan*/  graph_get_dais_count (struct asoc_simple_priv*,struct link_info*) ; 
- int graph_parse_of (struct asoc_simple_priv*) ; 
- int /*<<< orphan*/  memset (struct link_info*,int /*<<< orphan*/ ,int) ; 
- struct snd_soc_card* simple_priv_to_card (struct asoc_simple_priv*) ; 
- int /*<<< orphan*/  snd_soc_card_set_drvdata (struct snd_soc_card*,struct asoc_simple_priv*) ; 
+
+ int ARRAY_SIZE (int ) ;
+ int EINVAL ;
+ int ENOMEM ;
+ int EPROBE_DEFER ;
+ int GFP_KERNEL ;
+ int GPIOD_OUT_LOW ;
+ scalar_t__ IS_ERR (int ) ;
+ int PTR_ERR (int ) ;
+ int THIS_MODULE ;
+ int asoc_simple_clean_reference (struct snd_soc_card*) ;
+ int asoc_simple_debug_info (struct asoc_simple_priv*) ;
+ int asoc_simple_init_priv (struct asoc_simple_priv*,struct link_info*) ;
+ int dev_err (struct device*,char*,int) ;
+ int devm_gpiod_get_optional (struct device*,char*,int ) ;
+ struct asoc_simple_priv* devm_kzalloc (struct device*,int,int ) ;
+ int devm_snd_soc_register_card (struct device*,struct snd_soc_card*) ;
+ int graph_card_probe ;
+ int graph_dapm_widgets ;
+ int graph_get_dais_count (struct asoc_simple_priv*,struct link_info*) ;
+ int graph_parse_of (struct asoc_simple_priv*) ;
+ int memset (struct link_info*,int ,int) ;
+ struct snd_soc_card* simple_priv_to_card (struct asoc_simple_priv*) ;
+ int snd_soc_card_set_drvdata (struct snd_soc_card*,struct asoc_simple_priv*) ;
 
 __attribute__((used)) static int graph_probe(struct platform_device *pdev)
 {
-	struct asoc_simple_priv *priv;
-	struct device *dev = &pdev->dev;
-	struct snd_soc_card *card;
-	struct link_info li;
-	int ret;
+ struct asoc_simple_priv *priv;
+ struct device *dev = &pdev->dev;
+ struct snd_soc_card *card;
+ struct link_info li;
+ int ret;
 
-	/* Allocate the private data and the DAI link array */
-	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-	if (!priv)
-		return -ENOMEM;
 
-	card = simple_priv_to_card(priv);
-	card->owner		= THIS_MODULE;
-	card->dev		= dev;
-	card->dapm_widgets	= graph_dapm_widgets;
-	card->num_dapm_widgets	= ARRAY_SIZE(graph_dapm_widgets);
-	card->probe		= graph_card_probe;
+ priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
+ if (!priv)
+  return -ENOMEM;
 
-	memset(&li, 0, sizeof(li));
-	graph_get_dais_count(priv, &li);
-	if (!li.link || !li.dais)
-		return -EINVAL;
+ card = simple_priv_to_card(priv);
+ card->owner = THIS_MODULE;
+ card->dev = dev;
+ card->dapm_widgets = graph_dapm_widgets;
+ card->num_dapm_widgets = ARRAY_SIZE(graph_dapm_widgets);
+ card->probe = graph_card_probe;
 
-	ret = asoc_simple_init_priv(priv, &li);
-	if (ret < 0)
-		return ret;
+ memset(&li, 0, sizeof(li));
+ graph_get_dais_count(priv, &li);
+ if (!li.link || !li.dais)
+  return -EINVAL;
 
-	priv->pa_gpio = devm_gpiod_get_optional(dev, "pa", GPIOD_OUT_LOW);
-	if (IS_ERR(priv->pa_gpio)) {
-		ret = PTR_ERR(priv->pa_gpio);
-		dev_err(dev, "failed to get amplifier gpio: %d\n", ret);
-		return ret;
-	}
+ ret = asoc_simple_init_priv(priv, &li);
+ if (ret < 0)
+  return ret;
 
-	ret = graph_parse_of(priv);
-	if (ret < 0) {
-		if (ret != -EPROBE_DEFER)
-			dev_err(dev, "parse error %d\n", ret);
-		goto err;
-	}
+ priv->pa_gpio = devm_gpiod_get_optional(dev, "pa", GPIOD_OUT_LOW);
+ if (IS_ERR(priv->pa_gpio)) {
+  ret = PTR_ERR(priv->pa_gpio);
+  dev_err(dev, "failed to get amplifier gpio: %d\n", ret);
+  return ret;
+ }
 
-	snd_soc_card_set_drvdata(card, priv);
+ ret = graph_parse_of(priv);
+ if (ret < 0) {
+  if (ret != -EPROBE_DEFER)
+   dev_err(dev, "parse error %d\n", ret);
+  goto err;
+ }
 
-	asoc_simple_debug_info(priv);
+ snd_soc_card_set_drvdata(card, priv);
 
-	ret = devm_snd_soc_register_card(dev, card);
-	if (ret < 0)
-		goto err;
+ asoc_simple_debug_info(priv);
 
-	return 0;
+ ret = devm_snd_soc_register_card(dev, card);
+ if (ret < 0)
+  goto err;
+
+ return 0;
 err:
-	asoc_simple_clean_reference(card);
+ asoc_simple_clean_reference(card);
 
-	return ret;
+ return ret;
 }

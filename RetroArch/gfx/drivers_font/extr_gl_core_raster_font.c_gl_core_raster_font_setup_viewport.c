@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_2__* gl; } ;
-typedef  TYPE_3__ gl_core_raster_t ;
-struct TYPE_5__ {int /*<<< orphan*/  font; } ;
+typedef TYPE_3__ gl_core_raster_t ;
+struct TYPE_5__ {int font; } ;
 struct TYPE_6__ {TYPE_1__ pipelines; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_BLEND ; 
- int /*<<< orphan*/  GL_FUNC_ADD ; 
- int /*<<< orphan*/  GL_ONE_MINUS_SRC_ALPHA ; 
- int /*<<< orphan*/  GL_SRC_ALPHA ; 
- int /*<<< orphan*/  glBlendEquation (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glBlendFunc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glEnable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glUseProgram (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  video_driver_set_viewport (unsigned int,unsigned int,int,int) ; 
+
+ int GL_BLEND ;
+ int GL_FUNC_ADD ;
+ int GL_ONE_MINUS_SRC_ALPHA ;
+ int GL_SRC_ALPHA ;
+ int glBlendEquation (int ) ;
+ int glBlendFunc (int ,int ) ;
+ int glEnable (int ) ;
+ int glUseProgram (int ) ;
+ int video_driver_set_viewport (unsigned int,unsigned int,int,int) ;
 
 __attribute__((used)) static void gl_core_raster_font_setup_viewport(unsigned width, unsigned height,
       gl_core_raster_t *font, bool full_screen)
 {
-   video_driver_set_viewport(width, height, full_screen, false);
+   video_driver_set_viewport(width, height, full_screen, 0);
 
    glEnable(GL_BLEND);
    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

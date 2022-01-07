@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ nice; scalar_t__ irq; scalar_t__ idle; scalar_t__ sys; scalar_t__ user; } ;
-struct TYPE_6__ {TYPE_1__ cpu_times; int /*<<< orphan*/  model; scalar_t__ speed; } ;
-typedef  TYPE_2__ uv_cpu_info_t ;
+struct TYPE_6__ {TYPE_1__ cpu_times; int model; scalar_t__ speed; } ;
+typedef TYPE_2__ uv_cpu_info_t ;
 
-/* Variables and functions */
- int UV_ENOMEM ; 
- int /*<<< orphan*/  _SC_NPROCESSORS_ONLN ; 
- unsigned int sysconf (int /*<<< orphan*/ ) ; 
- TYPE_2__* uv__malloc (unsigned int) ; 
- int /*<<< orphan*/  uv__strdup (char*) ; 
+
+ int UV_ENOMEM ;
+ int _SC_NPROCESSORS_ONLN ;
+ unsigned int sysconf (int ) ;
+ TYPE_2__* uv__malloc (unsigned int) ;
+ int uv__strdup (char*) ;
 
 int uv_cpu_info(uv_cpu_info_t** cpu_infos, int* count) {
   unsigned int numcpus, idx = 0;
   uv_cpu_info_t* cpu_info;
 
-  *cpu_infos = NULL;
+  *cpu_infos = ((void*)0);
   *count = 0;
 
   numcpus = sysconf(_SC_NPROCESSORS_ONLN);

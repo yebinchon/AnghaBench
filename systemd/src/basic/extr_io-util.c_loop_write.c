@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ ssize_t ;
 
-/* Variables and functions */
- int EAGAIN ; 
- int EINTR ; 
- int EINVAL ; 
- int EIO ; 
- int /*<<< orphan*/  POLLOUT ; 
- scalar_t__ SSIZE_MAX ; 
- int /*<<< orphan*/  USEC_INFINITY ; 
- scalar_t__ _unlikely_ (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int errno ; 
- int /*<<< orphan*/  fd_wait_for_event (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ write (int,int /*<<< orphan*/  const*,size_t) ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ ssize_t ;
+
+
+ int EAGAIN ;
+ int EINTR ;
+ int EINVAL ;
+ int EIO ;
+ int POLLOUT ;
+ scalar_t__ SSIZE_MAX ;
+ int USEC_INFINITY ;
+ scalar_t__ _unlikely_ (int) ;
+ int assert (int) ;
+ int errno ;
+ int fd_wait_for_event (int,int ,int ) ;
+ scalar_t__ write (int,int const*,size_t) ;
 
 int loop_write(int fd, const void *buf, size_t nbytes, bool do_poll) {
         const uint8_t *p = buf;
@@ -45,9 +45,9 @@ int loop_write(int fd, const void *buf, size_t nbytes, bool do_poll) {
                                 continue;
 
                         if (errno == EAGAIN && do_poll) {
-                                /* We knowingly ignore any return value here,
-                                 * and expect that any error/EOF is reported
-                                 * via write() */
+
+
+
 
                                 (void) fd_wait_for_event(fd, POLLOUT, USEC_INFINITY);
                                 continue;
@@ -56,7 +56,7 @@ int loop_write(int fd, const void *buf, size_t nbytes, bool do_poll) {
                         return -errno;
                 }
 
-                if (_unlikely_(nbytes > 0 && k == 0)) /* Can't really happen */
+                if (_unlikely_(nbytes > 0 && k == 0))
                         return -EIO;
 
                 assert((size_t) k <= nbytes);

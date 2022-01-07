@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int32_t ;
 
-/* Variables and functions */
- int INT32_MAX ; 
- int abs (int) ; 
- scalar_t__ av_isdigit (char) ; 
- int /*<<< orphan*/  strspn (char const*,char*) ; 
- int strtol (char const*,char**,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int int32_t ;
+
+
+ int INT32_MAX ;
+ int abs (int) ;
+ scalar_t__ av_isdigit (char) ;
+ int strspn (char const*,char*) ;
+ int strtol (char const*,char**,int ) ;
 
 __attribute__((used)) static int32_t parse_value(const char *value, int32_t min)
 {
     char *fraction;
-    int  scale = 10000;
+    int scale = 10000;
     int32_t mb = 0;
-    int sign   = 1;
+    int sign = 1;
     int db;
 
     if (!value)

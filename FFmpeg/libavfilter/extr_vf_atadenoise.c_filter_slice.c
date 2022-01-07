@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_8__ {TYPE_3__* out; TYPE_3__* in; } ;
-typedef  TYPE_2__ ThreadData ;
-struct TYPE_7__ {int /*<<< orphan*/  (* filter_row ) (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int const,int const,int const,int const,int const) ;} ;
+typedef TYPE_2__ ThreadData ;
+struct TYPE_7__ {int (* filter_row ) (int const*,int *,int const**,int const,int const,int const,int const,int const) ;} ;
 struct TYPE_11__ {int size; int mid; int nb_planes; int* planeheight; int* planewidth; int* thra; int* thrb; int planes; TYPE_1__ dsp; scalar_t__* linesize; scalar_t__* data; } ;
 struct TYPE_10__ {TYPE_5__* priv; } ;
-struct TYPE_9__ {int const* linesize; int /*<<< orphan*/ ** data; } ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVFilterContext ;
-typedef  TYPE_5__ ATADenoiseContext ;
+struct TYPE_9__ {int const* linesize; int ** data; } ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVFilterContext ;
+typedef TYPE_5__ ATADenoiseContext ;
 
-/* Variables and functions */
- int SIZE ; 
- int /*<<< orphan*/  av_image_copy_plane (int /*<<< orphan*/ *,int const,int /*<<< orphan*/  const*,int const,int const,int const) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int const,int const,int const,int const,int const) ; 
+
+ int SIZE ;
+ int av_image_copy_plane (int *,int const,int const*,int const,int const,int const) ;
+ int stub1 (int const*,int *,int const**,int const,int const,int const,int const,int const) ;
 
 __attribute__((used)) static int filter_slice(AVFilterContext *ctx, void *arg, int jobnr, int nb_jobs)
 {

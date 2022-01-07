@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  string; int /*<<< orphan*/  bkcol; int /*<<< orphan*/  fgcol; int /*<<< orphan*/  y; int /*<<< orphan*/  x; int /*<<< orphan*/  type; } ;
-typedef  int /*<<< orphan*/  SERIAL_DATA_PACKET_PRINT ;
-typedef  int /*<<< orphan*/  PUCHAR ;
-typedef  int /*<<< orphan*/  PSERIAL_PACKET ;
-typedef  TYPE_1__* PSERIAL_DATA_PACKET_PRINT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AssemblePacket (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  PACKET_TYPE_PRINT ; 
- int /*<<< orphan*/  PICE_strcpy (int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ PICE_strlen (scalar_t__*) ; 
- int /*<<< orphan*/  SendPacket (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eBackgroundColor ; 
- int /*<<< orphan*/  eForegroundColor ; 
- scalar_t__* flush_buffer ; 
- int /*<<< orphan*/  g_x ; 
- int /*<<< orphan*/  g_y ; 
- scalar_t__ packet ; 
- scalar_t__ ulFlushBufferPos ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int string; int bkcol; int fgcol; int y; int x; int type; } ;
+typedef int SERIAL_DATA_PACKET_PRINT ;
+typedef int PUCHAR ;
+typedef int PSERIAL_PACKET ;
+typedef TYPE_1__* PSERIAL_DATA_PACKET_PRINT ;
+
+
+ int AssemblePacket (int ,scalar_t__) ;
+ int PACKET_TYPE_PRINT ;
+ int PICE_strcpy (int ,scalar_t__*) ;
+ scalar_t__ PICE_strlen (scalar_t__*) ;
+ int SendPacket (int ) ;
+ int eBackgroundColor ;
+ int eForegroundColor ;
+ scalar_t__* flush_buffer ;
+ int g_x ;
+ int g_y ;
+ scalar_t__ packet ;
+ scalar_t__ ulFlushBufferPos ;
 
 void FlushSerial(void)
 {

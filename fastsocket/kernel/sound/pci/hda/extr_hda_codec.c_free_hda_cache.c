@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hda_cache_rec {int /*<<< orphan*/  buf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  snd_array_free (int /*<<< orphan*/ *) ; 
+
+
+
+struct hda_cache_rec {int buf; } ;
+
+
+ int snd_array_free (int *) ;
 
 __attribute__((used)) static void free_hda_cache(struct hda_cache_rec *cache)
 {
-	snd_array_free(&cache->buf);
+ snd_array_free(&cache->buf);
 }

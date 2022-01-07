@@ -1,98 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int op; } ;
-typedef  TYPE_1__ aarch64_opcode ;
-typedef  int /*<<< orphan*/  aarch64_inst ;
-
-/* Variables and functions */
-#define  OP_ASR_IMM 151 
-#define  OP_BFC 150 
-#define  OP_BFI 149 
-#define  OP_BFXIL 148 
-#define  OP_CINC 147 
-#define  OP_CINV 146 
-#define  OP_CNEG 145 
-#define  OP_CSET 144 
-#define  OP_CSETM 143 
-#define  OP_LSL_IMM 142 
-#define  OP_LSR_IMM 141 
-#define  OP_MOV_IMM_LOG 140 
-#define  OP_MOV_IMM_WIDE 139 
-#define  OP_MOV_IMM_WIDEN 138 
-#define  OP_MOV_V 137 
-#define  OP_ROR_IMM 136 
-#define  OP_SBFIZ 135 
-#define  OP_SBFX 134 
-#define  OP_SXTL 133 
-#define  OP_SXTL2 132 
-#define  OP_UBFIZ 131 
-#define  OP_UBFX 130 
-#define  OP_UXTL 129 
-#define  OP_UXTL2 128 
- int convert_bfm_to_bfc (int /*<<< orphan*/ *) ; 
- int convert_bfm_to_bfi (int /*<<< orphan*/ *) ; 
- int convert_bfm_to_bfx (int /*<<< orphan*/ *) ; 
- int convert_bfm_to_sr (int /*<<< orphan*/ *) ; 
- int convert_csinc_to_cset (int /*<<< orphan*/ *) ; 
- int convert_extr_to_ror (int /*<<< orphan*/ *) ; 
- int convert_from_csel (int /*<<< orphan*/ *) ; 
- int convert_movebitmask_to_mov (int /*<<< orphan*/ *) ; 
- int convert_movewide_to_mov (int /*<<< orphan*/ *) ; 
- int convert_orr_to_mov (int /*<<< orphan*/ *) ; 
- int convert_shll_to_xtl (int /*<<< orphan*/ *) ; 
- int convert_ubfm_to_lsl (int /*<<< orphan*/ *) ; 
+typedef TYPE_1__ aarch64_opcode ;
+typedef int aarch64_inst ;
+ int convert_bfm_to_bfc (int *) ;
+ int convert_bfm_to_bfi (int *) ;
+ int convert_bfm_to_bfx (int *) ;
+ int convert_bfm_to_sr (int *) ;
+ int convert_csinc_to_cset (int *) ;
+ int convert_extr_to_ror (int *) ;
+ int convert_from_csel (int *) ;
+ int convert_movebitmask_to_mov (int *) ;
+ int convert_movewide_to_mov (int *) ;
+ int convert_orr_to_mov (int *) ;
+ int convert_shll_to_xtl (int *) ;
+ int convert_ubfm_to_lsl (int *) ;
 
 __attribute__((used)) static int
 convert_to_alias (aarch64_inst *inst, const aarch64_opcode *alias)
 {
   switch (alias->op)
     {
-    case OP_ASR_IMM:
-    case OP_LSR_IMM:
+    case 151:
+    case 141:
       return convert_bfm_to_sr (inst);
-    case OP_LSL_IMM:
+    case 142:
       return convert_ubfm_to_lsl (inst);
-    case OP_CINC:
-    case OP_CINV:
-    case OP_CNEG:
+    case 147:
+    case 146:
+    case 145:
       return convert_from_csel (inst);
-    case OP_CSET:
-    case OP_CSETM:
+    case 144:
+    case 143:
       return convert_csinc_to_cset (inst);
-    case OP_UBFX:
-    case OP_BFXIL:
-    case OP_SBFX:
+    case 130:
+    case 148:
+    case 134:
       return convert_bfm_to_bfx (inst);
-    case OP_SBFIZ:
-    case OP_BFI:
-    case OP_UBFIZ:
+    case 135:
+    case 149:
+    case 131:
       return convert_bfm_to_bfi (inst);
-    case OP_BFC:
+    case 150:
       return convert_bfm_to_bfc (inst);
-    case OP_MOV_V:
+    case 137:
       return convert_orr_to_mov (inst);
-    case OP_MOV_IMM_WIDE:
-    case OP_MOV_IMM_WIDEN:
+    case 139:
+    case 138:
       return convert_movewide_to_mov (inst);
-    case OP_MOV_IMM_LOG:
+    case 140:
       return convert_movebitmask_to_mov (inst);
-    case OP_ROR_IMM:
+    case 136:
       return convert_extr_to_ror (inst);
-    case OP_SXTL:
-    case OP_SXTL2:
-    case OP_UXTL:
-    case OP_UXTL2:
+    case 133:
+    case 132:
+    case 129:
+    case 128:
       return convert_shll_to_xtl (inst);
     default:
       return 0;

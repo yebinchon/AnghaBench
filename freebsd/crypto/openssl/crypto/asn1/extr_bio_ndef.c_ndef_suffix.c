@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_10__ {TYPE_3__* funcs; } ;
-struct TYPE_9__ {scalar_t__ (* asn1_cb ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_4__*,TYPE_2__*) ;} ;
-struct TYPE_8__ {unsigned char** boundary; int /*<<< orphan*/  out; int /*<<< orphan*/  ndef_bio; } ;
-struct TYPE_7__ {unsigned char** boundary; unsigned char* derbuf; TYPE_4__* it; int /*<<< orphan*/  val; int /*<<< orphan*/  out; int /*<<< orphan*/  ndef_bio; } ;
-typedef  TYPE_1__ NDEF_SUPPORT ;
-typedef  int /*<<< orphan*/  BIO ;
-typedef  TYPE_2__ ASN1_STREAM_ARG ;
-typedef  TYPE_3__ ASN1_AUX ;
+struct TYPE_9__ {scalar_t__ (* asn1_cb ) (int ,int *,TYPE_4__*,TYPE_2__*) ;} ;
+struct TYPE_8__ {unsigned char** boundary; int out; int ndef_bio; } ;
+struct TYPE_7__ {unsigned char** boundary; unsigned char* derbuf; TYPE_4__* it; int val; int out; int ndef_bio; } ;
+typedef TYPE_1__ NDEF_SUPPORT ;
+typedef int BIO ;
+typedef TYPE_2__ ASN1_STREAM_ARG ;
+typedef TYPE_3__ ASN1_AUX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_F_NDEF_SUFFIX ; 
- int /*<<< orphan*/  ASN1_OP_STREAM_POST ; 
- int ASN1_item_ndef_i2d (int /*<<< orphan*/ ,unsigned char**,TYPE_4__*) ; 
- int /*<<< orphan*/  ASN1err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- unsigned char* OPENSSL_malloc (int) ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_4__*,TYPE_2__*) ; 
+
+ int ASN1_F_NDEF_SUFFIX ;
+ int ASN1_OP_STREAM_POST ;
+ int ASN1_item_ndef_i2d (int ,unsigned char**,TYPE_4__*) ;
+ int ASN1err (int ,int ) ;
+ int ERR_R_MALLOC_FAILURE ;
+ unsigned char* OPENSSL_malloc (int) ;
+ scalar_t__ stub1 (int ,int *,TYPE_4__*,TYPE_2__*) ;
 
 __attribute__((used)) static int ndef_suffix(BIO *b, unsigned char **pbuf, int *plen, void *parg)
 {
@@ -47,7 +47,7 @@ __attribute__((used)) static int ndef_suffix(BIO *b, unsigned char **pbuf, int *
 
     aux = ndef_aux->it->funcs;
 
-    /* Finalize structures */
+
     sarg.ndef_bio = ndef_aux->ndef_bio;
     sarg.out = ndef_aux->out;
     sarg.boundary = ndef_aux->boundary;
@@ -55,8 +55,8 @@ __attribute__((used)) static int ndef_suffix(BIO *b, unsigned char **pbuf, int *
                      &ndef_aux->val, ndef_aux->it, &sarg) <= 0)
         return 0;
 
-    derlen = ASN1_item_ndef_i2d(ndef_aux->val, NULL, ndef_aux->it);
-    if ((p = OPENSSL_malloc(derlen)) == NULL) {
+    derlen = ASN1_item_ndef_i2d(ndef_aux->val, ((void*)0), ndef_aux->it);
+    if ((p = OPENSSL_malloc(derlen)) == ((void*)0)) {
         ASN1err(ASN1_F_NDEF_SUFFIX, ERR_R_MALLOC_FAILURE);
         return 0;
     }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  avctx; } ;
-struct TYPE_7__ {int flags; int /*<<< orphan*/ * hwaccel_picture_private; int /*<<< orphan*/  hwaccel_priv_buf; int /*<<< orphan*/ * collocated_ref; int /*<<< orphan*/ * refPicList; int /*<<< orphan*/ * rpl_tab; int /*<<< orphan*/  rpl_tab_buf; int /*<<< orphan*/  rpl_buf; int /*<<< orphan*/ * tab_mvf; int /*<<< orphan*/  tab_mvf_buf; int /*<<< orphan*/  tf; TYPE_1__* frame; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * buf; } ;
-typedef  TYPE_2__ HEVCFrame ;
-typedef  TYPE_3__ HEVCContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_buffer_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_thread_release_buffer (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int avctx; } ;
+struct TYPE_7__ {int flags; int * hwaccel_picture_private; int hwaccel_priv_buf; int * collocated_ref; int * refPicList; int * rpl_tab; int rpl_tab_buf; int rpl_buf; int * tab_mvf; int tab_mvf_buf; int tf; TYPE_1__* frame; } ;
+struct TYPE_6__ {int * buf; } ;
+typedef TYPE_2__ HEVCFrame ;
+typedef TYPE_3__ HEVCContext ;
+
+
+ int av_buffer_unref (int *) ;
+ int ff_thread_release_buffer (int ,int *) ;
 
 void ff_hevc_unref_frame(HEVCContext *s, HEVCFrame *frame, int flags)
 {
-    /* frame->frame can be NULL if context init failed */
+
     if (!frame->frame || !frame->frame->buf[0])
         return;
 
@@ -34,16 +34,16 @@ void ff_hevc_unref_frame(HEVCContext *s, HEVCFrame *frame, int flags)
         ff_thread_release_buffer(s->avctx, &frame->tf);
 
         av_buffer_unref(&frame->tab_mvf_buf);
-        frame->tab_mvf = NULL;
+        frame->tab_mvf = ((void*)0);
 
         av_buffer_unref(&frame->rpl_buf);
         av_buffer_unref(&frame->rpl_tab_buf);
-        frame->rpl_tab    = NULL;
-        frame->refPicList = NULL;
+        frame->rpl_tab = ((void*)0);
+        frame->refPicList = ((void*)0);
 
-        frame->collocated_ref = NULL;
+        frame->collocated_ref = ((void*)0);
 
         av_buffer_unref(&frame->hwaccel_priv_buf);
-        frame->hwaccel_picture_private = NULL;
+        frame->hwaccel_picture_private = ((void*)0);
     }
 }

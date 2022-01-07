@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct page {int dummy; } ;
 struct inode {int dummy; } ;
 
-/* Variables and functions */
- int EOPNOTSUPP ; 
+
+ int EOPNOTSUPP ;
 
 __attribute__((used)) static inline int f2fs_setxattr(struct inode *inode, int index,
-		const char *name, const void *value, size_t size,
-		struct page *page, int flags)
+  const char *name, const void *value, size_t size,
+  struct page *page, int flags)
 {
-	return -EOPNOTSUPP;
+ return -EOPNOTSUPP;
 }

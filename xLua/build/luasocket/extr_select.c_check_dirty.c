@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ t_socket ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  fd_set ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FD_CLR (scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ SOCKET_INVALID ; 
- scalar_t__ dirty (int /*<<< orphan*/ *) ; 
- scalar_t__ getfd (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_gettable (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_isnil (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushnumber (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_settable (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef scalar_t__ t_socket ;
+typedef int lua_State ;
+typedef int fd_set ;
+
+
+ int FD_CLR (scalar_t__,int *) ;
+ scalar_t__ SOCKET_INVALID ;
+ scalar_t__ dirty (int *) ;
+ scalar_t__ getfd (int *) ;
+ int lua_gettable (int *,int) ;
+ scalar_t__ lua_isnil (int *,int) ;
+ int lua_pop (int *,int) ;
+ int lua_pushnumber (int *,int) ;
+ int lua_pushvalue (int *,int) ;
+ int lua_settable (int *,int) ;
 
 __attribute__((used)) static int check_dirty(lua_State *L, int tab, int dtab, fd_set *set) {
     int ndirty = 0, i = 1;
-    if (lua_isnil(L, tab)) 
+    if (lua_isnil(L, tab))
         return 0;
-    for ( ;; ) { 
+    for ( ;; ) {
         t_socket fd;
         lua_pushnumber(L, i);
         lua_gettable(L, tab);

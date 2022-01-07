@@ -1,89 +1,89 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_7__ ;
-typedef  struct TYPE_24__   TYPE_6__ ;
-typedef  struct TYPE_23__   TYPE_5__ ;
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
-typedef  struct TYPE_18__   TYPE_16__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  attribs ;
-struct TYPE_20__ {int /*<<< orphan*/  dc; } ;
+
+
+typedef struct TYPE_25__ TYPE_7__ ;
+typedef struct TYPE_24__ TYPE_6__ ;
+typedef struct TYPE_23__ TYPE_5__ ;
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+typedef struct TYPE_18__ TYPE_16__ ;
+
+
+typedef int attribs ;
+struct TYPE_20__ {int dc; } ;
 struct TYPE_21__ {TYPE_2__ wgl; } ;
 struct TYPE_22__ {TYPE_3__ context; } ;
-typedef  TYPE_4__ _GLFWwindow ;
+typedef TYPE_4__ _GLFWwindow ;
 struct TYPE_23__ {int handle; void* doublebuffer; void* stereo; scalar_t__ auxBuffers; scalar_t__ accumAlphaBits; scalar_t__ accumBlueBits; scalar_t__ accumGreenBits; scalar_t__ accumRedBits; scalar_t__ stencilBits; scalar_t__ depthBits; scalar_t__ alphaBits; scalar_t__ blueBits; scalar_t__ greenBits; scalar_t__ redBits; void* sRGB; scalar_t__ samples; } ;
-typedef  TYPE_5__ _GLFWfbconfig ;
+typedef TYPE_5__ _GLFWfbconfig ;
 struct TYPE_24__ {scalar_t__ client; } ;
-typedef  TYPE_6__ _GLFWctxconfig ;
+typedef TYPE_6__ _GLFWctxconfig ;
 struct TYPE_25__ {int dwFlags; scalar_t__ iPixelType; scalar_t__ cAuxBuffers; scalar_t__ cAccumAlphaBits; scalar_t__ cAccumBlueBits; scalar_t__ cAccumGreenBits; scalar_t__ cAccumRedBits; scalar_t__ cStencilBits; scalar_t__ cDepthBits; scalar_t__ cAlphaBits; scalar_t__ cBlueBits; scalar_t__ cGreenBits; scalar_t__ cRedBits; } ;
 struct TYPE_19__ {scalar_t__ EXT_colorspace; scalar_t__ EXT_framebuffer_sRGB; scalar_t__ ARB_framebuffer_sRGB; scalar_t__ ARB_multisample; scalar_t__ ARB_pixel_format; } ;
 struct TYPE_18__ {TYPE_1__ wgl; } ;
-typedef  TYPE_7__ PIXELFORMATDESCRIPTOR ;
+typedef TYPE_7__ PIXELFORMATDESCRIPTOR ;
 
-/* Variables and functions */
- int DescribePixelFormat (int /*<<< orphan*/ ,int,int,TYPE_7__*) ; 
- int /*<<< orphan*/  GLFW_API_UNAVAILABLE ; 
- int /*<<< orphan*/  GLFW_FORMAT_UNAVAILABLE ; 
- scalar_t__ GLFW_OPENGL_API ; 
- int /*<<< orphan*/  GLFW_PLATFORM_ERROR ; 
- void* GLFW_TRUE ; 
- int PFD_DOUBLEBUFFER ; 
- int PFD_DRAW_TO_WINDOW ; 
- int PFD_GENERIC_ACCELERATED ; 
- int PFD_GENERIC_FORMAT ; 
- int PFD_STEREO ; 
- int PFD_SUPPORT_OPENGL ; 
- scalar_t__ PFD_TYPE_RGBA ; 
- int /*<<< orphan*/  WGL_ACCELERATION_ARB ; 
- int /*<<< orphan*/  WGL_ACCUM_ALPHA_BITS_ARB ; 
- int /*<<< orphan*/  WGL_ACCUM_BITS_ARB ; 
- int /*<<< orphan*/  WGL_ACCUM_BLUE_BITS_ARB ; 
- int /*<<< orphan*/  WGL_ACCUM_GREEN_BITS_ARB ; 
- int /*<<< orphan*/  WGL_ACCUM_RED_BITS_ARB ; 
- int /*<<< orphan*/  WGL_ALPHA_BITS_ARB ; 
- int /*<<< orphan*/  WGL_ALPHA_SHIFT_ARB ; 
- int /*<<< orphan*/  WGL_AUX_BUFFERS_ARB ; 
- int /*<<< orphan*/  WGL_BLUE_BITS_ARB ; 
- int /*<<< orphan*/  WGL_BLUE_SHIFT_ARB ; 
- int /*<<< orphan*/  WGL_COLORSPACE_EXT ; 
- scalar_t__ WGL_COLORSPACE_SRGB_EXT ; 
- int /*<<< orphan*/  WGL_DEPTH_BITS_ARB ; 
- int /*<<< orphan*/  WGL_DOUBLE_BUFFER_ARB ; 
- int /*<<< orphan*/  WGL_DRAW_TO_WINDOW_ARB ; 
- int /*<<< orphan*/  WGL_FRAMEBUFFER_SRGB_CAPABLE_ARB ; 
- int /*<<< orphan*/  WGL_GREEN_BITS_ARB ; 
- int /*<<< orphan*/  WGL_GREEN_SHIFT_ARB ; 
- scalar_t__ WGL_NO_ACCELERATION_ARB ; 
- int WGL_NUMBER_PIXEL_FORMATS_ARB ; 
- int /*<<< orphan*/  WGL_PIXEL_TYPE_ARB ; 
- int /*<<< orphan*/  WGL_RED_BITS_ARB ; 
- int /*<<< orphan*/  WGL_RED_SHIFT_ARB ; 
- int /*<<< orphan*/  WGL_SAMPLES_ARB ; 
- int /*<<< orphan*/  WGL_STENCIL_BITS_ARB ; 
- int /*<<< orphan*/  WGL_STEREO_ARB ; 
- int /*<<< orphan*/  WGL_SUPPORT_OPENGL_ARB ; 
- scalar_t__ WGL_TYPE_RGBA_ARB ; 
- TYPE_16__ _glfw ; 
- TYPE_5__* _glfwChooseFBConfig (TYPE_5__ const*,TYPE_5__*,int) ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  _glfwInputErrorWin32 (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  addAttrib (int /*<<< orphan*/ ) ; 
- TYPE_5__* calloc (int,int) ; 
- scalar_t__ findAttribValue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (TYPE_5__*) ; 
- int /*<<< orphan*/  wglGetPixelFormatAttribivARB (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int const*,int*) ; 
+
+ int DescribePixelFormat (int ,int,int,TYPE_7__*) ;
+ int GLFW_API_UNAVAILABLE ;
+ int GLFW_FORMAT_UNAVAILABLE ;
+ scalar_t__ GLFW_OPENGL_API ;
+ int GLFW_PLATFORM_ERROR ;
+ void* GLFW_TRUE ;
+ int PFD_DOUBLEBUFFER ;
+ int PFD_DRAW_TO_WINDOW ;
+ int PFD_GENERIC_ACCELERATED ;
+ int PFD_GENERIC_FORMAT ;
+ int PFD_STEREO ;
+ int PFD_SUPPORT_OPENGL ;
+ scalar_t__ PFD_TYPE_RGBA ;
+ int WGL_ACCELERATION_ARB ;
+ int WGL_ACCUM_ALPHA_BITS_ARB ;
+ int WGL_ACCUM_BITS_ARB ;
+ int WGL_ACCUM_BLUE_BITS_ARB ;
+ int WGL_ACCUM_GREEN_BITS_ARB ;
+ int WGL_ACCUM_RED_BITS_ARB ;
+ int WGL_ALPHA_BITS_ARB ;
+ int WGL_ALPHA_SHIFT_ARB ;
+ int WGL_AUX_BUFFERS_ARB ;
+ int WGL_BLUE_BITS_ARB ;
+ int WGL_BLUE_SHIFT_ARB ;
+ int WGL_COLORSPACE_EXT ;
+ scalar_t__ WGL_COLORSPACE_SRGB_EXT ;
+ int WGL_DEPTH_BITS_ARB ;
+ int WGL_DOUBLE_BUFFER_ARB ;
+ int WGL_DRAW_TO_WINDOW_ARB ;
+ int WGL_FRAMEBUFFER_SRGB_CAPABLE_ARB ;
+ int WGL_GREEN_BITS_ARB ;
+ int WGL_GREEN_SHIFT_ARB ;
+ scalar_t__ WGL_NO_ACCELERATION_ARB ;
+ int WGL_NUMBER_PIXEL_FORMATS_ARB ;
+ int WGL_PIXEL_TYPE_ARB ;
+ int WGL_RED_BITS_ARB ;
+ int WGL_RED_SHIFT_ARB ;
+ int WGL_SAMPLES_ARB ;
+ int WGL_STENCIL_BITS_ARB ;
+ int WGL_STEREO_ARB ;
+ int WGL_SUPPORT_OPENGL_ARB ;
+ scalar_t__ WGL_TYPE_RGBA_ARB ;
+ TYPE_16__ _glfw ;
+ TYPE_5__* _glfwChooseFBConfig (TYPE_5__ const*,TYPE_5__*,int) ;
+ int _glfwInputError (int ,char*) ;
+ int _glfwInputErrorWin32 (int ,char*) ;
+ int addAttrib (int ) ;
+ TYPE_5__* calloc (int,int) ;
+ scalar_t__ findAttribValue (int ) ;
+ int free (TYPE_5__*) ;
+ int wglGetPixelFormatAttribivARB (int ,int,int ,int,int const*,int*) ;
 
 __attribute__((used)) static int choosePixelFormat(_GLFWwindow* window,
                              const _GLFWctxconfig* ctxconfig,
@@ -149,19 +149,19 @@ __attribute__((used)) static int choosePixelFormat(_GLFWwindow* window,
         nativeCount = DescribePixelFormat(window->context.wgl.dc,
                                           1,
                                           sizeof(PIXELFORMATDESCRIPTOR),
-                                          NULL);
+                                          ((void*)0));
     }
 
     usableConfigs = calloc(nativeCount, sizeof(_GLFWfbconfig));
 
-    for (i = 0;  i < nativeCount;  i++)
+    for (i = 0; i < nativeCount; i++)
     {
         _GLFWfbconfig* u = usableConfigs + usableCount;
         pixelFormat = i + 1;
 
         if (_glfw.wgl.ARB_pixel_format)
         {
-            // Get pixel format attributes through "modern" extension
+
 
             if (!wglGetPixelFormatAttribivARB(window->context.wgl.dc,
                                               pixelFormat, 0,
@@ -230,7 +230,7 @@ __attribute__((used)) static int choosePixelFormat(_GLFWwindow* window,
         }
         else
         {
-            // Get pixel format attributes through legacy PFDs
+
 
             PIXELFORMATDESCRIPTOR pfd;
 

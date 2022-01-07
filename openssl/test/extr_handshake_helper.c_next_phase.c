@@ -1,51 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int connect_phase_t ;
-typedef  int /*<<< orphan*/  SSL_TEST_CTX ;
 
-/* Variables and functions */
-#define  APPLICATION_DATA 134 
-#define  CONNECTION_DONE 133 
-#define  HANDSHAKE 132 
-#define  RENEG_APPLICATION_DATA 131 
-#define  RENEG_HANDSHAKE 130 
-#define  RENEG_SETUP 129 
-#define  SHUTDOWN 128 
- int /*<<< orphan*/  TEST_error (char*) ; 
- int /*<<< orphan*/  post_handshake_op (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  renegotiate_op (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int connect_phase_t ;
+typedef int SSL_TEST_CTX ;
+ int TEST_error (char*) ;
+ int post_handshake_op (int const*) ;
+ int renegotiate_op (int const*) ;
 
 __attribute__((used)) static connect_phase_t next_phase(const SSL_TEST_CTX *test_ctx,
                                   connect_phase_t phase)
 {
     switch (phase) {
-    case HANDSHAKE:
+    case 132:
         if (renegotiate_op(test_ctx) || post_handshake_op(test_ctx))
-            return RENEG_APPLICATION_DATA;
-        return APPLICATION_DATA;
-    case RENEG_APPLICATION_DATA:
-        return RENEG_SETUP;
-    case RENEG_SETUP:
+            return 131;
+        return 134;
+    case 131:
+        return 129;
+    case 129:
         if (post_handshake_op(test_ctx))
-            return APPLICATION_DATA;
-        return RENEG_HANDSHAKE;
-    case RENEG_HANDSHAKE:
-        return APPLICATION_DATA;
-    case APPLICATION_DATA:
-        return SHUTDOWN;
-    case SHUTDOWN:
-        return CONNECTION_DONE;
-    case CONNECTION_DONE:
+            return 134;
+        return 130;
+    case 130:
+        return 134;
+    case 134:
+        return 128;
+    case 128:
+        return 133;
+    case 133:
         TEST_error("Trying to progress after connection done");
         break;
     }

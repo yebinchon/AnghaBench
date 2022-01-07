@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  apr_bucket_brigade ;
-typedef  int /*<<< orphan*/  apr_bucket_alloc_t ;
-typedef  int /*<<< orphan*/  apr_bucket ;
-typedef  int /*<<< orphan*/  abts_case ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ABTS_ASSERT (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  APR_BRIGADE_FIRST (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  APR_BRIGADE_INSERT_HEAD (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  APR_BRIGADE_LAST (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * APR_BRIGADE_SENTINEL (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_assert_success (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/ * apr_brigade_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_brigade_destroy (int /*<<< orphan*/ *) ; 
- int apr_brigade_partition (int /*<<< orphan*/ *,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * apr_bucket_alloc_create (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  apr_bucket_alloc_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_bucket_immortal_create (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hello ; 
- int /*<<< orphan*/  p ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_bucket_content (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int) ; 
+
+
+
+typedef int apr_bucket_brigade ;
+typedef int apr_bucket_alloc_t ;
+typedef int apr_bucket ;
+typedef int abts_case ;
+
+
+ int ABTS_ASSERT (int *,char*,int) ;
+ int APR_BRIGADE_FIRST (int *) ;
+ int APR_BRIGADE_INSERT_HEAD (int *,int *) ;
+ int APR_BRIGADE_LAST (int *) ;
+ int * APR_BRIGADE_SENTINEL (int *) ;
+ int apr_assert_success (int *,char*,int) ;
+ int * apr_brigade_create (int ,int *) ;
+ int apr_brigade_destroy (int *) ;
+ int apr_brigade_partition (int *,int,int **) ;
+ int * apr_bucket_alloc_create (int ) ;
+ int apr_bucket_alloc_destroy (int *) ;
+ int * apr_bucket_immortal_create (int ,int ,int *) ;
+ int hello ;
+ int p ;
+ int strlen (int ) ;
+ int test_bucket_content (int *,int ,char*,int) ;
 
 __attribute__((used)) static void test_partition(abts_case *tc, void *data)
 {

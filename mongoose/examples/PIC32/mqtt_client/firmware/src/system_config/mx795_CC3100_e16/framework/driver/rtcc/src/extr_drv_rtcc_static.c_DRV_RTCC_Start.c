@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PLIB_RTCC_Enable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RTCC_ID_0 ; 
+ int PLIB_RTCC_Enable (int ) ;
+ int RTCC_ID_0 ;
 
 void DRV_RTCC_Start(void) {
   PLIB_RTCC_Enable(RTCC_ID_0);

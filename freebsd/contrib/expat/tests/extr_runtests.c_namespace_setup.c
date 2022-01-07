@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  XCS (char) ; 
- int /*<<< orphan*/ * XML_ParserCreateNS (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fail (char*) ; 
- int /*<<< orphan*/ * parser ; 
+ int XCS (char) ;
+ int * XML_ParserCreateNS (int *,int ) ;
+ int fail (char*) ;
+ int * parser ;
 
 __attribute__((used)) static void
 namespace_setup(void)
 {
-    parser = XML_ParserCreateNS(NULL, XCS(' '));
-    if (parser == NULL)
+    parser = XML_ParserCreateNS(((void*)0), XCS(' '));
+    if (parser == ((void*)0))
         fail("Parser not created.");
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ucred {scalar_t__ uid; } ;
-typedef  int /*<<< orphan*/  sd_bus ;
+typedef int sd_bus ;
 
-/* Variables and functions */
- int EPERM ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- scalar_t__ geteuid () ; 
- int getpeercred (int,struct ucred*) ; 
- int sd_bus_get_fd (int /*<<< orphan*/ *) ; 
+
+ int EPERM ;
+ int assert (int *) ;
+ scalar_t__ geteuid () ;
+ int getpeercred (int,struct ucred*) ;
+ int sd_bus_get_fd (int *) ;
 
 int bus_check_peercred(sd_bus *c) {
         struct ucred ucred;

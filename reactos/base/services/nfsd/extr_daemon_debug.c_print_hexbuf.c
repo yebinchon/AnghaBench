@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int dlog_file ;
+ int fprintf (int ,char*,...) ;
+ int g_debug_level ;
+ scalar_t__ isascii (unsigned char) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  dlog_file ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int g_debug_level ; 
- scalar_t__ isascii (unsigned char) ; 
-
-void print_hexbuf(int level, unsigned char *title, unsigned char *buf, int len) 
+void print_hexbuf(int level, unsigned char *title, unsigned char *buf, int len)
 {
     int j, k;
     if (level > g_debug_level) return;

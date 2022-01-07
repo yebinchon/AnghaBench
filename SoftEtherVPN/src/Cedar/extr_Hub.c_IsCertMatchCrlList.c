@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  int /*<<< orphan*/  CRL ;
 
-/* Variables and functions */
- scalar_t__ IsCertMatchCrl (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int X ;
+typedef scalar_t__ UINT ;
+typedef int LIST ;
+typedef int CRL ;
+
+
+ scalar_t__ IsCertMatchCrl (int *,int *) ;
+ int * LIST_DATA (int *,scalar_t__) ;
+ scalar_t__ LIST_NUM (int *) ;
 
 bool IsCertMatchCrlList(X *x, LIST *o)
 {
-	UINT i;
-	// Validate arguments
-	if (x == NULL || o == NULL)
-	{
-		return false;
-	}
+ UINT i;
 
-	for (i = 0;i < LIST_NUM(o);i++)
-	{
-		CRL *crl = LIST_DATA(o, i);
+ if (x == ((void*)0) || o == ((void*)0))
+ {
+  return 0;
+ }
 
-		if (IsCertMatchCrl(x, crl))
-		{
-			return true;
-		}
-	}
+ for (i = 0;i < LIST_NUM(o);i++)
+ {
+  CRL *crl = LIST_DATA(o, i);
 
-	return false;
+  if (IsCertMatchCrl(x, crl))
+  {
+   return 1;
+  }
+ }
+
+ return 0;
 }

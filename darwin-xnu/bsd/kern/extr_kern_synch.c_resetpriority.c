@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct proc {int /*<<< orphan*/  p_nice; int /*<<< orphan*/  task; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  task_importance (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct proc {int p_nice; int task; } ;
+
+
+ int task_importance (int ,int ) ;
 
 void
 resetpriority(struct proc *p)
 {
-	(void)task_importance(p->task, -p->p_nice);
+ (void)task_importance(p->task, -p->p_nice);
 }

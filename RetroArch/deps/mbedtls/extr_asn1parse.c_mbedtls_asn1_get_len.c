@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MBEDTLS_ERR_ASN1_INVALID_LENGTH ; 
- int MBEDTLS_ERR_ASN1_OUT_OF_DATA ; 
+ int MBEDTLS_ERR_ASN1_INVALID_LENGTH ;
+ int MBEDTLS_ERR_ASN1_OUT_OF_DATA ;
 
 int mbedtls_asn1_get_len( unsigned char **p,
                   const unsigned char *end,
@@ -49,7 +41,7 @@ int mbedtls_asn1_get_len( unsigned char **p,
                 return( MBEDTLS_ERR_ASN1_OUT_OF_DATA );
 
             *len = ( (size_t)(*p)[1] << 16 ) |
-                   ( (size_t)(*p)[2] << 8  ) | (*p)[3];
+                   ( (size_t)(*p)[2] << 8 ) | (*p)[3];
             (*p) += 4;
             break;
 
@@ -58,7 +50,7 @@ int mbedtls_asn1_get_len( unsigned char **p,
                 return( MBEDTLS_ERR_ASN1_OUT_OF_DATA );
 
             *len = ( (size_t)(*p)[1] << 24 ) | ( (size_t)(*p)[2] << 16 ) |
-                   ( (size_t)(*p)[3] << 8  ) |           (*p)[4];
+                   ( (size_t)(*p)[3] << 8 ) | (*p)[4];
             (*p) += 5;
             break;
 

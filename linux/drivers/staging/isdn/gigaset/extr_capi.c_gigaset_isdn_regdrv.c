@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  capi_driver_gigaset ; 
- int /*<<< orphan*/  pr_info (char*) ; 
- int /*<<< orphan*/  register_capi_driver (int /*<<< orphan*/ *) ; 
+ int capi_driver_gigaset ;
+ int pr_info (char*) ;
+ int register_capi_driver (int *) ;
 
 void gigaset_isdn_regdrv(void)
 {
-	pr_info("Kernel CAPI interface\n");
-	register_capi_driver(&capi_driver_gigaset);
+ pr_info("Kernel CAPI interface\n");
+ register_capi_driver(&capi_driver_gigaset);
 }

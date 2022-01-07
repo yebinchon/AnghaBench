@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  ZIP_PACKER ;
-typedef  int /*<<< orphan*/  UINT64 ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_4__ {int /*<<< orphan*/  Size; int /*<<< orphan*/  Buf; } ;
-typedef  TYPE_1__ BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreeBuf (TYPE_1__*) ; 
- scalar_t__ IsEmptyStr (char*) ; 
- TYPE_1__* ReadDumpW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ZipAddFileSimple (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef int ZIP_PACKER ;
+typedef int UINT64 ;
+typedef int UINT ;
+struct TYPE_4__ {int Size; int Buf; } ;
+typedef TYPE_1__ BUF ;
+
+
+ int FreeBuf (TYPE_1__*) ;
+ scalar_t__ IsEmptyStr (char*) ;
+ TYPE_1__* ReadDumpW (int *) ;
+ int ZipAddFileSimple (int *,char*,int ,int ,int ,int ) ;
 
 bool ZipAddRealFileW(ZIP_PACKER *p, char *name, UINT64 dt, UINT attribute, wchar_t *srcname)
 {
-	BUF *b;
-	// Validate arguments
-	if (p == NULL || IsEmptyStr(name) || srcname == NULL)
-	{
-		return false;
-	}
+ BUF *b;
 
-	b = ReadDumpW(srcname);
-	if (b == NULL)
-	{
-		return false;
-	}
+ if (p == ((void*)0) || IsEmptyStr(name) || srcname == ((void*)0))
+ {
+  return 0;
+ }
 
-	ZipAddFileSimple(p, name, dt, attribute, b->Buf, b->Size);
+ b = ReadDumpW(srcname);
+ if (b == ((void*)0))
+ {
+  return 0;
+ }
 
-	FreeBuf(b);
+ ZipAddFileSimple(p, name, dt, attribute, b->Buf, b->Size);
 
-	return true;
+ FreeBuf(b);
+
+ return 1;
 }

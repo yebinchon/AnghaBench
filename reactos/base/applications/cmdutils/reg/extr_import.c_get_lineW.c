@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- size_t REG_VAL_BUF_SIZE ; 
- size_t fread (char*,int,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  heap_free (char*) ; 
- char* heap_xalloc (size_t) ; 
- char* heap_xrealloc (char*,size_t) ; 
- int /*<<< orphan*/  memmove (char*,char*,size_t) ; 
- size_t strlenW (char*) ; 
- char* strpbrkW (char*,char const*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int FILE ;
+
+
+ size_t REG_VAL_BUF_SIZE ;
+ size_t fread (char*,int,size_t,int *) ;
+ int heap_free (char*) ;
+ char* heap_xalloc (size_t) ;
+ char* heap_xrealloc (char*,size_t) ;
+ int memmove (char*,char*,size_t) ;
+ size_t strlenW (char*) ;
+ char* strpbrkW (char*,char const*) ;
 
 __attribute__((used)) static WCHAR *get_lineW(FILE *fp)
 {
@@ -56,7 +56,7 @@ __attribute__((used)) static WCHAR *get_lineW(FILE *fp)
             }
             if (!(count = fread(buf + len, sizeof(WCHAR), size - len - 1, fp)))
             {
-                next = NULL;
+                next = ((void*)0);
                 return buf;
             }
             buf[len + count] = 0;
@@ -73,5 +73,5 @@ __attribute__((used)) static WCHAR *get_lineW(FILE *fp)
 cleanup:
     if (size) heap_free(buf);
     size = 0;
-    return NULL;
+    return ((void*)0);
 }

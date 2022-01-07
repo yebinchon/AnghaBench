@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_2__ {scalar_t__ int_block; } ;
 struct bxe_softc {int attn_state; TYPE_1__ devinfo; } ;
 
-/* Variables and functions */
- int ATTN_GENERAL_ATTN_1 ; 
- int ATTN_GENERAL_ATTN_2 ; 
- int ATTN_GENERAL_ATTN_3 ; 
- int ATTN_GENERAL_ATTN_4 ; 
- int ATTN_GENERAL_ATTN_5 ; 
- int ATTN_GENERAL_ATTN_6 ; 
- int ATTN_HARD_WIRED_MASK ; 
- int ATTN_NIG_FOR_FUNC ; 
- int ATTN_SW_TIMER_4_FUNC ; 
- int BAR_IGU_INTMEM ; 
- int /*<<< orphan*/  BLOGD (struct bxe_softc*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  BLOGE (struct bxe_softc*,char*,...) ; 
- int COMMAND_REG_ATTN_BITS_SET ; 
- int /*<<< orphan*/  DBG_INTR ; 
- int GPIO_2_FUNC ; 
- int GPIO_3_FUNC ; 
- int GPIO_4_FUNC ; 
- int HC_REG_COMMAND_REG ; 
- scalar_t__ HW_LOCK_RESOURCE_PORT0_ATT_MASK ; 
- int IGU_CMD_ATTN_BIT_SET_UPPER ; 
- int IGU_REG_ATTENTION_ACK_BITS ; 
- scalar_t__ INT_BLOCK_HC ; 
- int MAX_IGU_ATTN_ACK_TO ; 
- int MISC_REG_AEU_GENERAL_ATTN_1 ; 
- int MISC_REG_AEU_GENERAL_ATTN_2 ; 
- int MISC_REG_AEU_GENERAL_ATTN_3 ; 
- int MISC_REG_AEU_GENERAL_ATTN_4 ; 
- int MISC_REG_AEU_GENERAL_ATTN_5 ; 
- int MISC_REG_AEU_GENERAL_ATTN_6 ; 
- int MISC_REG_AEU_MASK_ATTN_FUNC_0 ; 
- int MISC_REG_AEU_MASK_ATTN_FUNC_1 ; 
- int NIG_REG_MASK_INTERRUPT_PORT0 ; 
- int NIG_REG_MASK_INTERRUPT_PORT1 ; 
- int REG_RD (struct bxe_softc*,int) ; 
- int /*<<< orphan*/  REG_WR (struct bxe_softc*,int,int) ; 
- int SC_PORT (struct bxe_softc*) ; 
- int /*<<< orphan*/  bxe_acquire_hw_lock (struct bxe_softc*,scalar_t__) ; 
- int /*<<< orphan*/  bxe_acquire_phy_lock (struct bxe_softc*) ; 
- int /*<<< orphan*/  bxe_link_attn (struct bxe_softc*) ; 
- int /*<<< orphan*/  bxe_release_hw_lock (struct bxe_softc*,scalar_t__) ; 
- int /*<<< orphan*/  bxe_release_phy_lock (struct bxe_softc*) ; 
- int /*<<< orphan*/  mb () ; 
+
+ int ATTN_GENERAL_ATTN_1 ;
+ int ATTN_GENERAL_ATTN_2 ;
+ int ATTN_GENERAL_ATTN_3 ;
+ int ATTN_GENERAL_ATTN_4 ;
+ int ATTN_GENERAL_ATTN_5 ;
+ int ATTN_GENERAL_ATTN_6 ;
+ int ATTN_HARD_WIRED_MASK ;
+ int ATTN_NIG_FOR_FUNC ;
+ int ATTN_SW_TIMER_4_FUNC ;
+ int BAR_IGU_INTMEM ;
+ int BLOGD (struct bxe_softc*,int ,char*,...) ;
+ int BLOGE (struct bxe_softc*,char*,...) ;
+ int COMMAND_REG_ATTN_BITS_SET ;
+ int DBG_INTR ;
+ int GPIO_2_FUNC ;
+ int GPIO_3_FUNC ;
+ int GPIO_4_FUNC ;
+ int HC_REG_COMMAND_REG ;
+ scalar_t__ HW_LOCK_RESOURCE_PORT0_ATT_MASK ;
+ int IGU_CMD_ATTN_BIT_SET_UPPER ;
+ int IGU_REG_ATTENTION_ACK_BITS ;
+ scalar_t__ INT_BLOCK_HC ;
+ int MAX_IGU_ATTN_ACK_TO ;
+ int MISC_REG_AEU_GENERAL_ATTN_1 ;
+ int MISC_REG_AEU_GENERAL_ATTN_2 ;
+ int MISC_REG_AEU_GENERAL_ATTN_3 ;
+ int MISC_REG_AEU_GENERAL_ATTN_4 ;
+ int MISC_REG_AEU_GENERAL_ATTN_5 ;
+ int MISC_REG_AEU_GENERAL_ATTN_6 ;
+ int MISC_REG_AEU_MASK_ATTN_FUNC_0 ;
+ int MISC_REG_AEU_MASK_ATTN_FUNC_1 ;
+ int NIG_REG_MASK_INTERRUPT_PORT0 ;
+ int NIG_REG_MASK_INTERRUPT_PORT1 ;
+ int REG_RD (struct bxe_softc*,int) ;
+ int REG_WR (struct bxe_softc*,int,int) ;
+ int SC_PORT (struct bxe_softc*) ;
+ int bxe_acquire_hw_lock (struct bxe_softc*,scalar_t__) ;
+ int bxe_acquire_phy_lock (struct bxe_softc*) ;
+ int bxe_link_attn (struct bxe_softc*) ;
+ int bxe_release_hw_lock (struct bxe_softc*,scalar_t__) ;
+ int bxe_release_phy_lock (struct bxe_softc*) ;
+ int mb () ;
 
 __attribute__((used)) static void
 bxe_attn_int_asserted(struct bxe_softc *sc,
-                      uint32_t         asserted)
+                      uint32_t asserted)
 {
     int port = SC_PORT(sc);
     uint32_t aeu_addr = port ? MISC_REG_AEU_MASK_ATTN_FUNC_1 :
@@ -100,18 +100,18 @@ bxe_attn_int_asserted(struct bxe_softc *sc,
     if (asserted & ATTN_HARD_WIRED_MASK) {
         if (asserted & ATTN_NIG_FOR_FUNC) {
 
-	    bxe_acquire_phy_lock(sc);
-            /* save nig interrupt mask */
+     bxe_acquire_phy_lock(sc);
+
             nig_mask = REG_RD(sc, nig_int_mask_addr);
 
-            /* If nig_mask is not set, no need to call the update function */
+
             if (nig_mask) {
                 REG_WR(sc, nig_int_mask_addr, 0);
 
                 bxe_link_attn(sc);
             }
 
-            /* handle unicore attn? */
+
         }
 
         if (asserted & ATTN_SW_TIMER_4_FUNC) {
@@ -157,7 +157,7 @@ bxe_attn_int_asserted(struct bxe_softc *sc,
                 REG_WR(sc, MISC_REG_AEU_GENERAL_ATTN_6, 0x0);
             }
         }
-    } /* hardwired */
+    }
 
     if (sc->devinfo.int_block == INT_BLOCK_HC) {
         reg_addr = (HC_REG_COMMAND_REG + port*32 + COMMAND_REG_ATTN_BITS_SET);
@@ -170,12 +170,12 @@ bxe_attn_int_asserted(struct bxe_softc *sc,
           (sc->devinfo.int_block == INT_BLOCK_HC) ? "HC" : "IGU", reg_addr);
     REG_WR(sc, reg_addr, asserted);
 
-    /* now set back the mask */
+
     if (asserted & ATTN_NIG_FOR_FUNC) {
-        /*
-         * Verify that IGU ack through BAR was written before restoring
-         * NIG mask. This loop should exit after 2-3 iterations max.
-         */
+
+
+
+
         if (sc->devinfo.int_block != INT_BLOCK_HC) {
             cnt = 0;
 
@@ -193,6 +193,6 @@ bxe_attn_int_asserted(struct bxe_softc *sc,
 
         REG_WR(sc, nig_int_mask_addr, nig_mask);
 
-	bxe_release_phy_lock(sc);
+ bxe_release_phy_lock(sc);
     }
 }

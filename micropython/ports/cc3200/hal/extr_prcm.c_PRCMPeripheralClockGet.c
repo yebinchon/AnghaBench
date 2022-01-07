@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ APPS_RCM_O_CAMERA_CLK_GEN ; 
- scalar_t__ APPS_RCM_O_MMCHS_CLK_GEN ; 
- scalar_t__ ARCM_BASE ; 
- int HWREG (scalar_t__) ; 
- unsigned long PRCM_CAMERA ; 
- unsigned long PRCM_GSPI ; 
- unsigned long PRCM_LSPI ; 
- unsigned long PRCM_SDHOST ; 
- unsigned long PRCM_SSPI ; 
- unsigned long SYS_CLK ; 
- unsigned long XTAL_CLK ; 
+ scalar_t__ APPS_RCM_O_CAMERA_CLK_GEN ;
+ scalar_t__ APPS_RCM_O_MMCHS_CLK_GEN ;
+ scalar_t__ ARCM_BASE ;
+ int HWREG (scalar_t__) ;
+ unsigned long PRCM_CAMERA ;
+ unsigned long PRCM_GSPI ;
+ unsigned long PRCM_LSPI ;
+ unsigned long PRCM_SDHOST ;
+ unsigned long PRCM_SSPI ;
+ unsigned long SYS_CLK ;
+ unsigned long XTAL_CLK ;
 
 unsigned long PRCMPeripheralClockGet(unsigned long ulPeripheral)
 {
@@ -30,9 +22,9 @@ unsigned long PRCMPeripheralClockGet(unsigned long ulPeripheral)
   unsigned long ulHiPulseDiv;
   unsigned long ulLoPulseDiv;
 
-  //
-  // Get the clock based on specified peripheral.
-  //
+
+
+
   if(((ulPeripheral == PRCM_SSPI) | (ulPeripheral == PRCM_LSPI)
             | (ulPeripheral == PRCM_GSPI)))
   {
@@ -53,13 +45,13 @@ unsigned long PRCMPeripheralClockGet(unsigned long ulPeripheral)
     return SYS_CLK;
   }
 
-  //
-  // Compute the clock freq. from the divider value
-  //
+
+
+
   ulClockFreq = (240000000/((ulHiPulseDiv + 1) + (ulLoPulseDiv + 1)));
 
-  //
-  // Return the clock rate.
-  //
+
+
+
   return ulClockFreq;
 }

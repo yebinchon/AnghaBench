@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct Tracks {int dummy; } ;
-typedef  scalar_t__ int32_t ;
-typedef  int /*<<< orphan*/  AVIOContext ;
+typedef scalar_t__ int32_t ;
+typedef int AVIOContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AVIO_FLAG_READ ; 
- scalar_t__ MKBETAG (char,float,char,char) ; 
- int /*<<< orphan*/  SEEK_CUR ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  avio_close (int /*<<< orphan*/ *) ; 
- int avio_open2 (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ avio_rb32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ avio_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,char const*) ; 
- int /*<<< orphan*/  read_tfra (struct Tracks*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- int write_fragments (struct Tracks*,int,int /*<<< orphan*/ *,char const*,int,int,char const*) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AVIO_FLAG_READ ;
+ scalar_t__ MKBETAG (char,float,char,char) ;
+ int SEEK_CUR ;
+ int SEEK_SET ;
+ int avio_close (int *) ;
+ int avio_open2 (int **,char const*,int ,int *,int *) ;
+ scalar_t__ avio_rb32 (int *) ;
+ int avio_seek (int *,scalar_t__,int ) ;
+ scalar_t__ avio_size (int *) ;
+ int fprintf (int ,char*,char const*,char const*) ;
+ int read_tfra (struct Tracks*,int,int *) ;
+ int stderr ;
+ int write_fragments (struct Tracks*,int,int *,char const*,int,int,char const*) ;
 
 __attribute__((used)) static int read_mfra(struct Tracks *tracks, int start_index,
                      const char *file, int split, int ismf,
@@ -36,10 +36,10 @@ __attribute__((used)) static int read_mfra(struct Tracks *tracks, int start_inde
 {
     int err = 0;
     const char* err_str = "";
-    AVIOContext *f = NULL;
+    AVIOContext *f = ((void*)0);
     int32_t mfra_size;
 
-    if ((err = avio_open2(&f, file, AVIO_FLAG_READ, NULL, NULL)) < 0)
+    if ((err = avio_open2(&f, file, AVIO_FLAG_READ, ((void*)0), ((void*)0))) < 0)
         goto fail;
     avio_seek(f, avio_size(f) - 4, SEEK_SET);
     mfra_size = avio_rb32(f);
@@ -55,7 +55,7 @@ __attribute__((used)) static int read_mfra(struct Tracks *tracks, int start_inde
         goto fail;
     }
     while (!read_tfra(tracks, start_index, f)) {
-        /* Empty */
+
     }
 
     if (split || ismf)

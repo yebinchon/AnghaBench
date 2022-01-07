@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_protocol {int dummy; } ;
 
-/* Variables and functions */
- int MAX_INET_PROTOS ; 
- int /*<<< orphan*/  inet_proto_lock ; 
- struct net_protocol const** inet_protos ; 
- int /*<<< orphan*/  spin_lock_bh (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_bh (int /*<<< orphan*/ *) ; 
+
+ int MAX_INET_PROTOS ;
+ int inet_proto_lock ;
+ struct net_protocol const** inet_protos ;
+ int spin_lock_bh (int *) ;
+ int spin_unlock_bh (int *) ;
 
 int inet_add_protocol(const struct net_protocol *prot, unsigned char protocol)
 {
-	int hash, ret;
+ int hash, ret;
 
-	hash = protocol & (MAX_INET_PROTOS - 1);
+ hash = protocol & (MAX_INET_PROTOS - 1);
 
-	spin_lock_bh(&inet_proto_lock);
-	if (inet_protos[hash]) {
-		ret = -1;
-	} else {
-		inet_protos[hash] = prot;
-		ret = 0;
-	}
-	spin_unlock_bh(&inet_proto_lock);
+ spin_lock_bh(&inet_proto_lock);
+ if (inet_protos[hash]) {
+  ret = -1;
+ } else {
+  inet_protos[hash] = prot;
+  ret = 0;
+ }
+ spin_unlock_bh(&inet_proto_lock);
 
-	return ret;
+ return ret;
 }

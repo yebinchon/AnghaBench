@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {scalar_t__ MessagesAvailable; int /*<<< orphan*/  NextMessageSize; int /*<<< orphan*/  ReadTimeout; int /*<<< orphan*/  MaximumMessageSize; } ;
-struct TYPE_8__ {int /*<<< orphan*/  Flink; } ;
-struct TYPE_10__ {scalar_t__ MessageCount; int /*<<< orphan*/  MessageListLock; TYPE_1__ MessageListHead; int /*<<< orphan*/  TimeOut; int /*<<< orphan*/  MaxMessageSize; } ;
-struct TYPE_9__ {int /*<<< orphan*/  Size; } ;
-typedef  int* PULONG ;
-typedef  TYPE_2__* PMSFS_MESSAGE ;
-typedef  TYPE_3__* PMSFS_FCB ;
-typedef  TYPE_4__* PFILE_MAILSLOT_QUERY_INFORMATION ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  KIRQL ;
-typedef  int /*<<< orphan*/  FILE_MAILSLOT_QUERY_INFORMATION ;
 
-/* Variables and functions */
- TYPE_2__* CONTAINING_RECORD (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  KeAcquireSpinLock (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KeReleaseSpinLock (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAILSLOT_NO_MESSAGE ; 
- int /*<<< orphan*/  MSFS_MESSAGE ; 
- int /*<<< orphan*/  MessageListEntry ; 
- int /*<<< orphan*/  STATUS_BUFFER_OVERFLOW ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_11__ {scalar_t__ MessagesAvailable; int NextMessageSize; int ReadTimeout; int MaximumMessageSize; } ;
+struct TYPE_8__ {int Flink; } ;
+struct TYPE_10__ {scalar_t__ MessageCount; int MessageListLock; TYPE_1__ MessageListHead; int TimeOut; int MaxMessageSize; } ;
+struct TYPE_9__ {int Size; } ;
+typedef int* PULONG ;
+typedef TYPE_2__* PMSFS_MESSAGE ;
+typedef TYPE_3__* PMSFS_FCB ;
+typedef TYPE_4__* PFILE_MAILSLOT_QUERY_INFORMATION ;
+typedef int NTSTATUS ;
+typedef int KIRQL ;
+typedef int FILE_MAILSLOT_QUERY_INFORMATION ;
+
+
+ TYPE_2__* CONTAINING_RECORD (int ,int ,int ) ;
+ int KeAcquireSpinLock (int *,int *) ;
+ int KeReleaseSpinLock (int *,int ) ;
+ int MAILSLOT_NO_MESSAGE ;
+ int MSFS_MESSAGE ;
+ int MessageListEntry ;
+ int STATUS_BUFFER_OVERFLOW ;
+ int STATUS_SUCCESS ;
 
 __attribute__((used)) static NTSTATUS
 MsfsQueryMailslotInformation(PMSFS_FCB Fcb,

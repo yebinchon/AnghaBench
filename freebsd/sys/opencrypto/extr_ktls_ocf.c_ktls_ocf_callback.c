@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ocf_operation {int done; TYPE_1__* os; } ;
 struct cryptop {struct ocf_operation* crp_opaque; } ;
-struct TYPE_2__ {int /*<<< orphan*/  lock; } ;
+struct TYPE_2__ {int lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mtx_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mtx_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wakeup (struct ocf_operation*) ; 
+
+ int mtx_lock (int *) ;
+ int mtx_unlock (int *) ;
+ int wakeup (struct ocf_operation*) ;
 
 __attribute__((used)) static int
 ktls_ocf_callback(struct cryptop *crp)
 {
-	struct ocf_operation *oo;
+ struct ocf_operation *oo;
 
-	oo = crp->crp_opaque;
-	mtx_lock(&oo->os->lock);
-	oo->done = true;
-	mtx_unlock(&oo->os->lock);
-	wakeup(oo);
-	return (0);
+ oo = crp->crp_opaque;
+ mtx_lock(&oo->os->lock);
+ oo->done = 1;
+ mtx_unlock(&oo->os->lock);
+ wakeup(oo);
+ return (0);
 }

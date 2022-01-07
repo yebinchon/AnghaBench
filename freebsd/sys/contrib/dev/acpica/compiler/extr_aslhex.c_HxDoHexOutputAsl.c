@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT8 ;
-typedef  size_t UINT32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASL_FILE_AML_OUTPUT ; 
- int /*<<< orphan*/  ASL_FILE_HEX_OUTPUT ; 
- size_t FlGetFileSize (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FlPrintFile (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  FlSeekFile (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int HEX_TABLE_LINE_SIZE ; 
- size_t HxReadAmlOutputFile (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LsDumpAsciiInComment (int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int UINT8 ;
+typedef size_t UINT32 ;
+
+
+ int ASL_FILE_AML_OUTPUT ;
+ int ASL_FILE_HEX_OUTPUT ;
+ size_t FlGetFileSize (int ) ;
+ int FlPrintFile (int ,char*,...) ;
+ int FlSeekFile (int ,int ) ;
+ int HEX_TABLE_LINE_SIZE ;
+ size_t HxReadAmlOutputFile (int *) ;
+ int LsDumpAsciiInComment (int ,size_t,int *) ;
 
 __attribute__((used)) static void
 HxDoHexOutputAsl (
     void)
 {
-    UINT8                   FileData[HEX_TABLE_LINE_SIZE];
-    UINT32                  LineLength;
-    UINT32                  Offset = 0;
-    UINT32                  AmlFileSize;
-    UINT32                  i;
+    UINT8 FileData[HEX_TABLE_LINE_SIZE];
+    UINT32 LineLength;
+    UINT32 Offset = 0;
+    UINT32 AmlFileSize;
+    UINT32 i;
 
 
-    /* Get AML size, seek back to start */
+
 
     AmlFileSize = FlGetFileSize (ASL_FILE_AML_OUTPUT);
     FlSeekFile (ASL_FILE_AML_OUTPUT, 0);
@@ -46,7 +46,7 @@ HxDoHexOutputAsl (
 
     while (Offset < AmlFileSize)
     {
-        /* Read enough bytes needed for one output line */
+
 
         LineLength = HxReadAmlOutputFile (FileData);
         if (!LineLength)
@@ -58,11 +58,11 @@ HxDoHexOutputAsl (
 
         for (i = 0; i < LineLength; i++)
         {
-            /*
-             * Print each hex byte.
-             * Add a comma until the very last byte of the AML file
-             * (Some C compilers complain about a trailing comma)
-             */
+
+
+
+
+
             FlPrintFile (ASL_FILE_HEX_OUTPUT, "0x%2.2X", FileData[i]);
             if ((Offset + i + 1) < AmlFileSize)
             {
@@ -74,7 +74,7 @@ HxDoHexOutputAsl (
             }
         }
 
-        /* Add fill spaces if needed for last line */
+
 
         if (LineLength < HEX_TABLE_LINE_SIZE)
         {
@@ -82,7 +82,7 @@ HxDoHexOutputAsl (
                 5 * (HEX_TABLE_LINE_SIZE - LineLength), " ");
         }
 
-        /* Emit the offset and ascii dump for the entire line */
+
 
         FlPrintFile (ASL_FILE_HEX_OUTPUT, "  /* %8.8X", Offset);
         LsDumpAsciiInComment (ASL_FILE_HEX_OUTPUT, LineLength, FileData);

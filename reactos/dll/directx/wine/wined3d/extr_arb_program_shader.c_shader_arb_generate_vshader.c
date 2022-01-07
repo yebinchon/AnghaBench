@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_string_buffer {int /*<<< orphan*/  buffer; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct wined3d_string_buffer {int buffer; } ;
 struct wined3d_shader_signature {int dummy; } ;
 struct TYPE_4__ {scalar_t__* texcoord_mask; } ;
 struct wined3d_shader_reg_maps {unsigned int integer_constants; TYPE_2__ u; scalar_t__ fog; } ;
 struct wined3d_shader {TYPE_1__* device; struct wined3d_shader_reg_maps reg_maps; struct arb_vshader_private* backend_data; } ;
 struct wined3d_gl_info {int quirks; scalar_t__* supported; } ;
-struct shader_arb_priv {int /*<<< orphan*/  ffp_proj_control; } ;
-struct shader_arb_ctx_priv {scalar_t__ target_version; int /*<<< orphan*/  footer_written; int /*<<< orphan*/  in_main_func; int /*<<< orphan*/  vs_clipplanes; int /*<<< orphan*/  control_frames; struct arb_vs_compile_args const* cur_vs_args; } ;
-struct arb_vshader_private {int /*<<< orphan*/  rel_offset; } ;
-struct arb_vs_compiled_shader {int /*<<< orphan*/  pos_fixup; int /*<<< orphan*/  num_int_consts; int /*<<< orphan*/ * int_consts; } ;
+struct shader_arb_priv {int ffp_proj_control; } ;
+struct shader_arb_ctx_priv {scalar_t__ target_version; int footer_written; int in_main_func; int vs_clipplanes; int control_frames; struct arb_vs_compile_args const* cur_vs_args; } ;
+struct arb_vshader_private {int rel_offset; } ;
+struct arb_vs_compiled_shader {int pos_fixup; int num_int_consts; int * int_consts; } ;
 struct arb_vs_compile_args {int dummy; } ;
-typedef  int /*<<< orphan*/  priv_ctx ;
+typedef int priv_ctx ;
 struct TYPE_3__ {struct shader_arb_priv* shader_priv; } ;
-typedef  int GLuint ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef int GLuint ;
+typedef int DWORD ;
 
-/* Variables and functions */
- scalar_t__ ARB ; 
- int /*<<< orphan*/  ARB_0001 ; 
- int /*<<< orphan*/  ARB_ONE ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_VERTEX_PROGRAM_ARB ; 
- int MAX_REG_TEXCRD ; 
- scalar_t__ NV2 ; 
- scalar_t__ NV3 ; 
- size_t NV_VERTEX_PROGRAM ; 
- size_t NV_VERTEX_PROGRAM2_OPTION ; 
- size_t NV_VERTEX_PROGRAM3 ; 
- int /*<<< orphan*/  TRACE (char*,int) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ WINED3DSP_WRITEMASK_ALL ; 
- int /*<<< orphan*/  WINED3D_CONST_NUM_UNUSED ; 
- unsigned int WINED3D_MAX_CONSTS_I ; 
- int WINED3D_QUIRK_SET_TEXCOORD_W ; 
- int /*<<< orphan*/  WINED3D_SHADER_TYPE_VERTEX ; 
- char* arb_get_helper_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eps ; 
- int /*<<< orphan*/ * find_loop_control_values (struct wined3d_shader const*,unsigned int) ; 
- int /*<<< orphan*/  glBindProgramARB (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  glGenProgramsARB (int,int*) ; 
- int /*<<< orphan*/  init_output_registers (struct wined3d_shader const*,struct wined3d_shader_signature const*,struct shader_arb_ctx_priv*,struct arb_vs_compiled_shader*) ; 
- int /*<<< orphan*/  list_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (struct shader_arb_ctx_priv*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ need_helper_const (struct arb_vshader_private const*,struct wined3d_shader_reg_maps const*,struct wined3d_gl_info const*) ; 
- scalar_t__ need_rel_addr_const (struct arb_vshader_private const*,struct wined3d_shader_reg_maps const*,struct wined3d_gl_info const*) ; 
- int /*<<< orphan*/  shader_addline (struct wined3d_string_buffer*,char*,...) ; 
- int /*<<< orphan*/  shader_arb_compile (struct wined3d_gl_info const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shader_generate_arb_declarations (struct wined3d_shader const*,struct wined3d_shader_reg_maps const*,struct wined3d_string_buffer*,struct wined3d_gl_info const*,int /*<<< orphan*/ *,struct shader_arb_ctx_priv*) ; 
- int /*<<< orphan*/  shader_generate_code (struct wined3d_shader const*,struct wined3d_string_buffer*,struct wined3d_shader_reg_maps const*,struct shader_arb_ctx_priv*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vshader_add_footer (struct shader_arb_ctx_priv*,struct arb_vshader_private const*,struct arb_vs_compile_args const*,struct wined3d_shader_reg_maps const*,struct wined3d_gl_info const*,struct wined3d_string_buffer*) ; 
- int /*<<< orphan*/  wined3d_ftoa (int /*<<< orphan*/ ,char*) ; 
+
+ scalar_t__ ARB ;
+ int ARB_0001 ;
+ int ARB_ONE ;
+ scalar_t__ FAILED (int ) ;
+ int GL_EXTCALL (int ) ;
+ int GL_VERTEX_PROGRAM_ARB ;
+ int MAX_REG_TEXCRD ;
+ scalar_t__ NV2 ;
+ scalar_t__ NV3 ;
+ size_t NV_VERTEX_PROGRAM ;
+ size_t NV_VERTEX_PROGRAM2_OPTION ;
+ size_t NV_VERTEX_PROGRAM3 ;
+ int TRACE (char*,int) ;
+ int TRUE ;
+ scalar_t__ WINED3DSP_WRITEMASK_ALL ;
+ int WINED3D_CONST_NUM_UNUSED ;
+ unsigned int WINED3D_MAX_CONSTS_I ;
+ int WINED3D_QUIRK_SET_TEXCOORD_W ;
+ int WINED3D_SHADER_TYPE_VERTEX ;
+ char* arb_get_helper_value (int ,int ) ;
+ int eps ;
+ int * find_loop_control_values (struct wined3d_shader const*,unsigned int) ;
+ int glBindProgramARB (int ,int) ;
+ int glGenProgramsARB (int,int*) ;
+ int init_output_registers (struct wined3d_shader const*,struct wined3d_shader_signature const*,struct shader_arb_ctx_priv*,struct arb_vs_compiled_shader*) ;
+ int list_init (int *) ;
+ int memset (struct shader_arb_ctx_priv*,int ,int) ;
+ scalar_t__ need_helper_const (struct arb_vshader_private const*,struct wined3d_shader_reg_maps const*,struct wined3d_gl_info const*) ;
+ scalar_t__ need_rel_addr_const (struct arb_vshader_private const*,struct wined3d_shader_reg_maps const*,struct wined3d_gl_info const*) ;
+ int shader_addline (struct wined3d_string_buffer*,char*,...) ;
+ int shader_arb_compile (struct wined3d_gl_info const*,int ,int ) ;
+ int shader_generate_arb_declarations (struct wined3d_shader const*,struct wined3d_shader_reg_maps const*,struct wined3d_string_buffer*,struct wined3d_gl_info const*,int *,struct shader_arb_ctx_priv*) ;
+ int shader_generate_code (struct wined3d_shader const*,struct wined3d_string_buffer*,struct wined3d_shader_reg_maps const*,struct shader_arb_ctx_priv*,int *,int *) ;
+ int vshader_add_footer (struct shader_arb_ctx_priv*,struct arb_vshader_private const*,struct arb_vs_compile_args const*,struct wined3d_shader_reg_maps const*,struct wined3d_gl_info const*,struct wined3d_string_buffer*) ;
+ int wined3d_ftoa (int ,char*) ;
 
 __attribute__((used)) static GLuint shader_arb_generate_vshader(const struct wined3d_shader *shader,
         const struct wined3d_gl_info *gl_info, struct wined3d_string_buffer *buffer,
@@ -83,12 +83,12 @@ __attribute__((used)) static GLuint shader_arb_generate_vshader(const struct win
     list_init(&priv_ctx.control_frames);
     init_output_registers(shader, ps_input_sig, &priv_ctx, compiled);
 
-    /*  Create the hw ARB shader */
+
     shader_addline(buffer, "!!ARBvp1.0\n");
 
-    /* Always enable the NV extension if available. Unlike fragment shaders, there is no
-     * mesurable performance penalty, and we can always make use of it for clipplanes.
-     */
+
+
+
     if (gl_info->supported[NV_VERTEX_PROGRAM3])
     {
         shader_addline(buffer, "OPTION NV_vertex_program3;\n");
@@ -122,7 +122,7 @@ __attribute__((used)) static GLuint shader_arb_generate_vshader(const struct win
     shader_addline(buffer, "TEMP TA;\n");
     shader_addline(buffer, "TEMP TB;\n");
 
-    /* Base Declarations */
+
     shader_generate_arb_declarations(shader, reg_maps, buffer, gl_info,
             &priv_ctx.vs_clipplanes, &priv_ctx);
 
@@ -147,21 +147,9 @@ __attribute__((used)) static GLuint shader_arb_generate_vshader(const struct win
         }
     }
 
-    /* We need a constant to fixup the final position */
+
     shader_addline(buffer, "PARAM posFixup = program.local[%u];\n", next_local);
     compiled->pos_fixup = next_local++;
-
-    /* Initialize output parameters. GL_ARB_vertex_program does not require special initialization values
-     * for output parameters. D3D in theory does not do that either, but some applications depend on a
-     * proper initialization of the secondary color, and programs using the fixed function pipeline without
-     * a replacement shader depend on the texcoord.w being set properly.
-     *
-     * GL_NV_vertex_program defines that all output values are initialized to {0.0, 0.0, 0.0, 1.0}. This
-     * assertion is in effect even when using GL_ARB_vertex_program without any NV specific additions. So
-     * skip this if NV_vertex_program is supported. Otherwise, initialize the secondary color. For the tex-
-     * coords, we have a flag in the opengl caps. Many cards do not require the texcoord being set, and
-     * this can eat a number of instructions, so skip it unless this cap is set as well
-     */
     if (!gl_info->supported[NV_VERTEX_PROGRAM])
     {
         const char *color_init = arb_get_helper_value(WINED3D_SHADER_TYPE_VERTEX, ARB_0001);
@@ -179,10 +167,10 @@ __attribute__((used)) static GLuint shader_arb_generate_vshader(const struct win
         }
     }
 
-    /* The shader starts with the main function */
+
     priv_ctx.in_main_func = TRUE;
-    /* Base Shader Body */
-    if (FAILED(shader_generate_code(shader, buffer, reg_maps, &priv_ctx, NULL, NULL)))
+
+    if (FAILED(shader_generate_code(shader, buffer, reg_maps, &priv_ctx, ((void*)0), ((void*)0))))
         return -1;
 
     if (!priv_ctx.footer_written) vshader_add_footer(&priv_ctx,
@@ -190,7 +178,7 @@ __attribute__((used)) static GLuint shader_arb_generate_vshader(const struct win
 
     shader_addline(buffer, "END\n");
 
-    /* TODO: change to resource.glObjectHandle or something like that */
+
     GL_EXTCALL(glGenProgramsARB(1, &ret));
 
     TRACE("Creating a hw vertex shader, prg=%d\n", ret);

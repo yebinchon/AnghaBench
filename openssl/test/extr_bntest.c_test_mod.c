@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_bntest_rand (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_div (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mod (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * BN_new () ; 
- int /*<<< orphan*/  BN_set_negative (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_sub (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int NUM0 ; 
- scalar_t__ TEST_BN_eq_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- scalar_t__ TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ctx ; 
- int /*<<< orphan*/  rand_neg () ; 
+
+
+
+typedef int BIGNUM ;
+
+
+ int BN_bntest_rand (int *,int,int ,int ) ;
+ int BN_div (int *,int *,int *,int *,int ) ;
+ int BN_free (int *) ;
+ int BN_mod (int *,int *,int *,int ) ;
+ int * BN_new () ;
+ int BN_set_negative (int *,int ) ;
+ int BN_sub (int *,int *,int *) ;
+ int NUM0 ;
+ scalar_t__ TEST_BN_eq_zero (int *) ;
+ int TEST_ptr (int *) ;
+ scalar_t__ TEST_true (int ) ;
+ int ctx ;
+ int rand_neg () ;
 
 __attribute__((used)) static int test_mod(void)
 {
-    BIGNUM *a = NULL, *b = NULL, *c = NULL, *d = NULL, *e = NULL;
+    BIGNUM *a = ((void*)0), *b = ((void*)0), *c = ((void*)0), *d = ((void*)0), *e = ((void*)0);
     int st = 0, i;
 
     if (!TEST_ptr(a = BN_new())

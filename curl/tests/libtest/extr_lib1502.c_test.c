@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timeval {int tv_sec; scalar_t__ tv_usec; } ;
-typedef  char curl_slist ;
-typedef  int /*<<< orphan*/  redirect ;
-typedef  int /*<<< orphan*/  fd_set ;
-typedef  int /*<<< orphan*/  CURLM ;
-typedef  int /*<<< orphan*/  CURL ;
+typedef char curl_slist ;
+typedef int redirect ;
+typedef int fd_set ;
+typedef int CURLM ;
+typedef int CURL ;
 
-/* Variables and functions */
- int CURLE_OUT_OF_MEMORY ; 
- int /*<<< orphan*/  CURLOPT_HEADER ; 
- int /*<<< orphan*/  CURLOPT_RESOLVE ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int TEST_ERR_MAJOR_BAD ; 
- int /*<<< orphan*/  abort_on_test_timeout () ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * curl_easy_duphandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- int /*<<< orphan*/  curl_multi_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_multi_remove_handle (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* curl_slist_append (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  curl_slist_free_all (char*) ; 
- int /*<<< orphan*/  easy_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  libtest_arg2 ; 
- int /*<<< orphan*/  libtest_arg3 ; 
- int /*<<< orphan*/  msnprintf (char*,int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  multi_add_handle (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  multi_fdset (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  multi_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  multi_perform (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  res_global_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  select_test (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
- int /*<<< orphan*/  start_test_timing () ; 
- int /*<<< orphan*/  stderr ; 
+
+ int CURLE_OUT_OF_MEMORY ;
+ int CURLOPT_HEADER ;
+ int CURLOPT_RESOLVE ;
+ int CURLOPT_URL ;
+ int CURL_GLOBAL_ALL ;
+ int FD_ZERO (int *) ;
+ int TEST_ERR_MAJOR_BAD ;
+ int abort_on_test_timeout () ;
+ int curl_easy_cleanup (int *) ;
+ int * curl_easy_duphandle (int *) ;
+ int curl_global_cleanup () ;
+ int curl_multi_cleanup (int *) ;
+ int curl_multi_remove_handle (int *,int *) ;
+ char* curl_slist_append (int *,char*) ;
+ int curl_slist_free_all (char*) ;
+ int easy_init (int *) ;
+ int easy_setopt (int *,int ,...) ;
+ int fprintf (int ,char*) ;
+ int libtest_arg2 ;
+ int libtest_arg3 ;
+ int msnprintf (char*,int,char*,int ,int ) ;
+ int multi_add_handle (int *,int *) ;
+ int multi_fdset (int *,int *,int *,int *,int*) ;
+ int multi_init (int *) ;
+ int multi_perform (int *,int*) ;
+ int res_global_init (int ) ;
+ int select_test (int,int *,int *,int *,struct timeval*) ;
+ int start_test_timing () ;
+ int stderr ;
 
 int test(char *URL)
 {
-  CURL *easy = NULL;
+  CURL *easy = ((void*)0);
   CURL *dup;
-  CURLM *multi = NULL;
+  CURLM *multi = ((void*)0);
   int still_running;
   int res = 0;
 
   char redirect[160];
 
-  /* DNS cache injection */
+
   struct curl_slist *dns_cache_list;
 
   msnprintf(redirect, sizeof(redirect), "google.com:%s:%s", libtest_arg2,
@@ -66,7 +66,7 @@ int test(char *URL)
 
   start_test_timing();
 
-  dns_cache_list = curl_slist_append(NULL, redirect);
+  dns_cache_list = curl_slist_append(((void*)0), redirect);
   if(!dns_cache_list) {
     fprintf(stderr, "curl_slist_append() failed\n");
     return TEST_ERR_MAJOR_BAD;
@@ -118,7 +118,7 @@ int test(char *URL)
 
     multi_fdset(multi, &fdread, &fdwrite, &fdexcep, &maxfd);
 
-    /* At this point, maxfd is guaranteed to be greater or equal than -1. */
+
 
     select_test(maxfd + 1, &fdread, &fdwrite, &fdexcep, &timeout);
 
@@ -130,37 +130,6 @@ int test(char *URL)
   }
 
 test_cleanup:
-
-#ifdef LIB1502
-  /* undocumented cleanup sequence - type UA */
-  curl_multi_cleanup(multi);
-  curl_easy_cleanup(easy);
-  curl_global_cleanup();
-#endif
-
-#ifdef LIB1503
-  /* proper cleanup sequence - type PA */
-  curl_multi_remove_handle(multi, easy);
-  curl_multi_cleanup(multi);
-  curl_easy_cleanup(easy);
-  curl_global_cleanup();
-#endif
-
-#ifdef LIB1504
-  /* undocumented cleanup sequence - type UB */
-  curl_easy_cleanup(easy);
-  curl_multi_cleanup(multi);
-  curl_global_cleanup();
-#endif
-
-#ifdef LIB1505
-  /* proper cleanup sequence - type PB */
-  curl_multi_remove_handle(multi, easy);
-  curl_easy_cleanup(easy);
-  curl_multi_cleanup(multi);
-  curl_global_cleanup();
-#endif
-
   curl_slist_free_all(dns_cache_list);
 
   return res;

@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {scalar_t__ avail_in; char* msg; int /*<<< orphan*/  avail_out; } ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {scalar_t__ avail_in; char* msg; int avail_out; } ;
 struct TYPE_6__ {scalar_t__ avail_in; TYPE_4__ z; scalar_t__ avail_out; } ;
-typedef  TYPE_1__ git_zstream ;
+typedef TYPE_1__ git_zstream ;
 
-/* Variables and functions */
-#define  Z_BUF_ERROR 130 
- int Z_MEM_ERROR ; 
-#define  Z_OK 129 
-#define  Z_STREAM_END 128 
- int /*<<< orphan*/  die (char*) ; 
- int /*<<< orphan*/  error (char*,int /*<<< orphan*/ ,char*) ; 
- int inflate (TYPE_4__*,int) ; 
- int /*<<< orphan*/  zerr_to_string (int) ; 
- int /*<<< orphan*/  zlib_post_call (TYPE_1__*) ; 
- int /*<<< orphan*/  zlib_pre_call (TYPE_1__*) ; 
+
+
+ int Z_MEM_ERROR ;
+
+
+ int die (char*) ;
+ int error (char*,int ,char*) ;
+ int inflate (TYPE_4__*,int) ;
+ int zerr_to_string (int) ;
+ int zlib_post_call (TYPE_1__*) ;
+ int zlib_pre_call (TYPE_1__*) ;
 
 int git_inflate(git_zstream *strm, int flush)
 {
-	int status;
+ int status;
 
-	for (;;) {
-		zlib_pre_call(strm);
-		/* Never say Z_FINISH unless we are feeding everything */
-		status = inflate(&strm->z,
-				 (strm->z.avail_in != strm->avail_in)
-				 ? 0 : flush);
-		if (status == Z_MEM_ERROR)
-			die("inflate: out of memory");
-		zlib_post_call(strm);
+ for (;;) {
+  zlib_pre_call(strm);
 
-		/*
-		 * Let zlib work another round, while we can still
-		 * make progress.
-		 */
-		if ((strm->avail_out && !strm->z.avail_out) &&
-		    (status == Z_OK || status == Z_BUF_ERROR))
-			continue;
-		break;
-	}
+  status = inflate(&strm->z,
+     (strm->z.avail_in != strm->avail_in)
+     ? 0 : flush);
+  if (status == Z_MEM_ERROR)
+   die("inflate: out of memory");
+  zlib_post_call(strm);
 
-	switch (status) {
-	/* Z_BUF_ERROR: normal, needs more space in the output buffer */
-	case Z_BUF_ERROR:
-	case Z_OK:
-	case Z_STREAM_END:
-		return status;
-	default:
-		break;
-	}
-	error("inflate: %s (%s)", zerr_to_string(status),
-	      strm->z.msg ? strm->z.msg : "no message");
-	return status;
+
+
+
+
+  if ((strm->avail_out && !strm->z.avail_out) &&
+      (status == 129 || status == 130))
+   continue;
+  break;
+ }
+
+ switch (status) {
+
+ case 130:
+ case 129:
+ case 128:
+  return status;
+ default:
+  break;
+ }
+ error("inflate: %s (%s)", zerr_to_string(status),
+       strm->z.msg ? strm->z.msg : "no message");
+ return status;
 }

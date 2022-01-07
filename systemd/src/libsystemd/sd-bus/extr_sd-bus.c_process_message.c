@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_21__ {struct TYPE_21__* current_message; int /*<<< orphan*/  iteration_counter; } ;
-typedef  TYPE_1__ sd_bus_message ;
-typedef  TYPE_1__ sd_bus ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int bus_process_object (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  log_debug_bus_message (TYPE_1__*) ; 
- int process_builtin (TYPE_1__*,TYPE_1__*) ; 
- int process_fd_check (TYPE_1__*,TYPE_1__*) ; 
- int process_filter (TYPE_1__*,TYPE_1__*) ; 
- int process_hello (TYPE_1__*,TYPE_1__*) ; 
- int process_match (TYPE_1__*,TYPE_1__*) ; 
- int process_reply (TYPE_1__*,TYPE_1__*) ; 
+
+typedef struct TYPE_21__ TYPE_1__ ;
+
+
+struct TYPE_21__ {struct TYPE_21__* current_message; int iteration_counter; } ;
+typedef TYPE_1__ sd_bus_message ;
+typedef TYPE_1__ sd_bus ;
+
+
+ int assert (TYPE_1__*) ;
+ int bus_process_object (TYPE_1__*,TYPE_1__*) ;
+ int log_debug_bus_message (TYPE_1__*) ;
+ int process_builtin (TYPE_1__*,TYPE_1__*) ;
+ int process_fd_check (TYPE_1__*,TYPE_1__*) ;
+ int process_filter (TYPE_1__*,TYPE_1__*) ;
+ int process_hello (TYPE_1__*,TYPE_1__*) ;
+ int process_match (TYPE_1__*,TYPE_1__*) ;
+ int process_reply (TYPE_1__*,TYPE_1__*) ;
 
 __attribute__((used)) static int process_message(sd_bus *bus, sd_bus_message *m) {
         int r;
@@ -64,6 +64,6 @@ __attribute__((used)) static int process_message(sd_bus *bus, sd_bus_message *m)
         r = bus_process_object(bus, m);
 
 finish:
-        bus->current_message = NULL;
+        bus->current_message = ((void*)0);
         return r;
 }

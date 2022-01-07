@@ -1,43 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/ * next_bio; scalar_t__ ptr; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int * next_bio; scalar_t__ ptr; } ;
 struct TYPE_7__ {int obuf_len; char* obuf; int obuf_size; } ;
-typedef  TYPE_1__ BIO_LINEBUFFER_CTX ;
-typedef  TYPE_2__ BIO ;
-
-/* Variables and functions */
-#define  BIO_CTRL_DUP 134 
-#define  BIO_CTRL_FLUSH 133 
-#define  BIO_CTRL_INFO 132 
-#define  BIO_CTRL_RESET 131 
-#define  BIO_CTRL_WPENDING 130 
-#define  BIO_C_DO_STATE_MACHINE 129 
-#define  BIO_C_SET_BUFF_SIZE 128 
- int /*<<< orphan*/  BIO_F_LINEBUFFER_CTRL ; 
- int /*<<< orphan*/  BIO_clear_retry_flags (TYPE_2__*) ; 
- int /*<<< orphan*/  BIO_copy_next_retry (TYPE_2__*) ; 
- long BIO_ctrl (int /*<<< orphan*/ *,int,long,void*) ; 
- int /*<<< orphan*/  BIO_set_write_buffer_size (TYPE_2__*,int) ; 
- int BIO_write (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  BIOerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int DEFAULT_LINEBUFFER_SIZE ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
- char* OPENSSL_malloc (int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  memmove (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+typedef TYPE_1__ BIO_LINEBUFFER_CTX ;
+typedef TYPE_2__ BIO ;
+ int BIO_F_LINEBUFFER_CTRL ;
+ int BIO_clear_retry_flags (TYPE_2__*) ;
+ int BIO_copy_next_retry (TYPE_2__*) ;
+ long BIO_ctrl (int *,int,long,void*) ;
+ int BIO_set_write_buffer_size (TYPE_2__*,int) ;
+ int BIO_write (int *,char*,int) ;
+ int BIOerr (int ,int ) ;
+ int DEFAULT_LINEBUFFER_SIZE ;
+ int ERR_R_MALLOC_FAILURE ;
+ int OPENSSL_free (char*) ;
+ char* OPENSSL_malloc (int) ;
+ int memcpy (char*,char*,int) ;
+ int memmove (char*,int ,int ) ;
 
 __attribute__((used)) static long linebuffer_ctrl(BIO *b, int cmd, long num, void *ptr)
 {
@@ -51,29 +42,29 @@ __attribute__((used)) static long linebuffer_ctrl(BIO *b, int cmd, long num, voi
     ctx = (BIO_LINEBUFFER_CTX *)b->ptr;
 
     switch (cmd) {
-    case BIO_CTRL_RESET:
+    case 131:
         ctx->obuf_len = 0;
-        if (b->next_bio == NULL)
+        if (b->next_bio == ((void*)0))
             return 0;
         ret = BIO_ctrl(b->next_bio, cmd, num, ptr);
         break;
-    case BIO_CTRL_INFO:
+    case 132:
         ret = (long)ctx->obuf_len;
         break;
-    case BIO_CTRL_WPENDING:
+    case 130:
         ret = (long)ctx->obuf_len;
         if (ret == 0) {
-            if (b->next_bio == NULL)
+            if (b->next_bio == ((void*)0))
                 return 0;
             ret = BIO_ctrl(b->next_bio, cmd, num, ptr);
         }
         break;
-    case BIO_C_SET_BUFF_SIZE:
+    case 128:
         obs = (int)num;
         p = ctx->obuf;
         if ((obs > DEFAULT_LINEBUFFER_SIZE) && (obs != ctx->obuf_size)) {
             p = OPENSSL_malloc((int)num);
-            if (p == NULL)
+            if (p == ((void*)0))
                 goto malloc_error;
         }
         if (ctx->obuf != p) {
@@ -86,16 +77,16 @@ __attribute__((used)) static long linebuffer_ctrl(BIO *b, int cmd, long num, voi
             ctx->obuf_size = obs;
         }
         break;
-    case BIO_C_DO_STATE_MACHINE:
-        if (b->next_bio == NULL)
+    case 129:
+        if (b->next_bio == ((void*)0))
             return 0;
         BIO_clear_retry_flags(b);
         ret = BIO_ctrl(b->next_bio, cmd, num, ptr);
         BIO_copy_next_retry(b);
         break;
 
-    case BIO_CTRL_FLUSH:
-        if (b->next_bio == NULL)
+    case 133:
+        if (b->next_bio == ((void*)0))
             return 0;
         if (ctx->obuf_len <= 0) {
             ret = BIO_ctrl(b->next_bio, cmd, num, ptr);
@@ -119,13 +110,13 @@ __attribute__((used)) static long linebuffer_ctrl(BIO *b, int cmd, long num, voi
         }
         ret = BIO_ctrl(b->next_bio, cmd, num, ptr);
         break;
-    case BIO_CTRL_DUP:
+    case 134:
         dbio = (BIO *)ptr;
         if (!BIO_set_write_buffer_size(dbio, ctx->obuf_size))
             ret = 0;
         break;
     default:
-        if (b->next_bio == NULL)
+        if (b->next_bio == ((void*)0))
             return 0;
         ret = BIO_ctrl(b->next_bio, cmd, num, ptr);
         break;

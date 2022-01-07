@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TokenKind ;
-struct TYPE_5__ {int /*<<< orphan*/ * right; int /*<<< orphan*/ * left; int /*<<< orphan*/  op; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int TokenKind ;
+struct TYPE_5__ {int * right; int * left; int op; } ;
 struct TYPE_6__ {TYPE_1__ assign; } ;
-typedef  TYPE_2__ Stmt ;
-typedef  int /*<<< orphan*/  SrcPos ;
-typedef  int /*<<< orphan*/  Expr ;
+typedef TYPE_2__ Stmt ;
+typedef int SrcPos ;
+typedef int Expr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STMT_ASSIGN ; 
- TYPE_2__* new_stmt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int STMT_ASSIGN ;
+ TYPE_2__* new_stmt (int ,int ) ;
 
 Stmt *new_stmt_assign(SrcPos pos, TokenKind op, Expr *left, Expr *right) {
     Stmt *s = new_stmt(STMT_ASSIGN, pos);

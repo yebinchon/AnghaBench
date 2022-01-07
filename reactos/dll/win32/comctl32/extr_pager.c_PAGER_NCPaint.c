@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPARAM ;
-struct TYPE_4__ {int dwStyle; int /*<<< orphan*/  hwndSelf; int /*<<< orphan*/  BRbtnState; int /*<<< orphan*/  clrBk; int /*<<< orphan*/  TLbtnState; } ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  TYPE_1__ PAGER_INFO ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  scalar_t__ HRGN ;
-typedef  int /*<<< orphan*/  HDC ;
 
-/* Variables and functions */
- int DCX_USESTYLE ; 
- int DCX_WINDOW ; 
- int /*<<< orphan*/  DefWindowProcW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetDCEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  PAGER_DrawButton (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PAGER_GetButtonRects (TYPE_1__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int PGS_HORZ ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WM_NCPAINT ; 
- int WS_MINIMIZE ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WPARAM ;
+struct TYPE_4__ {int dwStyle; int hwndSelf; int BRbtnState; int clrBk; int TLbtnState; } ;
+typedef int RECT ;
+typedef TYPE_1__ PAGER_INFO ;
+typedef int LRESULT ;
+typedef scalar_t__ HRGN ;
+typedef int HDC ;
+
+
+ int DCX_USESTYLE ;
+ int DCX_WINDOW ;
+ int DefWindowProcW (int ,int ,int ,int ) ;
+ int FALSE ;
+ int GetDCEx (int ,int ,int) ;
+ int PAGER_DrawButton (int ,int ,int ,int,int ,int ) ;
+ int PAGER_GetButtonRects (TYPE_1__ const*,int *,int *,int ) ;
+ int PGS_HORZ ;
+ int ReleaseDC (int ,int ) ;
+ int TRUE ;
+ int WM_NCPAINT ;
+ int WS_MINIMIZE ;
 
 __attribute__((used)) static LRESULT
 PAGER_NCPaint (const PAGER_INFO* infoPtr, HRGN hRgn)

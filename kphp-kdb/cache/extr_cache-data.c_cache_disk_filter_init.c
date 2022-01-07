@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ disk_id; scalar_t__ server_id; scalar_t__ node_id; } ;
 union cache_packed_local_copy_location {int i; TYPE_1__ p; } ;
-struct TYPE_5__ {int packed_location; int packed_location_len; int prefix_len; int /*<<< orphan*/  packed_prefix; } ;
-typedef  TYPE_2__ cache_disk_filter_t ;
+struct TYPE_5__ {int packed_location; int packed_location_len; int prefix_len; int packed_prefix; } ;
+typedef TYPE_2__ cache_disk_filter_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- void* snprintf (int /*<<< orphan*/ ,int,char*,int,int,...) ; 
+
+ int assert (int) ;
+ void* snprintf (int ,int,char*,int,int,...) ;
 
 __attribute__((used)) static void cache_disk_filter_init (cache_disk_filter_t *F, int value) {
   union cache_packed_local_copy_location u;

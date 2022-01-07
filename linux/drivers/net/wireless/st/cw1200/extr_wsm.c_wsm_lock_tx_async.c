@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cw1200_common {int /*<<< orphan*/  tx_lock; } ;
 
-/* Variables and functions */
- int atomic_add_return (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pr_debug (char*) ; 
+
+
+
+struct cw1200_common {int tx_lock; } ;
+
+
+ int atomic_add_return (int,int *) ;
+ int pr_debug (char*) ;
 
 void wsm_lock_tx_async(struct cw1200_common *priv)
 {
-	if (atomic_add_return(1, &priv->tx_lock) == 1)
-		pr_debug("[WSM] TX is locked (async).\n");
+ if (atomic_add_return(1, &priv->tx_lock) == 1)
+  pr_debug("[WSM] TX is locked (async).\n");
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct representation {int /*<<< orphan*/  cur_timestamp; int /*<<< orphan*/  init_sec_data_len; int /*<<< orphan*/  init_sec_buf_size; int /*<<< orphan*/  init_sec_buf; int /*<<< orphan*/  ctx; } ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  av_mallocz (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct representation {int cur_timestamp; int init_sec_data_len; int init_sec_buf_size; int init_sec_buf; int ctx; } ;
+
+
+ int AVERROR (int ) ;
+ int AV_LOG_WARNING ;
+ int ENOMEM ;
+ int av_log (int ,int ,char*) ;
+ int av_mallocz (int ) ;
+ int memcpy (int ,int ,int ) ;
 
 __attribute__((used)) static int copy_init_section(struct representation *rep_dest, struct representation *rep_src)
 {

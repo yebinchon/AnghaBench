@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ svn_wc_operation_t ;
-typedef  int /*<<< orphan*/  (* svn_wc_notify_func2_t ) (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;
-struct TYPE_3__ {int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ svn_wc_context_t ;
-typedef  scalar_t__ svn_wc_conflict_reason_t ;
-typedef  scalar_t__ svn_wc_conflict_action_t ;
-typedef  int /*<<< orphan*/  svn_skel_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_WC_CONFLICT_RESOLVER_FAILURE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  operation_map ; 
- int /*<<< orphan*/  reason_map ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_token__to_word (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  svn_wc__conflict_read_info (scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__conflict_read_tree_conflict (scalar_t__*,scalar_t__*,char const**,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_op_break_moved_away (int /*<<< orphan*/ ,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/  (*) (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *),void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_op_mark_resolved (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__read_conflicts (int /*<<< orphan*/  const**,int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__wq_run (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc_conflict_action_delete ; 
- scalar_t__ svn_wc_conflict_reason_deleted ; 
- scalar_t__ svn_wc_conflict_reason_moved_away ; 
- scalar_t__ svn_wc_conflict_reason_replaced ; 
- int /*<<< orphan*/  svn_wc_create_notify (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_notify_resolved_tree ; 
- scalar_t__ svn_wc_operation_switch ; 
- scalar_t__ svn_wc_operation_update ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ svn_wc_operation_t ;
+typedef int (* svn_wc_notify_func2_t ) (void*,int ,int *) ;
+struct TYPE_3__ {int db; } ;
+typedef TYPE_1__ svn_wc_context_t ;
+typedef scalar_t__ svn_wc_conflict_reason_t ;
+typedef scalar_t__ svn_wc_conflict_action_t ;
+typedef int svn_skel_t ;
+typedef int svn_error_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_WC_CONFLICT_RESOLVER_FAILURE ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int _ (char*) ;
+ int operation_map ;
+ int reason_map ;
+ int svn_dirent_local_style (char const*,int *) ;
+ int * svn_error_createf (int ,int *,int ,int ,int ) ;
+ int svn_token__to_word (int ,scalar_t__) ;
+ int svn_wc__conflict_read_info (scalar_t__*,int *,int *,int *,int *,int ,char const*,int *,int *,int *) ;
+ int svn_wc__conflict_read_tree_conflict (scalar_t__*,scalar_t__*,char const**,int ,char const*,int *,int *,int *) ;
+ int svn_wc__db_op_break_moved_away (int ,char const*,char const*,int ,int (*) (void*,int ,int *),void*,int *) ;
+ int svn_wc__db_op_mark_resolved (int ,char const*,int ,int ,int ,int *,int *) ;
+ int svn_wc__read_conflicts (int const**,int **,int ,char const*,int ,int ,int *,int *) ;
+ int svn_wc__wq_run (int ,char const*,int ,void*,int *) ;
+ scalar_t__ svn_wc_conflict_action_delete ;
+ scalar_t__ svn_wc_conflict_reason_deleted ;
+ scalar_t__ svn_wc_conflict_reason_moved_away ;
+ scalar_t__ svn_wc_conflict_reason_replaced ;
+ int svn_wc_create_notify (char const*,int ,int *) ;
+ int svn_wc_notify_resolved_tree ;
+ scalar_t__ svn_wc_operation_switch ;
+ scalar_t__ svn_wc_operation_update ;
 
 svn_error_t *
 svn_wc__conflict_tree_update_break_moved_away(svn_wc_context_t *wc_ctx,
@@ -70,11 +70,11 @@ svn_wc__conflict_tree_update_break_moved_away(svn_wc_context_t *wc_ctx,
 
   SVN_ERR(svn_wc__read_conflicts(&conflicts, &conflict_skel,
                                  wc_ctx->db, local_abspath,
-                                 FALSE, /* no tempfiles */
-                                 FALSE, /* only tree conflicts */
+                                 FALSE,
+                                 FALSE,
                                  scratch_pool, scratch_pool));
 
-  SVN_ERR(svn_wc__conflict_read_info(&operation, NULL, NULL, NULL,
+  SVN_ERR(svn_wc__conflict_read_info(&operation, ((void*)0), ((void*)0), ((void*)0),
                                      &tree_conflicted, wc_ctx->db,
                                      local_abspath, conflict_skel,
                                      scratch_pool, scratch_pool));
@@ -87,10 +87,10 @@ svn_wc__conflict_tree_update_break_moved_away(svn_wc_context_t *wc_ctx,
                                               conflict_skel,
                                               scratch_pool, scratch_pool));
 
-  /* Make sure the expected conflict is recorded. */
+
   if (operation != svn_wc_operation_update &&
       operation != svn_wc_operation_switch)
-    return svn_error_createf(SVN_ERR_WC_CONFLICT_RESOLVER_FAILURE, NULL,
+    return svn_error_createf(SVN_ERR_WC_CONFLICT_RESOLVER_FAILURE, ((void*)0),
                              _("Unexpected conflict operation '%s' on '%s'"),
                              svn_token__to_word(operation_map, operation),
                              svn_dirent_local_style(local_abspath,
@@ -98,20 +98,20 @@ svn_wc__conflict_tree_update_break_moved_away(svn_wc_context_t *wc_ctx,
   if (reason != svn_wc_conflict_reason_deleted &&
       reason != svn_wc_conflict_reason_replaced &&
       reason != svn_wc_conflict_reason_moved_away)
-    return svn_error_createf(SVN_ERR_WC_CONFLICT_RESOLVER_FAILURE, NULL,
+    return svn_error_createf(SVN_ERR_WC_CONFLICT_RESOLVER_FAILURE, ((void*)0),
                              _("Unexpected conflict reason '%s' on '%s'"),
                              svn_token__to_word(reason_map, reason),
                              svn_dirent_local_style(local_abspath,
                                                     scratch_pool));
 
-  /* Break moves for any children moved out of this directory,
-   * and leave this directory deleted. */
+
+
   if (action != svn_wc_conflict_action_delete)
     {
       SVN_ERR(svn_wc__db_op_break_moved_away(
                       wc_ctx->db, local_abspath, src_op_root_abspath, TRUE,
                       notify_func, notify_baton, scratch_pool));
-      /* Conflict was marked resolved by db_op_break_moved_away() call .*/
+
 
       if (notify_func)
         notify_func(notify_baton,
@@ -121,11 +121,11 @@ svn_wc__conflict_tree_update_break_moved_away(svn_wc_context_t *wc_ctx,
                     scratch_pool);
       return SVN_NO_ERROR;
     }
-  /* else # The move is/moves are already broken */
+
 
   SVN_ERR(svn_wc__db_op_mark_resolved(wc_ctx->db, local_abspath,
                                       FALSE, FALSE, TRUE,
-                                      NULL, scratch_pool));
+                                      ((void*)0), scratch_pool));
   SVN_ERR(svn_wc__wq_run(wc_ctx->db, local_abspath, cancel_func, cancel_baton,
                          scratch_pool));
 

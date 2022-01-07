@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
 struct TYPE_6__ {int size; float opacity; int flags; } ;
-typedef  TYPE_1__ VectorscopeContext ;
+typedef TYPE_1__ VectorscopeContext ;
 struct TYPE_7__ {int* linesize; scalar_t__ height; scalar_t__ width; scalar_t__* data; } ;
-typedef  TYPE_2__ AVFrame ;
+typedef TYPE_2__ AVFrame ;
 
-/* Variables and functions */
- int av_clip (int,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  draw_dots16 (int*,int,int const,float const) ; 
- int /*<<< orphan*/  draw_htext16 (TYPE_2__*,int,int,float const,int,int /*<<< orphan*/ ,int*) ; 
- int*** positions ; 
- int /*<<< orphan*/ * positions_name ; 
+
+ int av_clip (int,int ,scalar_t__) ;
+ int draw_dots16 (int*,int,int const,float const) ;
+ int draw_htext16 (TYPE_2__*,int,int,float const,int,int ,int*) ;
+ int*** positions ;
+ int * positions_name ;
 
 __attribute__((used)) static void color_graticule16(VectorscopeContext *s, AVFrame *out, int X, int Y, int D, int P)
 {

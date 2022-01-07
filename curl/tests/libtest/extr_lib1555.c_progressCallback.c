@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int CURLcode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  curl ; 
- int curl_easy_recv (int /*<<< orphan*/ ,char*,int,size_t*) ; 
- int curl_easy_send (int /*<<< orphan*/ ,char*,size_t,size_t*) ; 
- int /*<<< orphan*/  printf (char*,int) ; 
+
+
+
+typedef int CURLcode ;
+
+
+ int curl ;
+ int curl_easy_recv (int ,char*,int,size_t*) ;
+ int curl_easy_send (int ,char*,size_t,size_t*) ;
+ int printf (char*,int) ;
 
 __attribute__((used)) static int progressCallback(void *arg,
                             double dltotal,

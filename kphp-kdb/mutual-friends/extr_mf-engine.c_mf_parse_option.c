@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MCL_CURRENT ; 
- int MCL_FUTURE ; 
- int atoi (void*) ; 
- int disable_crc32 ; 
- int dump_mode ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int index_mode ; 
- int max_memory ; 
- int /*<<< orphan*/  mlockall (int) ; 
- void* newindexname ; 
- void* optarg ; 
- int /*<<< orphan*/  stderr ; 
- void* suggname ; 
+ int MCL_CURRENT ;
+ int MCL_FUTURE ;
+ int atoi (void*) ;
+ int disable_crc32 ;
+ int dump_mode ;
+ int fprintf (int ,char*) ;
+ int index_mode ;
+ int max_memory ;
+ int mlockall (int) ;
+ void* newindexname ;
+ void* optarg ;
+ int stderr ;
+ void* suggname ;
 
 int mf_parse_option (int val) {
   switch (val) {

@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int pg_mblen (char*) ; 
- scalar_t__ t_iseq (char*,char) ; 
+ int pg_mblen (char*) ;
+ scalar_t__ t_iseq (char*,char) ;
 
 __attribute__((used)) static char *
 getlexeme(char *start, char *end, int *len)
 {
-	char	   *ptr;
-	int			charlen;
+ char *ptr;
+ int charlen;
 
-	while (start < end && (charlen = pg_mblen(start)) == 1 && t_iseq(start, '_'))
-		start += charlen;
+ while (start < end && (charlen = pg_mblen(start)) == 1 && t_iseq(start, '_'))
+  start += charlen;
 
-	ptr = start;
-	if (ptr >= end)
-		return NULL;
+ ptr = start;
+ if (ptr >= end)
+  return ((void*)0);
 
-	while (ptr < end && !((charlen = pg_mblen(ptr)) == 1 && t_iseq(ptr, '_')))
-		ptr += charlen;
+ while (ptr < end && !((charlen = pg_mblen(ptr)) == 1 && t_iseq(ptr, '_')))
+  ptr += charlen;
 
-	*len = ptr - start;
-	return start;
+ *len = ptr - start;
+ return start;
 }

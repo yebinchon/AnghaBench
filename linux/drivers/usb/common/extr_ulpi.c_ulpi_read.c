@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct TYPE_4__ {int /*<<< orphan*/  parent; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct TYPE_4__ {int parent; } ;
 struct ulpi {TYPE_2__ dev; TYPE_1__* ops; } ;
-struct TYPE_3__ {int (* read ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
+struct TYPE_3__ {int (* read ) (int ,int ) ;} ;
 
-/* Variables and functions */
- int stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int stub1 (int ,int ) ;
 
 int ulpi_read(struct ulpi *ulpi, u8 addr)
 {
-	return ulpi->ops->read(ulpi->dev.parent, addr);
+ return ulpi->ops->read(ulpi->dev.parent, addr);
 }

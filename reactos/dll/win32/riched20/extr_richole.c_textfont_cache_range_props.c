@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_4__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum textfont_prop_id { ____Placeholder_textfont_prop_id } textfont_prop_id ;
-struct TYPE_6__ {int /*<<< orphan*/  str; } ;
-struct TYPE_5__ {TYPE_4__* props; int /*<<< orphan*/  range; } ;
-typedef  TYPE_1__ ITextFontImpl ;
 
-/* Variables and functions */
- int FONT_NAME ; 
- int FONT_PROPID_FIRST ; 
- int FONT_PROPID_LAST ; 
- int /*<<< orphan*/  get_textfont_prop (TYPE_1__*,int,TYPE_4__*) ; 
- int /*<<< orphan*/  textfont_getname_from_range (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_4__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef enum textfont_prop_id { ____Placeholder_textfont_prop_id } textfont_prop_id ;
+struct TYPE_6__ {int str; } ;
+struct TYPE_5__ {TYPE_4__* props; int range; } ;
+typedef TYPE_1__ ITextFontImpl ;
+
+
+ int FONT_NAME ;
+ int FONT_PROPID_FIRST ;
+ int FONT_PROPID_LAST ;
+ int get_textfont_prop (TYPE_1__*,int,TYPE_4__*) ;
+ int textfont_getname_from_range (int ,int *) ;
 
 __attribute__((used)) static void textfont_cache_range_props(ITextFontImpl *font)
 {

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  status; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int status; } ;
 union ccb {TYPE_1__ ccb_h; } ;
 struct TYPE_10__ {union ccb* ccb; } ;
-typedef  TYPE_2__ pduq_t ;
-struct TYPE_11__ {int /*<<< orphan*/  isc; } ;
-typedef  TYPE_3__ isc_session_t ;
+typedef TYPE_2__ pduq_t ;
+struct TYPE_11__ {int isc; } ;
+typedef TYPE_3__ isc_session_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CAM_REQ_ABORTED ; 
- int /*<<< orphan*/  XPT_DONE (TYPE_3__*,union ccb*) ; 
- int /*<<< orphan*/  debug_called (int) ; 
- int /*<<< orphan*/  pdu_free (int /*<<< orphan*/ ,TYPE_2__*) ; 
+
+ int CAM_REQ_ABORTED ;
+ int XPT_DONE (TYPE_3__*,union ccb*) ;
+ int debug_called (int) ;
+ int pdu_free (int ,TYPE_2__*) ;
 
 void
 iscsi_reject(isc_session_t *sp, pduq_t *opq, pduq_t *pq)
 {
-     union ccb 		*ccb = opq->ccb;
-     //reject_t		*reject = &pq->pdu.ipdu.reject;
+     union ccb *ccb = opq->ccb;
+
 
      debug_called(8);
-     //XXX: check RFC 10.17.1 (page 176)
+
      ccb->ccb_h.status = CAM_REQ_ABORTED;
      XPT_DONE(sp, ccb);
- 
+
      pdu_free(sp->isc, opq);
 }

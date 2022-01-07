@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-struct TYPE_5__ {int nAutoincrmerge; scalar_t__ bFts4; int /*<<< orphan*/  bHasStat; } ;
-typedef  TYPE_1__ Fts3Table ;
 
-/* Variables and functions */
- int FTS3_MERGE_COUNT ; 
- int FTS_STAT_AUTOINCRMERGE ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  SQL_REPLACE_STAT ; 
- int /*<<< orphan*/  assert (int) ; 
- int fts3Getint (char const**) ; 
- int fts3SqlStmt (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3Fts3CreateStatTable (int*,TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3_bind_int (int /*<<< orphan*/ *,int,int) ; 
- int sqlite3_reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_step (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+struct TYPE_5__ {int nAutoincrmerge; scalar_t__ bFts4; int bHasStat; } ;
+typedef TYPE_1__ Fts3Table ;
+
+
+ int FTS3_MERGE_COUNT ;
+ int FTS_STAT_AUTOINCRMERGE ;
+ int SQLITE_OK ;
+ int SQL_REPLACE_STAT ;
+ int assert (int) ;
+ int fts3Getint (char const**) ;
+ int fts3SqlStmt (TYPE_1__*,int ,int **,int ) ;
+ int sqlite3Fts3CreateStatTable (int*,TYPE_1__*) ;
+ int sqlite3_bind_int (int *,int,int) ;
+ int sqlite3_reset (int *) ;
+ int sqlite3_step (int *) ;
 
 __attribute__((used)) static int fts3DoAutoincrmerge(
-  Fts3Table *p,                   /* FTS3 table handle */
-  const char *zParam              /* Nul-terminated string containing boolean */
+  Fts3Table *p,
+  const char *zParam
 ){
   int rc = SQLITE_OK;
   sqlite3_stmt *pStmt = 0;

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct d3dx_parameter {int /*<<< orphan*/  name; } ;
+
+
+
+
+struct d3dx_parameter {int name; } ;
 struct d3dx9_base_effect {int dummy; } ;
-typedef  int UINT ;
+typedef int UINT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*,char const) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  debugstr_a (char const*) ; 
- struct d3dx_parameter* get_parameter_by_name (struct d3dx9_base_effect*,struct d3dx_parameter*,char const*) ; 
- struct d3dx_parameter* get_parameter_element_by_name (struct d3dx9_base_effect*,struct d3dx_parameter*,char const*) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char const*) ; 
- int strcspn (char const*,char*) ; 
- int strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strncmp (int /*<<< orphan*/ ,char const*,int) ; 
+
+ int FIXME (char*,char const) ;
+ int TRACE (char*,...) ;
+ int debugstr_a (char const*) ;
+ struct d3dx_parameter* get_parameter_by_name (struct d3dx9_base_effect*,struct d3dx_parameter*,char const*) ;
+ struct d3dx_parameter* get_parameter_element_by_name (struct d3dx9_base_effect*,struct d3dx_parameter*,char const*) ;
+ int strcmp (int ,char const*) ;
+ int strcspn (char const*,char*) ;
+ int strlen (int ) ;
+ int strncmp (int ,char const*,int) ;
 
 __attribute__((used)) static struct d3dx_parameter *get_annotation_by_name(struct d3dx9_base_effect *base,
         unsigned int count, struct d3dx_parameter *annotations, const char *name)
@@ -34,7 +34,7 @@ __attribute__((used)) static struct d3dx_parameter *get_annotation_by_name(struc
 
     TRACE("count %u, annotations %p, name %s\n", count, annotations, debugstr_a(name));
 
-    if (!name || !*name) return NULL;
+    if (!name || !*name) return ((void*)0);
 
     length = strcspn( name, "[.@" );
     part = name + length;
@@ -66,5 +66,5 @@ __attribute__((used)) static struct d3dx_parameter *get_annotation_by_name(struc
     }
 
     TRACE("Annotation not found\n");
-    return NULL;
+    return ((void*)0);
 }

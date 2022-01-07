@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct cgraph_varpool_node {int /*<<< orphan*/  decl; int /*<<< orphan*/  finalized; } ;
-typedef  enum availability { ____Placeholder_availability } availability ;
-struct TYPE_2__ {int /*<<< orphan*/  (* binds_local_p ) (int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int AVAIL_AVAILABLE ; 
- int AVAIL_NOT_AVAILABLE ; 
- int AVAIL_OVERWRITABLE ; 
- int /*<<< orphan*/  DECL_COMDAT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_PUBLIC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cgraph_function_flags_ready ; 
- int /*<<< orphan*/  gcc_assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- TYPE_1__ targetm ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct cgraph_varpool_node {int decl; int finalized; } ;
+typedef enum availability { ____Placeholder_availability } availability ;
+struct TYPE_2__ {int (* binds_local_p ) (int ) ;} ;
+
+
+ int AVAIL_AVAILABLE ;
+ int AVAIL_NOT_AVAILABLE ;
+ int AVAIL_OVERWRITABLE ;
+ int DECL_COMDAT (int ) ;
+ int TREE_PUBLIC (int ) ;
+ int cgraph_function_flags_ready ;
+ int gcc_assert (int ) ;
+ int stub1 (int ) ;
+ TYPE_1__ targetm ;
 
 enum availability
 cgraph_variable_initializer_availability (struct cgraph_varpool_node *node)
@@ -34,9 +34,9 @@ cgraph_variable_initializer_availability (struct cgraph_varpool_node *node)
     return AVAIL_NOT_AVAILABLE;
   if (!TREE_PUBLIC (node->decl))
     return AVAIL_AVAILABLE;
-  /* If the variable can be overwritten, return OVERWRITABLE.  Takes
-     care of at least two notable extensions - the COMDAT variables
-     used to share template instantiations in C++.  */
+
+
+
   if (!(*targetm.binds_local_p) (node->decl) && !DECL_COMDAT (node->decl))
     return AVAIL_OVERWRITABLE;
   return AVAIL_AVAILABLE;

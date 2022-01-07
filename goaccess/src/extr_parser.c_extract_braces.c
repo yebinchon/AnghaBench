@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ptrdiff_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- char* xmalloc (int) ; 
+
+
+
+typedef int ptrdiff_t ;
+
+
+ int memcpy (char*,char*,int) ;
+ char* xmalloc (int) ;
 
 __attribute__((used)) static char *
 extract_braces (char **p)
 {
-  char *b1 = NULL, *b2 = NULL, *ret = NULL, *s = *p;
+  char *b1 = ((void*)0), *b2 = ((void*)0), *ret = ((void*)0), *s = *p;
   int esc = 0;
   ptrdiff_t len = 0;
 
-  /* iterate over the log format */
+
   for (; *s; s++) {
     if (*s == '\\') {
       esc = 1;
@@ -38,11 +38,11 @@ extract_braces (char **p)
   }
 
   if ((!b1) || (!b2))
-    return NULL;
+    return ((void*)0);
   if ((len = b2 - (b1 + 1)) <= 0)
-    return NULL;
+    return ((void*)0);
 
-  /* Found braces, extract 'reject' character set. */
+
   ret = xmalloc (len + 1);
   memcpy (ret, b1 + 1, len);
   ret[len] = '\0';

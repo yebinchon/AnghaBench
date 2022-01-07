@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  y; int /*<<< orphan*/  x; int /*<<< orphan*/  z; } ;
-typedef  TYPE_1__ ge25519_p2 ;
-struct TYPE_6__ {int /*<<< orphan*/  y; int /*<<< orphan*/  z; int /*<<< orphan*/  t; int /*<<< orphan*/  x; } ;
-typedef  TYPE_2__ ge25519_p1p1 ;
-typedef  int /*<<< orphan*/  fe25519 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fe25519_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fe25519_neg (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fe25519_square (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fe25519_sub (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int y; int x; int z; } ;
+typedef TYPE_1__ ge25519_p2 ;
+struct TYPE_6__ {int y; int z; int t; int x; } ;
+typedef TYPE_2__ ge25519_p1p1 ;
+typedef int fe25519 ;
+
+
+ int fe25519_add (int *,int *,int *) ;
+ int fe25519_neg (int *,int *) ;
+ int fe25519_square (int *,int *) ;
+ int fe25519_sub (int *,int *,int *) ;
 
 __attribute__((used)) static void dbl_p1p1(ge25519_p1p1 *r, const ge25519_p2 *p)
 {

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  jit_State ;
-typedef  int /*<<< orphan*/  TValue ;
-typedef  int /*<<< orphan*/  TRef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRCONV_NUM_INT ; 
- int /*<<< orphan*/  IRTG (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IRTGI (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IRTN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IRT_NUM ; 
- int /*<<< orphan*/  IR_CONV ; 
- int /*<<< orphan*/  IR_NEG ; 
- int /*<<< orphan*/  IR_STRTO ; 
- int /*<<< orphan*/  IR_SUBOV ; 
- int /*<<< orphan*/  emitir (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lj_ir_kint (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lj_ir_knum_neg (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lj_strscan_num (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ numberVint (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strV (int /*<<< orphan*/ *) ; 
- scalar_t__ tref_isinteger (int /*<<< orphan*/ ) ; 
- scalar_t__ tref_isstr (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+typedef int jit_State ;
+typedef int TValue ;
+typedef int TRef ;
+
+
+ int IRCONV_NUM_INT ;
+ int IRTG (int ,int ) ;
+ int IRTGI (int ) ;
+ int IRTN (int ) ;
+ int IRT_NUM ;
+ int IR_CONV ;
+ int IR_NEG ;
+ int IR_STRTO ;
+ int IR_SUBOV ;
+ int emitir (int ,int ,int ) ;
+ int lj_ir_kint (int *,int ) ;
+ int lj_ir_knum_neg (int *) ;
+ int lj_strscan_num (int ,int *) ;
+ scalar_t__ numberVint (int *) ;
+ int strV (int *) ;
+ scalar_t__ tref_isinteger (int ) ;
+ scalar_t__ tref_isstr (int ) ;
 
 TRef lj_opt_narrow_unm(jit_State *J, TRef rc, TValue *vc)
 {

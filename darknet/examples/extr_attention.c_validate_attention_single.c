@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_3__ ;
-typedef  struct TYPE_23__   TYPE_2__ ;
-typedef  struct TYPE_22__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_22__ {int w; int h; int /*<<< orphan*/  hierarchy; int /*<<< orphan*/  outputs; } ;
-typedef  TYPE_1__ network ;
+
+
+typedef struct TYPE_24__ TYPE_3__ ;
+typedef struct TYPE_23__ TYPE_2__ ;
+typedef struct TYPE_22__ TYPE_1__ ;
+
+
+struct TYPE_22__ {int w; int h; int hierarchy; int outputs; } ;
+typedef TYPE_1__ network ;
 struct TYPE_23__ {int size; } ;
-typedef  TYPE_2__ list ;
+typedef TYPE_2__ list ;
 struct TYPE_24__ {int w; int h; scalar_t__ data; } ;
-typedef  TYPE_3__ image ;
+typedef TYPE_3__ image ;
 
-/* Variables and functions */
- int /*<<< orphan*/  axpy_cpu (int,int,float*,int,float*,int) ; 
- void* calloc (int,int) ; 
- int /*<<< orphan*/  change_leaves (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  copy_cpu (int,float*,int,float*,int) ; 
- TYPE_3__ crop_image (TYPE_3__,int,int,int,int) ; 
- int /*<<< orphan*/  free_image (TYPE_3__) ; 
- int /*<<< orphan*/  free_list (TYPE_2__*) ; 
- char** get_labels (char*) ; 
- TYPE_2__* get_paths (char*) ; 
- int /*<<< orphan*/  hierarchy_predictions (float*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- scalar_t__ list_to_array (TYPE_2__*) ; 
- TYPE_3__ load_image_color (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* load_network (char*,char*,int /*<<< orphan*/ ) ; 
- float* network_predict (TYPE_1__*,scalar_t__) ; 
- int option_find_int (TYPE_2__*,char*,int) ; 
- char* option_find_str (TYPE_2__*,char*,char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- TYPE_2__* read_data_cfg (char*) ; 
- TYPE_3__ resize_image (TYPE_3__,int,int) ; 
- TYPE_3__ resize_min (TYPE_3__,int) ; 
- int /*<<< orphan*/  set_batch_network (TYPE_1__*,int) ; 
- int /*<<< orphan*/  show_image (TYPE_3__,char*) ; 
- int /*<<< orphan*/  srand (int /*<<< orphan*/ ) ; 
- scalar_t__ strstr (char*,char*) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  top_k (float*,int,int,int*) ; 
+
+ int axpy_cpu (int,int,float*,int,float*,int) ;
+ void* calloc (int,int) ;
+ int change_leaves (int ,char*) ;
+ int copy_cpu (int,float*,int,float*,int) ;
+ TYPE_3__ crop_image (TYPE_3__,int,int,int,int) ;
+ int free_image (TYPE_3__) ;
+ int free_list (TYPE_2__*) ;
+ char** get_labels (char*) ;
+ TYPE_2__* get_paths (char*) ;
+ int hierarchy_predictions (float*,int ,int ,int,int) ;
+ scalar_t__ list_to_array (TYPE_2__*) ;
+ TYPE_3__ load_image_color (char*,int ,int ) ;
+ TYPE_1__* load_network (char*,char*,int ) ;
+ float* network_predict (TYPE_1__*,scalar_t__) ;
+ int option_find_int (TYPE_2__*,char*,int) ;
+ char* option_find_str (TYPE_2__*,char*,char*) ;
+ int printf (char*,...) ;
+ TYPE_2__* read_data_cfg (char*) ;
+ TYPE_3__ resize_image (TYPE_3__,int,int) ;
+ TYPE_3__ resize_min (TYPE_3__,int) ;
+ int set_batch_network (TYPE_1__*,int) ;
+ int show_image (TYPE_3__,char*) ;
+ int srand (int ) ;
+ scalar_t__ strstr (char*,char*) ;
+ int time (int ) ;
+ int top_k (float*,int,int,int*) ;
 
 void validate_attention_single(char *datacfg, char *filename, char *weightfile)
 {
@@ -93,11 +93,11 @@ void validate_attention_single(char *datacfg, char *filename, char *weightfile)
         image resized = resize_min(im, net->w*divs/size);
         image crop = crop_image(resized, (resized.w - net->w*divs/size)/2, (resized.h - net->h*divs/size)/2, net->w*divs/size, net->h*divs/size);
         image rcrop = resize_image(crop, net->w, net->h);
-        //show_image(im, "orig");
-        //show_image(crop, "cropped");
-        //cvWaitKey(0);
+
+
+
         float *pred = network_predict(net, rcrop.data);
-        //pred[classes + 56] = 0;
+
         for(j = 0; j < divs*divs; ++j){
             printf("%.2f ", pred[classes + j]);
             if((j+1)%divs == 0) printf("\n");
@@ -117,7 +117,7 @@ void validate_attention_single(char *datacfg, char *filename, char *weightfile)
             float *pred = network_predict(net, tile.data);
             axpy_cpu(classes, 1., pred, 1, avgs, 1);
             show_image(tile, "tile");
-            //cvWaitKey(10);
+
         }
         if(net->hierarchy) hierarchy_predictions(pred, net->outputs, net->hierarchy, 1, 1);
 

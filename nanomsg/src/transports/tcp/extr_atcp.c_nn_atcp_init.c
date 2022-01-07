@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct nn_fsm {int dummy; } ;
 struct nn_ep {int dummy; } ;
-struct TYPE_2__ {int src; int /*<<< orphan*/ * fsm; } ;
-struct nn_atcp {int /*<<< orphan*/  item; int /*<<< orphan*/  done; int /*<<< orphan*/  accepted; int /*<<< orphan*/  fsm; int /*<<< orphan*/  stcp; TYPE_1__ listener_owner; int /*<<< orphan*/ * listener; int /*<<< orphan*/  usock; struct nn_ep* ep; int /*<<< orphan*/  state; } ;
+struct TYPE_2__ {int src; int * fsm; } ;
+struct nn_atcp {int item; int done; int accepted; int fsm; int stcp; TYPE_1__ listener_owner; int * listener; int usock; struct nn_ep* ep; int state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NN_ATCP_SRC_STCP ; 
- int /*<<< orphan*/  NN_ATCP_SRC_USOCK ; 
- int /*<<< orphan*/  NN_ATCP_STATE_IDLE ; 
- int /*<<< orphan*/  nn_atcp_handler ; 
- int /*<<< orphan*/  nn_atcp_shutdown ; 
- int /*<<< orphan*/  nn_fsm_event_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_fsm_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,struct nn_atcp*,struct nn_fsm*) ; 
- int /*<<< orphan*/  nn_list_item_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_stcp_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct nn_ep*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_usock_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int NN_ATCP_SRC_STCP ;
+ int NN_ATCP_SRC_USOCK ;
+ int NN_ATCP_STATE_IDLE ;
+ int nn_atcp_handler ;
+ int nn_atcp_shutdown ;
+ int nn_fsm_event_init (int *) ;
+ int nn_fsm_init (int *,int ,int ,int,struct nn_atcp*,struct nn_fsm*) ;
+ int nn_list_item_init (int *) ;
+ int nn_stcp_init (int *,int ,struct nn_ep*,int *) ;
+ int nn_usock_init (int *,int ,int *) ;
 
 void nn_atcp_init (struct nn_atcp *self, int src,
     struct nn_ep *ep, struct nn_fsm *owner)
@@ -36,9 +36,9 @@ void nn_atcp_init (struct nn_atcp *self, int src,
     self->state = NN_ATCP_STATE_IDLE;
     self->ep = ep;
     nn_usock_init (&self->usock, NN_ATCP_SRC_USOCK, &self->fsm);
-    self->listener = NULL;
+    self->listener = ((void*)0);
     self->listener_owner.src = -1;
-    self->listener_owner.fsm = NULL;
+    self->listener_owner.fsm = ((void*)0);
     nn_stcp_init (&self->stcp, NN_ATCP_SRC_STCP, ep, &self->fsm);
     nn_fsm_event_init (&self->accepted);
     nn_fsm_event_init (&self->done);

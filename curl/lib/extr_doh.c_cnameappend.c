@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cnamestore {char* alloc; size_t allocsize; size_t len; } ;
-typedef  int /*<<< orphan*/  DOHcode ;
+typedef int DOHcode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DOH_OK ; 
- int /*<<< orphan*/  DOH_OUT_OF_MEM ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (char*,unsigned char*,size_t) ; 
- char* realloc (char*,size_t) ; 
+
+ int DOH_OK ;
+ int DOH_OUT_OF_MEM ;
+ int free (char*) ;
+ char* malloc (size_t) ;
+ int memcpy (char*,unsigned char*,size_t) ;
+ char* realloc (char*,size_t) ;
 
 __attribute__((used)) static DOHcode cnameappend(struct cnamestore *c,
                            unsigned char *src,
@@ -43,6 +43,6 @@ __attribute__((used)) static DOHcode cnameappend(struct cnamestore *c,
   }
   memcpy(&c->alloc[c->len], src, len);
   c->len += len;
-  c->alloc[c->len] = 0; /* keep it zero terminated */
+  c->alloc[c->len] = 0;
   return DOH_OK;
 }

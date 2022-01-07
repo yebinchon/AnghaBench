@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+
+
 struct decoder_owner {TYPE_1__* packetizer; } ;
-struct TYPE_21__ {int (* pf_decode ) (TYPE_1__*,TYPE_2__*) ;TYPE_2__* (* pf_get_cc ) (TYPE_1__*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  fmt_out; int /*<<< orphan*/  fmt_in; TYPE_2__* (* pf_packetize ) (TYPE_1__*,TYPE_2__**) ;int /*<<< orphan*/ * p_module; } ;
-typedef  TYPE_1__ decoder_t ;
-typedef  int /*<<< orphan*/  decoder_cc_desc_t ;
+struct TYPE_21__ {int (* pf_decode ) (TYPE_1__*,TYPE_2__*) ;TYPE_2__* (* pf_get_cc ) (TYPE_1__*,int *) ;int fmt_out; int fmt_in; TYPE_2__* (* pf_packetize ) (TYPE_1__*,TYPE_2__**) ;int * p_module; } ;
+typedef TYPE_1__ decoder_t ;
+typedef int decoder_cc_desc_t ;
 struct TYPE_22__ {struct TYPE_22__* p_next; } ;
-typedef  TYPE_2__ block_t ;
+typedef TYPE_2__ block_t ;
 
-/* Variables and functions */
- int VLCDEC_ECRITICAL ; 
- int VLC_EGENERIC ; 
- scalar_t__ VLC_SUCCESS ; 
- int /*<<< orphan*/  block_ChainRelease (TYPE_2__*) ; 
- int /*<<< orphan*/  block_Release (TYPE_2__*) ; 
- int /*<<< orphan*/  debug (char*) ; 
- struct decoder_owner* dec_get_owner (TYPE_1__*) ; 
- int /*<<< orphan*/  decoder_Clean (TYPE_1__*) ; 
- scalar_t__ decoder_load (TYPE_1__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  es_format_IsSimilar (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_2__* stub1 (TYPE_1__*,TYPE_2__**) ; 
- int stub2 (TYPE_1__*,TYPE_2__*) ; 
- TYPE_2__* stub3 (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int stub4 (TYPE_1__*,TYPE_2__*) ; 
- int stub5 (TYPE_1__*,TYPE_2__*) ; 
+
+ int VLCDEC_ECRITICAL ;
+ int VLC_EGENERIC ;
+ scalar_t__ VLC_SUCCESS ;
+ int block_ChainRelease (TYPE_2__*) ;
+ int block_Release (TYPE_2__*) ;
+ int debug (char*) ;
+ struct decoder_owner* dec_get_owner (TYPE_1__*) ;
+ int decoder_Clean (TYPE_1__*) ;
+ scalar_t__ decoder_load (TYPE_1__*,int,int *) ;
+ int es_format_IsSimilar (int *,int *) ;
+ TYPE_2__* stub1 (TYPE_1__*,TYPE_2__**) ;
+ int stub2 (TYPE_1__*,TYPE_2__*) ;
+ TYPE_2__* stub3 (TYPE_1__*,int *) ;
+ int stub4 (TYPE_1__*,TYPE_2__*) ;
+ int stub5 (TYPE_1__*,TYPE_2__*) ;
 
 int test_decoder_process(decoder_t *decoder, block_t *p_block)
 {
     struct decoder_owner *owner = dec_get_owner(decoder);
     decoder_t *packetizer = owner->packetizer;
 
-    /* This case can happen if a decoder reload failed */
-    if (decoder->p_module == NULL)
+
+    if (decoder->p_module == ((void*)0))
     {
-        if (p_block != NULL)
+        if (p_block != ((void*)0))
             block_Release(p_block);
         return VLC_EGENERIC;
     }
 
-    block_t **pp_block = p_block ? &p_block : NULL;
+    block_t **pp_block = p_block ? &p_block : ((void*)0);
     block_t *p_packetized_block;
     while ((p_packetized_block =
                 packetizer->pf_packetize(packetizer, pp_block)))
@@ -59,12 +59,12 @@ int test_decoder_process(decoder_t *decoder, block_t *p_block)
         {
             debug("restarting module due to input format change\n");
 
-            /* Drain the decoder module */
-            decoder->pf_decode(decoder, NULL);
 
-            /* Reload decoder */
+            decoder->pf_decode(decoder, ((void*)0));
+
+
             decoder_Clean(decoder);
-            if (decoder_load(decoder, false, &packetizer->fmt_out) != VLC_SUCCESS)
+            if (decoder_load(decoder, 0, &packetizer->fmt_out) != VLC_SUCCESS)
             {
                 block_ChainRelease(p_packetized_block);
                 return VLC_EGENERIC;
@@ -79,11 +79,11 @@ int test_decoder_process(decoder_t *decoder, block_t *p_block)
                 block_Release(p_cc);
         }
 
-        while (p_packetized_block != NULL)
+        while (p_packetized_block != ((void*)0))
         {
 
             block_t *p_next = p_packetized_block->p_next;
-            p_packetized_block->p_next = NULL;
+            p_packetized_block->p_next = ((void*)0);
 
             int ret = decoder->pf_decode(decoder, p_packetized_block);
 
@@ -96,7 +96,7 @@ int test_decoder_process(decoder_t *decoder, block_t *p_block)
             p_packetized_block = p_next;
         }
     }
-    if (p_block == NULL) /* Drain */
-        decoder->pf_decode(decoder, NULL);
+    if (p_block == ((void*)0))
+        decoder->pf_decode(decoder, ((void*)0));
     return VLC_SUCCESS;
 }

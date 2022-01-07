@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct drm_encoder {struct drm_crtc* crtc; } ;
-struct drm_crtc {int /*<<< orphan*/  fb; int /*<<< orphan*/  y; int /*<<< orphan*/  x; int /*<<< orphan*/  mode; scalar_t__ enabled; } ;
+struct drm_crtc {int fb; int y; int x; int mode; scalar_t__ enabled; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  drm_crtc_helper_set_mode (struct drm_crtc*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int drm_crtc_helper_set_mode (struct drm_crtc*,int *,int ,int ,int ) ;
 
 __attribute__((used)) static void radeon_property_change_mode(struct drm_encoder *encoder)
 {
-	struct drm_crtc *crtc = encoder->crtc;
+ struct drm_crtc *crtc = encoder->crtc;
 
-	if (crtc && crtc->enabled) {
-		drm_crtc_helper_set_mode(crtc, &crtc->mode,
-					 crtc->x, crtc->y, crtc->fb);
-	}
+ if (crtc && crtc->enabled) {
+  drm_crtc_helper_set_mode(crtc, &crtc->mode,
+      crtc->x, crtc->y, crtc->fb);
+ }
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_targ_user_view {int user_id; } ;
 struct advert {int flags; } ;
 
-/* Variables and functions */
- int ADF_ANCIENT ; 
- int /*<<< orphan*/  LEV_TARG_USER_VIEW ; 
- scalar_t__ ad_became_ancient (struct advert*) ; 
- struct lev_targ_user_view* alloc_log_event (int /*<<< orphan*/ ,int,int) ; 
- int conv_user_id (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,...) ; 
- struct advert* get_ad_f (int,int /*<<< orphan*/ ) ; 
- int register_user_view (struct lev_targ_user_view*) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+ int ADF_ANCIENT ;
+ int LEV_TARG_USER_VIEW ;
+ scalar_t__ ad_became_ancient (struct advert*) ;
+ struct lev_targ_user_view* alloc_log_event (int ,int,int) ;
+ int conv_user_id (int) ;
+ int fprintf (int ,char*,int,...) ;
+ struct advert* get_ad_f (int,int ) ;
+ int register_user_view (struct lev_targ_user_view*) ;
+ int stderr ;
+ int verbosity ;
 
 int do_register_user_view (int user_id, int ad_id) {
   struct advert *A = get_ad_f (ad_id, 0);

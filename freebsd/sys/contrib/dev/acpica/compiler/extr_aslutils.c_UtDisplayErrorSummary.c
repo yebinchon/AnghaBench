@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT32 ;
-typedef  int BOOLEAN ;
 
-/* Variables and functions */
- size_t ASL_ERROR ; 
- scalar_t__ ASL_INPUT_TYPE_ASCII_DATA ; 
- size_t ASL_OPTIMIZATION ; 
- size_t ASL_REMARK ; 
- size_t ASL_WARNING ; 
- size_t ASL_WARNING2 ; 
- size_t ASL_WARNING3 ; 
- scalar_t__* AslGbl_ExceptionCount ; 
- scalar_t__ AslGbl_FileType ; 
- int /*<<< orphan*/  AslGbl_IgnoreErrors ; 
- scalar_t__ AslGbl_ParserErrorDetected ; 
- scalar_t__ AslGbl_TotalFolds ; 
- int /*<<< orphan*/  FlPrintFile (int /*<<< orphan*/ ,char*,...) ; 
+
+
+
+typedef int UINT32 ;
+typedef int BOOLEAN ;
+
+
+ size_t ASL_ERROR ;
+ scalar_t__ ASL_INPUT_TYPE_ASCII_DATA ;
+ size_t ASL_OPTIMIZATION ;
+ size_t ASL_REMARK ;
+ size_t ASL_WARNING ;
+ size_t ASL_WARNING2 ;
+ size_t ASL_WARNING3 ;
+ scalar_t__* AslGbl_ExceptionCount ;
+ scalar_t__ AslGbl_FileType ;
+ int AslGbl_IgnoreErrors ;
+ scalar_t__ AslGbl_ParserErrorDetected ;
+ scalar_t__ AslGbl_TotalFolds ;
+ int FlPrintFile (int ,char*,...) ;
 
 __attribute__((used)) static void
 UtDisplayErrorSummary (
-    UINT32                  FileId)
+    UINT32 FileId)
 {
-    BOOLEAN                 ErrorDetected;
+    BOOLEAN ErrorDetected;
 
 
     ErrorDetected = AslGbl_ParserErrorDetected ||

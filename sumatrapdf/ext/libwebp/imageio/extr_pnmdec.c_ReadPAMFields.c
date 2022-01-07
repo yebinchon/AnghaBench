@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int seen_flags; int width; int height; int depth; int max_value; int /*<<< orphan*/  data_size; int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ PNMInfo ;
 
-/* Variables and functions */
- int ALL_NEEDED_FLAGS ; 
- int DEPTH_FLAG ; 
- size_t FlagError (char*) ; 
- int HEIGHT_FLAG ; 
- int MAXVAL_FLAG ; 
- int /*<<< orphan*/  MAX_LINE_SIZE ; 
- size_t ReadLine (int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ ,char*,size_t*) ; 
- int TUPLE_FLAG ; 
- int WIDTH_FLAG ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  isprint (int) ; 
- int /*<<< orphan*/  sprintf (char*,char const*) ; 
- int sscanf (char*,char*,int*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int strlen (char const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int seen_flags; int width; int height; int depth; int max_value; int data_size; int data; } ;
+typedef TYPE_1__ PNMInfo ;
+
+
+ int ALL_NEEDED_FLAGS ;
+ int DEPTH_FLAG ;
+ size_t FlagError (char*) ;
+ int HEIGHT_FLAG ;
+ int MAXVAL_FLAG ;
+ int MAX_LINE_SIZE ;
+ size_t ReadLine (int ,size_t,int ,char*,size_t*) ;
+ int TUPLE_FLAG ;
+ int WIDTH_FLAG ;
+ int assert (int ) ;
+ int fprintf (int ,char*,...) ;
+ int isprint (int) ;
+ int sprintf (char*,char const*) ;
+ int sscanf (char*,char*,int*) ;
+ int stderr ;
+ int strcmp (char*,char*) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static size_t ReadPAMFields(PNMInfo* const info, size_t off) {
   char out[MAX_LINE_SIZE + 1];
   size_t out_size;
   int tmp;
   int expected_depth = -1;
-  assert(info != NULL);
+  assert(info != ((void*)0));
   while (1) {
     off = ReadLine(info->data, off, info->data_size, out, &out_size);
     if (off == 0) return 0;
@@ -74,7 +74,7 @@ __attribute__((used)) static size_t ReadPAMFields(PNMInfo* const info, size_t of
       int i;
       if (out_size > 20) sprintf(out + 20 - strlen(kEllipsis), kEllipsis);
       for (i = 0; i < (int)strlen(out); ++i) {
-        // isprint() might trigger a "char-subscripts" warning if given a char.
+
         if (!isprint((int)out[i])) out[i] = ' ';
       }
       fprintf(stderr, "PAM header error: unrecognized entry [%s]\n", out);

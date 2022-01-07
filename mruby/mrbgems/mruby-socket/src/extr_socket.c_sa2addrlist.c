@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr_in6 {unsigned short sin6_port; } ;
 struct sockaddr_in {unsigned short sin_port; } ;
 struct sockaddr {int sa_family; } ;
-typedef  int /*<<< orphan*/  socklen_t ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
+typedef int socklen_t ;
+typedef int mrb_value ;
+typedef int mrb_state ;
 
-/* Variables and functions */
-#define  AF_INET 129 
-#define  AF_INET6 128 
- int /*<<< orphan*/  E_ARGUMENT_ERROR ; 
- int /*<<< orphan*/  NI_MAXHOST ; 
- int /*<<< orphan*/  NI_NUMERICHOST ; 
- int /*<<< orphan*/  RSTRING_PTR (int /*<<< orphan*/ ) ; 
- int getnameinfo (struct sockaddr const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_ary_new_capa (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mrb_ary_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_fixnum_value (unsigned short) ; 
- int /*<<< orphan*/  mrb_nil_value () ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mrb_str_buf_new (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_str_new_cstr (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  mrb_str_resize (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_sys_fail (int /*<<< orphan*/ *,char*) ; 
- unsigned short ntohs (unsigned short) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
+
+
+
+ int E_ARGUMENT_ERROR ;
+ int NI_MAXHOST ;
+ int NI_NUMERICHOST ;
+ int RSTRING_PTR (int ) ;
+ int getnameinfo (struct sockaddr const*,int ,int ,int ,int *,int ,int ) ;
+ int mrb_ary_new_capa (int *,int) ;
+ int mrb_ary_push (int *,int ,int ) ;
+ int mrb_fixnum_value (unsigned short) ;
+ int mrb_nil_value () ;
+ int mrb_raise (int *,int ,char*) ;
+ int mrb_str_buf_new (int *,int ) ;
+ int mrb_str_new_cstr (int *,char const*) ;
+ int mrb_str_resize (int *,int ,int ) ;
+ int mrb_sys_fail (int *,char*) ;
+ unsigned short ntohs (unsigned short) ;
+ int strlen (int ) ;
 
 __attribute__((used)) static mrb_value
 sa2addrlist(mrb_state *mrb, const struct sockaddr *sa, socklen_t salen)
@@ -45,11 +45,11 @@ sa2addrlist(mrb_state *mrb, const struct sockaddr *sa, socklen_t salen)
   const char *afstr;
 
   switch (sa->sa_family) {
-  case AF_INET:
+  case 129:
     afstr = "AF_INET";
     port = ((struct sockaddr_in *)sa)->sin_port;
     break;
-  case AF_INET6:
+  case 128:
     afstr = "AF_INET6";
     port = ((struct sockaddr_in6 *)sa)->sin6_port;
     break;
@@ -59,7 +59,7 @@ sa2addrlist(mrb_state *mrb, const struct sockaddr *sa, socklen_t salen)
   }
   port = ntohs(port);
   host = mrb_str_buf_new(mrb, NI_MAXHOST);
-  if (getnameinfo(sa, salen, RSTRING_PTR(host), NI_MAXHOST, NULL, 0, NI_NUMERICHOST) == -1)
+  if (getnameinfo(sa, salen, RSTRING_PTR(host), NI_MAXHOST, ((void*)0), 0, NI_NUMERICHOST) == -1)
     mrb_sys_fail(mrb, "getnameinfo");
   mrb_str_resize(mrb, host, strlen(RSTRING_PTR(host)));
   ary = mrb_ary_new_capa(mrb, 4);

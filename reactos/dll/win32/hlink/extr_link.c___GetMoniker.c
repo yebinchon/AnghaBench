@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * Moniker; int /*<<< orphan*/  SiteData; scalar_t__ Site; } ;
-typedef  int /*<<< orphan*/  IMoniker ;
-typedef  TYPE_1__ HlinkImpl ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ HLINKGETREF_ABSOLUTE ; 
- scalar_t__ HLINKGETREF_DEFAULT ; 
- scalar_t__ HLINKGETREF_RELATIVE ; 
- int /*<<< orphan*/  IHlinkSite_GetMoniker (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IMoniker_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMoniker_ComposeWith (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IMoniker_IsSystemMoniker (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  IMoniker_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ MKSYS_NONE ; 
- int /*<<< orphan*/  OLEGETMONIKER_FORCEASSIGN ; 
- int /*<<< orphan*/  OLEWHICHMK_CONTAINER ; 
- int /*<<< orphan*/  S_OK ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * Moniker; int SiteData; scalar_t__ Site; } ;
+typedef int IMoniker ;
+typedef TYPE_1__ HlinkImpl ;
+typedef int HRESULT ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ scalar_t__ HLINKGETREF_ABSOLUTE ;
+ scalar_t__ HLINKGETREF_DEFAULT ;
+ scalar_t__ HLINKGETREF_RELATIVE ;
+ int IHlinkSite_GetMoniker (scalar_t__,int ,int ,int ,int **) ;
+ int IMoniker_AddRef (int *) ;
+ int IMoniker_ComposeWith (int *,int *,int ,int **) ;
+ int IMoniker_IsSystemMoniker (int *,scalar_t__*) ;
+ int IMoniker_Release (int *) ;
+ scalar_t__ MKSYS_NONE ;
+ int OLEGETMONIKER_FORCEASSIGN ;
+ int OLEWHICHMK_CONTAINER ;
+ int S_OK ;
 
 __attribute__((used)) static HRESULT __GetMoniker(HlinkImpl* This, IMoniker** moniker,
         DWORD ref_type)

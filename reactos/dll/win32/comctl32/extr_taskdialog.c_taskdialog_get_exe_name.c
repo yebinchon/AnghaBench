@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  TASKDIALOGCONFIG ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ GetModuleFileNameW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/ * strrchrW (int /*<<< orphan*/ *,char) ; 
+
+
+
+typedef int WCHAR ;
+typedef int TASKDIALOGCONFIG ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ GetModuleFileNameW (int *,int *,scalar_t__) ;
+ int * strrchrW (int *,char) ;
 
 __attribute__((used)) static WCHAR *taskdialog_get_exe_name(const TASKDIALOGCONFIG *taskconfig, WCHAR *name, DWORD length)
 {
-    DWORD len = GetModuleFileNameW(NULL, name, length);
+    DWORD len = GetModuleFileNameW(((void*)0), name, length);
     if (len && len < length)
     {
         WCHAR *p;
@@ -29,5 +29,5 @@ __attribute__((used)) static WCHAR *taskdialog_get_exe_name(const TASKDIALOGCONF
         return name;
     }
     else
-        return NULL;
+        return ((void*)0);
 }

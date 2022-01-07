@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct _qs {char* prod_ifname; int /*<<< orphan*/ * pcap; int /*<<< orphan*/  cons_ifname; int /*<<< orphan*/  t0; } ;
-struct pipe_args {int /*<<< orphan*/ * pb; int /*<<< orphan*/  cons_core; struct _qs q; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EEE (char*,...) ; 
- int /*<<< orphan*/  WWW (char*) ; 
- int /*<<< orphan*/  cons (void*) ; 
- int /*<<< orphan*/  destroy_pcap (int /*<<< orphan*/ *) ; 
- int do_abort ; 
- int /*<<< orphan*/ * nm_open (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pcap_prod (void*) ; 
- int /*<<< orphan*/ * readpcap (char const*) ; 
- int /*<<< orphan*/  set_tns_now (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setaffinity (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usleep (int) ; 
+
+
+
+struct _qs {char* prod_ifname; int * pcap; int cons_ifname; int t0; } ;
+struct pipe_args {int * pb; int cons_core; struct _qs q; } ;
+
+
+ int EEE (char*,...) ;
+ int WWW (char*) ;
+ int cons (void*) ;
+ int destroy_pcap (int *) ;
+ int do_abort ;
+ int * nm_open (int ,int *,int ,int *) ;
+ int pcap_prod (void*) ;
+ int * readpcap (char const*) ;
+ int set_tns_now (int *,int ) ;
+ int setaffinity (int ) ;
+ int usleep (int) ;
 
 __attribute__((used)) static void *
 nmreplay_main(void *_a)
@@ -34,33 +34,33 @@ nmreplay_main(void *_a)
     const char *cap_fname = q->prod_ifname;
 
     setaffinity(a->cons_core);
-    set_tns_now(&q->t0, 0); /* starting reference */
-    if (cap_fname == NULL) {
-	goto fail;
+    set_tns_now(&q->t0, 0);
+    if (cap_fname == ((void*)0)) {
+ goto fail;
     }
     q->pcap = readpcap(cap_fname);
-    if (q->pcap == NULL) {
-	EEE("unable to read file %s", cap_fname);
-	goto fail;
+    if (q->pcap == ((void*)0)) {
+ EEE("unable to read file %s", cap_fname);
+ goto fail;
     }
     pcap_prod((void*)a);
     destroy_pcap(q->pcap);
-    q->pcap = NULL;
-    a->pb = nm_open(q->cons_ifname, NULL, 0, NULL);
-    if (a->pb == NULL) {
-	EEE("cannot open netmap on %s", q->cons_ifname);
-	do_abort = 1; // XXX any better way ?
-	return NULL;
+    q->pcap = ((void*)0);
+    a->pb = nm_open(q->cons_ifname, ((void*)0), 0, ((void*)0));
+    if (a->pb == ((void*)0)) {
+ EEE("cannot open netmap on %s", q->cons_ifname);
+ do_abort = 1;
+ return ((void*)0);
     }
-    /* continue as cons() */
+
     WWW("prepare to send packets");
     usleep(1000);
     cons((void*)a);
     EEE("exiting on abort");
 fail:
-    if (q->pcap != NULL) {
-	destroy_pcap(q->pcap);
+    if (q->pcap != ((void*)0)) {
+ destroy_pcap(q->pcap);
     }
     do_abort = 1;
-    return NULL;
+    return ((void*)0);
 }

@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_12__ {int numcomps; scalar_t__ color_space; unsigned char* icc_profile_buf; TYPE_1__* comps; } ;
-typedef  TYPE_2__ opj_image_t ;
-typedef  int /*<<< orphan*/  opj_dparameters_t ;
-typedef  int /*<<< orphan*/  opj_dinfo_t ;
-typedef  int /*<<< orphan*/  opj_common_ptr ;
-struct TYPE_13__ {int /*<<< orphan*/ * buffer; } ;
-typedef  TYPE_3__ opj_cio_t ;
-struct TYPE_14__ {int numcomps; int CbCr_subsampling_dx; int CbCr_subsampling_dy; int meth; void* enumcs; int /*<<< orphan*/  prec; int /*<<< orphan*/  h; int /*<<< orphan*/  w; } ;
-typedef  TYPE_4__ mj2_cparameters_t ;
-struct TYPE_11__ {int dx; int dy; int /*<<< orphan*/  prec; int /*<<< orphan*/  h; int /*<<< orphan*/  w; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_2__ opj_image_t ;
+typedef int opj_dparameters_t ;
+typedef int opj_dinfo_t ;
+typedef int opj_common_ptr ;
+struct TYPE_13__ {int * buffer; } ;
+typedef TYPE_3__ opj_cio_t ;
+struct TYPE_14__ {int numcomps; int CbCr_subsampling_dx; int CbCr_subsampling_dy; int meth; void* enumcs; int prec; int h; int w; } ;
+typedef TYPE_4__ mj2_cparameters_t ;
+struct TYPE_11__ {int dx; int dy; int prec; int h; int w; } ;
+typedef int FILE ;
 
-/* Variables and functions */
- scalar_t__ CLRSPC_SRGB ; 
- int /*<<< orphan*/  CODEC_J2K ; 
- void* ENUMCS_GRAY ; 
- void* ENUMCS_SRGB ; 
- void* ENUMCS_SYCC ; 
- int /*<<< orphan*/  J2K_CODESTREAM_MAGIC ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fread (unsigned char*,int,long,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- long ftell (int /*<<< orphan*/ *) ; 
- scalar_t__ malloc (long) ; 
- scalar_t__ memcmp (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  opj_cio_close (TYPE_3__*) ; 
- TYPE_3__* opj_cio_open (int /*<<< orphan*/ ,unsigned char*,long) ; 
- int /*<<< orphan*/ * opj_create_decompress (int /*<<< orphan*/ ) ; 
- TYPE_2__* opj_decode (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  opj_destroy_decompress (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  opj_image_destroy (TYPE_2__*) ; 
- int /*<<< orphan*/  opj_set_default_decoder_parameters (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  opj_setup_decoder (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ CLRSPC_SRGB ;
+ int CODEC_J2K ;
+ void* ENUMCS_GRAY ;
+ void* ENUMCS_SRGB ;
+ void* ENUMCS_SYCC ;
+ int J2K_CODESTREAM_MAGIC ;
+ int SEEK_END ;
+ int SEEK_SET ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fread (unsigned char*,int,long,int *) ;
+ int free (unsigned char*) ;
+ int fseek (int *,int ,int ) ;
+ long ftell (int *) ;
+ scalar_t__ malloc (long) ;
+ scalar_t__ memcmp (unsigned char*,int ,int) ;
+ int memset (int *,int ,int) ;
+ int opj_cio_close (TYPE_3__*) ;
+ TYPE_3__* opj_cio_open (int ,unsigned char*,long) ;
+ int * opj_create_decompress (int ) ;
+ TYPE_2__* opj_decode (int *,TYPE_3__*) ;
+ int opj_destroy_decompress (int *) ;
+ int opj_image_destroy (TYPE_2__*) ;
+ int opj_set_default_decoder_parameters (int *) ;
+ int opj_setup_decoder (int *,int *) ;
 
 __attribute__((used)) static int test_image(const char *fname, mj2_cparameters_t *cp)
 {
@@ -66,7 +66,7 @@ __attribute__((used)) static int test_image(const char *fname, mj2_cparameters_t
 
     success = 0;
 
-    if ((reader = fopen(fname, "rb")) == NULL) {
+    if ((reader = fopen(fname, "rb")) == ((void*)0)) {
         return success;
     }
 
@@ -94,10 +94,10 @@ __attribute__((used)) static int test_image(const char *fname, mj2_cparameters_t
     image = opj_decode(dinfo, cio);
 
     free(src);
-    cio->buffer = NULL;
+    cio->buffer = ((void*)0);
     opj_cio_close(cio);
 
-    if (image == NULL) {
+    if (image == ((void*)0)) {
         goto fin;
     }
 
@@ -112,8 +112,8 @@ __attribute__((used)) static int test_image(const char *fname, mj2_cparameters_t
                 && (image->comps[2].dx == 2)
                 && (image->comps[0].dy == 1)
                 && (image->comps[1].dy == 2)
-                && (image->comps[2].dy == 2)) { /* horizontal and vertical*/
-            /*   Y420*/
+                && (image->comps[2].dy == 2)) {
+
             cp->enumcs = ENUMCS_SYCC;
             cp->CbCr_subsampling_dx = 2;
             cp->CbCr_subsampling_dy = 2;
@@ -122,8 +122,8 @@ __attribute__((used)) static int test_image(const char *fname, mj2_cparameters_t
                    && (image->comps[2].dx == 2)
                    && (image->comps[0].dy == 1)
                    && (image->comps[1].dy == 1)
-                   && (image->comps[2].dy == 1)) { /* horizontal only*/
-            /*   Y422*/
+                   && (image->comps[2].dy == 1)) {
+
             cp->enumcs = ENUMCS_SYCC;
             cp->CbCr_subsampling_dx = 2;
             cp->CbCr_subsampling_dy = 1;
@@ -133,13 +133,13 @@ __attribute__((used)) static int test_image(const char *fname, mj2_cparameters_t
                    && (image->comps[0].dy == 1)
                    && (image->comps[1].dy == 1)
                    && (image->comps[2].dy == 1)) {
-            /*   Y444 or RGB */
 
-            if (image->color_space ==  CLRSPC_SRGB) {
+
+            if (image->color_space == CLRSPC_SRGB) {
                 cp->enumcs = ENUMCS_SRGB;
 
-                /*    cp->CbCr_subsampling_dx = 0; */
-                /*    cp->CbCr_subsampling_dy = 0; */
+
+
             } else {
                 cp->enumcs = ENUMCS_SYCC;
 
@@ -151,13 +151,13 @@ __attribute__((used)) static int test_image(const char *fname, mj2_cparameters_t
         }
     } else {
         cp->enumcs = ENUMCS_GRAY;
-        /*  cp->CbCr_subsampling_dx = 0; */
-        /*  cp->CbCr_subsampling_dy = 0; */
+
+
     }
     if (image->icc_profile_buf) {
         cp->meth = 2;
         free(image->icc_profile_buf);
-        image->icc_profile_buf = NULL;
+        image->icc_profile_buf = ((void*)0);
     } else {
         cp->meth = 1;
     }

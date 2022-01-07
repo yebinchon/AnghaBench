@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {size_t dataLeftToTx; size_t dataLeftToRx; size_t dummyLeftToTx; size_t dummyLeftToRx; int /*<<< orphan*/  status; void* context; int /*<<< orphan*/  completeCB; void* rxBuffer; void* txBuffer; } ;
-struct TYPE_5__ {int /*<<< orphan*/  queue; } ;
-typedef  TYPE_1__ DRV_SPI_OBJ ;
-typedef  TYPE_2__ DRV_SPI_JOB_OBJECT ;
-typedef  scalar_t__ DRV_SPI_BUFFER_HANDLE ;
-typedef  int /*<<< orphan*/  DRV_SPI_BUFFER_EVENT_HANDLER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DRV_SPI_BUFFER_EVENT_PENDING ; 
- scalar_t__ DRV_SPI_SYS_QUEUE_AllocElementLock (int /*<<< orphan*/ ,void**) ; 
- scalar_t__ DRV_SPI_SYS_QUEUE_EnqueueLock (int /*<<< orphan*/ ,void*) ; 
- scalar_t__ DRV_SPI_SYS_QUEUE_SUCCESS ; 
- int /*<<< orphan*/  SYS_ASSERT (int,char*) ; 
- TYPE_1__ gDrvSPI0Obj ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {size_t dataLeftToTx; size_t dataLeftToRx; size_t dummyLeftToTx; size_t dummyLeftToRx; int status; void* context; int completeCB; void* rxBuffer; void* txBuffer; } ;
+struct TYPE_5__ {int queue; } ;
+typedef TYPE_1__ DRV_SPI_OBJ ;
+typedef TYPE_2__ DRV_SPI_JOB_OBJECT ;
+typedef scalar_t__ DRV_SPI_BUFFER_HANDLE ;
+typedef int DRV_SPI_BUFFER_EVENT_HANDLER ;
+
+
+ int DRV_SPI_BUFFER_EVENT_PENDING ;
+ scalar_t__ DRV_SPI_SYS_QUEUE_AllocElementLock (int ,void**) ;
+ scalar_t__ DRV_SPI_SYS_QUEUE_EnqueueLock (int ,void*) ;
+ scalar_t__ DRV_SPI_SYS_QUEUE_SUCCESS ;
+ int SYS_ASSERT (int,char*) ;
+ TYPE_1__ gDrvSPI0Obj ;
+ int memset (TYPE_2__*,int ,int) ;
 
 DRV_SPI_BUFFER_HANDLE DRV_SPI0_BufferAddWriteRead2 ( void *txBuffer, size_t txSize, void *rxBuffer, size_t rxSize, DRV_SPI_BUFFER_EVENT_HANDLER completeCB, void * context, DRV_SPI_BUFFER_HANDLE * jobHandle )
 {
-    DRV_SPI_OBJ *dObj = (DRV_SPI_OBJ*)NULL;
+    DRV_SPI_OBJ *dObj = (DRV_SPI_OBJ*)((void*)0);
 
     dObj = &gDrvSPI0Obj;
 
-    DRV_SPI_JOB_OBJECT * pJob = NULL;
+    DRV_SPI_JOB_OBJECT * pJob = ((void*)0);
     if (DRV_SPI_SYS_QUEUE_AllocElementLock(dObj->queue, (void **)&pJob) != DRV_SPI_SYS_QUEUE_SUCCESS)
     {
-        SYS_ASSERT(false, "\r\nSPI Driver: Error trying to get a free entry.");
-        return (DRV_SPI_BUFFER_HANDLE)NULL;
+        SYS_ASSERT(0, "\r\nSPI Driver: Error trying to get a free entry.");
+        return (DRV_SPI_BUFFER_HANDLE)((void*)0);
     }
 
     memset(pJob, 0, sizeof(DRV_SPI_JOB_OBJECT));
@@ -47,7 +47,7 @@ DRV_SPI_BUFFER_HANDLE DRV_SPI0_BufferAddWriteRead2 ( void *txBuffer, size_t txSi
     pJob->rxBuffer = rxBuffer;
     pJob->dataLeftToRx = rxSize;
 
-    if (jobHandle != NULL )
+    if (jobHandle != ((void*)0) )
     {
         *jobHandle = (DRV_SPI_BUFFER_HANDLE)pJob;
     }
@@ -65,8 +65,8 @@ DRV_SPI_BUFFER_HANDLE DRV_SPI0_BufferAddWriteRead2 ( void *txBuffer, size_t txSi
 
     if (DRV_SPI_SYS_QUEUE_EnqueueLock(dObj->queue, (void*)pJob) != DRV_SPI_SYS_QUEUE_SUCCESS)
     {
-        SYS_ASSERT(false, "\r\nSPI Driver: Error enqueing new job.");
-        return (DRV_SPI_BUFFER_HANDLE)NULL;
+        SYS_ASSERT(0, "\r\nSPI Driver: Error enqueing new job.");
+        return (DRV_SPI_BUFFER_HANDLE)((void*)0);
     }
 
     return (DRV_SPI_BUFFER_HANDLE)pJob;

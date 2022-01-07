@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_mode; } ;
+
+
+
+
+struct stat {int st_mode; } ;
 struct dirent {char* d_name; } ;
-typedef  size_t ssize_t ;
-typedef  int /*<<< orphan*/  path ;
-typedef  int /*<<< orphan*/  own_fd ;
-typedef  int /*<<< orphan*/  DIR ;
+typedef size_t ssize_t ;
+typedef int path ;
+typedef int own_fd ;
+typedef int DIR ;
 
-/* Variables and functions */
- int PATH_MAX ; 
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- int dirfd (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lwan_status_critical (char*,...) ; 
- int /*<<< orphan*/  lwan_status_critical_perror (char*,...) ; 
- int /*<<< orphan*/ * opendir (char*) ; 
- struct dirent* readdir (int /*<<< orphan*/ *) ; 
- size_t readlinkat (int,char*,char*,int) ; 
- int snprintf (char*,int,char*,int) ; 
- scalar_t__ stat (char*,struct stat*) ; 
- scalar_t__ streq (char*,char*) ; 
+
+ int PATH_MAX ;
+ scalar_t__ S_ISDIR (int ) ;
+ int closedir (int *) ;
+ int dirfd (int *) ;
+ int lwan_status_critical (char*,...) ;
+ int lwan_status_critical_perror (char*,...) ;
+ int * opendir (char*) ;
+ struct dirent* readdir (int *) ;
+ size_t readlinkat (int,char*,char*,int) ;
+ int snprintf (char*,int,char*,int) ;
+ scalar_t__ stat (char*,struct stat*) ;
+ scalar_t__ streq (char*,char*) ;
 
 __attribute__((used)) static void abort_on_open_directories(void)
 {
-    /* This is racy, but is a way to detect misconfiguration.  Since it's
-     * called just once during boot time, before threads are created, this
-     * should be fine (maybe not if Lwan is used as a library.)
-     */
+
+
+
+
     DIR *dir = opendir("/proc/self/fd");
     struct dirent *ent;
     char own_fd[3 * sizeof(int)];
@@ -50,7 +50,7 @@ __attribute__((used)) static void abort_on_open_directories(void)
     ret = snprintf(own_fd, sizeof(own_fd), "%d", dirfd(dir));
     if (ret < 0 || ret >= (int)sizeof(own_fd)) {
         lwan_status_critical("Could not get descriptor of /proc/self/fd");
-    }    
+    }
 
     while ((ent = readdir(dir))) {
         char path[PATH_MAX];
@@ -70,10 +70,10 @@ __attribute__((used)) static void abort_on_open_directories(void)
         path[len] = '\0';
 
         if (path[0] != '/') {
-            /* readlink() there will point to the realpath() of a file, so
-             * if it's on a filesystem, it starts with '/'.  Sockets, for
-             * instance, begin with "socket:" instead...  so no need for
-             * stat().  */
+
+
+
+
             continue;
         }
 

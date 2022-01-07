@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  payload_type; int /*<<< orphan*/  friend_number; int /*<<< orphan*/  m; } ;
-typedef  TYPE_1__ RTPSession ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOGGER_DEBUG (char*,TYPE_1__*) ; 
- int /*<<< orphan*/  LOGGER_WARNING (char*) ; 
- int /*<<< orphan*/  handle_rtp_packet ; 
- int m_callback_rtp_packet (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int payload_type; int friend_number; int m; } ;
+typedef TYPE_1__ RTPSession ;
+
+
+ int LOGGER_DEBUG (char*,TYPE_1__*) ;
+ int LOGGER_WARNING (char*) ;
+ int handle_rtp_packet ;
+ int m_callback_rtp_packet (int ,int ,int ,int ,TYPE_1__*) ;
 
 int rtp_allow_receiving(RTPSession *session)
 {
-    if (session == NULL)
+    if (session == ((void*)0))
         return -1;
 
     if (m_callback_rtp_packet(session->m, session->friend_number, session->payload_type,

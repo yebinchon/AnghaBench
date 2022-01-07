@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int time_t ;
 struct tm {int dummy; } ;
 struct TYPE_5__ {char* time_shift_buffer_depth; char* minimum_update_period; char* utc_timing_url; scalar_t__ debug_mode; scalar_t__ is_live; } ;
-typedef  TYPE_1__ WebMDashMuxContext ;
-struct TYPE_6__ {int /*<<< orphan*/  pb; TYPE_1__* priv_data; } ;
-typedef  TYPE_2__ AVFormatContext ;
+typedef TYPE_1__ WebMDashMuxContext ;
+struct TYPE_6__ {int pb; TYPE_1__* priv_data; } ;
+typedef TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR_UNKNOWN ; 
- int /*<<< orphan*/  av_strlcpy (char*,char*,int) ; 
- int /*<<< orphan*/  avio_printf (int /*<<< orphan*/ ,char*,...) ; 
- char* get_duration (TYPE_2__*) ; 
- struct tm* gmtime_r (int /*<<< orphan*/ *,struct tm*) ; 
- int /*<<< orphan*/  strftime (char*,int,char*,struct tm*) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
+
+ int AVERROR_UNKNOWN ;
+ int av_strlcpy (char*,char*,int) ;
+ int avio_printf (int ,char*,...) ;
+ char* get_duration (TYPE_2__*) ;
+ struct tm* gmtime_r (int *,struct tm*) ;
+ int strftime (char*,int,char*,struct tm*) ;
+ int time (int *) ;
 
 __attribute__((used)) static int write_header(AVFormatContext *s)
 {
@@ -47,7 +47,7 @@ __attribute__((used)) static int write_header(AVFormatContext *s)
                 w->is_live ? "urn:mpeg:dash:profile:isoff-live:2011" : "urn:webm:dash:profile:webm-on-demand:2012",
                 w->is_live ? "\n" : ">\n");
     if (w->is_live) {
-        time_t local_time = time(NULL);
+        time_t local_time = time(((void*)0));
         struct tm gmt_buffer;
         struct tm *gmt = gmtime_r(&local_time, &gmt_buffer);
         char gmt_iso[21];

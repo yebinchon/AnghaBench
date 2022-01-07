@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct afs_call {int /*<<< orphan*/  read_request; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  afs_flat_call_destructor (struct afs_call*) ; 
- int /*<<< orphan*/  afs_put_read (int /*<<< orphan*/ ) ; 
+
+
+
+struct afs_call {int read_request; } ;
+
+
+ int afs_flat_call_destructor (struct afs_call*) ;
+ int afs_put_read (int ) ;
 
 __attribute__((used)) static void yfs_fetch_data_destructor(struct afs_call *call)
 {
-	afs_put_read(call->read_request);
-	afs_flat_call_destructor(call);
+ afs_put_read(call->read_request);
+ afs_flat_call_destructor(call);
 }

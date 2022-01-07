@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  iconv_t ;
 
-/* Variables and functions */
- int ASCII_CCSID ; 
- scalar_t__ ICONV_OPEN_ERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ iconv (int /*<<< orphan*/ ,char**,size_t*,char**,size_t*) ; 
- int /*<<< orphan*/  iconv_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  iconv_open_CCSID (int,int,int) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int strlen (char const*) ; 
+
+
+
+typedef int iconv_t ;
+
+
+ int ASCII_CCSID ;
+ scalar_t__ ICONV_OPEN_ERROR (int ) ;
+ scalar_t__ iconv (int ,char**,size_t*,char**,size_t*) ;
+ int iconv_close (int ) ;
+ int iconv_open_CCSID (int,int,int) ;
+ int memcpy (char*,char const*,int) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static int
 convert(char *d, size_t dlen, int dccsid,
@@ -29,15 +29,6 @@ convert(char *d, size_t dlen, int dccsid,
   int i;
   iconv_t cd;
   size_t lslen;
-
-  /**
-  ***  Convert `sccsid'-coded `slen'-data bytes at `s' into `dccsid'-coded
-  ***   data stored in the `dlen'-byte buffer at `d'.
-  ***  If `slen' < 0, source string is null-terminated.
-  ***  CCSID 65535 (no conversion) is replaced by the ASCII CCSID.
-  ***  Return the converted destination byte count, or -1 if error.
-  **/
-
   if(sccsid == 65535)
     sccsid = ASCII_CCSID;
 

@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MBEDTLS_ERR_BASE64_BUFFER_TOO_SMALL ; 
- int MBEDTLS_ERR_PEM_ALLOC_FAILED ; 
- int mbedtls_base64_encode (unsigned char*,size_t,size_t*,unsigned char const*,size_t) ; 
- scalar_t__ mbedtls_calloc (int,size_t) ; 
- int /*<<< orphan*/  mbedtls_free (unsigned char*) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,...) ; 
- size_t strlen (char const*) ; 
+ int MBEDTLS_ERR_BASE64_BUFFER_TOO_SMALL ;
+ int MBEDTLS_ERR_PEM_ALLOC_FAILED ;
+ int mbedtls_base64_encode (unsigned char*,size_t,size_t*,unsigned char const*,size_t) ;
+ scalar_t__ mbedtls_calloc (int,size_t) ;
+ int mbedtls_free (unsigned char*) ;
+ int memcpy (unsigned char*,...) ;
+ size_t strlen (char const*) ;
 
 int mbedtls_pem_write_buffer( const char *header, const char *footer,
                       const unsigned char *der_data, size_t der_len,
@@ -28,7 +20,7 @@ int mbedtls_pem_write_buffer( const char *header, const char *footer,
     unsigned char *encode_buf, *c, *p = buf;
     size_t len = 0, use_len, add_len = 0;
 
-    mbedtls_base64_encode( NULL, 0, &use_len, der_data, der_len );
+    mbedtls_base64_encode( ((void*)0), 0, &use_len, der_data, der_len );
     add_len = strlen( header ) + strlen( footer ) + ( use_len / 64 ) + 1;
 
     if( use_len + add_len > buf_len )
@@ -37,7 +29,7 @@ int mbedtls_pem_write_buffer( const char *header, const char *footer,
         return( MBEDTLS_ERR_BASE64_BUFFER_TOO_SMALL );
     }
 
-    if( ( encode_buf = (unsigned char*)mbedtls_calloc( 1, use_len ) ) == NULL )
+    if( ( encode_buf = (unsigned char*)mbedtls_calloc( 1, use_len ) ) == ((void*)0) )
         return( MBEDTLS_ERR_PEM_ALLOC_FAILED );
 
     if( ( ret = mbedtls_base64_encode( encode_buf, use_len, &use_len, der_data,

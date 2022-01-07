@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int) ; 
-#define  SERVICE_AUTO_START 132 
-#define  SERVICE_BOOT_START 131 
-#define  SERVICE_DEMAND_START 130 
-#define  SERVICE_DISABLED 129 
-#define  SERVICE_SYSTEM_START 128 
+
+
+
+typedef char WCHAR ;
+typedef int DWORD ;
+
+
+ int ERR (char*,int) ;
+
+
+
+
+
 
 __attribute__((used)) static const WCHAR *get_service_startmode( DWORD mode )
 {
@@ -32,11 +32,11 @@ __attribute__((used)) static const WCHAR *get_service_startmode( DWORD mode )
 
     switch (mode)
     {
-    case SERVICE_BOOT_START:   return bootW;
-    case SERVICE_SYSTEM_START: return systemW;
-    case SERVICE_AUTO_START:   return autoW;
-    case SERVICE_DEMAND_START: return manualW;
-    case SERVICE_DISABLED:     return disabledW;
+    case 131: return bootW;
+    case 128: return systemW;
+    case 132: return autoW;
+    case 130: return manualW;
+    case 129: return disabledW;
     default:
         ERR("unknown mode 0x%x\n", mode);
         return unknownW;

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsPipeline ;
-typedef  int /*<<< orphan*/  cmsInt32Number ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Add3GammaCurves (int /*<<< orphan*/ *,double) ; 
- int /*<<< orphan*/  AddIdentityCLUTfloat (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AddIdentityMatrix (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CheckFullLUT (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/ * cmsPipelineAlloc (int /*<<< orphan*/ ,int,int) ; 
+
+
+
+typedef int cmsPipeline ;
+typedef int cmsInt32Number ;
+
+
+ int Add3GammaCurves (int *,double) ;
+ int AddIdentityCLUTfloat (int *) ;
+ int AddIdentityMatrix (int *) ;
+ int CheckFullLUT (int *,int) ;
+ int DbgThread () ;
+ int * cmsPipelineAlloc (int ,int,int) ;
 
 __attribute__((used)) static
 cmsInt32Number Check3StageLUT(void)

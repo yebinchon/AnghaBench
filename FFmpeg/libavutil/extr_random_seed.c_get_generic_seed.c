@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint64_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  tmp ;
+
+
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int tmp ;
 struct AVSHA {int dummy; } ;
-typedef  int clock_t ;
-typedef  int /*<<< orphan*/  buffer ;
+typedef int clock_t ;
+typedef int buffer ;
 
-/* Variables and functions */
- int AV_RB32 (unsigned char*) ; 
- int AV_READ_TIME () ; 
- int CLOCKS_PER_SEC ; 
- scalar_t__ TEST ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  av_sha_final (struct AVSHA*,unsigned char*) ; 
- int /*<<< orphan*/  av_sha_init (struct AVSHA*,int) ; 
- int av_sha_size ; 
- int /*<<< orphan*/  av_sha_update (struct AVSHA*,int /*<<< orphan*/  const*,int) ; 
- int clock () ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
+
+ int AV_RB32 (unsigned char*) ;
+ int AV_READ_TIME () ;
+ int CLOCKS_PER_SEC ;
+ scalar_t__ TEST ;
+ int av_assert0 (int) ;
+ int av_sha_final (struct AVSHA*,unsigned char*) ;
+ int av_sha_init (struct AVSHA*,int) ;
+ int av_sha_size ;
+ int av_sha_update (struct AVSHA*,int const*,int) ;
+ int clock () ;
+ int memset (int*,int ,int) ;
 
 __attribute__((used)) static uint32_t get_generic_seed(void)
 {
     uint64_t tmp[120/8];
     struct AVSHA *sha = (void*)tmp;
-    clock_t last_t  = 0;
+    clock_t last_t = 0;
     clock_t last_td = 0;
     clock_t init_t = 0;
     static uint64_t i = 0;
@@ -49,10 +49,10 @@ __attribute__((used)) static uint32_t get_generic_seed(void)
         memset(buffer, 0, sizeof(buffer));
         last_i = i = 0;
     }else{
-#ifdef AV_READ_TIME
-        buffer[13] ^= AV_READ_TIME();
-        buffer[41] ^= AV_READ_TIME()>>32;
-#endif
+
+
+
+
     }
 
     for (;;) {
@@ -75,9 +75,9 @@ __attribute__((used)) static uint32_t get_generic_seed(void)
     if(TEST) {
         buffer[0] = buffer[1] = 0;
     } else {
-#ifdef AV_READ_TIME
-        buffer[111] += AV_READ_TIME();
-#endif
+
+
+
     }
 
     av_sha_init(sha, 160);

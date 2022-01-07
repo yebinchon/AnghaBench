@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int marked; int type; TYPE_1__* manager; int /*<<< orphan*/  search_domains; struct TYPE_11__* link; int /*<<< orphan*/  domains_next; int /*<<< orphan*/  linked; } ;
-struct TYPE_10__ {int /*<<< orphan*/  search_domains; } ;
-typedef  TYPE_2__ DnsSearchDomain ;
 
-/* Variables and functions */
-#define  DNS_SEARCH_DOMAIN_LINK 129 
-#define  DNS_SEARCH_DOMAIN_SYSTEM 128 
- int /*<<< orphan*/  LIST_FIND_TAIL (int /*<<< orphan*/ ,TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  LIST_INSERT_AFTER (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  LIST_REMOVE (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int /*<<< orphan*/  assert_not_reached (char*) ; 
- int /*<<< orphan*/  domains ; 
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int marked; int type; TYPE_1__* manager; int search_domains; struct TYPE_11__* link; int domains_next; int linked; } ;
+struct TYPE_10__ {int search_domains; } ;
+typedef TYPE_2__ DnsSearchDomain ;
+
+
+
+
+ int LIST_FIND_TAIL (int ,TYPE_2__*,TYPE_2__*) ;
+ int LIST_INSERT_AFTER (int ,int ,TYPE_2__*,TYPE_2__*) ;
+ int LIST_REMOVE (int ,int ,TYPE_2__*) ;
+ int assert (TYPE_2__*) ;
+ int assert_not_reached (char*) ;
+ int domains ;
 
 void dns_search_domain_move_back_and_unmark(DnsSearchDomain *d) {
         DnsSearchDomain *tail;
@@ -34,21 +34,21 @@ void dns_search_domain_move_back_and_unmark(DnsSearchDomain *d) {
         if (!d->marked)
                 return;
 
-        d->marked = false;
+        d->marked = 0;
 
         if (!d->linked || !d->domains_next)
                 return;
 
         switch (d->type) {
 
-        case DNS_SEARCH_DOMAIN_LINK:
+        case 129:
                 assert(d->link);
                 LIST_FIND_TAIL(domains, d, tail);
                 LIST_REMOVE(domains, d->link->search_domains, d);
                 LIST_INSERT_AFTER(domains, d->link->search_domains, tail, d);
                 break;
 
-        case DNS_SEARCH_DOMAIN_SYSTEM:
+        case 128:
                 LIST_FIND_TAIL(domains, d, tail);
                 LIST_REMOVE(domains, d->manager->search_domains, d);
                 LIST_INSERT_AFTER(domains, d->manager->search_domains, tail, d);

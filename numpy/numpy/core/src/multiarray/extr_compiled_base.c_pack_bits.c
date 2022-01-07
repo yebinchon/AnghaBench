@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int npy_intp ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
-typedef  int /*<<< orphan*/  PyArrayIterObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NPY_BEGIN_THREADS_DEF ; 
- int /*<<< orphan*/  NPY_BEGIN_THREADS_THRESHOLDED (int) ; 
- int /*<<< orphan*/  NPY_END_THREADS ; 
- int NPY_MAXDIMS ; 
- int /*<<< orphan*/  NPY_UBYTE ; 
- scalar_t__ PyArray_CheckAxis (int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ) ; 
- char* PyArray_DATA (int /*<<< orphan*/ *) ; 
- int PyArray_DIM (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  PyArray_DescrFromType (int /*<<< orphan*/ ) ; 
- scalar_t__ PyArray_FROM_O (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_ISBOOL (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_ISFORTRAN (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_ISINTEGER (int /*<<< orphan*/ *) ; 
- int PyArray_ITEMSIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_ITER_DATA (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_ITER_NEXT (int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_ITER_NOTDONE (int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_IterAllButAxis (int /*<<< orphan*/ *,int*) ; 
- int PyArray_NDIM (int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_NewFromDescr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_STRIDE (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_TypeError ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_TYPE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pack_inner (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,char) ; 
+
+
+
+typedef int npy_intp ;
+typedef int PyObject ;
+typedef int PyArrayObject ;
+typedef int PyArrayIterObject ;
+
+
+ int NPY_BEGIN_THREADS_DEF ;
+ int NPY_BEGIN_THREADS_THRESHOLDED (int) ;
+ int NPY_END_THREADS ;
+ int NPY_MAXDIMS ;
+ int NPY_UBYTE ;
+ scalar_t__ PyArray_CheckAxis (int *,int*,int ) ;
+ char* PyArray_DATA (int *) ;
+ int PyArray_DIM (int *,int) ;
+ int PyArray_DescrFromType (int ) ;
+ scalar_t__ PyArray_FROM_O (int *) ;
+ int PyArray_ISBOOL (int *) ;
+ int PyArray_ISFORTRAN (int *) ;
+ int PyArray_ISINTEGER (int *) ;
+ int PyArray_ITEMSIZE (int *) ;
+ int PyArray_ITER_DATA (int *) ;
+ int PyArray_ITER_NEXT (int *) ;
+ scalar_t__ PyArray_ITER_NOTDONE (int *) ;
+ scalar_t__ PyArray_IterAllButAxis (int *,int*) ;
+ int PyArray_NDIM (int *) ;
+ scalar_t__ PyArray_NewFromDescr (int ,int ,int,int*,int *,int *,int ,int *) ;
+ int PyArray_STRIDE (int *,int) ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_TypeError ;
+ int Py_DECREF (int *) ;
+ int Py_TYPE (int *) ;
+ int Py_XDECREF (int *) ;
+ int pack_inner (int ,int,int,int ,int ,int,int ,char) ;
 
 __attribute__((used)) static PyObject *
 pack_bits(PyObject *input, int axis, char order)
 {
     PyArrayObject *inp;
-    PyArrayObject *new = NULL;
-    PyArrayObject *out = NULL;
+    PyArrayObject *new = ((void*)0);
+    PyArrayObject *out = ((void*)0);
     npy_intp outdims[NPY_MAXDIMS];
     int i;
     PyArrayIterObject *it, *ot;
@@ -57,8 +57,8 @@ pack_bits(PyObject *input, int axis, char order)
 
     inp = (PyArrayObject *)PyArray_FROM_O(input);
 
-    if (inp == NULL) {
-        return NULL;
+    if (inp == ((void*)0)) {
+        return ((void*)0);
     }
     if (!PyArray_ISBOOL(inp) && !PyArray_ISINTEGER(inp)) {
         PyErr_SetString(PyExc_TypeError,
@@ -69,8 +69,8 @@ pack_bits(PyObject *input, int axis, char order)
 
     new = (PyArrayObject *)PyArray_CheckAxis(inp, &axis, 0);
     Py_DECREF(inp);
-    if (new == NULL) {
-        return NULL;
+    if (new == ((void*)0)) {
+        return ((void*)0);
     }
 
     if (PyArray_NDIM(new) == 0) {
@@ -78,9 +78,9 @@ pack_bits(PyObject *input, int axis, char order)
 
         out = (PyArrayObject *)PyArray_NewFromDescr(
                 Py_TYPE(new), PyArray_DescrFromType(NPY_UBYTE),
-                0, NULL, NULL, NULL,
-                0, NULL);
-        if (out == NULL) {
+                0, ((void*)0), ((void*)0), ((void*)0),
+                0, ((void*)0));
+        if (out == ((void*)0)) {
             goto fail;
         }
         optr = PyArray_DATA(out);
@@ -97,29 +97,29 @@ pack_bits(PyObject *input, int axis, char order)
     }
 
 
-    /* Setup output shape */
+
     for (i = 0; i < PyArray_NDIM(new); i++) {
         outdims[i] = PyArray_DIM(new, i);
     }
 
-    /*
-     * Divide axis dimension by 8
-     * 8 -> 1, 9 -> 2, 16 -> 2, 17 -> 3 etc..
-     */
+
+
+
+
     outdims[axis] = ((outdims[axis] - 1) >> 3) + 1;
 
-    /* Create output array */
+
     out = (PyArrayObject *)PyArray_NewFromDescr(
             Py_TYPE(new), PyArray_DescrFromType(NPY_UBYTE),
-            PyArray_NDIM(new), outdims, NULL, NULL,
-            PyArray_ISFORTRAN(new), NULL);
-    if (out == NULL) {
+            PyArray_NDIM(new), outdims, ((void*)0), ((void*)0),
+            PyArray_ISFORTRAN(new), ((void*)0));
+    if (out == ((void*)0)) {
         goto fail;
     }
-    /* Setup iterators to iterate over all but given axis */
+
     it = (PyArrayIterObject *)PyArray_IterAllButAxis((PyObject *)new, &axis);
     ot = (PyArrayIterObject *)PyArray_IterAllButAxis((PyObject *)out, &axis);
-    if (it == NULL || ot == NULL) {
+    if (it == ((void*)0) || ot == ((void*)0)) {
         Py_XDECREF(it);
         Py_XDECREF(ot);
         goto fail;
@@ -146,5 +146,5 @@ finish:
 fail:
     Py_XDECREF(new);
     Py_XDECREF(out);
-    return NULL;
+    return ((void*)0);
 }

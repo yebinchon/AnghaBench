@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  user_t ;
+
+
+
+
+typedef int user_t ;
 struct lev_add_friend {int friend_id; int cat; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LEV_FR_ADD_FRIENDREQ ; 
- int /*<<< orphan*/  LEV_FR_NEW_FRIENDREQ ; 
- int /*<<< orphan*/  LEV_FR_REPLACE_FRIENDREQ ; 
- int add_friend_request (int /*<<< orphan*/ *,int,int,int) ; 
- struct lev_add_friend* alloc_log_event (int /*<<< orphan*/ ,int,int) ; 
- scalar_t__ conv_uid (int) ; 
- int /*<<< orphan*/ * get_user (int) ; 
- int /*<<< orphan*/ * get_user_f (int) ; 
+
+ int LEV_FR_ADD_FRIENDREQ ;
+ int LEV_FR_NEW_FRIENDREQ ;
+ int LEV_FR_REPLACE_FRIENDREQ ;
+ int add_friend_request (int *,int,int,int) ;
+ struct lev_add_friend* alloc_log_event (int ,int,int) ;
+ scalar_t__ conv_uid (int) ;
+ int * get_user (int) ;
+ int * get_user_f (int) ;
 
 int do_add_friend_request (int user_id, int friend_id, int cat, int force) {
   user_t *U;

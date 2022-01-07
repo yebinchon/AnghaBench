@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
 struct TYPE_22__ {scalar_t__ itype; long utype; int size; TYPE_4__* funcs; } ;
-struct TYPE_21__ {int flags; int /*<<< orphan*/  str_flags; } ;
-struct TYPE_20__ {int (* prim_print ) (int /*<<< orphan*/ *,int /*<<< orphan*/ **,TYPE_6__ const*,int,TYPE_5__ const*) ;} ;
-struct TYPE_19__ {long type; int /*<<< orphan*/  length; int /*<<< orphan*/  data; } ;
-struct TYPE_17__ {int /*<<< orphan*/ * asn1_value; } ;
+struct TYPE_21__ {int flags; int str_flags; } ;
+struct TYPE_20__ {int (* prim_print ) (int *,int **,TYPE_6__ const*,int,TYPE_5__ const*) ;} ;
+struct TYPE_19__ {long type; int length; int data; } ;
+struct TYPE_17__ {int * asn1_value; } ;
 struct TYPE_18__ {long type; TYPE_1__ value; } ;
-typedef  int /*<<< orphan*/  BIO ;
-typedef  int /*<<< orphan*/  ASN1_VALUE ;
-typedef  TYPE_2__ ASN1_TYPE ;
-typedef  TYPE_3__ ASN1_STRING ;
-typedef  TYPE_4__ ASN1_PRIMITIVE_FUNCS ;
-typedef  TYPE_5__ ASN1_PCTX ;
-typedef  int /*<<< orphan*/  ASN1_OBJECT ;
-typedef  TYPE_6__ ASN1_ITEM ;
+typedef int BIO ;
+typedef int ASN1_VALUE ;
+typedef TYPE_2__ ASN1_TYPE ;
+typedef TYPE_3__ ASN1_STRING ;
+typedef TYPE_4__ ASN1_PRIMITIVE_FUNCS ;
+typedef TYPE_5__ ASN1_PCTX ;
+typedef int ASN1_OBJECT ;
+typedef TYPE_6__ ASN1_ITEM ;
 
-/* Variables and functions */
- int ASN1_GENERALIZEDTIME_print (int /*<<< orphan*/ *,TYPE_3__*) ; 
- scalar_t__ ASN1_ITYPE_MSTRING ; 
- int ASN1_PCTX_FLAGS_NO_ANY_TYPE ; 
- int ASN1_PCTX_FLAGS_SHOW_TYPE ; 
- int ASN1_STRING_print_ex (int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int ASN1_UTCTIME_print (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  ASN1_parse_dump (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- char* ASN1_tag2str (long) ; 
- scalar_t__ BIO_puts (int /*<<< orphan*/ *,char const*) ; 
- long V_ASN1_ANY ; 
-#define  V_ASN1_BIT_STRING 138 
-#define  V_ASN1_BOOLEAN 137 
-#define  V_ASN1_ENUMERATED 136 
-#define  V_ASN1_GENERALIZEDTIME 135 
-#define  V_ASN1_INTEGER 134 
- long V_ASN1_NEG ; 
- long V_ASN1_NULL ; 
-#define  V_ASN1_OBJECT 133 
-#define  V_ASN1_OCTET_STRING 132 
-#define  V_ASN1_OTHER 131 
-#define  V_ASN1_SEQUENCE 130 
-#define  V_ASN1_SET 129 
-#define  V_ASN1_UTCTIME 128 
- int asn1_print_boolean (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  asn1_print_fsname (int /*<<< orphan*/ *,int,char const*,char const*,TYPE_5__ const*) ; 
- int asn1_print_integer (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int asn1_print_obstring (int /*<<< orphan*/ *,TYPE_3__*,int) ; 
- int asn1_print_oid (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ **,TYPE_6__ const*,int,TYPE_5__ const*) ; 
+
+ int ASN1_GENERALIZEDTIME_print (int *,TYPE_3__*) ;
+ scalar_t__ ASN1_ITYPE_MSTRING ;
+ int ASN1_PCTX_FLAGS_NO_ANY_TYPE ;
+ int ASN1_PCTX_FLAGS_SHOW_TYPE ;
+ int ASN1_STRING_print_ex (int *,TYPE_3__*,int ) ;
+ int ASN1_UTCTIME_print (int *,TYPE_3__*) ;
+ int ASN1_parse_dump (int *,int ,int ,int,int ) ;
+ char* ASN1_tag2str (long) ;
+ scalar_t__ BIO_puts (int *,char const*) ;
+ long V_ASN1_ANY ;
+
+
+
+
+
+ long V_ASN1_NEG ;
+ long V_ASN1_NULL ;
+
+
+
+
+
+
+ int asn1_print_boolean (int *,int) ;
+ int asn1_print_fsname (int *,int,char const*,char const*,TYPE_5__ const*) ;
+ int asn1_print_integer (int *,TYPE_3__*) ;
+ int asn1_print_obstring (int *,TYPE_3__*,int) ;
+ int asn1_print_oid (int *,int const*) ;
+ int stub1 (int *,int **,TYPE_6__ const*,int,TYPE_5__ const*) ;
 
 __attribute__((used)) static int asn1_primitive_print(BIO *out, ASN1_VALUE **fld,
                                 const ASN1_ITEM *it, int indent,
@@ -82,8 +82,8 @@ __attribute__((used)) static int asn1_primitive_print(BIO *out, ASN1_VALUE **fld
         utype = str->type & ~V_ASN1_NEG;
     } else {
         utype = it->utype;
-        if (utype == V_ASN1_BOOLEAN)
-            str = NULL;
+        if (utype == 137)
+            str = ((void*)0);
         else
             str = (ASN1_STRING *)*fld;
     }
@@ -93,14 +93,14 @@ __attribute__((used)) static int asn1_primitive_print(BIO *out, ASN1_VALUE **fld
         fld = &atype->value.asn1_value;
         str = (ASN1_STRING *)*fld;
         if (pctx->flags & ASN1_PCTX_FLAGS_NO_ANY_TYPE)
-            pname = NULL;
+            pname = ((void*)0);
         else
             pname = ASN1_tag2str(utype);
     } else {
         if (pctx->flags & ASN1_PCTX_FLAGS_SHOW_TYPE)
             pname = ASN1_tag2str(utype);
         else
-            pname = NULL;
+            pname = ((void*)0);
     }
 
     if (utype == V_ASN1_NULL) {
@@ -117,7 +117,7 @@ __attribute__((used)) static int asn1_primitive_print(BIO *out, ASN1_VALUE **fld
     }
 
     switch (utype) {
-    case V_ASN1_BOOLEAN:
+    case 137:
         {
             int boolval = *(int *)fld;
             if (boolval == -1)
@@ -126,32 +126,32 @@ __attribute__((used)) static int asn1_primitive_print(BIO *out, ASN1_VALUE **fld
         }
         break;
 
-    case V_ASN1_INTEGER:
-    case V_ASN1_ENUMERATED:
+    case 134:
+    case 136:
         ret = asn1_print_integer(out, str);
         break;
 
-    case V_ASN1_UTCTIME:
+    case 128:
         ret = ASN1_UTCTIME_print(out, str);
         break;
 
-    case V_ASN1_GENERALIZEDTIME:
+    case 135:
         ret = ASN1_GENERALIZEDTIME_print(out, str);
         break;
 
-    case V_ASN1_OBJECT:
+    case 133:
         ret = asn1_print_oid(out, (const ASN1_OBJECT *)*fld);
         break;
 
-    case V_ASN1_OCTET_STRING:
-    case V_ASN1_BIT_STRING:
+    case 132:
+    case 138:
         ret = asn1_print_obstring(out, str, indent);
         needlf = 0;
         break;
 
-    case V_ASN1_SEQUENCE:
-    case V_ASN1_SET:
-    case V_ASN1_OTHER:
+    case 130:
+    case 129:
+    case 131:
         if (BIO_puts(out, "\n") <= 0)
             return 0;
         if (ASN1_parse_dump(out, str->data, str->length, indent, 0) <= 0)

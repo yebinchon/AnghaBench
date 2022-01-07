@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_string_buffer {int dummy; } ;
-struct wined3d_shader_signature_element {unsigned int register_idx; int /*<<< orphan*/  mask; scalar_t__ stream_idx; } ;
+struct wined3d_shader_signature_element {unsigned int register_idx; int mask; scalar_t__ stream_idx; } ;
 struct wined3d_shader_signature {unsigned int element_count; struct wined3d_shader_signature_element* elements; } ;
 struct wined3d_shader_reg_maps {unsigned int output_registers; } ;
 struct shader_glsl_priv {struct wined3d_string_buffer shader_buffer; } ;
-typedef  scalar_t__ BOOL ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  shader_addline (struct wined3d_string_buffer*,char*,char const*,unsigned int,char*,unsigned int,char*) ; 
- int /*<<< orphan*/  shader_glsl_write_mask_to_str (int /*<<< orphan*/ ,char*) ; 
+
+ int shader_addline (struct wined3d_string_buffer*,char*,char const*,unsigned int,char*,unsigned int,char*) ;
+ int shader_glsl_write_mask_to_str (int ,char*) ;
 
 __attribute__((used)) static void shader_glsl_setup_sm4_shader_output(struct shader_glsl_priv *priv,
         unsigned int input_count, const struct wined3d_shader_signature *output_signature,

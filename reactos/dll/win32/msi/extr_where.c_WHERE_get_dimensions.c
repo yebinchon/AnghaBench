@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct tagMSIVIEW {int dummy; } ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_3__ {int /*<<< orphan*/  col_count; int /*<<< orphan*/  row_count; int /*<<< orphan*/  reorder; int /*<<< orphan*/  tables; } ;
-typedef  TYPE_1__ MSIWHEREVIEW ;
+typedef int UINT ;
+struct TYPE_3__ {int col_count; int row_count; int reorder; int tables; } ;
+typedef TYPE_1__ MSIWHEREVIEW ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_FUNCTION_FAILED ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int ERROR_FUNCTION_FAILED ;
+ int ERROR_SUCCESS ;
+ int TRACE (char*,TYPE_1__*,int *,int *) ;
 
 __attribute__((used)) static UINT WHERE_get_dimensions( struct tagMSIVIEW *view, UINT *rows, UINT *cols )
 {

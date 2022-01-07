@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ENOMEM ; 
- int REPLACE_ENV_ALLOW_BRACELESS ; 
- int REPLACE_ENV_ALLOW_EXTENDED ; 
- int REPLACE_ENV_USE_ENVIRONMENT ; 
- int /*<<< orphan*/  assert (char***) ; 
- int /*<<< orphan*/  env_name_is_valid (char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  free_and_replace (char*,char*) ; 
- int load_env_file_push (char const*,unsigned int,char const*,char*,char***,int*) ; 
- int /*<<< orphan*/  log_debug (char*,char const*,unsigned int,char const*,char*) ; 
- int /*<<< orphan*/  log_error (char*,int /*<<< orphan*/ ,unsigned int,char const*) ; 
- char* replace_env (char*,char**,int) ; 
- int /*<<< orphan*/  strna (char const*) ; 
+ int ENOMEM ;
+ int REPLACE_ENV_ALLOW_BRACELESS ;
+ int REPLACE_ENV_ALLOW_EXTENDED ;
+ int REPLACE_ENV_USE_ENVIRONMENT ;
+ int assert (char***) ;
+ int env_name_is_valid (char const*) ;
+ int free (char*) ;
+ int free_and_replace (char*,char*) ;
+ int load_env_file_push (char const*,unsigned int,char const*,char*,char***,int*) ;
+ int log_debug (char*,char const*,unsigned int,char const*,char*) ;
+ int log_error (char*,int ,unsigned int,char const*) ;
+ char* replace_env (char*,char**,int) ;
+ int strna (char const*) ;
 
 __attribute__((used)) static int merge_env_file_push(
                 const char *filename, unsigned line,

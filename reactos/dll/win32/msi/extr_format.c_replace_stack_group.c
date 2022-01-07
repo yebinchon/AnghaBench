@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
 struct TYPE_10__ {char* deformatted; scalar_t__ groups; void* propfailed; void* groupfailed; } ;
 struct TYPE_9__ {int n; int len; int type; scalar_t__ propfound; scalar_t__ nonprop; } ;
-typedef  int /*<<< orphan*/  STACK ;
-typedef  TYPE_1__ FORMSTR ;
-typedef  TYPE_2__ FORMAT ;
-typedef  void* BOOL ;
+typedef int STACK ;
+typedef TYPE_1__ FORMSTR ;
+typedef TYPE_2__ FORMAT ;
+typedef void* BOOL ;
 
-/* Variables and functions */
- void* FALSE ; 
- int FORMAT_LITERAL ; 
- void* TRUE ; 
- int /*<<< orphan*/ * dup_formstr (TYPE_2__*,TYPE_1__*,int*) ; 
- TYPE_1__* msi_alloc_zero (int) ; 
- int /*<<< orphan*/  msi_free (TYPE_1__*) ; 
- TYPE_1__* stack_pop (int /*<<< orphan*/ *) ; 
+
+ void* FALSE ;
+ int FORMAT_LITERAL ;
+ void* TRUE ;
+ int * dup_formstr (TYPE_2__*,TYPE_1__*,int*) ;
+ TYPE_1__* msi_alloc_zero (int) ;
+ int msi_free (TYPE_1__*) ;
+ TYPE_1__* stack_pop (int *) ;
 
 __attribute__((used)) static WCHAR *replace_stack_group( FORMAT *format, STACK *values,
                                    BOOL *propfound, BOOL *nonprop,
@@ -67,7 +67,7 @@ __attribute__((used)) static WCHAR *replace_stack_group( FORMAT *format, STACK *
         (format->propfailed && !*nonprop)))
     {
         msi_free(content);
-        return NULL;
+        return ((void*)0);
     }
     else if (format->deformatted[content->n + 1] == '{' &&
              format->deformatted[content->n + content->len - 2] == '}')

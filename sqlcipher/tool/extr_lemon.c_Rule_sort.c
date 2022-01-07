@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  x ;
+
+
+
+
+typedef int x ;
 struct rule {struct rule* next; } ;
 
-/* Variables and functions */
- struct rule* Rule_merge (struct rule*,struct rule*) ; 
- int /*<<< orphan*/  memset (struct rule**,int /*<<< orphan*/ ,int) ; 
+
+ struct rule* Rule_merge (struct rule*,struct rule*) ;
+ int memset (struct rule**,int ,int) ;
 
 __attribute__((used)) static struct rule *Rule_sort(struct rule *rp){
   int i;

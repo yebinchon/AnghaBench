@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct iclass {int* name; } ;
-struct ia64_opcode {int /*<<< orphan*/ * operands; int /*<<< orphan*/  name; } ;
+struct ia64_opcode {int * operands; int name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IA64_OPND_AR3 ; 
- int /*<<< orphan*/  IA64_OPND_B1 ; 
- int /*<<< orphan*/  IA64_OPND_B2 ; 
- int /*<<< orphan*/  IA64_OPND_CR3 ; 
- int /*<<< orphan*/  IA64_OPND_IP ; 
- int /*<<< orphan*/  IA64_OPND_PR ; 
- int /*<<< orphan*/  IA64_OPND_PR_ROT ; 
- int /*<<< orphan*/  IA64_OPND_PSR ; 
- int /*<<< orphan*/  IA64_OPND_PSR_L ; 
- int /*<<< orphan*/  IA64_OPND_PSR_UM ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  irf_operand (int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * strstr (char const*,char*) ; 
+
+ int IA64_OPND_AR3 ;
+ int IA64_OPND_B1 ;
+ int IA64_OPND_B2 ;
+ int IA64_OPND_CR3 ;
+ int IA64_OPND_IP ;
+ int IA64_OPND_PR ;
+ int IA64_OPND_PR_ROT ;
+ int IA64_OPND_PSR ;
+ int IA64_OPND_PSR_L ;
+ int IA64_OPND_PSR_UM ;
+ int abort () ;
+ int irf_operand (int ,char const*) ;
+ scalar_t__ strcmp (int ,char*) ;
+ int * strstr (char const*,char*) ;
 
 __attribute__((used)) static int
-in_iclass_mov_x (struct ia64_opcode *idesc, struct iclass *ic, 
+in_iclass_mov_x (struct ia64_opcode *idesc, struct iclass *ic,
                  const char *format, const char *field)
 {
   int plain_mov = strcmp (idesc->name, "mov") == 0;
@@ -53,15 +53,15 @@ in_iclass_mov_x (struct ia64_opcode *idesc, struct iclass *ic,
         int pseudo0 = plain_mov && idesc->operands[1] == IA64_OPND_AR3;
         int pseudo1 = plain_mov && idesc->operands[0] == IA64_OPND_AR3;
 
-        /* IC:mov ar */
+
         if (i2627)
           return strstr (format, "I26") || strstr (format, "I27");
         if (i28)
-          return strstr (format, "I28") != NULL;
+          return strstr (format, "I28") != ((void*)0);
         if (m2930)
           return strstr (format, "M29") || strstr (format, "M30");
         if (m31)
-          return strstr (format, "M31") != NULL;
+          return strstr (format, "M31") != ((void*)0);
         if (pseudo0 || pseudo1)
           return 1;
       }
@@ -71,9 +71,9 @@ in_iclass_mov_x (struct ia64_opcode *idesc, struct iclass *ic,
         int i21 = idesc->operands[0] == IA64_OPND_B1;
         int i22 = plain_mov && idesc->operands[1] == IA64_OPND_B2;
         if (i22)
-          return strstr (format, "I22") != NULL;
+          return strstr (format, "I22") != ((void*)0);
         if (i21)
-          return strstr (format, "I21") != NULL;
+          return strstr (format, "I21") != ((void*)0);
       }
       break;
     case 'c':
@@ -81,9 +81,9 @@ in_iclass_mov_x (struct ia64_opcode *idesc, struct iclass *ic,
         int m32 = plain_mov && idesc->operands[0] == IA64_OPND_CR3;
         int m33 = plain_mov && idesc->operands[1] == IA64_OPND_CR3;
         if (m32)
-          return strstr (format, "M32") != NULL;
+          return strstr (format, "M32") != ((void*)0);
         if (m33)
-          return strstr (format, "M33") != NULL;
+          return strstr (format, "M33") != ((void*)0);
       }
       break;
     case 'i':
@@ -92,9 +92,9 @@ in_iclass_mov_x (struct ia64_opcode *idesc, struct iclass *ic,
           int m42 = plain_mov && irf_operand (idesc->operands[0], field);
           int m43 = plain_mov && irf_operand (idesc->operands[1], field);
           if (m42)
-            return strstr (format, "M42") != NULL;
+            return strstr (format, "M42") != ((void*)0);
           if (m43)
-            return strstr (format, "M43") != NULL;
+            return strstr (format, "M43") != ((void*)0);
         }
       else if (ic->name[5] == 'p')
         {
@@ -110,20 +110,20 @@ in_iclass_mov_x (struct ia64_opcode *idesc, struct iclass *ic,
           int i23 = plain_mov && idesc->operands[0] == IA64_OPND_PR;
           int i24 = plain_mov && idesc->operands[0] == IA64_OPND_PR_ROT;
           if (i23)
-            return strstr (format, "I23") != NULL;
+            return strstr (format, "I23") != ((void*)0);
           if (i24)
-            return strstr (format, "I24") != NULL;
+            return strstr (format, "I24") != ((void*)0);
           if (i25)
-            return strstr (format, "I25") != NULL;
+            return strstr (format, "I25") != ((void*)0);
         }
       else if (ic->name[5] == 's')
         {
           int m35 = plain_mov && idesc->operands[0] == IA64_OPND_PSR_L;
           int m36 = plain_mov && idesc->operands[1] == IA64_OPND_PSR;
           if (m35)
-            return strstr (format, "M35") != NULL;
+            return strstr (format, "M35") != ((void*)0);
           if (m36)
-            return strstr (format, "M36") != NULL;
+            return strstr (format, "M36") != ((void*)0);
         }
       else
         abort ();
@@ -133,9 +133,9 @@ in_iclass_mov_x (struct ia64_opcode *idesc, struct iclass *ic,
         int m35 = plain_mov && idesc->operands[0] == IA64_OPND_PSR_UM;
         int m36 = plain_mov && idesc->operands[1] == IA64_OPND_PSR_UM;
         if (m35)
-          return strstr (format, "M35") != NULL;
+          return strstr (format, "M35") != ((void*)0);
         if (m36)
-          return strstr (format, "M36") != NULL;
+          return strstr (format, "M36") != ((void*)0);
       }
       break;
     }

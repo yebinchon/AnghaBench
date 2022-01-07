@@ -5,7 +5,7 @@ __attribute__((used)) static int safe_atou_optional_plus(const char *s, unsigned
         assert(s);
         assert(ret);
 
-        /* Returns 1 if plus, 0 if no plus, negative on error */
+
 
         p = endswith(s, "+");
         if (p)

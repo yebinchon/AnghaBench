@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stub_manager {int /*<<< orphan*/  disconnected; int /*<<< orphan*/  oid; } ;
-struct ifstub {int /*<<< orphan*/  chan; int /*<<< orphan*/  iface; scalar_t__ stubbuffer; int /*<<< orphan*/  iid; int /*<<< orphan*/  entry; int /*<<< orphan*/  ipid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct ifstub*) ; 
- int /*<<< orphan*/  IRpcChannelBuffer_Release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IRpcStubBuffer_Release (scalar_t__) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RPC_UnregisterInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,struct stub_manager*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_remove (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wine_dbgstr_longlong (int /*<<< orphan*/ ) ; 
+
+
+
+struct stub_manager {int disconnected; int oid; } ;
+struct ifstub {int chan; int iface; scalar_t__ stubbuffer; int iid; int entry; int ipid; } ;
+
+
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,struct ifstub*) ;
+ int IRpcChannelBuffer_Release (int ) ;
+ int IRpcStubBuffer_Release (scalar_t__) ;
+ int IUnknown_Release (int ) ;
+ int RPC_UnregisterInterface (int *,int ) ;
+ int TRACE (char*,struct stub_manager*,int ,int ) ;
+ int TRUE ;
+ int debugstr_guid (int *) ;
+ int list_remove (int *) ;
+ int wine_dbgstr_longlong (int ) ;
 
 __attribute__((used)) static void stub_manager_delete_ifstub(struct stub_manager *m, struct ifstub *ifstub)
 {

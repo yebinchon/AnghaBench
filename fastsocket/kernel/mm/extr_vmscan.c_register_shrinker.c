@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct shrinker {int /*<<< orphan*/  list; scalar_t__ nr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  down_write (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  shrinker_list ; 
- int /*<<< orphan*/  shrinker_rwsem ; 
- int /*<<< orphan*/  up_write (int /*<<< orphan*/ *) ; 
+
+
+
+struct shrinker {int list; scalar_t__ nr; } ;
+
+
+ int down_write (int *) ;
+ int list_add_tail (int *,int *) ;
+ int shrinker_list ;
+ int shrinker_rwsem ;
+ int up_write (int *) ;
 
 void register_shrinker(struct shrinker *shrinker)
 {
-	shrinker->nr = 0;
-	down_write(&shrinker_rwsem);
-	list_add_tail(&shrinker->list, &shrinker_list);
-	up_write(&shrinker_rwsem);
+ shrinker->nr = 0;
+ down_write(&shrinker_rwsem);
+ list_add_tail(&shrinker->list, &shrinker_list);
+ up_write(&shrinker_rwsem);
 }

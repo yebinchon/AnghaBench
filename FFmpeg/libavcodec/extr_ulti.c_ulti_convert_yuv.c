@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
 struct TYPE_3__ {size_t** data; int* linesize; } ;
-typedef  TYPE_1__ AVFrame ;
+typedef TYPE_1__ AVFrame ;
 
-/* Variables and functions */
- size_t* ulti_chromas ; 
- size_t* ulti_lumas ; 
+
+ size_t* ulti_chromas ;
+ size_t* ulti_lumas ;
 
 __attribute__((used)) static void ulti_convert_yuv(AVFrame *frame, int x, int y,
                              uint8_t *luma,int chroma)
@@ -36,7 +36,7 @@ __attribute__((used)) static void ulti_convert_yuv(AVFrame *frame, int x, int y,
 
     for(i = 0; i < 16; i++){
         y_plane[i & 3] = ulti_lumas[luma[i]];
-        if((i & 3) == 3) { //next row
+        if((i & 3) == 3) {
             y_plane += frame->linesize[0];
         }
     }

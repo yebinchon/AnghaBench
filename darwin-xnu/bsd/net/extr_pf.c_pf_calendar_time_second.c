@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-struct timeval {int /*<<< orphan*/  tv_sec; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  getmicrotime (struct timeval*) ; 
+
+
+
+typedef int uint64_t ;
+struct timeval {int tv_sec; } ;
+
+
+ int getmicrotime (struct timeval*) ;
 
 uint64_t
 pf_calendar_time_second(void)
 {
-	struct timeval t;
+ struct timeval t;
 
-	getmicrotime(&t);
-	return (t.tv_sec);
+ getmicrotime(&t);
+ return (t.tv_sec);
 }

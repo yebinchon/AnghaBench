@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ mode; } ;
-typedef  TYPE_1__ MOVTrack ;
-typedef  int /*<<< orphan*/  AVIOContext ;
+typedef TYPE_1__ MOVTrack ;
+typedef int AVIOContext ;
 
-/* Variables and functions */
- scalar_t__ MODE_MOV ; 
- int /*<<< orphan*/  avio_w8 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wb16 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wb32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ffio_wfourcc (int /*<<< orphan*/ *,char*) ; 
+
+ scalar_t__ MODE_MOV ;
+ int avio_w8 (int *,int) ;
+ int avio_wb16 (int *,int) ;
+ int avio_wb32 (int *,int) ;
+ int ffio_wfourcc (int *,char*) ;
 
 __attribute__((used)) static int mov_write_amr_tag(AVIOContext *pb, MOVTrack *track)
 {
-    avio_wb32(pb, 0x11); /* size */
+    avio_wb32(pb, 0x11);
     if (track->mode == MODE_MOV) ffio_wfourcc(pb, "samr");
-    else                         ffio_wfourcc(pb, "damr");
+    else ffio_wfourcc(pb, "damr");
     ffio_wfourcc(pb, "FFMP");
-    avio_w8(pb, 0); /* decoder version */
+    avio_w8(pb, 0);
 
-    avio_wb16(pb, 0x81FF); /* Mode set (all modes for AMR_NB) */
-    avio_w8(pb, 0x00); /* Mode change period (no restriction) */
-    avio_w8(pb, 0x01); /* Frames per sample */
+    avio_wb16(pb, 0x81FF);
+    avio_w8(pb, 0x00);
+    avio_w8(pb, 0x01);
     return 0x11;
 }

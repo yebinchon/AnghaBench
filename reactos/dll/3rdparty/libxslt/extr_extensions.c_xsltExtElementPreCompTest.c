@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xsltTransformFunction ;
-typedef  TYPE_1__* xsltStylesheetPtr ;
-typedef  int /*<<< orphan*/ * xsltElemPreCompPtr ;
-typedef  int /*<<< orphan*/ * xmlNodePtr ;
-typedef  int /*<<< orphan*/  xmlChar ;
-struct TYPE_6__ {int /*<<< orphan*/  errors; } ;
 
-/* Variables and functions */
- scalar_t__ XSLT_DEFAULT_URL ; 
- int /*<<< orphan*/ * testStyleData ; 
- int /*<<< orphan*/  xsltGenericDebug (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  xsltGenericDebugContext ; 
- int /*<<< orphan*/ * xsltNewElemPreComp (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xsltStyleGetExtData (TYPE_1__*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  xsltTransformError (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,char*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int xsltTransformFunction ;
+typedef TYPE_1__* xsltStylesheetPtr ;
+typedef int * xsltElemPreCompPtr ;
+typedef int * xmlNodePtr ;
+typedef int xmlChar ;
+struct TYPE_6__ {int errors; } ;
+
+
+ scalar_t__ XSLT_DEFAULT_URL ;
+ int * testStyleData ;
+ int xsltGenericDebug (int ,char*) ;
+ int xsltGenericDebugContext ;
+ int * xsltNewElemPreComp (TYPE_1__*,int *,int ) ;
+ int xsltStyleGetExtData (TYPE_1__*,int const*) ;
+ int xsltTransformError (int *,TYPE_1__*,int *,char*) ;
 
 __attribute__((used)) static xsltElemPreCompPtr
 xsltExtElementPreCompTest(xsltStylesheetPtr style, xmlNodePtr inst,
@@ -33,30 +33,30 @@ xsltExtElementPreCompTest(xsltStylesheetPtr style, xmlNodePtr inst,
 {
     xsltElemPreCompPtr ret;
 
-    if (style == NULL) {
-        xsltTransformError(NULL, NULL, inst,
+    if (style == ((void*)0)) {
+        xsltTransformError(((void*)0), ((void*)0), inst,
                            "xsltExtElementTest: no transformation context\n");
-        return (NULL);
+        return (((void*)0));
     }
-    if (testStyleData == NULL) {
+    if (testStyleData == ((void*)0)) {
         xsltGenericDebug(xsltGenericDebugContext,
                          "xsltExtElementPreCompTest: not initialized,"
                          " calling xsltStyleGetExtData\n");
         xsltStyleGetExtData(style, (const xmlChar *) XSLT_DEFAULT_URL);
-        if (testStyleData == NULL) {
-            xsltTransformError(NULL, style, inst,
+        if (testStyleData == ((void*)0)) {
+            xsltTransformError(((void*)0), style, inst,
                                "xsltExtElementPreCompTest: not initialized\n");
-            if (style != NULL)
+            if (style != ((void*)0))
                 style->errors++;
-            return (NULL);
+            return (((void*)0));
         }
     }
-    if (inst == NULL) {
-        xsltTransformError(NULL, style, inst,
+    if (inst == ((void*)0)) {
+        xsltTransformError(((void*)0), style, inst,
                            "xsltExtElementPreCompTest: no instruction\n");
-        if (style != NULL)
+        if (style != ((void*)0))
             style->errors++;
-        return (NULL);
+        return (((void*)0));
     }
     ret = xsltNewElemPreComp(style, inst, function);
     return (ret);

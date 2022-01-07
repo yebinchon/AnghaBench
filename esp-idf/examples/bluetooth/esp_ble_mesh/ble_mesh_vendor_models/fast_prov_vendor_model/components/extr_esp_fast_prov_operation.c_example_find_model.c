@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  esp_ble_mesh_model_t ;
-typedef  int /*<<< orphan*/  esp_ble_mesh_elem_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CID_NVAL ; 
- int /*<<< orphan*/  ESP_BLE_MESH_ADDR_IS_UNICAST (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * esp_ble_mesh_find_element (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * esp_ble_mesh_find_sig_model (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * esp_ble_mesh_find_vendor_model (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint16_t ;
+typedef int esp_ble_mesh_model_t ;
+typedef int esp_ble_mesh_elem_t ;
+
+
+ int CID_NVAL ;
+ int ESP_BLE_MESH_ADDR_IS_UNICAST (int ) ;
+ int * esp_ble_mesh_find_element (int ) ;
+ int * esp_ble_mesh_find_sig_model (int *,int ) ;
+ int * esp_ble_mesh_find_vendor_model (int *,int ,int ) ;
 
 esp_ble_mesh_model_t *example_find_model(uint16_t element_addr, uint16_t model_id,
         uint16_t company_id)
 {
-    esp_ble_mesh_elem_t *element = NULL;
+    esp_ble_mesh_elem_t *element = ((void*)0);
 
     if (!ESP_BLE_MESH_ADDR_IS_UNICAST(element_addr)) {
-        return NULL;
+        return ((void*)0);
     }
 
     element = esp_ble_mesh_find_element(element_addr);
     if (!element) {
-        return NULL;
+        return ((void*)0);
     }
 
     if (company_id == CID_NVAL) {

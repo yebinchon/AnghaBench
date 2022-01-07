@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAC2STR (int /*<<< orphan*/ *) ; 
- char* MACSTR ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wifi_get_macaddr (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+typedef int lua_State ;
+
+
+ int MAC2STR (int *) ;
+ char* MACSTR ;
+ int lua_pushstring (int *,char*) ;
+ int sprintf (char*,char*,int ) ;
+ int wifi_get_macaddr (int ,int *) ;
 
 __attribute__((used)) static int wifi_getmac( lua_State* L, uint8_t mode )
 {

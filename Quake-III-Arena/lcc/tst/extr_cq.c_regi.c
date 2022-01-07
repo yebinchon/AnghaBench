@@ -1,56 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
-regi() {     /*   int to register assignment    */
-/*   Testing a variable whose storage class has been spec-
-ified as "register" is somewhat tricky, but it can be done in a 
-fairly reliable fashion by taking advantage of our knowledge of the
-ways in which compilers operate. If we declare a collection of vari-
-ables of the same storage class, we would expect that, when storage
-for these variables is actually allocated, the variables will be 
-bunched together and ordered according to one of the following
-criteria:
-
-     (a) the order in which they were defined.
-     (b) the order in which they are used.
-     (c) alphabetically.
-     (d) the order in which they appear in the compiler's
-         symbol table.
-     (e) some other way.
-
-     Hence, if we define a sequence of variables in close alpha-
-betical order, and use them in the same order in which we define
-them, we would expect the differences between the addresses of
-successive variables to be constant, except in case (d) where the
-symbol table is a hash table, or in case (e). If a subsequence in
-the middle of this sequence is selected, and for this subsequence,
-every other variable is specified to be "register", and address
-differences are taken between adjacent nonregister variables, we would
-still expect to find constant differences if the "register" vari-
-ables were actually assigned to registers, and some other diff-
-erences if they were not. Specifically, if we had N variables 
-specified as "register" of which the first n were actually ass-
-igned to registers, we would expect the sequence of differences
-to consist of a number of occurrences of some number, followed by
-N-n occurrences of some other number, followed by several occurr-
-ences of the first number. If we get a sequence like this, we can
-determine, by simple subtraction, how many (if any) variables are
-being assigned to registers. If we get some other sequence, we know
-that the test is invalid.                                     */
-
-
+regi() {
             int r00;
             int r01;
             int r02;
@@ -155,14 +109,6 @@ that the test is invalid.                                     */
    d[19] = &r36 - &r35;
    d[20] = &r37 - &r36;
    d[21] = &r38 - &r37;
-
-
-/*   The following FSM analyzes the string of differences. It accepts
-strings of the form a+b+a+ and returns 16 minus the number of bs, 
-which is the number of variables that actually got into registers.
-Otherwise it signals rejection by returning -1., indicating that the
-test is unreliable.              */
-
    n1 = d[0];
    s = 1;
 

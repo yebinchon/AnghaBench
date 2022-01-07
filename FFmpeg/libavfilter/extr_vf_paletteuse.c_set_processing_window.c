@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  enum diff_mode { ____Placeholder_diff_mode } diff_mode ;
-struct TYPE_6__ {int width; int height; int* linesize; int /*<<< orphan*/ ** data; } ;
-typedef  TYPE_1__ AVFrame ;
 
-/* Variables and functions */
- int DIFF_MODE_RECTANGLE ; 
- int /*<<< orphan*/  memcmp (scalar_t__ const*,scalar_t__ const*,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int const) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef enum diff_mode { ____Placeholder_diff_mode } diff_mode ;
+struct TYPE_6__ {int width; int height; int* linesize; int ** data; } ;
+typedef TYPE_1__ AVFrame ;
+
+
+ int DIFF_MODE_RECTANGLE ;
+ int memcmp (scalar_t__ const*,scalar_t__ const*,int) ;
+ int memcpy (int *,int const*,int const) ;
 
 __attribute__((used)) static void set_processing_window(enum diff_mode diff_mode,
                                   const AVFrame *prv_src, const AVFrame *cur_src,
-                                  const AVFrame *prv_dst,       AVFrame *cur_dst,
+                                  const AVFrame *prv_dst, AVFrame *cur_dst,
                                   int *xp, int *yp, int *wp, int *hp)
 {
     int x_start = 0, y_start = 0;
-    int width  = cur_src->width;
+    int width = cur_src->width;
     int height = cur_src->height;
 
     if (prv_src->data[0] && diff_mode == DIFF_MODE_RECTANGLE) {
         int y;
-        int x_end = cur_src->width  - 1,
+        int x_end = cur_src->width - 1,
             y_end = cur_src->height - 1;
         const uint32_t *prv_srcp = (const uint32_t *)prv_src->data[0];
         const uint32_t *cur_srcp = (const uint32_t *)cur_src->data[0];
-        const uint8_t  *prv_dstp = prv_dst->data[0];
-        uint8_t        *cur_dstp = cur_dst->data[0];
+        const uint8_t *prv_dstp = prv_dst->data[0];
+        uint8_t *cur_dstp = cur_dst->data[0];
 
         const int prv_src_linesize = prv_src->linesize[0] >> 2;
         const int cur_src_linesize = cur_src->linesize[0] >> 2;
         const int prv_dst_linesize = prv_dst->linesize[0];
         const int cur_dst_linesize = cur_dst->linesize[0];
 
-        /* skip common lines */
+
         while (y_start < y_end && !memcmp(prv_srcp + y_start*prv_src_linesize,
                                           cur_srcp + y_start*cur_src_linesize,
                                           cur_src->width * 4)) {
@@ -65,7 +65,7 @@ __attribute__((used)) static void set_processing_window(enum diff_mode diff_mode
 
         height = y_end + 1 - y_start;
 
-        /* skip common columns */
+
         while (x_start < x_end) {
             int same_column = 1;
             for (y = y_start; y <= y_end; y++) {

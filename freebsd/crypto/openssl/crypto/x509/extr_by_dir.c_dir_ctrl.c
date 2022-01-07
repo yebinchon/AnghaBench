@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ method_data; } ;
-typedef  TYPE_1__ X509_LOOKUP ;
-typedef  int /*<<< orphan*/  BY_DIR ;
+typedef TYPE_1__ X509_LOOKUP ;
+typedef int BY_DIR ;
 
-/* Variables and functions */
- long X509_FILETYPE_DEFAULT ; 
- int X509_FILETYPE_PEM ; 
- int /*<<< orphan*/  X509_F_DIR_CTRL ; 
-#define  X509_L_ADD_DIR 128 
- int /*<<< orphan*/  X509_R_LOADING_CERT_DIR ; 
- char const* X509_get_default_cert_dir () ; 
- int /*<<< orphan*/  X509_get_default_cert_dir_env () ; 
- int /*<<< orphan*/  X509err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int add_cert_dir (int /*<<< orphan*/ *,char const*,int) ; 
- char* ossl_safe_getenv (int /*<<< orphan*/ ) ; 
+
+ long X509_FILETYPE_DEFAULT ;
+ int X509_FILETYPE_PEM ;
+ int X509_F_DIR_CTRL ;
+
+ int X509_R_LOADING_CERT_DIR ;
+ char const* X509_get_default_cert_dir () ;
+ int X509_get_default_cert_dir_env () ;
+ int X509err (int ,int ) ;
+ int add_cert_dir (int *,char const*,int) ;
+ char* ossl_safe_getenv (int ) ;
 
 __attribute__((used)) static int dir_ctrl(X509_LOOKUP *ctx, int cmd, const char *argp, long argl,
                     char **retp)
@@ -34,7 +34,7 @@ __attribute__((used)) static int dir_ctrl(X509_LOOKUP *ctx, int cmd, const char 
     BY_DIR *ld = (BY_DIR *)ctx->method_data;
 
     switch (cmd) {
-    case X509_L_ADD_DIR:
+    case 128:
         if (argl == X509_FILETYPE_DEFAULT) {
             const char *dir = ossl_safe_getenv(X509_get_default_cert_dir_env());
 

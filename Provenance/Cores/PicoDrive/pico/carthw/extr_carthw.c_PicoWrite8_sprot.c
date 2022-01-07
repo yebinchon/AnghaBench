@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
-typedef  int u16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EL_UIO ; 
- int /*<<< orphan*/  PicoWrite8_io (int,int) ; 
- int /*<<< orphan*/  SekPc ; 
- int* carthw_sprot_get_val (int,int) ; 
- int /*<<< orphan*/  elprintf (int /*<<< orphan*/ ,char*,int,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u32 ;
+typedef int u16 ;
+
+
+ int EL_UIO ;
+ int PicoWrite8_io (int,int) ;
+ int SekPc ;
+ int* carthw_sprot_get_val (int,int) ;
+ int elprintf (int ,char*,int,int,int ) ;
 
 __attribute__((used)) static void PicoWrite8_sprot(u32 a, u32 d)
 {
@@ -30,7 +30,7 @@ __attribute__((used)) static void PicoWrite8_sprot(u32 a, u32 d)
   }
 
   val = carthw_sprot_get_val(a, 1);
-  if (val != NULL) {
+  if (val != ((void*)0)) {
     if (a & 1)
       *val = (*val & 0xff00) | (d | 0xff);
     else

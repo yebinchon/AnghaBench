@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct socks_proxy_info {int dummy; } ;
-typedef  scalar_t__ ssize_t ;
-typedef  int /*<<< orphan*/  socket_descriptor_t ;
-typedef  int /*<<< orphan*/  buf ;
+typedef scalar_t__ ssize_t ;
+typedef int socket_descriptor_t ;
+typedef int buf ;
 
-/* Variables and functions */
- int D_LINK_ERRORS ; 
- int /*<<< orphan*/  MSG_NOSIGNAL ; 
- int M_ERRNO ; 
- int SIGUSR1 ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
- int /*<<< orphan*/  msg (int,char*,...) ; 
- int port_from_servname (char const*) ; 
- int /*<<< orphan*/  recv_socks_reply (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int volatile*) ; 
- scalar_t__ send (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  socks_handshake (struct socks_proxy_info*,int /*<<< orphan*/ ,int volatile*) ; 
- size_t strlen (char const*) ; 
+
+ int D_LINK_ERRORS ;
+ int MSG_NOSIGNAL ;
+ int M_ERRNO ;
+ int SIGUSR1 ;
+ int memcpy (char*,char const*,size_t) ;
+ int msg (int,char*,...) ;
+ int port_from_servname (char const*) ;
+ int recv_socks_reply (int ,int *,int volatile*) ;
+ scalar_t__ send (int ,char*,int,int ) ;
+ int socks_handshake (struct socks_proxy_info*,int ,int volatile*) ;
+ size_t strlen (char const*) ;
 
 void
 establish_socks_proxy_passthru(struct socks_proxy_info *p,
-                               socket_descriptor_t sd,  /* already open to proxy */
-                               const char *host,        /* openvpn server remote */
-                               const char *servname,    /* openvpn server port */
+                               socket_descriptor_t sd,
+                               const char *host,
+                               const char *servname,
                                volatile int *signal_received)
 {
     char buf[128];
@@ -43,11 +43,11 @@ establish_socks_proxy_passthru(struct socks_proxy_info *p,
         goto error;
     }
 
-    /* format Socks CONNECT message */
-    buf[0] = '\x05';            /* VER = 5 */
-    buf[1] = '\x01';            /* CMD = 1 (CONNECT) */
-    buf[2] = '\x00';            /* RSV */
-    buf[3] = '\x03';            /* ATYP = 3 (DOMAINNAME) */
+
+    buf[0] = '\x05';
+    buf[1] = '\x01';
+    buf[2] = '\x00';
+    buf[3] = '\x03';
 
     len = strlen(host);
     len = (5 + len + 2 > sizeof(buf)) ? (sizeof(buf) - 5 - 2) : len;
@@ -75,8 +75,8 @@ establish_socks_proxy_passthru(struct socks_proxy_info *p,
     }
 
 
-    /* receive reply from Socks proxy and discard */
-    if (!recv_socks_reply(sd, NULL, signal_received))
+
+    if (!recv_socks_reply(sd, ((void*)0), signal_received))
     {
         goto error;
     }
@@ -86,7 +86,7 @@ establish_socks_proxy_passthru(struct socks_proxy_info *p,
 error:
     if (!*signal_received)
     {
-        *signal_received = SIGUSR1; /* SOFT-SIGUSR1 -- socks error */
+        *signal_received = SIGUSR1;
     }
     return;
 }

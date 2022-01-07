@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct sci_sas_address {int dummy; } ;
-struct sas_identify_frame {int /*<<< orphan*/  sas_addr; } ;
+struct sas_identify_frame {int sas_addr; } ;
 struct TYPE_2__ {struct sas_identify_frame iaf; } ;
 struct isci_phy {TYPE_1__ frame_rcvd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SAS_ADDR_SIZE ; 
- int /*<<< orphan*/  memcpy (struct sci_sas_address*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int SAS_ADDR_SIZE ;
+ int memcpy (struct sci_sas_address*,int ,int ) ;
 
 void sci_phy_get_attached_sas_address(struct isci_phy *iphy, struct sci_sas_address *sas)
 {
-	struct sas_identify_frame *iaf;
+ struct sas_identify_frame *iaf;
 
-	iaf = &iphy->frame_rcvd.iaf;
-	memcpy(sas, iaf->sas_addr, SAS_ADDR_SIZE);
+ iaf = &iphy->frame_rcvd.iaf;
+ memcpy(sas, iaf->sas_addr, SAS_ADDR_SIZE);
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct qeth_channel {int /*<<< orphan*/  irq_pending; int /*<<< orphan*/  state; struct ccw_device* ccwdev; } ;
-struct ccw_device {int /*<<< orphan*/  handler; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CH_STATE_DOWN ; 
- int /*<<< orphan*/  QETH_DBF_TEXT (int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  SETUP ; 
- int /*<<< orphan*/  atomic_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_ccwdev_lock (struct ccw_device*) ; 
- int /*<<< orphan*/  qeth_irq ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ ) ; 
+
+
+
+struct qeth_channel {int irq_pending; int state; struct ccw_device* ccwdev; } ;
+struct ccw_device {int handler; } ;
+
+
+ int CH_STATE_DOWN ;
+ int QETH_DBF_TEXT (int ,int,char*) ;
+ int SETUP ;
+ int atomic_set (int *,int ) ;
+ int get_ccwdev_lock (struct ccw_device*) ;
+ int qeth_irq ;
+ int spin_lock_irq (int ) ;
+ int spin_unlock_irq (int ) ;
 
 __attribute__((used)) static void qeth_setup_channel(struct qeth_channel *channel)
 {
-	struct ccw_device *cdev = channel->ccwdev;
+ struct ccw_device *cdev = channel->ccwdev;
 
-	QETH_DBF_TEXT(SETUP, 2, "setupch");
+ QETH_DBF_TEXT(SETUP, 2, "setupch");
 
-	channel->state = CH_STATE_DOWN;
-	atomic_set(&channel->irq_pending, 0);
+ channel->state = CH_STATE_DOWN;
+ atomic_set(&channel->irq_pending, 0);
 
-	spin_lock_irq(get_ccwdev_lock(cdev));
-	cdev->handler = qeth_irq;
-	spin_unlock_irq(get_ccwdev_lock(cdev));
+ spin_lock_irq(get_ccwdev_lock(cdev));
+ cdev->handler = qeth_irq;
+ spin_unlock_irq(get_ccwdev_lock(cdev));
 }

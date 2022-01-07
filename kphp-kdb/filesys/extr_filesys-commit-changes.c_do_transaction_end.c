@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LEV_FILESYS_XFS_END_TRANSACTION ; 
- int /*<<< orphan*/  events ; 
- int /*<<< orphan*/  kprintf (char*) ; 
- int* memory_alloc_log_event (int /*<<< orphan*/ ,int) ; 
- int transaction_id ; 
- int /*<<< orphan*/  vkprintf (int,char*,int /*<<< orphan*/ ) ; 
+ int LEV_FILESYS_XFS_END_TRANSACTION ;
+ int events ;
+ int kprintf (char*) ;
+ int* memory_alloc_log_event (int ,int) ;
+ int transaction_id ;
+ int vkprintf (int,char*,int ) ;
 
 __attribute__((used)) static void do_transaction_end () {
   if (!events) {

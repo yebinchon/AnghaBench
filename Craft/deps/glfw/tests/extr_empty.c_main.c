@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  thrd_t ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- int /*<<< orphan*/  GL_COLOR_BUFFER_BIT ; 
- scalar_t__ GL_FALSE ; 
- int /*<<< orphan*/  error_callback ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  glClear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glClearColor (float,float,float,float) ; 
- int /*<<< orphan*/  glViewport (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/ * glfwCreateWindow (int,int,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwDestroyWindow (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwGetFramebufferSize (int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  glfwHideWindow (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwInit () ; 
- int /*<<< orphan*/  glfwMakeContextCurrent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwSetErrorCallback (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetKeyCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSwapBuffers (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwTerminate () ; 
- int /*<<< orphan*/  glfwWaitEvents () ; 
- scalar_t__ glfwWindowShouldClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  key_callback ; 
- float nrand () ; 
- scalar_t__ running ; 
- scalar_t__ sqrt (float) ; 
- int /*<<< orphan*/  srand (unsigned int) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ thrd_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  thrd_join (int /*<<< orphan*/ ,int*) ; 
- scalar_t__ thrd_success ; 
- int /*<<< orphan*/  thread_main ; 
- scalar_t__ time (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int thrd_t ;
+typedef int GLFWwindow ;
+
+
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int GL_COLOR_BUFFER_BIT ;
+ scalar_t__ GL_FALSE ;
+ int error_callback ;
+ int exit (int ) ;
+ int fprintf (int ,char*) ;
+ int glClear (int ) ;
+ int glClearColor (float,float,float,float) ;
+ int glViewport (int ,int ,int,int) ;
+ int * glfwCreateWindow (int,int,char*,int *,int *) ;
+ int glfwDestroyWindow (int *) ;
+ int glfwGetFramebufferSize (int *,int*,int*) ;
+ int glfwHideWindow (int *) ;
+ int glfwInit () ;
+ int glfwMakeContextCurrent (int *) ;
+ int glfwSetErrorCallback (int ) ;
+ int glfwSetKeyCallback (int *,int ) ;
+ int glfwSwapBuffers (int *) ;
+ int glfwTerminate () ;
+ int glfwWaitEvents () ;
+ scalar_t__ glfwWindowShouldClose (int *) ;
+ int key_callback ;
+ float nrand () ;
+ scalar_t__ running ;
+ scalar_t__ sqrt (float) ;
+ int srand (unsigned int) ;
+ int stderr ;
+ scalar_t__ thrd_create (int *,int ,int *) ;
+ int thrd_join (int ,int*) ;
+ scalar_t__ thrd_success ;
+ int thread_main ;
+ scalar_t__ time (int *) ;
 
 int main(void)
 {
@@ -54,14 +54,14 @@ int main(void)
     thrd_t thread;
     GLFWwindow* window;
 
-    srand((unsigned int) time(NULL));
+    srand((unsigned int) time(((void*)0)));
 
     glfwSetErrorCallback(error_callback);
 
     if (!glfwInit())
         exit(EXIT_FAILURE);
 
-    window = glfwCreateWindow(640, 480, "Empty Event Test", NULL, NULL);
+    window = glfwCreateWindow(640, 480, "Empty Event Test", ((void*)0), ((void*)0));
     if (!window)
     {
         glfwTerminate();
@@ -71,7 +71,7 @@ int main(void)
     glfwMakeContextCurrent(window);
     glfwSetKeyCallback(window, key_callback);
 
-    if (thrd_create(&thread, thread_main, NULL) != thrd_success)
+    if (thrd_create(&thread, thread_main, ((void*)0)) != thrd_success)
     {
         fprintf(stderr, "Failed to create secondary thread\n");
 

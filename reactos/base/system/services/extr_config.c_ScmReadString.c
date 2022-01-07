@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/ * LPBYTE ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_NOT_ENOUGH_MEMORY ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ ExpandEnvironmentStringsW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ REG_EXPAND_SZ ; 
- scalar_t__ RegQueryValueExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ *,scalar_t__*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int * LPWSTR ;
+typedef int LPCWSTR ;
+typedef int * LPBYTE ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ ERROR_NOT_ENOUGH_MEMORY ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ ExpandEnvironmentStringsW (int *,int *,scalar_t__) ;
+ scalar_t__ GetLastError () ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ int * HeapAlloc (int ,int ,scalar_t__) ;
+ int HeapFree (int ,int ,int *) ;
+ scalar_t__ REG_EXPAND_SZ ;
+ scalar_t__ RegQueryValueExW (int ,int ,int ,scalar_t__*,int *,scalar_t__*) ;
 
 DWORD
 ScmReadString(HKEY hServiceKey,
@@ -37,22 +37,22 @@ ScmReadString(HKEY hServiceKey,
     DWORD dwError = 0;
     DWORD dwSize = 0;
     DWORD dwType = 0;
-    LPWSTR ptr = NULL;
-    LPWSTR expanded = NULL;
+    LPWSTR ptr = ((void*)0);
+    LPWSTR expanded = ((void*)0);
 
-    *lpValue = NULL;
+    *lpValue = ((void*)0);
 
     dwError = RegQueryValueExW(hServiceKey,
                                lpValueName,
                                0,
                                &dwType,
-                               NULL,
+                               ((void*)0),
                                &dwSize);
     if (dwError != ERROR_SUCCESS)
         return dwError;
 
     ptr = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, dwSize);
-    if (ptr == NULL)
+    if (ptr == ((void*)0))
         return ERROR_NOT_ENOUGH_MEMORY;
 
     dwError = RegQueryValueExW(hServiceKey,
@@ -69,8 +69,8 @@ ScmReadString(HKEY hServiceKey,
 
     if (dwType == REG_EXPAND_SZ)
     {
-        /* Expand the value... */
-        dwSize = ExpandEnvironmentStringsW(ptr, NULL, 0);
+
+        dwSize = ExpandEnvironmentStringsW(ptr, ((void*)0), 0);
         if (dwSize > 0)
         {
             expanded = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, dwSize * sizeof(WCHAR));

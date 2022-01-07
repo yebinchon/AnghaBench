@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * HINTERNET ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_INTERNET_CANNOT_CONNECT ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/ * HttpOpenRequestA (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ HttpSendRequestA (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INTERNET_DEFAULT_HTTPS_PORT ; 
- int /*<<< orphan*/  INTERNET_FLAG_SECURE ; 
- int /*<<< orphan*/  INTERNET_OPEN_TYPE_PRECONFIG ; 
- int /*<<< orphan*/  INTERNET_SERVICE_HTTP ; 
- int /*<<< orphan*/  InternetCloseHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * InternetConnectA (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * InternetOpenA (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int * HINTERNET ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ ERROR_INTERNET_CANNOT_CONNECT ;
+ scalar_t__ GetLastError () ;
+ int * HttpOpenRequestA (int *,char*,char*,int *,int *,int *,int ,int ) ;
+ scalar_t__ HttpSendRequestA (int *,int *,int ,int *,int ) ;
+ int INTERNET_DEFAULT_HTTPS_PORT ;
+ int INTERNET_FLAG_SECURE ;
+ int INTERNET_OPEN_TYPE_PRECONFIG ;
+ int INTERNET_SERVICE_HTTP ;
+ int InternetCloseHandle (int *) ;
+ int * InternetConnectA (int *,char*,int ,int *,int *,int ,int ,int ) ;
+ int * InternetOpenA (char*,int ,int *,int *,int ) ;
+ scalar_t__ broken (int) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static BOOL can_do_https(void)
 {
     HINTERNET ses, con, req;
     BOOL ret;
 
-    ses = InternetOpenA("winetest", INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0);
-    ok(ses != NULL, "InternetOpen failed\n");
+    ses = InternetOpenA("winetest", INTERNET_OPEN_TYPE_PRECONFIG, ((void*)0), ((void*)0), 0);
+    ok(ses != ((void*)0), "InternetOpen failed\n");
 
     con = InternetConnectA(ses, "test.winehq.org", INTERNET_DEFAULT_HTTPS_PORT,
-            NULL, NULL, INTERNET_SERVICE_HTTP, 0, 0);
-    ok(con != NULL, "InternetConnect failed\n");
+            ((void*)0), ((void*)0), INTERNET_SERVICE_HTTP, 0, 0);
+    ok(con != ((void*)0), "InternetConnect failed\n");
 
-    req = HttpOpenRequestA(con, "GET", "/tests/hello.html", NULL, NULL, NULL,
+    req = HttpOpenRequestA(con, "GET", "/tests/hello.html", ((void*)0), ((void*)0), ((void*)0),
             INTERNET_FLAG_SECURE, 0);
-    ok(req != NULL, "HttpOpenRequest failed\n");
+    ok(req != ((void*)0), "HttpOpenRequest failed\n");
 
-    ret = HttpSendRequestA(req, NULL, 0, NULL, 0);
+    ret = HttpSendRequestA(req, ((void*)0), 0, ((void*)0), 0);
     ok(ret || broken(GetLastError() == ERROR_INTERNET_CANNOT_CONNECT),
         "request failed: %u\n", GetLastError());
 

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * sig; int /*<<< orphan*/  cl; } ;
-typedef  TYPE_1__ REAL_VALUE_TYPE ;
 
-/* Variables and functions */
- int MAX_EXP ; 
- int /*<<< orphan*/  SET_REAL_EXP (TYPE_1__*,int) ; 
- int SIGSZ ; 
- int /*<<< orphan*/  SIG_MSB ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  rvc_inf ; 
- int /*<<< orphan*/  rvc_normal ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * sig; int cl; } ;
+typedef TYPE_1__ REAL_VALUE_TYPE ;
+
+
+ int MAX_EXP ;
+ int SET_REAL_EXP (TYPE_1__*,int) ;
+ int SIGSZ ;
+ int SIG_MSB ;
+ int memset (TYPE_1__*,int ,int) ;
+ int rvc_inf ;
+ int rvc_normal ;
 
 void
 real_2expN (REAL_VALUE_TYPE *r, int n)

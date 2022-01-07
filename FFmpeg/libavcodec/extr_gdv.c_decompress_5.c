@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_1__* priv_data; } ;
-struct TYPE_7__ {int /*<<< orphan*/  member_0; } ;
-struct TYPE_6__ {int /*<<< orphan*/  frame_size; int /*<<< orphan*/  frame; int /*<<< orphan*/  pb; int /*<<< orphan*/  g2; int /*<<< orphan*/  gb; } ;
-typedef  int /*<<< orphan*/  PutByteContext ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  TYPE_1__ GDVContext ;
-typedef  TYPE_2__ Bits8 ;
-typedef  TYPE_3__ AVCodecContext ;
+struct TYPE_7__ {int member_0; } ;
+struct TYPE_6__ {int frame_size; int frame; int pb; int g2; int gb; } ;
+typedef int PutByteContext ;
+typedef int GetByteContext ;
+typedef TYPE_1__ GDVContext ;
+typedef TYPE_2__ Bits8 ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- unsigned int PREAMBLE_SIZE ; 
- int bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- scalar_t__ bytestream2_get_bytes_left_p (int /*<<< orphan*/ *) ; 
- int bytestream2_get_le16 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bytestream2_put_byte (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  bytestream2_skip_p (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lz_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ; 
- int read_bits2 (TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+ int AVERROR_INVALIDDATA ;
+ unsigned int PREAMBLE_SIZE ;
+ int bytestream2_get_byte (int *) ;
+ int bytestream2_get_bytes_left (int *) ;
+ scalar_t__ bytestream2_get_bytes_left_p (int *) ;
+ int bytestream2_get_le16 (int *) ;
+ int bytestream2_init (int *,int ,int ) ;
+ int bytestream2_put_byte (int *,int) ;
+ int bytestream2_skip_p (int *,int) ;
+ int lz_copy (int *,int *,int,int) ;
+ int read_bits2 (TYPE_2__*,int *) ;
 
 __attribute__((used)) static int decompress_5(AVCodecContext *avctx, unsigned skip)
 {

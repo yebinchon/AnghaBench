@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buckets ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int buckets ;
 struct TYPE_3__ {int value; } ;
-typedef  TYPE_1__ RCCMPEntry ;
+typedef TYPE_1__ RCCMPEntry ;
 
-/* Variables and functions */
- int BUCKET_BITS ; 
- int NBUCKETS ; 
- int RADIX_PASSES ; 
- int /*<<< orphan*/  av_assert1 (int) ; 
- size_t get_bucket (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int**,int /*<<< orphan*/ ,int) ; 
+
+ int BUCKET_BITS ;
+ int NBUCKETS ;
+ int RADIX_PASSES ;
+ int av_assert1 (int) ;
+ size_t get_bucket (int,int ) ;
+ int memset (int**,int ,int) ;
 
 __attribute__((used)) static void radix_count(const RCCMPEntry *data, int size,
                         int buckets[RADIX_PASSES][NBUCKETS])

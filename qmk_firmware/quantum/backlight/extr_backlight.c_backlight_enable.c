@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int enable; int raw; int level; } ;
 
-/* Variables and functions */
- TYPE_1__ backlight_config ; 
- int /*<<< orphan*/  backlight_set (int) ; 
- int /*<<< orphan*/  dprintf (char*) ; 
- int /*<<< orphan*/  eeconfig_update_backlight (int) ; 
+
+ TYPE_1__ backlight_config ;
+ int backlight_set (int) ;
+ int dprintf (char*) ;
+ int eeconfig_update_backlight (int) ;
 
 void backlight_enable(void) {
-    if (backlight_config.enable) return;  // do nothing if backlight is already on
+    if (backlight_config.enable) return;
 
-    backlight_config.enable = true;
-    if (backlight_config.raw == 1)  // enabled but level == 0
+    backlight_config.enable = 1;
+    if (backlight_config.raw == 1)
         backlight_config.level = 1;
     eeconfig_update_backlight(backlight_config.raw);
     dprintf("backlight enable\n");

@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int find_arg (int,char**,char*) ; 
- char* find_char_arg (int,char**,char*,int /*<<< orphan*/ ) ; 
- int find_int_arg (int,char**,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
- int /*<<< orphan*/  gpu_index ; 
- int /*<<< orphan*/  predict_attention (char*,char*,char*,char*,int) ; 
- int* read_intlist (char*,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  train_attention (char*,char*,char*,int*,int,int) ; 
- int /*<<< orphan*/  validate_attention_multi (char*,char*,char*) ; 
- int /*<<< orphan*/  validate_attention_single (char*,char*,char*) ; 
+ int find_arg (int,char**,char*) ;
+ char* find_char_arg (int,char**,char*,int ) ;
+ int find_int_arg (int,char**,char*,int ) ;
+ int fprintf (int ,char*,char*,char*) ;
+ int gpu_index ;
+ int predict_attention (char*,char*,char*,char*,int) ;
+ int* read_intlist (char*,int*,int ) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
+ int train_attention (char*,char*,char*,int*,int,int) ;
+ int validate_attention_multi (char*,char*,char*) ;
+ int validate_attention_single (char*,char*,char*) ;
 
 void run_attention(int argc, char **argv)
 {

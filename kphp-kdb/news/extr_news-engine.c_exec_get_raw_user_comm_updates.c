@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct connection {int dummy; } ;
 
-/* Variables and functions */
- int MAX_QUERY ; 
- int* Q ; 
- int QL ; 
- scalar_t__ R ; 
- scalar_t__ R_end ; 
- int /*<<< orphan*/  assert (int) ; 
- int bookmarks_size ; 
- int /*<<< orphan*/  clear_result_buffer () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,...) ; 
- int get_bookmarks (int,int,int*,int) ; 
- int prepare_raw_comm_updates (int,int,int,int,int) ; 
- int return_one_key_list (struct connection*,char const*,int,int,int,scalar_t__,scalar_t__) ; 
- int sscanf (char const*,char*,int*,int*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int strtol (char const*,char**,int) ; 
- int verbosity ; 
+
+ int MAX_QUERY ;
+ int* Q ;
+ int QL ;
+ scalar_t__ R ;
+ scalar_t__ R_end ;
+ int assert (int) ;
+ int bookmarks_size ;
+ int clear_result_buffer () ;
+ int fprintf (int ,char*,int,int,...) ;
+ int get_bookmarks (int,int,int*,int) ;
+ int prepare_raw_comm_updates (int,int,int,int,int) ;
+ int return_one_key_list (struct connection*,char const*,int,int,int,scalar_t__,scalar_t__) ;
+ int sscanf (char const*,char*,int*,int*,...) ;
+ int stderr ;
+ int strtol (char const*,char**,int) ;
+ int verbosity ;
 
 __attribute__((used)) static int exec_get_raw_user_comm_updates (struct connection *c, const char *key, int key_len, int dog_len) {
   int user_id;
@@ -72,7 +72,7 @@ __attribute__((used)) static int exec_get_raw_user_comm_updates (struct connecti
       }
     }
     if (best >= 0) {
-      return return_one_key_list (c, key - dog_len, key_len + dog_len, /*(R_end - R) / 9*/ 0x7fffffff, -raw, R, R_end - R);
+      return return_one_key_list (c, key - dog_len, key_len + dog_len, 0x7fffffff, -raw, R, R_end - R);
     }
   }
   return 0;

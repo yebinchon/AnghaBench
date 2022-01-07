@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wpan_dev {int dummy; } ;
 struct sk_buff {int dummy; } ;
-struct genl_info {int /*<<< orphan*/  snd_seq; int /*<<< orphan*/  snd_portid; struct wpan_dev** user_ptr; } ;
-typedef  struct wpan_dev cfg802154_registered_device ;
+struct genl_info {int snd_seq; int snd_portid; struct wpan_dev** user_ptr; } ;
+typedef struct wpan_dev cfg802154_registered_device ;
 
-/* Variables and functions */
- int ENOBUFS ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  NLMSG_DEFAULT_SIZE ; 
- int genlmsg_reply (struct sk_buff*,struct genl_info*) ; 
- scalar_t__ nl802154_send_iface (struct sk_buff*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct wpan_dev*,struct wpan_dev*) ; 
- int /*<<< orphan*/  nlmsg_free (struct sk_buff*) ; 
- struct sk_buff* nlmsg_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ENOBUFS ;
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int NLMSG_DEFAULT_SIZE ;
+ int genlmsg_reply (struct sk_buff*,struct genl_info*) ;
+ scalar_t__ nl802154_send_iface (struct sk_buff*,int ,int ,int ,struct wpan_dev*,struct wpan_dev*) ;
+ int nlmsg_free (struct sk_buff*) ;
+ struct sk_buff* nlmsg_new (int ,int ) ;
 
 __attribute__((used)) static int nl802154_get_interface(struct sk_buff *skb, struct genl_info *info)
 {
-	struct sk_buff *msg;
-	struct cfg802154_registered_device *rdev = info->user_ptr[0];
-	struct wpan_dev *wdev = info->user_ptr[1];
+ struct sk_buff *msg;
+ struct cfg802154_registered_device *rdev = info->user_ptr[0];
+ struct wpan_dev *wdev = info->user_ptr[1];
 
-	msg = nlmsg_new(NLMSG_DEFAULT_SIZE, GFP_KERNEL);
-	if (!msg)
-		return -ENOMEM;
+ msg = nlmsg_new(NLMSG_DEFAULT_SIZE, GFP_KERNEL);
+ if (!msg)
+  return -ENOMEM;
 
-	if (nl802154_send_iface(msg, info->snd_portid, info->snd_seq, 0,
-				rdev, wdev) < 0) {
-		nlmsg_free(msg);
-		return -ENOBUFS;
-	}
+ if (nl802154_send_iface(msg, info->snd_portid, info->snd_seq, 0,
+    rdev, wdev) < 0) {
+  nlmsg_free(msg);
+  return -ENOBUFS;
+ }
 
-	return genlmsg_reply(msg, info);
+ return genlmsg_reply(msg, info);
 }

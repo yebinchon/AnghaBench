@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPTSTR ;
-typedef  scalar_t__ INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConErrResPuts (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ConOutResPaging (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ERROR_PATH_NOT_FOUND ; 
- int /*<<< orphan*/  ErrorMessage (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  MakeFullPath (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STRING_ERROR_REQ_PARAM_MISSING ; 
- int /*<<< orphan*/  STRING_MD_ERROR2 ; 
- int /*<<< orphan*/  STRING_MKDIR_HELP ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _tcsncmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  freep (int /*<<< orphan*/ *) ; 
- scalar_t__ nErrorLevel ; 
- int /*<<< orphan*/ * split (int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int LPTSTR ;
+typedef scalar_t__ INT ;
+
+
+ int ConErrResPuts (int ) ;
+ int ConOutResPaging (int ,int ) ;
+ scalar_t__ ERROR_PATH_NOT_FOUND ;
+ int ErrorMessage (scalar_t__,int ) ;
+ int FALSE ;
+ scalar_t__ GetLastError () ;
+ int MakeFullPath (int ) ;
+ int STRING_ERROR_REQ_PARAM_MISSING ;
+ int STRING_MD_ERROR2 ;
+ int STRING_MKDIR_HELP ;
+ int TRUE ;
+ int _T (char*) ;
+ int _tcsncmp (int ,int ,int) ;
+ int freep (int *) ;
+ scalar_t__ nErrorLevel ;
+ int * split (int ,scalar_t__*,int ,int ) ;
 
 INT cmd_mkdir (LPTSTR param)
 {

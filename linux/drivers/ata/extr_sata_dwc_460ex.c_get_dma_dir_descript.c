@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum dma_data_direction { ____Placeholder_dma_data_direction } dma_data_direction ;
 
-/* Variables and functions */
-#define  DMA_BIDIRECTIONAL 130 
-#define  DMA_FROM_DEVICE 129 
-#define  DMA_TO_DEVICE 128 
+
+
+
+typedef enum dma_data_direction { ____Placeholder_dma_data_direction } dma_data_direction ;
+
+
+
+
+
 
 __attribute__((used)) static const char *get_dma_dir_descript(int dma_dir)
 {
-	switch ((enum dma_data_direction)dma_dir) {
-	case DMA_BIDIRECTIONAL:
-		return "bidirectional";
-	case DMA_TO_DEVICE:
-		return "to device";
-	case DMA_FROM_DEVICE:
-		return "from device";
-	default:
-		return "none";
-	}
+ switch ((enum dma_data_direction)dma_dir) {
+ case 130:
+  return "bidirectional";
+ case 128:
+  return "to device";
+ case 129:
+  return "from device";
+ default:
+  return "none";
+ }
 }

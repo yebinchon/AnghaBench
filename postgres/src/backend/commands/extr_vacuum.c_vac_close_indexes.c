@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  LOCKMODE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  index_close (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pfree (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int Relation ;
+typedef int LOCKMODE ;
+
+
+ int index_close (int ,int ) ;
+ int pfree (int *) ;
 
 void
 vac_close_indexes(int nindexes, Relation *Irel, LOCKMODE lockmode)
 {
-	if (Irel == NULL)
-		return;
+ if (Irel == ((void*)0))
+  return;
 
-	while (nindexes--)
-	{
-		Relation	ind = Irel[nindexes];
+ while (nindexes--)
+ {
+  Relation ind = Irel[nindexes];
 
-		index_close(ind, lockmode);
-	}
-	pfree(Irel);
+  index_close(ind, lockmode);
+ }
+ pfree(Irel);
 }

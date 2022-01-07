@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {size_t block_size; } ;
-typedef  int /*<<< orphan*/  OSSL_PARAM ;
-typedef  TYPE_1__ EVP_MD ;
+typedef int OSSL_PARAM ;
+typedef TYPE_1__ EVP_MD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_F_EVP_MD_BLOCK_SIZE ; 
- int /*<<< orphan*/  EVP_R_MESSAGE_DIGEST_IS_NULL ; 
- int /*<<< orphan*/  EVPerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OSSL_DIGEST_PARAM_BLOCK_SIZE ; 
- int /*<<< orphan*/  OSSL_PARAM_END ; 
- int /*<<< orphan*/  OSSL_PARAM_construct_size_t (int /*<<< orphan*/ ,size_t*) ; 
- int evp_do_md_getparams (TYPE_1__ const*,int /*<<< orphan*/ *) ; 
+
+ int EVP_F_EVP_MD_BLOCK_SIZE ;
+ int EVP_R_MESSAGE_DIGEST_IS_NULL ;
+ int EVPerr (int ,int ) ;
+ int OSSL_DIGEST_PARAM_BLOCK_SIZE ;
+ int OSSL_PARAM_END ;
+ int OSSL_PARAM_construct_size_t (int ,size_t*) ;
+ int evp_do_md_getparams (TYPE_1__ const*,int *) ;
 
 int EVP_MD_block_size(const EVP_MD *md)
 {
@@ -30,7 +30,7 @@ int EVP_MD_block_size(const EVP_MD *md)
     size_t v = md->block_size;
     OSSL_PARAM params[2] = { OSSL_PARAM_END, OSSL_PARAM_END };
 
-    if (md == NULL) {
+    if (md == ((void*)0)) {
         EVPerr(EVP_F_EVP_MD_BLOCK_SIZE, EVP_R_MESSAGE_DIGEST_IS_NULL);
         return -1;
     }

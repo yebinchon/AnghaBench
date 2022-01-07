@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DeleteLock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeInternational () ; 
- int /*<<< orphan*/ * token_lock ; 
+ int DeleteLock (int *) ;
+ int FreeInternational () ;
+ int * token_lock ;
 
 void FreeStringLibrary()
 {
-	// Release of the International Library
-	FreeInternational();
 
-	// Release of the lock for token
-	DeleteLock(token_lock);
-	token_lock = NULL;
+ FreeInternational();
+
+
+ DeleteLock(token_lock);
+ token_lock = ((void*)0);
 }

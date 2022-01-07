@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  const* Y; int /*<<< orphan*/  const* X; int /*<<< orphan*/  Z_is_one; } ;
-struct TYPE_11__ {int /*<<< orphan*/  const* b; int /*<<< orphan*/  const* a; TYPE_1__* meth; } ;
-struct TYPE_10__ {int (* field_mul ) (TYPE_2__ const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ;int (* field_sqr ) (TYPE_2__ const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_4__ EC_POINT ;
-typedef  TYPE_2__ EC_GROUP ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  const BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const* BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_new () ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_GF2m_add (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int BN_is_zero (int /*<<< orphan*/  const*) ; 
- scalar_t__ EC_POINT_is_at_infinity (TYPE_2__ const*,TYPE_4__ const*) ; 
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int const* Y; int const* X; int Z_is_one; } ;
+struct TYPE_11__ {int const* b; int const* a; TYPE_1__* meth; } ;
+struct TYPE_10__ {int (* field_mul ) (TYPE_2__ const*,int const*,int const*,int const*,int *) ;int (* field_sqr ) (TYPE_2__ const*,int const*,int const*,int *) ;} ;
+typedef TYPE_4__ EC_POINT ;
+typedef TYPE_2__ EC_GROUP ;
+typedef int BN_CTX ;
+typedef int const BIGNUM ;
+
+
+ int BN_CTX_end (int *) ;
+ int BN_CTX_free (int *) ;
+ int const* BN_CTX_get (int *) ;
+ int * BN_CTX_new () ;
+ int BN_CTX_start (int *) ;
+ int BN_GF2m_add (int const*,int const*,int const*) ;
+ int BN_is_zero (int const*) ;
+ scalar_t__ EC_POINT_is_at_infinity (TYPE_2__ const*,TYPE_4__ const*) ;
 
 int ec_GF2m_simple_is_on_curve(const EC_GROUP *group, const EC_POINT *point,
                                BN_CTX *ctx)
 {
     int ret = -1;
-    BN_CTX *new_ctx = NULL;
+    BN_CTX *new_ctx = ((void*)0);
     BIGNUM *lh, *y2;
     int (*field_mul) (const EC_GROUP *, BIGNUM *, const BIGNUM *,
                       const BIGNUM *, BN_CTX *);
@@ -47,28 +47,28 @@ int ec_GF2m_simple_is_on_curve(const EC_GROUP *group, const EC_POINT *point,
     field_mul = group->meth->field_mul;
     field_sqr = group->meth->field_sqr;
 
-    /* only support affine coordinates */
+
     if (!point->Z_is_one)
         return -1;
 
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         ctx = new_ctx = BN_CTX_new();
-        if (ctx == NULL)
+        if (ctx == ((void*)0))
             return -1;
     }
 
     BN_CTX_start(ctx);
     y2 = BN_CTX_get(ctx);
     lh = BN_CTX_get(ctx);
-    if (lh == NULL)
+    if (lh == ((void*)0))
         goto err;
 
-    /*-
-     * We have a curve defined by a Weierstrass equation
-     *      y^2 + x*y = x^3 + a*x^2 + b.
-     *  <=> x^3 + a*x^2 + x*y + b + y^2 = 0
-     *  <=> ((x + a) * x + y ) * x + b + y^2 = 0
-     */
+
+
+
+
+
+
     if (!BN_GF2m_add(lh, point->X, group->a))
         goto err;
     if (!field_mul(group, lh, lh, point->X, ctx))

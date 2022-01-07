@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct vo {int /*<<< orphan*/  global; int /*<<< orphan*/  log; struct priv* priv; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct vo {int global; int log; struct priv* priv; } ;
 struct priv {TYPE_1__* sws; } ;
-struct TYPE_3__ {int /*<<< orphan*/  log; } ;
+struct TYPE_3__ {int log; } ;
 
-/* Variables and functions */
- TYPE_1__* mp_sws_alloc (struct vo*) ; 
- int /*<<< orphan*/  mp_sws_enable_cmdline_opts (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vo_wayland_init (struct vo*) ; 
+
+ TYPE_1__* mp_sws_alloc (struct vo*) ;
+ int mp_sws_enable_cmdline_opts (TYPE_1__*,int ) ;
+ int vo_wayland_init (struct vo*) ;
 
 __attribute__((used)) static int preinit(struct vo *vo)
 {

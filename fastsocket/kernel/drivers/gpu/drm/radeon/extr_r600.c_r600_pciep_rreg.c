@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct radeon_device {int dummy; } ;
-typedef  int /*<<< orphan*/  reg ;
+typedef int reg ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PCIE_PORT_DATA ; 
- int /*<<< orphan*/  PCIE_PORT_INDEX ; 
- int /*<<< orphan*/  RREG32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WREG32 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int PCIE_PORT_DATA ;
+ int PCIE_PORT_INDEX ;
+ int RREG32 (int ) ;
+ int WREG32 (int ,int ) ;
 
 u32 r600_pciep_rreg(struct radeon_device *rdev, u32 reg)
 {
-	u32 r;
+ u32 r;
 
-	WREG32(PCIE_PORT_INDEX, ((reg) & 0xff));
-	(void)RREG32(PCIE_PORT_INDEX);
-	r = RREG32(PCIE_PORT_DATA);
-	return r;
+ WREG32(PCIE_PORT_INDEX, ((reg) & 0xff));
+ (void)RREG32(PCIE_PORT_INDEX);
+ r = RREG32(PCIE_PORT_DATA);
+ return r;
 }

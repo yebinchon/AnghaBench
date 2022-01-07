@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_delta_editor_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  svn_branch__txn_t ;
-struct TYPE_6__ {int /*<<< orphan*/  unlock_func; int /*<<< orphan*/  ev1_absolute_paths; int /*<<< orphan*/  set_target_revision_baton; int /*<<< orphan*/  set_target_revision_func; int /*<<< orphan*/  edit_txn; } ;
-typedef  TYPE_1__ svn_branch__compat_update_editor3_t ;
-struct TYPE_7__ {int /*<<< orphan*/  baton; int /*<<< orphan*/  target_revision_func; } ;
-typedef  TYPE_2__ svn_branch__compat_shim_connector_t ;
-typedef  int /*<<< orphan*/  svn_branch__compat_fetch_func_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- TYPE_1__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  do_unlock ; 
- int /*<<< orphan*/  svn_branch__compat_txn_from_delta_for_commit (int /*<<< orphan*/ *,TYPE_2__**,int /*<<< orphan*/  const*,void*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+typedef int svn_delta_editor_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_branch__txn_t ;
+struct TYPE_6__ {int unlock_func; int ev1_absolute_paths; int set_target_revision_baton; int set_target_revision_func; int edit_txn; } ;
+typedef TYPE_1__ svn_branch__compat_update_editor3_t ;
+struct TYPE_7__ {int baton; int target_revision_func; } ;
+typedef TYPE_2__ svn_branch__compat_shim_connector_t ;
+typedef int svn_branch__compat_fetch_func_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ TYPE_1__* apr_pcalloc (int *,int) ;
+ int do_unlock ;
+ int svn_branch__compat_txn_from_delta_for_commit (int *,TYPE_2__**,int const*,void*,int *,char const*,int ,void*,int ,void*,int *,int *) ;
 
 svn_error_t *
 svn_branch__compat_txn_from_delta_for_update(
@@ -49,12 +49,12 @@ svn_branch__compat_txn_from_delta_for_update(
     = apr_pcalloc(result_pool, sizeof(*update_editor));
   svn_branch__compat_shim_connector_t *shim_connector;
 
-  /*(("svn_delta__ev3_from_delta_for_update(base='%s')...",
-           base_repos_relpath));*/
 
-  /*SVN_ERR(svn_delta__get_debug_editor(&deditor, &dedit_baton,
-                                      deditor, dedit_baton,
-                                      "[1>UP] ", result_pool));*/
+
+
+
+
+
   SVN_ERR(svn_branch__compat_txn_from_delta_for_commit(
                         &update_editor->edit_txn,
                         &shim_connector,
@@ -66,14 +66,6 @@ svn_branch__compat_txn_from_delta_for_update(
 
   update_editor->set_target_revision_func = shim_connector->target_revision_func;
   update_editor->set_target_revision_baton = shim_connector->baton;
-  /* shim_connector->start_edit_func = open_root_ev3; */
-#ifdef SHIM_WITH_ABS_PATHS
-  update_editor->ev1_absolute_paths /*...*/;
-#endif
-#ifdef SHIM_WITH_UNLOCK
-  update_editor->unlock_func = do_unlock;
-#endif
-
   *update_editor_p = update_editor;
   return SVN_NO_ERROR;
 }

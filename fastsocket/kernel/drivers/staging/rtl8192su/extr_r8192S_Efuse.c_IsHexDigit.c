@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int FALSE ;
+ int TRUE ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FALSE ; 
- int TRUE ; 
-
-bool IsHexDigit(	char chTmp)
+bool IsHexDigit( char chTmp)
 {
-	if( (chTmp >= '0' && chTmp <= '9') ||
-		(chTmp >= 'a' && chTmp <= 'f') ||
-		(chTmp >= 'A' && chTmp <= 'F') )
-	{
-		return TRUE;
-	}
-	else
-	{
-		return FALSE;
-	}
+ if( (chTmp >= '0' && chTmp <= '9') ||
+  (chTmp >= 'a' && chTmp <= 'f') ||
+  (chTmp >= 'A' && chTmp <= 'F') )
+ {
+  return TRUE;
+ }
+ else
+ {
+  return FALSE;
+ }
 }

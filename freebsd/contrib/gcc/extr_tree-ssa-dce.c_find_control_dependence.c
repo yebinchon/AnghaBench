@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct edge_list {int dummy; } ;
-typedef  TYPE_1__* edge ;
-typedef  scalar_t__ basic_block ;
+typedef TYPE_1__* edge ;
+typedef scalar_t__ basic_block ;
 struct TYPE_3__ {int flags; } ;
 
-/* Variables and functions */
- int EDGE_ABNORMAL ; 
- scalar_t__ ENTRY_BLOCK_PTR ; 
- scalar_t__ EXIT_BLOCK_PTR ; 
- TYPE_1__* INDEX_EDGE (struct edge_list*,int) ; 
- scalar_t__ INDEX_EDGE_PRED_BB (struct edge_list*,int) ; 
- scalar_t__ INDEX_EDGE_SUCC_BB (struct edge_list*,int) ; 
- scalar_t__ find_pdom (scalar_t__) ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- int /*<<< orphan*/  set_control_dependence_map_bit (scalar_t__,int) ; 
- scalar_t__ single_succ (scalar_t__) ; 
+
+ int EDGE_ABNORMAL ;
+ scalar_t__ ENTRY_BLOCK_PTR ;
+ scalar_t__ EXIT_BLOCK_PTR ;
+ TYPE_1__* INDEX_EDGE (struct edge_list*,int) ;
+ scalar_t__ INDEX_EDGE_PRED_BB (struct edge_list*,int) ;
+ scalar_t__ INDEX_EDGE_SUCC_BB (struct edge_list*,int) ;
+ scalar_t__ find_pdom (scalar_t__) ;
+ int gcc_assert (int) ;
+ int set_control_dependence_map_bit (scalar_t__,int) ;
+ scalar_t__ single_succ (scalar_t__) ;
 
 __attribute__((used)) static void
 find_control_dependence (struct edge_list *el, int edge_index)
@@ -47,11 +47,11 @@ find_control_dependence (struct edge_list *el, int edge_index)
     {
       edge e = INDEX_EDGE (el, edge_index);
 
-      /* For abnormal edges, we don't make current_block control
-	 dependent because instructions that throw are always necessary
-	 anyway.  */
+
+
+
       if (e->flags & EDGE_ABNORMAL)
-	continue;
+ continue;
 
       set_control_dependence_map_bit (current_block, edge_index);
     }

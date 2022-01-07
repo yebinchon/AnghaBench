@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_14__ {scalar_t__ pVtab; } ;
-typedef  TYPE_2__ sqlite3_vtab_cursor ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  scalar_t__ sqlite3_int64 ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_13__ {int /*<<< orphan*/  zErrMsg; } ;
+typedef TYPE_2__ sqlite3_vtab_cursor ;
+typedef int sqlite3_value ;
+typedef scalar_t__ sqlite3_int64 ;
+typedef int sqlite3 ;
+struct TYPE_13__ {int zErrMsg; } ;
 struct TYPE_15__ {int nSrc; TYPE_1__ base; TYPE_4__* aSrc; scalar_t__ bSwarm; } ;
-typedef  TYPE_3__ UnionTab ;
-struct TYPE_16__ {scalar_t__ iMax; scalar_t__ iMin; char* zDb; int /*<<< orphan*/  zTab; } ;
-typedef  TYPE_4__ UnionSrc ;
-struct TYPE_17__ {int iTab; int /*<<< orphan*/  pStmt; scalar_t__ iMaxRowid; } ;
-typedef  TYPE_5__ UnionCsr ;
+typedef TYPE_3__ UnionTab ;
+struct TYPE_16__ {scalar_t__ iMax; scalar_t__ iMin; char* zDb; int zTab; } ;
+typedef TYPE_4__ UnionSrc ;
+struct TYPE_17__ {int iTab; int pStmt; scalar_t__ iMaxRowid; } ;
+typedef TYPE_5__ UnionCsr ;
 
-/* Variables and functions */
- scalar_t__ LARGEST_INT64 ; 
- scalar_t__ SMALLEST_INT64 ; 
- int SQLITE_INDEX_CONSTRAINT_EQ ; 
- int SQLITE_INDEX_CONSTRAINT_GE ; 
- int SQLITE_INDEX_CONSTRAINT_GT ; 
- int SQLITE_INDEX_CONSTRAINT_LE ; 
- int SQLITE_INDEX_CONSTRAINT_LT ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,char*,char const*,...) ; 
- scalar_t__ sqlite3_value_int64 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  unionFinalizeCsrStmt (TYPE_5__*) ; 
- int /*<<< orphan*/ * unionGetDb (TYPE_3__*,TYPE_4__*) ; 
- int /*<<< orphan*/  unionIncrRefcount (TYPE_3__*,size_t) ; 
- int unionNext (TYPE_2__*) ; 
- int unionOpenDatabase (TYPE_3__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  unionPrepare (int*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ LARGEST_INT64 ;
+ scalar_t__ SMALLEST_INT64 ;
+ int SQLITE_INDEX_CONSTRAINT_EQ ;
+ int SQLITE_INDEX_CONSTRAINT_GE ;
+ int SQLITE_INDEX_CONSTRAINT_GT ;
+ int SQLITE_INDEX_CONSTRAINT_LE ;
+ int SQLITE_INDEX_CONSTRAINT_LT ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,char*,char const*,...) ;
+ scalar_t__ sqlite3_value_int64 (int *) ;
+ int unionFinalizeCsrStmt (TYPE_5__*) ;
+ int * unionGetDb (TYPE_3__*,TYPE_4__*) ;
+ int unionIncrRefcount (TYPE_3__*,size_t) ;
+ int unionNext (TYPE_2__*) ;
+ int unionOpenDatabase (TYPE_3__*,int,int *) ;
+ int unionPrepare (int*,int *,char*,int *) ;
 
 __attribute__((used)) static int unionFilter(
-  sqlite3_vtab_cursor *pVtabCursor, 
+  sqlite3_vtab_cursor *pVtabCursor,
   int idxNum, const char *idxStr,
   int argc, sqlite3_value **argv
 ){
@@ -64,7 +64,7 @@ __attribute__((used)) static int unionFilter(
   sqlite3_int64 iMin = SMALLEST_INT64;
   sqlite3_int64 iMax = LARGEST_INT64;
 
-  assert( idxNum==0 
+  assert( idxNum==0
        || idxNum==SQLITE_INDEX_CONSTRAINT_EQ
        || idxNum==SQLITE_INDEX_CONSTRAINT_LE
        || idxNum==SQLITE_INDEX_CONSTRAINT_GE
@@ -73,8 +73,8 @@ __attribute__((used)) static int unionFilter(
        || idxNum==(SQLITE_INDEX_CONSTRAINT_GE|SQLITE_INDEX_CONSTRAINT_LE)
   );
 
-  (void)idxStr;  /* Suppress harmless warning */
-  
+  (void)idxStr;
+
   if( idxNum==SQLITE_INDEX_CONSTRAINT_EQ ){
     assert( argc==1 );
     iMin = iMax = sqlite3_value_int64(argv[0]);

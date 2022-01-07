@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RedisModuleString ;
-typedef  int /*<<< orphan*/  RedisModuleKey ;
-typedef  int /*<<< orphan*/  RedisModuleCtx ;
-typedef  int /*<<< orphan*/  RedisModuleCallReply ;
 
-/* Variables and functions */
- scalar_t__ REDISMODULE_ERR ; 
- int /*<<< orphan*/  REDISMODULE_NOT_USED (int) ; 
- int REDISMODULE_READ ; 
- int REDISMODULE_WRITE ; 
- int /*<<< orphan*/  RedisModule_AutoMemory (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * RedisModule_Call (int /*<<< orphan*/ *,char*,char*,char*) ; 
- int RedisModule_CallReplyInteger (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_CreateStringPrintf (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * RedisModule_OpenKey (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int RedisModule_ReplyWithSimpleString (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ RedisModule_StringSet (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ RedisModule_UnlinkKey (int /*<<< orphan*/ *) ; 
- int failTest (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int RedisModuleString ;
+typedef int RedisModuleKey ;
+typedef int RedisModuleCtx ;
+typedef int RedisModuleCallReply ;
+
+
+ scalar_t__ REDISMODULE_ERR ;
+ int REDISMODULE_NOT_USED (int) ;
+ int REDISMODULE_READ ;
+ int REDISMODULE_WRITE ;
+ int RedisModule_AutoMemory (int *) ;
+ int * RedisModule_Call (int *,char*,char*,char*) ;
+ int RedisModule_CallReplyInteger (int *) ;
+ int RedisModule_CreateStringPrintf (int *,char*) ;
+ int * RedisModule_OpenKey (int *,int ,int) ;
+ int RedisModule_ReplyWithSimpleString (int *,char*) ;
+ scalar_t__ RedisModule_StringSet (int *,int ) ;
+ scalar_t__ RedisModule_UnlinkKey (int *) ;
+ int failTest (int *,char*) ;
 
 int TestUnlink(RedisModuleCtx *ctx, RedisModuleString **argv, int argc) {
     RedisModule_AutoMemory(ctx);

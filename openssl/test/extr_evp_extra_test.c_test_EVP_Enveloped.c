@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  msg ;
-typedef  unsigned char EVP_PKEY ;
-typedef  unsigned char EVP_CIPHER_CTX ;
-typedef  int /*<<< orphan*/  EVP_CIPHER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_CIPHER_CTX_free (unsigned char*) ; 
- unsigned char* EVP_CIPHER_CTX_new () ; 
- int EVP_MAX_IV_LENGTH ; 
- int /*<<< orphan*/  EVP_OpenFinal (unsigned char*,unsigned char*,int*) ; 
- int /*<<< orphan*/  EVP_OpenInit (unsigned char*,int /*<<< orphan*/  const*,unsigned char*,int,unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  EVP_OpenUpdate (unsigned char*,unsigned char*,int*,unsigned char*,int) ; 
- int /*<<< orphan*/  EVP_PKEY_free (unsigned char*) ; 
- int /*<<< orphan*/  EVP_PKEY_size (unsigned char*) ; 
- int /*<<< orphan*/  EVP_SealFinal (unsigned char*,unsigned char*,int*) ; 
- int /*<<< orphan*/  EVP_SealInit (unsigned char*,int /*<<< orphan*/  const*,unsigned char**,int*,unsigned char*,unsigned char**,int) ; 
- int /*<<< orphan*/  EVP_SealUpdate (unsigned char*,unsigned char*,int*,unsigned char const*,int) ; 
- int /*<<< orphan*/ * EVP_aes_256_cbc () ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- unsigned char* OPENSSL_zalloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_mem_eq (unsigned char const*,int,unsigned char*,int) ; 
- int /*<<< orphan*/  TEST_ptr (unsigned char*) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- unsigned char* load_example_rsa_key () ; 
+
+
+
+typedef int msg ;
+typedef unsigned char EVP_PKEY ;
+typedef unsigned char EVP_CIPHER_CTX ;
+typedef int EVP_CIPHER ;
+
+
+ int EVP_CIPHER_CTX_free (unsigned char*) ;
+ unsigned char* EVP_CIPHER_CTX_new () ;
+ int EVP_MAX_IV_LENGTH ;
+ int EVP_OpenFinal (unsigned char*,unsigned char*,int*) ;
+ int EVP_OpenInit (unsigned char*,int const*,unsigned char*,int,unsigned char*,unsigned char*) ;
+ int EVP_OpenUpdate (unsigned char*,unsigned char*,int*,unsigned char*,int) ;
+ int EVP_PKEY_free (unsigned char*) ;
+ int EVP_PKEY_size (unsigned char*) ;
+ int EVP_SealFinal (unsigned char*,unsigned char*,int*) ;
+ int EVP_SealInit (unsigned char*,int const*,unsigned char**,int*,unsigned char*,unsigned char**,int) ;
+ int EVP_SealUpdate (unsigned char*,unsigned char*,int*,unsigned char const*,int) ;
+ int * EVP_aes_256_cbc () ;
+ int OPENSSL_free (unsigned char*) ;
+ unsigned char* OPENSSL_zalloc (int ) ;
+ int TEST_mem_eq (unsigned char const*,int,unsigned char*,int) ;
+ int TEST_ptr (unsigned char*) ;
+ int TEST_true (int ) ;
+ unsigned char* load_example_rsa_key () ;
 
 __attribute__((used)) static int test_EVP_Enveloped(void)
 {
     int ret = 0;
-    EVP_CIPHER_CTX *ctx = NULL;
-    EVP_PKEY *keypair = NULL;
-    unsigned char *kek = NULL;
+    EVP_CIPHER_CTX *ctx = ((void*)0);
+    EVP_PKEY *keypair = ((void*)0);
+    unsigned char *kek = ((void*)0);
     unsigned char iv[EVP_MAX_IV_LENGTH];
     static const unsigned char msg[] = { 1, 2, 3, 4, 5, 6, 7, 8 };
     int len, kek_len, ciphertext_len, plaintext_len;

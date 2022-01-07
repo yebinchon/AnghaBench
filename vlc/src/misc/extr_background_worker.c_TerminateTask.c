@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct task {int dummy; } ;
-struct background_worker {scalar_t__ uncompleted; int /*<<< orphan*/  lock; } ;
-struct background_thread {int /*<<< orphan*/ * task; struct background_worker* owner; } ;
+struct background_worker {scalar_t__ uncompleted; int lock; } ;
+struct background_thread {int * task; struct background_worker* owner; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  task_Destroy (struct background_worker*,struct task*) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int assert (int) ;
+ int task_Destroy (struct background_worker*,struct task*) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 __attribute__((used)) static void TerminateTask(struct background_thread *thread, struct task *task)
 {
@@ -26,7 +26,7 @@ __attribute__((used)) static void TerminateTask(struct background_thread *thread
     task_Destroy(worker, task);
 
     vlc_mutex_lock(&worker->lock);
-    thread->task = NULL;
+    thread->task = ((void*)0);
     worker->uncompleted--;
     assert(worker->uncompleted >= 0);
     vlc_mutex_unlock(&worker->lock);

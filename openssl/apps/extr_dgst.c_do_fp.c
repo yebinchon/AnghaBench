@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EVP_PKEY ;
-typedef  int /*<<< orphan*/  EVP_MD_CTX ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_eof (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_get_md_ctx (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- size_t BIO_gets (int /*<<< orphan*/ *,char*,int) ; 
- scalar_t__ BIO_pending (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  BIO_puts (int /*<<< orphan*/ *,char const*) ; 
- int BIO_read (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  BIO_write (int /*<<< orphan*/ *,unsigned char*,size_t) ; 
- int BUFSIZE ; 
- int /*<<< orphan*/  ERR_print_errors (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_DigestSignFinal (int /*<<< orphan*/ *,unsigned char*,size_t*) ; 
- int EVP_DigestVerifyFinal (int /*<<< orphan*/ *,unsigned char*,unsigned int) ; 
- int EVP_PKEY_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OPENSSL_clear_free (unsigned char*,size_t) ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
- unsigned char* app_malloc (size_t,char*) ; 
- int /*<<< orphan*/ * bio_err ; 
- char* newline_escape_filename (char const*,int*) ; 
+
+
+
+typedef int EVP_PKEY ;
+typedef int EVP_MD_CTX ;
+typedef int BIO ;
+
+
+ int BIO_eof (int *) ;
+ int BIO_get_md_ctx (int *,int **) ;
+ size_t BIO_gets (int *,char*,int) ;
+ scalar_t__ BIO_pending (int *) ;
+ int BIO_printf (int *,char*,...) ;
+ int BIO_puts (int *,char const*) ;
+ int BIO_read (int *,char*,int) ;
+ int BIO_write (int *,unsigned char*,size_t) ;
+ int BUFSIZE ;
+ int ERR_print_errors (int *) ;
+ int EVP_DigestSignFinal (int *,unsigned char*,size_t*) ;
+ int EVP_DigestVerifyFinal (int *,unsigned char*,unsigned int) ;
+ int EVP_PKEY_size (int *) ;
+ int OPENSSL_clear_free (unsigned char*,size_t) ;
+ int OPENSSL_free (char*) ;
+ unsigned char* app_malloc (size_t,char*) ;
+ int * bio_err ;
+ char* newline_escape_filename (char const*,int*) ;
 
 int do_fp(BIO *out, unsigned char *buf, BIO *bp, int sep, int binout,
           EVP_PKEY *key, unsigned char *sigin, int siglen,
@@ -41,7 +41,7 @@ int do_fp(BIO *out, unsigned char *buf, BIO *bp, int sep, int binout,
 {
     size_t len = BUFSIZE;
     int i, backslash = 0, ret = 1;
-    unsigned char *sigbuf = NULL;
+    unsigned char *sigbuf = ((void*)0);
 
     while (BIO_pending(bp) || !BIO_eof(bp)) {
         i = BIO_read(bp, (char *)buf, BUFSIZE);
@@ -53,7 +53,7 @@ int do_fp(BIO *out, unsigned char *buf, BIO *bp, int sep, int binout,
         if (i == 0)
             break;
     }
-    if (sigin != NULL) {
+    if (sigin != ((void*)0)) {
         EVP_MD_CTX *ctx;
         BIO_get_md_ctx(bp, &ctx);
         i = EVP_DigestVerifyFinal(ctx, sigin, (unsigned int)siglen);
@@ -70,7 +70,7 @@ int do_fp(BIO *out, unsigned char *buf, BIO *bp, int sep, int binout,
         ret = 0;
         goto end;
     }
-    if (key != NULL) {
+    if (key != ((void*)0)) {
         EVP_MD_CTX *ctx;
         int pkey_len;
         BIO_get_md_ctx(bp, &ctx);
@@ -107,12 +107,12 @@ int do_fp(BIO *out, unsigned char *buf, BIO *bp, int sep, int binout,
         BIO_printf(out, " *%s\n", file);
         OPENSSL_free((char *)file);
     } else {
-        if (sig_name != NULL) {
+        if (sig_name != ((void*)0)) {
             BIO_puts(out, sig_name);
-            if (md_name != NULL)
+            if (md_name != ((void*)0))
                 BIO_printf(out, "-%s", md_name);
             BIO_printf(out, "(%s)= ", file);
-        } else if (md_name != NULL) {
+        } else if (md_name != ((void*)0)) {
             BIO_printf(out, "%s(%s)= ", md_name, file);
         } else {
             BIO_printf(out, "(%s)= ", file);
@@ -127,7 +127,7 @@ int do_fp(BIO *out, unsigned char *buf, BIO *bp, int sep, int binout,
 
     ret = 0;
  end:
-    if (sigbuf != NULL)
+    if (sigbuf != ((void*)0))
         OPENSSL_clear_free(sigbuf, len);
 
     return ret;

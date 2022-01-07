@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned long CORE_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  collect_register_by_name (char*,unsigned long*) ; 
- scalar_t__ debug_threads ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,unsigned long) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef unsigned long CORE_ADDR ;
+
+
+ int collect_register_by_name (char*,unsigned long*) ;
+ scalar_t__ debug_threads ;
+ int fprintf (int ,char*,unsigned long) ;
+ int stderr ;
 
 __attribute__((used)) static CORE_ADDR
 i386_get_pc ()

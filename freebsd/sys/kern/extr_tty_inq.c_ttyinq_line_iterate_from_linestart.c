@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ttyinq_line_iterator_t ;
-struct ttyinq {int /*<<< orphan*/  ti_startblock; int /*<<< orphan*/  ti_linestart; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ttyinq_line_iterate (struct ttyinq*,int /*<<< orphan*/ *,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ttyinq_line_iterator_t ;
+struct ttyinq {int ti_startblock; int ti_linestart; } ;
+
+
+ int ttyinq_line_iterate (struct ttyinq*,int *,void*,int ,int ) ;
 
 void
 ttyinq_line_iterate_from_linestart(struct ttyinq *ti,
     ttyinq_line_iterator_t *iterator, void *data)
 {
 
-	ttyinq_line_iterate(ti, iterator, data,
-	    ti->ti_linestart, ti->ti_startblock);
+ ttyinq_line_iterate(ti, iterator, data,
+     ti->ti_linestart, ti->ti_startblock);
 }

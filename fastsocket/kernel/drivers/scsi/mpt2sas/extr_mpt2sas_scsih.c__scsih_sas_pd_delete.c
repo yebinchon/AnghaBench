@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u16 ;
 struct MPT2SAS_ADAPTER {int dummy; } ;
-struct TYPE_3__ {int /*<<< orphan*/  PhysDiskDevHandle; } ;
-typedef  TYPE_1__ Mpi2EventIrConfigElement_t ;
+struct TYPE_3__ {int PhysDiskDevHandle; } ;
+typedef TYPE_1__ Mpi2EventIrConfigElement_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _scsih_device_remove_by_handle (struct MPT2SAS_ADAPTER*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  le16_to_cpu (int /*<<< orphan*/ ) ; 
+
+ int _scsih_device_remove_by_handle (struct MPT2SAS_ADAPTER*,int ) ;
+ int le16_to_cpu (int ) ;
 
 __attribute__((used)) static void
 _scsih_sas_pd_delete(struct MPT2SAS_ADAPTER *ioc,
     Mpi2EventIrConfigElement_t *element)
 {
-	u16 handle = le16_to_cpu(element->PhysDiskDevHandle);
+ u16 handle = le16_to_cpu(element->PhysDiskDevHandle);
 
-	_scsih_device_remove_by_handle(ioc, handle);
+ _scsih_device_remove_by_handle(ioc, handle);
 }

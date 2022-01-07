@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ time_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ time_t ;
 struct TYPE_2__ {scalar_t__ repl_transfer_s; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  connWrite (scalar_t__,char*,int) ; 
- TYPE_1__ server ; 
- scalar_t__ time (int /*<<< orphan*/ *) ; 
+
+ int connWrite (scalar_t__,char*,int) ;
+ TYPE_1__ server ;
+ scalar_t__ time (int *) ;
 
 void replicationSendNewlineToMaster(void) {
     static time_t newline_sent;
-    if (time(NULL) != newline_sent) {
-        newline_sent = time(NULL);
-        /* Pinging back in this stage is best-effort. */
+    if (time(((void*)0)) != newline_sent) {
+        newline_sent = time(((void*)0));
+
         if (server.repl_transfer_s) connWrite(server.repl_transfer_s, "\n", 1);
     }
 }

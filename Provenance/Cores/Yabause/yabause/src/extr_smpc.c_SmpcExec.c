@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ s32 ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ s32 ;
 struct TYPE_6__ {int timing; } ;
 struct TYPE_5__ {int COMREG; scalar_t__ SF; } ;
 struct TYPE_4__ {int LineCount; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SMPCLOG (char*,...) ; 
- int /*<<< orphan*/  SmpcCKCHG320 () ; 
- int /*<<< orphan*/  SmpcCKCHG352 () ; 
- int /*<<< orphan*/  SmpcINTBACK () ; 
- TYPE_3__* SmpcInternalVars ; 
- int /*<<< orphan*/  SmpcNMIREQ () ; 
- int /*<<< orphan*/  SmpcRESDISA () ; 
- int /*<<< orphan*/  SmpcRESENAB () ; 
- TYPE_2__* SmpcRegs ; 
- int /*<<< orphan*/  SmpcSETSMEM () ; 
- int /*<<< orphan*/  SmpcSNDOFF () ; 
- int /*<<< orphan*/  SmpcSNDON () ; 
- int /*<<< orphan*/  SmpcSSHOFF () ; 
- int /*<<< orphan*/  SmpcSSHON () ; 
- scalar_t__ intback_wait_for_line ; 
- TYPE_1__ yabsys ; 
+
+ int SMPCLOG (char*,...) ;
+ int SmpcCKCHG320 () ;
+ int SmpcCKCHG352 () ;
+ int SmpcINTBACK () ;
+ TYPE_3__* SmpcInternalVars ;
+ int SmpcNMIREQ () ;
+ int SmpcRESDISA () ;
+ int SmpcRESENAB () ;
+ TYPE_2__* SmpcRegs ;
+ int SmpcSETSMEM () ;
+ int SmpcSNDOFF () ;
+ int SmpcSNDON () ;
+ int SmpcSSHOFF () ;
+ int SmpcSSHON () ;
+ scalar_t__ intback_wait_for_line ;
+ TYPE_1__ yabsys ;
 
 void SmpcExec(s32 t) {
    if (SmpcInternalVars->timing > 0) {

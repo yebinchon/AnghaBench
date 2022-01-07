@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct resource {int dummy; } ;
-struct cbb_intrhand {int /*<<< orphan*/  cookie; } ;
-typedef  int /*<<< orphan*/  device_t ;
+struct cbb_intrhand {int cookie; } ;
+typedef int device_t ;
 
-/* Variables and functions */
- int BUS_TEARDOWN_INTR (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct resource*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  M_DEVBUF ; 
- int /*<<< orphan*/  device_get_parent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (struct cbb_intrhand*,int /*<<< orphan*/ ) ; 
+
+ int BUS_TEARDOWN_INTR (int ,int ,struct resource*,int ) ;
+ int M_DEVBUF ;
+ int device_get_parent (int ) ;
+ int free (struct cbb_intrhand*,int ) ;
 
 int
 cbb_teardown_intr(device_t dev, device_t child, struct resource *irq,
     void *cookie)
 {
-	struct cbb_intrhand *ih;
-	int err;
+ struct cbb_intrhand *ih;
+ int err;
 
-	/* XXX Need to do different things for ISA interrupts. */
-	ih = (struct cbb_intrhand *) cookie;
-	err = BUS_TEARDOWN_INTR(device_get_parent(dev), child, irq,
-	    ih->cookie);
-	if (err != 0)
-		return (err);
-	free(ih, M_DEVBUF);
-	return (0);
+
+ ih = (struct cbb_intrhand *) cookie;
+ err = BUS_TEARDOWN_INTR(device_get_parent(dev), child, irq,
+     ih->cookie);
+ if (err != 0)
+  return (err);
+ free(ih, M_DEVBUF);
+ return (0);
 }

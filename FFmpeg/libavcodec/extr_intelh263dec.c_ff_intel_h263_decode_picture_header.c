@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int num; int den; } ;
-struct TYPE_9__ {TYPE_4__ sample_aspect_ratio; int /*<<< orphan*/  lowres; } ;
-struct TYPE_7__ {int picture_number; int h263_long_vectors; int obmc; int unrestricted_mv; int pb_frame; int loop_filter; int chroma_qscale; int qscale; int f_code; int /*<<< orphan*/  c_dc_scale_table; int /*<<< orphan*/  y_dc_scale_table; int /*<<< orphan*/  gb; TYPE_5__* avctx; void* height; void* width; scalar_t__ pict_type; scalar_t__ h263_plus; } ;
-typedef  TYPE_1__ MpegEncContext ;
+struct TYPE_9__ {TYPE_4__ sample_aspect_ratio; int lowres; } ;
+struct TYPE_7__ {int picture_number; int h263_long_vectors; int obmc; int unrestricted_mv; int pb_frame; int loop_filter; int chroma_qscale; int qscale; int f_code; int c_dc_scale_table; int y_dc_scale_table; int gb; TYPE_5__* avctx; void* height; void* width; scalar_t__ pict_type; scalar_t__ h263_plus; } ;
+typedef TYPE_1__ MpegEncContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- scalar_t__ AV_PICTURE_TYPE_I ; 
- int FRAME_SKIPPED ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*) ; 
- int check_marker (TYPE_5__*,int /*<<< orphan*/ *,char*) ; 
- void*** ff_h263_format ; 
- TYPE_4__* ff_h263_pixel_aspect ; 
- int /*<<< orphan*/  ff_h263_show_pict_info (TYPE_1__*) ; 
- int /*<<< orphan*/  ff_mpeg1_dc_scale_table ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits1 (int /*<<< orphan*/ *) ; 
- int get_bits_left (int /*<<< orphan*/ *) ; 
- int get_bits_long (int /*<<< orphan*/ *,int) ; 
- scalar_t__ skip_1stop_8data_bits (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip_bits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  skip_bits1 (int /*<<< orphan*/ *) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ scalar_t__ AV_PICTURE_TYPE_I ;
+ int FRAME_SKIPPED ;
+ int av_log (TYPE_5__*,int ,char*) ;
+ int check_marker (TYPE_5__*,int *,char*) ;
+ void*** ff_h263_format ;
+ TYPE_4__* ff_h263_pixel_aspect ;
+ int ff_h263_show_pict_info (TYPE_1__*) ;
+ int ff_mpeg1_dc_scale_table ;
+ int get_bits (int *,int) ;
+ int get_bits1 (int *) ;
+ int get_bits_left (int *) ;
+ int get_bits_long (int *,int) ;
+ scalar_t__ skip_1stop_8data_bits (int *) ;
+ int skip_bits (int *,int) ;
+ int skip_bits1 (int *) ;
 
 int ff_intel_h263_decode_picture_header(MpegEncContext *s)
 {
     int format;
 
-    if (get_bits_left(&s->gb) == 64) { /* special dummy frames */
+    if (get_bits_left(&s->gb) == 64) {
         return FRAME_SKIPPED;
     }
 
-    /* picture header */
+
     if (get_bits_long(&s->gb, 22) != 0x20) {
         av_log(s->avctx, AV_LOG_ERROR, "Bad picture start code\n");
         return -1;
     }
-    s->picture_number = get_bits(&s->gb, 8); /* picture timestamp */
+    s->picture_number = get_bits(&s->gb, 8);
 
     if (check_marker(s->avctx, &s->gb, "after picture_number") != 1) {
-        return -1;      /* marker */
+        return -1;
     }
     if (get_bits1(&s->gb) != 0) {
         av_log(s->avctx, AV_LOG_ERROR, "Bad H.263 id\n");
-        return -1;      /* H.263 id */
+        return -1;
     }
-    skip_bits1(&s->gb);         /* split screen off */
-    skip_bits1(&s->gb);         /* camera  off */
-    skip_bits1(&s->gb);         /* freeze picture release off */
+    skip_bits1(&s->gb);
+    skip_bits1(&s->gb);
+    skip_bits1(&s->gb);
 
     format = get_bits(&s->gb, 3);
     if (format == 0 || format == 6) {
@@ -76,7 +76,7 @@ int ff_intel_h263_decode_picture_header(MpegEncContext *s)
 
     if (get_bits1(&s->gb) != 0) {
         av_log(s->avctx, AV_LOG_ERROR, "SAC not supported\n");
-        return -1;      /* SAC: off */
+        return -1;
     }
     s->obmc= get_bits1(&s->gb);
     s->unrestricted_mv = s->obmc || s->h263_long_vectors;
@@ -107,12 +107,12 @@ int ff_intel_h263_decode_picture_header(MpegEncContext *s)
     }
     if(format == 6){
         int ar = get_bits(&s->gb, 4);
-        skip_bits(&s->gb, 9); // display width
+        skip_bits(&s->gb, 9);
         check_marker(s->avctx, &s->gb, "in dimensions");
-        skip_bits(&s->gb, 9); // display height
+        skip_bits(&s->gb, 9);
         if(ar == 15){
-            s->avctx->sample_aspect_ratio.num = get_bits(&s->gb, 8); // aspect ratio - width
-            s->avctx->sample_aspect_ratio.den = get_bits(&s->gb, 8); // aspect ratio - height
+            s->avctx->sample_aspect_ratio.num = get_bits(&s->gb, 8);
+            s->avctx->sample_aspect_ratio.den = get_bits(&s->gb, 8);
         } else {
             s->avctx->sample_aspect_ratio = ff_h263_pixel_aspect[ar];
         }
@@ -121,14 +121,14 @@ int ff_intel_h263_decode_picture_header(MpegEncContext *s)
     }
 
     s->chroma_qscale= s->qscale = get_bits(&s->gb, 5);
-    skip_bits1(&s->gb); /* Continuous Presence Multipoint mode: off */
+    skip_bits1(&s->gb);
 
     if(s->pb_frame){
-        skip_bits(&s->gb, 3); //temporal reference for B-frame
-        skip_bits(&s->gb, 2); //dbquant
+        skip_bits(&s->gb, 3);
+        skip_bits(&s->gb, 2);
     }
 
-    /* PEI */
+
     if (skip_1stop_8data_bits(&s->gb) < 0)
         return AVERROR_INVALIDDATA;
     s->f_code = 1;

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * columnList; } ;
-typedef  TYPE_1__ MultiProject ;
-typedef  int /*<<< orphan*/  MultiNode ;
-typedef  int /*<<< orphan*/  List ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- int /*<<< orphan*/ * FindNodesOfType (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * NIL ; 
- int /*<<< orphan*/  T_MultiProject ; 
- int /*<<< orphan*/ * TargetEntryList (int /*<<< orphan*/ *) ; 
- scalar_t__ linitial (int /*<<< orphan*/ *) ; 
- scalar_t__ list_length (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * columnList; } ;
+typedef TYPE_1__ MultiProject ;
+typedef int MultiNode ;
+typedef int List ;
+
+
+ int Assert (int) ;
+ int * FindNodesOfType (int *,int ) ;
+ int * NIL ;
+ int T_MultiProject ;
+ int * TargetEntryList (int *) ;
+ scalar_t__ linitial (int *) ;
+ scalar_t__ list_length (int *) ;
 
 __attribute__((used)) static List *
 QueryTargetList(MultiNode *multiNode)
 {
-	MultiProject *topProjectNode = NULL;
-	List *columnList = NIL;
-	List *queryTargetList = NIL;
+ MultiProject *topProjectNode = ((void*)0);
+ List *columnList = NIL;
+ List *queryTargetList = NIL;
 
-	List *projectNodeList = FindNodesOfType(multiNode, T_MultiProject);
-	Assert(list_length(projectNodeList) > 0);
+ List *projectNodeList = FindNodesOfType(multiNode, T_MultiProject);
+ Assert(list_length(projectNodeList) > 0);
 
-	topProjectNode = (MultiProject *) linitial(projectNodeList);
-	columnList = topProjectNode->columnList;
-	queryTargetList = TargetEntryList(columnList);
+ topProjectNode = (MultiProject *) linitial(projectNodeList);
+ columnList = topProjectNode->columnList;
+ queryTargetList = TargetEntryList(columnList);
 
-	Assert(queryTargetList != NIL);
-	return queryTargetList;
+ Assert(queryTargetList != NIL);
+ return queryTargetList;
 }

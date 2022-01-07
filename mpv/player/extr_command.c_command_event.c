@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct command_ctx {int is_idle; void* marked_pts; void* last_seek_pts; } ;
 struct MPContext {struct command_ctx* command_ctx; } ;
 
-/* Variables and functions */
- int MPV_EVENT_END_FILE ; 
- int MPV_EVENT_FILE_LOADED ; 
- int MPV_EVENT_IDLE ; 
- int MPV_EVENT_START_FILE ; 
- void* MP_NOPTS_VALUE ; 
- int /*<<< orphan*/  OSD_BAR_SEEK ; 
- int /*<<< orphan*/  set_osd_bar_chapters (struct MPContext*,int /*<<< orphan*/ ) ; 
+
+ int MPV_EVENT_END_FILE ;
+ int MPV_EVENT_FILE_LOADED ;
+ int MPV_EVENT_IDLE ;
+ int MPV_EVENT_START_FILE ;
+ void* MP_NOPTS_VALUE ;
+ int OSD_BAR_SEEK ;
+ int set_osd_bar_chapters (struct MPContext*,int ) ;
 
 __attribute__((used)) static void command_event(struct MPContext *mpctx, int event, void *arg)
 {
@@ -32,11 +32,11 @@ __attribute__((used)) static void command_event(struct MPContext *mpctx, int eve
     }
 
     if (event == MPV_EVENT_IDLE)
-        ctx->is_idle = true;
+        ctx->is_idle = 1;
     if (event == MPV_EVENT_START_FILE)
-        ctx->is_idle = false;
+        ctx->is_idle = 0;
     if (event == MPV_EVENT_END_FILE || event == MPV_EVENT_FILE_LOADED) {
-        // Update chapters - does nothing if something else is visible.
+
         set_osd_bar_chapters(mpctx, OSD_BAR_SEEK);
     }
 }

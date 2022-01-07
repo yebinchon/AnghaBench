@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int IdleInTransactionSessionTimeoutPending ; 
- int InterruptPending ; 
- int /*<<< orphan*/  MyLatch ; 
- int /*<<< orphan*/  SetLatch (int /*<<< orphan*/ ) ; 
+ int IdleInTransactionSessionTimeoutPending ;
+ int InterruptPending ;
+ int MyLatch ;
+ int SetLatch (int ) ;
 
 __attribute__((used)) static void
 IdleInTransactionSessionTimeoutHandler(void)
 {
-	IdleInTransactionSessionTimeoutPending = true;
-	InterruptPending = true;
-	SetLatch(MyLatch);
+ IdleInTransactionSessionTimeoutPending = 1;
+ InterruptPending = 1;
+ SetLatch(MyLatch);
 }

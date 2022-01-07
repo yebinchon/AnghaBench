@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int /*<<< orphan*/  USHORT ;
-typedef  scalar_t__ ULONG ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int VOID ;
+typedef int USHORT ;
+typedef scalar_t__ ULONG ;
 struct TYPE_3__ {int* Value; } ;
-typedef  TYPE_1__* PSID_IDENTIFIER_AUTHORITY ;
-typedef  int /*<<< orphan*/  PSID ;
-typedef  scalar_t__ LPTSTR ;
-typedef  scalar_t__ DWORD ;
+typedef TYPE_1__* PSID_IDENTIFIER_AUTHORITY ;
+typedef int PSID ;
+typedef scalar_t__ LPTSTR ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- TYPE_1__* GetSidIdentifierAuthority (int /*<<< orphan*/ ) ; 
- scalar_t__* GetSidSubAuthority (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__* GetSidSubAuthorityCount (int /*<<< orphan*/ ) ; 
- scalar_t__ SID_REVISION ; 
- int /*<<< orphan*/  TEXT (char*) ; 
- scalar_t__ lstrlen (scalar_t__) ; 
- scalar_t__ wsprintf (scalar_t__,int /*<<< orphan*/ ,scalar_t__,...) ; 
+
+ TYPE_1__* GetSidIdentifierAuthority (int ) ;
+ scalar_t__* GetSidSubAuthority (int ,scalar_t__) ;
+ scalar_t__* GetSidSubAuthorityCount (int ) ;
+ scalar_t__ SID_REVISION ;
+ int TEXT (char*) ;
+ scalar_t__ lstrlen (scalar_t__) ;
+ scalar_t__ wsprintf (scalar_t__,int ,scalar_t__,...) ;
 
 __attribute__((used)) static VOID
 GetTextSid(PSID pSid,
@@ -61,7 +61,7 @@ GetTextSid(PSID pSid,
         dwSidSize += wsprintf(pTextSid + lstrlen(pTextSid),
                               TEXT("%lu"),
                               (ULONG)(psia->Value[5]) +
-                              (ULONG)(psia->Value[4] <<  8) +
+                              (ULONG)(psia->Value[4] << 8) +
                               (ULONG)(psia->Value[3] << 16) +
                               (ULONG)(psia->Value[2] << 24));
     }

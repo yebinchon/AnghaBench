@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc__db_wcroot_t ;
-typedef  scalar_t__ svn_wc__db_status_t ;
-typedef  int /*<<< orphan*/  svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  scalar_t__ apr_int64_t ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- int /*<<< orphan*/  SVN_ERR_WC_PATH_NOT_FOUND ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  path_for_error_message (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  read_info (scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const**,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (char const*,char const*) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* svn_relpath_join (char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_relpath_split (char const**,char const**,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_base_get_info_internal (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const**,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc__db_status_excluded ; 
- scalar_t__ svn_wc__db_status_not_present ; 
- scalar_t__ svn_wc__db_status_server_excluded ; 
+
+
+
+typedef int svn_wc__db_wcroot_t ;
+typedef scalar_t__ svn_wc__db_status_t ;
+typedef int svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef scalar_t__ apr_int64_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int) ;
+ int SVN_ERR_WC_PATH_NOT_FOUND ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int _ (char*) ;
+ int path_for_error_message (int *,char const*,int *) ;
+ int read_info (scalar_t__*,int *,int *,char const**,scalar_t__*,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,char const*,int *,int *) ;
+ scalar_t__ strcmp (char const*,char const*) ;
+ int * svn_error_createf (int ,int *,int ,int ) ;
+ char* svn_relpath_join (char const*,char const*,int *) ;
+ int svn_relpath_split (char const**,char const**,char const*,int *) ;
+ int svn_wc__db_base_get_info_internal (int *,int *,int *,char const**,scalar_t__*,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,char const*,int *,int *) ;
+ scalar_t__ svn_wc__db_status_excluded ;
+ scalar_t__ svn_wc__db_status_not_present ;
+ scalar_t__ svn_wc__db_status_server_excluded ;
 
 __attribute__((used)) static svn_error_t *
 db_is_switched(svn_boolean_t *is_switched,
@@ -52,11 +52,11 @@ db_is_switched(svn_boolean_t *is_switched,
   apr_int64_t parent_repos_id;
   const char *parent_repos_relpath;
 
-  SVN_ERR_ASSERT(*local_relpath != '\0'); /* Handled in wrapper */
+  SVN_ERR_ASSERT(*local_relpath != '\0');
 
-  SVN_ERR(read_info(&status, kind, NULL, &repos_relpath, &repos_id, NULL,
-                    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-                    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+  SVN_ERR(read_info(&status, kind, ((void*)0), &repos_relpath, &repos_id, ((void*)0),
+                    ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                    ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
                     wcroot, local_relpath, scratch_pool, scratch_pool));
 
   if (status == svn_wc__db_status_server_excluded
@@ -64,14 +64,14 @@ db_is_switched(svn_boolean_t *is_switched,
       || status == svn_wc__db_status_not_present)
     {
       return svn_error_createf(
-                    SVN_ERR_WC_PATH_NOT_FOUND, NULL,
+                    SVN_ERR_WC_PATH_NOT_FOUND, ((void*)0),
                     _("The node '%s' was not found."),
                     path_for_error_message(wcroot, local_relpath,
                                            scratch_pool));
     }
   else if (! repos_relpath)
     {
-      /* Node is shadowed; easy out */
+
       if (is_switched)
         *is_switched = FALSE;
 
@@ -83,11 +83,11 @@ db_is_switched(svn_boolean_t *is_switched,
 
   svn_relpath_split(&parent_local_relpath, &name, local_relpath, scratch_pool);
 
-  SVN_ERR(svn_wc__db_base_get_info_internal(NULL, NULL, NULL,
+  SVN_ERR(svn_wc__db_base_get_info_internal(((void*)0), ((void*)0), ((void*)0),
                                             &parent_repos_relpath,
-                                            &parent_repos_id, NULL, NULL, NULL,
-                                            NULL, NULL, NULL, NULL, NULL,
-                                            NULL, NULL,
+                                            &parent_repos_id, ((void*)0), ((void*)0), ((void*)0),
+                                            ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                                            ((void*)0), ((void*)0),
                                             wcroot, parent_local_relpath,
                                             scratch_pool, scratch_pool));
 

@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  startup ;
-struct TYPE_7__ {int /*<<< orphan*/  hProcess; int /*<<< orphan*/  hThread; } ;
-struct TYPE_6__ {int cb; int /*<<< orphan*/  wShowWindow; int /*<<< orphan*/  dwFlags; } ;
-typedef  TYPE_1__ STARTUPINFOA ;
-typedef  TYPE_2__ PROCESS_INFORMATION ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- scalar_t__ CreateProcessA (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,TYPE_2__*) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int GetExitCodeProcess (int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  REG_SZ ; 
- scalar_t__ RegSetValueExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  STARTF_USESHOWWINDOW ; 
- scalar_t__ STATUS_ACCESS_VIOLATION ; 
- int /*<<< orphan*/  SW_SHOWNORMAL ; 
- scalar_t__ WAIT_OBJECT_0 ; 
- scalar_t__ WaitForSingleObject (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char const*) ; 
- scalar_t__ strlen (char const*) ; 
- int /*<<< orphan*/  trace (char*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int startup ;
+struct TYPE_7__ {int hProcess; int hThread; } ;
+struct TYPE_6__ {int cb; int wShowWindow; int dwFlags; } ;
+typedef TYPE_1__ STARTUPINFOA ;
+typedef TYPE_2__ PROCESS_INFORMATION ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+typedef int BYTE ;
+typedef int BOOL ;
+
+
+ int CloseHandle (int ) ;
+ scalar_t__ CreateProcessA (int *,char*,int *,int *,int ,int ,int *,int *,TYPE_1__*,TYPE_2__*) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int GetExitCodeProcess (int ,scalar_t__*) ;
+ scalar_t__ GetLastError () ;
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,scalar_t__) ;
+ int HeapFree (int ,int ,char*) ;
+ int REG_SZ ;
+ scalar_t__ RegSetValueExA (int ,char*,int ,int ,int *,int) ;
+ int STARTF_USESHOWWINDOW ;
+ scalar_t__ STATUS_ACCESS_VIOLATION ;
+ int SW_SHOWNORMAL ;
+ scalar_t__ WAIT_OBJECT_0 ;
+ scalar_t__ WaitForSingleObject (int ,int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int ok (int,char*,...) ;
+ int sprintf (char*,char*,char const*) ;
+ scalar_t__ strlen (char const*) ;
+ int trace (char*) ;
 
 __attribute__((used)) static void crash_and_winedbg(HKEY hkey, const char* argv0)
 {
     BOOL bRet;
     DWORD ret;
     char* cmd;
-    PROCESS_INFORMATION	info;
+    PROCESS_INFORMATION info;
     STARTUPINFOA startup;
     DWORD exit_code;
 
@@ -64,7 +64,7 @@ __attribute__((used)) static void crash_and_winedbg(HKEY hkey, const char* argv0
     startup.cb = sizeof(startup);
     startup.dwFlags = STARTF_USESHOWWINDOW;
     startup.wShowWindow = SW_SHOWNORMAL;
-    ret=CreateProcessA(NULL, cmd, NULL, NULL, FALSE, 0, NULL, NULL, &startup, &info);
+    ret=CreateProcessA(((void*)0), cmd, ((void*)0), ((void*)0), FALSE, 0, ((void*)0), ((void*)0), &startup, &info);
     ok(ret, "CreateProcess: err=%d\n", GetLastError());
     HeapFree(GetProcessHeap(), 0, cmd);
     CloseHandle(info.hThread);

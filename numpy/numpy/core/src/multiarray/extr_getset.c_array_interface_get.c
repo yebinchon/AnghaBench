@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyArray_DESCR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyDict_New () ; 
- int /*<<< orphan*/  PyDict_SetItemString (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyInt_FromLong (int) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * array_dataptr_get (int /*<<< orphan*/ *) ; 
- scalar_t__ array_might_be_written (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * array_protocol_descr_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * array_protocol_strides_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * array_shape_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * arraydescr_protocol_typestr_get (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int PyObject ;
+typedef int PyArrayObject ;
+
+
+ int PyArray_DESCR (int *) ;
+ int * PyDict_New () ;
+ int PyDict_SetItemString (int *,char*,int *) ;
+ int * PyInt_FromLong (int) ;
+ int Py_DECREF (int *) ;
+ int * array_dataptr_get (int *) ;
+ scalar_t__ array_might_be_written (int *) ;
+ int * array_protocol_descr_get (int *) ;
+ int * array_protocol_strides_get (int *) ;
+ int * array_shape_get (int *) ;
+ int * arraydescr_protocol_typestr_get (int ) ;
 
 __attribute__((used)) static PyObject *
 array_interface_get(PyArrayObject *self)
@@ -33,16 +33,16 @@ array_interface_get(PyArrayObject *self)
     PyObject *obj;
 
     dict = PyDict_New();
-    if (dict == NULL) {
-        return NULL;
+    if (dict == ((void*)0)) {
+        return ((void*)0);
     }
 
     if (array_might_be_written(self) < 0) {
         Py_DECREF(dict);
-        return NULL;
+        return ((void*)0);
     }
 
-    /* dataptr */
+
     obj = array_dataptr_get(self);
     PyDict_SetItemString(dict, "data", obj);
     Py_DECREF(obj);

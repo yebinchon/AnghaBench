@@ -1,76 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_6__ ;
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_7__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_10__ TYPE_6__ ;
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_7__ {int pressed; } ;
 struct TYPE_8__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
-struct TYPE_10__ {int nkro; int /*<<< orphan*/  raw; } ;
-struct TYPE_9__ {scalar_t__ red_mode; scalar_t__ green_mode; int /*<<< orphan*/  raw; } ;
+typedef TYPE_2__ keyrecord_t ;
+struct TYPE_10__ {int nkro; int raw; } ;
+struct TYPE_9__ {scalar_t__ red_mode; scalar_t__ green_mode; int raw; } ;
 
-/* Variables and functions */
-#define  COLEMAK 142 
-#define  DVORAK 141 
-#define  EXT_PLV 140 
- void* LEDMODE_BLINKIN ; 
- scalar_t__ LEDMODE_ENTER ; 
- void* LEDMODE_KEY ; 
- scalar_t__ LEDMODE_MODS ; 
- void* LEDMODE_OFF ; 
- void* LEDMODE_ON ; 
-#define  LED_0 139 
-#define  LED_1 138 
-#define  LED_2 137 
-#define  LED_3 136 
-#define  LED_4 135 
-#define  LED_5 134 
-#define  LED_6 133 
-#define  LED_7 132 
-#define  LED_8 131 
-#define  LED_9 130 
- int /*<<< orphan*/  LED_GREEN ; 
- int /*<<< orphan*/  LED_RED ; 
-#define  PLOVER 129 
-#define  QWERTY 128 
- int /*<<< orphan*/  _ADJUST ; 
- int /*<<< orphan*/  _COLEMAK ; 
- int /*<<< orphan*/  _DVORAK ; 
- int /*<<< orphan*/  _LOWER ; 
- int /*<<< orphan*/  _PLOVER ; 
- int /*<<< orphan*/  _QWERTY ; 
- int /*<<< orphan*/  _RAISE ; 
- int /*<<< orphan*/  eeconfig_init () ; 
- int /*<<< orphan*/  eeconfig_is_enabled () ; 
- int /*<<< orphan*/  eeconfig_read_keymap () ; 
- int /*<<< orphan*/  eeconfig_update_keymap (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eeconfig_update_user (int /*<<< orphan*/ ) ; 
- TYPE_6__ keymap_config ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- TYPE_5__ led_config ; 
- int /*<<< orphan*/  led_keypress_update (int /*<<< orphan*/ ,scalar_t__,int,TYPE_2__*) ; 
- int /*<<< orphan*/  print (char*) ; 
- int /*<<< orphan*/  set_single_persistent_default_layer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  writePinHigh (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  writePinLow (int /*<<< orphan*/ ) ; 
+
+
+
+
+ void* LEDMODE_BLINKIN ;
+ scalar_t__ LEDMODE_ENTER ;
+ void* LEDMODE_KEY ;
+ scalar_t__ LEDMODE_MODS ;
+ void* LEDMODE_OFF ;
+ void* LEDMODE_ON ;
+ int LED_GREEN ;
+ int LED_RED ;
+
+
+ int _ADJUST ;
+ int _COLEMAK ;
+ int _DVORAK ;
+ int _LOWER ;
+ int _PLOVER ;
+ int _QWERTY ;
+ int _RAISE ;
+ int eeconfig_init () ;
+ int eeconfig_is_enabled () ;
+ int eeconfig_read_keymap () ;
+ int eeconfig_update_keymap (int ) ;
+ int eeconfig_update_user (int ) ;
+ TYPE_6__ keymap_config ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ TYPE_5__ led_config ;
+ int led_keypress_update (int ,scalar_t__,int,TYPE_2__*) ;
+ int print (char*) ;
+ int set_single_persistent_default_layer (int ) ;
+ int writePinHigh (int ) ;
+ int writePinLow (int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  /* If the either led mode is keypressed based, call the led updater
-     then let it fall through the keypress handlers. Just to keep 
-     the logic out of this procedure */
+
+
+
   if (led_config.red_mode >= LEDMODE_MODS && led_config.red_mode <= LEDMODE_ENTER) {
       led_keypress_update(LED_RED, led_config.red_mode, keycode, record);
   }
@@ -78,26 +68,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       led_keypress_update(LED_GREEN, led_config.green_mode, keycode, record);
   }
   switch (keycode) {
-    case QWERTY:
+    case 128:
       if (record->event.pressed) {
         print("mode just switched to qwerty and this is a huge string\n");
         set_single_persistent_default_layer(_QWERTY);
       }
-      return false;
+      return 0;
       break;
-    case COLEMAK:
+    case 142:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_COLEMAK);
       }
-      return false;
+      return 0;
       break;
-    case DVORAK:
+    case 141:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_DVORAK);
       }
-      return false;
+      return 0;
       break;
-    case PLOVER:
+    case 129:
       if (record->event.pressed) {
         layer_off(_RAISE);
         layer_off(_LOWER);
@@ -110,15 +100,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         keymap_config.nkro = 1;
         eeconfig_update_keymap(keymap_config.raw);
       }
-      return false;
+      return 0;
       break;
-    case EXT_PLV:
+    case 140:
       if (record->event.pressed) {
         layer_off(_PLOVER);
       }
-      return false;
+      return 0;
       break;
-    case LED_1:
+    case 138:
       if (record->event.pressed) {
         if (led_config.red_mode==LEDMODE_ON) {
             led_config.red_mode=LEDMODE_OFF;
@@ -130,9 +120,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
       }
       eeconfig_update_user(led_config.raw);
-      return false;
+      return 0;
       break;
-    case LED_2:
+    case 137:
       if (record->event.pressed) {
         if (led_config.green_mode==LEDMODE_ON) {
             led_config.green_mode=LEDMODE_OFF;
@@ -144,48 +134,48 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
       }
       eeconfig_update_user(led_config.raw);
-      return false;
+      return 0;
       break;
-    case LED_3:
+    case 136:
       led_config.red_mode=LEDMODE_MODS;
       eeconfig_update_user(led_config.raw);
-      return false;
+      return 0;
       break;
-    case LED_4:
+    case 135:
       led_config.green_mode=LEDMODE_MODS;
       eeconfig_update_user(led_config.raw);
-      return false;
+      return 0;
       break;
-    case LED_5:
+    case 134:
       led_config.red_mode=LEDMODE_BLINKIN;
       eeconfig_update_user(led_config.raw);
-      return false;
+      return 0;
       break;
-    case LED_6:
+    case 133:
       led_config.green_mode=LEDMODE_BLINKIN;
       eeconfig_update_user(led_config.raw);
-      return false;
+      return 0;
       break;
-    case LED_7:
+    case 132:
       led_config.red_mode=LEDMODE_KEY;
       eeconfig_update_user(led_config.raw);
-      return false;
+      return 0;
       break;
-    case LED_8:
+    case 131:
       led_config.green_mode=LEDMODE_KEY;
       eeconfig_update_user(led_config.raw);
-      return false;
+      return 0;
       break;
-    case LED_9:
+    case 130:
       led_config.red_mode=LEDMODE_ENTER;
       eeconfig_update_user(led_config.raw);
-      return false;
+      return 0;
       break;
-    case LED_0:
+    case 139:
       led_config.green_mode=LEDMODE_ENTER;
       eeconfig_update_user(led_config.raw);
-      return false;
+      return 0;
       break;
   }
-  return true;
+  return 1;
 }

@@ -1,88 +1,88 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t u_int ;
-struct monitorbuf {int /*<<< orphan*/  stop_state; } ;
 
-/* Variables and functions */
- int CPUID2_MON ; 
- int /*<<< orphan*/  CPU_ISSET (size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CPU_SET_ATOMIC (size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IS_BSP () ; 
- scalar_t__ MONITOR_STOPSTATE_STOPPED ; 
- int /*<<< orphan*/  MWAIT_C1 ; 
- size_t PCPU_GET (int /*<<< orphan*/ ) ; 
- struct monitorbuf* PCPU_PTR (int /*<<< orphan*/ ) ; 
- scalar_t__ __predict_false (int) ; 
- scalar_t__ atomic_load_int (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atomic_store_int (int /*<<< orphan*/ *,scalar_t__) ; 
- int cpu_feature2 ; 
- int /*<<< orphan*/  cpu_monitor (struct monitorbuf*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cpu_mwait (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cpuid ; 
- int /*<<< orphan*/  cpustop_handler_post (size_t) ; 
- int /*<<< orphan*/  halt () ; 
- int /*<<< orphan*/  ia32_pause () ; 
- int /*<<< orphan*/  monitorbuf ; 
- int /*<<< orphan*/  mwait_cpustop_broken ; 
- int /*<<< orphan*/ * panicstr ; 
- int /*<<< orphan*/  savectx (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  started_cpus ; 
- scalar_t__ stop_mwait ; 
- int /*<<< orphan*/ * stoppcbs ; 
- int /*<<< orphan*/  stopped_cpus ; 
+
+
+
+typedef size_t u_int ;
+struct monitorbuf {int stop_state; } ;
+
+
+ int CPUID2_MON ;
+ int CPU_ISSET (size_t,int *) ;
+ int CPU_SET_ATOMIC (size_t,int *) ;
+ int IS_BSP () ;
+ scalar_t__ MONITOR_STOPSTATE_STOPPED ;
+ int MWAIT_C1 ;
+ size_t PCPU_GET (int ) ;
+ struct monitorbuf* PCPU_PTR (int ) ;
+ scalar_t__ __predict_false (int) ;
+ scalar_t__ atomic_load_int (int *) ;
+ int atomic_store_int (int *,scalar_t__) ;
+ int cpu_feature2 ;
+ int cpu_monitor (struct monitorbuf*,int ,int ) ;
+ int cpu_mwait (int ,int ) ;
+ int cpuid ;
+ int cpustop_handler_post (size_t) ;
+ int halt () ;
+ int ia32_pause () ;
+ int monitorbuf ;
+ int mwait_cpustop_broken ;
+ int * panicstr ;
+ int savectx (int *) ;
+ int started_cpus ;
+ scalar_t__ stop_mwait ;
+ int * stoppcbs ;
+ int stopped_cpus ;
 
 void
 cpustop_handler(void)
 {
-	struct monitorbuf *mb;
-	u_int cpu;
-	bool use_mwait;
+ struct monitorbuf *mb;
+ u_int cpu;
+ bool use_mwait;
 
-	cpu = PCPU_GET(cpuid);
+ cpu = PCPU_GET(cpuid);
 
-	savectx(&stoppcbs[cpu]);
+ savectx(&stoppcbs[cpu]);
 
-	use_mwait = (stop_mwait && (cpu_feature2 & CPUID2_MON) != 0 &&
-	    !mwait_cpustop_broken);
-	if (use_mwait) {
-		mb = PCPU_PTR(monitorbuf);
-		atomic_store_int(&mb->stop_state,
-		    MONITOR_STOPSTATE_STOPPED);
-	}
+ use_mwait = (stop_mwait && (cpu_feature2 & CPUID2_MON) != 0 &&
+     !mwait_cpustop_broken);
+ if (use_mwait) {
+  mb = PCPU_PTR(monitorbuf);
+  atomic_store_int(&mb->stop_state,
+      MONITOR_STOPSTATE_STOPPED);
+ }
 
-	/* Indicate that we are stopped */
-	CPU_SET_ATOMIC(cpu, &stopped_cpus);
 
-	/* Wait for restart */
-	while (!CPU_ISSET(cpu, &started_cpus)) {
-		if (use_mwait) {
-			cpu_monitor(mb, 0, 0);
-			if (atomic_load_int(&mb->stop_state) ==
-			    MONITOR_STOPSTATE_STOPPED)
-				cpu_mwait(0, MWAIT_C1);
-			continue;
-		}
+ CPU_SET_ATOMIC(cpu, &stopped_cpus);
 
-		ia32_pause();
 
-		/*
-		 * Halt non-BSP CPUs on panic -- we're never going to need them
-		 * again, and might as well save power / release resources
-		 * (e.g., overprovisioned VM infrastructure).
-		 */
-		while (__predict_false(!IS_BSP() && panicstr != NULL))
-			halt();
-	}
+ while (!CPU_ISSET(cpu, &started_cpus)) {
+  if (use_mwait) {
+   cpu_monitor(mb, 0, 0);
+   if (atomic_load_int(&mb->stop_state) ==
+       MONITOR_STOPSTATE_STOPPED)
+    cpu_mwait(0, MWAIT_C1);
+   continue;
+  }
 
-	cpustop_handler_post(cpu);
+  ia32_pause();
+
+
+
+
+
+
+  while (__predict_false(!IS_BSP() && panicstr != ((void*)0)))
+   halt();
+ }
+
+ cpustop_handler_post(cpu);
 }

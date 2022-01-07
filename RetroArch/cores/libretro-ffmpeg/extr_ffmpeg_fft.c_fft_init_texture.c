@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fft_t ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  int /*<<< orphan*/  GLenum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  GL_TEXTURE_MAG_FILTER ; 
- int /*<<< orphan*/  GL_TEXTURE_MIN_FILTER ; 
- int /*<<< orphan*/  glBindTexture (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glGenTextures (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glTexParameteri (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glTexStorage2D (int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ,unsigned int,unsigned int) ; 
+
+
+
+typedef int fft_t ;
+typedef int GLuint ;
+typedef int GLenum ;
+
+
+ int GL_TEXTURE_2D ;
+ int GL_TEXTURE_MAG_FILTER ;
+ int GL_TEXTURE_MIN_FILTER ;
+ int glBindTexture (int ,int ) ;
+ int glGenTextures (int,int *) ;
+ int glTexParameteri (int ,int ,int ) ;
+ int glTexStorage2D (int ,unsigned int,int ,unsigned int,unsigned int) ;
 
 __attribute__((used)) static void fft_init_texture(fft_t *fft, GLuint *tex, GLenum format,
       unsigned width, unsigned height, unsigned levels, GLenum mag, GLenum min)

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct iio_dev {int /*<<< orphan*/  buffer; } ;
+
+
+
+
+struct iio_dev {int buffer; } ;
 struct iio_buffer {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  iio_buffer_get (struct iio_buffer*) ; 
+
+ int iio_buffer_get (struct iio_buffer*) ;
 
 void iio_device_attach_buffer(struct iio_dev *indio_dev,
-			      struct iio_buffer *buffer)
+         struct iio_buffer *buffer)
 {
-	indio_dev->buffer = iio_buffer_get(buffer);
+ indio_dev->buffer = iio_buffer_get(buffer);
 }

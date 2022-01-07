@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EVP_PKEY ;
-typedef  int /*<<< orphan*/  EVP_MD_CTX ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_eof (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_get_md_ctx (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- size_t BIO_gets (int /*<<< orphan*/ *,char*,size_t) ; 
- scalar_t__ BIO_pending (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  BIO_puts (int /*<<< orphan*/ *,char const*) ; 
- int BIO_read (int /*<<< orphan*/ *,char*,size_t) ; 
- int /*<<< orphan*/  BIO_write (int /*<<< orphan*/ *,unsigned char*,size_t) ; 
- size_t BUFSIZE ; 
- int /*<<< orphan*/  ERR_print_errors (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_DigestSignFinal (int /*<<< orphan*/ *,unsigned char*,size_t*) ; 
- int EVP_DigestVerifyFinal (int /*<<< orphan*/ *,unsigned char*,unsigned int) ; 
- int /*<<< orphan*/ * bio_err ; 
+
+
+
+typedef int EVP_PKEY ;
+typedef int EVP_MD_CTX ;
+typedef int BIO ;
+
+
+ int BIO_eof (int *) ;
+ int BIO_get_md_ctx (int *,int **) ;
+ size_t BIO_gets (int *,char*,size_t) ;
+ scalar_t__ BIO_pending (int *) ;
+ int BIO_printf (int *,char*,...) ;
+ int BIO_puts (int *,char const*) ;
+ int BIO_read (int *,char*,size_t) ;
+ int BIO_write (int *,unsigned char*,size_t) ;
+ size_t BUFSIZE ;
+ int ERR_print_errors (int *) ;
+ int EVP_DigestSignFinal (int *,unsigned char*,size_t*) ;
+ int EVP_DigestVerifyFinal (int *,unsigned char*,unsigned int) ;
+ int * bio_err ;
 
 int do_fp(BIO *out, unsigned char *buf, BIO *bp, int sep, int binout,
           EVP_PKEY *key, unsigned char *sigin, int siglen,
@@ -47,7 +47,7 @@ int do_fp(BIO *out, unsigned char *buf, BIO *bp, int sep, int binout,
         if (i == 0)
             break;
     }
-    if (sigin != NULL) {
+    if (sigin != ((void*)0)) {
         EVP_MD_CTX *ctx;
         BIO_get_md_ctx(bp, &ctx);
         i = EVP_DigestVerifyFinal(ctx, sigin, (unsigned int)siglen);
@@ -63,7 +63,7 @@ int do_fp(BIO *out, unsigned char *buf, BIO *bp, int sep, int binout,
         }
         return 0;
     }
-    if (key != NULL) {
+    if (key != ((void*)0)) {
         EVP_MD_CTX *ctx;
         BIO_get_md_ctx(bp, &ctx);
         len = BUFSIZE;
@@ -87,12 +87,12 @@ int do_fp(BIO *out, unsigned char *buf, BIO *bp, int sep, int binout,
             BIO_printf(out, "%02x", buf[i]);
         BIO_printf(out, " *%s\n", file);
     } else {
-        if (sig_name != NULL) {
+        if (sig_name != ((void*)0)) {
             BIO_puts(out, sig_name);
-            if (md_name != NULL)
+            if (md_name != ((void*)0))
                 BIO_printf(out, "-%s", md_name);
             BIO_printf(out, "(%s)= ", file);
-        } else if (md_name != NULL) {
+        } else if (md_name != ((void*)0)) {
             BIO_printf(out, "%s(%s)= ", md_name, file);
         } else {
             BIO_printf(out, "(%s)= ", file);

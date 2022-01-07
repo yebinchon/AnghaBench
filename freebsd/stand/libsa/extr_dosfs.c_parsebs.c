@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_int ;
-struct TYPE_7__ {int media; int spc; int fats; int /*<<< orphan*/  lsecs; int /*<<< orphan*/  secs; int /*<<< orphan*/  ressec; int /*<<< orphan*/  rdcl; int /*<<< orphan*/  lspf; int /*<<< orphan*/  dirents; int /*<<< orphan*/  spf; int /*<<< orphan*/  secsiz; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int u_int ;
+struct TYPE_7__ {int media; int spc; int fats; int lsecs; int secs; int ressec; int rdcl; int lspf; int dirents; int spf; int secsiz; } ;
 struct TYPE_9__ {int* jmp; TYPE_1__ bpb; } ;
 struct TYPE_8__ {int spc; int bsize; int spf; scalar_t__ rdcl; int lsnfat; int lsndir; int lsndta; scalar_t__ xclus; int fatsz; scalar_t__ dirents; scalar_t__ bshift; } ;
-typedef  TYPE_2__ DOS_FS ;
-typedef  TYPE_3__ DOS_BS ;
+typedef TYPE_2__ DOS_FS ;
+typedef TYPE_3__ DOS_BS ;
 
-/* Variables and functions */
- int EINVAL ; 
- scalar_t__ LOCLUS ; 
- scalar_t__ SECSIZ ; 
- scalar_t__ cv2 (int /*<<< orphan*/ ) ; 
- scalar_t__ cv4 (int /*<<< orphan*/ ) ; 
- int entsec (scalar_t__) ; 
- scalar_t__ ffs (int) ; 
- scalar_t__ secblk (TYPE_2__*,int) ; 
- int secbyt (int) ; 
+
+ int EINVAL ;
+ scalar_t__ LOCLUS ;
+ scalar_t__ SECSIZ ;
+ scalar_t__ cv2 (int ) ;
+ scalar_t__ cv4 (int ) ;
+ int entsec (scalar_t__) ;
+ scalar_t__ ffs (int) ;
+ scalar_t__ secblk (TYPE_2__*,int) ;
+ int secbyt (int) ;
 
 __attribute__((used)) static int
 parsebs(DOS_FS *fs, DOS_BS *bs)

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct cache_uri {struct cache_uri* hnext; } ;
 struct TYPE_4__ {int* h; } ;
-typedef  TYPE_1__ md5_t ;
+typedef TYPE_1__ md5_t ;
 
-/* Variables and functions */
- struct cache_uri** H ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ cache_uri_match_md5 (struct cache_uri*,TYPE_1__*,int) ; 
- int uri_hash_prime ; 
+
+ struct cache_uri** H ;
+ int assert (int) ;
+ scalar_t__ cache_uri_match_md5 (struct cache_uri*,TYPE_1__*,int) ;
+ int uri_hash_prime ;
 
 struct cache_uri *cache_get_uri_by_md5 (md5_t *uri_md5, int len) {
   assert (len == 8 || len == 16);
@@ -35,5 +35,5 @@ struct cache_uri *cache_get_uri_by_md5 (md5_t *uri_md5, int len) {
     }
     p = &V->hnext;
   }
-  return NULL;
+  return ((void*)0);
 }

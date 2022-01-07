@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u64 ;
-typedef  int /*<<< orphan*/  u16 ;
+
+
+
+
+typedef int u8 ;
+typedef int u64 ;
+typedef int u16 ;
 struct mlx4_dev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MLX4_CMD_ALLOC_RES ; 
- int /*<<< orphan*/  MLX4_CMD_TIME_CLASS_A ; 
- int /*<<< orphan*/  MLX4_CMD_WRAPPED ; 
- int /*<<< orphan*/  RES_OP_RESERVE_AND_MAP ; 
- int /*<<< orphan*/  RES_VLAN ; 
- int __mlx4_register_vlan (struct mlx4_dev*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int get_param_l (int /*<<< orphan*/ *) ; 
- int mlx4_cmd_imm (struct mlx4_dev*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ mlx4_is_mfunc (struct mlx4_dev*) ; 
- int /*<<< orphan*/  set_param_l (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int MLX4_CMD_ALLOC_RES ;
+ int MLX4_CMD_TIME_CLASS_A ;
+ int MLX4_CMD_WRAPPED ;
+ int RES_OP_RESERVE_AND_MAP ;
+ int RES_VLAN ;
+ int __mlx4_register_vlan (struct mlx4_dev*,int ,int ,int*) ;
+ int get_param_l (int *) ;
+ int mlx4_cmd_imm (struct mlx4_dev*,int ,int *,int ,int ,int ,int ,int ) ;
+ scalar_t__ mlx4_is_mfunc (struct mlx4_dev*) ;
+ int set_param_l (int *,int ) ;
 
 int mlx4_register_vlan(struct mlx4_dev *dev, u8 port, u16 vlan, int *index)
 {
-	u64 out_param = 0;
-	int err;
+ u64 out_param = 0;
+ int err;
 
-	if (mlx4_is_mfunc(dev)) {
-		set_param_l(&out_param, port);
-		err = mlx4_cmd_imm(dev, vlan, &out_param, RES_VLAN,
-				   RES_OP_RESERVE_AND_MAP, MLX4_CMD_ALLOC_RES,
-				   MLX4_CMD_TIME_CLASS_A, MLX4_CMD_WRAPPED);
-		if (!err)
-			*index = get_param_l(&out_param);
+ if (mlx4_is_mfunc(dev)) {
+  set_param_l(&out_param, port);
+  err = mlx4_cmd_imm(dev, vlan, &out_param, RES_VLAN,
+       RES_OP_RESERVE_AND_MAP, MLX4_CMD_ALLOC_RES,
+       MLX4_CMD_TIME_CLASS_A, MLX4_CMD_WRAPPED);
+  if (!err)
+   *index = get_param_l(&out_param);
 
-		return err;
-	}
-	return __mlx4_register_vlan(dev, port, vlan, index);
+  return err;
+ }
+ return __mlx4_register_vlan(dev, port, vlan, index);
 }

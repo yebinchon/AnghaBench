@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct irq_desc {int /*<<< orphan*/ * kstat_irqs; } ;
-struct TYPE_2__ {int /*<<< orphan*/  irqs_sum; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __this_cpu_inc (int /*<<< orphan*/ ) ; 
- TYPE_1__ kstat ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct irq_desc {int * kstat_irqs; } ;
+struct TYPE_2__ {int irqs_sum; } ;
+
+
+ int __this_cpu_inc (int ) ;
+ TYPE_1__ kstat ;
 
 __attribute__((used)) static inline void __kstat_incr_irqs_this_cpu(struct irq_desc *desc)
 {
-	__this_cpu_inc(*desc->kstat_irqs);
-	__this_cpu_inc(kstat.irqs_sum);
+ __this_cpu_inc(*desc->kstat_irqs);
+ __this_cpu_inc(kstat.irqs_sum);
 }

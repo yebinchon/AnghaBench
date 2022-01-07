@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * init_function; int /*<<< orphan*/ * name; int /*<<< orphan*/ * refcnt_lock; } ;
-typedef  int /*<<< orphan*/  OSSL_provider_init_fn ;
-typedef  TYPE_1__ OSSL_PROVIDER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPTO_F_PROVIDER_NEW ; 
- int /*<<< orphan*/ * CRYPTO_THREAD_lock_new () ; 
- int /*<<< orphan*/  CRYPTOerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/ * OPENSSL_strdup (char const*) ; 
- TYPE_1__* OPENSSL_zalloc (int) ; 
- int /*<<< orphan*/  ossl_provider_free (TYPE_1__*) ; 
- int /*<<< orphan*/  ossl_provider_up_ref (TYPE_1__*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * init_function; int * name; int * refcnt_lock; } ;
+typedef int OSSL_provider_init_fn ;
+typedef TYPE_1__ OSSL_PROVIDER ;
+
+
+ int CRYPTO_F_PROVIDER_NEW ;
+ int * CRYPTO_THREAD_lock_new () ;
+ int CRYPTOerr (int ,int ) ;
+ int ERR_R_MALLOC_FAILURE ;
+ int * OPENSSL_strdup (char const*) ;
+ TYPE_1__* OPENSSL_zalloc (int) ;
+ int ossl_provider_free (TYPE_1__*) ;
+ int ossl_provider_up_ref (TYPE_1__*) ;
 
 __attribute__((used)) static OSSL_PROVIDER *provider_new(const char *name,
                                    OSSL_provider_init_fn *init_function)
 {
-    OSSL_PROVIDER *prov = NULL;
+    OSSL_PROVIDER *prov = ((void*)0);
 
-    if ((prov = OPENSSL_zalloc(sizeof(*prov))) == NULL
-#ifndef HAVE_ATOMICS
-        || (prov->refcnt_lock = CRYPTO_THREAD_lock_new()) == NULL
-#endif
-        || !ossl_provider_up_ref(prov) /* +1 One reference to be returned */
-        || (prov->name = OPENSSL_strdup(name)) == NULL) {
+    if ((prov = OPENSSL_zalloc(sizeof(*prov))) == ((void*)0)
+
+        || (prov->refcnt_lock = CRYPTO_THREAD_lock_new()) == ((void*)0)
+
+        || !ossl_provider_up_ref(prov)
+        || (prov->name = OPENSSL_strdup(name)) == ((void*)0)) {
         ossl_provider_free(prov);
         CRYPTOerr(CRYPTO_F_PROVIDER_NEW, ERR_R_MALLOC_FAILURE);
-        return NULL;
+        return ((void*)0);
     }
 
     prov->init_function = init_function;

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  port_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E1CS2 (int /*<<< orphan*/ ) ; 
- unsigned char E1CS2_SCC ; 
- int /*<<< orphan*/  E1DAT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  outb (int /*<<< orphan*/ ,unsigned char) ; 
+
+
+
+typedef int port_t ;
+
+
+ int E1CS2 (int ) ;
+ unsigned char E1CS2_SCC ;
+ int E1DAT (int ) ;
+ int outb (int ,unsigned char) ;
 
 void cte_out2 (port_t base, unsigned char reg, unsigned char val)
 {
-	outb (E1CS2(base), E1CS2_SCC | reg >> 4);
-	outb (E1DAT(base), reg & 15);
-	outb (E1DAT(base), val);
+ outb (E1CS2(base), E1CS2_SCC | reg >> 4);
+ outb (E1DAT(base), reg & 15);
+ outb (E1DAT(base), val);
 }

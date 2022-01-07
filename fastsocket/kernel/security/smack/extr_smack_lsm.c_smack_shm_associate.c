@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct shmid_kernel {int dummy; } ;
 
-/* Variables and functions */
- int smack_flags_to_may (int) ; 
- int smk_curacc_shm (struct shmid_kernel*,int) ; 
+
+ int smack_flags_to_may (int) ;
+ int smk_curacc_shm (struct shmid_kernel*,int) ;
 
 __attribute__((used)) static int smack_shm_associate(struct shmid_kernel *shp, int shmflg)
 {
-	int may;
+ int may;
 
-	may = smack_flags_to_may(shmflg);
-	return smk_curacc_shm(shp, may);
+ may = smack_flags_to_may(shmflg);
+ return smk_curacc_shm(shp, may);
 }

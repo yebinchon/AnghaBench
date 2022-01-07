@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
-struct mt7601u_dev {int /*<<< orphan*/  dev; int /*<<< orphan*/  state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MT7601U_STATE_REMOVED ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  msleep (int) ; 
- int mt7601u_rr (struct mt7601u_dev*,int) ; 
- scalar_t__ test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int u32 ;
+struct mt7601u_dev {int dev; int state; } ;
+
+
+ int MT7601U_STATE_REMOVED ;
+ int dev_err (int ,char*,int) ;
+ int msleep (int) ;
+ int mt7601u_rr (struct mt7601u_dev*,int) ;
+ scalar_t__ test_bit (int ,int *) ;
 
 bool mt76_poll_msec(struct mt7601u_dev *dev, u32 offset, u32 mask, u32 val,
-		    int timeout)
+      int timeout)
 {
-	u32 cur;
+ u32 cur;
 
-	timeout /= 10;
-	do {
-		if (test_bit(MT7601U_STATE_REMOVED, &dev->state))
-			return false;
+ timeout /= 10;
+ do {
+  if (test_bit(MT7601U_STATE_REMOVED, &dev->state))
+   return 0;
 
-		cur = mt7601u_rr(dev, offset) & mask;
-		if (cur == val)
-			return true;
+  cur = mt7601u_rr(dev, offset) & mask;
+  if (cur == val)
+   return 1;
 
-		msleep(10);
-	} while (timeout-- > 0);
+  msleep(10);
+ } while (timeout-- > 0);
 
-	dev_err(dev->dev, "Error: Time out with reg %08x\n", offset);
+ dev_err(dev->dev, "Error: Time out with reg %08x\n", offset);
 
-	return false;
+ return 0;
 }

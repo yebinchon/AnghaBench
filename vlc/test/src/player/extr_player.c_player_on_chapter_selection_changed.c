@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_player_t ;
+
+
+
+
+typedef int vlc_player_t ;
 struct vlc_player_title {int dummy; } ;
 struct vlc_player_chapter {int dummy; } ;
 struct report_chapter_selection {size_t title_idx; size_t chapter_idx; } ;
 struct ctx {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VEC_PUSH (int /*<<< orphan*/ ,struct report_chapter_selection) ; 
- struct ctx* get_ctx (int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  on_chapter_selection_changed ; 
+
+ int VEC_PUSH (int ,struct report_chapter_selection) ;
+ struct ctx* get_ctx (int *,void*) ;
+ int on_chapter_selection_changed ;
 
 __attribute__((used)) static void
 player_on_chapter_selection_changed(vlc_player_t *player,

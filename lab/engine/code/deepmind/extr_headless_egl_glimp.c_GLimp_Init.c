@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  qboolean ;
-struct TYPE_5__ {int /*<<< orphan*/  integer; } ;
-typedef  TYPE_1__ cvar_t ;
-struct TYPE_7__ {int /*<<< orphan*/  buffHeight; int /*<<< orphan*/  buffWidth; } ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int qboolean ;
+struct TYPE_5__ {int integer; } ;
+typedef TYPE_1__ cvar_t ;
+struct TYPE_7__ {int buffHeight; int buffWidth; } ;
 struct TYPE_6__ {TYPE_1__* (* Cvar_Get ) (char*,char*,int) ;} ;
-typedef  int /*<<< orphan*/  EGLint ;
-typedef  int /*<<< orphan*/  EGLConfig ;
+typedef int EGLint ;
+typedef int EGLConfig ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_EGL_SUCCESS (int /*<<< orphan*/ ) ; 
- int CVAR_ARCHIVE ; 
- int CVAR_LATCH ; 
- scalar_t__ CreateInitializedEGLDisplayAtIndex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EGL_HEIGHT ; 
- int /*<<< orphan*/  EGL_NONE ; 
- int /*<<< orphan*/  EGL_NO_CONTEXT ; 
- scalar_t__ EGL_NO_DISPLAY ; 
- int /*<<< orphan*/  EGL_OPENGL_API ; 
- int /*<<< orphan*/  EGL_WIDTH ; 
- int /*<<< orphan*/  GLimp_CommonPostInit () ; 
- int /*<<< orphan*/  GLimp_CommonPreInit () ; 
- int /*<<< orphan*/  Sys_Error (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eglBindAPI (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eglChooseConfig (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  eglCreateContext (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  eglCreatePbufferSurface (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  egl_context ; 
- scalar_t__ egl_display ; 
- int /*<<< orphan*/  egl_surface ; 
- TYPE_4__ glConfig ; 
- int /*<<< orphan*/  kConfigAttribs ; 
- TYPE_3__ ri ; 
- TYPE_1__* stub1 (char*,char*,int) ; 
+
+ int CHECK_EGL_SUCCESS (int ) ;
+ int CVAR_ARCHIVE ;
+ int CVAR_LATCH ;
+ scalar_t__ CreateInitializedEGLDisplayAtIndex (int ) ;
+ int EGL_HEIGHT ;
+ int EGL_NONE ;
+ int EGL_NO_CONTEXT ;
+ scalar_t__ EGL_NO_DISPLAY ;
+ int EGL_OPENGL_API ;
+ int EGL_WIDTH ;
+ int GLimp_CommonPostInit () ;
+ int GLimp_CommonPreInit () ;
+ int Sys_Error (char*,int ) ;
+ int eglBindAPI (int ) ;
+ int eglChooseConfig (scalar_t__,int ,int *,int,int *) ;
+ int eglCreateContext (scalar_t__,int ,int ,int *) ;
+ int eglCreatePbufferSurface (scalar_t__,int ,int *) ;
+ int egl_context ;
+ scalar_t__ egl_display ;
+ int egl_surface ;
+ TYPE_4__ glConfig ;
+ int kConfigAttribs ;
+ TYPE_3__ ri ;
+ TYPE_1__* stub1 (char*,char*,int) ;
 
 void GLimp_Init(qboolean coreContext) {
   GLimp_CommonPreInit();
@@ -66,8 +66,8 @@ void GLimp_Init(qboolean coreContext) {
                                     &num_configs));
 
   EGLint pbuffer_attribs[] = {
-      EGL_WIDTH,  glConfig.buffWidth,   //
-      EGL_HEIGHT, glConfig.buffHeight,  //
+      EGL_WIDTH, glConfig.buffWidth,
+      EGL_HEIGHT, glConfig.buffHeight,
       EGL_NONE,
   };
 
@@ -77,7 +77,7 @@ void GLimp_Init(qboolean coreContext) {
   CHECK_EGL_SUCCESS(eglBindAPI(EGL_OPENGL_API));
 
   CHECK_EGL_SUCCESS(egl_context = eglCreateContext(egl_display, egl_config,
-                                                   EGL_NO_CONTEXT, NULL));
+                                                   EGL_NO_CONTEXT, ((void*)0)));
 
   GLimp_CommonPostInit();
 }

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct SYSCACHECALLBACK {int /*<<< orphan*/  id; int /*<<< orphan*/  arg; int /*<<< orphan*/  (* function ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
-struct RELCACHECALLBACK {int /*<<< orphan*/  arg; int /*<<< orphan*/  (* function ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  InvalidOid ; 
- int /*<<< orphan*/  InvalidateCatalogSnapshot () ; 
- int /*<<< orphan*/  RelationCacheInvalidate () ; 
- int /*<<< orphan*/  ResetCatalogCaches () ; 
- int relcache_callback_count ; 
- struct RELCACHECALLBACK* relcache_callback_list ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int syscache_callback_count ; 
- struct SYSCACHECALLBACK* syscache_callback_list ; 
+
+
+
+struct SYSCACHECALLBACK {int id; int arg; int (* function ) (int ,int ,int ) ;} ;
+struct RELCACHECALLBACK {int arg; int (* function ) (int ,int ) ;} ;
+
+
+ int InvalidOid ;
+ int InvalidateCatalogSnapshot () ;
+ int RelationCacheInvalidate () ;
+ int ResetCatalogCaches () ;
+ int relcache_callback_count ;
+ struct RELCACHECALLBACK* relcache_callback_list ;
+ int stub1 (int ,int ,int ) ;
+ int stub2 (int ,int ) ;
+ int syscache_callback_count ;
+ struct SYSCACHECALLBACK* syscache_callback_list ;
 
 void
 InvalidateSystemCaches(void)
 {
-	int			i;
+ int i;
 
-	InvalidateCatalogSnapshot();
-	ResetCatalogCaches();
-	RelationCacheInvalidate();	/* gets smgr and relmap too */
+ InvalidateCatalogSnapshot();
+ ResetCatalogCaches();
+ RelationCacheInvalidate();
 
-	for (i = 0; i < syscache_callback_count; i++)
-	{
-		struct SYSCACHECALLBACK *ccitem = syscache_callback_list + i;
+ for (i = 0; i < syscache_callback_count; i++)
+ {
+  struct SYSCACHECALLBACK *ccitem = syscache_callback_list + i;
 
-		ccitem->function(ccitem->arg, ccitem->id, 0);
-	}
+  ccitem->function(ccitem->arg, ccitem->id, 0);
+ }
 
-	for (i = 0; i < relcache_callback_count; i++)
-	{
-		struct RELCACHECALLBACK *ccitem = relcache_callback_list + i;
+ for (i = 0; i < relcache_callback_count; i++)
+ {
+  struct RELCACHECALLBACK *ccitem = relcache_callback_list + i;
 
-		ccitem->function(ccitem->arg, InvalidOid);
-	}
+  ccitem->function(ccitem->arg, InvalidOid);
+ }
 }

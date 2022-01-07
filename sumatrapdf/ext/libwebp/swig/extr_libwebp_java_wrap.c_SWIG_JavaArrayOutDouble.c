@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int jsize ;
-typedef  int /*<<< orphan*/ * jdoubleArray ;
-typedef  scalar_t__ jdouble ;
-struct TYPE_6__ {int /*<<< orphan*/  (* ReleaseDoubleArrayElements ) (TYPE_1__**,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ ) ;scalar_t__* (* GetDoubleArrayElements ) (TYPE_1__**,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ;int /*<<< orphan*/ * (* NewDoubleArray ) (TYPE_1__**,int) ;} ;
-typedef  TYPE_1__* JNIEnv ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * stub1 (TYPE_1__**,int) ; 
- scalar_t__* stub2 (TYPE_1__**,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (TYPE_1__**,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int jsize ;
+typedef int * jdoubleArray ;
+typedef scalar_t__ jdouble ;
+struct TYPE_6__ {int (* ReleaseDoubleArrayElements ) (TYPE_1__**,int *,scalar_t__*,int ) ;scalar_t__* (* GetDoubleArrayElements ) (TYPE_1__**,int *,int ) ;int * (* NewDoubleArray ) (TYPE_1__**,int) ;} ;
+typedef TYPE_1__* JNIEnv ;
+
+
+ int * stub1 (TYPE_1__**,int) ;
+ scalar_t__* stub2 (TYPE_1__**,int *,int ) ;
+ int stub3 (TYPE_1__**,int *,scalar_t__*,int ) ;
 
 jdoubleArray SWIG_JavaArrayOutDouble (JNIEnv *jenv, double *result, jsize sz) {
   jdouble *arr;
   int i;
   jdoubleArray jresult = (*jenv)->NewDoubleArray(jenv, sz);
   if (!jresult)
-    return NULL;
+    return ((void*)0);
   arr = (*jenv)->GetDoubleArrayElements(jenv, jresult, 0);
   if (!arr)
-    return NULL;
+    return ((void*)0);
   for (i=0; i<sz; i++)
     arr[i] = (jdouble)result[i];
   (*jenv)->ReleaseDoubleArrayElements(jenv, jresult, arr, 0);

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIO ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ *,char*,...) ; 
- int BN_bn2bin (int /*<<< orphan*/  const*,unsigned char*) ; 
- scalar_t__ BN_is_zero (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int BIO ;
+typedef int BIGNUM ;
+
+
+ int BIO_printf (int *,char*,...) ;
+ int BN_bn2bin (int const*,unsigned char*) ;
+ scalar_t__ BN_is_zero (int const*) ;
 
 void print_bignum_var(BIO *out, const BIGNUM *in, const char *var,
                       int len, unsigned char *buffer)

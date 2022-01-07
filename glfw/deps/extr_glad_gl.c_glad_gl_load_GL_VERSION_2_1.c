@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ PFNGLUNIFORMMATRIX4X3FVPROC ;
-typedef  scalar_t__ PFNGLUNIFORMMATRIX4X2FVPROC ;
-typedef  scalar_t__ PFNGLUNIFORMMATRIX3X4FVPROC ;
-typedef  scalar_t__ PFNGLUNIFORMMATRIX3X2FVPROC ;
-typedef  scalar_t__ PFNGLUNIFORMMATRIX2X4FVPROC ;
-typedef  scalar_t__ PFNGLUNIFORMMATRIX2X3FVPROC ;
-typedef  scalar_t__ (* GLADuserptrloadfunc ) (char*,void*) ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLAD_GL_VERSION_2_1 ; 
- scalar_t__ glUniformMatrix2x3fv ; 
- scalar_t__ glUniformMatrix2x4fv ; 
- scalar_t__ glUniformMatrix3x2fv ; 
- scalar_t__ glUniformMatrix3x4fv ; 
- scalar_t__ glUniformMatrix4x2fv ; 
- scalar_t__ glUniformMatrix4x3fv ; 
+
+
+
+typedef scalar_t__ PFNGLUNIFORMMATRIX4X3FVPROC ;
+typedef scalar_t__ PFNGLUNIFORMMATRIX4X2FVPROC ;
+typedef scalar_t__ PFNGLUNIFORMMATRIX3X4FVPROC ;
+typedef scalar_t__ PFNGLUNIFORMMATRIX3X2FVPROC ;
+typedef scalar_t__ PFNGLUNIFORMMATRIX2X4FVPROC ;
+typedef scalar_t__ PFNGLUNIFORMMATRIX2X3FVPROC ;
+typedef scalar_t__ (* GLADuserptrloadfunc ) (char*,void*) ;
+
+
+ int GLAD_GL_VERSION_2_1 ;
+ scalar_t__ glUniformMatrix2x3fv ;
+ scalar_t__ glUniformMatrix2x4fv ;
+ scalar_t__ glUniformMatrix3x2fv ;
+ scalar_t__ glUniformMatrix3x4fv ;
+ scalar_t__ glUniformMatrix4x2fv ;
+ scalar_t__ glUniformMatrix4x3fv ;
 
 __attribute__((used)) static void glad_gl_load_GL_VERSION_2_1( GLADuserptrloadfunc load, void* userptr) {
     if(!GLAD_GL_VERSION_2_1) return;

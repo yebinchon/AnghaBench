@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct redisCommand {int flags; int /*<<< orphan*/  keystep; int /*<<< orphan*/  lastkey; int /*<<< orphan*/  firstkey; scalar_t__ getkeys_proc; int /*<<< orphan*/  arity; int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  client ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CMD_ADMIN ; 
- int /*<<< orphan*/  CMD_ASKING ; 
- int /*<<< orphan*/  CMD_DENYOOM ; 
- int /*<<< orphan*/  CMD_FAST ; 
- int /*<<< orphan*/  CMD_LOADING ; 
- int CMD_MODULE ; 
- int CMD_MODULE_GETKEYS ; 
- int /*<<< orphan*/  CMD_NOSCRIPT ; 
- int /*<<< orphan*/  CMD_PUBSUB ; 
- int /*<<< orphan*/  CMD_RANDOM ; 
- int /*<<< orphan*/  CMD_READONLY ; 
- int /*<<< orphan*/  CMD_SKIP_MONITOR ; 
- int /*<<< orphan*/  CMD_SKIP_SLOWLOG ; 
- int /*<<< orphan*/  CMD_SORT_FOR_SCRIPT ; 
- int /*<<< orphan*/  CMD_STALE ; 
- int /*<<< orphan*/  CMD_WRITE ; 
- int /*<<< orphan*/  addReplyArrayLen (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  addReplyBulkCString (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  addReplyCommandCategories (int /*<<< orphan*/ *,struct redisCommand*) ; 
- scalar_t__ addReplyCommandFlag (int /*<<< orphan*/ *,struct redisCommand*,int /*<<< orphan*/ ,char*) ; 
- void* addReplyDeferredLen (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  addReplyLongLong (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  addReplyNull (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  addReplyStatus (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  setDeferredSetLen (int /*<<< orphan*/ *,void*,int) ; 
+
+
+
+struct redisCommand {int flags; int keystep; int lastkey; int firstkey; scalar_t__ getkeys_proc; int arity; int name; } ;
+typedef int client ;
+
+
+ int CMD_ADMIN ;
+ int CMD_ASKING ;
+ int CMD_DENYOOM ;
+ int CMD_FAST ;
+ int CMD_LOADING ;
+ int CMD_MODULE ;
+ int CMD_MODULE_GETKEYS ;
+ int CMD_NOSCRIPT ;
+ int CMD_PUBSUB ;
+ int CMD_RANDOM ;
+ int CMD_READONLY ;
+ int CMD_SKIP_MONITOR ;
+ int CMD_SKIP_SLOWLOG ;
+ int CMD_SORT_FOR_SCRIPT ;
+ int CMD_STALE ;
+ int CMD_WRITE ;
+ int addReplyArrayLen (int *,int) ;
+ int addReplyBulkCString (int *,int ) ;
+ int addReplyCommandCategories (int *,struct redisCommand*) ;
+ scalar_t__ addReplyCommandFlag (int *,struct redisCommand*,int ,char*) ;
+ void* addReplyDeferredLen (int *) ;
+ int addReplyLongLong (int *,int ) ;
+ int addReplyNull (int *) ;
+ int addReplyStatus (int *,char*) ;
+ int setDeferredSetLen (int *,void*,int) ;
 
 void addReplyCommand(client *c, struct redisCommand *cmd) {
     if (!cmd) {
         addReplyNull(c);
     } else {
-        /* We are adding: command name, arg count, flags, first, last, offset, categories */
+
         addReplyArrayLen(c, 7);
         addReplyBulkCString(c, cmd->name);
         addReplyLongLong(c, cmd->arity);

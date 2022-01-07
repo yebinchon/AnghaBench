@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  IOleClientSite_iface; scalar_t__ ole_obj; } ;
-typedef  TYPE_1__ WebBrowserContainer ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int IOleClientSite_iface; scalar_t__ ole_obj; } ;
+typedef TYPE_1__ WebBrowserContainer ;
 struct TYPE_5__ {TYPE_1__* web_browser; } ;
-typedef  int /*<<< orphan*/  IOleInPlaceSite ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_2__ HHInfo ;
+typedef int IOleInPlaceSite ;
+typedef int HRESULT ;
+typedef TYPE_2__ HHInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IID_IOleInPlaceSite ; 
- int /*<<< orphan*/  IOleClientSite_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IOleInPlaceSite_OnInPlaceDeactivate (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IOleInPlaceSite_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IOleObject_QueryInterface (scalar_t__,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IOleObject_SetClientSite (scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
+
+ int IID_IOleInPlaceSite ;
+ int IOleClientSite_Release (int *) ;
+ int IOleInPlaceSite_OnInPlaceDeactivate (int *) ;
+ int IOleInPlaceSite_Release (int *) ;
+ int IOleObject_QueryInterface (scalar_t__,int *,void**) ;
+ int IOleObject_SetClientSite (scalar_t__,int *) ;
+ scalar_t__ SUCCEEDED (int ) ;
 
 void ReleaseWebBrowser(HHInfo *info)
 {
@@ -45,9 +45,9 @@ void ReleaseWebBrowser(HHInfo *info)
             IOleInPlaceSite_Release(inplace);
         }
 
-        IOleObject_SetClientSite(container->ole_obj, NULL);
+        IOleObject_SetClientSite(container->ole_obj, ((void*)0));
     }
 
-    info->web_browser = NULL;
+    info->web_browser = ((void*)0);
     IOleClientSite_Release(&container->IOleClientSite_iface);
 }

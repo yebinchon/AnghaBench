@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX_LEN ; 
- int /*<<< orphan*/  RSANUMBYTES ; 
- int /*<<< orphan*/  RSA_verify (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ ,char*,int) ; 
- int SHA_DIGEST_SIZE ; 
- int /*<<< orphan*/  SHA_hash (int*,int,char*) ; 
- scalar_t__ buf ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int fread (scalar_t__,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  rsa_key ; 
+
+
+
+typedef int uint32_t ;
+typedef int FILE ;
+
+
+ int MAX_LEN ;
+ int RSANUMBYTES ;
+ int RSA_verify (int *,void*,int ,char*,int) ;
+ int SHA_DIGEST_SIZE ;
+ int SHA_hash (int*,int,char*) ;
+ scalar_t__ buf ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fread (scalar_t__,int,int ,int *) ;
+ int printf (char*,...) ;
+ int rsa_key ;
 
 int main() {
   FILE *f = fopen("../obj/panda.bin", "rb");

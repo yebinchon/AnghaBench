@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  c_register_pragma (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  handle_pragma_implementation ; 
- int /*<<< orphan*/  handle_pragma_interface ; 
- int /*<<< orphan*/  handle_pragma_java_exceptions ; 
- int /*<<< orphan*/  handle_pragma_unit ; 
- int /*<<< orphan*/  handle_pragma_vtable ; 
+ int c_register_pragma (char*,char*,int ) ;
+ int handle_pragma_implementation ;
+ int handle_pragma_interface ;
+ int handle_pragma_java_exceptions ;
+ int handle_pragma_unit ;
+ int handle_pragma_vtable ;
 
 __attribute__((used)) static void
 init_cp_pragma (void)

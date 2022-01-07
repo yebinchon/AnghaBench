@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct fd {int dummy; } ;
-typedef  int /*<<< orphan*/  path ;
-typedef  int mode_t_ ;
-typedef  int /*<<< orphan*/  fd_t ;
-typedef  int /*<<< orphan*/  dword_t ;
-typedef  int /*<<< orphan*/  addr_t ;
+typedef int path ;
+typedef int mode_t_ ;
+typedef int fd_t ;
+typedef int dword_t ;
+typedef int addr_t ;
 
-/* Variables and functions */
- int MAX_PATH ; 
- int /*<<< orphan*/  STRACE (char*,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  _EBADF ; 
- int /*<<< orphan*/  _EFAULT ; 
- int /*<<< orphan*/  apply_umask (int*) ; 
- struct fd* at_fd (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  generic_mkdirat (struct fd*,char*,int) ; 
- scalar_t__ user_read_string (int /*<<< orphan*/ ,char*,int) ; 
+
+ int MAX_PATH ;
+ int STRACE (char*,int ,char*,int) ;
+ int _EBADF ;
+ int _EFAULT ;
+ int apply_umask (int*) ;
+ struct fd* at_fd (int ) ;
+ int generic_mkdirat (struct fd*,char*,int) ;
+ scalar_t__ user_read_string (int ,char*,int) ;
 
 dword_t sys_mkdirat(fd_t at_f, addr_t path_addr, mode_t_ mode) {
     char path[MAX_PATH];
@@ -33,7 +33,7 @@ dword_t sys_mkdirat(fd_t at_f, addr_t path_addr, mode_t_ mode) {
         return _EFAULT;
     STRACE("mkdirat(%d, %s, 0%o)", at_f, path, mode);
     struct fd *at = at_fd(at_f);
-    if (at == NULL)
+    if (at == ((void*)0))
         return _EBADF;
     apply_umask(&mode);
     mode &= 0777;

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_10__ {int /*<<< orphan*/ * dec; int /*<<< orphan*/ * enc; } ;
-struct st_quic_keyset_t {TYPE_1__ address_token; int /*<<< orphan*/ * cid; int /*<<< orphan*/  name; } ;
-struct TYPE_11__ {int /*<<< orphan*/  len; int /*<<< orphan*/  base; } ;
-typedef  TYPE_2__ ptls_iovec_t ;
-typedef  int /*<<< orphan*/  master_digestbuf ;
-typedef  int /*<<< orphan*/  keybuf ;
-struct TYPE_12__ {int /*<<< orphan*/  key_size; } ;
 
-/* Variables and functions */
- int PTLS_MAX_DIGEST_SIZE ; 
- int PTLS_MAX_SECRET_SIZE ; 
- int /*<<< orphan*/  PTLS_SHA256_DIGEST_SIZE ; 
- int /*<<< orphan*/  assert (int) ; 
- void* ptls_aead_new (TYPE_4__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ptls_calc_hash (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ptls_clear_memory (int /*<<< orphan*/ *,int) ; 
- int ptls_hkdf_expand_label (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__,char*,TYPE_2__,char*) ; 
- TYPE_2__ ptls_iovec_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ptls_openssl_aes128ecb ; 
- TYPE_4__ ptls_openssl_aes128gcm ; 
- int /*<<< orphan*/  ptls_openssl_bfecb ; 
- int /*<<< orphan*/  ptls_openssl_sha256 ; 
- int /*<<< orphan*/ * quicly_new_default_cid_encryptor (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__) ; 
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_10__ {int * dec; int * enc; } ;
+struct st_quic_keyset_t {TYPE_1__ address_token; int * cid; int name; } ;
+struct TYPE_11__ {int len; int base; } ;
+typedef TYPE_2__ ptls_iovec_t ;
+typedef int master_digestbuf ;
+typedef int keybuf ;
+struct TYPE_12__ {int key_size; } ;
+
+
+ int PTLS_MAX_DIGEST_SIZE ;
+ int PTLS_MAX_SECRET_SIZE ;
+ int PTLS_SHA256_DIGEST_SIZE ;
+ int assert (int) ;
+ void* ptls_aead_new (TYPE_4__*,int *,int,int *,char*) ;
+ int ptls_calc_hash (int *,int *,int ,int ) ;
+ int ptls_clear_memory (int *,int) ;
+ int ptls_hkdf_expand_label (int *,int *,int ,TYPE_2__,char*,TYPE_2__,char*) ;
+ TYPE_2__ ptls_iovec_init (int *,int ) ;
+ int ptls_openssl_aes128ecb ;
+ TYPE_4__ ptls_openssl_aes128gcm ;
+ int ptls_openssl_bfecb ;
+ int ptls_openssl_sha256 ;
+ int * quicly_new_default_cid_encryptor (int *,int *,int *,TYPE_2__) ;
 
 __attribute__((used)) static void init_keyset(struct st_quic_keyset_t *keyset, uint8_t name, ptls_iovec_t master_secret)
 {
@@ -51,14 +51,14 @@ __attribute__((used)) static void init_keyset(struct st_quic_keyset_t *keyset, u
     keyset->name = name;
     keyset->cid =
         quicly_new_default_cid_encryptor(&ptls_openssl_bfecb, &ptls_openssl_aes128ecb, &ptls_openssl_sha256, master_secret);
-    assert(keyset->cid != NULL);
+    assert(keyset->cid != ((void*)0));
     ret = ptls_hkdf_expand_label(&ptls_openssl_sha256, keybuf, ptls_openssl_aes128gcm.key_size, master_secret, "address-token",
-                                 ptls_iovec_init(NULL, 0), "");
+                                 ptls_iovec_init(((void*)0), 0), "");
     assert(ret == 0);
     keyset->address_token.enc = ptls_aead_new(&ptls_openssl_aes128gcm, &ptls_openssl_sha256, 1, keybuf, "");
-    assert(keyset->address_token.enc != NULL);
+    assert(keyset->address_token.enc != ((void*)0));
     keyset->address_token.dec = ptls_aead_new(&ptls_openssl_aes128gcm, &ptls_openssl_sha256, 0, keybuf, "");
-    assert(keyset->address_token.dec != NULL);
+    assert(keyset->address_token.dec != ((void*)0));
 
     ptls_clear_memory(master_digestbuf, sizeof(master_digestbuf));
     ptls_clear_memory(keybuf, sizeof(keybuf));

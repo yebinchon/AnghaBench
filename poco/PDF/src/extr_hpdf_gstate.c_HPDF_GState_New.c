@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  member_7; int /*<<< orphan*/  member_6; int /*<<< orphan*/  member_5; int /*<<< orphan*/  member_4; int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-struct TYPE_15__ {int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; TYPE_1__ member_0; } ;
-struct TYPE_12__ {int member_0; int member_3; int /*<<< orphan*/  member_5; int /*<<< orphan*/  member_4; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; } ;
-struct TYPE_14__ {scalar_t__ depth; struct TYPE_14__* prev; int /*<<< orphan*/  writing_mode; scalar_t__ font_size; int /*<<< orphan*/ * font; scalar_t__ gray_stroke; scalar_t__ gray_fill; void* cmyk_stroke; void* cmyk_fill; void* rgb_stroke; void* rgb_fill; void* cs_fill; void* cs_stroke; int /*<<< orphan*/  text_rise; int /*<<< orphan*/  rendering_mode; int /*<<< orphan*/  text_leading; int /*<<< orphan*/  h_scalling; int /*<<< orphan*/  word_space; int /*<<< orphan*/  char_space; int /*<<< orphan*/  flatness; TYPE_5__ dash_mode; int /*<<< orphan*/  miter_limit; int /*<<< orphan*/  line_join; int /*<<< orphan*/  line_cap; int /*<<< orphan*/  line_width; TYPE_2__ trans_matrix; } ;
-struct TYPE_13__ {int /*<<< orphan*/  error; } ;
-typedef  TYPE_2__ HPDF_TransMatrix ;
-typedef  void* HPDF_RGBColor ;
-typedef  TYPE_3__* HPDF_MMgr ;
-typedef  int /*<<< orphan*/  HPDF_GState_Rec ;
-typedef  TYPE_4__* HPDF_GState ;
-typedef  TYPE_5__ HPDF_DashMode ;
-typedef  void* HPDF_CMYKColor ;
 
-/* Variables and functions */
- void* HPDF_CS_DEVICE_GRAY ; 
- int /*<<< orphan*/  HPDF_DEF_CHARSPACE ; 
- int /*<<< orphan*/  HPDF_DEF_FLATNESS ; 
- int /*<<< orphan*/  HPDF_DEF_HSCALING ; 
- int /*<<< orphan*/  HPDF_DEF_LEADING ; 
- int /*<<< orphan*/  HPDF_DEF_LINECAP ; 
- int /*<<< orphan*/  HPDF_DEF_LINEJOIN ; 
- int /*<<< orphan*/  HPDF_DEF_LINEWIDTH ; 
- int /*<<< orphan*/  HPDF_DEF_MITERLIMIT ; 
- int /*<<< orphan*/  HPDF_DEF_RENDERING_MODE ; 
- int /*<<< orphan*/  HPDF_DEF_RISE ; 
- int /*<<< orphan*/  HPDF_DEF_WORDSPACE ; 
- int /*<<< orphan*/  HPDF_EXCEED_GSTATE_LIMIT ; 
- TYPE_4__* HPDF_GetMem (TYPE_3__*,int) ; 
- scalar_t__ HPDF_LIMIT_MAX_GSTATE ; 
- int /*<<< orphan*/  HPDF_SetError (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_WMODE_HORIZONTAL ; 
+
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int member_7; int member_6; int member_5; int member_4; int member_3; int member_2; int member_1; int member_0; } ;
+struct TYPE_15__ {int member_2; int member_1; TYPE_1__ member_0; } ;
+struct TYPE_12__ {int member_0; int member_3; int member_5; int member_4; int member_2; int member_1; } ;
+struct TYPE_14__ {scalar_t__ depth; struct TYPE_14__* prev; int writing_mode; scalar_t__ font_size; int * font; scalar_t__ gray_stroke; scalar_t__ gray_fill; void* cmyk_stroke; void* cmyk_fill; void* rgb_stroke; void* rgb_fill; void* cs_fill; void* cs_stroke; int text_rise; int rendering_mode; int text_leading; int h_scalling; int word_space; int char_space; int flatness; TYPE_5__ dash_mode; int miter_limit; int line_join; int line_cap; int line_width; TYPE_2__ trans_matrix; } ;
+struct TYPE_13__ {int error; } ;
+typedef TYPE_2__ HPDF_TransMatrix ;
+typedef void* HPDF_RGBColor ;
+typedef TYPE_3__* HPDF_MMgr ;
+typedef int HPDF_GState_Rec ;
+typedef TYPE_4__* HPDF_GState ;
+typedef TYPE_5__ HPDF_DashMode ;
+typedef void* HPDF_CMYKColor ;
+
+
+ void* HPDF_CS_DEVICE_GRAY ;
+ int HPDF_DEF_CHARSPACE ;
+ int HPDF_DEF_FLATNESS ;
+ int HPDF_DEF_HSCALING ;
+ int HPDF_DEF_LEADING ;
+ int HPDF_DEF_LINECAP ;
+ int HPDF_DEF_LINEJOIN ;
+ int HPDF_DEF_LINEWIDTH ;
+ int HPDF_DEF_MITERLIMIT ;
+ int HPDF_DEF_RENDERING_MODE ;
+ int HPDF_DEF_RISE ;
+ int HPDF_DEF_WORDSPACE ;
+ int HPDF_EXCEED_GSTATE_LIMIT ;
+ TYPE_4__* HPDF_GetMem (TYPE_3__*,int) ;
+ scalar_t__ HPDF_LIMIT_MAX_GSTATE ;
+ int HPDF_SetError (int ,int ,int ) ;
+ int HPDF_WMODE_HORIZONTAL ;
 
 HPDF_GState
-HPDF_GState_New  (HPDF_MMgr    mmgr,
-                  HPDF_GState  current)
+HPDF_GState_New (HPDF_MMgr mmgr,
+                  HPDF_GState current)
 {
-    HPDF_GState  gstate;
+    HPDF_GState gstate;
 
     if (current && current->depth >= HPDF_LIMIT_MAX_GSTATE) {
         HPDF_SetError (mmgr->error, HPDF_EXCEED_GSTATE_LIMIT, 0);
 
-        return NULL;
+        return ((void*)0);
     }
 
     gstate = HPDF_GetMem (mmgr, sizeof(HPDF_GState_Rec));
     if (!gstate)
-        return NULL;
+        return ((void*)0);
 
     if (current) {
         gstate->trans_matrix = current->trans_matrix;
-        gstate->line_width =  current->line_width;
-        gstate->line_cap =  current->line_cap;
-        gstate->line_join =  current->line_join;
-        gstate->miter_limit =  current->miter_limit;
+        gstate->line_width = current->line_width;
+        gstate->line_cap = current->line_cap;
+        gstate->line_join = current->line_join;
+        gstate->miter_limit = current->miter_limit;
         gstate->dash_mode = current->dash_mode;
         gstate->flatness = current->flatness;
 
@@ -124,11 +124,11 @@ HPDF_GState_New  (HPDF_MMgr    mmgr,
         gstate->gray_fill = 0;
         gstate->gray_stroke = 0;
 
-        gstate->font = NULL;
+        gstate->font = ((void*)0);
         gstate->font_size = 0;
         gstate->writing_mode = HPDF_WMODE_HORIZONTAL;
 
-        gstate->prev = NULL;
+        gstate->prev = ((void*)0);
         gstate->depth = 1;
     }
 

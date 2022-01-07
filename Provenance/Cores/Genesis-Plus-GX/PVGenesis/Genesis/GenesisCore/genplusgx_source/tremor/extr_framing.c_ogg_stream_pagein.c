@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int serialno; int lacing_fill; void* header_head; scalar_t__ header_tail; void* body_head; scalar_t__ body_tail; } ;
-typedef  TYPE_1__ ogg_stream_state ;
+typedef TYPE_1__ ogg_stream_state ;
 struct TYPE_10__ {scalar_t__ header; scalar_t__ body; } ;
-typedef  TYPE_2__ ogg_page ;
+typedef TYPE_2__ ogg_page ;
 
-/* Variables and functions */
- int OGG_ESERIAL ; 
- int OGG_EVERSION ; 
- int OGG_SUCCESS ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- void* ogg_buffer_cat (void*,scalar_t__) ; 
- void* ogg_buffer_walk (scalar_t__) ; 
- int /*<<< orphan*/  ogg_page_release (TYPE_2__*) ; 
- int ogg_page_serialno (TYPE_2__*) ; 
- int ogg_page_version (TYPE_2__*) ; 
+
+ int OGG_ESERIAL ;
+ int OGG_EVERSION ;
+ int OGG_SUCCESS ;
+ int memset (TYPE_2__*,int ,int) ;
+ void* ogg_buffer_cat (void*,scalar_t__) ;
+ void* ogg_buffer_walk (scalar_t__) ;
+ int ogg_page_release (TYPE_2__*) ;
+ int ogg_page_serialno (TYPE_2__*) ;
+ int ogg_page_version (TYPE_2__*) ;
 
 int ogg_stream_pagein(ogg_stream_state *os, ogg_page *og){
 
   int serialno=ogg_page_serialno(og);
   int version=ogg_page_version(og);
 
-  /* check the serial number */
+
   if(serialno!=os->serialno){
     ogg_page_release(og);
     return OGG_ESERIAL;
@@ -43,7 +43,7 @@ int ogg_stream_pagein(ogg_stream_state *os, ogg_page *og){
     return OGG_EVERSION;
   }
 
-  /* add to fifos */
+
   if(!os->body_tail){
     os->body_tail=og->body;
     os->body_head=ogg_buffer_walk(og->body);

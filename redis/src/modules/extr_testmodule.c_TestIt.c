@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RedisModuleString ;
-typedef  int /*<<< orphan*/  RedisModuleCtx ;
-typedef  int /*<<< orphan*/  RedisModuleCallReply ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REDISMODULE_NOT_USED (int) ; 
- int REDISMODULE_OK ; 
- int /*<<< orphan*/  RedisModule_AutoMemory (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_ReplyWithSimpleString (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  T (char*,char*,...) ; 
- int /*<<< orphan*/  TestAssertIntegerReply (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TestAssertStringReply (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,int) ; 
+
+
+
+typedef int RedisModuleString ;
+typedef int RedisModuleCtx ;
+typedef int RedisModuleCallReply ;
+
+
+ int REDISMODULE_NOT_USED (int) ;
+ int REDISMODULE_OK ;
+ int RedisModule_AutoMemory (int *) ;
+ int RedisModule_ReplyWithSimpleString (int *,char*) ;
+ int T (char*,char*,...) ;
+ int TestAssertIntegerReply (int *,int *,int ) ;
+ int TestAssertStringReply (int *,int *,char*,int) ;
 
 int TestIt(RedisModuleCtx *ctx, RedisModuleString **argv, int argc) {
     REDISMODULE_NOT_USED(argv);
@@ -30,7 +30,7 @@ int TestIt(RedisModuleCtx *ctx, RedisModuleString **argv, int argc) {
     RedisModule_AutoMemory(ctx);
     RedisModuleCallReply *reply;
 
-    /* Make sure the DB is empty before to proceed. */
+
     T("dbsize","");
     if (!TestAssertIntegerReply(ctx,reply,0)) goto fail;
 

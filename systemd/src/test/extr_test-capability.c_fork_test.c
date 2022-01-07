@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ pid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- scalar_t__ WEXITSTATUS (int) ; 
- scalar_t__ WIFEXITED (int) ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- scalar_t__ fork () ; 
- scalar_t__ waitpid (scalar_t__,int*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ pid_t ;
+
+
+ int EXIT_SUCCESS ;
+ scalar_t__ WEXITSTATUS (int) ;
+ scalar_t__ WIFEXITED (int) ;
+ int assert_se (int) ;
+ int exit (int ) ;
+ scalar_t__ fork () ;
+ scalar_t__ waitpid (scalar_t__,int*,int ) ;
 
 __attribute__((used)) static void fork_test(void (*test_func)(void)) {
         pid_t pid = 0;

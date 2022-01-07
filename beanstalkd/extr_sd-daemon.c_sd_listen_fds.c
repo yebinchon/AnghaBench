@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ pid_t ;
 
-/* Variables and functions */
- int EINVAL ; 
- int FD_CLOEXEC ; 
- int /*<<< orphan*/  F_GETFD ; 
- int /*<<< orphan*/  F_SETFD ; 
- int SD_LISTEN_FDS_START ; 
- int /*<<< orphan*/  UNUSED_PARAMETER (int) ; 
- int errno ; 
- int fcntl (int,int /*<<< orphan*/ ,...) ; 
- char* getenv (char*) ; 
- scalar_t__ getpid () ; 
- unsigned long strtoul (char const*,char**,int) ; 
- int /*<<< orphan*/  unsetenv (char*) ; 
+
+
+
+typedef scalar_t__ pid_t ;
+
+
+ int EINVAL ;
+ int FD_CLOEXEC ;
+ int F_GETFD ;
+ int F_SETFD ;
+ int SD_LISTEN_FDS_START ;
+ int UNUSED_PARAMETER (int) ;
+ int errno ;
+ int fcntl (int,int ,...) ;
+ char* getenv (char*) ;
+ scalar_t__ getpid () ;
+ unsigned long strtoul (char const*,char**,int) ;
+ int unsetenv (char*) ;
 
 int sd_listen_fds(int unset_environment) {
 
-#if defined(DISABLE_SYSTEMD) || !defined(__linux__)
-        UNUSED_PARAMETER(unset_environment);
-        return 0;
-#else
+
+
+
+
         int r, fd;
         const char *e;
-        char *p = NULL;
+        char *p = ((void*)0);
         unsigned long l;
 
         if (!(e = getenv("LISTEN_PID"))) {
@@ -55,7 +55,7 @@ int sd_listen_fds(int unset_environment) {
                 goto finish;
         }
 
-        /* Is this for us? */
+
         if (getpid() != (pid_t) l) {
                 r = 0;
                 goto finish;
@@ -105,5 +105,5 @@ finish:
         }
 
         return r;
-#endif
+
 }

@@ -1,212 +1,212 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u32 ;
+
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef scalar_t__ u32 ;
 struct resource {int dummy; } ;
-struct qcom_rpm {TYPE_1__* data; int /*<<< orphan*/  ipc_bit; int /*<<< orphan*/  ipc_offset; int /*<<< orphan*/ * ipc_regmap; int /*<<< orphan*/ * status_regs; int /*<<< orphan*/ * req_regs; int /*<<< orphan*/ * ctrl_regs; int /*<<< orphan*/ * ramclk; int /*<<< orphan*/  ack; int /*<<< orphan*/  lock; TYPE_2__* dev; } ;
-struct TYPE_13__ {int /*<<< orphan*/  of_node; } ;
+struct qcom_rpm {TYPE_1__* data; int ipc_bit; int ipc_offset; int * ipc_regmap; int * status_regs; int * req_regs; int * ctrl_regs; int * ramclk; int ack; int lock; TYPE_2__* dev; } ;
+struct TYPE_13__ {int of_node; } ;
 struct platform_device {TYPE_2__ dev; } ;
 struct of_device_id {TYPE_1__* data; } ;
 struct device_node {int dummy; } ;
 struct TYPE_12__ {scalar_t__ version; } ;
 
-/* Variables and functions */
- int EFAULT ; 
- int EINVAL ; 
- int ENODEV ; 
- int ENOMEM ; 
- int EPROBE_DEFER ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  IORESOURCE_MEM ; 
- int /*<<< orphan*/  IRQF_TRIGGER_RISING ; 
- scalar_t__ IS_ERR (int /*<<< orphan*/ *) ; 
- int PTR_ERR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RPM_CTRL_REG (struct qcom_rpm*,int) ; 
- int /*<<< orphan*/  RPM_STATUS_REG (struct qcom_rpm*,int) ; 
- int /*<<< orphan*/  clk_prepare_enable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dev_err (TYPE_2__*,char*,...) ; 
- int /*<<< orphan*/  dev_info (TYPE_2__*,char*,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  dev_set_drvdata (TYPE_2__*,struct qcom_rpm*) ; 
- int /*<<< orphan*/  dev_warn (TYPE_2__*,char*) ; 
- int /*<<< orphan*/ * devm_clk_get (TYPE_2__*,char*) ; 
- int /*<<< orphan*/ * devm_ioremap_resource (TYPE_2__*,struct resource*) ; 
- struct qcom_rpm* devm_kzalloc (TYPE_2__*,int,int /*<<< orphan*/ ) ; 
- int devm_request_irq (TYPE_2__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,struct qcom_rpm*) ; 
- int /*<<< orphan*/  init_completion (int /*<<< orphan*/ *) ; 
- int irq_set_irq_wake (int,int) ; 
- int /*<<< orphan*/  mutex_init (int /*<<< orphan*/ *) ; 
- struct of_device_id* of_match_device (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  of_node_put (struct device_node*) ; 
- struct device_node* of_parse_phandle (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int of_platform_populate (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int of_property_read_u32_index (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *) ; 
- int platform_get_irq_byname (struct platform_device*,char*) ; 
- struct resource* platform_get_resource (struct platform_device*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qcom_rpm_ack_interrupt ; 
- int /*<<< orphan*/  qcom_rpm_err_interrupt ; 
- int /*<<< orphan*/  qcom_rpm_of_match ; 
- int /*<<< orphan*/  qcom_rpm_wakeup_interrupt ; 
- scalar_t__ readl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * syscon_node_to_regmap (struct device_node*) ; 
- int /*<<< orphan*/  writel (scalar_t__,int /*<<< orphan*/ ) ; 
+
+ int EFAULT ;
+ int EINVAL ;
+ int ENODEV ;
+ int ENOMEM ;
+ int EPROBE_DEFER ;
+ int GFP_KERNEL ;
+ int IORESOURCE_MEM ;
+ int IRQF_TRIGGER_RISING ;
+ scalar_t__ IS_ERR (int *) ;
+ int PTR_ERR (int *) ;
+ int RPM_CTRL_REG (struct qcom_rpm*,int) ;
+ int RPM_STATUS_REG (struct qcom_rpm*,int) ;
+ int clk_prepare_enable (int *) ;
+ int dev_err (TYPE_2__*,char*,...) ;
+ int dev_info (TYPE_2__*,char*,scalar_t__,scalar_t__,scalar_t__) ;
+ int dev_set_drvdata (TYPE_2__*,struct qcom_rpm*) ;
+ int dev_warn (TYPE_2__*,char*) ;
+ int * devm_clk_get (TYPE_2__*,char*) ;
+ int * devm_ioremap_resource (TYPE_2__*,struct resource*) ;
+ struct qcom_rpm* devm_kzalloc (TYPE_2__*,int,int ) ;
+ int devm_request_irq (TYPE_2__*,int,int ,int ,char*,struct qcom_rpm*) ;
+ int init_completion (int *) ;
+ int irq_set_irq_wake (int,int) ;
+ int mutex_init (int *) ;
+ struct of_device_id* of_match_device (int ,TYPE_2__*) ;
+ int of_node_put (struct device_node*) ;
+ struct device_node* of_parse_phandle (int ,char*,int ) ;
+ int of_platform_populate (int ,int *,int *,TYPE_2__*) ;
+ int of_property_read_u32_index (int ,char*,int,int *) ;
+ int platform_get_irq_byname (struct platform_device*,char*) ;
+ struct resource* platform_get_resource (struct platform_device*,int ,int ) ;
+ int qcom_rpm_ack_interrupt ;
+ int qcom_rpm_err_interrupt ;
+ int qcom_rpm_of_match ;
+ int qcom_rpm_wakeup_interrupt ;
+ scalar_t__ readl (int ) ;
+ int * syscon_node_to_regmap (struct device_node*) ;
+ int writel (scalar_t__,int ) ;
 
 __attribute__((used)) static int qcom_rpm_probe(struct platform_device *pdev)
 {
-	const struct of_device_id *match;
-	struct device_node *syscon_np;
-	struct resource *res;
-	struct qcom_rpm *rpm;
-	u32 fw_version[3];
-	int irq_wakeup;
-	int irq_ack;
-	int irq_err;
-	int ret;
+ const struct of_device_id *match;
+ struct device_node *syscon_np;
+ struct resource *res;
+ struct qcom_rpm *rpm;
+ u32 fw_version[3];
+ int irq_wakeup;
+ int irq_ack;
+ int irq_err;
+ int ret;
 
-	rpm = devm_kzalloc(&pdev->dev, sizeof(*rpm), GFP_KERNEL);
-	if (!rpm)
-		return -ENOMEM;
+ rpm = devm_kzalloc(&pdev->dev, sizeof(*rpm), GFP_KERNEL);
+ if (!rpm)
+  return -ENOMEM;
 
-	rpm->dev = &pdev->dev;
-	mutex_init(&rpm->lock);
-	init_completion(&rpm->ack);
+ rpm->dev = &pdev->dev;
+ mutex_init(&rpm->lock);
+ init_completion(&rpm->ack);
 
-	/* Enable message RAM clock */
-	rpm->ramclk = devm_clk_get(&pdev->dev, "ram");
-	if (IS_ERR(rpm->ramclk)) {
-		ret = PTR_ERR(rpm->ramclk);
-		if (ret == -EPROBE_DEFER)
-			return ret;
-		/*
-		 * Fall through in all other cases, as the clock is
-		 * optional. (Does not exist on all platforms.)
-		 */
-		rpm->ramclk = NULL;
-	}
-	clk_prepare_enable(rpm->ramclk); /* Accepts NULL */
 
-	irq_ack = platform_get_irq_byname(pdev, "ack");
-	if (irq_ack < 0)
-		return irq_ack;
+ rpm->ramclk = devm_clk_get(&pdev->dev, "ram");
+ if (IS_ERR(rpm->ramclk)) {
+  ret = PTR_ERR(rpm->ramclk);
+  if (ret == -EPROBE_DEFER)
+   return ret;
 
-	irq_err = platform_get_irq_byname(pdev, "err");
-	if (irq_err < 0)
-		return irq_err;
 
-	irq_wakeup = platform_get_irq_byname(pdev, "wakeup");
-	if (irq_wakeup < 0)
-		return irq_wakeup;
 
-	match = of_match_device(qcom_rpm_of_match, &pdev->dev);
-	if (!match)
-		return -ENODEV;
-	rpm->data = match->data;
 
-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-	rpm->status_regs = devm_ioremap_resource(&pdev->dev, res);
-	if (IS_ERR(rpm->status_regs))
-		return PTR_ERR(rpm->status_regs);
-	rpm->ctrl_regs = rpm->status_regs + 0x400;
-	rpm->req_regs = rpm->status_regs + 0x600;
+  rpm->ramclk = ((void*)0);
+ }
+ clk_prepare_enable(rpm->ramclk);
 
-	syscon_np = of_parse_phandle(pdev->dev.of_node, "qcom,ipc", 0);
-	if (!syscon_np) {
-		dev_err(&pdev->dev, "no qcom,ipc node\n");
-		return -ENODEV;
-	}
+ irq_ack = platform_get_irq_byname(pdev, "ack");
+ if (irq_ack < 0)
+  return irq_ack;
 
-	rpm->ipc_regmap = syscon_node_to_regmap(syscon_np);
-	of_node_put(syscon_np);
-	if (IS_ERR(rpm->ipc_regmap))
-		return PTR_ERR(rpm->ipc_regmap);
+ irq_err = platform_get_irq_byname(pdev, "err");
+ if (irq_err < 0)
+  return irq_err;
 
-	ret = of_property_read_u32_index(pdev->dev.of_node, "qcom,ipc", 1,
-					 &rpm->ipc_offset);
-	if (ret < 0) {
-		dev_err(&pdev->dev, "no offset in qcom,ipc\n");
-		return -EINVAL;
-	}
+ irq_wakeup = platform_get_irq_byname(pdev, "wakeup");
+ if (irq_wakeup < 0)
+  return irq_wakeup;
 
-	ret = of_property_read_u32_index(pdev->dev.of_node, "qcom,ipc", 2,
-					 &rpm->ipc_bit);
-	if (ret < 0) {
-		dev_err(&pdev->dev, "no bit in qcom,ipc\n");
-		return -EINVAL;
-	}
+ match = of_match_device(qcom_rpm_of_match, &pdev->dev);
+ if (!match)
+  return -ENODEV;
+ rpm->data = match->data;
 
-	dev_set_drvdata(&pdev->dev, rpm);
+ res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ rpm->status_regs = devm_ioremap_resource(&pdev->dev, res);
+ if (IS_ERR(rpm->status_regs))
+  return PTR_ERR(rpm->status_regs);
+ rpm->ctrl_regs = rpm->status_regs + 0x400;
+ rpm->req_regs = rpm->status_regs + 0x600;
 
-	fw_version[0] = readl(RPM_STATUS_REG(rpm, 0));
-	fw_version[1] = readl(RPM_STATUS_REG(rpm, 1));
-	fw_version[2] = readl(RPM_STATUS_REG(rpm, 2));
-	if (fw_version[0] != rpm->data->version) {
-		dev_err(&pdev->dev,
-			"RPM version %u.%u.%u incompatible with driver version %u",
-			fw_version[0],
-			fw_version[1],
-			fw_version[2],
-			rpm->data->version);
-		return -EFAULT;
-	}
+ syscon_np = of_parse_phandle(pdev->dev.of_node, "qcom,ipc", 0);
+ if (!syscon_np) {
+  dev_err(&pdev->dev, "no qcom,ipc node\n");
+  return -ENODEV;
+ }
 
-	writel(fw_version[0], RPM_CTRL_REG(rpm, 0));
-	writel(fw_version[1], RPM_CTRL_REG(rpm, 1));
-	writel(fw_version[2], RPM_CTRL_REG(rpm, 2));
+ rpm->ipc_regmap = syscon_node_to_regmap(syscon_np);
+ of_node_put(syscon_np);
+ if (IS_ERR(rpm->ipc_regmap))
+  return PTR_ERR(rpm->ipc_regmap);
 
-	dev_info(&pdev->dev, "RPM firmware %u.%u.%u\n", fw_version[0],
-							fw_version[1],
-							fw_version[2]);
+ ret = of_property_read_u32_index(pdev->dev.of_node, "qcom,ipc", 1,
+      &rpm->ipc_offset);
+ if (ret < 0) {
+  dev_err(&pdev->dev, "no offset in qcom,ipc\n");
+  return -EINVAL;
+ }
 
-	ret = devm_request_irq(&pdev->dev,
-			       irq_ack,
-			       qcom_rpm_ack_interrupt,
-			       IRQF_TRIGGER_RISING,
-			       "qcom_rpm_ack",
-			       rpm);
-	if (ret) {
-		dev_err(&pdev->dev, "failed to request ack interrupt\n");
-		return ret;
-	}
+ ret = of_property_read_u32_index(pdev->dev.of_node, "qcom,ipc", 2,
+      &rpm->ipc_bit);
+ if (ret < 0) {
+  dev_err(&pdev->dev, "no bit in qcom,ipc\n");
+  return -EINVAL;
+ }
 
-	ret = irq_set_irq_wake(irq_ack, 1);
-	if (ret)
-		dev_warn(&pdev->dev, "failed to mark ack irq as wakeup\n");
+ dev_set_drvdata(&pdev->dev, rpm);
 
-	ret = devm_request_irq(&pdev->dev,
-			       irq_err,
-			       qcom_rpm_err_interrupt,
-			       IRQF_TRIGGER_RISING,
-			       "qcom_rpm_err",
-			       rpm);
-	if (ret) {
-		dev_err(&pdev->dev, "failed to request err interrupt\n");
-		return ret;
-	}
+ fw_version[0] = readl(RPM_STATUS_REG(rpm, 0));
+ fw_version[1] = readl(RPM_STATUS_REG(rpm, 1));
+ fw_version[2] = readl(RPM_STATUS_REG(rpm, 2));
+ if (fw_version[0] != rpm->data->version) {
+  dev_err(&pdev->dev,
+   "RPM version %u.%u.%u incompatible with driver version %u",
+   fw_version[0],
+   fw_version[1],
+   fw_version[2],
+   rpm->data->version);
+  return -EFAULT;
+ }
 
-	ret = devm_request_irq(&pdev->dev,
-			       irq_wakeup,
-			       qcom_rpm_wakeup_interrupt,
-			       IRQF_TRIGGER_RISING,
-			       "qcom_rpm_wakeup",
-			       rpm);
-	if (ret) {
-		dev_err(&pdev->dev, "failed to request wakeup interrupt\n");
-		return ret;
-	}
+ writel(fw_version[0], RPM_CTRL_REG(rpm, 0));
+ writel(fw_version[1], RPM_CTRL_REG(rpm, 1));
+ writel(fw_version[2], RPM_CTRL_REG(rpm, 2));
 
-	ret = irq_set_irq_wake(irq_wakeup, 1);
-	if (ret)
-		dev_warn(&pdev->dev, "failed to mark wakeup irq as wakeup\n");
+ dev_info(&pdev->dev, "RPM firmware %u.%u.%u\n", fw_version[0],
+       fw_version[1],
+       fw_version[2]);
 
-	return of_platform_populate(pdev->dev.of_node, NULL, NULL, &pdev->dev);
+ ret = devm_request_irq(&pdev->dev,
+          irq_ack,
+          qcom_rpm_ack_interrupt,
+          IRQF_TRIGGER_RISING,
+          "qcom_rpm_ack",
+          rpm);
+ if (ret) {
+  dev_err(&pdev->dev, "failed to request ack interrupt\n");
+  return ret;
+ }
+
+ ret = irq_set_irq_wake(irq_ack, 1);
+ if (ret)
+  dev_warn(&pdev->dev, "failed to mark ack irq as wakeup\n");
+
+ ret = devm_request_irq(&pdev->dev,
+          irq_err,
+          qcom_rpm_err_interrupt,
+          IRQF_TRIGGER_RISING,
+          "qcom_rpm_err",
+          rpm);
+ if (ret) {
+  dev_err(&pdev->dev, "failed to request err interrupt\n");
+  return ret;
+ }
+
+ ret = devm_request_irq(&pdev->dev,
+          irq_wakeup,
+          qcom_rpm_wakeup_interrupt,
+          IRQF_TRIGGER_RISING,
+          "qcom_rpm_wakeup",
+          rpm);
+ if (ret) {
+  dev_err(&pdev->dev, "failed to request wakeup interrupt\n");
+  return ret;
+ }
+
+ ret = irq_set_irq_wake(irq_wakeup, 1);
+ if (ret)
+  dev_warn(&pdev->dev, "failed to mark wakeup irq as wakeup\n");
+
+ return of_platform_populate(pdev->dev.of_node, ((void*)0), ((void*)0), &pdev->dev);
 }

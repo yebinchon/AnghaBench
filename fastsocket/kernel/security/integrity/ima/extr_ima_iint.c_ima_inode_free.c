@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct inode {int dummy; } ;
-struct ima_iint_cache {int /*<<< orphan*/  rcu; } ;
+struct ima_iint_cache {int rcu; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  call_rcu (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  iint_rcu_free ; 
- int /*<<< orphan*/  ima_enabled ; 
- int /*<<< orphan*/  ima_iint_lock ; 
- int /*<<< orphan*/  ima_iint_store ; 
- struct ima_iint_cache* radix_tree_delete (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+ int call_rcu (int *,int ) ;
+ int iint_rcu_free ;
+ int ima_enabled ;
+ int ima_iint_lock ;
+ int ima_iint_store ;
+ struct ima_iint_cache* radix_tree_delete (int *,unsigned long) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 void ima_inode_free(struct inode *inode)
 {
-	struct ima_iint_cache *iint;
+ struct ima_iint_cache *iint;
 
-	if (!ima_enabled)
-		return;
+ if (!ima_enabled)
+  return;
 
-	spin_lock(&ima_iint_lock);
-	iint = radix_tree_delete(&ima_iint_store, (unsigned long)inode);
-	spin_unlock(&ima_iint_lock);
-	if (iint)
-		call_rcu(&iint->rcu, iint_rcu_free);
+ spin_lock(&ima_iint_lock);
+ iint = radix_tree_delete(&ima_iint_store, (unsigned long)inode);
+ spin_unlock(&ima_iint_lock);
+ if (iint)
+  call_rcu(&iint->rcu, iint_rcu_free);
 }

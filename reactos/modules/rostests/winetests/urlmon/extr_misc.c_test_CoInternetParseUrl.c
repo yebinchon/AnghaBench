@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-struct TYPE_8__ {scalar_t__ secur_hres; scalar_t__ path_hres; scalar_t__ domain_hres; scalar_t__ rootdocument_hres; scalar_t__ rootdocument; int /*<<< orphan*/  url; scalar_t__ domain; scalar_t__ schema; scalar_t__ path; scalar_t__ encoded_url; } ;
-typedef  TYPE_1__ WCHAR ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int ARRAY_SIZE (TYPE_1__*) ; 
- scalar_t__ E_POINTER ; 
- int /*<<< orphan*/  PARSE_DOMAIN ; 
- int /*<<< orphan*/  PARSE_ENCODE ; 
- int /*<<< orphan*/  PARSE_PATH_FROM_URL ; 
- int /*<<< orphan*/  PARSE_ROOTDOCUMENT ; 
- int /*<<< orphan*/  PARSE_SCHEMA ; 
- int /*<<< orphan*/  PARSE_SECURITY_URL ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  lstrcmpW (scalar_t__,TYPE_1__*) ; 
- scalar_t__ lstrlenW (scalar_t__) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
- scalar_t__ pCoInternetParseUrl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int,scalar_t__*,int /*<<< orphan*/ ) ; 
- TYPE_1__* parse_tests ; 
- scalar_t__ wine_dbgstr_w (TYPE_1__*) ; 
- int /*<<< orphan*/  wszAbout ; 
- int /*<<< orphan*/  wszRes ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int buf ;
+struct TYPE_8__ {scalar_t__ secur_hres; scalar_t__ path_hres; scalar_t__ domain_hres; scalar_t__ rootdocument_hres; scalar_t__ rootdocument; int url; scalar_t__ domain; scalar_t__ schema; scalar_t__ path; scalar_t__ encoded_url; } ;
+typedef TYPE_1__ WCHAR ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ DWORD ;
+
+
+ int ARRAY_SIZE (TYPE_1__*) ;
+ scalar_t__ E_POINTER ;
+ int PARSE_DOMAIN ;
+ int PARSE_ENCODE ;
+ int PARSE_PATH_FROM_URL ;
+ int PARSE_ROOTDOCUMENT ;
+ int PARSE_SCHEMA ;
+ int PARSE_SECURITY_URL ;
+ scalar_t__ S_OK ;
+ int lstrcmpW (scalar_t__,TYPE_1__*) ;
+ scalar_t__ lstrlenW (scalar_t__) ;
+ scalar_t__ memcmp (int ,int ,int) ;
+ int memset (TYPE_1__*,int,int) ;
+ int ok (int,char*,int,...) ;
+ scalar_t__ pCoInternetParseUrl (int ,int ,int ,TYPE_1__*,int,scalar_t__*,int ) ;
+ TYPE_1__* parse_tests ;
+ scalar_t__ wine_dbgstr_w (TYPE_1__*) ;
+ int wszAbout ;
+ int wszRes ;
 
 __attribute__((used)) static void test_CoInternetParseUrl(void)
 {

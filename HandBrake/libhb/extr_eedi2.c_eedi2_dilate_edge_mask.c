@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  eedi2_bit_blit (int*,int,int*,int,int,int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int eedi2_bit_blit (int*,int,int*,int,int,int) ;
 
 void eedi2_dilate_edge_mask( uint8_t *mskp, int msk_pitch, uint8_t *dstp, int dst_pitch,
                              int dstr, int height, int width )
@@ -35,12 +35,12 @@ void eedi2_dilate_edge_mask( uint8_t *mskp, int msk_pitch, uint8_t *dstp, int ds
 
             int count = 0;
             if( mskpp[x-1] == 0xFF ) ++count;
-            if( mskpp[x]   == 0xFF ) ++count;
+            if( mskpp[x] == 0xFF ) ++count;
             if( mskpp[x+1] == 0xFF ) ++count;
-            if(  mskp[x-1] == 0xFF ) ++count;
-            if(  mskp[x+1] == 0xFF ) ++count;
+            if( mskp[x-1] == 0xFF ) ++count;
+            if( mskp[x+1] == 0xFF ) ++count;
             if( mskpn[x-1] == 0xFF ) ++count;
-            if( mskpn[x]   == 0xFF ) ++count;
+            if( mskpn[x] == 0xFF ) ++count;
             if( mskpn[x+1] == 0xFF ) ++count;
 
             if( count >= dstr )

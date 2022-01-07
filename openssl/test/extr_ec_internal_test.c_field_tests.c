@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EC_METHOD ;
-typedef  int /*<<< orphan*/  EC_GROUP ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_new () ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_bin2bn (unsigned char const*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_GROUP_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EC_GROUP_new (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EC_GROUP_set_curve (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  group_field_tests (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int EC_METHOD ;
+typedef int EC_GROUP ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_CTX_end (int *) ;
+ int BN_CTX_free (int *) ;
+ int * BN_CTX_get (int *) ;
+ int * BN_CTX_new () ;
+ int BN_CTX_start (int *) ;
+ int BN_bin2bn (unsigned char const*,int,int *) ;
+ int EC_GROUP_free (int *) ;
+ int * EC_GROUP_new (int const*) ;
+ int EC_GROUP_set_curve (int *,int *,int *,int *,int *) ;
+ int TEST_ptr (int *) ;
+ int TEST_true (int ) ;
+ int group_field_tests (int *,int *) ;
 
 __attribute__((used)) static int field_tests(const EC_METHOD *meth, const unsigned char *params,
                        int len)
 {
-    BN_CTX *ctx = NULL;
-    BIGNUM *p = NULL, *a = NULL, *b = NULL;
-    EC_GROUP *group = NULL;
+    BN_CTX *ctx = ((void*)0);
+    BIGNUM *p = ((void*)0), *a = ((void*)0), *b = ((void*)0);
+    EC_GROUP *group = ((void*)0);
     int ret = 0;
 
     if (!TEST_ptr(ctx = BN_CTX_new()))
@@ -56,7 +56,7 @@ __attribute__((used)) static int field_tests(const EC_METHOD *meth, const unsign
  err:
     BN_CTX_end(ctx);
     BN_CTX_free(ctx);
-    if (group != NULL)
+    if (group != ((void*)0))
         EC_GROUP_free(group);
     return ret;
 }

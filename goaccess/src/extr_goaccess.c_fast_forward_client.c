@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  mutex; } ;
-struct TYPE_3__ {int /*<<< orphan*/  mutex; int /*<<< orphan*/  fd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- TYPE_2__ gdns_thread ; 
- char* get_json (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glog ; 
- TYPE_1__* gwswriter ; 
- int /*<<< orphan*/  holder ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  send_holder_to_client (int /*<<< orphan*/ ,int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int mutex; } ;
+struct TYPE_3__ {int mutex; int fd; } ;
+
+
+ int free (char*) ;
+ TYPE_2__ gdns_thread ;
+ char* get_json (int ,int ,int ) ;
+ int glog ;
+ TYPE_1__* gwswriter ;
+ int holder ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int send_holder_to_client (int ,int,char*,int ) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static void
 fast_forward_client (int listener)
 {
-  char *json = NULL;
+  char *json = ((void*)0);
 
   pthread_mutex_lock (&gdns_thread.mutex);
   json = get_json (glog, holder, 0);
   pthread_mutex_unlock (&gdns_thread.mutex);
 
-  if (json == NULL)
+  if (json == ((void*)0))
     return;
 
   pthread_mutex_lock (&gwswriter->mutex);

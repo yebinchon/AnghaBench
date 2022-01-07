@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsUInt16Number ;
-typedef  int /*<<< orphan*/  cmsTagSignature ;
-typedef  int /*<<< orphan*/  cmsNAMEDCOLORLIST ;
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/  cmsHPROFILE ;
-typedef  int /*<<< orphan*/  cmsBool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  Fail (char*) ; 
- int /*<<< orphan*/ * cmsAllocNamedColorList (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*,char*) ; 
- int /*<<< orphan*/  cmsAppendNamedColor (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsFreeNamedColorList (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int cmsMAXCHANNELS ; 
- int /*<<< orphan*/  cmsNamedColorInfo (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ cmsReadTag (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int cmsWriteTag (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
+
+
+
+typedef int cmsUInt16Number ;
+typedef int cmsTagSignature ;
+typedef int cmsNAMEDCOLORLIST ;
+typedef int cmsInt32Number ;
+typedef int cmsHPROFILE ;
+typedef int cmsBool ;
+
+
+ int DbgThread () ;
+ int Fail (char*) ;
+ int * cmsAllocNamedColorList (int ,int ,int,char*,char*) ;
+ int cmsAppendNamedColor (int ,int *,char*,int *,int *) ;
+ int cmsFreeNamedColorList (int ,int *) ;
+ int cmsMAXCHANNELS ;
+ int cmsNamedColorInfo (int ,int *,int,char*,int *,int *,int *,int *) ;
+ scalar_t__ cmsReadTag (int ,int ,int ) ;
+ int cmsWriteTag (int ,int ,int ,int *) ;
+ int sprintf (char*,char*,int) ;
+ int strcmp (char*,char*) ;
 
 __attribute__((used)) static
-cmsInt32Number CheckNamedColor(cmsInt32Number Pass,  cmsHPROFILE hProfile, cmsTagSignature tag, cmsInt32Number max_check, cmsBool  colorant_check)
+cmsInt32Number CheckNamedColor(cmsInt32Number Pass, cmsHPROFILE hProfile, cmsTagSignature tag, cmsInt32Number max_check, cmsBool colorant_check)
 {
     cmsNAMEDCOLORLIST* nc;
     cmsInt32Number i, j, rc;
@@ -47,7 +47,7 @@ cmsInt32Number CheckNamedColor(cmsInt32Number Pass,  cmsHPROFILE hProfile, cmsTa
     case 1:
 
         nc = cmsAllocNamedColorList(DbgThread(), 0, 4, "prefix", "suffix");
-        if (nc == NULL) return 0;
+        if (nc == ((void*)0)) return 0;
 
         for (i=0; i < max_check; i++) {
 
@@ -65,7 +65,7 @@ cmsInt32Number CheckNamedColor(cmsInt32Number Pass,  cmsHPROFILE hProfile, cmsTa
     case 2:
 
         nc = (cmsNAMEDCOLORLIST *) cmsReadTag(DbgThread(), hProfile, tag);
-        if (nc == NULL) return 0;
+        if (nc == ((void*)0)) return 0;
 
         for (i=0; i < max_check; i++) {
 
@@ -73,14 +73,14 @@ cmsInt32Number CheckNamedColor(cmsInt32Number Pass,  cmsHPROFILE hProfile, cmsTa
             CheckColorant[0] = CheckColorant[1] = CheckColorant[2] = CheckColorant[3] = (cmsUInt16Number) (max_check - i);
 
             sprintf(CheckName, "#%d", i);
-            if (!cmsNamedColorInfo(DbgThread(), nc, i, Name, NULL, NULL, PCS, Colorant)) { Fail("Invalid string"); return 0; }
+            if (!cmsNamedColorInfo(DbgThread(), nc, i, Name, ((void*)0), ((void*)0), PCS, Colorant)) { Fail("Invalid string"); return 0; }
 
 
             for (j=0; j < 3; j++) {
-                if (CheckPCS[j] != PCS[j]) {  Fail("Invalid PCS"); return 0; }
+                if (CheckPCS[j] != PCS[j]) { Fail("Invalid PCS"); return 0; }
             }
 
-            // This is only used on named color list
+
             if (colorant_check) {
 
             for (j=0; j < 4; j++) {
@@ -88,7 +88,7 @@ cmsInt32Number CheckNamedColor(cmsInt32Number Pass,  cmsHPROFILE hProfile, cmsTa
             }
             }
 
-            if (strcmp(Name, CheckName) != 0) { Fail("Invalid Name");  return 0; };
+            if (strcmp(Name, CheckName) != 0) { Fail("Invalid Name"); return 0; };
         }
         return 1;
 

@@ -1,81 +1,81 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct msr_hwp_request {int /*<<< orphan*/  hwp_use_pkg; int /*<<< orphan*/  hwp_epp; int /*<<< orphan*/  hwp_window; int /*<<< orphan*/  hwp_desired; int /*<<< orphan*/  hwp_max; int /*<<< orphan*/  hwp_min; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct msr_hwp_request {int hwp_use_pkg; int hwp_epp; int hwp_window; int hwp_desired; int hwp_max; int hwp_min; } ;
 struct msr_hwp_cap {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  hwp_use_pkg; int /*<<< orphan*/  hwp_epp; int /*<<< orphan*/  hwp_window; int /*<<< orphan*/  hwp_desired; int /*<<< orphan*/  hwp_max; int /*<<< orphan*/  hwp_min; } ;
+struct TYPE_2__ {int hwp_use_pkg; int hwp_epp; int hwp_window; int hwp_desired; int hwp_max; int hwp_min; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSR_HWP_CAPABILITIES ; 
- int MSR_HWP_REQUEST ; 
- int /*<<< orphan*/  check_hwp_request_v_hwp_capabilities (int,struct msr_hwp_request*,struct msr_hwp_cap*) ; 
- scalar_t__ debug ; 
- int /*<<< orphan*/  force ; 
- int /*<<< orphan*/  print_hwp_cap (int,struct msr_hwp_cap*,char*) ; 
- int /*<<< orphan*/  print_hwp_request (int,struct msr_hwp_request*,char*) ; 
- int /*<<< orphan*/  read_hwp_cap (int,struct msr_hwp_cap*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  read_hwp_request (int,struct msr_hwp_request*,int) ; 
- TYPE_1__ req_update ; 
- scalar_t__ update_hwp_desired ; 
- scalar_t__ update_hwp_epp ; 
- scalar_t__ update_hwp_max ; 
- scalar_t__ update_hwp_min ; 
- scalar_t__ update_hwp_window ; 
- int /*<<< orphan*/  verify_hwp_req_self_consistency (int,struct msr_hwp_request*) ; 
- int /*<<< orphan*/  write_hwp_request (int,struct msr_hwp_request*,int) ; 
+
+ int MSR_HWP_CAPABILITIES ;
+ int MSR_HWP_REQUEST ;
+ int check_hwp_request_v_hwp_capabilities (int,struct msr_hwp_request*,struct msr_hwp_cap*) ;
+ scalar_t__ debug ;
+ int force ;
+ int print_hwp_cap (int,struct msr_hwp_cap*,char*) ;
+ int print_hwp_request (int,struct msr_hwp_request*,char*) ;
+ int read_hwp_cap (int,struct msr_hwp_cap*,int ) ;
+ int read_hwp_request (int,struct msr_hwp_request*,int) ;
+ TYPE_1__ req_update ;
+ scalar_t__ update_hwp_desired ;
+ scalar_t__ update_hwp_epp ;
+ scalar_t__ update_hwp_max ;
+ scalar_t__ update_hwp_min ;
+ scalar_t__ update_hwp_window ;
+ int verify_hwp_req_self_consistency (int,struct msr_hwp_request*) ;
+ int write_hwp_request (int,struct msr_hwp_request*,int) ;
 
 int update_hwp_request(int cpu)
 {
-	struct msr_hwp_request req;
-	struct msr_hwp_cap cap;
+ struct msr_hwp_request req;
+ struct msr_hwp_cap cap;
 
-	int msr_offset = MSR_HWP_REQUEST;
+ int msr_offset = MSR_HWP_REQUEST;
 
-	read_hwp_request(cpu, &req, msr_offset);
-	if (debug)
-		print_hwp_request(cpu, &req, "old: ");
+ read_hwp_request(cpu, &req, msr_offset);
+ if (debug)
+  print_hwp_request(cpu, &req, "old: ");
 
-	if (update_hwp_min)
-		req.hwp_min = req_update.hwp_min;
+ if (update_hwp_min)
+  req.hwp_min = req_update.hwp_min;
 
-	if (update_hwp_max)
-		req.hwp_max = req_update.hwp_max;
+ if (update_hwp_max)
+  req.hwp_max = req_update.hwp_max;
 
-	if (update_hwp_desired)
-		req.hwp_desired = req_update.hwp_desired;
+ if (update_hwp_desired)
+  req.hwp_desired = req_update.hwp_desired;
 
-	if (update_hwp_window)
-		req.hwp_window = req_update.hwp_window;
+ if (update_hwp_window)
+  req.hwp_window = req_update.hwp_window;
 
-	if (update_hwp_epp)
-		req.hwp_epp = req_update.hwp_epp;
+ if (update_hwp_epp)
+  req.hwp_epp = req_update.hwp_epp;
 
-	req.hwp_use_pkg = req_update.hwp_use_pkg;
+ req.hwp_use_pkg = req_update.hwp_use_pkg;
 
-	read_hwp_cap(cpu, &cap, MSR_HWP_CAPABILITIES);
-	if (debug)
-		print_hwp_cap(cpu, &cap, "");
+ read_hwp_cap(cpu, &cap, MSR_HWP_CAPABILITIES);
+ if (debug)
+  print_hwp_cap(cpu, &cap, "");
 
-	if (!force)
-		check_hwp_request_v_hwp_capabilities(cpu, &req, &cap);
+ if (!force)
+  check_hwp_request_v_hwp_capabilities(cpu, &req, &cap);
 
-	verify_hwp_req_self_consistency(cpu, &req);
+ verify_hwp_req_self_consistency(cpu, &req);
 
-	write_hwp_request(cpu, &req, msr_offset);
+ write_hwp_request(cpu, &req, msr_offset);
 
-	if (debug) {
-		read_hwp_request(cpu, &req, msr_offset);
-		print_hwp_request(cpu, &req, "new: ");
-	}
-	return 0;
+ if (debug) {
+  read_hwp_request(cpu, &req, msr_offset);
+  print_hwp_request(cpu, &req, "new: ");
+ }
+ return 0;
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct usb_gadget {int dummy; } ;
-struct gr_udc {int /*<<< orphan*/  lock; int /*<<< orphan*/ * driver; } ;
+struct gr_udc {int lock; int * driver; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gr_stop_activity (struct gr_udc*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- struct gr_udc* to_gr_udc (struct usb_gadget*) ; 
+
+ int gr_stop_activity (struct gr_udc*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ struct gr_udc* to_gr_udc (struct usb_gadget*) ;
 
 __attribute__((used)) static int gr_udc_stop(struct usb_gadget *gadget)
 {
-	struct gr_udc *dev = to_gr_udc(gadget);
-	unsigned long flags;
+ struct gr_udc *dev = to_gr_udc(gadget);
+ unsigned long flags;
 
-	spin_lock_irqsave(&dev->lock, flags);
+ spin_lock_irqsave(&dev->lock, flags);
 
-	dev->driver = NULL;
-	gr_stop_activity(dev);
+ dev->driver = ((void*)0);
+ gr_stop_activity(dev);
 
-	spin_unlock_irqrestore(&dev->lock, flags);
+ spin_unlock_irqrestore(&dev->lock, flags);
 
-	return 0;
+ return 0;
 }

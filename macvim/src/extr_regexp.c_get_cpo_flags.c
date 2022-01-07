@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CPO_BACKSL ; 
- int /*<<< orphan*/  CPO_LITERAL ; 
- int /*<<< orphan*/  p_cpo ; 
- int /*<<< orphan*/  reg_cpo_bsl ; 
- int /*<<< orphan*/  reg_cpo_lit ; 
- int /*<<< orphan*/ * vim_strchr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int CPO_BACKSL ;
+ int CPO_LITERAL ;
+ int p_cpo ;
+ int reg_cpo_bsl ;
+ int reg_cpo_lit ;
+ int * vim_strchr (int ,int ) ;
 
 __attribute__((used)) static void
 get_cpo_flags()
 {
-    reg_cpo_lit = vim_strchr(p_cpo, CPO_LITERAL) != NULL;
-    reg_cpo_bsl = vim_strchr(p_cpo, CPO_BACKSL) != NULL;
+    reg_cpo_lit = vim_strchr(p_cpo, CPO_LITERAL) != ((void*)0);
+    reg_cpo_bsl = vim_strchr(p_cpo, CPO_BACKSL) != ((void*)0);
 }

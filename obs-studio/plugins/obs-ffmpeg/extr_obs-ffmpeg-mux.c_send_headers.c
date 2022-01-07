@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ffmpeg_muxer {int /*<<< orphan*/  output; } ;
-typedef  int /*<<< orphan*/  obs_encoder_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * obs_output_get_audio_encoder (int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  send_audio_headers (struct ffmpeg_muxer*,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  send_video_headers (struct ffmpeg_muxer*) ; 
+
+
+
+struct ffmpeg_muxer {int output; } ;
+typedef int obs_encoder_t ;
+
+
+ int * obs_output_get_audio_encoder (int ,size_t) ;
+ int send_audio_headers (struct ffmpeg_muxer*,int *,size_t) ;
+ int send_video_headers (struct ffmpeg_muxer*) ;
 
 __attribute__((used)) static bool send_headers(struct ffmpeg_muxer *stream)
 {
-	obs_encoder_t *aencoder;
-	size_t idx = 0;
+ obs_encoder_t *aencoder;
+ size_t idx = 0;
 
-	if (!send_video_headers(stream))
-		return false;
+ if (!send_video_headers(stream))
+  return 0;
 
-	do {
-		aencoder = obs_output_get_audio_encoder(stream->output, idx);
-		if (aencoder) {
-			if (!send_audio_headers(stream, aencoder, idx)) {
-				return false;
-			}
-			idx++;
-		}
-	} while (aencoder);
+ do {
+  aencoder = obs_output_get_audio_encoder(stream->output, idx);
+  if (aencoder) {
+   if (!send_audio_headers(stream, aencoder, idx)) {
+    return 0;
+   }
+   idx++;
+  }
+ } while (aencoder);
 
-	return true;
+ return 1;
 }

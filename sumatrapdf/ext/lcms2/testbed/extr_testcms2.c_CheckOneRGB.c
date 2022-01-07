@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsUInt16Number ;
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/  cmsHTRANSFORM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- scalar_t__ IsGoodWord (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDoTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int cmsUInt16Number ;
+typedef int cmsInt32Number ;
+typedef int cmsHTRANSFORM ;
+
+
+ int DbgThread () ;
+ scalar_t__ IsGoodWord (char*,int ,int ) ;
+ int cmsDoTransform (int ,int ,int *,int *,int) ;
 
 __attribute__((used)) static
 cmsInt32Number CheckOneRGB(cmsHTRANSFORM xform, cmsUInt16Number R, cmsUInt16Number G, cmsUInt16Number B, cmsUInt16Number Ro, cmsUInt16Number Go, cmsUInt16Number Bo)

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  Tox ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int Tox ;
 struct TYPE_2__ {scalar_t__ file; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  fclose (scalar_t__) ; 
- TYPE_1__* file_recv ; 
- int /*<<< orphan*/  fseek (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int fwrite (size_t const*,size_t,int,scalar_t__) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+ int SEEK_SET ;
+ int fclose (scalar_t__) ;
+ TYPE_1__* file_recv ;
+ int fseek (scalar_t__,int ,int ) ;
+ int fwrite (size_t const*,size_t,int,scalar_t__) ;
+ int printf (char*,...) ;
 
 void write_file(Tox *tox, uint32_t friendnumber, uint32_t filenumber, uint64_t position, const uint8_t *data,
                 size_t length, void *user_data)

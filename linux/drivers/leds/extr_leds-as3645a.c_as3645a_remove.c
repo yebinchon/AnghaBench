@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct i2c_client {int dummy; } ;
-struct as3645a {int /*<<< orphan*/  indicator_node; int /*<<< orphan*/  flash_node; int /*<<< orphan*/  mutex; int /*<<< orphan*/  iled_cdev; int /*<<< orphan*/  fled; int /*<<< orphan*/  vfind; int /*<<< orphan*/  vf; } ;
+struct as3645a {int indicator_node; int flash_node; int mutex; int iled_cdev; int fled; int vfind; int vf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AS_MODE_EXT_TORCH ; 
- int /*<<< orphan*/  as3645a_set_control (struct as3645a*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  fwnode_handle_put (int /*<<< orphan*/ ) ; 
- struct as3645a* i2c_get_clientdata (struct i2c_client*) ; 
- int /*<<< orphan*/  led_classdev_flash_unregister (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  led_classdev_unregister (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  v4l2_flash_release (int /*<<< orphan*/ ) ; 
+
+ int AS_MODE_EXT_TORCH ;
+ int as3645a_set_control (struct as3645a*,int ,int) ;
+ int fwnode_handle_put (int ) ;
+ struct as3645a* i2c_get_clientdata (struct i2c_client*) ;
+ int led_classdev_flash_unregister (int *) ;
+ int led_classdev_unregister (int *) ;
+ int mutex_destroy (int *) ;
+ int v4l2_flash_release (int ) ;
 
 __attribute__((used)) static int as3645a_remove(struct i2c_client *client)
 {
-	struct as3645a *flash = i2c_get_clientdata(client);
+ struct as3645a *flash = i2c_get_clientdata(client);
 
-	as3645a_set_control(flash, AS_MODE_EXT_TORCH, false);
+ as3645a_set_control(flash, AS_MODE_EXT_TORCH, 0);
 
-	v4l2_flash_release(flash->vf);
-	v4l2_flash_release(flash->vfind);
+ v4l2_flash_release(flash->vf);
+ v4l2_flash_release(flash->vfind);
 
-	led_classdev_flash_unregister(&flash->fled);
-	led_classdev_unregister(&flash->iled_cdev);
+ led_classdev_flash_unregister(&flash->fled);
+ led_classdev_unregister(&flash->iled_cdev);
 
-	mutex_destroy(&flash->mutex);
+ mutex_destroy(&flash->mutex);
 
-	fwnode_handle_put(flash->flash_node);
-	fwnode_handle_put(flash->indicator_node);
+ fwnode_handle_put(flash->flash_node);
+ fwnode_handle_put(flash->indicator_node);
 
-	return 0;
+ return 0;
 }

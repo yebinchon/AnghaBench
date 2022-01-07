@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum rarch_override_setting { ____Placeholder_rarch_override_setting } rarch_override_setting ;
 
-/* Variables and functions */
- unsigned int MAX_USERS ; 
- unsigned int RARCH_OVERRIDE_SETTING_LAST ; 
- unsigned int RARCH_OVERRIDE_SETTING_LIBRETRO_DEVICE ; 
- int /*<<< orphan*/  retroarch_override_setting_unset (int,unsigned int*) ; 
+
+
+
+typedef enum rarch_override_setting { ____Placeholder_rarch_override_setting } rarch_override_setting ;
+
+
+ unsigned int MAX_USERS ;
+ unsigned int RARCH_OVERRIDE_SETTING_LAST ;
+ unsigned int RARCH_OVERRIDE_SETTING_LIBRETRO_DEVICE ;
+ int retroarch_override_setting_unset (int,unsigned int*) ;
 
 __attribute__((used)) static void retroarch_override_setting_free_state(void)
 {
@@ -32,6 +32,6 @@ __attribute__((used)) static void retroarch_override_setting_free_state(void)
       }
       else
          retroarch_override_setting_unset(
-               (enum rarch_override_setting)(i), NULL);
+               (enum rarch_override_setting)(i), ((void*)0));
    }
 }

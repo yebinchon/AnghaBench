@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct snd_rawmidi_substream {TYPE_1__* rmidi; } ;
-struct echoaudio {int /*<<< orphan*/ * midi_out; } ;
+struct echoaudio {int * midi_out; } ;
 struct TYPE_2__ {struct echoaudio* private_data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DE_MID (char*) ; 
+
+ int DE_MID (char*) ;
 
 __attribute__((used)) static int snd_echo_midi_output_close(struct snd_rawmidi_substream *substream)
 {
-	struct echoaudio *chip = substream->rmidi->private_data;
+ struct echoaudio *chip = substream->rmidi->private_data;
 
-	chip->midi_out = NULL;
-	DE_MID(("rawmidi_oclose\n"));
-	return 0;
+ chip->midi_out = ((void*)0);
+ DE_MID(("rawmidi_oclose\n"));
+ return 0;
 }

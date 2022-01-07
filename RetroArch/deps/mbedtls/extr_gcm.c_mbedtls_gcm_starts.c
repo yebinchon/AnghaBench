@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-struct TYPE_4__ {unsigned char* y; unsigned char* buf; int mode; size_t add_len; int /*<<< orphan*/  base_ectr; int /*<<< orphan*/  cipher_ctx; scalar_t__ len; } ;
-typedef  TYPE_1__ mbedtls_gcm_context ;
 
-/* Variables and functions */
- int MBEDTLS_ERR_GCM_BAD_INPUT ; 
- int /*<<< orphan*/  PUT_UINT32_BE (size_t,unsigned char*,int) ; 
- int /*<<< orphan*/  gcm_mult (TYPE_1__*,unsigned char const*,unsigned char const*) ; 
- int mbedtls_cipher_update (int /*<<< orphan*/ *,unsigned char const*,int,int /*<<< orphan*/ ,size_t*) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,size_t) ; 
- int /*<<< orphan*/  memset (unsigned char*,int,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct TYPE_4__ {unsigned char* y; unsigned char* buf; int mode; size_t add_len; int base_ectr; int cipher_ctx; scalar_t__ len; } ;
+typedef TYPE_1__ mbedtls_gcm_context ;
+
+
+ int MBEDTLS_ERR_GCM_BAD_INPUT ;
+ int PUT_UINT32_BE (size_t,unsigned char*,int) ;
+ int gcm_mult (TYPE_1__*,unsigned char const*,unsigned char const*) ;
+ int mbedtls_cipher_update (int *,unsigned char const*,int,int ,size_t*) ;
+ int memcpy (unsigned char*,unsigned char const*,size_t) ;
+ int memset (unsigned char*,int,int) ;
 
 int mbedtls_gcm_starts( mbedtls_gcm_context *ctx,
                 int mode,
@@ -36,10 +36,10 @@ int mbedtls_gcm_starts( mbedtls_gcm_context *ctx,
     const unsigned char *p;
     size_t use_len, olen = 0;
 
-    /* IV and AD are limited to 2^64 bits, so 2^61 bytes */
-    /* IV is not allowed to be zero length */
+
+
     if( iv_len == 0 ||
-      ( (uint64_t) iv_len  ) >> 61 != 0 ||
+      ( (uint64_t) iv_len ) >> 61 != 0 ||
       ( (uint64_t) add_len ) >> 61 != 0 )
     {
         return( MBEDTLS_ERR_GCM_BAD_INPUT );

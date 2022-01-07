@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* WS_GUID ; 
- int WS_GUID_LENGTH ; 
- char* base64Encode (char*,int) ; 
- char* cryptoSha1 (char*,int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  os_free (char*) ; 
- scalar_t__ os_random () ; 
+ char* WS_GUID ;
+ int WS_GUID_LENGTH ;
+ char* base64Encode (char*,int) ;
+ char* cryptoSha1 (char*,int) ;
+ int memcpy (char*,char*,int) ;
+ int os_free (char*) ;
+ scalar_t__ os_random () ;
 
 __attribute__((used)) static void generateSecKeys(char **key, char **expectedKey) {
   char rndData[16];
@@ -29,7 +21,7 @@ __attribute__((used)) static void generateSecKeys(char **key, char **expectedKey
 
   *key = base64Encode(rndData, 16);
 
-  // expectedKey = b64(sha1(keyB64 + GUID))
+
   char keyWithGuid[24 + WS_GUID_LENGTH];
   memcpy(keyWithGuid, *key, 24);
   memcpy(keyWithGuid + 24, WS_GUID, WS_GUID_LENGTH);

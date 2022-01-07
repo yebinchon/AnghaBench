@@ -1,91 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  C_BLU ; 
- int /*<<< orphan*/  C_GRN ; 
- int /*<<< orphan*/  C_ORG ; 
- int /*<<< orphan*/  C_PRP ; 
- int /*<<< orphan*/  C_RED ; 
- int /*<<< orphan*/  C_YAN ; 
-#define  VIM_C 143 
-#define  VIM_CI 142 
-#define  VIM_D 141 
-#define  VIM_DI 140 
-#define  VIM_G 139 
-#define  VIM_START 138 
-#define  VIM_V 137 
-#define  VIM_VI 136 
-#define  VIM_VS 135 
-#define  VIM_Y 134 
-#define  _ADJUST 133 
-#define  _CMD 132 
-#define  _LOWER 131 
-#define  _MOUSE 130 
-#define  _MOVE 129 
-#define  _RAISE 128 
- int biton32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_state ; 
- int /*<<< orphan*/  rgbflag (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int rgblight_get_mode () ; 
- int /*<<< orphan*/  vstate ; 
+ int C_BLU ;
+ int C_GRN ;
+ int C_ORG ;
+ int C_PRP ;
+ int C_RED ;
+ int C_YAN ;
+ int biton32 (int ) ;
+ int layer_state ;
+ int rgbflag (int ,int ) ;
+ int rgblight_get_mode () ;
+ int vstate ;
 
 void set_state_leds(void) {
   if (rgblight_get_mode() == 1) {
     switch (biton32(layer_state)) {
-    case _RAISE:
+    case 128:
       rgbflag(C_BLU, C_GRN);
       break;
-    case _LOWER:
+    case 131:
       rgbflag(C_BLU, C_RED);
       break;
-    case _ADJUST:
+    case 133:
       rgbflag(C_BLU, C_PRP);
       break;
-    case _MOVE:
+    case 129:
       rgbflag(C_RED, C_PRP);
       break;
-    case _MOUSE:
+    case 130:
       rgbflag(C_RED, C_GRN);
       break;
-    case _CMD:
+    case 132:
       switch(vstate) {
-        case VIM_V:
-        case VIM_VI:
-        case VIM_VS:
+        case 137:
+        case 136:
+        case 135:
           rgbflag(C_GRN, C_YAN);
           break;
-        case VIM_C:
-        case VIM_CI:
+        case 143:
+        case 142:
           rgbflag(C_GRN, C_ORG);
           break;
-        case VIM_D:
-        case VIM_DI:
+        case 141:
+        case 140:
           rgbflag(C_GRN, C_RED);
           break;
-        case VIM_G:
+        case 139:
           rgbflag(C_GRN, C_BLU);
           break;
-        case VIM_Y:
+        case 134:
           rgbflag(C_GRN, C_PRP);
           break;
-        case VIM_START:
+        case 138:
         default:
           rgbflag(C_GRN, C_GRN);
           break;
       }
       break;
-    default: //  for any other layers, or the default layer
+    default:
       rgbflag(C_YAN, C_YAN);
       break;
     }

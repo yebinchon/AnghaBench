@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cpuset {int /*<<< orphan*/  effective_cpus; int /*<<< orphan*/  cpus_allowed; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- scalar_t__ alloc_cpumasks (struct cpuset*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cpumask_copy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (struct cpuset*) ; 
- struct cpuset* kmemdup (struct cpuset*,int,int /*<<< orphan*/ ) ; 
+
+
+
+struct cpuset {int effective_cpus; int cpus_allowed; } ;
+
+
+ int GFP_KERNEL ;
+ scalar_t__ alloc_cpumasks (struct cpuset*,int *) ;
+ int cpumask_copy (int ,int ) ;
+ int kfree (struct cpuset*) ;
+ struct cpuset* kmemdup (struct cpuset*,int,int ) ;
 
 __attribute__((used)) static struct cpuset *alloc_trial_cpuset(struct cpuset *cs)
 {
-	struct cpuset *trial;
+ struct cpuset *trial;
 
-	trial = kmemdup(cs, sizeof(*cs), GFP_KERNEL);
-	if (!trial)
-		return NULL;
+ trial = kmemdup(cs, sizeof(*cs), GFP_KERNEL);
+ if (!trial)
+  return ((void*)0);
 
-	if (alloc_cpumasks(trial, NULL)) {
-		kfree(trial);
-		return NULL;
-	}
+ if (alloc_cpumasks(trial, ((void*)0))) {
+  kfree(trial);
+  return ((void*)0);
+ }
 
-	cpumask_copy(trial->cpus_allowed, cs->cpus_allowed);
-	cpumask_copy(trial->effective_cpus, cs->effective_cpus);
-	return trial;
+ cpumask_copy(trial->cpus_allowed, cs->cpus_allowed);
+ cpumask_copy(trial->effective_cpus, cs->effective_cpus);
+ return trial;
 }

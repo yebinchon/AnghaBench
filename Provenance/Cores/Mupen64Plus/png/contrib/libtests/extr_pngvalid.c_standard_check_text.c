@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* png_const_textp ;
-typedef  int /*<<< orphan*/  png_const_structp ;
-typedef  char* png_const_charp ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* png_const_textp ;
+typedef int png_const_structp ;
+typedef char* png_const_charp ;
 struct TYPE_3__ {scalar_t__ compression; char* key; char* text; scalar_t__ text_length; scalar_t__ itxt_length; char* lang; char* lang_key; } ;
 
-/* Variables and functions */
- scalar_t__ TEXT_COMPRESSION ; 
- int /*<<< orphan*/  png_error (int /*<<< orphan*/ ,char*) ; 
- size_t safecat (char*,int,size_t,char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,unsigned long,unsigned long) ; 
- scalar_t__ strcmp (char*,char*) ; 
- scalar_t__ strlen (char*) ; 
+
+ scalar_t__ TEXT_COMPRESSION ;
+ int png_error (int ,char*) ;
+ size_t safecat (char*,int,size_t,char*) ;
+ int sprintf (char*,char*,unsigned long,unsigned long) ;
+ scalar_t__ strcmp (char*,char*) ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static void
 standard_check_text(png_const_structp pp, png_const_textp tp,
@@ -45,10 +45,10 @@ standard_check_text(png_const_structp pp, png_const_textp tp,
       pos = safecat(msg, sizeof msg, pos, buf);
    }
 
-   if (tp->key == NULL || strcmp(tp->key, keyword) != 0)
+   if (tp->key == ((void*)0) || strcmp(tp->key, keyword) != 0)
    {
       pos = safecat(msg, sizeof msg, pos, "keyword \"");
-      if (tp->key != NULL)
+      if (tp->key != ((void*)0))
       {
          pos = safecat(msg, sizeof msg, pos, tp->key);
          pos = safecat(msg, sizeof msg, pos, "\", ");
@@ -58,7 +58,7 @@ standard_check_text(png_const_structp pp, png_const_textp tp,
          pos = safecat(msg, sizeof msg, pos, "null, ");
    }
 
-   if (tp->text == NULL)
+   if (tp->text == ((void*)0))
       pos = safecat(msg, sizeof msg, pos, "text lost, ");
 
    else
@@ -84,14 +84,14 @@ standard_check_text(png_const_structp pp, png_const_textp tp,
    if (tp->itxt_length != 0)
       pos = safecat(msg, sizeof msg, pos, "iTXt length set, ");
 
-   if (tp->lang != NULL)
+   if (tp->lang != ((void*)0))
    {
       pos = safecat(msg, sizeof msg, pos, "iTXt language \"");
       pos = safecat(msg, sizeof msg, pos, tp->lang);
       pos = safecat(msg, sizeof msg, pos, "\", ");
    }
 
-   if (tp->lang_key != NULL)
+   if (tp->lang_key != ((void*)0))
    {
       pos = safecat(msg, sizeof msg, pos, "iTXt keyword \"");
       pos = safecat(msg, sizeof msg, pos, tp->lang_key);
@@ -100,7 +100,7 @@ standard_check_text(png_const_structp pp, png_const_textp tp,
 
    if (pos > ok)
    {
-      msg[pos-2] = '\0'; /* Remove the ", " at the end */
+      msg[pos-2] = '\0';
       png_error(pp, msg);
    }
 }

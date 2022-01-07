@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_FLG_CONSTTIME ; 
- int /*<<< orphan*/  BN_div (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- scalar_t__ BN_is_negative (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mul (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * BN_new () ; 
- int /*<<< orphan*/  BN_set_flags (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_set_negative (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  BN_set_word (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  BN_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_BN_eq_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_BN_ge_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ctx ; 
+
+
+
+typedef int BIGNUM ;
+
+
+ int BN_FLG_CONSTTIME ;
+ int BN_div (int *,int *,int *,int *,int ) ;
+ int BN_free (int *) ;
+ scalar_t__ BN_is_negative (int *) ;
+ int BN_mul (int *,int *,int *,int ) ;
+ int * BN_new () ;
+ int BN_set_flags (int *,int ) ;
+ int BN_set_negative (int *,int) ;
+ int BN_set_word (int *,int) ;
+ int BN_zero (int *) ;
+ int TEST_BN_eq_zero (int *) ;
+ int TEST_BN_ge_zero (int *) ;
+ int TEST_ptr (int *) ;
+ int TEST_true (int ) ;
+ int ctx ;
 
 __attribute__((used)) static int test_negzero(void)
 {
-    BIGNUM *a = NULL, *b = NULL, *c = NULL, *d = NULL;
-    BIGNUM *numerator = NULL, *denominator = NULL;
+    BIGNUM *a = ((void*)0), *b = ((void*)0), *c = ((void*)0), *d = ((void*)0);
+    BIGNUM *numerator = ((void*)0), *denominator = ((void*)0);
     int consttime, st = 0;
 
     if (!TEST_ptr(a = BN_new())
@@ -41,7 +41,7 @@ __attribute__((used)) static int test_negzero(void)
             || !TEST_ptr(d = BN_new()))
         goto err;
 
-    /* Test that BN_mul never gives negative zero. */
+
     if (!TEST_true(BN_set_word(a, 1)))
         goto err;
     BN_set_negative(a, 1);
@@ -60,7 +60,7 @@ __attribute__((used)) static int test_negzero(void)
             BN_set_flags(numerator, BN_FLG_CONSTTIME);
             BN_set_flags(denominator, BN_FLG_CONSTTIME);
         }
-        /* Test that BN_div never gives negative zero in the quotient. */
+
         if (!TEST_true(BN_set_word(numerator, 1))
                 || !TEST_true(BN_set_word(denominator, 2)))
             goto err;
@@ -70,7 +70,7 @@ __attribute__((used)) static int test_negzero(void)
                 || !TEST_BN_ge_zero(a))
             goto err;
 
-        /* Test that BN_div never gives negative zero in the remainder. */
+
         if (!TEST_true(BN_set_word(denominator, 1))
                 || !TEST_true(BN_div(a, b, numerator, denominator, ctx))
                 || !TEST_BN_eq_zero(b)
@@ -78,10 +78,10 @@ __attribute__((used)) static int test_negzero(void)
             goto err;
         BN_free(numerator);
         BN_free(denominator);
-        numerator = denominator = NULL;
+        numerator = denominator = ((void*)0);
     }
 
-    /* Test that BN_set_negative will not produce a negative zero. */
+
     BN_zero(a);
     BN_set_negative(a, 1);
     if (BN_is_negative(a))

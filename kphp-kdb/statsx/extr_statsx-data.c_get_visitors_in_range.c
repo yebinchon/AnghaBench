@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  stderr ; 
+ int assert (int) ;
+ int fprintf (int ,char*,int,int) ;
+ int stderr ;
 
 int get_visitors_in_range (int *a, int l, int min, int max) {
   int i, r = 0;
@@ -23,7 +15,7 @@ int get_visitors_in_range (int *a, int l, int min, int max) {
       fprintf (stderr, "max = %d, cur = %d\n", max, a[2 * i + 1]);
     }
     assert (a[2 * i + 1] <= max + 1);
-    if (a[2 * i + 1] >= min /*&& a[2 * i + 1] <= max */) {
+    if (a[2 * i + 1] >= min ) {
       r ++;
     }
   }

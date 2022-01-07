@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_buf_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UV_RUN_DEFAULT ; 
- int /*<<< orphan*/  buffer ; 
- int /*<<< orphan*/  crunch_away ; 
- int /*<<< orphan*/  idler ; 
- int /*<<< orphan*/  loop ; 
- int /*<<< orphan*/  on_type ; 
- int /*<<< orphan*/  stdin_watcher ; 
- int /*<<< orphan*/  uv_buf_init (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  uv_default_loop () ; 
- int /*<<< orphan*/  uv_fs_read (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv_idle_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_idle_start (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int uv_run (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uv_buf_t ;
+
+
+ int UV_RUN_DEFAULT ;
+ int buffer ;
+ int crunch_away ;
+ int idler ;
+ int loop ;
+ int on_type ;
+ int stdin_watcher ;
+ int uv_buf_init (int ,int) ;
+ int uv_default_loop () ;
+ int uv_fs_read (int ,int *,int ,int *,int,int,int ) ;
+ int uv_idle_init (int ,int *) ;
+ int uv_idle_start (int *,int ) ;
+ int uv_run (int ,int ) ;
 
 int main() {
     loop = uv_default_loop();

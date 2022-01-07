@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8 ;
+
+
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int uint8 ;
 struct TYPE_15__ {int w; int h; scalar_t__ y; scalar_t__ x; } ;
 struct TYPE_14__ {int w; int h; int pitch; int flags; scalar_t__ pixels; } ;
-typedef  TYPE_1__ SDL_Surface ;
-typedef  TYPE_2__ SDL_Rect ;
+typedef TYPE_1__ SDL_Surface ;
+typedef TYPE_2__ SDL_Rect ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Blit8To8 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Blit8ToHigh (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int,int) ; 
- TYPE_1__* BlitBuf ; 
- int /*<<< orphan*/  BlitOpenGL (int /*<<< orphan*/ *) ; 
- int NOFFSET ; 
- int NWIDTH ; 
- int /*<<< orphan*/  RedoPalette () ; 
- int /*<<< orphan*/  SDL_BlitSurface (TYPE_1__*,TYPE_2__*,TYPE_1__*,TYPE_2__*) ; 
- int SDL_DOUBLEBUF ; 
- int /*<<< orphan*/  SDL_Flip (TYPE_1__*) ; 
- scalar_t__ SDL_LockSurface (TYPE_1__*) ; 
- scalar_t__ SDL_MUSTLOCK (TYPE_1__*) ; 
- int /*<<< orphan*/  SDL_UnlockSurface (TYPE_1__*) ; 
- int /*<<< orphan*/  SDL_UpdateRect (TYPE_1__*,int,int,int,int) ; 
- scalar_t__ _fullscreen ; 
- int curbpp ; 
- int /*<<< orphan*/  eefx ; 
- int exs ; 
- int eys ; 
- scalar_t__ paletterefresh ; 
- TYPE_1__* screen ; 
- int /*<<< orphan*/  sponge ; 
- int srendline ; 
- int tlines ; 
- scalar_t__ usingogl ; 
+
+ int Blit8To8 (int *,int *,int,int,int,int,int,int ,int ) ;
+ int Blit8ToHigh (int *,int *,int,int,int,int,int) ;
+ TYPE_1__* BlitBuf ;
+ int BlitOpenGL (int *) ;
+ int NOFFSET ;
+ int NWIDTH ;
+ int RedoPalette () ;
+ int SDL_BlitSurface (TYPE_1__*,TYPE_2__*,TYPE_1__*,TYPE_2__*) ;
+ int SDL_DOUBLEBUF ;
+ int SDL_Flip (TYPE_1__*) ;
+ scalar_t__ SDL_LockSurface (TYPE_1__*) ;
+ scalar_t__ SDL_MUSTLOCK (TYPE_1__*) ;
+ int SDL_UnlockSurface (TYPE_1__*) ;
+ int SDL_UpdateRect (TYPE_1__*,int,int,int,int) ;
+ scalar_t__ _fullscreen ;
+ int curbpp ;
+ int eefx ;
+ int exs ;
+ int eys ;
+ scalar_t__ paletterefresh ;
+ TYPE_1__* screen ;
+ int sponge ;
+ int srendline ;
+ int tlines ;
+ scalar_t__ usingogl ;
 
 void BlitScreen(uint8 *XBuf)
 {
@@ -58,15 +58,6 @@ void BlitScreen(uint8 *XBuf)
   RedoPalette();
   paletterefresh=0;
  }
-
- #ifdef OPENGL
- if(usingogl)
- {
-  BlitOpenGL(XBuf);
-  return;
- }
- #endif
-
  XBuf+=srendline*256;
 
  if(BlitBuf) TmpScreen=BlitBuf;
@@ -74,7 +65,7 @@ void BlitScreen(uint8 *XBuf)
 
  if(SDL_MUSTLOCK(TmpScreen))
   if(SDL_LockSurface(TmpScreen))
-  {   
+  {
    return;
   }
 

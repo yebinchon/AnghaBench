@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CREATE_ALWAYS ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFileA (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteFileA (char*) ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_NORMAL ; 
- int /*<<< orphan*/  GENERIC_WRITE ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int MAX_PATH ; 
- int WriteFile (scalar_t__,char const*,size_t,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  run_script_file (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char const*) ; 
- char* strrchr (char const*,char) ; 
+
+
+
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int CREATE_ALWAYS ;
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFileA (char*,int ,int ,int *,int ,int ,int *) ;
+ int DeleteFileA (char*) ;
+ int FILE_ATTRIBUTE_NORMAL ;
+ int GENERIC_WRITE ;
+ int GetLastError () ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int MAX_PATH ;
+ int WriteFile (scalar_t__,char const*,size_t,int *,int *) ;
+ int ok (int,char*,...) ;
+ int run_script_file (char*,int ) ;
+ int sprintf (char*,char*,char const*) ;
+ char* strrchr (char const*,char) ;
 
 __attribute__((used)) static void run_script(const char *name, const char *script_data, size_t script_size, DWORD expected_exit_code)
 {
@@ -39,19 +39,19 @@ __attribute__((used)) static void run_script(const char *name, const char *scrip
     BOOL res;
 
     ext = strrchr(name, '.');
-    ok(ext != NULL, "no script extension\n");
+    ok(ext != ((void*)0), "no script extension\n");
     if(!ext)
       return;
 
     sprintf(file_name, "test%s", ext);
 
-    file = CreateFileA(file_name, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS,
-            FILE_ATTRIBUTE_NORMAL, NULL);
+    file = CreateFileA(file_name, GENERIC_WRITE, 0, ((void*)0), CREATE_ALWAYS,
+            FILE_ATTRIBUTE_NORMAL, ((void*)0));
     ok(file != INVALID_HANDLE_VALUE, "CreateFile failed: %u\n", GetLastError());
     if(file == INVALID_HANDLE_VALUE)
         return;
 
-    res = WriteFile(file, script_data, script_size, &size, NULL);
+    res = WriteFile(file, script_data, script_size, &size, ((void*)0));
     CloseHandle(file);
     ok(res, "Could not write to file: %u\n", GetLastError());
     if(!res)

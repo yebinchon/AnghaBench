@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ttm_tt {int dummy; } ;
 struct ttm_bo_device {int dummy; } ;
 
-/* Variables and functions */
- unsigned int PAGE_ALIGN (unsigned int) ; 
- unsigned int PAGE_SHIFT ; 
- scalar_t__ ttm_round_pot (int) ; 
+
+ unsigned int PAGE_ALIGN (unsigned int) ;
+ unsigned int PAGE_SHIFT ;
+ scalar_t__ ttm_round_pot (int) ;
 
 size_t ttm_bo_acc_size(struct ttm_bo_device *bdev,
-		       unsigned long bo_size,
-		       unsigned struct_size)
+         unsigned long bo_size,
+         unsigned struct_size)
 {
-	unsigned npages = (PAGE_ALIGN(bo_size)) >> PAGE_SHIFT;
-	size_t size = 0;
+ unsigned npages = (PAGE_ALIGN(bo_size)) >> PAGE_SHIFT;
+ size_t size = 0;
 
-	size += ttm_round_pot(struct_size);
-	size += PAGE_ALIGN(npages * sizeof(void *));
-	size += ttm_round_pot(sizeof(struct ttm_tt));
-	return size;
+ size += ttm_round_pot(struct_size);
+ size += PAGE_ALIGN(npages * sizeof(void *));
+ size += ttm_round_pot(sizeof(struct ttm_tt));
+ return size;
 }

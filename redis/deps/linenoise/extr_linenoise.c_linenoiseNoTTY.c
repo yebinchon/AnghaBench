@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EOF ; 
- int fgetc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* realloc (char*,size_t) ; 
- int /*<<< orphan*/  stdin ; 
+ int EOF ;
+ int fgetc (int ) ;
+ int free (char*) ;
+ char* realloc (char*,size_t) ;
+ int stdin ;
 
 __attribute__((used)) static char *linenoiseNoTTY(void) {
-    char *line = NULL;
+    char *line = ((void*)0);
     size_t len = 0, maxlen = 0;
 
     while(1) {
@@ -28,16 +20,16 @@ __attribute__((used)) static char *linenoiseNoTTY(void) {
             maxlen *= 2;
             char *oldval = line;
             line = realloc(line,maxlen);
-            if (line == NULL) {
+            if (line == ((void*)0)) {
                 if (oldval) free(oldval);
-                return NULL;
+                return ((void*)0);
             }
         }
         int c = fgetc(stdin);
         if (c == EOF || c == '\n') {
             if (c == EOF && len == 0) {
                 free(line);
-                return NULL;
+                return ((void*)0);
             } else {
                 line[len] = '\0';
                 return line;

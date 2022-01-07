@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nvlist_prtctl {int dummy; } ;
-typedef  int /*<<< orphan*/  nvlist_t ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int nvlist_t ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  nvlist_print_with_indent (int /*<<< orphan*/ *,struct nvlist_prtctl*) ; 
- int /*<<< orphan*/  prtctl_defaults (int /*<<< orphan*/ *,struct nvlist_prtctl*,int /*<<< orphan*/ *) ; 
+
+ int nvlist_print_with_indent (int *,struct nvlist_prtctl*) ;
+ int prtctl_defaults (int *,struct nvlist_prtctl*,int *) ;
 
 void
 nvlist_print(FILE *fp, nvlist_t *nvl)
 {
-	struct nvlist_prtctl pc;
+ struct nvlist_prtctl pc;
 
-	prtctl_defaults(fp, &pc, NULL);
-	nvlist_print_with_indent(nvl, &pc);
+ prtctl_defaults(fp, &pc, ((void*)0));
+ nvlist_print_with_indent(nvl, &pc);
 }

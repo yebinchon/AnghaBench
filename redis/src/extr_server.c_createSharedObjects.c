@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dictid_str ;
-struct TYPE_4__ {int /*<<< orphan*/  encoding; } ;
-struct TYPE_3__ {void* maxstring; void* minstring; void** bulkhdr; void** mbulkhdr; TYPE_2__** integers; void* zpopmax; void* zpopmin; void* rpoplpush; void* lpush; void* lpop; void* rpop; void* unlink; void* del; void* punsubscribebulk; void* psubscribebulk; void* unsubscribebulk; void* subscribebulk; void* pmessagebulk; void* messagebulk; void** select; int /*<<< orphan*/ ** emptyset; int /*<<< orphan*/ ** emptymap; int /*<<< orphan*/ ** nullarray; int /*<<< orphan*/ ** null; void* plus; void* colon; void* space; void* busykeyerr; void* noreplicaserr; void* execaborterr; void* oomerr; void* noautherr; void* roslaveerr; void* bgsaveerr; void* masterdownerr; void* slowscripterr; void* loadingerr; void* noscripterr; void* outofrangeerr; void* sameobjecterr; void* syntaxerr; void* nokeyerr; void* wrongtypeerr; void* emptyscan; void* queued; void* pong; void* emptyarray; void* cone; void* czero; void* emptybulk; void* err; void* ok; void* crlf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OBJ_ENCODING_INT ; 
- int OBJ_SHARED_BULKHDR_LEN ; 
- int OBJ_SHARED_INTEGERS ; 
- int /*<<< orphan*/  OBJ_STRING ; 
- int PROTO_SHARED_SELECT_CMDS ; 
- void* createObject (int /*<<< orphan*/ ,void*) ; 
- void* createStringObject (char*,int) ; 
- int ll2string (char*,int,int) ; 
- TYPE_2__* makeObjectShared (void*) ; 
- void* sdscatprintf (int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  sdsempty () ; 
- void* sdsnew (char*) ; 
- TYPE_1__ shared ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int dictid_str ;
+struct TYPE_4__ {int encoding; } ;
+struct TYPE_3__ {void* maxstring; void* minstring; void** bulkhdr; void** mbulkhdr; TYPE_2__** integers; void* zpopmax; void* zpopmin; void* rpoplpush; void* lpush; void* lpop; void* rpop; void* unlink; void* del; void* punsubscribebulk; void* psubscribebulk; void* unsubscribebulk; void* subscribebulk; void* pmessagebulk; void* messagebulk; void** select; int ** emptyset; int ** emptymap; int ** nullarray; int ** null; void* plus; void* colon; void* space; void* busykeyerr; void* noreplicaserr; void* execaborterr; void* oomerr; void* noautherr; void* roslaveerr; void* bgsaveerr; void* masterdownerr; void* slowscripterr; void* loadingerr; void* noscripterr; void* outofrangeerr; void* sameobjecterr; void* syntaxerr; void* nokeyerr; void* wrongtypeerr; void* emptyscan; void* queued; void* pong; void* emptyarray; void* cone; void* czero; void* emptybulk; void* err; void* ok; void* crlf; } ;
+
+
+ int OBJ_ENCODING_INT ;
+ int OBJ_SHARED_BULKHDR_LEN ;
+ int OBJ_SHARED_INTEGERS ;
+ int OBJ_STRING ;
+ int PROTO_SHARED_SELECT_CMDS ;
+ void* createObject (int ,void*) ;
+ void* createStringObject (char*,int) ;
+ int ll2string (char*,int,int) ;
+ TYPE_2__* makeObjectShared (void*) ;
+ void* sdscatprintf (int ,char*,int,...) ;
+ int sdsempty () ;
+ void* sdsnew (char*) ;
+ TYPE_1__ shared ;
 
 void createSharedObjects(void) {
     int j;
@@ -80,24 +80,24 @@ void createSharedObjects(void) {
     shared.colon = createObject(OBJ_STRING,sdsnew(":"));
     shared.plus = createObject(OBJ_STRING,sdsnew("+"));
 
-    /* The shared NULL depends on the protocol version. */
-    shared.null[0] = NULL;
-    shared.null[1] = NULL;
+
+    shared.null[0] = ((void*)0);
+    shared.null[1] = ((void*)0);
     shared.null[2] = createObject(OBJ_STRING,sdsnew("$-1\r\n"));
     shared.null[3] = createObject(OBJ_STRING,sdsnew("_\r\n"));
 
-    shared.nullarray[0] = NULL;
-    shared.nullarray[1] = NULL;
+    shared.nullarray[0] = ((void*)0);
+    shared.nullarray[1] = ((void*)0);
     shared.nullarray[2] = createObject(OBJ_STRING,sdsnew("*-1\r\n"));
     shared.nullarray[3] = createObject(OBJ_STRING,sdsnew("_\r\n"));
 
-    shared.emptymap[0] = NULL;
-    shared.emptymap[1] = NULL;
+    shared.emptymap[0] = ((void*)0);
+    shared.emptymap[1] = ((void*)0);
     shared.emptymap[2] = createObject(OBJ_STRING,sdsnew("*0\r\n"));
     shared.emptymap[3] = createObject(OBJ_STRING,sdsnew("%0\r\n"));
 
-    shared.emptyset[0] = NULL;
-    shared.emptyset[1] = NULL;
+    shared.emptyset[0] = ((void*)0);
+    shared.emptyset[1] = ((void*)0);
     shared.emptyset[2] = createObject(OBJ_STRING,sdsnew("*0\r\n"));
     shared.emptyset[3] = createObject(OBJ_STRING,sdsnew("~0\r\n"));
 
@@ -136,10 +136,10 @@ void createSharedObjects(void) {
         shared.bulkhdr[j] = createObject(OBJ_STRING,
             sdscatprintf(sdsempty(),"$%d\r\n",j));
     }
-    /* The following two shared objects, minstring and maxstrings, are not
-     * actually used for their value but as a special object meaning
-     * respectively the minimum possible string and the maximum possible
-     * string in string comparisons for the ZRANGEBYLEX command. */
+
+
+
+
     shared.minstring = sdsnew("minstring");
     shared.maxstring = sdsnew("maxstring");
 }

@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char* frameBuffer; unsigned short frameBufferLen; int knownFailureCode; char* payloadBuffer; int payloadOriginalOpCode; int payloadBufferLen; int connectionState; scalar_t__ isSecure; int /*<<< orphan*/  (* onReceive ) (TYPE_1__*,int,char*,int) ;int /*<<< orphan*/  timeoutTimer; scalar_t__ unhealthyPoints; } ;
-typedef  TYPE_1__ ws_info ;
-typedef  int uint64_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char* frameBuffer; unsigned short frameBufferLen; int knownFailureCode; char* payloadBuffer; int payloadOriginalOpCode; int payloadBufferLen; int connectionState; scalar_t__ isSecure; int (* onReceive ) (TYPE_1__*,int,char*,int) ;int timeoutTimer; scalar_t__ unhealthyPoints; } ;
+typedef TYPE_1__ ws_info ;
+typedef int uint64_t ;
 struct espconn {scalar_t__ reverse; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NODE_DBG (char*,...) ; 
- int WS_OPCODE_CLOSE ; 
- int WS_OPCODE_CONTINUATION ; 
- int WS_OPCODE_PING ; 
- int WS_OPCODE_PONG ; 
- int /*<<< orphan*/  WS_PING_INTERVAL_MS ; 
- void* calloc (int,int) ; 
- int /*<<< orphan*/  espconn_disconnect (struct espconn*) ; 
- int /*<<< orphan*/  espconn_regist_sentcb (struct espconn*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  espconn_secure_disconnect (struct espconn*) ; 
- int /*<<< orphan*/  memcpy (char*,char*,unsigned short) ; 
- int /*<<< orphan*/  os_free (char*) ; 
- int /*<<< orphan*/  os_timer_arm (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  os_timer_disarm (int /*<<< orphan*/ *) ; 
- void* realloc (char*,unsigned short) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,int,char*,int) ; 
- int /*<<< orphan*/  ws_closeSentCallback ; 
- int /*<<< orphan*/  ws_sendFrame (struct espconn*,int,char const*,unsigned short) ; 
+
+ int NODE_DBG (char*,...) ;
+ int WS_OPCODE_CLOSE ;
+ int WS_OPCODE_CONTINUATION ;
+ int WS_OPCODE_PING ;
+ int WS_OPCODE_PONG ;
+ int WS_PING_INTERVAL_MS ;
+ void* calloc (int,int) ;
+ int espconn_disconnect (struct espconn*) ;
+ int espconn_regist_sentcb (struct espconn*,int ) ;
+ int espconn_secure_disconnect (struct espconn*) ;
+ int memcpy (char*,char*,unsigned short) ;
+ int os_free (char*) ;
+ int os_timer_arm (int *,int ,int) ;
+ int os_timer_disarm (int *) ;
+ void* realloc (char*,unsigned short) ;
+ int stub1 (TYPE_1__*,int,char*,int) ;
+ int ws_closeSentCallback ;
+ int ws_sendFrame (struct espconn*,int,char const*,unsigned short) ;
 
 __attribute__((used)) static void ws_receiveCallback(void *arg, char *buf, unsigned short len) {
   NODE_DBG("ws_receiveCallback %d \n", len);
   struct espconn *conn = (struct espconn *) arg;
   ws_info *ws = (ws_info *) conn->reverse;
 
-  ws->unhealthyPoints = 0; // received data, connection is healthy
-  os_timer_disarm(&ws->timeoutTimer); // reset ping check
-  os_timer_arm(&ws->timeoutTimer, WS_PING_INTERVAL_MS, true);
+  ws->unhealthyPoints = 0;
+  os_timer_disarm(&ws->timeoutTimer);
+  os_timer_arm(&ws->timeoutTimer, WS_PING_INTERVAL_MS, 1);
 
 
   char *b = buf;
-  if (ws->frameBuffer != NULL) { // Append previous frameBuffer with new content
+  if (ws->frameBuffer != ((void*)0)) {
     NODE_DBG("Appending new frameBuffer to old one \n");
 
     ws->frameBuffer = realloc(ws->frameBuffer, ws->frameBufferLen + len);
-    if (ws->frameBuffer == NULL) {
+    if (ws->frameBuffer == ((void*)0)) {
       NODE_DBG("Failed to allocate new framebuffer, disconnecting...\n");
 
       ws->knownFailureCode = -8;
@@ -70,7 +70,7 @@ __attribute__((used)) static void ws_receiveCallback(void *arg, char *buf, unsig
     NODE_DBG("New frameBufferLen: %d\n", len);
   }
 
-  while (b != NULL) { // several frames can be present, b pointer will be moved to the next frame
+  while (b != ((void*)0)) {
     NODE_DBG("b[0] = %d \n", b[0]);
     NODE_DBG("b[1] = %d \n", b[1]);
     NODE_DBG("b[2] = %d \n", b[2]);
@@ -88,7 +88,7 @@ __attribute__((used)) static void ws_receiveCallback(void *arg, char *buf, unsig
     if (payloadLength == 126) {
       payloadLength = (b[2] << 8) + b[3];
       bufOffset = 4;
-    } else if (payloadLength == 127) { // this will clearly not hold in heap, abort??
+    } else if (payloadLength == 127) {
       payloadLength = (b[2] << 24) + (b[3] << 16) + (b[4] << 8) + b[5];
       bufOffset = 6;
     }
@@ -99,16 +99,16 @@ __attribute__((used)) static void ws_receiveCallback(void *arg, char *buf, unsig
 
       int i;
       for (i = 0; i < payloadLength; i++) {
-        b[bufOffset + i] ^= b[maskOffset + i % 4]; // apply mask to decode payload
+        b[bufOffset + i] ^= b[maskOffset + i % 4];
       }
     }
 
     if (payloadLength > len - bufOffset) {
       NODE_DBG("INCOMPLETE Frame \n");
-      if (ws->frameBuffer == NULL) {
+      if (ws->frameBuffer == ((void*)0)) {
         NODE_DBG("Allocing new frameBuffer \n");
         ws->frameBuffer = calloc(1,len);
-        if (ws->frameBuffer == NULL) {
+        if (ws->frameBuffer == ((void*)0)) {
           NODE_DBG("Failed to allocate framebuffer, disconnecting... \n");
 
           ws->knownFailureCode = -9;
@@ -121,15 +121,15 @@ __attribute__((used)) static void ws_receiveCallback(void *arg, char *buf, unsig
         memcpy(ws->frameBuffer, b, len);
         ws->frameBufferLen = len;
       }
-      break; // since the buffer were already concat'ed, wait for the next receive
+      break;
     }
 
     if (!isFin) {
       NODE_DBG("PARTIAL frame! Should concat payload and later restore opcode\n");
-      if(ws->payloadBuffer == NULL) {
+      if(ws->payloadBuffer == ((void*)0)) {
         NODE_DBG("Allocing new payloadBuffer \n");
         ws->payloadBuffer = calloc(1,payloadLength);
-        if (ws->payloadBuffer == NULL) {
+        if (ws->payloadBuffer == ((void*)0)) {
           NODE_DBG("Failed to allocate payloadBuffer, disconnecting...\n");
 
           ws->knownFailureCode = -10;
@@ -145,7 +145,7 @@ __attribute__((used)) static void ws_receiveCallback(void *arg, char *buf, unsig
       } else {
         NODE_DBG("Appending new payloadBuffer to old one \n");
         ws->payloadBuffer = realloc(ws->payloadBuffer, ws->payloadBufferLen + payloadLength);
-        if (ws->payloadBuffer == NULL) {
+        if (ws->payloadBuffer == ((void*)0)) {
           NODE_DBG("Failed to allocate new framebuffer, disconnecting...\n");
 
           ws->knownFailureCode = -11;
@@ -163,7 +163,7 @@ __attribute__((used)) static void ws_receiveCallback(void *arg, char *buf, unsig
       char *payload;
       if (opCode == WS_OPCODE_CONTINUATION) {
         NODE_DBG("restoring original opcode\n");
-        if (ws->payloadBuffer == NULL) {
+        if (ws->payloadBuffer == ((void*)0)) {
           NODE_DBG("Got FIN continuation frame but didn't receive any beforehand, disconnecting...\n");
 
           ws->knownFailureCode = -15;
@@ -173,10 +173,10 @@ __attribute__((used)) static void ws_receiveCallback(void *arg, char *buf, unsig
             espconn_disconnect(conn);
           return;
         }
-        // concat buffer with payload
+
         payload = calloc(1,ws->payloadBufferLen + payloadLength);
 
-        if (payload == NULL) {
+        if (payload == ((void*)0)) {
           NODE_DBG("Failed to allocate new framebuffer, disconnecting...\n");
 
           ws->knownFailureCode = -12;
@@ -189,8 +189,8 @@ __attribute__((used)) static void ws_receiveCallback(void *arg, char *buf, unsig
         memcpy(payload, ws->payloadBuffer, ws->payloadBufferLen);
         memcpy(payload + ws->payloadBufferLen, b + bufOffset, payloadLength);
 
-        os_free(ws->payloadBuffer); // free previous buffer
-        ws->payloadBuffer = NULL;
+        os_free(ws->payloadBuffer);
+        ws->payloadBuffer = ((void*)0);
 
         payloadLength += ws->payloadBufferLen;
         ws->payloadBufferLen = 0;
@@ -202,12 +202,12 @@ __attribute__((used)) static void ws_receiveCallback(void *arg, char *buf, unsig
 
         if (opCode == WS_OPCODE_CLOSE && payloadLength > 0) {
           unsigned int reasonCode = b[bufOffset] << 8 + b[bufOffset + 1];
-          NODE_DBG("Closing due to: %d\n", reasonCode); // Must not be shown to client as per spec
+          NODE_DBG("Closing due to: %d\n", reasonCode);
           extensionDataOffset += 2;
         }
 
         payload = calloc(1,payloadLength - extensionDataOffset + 1);
-        if (payload == NULL) {
+        if (payload == ((void*)0)) {
           NODE_DBG("Failed to allocate payload, disconnecting...\n");
 
           ws->knownFailureCode = -13;
@@ -230,7 +230,7 @@ __attribute__((used)) static void ws_receiveCallback(void *arg, char *buf, unsig
       NODE_DBG("bufOffset %d \n", bufOffset);
 
       if (opCode == WS_OPCODE_CLOSE) {
-        NODE_DBG("Closing message: %s\n", payload); // Must not be shown to client as per spec
+        NODE_DBG("Closing message: %s\n", payload);
 
         espconn_regist_sentcb(conn, ws_closeSentCallback);
         ws_sendFrame(conn, WS_OPCODE_CLOSE, (const char *) (b + bufOffset), (unsigned short) payloadLength);
@@ -238,7 +238,7 @@ __attribute__((used)) static void ws_receiveCallback(void *arg, char *buf, unsig
       } else if (opCode == WS_OPCODE_PING) {
         ws_sendFrame(conn, WS_OPCODE_PONG, (const char *) (b + bufOffset), (unsigned short) payloadLength);
       } else if (opCode == WS_OPCODE_PONG) {
-        // ping alarm was already reset...
+
       } else {
         if (ws->onReceive) ws->onReceive(ws, payloadLength, payload, opCode);
       }
@@ -247,21 +247,21 @@ __attribute__((used)) static void ws_receiveCallback(void *arg, char *buf, unsig
 
     bufOffset += payloadLength;
     NODE_DBG("bufOffset %d \n", bufOffset);
-    if (bufOffset == len) { // (bufOffset > len) won't happen here because it's being checked earlier
-      b = NULL;
-      if (ws->frameBuffer != NULL) { // the last frame inside buffer was processed
+    if (bufOffset == len) {
+      b = ((void*)0);
+      if (ws->frameBuffer != ((void*)0)) {
         os_free(ws->frameBuffer);
-        ws->frameBuffer = NULL;
+        ws->frameBuffer = ((void*)0);
         ws->frameBufferLen = 0;
       }
     } else {
       len -= bufOffset;
-      b += bufOffset; // move b to next frame
-      if (ws->frameBuffer != NULL) {
+      b += bufOffset;
+      if (ws->frameBuffer != ((void*)0)) {
         NODE_DBG("Reallocing frameBuffer to remove consumed frame\n");
 
         ws->frameBuffer = realloc(ws->frameBuffer, ws->frameBufferLen + len);
-        if (ws->frameBuffer == NULL) {
+        if (ws->frameBuffer == ((void*)0)) {
           NODE_DBG("Failed to allocate new frame buffer, disconnecting...\n");
 
           ws->knownFailureCode = -14;

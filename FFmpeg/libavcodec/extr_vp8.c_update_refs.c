@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {void* update_altref; void* update_golden; int /*<<< orphan*/  c; } ;
-typedef  TYPE_1__ VP8Context ;
-typedef  int /*<<< orphan*/  VP56RangeCoder ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VP56_FRAME_GOLDEN ; 
- int /*<<< orphan*/  VP56_FRAME_GOLDEN2 ; 
- void* ref_to_update (TYPE_1__*,int,int /*<<< orphan*/ ) ; 
- int vp8_rac_get (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {void* update_altref; void* update_golden; int c; } ;
+typedef TYPE_1__ VP8Context ;
+typedef int VP56RangeCoder ;
+
+
+ int VP56_FRAME_GOLDEN ;
+ int VP56_FRAME_GOLDEN2 ;
+ void* ref_to_update (TYPE_1__*,int,int ) ;
+ int vp8_rac_get (int *) ;
 
 __attribute__((used)) static void update_refs(VP8Context *s)
 {

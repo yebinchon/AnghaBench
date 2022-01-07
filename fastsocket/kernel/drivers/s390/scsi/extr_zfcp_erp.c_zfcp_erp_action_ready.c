@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct zfcp_erp_action {struct zfcp_adapter* adapter; int /*<<< orphan*/  list; } ;
-struct zfcp_adapter {int /*<<< orphan*/  dbf; int /*<<< orphan*/  erp_ready_wq; int /*<<< orphan*/  erp_ready_head; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  list_move (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wake_up (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zfcp_dbf_rec_action (char*,struct zfcp_erp_action*) ; 
- int /*<<< orphan*/  zfcp_dbf_rec_thread (char*,int /*<<< orphan*/ ) ; 
+
+
+
+struct zfcp_erp_action {struct zfcp_adapter* adapter; int list; } ;
+struct zfcp_adapter {int dbf; int erp_ready_wq; int erp_ready_head; } ;
+
+
+ int list_move (int *,int *) ;
+ int wake_up (int *) ;
+ int zfcp_dbf_rec_action (char*,struct zfcp_erp_action*) ;
+ int zfcp_dbf_rec_thread (char*,int ) ;
 
 __attribute__((used)) static void zfcp_erp_action_ready(struct zfcp_erp_action *act)
 {
-	struct zfcp_adapter *adapter = act->adapter;
+ struct zfcp_adapter *adapter = act->adapter;
 
-	list_move(&act->list, &act->adapter->erp_ready_head);
-	zfcp_dbf_rec_action("erardy1", act);
-	wake_up(&adapter->erp_ready_wq);
-	zfcp_dbf_rec_thread("erardy2", adapter->dbf);
+ list_move(&act->list, &act->adapter->erp_ready_head);
+ zfcp_dbf_rec_action("erardy1", act);
+ wake_up(&adapter->erp_ready_wq);
+ zfcp_dbf_rec_thread("erardy2", adapter->dbf);
 }

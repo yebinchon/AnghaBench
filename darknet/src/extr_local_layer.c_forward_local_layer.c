@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {float* input; int /*<<< orphan*/  workspace; } ;
-typedef  TYPE_1__ network ;
-struct TYPE_8__ {int batch; int outputs; float* output; int w; int h; int c; int size; float* weights; int n; int /*<<< orphan*/  activation; int /*<<< orphan*/  pad; int /*<<< orphan*/  stride; int /*<<< orphan*/  biases; } ;
-typedef  TYPE_2__ local_layer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  activate_array (float*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  copy_cpu (int,int /*<<< orphan*/ ,int,float*,int) ; 
- int /*<<< orphan*/  gemm (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int,float*,int,float*,int,int,float*,int) ; 
- int /*<<< orphan*/  im2col_cpu (float*,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int local_out_height (TYPE_2__ const) ; 
- int local_out_width (TYPE_2__ const) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {float* input; int workspace; } ;
+typedef TYPE_1__ network ;
+struct TYPE_8__ {int batch; int outputs; float* output; int w; int h; int c; int size; float* weights; int n; int activation; int pad; int stride; int biases; } ;
+typedef TYPE_2__ local_layer ;
+
+
+ int activate_array (float*,int,int ) ;
+ int copy_cpu (int,int ,int,float*,int) ;
+ int gemm (int ,int ,int,int,int,int,float*,int,float*,int,int,float*,int) ;
+ int im2col_cpu (float*,int,int,int,int,int ,int ,int ) ;
+ int local_out_height (TYPE_2__ const) ;
+ int local_out_width (TYPE_2__ const) ;
 
 void forward_local_layer(const local_layer l, network net)
 {
@@ -38,7 +38,7 @@ void forward_local_layer(const local_layer l, network net)
 
     for(i = 0; i < l.batch; ++i){
         float *input = net.input + i*l.w*l.h*l.c;
-        im2col_cpu(input, l.c, l.h, l.w, 
+        im2col_cpu(input, l.c, l.h, l.w,
                 l.size, l.stride, l.pad, net.workspace);
         float *output = l.output + i*l.outputs;
         for(j = 0; j < locations; ++j){

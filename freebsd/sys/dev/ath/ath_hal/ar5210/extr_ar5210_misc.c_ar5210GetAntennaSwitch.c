@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ath_hal {int dummy; } ;
-typedef  int /*<<< orphan*/  HAL_ANT_SETTING ;
+typedef int HAL_ANT_SETTING ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HAL_ANT_VARIABLE ; 
+
+ int HAL_ANT_VARIABLE ;
 
 HAL_ANT_SETTING
 ar5210GetAntennaSwitch(struct ath_hal *ah)
 {
-	return HAL_ANT_VARIABLE;
+ return HAL_ANT_VARIABLE;
 }

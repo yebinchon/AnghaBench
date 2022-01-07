@@ -1,131 +1,131 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
-typedef  struct TYPE_12__   TYPE_10__ ;
 
-/* Type definitions */
-struct TYPE_17__ {scalar_t__ ClientConnectError_NoSavePassword; int /*<<< orphan*/  Err; } ;
-struct TYPE_16__ {int CancelConnect; int Client_NoSavePassword; int /*<<< orphan*/  lock; TYPE_10__* Policy; TYPE_5__* Connection; TYPE_3__* Cedar; TYPE_2__* Account; int /*<<< orphan*/  Err; int /*<<< orphan*/  ClientStatus; } ;
-struct TYPE_15__ {int /*<<< orphan*/ * Client; } ;
-struct TYPE_14__ {int /*<<< orphan*/  lock; TYPE_1__* ClientAuth; } ;
-struct TYPE_13__ {scalar_t__ AuthType; int /*<<< orphan*/  PlainPassword; int /*<<< orphan*/  HashedPassword; } ;
+
+
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+typedef struct TYPE_12__ TYPE_10__ ;
+
+
+struct TYPE_17__ {scalar_t__ ClientConnectError_NoSavePassword; int Err; } ;
+struct TYPE_16__ {int CancelConnect; int Client_NoSavePassword; int lock; TYPE_10__* Policy; TYPE_5__* Connection; TYPE_3__* Cedar; TYPE_2__* Account; int Err; int ClientStatus; } ;
+struct TYPE_15__ {int * Client; } ;
+struct TYPE_14__ {int lock; TYPE_1__* ClientAuth; } ;
+struct TYPE_13__ {scalar_t__ AuthType; int PlainPassword; int HashedPassword; } ;
 struct TYPE_12__ {scalar_t__ NoSavePassword; } ;
-typedef  TYPE_4__ SESSION ;
-typedef  TYPE_5__ CONNECTION ;
+typedef TYPE_4__ SESSION ;
+typedef TYPE_5__ CONNECTION ;
 
-/* Variables and functions */
- scalar_t__ AUTHTYPE_PASSWORD ; 
- scalar_t__ AUTHTYPE_RADIUS ; 
- int /*<<< orphan*/  CLIENT_STATUS_CONNECTING ; 
- int /*<<< orphan*/  CiSaveConfigurationFile (int /*<<< orphan*/ *) ; 
- int ClientConnect (TYPE_5__*) ; 
- int /*<<< orphan*/  Debug (char*) ; 
- int /*<<< orphan*/  ERR_NO_ERROR ; 
- int /*<<< orphan*/  Free (TYPE_10__*) ; 
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- TYPE_5__* NewClientConnection (TYPE_4__*) ; 
- int /*<<< orphan*/  ReleaseConnection (TYPE_5__*) ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Zero (int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ AUTHTYPE_PASSWORD ;
+ scalar_t__ AUTHTYPE_RADIUS ;
+ int CLIENT_STATUS_CONNECTING ;
+ int CiSaveConfigurationFile (int *) ;
+ int ClientConnect (TYPE_5__*) ;
+ int Debug (char*) ;
+ int ERR_NO_ERROR ;
+ int Free (TYPE_10__*) ;
+ int Lock (int ) ;
+ TYPE_5__* NewClientConnection (TYPE_4__*) ;
+ int ReleaseConnection (TYPE_5__*) ;
+ int Unlock (int ) ;
+ int Zero (int ,int) ;
 
 bool SessionConnect(SESSION *s)
 {
-	CONNECTION *c;
-	bool ret = false;
-	// Validate arguments
-	if (s == NULL)
-	{
-		return false;
-	}
+ CONNECTION *c;
+ bool ret = 0;
 
-	s->ClientStatus = CLIENT_STATUS_CONNECTING;
+ if (s == ((void*)0))
+ {
+  return 0;
+ }
 
-	Debug("SessionConnect() Started.\n");
+ s->ClientStatus = CLIENT_STATUS_CONNECTING;
 
-	// Initialize the session
-	Lock(s->lock);
-	{
-		s->Err = ERR_NO_ERROR;
-		if (s->Policy != NULL)
-		{
-			Free(s->Policy);
-			s->Policy = NULL;
-		}
-	}
-	Unlock(s->lock);
+ Debug("SessionConnect() Started.\n");
 
-	s->CancelConnect = false;
 
-	// Create a Client Connection
-	c = NewClientConnection(s);
-	s->Connection = c;
+ Lock(s->lock);
+ {
+  s->Err = ERR_NO_ERROR;
+  if (s->Policy != ((void*)0))
+  {
+   Free(s->Policy);
+   s->Policy = ((void*)0);
+  }
+ }
+ Unlock(s->lock);
 
-	// Connect the client to the server
-	ret = ClientConnect(c);
-	s->Err = c->Err;
+ s->CancelConnect = 0;
 
-	s->CancelConnect = false;
 
-	if (s->Cedar->Client != NULL)
-	{
-		if (s->Policy != NULL)
-		{
-			if (s->Policy->NoSavePassword)
-			{
-				s->Client_NoSavePassword = true;
+ c = NewClientConnection(s);
+ s->Connection = c;
 
-				if (s->Account != NULL)
-				{
-					Lock(s->Account->lock);
-					{
-						if (s->Account->ClientAuth != NULL)
-						{
-							if (s->Account->ClientAuth->AuthType == AUTHTYPE_PASSWORD ||
-								s->Account->ClientAuth->AuthType == AUTHTYPE_RADIUS)
-							{
-								Zero(s->Account->ClientAuth->HashedPassword, sizeof(s->Account->ClientAuth->HashedPassword));
-								Zero(s->Account->ClientAuth->PlainPassword, sizeof(s->Account->ClientAuth->PlainPassword));
-							}
-						}
-					}
-					Unlock(s->Account->lock);
 
-					CiSaveConfigurationFile(s->Cedar->Client);
-				}
-			}
-		}
-	}
+ ret = ClientConnect(c);
+ s->Err = c->Err;
 
-	if (c->ClientConnectError_NoSavePassword)
-	{
-		s->Client_NoSavePassword = true;
-	}
+ s->CancelConnect = 0;
 
-	// Release the client connection
-	s->Connection = NULL;
-	ReleaseConnection(c);
+ if (s->Cedar->Client != ((void*)0))
+ {
+  if (s->Policy != ((void*)0))
+  {
+   if (s->Policy->NoSavePassword)
+   {
+    s->Client_NoSavePassword = 1;
 
-	Lock(s->lock);
-	{
-		if (s->Policy != NULL)
-		{
-			Free(s->Policy);
-			s->Policy = NULL;
-		}
-	}
-	Unlock(s->lock);
+    if (s->Account != ((void*)0))
+    {
+     Lock(s->Account->lock);
+     {
+      if (s->Account->ClientAuth != ((void*)0))
+      {
+       if (s->Account->ClientAuth->AuthType == AUTHTYPE_PASSWORD ||
+        s->Account->ClientAuth->AuthType == AUTHTYPE_RADIUS)
+       {
+        Zero(s->Account->ClientAuth->HashedPassword, sizeof(s->Account->ClientAuth->HashedPassword));
+        Zero(s->Account->ClientAuth->PlainPassword, sizeof(s->Account->ClientAuth->PlainPassword));
+       }
+      }
+     }
+     Unlock(s->Account->lock);
 
-	return ret;
+     CiSaveConfigurationFile(s->Cedar->Client);
+    }
+   }
+  }
+ }
+
+ if (c->ClientConnectError_NoSavePassword)
+ {
+  s->Client_NoSavePassword = 1;
+ }
+
+
+ s->Connection = ((void*)0);
+ ReleaseConnection(c);
+
+ Lock(s->lock);
+ {
+  if (s->Policy != ((void*)0))
+  {
+   Free(s->Policy);
+   s->Policy = ((void*)0);
+  }
+ }
+ Unlock(s->lock);
+
+ return ret;
 }

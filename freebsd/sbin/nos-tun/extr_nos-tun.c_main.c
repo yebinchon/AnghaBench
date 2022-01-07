@@ -1,86 +1,86 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wherefrom ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int wherefrom ;
 struct TYPE_4__ {scalar_t__ s_addr; } ;
 struct sockaddr_in {TYPE_2__ sin_addr; } ;
 struct sockaddr {int dummy; } ;
 struct TYPE_3__ {scalar_t__ s_addr; } ;
 struct ip {int ip_hl; TYPE_1__ ip_src; } ;
-typedef  int /*<<< orphan*/  fd_set ;
-typedef  int /*<<< orphan*/  buf ;
+typedef int fd_set ;
+typedef int buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- scalar_t__ FD_ISSET (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_SET (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Finish (int) ; 
- int /*<<< orphan*/  LOG_DAEMON ; 
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  LOG_PID ; 
- int /*<<< orphan*/  SIGHUP ; 
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  SIGTERM ; 
- int /*<<< orphan*/  SOCK_RAW ; 
- scalar_t__ Set_address (char*,struct sockaddr_in*) ; 
- int atoi (char*) ; 
- scalar_t__ bind (int,struct sockaddr*,int) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  closelog () ; 
- scalar_t__ connect (int,struct sockaddr*,int) ; 
- int /*<<< orphan*/  daemon (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exit (int) ; 
- int getopt (int,char**,char*) ; 
- int net ; 
- int /*<<< orphan*/  openlog (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* optarg ; 
- scalar_t__ optind ; 
- int read (int,char*,int) ; 
- int select (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ send (int,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/  (*) (int)) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  syslog (int /*<<< orphan*/ ,char*) ; 
- int tun ; 
- scalar_t__ tun_open (char*,struct sockaddr*,char*) ; 
- int /*<<< orphan*/  usage () ; 
- int /*<<< orphan*/  write (int,char*,int) ; 
+
+ int AF_INET ;
+ scalar_t__ FD_ISSET (int,int *) ;
+ int FD_SET (int,int *) ;
+ int FD_ZERO (int *) ;
+ int Finish (int) ;
+ int LOG_DAEMON ;
+ int LOG_ERR ;
+ int LOG_PID ;
+ int SIGHUP ;
+ int SIGINT ;
+ int SIGTERM ;
+ int SOCK_RAW ;
+ scalar_t__ Set_address (char*,struct sockaddr_in*) ;
+ int atoi (char*) ;
+ scalar_t__ bind (int,struct sockaddr*,int) ;
+ int close (int) ;
+ int closelog () ;
+ scalar_t__ connect (int,struct sockaddr*,int) ;
+ int daemon (int ,int ) ;
+ int exit (int) ;
+ int getopt (int,char**,char*) ;
+ int net ;
+ int openlog (char*,int ,int ) ;
+ char* optarg ;
+ scalar_t__ optind ;
+ int read (int,char*,int) ;
+ int select (int,int *,int *,int *,int *) ;
+ scalar_t__ send (int,char*,int,int ) ;
+ int signal (int ,int (*) (int)) ;
+ int socket (int ,int ,int) ;
+ int syslog (int ,char*) ;
+ int tun ;
+ scalar_t__ tun_open (char*,struct sockaddr*,char*) ;
+ int usage () ;
+ int write (int,char*,int) ;
 
 int main (int argc, char **argv)
 {
-  int  c, len, ipoff;
+  int c, len, ipoff;
 
-  char *dev_name = NULL;
-  char *point_to = NULL;
-  char *to_point = NULL;
+  char *dev_name = ((void*)0);
+  char *point_to = ((void*)0);
+  char *to_point = ((void*)0);
   char *target;
-  char *source = NULL;
-  char *protocol = NULL;
+  char *source = ((void*)0);
+  char *protocol = ((void*)0);
   int protnum;
 
-  struct sockaddr t_laddr;          /* Source address of tunnel */
-  struct sockaddr whereto;          /* Destination of tunnel */
-  struct sockaddr wherefrom;        /* Source of tunnel */
+  struct sockaddr t_laddr;
+  struct sockaddr whereto;
+  struct sockaddr wherefrom;
   struct sockaddr_in *to;
 
-  char buf[0x2000];                 /* Packets buffer */
+  char buf[0x2000];
   struct ip *ip = (struct ip *)buf;
 
-  fd_set rfds;                      /* File descriptors for select() */
-  int nfds;                         /* Return from select() */
-  int lastfd;                       /* highest fd we care about */
+  fd_set rfds;
+  int nfds;
+  int lastfd;
 
 
   while ((c = getopt(argc, argv, "d:s:t:p:")) != -1) {
@@ -102,12 +102,12 @@ int main (int argc, char **argv)
   argc -= optind;
   argv += optind;
 
-  if ((argc != 1 && argc != 2) || (dev_name == NULL) ||
-      (point_to == NULL) || (to_point == NULL)) {
+  if ((argc != 1 && argc != 2) || (dev_name == ((void*)0)) ||
+      (point_to == ((void*)0)) || (to_point == ((void*)0))) {
     usage();
   }
 
-  if(protocol == NULL)
+  if(protocol == ((void*)0))
       protnum = 94;
   else
       protnum = atoi(protocol);
@@ -118,7 +118,7 @@ int main (int argc, char **argv)
       source = *argv++; target = *argv;
   }
 
-  /* Establish logging through 'syslog' */
+
   openlog("nos-tun", LOG_PID, LOG_DAEMON);
 
   if(Set_address(point_to, (struct sockaddr_in *)&t_laddr)) {
@@ -140,13 +140,13 @@ int main (int argc, char **argv)
     Finish(5);
   }
 
-  if (source) { 
-	if (Set_address(source, (struct sockaddr_in *)&wherefrom))
-	  Finish(9);
+  if (source) {
+ if (Set_address(source, (struct sockaddr_in *)&wherefrom))
+   Finish(9);
     if (bind(net, &wherefrom, sizeof(wherefrom)) < 0) {
-	  syslog(LOG_ERR, "can't bind source address - %m");
-	  Finish(10);
-	}
+   syslog(LOG_ERR, "can't bind source address - %m");
+   Finish(10);
+ }
   }
 
   if (connect(net,&whereto,sizeof(struct sockaddr_in)) < 0 ) {
@@ -155,31 +155,31 @@ int main (int argc, char **argv)
     Finish(6);
   }
 
-  /*  Demonize it */
+
   daemon(0,0);
 
-  /* Install signal handlers */
+
   (void)signal(SIGHUP,Finish);
   (void)signal(SIGINT,Finish);
   (void)signal(SIGTERM,Finish);
 
   if (tun > net)
-	lastfd = tun;
+ lastfd = tun;
   else
-	lastfd = net;
+ lastfd = net;
 
   for (;;) {
-    /* Set file descriptors for select() */
+
     FD_ZERO(&rfds);
     FD_SET(tun,&rfds); FD_SET(net,&rfds);
 
-    nfds = select(lastfd+1,&rfds,NULL,NULL,NULL);
+    nfds = select(lastfd+1,&rfds,((void*)0),((void*)0),((void*)0));
     if(nfds < 0) {
       syslog(LOG_ERR,"interrupted select");
       close(net);
       Finish(7);
     }
-    if(nfds == 0) {         /* Impossible ? */
+    if(nfds == 0) {
       syslog(LOG_ERR,"timeout in select");
       close(net);
       Finish(8);
@@ -187,23 +187,23 @@ int main (int argc, char **argv)
 
 
     if(FD_ISSET(net,&rfds)) {
-      /* Read from socket ... */
+
       len = read(net, buf, sizeof(buf));
-      /* Check if this is "our" packet */
+
       if((ip->ip_src).s_addr == (to->sin_addr).s_addr) {
-	/* ... skip encapsulation headers ... */
-	ipoff = (ip->ip_hl << 2);
-	/* ... and write to tun-device */
-	write(tun,buf+ipoff,len-ipoff);
+
+ ipoff = (ip->ip_hl << 2);
+
+ write(tun,buf+ipoff,len-ipoff);
       }
     }
 
     if(FD_ISSET(tun,&rfds)) {
-      /* Read from tun ... */
+
       len = read(tun, buf, sizeof(buf));
-      /* ... and send to network */
+
       if(send(net, buf, len,0) <= 0) {
-	syslog(LOG_ERR,"can't send - %m");
+ syslog(LOG_ERR,"can't send - %m");
       }
     }
   }

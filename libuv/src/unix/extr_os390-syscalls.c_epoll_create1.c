@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int size; int /*<<< orphan*/  member; TYPE_1__* items; int /*<<< orphan*/  msg_queue; } ;
-typedef  TYPE_2__ uv__os390_epoll ;
-struct TYPE_7__ {scalar_t__ revents; int /*<<< orphan*/  events; int /*<<< orphan*/  fd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  POLLIN ; 
- int /*<<< orphan*/  QUEUE_INSERT_TAIL (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  epoll_init ; 
- int /*<<< orphan*/  global_epoll_lock ; 
- int /*<<< orphan*/  global_epoll_queue ; 
- int /*<<< orphan*/  init_message_queue (TYPE_2__*) ; 
- int /*<<< orphan*/  maybe_resize (TYPE_2__*,int) ; 
- int /*<<< orphan*/  once ; 
- TYPE_2__* uv__malloc (int) ; 
- int /*<<< orphan*/  uv_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_once (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int size; int member; TYPE_1__* items; int msg_queue; } ;
+typedef TYPE_2__ uv__os390_epoll ;
+struct TYPE_7__ {scalar_t__ revents; int events; int fd; } ;
+
+
+ int POLLIN ;
+ int QUEUE_INSERT_TAIL (int *,int *) ;
+ int epoll_init ;
+ int global_epoll_lock ;
+ int global_epoll_queue ;
+ int init_message_queue (TYPE_2__*) ;
+ int maybe_resize (TYPE_2__*,int) ;
+ int once ;
+ TYPE_2__* uv__malloc (int) ;
+ int uv_mutex_lock (int *) ;
+ int uv_mutex_unlock (int *) ;
+ int uv_once (int *,int ) ;
 
 uv__os390_epoll* epoll_create1(int flags) {
   uv__os390_epoll* lst;
 
   lst = uv__malloc(sizeof(*lst));
-  if (lst != NULL) {
-    /* initialize list */
+  if (lst != ((void*)0)) {
+
     lst->size = 0;
-    lst->items = NULL;
+    lst->items = ((void*)0);
     init_message_queue(lst);
     maybe_resize(lst, 1);
     lst->items[lst->size - 1].fd = lst->msg_queue;

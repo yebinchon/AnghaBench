@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct name_cache {int dummy; } ;
-struct group {int /*<<< orphan*/  gr_name; } ;
-typedef  scalar_t__ id_t ;
-typedef  int /*<<< orphan*/  gid_t ;
+struct group {int gr_name; } ;
+typedef scalar_t__ id_t ;
+typedef int gid_t ;
 
-/* Variables and functions */
- struct group* getgrgid (int /*<<< orphan*/ ) ; 
- char const* strdup (int /*<<< orphan*/ ) ; 
+
+ struct group* getgrgid (int ) ;
+ char const* strdup (int ) ;
 
 __attribute__((used)) static const char *
 lookup_gname_helper(struct name_cache *cache, id_t id)
 {
-	struct group	*result;
-	(void)cache; /* UNUSED */
+ struct group *result;
+ (void)cache;
 
-	result = getgrgid((gid_t)id);
+ result = getgrgid((gid_t)id);
 
-	if (result == NULL)
-		return (NULL);
+ if (result == ((void*)0))
+  return (((void*)0));
 
-	return strdup(result->gr_name);
+ return strdup(result->gr_name);
 }

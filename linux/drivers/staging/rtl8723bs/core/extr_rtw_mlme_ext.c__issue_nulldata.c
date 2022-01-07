@@ -1,116 +1,116 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned char u8 ;
+
+
+
+
+typedef unsigned char u8 ;
 struct xmit_priv {int dummy; } ;
 struct pkt_attrib {int retry_ctrl; int pktlen; int last_txcmdsz; } ;
 struct xmit_frame {scalar_t__ buf_addr; struct pkt_attrib attrib; } ;
-struct mlme_ext_info {int state; int /*<<< orphan*/  network; } ;
-struct mlme_ext_priv {int /*<<< orphan*/  mgnt_seq; struct mlme_ext_info mlmext_info; } ;
+struct mlme_ext_info {int state; int network; } ;
+struct mlme_ext_priv {int mgnt_seq; struct mlme_ext_info mlmext_info; } ;
 struct ieee80211_hdr_3addr {int dummy; } ;
-struct ieee80211_hdr {int /*<<< orphan*/  addr3; int /*<<< orphan*/  addr2; int /*<<< orphan*/  addr1; scalar_t__ frame_control; } ;
-struct adapter {int /*<<< orphan*/  eeprompriv; struct mlme_ext_priv mlmeextpriv; struct xmit_priv xmitpriv; } ;
-typedef  scalar_t__ __le16 ;
+struct ieee80211_hdr {int addr3; int addr2; int addr1; scalar_t__ frame_control; } ;
+struct adapter {int eeprompriv; struct mlme_ext_priv mlmeextpriv; struct xmit_priv xmitpriv; } ;
+typedef scalar_t__ __le16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ETH_ALEN ; 
- int /*<<< orphan*/  SetFrDs (scalar_t__*) ; 
- int /*<<< orphan*/  SetFrameSubType (unsigned char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetPwrMgt (scalar_t__*) ; 
- int /*<<< orphan*/  SetSeqNum (struct ieee80211_hdr*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetToDs (scalar_t__*) ; 
- int TXDESC_OFFSET ; 
- int /*<<< orphan*/  WIFI_DATA_NULL ; 
- int WIFI_FW_AP_STATE ; 
- int WIFI_FW_STATION_STATE ; 
- int WLANHDR_OFFSET ; 
- int _FAIL ; 
- int _SUCCESS ; 
- struct xmit_frame* alloc_mgtxmitframe (struct xmit_priv*) ; 
- int /*<<< orphan*/  dump_mgntframe (struct adapter*,struct xmit_frame*) ; 
- int dump_mgntframe_and_wait_ack (struct adapter*,struct xmit_frame*) ; 
- unsigned char* get_my_bssid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,unsigned char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (scalar_t__,int /*<<< orphan*/ ,int) ; 
- unsigned char* myid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  update_mgntframe_attrib (struct adapter*,struct pkt_attrib*) ; 
+
+ int ETH_ALEN ;
+ int SetFrDs (scalar_t__*) ;
+ int SetFrameSubType (unsigned char*,int ) ;
+ int SetPwrMgt (scalar_t__*) ;
+ int SetSeqNum (struct ieee80211_hdr*,int ) ;
+ int SetToDs (scalar_t__*) ;
+ int TXDESC_OFFSET ;
+ int WIFI_DATA_NULL ;
+ int WIFI_FW_AP_STATE ;
+ int WIFI_FW_STATION_STATE ;
+ int WLANHDR_OFFSET ;
+ int _FAIL ;
+ int _SUCCESS ;
+ struct xmit_frame* alloc_mgtxmitframe (struct xmit_priv*) ;
+ int dump_mgntframe (struct adapter*,struct xmit_frame*) ;
+ int dump_mgntframe_and_wait_ack (struct adapter*,struct xmit_frame*) ;
+ unsigned char* get_my_bssid (int *) ;
+ int memcpy (int ,unsigned char*,int ) ;
+ int memset (scalar_t__,int ,int) ;
+ unsigned char* myid (int *) ;
+ int update_mgntframe_attrib (struct adapter*,struct pkt_attrib*) ;
 
 __attribute__((used)) static int _issue_nulldata(struct adapter *padapter, unsigned char *da,
-			   unsigned int power_mode, bool wait_ack)
+      unsigned int power_mode, bool wait_ack)
 {
-	int ret = _FAIL;
-	struct xmit_frame			*pmgntframe;
-	struct pkt_attrib			*pattrib;
-	unsigned char 				*pframe;
-	struct ieee80211_hdr	*pwlanhdr;
-	__le16 *fctrl;
-	struct xmit_priv *pxmitpriv;
-	struct mlme_ext_priv *pmlmeext;
-	struct mlme_ext_info *pmlmeinfo;
+ int ret = _FAIL;
+ struct xmit_frame *pmgntframe;
+ struct pkt_attrib *pattrib;
+ unsigned char *pframe;
+ struct ieee80211_hdr *pwlanhdr;
+ __le16 *fctrl;
+ struct xmit_priv *pxmitpriv;
+ struct mlme_ext_priv *pmlmeext;
+ struct mlme_ext_info *pmlmeinfo;
 
-	/* DBG_871X("%s:%d\n", __func__, power_mode); */
 
-	if (!padapter)
-		goto exit;
 
-	pxmitpriv = &(padapter->xmitpriv);
-	pmlmeext = &(padapter->mlmeextpriv);
-	pmlmeinfo = &(pmlmeext->mlmext_info);
+ if (!padapter)
+  goto exit;
 
-	pmgntframe = alloc_mgtxmitframe(pxmitpriv);
-	if (pmgntframe == NULL)
-		goto exit;
+ pxmitpriv = &(padapter->xmitpriv);
+ pmlmeext = &(padapter->mlmeextpriv);
+ pmlmeinfo = &(pmlmeext->mlmext_info);
 
-	/* update attribute */
-	pattrib = &pmgntframe->attrib;
-	update_mgntframe_attrib(padapter, pattrib);
-	pattrib->retry_ctrl = false;
+ pmgntframe = alloc_mgtxmitframe(pxmitpriv);
+ if (pmgntframe == ((void*)0))
+  goto exit;
 
-	memset(pmgntframe->buf_addr, 0, WLANHDR_OFFSET + TXDESC_OFFSET);
 
-	pframe = (u8 *)(pmgntframe->buf_addr) + TXDESC_OFFSET;
-	pwlanhdr = (struct ieee80211_hdr *)pframe;
+ pattrib = &pmgntframe->attrib;
+ update_mgntframe_attrib(padapter, pattrib);
+ pattrib->retry_ctrl = 0;
 
-	fctrl = &(pwlanhdr->frame_control);
-	*(fctrl) = 0;
+ memset(pmgntframe->buf_addr, 0, WLANHDR_OFFSET + TXDESC_OFFSET);
 
-	if ((pmlmeinfo->state&0x03) == WIFI_FW_AP_STATE)
-		SetFrDs(fctrl);
-	else if ((pmlmeinfo->state&0x03) == WIFI_FW_STATION_STATE)
-		SetToDs(fctrl);
+ pframe = (u8 *)(pmgntframe->buf_addr) + TXDESC_OFFSET;
+ pwlanhdr = (struct ieee80211_hdr *)pframe;
 
-	if (power_mode)
-		SetPwrMgt(fctrl);
+ fctrl = &(pwlanhdr->frame_control);
+ *(fctrl) = 0;
 
-	memcpy(pwlanhdr->addr1, da, ETH_ALEN);
-	memcpy(pwlanhdr->addr2, myid(&(padapter->eeprompriv)), ETH_ALEN);
-	memcpy(pwlanhdr->addr3, get_my_bssid(&(pmlmeinfo->network)), ETH_ALEN);
+ if ((pmlmeinfo->state&0x03) == WIFI_FW_AP_STATE)
+  SetFrDs(fctrl);
+ else if ((pmlmeinfo->state&0x03) == WIFI_FW_STATION_STATE)
+  SetToDs(fctrl);
 
-	SetSeqNum(pwlanhdr, pmlmeext->mgnt_seq);
-	pmlmeext->mgnt_seq++;
-	SetFrameSubType(pframe, WIFI_DATA_NULL);
+ if (power_mode)
+  SetPwrMgt(fctrl);
 
-	pframe += sizeof(struct ieee80211_hdr_3addr);
-	pattrib->pktlen = sizeof(struct ieee80211_hdr_3addr);
+ memcpy(pwlanhdr->addr1, da, ETH_ALEN);
+ memcpy(pwlanhdr->addr2, myid(&(padapter->eeprompriv)), ETH_ALEN);
+ memcpy(pwlanhdr->addr3, get_my_bssid(&(pmlmeinfo->network)), ETH_ALEN);
 
-	pattrib->last_txcmdsz = pattrib->pktlen;
+ SetSeqNum(pwlanhdr, pmlmeext->mgnt_seq);
+ pmlmeext->mgnt_seq++;
+ SetFrameSubType(pframe, WIFI_DATA_NULL);
 
-	if (wait_ack) {
-		ret = dump_mgntframe_and_wait_ack(padapter, pmgntframe);
-	} else {
-		dump_mgntframe(padapter, pmgntframe);
-		ret = _SUCCESS;
-	}
+ pframe += sizeof(struct ieee80211_hdr_3addr);
+ pattrib->pktlen = sizeof(struct ieee80211_hdr_3addr);
+
+ pattrib->last_txcmdsz = pattrib->pktlen;
+
+ if (wait_ack) {
+  ret = dump_mgntframe_and_wait_ack(padapter, pmgntframe);
+ } else {
+  dump_mgntframe(padapter, pmgntframe);
+  ret = _SUCCESS;
+ }
 
 exit:
-	return ret;
+ return ret;
 }

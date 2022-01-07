@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {unsigned char* k; } ;
-typedef  TYPE_1__ key_set ;
+typedef TYPE_1__ key_set ;
 
-/* Variables and functions */
- int DECRYPTION_MODE ; 
- scalar_t__* S1 ; 
- scalar_t__* S2 ; 
- scalar_t__* S3 ; 
- scalar_t__* S4 ; 
- scalar_t__* S5 ; 
- scalar_t__* S6 ; 
- scalar_t__* S7 ; 
- scalar_t__* S8 ; 
- int* final_message_permutation ; 
- int* initial_message_permutation ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int* message_expansion ; 
- int* right_sub_message_permutation ; 
+
+ int DECRYPTION_MODE ;
+ scalar_t__* S1 ;
+ scalar_t__* S2 ;
+ scalar_t__* S3 ;
+ scalar_t__* S4 ;
+ scalar_t__* S5 ;
+ scalar_t__* S6 ;
+ scalar_t__* S7 ;
+ scalar_t__* S8 ;
+ int* final_message_permutation ;
+ int* initial_message_permutation ;
+ int memcpy (unsigned char*,unsigned char*,int) ;
+ int memset (unsigned char*,int ,int) ;
+ int* message_expansion ;
+ int* right_sub_message_permutation ;
 
 void process_message(unsigned char* message_piece, unsigned char* processed_piece, key_set* key_sets, int mode) {
-  int           i, k;
-  int           shift_size;
+  int i, k;
+  int shift_size;
   unsigned char shift_byte;
 
   unsigned char initial_permutation[8];
@@ -88,10 +88,10 @@ void process_message(unsigned char* message_piece, unsigned char* processed_piec
       ser[i] = 0;
     }
 
-    // 0000 0000 0000 0000 0000 0000
-    // rccc crrc cccr rccc crrc cccr
 
-    // Byte 1
+
+
+
     row = 0;
     row |= ((er[0] & 0x80) >> 6);
     row |= ((er[0] & 0x04) >> 2);
@@ -111,7 +111,7 @@ void process_message(unsigned char* message_piece, unsigned char* processed_piec
 
     ser[0] |= (unsigned char)S2[row * 16 + column];
 
-    // Byte 2
+
     row = 0;
     row |= ((er[1] & 0x08) >> 2);
     row |= ((er[2] & 0x40) >> 6);
@@ -131,7 +131,7 @@ void process_message(unsigned char* message_piece, unsigned char* processed_piec
 
     ser[1] |= (unsigned char)S4[row * 16 + column];
 
-    // Byte 3
+
     row = 0;
     row |= ((er[3] & 0x80) >> 6);
     row |= ((er[3] & 0x04) >> 2);
@@ -151,7 +151,7 @@ void process_message(unsigned char* message_piece, unsigned char* processed_piec
 
     ser[2] |= (unsigned char)S6[row * 16 + column];
 
-    // Byte 4
+
     row = 0;
     row |= ((er[4] & 0x08) >> 2);
     row |= ((er[5] & 0x40) >> 6);

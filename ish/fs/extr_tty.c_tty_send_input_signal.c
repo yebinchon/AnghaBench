@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int lflags; unsigned char* cc; } ;
 struct tty {scalar_t__ fg_group; scalar_t__ bufsize; TYPE_1__ termios; } ;
-typedef  int /*<<< orphan*/  sigset_t_ ;
+typedef int sigset_t_ ;
 
-/* Variables and functions */
- int ISIG_ ; 
- int NOFLSH_ ; 
- int SIGINT_ ; 
- int SIGQUIT_ ; 
- int SIGTSTP_ ; 
- size_t VINTR_ ; 
- size_t VQUIT_ ; 
- size_t VSUSP_ ; 
- int /*<<< orphan*/  sigset_add (int /*<<< orphan*/ *,int) ; 
+
+ int ISIG_ ;
+ int NOFLSH_ ;
+ int SIGINT_ ;
+ int SIGQUIT_ ;
+ int SIGTSTP_ ;
+ size_t VINTR_ ;
+ size_t VQUIT_ ;
+ size_t VSUSP_ ;
+ int sigset_add (int *,int) ;
 
 __attribute__((used)) static bool tty_send_input_signal(struct tty *tty, char ch, sigset_t_ *queue) {
     if (!(tty->termios.lflags & ISIG_))
@@ -38,12 +38,12 @@ __attribute__((used)) static bool tty_send_input_signal(struct tty *tty, char ch
     else if (ch == cc[VSUSP_])
         sig = SIGTSTP_;
     else
-        return false;
+        return 0;
 
     if (tty->fg_group != 0) {
         if (!(tty->termios.lflags & NOFLSH_))
             tty->bufsize = 0;
         sigset_add(queue, sig);
     }
-    return true;
+    return 1;
 }

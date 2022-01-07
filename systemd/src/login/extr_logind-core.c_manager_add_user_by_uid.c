@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uid_t ;
-struct passwd {int /*<<< orphan*/  pw_dir; int /*<<< orphan*/  pw_name; int /*<<< orphan*/  pw_gid; } ;
-typedef  int /*<<< orphan*/  User ;
-typedef  int /*<<< orphan*/  Manager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENOENT ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- scalar_t__ errno ; 
- int errno_or_else (int /*<<< orphan*/ ) ; 
- struct passwd* getpwuid (int /*<<< orphan*/ ) ; 
- int manager_add_user (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int uid_t ;
+struct passwd {int pw_dir; int pw_name; int pw_gid; } ;
+typedef int User ;
+typedef int Manager ;
+
+
+ int ENOENT ;
+ int assert (int *) ;
+ scalar_t__ errno ;
+ int errno_or_else (int ) ;
+ struct passwd* getpwuid (int ) ;
+ int manager_add_user (int *,int ,int ,int ,int ,int **) ;
 
 int manager_add_user_by_uid(Manager *m, uid_t uid, User **ret_user) {
         struct passwd *p;

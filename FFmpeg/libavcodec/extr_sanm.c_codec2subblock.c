@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int16_t ;
-struct TYPE_6__ {int pitch; int width; int* small_codebook; int* codebook; int /*<<< orphan*/  gb; int /*<<< orphan*/  frm0; int /*<<< orphan*/  frm1; int /*<<< orphan*/  frm2; } ;
-typedef  TYPE_1__ SANMVideoContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- size_t bytestream2_get_byteu (int /*<<< orphan*/ *) ; 
- int bytestream2_get_le16u (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  copy_block (int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  fill_block (int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  good_mvec (TYPE_1__*,int,int,int,int,int) ; 
- int** motion_vectors ; 
- int /*<<< orphan*/  opcode_0xf7 (TYPE_1__*,int,int,int,int) ; 
- int /*<<< orphan*/  opcode_0xf8 (TYPE_1__*,int,int,int,int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int int16_t ;
+struct TYPE_6__ {int pitch; int width; int* small_codebook; int* codebook; int gb; int frm0; int frm1; int frm2; } ;
+typedef TYPE_1__ SANMVideoContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int bytestream2_get_bytes_left (int *) ;
+ size_t bytestream2_get_byteu (int *) ;
+ int bytestream2_get_le16u (int *) ;
+ int copy_block (int ,int,int,int) ;
+ int fill_block (int ,int,int,int) ;
+ int good_mvec (TYPE_1__*,int,int,int,int,int) ;
+ int** motion_vectors ;
+ int opcode_0xf7 (TYPE_1__*,int,int,int,int) ;
+ int opcode_0xf8 (TYPE_1__*,int,int,int,int) ;
 
 __attribute__((used)) static int codec2subblock(SANMVideoContext *ctx, int cx, int cy, int blk_size)
 {
@@ -43,7 +43,7 @@ __attribute__((used)) static int codec2subblock(SANMVideoContext *ctx, int cx, i
         my = motion_vectors[opcode][1];
 
         if (good_mvec(ctx, cx, cy, mx, my, blk_size)) {
-            copy_block(ctx->frm0 + cx      + ctx->pitch *  cy,
+            copy_block(ctx->frm0 + cx + ctx->pitch * cy,
                        ctx->frm2 + cx + mx + ctx->pitch * (cy + my),
                        blk_size, ctx->pitch);
         }
@@ -57,7 +57,7 @@ __attribute__((used)) static int codec2subblock(SANMVideoContext *ctx, int cx, i
         my = index / ctx->width;
 
         if (good_mvec(ctx, cx, cy, mx, my, blk_size)) {
-            copy_block(ctx->frm0 + cx      + ctx->pitch *  cy,
+            copy_block(ctx->frm0 + cx + ctx->pitch * cy,
                        ctx->frm2 + cx + mx + ctx->pitch * (cy + my),
                        blk_size, ctx->pitch);
         }

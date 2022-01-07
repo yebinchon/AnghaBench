@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int fread (char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- int fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strncmp (char*,char*,int) ; 
+
+
+
+typedef int FILE ;
+
+
+ int SEEK_SET ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int ,char*,char const*) ;
+ int fread (char*,int,int,int *) ;
+ int free (char*) ;
+ int fseek (int *,int ,int ) ;
+ scalar_t__ malloc (int) ;
+ int stderr ;
+ scalar_t__ strncmp (char*,char*,int) ;
 
 FILE * open_jp2file(const char filename[])
 {
@@ -31,21 +31,21 @@ FILE * open_jp2file(const char filename[])
 
     if (!(fp = fopen(filename, "a+b"))) {
         fprintf(stderr, "Original JP2 %s not found\n", filename);
-        return NULL;
+        return ((void*)0);
     }
-    /* Check resource is a JP family file. */
+
     if (fseek(fp, 0, SEEK_SET) == -1) {
         fclose(fp);
         fprintf(stderr, "Original JP2 %s broken (fseek error)\n", filename);
-        return NULL;
+        return ((void*)0);
     }
 
-    data = (char *)malloc(12);  /* size of header */
+    data = (char *)malloc(12);
     if (fread(data, 12, 1, fp) != 1) {
         free(data);
         fclose(fp);
         fprintf(stderr, "Original JP2 %s broken (read error)\n", filename);
-        return NULL;
+        return ((void*)0);
     }
 
     if (*data || *(data + 1) || *(data + 2) ||
@@ -53,7 +53,7 @@ FILE * open_jp2file(const char filename[])
         free(data);
         fclose(fp);
         fprintf(stderr, "No JPEG 2000 Signature box in target %s\n", filename);
-        return NULL;
+        return ((void*)0);
     }
     free(data);
     return fp;

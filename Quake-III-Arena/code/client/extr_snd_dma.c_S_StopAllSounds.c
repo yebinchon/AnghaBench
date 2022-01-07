@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  S_ClearSoundBuffer () ; 
- int /*<<< orphan*/  S_StopBackgroundTrack () ; 
- int /*<<< orphan*/  s_soundStarted ; 
+ int S_ClearSoundBuffer () ;
+ int S_StopBackgroundTrack () ;
+ int s_soundStarted ;
 
 void S_StopAllSounds(void) {
-	if ( !s_soundStarted ) {
-		return;
-	}
+ if ( !s_soundStarted ) {
+  return;
+ }
 
-	// stop the background music
-	S_StopBackgroundTrack();
 
-	S_ClearSoundBuffer ();
+ S_StopBackgroundTrack();
+
+ S_ClearSoundBuffer ();
 }

@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int VIDEOMODE_SetWindowed (int) ; 
- int /*<<< orphan*/  VIDEOMODE_windowed ; 
+ int VIDEOMODE_SetWindowed (int) ;
+ int VIDEOMODE_windowed ;
 
 int VIDEOMODE_ToggleWindowed(void)
 {
-	return VIDEOMODE_SetWindowed(!VIDEOMODE_windowed);
+ return VIDEOMODE_SetWindowed(!VIDEOMODE_windowed);
 }

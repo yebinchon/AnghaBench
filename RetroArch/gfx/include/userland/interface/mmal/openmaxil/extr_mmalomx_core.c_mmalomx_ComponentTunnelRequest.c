@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ state; size_t ports_num; TYPE_1__* ports; } ;
 struct TYPE_4__ {scalar_t__ enabled; } ;
-typedef  size_t OMX_U32 ;
-typedef  int /*<<< orphan*/  OMX_TUNNELSETUPTYPE ;
-typedef  scalar_t__ OMX_HANDLETYPE ;
-typedef  int /*<<< orphan*/  OMX_ERRORTYPE ;
-typedef  TYPE_2__ MMALOMX_COMPONENT_T ;
+typedef size_t OMX_U32 ;
+typedef int OMX_TUNNELSETUPTYPE ;
+typedef scalar_t__ OMX_HANDLETYPE ;
+typedef int OMX_ERRORTYPE ;
+typedef TYPE_2__ MMALOMX_COMPONENT_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_TRACE (char*,scalar_t__,int,scalar_t__,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MMAL_PARAM_UNUSED (TYPE_2__*) ; 
- int /*<<< orphan*/  OMX_ErrorBadParameter ; 
- int /*<<< orphan*/  OMX_ErrorBadPortIndex ; 
- int /*<<< orphan*/  OMX_ErrorIncorrectStateOperation ; 
- int /*<<< orphan*/  OMX_ErrorInvalidComponent ; 
- int /*<<< orphan*/  OMX_ErrorInvalidState ; 
- int /*<<< orphan*/  OMX_ErrorNone ; 
- int /*<<< orphan*/  OMX_ErrorNotImplemented ; 
- scalar_t__ OMX_StateInvalid ; 
- scalar_t__ OMX_StateLoaded ; 
+
+ int LOG_TRACE (char*,scalar_t__,int,scalar_t__,int,int *) ;
+ int MMAL_PARAM_UNUSED (TYPE_2__*) ;
+ int OMX_ErrorBadParameter ;
+ int OMX_ErrorBadPortIndex ;
+ int OMX_ErrorIncorrectStateOperation ;
+ int OMX_ErrorInvalidComponent ;
+ int OMX_ErrorInvalidState ;
+ int OMX_ErrorNone ;
+ int OMX_ErrorNotImplemented ;
+ scalar_t__ OMX_StateInvalid ;
+ scalar_t__ OMX_StateLoaded ;
 
 __attribute__((used)) static OMX_ERRORTYPE mmalomx_ComponentTunnelRequest(
    OMX_HANDLETYPE hComponent,
@@ -47,7 +47,7 @@ __attribute__((used)) static OMX_ERRORTYPE mmalomx_ComponentTunnelRequest(
              "pTunnelSetup %p", hComponent, (int)nPort, hTunneledComp,
              (int)nTunneledPort, pTunnelSetup);
 
-   /* Sanity checks */
+
    if (!hComponent)
       return OMX_ErrorInvalidComponent;
    if (component->state == OMX_StateInvalid)

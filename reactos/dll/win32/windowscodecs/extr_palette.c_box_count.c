@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct histogram {int dummy; } ;
-struct box {int /*<<< orphan*/  b_max; int /*<<< orphan*/  b_min; int /*<<< orphan*/  g_max; int /*<<< orphan*/  g_min; int /*<<< orphan*/  r_max; int /*<<< orphan*/  r_min; } ;
+struct box {int b_max; int b_min; int g_max; int g_min; int r_max; int r_min; } ;
 
-/* Variables and functions */
- unsigned int histogram_count (struct histogram*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ unsigned int histogram_count (struct histogram*,int ,int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static inline unsigned int box_count(struct histogram *h, struct box *b)
 {

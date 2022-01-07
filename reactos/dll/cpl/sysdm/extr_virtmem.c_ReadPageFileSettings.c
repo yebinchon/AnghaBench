@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  hSelf; int /*<<< orphan*/ * szPagingFiles; } ;
-typedef  TYPE_1__* PVIRTMEM ;
-typedef  int /*<<< orphan*/ * PBYTE ;
-typedef  int /*<<< orphan*/ * LPTSTR ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- scalar_t__ HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  KEY_QUERY_VALUE ; 
- int /*<<< orphan*/  REG_OPTION_NON_VOLATILE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- scalar_t__ RegCreateKeyEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueEx (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ShowLastWin32Error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ZeroMemory (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  lpKey ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int hSelf; int * szPagingFiles; } ;
+typedef TYPE_1__* PVIRTMEM ;
+typedef int * PBYTE ;
+typedef int * LPTSTR ;
+typedef int * HKEY ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int GetProcessHeap () ;
+ int HKEY_LOCAL_MACHINE ;
+ scalar_t__ HeapAlloc (int ,int ,int ) ;
+ int KEY_QUERY_VALUE ;
+ int REG_OPTION_NON_VOLATILE ;
+ int RegCloseKey (int *) ;
+ scalar_t__ RegCreateKeyEx (int ,int ,int ,int *,int ,int ,int *,int **,int *) ;
+ scalar_t__ RegQueryValueEx (int *,int ,int *,int *,int *,int *) ;
+ int ShowLastWin32Error (int ) ;
+ int TRUE ;
+ int ZeroMemory (int *,int ) ;
+ int _T (char*) ;
+ int lpKey ;
 
 __attribute__((used)) static BOOL
 ReadPageFileSettings(PVIRTMEM pVirtMem)
 {
-    HKEY hkey = NULL;
+    HKEY hkey = ((void*)0);
     DWORD dwType;
     DWORD dwDataSize;
     BOOL bRet = FALSE;
@@ -47,30 +47,30 @@ ReadPageFileSettings(PVIRTMEM pVirtMem)
     if (RegCreateKeyEx(HKEY_LOCAL_MACHINE,
                        lpKey,
                        0,
-                       NULL,
+                       ((void*)0),
                        REG_OPTION_NON_VOLATILE,
                        KEY_QUERY_VALUE,
-                       NULL,
+                       ((void*)0),
                        &hkey,
-                       NULL) == ERROR_SUCCESS)
+                       ((void*)0)) == ERROR_SUCCESS)
     {
         if (RegQueryValueEx(hkey,
                             _T("PagingFiles"),
-                            NULL,
+                            ((void*)0),
                             &dwType,
-                            NULL,
+                            ((void*)0),
                             &dwDataSize) == ERROR_SUCCESS)
         {
             pVirtMem->szPagingFiles = (LPTSTR)HeapAlloc(GetProcessHeap(),
                                                         0,
                                                         dwDataSize);
-            if (pVirtMem->szPagingFiles != NULL)
+            if (pVirtMem->szPagingFiles != ((void*)0))
             {
                 ZeroMemory(pVirtMem->szPagingFiles,
                            dwDataSize);
                 if (RegQueryValueEx(hkey,
                                     _T("PagingFiles"),
-                                    NULL,
+                                    ((void*)0),
                                     &dwType,
                                     (PBYTE)pVirtMem->szPagingFiles,
                                     &dwDataSize) == ERROR_SUCCESS)
@@ -84,7 +84,7 @@ ReadPageFileSettings(PVIRTMEM pVirtMem)
     if (!bRet)
         ShowLastWin32Error(pVirtMem->hSelf);
 
-    if (hkey != NULL)
+    if (hkey != ((void*)0))
         RegCloseKey(hkey);
 
     return bRet;

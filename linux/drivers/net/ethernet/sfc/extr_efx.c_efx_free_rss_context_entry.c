@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct efx_rss_context {int /*<<< orphan*/  list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct efx_rss_context*) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
+
+
+
+struct efx_rss_context {int list; } ;
+
+
+ int kfree (struct efx_rss_context*) ;
+ int list_del (int *) ;
 
 void efx_free_rss_context_entry(struct efx_rss_context *ctx)
 {
-	list_del(&ctx->list);
-	kfree(ctx);
+ list_del(&ctx->list);
+ kfree(ctx);
 }

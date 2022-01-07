@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dlm_lock {int dummy; } ;
-struct dlm_ctxt {int /*<<< orphan*/  ast_lock; } ;
+struct dlm_ctxt {int ast_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int /*<<< orphan*/  __dlm_queue_bast (struct dlm_ctxt*,struct dlm_lock*) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+ int BUG_ON (int) ;
+ int __dlm_queue_bast (struct dlm_ctxt*,struct dlm_lock*) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 void dlm_queue_bast(struct dlm_ctxt *dlm, struct dlm_lock *lock)
 {
-	BUG_ON(!dlm);
-	BUG_ON(!lock);
+ BUG_ON(!dlm);
+ BUG_ON(!lock);
 
-	spin_lock(&dlm->ast_lock);
-	__dlm_queue_bast(dlm, lock);
-	spin_unlock(&dlm->ast_lock);
+ spin_lock(&dlm->ast_lock);
+ __dlm_queue_bast(dlm, lock);
+ spin_unlock(&dlm->ast_lock);
 }

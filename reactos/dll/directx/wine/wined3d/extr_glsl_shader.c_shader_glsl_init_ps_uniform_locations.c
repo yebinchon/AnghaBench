@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_string_buffer {char* buffer; } ;
 struct wined3d_gl_info {int dummy; } ;
-struct shader_glsl_priv {int /*<<< orphan*/  string_buffers; } ;
+struct shader_glsl_priv {int string_buffers; } ;
 struct glsl_ps_program {void* color_key_location; void* ycorrection_location; void* np2_fixup_location; void* alpha_test_ref_location; void* fog_scale_location; void* fog_end_location; void* fog_density_location; void* fog_color_location; void* specular_enable_location; void* tex_factor_location; void** tss_constant_location; void** bumpenv_lum_offset_location; void** bumpenv_lum_scale_location; void** bumpenv_mat_location; void** uniform_b_locations; void** uniform_i_locations; void** uniform_f_locations; } ;
-typedef  int /*<<< orphan*/  GLuint ;
+typedef int GLuint ;
 
-/* Variables and functions */
- void* GL_EXTCALL (int /*<<< orphan*/ ) ; 
- unsigned int MAX_TEXTURES ; 
- unsigned int WINED3D_MAX_CONSTS_B ; 
- unsigned int WINED3D_MAX_CONSTS_I ; 
- unsigned int WINED3D_MAX_PS_CONSTS_F ; 
- int /*<<< orphan*/  glGetUniformLocation (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  memset (void**,int,unsigned int) ; 
- struct wined3d_string_buffer* string_buffer_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  string_buffer_release (int /*<<< orphan*/ *,struct wined3d_string_buffer*) ; 
- int /*<<< orphan*/  string_buffer_sprintf (struct wined3d_string_buffer*,char*,unsigned int) ; 
+
+ void* GL_EXTCALL (int ) ;
+ unsigned int MAX_TEXTURES ;
+ unsigned int WINED3D_MAX_CONSTS_B ;
+ unsigned int WINED3D_MAX_CONSTS_I ;
+ unsigned int WINED3D_MAX_PS_CONSTS_F ;
+ int glGetUniformLocation (int ,char*) ;
+ int memset (void**,int,unsigned int) ;
+ struct wined3d_string_buffer* string_buffer_get (int *) ;
+ int string_buffer_release (int *,struct wined3d_string_buffer*) ;
+ int string_buffer_sprintf (struct wined3d_string_buffer*,char*,unsigned int) ;
 
 __attribute__((used)) static void shader_glsl_init_ps_uniform_locations(const struct wined3d_gl_info *gl_info,
         struct shader_glsl_priv *priv, GLuint program_id, struct glsl_ps_program *ps, unsigned int ps_c_count)

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {size_t block_padding; } ;
-typedef  TYPE_1__ SSL ;
+typedef TYPE_1__ SSL ;
 
-/* Variables and functions */
- size_t SSL3_RT_MAX_PLAIN_LENGTH ; 
+
+ size_t SSL3_RT_MAX_PLAIN_LENGTH ;
 
 int SSL_set_block_padding(SSL *ssl, size_t block_size)
 {
-    /* block size of 0 or 1 is basically no padding */
+
     if (block_size == 1)
         ssl->block_padding = 0;
     else if (block_size <= SSL3_RT_MAX_PLAIN_LENGTH)

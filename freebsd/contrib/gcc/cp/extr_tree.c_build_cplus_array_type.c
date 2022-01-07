@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int TYPE_UNQUALIFIED ; 
- int /*<<< orphan*/  build_cplus_array_type_1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cp_build_qualified_type (int /*<<< orphan*/ ,int) ; 
- int cp_type_quals (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+
+
+ int TYPE_UNQUALIFIED ;
+ int build_cplus_array_type_1 (int ,int ) ;
+ int cp_build_qualified_type (int ,int) ;
+ int cp_type_quals (int ) ;
 
 tree
 build_cplus_array_type (tree elt_type, tree index_type)

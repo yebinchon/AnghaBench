@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-union nd_opt {int /*<<< orphan*/  opt_list; } ;
+
+
+
+
+union nd_opt {int opt_list; } ;
 struct nd_optlist {int dummy; } ;
 
-/* Variables and functions */
- struct nd_optlist* TAILQ_FIRST (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TAILQ_REMOVE (int /*<<< orphan*/ *,struct nd_optlist*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (struct nd_optlist*) ; 
- int /*<<< orphan*/  nol_next ; 
+
+ struct nd_optlist* TAILQ_FIRST (int *) ;
+ int TAILQ_REMOVE (int *,struct nd_optlist*,int ) ;
+ int free (struct nd_optlist*) ;
+ int nol_next ;
 
 __attribute__((used)) static void
 free_ndopts(union nd_opt *ndopts)
 {
-	struct nd_optlist *nol;
+ struct nd_optlist *nol;
 
-	while ((nol = TAILQ_FIRST(&ndopts->opt_list)) != NULL) {
-		TAILQ_REMOVE(&ndopts->opt_list, nol, nol_next);
-		free(nol);
-	}
+ while ((nol = TAILQ_FIRST(&ndopts->opt_list)) != ((void*)0)) {
+  TAILQ_REMOVE(&ndopts->opt_list, nol, nol_next);
+  free(nol);
+ }
 }

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_8__ {int rows; int image_height; int cols; int image_width; int block_width; int block_height; int blocks_size; int palette_type; int /*<<< orphan*/  avctx; int /*<<< orphan*/  palette; scalar_t__ use_custom_palette; scalar_t__ use15_7; int /*<<< orphan*/  blockbuffer; int /*<<< orphan*/  blockbuffer_size; int /*<<< orphan*/  keybuffer; void* key_blocks; int /*<<< orphan*/  databuffer; int /*<<< orphan*/  encbuffer; void* frame_blocks; } ;
-typedef  TYPE_1__ FlashSV2Context ;
-typedef  int /*<<< orphan*/  Block ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_fast_malloc (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- void* av_realloc_array (void*,int,int) ; 
- int generate_default_palette (int /*<<< orphan*/ *) ; 
- int generate_optimum_palette (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int,int,int) ; 
- int /*<<< orphan*/  init_blocks (TYPE_1__*,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int optimum_block_height (TYPE_1__*) ; 
- int optimum_block_width (TYPE_1__*) ; 
- scalar_t__ optimum_use15_7 (TYPE_1__*) ; 
- int /*<<< orphan*/  reset_stats (TYPE_1__*) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_8__ {int rows; int image_height; int cols; int image_width; int block_width; int block_height; int blocks_size; int palette_type; int avctx; int palette; scalar_t__ use_custom_palette; scalar_t__ use15_7; int blockbuffer; int blockbuffer_size; int keybuffer; void* key_blocks; int databuffer; int encbuffer; void* frame_blocks; } ;
+typedef TYPE_1__ FlashSV2Context ;
+typedef int Block ;
+
+
+ int AVERROR (int ) ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int ENOMEM ;
+ int av_fast_malloc (int *,int *,int) ;
+ int av_log (int ,int ,char*) ;
+ void* av_realloc_array (void*,int,int) ;
+ int generate_default_palette (int *) ;
+ int generate_optimum_palette (int *,int const*,int,int,int) ;
+ int init_blocks (TYPE_1__*,void*,int ,int ) ;
+ int optimum_block_height (TYPE_1__*) ;
+ int optimum_block_width (TYPE_1__*) ;
+ scalar_t__ optimum_use15_7 (TYPE_1__*) ;
+ int reset_stats (TYPE_1__*) ;
 
 __attribute__((used)) static int reconfigure_at_keyframe(FlashSV2Context * s, const uint8_t * image,
                                    int stride)
 {
     int update_palette = 0;
     int res;
-    int block_width  = optimum_block_width (s);
+    int block_width = optimum_block_width (s);
     int block_height = optimum_block_height(s);
 
     s->rows = (s->image_height + block_height - 1) / block_height;
-    s->cols = (s->image_width  + block_width  - 1) / block_width;
+    s->cols = (s->image_width + block_width - 1) / block_width;
 
     if (block_width != s->block_width || block_height != s->block_height) {
-        s->block_width  = block_width;
+        s->block_width = block_width;
         s->block_height = block_height;
         if (s->rows * s->cols > s->blocks_size / sizeof(Block)) {
             s->frame_blocks = av_realloc_array(s->frame_blocks, s->rows, s->cols * sizeof(Block));

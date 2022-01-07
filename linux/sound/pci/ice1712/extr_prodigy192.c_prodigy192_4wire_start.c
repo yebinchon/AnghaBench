@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct snd_ice1712 {int dummy; } ;
 
-/* Variables and functions */
- unsigned int VT1724_PRODIGY192_CCLK ; 
- unsigned int VT1724_PRODIGY192_CS ; 
- unsigned int snd_ice1712_gpio_read (struct snd_ice1712*) ; 
- int /*<<< orphan*/  snd_ice1712_gpio_write (struct snd_ice1712*,unsigned int) ; 
- int /*<<< orphan*/  snd_ice1712_save_gpio_status (struct snd_ice1712*) ; 
- int /*<<< orphan*/  udelay (int) ; 
+
+ unsigned int VT1724_PRODIGY192_CCLK ;
+ unsigned int VT1724_PRODIGY192_CS ;
+ unsigned int snd_ice1712_gpio_read (struct snd_ice1712*) ;
+ int snd_ice1712_gpio_write (struct snd_ice1712*,unsigned int) ;
+ int snd_ice1712_save_gpio_status (struct snd_ice1712*) ;
+ int udelay (int) ;
 
 __attribute__((used)) static unsigned int prodigy192_4wire_start(struct snd_ice1712 *ice)
 {
-	unsigned int tmp;
+ unsigned int tmp;
 
-	snd_ice1712_save_gpio_status(ice);
-	tmp = snd_ice1712_gpio_read(ice);
+ snd_ice1712_save_gpio_status(ice);
+ tmp = snd_ice1712_gpio_read(ice);
 
-	tmp |= VT1724_PRODIGY192_CCLK; /* high at init */
-	tmp &= ~VT1724_PRODIGY192_CS; /* drop chip select */
-	snd_ice1712_gpio_write(ice, tmp);
-	udelay(1);
-	return tmp;
+ tmp |= VT1724_PRODIGY192_CCLK;
+ tmp &= ~VT1724_PRODIGY192_CS;
+ snd_ice1712_gpio_write(ice, tmp);
+ udelay(1);
+ return tmp;
 }

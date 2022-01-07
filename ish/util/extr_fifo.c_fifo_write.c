@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fifo {size_t start; size_t capacity; size_t size; int /*<<< orphan*/ * buf; } ;
 
-/* Variables and functions */
- int FIFO_OVERWRITE ; 
- size_t fifo_remaining (struct fifo*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,char*,size_t) ; 
+
+
+
+struct fifo {size_t start; size_t capacity; size_t size; int * buf; } ;
+
+
+ int FIFO_OVERWRITE ;
+ size_t fifo_remaining (struct fifo*) ;
+ int memcpy (int *,char*,size_t) ;
 
 int fifo_write(struct fifo *fifo, const void *data, size_t size, int flags) {
     if (size > fifo_remaining(fifo)) {

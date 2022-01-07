@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TCSANOW ; 
- int UV_EBUSY ; 
- int UV__ERR (int) ; 
- int errno ; 
- int /*<<< orphan*/  orig_termios ; 
- int orig_termios_fd ; 
- scalar_t__ tcsetattr (int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  termios_spinlock ; 
- int /*<<< orphan*/  uv_spinlock_trylock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_spinlock_unlock (int /*<<< orphan*/ *) ; 
+ int TCSANOW ;
+ int UV_EBUSY ;
+ int UV__ERR (int) ;
+ int errno ;
+ int orig_termios ;
+ int orig_termios_fd ;
+ scalar_t__ tcsetattr (int,int ,int *) ;
+ int termios_spinlock ;
+ int uv_spinlock_trylock (int *) ;
+ int uv_spinlock_unlock (int *) ;
 
 int uv_tty_reset_mode(void) {
   int saved_errno;
@@ -29,7 +21,7 @@ int uv_tty_reset_mode(void) {
 
   saved_errno = errno;
   if (!uv_spinlock_trylock(&termios_spinlock))
-    return UV_EBUSY;  /* In uv_tty_set_mode(). */
+    return UV_EBUSY;
 
   err = 0;
   if (orig_termios_fd != -1)

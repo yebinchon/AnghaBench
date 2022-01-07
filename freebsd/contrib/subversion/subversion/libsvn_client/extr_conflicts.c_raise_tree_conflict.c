@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  kind; } ;
-typedef  TYPE_1__ svn_wc_notify_t ;
-typedef  int /*<<< orphan*/  (* svn_wc_notify_func2_t ) (void*,TYPE_1__*,int /*<<< orphan*/ *) ;
-typedef  int /*<<< orphan*/  svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_wc_conflict_version_t ;
-typedef  int /*<<< orphan*/  svn_wc_conflict_reason_t ;
-struct TYPE_9__ {int /*<<< orphan*/  reason; int /*<<< orphan*/  action; } ;
-typedef  TYPE_3__ svn_wc_conflict_description2_t ;
-typedef  int /*<<< orphan*/  svn_wc_conflict_action_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  svn_wc__add_tree_conflict (int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ *) ; 
- TYPE_3__* svn_wc_conflict_description_create_tree2 (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc_conflict_version_create2 (char const*,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_1__* svn_wc_create_notify (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_notify_tree_conflict ; 
- int /*<<< orphan*/  svn_wc_operation_merge ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int kind; } ;
+typedef TYPE_1__ svn_wc_notify_t ;
+typedef int (* svn_wc_notify_func2_t ) (void*,TYPE_1__*,int *) ;
+typedef int svn_wc_context_t ;
+typedef int svn_wc_conflict_version_t ;
+typedef int svn_wc_conflict_reason_t ;
+struct TYPE_9__ {int reason; int action; } ;
+typedef TYPE_3__ svn_wc_conflict_description2_t ;
+typedef int svn_wc_conflict_action_t ;
+typedef int svn_revnum_t ;
+typedef int svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int svn_wc__add_tree_conflict (int *,TYPE_3__*,int *) ;
+ TYPE_3__* svn_wc_conflict_description_create_tree2 (char const*,int ,int ,int const*,int const*,int *) ;
+ int * svn_wc_conflict_version_create2 (char const*,char const*,char const*,int ,int ,int *) ;
+ TYPE_1__* svn_wc_create_notify (char const*,int ,int *) ;
+ int svn_wc_notify_tree_conflict ;
+ int svn_wc_operation_merge ;
 
 __attribute__((used)) static svn_error_t *
 raise_tree_conflict(const char *local_abspath,

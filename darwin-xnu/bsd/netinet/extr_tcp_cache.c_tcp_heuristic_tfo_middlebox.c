@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tcpcb {int /*<<< orphan*/  t_tfo_flags; } ;
+
+
+
+
+struct tcpcb {int t_tfo_flags; } ;
 struct tcp_cache_key_src {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TFO_F_HEURISTIC_DONE ; 
- int /*<<< orphan*/  tcp_cache_key_src_create (struct tcpcb*,struct tcp_cache_key_src*) ; 
- int /*<<< orphan*/  tcp_heuristic_tfo_middlebox_common (struct tcp_cache_key_src*) ; 
+
+ int TFO_F_HEURISTIC_DONE ;
+ int tcp_cache_key_src_create (struct tcpcb*,struct tcp_cache_key_src*) ;
+ int tcp_heuristic_tfo_middlebox_common (struct tcp_cache_key_src*) ;
 
 void tcp_heuristic_tfo_middlebox(struct tcpcb *tp)
 {
-	struct tcp_cache_key_src tcks;
+ struct tcp_cache_key_src tcks;
 
-	tp->t_tfo_flags |= TFO_F_HEURISTIC_DONE;
+ tp->t_tfo_flags |= TFO_F_HEURISTIC_DONE;
 
-	tcp_cache_key_src_create(tp, &tcks);
-	tcp_heuristic_tfo_middlebox_common(&tcks);
+ tcp_cache_key_src_create(tp, &tcks);
+ tcp_heuristic_tfo_middlebox_common(&tcks);
 }

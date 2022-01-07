@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct enc_private {int /*<<< orphan*/  MyCRA; } ;
+
+
+
+
+typedef int uint16_t ;
+struct enc_private {int MyCRA; } ;
 struct comedi_device {int dummy; } ;
 
-/* Variables and functions */
- int CRAMSK_INDXPOL_A ; 
- int DEBIread (struct comedi_device*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DEBIwrite (struct comedi_device*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  DEBUG (char*) ; 
+
+ int CRAMSK_INDXPOL_A ;
+ int DEBIread (struct comedi_device*,int ) ;
+ int DEBIwrite (struct comedi_device*,int ,int) ;
+ int DEBUG (char*) ;
 
 __attribute__((used)) static void PulseIndex_A(struct comedi_device *dev, struct enc_private *k)
 {
-	register uint16_t cra;
+ register uint16_t cra;
 
-	DEBUG("PulseIndex_A: pulse index enter\n");
+ DEBUG("PulseIndex_A: pulse index enter\n");
 
-	cra = DEBIread(dev, k->MyCRA);	/*  Pulse index. */
-	DEBIwrite(dev, k->MyCRA, (uint16_t) (cra ^ CRAMSK_INDXPOL_A));
-	DEBUG("PulseIndex_A: pulse index step1\n");
-	DEBIwrite(dev, k->MyCRA, cra);
+ cra = DEBIread(dev, k->MyCRA);
+ DEBIwrite(dev, k->MyCRA, (uint16_t) (cra ^ CRAMSK_INDXPOL_A));
+ DEBUG("PulseIndex_A: pulse index step1\n");
+ DEBIwrite(dev, k->MyCRA, cra);
 }

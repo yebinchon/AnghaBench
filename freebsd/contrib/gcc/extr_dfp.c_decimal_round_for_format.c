@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct real_format {int dummy; } ;
-typedef  int /*<<< orphan*/  decimal64 ;
-typedef  int /*<<< orphan*/  decimal32 ;
-typedef  int /*<<< orphan*/  decimal128 ;
-typedef  int /*<<< orphan*/  decNumber ;
+typedef int decimal64 ;
+typedef int decimal32 ;
+typedef int decimal128 ;
+typedef int decNumber ;
 struct TYPE_9__ {scalar_t__ traps; } ;
-typedef  TYPE_1__ decContext ;
+typedef TYPE_1__ decContext ;
 struct TYPE_10__ {scalar_t__ cl; scalar_t__ sig; } ;
-typedef  TYPE_2__ REAL_VALUE_TYPE ;
+typedef TYPE_2__ REAL_VALUE_TYPE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEC_INIT_DECIMAL128 ; 
- int /*<<< orphan*/  DEC_INIT_DECIMAL32 ; 
- int /*<<< orphan*/  DEC_INIT_DECIMAL64 ; 
- int /*<<< orphan*/  decContextDefault (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  decimal128ToNumber (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  decimal32FromNumber (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  decimal32ToNumber (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  decimal64FromNumber (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  decimal64ToNumber (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- struct real_format const decimal_double_format ; 
- int /*<<< orphan*/  decimal_from_decnumber (TYPE_2__*,int /*<<< orphan*/ *,TYPE_1__*) ; 
- struct real_format const decimal_quad_format ; 
- struct real_format const decimal_single_format ; 
- int /*<<< orphan*/  gcc_unreachable () ; 
- scalar_t__ rvc_normal ; 
+
+ int DEC_INIT_DECIMAL128 ;
+ int DEC_INIT_DECIMAL32 ;
+ int DEC_INIT_DECIMAL64 ;
+ int decContextDefault (TYPE_1__*,int ) ;
+ int decimal128ToNumber (int *,int *) ;
+ int decimal32FromNumber (int *,int *,TYPE_1__*) ;
+ int decimal32ToNumber (int *,int *) ;
+ int decimal64FromNumber (int *,int *,TYPE_1__*) ;
+ int decimal64ToNumber (int *,int *) ;
+ struct real_format const decimal_double_format ;
+ int decimal_from_decnumber (TYPE_2__*,int *,TYPE_1__*) ;
+ struct real_format const decimal_quad_format ;
+ struct real_format const decimal_single_format ;
+ int gcc_unreachable () ;
+ scalar_t__ rvc_normal ;
 
 void
 decimal_round_for_format (const struct real_format *fmt, REAL_VALUE_TYPE *r)
@@ -45,7 +45,7 @@ decimal_round_for_format (const struct real_format *fmt, REAL_VALUE_TYPE *r)
   decNumber dn;
   decContext set;
 
-  /* Real encoding occurs later.  */
+
   if (r->cl != rvc_normal)
     return;
 
@@ -55,7 +55,7 @@ decimal_round_for_format (const struct real_format *fmt, REAL_VALUE_TYPE *r)
 
   if (fmt == &decimal_quad_format)
     {
-      /* The internal format is already in this format.  */
+
       return;
     }
   else if (fmt == &decimal_single_format)

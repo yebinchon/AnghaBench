@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  sds ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int sds ;
 struct TYPE_2__ {scalar_t__ ptr; } ;
-typedef  TYPE_1__ robj ;
+typedef TYPE_1__ robj ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dictGenHashFunction (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdslen (int /*<<< orphan*/ ) ; 
+
+ int dictGenHashFunction (scalar_t__,int ) ;
+ int sdslen (int ) ;
 
 uint64_t dictObjHash(const void *key) {
     const robj *o = key;

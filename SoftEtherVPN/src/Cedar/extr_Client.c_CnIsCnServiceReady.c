@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SOCK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLIENT_NOTIFY_PORT ; 
- int CnCheckAlreadyExists (int) ; 
- int /*<<< orphan*/ * ConnectEx (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  Disconnect (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseSock (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int SOCK ;
+
+
+ int CLIENT_NOTIFY_PORT ;
+ int CnCheckAlreadyExists (int) ;
+ int * ConnectEx (char*,int ,int) ;
+ int Disconnect (int *) ;
+ int ReleaseSock (int *) ;
 
 bool CnIsCnServiceReady()
 {
-	SOCK *s;
-	// Confirm running the notification service
-	if (CnCheckAlreadyExists(false) == false)
-	{
-		// Not running
-		return false;
-	}
+ SOCK *s;
 
-	// Try to connect to the TCP port
-	s = ConnectEx("localhost", CLIENT_NOTIFY_PORT, 500);
-	if (s == NULL)
-	{
-		// The TCP port is not opened
-		return false;
-	}
+ if (CnCheckAlreadyExists(0) == 0)
+ {
 
-	Disconnect(s);
-	ReleaseSock(s);
+  return 0;
+ }
 
-	// Running
-	return true;
+
+ s = ConnectEx("localhost", CLIENT_NOTIFY_PORT, 500);
+ if (s == ((void*)0))
+ {
+
+  return 0;
+ }
+
+ Disconnect(s);
+ ReleaseSock(s);
+
+
+ return 1;
 }

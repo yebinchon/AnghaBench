@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * nomem_handler_data; int /*<<< orphan*/ * nomem_handler; void* value_at_path; void* path; int /*<<< orphan*/  attrs; int /*<<< orphan*/  err_cb_data; int /*<<< orphan*/  err_cb; void* error_message; void* exit_code; scalar_t__ halted; void* error; scalar_t__ curr_frame; scalar_t__ fork_top; scalar_t__ stk_top; int /*<<< orphan*/  stk; scalar_t__ next_label; scalar_t__ bc; } ;
-typedef  TYPE_1__ jq_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  default_err_cb ; 
- void* jv_invalid () ; 
- TYPE_1__* jv_mem_alloc_unguarded (int) ; 
- void* jv_null () ; 
- int /*<<< orphan*/  jv_object () ; 
- int /*<<< orphan*/  stack_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * nomem_handler_data; int * nomem_handler; void* value_at_path; void* path; int attrs; int err_cb_data; int err_cb; void* error_message; void* exit_code; scalar_t__ halted; void* error; scalar_t__ curr_frame; scalar_t__ fork_top; scalar_t__ stk_top; int stk; scalar_t__ next_label; scalar_t__ bc; } ;
+typedef TYPE_1__ jq_state ;
+
+
+ int default_err_cb ;
+ void* jv_invalid () ;
+ TYPE_1__* jv_mem_alloc_unguarded (int) ;
+ void* jv_null () ;
+ int jv_object () ;
+ int stack_init (int *) ;
+ int stderr ;
 
 jq_state *jq_init(void) {
   jq_state *jq;
   jq = jv_mem_alloc_unguarded(sizeof(*jq));
-  if (jq == NULL)
-    return NULL;
+  if (jq == ((void*)0))
+    return ((void*)0);
 
   jq->bc = 0;
   jq->next_label = 0;
@@ -49,7 +49,7 @@ jq_state *jq_init(void) {
   jq->path = jv_null();
   jq->value_at_path = jv_null();
 
-  jq->nomem_handler = NULL;
-  jq->nomem_handler_data = NULL;
+  jq->nomem_handler = ((void*)0);
+  jq->nomem_handler_data = ((void*)0);
   return jq;
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsIDOMHTMLElement ;
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  PRUnichar ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NS_OK ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_GetData (int /*<<< orphan*/ *,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  nsAString_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_InitDepend (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  nsIDOMHTMLElement_GetAttribute (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int nsresult ;
+typedef int nsIDOMHTMLElement ;
+typedef int nsAString ;
+typedef int WCHAR ;
+typedef int PRUnichar ;
+
+
+ int ERR (char*,int ,int ) ;
+ scalar_t__ NS_FAILED (int ) ;
+ int NS_OK ;
+ int debugstr_w (int const*) ;
+ int nsAString_Finish (int *) ;
+ int nsAString_GetData (int *,int const**) ;
+ int nsAString_Init (int *,int *) ;
+ int nsAString_InitDepend (int *,int const*) ;
+ int nsIDOMHTMLElement_GetAttribute (int *,int *,int *) ;
 
 nsresult get_elem_attr_value(nsIDOMHTMLElement *nselem, const WCHAR *name, nsAString *val_str, const PRUnichar **val)
 {
@@ -33,7 +33,7 @@ nsresult get_elem_attr_value(nsIDOMHTMLElement *nselem, const WCHAR *name, nsASt
     nsresult nsres;
 
     nsAString_InitDepend(&name_str, name);
-    nsAString_Init(val_str, NULL);
+    nsAString_Init(val_str, ((void*)0));
     nsres = nsIDOMHTMLElement_GetAttribute(nselem, &name_str, val_str);
     nsAString_Finish(&name_str);
     if(NS_FAILED(nsres)) {

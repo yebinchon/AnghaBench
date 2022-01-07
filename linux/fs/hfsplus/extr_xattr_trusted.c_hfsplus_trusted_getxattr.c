@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct xattr_handler {int dummy; } ;
 struct inode {int dummy; } ;
 struct dentry {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XATTR_TRUSTED_PREFIX ; 
- int /*<<< orphan*/  XATTR_TRUSTED_PREFIX_LEN ; 
- int hfsplus_getxattr (struct inode*,char const*,void*,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int XATTR_TRUSTED_PREFIX ;
+ int XATTR_TRUSTED_PREFIX_LEN ;
+ int hfsplus_getxattr (struct inode*,char const*,void*,size_t,int ,int ) ;
 
 __attribute__((used)) static int hfsplus_trusted_getxattr(const struct xattr_handler *handler,
-				    struct dentry *unused, struct inode *inode,
-				    const char *name, void *buffer, size_t size)
+        struct dentry *unused, struct inode *inode,
+        const char *name, void *buffer, size_t size)
 {
-	return hfsplus_getxattr(inode, name, buffer, size,
-				XATTR_TRUSTED_PREFIX,
-				XATTR_TRUSTED_PREFIX_LEN);
+ return hfsplus_getxattr(inode, name, buffer, size,
+    XATTR_TRUSTED_PREFIX,
+    XATTR_TRUSTED_PREFIX_LEN);
 }

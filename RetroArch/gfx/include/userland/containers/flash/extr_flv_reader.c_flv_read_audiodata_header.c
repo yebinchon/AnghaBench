@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_FOURCC_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STREAM_STATUS (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VC_CONTAINER_CODEC_ADPCM_SWF ; 
- int /*<<< orphan*/  VC_CONTAINER_CODEC_ALAW ; 
- int /*<<< orphan*/  VC_CONTAINER_CODEC_MP4A ; 
- int /*<<< orphan*/  VC_CONTAINER_CODEC_MPGA ; 
- int /*<<< orphan*/  VC_CONTAINER_CODEC_MULAW ; 
- int /*<<< orphan*/  VC_CONTAINER_CODEC_NELLYMOSER ; 
- int /*<<< orphan*/  VC_CONTAINER_CODEC_PCM_SIGNED ; 
- int /*<<< orphan*/  VC_CONTAINER_CODEC_PCM_SIGNED_LE ; 
- int /*<<< orphan*/  VC_CONTAINER_CODEC_PCM_UNSIGNED ; 
- int /*<<< orphan*/  VC_CONTAINER_CODEC_SPEEX ; 
- int _READ_U8 (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+typedef int VC_CONTAINER_T ;
+typedef int VC_CONTAINER_STATUS_T ;
+typedef int VC_CONTAINER_FOURCC_T ;
+
+
+ int STREAM_STATUS (int *) ;
+ int VC_CONTAINER_CODEC_ADPCM_SWF ;
+ int VC_CONTAINER_CODEC_ALAW ;
+ int VC_CONTAINER_CODEC_MP4A ;
+ int VC_CONTAINER_CODEC_MPGA ;
+ int VC_CONTAINER_CODEC_MULAW ;
+ int VC_CONTAINER_CODEC_NELLYMOSER ;
+ int VC_CONTAINER_CODEC_PCM_SIGNED ;
+ int VC_CONTAINER_CODEC_PCM_SIGNED_LE ;
+ int VC_CONTAINER_CODEC_PCM_UNSIGNED ;
+ int VC_CONTAINER_CODEC_SPEEX ;
+ int _READ_U8 (int *) ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T flv_read_audiodata_header(VC_CONTAINER_T *p_ctx,
    VC_CONTAINER_FOURCC_T *codec, int *p_samplerate, int *p_channels, int *p_bps)

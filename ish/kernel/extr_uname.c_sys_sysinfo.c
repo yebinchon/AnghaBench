@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct uptime_info {int /*<<< orphan*/  load_15m; int /*<<< orphan*/  load_5m; int /*<<< orphan*/  load_1m; int /*<<< orphan*/  uptime_ticks; } ;
-struct sys_info {int /*<<< orphan*/ * loads; int /*<<< orphan*/  uptime; int /*<<< orphan*/  member_0; } ;
-typedef  int /*<<< orphan*/  dword_t ;
-typedef  int /*<<< orphan*/  addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _EFAULT ; 
- struct uptime_info get_uptime () ; 
- int /*<<< orphan*/  sysinfo_specific (struct sys_info*) ; 
- scalar_t__ user_put (int /*<<< orphan*/ ,struct sys_info) ; 
+
+
+
+struct uptime_info {int load_15m; int load_5m; int load_1m; int uptime_ticks; } ;
+struct sys_info {int * loads; int uptime; int member_0; } ;
+typedef int dword_t ;
+typedef int addr_t ;
+
+
+ int _EFAULT ;
+ struct uptime_info get_uptime () ;
+ int sysinfo_specific (struct sys_info*) ;
+ scalar_t__ user_put (int ,struct sys_info) ;
 
 dword_t sys_sysinfo(addr_t info_addr) {
     struct sys_info info = {0};

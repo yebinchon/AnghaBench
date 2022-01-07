@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u32 ;
 
-/* Variables and functions */
- scalar_t__ _gxoverflowcount ; 
+
+
+
+typedef scalar_t__ u32 ;
+
+
+ scalar_t__ _gxoverflowcount ;
 
 u32 GX_ResetOverflowCount()
 {
-	u32 ret = _gxoverflowcount;
-	_gxoverflowcount = 0;
-	return ret;
+ u32 ret = _gxoverflowcount;
+ _gxoverflowcount = 0;
+ return ret;
 }

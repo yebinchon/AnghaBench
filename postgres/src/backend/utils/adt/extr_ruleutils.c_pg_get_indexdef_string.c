@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Oid ;
 
-/* Variables and functions */
- char* pg_get_indexdef_worker (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int,int,int,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int Oid ;
+
+
+ char* pg_get_indexdef_worker (int ,int ,int *,int,int,int,int,int ,int) ;
 
 char *
 pg_get_indexdef_string(Oid indexrelid)
 {
-	return pg_get_indexdef_worker(indexrelid, 0, NULL,
-								  false, false,
-								  true, true,
-								  0, false);
+ return pg_get_indexdef_worker(indexrelid, 0, ((void*)0),
+          0, 0,
+          1, 1,
+          0, 0);
 }

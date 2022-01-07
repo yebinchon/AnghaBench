@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FatalError (char*,int) ; 
- int PT_CMYK ; 
- int PT_GRAY ; 
- int PT_MCH10 ; 
- int PT_MCH11 ; 
- int PT_MCH12 ; 
- int PT_MCH13 ; 
- int PT_MCH14 ; 
- int PT_MCH15 ; 
- int PT_MCH2 ; 
- int PT_MCH3 ; 
- int PT_MCH5 ; 
- int PT_MCH6 ; 
- int PT_MCH7 ; 
- int PT_MCH8 ; 
- int PT_MCH9 ; 
+ int FatalError (char*,int) ;
+ int PT_CMYK ;
+ int PT_GRAY ;
+ int PT_MCH10 ;
+ int PT_MCH11 ;
+ int PT_MCH12 ;
+ int PT_MCH13 ;
+ int PT_MCH14 ;
+ int PT_MCH15 ;
+ int PT_MCH2 ;
+ int PT_MCH3 ;
+ int PT_MCH5 ;
+ int PT_MCH6 ;
+ int PT_MCH7 ;
+ int PT_MCH8 ;
+ int PT_MCH9 ;
 
 int PixelTypeFromChanCount(int ColorChannels)
 {

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_1__ ;
-typedef  struct TYPE_20__   TYPE_13__ ;
 
-/* Type definitions */
-struct TYPE_21__ {int error; scalar_t__ style; scalar_t__ tar_pid; int /*<<< orphan*/  event; struct TYPE_21__* userdata; int /*<<< orphan*/  (* on_finished ) (TYPE_1__*,int,TYPE_1__*) ;struct TYPE_21__* settings_temp_path; struct TYPE_21__* settings_path; struct TYPE_21__* settings_job; struct TYPE_21__* temp_path; struct TYPE_21__* final_path; struct TYPE_21__* signature_job; struct TYPE_21__* checksum_job; TYPE_13__* tar_job; void* disk_fd; } ;
-typedef  TYPE_1__ TarPull ;
-struct TYPE_20__ {int /*<<< orphan*/  etag_exists; void* disk_fd; } ;
-typedef  TYPE_1__ PullJob ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AT_FDCWD ; 
- int EIO ; 
- int EXIT_SUCCESS ; 
- int /*<<< orphan*/  TAR_COPYING ; 
- int /*<<< orphan*/  TAR_FINALIZING ; 
- int /*<<< orphan*/  TAR_VERIFYING ; 
- scalar_t__ VERIFICATION_PER_DIRECTORY ; 
- int /*<<< orphan*/  WAIT_LOG ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int import_make_read_only (TYPE_1__*) ; 
- int /*<<< orphan*/  log_error_errno (int,char*,...) ; 
- int /*<<< orphan*/  log_info_errno (int,char*) ; 
- void* mfree (TYPE_1__*) ; 
- int pull_verify (TYPE_13__*,int /*<<< orphan*/ *,TYPE_1__*,TYPE_1__*,TYPE_1__*) ; 
- int rename_noreplace (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- void* safe_close (void*) ; 
- int /*<<< orphan*/  sd_event_exit (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,int,TYPE_1__*) ; 
- int tar_pull_determine_path (TYPE_1__*,char*,TYPE_1__**) ; 
- int /*<<< orphan*/  tar_pull_is_done (TYPE_1__*) ; 
- int tar_pull_make_local_copy (TYPE_1__*) ; 
- int /*<<< orphan*/  tar_pull_report_progress (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int wait_for_terminate_and_check (char*,scalar_t__,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_21__ TYPE_1__ ;
+typedef struct TYPE_20__ TYPE_13__ ;
+
+
+struct TYPE_21__ {int error; scalar_t__ style; scalar_t__ tar_pid; int event; struct TYPE_21__* userdata; int (* on_finished ) (TYPE_1__*,int,TYPE_1__*) ;struct TYPE_21__* settings_temp_path; struct TYPE_21__* settings_path; struct TYPE_21__* settings_job; struct TYPE_21__* temp_path; struct TYPE_21__* final_path; struct TYPE_21__* signature_job; struct TYPE_21__* checksum_job; TYPE_13__* tar_job; void* disk_fd; } ;
+typedef TYPE_1__ TarPull ;
+struct TYPE_20__ {int etag_exists; void* disk_fd; } ;
+typedef TYPE_1__ PullJob ;
+
+
+ int AT_FDCWD ;
+ int EIO ;
+ int EXIT_SUCCESS ;
+ int TAR_COPYING ;
+ int TAR_FINALIZING ;
+ int TAR_VERIFYING ;
+ scalar_t__ VERIFICATION_PER_DIRECTORY ;
+ int WAIT_LOG ;
+ int assert (TYPE_1__*) ;
+ int import_make_read_only (TYPE_1__*) ;
+ int log_error_errno (int,char*,...) ;
+ int log_info_errno (int,char*) ;
+ void* mfree (TYPE_1__*) ;
+ int pull_verify (TYPE_13__*,int *,TYPE_1__*,TYPE_1__*,TYPE_1__*) ;
+ int rename_noreplace (int ,TYPE_1__*,int ,TYPE_1__*) ;
+ void* safe_close (void*) ;
+ int sd_event_exit (int ,int) ;
+ int stub1 (TYPE_1__*,int,TYPE_1__*) ;
+ int tar_pull_determine_path (TYPE_1__*,char*,TYPE_1__**) ;
+ int tar_pull_is_done (TYPE_1__*) ;
+ int tar_pull_make_local_copy (TYPE_1__*) ;
+ int tar_pull_report_progress (TYPE_1__*,int ) ;
+ int wait_for_terminate_and_check (char*,scalar_t__,int ) ;
 
 __attribute__((used)) static void tar_pull_job_on_finished(PullJob *j) {
         TarPull *i;
@@ -64,9 +64,9 @@ __attribute__((used)) static void tar_pull_job_on_finished(PullJob *j) {
                 goto finish;
         }
 
-        /* This is invoked if either the download completed
-         * successfully, or the download was skipped because we
-         * already have the etag. */
+
+
+
 
         if (!tar_pull_is_done(i))
                 return;
@@ -82,7 +82,7 @@ __attribute__((used)) static void tar_pull_job_on_finished(PullJob *j) {
         if (i->settings_job)
                 i->settings_job->disk_fd = safe_close(i->settings_job->disk_fd);
 
-        r = tar_pull_determine_path(i, NULL, &i->final_path);
+        r = tar_pull_determine_path(i, ((void*)0), &i->final_path);
         if (r < 0)
                 goto finish;
 
@@ -98,11 +98,11 @@ __attribute__((used)) static void tar_pull_job_on_finished(PullJob *j) {
         }
 
         if (!i->tar_job->etag_exists) {
-                /* This is a new download, verify it, and move it into place */
+
 
                 tar_pull_report_progress(i, TAR_VERIFYING);
 
-                r = pull_verify(i->tar_job, NULL, i->settings_job, i->checksum_job, i->signature_job);
+                r = pull_verify(i->tar_job, ((void*)0), i->settings_job, i->checksum_job, i->signature_job);
                 if (r < 0)
                         goto finish;
 
@@ -123,12 +123,12 @@ __attribute__((used)) static void tar_pull_job_on_finished(PullJob *j) {
                 if (i->settings_job &&
                     i->settings_job->error == 0) {
 
-                        /* Also move the settings file into place, if it exists. Note that we do so only if we also
-                         * moved the tar file in place, to keep things strictly in sync. */
+
+
                         assert(i->settings_temp_path);
 
-                        /* Regenerate final name for this auxiliary file, we might know the etag of the file now, and
-                         * we should incorporate it in the file name if we can */
+
+
                         i->settings_path = mfree(i->settings_path);
 
                         r = tar_pull_determine_path(i, ".nspawn", &i->settings_path);

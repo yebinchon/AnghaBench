@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WebPMuxError ;
-struct TYPE_5__ {int /*<<< orphan*/  images_; } ;
-typedef  TYPE_1__ WebPMux ;
-typedef  int /*<<< orphan*/  WebPChunkId ;
-typedef  int /*<<< orphan*/  WebPChunk ;
-struct TYPE_6__ {int /*<<< orphan*/  tag; } ;
-typedef  size_t CHUNK_INDEX ;
 
-/* Variables and functions */
- size_t ChunkGetIndexFromId (int /*<<< orphan*/ ) ; 
- int CountChunks (int /*<<< orphan*/ * const,int /*<<< orphan*/ ) ; 
- scalar_t__ IsWPI (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ ** MuxGetChunkListFromId (TYPE_1__ const*,int /*<<< orphan*/ ) ; 
- int MuxImageCount (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WEBP_MUX_INVALID_ARGUMENT ; 
- int /*<<< orphan*/  WEBP_MUX_OK ; 
- TYPE_2__* kChunks ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int WebPMuxError ;
+struct TYPE_5__ {int images_; } ;
+typedef TYPE_1__ WebPMux ;
+typedef int WebPChunkId ;
+typedef int WebPChunk ;
+struct TYPE_6__ {int tag; } ;
+typedef size_t CHUNK_INDEX ;
+
+
+ size_t ChunkGetIndexFromId (int ) ;
+ int CountChunks (int * const,int ) ;
+ scalar_t__ IsWPI (int ) ;
+ int ** MuxGetChunkListFromId (TYPE_1__ const*,int ) ;
+ int MuxImageCount (int ,int ) ;
+ int WEBP_MUX_INVALID_ARGUMENT ;
+ int WEBP_MUX_OK ;
+ TYPE_2__* kChunks ;
 
 WebPMuxError WebPMuxNumChunks(const WebPMux* mux,
                               WebPChunkId id, int* num_elements) {
-  if (mux == NULL || num_elements == NULL) {
+  if (mux == ((void*)0) || num_elements == ((void*)0)) {
     return WEBP_MUX_INVALID_ARGUMENT;
   }
 

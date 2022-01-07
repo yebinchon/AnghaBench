@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  au_event_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * getauevnonam_r (int /*<<< orphan*/ *,char const*) ; 
+
+
+
+typedef int au_event_t ;
+
+
+ int * getauevnonam_r (int *,char const*) ;
 
 au_event_t *
 getauevnonam(const char *event_name)
 {
-	static au_event_t event;
+ static au_event_t event;
 
-	return (getauevnonam_r(&event, event_name));
+ return (getauevnonam_r(&event, event_name));
 }

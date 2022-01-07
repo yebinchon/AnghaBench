@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  strm_string ;
-typedef  int /*<<< orphan*/  strm_int ;
 
-/* Variables and functions */
- int /*<<< orphan*/  isprint (int) ; 
- char* malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int strm_str_len (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_str_new (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ strm_str_ptr (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int strm_string ;
+typedef int strm_int ;
+
+
+ int isprint (int) ;
+ char* malloc (int ) ;
+ int sprintf (char*,char*,int) ;
+ int strm_str_len (int ) ;
+ int strm_str_new (char*,int ) ;
+ scalar_t__ strm_str_ptr (int ) ;
 
 __attribute__((used)) static strm_string
 str_dump(strm_string str, strm_int len)
@@ -68,6 +68,6 @@ str_dump(strm_string str, strm_int len)
     p++;
   }
   *s++ = '"';
-  
+
   return strm_str_new(buf, len);
 }

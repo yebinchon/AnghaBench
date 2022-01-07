@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stream_t ;
-struct baton_tee {int /*<<< orphan*/ * out2; int /*<<< orphan*/ * out1; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- struct baton_tee* apr_palloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  close_handler_tee ; 
- int /*<<< orphan*/ * svn_stream_create (struct baton_tee*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_set_close (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stream_set_write (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_handler_tee ; 
+
+
+
+typedef int svn_stream_t ;
+struct baton_tee {int * out2; int * out1; } ;
+typedef int apr_pool_t ;
+
+
+ struct baton_tee* apr_palloc (int *,int) ;
+ int close_handler_tee ;
+ int * svn_stream_create (struct baton_tee*,int *) ;
+ int svn_stream_set_close (int *,int ) ;
+ int svn_stream_set_write (int *,int ) ;
+ int write_handler_tee ;
 
 svn_stream_t *
 svn_stream_tee(svn_stream_t *out1,
@@ -30,10 +30,10 @@ svn_stream_tee(svn_stream_t *out1,
   struct baton_tee *baton;
   svn_stream_t *stream;
 
-  if (out1 == NULL)
+  if (out1 == ((void*)0))
     return out2;
 
-  if (out2 == NULL)
+  if (out2 == ((void*)0))
     return out1;
 
   baton = apr_palloc(pool, sizeof(*baton));

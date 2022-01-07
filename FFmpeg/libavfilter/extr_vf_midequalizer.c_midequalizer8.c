@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  int /*<<< orphan*/  ptrdiff_t ;
 
-/* Variables and functions */
- size_t av_clip_uint8 (unsigned int) ; 
- int /*<<< orphan*/  compute_contrast_change (float*,float*,unsigned int*,size_t) ; 
- int /*<<< orphan*/  compute_histogram8 (size_t const*,int /*<<< orphan*/ ,int,int,float*,size_t) ; 
+
+
+
+typedef size_t uint8_t ;
+typedef int ptrdiff_t ;
+
+
+ size_t av_clip_uint8 (unsigned int) ;
+ int compute_contrast_change (float*,float*,unsigned int*,size_t) ;
+ int compute_histogram8 (size_t const*,int ,int,int,float*,size_t) ;
 
 __attribute__((used)) static void midequalizer8(const uint8_t *in0, const uint8_t *in1,
                           uint8_t *dst,

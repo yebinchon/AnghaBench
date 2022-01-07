@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int sample_rate; int frame_size; int channels; int /*<<< orphan*/  codec_id; } ;
-struct TYPE_13__ {int /*<<< orphan*/  bytes_left_in_chunk; } ;
-struct TYPE_12__ {int /*<<< orphan*/ * pb; TYPE_3__* priv_data; } ;
-struct TYPE_11__ {TYPE_6__* codecpar; int /*<<< orphan*/  duration; } ;
-typedef  TYPE_1__ AVStream ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_2__ AVFormatContext ;
-typedef  TYPE_3__ ACTContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_CODEC_ID_G729 ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  CHUNK_SIZE ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  av_rescale (int,int,int) ; 
- TYPE_1__* avformat_new_stream (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int avio_r8 (int /*<<< orphan*/ *) ; 
- int avio_rl16 (int /*<<< orphan*/ *) ; 
- int avio_rl32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avpriv_set_pts_info (TYPE_1__*,int,int,int) ; 
- int /*<<< orphan*/  ff_get_wav_header (TYPE_2__*,int /*<<< orphan*/ *,TYPE_6__*,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int sample_rate; int frame_size; int channels; int codec_id; } ;
+struct TYPE_13__ {int bytes_left_in_chunk; } ;
+struct TYPE_12__ {int * pb; TYPE_3__* priv_data; } ;
+struct TYPE_11__ {TYPE_6__* codecpar; int duration; } ;
+typedef TYPE_1__ AVStream ;
+typedef int AVIOContext ;
+typedef TYPE_2__ AVFormatContext ;
+typedef TYPE_3__ ACTContext ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_CODEC_ID_G729 ;
+ int AV_LOG_ERROR ;
+ int CHUNK_SIZE ;
+ int ENOMEM ;
+ int SEEK_SET ;
+ int av_log (TYPE_2__*,int ,char*,int) ;
+ int av_rescale (int,int,int) ;
+ TYPE_1__* avformat_new_stream (TYPE_2__*,int *) ;
+ int avio_r8 (int *) ;
+ int avio_rl16 (int *) ;
+ int avio_rl32 (int *) ;
+ int avio_seek (int *,int,int ) ;
+ int avio_skip (int *,int) ;
+ int avpriv_set_pts_info (TYPE_1__*,int,int,int) ;
+ int ff_get_wav_header (TYPE_2__*,int *,TYPE_6__*,int,int ) ;
 
 __attribute__((used)) static int read_header(AVFormatContext *s)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static int read_header(AVFormatContext *s)
 
     int min,sec,msec;
 
-    st = avformat_new_stream(s, NULL);
+    st = avformat_new_stream(s, ((void*)0));
     if (!st)
         return AVERROR(ENOMEM);
 
@@ -59,10 +59,10 @@ __attribute__((used)) static int read_header(AVFormatContext *s)
     size=avio_rl32(pb);
     ff_get_wav_header(s, pb, st->codecpar, size, 0);
 
-    /*
-      8000Hz (Fine-rec) file format has 10 bytes long
-      packets with 10ms of sound data in them
-    */
+
+
+
+
     if (st->codecpar->sample_rate != 8000) {
         av_log(s, AV_LOG_ERROR, "Sample rate %d is not supported.\n", st->codecpar->sample_rate);
         return AVERROR_INVALIDDATA;

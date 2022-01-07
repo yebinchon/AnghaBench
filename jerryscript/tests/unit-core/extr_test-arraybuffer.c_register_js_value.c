@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jerry_value_t ;
-typedef  int /*<<< orphan*/  jerry_char_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_create_string (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  jerry_get_global_object () ; 
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_set_property (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_value_is_boolean (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int jerry_value_t ;
+typedef int jerry_char_t ;
+
+
+ int TEST_ASSERT (int ) ;
+ int jerry_create_string (int const*) ;
+ int jerry_get_global_object () ;
+ int jerry_release_value (int ) ;
+ int jerry_set_property (int ,int ,int ) ;
+ int jerry_value_is_boolean (int ) ;
 
 __attribute__((used)) static void
-register_js_value (const char *name_p, /**< name of the function */
-                   jerry_value_t value) /**< JS value */
+register_js_value (const char *name_p,
+                   jerry_value_t value)
 {
   jerry_value_t global_obj_val = jerry_get_global_object ();
 

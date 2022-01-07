@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct intel_bw_state {int /*<<< orphan*/  base; } ;
-struct drm_i915_private {int /*<<< orphan*/  bw_obj; int /*<<< orphan*/  drm; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  drm_atomic_private_obj_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  intel_bw_funcs ; 
- struct intel_bw_state* kzalloc (int,int /*<<< orphan*/ ) ; 
+
+
+
+struct intel_bw_state {int base; } ;
+struct drm_i915_private {int bw_obj; int drm; } ;
+
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int drm_atomic_private_obj_init (int *,int *,int *,int *) ;
+ int intel_bw_funcs ;
+ struct intel_bw_state* kzalloc (int,int ) ;
 
 int intel_bw_init(struct drm_i915_private *dev_priv)
 {
-	struct intel_bw_state *state;
+ struct intel_bw_state *state;
 
-	state = kzalloc(sizeof(*state), GFP_KERNEL);
-	if (!state)
-		return -ENOMEM;
+ state = kzalloc(sizeof(*state), GFP_KERNEL);
+ if (!state)
+  return -ENOMEM;
 
-	drm_atomic_private_obj_init(&dev_priv->drm, &dev_priv->bw_obj,
-				    &state->base, &intel_bw_funcs);
+ drm_atomic_private_obj_init(&dev_priv->drm, &dev_priv->bw_obj,
+        &state->base, &intel_bw_funcs);
 
-	return 0;
+ return 0;
 }

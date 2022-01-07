@@ -1,100 +1,100 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct rt2x00_dev {int /*<<< orphan*/  irqmask_lock; int /*<<< orphan*/  autowake_tasklet; int /*<<< orphan*/  tbtt_tasklet; int /*<<< orphan*/  txstatus_tasklet; int /*<<< orphan*/  rxdone_tasklet; int /*<<< orphan*/  flags; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEVICE_STATE_ENABLED_RADIO ; 
- int /*<<< orphan*/  INT_MASK_CSR ; 
- int /*<<< orphan*/  INT_SOURCE_CSR ; 
- int /*<<< orphan*/  INT_SOURCE_CSR_BEACON_DONE ; 
- int /*<<< orphan*/  INT_SOURCE_CSR_RXDONE ; 
- int /*<<< orphan*/  INT_SOURCE_CSR_TXDONE ; 
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  IRQ_NONE ; 
- int /*<<< orphan*/  MCU_INT_MASK_CSR ; 
- int /*<<< orphan*/  MCU_INT_SOURCE_CSR ; 
- int /*<<< orphan*/  MCU_INT_SOURCE_CSR_TWAKEUP ; 
- scalar_t__ rt2x00_get_field32 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rt2x00mmio_register_read (struct rt2x00_dev*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rt2x00mmio_register_write (struct rt2x00_dev*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tasklet_hi_schedule (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tasklet_schedule (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int u32 ;
+struct rt2x00_dev {int irqmask_lock; int autowake_tasklet; int tbtt_tasklet; int txstatus_tasklet; int rxdone_tasklet; int flags; } ;
+typedef int irqreturn_t ;
+
+
+ int DEVICE_STATE_ENABLED_RADIO ;
+ int INT_MASK_CSR ;
+ int INT_SOURCE_CSR ;
+ int INT_SOURCE_CSR_BEACON_DONE ;
+ int INT_SOURCE_CSR_RXDONE ;
+ int INT_SOURCE_CSR_TXDONE ;
+ int IRQ_HANDLED ;
+ int IRQ_NONE ;
+ int MCU_INT_MASK_CSR ;
+ int MCU_INT_SOURCE_CSR ;
+ int MCU_INT_SOURCE_CSR_TWAKEUP ;
+ scalar_t__ rt2x00_get_field32 (int ,int ) ;
+ int rt2x00mmio_register_read (struct rt2x00_dev*,int ) ;
+ int rt2x00mmio_register_write (struct rt2x00_dev*,int ,int ) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int tasklet_hi_schedule (int *) ;
+ int tasklet_schedule (int *) ;
+ int test_bit (int ,int *) ;
 
 __attribute__((used)) static irqreturn_t rt61pci_interrupt(int irq, void *dev_instance)
 {
-	struct rt2x00_dev *rt2x00dev = dev_instance;
-	u32 reg_mcu, mask_mcu;
-	u32 reg, mask;
+ struct rt2x00_dev *rt2x00dev = dev_instance;
+ u32 reg_mcu, mask_mcu;
+ u32 reg, mask;
 
-	/*
-	 * Get the interrupt sources & saved to local variable.
-	 * Write register value back to clear pending interrupts.
-	 */
-	reg_mcu = rt2x00mmio_register_read(rt2x00dev, MCU_INT_SOURCE_CSR);
-	rt2x00mmio_register_write(rt2x00dev, MCU_INT_SOURCE_CSR, reg_mcu);
 
-	reg = rt2x00mmio_register_read(rt2x00dev, INT_SOURCE_CSR);
-	rt2x00mmio_register_write(rt2x00dev, INT_SOURCE_CSR, reg);
 
-	if (!reg && !reg_mcu)
-		return IRQ_NONE;
 
-	if (!test_bit(DEVICE_STATE_ENABLED_RADIO, &rt2x00dev->flags))
-		return IRQ_HANDLED;
 
-	/*
-	 * Schedule tasklets for interrupt handling.
-	 */
-	if (rt2x00_get_field32(reg, INT_SOURCE_CSR_RXDONE))
-		tasklet_schedule(&rt2x00dev->rxdone_tasklet);
+ reg_mcu = rt2x00mmio_register_read(rt2x00dev, MCU_INT_SOURCE_CSR);
+ rt2x00mmio_register_write(rt2x00dev, MCU_INT_SOURCE_CSR, reg_mcu);
 
-	if (rt2x00_get_field32(reg, INT_SOURCE_CSR_TXDONE))
-		tasklet_schedule(&rt2x00dev->txstatus_tasklet);
+ reg = rt2x00mmio_register_read(rt2x00dev, INT_SOURCE_CSR);
+ rt2x00mmio_register_write(rt2x00dev, INT_SOURCE_CSR, reg);
 
-	if (rt2x00_get_field32(reg, INT_SOURCE_CSR_BEACON_DONE))
-		tasklet_hi_schedule(&rt2x00dev->tbtt_tasklet);
+ if (!reg && !reg_mcu)
+  return IRQ_NONE;
 
-	if (rt2x00_get_field32(reg_mcu, MCU_INT_SOURCE_CSR_TWAKEUP))
-		tasklet_schedule(&rt2x00dev->autowake_tasklet);
+ if (!test_bit(DEVICE_STATE_ENABLED_RADIO, &rt2x00dev->flags))
+  return IRQ_HANDLED;
 
-	/*
-	 * Since INT_MASK_CSR and INT_SOURCE_CSR use the same bits
-	 * for interrupts and interrupt masks we can just use the value of
-	 * INT_SOURCE_CSR to create the interrupt mask.
-	 */
-	mask = reg;
-	mask_mcu = reg_mcu;
 
-	/*
-	 * Disable all interrupts for which a tasklet was scheduled right now,
-	 * the tasklet will reenable the appropriate interrupts.
-	 */
-	spin_lock(&rt2x00dev->irqmask_lock);
 
-	reg = rt2x00mmio_register_read(rt2x00dev, INT_MASK_CSR);
-	reg |= mask;
-	rt2x00mmio_register_write(rt2x00dev, INT_MASK_CSR, reg);
 
-	reg = rt2x00mmio_register_read(rt2x00dev, MCU_INT_MASK_CSR);
-	reg |= mask_mcu;
-	rt2x00mmio_register_write(rt2x00dev, MCU_INT_MASK_CSR, reg);
+ if (rt2x00_get_field32(reg, INT_SOURCE_CSR_RXDONE))
+  tasklet_schedule(&rt2x00dev->rxdone_tasklet);
 
-	spin_unlock(&rt2x00dev->irqmask_lock);
+ if (rt2x00_get_field32(reg, INT_SOURCE_CSR_TXDONE))
+  tasklet_schedule(&rt2x00dev->txstatus_tasklet);
 
-	return IRQ_HANDLED;
+ if (rt2x00_get_field32(reg, INT_SOURCE_CSR_BEACON_DONE))
+  tasklet_hi_schedule(&rt2x00dev->tbtt_tasklet);
+
+ if (rt2x00_get_field32(reg_mcu, MCU_INT_SOURCE_CSR_TWAKEUP))
+  tasklet_schedule(&rt2x00dev->autowake_tasklet);
+
+
+
+
+
+
+ mask = reg;
+ mask_mcu = reg_mcu;
+
+
+
+
+
+ spin_lock(&rt2x00dev->irqmask_lock);
+
+ reg = rt2x00mmio_register_read(rt2x00dev, INT_MASK_CSR);
+ reg |= mask;
+ rt2x00mmio_register_write(rt2x00dev, INT_MASK_CSR, reg);
+
+ reg = rt2x00mmio_register_read(rt2x00dev, MCU_INT_MASK_CSR);
+ reg |= mask_mcu;
+ rt2x00mmio_register_write(rt2x00dev, MCU_INT_MASK_CSR, reg);
+
+ spin_unlock(&rt2x00dev->irqmask_lock);
+
+ return IRQ_HANDLED;
 }

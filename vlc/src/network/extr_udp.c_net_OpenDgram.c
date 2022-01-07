@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-struct addrinfo {scalar_t__ ai_socktype; int ai_protocol; int ai_flags; scalar_t__ ai_family; int /*<<< orphan*/  ai_addrlen; int /*<<< orphan*/  ai_addr; struct addrinfo* ai_next; } ;
 
-/* Variables and functions */
- int AI_IDN ; 
- int AI_NUMERICSERV ; 
- int AI_PASSIVE ; 
- scalar_t__ SOCK_DGRAM ; 
- scalar_t__ connect (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  freeaddrinfo (struct addrinfo*) ; 
- int /*<<< orphan*/  gai_strerror (int) ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,char const*,unsigned int,char const*,unsigned int) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*,char const*,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  net_Close (int) ; 
- int net_ListenSingle (int /*<<< orphan*/ *,char const*,unsigned int,int) ; 
- int net_SetupDgramSocket (int /*<<< orphan*/ *,int,struct addrinfo*) ; 
- scalar_t__ net_SockAddrIsMulticast (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int net_Socket (int /*<<< orphan*/ *,scalar_t__,scalar_t__,int) ; 
- scalar_t__ net_SourceSubscribe (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  net_errno ; 
- int vlc_getaddrinfo (char const*,unsigned int,struct addrinfo*,struct addrinfo**) ; 
- int /*<<< orphan*/  vlc_strerror_c (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int vlc_object_t ;
+struct addrinfo {scalar_t__ ai_socktype; int ai_protocol; int ai_flags; scalar_t__ ai_family; int ai_addrlen; int ai_addr; struct addrinfo* ai_next; } ;
+
+
+ int AI_IDN ;
+ int AI_NUMERICSERV ;
+ int AI_PASSIVE ;
+ scalar_t__ SOCK_DGRAM ;
+ scalar_t__ connect (int,int ,int ) ;
+ int freeaddrinfo (struct addrinfo*) ;
+ int gai_strerror (int) ;
+ int msg_Dbg (int *,char*,char const*,unsigned int,char const*,unsigned int) ;
+ int msg_Err (int *,char*,char const*,unsigned int,int ) ;
+ int net_Close (int) ;
+ int net_ListenSingle (int *,char const*,unsigned int,int) ;
+ int net_SetupDgramSocket (int *,int,struct addrinfo*) ;
+ scalar_t__ net_SockAddrIsMulticast (int ,int ) ;
+ int net_Socket (int *,scalar_t__,scalar_t__,int) ;
+ scalar_t__ net_SourceSubscribe (int *,int,int ,int ,int ,int ) ;
+ int net_errno ;
+ int vlc_getaddrinfo (char const*,unsigned int,struct addrinfo*,struct addrinfo**) ;
+ int vlc_strerror_c (int ) ;
 
 int net_OpenDgram( vlc_object_t *obj, const char *psz_bind, unsigned i_bind,
                    const char *psz_server, unsigned i_server, int protocol )
 {
-    if ((psz_server == NULL) || (psz_server[0] == '\0'))
+    if ((psz_server == ((void*)0)) || (psz_server[0] == '\0'))
         return net_ListenSingle (obj, psz_bind, i_bind, protocol);
 
     msg_Dbg (obj, "net: connecting to [%s]:%u from [%s]:%u",
@@ -67,18 +67,18 @@ int net_OpenDgram( vlc_object_t *obj, const char *psz_bind, unsigned i_bind,
     }
 
     val = -1;
-    for (struct addrinfo *ptr = loc; ptr != NULL; ptr = ptr->ai_next)
+    for (struct addrinfo *ptr = loc; ptr != ((void*)0); ptr = ptr->ai_next)
     {
         int fd = net_Socket (obj, ptr->ai_family, ptr->ai_socktype,
                              ptr->ai_protocol);
         if (fd == -1)
-            continue; // usually, address family not supported
+            continue;
 
         fd = net_SetupDgramSocket( obj, fd, ptr );
         if( fd == -1 )
             continue;
 
-        for (struct addrinfo *ptr2 = rem; ptr2 != NULL; ptr2 = ptr2->ai_next)
+        for (struct addrinfo *ptr2 = rem; ptr2 != ((void*)0); ptr2 = ptr2->ai_next)
         {
             if ((ptr2->ai_family != ptr->ai_family)
              || (ptr2->ai_socktype != ptr->ai_socktype)

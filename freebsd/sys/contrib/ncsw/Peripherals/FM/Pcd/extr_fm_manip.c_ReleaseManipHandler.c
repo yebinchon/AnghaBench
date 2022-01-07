@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  t_Handle ;
-struct TYPE_12__ {int /*<<< orphan*/ * h_Ipv4Ad; int /*<<< orphan*/ * h_Ipv6Ad; int /*<<< orphan*/ * p_Ipv6ReassTbl; int /*<<< orphan*/ * p_Ipv4ReassTbl; scalar_t__ ipv6AutoLearnSetLockTblAddr; scalar_t__ ipv4AutoLearnSetLockTblAddr; scalar_t__ ipv6AutoLearnHashTblAddr; scalar_t__ ipv4AutoLearnHashTblAddr; } ;
-struct TYPE_13__ {scalar_t__ hdr; TYPE_3__ ip; scalar_t__ internalBufferPoolAddr; scalar_t__ internalBufferPoolManagementIndexAddr; scalar_t__ reassFrmDescrIndxPoolTblAddr; int /*<<< orphan*/ * p_ReassCommonTbl; scalar_t__ reassFrmDescrPoolTblAddr; scalar_t__ timeOutTblAddr; } ;
-struct TYPE_11__ {int /*<<< orphan*/ * p_Frag; int /*<<< orphan*/  scratchBpid; } ;
-struct TYPE_10__ {int /*<<< orphan*/ * p_TimeOutTbl; int /*<<< orphan*/ * p_ReassmFrmDescrIndxPoolTbl; int /*<<< orphan*/ * p_ReassmFrmDescrPoolTbl; int /*<<< orphan*/ * p_AutoLearnHashTbl; } ;
-struct TYPE_14__ {int /*<<< orphan*/ * p_StatsTbl; TYPE_4__ reassmParams; scalar_t__ reassm; TYPE_2__ fragParams; scalar_t__ frag; int /*<<< orphan*/ * h_Frag; TYPE_1__ capwapFragParams; int /*<<< orphan*/ * p_Template; int /*<<< orphan*/ * h_Ad; scalar_t__ muramAllocate; } ;
-typedef  TYPE_5__ t_FmPcdManip ;
-struct TYPE_15__ {int /*<<< orphan*/  h_FmMuram; } ;
-typedef  TYPE_6__ t_FmPcd ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FM_MURAM_FreeMem (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FmPcdFragHcScratchPoolEmpty (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FmPcdUnregisterReassmPort (TYPE_6__*,int /*<<< orphan*/ *) ; 
- scalar_t__ HEADER_TYPE_CAPWAP ; 
- int /*<<< orphan*/ * UINT_TO_PTR (scalar_t__) ; 
- int /*<<< orphan*/  XX_Free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  XX_FreeSmart (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int t_Handle ;
+struct TYPE_12__ {int * h_Ipv4Ad; int * h_Ipv6Ad; int * p_Ipv6ReassTbl; int * p_Ipv4ReassTbl; scalar_t__ ipv6AutoLearnSetLockTblAddr; scalar_t__ ipv4AutoLearnSetLockTblAddr; scalar_t__ ipv6AutoLearnHashTblAddr; scalar_t__ ipv4AutoLearnHashTblAddr; } ;
+struct TYPE_13__ {scalar_t__ hdr; TYPE_3__ ip; scalar_t__ internalBufferPoolAddr; scalar_t__ internalBufferPoolManagementIndexAddr; scalar_t__ reassFrmDescrIndxPoolTblAddr; int * p_ReassCommonTbl; scalar_t__ reassFrmDescrPoolTblAddr; scalar_t__ timeOutTblAddr; } ;
+struct TYPE_11__ {int * p_Frag; int scratchBpid; } ;
+struct TYPE_10__ {int * p_TimeOutTbl; int * p_ReassmFrmDescrIndxPoolTbl; int * p_ReassmFrmDescrPoolTbl; int * p_AutoLearnHashTbl; } ;
+struct TYPE_14__ {int * p_StatsTbl; TYPE_4__ reassmParams; scalar_t__ reassm; TYPE_2__ fragParams; scalar_t__ frag; int * h_Frag; TYPE_1__ capwapFragParams; int * p_Template; int * h_Ad; scalar_t__ muramAllocate; } ;
+typedef TYPE_5__ t_FmPcdManip ;
+struct TYPE_15__ {int h_FmMuram; } ;
+typedef TYPE_6__ t_FmPcd ;
+
+
+ int FM_MURAM_FreeMem (int ,int *) ;
+ int FmPcdFragHcScratchPoolEmpty (int ,int ) ;
+ int FmPcdUnregisterReassmPort (TYPE_6__*,int *) ;
+ scalar_t__ HEADER_TYPE_CAPWAP ;
+ int * UINT_TO_PTR (scalar_t__) ;
+ int XX_Free (int *) ;
+ int XX_FreeSmart (int *) ;
 
 __attribute__((used)) static void ReleaseManipHandler(t_FmPcdManip *p_Manip, t_FmPcd *p_FmPcd)
 {
@@ -43,39 +43,20 @@ __attribute__((used)) static void ReleaseManipHandler(t_FmPcdManip *p_Manip, t_F
             FM_MURAM_FreeMem(p_FmPcd->h_FmMuram, p_Manip->h_Ad);
         else
             XX_Free(p_Manip->h_Ad);
-        p_Manip->h_Ad = NULL;
+        p_Manip->h_Ad = ((void*)0);
     }
     if (p_Manip->p_Template)
     {
         FM_MURAM_FreeMem(p_FmPcd->h_FmMuram, p_Manip->p_Template);
-        p_Manip->p_Template = NULL;
+        p_Manip->p_Template = ((void*)0);
     }
-#if (defined(FM_CAPWAP_SUPPORT) && (DPAA_VERSION == 10))
-    if (p_Manip->h_Frag)
-    {
-        if (p_Manip->capwapFragParams.p_AutoLearnHashTbl)
-        FM_MURAM_FreeMem(p_FmPcd->h_FmMuram,
-                p_Manip->capwapFragParams.p_AutoLearnHashTbl);
-        if (p_Manip->capwapFragParams.p_ReassmFrmDescrPoolTbl)
-        FM_MURAM_FreeMem(p_FmPcd->h_FmMuram,
-                p_Manip->capwapFragParams.p_ReassmFrmDescrPoolTbl);
-        if (p_Manip->capwapFragParams.p_ReassmFrmDescrIndxPoolTbl)
-        FM_MURAM_FreeMem(p_FmPcd->h_FmMuram,
-                p_Manip->capwapFragParams.p_ReassmFrmDescrIndxPoolTbl);
-        if (p_Manip->capwapFragParams.p_TimeOutTbl)
-        FM_MURAM_FreeMem(p_FmPcd->h_FmMuram,
-                p_Manip->capwapFragParams.p_TimeOutTbl);
-        FM_MURAM_FreeMem(p_FmPcd->h_FmMuram, p_Manip->h_Frag);
-
-    }
-#endif /* (defined(FM_CAPWAP_SUPPORT) && (DPAA_VERSION == 10)) */
     if (p_Manip->frag)
     {
         if (p_Manip->fragParams.p_Frag)
         {
-#if (DPAA_VERSION == 10)
-            FmPcdFragHcScratchPoolEmpty((t_Handle)p_FmPcd, p_Manip->fragParams.scratchBpid);
-#endif /* (DPAA_VERSION == 10) */
+
+
+
 
             FM_MURAM_FreeMem(p_FmPcd->h_FmMuram, p_Manip->fragParams.p_Frag);
         }

@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ADD_ALL_TESTS (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ADD_TEST (int /*<<< orphan*/ ) ; 
- scalar_t__ OSSL_NELEM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  keygen_size ; 
- int /*<<< orphan*/  test_check_crt_components ; 
- int /*<<< orphan*/  test_check_prime_factor ; 
- int /*<<< orphan*/  test_check_prime_factor_range ; 
- int /*<<< orphan*/  test_check_private_exponent ; 
- int /*<<< orphan*/  test_check_private_key ; 
- int /*<<< orphan*/  test_check_public_exponent ; 
- int /*<<< orphan*/  test_check_public_key ; 
- int /*<<< orphan*/  test_fips1864_keygen_kat ; 
- int /*<<< orphan*/  test_invalid_keypair ; 
- int /*<<< orphan*/  test_pq_diff ; 
- int /*<<< orphan*/  test_sp80056b_keygen ; 
+ int ADD_ALL_TESTS (int ,int) ;
+ int ADD_TEST (int ) ;
+ scalar_t__ OSSL_NELEM (int ) ;
+ int keygen_size ;
+ int test_check_crt_components ;
+ int test_check_prime_factor ;
+ int test_check_prime_factor_range ;
+ int test_check_private_exponent ;
+ int test_check_private_key ;
+ int test_check_public_exponent ;
+ int test_check_public_key ;
+ int test_fips1864_keygen_kat ;
+ int test_invalid_keypair ;
+ int test_pq_diff ;
+ int test_sp80056b_keygen ;
 
 int setup_tests(void)
 {

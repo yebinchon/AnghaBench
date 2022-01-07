@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char* PCHAR ;
 
-/* Variables and functions */
- int strlen (char*) ; 
- int /*<<< orphan*/  strncpy (char*,char*,int) ; 
+
+
+
+typedef char* PCHAR ;
+
+
+ int strlen (char*) ;
+ int strncpy (char*,char*,int) ;
 
 void ReverseIP( PCHAR pIP, PCHAR pReturn )
 {
@@ -25,10 +25,10 @@ void ReverseIP( PCHAR pIP, PCHAR pReturn )
     j = strlen( pIP ) - 1;
     i = j;
 
-    /* We have A.B.C.D
-       We will turn this into D.C.B.A and stick it in pReturn */
 
-    /* A */
+
+
+
     for( ; i > 0; i -= 1 ) if( '.' == pIP[i] ) break;
 
     strncpy( &pReturn[k], &pIP[i + 1], (j - i) );
@@ -40,7 +40,7 @@ void ReverseIP( PCHAR pIP, PCHAR pReturn )
     i -= 1;
     j = i;
 
-    /* B */
+
     for( ; i > 0; i -= 1 ) if( '.' == pIP[i] ) break;
 
     strncpy( &pReturn[k], &pIP[i + 1], (j - i) );
@@ -52,7 +52,7 @@ void ReverseIP( PCHAR pIP, PCHAR pReturn )
     i -= 1;
     j = i;
 
-    /* C */
+
     for( ; i > 0; i -= 1 ) if( '.' == pIP[i] ) break;
 
     strncpy( &pReturn[k], &pIP[i + 1], (j - i) );
@@ -64,7 +64,7 @@ void ReverseIP( PCHAR pIP, PCHAR pReturn )
     i -= 1;
     j = i;
 
-    /* D */
+
     for( ; i > 0; i -= 1 );
 
     strncpy( &pReturn[k], &pIP[i], (j - i) + 1 );

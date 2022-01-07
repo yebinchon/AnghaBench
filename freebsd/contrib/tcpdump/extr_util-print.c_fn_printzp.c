@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u_int ;
-typedef  char u_char ;
-typedef  int /*<<< orphan*/  netdissect_options ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ND_ISASCII (char) ; 
- int /*<<< orphan*/  ND_ISPRINT (char) ; 
- int /*<<< orphan*/  ND_PRINT (int /*<<< orphan*/ *) ; 
- char ND_TOASCII (char) ; 
+
+
+
+typedef scalar_t__ u_int ;
+typedef char u_char ;
+typedef int netdissect_options ;
+
+
+ int ND_ISASCII (char) ;
+ int ND_ISPRINT (char) ;
+ int ND_PRINT (int *) ;
+ char ND_TOASCII (char) ;
 
 int
 fn_printzp(netdissect_options *ndo,
            register const u_char *s, register u_int n,
            register const u_char *ep)
 {
-	register int ret;
-	register u_char c;
+ register int ret;
+ register u_char c;
 
-	ret = 1;			/* assume truncated */
-	while (n > 0 && (ep == NULL || s < ep)) {
-		n--;
-		c = *s++;
-		if (c == '\0') {
-			ret = 0;
-			break;
-		}
-		if (!ND_ISASCII(c)) {
-			c = ND_TOASCII(c);
-			ND_PRINT((ndo, "M-"));
-		}
-		if (!ND_ISPRINT(c)) {
-			c ^= 0x40;	/* DEL to ?, others to alpha */
-			ND_PRINT((ndo, "^"));
-		}
-		ND_PRINT((ndo, "%c", c));
-	}
-	return (n == 0) ? 0 : ret;
+ ret = 1;
+ while (n > 0 && (ep == ((void*)0) || s < ep)) {
+  n--;
+  c = *s++;
+  if (c == '\0') {
+   ret = 0;
+   break;
+  }
+  if (!ND_ISASCII(c)) {
+   c = ND_TOASCII(c);
+   ND_PRINT((ndo, "M-"));
+  }
+  if (!ND_ISPRINT(c)) {
+   c ^= 0x40;
+   ND_PRINT((ndo, "^"));
+  }
+  ND_PRINT((ndo, "%c", c));
+ }
+ return (n == 0) ? 0 : ret;
 }

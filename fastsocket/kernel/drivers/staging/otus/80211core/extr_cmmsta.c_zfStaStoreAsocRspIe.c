@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zdev_t ;
-typedef  int /*<<< orphan*/  zbuf_t ;
-typedef  int u8_t ;
-typedef  size_t u32_t ;
-typedef  int u16_t ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int zdev_t ;
+typedef int zbuf_t ;
+typedef int u8_t ;
+typedef size_t u32_t ;
+typedef int u16_t ;
 struct TYPE_7__ {int ChannelInfo; } ;
 struct TYPE_6__ {int HtCapInfo; } ;
 struct TYPE_8__ {TYPE_2__ HtInfo; TYPE_1__ HtCap; } ;
 struct TYPE_9__ {size_t asocRspFrameBodySize; int currentFrequency; int EnableHT; TYPE_3__ ie; void** asocRspFrameBody; } ;
 struct TYPE_10__ {int supportMode; int BandWidth40; int ExtOffset; TYPE_4__ sta; } ;
 
-/* Variables and functions */
- int ExtHtCap_ExtChannelOffsetBelow ; 
- int HTCAP_SupChannelWidthSet ; 
- int /*<<< orphan*/  ZM_LV_1 ; 
- int ZM_WIRELESS_MODE_24_N ; 
- int ZM_WIRELESS_MODE_5_N ; 
- int /*<<< orphan*/  ZM_WLAN_EID_EXTENDED_HT_CAPABILITY ; 
- int /*<<< orphan*/  ZM_WLAN_EID_HT_CAPABILITY ; 
- int /*<<< orphan*/  ZM_WLAN_PREN2_EID_HTCAPABILITY ; 
- int /*<<< orphan*/  ZM_WLAN_PREN2_EID_HTINFORMATION ; 
- TYPE_5__* wd ; 
- int zfFindElement (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zm_debug_msg0 (char*) ; 
- int /*<<< orphan*/  zm_msg2_mm (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  zmw_get_wlan_dev (int /*<<< orphan*/ *) ; 
- void* zmw_rx_buf_readb (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int ExtHtCap_ExtChannelOffsetBelow ;
+ int HTCAP_SupChannelWidthSet ;
+ int ZM_LV_1 ;
+ int ZM_WIRELESS_MODE_24_N ;
+ int ZM_WIRELESS_MODE_5_N ;
+ int ZM_WLAN_EID_EXTENDED_HT_CAPABILITY ;
+ int ZM_WLAN_EID_HT_CAPABILITY ;
+ int ZM_WLAN_PREN2_EID_HTCAPABILITY ;
+ int ZM_WLAN_PREN2_EID_HTINFORMATION ;
+ TYPE_5__* wd ;
+ int zfFindElement (int *,int *,int ) ;
+ int zm_debug_msg0 (char*) ;
+ int zm_msg2_mm (int ,char*,int) ;
+ int zmw_get_wlan_dev (int *) ;
+ void* zmw_rx_buf_readb (int *,int *,int) ;
 
 void zfStaStoreAsocRspIe(zdev_t* dev, zbuf_t* buf)
 {
     u16_t offset;
     u32_t i;
     u16_t length;
-    u8_t  *htcap;
-    u8_t  asocBw40 = 0;
-    u8_t  asocExtOffset = 0;
+    u8_t *htcap;
+    u8_t asocBw40 = 0;
+    u8_t asocExtOffset = 0;
 
     zmw_get_wlan_dev(dev);
 
@@ -59,11 +59,11 @@ void zfStaStoreAsocRspIe(zdev_t* dev, zbuf_t* buf)
         wd->sta.asocRspFrameBody[i] = zmw_rx_buf_readb(dev, buf, i+24);
     }
 
-    /* HT capabilities: 28 octets */
-    if (    ((wd->sta.currentFrequency > 3000) && !(wd->supportMode & ZM_WIRELESS_MODE_5_N))
+
+    if ( ((wd->sta.currentFrequency > 3000) && !(wd->supportMode & ZM_WIRELESS_MODE_5_N))
          || ((wd->sta.currentFrequency < 3000) && !(wd->supportMode & ZM_WIRELESS_MODE_24_N)) )
     {
-        /* not 11n AP */
+
         htcap = (u8_t *)&wd->sta.ie.HtCap;
         for (i=0; i<28; i++)
         {
@@ -76,7 +76,7 @@ void zfStaStoreAsocRspIe(zdev_t* dev, zbuf_t* buf)
 
     if ((offset = zfFindElement(dev, buf, ZM_WLAN_EID_HT_CAPABILITY)) != 0xffff)
     {
-        /* atheros pre n */
+
         zm_debug_msg0("atheros pre n");
         htcap = (u8_t *)&wd->sta.ie.HtCap;
         htcap[0] = zmw_rx_buf_readb(dev, buf, offset);
@@ -89,7 +89,7 @@ void zfStaStoreAsocRspIe(zdev_t* dev, zbuf_t* buf)
     }
     else if ((offset = zfFindElement(dev, buf, ZM_WLAN_PREN2_EID_HTCAPABILITY)) != 0xffff)
     {
-        /* pre n 2.0 standard */
+
         zm_debug_msg0("pre n 2.0 standard");
         htcap = (u8_t *)&wd->sta.ie.HtCap;
         for (i=0; i<28; i++)
@@ -100,7 +100,7 @@ void zfStaStoreAsocRspIe(zdev_t* dev, zbuf_t* buf)
     }
     else
     {
-        /* not 11n AP */
+
         htcap = (u8_t *)&wd->sta.ie.HtCap;
         for (i=0; i<28; i++)
         {
@@ -113,10 +113,10 @@ void zfStaStoreAsocRspIe(zdev_t* dev, zbuf_t* buf)
 
     asocBw40 = (u8_t)((wd->sta.ie.HtCap.HtCapInfo & HTCAP_SupChannelWidthSet) >> 1);
 
-    /* HT information */
+
     if ((offset = zfFindElement(dev, buf, ZM_WLAN_EID_EXTENDED_HT_CAPABILITY)) != 0xffff)
     {
-        /* atheros pre n */
+
         zm_debug_msg0("atheros pre n HTINFO");
         length = 22;
         htcap = (u8_t *)&wd->sta.ie.HtInfo;
@@ -130,7 +130,7 @@ void zfStaStoreAsocRspIe(zdev_t* dev, zbuf_t* buf)
     }
     else if ((offset = zfFindElement(dev, buf, ZM_WLAN_PREN2_EID_HTINFORMATION)) != 0xffff)
     {
-        /* pre n 2.0 standard */
+
         zm_debug_msg0("pre n 2.0 standard HTINFO");
         length = zmw_rx_buf_readb(dev, buf, offset + 1);
         htcap = (u8_t *)&wd->sta.ie.HtInfo;

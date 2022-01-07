@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {char* name; int constraint; } ;
 struct TYPE_6__ {TYPE_3__ output_section_statement; } ;
 struct TYPE_5__ {unsigned long hash; struct TYPE_5__* next; } ;
 struct out_section_hash_entry {TYPE_2__ s; TYPE_1__ root; } ;
-typedef  TYPE_3__ lang_output_section_statement_type ;
+typedef TYPE_3__ lang_output_section_statement_type ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int SPECIAL ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- scalar_t__ bfd_hash_lookup (int /*<<< orphan*/ *,char const* const,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  einfo (int /*<<< orphan*/ ,char const* const) ; 
- scalar_t__ output_section_statement_newfunc (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const* const) ; 
- int /*<<< orphan*/  output_section_statement_table ; 
- scalar_t__ strcmp (char const* const,char*) ; 
+
+ int FALSE ;
+ int SPECIAL ;
+ int TRUE ;
+ int _ (char*) ;
+ scalar_t__ bfd_hash_lookup (int *,char const* const,int ,int ) ;
+ int einfo (int ,char const* const) ;
+ scalar_t__ output_section_statement_newfunc (int *,int *,char const* const) ;
+ int output_section_statement_table ;
+ scalar_t__ strcmp (char const* const,char*) ;
 
 __attribute__((used)) static lang_output_section_statement_type *
 lang_output_section_statement_lookup_1 (const char *const name, int constraint)
@@ -38,43 +38,43 @@ lang_output_section_statement_lookup_1 (const char *const name, int constraint)
   unsigned long hash;
 
   entry = ((struct out_section_hash_entry *)
-	   bfd_hash_lookup (&output_section_statement_table, name,
-			    TRUE, FALSE));
-  if (entry == NULL)
+    bfd_hash_lookup (&output_section_statement_table, name,
+       TRUE, FALSE));
+  if (entry == ((void*)0))
     {
       einfo (_("%P%F: failed creating section `%s': %E\n"), name);
-      return NULL;
+      return ((void*)0);
     }
 
-  if (entry->s.output_section_statement.name != NULL)
+  if (entry->s.output_section_statement.name != ((void*)0))
     {
-      /* We have a section of this name, but it might not have the correct
-	 constraint.  */
+
+
       hash = entry->root.hash;
       do
-	{
-	  if (entry->s.output_section_statement.constraint != -1
-	      && (constraint == 0
-		  || (constraint == entry->s.output_section_statement.constraint
-		      && constraint != SPECIAL)))
-	    return &entry->s.output_section_statement;
-	  last_ent = entry;
-	  entry = (struct out_section_hash_entry *) entry->root.next;
-	}
-      while (entry != NULL
-	     && entry->root.hash == hash
-	     && strcmp (name, entry->s.output_section_statement.name) == 0);
+ {
+   if (entry->s.output_section_statement.constraint != -1
+       && (constraint == 0
+    || (constraint == entry->s.output_section_statement.constraint
+        && constraint != SPECIAL)))
+     return &entry->s.output_section_statement;
+   last_ent = entry;
+   entry = (struct out_section_hash_entry *) entry->root.next;
+ }
+      while (entry != ((void*)0)
+      && entry->root.hash == hash
+      && strcmp (name, entry->s.output_section_statement.name) == 0);
 
       entry
-	= ((struct out_section_hash_entry *)
-	   output_section_statement_newfunc (NULL,
-					     &output_section_statement_table,
-					     name));
-      if (entry == NULL)
-	{
-	  einfo (_("%P%F: failed creating section `%s': %E\n"), name);
-	  return NULL;
-	}
+ = ((struct out_section_hash_entry *)
+    output_section_statement_newfunc (((void*)0),
+          &output_section_statement_table,
+          name));
+      if (entry == ((void*)0))
+ {
+   einfo (_("%P%F: failed creating section `%s': %E\n"), name);
+   return ((void*)0);
+ }
       entry->root = last_ent->root;
       last_ent->root.next = &entry->root;
     }

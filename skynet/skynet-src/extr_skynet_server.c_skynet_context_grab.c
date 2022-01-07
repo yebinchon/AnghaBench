@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct skynet_context {int /*<<< orphan*/  ref; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATOM_INC (int /*<<< orphan*/ *) ; 
 
-void 
+
+
+struct skynet_context {int ref; } ;
+
+
+ int ATOM_INC (int *) ;
+
+void
 skynet_context_grab(struct skynet_context *ctx) {
-	ATOM_INC(&ctx->ref);
+ ATOM_INC(&ctx->ref);
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct addrinfo {int /*<<< orphan*/  ai_addrlen; int /*<<< orphan*/  ai_addr; int /*<<< orphan*/  ai_protocol; int /*<<< orphan*/  ai_socktype; int /*<<< orphan*/  ai_family; } ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- struct addrinfo* checkaddr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ connect (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushboolean (int /*<<< orphan*/ *,int) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct addrinfo {int ai_addrlen; int ai_addr; int ai_protocol; int ai_socktype; int ai_family; } ;
+typedef int lua_State ;
+
+
+ struct addrinfo* checkaddr (int *) ;
+ int close (int) ;
+ scalar_t__ connect (int,int ,int ) ;
+ int lua_pushboolean (int *,int) ;
+ int socket (int ,int ,int ) ;
 
 __attribute__((used)) static int script_wrk_connect(lua_State *L) {
     struct addrinfo *addr = checkaddr(L);

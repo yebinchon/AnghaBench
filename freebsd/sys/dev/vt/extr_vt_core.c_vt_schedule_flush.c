@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vt_device {int /*<<< orphan*/  vd_timer; } ;
 
-/* Variables and functions */
- int VT_TIMERFREQ ; 
- int /*<<< orphan*/  callout_schedule (int /*<<< orphan*/ *,int) ; 
- int hz ; 
+
+
+
+struct vt_device {int vd_timer; } ;
+
+
+ int VT_TIMERFREQ ;
+ int callout_schedule (int *,int) ;
+ int hz ;
 
 __attribute__((used)) static void
 vt_schedule_flush(struct vt_device *vd, int ms)
 {
 
-	if (ms <= 0)
-		/* Default to initial value. */
-		ms = 1000 / VT_TIMERFREQ;
+ if (ms <= 0)
 
-	callout_schedule(&vd->vd_timer, hz / (1000 / ms));
+  ms = 1000 / VT_TIMERFREQ;
+
+ callout_schedule(&vd->vd_timer, hz / (1000 / ms));
 }

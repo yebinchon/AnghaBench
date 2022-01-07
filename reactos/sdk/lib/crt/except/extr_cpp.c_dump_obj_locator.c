@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {TYPE_5__* type_hierarchy; int /*<<< orphan*/  type_descriptor; int /*<<< orphan*/  flags; int /*<<< orphan*/  base_class_offset; int /*<<< orphan*/  signature; } ;
-typedef  TYPE_4__ rtti_object_locator ;
-struct TYPE_11__ {int array_len; TYPE_2__* base_classes; int /*<<< orphan*/  attributes; int /*<<< orphan*/  signature; } ;
-typedef  TYPE_5__ rtti_object_hierarchy ;
-struct TYPE_7__ {int /*<<< orphan*/  vbase_offset; int /*<<< orphan*/  vbase_descr; int /*<<< orphan*/  this_offset; } ;
-struct TYPE_9__ {int /*<<< orphan*/  type_descriptor; int /*<<< orphan*/  attributes; TYPE_1__ offsets; int /*<<< orphan*/  num_base_classes; } ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_10__ {TYPE_5__* type_hierarchy; int type_descriptor; int flags; int base_class_offset; int signature; } ;
+typedef TYPE_4__ rtti_object_locator ;
+struct TYPE_11__ {int array_len; TYPE_2__* base_classes; int attributes; int signature; } ;
+typedef TYPE_5__ rtti_object_hierarchy ;
+struct TYPE_7__ {int vbase_offset; int vbase_descr; int this_offset; } ;
+struct TYPE_9__ {int type_descriptor; int attributes; TYPE_1__ offsets; int num_base_classes; } ;
 struct TYPE_8__ {TYPE_3__** bases; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  dbgstr_type_info (int /*<<< orphan*/ ) ; 
+
+ int TRACE (char*,...) ;
+ int dbgstr_type_info (int ) ;
 
 __attribute__((used)) static void dump_obj_locator( const rtti_object_locator *ptr )
 {

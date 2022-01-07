@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- char* CfgReadNextLine (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Format (char*,int,char*,char*) ; 
- int /*<<< orphan*/  Free (char*) ; 
- int /*<<< orphan*/  FreeBuf (int /*<<< orphan*/ *) ; 
- int IsEmptyStr (char*) ; 
- int MAX_SIZE ; 
- int /*<<< orphan*/ * ReadDump (char*) ; 
- scalar_t__ StartWith (char*,char*) ; 
- int /*<<< orphan*/  StrCpy (char*,int,char*) ; 
- int /*<<< orphan*/  Trim (char*) ; 
+
+
+
+typedef int tmp ;
+typedef int UINT ;
+typedef int BUF ;
+
+
+ char* CfgReadNextLine (int *) ;
+ int Format (char*,int,char*,char*) ;
+ int Free (char*) ;
+ int FreeBuf (int *) ;
+ int IsEmptyStr (char*) ;
+ int MAX_SIZE ;
+ int * ReadDump (char*) ;
+ scalar_t__ StartWith (char*,char*) ;
+ int StrCpy (char*,int,char*) ;
+ int Trim (char*) ;
 
 bool EthGetInterfaceDescriptionUnix(char *name, char *str, UINT size)
 {
-	char tmp[MAX_SIZE];
-	bool ret = false;
-	BUF *b;
-	// Validate arguments
-	if (name == NULL || str == NULL)
-	{
-		return false;
-	}
+ char tmp[MAX_SIZE];
+ bool ret = 0;
+ BUF *b;
 
-	StrCpy(str, size, name);
+ if (name == ((void*)0) || str == ((void*)0))
+ {
+  return 0;
+ }
 
-	Format(tmp, sizeof(tmp), "/etc/sysconfig/networking/devices/ifcfg-%s", name);
+ StrCpy(str, size, name);
 
-	b = ReadDump(tmp);
-	if (b != NULL)
-	{
-		char *line = CfgReadNextLine(b);
+ Format(tmp, sizeof(tmp), "/etc/sysconfig/networking/devices/ifcfg-%s", name);
 
-		if (IsEmptyStr(line) == false)
-		{
-			if (StartWith(line, "#"))
-			{
-				char tmp[MAX_SIZE];
+ b = ReadDump(tmp);
+ if (b != ((void*)0))
+ {
+  char *line = CfgReadNextLine(b);
 
-				StrCpy(tmp, sizeof(tmp), line + 1);
+  if (IsEmptyStr(line) == 0)
+  {
+   if (StartWith(line, "#"))
+   {
+    char tmp[MAX_SIZE];
 
-				Trim(tmp);
-				tmp[60] = 0;
+    StrCpy(tmp, sizeof(tmp), line + 1);
 
-				StrCpy(str, size, tmp);
+    Trim(tmp);
+    tmp[60] = 0;
 
-				ret = true;
-			}
-		}
+    StrCpy(str, size, tmp);
 
-		Free(line);
+    ret = 1;
+   }
+  }
 
-		FreeBuf(b);
-	}
+  Free(line);
 
-	return ret;
+  FreeBuf(b);
+ }
+
+ return ret;
 }

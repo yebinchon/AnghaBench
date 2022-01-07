@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_string_t ;
-struct TYPE_5__ {int /*<<< orphan*/  warning_str; int /*<<< orphan*/  warning; } ;
-typedef  TYPE_1__ svn_repos_notify_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct revision_baton {int /*<<< orphan*/  txn_root; int /*<<< orphan*/  rev_offset; scalar_t__ skipped; struct parse_baton* pb; } ;
-struct parse_baton {scalar_t__ validate_props; int /*<<< orphan*/  notify_pool; int /*<<< orphan*/  notify_baton; int /*<<< orphan*/  (* notify_func ) (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  oldest_dumpstream_rev; int /*<<< orphan*/  rev_map; int /*<<< orphan*/  parent_dir; } ;
-struct node_baton {int /*<<< orphan*/  pool; int /*<<< orphan*/  path; struct revision_baton* rb; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_PROP_MERGEINFO ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/ * change_node_prop (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/  const*,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_error_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_quick_wrap (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_repos__adjust_mergeinfo_property (int /*<<< orphan*/ **,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  (*) (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ),int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* svn_repos_notify_create (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_repos_notify_warning ; 
- int /*<<< orphan*/  svn_repos_notify_warning_invalid_mergeinfo ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int svn_string_t ;
+struct TYPE_5__ {int warning_str; int warning; } ;
+typedef TYPE_1__ svn_repos_notify_t ;
+typedef int svn_error_t ;
+struct revision_baton {int txn_root; int rev_offset; scalar_t__ skipped; struct parse_baton* pb; } ;
+struct parse_baton {scalar_t__ validate_props; int notify_pool; int notify_baton; int (* notify_func ) (int ,TYPE_1__*,int ) ;int oldest_dumpstream_rev; int rev_map; int parent_dir; } ;
+struct node_baton {int pool; int path; struct revision_baton* rb; } ;
+
+
+ int * SVN_NO_ERROR ;
+ int SVN_PROP_MERGEINFO ;
+ int _ (char*) ;
+ int * change_node_prop (int ,int ,char const*,int const*,scalar_t__,int ) ;
+ scalar_t__ strcmp (char const*,int ) ;
+ int stub1 (int ,TYPE_1__*,int ) ;
+ int svn_error_clear (int *) ;
+ int * svn_error_quick_wrap (int *,int ) ;
+ int svn_pool_clear (int ) ;
+ int * svn_repos__adjust_mergeinfo_property (int **,int const*,int ,int ,int ,int ,int (*) (int ,TYPE_1__*,int ),int ,int ,int ) ;
+ TYPE_1__* svn_repos_notify_create (int ,int ) ;
+ int svn_repos_notify_warning ;
+ int svn_repos_notify_warning_invalid_mergeinfo ;
 
 __attribute__((used)) static svn_error_t *
 set_node_property(void *baton,
@@ -43,15 +43,15 @@ set_node_property(void *baton,
   struct revision_baton *rb = nb->rb;
   struct parse_baton *pb = rb->pb;
 
-  /* If we're skipping this revision, we're done here. */
+
   if (rb->skipped)
     return SVN_NO_ERROR;
 
-  /* Adjust mergeinfo. If this fails, presumably because the mergeinfo
-     property has an ill-formed value, then we must not fail to load
-     the repository (at least if it's a simple load with no revision
-     offset adjustments, path changes, etc.) so just warn and leave it
-     as it is. */
+
+
+
+
+
   if (strcmp(name, SVN_PROP_MERGEINFO) == 0)
     {
       svn_string_t *new_value;

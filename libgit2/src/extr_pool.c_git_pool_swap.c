@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  temp ;
-typedef  int /*<<< orphan*/  git_pool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int temp ;
+typedef int git_pool ;
+
+
+ int memcpy (int *,int *,int) ;
 
 void git_pool_swap(git_pool *a, git_pool *b)
 {
-	git_pool temp;
+ git_pool temp;
 
-	if (a == b)
-		return;
+ if (a == b)
+  return;
 
-	memcpy(&temp, a, sizeof(temp));
-	memcpy(a, b, sizeof(temp));
-	memcpy(b, &temp, sizeof(temp));
+ memcpy(&temp, a, sizeof(temp));
+ memcpy(a, b, sizeof(temp));
+ memcpy(b, &temp, sizeof(temp));
 }

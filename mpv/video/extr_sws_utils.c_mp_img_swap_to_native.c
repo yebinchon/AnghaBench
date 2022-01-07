@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
 struct TYPE_2__ {int avformat; int* bytes; } ;
 struct mp_image {int w; int h; int* stride; scalar_t__* planes; TYPE_1__ fmt; } ;
 
-/* Variables and functions */
- int AV_PIX_FMT_NONE ; 
- int /*<<< orphan*/  av_be2ne16 (int /*<<< orphan*/ ) ; 
- int** endian_swaps ; 
- int /*<<< orphan*/  mp_image_make_writeable (struct mp_image*) ; 
- int /*<<< orphan*/  mp_image_setfmt (struct mp_image*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pixfmt2imgfmt (int) ; 
+
+ int AV_PIX_FMT_NONE ;
+ int av_be2ne16 (int ) ;
+ int** endian_swaps ;
+ int mp_image_make_writeable (struct mp_image*) ;
+ int mp_image_setfmt (struct mp_image*,int ) ;
+ int pixfmt2imgfmt (int) ;
 
 struct mp_image *mp_img_swap_to_native(struct mp_image *img)
 {

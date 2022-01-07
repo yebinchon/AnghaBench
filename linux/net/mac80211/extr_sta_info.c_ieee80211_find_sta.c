@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct ieee80211_sta {int dummy; } ;
-struct sta_info {struct ieee80211_sta sta; int /*<<< orphan*/  uploaded; } ;
+struct sta_info {struct ieee80211_sta sta; int uploaded; } ;
 struct ieee80211_vif {int dummy; } ;
 
-/* Variables and functions */
- struct sta_info* sta_info_get_bss (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  vif_to_sdata (struct ieee80211_vif*) ; 
+
+ struct sta_info* sta_info_get_bss (int ,int const*) ;
+ int vif_to_sdata (struct ieee80211_vif*) ;
 
 struct ieee80211_sta *ieee80211_find_sta(struct ieee80211_vif *vif,
-					 const u8 *addr)
+      const u8 *addr)
 {
-	struct sta_info *sta;
+ struct sta_info *sta;
 
-	if (!vif)
-		return NULL;
+ if (!vif)
+  return ((void*)0);
 
-	sta = sta_info_get_bss(vif_to_sdata(vif), addr);
-	if (!sta)
-		return NULL;
+ sta = sta_info_get_bss(vif_to_sdata(vif), addr);
+ if (!sta)
+  return ((void*)0);
 
-	if (!sta->uploaded)
-		return NULL;
+ if (!sta->uploaded)
+  return ((void*)0);
 
-	return &sta->sta;
+ return &sta->sta;
 }

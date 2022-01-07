@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ pAux; void (* xDelete ) (void*) ;void* pPtr; struct TYPE_4__* pNext; } ;
 struct TYPE_3__ {scalar_t__ pAux; TYPE_2__* pAuxdata; } ;
-typedef  TYPE_1__ Fts5Cursor ;
-typedef  int /*<<< orphan*/  Fts5Context ;
-typedef  TYPE_2__ Fts5Auxdata ;
+typedef TYPE_1__ Fts5Cursor ;
+typedef int Fts5Context ;
+typedef TYPE_2__ Fts5Auxdata ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- scalar_t__ sqlite3Fts5MallocZero (int*,int) ; 
- void stub1 (void*) ; 
+
+ int SQLITE_OK ;
+ scalar_t__ sqlite3Fts5MallocZero (int*,int) ;
+ void stub1 (void*) ;
 
 __attribute__((used)) static int fts5ApiSetAuxdata(
-  Fts5Context *pCtx,              /* Fts5 context */
-  void *pPtr,                     /* Pointer to save as auxdata */
-  void(*xDelete)(void*)           /* Destructor for pPtr (or NULL) */
+  Fts5Context *pCtx,
+  void *pPtr,
+  void(*xDelete)(void*)
 ){
   Fts5Cursor *pCsr = (Fts5Cursor*)pCtx;
   Fts5Auxdata *pData;
 
-  /* Search through the cursors list of Fts5Auxdata objects for one that
-  ** corresponds to the currently executing auxiliary function.  */
+
+
   for(pData=pCsr->pAuxdata; pData; pData=pData->pNext){
     if( pData->pAux==pCsr->pAux ) break;
   }

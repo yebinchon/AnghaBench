@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int brcmf_pcie_get_resource (void*) ; 
+ int brcmf_pcie_get_resource (void*) ;
 
 __attribute__((used)) static int brcmf_pcie_buscoreprep(void *ctx)
 {
-	return brcmf_pcie_get_resource(ctx);
+ return brcmf_pcie_get_resource(ctx);
 }

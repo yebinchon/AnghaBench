@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  gid_refs; } ;
-typedef  TYPE_1__ Manager ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  manager_serialize_uid_refs_internal (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int gid_refs; } ;
+typedef TYPE_1__ Manager ;
+typedef int FILE ;
+
+
+ int manager_serialize_uid_refs_internal (TYPE_1__*,int *,int *,char*) ;
 
 void manager_serialize_gid_refs(Manager *m, FILE *f) {
         manager_serialize_uid_refs_internal(m, f, &m->gid_refs, "destroy-ipc-gid");

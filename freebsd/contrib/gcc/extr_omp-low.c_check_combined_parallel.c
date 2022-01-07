@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * tree ;
+
+
+
+
+typedef int * tree ;
 struct walk_stmt_info {int* info; } ;
 
-/* Variables and functions */
-#define  OMP_FOR 129 
-#define  OMP_SECTIONS 128 
- int TREE_CODE (int /*<<< orphan*/ *) ; 
+
+
+
+ int TREE_CODE (int *) ;
 
 __attribute__((used)) static tree
 check_combined_parallel (tree *tp, int *walk_subtrees, void *data)
@@ -27,13 +27,13 @@ check_combined_parallel (tree *tp, int *walk_subtrees, void *data)
   *walk_subtrees = 0;
   switch (TREE_CODE (*tp))
     {
-    case OMP_FOR:
-    case OMP_SECTIONS:
+    case 129:
+    case 128:
       *info = *info == 0 ? 1 : -1;
       break;
     default:
       *info = -1;
       break;
     }
-  return NULL;
+  return ((void*)0);
 }

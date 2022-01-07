@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BIO_F_DOAPR_OUTCH ; 
- int /*<<< orphan*/  BIOerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t BUFFER_INC ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- size_t INT_MAX ; 
- char* OPENSSL_malloc (size_t) ; 
- char* OPENSSL_realloc (char*,size_t) ; 
- int /*<<< orphan*/  memcpy (char*,char*,size_t) ; 
- int /*<<< orphan*/  ossl_assert (int) ; 
+ int BIO_F_DOAPR_OUTCH ;
+ int BIOerr (int ,int ) ;
+ size_t BUFFER_INC ;
+ int ERR_R_MALLOC_FAILURE ;
+ size_t INT_MAX ;
+ char* OPENSSL_malloc (size_t) ;
+ char* OPENSSL_realloc (char*,size_t) ;
+ int memcpy (char*,char*,size_t) ;
+ int ossl_assert (int) ;
 
 __attribute__((used)) static int
 doapr_outch(char **sbuffer,
             char **buffer, size_t *currlen, size_t *maxlen, int c)
 {
-    /* If we haven't at least one buffer, someone has done a big booboo */
-    if (!ossl_assert(*sbuffer != NULL || buffer != NULL))
+
+    if (!ossl_assert(*sbuffer != ((void*)0) || buffer != ((void*)0)))
         return 0;
 
-    /* |currlen| must always be <= |*maxlen| */
+
     if (!ossl_assert(*currlen <= *maxlen))
         return 0;
 
@@ -39,21 +31,21 @@ doapr_outch(char **sbuffer,
             return 0;
 
         *maxlen += BUFFER_INC;
-        if (*buffer == NULL) {
-            if ((*buffer = OPENSSL_malloc(*maxlen)) == NULL) {
+        if (*buffer == ((void*)0)) {
+            if ((*buffer = OPENSSL_malloc(*maxlen)) == ((void*)0)) {
                 BIOerr(BIO_F_DOAPR_OUTCH, ERR_R_MALLOC_FAILURE);
                 return 0;
             }
             if (*currlen > 0) {
-                if (!ossl_assert(*sbuffer != NULL))
+                if (!ossl_assert(*sbuffer != ((void*)0)))
                     return 0;
                 memcpy(*buffer, *sbuffer, *currlen);
             }
-            *sbuffer = NULL;
+            *sbuffer = ((void*)0);
         } else {
             char *tmpbuf;
             tmpbuf = OPENSSL_realloc(*buffer, *maxlen);
-            if (tmpbuf == NULL)
+            if (tmpbuf == ((void*)0))
                 return 0;
             *buffer = tmpbuf;
         }

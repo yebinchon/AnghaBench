@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IHTMLTxtRange ;
-typedef  int /*<<< orphan*/  IHTMLElement ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  int /*<<< orphan*/  IHTMLBodyElement ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IHTMLBodyElement_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLBodyElement_createTextRange (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IHTMLElement_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IHTMLElement_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IHTMLBodyElement ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/ * doc_get_body (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
+
+
+
+typedef int IHTMLTxtRange ;
+typedef int IHTMLElement ;
+typedef int IHTMLDocument2 ;
+typedef int IHTMLBodyElement ;
+typedef scalar_t__ HRESULT ;
+
+
+ int IHTMLBodyElement_Release (int *) ;
+ scalar_t__ IHTMLBodyElement_createTextRange (int *,int **) ;
+ scalar_t__ IHTMLElement_QueryInterface (int *,int *,void**) ;
+ int IHTMLElement_Release (int *) ;
+ int IID_IHTMLBodyElement ;
+ scalar_t__ S_OK ;
+ int * doc_get_body (int *) ;
+ int ok (int,char*,scalar_t__) ;
 
 __attribute__((used)) static IHTMLTxtRange *test_create_body_range(IHTMLDocument2 *doc)
 {

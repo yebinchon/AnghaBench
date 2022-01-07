@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  result ;
 
-/* Variables and functions */
- unsigned char __raw_readb (char*) ; 
+
+
+
+typedef int result ;
+
+
+ unsigned char __raw_readb (char*) ;
 
 __attribute__((used)) static inline unsigned long dwarf_read_leb128(char *addr, int *ret)
 {
-	unsigned char byte;
-	int result, shift;
-	int num_bits;
-	int count;
+ unsigned char byte;
+ int result, shift;
+ int num_bits;
+ int count;
 
-	result = 0;
-	shift = 0;
-	count = 0;
+ result = 0;
+ shift = 0;
+ count = 0;
 
-	while (1) {
-		byte = __raw_readb(addr);
-		addr++;
-		result |= (byte & 0x7f) << shift;
-		shift += 7;
-		count++;
+ while (1) {
+  byte = __raw_readb(addr);
+  addr++;
+  result |= (byte & 0x7f) << shift;
+  shift += 7;
+  count++;
 
-		if (!(byte & 0x80))
-			break;
-	}
+  if (!(byte & 0x80))
+   break;
+ }
 
-	/* The number of bits in a signed integer. */
-	num_bits = 8 * sizeof(result);
 
-	if ((shift < num_bits) && (byte & 0x40))
-		result |= (-1 << shift);
+ num_bits = 8 * sizeof(result);
 
-	*ret = result;
+ if ((shift < num_bits) && (byte & 0x40))
+  result |= (-1 << shift);
 
-	return count;
+ *ret = result;
+
+ return count;
 }

@@ -1,108 +1,108 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  p_refcnt; } ;
-typedef  TYPE_1__ arc_prune_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT0 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  B_FALSE ; 
- int /*<<< orphan*/  B_TRUE ; 
- int /*<<< orphan*/  arc_adjust_lock ; 
- int /*<<< orphan*/  arc_adjust_waiters_cv ; 
- int /*<<< orphan*/  arc_adjust_zthr ; 
- int /*<<< orphan*/  arc_flush (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  arc_initialized ; 
- int /*<<< orphan*/ * arc_ksp ; 
- int /*<<< orphan*/  arc_loaned_bytes ; 
- int /*<<< orphan*/  arc_lowmem_fini () ; 
- int /*<<< orphan*/  arc_prune_list ; 
- int /*<<< orphan*/  arc_prune_mtx ; 
- int /*<<< orphan*/  arc_prune_taskq ; 
- int /*<<< orphan*/  arc_reap_zthr ; 
- int /*<<< orphan*/  arc_state_fini () ; 
- int /*<<< orphan*/  buf_fini () ; 
- int /*<<< orphan*/  cv_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kmem_free (TYPE_1__*,int) ; 
- int /*<<< orphan*/  kstat_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_destroy (int /*<<< orphan*/ *) ; 
- TYPE_1__* list_head (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_remove (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  mutex_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_enter (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_exit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  taskq_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  taskq_wait (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zfs_refcount_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zfs_refcount_remove (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zthr_cancel (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zthr_destroy (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int p_refcnt; } ;
+typedef TYPE_1__ arc_prune_t ;
+
+
+ int ASSERT0 (int ) ;
+ int B_FALSE ;
+ int B_TRUE ;
+ int arc_adjust_lock ;
+ int arc_adjust_waiters_cv ;
+ int arc_adjust_zthr ;
+ int arc_flush (int *,int ) ;
+ int arc_initialized ;
+ int * arc_ksp ;
+ int arc_loaned_bytes ;
+ int arc_lowmem_fini () ;
+ int arc_prune_list ;
+ int arc_prune_mtx ;
+ int arc_prune_taskq ;
+ int arc_reap_zthr ;
+ int arc_state_fini () ;
+ int buf_fini () ;
+ int cv_destroy (int *) ;
+ int kmem_free (TYPE_1__*,int) ;
+ int kstat_delete (int *) ;
+ int list_destroy (int *) ;
+ TYPE_1__* list_head (int *) ;
+ int list_remove (int *,TYPE_1__*) ;
+ int mutex_destroy (int *) ;
+ int mutex_enter (int *) ;
+ int mutex_exit (int *) ;
+ int taskq_destroy (int ) ;
+ int taskq_wait (int ) ;
+ int zfs_refcount_destroy (int *) ;
+ int zfs_refcount_remove (int *,int *) ;
+ int zthr_cancel (int ) ;
+ int zthr_destroy (int ) ;
 
 void
 arc_fini(void)
 {
-	arc_prune_t *p;
+ arc_prune_t *p;
 
-#ifdef _KERNEL
-	arc_lowmem_fini();
-#endif /* _KERNEL */
 
-	/* Use B_TRUE to ensure *all* buffers are evicted */
-	arc_flush(NULL, B_TRUE);
 
-	arc_initialized = B_FALSE;
 
-	if (arc_ksp != NULL) {
-		kstat_delete(arc_ksp);
-		arc_ksp = NULL;
-	}
 
-	taskq_wait(arc_prune_taskq);
-	taskq_destroy(arc_prune_taskq);
 
-	mutex_enter(&arc_prune_mtx);
-	while ((p = list_head(&arc_prune_list)) != NULL) {
-		list_remove(&arc_prune_list, p);
-		zfs_refcount_remove(&p->p_refcnt, &arc_prune_list);
-		zfs_refcount_destroy(&p->p_refcnt);
-		kmem_free(p, sizeof (*p));
-	}
-	mutex_exit(&arc_prune_mtx);
+ arc_flush(((void*)0), B_TRUE);
 
-	list_destroy(&arc_prune_list);
-	mutex_destroy(&arc_prune_mtx);
+ arc_initialized = B_FALSE;
 
-	(void) zthr_cancel(arc_adjust_zthr);
-	(void) zthr_cancel(arc_reap_zthr);
+ if (arc_ksp != ((void*)0)) {
+  kstat_delete(arc_ksp);
+  arc_ksp = ((void*)0);
+ }
 
-	mutex_destroy(&arc_adjust_lock);
-	cv_destroy(&arc_adjust_waiters_cv);
+ taskq_wait(arc_prune_taskq);
+ taskq_destroy(arc_prune_taskq);
 
-	/*
-	 * buf_fini() must proceed arc_state_fini() because buf_fin() may
-	 * trigger the release of kmem magazines, which can callback to
-	 * arc_space_return() which accesses aggsums freed in act_state_fini().
-	 */
-	buf_fini();
-	arc_state_fini();
+ mutex_enter(&arc_prune_mtx);
+ while ((p = list_head(&arc_prune_list)) != ((void*)0)) {
+  list_remove(&arc_prune_list, p);
+  zfs_refcount_remove(&p->p_refcnt, &arc_prune_list);
+  zfs_refcount_destroy(&p->p_refcnt);
+  kmem_free(p, sizeof (*p));
+ }
+ mutex_exit(&arc_prune_mtx);
 
-	/*
-	 * We destroy the zthrs after all the ARC state has been
-	 * torn down to avoid the case of them receiving any
-	 * wakeup() signals after they are destroyed.
-	 */
-	zthr_destroy(arc_adjust_zthr);
-	zthr_destroy(arc_reap_zthr);
+ list_destroy(&arc_prune_list);
+ mutex_destroy(&arc_prune_mtx);
 
-	ASSERT0(arc_loaned_bytes);
+ (void) zthr_cancel(arc_adjust_zthr);
+ (void) zthr_cancel(arc_reap_zthr);
+
+ mutex_destroy(&arc_adjust_lock);
+ cv_destroy(&arc_adjust_waiters_cv);
+
+
+
+
+
+
+ buf_fini();
+ arc_state_fini();
+
+
+
+
+
+
+ zthr_destroy(arc_adjust_zthr);
+ zthr_destroy(arc_reap_zthr);
+
+ ASSERT0(arc_loaned_bytes);
 }

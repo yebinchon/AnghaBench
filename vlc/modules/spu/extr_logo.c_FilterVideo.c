@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_33__   TYPE_8__ ;
-typedef  struct TYPE_32__   TYPE_7__ ;
-typedef  struct TYPE_31__   TYPE_6__ ;
-typedef  struct TYPE_30__   TYPE_5__ ;
-typedef  struct TYPE_29__   TYPE_4__ ;
-typedef  struct TYPE_28__   TYPE_3__ ;
-typedef  struct TYPE_27__   TYPE_2__ ;
-typedef  struct TYPE_26__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_33__ TYPE_8__ ;
+typedef struct TYPE_32__ TYPE_7__ ;
+typedef struct TYPE_31__ TYPE_6__ ;
+typedef struct TYPE_30__ TYPE_5__ ;
+typedef struct TYPE_29__ TYPE_4__ ;
+typedef struct TYPE_28__ TYPE_3__ ;
+typedef struct TYPE_27__ TYPE_2__ ;
+typedef struct TYPE_26__ TYPE_1__ ;
+
+
 struct TYPE_28__ {int const i_visible_height; int const i_visible_width; } ;
-typedef  TYPE_3__ video_format_t ;
+typedef TYPE_3__ video_format_t ;
 struct TYPE_29__ {scalar_t__ date; TYPE_3__ format; } ;
-typedef  TYPE_4__ picture_t ;
+typedef TYPE_4__ picture_t ;
 struct TYPE_30__ {int i_alpha; TYPE_4__* p_pic; } ;
-typedef  TYPE_5__ logo_t ;
+typedef TYPE_5__ logo_t ;
 struct TYPE_31__ {scalar_t__ i_next_pic; int i_alpha; } ;
-typedef  TYPE_6__ logo_list_t ;
+typedef TYPE_6__ logo_list_t ;
 struct TYPE_26__ {int i_visible_width; int i_visible_height; } ;
 struct TYPE_27__ {TYPE_1__ video; } ;
 struct TYPE_32__ {TYPE_2__ fmt_out; TYPE_8__* p_sys; } ;
-typedef  TYPE_7__ filter_t ;
-struct TYPE_33__ {int i_pos; int i_pos_y; int i_pos_x; int /*<<< orphan*/  lock; int /*<<< orphan*/  p_blend; TYPE_6__ list; } ;
-typedef  TYPE_8__ filter_sys_t ;
+typedef TYPE_7__ filter_t ;
+struct TYPE_33__ {int i_pos; int i_pos_y; int i_pos_x; int lock; int p_blend; TYPE_6__ list; } ;
+typedef TYPE_8__ filter_sys_t ;
 
-/* Variables and functions */
- TYPE_5__* LogoListCurrent (TYPE_6__*) ; 
- TYPE_5__* LogoListNext (TYPE_6__*,scalar_t__) ; 
- int SUBPICTURE_ALIGN_BOTTOM ; 
- int SUBPICTURE_ALIGN_LEFT ; 
- int SUBPICTURE_ALIGN_RIGHT ; 
- int SUBPICTURE_ALIGN_TOP ; 
- scalar_t__ filter_Blend (int /*<<< orphan*/ ,TYPE_4__*,int,int,TYPE_4__ const*,int const) ; 
- scalar_t__ filter_ConfigureBlend (int /*<<< orphan*/ ,int const,int const,TYPE_3__ const*) ; 
- TYPE_4__* filter_NewPicture (TYPE_7__*) ; 
- int /*<<< orphan*/  msg_Err (TYPE_7__*,char*) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_7__*,char*,int const,int const,int const,int const) ; 
- int /*<<< orphan*/  picture_Copy (TYPE_4__*,TYPE_4__*) ; 
- int /*<<< orphan*/  picture_Release (TYPE_4__*) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ TYPE_5__* LogoListCurrent (TYPE_6__*) ;
+ TYPE_5__* LogoListNext (TYPE_6__*,scalar_t__) ;
+ int SUBPICTURE_ALIGN_BOTTOM ;
+ int SUBPICTURE_ALIGN_LEFT ;
+ int SUBPICTURE_ALIGN_RIGHT ;
+ int SUBPICTURE_ALIGN_TOP ;
+ scalar_t__ filter_Blend (int ,TYPE_4__*,int,int,TYPE_4__ const*,int const) ;
+ scalar_t__ filter_ConfigureBlend (int ,int const,int const,TYPE_3__ const*) ;
+ TYPE_4__* filter_NewPicture (TYPE_7__*) ;
+ int msg_Err (TYPE_7__*,char*) ;
+ int msg_Warn (TYPE_7__*,char*,int const,int const,int const,int const) ;
+ int picture_Copy (TYPE_4__*,TYPE_4__*) ;
+ int picture_Release (TYPE_4__*) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 __attribute__((used)) static picture_t *FilterVideo( filter_t *p_filter, picture_t *p_src )
 {
@@ -61,7 +61,7 @@ __attribute__((used)) static picture_t *FilterVideo( filter_t *p_filter, picture
 
     picture_Copy( p_dst, p_src );
 
-    /* */
+
     vlc_mutex_lock( &p_sys->lock );
 
     logo_t *p_logo;
@@ -70,7 +70,7 @@ __attribute__((used)) static picture_t *FilterVideo( filter_t *p_filter, picture
     else
         p_logo = LogoListCurrent( p_list );
 
-    /* */
+
     const picture_t *p_pic = p_logo->p_pic;
     if( p_pic )
     {
@@ -117,7 +117,7 @@ __attribute__((used)) static picture_t *FilterVideo( filter_t *p_filter, picture
             p_sys->i_pos_y = (p_sys->i_pos_y > 0) ? p_sys->i_pos_y : 0;
         }
 
-        /* */
+
         const int i_alpha = p_logo->i_alpha != -1 ? p_logo->i_alpha : p_list->i_alpha;
         if( filter_ConfigureBlend( p_sys->p_blend, i_dst_w, i_dst_h, p_fmt ) ||
             filter_Blend( p_sys->p_blend, p_dst, p_sys->i_pos_x, p_sys->i_pos_y,

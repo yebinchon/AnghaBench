@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_9__ {TYPE_3__* pRun; } ;
 struct TYPE_6__ {scalar_t__ reobj; } ;
 struct TYPE_7__ {TYPE_1__ run; } ;
 struct TYPE_8__ {TYPE_2__ member; } ;
-typedef  int /*<<< orphan*/  ME_TextEditor ;
-typedef  TYPE_4__ ME_Cursor ;
-typedef  scalar_t__ LONG ;
+typedef int ME_TextEditor ;
+typedef TYPE_4__ ME_Cursor ;
+typedef scalar_t__ LONG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ME_CursorFromCharOfs (int /*<<< orphan*/ *,scalar_t__,TYPE_4__*) ; 
- int /*<<< orphan*/  ME_GetSelectionOfs (int /*<<< orphan*/ *,scalar_t__*,scalar_t__*) ; 
- scalar_t__ SEL_EMPTY ; 
- scalar_t__ SEL_MULTICHAR ; 
- scalar_t__ SEL_MULTIOBJECT ; 
- scalar_t__ SEL_OBJECT ; 
- scalar_t__ SEL_TEXT ; 
+
+ int ME_CursorFromCharOfs (int *,scalar_t__,TYPE_4__*) ;
+ int ME_GetSelectionOfs (int *,scalar_t__*,scalar_t__*) ;
+ scalar_t__ SEL_EMPTY ;
+ scalar_t__ SEL_MULTICHAR ;
+ scalar_t__ SEL_MULTIOBJECT ;
+ scalar_t__ SEL_OBJECT ;
+ scalar_t__ SEL_TEXT ;
 
 __attribute__((used)) static LONG ME_GetSelectionType(ME_TextEditor *editor)
 {

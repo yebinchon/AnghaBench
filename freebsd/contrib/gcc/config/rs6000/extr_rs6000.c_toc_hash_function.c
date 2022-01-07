@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct toc_hash_struct {int key_mode; int /*<<< orphan*/  key; } ;
 
-/* Variables and functions */
- int rs6000_hash_constant (int /*<<< orphan*/ ) ; 
+
+
+
+struct toc_hash_struct {int key_mode; int key; } ;
+
+
+ int rs6000_hash_constant (int ) ;
 
 __attribute__((used)) static unsigned
 toc_hash_function (const void *hash_entry)

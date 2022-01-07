@@ -1,0 +1,134 @@
+; ModuleID = '/home/carl/AnghaBench/linux/drivers/misc/sgi-gru/extr_grukservices.c_gru_create_message_queue.c'
+source_filename = "/home/carl/AnghaBench/linux/drivers/misc/sgi-gru/extr_grukservices.c_gru_create_message_queue.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.gru_message_queue_desc = type { i32, i32, i32, i32, i32, %struct.message_queue* }
+%struct.message_queue = type { i32, i32*, i32, i32, i32*, i32*, i32*, i32* }
+
+@GRU_CACHE_LINE_BYTES = common dso_local global i32 0, align 4
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local i32 @gru_create_message_queue(%struct.gru_message_queue_desc* %0, i8* %1, i32 %2, i32 %3, i32 %4, i32 %5) #0 {
+  %7 = alloca %struct.gru_message_queue_desc*, align 8
+  %8 = alloca i8*, align 8
+  %9 = alloca i32, align 4
+  %10 = alloca i32, align 4
+  %11 = alloca i32, align 4
+  %12 = alloca i32, align 4
+  %13 = alloca %struct.message_queue*, align 8
+  %14 = alloca i32, align 4
+  store %struct.gru_message_queue_desc* %0, %struct.gru_message_queue_desc** %7, align 8
+  store i8* %1, i8** %8, align 8
+  store i32 %2, i32* %9, align 4
+  store i32 %3, i32* %10, align 4
+  store i32 %4, i32* %11, align 4
+  store i32 %5, i32* %12, align 4
+  %15 = load i8*, i8** %8, align 8
+  %16 = bitcast i8* %15 to %struct.message_queue*
+  store %struct.message_queue* %16, %struct.message_queue** %13, align 8
+  %17 = load i32, i32* %9, align 4
+  %18 = load i32, i32* @GRU_CACHE_LINE_BYTES, align 4
+  %19 = udiv i32 %17, %18
+  %20 = sub i32 %19, 2
+  store i32 %20, i32* %14, align 4
+  %21 = load %struct.message_queue*, %struct.message_queue** %13, align 8
+  %22 = load i32, i32* %9, align 4
+  %23 = call i32 @memset(%struct.message_queue* %21, i32 0, i32 %22)
+  %24 = load %struct.message_queue*, %struct.message_queue** %13, align 8
+  %25 = getelementptr inbounds %struct.message_queue, %struct.message_queue* %24, i32 0, i32 3
+  %26 = load %struct.message_queue*, %struct.message_queue** %13, align 8
+  %27 = getelementptr inbounds %struct.message_queue, %struct.message_queue* %26, i32 0, i32 7
+  store i32* %25, i32** %27, align 8
+  %28 = load %struct.message_queue*, %struct.message_queue** %13, align 8
+  %29 = getelementptr inbounds %struct.message_queue, %struct.message_queue* %28, i32 0, i32 3
+  %30 = load i32, i32* %14, align 4
+  %31 = udiv i32 %30, 2
+  %32 = sub i32 %31, 1
+  %33 = load i32, i32* @GRU_CACHE_LINE_BYTES, align 4
+  %34 = mul i32 %32, %33
+  %35 = zext i32 %34 to i64
+  %36 = getelementptr inbounds i32, i32* %29, i64 %35
+  %37 = load %struct.message_queue*, %struct.message_queue** %13, align 8
+  %38 = getelementptr inbounds %struct.message_queue, %struct.message_queue* %37, i32 0, i32 6
+  store i32* %36, i32** %38, align 8
+  %39 = load %struct.message_queue*, %struct.message_queue** %13, align 8
+  %40 = getelementptr inbounds %struct.message_queue, %struct.message_queue* %39, i32 0, i32 3
+  %41 = load %struct.message_queue*, %struct.message_queue** %13, align 8
+  %42 = getelementptr inbounds %struct.message_queue, %struct.message_queue* %41, i32 0, i32 5
+  store i32* %40, i32** %42, align 8
+  %43 = load %struct.message_queue*, %struct.message_queue** %13, align 8
+  %44 = getelementptr inbounds %struct.message_queue, %struct.message_queue* %43, i32 0, i32 3
+  %45 = load i32, i32* %14, align 4
+  %46 = sub i32 %45, 2
+  %47 = load i32, i32* @GRU_CACHE_LINE_BYTES, align 4
+  %48 = mul i32 %46, %47
+  %49 = zext i32 %48 to i64
+  %50 = getelementptr inbounds i32, i32* %44, i64 %49
+  %51 = load %struct.message_queue*, %struct.message_queue** %13, align 8
+  %52 = getelementptr inbounds %struct.message_queue, %struct.message_queue* %51, i32 0, i32 4
+  store i32* %50, i32** %52, align 8
+  %53 = load i32, i32* %14, align 4
+  %54 = load %struct.message_queue*, %struct.message_queue** %13, align 8
+  %55 = getelementptr inbounds %struct.message_queue, %struct.message_queue* %54, i32 0, i32 0
+  store i32 %53, i32* %55, align 8
+  %56 = load %struct.message_queue*, %struct.message_queue** %13, align 8
+  %57 = getelementptr inbounds %struct.message_queue, %struct.message_queue* %56, i32 0, i32 1
+  %58 = load i32*, i32** %57, align 8
+  %59 = getelementptr inbounds i32, i32* %58, i64 0
+  store i32 0, i32* %59, align 4
+  %60 = load %struct.message_queue*, %struct.message_queue** %13, align 8
+  %61 = getelementptr inbounds %struct.message_queue, %struct.message_queue* %60, i32 0, i32 1
+  %62 = load i32*, i32** %61, align 8
+  %63 = getelementptr inbounds i32, i32* %62, i64 1
+  store i32 1, i32* %63, align 4
+  %64 = load i32, i32* %14, align 4
+  %65 = udiv i32 %64, 2
+  %66 = add i32 %65, 1
+  %67 = call i32 @gru_mesq_head(i32 2, i32 %66)
+  %68 = load %struct.message_queue*, %struct.message_queue** %13, align 8
+  %69 = getelementptr inbounds %struct.message_queue, %struct.message_queue* %68, i32 0, i32 2
+  store i32 %67, i32* %69, align 8
+  %70 = load %struct.message_queue*, %struct.message_queue** %13, align 8
+  %71 = load %struct.gru_message_queue_desc*, %struct.gru_message_queue_desc** %7, align 8
+  %72 = getelementptr inbounds %struct.gru_message_queue_desc, %struct.gru_message_queue_desc* %71, i32 0, i32 5
+  store %struct.message_queue* %70, %struct.message_queue** %72, align 8
+  %73 = load %struct.message_queue*, %struct.message_queue** %13, align 8
+  %74 = call i32 @uv_gpa(%struct.message_queue* %73)
+  %75 = load %struct.gru_message_queue_desc*, %struct.gru_message_queue_desc** %7, align 8
+  %76 = getelementptr inbounds %struct.gru_message_queue_desc, %struct.gru_message_queue_desc* %75, i32 0, i32 4
+  store i32 %74, i32* %76, align 8
+  %77 = load i32, i32* %14, align 4
+  %78 = load %struct.gru_message_queue_desc*, %struct.gru_message_queue_desc** %7, align 8
+  %79 = getelementptr inbounds %struct.gru_message_queue_desc, %struct.gru_message_queue_desc* %78, i32 0, i32 0
+  store i32 %77, i32* %79, align 8
+  %80 = load i32, i32* %10, align 4
+  %81 = ashr i32 %80, 1
+  %82 = load %struct.gru_message_queue_desc*, %struct.gru_message_queue_desc** %7, align 8
+  %83 = getelementptr inbounds %struct.gru_message_queue_desc, %struct.gru_message_queue_desc* %82, i32 0, i32 1
+  store i32 %81, i32* %83, align 4
+  %84 = load i32, i32* %11, align 4
+  %85 = load %struct.gru_message_queue_desc*, %struct.gru_message_queue_desc** %7, align 8
+  %86 = getelementptr inbounds %struct.gru_message_queue_desc, %struct.gru_message_queue_desc* %85, i32 0, i32 2
+  store i32 %84, i32* %86, align 8
+  %87 = load i32, i32* %12, align 4
+  %88 = load %struct.gru_message_queue_desc*, %struct.gru_message_queue_desc** %7, align 8
+  %89 = getelementptr inbounds %struct.gru_message_queue_desc, %struct.gru_message_queue_desc* %88, i32 0, i32 3
+  store i32 %87, i32* %89, align 4
+  ret i32 0
+}
+
+declare dso_local i32 @memset(%struct.message_queue*, i32, i32) #1
+
+declare dso_local i32 @gru_mesq_head(i32, i32) #1
+
+declare dso_local i32 @uv_gpa(%struct.message_queue*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

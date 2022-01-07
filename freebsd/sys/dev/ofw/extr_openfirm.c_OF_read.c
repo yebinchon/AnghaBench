@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  ihandle_t ;
 
-/* Variables and functions */
- int OFW_READ (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,size_t) ; 
- int /*<<< orphan*/ * ofw_def_impl ; 
- int /*<<< orphan*/  ofw_obj ; 
+
+
+
+typedef int ssize_t ;
+typedef int ihandle_t ;
+
+
+ int OFW_READ (int ,int ,void*,size_t) ;
+ int * ofw_def_impl ;
+ int ofw_obj ;
 
 ssize_t
 OF_read(ihandle_t instance, void *addr, size_t len)
 {
 
-	if (ofw_def_impl == NULL)
-		return (-1);
+ if (ofw_def_impl == ((void*)0))
+  return (-1);
 
-	return (OFW_READ(ofw_obj, instance, addr, len));
+ return (OFW_READ(ofw_obj, instance, addr, len));
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {size_t NumSettings; TYPE_2__* pSettings; } ;
 struct TYPE_5__ {size_t i; } ;
-struct TYPE_6__ {int Type; TYPE_1__ Value; int /*<<< orphan*/  Key; } ;
-typedef  TYPE_3__* PRDPSETTINGS ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  size_t INT ;
+struct TYPE_6__ {int Type; TYPE_1__ Value; int Key; } ;
+typedef TYPE_3__* PRDPSETTINGS ;
+typedef int LPWSTR ;
+typedef size_t INT ;
 
-/* Variables and functions */
- scalar_t__ wcscmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ wcscmp (int ,int ) ;
 
 INT
 GetIntegerFromSettings(PRDPSETTINGS pRdpSettings,

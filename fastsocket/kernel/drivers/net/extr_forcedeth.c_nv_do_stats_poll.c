@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {int dummy; } ;
-struct fe_priv {int /*<<< orphan*/  stats_poll; int /*<<< orphan*/  in_shutdown; } ;
+struct fe_priv {int stats_poll; int in_shutdown; } ;
 
-/* Variables and functions */
- scalar_t__ STATS_INTERVAL ; 
- scalar_t__ jiffies ; 
- int /*<<< orphan*/  mod_timer (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct fe_priv* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  nv_get_hw_stats (struct net_device*) ; 
- int /*<<< orphan*/  round_jiffies (scalar_t__) ; 
+
+ scalar_t__ STATS_INTERVAL ;
+ scalar_t__ jiffies ;
+ int mod_timer (int *,int ) ;
+ struct fe_priv* netdev_priv (struct net_device*) ;
+ int nv_get_hw_stats (struct net_device*) ;
+ int round_jiffies (scalar_t__) ;
 
 __attribute__((used)) static void nv_do_stats_poll(unsigned long data)
 {
-	struct net_device *dev = (struct net_device *) data;
-	struct fe_priv *np = netdev_priv(dev);
+ struct net_device *dev = (struct net_device *) data;
+ struct fe_priv *np = netdev_priv(dev);
 
-	nv_get_hw_stats(dev);
+ nv_get_hw_stats(dev);
 
-	if (!np->in_shutdown)
-		mod_timer(&np->stats_poll,
-			round_jiffies(jiffies + STATS_INTERVAL));
+ if (!np->in_shutdown)
+  mod_timer(&np->stats_poll,
+   round_jiffies(jiffies + STATS_INTERVAL));
 }

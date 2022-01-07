@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct inode {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  lock; } ;
+struct TYPE_2__ {int lock; } ;
 
-/* Variables and functions */
- TYPE_1__* OVL_I (struct inode*) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ TYPE_1__* OVL_I (struct inode*) ;
+ int mutex_unlock (int *) ;
 
 __attribute__((used)) static inline void ovl_inode_unlock(struct inode *inode)
 {
-	mutex_unlock(&OVL_I(inode)->lock);
+ mutex_unlock(&OVL_I(inode)->lock);
 }

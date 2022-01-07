@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  szHttp ;
-struct TYPE_9__ {int /*<<< orphan*/  port; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ server_t ;
-typedef  int /*<<< orphan*/  http_session_t ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int szHttp ;
+struct TYPE_9__ {int port; int name; } ;
+typedef TYPE_1__ server_t ;
+typedef int http_session_t ;
 struct TYPE_10__ {char* path; TYPE_1__* proxy; } ;
-typedef  TYPE_2__ http_request_t ;
-struct TYPE_11__ {int /*<<< orphan*/  proxy; } ;
-typedef  TYPE_3__ appinfo_t ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  UrlComponents ;
-struct TYPE_12__ {int member_0; int dwHostNameLength; scalar_t__ nScheme; int /*<<< orphan*/  nPort; int /*<<< orphan*/  lpszHostName; } ;
-typedef  TYPE_4__ URL_COMPONENTSW ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_2__ http_request_t ;
+struct TYPE_11__ {int proxy; } ;
+typedef TYPE_3__ appinfo_t ;
+typedef char WCHAR ;
+typedef int UrlComponents ;
+struct TYPE_12__ {int member_0; int dwHostNameLength; scalar_t__ nScheme; int nPort; int lpszHostName; } ;
+typedef TYPE_4__ URL_COMPONENTSW ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ CSTR_EQUAL ; 
- scalar_t__ CompareStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,char const*,int) ; 
- int /*<<< orphan*/  FALSE ; 
- char* INTERNET_FindProxyForProtocol (int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ INTERNET_SCHEME_HTTPS ; 
- scalar_t__ InternetCrackUrlW (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_4__*) ; 
- int /*<<< orphan*/  LOCALE_SYSTEM_DEFAULT ; 
- int /*<<< orphan*/  NORM_IGNORECASE ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- TYPE_1__* get_server (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- char* heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (char*) ; 
- int /*<<< orphan*/  strcatW (char*,char*) ; 
- int /*<<< orphan*/  strcpyW (char*,char const*) ; 
- int strlenW (char const*) ; 
- int /*<<< orphan*/  substr (int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ CSTR_EQUAL ;
+ scalar_t__ CompareStringW (int ,int ,char*,int,char const*,int) ;
+ int FALSE ;
+ char* INTERNET_FindProxyForProtocol (int ,char const*) ;
+ scalar_t__ INTERNET_SCHEME_HTTPS ;
+ scalar_t__ InternetCrackUrlW (char*,int ,int ,TYPE_4__*) ;
+ int LOCALE_SYSTEM_DEFAULT ;
+ int NORM_IGNORECASE ;
+ int TRACE (char*,int ,int ) ;
+ int TRUE ;
+ int debugstr_w (int ) ;
+ TYPE_1__* get_server (int ,int ,int,int ) ;
+ char* heap_alloc (int) ;
+ int heap_free (char*) ;
+ int strcatW (char*,char*) ;
+ int strcpyW (char*,char const*) ;
+ int strlenW (char const*) ;
+ int substr (int ,int) ;
 
 __attribute__((used)) static BOOL HTTP_DealWithProxy(appinfo_t *hIC, http_session_t *session, http_request_t *request)
 {
@@ -54,7 +54,7 @@ __attribute__((used)) static BOOL HTTP_DealWithProxy(appinfo_t *hIC, http_sessio
     static const WCHAR szHttp[] = { 'h','t','t','p',':','/','/',0 };
     static WCHAR szNul[] = { 0 };
     URL_COMPONENTSW UrlComponents = { sizeof(UrlComponents) };
-    server_t *new_server = NULL;
+    server_t *new_server = ((void*)0);
     WCHAR *proxy;
 
     proxy = INTERNET_FindProxyForProtocol(hIC->proxy, protoHttp);

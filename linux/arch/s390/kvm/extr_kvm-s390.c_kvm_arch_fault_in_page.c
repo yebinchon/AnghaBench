@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  gmap; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int gmap; } ;
 struct kvm_vcpu {TYPE_1__ arch; } ;
-typedef  int /*<<< orphan*/  gpa_t ;
+typedef int gpa_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FAULT_FLAG_WRITE ; 
- long gmap_fault (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int FAULT_FLAG_WRITE ;
+ long gmap_fault (int ,int ,int ) ;
 
 long kvm_arch_fault_in_page(struct kvm_vcpu *vcpu, gpa_t gpa, int writable)
 {
-	return gmap_fault(vcpu->arch.gmap, gpa,
-			  writable ? FAULT_FLAG_WRITE : 0);
+ return gmap_fault(vcpu->arch.gmap, gpa,
+     writable ? FAULT_FLAG_WRITE : 0);
 }

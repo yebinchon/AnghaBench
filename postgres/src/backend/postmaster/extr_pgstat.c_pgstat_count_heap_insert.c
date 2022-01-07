@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_1__* trans; } ;
 struct TYPE_7__ {TYPE_3__* pgstat_info; } ;
-struct TYPE_6__ {int nest_level; int /*<<< orphan*/  tuples_inserted; } ;
-typedef  TYPE_2__* Relation ;
-typedef  TYPE_3__ PgStat_TableStatus ;
-typedef  scalar_t__ PgStat_Counter ;
+struct TYPE_6__ {int nest_level; int tuples_inserted; } ;
+typedef TYPE_2__* Relation ;
+typedef TYPE_3__ PgStat_TableStatus ;
+typedef scalar_t__ PgStat_Counter ;
 
-/* Variables and functions */
- int GetCurrentTransactionNestLevel () ; 
- int /*<<< orphan*/  add_tabstat_xact_level (TYPE_3__*,int) ; 
+
+ int GetCurrentTransactionNestLevel () ;
+ int add_tabstat_xact_level (TYPE_3__*,int) ;
 
 void
 pgstat_count_heap_insert(Relation rel, PgStat_Counter n)
 {
-	PgStat_TableStatus *pgstat_info = rel->pgstat_info;
+ PgStat_TableStatus *pgstat_info = rel->pgstat_info;
 
-	if (pgstat_info != NULL)
-	{
-		/* We have to log the effect at the proper transactional level */
-		int			nest_level = GetCurrentTransactionNestLevel();
+ if (pgstat_info != ((void*)0))
+ {
 
-		if (pgstat_info->trans == NULL ||
-			pgstat_info->trans->nest_level != nest_level)
-			add_tabstat_xact_level(pgstat_info, nest_level);
+  int nest_level = GetCurrentTransactionNestLevel();
 
-		pgstat_info->trans->tuples_inserted += n;
-	}
+  if (pgstat_info->trans == ((void*)0) ||
+   pgstat_info->trans->nest_level != nest_level)
+   add_tabstat_xact_level(pgstat_info, nest_level);
+
+  pgstat_info->trans->tuples_inserted += n;
+ }
 }

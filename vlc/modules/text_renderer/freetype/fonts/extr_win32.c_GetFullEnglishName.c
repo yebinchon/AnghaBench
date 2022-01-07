@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ wchar_t ;
-typedef  int uint32_t ;
-typedef  scalar_t__ WCHAR ;
-struct TYPE_3__ {int /*<<< orphan*/  elfLogFont; } ;
-typedef  int /*<<< orphan*/ * HFONT ;
-typedef  int /*<<< orphan*/ * HDC ;
-typedef  int FT_UInt ;
-typedef  int /*<<< orphan*/  FT_Byte ;
-typedef  TYPE_1__ ENUMLOGFONTEX ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CreateCompatibleDC (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CreateFontIndirect (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteDC (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ *) ; 
- int GetFontData (int /*<<< orphan*/ *,int const,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- scalar_t__ GetSfntNameString (int /*<<< orphan*/ *,int,int,int,int,int,int /*<<< orphan*/ **,int*) ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ U16_AT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * malloc (int) ; 
- int ntoh32 (int) ; 
- scalar_t__* vlc_alloc (int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ wchar_t ;
+typedef int uint32_t ;
+typedef scalar_t__ WCHAR ;
+struct TYPE_3__ {int elfLogFont; } ;
+typedef int * HFONT ;
+typedef int * HDC ;
+typedef int FT_UInt ;
+typedef int FT_Byte ;
+typedef TYPE_1__ ENUMLOGFONTEX ;
+
+
+ int * CreateCompatibleDC (int *) ;
+ int * CreateFontIndirect (int *) ;
+ int DeleteDC (int *) ;
+ int DeleteObject (int *) ;
+ int GetFontData (int *,int const,int ,int *,int) ;
+ scalar_t__ GetSfntNameString (int *,int,int,int,int,int,int **,int*) ;
+ int SelectObject (int *,int *) ;
+ scalar_t__ U16_AT (int *) ;
+ int free (int *) ;
+ int * malloc (int) ;
+ int ntoh32 (int) ;
+ scalar_t__* vlc_alloc (int,int) ;
 
 __attribute__((used)) static WCHAR *GetFullEnglishName( const ENUMLOGFONTEX *lpelfe )
 {
 
-    HFONT    hFont      = NULL;
-    HDC      hDc        = NULL;
-    FT_Byte *p_table    = NULL;
-    WCHAR   *psz_result = NULL;
+    HFONT hFont = ((void*)0);
+    HDC hDc = ((void*)0);
+    FT_Byte *p_table = ((void*)0);
+    WCHAR *psz_result = ((void*)0);
 
     hFont = CreateFontIndirect( &lpelfe->elfLogFont );
 
     if( !hFont )
-        return NULL;
+        return ((void*)0);
 
-    hDc = CreateCompatibleDC( NULL );
+    hDc = CreateCompatibleDC( ((void*)0) );
 
     if( !hDc )
     {
         DeleteObject( hFont );
-        return NULL;
+        return ((void*)0);
     }
 
     HFONT hOriginalFont = ( HFONT ) SelectObject( hDc, hFont );
@@ -76,10 +76,10 @@ __attribute__((used)) static WCHAR *GetFullEnglishName( const ENUMLOGFONTEX *lpe
     if( GetFontData( hDc, i_name_tag, 0, p_table, i_size ) <= 0 )
         goto done;
 
-    FT_Byte *p_name = NULL;
-    FT_UInt  i_name_length = 0;
+    FT_Byte *p_name = ((void*)0);
+    FT_UInt i_name_length = 0;
 
-    /* FIXME: Try other combinations of platform/encoding/language IDs if necessary */
+
     if( GetSfntNameString( p_table, i_size, 3, 1, 4, 0x409, &p_name, &i_name_length) )
         goto done;
 

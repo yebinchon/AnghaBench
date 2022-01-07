@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct device {int /*<<< orphan*/  parent; int /*<<< orphan*/  class; int /*<<< orphan*/ * type; } ;
-struct hci_dev {int /*<<< orphan*/  name; int /*<<< orphan*/  parent; int /*<<< orphan*/  type; struct device dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT_DBG (char*,struct hci_dev*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bt_class ; 
- int /*<<< orphan*/  bt_host ; 
- int /*<<< orphan*/  dev_set_drvdata (struct device*,struct hci_dev*) ; 
- int /*<<< orphan*/  dev_set_name (struct device*,char*,int /*<<< orphan*/ ) ; 
- int device_register (struct device*) ; 
+
+
+
+struct device {int parent; int class; int * type; } ;
+struct hci_dev {int name; int parent; int type; struct device dev; } ;
+
+
+ int BT_DBG (char*,struct hci_dev*,int ,int ) ;
+ int bt_class ;
+ int bt_host ;
+ int dev_set_drvdata (struct device*,struct hci_dev*) ;
+ int dev_set_name (struct device*,char*,int ) ;
+ int device_register (struct device*) ;
 
 int hci_register_sysfs(struct hci_dev *hdev)
 {
-	struct device *dev = &hdev->dev;
-	int err;
+ struct device *dev = &hdev->dev;
+ int err;
 
-	BT_DBG("%p name %s type %d", hdev, hdev->name, hdev->type);
+ BT_DBG("%p name %s type %d", hdev, hdev->name, hdev->type);
 
-	dev->type = &bt_host;
-	dev->class = bt_class;
-	dev->parent = hdev->parent;
+ dev->type = &bt_host;
+ dev->class = bt_class;
+ dev->parent = hdev->parent;
 
-	dev_set_name(dev, "%s", hdev->name);
+ dev_set_name(dev, "%s", hdev->name);
 
-	dev_set_drvdata(dev, hdev);
+ dev_set_drvdata(dev, hdev);
 
-	err = device_register(dev);
-	if (err < 0)
-		return err;
+ err = device_register(dev);
+ if (err < 0)
+  return err;
 
-	return 0;
+ return 0;
 }

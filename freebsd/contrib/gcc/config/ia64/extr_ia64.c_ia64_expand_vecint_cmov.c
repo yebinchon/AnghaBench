@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ rtx ;
-typedef  enum rtx_code { ____Placeholder_rtx_code } rtx_code ;
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
 
-/* Variables and functions */
- scalar_t__ CONST0_RTX (int) ; 
- int GET_CODE (scalar_t__) ; 
- int GET_MODE (scalar_t__) ; 
- int /*<<< orphan*/  VOIDmode ; 
- int /*<<< orphan*/  emit_insn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_move_insn (scalar_t__,scalar_t__) ; 
- scalar_t__ gen_reg_rtx (int) ; 
- scalar_t__ gen_rtx_AND (int,scalar_t__,scalar_t__) ; 
- scalar_t__ gen_rtx_IOR (int,scalar_t__,scalar_t__) ; 
- scalar_t__ gen_rtx_NOT (int,scalar_t__) ; 
- int /*<<< orphan*/  gen_rtx_SET (int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- int ia64_expand_vecint_compare (int,int,scalar_t__,scalar_t__,scalar_t__) ; 
+
+
+
+typedef scalar_t__ rtx ;
+typedef enum rtx_code { ____Placeholder_rtx_code } rtx_code ;
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+
+
+ scalar_t__ CONST0_RTX (int) ;
+ int GET_CODE (scalar_t__) ;
+ int GET_MODE (scalar_t__) ;
+ int VOIDmode ;
+ int emit_insn (int ) ;
+ int emit_move_insn (scalar_t__,scalar_t__) ;
+ scalar_t__ gen_reg_rtx (int) ;
+ scalar_t__ gen_rtx_AND (int,scalar_t__,scalar_t__) ;
+ scalar_t__ gen_rtx_IOR (int,scalar_t__,scalar_t__) ;
+ scalar_t__ gen_rtx_NOT (int,scalar_t__) ;
+ int gen_rtx_SET (int ,scalar_t__,scalar_t__) ;
+ int ia64_expand_vecint_compare (int,int,scalar_t__,scalar_t__,scalar_t__) ;
 
 void
 ia64_expand_vecint_cmov (rtx operands[])
@@ -38,7 +38,7 @@ ia64_expand_vecint_cmov (rtx operands[])
 
   cmp = gen_reg_rtx (mode);
   negate = ia64_expand_vecint_compare (code, mode, cmp,
-				       operands[4], operands[5]);
+           operands[4], operands[5]);
 
   ot = operands[1+negate];
   of = operands[2-negate];
@@ -46,10 +46,10 @@ ia64_expand_vecint_cmov (rtx operands[])
   if (ot == CONST0_RTX (mode))
     {
       if (of == CONST0_RTX (mode))
-	{
-	  emit_move_insn (operands[0], ot);
-	  return;
-	}
+ {
+   emit_move_insn (operands[0], ot);
+   return;
+ }
 
       x = gen_rtx_NOT (mode, cmp);
       x = gen_rtx_AND (mode, x, of);

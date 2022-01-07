@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_GF2m_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_GF2m_arr2poly (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_GF2m_mod_mul (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_bntest_rand (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_new () ; 
- int NUM0 ; 
- scalar_t__ TEST_BN_eq_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- scalar_t__ TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ctx ; 
- int /*<<< orphan*/  p0 ; 
- int /*<<< orphan*/  p1 ; 
+
+
+
+typedef int BIGNUM ;
+
+
+ int BN_GF2m_add (int *,int *,int *) ;
+ int BN_GF2m_arr2poly (int ,int *) ;
+ int BN_GF2m_mod_mul (int *,int *,int *,int *,int ) ;
+ int BN_bntest_rand (int *,int,int ,int ) ;
+ int BN_free (int *) ;
+ int * BN_new () ;
+ int NUM0 ;
+ scalar_t__ TEST_BN_eq_zero (int *) ;
+ int TEST_ptr (int *) ;
+ scalar_t__ TEST_true (int ) ;
+ int ctx ;
+ int p0 ;
+ int p1 ;
 
 __attribute__((used)) static int test_gf2m_mul(void)
 {
-    BIGNUM *a, *b[2] = {NULL, NULL}, *c = NULL, *d = NULL;
-    BIGNUM *e = NULL, *f = NULL, *g = NULL, *h = NULL;
+    BIGNUM *a, *b[2] = {((void*)0), ((void*)0)}, *c = ((void*)0), *d = ((void*)0);
+    BIGNUM *e = ((void*)0), *f = ((void*)0), *g = ((void*)0), *h = ((void*)0);
     int i, j, st = 0;
 
     if (!TEST_ptr(a = BN_new())
@@ -60,7 +60,7 @@ __attribute__((used)) static int test_gf2m_mul(void)
                     && TEST_true(BN_GF2m_mod_mul(h, d, c, b[j], ctx))
                     && TEST_true(BN_GF2m_add(f, e, g))
                     && TEST_true(BN_GF2m_add(f, f, h))
-                    /* Test that (a+d)*c = a*c + d*c. */
+
                     && TEST_BN_eq_zero(f)))
                 goto err;
         }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char wchar_t ;
-typedef  char* HMODULE ;
-typedef  long DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- long ERROR_INVALID_PARAMETER ; 
- int /*<<< orphan*/  FreeLibrary (char*) ; 
- char* LoadLibraryA (char*) ; 
- char* LoadLibraryW (char*) ; 
- long ReportLastError () ; 
- int /*<<< orphan*/  dprintf (char*,...) ; 
- int mbstowcs (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+
+
+typedef char wchar_t ;
+typedef char* HMODULE ;
+typedef long DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ long ERROR_INVALID_PARAMETER ;
+ int FreeLibrary (char*) ;
+ char* LoadLibraryA (char*) ;
+ char* LoadLibraryW (char*) ;
+ long ReportLastError () ;
+ int dprintf (char*,...) ;
+ int mbstowcs (char*,char*,int ) ;
+ int strlen (char*) ;
 
 DWORD LoadLibraryList(char** libnames, int counter, BOOL bUseAnsi)
 {
@@ -45,7 +45,7 @@ DWORD LoadLibraryList(char** libnames, int counter, BOOL bUseAnsi)
             return ERROR_INVALID_PARAMETER;
         }
     }
-    if (hModule == NULL) {
+    if (hModule == ((void*)0)) {
         dprintf("\nERROR: failed to obtain handle to module %s - %x\n", *libnames, hModule);
         return ReportLastError();
     }

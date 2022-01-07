@@ -1,69 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct creq_func_event {int event; } ;
 struct bnxt_qplib_rcfw {int dummy; } ;
-
-/* Variables and functions */
-#define  CREQ_FUNC_EVENT_EVENT_CFCC_ERROR 140 
-#define  CREQ_FUNC_EVENT_EVENT_CFCM_ERROR 139 
-#define  CREQ_FUNC_EVENT_EVENT_CFCQ_ERROR 138 
-#define  CREQ_FUNC_EVENT_EVENT_CFCS_ERROR 137 
-#define  CREQ_FUNC_EVENT_EVENT_CQ_ERROR 136 
-#define  CREQ_FUNC_EVENT_EVENT_RESOURCE_EXHAUSTED 135 
-#define  CREQ_FUNC_EVENT_EVENT_RX_DATA_ERROR 134 
-#define  CREQ_FUNC_EVENT_EVENT_RX_WQE_ERROR 133 
-#define  CREQ_FUNC_EVENT_EVENT_TIM_ERROR 132 
-#define  CREQ_FUNC_EVENT_EVENT_TQM_ERROR 131 
-#define  CREQ_FUNC_EVENT_EVENT_TX_DATA_ERROR 130 
-#define  CREQ_FUNC_EVENT_EVENT_TX_WQE_ERROR 129 
-#define  CREQ_FUNC_EVENT_EVENT_VF_COMM_REQUEST 128 
- int EINVAL ; 
+ int EINVAL ;
 
 __attribute__((used)) static int bnxt_qplib_process_func_event(struct bnxt_qplib_rcfw *rcfw,
-					 struct creq_func_event *func_event)
+      struct creq_func_event *func_event)
 {
-	switch (func_event->event) {
-	case CREQ_FUNC_EVENT_EVENT_TX_WQE_ERROR:
-		break;
-	case CREQ_FUNC_EVENT_EVENT_TX_DATA_ERROR:
-		break;
-	case CREQ_FUNC_EVENT_EVENT_RX_WQE_ERROR:
-		break;
-	case CREQ_FUNC_EVENT_EVENT_RX_DATA_ERROR:
-		break;
-	case CREQ_FUNC_EVENT_EVENT_CQ_ERROR:
-		break;
-	case CREQ_FUNC_EVENT_EVENT_TQM_ERROR:
-		break;
-	case CREQ_FUNC_EVENT_EVENT_CFCQ_ERROR:
-		break;
-	case CREQ_FUNC_EVENT_EVENT_CFCS_ERROR:
-		/* SRQ ctx error, call srq_handler??
-		 * But there's no SRQ handle!
-		 */
-		break;
-	case CREQ_FUNC_EVENT_EVENT_CFCC_ERROR:
-		break;
-	case CREQ_FUNC_EVENT_EVENT_CFCM_ERROR:
-		break;
-	case CREQ_FUNC_EVENT_EVENT_TIM_ERROR:
-		break;
-	case CREQ_FUNC_EVENT_EVENT_VF_COMM_REQUEST:
-		break;
-	case CREQ_FUNC_EVENT_EVENT_RESOURCE_EXHAUSTED:
-		break;
-	default:
-		return -EINVAL;
-	}
-	return 0;
+ switch (func_event->event) {
+ case 129:
+  break;
+ case 130:
+  break;
+ case 133:
+  break;
+ case 134:
+  break;
+ case 136:
+  break;
+ case 131:
+  break;
+ case 138:
+  break;
+ case 137:
+
+
+
+  break;
+ case 140:
+  break;
+ case 139:
+  break;
+ case 132:
+  break;
+ case 128:
+  break;
+ case 135:
+  break;
+ default:
+  return -EINVAL;
+ }
+ return 0;
 }

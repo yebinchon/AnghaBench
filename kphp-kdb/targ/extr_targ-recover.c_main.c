@@ -1,56 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void* BACKLOG ; 
- scalar_t__ MAX_CONNECTIONS ; 
- int /*<<< orphan*/  assert (int) ; 
- void* atoi (void*) ; 
- void* backlog ; 
- int daemonize ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int getopt (int,char**,char*) ; 
- void* hostname ; 
- int /*<<< orphan*/  init_dyn_data () ; 
- void* logname ; 
- void* max_ad_id ; 
- scalar_t__ maxconn ; 
- int /*<<< orphan*/  nice (void*) ; 
- void* optarg ; 
- int optind ; 
- int /*<<< orphan*/  perror (char*) ; 
- void* port ; 
- char* progname ; 
- scalar_t__ raise_file_rlimit (scalar_t__) ; 
- int /*<<< orphan*/  srand48 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  start_server () ; 
- int /*<<< orphan*/  start_time ; 
- int /*<<< orphan*/  stderr ; 
- void* suffix ; 
- int test_mode ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usage () ; 
- void* username ; 
- int /*<<< orphan*/  verbosity ; 
+ void* BACKLOG ;
+ scalar_t__ MAX_CONNECTIONS ;
+ int assert (int) ;
+ void* atoi (void*) ;
+ void* backlog ;
+ int daemonize ;
+ int errno ;
+ int exit (int) ;
+ int fprintf (int ,char*,...) ;
+ int getopt (int,char**,char*) ;
+ void* hostname ;
+ int init_dyn_data () ;
+ void* logname ;
+ void* max_ad_id ;
+ scalar_t__ maxconn ;
+ int nice (void*) ;
+ void* optarg ;
+ int optind ;
+ int perror (char*) ;
+ void* port ;
+ char* progname ;
+ scalar_t__ raise_file_rlimit (scalar_t__) ;
+ int srand48 (int ) ;
+ int start_server () ;
+ int start_time ;
+ int stderr ;
+ void* suffix ;
+ int test_mode ;
+ int time (int ) ;
+ int usage () ;
+ void* username ;
+ int verbosity ;
 
 int main (int argc, char *argv[]) {
   int i;
 
   srand48 (time (0));
 
-  progname = argv[0];                            
+  progname = argv[0];
   while ((i = getopt (argc, argv, "a:b:c:l:m:n:p:t:u:Tdhv")) != -1) {
     switch (i) {
     case 'v':
@@ -68,7 +60,7 @@ int main (int argc, char *argv[]) {
     case 'c':
       maxconn = atoi(optarg);
       if (maxconn <= 0 || maxconn > MAX_CONNECTIONS) {
-	maxconn = MAX_CONNECTIONS;
+ maxconn = MAX_CONNECTIONS;
       }
       break;
     case 'n':

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int MAXPATHLEN ; 
- int O_CREAT ; 
- int O_RDWR ; 
- int /*<<< orphan*/  XLOG_ERROR ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ getpid () ; 
- int open (char*,int,int) ; 
- int /*<<< orphan*/  plog (int /*<<< orphan*/ ,char*,char*,...) ; 
- int strlen (char*) ; 
- scalar_t__ unlink (char*) ; 
- int write (int,char*,int) ; 
- int /*<<< orphan*/  xsnprintf (char*,int,char*,char*,long) ; 
+
+
+
+typedef int buf ;
+
+
+ int MAXPATHLEN ;
+ int O_CREAT ;
+ int O_RDWR ;
+ int XLOG_ERROR ;
+ int close (int) ;
+ scalar_t__ getpid () ;
+ int open (char*,int,int) ;
+ int plog (int ,char*,char*,...) ;
+ int strlen (char*) ;
+ scalar_t__ unlink (char*) ;
+ int write (int,char*,int) ;
+ int xsnprintf (char*,int,char*,char*,long) ;
 
 __attribute__((used)) static int
 hlfsd_diskspace(char *path)
@@ -41,7 +41,7 @@ hlfsd_diskspace(char *path)
   if (write(fd, buf, len) < len) {
     plog(XLOG_ERROR, "cannot write \"%s\" (%d bytes) to %s : %m", buf, len, buf);
     close(fd);
-    unlink(buf);		/* cleanup just in case */
+    unlink(buf);
     return -1;
   }
   if (unlink(buf) < 0) {

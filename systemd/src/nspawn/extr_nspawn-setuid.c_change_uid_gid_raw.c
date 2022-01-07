@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uid_t ;
-typedef  scalar_t__ gid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STDERR_FILENO ; 
- int /*<<< orphan*/  STDIN_FILENO ; 
- int /*<<< orphan*/  STDOUT_FILENO ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fchown (int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  gid_is_valid (scalar_t__) ; 
- int log_error_errno (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ setgroups (size_t,scalar_t__ const*) ; 
- scalar_t__ setresgid (scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ setresuid (scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  uid_is_valid (scalar_t__) ; 
+
+
+
+typedef scalar_t__ uid_t ;
+typedef scalar_t__ gid_t ;
+
+
+ int STDERR_FILENO ;
+ int STDIN_FILENO ;
+ int STDOUT_FILENO ;
+ int errno ;
+ int fchown (int ,scalar_t__,scalar_t__) ;
+ int gid_is_valid (scalar_t__) ;
+ int log_error_errno (int ,char*) ;
+ scalar_t__ setgroups (size_t,scalar_t__ const*) ;
+ scalar_t__ setresgid (scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ setresuid (scalar_t__,scalar_t__,scalar_t__) ;
+ int uid_is_valid (scalar_t__) ;
 
 int change_uid_gid_raw(
                 uid_t uid,

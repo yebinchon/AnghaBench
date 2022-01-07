@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__* LPDWORD ;
-typedef  char* LPCWSTR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  KEY_QUERY_VALUE ; 
- scalar_t__ REG_DWORD ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  wprintf (char*,char*,int /*<<< orphan*/ ,...) ; 
+
+
+
+typedef scalar_t__* LPDWORD ;
+typedef char* LPCWSTR ;
+typedef int LPBYTE ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+typedef int BOOL ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int GetLastError () ;
+ int KEY_QUERY_VALUE ;
+ scalar_t__ REG_DWORD ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegOpenKeyExW (int ,char*,int ,int ,int *) ;
+ scalar_t__ RegQueryValueExW (int ,char*,int *,scalar_t__*,int ,scalar_t__*) ;
+ int TRUE ;
+ int wprintf (char*,char*,int ,...) ;
 
 __attribute__((used)) static
 BOOL
@@ -36,7 +36,7 @@ RegGetDWORD(HKEY hKey, LPCWSTR lpSubKey, LPCWSTR lpValueName, LPDWORD lpData)
     DWORD dwBytes = sizeof(*lpData), dwType;
     BOOL bRet = TRUE;
 
-    /* If SubKey is specified open it */
+
     if (lpSubKey && RegOpenKeyExW(hKey,
                                  lpSubKey,
                                  0,
@@ -47,10 +47,10 @@ RegGetDWORD(HKEY hKey, LPCWSTR lpSubKey, LPCWSTR lpValueName, LPDWORD lpData)
         return FALSE;
     }
 
-    /* Query registry value and check its type */
+
     if (RegQueryValueExW(hKey,
                          lpValueName,
-                         NULL,
+                         ((void*)0),
                          &dwType,
                          (LPBYTE)lpData,
                          &dwBytes) != ERROR_SUCCESS || dwType != REG_DWORD)
@@ -60,7 +60,7 @@ RegGetDWORD(HKEY hKey, LPCWSTR lpSubKey, LPCWSTR lpValueName, LPDWORD lpData)
         bRet = FALSE;
     }
 
-    /* Close key if we opened it */
+
     if (lpSubKey)
         RegCloseKey(hKey);
 

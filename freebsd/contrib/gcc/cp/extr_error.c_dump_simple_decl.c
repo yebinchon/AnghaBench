@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_DECL_CONTEXT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DECL_INITIAL (int /*<<< orphan*/ ) ; 
- scalar_t__ DECL_NAME (int /*<<< orphan*/ ) ; 
- scalar_t__ TEMPLATE_PARM_INDEX ; 
- int TFF_DECL_SPECIFIERS ; 
- scalar_t__ TREE_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cxx_pp ; 
- int /*<<< orphan*/  dump_decl (scalar_t__,int) ; 
- int /*<<< orphan*/  dump_scope (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  dump_type_prefix (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  dump_type_suffix (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pp_identifier (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  pp_maybe_space (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+
+
+ int CP_DECL_CONTEXT (int ) ;
+ int DECL_INITIAL (int ) ;
+ scalar_t__ DECL_NAME (int ) ;
+ scalar_t__ TEMPLATE_PARM_INDEX ;
+ int TFF_DECL_SPECIFIERS ;
+ scalar_t__ TREE_CODE (int ) ;
+ int cxx_pp ;
+ int dump_decl (scalar_t__,int) ;
+ int dump_scope (int ,int) ;
+ int dump_type_prefix (int ,int) ;
+ int dump_type_suffix (int ,int) ;
+ int pp_identifier (int ,char*) ;
+ int pp_maybe_space (int ) ;
 
 __attribute__((used)) static void
 dump_simple_decl (tree t, tree type, int flags)

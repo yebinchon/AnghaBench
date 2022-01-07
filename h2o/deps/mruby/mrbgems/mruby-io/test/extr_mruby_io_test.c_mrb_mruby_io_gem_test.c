@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct RClass {int dummy; } ;
-typedef  int /*<<< orphan*/  mrb_state ;
+typedef int mrb_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MRB_ARGS_NONE () ; 
- int /*<<< orphan*/  MRB_ARGS_REQ (int) ; 
- int /*<<< orphan*/  mrb_define_class_method (int /*<<< orphan*/ *,struct RClass*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct RClass* mrb_define_module (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  mrb_io_test_file_cleanup ; 
- int /*<<< orphan*/  mrb_io_test_file_setup ; 
- int /*<<< orphan*/  mrb_io_test_io_cleanup ; 
- int /*<<< orphan*/  mrb_io_test_io_setup ; 
- int /*<<< orphan*/  mrb_io_test_mkdtemp ; 
- int /*<<< orphan*/  mrb_io_test_rmdir ; 
- int /*<<< orphan*/  mrb_io_win_p ; 
+
+ int MRB_ARGS_NONE () ;
+ int MRB_ARGS_REQ (int) ;
+ int mrb_define_class_method (int *,struct RClass*,char*,int ,int ) ;
+ struct RClass* mrb_define_module (int *,char*) ;
+ int mrb_io_test_file_cleanup ;
+ int mrb_io_test_file_setup ;
+ int mrb_io_test_io_cleanup ;
+ int mrb_io_test_io_setup ;
+ int mrb_io_test_mkdtemp ;
+ int mrb_io_test_rmdir ;
+ int mrb_io_win_p ;
 
 void
 mrb_mruby_io_gem_test(mrb_state* mrb)

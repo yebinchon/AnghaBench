@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ObjectAddress ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EnableDependencyCreation ; 
- int /*<<< orphan*/  IsObjectDistributed (int /*<<< orphan*/  const*) ; 
- scalar_t__ creating_extension ; 
+
+
+
+typedef int ObjectAddress ;
+
+
+ int EnableDependencyCreation ;
+ int IsObjectDistributed (int const*) ;
+ scalar_t__ creating_extension ;
 
 __attribute__((used)) static bool
 ShouldPropagateAlterFunction(const ObjectAddress *address)
 {
-	if (creating_extension)
-	{
-		/*
-		 * extensions should be created separately on the workers, functions cascading
-		 * from an extension should therefore not be propagated.
-		 */
-		return false;
-	}
+ if (creating_extension)
+ {
 
-	if (!EnableDependencyCreation)
-	{
-		/*
-		 * we are configured to disable object propagation, should not propagate anything
-		 */
-		return false;
-	}
 
-	if (!IsObjectDistributed(address))
-	{
-		/* do not propagate alter function for non-distributed functions */
-		return false;
-	}
 
-	return true;
+
+  return 0;
+ }
+
+ if (!EnableDependencyCreation)
+ {
+
+
+
+  return 0;
+ }
+
+ if (!IsObjectDistributed(address))
+ {
+
+  return 0;
+ }
+
+ return 1;
 }

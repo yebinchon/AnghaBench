@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  ZIP_PACKER ;
-typedef  int /*<<< orphan*/  FIFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FifoPtr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FifoSize (int /*<<< orphan*/ *) ; 
- int FileWriteAllW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ZipFinish (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int wchar_t ;
+typedef int ZIP_PACKER ;
+typedef int FIFO ;
+
+
+ int FifoPtr (int *) ;
+ int FifoSize (int *) ;
+ int FileWriteAllW (int *,int ,int ) ;
+ int * ZipFinish (int *) ;
 
 bool ZipWriteW(ZIP_PACKER *p, wchar_t *name)
 {
-	FIFO *f;
-	// Validate arguments
-	if (p == NULL || name == NULL)
-	{
-		return false;
-	}
+ FIFO *f;
 
-	f = ZipFinish(p);
-	if (f == NULL)
-	{
-		return false;
-	}
+ if (p == ((void*)0) || name == ((void*)0))
+ {
+  return 0;
+ }
 
-	return FileWriteAllW(name, FifoPtr(f), FifoSize(f));
+ f = ZipFinish(p);
+ if (f == ((void*)0))
+ {
+  return 0;
+ }
+
+ return FileWriteAllW(name, FifoPtr(f), FifoSize(f));
 }

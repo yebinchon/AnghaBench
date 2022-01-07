@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timeval {scalar_t__ tv_usec; scalar_t__ tv_sec; } ;
-typedef  int /*<<< orphan*/  fd_set ;
+typedef int fd_set ;
 
-/* Variables and functions */
- scalar_t__ FD_ISSET (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_SETSIZE ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fwd_sock ; 
- int select (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
+
+ scalar_t__ FD_ISSET (int ,int *) ;
+ int FD_SET (int ,int *) ;
+ int FD_SETSIZE ;
+ int FD_ZERO (int *) ;
+ int fwd_sock ;
+ int select (int ,int *,int *,int *,struct timeval*) ;
 
 __attribute__((used)) static int
 rpc_pending_now(void)
@@ -32,7 +32,7 @@ rpc_pending_now(void)
   FD_SET(fwd_sock, &readfds);
 
   tvv.tv_sec = tvv.tv_usec = 0;
-  nsel = select(FD_SETSIZE, &readfds, (fd_set *) NULL, (fd_set *) NULL, &tvv);
+  nsel = select(FD_SETSIZE, &readfds, (fd_set *) ((void*)0), (fd_set *) ((void*)0), &tvv);
   if (nsel < 1)
     return (0);
   if (FD_ISSET(fwd_sock, &readfds))

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SC_HANDLE ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseServiceHandle (int /*<<< orphan*/ ) ; 
- char* DRIVER_NAME ; 
- scalar_t__ ERROR_SERVICE_ALREADY_RUNNING ; 
- scalar_t__ FALSE ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  OpenSCManagerW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OpenServiceW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SC_MANAGER_ALL_ACCESS ; 
- int /*<<< orphan*/  SERVICE_ALL_ACCESS ; 
- scalar_t__ StartServiceW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  wprintf (char*,char*) ; 
+
+
+
+typedef int SC_HANDLE ;
+typedef int LPCWSTR ;
+typedef scalar_t__ BOOL ;
+
+
+ int CloseServiceHandle (int ) ;
+ char* DRIVER_NAME ;
+ scalar_t__ ERROR_SERVICE_ALREADY_RUNNING ;
+ scalar_t__ FALSE ;
+ scalar_t__ GetLastError () ;
+ int OpenSCManagerW (int *,int *,int ) ;
+ int OpenServiceW (int ,int ,int ) ;
+ int SC_MANAGER_ALL_ACCESS ;
+ int SERVICE_ALL_ACCESS ;
+ scalar_t__ StartServiceW (int ,int ,int *) ;
+ scalar_t__ TRUE ;
+ int wprintf (char*,char*) ;
 
 BOOL
 StartDriver(LPCWSTR lpDriverName)
@@ -35,8 +35,8 @@ StartDriver(LPCWSTR lpDriverName)
     SC_HANDLE hService;
     BOOL bRet;
 
-    hSCManager = OpenSCManagerW(NULL,
-                                NULL,
+    hSCManager = OpenSCManagerW(((void*)0),
+                                ((void*)0),
                                 SC_MANAGER_ALL_ACCESS);
     if (!hSCManager)
         return FALSE;
@@ -50,7 +50,7 @@ StartDriver(LPCWSTR lpDriverName)
         return FALSE;
     }
 
-    bRet = StartServiceW(hService, 0, NULL);
+    bRet = StartServiceW(hService, 0, ((void*)0));
     if (!bRet)
     {
         if (GetLastError() == ERROR_SERVICE_ALREADY_RUNNING)

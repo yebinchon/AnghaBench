@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,char const*,int /*<<< orphan*/ ,...) ; 
- int SSL_CB_ALERT ; 
- int SSL_CB_EXIT ; 
- int SSL_CB_LOOP ; 
- int SSL_CB_READ ; 
- int SSL_ST_ACCEPT ; 
- int SSL_ST_CONNECT ; 
- int SSL_ST_MASK ; 
- int /*<<< orphan*/  SSL_alert_desc_string_long (int) ; 
- int /*<<< orphan*/  SSL_alert_type_string_long (int) ; 
- int /*<<< orphan*/  SSL_state_string_long (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  bio_err ; 
+
+
+
+typedef int SSL ;
+
+
+ int BIO_printf (int ,char*,char const*,int ,...) ;
+ int SSL_CB_ALERT ;
+ int SSL_CB_EXIT ;
+ int SSL_CB_LOOP ;
+ int SSL_CB_READ ;
+ int SSL_ST_ACCEPT ;
+ int SSL_ST_CONNECT ;
+ int SSL_ST_MASK ;
+ int SSL_alert_desc_string_long (int) ;
+ int SSL_alert_type_string_long (int) ;
+ int SSL_state_string_long (int const*) ;
+ int bio_err ;
 
 void apps_ssl_info_callback(const SSL *s, int where, int ret)
 {

@@ -1,196 +1,169 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_4__ {int pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
-
-/* Variables and functions */
-#define  ABOVE 151 
-#define  BUG 150 
-#define  CLAP 149 
-#define  CONFUSED 148 
-#define  CRY 147 
-#define  ELIP 146 
-#define  FLIP 145 
-#define  FNGLEFT 144 
-#define  FNGRIGHT 143 
-#define  FROWN 142 
-#define  GRIN 141 
-#define  HEART 140 
-#define  JOY 139 
-#define  LLAP 138 
-#define  ROFL 137 
- int /*<<< orphan*/  SEND_STRING (char*) ; 
-#define  SHIT 136 
-#define  SHRUG 135 
-#define  SING 134 
-#define  THANKS 133 
-#define  THINK 132 
-#define  THMBDN 131 
-#define  THMBUP 130 
-#define  TOUNGE 129 
-#define  WINK 128 
-
+typedef TYPE_2__ keyrecord_t ;
+ int SEND_STRING (char*) ;
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case ABOVE:
+    case 151:
       if (record->event.pressed) {
         SEND_STRING("&above; ");
       }
-      return false;
+      return 0;
       break;
-    case BUG:
+    case 150:
       if (record->event.pressed) {
         SEND_STRING("&bug;");
       }
-      return false;
+      return 0;
       break;
-    case CONFUSED:
+    case 148:
       if (record->event.pressed) {
         SEND_STRING(":-\\");
       }
-      return false;
+      return 0;
       break;
-    case CRY:
+    case 147:
       if (record->event.pressed) {
         SEND_STRING(":'-( ");
       }
-      return false;
+      return 0;
       break;
-    case CLAP:
+    case 149:
       if (record->event.pressed) {
         SEND_STRING("&clap; ");
       }
-      return false;
+      return 0;
       break;
-    case ELIP:
+    case 146:
       if (record->event.pressed) {
         SEND_STRING("...");
       }
-      return false;
+      return 0;
       break;
-    case FLIP:
+    case 145:
       if (record->event.pressed) {
         SEND_STRING("&fliptable;");
       }
-      return false;
+      return 0;
       break;
-    case FNGLEFT:
+    case 144:
       if (record->event.pressed) {
         SEND_STRING("&fingerleft; ");
       }
-      return false;
+      return 0;
       break;
-    case FNGRIGHT:
+    case 143:
       if (record->event.pressed) {
         SEND_STRING("&fingerright; ");
       }
-      return false;
+      return 0;
       break;
-    case FROWN:
+    case 142:
       if (record->event.pressed) {
         SEND_STRING(":-( ");
       }
-      return false;
+      return 0;
       break;
-    case GRIN:
+    case 141:
       if (record->event.pressed) {
         SEND_STRING(":-D ");
       }
-      return false;
+      return 0;
       break;
-    case HEART:
+    case 140:
       if (record->event.pressed) {
         SEND_STRING("<3 ");
       }
-      return false;
+      return 0;
       break;
-    case JOY:
+    case 139:
       if (record->event.pressed) {
         SEND_STRING(":-) ");
       }
-      return false;
+      return 0;
       break;
-    case LLAP:
+    case 138:
       if (record->event.pressed) {
         SEND_STRING("&llap; ");
       }
-      return false;
+      return 0;
       break;
-    case ROFL:
+    case 137:
       if (record->event.pressed) {
         SEND_STRING("&rofl; ");
       }
-      return false;
+      return 0;
       break;
-    case SHIT:
+    case 136:
       if (record->event.pressed) {
         SEND_STRING("&shit; ");
       }
-      return false;
+      return 0;
       break;
-    case SING:
+    case 134:
       if (record->event.pressed) {
         SEND_STRING("_sing_");
       }
-      return false;
+      return 0;
       break;
-    case SHRUG:
+    case 135:
       if (record->event.pressed) {
         SEND_STRING("&shrug; ");
       }
-      return false;
+      return 0;
       break;
-    case THANKS:
+    case 133:
       if (record->event.pressed) {
         SEND_STRING("&thanks;");
       }
-      return false;
+      return 0;
       break;
-    case THINK:
+    case 132:
       if (record->event.pressed) {
         SEND_STRING("_think_");
       }
-      return false;
+      return 0;
       break;
-    case THMBDN:
+    case 131:
       if (record->event.pressed) {
         SEND_STRING("&thumbdown; ");
       }
-      return false;
+      return 0;
       break;
-    case THMBUP:
+    case 130:
       if (record->event.pressed) {
         SEND_STRING("&thumbup; ");
       }
-      return false;
+      return 0;
       break;
-    case TOUNGE:
+    case 129:
       if (record->event.pressed) {
         SEND_STRING(":-P ");
       }
-      return false;
+      return 0;
       break;
-    case WINK:
+    case 128:
       if (record->event.pressed) {
         SEND_STRING(";-) ");
       }
-      return false;
+      return 0;
       break;
 
   }
-  return true;
+  return 1;
 }

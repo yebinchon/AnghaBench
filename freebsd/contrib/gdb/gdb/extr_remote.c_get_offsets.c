@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct section_offsets {int* offsets; } ;
-struct remote_state {int /*<<< orphan*/  remote_packet_size; } ;
-struct TYPE_6__ {int /*<<< orphan*/  num_sections; int /*<<< orphan*/  section_offsets; } ;
-typedef  int CORE_ADDR ;
+struct remote_state {int remote_packet_size; } ;
+struct TYPE_6__ {int num_sections; int section_offsets; } ;
+typedef int CORE_ADDR ;
 
-/* Variables and functions */
- size_t SECT_OFF_BSS (TYPE_1__*) ; 
- size_t SECT_OFF_DATA (TYPE_1__*) ; 
- size_t SECT_OFF_TEXT (TYPE_1__*) ; 
- int /*<<< orphan*/  SIZEOF_N_SECTION_OFFSETS (int /*<<< orphan*/ ) ; 
- char* alloca (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  error (char*,char*) ; 
- int fromhex (int /*<<< orphan*/ ) ; 
- struct remote_state* get_remote_state () ; 
- int /*<<< orphan*/  getpkt (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (struct section_offsets*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  objfile_relocate (TYPE_1__*,struct section_offsets*) ; 
- int /*<<< orphan*/  putpkt (char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- TYPE_1__* symfile_objfile ; 
- int /*<<< orphan*/  warning (char*,char*) ; 
+
+ size_t SECT_OFF_BSS (TYPE_1__*) ;
+ size_t SECT_OFF_DATA (TYPE_1__*) ;
+ size_t SECT_OFF_TEXT (TYPE_1__*) ;
+ int SIZEOF_N_SECTION_OFFSETS (int ) ;
+ char* alloca (int ) ;
+ int error (char*,char*) ;
+ int fromhex (int ) ;
+ struct remote_state* get_remote_state () ;
+ int getpkt (char*,int ,int ) ;
+ int memcpy (struct section_offsets*,int ,int ) ;
+ int objfile_relocate (TYPE_1__*,struct section_offsets*) ;
+ int putpkt (char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ TYPE_1__* symfile_objfile ;
+ int warning (char*,char*) ;
 
 __attribute__((used)) static void
 get_offsets (void)
@@ -48,18 +48,18 @@ get_offsets (void)
   getpkt (buf, (rs->remote_packet_size), 0);
 
   if (buf[0] == '\000')
-    return;			/* Return silently.  Stub doesn't support
-				   this command. */
+    return;
+
   if (buf[0] == 'E')
     {
       warning ("Remote failure reply: %s", buf);
       return;
     }
 
-  /* Pick up each field in turn.  This used to be done with scanf, but
-     scanf will make trouble if CORE_ADDR size doesn't match
-     conversion directives correctly.  The following code will work
-     with any size of CORE_ADDR.  */
+
+
+
+
   text_addr = data_addr = bss_addr = 0;
   ptr = buf;
   lose = 0;
@@ -67,9 +67,9 @@ get_offsets (void)
   if (strncmp (ptr, "Text=", 5) == 0)
     {
       ptr += 5;
-      /* Don't use strtol, could lose on big values.  */
+
       while (*ptr && *ptr != ';')
-	text_addr = (text_addr << 4) + fromhex (*ptr++);
+ text_addr = (text_addr << 4) + fromhex (*ptr++);
     }
   else
     lose = 1;
@@ -78,7 +78,7 @@ get_offsets (void)
     {
       ptr += 6;
       while (*ptr && *ptr != ';')
-	data_addr = (data_addr << 4) + fromhex (*ptr++);
+ data_addr = (data_addr << 4) + fromhex (*ptr++);
     }
   else
     lose = 1;
@@ -87,7 +87,7 @@ get_offsets (void)
     {
       ptr += 5;
       while (*ptr && *ptr != ';')
-	bss_addr = (bss_addr << 4) + fromhex (*ptr++);
+ bss_addr = (bss_addr << 4) + fromhex (*ptr++);
     }
   else
     lose = 1;
@@ -95,19 +95,19 @@ get_offsets (void)
   if (lose)
     error ("Malformed response to offset query, %s", buf);
 
-  if (symfile_objfile == NULL)
+  if (symfile_objfile == ((void*)0))
     return;
 
   offs = ((struct section_offsets *)
-	  alloca (SIZEOF_N_SECTION_OFFSETS (symfile_objfile->num_sections)));
+   alloca (SIZEOF_N_SECTION_OFFSETS (symfile_objfile->num_sections)));
   memcpy (offs, symfile_objfile->section_offsets,
-	  SIZEOF_N_SECTION_OFFSETS (symfile_objfile->num_sections));
+   SIZEOF_N_SECTION_OFFSETS (symfile_objfile->num_sections));
 
   offs->offsets[SECT_OFF_TEXT (symfile_objfile)] = text_addr;
 
-  /* This is a temporary kludge to force data and bss to use the same offsets
-     because that's what nlmconv does now.  The real solution requires changes
-     to the stub and remote.c that I don't have time to do right now.  */
+
+
+
 
   offs->offsets[SECT_OFF_DATA (symfile_objfile)] = data_addr;
   offs->offsets[SECT_OFF_BSS (symfile_objfile)] = data_addr;

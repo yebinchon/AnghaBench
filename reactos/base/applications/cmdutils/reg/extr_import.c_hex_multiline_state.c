@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct parser {int /*<<< orphan*/  file; } ;
-typedef  char WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HEX_DATA ; 
- int /*<<< orphan*/  LINE_START ; 
- int /*<<< orphan*/  SET_VALUE ; 
- int /*<<< orphan*/  free_parser_data (struct parser*) ; 
- char* get_line (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  isxdigitW (char) ; 
- int /*<<< orphan*/  prepare_hex_string_data (struct parser*) ; 
- int /*<<< orphan*/  set_state (struct parser*,int /*<<< orphan*/ ) ; 
+
+
+
+struct parser {int file; } ;
+typedef char WCHAR ;
+
+
+ int HEX_DATA ;
+ int LINE_START ;
+ int SET_VALUE ;
+ int free_parser_data (struct parser*) ;
+ char* get_line (int ) ;
+ int isxdigitW (char) ;
+ int prepare_hex_string_data (struct parser*) ;
+ int set_state (struct parser*,int ) ;
 
 __attribute__((used)) static WCHAR *hex_multiline_state(struct parser *parser, WCHAR *pos)
 {

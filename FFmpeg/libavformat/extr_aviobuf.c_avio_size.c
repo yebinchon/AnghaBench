@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
-struct TYPE_3__ {scalar_t__ written; scalar_t__ (* seek ) (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ;int pos; int /*<<< orphan*/  opaque; } ;
-typedef  TYPE_1__ AVIOContext ;
 
-/* Variables and functions */
- scalar_t__ AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AVSEEK_SIZE ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOSYS ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- scalar_t__ stub2 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- scalar_t__ stub3 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
+struct TYPE_3__ {scalar_t__ written; scalar_t__ (* seek ) (int ,int,int ) ;int pos; int opaque; } ;
+typedef TYPE_1__ AVIOContext ;
+
+
+ scalar_t__ AVERROR (int ) ;
+ int AVSEEK_SIZE ;
+ int EINVAL ;
+ int ENOSYS ;
+ int SEEK_END ;
+ int SEEK_SET ;
+ scalar_t__ stub1 (int ,int,int ) ;
+ scalar_t__ stub2 (int ,int,int ) ;
+ scalar_t__ stub3 (int ,int,int ) ;
 
 int64_t avio_size(AVIOContext *s)
 {

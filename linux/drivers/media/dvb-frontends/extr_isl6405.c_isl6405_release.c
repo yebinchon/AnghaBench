@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dvb_frontend {int /*<<< orphan*/ * sec_priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEC_VOLTAGE_OFF ; 
- int /*<<< orphan*/  isl6405_set_voltage (struct dvb_frontend*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
+
+
+
+struct dvb_frontend {int * sec_priv; } ;
+
+
+ int SEC_VOLTAGE_OFF ;
+ int isl6405_set_voltage (struct dvb_frontend*,int ) ;
+ int kfree (int *) ;
 
 __attribute__((used)) static void isl6405_release(struct dvb_frontend *fe)
 {
-	/* power off */
-	isl6405_set_voltage(fe, SEC_VOLTAGE_OFF);
 
-	/* free */
-	kfree(fe->sec_priv);
-	fe->sec_priv = NULL;
+ isl6405_set_voltage(fe, SEC_VOLTAGE_OFF);
+
+
+ kfree(fe->sec_priv);
+ fe->sec_priv = ((void*)0);
 }

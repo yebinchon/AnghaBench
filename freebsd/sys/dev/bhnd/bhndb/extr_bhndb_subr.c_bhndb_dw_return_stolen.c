@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uintmax_t ;
-struct bhndb_resources {int /*<<< orphan*/  dw_steal_mtx; } ;
+
+
+
+
+typedef int uintmax_t ;
+struct bhndb_resources {int dw_steal_mtx; } ;
 struct bhndb_dw_alloc {int dummy; } ;
-typedef  int /*<<< orphan*/  device_t ;
-typedef  scalar_t__ bus_addr_t ;
+typedef int device_t ;
+typedef scalar_t__ bus_addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MA_OWNED ; 
- int bhndb_dw_set_addr (int /*<<< orphan*/ ,struct bhndb_resources*,struct bhndb_dw_alloc*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mtx_assert (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mtx_unlock_spin (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  panic (char*,int /*<<< orphan*/ ,int) ; 
+
+ int MA_OWNED ;
+ int bhndb_dw_set_addr (int ,struct bhndb_resources*,struct bhndb_dw_alloc*,scalar_t__,int ) ;
+ int mtx_assert (int *,int ) ;
+ int mtx_unlock_spin (int *) ;
+ int panic (char*,int ,int) ;
 
 void
 bhndb_dw_return_stolen(device_t dev, struct bhndb_resources *br,
     struct bhndb_dw_alloc *dwa, bus_addr_t saved)
 {
-	int error;
+ int error;
 
-	mtx_assert(&br->dw_steal_mtx, MA_OWNED);
+ mtx_assert(&br->dw_steal_mtx, MA_OWNED);
 
-	error = bhndb_dw_set_addr(dev, br, dwa, saved, 0);
-	if (error) {
-		panic("failed to restore register window target %#jx: %d\n",
-		    (uintmax_t)saved, error);
-	}
+ error = bhndb_dw_set_addr(dev, br, dwa, saved, 0);
+ if (error) {
+  panic("failed to restore register window target %#jx: %d\n",
+      (uintmax_t)saved, error);
+ }
 
-	mtx_unlock_spin(&br->dw_steal_mtx);
+ mtx_unlock_spin(&br->dw_steal_mtx);
 }

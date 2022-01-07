@@ -1,38 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  layer; } ;
-struct TYPE_5__ {char* layer_text; int /*<<< orphan*/  target_lcd_color; TYPE_1__ status; } ;
-typedef  TYPE_2__ visualizer_state_t ;
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LCD_COLOR (int,int,int) ; 
-#define  _ADJUST 140 
-#define  _COLEMAK 139 
-#define  _DUPER 138 
-#define  _LOWER 137 
-#define  _MDIA 136 
-#define  _MOUSE 135 
-#define  _PLOVER 134 
-#define  _QWERTY 133 
-#define  _QWOC 132 
-#define  _RAISE 131 
-#define  _SUPER 130 
-#define  _SUPERDUPER 129 
-#define  _SYMB 128 
- int biton32 (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int layer; } ;
+struct TYPE_5__ {char* layer_text; int target_lcd_color; TYPE_1__ status; } ;
+typedef TYPE_2__ visualizer_state_t ;
+typedef int uint8_t ;
+
+
+ int LCD_COLOR (int,int,int) ;
+ int biton32 (int ) ;
 
 __attribute__((used)) static void get_visualizer_layer_and_color(visualizer_state_t* state) {
     uint8_t saturation = 255;
@@ -41,43 +28,43 @@ __attribute__((used)) static void get_visualizer_layer_and_color(visualizer_stat
     state->target_lcd_color = LCD_COLOR(layer << 2, saturation, 0xFF);
 
     switch(layer) {
-        case _QWERTY:
+        case 133:
             state->layer_text = "QWERTY";
             break;
-        case _COLEMAK:
+        case 139:
             state->layer_text = "COLEMAK";
             break;
-        case _QWOC:
+        case 132:
             state->layer_text = "QWERTY on COLEMAK";
             break;
-        case _LOWER:
+        case 137:
             state->layer_text = "LOWER";
             break;
-        case _RAISE:
+        case 131:
             state->layer_text = "RAISE";
             break;
-        case _PLOVER:
+        case 134:
             state->layer_text = "PLOVER";
             break;
-        case _SUPERDUPER:
+        case 129:
             state->layer_text = "SUPERDUPER";
             break;
-        case _SUPER:
+        case 130:
             state->layer_text = "SUPER";
             break;
-        case _DUPER:
+        case 138:
             state->layer_text = "DUPER";
             break;
-        case _MOUSE:
+        case 135:
             state->layer_text = "MOUSE";
             break;
-        case _ADJUST:
+        case 140:
             state->layer_text = "ADJUST";
             break;
-        case _MDIA:
+        case 136:
             state->layer_text = "MDIA";
             break;
-        case _SYMB:
+        case 128:
             state->layer_text = "SYMB";
             break;
         default:

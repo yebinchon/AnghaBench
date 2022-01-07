@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int CURLcode ;
-typedef  scalar_t__ CURLUcode ;
-typedef  int /*<<< orphan*/  CURLU ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLOPT_POSTFIELDS ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURLUPART_SCHEME ; 
- int /*<<< orphan*/  CURLUPART_URL ; 
- int /*<<< orphan*/  CURLUPART_USER ; 
- int /*<<< orphan*/  CURLU_NON_SUPPORT_SCHEME ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- int EXCESSIVE ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int curl_easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- int /*<<< orphan*/ * curl_url () ; 
- int /*<<< orphan*/  curl_url_cleanup (int /*<<< orphan*/ *) ; 
- scalar_t__ curl_url_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  easy_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  global_init (int /*<<< orphan*/ ) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  memset (char*,char,int) ; 
- int /*<<< orphan*/  printf (char*,int,int) ; 
+
+
+
+typedef int CURLcode ;
+typedef scalar_t__ CURLUcode ;
+typedef int CURLU ;
+typedef int CURL ;
+
+
+ int CURLOPT_POSTFIELDS ;
+ int CURLOPT_URL ;
+ int CURLUPART_SCHEME ;
+ int CURLUPART_URL ;
+ int CURLUPART_USER ;
+ int CURLU_NON_SUPPORT_SCHEME ;
+ int CURL_GLOBAL_ALL ;
+ int EXCESSIVE ;
+ int curl_easy_cleanup (int *) ;
+ int curl_easy_setopt (int *,int ,char*) ;
+ int curl_global_cleanup () ;
+ int * curl_url () ;
+ int curl_url_cleanup (int *) ;
+ scalar_t__ curl_url_set (int *,int ,char*,int ) ;
+ int easy_init (int *) ;
+ int free (char*) ;
+ int global_init (int ) ;
+ char* malloc (int) ;
+ int memset (char*,char,int) ;
+ int printf (char*,int,int) ;
 
 int test(char *URL)
 {
   CURLcode res = 0;
-  CURL *curl = NULL;
+  CURL *curl = ((void*)0);
   char *longurl = malloc(EXCESSIVE);
   CURLU *u;
   (void)URL;
@@ -85,5 +85,5 @@ test_cleanup:
   curl_easy_cleanup(curl);
   curl_global_cleanup();
 
-  return res; /* return the final return code */
+  return res;
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ usri1_user_id; int usri1_flags; scalar_t__ usri1_next_index; } ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  TYPE_1__* PNET_DISPLAY_USER ;
-typedef  scalar_t__ DWORD ;
-typedef  int BOOL ;
+typedef int PVOID ;
+typedef TYPE_1__* PNET_DISPLAY_USER ;
+typedef scalar_t__ DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ DOMAIN_USER_RID_ADMIN ; 
- scalar_t__ DOMAIN_USER_RID_GUEST ; 
- scalar_t__ ERROR_MORE_DATA ; 
- scalar_t__ ERROR_SUCCESS ; 
- int FALSE ; 
- int /*<<< orphan*/  MAX_PREFERRED_LENGTH ; 
- int TRUE ; 
- int UF_NORMAL_ACCOUNT ; 
- int UF_SCRIPT ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- int /*<<< orphan*/  pNetApiBufferFree (TYPE_1__*) ; 
- scalar_t__ pNetQueryDisplayInformation (int /*<<< orphan*/ *,int,scalar_t__,int,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ DOMAIN_USER_RID_ADMIN ;
+ scalar_t__ DOMAIN_USER_RID_GUEST ;
+ scalar_t__ ERROR_MORE_DATA ;
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int MAX_PREFERRED_LENGTH ;
+ int TRUE ;
+ int UF_NORMAL_ACCOUNT ;
+ int UF_SCRIPT ;
+ int ok (int,char*) ;
+ int pNetApiBufferFree (TYPE_1__*) ;
+ scalar_t__ pNetQueryDisplayInformation (int *,int,scalar_t__,int,int ,scalar_t__*,int *) ;
 
 __attribute__((used)) static void run_querydisplayinformation1_tests(void)
 {
@@ -42,7 +42,7 @@ __attribute__((used)) static void run_querydisplayinformation1_tests(void)
     do
     {
         Result = pNetQueryDisplayInformation(
-            NULL, 1, i, 1000, MAX_PREFERRED_LENGTH, &EntryCount,
+            ((void*)0), 1, i, 1000, MAX_PREFERRED_LENGTH, &EntryCount,
             (PVOID *)&Buffer);
 
         ok((Result == ERROR_SUCCESS) || (Result == ERROR_MORE_DATA),

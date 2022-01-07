@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  issuer; } ;
-typedef  TYPE_2__ X509_REVOKED ;
-typedef  int /*<<< orphan*/  X509_NAME ;
-typedef  int /*<<< orphan*/  X509_CRL ;
-struct TYPE_6__ {int /*<<< orphan*/ * directoryName; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int issuer; } ;
+typedef TYPE_2__ X509_REVOKED ;
+typedef int X509_NAME ;
+typedef int X509_CRL ;
+struct TYPE_6__ {int * directoryName; } ;
 struct TYPE_8__ {scalar_t__ type; TYPE_1__ d; } ;
-typedef  TYPE_3__ GENERAL_NAME ;
+typedef TYPE_3__ GENERAL_NAME ;
 
-/* Variables and functions */
- scalar_t__ GEN_DIRNAME ; 
- int /*<<< orphan*/ * X509_CRL_get_issuer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_NAME_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int sk_GENERAL_NAME_num (int /*<<< orphan*/ ) ; 
- TYPE_3__* sk_GENERAL_NAME_value (int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ GEN_DIRNAME ;
+ int * X509_CRL_get_issuer (int *) ;
+ int X509_NAME_cmp (int *,int *) ;
+ int sk_GENERAL_NAME_num (int ) ;
+ TYPE_3__* sk_GENERAL_NAME_value (int ,int) ;
 
 __attribute__((used)) static int crl_revoked_issuer_match(X509_CRL *crl, X509_NAME *nm,
                                     X509_REVOKED *rev)

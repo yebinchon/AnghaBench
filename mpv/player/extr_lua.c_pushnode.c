@@ -1,96 +1,88 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {TYPE_2__* ba; TYPE_1__* list; int /*<<< orphan*/  flag; int /*<<< orphan*/  double_; int /*<<< orphan*/  int64; int /*<<< orphan*/  string; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {TYPE_2__* ba; TYPE_1__* list; int flag; int double_; int int64; int string; } ;
 struct TYPE_9__ {int format; TYPE_3__ u; } ;
-typedef  TYPE_4__ mpv_node ;
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_7__ {int /*<<< orphan*/  size; int /*<<< orphan*/  data; } ;
-struct TYPE_6__ {int num; TYPE_4__* values; int /*<<< orphan*/ * keys; } ;
+typedef TYPE_4__ mpv_node ;
+typedef int lua_State ;
+struct TYPE_7__ {int size; int data; } ;
+struct TYPE_6__ {int num; TYPE_4__* values; int * keys; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
-#define  MPV_FORMAT_BYTE_ARRAY 135 
-#define  MPV_FORMAT_DOUBLE 134 
-#define  MPV_FORMAT_FLAG 133 
-#define  MPV_FORMAT_INT64 132 
-#define  MPV_FORMAT_NODE_ARRAY 131 
-#define  MPV_FORMAT_NODE_MAP 130 
-#define  MPV_FORMAT_NONE 129 
-#define  MPV_FORMAT_STRING 128 
- int /*<<< orphan*/  luaL_checkstack (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_getfield (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  lua_newtable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushboolean (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushlstring (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushnumber (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_rawset (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_rawseti (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  lua_setmetatable (int /*<<< orphan*/ *,int) ; 
+
+ int LUA_REGISTRYINDEX ;
+ int luaL_checkstack (int *,int,char*) ;
+ int lua_getfield (int *,int ,char*) ;
+ int lua_newtable (int *) ;
+ int lua_pushboolean (int *,int ) ;
+ int lua_pushlstring (int *,int ,int ) ;
+ int lua_pushnil (int *) ;
+ int lua_pushnumber (int *,int ) ;
+ int lua_pushstring (int *,int ) ;
+ int lua_rawset (int *,int) ;
+ int lua_rawseti (int *,int,int) ;
+ int lua_setmetatable (int *,int) ;
 
 __attribute__((used)) static void pushnode(lua_State *L, mpv_node *node)
 {
     luaL_checkstack(L, 6, "stack overflow");
 
     switch (node->format) {
-    case MPV_FORMAT_STRING:
+    case 128:
         lua_pushstring(L, node->u.string);
         break;
-    case MPV_FORMAT_INT64:
+    case 132:
         lua_pushnumber(L, node->u.int64);
         break;
-    case MPV_FORMAT_DOUBLE:
+    case 134:
         lua_pushnumber(L, node->u.double_);
         break;
-    case MPV_FORMAT_NONE:
+    case 129:
         lua_pushnil(L);
         break;
-    case MPV_FORMAT_FLAG:
+    case 133:
         lua_pushboolean(L, node->u.flag);
         break;
-    case MPV_FORMAT_NODE_ARRAY:
-        lua_newtable(L); // table
-        lua_getfield(L, LUA_REGISTRYINDEX, "ARRAY"); // table mt
-        lua_setmetatable(L, -2); // table
+    case 131:
+        lua_newtable(L);
+        lua_getfield(L, LUA_REGISTRYINDEX, "ARRAY");
+        lua_setmetatable(L, -2);
         for (int n = 0; n < node->u.list->num; n++) {
-            pushnode(L, &node->u.list->values[n]); // table value
-            lua_rawseti(L, -2, n + 1); // table
+            pushnode(L, &node->u.list->values[n]);
+            lua_rawseti(L, -2, n + 1);
         }
         break;
-    case MPV_FORMAT_NODE_MAP:
-        lua_newtable(L); // table
-        lua_getfield(L, LUA_REGISTRYINDEX, "MAP"); // table mt
-        lua_setmetatable(L, -2); // table
+    case 130:
+        lua_newtable(L);
+        lua_getfield(L, LUA_REGISTRYINDEX, "MAP");
+        lua_setmetatable(L, -2);
         for (int n = 0; n < node->u.list->num; n++) {
-            lua_pushstring(L, node->u.list->keys[n]); // table key
-            pushnode(L, &node->u.list->values[n]); // table key value
+            lua_pushstring(L, node->u.list->keys[n]);
+            pushnode(L, &node->u.list->values[n]);
             lua_rawset(L, -3);
         }
         break;
-    case MPV_FORMAT_BYTE_ARRAY:
+    case 135:
         lua_pushlstring(L, node->u.ba->data, node->u.ba->size);
         break;
     default:
-        // unknown value - what do we do?
-        // for now, set a unique dummy value
-        lua_newtable(L); // table
+
+
+        lua_newtable(L);
         lua_getfield(L, LUA_REGISTRYINDEX, "UNKNOWN_TYPE");
-        lua_setmetatable(L, -2); // table
+        lua_setmetatable(L, -2);
         break;
     }
 }

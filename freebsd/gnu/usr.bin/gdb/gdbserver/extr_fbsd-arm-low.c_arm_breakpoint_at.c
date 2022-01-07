@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  (* read_memory ) (int /*<<< orphan*/ ,char*,int) ;} ;
-typedef  int /*<<< orphan*/  CORE_ADDR ;
 
-/* Variables and functions */
- unsigned long arm_breakpoint ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,char*,int) ; 
- TYPE_1__* the_target ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int (* read_memory ) (int ,char*,int) ;} ;
+typedef int CORE_ADDR ;
+
+
+ unsigned long arm_breakpoint ;
+ int stub1 (int ,char*,int) ;
+ TYPE_1__* the_target ;
 
 __attribute__((used)) static int
 arm_breakpoint_at (CORE_ADDR where)
@@ -28,7 +28,7 @@ arm_breakpoint_at (CORE_ADDR where)
   if (insn == arm_breakpoint)
     return 1;
 
-  /* If necessary, recognize more trap instructions here.  GDB only uses the
-     one.  */
+
+
   return 0;
 }

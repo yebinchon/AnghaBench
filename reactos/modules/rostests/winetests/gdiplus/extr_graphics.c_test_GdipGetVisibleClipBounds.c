@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpRectF ;
-typedef  int /*<<< orphan*/  GpRect ;
-typedef  int /*<<< orphan*/  GpGraphics ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GdipCreateFromHDC (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetVisibleClipBounds (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetVisibleClipBoundsI (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InvalidParameter ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hwnd ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  test_GdipGetVisibleClipBounds_screen () ; 
- int /*<<< orphan*/  test_GdipGetVisibleClipBounds_window () ; 
+
+
+
+typedef int HDC ;
+typedef int GpStatus ;
+typedef int GpRectF ;
+typedef int GpRect ;
+typedef int GpGraphics ;
+
+
+ int GdipCreateFromHDC (int ,int **) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipGetVisibleClipBounds (int *,int *) ;
+ int GdipGetVisibleClipBoundsI (int *,int *) ;
+ int GetDC (int ) ;
+ int InvalidParameter ;
+ int Ok ;
+ int ReleaseDC (int ,int ) ;
+ int expect (int ,int ) ;
+ int hwnd ;
+ int ok (int ,char*) ;
+ int test_GdipGetVisibleClipBounds_screen () ;
+ int test_GdipGetVisibleClipBounds_window () ;
 
 __attribute__((used)) static void test_GdipGetVisibleClipBounds(void)
 {
-    GpGraphics* graphics = NULL;
+    GpGraphics* graphics = ((void*)0);
     GpRectF rectf;
     GpRect rect;
     HDC hdc = GetDC( hwnd );
@@ -41,19 +41,19 @@ __attribute__((used)) static void test_GdipGetVisibleClipBounds(void)
 
     status = GdipCreateFromHDC(hdc, &graphics);
     expect(Ok, status);
-    ok(graphics != NULL, "Expected graphics to be initialized\n");
+    ok(graphics != ((void*)0), "Expected graphics to be initialized\n");
 
-    /* test null parameters */
-    status = GdipGetVisibleClipBounds(graphics, NULL);
+
+    status = GdipGetVisibleClipBounds(graphics, ((void*)0));
     expect(InvalidParameter, status);
 
-    status = GdipGetVisibleClipBounds(NULL, &rectf);
+    status = GdipGetVisibleClipBounds(((void*)0), &rectf);
     expect(InvalidParameter, status);
 
-    status = GdipGetVisibleClipBoundsI(graphics, NULL);
+    status = GdipGetVisibleClipBoundsI(graphics, ((void*)0));
     expect(InvalidParameter, status);
 
-    status = GdipGetVisibleClipBoundsI(NULL, &rect);
+    status = GdipGetVisibleClipBoundsI(((void*)0), &rect);
     expect(InvalidParameter, status);
 
     GdipDeleteGraphics(graphics);

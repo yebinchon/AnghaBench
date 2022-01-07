@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ibv_mr_1_0 {int /*<<< orphan*/  real_mr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (struct ibv_mr_1_0*) ; 
- int ibv_dereg_mr (int /*<<< orphan*/ ) ; 
+
+
+
+struct ibv_mr_1_0 {int real_mr; } ;
+
+
+ int free (struct ibv_mr_1_0*) ;
+ int ibv_dereg_mr (int ) ;
 
 int __ibv_dereg_mr_1_0(struct ibv_mr_1_0 *mr)
 {
-	int ret;
+ int ret;
 
-	ret = ibv_dereg_mr(mr->real_mr);
-	if (ret)
-		return ret;
+ ret = ibv_dereg_mr(mr->real_mr);
+ if (ret)
+  return ret;
 
-	free(mr);
-	return 0;
+ free(mr);
+ return 0;
 }

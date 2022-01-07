@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ time_t ;
-struct tm {int /*<<< orphan*/  tm_isdst; void* tm_year; void* tm_mon; void* tm_mday; void* tm_hour; void* tm_min; void* tm_sec; } ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  lua_Number ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_TTABLE ; 
- int /*<<< orphan*/  getboolfield (int /*<<< orphan*/ *,char*) ; 
- void* getfield (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  luaL_checktype (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- scalar_t__ lua_isnoneornil (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushnumber (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_settop (int /*<<< orphan*/ *,int) ; 
- scalar_t__ mktime (struct tm*) ; 
- scalar_t__ time (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ time_t ;
+struct tm {int tm_isdst; void* tm_year; void* tm_mon; void* tm_mday; void* tm_hour; void* tm_min; void* tm_sec; } ;
+typedef int lua_State ;
+typedef int lua_Number ;
+
+
+ int LUA_TTABLE ;
+ int getboolfield (int *,char*) ;
+ void* getfield (int *,char*,int) ;
+ int luaL_checktype (int *,int,int ) ;
+ scalar_t__ lua_isnoneornil (int *,int) ;
+ int lua_pushnil (int *) ;
+ int lua_pushnumber (int *,int ) ;
+ int lua_settop (int *,int) ;
+ scalar_t__ mktime (struct tm*) ;
+ scalar_t__ time (int *) ;
 
 __attribute__((used)) static int os_time (lua_State *L) {
   time_t t;
-  if (lua_isnoneornil(L, 1))  /* called without args? */
-    t = time(NULL);  /* get current time */
+  if (lua_isnoneornil(L, 1))
+    t = time(((void*)0));
   else {
     struct tm ts;
     luaL_checktype(L, 1, LUA_TTABLE);
-    lua_settop(L, 1);  /* make sure table is at the top */
+    lua_settop(L, 1);
     ts.tm_sec = getfield(L, "sec", 0);
     ts.tm_min = getfield(L, "min", 0);
     ts.tm_hour = getfield(L, "hour", 12);

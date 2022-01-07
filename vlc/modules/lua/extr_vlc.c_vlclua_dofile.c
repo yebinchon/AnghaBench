@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  stream_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  scalar_t__ int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_MULTRET ; 
- char* ToLocaleDup (char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int luaL_dofile (int /*<<< orphan*/ *,char*) ; 
- int luaL_loadbuffer (int /*<<< orphan*/ *,char*,size_t,char*) ; 
- int lua_pcall (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* malloc (scalar_t__) ; 
- scalar_t__ stream_Size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strncasecmp (char*,char*,int) ; 
- int /*<<< orphan*/  strstr (char*,char*) ; 
- int /*<<< orphan*/  vlc_stream_Delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vlc_stream_NewURL (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ vlc_stream_Read (int /*<<< orphan*/ *,char*,int) ; 
+
+
+
+typedef int vlc_object_t ;
+typedef int stream_t ;
+typedef int lua_State ;
+typedef scalar_t__ int64_t ;
+
+
+ int LUA_MULTRET ;
+ char* ToLocaleDup (char const*) ;
+ int free (char*) ;
+ int luaL_dofile (int *,char*) ;
+ int luaL_loadbuffer (int *,char*,size_t,char*) ;
+ int lua_pcall (int *,int ,int ,int ) ;
+ char* malloc (scalar_t__) ;
+ scalar_t__ stream_Size (int *) ;
+ int strncasecmp (char*,char*,int) ;
+ int strstr (char*,char*) ;
+ int vlc_stream_Delete (int *) ;
+ int * vlc_stream_NewURL (int *,char*) ;
+ scalar_t__ vlc_stream_Read (int *,char*,int) ;
 
 int vlclua_dofile( vlc_object_t *p_this, lua_State *L, const char *curi )
 {
@@ -50,10 +50,10 @@ int vlclua_dofile( vlc_object_t *p_this, lua_State *L, const char *curi )
         return 1;
     }
     int64_t i_size = stream_Size( s );
-    char *p_buffer = ( i_size > 0 ) ? malloc( i_size ) : NULL;
+    char *p_buffer = ( i_size > 0 ) ? malloc( i_size ) : ((void*)0);
     if( !p_buffer )
     {
-        // FIXME: read the whole stream until we reach the end (if no size)
+
         vlc_stream_Delete( s );
         free( uri );
         return 1;

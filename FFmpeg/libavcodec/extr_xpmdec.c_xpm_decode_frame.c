@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int int64_t ;
-struct TYPE_11__ {scalar_t__* pixels; int /*<<< orphan*/  pixels_size; scalar_t__* buf; int /*<<< orphan*/  buf_size; } ;
-typedef  TYPE_1__ XPMDecContext ;
-struct TYPE_14__ {int height; int width; int /*<<< orphan*/  pix_fmt; TYPE_1__* priv_data; } ;
-struct TYPE_13__ {int* linesize; int key_frame; int /*<<< orphan*/  pict_type; scalar_t__* data; } ;
-struct TYPE_12__ {int size; int /*<<< orphan*/  data; } ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_I ; 
- int /*<<< orphan*/  AV_PIX_FMT_BGRA ; 
- int /*<<< orphan*/  ENOMEM ; 
- int NB_ELEMENTS ; 
- int ascii2index (scalar_t__ const*,int) ; 
- int /*<<< orphan*/  av_fast_padded_malloc (scalar_t__**,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ color_string_to_rgba (scalar_t__ const*,int) ; 
- int ff_get_buffer (TYPE_4__*,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int ff_set_dimensions (TYPE_4__*,int,int) ; 
- scalar_t__ memcmp (scalar_t__ const*,char*,int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ mod_strcspn (scalar_t__ const*,char*) ; 
- int sscanf (scalar_t__ const*,char*,int*,int*,int*,int*) ; 
- int strcspn (scalar_t__ const*,char*) ; 
- scalar_t__* strstr (scalar_t__ const*,char*) ; 
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint32_t ;
+typedef int int64_t ;
+struct TYPE_11__ {scalar_t__* pixels; int pixels_size; scalar_t__* buf; int buf_size; } ;
+typedef TYPE_1__ XPMDecContext ;
+struct TYPE_14__ {int height; int width; int pix_fmt; TYPE_1__* priv_data; } ;
+struct TYPE_13__ {int* linesize; int key_frame; int pict_type; scalar_t__* data; } ;
+struct TYPE_12__ {int size; int data; } ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVCodecContext ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_PICTURE_TYPE_I ;
+ int AV_PIX_FMT_BGRA ;
+ int ENOMEM ;
+ int NB_ELEMENTS ;
+ int ascii2index (scalar_t__ const*,int) ;
+ int av_fast_padded_malloc (scalar_t__**,int *,int) ;
+ int av_log (TYPE_4__*,int ,char*,...) ;
+ scalar_t__ color_string_to_rgba (scalar_t__ const*,int) ;
+ int ff_get_buffer (TYPE_4__*,TYPE_3__*,int ) ;
+ int ff_set_dimensions (TYPE_4__*,int,int) ;
+ scalar_t__ memcmp (scalar_t__ const*,char*,int) ;
+ int memcpy (scalar_t__*,int ,int) ;
+ scalar_t__ mod_strcspn (scalar_t__ const*,char*) ;
+ int sscanf (scalar_t__ const*,char*,int*,int*,int*,int*) ;
+ int strcspn (scalar_t__ const*,char*) ;
+ scalar_t__* strstr (scalar_t__ const*,char*) ;
 
 __attribute__((used)) static int xpm_decode_frame(AVCodecContext *avctx, void *data,
                             int *got_frame, AVPacket *avpkt)

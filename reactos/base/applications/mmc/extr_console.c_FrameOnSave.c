@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * PCONSOLE_CHILDFRM_WND ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DoSaveFile (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/ * GetActiveChildInfo () ; 
+
+
+
+typedef int * PCONSOLE_CHILDFRM_WND ;
+typedef int HWND ;
+typedef int BOOL ;
+
+
+ int DoSaveFile (int ,int *) ;
+ int FALSE ;
+ int * GetActiveChildInfo () ;
 
 __attribute__((used)) static BOOL
 FrameOnSave(
@@ -26,7 +26,7 @@ FrameOnSave(
     PCONSOLE_CHILDFRM_WND pChildInfo;
 
     pChildInfo = GetActiveChildInfo();
-    if (pChildInfo == NULL)
+    if (pChildInfo == ((void*)0))
         return FALSE;
 
     return DoSaveFile(hWnd, pChildInfo);

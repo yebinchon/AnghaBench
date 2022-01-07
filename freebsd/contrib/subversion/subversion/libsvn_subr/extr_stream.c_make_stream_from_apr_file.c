@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/ * file; } ;
-typedef  TYPE_1__ svn_stream_t ;
-typedef  scalar_t__ svn_boolean_t ;
-struct baton_apr {scalar_t__ truncate_on_seek; int /*<<< orphan*/ * pool; int /*<<< orphan*/ * file; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_file_t ;
 
-/* Variables and functions */
- struct baton_apr* apr_palloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  close_handler_apr ; 
- int /*<<< orphan*/  data_available_handler_apr ; 
- int /*<<< orphan*/  mark_handler_apr ; 
- int /*<<< orphan*/  read_full_handler_apr ; 
- int /*<<< orphan*/  read_handler_apr ; 
- int /*<<< orphan*/  readline_handler_apr ; 
- int /*<<< orphan*/  seek_handler_apr ; 
- int /*<<< orphan*/  skip_handler_apr ; 
- TYPE_1__* svn_stream_create (struct baton_apr*,int /*<<< orphan*/ *) ; 
- TYPE_1__* svn_stream_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_set_close (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stream_set_data_available (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stream_set_mark (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stream_set_read2 (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stream_set_readline (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stream_set_seek (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stream_set_skip (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stream_set_write (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_handler_apr ; 
+
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int * file; } ;
+typedef TYPE_1__ svn_stream_t ;
+typedef scalar_t__ svn_boolean_t ;
+struct baton_apr {scalar_t__ truncate_on_seek; int * pool; int * file; } ;
+typedef int apr_pool_t ;
+typedef int apr_file_t ;
+
+
+ struct baton_apr* apr_palloc (int *,int) ;
+ int close_handler_apr ;
+ int data_available_handler_apr ;
+ int mark_handler_apr ;
+ int read_full_handler_apr ;
+ int read_handler_apr ;
+ int readline_handler_apr ;
+ int seek_handler_apr ;
+ int skip_handler_apr ;
+ TYPE_1__* svn_stream_create (struct baton_apr*,int *) ;
+ TYPE_1__* svn_stream_empty (int *) ;
+ int svn_stream_set_close (TYPE_1__*,int ) ;
+ int svn_stream_set_data_available (TYPE_1__*,int ) ;
+ int svn_stream_set_mark (TYPE_1__*,int ) ;
+ int svn_stream_set_read2 (TYPE_1__*,int ,int ) ;
+ int svn_stream_set_readline (TYPE_1__*,int ) ;
+ int svn_stream_set_seek (TYPE_1__*,int ) ;
+ int svn_stream_set_skip (TYPE_1__*,int ) ;
+ int svn_stream_set_write (TYPE_1__*,int ) ;
+ int write_handler_apr ;
 
 __attribute__((used)) static svn_stream_t *
 make_stream_from_apr_file(apr_file_t *file,
@@ -50,7 +50,7 @@ make_stream_from_apr_file(apr_file_t *file,
   struct baton_apr *baton;
   svn_stream_t *stream;
 
-  if (file == NULL)
+  if (file == ((void*)0))
     return svn_stream_empty(pool);
 
   baton = apr_palloc(pool, sizeof(*baton));

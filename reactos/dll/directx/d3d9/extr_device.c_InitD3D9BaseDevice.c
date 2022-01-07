@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_9__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_11__ {int /*<<< orphan*/  RawDisplayFormat; int /*<<< orphan*/  dwRefreshRate; int /*<<< orphan*/  dwDisplayHeight; int /*<<< orphan*/  dwDisplayWidth; } ;
+
+
+typedef struct TYPE_14__ TYPE_9__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_11__ {int RawDisplayFormat; int dwRefreshRate; int dwDisplayHeight; int dwDisplayWidth; } ;
 struct TYPE_14__ {TYPE_2__ DriverCaps; } ;
 struct TYPE_13__ {TYPE_9__* DisplayAdapters; } ;
-struct TYPE_12__ {int lRefCnt; size_t AdjustedBehaviourFlags; size_t BehaviourFlags; size_t NumAdaptersInDevice; int dwDXVersion; size_t* AdapterIndexInGroup; int /*<<< orphan*/ * pSwapChains; int /*<<< orphan*/ * pSwapChains2; TYPE_1__* CurrentDisplayMode; int /*<<< orphan*/ * DeviceData; int /*<<< orphan*/  hWnd; int /*<<< orphan*/  DeviceType; TYPE_4__* pDirect3D9; int /*<<< orphan*/  CriticalSection; int /*<<< orphan*/ * lpVtbl; int /*<<< orphan*/ * pUnknown; int /*<<< orphan*/  dwProcessId; int /*<<< orphan*/ * pResourceManager; } ;
-struct TYPE_10__ {int /*<<< orphan*/  Format; int /*<<< orphan*/  RefreshRate; int /*<<< orphan*/  Height; int /*<<< orphan*/  Width; } ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  TYPE_3__* LPDIRECT3DDEVICE9_INT ;
-typedef  TYPE_4__* LPDIRECT3D9_INT ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  size_t DWORD ;
-typedef  int /*<<< orphan*/  D3DPRESENT_PARAMETERS ;
-typedef  int /*<<< orphan*/  D3DDEVTYPE ;
-typedef  int /*<<< orphan*/  D3D9ResourceManager ;
+struct TYPE_12__ {int lRefCnt; size_t AdjustedBehaviourFlags; size_t BehaviourFlags; size_t NumAdaptersInDevice; int dwDXVersion; size_t* AdapterIndexInGroup; int * pSwapChains; int * pSwapChains2; TYPE_1__* CurrentDisplayMode; int * DeviceData; int hWnd; int DeviceType; TYPE_4__* pDirect3D9; int CriticalSection; int * lpVtbl; int * pUnknown; int dwProcessId; int * pResourceManager; } ;
+struct TYPE_10__ {int Format; int RefreshRate; int Height; int Width; } ;
+typedef int LPVOID ;
+typedef TYPE_3__* LPDIRECT3DDEVICE9_INT ;
+typedef TYPE_4__* LPDIRECT3D9_INT ;
+typedef int IUnknown ;
+typedef int HWND ;
+typedef int HRESULT ;
+typedef size_t DWORD ;
+typedef int D3DPRESENT_PARAMETERS ;
+typedef int D3DDEVTYPE ;
+typedef int D3D9ResourceManager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AlignedAlloc (int /*<<< orphan*/ *,int) ; 
- scalar_t__ CreateD3D9DeviceData (TYPE_9__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CreateDirect3DSwapChain9 (int /*<<< orphan*/ ,TYPE_3__*,size_t) ; 
- int /*<<< orphan*/  D3D_OK ; 
- int /*<<< orphan*/  DDERR_GENERIC ; 
- int /*<<< orphan*/  DDERR_OUTOFMEMORY ; 
- int /*<<< orphan*/  DPRINT1 (char*,...) ; 
- int /*<<< orphan*/  Direct3DDevice9HAL_Vtbl ; 
- int /*<<< orphan*/  Direct3DSwapChain9_Init (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetCurrentThreadId () ; 
- int /*<<< orphan*/  InitD3D9ResourceManager (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  InitializeCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RT_BUILTIN ; 
+
+ int AlignedAlloc (int *,int) ;
+ scalar_t__ CreateD3D9DeviceData (TYPE_9__*,int *) ;
+ int CreateDirect3DSwapChain9 (int ,TYPE_3__*,size_t) ;
+ int D3D_OK ;
+ int DDERR_GENERIC ;
+ int DDERR_OUTOFMEMORY ;
+ int DPRINT1 (char*,...) ;
+ int Direct3DDevice9HAL_Vtbl ;
+ int Direct3DSwapChain9_Init (int ,int *) ;
+ scalar_t__ FAILED (int ) ;
+ scalar_t__ FALSE ;
+ int GetCurrentThreadId () ;
+ int InitD3D9ResourceManager (int *,TYPE_3__*) ;
+ int InitializeCriticalSection (int *) ;
+ int RT_BUILTIN ;
 
 HRESULT InitD3D9BaseDevice(LPDIRECT3DDEVICE9_INT pThisBaseDevice, LPDIRECT3D9_INT pDirect3D9,
                            UINT Adapter, D3DDEVTYPE DeviceType, HWND hFocusWindow, DWORD BehaviourFlags,
@@ -56,7 +56,7 @@ HRESULT InitD3D9BaseDevice(LPDIRECT3DDEVICE9_INT pThisBaseDevice, LPDIRECT3D9_IN
     D3D9ResourceManager* pResourceManager;
     DWORD i;
 
-    // Insert Reset/Ctor here
+
 
     if (FAILED(AlignedAlloc((LPVOID *)&pResourceManager, sizeof(D3D9ResourceManager))) ||
         FAILED(InitD3D9ResourceManager(pResourceManager, pThisBaseDevice)))
@@ -80,7 +80,7 @@ HRESULT InitD3D9BaseDevice(LPDIRECT3DDEVICE9_INT pThisBaseDevice, LPDIRECT3D9_IN
     pThisBaseDevice->BehaviourFlags = BehaviourFlags;
     pThisBaseDevice->NumAdaptersInDevice = NumAdaptersToCreate;
 
-    // TODO: Query driver for correct DX version
+
     pThisBaseDevice->dwDXVersion = 9;
 
     for (i = 0; i < NumAdaptersToCreate; i++)

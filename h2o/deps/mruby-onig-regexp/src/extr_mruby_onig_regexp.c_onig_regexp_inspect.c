@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int /*<<< orphan*/  OnigRegex ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Data_Get_Struct (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ ONIG_ENCODING_ASCII ; 
- int /*<<< orphan*/  RSTRING_LEN (int /*<<< orphan*/ ) ; 
- scalar_t__ RSTRING_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_intern_lit (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  mrb_iv_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_onig_regexp_type ; 
- int /*<<< orphan*/  mrb_str_cat_cstr (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mrb_str_cat_lit (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mrb_str_new_lit (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ onig_get_encoding (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  onig_get_options (int /*<<< orphan*/ ) ; 
- scalar_t__* option_to_str (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  regexp_expr_str (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef int OnigRegex ;
+
+
+ int Data_Get_Struct (int *,int ,int *,int ) ;
+ scalar_t__ ONIG_ENCODING_ASCII ;
+ int RSTRING_LEN (int ) ;
+ scalar_t__ RSTRING_PTR (int ) ;
+ int mrb_intern_lit (int *,char*) ;
+ int mrb_iv_get (int *,int ,int ) ;
+ int mrb_onig_regexp_type ;
+ int mrb_str_cat_cstr (int *,int ,char*) ;
+ int mrb_str_cat_lit (int *,int ,char*) ;
+ int mrb_str_new_lit (int *,char*) ;
+ scalar_t__ onig_get_encoding (int ) ;
+ int onig_get_options (int ) ;
+ scalar_t__* option_to_str (char*,int ) ;
+ int regexp_expr_str (int *,int ,char const*,int ) ;
 
 __attribute__((used)) static mrb_value
 onig_regexp_inspect(mrb_state *mrb, mrb_value self) {

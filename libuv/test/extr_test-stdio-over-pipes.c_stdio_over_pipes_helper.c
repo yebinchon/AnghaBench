@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_write_t ;
-typedef  int /*<<< orphan*/  uv_stream_t ;
-typedef  int /*<<< orphan*/  uv_loop_t ;
-typedef  int /*<<< orphan*/  uv_handle_t ;
-typedef  int /*<<< orphan*/  uv_buf_t ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (char**) ; 
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  MAKE_VALGRIND_HAPPY () ; 
- scalar_t__ UV_NAMED_PIPE ; 
- int /*<<< orphan*/  UV_RUN_DEFAULT ; 
- int /*<<< orphan*/  after_pipe_write ; 
- int after_write_called ; 
- int close_cb_called ; 
- int /*<<< orphan*/  notify_parent_process () ; 
- int /*<<< orphan*/  on_pipe_read ; 
- int on_pipe_read_called ; 
- int /*<<< orphan*/  on_read_alloc ; 
- int /*<<< orphan*/  stdin_pipe ; 
- int /*<<< orphan*/  stdout_pipe ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  uv_buf_init (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * uv_default_loop () ; 
- scalar_t__ uv_guess_handle (int) ; 
- int uv_pipe_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv_pipe_open (int /*<<< orphan*/ *,int) ; 
- int uv_read_start (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv_ref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_run (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv_unref (int /*<<< orphan*/ *) ; 
- int uv_write (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uv_write_t ;
+typedef int uv_stream_t ;
+typedef int uv_loop_t ;
+typedef int uv_handle_t ;
+typedef int uv_buf_t ;
+
+
+ unsigned int ARRAY_SIZE (char**) ;
+ int ASSERT (int) ;
+ int MAKE_VALGRIND_HAPPY () ;
+ scalar_t__ UV_NAMED_PIPE ;
+ int UV_RUN_DEFAULT ;
+ int after_pipe_write ;
+ int after_write_called ;
+ int close_cb_called ;
+ int notify_parent_process () ;
+ int on_pipe_read ;
+ int on_pipe_read_called ;
+ int on_read_alloc ;
+ int stdin_pipe ;
+ int stdout_pipe ;
+ int strlen (char*) ;
+ int uv_buf_init (char*,int ) ;
+ int * uv_default_loop () ;
+ scalar_t__ uv_guess_handle (int) ;
+ int uv_pipe_init (int *,int *,int ) ;
+ int uv_pipe_open (int *,int) ;
+ int uv_read_start (int *,int ,int ) ;
+ int uv_ref (int *) ;
+ int uv_run (int *,int ) ;
+ int uv_unref (int *) ;
+ int uv_write (int *,int *,int *,int,int ) ;
 
 int stdio_over_pipes_helper(void) {
-  /* Write several buffers to test that the write order is preserved. */
+
   char* buffers[] = {
     "he",
     "ll",
@@ -72,7 +72,7 @@ int stdio_over_pipes_helper(void) {
   uv_pipe_open(&stdin_pipe, 0);
   uv_pipe_open(&stdout_pipe, 1);
 
-  /* Unref both stdio handles to make sure that all writes complete. */
+
   uv_unref((uv_handle_t*)&stdin_pipe);
   uv_unref((uv_handle_t*)&stdout_pipe);
 

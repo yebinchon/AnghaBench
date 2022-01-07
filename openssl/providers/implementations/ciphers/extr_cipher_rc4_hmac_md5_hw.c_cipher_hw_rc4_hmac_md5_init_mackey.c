@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hmac_key ;
-struct TYPE_2__ {int /*<<< orphan*/  tail; int /*<<< orphan*/  head; } ;
-typedef  TYPE_1__ PROV_RC4_HMAC_MD5_CTX ;
-typedef  int /*<<< orphan*/  PROV_CIPHER_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MD5_Final (unsigned char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MD5_Init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MD5_Update (int /*<<< orphan*/ *,unsigned char const*,int) ; 
- int /*<<< orphan*/  OPENSSL_cleanse (unsigned char*,int) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,size_t) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int hmac_key ;
+struct TYPE_2__ {int tail; int head; } ;
+typedef TYPE_1__ PROV_RC4_HMAC_MD5_CTX ;
+typedef int PROV_CIPHER_CTX ;
+
+
+ int MD5_Final (unsigned char*,int *) ;
+ int MD5_Init (int *) ;
+ int MD5_Update (int *,unsigned char const*,int) ;
+ int OPENSSL_cleanse (unsigned char*,int) ;
+ int memcpy (unsigned char*,unsigned char const*,size_t) ;
+ int memset (unsigned char*,int ,int) ;
 
 __attribute__((used)) static void cipher_hw_rc4_hmac_md5_init_mackey(PROV_CIPHER_CTX *bctx,
                                                const unsigned char *key,
@@ -43,12 +43,12 @@ __attribute__((used)) static void cipher_hw_rc4_hmac_md5_init_mackey(PROV_CIPHER
     }
 
     for (i = 0; i < sizeof(hmac_key); i++)
-        hmac_key[i] ^= 0x36; /* ipad */
+        hmac_key[i] ^= 0x36;
     MD5_Init(&ctx->head);
     MD5_Update(&ctx->head, hmac_key, sizeof(hmac_key));
 
     for (i = 0; i < sizeof(hmac_key); i++)
-        hmac_key[i] ^= 0x36 ^ 0x5c; /* opad */
+        hmac_key[i] ^= 0x36 ^ 0x5c;
     MD5_Init(&ctx->tail);
     MD5_Update(&ctx->tail, hmac_key, sizeof(hmac_key));
 

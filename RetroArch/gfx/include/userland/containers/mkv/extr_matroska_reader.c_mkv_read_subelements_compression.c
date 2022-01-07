@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_7__ ;
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint64_t ;
-typedef  scalar_t__ int64_t ;
+
+
+typedef struct TYPE_19__ TYPE_7__ ;
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef scalar_t__ int64_t ;
 struct TYPE_17__ {size_t encodings_num; TYPE_4__* encodings; } ;
-typedef  TYPE_5__ VC_CONTAINER_TRACK_MODULE_T ;
+typedef TYPE_5__ VC_CONTAINER_TRACK_MODULE_T ;
 struct TYPE_18__ {TYPE_1__* priv; } ;
-typedef  TYPE_6__ VC_CONTAINER_T ;
-typedef  scalar_t__ VC_CONTAINER_STATUS_T ;
+typedef TYPE_6__ VC_CONTAINER_T ;
+typedef scalar_t__ VC_CONTAINER_STATUS_T ;
 struct TYPE_19__ {TYPE_3__* parsing; } ;
-typedef  TYPE_7__ VC_CONTAINER_MODULE_T ;
-struct TYPE_16__ {scalar_t__ type; scalar_t__ data_size; int /*<<< orphan*/ * data; } ;
+typedef TYPE_7__ VC_CONTAINER_MODULE_T ;
+struct TYPE_16__ {scalar_t__ type; scalar_t__ data_size; int * data; } ;
 struct TYPE_15__ {TYPE_2__* priv; } ;
 struct TYPE_14__ {TYPE_5__* module; } ;
 struct TYPE_13__ {TYPE_7__* module; } ;
-typedef  scalar_t__ MKV_ELEMENT_ID_T ;
+typedef scalar_t__ MKV_ELEMENT_ID_T ;
 
-/* Variables and functions */
- scalar_t__ MKV_CONTENT_ENCODING_COMPRESSION_HEADER ; 
- scalar_t__ MKV_CONTENT_ENCODING_COMPRESSION_ZLIB ; 
- scalar_t__ MKV_CONTENT_ENCODING_UNKNOWN ; 
- scalar_t__ MKV_ELEMENT_ID_CONTENT_COMPRESSION_ALGO ; 
- scalar_t__ MKV_ELEMENT_ID_CONTENT_COMPRESSION_SETTINGS ; 
- scalar_t__ MKV_MAX_ENCODING_DATA ; 
- scalar_t__ READ_BYTES (TYPE_6__*,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  SKIP_BYTES (TYPE_6__*,scalar_t__) ; 
- scalar_t__ STREAM_STATUS (TYPE_6__*) ; 
- scalar_t__ VC_CONTAINER_ERROR_OUT_OF_MEMORY ; 
- scalar_t__ VC_CONTAINER_ERROR_OUT_OF_RESOURCES ; 
- scalar_t__ VC_CONTAINER_SUCCESS ; 
- int /*<<< orphan*/ * malloc (int) ; 
- scalar_t__ mkv_read_element_data_uint (TYPE_6__*,scalar_t__,int*) ; 
+
+ scalar_t__ MKV_CONTENT_ENCODING_COMPRESSION_HEADER ;
+ scalar_t__ MKV_CONTENT_ENCODING_COMPRESSION_ZLIB ;
+ scalar_t__ MKV_CONTENT_ENCODING_UNKNOWN ;
+ scalar_t__ MKV_ELEMENT_ID_CONTENT_COMPRESSION_ALGO ;
+ scalar_t__ MKV_ELEMENT_ID_CONTENT_COMPRESSION_SETTINGS ;
+ scalar_t__ MKV_MAX_ENCODING_DATA ;
+ scalar_t__ READ_BYTES (TYPE_6__*,int *,scalar_t__) ;
+ int SKIP_BYTES (TYPE_6__*,scalar_t__) ;
+ scalar_t__ STREAM_STATUS (TYPE_6__*) ;
+ scalar_t__ VC_CONTAINER_ERROR_OUT_OF_MEMORY ;
+ scalar_t__ VC_CONTAINER_ERROR_OUT_OF_RESOURCES ;
+ scalar_t__ VC_CONTAINER_SUCCESS ;
+ int * malloc (int) ;
+ scalar_t__ mkv_read_element_data_uint (TYPE_6__*,scalar_t__,int*) ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T mkv_read_subelements_compression( VC_CONTAINER_T *p_ctx, MKV_ELEMENT_ID_T id, int64_t size )
 {

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NDFA_time ; 
- int /*<<< orphan*/  NDFA_to_DFA_time ; 
- int /*<<< orphan*/  automaton_generation_time ; 
- int /*<<< orphan*/  equiv_time ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  minimize_time ; 
- scalar_t__ ndfa_flag ; 
- int /*<<< orphan*/  output_time ; 
- int /*<<< orphan*/  print_active_time (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  transform_time ; 
+
+
+
+typedef int FILE ;
+
+
+ int NDFA_time ;
+ int NDFA_to_DFA_time ;
+ int automaton_generation_time ;
+ int equiv_time ;
+ int fprintf (int *,char*) ;
+ int minimize_time ;
+ scalar_t__ ndfa_flag ;
+ int output_time ;
+ int print_active_time (int *,int ) ;
+ int transform_time ;
 
 __attribute__((used)) static void
 output_time_statistics (FILE *f)

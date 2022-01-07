@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
 struct TYPE_5__ {int x_min; int search_param; int y_min; int x_max; int y_max; int pred_x; int pred_y; TYPE_1__* preds; } ;
 struct TYPE_4__ {int nb; int** mvs; } ;
-typedef  TYPE_1__ AVMotionEstPredictor ;
-typedef  TYPE_2__ AVMotionEstContext ;
+typedef TYPE_1__ AVMotionEstPredictor ;
+typedef TYPE_2__ AVMotionEstContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COST_P_MV (int,int) ; 
- int FFMAX (int,int) ; 
- int FFMIN (int,int) ; 
- int /*<<< orphan*/  UINT64_MAX ; 
- int** dia1 ; 
- int** hex2 ; 
- int** hex4 ; 
+
+ int COST_P_MV (int,int) ;
+ int FFMAX (int,int) ;
+ int FFMIN (int,int) ;
+ int UINT64_MAX ;
+ int** dia1 ;
+ int** hex2 ;
+ int** hex4 ;
 
 uint64_t ff_me_search_umh(AVMotionEstContext *me_ctx, int x_mb, int y_mb, int *mv)
 {
@@ -47,7 +47,7 @@ uint64_t ff_me_search_umh(AVMotionEstContext *me_ctx, int x_mb, int y_mb, int *m
     for (i = 0; i < pred->nb; i++)
         COST_P_MV(x_mb + pred->mvs[i][0], y_mb + pred->mvs[i][1]);
 
-    // Unsymmetrical-cross Search
+
     x = mv[0];
     y = mv[1];
     for (d = 1; d <= me_ctx->search_param; d += 2) {
@@ -59,7 +59,7 @@ uint64_t ff_me_search_umh(AVMotionEstContext *me_ctx, int x_mb, int y_mb, int *m
         }
     }
 
-    // Uneven Multi-Hexagon-Grid Search
+
     end_x = FFMIN(mv[0] + 2, x_max);
     end_y = FFMIN(mv[1] + 2, y_max);
     for (y = FFMAX(y_min, mv[1] - 2); y <= end_y; y++)
@@ -72,7 +72,7 @@ uint64_t ff_me_search_umh(AVMotionEstContext *me_ctx, int x_mb, int y_mb, int *m
         for (i = 1; i < 16; i++)
             COST_P_MV(x + hex4[i][0] * d, y + hex4[i][1] * d);
 
-    // Extended Hexagon-based Search
+
     do {
         x = mv[0];
         y = mv[1];

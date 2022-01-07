@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct uart_port {int dummy; } ;
-struct uart_pmac_port {int /*<<< orphan*/ * node; } ;
+struct uart_pmac_port {int * node; } ;
 
-/* Variables and functions */
- unsigned char CTS ; 
- unsigned char DCD ; 
- int /*<<< orphan*/  R0 ; 
- unsigned char SYNC_HUNT ; 
- unsigned int TIOCM_CAR ; 
- unsigned int TIOCM_CTS ; 
- unsigned int TIOCM_DSR ; 
- scalar_t__ ZS_IS_ASLEEP (struct uart_pmac_port*) ; 
- unsigned char read_zsreg (struct uart_pmac_port*,int /*<<< orphan*/ ) ; 
- struct uart_pmac_port* to_pmz (struct uart_port*) ; 
+
+ unsigned char CTS ;
+ unsigned char DCD ;
+ int R0 ;
+ unsigned char SYNC_HUNT ;
+ unsigned int TIOCM_CAR ;
+ unsigned int TIOCM_CTS ;
+ unsigned int TIOCM_DSR ;
+ scalar_t__ ZS_IS_ASLEEP (struct uart_pmac_port*) ;
+ unsigned char read_zsreg (struct uart_pmac_port*,int ) ;
+ struct uart_pmac_port* to_pmz (struct uart_port*) ;
 
 __attribute__((used)) static unsigned int pmz_get_mctrl(struct uart_port *port)
 {
-	struct uart_pmac_port *uap = to_pmz(port);
-	unsigned char status;
-	unsigned int ret;
+ struct uart_pmac_port *uap = to_pmz(port);
+ unsigned char status;
+ unsigned int ret;
 
-	if (ZS_IS_ASLEEP(uap) || uap->node == NULL)
-		return 0;
+ if (ZS_IS_ASLEEP(uap) || uap->node == ((void*)0))
+  return 0;
 
-	status = read_zsreg(uap, R0);
+ status = read_zsreg(uap, R0);
 
-	ret = 0;
-	if (status & DCD)
-		ret |= TIOCM_CAR;
-	if (status & SYNC_HUNT)
-		ret |= TIOCM_DSR;
-	if (!(status & CTS))
-		ret |= TIOCM_CTS;
+ ret = 0;
+ if (status & DCD)
+  ret |= TIOCM_CAR;
+ if (status & SYNC_HUNT)
+  ret |= TIOCM_DSR;
+ if (!(status & CTS))
+  ret |= TIOCM_CTS;
 
-	return ret;
+ return ret;
 }

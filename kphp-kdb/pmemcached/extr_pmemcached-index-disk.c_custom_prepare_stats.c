@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stats_buffer_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  allocated_metafile_bytes ; 
- int /*<<< orphan*/  expired_aio_queries ; 
- int /*<<< orphan*/  metafile_number ; 
- int /*<<< orphan*/  metafiles_cache_miss ; 
- int /*<<< orphan*/  metafiles_cache_ok ; 
- int /*<<< orphan*/  metafiles_load_errors ; 
- int /*<<< orphan*/  metafiles_load_success ; 
- int /*<<< orphan*/  metafiles_loaded ; 
- int /*<<< orphan*/  metafiles_unload_LRU ; 
- int /*<<< orphan*/  sb_printf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tot_aio_loaded_bytes ; 
- int /*<<< orphan*/  tot_records ; 
- int /*<<< orphan*/  use_query_fails ; 
+
+
+
+typedef int stats_buffer_t ;
+
+
+ int allocated_metafile_bytes ;
+ int expired_aio_queries ;
+ int metafile_number ;
+ int metafiles_cache_miss ;
+ int metafiles_cache_ok ;
+ int metafiles_load_errors ;
+ int metafiles_load_success ;
+ int metafiles_loaded ;
+ int metafiles_unload_LRU ;
+ int sb_printf (int *,char*,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int tot_aio_loaded_bytes ;
+ int tot_records ;
+ int use_query_fails ;
 
 void custom_prepare_stats (stats_buffer_t *sb) {
   sb_printf (sb,

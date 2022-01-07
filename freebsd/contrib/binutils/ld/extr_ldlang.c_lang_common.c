@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  force_common_definition; scalar_t__ inhibit_common_definition; } ;
-struct TYPE_5__ {int /*<<< orphan*/  sort_common; } ;
-struct TYPE_4__ {int /*<<< orphan*/  hash; scalar_t__ relocatable; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bfd_link_hash_traverse (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- TYPE_3__ command_line ; 
- TYPE_2__ config ; 
- int /*<<< orphan*/  lang_one_common ; 
- TYPE_1__ link_info ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int force_common_definition; scalar_t__ inhibit_common_definition; } ;
+struct TYPE_5__ {int sort_common; } ;
+struct TYPE_4__ {int hash; scalar_t__ relocatable; } ;
+
+
+ int bfd_link_hash_traverse (int ,int ,int*) ;
+ TYPE_3__ command_line ;
+ TYPE_2__ config ;
+ int lang_one_common ;
+ TYPE_1__ link_info ;
 
 __attribute__((used)) static void
 lang_common (void)
@@ -34,12 +34,12 @@ lang_common (void)
     return;
 
   if (! config.sort_common)
-    bfd_link_hash_traverse (link_info.hash, lang_one_common, NULL);
+    bfd_link_hash_traverse (link_info.hash, lang_one_common, ((void*)0));
   else
     {
       int power;
 
       for (power = 4; power >= 0; power--)
-	bfd_link_hash_traverse (link_info.hash, lang_one_common, &power);
+ bfd_link_hash_traverse (link_info.hash, lang_one_common, &power);
     }
 }

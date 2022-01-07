@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct priv {int /*<<< orphan*/ * vp_enum; int /*<<< orphan*/ * video_proc; } ;
+
+
+
+
+struct priv {int * vp_enum; int * video_proc; } ;
 struct mp_filter {struct priv* priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ID3D11VideoProcessorEnumerator_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ID3D11VideoProcessor_Release (int /*<<< orphan*/ *) ; 
+
+ int ID3D11VideoProcessorEnumerator_Release (int *) ;
+ int ID3D11VideoProcessor_Release (int *) ;
 
 __attribute__((used)) static void destroy_video_proc(struct mp_filter *vf)
 {
@@ -23,9 +23,9 @@ __attribute__((used)) static void destroy_video_proc(struct mp_filter *vf)
 
     if (p->video_proc)
         ID3D11VideoProcessor_Release(p->video_proc);
-    p->video_proc = NULL;
+    p->video_proc = ((void*)0);
 
     if (p->vp_enum)
         ID3D11VideoProcessorEnumerator_Release(p->vp_enum);
-    p->vp_enum = NULL;
+    p->vp_enum = ((void*)0);
 }

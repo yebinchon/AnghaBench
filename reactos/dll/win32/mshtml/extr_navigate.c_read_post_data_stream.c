@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct list {int dummy; } ;
-struct TYPE_3__ {char* post_data; int post_data_len; int /*<<< orphan*/ * post_stream; scalar_t__* headers; } ;
-typedef  TYPE_1__ request_data_t ;
-typedef  scalar_t__ nsresult ;
-typedef  int /*<<< orphan*/  nsISeekableStream ;
-typedef  int /*<<< orphan*/  nsIInputStream ;
-typedef  scalar_t__ WCHAR ;
-typedef  scalar_t__ UINT64 ;
-typedef  int UINT32 ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
-typedef  scalar_t__ BOOL ;
+struct TYPE_3__ {char* post_data; int post_data_len; int * post_stream; scalar_t__* headers; } ;
+typedef TYPE_1__ request_data_t ;
+typedef scalar_t__ nsresult ;
+typedef int nsISeekableStream ;
+typedef int nsIInputStream ;
+typedef scalar_t__ WCHAR ;
+typedef scalar_t__ UINT64 ;
+typedef int UINT32 ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- char* GlobalAlloc (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  GlobalFree (char*) ; 
- int /*<<< orphan*/  IID_nsISeekableStream ; 
- int MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,scalar_t__*,int) ; 
- scalar_t__ NS_FAILED (scalar_t__) ; 
- scalar_t__ NS_OK ; 
- int /*<<< orphan*/  NS_SEEK_SET ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  debugstr_an (char*,int) ; 
- scalar_t__* heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (scalar_t__*) ; 
- int /*<<< orphan*/  memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  nsIInputStream_AddRef (int /*<<< orphan*/ *) ; 
- scalar_t__ nsIInputStream_Available (int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ nsIInputStream_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ nsIInputStream_Read (int /*<<< orphan*/ *,char*,scalar_t__,int*) ; 
- int /*<<< orphan*/  nsISeekableStream_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ nsISeekableStream_Seek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_headers (scalar_t__*,struct list*) ; 
+
+ int CP_ACP ;
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ char* GlobalAlloc (int ,scalar_t__) ;
+ int GlobalFree (char*) ;
+ int IID_nsISeekableStream ;
+ int MultiByteToWideChar (int ,int ,char*,int,scalar_t__*,int) ;
+ scalar_t__ NS_FAILED (scalar_t__) ;
+ scalar_t__ NS_OK ;
+ int NS_SEEK_SET ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int TRACE (char*,int ) ;
+ int assert (int) ;
+ int debugstr_an (char*,int) ;
+ scalar_t__* heap_alloc (int) ;
+ int heap_free (scalar_t__*) ;
+ int memcmp (char*,char*,int) ;
+ int memcpy (char*,char*,int) ;
+ int nsIInputStream_AddRef (int *) ;
+ scalar_t__ nsIInputStream_Available (int *,scalar_t__*) ;
+ scalar_t__ nsIInputStream_QueryInterface (int *,int *,void**) ;
+ scalar_t__ nsIInputStream_Read (int *,char*,scalar_t__,int*) ;
+ int nsISeekableStream_Release (int *) ;
+ scalar_t__ nsISeekableStream_Seek (int *,int ,int ) ;
+ int parse_headers (scalar_t__*,struct list*) ;
 
 __attribute__((used)) static HRESULT read_post_data_stream(nsIInputStream *stream, BOOL contains_headers, struct list *headers_list,
         request_data_t *request_data)
@@ -66,7 +66,7 @@ __attribute__((used)) static HRESULT read_post_data_stream(nsIInputStream *strea
     if(!stream)
         return S_OK;
 
-    nsres =  nsIInputStream_Available(stream, &available);
+    nsres = nsIInputStream_Available(stream, &available);
     if(NS_FAILED(nsres))
         return E_FAIL;
 
@@ -100,7 +100,7 @@ __attribute__((used)) static HRESULT read_post_data_stream(nsIInputStream *strea
 
             data_len -= post_data-data;
 
-            size = MultiByteToWideChar(CP_ACP, 0, data, ptr-data, NULL, 0);
+            size = MultiByteToWideChar(CP_ACP, 0, data, ptr-data, ((void*)0), 0);
             headers = heap_alloc((size+1)*sizeof(WCHAR));
             if(headers) {
                 MultiByteToWideChar(CP_ACP, 0, data, ptr-data, headers, size);
@@ -124,7 +124,7 @@ __attribute__((used)) static HRESULT read_post_data_stream(nsIInputStream *strea
 
     if(!data_len) {
         GlobalFree(data);
-        post_data = NULL;
+        post_data = ((void*)0);
     }else if(post_data != data) {
         char *new_data;
 

@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int SYNTHETIC_ERRNO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  arg_snaplen ; 
- int /*<<< orphan*/  bus_pcap_header (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int fflush_and_check (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fileno (int /*<<< orphan*/ ) ; 
- scalar_t__ isatty (int /*<<< orphan*/ ) ; 
- int log_error_errno (int,char*) ; 
- int /*<<< orphan*/  message_pcap ; 
- int monitor (int,char**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stdout ; 
+ int EINVAL ;
+ int SYNTHETIC_ERRNO (int ) ;
+ int arg_snaplen ;
+ int bus_pcap_header (int ,int ) ;
+ int fflush_and_check (int ) ;
+ int fileno (int ) ;
+ scalar_t__ isatty (int ) ;
+ int log_error_errno (int,char*) ;
+ int message_pcap ;
+ int monitor (int,char**,int ) ;
+ int stdout ;
 
 __attribute__((used)) static int verb_capture(int argc, char **argv, void *userdata) {
         int r;

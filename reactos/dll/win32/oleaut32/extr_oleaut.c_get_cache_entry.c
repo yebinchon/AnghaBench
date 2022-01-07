@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bstr_cache_entry_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_2__ {int /*<<< orphan*/ * ptr; } ;
 
-/* Variables and functions */
- unsigned int BUCKET_SIZE ; 
- unsigned int FIELD_OFFSET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bstr_t ; 
- int /*<<< orphan*/ * get_cache_entry_from_idx (unsigned int) ; 
- TYPE_1__ u ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int bstr_cache_entry_t ;
+typedef int WCHAR ;
+struct TYPE_2__ {int * ptr; } ;
+
+
+ unsigned int BUCKET_SIZE ;
+ unsigned int FIELD_OFFSET (int ,int ) ;
+ int bstr_t ;
+ int * get_cache_entry_from_idx (unsigned int) ;
+ TYPE_1__ u ;
 
 __attribute__((used)) static inline bstr_cache_entry_t *get_cache_entry(size_t size)
 {

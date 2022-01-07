@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {int dummy; } ;
 struct frad_local {int (* deassoc ) (struct net_device*,struct net_device*) ;} ;
-struct dlci_local {int /*<<< orphan*/  list; struct net_device* slave; } ;
-struct dlci_add {int /*<<< orphan*/  devname; } ;
+struct dlci_local {int list; struct net_device* slave; } ;
+struct dlci_add {int devname; } ;
 
-/* Variables and functions */
- int EBUSY ; 
- int ENODEV ; 
- struct net_device* __dev_get_by_name (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dev_put (struct net_device*) ; 
- int /*<<< orphan*/  init_net ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- void* netdev_priv (struct net_device*) ; 
- scalar_t__ netif_running (struct net_device*) ; 
- int /*<<< orphan*/  rtnl_lock () ; 
- int /*<<< orphan*/  rtnl_unlock () ; 
- int stub1 (struct net_device*,struct net_device*) ; 
- int /*<<< orphan*/  unregister_netdevice (struct net_device*) ; 
+
+ int EBUSY ;
+ int ENODEV ;
+ struct net_device* __dev_get_by_name (int *,int ) ;
+ int dev_put (struct net_device*) ;
+ int init_net ;
+ int list_del (int *) ;
+ void* netdev_priv (struct net_device*) ;
+ scalar_t__ netif_running (struct net_device*) ;
+ int rtnl_lock () ;
+ int rtnl_unlock () ;
+ int stub1 (struct net_device*,struct net_device*) ;
+ int unregister_netdevice (struct net_device*) ;
 
 __attribute__((used)) static int dlci_del(struct dlci_add *dlci)
 {
-	struct dlci_local	*dlp;
-	struct frad_local	*flp;
-	struct net_device	*master, *slave;
-	int			err;
+ struct dlci_local *dlp;
+ struct frad_local *flp;
+ struct net_device *master, *slave;
+ int err;
 
-	/* validate slave device */
-	master = __dev_get_by_name(&init_net, dlci->devname);
-	if (!master)
-		return(-ENODEV);
 
-	if (netif_running(master)) {
-		return(-EBUSY);
-	}
+ master = __dev_get_by_name(&init_net, dlci->devname);
+ if (!master)
+  return(-ENODEV);
 
-	dlp = netdev_priv(master);
-	slave = dlp->slave;
-	flp = netdev_priv(slave);
+ if (netif_running(master)) {
+  return(-EBUSY);
+ }
 
-	rtnl_lock();
-	err = (*flp->deassoc)(slave, master);
-	if (!err) {
-		list_del(&dlp->list);
+ dlp = netdev_priv(master);
+ slave = dlp->slave;
+ flp = netdev_priv(slave);
 
-		unregister_netdevice(master);
+ rtnl_lock();
+ err = (*flp->deassoc)(slave, master);
+ if (!err) {
+  list_del(&dlp->list);
 
-		dev_put(slave);
-	}
-	rtnl_unlock();
+  unregister_netdevice(master);
 
-	return(err);
+  dev_put(slave);
+ }
+ rtnl_unlock();
+
+ return(err);
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  tuple; } ;
-typedef  TYPE_1__ TupleInfo ;
-typedef  int /*<<< orphan*/  ScanTupleResult ;
-typedef  scalar_t__ Form_continuous_agg ;
 
-/* Variables and functions */
- scalar_t__ GETSTRUCT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SCAN_CONTINUE ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int tuple; } ;
+typedef TYPE_1__ TupleInfo ;
+typedef int ScanTupleResult ;
+typedef scalar_t__ Form_continuous_agg ;
+
+
+ scalar_t__ GETSTRUCT (int ) ;
+ int SCAN_CONTINUE ;
 
 __attribute__((used)) static ScanTupleResult
 continuous_agg_tuple_found(TupleInfo *ti, void *data)
 {
-	Form_continuous_agg *cagg = data;
-	*cagg = (Form_continuous_agg) GETSTRUCT(ti->tuple);
-	return SCAN_CONTINUE;
+ Form_continuous_agg *cagg = data;
+ *cagg = (Form_continuous_agg) GETSTRUCT(ti->tuple);
+ return SCAN_CONTINUE;
 }

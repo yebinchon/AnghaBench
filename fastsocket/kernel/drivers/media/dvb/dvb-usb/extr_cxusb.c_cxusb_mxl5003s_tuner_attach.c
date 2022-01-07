@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct dvb_usb_adapter {TYPE_1__* dev; int /*<<< orphan*/  fe; } ;
-struct TYPE_2__ {int /*<<< orphan*/  i2c_adap; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  aver_a868r_tuner ; 
- int /*<<< orphan*/  dvb_attach (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mxl5005s_attach ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct dvb_usb_adapter {TYPE_1__* dev; int fe; } ;
+struct TYPE_2__ {int i2c_adap; } ;
+
+
+ int aver_a868r_tuner ;
+ int dvb_attach (int ,int ,int *,int *) ;
+ int mxl5005s_attach ;
 
 __attribute__((used)) static int cxusb_mxl5003s_tuner_attach(struct dvb_usb_adapter *adap)
 {
-	dvb_attach(mxl5005s_attach, adap->fe,
-		   &adap->dev->i2c_adap, &aver_a868r_tuner);
-	return 0;
+ dvb_attach(mxl5005s_attach, adap->fe,
+     &adap->dev->i2c_adap, &aver_a868r_tuner);
+ return 0;
 }

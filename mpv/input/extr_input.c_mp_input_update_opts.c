@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct input_ctx {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  input_lock (struct input_ctx*) ; 
- int /*<<< orphan*/  input_unlock (struct input_ctx*) ; 
- int /*<<< orphan*/  reload_opts (struct input_ctx*,int) ; 
+
+ int input_lock (struct input_ctx*) ;
+ int input_unlock (struct input_ctx*) ;
+ int reload_opts (struct input_ctx*,int) ;
 
 void mp_input_update_opts(struct input_ctx *ictx)
 {
     input_lock(ictx);
-    reload_opts(ictx, false);
+    reload_opts(ictx, 0);
     input_unlock(ictx);
 }

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  on ;
-typedef  int /*<<< orphan*/  BIO_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_ADDR_sockaddr (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BIO_ADDR_sockaddr_size (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BIO_F_BIO_CONNECT ; 
- int /*<<< orphan*/  BIO_R_CONNECT_ERROR ; 
- int /*<<< orphan*/  BIO_R_INVALID_SOCKET ; 
- int /*<<< orphan*/  BIO_R_UNABLE_TO_KEEPALIVE ; 
- int /*<<< orphan*/  BIO_R_UNABLE_TO_NODELAY ; 
- int BIO_SOCK_KEEPALIVE ; 
- int BIO_SOCK_NODELAY ; 
- int BIO_SOCK_NONBLOCK ; 
- int /*<<< orphan*/  BIO_sock_should_retry (int) ; 
- int /*<<< orphan*/  BIO_socket_nbio (int,int) ; 
- int /*<<< orphan*/  BIOerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_LIB_SYS ; 
- int /*<<< orphan*/  ERR_raise_data (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  IPPROTO_TCP ; 
- int /*<<< orphan*/  SOL_SOCKET ; 
- int /*<<< orphan*/  SO_KEEPALIVE ; 
- int /*<<< orphan*/  TCP_NODELAY ; 
- int connect (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_last_socket_error () ; 
- scalar_t__ setsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void const*,int) ; 
+
+
+
+typedef int on ;
+typedef int BIO_ADDR ;
+
+
+ int BIO_ADDR_sockaddr (int const*) ;
+ int BIO_ADDR_sockaddr_size (int const*) ;
+ int BIO_F_BIO_CONNECT ;
+ int BIO_R_CONNECT_ERROR ;
+ int BIO_R_INVALID_SOCKET ;
+ int BIO_R_UNABLE_TO_KEEPALIVE ;
+ int BIO_R_UNABLE_TO_NODELAY ;
+ int BIO_SOCK_KEEPALIVE ;
+ int BIO_SOCK_NODELAY ;
+ int BIO_SOCK_NONBLOCK ;
+ int BIO_sock_should_retry (int) ;
+ int BIO_socket_nbio (int,int) ;
+ int BIOerr (int ,int ) ;
+ int ERR_LIB_SYS ;
+ int ERR_raise_data (int ,int ,char*) ;
+ int IPPROTO_TCP ;
+ int SOL_SOCKET ;
+ int SO_KEEPALIVE ;
+ int TCP_NODELAY ;
+ int connect (int,int ,int ) ;
+ int get_last_socket_error () ;
+ scalar_t__ setsockopt (int,int ,int ,void const*,int) ;
 
 int BIO_connect(int sock, const BIO_ADDR *addr, int options)
 {

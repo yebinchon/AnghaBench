@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct musb {int /*<<< orphan*/  xceiv; int /*<<< orphan*/  nb; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  usb_put_phy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usb_unregister_notifier (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct musb {int xceiv; int nb; } ;
+
+
+ int usb_put_phy (int ) ;
+ int usb_unregister_notifier (int ,int *) ;
 
 __attribute__((used)) static int ux500_musb_exit(struct musb *musb)
 {
-	usb_unregister_notifier(musb->xceiv, &musb->nb);
+ usb_unregister_notifier(musb->xceiv, &musb->nb);
 
-	usb_put_phy(musb->xceiv);
+ usb_put_phy(musb->xceiv);
 
-	return 0;
+ return 0;
 }

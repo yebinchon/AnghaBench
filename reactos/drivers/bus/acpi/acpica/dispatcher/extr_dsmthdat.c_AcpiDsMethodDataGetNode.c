@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT8 ;
-typedef  size_t UINT32 ;
-struct TYPE_3__ {int /*<<< orphan*/ * Arguments; int /*<<< orphan*/ * LocalVariables; } ;
-typedef  TYPE_1__ ACPI_WALK_STATE ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  int /*<<< orphan*/  ACPI_NAMESPACE_NODE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_FUNCTION_TRACE (int /*<<< orphan*/ ) ; 
- size_t ACPI_METHOD_MAX_ARG ; 
- size_t ACPI_METHOD_MAX_LOCAL ; 
-#define  ACPI_REFCLASS_ARG 129 
-#define  ACPI_REFCLASS_LOCAL 128 
- int /*<<< orphan*/  AE_AML_INVALID_INDEX ; 
- int /*<<< orphan*/  AE_INFO ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  AE_TYPE ; 
- int /*<<< orphan*/  DsMethodDataGetNode ; 
- int /*<<< orphan*/  return_ACPI_STATUS (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UINT8 ;
+typedef size_t UINT32 ;
+struct TYPE_3__ {int * Arguments; int * LocalVariables; } ;
+typedef TYPE_1__ ACPI_WALK_STATE ;
+typedef int ACPI_STATUS ;
+typedef int ACPI_NAMESPACE_NODE ;
+
+
+ int ACPI_ERROR (int ) ;
+ int ACPI_FUNCTION_TRACE (int ) ;
+ size_t ACPI_METHOD_MAX_ARG ;
+ size_t ACPI_METHOD_MAX_LOCAL ;
+
+
+ int AE_AML_INVALID_INDEX ;
+ int AE_INFO ;
+ int AE_OK ;
+ int AE_TYPE ;
+ int DsMethodDataGetNode ;
+ int return_ACPI_STATUS (int ) ;
 
 ACPI_STATUS
 AcpiDsMethodDataGetNode (
-    UINT8                   Type,
-    UINT32                  Index,
-    ACPI_WALK_STATE         *WalkState,
-    ACPI_NAMESPACE_NODE     **Node)
+    UINT8 Type,
+    UINT32 Index,
+    ACPI_WALK_STATE *WalkState,
+    ACPI_NAMESPACE_NODE **Node)
 {
     ACPI_FUNCTION_TRACE (DsMethodDataGetNode);
 
 
-    /*
-     * Method Locals and Arguments are supported
-     */
+
+
+
     switch (Type)
     {
-    case ACPI_REFCLASS_LOCAL:
+    case 128:
 
         if (Index > ACPI_METHOD_MAX_LOCAL)
         {
@@ -57,12 +57,12 @@ AcpiDsMethodDataGetNode (
             return_ACPI_STATUS (AE_AML_INVALID_INDEX);
         }
 
-        /* Return a pointer to the pseudo-node */
+
 
         *Node = &WalkState->LocalVariables[Index];
         break;
 
-    case ACPI_REFCLASS_ARG:
+    case 129:
 
         if (Index > ACPI_METHOD_MAX_ARG)
         {
@@ -72,7 +72,7 @@ AcpiDsMethodDataGetNode (
             return_ACPI_STATUS (AE_AML_INVALID_INDEX);
         }
 
-        /* Return a pointer to the pseudo-node */
+
 
         *Node = &WalkState->Arguments[Index];
         break;

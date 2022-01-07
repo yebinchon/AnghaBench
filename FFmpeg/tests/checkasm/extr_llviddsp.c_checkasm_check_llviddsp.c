@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LLVidDSPContext ;
 
-/* Variables and functions */
- int av_clip (int,int,int) ; 
- int /*<<< orphan*/  check_add_bytes (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  check_add_gradient_pred (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  check_add_left_pred (int /*<<< orphan*/ ,int,int,char*) ; 
- int /*<<< orphan*/  check_add_left_pred_16 (int /*<<< orphan*/ ,int,int,int,char*) ; 
- int /*<<< orphan*/  check_add_median_pred (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ff_llviddsp_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  report (char*) ; 
- int rnd () ; 
+
+
+
+typedef int LLVidDSPContext ;
+
+
+ int av_clip (int,int,int) ;
+ int check_add_bytes (int ,int) ;
+ int check_add_gradient_pred (int ,int) ;
+ int check_add_left_pred (int ,int,int,char*) ;
+ int check_add_left_pred_16 (int ,int,int,int,char*) ;
+ int check_add_median_pred (int ,int) ;
+ int ff_llviddsp_init (int *) ;
+ int report (char*) ;
+ int rnd () ;
 
 void checkasm_check_llviddsp(void)
 {

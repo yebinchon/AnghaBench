@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct memcache_server_functions {struct mc_cluster* info; } ;
 struct mc_config {int clusters_num; struct mc_cluster* Clusters; } ;
-struct mc_cluster {int other_cluster_no; scalar_t__ port; int server_socket; int cluster_no; int cluster_name; struct connection* listening_connection; int /*<<< orphan*/  mc_proxy_inbound; } ;
-struct connection {scalar_t__ basic_type; int fd; int /*<<< orphan*/ * extra; } ;
+struct mc_cluster {int other_cluster_no; scalar_t__ port; int server_socket; int cluster_no; int cluster_name; struct connection* listening_connection; int mc_proxy_inbound; } ;
+struct connection {scalar_t__ basic_type; int fd; int * extra; } ;
 
-/* Variables and functions */
- struct connection* Connections ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ ct_inbound ; 
- int /*<<< orphan*/  ct_memcache_server ; 
- int /*<<< orphan*/  epoll_close (int) ; 
- int /*<<< orphan*/  force_clear_connection (struct connection*) ; 
- scalar_t__ init_listening_connection (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int max_connection ; 
- int /*<<< orphan*/  vkprintf (int,char*,int,scalar_t__,int,...) ; 
+
+ struct connection* Connections ;
+ int assert (int) ;
+ int close (int) ;
+ scalar_t__ ct_inbound ;
+ int ct_memcache_server ;
+ int epoll_close (int) ;
+ int force_clear_connection (struct connection*) ;
+ scalar_t__ init_listening_connection (int,int *,int *) ;
+ int max_connection ;
+ int vkprintf (int,char*,int,scalar_t__,int,...) ;
 
 int transfer_listening_sockets (struct mc_config *MC, struct mc_config *MC_Old) {
   int i, j, k;
@@ -46,7 +46,7 @@ int transfer_listening_sockets (struct mc_config *MC, struct mc_config *MC_Old) 
       C->listening_connection = Connections + C->server_socket;
     }
   }
-  for (k = 0; k <= max_connection; k++) { 
+  for (k = 0; k <= max_connection; k++) {
     struct connection *c = Connections + k;
     if (c->basic_type != ct_inbound || c->fd != k) {
       continue;

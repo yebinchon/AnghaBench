@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  objective; } ;
-typedef  TYPE_1__ sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  TYPE_1__ Manager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MANAGER_IS_SYSTEM (TYPE_1__*) ; 
- int /*<<< orphan*/  MANAGER_KEXEC ; 
- int /*<<< orphan*/  SD_BUS_ERROR_NOT_SUPPORTED ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int mac_selinux_access_check (TYPE_1__*,char*,int /*<<< orphan*/ *) ; 
- int sd_bus_error_setf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int sd_bus_reply_method_return (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int objective; } ;
+typedef TYPE_1__ sd_bus_message ;
+typedef int sd_bus_error ;
+typedef TYPE_1__ Manager ;
+
+
+ int MANAGER_IS_SYSTEM (TYPE_1__*) ;
+ int MANAGER_KEXEC ;
+ int SD_BUS_ERROR_NOT_SUPPORTED ;
+ int assert (TYPE_1__*) ;
+ int mac_selinux_access_check (TYPE_1__*,char*,int *) ;
+ int sd_bus_error_setf (int *,int ,char*) ;
+ int sd_bus_reply_method_return (TYPE_1__*,int *) ;
 
 __attribute__((used)) static int method_kexec(sd_bus_message *message, void *userdata, sd_bus_error *error) {
         Manager *m = userdata;
@@ -41,5 +41,5 @@ __attribute__((used)) static int method_kexec(sd_bus_message *message, void *use
 
         m->objective = MANAGER_KEXEC;
 
-        return sd_bus_reply_method_return(message, NULL);
+        return sd_bus_reply_method_return(message, ((void*)0));
 }

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_7__ ;
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
-typedef  struct TYPE_12__   TYPE_10__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_19__ TYPE_7__ ;
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+typedef struct TYPE_12__ TYPE_10__ ;
+
+
 struct TYPE_16__ {int tries; scalar_t__ incs; } ;
-struct TYPE_14__ {int /*<<< orphan*/  logout; } ;
+struct TYPE_14__ {int logout; } ;
 struct TYPE_15__ {TYPE_2__ script; } ;
-struct TYPE_13__ {scalar_t__ run; int /*<<< orphan*/  packetmode; } ;
-struct datalink {scalar_t__ state; TYPE_7__* physical; TYPE_4__ dial; TYPE_3__ cfg; int /*<<< orphan*/  chat; TYPE_1__ script; } ;
-struct TYPE_17__ {int /*<<< orphan*/  openmode; } ;
-struct TYPE_12__ {int /*<<< orphan*/  fsm; TYPE_5__ cfg; } ;
-struct TYPE_18__ {TYPE_10__ lcp; int /*<<< orphan*/  ccp; } ;
-struct TYPE_19__ {scalar_t__ type; TYPE_6__ link; int /*<<< orphan*/  async; int /*<<< orphan*/  hdlc; } ;
+struct TYPE_13__ {scalar_t__ run; int packetmode; } ;
+struct datalink {scalar_t__ state; TYPE_7__* physical; TYPE_4__ dial; TYPE_3__ cfg; int chat; TYPE_1__ script; } ;
+struct TYPE_17__ {int openmode; } ;
+struct TYPE_12__ {int fsm; TYPE_5__ cfg; } ;
+struct TYPE_18__ {TYPE_10__ lcp; int ccp; } ;
+struct TYPE_19__ {scalar_t__ type; TYPE_6__ link; int async; int hdlc; } ;
 
-/* Variables and functions */
- scalar_t__ DATALINK_LCP ; 
- scalar_t__ DATALINK_LOGOUT ; 
- scalar_t__ DATALINK_READY ; 
- int /*<<< orphan*/  LogWARN ; 
- scalar_t__ PHYS_DEDICATED ; 
- int /*<<< orphan*/  async_Setup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ccp_Setup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  chat_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  chat_Setup (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  datalink_HangupDone (struct datalink*) ; 
- int /*<<< orphan*/  datalink_NewState (struct datalink*,scalar_t__) ; 
- int /*<<< orphan*/  fsm_Open (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fsm_Up (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hdlc_Init (int /*<<< orphan*/ *,TYPE_10__*) ; 
- int /*<<< orphan*/  lcp_Setup (TYPE_10__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  physical_Close (TYPE_7__*) ; 
- int /*<<< orphan*/  physical_Raw (TYPE_7__*) ; 
- int /*<<< orphan*/  physical_StopDeviceTimer (TYPE_7__*) ; 
+
+ scalar_t__ DATALINK_LCP ;
+ scalar_t__ DATALINK_LOGOUT ;
+ scalar_t__ DATALINK_READY ;
+ int LogWARN ;
+ scalar_t__ PHYS_DEDICATED ;
+ int async_Setup (int *) ;
+ int ccp_Setup (int *) ;
+ int chat_Finish (int *) ;
+ int chat_Setup (int *,int ,int *) ;
+ int datalink_HangupDone (struct datalink*) ;
+ int datalink_NewState (struct datalink*,scalar_t__) ;
+ int fsm_Open (int *) ;
+ int fsm_Up (int *) ;
+ int hdlc_Init (int *,TYPE_10__*) ;
+ int lcp_Setup (TYPE_10__*,int ) ;
+ int log_Printf (int ,char*) ;
+ int physical_Close (TYPE_7__*) ;
+ int physical_Raw (TYPE_7__*) ;
+ int physical_StopDeviceTimer (TYPE_7__*) ;
 
 __attribute__((used)) static void
 datalink_LoginDone(struct datalink *dl)
@@ -63,12 +63,12 @@ datalink_LoginDone(struct datalink *dl)
     log_Printf(LogWARN, "datalink_LoginDone: Not connected.\n");
     if (dl->script.run) {
       datalink_NewState(dl, DATALINK_LOGOUT);
-      if (!chat_Setup(&dl->chat, dl->cfg.script.logout, NULL))
+      if (!chat_Setup(&dl->chat, dl->cfg.script.logout, ((void*)0)))
         log_Printf(LogWARN, "Invalid logout script\n");
     } else {
       physical_StopDeviceTimer(dl->physical);
       if (dl->physical->type == PHYS_DEDICATED)
-        /* force a redial timeout */
+
         physical_Close(dl->physical);
       datalink_HangupDone(dl);
     }

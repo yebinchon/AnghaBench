@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct drm_device {TYPE_1__* dev_private; } ;
 struct drm_crtc {int dummy; } ;
 struct TYPE_2__ {struct drm_crtc** pipe_to_crtc_mapping; } ;
-typedef  TYPE_1__ drm_i915_private_t ;
+typedef TYPE_1__ drm_i915_private_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  do_intel_finish_page_flip (struct drm_device*,struct drm_crtc*) ; 
+
+ int do_intel_finish_page_flip (struct drm_device*,struct drm_crtc*) ;
 
 void intel_finish_page_flip(struct drm_device *dev, int pipe)
 {
-	drm_i915_private_t *dev_priv = dev->dev_private;
-	struct drm_crtc *crtc = dev_priv->pipe_to_crtc_mapping[pipe];
+ drm_i915_private_t *dev_priv = dev->dev_private;
+ struct drm_crtc *crtc = dev_priv->pipe_to_crtc_mapping[pipe];
 
-	do_intel_finish_page_flip(dev, crtc);
+ do_intel_finish_page_flip(dev, crtc);
 }

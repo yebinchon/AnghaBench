@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wined3d_state {int /*<<< orphan*/  gl_primitive_type; scalar_t__ index_offset; } ;
+
+
+
+
+struct wined3d_state {int gl_primitive_type; scalar_t__ index_offset; } ;
 struct wined3d_indirect_draw_parameters {scalar_t__ offset; struct wined3d_buffer* buffer; } ;
-struct wined3d_gl_info {int /*<<< orphan*/ * supported; } ;
+struct wined3d_gl_info {int * supported; } ;
 struct wined3d_context {struct wined3d_gl_info* gl_info; } ;
-struct wined3d_buffer {int /*<<< orphan*/  buffer_object; } ;
-typedef  scalar_t__ GLintptr ;
-typedef  int /*<<< orphan*/  GLenum ;
+struct wined3d_buffer {int buffer_object; } ;
+typedef scalar_t__ GLintptr ;
+typedef int GLenum ;
 
-/* Variables and functions */
- size_t ARB_DRAW_INDIRECT ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  GL_DRAW_INDIRECT_BUFFER ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_UNSIGNED_INT ; 
- int /*<<< orphan*/  GL_UNSIGNED_SHORT ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- int /*<<< orphan*/  glBindBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDrawArraysIndirect (int /*<<< orphan*/ ,void const*) ; 
- int /*<<< orphan*/  glDrawElementsIndirect (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void const*) ; 
+
+ size_t ARB_DRAW_INDIRECT ;
+ int FIXME (char*,...) ;
+ int GL_DRAW_INDIRECT_BUFFER ;
+ int GL_EXTCALL (int ) ;
+ int GL_UNSIGNED_INT ;
+ int GL_UNSIGNED_SHORT ;
+ int checkGLcall (char*) ;
+ int glBindBuffer (int ,int ) ;
+ int glDrawArraysIndirect (int ,void const*) ;
+ int glDrawElementsIndirect (int ,int ,void const*) ;
 
 __attribute__((used)) static void draw_indirect(struct wined3d_context *context, const struct wined3d_state *state,
         const struct wined3d_indirect_draw_parameters *parameters, unsigned int idx_size)

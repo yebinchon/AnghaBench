@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {void* inbld_flag; } ;
 struct TYPE_5__ {void* one_picture_only_constraint_flag; void* max_14bit_constraint_flag; void* lower_bit_rate_constraint_flag; void* intra_constraint_flag; void* max_monochrome_constraint_flag; void* max_420chroma_constraint_flag; void* max_422chroma_constraint_flag; void* max_8bit_constraint_flag; void* max_10bit_constraint_flag; void* max_12bit_constraint_flag; } ;
 struct TYPE_7__ {int profile_idc; int profile_compatibility_flag; TYPE_2__ idc1to5; TYPE_1__ idc4to7; void* frame_only_constraint_flag; void* non_packed_constraint_flag; void* interlaced_source_flag; void* progressive_source_flag; void* tier_flag; void* profile_space; } ;
-typedef  TYPE_3__ hevc_inner_profile_tier_level_t ;
-typedef  int /*<<< orphan*/  bs_t ;
+typedef TYPE_3__ hevc_inner_profile_tier_level_t ;
+typedef int bs_t ;
 
-/* Variables and functions */
- void* bs_read (int /*<<< orphan*/ *,int) ; 
- void* bs_read1 (int /*<<< orphan*/ *) ; 
- int bs_remain (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bs_skip (int /*<<< orphan*/ *,int) ; 
+
+ void* bs_read (int *,int) ;
+ void* bs_read1 (int *) ;
+ int bs_remain (int *) ;
+ int bs_skip (int *,int) ;
 
 __attribute__((used)) static bool hevc_parse_inner_profile_tier_level_rbsp( bs_t *p_bs,
                                                       hevc_inner_profile_tier_level_t *p_in )
 {
     if( bs_remain( p_bs ) < 88 )
-        return false;
+        return 0;
 
     p_in->profile_space = bs_read( p_bs, 2 );
     p_in->tier_flag = bs_read1( p_bs );
@@ -81,5 +81,5 @@ __attribute__((used)) static bool hevc_parse_inner_profile_tier_level_rbsp( bs_t
     else
         bs_skip( p_bs, 1 );
 
-    return true;
+    return 1;
 }

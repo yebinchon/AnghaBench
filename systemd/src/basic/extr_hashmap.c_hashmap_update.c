@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct plain_hashmap_entry {void* value; } ;
-typedef  int /*<<< orphan*/  Hashmap ;
+typedef int Hashmap ;
 
-/* Variables and functions */
- int ENOENT ; 
- unsigned int IDX_NIL ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- unsigned int bucket_hash (int /*<<< orphan*/ *,void const*) ; 
- unsigned int bucket_scan (int /*<<< orphan*/ *,unsigned int,void const*) ; 
- int /*<<< orphan*/  hashmap_set_dirty (int /*<<< orphan*/ *) ; 
- struct plain_hashmap_entry* plain_bucket_at (int /*<<< orphan*/ *,unsigned int) ; 
+
+ int ENOENT ;
+ unsigned int IDX_NIL ;
+ int assert (int *) ;
+ unsigned int bucket_hash (int *,void const*) ;
+ unsigned int bucket_scan (int *,unsigned int,void const*) ;
+ int hashmap_set_dirty (int *) ;
+ struct plain_hashmap_entry* plain_bucket_at (int *,unsigned int) ;
 
 int hashmap_update(Hashmap *h, const void *key, void *value) {
         struct plain_hashmap_entry *e;

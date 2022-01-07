@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT32 ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef size_t UINT32 ;
 struct TYPE_11__ {size_t Count; TYPE_3__* Ids; } ;
-struct TYPE_9__ {int /*<<< orphan*/  String; } ;
-struct TYPE_8__ {int /*<<< orphan*/  String; } ;
-struct TYPE_12__ {int Valid; TYPE_4__ CompatibleIdList; TYPE_2__ UniqueId; TYPE_1__ HardwareId; int /*<<< orphan*/ * LowestDstates; int /*<<< orphan*/ * HighestDstates; int /*<<< orphan*/  Flags; int /*<<< orphan*/  Address; } ;
-struct TYPE_10__ {int /*<<< orphan*/  String; } ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  int /*<<< orphan*/  ACPI_SIZE ;
-typedef  int /*<<< orphan*/  ACPI_HANDLE ;
-typedef  TYPE_5__ ACPI_DEVICE_INFO ;
+struct TYPE_9__ {int String; } ;
+struct TYPE_8__ {int String; } ;
+struct TYPE_12__ {int Valid; TYPE_4__ CompatibleIdList; TYPE_2__ UniqueId; TYPE_1__ HardwareId; int * LowestDstates; int * HighestDstates; int Flags; int Address; } ;
+struct TYPE_10__ {int String; } ;
+typedef int ACPI_STATUS ;
+typedef int ACPI_SIZE ;
+typedef int ACPI_HANDLE ;
+typedef TYPE_5__ ACPI_DEVICE_INFO ;
 
-/* Variables and functions */
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- size_t ACPI_FORMAT_UINT64 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_FREE (TYPE_5__*) ; 
- int /*<<< orphan*/  ACPI_TO_POINTER (int /*<<< orphan*/ ) ; 
- int ACPI_VALID_CID ; 
- int ACPI_VALID_HID ; 
- int ACPI_VALID_UID ; 
- int /*<<< orphan*/  AcpiFormatException (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiGetObjectInfo (int /*<<< orphan*/ ,TYPE_5__**) ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*,size_t,...) ; 
- int /*<<< orphan*/  strtoul (char*,int /*<<< orphan*/ *,int) ; 
+
+ scalar_t__ ACPI_FAILURE (int ) ;
+ size_t ACPI_FORMAT_UINT64 (int ) ;
+ int ACPI_FREE (TYPE_5__*) ;
+ int ACPI_TO_POINTER (int ) ;
+ int ACPI_VALID_CID ;
+ int ACPI_VALID_HID ;
+ int ACPI_VALID_UID ;
+ int AcpiFormatException (int ) ;
+ int AcpiGetObjectInfo (int ,TYPE_5__**) ;
+ int AcpiOsPrintf (char*,size_t,...) ;
+ int strtoul (char*,int *,int) ;
 
 void
 AcpiDbDisplayObjectType (
-    char                    *ObjectArg)
+    char *ObjectArg)
 {
-    ACPI_SIZE               Arg;
-    ACPI_HANDLE             Handle;
-    ACPI_DEVICE_INFO        *Info;
-    ACPI_STATUS             Status;
-    UINT32                  i;
+    ACPI_SIZE Arg;
+    ACPI_HANDLE Handle;
+    ACPI_DEVICE_INFO *Info;
+    ACPI_STATUS Status;
+    UINT32 i;
 
 
-    Arg = strtoul (ObjectArg, NULL, 16);
+    Arg = strtoul (ObjectArg, ((void*)0), 16);
     Handle = ACPI_TO_POINTER (Arg);
 
     Status = AcpiGetObjectInfo (Handle, &Info);

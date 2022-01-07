@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct gather_entry {scalar_t__ num; int res_read; TYPE_1__* first; } ;
 struct TYPE_7__ {int remaining; int cur; int last; int value; int x; TYPE_1__* cur_chunk; } ;
-typedef  TYPE_2__ gh_entry_t ;
+typedef TYPE_2__ gh_entry_t ;
 struct TYPE_6__ {int data; } ;
 
-/* Variables and functions */
- int CHUNK_INTS ; 
- TYPE_2__** GH ; 
- TYPE_2__* GH_E ; 
- size_t GH_N ; 
- int GH_mode ; 
- int GH_total ; 
- size_t MAX_CLUSTER_SERVERS ; 
- int /*<<< orphan*/  assert (int) ; 
- int g_double ; 
- int /*<<< orphan*/  load_heap_v (TYPE_2__*) ; 
+
+ int CHUNK_INTS ;
+ TYPE_2__** GH ;
+ TYPE_2__* GH_E ;
+ size_t GH_N ;
+ int GH_mode ;
+ int GH_total ;
+ size_t MAX_CLUSTER_SERVERS ;
+ int assert (int) ;
+ int g_double ;
+ int load_heap_v (TYPE_2__*) ;
 
 __attribute__((used)) static int gather_heap_insert (struct gather_entry *GE) {
   int cnt, cnt2, sz;

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  int64_t ;
-struct TYPE_8__ {int ip; int /*<<< orphan*/  stime; int /*<<< orphan*/  port; int /*<<< orphan*/  user; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int int64_t ;
+struct TYPE_8__ {int ip; int stime; int port; int user; } ;
 struct TYPE_7__ {int numOfConns; int index; TYPE_3__* connInfo; } ;
 struct TYPE_6__ {int* offset; int* bytes; int numOfReads; scalar_t__ pNode; } ;
-typedef  TYPE_1__ SShowObj ;
-typedef  TYPE_2__ SConnShow ;
-typedef  int /*<<< orphan*/  SConnObj ;
-typedef  TYPE_3__ SConnInfo ;
+typedef TYPE_1__ SShowObj ;
+typedef TYPE_2__ SConnShow ;
+typedef int SConnObj ;
+typedef TYPE_3__ SConnInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  htons (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcpy (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tfree (TYPE_2__*) ; 
+
+ int htons (int ) ;
+ int sprintf (char*,char*,int,int,int,int,int ) ;
+ int strcpy (char*,int ) ;
+ int tfree (TYPE_2__*) ;
 
 int mgmtRetrieveConns(SShowObj *pShow, char *data, int rows, SConnObj *pConn) {
-  int   numOfRows = 0;
+  int numOfRows = 0;
   char *pWrite;
-  int   cols = 0;
+  int cols = 0;
 
   SConnShow *pConnShow = (SConnShow *)pShow->pNode;
 

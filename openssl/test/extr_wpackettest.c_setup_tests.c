@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ADD_TEST (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BUF_MEM_new () ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  buf ; 
- int /*<<< orphan*/  test_WPACKET_allocate_bytes ; 
- int /*<<< orphan*/  test_WPACKET_init ; 
- int /*<<< orphan*/  test_WPACKET_memcpy ; 
- int /*<<< orphan*/  test_WPACKET_set_flags ; 
- int /*<<< orphan*/  test_WPACKET_set_max_size ; 
- int /*<<< orphan*/  test_WPACKET_start_sub_packet ; 
+ int ADD_TEST (int ) ;
+ int BUF_MEM_new () ;
+ int TEST_ptr (int ) ;
+ int buf ;
+ int test_WPACKET_allocate_bytes ;
+ int test_WPACKET_init ;
+ int test_WPACKET_memcpy ;
+ int test_WPACKET_set_flags ;
+ int test_WPACKET_set_max_size ;
+ int test_WPACKET_start_sub_packet ;
 
 int setup_tests(void)
 {

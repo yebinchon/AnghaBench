@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int transaction_id; unsigned long long volume_id; struct TYPE_6__* hnext; } ;
-typedef  TYPE_1__ transaction_t ;
+typedef TYPE_1__ transaction_t ;
 
-/* Variables and functions */
- void** H ; 
- unsigned int HASH_MASK ; 
- int /*<<< orphan*/  lru_add (TYPE_1__*) ; 
- int /*<<< orphan*/  lru_reuse (TYPE_1__*) ; 
- int /*<<< orphan*/  tot_memory_transactions ; 
- int /*<<< orphan*/  transaction_lru_gc () ; 
- TYPE_1__* zmalloc0 (int) ; 
+
+ void** H ;
+ unsigned int HASH_MASK ;
+ int lru_add (TYPE_1__*) ;
+ int lru_reuse (TYPE_1__*) ;
+ int tot_memory_transactions ;
+ int transaction_lru_gc () ;
+ TYPE_1__* zmalloc0 (int) ;
 
 transaction_t *get_transaction_f (unsigned long long volume_id, int transaction_id, int force) {
   unsigned h = volume_id >> 32;
@@ -31,7 +31,7 @@ transaction_t *get_transaction_f (unsigned long long volume_id, int transaction_
   transaction_t **p = &(H[h]), *q;
   while (1) {
     q = *p;
-    if (q == NULL) {
+    if (q == ((void*)0)) {
       break;
     }
     if (q->transaction_id == transaction_id && q->volume_id == volume_id) {
@@ -56,5 +56,5 @@ transaction_t *get_transaction_f (unsigned long long volume_id, int transaction_
     lru_add (q);
     return q;
   }
-  return NULL;
+  return ((void*)0);
 }

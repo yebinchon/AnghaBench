@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {char tok; int /*<<< orphan*/ * fs; int /*<<< orphan*/  linenumber; } ;
-typedef  TYPE_1__ LexState ;
-typedef  int /*<<< orphan*/  FuncState ;
-typedef  int /*<<< orphan*/  ExpDesc ;
-typedef  int /*<<< orphan*/  BCLine ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LJ_52 ; 
- int /*<<< orphan*/  LJ_ERR_XSYMBOL ; 
- scalar_t__ LJ_FR2 ; 
- char TK_goto ; 
- char TK_name ; 
- char TK_string ; 
- int /*<<< orphan*/  bcemit_method (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bcreg_reserve (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  err_syntax (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expr (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  expr_bracket (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  expr_discharge (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  expr_field (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  expr_index (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  expr_str (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  expr_toanyreg (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  expr_tonextreg (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lex_match (TYPE_1__*,char,char,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lj_lex_next (TYPE_1__*) ; 
- int /*<<< orphan*/  parse_args (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  var_lookup (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_12__ {char tok; int * fs; int linenumber; } ;
+typedef TYPE_1__ LexState ;
+typedef int FuncState ;
+typedef int ExpDesc ;
+typedef int BCLine ;
+
+
+ int LJ_52 ;
+ int LJ_ERR_XSYMBOL ;
+ scalar_t__ LJ_FR2 ;
+ char TK_goto ;
+ char TK_name ;
+ char TK_string ;
+ int bcemit_method (int *,int *,int *) ;
+ int bcreg_reserve (int *,int) ;
+ int err_syntax (TYPE_1__*,int ) ;
+ int expr (TYPE_1__*,int *) ;
+ int expr_bracket (TYPE_1__*,int *) ;
+ int expr_discharge (int *,int *) ;
+ int expr_field (TYPE_1__*,int *) ;
+ int expr_index (int *,int *,int *) ;
+ int expr_str (TYPE_1__*,int *) ;
+ int expr_toanyreg (int *,int *) ;
+ int expr_tonextreg (int *,int *) ;
+ int lex_match (TYPE_1__*,char,char,int ) ;
+ int lj_lex_next (TYPE_1__*) ;
+ int parse_args (TYPE_1__*,int *) ;
+ int var_lookup (TYPE_1__*,int *) ;
 
 __attribute__((used)) static void expr_primary(LexState *ls, ExpDesc *v)
 {
   FuncState *fs = ls->fs;
-  /* Parse prefix expression. */
+
   if (ls->tok == '(') {
     BCLine line = ls->linenumber;
     lj_lex_next(ls);
@@ -55,7 +55,7 @@ __attribute__((used)) static void expr_primary(LexState *ls, ExpDesc *v)
   } else {
     err_syntax(ls, LJ_ERR_XSYMBOL);
   }
-  for (;;) {  /* Parse multiple expression suffixes. */
+  for (;;) {
     if (ls->tok == '.') {
       expr_field(ls, v);
     } else if (ls->tok == '[') {

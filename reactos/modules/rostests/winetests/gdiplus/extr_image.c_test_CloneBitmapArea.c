@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpImage ;
-typedef  int /*<<< orphan*/  GpBitmap ;
-typedef  int /*<<< orphan*/  BitmapData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GdipBitmapLockBits (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipBitmapUnlockBits (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipCloneBitmapAreaI (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreateBitmapFromScan0 (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDisposeImage (int /*<<< orphan*/ *) ; 
- int ImageLockModeRead ; 
- int ImageLockModeWrite ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  PixelFormat24bppRGB ; 
- int /*<<< orphan*/  WrongState ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int GpStatus ;
+typedef int GpImage ;
+typedef int GpBitmap ;
+typedef int BitmapData ;
+
+
+ int GdipBitmapLockBits (int *,int *,int,int ,int *) ;
+ int GdipBitmapUnlockBits (int *,int *) ;
+ int GdipCloneBitmapAreaI (int ,int ,int,int,int ,int *,int **) ;
+ int GdipCreateBitmapFromScan0 (int,int,int ,int ,int *,int **) ;
+ int GdipDisposeImage (int *) ;
+ int ImageLockModeRead ;
+ int ImageLockModeWrite ;
+ int Ok ;
+ int PixelFormat24bppRGB ;
+ int WrongState ;
+ int expect (int ,int ) ;
 
 __attribute__((used)) static void test_CloneBitmapArea(void)
 {
@@ -34,13 +34,13 @@ __attribute__((used)) static void test_CloneBitmapArea(void)
     GpBitmap *bitmap, *copy;
     BitmapData data, data2;
 
-    status = GdipCreateBitmapFromScan0(1, 1, 0, PixelFormat24bppRGB, NULL, &bitmap);
+    status = GdipCreateBitmapFromScan0(1, 1, 0, PixelFormat24bppRGB, ((void*)0), &bitmap);
     expect(Ok, status);
 
-    status = GdipBitmapLockBits(bitmap, NULL, ImageLockModeRead | ImageLockModeWrite, PixelFormat24bppRGB, &data);
+    status = GdipBitmapLockBits(bitmap, ((void*)0), ImageLockModeRead | ImageLockModeWrite, PixelFormat24bppRGB, &data);
     expect(Ok, status);
 
-    status = GdipBitmapLockBits(bitmap, NULL, ImageLockModeRead, PixelFormat24bppRGB, &data2);
+    status = GdipBitmapLockBits(bitmap, ((void*)0), ImageLockModeRead, PixelFormat24bppRGB, &data2);
     expect(WrongState, status);
 
     status = GdipCloneBitmapAreaI(0, 0, 1, 1, PixelFormat24bppRGB, bitmap, &copy);

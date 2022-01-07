@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WCHAR ;
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int /*<<< orphan*/  PCONSRV_CONSOLE ;
-typedef  int* LPWSTR ;
-typedef  int /*<<< orphan*/  HDROP ;
 
-/* Variables and functions */
- scalar_t__ ARRAYSIZE (int*) ; 
- int /*<<< orphan*/  DragFinish (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DragQueryFileW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,scalar_t__) ; 
- int /*<<< orphan*/  MAX_PATH ; 
- int /*<<< orphan*/  PasteText (int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StringCchCatW (int*,scalar_t__,char*) ; 
- int /*<<< orphan*/ * wcschr (int*,int) ; 
- int /*<<< orphan*/  wcslen (int*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int VOID ;
+typedef int PCONSRV_CONSOLE ;
+typedef int* LPWSTR ;
+typedef int HDROP ;
+
+
+ scalar_t__ ARRAYSIZE (int*) ;
+ int DragFinish (int ) ;
+ int DragQueryFileW (int ,int ,int*,scalar_t__) ;
+ int MAX_PATH ;
+ int PasteText (int ,int*,int ) ;
+ int StringCchCatW (int*,scalar_t__,char*) ;
+ int * wcschr (int*,int) ;
+ int wcslen (int*) ;
 
 __attribute__((used)) static VOID
 OnDropFiles(PCONSRV_CONSOLE Console, HDROP hDrop)
@@ -37,7 +37,7 @@ OnDropFiles(PCONSRV_CONSOLE Console, HDROP hDrop)
     DragQueryFileW(hDrop, 0, &szPath[1], ARRAYSIZE(szPath) - 1);
     DragFinish(hDrop);
 
-    if (wcschr(&szPath[1], L' ') != NULL)
+    if (wcschr(&szPath[1], L' ') != ((void*)0))
     {
         StringCchCatW(szPath, ARRAYSIZE(szPath), L"\"");
         pszPath = szPath;

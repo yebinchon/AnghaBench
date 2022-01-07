@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  backdoor_fn ;
 
-/* Variables and functions */
- scalar_t__ k_write_kaddr ; 
- int /*<<< orphan*/  svc_7b (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u32 ;
+typedef int backdoor_fn ;
+
+
+ scalar_t__ k_write_kaddr ;
+ int svc_7b (int ,int ,int ) ;
 
 __attribute__((used)) static void write_kaddr(u32 kaddr, u32 val)
 {

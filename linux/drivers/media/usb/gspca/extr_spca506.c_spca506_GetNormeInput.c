@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sd {int /*<<< orphan*/  channel; int /*<<< orphan*/  norme; } ;
+
+
+
+
+struct sd {int channel; int norme; } ;
 struct gspca_dev {int dummy; } ;
-typedef  int /*<<< orphan*/  __u16 ;
+typedef int __u16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_STREAM ; 
- int /*<<< orphan*/  gspca_dbg (struct gspca_dev*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int D_STREAM ;
+ int gspca_dbg (struct gspca_dev*,int ,char*,int ,int ) ;
 
 __attribute__((used)) static void spca506_GetNormeInput(struct gspca_dev *gspca_dev,
-				  __u16 *norme, __u16 *channel)
+      __u16 *norme, __u16 *channel)
 {
-	struct sd *sd = (struct sd *) gspca_dev;
+ struct sd *sd = (struct sd *) gspca_dev;
 
-	/* Read the register is not so good value change so
-	   we use your own copy in spca50x struct */
-	*norme = sd->norme;
-	*channel = sd->channel;
-	gspca_dbg(gspca_dev, D_STREAM, "Get Norme: %d Channel %d\n",
-		  *norme, *channel);
+
+
+ *norme = sd->norme;
+ *channel = sd->channel;
+ gspca_dbg(gspca_dev, D_STREAM, "Get Norme: %d Channel %d\n",
+    *norme, *channel);
 }

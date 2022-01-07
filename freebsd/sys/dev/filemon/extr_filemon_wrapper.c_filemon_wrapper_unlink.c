@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct unlink_args {int /*<<< orphan*/  path; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct unlink_args {int path; } ;
 struct thread {int dummy; } ;
-struct filemon {int error; int /*<<< orphan*/  fname1; } ;
-struct TYPE_3__ {int /*<<< orphan*/  p_pid; } ;
+struct filemon {int error; int fname1; } ;
+struct TYPE_3__ {int p_pid; } ;
 
-/* Variables and functions */
- int copyinstr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- TYPE_1__* curproc ; 
- int /*<<< orphan*/  filemon_drop (struct filemon*) ; 
- int /*<<< orphan*/  filemon_output_event (struct filemon*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct filemon* filemon_proc_get (TYPE_1__*) ; 
- int sys_unlink (struct thread*,struct unlink_args*) ; 
+
+ int copyinstr (int ,int ,int,int *) ;
+ TYPE_1__* curproc ;
+ int filemon_drop (struct filemon*) ;
+ int filemon_output_event (struct filemon*,char*,int ,int ) ;
+ struct filemon* filemon_proc_get (TYPE_1__*) ;
+ int sys_unlink (struct thread*,struct unlink_args*) ;
 
 __attribute__((used)) static int
 filemon_wrapper_unlink(struct thread *td, struct unlink_args *uap)
 {
-	int error, ret;
-	struct filemon *filemon;
+ int error, ret;
+ struct filemon *filemon;
 
-	if ((ret = sys_unlink(td, uap)) == 0) {
-		if ((filemon = filemon_proc_get(curproc)) != NULL) {
-			if ((error = copyinstr(uap->path, filemon->fname1,
-			    sizeof(filemon->fname1), NULL)) != 0) {
-				filemon->error = error;
-				goto copyfail;
-			}
+ if ((ret = sys_unlink(td, uap)) == 0) {
+  if ((filemon = filemon_proc_get(curproc)) != ((void*)0)) {
+   if ((error = copyinstr(uap->path, filemon->fname1,
+       sizeof(filemon->fname1), ((void*)0))) != 0) {
+    filemon->error = error;
+    goto copyfail;
+   }
 
-			filemon_output_event(filemon, "D %d %s\n",
-			    curproc->p_pid, filemon->fname1);
+   filemon_output_event(filemon, "D %d %s\n",
+       curproc->p_pid, filemon->fname1);
 copyfail:
-			filemon_drop(filemon);
-		}
-	}
+   filemon_drop(filemon);
+  }
+ }
 
-	return (ret);
+ return (ret);
 }

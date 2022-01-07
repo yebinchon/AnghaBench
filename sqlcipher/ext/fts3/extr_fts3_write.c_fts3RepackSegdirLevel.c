@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3_int64 ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+typedef int sqlite3_int64 ;
 struct TYPE_4__ {int bIgnoreSavepoint; } ;
-typedef  TYPE_1__ Fts3Table ;
+typedef TYPE_1__ Fts3Table ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- scalar_t__ SQLITE_ROW ; 
- int /*<<< orphan*/  SQL_SELECT_INDEXES ; 
- int /*<<< orphan*/  SQL_SHIFT_SEGDIR_ENTRY ; 
- int /*<<< orphan*/  assert (int) ; 
- int fts3SqlStmt (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_bind_int (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  sqlite3_bind_int64 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int sqlite3_column_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_free (int*) ; 
- int* sqlite3_realloc (int*,int) ; 
- int sqlite3_reset (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ scalar_t__ SQLITE_ROW ;
+ int SQL_SELECT_INDEXES ;
+ int SQL_SHIFT_SEGDIR_ENTRY ;
+ int assert (int) ;
+ int fts3SqlStmt (TYPE_1__*,int ,int **,int ) ;
+ int sqlite3_bind_int (int *,int,int) ;
+ int sqlite3_bind_int64 (int *,int,int ) ;
+ int sqlite3_column_int (int *,int ) ;
+ int sqlite3_free (int*) ;
+ int* sqlite3_realloc (int*,int) ;
+ int sqlite3_reset (int *) ;
+ scalar_t__ sqlite3_step (int *) ;
 
 __attribute__((used)) static int fts3RepackSegdirLevel(
-  Fts3Table *p,                   /* FTS3 table handle */
-  sqlite3_int64 iAbsLevel         /* Absolute level to repack */
+  Fts3Table *p,
+  sqlite3_int64 iAbsLevel
 ){
-  int rc;                         /* Return code */
-  int *aIdx = 0;                  /* Array of remaining idx values */
-  int nIdx = 0;                   /* Valid entries in aIdx[] */
-  int nAlloc = 0;                 /* Allocated size of aIdx[] */
-  int i;                          /* Iterator variable */
-  sqlite3_stmt *pSelect = 0;      /* Select statement to read idx values */
-  sqlite3_stmt *pUpdate = 0;      /* Update statement to modify idx values */
+  int rc;
+  int *aIdx = 0;
+  int nIdx = 0;
+  int nAlloc = 0;
+  int i;
+  sqlite3_stmt *pSelect = 0;
+  sqlite3_stmt *pUpdate = 0;
 
   rc = fts3SqlStmt(p, SQL_SELECT_INDEXES, &pSelect, 0);
   if( rc==SQLITE_OK ){

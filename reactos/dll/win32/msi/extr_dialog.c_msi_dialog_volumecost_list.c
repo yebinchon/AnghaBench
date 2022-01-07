@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  msi_dialog ;
-typedef  int /*<<< orphan*/  msi_control ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  MSIRECORD ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_FUNCTION_FAILED ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int LVS_AUTOARRANGE ; 
- int LVS_REPORT ; 
- int LVS_SHAREIMAGELISTS ; 
- int LVS_SINGLESEL ; 
- int /*<<< orphan*/  WC_LISTVIEWW ; 
- int WS_BORDER ; 
- int WS_CHILD ; 
- int WS_GROUP ; 
- int WS_HSCROLL ; 
- int WS_TABSTOP ; 
- int WS_VSCROLL ; 
- int /*<<< orphan*/ * msi_dialog_add_control (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  msi_dialog_vcl_add_columns (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msi_dialog_vcl_add_drives (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int msi_dialog ;
+typedef int msi_control ;
+typedef int UINT ;
+typedef int MSIRECORD ;
+typedef int DWORD ;
+
+
+ int ERROR_FUNCTION_FAILED ;
+ int ERROR_SUCCESS ;
+ int LVS_AUTOARRANGE ;
+ int LVS_REPORT ;
+ int LVS_SHAREIMAGELISTS ;
+ int LVS_SINGLESEL ;
+ int WC_LISTVIEWW ;
+ int WS_BORDER ;
+ int WS_CHILD ;
+ int WS_GROUP ;
+ int WS_HSCROLL ;
+ int WS_TABSTOP ;
+ int WS_VSCROLL ;
+ int * msi_dialog_add_control (int *,int *,int ,int) ;
+ int msi_dialog_vcl_add_columns (int *,int *,int *) ;
+ int msi_dialog_vcl_add_drives (int *,int *) ;
 
 __attribute__((used)) static UINT msi_dialog_volumecost_list( msi_dialog *dialog, MSIRECORD *rec )
 {

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct display {char const* filename; int /*<<< orphan*/  original_file; } ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APP_ERROR ; 
- int /*<<< orphan*/  USER_ERROR ; 
- int buffer_from_file (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  display_log (struct display*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int errno ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/ * stdin ; 
- int /*<<< orphan*/  strerror (int) ; 
+
+
+
+struct display {char const* filename; int original_file; } ;
+typedef int FILE ;
+
+
+ int APP_ERROR ;
+ int USER_ERROR ;
+ int buffer_from_file (int *,int *) ;
+ int display_log (struct display*,int ,char*,int ) ;
+ int errno ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int * stdin ;
+ int strerror (int) ;
 
 __attribute__((used)) static void
 display_cache_file(struct display *dp, const char *filename)
-   /* Does the initial cache of the file. */
+
 {
    FILE *fp;
    int ret;
 
    dp->filename = filename;
 
-   if (filename != NULL)
+   if (filename != ((void*)0))
    {
       fp = fopen(filename, "rb");
-      if (fp == NULL)
+      if (fp == ((void*)0))
          display_log(dp, USER_ERROR, "open failed: %s", strerror(errno));
    }
 

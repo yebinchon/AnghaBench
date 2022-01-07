@@ -1,85 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct intel_engine_cs {scalar_t__ wakeref_serial; scalar_t__ serial; int /*<<< orphan*/  kernel_context; int /*<<< orphan*/  wakeref; int /*<<< orphan*/  gt; } ;
-struct TYPE_3__ {int /*<<< orphan*/  priority; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct intel_engine_cs {scalar_t__ wakeref_serial; scalar_t__ serial; int kernel_context; int wakeref; int gt; } ;
+struct TYPE_3__ {int priority; } ;
 struct TYPE_4__ {TYPE_1__ attr; } ;
-struct i915_request {TYPE_2__ sched; int /*<<< orphan*/  timeline; } ;
+struct i915_request {TYPE_2__ sched; int timeline; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_NOWAIT ; 
- int /*<<< orphan*/  I915_PRIORITY_UNPREEMPTABLE ; 
- scalar_t__ IS_ERR (struct i915_request*) ; 
- int /*<<< orphan*/  __i915_request_commit (struct i915_request*) ; 
- struct i915_request* __i915_request_create (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __i915_request_queue (struct i915_request*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  __intel_wakeref_defer_park (int /*<<< orphan*/ *) ; 
- unsigned long __timeline_mark_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __timeline_mark_unlock (int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  i915_request_add_active_barriers (struct i915_request*) ; 
- scalar_t__ intel_gt_is_wedged (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  intel_timeline_enter (int /*<<< orphan*/ ) ; 
+
+ int GFP_NOWAIT ;
+ int I915_PRIORITY_UNPREEMPTABLE ;
+ scalar_t__ IS_ERR (struct i915_request*) ;
+ int __i915_request_commit (struct i915_request*) ;
+ struct i915_request* __i915_request_create (int ,int ) ;
+ int __i915_request_queue (struct i915_request*,int *) ;
+ int __intel_wakeref_defer_park (int *) ;
+ unsigned long __timeline_mark_lock (int ) ;
+ int __timeline_mark_unlock (int ,unsigned long) ;
+ int i915_request_add_active_barriers (struct i915_request*) ;
+ scalar_t__ intel_gt_is_wedged (int ) ;
+ int intel_timeline_enter (int ) ;
 
 __attribute__((used)) static bool switch_to_kernel_context(struct intel_engine_cs *engine)
 {
-	struct i915_request *rq;
-	unsigned long flags;
-	bool result = true;
+ struct i915_request *rq;
+ unsigned long flags;
+ bool result = 1;
 
-	/* Already inside the kernel context, safe to power down. */
-	if (engine->wakeref_serial == engine->serial)
-		return true;
 
-	/* GPU is pointing to the void, as good as in the kernel context. */
-	if (intel_gt_is_wedged(engine->gt))
-		return true;
+ if (engine->wakeref_serial == engine->serial)
+  return 1;
 
-	/*
-	 * Note, we do this without taking the timeline->mutex. We cannot
-	 * as we may be called while retiring the kernel context and so
-	 * already underneath the timeline->mutex. Instead we rely on the
-	 * exclusive property of the __engine_park that prevents anyone
-	 * else from creating a request on this engine. This also requires
-	 * that the ring is empty and we avoid any waits while constructing
-	 * the context, as they assume protection by the timeline->mutex.
-	 * This should hold true as we can only park the engine after
-	 * retiring the last request, thus all rings should be empty and
-	 * all timelines idle.
-	 */
-	flags = __timeline_mark_lock(engine->kernel_context);
 
-	rq = __i915_request_create(engine->kernel_context, GFP_NOWAIT);
-	if (IS_ERR(rq))
-		/* Context switch failed, hope for the best! Maybe reset? */
-		goto out_unlock;
+ if (intel_gt_is_wedged(engine->gt))
+  return 1;
+ flags = __timeline_mark_lock(engine->kernel_context);
 
-	intel_timeline_enter(rq->timeline);
+ rq = __i915_request_create(engine->kernel_context, GFP_NOWAIT);
+ if (IS_ERR(rq))
 
-	/* Check again on the next retirement. */
-	engine->wakeref_serial = engine->serial + 1;
-	i915_request_add_active_barriers(rq);
+  goto out_unlock;
 
-	/* Install ourselves as a preemption barrier */
-	rq->sched.attr.priority = I915_PRIORITY_UNPREEMPTABLE;
-	__i915_request_commit(rq);
+ intel_timeline_enter(rq->timeline);
 
-	/* Release our exclusive hold on the engine */
-	__intel_wakeref_defer_park(&engine->wakeref);
-	__i915_request_queue(rq, NULL);
 
-	result = false;
+ engine->wakeref_serial = engine->serial + 1;
+ i915_request_add_active_barriers(rq);
+
+
+ rq->sched.attr.priority = I915_PRIORITY_UNPREEMPTABLE;
+ __i915_request_commit(rq);
+
+
+ __intel_wakeref_defer_park(&engine->wakeref);
+ __i915_request_queue(rq, ((void*)0));
+
+ result = 0;
 out_unlock:
-	__timeline_mark_unlock(engine->kernel_context, flags);
-	return result;
+ __timeline_mark_unlock(engine->kernel_context, flags);
+ return result;
 }

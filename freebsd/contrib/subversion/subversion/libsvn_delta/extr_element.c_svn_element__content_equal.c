@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ parent_eid; int /*<<< orphan*/  payload; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ svn_element__content_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_element__payload_equal (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ parent_eid; int payload; int name; } ;
+typedef TYPE_1__ svn_element__content_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int TRUE ;
+ scalar_t__ strcmp (int ,int ) ;
+ int svn_element__payload_equal (int ,int ,int *) ;
 
 svn_boolean_t
 svn_element__content_equal(const svn_element__content_t *content_left,

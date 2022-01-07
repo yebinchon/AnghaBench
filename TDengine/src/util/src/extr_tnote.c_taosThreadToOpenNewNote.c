@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int NOTE_FILE_NAME_LEN ; 
- int O_CREAT ; 
- int O_TRUNC ; 
- int O_WRONLY ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int S_IRWXG ; 
- int S_IRWXO ; 
- int S_IRWXU ; 
- int /*<<< orphan*/  lseek (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int open (char*,int,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,int) ; 
- int /*<<< orphan*/  taosCloseNoteByFd (int) ; 
- int /*<<< orphan*/  taosLockNote (int) ; 
- int taosNoteFd ; 
- int taosNoteFlag ; 
- scalar_t__ taosNoteLines ; 
- char* taosNoteName ; 
- scalar_t__ taosNoteOpenInProgress ; 
- int /*<<< orphan*/  taosNotePrint (char*) ; 
- int /*<<< orphan*/  umask (int /*<<< orphan*/ ) ; 
+ int NOTE_FILE_NAME_LEN ;
+ int O_CREAT ;
+ int O_TRUNC ;
+ int O_WRONLY ;
+ int SEEK_SET ;
+ int S_IRWXG ;
+ int S_IRWXO ;
+ int S_IRWXU ;
+ int lseek (int,int ,int ) ;
+ int open (char*,int,int) ;
+ int sprintf (char*,char*,char*,int) ;
+ int taosCloseNoteByFd (int) ;
+ int taosLockNote (int) ;
+ int taosNoteFd ;
+ int taosNoteFlag ;
+ scalar_t__ taosNoteLines ;
+ char* taosNoteName ;
+ scalar_t__ taosNoteOpenInProgress ;
+ int taosNotePrint (char*) ;
+ int umask (int ) ;
 
 void *taosThreadToOpenNewNote(void *param)
 {
@@ -54,5 +46,5 @@ void *taosThreadToOpenNewNote(void *param)
     taosNotePrint("===============  new note is opened  =============");
 
     taosCloseNoteByFd(oldFd);
-    return NULL;
+    return ((void*)0);
 }

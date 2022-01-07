@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FLAG_MASK ; 
+
+
+
+typedef int u32 ;
+
+
+ int FLAG_MASK ;
 
 __attribute__((used)) static inline u32 armv7_pmnc_getreset_flags(void)
 {
-	u32 val;
+ u32 val;
 
-	/* Read */
-	asm volatile("mrc p15, 0, %0, c9, c12, 3" : "=r" (val));
 
-	/* Write to clear flags */
-	val &= FLAG_MASK;
-	asm volatile("mcr p15, 0, %0, c9, c12, 3" : : "r" (val));
+ asm volatile("mrc p15, 0, %0, c9, c12, 3" : "=r" (val));
 
-	return val;
+
+ val &= FLAG_MASK;
+ asm volatile("mcr p15, 0, %0, c9, c12, 3" : : "r" (val));
+
+ return val;
 }

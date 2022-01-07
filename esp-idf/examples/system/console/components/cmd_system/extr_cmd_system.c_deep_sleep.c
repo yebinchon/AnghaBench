@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned long long uint64_t ;
-struct TYPE_8__ {TYPE_3__* wakeup_gpio_level; TYPE_2__* wakeup_gpio_num; TYPE_1__* wakeup_time; int /*<<< orphan*/  end; } ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef unsigned long long uint64_t ;
+struct TYPE_8__ {TYPE_3__* wakeup_gpio_level; TYPE_2__* wakeup_gpio_num; TYPE_1__* wakeup_time; int end; } ;
 struct TYPE_7__ {int* ival; scalar_t__ count; } ;
 struct TYPE_6__ {int* ival; scalar_t__ count; } ;
 struct TYPE_5__ {unsigned long long* ival; scalar_t__ count; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERROR_CHECK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  GPIO_NUM_12 ; 
- int /*<<< orphan*/  TAG ; 
- int arg_parse (int,char**,void**) ; 
- int /*<<< orphan*/  arg_print_errors (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- TYPE_4__ deep_sleep_args ; 
- int /*<<< orphan*/  esp_deep_sleep_start () ; 
- int /*<<< orphan*/  esp_sleep_enable_ext1_wakeup (unsigned long long,int) ; 
- int /*<<< orphan*/  esp_sleep_enable_timer_wakeup (unsigned long long) ; 
- int /*<<< orphan*/  rtc_gpio_is_valid_gpio (int) ; 
- int /*<<< orphan*/  rtc_gpio_isolate (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int ESP_ERROR_CHECK (int ) ;
+ int ESP_LOGE (int ,char*,int) ;
+ int ESP_LOGI (int ,char*,int,...) ;
+ int GPIO_NUM_12 ;
+ int TAG ;
+ int arg_parse (int,char**,void**) ;
+ int arg_print_errors (int ,int ,char*) ;
+ TYPE_4__ deep_sleep_args ;
+ int esp_deep_sleep_start () ;
+ int esp_sleep_enable_ext1_wakeup (unsigned long long,int) ;
+ int esp_sleep_enable_timer_wakeup (unsigned long long) ;
+ int rtc_gpio_is_valid_gpio (int) ;
+ int rtc_gpio_isolate (int ) ;
+ int stderr ;
 
 __attribute__((used)) static int deep_sleep(int argc, char **argv)
 {

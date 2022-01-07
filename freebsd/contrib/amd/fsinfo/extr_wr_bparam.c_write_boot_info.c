@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char* h_hostname; int /*<<< orphan*/  h_netswap; int /*<<< orphan*/  h_netroot; } ;
-typedef  TYPE_1__ host ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ *) ; 
- scalar_t__ write_nfsname (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char* h_hostname; int h_netswap; int h_netroot; } ;
+typedef TYPE_1__ host ;
+typedef int FILE ;
+
+
+ int fprintf (int *,char*,char*) ;
+ int fputs (char*,int *) ;
+ scalar_t__ write_nfsname (int *,int ,char*) ;
 
 __attribute__((used)) static int
 write_boot_info(FILE *ef, host *hp)

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct qmi_service {unsigned int service; unsigned int version; unsigned int instance; int /*<<< orphan*/  list_node; } ;
-struct qmi_handle {int /*<<< orphan*/  lookups; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- struct qmi_service* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  qmi_send_new_lookup (struct qmi_handle*,struct qmi_service*) ; 
+
+
+
+struct qmi_service {unsigned int service; unsigned int version; unsigned int instance; int list_node; } ;
+struct qmi_handle {int lookups; } ;
+
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ struct qmi_service* kzalloc (int,int ) ;
+ int list_add (int *,int *) ;
+ int qmi_send_new_lookup (struct qmi_handle*,struct qmi_service*) ;
 
 int qmi_add_lookup(struct qmi_handle *qmi, unsigned int service,
-		   unsigned int version, unsigned int instance)
+     unsigned int version, unsigned int instance)
 {
-	struct qmi_service *svc;
+ struct qmi_service *svc;
 
-	svc = kzalloc(sizeof(*svc), GFP_KERNEL);
-	if (!svc)
-		return -ENOMEM;
+ svc = kzalloc(sizeof(*svc), GFP_KERNEL);
+ if (!svc)
+  return -ENOMEM;
 
-	svc->service = service;
-	svc->version = version;
-	svc->instance = instance;
+ svc->service = service;
+ svc->version = version;
+ svc->instance = instance;
 
-	list_add(&svc->list_node, &qmi->lookups);
+ list_add(&svc->list_node, &qmi->lookups);
 
-	qmi_send_new_lookup(qmi, svc);
+ qmi_send_new_lookup(qmi, svc);
 
-	return 0;
+ return 0;
 }

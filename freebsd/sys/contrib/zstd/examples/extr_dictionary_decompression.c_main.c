@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ZSTD_DDict ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZSTD_freeDDict (int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/ * createDict_orDie (char const* const) ; 
- int /*<<< orphan*/  decompress (char const*,int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+
+
+typedef int ZSTD_DDict ;
+
+
+ int ZSTD_freeDDict (int * const) ;
+ int * createDict_orDie (char const* const) ;
+ int decompress (char const*,int * const) ;
+ int printf (char*,...) ;
 
 int main(int argc, const char** argv)
 {
@@ -29,7 +29,7 @@ int main(int argc, const char** argv)
         return 1;
     }
 
-    /* load dictionary only once */
+
     const char* const dictName = argv[argc-1];
     ZSTD_DDict* const dictPtr = createDict_orDie(dictName);
 

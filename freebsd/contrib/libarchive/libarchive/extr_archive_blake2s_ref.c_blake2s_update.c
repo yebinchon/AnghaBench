@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {size_t buflen; unsigned char const* buf; } ;
-typedef  TYPE_1__ blake2s_state ;
+typedef TYPE_1__ blake2s_state ;
 
-/* Variables and functions */
- size_t BLAKE2S_BLOCKBYTES ; 
- int /*<<< orphan*/  blake2s_compress (TYPE_1__*,unsigned char const*) ; 
- int /*<<< orphan*/  blake2s_increment_counter (TYPE_1__*,size_t) ; 
- int /*<<< orphan*/  memcpy (unsigned char const*,unsigned char const*,size_t) ; 
+
+ size_t BLAKE2S_BLOCKBYTES ;
+ int blake2s_compress (TYPE_1__*,unsigned char const*) ;
+ int blake2s_increment_counter (TYPE_1__*,size_t) ;
+ int memcpy (unsigned char const*,unsigned char const*,size_t) ;
 
 int blake2s_update( blake2s_state *S, const void *pin, size_t inlen )
 {
@@ -30,9 +30,9 @@ int blake2s_update( blake2s_state *S, const void *pin, size_t inlen )
     if( inlen > fill )
     {
       S->buflen = 0;
-      memcpy( S->buf + left, in, fill ); /* Fill buffer */
+      memcpy( S->buf + left, in, fill );
       blake2s_increment_counter( S, BLAKE2S_BLOCKBYTES );
-      blake2s_compress( S, S->buf ); /* Compress */
+      blake2s_compress( S, S->buf );
       in += fill; inlen -= fill;
       while(inlen > BLAKE2S_BLOCKBYTES) {
         blake2s_increment_counter(S, BLAKE2S_BLOCKBYTES);

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-struct lm93_data {int /*<<< orphan*/  update_lock; struct i2c_client* client; } ;
+
+
+
+
+typedef int u8 ;
+struct lm93_data {int update_lock; struct i2c_client* client; } ;
 struct i2c_client {int dummy; } ;
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int LM93_RAMP_TO_REG (unsigned long) ; 
- int /*<<< orphan*/  LM93_REG_PWM_RAMP_CTL ; 
- struct lm93_data* dev_get_drvdata (struct device*) ; 
- int kstrtoul (char const*,int,unsigned long*) ; 
- int lm93_read_byte (struct i2c_client*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lm93_write_byte (struct i2c_client*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int LM93_RAMP_TO_REG (unsigned long) ;
+ int LM93_REG_PWM_RAMP_CTL ;
+ struct lm93_data* dev_get_drvdata (struct device*) ;
+ int kstrtoul (char const*,int,unsigned long*) ;
+ int lm93_read_byte (struct i2c_client*,int ) ;
+ int lm93_write_byte (struct i2c_client*,int ,int) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 __attribute__((used)) static ssize_t pwm_auto_prochot_ramp_store(struct device *dev,
-						struct device_attribute *attr,
-						const char *buf, size_t count)
+      struct device_attribute *attr,
+      const char *buf, size_t count)
 {
-	struct lm93_data *data = dev_get_drvdata(dev);
-	struct i2c_client *client = data->client;
-	u8 ramp;
-	unsigned long val;
-	int err;
+ struct lm93_data *data = dev_get_drvdata(dev);
+ struct i2c_client *client = data->client;
+ u8 ramp;
+ unsigned long val;
+ int err;
 
-	err = kstrtoul(buf, 10, &val);
-	if (err)
-		return err;
+ err = kstrtoul(buf, 10, &val);
+ if (err)
+  return err;
 
-	mutex_lock(&data->update_lock);
-	ramp = lm93_read_byte(client, LM93_REG_PWM_RAMP_CTL);
-	ramp = (ramp & 0x0f) | (LM93_RAMP_TO_REG(val) << 4 & 0xf0);
-	lm93_write_byte(client, LM93_REG_PWM_RAMP_CTL, ramp);
-	mutex_unlock(&data->update_lock);
-	return count;
+ mutex_lock(&data->update_lock);
+ ramp = lm93_read_byte(client, LM93_REG_PWM_RAMP_CTL);
+ ramp = (ramp & 0x0f) | (LM93_RAMP_TO_REG(val) << 4 & 0xf0);
+ lm93_write_byte(client, LM93_REG_PWM_RAMP_CTL, ramp);
+ mutex_unlock(&data->update_lock);
+ return count;
 }

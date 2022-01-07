@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int p; int q; int load; int /*<<< orphan*/ *** light_maps; int /*<<< orphan*/ *** block_maps; } ;
-typedef  TYPE_1__ WorkerItem ;
-struct TYPE_12__ {int index; int /*<<< orphan*/  cnd; int /*<<< orphan*/  state; TYPE_1__ item; } ;
-typedef  TYPE_2__ Worker ;
-struct TYPE_16__ {int create_radius; scalar_t__ chunk_count; TYPE_5__* chunks; int /*<<< orphan*/  render_radius; int /*<<< orphan*/  ortho; int /*<<< orphan*/  fov; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
-struct TYPE_15__ {int p; int q; scalar_t__ dirty; int /*<<< orphan*/  lights; int /*<<< orphan*/  map; scalar_t__ buffer; } ;
-struct TYPE_13__ {int /*<<< orphan*/  z; int /*<<< orphan*/  x; int /*<<< orphan*/  ry; int /*<<< orphan*/  rx; int /*<<< orphan*/  y; } ;
+
+
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int p; int q; int load; int *** light_maps; int *** block_maps; } ;
+typedef TYPE_1__ WorkerItem ;
+struct TYPE_12__ {int index; int cnd; int state; TYPE_1__ item; } ;
+typedef TYPE_2__ Worker ;
+struct TYPE_16__ {int create_radius; scalar_t__ chunk_count; TYPE_5__* chunks; int render_radius; int ortho; int fov; int height; int width; } ;
+struct TYPE_15__ {int p; int q; scalar_t__ dirty; int lights; int map; scalar_t__ buffer; } ;
+struct TYPE_13__ {int z; int x; int ry; int rx; int y; } ;
 struct TYPE_14__ {TYPE_3__ state; } ;
-typedef  TYPE_3__ State ;
-typedef  TYPE_4__ Player ;
-typedef  int /*<<< orphan*/  Map ;
-typedef  TYPE_5__ Chunk ;
+typedef TYPE_3__ State ;
+typedef TYPE_4__ Player ;
+typedef int Map ;
+typedef TYPE_5__ Chunk ;
 
-/* Variables and functions */
- int ABS (int) ; 
- int MAX (int,int) ; 
- scalar_t__ MAX_CHUNKS ; 
- int WORKERS ; 
- int /*<<< orphan*/  WORKER_BUSY ; 
- int /*<<< orphan*/  chunk_visible (float**,int,int,int /*<<< orphan*/ ,int) ; 
- int chunked (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cnd_signal (int /*<<< orphan*/ *) ; 
- TYPE_5__* find_chunk (int,int) ; 
- int /*<<< orphan*/  frustum_planes (float**,int /*<<< orphan*/ ,float*) ; 
- TYPE_7__* g ; 
- int /*<<< orphan*/  init_chunk (TYPE_5__*,int,int) ; 
- int /*<<< orphan*/ * malloc (int) ; 
- int /*<<< orphan*/  map_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_matrix_3d (float*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ABS (int) ;
+ int MAX (int,int) ;
+ scalar_t__ MAX_CHUNKS ;
+ int WORKERS ;
+ int WORKER_BUSY ;
+ int chunk_visible (float**,int,int,int ,int) ;
+ int chunked (int ) ;
+ int cnd_signal (int *) ;
+ TYPE_5__* find_chunk (int,int) ;
+ int frustum_planes (float**,int ,float*) ;
+ TYPE_7__* g ;
+ int init_chunk (TYPE_5__*,int,int) ;
+ int * malloc (int) ;
+ int map_copy (int *,int *) ;
+ int set_matrix_3d (float*,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
 
 void ensure_chunks_worker(Player *player, Worker *worker) {
     State *s = &player->state;

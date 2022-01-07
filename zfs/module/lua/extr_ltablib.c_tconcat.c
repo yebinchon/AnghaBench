@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  luaL_Buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_TTABLE ; 
- int /*<<< orphan*/  addfield (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaL_addlstring (int /*<<< orphan*/ *,char const*,size_t) ; 
- int /*<<< orphan*/  luaL_buffinit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_checkint ; 
- int /*<<< orphan*/  luaL_checktype (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaL_len (int /*<<< orphan*/ *,int) ; 
- int luaL_opt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int luaL_optint (int /*<<< orphan*/ *,int,int) ; 
- char* luaL_optlstring (int /*<<< orphan*/ *,int,char*,size_t*) ; 
- int /*<<< orphan*/  luaL_pushresult (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int lua_State ;
+typedef int luaL_Buffer ;
+
+
+ int LUA_TTABLE ;
+ int addfield (int *,int *,int) ;
+ int luaL_addlstring (int *,char const*,size_t) ;
+ int luaL_buffinit (int *,int *) ;
+ int luaL_checkint ;
+ int luaL_checktype (int *,int,int ) ;
+ int luaL_len (int *,int) ;
+ int luaL_opt (int *,int ,int,int ) ;
+ int luaL_optint (int *,int,int) ;
+ char* luaL_optlstring (int *,int,char*,size_t*) ;
+ int luaL_pushresult (int *) ;
 
 __attribute__((used)) static int tconcat (lua_State *L) {
   luaL_Buffer b;
@@ -39,7 +39,7 @@ __attribute__((used)) static int tconcat (lua_State *L) {
     addfield(L, &b, i);
     luaL_addlstring(&b, sep, lsep);
   }
-  if (i == last)  /* add last value (if interval was not empty) */
+  if (i == last)
     addfield(L, &b, i);
   luaL_pushresult(&b);
   return 1;

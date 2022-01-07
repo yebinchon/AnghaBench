@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  ecpgQuery; scalar_t__* stmtID; } ;
 
-/* Variables and functions */
- int HashStmt (char const*) ; 
- int stmtCacheEntPerBucket ; 
- TYPE_1__* stmtCacheEntries ; 
- scalar_t__ strcmp (char const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int ecpgQuery; scalar_t__* stmtID; } ;
+
+
+ int HashStmt (char const*) ;
+ int stmtCacheEntPerBucket ;
+ TYPE_1__* stmtCacheEntries ;
+ scalar_t__ strcmp (char const*,int ) ;
 
 __attribute__((used)) static int
 SearchStmtCache(const char *ecpgQuery)
 {
-	int			entNo,
-				entIx;
+ int entNo,
+    entIx;
 
-	/* quick failure if cache not set up */
-	if (stmtCacheEntries == NULL)
-		return 0;
 
-	/* hash the statement */
-	entNo = HashStmt(ecpgQuery);
+ if (stmtCacheEntries == ((void*)0))
+  return 0;
 
-	/* search the cache */
-	for (entIx = 0; entIx < stmtCacheEntPerBucket; ++entIx)
-	{
-		if (stmtCacheEntries[entNo].stmtID[0])	/* check if entry is in use */
-		{
-			if (strcmp(ecpgQuery, stmtCacheEntries[entNo].ecpgQuery) == 0)
-				break;			/* found it */
-		}
-		++entNo;				/* incr entry # */
-	}
 
-	/* if entry wasn't found - set entry # to zero */
-	if (entIx >= stmtCacheEntPerBucket)
-		entNo = 0;
+ entNo = HashStmt(ecpgQuery);
 
-	return entNo;
+
+ for (entIx = 0; entIx < stmtCacheEntPerBucket; ++entIx)
+ {
+  if (stmtCacheEntries[entNo].stmtID[0])
+  {
+   if (strcmp(ecpgQuery, stmtCacheEntries[entNo].ecpgQuery) == 0)
+    break;
+  }
+  ++entNo;
+ }
+
+
+ if (entIx >= stmtCacheEntPerBucket)
+  entNo = 0;
+
+ return entNo;
 }

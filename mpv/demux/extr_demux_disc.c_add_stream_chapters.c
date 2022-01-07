@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct demuxer {int /*<<< orphan*/  stream; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STREAM_CTRL_GET_CHAPTER_TIME ; 
- int /*<<< orphan*/  STREAM_CTRL_GET_NUM_CHAPTERS ; 
- int /*<<< orphan*/  demuxer_add_chapter (struct demuxer*,char*,double,int /*<<< orphan*/ ) ; 
- int stream_control (int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
+
+
+
+struct demuxer {int stream; } ;
+
+
+ int STREAM_CTRL_GET_CHAPTER_TIME ;
+ int STREAM_CTRL_GET_NUM_CHAPTERS ;
+ int demuxer_add_chapter (struct demuxer*,char*,double,int ) ;
+ int stream_control (int ,int ,...) ;
 
 __attribute__((used)) static void add_stream_chapters(struct demuxer *demuxer)
 {

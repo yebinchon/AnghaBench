@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_13__ {int channels; } ;
-typedef  TYPE_1__ vorbis_info ;
-struct TYPE_14__ {scalar_t__ ready_state; int /*<<< orphan*/  vd; } ;
-typedef  TYPE_2__ OggVorbis_File ;
+typedef TYPE_1__ vorbis_info ;
+struct TYPE_14__ {scalar_t__ ready_state; int vd; } ;
+typedef TYPE_2__ OggVorbis_File ;
 
-/* Variables and functions */
- scalar_t__ OPENED ; 
- int OV_EINVAL ; 
- int /*<<< orphan*/  _analysis_output_always (char*,int /*<<< orphan*/ ,float*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _ov_getlap (TYPE_2__*,TYPE_1__*,int /*<<< orphan*/ *,float**,int) ; 
- int _ov_initprime (TYPE_2__*) ; 
- int _ov_initset (TYPE_2__*) ; 
- int /*<<< orphan*/  _ov_splice (float**,float**,int,int,int,int,float const*,float const*) ; 
- void* alloca (int) ; 
- int ov_halfrate_p (TYPE_2__*) ; 
- TYPE_1__* ov_info (TYPE_2__*,int) ; 
- int vorbis_info_blocksize (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vorbis_synthesis_lapout (int /*<<< orphan*/ *,float***) ; 
- float* vorbis_window (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ OPENED ;
+ int OV_EINVAL ;
+ int _analysis_output_always (char*,int ,float*,int,int ,int ,int ) ;
+ int _ov_getlap (TYPE_2__*,TYPE_1__*,int *,float**,int) ;
+ int _ov_initprime (TYPE_2__*) ;
+ int _ov_initset (TYPE_2__*) ;
+ int _ov_splice (float**,float**,int,int,int,int,float const*,float const*) ;
+ void* alloca (int) ;
+ int ov_halfrate_p (TYPE_2__*) ;
+ TYPE_1__* ov_info (TYPE_2__*,int) ;
+ int vorbis_info_blocksize (TYPE_1__*,int ) ;
+ int vorbis_synthesis_lapout (int *,float***) ;
+ float* vorbis_window (int *,int ) ;
 
 int ov_crosslap(OggVorbis_File *vf1, OggVorbis_File *vf2){
   vorbis_info *vi1,*vi2;
@@ -39,13 +39,13 @@ int ov_crosslap(OggVorbis_File *vf1, OggVorbis_File *vf2){
   const float *w1,*w2;
   int n1,n2,i,ret,hs1,hs2;
 
-  if(vf1==vf2)return(0); /* degenerate case */
+  if(vf1==vf2)return(0);
   if(vf1->ready_state<OPENED)return(OV_EINVAL);
   if(vf2->ready_state<OPENED)return(OV_EINVAL);
 
-  /* the relevant overlap buffers must be pre-checked and pre-primed
-     before looking at settings in the event that priming would cross
-     a bitstream boundary.  So, do it now */
+
+
+
 
   ret=_ov_initset(vf1);
   if(ret)return(ret);
@@ -68,19 +68,19 @@ int ov_crosslap(OggVorbis_File *vf1, OggVorbis_File *vf2){
 
   _ov_getlap(vf1,vi1,&vf1->vd,lappcm,n1);
 
-  /* have a lapping buffer from vf1; now to splice it into the lapping
-     buffer of vf2 */
-  /* consolidate and expose the buffer. */
+
+
+
   vorbis_synthesis_lapout(&vf2->vd,&pcm);
 
-#if 0
-  _analysis_output_always("pcmL",0,pcm[0],n1*2,0,0,0);
-  _analysis_output_always("pcmR",0,pcm[1],n1*2,0,0,0);
-#endif
 
-  /* splice */
+
+
+
+
+
   _ov_splice(pcm,lappcm,n1,n2,vi1->channels,vi2->channels,w1,w2);
 
-  /* done */
+
   return(0);
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  real ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int real ;
 struct TYPE_4__ {scalar_t__ fill; scalar_t__ data; } ;
 struct TYPE_5__ {int* i486bo; int*** int_buffs; TYPE_1__ buffer; } ;
-typedef  TYPE_2__ mpg123_handle ;
+typedef TYPE_2__ mpg123_handle ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIR16_1 (int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIR16_2 (int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int) ; 
- int FIR_BUFFER_SIZE ; 
- int FIR_SIZE ; 
- int /*<<< orphan*/  dct64_i486 (int*,int*,int /*<<< orphan*/ *) ; 
+
+ int FIR16_1 (int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int ) ;
+ int FIR16_2 (int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int) ;
+ int FIR_BUFFER_SIZE ;
+ int FIR_SIZE ;
+ int dct64_i486 (int*,int*,int *) ;
 
 int absynth_1to1_i486(real *bandPtr, int channel, mpg123_handle *fr, int nb_blocks)
 {
   short *samples = (short *) (fr->buffer.data+fr->buffer.fill);
   int *b0,**buf;
-  int clip = 0; 
+  int clip = 0;
   int block,b,bo_start;
 
-  /* samples address */
+
   samples+=channel;
 
   bo_start=fr->i486bo[channel];
@@ -40,13 +40,13 @@ int absynth_1to1_i486(real *bandPtr, int channel, mpg123_handle *fr, int nb_bloc
   b=bo_start;
   for(block=0;block<nb_blocks;block++) {
 
-    /* FIR offset */
+
     b++;
     if (b >= FIR_BUFFER_SIZE) {
       int *p,*q;
       int c,i,j;
-      
-      /* we shift the buffers */
+
+
       for(c=0;c<2;c++) {
         p=&buf[c][0]+1;
         q=p+(FIR_BUFFER_SIZE-FIR_SIZE);
@@ -56,10 +56,10 @@ int absynth_1to1_i486(real *bandPtr, int channel, mpg123_handle *fr, int nb_bloc
           q+=FIR_BUFFER_SIZE;
         }
       }
-      /* we update 'bo' accordingly */
+
       b=fr->i486bo[channel]=FIR_SIZE;
     }
-    
+
     if(b & 1) {
       dct64_i486(buf[1]+b,buf[0]+b,bandPtr);
     } else {
@@ -69,7 +69,7 @@ int absynth_1to1_i486(real *bandPtr, int channel, mpg123_handle *fr, int nb_bloc
   }
   fr->i486bo[channel]=b;
 
-  /* filter bank: part 1 */
+
   b=bo_start;
   for(block=0;block<nb_blocks;block++) {
     b++;
@@ -86,12 +86,12 @@ int absynth_1to1_i486(real *bandPtr, int channel, mpg123_handle *fr, int nb_bloc
  FIR16_2(2,-6,50,-86,520,-1106,1910,-8447,18714,10294,1322,1469,488,145,55,8,0,
  30,0,-8,55,-145,488,-1469,1322,-10294,18714,8447,1910,1106,520,86,50,6);
  FIR16_2(3,-5,49,-73,521,-1015,2023,-7986,18657,10751,1140,1559,473,161,56,9,0,
- 29,0,-9,56,-161,473,-1559,1140,-10751,18657,7986,2023,1015,521,73,49,5);              
+ 29,0,-9,56,-161,473,-1559,1140,-10751,18657,7986,2023,1015,521,73,49,5);
     samples+=64;
   }
   samples-=64*nb_blocks;
-  
-  /* filter bank: part 2 */
+
+
 
   b=bo_start;
   for(block=0;block<nb_blocks;block++) {
@@ -110,13 +110,13 @@ int absynth_1to1_i486(real *bandPtr, int channel, mpg123_handle *fr, int nb_bloc
  FIR16_2(6,-4,44,-38,514,-751,2284,-6620,18353,12097,509,1817,411,212,57,12,0,
  26,0,-12,57,-212,411,-1817,509,-12097,18353,6620,2284,751,514,38,44,4);
  FIR16_2(7,-3,42,-27,508,-665,2347,-6173,18208,12534,270,1899,383,229,56,13,0,
- 25,0,-13,56,-229,383,-1899,270,-12534,18208,6173,2347,665,508,27,42,3);             
+ 25,0,-13,56,-229,383,-1899,270,-12534,18208,6173,2347,665,508,27,42,3);
 
     samples+=64;
   }
   samples-=64*nb_blocks;
 
-  /* filter bank: part 3 */
+
 
   b=bo_start;
   for(block=0;block<nb_blocks;block++) {
@@ -135,13 +135,13 @@ int absynth_1to1_i486(real *bandPtr, int channel, mpg123_handle *fr, int nb_bloc
  FIR16_2(10,-2,36,0,479,-423,2465,-4869,17647,13794,-530,2122,282,284,53,17,0,
  22,0,-17,53,-284,282,-2122,-530,-13794,17647,4869,2465,423,479,0,36,2);
  FIR16_2(11,-2,34,7,467,-347,2483,-4449,17419,14194,-825,2188,242,302,52,18,0,
- 21,0,-18,52,-302,242,-2188,-825,-14194,17419,4449,2483,347,467,-7,34,2);          
+ 21,0,-18,52,-302,242,-2188,-825,-14194,17419,4449,2483,347,467,-7,34,2);
 
     samples+=64;
   }
   samples-=64*nb_blocks;
 
-  /* filter bank: part 4 */
+
 
   b=bo_start;
   for(block=0;block<nb_blocks;block++) {
@@ -161,7 +161,7 @@ int absynth_1to1_i486(real *bandPtr, int channel, mpg123_handle *fr, int nb_bloc
  18,-1,-22,44,-357,100,-2354,-1788,-15322,16623,3245,2479,136,424,-26,29,1);
  FIR16_2(15,-1,27,31,408,-72,2459,-2863,16322,15671,-2135,2396,46,374,40,24,-1,
  17,-1,-24,40,-374,46,-2396,-2135,-15671,16322,2863,2459,72,408,-31,27,1);
- FIR16_1(16,-1,0,36,0,-11,0,-2493,0,16004,0,2431,0,391,0,26,0);      
+ FIR16_1(16,-1,0,36,0,-11,0,-2493,0,16004,0,2431,0,391,0,26,0);
 
     samples+=64;
   }

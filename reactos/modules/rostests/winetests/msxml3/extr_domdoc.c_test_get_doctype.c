@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ VARIANT_BOOL ;
-typedef  int /*<<< orphan*/  IXMLDOMDocumentType ;
-typedef  int /*<<< orphan*/  IXMLDOMDocument ;
-typedef  int /*<<< orphan*/ * HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * E_INVALIDARG ; 
- int /*<<< orphan*/  IID_IXMLDOMDocument ; 
- int /*<<< orphan*/  IXMLDOMDocumentType_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * IXMLDOMDocumentType_get_name (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * IXMLDOMDocumentType_get_nodeName (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMDocument_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * IXMLDOMDocument_get_doctype (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * IXMLDOMDocument_loadXML (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/ * S_FALSE ; 
- int /*<<< orphan*/ * S_OK ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- scalar_t__ VARIANT_TRUE ; 
- int /*<<< orphan*/  _bstr_ (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * create_document (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lstrcmpW (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  szEmailXML ; 
- int /*<<< orphan*/ * wine_dbgstr_w (int /*<<< orphan*/ ) ; 
+
+
+
+typedef char WCHAR ;
+typedef scalar_t__ VARIANT_BOOL ;
+typedef int IXMLDOMDocumentType ;
+typedef int IXMLDOMDocument ;
+typedef int * HRESULT ;
+typedef int BSTR ;
+
+
+ int * E_INVALIDARG ;
+ int IID_IXMLDOMDocument ;
+ int IXMLDOMDocumentType_Release (int *) ;
+ int * IXMLDOMDocumentType_get_name (int *,int *) ;
+ int * IXMLDOMDocumentType_get_nodeName (int *,int *) ;
+ int IXMLDOMDocument_Release (int *) ;
+ int * IXMLDOMDocument_get_doctype (int *,int **) ;
+ int * IXMLDOMDocument_loadXML (int *,int ,scalar_t__*) ;
+ int * S_FALSE ;
+ int * S_OK ;
+ int SysFreeString (int ) ;
+ scalar_t__ VARIANT_TRUE ;
+ int _bstr_ (int ) ;
+ int * create_document (int *) ;
+ int lstrcmpW (char const*,int ) ;
+ int ok (int,char*,...) ;
+ int szEmailXML ;
+ int * wine_dbgstr_w (int ) ;
 
 __attribute__((used)) static void test_get_doctype(void)
 {
@@ -48,24 +48,24 @@ __attribute__((used)) static void test_get_doctype(void)
 
     doc = create_document(&IID_IXMLDOMDocument);
 
-    hr = IXMLDOMDocument_get_doctype(doc, NULL);
+    hr = IXMLDOMDocument_get_doctype(doc, ((void*)0));
     ok(hr == E_INVALIDARG, "got 0x%08x\n", hr);
 
     doctype = (void*)0xdeadbeef;
     hr = IXMLDOMDocument_get_doctype(doc, &doctype);
     ok(hr == S_FALSE, "got 0x%08x\n", hr);
-    ok(doctype == NULL, "got %p\n", doctype);
+    ok(doctype == ((void*)0), "got %p\n", doctype);
 
     hr = IXMLDOMDocument_loadXML(doc, _bstr_(szEmailXML), &b);
     ok(hr == S_OK, "got 0x%08x\n", hr);
     ok(b == VARIANT_TRUE, "failed to load XML string\n");
 
-    doctype = NULL;
+    doctype = ((void*)0);
     hr = IXMLDOMDocument_get_doctype(doc, &doctype);
     ok(hr == S_OK, "got 0x%08x\n", hr);
-    ok(doctype != NULL, "got %p\n", doctype);
+    ok(doctype != ((void*)0), "got %p\n", doctype);
 
-    hr = IXMLDOMDocumentType_get_name(doctype, NULL);
+    hr = IXMLDOMDocumentType_get_name(doctype, ((void*)0));
     ok(hr == E_INVALIDARG, "got 0x%08x\n", hr);
 
     hr = IXMLDOMDocumentType_get_name(doctype, &s);

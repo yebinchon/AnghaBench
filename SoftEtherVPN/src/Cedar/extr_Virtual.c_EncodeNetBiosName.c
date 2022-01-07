@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  char UCHAR ;
 
-/* Variables and functions */
- char* CharToNetBiosStr (char) ; 
- int /*<<< orphan*/  Copy (char*,char*,int) ; 
- int StrLen (char*) ; 
+
+
+
+typedef int UINT ;
+typedef char UCHAR ;
+
+
+ char* CharToNetBiosStr (char) ;
+ int Copy (char*,char*,int) ;
+ int StrLen (char*) ;
 
 void EncodeNetBiosName(UCHAR *dst, char *src)
 {
-	char tmp[17];
-	UINT i;
-	UINT copy_len;
-	UINT wp;
-	// Validate arguments
-	if (dst == NULL || src == NULL)
-	{
-		return;
-	}
+ char tmp[17];
+ UINT i;
+ UINT copy_len;
+ UINT wp;
 
-	for (i = 0;i < 16;i++)
-	{
-		tmp[i] = ' ';
-	}
-	tmp[16] = 0;
+ if (dst == ((void*)0) || src == ((void*)0))
+ {
+  return;
+ }
 
-	copy_len = StrLen(src);
-	if (copy_len > 16)
-	{
-		copy_len = 16;
-	}
+ for (i = 0;i < 16;i++)
+ {
+  tmp[i] = ' ';
+ }
+ tmp[16] = 0;
 
-	Copy(tmp, src, copy_len);
+ copy_len = StrLen(src);
+ if (copy_len > 16)
+ {
+  copy_len = 16;
+ }
 
-	wp = 0;
+ Copy(tmp, src, copy_len);
 
-	tmp[15] = 0;
+ wp = 0;
 
-	for (i = 0;i < 16;i++)
-	{
-		char c = tmp[i];
-		char *s = CharToNetBiosStr(c);
+ tmp[15] = 0;
 
-		dst[wp++] = s[0];
-		dst[wp++] = s[1];
-	}
+ for (i = 0;i < 16;i++)
+ {
+  char c = tmp[i];
+  char *s = CharToNetBiosStr(c);
+
+  dst[wp++] = s[0];
+  dst[wp++] = s[1];
+ }
 }

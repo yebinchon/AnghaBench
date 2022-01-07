@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct ra_imgfmt_desc {int num_planes; int component_bits; scalar_t__ component_pad; int /*<<< orphan*/  chroma_h; int /*<<< orphan*/  chroma_w; TYPE_2__** planes; int /*<<< orphan*/ ** components; int /*<<< orphan*/  member_0; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct ra_imgfmt_desc {int num_planes; int component_bits; scalar_t__ component_pad; int chroma_h; int chroma_w; TYPE_2__** planes; int ** components; int member_0; } ;
 struct ra {int num_formats; TYPE_1__** formats; } ;
-struct mp_regular_imgfmt_plane {int num_components; int /*<<< orphan*/ * components; } ;
-struct mp_regular_imgfmt {int num_planes; int component_size; scalar_t__ component_pad; int /*<<< orphan*/  chroma_h; int /*<<< orphan*/  chroma_w; int /*<<< orphan*/  component_type; struct mp_regular_imgfmt_plane* planes; } ;
-typedef  enum ra_ctype { ____Placeholder_ra_ctype } ra_ctype ;
+struct mp_regular_imgfmt_plane {int num_components; int * components; } ;
+struct mp_regular_imgfmt {int num_planes; int component_size; scalar_t__ component_pad; int chroma_h; int chroma_w; int component_type; struct mp_regular_imgfmt_plane* planes; } ;
+typedef enum ra_ctype { ____Placeholder_ra_ctype } ra_ctype ;
 struct TYPE_4__ {scalar_t__* component_depth; int ctype; } ;
 struct TYPE_3__ {int special_imgfmt; struct ra_imgfmt_desc* special_imgfmt_desc; } ;
 
-/* Variables and functions */
- int RA_CTYPE_UNKNOWN ; 
- TYPE_2__* find_plane_format (struct ra*,int,int,int /*<<< orphan*/ ) ; 
- scalar_t__ mp_get_regular_imgfmt (struct mp_regular_imgfmt*,int) ; 
+
+ int RA_CTYPE_UNKNOWN ;
+ TYPE_2__* find_plane_format (struct ra*,int,int,int ) ;
+ scalar_t__ mp_get_regular_imgfmt (struct mp_regular_imgfmt*,int) ;
 
 bool ra_get_imgfmt_desc(struct ra *ra, int imgfmt, struct ra_imgfmt_desc *out)
 {
@@ -41,16 +41,16 @@ bool ra_get_imgfmt_desc(struct ra *ra, int imgfmt, struct ra_imgfmt_desc *out)
                                               plane->num_components,
                                               regfmt.component_type);
             if (!res.planes[n])
-                return false;
+                return 0;
             for (int i = 0; i < plane->num_components; i++)
                 res.components[n][i] = plane->components[i];
-            // Dropping LSBs when shifting will lead to dropped MSBs.
+
             if (res.component_bits > res.planes[n]->component_depth[0] &&
                 res.component_pad < 0)
-                return false;
-            // Renderer restriction, but actually an unwanted corner case.
+                return 0;
+
             if (ctype != RA_CTYPE_UNKNOWN && ctype != res.planes[n]->ctype)
-                return false;
+                return 0;
             ctype = res.planes[n]->ctype;
         }
         res.chroma_w = regfmt.chroma_w;
@@ -65,11 +65,11 @@ bool ra_get_imgfmt_desc(struct ra *ra, int imgfmt, struct ra_imgfmt_desc *out)
         }
     }
 
-    // Unsupported format
-    return false;
+
+    return 0;
 
 supported:
 
     *out = res;
-    return true;
+    return 1;
 }

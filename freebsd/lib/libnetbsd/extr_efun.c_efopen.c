@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  efunc (int,char*,char const*) ; 
- int /*<<< orphan*/ * fopen (char const*,char const*) ; 
- int /*<<< orphan*/  stub1 (int,char*,char const*) ; 
+
+
+
+typedef int FILE ;
+
+
+ int efunc (int,char*,char const*) ;
+ int * fopen (char const*,char const*) ;
+ int stub1 (int,char*,char const*) ;
 
 FILE *
 efopen(const char *p, const char *m)
 {
-	FILE *fp = fopen(p, m);
-	if (fp == NULL)
-		(*efunc)(1, "Cannot open `%s'", p);
-	return fp;
+ FILE *fp = fopen(p, m);
+ if (fp == ((void*)0))
+  (*efunc)(1, "Cannot open `%s'", p);
+ return fp;
 }

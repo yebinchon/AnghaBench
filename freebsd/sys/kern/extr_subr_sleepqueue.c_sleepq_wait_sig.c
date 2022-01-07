@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  curthread ; 
- int sleepq_catch_signals (void*,int) ; 
- int sleepq_check_signals () ; 
- int /*<<< orphan*/  thread_unlock (int /*<<< orphan*/ ) ; 
+ int curthread ;
+ int sleepq_catch_signals (void*,int) ;
+ int sleepq_check_signals () ;
+ int thread_unlock (int ) ;
 
 int
 sleepq_wait_sig(void *wchan, int pri)
 {
-	int rcatch;
-	int rval;
+ int rcatch;
+ int rval;
 
-	rcatch = sleepq_catch_signals(wchan, pri);
-	rval = sleepq_check_signals();
-	thread_unlock(curthread);
-	if (rcatch)
-		return (rcatch);
-	return (rval);
+ rcatch = sleepq_catch_signals(wchan, pri);
+ rval = sleepq_check_signals();
+ thread_unlock(curthread);
+ if (rcatch)
+  return (rcatch);
+ return (rval);
 }

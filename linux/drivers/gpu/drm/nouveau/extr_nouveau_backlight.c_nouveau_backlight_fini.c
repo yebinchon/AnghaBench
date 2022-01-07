@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nouveau_connector {struct nouveau_backlight* backlight; } ;
-struct nouveau_backlight {scalar_t__ id; int /*<<< orphan*/  dev; } ;
+struct nouveau_backlight {scalar_t__ id; int dev; } ;
 struct drm_connector {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  backlight_device_unregister (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bl_ida ; 
- int /*<<< orphan*/  ida_simple_remove (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  kfree (struct nouveau_backlight*) ; 
- struct nouveau_connector* nouveau_connector (struct drm_connector*) ; 
+
+ int backlight_device_unregister (int ) ;
+ int bl_ida ;
+ int ida_simple_remove (int *,scalar_t__) ;
+ int kfree (struct nouveau_backlight*) ;
+ struct nouveau_connector* nouveau_connector (struct drm_connector*) ;
 
 void
 nouveau_backlight_fini(struct drm_connector *connector)
 {
-	struct nouveau_connector *nv_conn = nouveau_connector(connector);
-	struct nouveau_backlight *bl = nv_conn->backlight;
+ struct nouveau_connector *nv_conn = nouveau_connector(connector);
+ struct nouveau_backlight *bl = nv_conn->backlight;
 
-	if (!bl)
-		return;
+ if (!bl)
+  return;
 
-	if (bl->id >= 0)
-		ida_simple_remove(&bl_ida, bl->id);
+ if (bl->id >= 0)
+  ida_simple_remove(&bl_ida, bl->id);
 
-	backlight_device_unregister(bl->dev);
-	nv_conn->backlight = NULL;
-	kfree(bl);
+ backlight_device_unregister(bl->dev);
+ nv_conn->backlight = ((void*)0);
+ kfree(bl);
 }

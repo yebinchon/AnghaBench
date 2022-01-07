@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- double HUGE_VAL ; 
- double gettimedouble () ; 
- int /*<<< orphan*/  print_number (double) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+ double HUGE_VAL ;
+ double gettimedouble () ;
+ int print_number (double) ;
+ int printf (char*,...) ;
 
 void run_benchmark(char *name, void (*benchmark)(void*), void (*setup)(void*), void (*teardown)(void*), void* data, int count, int iter) {
     int i;
@@ -24,13 +16,13 @@ void run_benchmark(char *name, void (*benchmark)(void*), void (*setup)(void*), v
     double max = 0.0;
     for (i = 0; i < count; i++) {
         double begin, total;
-        if (setup != NULL) {
+        if (setup != ((void*)0)) {
             setup(data);
         }
         begin = gettimedouble();
         benchmark(data);
         total = gettimedouble() - begin;
-        if (teardown != NULL) {
+        if (teardown != ((void*)0)) {
             teardown(data);
         }
         if (total < min) {

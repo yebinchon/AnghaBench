@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char** sd_bus_message ;
 
-/* Variables and functions */
- int ENXIO ; 
- char SD_BUS_TYPE_ARRAY ; 
- int /*<<< orphan*/  STR_IN_SET (char const*,char*,char*,char*) ; 
- int /*<<< orphan*/  assert (char***) ; 
- int bus_message_get_arg_skip (char***,unsigned int,char*,char const**) ; 
- int sd_bus_message_read_strv (char***,char***) ; 
+
+
+
+typedef char** sd_bus_message ;
+
+
+ int ENXIO ;
+ char SD_BUS_TYPE_ARRAY ;
+ int STR_IN_SET (char const*,char*,char*,char*) ;
+ int assert (char***) ;
+ int bus_message_get_arg_skip (char***,unsigned int,char*,char const**) ;
+ int sd_bus_message_read_strv (char***,char***) ;
 
 int bus_message_get_arg_strv(sd_bus_message *m, unsigned i, char ***strv) {
         const char *contents;

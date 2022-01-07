@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab_cursor ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-struct TYPE_2__ {int /*<<< orphan*/  pStmt; } ;
-typedef  TYPE_1__ UnionCsr ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int /*<<< orphan*/  sqlite3_column_value (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3_result_value (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sqlite3_vtab_cursor ;
+typedef int sqlite3_context ;
+struct TYPE_2__ {int pStmt; } ;
+typedef TYPE_1__ UnionCsr ;
+
+
+ int SQLITE_OK ;
+ int sqlite3_column_value (int ,int) ;
+ int sqlite3_result_value (int *,int ) ;
 
 __attribute__((used)) static int unionColumn(
   sqlite3_vtab_cursor *cur,

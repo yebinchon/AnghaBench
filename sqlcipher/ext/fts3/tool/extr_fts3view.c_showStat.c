@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3_int64 ;
-typedef  int /*<<< orphan*/  sqlite3 ;
 
-/* Variables and functions */
-#define  SQLITE_BLOB 129 
-#define  SQLITE_INTEGER 128 
- scalar_t__ SQLITE_ROW ; 
- int getVarint (unsigned char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * prepare (int /*<<< orphan*/ *,char*,char const*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ sqlite3_column_blob (int /*<<< orphan*/ *,int) ; 
- int sqlite3_column_bytes (int /*<<< orphan*/ *,int) ; 
- int sqlite3_column_int (int /*<<< orphan*/ *,int) ; 
- int sqlite3_column_type (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_stmt ;
+typedef int sqlite3_int64 ;
+typedef int sqlite3 ;
+
+
+
+
+ scalar_t__ SQLITE_ROW ;
+ int getVarint (unsigned char*,int *) ;
+ int * prepare (int *,char*,char const*) ;
+ int printf (char*,...) ;
+ scalar_t__ sqlite3_column_blob (int *,int) ;
+ int sqlite3_column_bytes (int *,int) ;
+ int sqlite3_column_int (int *,int) ;
+ int sqlite3_column_type (int *,int) ;
+ int sqlite3_finalize (int *) ;
+ scalar_t__ sqlite3_step (int *) ;
 
 __attribute__((used)) static void showStat(sqlite3 *db, const char *zTab){
   sqlite3_stmt *pStmt;
@@ -34,11 +34,11 @@ __attribute__((used)) static void showStat(sqlite3 *db, const char *zTab){
   while( sqlite3_step(pStmt)==SQLITE_ROW ){
     printf("stat[%d] =", sqlite3_column_int(pStmt, 0));
     switch( sqlite3_column_type(pStmt, 1) ){
-      case SQLITE_INTEGER: {
+      case 128: {
         printf(" %d\n", sqlite3_column_int(pStmt, 1));
         break;
       }
-      case SQLITE_BLOB: {
+      case 129: {
         unsigned char *x = (unsigned char*)sqlite3_column_blob(pStmt, 1);
         int len = sqlite3_column_bytes(pStmt, 1);
         int i = 0;

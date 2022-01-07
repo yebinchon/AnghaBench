@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_diff_callbacks4_t ;
-typedef  int /*<<< orphan*/  svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_diff_tree_processor_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_delta_editor_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/ * svn_diff__tree_processor_copy_as_changed_create (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_diff__tree_processor_reverse_create (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_wc__get_diff_editor (int /*<<< orphan*/  const**,void**,int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__wrap_diff_callbacks (int /*<<< orphan*/  const**,int /*<<< orphan*/  const*,void*,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_wc_diff_callbacks4_t ;
+typedef int svn_wc_context_t ;
+typedef int svn_error_t ;
+typedef int svn_diff_tree_processor_t ;
+typedef int svn_depth_t ;
+typedef int svn_delta_editor_t ;
+typedef int svn_cancel_func_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+
+
+ scalar_t__ FALSE ;
+ int SVN_ERR (int ) ;
+ scalar_t__ TRUE ;
+ int * svn_diff__tree_processor_copy_as_changed_create (int const*,int *) ;
+ int * svn_diff__tree_processor_reverse_create (int const*,int *,int *) ;
+ int * svn_error_trace (int ) ;
+ int svn_wc__get_diff_editor (int const**,void**,int *,char const*,char const*,int ,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int const*,int const*,int ,void*,int *,int *) ;
+ int svn_wc__wrap_diff_callbacks (int const**,int const*,void*,scalar_t__,int *,int *) ;
 
 svn_error_t *
 svn_wc_get_diff_editor6(const svn_delta_editor_t **editor,
@@ -54,11 +54,11 @@ svn_wc_get_diff_editor6(const svn_delta_editor_t **editor,
 {
   const svn_diff_tree_processor_t *diff_processor;
 
-  /* --git implies --show-copies-as-adds */
+
   if (use_git_diff_format)
     show_copies_as_adds = TRUE;
 
-  /* --show-copies-as-adds implies --notice-ancestry */
+
   if (show_copies_as_adds)
     ignore_ancestry = FALSE;
 
@@ -68,7 +68,7 @@ svn_wc_get_diff_editor6(const svn_delta_editor_t **editor,
 
   if (reverse_order)
     diff_processor = svn_diff__tree_processor_reverse_create(
-                              diff_processor, NULL, result_pool);
+                              diff_processor, ((void*)0), result_pool);
 
   if (! show_copies_as_adds)
     diff_processor = svn_diff__tree_processor_copy_as_changed_create(

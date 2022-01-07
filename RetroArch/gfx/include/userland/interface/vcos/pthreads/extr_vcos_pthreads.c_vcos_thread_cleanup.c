@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  task_timer; scalar_t__ task_timer_created; int /*<<< orphan*/  suspend; } ;
-typedef  TYPE_1__ VCOS_THREAD_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  vcos_semaphore_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_timer_delete (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int task_timer; scalar_t__ task_timer_created; int suspend; } ;
+typedef TYPE_1__ VCOS_THREAD_T ;
+
+
+ int vcos_semaphore_delete (int *) ;
+ int vcos_timer_delete (int *) ;
 
 __attribute__((used)) static void vcos_thread_cleanup(VCOS_THREAD_T *thread)
 {

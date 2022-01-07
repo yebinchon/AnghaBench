@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  int ptrdiff_t ;
-struct TYPE_5__ {int pitch; int height; int frm1_size; int frm2_size; int /*<<< orphan*/  avctx; int /*<<< orphan*/  gb; int /*<<< orphan*/ * frm2; int /*<<< orphan*/ * frm1; scalar_t__ frm0; scalar_t__ rotate_code; } ;
-typedef  TYPE_1__ SANMVideoContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int AVERROR_PATCHWELCOME ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  avpriv_report_missing_feature (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  bytestream2_get_buffer (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  bytestream2_get_bufferu (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int bytestream2_get_byteu (int /*<<< orphan*/ *) ; 
- int bytestream2_get_le16 (int /*<<< orphan*/ *) ; 
- int bytestream2_get_le32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,int) ; 
- int* c37_mv ; 
- int /*<<< orphan*/  codec37_mv (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int) ; 
- int /*<<< orphan*/  copy_block4 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  rle_decode (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  rotate_bufs (TYPE_1__*,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int ptrdiff_t ;
+struct TYPE_5__ {int pitch; int height; int frm1_size; int frm2_size; int avctx; int gb; int * frm2; int * frm1; scalar_t__ frm0; scalar_t__ rotate_code; } ;
+typedef TYPE_1__ SANMVideoContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AVERROR_PATCHWELCOME ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ int av_log (int ,int ,char*,...) ;
+ int avpriv_report_missing_feature (int ,char*,int) ;
+ int bytestream2_get_buffer (int *,int *,int) ;
+ int bytestream2_get_bufferu (int *,int *,int) ;
+ int bytestream2_get_byte (int *) ;
+ int bytestream2_get_bytes_left (int *) ;
+ int bytestream2_get_byteu (int *) ;
+ int bytestream2_get_le16 (int *) ;
+ int bytestream2_get_le32 (int *) ;
+ int bytestream2_skip (int *,int) ;
+ int* c37_mv ;
+ int codec37_mv (int *,int *,int,int,int,int) ;
+ int copy_block4 (int *,int *,int,int,int) ;
+ int memset (int *,int,int) ;
+ int rle_decode (TYPE_1__*,int *,int) ;
+ int rotate_bufs (TYPE_1__*,int) ;
 
 __attribute__((used)) static int old_codec37(SANMVideoContext *ctx, int top,
                        int left, int width, int height)
@@ -48,7 +48,7 @@ __attribute__((used)) static int old_codec37(SANMVideoContext *ctx, int top,
     int skip_run = 0;
     int compr = bytestream2_get_byte(&ctx->gb);
     int mvoff = bytestream2_get_byte(&ctx->gb);
-    int seq   = bytestream2_get_le16(&ctx->gb);
+    int seq = bytestream2_get_le16(&ctx->gb);
     uint32_t decoded_size = bytestream2_get_le32(&ctx->gb);
     int flags;
 
@@ -66,7 +66,7 @@ __attribute__((used)) static int old_codec37(SANMVideoContext *ctx, int top,
     if (((seq & 1) || !(flags & 1)) && (compr && compr != 2))
         rotate_bufs(ctx, 1);
 
-    dst  = ((uint8_t*)ctx->frm0) + left + top * stride;
+    dst = ((uint8_t*)ctx->frm0) + left + top * stride;
     prev = ((uint8_t*)ctx->frm2) + left + top * stride;
 
     if (mvoff > 2) {
@@ -139,7 +139,7 @@ __attribute__((used)) static int old_codec37(SANMVideoContext *ctx, int top,
                         }
                     }
                 }
-                dst  += stride * 4;
+                dst += stride * 4;
                 prev += stride * 4;
             }
         } else {
@@ -171,7 +171,7 @@ __attribute__((used)) static int old_codec37(SANMVideoContext *ctx, int top,
                                    ctx->height, stride, i + mx, j + my);
                     }
                 }
-                dst  += stride * 4;
+                dst += stride * 4;
                 prev += stride * 4;
             }
         }

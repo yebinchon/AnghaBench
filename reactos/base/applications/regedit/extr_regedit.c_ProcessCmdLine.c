@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WCHAR ;
-typedef  scalar_t__ REGEDIT_ACTION ;
-typedef  int* LPWSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ ACTION_ADD ; 
- scalar_t__ ACTION_DELETE ; 
- scalar_t__ ACTION_EXPORT ; 
- scalar_t__ ACTION_UNDEF ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  InfoMessageBox (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int MB_ICONINFORMATION ; 
- int MB_OK ; 
- int /*<<< orphan*/  PerformRegAction (scalar_t__,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  error_unknown_switch (int,int*) ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__ iswspace (int) ; 
- int /*<<< orphan*/  szTitle ; 
- int towupper (int) ; 
- int /*<<< orphan*/  usage ; 
+
+
+
+typedef int WCHAR ;
+typedef scalar_t__ REGEDIT_ACTION ;
+typedef int* LPWSTR ;
+typedef int BOOL ;
+
+
+ scalar_t__ ACTION_ADD ;
+ scalar_t__ ACTION_DELETE ;
+ scalar_t__ ACTION_EXPORT ;
+ scalar_t__ ACTION_UNDEF ;
+ int FALSE ;
+ int InfoMessageBox (int *,int,int ,int ) ;
+ int MB_ICONINFORMATION ;
+ int MB_OK ;
+ int PerformRegAction (scalar_t__,int*,int ) ;
+ int TRUE ;
+ int error_unknown_switch (int,int*) ;
+ int exit (int) ;
+ scalar_t__ iswspace (int) ;
+ int szTitle ;
+ int towupper (int) ;
+ int usage ;
 
 BOOL ProcessCmdLine(LPWSTR lpCmdLine)
 {
     BOOL silent = FALSE;
     REGEDIT_ACTION action = ACTION_UNDEF;
-    LPWSTR s = lpCmdLine;       /* command line pointer */
-    WCHAR ch = *s;              /* current character */
+    LPWSTR s = lpCmdLine;
+    WCHAR ch = *s;
 
     while (ch && ((ch == L'-') || (ch == L'/')))
     {
@@ -53,12 +53,12 @@ BOOL ProcessCmdLine(LPWSTR lpCmdLine)
         {
             if (chu == L'S')
             {
-                /* Silence dialogs */
+
                 silent = TRUE;
             }
             else if (chu == L'V')
             {
-                /* Ignore this switch */
+
             }
             else
             {
@@ -71,7 +71,7 @@ BOOL ProcessCmdLine(LPWSTR lpCmdLine)
                         action = ACTION_EXPORT;
                         break;
                     case L'?':
-                        InfoMessageBox(NULL, MB_OK | MB_ICONINFORMATION, szTitle, usage);
+                        InfoMessageBox(((void*)0), MB_OK | MB_ICONINFORMATION, szTitle, usage);
                         exit(3);
                         break;
                     default:
@@ -88,7 +88,7 @@ BOOL ProcessCmdLine(LPWSTR lpCmdLine)
                 switch (chu)
                 {
                     case L'L':
-                        /* fall through */
+
                     case L'R':
                         s += 2;
                         while (*s && !iswspace(*s))
@@ -103,12 +103,12 @@ BOOL ProcessCmdLine(LPWSTR lpCmdLine)
             }
             else
             {
-                /* this is a file name, starting from '/' */
+
                 s--;
                 break;
             }
         }
-        /* skip spaces to the next parameter */
+
         ch = *s;
         while (ch && iswspace(ch))
         {

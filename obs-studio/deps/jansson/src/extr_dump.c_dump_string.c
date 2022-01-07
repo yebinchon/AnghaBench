@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  seq ;
-typedef  int (* json_dump_callback_t ) (char*,int,void*) ;
-typedef  char int32_t ;
 
-/* Variables and functions */
- size_t JSON_ENSURE_ASCII ; 
- size_t JSON_ESCAPE_SLASH ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,unsigned int,...) ; 
- char* utf8_iterate (char const*,int,char*) ; 
+
+
+
+typedef int seq ;
+typedef int (* json_dump_callback_t ) (char*,int,void*) ;
+typedef char int32_t ;
+
+
+ size_t JSON_ENSURE_ASCII ;
+ size_t JSON_ESCAPE_SLASH ;
+ int snprintf (char*,int,char*,unsigned int,...) ;
+ char* utf8_iterate (char const*,int,char*) ;
 
 __attribute__((used)) static int dump_string(const char *str, size_t len, json_dump_callback_t dump, void *data, size_t flags)
 {
@@ -42,15 +42,15 @@ __attribute__((used)) static int dump_string(const char *str, size_t len, json_d
             if(!end)
                 return -1;
 
-            /* mandatory escape or control char */
+
             if(codepoint == '\\' || codepoint == '"' || codepoint < 0x20)
                 break;
 
-            /* slash */
+
             if((flags & JSON_ESCAPE_SLASH) && codepoint == '/')
                 break;
 
-            /* non-ASCII */
+
             if((flags & JSON_ENSURE_ASCII) && codepoint > 0x7F)
                 break;
 
@@ -65,7 +65,7 @@ __attribute__((used)) static int dump_string(const char *str, size_t len, json_d
         if(end == pos)
             break;
 
-        /* handle \, /, ", and control codes */
+
         length = 2;
         switch(codepoint)
         {
@@ -76,17 +76,17 @@ __attribute__((used)) static int dump_string(const char *str, size_t len, json_d
             case '\n': text = "\\n"; break;
             case '\r': text = "\\r"; break;
             case '\t': text = "\\t"; break;
-            case '/':  text = "\\/"; break;
+            case '/': text = "\\/"; break;
             default:
             {
-                /* codepoint is in BMP */
+
                 if(codepoint < 0x10000)
                 {
                     snprintf(seq, sizeof(seq), "\\u%04X", (unsigned int)codepoint);
                     length = 6;
                 }
 
-                /* not in BMP -> construct a UTF-16 surrogate pair */
+
                 else
                 {
                     int32_t first, last;

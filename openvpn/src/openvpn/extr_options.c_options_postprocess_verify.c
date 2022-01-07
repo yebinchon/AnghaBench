@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct options {int /*<<< orphan*/  ce; TYPE_1__* connection_list; } ;
-struct TYPE_2__ {int len; int /*<<< orphan*/ ** array; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  options_postprocess_verify_ce (struct options const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct options {int ce; TYPE_1__* connection_list; } ;
+struct TYPE_2__ {int len; int ** array; } ;
+
+
+ int options_postprocess_verify_ce (struct options const*,int *) ;
 
 __attribute__((used)) static void
 options_postprocess_verify(const struct options *o)

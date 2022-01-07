@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  num_filters; } ;
-struct priv {int /*<<< orphan*/  queue; TYPE_1__ pipe; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int num_filters; } ;
+struct priv {int queue; TYPE_1__ pipe; } ;
 struct mp_image {int dummy; } ;
 struct mp_filter {struct priv* priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mp_image_new_ref (struct mp_image*) ; 
- int /*<<< orphan*/  mp_refqueue_can_output (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_refqueue_execute_reinit (int /*<<< orphan*/ ) ; 
- struct mp_image* mp_refqueue_get (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_refqueue_should_deint (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_refqueue_write_out_pin (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  render (struct mp_filter*) ; 
- int /*<<< orphan*/  update_pipeline (struct mp_filter*) ; 
+
+ int mp_image_new_ref (struct mp_image*) ;
+ int mp_refqueue_can_output (int ) ;
+ int mp_refqueue_execute_reinit (int ) ;
+ struct mp_image* mp_refqueue_get (int ,int ) ;
+ int mp_refqueue_should_deint (int ) ;
+ int mp_refqueue_write_out_pin (int ,int ) ;
+ int render (struct mp_filter*) ;
+ int update_pipeline (struct mp_filter*) ;
 
 __attribute__((used)) static void vf_vavpp_process(struct mp_filter *f)
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static void vf_vavpp_process(struct mp_filter *f)
         return;
 
     if (!p->pipe.num_filters || !mp_refqueue_should_deint(p->queue)) {
-        // no filtering
+
         struct mp_image *in = mp_refqueue_get(p->queue, 0);
         mp_refqueue_write_out_pin(p->queue, mp_image_new_ref(in));
     } else {

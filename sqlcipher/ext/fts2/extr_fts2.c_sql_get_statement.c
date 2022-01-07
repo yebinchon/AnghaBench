@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-struct TYPE_5__ {int /*<<< orphan*/ ** pFulltextStatements; int /*<<< orphan*/  zName; int /*<<< orphan*/  zDb; int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ fulltext_vtab ;
-typedef  size_t fulltext_statement ;
 
-/* Variables and functions */
-#define  CONTENT_INSERT_STMT 129 
-#define  CONTENT_UPDATE_STMT 128 
- size_t MAX_STMT ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- char* contentInsertStatement (TYPE_1__*) ; 
- char* contentUpdateStatement (TYPE_1__*) ; 
- char const** fulltext_zStatement ; 
- int sql_prepare (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,char const*) ; 
- int /*<<< orphan*/  sqlite3_free (void*) ; 
- int sqlite3_reset (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+struct TYPE_5__ {int ** pFulltextStatements; int zName; int zDb; int db; } ;
+typedef TYPE_1__ fulltext_vtab ;
+typedef size_t fulltext_statement ;
+
+
+
+
+ size_t MAX_STMT ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ char* contentInsertStatement (TYPE_1__*) ;
+ char* contentUpdateStatement (TYPE_1__*) ;
+ char const** fulltext_zStatement ;
+ int sql_prepare (int ,int ,int ,int **,char const*) ;
+ int sqlite3_free (void*) ;
+ int sqlite3_reset (int *) ;
 
 __attribute__((used)) static int sql_get_statement(fulltext_vtab *v, fulltext_statement iStmt,
                              sqlite3_stmt **ppStmt){
   assert( iStmt<MAX_STMT );
-  if( v->pFulltextStatements[iStmt]==NULL ){
+  if( v->pFulltextStatements[iStmt]==((void*)0) ){
     const char *zStmt;
     int rc;
     switch( iStmt ){
-      case CONTENT_INSERT_STMT:
+      case 129:
         zStmt = contentInsertStatement(v); break;
-      case CONTENT_UPDATE_STMT:
+      case 128:
         zStmt = contentUpdateStatement(v); break;
       default:
         zStmt = fulltext_zStatement[iStmt];

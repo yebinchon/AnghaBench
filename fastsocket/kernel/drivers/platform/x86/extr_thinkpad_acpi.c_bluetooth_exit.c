@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  kobj; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int kobj; } ;
 struct TYPE_4__ {TYPE_1__ dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TPACPI_RFK_BLUETOOTH_SW_ID ; 
- int /*<<< orphan*/  bluetooth_attr_group ; 
- int /*<<< orphan*/  bluetooth_shutdown () ; 
- int /*<<< orphan*/  sysfs_remove_group (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tpacpi_destroy_rfkill (int /*<<< orphan*/ ) ; 
- TYPE_2__* tpacpi_pdev ; 
+
+ int TPACPI_RFK_BLUETOOTH_SW_ID ;
+ int bluetooth_attr_group ;
+ int bluetooth_shutdown () ;
+ int sysfs_remove_group (int *,int *) ;
+ int tpacpi_destroy_rfkill (int ) ;
+ TYPE_2__* tpacpi_pdev ;
 
 __attribute__((used)) static void bluetooth_exit(void)
 {
-	sysfs_remove_group(&tpacpi_pdev->dev.kobj,
-			&bluetooth_attr_group);
+ sysfs_remove_group(&tpacpi_pdev->dev.kobj,
+   &bluetooth_attr_group);
 
-	tpacpi_destroy_rfkill(TPACPI_RFK_BLUETOOTH_SW_ID);
+ tpacpi_destroy_rfkill(TPACPI_RFK_BLUETOOTH_SW_ID);
 
-	bluetooth_shutdown();
+ bluetooth_shutdown();
 }

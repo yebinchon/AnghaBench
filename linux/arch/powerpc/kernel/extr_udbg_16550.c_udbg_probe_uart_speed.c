@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
 
-/* Variables and functions */
- int LCR_DLAB ; 
- int /*<<< orphan*/  UART_DLL ; 
- int /*<<< orphan*/  UART_DLM ; 
- int /*<<< orphan*/  UART_LCR ; 
- int /*<<< orphan*/  UART_MCR ; 
- int udbg_uart_in (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  udbg_uart_out (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int u8 ;
+
+
+ int LCR_DLAB ;
+ int UART_DLL ;
+ int UART_DLM ;
+ int UART_LCR ;
+ int UART_MCR ;
+ int udbg_uart_in (int ) ;
+ int udbg_uart_out (int ,int) ;
 
 unsigned int udbg_probe_uart_speed(unsigned int clock)
 {
-	unsigned int dll, dlm, divisor, prescaler, speed;
-	u8 old_lcr;
+ unsigned int dll, dlm, divisor, prescaler, speed;
+ u8 old_lcr;
 
-	old_lcr = udbg_uart_in(UART_LCR);
+ old_lcr = udbg_uart_in(UART_LCR);
 
-	/* select divisor latch registers.  */
-	udbg_uart_out(UART_LCR, old_lcr | LCR_DLAB);
 
-	/* now, read the divisor */
-	dll = udbg_uart_in(UART_DLL);
-	dlm = udbg_uart_in(UART_DLM);
-	divisor = dlm << 8 | dll;
+ udbg_uart_out(UART_LCR, old_lcr | LCR_DLAB);
 
-	/* check prescaling */
-	if (udbg_uart_in(UART_MCR) & 0x80)
-		prescaler = 4;
-	else
-		prescaler = 1;
 
-	/* restore the LCR */
-	udbg_uart_out(UART_LCR, old_lcr);
+ dll = udbg_uart_in(UART_DLL);
+ dlm = udbg_uart_in(UART_DLM);
+ divisor = dlm << 8 | dll;
 
-	/* calculate speed */
-	speed = (clock / prescaler) / (divisor * 16);
 
-	/* sanity check */
-	if (speed > (clock / 16))
-		speed = 9600;
+ if (udbg_uart_in(UART_MCR) & 0x80)
+  prescaler = 4;
+ else
+  prescaler = 1;
 
-	return speed;
+
+ udbg_uart_out(UART_LCR, old_lcr);
+
+
+ speed = (clock / prescaler) / (divisor * 16);
+
+
+ if (speed > (clock / 16))
+  speed = 9600;
+
+ return speed;
 }

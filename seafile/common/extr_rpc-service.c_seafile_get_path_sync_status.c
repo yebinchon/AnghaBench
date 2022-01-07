@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  sync_mgr; } ;
-typedef  int /*<<< orphan*/  GError ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEAFILE_DOMAIN ; 
- int /*<<< orphan*/  SEAF_ERR_BAD_ARGS ; 
- int /*<<< orphan*/  g_free (char*) ; 
- int /*<<< orphan*/  g_set_error (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- char* g_strdup (char const*) ; 
- TYPE_1__* seaf ; 
- char* seaf_sync_manager_get_path_sync_status (int /*<<< orphan*/ ,char const*,char*,int) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int strlen (char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int sync_mgr; } ;
+typedef int GError ;
+
+
+ int SEAFILE_DOMAIN ;
+ int SEAF_ERR_BAD_ARGS ;
+ int g_free (char*) ;
+ int g_set_error (int **,int ,int ,char*) ;
+ char* g_strdup (char const*) ;
+ TYPE_1__* seaf ;
+ char* seaf_sync_manager_get_path_sync_status (int ,char const*,char*,int) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int strlen (char*) ;
 
 char *
 seafile_get_path_sync_status (const char *repo_id,
@@ -31,16 +31,16 @@ seafile_get_path_sync_status (const char *repo_id,
                               int is_dir,
                               GError **error)
 {
-    char *canon_path = NULL;
+    char *canon_path = ((void*)0);
     int len;
     char *status;
 
     if (!repo_id || !path) {
         g_set_error (error, SEAFILE_DOMAIN, SEAF_ERR_BAD_ARGS, "Argument should not be null");
-        return NULL;
+        return ((void*)0);
     }
 
-    /* Empty path means to get status of the worktree folder. */
+
     if (strcmp (path, "") != 0) {
         if (*path == '/')
             ++path;

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  avl ;
-struct TYPE_2__ {int /*<<< orphan*/  registry_urls_root_index; } ;
-typedef  int /*<<< orphan*/  REGISTRY_URL ;
 
-/* Variables and functions */
- scalar_t__ avl_insert (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_1__ registry ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int avl ;
+struct TYPE_2__ {int registry_urls_root_index; } ;
+typedef int REGISTRY_URL ;
+
+
+ scalar_t__ avl_insert (int *,int *) ;
+ TYPE_1__ registry ;
 
 inline REGISTRY_URL *registry_url_index_add(REGISTRY_URL *u) {
     return (REGISTRY_URL *)avl_insert(&(registry.registry_urls_root_index), (avl *)(u));

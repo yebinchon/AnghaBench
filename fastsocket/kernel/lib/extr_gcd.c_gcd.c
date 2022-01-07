@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  swap (unsigned long,unsigned long) ; 
+ int swap (unsigned long,unsigned long) ;
 
 unsigned long gcd(unsigned long a, unsigned long b)
 {
-	unsigned long r;
+ unsigned long r;
 
-	if (a < b)
-		swap(a, b);
-	while ((r = a % b) != 0) {
-		a = b;
-		b = r;
-	}
-	return b;
+ if (a < b)
+  swap(a, b);
+ while ((r = a % b) != 0) {
+  a = b;
+  b = r;
+ }
+ return b;
 }

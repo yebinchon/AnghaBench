@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bfd_boolean ;
-typedef  int /*<<< orphan*/  bfd ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _bfd_XX_print_private_bfd_data_common (int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  fputc (char,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pe_saved_coff_bfd_print_private_bfd_data (int /*<<< orphan*/ *,void*) ; 
+
+
+
+typedef int bfd_boolean ;
+typedef int bfd ;
+typedef int FILE ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int _bfd_XX_print_private_bfd_data_common (int *,void*) ;
+ int fputc (char,int *) ;
+ int pe_saved_coff_bfd_print_private_bfd_data (int *,void*) ;
 
 __attribute__((used)) static bfd_boolean
 pe_print_private_bfd_data (bfd *abfd, void * vfile)
@@ -29,7 +29,7 @@ pe_print_private_bfd_data (bfd *abfd, void * vfile)
   if (!_bfd_XX_print_private_bfd_data_common (abfd, vfile))
     return FALSE;
 
-  if (pe_saved_coff_bfd_print_private_bfd_data == NULL)
+  if (pe_saved_coff_bfd_print_private_bfd_data == ((void*)0))
     return TRUE;
 
   fputc ('\n', file);

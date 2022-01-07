@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  format ;
-typedef  int UInt32 ;
-struct TYPE_16__ {int mChannelFlags; int /*<<< orphan*/  mChannelLabel; } ;
-struct TYPE_15__ {int* channel_map; int /*<<< orphan*/  converter; } ;
-struct TYPE_14__ {int channel_layout; int frame_size; int /*<<< orphan*/  channels; scalar_t__ sample_rate; TYPE_4__* priv_data; } ;
-struct TYPE_13__ {int mFramesPerPacket; int mNumberChannelDescriptions; TYPE_5__* mChannelDescriptions; int /*<<< orphan*/  mChannelsPerFrame; scalar_t__ mSampleRate; } ;
-typedef  TYPE_1__ AudioStreamBasicDescription ;
-typedef  TYPE_1__ AudioChannelLayout ;
-typedef  int /*<<< orphan*/  AudioChannelDescription ;
-typedef  TYPE_3__ AVCodecContext ;
-typedef  TYPE_4__ ATDecodeContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AudioConverterGetProperty (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,TYPE_1__*) ; 
- int /*<<< orphan*/  AudioConverterGetPropertyInfo (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AudioConverterSetProperty (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,TYPE_1__*) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_free (TYPE_1__*) ; 
- int av_get_default_channel_layout (int /*<<< orphan*/ ) ; 
- TYPE_1__* av_malloc (int) ; 
- int /*<<< orphan*/  ffat_compare_channel_descriptions ; 
- TYPE_1__* ffat_convert_layout (TYPE_1__*,int*) ; 
- int ffat_get_channel_id (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kAudioConverterCurrentInputStreamDescription ; 
- int /*<<< orphan*/  kAudioConverterCurrentOutputStreamDescription ; 
- int /*<<< orphan*/  kAudioConverterOutputChannelLayout ; 
- int /*<<< orphan*/  qsort (TYPE_5__*,int,int,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int format ;
+typedef int UInt32 ;
+struct TYPE_16__ {int mChannelFlags; int mChannelLabel; } ;
+struct TYPE_15__ {int* channel_map; int converter; } ;
+struct TYPE_14__ {int channel_layout; int frame_size; int channels; scalar_t__ sample_rate; TYPE_4__* priv_data; } ;
+struct TYPE_13__ {int mFramesPerPacket; int mNumberChannelDescriptions; TYPE_5__* mChannelDescriptions; int mChannelsPerFrame; scalar_t__ mSampleRate; } ;
+typedef TYPE_1__ AudioStreamBasicDescription ;
+typedef TYPE_1__ AudioChannelLayout ;
+typedef int AudioChannelDescription ;
+typedef TYPE_3__ AVCodecContext ;
+typedef TYPE_4__ ATDecodeContext ;
+
+
+ int AVERROR (int ) ;
+ int AudioConverterGetProperty (int ,int ,int*,TYPE_1__*) ;
+ int AudioConverterGetPropertyInfo (int ,int ,int*,int *) ;
+ int AudioConverterSetProperty (int ,int ,int,TYPE_1__*) ;
+ int ENOMEM ;
+ int av_free (TYPE_1__*) ;
+ int av_get_default_channel_layout (int ) ;
+ TYPE_1__* av_malloc (int) ;
+ int ffat_compare_channel_descriptions ;
+ TYPE_1__* ffat_convert_layout (TYPE_1__*,int*) ;
+ int ffat_get_channel_id (int ) ;
+ int kAudioConverterCurrentInputStreamDescription ;
+ int kAudioConverterCurrentOutputStreamDescription ;
+ int kAudioConverterOutputChannelLayout ;
+ int qsort (TYPE_5__*,int,int,int *) ;
 
 __attribute__((used)) static int ffat_update_ctx(AVCodecContext *avctx)
 {
@@ -70,7 +70,7 @@ __attribute__((used)) static int ffat_update_ctx(AVCodecContext *avctx)
     }
 
     if (!AudioConverterGetPropertyInfo(at->converter, kAudioConverterOutputChannelLayout,
-                                       &size, NULL) && size) {
+                                       &size, ((void*)0)) && size) {
         AudioChannelLayout *layout = av_malloc(size);
         uint64_t layout_mask = 0;
         int i;
@@ -87,7 +87,7 @@ __attribute__((used)) static int ffat_update_ctx(AVCodecContext *avctx)
             if (layout_mask & (1 << id))
                 goto done;
             layout_mask |= 1 << id;
-            layout->mChannelDescriptions[i].mChannelFlags = i; // Abusing flags as index
+            layout->mChannelDescriptions[i].mChannelFlags = i;
         }
         avctx->channel_layout = layout_mask;
         qsort(layout->mChannelDescriptions, layout->mNumberChannelDescriptions,

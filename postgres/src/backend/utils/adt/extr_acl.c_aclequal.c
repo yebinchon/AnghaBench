@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AclItem ;
-typedef  int /*<<< orphan*/  Acl ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACL_DAT (int /*<<< orphan*/  const*) ; 
- int ACL_NUM (int /*<<< orphan*/  const*) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int AclItem ;
+typedef int Acl ;
+
+
+ int ACL_DAT (int const*) ;
+ int ACL_NUM (int const*) ;
+ scalar_t__ memcmp (int ,int ,int) ;
 
 bool
 aclequal(const Acl *left_acl, const Acl *right_acl)
 {
-	/* Check for cases where one or both are empty/null */
-	if (left_acl == NULL || ACL_NUM(left_acl) == 0)
-	{
-		if (right_acl == NULL || ACL_NUM(right_acl) == 0)
-			return true;
-		else
-			return false;
-	}
-	else
-	{
-		if (right_acl == NULL || ACL_NUM(right_acl) == 0)
-			return false;
-	}
 
-	if (ACL_NUM(left_acl) != ACL_NUM(right_acl))
-		return false;
+ if (left_acl == ((void*)0) || ACL_NUM(left_acl) == 0)
+ {
+  if (right_acl == ((void*)0) || ACL_NUM(right_acl) == 0)
+   return 1;
+  else
+   return 0;
+ }
+ else
+ {
+  if (right_acl == ((void*)0) || ACL_NUM(right_acl) == 0)
+   return 0;
+ }
 
-	if (memcmp(ACL_DAT(left_acl),
-			   ACL_DAT(right_acl),
-			   ACL_NUM(left_acl) * sizeof(AclItem)) == 0)
-		return true;
+ if (ACL_NUM(left_acl) != ACL_NUM(right_acl))
+  return 0;
 
-	return false;
+ if (memcmp(ACL_DAT(left_acl),
+      ACL_DAT(right_acl),
+      ACL_NUM(left_acl) * sizeof(AclItem)) == 0)
+  return 1;
+
+ return 0;
 }

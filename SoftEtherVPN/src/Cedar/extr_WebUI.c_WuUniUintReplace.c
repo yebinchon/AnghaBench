@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  tmp ;
-typedef  int /*<<< orphan*/  UINT ;
 
-/* Variables and functions */
- int MAX_SIZE ; 
- int /*<<< orphan*/  UniFormat (int /*<<< orphan*/ *,int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WuUniReplace (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int wchar_t ;
+typedef int tmp ;
+typedef int UINT ;
+
+
+ int MAX_SIZE ;
+ int UniFormat (int *,int,char*,int ) ;
+ int WuUniReplace (int **,int *,int *) ;
 
 __attribute__((used)) static void WuUniUintReplace(wchar_t **buf, wchar_t *key, UINT num)
 {
-	wchar_t tmp[MAX_SIZE];
-	UniFormat(tmp, sizeof(tmp), L"%d", num);
-	WuUniReplace(buf, key, tmp);
+ wchar_t tmp[MAX_SIZE];
+ UniFormat(tmp, sizeof(tmp), L"%d", num);
+ WuUniReplace(buf, key, tmp);
 }

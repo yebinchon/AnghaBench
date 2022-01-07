@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int x; int y; int z; int face; char* text; } ;
-typedef  int /*<<< orphan*/  SignList ;
-typedef  TYPE_1__ Sign ;
+typedef int SignList ;
+typedef TYPE_1__ Sign ;
 
-/* Variables and functions */
- int MAX_SIGN_LENGTH ; 
- int /*<<< orphan*/  _sign_list_add (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  sign_list_remove (int /*<<< orphan*/ *,int,int,int,int) ; 
- int /*<<< orphan*/  strncpy (char*,char const*,int) ; 
+
+ int MAX_SIGN_LENGTH ;
+ int _sign_list_add (int *,TYPE_1__*) ;
+ int sign_list_remove (int *,int,int,int,int) ;
+ int strncpy (char*,char const*,int) ;
 
 void sign_list_add(
     SignList *list, int x, int y, int z, int face, const char *text)

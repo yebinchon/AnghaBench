@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ rx_task_action_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ rx_task_action_t ;
 struct TYPE_3__ {scalar_t__ identifier; int data_length_code; int* data; } ;
-typedef  TYPE_1__ can_message_t ;
+typedef TYPE_1__ can_message_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  EXAMPLE_TAG ; 
- scalar_t__ ID_SLAVE_DATA ; 
- scalar_t__ ID_SLAVE_PING_RESP ; 
- scalar_t__ ID_SLAVE_STOP_RESP ; 
- scalar_t__ NO_OF_DATA_MSGS ; 
- scalar_t__ RX_RECEIVE_DATA ; 
- scalar_t__ RX_RECEIVE_PING_RESP ; 
- scalar_t__ RX_RECEIVE_STOP_RESP ; 
- scalar_t__ RX_TASK_EXIT ; 
- int /*<<< orphan*/  can_receive (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ctrl_task_sem ; 
- int /*<<< orphan*/  portMAX_DELAY ; 
- int /*<<< orphan*/  rx_task_queue ; 
- int /*<<< orphan*/  stop_ping_sem ; 
- int /*<<< orphan*/  vTaskDelete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xQueueReceive (int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xSemaphoreGive (int /*<<< orphan*/ ) ; 
+
+ int ESP_LOGI (int ,char*,scalar_t__) ;
+ int EXAMPLE_TAG ;
+ scalar_t__ ID_SLAVE_DATA ;
+ scalar_t__ ID_SLAVE_PING_RESP ;
+ scalar_t__ ID_SLAVE_STOP_RESP ;
+ scalar_t__ NO_OF_DATA_MSGS ;
+ scalar_t__ RX_RECEIVE_DATA ;
+ scalar_t__ RX_RECEIVE_PING_RESP ;
+ scalar_t__ RX_RECEIVE_STOP_RESP ;
+ scalar_t__ RX_TASK_EXIT ;
+ int can_receive (TYPE_1__*,int ) ;
+ int ctrl_task_sem ;
+ int portMAX_DELAY ;
+ int rx_task_queue ;
+ int stop_ping_sem ;
+ int vTaskDelete (int *) ;
+ int xQueueReceive (int ,scalar_t__*,int ) ;
+ int xSemaphoreGive (int ) ;
 
 __attribute__((used)) static void can_receive_task(void *arg)
 {
@@ -43,7 +43,7 @@ __attribute__((used)) static void can_receive_task(void *arg)
         xQueueReceive(rx_task_queue, &action, portMAX_DELAY);
 
         if (action == RX_RECEIVE_PING_RESP) {
-            //Listen for ping response from slave
+
             while (1) {
                 can_message_t rx_msg;
                 can_receive(&rx_msg, portMAX_DELAY);
@@ -54,7 +54,7 @@ __attribute__((used)) static void can_receive_task(void *arg)
                 }
             }
         } else if (action == RX_RECEIVE_DATA) {
-            //Receive data messages from slave
+
             uint32_t data_msgs_rec = 0;
             while (data_msgs_rec < NO_OF_DATA_MSGS) {
                 can_message_t rx_msg;
@@ -70,7 +70,7 @@ __attribute__((used)) static void can_receive_task(void *arg)
             }
             xSemaphoreGive(ctrl_task_sem);
         } else if (action == RX_RECEIVE_STOP_RESP) {
-            //Listen for stop response from slave
+
             while (1) {
                 can_message_t rx_msg;
                 can_receive(&rx_msg, portMAX_DELAY);
@@ -83,5 +83,5 @@ __attribute__((used)) static void can_receive_task(void *arg)
             break;
         }
     }
-    vTaskDelete(NULL);
+    vTaskDelete(((void*)0));
 }

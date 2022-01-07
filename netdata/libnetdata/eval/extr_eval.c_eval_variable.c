@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ calculated_number ;
-struct TYPE_6__ {int /*<<< orphan*/  error_msg; scalar_t__ rrdcalc; scalar_t__* status; scalar_t__* before; scalar_t__* after; scalar_t__* this; } ;
-struct TYPE_5__ {scalar_t__ hash; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ EVAL_VARIABLE ;
-typedef  TYPE_2__ EVAL_EXPRESSION ;
 
-/* Variables and functions */
- int EVAL_ERROR_UNKNOWN_VARIABLE ; 
- scalar_t__ NAN ; 
- scalar_t__ RRDCALC_STATUS_CLEAR ; 
- scalar_t__ RRDCALC_STATUS_CRITICAL ; 
- scalar_t__ RRDCALC_STATUS_REMOVED ; 
- scalar_t__ RRDCALC_STATUS_UNDEFINED ; 
- scalar_t__ RRDCALC_STATUS_UNINITIALIZED ; 
- scalar_t__ RRDCALC_STATUS_WARNING ; 
- int /*<<< orphan*/  buffer_sprintf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  buffer_strcat (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ health_variable_lookup (int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__*) ; 
- scalar_t__ now_realtime_sec () ; 
- int /*<<< orphan*/  print_parsed_as_constant (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ simple_hash (char*) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ unlikely (int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ calculated_number ;
+struct TYPE_6__ {int error_msg; scalar_t__ rrdcalc; scalar_t__* status; scalar_t__* before; scalar_t__* after; scalar_t__* this; } ;
+struct TYPE_5__ {scalar_t__ hash; int name; } ;
+typedef TYPE_1__ EVAL_VARIABLE ;
+typedef TYPE_2__ EVAL_EXPRESSION ;
+
+
+ int EVAL_ERROR_UNKNOWN_VARIABLE ;
+ scalar_t__ NAN ;
+ scalar_t__ RRDCALC_STATUS_CLEAR ;
+ scalar_t__ RRDCALC_STATUS_CRITICAL ;
+ scalar_t__ RRDCALC_STATUS_REMOVED ;
+ scalar_t__ RRDCALC_STATUS_UNDEFINED ;
+ scalar_t__ RRDCALC_STATUS_UNINITIALIZED ;
+ scalar_t__ RRDCALC_STATUS_WARNING ;
+ int buffer_sprintf (int ,char*,int ) ;
+ int buffer_strcat (int ,char*) ;
+ scalar_t__ health_variable_lookup (int ,scalar_t__,scalar_t__,scalar_t__*) ;
+ scalar_t__ now_realtime_sec () ;
+ int print_parsed_as_constant (int ,scalar_t__) ;
+ scalar_t__ simple_hash (char*) ;
+ int strcmp (int ,char*) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static inline calculated_number eval_variable(EVAL_EXPRESSION *exp, EVAL_VARIABLE *v, int *error) {
     static uint32_t this_hash = 0, now_hash = 0, after_hash = 0, before_hash = 0, status_hash = 0, removed_hash = 0, uninitialized_hash = 0, undefined_hash = 0, clear_hash = 0, warning_hash = 0, critical_hash = 0;

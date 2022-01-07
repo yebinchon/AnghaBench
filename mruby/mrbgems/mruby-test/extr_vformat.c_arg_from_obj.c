@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct RClass {int dummy; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int /*<<< orphan*/  VFNative ;
-struct TYPE_4__ {int /*<<< orphan*/  type; int /*<<< orphan*/  v; } ;
-typedef  TYPE_1__ VFArgument ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef int VFNative ;
+struct TYPE_4__ {int type; int v; } ;
+typedef TYPE_1__ VFArgument ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARG_v ; 
- scalar_t__ DATA_PTR (int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_obj_is_instance_of (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct RClass*) ; 
+
+ int ARG_v ;
+ scalar_t__ DATA_PTR (int ) ;
+ scalar_t__ mrb_obj_is_instance_of (int *,int ,struct RClass*) ;
 
 __attribute__((used)) static VFArgument*
 arg_from_obj(mrb_state *mrb, mrb_value obj, struct RClass *native_class,

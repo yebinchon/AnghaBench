@@ -1,47 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DIRECTINPUT_VERSION ; 
- int /*<<< orphan*/  DirectInput8Create (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *****,void**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetModuleHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ **** IID_IDirectInput8 ; 
- int /*<<< orphan*/  RARCH_ERR (char*) ; 
- int /*<<< orphan*/  SUCCEEDED (int /*<<< orphan*/ ) ; 
- scalar_t__ g_dinput_ctx ; 
+ int DIRECTINPUT_VERSION ;
+ int DirectInput8Create (int ,int ,int *****,void**,int *) ;
+ int GetModuleHandle (int *) ;
+ int **** IID_IDirectInput8 ;
+ int RARCH_ERR (char*) ;
+ int SUCCEEDED (int ) ;
+ scalar_t__ g_dinput_ctx ;
 
 bool dinput_init_context(void)
 {
    if (g_dinput_ctx)
-      return true;
-
-   /* Who said we shouldn't have same call signature in a COM API? <_< */
-#ifdef __cplusplus
-   if (!(SUCCEEDED(DirectInput8Create(
-                  GetModuleHandle(NULL), DIRECTINPUT_VERSION,
-                  IID_IDirectInput8,
-                  (void**)&g_dinput_ctx, NULL))))
-#else
+      return 1;
       if (!(SUCCEEDED(DirectInput8Create(
-                     GetModuleHandle(NULL), DIRECTINPUT_VERSION,
+                     GetModuleHandle(((void*)0)), DIRECTINPUT_VERSION,
                      &IID_IDirectInput8,
-                     (void**)&g_dinput_ctx, NULL))))
-#endif
+                     (void**)&g_dinput_ctx, ((void*)0)))))
+
       goto error;
 
-   return true;
+   return 1;
 
 error:
    RARCH_ERR("[DINPUT]: Failed to initialize DirectInput.\n");
-   return false;
+   return 0;
 }

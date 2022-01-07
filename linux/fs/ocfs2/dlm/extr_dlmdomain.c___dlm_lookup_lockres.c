@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dlm_lock_resource {int state; int /*<<< orphan*/  spinlock; } ;
-struct dlm_ctxt {int /*<<< orphan*/  spinlock; } ;
 
-/* Variables and functions */
- int DLM_LOCK_RES_DROPPING_REF ; 
- struct dlm_lock_resource* __dlm_lookup_lockres_full (struct dlm_ctxt*,char const*,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  assert_spin_locked (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dlm_lockres_put (struct dlm_lock_resource*) ; 
- int /*<<< orphan*/  mlog (int /*<<< orphan*/ ,char*,unsigned int,char const*) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct dlm_lock_resource {int state; int spinlock; } ;
+struct dlm_ctxt {int spinlock; } ;
+
+
+ int DLM_LOCK_RES_DROPPING_REF ;
+ struct dlm_lock_resource* __dlm_lookup_lockres_full (struct dlm_ctxt*,char const*,unsigned int,unsigned int) ;
+ int assert_spin_locked (int *) ;
+ int dlm_lockres_put (struct dlm_lock_resource*) ;
+ int mlog (int ,char*,unsigned int,char const*) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 struct dlm_lock_resource * __dlm_lookup_lockres(struct dlm_ctxt *dlm,
-						const char *name,
-						unsigned int len,
-						unsigned int hash)
+      const char *name,
+      unsigned int len,
+      unsigned int hash)
 {
-	struct dlm_lock_resource *res = NULL;
+ struct dlm_lock_resource *res = ((void*)0);
 
-	mlog(0, "%.*s\n", len, name);
+ mlog(0, "%.*s\n", len, name);
 
-	assert_spin_locked(&dlm->spinlock);
+ assert_spin_locked(&dlm->spinlock);
 
-	res = __dlm_lookup_lockres_full(dlm, name, len, hash);
-	if (res) {
-		spin_lock(&res->spinlock);
-		if (res->state & DLM_LOCK_RES_DROPPING_REF) {
-			spin_unlock(&res->spinlock);
-			dlm_lockres_put(res);
-			return NULL;
-		}
-		spin_unlock(&res->spinlock);
-	}
+ res = __dlm_lookup_lockres_full(dlm, name, len, hash);
+ if (res) {
+  spin_lock(&res->spinlock);
+  if (res->state & DLM_LOCK_RES_DROPPING_REF) {
+   spin_unlock(&res->spinlock);
+   dlm_lockres_put(res);
+   return ((void*)0);
+  }
+  spin_unlock(&res->spinlock);
+ }
 
-	return res;
+ return res;
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  UInt32 ;
-struct TYPE_8__ {int /*<<< orphan*/ * extradata; int /*<<< orphan*/  converter; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int UInt32 ;
+struct TYPE_8__ {int * extradata; int converter; } ;
 struct TYPE_7__ {TYPE_2__* priv_data; } ;
-typedef  scalar_t__ OSStatus ;
-typedef  TYPE_1__ AVCodecContext ;
-typedef  TYPE_2__ ATDecodeContext ;
+typedef scalar_t__ OSStatus ;
+typedef TYPE_1__ AVCodecContext ;
+typedef TYPE_2__ ATDecodeContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- scalar_t__ AudioConverterSetProperty (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/ * ffat_get_magic_cookie (TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ ffat_usable_extradata (TYPE_1__*) ; 
- int /*<<< orphan*/  kAudioConverterDecompressionMagicCookie ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_WARNING ;
+ scalar_t__ AudioConverterSetProperty (int ,int ,int ,int *) ;
+ int ENOMEM ;
+ int av_free (int *) ;
+ int av_log (TYPE_1__*,int ,char*,int) ;
+ int * ffat_get_magic_cookie (TYPE_1__*,int *) ;
+ scalar_t__ ffat_usable_extradata (TYPE_1__*) ;
+ int kAudioConverterDecompressionMagicCookie ;
 
 __attribute__((used)) static int ffat_set_extradata(AVCodecContext *avctx)
 {

@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EBCASC (char*,unsigned long) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,unsigned long) ; 
+ int EBCASC (char*,unsigned long) ;
+ int memcpy (char*,char const*,unsigned long) ;
 
 __attribute__((used)) static char *store_ebcdic(char *dest, const char *src, unsigned long len,
-			  char delim)
+     char delim)
 {
-	memcpy(dest, src, len);
-	EBCASC(dest, len);
+ memcpy(dest, src, len);
+ EBCASC(dest, len);
 
-	if (delim)
-		dest[len++] = delim;
+ if (delim)
+  dest[len++] = delim;
 
-	return dest + len;
+ return dest + len;
 }

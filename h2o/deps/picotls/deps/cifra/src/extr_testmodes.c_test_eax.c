@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  check_eax (char*,int,char*,int,char*,int,char*,int,char*,char*,int) ; 
+ int check_eax (char*,int,char*,int,char*,int,char*,int,char*,char*,int) ;
 
 __attribute__((used)) static void test_eax(void)
 {
-  /* Test vectors from paper. */
+
   check_eax("\x23\x39\x52\xDE\xE4\xD5\xED\x5F\x9B\x9C\x6D\x6F\xF8\x0F\xF4\x78", 16,
             "", 0,
             "\x62\xEC\x67\xF9\xC3\xA4\xA4\x07\xFC\xB2\xA8\xC4\x90\x31\xA8\xB3", 16,
@@ -87,7 +79,7 @@ __attribute__((used)) static void test_eax(void)
             "\xCB\x89\x20\xF8\x7A\x6C\x75\xCF\xF3\x96\x27\xB5\x6E\x3E\xD1\x97\xC5\x52\xD2\x95\xA7",
             "\xCF\xC4\x6A\xFC\x25\x3B\x46\x52\xB1\xAF\x37\x95\xB1\x24\xAB\x6E", 16);
 
-  /* Test vector from bug #3 */
+
   check_eax("\x58\x94\x17\xB0\x32\x4B\x1B\x71\xD7\xA6\x75\x18\x52\x86\x7A\xE8", 16,
             "\x00\x00\x1C\x40\x00\x00\x00\x48\x00\x00\x00\x73", 12,
             "\x00\x01\x00\x00\xF6\x83", 6,

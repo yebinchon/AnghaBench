@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int ULONG ;
 struct TYPE_7__ {scalar_t__ cStreams; } ;
 struct TYPE_9__ {TYPE_2__* streams; TYPE_1__ Parser; } ;
-struct TYPE_8__ {int /*<<< orphan*/  thread; int /*<<< orphan*/  packet_queued; int /*<<< orphan*/ * sample; } ;
-typedef  TYPE_2__ StreamData ;
-typedef  TYPE_3__* LPVOID ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ DWORD ;
-typedef  TYPE_3__ AVISplitterImpl ;
+struct TYPE_8__ {int thread; int packet_queued; int * sample; } ;
+typedef TYPE_2__ StreamData ;
+typedef TYPE_3__* LPVOID ;
+typedef int HRESULT ;
+typedef scalar_t__ DWORD ;
+typedef TYPE_3__ AVISplitterImpl ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IMediaSample_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ResetEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_3__*) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ int IMediaSample_Release (int *) ;
+ int ResetEvent (int ) ;
+ int S_OK ;
+ int TRACE (char*,TYPE_3__*) ;
+ int assert (int) ;
 
 __attribute__((used)) static HRESULT AVISplitter_Flush(LPVOID iface)
 {
@@ -47,7 +47,7 @@ __attribute__((used)) static HRESULT AVISplitter_Flush(LPVOID iface)
             ref = IMediaSample_Release(stream->sample);
             assert(ref == 0);
         }
-        stream->sample = NULL;
+        stream->sample = ((void*)0);
 
         ResetEvent(stream->packet_queued);
         assert(!stream->thread);

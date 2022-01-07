@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t UINTN ;
-typedef  int /*<<< orphan*/  EFI_HANDLE ;
-typedef  int /*<<< orphan*/  EFI_DEVICE_PATH ;
 
-/* Variables and functions */
- int /*<<< orphan*/  probe_handle (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef size_t UINTN ;
+typedef int EFI_HANDLE ;
+typedef int EFI_DEVICE_PATH ;
+
+
+ int probe_handle (int ,int *) ;
 
 __attribute__((used)) static void
 probe_handles(EFI_HANDLE *handles, UINTN nhandles, EFI_DEVICE_PATH *imgpath)
 {
-	UINTN i;
+ UINTN i;
 
-	for (i = 0; i < nhandles; i++)
-		probe_handle(handles[i], imgpath);
+ for (i = 0; i < nhandles; i++)
+  probe_handle(handles[i], imgpath);
 }

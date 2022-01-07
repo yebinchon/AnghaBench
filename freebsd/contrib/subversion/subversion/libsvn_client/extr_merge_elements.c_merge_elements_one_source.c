@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_ra_session_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_element__tree_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  svn_client__pathrev_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  merge_target_t ;
-typedef  int /*<<< orphan*/  element_matching_info_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_UNSUPPORTED_FEATURE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  apply_merge_result_to_wc (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assign_eids_to_trees (int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  element_matching_info_str (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  merge_trees (int /*<<< orphan*/ **,void**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pathrev_str (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  verbose_notify (char*,...) ; 
+
+
+
+typedef int svn_ra_session_t ;
+typedef int svn_error_t ;
+typedef int svn_element__tree_t ;
+typedef int svn_client_ctx_t ;
+typedef int svn_client__pathrev_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int merge_target_t ;
+typedef int element_matching_info_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_UNSUPPORTED_FEATURE ;
+ int * SVN_NO_ERROR ;
+ scalar_t__ TRUE ;
+ int _ (char*) ;
+ int apply_merge_result_to_wc (int *,int *,int *,int *) ;
+ int assign_eids_to_trees (int **,int **,int **,int const*,int const*,int *,int *,int *,int *,int *,int *) ;
+ int element_matching_info_str (int *,int *) ;
+ int merge_trees (int **,void**,int *,int *,int *,int *,int *) ;
+ int pathrev_str (int const*,int *) ;
+ int * svn_error_create (int ,int *,int ) ;
+ int verbose_notify (char*,...) ;
 
 __attribute__((used)) static svn_error_t *
 merge_elements_one_source(svn_boolean_t *use_sleep,
@@ -60,27 +60,27 @@ merge_elements_one_source(svn_boolean_t *use_sleep,
                  element_matching_info_str(element_matching_info,
                                            scratch_pool));
 
-  /* assign EIDs (in memory) to the source-left, source-right and target
-     trees */
+
+
   SVN_ERR(assign_eids_to_trees(&tree_left, &tree_right, &tree_target,
                                src_left, src_right, target, ra_session,
                                element_matching_info,
                                ctx, scratch_pool, scratch_pool));
 
-  /* perform a tree merge, creating a temporary result (in memory) */
+
   SVN_ERR(merge_trees(&merge_result, &conflicts,
                       tree_left, tree_right, tree_target,
                       scratch_pool, scratch_pool));
 
-  /* check for (new style) conflicts in the result; if any, bail out */
+
   if (conflicts)
     {
-      return svn_error_create(SVN_ERR_UNSUPPORTED_FEATURE, NULL,
+      return svn_error_create(SVN_ERR_UNSUPPORTED_FEATURE, ((void*)0),
                               _("Merge had conflicts; "
                                 "this is not yet supported"));
     }
 
-  /* convert the result to a series of WC edits and apply those to the WC */
+
   if (dry_run)
     {
       verbose_notify("--- Dry run; not writing merge result to WC");
@@ -92,6 +92,6 @@ merge_elements_one_source(svn_boolean_t *use_sleep,
       *use_sleep = TRUE;
     }
 
-  /* forget all the EID metadata */
+
   return SVN_NO_ERROR;
 }

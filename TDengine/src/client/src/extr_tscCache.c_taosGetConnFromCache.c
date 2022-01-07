@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_10__ {scalar_t__ maxSessions; scalar_t__ keepTimer; int /*<<< orphan*/ * count; int /*<<< orphan*/  mutex; int /*<<< orphan*/  total; int /*<<< orphan*/  connHashMemPool; TYPE_2__** connHashList; } ;
-struct TYPE_9__ {scalar_t__ time; short port; void* data; TYPE_1__* prev; struct TYPE_9__* next; int /*<<< orphan*/  ip; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
+typedef int uint32_t ;
+struct TYPE_10__ {scalar_t__ maxSessions; scalar_t__ keepTimer; int * count; int mutex; int total; int connHashMemPool; TYPE_2__** connHashList; } ;
+struct TYPE_9__ {scalar_t__ time; short port; void* data; TYPE_1__* prev; struct TYPE_9__* next; int ip; } ;
 struct TYPE_8__ {TYPE_2__* next; } ;
-typedef  TYPE_2__ SConnHash ;
-typedef  TYPE_3__ SConnCache ;
+typedef TYPE_2__ SConnHash ;
+typedef TYPE_3__ SConnCache ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ taosGetTimestampMs () ; 
- int taosHashConn (TYPE_3__*,int /*<<< orphan*/ ,short,char*) ; 
- int /*<<< orphan*/  taosMemPoolFree (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  taosRemoveExpiredNodes (TYPE_3__*,TYPE_2__*,int,scalar_t__) ; 
- int /*<<< orphan*/  tscTrace (char*,void*,int /*<<< orphan*/ ,short,int,TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ scalar_t__ taosGetTimestampMs () ;
+ int taosHashConn (TYPE_3__*,int ,short,char*) ;
+ int taosMemPoolFree (int ,char*) ;
+ int taosRemoveExpiredNodes (TYPE_3__*,TYPE_2__*,int,scalar_t__) ;
+ int tscTrace (char*,void*,int ,short,int,TYPE_2__*,int ) ;
 
 void *taosGetConnFromCache(void *handle, uint32_t ip, short port, char *user) {
-  int         hash;
+  int hash;
   SConnHash * pNode;
   SConnCache *pObj;
-  void *      pData = NULL;
+  void * pData = ((void*)0);
 
   pObj = (SConnCache *)handle;
-  if (pObj == NULL || pObj->maxSessions == 0) return NULL;
+  if (pObj == ((void*)0) || pObj->maxSessions == 0) return ((void*)0);
 
   uint64_t time = taosGetTimestampMs();
 
@@ -48,7 +48,7 @@ void *taosGetConnFromCache(void *handle, uint32_t ip, short port, char *user) {
   while (pNode) {
     if (time >= pObj->keepTimer + pNode->time) {
       taosRemoveExpiredNodes(pObj, pNode, hash, time);
-      pNode = NULL;
+      pNode = ((void*)0);
       break;
     }
 

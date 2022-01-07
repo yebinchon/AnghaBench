@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int CGROUP_MASK_BLKIO ; 
- int CGROUP_MASK_CPU ; 
- int CGROUP_MASK_CPUACCT ; 
- int CGROUP_MASK_CPUSET ; 
- int CGROUP_MASK_DEVICES ; 
- int CGROUP_MASK_IO ; 
- int CGROUP_MASK_MEMORY ; 
- int CGROUP_MASK_PIDS ; 
- int _CGROUP_MASK_ALL ; 
- int /*<<< orphan*/  test_cg_mask_to_string_one (int,char*) ; 
+ int CGROUP_MASK_BLKIO ;
+ int CGROUP_MASK_CPU ;
+ int CGROUP_MASK_CPUACCT ;
+ int CGROUP_MASK_CPUSET ;
+ int CGROUP_MASK_DEVICES ;
+ int CGROUP_MASK_IO ;
+ int CGROUP_MASK_MEMORY ;
+ int CGROUP_MASK_PIDS ;
+ int _CGROUP_MASK_ALL ;
+ int test_cg_mask_to_string_one (int,char*) ;
 
 __attribute__((used)) static void test_cg_mask_to_string(void) {
-        test_cg_mask_to_string_one(0, NULL);
+        test_cg_mask_to_string_one(0, ((void*)0));
         test_cg_mask_to_string_one(_CGROUP_MASK_ALL, "cpu cpuacct cpuset io blkio memory devices pids bpf-firewall bpf-devices");
         test_cg_mask_to_string_one(CGROUP_MASK_CPU, "cpu");
         test_cg_mask_to_string_one(CGROUP_MASK_CPUACCT, "cpuacct");

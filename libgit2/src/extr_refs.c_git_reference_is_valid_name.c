@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GIT_REFERENCE_FORMAT_ALLOW_ONELEVEL ; 
- int git_reference__is_valid_name (char const*,int /*<<< orphan*/ ) ; 
+ int GIT_REFERENCE_FORMAT_ALLOW_ONELEVEL ;
+ int git_reference__is_valid_name (char const*,int ) ;
 
 int git_reference_is_valid_name(const char *refname)
 {
-	return git_reference__is_valid_name(refname, GIT_REFERENCE_FORMAT_ALLOW_ONELEVEL);
+ return git_reference__is_valid_name(refname, GIT_REFERENCE_FORMAT_ALLOW_ONELEVEL);
 }

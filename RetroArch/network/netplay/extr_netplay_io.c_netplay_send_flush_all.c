@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct netplay_connection {scalar_t__ mode; int /*<<< orphan*/  fd; int /*<<< orphan*/  send_packet_buffer; scalar_t__ active; } ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct netplay_connection {scalar_t__ mode; int fd; int send_packet_buffer; scalar_t__ active; } ;
 struct TYPE_4__ {size_t connections_size; struct netplay_connection* connections; } ;
-typedef  TYPE_1__ netplay_t ;
+typedef TYPE_1__ netplay_t ;
 
-/* Variables and functions */
- scalar_t__ NETPLAY_CONNECTION_CONNECTED ; 
- int /*<<< orphan*/  netplay_hangup (TYPE_1__*,struct netplay_connection*) ; 
- int /*<<< orphan*/  netplay_send_flush (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ NETPLAY_CONNECTION_CONNECTED ;
+ int netplay_hangup (TYPE_1__*,struct netplay_connection*) ;
+ int netplay_send_flush (int *,int ,int) ;
 
 __attribute__((used)) static void netplay_send_flush_all(netplay_t *netplay,
    struct netplay_connection *except)
@@ -32,7 +32,7 @@ __attribute__((used)) static void netplay_send_flush_all(netplay_t *netplay,
       if (connection->active && connection->mode >= NETPLAY_CONNECTION_CONNECTED)
       {
          if (!netplay_send_flush(&connection->send_packet_buffer,
-            connection->fd, true))
+            connection->fd, 1))
             netplay_hangup(netplay, connection);
       }
    }

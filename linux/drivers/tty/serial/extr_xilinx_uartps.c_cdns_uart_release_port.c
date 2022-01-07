@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct uart_port {int /*<<< orphan*/ * membase; int /*<<< orphan*/  mapbase; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CDNS_UART_REGISTER_SPACE ; 
- int /*<<< orphan*/  iounmap (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  release_mem_region (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct uart_port {int * membase; int mapbase; } ;
+
+
+ int CDNS_UART_REGISTER_SPACE ;
+ int iounmap (int *) ;
+ int release_mem_region (int ,int ) ;
 
 __attribute__((used)) static void cdns_uart_release_port(struct uart_port *port)
 {
-	release_mem_region(port->mapbase, CDNS_UART_REGISTER_SPACE);
-	iounmap(port->membase);
-	port->membase = NULL;
+ release_mem_region(port->mapbase, CDNS_UART_REGISTER_SPACE);
+ iounmap(port->membase);
+ port->membase = ((void*)0);
 }

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  swizzle; } ;
-struct shader_reg {int type; scalar_t__ srcmod; TYPE_1__ u; int /*<<< orphan*/  regnum; scalar_t__ rel_reg; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int swizzle; } ;
+struct shader_reg {int type; scalar_t__ srcmod; TYPE_1__ u; int regnum; scalar_t__ rel_reg; } ;
 struct bytecode_buffer {int dummy; } ;
 struct bc_writer {void* state; } ;
-typedef  int DWORD ;
+typedef int DWORD ;
 
-/* Variables and functions */
-#define  BWRITERSPR_CONST 130 
-#define  BWRITERSPR_INPUT 129 
-#define  BWRITERSPR_TEMP 128 
- scalar_t__ BWRITERSPSM_ABS ; 
- scalar_t__ BWRITERSPSM_ABSNEG ; 
- scalar_t__ BWRITERSPSM_NOT ; 
- int D3DVS_SWIZZLE_MASK ; 
- void* E_INVALIDARG ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
- int d3d9_srcmod (scalar_t__) ; 
- int d3d9_swizzle (int /*<<< orphan*/ ) ; 
- int d3dsp_register (int,int /*<<< orphan*/ ) ; 
- int map_ps_input (struct bc_writer*,struct shader_reg const*) ; 
- int /*<<< orphan*/  put_dword (struct bytecode_buffer*,int) ; 
+
+
+
+
+ scalar_t__ BWRITERSPSM_ABS ;
+ scalar_t__ BWRITERSPSM_ABSNEG ;
+ scalar_t__ BWRITERSPSM_NOT ;
+ int D3DVS_SWIZZLE_MASK ;
+ void* E_INVALIDARG ;
+ int WARN (char*,...) ;
+ int d3d9_srcmod (scalar_t__) ;
+ int d3d9_swizzle (int ) ;
+ int d3dsp_register (int,int ) ;
+ int map_ps_input (struct bc_writer*,struct shader_reg const*) ;
+ int put_dword (struct bytecode_buffer*,int) ;
 
 __attribute__((used)) static void ps_1_4_srcreg(struct bc_writer *This, const struct shader_reg *reg,
                           struct bytecode_buffer *buffer) {
-    DWORD token = (1u << 31); /* Bit 31 of registers is 1 */
+    DWORD token = (1u << 31);
     if(reg->rel_reg) {
         WARN("Relative addressing not supported in <= ps_3_0\n");
         This->state = E_INVALIDARG;
@@ -43,13 +43,13 @@ __attribute__((used)) static void ps_1_4_srcreg(struct bc_writer *This, const st
     }
 
     switch(reg->type) {
-        case BWRITERSPR_INPUT:
+        case 129:
             token |= map_ps_input(This, reg);
             break;
 
-        /* Can be mapped 1:1 */
-        case BWRITERSPR_TEMP:
-        case BWRITERSPR_CONST:
+
+        case 128:
+        case 130:
             token |= d3dsp_register( reg->type, reg->regnum );
             break;
 
@@ -59,7 +59,7 @@ __attribute__((used)) static void ps_1_4_srcreg(struct bc_writer *This, const st
             return;
     }
 
-    token |= d3d9_swizzle(reg->u.swizzle) & D3DVS_SWIZZLE_MASK; /* already shifted */
+    token |= d3d9_swizzle(reg->u.swizzle) & D3DVS_SWIZZLE_MASK;
 
     if(reg->srcmod == BWRITERSPSM_ABS || reg->srcmod == BWRITERSPSM_ABSNEG ||
        reg->srcmod == BWRITERSPSM_NOT) {

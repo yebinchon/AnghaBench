@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {long trailer_len; int /*<<< orphan*/  trailer; int /*<<< orphan*/  fdt; } ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  TYPE_1__ DTBLOB_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dtoverlay_debug (char*,...) ; 
- int /*<<< orphan*/  dtoverlay_error (char*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- long fdt_totalsize (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- long fwrite (int /*<<< orphan*/ ,int,long,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {long trailer_len; int trailer; int fdt; } ;
+typedef int FILE ;
+typedef TYPE_1__ DTBLOB_T ;
+
+
+ int dtoverlay_debug (char*,...) ;
+ int dtoverlay_error (char*) ;
+ int fclose (int *) ;
+ long fdt_totalsize (int ) ;
+ int * fopen (char const*,char*) ;
+ long fwrite (int ,int,long,int *) ;
 
 int dtoverlay_save_dtb(const DTBLOB_T *dtb, const char *filename)
 {

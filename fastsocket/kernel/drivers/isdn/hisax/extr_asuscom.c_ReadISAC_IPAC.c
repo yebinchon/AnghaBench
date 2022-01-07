@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_char ;
-struct TYPE_3__ {int /*<<< orphan*/  isac; int /*<<< orphan*/  adr; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u_char ;
+struct TYPE_3__ {int isac; int adr; } ;
 struct TYPE_4__ {TYPE_1__ asus; } ;
 struct IsdnCardState {TYPE_2__ hw; } ;
 
-/* Variables and functions */
- int readreg (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int readreg (int ,int ,int) ;
 
 __attribute__((used)) static u_char
 ReadISAC_IPAC(struct IsdnCardState *cs, u_char offset)
 {
-	return (readreg(cs->hw.asus.adr, cs->hw.asus.isac, offset|0x80));
+ return (readreg(cs->hw.asus.adr, cs->hw.asus.isac, offset|0x80));
 }

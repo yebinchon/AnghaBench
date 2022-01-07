@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_3__ {int buf_size; int* buf; } ;
-typedef  TYPE_1__ AVProbeData ;
+typedef TYPE_1__ AVProbeData ;
 
-/* Variables and functions */
- int AVPROBE_SCORE_EXTENSION ; 
- int AV_RB32 (int*) ; 
- int PROFILE_ADVANCED ; 
-#define  VC1_CODE_ENTRYPOINT 132 
-#define  VC1_CODE_FIELD 131 
-#define  VC1_CODE_FRAME 130 
-#define  VC1_CODE_SEQHDR 129 
-#define  VC1_CODE_SLICE 128 
+
+ int AVPROBE_SCORE_EXTENSION ;
+ int AV_RB32 (int*) ;
+ int PROFILE_ADVANCED ;
+
+
+
+
+
 
 __attribute__((used)) static int vc1_probe(const AVProbeData *p)
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static int vc1_probe(const AVProbeData *p)
             int type = code & 0x11f;
             i += 4;
             switch (type) {
-            case VC1_CODE_SEQHDR: {
+            case 129: {
                 int profile, level, chromaformat;
                 profile = (p->buf[i] & 0xc0) >> 6;
                 if (profile != PROFILE_ADVANCED) {
@@ -59,7 +59,7 @@ __attribute__((used)) static int vc1_probe(const AVProbeData *p)
                 i += 6;
                 break;
             }
-            case VC1_CODE_ENTRYPOINT:
+            case 132:
                 if (!seq) {
                     invalid++;
                     continue;
@@ -67,9 +67,9 @@ __attribute__((used)) static int vc1_probe(const AVProbeData *p)
                 entry++;
                 i += 2;
                 break;
-            case VC1_CODE_FRAME:
-            case VC1_CODE_FIELD:
-            case VC1_CODE_SLICE:
+            case 130:
+            case 131:
+            case 128:
                 if (seq && entry)
                     frame++;
                 break;

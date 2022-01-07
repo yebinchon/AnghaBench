@@ -1,132 +1,115 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int prime_len; int use_dsa; int subprime_len; int pad; int generator; int param_nid; int rfc5114_param; int kdf_type; size_t kdf_outlen; unsigned char* kdf_ukm; int kdf_ukmlen; int /*<<< orphan*/ * kdf_oid; int /*<<< orphan*/ * kdf_md; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int prime_len; int use_dsa; int subprime_len; int pad; int generator; int param_nid; int rfc5114_param; int kdf_type; size_t kdf_outlen; unsigned char* kdf_ukm; int kdf_ukmlen; int * kdf_oid; int * kdf_md; } ;
 struct TYPE_4__ {TYPE_2__* data; } ;
-typedef  TYPE_1__ EVP_PKEY_CTX ;
-typedef  int /*<<< orphan*/  EVP_MD ;
-typedef  TYPE_2__ DH_PKEY_CTX ;
-typedef  int /*<<< orphan*/  ASN1_OBJECT ;
+typedef TYPE_1__ EVP_PKEY_CTX ;
+typedef int EVP_MD ;
+typedef TYPE_2__ DH_PKEY_CTX ;
+typedef int ASN1_OBJECT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_OBJECT_free (int /*<<< orphan*/ *) ; 
-#define  EVP_PKEY_CTRL_DH_KDF_MD 144 
-#define  EVP_PKEY_CTRL_DH_KDF_OID 143 
-#define  EVP_PKEY_CTRL_DH_KDF_OUTLEN 142 
-#define  EVP_PKEY_CTRL_DH_KDF_TYPE 141 
-#define  EVP_PKEY_CTRL_DH_KDF_UKM 140 
-#define  EVP_PKEY_CTRL_DH_NID 139 
-#define  EVP_PKEY_CTRL_DH_PAD 138 
-#define  EVP_PKEY_CTRL_DH_PARAMGEN_GENERATOR 137 
-#define  EVP_PKEY_CTRL_DH_PARAMGEN_PRIME_LEN 136 
-#define  EVP_PKEY_CTRL_DH_PARAMGEN_SUBPRIME_LEN 135 
-#define  EVP_PKEY_CTRL_DH_PARAMGEN_TYPE 134 
-#define  EVP_PKEY_CTRL_DH_RFC5114 133 
-#define  EVP_PKEY_CTRL_GET_DH_KDF_MD 132 
-#define  EVP_PKEY_CTRL_GET_DH_KDF_OID 131 
-#define  EVP_PKEY_CTRL_GET_DH_KDF_OUTLEN 130 
-#define  EVP_PKEY_CTRL_GET_DH_KDF_UKM 129 
-#define  EVP_PKEY_CTRL_PEER_KEY 128 
- int EVP_PKEY_DH_KDF_NONE ; 
- int EVP_PKEY_DH_KDF_X9_42 ; 
- int NID_undef ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
+
+ int ASN1_OBJECT_free (int *) ;
+ int EVP_PKEY_DH_KDF_NONE ;
+ int EVP_PKEY_DH_KDF_X9_42 ;
+ int NID_undef ;
+ int OPENSSL_free (unsigned char*) ;
 
 __attribute__((used)) static int pkey_dh_ctrl(EVP_PKEY_CTX *ctx, int type, int p1, void *p2)
 {
     DH_PKEY_CTX *dctx = ctx->data;
     switch (type) {
-    case EVP_PKEY_CTRL_DH_PARAMGEN_PRIME_LEN:
+    case 136:
         if (p1 < 256)
             return -2;
         dctx->prime_len = p1;
         return 1;
 
-    case EVP_PKEY_CTRL_DH_PARAMGEN_SUBPRIME_LEN:
+    case 135:
         if (dctx->use_dsa == 0)
             return -2;
         dctx->subprime_len = p1;
         return 1;
 
-    case EVP_PKEY_CTRL_DH_PAD:
+    case 138:
         dctx->pad = p1;
         return 1;
 
-    case EVP_PKEY_CTRL_DH_PARAMGEN_GENERATOR:
+    case 137:
         if (dctx->use_dsa)
             return -2;
         dctx->generator = p1;
         return 1;
 
-    case EVP_PKEY_CTRL_DH_PARAMGEN_TYPE:
-#ifdef OPENSSL_NO_DSA
-        if (p1 != 0)
-            return -2;
-#else
+    case 134:
+
+
+
+
         if (p1 < 0 || p1 > 2)
             return -2;
-#endif
+
         dctx->use_dsa = p1;
         return 1;
 
-    case EVP_PKEY_CTRL_DH_RFC5114:
+    case 133:
         if (p1 < 1 || p1 > 3 || dctx->param_nid != NID_undef)
             return -2;
         dctx->rfc5114_param = p1;
         return 1;
 
-    case EVP_PKEY_CTRL_DH_NID:
+    case 139:
         if (p1 <= 0 || dctx->rfc5114_param != 0)
             return -2;
         dctx->param_nid = p1;
         return 1;
 
-    case EVP_PKEY_CTRL_PEER_KEY:
-        /* Default behaviour is OK */
+    case 128:
+
         return 1;
 
-    case EVP_PKEY_CTRL_DH_KDF_TYPE:
+    case 141:
         if (p1 == -2)
             return dctx->kdf_type;
-#ifdef OPENSSL_NO_CMS
-        if (p1 != EVP_PKEY_DH_KDF_NONE)
-#else
+
+
+
         if (p1 != EVP_PKEY_DH_KDF_NONE && p1 != EVP_PKEY_DH_KDF_X9_42)
-#endif
+
             return -2;
         dctx->kdf_type = p1;
         return 1;
 
-    case EVP_PKEY_CTRL_DH_KDF_MD:
+    case 144:
         dctx->kdf_md = p2;
         return 1;
 
-    case EVP_PKEY_CTRL_GET_DH_KDF_MD:
+    case 132:
         *(const EVP_MD **)p2 = dctx->kdf_md;
         return 1;
 
-    case EVP_PKEY_CTRL_DH_KDF_OUTLEN:
+    case 142:
         if (p1 <= 0)
             return -2;
         dctx->kdf_outlen = (size_t)p1;
         return 1;
 
-    case EVP_PKEY_CTRL_GET_DH_KDF_OUTLEN:
+    case 130:
         *(int *)p2 = dctx->kdf_outlen;
         return 1;
 
-    case EVP_PKEY_CTRL_DH_KDF_UKM:
+    case 140:
         OPENSSL_free(dctx->kdf_ukm);
         dctx->kdf_ukm = p2;
         if (p2)
@@ -135,16 +118,16 @@ __attribute__((used)) static int pkey_dh_ctrl(EVP_PKEY_CTX *ctx, int type, int p
             dctx->kdf_ukmlen = 0;
         return 1;
 
-    case EVP_PKEY_CTRL_GET_DH_KDF_UKM:
+    case 129:
         *(unsigned char **)p2 = dctx->kdf_ukm;
         return dctx->kdf_ukmlen;
 
-    case EVP_PKEY_CTRL_DH_KDF_OID:
+    case 143:
         ASN1_OBJECT_free(dctx->kdf_oid);
         dctx->kdf_oid = p2;
         return 1;
 
-    case EVP_PKEY_CTRL_GET_DH_KDF_OID:
+    case 131:
         *(ASN1_OBJECT **)p2 = dctx->kdf_oid;
         return 1;
 

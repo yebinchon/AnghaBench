@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct jsonsl_state_st {int level; scalar_t__ type; scalar_t__ nelem; } ;
-typedef  TYPE_1__* jsonsl_t ;
-typedef  int /*<<< orphan*/ * jsonsl_jpr_t ;
-typedef  scalar_t__ jsonsl_jpr_match_t ;
-struct TYPE_3__ {size_t* jpr_root; int jpr_count; int /*<<< orphan*/ ** jprs; struct jsonsl_state_st* stack; } ;
+typedef TYPE_1__* jsonsl_t ;
+typedef int * jsonsl_jpr_t ;
+typedef scalar_t__ jsonsl_jpr_match_t ;
+struct TYPE_3__ {size_t* jpr_root; int jpr_count; int ** jprs; struct jsonsl_state_st* stack; } ;
 
-/* Variables and functions */
- scalar_t__ JSONSL_MATCH_COMPLETE ; 
- scalar_t__ JSONSL_MATCH_NOMATCH ; 
- scalar_t__ JSONSL_MATCH_POSSIBLE ; 
- scalar_t__ JSONSL_T_LIST ; 
- scalar_t__ jsonsl_jpr_match (int /*<<< orphan*/ *,scalar_t__,int,char const*,size_t) ; 
- int /*<<< orphan*/  memset (size_t*,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ JSONSL_MATCH_COMPLETE ;
+ scalar_t__ JSONSL_MATCH_NOMATCH ;
+ scalar_t__ JSONSL_MATCH_POSSIBLE ;
+ scalar_t__ JSONSL_T_LIST ;
+ scalar_t__ jsonsl_jpr_match (int *,scalar_t__,int,char const*,size_t) ;
+ int memset (size_t*,int ,int) ;
 
 jsonsl_jpr_t jsonsl_jpr_match_state(jsonsl_t jsn,
                                     struct jsonsl_state_st *state,
@@ -32,25 +32,25 @@ jsonsl_jpr_t jsonsl_jpr_match_state(jsonsl_t jsn,
                                     jsonsl_jpr_match_t *out)
 {
     struct jsonsl_state_st *parent_state;
-    jsonsl_jpr_t ret = NULL;
+    jsonsl_jpr_t ret = ((void*)0);
 
-    /* Jump and JPR tables for our own state and the parent state */
+
     size_t *jmptable, *pjmptable;
     size_t jmp_cur, ii, ourjmpidx;
 
     if (!jsn->jpr_root) {
         *out = JSONSL_MATCH_NOMATCH;
-        return NULL;
+        return ((void*)0);
     }
 
     pjmptable = jsn->jpr_root + (jsn->jpr_count * (state->level-1));
     jmptable = pjmptable + jsn->jpr_count;
 
-    /* If the parent cannot match, then invalidate it */
+
     if (*pjmptable == 0) {
         *jmptable = 0;
         *out = JSONSL_MATCH_NOMATCH;
-        return NULL;
+        return ((void*)0);
     }
 
     parent_state = jsn->stack + state->level - 1;
@@ -63,7 +63,7 @@ jsonsl_jpr_t jsonsl_jpr_match_state(jsonsl_t jsn,
     ourjmpidx = 0;
     memset(jmptable, 0, sizeof(int) * jsn->jpr_count);
 
-    for (ii = 0; ii <  jsn->jpr_count; ii++) {
+    for (ii = 0; ii < jsn->jpr_count; ii++) {
         jmp_cur = pjmptable[ii];
         if (jmp_cur) {
             jsonsl_jpr_t jpr = jsn->jprs[jmp_cur-1];
@@ -86,5 +86,5 @@ jsonsl_jpr_t jsonsl_jpr_match_state(jsonsl_t jsn,
     if (!*jmptable) {
         *out = JSONSL_MATCH_NOMATCH;
     }
-    return NULL;
+    return ((void*)0);
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct wddm_version {scalar_t__ wddm; scalar_t__ d3d_features; scalar_t__ revision; scalar_t__ build; } ;
 struct TYPE_6__ {scalar_t__ wddm; scalar_t__ d3d_features; scalar_t__ revision; scalar_t__ build; } ;
-struct TYPE_7__ {TYPE_1__ WDDM; int /*<<< orphan*/  d3ddevice; } ;
-typedef  TYPE_2__ d3d11_device_t ;
-typedef  scalar_t__ UINT ;
+struct TYPE_7__ {TYPE_1__ WDDM; int d3ddevice; } ;
+typedef TYPE_2__ d3d11_device_t ;
+typedef scalar_t__ UINT ;
 struct TYPE_8__ {scalar_t__ VendorId; } ;
-typedef  int /*<<< orphan*/  IDXGIAdapter ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_3__ DXGI_ADAPTER_DESC ;
+typedef int IDXGIAdapter ;
+typedef int HRESULT ;
+typedef TYPE_3__ DXGI_ADAPTER_DESC ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * D3D11DeviceAdapter (int /*<<< orphan*/ ) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDXGIAdapter_GetDesc (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  IDXGIAdapter_Release (int /*<<< orphan*/ *) ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
+
+ int * D3D11DeviceAdapter (int ) ;
+ scalar_t__ FAILED (int ) ;
+ int IDXGIAdapter_GetDesc (int *,TYPE_3__*) ;
+ int IDXGIAdapter_Release (int *) ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
 
 int D3D11CheckDriverVersion(d3d11_device_t *d3d_dev, UINT vendorId, const struct wddm_version *min_ver)
 {

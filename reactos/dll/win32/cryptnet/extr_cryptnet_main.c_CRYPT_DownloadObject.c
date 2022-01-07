@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct InetContext {int /*<<< orphan*/  timeout; int /*<<< orphan*/  event; scalar_t__ error; } ;
-typedef  int /*<<< orphan*/  buffer ;
-struct TYPE_10__ {int pbData; int cbData; int /*<<< orphan*/ * member_1; int /*<<< orphan*/  member_0; } ;
-struct TYPE_9__ {int member_0; int dwBufferLength; int lpvBuffer; int /*<<< orphan*/  member_1; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct InetContext {int timeout; int event; scalar_t__ error; } ;
+typedef int buffer ;
+struct TYPE_10__ {int pbData; int cbData; int * member_1; int member_0; } ;
+struct TYPE_9__ {int member_0; int dwBufferLength; int lpvBuffer; int member_1; } ;
 struct TYPE_8__ {int cBlob; TYPE_1__* rgBlob; } ;
 struct TYPE_7__ {int cbData; int pbData; } ;
-typedef  int /*<<< orphan*/  PCRYPT_RETRIEVE_AUX_INFO ;
-typedef  TYPE_2__* PCRYPT_BLOB_ARRAY ;
-typedef  TYPE_3__ INTERNET_BUFFERSA ;
-typedef  int /*<<< orphan*/  HINTERNET ;
-typedef  int /*<<< orphan*/  DWORD_PTR ;
-typedef  int DWORD ;
-typedef  TYPE_4__ CRYPT_DATA_BLOB ;
-typedef  scalar_t__ BOOL ;
+typedef int PCRYPT_RETRIEVE_AUX_INFO ;
+typedef TYPE_2__* PCRYPT_BLOB_ARRAY ;
+typedef TYPE_3__ INTERNET_BUFFERSA ;
+typedef int HINTERNET ;
+typedef int DWORD_PTR ;
+typedef int DWORD ;
+typedef TYPE_4__ CRYPT_DATA_BLOB ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- void* CryptMemAlloc (int) ; 
- int /*<<< orphan*/  CryptMemFree (int) ; 
- int CryptMemRealloc (int,int) ; 
- scalar_t__ ERROR_IO_PENDING ; 
- scalar_t__ ERROR_OUTOFMEMORY ; 
- scalar_t__ ERROR_TIMEOUT ; 
- scalar_t__ FALSE ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  IRF_NO_WAIT ; 
- scalar_t__ InternetQueryDataAvailable (int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ InternetReadFileExA (int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetLastError (scalar_t__) ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__) ; 
- scalar_t__ TRUE ; 
- scalar_t__ WAIT_TIMEOUT ; 
- scalar_t__ WaitForSingleObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ void* CryptMemAlloc (int) ;
+ int CryptMemFree (int) ;
+ int CryptMemRealloc (int,int) ;
+ scalar_t__ ERROR_IO_PENDING ;
+ scalar_t__ ERROR_OUTOFMEMORY ;
+ scalar_t__ ERROR_TIMEOUT ;
+ scalar_t__ FALSE ;
+ scalar_t__ GetLastError () ;
+ int IRF_NO_WAIT ;
+ scalar_t__ InternetQueryDataAvailable (int ,int*,int ,int ) ;
+ scalar_t__ InternetReadFileExA (int ,TYPE_3__*,int ,int ) ;
+ int SetLastError (scalar_t__) ;
+ int TRACE (char*,scalar_t__) ;
+ scalar_t__ TRUE ;
+ scalar_t__ WAIT_TIMEOUT ;
+ scalar_t__ WaitForSingleObject (int ,int ) ;
 
 __attribute__((used)) static BOOL CRYPT_DownloadObject(DWORD dwRetrievalFlags, HINTERNET hHttp,
  struct InetContext *context, PCRYPT_BLOB_ARRAY pObject,
  PCRYPT_RETRIEVE_AUX_INFO pAuxInfo)
 {
-    CRYPT_DATA_BLOB object = { 0, NULL };
+    CRYPT_DATA_BLOB object = { 0, ((void*)0) };
     DWORD bytesAvailable;
     BOOL ret;
 

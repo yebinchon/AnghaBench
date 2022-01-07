@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_5__ ;
-typedef  struct TYPE_23__   TYPE_4__ ;
-typedef  struct TYPE_22__   TYPE_3__ ;
-typedef  struct TYPE_21__   TYPE_2__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_24__ TYPE_5__ ;
+typedef struct TYPE_23__ TYPE_4__ ;
+typedef struct TYPE_22__ TYPE_3__ ;
+typedef struct TYPE_21__ TYPE_2__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+
+
 struct TYPE_21__ {scalar_t__ top; } ;
-typedef  TYPE_2__ lua_State ;
-typedef  int /*<<< orphan*/  ZIO ;
+typedef TYPE_2__ lua_State ;
+typedef int ZIO ;
 struct TYPE_20__ {TYPE_3__* p; } ;
 struct TYPE_24__ {TYPE_1__ l; } ;
-struct TYPE_23__ {char const* name; int /*<<< orphan*/ * b; int /*<<< orphan*/ * Z; TYPE_2__* L; } ;
+struct TYPE_23__ {char const* name; int * b; int * Z; TYPE_2__* L; } ;
 struct TYPE_22__ {int sizeupvalues; } ;
-typedef  TYPE_3__ Proto ;
-typedef  int /*<<< orphan*/  Mbuffer ;
-typedef  TYPE_4__ LoadState ;
-typedef  TYPE_5__ Closure ;
+typedef TYPE_3__ Proto ;
+typedef int Mbuffer ;
+typedef TYPE_4__ LoadState ;
+typedef TYPE_5__ Closure ;
 
-/* Variables and functions */
- char const* LUA_SIGNATURE ; 
- int /*<<< orphan*/  LoadFunction (TYPE_4__*,TYPE_3__*) ; 
- int /*<<< orphan*/  LoadHeader (TYPE_4__*) ; 
- int /*<<< orphan*/  incr_top (TYPE_2__*) ; 
- TYPE_5__* luaF_newLclosure (TYPE_2__*,int) ; 
- TYPE_3__* luaF_newproto (TYPE_2__*) ; 
- int /*<<< orphan*/  luai_verifycode (TYPE_2__*,int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  setclLvalue (TYPE_2__*,scalar_t__,TYPE_5__*) ; 
+
+ char const* LUA_SIGNATURE ;
+ int LoadFunction (TYPE_4__*,TYPE_3__*) ;
+ int LoadHeader (TYPE_4__*) ;
+ int incr_top (TYPE_2__*) ;
+ TYPE_5__* luaF_newLclosure (TYPE_2__*,int) ;
+ TYPE_3__* luaF_newproto (TYPE_2__*) ;
+ int luai_verifycode (TYPE_2__*,int *,TYPE_3__*) ;
+ int setclLvalue (TYPE_2__*,scalar_t__,TYPE_5__*) ;
 
 Closure* luaU_undump (lua_State* L, ZIO* Z, Mbuffer* buff, const char* name)
 {

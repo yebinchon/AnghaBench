@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  r; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int r; } ;
 struct TYPE_10__ {TYPE_2__ u; TYPE_1__* db; } ;
-struct TYPE_8__ {int /*<<< orphan*/  mutex; } ;
-typedef  TYPE_3__ Mem ;
+struct TYPE_8__ {int mutex; } ;
+typedef TYPE_3__ Mem ;
 
-/* Variables and functions */
- int EIGHT_BYTE_ALIGNMENT (TYPE_3__*) ; 
- int /*<<< orphan*/  MEM_Real ; 
- int /*<<< orphan*/  MemSetTypeFlag (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3VdbeRealValue (TYPE_3__*) ; 
- scalar_t__ sqlite3_mutex_held (int /*<<< orphan*/ ) ; 
+
+ int EIGHT_BYTE_ALIGNMENT (TYPE_3__*) ;
+ int MEM_Real ;
+ int MemSetTypeFlag (TYPE_3__*,int ) ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int sqlite3VdbeRealValue (TYPE_3__*) ;
+ scalar_t__ sqlite3_mutex_held (int ) ;
 
 int sqlite3VdbeMemRealify(Mem *pMem){
   assert( pMem->db==0 || sqlite3_mutex_held(pMem->db->mutex) );

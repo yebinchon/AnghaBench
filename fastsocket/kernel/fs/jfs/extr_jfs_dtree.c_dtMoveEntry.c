@@ -1,223 +1,223 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct lv {int offset; int length; } ;
-struct ldtentry {int namlen; int next; int /*<<< orphan*/  index; } ;
-struct idtentry {int namlen; int next; int /*<<< orphan*/  index; } ;
-struct dtslot {int next; int cnt; int /*<<< orphan*/  name; } ;
+struct ldtentry {int namlen; int next; int index; } ;
+struct idtentry {int namlen; int next; int index; } ;
+struct dtslot {int next; int cnt; int name; } ;
 struct dt_lock {size_t index; size_t maxcnt; struct lv* lv; } ;
-typedef  int s8 ;
+typedef int s8 ;
 struct TYPE_5__ {size_t stblindex; int freelist; int nextindex; int flag; int freecnt; } ;
 struct TYPE_6__ {TYPE_1__ header; struct dtslot* slot; } ;
-typedef  TYPE_2__ dtpage_t ;
+typedef TYPE_2__ dtpage_t ;
 
-/* Variables and functions */
- int BT_LEAF ; 
- int /*<<< orphan*/  DTIHDRDATALEN ; 
- int /*<<< orphan*/  DTLHDRDATALEN ; 
- int /*<<< orphan*/  DTLHDRDATALEN_LEGACY ; 
- int /*<<< orphan*/  DTSLOTDATALEN ; 
- int /*<<< orphan*/  UniStrncpy_le (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memcpy (struct ldtentry*,struct ldtentry*,int) ; 
- int min (int,int /*<<< orphan*/ ) ; 
- scalar_t__ txLinelock (struct dt_lock*) ; 
+
+ int BT_LEAF ;
+ int DTIHDRDATALEN ;
+ int DTLHDRDATALEN ;
+ int DTLHDRDATALEN_LEGACY ;
+ int DTSLOTDATALEN ;
+ int UniStrncpy_le (int ,int ,int) ;
+ int memcpy (struct ldtentry*,struct ldtentry*,int) ;
+ int min (int,int ) ;
+ scalar_t__ txLinelock (struct dt_lock*) ;
 
 __attribute__((used)) static void dtMoveEntry(dtpage_t * sp, int si, dtpage_t * dp,
-			struct dt_lock ** sdtlock, struct dt_lock ** ddtlock,
-			int do_index)
+   struct dt_lock ** sdtlock, struct dt_lock ** ddtlock,
+   int do_index)
 {
-	int ssi, next;		/* src slot index */
-	int di;			/* dst entry index */
-	int dsi;		/* dst slot index */
-	s8 *sstbl, *dstbl;	/* sorted entry table */
-	int snamlen, len;
-	struct ldtentry *slh, *dlh = NULL;
-	struct idtentry *sih, *dih = NULL;
-	struct dtslot *h, *s, *d;
-	struct dt_lock *sdtlck = *sdtlock, *ddtlck = *ddtlock;
-	struct lv *slv, *dlv;
-	int xssi, ns, nd;
-	int sfsi;
+ int ssi, next;
+ int di;
+ int dsi;
+ s8 *sstbl, *dstbl;
+ int snamlen, len;
+ struct ldtentry *slh, *dlh = ((void*)0);
+ struct idtentry *sih, *dih = ((void*)0);
+ struct dtslot *h, *s, *d;
+ struct dt_lock *sdtlck = *sdtlock, *ddtlck = *ddtlock;
+ struct lv *slv, *dlv;
+ int xssi, ns, nd;
+ int sfsi;
 
-	sstbl = (s8 *) & sp->slot[sp->header.stblindex];
-	dstbl = (s8 *) & dp->slot[dp->header.stblindex];
+ sstbl = (s8 *) & sp->slot[sp->header.stblindex];
+ dstbl = (s8 *) & dp->slot[dp->header.stblindex];
 
-	dsi = dp->header.freelist;	/* first (whole page) free slot */
-	sfsi = sp->header.freelist;
+ dsi = dp->header.freelist;
+ sfsi = sp->header.freelist;
 
-	/* linelock destination entry slot */
-	dlv = & ddtlck->lv[ddtlck->index];
-	dlv->offset = dsi;
 
-	/* linelock source entry slot */
-	slv = & sdtlck->lv[sdtlck->index];
-	slv->offset = sstbl[si];
-	xssi = slv->offset - 1;
+ dlv = & ddtlck->lv[ddtlck->index];
+ dlv->offset = dsi;
 
-	/*
-	 * move entries
-	 */
-	ns = nd = 0;
-	for (di = 0; si < sp->header.nextindex; si++, di++) {
-		ssi = sstbl[si];
-		dstbl[di] = dsi;
 
-		/* is next slot contiguous ? */
-		if (ssi != xssi + 1) {
-			/* close current linelock */
-			slv->length = ns;
-			sdtlck->index++;
+ slv = & sdtlck->lv[sdtlck->index];
+ slv->offset = sstbl[si];
+ xssi = slv->offset - 1;
 
-			/* open new linelock */
-			if (sdtlck->index < sdtlck->maxcnt)
-				slv++;
-			else {
-				sdtlck = (struct dt_lock *) txLinelock(sdtlck);
-				slv = & sdtlck->lv[0];
-			}
 
-			slv->offset = ssi;
-			ns = 0;
-		}
 
-		/*
-		 * move head/only segment of an entry
-		 */
-		/* get dst slot */
-		h = d = &dp->slot[dsi];
 
-		/* get src slot and move */
-		s = &sp->slot[ssi];
-		if (sp->header.flag & BT_LEAF) {
-			/* get source entry */
-			slh = (struct ldtentry *) s;
-			dlh = (struct ldtentry *) h;
-			snamlen = slh->namlen;
+ ns = nd = 0;
+ for (di = 0; si < sp->header.nextindex; si++, di++) {
+  ssi = sstbl[si];
+  dstbl[di] = dsi;
 
-			if (do_index) {
-				len = min(snamlen, DTLHDRDATALEN);
-				dlh->index = slh->index; /* little-endian */
-			} else
-				len = min(snamlen, DTLHDRDATALEN_LEGACY);
 
-			memcpy(dlh, slh, 6 + len * 2);
+  if (ssi != xssi + 1) {
 
-			next = slh->next;
+   slv->length = ns;
+   sdtlck->index++;
 
-			/* update dst head/only segment next field */
-			dsi++;
-			dlh->next = dsi;
-		} else {
-			sih = (struct idtentry *) s;
-			snamlen = sih->namlen;
 
-			len = min(snamlen, DTIHDRDATALEN);
-			dih = (struct idtentry *) h;
-			memcpy(dih, sih, 10 + len * 2);
-			next = sih->next;
+   if (sdtlck->index < sdtlck->maxcnt)
+    slv++;
+   else {
+    sdtlck = (struct dt_lock *) txLinelock(sdtlck);
+    slv = & sdtlck->lv[0];
+   }
 
-			dsi++;
-			dih->next = dsi;
-		}
+   slv->offset = ssi;
+   ns = 0;
+  }
 
-		/* free src head/only segment */
-		s->next = sfsi;
-		s->cnt = 1;
-		sfsi = ssi;
 
-		ns++;
-		nd++;
-		xssi = ssi;
 
-		/*
-		 * move additional segment(s) of the entry
-		 */
-		snamlen -= len;
-		while ((ssi = next) >= 0) {
-			/* is next slot contiguous ? */
-			if (ssi != xssi + 1) {
-				/* close current linelock */
-				slv->length = ns;
-				sdtlck->index++;
 
-				/* open new linelock */
-				if (sdtlck->index < sdtlck->maxcnt)
-					slv++;
-				else {
-					sdtlck =
-					    (struct dt_lock *)
-					    txLinelock(sdtlck);
-					slv = & sdtlck->lv[0];
-				}
 
-				slv->offset = ssi;
-				ns = 0;
-			}
+  h = d = &dp->slot[dsi];
 
-			/* get next source segment */
-			s = &sp->slot[ssi];
 
-			/* get next destination free slot */
-			d++;
+  s = &sp->slot[ssi];
+  if (sp->header.flag & BT_LEAF) {
 
-			len = min(snamlen, DTSLOTDATALEN);
-			UniStrncpy_le(d->name, s->name, len);
+   slh = (struct ldtentry *) s;
+   dlh = (struct ldtentry *) h;
+   snamlen = slh->namlen;
 
-			ns++;
-			nd++;
-			xssi = ssi;
+   if (do_index) {
+    len = min(snamlen, DTLHDRDATALEN);
+    dlh->index = slh->index;
+   } else
+    len = min(snamlen, DTLHDRDATALEN_LEGACY);
 
-			dsi++;
-			d->next = dsi;
+   memcpy(dlh, slh, 6 + len * 2);
 
-			/* free source segment */
-			next = s->next;
-			s->next = sfsi;
-			s->cnt = 1;
-			sfsi = ssi;
+   next = slh->next;
 
-			snamlen -= len;
-		}		/* end while */
 
-		/* terminate dst last/only segment */
-		if (h == d) {
-			/* single segment entry */
-			if (dp->header.flag & BT_LEAF)
-				dlh->next = -1;
-			else
-				dih->next = -1;
-		} else
-			/* multi-segment entry */
-			d->next = -1;
-	}			/* end for */
+   dsi++;
+   dlh->next = dsi;
+  } else {
+   sih = (struct idtentry *) s;
+   snamlen = sih->namlen;
 
-	/* close current linelock */
-	slv->length = ns;
-	sdtlck->index++;
-	*sdtlock = sdtlck;
+   len = min(snamlen, DTIHDRDATALEN);
+   dih = (struct idtentry *) h;
+   memcpy(dih, sih, 10 + len * 2);
+   next = sih->next;
 
-	dlv->length = nd;
-	ddtlck->index++;
-	*ddtlock = ddtlck;
+   dsi++;
+   dih->next = dsi;
+  }
 
-	/* update source header */
-	sp->header.freelist = sfsi;
-	sp->header.freecnt += nd;
 
-	/* update destination header */
-	dp->header.nextindex = di;
+  s->next = sfsi;
+  s->cnt = 1;
+  sfsi = ssi;
 
-	dp->header.freelist = dsi;
-	dp->header.freecnt -= nd;
+  ns++;
+  nd++;
+  xssi = ssi;
+
+
+
+
+  snamlen -= len;
+  while ((ssi = next) >= 0) {
+
+   if (ssi != xssi + 1) {
+
+    slv->length = ns;
+    sdtlck->index++;
+
+
+    if (sdtlck->index < sdtlck->maxcnt)
+     slv++;
+    else {
+     sdtlck =
+         (struct dt_lock *)
+         txLinelock(sdtlck);
+     slv = & sdtlck->lv[0];
+    }
+
+    slv->offset = ssi;
+    ns = 0;
+   }
+
+
+   s = &sp->slot[ssi];
+
+
+   d++;
+
+   len = min(snamlen, DTSLOTDATALEN);
+   UniStrncpy_le(d->name, s->name, len);
+
+   ns++;
+   nd++;
+   xssi = ssi;
+
+   dsi++;
+   d->next = dsi;
+
+
+   next = s->next;
+   s->next = sfsi;
+   s->cnt = 1;
+   sfsi = ssi;
+
+   snamlen -= len;
+  }
+
+
+  if (h == d) {
+
+   if (dp->header.flag & BT_LEAF)
+    dlh->next = -1;
+   else
+    dih->next = -1;
+  } else
+
+   d->next = -1;
+ }
+
+
+ slv->length = ns;
+ sdtlck->index++;
+ *sdtlock = sdtlck;
+
+ dlv->length = nd;
+ ddtlck->index++;
+ *ddtlock = ddtlck;
+
+
+ sp->header.freelist = sfsi;
+ sp->header.freecnt += nd;
+
+
+ dp->header.nextindex = di;
+
+ dp->header.freelist = dsi;
+ dp->header.freecnt -= nd;
 }

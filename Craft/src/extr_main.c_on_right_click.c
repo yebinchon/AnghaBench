@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_6__ {size_t item_index; TYPE_1__* players; } ;
-struct TYPE_5__ {int /*<<< orphan*/  z; int /*<<< orphan*/  y; int /*<<< orphan*/  x; int /*<<< orphan*/  ry; int /*<<< orphan*/  rx; } ;
+struct TYPE_5__ {int z; int y; int x; int ry; int rx; } ;
 struct TYPE_4__ {TYPE_2__ state; } ;
-typedef  TYPE_2__ State ;
+typedef TYPE_2__ State ;
 
-/* Variables and functions */
- TYPE_3__* g ; 
- int hit_test (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int*,int*) ; 
- scalar_t__ is_obstacle (int) ; 
- int /*<<< orphan*/ * items ; 
- int /*<<< orphan*/  player_intersects_block (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  record_block (int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_block (int,int,int,int /*<<< orphan*/ ) ; 
+
+ TYPE_3__* g ;
+ int hit_test (int,int ,int ,int ,int ,int ,int*,int*,int*) ;
+ scalar_t__ is_obstacle (int) ;
+ int * items ;
+ int player_intersects_block (int,int ,int ,int ,int,int,int) ;
+ int record_block (int,int,int,int ) ;
+ int set_block (int,int,int,int ) ;
 
 void on_right_click() {
     State *s = &g->players->state;

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int z_interpose; } ;
-typedef  TYPE_1__ Obj_Entry ;
+typedef TYPE_1__ Obj_Entry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LD_UTRACE (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UTRACE_PRELOAD_FINISHED ; 
- char* ld_preload ; 
- TYPE_1__* load_object (char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- size_t strcspn (char*,char const*) ; 
- int /*<<< orphan*/  strspn (char*,char const*) ; 
+
+ int LD_UTRACE (int ,int *,int *,int ,int ,int *) ;
+ int UTRACE_PRELOAD_FINISHED ;
+ char* ld_preload ;
+ TYPE_1__* load_object (char*,int,int *,int ) ;
+ size_t strcspn (char*,char const*) ;
+ int strspn (char*,char const*) ;
 
 __attribute__((used)) static int
 load_preload_objects(void)
@@ -29,24 +29,24 @@ load_preload_objects(void)
     Obj_Entry *obj;
     static const char delim[] = " \t:;";
 
-    if (p == NULL)
-	return 0;
+    if (p == ((void*)0))
+ return 0;
 
     p += strspn(p, delim);
     while (*p != '\0') {
-	size_t len = strcspn(p, delim);
-	char savech;
+ size_t len = strcspn(p, delim);
+ char savech;
 
-	savech = p[len];
-	p[len] = '\0';
-	obj = load_object(p, -1, NULL, 0);
-	if (obj == NULL)
-	    return -1;	/* XXX - cleanup */
-	obj->z_interpose = true;
-	p[len] = savech;
-	p += len;
-	p += strspn(p, delim);
+ savech = p[len];
+ p[len] = '\0';
+ obj = load_object(p, -1, ((void*)0), 0);
+ if (obj == ((void*)0))
+     return -1;
+ obj->z_interpose = 1;
+ p[len] = savech;
+ p += len;
+ p += strspn(p, delim);
     }
-    LD_UTRACE(UTRACE_PRELOAD_FINISHED, NULL, NULL, 0, 0, NULL);
+    LD_UTRACE(UTRACE_PRELOAD_FINISHED, ((void*)0), ((void*)0), 0, 0, ((void*)0));
     return 0;
 }

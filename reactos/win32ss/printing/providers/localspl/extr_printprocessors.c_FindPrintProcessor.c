@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {struct TYPE_8__* Flink; } ;
-struct TYPE_7__ {int /*<<< orphan*/  pwszName; } ;
-typedef  TYPE_1__* PLOCAL_PRINT_PROCESSOR ;
-typedef  TYPE_2__* PLIST_ENTRY ;
-typedef  int /*<<< orphan*/  PCWSTR ;
+struct TYPE_7__ {int pwszName; } ;
+typedef TYPE_1__* PLOCAL_PRINT_PROCESSOR ;
+typedef TYPE_2__* PLIST_ENTRY ;
+typedef int PCWSTR ;
 
-/* Variables and functions */
- TYPE_1__* CONTAINING_RECORD (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Entry ; 
- int /*<<< orphan*/  LOCAL_PRINT_PROCESSOR ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- TYPE_2__ _PrintProcessorList ; 
- scalar_t__ wcsicmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ TYPE_1__* CONTAINING_RECORD (TYPE_2__*,int ,int ) ;
+ int Entry ;
+ int LOCAL_PRINT_PROCESSOR ;
+ int TRACE (char*,int ) ;
+ TYPE_2__ _PrintProcessorList ;
+ scalar_t__ wcsicmp (int ,int ) ;
 
 PLOCAL_PRINT_PROCESSOR
 FindPrintProcessor(PCWSTR pwszName)
@@ -35,7 +35,7 @@ FindPrintProcessor(PCWSTR pwszName)
     TRACE("FindPrintProcessor(%S)\n", pwszName);
 
     if (!pwszName)
-        return NULL;
+        return ((void*)0);
 
     for (pEntry = _PrintProcessorList.Flink; pEntry != &_PrintProcessorList; pEntry = pEntry->Flink)
     {
@@ -45,5 +45,5 @@ FindPrintProcessor(PCWSTR pwszName)
             return pPrintProcessor;
     }
 
-    return NULL;
+    return ((void*)0);
 }

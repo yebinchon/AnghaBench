@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vec2 {int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  floorf (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vec2_set (struct vec2*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct vec2 {int y; int x; } ;
+
+
+ int floorf (int ) ;
+ int vec2_set (struct vec2*,int ,int ) ;
 
 void vec2_floor(struct vec2 *dst, const struct vec2 *v)
 {
-	vec2_set(dst, floorf(v->x), floorf(v->y));
+ vec2_set(dst, floorf(v->x), floorf(v->y));
 }

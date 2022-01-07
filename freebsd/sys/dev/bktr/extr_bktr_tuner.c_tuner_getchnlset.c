@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct bktr_chnlset {size_t index; int /*<<< orphan*/  max_channel; int /*<<< orphan*/  name; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * ptr; int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT848_MAX_CHNLSET_NAME_LEN ; 
- size_t CHNLSET_MAX ; 
- size_t CHNLSET_MIN ; 
- int EINVAL ; 
- TYPE_1__* freqTable ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct bktr_chnlset {size_t index; int max_channel; int name; } ;
+struct TYPE_2__ {int * ptr; int name; } ;
+
+
+ int BT848_MAX_CHNLSET_NAME_LEN ;
+ size_t CHNLSET_MAX ;
+ size_t CHNLSET_MIN ;
+ int EINVAL ;
+ TYPE_1__* freqTable ;
+ int memcpy (int *,int *,int ) ;
 
 int
 tuner_getchnlset(struct bktr_chnlset *chnlset)

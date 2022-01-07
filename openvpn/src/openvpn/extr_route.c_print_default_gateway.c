@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  netbits_ipv6; int /*<<< orphan*/  addr_ipv6; } ;
-struct route_ipv6_gateway_info {int flags; int /*<<< orphan*/  hwaddr; int /*<<< orphan*/  iface; int /*<<< orphan*/  adapter_index; TYPE_2__ gateway; } ;
-struct TYPE_3__ {int /*<<< orphan*/  netmask; int /*<<< orphan*/  addr; } ;
-struct route_gateway_info {int flags; int /*<<< orphan*/  hwaddr; int /*<<< orphan*/  iface; int /*<<< orphan*/  adapter_index; TYPE_1__ gateway; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int netbits_ipv6; int addr_ipv6; } ;
+struct route_ipv6_gateway_info {int flags; int hwaddr; int iface; int adapter_index; TYPE_2__ gateway; } ;
+struct TYPE_3__ {int netmask; int addr; } ;
+struct route_gateway_info {int flags; int hwaddr; int iface; int adapter_index; TYPE_1__ gateway; } ;
 struct gc_arena {int dummy; } ;
 struct buffer {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BSTR (struct buffer*) ; 
- int RGI_ADDR_DEFINED ; 
- int RGI_HWADDR_DEFINED ; 
- int RGI_IFACE_DEFINED ; 
- int RGI_NETMASK_DEFINED ; 
- int RGI_ON_LINK ; 
- struct buffer alloc_buf_gc (int,struct gc_arena*) ; 
- int /*<<< orphan*/  buf_printf (struct buffer*,char*,...) ; 
- int /*<<< orphan*/  format_hex_ex (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,char*,struct gc_arena*) ; 
- int /*<<< orphan*/  gc_free (struct gc_arena*) ; 
- struct gc_arena gc_new () ; 
- int /*<<< orphan*/  msg (int const,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_in6_addr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct gc_arena*) ; 
- int /*<<< orphan*/  print_in_addr_t (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct gc_arena*) ; 
+
+ int BSTR (struct buffer*) ;
+ int RGI_ADDR_DEFINED ;
+ int RGI_HWADDR_DEFINED ;
+ int RGI_IFACE_DEFINED ;
+ int RGI_NETMASK_DEFINED ;
+ int RGI_ON_LINK ;
+ struct buffer alloc_buf_gc (int,struct gc_arena*) ;
+ int buf_printf (struct buffer*,char*,...) ;
+ int format_hex_ex (int ,int,int ,int,char*,struct gc_arena*) ;
+ int gc_free (struct gc_arena*) ;
+ struct gc_arena gc_new () ;
+ int msg (int const,char*,int ) ;
+ int print_in6_addr (int ,int ,struct gc_arena*) ;
+ int print_in_addr_t (int ,int ,struct gc_arena*) ;
 
 void
 print_default_gateway(const int msglevel,
@@ -57,17 +57,17 @@ print_default_gateway(const int msglevel,
         {
             buf_printf(&out, "/%s", print_in_addr_t(rgi->gateway.netmask, 0, &gc));
         }
-#ifdef _WIN32
-        if (rgi->flags & RGI_IFACE_DEFINED)
-        {
-            buf_printf(&out, " I=%lu", rgi->adapter_index);
-        }
-#else
+
+
+
+
+
+
         if (rgi->flags & RGI_IFACE_DEFINED)
         {
             buf_printf(&out, " IFACE=%s", rgi->iface);
         }
-#endif
+
         if (rgi->flags & RGI_HWADDR_DEFINED)
         {
             buf_printf(&out, " HWADDR=%s", format_hex_ex(rgi->hwaddr, 6, 0, 1, ":", &gc));
@@ -88,17 +88,17 @@ print_default_gateway(const int msglevel,
         {
             buf_printf(&out, "/%d", rgi6->gateway.netbits_ipv6);
         }
-#ifdef _WIN32
-        if (rgi6->flags & RGI_IFACE_DEFINED)
-        {
-            buf_printf(&out, " I=%lu", rgi6->adapter_index);
-        }
-#else
+
+
+
+
+
+
         if (rgi6->flags & RGI_IFACE_DEFINED)
         {
             buf_printf(&out, " IFACE=%s", rgi6->iface);
         }
-#endif
+
         if (rgi6->flags & RGI_HWADDR_DEFINED)
         {
             buf_printf(&out, " HWADDR=%s", format_hex_ex(rgi6->hwaddr, 6, 0, 1, ":", &gc));

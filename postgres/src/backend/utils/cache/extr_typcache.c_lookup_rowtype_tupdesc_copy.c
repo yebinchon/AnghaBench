@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32 ;
-typedef  int /*<<< orphan*/  TupleDesc ;
-typedef  int /*<<< orphan*/  Oid ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateTupleDescCopyConstr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lookup_rowtype_tupdesc_internal (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int int32 ;
+typedef int TupleDesc ;
+typedef int Oid ;
+
+
+ int CreateTupleDescCopyConstr (int ) ;
+ int lookup_rowtype_tupdesc_internal (int ,int ,int) ;
 
 TupleDesc
 lookup_rowtype_tupdesc_copy(Oid type_id, int32 typmod)
 {
-	TupleDesc	tmp;
+ TupleDesc tmp;
 
-	tmp = lookup_rowtype_tupdesc_internal(type_id, typmod, false);
-	return CreateTupleDescCopyConstr(tmp);
+ tmp = lookup_rowtype_tupdesc_internal(type_id, typmod, 0);
+ return CreateTupleDescCopyConstr(tmp);
 }

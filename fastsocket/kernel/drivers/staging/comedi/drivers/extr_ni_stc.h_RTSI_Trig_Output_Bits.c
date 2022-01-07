@@ -1,20 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 __attribute__((used)) static inline unsigned RTSI_Trig_Output_Bits(unsigned rtsi_channel,
-					     unsigned source)
+          unsigned source)
 {
-	return (source & 0xf) << ((rtsi_channel % 4) * 4);
+ return (source & 0xf) << ((rtsi_channel % 4) * 4);
 }

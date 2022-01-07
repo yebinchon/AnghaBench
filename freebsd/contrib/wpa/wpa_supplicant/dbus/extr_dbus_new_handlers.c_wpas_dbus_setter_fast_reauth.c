@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wpa_supplicant {TYPE_1__* conf; } ;
 struct wpa_dbus_property_desc {int dummy; } ;
-typedef  int /*<<< orphan*/  dbus_bool_t ;
-struct TYPE_2__ {int /*<<< orphan*/  fast_reauth; } ;
-typedef  int /*<<< orphan*/  DBusMessageIter ;
-typedef  int /*<<< orphan*/  DBusError ;
+typedef int dbus_bool_t ;
+struct TYPE_2__ {int fast_reauth; } ;
+typedef int DBusMessageIter ;
+typedef int DBusError ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DBUS_TYPE_BOOLEAN ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  wpas_dbus_simple_property_setter (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int DBUS_TYPE_BOOLEAN ;
+ int FALSE ;
+ int TRUE ;
+ int wpas_dbus_simple_property_setter (int *,int *,int ,int *) ;
 
 dbus_bool_t wpas_dbus_setter_fast_reauth(
-	const struct wpa_dbus_property_desc *property_desc,
-	DBusMessageIter *iter, DBusError *error, void *user_data)
+ const struct wpa_dbus_property_desc *property_desc,
+ DBusMessageIter *iter, DBusError *error, void *user_data)
 {
-	struct wpa_supplicant *wpa_s = user_data;
-	dbus_bool_t fast_reauth;
+ struct wpa_supplicant *wpa_s = user_data;
+ dbus_bool_t fast_reauth;
 
-	if (!wpas_dbus_simple_property_setter(iter, error, DBUS_TYPE_BOOLEAN,
-					      &fast_reauth))
-		return FALSE;
+ if (!wpas_dbus_simple_property_setter(iter, error, DBUS_TYPE_BOOLEAN,
+           &fast_reauth))
+  return FALSE;
 
-	wpa_s->conf->fast_reauth = fast_reauth;
-	return TRUE;
+ wpa_s->conf->fast_reauth = fast_reauth;
+ return TRUE;
 }

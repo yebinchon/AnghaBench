@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int atoi (char*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  fwrite (char*,int,unsigned int,int /*<<< orphan*/ *) ; 
- int memcmp (char*,char*,unsigned int) ; 
- int /*<<< orphan*/  printf (char*,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  stb_compress_hashsize (int) ; 
- unsigned int stb_compress_tofile (char*,char*,unsigned int) ; 
- char* stb_decompress_fromfile (char*,unsigned int*) ; 
- char* stb_file (char*,size_t*) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int FILE ;
+
+
+ int atoi (char*) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*) ;
+ int fwrite (char*,int,unsigned int,int *) ;
+ int memcmp (char*,char*,unsigned int) ;
+ int printf (char*,unsigned int,unsigned int) ;
+ int stb_compress_hashsize (int) ;
+ unsigned int stb_compress_tofile (char*,char*,unsigned int) ;
+ char* stb_decompress_fromfile (char*,unsigned int*) ;
+ char* stb_file (char*,size_t*) ;
+ int stderr ;
 
 void do_compressor(int argc,char**argv)
 {
@@ -44,7 +44,7 @@ void do_compressor(int argc,char**argv)
             printf("FAILED %d -> %d\n", len, clen);
          } else {
             int z = memcmp(q,p,dlen);
-            if (z != 0) 
+            if (z != 0)
                printf("FAILED %d -> %d\n", len, clen);
             else
                printf("%d -> %d\n", len, clen);

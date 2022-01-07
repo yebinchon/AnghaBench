@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ptrdiff_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  lua_Number ;
-typedef  int /*<<< orphan*/  StkId ;
 
-/* Variables and functions */
- int LUAI_MAXNUMBER2STR ; 
- int /*<<< orphan*/  luaS_new (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_number2str (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nvalue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  restorestack (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  savestack (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setsvalue2s (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ttisnumber (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ptrdiff_t ;
+typedef int lua_State ;
+typedef int lua_Number ;
+typedef int StkId ;
+
+
+ int LUAI_MAXNUMBER2STR ;
+ int luaS_new (int *,char*) ;
+ int lua_number2str (char*,int ) ;
+ int nvalue (int ) ;
+ int restorestack (int *,int ) ;
+ int savestack (int *,int ) ;
+ int setsvalue2s (int *,int ,int ) ;
+ int ttisnumber (int ) ;
 
 int luaV_tostring (lua_State *L, StkId obj) {
   if (!ttisnumber(obj))

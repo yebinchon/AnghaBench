@@ -1,45 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FLAG_PRIORITY_SORT_SEARCH ; 
- scalar_t__ Q_hash_group_mode ; 
- scalar_t__ Q_min_priority ; 
- int Q_order ; 
- scalar_t__ Q_root ; 
- int /*<<< orphan*/  Q_words ; 
- int R_tot ; 
- int R_tot_groups ; 
- int /*<<< orphan*/  Root ; 
- int /*<<< orphan*/  clear_res () ; 
- int /*<<< orphan*/  fast_intersection_query () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  free_all_list_decoders () ; 
- scalar_t__ has_empty_range () ; 
- int perform_ext_query () ; 
- int /*<<< orphan*/  postprocess_res () ; 
- int /*<<< orphan*/  priority_sort_query () ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ t_depth ; 
- scalar_t__ tree_depth (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int verbosity ; 
- int /*<<< orphan*/  vkprintf (int,char*,int) ; 
+ int FLAG_PRIORITY_SORT_SEARCH ;
+ scalar_t__ Q_hash_group_mode ;
+ scalar_t__ Q_min_priority ;
+ int Q_order ;
+ scalar_t__ Q_root ;
+ int Q_words ;
+ int R_tot ;
+ int R_tot_groups ;
+ int Root ;
+ int clear_res () ;
+ int fast_intersection_query () ;
+ int fprintf (int ,char*,scalar_t__) ;
+ int free_all_list_decoders () ;
+ scalar_t__ has_empty_range () ;
+ int perform_ext_query () ;
+ int postprocess_res () ;
+ int priority_sort_query () ;
+ int stderr ;
+ scalar_t__ t_depth ;
+ scalar_t__ tree_depth (int ,int ) ;
+ int verbosity ;
+ int vkprintf (int,char*,int) ;
 
 int perform_query (void) {
   int i;
   clear_res ();
 
-  if ((!Q_words && !Q_root) || has_empty_range () )  {
+  if ((!Q_words && !Q_root) || has_empty_range () ) {
     return 0;
   }
 

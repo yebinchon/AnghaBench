@@ -1,99 +1,99 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  h2o_token_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  const* H2O_TOKEN_ACCEPT ; 
- int /*<<< orphan*/  const* H2O_TOKEN_ACCEPT_CHARSET ; 
- int /*<<< orphan*/  const* H2O_TOKEN_ACCEPT_ENCODING ; 
- int /*<<< orphan*/  const* H2O_TOKEN_ACCEPT_LANGUAGE ; 
- int /*<<< orphan*/  const* H2O_TOKEN_ACCEPT_RANGES ; 
- int /*<<< orphan*/  const* H2O_TOKEN_ACCESS_CONTROL_ALLOW_CREDENTIALS ; 
- int /*<<< orphan*/  const* H2O_TOKEN_ACCESS_CONTROL_ALLOW_HEADERS ; 
- int /*<<< orphan*/  const* H2O_TOKEN_ACCESS_CONTROL_ALLOW_METHODS ; 
- int /*<<< orphan*/  const* H2O_TOKEN_ACCESS_CONTROL_ALLOW_ORIGIN ; 
- int /*<<< orphan*/  const* H2O_TOKEN_ACCESS_CONTROL_EXPOSE_HEADERS ; 
- int /*<<< orphan*/  const* H2O_TOKEN_ACCESS_CONTROL_REQUEST_HEADERS ; 
- int /*<<< orphan*/  const* H2O_TOKEN_ACCESS_CONTROL_REQUEST_METHOD ; 
- int /*<<< orphan*/  const* H2O_TOKEN_AGE ; 
- int /*<<< orphan*/  const* H2O_TOKEN_ALLOW ; 
- int /*<<< orphan*/  const* H2O_TOKEN_ALT_SVC ; 
- int /*<<< orphan*/  const* H2O_TOKEN_AUTHORITY ; 
- int /*<<< orphan*/  const* H2O_TOKEN_AUTHORIZATION ; 
- int /*<<< orphan*/  const* H2O_TOKEN_CACHE_CONTROL ; 
- int /*<<< orphan*/  const* H2O_TOKEN_CACHE_DIGEST ; 
- int /*<<< orphan*/  const* H2O_TOKEN_CONNECTION ; 
- int /*<<< orphan*/  const* H2O_TOKEN_CONTENT_DISPOSITION ; 
- int /*<<< orphan*/  const* H2O_TOKEN_CONTENT_ENCODING ; 
- int /*<<< orphan*/  const* H2O_TOKEN_CONTENT_LANGUAGE ; 
- int /*<<< orphan*/  const* H2O_TOKEN_CONTENT_LENGTH ; 
- int /*<<< orphan*/  const* H2O_TOKEN_CONTENT_LOCATION ; 
- int /*<<< orphan*/  const* H2O_TOKEN_CONTENT_RANGE ; 
- int /*<<< orphan*/  const* H2O_TOKEN_CONTENT_SECURITY_POLICY ; 
- int /*<<< orphan*/  const* H2O_TOKEN_CONTENT_TYPE ; 
- int /*<<< orphan*/  const* H2O_TOKEN_COOKIE ; 
- int /*<<< orphan*/  const* H2O_TOKEN_DATE ; 
- int /*<<< orphan*/  const* H2O_TOKEN_EARLY_DATA ; 
- int /*<<< orphan*/  const* H2O_TOKEN_ETAG ; 
- int /*<<< orphan*/  const* H2O_TOKEN_EXPECT ; 
- int /*<<< orphan*/  const* H2O_TOKEN_EXPECT_CT ; 
- int /*<<< orphan*/  const* H2O_TOKEN_EXPIRES ; 
- int /*<<< orphan*/  const* H2O_TOKEN_FORWARDED ; 
- int /*<<< orphan*/  const* H2O_TOKEN_FROM ; 
- int /*<<< orphan*/  const* H2O_TOKEN_HOST ; 
- int /*<<< orphan*/  const* H2O_TOKEN_HTTP2_SETTINGS ; 
- int /*<<< orphan*/  const* H2O_TOKEN_IF_MATCH ; 
- int /*<<< orphan*/  const* H2O_TOKEN_IF_MODIFIED_SINCE ; 
- int /*<<< orphan*/  const* H2O_TOKEN_IF_NONE_MATCH ; 
- int /*<<< orphan*/  const* H2O_TOKEN_IF_RANGE ; 
- int /*<<< orphan*/  const* H2O_TOKEN_IF_UNMODIFIED_SINCE ; 
- int /*<<< orphan*/  const* H2O_TOKEN_KEEP_ALIVE ; 
- int /*<<< orphan*/  const* H2O_TOKEN_LAST_MODIFIED ; 
- int /*<<< orphan*/  const* H2O_TOKEN_LINK ; 
- int /*<<< orphan*/  const* H2O_TOKEN_LOCATION ; 
- int /*<<< orphan*/  const* H2O_TOKEN_MAX_FORWARDS ; 
- int /*<<< orphan*/  const* H2O_TOKEN_METHOD ; 
- int /*<<< orphan*/  const* H2O_TOKEN_ORIGIN ; 
- int /*<<< orphan*/  const* H2O_TOKEN_PATH ; 
- int /*<<< orphan*/  const* H2O_TOKEN_PROXY_AUTHENTICATE ; 
- int /*<<< orphan*/  const* H2O_TOKEN_PROXY_AUTHORIZATION ; 
- int /*<<< orphan*/  const* H2O_TOKEN_PURPOSE ; 
- int /*<<< orphan*/  const* H2O_TOKEN_RANGE ; 
- int /*<<< orphan*/  const* H2O_TOKEN_REFERER ; 
- int /*<<< orphan*/  const* H2O_TOKEN_REFRESH ; 
- int /*<<< orphan*/  const* H2O_TOKEN_RETRY_AFTER ; 
- int /*<<< orphan*/  const* H2O_TOKEN_SCHEME ; 
- int /*<<< orphan*/  const* H2O_TOKEN_SERVER ; 
- int /*<<< orphan*/  const* H2O_TOKEN_SET_COOKIE ; 
- int /*<<< orphan*/  const* H2O_TOKEN_STATUS ; 
- int /*<<< orphan*/  const* H2O_TOKEN_STRICT_TRANSPORT_SECURITY ; 
- int /*<<< orphan*/  const* H2O_TOKEN_TE ; 
- int /*<<< orphan*/  const* H2O_TOKEN_TIMING_ALLOW_ORIGIN ; 
- int /*<<< orphan*/  const* H2O_TOKEN_TRANSFER_ENCODING ; 
- int /*<<< orphan*/  const* H2O_TOKEN_UPGRADE ; 
- int /*<<< orphan*/  const* H2O_TOKEN_UPGRADE_INSECURE_REQUESTS ; 
- int /*<<< orphan*/  const* H2O_TOKEN_USER_AGENT ; 
- int /*<<< orphan*/  const* H2O_TOKEN_VARY ; 
- int /*<<< orphan*/  const* H2O_TOKEN_VIA ; 
- int /*<<< orphan*/  const* H2O_TOKEN_WWW_AUTHENTICATE ; 
- int /*<<< orphan*/  const* H2O_TOKEN_X_COMPRESS_HINT ; 
- int /*<<< orphan*/  const* H2O_TOKEN_X_CONTENT_TYPE_OPTIONS ; 
- int /*<<< orphan*/  const* H2O_TOKEN_X_FORWARDED_FOR ; 
- int /*<<< orphan*/  const* H2O_TOKEN_X_FRAME_OPTIONS ; 
- int /*<<< orphan*/  const* H2O_TOKEN_X_REPROXY_URL ; 
- int /*<<< orphan*/  const* H2O_TOKEN_X_TRAFFIC ; 
- int /*<<< orphan*/  const* H2O_TOKEN_X_XSS_PROTECTION ; 
- int /*<<< orphan*/  memcmp (char const*,char*,int) ; 
+
+
+
+typedef int h2o_token_t ;
+
+
+ int const* H2O_TOKEN_ACCEPT ;
+ int const* H2O_TOKEN_ACCEPT_CHARSET ;
+ int const* H2O_TOKEN_ACCEPT_ENCODING ;
+ int const* H2O_TOKEN_ACCEPT_LANGUAGE ;
+ int const* H2O_TOKEN_ACCEPT_RANGES ;
+ int const* H2O_TOKEN_ACCESS_CONTROL_ALLOW_CREDENTIALS ;
+ int const* H2O_TOKEN_ACCESS_CONTROL_ALLOW_HEADERS ;
+ int const* H2O_TOKEN_ACCESS_CONTROL_ALLOW_METHODS ;
+ int const* H2O_TOKEN_ACCESS_CONTROL_ALLOW_ORIGIN ;
+ int const* H2O_TOKEN_ACCESS_CONTROL_EXPOSE_HEADERS ;
+ int const* H2O_TOKEN_ACCESS_CONTROL_REQUEST_HEADERS ;
+ int const* H2O_TOKEN_ACCESS_CONTROL_REQUEST_METHOD ;
+ int const* H2O_TOKEN_AGE ;
+ int const* H2O_TOKEN_ALLOW ;
+ int const* H2O_TOKEN_ALT_SVC ;
+ int const* H2O_TOKEN_AUTHORITY ;
+ int const* H2O_TOKEN_AUTHORIZATION ;
+ int const* H2O_TOKEN_CACHE_CONTROL ;
+ int const* H2O_TOKEN_CACHE_DIGEST ;
+ int const* H2O_TOKEN_CONNECTION ;
+ int const* H2O_TOKEN_CONTENT_DISPOSITION ;
+ int const* H2O_TOKEN_CONTENT_ENCODING ;
+ int const* H2O_TOKEN_CONTENT_LANGUAGE ;
+ int const* H2O_TOKEN_CONTENT_LENGTH ;
+ int const* H2O_TOKEN_CONTENT_LOCATION ;
+ int const* H2O_TOKEN_CONTENT_RANGE ;
+ int const* H2O_TOKEN_CONTENT_SECURITY_POLICY ;
+ int const* H2O_TOKEN_CONTENT_TYPE ;
+ int const* H2O_TOKEN_COOKIE ;
+ int const* H2O_TOKEN_DATE ;
+ int const* H2O_TOKEN_EARLY_DATA ;
+ int const* H2O_TOKEN_ETAG ;
+ int const* H2O_TOKEN_EXPECT ;
+ int const* H2O_TOKEN_EXPECT_CT ;
+ int const* H2O_TOKEN_EXPIRES ;
+ int const* H2O_TOKEN_FORWARDED ;
+ int const* H2O_TOKEN_FROM ;
+ int const* H2O_TOKEN_HOST ;
+ int const* H2O_TOKEN_HTTP2_SETTINGS ;
+ int const* H2O_TOKEN_IF_MATCH ;
+ int const* H2O_TOKEN_IF_MODIFIED_SINCE ;
+ int const* H2O_TOKEN_IF_NONE_MATCH ;
+ int const* H2O_TOKEN_IF_RANGE ;
+ int const* H2O_TOKEN_IF_UNMODIFIED_SINCE ;
+ int const* H2O_TOKEN_KEEP_ALIVE ;
+ int const* H2O_TOKEN_LAST_MODIFIED ;
+ int const* H2O_TOKEN_LINK ;
+ int const* H2O_TOKEN_LOCATION ;
+ int const* H2O_TOKEN_MAX_FORWARDS ;
+ int const* H2O_TOKEN_METHOD ;
+ int const* H2O_TOKEN_ORIGIN ;
+ int const* H2O_TOKEN_PATH ;
+ int const* H2O_TOKEN_PROXY_AUTHENTICATE ;
+ int const* H2O_TOKEN_PROXY_AUTHORIZATION ;
+ int const* H2O_TOKEN_PURPOSE ;
+ int const* H2O_TOKEN_RANGE ;
+ int const* H2O_TOKEN_REFERER ;
+ int const* H2O_TOKEN_REFRESH ;
+ int const* H2O_TOKEN_RETRY_AFTER ;
+ int const* H2O_TOKEN_SCHEME ;
+ int const* H2O_TOKEN_SERVER ;
+ int const* H2O_TOKEN_SET_COOKIE ;
+ int const* H2O_TOKEN_STATUS ;
+ int const* H2O_TOKEN_STRICT_TRANSPORT_SECURITY ;
+ int const* H2O_TOKEN_TE ;
+ int const* H2O_TOKEN_TIMING_ALLOW_ORIGIN ;
+ int const* H2O_TOKEN_TRANSFER_ENCODING ;
+ int const* H2O_TOKEN_UPGRADE ;
+ int const* H2O_TOKEN_UPGRADE_INSECURE_REQUESTS ;
+ int const* H2O_TOKEN_USER_AGENT ;
+ int const* H2O_TOKEN_VARY ;
+ int const* H2O_TOKEN_VIA ;
+ int const* H2O_TOKEN_WWW_AUTHENTICATE ;
+ int const* H2O_TOKEN_X_COMPRESS_HINT ;
+ int const* H2O_TOKEN_X_CONTENT_TYPE_OPTIONS ;
+ int const* H2O_TOKEN_X_FORWARDED_FOR ;
+ int const* H2O_TOKEN_X_FRAME_OPTIONS ;
+ int const* H2O_TOKEN_X_REPROXY_URL ;
+ int const* H2O_TOKEN_X_TRAFFIC ;
+ int const* H2O_TOKEN_X_XSS_PROTECTION ;
+ int memcmp (char const*,char*,int) ;
 
 const h2o_token_t *h2o_lookup_token(const char *name, size_t len)
 {
@@ -502,5 +502,5 @@ const h2o_token_t *h2o_lookup_token(const char *name, size_t len)
         break;
     }
 
-    return NULL;
+    return ((void*)0);
 }

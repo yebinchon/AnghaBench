@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ int32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ int32_t ;
 struct TYPE_3__ {char* z; scalar_t__ n; scalar_t__ type; } ;
-typedef  TYPE_1__ SSQLToken ;
+typedef TYPE_1__ SSQLToken ;
 
-/* Variables and functions */
- scalar_t__ TK_ID ; 
- scalar_t__ TK_STRING ; 
- scalar_t__ TSDB_CODE_INVALID_SQL ; 
- scalar_t__ TSDB_CODE_SUCCESS ; 
- int isKeyWord (char*,scalar_t__) ; 
- scalar_t__ isNumber (TYPE_1__*) ; 
- int /*<<< orphan*/  strdequote (char*) ; 
- scalar_t__ strlen (char*) ; 
- int /*<<< orphan*/  strtrim (char*) ; 
- void* tSQLGetToken (char*,scalar_t__*) ; 
+
+ scalar_t__ TK_ID ;
+ scalar_t__ TK_STRING ;
+ scalar_t__ TSDB_CODE_INVALID_SQL ;
+ scalar_t__ TSDB_CODE_SUCCESS ;
+ int isKeyWord (char*,scalar_t__) ;
+ scalar_t__ isNumber (TYPE_1__*) ;
+ int strdequote (char*) ;
+ scalar_t__ strlen (char*) ;
+ int strtrim (char*) ;
+ void* tSQLGetToken (char*,scalar_t__*) ;
 
 int32_t validateColumnName(char* name) {
   bool ret = isKeyWord(name, strlen(name));

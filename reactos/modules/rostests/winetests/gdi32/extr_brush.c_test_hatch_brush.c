@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lb ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int lb ;
 struct TYPE_3__ {int lbColor; int lbStyle; int lbHatch; } ;
-typedef  TYPE_1__ LOGBRUSH ;
-typedef  scalar_t__ HBRUSH ;
+typedef TYPE_1__ LOGBRUSH ;
+typedef scalar_t__ HBRUSH ;
 
-/* Variables and functions */
- int BS_HATCHED ; 
- int BS_SOLID ; 
- scalar_t__ CreateHatchBrush (int,int) ; 
- int /*<<< orphan*/  DeleteObject (scalar_t__) ; 
- int GetLastError () ; 
- int GetObjectW (scalar_t__,int,TYPE_1__*) ; 
- int HS_API_MAX ; 
- int HS_DIAGCROSS ; 
- int RGB (int,int,int) ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
+
+ int BS_HATCHED ;
+ int BS_SOLID ;
+ scalar_t__ CreateHatchBrush (int,int) ;
+ int DeleteObject (scalar_t__) ;
+ int GetLastError () ;
+ int GetObjectW (scalar_t__,int,TYPE_1__*) ;
+ int HS_API_MAX ;
+ int HS_DIAGCROSS ;
+ int RGB (int,int,int) ;
+ int SetLastError (int) ;
+ int ok (int,char*,int,...) ;
 
 __attribute__((used)) static void test_hatch_brush(void)
 {

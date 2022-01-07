@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xcb_xrm_database_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DLOG (char*,...) ; 
- int /*<<< orphan*/  ELOG (char*,...) ; 
- double HUGE_VAL ; 
- int /*<<< orphan*/ * conn ; 
- scalar_t__ dpi ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ init_dpi_fallback () ; 
- scalar_t__ lround (double) ; 
- double strtod (char*,char**) ; 
- int /*<<< orphan*/  xcb_xrm_database_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * xcb_xrm_database_from_default (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xcb_xrm_resource_get_string (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,char**) ; 
+
+
+
+typedef int xcb_xrm_database_t ;
+
+
+ int DLOG (char*,...) ;
+ int ELOG (char*,...) ;
+ double HUGE_VAL ;
+ int * conn ;
+ scalar_t__ dpi ;
+ int free (char*) ;
+ scalar_t__ init_dpi_fallback () ;
+ scalar_t__ lround (double) ;
+ double strtod (char*,char**) ;
+ int xcb_xrm_database_free (int *) ;
+ int * xcb_xrm_database_from_default (int *) ;
+ int xcb_xrm_resource_get_string (int *,char*,int *,char**) ;
 
 void init_dpi(void) {
-    xcb_xrm_database_t *database = NULL;
-    char *resource = NULL;
+    xcb_xrm_database_t *database = ((void*)0);
+    char *resource = ((void*)0);
 
-    if (conn == NULL) {
+    if (conn == ((void*)0)) {
         goto init_dpi_end;
     }
 
     database = xcb_xrm_database_from_default(conn);
-    if (database == NULL) {
+    if (database == ((void*)0)) {
         ELOG("Failed to open the resource database.\n");
         goto init_dpi_end;
     }
 
-    xcb_xrm_resource_get_string(database, "Xft.dpi", NULL, &resource);
-    if (resource == NULL) {
+    xcb_xrm_resource_get_string(database, "Xft.dpi", ((void*)0), &resource);
+    if (resource == ((void*)0)) {
         DLOG("Resource Xft.dpi not specified, skipping.\n");
         goto init_dpi_end;
     }
@@ -60,7 +60,7 @@ void init_dpi(void) {
 init_dpi_end:
     free(resource);
 
-    if (database != NULL) {
+    if (database != ((void*)0)) {
         xcb_xrm_database_free(database);
     }
 

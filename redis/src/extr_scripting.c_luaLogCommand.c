@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sds ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int LL_DEBUG ; 
- int LL_WARNING ; 
- int lua_error (int /*<<< orphan*/ *) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_isnumber (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ lua_tolstring (int /*<<< orphan*/ *,int,size_t*) ; 
- int lua_tonumber (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sdscatlen (int /*<<< orphan*/ ,char*,size_t) ; 
- int /*<<< orphan*/  sdsempty () ; 
- int /*<<< orphan*/  sdsfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  serverLogRaw (int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int sds ;
+typedef int lua_State ;
+
+
+ int LL_DEBUG ;
+ int LL_WARNING ;
+ int lua_error (int *) ;
+ int lua_gettop (int *) ;
+ int lua_isnumber (int *,int) ;
+ int lua_pushstring (int *,char*) ;
+ scalar_t__ lua_tolstring (int *,int,size_t*) ;
+ int lua_tonumber (int *,int) ;
+ int sdscatlen (int ,char*,size_t) ;
+ int sdsempty () ;
+ int sdsfree (int ) ;
+ int serverLogRaw (int,int ) ;
 
 int luaLogCommand(lua_State *lua) {
     int j, argc = lua_gettop(lua);
@@ -45,7 +45,7 @@ int luaLogCommand(lua_State *lua) {
         return lua_error(lua);
     }
 
-    /* Glue together all the arguments */
+
     log = sdsempty();
     for (j = 1; j < argc; j++) {
         size_t len;

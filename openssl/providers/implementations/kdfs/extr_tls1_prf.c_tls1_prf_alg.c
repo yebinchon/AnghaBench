@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EVP_MAC_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_LIB_PROV ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  ERR_raise (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_clear_free (unsigned char*,size_t) ; 
- unsigned char* OPENSSL_malloc (size_t) ; 
- int /*<<< orphan*/  tls1_prf_P_hash (int /*<<< orphan*/ *,unsigned char const*,size_t,unsigned char const*,size_t,unsigned char*,size_t) ; 
+
+
+
+typedef int EVP_MAC_CTX ;
+
+
+ int ERR_LIB_PROV ;
+ int ERR_R_MALLOC_FAILURE ;
+ int ERR_raise (int ,int ) ;
+ int OPENSSL_clear_free (unsigned char*,size_t) ;
+ unsigned char* OPENSSL_malloc (size_t) ;
+ int tls1_prf_P_hash (int *,unsigned char const*,size_t,unsigned char const*,size_t,unsigned char*,size_t) ;
 
 __attribute__((used)) static int tls1_prf_alg(EVP_MAC_CTX *mdctx, EVP_MAC_CTX *sha1ctx,
                         const unsigned char *sec, size_t slen,
                         const unsigned char *seed, size_t seed_len,
                         unsigned char *out, size_t olen)
 {
-    if (sha1ctx != NULL) {
-        /* TLS v1.0 and TLS v1.1 */
+    if (sha1ctx != ((void*)0)) {
+
         size_t i;
         unsigned char *tmp;
-        /* calc: L_S1 = L_S2 = ceil(L_S / 2) */
+
         size_t L_S1 = (slen + 1) / 2;
         size_t L_S2 = L_S1;
 
@@ -37,7 +37,7 @@ __attribute__((used)) static int tls1_prf_alg(EVP_MAC_CTX *mdctx, EVP_MAC_CTX *s
                              seed, seed_len, out, olen))
             return 0;
 
-        if ((tmp = OPENSSL_malloc(olen)) == NULL) {
+        if ((tmp = OPENSSL_malloc(olen)) == ((void*)0)) {
             ERR_raise(ERR_LIB_PROV, ERR_R_MALLOC_FAILURE);
             return 0;
         }
@@ -53,7 +53,7 @@ __attribute__((used)) static int tls1_prf_alg(EVP_MAC_CTX *mdctx, EVP_MAC_CTX *s
         return 1;
     }
 
-    /* TLS v1.2 */
+
     if (!tls1_prf_P_hash(mdctx, sec, slen, seed, seed_len, out, olen))
         return 0;
 

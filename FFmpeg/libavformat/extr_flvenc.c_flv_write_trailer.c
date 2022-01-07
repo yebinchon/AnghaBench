@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  double int64_t ;
+
+
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef double int64_t ;
 struct TYPE_16__ {scalar_t__ codec_type; scalar_t__ codec_id; } ;
-struct TYPE_15__ {int nb_streams; TYPE_1__** streams; int /*<<< orphan*/ * pb; TYPE_4__* priv_data; } ;
-struct TYPE_14__ {int flags; double videosize_offset; double videosize; double audiosize_offset; double audiosize; double lasttimestamp_offset; double lasttimestamp; double lastkeyframetimestamp_offset; double lastkeyframetimestamp; double lastkeyframelocation_offset; double lastkeyframelocation; double keyframe_index_size; double keyframes_info_offset; double datasize; double datastart_offset; double datasize_offset; double duration_offset; double duration; double filesize_offset; TYPE_3__* head_filepositions; int /*<<< orphan*/  filepositions_count; } ;
+struct TYPE_15__ {int nb_streams; TYPE_1__** streams; int * pb; TYPE_4__* priv_data; } ;
+struct TYPE_14__ {int flags; double videosize_offset; double videosize; double audiosize_offset; double audiosize; double lasttimestamp_offset; double lasttimestamp; double lastkeyframetimestamp_offset; double lastkeyframetimestamp; double lastkeyframelocation_offset; double lastkeyframelocation; double keyframe_index_size; double keyframes_info_offset; double datasize; double datastart_offset; double datasize_offset; double duration_offset; double duration; double filesize_offset; TYPE_3__* head_filepositions; int filepositions_count; } ;
 struct TYPE_13__ {double keyframe_position; double keyframe_timestamp; struct TYPE_13__* next; } ;
-struct TYPE_12__ {int /*<<< orphan*/  last_ts; } ;
+struct TYPE_12__ {int last_ts; } ;
 struct TYPE_11__ {TYPE_2__* priv_data; TYPE_6__* codecpar; } ;
-typedef  TYPE_2__ FLVStreamContext ;
-typedef  TYPE_3__ FLVFileposition ;
-typedef  TYPE_4__ FLVContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_5__ AVFormatContext ;
-typedef  TYPE_6__ AVCodecParameters ;
+typedef TYPE_2__ FLVStreamContext ;
+typedef TYPE_3__ FLVFileposition ;
+typedef TYPE_4__ FLVContext ;
+typedef int AVIOContext ;
+typedef TYPE_5__ AVFormatContext ;
+typedef TYPE_6__ AVCodecParameters ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AMF_END_OF_OBJECT ; 
- scalar_t__ AVMEDIA_TYPE_VIDEO ; 
- scalar_t__ AV_CODEC_ID_H264 ; 
- scalar_t__ AV_CODEC_ID_MPEG4 ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int FLV_ADD_KEYFRAME_INDEX ; 
- int FLV_NO_DURATION_FILESIZE ; 
- int FLV_NO_METADATA ; 
- int FLV_NO_SEQUENCE_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  av_free (TYPE_3__*) ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ avio_seek (int /*<<< orphan*/ *,double,int /*<<< orphan*/ ) ; 
- double avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_w8 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  put_amf_double (int /*<<< orphan*/ *,double) ; 
- int /*<<< orphan*/  put_amf_dword_array (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  put_amf_string (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  put_avc_eos_tag (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int shift_data (TYPE_5__*) ; 
+
+ int AMF_END_OF_OBJECT ;
+ scalar_t__ AVMEDIA_TYPE_VIDEO ;
+ scalar_t__ AV_CODEC_ID_H264 ;
+ scalar_t__ AV_CODEC_ID_MPEG4 ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_WARNING ;
+ int FLV_ADD_KEYFRAME_INDEX ;
+ int FLV_NO_DURATION_FILESIZE ;
+ int FLV_NO_METADATA ;
+ int FLV_NO_SEQUENCE_END ;
+ int SEEK_SET ;
+ int av_free (TYPE_3__*) ;
+ int av_log (TYPE_5__*,int ,char*) ;
+ scalar_t__ avio_seek (int *,double,int ) ;
+ double avio_tell (int *) ;
+ int avio_w8 (int *,int ) ;
+ int put_amf_double (int *,double) ;
+ int put_amf_dword_array (int *,int ) ;
+ int put_amf_string (int *,char*) ;
+ int put_avc_eos_tag (int *,int ) ;
+ int shift_data (TYPE_5__*) ;
 
 __attribute__((used)) static int flv_write_trailer(AVFormatContext *s)
 {
@@ -104,10 +104,10 @@ __attribute__((used)) static int flv_write_trailer(AVFormatContext *s)
             if (p) {
                 newflv_posinfo->next = p->next;
                 av_free(p);
-                p = NULL;
+                p = ((void*)0);
             } else {
                 av_free(newflv_posinfo);
-                newflv_posinfo = NULL;
+                newflv_posinfo = ((void*)0);
             }
         }
 
@@ -121,7 +121,7 @@ end:
     if (flv->flags & FLV_NO_SEQUENCE_END) {
         av_log(s, AV_LOG_DEBUG, "FLV no sequence end mode open\n");
     } else {
-        /* Add EOS tag */
+
         for (i = 0; i < s->nb_streams; i++) {
             AVCodecParameters *par = s->streams[i]->codecpar;
             FLVStreamContext *sc = s->streams[i]->priv_data;
@@ -140,7 +140,7 @@ end:
     }
     if (!(flv->flags & FLV_NO_METADATA)) {
         if (!(flv->flags & FLV_NO_DURATION_FILESIZE)) {
-            /* update information */
+
             if (avio_seek(pb, flv->duration_offset, SEEK_SET) < 0) {
                 av_log(s, AV_LOG_WARNING, "Failed to update header with correct duration.\n");
             } else {

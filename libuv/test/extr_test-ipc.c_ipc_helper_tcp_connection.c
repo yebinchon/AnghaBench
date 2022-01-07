@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_tcp_t ;
-typedef  int /*<<< orphan*/  uv_stream_t ;
-typedef  int /*<<< orphan*/  uv_handle_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uv_tcp_t ;
+typedef int uv_stream_t ;
+typedef int uv_handle_t ;
 struct sockaddr_in {int dummy; } ;
 struct sockaddr {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  conn; int /*<<< orphan*/  conn_req; } ;
+struct TYPE_2__ {int conn; int conn_req; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  BACKLOG ; 
- int /*<<< orphan*/  MAKE_VALGRIND_HAPPY () ; 
- int /*<<< orphan*/  TEST_PORT ; 
- int /*<<< orphan*/  UV_RUN_DEFAULT ; 
- int /*<<< orphan*/  channel ; 
- int close_cb_called ; 
- TYPE_1__ conn ; 
- int /*<<< orphan*/  connect_child_process_cb ; 
- int /*<<< orphan*/  ipc_on_connection_tcp_conn ; 
- int tcp_conn_read_cb_called ; 
- int tcp_conn_write_cb_called ; 
- int /*<<< orphan*/  tcp_server ; 
- int /*<<< orphan*/  uv_default_loop () ; 
- scalar_t__ uv_ip4_addr (char*,int /*<<< orphan*/ ,struct sockaddr_in*) ; 
- scalar_t__ uv_is_closing (int /*<<< orphan*/ *) ; 
- int uv_is_readable (int /*<<< orphan*/ *) ; 
- int uv_is_writable (int /*<<< orphan*/ *) ; 
- int uv_listen (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int uv_pipe_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  uv_pipe_open (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int uv_run (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int uv_tcp_bind (int /*<<< orphan*/ *,struct sockaddr const*,int /*<<< orphan*/ ) ; 
- int uv_tcp_connect (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct sockaddr const*,int /*<<< orphan*/ ) ; 
- int uv_tcp_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int ASSERT (int) ;
+ int BACKLOG ;
+ int MAKE_VALGRIND_HAPPY () ;
+ int TEST_PORT ;
+ int UV_RUN_DEFAULT ;
+ int channel ;
+ int close_cb_called ;
+ TYPE_1__ conn ;
+ int connect_child_process_cb ;
+ int ipc_on_connection_tcp_conn ;
+ int tcp_conn_read_cb_called ;
+ int tcp_conn_write_cb_called ;
+ int tcp_server ;
+ int uv_default_loop () ;
+ scalar_t__ uv_ip4_addr (char*,int ,struct sockaddr_in*) ;
+ scalar_t__ uv_is_closing (int *) ;
+ int uv_is_readable (int *) ;
+ int uv_is_writable (int *) ;
+ int uv_listen (int *,int ,int ) ;
+ int uv_pipe_init (int ,int *,int) ;
+ int uv_pipe_open (int *,int ) ;
+ int uv_run (int ,int ) ;
+ int uv_tcp_bind (int *,struct sockaddr const*,int ) ;
+ int uv_tcp_connect (int *,int *,struct sockaddr const*,int ) ;
+ int uv_tcp_init (int ,int *) ;
 
 int ipc_helper_tcp_connection(void) {
-  /*
-   * This is launched from test-ipc.c. stdin is a duplex channel
-   * over which a handle will be transmitted.
-   */
+
+
+
+
 
   int r;
   struct sockaddr_in addr;
@@ -74,7 +74,7 @@ int ipc_helper_tcp_connection(void) {
   r = uv_listen((uv_stream_t*)&tcp_server, BACKLOG, ipc_on_connection_tcp_conn);
   ASSERT(r == 0);
 
-  /* Make a connection to the server */
+
   r = uv_tcp_init(uv_default_loop(), &conn.conn);
   ASSERT(r == 0);
 

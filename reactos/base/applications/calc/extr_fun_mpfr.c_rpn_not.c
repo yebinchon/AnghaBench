@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mpz_t ;
-struct TYPE_3__ {int /*<<< orphan*/  mf; } ;
-typedef  TYPE_1__ calc_number_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MPFR_DEFAULT_RND ; 
- int /*<<< orphan*/  mpfr_get_z (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpfr_set_z (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpz_clear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpz_com (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpz_init (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int mpz_t ;
+struct TYPE_3__ {int mf; } ;
+typedef TYPE_1__ calc_number_t ;
+
+
+ int MPFR_DEFAULT_RND ;
+ int mpfr_get_z (int ,int ,int ) ;
+ int mpfr_set_z (int ,int ,int ) ;
+ int mpz_clear (int ) ;
+ int mpz_com (int ,int ) ;
+ int mpz_init (int ) ;
 
 void rpn_not(calc_number_t *c)
 {

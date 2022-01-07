@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_playlist_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lua_createtable (int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_rawseti (int /*<<< orphan*/ *,int,size_t) ; 
- int /*<<< orphan*/  push_playlist_item (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- size_t vlc_playlist_Count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_playlist_Get (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  vlc_playlist_Lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_playlist_Unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vlclua_get_playlist_internal (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vlc_playlist_t ;
+typedef int lua_State ;
+
+
+ int lua_createtable (int *,size_t,int ) ;
+ int lua_rawseti (int *,int,size_t) ;
+ int push_playlist_item (int *,int ) ;
+ size_t vlc_playlist_Count (int *) ;
+ int vlc_playlist_Get (int *,size_t) ;
+ int vlc_playlist_Lock (int *) ;
+ int vlc_playlist_Unlock (int *) ;
+ int * vlclua_get_playlist_internal (int *) ;
 
 __attribute__((used)) static int vlclua_playlist_list(lua_State *L)
 {

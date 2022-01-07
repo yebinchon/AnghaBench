@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int CRYPTO_num_locks () ; 
- int /*<<< orphan*/  CRYPTO_set_locking_callback (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OPENSSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * lockarray ; 
- int /*<<< orphan*/  pthread_mutex_destroy (int /*<<< orphan*/ *) ; 
+ int CRYPTO_num_locks () ;
+ int CRYPTO_set_locking_callback (int *) ;
+ int OPENSSL_free (int *) ;
+ int * lockarray ;
+ int pthread_mutex_destroy (int *) ;
 
 __attribute__((used)) static void kill_locks(void)
 {
   int i;
 
-  CRYPTO_set_locking_callback(NULL);
+  CRYPTO_set_locking_callback(((void*)0));
   for(i = 0; i<CRYPTO_num_locks(); i++)
     pthread_mutex_destroy(&(lockarray[i]));
 

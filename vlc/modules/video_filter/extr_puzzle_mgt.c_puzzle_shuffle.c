@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t int32_t ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef size_t int32_t ;
 struct TYPE_11__ {TYPE_4__* p_sys; } ;
-typedef  TYPE_3__ filter_t ;
+typedef TYPE_3__ filter_t ;
 struct TYPE_10__ {scalar_t__ b_blackslot; } ;
 struct TYPE_9__ {size_t i_pieces_nbr; } ;
 struct TYPE_12__ {size_t* pi_order; size_t i_selected; int b_shuffle_rqst; int b_finished; TYPE_2__ s_current_param; TYPE_1__ s_allocated; } ;
-typedef  TYPE_4__ filter_sys_t ;
+typedef TYPE_4__ filter_sys_t ;
 
-/* Variables and functions */
- size_t NO_PCE ; 
- int VLC_SUCCESS ; 
- int puzzle_generate_rand_pce_list (TYPE_3__*,size_t**) ; 
- scalar_t__ puzzle_is_finished (TYPE_4__*,size_t*) ; 
- int /*<<< orphan*/  puzzle_is_valid (TYPE_4__*,size_t*) ; 
+
+ size_t NO_PCE ;
+ int VLC_SUCCESS ;
+ int puzzle_generate_rand_pce_list (TYPE_3__*,size_t**) ;
+ scalar_t__ puzzle_is_finished (TYPE_4__*,size_t*) ;
+ int puzzle_is_valid (TYPE_4__*,size_t*) ;
 
 int puzzle_shuffle( filter_t *p_filter )
 {
@@ -54,8 +54,8 @@ int puzzle_shuffle( filter_t *p_filter )
         p_sys->i_selected = NO_PCE;
     }
 
-    p_sys->b_shuffle_rqst = false;
-    p_sys->b_finished = false;
+    p_sys->b_shuffle_rqst = 0;
+    p_sys->b_finished = 0;
 
     return VLC_SUCCESS;
 }

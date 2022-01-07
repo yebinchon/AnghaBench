@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_REALTIME ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  get_transaction (long long) ; 
- long long get_utime (int /*<<< orphan*/ ) ; 
- long long last_transaction_id ; 
- int lrand48 () ; 
+ int CLOCK_REALTIME ;
+ int assert (int) ;
+ int get_transaction (long long) ;
+ long long get_utime (int ) ;
+ long long last_transaction_id ;
+ int lrand48 () ;
 
 long long get_next_transaction_id (void) {
   long long x = (1LL << 32) * get_utime (CLOCK_REALTIME);

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  WEBP_CSP_MODE ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int WEBP_CSP_MODE ;
 struct TYPE_8__ {TYPE_3__* rescaler; TYPE_1__* output_; } ;
-typedef  TYPE_2__ VP8LDecoder ;
-struct TYPE_9__ {int /*<<< orphan*/  src_width; } ;
-struct TYPE_7__ {int /*<<< orphan*/  colorspace; } ;
+typedef TYPE_2__ VP8LDecoder ;
+struct TYPE_9__ {int src_width; } ;
+struct TYPE_7__ {int colorspace; } ;
 
-/* Variables and functions */
- scalar_t__ Export (TYPE_3__*,int /*<<< orphan*/  const,int,int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  WebPMultARGBRows (int /*<<< orphan*/ * const,int,int /*<<< orphan*/ ,int const,int /*<<< orphan*/ ) ; 
- int WebPRescaleNeededLines (TYPE_3__*,int const) ; 
- int WebPRescalerImport (TYPE_3__*,int const,int /*<<< orphan*/ * const,int) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ scalar_t__ Export (TYPE_3__*,int const,int,int * const) ;
+ int WebPMultARGBRows (int * const,int,int ,int const,int ) ;
+ int WebPRescaleNeededLines (TYPE_3__*,int const) ;
+ int WebPRescalerImport (TYPE_3__*,int const,int * const,int) ;
+ int assert (int) ;
 
 __attribute__((used)) static int EmitRescaledRowsRGBA(const VP8LDecoder* const dec,
                                 uint8_t* in, int in_stride, int mb_h,

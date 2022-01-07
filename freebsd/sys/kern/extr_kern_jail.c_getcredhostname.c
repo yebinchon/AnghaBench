@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ucred {struct prison* cr_prison; } ;
-struct prison {int /*<<< orphan*/  pr_mtx; int /*<<< orphan*/  pr_hostname; } ;
+struct prison {int pr_mtx; int pr_hostname; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mtx_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mtx_unlock (int /*<<< orphan*/ *) ; 
- struct prison prison0 ; 
- int /*<<< orphan*/  strlcpy (char*,int /*<<< orphan*/ ,size_t) ; 
+
+ int mtx_lock (int *) ;
+ int mtx_unlock (int *) ;
+ struct prison prison0 ;
+ int strlcpy (char*,int ,size_t) ;
 
 void
 getcredhostname(struct ucred *cred, char *buf, size_t size)
 {
-	struct prison *pr;
+ struct prison *pr;
 
-	/*
-	 * A NULL credential can be used to shortcut to the physical
-	 * system's hostname.
-	 */
-	pr = (cred != NULL) ? cred->cr_prison : &prison0;
-	mtx_lock(&pr->pr_mtx);
-	strlcpy(buf, pr->pr_hostname, size);
-	mtx_unlock(&pr->pr_mtx);
+
+
+
+
+ pr = (cred != ((void*)0)) ? cred->cr_prison : &prison0;
+ mtx_lock(&pr->pr_mtx);
+ strlcpy(buf, pr->pr_hostname, size);
+ mtx_unlock(&pr->pr_mtx);
 }

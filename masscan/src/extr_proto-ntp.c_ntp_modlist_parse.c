@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct BannerOutput {int dummy; } ;
-typedef  int /*<<< orphan*/  msg ;
-typedef  int /*<<< orphan*/  foo ;
+typedef int msg ;
+typedef int foo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AUTO_LEN ; 
- int /*<<< orphan*/  PROTO_NTP ; 
- int /*<<< orphan*/  UNUSEDPARM (unsigned int*) ; 
- int /*<<< orphan*/  banout_append (struct BannerOutput*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  error_codes ; 
- int /*<<< orphan*/  sprintf_s (char*,int,char*,unsigned int,...) ; 
- char* val2string_lookup (int /*<<< orphan*/ ,unsigned int) ; 
+
+ int AUTO_LEN ;
+ int PROTO_NTP ;
+ int UNUSEDPARM (unsigned int*) ;
+ int banout_append (struct BannerOutput*,int ,char const*,int ) ;
+ int error_codes ;
+ int sprintf_s (char*,int,char*,unsigned int,...) ;
+ char* val2string_lookup (int ,unsigned int) ;
 
 __attribute__((used)) static void
 ntp_modlist_parse(const unsigned char *px,
@@ -33,12 +33,12 @@ ntp_modlist_parse(const unsigned char *px,
     unsigned errcode;
     unsigned record_count;
     unsigned record_size;
- 
+
     UNUSEDPARM(request_id);
 
     if (offset + 4 >= length)
         return;
-    
+
     errcode = (px[offset]>>4)&0xF;
     record_count = (px[offset+0]&0xF) << 8 | px[offset+1];
     record_size = (px[offset+2]&0xF) << 8 | px[offset+3];
@@ -66,7 +66,7 @@ ntp_modlist_parse(const unsigned char *px,
         return;
     }
 
-    //offset += 4;
+
 
     {
         char msg[128];

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum insn_class { ____Placeholder_insn_class } insn_class ;
 
-/* Variables and functions */
- int INSN_CLASS_16 ; 
- int INSN_CLASS_32 ; 
- int INSN_CLASS_PCE ; 
- int INSN_CLASS_SYN ; 
- int /*<<< orphan*/  abort () ; 
+
+
+
+typedef enum insn_class { ____Placeholder_insn_class } insn_class ;
+
+
+ int INSN_CLASS_16 ;
+ int INSN_CLASS_32 ;
+ int INSN_CLASS_PCE ;
+ int INSN_CLASS_SYN ;
+ int abort () ;
 
 __attribute__((used)) static unsigned long
 adjust_paritybit (unsigned long m_code, enum insn_class class)
@@ -45,8 +45,8 @@ adjust_paritybit (unsigned long m_code, enum insn_class class)
     }
   else if (class == INSN_CLASS_SYN)
     {
-      /* FIXME.  at this time, INSN_CLASS_SYN must be 32 bit, but, instruction type should
-         be changed if macro instruction has been expanded.  */
+
+
       pb_high = 0x80000000;
       pb_low = 0x00008000;
     }

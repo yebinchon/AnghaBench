@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wasapi_state {int /*<<< orphan*/  pAudioClient; } ;
+
+
+
+
+struct wasapi_state {int pAudioClient; } ;
 struct ao {struct wasapi_state* priv; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IAudioClient_Start (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MP_DBG (struct wasapi_state*,char*) ; 
- int /*<<< orphan*/  MP_ERR (struct wasapi_state*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_HRESULT_to_str (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  thread_feed (struct ao*) ; 
- int /*<<< orphan*/  thread_reset (struct ao*) ; 
+
+ scalar_t__ FAILED (int ) ;
+ int IAudioClient_Start (int ) ;
+ int MP_DBG (struct wasapi_state*,char*) ;
+ int MP_ERR (struct wasapi_state*,char*,int ) ;
+ int mp_HRESULT_to_str (int ) ;
+ int thread_feed (struct ao*) ;
+ int thread_reset (struct ao*) ;
 
 __attribute__((used)) static void thread_resume(struct ao *ao)
 {

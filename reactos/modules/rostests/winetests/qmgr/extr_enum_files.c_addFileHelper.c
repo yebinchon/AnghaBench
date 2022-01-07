@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  IBackgroundCopyJob ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetCurrentDirectoryW (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IBackgroundCopyJob_AddFile (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  PathAppendW (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  URL_UNESCAPE_INPLACE ; 
- int /*<<< orphan*/  UrlCreateFromPathW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UrlUnescapeW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int WCHAR ;
+typedef int IBackgroundCopyJob ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int GetCurrentDirectoryW (int,int *) ;
+ int IBackgroundCopyJob_AddFile (int *,int *,int *) ;
+ int MAX_PATH ;
+ int PathAppendW (int *,int const*) ;
+ int URL_UNESCAPE_INPLACE ;
+ int UrlCreateFromPathW (int *,int *,int*,int ) ;
+ int UrlUnescapeW (int *,int *,int*,int ) ;
 
 __attribute__((used)) static HRESULT addFileHelper(IBackgroundCopyJob* job,
                              const WCHAR *localName, const WCHAR *remoteName)
@@ -38,6 +38,6 @@ __attribute__((used)) static HRESULT addFileHelper(IBackgroundCopyJob* job,
     PathAppendW(remoteFile, remoteName);
     urlSize = MAX_PATH;
     UrlCreateFromPathW(remoteFile, remoteUrl, &urlSize, 0);
-    UrlUnescapeW(remoteUrl, NULL, &urlSize, URL_UNESCAPE_INPLACE);
+    UrlUnescapeW(remoteUrl, ((void*)0), &urlSize, URL_UNESCAPE_INPLACE);
     return IBackgroundCopyJob_AddFile(job, remoteUrl, localFile);
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct pic_sys_vaapi_instance {int /*<<< orphan*/  dec_device; int /*<<< orphan*/  num_render_targets; int /*<<< orphan*/  render_targets; int /*<<< orphan*/  va_dpy; int /*<<< orphan*/  pic_refcount; struct pic_sys_vaapi_instance* instance; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct pic_sys_vaapi_instance {int dec_device; int num_render_targets; int render_targets; int va_dpy; int pic_refcount; struct pic_sys_vaapi_instance* instance; } ;
 struct TYPE_3__ {struct pic_sys_vaapi_instance* p_sys; } ;
-typedef  TYPE_1__ picture_t ;
-typedef  struct pic_sys_vaapi_instance picture_sys_t ;
+typedef TYPE_1__ picture_t ;
+typedef struct pic_sys_vaapi_instance picture_sys_t ;
 
-/* Variables and functions */
- int atomic_fetch_sub (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  free (struct pic_sys_vaapi_instance*) ; 
- int /*<<< orphan*/  vaDestroySurfaces (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_decoder_device_Release (int /*<<< orphan*/ ) ; 
+
+ int atomic_fetch_sub (int *,int) ;
+ int free (struct pic_sys_vaapi_instance*) ;
+ int vaDestroySurfaces (int ,int ,int ) ;
+ int vlc_decoder_device_Release (int ) ;
 
 __attribute__((used)) static void
 pool_pic_destroy_cb(picture_t *pic)

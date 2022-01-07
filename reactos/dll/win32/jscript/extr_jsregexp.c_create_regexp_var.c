@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_5__ {TYPE_1__* jsregexp; int /*<<< orphan*/ * str; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int jsstr_t ;
+typedef int jsdisp_t ;
+typedef int WCHAR ;
+struct TYPE_5__ {TYPE_1__* jsregexp; int * str; } ;
 struct TYPE_4__ {unsigned int flags; } ;
-typedef  TYPE_2__ RegExpInstance ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_2__ RegExpInstance ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_NOTIMPL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JSCLASS_REGEXP ; 
- int /*<<< orphan*/  create_regexp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  debugstr_jsval (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_object (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * get_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * iface_to_jsdisp (int /*<<< orphan*/ ) ; 
- scalar_t__ is_class (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ is_object_instance (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * jsstr_flatten (int /*<<< orphan*/ *) ; 
- unsigned int jsstr_length (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  parse_regexp_flags (int /*<<< orphan*/  const*,unsigned int,unsigned int*) ; 
- TYPE_2__* regexp_from_jsdisp (int /*<<< orphan*/ *) ; 
+
+ int E_NOTIMPL ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,int ) ;
+ int JSCLASS_REGEXP ;
+ int create_regexp (int *,int *,unsigned int,int **) ;
+ int debugstr_jsval (int ) ;
+ int get_object (int ) ;
+ int * get_string (int ) ;
+ int * iface_to_jsdisp (int ) ;
+ scalar_t__ is_class (int *,int ) ;
+ scalar_t__ is_object_instance (int ) ;
+ int is_string (int ) ;
+ int jsdisp_release (int *) ;
+ int * jsstr_flatten (int *) ;
+ unsigned int jsstr_length (int *) ;
+ int parse_regexp_flags (int const*,unsigned int,unsigned int*) ;
+ TYPE_2__* regexp_from_jsdisp (int *) ;
 
 HRESULT create_regexp_var(script_ctx_t *ctx, jsval_t src_arg, jsval_t *flags_arg, jsdisp_t **ret)
 {
     unsigned flags, opt_len = 0;
-    const WCHAR *opt = NULL;
+    const WCHAR *opt = ((void*)0);
     jsstr_t *src;
     HRESULT hres;
 

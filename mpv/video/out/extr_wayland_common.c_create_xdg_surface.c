@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vo_wayland_state {int /*<<< orphan*/  xdg_toplevel; int /*<<< orphan*/  xdg_surface; int /*<<< orphan*/  surface; int /*<<< orphan*/  wm_base; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  xdg_surface_add_listener (int /*<<< orphan*/ ,int /*<<< orphan*/ *,struct vo_wayland_state*) ; 
- int /*<<< orphan*/  xdg_surface_get_toplevel (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xdg_surface_listener ; 
- int /*<<< orphan*/  xdg_toplevel_add_listener (int /*<<< orphan*/ ,int /*<<< orphan*/ *,struct vo_wayland_state*) ; 
- int /*<<< orphan*/  xdg_toplevel_listener ; 
- int /*<<< orphan*/  xdg_toplevel_set_app_id (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  xdg_toplevel_set_title (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  xdg_wm_base_get_xdg_surface (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct vo_wayland_state {int xdg_toplevel; int xdg_surface; int surface; int wm_base; } ;
+
+
+ int xdg_surface_add_listener (int ,int *,struct vo_wayland_state*) ;
+ int xdg_surface_get_toplevel (int ) ;
+ int xdg_surface_listener ;
+ int xdg_toplevel_add_listener (int ,int *,struct vo_wayland_state*) ;
+ int xdg_toplevel_listener ;
+ int xdg_toplevel_set_app_id (int ,char*) ;
+ int xdg_toplevel_set_title (int ,char*) ;
+ int xdg_wm_base_get_xdg_surface (int ,int ) ;
 
 __attribute__((used)) static int create_xdg_surface(struct vo_wayland_state *wl)
 {

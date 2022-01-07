@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct ssl_ctx {int /*<<< orphan*/  ctx; } ;
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_3__ {char* member_0; int /*<<< orphan*/ * member_1; } ;
-typedef  TYPE_1__ luaL_Reg ;
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_error_string_n (unsigned int,char*,int) ; 
- unsigned int ERR_get_error () ; 
- int /*<<< orphan*/  SSL_CTX_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSLv23_method () ; 
- int /*<<< orphan*/ * _lctx_cert ; 
- int /*<<< orphan*/ * _lctx_ciphers ; 
- int /*<<< orphan*/  _lctx_gc ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  luaL_newlib (int /*<<< orphan*/ *,TYPE_1__*) ; 
- scalar_t__ luaL_newmetatable (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ lua_newuserdata (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushcfunction (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_setmetatable (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct ssl_ctx {int ctx; } ;
+typedef int lua_State ;
+struct TYPE_3__ {char* member_0; int * member_1; } ;
+typedef TYPE_1__ luaL_Reg ;
+typedef int buf ;
+
+
+ int ERR_error_string_n (unsigned int,char*,int) ;
+ unsigned int ERR_get_error () ;
+ int SSL_CTX_new (int ) ;
+ int SSLv23_method () ;
+ int * _lctx_cert ;
+ int * _lctx_ciphers ;
+ int _lctx_gc ;
+ int luaL_error (int *,char*,char*) ;
+ int luaL_newlib (int *,TYPE_1__*) ;
+ scalar_t__ luaL_newmetatable (int *,char*) ;
+ scalar_t__ lua_newuserdata (int *,int) ;
+ int lua_pushcfunction (int *,int ) ;
+ int lua_setfield (int *,int,char*) ;
+ int lua_setmetatable (int *,int) ;
 
 __attribute__((used)) static int
 lnew_ctx(lua_State* L) {
@@ -48,7 +48,7 @@ lnew_ctx(lua_State* L) {
         luaL_Reg l[] = {
             {"set_ciphers", _lctx_ciphers},
             {"set_cert", _lctx_cert},
-            {NULL, NULL},
+            {((void*)0), ((void*)0)},
         };
 
         luaL_newlib(L, l);

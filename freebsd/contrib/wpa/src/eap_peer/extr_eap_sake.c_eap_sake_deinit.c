@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct eap_sm {int dummy; } ;
-struct eap_sake_data {int /*<<< orphan*/  peerid; int /*<<< orphan*/  serverid; } ;
+struct eap_sake_data {int peerid; int serverid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bin_clear_free (struct eap_sake_data*,int) ; 
- int /*<<< orphan*/  os_free (int /*<<< orphan*/ ) ; 
+
+ int bin_clear_free (struct eap_sake_data*,int) ;
+ int os_free (int ) ;
 
 __attribute__((used)) static void eap_sake_deinit(struct eap_sm *sm, void *priv)
 {
-	struct eap_sake_data *data = priv;
-	os_free(data->serverid);
-	os_free(data->peerid);
-	bin_clear_free(data, sizeof(*data));
+ struct eap_sake_data *data = priv;
+ os_free(data->serverid);
+ os_free(data->peerid);
+ bin_clear_free(data, sizeof(*data));
 }

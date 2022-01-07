@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  M_FATAL ; 
- int /*<<< orphan*/  msg (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ unlikely (int) ; 
+ int M_FATAL ;
+ int msg (int ,char*) ;
+ scalar_t__ unlikely (int) ;
 
 size_t
 array_mult_safe(const size_t m1, const size_t m2, const size_t extra)

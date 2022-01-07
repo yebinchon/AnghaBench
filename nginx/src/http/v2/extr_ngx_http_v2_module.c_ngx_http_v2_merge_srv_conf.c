@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  idle_timeout; int /*<<< orphan*/  recv_timeout; int /*<<< orphan*/  streams_index_mask; int /*<<< orphan*/  preread_size; int /*<<< orphan*/  max_header_size; int /*<<< orphan*/  max_field_size; int /*<<< orphan*/  max_requests; int /*<<< orphan*/  concurrent_pushes; int /*<<< orphan*/  concurrent_streams; int /*<<< orphan*/  pool_size; } ;
-typedef  TYPE_1__ ngx_http_v2_srv_conf_t ;
-typedef  int /*<<< orphan*/  ngx_conf_t ;
 
-/* Variables and functions */
- char* NGX_CONF_OK ; 
- int /*<<< orphan*/  ngx_conf_merge_msec_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ngx_conf_merge_size_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ngx_conf_merge_uint_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int idle_timeout; int recv_timeout; int streams_index_mask; int preread_size; int max_header_size; int max_field_size; int max_requests; int concurrent_pushes; int concurrent_streams; int pool_size; } ;
+typedef TYPE_1__ ngx_http_v2_srv_conf_t ;
+typedef int ngx_conf_t ;
+
+
+ char* NGX_CONF_OK ;
+ int ngx_conf_merge_msec_value (int ,int ,int) ;
+ int ngx_conf_merge_size_value (int ,int ,int) ;
+ int ngx_conf_merge_uint_value (int ,int ,int) ;
 
 __attribute__((used)) static char *
 ngx_http_v2_merge_srv_conf(ngx_conf_t *cf, void *parent, void *child)

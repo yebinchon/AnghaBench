@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  index; } ;
-typedef  TYPE_2__ cvmx_usbd_state_t ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int index; } ;
+typedef TYPE_2__ cvmx_usbd_state_t ;
 struct TYPE_7__ {int sgoutnak; int sftdiscon; } ;
-struct TYPE_9__ {int /*<<< orphan*/  u32; TYPE_1__ s; } ;
-typedef  TYPE_3__ cvmx_usbcx_dctl_t ;
+struct TYPE_9__ {int u32; TYPE_1__ s; } ;
+typedef TYPE_3__ cvmx_usbcx_dctl_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CVMX_USBCX_DCTL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __cvmx_usbd_read_csr32 (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __cvmx_usbd_write_csr32 (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CVMX_USBCX_DCTL (int ) ;
+ int __cvmx_usbd_read_csr32 (TYPE_2__*,int ) ;
+ int __cvmx_usbd_write_csr32 (TYPE_2__*,int ,int ) ;
 
 int cvmx_usbd_disable(cvmx_usbd_state_t *usb)
 {

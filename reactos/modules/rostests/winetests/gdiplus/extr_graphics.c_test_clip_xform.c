@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  region_data ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  REAL ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpRegion ;
-typedef  int /*<<< orphan*/  GpGraphics ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  COLORREF ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CombineModeReplace ; 
- int /*<<< orphan*/  GdipCreateFromHDC (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreateRegion (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeleteRegion (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetClip (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetRegionData (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGraphicsClear (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  GdipResetClip (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipResetWorldTransform (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipScaleWorldTransform (int /*<<< orphan*/ *,double,double,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GdipSetClipRect (int /*<<< orphan*/ *,int,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetPixel (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  MatrixOrderAppend ; 
- int Ok ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expect (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expectf (double,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hwnd ; 
+
+
+
+typedef int region_data ;
+typedef int UINT ;
+typedef int REAL ;
+typedef int HDC ;
+typedef int GpStatus ;
+typedef int GpRegion ;
+typedef int GpGraphics ;
+typedef int DWORD ;
+typedef int COLORREF ;
+typedef int BYTE ;
+
+
+ int CombineModeReplace ;
+ int GdipCreateFromHDC (int ,int **) ;
+ int GdipCreateRegion (int **) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipDeleteRegion (int *) ;
+ int GdipGetClip (int *,int *) ;
+ int GdipGetRegionData (int *,int *,int,int *) ;
+ int GdipGraphicsClear (int *,int) ;
+ int GdipResetClip (int *) ;
+ int GdipResetWorldTransform (int *) ;
+ int GdipScaleWorldTransform (int *,double,double,int ) ;
+ int GdipSetClipRect (int *,int,int,int,int,int ) ;
+ int GetDC (int ) ;
+ int GetPixel (int ,int,int) ;
+ int MatrixOrderAppend ;
+ int Ok ;
+ int ReleaseDC (int ,int ) ;
+ int expect (int,int ) ;
+ int expectf (double,int ) ;
+ int hwnd ;
 
 __attribute__((used)) static void test_clip_xform(void)
 {
     GpStatus status;
-    GpGraphics *graphics = NULL;
+    GpGraphics *graphics = ((void*)0);
     HDC hdc = GetDC( hwnd );
     GpRegion *clip;
     COLORREF color;
@@ -80,13 +80,13 @@ __attribute__((used)) static void test_clip_xform(void)
     expect(36, region_data_size);
     expect(28, region_data.size);
     expect(0, region_data.num_children);
-    expect(0x10000000 /* RegionDataRect */, region_data.element_type);
+    expect(0x10000000 , region_data.element_type);
     expectf(0.0, region_data.x);
     expectf(0.0, region_data.y);
     expectf(10.0, region_data.width);
     expectf(10.0, region_data.height);
 
-    /* No effect with negative width/height */
+
     status = GdipGraphicsClear(graphics, 0xffff0000);
     expect(Ok, status);
     color = GetPixel(hdc, 5, 5);
@@ -119,7 +119,7 @@ __attribute__((used)) static void test_clip_xform(void)
     expect(36, region_data_size);
     expect(28, region_data.size);
     expect(0, region_data.num_children);
-    expect(0x10000000 /* RegionDataRect */, region_data.element_type);
+    expect(0x10000000 , region_data.element_type);
     expectf(0.0, region_data.x);
     expectf(0.0, region_data.y);
     expectf(5.0, region_data.width);

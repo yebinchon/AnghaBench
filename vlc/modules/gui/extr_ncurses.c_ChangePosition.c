@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_player_t ;
 
-/* Variables and functions */
- scalar_t__ VLC_PLAYER_STATE_PLAYING ; 
- scalar_t__ vlc_player_GetState (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_player_JumpPos (int /*<<< orphan*/ *,float) ; 
- int /*<<< orphan*/  vlc_player_Lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_player_Unlock (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vlc_player_t ;
+
+
+ scalar_t__ VLC_PLAYER_STATE_PLAYING ;
+ scalar_t__ vlc_player_GetState (int *) ;
+ int vlc_player_JumpPos (int *,float) ;
+ int vlc_player_Lock (int *) ;
+ int vlc_player_Unlock (int *) ;
 
 __attribute__((used)) static void ChangePosition(vlc_player_t *player, float increment)
 {

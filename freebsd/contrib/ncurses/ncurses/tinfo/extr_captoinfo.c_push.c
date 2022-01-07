@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ MAX_PUSHED ; 
- int /*<<< orphan*/  _nc_warning (char*) ; 
- int /*<<< orphan*/  onstack ; 
- int /*<<< orphan*/ * stack ; 
- scalar_t__ stackptr ; 
+ scalar_t__ MAX_PUSHED ;
+ int _nc_warning (char*) ;
+ int onstack ;
+ int * stack ;
+ scalar_t__ stackptr ;
 
 __attribute__((used)) static void
 push(void)
-/* push onstack on to the stack */
+
 {
     if (stackptr >= MAX_PUSHED)
-	_nc_warning("string too complex to convert");
+ _nc_warning("string too complex to convert");
     else
-	stack[stackptr++] = onstack;
+ stack[stackptr++] = onstack;
 }

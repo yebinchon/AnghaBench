@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UInt64 ;
-typedef  int /*<<< orphan*/  UInt32 ;
-struct TYPE_10__ {int /*<<< orphan*/  NumTotalSubStreams; int /*<<< orphan*/  sdNumSubStreams; int /*<<< orphan*/  sdCRCs; int /*<<< orphan*/  sdSizes; } ;
-struct TYPE_9__ {int /*<<< orphan*/  NumFolders; } ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  int /*<<< orphan*/  ISzAllocPtr ;
-typedef  int /*<<< orphan*/  CSzData ;
-typedef  TYPE_1__ CSzAr ;
-typedef  TYPE_2__ CSubStreamInfo ;
-typedef  int /*<<< orphan*/  CBuf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RINOK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReadID (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  ReadNumber (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  ReadPackInfo (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReadSubStreamsInfo (TYPE_1__*,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  ReadUnpackInfo (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SZ_ERROR_UNSUPPORTED ; 
- int /*<<< orphan*/  SZ_OK ; 
- int /*<<< orphan*/  SzData_Clear (int /*<<< orphan*/ *) ; 
- scalar_t__ k7zIdEnd ; 
- scalar_t__ k7zIdPackInfo ; 
- scalar_t__ k7zIdSubStreamsInfo ; 
- scalar_t__ k7zIdUnpackInfo ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef scalar_t__ UInt64 ;
+typedef int UInt32 ;
+struct TYPE_10__ {int NumTotalSubStreams; int sdNumSubStreams; int sdCRCs; int sdSizes; } ;
+struct TYPE_9__ {int NumFolders; } ;
+typedef int SRes ;
+typedef int ISzAllocPtr ;
+typedef int CSzData ;
+typedef TYPE_1__ CSzAr ;
+typedef TYPE_2__ CSubStreamInfo ;
+typedef int CBuf ;
+
+
+ int RINOK (int ) ;
+ int ReadID (int *,scalar_t__*) ;
+ int ReadNumber (int *,scalar_t__*) ;
+ int ReadPackInfo (TYPE_1__*,int *,int ) ;
+ int ReadSubStreamsInfo (TYPE_1__*,int *,TYPE_2__*) ;
+ int ReadUnpackInfo (TYPE_1__*,int *,int ,int const*,int ,int ) ;
+ int SZ_ERROR_UNSUPPORTED ;
+ int SZ_OK ;
+ int SzData_Clear (int *) ;
+ scalar_t__ k7zIdEnd ;
+ scalar_t__ k7zIdPackInfo ;
+ scalar_t__ k7zIdSubStreamsInfo ;
+ scalar_t__ k7zIdUnpackInfo ;
 
 __attribute__((used)) static SRes SzReadStreamsInfo(CSzAr *p,
     CSzData *sd,
@@ -72,7 +72,7 @@ __attribute__((used)) static SRes SzReadStreamsInfo(CSzAr *p,
   else
   {
     ssi->NumTotalSubStreams = p->NumFolders;
-    // ssi->NumSubDigests = 0;
+
   }
 
   return (type == k7zIdEnd ? SZ_OK : SZ_ERROR_UNSUPPORTED);

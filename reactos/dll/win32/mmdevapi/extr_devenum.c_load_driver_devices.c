@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  size_t UINT ;
-struct TYPE_2__ {int /*<<< orphan*/  (* pGetEndpointIDs ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ***,int /*<<< orphan*/ ***,size_t*,size_t*) ;} ;
-typedef  int /*<<< orphan*/  MMDevice ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/ * GUID ;
-typedef  int /*<<< orphan*/  EDataFlow ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEVICE_STATE_ACTIVE ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * MMDevice_Create (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  S_OK ; 
- TYPE_1__ drvs ; 
- int /*<<< orphan*/  set_format (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ***,int /*<<< orphan*/ ***,size_t*,size_t*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef size_t UINT ;
+struct TYPE_2__ {int (* pGetEndpointIDs ) (int ,int ***,int ***,size_t*,size_t*) ;} ;
+typedef int MMDevice ;
+typedef int HRESULT ;
+typedef int * GUID ;
+typedef int EDataFlow ;
+
+
+ int DEVICE_STATE_ACTIVE ;
+ scalar_t__ FAILED (int ) ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,int **) ;
+ int * MMDevice_Create (int *,int **,int ,int ,int) ;
+ int S_OK ;
+ TYPE_1__ drvs ;
+ int set_format (int *) ;
+ int stub1 (int ,int ***,int ***,size_t*,size_t*) ;
 
 __attribute__((used)) static HRESULT load_driver_devices(EDataFlow flow)
 {

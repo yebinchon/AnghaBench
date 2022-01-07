@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int u8 ;
 struct TYPE_8__ {scalar_t__ usableSize; } ;
-struct TYPE_7__ {int hdrOffset; int pgno; int isInit; int const nFree; int nCell; scalar_t__ cellOffset; int /*<<< orphan*/ * aData; TYPE_2__* pBt; } ;
-typedef  TYPE_1__ MemPage ;
-typedef  TYPE_2__ BtShared ;
+struct TYPE_7__ {int hdrOffset; int pgno; int isInit; int const nFree; int nCell; scalar_t__ cellOffset; int * aData; TYPE_2__* pBt; } ;
+typedef TYPE_1__ MemPage ;
+typedef TYPE_2__ BtShared ;
 
-/* Variables and functions */
- scalar_t__ ISAUTOVACUUM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int btreeInitPage (TYPE_1__*) ; 
- int get2byte (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- int setChildPtrmaps (TYPE_1__*) ; 
+
+ scalar_t__ ISAUTOVACUUM ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int btreeInitPage (TYPE_1__*) ;
+ int get2byte (int *) ;
+ int memcpy (int *,int *,scalar_t__) ;
+ int setChildPtrmaps (TYPE_1__*) ;
 
 __attribute__((used)) static void copyNodeContent(MemPage *pFrom, MemPage *pTo, int *pRC){
   if( (*pRC)==SQLITE_OK ){
@@ -42,16 +42,16 @@ __attribute__((used)) static void copyNodeContent(MemPage *pFrom, MemPage *pTo, 
     assert( pFrom->nFree>=iToHdr );
     assert( get2byte(&aFrom[iFromHdr+5]) <= (int)pBt->usableSize );
 
-    /* Copy the b-tree node content from page pFrom to page pTo. */
+
     iData = get2byte(&aFrom[iFromHdr+5]);
     memcpy(&aTo[iData], &aFrom[iData], pBt->usableSize-iData);
     memcpy(&aTo[iToHdr], &aFrom[iFromHdr], pFrom->cellOffset + 2*pFrom->nCell);
 
-    /* Reinitialize page pTo so that the contents of the MemPage structure
-    ** match the new data. The initialization of pTo can actually fail under
-    ** fairly obscure circumstances, even though it is a copy of initialized
-    ** page pFrom.
-    */
+
+
+
+
+
     pTo->isInit = 0;
     rc = btreeInitPage(pTo);
     if( rc!=SQLITE_OK ){
@@ -59,9 +59,9 @@ __attribute__((used)) static void copyNodeContent(MemPage *pFrom, MemPage *pTo, 
       return;
     }
 
-    /* If this is an auto-vacuum database, update the pointer-map entries
-    ** for any b-tree or overflow pages that pTo now contains the pointers to.
-    */
+
+
+
     if( ISAUTOVACUUM ){
       *pRC = setChildPtrmaps(pTo);
     }

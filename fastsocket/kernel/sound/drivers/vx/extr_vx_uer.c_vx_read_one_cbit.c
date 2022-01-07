@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vx_core {scalar_t__ type; int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CSUER ; 
- int /*<<< orphan*/  RUER ; 
- scalar_t__ VX_TYPE_VXPOCKET ; 
- int XX_UER_CBITS_OFFSET_MASK ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int vx_inb (struct vx_core*,int /*<<< orphan*/ ) ; 
- int vx_inl (struct vx_core*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vx_outb (struct vx_core*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  vx_outl (struct vx_core*,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct vx_core {scalar_t__ type; int lock; } ;
+
+
+ int CSUER ;
+ int RUER ;
+ scalar_t__ VX_TYPE_VXPOCKET ;
+ int XX_UER_CBITS_OFFSET_MASK ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int vx_inb (struct vx_core*,int ) ;
+ int vx_inl (struct vx_core*,int ) ;
+ int vx_outb (struct vx_core*,int ,int) ;
+ int vx_outl (struct vx_core*,int ,int) ;
 
 __attribute__((used)) static int vx_read_one_cbit(struct vx_core *chip, int index)
 {
-	unsigned long flags;
-	int val;
-	spin_lock_irqsave(&chip->lock, flags);
-	if (chip->type >= VX_TYPE_VXPOCKET) {
-		vx_outb(chip, CSUER, 1); /* read */
-		vx_outb(chip, RUER, index & XX_UER_CBITS_OFFSET_MASK);
-		val = (vx_inb(chip, RUER) >> 7) & 0x01;
-	} else {
-		vx_outl(chip, CSUER, 1); /* read */
-		vx_outl(chip, RUER, index & XX_UER_CBITS_OFFSET_MASK);
-		val = (vx_inl(chip, RUER) >> 7) & 0x01;
-	}
-	spin_unlock_irqrestore(&chip->lock, flags);
-	return val;
+ unsigned long flags;
+ int val;
+ spin_lock_irqsave(&chip->lock, flags);
+ if (chip->type >= VX_TYPE_VXPOCKET) {
+  vx_outb(chip, CSUER, 1);
+  vx_outb(chip, RUER, index & XX_UER_CBITS_OFFSET_MASK);
+  val = (vx_inb(chip, RUER) >> 7) & 0x01;
+ } else {
+  vx_outl(chip, CSUER, 1);
+  vx_outl(chip, RUER, index & XX_UER_CBITS_OFFSET_MASK);
+  val = (vx_inl(chip, RUER) >> 7) & 0x01;
+ }
+ spin_unlock_irqrestore(&chip->lock, flags);
+ return val;
 }

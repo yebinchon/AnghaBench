@@ -1,43 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int STB_EXT ; 
- int STB_EXT_NO_PERIOD ; 
- int STB_FILE ; 
- int STB_PATH ; 
- scalar_t__ malloc (int) ; 
- char* stb_strrchr2 (char*,char,char) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- scalar_t__ strlen (char*) ; 
- int /*<<< orphan*/  strncpy (char*,char*,int) ; 
- char* strrchr (char*,char) ; 
+ int STB_EXT ;
+ int STB_EXT_NO_PERIOD ;
+ int STB_FILE ;
+ int STB_PATH ;
+ scalar_t__ malloc (int) ;
+ char* stb_strrchr2 (char*,char,char) ;
+ int strcpy (char*,char*) ;
+ scalar_t__ strlen (char*) ;
+ int strncpy (char*,char*,int) ;
+ char* strrchr (char*,char) ;
 
 __attribute__((used)) static char *stb__splitpath_raw(char *buffer, char *path, int flag)
 {
    int len=0,x,y, n = (int) strlen(path), f1,f2;
    char *s = stb_strrchr2(path, '/', '\\');
    char *t = strrchr(path, '.');
-   if (s && t && t < s) t = NULL;
+   if (s && t && t < s) t = ((void*)0);
    if (s) ++s;
 
    if (flag == STB_EXT_NO_PERIOD)
       flag |= STB_EXT;
 
-   if (!(flag & (STB_PATH | STB_FILE | STB_EXT))) return NULL;
+   if (!(flag & (STB_PATH | STB_FILE | STB_EXT))) return ((void*)0);
 
-   f1 = s == NULL ? 0 : s-path; // start of filename
-   f2 = t == NULL ? n : t-path; // just past end of filename
+   f1 = s == ((void*)0) ? 0 : s-path;
+   f2 = t == ((void*)0) ? n : t-path;
 
    if (flag & STB_PATH) {
       x = 0; if (f1 == 0 && flag == STB_PATH) len=2;
@@ -57,9 +49,9 @@ __attribute__((used)) static char *stb__splitpath_raw(char *buffer, char *path, 
    else
       y = f1;
 
-   if (buffer == NULL) {
+   if (buffer == ((void*)0)) {
       buffer = (char *) malloc(y-x + len + 1);
-      if (!buffer) return NULL;
+      if (!buffer) return ((void*)0);
    }
 
    if (len) { strcpy(buffer, "./"); return buffer; }

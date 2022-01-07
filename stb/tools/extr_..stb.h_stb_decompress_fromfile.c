@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fread (unsigned char*,int,unsigned int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned int ftell (int /*<<< orphan*/ *) ; 
- scalar_t__ malloc (int) ; 
- unsigned int stb_decompress (unsigned char*,unsigned char*,unsigned int) ; 
- int stb_decompress_length (unsigned char*) ; 
- int /*<<< orphan*/ * stb_p_fopen (char*,char*) ; 
+
+
+
+typedef int FILE ;
+
+
+ int SEEK_END ;
+ int SEEK_SET ;
+ int fclose (int *) ;
+ int fread (unsigned char*,int,unsigned int,int *) ;
+ int free (unsigned char*) ;
+ int fseek (int *,int ,int ) ;
+ unsigned int ftell (int *) ;
+ scalar_t__ malloc (int) ;
+ unsigned int stb_decompress (unsigned char*,unsigned char*,unsigned int) ;
+ int stb_decompress_length (unsigned char*) ;
+ int * stb_p_fopen (char*,char*) ;
 
 char *stb_decompress_fromfile(char *filename, unsigned int *len)
 {
    unsigned int n;
    char *q;
    unsigned char *p;
-   FILE *f = stb_p_fopen(filename, "rb");   if (f == NULL) return NULL;
+   FILE *f = stb_p_fopen(filename, "rb"); if (f == ((void*)0)) return ((void*)0);
    fseek(f, 0, SEEK_END);
    n = ftell(f);
    fseek(f, 0, SEEK_SET);
-   p = (unsigned char * ) malloc(n); if (p == NULL) return NULL;
+   p = (unsigned char * ) malloc(n); if (p == ((void*)0)) return ((void*)0);
    fread(p, 1, n, f);
    fclose(f);
-   if (p == NULL) return NULL;
-   if (p[0] != 0x57 || p[1] != 0xBc || p[2] || p[3]) { free(p); return NULL; }
+   if (p == ((void*)0)) return ((void*)0);
+   if (p[0] != 0x57 || p[1] != 0xBc || p[2] || p[3]) { free(p); return ((void*)0); }
    q = (char *) malloc(stb_decompress_length(p)+1);
-   if (!q) { free(p); return NULL; }
+   if (!q) { free(p); return ((void*)0); }
    *len = stb_decompress((unsigned char *) q, p, n);
    if (*len) q[*len] = 0;
    free(p);

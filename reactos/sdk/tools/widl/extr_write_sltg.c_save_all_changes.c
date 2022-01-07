@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct sltg_typelib {TYPE_2__* typelib; } ;
-typedef  int /*<<< orphan*/  library_block_start ;
+typedef int library_block_start ;
 struct TYPE_4__ {int cval; } ;
-typedef  TYPE_1__ expr_t ;
-struct TYPE_5__ {int /*<<< orphan*/  attrs; } ;
-typedef  int SIZE_T ;
+typedef TYPE_1__ expr_t ;
+struct TYPE_5__ {int attrs; } ;
+typedef int SIZE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATTR_ID ; 
- int /*<<< orphan*/  add_output_to_resources (char*,char*) ; 
- int /*<<< orphan*/  chat (char*,int) ; 
- int /*<<< orphan*/  flush_output_buffer (int /*<<< orphan*/ ) ; 
- TYPE_1__* get_attrp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ output_buffer ; 
- int output_buffer_pos ; 
- int /*<<< orphan*/  output_typelib_regscript (TYPE_2__*) ; 
- int /*<<< orphan*/  put_data (int*,int) ; 
- int /*<<< orphan*/  sltg_write_header (struct sltg_typelib*,int*) ; 
- int /*<<< orphan*/  sltg_write_helpstrings (struct sltg_typelib*) ; 
- int /*<<< orphan*/  sltg_write_nametable (struct sltg_typelib*) ; 
- int /*<<< orphan*/  sltg_write_remainder () ; 
- int /*<<< orphan*/  sltg_write_typeinfo (struct sltg_typelib*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- scalar_t__ strendswith (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  typelib_name ; 
+
+ int ATTR_ID ;
+ int add_output_to_resources (char*,char*) ;
+ int chat (char*,int) ;
+ int flush_output_buffer (int ) ;
+ TYPE_1__* get_attrp (int ,int ) ;
+ scalar_t__ output_buffer ;
+ int output_buffer_pos ;
+ int output_typelib_regscript (TYPE_2__*) ;
+ int put_data (int*,int) ;
+ int sltg_write_header (struct sltg_typelib*,int*) ;
+ int sltg_write_helpstrings (struct sltg_typelib*) ;
+ int sltg_write_nametable (struct sltg_typelib*) ;
+ int sltg_write_remainder () ;
+ int sltg_write_typeinfo (struct sltg_typelib*) ;
+ int sprintf (char*,char*,int) ;
+ scalar_t__ strendswith (int ,char*) ;
+ int typelib_name ;
 
 __attribute__((used)) static void save_all_changes(struct sltg_typelib *typelib)
 {
@@ -58,7 +58,7 @@ __attribute__((used)) static void save_all_changes(struct sltg_typelib *typelib)
     sltg_write_nametable(typelib);
     sltg_write_remainder();
 
-    if (strendswith(typelib_name, ".res")) /* create a binary resource file */
+    if (strendswith(typelib_name, ".res"))
     {
         char typelib_id[13] = "#1";
 

@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_32__   TYPE_8__ ;
-typedef  struct TYPE_31__   TYPE_7__ ;
-typedef  struct TYPE_30__   TYPE_6__ ;
-typedef  struct TYPE_29__   TYPE_5__ ;
-typedef  struct TYPE_28__   TYPE_4__ ;
-typedef  struct TYPE_27__   TYPE_3__ ;
-typedef  struct TYPE_26__   TYPE_2__ ;
-typedef  struct TYPE_25__   TYPE_1__ ;
-typedef  struct TYPE_24__   TYPE_12__ ;
 
-/* Type definitions */
-struct TYPE_28__ {int /*<<< orphan*/  mutex; int /*<<< orphan*/  mallocFailed; TYPE_5__* pVtabCtx; } ;
-typedef  TYPE_4__ sqlite3 ;
-typedef  int /*<<< orphan*/  sParse ;
+
+
+typedef struct TYPE_32__ TYPE_8__ ;
+typedef struct TYPE_31__ TYPE_7__ ;
+typedef struct TYPE_30__ TYPE_6__ ;
+typedef struct TYPE_29__ TYPE_5__ ;
+typedef struct TYPE_28__ TYPE_4__ ;
+typedef struct TYPE_27__ TYPE_3__ ;
+typedef struct TYPE_26__ TYPE_2__ ;
+typedef struct TYPE_25__ TYPE_1__ ;
+typedef struct TYPE_24__ TYPE_12__ ;
+
+
+struct TYPE_28__ {int mutex; int mallocFailed; TYPE_5__* pVtabCtx; } ;
+typedef TYPE_4__ sqlite3 ;
+typedef int sParse ;
 struct TYPE_29__ {int bDeclared; TYPE_3__* pVTable; TYPE_6__* pTab; } ;
-typedef  TYPE_5__ VtabCtx ;
-struct TYPE_30__ {int tabFlags; TYPE_8__* pIndex; scalar_t__ aCol; scalar_t__ nCol; int /*<<< orphan*/  pSelect; } ;
-typedef  TYPE_6__ Table ;
+typedef TYPE_5__ VtabCtx ;
+struct TYPE_30__ {int tabFlags; TYPE_8__* pIndex; scalar_t__ aCol; scalar_t__ nCol; int pSelect; } ;
+typedef TYPE_6__ Table ;
 struct TYPE_32__ {scalar_t__ pNext; TYPE_6__* pTable; } ;
-struct TYPE_31__ {int nQueryLoop; TYPE_6__* pNewTable; scalar_t__ pVdbe; int /*<<< orphan*/  eParseMode; TYPE_4__* db; } ;
+struct TYPE_31__ {int nQueryLoop; TYPE_6__* pNewTable; scalar_t__ pVdbe; int eParseMode; TYPE_4__* db; } ;
 struct TYPE_27__ {TYPE_2__* pMod; } ;
 struct TYPE_26__ {TYPE_1__* pModule; } ;
 struct TYPE_25__ {scalar_t__ xUpdate; } ;
 struct TYPE_24__ {int nKeyCol; } ;
-typedef  TYPE_7__ Parse ;
-typedef  TYPE_8__ Index ;
+typedef TYPE_7__ Parse ;
+typedef TYPE_8__ Index ;
 
-/* Variables and functions */
- scalar_t__ HasRowid (TYPE_6__*) ; 
- int IsVirtual (TYPE_6__*) ; 
- int /*<<< orphan*/  PARSE_MODE_DECLARE_VTAB ; 
- int /*<<< orphan*/  PARSE_MODE_NORMAL ; 
- int SQLITE_ERROR ; 
- int /*<<< orphan*/  SQLITE_MISUSE ; 
- int SQLITE_MISUSE_BKPT ; 
- int SQLITE_OK ; 
- int TF_NoVisibleRowid ; 
- int TF_WithoutRowid ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memset (TYPE_7__*,int /*<<< orphan*/ ,int) ; 
- int sqlite3ApiExit (TYPE_4__*,int) ; 
- int /*<<< orphan*/  sqlite3DbFree (TYPE_4__*,char*) ; 
- int /*<<< orphan*/  sqlite3DeleteTable (TYPE_4__*,TYPE_6__*) ; 
- int /*<<< orphan*/  sqlite3Error (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3ErrorWithMsg (TYPE_4__*,int,char*,char*) ; 
- int /*<<< orphan*/  sqlite3ParserReset (TYPE_7__*) ; 
- TYPE_12__* sqlite3PrimaryKeyIndex (TYPE_6__*) ; 
- int sqlite3RunParser (TYPE_7__*,char const*,char**) ; 
- int /*<<< orphan*/  sqlite3SafetyCheckOk (TYPE_4__*) ; 
- int /*<<< orphan*/  sqlite3VdbeFinalize (scalar_t__) ; 
- int /*<<< orphan*/  sqlite3_mutex_enter (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_mutex_leave (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ HasRowid (TYPE_6__*) ;
+ int IsVirtual (TYPE_6__*) ;
+ int PARSE_MODE_DECLARE_VTAB ;
+ int PARSE_MODE_NORMAL ;
+ int SQLITE_ERROR ;
+ int SQLITE_MISUSE ;
+ int SQLITE_MISUSE_BKPT ;
+ int SQLITE_OK ;
+ int TF_NoVisibleRowid ;
+ int TF_WithoutRowid ;
+ int assert (int) ;
+ int memset (TYPE_7__*,int ,int) ;
+ int sqlite3ApiExit (TYPE_4__*,int) ;
+ int sqlite3DbFree (TYPE_4__*,char*) ;
+ int sqlite3DeleteTable (TYPE_4__*,TYPE_6__*) ;
+ int sqlite3Error (TYPE_4__*,int ) ;
+ int sqlite3ErrorWithMsg (TYPE_4__*,int,char*,char*) ;
+ int sqlite3ParserReset (TYPE_7__*) ;
+ TYPE_12__* sqlite3PrimaryKeyIndex (TYPE_6__*) ;
+ int sqlite3RunParser (TYPE_7__*,char const*,char**) ;
+ int sqlite3SafetyCheckOk (TYPE_4__*) ;
+ int sqlite3VdbeFinalize (scalar_t__) ;
+ int sqlite3_mutex_enter (int ) ;
+ int sqlite3_mutex_leave (int ) ;
 
 int sqlite3_declare_vtab(sqlite3 *db, const char *zCreateTable){
   VtabCtx *pCtx;
@@ -68,11 +68,11 @@ int sqlite3_declare_vtab(sqlite3 *db, const char *zCreateTable){
   char *zErr = 0;
   Parse sParse;
 
-#ifdef SQLITE_ENABLE_API_ARMOR
-  if( !sqlite3SafetyCheckOk(db) || zCreateTable==0 ){
-    return SQLITE_MISUSE_BKPT;
-  }
-#endif
+
+
+
+
+
   sqlite3_mutex_enter(db->mutex);
   pCtx = db->pVtabCtx;
   if( !pCtx || pCtx->bDeclared ){
@@ -87,7 +87,7 @@ int sqlite3_declare_vtab(sqlite3 *db, const char *zCreateTable){
   sParse.eParseMode = PARSE_MODE_DECLARE_VTAB;
   sParse.db = db;
   sParse.nQueryLoop = 1;
-  if( SQLITE_OK==sqlite3RunParser(&sParse, zCreateTable, &zErr) 
+  if( SQLITE_OK==sqlite3RunParser(&sParse, zCreateTable, &zErr)
    && sParse.pNewTable
    && !db->mallocFailed
    && !sParse.pNewTable->pSelect
@@ -107,8 +107,8 @@ int sqlite3_declare_vtab(sqlite3 *db, const char *zCreateTable){
        && pCtx->pVTable->pMod->pModule->xUpdate!=0
        && sqlite3PrimaryKeyIndex(pNew)->nKeyCol!=1
       ){
-        /* WITHOUT ROWID virtual tables must either be read-only (xUpdate==0)
-        ** or else must have a single-column PRIMARY KEY */
+
+
         rc = SQLITE_ERROR;
       }
       pIdx = pNew->pIndex;

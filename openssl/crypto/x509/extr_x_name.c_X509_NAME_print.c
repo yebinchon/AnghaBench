@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_NAME ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int BIO_write (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  ERR_R_BUF_LIB ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
- int /*<<< orphan*/  X509_F_X509_NAME_PRINT ; 
- char* X509_NAME_oneline (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ossl_isupper (char) ; 
+
+
+
+typedef int X509_NAME ;
+typedef int BIO ;
+
+
+ int BIO_write (int *,char*,int) ;
+ int ERR_R_BUF_LIB ;
+ int OPENSSL_free (char*) ;
+ int X509_F_X509_NAME_PRINT ;
+ char* X509_NAME_oneline (int const*,int *,int ) ;
+ int X509err (int ,int ) ;
+ scalar_t__ ossl_isupper (char) ;
 
 int X509_NAME_print(BIO *bp, const X509_NAME *name, int obase)
 {
@@ -29,14 +29,14 @@ int X509_NAME_print(BIO *bp, const X509_NAME *name, int obase)
 
     l = 80 - 2 - obase;
 
-    b = X509_NAME_oneline(name, NULL, 0);
-    if (b == NULL)
+    b = X509_NAME_oneline(name, ((void*)0), 0);
+    if (b == ((void*)0))
         return 0;
     if (*b == '\0') {
         OPENSSL_free(b);
         return 1;
     }
-    s = b + 1;                  /* skip the first slash */
+    s = b + 1;
 
     c = s;
     for (;;) {
@@ -48,7 +48,7 @@ int X509_NAME_print(BIO *bp, const X509_NAME *name, int obase)
             i = s - c;
             if (BIO_write(bp, c, i) != i)
                 goto err;
-            c = s + 1;          /* skip following slash */
+            c = s + 1;
             if (*s != '\0') {
                 if (BIO_write(bp, ", ", 2) != 2)
                     goto err;

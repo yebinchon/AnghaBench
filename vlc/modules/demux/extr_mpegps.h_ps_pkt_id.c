@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- scalar_t__ unlikely (int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static inline int ps_pkt_id( const uint8_t *p_pkt, size_t i_pkt )
 {
@@ -30,34 +30,34 @@ __attribute__((used)) static inline int ps_pkt_id( const uint8_t *p_pkt, size_t 
 
             if( (i_sub_id & 0xfe) == 0xa0 &&
                 i_pkt >= i_start + 7 &&
-                ( p_pkt[i_start + 5] >=  0xc0 ||
+                ( p_pkt[i_start + 5] >= 0xc0 ||
                   p_pkt[i_start + 6] != 0x80 ) )
             {
-                /* AOB LPCM/MLP extension
-                * XXX for MLP I think that the !=0x80 test is not good and
-                * will fail for some valid files */
+
+
+
                 return 0xa000 | (i_sub_id & 0x01);
             }
         }
 
-        /* VOB extension */
+
         return 0xbd00 | i_sub_id;
     }
     else if( i_pkt >= 9 &&
              p_pkt[3] == 0xfd &&
-             (p_pkt[6]&0xC0) == 0x80 &&   /* mpeg2 */
-             (p_pkt[7]&0x01) == 0x01 )    /* extension_flag */
+             (p_pkt[6]&0xC0) == 0x80 &&
+             (p_pkt[7]&0x01) == 0x01 )
     {
-        /* ISO 13818 amendment 2 and SMPTE RP 227 */
+
         const uint8_t i_flags = p_pkt[7];
         unsigned int i_skip = 9;
 
-        /* Find PES extension */
+
         if( (i_flags & 0x80 ) )
         {
-            i_skip += 5;        /* pts */
+            i_skip += 5;
             if( (i_flags & 0x40) )
-                i_skip += 5;    /* dts */
+                i_skip += 5;
         }
         if( (i_flags & 0x20 ) )
             i_skip += 6;
@@ -74,7 +74,7 @@ __attribute__((used)) static inline int ps_pkt_id( const uint8_t *p_pkt, size_t 
         {
             const uint8_t i_flags2 = p_pkt[i_skip];
 
-            /* Find PES extension 2 */
+
             i_skip += 1;
             if( i_flags2 & 0x80 )
                 i_skip += 16;

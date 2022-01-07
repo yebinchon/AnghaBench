@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {char* member_0; scalar_t__ code; int /*<<< orphan*/  str; int /*<<< orphan*/  member_1; } ;
-typedef  TYPE_1__ error_enum ;
-struct TYPE_6__ {int /*<<< orphan*/  sname; } ;
-typedef  TYPE_2__ ASN1_ITEM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD_TEST (int /*<<< orphan*/ ) ; 
-#define  ASN1_BIO 132 
-#define  ASN1_COMPARE 131 
-#define  ASN1_DECODE 130 
-#define  ASN1_ENCODE 129 
- TYPE_2__* ASN1_ITEM_get (size_t) ; 
- int /*<<< orphan*/ * ASN1_ITEM_lookup (char const*) ; 
-#define  ASN1_OK 128 
- scalar_t__ ASN1_UNKNOWN ; 
- size_t OSSL_NELEM (TYPE_1__*) ; 
- int /*<<< orphan*/  TEST_error (char*,char const*) ; 
- int /*<<< orphan*/  TEST_note (char*,...) ; 
- int /*<<< orphan*/  TEST_ptr (char const*) ; 
- scalar_t__ expected_error ; 
- int /*<<< orphan*/ * item_type ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  test_bad_asn1 ; 
- char const* test_file ; 
- char* test_get_argument (int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {char* member_0; scalar_t__ code; int str; int member_1; } ;
+typedef TYPE_1__ error_enum ;
+struct TYPE_6__ {int sname; } ;
+typedef TYPE_2__ ASN1_ITEM ;
+
+
+ int ADD_TEST (int ) ;
+
+
+
+
+ TYPE_2__* ASN1_ITEM_get (size_t) ;
+ int * ASN1_ITEM_lookup (char const*) ;
+
+ scalar_t__ ASN1_UNKNOWN ;
+ size_t OSSL_NELEM (TYPE_1__*) ;
+ int TEST_error (char*,char const*) ;
+ int TEST_note (char*,...) ;
+ int TEST_ptr (char const*) ;
+ scalar_t__ expected_error ;
+ int * item_type ;
+ scalar_t__ strcmp (int ,char const*) ;
+ int test_bad_asn1 ;
+ char const* test_file ;
+ char* test_get_argument (int) ;
 
 int setup_tests(void)
 {
@@ -46,11 +46,11 @@ int setup_tests(void)
     size_t i;
 
     static error_enum expected_errors[] = {
-        {"OK", ASN1_OK},
-        {"BIO", ASN1_BIO},
-        {"decode", ASN1_DECODE},
-        {"encode", ASN1_ENCODE},
-        {"compare", ASN1_COMPARE}
+        {"OK", 128},
+        {"BIO", 132},
+        {"decode", 130},
+        {"encode", 129},
+        {"compare", 131}
     };
 
     if (!TEST_ptr(test_type_name = test_get_argument(0))
@@ -60,13 +60,13 @@ int setup_tests(void)
 
     item_type = ASN1_ITEM_lookup(test_type_name);
 
-    if (item_type == NULL) {
+    if (item_type == ((void*)0)) {
         TEST_error("Unknown type %s", test_type_name);
         TEST_note("Supported types:");
         for (i = 0;; i++) {
             const ASN1_ITEM *it = ASN1_ITEM_get(i);
 
-            if (it == NULL)
+            if (it == ((void*)0))
                 break;
             TEST_note("\t%s", it->sname);
         }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
-struct TYPE_4__ {int /*<<< orphan*/  custdata_list; } ;
-typedef  TYPE_1__ TLBParDesc ;
 
-/* Variables and functions */
- TYPE_1__* heap_alloc_zero (int) ; 
- int /*<<< orphan*/  list_init (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_4__ {int custdata_list; } ;
+typedef TYPE_1__ TLBParDesc ;
+
+
+ TYPE_1__* heap_alloc_zero (int) ;
+ int list_init (int *) ;
 
 __attribute__((used)) static TLBParDesc *TLBParDesc_Constructor(UINT n)
 {
@@ -25,7 +25,7 @@ __attribute__((used)) static TLBParDesc *TLBParDesc_Constructor(UINT n)
 
     ret = heap_alloc_zero(sizeof(TLBParDesc) * n);
     if(!ret)
-        return NULL;
+        return ((void*)0);
 
     while(n){
         list_init(&ret[n-1].custdata_list);

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_loop_t ;
-struct pollfd {int fd; int revents; int /*<<< orphan*/  events; } ;
 
-/* Variables and functions */
- scalar_t__ EAGAIN ; 
- scalar_t__ EINTR ; 
- int /*<<< orphan*/  POLLIN ; 
- int POLLNVAL ; 
- int UV_EINVAL ; 
- int UV__ERR (scalar_t__) ; 
- scalar_t__ errno ; 
- int poll (struct pollfd*,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uv_loop_t ;
+struct pollfd {int fd; int revents; int events; } ;
+
+
+ scalar_t__ EAGAIN ;
+ scalar_t__ EINTR ;
+ int POLLIN ;
+ int POLLNVAL ;
+ int UV_EINVAL ;
+ int UV__ERR (scalar_t__) ;
+ scalar_t__ errno ;
+ int poll (struct pollfd*,int,int ) ;
 
 int uv__io_check_fd(uv_loop_t* loop, int fd) {
   struct pollfd p[1];

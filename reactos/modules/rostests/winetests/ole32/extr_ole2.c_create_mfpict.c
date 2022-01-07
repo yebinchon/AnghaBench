@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  hMetaFilePict; } ;
-struct TYPE_8__ {int xExt; int yExt; int /*<<< orphan*/  hMF; int /*<<< orphan*/  mm; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * pUnkForRelease; int /*<<< orphan*/  tymed; } ;
-typedef  TYPE_1__ STGMEDIUM ;
-typedef  TYPE_2__ METAFILEPICT ;
-typedef  int /*<<< orphan*/  HDC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseMetaFile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateMetaFileW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GMEM_MOVEABLE ; 
- int /*<<< orphan*/  GlobalAlloc (int /*<<< orphan*/ ,int) ; 
- TYPE_2__* GlobalLock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GlobalUnlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MM_ANISOTROPIC ; 
- int /*<<< orphan*/  Rectangle (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  TYMED_MFPICT ; 
- TYPE_4__* U (TYPE_1__*) ; 
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int hMetaFilePict; } ;
+struct TYPE_8__ {int xExt; int yExt; int hMF; int mm; } ;
+struct TYPE_7__ {int * pUnkForRelease; int tymed; } ;
+typedef TYPE_1__ STGMEDIUM ;
+typedef TYPE_2__ METAFILEPICT ;
+typedef int HDC ;
+
+
+ int CloseMetaFile (int ) ;
+ int CreateMetaFileW (int *) ;
+ int GMEM_MOVEABLE ;
+ int GlobalAlloc (int ,int) ;
+ TYPE_2__* GlobalLock (int ) ;
+ int GlobalUnlock (int ) ;
+ int MM_ANISOTROPIC ;
+ int Rectangle (int ,int ,int ,int,int) ;
+ int TYMED_MFPICT ;
+ TYPE_4__* U (TYPE_1__*) ;
 
 __attribute__((used)) static void create_mfpict(STGMEDIUM *med)
 {
     METAFILEPICT *mf;
-    HDC hdc = CreateMetaFileW(NULL);
+    HDC hdc = CreateMetaFileW(((void*)0));
 
     Rectangle(hdc, 0, 0, 100, 200);
 
@@ -47,5 +47,5 @@ __attribute__((used)) static void create_mfpict(STGMEDIUM *med)
     mf->yExt = 200;
     mf->hMF = CloseMetaFile(hdc);
     GlobalUnlock(U(med)->hMetaFilePict);
-    med->pUnkForRelease = NULL;
+    med->pUnkForRelease = ((void*)0);
 }

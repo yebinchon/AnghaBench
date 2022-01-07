@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EC_GROUP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EC_GROUP_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_sha256 () ; 
- int /*<<< orphan*/  EVP_sm3 () ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * create_EC_group (char*,char*,char*,char*,char*,char*,char*) ; 
- int /*<<< orphan*/  test_sm2_crypt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char*,char*,char*) ; 
+
+
+
+typedef int EC_GROUP ;
+
+
+ int EC_GROUP_free (int *) ;
+ int EVP_sha256 () ;
+ int EVP_sm3 () ;
+ int TEST_ptr (int *) ;
+ int * create_EC_group (char*,char*,char*,char*,char*,char*,char*) ;
+ int test_sm2_crypt (int *,int ,char*,char*,char*,char*) ;
 
 __attribute__((used)) static int sm2_crypt_test(void)
 {
@@ -50,7 +50,7 @@ __attribute__((used)) static int sm2_crypt_test(void)
             "285E07480653426D0413650053A89B41C418B0C3AAD00D886C00286467"))
         goto done;
 
-    /* Same test as above except using SHA-256 instead of SM3 */
+
     if (!test_sm2_crypt(
             test_group,
             EVP_sha256(),

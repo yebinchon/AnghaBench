@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct send_ctx {int /*<<< orphan*/  pending_dir_moves; } ;
-struct pending_dir_move {int /*<<< orphan*/  node; int /*<<< orphan*/  list; } ;
+
+
+
+
+struct send_ctx {int pending_dir_moves; } ;
+struct pending_dir_move {int node; int list; } ;
 struct list_head {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIST_HEAD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RB_CLEAR_NODE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RB_EMPTY_NODE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,struct list_head*) ; 
- scalar_t__ list_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_splice_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_splice_tail (int /*<<< orphan*/ *,struct list_head*) ; 
- int /*<<< orphan*/  rb_erase (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int LIST_HEAD (int ) ;
+ int RB_CLEAR_NODE (int *) ;
+ int RB_EMPTY_NODE (int *) ;
+ int list ;
+ int list_add_tail (int *,struct list_head*) ;
+ scalar_t__ list_empty (int *) ;
+ int list_splice_init (int *,int *) ;
+ int list_splice_tail (int *,struct list_head*) ;
+ int rb_erase (int *,int *) ;
 
 __attribute__((used)) static void tail_append_pending_moves(struct send_ctx *sctx,
-				      struct pending_dir_move *moves,
-				      struct list_head *stack)
+          struct pending_dir_move *moves,
+          struct list_head *stack)
 {
-	if (list_empty(&moves->list)) {
-		list_add_tail(&moves->list, stack);
-	} else {
-		LIST_HEAD(list);
-		list_splice_init(&moves->list, &list);
-		list_add_tail(&moves->list, stack);
-		list_splice_tail(&list, stack);
-	}
-	if (!RB_EMPTY_NODE(&moves->node)) {
-		rb_erase(&moves->node, &sctx->pending_dir_moves);
-		RB_CLEAR_NODE(&moves->node);
-	}
+ if (list_empty(&moves->list)) {
+  list_add_tail(&moves->list, stack);
+ } else {
+  LIST_HEAD(list);
+  list_splice_init(&moves->list, &list);
+  list_add_tail(&moves->list, stack);
+  list_splice_tail(&list, stack);
+ }
+ if (!RB_EMPTY_NODE(&moves->node)) {
+  rb_erase(&moves->node, &sctx->pending_dir_moves);
+  RB_CLEAR_NODE(&moves->node);
+ }
 }

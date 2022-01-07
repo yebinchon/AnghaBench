@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_tick_t ;
-typedef  int /*<<< orphan*/  vlc_player_t ;
-struct report_category_delay {int cat; int /*<<< orphan*/  delay; } ;
+
+
+
+
+typedef int vlc_tick_t ;
+typedef int vlc_player_t ;
+struct report_category_delay {int cat; int delay; } ;
 struct ctx {int dummy; } ;
-typedef  enum es_format_category_e { ____Placeholder_es_format_category_e } es_format_category_e ;
+typedef enum es_format_category_e { ____Placeholder_es_format_category_e } es_format_category_e ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VEC_PUSH (int /*<<< orphan*/ ,struct report_category_delay) ; 
- struct ctx* get_ctx (int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  on_category_delay_changed ; 
+
+ int VEC_PUSH (int ,struct report_category_delay) ;
+ struct ctx* get_ctx (int *,void*) ;
+ int on_category_delay_changed ;
 
 __attribute__((used)) static void
 player_on_category_delay_changed(vlc_player_t *player,

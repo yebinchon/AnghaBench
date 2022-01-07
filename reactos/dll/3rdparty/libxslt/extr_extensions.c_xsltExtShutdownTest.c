@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xsltTransformContextPtr ;
-typedef  int /*<<< orphan*/  xmlChar ;
 
-/* Variables and functions */
- void* testData ; 
- int /*<<< orphan*/  xsltGenericDebug (int /*<<< orphan*/ ,char*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  xsltGenericDebugContext ; 
- int /*<<< orphan*/  xsltTransformError (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int xsltTransformContextPtr ;
+typedef int xmlChar ;
+
+
+ void* testData ;
+ int xsltGenericDebug (int ,char*,int const*) ;
+ int xsltGenericDebugContext ;
+ int xsltTransformError (int ,int *,int *,char*) ;
 
 __attribute__((used)) static void
 xsltExtShutdownTest(xsltTransformContextPtr ctxt,
                     const xmlChar * URI, void *data)
 {
-    if (testData == NULL) {
-        xsltTransformError(ctxt, NULL, NULL,
+    if (testData == ((void*)0)) {
+        xsltTransformError(ctxt, ((void*)0), ((void*)0),
                            "xsltExtShutdownTest: not initialized\n");
         return;
     }
     if (data != testData) {
-        xsltTransformError(ctxt, NULL, NULL,
+        xsltTransformError(ctxt, ((void*)0), ((void*)0),
                            "xsltExtShutdownTest: wrong data\n");
     }
-    testData = NULL;
+    testData = ((void*)0);
     xsltGenericDebug(xsltGenericDebugContext,
                      "Unregistered test module : %s\n", URI);
 }

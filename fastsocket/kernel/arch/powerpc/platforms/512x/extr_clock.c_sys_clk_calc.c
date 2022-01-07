@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct clk {int /*<<< orphan*/  rate; } ;
-struct TYPE_2__ {int /*<<< orphan*/  rate; } ;
 
-/* Variables and functions */
- TYPE_1__ ref_clk ; 
- int /*<<< orphan*/  ref_to_sys (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct clk {int rate; } ;
+struct TYPE_2__ {int rate; } ;
+
+
+ TYPE_1__ ref_clk ;
+ int ref_to_sys (int ) ;
 
 __attribute__((used)) static void sys_clk_calc(struct clk *clk)
 {
-	clk->rate = ref_to_sys(ref_clk.rate);
+ clk->rate = ref_to_sys(ref_clk.rate);
 }

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct vo {int /*<<< orphan*/  osd; struct priv* priv; } ;
-struct TYPE_6__ {int y0; int y1; int x0; int /*<<< orphan*/  x1; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int uint16_t ;
+struct vo {int osd; struct priv* priv; } ;
+struct TYPE_6__ {int y0; int y1; int x0; int x1; } ;
 struct mp_rect {void* y0; void* x0; } ;
-struct priv {int depth; struct mp_image* last_input; TYPE_3__* cur_frame; int /*<<< orphan*/  osd; int /*<<< orphan*/  cur_frame_cropped; int /*<<< orphan*/  sws; TYPE_2__ dst; struct mp_rect src; scalar_t__ active; } ;
-struct TYPE_5__ {int /*<<< orphan*/  align_y; int /*<<< orphan*/  align_x; } ;
-struct mp_image {int /*<<< orphan*/  pts; TYPE_1__ fmt; } ;
+struct priv {int depth; struct mp_image* last_input; TYPE_3__* cur_frame; int osd; int cur_frame_cropped; int sws; TYPE_2__ dst; struct mp_rect src; scalar_t__ active; } ;
+struct TYPE_5__ {int align_y; int align_x; } ;
+struct mp_image {int pts; TYPE_1__ fmt; } ;
 struct framebuffer {int stride; scalar_t__ map; } ;
-typedef  struct mp_image mp_image_t ;
+typedef struct mp_image mp_image_t ;
 struct TYPE_7__ {int w; int h; int* stride; scalar_t__* planes; } ;
 
-/* Variables and functions */
- int BYTES_PER_PIXEL ; 
- void* MP_ALIGN_DOWN (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy_pic (scalar_t__,scalar_t__,int,int,int,int) ; 
- int /*<<< orphan*/  mp_image_clear (TYPE_3__*,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  mp_image_crop_rc (struct mp_image*,struct mp_rect) ; 
- int /*<<< orphan*/  mp_sws_scale (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct mp_image*) ; 
- int /*<<< orphan*/  osd_draw_on_image (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  talloc_free (struct mp_image*) ; 
+
+ int BYTES_PER_PIXEL ;
+ void* MP_ALIGN_DOWN (void*,int ) ;
+ int memcpy_pic (scalar_t__,scalar_t__,int,int,int,int) ;
+ int mp_image_clear (TYPE_3__*,int ,int,int,int) ;
+ int mp_image_crop_rc (struct mp_image*,struct mp_rect) ;
+ int mp_sws_scale (int ,int ,struct mp_image*) ;
+ int osd_draw_on_image (int ,int ,int ,int ,TYPE_3__*) ;
+ int talloc_free (struct mp_image*) ;
 
 __attribute__((used)) static void draw_image(struct vo *vo, mp_image_t *mpi, struct framebuffer *front_buf)
 {
     struct priv *p = vo->priv;
 
-    if (p->active && front_buf != NULL) {
+    if (p->active && front_buf != ((void*)0)) {
         if (mpi) {
             struct mp_image src = *mpi;
             struct mp_rect src_rc = p->src;
@@ -60,7 +60,7 @@ __attribute__((used)) static void draw_image(struct vo *vo, mp_image_t *mpi, str
         }
 
         if (p->depth == 30) {
-            // Pack GBRP10 image into XRGB2101010 for DRM
+
             const int w = p->cur_frame->w;
             const int h = p->cur_frame->h;
 

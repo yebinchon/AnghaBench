@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char const* data; } ;
-typedef  TYPE_1__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct get_dir_baton_t {scalar_t__ is_directory; int /*<<< orphan*/  result_pool; int /*<<< orphan*/  ret_props; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_string_t ;
+typedef int svn_error_t ;
+struct get_dir_baton_t {scalar_t__ is_directory; int result_pool; int ret_props; } ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR_FS_NOT_DIRECTORY ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- char* svn_ra_serf__svnname_from_wirename (char const*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_string_dup (TYPE_1__ const*,int /*<<< orphan*/ ) ; 
+
+ int SVN_ERR_FS_NOT_DIRECTORY ;
+ int * SVN_NO_ERROR ;
+ scalar_t__ TRUE ;
+ int _ (char*) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int * svn_error_create (int ,int *,int ) ;
+ int svn_hash_sets (int ,char const*,int ) ;
+ char* svn_ra_serf__svnname_from_wirename (char const*,char const*,int ) ;
+ int svn_string_dup (TYPE_1__ const*,int ) ;
 
 __attribute__((used)) static svn_error_t *
 get_dir_props_cb(void *baton,
@@ -53,8 +53,8 @@ get_dir_props_cb(void *baton,
         {
           if (strcmp(value->data, "collection") != 0)
             {
-              /* Tell a lie to exit early */
-              return svn_error_create(SVN_ERR_FS_NOT_DIRECTORY, NULL,
+
+              return svn_error_create(SVN_ERR_FS_NOT_DIRECTORY, ((void*)0),
                                       _("Can't get properties of non-directory"));
             }
           else

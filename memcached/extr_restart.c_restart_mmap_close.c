@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  MS_SYNC ; 
- scalar_t__ close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memory_file ; 
- int /*<<< orphan*/  mmap_base ; 
- int /*<<< orphan*/  mmap_fd ; 
- int /*<<< orphan*/  msync (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ munmap (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  perror (char*) ; 
- scalar_t__ restart_save (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slabmem_limit ; 
- int /*<<< orphan*/  stderr ; 
+ int MS_SYNC ;
+ scalar_t__ close (int ) ;
+ int fprintf (int ,char*) ;
+ int free (int ) ;
+ int memory_file ;
+ int mmap_base ;
+ int mmap_fd ;
+ int msync (int ,int ,int ) ;
+ scalar_t__ munmap (int ,int ) ;
+ int perror (char*) ;
+ scalar_t__ restart_save (int ) ;
+ int slabmem_limit ;
+ int stderr ;
 
 void restart_mmap_close(void) {
     msync(mmap_base, slabmem_limit, MS_SYNC);

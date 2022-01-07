@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {float green_metadata_type; float period_type; float num_seconds; float num_pictures; float xsd_metric_type; scalar_t__ xsd_metric_value; scalar_t__ percent_alpha_point_deblocking_instance; scalar_t__ percent_six_tap_filtering; scalar_t__ percent_intra_coded_macroblocks; scalar_t__ percent_non_zero_macroblocks; } ;
-typedef  TYPE_1__ H264SEIGreenMetaData ;
+typedef TYPE_1__ H264SEIGreenMetaData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,...) ; 
+
+ int AV_LOG_DEBUG ;
+ int av_log (void*,int ,char*,...) ;
 
 __attribute__((used)) static void debug_green_metadata(const H264SEIGreenMetaData *gm, void *logctx)
 {

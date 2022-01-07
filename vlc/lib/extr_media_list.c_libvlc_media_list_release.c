@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  libvlc_media_t ;
-struct TYPE_4__ {scalar_t__ i_refcount; int /*<<< orphan*/  p_libvlc_instance; int /*<<< orphan*/  items; int /*<<< orphan*/  refcount_lock; int /*<<< orphan*/  object_lock; int /*<<< orphan*/ * p_md; int /*<<< orphan*/  event_manager; } ;
-typedef  TYPE_1__ libvlc_media_list_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  libvlc_event_manager_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_media_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_array_clear (int /*<<< orphan*/ *) ; 
- size_t vlc_array_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vlc_array_item_at_index (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  vlc_mutex_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int libvlc_media_t ;
+struct TYPE_4__ {scalar_t__ i_refcount; int p_libvlc_instance; int items; int refcount_lock; int object_lock; int * p_md; int event_manager; } ;
+typedef TYPE_1__ libvlc_media_list_t ;
+
+
+ int free (TYPE_1__*) ;
+ int libvlc_event_manager_destroy (int *) ;
+ int libvlc_media_release (int *) ;
+ int libvlc_release (int ) ;
+ int vlc_array_clear (int *) ;
+ size_t vlc_array_count (int *) ;
+ int * vlc_array_item_at_index (int *,size_t) ;
+ int vlc_mutex_destroy (int *) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 void libvlc_media_list_release( libvlc_media_list_t * p_mlist )
 {
@@ -38,7 +38,7 @@ void libvlc_media_list_release( libvlc_media_list_t * p_mlist )
     }
     vlc_mutex_unlock( &p_mlist->refcount_lock );
 
-    /* Refcount null, time to free */
+
 
     libvlc_event_manager_destroy( &p_mlist->event_manager );
     libvlc_media_release( p_mlist->p_md );

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {TYPE_2__** delayed_pic; scalar_t__ first_field; int /*<<< orphan*/ * cur_pic_ptr; } ;
-struct TYPE_8__ {scalar_t__ poc; int /*<<< orphan*/  reference; int /*<<< orphan*/  mmco_reset; TYPE_1__* f; } ;
-struct TYPE_7__ {int /*<<< orphan*/  key_frame; } ;
-typedef  TYPE_2__ H264Picture ;
-typedef  TYPE_3__ H264Context ;
-typedef  int /*<<< orphan*/  AVFrame ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DELAYED_PIC_REF ; 
- int finalize_frame (TYPE_3__*,int /*<<< orphan*/ *,TYPE_2__*,int*) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_9__ {TYPE_2__** delayed_pic; scalar_t__ first_field; int * cur_pic_ptr; } ;
+struct TYPE_8__ {scalar_t__ poc; int reference; int mmco_reset; TYPE_1__* f; } ;
+struct TYPE_7__ {int key_frame; } ;
+typedef TYPE_2__ H264Picture ;
+typedef TYPE_3__ H264Context ;
+typedef int AVFrame ;
+
+
+ int DELAYED_PIC_REF ;
+ int finalize_frame (TYPE_3__*,int *,TYPE_2__*,int*) ;
 
 __attribute__((used)) static int send_next_delayed_frame(H264Context *h, AVFrame *dst_frame,
                                    int *got_frame, int buf_index)
@@ -30,7 +30,7 @@ __attribute__((used)) static int send_next_delayed_frame(H264Context *h, AVFrame
     int ret, i, out_idx;
     H264Picture *out = h->delayed_pic[0];
 
-    h->cur_pic_ptr = NULL;
+    h->cur_pic_ptr = ((void*)0);
     h->first_field = 0;
 
     out_idx = 0;
@@ -40,7 +40,7 @@ __attribute__((used)) static int send_next_delayed_frame(H264Context *h, AVFrame
          !h->delayed_pic[i]->mmco_reset;
          i++)
         if (h->delayed_pic[i]->poc < out->poc) {
-            out     = h->delayed_pic[i];
+            out = h->delayed_pic[i];
             out_idx = i;
         }
 

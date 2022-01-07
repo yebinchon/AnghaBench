@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u64 ;
+
+
+
+
+typedef scalar_t__ u64 ;
 struct kvm {int dummy; } ;
-typedef  int /*<<< orphan*/  pud_t ;
-typedef  int /*<<< orphan*/  pte_t ;
-typedef  int /*<<< orphan*/  pmd_t ;
-typedef  int /*<<< orphan*/  gpa_t ;
+typedef int pud_t ;
+typedef int pte_t ;
+typedef int pmd_t ;
+typedef int gpa_t ;
 
-/* Variables and functions */
- scalar_t__ PAGE_SIZE ; 
- scalar_t__ PMD_SIZE ; 
- scalar_t__ PUD_SIZE ; 
- int /*<<< orphan*/  WARN_ON (int) ; 
- int kvm_s2pud_young (int /*<<< orphan*/ ) ; 
- int pmd_young (int /*<<< orphan*/ ) ; 
- int pte_young (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stage2_get_leaf_entry (struct kvm*,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
+
+ scalar_t__ PAGE_SIZE ;
+ scalar_t__ PMD_SIZE ;
+ scalar_t__ PUD_SIZE ;
+ int WARN_ON (int) ;
+ int kvm_s2pud_young (int ) ;
+ int pmd_young (int ) ;
+ int pte_young (int ) ;
+ int stage2_get_leaf_entry (struct kvm*,int ,int **,int **,int **) ;
 
 __attribute__((used)) static int kvm_test_age_hva_handler(struct kvm *kvm, gpa_t gpa, u64 size, void *data)
 {
-	pud_t *pud;
-	pmd_t *pmd;
-	pte_t *pte;
+ pud_t *pud;
+ pmd_t *pmd;
+ pte_t *pte;
 
-	WARN_ON(size != PAGE_SIZE && size != PMD_SIZE && size != PUD_SIZE);
-	if (!stage2_get_leaf_entry(kvm, gpa, &pud, &pmd, &pte))
-		return 0;
+ WARN_ON(size != PAGE_SIZE && size != PMD_SIZE && size != PUD_SIZE);
+ if (!stage2_get_leaf_entry(kvm, gpa, &pud, &pmd, &pte))
+  return 0;
 
-	if (pud)
-		return kvm_s2pud_young(*pud);
-	else if (pmd)
-		return pmd_young(*pmd);
-	else
-		return pte_young(*pte);
+ if (pud)
+  return kvm_s2pud_young(*pud);
+ else if (pmd)
+  return pmd_young(*pmd);
+ else
+  return pte_young(*pte);
 }

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int structVersion; char* pzFullUsage; char* pzShortUsage; int fOptSet; char* pzUsageTitle; int /*<<< orphan*/  pzProgName; } ;
-typedef  TYPE_1__ tOptions ;
 
-/* Variables and functions */
- int AO_EXIT_REQ_USAGE ; 
- int EXIT_SUCCESS ; 
- int OPTPROC_COMPUTE ; 
- int OPTPROC_TRANSLATE ; 
- int displayEnum ; 
- scalar_t__ ferror (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fputs (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fserr_exit (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  optionPrintParagraphs (char const*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  option_exits (int) ; 
- int /*<<< orphan*/ * option_usage_fp ; 
- scalar_t__ print_exit ; 
- int /*<<< orphan*/  print_offer_usage (TYPE_1__*) ; 
- int /*<<< orphan*/  print_usage_details (TYPE_1__*,int) ; 
- int /*<<< orphan*/  set_usage_flags (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip_misuse_usage (TYPE_1__*) ; 
- int /*<<< orphan*/ * stderr ; 
- int /*<<< orphan*/ * stdout ; 
- int /*<<< orphan*/  zstderr_name ; 
- int /*<<< orphan*/  zstdout_name ; 
- int /*<<< orphan*/  zwriting ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int structVersion; char* pzFullUsage; char* pzShortUsage; int fOptSet; char* pzUsageTitle; int pzProgName; } ;
+typedef TYPE_1__ tOptions ;
+
+
+ int AO_EXIT_REQ_USAGE ;
+ int EXIT_SUCCESS ;
+ int OPTPROC_COMPUTE ;
+ int OPTPROC_TRANSLATE ;
+ int displayEnum ;
+ scalar_t__ ferror (int *) ;
+ int fflush (int *) ;
+ int fprintf (int *,char*,int ) ;
+ int fputs (char const*,int *) ;
+ int fserr_exit (int ,int ,int ) ;
+ int optionPrintParagraphs (char const*,int,int *) ;
+ int option_exits (int) ;
+ int * option_usage_fp ;
+ scalar_t__ print_exit ;
+ int print_offer_usage (TYPE_1__*) ;
+ int print_usage_details (TYPE_1__*,int) ;
+ int set_usage_flags (TYPE_1__*,int *) ;
+ int skip_misuse_usage (TYPE_1__*) ;
+ int * stderr ;
+ int * stdout ;
+ int zstderr_name ;
+ int zstdout_name ;
+ int zwriting ;
 
 void
 optionUsage(tOptions * opts, int usage_exit_code)
@@ -45,38 +45,29 @@ optionUsage(tOptions * opts, int usage_exit_code)
     int exit_code = (usage_exit_code == AO_EXIT_REQ_USAGE)
         ? EXIT_SUCCESS : usage_exit_code;
 
-    displayEnum = false;
-    set_usage_flags(opts, NULL);
-
-    /*
-     *  Paged usage will preset option_usage_fp to an output file.
-     *  If it hasn't already been set, then set it to standard output
-     *  on successful exit (help was requested), otherwise error out.
-     *
-     *  Test the version before obtaining pzFullUsage or pzShortUsage.
-     *  These fields do not exist before revision 30.
-     */
+    displayEnum = 0;
+    set_usage_flags(opts, ((void*)0));
     {
         char const * pz;
 
         if (exit_code == EXIT_SUCCESS) {
             pz = (opts->structVersion >= 30 * 4096)
-                ? opts->pzFullUsage : NULL;
+                ? opts->pzFullUsage : ((void*)0);
 
-            if (option_usage_fp == NULL)
+            if (option_usage_fp == ((void*)0))
                 option_usage_fp = print_exit ? stderr : stdout;
 
         } else {
             pz = (opts->structVersion >= 30 * 4096)
-                ? opts->pzShortUsage : NULL;
+                ? opts->pzShortUsage : ((void*)0);
 
-            if (option_usage_fp == NULL)
+            if (option_usage_fp == ((void*)0))
                 option_usage_fp = stderr;
         }
 
-        if (((opts->fOptSet & OPTPROC_COMPUTE) == 0) && (pz != NULL)) {
+        if (((opts->fOptSet & OPTPROC_COMPUTE) == 0) && (pz != ((void*)0))) {
             if ((opts->fOptSet & OPTPROC_TRANSLATE) != 0)
-                optionPrintParagraphs(pz, true, option_usage_fp);
+                optionPrintParagraphs(pz, 1, option_usage_fp);
             else
                 fputs(pz, option_usage_fp);
             goto flush_and_exit;
@@ -91,7 +82,7 @@ optionUsage(tOptions * opts, int usage_exit_code)
         print_usage_details(opts, usage_exit_code);
     else
         print_offer_usage(opts);
-    
+
  flush_and_exit:
     fflush(option_usage_fp);
     if (ferror(option_usage_fp) != 0)

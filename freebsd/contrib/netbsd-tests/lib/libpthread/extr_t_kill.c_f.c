@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct threadinfo {int gotsignal; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void *
 f(void *arg)
 {
-	struct threadinfo volatile *t = arg;
+ struct threadinfo volatile *t = arg;
 
-	while (t->gotsignal < 1) {
-		/* busy loop */
-	}
+ while (t->gotsignal < 1) {
 
-	return NULL;
+ }
+
+ return ((void*)0);
 }

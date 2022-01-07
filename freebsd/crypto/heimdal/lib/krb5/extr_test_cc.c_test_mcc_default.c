@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  krb5_error_code ;
-typedef  int /*<<< orphan*/  krb5_context ;
-typedef  int /*<<< orphan*/  krb5_ccache ;
 
-/* Variables and functions */
- int /*<<< orphan*/  krb5_cc_close (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  krb5_cc_default (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  krb5_cc_set_default_name (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  krb5_err (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  krb5_free_context (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  krb5_init_context (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int krb5_error_code ;
+typedef int krb5_context ;
+typedef int krb5_ccache ;
+
+
+ int krb5_cc_close (int ,int ) ;
+ int krb5_cc_default (int ,int *) ;
+ int krb5_cc_set_default_name (int ,char*) ;
+ int krb5_err (int ,int,int ,char*) ;
+ int krb5_free_context (int ) ;
+ int krb5_init_context (int *) ;
 
 __attribute__((used)) static void
 test_mcc_default(void)
@@ -32,30 +32,30 @@ test_mcc_default(void)
 
     for (i = 0; i < 10; i++) {
 
-	ret = krb5_init_context(&context);
-	if (ret)
-	    krb5_err(context, 1, ret, "krb5_init_context");
+ ret = krb5_init_context(&context);
+ if (ret)
+     krb5_err(context, 1, ret, "krb5_init_context");
 
-	ret = krb5_cc_set_default_name(context, "MEMORY:foo");
-	if (ret)
-	    krb5_err(context, 1, ret, "krb5_cc_set_default_name");
+ ret = krb5_cc_set_default_name(context, "MEMORY:foo");
+ if (ret)
+     krb5_err(context, 1, ret, "krb5_cc_set_default_name");
 
-	ret = krb5_cc_default(context, &id);
-	if (ret)
-	    krb5_err(context, 1, ret, "krb5_cc_default");
+ ret = krb5_cc_default(context, &id);
+ if (ret)
+     krb5_err(context, 1, ret, "krb5_cc_default");
 
-	ret = krb5_cc_default(context, &id2);
-	if (ret)
-	    krb5_err(context, 1, ret, "krb5_cc_default");
+ ret = krb5_cc_default(context, &id2);
+ if (ret)
+     krb5_err(context, 1, ret, "krb5_cc_default");
 
-	ret = krb5_cc_close(context, id);
-	if (ret)
-	    krb5_err(context, 1, ret, "krb5_cc_close");
+ ret = krb5_cc_close(context, id);
+ if (ret)
+     krb5_err(context, 1, ret, "krb5_cc_close");
 
-	ret = krb5_cc_close(context, id2);
-	if (ret)
-	    krb5_err(context, 1, ret, "krb5_cc_close");
+ ret = krb5_cc_close(context, id2);
+ if (ret)
+     krb5_err(context, 1, ret, "krb5_cc_close");
 
-	krb5_free_context(context);
+ krb5_free_context(context);
     }
 }

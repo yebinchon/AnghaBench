@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ xcb_visualid_t ;
-typedef  int /*<<< orphan*/  xcb_setup_t ;
-typedef  int /*<<< orphan*/  xcb_screen_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ xcb_visualid_t ;
+typedef int xcb_setup_t ;
+typedef int xcb_screen_t ;
 struct TYPE_6__ {scalar_t__ depth; } ;
-typedef  TYPE_1__ xcb_depth_t ;
+typedef TYPE_1__ xcb_depth_t ;
 struct TYPE_7__ {scalar_t__ rem; TYPE_1__* data; } ;
-typedef  TYPE_2__ xcb_depth_iterator_t ;
-typedef  int /*<<< orphan*/  video_format_t ;
-typedef  scalar_t__ uint8_t ;
+typedef TYPE_2__ xcb_depth_iterator_t ;
+typedef int video_format_t ;
+typedef scalar_t__ uint8_t ;
 
-/* Variables and functions */
- scalar_t__ DepthToFormat (int /*<<< orphan*/  const*,TYPE_1__ const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  video_format_ApplyRotation (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xcb_depth_next (TYPE_2__*) ; 
- TYPE_2__ xcb_screen_allowed_depths_iterator (int /*<<< orphan*/  const*) ; 
+
+ scalar_t__ DepthToFormat (int const*,TYPE_1__ const*,int *) ;
+ int video_format_ApplyRotation (int *,int *) ;
+ int xcb_depth_next (TYPE_2__*) ;
+ TYPE_2__ xcb_screen_allowed_depths_iterator (int const*) ;
 
 __attribute__((used)) static xcb_visualid_t ScreenToFormat(const xcb_setup_t *setup,
                                      const xcb_screen_t *screen,
@@ -46,7 +46,7 @@ __attribute__((used)) static xcb_visualid_t ScreenToFormat(const xcb_setup_t *se
         xcb_visualid_t vid;
 
         if (depth->depth <= *bits)
-            continue; /* no better than earlier depth */
+            continue;
 
         video_format_ApplyRotation(&fmt, fmtp);
         vid = DepthToFormat(setup, depth, &fmt);

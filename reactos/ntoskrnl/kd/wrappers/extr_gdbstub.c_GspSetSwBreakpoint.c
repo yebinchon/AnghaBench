@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t ULONG_PTR ;
-struct TYPE_2__ {size_t Address; int /*<<< orphan*/  Active; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,size_t) ; 
- int /*<<< orphan*/  DPRINT1 (char*) ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GspFindSwBreakpoint (size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GspOutBuffer ; 
- size_t GspSwBreakpointCount ; 
- TYPE_1__* GspSwBreakpoints ; 
- size_t MAX_SW_BREAKPOINTS ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef size_t ULONG_PTR ;
+struct TYPE_2__ {size_t Address; int Active; } ;
+
+
+ int DPRINT (char*,size_t) ;
+ int DPRINT1 (char*) ;
+ int FALSE ;
+ scalar_t__ GspFindSwBreakpoint (size_t,int *) ;
+ int GspOutBuffer ;
+ size_t GspSwBreakpointCount ;
+ TYPE_1__* GspSwBreakpoints ;
+ size_t MAX_SW_BREAKPOINTS ;
+ int strcpy (int ,char*) ;
 
 __attribute__((used)) static void
 GspSetSwBreakpoint(ULONG_PTR Address)
@@ -37,7 +37,7 @@ GspSetSwBreakpoint(ULONG_PTR Address)
         return;
     }
 
-    if (GspFindSwBreakpoint(Address, NULL))
+    if (GspFindSwBreakpoint(Address, ((void*)0)))
     {
         strcpy(GspOutBuffer, "E22");
         return;

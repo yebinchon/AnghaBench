@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  v8i16 ;
-struct TYPE_8__ {int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ v16u8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  unsigned int uint32_t ;
-typedef  unsigned int int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADDS_SH4_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INSERT_W4_UB (unsigned int,unsigned int,unsigned int,unsigned int,TYPE_1__) ; 
- int /*<<< orphan*/  LW4 (int /*<<< orphan*/ *,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  MAXI_SH4_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MUL4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PCKEV_B2_UB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__,TYPE_1__) ; 
- int /*<<< orphan*/  SAT_UH4_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SRLR_H4_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ST_W8 (TYPE_1__,TYPE_1__,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  UNPCK_UB_SH (TYPE_1__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __msa_fill_h (unsigned int) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int v8i16 ;
+struct TYPE_8__ {int member_0; } ;
+typedef TYPE_1__ v16u8 ;
+typedef int uint8_t ;
+typedef unsigned int uint32_t ;
+typedef unsigned int int32_t ;
+
+
+ int ADDS_SH4_SH (int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int INSERT_W4_UB (unsigned int,unsigned int,unsigned int,unsigned int,TYPE_1__) ;
+ int LW4 (int *,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int) ;
+ int MAXI_SH4_SH (int ,int ,int ,int ,int ) ;
+ int MUL4 (int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int PCKEV_B2_UB (int ,int ,int ,int ,TYPE_1__,TYPE_1__) ;
+ int SAT_UH4_SH (int ,int ,int ,int ,int) ;
+ int SRLR_H4_SH (int ,int ,int ,int ,int ) ;
+ int ST_W8 (TYPE_1__,TYPE_1__,int ,int,int,int,int ,int,int,int,int *,unsigned int) ;
+ int UNPCK_UB_SH (TYPE_1__,int ,int ) ;
+ int __msa_fill_h (unsigned int) ;
 
 __attribute__((used)) static void avc_wgt_4x8_msa(uint8_t *data, int32_t stride, int32_t log2_denom,
                             int32_t src_weight, int32_t offset_in)

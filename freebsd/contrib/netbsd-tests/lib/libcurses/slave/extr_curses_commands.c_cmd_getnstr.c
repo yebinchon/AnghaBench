@@ -1,51 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int check_arg_count (int,int) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  getnstr (char*,int) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  report_count (int) ; 
- int /*<<< orphan*/  report_error (char*) ; 
- int /*<<< orphan*/  report_return (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  report_status (char*) ; 
- scalar_t__ sscanf (char*,char*,int*) ; 
+ int check_arg_count (int,int) ;
+ int free (char*) ;
+ int getnstr (char*,int) ;
+ char* malloc (int) ;
+ int report_count (int) ;
+ int report_error (char*) ;
+ int report_return (int ) ;
+ int report_status (char*) ;
+ scalar_t__ sscanf (char*,char*,int*) ;
 
 void
 cmd_getnstr(int nargs, char **args)
 {
-	int limit;
-	char *string;
+ int limit;
+ char *string;
 
-	if (check_arg_count(nargs, 1) == 1)
-		return;
+ if (check_arg_count(nargs, 1) == 1)
+  return;
 
-	if (sscanf(args[0], "%d", &limit) == 0) {
-		report_count(1);
-		report_error("BAD ARGUMENT");
-		return;
-	}
+ if (sscanf(args[0], "%d", &limit) == 0) {
+  report_count(1);
+  report_error("BAD ARGUMENT");
+  return;
+ }
 
-	if ((string = malloc(limit + 1)) == NULL) {
-		report_count(1);
-		report_error("MALLOC_FAILED");
-		return;
-	}
+ if ((string = malloc(limit + 1)) == ((void*)0)) {
+  report_count(1);
+  report_error("MALLOC_FAILED");
+  return;
+ }
 
-	/* XXX call2 */
-	report_count(2);
-	report_return(getnstr(string, limit));
-	report_status(string);
-	free(string);
+
+ report_count(2);
+ report_return(getnstr(string, limit));
+ report_status(string);
+ free(string);
 }

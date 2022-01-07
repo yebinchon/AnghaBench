@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct channel_tlv {scalar_t__ type; int /*<<< orphan*/  length; } ;
+
+
+
+
+struct channel_tlv {scalar_t__ type; int length; } ;
 struct bnx2x {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BNX2X_MSG_IOV ; 
- scalar_t__ CHANNEL_TLV_LIST_END ; 
- int /*<<< orphan*/  DP (int /*<<< orphan*/ ,char*,int,scalar_t__,int /*<<< orphan*/ ) ; 
- int MAX_TLVS_IN_LIST ; 
- int /*<<< orphan*/  WARN (int,char*) ; 
+
+ int BNX2X_MSG_IOV ;
+ scalar_t__ CHANNEL_TLV_LIST_END ;
+ int DP (int ,char*,int,scalar_t__,int ) ;
+ int MAX_TLVS_IN_LIST ;
+ int WARN (int,char*) ;
 
 __attribute__((used)) static void bnx2x_dp_tlv_list(struct bnx2x *bp, void *tlvs_list)
 {
-	int i = 1;
-	struct channel_tlv *tlv = (struct channel_tlv *)tlvs_list;
+ int i = 1;
+ struct channel_tlv *tlv = (struct channel_tlv *)tlvs_list;
 
-	while (tlv->type != CHANNEL_TLV_LIST_END) {
-		/* output tlv */
-		DP(BNX2X_MSG_IOV, "TLV number %d: type %d, length %d\n", i,
-		   tlv->type, tlv->length);
+ while (tlv->type != CHANNEL_TLV_LIST_END) {
 
-		/* advance to next tlv */
-		tlvs_list += tlv->length;
+  DP(BNX2X_MSG_IOV, "TLV number %d: type %d, length %d\n", i,
+     tlv->type, tlv->length);
 
-		/* cast general tlv list pointer to channel tlv header*/
-		tlv = (struct channel_tlv *)tlvs_list;
 
-		i++;
+  tlvs_list += tlv->length;
 
-		/* break condition for this loop */
-		if (i > MAX_TLVS_IN_LIST) {
-			WARN(true, "corrupt tlvs");
-			return;
-		}
-	}
 
-	/* output last tlv */
-	DP(BNX2X_MSG_IOV, "TLV number %d: type %d, length %d\n", i,
-	   tlv->type, tlv->length);
+  tlv = (struct channel_tlv *)tlvs_list;
+
+  i++;
+
+
+  if (i > MAX_TLVS_IN_LIST) {
+   WARN(1, "corrupt tlvs");
+   return;
+  }
+ }
+
+
+ DP(BNX2X_MSG_IOV, "TLV number %d: type %d, length %d\n", i,
+    tlv->type, tlv->length);
 }

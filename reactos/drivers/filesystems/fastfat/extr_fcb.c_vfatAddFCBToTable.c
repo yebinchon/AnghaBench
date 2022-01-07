@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  size_t ULONG ;
-struct TYPE_9__ {size_t HashTableSize; TYPE_1__** FcbHashTable; int /*<<< orphan*/  FcbListHead; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int VOID ;
+typedef size_t ULONG ;
+struct TYPE_9__ {size_t HashTableSize; TYPE_1__** FcbHashTable; int FcbListHead; } ;
 struct TYPE_7__ {size_t Hash; struct TYPE_7__* next; } ;
-struct TYPE_8__ {scalar_t__ parentFcb; TYPE_1__ ShortHash; TYPE_1__ Hash; int /*<<< orphan*/  FcbListEntry; int /*<<< orphan*/  PathNameU; } ;
-typedef  TYPE_2__* PVFATFCB ;
-typedef  TYPE_3__* PDEVICE_EXTENSION ;
+struct TYPE_8__ {scalar_t__ parentFcb; TYPE_1__ ShortHash; TYPE_1__ Hash; int FcbListEntry; int PathNameU; } ;
+typedef TYPE_2__* PVFATFCB ;
+typedef TYPE_3__* PDEVICE_EXTENSION ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  InsertTailList (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vfatGrabFCB (TYPE_3__*,scalar_t__) ; 
- size_t vfatNameHash (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int ASSERT (int) ;
+ int InsertTailList (int *,int *) ;
+ int vfatGrabFCB (TYPE_3__*,scalar_t__) ;
+ size_t vfatNameHash (int ,int *) ;
 
 __attribute__((used)) static
 VOID

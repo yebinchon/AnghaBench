@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  maximum; int /*<<< orphan*/  minimum; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * _GenericBinaryOutFunction (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_1__ n_ops ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int maximum; int minimum; } ;
+typedef int PyObject ;
+typedef int PyArrayObject ;
+
+
+ int Py_DECREF (int *) ;
+ int Py_INCREF (int *) ;
+ int Py_XDECREF (int *) ;
+ int * _GenericBinaryOutFunction (int *,int *,int *,int ) ;
+ TYPE_1__ n_ops ;
 
 __attribute__((used)) static PyObject *
 _slow_array_clip(PyArrayObject *self, PyObject *min, PyObject *max, PyArrayObject *out)
 {
-    PyObject *res1=NULL, *res2=NULL;
+    PyObject *res1=((void*)0), *res2=((void*)0);
 
-    if (max != NULL) {
+    if (max != ((void*)0)) {
         res1 = _GenericBinaryOutFunction(self, max, out, n_ops.minimum);
-        if (res1 == NULL) {
-            return NULL;
+        if (res1 == ((void*)0)) {
+            return ((void*)0);
         }
     }
     else {
@@ -38,12 +38,12 @@ _slow_array_clip(PyArrayObject *self, PyObject *min, PyObject *max, PyArrayObjec
         Py_INCREF(res1);
     }
 
-    if (min != NULL) {
+    if (min != ((void*)0)) {
         res2 = _GenericBinaryOutFunction((PyArrayObject *)res1,
                                          min, out, n_ops.maximum);
-        if (res2 == NULL) {
+        if (res2 == ((void*)0)) {
             Py_XDECREF(res1);
-            return NULL;
+            return ((void*)0);
         }
     }
     else {

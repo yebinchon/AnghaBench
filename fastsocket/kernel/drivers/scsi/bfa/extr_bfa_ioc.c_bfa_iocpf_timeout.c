@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bfa_ioc_s {int /*<<< orphan*/  iocpf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IOCPF_E_TIMEOUT ; 
- int /*<<< orphan*/  bfa_fsm_send_event (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bfa_trc (struct bfa_ioc_s*,int /*<<< orphan*/ ) ; 
+
+
+
+struct bfa_ioc_s {int iocpf; } ;
+
+
+ int IOCPF_E_TIMEOUT ;
+ int bfa_fsm_send_event (int *,int ) ;
+ int bfa_trc (struct bfa_ioc_s*,int ) ;
 
 __attribute__((used)) static void
 bfa_iocpf_timeout(void *ioc_arg)
 {
-	struct bfa_ioc_s  *ioc = (struct bfa_ioc_s *) ioc_arg;
+ struct bfa_ioc_s *ioc = (struct bfa_ioc_s *) ioc_arg;
 
-	bfa_trc(ioc, 0);
-	bfa_fsm_send_event(&ioc->iocpf, IOCPF_E_TIMEOUT);
+ bfa_trc(ioc, 0);
+ bfa_fsm_send_event(&ioc->iocpf, IOCPF_E_TIMEOUT);
 }

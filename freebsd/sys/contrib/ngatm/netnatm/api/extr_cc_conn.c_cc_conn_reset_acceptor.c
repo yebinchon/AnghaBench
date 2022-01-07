@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ccconn {TYPE_1__* acceptor; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * accepted; } ;
+struct TYPE_2__ {int * accepted; } ;
 
-/* Variables and functions */
+
 
 void
 cc_conn_reset_acceptor(struct ccconn *conn)
 {
-	if (conn->acceptor != NULL) {
-		conn->acceptor->accepted = NULL;
-		conn->acceptor = NULL;
-	}
+ if (conn->acceptor != ((void*)0)) {
+  conn->acceptor->accepted = ((void*)0);
+  conn->acceptor = ((void*)0);
+ }
 }

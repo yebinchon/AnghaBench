@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  M_UNLOCK ; 
- int getopt (int,char**,char*) ; 
- int pw_userlock (char*,int /*<<< orphan*/ ) ; 
+ int M_UNLOCK ;
+ int getopt (int,char**,char*) ;
+ int pw_userlock (char*,int ) ;
 
 int
 pw_user_unlock(int argc, char **argv, char *arg1)
 {
-	int ch;
+ int ch;
 
-	while ((ch = getopt(argc, argv, "Cq")) != -1) {
-		switch (ch) {
-		case 'C':
-		case 'q':
-			/* compatibility */
-			break;
-		}
-	}
+ while ((ch = getopt(argc, argv, "Cq")) != -1) {
+  switch (ch) {
+  case 'C':
+  case 'q':
 
-	return (pw_userlock(arg1, M_UNLOCK));
+   break;
+  }
+ }
+
+ return (pw_userlock(arg1, M_UNLOCK));
 }

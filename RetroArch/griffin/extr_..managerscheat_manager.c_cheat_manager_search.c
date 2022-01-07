@@ -1,71 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  msg ;
-typedef  enum cheat_search_type { ____Placeholder_cheat_search_type } cheat_search_type ;
-struct TYPE_2__ {unsigned char* curr_memory_buf; unsigned char* prev_memory_buf; unsigned int num_memory_buffers; unsigned int total_memory_size; unsigned int* matches; unsigned int search_exact_value; scalar_t__ num_matches; scalar_t__* memory_size_list; int /*<<< orphan*/ * memory_buf_list; int /*<<< orphan*/  search_eqminus_value; int /*<<< orphan*/  search_eqplus_value; int /*<<< orphan*/  big_endian; int /*<<< orphan*/  search_bit_size; } ;
 
-/* Variables and functions */
-#define  CHEAT_SEARCH_TYPE_EQ 136 
-#define  CHEAT_SEARCH_TYPE_EQMINUS 135 
-#define  CHEAT_SEARCH_TYPE_EQPLUS 134 
-#define  CHEAT_SEARCH_TYPE_EXACT 133 
-#define  CHEAT_SEARCH_TYPE_GT 132 
-#define  CHEAT_SEARCH_TYPE_GTE 131 
-#define  CHEAT_SEARCH_TYPE_LT 130 
-#define  CHEAT_SEARCH_TYPE_LTE 129 
-#define  CHEAT_SEARCH_TYPE_NEQ 128 
- int /*<<< orphan*/  MENU_ENTRIES_CTL_SET_REFRESH ; 
- int /*<<< orphan*/  MESSAGE_QUEUE_CATEGORY_INFO ; 
- int /*<<< orphan*/  MESSAGE_QUEUE_ICON_DEFAULT ; 
- int /*<<< orphan*/  MSG_CHEAT_SEARCH_FOUND_MATCHES ; 
- int /*<<< orphan*/  MSG_CHEAT_SEARCH_NOT_INITIALIZED ; 
- int /*<<< orphan*/  RARCH_MENU_CTL_SET_PREVENT_POPULATE ; 
- int /*<<< orphan*/  cheat_manager_setup_search_meta (int /*<<< orphan*/ ,unsigned int*,unsigned int*,unsigned int*) ; 
- TYPE_1__ cheat_manager_state ; 
- int /*<<< orphan*/  memcpy (unsigned char*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  memset (unsigned int*,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  menu_driver_ctl (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  menu_entries_ctl (int /*<<< orphan*/ ,int*) ; 
- char* msg_hash_to_str (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  runloop_msg_queue_push (char*,int,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,scalar_t__) ; 
- unsigned int translate_address (unsigned int,unsigned char**) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int msg ;
+typedef enum cheat_search_type { ____Placeholder_cheat_search_type } cheat_search_type ;
+struct TYPE_2__ {unsigned char* curr_memory_buf; unsigned char* prev_memory_buf; unsigned int num_memory_buffers; unsigned int total_memory_size; unsigned int* matches; unsigned int search_exact_value; scalar_t__ num_matches; scalar_t__* memory_size_list; int * memory_buf_list; int search_eqminus_value; int search_eqplus_value; int big_endian; int search_bit_size; } ;
+ int MENU_ENTRIES_CTL_SET_REFRESH ;
+ int MESSAGE_QUEUE_CATEGORY_INFO ;
+ int MESSAGE_QUEUE_ICON_DEFAULT ;
+ int MSG_CHEAT_SEARCH_FOUND_MATCHES ;
+ int MSG_CHEAT_SEARCH_NOT_INITIALIZED ;
+ int RARCH_MENU_CTL_SET_PREVENT_POPULATE ;
+ int cheat_manager_setup_search_meta (int ,unsigned int*,unsigned int*,unsigned int*) ;
+ TYPE_1__ cheat_manager_state ;
+ int memcpy (unsigned char*,int ,scalar_t__) ;
+ int memset (unsigned int*,int ,unsigned int) ;
+ int menu_driver_ctl (int ,int *) ;
+ int menu_entries_ctl (int ,int*) ;
+ char* msg_hash_to_str (int ) ;
+ int runloop_msg_queue_push (char*,int,int,int,int *,int ,int ) ;
+ int snprintf (char*,int,char*,scalar_t__) ;
+ unsigned int translate_address (unsigned int,unsigned char**) ;
 
 __attribute__((used)) static int cheat_manager_search(enum cheat_search_type search_type)
 {
    char msg[100];
-   unsigned char *curr         = cheat_manager_state.curr_memory_buf;
-   unsigned char *prev         = cheat_manager_state.prev_memory_buf;
-   unsigned int idx            = 0;
-   unsigned int curr_val       = 0;
-   unsigned int prev_val       = 0;
-   unsigned int mask           = 0;
+   unsigned char *curr = cheat_manager_state.curr_memory_buf;
+   unsigned char *prev = cheat_manager_state.prev_memory_buf;
+   unsigned int idx = 0;
+   unsigned int curr_val = 0;
+   unsigned int prev_val = 0;
+   unsigned int mask = 0;
    unsigned int bytes_per_item = 1;
-   unsigned int bits           = 8;
-   unsigned int offset         = 0;
-   unsigned int i              = 0;
-   bool refresh                = false;
+   unsigned int bits = 8;
+   unsigned int offset = 0;
+   unsigned int i = 0;
+   bool refresh = 0;
 
    if (cheat_manager_state.num_memory_buffers == 0)
    {
-      runloop_msg_queue_push(msg_hash_to_str(MSG_CHEAT_SEARCH_NOT_INITIALIZED), 1, 180, true, NULL, MESSAGE_QUEUE_ICON_DEFAULT, MESSAGE_QUEUE_CATEGORY_INFO);
+      runloop_msg_queue_push(msg_hash_to_str(MSG_CHEAT_SEARCH_NOT_INITIALIZED), 1, 180, 1, ((void*)0), MESSAGE_QUEUE_ICON_DEFAULT, MESSAGE_QUEUE_CATEGORY_INFO);
       return 0;
    }
 
    cheat_manager_setup_search_meta(cheat_manager_state.search_bit_size, &bytes_per_item, &mask, &bits);
 
-   /* little endian FF000000 = 256 */
+
    for (idx = 0; idx < cheat_manager_state.total_memory_size; idx = idx + bytes_per_item)
    {
       unsigned byte_part;
@@ -110,34 +99,34 @@ __attribute__((used)) static int cheat_manager_search(enum cheat_search_type sea
 
          if (prev_match > 0)
          {
-            bool match = false;
+            bool match = 0;
             switch (search_type)
             {
-               case CHEAT_SEARCH_TYPE_EXACT:
+               case 133:
                   match = (curr_subval == cheat_manager_state.search_exact_value);
                   break;
-               case CHEAT_SEARCH_TYPE_LT:
+               case 130:
                   match = (curr_subval < prev_subval);
                   break;
-               case CHEAT_SEARCH_TYPE_GT:
+               case 132:
                   match = (curr_subval > prev_subval);
                   break;
-               case CHEAT_SEARCH_TYPE_LTE:
+               case 129:
                   match = (curr_subval <= prev_subval);
                   break;
-               case CHEAT_SEARCH_TYPE_GTE:
+               case 131:
                   match = (curr_subval >= prev_subval);
                   break;
-               case CHEAT_SEARCH_TYPE_EQ:
+               case 136:
                   match = (curr_subval == prev_subval);
                   break;
-               case CHEAT_SEARCH_TYPE_NEQ:
+               case 128:
                   match = (curr_subval != prev_subval);
                   break;
-               case CHEAT_SEARCH_TYPE_EQPLUS:
+               case 134:
                   match = (curr_subval == prev_subval + cheat_manager_state.search_eqplus_value);
                   break;
-               case CHEAT_SEARCH_TYPE_EQMINUS:
+               case 135:
                   match = (curr_subval == prev_subval - cheat_manager_state.search_eqminus_value);
                   break;
             }
@@ -167,11 +156,11 @@ __attribute__((used)) static int cheat_manager_search(enum cheat_search_type sea
    snprintf(msg, sizeof(msg), msg_hash_to_str(MSG_CHEAT_SEARCH_FOUND_MATCHES), cheat_manager_state.num_matches);
    msg[sizeof(msg) - 1] = 0;
 
-   runloop_msg_queue_push(msg, 1, 180, true, NULL, MESSAGE_QUEUE_ICON_DEFAULT, MESSAGE_QUEUE_CATEGORY_INFO);
+   runloop_msg_queue_push(msg, 1, 180, 1, ((void*)0), MESSAGE_QUEUE_ICON_DEFAULT, MESSAGE_QUEUE_CATEGORY_INFO);
 
-#ifdef HAVE_MENU
-   menu_entries_ctl(MENU_ENTRIES_CTL_SET_REFRESH, &refresh);
-   menu_driver_ctl(RARCH_MENU_CTL_SET_PREVENT_POPULATE, NULL);
-#endif
+
+
+
+
    return 0;
 }

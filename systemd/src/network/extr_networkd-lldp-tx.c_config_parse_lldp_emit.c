@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LLDPEmit ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LLDP_EMIT_CUSTOMER_BRIDGE ; 
- int /*<<< orphan*/  LLDP_EMIT_NEAREST_BRIDGE ; 
- int /*<<< orphan*/  LLDP_EMIT_NO ; 
- int /*<<< orphan*/  LLDP_EMIT_NON_TPMR_BRIDGE ; 
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  assert (char const*) ; 
- scalar_t__ isempty (char const*) ; 
- int /*<<< orphan*/  log_syntax (char const*,int /*<<< orphan*/ ,char const*,unsigned int,int /*<<< orphan*/ ,char*,char const*) ; 
- int parse_boolean (char const*) ; 
- scalar_t__ streq (char const*,char*) ; 
+
+
+
+typedef int LLDPEmit ;
+
+
+ int LLDP_EMIT_CUSTOMER_BRIDGE ;
+ int LLDP_EMIT_NEAREST_BRIDGE ;
+ int LLDP_EMIT_NO ;
+ int LLDP_EMIT_NON_TPMR_BRIDGE ;
+ int LOG_ERR ;
+ int assert (char const*) ;
+ scalar_t__ isempty (char const*) ;
+ int log_syntax (char const*,int ,char const*,unsigned int,int ,char*,char const*) ;
+ int parse_boolean (char const*) ;
+ scalar_t__ streq (char const*,char*) ;
 
 int config_parse_lldp_emit(
                 const char *unit,

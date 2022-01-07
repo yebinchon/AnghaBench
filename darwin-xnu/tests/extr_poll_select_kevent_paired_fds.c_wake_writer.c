@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  in_fd; int /*<<< orphan*/  out_fd; int /*<<< orphan*/  sem; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int in_fd; int out_fd; int sem; } ;
 struct TYPE_4__ {int wr_kind; TYPE_1__ wr_wait; } ;
 
-/* Variables and functions */
-#define  PROCESS_WRITER 129 
-#define  THREAD_WRITER 128 
- int /*<<< orphan*/  T_ASSERT_POSIX_SUCCESS (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  T_LOG (char*) ; 
- int /*<<< orphan*/  T_QUIET ; 
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  semaphore_signal (int /*<<< orphan*/ ) ; 
- TYPE_2__ shared ; 
- int /*<<< orphan*/  write (int /*<<< orphan*/ ,char*,int) ; 
+
+
+
+ int T_ASSERT_POSIX_SUCCESS (int ,int *) ;
+ int T_LOG (char*) ;
+ int T_QUIET ;
+ int close (int ) ;
+ int semaphore_signal (int ) ;
+ TYPE_2__ shared ;
+ int write (int ,char*,int) ;
 
 __attribute__((used)) static void
 wake_writer(void)
 {
-	T_LOG("waking writer");
+ T_LOG("waking writer");
 
-	switch (shared.wr_kind) {
-	case THREAD_WRITER:
-		T_LOG("signal shared.wr_wait.sem");
-		semaphore_signal(shared.wr_wait.sem);
-		break;
-	case PROCESS_WRITER: {
-		char tmp = 'a';
-		close(shared.wr_wait.out_fd);
-		T_QUIET; T_ASSERT_POSIX_SUCCESS(write(
-				shared.wr_wait.in_fd, &tmp, 1), NULL);
-		break;
-	}
-	}
+ switch (shared.wr_kind) {
+ case 128:
+  T_LOG("signal shared.wr_wait.sem");
+  semaphore_signal(shared.wr_wait.sem);
+  break;
+ case 129: {
+  char tmp = 'a';
+  close(shared.wr_wait.out_fd);
+  T_QUIET; T_ASSERT_POSIX_SUCCESS(write(
+    shared.wr_wait.in_fd, &tmp, 1), ((void*)0));
+  break;
+ }
+ }
 }

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- scalar_t__ PS2_ERR_NONE ; 
- scalar_t__ PS2_ERR_PARITY ; 
- scalar_t__ PS2_ERR_STARTBIT3 ; 
- int /*<<< orphan*/  WAIT (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  clock_hi ; 
- int /*<<< orphan*/  clock_lo ; 
- int /*<<< orphan*/  data_hi ; 
- int data_in () ; 
- int /*<<< orphan*/  data_lo ; 
- int /*<<< orphan*/  idle () ; 
- int /*<<< orphan*/  inhibit () ; 
- scalar_t__ ps2_error ; 
- int /*<<< orphan*/  xprintf (char*,scalar_t__) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ scalar_t__ PS2_ERR_NONE ;
+ scalar_t__ PS2_ERR_PARITY ;
+ scalar_t__ PS2_ERR_STARTBIT3 ;
+ int WAIT (int ,int,int) ;
+ int clock_hi ;
+ int clock_lo ;
+ int data_hi ;
+ int data_in () ;
+ int data_lo ;
+ int idle () ;
+ int inhibit () ;
+ scalar_t__ ps2_error ;
+ int xprintf (char*,scalar_t__) ;
 
 uint8_t ps2_host_recv(void) {
-    uint8_t data   = 0;
-    bool    parity = true;
-    ps2_error      = PS2_ERR_NONE;
+    uint8_t data = 0;
+    bool parity = 1;
+    ps2_error = PS2_ERR_NONE;
 
-    /* release lines(idle state) */
+
     idle();
 
-    /* start bit [1] */
-    WAIT(clock_lo, 100, 1);  // TODO: this is enough?
+
+    WAIT(clock_lo, 100, 1);
     WAIT(data_lo, 1, 2);
     WAIT(clock_hi, 50, 3);
 
-    /* data [2-9] */
+
     for (uint8_t i = 0; i < 8; i++) {
         WAIT(clock_lo, 50, 4);
         if (data_in()) {
@@ -50,7 +50,7 @@ uint8_t ps2_host_recv(void) {
         WAIT(clock_hi, 50, 5);
     }
 
-    /* parity [10] */
+
     WAIT(clock_lo, 50, 6);
     if (data_in() != parity) {
         ps2_error = PS2_ERR_PARITY;
@@ -58,7 +58,7 @@ uint8_t ps2_host_recv(void) {
     }
     WAIT(clock_hi, 50, 7);
 
-    /* stop bit [11] */
+
     WAIT(clock_lo, 50, 8);
     WAIT(data_hi, 1, 9);
     WAIT(clock_hi, 50, 10);

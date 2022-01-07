@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
 struct TYPE_3__ {int nid; scalar_t__ amask; } ;
-typedef  TYPE_1__ SSL_CERT_LOOKUP ;
+typedef TYPE_1__ SSL_CERT_LOOKUP ;
 
-/* Variables and functions */
- scalar_t__ OBJ_nid2sn (int) ; 
- int /*<<< orphan*/  TEST_error (char*,char const*,size_t) ; 
- int /*<<< orphan*/  TEST_note (char*,scalar_t__,scalar_t__) ; 
- TYPE_1__* ssl_cert_info ; 
+
+ scalar_t__ OBJ_nid2sn (int) ;
+ int TEST_error (char*,char const*,size_t) ;
+ int TEST_note (char*,scalar_t__,scalar_t__) ;
+ TYPE_1__* ssl_cert_info ;
 
 __attribute__((used)) static int do_test_cert_table(int nid, uint32_t amask, size_t idx,
                               const char *idxname)

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct retro_vfs_interface_info {scalar_t__ required_interface_version; struct retro_vfs_interface* iface; } ;
-struct retro_vfs_interface {int /*<<< orphan*/ * closedir; int /*<<< orphan*/ * dirent_is_dir; int /*<<< orphan*/ * dirent_get_name; int /*<<< orphan*/ * readdir; int /*<<< orphan*/ * opendir; } ;
+struct retro_vfs_interface {int * closedir; int * dirent_is_dir; int * dirent_get_name; int * readdir; int * opendir; } ;
 
-/* Variables and functions */
- scalar_t__ DIRENT_REQUIRED_VFS_VERSION ; 
- int /*<<< orphan*/ * dirent_closedir_cb ; 
- int /*<<< orphan*/ * dirent_dirent_get_name_cb ; 
- int /*<<< orphan*/ * dirent_dirent_is_dir_cb ; 
- int /*<<< orphan*/ * dirent_opendir_cb ; 
- int /*<<< orphan*/ * dirent_readdir_cb ; 
+
+ scalar_t__ DIRENT_REQUIRED_VFS_VERSION ;
+ int * dirent_closedir_cb ;
+ int * dirent_dirent_get_name_cb ;
+ int * dirent_dirent_is_dir_cb ;
+ int * dirent_opendir_cb ;
+ int * dirent_readdir_cb ;
 
 void dirent_vfs_init(const struct retro_vfs_interface_info* vfs_info)
 {
    const struct retro_vfs_interface* vfs_iface;
 
-   dirent_opendir_cb = NULL;
-   dirent_readdir_cb = NULL;
-   dirent_dirent_get_name_cb = NULL;
-   dirent_dirent_is_dir_cb = NULL;
-   dirent_closedir_cb = NULL;
+   dirent_opendir_cb = ((void*)0);
+   dirent_readdir_cb = ((void*)0);
+   dirent_dirent_get_name_cb = ((void*)0);
+   dirent_dirent_is_dir_cb = ((void*)0);
+   dirent_closedir_cb = ((void*)0);
 
    vfs_iface = vfs_info->iface;
 

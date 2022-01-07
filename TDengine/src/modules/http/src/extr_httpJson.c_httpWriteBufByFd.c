@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct HttpContext {int fd; int /*<<< orphan*/  ipstr; } ;
 
-/* Variables and functions */
- int HTTP_WRITE_RETRY_TIMES ; 
- int /*<<< orphan*/  HTTP_WRITE_WAIT_TIME_MS ; 
- int /*<<< orphan*/  MSG_NOSIGNAL ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  httpTrace (char*,struct HttpContext*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- scalar_t__ send (int,char const*,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  taosMsleep (int /*<<< orphan*/ ) ; 
+
+
+
+struct HttpContext {int fd; int ipstr; } ;
+
+
+ int HTTP_WRITE_RETRY_TIMES ;
+ int HTTP_WRITE_WAIT_TIME_MS ;
+ int MSG_NOSIGNAL ;
+ int errno ;
+ int httpTrace (char*,struct HttpContext*,int,int ,int ,...) ;
+ scalar_t__ send (int,char const*,size_t,int ) ;
+ int taosMsleep (int ) ;
 
 int httpWriteBufByFd(struct HttpContext* pContext, const char* buf, int sz) {
-  int       len;
-  int       countWait = 0;
-  int       writeLen = 0;
+  int len;
+  int countWait = 0;
+  int writeLen = 0;
 
   do {
     if (pContext->fd > 2){

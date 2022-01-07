@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* ptr; char* end; } ;
-typedef  TYPE_1__ parser_ctx_t ;
-typedef  int LONGLONG ;
-typedef  int LONG ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_1__ parser_ctx_t ;
+typedef int LONGLONG ;
+typedef int LONG ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int INT_MAX ; 
- int MAXLONGLONG ; 
- scalar_t__ TRUE ; 
- scalar_t__ isdigitW (char) ; 
- scalar_t__ isinf (double) ; 
- int pow (int,int) ; 
- int tDouble ; 
- int tLong ; 
- int tShort ; 
+
+ scalar_t__ FALSE ;
+ int FIXME (char*) ;
+ int INT_MAX ;
+ int MAXLONGLONG ;
+ scalar_t__ TRUE ;
+ scalar_t__ isdigitW (char) ;
+ scalar_t__ isinf (double) ;
+ int pow (int,int) ;
+ int tDouble ;
+ int tLong ;
+ int tShort ;
 
 __attribute__((used)) static int parse_numeric_literal(parser_ctx_t *ctx, void **ret)
 {
@@ -88,7 +88,7 @@ __attribute__((used)) static int parse_numeric_literal(parser_ctx_t *ctx, void *
         do {
             e = e*10 + *(ctx->ptr++) - '0';
             if(sign == -1 && -e+exp < -(INT_MAX/100)) {
-                /* The literal will be rounded to 0 anyway. */
+
                 while(isdigitW(*ctx->ptr))
                     ctx->ptr++;
                 *(double*)ret = 0;

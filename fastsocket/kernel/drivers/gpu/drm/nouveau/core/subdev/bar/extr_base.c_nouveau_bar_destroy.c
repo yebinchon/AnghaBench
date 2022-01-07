@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nouveau_bar {int /*<<< orphan*/  base; scalar_t__ iomem; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  iounmap (scalar_t__) ; 
- int /*<<< orphan*/  nouveau_subdev_destroy (int /*<<< orphan*/ *) ; 
+
+
+
+struct nouveau_bar {int base; scalar_t__ iomem; } ;
+
+
+ int iounmap (scalar_t__) ;
+ int nouveau_subdev_destroy (int *) ;
 
 void
 nouveau_bar_destroy(struct nouveau_bar *bar)
 {
-	if (bar->iomem)
-		iounmap(bar->iomem);
-	nouveau_subdev_destroy(&bar->base);
+ if (bar->iomem)
+  iounmap(bar->iomem);
+ nouveau_subdev_destroy(&bar->base);
 }

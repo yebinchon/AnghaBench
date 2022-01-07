@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_device ;
-typedef  int /*<<< orphan*/  s ;
 
-/* Variables and functions */
- int /*<<< orphan*/  blkid_encode_string (char const*,char*,int) ; 
- int /*<<< orphan*/  blkid_safe_string (char const*,char*,int) ; 
- scalar_t__ startswith (char const*,char*) ; 
- scalar_t__ streq (char const*,char*) ; 
- int /*<<< orphan*/  strscpyl (char*,int,char*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  udev_builtin_add_property (int /*<<< orphan*/ *,int,char*,char const*) ; 
+
+
+
+typedef int sd_device ;
+typedef int s ;
+
+
+ int blkid_encode_string (char const*,char*,int) ;
+ int blkid_safe_string (char const*,char*,int) ;
+ scalar_t__ startswith (char const*,char*) ;
+ scalar_t__ streq (char const*,char*) ;
+ int strscpyl (char*,int,char*,char const*,int *) ;
+ int udev_builtin_add_property (int *,int,char*,char const*) ;
 
 __attribute__((used)) static void print_property(sd_device *dev, bool test, const char *name, const char *value) {
         char s[256];
@@ -68,7 +68,7 @@ __attribute__((used)) static void print_property(sd_device *dev, bool test, cons
                 udev_builtin_add_property(dev, test, "ID_PART_ENTRY_TYPE", s);
 
         } else if (startswith(name, "PART_ENTRY_")) {
-                strscpyl(s, sizeof(s), "ID_", name, NULL);
+                strscpyl(s, sizeof(s), "ID_", name, ((void*)0));
                 udev_builtin_add_property(dev, test, s, value);
 
         } else if (streq(name, "SYSTEM_ID")) {

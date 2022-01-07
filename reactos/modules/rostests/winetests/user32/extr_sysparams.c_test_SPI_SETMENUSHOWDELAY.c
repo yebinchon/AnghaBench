@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vals ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetLastError () ; 
- int SPIF_SENDCHANGE ; 
- int SPIF_UPDATEINIFILE ; 
- int /*<<< orphan*/  SPI_GETMENUSHOWDELAY ; 
- int /*<<< orphan*/  SPI_SETMENUSHOWDELAY ; 
- int /*<<< orphan*/  SPI_SETMENUSHOWDELAY_REGKEY ; 
- int /*<<< orphan*/  SPI_SETMENUSHOWDELAY_VALNAME ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  SystemParametersInfoA (int /*<<< orphan*/ ,int const,int*,int) ; 
- int /*<<< orphan*/  eq (int,int const,char*,char*) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*,unsigned int,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int const) ; 
- int /*<<< orphan*/  test_change_message (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_error_msg (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  test_reg_key (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  trace (char*) ; 
 
-__attribute__((used)) static void test_SPI_SETMENUSHOWDELAY( void )      /*     107 */
+
+
+typedef int vals ;
+typedef int UINT ;
+typedef int BOOL ;
+
+
+ int GetLastError () ;
+ int SPIF_SENDCHANGE ;
+ int SPIF_UPDATEINIFILE ;
+ int SPI_GETMENUSHOWDELAY ;
+ int SPI_SETMENUSHOWDELAY ;
+ int SPI_SETMENUSHOWDELAY_REGKEY ;
+ int SPI_SETMENUSHOWDELAY_VALNAME ;
+ int SetLastError (int) ;
+ int SystemParametersInfoA (int ,int const,int*,int) ;
+ int eq (int,int const,char*,char*) ;
+ int ok (int ,char*,unsigned int,int ,...) ;
+ int sprintf (char*,char*,int const) ;
+ int test_change_message (int ,int ) ;
+ int test_error_msg (int ,char*) ;
+ int test_reg_key (int ,int ,char*) ;
+ int trace (char*) ;
+
+__attribute__((used)) static void test_SPI_SETMENUSHOWDELAY( void )
 {
     BOOL rc;
     UINT old_delay;
@@ -43,7 +43,7 @@ __attribute__((used)) static void test_SPI_SETMENUSHOWDELAY( void )      /*     
     SetLastError(0xdeadbeef);
     rc=SystemParametersInfoA( SPI_GETMENUSHOWDELAY, 0, &old_delay, 0 );
 
-    /* SPI_{GET,SET}MENUSHOWDELAY not supported on Windows 95 */
+
     if (!test_error_msg(rc,"SPI_{GET,SET}MENUSHOWDELAY"))
         return;
 

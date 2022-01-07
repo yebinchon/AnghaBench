@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int* crc_table ; 
- int crc_table_ready ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int* crc_table ;
+ int crc_table_ready ;
 
 uint32_t ar_crc32(uint32_t crc32, const unsigned char *data, size_t data_len)
 {
@@ -28,7 +28,7 @@ uint32_t ar_crc32(uint32_t crc32, const unsigned char *data, size_t data_len)
                 crc_table[i + j] = crc_table[j] ^ h;
             }
         }
-        crc_table_ready = true;
+        crc_table_ready = 1;
     }
 
     crc32 = crc32 ^ 0xFFFFFFFF;

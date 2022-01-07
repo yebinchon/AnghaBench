@@ -1,48 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  strcat (char*,char const*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- size_t strcspn (char const*,char*) ; 
- size_t strlen (char const*) ; 
- int /*<<< orphan*/  strncat (char*,char const*,size_t) ; 
- int /*<<< orphan*/  strncpy (char*,char const*,size_t) ; 
+ int strcat (char*,char const*) ;
+ int strcpy (char*,char*) ;
+ size_t strcspn (char const*,char*) ;
+ size_t strlen (char const*) ;
+ int strncat (char*,char const*,size_t) ;
+ int strncpy (char*,char const*,size_t) ;
 
 void luaO_chunkid (char *out, const char *source, size_t bufflen) {
   if (*source == '=') {
-    strncpy(out, source+1, bufflen);  /* remove first char */
-    out[bufflen-1] = '\0';  /* ensures null termination */
+    strncpy(out, source+1, bufflen);
+    out[bufflen-1] = '\0';
   }
-  else {  /* out = "source", or "...source" */
+  else {
     if (*source == '@') {
       size_t l;
-      source++;  /* skip the `@' */
+      source++;
       bufflen -= sizeof(" '...' ");
       l = strlen(source);
       strcpy(out, "");
       if (l > bufflen) {
-        source += (l-bufflen);  /* get last part of file name */
+        source += (l-bufflen);
         strcat(out, "...");
       }
       strcat(out, source);
     }
-    else {  /* out = [string "string"] */
-      size_t len = strcspn(source, "\n\r");  /* stop at first newline */
+    else {
+      size_t len = strcspn(source, "\n\r");
       bufflen -= sizeof(" [string \"...\"] ");
       if (len > bufflen) len = bufflen;
       strcpy(out, "[string \"");
-      if (source[len] != '\0') {  /* must truncate? */
+      if (source[len] != '\0') {
         strncat(out, source, len);
         strcat(out, "...");
       }

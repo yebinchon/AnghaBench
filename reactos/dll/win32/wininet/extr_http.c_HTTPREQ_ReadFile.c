@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_9__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  read ;
+
+
+typedef struct TYPE_17__ TYPE_9__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int read ;
 struct TYPE_15__ {scalar_t__ dwError; } ;
-typedef  TYPE_4__ object_header_t ;
-struct TYPE_17__ {int /*<<< orphan*/  dwContext; } ;
-struct TYPE_16__ {int read_size; int read_buf; int read_pos; TYPE_9__ hdr; int /*<<< orphan*/  read_section; TYPE_3__* session; } ;
-typedef  TYPE_5__ http_request_t ;
+typedef TYPE_4__ object_header_t ;
+struct TYPE_17__ {int dwContext; } ;
+struct TYPE_16__ {int read_size; int read_buf; int read_pos; TYPE_9__ hdr; int read_section; TYPE_3__* session; } ;
+typedef TYPE_5__ http_request_t ;
 struct TYPE_14__ {TYPE_2__* appInfo; } ;
 struct TYPE_12__ {int dwFlags; } ;
 struct TYPE_13__ {TYPE_1__ hdr; } ;
-typedef  int /*<<< orphan*/  DWORD_PTR ;
-typedef  int DWORD ;
-typedef  int BOOL ;
+typedef int DWORD_PTR ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_INTERNET_INTERNAL_ERROR ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int FALSE ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int HTTPREQ_Read (TYPE_5__*,char*,int,int*,int) ; 
- int INTERNET_FLAG_ASYNC ; 
- scalar_t__ INTERNET_HANDLE_IN_USE ; 
- int /*<<< orphan*/  INTERNET_STATUS_RECEIVING_RESPONSE ; 
- int /*<<< orphan*/  INTERNET_STATUS_RESPONSE_RECEIVED ; 
- int /*<<< orphan*/  INTERNET_SendCallback (TYPE_9__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- int IRF_ASYNC ; 
- int IRF_NO_WAIT ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_5__*,void*,int,int) ; 
- int TRUE ; 
- scalar_t__ TryEnterCriticalSection (int /*<<< orphan*/ *) ; 
- int WSAEWOULDBLOCK ; 
- int async_read (TYPE_5__*,void*,int,int,int*) ; 
- int /*<<< orphan*/  end_of_read_data (TYPE_5__*) ; 
- int /*<<< orphan*/  memcpy (void*,int,int) ; 
- int min (int,int) ; 
+
+ scalar_t__ ERROR_INTERNET_INTERNAL_ERROR ;
+ scalar_t__ ERROR_SUCCESS ;
+ int EnterCriticalSection (int *) ;
+ int FALSE ;
+ int FIXME (char*,int) ;
+ int HTTPREQ_Read (TYPE_5__*,char*,int,int*,int) ;
+ int INTERNET_FLAG_ASYNC ;
+ scalar_t__ INTERNET_HANDLE_IN_USE ;
+ int INTERNET_STATUS_RECEIVING_RESPONSE ;
+ int INTERNET_STATUS_RESPONSE_RECEIVED ;
+ int INTERNET_SendCallback (TYPE_9__*,int ,int ,int*,int) ;
+ int IRF_ASYNC ;
+ int IRF_NO_WAIT ;
+ int LeaveCriticalSection (int *) ;
+ int TRACE (char*,TYPE_5__*,void*,int,int) ;
+ int TRUE ;
+ scalar_t__ TryEnterCriticalSection (int *) ;
+ int WSAEWOULDBLOCK ;
+ int async_read (TYPE_5__*,void*,int,int,int*) ;
+ int end_of_read_data (TYPE_5__*) ;
+ int memcpy (void*,int,int) ;
+ int min (int,int) ;
 
 __attribute__((used)) static DWORD HTTPREQ_ReadFile(object_header_t *hdr, void *buf, DWORD size, DWORD *ret_read,
         DWORD flags, DWORD_PTR context)
@@ -84,7 +84,7 @@ __attribute__((used)) static DWORD HTTPREQ_ReadFile(object_header_t *hdr, void *
 
         if(read < size && (!read || !(flags & IRF_NO_WAIT)) && !end_of_read_data(req)) {
             LeaveCriticalSection(&req->read_section);
-            INTERNET_SendCallback(&req->hdr, req->hdr.dwContext, INTERNET_STATUS_RECEIVING_RESPONSE, NULL, 0);
+            INTERNET_SendCallback(&req->hdr, req->hdr.dwContext, INTERNET_STATUS_RECEIVING_RESPONSE, ((void*)0), 0);
             EnterCriticalSection( &req->read_section );
             notify_received = TRUE;
 
@@ -110,7 +110,7 @@ __attribute__((used)) static DWORD HTTPREQ_ReadFile(object_header_t *hdr, void *
         if(!(flags & IRF_NO_WAIT))
             return async_read(req, buf, size, read, ret_read);
         if(!read)
-            return async_read(req, NULL, 0, 0, NULL);
+            return async_read(req, ((void*)0), 0, 0, ((void*)0));
         res = ERROR_SUCCESS;
     }
 

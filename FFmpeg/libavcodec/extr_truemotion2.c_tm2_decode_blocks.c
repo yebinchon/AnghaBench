@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_2__ ;
-typedef  struct TYPE_22__   TYPE_1__ ;
-typedef  struct TYPE_21__   TYPE_19__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_23__ {int /*<<< orphan*/ * linesize; int /*<<< orphan*/ ** data; } ;
-struct TYPE_22__ {int* tok_lens; int* Y2; int* Y1; int* U2; int* U1; int* V2; int* V1; int y_stride; int uv_stride; scalar_t__ cur; scalar_t__ error; TYPE_19__* avctx; int /*<<< orphan*/  CD; int /*<<< orphan*/  D; int /*<<< orphan*/  clast; int /*<<< orphan*/  last; scalar_t__* tok_ptrs; } ;
+
+
+typedef struct TYPE_23__ TYPE_2__ ;
+typedef struct TYPE_22__ TYPE_1__ ;
+typedef struct TYPE_21__ TYPE_19__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_23__ {int * linesize; int ** data; } ;
+struct TYPE_22__ {int* tok_lens; int* Y2; int* Y1; int* U2; int* U1; int* V2; int* V1; int y_stride; int uv_stride; scalar_t__ cur; scalar_t__ error; TYPE_19__* avctx; int CD; int D; int clast; int last; scalar_t__* tok_ptrs; } ;
 struct TYPE_21__ {int width; int height; } ;
-typedef  TYPE_1__ TM2Context ;
-typedef  TYPE_2__ AVFrame ;
+typedef TYPE_1__ TM2Context ;
+typedef TYPE_2__ AVFrame ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int GET_TOK (TYPE_1__*,size_t) ; 
-#define  TM2_HI_RES 134 
-#define  TM2_LOW_RES 133 
-#define  TM2_MED_RES 132 
-#define  TM2_MOTION 131 
-#define  TM2_NULL_RES 130 
- int TM2_NUM_STREAMS ; 
-#define  TM2_STILL 129 
- size_t TM2_TYPE ; 
-#define  TM2_UPDATE 128 
- int /*<<< orphan*/  av_clip_uint8 (unsigned int) ; 
- int /*<<< orphan*/  av_log (TYPE_19__*,int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  tm2_hi_res_block (TYPE_1__*,TYPE_2__*,int,int) ; 
- int /*<<< orphan*/  tm2_low_res_block (TYPE_1__*,TYPE_2__*,int,int) ; 
- int /*<<< orphan*/  tm2_med_res_block (TYPE_1__*,TYPE_2__*,int,int) ; 
- int /*<<< orphan*/  tm2_motion_block (TYPE_1__*,TYPE_2__*,int,int) ; 
- int /*<<< orphan*/  tm2_null_res_block (TYPE_1__*,TYPE_2__*,int,int) ; 
- int /*<<< orphan*/  tm2_still_block (TYPE_1__*,TYPE_2__*,int,int) ; 
- int /*<<< orphan*/  tm2_update_block (TYPE_1__*,TYPE_2__*,int,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int GET_TOK (TYPE_1__*,size_t) ;
+
+
+
+
+
+ int TM2_NUM_STREAMS ;
+
+ size_t TM2_TYPE ;
+
+ int av_clip_uint8 (unsigned int) ;
+ int av_log (TYPE_19__*,int ,char*,int,...) ;
+ int memcpy (int*,int*,int) ;
+ int memset (int ,int ,int) ;
+ int tm2_hi_res_block (TYPE_1__*,TYPE_2__*,int,int) ;
+ int tm2_low_res_block (TYPE_1__*,TYPE_2__*,int,int) ;
+ int tm2_med_res_block (TYPE_1__*,TYPE_2__*,int,int) ;
+ int tm2_motion_block (TYPE_1__*,TYPE_2__*,int,int) ;
+ int tm2_null_res_block (TYPE_1__*,TYPE_2__*,int,int) ;
+ int tm2_still_block (TYPE_1__*,TYPE_2__*,int,int) ;
+ int tm2_update_block (TYPE_1__*,TYPE_2__*,int,int) ;
 
 __attribute__((used)) static int tm2_decode_blocks(TM2Context *ctx, AVFrame *p)
 {
@@ -71,27 +71,27 @@ __attribute__((used)) static int tm2_decode_blocks(TM2Context *ctx, AVFrame *p)
         for (i = 0; i < bw; i++) {
             type = GET_TOK(ctx, TM2_TYPE);
             switch(type) {
-            case TM2_HI_RES:
+            case 134:
                 tm2_hi_res_block(ctx, p, i, j);
                 break;
-            case TM2_MED_RES:
+            case 132:
                 tm2_med_res_block(ctx, p, i, j);
                 break;
-            case TM2_LOW_RES:
+            case 133:
                 tm2_low_res_block(ctx, p, i, j);
                 break;
-            case TM2_NULL_RES:
+            case 130:
                 tm2_null_res_block(ctx, p, i, j);
                 break;
-            case TM2_UPDATE:
+            case 128:
                 tm2_update_block(ctx, p, i, j);
                 keyframe = 0;
                 break;
-            case TM2_STILL:
+            case 129:
                 tm2_still_block(ctx, p, i, j);
                 keyframe = 0;
                 break;
-            case TM2_MOTION:
+            case 131:
                 tm2_motion_block(ctx, p, i, j);
                 keyframe = 0;
                 break;
@@ -103,7 +103,7 @@ __attribute__((used)) static int tm2_decode_blocks(TM2Context *ctx, AVFrame *p)
         }
     }
 
-    /* copy data from our buffer to AVFrame */
+
     Y = (ctx->cur?ctx->Y2:ctx->Y1);
     U = (ctx->cur?ctx->U2:ctx->U1);
     V = (ctx->cur?ctx->V2:ctx->V1);
@@ -116,11 +116,11 @@ __attribute__((used)) static int tm2_decode_blocks(TM2Context *ctx, AVFrame *p)
             dst[3*i+2] = av_clip_uint8(y + u);
         }
 
-        /* horizontal edge extension */
-        Y[-4]    = Y[-3]    = Y[-2]    = Y[-1] = Y[0];
-        Y[w + 3] = Y[w + 2] = Y[w + 1] = Y[w]  = Y[w - 1];
 
-        /* vertical edge extension */
+        Y[-4] = Y[-3] = Y[-2] = Y[-1] = Y[0];
+        Y[w + 3] = Y[w + 2] = Y[w + 1] = Y[w] = Y[w - 1];
+
+
         if (j == 0) {
             memcpy(Y - 4 - 1 * ctx->y_stride, Y - 4, ctx->y_stride);
             memcpy(Y - 4 - 2 * ctx->y_stride, Y - 4, ctx->y_stride);
@@ -135,13 +135,13 @@ __attribute__((used)) static int tm2_decode_blocks(TM2Context *ctx, AVFrame *p)
 
         Y += ctx->y_stride;
         if (j & 1) {
-            /* horizontal edge extension */
-            U[-2]     = U[-1] = U[0];
-            V[-2]     = V[-1] = V[0];
+
+            U[-2] = U[-1] = U[0];
+            V[-2] = V[-1] = V[0];
             U[cw + 1] = U[cw] = U[cw - 1];
             V[cw + 1] = V[cw] = V[cw - 1];
 
-            /* vertical edge extension */
+
             if (j == 1) {
                 memcpy(U - 2 - 1 * ctx->uv_stride, U - 2, ctx->uv_stride);
                 memcpy(V - 2 - 1 * ctx->uv_stride, V - 2, ctx->uv_stride);

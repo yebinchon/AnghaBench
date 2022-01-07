@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ksft_exit_pass () ; 
- int /*<<< orphan*/  ksft_print_header () ; 
- int /*<<< orphan*/  ksft_set_plan (int) ; 
- int /*<<< orphan*/  test_pidfd_wait_simple () ; 
- int /*<<< orphan*/  test_pidfd_wait_states () ; 
+ int ksft_exit_pass () ;
+ int ksft_print_header () ;
+ int ksft_set_plan (int) ;
+ int test_pidfd_wait_simple () ;
+ int test_pidfd_wait_states () ;
 
 int main(int argc, char **argv)
 {
-	ksft_print_header();
-	ksft_set_plan(2);
+ ksft_print_header();
+ ksft_set_plan(2);
 
-	test_pidfd_wait_simple();
-	test_pidfd_wait_states();
+ test_pidfd_wait_simple();
+ test_pidfd_wait_states();
 
-	return ksft_exit_pass();
+ return ksft_exit_pass();
 }

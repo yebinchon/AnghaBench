@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPOLESTR ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  IROTData ;
-typedef  int /*<<< orphan*/  IMoniker ;
-typedef  int /*<<< orphan*/  IBindCtx ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  FILETIME ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ CreateBindCtx (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ CreatePointerMoniker (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ CreateStreamOnHGlobal (int /*<<< orphan*/ *,int /*<<< orphan*/ **,...) ; 
- scalar_t__ E_INVALIDARG ; 
- scalar_t__ E_NOINTERFACE ; 
- scalar_t__ E_NOTIMPL ; 
- scalar_t__ E_UNEXPECTED ; 
- int /*<<< orphan*/  IBindCtx_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IROTData ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- scalar_t__ IMoniker_BindToObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ IMoniker_BindToStorage (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ IMoniker_GetDisplayName (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IMoniker_GetTimeOfLastChange (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IMoniker_Hash (int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ IMoniker_Inverse (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IMoniker_IsDirty (int /*<<< orphan*/ *) ; 
- scalar_t__ IMoniker_IsRunning (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IMoniker_IsSystemMoniker (int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ IMoniker_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IMoniker_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IMoniker_Save (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ MKSYS_POINTERMONIKER ; 
- scalar_t__ PtrToUlong (int /*<<< orphan*/ *) ; 
- scalar_t__ S_FALSE ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  Test_ClassFactory ; 
- scalar_t__ cLocks ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,...) ; 
- int /*<<< orphan*/  ok_more_than_one_lock () ; 
- int /*<<< orphan*/  ok_no_locks () ; 
- int /*<<< orphan*/  ok_ole_success (scalar_t__,...) ; 
+
+
+
+typedef int LPOLESTR ;
+typedef int IUnknown ;
+typedef int IStream ;
+typedef int IROTData ;
+typedef int IMoniker ;
+typedef int IBindCtx ;
+typedef scalar_t__ HRESULT ;
+typedef int FILETIME ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ CreateBindCtx (int *,int **) ;
+ scalar_t__ CreatePointerMoniker (int *,int **) ;
+ scalar_t__ CreateStreamOnHGlobal (int *,int **,...) ;
+ scalar_t__ E_INVALIDARG ;
+ scalar_t__ E_NOINTERFACE ;
+ scalar_t__ E_NOTIMPL ;
+ scalar_t__ E_UNEXPECTED ;
+ int IBindCtx_Release (int *) ;
+ int IID_IROTData ;
+ int IID_IUnknown ;
+ scalar_t__ IMoniker_BindToObject (int *,int *,int *,int *,void**) ;
+ scalar_t__ IMoniker_BindToStorage (int *,int *,int *,int *,void**) ;
+ scalar_t__ IMoniker_GetDisplayName (int *,int *,int *,int *) ;
+ scalar_t__ IMoniker_GetTimeOfLastChange (int *,int *,int *,int *) ;
+ scalar_t__ IMoniker_Hash (int *,scalar_t__*) ;
+ scalar_t__ IMoniker_Inverse (int *,int **) ;
+ scalar_t__ IMoniker_IsDirty (int *) ;
+ scalar_t__ IMoniker_IsRunning (int *,int *,int *,int *) ;
+ scalar_t__ IMoniker_IsSystemMoniker (int *,scalar_t__*) ;
+ scalar_t__ IMoniker_QueryInterface (int *,int *,void**) ;
+ int IMoniker_Release (int *) ;
+ scalar_t__ IMoniker_Save (int *,int *,int ) ;
+ int IStream_Release (int *) ;
+ int IUnknown_Release (int *) ;
+ scalar_t__ MKSYS_POINTERMONIKER ;
+ scalar_t__ PtrToUlong (int *) ;
+ scalar_t__ S_FALSE ;
+ scalar_t__ S_OK ;
+ int TRUE ;
+ int Test_ClassFactory ;
+ scalar_t__ cLocks ;
+ int ok (int,char*,scalar_t__,...) ;
+ int ok_more_than_one_lock () ;
+ int ok_no_locks () ;
+ int ok_ole_success (scalar_t__,...) ;
 
 __attribute__((used)) static void test_pointer_moniker(void)
 {
@@ -73,7 +73,7 @@ __attribute__((used)) static void test_pointer_moniker(void)
 
     cLocks = 0;
 
-    hr = CreatePointerMoniker((IUnknown *)&Test_ClassFactory, NULL);
+    hr = CreatePointerMoniker((IUnknown *)&Test_ClassFactory, ((void*)0));
     ok(hr == E_INVALIDARG, "CreatePointerMoniker(x, NULL) should have returned E_INVALIDARG instead of 0x%08x\n", hr);
 
     hr = CreatePointerMoniker((IUnknown *)&Test_ClassFactory, &moniker);
@@ -82,12 +82,12 @@ __attribute__((used)) static void test_pointer_moniker(void)
 
     ok_more_than_one_lock();
 
-    /* Display Name */
+
 
     hr = CreateBindCtx(0, &bindctx);
     ok_ole_success(hr, CreateBindCtx);
 
-    hr = IMoniker_GetDisplayName(moniker, bindctx, NULL, &display_name);
+    hr = IMoniker_GetDisplayName(moniker, bindctx, ((void*)0), &display_name);
     ok(hr == E_NOTIMPL, "IMoniker_GetDisplayName should have returned E_NOTIMPL instead of 0x%08x\n", hr);
 
     IBindCtx_Release(bindctx);
@@ -95,14 +95,14 @@ __attribute__((used)) static void test_pointer_moniker(void)
     hr = IMoniker_IsDirty(moniker);
     ok(hr == S_FALSE, "IMoniker_IsDirty should return S_FALSE, not 0x%08x\n", hr);
 
-    /* IROTData::GetComparisonData test */
+
 
     hr = IMoniker_QueryInterface(moniker, &IID_IROTData, (void **)&rotdata);
     ok(hr == E_NOINTERFACE, "IMoniker_QueryInterface(IID_IROTData) should have returned E_NOINTERFACE instead of 0x%08x\n", hr);
 
-    /* Saving */
 
-    hr = CreateStreamOnHGlobal(NULL, TRUE, &stream);
+
+    hr = CreateStreamOnHGlobal(((void*)0), TRUE, &stream);
     ok_ole_success(hr, CreateStreamOnHGlobal);
 
     hr = IMoniker_Save(moniker, stream, TRUE);
@@ -110,14 +110,14 @@ __attribute__((used)) static void test_pointer_moniker(void)
 
     IStream_Release(stream);
 
-    /* Hashing */
+
     hr = IMoniker_Hash(moniker, &hash);
     ok_ole_success(hr, IMoniker_Hash);
     ok(hash == PtrToUlong(&Test_ClassFactory),
         "Hash value should have been 0x%08x, instead of 0x%08x\n",
         PtrToUlong(&Test_ClassFactory), hash);
 
-    /* IsSystemMoniker test */
+
     hr = IMoniker_IsSystemMoniker(moniker, &moniker_type);
     ok_ole_success(hr, IMoniker_IsSystemMoniker);
     ok(moniker_type == MKSYS_POINTERMONIKER,
@@ -131,18 +131,18 @@ __attribute__((used)) static void test_pointer_moniker(void)
     hr = CreateBindCtx(0, &bindctx);
     ok_ole_success(hr, CreateBindCtx);
 
-    /* IsRunning test */
-    hr = IMoniker_IsRunning(moniker, bindctx, NULL, NULL);
+
+    hr = IMoniker_IsRunning(moniker, bindctx, ((void*)0), ((void*)0));
     ok(hr == S_OK, "IMoniker_IsRunning should return S_OK, not 0x%08x\n", hr);
 
-    hr = IMoniker_GetTimeOfLastChange(moniker, bindctx, NULL, &filetime);
+    hr = IMoniker_GetTimeOfLastChange(moniker, bindctx, ((void*)0), &filetime);
     ok(hr == E_NOTIMPL, "IMoniker_GetTimeOfLastChange should return E_NOTIMPL, not 0x%08x\n", hr);
 
-    hr = IMoniker_BindToObject(moniker, bindctx, NULL, &IID_IUnknown, (void **)&unknown);
+    hr = IMoniker_BindToObject(moniker, bindctx, ((void*)0), &IID_IUnknown, (void **)&unknown);
     ok_ole_success(hr, IMoniker_BindToObject);
     IUnknown_Release(unknown);
 
-    hr = IMoniker_BindToStorage(moniker, bindctx, NULL, &IID_IUnknown, (void **)&unknown);
+    hr = IMoniker_BindToStorage(moniker, bindctx, ((void*)0), &IID_IUnknown, (void **)&unknown);
     ok_ole_success(hr, IMoniker_BindToStorage);
     IUnknown_Release(unknown);
 
@@ -150,13 +150,13 @@ __attribute__((used)) static void test_pointer_moniker(void)
 
     ok_no_locks();
 
-    hr = CreatePointerMoniker(NULL, &moniker);
+    hr = CreatePointerMoniker(((void*)0), &moniker);
     ok_ole_success(hr, CreatePointerMoniker);
 
-    hr = IMoniker_BindToObject(moniker, bindctx, NULL, &IID_IUnknown, (void **)&unknown);
+    hr = IMoniker_BindToObject(moniker, bindctx, ((void*)0), &IID_IUnknown, (void **)&unknown);
     ok(hr == E_UNEXPECTED, "IMoniker_BindToObject should have returned E_UNEXPECTED instead of 0x%08x\n", hr);
 
-    hr = IMoniker_BindToStorage(moniker, bindctx, NULL, &IID_IUnknown, (void **)&unknown);
+    hr = IMoniker_BindToStorage(moniker, bindctx, ((void*)0), &IID_IUnknown, (void **)&unknown);
     ok(hr == E_UNEXPECTED, "IMoniker_BindToStorage should have returned E_UNEXPECTED instead of 0x%08x\n", hr);
 
     IBindCtx_Release(bindctx);

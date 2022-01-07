@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct linux_device_handler {scalar_t__ linux_major; } ;
-struct device_element {int /*<<< orphan*/  entry; } ;
+struct device_element {int entry; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  M_LINUX ; 
- int /*<<< orphan*/  M_WAITOK ; 
- int /*<<< orphan*/  TAILQ_INSERT_TAIL (int /*<<< orphan*/ *,struct device_element*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bcopy (struct linux_device_handler*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  devices ; 
- int /*<<< orphan*/  linux_major_starting ; 
- int /*<<< orphan*/  list ; 
- struct device_element* malloc (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ int M_LINUX ;
+ int M_WAITOK ;
+ int TAILQ_INSERT_TAIL (int *,struct device_element*,int ) ;
+ int bcopy (struct linux_device_handler*,int *,int) ;
+ int devices ;
+ int linux_major_starting ;
+ int list ;
+ struct device_element* malloc (int,int ,int ) ;
 
 int
 linux_device_register_handler(struct linux_device_handler *d)
 {
-	struct device_element *de;
+ struct device_element *de;
 
-	if (d == NULL)
-		return (EINVAL);
+ if (d == ((void*)0))
+  return (EINVAL);
 
-	de = malloc(sizeof(*de), M_LINUX, M_WAITOK);
-	if (d->linux_major < 0) {
-		d->linux_major = linux_major_starting++;
-	}
-	bcopy(d, &de->entry, sizeof(*d));
+ de = malloc(sizeof(*de), M_LINUX, M_WAITOK);
+ if (d->linux_major < 0) {
+  d->linux_major = linux_major_starting++;
+ }
+ bcopy(d, &de->entry, sizeof(*d));
 
-	/* Add the element to the list, sorted on span. */
-	TAILQ_INSERT_TAIL(&devices, de, list);
 
-	return (0);
+ TAILQ_INSERT_TAIL(&devices, de, list);
+
+ return (0);
 }

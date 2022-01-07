@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct secp256k1_pippenger_state {int dummy; } ;
 struct secp256k1_pippenger_point_state {int dummy; } ;
-typedef  int /*<<< orphan*/  secp256k1_scratch ;
-typedef  int /*<<< orphan*/  secp256k1_scalar ;
-typedef  int /*<<< orphan*/  secp256k1_gej ;
-typedef  int /*<<< orphan*/  secp256k1_ge ;
-typedef  int /*<<< orphan*/  secp256k1_callback ;
+typedef int secp256k1_scratch ;
+typedef int secp256k1_scalar ;
+typedef int secp256k1_gej ;
+typedef int secp256k1_ge ;
+typedef int secp256k1_callback ;
 
-/* Variables and functions */
- int PIPPENGER_MAX_BUCKET_WINDOW ; 
- int /*<<< orphan*/  PIPPENGER_SCRATCH_OBJECTS ; 
- int WNAF_SIZE (int) ; 
- size_t secp256k1_pippenger_bucket_window_inv (int) ; 
- size_t secp256k1_scratch_max_allocation (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int PIPPENGER_MAX_BUCKET_WINDOW ;
+ int PIPPENGER_SCRATCH_OBJECTS ;
+ int WNAF_SIZE (int) ;
+ size_t secp256k1_pippenger_bucket_window_inv (int) ;
+ size_t secp256k1_scratch_max_allocation (int const*,int *,int ) ;
 
 __attribute__((used)) static size_t secp256k1_pippenger_max_points(const secp256k1_callback* error_callback, secp256k1_scratch *scratch) {
     size_t max_alloc = secp256k1_scratch_max_allocation(error_callback, scratch, PIPPENGER_SCRATCH_OBJECTS);
@@ -37,9 +37,9 @@ __attribute__((used)) static size_t secp256k1_pippenger_max_points(const secp256
         size_t space_overhead;
         size_t entry_size = sizeof(secp256k1_ge) + sizeof(secp256k1_scalar) + sizeof(struct secp256k1_pippenger_point_state) + (WNAF_SIZE(bucket_window+1)+1)*sizeof(int);
 
-#ifdef USE_ENDOMORPHISM
-        entry_size = 2*entry_size;
-#endif
+
+
+
         space_overhead = (sizeof(secp256k1_gej) << bucket_window) + entry_size + sizeof(struct secp256k1_pippenger_state);
         if (space_overhead > max_alloc) {
             break;
@@ -52,9 +52,9 @@ __attribute__((used)) static size_t secp256k1_pippenger_max_points(const secp256
             res = n_points;
         }
         if (n_points < max_points) {
-            /* A larger bucket_window may support even more points. But if we
-             * would choose that then the caller couldn't safely use any number
-             * smaller than what this function returns */
+
+
+
             break;
         }
     }

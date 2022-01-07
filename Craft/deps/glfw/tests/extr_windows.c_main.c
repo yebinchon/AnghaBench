@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  b; int /*<<< orphan*/  g; int /*<<< orphan*/  r; } ;
-typedef  scalar_t__ GLboolean ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- int /*<<< orphan*/  GLFW_DECORATED ; 
- int /*<<< orphan*/  GLFW_VISIBLE ; 
- int /*<<< orphan*/  GL_COLOR_BUFFER_BIT ; 
- scalar_t__ GL_FALSE ; 
- scalar_t__ GL_TRUE ; 
- TYPE_1__* colors ; 
- int /*<<< orphan*/  error_callback ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glClear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glClearColor (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,float) ; 
- int /*<<< orphan*/ * glfwCreateWindow (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwGetWindowFrameSize (int /*<<< orphan*/ *,int*,int*,int*,int*) ; 
- int /*<<< orphan*/  glfwInit () ; 
- int /*<<< orphan*/  glfwMakeContextCurrent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwPollEvents () ; 
- int /*<<< orphan*/  glfwSetErrorCallback (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetKeyCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetWindowPos (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  glfwShowWindow (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwSwapBuffers (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwTerminate () ; 
- int /*<<< orphan*/  glfwWindowHint (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ glfwWindowShouldClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  key_callback ; 
- int /*<<< orphan*/ * titles ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int b; int g; int r; } ;
+typedef scalar_t__ GLboolean ;
+typedef int GLFWwindow ;
+
+
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int GLFW_DECORATED ;
+ int GLFW_VISIBLE ;
+ int GL_COLOR_BUFFER_BIT ;
+ scalar_t__ GL_FALSE ;
+ scalar_t__ GL_TRUE ;
+ TYPE_1__* colors ;
+ int error_callback ;
+ int exit (int ) ;
+ int glClear (int ) ;
+ int glClearColor (int ,int ,int ,float) ;
+ int * glfwCreateWindow (int,int,int ,int *,int *) ;
+ int glfwGetWindowFrameSize (int *,int*,int*,int*,int*) ;
+ int glfwInit () ;
+ int glfwMakeContextCurrent (int *) ;
+ int glfwPollEvents () ;
+ int glfwSetErrorCallback (int ) ;
+ int glfwSetKeyCallback (int *,int ) ;
+ int glfwSetWindowPos (int *,int,int) ;
+ int glfwShowWindow (int *) ;
+ int glfwSwapBuffers (int *) ;
+ int glfwTerminate () ;
+ int glfwWindowHint (int ,scalar_t__) ;
+ scalar_t__ glfwWindowShouldClose (int *) ;
+ int key_callback ;
+ int * titles ;
 
 int main(int argc, char** argv)
 {
@@ -58,11 +58,11 @@ int main(int argc, char** argv)
     glfwWindowHint(GLFW_DECORATED, GL_FALSE);
     glfwWindowHint(GLFW_VISIBLE, GL_FALSE);
 
-    for (i = 0;  i < 4;  i++)
+    for (i = 0; i < 4; i++)
     {
         int left, top, right, bottom;
 
-        windows[i] = glfwCreateWindow(200, 200, titles[i], NULL, NULL);
+        windows[i] = glfwCreateWindow(200, 200, titles[i], ((void*)0), ((void*)0));
         if (!windows[i])
         {
             glfwTerminate();
@@ -80,12 +80,12 @@ int main(int argc, char** argv)
                          100 + (i >> 1) * (200 + top + bottom));
     }
 
-    for (i = 0;  i < 4;  i++)
+    for (i = 0; i < 4; i++)
         glfwShowWindow(windows[i]);
 
     while (running)
     {
-        for (i = 0;  i < 4;  i++)
+        for (i = 0; i < 4; i++)
         {
             glfwMakeContextCurrent(windows[i]);
             glClear(GL_COLOR_BUFFER_BIT);

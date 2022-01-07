@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ cmsUInt16Number ;
-typedef  int cmsInt32Number ;
-typedef  scalar_t__ cmsFloat64Number ;
-typedef  int /*<<< orphan*/  cmsContext ;
-struct TYPE_2__ {int /*<<< orphan*/  hIlimit; int /*<<< orphan*/  hLab2sRGB; } ;
-typedef  TYPE_1__ FakeCMYKParams ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  cmsDoTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__ const*,scalar_t__*,int) ; 
- scalar_t__ cmsmin (scalar_t__,scalar_t__) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ cmsUInt16Number ;
+typedef int cmsInt32Number ;
+typedef scalar_t__ cmsFloat64Number ;
+typedef int cmsContext ;
+struct TYPE_2__ {int hIlimit; int hLab2sRGB; } ;
+typedef TYPE_1__ FakeCMYKParams ;
+
+
+ int DbgThread () ;
+ int cmsDoTransform (int ,int ,scalar_t__ const*,scalar_t__*,int) ;
+ scalar_t__ cmsmin (scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static
 cmsInt32Number ForwardSampler(cmsContext ContextID, register const cmsUInt16Number In[], cmsUInt16Number Out[], void* Cargo)
@@ -38,9 +38,9 @@ cmsInt32Number ForwardSampler(cmsContext ContextID, register const cmsUInt16Numb
 
     k = (c < m ? cmsmin(c, y) : cmsmin(m, y));
 
-    // NONSENSE WARNING!: I'm doing this just because this is a test
-    // profile that may have ink limit up to 400%. There is no UCR here
-    // so the profile is basically useless for anything but testing.
+
+
+
 
     cmyk[0] = c;
     cmyk[1] = m;

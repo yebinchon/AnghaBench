@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_9__ {int n_sb_entries; size_t current_sb; scalar_t__ current_sb_entry; TYPE_2__* sb_entries; TYPE_1__* sb_blocks; int /*<<< orphan*/ * sb_pb; int /*<<< orphan*/ * sb_buf; int /*<<< orphan*/  sb_key; } ;
-typedef  TYPE_3__ VividasDemuxContext ;
-struct TYPE_10__ {int /*<<< orphan*/  pb; } ;
-struct TYPE_8__ {int /*<<< orphan*/  flag; int /*<<< orphan*/  size; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_9__ {int n_sb_entries; size_t current_sb; scalar_t__ current_sb_entry; TYPE_2__* sb_entries; TYPE_1__* sb_blocks; int * sb_pb; int * sb_buf; int sb_key; } ;
+typedef TYPE_3__ VividasDemuxContext ;
+struct TYPE_10__ {int pb; } ;
+struct TYPE_8__ {int flag; int size; } ;
 struct TYPE_7__ {int n_packets; } ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_4__ AVFormatContext ;
+typedef int AVIOContext ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * avio_alloc_context (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_r8 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ffio_read_varlen (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * read_sb_block (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned int) ; 
+
+ int av_free (int *) ;
+ int * avio_alloc_context (int *,int ,int ,int *,int *,int *,int *) ;
+ int avio_r8 (int *) ;
+ int ffio_read_varlen (int *) ;
+ int * read_sb_block (int ,int *,int *,unsigned int) ;
 
 __attribute__((used)) static void load_sb_block(AVFormatContext *s, VividasDemuxContext *viv, unsigned expected_size)
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static void load_sb_block(AVFormatContext *s, VividasDemux
 
     if (viv->sb_pb) {
         av_free(viv->sb_pb);
-        viv->sb_pb = NULL;
+        viv->sb_pb = ((void*)0);
     }
 
     if (viv->sb_buf)
@@ -49,17 +49,17 @@ __attribute__((used)) static void load_sb_block(AVFormatContext *s, VividasDemux
         return;
     }
 
-    pb = avio_alloc_context(viv->sb_buf, size, 0, NULL, NULL, NULL, NULL);
+    pb = avio_alloc_context(viv->sb_buf, size, 0, ((void*)0), ((void*)0), ((void*)0), ((void*)0));
     if (!pb)
         return;
 
     viv->sb_pb = pb;
 
-    avio_r8(pb); //  'S'
-    avio_r8(pb); //  'B'
-    ffio_read_varlen(pb); //  size
-    avio_r8(pb); //  junk
-    ffio_read_varlen(pb); // first packet
+    avio_r8(pb);
+    avio_r8(pb);
+    ffio_read_varlen(pb);
+    avio_r8(pb);
+    ffio_read_varlen(pb);
 
     viv->n_sb_entries = viv->sb_blocks[viv->current_sb].n_packets;
 

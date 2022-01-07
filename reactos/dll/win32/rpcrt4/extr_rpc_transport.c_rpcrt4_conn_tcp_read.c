@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  sock; } ;
-typedef  TYPE_1__ RpcConnection_tcp ;
-typedef  int /*<<< orphan*/  RpcConnection ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,void*,unsigned int,int) ; 
- int /*<<< orphan*/  WARN (char*,scalar_t__) ; 
- scalar_t__ WSAEINTR ; 
- scalar_t__ WSAEWOULDBLOCK ; 
- scalar_t__ WSAGetLastError () ; 
- int recv (int /*<<< orphan*/ ,char*,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rpcrt4_sock_wait_for_recv (TYPE_1__*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int sock; } ;
+typedef TYPE_1__ RpcConnection_tcp ;
+typedef int RpcConnection ;
+
+
+ int TRACE (char*,int ,void*,unsigned int,int) ;
+ int WARN (char*,scalar_t__) ;
+ scalar_t__ WSAEINTR ;
+ scalar_t__ WSAEWOULDBLOCK ;
+ scalar_t__ WSAGetLastError () ;
+ int recv (int ,char*,unsigned int,int ) ;
+ int rpcrt4_sock_wait_for_recv (TYPE_1__*) ;
 
 __attribute__((used)) static int rpcrt4_conn_tcp_read(RpcConnection *Connection,
                                 void *buffer, unsigned int count)

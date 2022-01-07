@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uni_char_t ;
-typedef  int /*<<< orphan*/  text_style_t ;
-typedef  int /*<<< orphan*/  ruby_block_t ;
-typedef  int /*<<< orphan*/  paragraph_t ;
-typedef  int /*<<< orphan*/  filter_t ;
 
-/* Variables and functions */
- scalar_t__ AnalyzeParagraph (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeParagraph (int /*<<< orphan*/ *) ; 
- scalar_t__ ItemizeParagraph (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ LoadGlyphs (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,unsigned int*) ; 
- int /*<<< orphan*/ * NewParagraph (int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int) ; 
- scalar_t__ RemoveZeroWidthCharacters (int /*<<< orphan*/ *) ; 
- scalar_t__ ShapeParagraphFriBidi (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ ShapeParagraphHarfBuzz (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ ZeroNsmAdvance (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uni_char_t ;
+typedef int text_style_t ;
+typedef int ruby_block_t ;
+typedef int paragraph_t ;
+typedef int filter_t ;
+
+
+ scalar_t__ AnalyzeParagraph (int *) ;
+ int FreeParagraph (int *) ;
+ scalar_t__ ItemizeParagraph (int *,int *) ;
+ scalar_t__ LoadGlyphs (int *,int *,int,int,unsigned int*) ;
+ int * NewParagraph (int *,int,int const*,int **,int **,int) ;
+ scalar_t__ RemoveZeroWidthCharacters (int *) ;
+ scalar_t__ ShapeParagraphFriBidi (int *,int *) ;
+ scalar_t__ ShapeParagraphHarfBuzz (int *,int **) ;
+ scalar_t__ ZeroNsmAdvance (int *) ;
 
 __attribute__((used)) static paragraph_t * BuildParagraph( filter_t *p_filter,
                                      int i_size,
@@ -41,36 +41,18 @@ __attribute__((used)) static paragraph_t * BuildParagraph( filter_t *p_filter,
                                 pp_ruby,
                                 i_runs_size );
     if( !p_paragraph )
-        return NULL;
+        return ((void*)0);
 
-#ifdef HAVE_FRIBIDI
-    if( AnalyzeParagraph( p_paragraph ) )
-        goto error;
-#endif
+
+
+
+
 
     if( ItemizeParagraph( p_filter, p_paragraph ) )
         goto error;
-
-#if defined HAVE_HARFBUZZ
-    if( ShapeParagraphHarfBuzz( p_filter, &p_paragraph ) )
+    if( LoadGlyphs( p_filter, p_paragraph, 0, 1, pi_max_advance_x ) )
         goto error;
 
-    if( LoadGlyphs( p_filter, p_paragraph, true, false, pi_max_advance_x ) )
-        goto error;
-
-#elif defined HAVE_FRIBIDI
-    if( ShapeParagraphFriBidi( p_filter, p_paragraph ) )
-        goto error;
-    if( LoadGlyphs( p_filter, p_paragraph, false, true, pi_max_advance_x ) )
-        goto error;
-    if( RemoveZeroWidthCharacters( p_paragraph ) )
-        goto error;
-    if( ZeroNsmAdvance( p_paragraph ) )
-        goto error;
-#else
-    if( LoadGlyphs( p_filter, p_paragraph, false, true, pi_max_advance_x ) )
-        goto error;
-#endif
 
     return p_paragraph;
 
@@ -78,5 +60,5 @@ error:
     if( p_paragraph )
         FreeParagraph( p_paragraph );
 
-    return NULL;
+    return ((void*)0);
 }

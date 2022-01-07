@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t u_int ;
-struct sshkey_cert {size_t nprincipals; int /*<<< orphan*/ * principals; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  debug3 (char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* match_list (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef size_t u_int ;
+struct sshkey_cert {size_t nprincipals; int * principals; } ;
+
+
+ int debug3 (char*,char*) ;
+ int free (char*) ;
+ char* match_list (int ,char const*,int *) ;
 
 __attribute__((used)) static int
 match_principals_option(const char *principal_list, struct sshkey_cert *cert)
 {
-	char *result;
-	u_int i;
+ char *result;
+ u_int i;
 
-	/* XXX percent_expand() sequences for authorized_principals? */
 
-	for (i = 0; i < cert->nprincipals; i++) {
-		if ((result = match_list(cert->principals[i],
-		    principal_list, NULL)) != NULL) {
-			debug3("matched principal from key options \"%.100s\"",
-			    result);
-			free(result);
-			return 1;
-		}
-	}
-	return 0;
+
+ for (i = 0; i < cert->nprincipals; i++) {
+  if ((result = match_list(cert->principals[i],
+      principal_list, ((void*)0))) != ((void*)0)) {
+   debug3("matched principal from key options \"%.100s\"",
+       result);
+   free(result);
+   return 1;
+  }
+ }
+ return 0;
 }

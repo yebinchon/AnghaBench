@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct ufx_data {int /*<<< orphan*/  udev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  USB_CTRL_GET_TIMEOUT ; 
- int USB_DIR_IN ; 
- int USB_RECIP_DEVICE ; 
- int USB_TYPE_VENDOR ; 
- int /*<<< orphan*/  USB_VENDOR_REQUEST_READ_REGISTER ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * kmalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  le32_to_cpus (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pr_warn (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ unlikely (int) ; 
- int usb_control_msg (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usb_rcvctrlpipe (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u32 ;
+struct ufx_data {int udev; } ;
+
+
+ int BUG_ON (int) ;
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int USB_CTRL_GET_TIMEOUT ;
+ int USB_DIR_IN ;
+ int USB_RECIP_DEVICE ;
+ int USB_TYPE_VENDOR ;
+ int USB_VENDOR_REQUEST_READ_REGISTER ;
+ int kfree (int *) ;
+ int * kmalloc (int,int ) ;
+ int le32_to_cpus (int *) ;
+ int pr_warn (char*,int ) ;
+ scalar_t__ unlikely (int) ;
+ int usb_control_msg (int ,int ,int ,int,int,int ,int *,int,int ) ;
+ int usb_rcvctrlpipe (int ,int ) ;
 
 __attribute__((used)) static int ufx_reg_read(struct ufx_data *dev, u32 index, u32 *data)
 {
-	u32 *buf = kmalloc(4, GFP_KERNEL);
-	int ret;
+ u32 *buf = kmalloc(4, GFP_KERNEL);
+ int ret;
 
-	BUG_ON(!dev);
+ BUG_ON(!dev);
 
-	if (!buf)
-		return -ENOMEM;
+ if (!buf)
+  return -ENOMEM;
 
-	ret = usb_control_msg(dev->udev, usb_rcvctrlpipe(dev->udev, 0),
-		USB_VENDOR_REQUEST_READ_REGISTER,
-		USB_DIR_IN | USB_TYPE_VENDOR | USB_RECIP_DEVICE,
-		00, index, buf, 4, USB_CTRL_GET_TIMEOUT);
+ ret = usb_control_msg(dev->udev, usb_rcvctrlpipe(dev->udev, 0),
+  USB_VENDOR_REQUEST_READ_REGISTER,
+  USB_DIR_IN | USB_TYPE_VENDOR | USB_RECIP_DEVICE,
+  00, index, buf, 4, USB_CTRL_GET_TIMEOUT);
 
-	le32_to_cpus(buf);
-	*data = *buf;
-	kfree(buf);
+ le32_to_cpus(buf);
+ *data = *buf;
+ kfree(buf);
 
-	if (unlikely(ret < 0))
-		pr_warn("Failed to read register index 0x%08x\n", index);
+ if (unlikely(ret < 0))
+  pr_warn("Failed to read register index 0x%08x\n", index);
 
-	return ret;
+ return ret;
 }

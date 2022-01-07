@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int PATH_MAX ; 
- int /*<<< orphan*/  assert (int) ; 
- char* po_olddir ; 
- int /*<<< orphan*/  replace_char (char*,char,char) ; 
- int snprintf (char*,int,char*,char*,char const*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcpy (char*,char const* const) ; 
- int strlen (char const*) ; 
+ int PATH_MAX ;
+ int assert (int) ;
+ char* po_olddir ;
+ int replace_char (char*,char,char) ;
+ int snprintf (char*,int,char*,char*,char const*,int,int ) ;
+ int strcpy (char*,char const* const) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static void compute_temporary_filename (int transaction_id, int *transaction_file_no, const char *const name, char out[PATH_MAX]) {
   const int MAX_PREFIX_LENGTH = 64;

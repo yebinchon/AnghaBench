@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {scalar_t__ begin_usec; scalar_t__ begin_running_usec; int /*<<< orphan*/  bus_track; int /*<<< orphan*/  ignore_order; int /*<<< orphan*/  sent_dbus_new_signal; int /*<<< orphan*/  irreversible; int /*<<< orphan*/  state; int /*<<< orphan*/  type; int /*<<< orphan*/  id; } ;
-typedef  TYPE_1__ Job ;
-typedef  TYPE_1__ FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  bus_track_serialize (int /*<<< orphan*/ ,TYPE_1__*,char*) ; 
- int /*<<< orphan*/  fputc (char,TYPE_1__*) ; 
- int /*<<< orphan*/  job_state_to_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  job_type_to_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  serialize_bool (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  serialize_item (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  serialize_item_format (TYPE_1__*,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  serialize_usec (TYPE_1__*,char*,scalar_t__) ; 
+
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_12__ {scalar_t__ begin_usec; scalar_t__ begin_running_usec; int bus_track; int ignore_order; int sent_dbus_new_signal; int irreversible; int state; int type; int id; } ;
+typedef TYPE_1__ Job ;
+typedef TYPE_1__ FILE ;
+
+
+ int assert (TYPE_1__*) ;
+ int bus_track_serialize (int ,TYPE_1__*,char*) ;
+ int fputc (char,TYPE_1__*) ;
+ int job_state_to_string (int ) ;
+ int job_type_to_string (int ) ;
+ int serialize_bool (TYPE_1__*,char*,int ) ;
+ int serialize_item (TYPE_1__*,char*,int ) ;
+ int serialize_item_format (TYPE_1__*,char*,char*,int ) ;
+ int serialize_usec (TYPE_1__*,char*,scalar_t__) ;
 
 int job_serialize(Job *j, FILE *f) {
         assert(j);
@@ -44,7 +44,7 @@ int job_serialize(Job *j, FILE *f) {
 
         bus_track_serialize(j->bus_track, f, "subscribed");
 
-        /* End marker */
+
         fputc('\n', f);
         return 0;
 }

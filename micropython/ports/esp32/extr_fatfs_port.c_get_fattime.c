@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int tm_year; scalar_t__ tm_sec; scalar_t__ tm_min; scalar_t__ tm_hour; scalar_t__ tm_mday; scalar_t__ tm_mon; } ;
-typedef  TYPE_1__ timeutils_struct_time_t ;
-struct timeval {int /*<<< orphan*/  tv_sec; } ;
-typedef  int DWORD ;
+typedef TYPE_1__ timeutils_struct_time_t ;
+struct timeval {int tv_sec; } ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gettimeofday (struct timeval*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  timeutils_seconds_since_2000_to_struct_time (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+ int gettimeofday (struct timeval*,int *) ;
+ int timeutils_seconds_since_2000_to_struct_time (int ,TYPE_1__*) ;
 
 DWORD get_fattime(void) {
     struct timeval tv;
-    gettimeofday(&tv, NULL);
+    gettimeofday(&tv, ((void*)0));
     timeutils_struct_time_t tm;
     timeutils_seconds_since_2000_to_struct_time(tv.tv_sec, &tm);
 

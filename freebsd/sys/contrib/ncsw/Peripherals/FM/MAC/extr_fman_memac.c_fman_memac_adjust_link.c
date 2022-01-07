@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct memac_regs {int /*<<< orphan*/  if_mode; } ;
-typedef  enum enet_speed { ____Placeholder_enet_speed } enet_speed ;
-typedef  enum enet_interface { ____Placeholder_enet_interface } enet_interface ;
 
-/* Variables and functions */
- int E_ENET_IF_RGMII ; 
-#define  E_ENET_SPEED_10 130 
-#define  E_ENET_SPEED_100 129 
-#define  E_ENET_SPEED_1000 128 
- int /*<<< orphan*/  IF_MODE_HD ; 
- int /*<<< orphan*/  IF_MODE_RGMII_10 ; 
- int /*<<< orphan*/  IF_MODE_RGMII_100 ; 
- int /*<<< orphan*/  IF_MODE_RGMII_1000 ; 
- int /*<<< orphan*/  IF_MODE_RGMII_AUTO ; 
- int /*<<< orphan*/  IF_MODE_RGMII_FD ; 
- int /*<<< orphan*/  IF_MODE_RGMII_SP_MASK ; 
- int /*<<< orphan*/  ioread32be (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  iowrite32be (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint32_t ;
+struct memac_regs {int if_mode; } ;
+typedef enum enet_speed { ____Placeholder_enet_speed } enet_speed ;
+typedef enum enet_interface { ____Placeholder_enet_interface } enet_interface ;
+
+
+ int E_ENET_IF_RGMII ;
+
+
+
+ int IF_MODE_HD ;
+ int IF_MODE_RGMII_10 ;
+ int IF_MODE_RGMII_100 ;
+ int IF_MODE_RGMII_1000 ;
+ int IF_MODE_RGMII_AUTO ;
+ int IF_MODE_RGMII_FD ;
+ int IF_MODE_RGMII_SP_MASK ;
+ int ioread32be (int *) ;
+ int iowrite32be (int ,int *) ;
 
 void fman_memac_adjust_link(struct memac_regs *regs,
         enum enet_interface iface_mode,
         enum enet_speed speed, bool full_dx)
 {
-    uint32_t    tmp;
+    uint32_t tmp;
 
     tmp = ioread32be(&regs->if_mode);
 
@@ -44,7 +44,7 @@ void fman_memac_adjust_link(struct memac_regs *regs,
         tmp |= IF_MODE_HD;
 
     if (iface_mode == E_ENET_IF_RGMII) {
-        /* Configure RGMII in manual mode */
+
         tmp &= ~IF_MODE_RGMII_AUTO;
         tmp &= ~IF_MODE_RGMII_SP_MASK;
 
@@ -54,13 +54,13 @@ void fman_memac_adjust_link(struct memac_regs *regs,
             tmp &= ~IF_MODE_RGMII_FD;
 
         switch (speed) {
-        case E_ENET_SPEED_1000:
+        case 128:
             tmp |= IF_MODE_RGMII_1000;
             break;
-        case E_ENET_SPEED_100:
+        case 129:
             tmp |= IF_MODE_RGMII_100;
             break;
-        case E_ENET_SPEED_10:
+        case 130:
             tmp |= IF_MODE_RGMII_10;
             break;
         default:

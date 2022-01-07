@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct display {struct display* next; struct display* exp; } ;
 
-/* Variables and functions */
- struct display* display_chain ; 
- int /*<<< orphan*/  xfree (struct display*) ; 
+
+ struct display* display_chain ;
+ int xfree (struct display*) ;
 
 void
 clear_displays (void)
 {
   struct display *d;
 
-  while ((d = display_chain) != NULL)
+  while ((d = display_chain) != ((void*)0))
     {
       xfree (d->exp);
       display_chain = d->next;

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct retro_disk_control_callback {unsigned int (* get_num_images ) () ;unsigned int (* get_image_index ) () ;} ;
 struct TYPE_3__ {struct retro_disk_control_callback disk_control_cb; } ;
-typedef  TYPE_1__ rarch_system_info_t ;
-typedef  int /*<<< orphan*/  file_list_t ;
+typedef TYPE_1__ rarch_system_info_t ;
+typedef int file_list_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MENU_ENUM_LABEL_VALUE_NO_DISK ; 
- char const* msg_hash_to_str (int /*<<< orphan*/ ) ; 
- TYPE_1__* runloop_get_system_info () ; 
- int /*<<< orphan*/  snprintf (char*,size_t,char*,unsigned int) ; 
- int /*<<< orphan*/  strlcpy (char*,char const*,size_t) ; 
- unsigned int stub1 () ; 
- unsigned int stub2 () ; 
+
+ int MENU_ENUM_LABEL_VALUE_NO_DISK ;
+ char const* msg_hash_to_str (int ) ;
+ TYPE_1__* runloop_get_system_info () ;
+ int snprintf (char*,size_t,char*,unsigned int) ;
+ int strlcpy (char*,char const*,size_t) ;
+ unsigned int stub1 () ;
+ unsigned int stub2 () ;
 
 __attribute__((used)) static void menu_action_setting_disp_set_label_menu_disk_index(
       file_list_t* list,
@@ -33,9 +33,9 @@ __attribute__((used)) static void menu_action_setting_disp_set_label_menu_disk_i
       const char *path,
       char *s2, size_t len2)
 {
-   unsigned images = 0, current                = 0;
-   struct retro_disk_control_callback *control = NULL;
-   rarch_system_info_t *system                 = runloop_get_system_info();
+   unsigned images = 0, current = 0;
+   struct retro_disk_control_callback *control = ((void*)0);
+   rarch_system_info_t *system = runloop_get_system_info();
 
    if (!system)
       return;
@@ -54,7 +54,7 @@ __attribute__((used)) static void menu_action_setting_disp_set_label_menu_disk_i
    if (!control->get_image_index)
       return;
 
-   images  = control->get_num_images();
+   images = control->get_num_images();
    current = control->get_image_index();
 
    if (current >= images)

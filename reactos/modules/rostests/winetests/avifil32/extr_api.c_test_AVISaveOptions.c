@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  options ;
-typedef  int /*<<< orphan*/ * PAVISTREAM ;
-typedef  int /*<<< orphan*/ * LPAVICOMPRESSOPTIONS ;
-typedef  scalar_t__ LONG ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  AVICOMPRESSOPTIONS ;
 
-/* Variables and functions */
- scalar_t__ AVIERR_OK ; 
- scalar_t__ AVISaveOptions (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- scalar_t__ AVISaveOptionsFree (int,int /*<<< orphan*/ **) ; 
- scalar_t__ AVIStreamRelease (int /*<<< orphan*/ *) ; 
- scalar_t__ CreateEditableStream (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- scalar_t__ EditStreamSetNameA (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int ICMF_CHOOSE_ALLCOMPRESSORS ; 
- int ICMF_CHOOSE_DATARATE ; 
- int ICMF_CHOOSE_KEYFRAME ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  ZeroMemory (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,...) ; 
- int /*<<< orphan*/  trace (char*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  winetest0 ; 
- int /*<<< orphan*/  winetest1 ; 
- scalar_t__ winetest_interactive ; 
+
+
+
+typedef int options ;
+typedef int * PAVISTREAM ;
+typedef int * LPAVICOMPRESSOPTIONS ;
+typedef scalar_t__ LONG ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ DWORD ;
+typedef int AVICOMPRESSOPTIONS ;
+
+
+ scalar_t__ AVIERR_OK ;
+ scalar_t__ AVISaveOptions (int ,int,int,int **,int **) ;
+ scalar_t__ AVISaveOptionsFree (int,int **) ;
+ scalar_t__ AVIStreamRelease (int *) ;
+ scalar_t__ CreateEditableStream (int **,int *) ;
+ scalar_t__ EditStreamSetNameA (int *,int ) ;
+ int GetLastError () ;
+ int ICMF_CHOOSE_ALLCOMPRESSORS ;
+ int ICMF_CHOOSE_DATARATE ;
+ int ICMF_CHOOSE_KEYFRAME ;
+ int SetLastError (int) ;
+ int ZeroMemory (int *,int) ;
+ int ok (int,char*,scalar_t__,...) ;
+ int trace (char*,scalar_t__,int ,int ) ;
+ int winetest0 ;
+ int winetest1 ;
+ scalar_t__ winetest_interactive ;
 
 __attribute__((used)) static void test_AVISaveOptions(void)
 {
     AVICOMPRESSOPTIONS options[2];
     LPAVICOMPRESSOPTIONS poptions[2];
-    PAVISTREAM streams[2] = {NULL, NULL};
+    PAVISTREAM streams[2] = {((void*)0), ((void*)0)};
     HRESULT hres;
-    DWORD   res;
-    LONG    lres;
+    DWORD res;
+    LONG lres;
 
     poptions[0] = &options[0];
     poptions[1] = &options[1];
     ZeroMemory(options, sizeof(options));
 
     SetLastError(0xdeadbeef);
-    hres = CreateEditableStream(&streams[0], NULL);
+    hres = CreateEditableStream(&streams[0], ((void*)0));
     ok(hres == AVIERR_OK, "0: got 0x%x and %p (expected AVIERR_OK)\n", hres, streams[0]);
 
     SetLastError(0xdeadbeef);
-    hres = CreateEditableStream(&streams[1], NULL);
+    hres = CreateEditableStream(&streams[1], ((void*)0));
     ok(hres == AVIERR_OK, "1: got 0x%x and %p (expected AVIERR_OK)\n", hres, streams[1]);
 
     SetLastError(0xdeadbeef);

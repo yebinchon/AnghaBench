@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IP ;
 
-/* Variables and functions */
- scalar_t__ CmpIpAddr (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IPAnd4 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IsIP4 (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int IP ;
+
+
+ scalar_t__ CmpIpAddr (int *,int *) ;
+ int IPAnd4 (int *,int *,int *) ;
+ int IsIP4 (int *) ;
 
 bool IsInSameNetwork4(IP *a1, IP *a2, IP *subnet)
 {
-	IP net1, net2;
-	// Validate arguments
-	if (IsIP4(a1) == false || IsIP4(a2) == false || IsIP4(subnet) == false)
-	{
-		return false;
-	}
+ IP net1, net2;
 
-	IPAnd4(&net1, a1, subnet);
-	IPAnd4(&net2, a2, subnet);
+ if (IsIP4(a1) == 0 || IsIP4(a2) == 0 || IsIP4(subnet) == 0)
+ {
+  return 0;
+ }
 
-	if (CmpIpAddr(&net1, &net2) == 0)
-	{
-		return true;
-	}
+ IPAnd4(&net1, a1, subnet);
+ IPAnd4(&net2, a2, subnet);
 
-	return false;
+ if (CmpIpAddr(&net1, &net2) == 0)
+ {
+  return 1;
+ }
+
+ return 0;
 }

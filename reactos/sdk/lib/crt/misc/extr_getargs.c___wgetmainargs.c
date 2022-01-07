@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char wchar_t ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  GetModuleFileNameW (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapValidate (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- int TRUE ; 
- int __argc ; 
- char** __wargv ; 
- char** __winitenv ; 
- char* _wcmdln ; 
- char* _wcsdup (char*) ; 
- char* _wpgmptr ; 
- int /*<<< orphan*/  free (char*) ; 
- void* malloc (int) ; 
- size_t wcslen (char*) ; 
- int /*<<< orphan*/  wcsndup (char*,int) ; 
- int /*<<< orphan*/  wexpand (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef char wchar_t ;
+
+
+ int FALSE ;
+ int GetModuleFileNameW (int *,char*,int) ;
+ int GetProcessHeap () ;
+ int HeapValidate (int ,int ,int *) ;
+ int MAX_PATH ;
+ int TRUE ;
+ int __argc ;
+ char** __wargv ;
+ char** __winitenv ;
+ char* _wcmdln ;
+ char* _wcsdup (char*) ;
+ char* _wpgmptr ;
+ int free (char*) ;
+ void* malloc (int) ;
+ size_t wcslen (char*) ;
+ int wcsndup (char*,int) ;
+ int wexpand (int ,int) ;
 
 void __wgetmainargs(int* argc, wchar_t*** wargv, wchar_t*** wenv,
                     int expand_wildcards, int* new_mode)
@@ -38,7 +38,7 @@ void __wgetmainargs(int* argc, wchar_t*** wargv, wchar_t*** wenv,
    size_t len;
    wchar_t* buffer;
 
-   /* missing threading init */
+
 
    i = 0;
    doexpand = expand_wildcards;
@@ -61,18 +61,18 @@ void __wgetmainargs(int* argc, wchar_t*** wargv, wchar_t*** wenv,
    len = wcslen(_wcmdln);
    buffer = malloc(sizeof(wchar_t) * len);
 
-   // Reference: https://msdn.microsoft.com/en-us/library/a1y7w461.aspx
+
    while (TRUE)
    {
-      // Arguments are delimited by white space, which is either a space or a tab.
+
       if (i >= len || ((_wcmdln[i] == ' ' || _wcmdln[i] == '\t') && !inQuotes))
       {
-         // Handle the case when empty spaces are in the end of the cmdline
+
          if (anyLetter)
          {
             wexpand(wcsndup(buffer, bufferIndex), doexpand);
          }
-         // Copy the last element from buffer and quit the loop
+
          if (i >= len)
          {
             break;
@@ -104,17 +104,17 @@ void __wgetmainargs(int* argc, wchar_t*** wargv, wchar_t*** wenv,
          {
             if (slashesAdded % 2 == 0)
             {
-               // If an even number of backslashes is followed by a double quotation mark, then one backslash (\)
-               // is placed in the argv array for every pair of backslashes (\\), and the double quotation mark (")
-               // is interpreted as a string delimiter.
+
+
+
                bufferIndex -= slashesAdded / 2;
             }
             else
             {
-               // If an odd number of backslashes is followed by a double quotation mark, then one backslash (\)
-               // is placed in the argv array for every pair of backslashes (\\) and the double quotation mark is
-               // interpreted as an escape sequence by the remaining backslash, causing a literal double quotation mark (")
-               // to be placed in argv.
+
+
+
+
                bufferIndex -= slashesAdded / 2 + 1;
                buffer[bufferIndex++] = '\"';
                slashesAdded = 0;
@@ -145,11 +145,11 @@ void __wgetmainargs(int* argc, wchar_t*** wargv, wchar_t*** wenv,
       ++i;
    }
 
-   /* Free the temporary buffer. */
+
    free(buffer);
 
    *argc = __argc;
-   if (__wargv == NULL)
+   if (__wargv == ((void*)0))
    {
       __wargv = (wchar_t**)malloc(sizeof(wchar_t*));
       __wargv[0] = 0;
@@ -160,7 +160,7 @@ void __wgetmainargs(int* argc, wchar_t*** wargv, wchar_t*** wenv,
    _wpgmptr = malloc(MAX_PATH * sizeof(wchar_t));
    if (_wpgmptr)
    {
-      if (!GetModuleFileNameW(NULL, _wpgmptr, MAX_PATH))
+      if (!GetModuleFileNameW(((void*)0), _wpgmptr, MAX_PATH))
         _wpgmptr[0] = '\0';
       else
         _wpgmptr[MAX_PATH - 1] = '\0';
@@ -170,7 +170,7 @@ void __wgetmainargs(int* argc, wchar_t*** wargv, wchar_t*** wenv,
       _wpgmptr = _wcsdup(__wargv[0]);
    }
 
-   HeapValidate(GetProcessHeap(), 0, NULL);
+   HeapValidate(GetProcessHeap(), 0, ((void*)0));
 
-   // if (new_mode) _set_new_mode(*new_mode);
+
 }

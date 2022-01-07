@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct device_node {int /*<<< orphan*/  full_name; struct device_node* parent; } ;
 
-/* Variables and functions */
- char const* kbasename (int /*<<< orphan*/ ) ; 
+
+
+
+struct device_node {int full_name; struct device_node* parent; } ;
+
+
+ char const* kbasename (int ) ;
 
 __attribute__((used)) static const char *device_node_name_for_depth(const struct device_node *np, int depth)
 {
-	for ( ; np && depth; depth--)
-		np = np->parent;
+ for ( ; np && depth; depth--)
+  np = np->parent;
 
-	return kbasename(np->full_name);
+ return kbasename(np->full_name);
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_mode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  S_ISDIR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kprintf (char*,int /*<<< orphan*/ *) ; 
- scalar_t__ lstat (int /*<<< orphan*/ *,struct stat*) ; 
- int /*<<< orphan*/ * source_dirname ; 
+
+
+
+struct stat {int st_mode; } ;
+
+
+ int S_ISDIR (int ) ;
+ int kprintf (char*,int *) ;
+ scalar_t__ lstat (int *,struct stat*) ;
+ int * source_dirname ;
 
 __attribute__((used)) static int check_source_dirname (void) {
-  if (source_dirname == NULL) {
+  if (source_dirname == ((void*)0)) {
     return -1;
   }
   struct stat st;

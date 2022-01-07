@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  req ;
-typedef  int /*<<< orphan*/  reply ;
-typedef  int /*<<< orphan*/  mmal_worker_msg_header ;
-struct TYPE_3__ {int /*<<< orphan*/  secret; } ;
-typedef  TYPE_1__ mmal_worker_drm_get_lhs32_reply ;
-typedef  scalar_t__ MMAL_STATUS_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MMAL_FALSE ; 
- scalar_t__ MMAL_SUCCESS ; 
- int /*<<< orphan*/  MMAL_WORKER_DRM_GET_LHS32 ; 
- int /*<<< orphan*/  memcpy (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mmal_vc_deinit () ; 
- int /*<<< orphan*/  mmal_vc_get_client () ; 
- scalar_t__ mmal_vc_init () ; 
- scalar_t__ mmal_vc_sendwait_message (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,TYPE_1__*,size_t*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int req ;
+typedef int reply ;
+typedef int mmal_worker_msg_header ;
+struct TYPE_3__ {int secret; } ;
+typedef TYPE_1__ mmal_worker_drm_get_lhs32_reply ;
+typedef scalar_t__ MMAL_STATUS_T ;
+
+
+ int MMAL_FALSE ;
+ scalar_t__ MMAL_SUCCESS ;
+ int MMAL_WORKER_DRM_GET_LHS32 ;
+ int memcpy (unsigned char*,int ,int) ;
+ int mmal_vc_deinit () ;
+ int mmal_vc_get_client () ;
+ scalar_t__ mmal_vc_init () ;
+ scalar_t__ mmal_vc_sendwait_message (int ,int *,int,int ,TYPE_1__*,size_t*,int ) ;
 
 int mmal_vc_drm_get_lhs32(unsigned char * into)
 {

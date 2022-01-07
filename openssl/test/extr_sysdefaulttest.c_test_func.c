@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SSL_CTX_get_max_proto_version (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_CTX_get_min_proto_version (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_info (char*) ; 
- int /*<<< orphan*/  TEST_int_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TLS1_2_VERSION ; 
- int /*<<< orphan*/  ctx ; 
+ int SSL_CTX_get_max_proto_version (int ) ;
+ int SSL_CTX_get_min_proto_version (int ) ;
+ int TEST_info (char*) ;
+ int TEST_int_eq (int ,int ) ;
+ int TLS1_2_VERSION ;
+ int ctx ;
 
 __attribute__((used)) static int test_func(void)
 {

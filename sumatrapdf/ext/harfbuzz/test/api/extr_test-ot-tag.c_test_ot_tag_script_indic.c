@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  HB_SCRIPT_BENGALI ; 
- int /*<<< orphan*/  HB_SCRIPT_DEVANAGARI ; 
- int /*<<< orphan*/  HB_SCRIPT_GUJARATI ; 
- int /*<<< orphan*/  HB_SCRIPT_GURMUKHI ; 
- int /*<<< orphan*/  HB_SCRIPT_KANNADA ; 
- int /*<<< orphan*/  HB_SCRIPT_MALAYALAM ; 
- int /*<<< orphan*/  HB_SCRIPT_MYANMAR ; 
- int /*<<< orphan*/  HB_SCRIPT_ORIYA ; 
- int /*<<< orphan*/  HB_SCRIPT_TAMIL ; 
- int /*<<< orphan*/  HB_SCRIPT_TELUGU ; 
- int /*<<< orphan*/  test_indic_tags (char*,char*,int /*<<< orphan*/ ) ; 
+ int HB_SCRIPT_BENGALI ;
+ int HB_SCRIPT_DEVANAGARI ;
+ int HB_SCRIPT_GUJARATI ;
+ int HB_SCRIPT_GURMUKHI ;
+ int HB_SCRIPT_KANNADA ;
+ int HB_SCRIPT_MALAYALAM ;
+ int HB_SCRIPT_MYANMAR ;
+ int HB_SCRIPT_ORIYA ;
+ int HB_SCRIPT_TAMIL ;
+ int HB_SCRIPT_TELUGU ;
+ int test_indic_tags (char*,char*,int ) ;
 
 __attribute__((used)) static void
 test_ot_tag_script_indic (void)

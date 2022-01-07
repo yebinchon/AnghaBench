@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vector ;
-struct TYPE_7__ {int hasva; int isstatic; int /*<<< orphan*/  params; scalar_t__ oldstyle; } ;
-typedef  TYPE_1__ Type ;
-typedef  int /*<<< orphan*/  Node ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DECL_BODY ; 
- int S_STATIC ; 
- int /*<<< orphan*/  ast_gvar (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  backfill_labels () ; 
- int /*<<< orphan*/  expect (char) ; 
- int /*<<< orphan*/  globalenv ; 
- void* gotos ; 
- int /*<<< orphan*/  labels ; 
- int /*<<< orphan*/ * localenv ; 
- int /*<<< orphan*/  make_map () ; 
- int /*<<< orphan*/ * make_map_parent (int /*<<< orphan*/ ) ; 
- void* make_vector () ; 
- int /*<<< orphan*/  param_types (int /*<<< orphan*/ *) ; 
- TYPE_1__* read_decl_spec_opt (int*) ; 
- TYPE_1__* read_declarator (char**,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * read_func_body (TYPE_1__*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  read_oldstyle_param_type (int /*<<< orphan*/ *) ; 
- scalar_t__ vec_len (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int Vector ;
+struct TYPE_7__ {int hasva; int isstatic; int params; scalar_t__ oldstyle; } ;
+typedef TYPE_1__ Type ;
+typedef int Node ;
+
+
+ int DECL_BODY ;
+ int S_STATIC ;
+ int ast_gvar (TYPE_1__*,char*) ;
+ int backfill_labels () ;
+ int expect (char) ;
+ int globalenv ;
+ void* gotos ;
+ int labels ;
+ int * localenv ;
+ int make_map () ;
+ int * make_map_parent (int ) ;
+ void* make_vector () ;
+ int param_types (int *) ;
+ TYPE_1__* read_decl_spec_opt (int*) ;
+ TYPE_1__* read_declarator (char**,TYPE_1__*,int *,int ) ;
+ int * read_func_body (TYPE_1__*,char*,int *) ;
+ int read_oldstyle_param_type (int *) ;
+ scalar_t__ vec_len (int *) ;
 
 __attribute__((used)) static Node *read_funcdef() {
     int sclass = 0;
@@ -47,7 +47,7 @@ __attribute__((used)) static Node *read_funcdef() {
     Type *functype = read_declarator(&name, basetype, params, DECL_BODY);
     if (functype->oldstyle) {
         if (vec_len(params) == 0)
-            functype->hasva = false;
+            functype->hasva = 0;
         read_oldstyle_param_type(params);
         functype->params = param_types(params);
     }
@@ -56,6 +56,6 @@ __attribute__((used)) static Node *read_funcdef() {
     expect('{');
     Node *r = read_func_body(functype, name, params);
     backfill_labels();
-    localenv = NULL;
+    localenv = ((void*)0);
     return r;
 }

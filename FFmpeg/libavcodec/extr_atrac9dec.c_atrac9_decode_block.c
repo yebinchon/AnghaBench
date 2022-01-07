@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_45__   TYPE_7__ ;
-typedef  struct TYPE_44__   TYPE_6__ ;
-typedef  struct TYPE_43__   TYPE_5__ ;
-typedef  struct TYPE_42__   TYPE_4__ ;
-typedef  struct TYPE_41__   TYPE_3__ ;
-typedef  struct TYPE_40__   TYPE_2__ ;
-typedef  struct TYPE_39__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ptrdiff_t ;
-struct TYPE_45__ {int /*<<< orphan*/  (* imdct_half ) (TYPE_7__*,scalar_t__,int /*<<< orphan*/ ) ;} ;
+
+
+typedef struct TYPE_45__ TYPE_7__ ;
+typedef struct TYPE_44__ TYPE_6__ ;
+typedef struct TYPE_43__ TYPE_5__ ;
+typedef struct TYPE_42__ TYPE_4__ ;
+typedef struct TYPE_41__ TYPE_3__ ;
+typedef struct TYPE_40__ TYPE_2__ ;
+typedef struct TYPE_39__ TYPE_1__ ;
+
+
+typedef int ptrdiff_t ;
+struct TYPE_45__ {int (* imdct_half ) (TYPE_7__*,scalar_t__,int ) ;} ;
 struct TYPE_44__ {int q_unit_cnt; int reuseable; int band_count; int band_ext_q_unit; int stereo_q_unit; int has_band_ext; int cpe_base_channel; int* is_signs; int q_unit_cnt_prev; TYPE_5__* channel; scalar_t__ has_band_ext_data; } ;
-struct TYPE_43__ {int q_unit_cnt; int* scalefactors; int* q_coeffs_fine; int* q_coeffs_coarse; int* precision_coarse; int /*<<< orphan*/  prev_win; int /*<<< orphan*/  coeffs; scalar_t__* precision_fine; } ;
-struct TYPE_42__ {int samplerate_idx; int frame_log2; scalar_t__ temp; int /*<<< orphan*/  imdct_win; TYPE_1__* fdsp; TYPE_7__ imdct; TYPE_2__* block_config; int /*<<< orphan*/  avctx; } ;
+struct TYPE_43__ {int q_unit_cnt; int* scalefactors; int* q_coeffs_fine; int* q_coeffs_coarse; int* precision_coarse; int prev_win; int coeffs; scalar_t__* precision_fine; } ;
+struct TYPE_42__ {int samplerate_idx; int frame_log2; scalar_t__ temp; int imdct_win; TYPE_1__* fdsp; TYPE_7__ imdct; TYPE_2__* block_config; int avctx; } ;
 struct TYPE_41__ {scalar_t__* extended_data; } ;
 struct TYPE_40__ {scalar_t__* type; int** plane_map; } ;
-struct TYPE_39__ {int /*<<< orphan*/  (* vector_fmul_window ) (float*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int const) ;} ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ ATRAC9Context ;
-typedef  TYPE_5__ ATRAC9ChannelData ;
-typedef  TYPE_6__ ATRAC9BlockData ;
+struct TYPE_39__ {int (* vector_fmul_window ) (float*,int ,scalar_t__,int ,int const) ;} ;
+typedef int GetBitContext ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ ATRAC9Context ;
+typedef TYPE_5__ ATRAC9ChannelData ;
+typedef TYPE_6__ ATRAC9BlockData ;
 
-/* Variables and functions */
- scalar_t__ ATRAC9_BLOCK_TYPE_CPE ; 
- scalar_t__ ATRAC9_BLOCK_TYPE_LFE ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int FF_ARRAY_ELEMS (int*) ; 
- int /*<<< orphan*/  apply_band_extension (TYPE_4__*,TYPE_6__*,int const) ; 
- int /*<<< orphan*/  apply_intensity_stereo (TYPE_4__*,TYPE_6__*,int const) ; 
- int /*<<< orphan*/  apply_scalefactors (TYPE_4__*,TYPE_6__*,int const) ; 
- int* at9_q_unit_to_coeff_idx ; 
- void** at9_tab_band_q_unit_map ; 
- size_t* at9_tab_sri_max_bands ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  calc_codebook_idx (TYPE_4__*,TYPE_6__*,TYPE_5__*) ; 
- int /*<<< orphan*/  calc_precision (TYPE_4__*,TYPE_6__*,TYPE_5__*) ; 
- int /*<<< orphan*/  dequantize (TYPE_4__*,TYPE_6__*,TYPE_5__*) ; 
- int const get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,scalar_t__,int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ parse_band_ext (TYPE_4__*,TYPE_6__*,int /*<<< orphan*/ *,int const) ; 
- scalar_t__ parse_gradient (TYPE_4__*,TYPE_6__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  read_coeffs_coarse (TYPE_4__*,TYPE_6__*,TYPE_5__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  read_coeffs_fine (TYPE_4__*,TYPE_6__*,TYPE_5__*,int /*<<< orphan*/ *) ; 
- scalar_t__ read_scalefactors (TYPE_4__*,TYPE_6__*,TYPE_5__*,int /*<<< orphan*/ *,int,int const) ; 
- int /*<<< orphan*/  stub1 (TYPE_7__*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (float*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int const) ; 
+
+ scalar_t__ ATRAC9_BLOCK_TYPE_CPE ;
+ scalar_t__ ATRAC9_BLOCK_TYPE_LFE ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int FF_ARRAY_ELEMS (int*) ;
+ int apply_band_extension (TYPE_4__*,TYPE_6__*,int const) ;
+ int apply_intensity_stereo (TYPE_4__*,TYPE_6__*,int const) ;
+ int apply_scalefactors (TYPE_4__*,TYPE_6__*,int const) ;
+ int* at9_q_unit_to_coeff_idx ;
+ void** at9_tab_band_q_unit_map ;
+ size_t* at9_tab_sri_max_bands ;
+ int av_log (int ,int ,char*,...) ;
+ int calc_codebook_idx (TYPE_4__*,TYPE_6__*,TYPE_5__*) ;
+ int calc_precision (TYPE_4__*,TYPE_6__*,TYPE_5__*) ;
+ int dequantize (TYPE_4__*,TYPE_6__*,TYPE_5__*) ;
+ int const get_bits (int *,int) ;
+ int get_bits1 (int *) ;
+ int memcpy (int ,scalar_t__,int) ;
+ int memset (int*,int ,int) ;
+ scalar_t__ parse_band_ext (TYPE_4__*,TYPE_6__*,int *,int const) ;
+ scalar_t__ parse_gradient (TYPE_4__*,TYPE_6__*,int *) ;
+ int read_coeffs_coarse (TYPE_4__*,TYPE_6__*,TYPE_5__*,int *) ;
+ int read_coeffs_fine (TYPE_4__*,TYPE_6__*,TYPE_5__*,int *) ;
+ scalar_t__ read_scalefactors (TYPE_4__*,TYPE_6__*,TYPE_5__*,int *,int,int const) ;
+ int stub1 (TYPE_7__*,scalar_t__,int ) ;
+ int stub2 (float*,int ,scalar_t__,int ,int const) ;
 
 __attribute__((used)) static int atrac9_decode_block(ATRAC9Context *s, GetBitContext *gb,
                                ATRAC9BlockData *b, AVFrame *frame,
                                int frame_idx, int block_idx)
 {
     const int first_in_pkt = !get_bits1(gb);
-    const int reuse_params =  get_bits1(gb);
+    const int reuse_params = get_bits1(gb);
     const int stereo = s->block_config->type[block_idx] == ATRAC9_BLOCK_TYPE_CPE;
 
     if (s->block_config->type[block_idx] == ATRAC9_BLOCK_TYPE_LFE) {
@@ -84,12 +84,12 @@ __attribute__((used)) static int atrac9_decode_block(ATRAC9Context *s, GetBitCon
 
         for (int i = 0; i < c->q_unit_cnt; i++) {
             const int start = at9_q_unit_to_coeff_idx[i + 0];
-            const int end   = at9_q_unit_to_coeff_idx[i + 1];
+            const int end = at9_q_unit_to_coeff_idx[i + 1];
             for (int j = start; j < end; j++)
                 c->q_coeffs_coarse[j] = get_bits(gb, c->precision_coarse[i] + 1);
         }
 
-        dequantize        (s, b, c);
+        dequantize (s, b, c);
         apply_scalefactors(s, b, 0);
 
         goto imdct;
@@ -100,7 +100,7 @@ __attribute__((used)) static int atrac9_decode_block(ATRAC9Context *s, GetBitCon
         return AVERROR_INVALIDDATA;
     }
 
-    /* Band parameters */
+
     if (!reuse_params) {
         int stereo_band, ext_band;
         const int min_band_count = s->samplerate_idx > 7 ? 1 : 3;
@@ -143,11 +143,11 @@ __attribute__((used)) static int atrac9_decode_block(ATRAC9Context *s, GetBitCon
         return AVERROR_INVALIDDATA;
     }
 
-    /* Calculate bit alloc gradient */
+
     if (parse_gradient(s, b, gb))
         return AVERROR_INVALIDDATA;
 
-    /* IS data */
+
     b->cpe_base_channel = 0;
     if (stereo) {
         b->cpe_base_channel = get_bits1(gb);
@@ -160,11 +160,11 @@ __attribute__((used)) static int atrac9_decode_block(ATRAC9Context *s, GetBitCon
         }
     }
 
-    /* Band extension */
+
     if (parse_band_ext(s, b, gb, stereo))
         return AVERROR_INVALIDDATA;
 
-    /* Scalefactors */
+
     for (int i = 0; i <= stereo; i++) {
         ATRAC9ChannelData *c = &b->channel[i];
         c->q_unit_cnt = i == b->cpe_base_channel ? b->q_unit_cnt :
@@ -172,20 +172,20 @@ __attribute__((used)) static int atrac9_decode_block(ATRAC9Context *s, GetBitCon
         if (read_scalefactors(s, b, c, gb, i, first_in_pkt))
             return AVERROR_INVALIDDATA;
 
-        calc_precision    (s, b, c);
+        calc_precision (s, b, c);
         calc_codebook_idx (s, b, c);
         read_coeffs_coarse(s, b, c, gb);
-        read_coeffs_fine  (s, b, c, gb);
-        dequantize        (s, b, c);
+        read_coeffs_fine (s, b, c, gb);
+        dequantize (s, b, c);
     }
 
     b->q_unit_cnt_prev = b->has_band_ext ? b->band_ext_q_unit : b->q_unit_cnt;
 
     apply_intensity_stereo(s, b, stereo);
-    apply_scalefactors    (s, b, stereo);
+    apply_scalefactors (s, b, stereo);
 
     if (b->has_band_ext && b->has_band_ext_data)
-        apply_band_extension  (s, b, stereo);
+        apply_band_extension (s, b, stereo);
 
 imdct:
     for (int i = 0; i <= stereo; i++) {

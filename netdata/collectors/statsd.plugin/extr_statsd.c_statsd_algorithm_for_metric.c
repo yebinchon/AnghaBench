@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int type; } ;
-typedef  TYPE_1__ STATSD_METRIC ;
-typedef  int /*<<< orphan*/  RRD_ALGORITHM ;
+typedef TYPE_1__ STATSD_METRIC ;
+typedef int RRD_ALGORITHM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RRD_ALGORITHM_ABSOLUTE ; 
- int /*<<< orphan*/  RRD_ALGORITHM_INCREMENTAL ; 
-#define  STATSD_METRIC_TYPE_COUNTER 133 
-#define  STATSD_METRIC_TYPE_GAUGE 132 
-#define  STATSD_METRIC_TYPE_HISTOGRAM 131 
-#define  STATSD_METRIC_TYPE_METER 130 
-#define  STATSD_METRIC_TYPE_SET 129 
-#define  STATSD_METRIC_TYPE_TIMER 128 
+
+ int RRD_ALGORITHM_ABSOLUTE ;
+ int RRD_ALGORITHM_INCREMENTAL ;
+
+
+
+
+
+
 
 __attribute__((used)) static inline RRD_ALGORITHM statsd_algorithm_for_metric(STATSD_METRIC *m) {
     switch(m->type) {
         default:
-        case STATSD_METRIC_TYPE_GAUGE:
-        case STATSD_METRIC_TYPE_SET:
-        case STATSD_METRIC_TYPE_TIMER:
-        case STATSD_METRIC_TYPE_HISTOGRAM:
+        case 132:
+        case 129:
+        case 128:
+        case 131:
             return RRD_ALGORITHM_ABSOLUTE;
 
-        case STATSD_METRIC_TYPE_METER:
-        case STATSD_METRIC_TYPE_COUNTER:
+        case 130:
+        case 133:
             return RRD_ALGORITHM_INCREMENTAL;
     }
 }

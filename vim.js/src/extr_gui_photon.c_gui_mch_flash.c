@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PgSetDrawMode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PgSetFillXORColor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Pg_BLACK ; 
- int /*<<< orphan*/  Pg_DRAWMODE_OPAQUE ; 
- int /*<<< orphan*/  Pg_DRAWMODE_XOR ; 
- int /*<<< orphan*/  Pg_WHITE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  gui_mch_clear_all () ; 
- int /*<<< orphan*/  gui_mch_flush () ; 
- int /*<<< orphan*/  ui_delay (long,int /*<<< orphan*/ ) ; 
+ int PgSetDrawMode (int ) ;
+ int PgSetFillXORColor (int ,int ) ;
+ int Pg_BLACK ;
+ int Pg_DRAWMODE_OPAQUE ;
+ int Pg_DRAWMODE_XOR ;
+ int Pg_WHITE ;
+ int TRUE ;
+ int gui_mch_clear_all () ;
+ int gui_mch_flush () ;
+ int ui_delay (long,int ) ;
 
 void
 gui_mch_flash(int msec)

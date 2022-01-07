@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char* tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INTEGRAL_TYPE_P (char*) ; 
- scalar_t__ POINTER_TYPE ; 
- int /*<<< orphan*/  POINTER_TYPE_P (char*) ; 
- scalar_t__ TREE_CODE (char*) ; 
- char* TREE_TYPE (char*) ; 
- char* TREE_VALUE (char*) ; 
- int /*<<< orphan*/  TYPE_SIZE_UNIT (char*) ; 
- int /*<<< orphan*/  error (char*,...) ; 
- int tree_low_cst (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef char* tree ;
+
+
+ int INTEGRAL_TYPE_P (char*) ;
+ scalar_t__ POINTER_TYPE ;
+ int POINTER_TYPE_P (char*) ;
+ scalar_t__ TREE_CODE (char*) ;
+ char* TREE_TYPE (char*) ;
+ char* TREE_VALUE (char*) ;
+ int TYPE_SIZE_UNIT (char*) ;
+ int error (char*,...) ;
+ int tree_low_cst (int ,int) ;
 
 __attribute__((used)) static int
 sync_resolve_size (tree function, tree params)
@@ -29,7 +29,7 @@ sync_resolve_size (tree function, tree params)
   tree type;
   int size;
 
-  if (params == NULL)
+  if (params == ((void*)0))
     {
       error ("too few arguments to function %qE", function);
       return 0;

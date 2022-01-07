@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_5__ {int /*<<< orphan*/  db; } ;
-typedef  int /*<<< orphan*/  MSISIGNATURE ;
-typedef  int /*<<< orphan*/  MSIRECORD ;
-typedef  TYPE_1__ MSIPACKAGE ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  TYPE_1__* LPVOID ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACTION_AppSearchSigName (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ACTION_FreeSignature (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERROR_NO_MORE_ITEMS ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  MSI_RecordGetString (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msi_set_property (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  szOne ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+typedef int UINT ;
+struct TYPE_5__ {int db; } ;
+typedef int MSISIGNATURE ;
+typedef int MSIRECORD ;
+typedef TYPE_1__ MSIPACKAGE ;
+typedef int * LPWSTR ;
+typedef TYPE_1__* LPVOID ;
+typedef int LPCWSTR ;
+
+
+ int ACTION_AppSearchSigName (TYPE_1__*,int ,int *,int **) ;
+ int ACTION_FreeSignature (int *) ;
+ int ERROR_NO_MORE_ITEMS ;
+ int ERROR_SUCCESS ;
+ int MSI_RecordGetString (int *,int) ;
+ int TRACE (char*,int ) ;
+ int debugstr_w (int ) ;
+ int msi_free (int *) ;
+ int msi_set_property (int ,char const*,int ,int) ;
+ int szOne ;
 
 __attribute__((used)) static UINT ITERATE_CCPSearch(MSIRECORD *row, LPVOID param)
 {
     MSIPACKAGE *package = param;
     LPCWSTR signature;
-    LPWSTR value = NULL;
+    LPWSTR value = ((void*)0);
     MSISIGNATURE sig;
     UINT r = ERROR_SUCCESS;
 

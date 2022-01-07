@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cyclic_views_entry {int /*<<< orphan*/  ad_id; } ;
 
-/* Variables and functions */
- struct cyclic_views_entry* CV_r ; 
- struct cyclic_views_entry* CV_w ; 
- struct cyclic_views_entry* CViews ; 
- int CYCLIC_VIEWS_BUFFER_SIZE ; 
- int MAX_USERS ; 
- int /*<<< orphan*/  Q_limit ; 
- scalar_t__ R ; 
- scalar_t__ R_cnt ; 
- int /*<<< orphan*/  assert (int) ; 
- int get_recent_views_num () ; 
- int postprocess_recent_list (int) ; 
+
+
+
+struct cyclic_views_entry {int ad_id; } ;
+
+
+ struct cyclic_views_entry* CV_r ;
+ struct cyclic_views_entry* CV_w ;
+ struct cyclic_views_entry* CViews ;
+ int CYCLIC_VIEWS_BUFFER_SIZE ;
+ int MAX_USERS ;
+ int Q_limit ;
+ scalar_t__ R ;
+ scalar_t__ R_cnt ;
+ int assert (int) ;
+ int get_recent_views_num () ;
+ int postprocess_recent_list (int) ;
 
 int compute_recent_views_stats (void) {
   if (!Q_limit) {

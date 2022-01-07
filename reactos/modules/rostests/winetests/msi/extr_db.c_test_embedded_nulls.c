@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  control_table ;
-typedef  int /*<<< orphan*/  buffer ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  MSIHANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURR_DIR ; 
- int /*<<< orphan*/  DeleteFileA (char*) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  GetCurrentDirectoryA (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAX_PATH ; 
- int /*<<< orphan*/  MSIDBOPEN_CREATE ; 
- int /*<<< orphan*/  MsiCloseHandle (int /*<<< orphan*/ ) ; 
- scalar_t__ MsiDatabaseImportA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ MsiOpenDatabaseW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ MsiRecordGetStringA (int /*<<< orphan*/ ,int,char*,scalar_t__*) ; 
- scalar_t__ do_query (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcmp (char*,char*,int) ; 
- char* msifile ; 
- int /*<<< orphan*/  msifileW ; 
- int /*<<< orphan*/  ok (int,char*,char*) ; 
- int /*<<< orphan*/  write_file (char*,char const*,int) ; 
+
+
+
+typedef int control_table ;
+typedef int buffer ;
+typedef scalar_t__ UINT ;
+typedef int MSIHANDLE ;
+
+
+ int CURR_DIR ;
+ int DeleteFileA (char*) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int GetCurrentDirectoryA (int ,int ) ;
+ int MAX_PATH ;
+ int MSIDBOPEN_CREATE ;
+ int MsiCloseHandle (int ) ;
+ scalar_t__ MsiDatabaseImportA (int ,int ,char*) ;
+ scalar_t__ MsiOpenDatabaseW (int ,int ,int *) ;
+ scalar_t__ MsiRecordGetStringA (int ,int,char*,scalar_t__*) ;
+ scalar_t__ do_query (int ,char*,int *) ;
+ int memcmp (char*,char*,int) ;
+ char* msifile ;
+ int msifileW ;
+ int ok (int,char*,char*) ;
+ int write_file (char*,char const*,int) ;
 
 __attribute__((used)) static void test_embedded_nulls(void)
 {

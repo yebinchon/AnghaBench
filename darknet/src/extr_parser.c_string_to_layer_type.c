@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LAYER_TYPE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACTIVE ; 
- int /*<<< orphan*/  AVGPOOL ; 
- int /*<<< orphan*/  BATCHNORM ; 
- int /*<<< orphan*/  BLANK ; 
- int /*<<< orphan*/  CONNECTED ; 
- int /*<<< orphan*/  CONVOLUTIONAL ; 
- int /*<<< orphan*/  COST ; 
- int /*<<< orphan*/  CRNN ; 
- int /*<<< orphan*/  CROP ; 
- int /*<<< orphan*/  DECONVOLUTIONAL ; 
- int /*<<< orphan*/  DETECTION ; 
- int /*<<< orphan*/  DROPOUT ; 
- int /*<<< orphan*/  GRU ; 
- int /*<<< orphan*/  ISEG ; 
- int /*<<< orphan*/  L2NORM ; 
- int /*<<< orphan*/  LOCAL ; 
- int /*<<< orphan*/  LOGXENT ; 
- int /*<<< orphan*/  LSTM ; 
- int /*<<< orphan*/  MAXPOOL ; 
- int /*<<< orphan*/  NETWORK ; 
- int /*<<< orphan*/  NORMALIZATION ; 
- int /*<<< orphan*/  REGION ; 
- int /*<<< orphan*/  REORG ; 
- int /*<<< orphan*/  RNN ; 
- int /*<<< orphan*/  ROUTE ; 
- int /*<<< orphan*/  SHORTCUT ; 
- int /*<<< orphan*/  SOFTMAX ; 
- int /*<<< orphan*/  UPSAMPLE ; 
- int /*<<< orphan*/  YOLO ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+
+
+typedef int LAYER_TYPE ;
+
+
+ int ACTIVE ;
+ int AVGPOOL ;
+ int BATCHNORM ;
+ int BLANK ;
+ int CONNECTED ;
+ int CONVOLUTIONAL ;
+ int COST ;
+ int CRNN ;
+ int CROP ;
+ int DECONVOLUTIONAL ;
+ int DETECTION ;
+ int DROPOUT ;
+ int GRU ;
+ int ISEG ;
+ int L2NORM ;
+ int LOCAL ;
+ int LOGXENT ;
+ int LSTM ;
+ int MAXPOOL ;
+ int NETWORK ;
+ int NORMALIZATION ;
+ int REGION ;
+ int REORG ;
+ int RNN ;
+ int ROUTE ;
+ int SHORTCUT ;
+ int SOFTMAX ;
+ int UPSAMPLE ;
+ int YOLO ;
+ scalar_t__ strcmp (char*,char*) ;
 
 LAYER_TYPE string_to_layer_type(char * type)
 {

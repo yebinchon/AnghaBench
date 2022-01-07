@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int ssize_t ;
-struct TYPE_3__ {void** pages; int file_length; int num_pages; int /*<<< orphan*/  file_descriptor; } ;
-typedef  TYPE_1__ Pager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int PAGE_SIZE ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int TABLE_MAX_PAGES ; 
- int errno ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lseek (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- void* malloc (int) ; 
- int /*<<< orphan*/  printf (char*,int,...) ; 
- int read (int /*<<< orphan*/ ,void*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int ssize_t ;
+struct TYPE_3__ {void** pages; int file_length; int num_pages; int file_descriptor; } ;
+typedef TYPE_1__ Pager ;
+
+
+ int EXIT_FAILURE ;
+ int PAGE_SIZE ;
+ int SEEK_SET ;
+ int TABLE_MAX_PAGES ;
+ int errno ;
+ int exit (int ) ;
+ int lseek (int ,int,int ) ;
+ void* malloc (int) ;
+ int printf (char*,int,...) ;
+ int read (int ,void*,int) ;
 
 void* get_page(Pager* pager, uint32_t page_num) {
   if (page_num > TABLE_MAX_PAGES) {
@@ -35,12 +35,12 @@ void* get_page(Pager* pager, uint32_t page_num) {
     exit(EXIT_FAILURE);
   }
 
-  if (pager->pages[page_num] == NULL) {
-    // Cache miss. Allocate memory and load from file.
+  if (pager->pages[page_num] == ((void*)0)) {
+
     void* page = malloc(PAGE_SIZE);
     uint32_t num_pages = pager->file_length / PAGE_SIZE;
 
-    // We might save a partial page at the end of the file
+
     if (pager->file_length % PAGE_SIZE) {
       num_pages += 1;
     }

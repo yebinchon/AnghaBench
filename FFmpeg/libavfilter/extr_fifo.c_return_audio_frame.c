@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_6__ ;
-typedef  struct TYPE_24__   TYPE_5__ ;
-typedef  struct TYPE_23__   TYPE_4__ ;
-typedef  struct TYPE_22__   TYPE_3__ ;
-typedef  struct TYPE_21__   TYPE_2__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_25__ {int /*<<< orphan*/ * inputs; TYPE_3__* priv; TYPE_5__** outputs; } ;
-struct TYPE_24__ {scalar_t__ request_samples; int channels; int /*<<< orphan*/  format; } ;
-struct TYPE_23__ {scalar_t__ nb_samples; int /*<<< orphan*/  extended_data; int /*<<< orphan*/  pts; } ;
+
+
+typedef struct TYPE_25__ TYPE_6__ ;
+typedef struct TYPE_24__ TYPE_5__ ;
+typedef struct TYPE_23__ TYPE_4__ ;
+typedef struct TYPE_22__ TYPE_3__ ;
+typedef struct TYPE_21__ TYPE_2__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+
+
+struct TYPE_25__ {int * inputs; TYPE_3__* priv; TYPE_5__** outputs; } ;
+struct TYPE_24__ {scalar_t__ request_samples; int channels; int format; } ;
+struct TYPE_23__ {scalar_t__ nb_samples; int extended_data; int pts; } ;
 struct TYPE_21__ {TYPE_1__* next; } ;
 struct TYPE_22__ {int allocated_samples; TYPE_4__* out; TYPE_2__ root; } ;
 struct TYPE_20__ {TYPE_4__* frame; } ;
-typedef  TYPE_3__ FifoContext ;
-typedef  TYPE_4__ AVFrame ;
-typedef  TYPE_5__ AVFilterLink ;
-typedef  TYPE_6__ AVFilterContext ;
+typedef TYPE_3__ FifoContext ;
+typedef TYPE_4__ AVFrame ;
+typedef TYPE_5__ AVFilterLink ;
+typedef TYPE_6__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFMIN (scalar_t__,scalar_t__) ; 
- TYPE_4__* av_frame_clone (TYPE_4__*) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_4__**) ; 
- int /*<<< orphan*/  av_log (TYPE_6__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  av_samples_copy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_samples_set_silence (int /*<<< orphan*/ ,scalar_t__,scalar_t__,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  buffer_offset (TYPE_5__*,TYPE_4__*,int) ; 
- int calc_ptr_alignment (TYPE_4__*) ; 
- int ff_filter_frame (TYPE_5__*,TYPE_4__*) ; 
- TYPE_4__* ff_get_audio_buffer (TYPE_5__*,int) ; 
- int ff_request_frame (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  queue_pop (TYPE_3__*) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int ENOMEM ;
+ int FFMIN (scalar_t__,scalar_t__) ;
+ TYPE_4__* av_frame_clone (TYPE_4__*) ;
+ int av_frame_free (TYPE_4__**) ;
+ int av_log (TYPE_6__*,int ,char*) ;
+ int av_samples_copy (int ,int ,scalar_t__,int ,int,int,int ) ;
+ int av_samples_set_silence (int ,scalar_t__,scalar_t__,int,int ) ;
+ int buffer_offset (TYPE_5__*,TYPE_4__*,int) ;
+ int calc_ptr_alignment (TYPE_4__*) ;
+ int ff_filter_frame (TYPE_5__*,TYPE_4__*) ;
+ TYPE_4__* ff_get_audio_buffer (TYPE_5__*,int) ;
+ int ff_request_frame (int ) ;
+ int queue_pop (TYPE_3__*) ;
 
 __attribute__((used)) static int return_audio_frame(AVFilterContext *ctx)
 {
     AVFilterLink *link = ctx->outputs[0];
     FifoContext *s = ctx->priv;
-    AVFrame *head = s->root.next ? s->root.next->frame : NULL;
+    AVFrame *head = s->root.next ? s->root.next->frame : ((void*)0);
     AVFrame *out;
     int ret;
 
-    /* if head is NULL then we're flushing the remaining samples in out */
+
     if (!head && !s->out)
         return AVERROR_EOF;
 
@@ -81,8 +81,8 @@ __attribute__((used)) static int return_audio_frame(AVFilterContext *ctx)
                 return AVERROR(ENOMEM);
 
             s->out->nb_samples = 0;
-            s->out->pts                   = head->pts;
-            s->allocated_samples          = link->request_samples;
+            s->out->pts = head->pts;
+            s->allocated_samples = link->request_samples;
         } else if (link->request_samples != s->allocated_samples) {
             av_log(ctx, AV_LOG_ERROR, "request_samples changed before the "
                    "buffer was returned.\n");
@@ -125,7 +125,7 @@ __attribute__((used)) static int return_audio_frame(AVFilterContext *ctx)
             }
         }
         out = s->out;
-        s->out = NULL;
+        s->out = ((void*)0);
     }
     return ff_filter_frame(link, out);
 }

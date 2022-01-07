@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  v8i16 ;
-typedef  int /*<<< orphan*/  v4i32 ;
-typedef  scalar_t__ v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  int8_t ;
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HEVC_BIW_RND_CLIP4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HEVC_FILT_4TAP_SH (scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ LD_SB (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LD_SB4 (int /*<<< orphan*/ *,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  LD_SH (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  LD_SH4 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PCKEV_B2_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SPLATI_H2_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ST_H2 (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ST_W2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  VSHF_B2_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  XORI_B4_128_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  __msa_fill_w (int) ; 
- int /*<<< orphan*/ * ff_hevc_mask_arr ; 
+
+
+
+typedef int v8i16 ;
+typedef int v4i32 ;
+typedef scalar_t__ v16i8 ;
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int int8_t ;
+typedef int int32_t ;
+typedef int int16_t ;
+
+
+ int HEVC_BIW_RND_CLIP4 (int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int HEVC_FILT_4TAP_SH (scalar_t__,scalar_t__,int ,int ) ;
+ scalar_t__ LD_SB (int *) ;
+ int LD_SB4 (int *,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int LD_SH (int const*) ;
+ int LD_SH4 (int *,int,int ,int ,int ,int ) ;
+ int PCKEV_B2_SH (int ,int ,int ,int ,int ,int ) ;
+ int SPLATI_H2_SH (int ,int ,int,int ,int ) ;
+ int ST_H2 (int ,int,int,int *,int) ;
+ int ST_W2 (int ,int ,int,int *,int) ;
+ int VSHF_B2_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int XORI_B4_128_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int __msa_fill_w (int) ;
+ int * ff_hevc_mask_arr ;
 
 __attribute__((used)) static void hevc_hz_biwgt_4t_6w_msa(uint8_t *src0_ptr,
                                     int32_t src_stride,

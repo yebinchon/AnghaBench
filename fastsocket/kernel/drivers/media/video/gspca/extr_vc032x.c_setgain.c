@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sd {int /*<<< orphan*/  gain; } ;
+
+
+
+
+struct sd {int gain; } ;
 struct gspca_dev {int ctrl_dis; } ;
 
-/* Variables and functions */
- int GAIN_IDX ; 
- int /*<<< orphan*/  i2c_write (struct gspca_dev*,int,int /*<<< orphan*/ *,int) ; 
+
+ int GAIN_IDX ;
+ int i2c_write (struct gspca_dev*,int,int *,int) ;
 
 __attribute__((used)) static void setgain(struct gspca_dev *gspca_dev)
 {
-	struct sd *sd = (struct sd *) gspca_dev;
+ struct sd *sd = (struct sd *) gspca_dev;
 
-	if (gspca_dev->ctrl_dis & (1 << GAIN_IDX))
-		return;
-	i2c_write(gspca_dev, 0x15, &sd->gain, 1);
+ if (gspca_dev->ctrl_dis & (1 << GAIN_IDX))
+  return;
+ i2c_write(gspca_dev, 0x15, &sd->gain, 1);
 }

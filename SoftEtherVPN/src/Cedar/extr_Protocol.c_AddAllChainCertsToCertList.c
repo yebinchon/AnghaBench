@@ -1,85 +1,85 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  tmp ;
-typedef  int /*<<< orphan*/  exedir ;
-typedef  int /*<<< orphan*/  dirname ;
-typedef  int /*<<< orphan*/  X ;
-typedef  size_t UINT ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef int tmp ;
+typedef int exedir ;
+typedef int dirname ;
+typedef int X ;
+typedef size_t UINT ;
 struct TYPE_6__ {int Folder; char* FileNameW; } ;
 struct TYPE_5__ {size_t NumFiles; TYPE_2__** File; } ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  TYPE_1__ DIRLIST ;
-typedef  TYPE_2__ DIRENT ;
+typedef int LIST ;
+typedef TYPE_1__ DIRLIST ;
+typedef TYPE_2__ DIRENT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddXToCertList (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CombinePathW (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,char*) ; 
- TYPE_1__* EnumDirW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * FileToXW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeDir (TYPE_1__*) ; 
- int /*<<< orphan*/  FreeX (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetExeDirW (int /*<<< orphan*/ *,int) ; 
- int MAX_SIZE ; 
- int /*<<< orphan*/  MakeDirExW (int /*<<< orphan*/ *) ; 
+
+ int AddXToCertList (int *,int *) ;
+ int CombinePathW (int *,int,int *,char*) ;
+ TYPE_1__* EnumDirW (int *) ;
+ int * FileToXW (int *) ;
+ int FreeDir (TYPE_1__*) ;
+ int FreeX (int *) ;
+ int GetExeDirW (int *,int) ;
+ int MAX_SIZE ;
+ int MakeDirExW (int *) ;
 
 void AddAllChainCertsToCertList(LIST *o)
 {
-	wchar_t dirname[MAX_SIZE];
-	wchar_t exedir[MAX_SIZE];
-	DIRLIST *dir;
-	// Validate arguments
-	if (o == NULL)
-	{
-		return;
-	}
+ wchar_t dirname[MAX_SIZE];
+ wchar_t exedir[MAX_SIZE];
+ DIRLIST *dir;
 
-	GetExeDirW(exedir, sizeof(exedir));
+ if (o == ((void*)0))
+ {
+  return;
+ }
 
-	CombinePathW(dirname, sizeof(dirname), exedir, L"chain_certs");
+ GetExeDirW(exedir, sizeof(exedir));
 
-	MakeDirExW(dirname);
+ CombinePathW(dirname, sizeof(dirname), exedir, L"chain_certs");
 
-	dir = EnumDirW(dirname);
+ MakeDirExW(dirname);
 
-	if (dir != NULL)
-	{
-		UINT i;
+ dir = EnumDirW(dirname);
 
-		for (i = 0;i < dir->NumFiles;i++)
-		{
-			DIRENT *e = dir->File[i];
+ if (dir != ((void*)0))
+ {
+  UINT i;
 
-			if (e->Folder == false)
-			{
-				wchar_t tmp[MAX_SIZE];
-				X *x;
+  for (i = 0;i < dir->NumFiles;i++)
+  {
+   DIRENT *e = dir->File[i];
 
-				CombinePathW(tmp, sizeof(tmp), dirname, e->FileNameW);
+   if (e->Folder == 0)
+   {
+    wchar_t tmp[MAX_SIZE];
+    X *x;
 
-				x = FileToXW(tmp);
+    CombinePathW(tmp, sizeof(tmp), dirname, e->FileNameW);
 
-				if (x != NULL)
-				{
-					AddXToCertList(o, x);
+    x = FileToXW(tmp);
 
-					FreeX(x);
-				}
-			}
-		}
+    if (x != ((void*)0))
+    {
+     AddXToCertList(o, x);
 
-		FreeDir(dir);
-	}
+     FreeX(x);
+    }
+   }
+  }
+
+  FreeDir(dir);
+ }
 }

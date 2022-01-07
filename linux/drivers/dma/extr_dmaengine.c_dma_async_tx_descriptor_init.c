@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dma_chan {int dummy; } ;
-struct dma_async_tx_descriptor {int /*<<< orphan*/  lock; struct dma_chan* chan; } ;
+struct dma_async_tx_descriptor {int lock; struct dma_chan* chan; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
+
+ int spin_lock_init (int *) ;
 
 void dma_async_tx_descriptor_init(struct dma_async_tx_descriptor *tx,
-	struct dma_chan *chan)
+ struct dma_chan *chan)
 {
-	tx->chan = chan;
-	#ifdef CONFIG_ASYNC_TX_ENABLE_CHANNEL_SWITCH
-	spin_lock_init(&tx->lock);
-	#endif
+ tx->chan = chan;
+
+
+
 }

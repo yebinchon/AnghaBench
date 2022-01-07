@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timeval {int tv_usec; scalar_t__ tv_sec; } ;
-typedef  int /*<<< orphan*/  quicly_now_t ;
-typedef  int int64_t ;
+typedef int quicly_now_t ;
+typedef int int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gettimeofday (struct timeval*,int /*<<< orphan*/ *) ; 
+
+ int gettimeofday (struct timeval*,int *) ;
 
 __attribute__((used)) static int64_t default_now(quicly_now_t *self)
 {
     struct timeval tv;
-    gettimeofday(&tv, NULL);
+    gettimeofday(&tv, ((void*)0));
     return (int64_t)tv.tv_sec * 1000 + tv.tv_usec / 1000;
 }

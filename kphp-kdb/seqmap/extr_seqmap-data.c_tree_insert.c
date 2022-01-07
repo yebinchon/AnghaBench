@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct item {scalar_t__ y; int /*<<< orphan*/  key; int /*<<< orphan*/  key_len; struct item* right; struct item* left; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int key_cmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tree_split (struct item**,struct item**,struct item*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_counters (struct item*) ; 
+
+
+
+struct item {scalar_t__ y; int key; int key_len; struct item* right; struct item* left; } ;
+
+
+ int assert (int) ;
+ int key_cmp (int ,int ,int ,int ) ;
+ int tree_split (struct item**,struct item**,struct item*,int ,int ) ;
+ int update_counters (struct item*) ;
 
 __attribute__((used)) static struct item *tree_insert (struct item *T, struct item *N) {
-  if (!T) { 
+  if (!T) {
     update_counters (N);
     return N;
   }

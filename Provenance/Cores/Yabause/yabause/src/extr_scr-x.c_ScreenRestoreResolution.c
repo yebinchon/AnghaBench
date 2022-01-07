@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Window ;
-typedef  int /*<<< orphan*/  Display ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CurrentTime ; 
- int /*<<< orphan*/  RootWindow (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XCloseDisplay (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * XOpenDisplay (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  XRRSetScreenConfigAndRate (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * x11Conf ; 
- int /*<<< orphan*/  x11OriginalRate ; 
- int /*<<< orphan*/  x11OriginalRotation ; 
- int /*<<< orphan*/  x11OriginalSizeId ; 
+
+
+
+typedef int Window ;
+typedef int Display ;
+
+
+ int CurrentTime ;
+ int RootWindow (int *,int ) ;
+ int XCloseDisplay (int *) ;
+ int * XOpenDisplay (int *) ;
+ int XRRSetScreenConfigAndRate (int *,int *,int ,int ,int ,int ,int ) ;
+ int * x11Conf ;
+ int x11OriginalRate ;
+ int x11OriginalRotation ;
+ int x11OriginalSizeId ;
 
 void ScreenRestoreResolution()
 {
    Display *dpy;
    Window root;
 
-   if (x11Conf == NULL) return;
+   if (x11Conf == ((void*)0)) return;
 
-   // Open X11 connection
-   dpy = XOpenDisplay(NULL);
+
+   dpy = XOpenDisplay(((void*)0));
    root = RootWindow(dpy, 0);
    XRRSetScreenConfigAndRate(dpy, x11Conf, root, x11OriginalSizeId, x11OriginalRotation, x11OriginalRate, CurrentTime);
 
-   // Close connection
+
    XCloseDisplay(dpy);
 }

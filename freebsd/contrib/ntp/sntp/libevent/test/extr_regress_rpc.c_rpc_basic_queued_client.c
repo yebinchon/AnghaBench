@@ -1,88 +1,88 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct msg {int dummy; } ;
 struct kill {int dummy; } ;
 struct evrpc_pool {int dummy; } ;
 struct evrpc_base {int dummy; } ;
 struct evhttp {int dummy; } ;
-typedef  int /*<<< orphan*/  ev_uint16_t ;
+typedef int ev_uint16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVRPC_MAKE_REQUEST (int /*<<< orphan*/ ,struct evrpc_pool*,struct msg*,struct kill*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVTAG_ASSIGN (struct msg*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  GotKillCb ; 
- int /*<<< orphan*/  GotKillCbTwo ; 
- int /*<<< orphan*/  Message ; 
- int /*<<< orphan*/  event_dispatch () ; 
- int /*<<< orphan*/  evhttp_free (struct evhttp*) ; 
- int /*<<< orphan*/  evrpc_pool_free (struct evrpc_pool*) ; 
- int /*<<< orphan*/  from_name ; 
- int /*<<< orphan*/  kill_free (struct kill*) ; 
- struct kill* kill_new () ; 
- int /*<<< orphan*/  msg_free (struct msg*) ; 
- struct msg* msg_new () ; 
- struct evrpc_pool* rpc_pool_with_connection (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rpc_setup (struct evhttp**,int /*<<< orphan*/ *,struct evrpc_base**) ; 
- int /*<<< orphan*/  rpc_teardown (struct evrpc_base*) ; 
- int test_ok ; 
- int /*<<< orphan*/  to_name ; 
- int /*<<< orphan*/  tt_assert (int) ; 
+
+ int EVRPC_MAKE_REQUEST (int ,struct evrpc_pool*,struct msg*,struct kill*,int ,int *) ;
+ int EVTAG_ASSIGN (struct msg*,int ,char*) ;
+ int GotKillCb ;
+ int GotKillCbTwo ;
+ int Message ;
+ int event_dispatch () ;
+ int evhttp_free (struct evhttp*) ;
+ int evrpc_pool_free (struct evrpc_pool*) ;
+ int from_name ;
+ int kill_free (struct kill*) ;
+ struct kill* kill_new () ;
+ int msg_free (struct msg*) ;
+ struct msg* msg_new () ;
+ struct evrpc_pool* rpc_pool_with_connection (int ) ;
+ int rpc_setup (struct evhttp**,int *,struct evrpc_base**) ;
+ int rpc_teardown (struct evrpc_base*) ;
+ int test_ok ;
+ int to_name ;
+ int tt_assert (int) ;
 
 __attribute__((used)) static void
 rpc_basic_queued_client(void)
 {
-	ev_uint16_t port;
-	struct evhttp *http = NULL;
-	struct evrpc_base *base = NULL;
-	struct evrpc_pool *pool = NULL;
-	struct msg *msg=NULL;
-	struct kill *kill_one=NULL, *kill_two=NULL;
+ ev_uint16_t port;
+ struct evhttp *http = ((void*)0);
+ struct evrpc_base *base = ((void*)0);
+ struct evrpc_pool *pool = ((void*)0);
+ struct msg *msg=((void*)0);
+ struct kill *kill_one=((void*)0), *kill_two=((void*)0);
 
-	rpc_setup(&http, &port, &base);
+ rpc_setup(&http, &port, &base);
 
-	pool = rpc_pool_with_connection(port);
-	tt_assert(pool);
+ pool = rpc_pool_with_connection(port);
+ tt_assert(pool);
 
-	/* set up the basic message */
-	msg = msg_new();
-	tt_assert(msg);
-	EVTAG_ASSIGN(msg, from_name, "niels");
-	EVTAG_ASSIGN(msg, to_name, "tester");
 
-	kill_one = kill_new();
-	kill_two = kill_new();
+ msg = msg_new();
+ tt_assert(msg);
+ EVTAG_ASSIGN(msg, from_name, "niels");
+ EVTAG_ASSIGN(msg, to_name, "tester");
 
-	EVRPC_MAKE_REQUEST(Message, pool, msg, kill_one,  GotKillCbTwo, NULL);
-	EVRPC_MAKE_REQUEST(Message, pool, msg, kill_two,  GotKillCb, NULL);
+ kill_one = kill_new();
+ kill_two = kill_new();
 
-	test_ok = 0;
+ EVRPC_MAKE_REQUEST(Message, pool, msg, kill_one, GotKillCbTwo, ((void*)0));
+ EVRPC_MAKE_REQUEST(Message, pool, msg, kill_two, GotKillCb, ((void*)0));
 
-	event_dispatch();
+ test_ok = 0;
 
-	rpc_teardown(base);
+ event_dispatch();
 
-	tt_assert(test_ok == 2);
+ rpc_teardown(base);
+
+ tt_assert(test_ok == 2);
 
 end:
-	if (msg)
-		msg_free(msg);
-	if (kill_one)
-		kill_free(kill_one);
-	if (kill_two)
-		kill_free(kill_two);
+ if (msg)
+  msg_free(msg);
+ if (kill_one)
+  kill_free(kill_one);
+ if (kill_two)
+  kill_free(kill_two);
 
-	if (pool)
-		evrpc_pool_free(pool);
-	if (http)
-		evhttp_free(http);
+ if (pool)
+  evrpc_pool_free(pool);
+ if (http)
+  evhttp_free(http);
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_16__ {int nFrom; scalar_t__ nTo; struct TYPE_16__* pNext; } ;
-struct TYPE_15__ {int nDel; int nSubst; TYPE_4__** apSubst; TYPE_4__** apDel; int /*<<< orphan*/  nByte; } ;
+struct TYPE_15__ {int nDel; int nSubst; TYPE_4__** apSubst; TYPE_4__** apDel; int nByte; } ;
 struct TYPE_14__ {int n; char* z; int isPrefix; TYPE_3__* a; } ;
 struct TYPE_13__ {TYPE_4__* pCost; } ;
-typedef  TYPE_1__ EditDist3Lang ;
-typedef  TYPE_2__ EditDist3FromString ;
-typedef  TYPE_3__ EditDist3From ;
-typedef  TYPE_4__ EditDist3Cost ;
+typedef TYPE_1__ EditDist3Lang ;
+typedef TYPE_2__ EditDist3FromString ;
+typedef TYPE_3__ EditDist3From ;
+typedef TYPE_4__ EditDist3Cost ;
 
-/* Variables and functions */
- int /*<<< orphan*/  editDist3FromStringDelete (TYPE_2__*) ; 
- scalar_t__ matchFrom (TYPE_4__*,char const*,int) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- TYPE_2__* sqlite3_malloc64 (int) ; 
- TYPE_4__** sqlite3_realloc64 (TYPE_4__**,int) ; 
- scalar_t__ strlen (char const*) ; 
- int /*<<< orphan*/  utf8Len (unsigned char,int) ; 
+
+ int editDist3FromStringDelete (TYPE_2__*) ;
+ scalar_t__ matchFrom (TYPE_4__*,char const*,int) ;
+ int memcpy (char*,char const*,int) ;
+ int memset (TYPE_3__*,int ,int) ;
+ TYPE_2__* sqlite3_malloc64 (int) ;
+ TYPE_4__** sqlite3_realloc64 (TYPE_4__**,int) ;
+ scalar_t__ strlen (char const*) ;
+ int utf8Len (unsigned char,int) ;
 
 __attribute__((used)) static EditDist3FromString *editDist3FromStringNew(
   const EditDist3Lang *pLang,

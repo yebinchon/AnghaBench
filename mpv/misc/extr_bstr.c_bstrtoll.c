@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bstr {int /*<<< orphan*/  start; int /*<<< orphan*/  len; } ;
 
-/* Variables and functions */
- int MPMIN (int /*<<< orphan*/ ,int) ; 
- struct bstr bstr_cut (struct bstr,int) ; 
- struct bstr bstr_lstrip (struct bstr) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,int) ; 
- long long strtoll (char*,char**,int) ; 
+
+
+
+struct bstr {int start; int len; } ;
+
+
+ int MPMIN (int ,int) ;
+ struct bstr bstr_cut (struct bstr,int) ;
+ struct bstr bstr_lstrip (struct bstr) ;
+ int memcpy (char*,int ,int) ;
+ long long strtoll (char*,char**,int) ;
 
 long long bstrtoll(struct bstr str, struct bstr *rest, int base)
 {

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {unsigned int buf_len; int flags; int* buf; TYPE_1__* cipher; int /*<<< orphan*/  encrypt; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {unsigned int buf_len; int flags; int* buf; TYPE_1__* cipher; int encrypt; } ;
 struct TYPE_6__ {int flags; int (* do_cipher ) (TYPE_2__*,unsigned char*,int*,unsigned int) ;unsigned int block_size; } ;
-typedef  TYPE_2__ EVP_CIPHER_CTX ;
+typedef TYPE_2__ EVP_CIPHER_CTX ;
 
-/* Variables and functions */
- int EVP_CIPH_FLAG_CUSTOM_CIPHER ; 
- int EVP_CIPH_NO_PADDING ; 
- int /*<<< orphan*/  EVP_F_EVP_ENCRYPTFINAL_EX ; 
- int /*<<< orphan*/  EVP_R_DATA_NOT_MULTIPLE_OF_BLOCK_LENGTH ; 
- int /*<<< orphan*/  EVP_R_INVALID_OPERATION ; 
- int /*<<< orphan*/  EVPerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_assert (int) ; 
- int stub1 (TYPE_2__*,unsigned char*,int*,unsigned int) ; 
- int stub2 (TYPE_2__*,unsigned char*,int*,unsigned int) ; 
+
+ int EVP_CIPH_FLAG_CUSTOM_CIPHER ;
+ int EVP_CIPH_NO_PADDING ;
+ int EVP_F_EVP_ENCRYPTFINAL_EX ;
+ int EVP_R_DATA_NOT_MULTIPLE_OF_BLOCK_LENGTH ;
+ int EVP_R_INVALID_OPERATION ;
+ int EVPerr (int ,int ) ;
+ int OPENSSL_assert (int) ;
+ int stub1 (TYPE_2__*,unsigned char*,int*,unsigned int) ;
+ int stub2 (TYPE_2__*,unsigned char*,int*,unsigned int) ;
 
 int EVP_EncryptFinal_ex(EVP_CIPHER_CTX *ctx, unsigned char *out, int *outl)
 {
     int n, ret;
     unsigned int i, b, bl;
 
-    /* Prevent accidental use of decryption context when encrypting */
+
     if (!ctx->encrypt) {
         EVPerr(EVP_F_EVP_ENCRYPTFINAL_EX, EVP_R_INVALID_OPERATION);
         return 0;
     }
 
     if (ctx->cipher->flags & EVP_CIPH_FLAG_CUSTOM_CIPHER) {
-        ret = ctx->cipher->do_cipher(ctx, out, NULL, 0);
+        ret = ctx->cipher->do_cipher(ctx, out, ((void*)0), 0);
         if (ret < 0)
             return 0;
         else

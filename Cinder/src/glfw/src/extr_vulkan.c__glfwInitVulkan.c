@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_6__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-typedef  scalar_t__ VkResult ;
-struct TYPE_8__ {int /*<<< orphan*/  extensionName; } ;
-typedef  TYPE_2__ VkExtensionProperties ;
-struct TYPE_7__ {int /*<<< orphan*/  extensionCount; int /*<<< orphan*/  extensions; void* KHR_surface; void* available; void* KHR_mir_surface; void* KHR_wayland_surface; void* KHR_xcb_surface; void* KHR_xlib_surface; void* KHR_win32_surface; scalar_t__ EnumerateInstanceExtensionProperties; scalar_t__ GetInstanceProcAddr; int /*<<< orphan*/  handle; } ;
+
+
+typedef struct TYPE_9__ TYPE_6__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
+typedef scalar_t__ VkResult ;
+struct TYPE_8__ {int extensionName; } ;
+typedef TYPE_2__ VkExtensionProperties ;
+struct TYPE_7__ {int extensionCount; int extensions; void* KHR_surface; void* available; void* KHR_mir_surface; void* KHR_wayland_surface; void* KHR_xcb_surface; void* KHR_xlib_surface; void* KHR_win32_surface; scalar_t__ EnumerateInstanceExtensionProperties; scalar_t__ GetInstanceProcAddr; int handle; } ;
 struct TYPE_9__ {TYPE_1__ vk; } ;
-typedef  scalar_t__ PFN_vkGetInstanceProcAddr ;
-typedef  scalar_t__ PFN_vkEnumerateInstanceExtensionProperties ;
-typedef  void* GLFWbool ;
+typedef scalar_t__ PFN_vkGetInstanceProcAddr ;
+typedef scalar_t__ PFN_vkEnumerateInstanceExtensionProperties ;
+typedef void* GLFWbool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_API_UNAVAILABLE ; 
- void* GLFW_FALSE ; 
- int /*<<< orphan*/  GLFW_PLATFORM_ERROR ; 
- void* GLFW_TRUE ; 
- TYPE_6__ _glfw ; 
- int /*<<< orphan*/  _glfwGetVulkanResultString (scalar_t__) ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  _glfwPlatformGetRequiredInstanceExtensions (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _glfwTerminateVulkan () ; 
- int /*<<< orphan*/  _glfw_dlopen (char const*) ; 
- scalar_t__ _glfw_dlsym (int /*<<< orphan*/ ,char*) ; 
- TYPE_2__* calloc (size_t,int) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ vkEnumerateInstanceExtensionProperties (int /*<<< orphan*/ *,size_t*,TYPE_2__*) ; 
- scalar_t__ vkGetInstanceProcAddr (int /*<<< orphan*/ *,char*) ; 
+
+ int GLFW_API_UNAVAILABLE ;
+ void* GLFW_FALSE ;
+ int GLFW_PLATFORM_ERROR ;
+ void* GLFW_TRUE ;
+ TYPE_6__ _glfw ;
+ int _glfwGetVulkanResultString (scalar_t__) ;
+ int _glfwInputError (int ,char*,...) ;
+ int _glfwPlatformGetRequiredInstanceExtensions (int *) ;
+ int _glfwTerminateVulkan () ;
+ int _glfw_dlopen (char const*) ;
+ scalar_t__ _glfw_dlsym (int ,char*) ;
+ TYPE_2__* calloc (size_t,int) ;
+ int free (TYPE_2__*) ;
+ scalar_t__ strcmp (int ,char*) ;
+ scalar_t__ vkEnumerateInstanceExtensionProperties (int *,size_t*,TYPE_2__*) ;
+ scalar_t__ vkGetInstanceProcAddr (int *,char*) ;
 
 GLFWbool _glfwInitVulkan(void)
 {
@@ -47,12 +47,12 @@ GLFWbool _glfwInitVulkan(void)
     VkExtensionProperties* ep;
     uint32_t i, count;
 
-#if !defined(_GLFW_VULKAN_STATIC)
-#if defined(_GLFW_WIN32)
-    const char* name = "vulkan-1.dll";
-#else
+
+
+
+
     const char* name = "libvulkan.so.1";
-#endif
+
 
     if (_glfw.vk.available)
         return GLFW_TRUE;
@@ -73,7 +73,7 @@ GLFWbool _glfwInitVulkan(void)
     }
 
     _glfw.vk.EnumerateInstanceExtensionProperties = (PFN_vkEnumerateInstanceExtensionProperties)
-        vkGetInstanceProcAddr(NULL, "vkEnumerateInstanceExtensionProperties");
+        vkGetInstanceProcAddr(((void*)0), "vkEnumerateInstanceExtensionProperties");
     if (!_glfw.vk.EnumerateInstanceExtensionProperties)
     {
         _glfwInputError(GLFW_API_UNAVAILABLE,
@@ -82,9 +82,9 @@ GLFWbool _glfwInitVulkan(void)
         _glfwTerminateVulkan();
         return GLFW_FALSE;
     }
-#endif // _GLFW_VULKAN_STATIC
 
-    err = vkEnumerateInstanceExtensionProperties(NULL, &count, NULL);
+
+    err = vkEnumerateInstanceExtensionProperties(((void*)0), &count, ((void*)0));
     if (err)
     {
         _glfwInputError(GLFW_PLATFORM_ERROR,
@@ -97,7 +97,7 @@ GLFWbool _glfwInitVulkan(void)
 
     ep = calloc(count, sizeof(VkExtensionProperties));
 
-    err = vkEnumerateInstanceExtensionProperties(NULL, &count, ep);
+    err = vkEnumerateInstanceExtensionProperties(((void*)0), &count, ep);
     if (err)
     {
         _glfwInputError(GLFW_PLATFORM_ERROR,
@@ -109,7 +109,7 @@ GLFWbool _glfwInitVulkan(void)
         return GLFW_FALSE;
     }
 
-    for (i = 0;  i < count;  i++)
+    for (i = 0; i < count; i++)
     {
         if (strcmp(ep[i].extensionName, "VK_KHR_surface") == 0)
             _glfw.vk.KHR_surface = GLFW_TRUE;

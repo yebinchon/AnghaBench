@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ dev_t ;
-typedef  int /*<<< orphan*/  Unit ;
-struct TYPE_8__ {int /*<<< orphan*/  pipe_fd; int /*<<< orphan*/  expire_tokens; int /*<<< orphan*/  tokens; scalar_t__ dev_id; scalar_t__ result; scalar_t__ deserialized_state; } ;
-typedef  TYPE_1__ FDSet ;
-typedef  scalar_t__ AutomountState ;
-typedef  scalar_t__ AutomountResult ;
-typedef  TYPE_1__ Automount ;
 
-/* Variables and functions */
- TYPE_1__* AUTOMOUNT (int /*<<< orphan*/ *) ; 
- scalar_t__ AUTOMOUNT_SUCCESS ; 
- int /*<<< orphan*/  UINT_TO_PTR (unsigned int) ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- scalar_t__ automount_result_from_string (char const*) ; 
- scalar_t__ automount_state_from_string (char const*) ; 
- int /*<<< orphan*/  fdset_contains (TYPE_1__*,int) ; 
- int /*<<< orphan*/  fdset_remove (TYPE_1__*,int) ; 
- int /*<<< orphan*/  log_oom () ; 
- int /*<<< orphan*/  log_unit_debug (int /*<<< orphan*/ *,char*,char const*) ; 
- int /*<<< orphan*/  log_unit_error_errno (int /*<<< orphan*/ *,int,char*) ; 
- scalar_t__ safe_atoi (char const*,int*) ; 
- scalar_t__ safe_atolu (char const*,unsigned long*) ; 
- scalar_t__ safe_atou (char const*,unsigned int*) ; 
- int /*<<< orphan*/  safe_close (int /*<<< orphan*/ ) ; 
- int set_ensure_allocated (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int set_put (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ streq (char const*,char*) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ dev_t ;
+typedef int Unit ;
+struct TYPE_8__ {int pipe_fd; int expire_tokens; int tokens; scalar_t__ dev_id; scalar_t__ result; scalar_t__ deserialized_state; } ;
+typedef TYPE_1__ FDSet ;
+typedef scalar_t__ AutomountState ;
+typedef scalar_t__ AutomountResult ;
+typedef TYPE_1__ Automount ;
+
+
+ TYPE_1__* AUTOMOUNT (int *) ;
+ scalar_t__ AUTOMOUNT_SUCCESS ;
+ int UINT_TO_PTR (unsigned int) ;
+ int assert (TYPE_1__*) ;
+ scalar_t__ automount_result_from_string (char const*) ;
+ scalar_t__ automount_state_from_string (char const*) ;
+ int fdset_contains (TYPE_1__*,int) ;
+ int fdset_remove (TYPE_1__*,int) ;
+ int log_oom () ;
+ int log_unit_debug (int *,char*,char const*) ;
+ int log_unit_error_errno (int *,int,char*) ;
+ scalar_t__ safe_atoi (char const*,int*) ;
+ scalar_t__ safe_atolu (char const*,unsigned long*) ;
+ scalar_t__ safe_atou (char const*,unsigned int*) ;
+ int safe_close (int ) ;
+ int set_ensure_allocated (int *,int *) ;
+ int set_put (int ,int ) ;
+ scalar_t__ streq (char const*,char*) ;
 
 __attribute__((used)) static int automount_deserialize_item(Unit *u, const char *key, const char *value, FDSet *fds) {
         Automount *a = AUTOMOUNT(u);
@@ -77,7 +77,7 @@ __attribute__((used)) static int automount_deserialize_item(Unit *u, const char 
                 if (safe_atou(value, &token) < 0)
                         log_unit_debug(u, "Failed to parse token value: %s", value);
                 else {
-                        r = set_ensure_allocated(&a->tokens, NULL);
+                        r = set_ensure_allocated(&a->tokens, ((void*)0));
                         if (r < 0) {
                                 log_oom();
                                 return 0;
@@ -93,7 +93,7 @@ __attribute__((used)) static int automount_deserialize_item(Unit *u, const char 
                 if (safe_atou(value, &token) < 0)
                         log_unit_debug(u, "Failed to parse token value: %s", value);
                 else {
-                        r = set_ensure_allocated(&a->expire_tokens, NULL);
+                        r = set_ensure_allocated(&a->expire_tokens, ((void*)0));
                         if (r < 0) {
                                 log_oom();
                                 return 0;

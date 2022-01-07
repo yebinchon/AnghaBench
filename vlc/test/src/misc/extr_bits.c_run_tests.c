@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct testset {int /*<<< orphan*/  count; int /*<<< orphan*/ * data; } ;
-typedef  int /*<<< orphan*/  bs_t ;
-typedef  int /*<<< orphan*/  bs_byte_callbacks_t ;
 
-/* Variables and functions */
- size_t TESTSET0 ; 
- size_t TESTSET1 ; 
- size_t TESTSET2 ; 
- size_t TESTSET_EXPGOLOMB ; 
- int /*<<< orphan*/  bs_align (int /*<<< orphan*/ *) ; 
- int bs_aligned (int /*<<< orphan*/ *) ; 
- int bs_eof (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bs_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int bs_pos (int /*<<< orphan*/ *) ; 
- int bs_read (int /*<<< orphan*/ *,int) ; 
- int bs_read1 (int /*<<< orphan*/ *) ; 
- int bs_read_se (int /*<<< orphan*/ *) ; 
- int bs_read_ue (int /*<<< orphan*/ *) ; 
- int bs_remain (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bs_skip (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  bs_write (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  bs_write_align (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  bs_write_init (int /*<<< orphan*/ *,int**,int) ; 
- int /*<<< orphan*/  memcmp (int*,int*,int) ; 
- int /*<<< orphan*/  test_assert (int,int) ; 
+
+
+
+typedef int uint8_t ;
+struct testset {int count; int * data; } ;
+typedef int bs_t ;
+typedef int bs_byte_callbacks_t ;
+
+
+ size_t TESTSET0 ;
+ size_t TESTSET1 ;
+ size_t TESTSET2 ;
+ size_t TESTSET_EXPGOLOMB ;
+ int bs_align (int *) ;
+ int bs_aligned (int *) ;
+ int bs_eof (int *) ;
+ int bs_init (int *,int *,int ) ;
+ int bs_pos (int *) ;
+ int bs_read (int *,int) ;
+ int bs_read1 (int *) ;
+ int bs_read_se (int *) ;
+ int bs_read_ue (int *) ;
+ int bs_remain (int *) ;
+ int bs_skip (int *,int) ;
+ int bs_write (int *,int,int) ;
+ int bs_write_align (int *,int) ;
+ int bs_write_init (int *,int**,int) ;
+ int memcmp (int*,int*,int) ;
+ int test_assert (int,int) ;
 
 __attribute__((used)) static int run_tests( const struct testset *p_testsets,
                       const char *psz_tag,
@@ -44,7 +44,7 @@ __attribute__((used)) static int run_tests( const struct testset *p_testsets,
 {
     bs_t bs;
 
-    bs_init( &bs, NULL, 0 );
+    bs_init( &bs, ((void*)0), 0 );
     test_assert( bs_remain(&bs), 0 );
     test_assert( bs_pos(&bs), 0 );
 
@@ -120,7 +120,7 @@ __attribute__((used)) static int run_tests( const struct testset *p_testsets,
     test_assert( bs_read( &bs, 8 ), 0xEE );
     test_assert( bs_remain( &bs ), 8 );
 
-    /* */
+
     bs_init( &bs, p_testsets[TESTSET2].data,
                   p_testsets[TESTSET2].count );
     for( size_t i=0; i<6*8; i++ )
@@ -132,7 +132,7 @@ __attribute__((used)) static int run_tests( const struct testset *p_testsets,
     }
     test_assert(bs_eof( &bs ), 1);
 
-    /* test writes */
+
     uint8_t buf[5] = { 0 };
     uint8_t bufok[5] = { 0x7D, 0xF7, 0xDF, 0x7D, 0xF7 };
     bs_write_init( &bs, &buf, 5 );
@@ -153,21 +153,21 @@ __attribute__((used)) static int run_tests( const struct testset *p_testsets,
         i += j % 4;
     }
     test_assert(bs_eof( &bs ), 1);
-    test_assert(!memcmp(buf, bufok, 5), true);
+    test_assert(!memcmp(buf, bufok, 5), 1);
 
     bs_write_init( &bs, &buf, 5 );
     bs_write( &bs, 1, 0 );
     bs_write_align( &bs, 1 );
-    test_assert(bs_aligned( &bs ), true);
+    test_assert(bs_aligned( &bs ), 1);
     test_assert(bs_pos( &bs ), 8);
     test_assert(buf[0], 0x7F);
     bs_write( &bs, 1, 1 );
     bs_write_align( &bs, 0 );
-    test_assert(bs_aligned( &bs ), true);
+    test_assert(bs_aligned( &bs ), 1);
     test_assert(bs_pos( &bs ), 16);
     test_assert(buf[1], 0x80);
 
-    /* overflows */
+
     bs_init( &bs, p_testsets[TESTSET1].data, p_testsets[TESTSET1].count );
     bs_read( &bs, 42 );
     test_assert(bs_remain( &bs ), 0);

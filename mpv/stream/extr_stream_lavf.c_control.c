@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct stream_avseek {int /*<<< orphan*/  flags; int /*<<< orphan*/  timestamp; int /*<<< orphan*/  stream_index; } ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct stream_avseek {int flags; int timestamp; int stream_index; } ;
 struct mp_tags {int dummy; } ;
 struct TYPE_11__ {TYPE_3__* priv; } ;
-typedef  TYPE_2__ stream_t ;
-typedef  int /*<<< orphan*/  int64_t ;
+typedef TYPE_2__ stream_t ;
+typedef int int64_t ;
 struct TYPE_13__ {char* (* item_name ) (void*) ;} ;
-struct TYPE_12__ {int /*<<< orphan*/  read_seek; TYPE_1__* av_class; } ;
-struct TYPE_10__ {void* (* child_next ) (TYPE_3__*,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_3__ AVIOContext ;
-typedef  TYPE_4__ AVClass ;
+struct TYPE_12__ {int read_seek; TYPE_1__* av_class; } ;
+struct TYPE_10__ {void* (* child_next ) (TYPE_3__*,int *) ;} ;
+typedef TYPE_3__ AVIOContext ;
+typedef TYPE_4__ AVClass ;
 
-/* Variables and functions */
-#define  STREAM_CTRL_AVSEEK 130 
-#define  STREAM_CTRL_GET_METADATA 129 
-#define  STREAM_CTRL_HAS_AVSEEK 128 
- int STREAM_UNSUPPORTED ; 
- int /*<<< orphan*/  avio_seek_time (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct mp_tags* read_icy (TYPE_2__*) ; 
- int /*<<< orphan*/  strcmp (char const*,char const* const) ; 
- int /*<<< orphan*/  stream_drop_buffers (TYPE_2__*) ; 
- void* stub1 (TYPE_3__*,int /*<<< orphan*/ *) ; 
- char* stub2 (void*) ; 
+
+
+
+
+ int STREAM_UNSUPPORTED ;
+ int avio_seek_time (TYPE_3__*,int ,int ,int ) ;
+ struct mp_tags* read_icy (TYPE_2__*) ;
+ int strcmp (char const*,char const* const) ;
+ int stream_drop_buffers (TYPE_2__*) ;
+ void* stub1 (TYPE_3__*,int *) ;
+ char* stub2 (void*) ;
 
 __attribute__((used)) static int control(stream_t *s, int cmd, void *arg)
 {
     AVIOContext *avio = s->priv;
     switch(cmd) {
-    case STREAM_CTRL_AVSEEK: {
+    case 130: {
         struct stream_avseek *c = arg;
         int64_t r = avio_seek_time(avio, c->stream_index, c->timestamp, c->flags);
         if (r >= 0) {
@@ -50,18 +50,18 @@ __attribute__((used)) static int control(stream_t *s, int cmd, void *arg)
         }
         break;
     }
-    case STREAM_CTRL_HAS_AVSEEK: {
-        // Starting at some point, read_seek is always available, and runtime
-        // behavior decides whether it exists or not. FFmpeg's API doesn't
-        // return anything helpful to determine seekability upfront, so here's
-        // a hardcoded whitelist. Not our fault.
-        // In addition we also have to jump through ridiculous hoops just to
-        // get the fucking protocol name.
-        const char *proto = NULL;
+    case 128: {
+
+
+
+
+
+
+        const char *proto = ((void*)0);
         if (avio->av_class && avio->av_class->child_next) {
-            // This usually yields the URLContext (why does it even exist?),
-            // which holds the name of the actual protocol implementation.
-            void *child = avio->av_class->child_next(avio, NULL);
+
+
+            void *child = avio->av_class->child_next(avio, ((void*)0));
             AVClass *cl = *(AVClass **)child;
             if (cl && cl->item_name)
                 proto = cl->item_name(child);
@@ -74,7 +74,7 @@ __attribute__((used)) static int control(stream_t *s, int cmd, void *arg)
         }
         break;
     }
-    case STREAM_CTRL_GET_METADATA: {
+    case 129: {
         *(struct mp_tags **)arg = read_icy(s);
         if (!*(struct mp_tags **)arg)
             break;

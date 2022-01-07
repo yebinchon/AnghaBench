@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  int16_t ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
 
-/* Variables and functions */
- int GSM_FRAME_SIZE ; 
- int GSM_MS_BLOCK_SIZE ; 
- int gsm_decode_block (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  init_get_bits (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int int16_t ;
+typedef int GetBitContext ;
+typedef int AVCodecContext ;
+
+
+ int GSM_FRAME_SIZE ;
+ int GSM_MS_BLOCK_SIZE ;
+ int gsm_decode_block (int *,int *,int *,int) ;
+ int init_get_bits (int *,int const*,int) ;
 
 int ff_msgsm_decode_block(AVCodecContext *avctx, int16_t *samples,
                           const uint8_t *buf, int mode)

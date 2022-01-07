@@ -1,118 +1,110 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ wait_result_t ;
-typedef  TYPE_1__* thread_t ;
-typedef  int /*<<< orphan*/  spl_t ;
-typedef  int /*<<< orphan*/  processor_t ;
-typedef  void* boolean_t ;
-struct TYPE_9__ {int state; void* wake_active; int /*<<< orphan*/  chosen_processor; } ;
 
-/* Variables and functions */
- void* FALSE ; 
- int /*<<< orphan*/  THREAD_ABORTSAFE ; 
- scalar_t__ THREAD_AWAKENED ; 
- int /*<<< orphan*/  THREAD_CONTINUE_NULL ; 
- scalar_t__ THREAD_WAITING ; 
- int TH_RUN ; 
- int TH_SUSP ; 
- void* TRUE ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ assert_wait (void**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cause_ast_check (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  splsched () ; 
- int /*<<< orphan*/  splx (int /*<<< orphan*/ ) ; 
- scalar_t__ thread_block (int /*<<< orphan*/ ) ; 
- void* thread_isoncpu (TYPE_1__*) ; 
- int /*<<< orphan*/  thread_lock (TYPE_1__*) ; 
- int /*<<< orphan*/  thread_unlock (TYPE_1__*) ; 
- int /*<<< orphan*/  thread_unstop (TYPE_1__*) ; 
- int /*<<< orphan*/  wake_lock (TYPE_1__*) ; 
- int /*<<< orphan*/  wake_unlock (TYPE_1__*) ; 
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef scalar_t__ wait_result_t ;
+typedef TYPE_1__* thread_t ;
+typedef int spl_t ;
+typedef int processor_t ;
+typedef void* boolean_t ;
+struct TYPE_9__ {int state; void* wake_active; int chosen_processor; } ;
+
+
+ void* FALSE ;
+ int THREAD_ABORTSAFE ;
+ scalar_t__ THREAD_AWAKENED ;
+ int THREAD_CONTINUE_NULL ;
+ scalar_t__ THREAD_WAITING ;
+ int TH_RUN ;
+ int TH_SUSP ;
+ void* TRUE ;
+ int assert (int) ;
+ scalar_t__ assert_wait (void**,int ) ;
+ int cause_ast_check (int ) ;
+ int splsched () ;
+ int splx (int ) ;
+ scalar_t__ thread_block (int ) ;
+ void* thread_isoncpu (TYPE_1__*) ;
+ int thread_lock (TYPE_1__*) ;
+ int thread_unlock (TYPE_1__*) ;
+ int thread_unstop (TYPE_1__*) ;
+ int wake_lock (TYPE_1__*) ;
+ int wake_unlock (TYPE_1__*) ;
 
 boolean_t
 thread_stop(
-	thread_t		thread,
-	boolean_t	until_not_runnable)
+ thread_t thread,
+ boolean_t until_not_runnable)
 {
-	wait_result_t	wresult;
-	spl_t			s = splsched();
-	boolean_t		oncpu;
+ wait_result_t wresult;
+ spl_t s = splsched();
+ boolean_t oncpu;
 
-	wake_lock(thread);
-	thread_lock(thread);
+ wake_lock(thread);
+ thread_lock(thread);
 
-	while (thread->state & TH_SUSP) {
-		thread->wake_active = TRUE;
-		thread_unlock(thread);
+ while (thread->state & TH_SUSP) {
+  thread->wake_active = TRUE;
+  thread_unlock(thread);
 
-		wresult = assert_wait(&thread->wake_active, THREAD_ABORTSAFE);
-		wake_unlock(thread);
-		splx(s);
+  wresult = assert_wait(&thread->wake_active, THREAD_ABORTSAFE);
+  wake_unlock(thread);
+  splx(s);
 
-		if (wresult == THREAD_WAITING)
-			wresult = thread_block(THREAD_CONTINUE_NULL);
+  if (wresult == THREAD_WAITING)
+   wresult = thread_block(THREAD_CONTINUE_NULL);
 
-		if (wresult != THREAD_AWAKENED)
-			return (FALSE);
+  if (wresult != THREAD_AWAKENED)
+   return (FALSE);
 
-		s = splsched();
-		wake_lock(thread);
-		thread_lock(thread);
-	}
+  s = splsched();
+  wake_lock(thread);
+  thread_lock(thread);
+ }
 
-	thread->state |= TH_SUSP;
+ thread->state |= TH_SUSP;
 
-	while ((oncpu = thread_isoncpu(thread)) ||
-		   (until_not_runnable && (thread->state & TH_RUN))) {
-		processor_t		processor;
-		
-		if (oncpu) {
-			assert(thread->state & TH_RUN);
-			processor = thread->chosen_processor;
-			cause_ast_check(processor);
-		}
+ while ((oncpu = thread_isoncpu(thread)) ||
+     (until_not_runnable && (thread->state & TH_RUN))) {
+  processor_t processor;
 
-		thread->wake_active = TRUE;
-		thread_unlock(thread);
+  if (oncpu) {
+   assert(thread->state & TH_RUN);
+   processor = thread->chosen_processor;
+   cause_ast_check(processor);
+  }
 
-		wresult = assert_wait(&thread->wake_active, THREAD_ABORTSAFE);
-		wake_unlock(thread);
-		splx(s);
+  thread->wake_active = TRUE;
+  thread_unlock(thread);
 
-		if (wresult == THREAD_WAITING)
-			wresult = thread_block(THREAD_CONTINUE_NULL);
+  wresult = assert_wait(&thread->wake_active, THREAD_ABORTSAFE);
+  wake_unlock(thread);
+  splx(s);
 
-		if (wresult != THREAD_AWAKENED) {
-			thread_unstop(thread);
-			return (FALSE);
-		}
+  if (wresult == THREAD_WAITING)
+   wresult = thread_block(THREAD_CONTINUE_NULL);
 
-		s = splsched();
-		wake_lock(thread);
-		thread_lock(thread);
-	}
+  if (wresult != THREAD_AWAKENED) {
+   thread_unstop(thread);
+   return (FALSE);
+  }
 
-	thread_unlock(thread);
-	wake_unlock(thread);
-	splx(s);
-	
-	/*
-	 * We return with the thread unlocked. To prevent it from
-	 * transitioning to a runnable state (or from TH_RUN to
-	 * being on the CPU), the caller must ensure the thread
-	 * is stopped via an external means (such as an AST)
-	 */
+  s = splsched();
+  wake_lock(thread);
+  thread_lock(thread);
+ }
 
-	return (TRUE);
+ thread_unlock(thread);
+ wake_unlock(thread);
+ splx(s);
+ return (TRUE);
 }

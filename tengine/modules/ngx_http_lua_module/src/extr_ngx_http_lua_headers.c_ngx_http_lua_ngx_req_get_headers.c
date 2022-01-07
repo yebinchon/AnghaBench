@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_8__ ;
-typedef  struct TYPE_17__   TYPE_7__ ;
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t ngx_uint_t ;
-struct TYPE_15__ {int /*<<< orphan*/  len; scalar_t__ data; } ;
-struct TYPE_14__ {int /*<<< orphan*/  len; scalar_t__ data; } ;
+
+
+typedef struct TYPE_18__ TYPE_8__ ;
+typedef struct TYPE_17__ TYPE_7__ ;
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef size_t ngx_uint_t ;
+struct TYPE_15__ {int len; scalar_t__ data; } ;
+struct TYPE_14__ {int len; scalar_t__ data; } ;
 struct TYPE_16__ {TYPE_5__ value; TYPE_4__ key; scalar_t__ lowcase_key; } ;
-typedef  TYPE_6__ ngx_table_elt_t ;
+typedef TYPE_6__ ngx_table_elt_t ;
 struct TYPE_17__ {int nelts; TYPE_6__* elts; struct TYPE_17__* next; } ;
-typedef  TYPE_7__ ngx_list_part_t ;
+typedef TYPE_7__ ngx_list_part_t ;
 struct TYPE_11__ {TYPE_7__ part; } ;
 struct TYPE_12__ {TYPE_1__ headers; } ;
 struct TYPE_18__ {TYPE_3__* connection; TYPE_2__ headers_in; } ;
-typedef  TYPE_8__ ngx_http_request_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_13__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_8__ ngx_http_request_t ;
+typedef int lua_State ;
+struct TYPE_13__ {int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- int NGX_HTTP_LUA_MAX_HEADERS ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  dd (char*,int) ; 
- int /*<<< orphan*/  headers_metatable_key ; 
- int luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_createtable (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- scalar_t__ lua_isnil (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushlightuserdata (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushliteral (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_pushlstring (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_rawget (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_setmetatable (int /*<<< orphan*/ *,int) ; 
- int lua_toboolean (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ngx_http_lua_check_fake_request (int /*<<< orphan*/ *,TYPE_8__*) ; 
- TYPE_8__* ngx_http_lua_get_req (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_http_lua_lightudata_mask (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_lua_set_multi_value_table (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
+
+ int LUA_REGISTRYINDEX ;
+ int NGX_HTTP_LUA_MAX_HEADERS ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int dd (char*,int) ;
+ int headers_metatable_key ;
+ int luaL_checkinteger (int *,int) ;
+ int luaL_error (int *,char*) ;
+ int lua_createtable (int *,int ,int) ;
+ int lua_gettop (int *) ;
+ scalar_t__ lua_isnil (int *,int) ;
+ int lua_pushlightuserdata (int *,int ) ;
+ int lua_pushliteral (int *,char*) ;
+ int lua_pushlstring (int *,char*,int ) ;
+ int lua_rawget (int *,int ) ;
+ int lua_setmetatable (int *,int) ;
+ int lua_toboolean (int *,int) ;
+ int ngx_http_lua_check_fake_request (int *,TYPE_8__*) ;
+ TYPE_8__* ngx_http_lua_get_req (int *) ;
+ int ngx_http_lua_lightudata_mask (int ) ;
+ int ngx_http_lua_set_multi_value_table (int *,int) ;
+ int ngx_log_debug2 (int ,int ,int ,char*,...) ;
 
 __attribute__((used)) static int
 ngx_http_lua_ngx_req_get_headers(lua_State *L)
 {
-    ngx_list_part_t              *part;
-    ngx_table_elt_t              *header;
-    ngx_http_request_t           *r;
-    ngx_uint_t                    i;
-    int                           n;
-    int                           max;
-    int                           raw = 0;
-    int                           count = 0;
-    int                           truncated = 0;
+    ngx_list_part_t *part;
+    ngx_table_elt_t *header;
+    ngx_http_request_t *r;
+    ngx_uint_t i;
+    int n;
+    int max;
+    int raw = 0;
+    int count = 0;
+    int truncated = 0;
 
     n = lua_gettop(L);
 
@@ -87,7 +87,7 @@ ngx_http_lua_ngx_req_get_headers(lua_State *L)
     }
 
     r = ngx_http_lua_get_req(L);
-    if (r == NULL) {
+    if (r == ((void*)0)) {
         return luaL_error(L, "no request object found");
     }
 
@@ -95,7 +95,7 @@ ngx_http_lua_ngx_req_get_headers(lua_State *L)
 
     part = &r->headers_in.headers.part;
     count = part->nelts;
-    while (part->next != NULL) {
+    while (part->next != ((void*)0)) {
         part = part->next;
         count += part->nelts;
     }
@@ -120,12 +120,12 @@ ngx_http_lua_ngx_req_get_headers(lua_State *L)
     part = &r->headers_in.headers.part;
     header = part->elts;
 
-    for (i = 0; /* void */; i++) {
+    for (i = 0; ; i++) {
 
         dd("stack top: %d", lua_gettop(L));
 
         if (i >= part->nelts) {
-            if (part->next == NULL) {
+            if (part->next == ((void*)0)) {
                 break;
             }
 
@@ -142,10 +142,10 @@ ngx_http_lua_ngx_req_get_headers(lua_State *L)
                             header[i].key.len);
         }
 
-        /* stack: table key */
+
 
         lua_pushlstring(L, (char *) header[i].value.data,
-                        header[i].value.len); /* stack: table key value */
+                        header[i].value.len);
 
         ngx_http_lua_set_multi_value_table(L, -3);
 
@@ -156,7 +156,7 @@ ngx_http_lua_ngx_req_get_headers(lua_State *L)
         if (--count <= 0) {
             break;
         }
-    }  /* for */
+    }
 
     if (truncated) {
         lua_pushliteral(L, "truncated");

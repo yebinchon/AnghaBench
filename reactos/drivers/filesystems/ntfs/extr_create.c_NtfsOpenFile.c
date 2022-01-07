@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ RelatedFileObject; } ;
-typedef  int /*<<< orphan*/ * PWSTR ;
-typedef  int /*<<< orphan*/ * PNTFS_FCB ;
-typedef  TYPE_1__* PFILE_OBJECT ;
-typedef  int /*<<< orphan*/  PDEVICE_EXTENSION ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+typedef int * PWSTR ;
+typedef int * PNTFS_FCB ;
+typedef TYPE_1__* PFILE_OBJECT ;
+typedef int PDEVICE_EXTENSION ;
+typedef int NTSTATUS ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,...) ; 
- int /*<<< orphan*/  ExFreePool (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ExFreePoolWithTag (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtfsAttachFCBToFileObject (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  NtfsGetFCBForFile (int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * NtfsGrabFCBFromTable (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NtfsMakeAbsoluteFilename (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  NtfsReleaseFCB (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TAG_NTFS ; 
+
+ int DPRINT (char*,...) ;
+ int ExFreePool (int *) ;
+ int ExFreePoolWithTag (int *,int ) ;
+ int NT_SUCCESS (int ) ;
+ int NtfsAttachFCBToFileObject (int ,int *,TYPE_1__*) ;
+ int NtfsGetFCBForFile (int ,int **,int **,int *,int ) ;
+ int * NtfsGrabFCBFromTable (int ,int *) ;
+ int NtfsMakeAbsoluteFilename (scalar_t__,int *,int **) ;
+ int NtfsReleaseFCB (int ,int *) ;
+ int TAG_NTFS ;
 
 __attribute__((used)) static
 NTSTATUS
@@ -42,7 +42,7 @@ NtfsOpenFile(PDEVICE_EXTENSION DeviceExt,
     PNTFS_FCB ParentFcb;
     PNTFS_FCB Fcb;
     NTSTATUS Status;
-    PWSTR AbsFileName = NULL;
+    PWSTR AbsFileName = ((void*)0);
 
     DPRINT("NtfsOpenFile(%p, %p, %S, %s, %p)\n",
             DeviceExt,
@@ -51,7 +51,7 @@ NtfsOpenFile(PDEVICE_EXTENSION DeviceExt,
             CaseSensitive ? "TRUE" : "FALSE",
             FoundFCB);
 
-    *FoundFCB = NULL;
+    *FoundFCB = ((void*)0);
 
     if (FileObject->RelatedFileObject)
     {
@@ -67,15 +67,15 @@ NtfsOpenFile(PDEVICE_EXTENSION DeviceExt,
         }
     }
 
-    //FIXME: Get canonical path name (remove .'s, ..'s and extra separators)
+
 
     DPRINT("PathName to open: %S\n", FileName);
 
-    /*  try first to find an existing FCB in memory  */
+
     DPRINT("Checking for existing FCB in memory\n");
     Fcb = NtfsGrabFCBFromTable(DeviceExt,
                                FileName);
-    if (Fcb == NULL)
+    if (Fcb == ((void*)0))
     {
         DPRINT("No existing FCB found, making a new one if file exists.\n");
         Status = NtfsGetFCBForFile(DeviceExt,
@@ -83,7 +83,7 @@ NtfsOpenFile(PDEVICE_EXTENSION DeviceExt,
                                    &Fcb,
                                    FileName,
                                    CaseSensitive);
-        if (ParentFcb != NULL)
+        if (ParentFcb != ((void*)0))
         {
             NtfsReleaseFCB(DeviceExt,
                            ParentFcb);

@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  is_efi_secure_boot () ; 
- int /*<<< orphan*/  log_info (char*,...) ; 
- int /*<<< orphan*/  mac_apparmor_use () ; 
- int /*<<< orphan*/  mac_selinux_use () ; 
- int /*<<< orphan*/  mac_smack_use () ; 
- int /*<<< orphan*/  mac_tomoyo_use () ; 
- int /*<<< orphan*/  use_audit () ; 
- int /*<<< orphan*/  use_ima () ; 
- int /*<<< orphan*/  yes_no (int /*<<< orphan*/ ) ; 
+ int is_efi_secure_boot () ;
+ int log_info (char*,...) ;
+ int mac_apparmor_use () ;
+ int mac_selinux_use () ;
+ int mac_smack_use () ;
+ int mac_tomoyo_use () ;
+ int use_audit () ;
+ int use_ima () ;
+ int yes_no (int ) ;
 
 __attribute__((used)) static void print_securities(void) {
         log_info("------ enabled security technologies ------");

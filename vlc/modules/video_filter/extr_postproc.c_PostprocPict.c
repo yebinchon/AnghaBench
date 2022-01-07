@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_6__ ;
-typedef  struct TYPE_22__   TYPE_5__ ;
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_23__ TYPE_6__ ;
+typedef struct TYPE_22__ TYPE_5__ ;
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_21__ {int i_planes; TYPE_1__* p; } ;
-typedef  TYPE_4__ picture_t ;
-struct TYPE_19__ {int /*<<< orphan*/  i_height; int /*<<< orphan*/  i_width; } ;
+typedef TYPE_4__ picture_t ;
+struct TYPE_19__ {int i_height; int i_width; } ;
 struct TYPE_20__ {TYPE_2__ video; } ;
 struct TYPE_22__ {TYPE_3__ fmt_in; TYPE_6__* p_sys; } ;
-typedef  TYPE_5__ filter_t ;
-struct TYPE_23__ {int /*<<< orphan*/  lock; int /*<<< orphan*/  pp_context; int /*<<< orphan*/ * pp_mode; } ;
-typedef  TYPE_6__ filter_sys_t ;
-struct TYPE_18__ {int i_pitch; int /*<<< orphan*/ * p_pixels; } ;
+typedef TYPE_5__ filter_t ;
+struct TYPE_23__ {int lock; int pp_context; int * pp_mode; } ;
+typedef TYPE_6__ filter_sys_t ;
+struct TYPE_18__ {int i_pitch; int * p_pixels; } ;
 
-/* Variables and functions */
- TYPE_4__* CopyInfoAndRelease (TYPE_4__*,TYPE_4__*) ; 
- TYPE_4__* filter_NewPicture (TYPE_5__*) ; 
- int /*<<< orphan*/  picture_CopyPixels (TYPE_4__*,TYPE_4__*) ; 
- int /*<<< orphan*/  picture_Release (TYPE_4__*) ; 
- int /*<<< orphan*/  pp_postprocess (int /*<<< orphan*/  const**,int*,int /*<<< orphan*/ **,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ TYPE_4__* CopyInfoAndRelease (TYPE_4__*,TYPE_4__*) ;
+ TYPE_4__* filter_NewPicture (TYPE_5__*) ;
+ int picture_CopyPixels (TYPE_4__*,TYPE_4__*) ;
+ int picture_Release (TYPE_4__*) ;
+ int pp_postprocess (int const**,int*,int **,int*,int ,int ,int *,int ,int *,int ,int ) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 __attribute__((used)) static picture_t *PostprocPict( filter_t *p_filter, picture_t *p_pic )
 {
@@ -44,12 +44,12 @@ __attribute__((used)) static picture_t *PostprocPict( filter_t *p_filter, pictur
     if( !p_outpic )
     {
         picture_Release( p_pic );
-        return NULL;
+        return ((void*)0);
     }
 
-    /* Lock to prevent issues if pp_mode is changed */
+
     vlc_mutex_lock( &p_sys->lock );
-    if( p_sys->pp_mode != NULL )
+    if( p_sys->pp_mode != ((void*)0) )
     {
         const uint8_t *src[3];
         uint8_t *dst[3];
@@ -60,15 +60,15 @@ __attribute__((used)) static picture_t *PostprocPict( filter_t *p_filter, pictur
             src[i_plane] = p_pic->p[i_plane].p_pixels;
             dst[i_plane] = p_outpic->p[i_plane].p_pixels;
 
-            /* I'm not sure what happens if i_pitch != i_visible_pitch ...
-             * at least it shouldn't crash. */
+
+
             i_src_stride[i_plane] = p_pic->p[i_plane].i_pitch;
             i_dst_stride[i_plane] = p_outpic->p[i_plane].i_pitch;
         }
 
         pp_postprocess( src, i_src_stride, dst, i_dst_stride,
                         p_filter->fmt_in.video.i_width,
-                        p_filter->fmt_in.video.i_height, NULL, 0,
+                        p_filter->fmt_in.video.i_height, ((void*)0), 0,
                         p_sys->pp_mode, p_sys->pp_context, 0 );
     }
     else

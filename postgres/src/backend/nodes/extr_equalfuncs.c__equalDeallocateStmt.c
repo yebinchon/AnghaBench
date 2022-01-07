@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DeallocateStmt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMPARE_STRING_FIELD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  name ; 
+
+
+
+typedef int DeallocateStmt ;
+
+
+ int COMPARE_STRING_FIELD (int ) ;
+ int name ;
 
 __attribute__((used)) static bool
 _equalDeallocateStmt(const DeallocateStmt *a, const DeallocateStmt *b)
 {
-	COMPARE_STRING_FIELD(name);
+ COMPARE_STRING_FIELD(name);
 
-	return true;
+ return 1;
 }

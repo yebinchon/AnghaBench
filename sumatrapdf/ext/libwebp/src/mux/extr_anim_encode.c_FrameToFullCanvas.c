@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WebPPicture ;
-typedef  int /*<<< orphan*/  WebPMuxFrameInfo ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int WebPPicture ;
+typedef int WebPMuxFrameInfo ;
 struct TYPE_10__ {scalar_t__ size; } ;
-typedef  TYPE_2__ WebPMemoryWriter ;
-typedef  int /*<<< orphan*/  WebPData ;
+typedef TYPE_2__ WebPMemoryWriter ;
+typedef int WebPData ;
 struct TYPE_9__ {scalar_t__ allow_mixed; } ;
-struct TYPE_11__ {int /*<<< orphan*/  last_config_reversed_; TYPE_1__ options_; int /*<<< orphan*/  last_config_; int /*<<< orphan*/  curr_canvas_copy_; } ;
-typedef  TYPE_3__ WebPAnimEncoder ;
+struct TYPE_11__ {int last_config_reversed_; TYPE_1__ options_; int last_config_; int curr_canvas_copy_; } ;
+typedef TYPE_3__ WebPAnimEncoder ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DecodeFrameOntoCanvas (int /*<<< orphan*/  const* const,int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  EncodeFrame (int /*<<< orphan*/ *,int /*<<< orphan*/ * const,TYPE_2__*) ; 
- int /*<<< orphan*/  GetEncodedData (TYPE_2__*,int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  WebPMemoryWriterClear (TYPE_2__*) ; 
- int /*<<< orphan*/  WebPMemoryWriterInit (TYPE_2__*) ; 
+
+ int DecodeFrameOntoCanvas (int const* const,int * const) ;
+ int EncodeFrame (int *,int * const,TYPE_2__*) ;
+ int GetEncodedData (TYPE_2__*,int * const) ;
+ int WebPMemoryWriterClear (TYPE_2__*) ;
+ int WebPMemoryWriterInit (TYPE_2__*) ;
 
 __attribute__((used)) static int FrameToFullCanvas(WebPAnimEncoder* const enc,
                              const WebPMuxFrameInfo* const frame,

@@ -1,39 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int atoi (char*) ; 
- int* calloc (int,int) ; 
- int /*<<< orphan*/  engine_go (char*,char*,int,float,float,float,int,int) ; 
- int find_arg (int,char**,char*) ; 
- char* find_char_arg (int,char**,char*,int /*<<< orphan*/ ) ; 
- float find_float_arg (int,char**,char*,double) ; 
- int find_int_arg (int,char**,char*,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
- int gpu_index ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  self_go (char*,char*,char*,char*,int) ; 
- int /*<<< orphan*/  stderr ; 
- char* strchr (char*,char) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  test_go (char*,char*,int) ; 
- int /*<<< orphan*/  train_go (char*,char*,char*,int*,int,int) ; 
- int /*<<< orphan*/  valid_go (char*,char*,int,char*) ; 
+ int atoi (char*) ;
+ int* calloc (int,int) ;
+ int engine_go (char*,char*,int,float,float,float,int,int) ;
+ int find_arg (int,char**,char*) ;
+ char* find_char_arg (int,char**,char*,int ) ;
+ float find_float_arg (int,char**,char*,double) ;
+ int find_int_arg (int,char**,char*,int) ;
+ int fprintf (int ,char*,char*,char*) ;
+ int gpu_index ;
+ int printf (char*,char*) ;
+ int self_go (char*,char*,char*,char*,int) ;
+ int stderr ;
+ char* strchr (char*,char) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strlen (char*) ;
+ int test_go (char*,char*,int) ;
+ int train_go (char*,char*,char*,int*,int,int) ;
+ int valid_go (char*,char*,int,char*) ;
 
 void run_go(int argc, char **argv)
 {
-    //boards_go();
+
     if(argc < 4){
         fprintf(stderr, "usage: %s %s [train/test/valid] [cfg] [weights (optional)]\n", argv[0], argv[1]);
         return;

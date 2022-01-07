@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct hash_table_entry {unsigned int hash; void* ptr; } ;
 struct hash_table {unsigned int size; scalar_t__ nr; struct hash_table_entry* array; } ;
 
-/* Variables and functions */
- unsigned int alloc_nr (unsigned int) ; 
- struct hash_table_entry* calloc (int,unsigned int) ; 
- int /*<<< orphan*/  free (struct hash_table_entry*) ; 
- int /*<<< orphan*/  insert_hash_entry (unsigned int,void*,struct hash_table*) ; 
+
+ unsigned int alloc_nr (unsigned int) ;
+ struct hash_table_entry* calloc (int,unsigned int) ;
+ int free (struct hash_table_entry*) ;
+ int insert_hash_entry (unsigned int,void*,struct hash_table*) ;
 
 __attribute__((used)) static void grow_hash_table(struct hash_table *table)
 {

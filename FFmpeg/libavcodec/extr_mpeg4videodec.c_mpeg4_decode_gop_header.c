@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int time_base; int /*<<< orphan*/  avctx; } ;
-typedef  TYPE_1__ MpegEncContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  check_marker (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  show_bits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  skip_bits1 (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int time_base; int avctx; } ;
+typedef TYPE_1__ MpegEncContext ;
+typedef int GetBitContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_WARNING ;
+ int av_log (int ,int ,char*) ;
+ int check_marker (int ,int *,char*) ;
+ int get_bits (int *,int) ;
+ int show_bits (int *,int) ;
+ int skip_bits1 (int *) ;
 
 __attribute__((used)) static int mpeg4_decode_gop_header(MpegEncContext *s, GetBitContext *gb)
 {
@@ -33,7 +33,7 @@ __attribute__((used)) static int mpeg4_decode_gop_header(MpegEncContext *s, GetB
         return AVERROR_INVALIDDATA;
     }
 
-    hours   = get_bits(gb, 5);
+    hours = get_bits(gb, 5);
     minutes = get_bits(gb, 6);
     check_marker(s->avctx, gb, "in gop_header");
     seconds = get_bits(gb, 6);

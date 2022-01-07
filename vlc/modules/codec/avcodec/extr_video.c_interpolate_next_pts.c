@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_7__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ vlc_tick_t ;
+
+
+typedef struct TYPE_13__ TYPE_7__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef scalar_t__ vlc_tick_t ;
 struct TYPE_9__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ decoder_t ;
+typedef TYPE_1__ decoder_t ;
 struct TYPE_13__ {scalar_t__ i_divider_num; } ;
 struct TYPE_10__ {TYPE_7__ pts; TYPE_4__* p_context; } ;
-typedef  TYPE_2__ decoder_sys_t ;
+typedef TYPE_2__ decoder_sys_t ;
 struct TYPE_12__ {int ticks_per_frame; } ;
 struct TYPE_11__ {scalar_t__ repeat_pict; } ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVCodecContext ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- scalar_t__ VLC_TICK_INVALID ; 
- scalar_t__ date_Get (TYPE_7__*) ; 
- scalar_t__ date_Increment (TYPE_7__*,scalar_t__) ; 
+
+ scalar_t__ VLC_TICK_INVALID ;
+ scalar_t__ date_Get (TYPE_7__*) ;
+ scalar_t__ date_Increment (TYPE_7__*,scalar_t__) ;
 
 __attribute__((used)) static vlc_tick_t interpolate_next_pts( decoder_t *p_dec, AVFrame *frame )
 {
@@ -44,6 +44,6 @@ __attribute__((used)) static vlc_tick_t interpolate_next_pts( decoder_t *p_dec, 
     if( i_tick <= 0 )
         i_tick = 1;
 
-    /* interpolate the next PTS */
+
     return date_Increment( &p_sys->pts, i_tick + frame->repeat_pict );
 }

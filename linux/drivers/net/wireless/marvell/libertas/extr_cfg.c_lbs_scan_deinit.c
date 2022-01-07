@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lbs_private {int /*<<< orphan*/  scan_work; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cancel_delayed_work_sync (int /*<<< orphan*/ *) ; 
+
+
+
+struct lbs_private {int scan_work; } ;
+
+
+ int cancel_delayed_work_sync (int *) ;
 
 void lbs_scan_deinit(struct lbs_private *priv)
 {
-	cancel_delayed_work_sync(&priv->scan_work);
+ cancel_delayed_work_sync(&priv->scan_work);
 }

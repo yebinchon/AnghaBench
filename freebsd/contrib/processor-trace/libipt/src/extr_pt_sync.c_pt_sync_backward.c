@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint64_t ;
-struct pt_config {int /*<<< orphan*/ * end; int /*<<< orphan*/ * begin; } ;
 
-/* Variables and functions */
- scalar_t__* psb_pattern ; 
- int /*<<< orphan*/ * pt_find_psb (int /*<<< orphan*/  const*,struct pt_config const*) ; 
- int /*<<< orphan*/  pt_sync_within_bounds (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int pte_eos ; 
- int pte_internal ; 
- int /*<<< orphan*/ * truncate (int /*<<< orphan*/  const*,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint64_t ;
+struct pt_config {int * end; int * begin; } ;
+
+
+ scalar_t__* psb_pattern ;
+ int * pt_find_psb (int const*,struct pt_config const*) ;
+ int pt_sync_within_bounds (int const*,int const*,int const*) ;
+ int pte_eos ;
+ int pte_internal ;
+ int * truncate (int const*,int) ;
 
 int pt_sync_backward(const uint8_t **sync, const uint8_t *pos,
-		    const struct pt_config *config)
+      const struct pt_config *config)
 {
-	const uint8_t *begin, *end;
+ const uint8_t *begin, *end;
 
-	if (!sync || !pos || !config)
-		return -pte_internal;
+ if (!sync || !pos || !config)
+  return -pte_internal;
 
-	begin = config->begin;
-	end = config->end;
+ begin = config->begin;
+ end = config->end;
 
-	if (!pt_sync_within_bounds(pos, begin, end))
-		return -pte_internal;
+ if (!pt_sync_within_bounds(pos, begin, end))
+  return -pte_internal;
 
-	/* We search for a full 64bit word. It's OK to skip the current one. */
-	pos = truncate(pos, sizeof(*psb_pattern));
 
-	/* Search for the psb payload pattern in the buffer. */
-	for (;;) {
-		const uint8_t *next = pos;
-		uint64_t val;
+ pos = truncate(pos, sizeof(*psb_pattern));
 
-		pos -= sizeof(uint64_t);
-		if (pos < begin)
-			return -pte_eos;
 
-		val = * (const uint64_t *) pos;
+ for (;;) {
+  const uint8_t *next = pos;
+  uint64_t val;
 
-		if ((val != psb_pattern[0]) && (val != psb_pattern[1]))
-			continue;
+  pos -= sizeof(uint64_t);
+  if (pos < begin)
+   return -pte_eos;
 
-		/* We found a 64bit word's worth of psb payload pattern. */
-		next = pt_find_psb(next, config);
-		if (!next)
-			continue;
+  val = * (const uint64_t *) pos;
 
-		*sync = next;
-		return 0;
-	}
+  if ((val != psb_pattern[0]) && (val != psb_pattern[1]))
+   continue;
+
+
+  next = pt_find_psb(next, config);
+  if (!next)
+   continue;
+
+  *sync = next;
+  return 0;
+ }
 }

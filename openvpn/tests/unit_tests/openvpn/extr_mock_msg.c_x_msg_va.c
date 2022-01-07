@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
 
-/* Variables and functions */
- unsigned int const M_FATAL ; 
- int fatal_error_triggered ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  vprintf (char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int va_list ;
+
+
+ unsigned int const M_FATAL ;
+ int fatal_error_triggered ;
+ int printf (char*) ;
+ int vprintf (char const*,int ) ;
 
 void
 x_msg_va(const unsigned int flags, const char *format,
@@ -24,7 +24,7 @@ x_msg_va(const unsigned int flags, const char *format,
 {
     if (flags & M_FATAL)
     {
-        fatal_error_triggered = true;
+        fatal_error_triggered = 1;
         printf("FATAL ERROR:");
     }
     vprintf(format, arglist);

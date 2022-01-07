@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ads7846 {int disabled; int /*<<< orphan*/  lock; int /*<<< orphan*/  suspended; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __ads7846_disable (struct ads7846*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct ads7846 {int disabled; int lock; int suspended; } ;
+
+
+ int __ads7846_disable (struct ads7846*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 __attribute__((used)) static void ads7846_disable(struct ads7846 *ts)
 {
-	mutex_lock(&ts->lock);
+ mutex_lock(&ts->lock);
 
-	if (!ts->disabled) {
+ if (!ts->disabled) {
 
-		if  (!ts->suspended)
-			__ads7846_disable(ts);
+  if (!ts->suspended)
+   __ads7846_disable(ts);
 
-		ts->disabled = true;
-	}
+  ts->disabled = 1;
+ }
 
-	mutex_unlock(&ts->lock);
+ mutex_unlock(&ts->lock);
 }

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ipc_namespace {int /*<<< orphan*/  mq_mnt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kern_unmount (int /*<<< orphan*/ ) ; 
+
+
+
+struct ipc_namespace {int mq_mnt; } ;
+
+
+ int kern_unmount (int ) ;
 
 void mq_put_mnt(struct ipc_namespace *ns)
 {
-	kern_unmount(ns->mq_mnt);
+ kern_unmount(ns->mq_mnt);
 }

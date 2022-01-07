@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  init_signal_tables () ; 
- int /*<<< orphan*/ * signal_names ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int sys_nsig ; 
- int /*<<< orphan*/ ** sys_siglist ; 
+ int init_signal_tables () ;
+ int * signal_names ;
+ int sprintf (char*,char*,int) ;
+ int sys_nsig ;
+ int ** sys_siglist ;
 
 const char *
 strsignal (int signo)
@@ -24,31 +16,31 @@ strsignal (int signo)
   const char *msg;
   static char buf[32];
 
-#ifndef HAVE_SYS_SIGLIST
 
-  if (signal_names == NULL)
+
+  if (signal_names == ((void*)0))
     {
       init_signal_tables ();
     }
 
-#endif
+
 
   if ((signo < 0) || (signo >= sys_nsig))
     {
-      /* Out of range, just return NULL */
-      msg = NULL;
+
+      msg = ((void*)0);
     }
-  else if ((sys_siglist == NULL) || (sys_siglist[signo] == NULL))
+  else if ((sys_siglist == ((void*)0)) || (sys_siglist[signo] == ((void*)0)))
     {
-      /* In range, but no sys_siglist or no entry at this index. */
+
       sprintf (buf, "Signal %d", signo);
       msg = (const char *) buf;
     }
   else
     {
-      /* In range, and a valid message.  Just return the message. */
+
       msg = (const char *) sys_siglist[signo];
     }
-  
+
   return (msg);
 }

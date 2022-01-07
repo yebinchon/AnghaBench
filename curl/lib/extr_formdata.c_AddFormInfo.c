@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct FormInfo {int dummy; } ;
-struct TYPE_5__ {char* value; char* contenttype; struct TYPE_5__* more; int /*<<< orphan*/  flags; } ;
-typedef  TYPE_1__ FormInfo ;
+struct TYPE_5__ {char* value; char* contenttype; struct TYPE_5__* more; int flags; } ;
+typedef TYPE_1__ FormInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HTTPPOST_FILENAME ; 
- TYPE_1__* calloc (int,int) ; 
+
+ int HTTPPOST_FILENAME ;
+ TYPE_1__* calloc (int,int) ;
 
 __attribute__((used)) static FormInfo * AddFormInfo(char *value,
                               char *contenttype,
@@ -33,13 +33,13 @@ __attribute__((used)) static FormInfo * AddFormInfo(char *value,
     form_info->flags = HTTPPOST_FILENAME;
   }
   else
-    return NULL;
+    return ((void*)0);
 
   if(parent_form_info) {
-    /* now, point our 'more' to the original 'more' */
+
     form_info->more = parent_form_info->more;
 
-    /* then move the original 'more' to point to ourselves */
+
     parent_form_info->more = form_info;
   }
 

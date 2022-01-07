@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_6__ ;
-typedef  struct TYPE_23__   TYPE_5__ ;
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum AVHWDeviceType { ____Placeholder_AVHWDeviceType } AVHWDeviceType ;
+
+
+typedef struct TYPE_24__ TYPE_6__ ;
+typedef struct TYPE_23__ TYPE_5__ ;
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
+typedef enum AVHWDeviceType { ____Placeholder_AVHWDeviceType } AVHWDeviceType ;
 struct TYPE_24__ {scalar_t__ data; } ;
 struct TYPE_23__ {scalar_t__ extra_hw_frames; TYPE_6__* hw_device_ctx; TYPE_4__** inputs; TYPE_1__* priv; } ;
-struct TYPE_22__ {scalar_t__ format; int /*<<< orphan*/  h; int /*<<< orphan*/  w; TYPE_6__* hw_frames_ctx; TYPE_5__* src; } ;
-struct TYPE_21__ {scalar_t__ format; scalar_t__ sw_format; scalar_t__ initial_pool_size; int /*<<< orphan*/  height; int /*<<< orphan*/  width; TYPE_6__* device_ref; } ;
+struct TYPE_22__ {scalar_t__ format; int h; int w; TYPE_6__* hw_frames_ctx; TYPE_5__* src; } ;
+struct TYPE_21__ {scalar_t__ format; scalar_t__ sw_format; scalar_t__ initial_pool_size; int height; int width; TYPE_6__* device_ref; } ;
 struct TYPE_20__ {int flags; } ;
-struct TYPE_19__ {int reverse; TYPE_6__* hwframes_ref; int /*<<< orphan*/  mode; scalar_t__ derive_device_type; } ;
-typedef  TYPE_1__ HWMapContext ;
-typedef  TYPE_2__ AVPixFmtDescriptor ;
-typedef  TYPE_3__ AVHWFramesContext ;
-typedef  TYPE_4__ AVFilterLink ;
-typedef  TYPE_5__ AVFilterContext ;
-typedef  TYPE_6__ AVBufferRef ;
+struct TYPE_19__ {int reverse; TYPE_6__* hwframes_ref; int mode; scalar_t__ derive_device_type; } ;
+typedef TYPE_1__ HWMapContext ;
+typedef TYPE_2__ AVPixFmtDescriptor ;
+typedef TYPE_3__ AVHWFramesContext ;
+typedef TYPE_4__ AVFilterLink ;
+typedef TYPE_5__ AVFilterContext ;
+typedef TYPE_6__ AVBufferRef ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AV_HWDEVICE_TYPE_NONE ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int AV_PIX_FMT_FLAG_HWACCEL ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- void* av_buffer_ref (TYPE_6__*) ; 
- int /*<<< orphan*/  av_buffer_unref (TYPE_6__**) ; 
- int /*<<< orphan*/  av_get_pix_fmt_name (scalar_t__) ; 
- int av_hwdevice_ctx_create_derived (TYPE_6__**,int,TYPE_6__*,int /*<<< orphan*/ ) ; 
- int av_hwdevice_find_type_by_name (scalar_t__) ; 
- void* av_hwframe_ctx_alloc (TYPE_6__*) ; 
- int av_hwframe_ctx_create_derived (TYPE_6__**,scalar_t__,TYPE_6__*,TYPE_6__*,int /*<<< orphan*/ ) ; 
- int av_hwframe_ctx_init (TYPE_6__*) ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*,...) ; 
- TYPE_2__* av_pix_fmt_desc_get (scalar_t__) ; 
+
+ int AVERROR (int ) ;
+ int AV_HWDEVICE_TYPE_NONE ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int AV_PIX_FMT_FLAG_HWACCEL ;
+ int EINVAL ;
+ int ENOMEM ;
+ void* av_buffer_ref (TYPE_6__*) ;
+ int av_buffer_unref (TYPE_6__**) ;
+ int av_get_pix_fmt_name (scalar_t__) ;
+ int av_hwdevice_ctx_create_derived (TYPE_6__**,int,TYPE_6__*,int ) ;
+ int av_hwdevice_find_type_by_name (scalar_t__) ;
+ void* av_hwframe_ctx_alloc (TYPE_6__*) ;
+ int av_hwframe_ctx_create_derived (TYPE_6__**,scalar_t__,TYPE_6__*,TYPE_6__*,int ) ;
+ int av_hwframe_ctx_init (TYPE_6__*) ;
+ int av_log (TYPE_5__*,int ,char*,...) ;
+ TYPE_2__* av_pix_fmt_desc_get (scalar_t__) ;
 
 __attribute__((used)) static int hwmap_config_output(AVFilterLink *outlink)
 {
     AVFilterContext *avctx = outlink->src;
-    HWMapContext      *ctx = avctx->priv;
-    AVFilterLink   *inlink = avctx->inputs[0];
+    HWMapContext *ctx = avctx->priv;
+    AVFilterLink *inlink = avctx->inputs[0];
     AVHWFramesContext *hwfc;
     AVBufferRef *device;
     const AVPixFmtDescriptor *desc;
@@ -100,8 +100,8 @@ __attribute__((used)) static int hwmap_config_output(AVFilterLink *outlink)
         if (inlink->format == hwfc->format &&
             (desc->flags & AV_PIX_FMT_FLAG_HWACCEL) &&
             !ctx->reverse) {
-            // Map between two hardware formats (including the case of
-            // undoing an existing mapping).
+
+
 
             if (!device) {
                 av_log(avctx, AV_LOG_ERROR, "A device reference is "
@@ -124,10 +124,10 @@ __attribute__((used)) static int hwmap_config_output(AVFilterLink *outlink)
         } else if (inlink->format == hwfc->format &&
                    (desc->flags & AV_PIX_FMT_FLAG_HWACCEL) &&
                    ctx->reverse) {
-            // Map between two hardware formats, but do it in reverse.
-            // Make a new hwframe context for the target type, and then
-            // overwrite the input hwframe context with a derived context
-            // mapped from that back to the source type.
+
+
+
+
             AVBufferRef *source;
             AVHWFramesContext *frames;
 
@@ -138,10 +138,10 @@ __attribute__((used)) static int hwmap_config_output(AVFilterLink *outlink)
             }
             frames = (AVHWFramesContext*)ctx->hwframes_ref->data;
 
-            frames->format    = outlink->format;
+            frames->format = outlink->format;
             frames->sw_format = hwfc->sw_format;
-            frames->width     = hwfc->width;
-            frames->height    = hwfc->height;
+            frames->width = hwfc->width;
+            frames->height = hwfc->height;
 
             if (avctx->extra_hw_frames >= 0)
                 frames->initial_pool_size = 2 + avctx->extra_hw_frames;
@@ -164,20 +164,20 @@ __attribute__((used)) static int hwmap_config_output(AVFilterLink *outlink)
                 goto fail;
             }
 
-            // Here is the naughty bit.  This overwriting changes what
-            // ff_get_video_buffer() in the previous filter returns -
-            // it will now give a frame allocated here mapped back to
-            // the format it expects.  If there were any additional
-            // constraints on the output frames there then this may
-            // break nastily.
+
+
+
+
+
+
             av_buffer_unref(&inlink->hw_frames_ctx);
             inlink->hw_frames_ctx = source;
 
         } else if ((outlink->format == hwfc->format &&
-                    inlink->format  == hwfc->sw_format) ||
+                    inlink->format == hwfc->sw_format) ||
                    inlink->format == hwfc->format) {
-            // Map from a hardware format to a software format, or
-            // undo an existing such mapping.
+
+
 
             ctx->hwframes_ref = av_buffer_ref(inlink->hw_frames_ctx);
             if (!ctx->hwframes_ref) {
@@ -186,7 +186,7 @@ __attribute__((used)) static int hwmap_config_output(AVFilterLink *outlink)
             }
 
         } else {
-            // Non-matching formats - not supported.
+
 
             av_log(avctx, AV_LOG_ERROR, "Unsupported formats for "
                    "hwmap: from %s (%s) to %s.\n",
@@ -197,10 +197,10 @@ __attribute__((used)) static int hwmap_config_output(AVFilterLink *outlink)
             goto fail;
         }
     } else if (avctx->hw_device_ctx) {
-        // Map from a software format to a hardware format.  This
-        // creates a new hwframe context like hwupload, but then
-        // returns frames mapped from that to the previous link in
-        // order to fill them without an additional copy.
+
+
+
+
 
         if (!device) {
             av_log(avctx, AV_LOG_ERROR, "A device reference is "
@@ -219,10 +219,10 @@ __attribute__((used)) static int hwmap_config_output(AVFilterLink *outlink)
         }
         hwfc = (AVHWFramesContext*)ctx->hwframes_ref->data;
 
-        hwfc->format    = outlink->format;
+        hwfc->format = outlink->format;
         hwfc->sw_format = inlink->format;
-        hwfc->width     = inlink->w;
-        hwfc->height    = inlink->h;
+        hwfc->width = inlink->w;
+        hwfc->height = inlink->h;
 
         if (avctx->extra_hw_frames >= 0)
             hwfc->initial_pool_size = 2 + avctx->extra_hw_frames;

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vdbe ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OP_Halt ; 
- int /*<<< orphan*/  OP_IfPos ; 
- int /*<<< orphan*/  OP_ResultRow ; 
- int /*<<< orphan*/  VdbeCoverage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp0 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int sqlite3VdbeAddOp3 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,scalar_t__,int) ; 
- scalar_t__ sqlite3VdbeCurrentAddr (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int Vdbe ;
+
+
+ int OP_Halt ;
+ int OP_IfPos ;
+ int OP_ResultRow ;
+ int VdbeCoverage (int *) ;
+ int sqlite3VdbeAddOp0 (int *,int ) ;
+ int sqlite3VdbeAddOp2 (int *,int ,int,int) ;
+ int sqlite3VdbeAddOp3 (int *,int ,int,scalar_t__,int) ;
+ scalar_t__ sqlite3VdbeCurrentAddr (int *) ;
 
 __attribute__((used)) static int integrityCheckResultRow(Vdbe *v){
   int addr;

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {uintptr_t index; int /*<<< orphan*/  code; } ;
-typedef  TYPE_1__ ngx_stream_script_var_code_t ;
-struct TYPE_6__ {int /*<<< orphan*/  main; int /*<<< orphan*/ * values; int /*<<< orphan*/ * lengths; int /*<<< orphan*/ * flushes; int /*<<< orphan*/  cf; } ;
-typedef  TYPE_2__ ngx_stream_script_compile_t ;
-typedef  int /*<<< orphan*/  ngx_stream_script_code_pt ;
-typedef  int /*<<< orphan*/  ngx_str_t ;
-typedef  scalar_t__ ngx_int_t ;
 
-/* Variables and functions */
- scalar_t__ NGX_ERROR ; 
- scalar_t__ NGX_OK ; 
- scalar_t__* ngx_array_push (int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_stream_get_variable_index (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_1__* ngx_stream_script_add_code (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_stream_script_copy_var_code ; 
- scalar_t__ ngx_stream_script_copy_var_len_code ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {uintptr_t index; int code; } ;
+typedef TYPE_1__ ngx_stream_script_var_code_t ;
+struct TYPE_6__ {int main; int * values; int * lengths; int * flushes; int cf; } ;
+typedef TYPE_2__ ngx_stream_script_compile_t ;
+typedef int ngx_stream_script_code_pt ;
+typedef int ngx_str_t ;
+typedef scalar_t__ ngx_int_t ;
+
+
+ scalar_t__ NGX_ERROR ;
+ scalar_t__ NGX_OK ;
+ scalar_t__* ngx_array_push (int ) ;
+ scalar_t__ ngx_stream_get_variable_index (int ,int *) ;
+ TYPE_1__* ngx_stream_script_add_code (int ,int,int *) ;
+ int ngx_stream_script_copy_var_code ;
+ scalar_t__ ngx_stream_script_copy_var_len_code ;
 
 __attribute__((used)) static ngx_int_t
 ngx_stream_script_add_var_code(ngx_stream_script_compile_t *sc, ngx_str_t *name)
 {
-    ngx_int_t                      index, *p;
-    ngx_stream_script_var_code_t  *code;
+    ngx_int_t index, *p;
+    ngx_stream_script_var_code_t *code;
 
     index = ngx_stream_get_variable_index(sc->cf, name);
 
@@ -43,7 +43,7 @@ ngx_stream_script_add_var_code(ngx_stream_script_compile_t *sc, ngx_str_t *name)
 
     if (sc->flushes) {
         p = ngx_array_push(*sc->flushes);
-        if (p == NULL) {
+        if (p == ((void*)0)) {
             return NGX_ERROR;
         }
 
@@ -52,8 +52,8 @@ ngx_stream_script_add_var_code(ngx_stream_script_compile_t *sc, ngx_str_t *name)
 
     code = ngx_stream_script_add_code(*sc->lengths,
                                       sizeof(ngx_stream_script_var_code_t),
-                                      NULL);
-    if (code == NULL) {
+                                      ((void*)0));
+    if (code == ((void*)0)) {
         return NGX_ERROR;
     }
 
@@ -64,7 +64,7 @@ ngx_stream_script_add_var_code(ngx_stream_script_compile_t *sc, ngx_str_t *name)
     code = ngx_stream_script_add_code(*sc->values,
                                       sizeof(ngx_stream_script_var_code_t),
                                       &sc->main);
-    if (code == NULL) {
+    if (code == ((void*)0)) {
         return NGX_ERROR;
     }
 

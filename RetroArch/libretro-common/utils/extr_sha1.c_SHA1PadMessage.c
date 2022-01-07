@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int Message_Block_Index; int* Message_Block; int Length_High; int Length_Low; } ;
-typedef  TYPE_1__ SHA1Context ;
+typedef TYPE_1__ SHA1Context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SHA1ProcessMessageBlock (TYPE_1__*) ; 
+
+ int SHA1ProcessMessageBlock (TYPE_1__*) ;
 
 void SHA1PadMessage(SHA1Context *context)
 {
-   /*
-    *  Check to see if the current message block is too small to hold
-    *  the initial padding bits and length.  If so, we will pad the
-    *  block, process it, and then continue padding into a second
-    *  block.
-    */
+
+
+
+
+
+
    if (context->Message_Block_Index > 55)
    {
       context->Message_Block[context->Message_Block_Index++] = 0x80;
@@ -43,9 +43,9 @@ void SHA1PadMessage(SHA1Context *context)
          context->Message_Block[context->Message_Block_Index++] = 0;
    }
 
-   /*
-    *  Store the message length as the last 8 octets
-    */
+
+
+
    context->Message_Block[56] = (context->Length_High >> 24) & 0xFF;
    context->Message_Block[57] = (context->Length_High >> 16) & 0xFF;
    context->Message_Block[58] = (context->Length_High >> 8) & 0xFF;

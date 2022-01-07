@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WSServer ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int WSServer ;
 struct TYPE_2__ {scalar_t__ strict; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  handle_fixed_fifo (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  handle_strict_fifo (int /*<<< orphan*/ *) ; 
- TYPE_1__ wsconfig ; 
+
+ int handle_fixed_fifo (int *) ;
+ int handle_strict_fifo (int *) ;
+ TYPE_1__ wsconfig ;
 
 __attribute__((used)) static void
 handle_fifo (WSServer * server)

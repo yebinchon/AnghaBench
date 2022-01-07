@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-struct TYPE_3__ {int IsHMac; scalar_t__ Md; int /*<<< orphan*/  Ctx; } ;
-typedef  TYPE_1__ MD ;
-typedef  int /*<<< orphan*/  EVP_MD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Debug (char*,int /*<<< orphan*/ ) ; 
- int HMAC_Init_ex (int /*<<< orphan*/ ,void*,scalar_t__,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OpenSSL_Error () ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+struct TYPE_3__ {int IsHMac; scalar_t__ Md; int Ctx; } ;
+typedef TYPE_1__ MD ;
+typedef int EVP_MD ;
+
+
+ int Debug (char*,int ) ;
+ int HMAC_Init_ex (int ,void*,scalar_t__,int const*,int *) ;
+ int OpenSSL_Error () ;
 
 bool SetMdKey(MD *md, void *key, UINT key_size)
 {
-	// Validate arguments
-	if (md == NULL || md->IsHMac == false || key == NULL || key_size == 0)
-	{
-		return false;
-	}
 
-	if (HMAC_Init_ex(md->Ctx, key, key_size, (const EVP_MD *)md->Md, NULL) == false)
-	{
-		Debug("SetMdKey(): HMAC_Init_ex() failed with error: %s\n", OpenSSL_Error());
-		return false;
-	}
+ if (md == ((void*)0) || md->IsHMac == 0 || key == ((void*)0) || key_size == 0)
+ {
+  return 0;
+ }
 
-	return true;
+ if (HMAC_Init_ex(md->Ctx, key, key_size, (const EVP_MD *)md->Md, ((void*)0)) == 0)
+ {
+  Debug("SetMdKey(): HMAC_Init_ex() failed with error: %s\n", OpenSSL_Error());
+  return 0;
+ }
+
+ return 1;
 }

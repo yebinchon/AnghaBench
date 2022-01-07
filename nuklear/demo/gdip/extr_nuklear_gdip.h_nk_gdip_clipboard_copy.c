@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ wchar_t ;
-typedef  int /*<<< orphan*/  nk_handle ;
-typedef  scalar_t__ HGLOBAL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CF_UNICODETEXT ; 
- int /*<<< orphan*/  CP_UTF8 ; 
- int /*<<< orphan*/  CloseClipboard () ; 
- int /*<<< orphan*/  GMEM_MOVEABLE ; 
- scalar_t__ GlobalAlloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  GlobalFree (scalar_t__) ; 
- scalar_t__ GlobalLock (scalar_t__) ; 
- int /*<<< orphan*/  GlobalUnlock (scalar_t__) ; 
- int MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int,scalar_t__*,int) ; 
- int /*<<< orphan*/  OpenClipboard (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetClipboardData (int /*<<< orphan*/ ,scalar_t__) ; 
+
+
+
+typedef scalar_t__ wchar_t ;
+typedef int nk_handle ;
+typedef scalar_t__ HGLOBAL ;
+
+
+ int CF_UNICODETEXT ;
+ int CP_UTF8 ;
+ int CloseClipboard () ;
+ int GMEM_MOVEABLE ;
+ scalar_t__ GlobalAlloc (int ,int) ;
+ int GlobalFree (scalar_t__) ;
+ scalar_t__ GlobalLock (scalar_t__) ;
+ int GlobalUnlock (scalar_t__) ;
+ int MultiByteToWideChar (int ,int ,char const*,int,scalar_t__*,int) ;
+ int OpenClipboard (int *) ;
+ int SetClipboardData (int ,scalar_t__) ;
 
 __attribute__((used)) static void
 nk_gdip_clipboard_copy(nk_handle usr, const char *text, int len)
@@ -35,10 +35,10 @@ nk_gdip_clipboard_copy(nk_handle usr, const char *text, int len)
     int wsize;
     (void)usr;
 
-    if (!OpenClipboard(NULL))
+    if (!OpenClipboard(((void*)0)))
         return;
 
-    wsize = MultiByteToWideChar(CP_UTF8, 0, text, len, NULL, 0);
+    wsize = MultiByteToWideChar(CP_UTF8, 0, text, len, ((void*)0), 0);
     if (!wsize) {
         CloseClipboard();
         return;

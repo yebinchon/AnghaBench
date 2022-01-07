@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t u_char ;
-typedef  size_t ngx_uint_t ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef size_t u_char ;
+typedef size_t ngx_uint_t ;
 struct TYPE_8__ {size_t min_match_len; size_t max_match_len; size_t* shift; size_t* index; } ;
-typedef  TYPE_2__ ngx_http_sub_tables_t ;
+typedef TYPE_2__ ngx_http_sub_tables_t ;
 struct TYPE_7__ {size_t len; size_t* data; } ;
 struct TYPE_9__ {TYPE_1__ match; } ;
-typedef  TYPE_3__ ngx_http_sub_match_t ;
+typedef TYPE_3__ ngx_http_sub_match_t ;
 
-/* Variables and functions */
- int ngx_http_sub_cmp_index ; 
- int /*<<< orphan*/  ngx_http_sub_cmp_matches ; 
- size_t ngx_max (size_t,size_t) ; 
- int /*<<< orphan*/  ngx_memset (size_t*,size_t,int) ; 
- void* ngx_min (size_t,size_t) ; 
- int /*<<< orphan*/  ngx_sort (TYPE_3__*,size_t,int,int /*<<< orphan*/ ) ; 
+
+ int ngx_http_sub_cmp_index ;
+ int ngx_http_sub_cmp_matches ;
+ size_t ngx_max (size_t,size_t) ;
+ int ngx_memset (size_t*,size_t,int) ;
+ void* ngx_min (size_t,size_t) ;
+ int ngx_sort (TYPE_3__*,size_t,int,int ) ;
 
 __attribute__((used)) static void
 ngx_http_sub_init_tables(ngx_http_sub_tables_t *tables,
     ngx_http_sub_match_t *match, ngx_uint_t n)
 {
-    u_char      c;
-    ngx_uint_t  i, j, min, max, ch;
+    u_char c;
+    ngx_uint_t i, j, min, max, ch;
 
     min = match[0].match.len;
     max = match[0].match.len;

@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  cpu_sleep () ; 
- int /*<<< orphan*/  local_irq_disable () ; 
+ int cpu_sleep () ;
+ int local_irq_disable () ;
 
 void machine_halt(void)
 {
-	local_irq_disable();
+ local_irq_disable();
 
-	while (1)
-		cpu_sleep();
+ while (1)
+  cpu_sleep();
 }

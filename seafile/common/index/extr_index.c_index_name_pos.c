@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct index_state {int cache_nr; struct cache_entry** cache; } ;
-struct cache_entry {int /*<<< orphan*/  ce_flags; int /*<<< orphan*/  name; } ;
+struct cache_entry {int ce_flags; int name; } ;
 
-/* Variables and functions */
- int cache_name_compare (char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int cache_name_compare (char const*,int,int ,int ) ;
 
 int index_name_pos(const struct index_state *istate, const char *name, int namelen)
 {

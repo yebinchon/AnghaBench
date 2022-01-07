@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {char* doc; int rank; int /*<<< orphan*/ * data; int /*<<< orphan*/  type; int /*<<< orphan*/  name; } ;
-struct TYPE_7__ {int /*<<< orphan*/  type; } ;
-typedef  int Py_ssize_t ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  TYPE_1__ PyArray_Descr ;
-typedef  TYPE_2__ FortranDataDef ;
 
-/* Variables and functions */
- TYPE_1__* PyArray_DescrFromType (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * PyErr_NoMemory () ; 
- int /*<<< orphan*/  PyMem_Free (char*) ; 
- scalar_t__ PyMem_Malloc (int) ; 
- int PyOS_snprintf (char*,int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * PyString_FromStringAndSize (char*,int) ; 
- int /*<<< orphan*/ * PyUnicode_FromStringAndSize (char*,int) ; 
- int /*<<< orphan*/  Py_DECREF (TYPE_1__*) ; 
- int format_def (char*,int,TYPE_2__) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int strlen (char*) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {char* doc; int rank; int * data; int type; int name; } ;
+struct TYPE_7__ {int type; } ;
+typedef int Py_ssize_t ;
+typedef int PyObject ;
+typedef TYPE_1__ PyArray_Descr ;
+typedef TYPE_2__ FortranDataDef ;
+
+
+ TYPE_1__* PyArray_DescrFromType (int ) ;
+ int * PyErr_NoMemory () ;
+ int PyMem_Free (char*) ;
+ scalar_t__ PyMem_Malloc (int) ;
+ int PyOS_snprintf (char*,int,char*,int ) ;
+ int * PyString_FromStringAndSize (char*,int) ;
+ int * PyUnicode_FromStringAndSize (char*,int) ;
+ int Py_DECREF (TYPE_1__*) ;
+ int format_def (char*,int,TYPE_2__) ;
+ int fprintf (int ,char*,int,int) ;
+ int memcpy (char*,char*,int) ;
+ int stderr ;
+ int strlen (char*) ;
 
 __attribute__((used)) static PyObject *
 fortran_doc(FortranDataDef def)
 {
     char *buf, *p;
-    PyObject *s = NULL;
+    PyObject *s = ((void*)0);
     Py_ssize_t n, origsize, size = 100;
 
-    if (def.doc != NULL) {
+    if (def.doc != ((void*)0)) {
         size += strlen(def.doc);
     }
     origsize = size;
     buf = p = (char *)PyMem_Malloc(size);
-    if (buf == NULL) {
+    if (buf == ((void*)0)) {
         return PyErr_NoMemory();
     }
 
@@ -79,7 +79,7 @@ fortran_doc(FortranDataDef def)
         p += n;
         size -= n;
 
-        if (def.data == NULL) {
+        if (def.data == ((void*)0)) {
             n = format_def(p, size, def) == -1;
             if (n < 0) {
                 goto fail;
@@ -111,12 +111,12 @@ fortran_doc(FortranDataDef def)
     *p++ = '\n';
     size--;
 
-    /* p now points one beyond the last character of the string in buf */
-#if PY_VERSION_HEX >= 0x03000000
-    s = PyUnicode_FromStringAndSize(buf, p - buf);
-#else
+
+
+
+
     s = PyString_FromStringAndSize(buf, p - buf);
-#endif
+
 
     PyMem_Free(buf);
     return s;
@@ -126,5 +126,5 @@ fortran_doc(FortranDataDef def)
                     " too long docstring required, increase size\n",
             p - buf, origsize);
     PyMem_Free(buf);
-    return NULL;
+    return ((void*)0);
 }

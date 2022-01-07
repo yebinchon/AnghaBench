@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  ctx; int /*<<< orphan*/  AuthInfo; } ;
-typedef  int SECURITY_STATUS ;
-typedef  TYPE_1__ RpcConnection ;
-typedef  int /*<<< orphan*/  RPC_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RPC_S_CANNOT_SUPPORT ; 
- int /*<<< orphan*/  RPC_S_NO_CONTEXT_AVAILABLE ; 
- int /*<<< orphan*/  RPC_S_OK ; 
- int /*<<< orphan*/  RPC_S_SEC_PKG_ERROR ; 
- int RevertSecurityContext (int /*<<< orphan*/ *) ; 
-#define  SEC_E_NO_IMPERSONATION 130 
-#define  SEC_E_OK 129 
-#define  SEC_E_UNSUPPORTED_FUNCTION 128 
- int /*<<< orphan*/  SecIsValidHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__*) ; 
- int /*<<< orphan*/  WARN (char*,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int ctx; int AuthInfo; } ;
+typedef int SECURITY_STATUS ;
+typedef TYPE_1__ RpcConnection ;
+typedef int RPC_STATUS ;
+
+
+ int RPC_S_CANNOT_SUPPORT ;
+ int RPC_S_NO_CONTEXT_AVAILABLE ;
+ int RPC_S_OK ;
+ int RPC_S_SEC_PKG_ERROR ;
+ int RevertSecurityContext (int *) ;
+
+
+
+ int SecIsValidHandle (int *) ;
+ int TRACE (char*,TYPE_1__*) ;
+ int WARN (char*,int) ;
 
 RPC_STATUS RPCRT4_default_revert_to_self(RpcConnection *conn)
 {
@@ -38,15 +38,15 @@ RPC_STATUS RPCRT4_default_revert_to_self(RpcConnection *conn)
     if (!conn->AuthInfo || !SecIsValidHandle(&conn->ctx))
         return RPC_S_NO_CONTEXT_AVAILABLE;
     sec_status = RevertSecurityContext(&conn->ctx);
-    if (sec_status != SEC_E_OK)
+    if (sec_status != 129)
         WARN("RevertSecurityContext returned 0x%08x\n", sec_status);
     switch (sec_status)
     {
-    case SEC_E_UNSUPPORTED_FUNCTION:
+    case 128:
         return RPC_S_CANNOT_SUPPORT;
-    case SEC_E_NO_IMPERSONATION:
+    case 130:
         return RPC_S_NO_CONTEXT_AVAILABLE;
-    case SEC_E_OK:
+    case 129:
         return RPC_S_OK;
     default:
         return RPC_S_SEC_PKG_ERROR;

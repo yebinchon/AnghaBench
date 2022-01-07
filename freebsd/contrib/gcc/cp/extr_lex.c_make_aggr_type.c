@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  enum tree_code { ____Placeholder_tree_code } tree_code ;
 
-/* Variables and functions */
- scalar_t__ IS_AGGR_TYPE_CODE (int) ; 
- int /*<<< orphan*/  SET_IS_AGGR_TYPE (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  cxx_make_type (int) ; 
+
+
+
+typedef int tree ;
+typedef enum tree_code { ____Placeholder_tree_code } tree_code ;
+
+
+ scalar_t__ IS_AGGR_TYPE_CODE (int) ;
+ int SET_IS_AGGR_TYPE (int ,int) ;
+ int cxx_make_type (int) ;
 
 tree
 make_aggr_type (enum tree_code code)

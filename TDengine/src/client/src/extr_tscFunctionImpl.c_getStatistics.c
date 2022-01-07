@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int8_t ;
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
 
-/* Variables and functions */
- int TSDB_DATA_TYPE_BIGINT ; 
- int TSDB_DATA_TYPE_BINARY ; 
- int TSDB_DATA_TYPE_BOOL ; 
- int TSDB_DATA_TYPE_DOUBLE ; 
- int TSDB_DATA_TYPE_FLOAT ; 
- int TSDB_DATA_TYPE_INT ; 
- int TSDB_DATA_TYPE_NCHAR ; 
- int TSDB_DATA_TYPE_SMALLINT ; 
- int TSDB_DATA_TYPE_TIMESTAMP ; 
- int TSDB_DATA_TYPE_TINYINT ; 
- int /*<<< orphan*/  getStatics_d (int /*<<< orphan*/ *,double*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  getStatics_f (int /*<<< orphan*/ *,float*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  getStatics_i16 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  getStatics_i32 (int /*<<< orphan*/ *,int*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  getStatics_i64 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  getStatics_i8 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- scalar_t__ isNull (char*,int) ; 
+
+
+
+typedef int int8_t ;
+typedef int int64_t ;
+typedef int int32_t ;
+typedef int int16_t ;
+
+
+ int TSDB_DATA_TYPE_BIGINT ;
+ int TSDB_DATA_TYPE_BINARY ;
+ int TSDB_DATA_TYPE_BOOL ;
+ int TSDB_DATA_TYPE_DOUBLE ;
+ int TSDB_DATA_TYPE_FLOAT ;
+ int TSDB_DATA_TYPE_INT ;
+ int TSDB_DATA_TYPE_NCHAR ;
+ int TSDB_DATA_TYPE_SMALLINT ;
+ int TSDB_DATA_TYPE_TIMESTAMP ;
+ int TSDB_DATA_TYPE_TINYINT ;
+ int getStatics_d (int *,double*,int,int *,int *,int *,int *,int *,int*) ;
+ int getStatics_f (int *,float*,int,int *,int *,int *,int *,int *,int*) ;
+ int getStatics_i16 (int *,int *,int,int *,int *,int *,int *,int *,int*) ;
+ int getStatics_i32 (int *,int*,int,int *,int *,int *,int *,int *,int*) ;
+ int getStatics_i64 (int *,int *,int,int *,int *,int *,int *,int *,int*) ;
+ int getStatics_i8 (int *,int,int *,int,int *,int *,int *,int *,int *,int*) ;
+ scalar_t__ isNull (char*,int) ;
 
 void getStatistics(char *priData, char *data, int32_t size, int32_t numOfRow, int32_t type, int64_t *min, int64_t *max,
                    int64_t *sum, int16_t *minIndex, int16_t *maxIndex, int32_t *numOfNull) {

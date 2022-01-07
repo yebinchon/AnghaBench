@@ -1,57 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int NB_alloc ; 
- int NB_max ; 
- int NB_used ; 
- int /*<<< orphan*/  SIGHUP ; 
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  SIGPIPE ; 
- int /*<<< orphan*/  SIGRTMAX ; 
- int /*<<< orphan*/  SIGTERM ; 
- int /*<<< orphan*/  SIGUSR1 ; 
- int /*<<< orphan*/  SIG_IGN ; 
- int active_connections ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ change_user (char*) ; 
- scalar_t__ close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cron () ; 
- int /*<<< orphan*/  ct_rpc_server ; 
- scalar_t__ daemonize ; 
- int /*<<< orphan*/  epoll_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  epoll_work (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  init_epoll () ; 
- int /*<<< orphan*/  init_listening_connection (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_netbuffers () ; 
- int /*<<< orphan*/  interactive ; 
- int maxconn ; 
- int /*<<< orphan*/  memcache_rpc_server ; 
- int now ; 
- scalar_t__ quit_steps ; 
- int /*<<< orphan*/  setsid () ; 
- int /*<<< orphan*/  sfd ; 
- int /*<<< orphan*/  sighup_handler ; 
- int /*<<< orphan*/  sigint_handler ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sigrtmax_handler ; 
- int /*<<< orphan*/  sigterm_handler ; 
- int /*<<< orphan*/  sigusr1_handler ; 
- int /*<<< orphan*/  stderr ; 
- char* username ; 
- scalar_t__ verbosity ; 
+ int NB_alloc ;
+ int NB_max ;
+ int NB_used ;
+ int SIGHUP ;
+ int SIGINT ;
+ int SIGPIPE ;
+ int SIGRTMAX ;
+ int SIGTERM ;
+ int SIGUSR1 ;
+ int SIG_IGN ;
+ int active_connections ;
+ int assert (int) ;
+ scalar_t__ change_user (char*) ;
+ scalar_t__ close (int ) ;
+ int cron () ;
+ int ct_rpc_server ;
+ scalar_t__ daemonize ;
+ int epoll_close (int ) ;
+ int epoll_work (int) ;
+ int exit (int) ;
+ int fprintf (int ,char*,...) ;
+ int init_epoll () ;
+ int init_listening_connection (int ,int *,int *) ;
+ int init_netbuffers () ;
+ int interactive ;
+ int maxconn ;
+ int memcache_rpc_server ;
+ int now ;
+ scalar_t__ quit_steps ;
+ int setsid () ;
+ int sfd ;
+ int sighup_handler ;
+ int sigint_handler ;
+ int signal (int ,int ) ;
+ int sigrtmax_handler ;
+ int sigterm_handler ;
+ int sigusr1_handler ;
+ int stderr ;
+ char* username ;
+ scalar_t__ verbosity ;
 
 void start_server (void) {
   int i;

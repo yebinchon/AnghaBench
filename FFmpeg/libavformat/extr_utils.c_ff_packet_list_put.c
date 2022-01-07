@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {struct TYPE_6__* next; int /*<<< orphan*/  pkt; } ;
-typedef  TYPE_1__ AVPacketList ;
-typedef  int /*<<< orphan*/  AVPacket ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FF_PACKETLIST_FLAG_REF_PACKET ; 
- int /*<<< orphan*/  av_free (TYPE_1__*) ; 
- TYPE_1__* av_mallocz (int) ; 
- int av_packet_make_refcounted (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_packet_move_ref (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int av_packet_ref (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {struct TYPE_6__* next; int pkt; } ;
+typedef TYPE_1__ AVPacketList ;
+typedef int AVPacket ;
+
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int FF_PACKETLIST_FLAG_REF_PACKET ;
+ int av_free (TYPE_1__*) ;
+ TYPE_1__* av_mallocz (int) ;
+ int av_packet_make_refcounted (int *) ;
+ int av_packet_move_ref (int *,int *) ;
+ int av_packet_ref (int *,int *) ;
 
 int ff_packet_list_put(AVPacketList **packet_buffer,
                        AVPacketList **plast_pktl,
-                       AVPacket      *pkt, int flags)
+                       AVPacket *pkt, int flags)
 {
     AVPacketList *pktl = av_mallocz(sizeof(AVPacketList));
     int ret;
@@ -54,7 +54,7 @@ int ff_packet_list_put(AVPacketList **packet_buffer,
     else
         *packet_buffer = pktl;
 
-    /* Add the packet in the buffered packet list. */
+
     *plast_pktl = pktl;
     return 0;
 }

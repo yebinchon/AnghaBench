@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct sockaddr_hci {int /*<<< orphan*/  hci_channel; int /*<<< orphan*/  hci_dev; int /*<<< orphan*/  hci_family; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct sockaddr_hci {int hci_channel; int hci_dev; int hci_family; } ;
 struct sockaddr {int dummy; } ;
 struct TYPE_5__ {scalar_t__ rfmon; } ;
-struct TYPE_6__ {scalar_t__ snapshot; scalar_t__ bufsize; scalar_t__ fd; scalar_t__ selectable_fd; int /*<<< orphan*/  errbuf; int /*<<< orphan*/  buffer; int /*<<< orphan*/  stats_op; int /*<<< orphan*/  setnonblock_op; int /*<<< orphan*/  getnonblock_op; int /*<<< orphan*/ * set_datalink_op; int /*<<< orphan*/  setdirection_op; int /*<<< orphan*/  setfilter_op; int /*<<< orphan*/  inject_op; int /*<<< orphan*/  read_op; int /*<<< orphan*/  linktype; TYPE_1__ opt; } ;
-typedef  TYPE_2__ pcap_t ;
-typedef  int /*<<< orphan*/  pcap_bluetooth_linux_monitor_header ;
-typedef  int /*<<< orphan*/  opt ;
-typedef  int /*<<< orphan*/  addr ;
+struct TYPE_6__ {scalar_t__ snapshot; scalar_t__ bufsize; scalar_t__ fd; scalar_t__ selectable_fd; int errbuf; int buffer; int stats_op; int setnonblock_op; int getnonblock_op; int * set_datalink_op; int setdirection_op; int setfilter_op; int inject_op; int read_op; int linktype; TYPE_1__ opt; } ;
+typedef TYPE_2__ pcap_t ;
+typedef int pcap_bluetooth_linux_monitor_header ;
+typedef int opt ;
+typedef int addr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_BLUETOOTH ; 
- int /*<<< orphan*/  BTPROTO_HCI ; 
- scalar_t__ BT_CONTROL_SIZE ; 
- int /*<<< orphan*/  DLT_BLUETOOTH_LINUX_MONITOR ; 
- int /*<<< orphan*/  HCI_CHANNEL_MONITOR ; 
- int /*<<< orphan*/  HCI_DEV_NONE ; 
- scalar_t__ MAXIMUM_SNAPLEN ; 
- int /*<<< orphan*/  PCAP_ERRBUF_SIZE ; 
- int PCAP_ERROR ; 
- int PCAP_ERROR_RFMON_NOTSUP ; 
- int /*<<< orphan*/  SOCK_RAW ; 
- int /*<<< orphan*/  SOL_SOCKET ; 
- int /*<<< orphan*/  SO_TIMESTAMP ; 
- scalar_t__ bind (scalar_t__,struct sockaddr*,int) ; 
- int /*<<< orphan*/  bt_monitor_inject ; 
- int /*<<< orphan*/  bt_monitor_read ; 
- int /*<<< orphan*/  bt_monitor_setdirection ; 
- int /*<<< orphan*/  bt_monitor_stats ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  install_bpf_program ; 
- int /*<<< orphan*/  malloc (scalar_t__) ; 
- int /*<<< orphan*/  pcap_cleanup_live_common (TYPE_2__*) ; 
- int /*<<< orphan*/  pcap_fmt_errmsg_for_errno (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  pcap_getnonblock_fd ; 
- int /*<<< orphan*/  pcap_setnonblock_fd ; 
- scalar_t__ setsockopt (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- scalar_t__ socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AF_BLUETOOTH ;
+ int BTPROTO_HCI ;
+ scalar_t__ BT_CONTROL_SIZE ;
+ int DLT_BLUETOOTH_LINUX_MONITOR ;
+ int HCI_CHANNEL_MONITOR ;
+ int HCI_DEV_NONE ;
+ scalar_t__ MAXIMUM_SNAPLEN ;
+ int PCAP_ERRBUF_SIZE ;
+ int PCAP_ERROR ;
+ int PCAP_ERROR_RFMON_NOTSUP ;
+ int SOCK_RAW ;
+ int SOL_SOCKET ;
+ int SO_TIMESTAMP ;
+ scalar_t__ bind (scalar_t__,struct sockaddr*,int) ;
+ int bt_monitor_inject ;
+ int bt_monitor_read ;
+ int bt_monitor_setdirection ;
+ int bt_monitor_stats ;
+ int errno ;
+ int install_bpf_program ;
+ int malloc (scalar_t__) ;
+ int pcap_cleanup_live_common (TYPE_2__*) ;
+ int pcap_fmt_errmsg_for_errno (int ,int ,int ,char*) ;
+ int pcap_getnonblock_fd ;
+ int pcap_setnonblock_fd ;
+ scalar_t__ setsockopt (scalar_t__,int ,int ,int*,int) ;
+ scalar_t__ socket (int ,int ,int ) ;
 
 __attribute__((used)) static int
 bt_monitor_activate(pcap_t* handle)
@@ -58,18 +58,9 @@ bt_monitor_activate(pcap_t* handle)
     int opt;
 
     if (handle->opt.rfmon) {
-        /* monitor mode doesn't apply here */
+
         return PCAP_ERROR_RFMON_NOTSUP;
     }
-
-    /*
-     * Turn a negative snapshot value (invalid), a snapshot value of
-     * 0 (unspecified), or a value bigger than the normal maximum
-     * value, into the maximum allowed value.
-     *
-     * If some application really *needs* a bigger snapshot
-     * length, we should just increase MAXIMUM_SNAPLEN.
-     */
     if (handle->snapshot <= 0 || handle->snapshot > MAXIMUM_SNAPLEN)
         handle->snapshot = MAXIMUM_SNAPLEN;
 
@@ -78,9 +69,9 @@ bt_monitor_activate(pcap_t* handle)
 
     handle->read_op = bt_monitor_read;
     handle->inject_op = bt_monitor_inject;
-    handle->setfilter_op = install_bpf_program; /* no kernel filtering */
+    handle->setfilter_op = install_bpf_program;
     handle->setdirection_op = bt_monitor_setdirection;
-    handle->set_datalink_op = NULL; /* can't change data link type */
+    handle->set_datalink_op = ((void*)0);
     handle->getnonblock_op = pcap_getnonblock_fd;
     handle->setnonblock_op = pcap_setnonblock_fd;
     handle->stats_op = bt_monitor_stats;
@@ -99,7 +90,7 @@ bt_monitor_activate(pcap_t* handle)
         goto close_fail;
     }
 
-    /* Bind socket to the HCI device */
+
     addr.hci_family = AF_BLUETOOTH;
     addr.hci_dev = HCI_DEV_NONE;
     addr.hci_channel = HCI_CHANNEL_MONITOR;

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {float a; float y; float u; float v; } ;
 struct TYPE_5__ {int color_mode; } ;
-typedef  TYPE_1__ ShowSpectrumContext ;
+typedef TYPE_1__ ShowSpectrumContext ;
 
-/* Variables and functions */
- int CHANNEL ; 
- int FF_ARRAY_ELEMS (TYPE_3__*) ; 
- TYPE_3__** color_table ; 
+
+ int CHANNEL ;
+ int FF_ARRAY_ELEMS (TYPE_3__*) ;
+ TYPE_3__** color_table ;
 
 __attribute__((used)) static void pick_color(ShowSpectrumContext *s,
                        float yf, float uf, float vf,
@@ -33,8 +33,8 @@ __attribute__((used)) static void pick_color(ShowSpectrumContext *s,
         for (i = 1; i < FF_ARRAY_ELEMS(color_table[cm]) - 1; i++)
             if (color_table[cm][i].a >= a)
                 break;
-        // i now is the first item >= the color
-        // now we know to interpolate between item i - 1 and i
+
+
         if (a <= color_table[cm][i - 1].a) {
             y = color_table[cm][i - 1].y;
             u = color_table[cm][i - 1].u;

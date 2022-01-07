@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ scheme_type; char* path; int path_len; scalar_t__ is_relative; scalar_t__ scheme; } ;
-typedef  TYPE_1__ parse_data ;
-typedef  char WCHAR ;
+typedef TYPE_1__ parse_data ;
+typedef char WCHAR ;
 struct TYPE_8__ {int path_start; int path_len; int canon_len; char* canon_uri; } ;
-typedef  TYPE_2__ Uri ;
-typedef  int DWORD ;
-typedef  int BOOL ;
+typedef TYPE_2__ Uri ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__ const*,TYPE_2__*,int,int,int /*<<< orphan*/ ,int) ; 
- int TRUE ; 
- scalar_t__ URL_SCHEME_FILE ; 
- scalar_t__ URL_SCHEME_JAVASCRIPT ; 
- scalar_t__ URL_SCHEME_MK ; 
- scalar_t__ URL_SCHEME_UNKNOWN ; 
- int Uri_CREATE_FILE_USE_DOS_PATH ; 
- int Uri_CREATE_NO_CANONICALIZE ; 
- int Uri_CREATE_NO_ENCODE_FORBIDDEN_CHARACTERS ; 
- int /*<<< orphan*/  debugstr_wn (char*,int) ; 
- char decode_pct_val (char const*) ; 
- scalar_t__ is_ascii (char const) ; 
- int /*<<< orphan*/  is_reserved (char const) ; 
- scalar_t__ is_unreserved (char const) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  pct_encode_val (char const,char*) ; 
- int remove_dot_segments (char*,size_t) ; 
+
+ int FALSE ;
+ int TRACE (char*,TYPE_1__ const*,TYPE_2__*,int,int,int ,int) ;
+ int TRUE ;
+ scalar_t__ URL_SCHEME_FILE ;
+ scalar_t__ URL_SCHEME_JAVASCRIPT ;
+ scalar_t__ URL_SCHEME_MK ;
+ scalar_t__ URL_SCHEME_UNKNOWN ;
+ int Uri_CREATE_FILE_USE_DOS_PATH ;
+ int Uri_CREATE_NO_CANONICALIZE ;
+ int Uri_CREATE_NO_ENCODE_FORBIDDEN_CHARACTERS ;
+ int debugstr_wn (char*,int) ;
+ char decode_pct_val (char const*) ;
+ scalar_t__ is_ascii (char const) ;
+ int is_reserved (char const) ;
+ scalar_t__ is_unreserved (char const) ;
+ int memcpy (char*,char*,int) ;
+ int pct_encode_val (char const,char*) ;
+ int remove_dot_segments (char*,size_t) ;
 
 __attribute__((used)) static BOOL canonicalize_path_opaque(const parse_data *data, Uri *uri, DWORD flags, BOOL computeOnly) {
     const WCHAR *ptr;
@@ -55,12 +55,12 @@ __attribute__((used)) static BOOL canonicalize_path_opaque(const parse_data *dat
     uri->path_start = uri->canon_len;
 
     if(is_mk){
-        /* hijack this flag for SCHEME_MK to tell the function when to start
-         * converting slashes */
+
+
         flags |= Uri_CREATE_FILE_USE_DOS_PATH;
     }
 
-    /* For javascript: URIs, simply copy path part without any canonicalization */
+
     if(data->scheme_type == URL_SCHEME_JAVASCRIPT) {
         if(!computeOnly)
             memcpy(uri->canon_uri+uri->canon_len, data->path, data->path_len*sizeof(WCHAR));
@@ -69,11 +69,11 @@ __attribute__((used)) static BOOL canonicalize_path_opaque(const parse_data *dat
         return TRUE;
     }
 
-    /* Windows doesn't allow a "//" to appear after the scheme
-     * of a URI, if it's an opaque URI.
-     */
+
+
+
     if(data->scheme && *(data->path) == '/' && *(data->path+1) == '/') {
-        /* So it inserts a "/." before the "//" if it exists. */
+
         if(!computeOnly) {
             uri->canon_uri[uri->canon_len] = '/';
             uri->canon_uri[uri->canon_len+1] = '.';
@@ -103,7 +103,7 @@ __attribute__((used)) static BOOL canonicalize_path_opaque(const parse_data *dat
             do_default_action = FALSE;
         } else if(*ptr == '\\') {
             if((data->is_relative || is_mk || is_file) && !(flags & Uri_CREATE_FILE_USE_DOS_PATH)) {
-                /* Convert to a '/'. */
+
                 if(!computeOnly)
                     uri->canon_uri[uri->canon_len] = '/';
                 ++uri->canon_len;

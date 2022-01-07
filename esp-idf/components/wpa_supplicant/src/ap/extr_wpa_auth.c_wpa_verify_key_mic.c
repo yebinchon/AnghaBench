@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int u16 ;
-struct wpa_ptk {int /*<<< orphan*/  kck; } ;
-struct wpa_eapol_key {int /*<<< orphan*/ * key_mic; int /*<<< orphan*/  key_info; } ;
+
+
+
+
+typedef int u8 ;
+typedef int u16 ;
+struct wpa_ptk {int kck; } ;
+struct wpa_eapol_key {int * key_mic; int key_info; } ;
 struct ieee802_1x_hdr {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSG_DEBUG ; 
- int WPA_GET_BE16 (int /*<<< orphan*/ ) ; 
- int WPA_KEY_INFO_TYPE_MASK ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  os_memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  os_memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  wpa_dump_mem (char*,int /*<<< orphan*/ *,int) ; 
- int wpa_eapol_key_mic (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wpa_printf (int /*<<< orphan*/ ,char*,size_t) ; 
+
+ int MSG_DEBUG ;
+ int WPA_GET_BE16 (int ) ;
+ int WPA_KEY_INFO_TYPE_MASK ;
+ scalar_t__ memcmp (int *,int *,int) ;
+ int memcpy (int *,int *,int) ;
+ int memset (int *,int ,int) ;
+ int os_memcpy (char*,char*,int) ;
+ int os_memset (char*,int ,int) ;
+ int wpa_dump_mem (char*,int *,int) ;
+ int wpa_eapol_key_mic (int ,int,int *,size_t,int *) ;
+ int wpa_printf (int ,char*,size_t) ;
 
 __attribute__((used)) static int wpa_verify_key_mic(struct wpa_ptk *PTK, u8 *data, size_t data_len)
 {

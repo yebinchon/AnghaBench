@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int int64_t ;
-typedef  int* gf ;
 
-/* Variables and functions */
- int* _121665 ; 
- int /*<<< orphan*/  add (int*,int*,int*) ; 
- int /*<<< orphan*/  inv25519 (int*,int*) ; 
- int /*<<< orphan*/  mul (int*,int*,int*) ; 
- int /*<<< orphan*/  pack25519 (int*,int*) ; 
- int /*<<< orphan*/  sel25519 (int*,int*,int) ; 
- int /*<<< orphan*/  sqr (int*,int*) ; 
- int /*<<< orphan*/  sub (int*,int*,int*) ; 
- int /*<<< orphan*/  unpack25519 (int*,int const*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int int64_t ;
+typedef int* gf ;
+
+
+ int* _121665 ;
+ int add (int*,int*,int*) ;
+ int inv25519 (int*,int*) ;
+ int mul (int*,int*,int*) ;
+ int pack25519 (int*,int*) ;
+ int sel25519 (int*,int*,int) ;
+ int sqr (int*,int*) ;
+ int sub (int*,int*,int*) ;
+ int unpack25519 (int*,int const*) ;
 
 void cf_curve25519_mul(uint8_t *q, const uint8_t *n, const uint8_t *p)
 {
@@ -37,7 +37,7 @@ void cf_curve25519_mul(uint8_t *q, const uint8_t *n, const uint8_t *p)
     z[i] = n[i];
   z[31] = (n[31] & 127) | 64;
   z[0] &= 248;
-  
+
   unpack25519(x, p);
 
   for(i = 0; i < 16; i++)

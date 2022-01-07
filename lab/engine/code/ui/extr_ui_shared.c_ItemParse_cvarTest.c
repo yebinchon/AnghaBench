@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  qboolean ;
-struct TYPE_3__ {int /*<<< orphan*/  cvarTest; } ;
-typedef  TYPE_1__ itemDef_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PC_String_Parse (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  qfalse ; 
- int /*<<< orphan*/  qtrue ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int qboolean ;
+struct TYPE_3__ {int cvarTest; } ;
+typedef TYPE_1__ itemDef_t ;
+
+
+ int PC_String_Parse (int,int *) ;
+ int qfalse ;
+ int qtrue ;
 
 qboolean ItemParse_cvarTest( itemDef_t *item, int handle ) {
-	if (!PC_String_Parse(handle, &item->cvarTest)) {
-		return qfalse;
-	}
-	return qtrue;
+ if (!PC_String_Parse(handle, &item->cvarTest)) {
+  return qfalse;
+ }
+ return qtrue;
 }

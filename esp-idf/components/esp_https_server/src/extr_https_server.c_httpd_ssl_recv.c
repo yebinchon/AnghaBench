@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  httpd_handle_t ;
-typedef  int /*<<< orphan*/  esp_tls_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int esp_tls_conn_read (int /*<<< orphan*/ *,char*,size_t) ; 
- int /*<<< orphan*/ * httpd_sess_get_transport_ctx (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int httpd_handle_t ;
+typedef int esp_tls_t ;
+
+
+ int assert (int ) ;
+ int esp_tls_conn_read (int *,char*,size_t) ;
+ int * httpd_sess_get_transport_ctx (int ,int) ;
 
 __attribute__((used)) static int httpd_ssl_recv(httpd_handle_t server, int sockfd, char *buf, size_t buf_len, int flags)
 {
     esp_tls_t *tls = httpd_sess_get_transport_ctx(server, sockfd);
-    assert(tls != NULL);
+    assert(tls != ((void*)0));
     return esp_tls_conn_read(tls, buf, buf_len);
 }

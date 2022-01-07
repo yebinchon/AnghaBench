@@ -1,0 +1,146 @@
+; ModuleID = '/home/carl/AnghaBench/darwin-xnu/bsd/nfs/extr_nfs_upcall.c_nfsrv_uc_stop.c'
+source_filename = "/home/carl/AnghaBench/darwin-xnu/bsd/nfs/extr_nfs_upcall.c_nfsrv_uc_stop.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.TYPE_3__ = type { i64, i32 }
+
+@nfsrv_uc_thread_count = common dso_local global i64 0, align 8
+@.str = private unnamed_addr constant [24 x i8] c"Entering nfsrv_uc_stop\0A\00", align 1
+@nfsrv_uc_shutdown = common dso_local global i32 0, align 4
+@nfsrv_uc_queue_tbl = common dso_local global %struct.TYPE_3__* null, align 8
+@nfsrv_uc_shutdown_lock = common dso_local global i32 0, align 4
+@PSOCK = common dso_local global i32 0, align 4
+@.str.1 = private unnamed_addr constant [26 x i8] c"nfsd_upcall_shutdown_stop\00", align 1
+@THREAD_NULL = common dso_local global i64 0, align 8
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void ()* @nfsrv_uc_stop to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @nfsrv_uc_stop() #0 {
+  %1 = alloca i64, align 8
+  %2 = alloca i64, align 8
+  %3 = load i64, i64* @nfsrv_uc_thread_count, align 8
+  store i64 %3, i64* %2, align 8
+  %4 = call i32 @DPRINT(i8* getelementptr inbounds ([24 x i8], [24 x i8]* @.str, i64 0, i64 0))
+  store i32 1, i32* @nfsrv_uc_shutdown, align 4
+  store i64 0, i64* %1, align 8
+  br label %5
+
+5:                                                ; preds = %26, %0
+  %6 = load i64, i64* %1, align 8
+  %7 = load i64, i64* %2, align 8
+  %8 = icmp ult i64 %6, %7
+  br i1 %8, label %9, label %29
+
+9:                                                ; preds = %5
+  %10 = load %struct.TYPE_3__*, %struct.TYPE_3__** @nfsrv_uc_queue_tbl, align 8
+  %11 = load i64, i64* %1, align 8
+  %12 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %10, i64 %11
+  %13 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %12, i32 0, i32 1
+  %14 = load i32, i32* %13, align 8
+  %15 = call i32 @lck_mtx_lock(i32 %14)
+  %16 = load %struct.TYPE_3__*, %struct.TYPE_3__** @nfsrv_uc_queue_tbl, align 8
+  %17 = load i64, i64* %1, align 8
+  %18 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %16, i64 %17
+  %19 = call i32 @wakeup(%struct.TYPE_3__* %18)
+  %20 = load %struct.TYPE_3__*, %struct.TYPE_3__** @nfsrv_uc_queue_tbl, align 8
+  %21 = load i64, i64* %1, align 8
+  %22 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %20, i64 %21
+  %23 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %22, i32 0, i32 1
+  %24 = load i32, i32* %23, align 8
+  %25 = call i32 @lck_mtx_unlock(i32 %24)
+  br label %26
+
+26:                                               ; preds = %9
+  %27 = load i64, i64* %1, align 8
+  %28 = add i64 %27, 1
+  store i64 %28, i64* %1, align 8
+  br label %5
+
+29:                                               ; preds = %5
+  %30 = load i32, i32* @nfsrv_uc_shutdown_lock, align 4
+  %31 = call i32 @lck_mtx_lock(i32 %30)
+  br label %32
+
+32:                                               ; preds = %35, %29
+  %33 = load i64, i64* @nfsrv_uc_thread_count, align 8
+  %34 = icmp ugt i64 %33, 0
+  br i1 %34, label %35, label %39
+
+35:                                               ; preds = %32
+  %36 = load i32, i32* @nfsrv_uc_shutdown_lock, align 4
+  %37 = load i32, i32* @PSOCK, align 4
+  %38 = call i32 @msleep(i64* @nfsrv_uc_thread_count, i32 %36, i32 %37, i8* getelementptr inbounds ([26 x i8], [26 x i8]* @.str.1, i64 0, i64 0), i32* null)
+  br label %32
+
+39:                                               ; preds = %32
+  store i64 0, i64* %1, align 8
+  br label %40
+
+40:                                               ; preds = %65, %39
+  %41 = load i64, i64* %1, align 8
+  %42 = load i64, i64* @nfsrv_uc_thread_count, align 8
+  %43 = icmp ult i64 %41, %42
+  br i1 %43, label %44, label %68
+
+44:                                               ; preds = %40
+  %45 = load %struct.TYPE_3__*, %struct.TYPE_3__** @nfsrv_uc_queue_tbl, align 8
+  %46 = load i64, i64* %1, align 8
+  %47 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %45, i64 %46
+  %48 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %47, i32 0, i32 0
+  %49 = load i64, i64* %48, align 8
+  %50 = load i64, i64* @THREAD_NULL, align 8
+  %51 = icmp ne i64 %49, %50
+  br i1 %51, label %52, label %59
+
+52:                                               ; preds = %44
+  %53 = load %struct.TYPE_3__*, %struct.TYPE_3__** @nfsrv_uc_queue_tbl, align 8
+  %54 = load i64, i64* %1, align 8
+  %55 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %53, i64 %54
+  %56 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %55, i32 0, i32 0
+  %57 = load i64, i64* %56, align 8
+  %58 = call i32 @thread_deallocate(i64 %57)
+  br label %59
+
+59:                                               ; preds = %52, %44
+  %60 = load i64, i64* @THREAD_NULL, align 8
+  %61 = load %struct.TYPE_3__*, %struct.TYPE_3__** @nfsrv_uc_queue_tbl, align 8
+  %62 = load i64, i64* %1, align 8
+  %63 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %61, i64 %62
+  %64 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %63, i32 0, i32 0
+  store i64 %60, i64* %64, align 8
+  br label %65
+
+65:                                               ; preds = %59
+  %66 = load i64, i64* %1, align 8
+  %67 = add i64 %66, 1
+  store i64 %67, i64* %1, align 8
+  br label %40
+
+68:                                               ; preds = %40
+  store i32 0, i32* @nfsrv_uc_shutdown, align 4
+  %69 = load i32, i32* @nfsrv_uc_shutdown_lock, align 4
+  %70 = call i32 @lck_mtx_unlock(i32 %69)
+  ret void
+}
+
+declare dso_local i32 @DPRINT(i8*) #1
+
+declare dso_local i32 @lck_mtx_lock(i32) #1
+
+declare dso_local i32 @wakeup(%struct.TYPE_3__*) #1
+
+declare dso_local i32 @lck_mtx_unlock(i32) #1
+
+declare dso_local i32 @msleep(i64*, i32, i32, i8*, i32*) #1
+
+declare dso_local i32 @thread_deallocate(i64) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

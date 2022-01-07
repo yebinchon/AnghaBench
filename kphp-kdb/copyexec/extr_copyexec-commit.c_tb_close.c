@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct transaction_buffer {int /*<<< orphan*/  p; int /*<<< orphan*/  buff; } ;
-struct lev_copyexec_aux_transaction_footer {int /*<<< orphan*/  sha1; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LEV_COPYEXEC_AUX_TRANSACTION_FOOTER ; 
- int /*<<< orphan*/  SHA1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,unsigned char*,int) ; 
- struct lev_copyexec_aux_transaction_footer* tb_alloc_logevent (struct transaction_buffer*,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct transaction_buffer {int p; int buff; } ;
+struct lev_copyexec_aux_transaction_footer {int sha1; } ;
+
+
+ int LEV_COPYEXEC_AUX_TRANSACTION_FOOTER ;
+ int SHA1 (int ,int ,unsigned char*) ;
+ int memcpy (int ,unsigned char*,int) ;
+ struct lev_copyexec_aux_transaction_footer* tb_alloc_logevent (struct transaction_buffer*,int ,int) ;
 
 __attribute__((used)) static void tb_close (struct transaction_buffer *B) {
   unsigned char transaction_sha1[20];

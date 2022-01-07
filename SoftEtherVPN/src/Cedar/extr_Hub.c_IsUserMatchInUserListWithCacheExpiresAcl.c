@@ -1,87 +1,87 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
-typedef  int /*<<< orphan*/  filename2 ;
-typedef  int /*<<< orphan*/  filename ;
-typedef  int /*<<< orphan*/  UINT64 ;
-typedef  int /*<<< orphan*/  LIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACCESS_LIST_INCLUDED_PREFIX ; 
- scalar_t__ Cmp (char*,int /*<<< orphan*/ ,int) ; 
- int IsUserMatchInUserListWithCacheExpires (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int MAX_SIZE ; 
- int NEGATIVE_BOOL (int) ; 
- int /*<<< orphan*/  StrCat (char*,int,char*) ; 
- int /*<<< orphan*/  StrCpy (char*,int,char*) ; 
- int StrLen (char*) ; 
- int /*<<< orphan*/  StrLower (char*) ; 
- int /*<<< orphan*/  Trim (char*) ; 
+
+
+
+typedef int tmp ;
+typedef int filename2 ;
+typedef int filename ;
+typedef int UINT64 ;
+typedef int LIST ;
+
+
+ int ACCESS_LIST_INCLUDED_PREFIX ;
+ scalar_t__ Cmp (char*,int ,int) ;
+ int IsUserMatchInUserListWithCacheExpires (int *,char*,int ,int ) ;
+ int MAX_SIZE ;
+ int NEGATIVE_BOOL (int) ;
+ int StrCat (char*,int,char*) ;
+ int StrCpy (char*,int,char*) ;
+ int StrLen (char*) ;
+ int StrLower (char*) ;
+ int Trim (char*) ;
 
 bool IsUserMatchInUserListWithCacheExpiresAcl(LIST *o, char *name_in_acl, UINT64 user_hash, UINT64 lifetime)
 {
-	char tmp[16];
-	bool exclude = false;
-	char filename[MAX_SIZE];
-	char filename2[MAX_SIZE];
-	bool is_full_path = false;
-	bool ret = false;
-	// Validate arguments
-	if (o == NULL || name_in_acl == NULL || user_hash == 0 || StrLen(name_in_acl) < 9)
-	{
-		return false;
-	}
+ char tmp[16];
+ bool exclude = 0;
+ char filename[MAX_SIZE];
+ char filename2[MAX_SIZE];
+ bool is_full_path = 0;
+ bool ret = 0;
 
-	StrCpy(tmp, sizeof(tmp), name_in_acl);
-	StrLower(tmp);
+ if (o == ((void*)0) || name_in_acl == ((void*)0) || user_hash == 0 || StrLen(name_in_acl) < 9)
+ {
+  return 0;
+ }
 
-	tmp[8] = 0;
+ StrCpy(tmp, sizeof(tmp), name_in_acl);
+ StrLower(tmp);
 
-	if (Cmp(tmp, ACCESS_LIST_INCLUDED_PREFIX, 8) == 0)
-	{
-		// include
-		exclude = false;
-	}
-	else
-	{
-		// exclude
-		exclude = true;
-	}
+ tmp[8] = 0;
 
-	// Extract the file name
-	StrCpy(filename, sizeof(filename), name_in_acl + 8);
-	Trim(filename);
+ if (Cmp(tmp, ACCESS_LIST_INCLUDED_PREFIX, 8) == 0)
+ {
 
-	// Identify whether the file name is an absolute path
-	if (filename[0] == '\\' || filename[0] == '/' || (filename[1] == ':' && filename[2] == '\\'))
-	{
-		is_full_path = true;
-	}
+  exclude = 0;
+ }
+ else
+ {
 
-	if (is_full_path == false)
-	{
-		// Prepend a '@' if the file name is a relative path
-		StrCpy(filename2, sizeof(filename2), "@");
-		StrCat(filename2, sizeof(filename2), filename);
-		StrCpy(filename, sizeof(filename), filename2);
-	}
+  exclude = 1;
+ }
 
-	ret = IsUserMatchInUserListWithCacheExpires(o, filename, user_hash, lifetime);
 
-	if (exclude)
-	{
-		ret = NEGATIVE_BOOL(ret);
-	}
+ StrCpy(filename, sizeof(filename), name_in_acl + 8);
+ Trim(filename);
 
-	return ret;
+
+ if (filename[0] == '\\' || filename[0] == '/' || (filename[1] == ':' && filename[2] == '\\'))
+ {
+  is_full_path = 1;
+ }
+
+ if (is_full_path == 0)
+ {
+
+  StrCpy(filename2, sizeof(filename2), "@");
+  StrCat(filename2, sizeof(filename2), filename);
+  StrCpy(filename, sizeof(filename), filename2);
+ }
+
+ ret = IsUserMatchInUserListWithCacheExpires(o, filename, user_hash, lifetime);
+
+ if (exclude)
+ {
+  ret = NEGATIVE_BOOL(ret);
+ }
+
+ return ret;
 }

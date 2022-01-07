@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct kaiocb {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ECANCELED ; 
- int /*<<< orphan*/  aio_complete (struct kaiocb*,int,int /*<<< orphan*/ ) ; 
+
+ int ECANCELED ;
+ int aio_complete (struct kaiocb*,int,int ) ;
 
 void
 aio_cancel(struct kaiocb *job)
 {
 
-	aio_complete(job, -1, ECANCELED);
+ aio_complete(job, -1, ECANCELED);
 }

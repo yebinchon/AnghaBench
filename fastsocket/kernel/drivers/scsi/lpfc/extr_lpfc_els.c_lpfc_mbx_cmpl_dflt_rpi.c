@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct lpfc_nodelist {int /*<<< orphan*/  vport; } ;
-struct lpfc_hba {int /*<<< orphan*/  mbox_mem_pool; } ;
-struct lpfc_dmabuf {int /*<<< orphan*/  phys; int /*<<< orphan*/  virt; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * context2; int /*<<< orphan*/ * context1; } ;
-typedef  TYPE_1__ LPFC_MBOXQ_t ;
 
-/* Variables and functions */
- scalar_t__ NLP_CHK_NODE_ACT (struct lpfc_nodelist*) ; 
- int /*<<< orphan*/  kfree (struct lpfc_dmabuf*) ; 
- int /*<<< orphan*/  lpfc_drop_node (int /*<<< orphan*/ ,struct lpfc_nodelist*) ; 
- int /*<<< orphan*/  lpfc_mbuf_free (struct lpfc_hba*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lpfc_nlp_not_used (struct lpfc_nodelist*) ; 
- int /*<<< orphan*/  lpfc_nlp_put (struct lpfc_nodelist*) ; 
- int /*<<< orphan*/  mempool_free (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct lpfc_nodelist {int vport; } ;
+struct lpfc_hba {int mbox_mem_pool; } ;
+struct lpfc_dmabuf {int phys; int virt; } ;
+struct TYPE_4__ {int * context2; int * context1; } ;
+typedef TYPE_1__ LPFC_MBOXQ_t ;
+
+
+ scalar_t__ NLP_CHK_NODE_ACT (struct lpfc_nodelist*) ;
+ int kfree (struct lpfc_dmabuf*) ;
+ int lpfc_drop_node (int ,struct lpfc_nodelist*) ;
+ int lpfc_mbuf_free (struct lpfc_hba*,int ,int ) ;
+ int lpfc_nlp_not_used (struct lpfc_nodelist*) ;
+ int lpfc_nlp_put (struct lpfc_nodelist*) ;
+ int mempool_free (TYPE_1__*,int ) ;
 
 void
 lpfc_mbx_cmpl_dflt_rpi(struct lpfc_hba *phba, LPFC_MBOXQ_t *pmb)
 {
-	struct lpfc_dmabuf *mp = (struct lpfc_dmabuf *) (pmb->context1);
-	struct lpfc_nodelist *ndlp = (struct lpfc_nodelist *) pmb->context2;
+ struct lpfc_dmabuf *mp = (struct lpfc_dmabuf *) (pmb->context1);
+ struct lpfc_nodelist *ndlp = (struct lpfc_nodelist *) pmb->context2;
 
-	pmb->context1 = NULL;
-	pmb->context2 = NULL;
+ pmb->context1 = ((void*)0);
+ pmb->context2 = ((void*)0);
 
-	lpfc_mbuf_free(phba, mp->virt, mp->phys);
-	kfree(mp);
-	mempool_free(pmb, phba->mbox_mem_pool);
-	if (ndlp) {
-		if (NLP_CHK_NODE_ACT(ndlp)) {
-			lpfc_nlp_put(ndlp);
-			/* This is the end of the default RPI cleanup logic for
-			 * this ndlp. If no other discovery threads are using
-			 * this ndlp, free all resources associated with it.
-			 */
-			lpfc_nlp_not_used(ndlp);
-		} else {
-			lpfc_drop_node(ndlp->vport, ndlp);
-		}
-	}
+ lpfc_mbuf_free(phba, mp->virt, mp->phys);
+ kfree(mp);
+ mempool_free(pmb, phba->mbox_mem_pool);
+ if (ndlp) {
+  if (NLP_CHK_NODE_ACT(ndlp)) {
+   lpfc_nlp_put(ndlp);
 
-	return;
+
+
+
+   lpfc_nlp_not_used(ndlp);
+  } else {
+   lpfc_drop_node(ndlp->vport, ndlp);
+  }
+ }
+
+ return;
 }

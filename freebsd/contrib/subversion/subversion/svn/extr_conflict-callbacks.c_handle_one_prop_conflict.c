@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_string_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_7__ {int /*<<< orphan*/  cancel_baton; int /*<<< orphan*/  cancel_func; } ;
-typedef  TYPE_1__ svn_cmdline_prompt_baton_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  svn_client_conflict_t ;
-typedef  int /*<<< orphan*/  svn_client_conflict_option_t ;
-typedef  int svn_boolean_t ;
-struct TYPE_8__ {scalar_t__ choice; int /*<<< orphan*/  code; } ;
-typedef  TYPE_2__ client_option_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  build_prop_conflict_options (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  edit_prop_conflict (int /*<<< orphan*/  const**,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,char const*,int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  prompt_user (TYPE_2__ const**,int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  show_prop_conflict (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  svn_cl__local_style_skip_ancestor (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client_conflict_get_local_abspath (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_client_conflict_option_find_by_id (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ svn_client_conflict_option_merged_text ; 
- int /*<<< orphan*/  svn_client_conflict_option_set_merged_propval (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- scalar_t__ svn_client_conflict_option_undefined ; 
- int /*<<< orphan*/  svn_client_conflict_prop_get_description (char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client_conflict_prop_get_propvals (int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int /*<<< orphan*/  const**,int /*<<< orphan*/  const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client_conflict_prop_get_resolution_options (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_cmdline_fprintf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int svn_string_t ;
+typedef int svn_error_t ;
+struct TYPE_7__ {int cancel_baton; int cancel_func; } ;
+typedef TYPE_1__ svn_cmdline_prompt_baton_t ;
+typedef int svn_client_ctx_t ;
+typedef int svn_client_conflict_t ;
+typedef int svn_client_conflict_option_t ;
+typedef int svn_boolean_t ;
+struct TYPE_8__ {scalar_t__ choice; int code; } ;
+typedef TYPE_2__ client_option_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_array_header_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int _ (char*) ;
+ int build_prop_conflict_options (int **,int *,int *,int *,int *) ;
+ int edit_prop_conflict (int const**,int const*,int const*,int const*,char const*,int *,TYPE_1__*,int *,int *) ;
+ int prompt_user (TYPE_2__ const**,int *,char const**,int *,TYPE_1__*,int *) ;
+ int show_prop_conflict (int const*,int const*,int const*,int const*,int ,int ,int *) ;
+ int stderr ;
+ scalar_t__ strcmp (int ,char*) ;
+ int svn_cl__local_style_skip_ancestor (char const*,int ,int *) ;
+ int svn_client_conflict_get_local_abspath (int *) ;
+ int * svn_client_conflict_option_find_by_id (int *,scalar_t__) ;
+ scalar_t__ svn_client_conflict_option_merged_text ;
+ int svn_client_conflict_option_set_merged_propval (int *,int const*) ;
+ scalar_t__ svn_client_conflict_option_undefined ;
+ int svn_client_conflict_prop_get_description (char const**,int *,int *,int *) ;
+ int svn_client_conflict_prop_get_propvals (int *,int const**,int const**,int const**,int *,char const*,int *) ;
+ int svn_client_conflict_prop_get_resolution_options (int **,int *,int *,int *,int *) ;
+ int svn_cmdline_fprintf (int ,int *,char*,...) ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
 
 __attribute__((used)) static svn_error_t *
 handle_one_prop_conflict(svn_client_conflict_option_t **option,
@@ -67,7 +67,7 @@ handle_one_prop_conflict(svn_client_conflict_option_t **option,
 {
   apr_pool_t *iterpool;
   const char *description;
-  const svn_string_t *merged_propval = NULL;
+  const svn_string_t *merged_propval = ((void*)0);
   svn_boolean_t resolved_allowed = FALSE;
   const svn_string_t *base_propval;
   const svn_string_t *my_propval;
@@ -75,7 +75,7 @@ handle_one_prop_conflict(svn_client_conflict_option_t **option,
   apr_array_header_t *resolution_options;
   apr_array_header_t *prop_conflict_options;
 
-  SVN_ERR(svn_client_conflict_prop_get_propvals(NULL, &my_propval,
+  SVN_ERR(svn_client_conflict_prop_get_propvals(((void*)0), &my_propval,
                                                 &base_propval, &their_propval,
                                                 conflict, propname,
                                                 scratch_pool));
@@ -102,7 +102,7 @@ handle_one_prop_conflict(svn_client_conflict_option_t **option,
   while (TRUE)
     {
       const client_option_t *opt;
-      const char *suggested_options[9]; /* filled statically below */
+      const char *suggested_options[9];
       const char **next_option = suggested_options;
 
       *next_option++ = "p";
@@ -114,12 +114,12 @@ handle_one_prop_conflict(svn_client_conflict_option_t **option,
         *next_option++ = "r";
       *next_option++ = "q";
       *next_option++ = "h";
-      *next_option++ = NULL;
+      *next_option++ = ((void*)0);
 
       svn_pool_clear(iterpool);
 
       SVN_ERR(prompt_user(&opt, prop_conflict_options, suggested_options,
-                          NULL, pb, iterpool));
+                          ((void*)0), pb, iterpool));
       if (! opt)
         continue;
 
@@ -143,7 +143,7 @@ handle_one_prop_conflict(svn_client_conflict_option_t **option,
                                      base_propval, my_propval, their_propval,
                                      editor_cmd, config, pb,
                                      result_pool, scratch_pool));
-          resolved_allowed = (merged_propval != NULL);
+          resolved_allowed = (merged_propval != ((void*)0));
         }
       else if (strcmp(opt->code, "r") == 0)
         {

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-struct server {scalar_t__ ns_conn_q; int /*<<< orphan*/  s_conn_q; } ;
+
+
+
+
+typedef scalar_t__ uint32_t ;
+struct server {scalar_t__ ns_conn_q; int s_conn_q; } ;
 struct array {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- scalar_t__ TAILQ_EMPTY (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  array_deinit (struct array*) ; 
- scalar_t__ array_n (struct array*) ; 
- struct server* array_pop (struct array*) ; 
+
+ int ASSERT (int) ;
+ scalar_t__ TAILQ_EMPTY (int *) ;
+ int array_deinit (struct array*) ;
+ scalar_t__ array_n (struct array*) ;
+ struct server* array_pop (struct array*) ;
 
 void
 server_deinit(struct array *server)

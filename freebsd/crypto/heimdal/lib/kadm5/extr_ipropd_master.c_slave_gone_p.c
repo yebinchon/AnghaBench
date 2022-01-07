@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ seen; } ;
-typedef  TYPE_1__ slave ;
+typedef TYPE_1__ slave ;
 
-/* Variables and functions */
- scalar_t__ time (int /*<<< orphan*/ *) ; 
- scalar_t__ time_before_gone ; 
+
+ scalar_t__ time (int *) ;
+ scalar_t__ time_before_gone ;
 
 __attribute__((used)) static int
 slave_gone_p (slave *s)
 {
-    if (time(NULL) > s->seen + time_before_gone)
-	return 1;
+    if (time(((void*)0)) > s->seen + time_before_gone)
+ return 1;
     return 0;
 }

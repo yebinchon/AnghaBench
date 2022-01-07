@@ -1,80 +1,80 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct ft_cmd {int /*<<< orphan*/ * ft_sense_buffer; TYPE_1__* sess; int /*<<< orphan*/  se_cmd; int /*<<< orphan*/  req_frame; } ;
-struct fcp_cmnd {int fc_tm_flags; int /*<<< orphan*/  fc_lun; } ;
-struct TYPE_2__ {int /*<<< orphan*/  se_sess; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FCP_CMND_FIELDS_INVALID ; 
-#define  FCP_TMF_ABT_TASK_SET 132 
-#define  FCP_TMF_CLR_ACA 131 
-#define  FCP_TMF_CLR_TASK_SET 130 
- int /*<<< orphan*/  FCP_TMF_FAILED ; 
-#define  FCP_TMF_LUN_RESET 129 
-#define  FCP_TMF_TGT_RESET 128 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  TARGET_SCF_ACK_KREF ; 
- int /*<<< orphan*/  TMR_ABORT_TASK_SET ; 
- int /*<<< orphan*/  TMR_CLEAR_ACA ; 
- int /*<<< orphan*/  TMR_CLEAR_TASK_SET ; 
- int /*<<< orphan*/  TMR_LUN_RESET ; 
- int /*<<< orphan*/  TMR_TARGET_WARM_RESET ; 
- struct fcp_cmnd* fc_frame_payload_get (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ft_send_resp_code_and_free (struct ft_cmd*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pr_debug (char*,int) ; 
- int /*<<< orphan*/  scsilun_to_int (int /*<<< orphan*/ *) ; 
- int target_submit_tmr (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct ft_cmd*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct ft_cmd {int * ft_sense_buffer; TYPE_1__* sess; int se_cmd; int req_frame; } ;
+struct fcp_cmnd {int fc_tm_flags; int fc_lun; } ;
+struct TYPE_2__ {int se_sess; } ;
+
+
+ int FCP_CMND_FIELDS_INVALID ;
+
+
+
+ int FCP_TMF_FAILED ;
+
+
+ int GFP_KERNEL ;
+ int TARGET_SCF_ACK_KREF ;
+ int TMR_ABORT_TASK_SET ;
+ int TMR_CLEAR_ACA ;
+ int TMR_CLEAR_TASK_SET ;
+ int TMR_LUN_RESET ;
+ int TMR_TARGET_WARM_RESET ;
+ struct fcp_cmnd* fc_frame_payload_get (int ,int) ;
+ int ft_send_resp_code_and_free (struct ft_cmd*,int ) ;
+ int pr_debug (char*,int) ;
+ int scsilun_to_int (int *) ;
+ int target_submit_tmr (int *,int ,int *,int ,struct ft_cmd*,int ,int ,int ,int ) ;
 
 __attribute__((used)) static void ft_send_tm(struct ft_cmd *cmd)
 {
-	struct fcp_cmnd *fcp;
-	int rc;
-	u8 tm_func;
+ struct fcp_cmnd *fcp;
+ int rc;
+ u8 tm_func;
 
-	fcp = fc_frame_payload_get(cmd->req_frame, sizeof(*fcp));
+ fcp = fc_frame_payload_get(cmd->req_frame, sizeof(*fcp));
 
-	switch (fcp->fc_tm_flags) {
-	case FCP_TMF_LUN_RESET:
-		tm_func = TMR_LUN_RESET;
-		break;
-	case FCP_TMF_TGT_RESET:
-		tm_func = TMR_TARGET_WARM_RESET;
-		break;
-	case FCP_TMF_CLR_TASK_SET:
-		tm_func = TMR_CLEAR_TASK_SET;
-		break;
-	case FCP_TMF_ABT_TASK_SET:
-		tm_func = TMR_ABORT_TASK_SET;
-		break;
-	case FCP_TMF_CLR_ACA:
-		tm_func = TMR_CLEAR_ACA;
-		break;
-	default:
-		/*
-		 * FCP4r01 indicates having a combination of
-		 * tm_flags set is invalid.
-		 */
-		pr_debug("invalid FCP tm_flags %x\n", fcp->fc_tm_flags);
-		ft_send_resp_code_and_free(cmd, FCP_CMND_FIELDS_INVALID);
-		return;
-	}
+ switch (fcp->fc_tm_flags) {
+ case 129:
+  tm_func = TMR_LUN_RESET;
+  break;
+ case 128:
+  tm_func = TMR_TARGET_WARM_RESET;
+  break;
+ case 130:
+  tm_func = TMR_CLEAR_TASK_SET;
+  break;
+ case 132:
+  tm_func = TMR_ABORT_TASK_SET;
+  break;
+ case 131:
+  tm_func = TMR_CLEAR_ACA;
+  break;
+ default:
 
-	/* FIXME: Add referenced task tag for ABORT_TASK */
-	rc = target_submit_tmr(&cmd->se_cmd, cmd->sess->se_sess,
-		&cmd->ft_sense_buffer[0], scsilun_to_int(&fcp->fc_lun),
-		cmd, tm_func, GFP_KERNEL, 0, TARGET_SCF_ACK_KREF);
-	if (rc < 0)
-		ft_send_resp_code_and_free(cmd, FCP_TMF_FAILED);
+
+
+
+  pr_debug("invalid FCP tm_flags %x\n", fcp->fc_tm_flags);
+  ft_send_resp_code_and_free(cmd, FCP_CMND_FIELDS_INVALID);
+  return;
+ }
+
+
+ rc = target_submit_tmr(&cmd->se_cmd, cmd->sess->se_sess,
+  &cmd->ft_sense_buffer[0], scsilun_to_int(&fcp->fc_lun),
+  cmd, tm_func, GFP_KERNEL, 0, TARGET_SCF_ACK_KREF);
+ if (rc < 0)
+  ft_send_resp_code_and_free(cmd, FCP_TMF_FAILED);
 }

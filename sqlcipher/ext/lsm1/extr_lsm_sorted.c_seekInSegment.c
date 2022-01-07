@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
-typedef  struct TYPE_12__   TYPE_11__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+typedef struct TYPE_12__ TYPE_11__ ;
+
+
 struct TYPE_15__ {TYPE_1__* pDb; } ;
 struct TYPE_14__ {TYPE_11__* pSeg; } ;
-struct TYPE_13__ {int /*<<< orphan*/  pFS; } ;
+struct TYPE_13__ {int pFS; } ;
 struct TYPE_12__ {scalar_t__ iRoot; scalar_t__ iFirst; } ;
-typedef  TYPE_2__ SegmentPtr ;
-typedef  int /*<<< orphan*/  Page ;
-typedef  TYPE_3__ MultiCursor ;
+typedef TYPE_2__ SegmentPtr ;
+typedef int Page ;
+typedef TYPE_3__ MultiCursor ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int seekInBtree (TYPE_3__*,TYPE_11__*,int,void*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int segmentPtrLoadPage (int /*<<< orphan*/ ,TYPE_2__*,int) ; 
- int segmentPtrSeek (TYPE_3__*,TYPE_2__*,int,void*,int,int,int*,int*) ; 
- int /*<<< orphan*/  segmentPtrSetPage (TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+ int LSM_OK ;
+ int assert (int) ;
+ int seekInBtree (TYPE_3__*,TYPE_11__*,int,void*,int,int ,int **) ;
+ int segmentPtrLoadPage (int ,TYPE_2__*,int) ;
+ int segmentPtrSeek (TYPE_3__*,TYPE_2__*,int,void*,int,int,int*,int*) ;
+ int segmentPtrSetPage (TYPE_2__*,int *) ;
 
 __attribute__((used)) static int seekInSegment(
-  MultiCursor *pCsr, 
+  MultiCursor *pCsr,
   SegmentPtr *pPtr,
   int iTopic,
   void *pKey, int nKey,
-  int iPg,                        /* Page to search */
-  int eSeek,                      /* Search bias - see above */
-  int *piPtr,                     /* OUT: FC pointer */
-  int *pbStop                     /* OUT: Stop search flag */
+  int iPg,
+  int eSeek,
+  int *piPtr,
+  int *pbStop
 ){
   int iPtr = iPg;
   int rc = LSM_OK;

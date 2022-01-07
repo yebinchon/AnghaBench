@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timer_list {int dummy; } ;
-struct rxrpc_call {scalar_t__ state; int /*<<< orphan*/  debug_id; } ;
+struct rxrpc_call {scalar_t__ state; int debug_id; } ;
 
-/* Variables and functions */
- scalar_t__ RXRPC_CALL_COMPLETE ; 
- int /*<<< orphan*/  _enter (char*,int /*<<< orphan*/ ) ; 
- struct rxrpc_call* call ; 
- struct rxrpc_call* from_timer (int /*<<< orphan*/ ,struct timer_list*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jiffies ; 
- int /*<<< orphan*/  rxrpc_queue_call (struct rxrpc_call*) ; 
- int /*<<< orphan*/  rxrpc_timer_expired ; 
- int /*<<< orphan*/  timer ; 
- int /*<<< orphan*/  trace_rxrpc_timer (struct rxrpc_call*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ RXRPC_CALL_COMPLETE ;
+ int _enter (char*,int ) ;
+ struct rxrpc_call* call ;
+ struct rxrpc_call* from_timer (int ,struct timer_list*,int ) ;
+ int jiffies ;
+ int rxrpc_queue_call (struct rxrpc_call*) ;
+ int rxrpc_timer_expired ;
+ int timer ;
+ int trace_rxrpc_timer (struct rxrpc_call*,int ,int ) ;
 
 __attribute__((used)) static void rxrpc_call_timer_expired(struct timer_list *t)
 {
-	struct rxrpc_call *call = from_timer(call, t, timer);
+ struct rxrpc_call *call = from_timer(call, t, timer);
 
-	_enter("%d", call->debug_id);
+ _enter("%d", call->debug_id);
 
-	if (call->state < RXRPC_CALL_COMPLETE) {
-		trace_rxrpc_timer(call, rxrpc_timer_expired, jiffies);
-		rxrpc_queue_call(call);
-	}
+ if (call->state < RXRPC_CALL_COMPLETE) {
+  trace_rxrpc_timer(call, rxrpc_timer_expired, jiffies);
+  rxrpc_queue_call(call);
+ }
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vtbl_method_t ;
-struct TYPE_3__ {int /*<<< orphan*/  Release; int /*<<< orphan*/  AddRef; int /*<<< orphan*/  QueryInterface; } ;
-typedef  TYPE_1__ IUnknownVtbl ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int BLOCK_SIZE ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int /*<<< orphan*/  IUnknown_AddRef_Proxy ; 
- int /*<<< orphan*/  IUnknown_QueryInterface_Proxy ; 
- int /*<<< orphan*/  IUnknown_Release_Proxy ; 
- int MAX_BLOCKS ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * allocate_block (int) ; 
- int /*<<< orphan*/ ** method_blocks ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int vtbl_method_t ;
+struct TYPE_3__ {int Release; int AddRef; int QueryInterface; } ;
+typedef TYPE_1__ IUnknownVtbl ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int BLOCK_SIZE ;
+ int FALSE ;
+ int FIXME (char*,int) ;
+ int IUnknown_AddRef_Proxy ;
+ int IUnknown_QueryInterface_Proxy ;
+ int IUnknown_Release_Proxy ;
+ int MAX_BLOCKS ;
+ int TRUE ;
+ int * allocate_block (int) ;
+ int ** method_blocks ;
 
 BOOL fill_delegated_proxy_table(IUnknownVtbl *vtbl, DWORD num)
 {

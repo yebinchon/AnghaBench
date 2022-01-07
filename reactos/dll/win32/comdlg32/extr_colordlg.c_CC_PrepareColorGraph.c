@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  hdcMem; int /*<<< orphan*/  hbmMem; int /*<<< orphan*/  hwndSelf; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int hdcMem; int hbmMem; int hwndSelf; } ;
 struct TYPE_6__ {int right; int bottom; int left; int top; } ;
-typedef  TYPE_1__ RECT ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  HCURSOR ;
-typedef  int /*<<< orphan*/  HBRUSH ;
-typedef  TYPE_2__ CCPRIV ;
+typedef TYPE_1__ RECT ;
+typedef int LPCWSTR ;
+typedef int HWND ;
+typedef int HDC ;
+typedef int HCURSOR ;
+typedef int HBRUSH ;
+typedef TYPE_2__ CCPRIV ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CC_HSLtoRGB (int,int,int) ; 
- int /*<<< orphan*/  CreateCompatibleBitmap (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  CreateCompatibleDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateSolidBrush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FillRect (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetClientRect (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_COLOR_GRAPH ; 
- scalar_t__ IDC_WAIT ; 
- int /*<<< orphan*/  LoadCursorW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetCursor (int /*<<< orphan*/ ) ; 
- int XSTEPS ; 
- int YSTEPS ; 
+
+ int CC_HSLtoRGB (int,int,int) ;
+ int CreateCompatibleBitmap (int ,int,int) ;
+ int CreateCompatibleDC (int ) ;
+ int CreateSolidBrush (int ) ;
+ int DeleteObject (int ) ;
+ int FillRect (int ,TYPE_1__*,int ) ;
+ int GetClientRect (int ,TYPE_1__*) ;
+ int GetDC (int ) ;
+ int GetDlgItem (int ,int ) ;
+ int IDC_COLOR_GRAPH ;
+ scalar_t__ IDC_WAIT ;
+ int LoadCursorW (int ,int ) ;
+ int ReleaseDC (int ,int ) ;
+ int SelectObject (int ,int ) ;
+ int SetCursor (int ) ;
+ int XSTEPS ;
+ int YSTEPS ;
 
 __attribute__((used)) static void CC_PrepareColorGraph(CCPRIV *infoPtr)
 {

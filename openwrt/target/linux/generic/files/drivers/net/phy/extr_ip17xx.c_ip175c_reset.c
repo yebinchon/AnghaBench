@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ip17xx_state {TYPE_1__* regs; } ;
-struct TYPE_2__ {int /*<<< orphan*/  MODE_REG; int /*<<< orphan*/  MODE_VAL; } ;
+struct TYPE_2__ {int MODE_REG; int MODE_VAL; } ;
 
-/* Variables and functions */
- scalar_t__ REG_SUPP (int /*<<< orphan*/ ) ; 
- int getPhy (struct ip17xx_state*,int /*<<< orphan*/ ) ; 
- int ip175c_update_state (struct ip17xx_state*) ; 
- int setPhy (struct ip17xx_state*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ REG_SUPP (int ) ;
+ int getPhy (struct ip17xx_state*,int ) ;
+ int ip175c_update_state (struct ip17xx_state*) ;
+ int setPhy (struct ip17xx_state*,int ,int ) ;
 
 __attribute__((used)) static int ip175c_reset(struct ip17xx_state *state)
 {
-	int err;
+ int err;
 
-	if (REG_SUPP(state->regs->MODE_REG)) {
-		err = setPhy(state, state->regs->MODE_REG, state->regs->MODE_VAL);
-		if (err < 0)
-			return err;
-		err = getPhy(state, state->regs->MODE_REG);
-		if (err < 0)
-			return err;
-	}
+ if (REG_SUPP(state->regs->MODE_REG)) {
+  err = setPhy(state, state->regs->MODE_REG, state->regs->MODE_VAL);
+  if (err < 0)
+   return err;
+  err = getPhy(state, state->regs->MODE_REG);
+  if (err < 0)
+   return err;
+ }
 
-	return ip175c_update_state(state);
+ return ip175c_update_state(state);
 }

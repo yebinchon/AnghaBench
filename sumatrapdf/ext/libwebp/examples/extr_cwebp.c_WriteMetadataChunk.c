@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef char uint8_t ;
+typedef int uint32_t ;
 struct TYPE_3__ {int size; char const* bytes; } ;
-typedef  TYPE_1__ MetadataPayload ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ MetadataPayload ;
+typedef int FILE ;
 
-/* Variables and functions */
- scalar_t__ WriteLE32 (int /*<<< orphan*/ * const,int /*<<< orphan*/ ) ; 
- size_t const fwrite (char const*,size_t const,size_t const,int /*<<< orphan*/ * const) ; 
- size_t const kTagSize ; 
+
+ scalar_t__ WriteLE32 (int * const,int ) ;
+ size_t const fwrite (char const*,size_t const,size_t const,int * const) ;
+ size_t const kTagSize ;
 
 __attribute__((used)) static int WriteMetadataChunk(FILE* const out, const char fourcc[4],
                               const MetadataPayload* const payload) {

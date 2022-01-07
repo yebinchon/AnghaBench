@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct snd_seq_timer {unsigned int tempo; int /*<<< orphan*/  lock; int /*<<< orphan*/  ppq; int /*<<< orphan*/  tick; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- scalar_t__ snd_BUG_ON (int) ; 
- int /*<<< orphan*/  snd_seq_timer_set_tick_resolution (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct snd_seq_timer {unsigned int tempo; int lock; int ppq; int tick; } ;
+
+
+ int EINVAL ;
+ scalar_t__ snd_BUG_ON (int) ;
+ int snd_seq_timer_set_tick_resolution (int *,int,int ) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 int snd_seq_timer_set_tempo(struct snd_seq_timer * tmr, int tempo)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	if (snd_BUG_ON(!tmr))
-		return -EINVAL;
-	if (tempo <= 0)
-		return -EINVAL;
-	spin_lock_irqsave(&tmr->lock, flags);
-	if ((unsigned int)tempo != tmr->tempo) {
-		tmr->tempo = tempo;
-		snd_seq_timer_set_tick_resolution(&tmr->tick, tmr->tempo, tmr->ppq);
-	}
-	spin_unlock_irqrestore(&tmr->lock, flags);
-	return 0;
+ if (snd_BUG_ON(!tmr))
+  return -EINVAL;
+ if (tempo <= 0)
+  return -EINVAL;
+ spin_lock_irqsave(&tmr->lock, flags);
+ if ((unsigned int)tempo != tmr->tempo) {
+  tmr->tempo = tempo;
+  snd_seq_timer_set_tick_resolution(&tmr->tick, tmr->tempo, tmr->ppq);
+ }
+ spin_unlock_irqrestore(&tmr->lock, flags);
+ return 0;
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  struct vlc_timer* vlc_timer_t ;
-struct vlc_timer {void (* func ) (void*) ;int /*<<< orphan*/  lock; int /*<<< orphan*/  reschedule; int /*<<< orphan*/  thread; int /*<<< orphan*/  overruns; scalar_t__ interval; scalar_t__ value; void* data; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  VLC_THREAD_PRIORITY_INPUT ; 
- int /*<<< orphan*/  assert (void (*) (void*)) ; 
- int /*<<< orphan*/  atomic_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (struct vlc_timer*) ; 
- struct vlc_timer* malloc (int) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- scalar_t__ vlc_clone (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct vlc_timer*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_cond_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_cond_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_timer_thread ; 
+
+
+
+typedef struct vlc_timer* vlc_timer_t ;
+struct vlc_timer {void (* func ) (void*) ;int lock; int reschedule; int thread; int overruns; scalar_t__ interval; scalar_t__ value; void* data; } ;
+
+
+ int ENOMEM ;
+ int VLC_THREAD_PRIORITY_INPUT ;
+ int assert (void (*) (void*)) ;
+ int atomic_init (int *,int ) ;
+ int free (struct vlc_timer*) ;
+ struct vlc_timer* malloc (int) ;
+ scalar_t__ unlikely (int ) ;
+ scalar_t__ vlc_clone (int *,int ,struct vlc_timer*,int ) ;
+ int vlc_cond_destroy (int *) ;
+ int vlc_cond_init (int *) ;
+ int vlc_mutex_destroy (int *) ;
+ int vlc_mutex_init (int *) ;
+ int vlc_timer_thread ;
 
 int vlc_timer_create (vlc_timer_t *id, void (*func) (void *), void *data)
 {
     struct vlc_timer *timer = malloc (sizeof (*timer));
 
-    if (unlikely(timer == NULL))
+    if (unlikely(timer == ((void*)0)))
         return ENOMEM;
     vlc_mutex_init (&timer->lock);
     vlc_cond_init (&timer->reschedule);

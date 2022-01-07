@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  resolv; scalar_t__ resolver; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int resolv; scalar_t__ resolver; } ;
 struct ipcp {TYPE_1__ ns; } ;
-typedef  int ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int ID0open (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  LogERROR ; 
- int O_TRUNC ; 
- int O_WRONLY ; 
- int /*<<< orphan*/  _PATH_RESCONF ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,long,...) ; 
- int remove (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int strlen (int /*<<< orphan*/ ) ; 
- int write (int,int /*<<< orphan*/ ,int) ; 
+
+ int ID0open (int ,int,int) ;
+ int LogERROR ;
+ int O_TRUNC ;
+ int O_WRONLY ;
+ int _PATH_RESCONF ;
+ int close (int) ;
+ int errno ;
+ int log_Printf (int ,char*,int ,long,...) ;
+ int remove (int ) ;
+ int strerror (int ) ;
+ int strlen (int ) ;
+ int write (int,int ,int) ;
 
 void
 ipcp_RestoreDNS(struct ipcp *ipcp)

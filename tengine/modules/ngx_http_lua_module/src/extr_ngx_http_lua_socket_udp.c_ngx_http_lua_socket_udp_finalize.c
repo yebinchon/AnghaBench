@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_11__ {TYPE_2__* connection; } ;
-typedef  TYPE_4__ ngx_http_request_t ;
-struct TYPE_10__ {int /*<<< orphan*/ * connection; } ;
-struct TYPE_12__ {scalar_t__ waiting; TYPE_3__ udp_connection; TYPE_1__* resolved; int /*<<< orphan*/ ** cleanup; } ;
-typedef  TYPE_5__ ngx_http_lua_socket_udp_upstream_t ;
-struct TYPE_9__ {int /*<<< orphan*/  log; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * ctx; } ;
+typedef TYPE_4__ ngx_http_request_t ;
+struct TYPE_10__ {int * connection; } ;
+struct TYPE_12__ {scalar_t__ waiting; TYPE_3__ udp_connection; TYPE_1__* resolved; int ** cleanup; } ;
+typedef TYPE_5__ ngx_http_lua_socket_udp_upstream_t ;
+struct TYPE_9__ {int log; } ;
+struct TYPE_8__ {int * ctx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  ngx_close_connection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_resolve_name_done (int /*<<< orphan*/ *) ; 
+
+ int NGX_LOG_DEBUG_HTTP ;
+ int ngx_close_connection (int *) ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int ngx_resolve_name_done (int *) ;
 
 __attribute__((used)) static void
 ngx_http_lua_socket_udp_finalize(ngx_http_request_t *r,
@@ -37,13 +37,13 @@ ngx_http_lua_socket_udp_finalize(ngx_http_request_t *r,
                    "lua finalize socket");
 
     if (u->cleanup) {
-        *u->cleanup = NULL;
-        u->cleanup = NULL;
+        *u->cleanup = ((void*)0);
+        u->cleanup = ((void*)0);
     }
 
     if (u->resolved && u->resolved->ctx) {
         ngx_resolve_name_done(u->resolved->ctx);
-        u->resolved->ctx = NULL;
+        u->resolved->ctx = ((void*)0);
     }
 
     if (u->udp_connection.connection) {
@@ -51,7 +51,7 @@ ngx_http_lua_socket_udp_finalize(ngx_http_request_t *r,
                        "lua close socket connection");
 
         ngx_close_connection(u->udp_connection.connection);
-        u->udp_connection.connection = NULL;
+        u->udp_connection.connection = ((void*)0);
     }
 
     if (u->waiting) {

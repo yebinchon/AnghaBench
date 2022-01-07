@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_9__ {int* linesize; int /*<<< orphan*/ ** data; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+struct TYPE_9__ {int* linesize; int ** data; } ;
 struct TYPE_8__ {int depth; } ;
 struct TYPE_7__ {float re; } ;
-typedef  TYPE_1__ FFTComplex ;
-typedef  TYPE_2__ ConvolveContext ;
-typedef  TYPE_3__ AVFrame ;
+typedef TYPE_1__ FFTComplex ;
+typedef TYPE_2__ ConvolveContext ;
+typedef TYPE_3__ AVFrame ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_clip (float,int /*<<< orphan*/ ,int const) ; 
- int /*<<< orphan*/  av_clip_uint8 (float) ; 
+
+ int av_clip (float,int ,int const) ;
+ int av_clip_uint8 (float) ;
 
 __attribute__((used)) static void get_output(ConvolveContext *s, FFTComplex *input, AVFrame *out,
                        int w, int h, int n, int plane, float scale)

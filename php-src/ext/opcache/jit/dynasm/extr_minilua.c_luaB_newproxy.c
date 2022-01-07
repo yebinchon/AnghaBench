@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int,int,char*) ; 
- scalar_t__ lua_getmetatable (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_isboolean (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_newtable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_newuserdata (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushboolean (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_rawget (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_rawset (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_setmetatable (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_settop (int /*<<< orphan*/ *,int) ; 
- int lua_toboolean (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_upvalueindex (int) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int luaL_argcheck (int *,int,int,char*) ;
+ scalar_t__ lua_getmetatable (int *,int) ;
+ scalar_t__ lua_isboolean (int *,int) ;
+ int lua_newtable (int *) ;
+ int lua_newuserdata (int *,int ) ;
+ int lua_pop (int *,int) ;
+ int lua_pushboolean (int *,int) ;
+ int lua_pushvalue (int *,int) ;
+ int lua_rawget (int *,int ) ;
+ int lua_rawset (int *,int ) ;
+ int lua_setmetatable (int *,int) ;
+ int lua_settop (int *,int) ;
+ int lua_toboolean (int *,int) ;
+ int lua_upvalueindex (int) ;
 
 __attribute__((used)) static int luaB_newproxy(lua_State*L){
 lua_settop(L,1);

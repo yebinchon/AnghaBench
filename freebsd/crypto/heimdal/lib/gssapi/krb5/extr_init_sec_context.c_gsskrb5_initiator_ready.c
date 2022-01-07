@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  krb5_context ;
-typedef  int /*<<< orphan*/  int32_t ;
-typedef  TYPE_1__* gsskrb5_ctx ;
-struct TYPE_4__ {int more_flags; int /*<<< orphan*/  state; int /*<<< orphan*/  order; int /*<<< orphan*/  auth_context; int /*<<< orphan*/ * ccache; int /*<<< orphan*/ * kcred; scalar_t__ flags; } ;
-typedef  scalar_t__ OM_uint32 ;
 
-/* Variables and functions */
- int CLOSE_CCACHE ; 
- scalar_t__ GSS_S_COMPLETE ; 
- int /*<<< orphan*/  INITIATOR_READY ; 
- int IS_CFX ; 
- int OPEN ; 
- scalar_t__ _gssapi_msg_order_create (scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  _gssapi_msg_order_f (scalar_t__) ; 
- int /*<<< orphan*/  _gsskrb5i_is_cfx (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  krb5_auth_con_getremoteseqnumber (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  krb5_cc_close (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  krb5_free_creds (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int krb5_context ;
+typedef int int32_t ;
+typedef TYPE_1__* gsskrb5_ctx ;
+struct TYPE_4__ {int more_flags; int state; int order; int auth_context; int * ccache; int * kcred; scalar_t__ flags; } ;
+typedef scalar_t__ OM_uint32 ;
+
+
+ int CLOSE_CCACHE ;
+ scalar_t__ GSS_S_COMPLETE ;
+ int INITIATOR_READY ;
+ int IS_CFX ;
+ int OPEN ;
+ scalar_t__ _gssapi_msg_order_create (scalar_t__*,int *,int ,int ,int ,int) ;
+ int _gssapi_msg_order_f (scalar_t__) ;
+ int _gsskrb5i_is_cfx (int ,TYPE_1__*,int ) ;
+ int krb5_auth_con_getremoteseqnumber (int ,int ,int *) ;
+ int krb5_cc_close (int ,int *) ;
+ int krb5_free_creds (int ,int *) ;
 
 __attribute__((used)) static OM_uint32
 gsskrb5_initiator_ready(
-	OM_uint32 * minor_status,
-	gsskrb5_ctx ctx,
-	krb5_context context)
+ OM_uint32 * minor_status,
+ gsskrb5_ctx ctx,
+ krb5_context context)
 {
     OM_uint32 ret;
     int32_t seq_number;
@@ -42,11 +42,11 @@ gsskrb5_initiator_ready(
     OM_uint32 flags = ctx->flags;
 
     krb5_free_creds(context, ctx->kcred);
-    ctx->kcred = NULL;
+    ctx->kcred = ((void*)0);
 
     if (ctx->more_flags & CLOSE_CCACHE)
-	krb5_cc_close(context, ctx->ccache);
-    ctx->ccache = NULL;
+ krb5_cc_close(context, ctx->ccache);
+    ctx->ccache = ((void*)0);
 
     krb5_auth_con_getremoteseqnumber (context, ctx->auth_context, &seq_number);
 
@@ -54,13 +54,13 @@ gsskrb5_initiator_ready(
     is_cfx = (ctx->more_flags & IS_CFX);
 
     ret = _gssapi_msg_order_create(minor_status,
-				   &ctx->order,
-				   _gssapi_msg_order_f(flags),
-				   seq_number, 0, is_cfx);
+       &ctx->order,
+       _gssapi_msg_order_f(flags),
+       seq_number, 0, is_cfx);
     if (ret) return ret;
 
-    ctx->state	= INITIATOR_READY;
-    ctx->more_flags	|= OPEN;
+    ctx->state = INITIATOR_READY;
+    ctx->more_flags |= OPEN;
 
     return GSS_S_COMPLETE;
 }

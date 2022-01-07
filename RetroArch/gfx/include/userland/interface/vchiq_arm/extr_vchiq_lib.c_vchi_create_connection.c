@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VCHI_MESSAGE_DRIVER_T ;
-typedef  int /*<<< orphan*/  VCHI_CONNECTION_T ;
-typedef  int /*<<< orphan*/  VCHI_CONNECTION_API_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  vcos_unused (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int VCHI_MESSAGE_DRIVER_T ;
+typedef int VCHI_CONNECTION_T ;
+typedef int VCHI_CONNECTION_API_T ;
+
+
+ int vcos_unused (int const*) ;
 
 VCHI_CONNECTION_T *
 vchi_create_connection( const VCHI_CONNECTION_API_T * function_table,
@@ -24,5 +24,5 @@ vchi_create_connection( const VCHI_CONNECTION_API_T * function_table,
    vcos_unused(function_table);
    vcos_unused(low_level);
 
-   return NULL;
+   return ((void*)0);
 }

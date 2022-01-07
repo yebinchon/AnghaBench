@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ U8 ;
-typedef  int /*<<< orphan*/  SCI_SAS_ADDRESS_T ;
-typedef  scalar_t__ SCI_PORT_HANDLE_T ;
-typedef  int /*<<< orphan*/  SCIC_SDS_PORT_T ;
-typedef  int /*<<< orphan*/  SCIC_SDS_PHY_T ;
-typedef  int /*<<< orphan*/  SCIC_SDS_CONTROLLER_T ;
 
-/* Variables and functions */
- int SCIC_LOG_OBJECT_CONTROLLER ; 
- int SCIC_LOG_OBJECT_PHY ; 
- int SCIC_LOG_OBJECT_PORT ; 
- int /*<<< orphan*/  SCIC_LOG_TRACE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SCI_INVALID_HANDLE ; 
- scalar_t__ SCI_MAX_PORTS ; 
- scalar_t__ SCI_SUCCESS ; 
- int /*<<< orphan*/  sci_base_object_get_logger (int /*<<< orphan*/ *) ; 
- scalar_t__ sci_sas_address_compare (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ scic_controller_get_port_handle (int /*<<< orphan*/ *,scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  scic_sds_phy_get_attached_sas_address (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scic_sds_phy_get_sas_address (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scic_sds_port_get_attached_sas_address (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scic_sds_port_get_sas_address (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ U8 ;
+typedef int SCI_SAS_ADDRESS_T ;
+typedef scalar_t__ SCI_PORT_HANDLE_T ;
+typedef int SCIC_SDS_PORT_T ;
+typedef int SCIC_SDS_PHY_T ;
+typedef int SCIC_SDS_CONTROLLER_T ;
+
+
+ int SCIC_LOG_OBJECT_CONTROLLER ;
+ int SCIC_LOG_OBJECT_PHY ;
+ int SCIC_LOG_OBJECT_PORT ;
+ int SCIC_LOG_TRACE (int ) ;
+ int * SCI_INVALID_HANDLE ;
+ scalar_t__ SCI_MAX_PORTS ;
+ scalar_t__ SCI_SUCCESS ;
+ int sci_base_object_get_logger (int *) ;
+ scalar_t__ sci_sas_address_compare (int ,int ) ;
+ scalar_t__ scic_controller_get_port_handle (int *,scalar_t__,scalar_t__*) ;
+ int scic_sds_phy_get_attached_sas_address (int *,int *) ;
+ int scic_sds_phy_get_sas_address (int *,int *) ;
+ int scic_sds_port_get_attached_sas_address (int *,int *) ;
+ int scic_sds_port_get_sas_address (int *,int *) ;
 
 __attribute__((used)) static
 SCIC_SDS_PORT_T * scic_sds_port_configuration_agent_find_port(
    SCIC_SDS_CONTROLLER_T * controller,
-   SCIC_SDS_PHY_T        * phy
+   SCIC_SDS_PHY_T * phy
 )
 {
    U8 port_index;
@@ -53,9 +53,9 @@ SCIC_SDS_PORT_T * scic_sds_port_configuration_agent_find_port(
       controller, phy
    ));
 
-   // Since this phy can be a member of a wide port check to see if one or
-   // more phys match the sent and received SAS address as this phy in which
-   // case it should participate in the same port.
+
+
+
    scic_sds_phy_get_sas_address(phy, &phy_sas_address);
    scic_sds_phy_get_attached_sas_address(phy, &phy_attached_device_address);
 

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct os_mbuf {int om_len; int /*<<< orphan*/ * om_data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INFO ; 
- int /*<<< orphan*/  MODLOG_DFLT (int /*<<< orphan*/ ,char*,...) ; 
- struct os_mbuf* SLIST_NEXT (struct os_mbuf const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  om_next ; 
+
+
+
+struct os_mbuf {int om_len; int * om_data; } ;
+
+
+ int INFO ;
+ int MODLOG_DFLT (int ,char*,...) ;
+ struct os_mbuf* SLIST_NEXT (struct os_mbuf const*,int ) ;
+ int om_next ;
 
 void
 print_mbuf(const struct os_mbuf *om)
@@ -24,7 +24,7 @@ print_mbuf(const struct os_mbuf *om)
     int colon, i;
 
     colon = 0;
-    while (om != NULL) {
+    while (om != ((void*)0)) {
         if (colon) {
             MODLOG_DFLT(INFO, ":");
         } else {

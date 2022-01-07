@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  ValueBuffer ;
-struct TYPE_7__ {int /*<<< orphan*/  Buffer; } ;
-typedef  TYPE_1__ UNICODE_STRING ;
-typedef  int /*<<< orphan*/  ULONG ;
-struct TYPE_8__ {int /*<<< orphan*/  DataLength; scalar_t__ Data; } ;
-typedef  int /*<<< orphan*/  PWSTR ;
-typedef  TYPE_2__* PVOID ;
-typedef  int /*<<< orphan*/  PUNICODE_STRING ;
-typedef  TYPE_2__* PKEY_VALUE_PARTIAL_INFORMATION ;
-typedef  int /*<<< orphan*/ * PDWORD ;
-typedef  int /*<<< orphan*/  PCWSTR ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  KEY_VALUE_PARTIAL_INFORMATION ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KEY_QUERY_VALUE ; 
- int /*<<< orphan*/  KeyValuePartialInformation ; 
- int MAX_LAYER_LENGTH ; 
- scalar_t__ NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtClose (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtQueryValueKey (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SHIM_INFO (char*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SdbFree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SdbpOpenKey (TYPE_1__*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  StringCbCopyNW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int ValueBuffer ;
+struct TYPE_7__ {int Buffer; } ;
+typedef TYPE_1__ UNICODE_STRING ;
+typedef int ULONG ;
+struct TYPE_8__ {int DataLength; scalar_t__ Data; } ;
+typedef int PWSTR ;
+typedef TYPE_2__* PVOID ;
+typedef int PUNICODE_STRING ;
+typedef TYPE_2__* PKEY_VALUE_PARTIAL_INFORMATION ;
+typedef int * PDWORD ;
+typedef int PCWSTR ;
+typedef int NTSTATUS ;
+typedef int KEY_VALUE_PARTIAL_INFORMATION ;
+typedef int HANDLE ;
+typedef scalar_t__ BOOL ;
+
+
+ int KEY_QUERY_VALUE ;
+ int KeyValuePartialInformation ;
+ int MAX_LAYER_LENGTH ;
+ scalar_t__ NT_SUCCESS (int ) ;
+ int NtClose (int ) ;
+ int NtQueryValueKey (int ,int ,int ,TYPE_2__*,int,int *) ;
+ int SHIM_INFO (char*,TYPE_1__*,int ) ;
+ int SdbFree (int ) ;
+ int SdbpOpenKey (TYPE_1__*,scalar_t__,int ,int *) ;
+ int StringCbCopyNW (int ,int ,int ,int ) ;
 
 BOOL SdbpGetPermLayersInternal(PUNICODE_STRING FullPath, PWSTR pwszLayers, PDWORD pdwBytes, BOOL bMachine)
 {

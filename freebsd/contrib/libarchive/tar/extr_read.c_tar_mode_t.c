@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bsdtar {int return_value; int /*<<< orphan*/  matching; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  read_archive (struct bsdtar*,char,int /*<<< orphan*/ *) ; 
- scalar_t__ unmatched_inclusions_warn (int /*<<< orphan*/ ,char*) ; 
+
+
+
+struct bsdtar {int return_value; int matching; } ;
+
+
+ int read_archive (struct bsdtar*,char,int *) ;
+ scalar_t__ unmatched_inclusions_warn (int ,char*) ;
 
 void
 tar_mode_t(struct bsdtar *bsdtar)
 {
-	read_archive(bsdtar, 't', NULL);
-	if (unmatched_inclusions_warn(bsdtar->matching,
-	    "Not found in archive") != 0)
-		bsdtar->return_value = 1;
+ read_archive(bsdtar, 't', ((void*)0));
+ if (unmatched_inclusions_warn(bsdtar->matching,
+     "Not found in archive") != 0)
+  bsdtar->return_value = 1;
 }

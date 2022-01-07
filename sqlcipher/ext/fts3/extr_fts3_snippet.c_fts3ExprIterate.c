@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Fts3Expr ;
 
-/* Variables and functions */
- int fts3ExprIterate2 (int /*<<< orphan*/ *,int*,int (*) (int /*<<< orphan*/ *,int,void*),void*) ; 
+
+
+
+typedef int Fts3Expr ;
+
+
+ int fts3ExprIterate2 (int *,int*,int (*) (int *,int,void*),void*) ;
 
 __attribute__((used)) static int fts3ExprIterate(
-  Fts3Expr *pExpr,                /* Expression to iterate phrases of */
-  int (*x)(Fts3Expr*,int,void*),  /* Callback function to invoke for phrases */
-  void *pCtx                      /* Second argument to pass to callback */
+  Fts3Expr *pExpr,
+  int (*x)(Fts3Expr*,int,void*),
+  void *pCtx
 ){
-  int iPhrase = 0;                /* Variable used as the phrase counter */
+  int iPhrase = 0;
   return fts3ExprIterate2(pExpr, &iPhrase, x, pCtx);
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {scalar_t__* user_text; struct TYPE_6__* next; int /*<<< orphan*/  sub; int /*<<< orphan*/  vid; scalar_t__ symbol; } ;
-typedef  TYPE_1__ mc_node ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {scalar_t__* user_text; struct TYPE_6__* next; int sub; int vid; scalar_t__ symbol; } ;
+typedef TYPE_1__ mc_node ;
 struct TYPE_7__ {scalar_t__* usz; scalar_t__* sval; scalar_t__ nval; } ;
-typedef  TYPE_2__ mc_keyword ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_2__ mc_keyword ;
+typedef int FILE ;
 
-/* Variables and functions */
- char* convert_unicode_to_ACP (scalar_t__*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- TYPE_2__** mc_facility_codes ; 
- int mc_facility_codes_count ; 
- TYPE_1__* mc_nodes ; 
- TYPE_2__** mc_severity_codes ; 
- int mc_severity_codes_count ; 
- int /*<<< orphan*/  mcset_msg_id_typedef ; 
- int /*<<< orphan*/  mcset_out_values_are_decimal ; 
- int /*<<< orphan*/  write_header_define (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ char* convert_unicode_to_ACP (scalar_t__*) ;
+ int fprintf (int *,char*,...) ;
+ TYPE_2__** mc_facility_codes ;
+ int mc_facility_codes_count ;
+ TYPE_1__* mc_nodes ;
+ TYPE_2__** mc_severity_codes ;
+ int mc_severity_codes_count ;
+ int mcset_msg_id_typedef ;
+ int mcset_out_values_are_decimal ;
+ int write_header_define (int *,scalar_t__,int ,int ,int ) ;
 
 __attribute__((used)) static void
 write_header (FILE *fp)
@@ -58,53 +58,53 @@ write_header (FILE *fp)
   if (mc_severity_codes_count != 0)
     {
       for (i = 0; i < mc_severity_codes_count; i++)
-	{
-	  key = mc_severity_codes[i];
-	  fprintf (fp, "//           %s - %02lx\n", convert_unicode_to_ACP (key->usz),
-		   (unsigned long) key->nval);
-	  if (key->sval && key->sval[0] != 0)
-	    {
-	      if (! mcset_out_values_are_decimal)
-		fprintf (fp, "#define %s 0x%lx\n", convert_unicode_to_ACP (key->sval),
-			 (unsigned long) key->nval);
-	      else
-		fprintf (fp, "#define %s 0x%lu\n", convert_unicode_to_ACP (key->sval),
-			 (unsigned long) key->nval);
-	    }
-	}
+ {
+   key = mc_severity_codes[i];
+   fprintf (fp, "//           %s - %02lx\n", convert_unicode_to_ACP (key->usz),
+     (unsigned long) key->nval);
+   if (key->sval && key->sval[0] != 0)
+     {
+       if (! mcset_out_values_are_decimal)
+  fprintf (fp, "#define %s 0x%lx\n", convert_unicode_to_ACP (key->sval),
+    (unsigned long) key->nval);
+       else
+  fprintf (fp, "#define %s 0x%lu\n", convert_unicode_to_ACP (key->sval),
+    (unsigned long) key->nval);
+     }
+ }
       fprintf (fp, "//\n");
     }
   fprintf (fp, "//      Facility - is the facility code\n//\n");
   if (mc_facility_codes_count != 0)
     {
       for (i = 0; i < mc_facility_codes_count; i++)
-	{
-	  key = mc_facility_codes[i];
-	  fprintf (fp, "//           %s - %04lx\n", convert_unicode_to_ACP (key->usz),
-		   (unsigned long) key->nval);
-	  if (key->sval && key->sval[0] != 0)
-	    {
-	      if (! mcset_out_values_are_decimal)
-		fprintf (fp, "#define %s 0x%lx\n", convert_unicode_to_ACP (key->sval),
-			 (unsigned long) key->nval);
-	      else
-		fprintf (fp, "#define %s 0x%lu\n", convert_unicode_to_ACP (key->sval),
-			 (unsigned long) key->nval);
-	    }
-	}
+ {
+   key = mc_facility_codes[i];
+   fprintf (fp, "//           %s - %04lx\n", convert_unicode_to_ACP (key->usz),
+     (unsigned long) key->nval);
+   if (key->sval && key->sval[0] != 0)
+     {
+       if (! mcset_out_values_are_decimal)
+  fprintf (fp, "#define %s 0x%lx\n", convert_unicode_to_ACP (key->sval),
+    (unsigned long) key->nval);
+       else
+  fprintf (fp, "#define %s 0x%lu\n", convert_unicode_to_ACP (key->sval),
+    (unsigned long) key->nval);
+     }
+ }
       fprintf (fp, "//\n");
     }
   fprintf (fp, "\n");
-  while (h != NULL)
+  while (h != ((void*)0))
     {
       if (h->user_text)
-	{
-	  s = convert_unicode_to_ACP (h->user_text);
-	  if (s)
-	    fprintf (fp, "%s", s);
-	}
+ {
+   s = convert_unicode_to_ACP (h->user_text);
+   if (s)
+     fprintf (fp, "%s", s);
+ }
       if (h->symbol)
-	write_header_define (fp, h->symbol, h->vid, mcset_msg_id_typedef, h->sub);
+ write_header_define (fp, h->symbol, h->vid, mcset_msg_id_typedef, h->sub);
       h = h->next;
     }
 }

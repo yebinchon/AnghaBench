@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  LPOLESTR ;
-typedef  int /*<<< orphan*/  IBindCtx ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- scalar_t__ VT_I4 ; 
- scalar_t__ V_I4 (int /*<<< orphan*/ *) ; 
- scalar_t__ V_VT (int /*<<< orphan*/ *) ; 
- scalar_t__ navHyperlink ; 
- int /*<<< orphan*/  nav_url ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  strcmp_wa (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ wine_dbgstr_w (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int VARIANT ;
+typedef int LPOLESTR ;
+typedef int IBindCtx ;
+typedef int BSTR ;
+
+
+ scalar_t__ VT_I4 ;
+ scalar_t__ V_I4 (int *) ;
+ scalar_t__ V_VT (int *) ;
+ scalar_t__ navHyperlink ;
+ int nav_url ;
+ int ok (int,char*,...) ;
+ int strcmp_wa (int ,int ) ;
+ scalar_t__ wine_dbgstr_w (int ) ;
 
 __attribute__((used)) static void test_NavigateWithBindCtx(BSTR uri, VARIANT *flags, VARIANT *target_frame, VARIANT *post_data,
         VARIANT *headers, IBindCtx *bind_ctx, LPOLESTR url_fragment)
@@ -34,6 +34,6 @@ __attribute__((used)) static void test_NavigateWithBindCtx(BSTR uri, VARIANT *fl
     ok(!target_frame, "target_frame != NULL\n");
     ok(!post_data, "post_data != NULL\n");
     ok(!headers, "headers != NULL\n");
-    ok(bind_ctx != NULL, "bind_ctx == NULL\n");
+    ok(bind_ctx != ((void*)0), "bind_ctx == NULL\n");
     ok(!url_fragment, "url_dragment = %s\n", wine_dbgstr_w(url_fragment));
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int ULONGLONG ;
-typedef  scalar_t__* PVOID ;
-typedef  scalar_t__* PUCHAR ;
-typedef  int LONGLONG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT1 (char*) ; 
- int /*<<< orphan*/  DbgPrint (char*,...) ; 
- scalar_t__* DecodeRun (scalar_t__*,int*,int*) ; 
- int /*<<< orphan*/  NtfsDumpDataRunData (scalar_t__*) ; 
+
+
+
+typedef int VOID ;
+typedef int ULONGLONG ;
+typedef scalar_t__* PVOID ;
+typedef scalar_t__* PUCHAR ;
+typedef int LONGLONG ;
+
+
+ int DPRINT1 (char*) ;
+ int DbgPrint (char*,...) ;
+ scalar_t__* DecodeRun (scalar_t__*,int*,int*) ;
+ int NtfsDumpDataRunData (scalar_t__*) ;
 
 VOID
 NtfsDumpDataRuns(PVOID StartOfRun,

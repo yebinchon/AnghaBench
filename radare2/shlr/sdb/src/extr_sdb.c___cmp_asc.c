@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SdbKv ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sdbkv_key (int /*<<< orphan*/  const*) ; 
- int strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int SdbKv ;
+
+
+ int sdbkv_key (int const*) ;
+ int strcmp (int ,int ) ;
 
 __attribute__((used)) static int __cmp_asc(const void *a, const void *b) {
-	const SdbKv *ka = a, *kb = b;
-	return strcmp (sdbkv_key (ka), sdbkv_key (kb));
+ const SdbKv *ka = a, *kb = b;
+ return strcmp (sdbkv_key (ka), sdbkv_key (kb));
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  int /*<<< orphan*/  demux_sys_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
+typedef int demux_sys_t ;
 struct TYPE_4__ {int pid; } ;
-typedef  TYPE_1__ BLURAY_STREAM_INFO ;
+typedef TYPE_1__ BLURAY_STREAM_INFO ;
 
-/* Variables and functions */
- int BD_EVENT_AUDIO_STREAM ; 
- int BD_EVENT_SECONDARY_VIDEO_STREAM ; 
- size_t blurayGetStreamsUnlocked (int /*<<< orphan*/ *,int,TYPE_1__**) ; 
+
+ int BD_EVENT_AUDIO_STREAM ;
+ int BD_EVENT_SECONDARY_VIDEO_STREAM ;
+ size_t blurayGetStreamsUnlocked (int *,int,TYPE_1__**) ;
 
 __attribute__((used)) static BLURAY_STREAM_INFO * blurayGetStreamInfoByPIDUnlocked(demux_sys_t *p_sys,
                                                              int i_pid)
@@ -34,5 +34,5 @@ __attribute__((used)) static BLURAY_STREAM_INFO * blurayGetStreamInfoByPIDUnlock
                 return &p_streams[i];
         }
     }
-    return NULL;
+    return ((void*)0);
 }

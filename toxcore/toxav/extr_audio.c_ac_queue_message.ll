@@ -1,0 +1,129 @@
+; ModuleID = '/home/carl/AnghaBench/toxcore/toxav/extr_audio.c_ac_queue_message.c'
+source_filename = "/home/carl/AnghaBench/toxcore/toxav/extr_audio.c_ac_queue_message.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.RTPMessage = type { %struct.TYPE_3__ }
+%struct.TYPE_3__ = type { i32 }
+%struct.TYPE_4__ = type { i32, i32 }
+
+@rtp_TypeAudio = common dso_local global i32 0, align 4
+@.str = private unnamed_addr constant [11 x i8] c"Got dummy!\00", align 1
+@.str.1 = private unnamed_addr constant [22 x i8] c"Invalid payload type!\00", align 1
+@.str.2 = private unnamed_addr constant [29 x i8] c"Could not queue the message!\00", align 1
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local i32 @ac_queue_message(i8* %0, %struct.RTPMessage* %1) #0 {
+  %3 = alloca i32, align 4
+  %4 = alloca i8*, align 8
+  %5 = alloca %struct.RTPMessage*, align 8
+  %6 = alloca %struct.TYPE_4__*, align 8
+  %7 = alloca i32, align 4
+  store i8* %0, i8** %4, align 8
+  store %struct.RTPMessage* %1, %struct.RTPMessage** %5, align 8
+  %8 = load i8*, i8** %4, align 8
+  %9 = icmp ne i8* %8, null
+  br i1 %9, label %10, label %13
+
+10:                                               ; preds = %2
+  %11 = load %struct.RTPMessage*, %struct.RTPMessage** %5, align 8
+  %12 = icmp ne %struct.RTPMessage* %11, null
+  br i1 %12, label %14, label %13
+
+13:                                               ; preds = %10, %2
+  store i32 -1, i32* %3, align 4
+  br label %64
+
+14:                                               ; preds = %10
+  %15 = load %struct.RTPMessage*, %struct.RTPMessage** %5, align 8
+  %16 = getelementptr inbounds %struct.RTPMessage, %struct.RTPMessage* %15, i32 0, i32 0
+  %17 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %16, i32 0, i32 0
+  %18 = load i32, i32* %17, align 4
+  %19 = and i32 %18, 127
+  %20 = load i32, i32* @rtp_TypeAudio, align 4
+  %21 = add nsw i32 %20, 2
+  %22 = srem i32 %21, 128
+  %23 = icmp eq i32 %19, %22
+  br i1 %23, label %24, label %28
+
+24:                                               ; preds = %14
+  %25 = call i32 @LOGGER_WARNING(i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str, i64 0, i64 0))
+  %26 = load %struct.RTPMessage*, %struct.RTPMessage** %5, align 8
+  %27 = call i32 @free(%struct.RTPMessage* %26)
+  store i32 0, i32* %3, align 4
+  br label %64
+
+28:                                               ; preds = %14
+  %29 = load %struct.RTPMessage*, %struct.RTPMessage** %5, align 8
+  %30 = getelementptr inbounds %struct.RTPMessage, %struct.RTPMessage* %29, i32 0, i32 0
+  %31 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %30, i32 0, i32 0
+  %32 = load i32, i32* %31, align 4
+  %33 = and i32 %32, 127
+  %34 = load i32, i32* @rtp_TypeAudio, align 4
+  %35 = srem i32 %34, 128
+  %36 = icmp ne i32 %33, %35
+  br i1 %36, label %37, label %41
+
+37:                                               ; preds = %28
+  %38 = call i32 @LOGGER_WARNING(i8* getelementptr inbounds ([22 x i8], [22 x i8]* @.str.1, i64 0, i64 0))
+  %39 = load %struct.RTPMessage*, %struct.RTPMessage** %5, align 8
+  %40 = call i32 @free(%struct.RTPMessage* %39)
+  store i32 -1, i32* %3, align 4
+  br label %64
+
+41:                                               ; preds = %28
+  %42 = load i8*, i8** %4, align 8
+  %43 = bitcast i8* %42 to %struct.TYPE_4__*
+  store %struct.TYPE_4__* %43, %struct.TYPE_4__** %6, align 8
+  %44 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %45 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %44, i32 0, i32 0
+  %46 = load i32, i32* %45, align 4
+  %47 = call i32 @pthread_mutex_lock(i32 %46)
+  %48 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %49 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %48, i32 0, i32 1
+  %50 = load i32, i32* %49, align 4
+  %51 = load %struct.RTPMessage*, %struct.RTPMessage** %5, align 8
+  %52 = call i32 @jbuf_write(i32 %50, %struct.RTPMessage* %51)
+  store i32 %52, i32* %7, align 4
+  %53 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %54 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %53, i32 0, i32 0
+  %55 = load i32, i32* %54, align 4
+  %56 = call i32 @pthread_mutex_unlock(i32 %55)
+  %57 = load i32, i32* %7, align 4
+  %58 = icmp eq i32 %57, -1
+  br i1 %58, label %59, label %63
+
+59:                                               ; preds = %41
+  %60 = call i32 @LOGGER_WARNING(i8* getelementptr inbounds ([29 x i8], [29 x i8]* @.str.2, i64 0, i64 0))
+  %61 = load %struct.RTPMessage*, %struct.RTPMessage** %5, align 8
+  %62 = call i32 @free(%struct.RTPMessage* %61)
+  store i32 -1, i32* %3, align 4
+  br label %64
+
+63:                                               ; preds = %41
+  store i32 0, i32* %3, align 4
+  br label %64
+
+64:                                               ; preds = %63, %59, %37, %24, %13
+  %65 = load i32, i32* %3, align 4
+  ret i32 %65
+}
+
+declare dso_local i32 @LOGGER_WARNING(i8*) #1
+
+declare dso_local i32 @free(%struct.RTPMessage*) #1
+
+declare dso_local i32 @pthread_mutex_lock(i32) #1
+
+declare dso_local i32 @jbuf_write(i32, %struct.RTPMessage*) #1
+
+declare dso_local i32 @pthread_mutex_unlock(i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

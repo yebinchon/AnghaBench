@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_context {int dummy; } ;
-typedef  scalar_t__ DWORD ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STATE_TEXTURESTAGE (scalar_t__,scalar_t__) ; 
- scalar_t__ WINED3D_HIGHEST_TEXTURE_STATE ; 
- int /*<<< orphan*/  context_invalidate_state (struct wined3d_context*,int /*<<< orphan*/ ) ; 
+
+ int STATE_TEXTURESTAGE (scalar_t__,scalar_t__) ;
+ scalar_t__ WINED3D_HIGHEST_TEXTURE_STATE ;
+ int context_invalidate_state (struct wined3d_context*,int ) ;
 
 __attribute__((used)) static void context_invalidate_texture_stage(struct wined3d_context *context, DWORD stage)
 {

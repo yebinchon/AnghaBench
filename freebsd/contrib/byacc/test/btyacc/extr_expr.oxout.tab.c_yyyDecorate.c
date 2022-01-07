@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ scalar_t__ yyyRS ;
+ scalar_t__ yyyRSTop ;
+ int yyySolveAndSignal () ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ yyyRS ; 
- scalar_t__ yyyRSTop ; 
- int /*<<< orphan*/  yyySolveAndSignal () ; 
-
-void yyyDecorate(void) 
-  { 
-   while (yyyRSTop >= yyyRS) 
-      yyySolveAndSignal();  
+void yyyDecorate(void)
+  {
+   while (yyyRSTop >= yyyRS)
+      yyySolveAndSignal();
   }

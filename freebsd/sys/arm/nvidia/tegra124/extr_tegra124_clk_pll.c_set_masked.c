@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
 
-/* Variables and functions */
+
+
+
+typedef int uint32_t ;
+
+
 
 __attribute__((used)) static uint32_t
 set_masked(uint32_t val, uint32_t v, uint32_t shift, uint32_t width)
 {
 
-	val &= ~(((1 << width) - 1) << shift);
-	val |= (v & ((1 << width) - 1)) << shift;
-	return (val);
+ val &= ~(((1 << width) - 1) << shift);
+ val |= (v & ((1 << width) - 1)) << shift;
+ return (val);
 }

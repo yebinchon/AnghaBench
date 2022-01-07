@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dd ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_3__ {int cb; int /*<<< orphan*/  DeviceName; } ;
-typedef  int /*<<< orphan*/ * PWSTR ;
-typedef  TYPE_1__ DISPLAY_DEVICEW ;
 
-/* Variables and functions */
- scalar_t__ EnumDisplayDevicesW (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LMEM_FIXED ; 
- int /*<<< orphan*/ * LocalAlloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  wcscpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int wcslen (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int dd ;
+typedef int WCHAR ;
+struct TYPE_3__ {int cb; int DeviceName; } ;
+typedef int * PWSTR ;
+typedef TYPE_1__ DISPLAY_DEVICEW ;
+
+
+ scalar_t__ EnumDisplayDevicesW (int const*,int ,TYPE_1__*,int ) ;
+ int LMEM_FIXED ;
+ int * LocalAlloc (int ,int) ;
+ int wcscpy (int *,int ) ;
+ int wcslen (int ) ;
 
 __attribute__((used)) static PWSTR
 pCDevSettings_GetMonitorDevice(const WCHAR *pszDisplayDevice)
 {
     DISPLAY_DEVICEW dd;
-    PWSTR str = NULL;
+    PWSTR str = ((void*)0);
 
     dd.cb = sizeof(dd);
     if (EnumDisplayDevicesW(pszDisplayDevice,
@@ -38,7 +38,7 @@ pCDevSettings_GetMonitorDevice(const WCHAR *pszDisplayDevice)
     {
         str = LocalAlloc(LMEM_FIXED,
                          (wcslen(dd.DeviceName) + 1) * sizeof(WCHAR));
-        if (str != NULL)
+        if (str != ((void*)0))
         {
             wcscpy(str,
                    dd.DeviceName);

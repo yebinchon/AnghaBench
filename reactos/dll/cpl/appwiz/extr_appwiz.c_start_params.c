@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADDON_GECKO ; 
- int /*<<< orphan*/  ADDON_MONO ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (char const*) ; 
- int /*<<< orphan*/  install_addon (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcmpW (char const*,char const*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int LONG ;
+typedef int HWND ;
+
+
+ int ADDON_GECKO ;
+ int ADDON_MONO ;
+ int FALSE ;
+ int TRUE ;
+ int WARN (char*,int ) ;
+ int debugstr_w (char const*) ;
+ int install_addon (int ,int ) ;
+ int strcmpW (char const*,char const*) ;
 
 __attribute__((used)) static LONG start_params(const WCHAR *params, HWND hwnd_parent)
 {

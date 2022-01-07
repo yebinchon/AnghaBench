@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int cbSize; int /*<<< orphan*/  lpszPort; int /*<<< orphan*/  lpszActivePort; } ;
-struct TYPE_4__ {void* bSoundOnActivation; void* bWarningSounds; TYPE_2__ serialKeys; int /*<<< orphan*/  szPort; int /*<<< orphan*/  szActivePort; TYPE_2__ accessTimeout; TYPE_2__ mouseKeys; TYPE_2__ bShowSounds; TYPE_2__ ssSoundSentry; int /*<<< orphan*/  uCaretBlinkTime; TYPE_2__ uCaretWidth; TYPE_2__ highContrast; TYPE_2__ bKeyboardPref; TYPE_2__ toggleKeys; TYPE_2__ filterKeys; TYPE_2__ stickyKeys; } ;
-typedef  int /*<<< orphan*/  TOGGLEKEYS ;
-typedef  int /*<<< orphan*/  STICKYKEYS ;
-typedef  int /*<<< orphan*/  SOUNDSENTRY ;
-typedef  int /*<<< orphan*/  SERIALKEYS ;
-typedef  TYPE_1__* PGLOBAL_DATA ;
-typedef  int /*<<< orphan*/  MOUSEKEYS ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  HIGHCONTRAST ;
-typedef  int /*<<< orphan*/  FILTERKEYS ;
-typedef  int DWORD ;
-typedef  void* BOOL ;
-typedef  int /*<<< orphan*/  ACCESSTIMEOUT ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- void* FALSE ; 
- int /*<<< orphan*/  GetCaretBlinkTime () ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int KEY_EXECUTE ; 
- int KEY_QUERY_VALUE ; 
- int /*<<< orphan*/  REG_OPTION_NON_VOLATILE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegCreateKeyEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- scalar_t__ RegQueryValueEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  SPI_GETACCESSTIMEOUT ; 
- int /*<<< orphan*/  SPI_GETCARETWIDTH ; 
- int /*<<< orphan*/  SPI_GETFILTERKEYS ; 
- int /*<<< orphan*/  SPI_GETHIGHCONTRAST ; 
- int /*<<< orphan*/  SPI_GETKEYBOARDPREF ; 
- int /*<<< orphan*/  SPI_GETMOUSEKEYS ; 
- int /*<<< orphan*/  SPI_GETSERIALKEYS ; 
- int /*<<< orphan*/  SPI_GETSHOWSOUNDS ; 
- int /*<<< orphan*/  SPI_GETSOUNDSENTRY ; 
- int /*<<< orphan*/  SPI_GETSTICKYKEYS ; 
- int /*<<< orphan*/  SPI_GETTOGGLEKEYS ; 
- int /*<<< orphan*/  SystemParametersInfo (int /*<<< orphan*/ ,int,TYPE_2__*,int /*<<< orphan*/ ) ; 
- void* TRUE ; 
- int /*<<< orphan*/  _T (char*) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int cbSize; int lpszPort; int lpszActivePort; } ;
+struct TYPE_4__ {void* bSoundOnActivation; void* bWarningSounds; TYPE_2__ serialKeys; int szPort; int szActivePort; TYPE_2__ accessTimeout; TYPE_2__ mouseKeys; TYPE_2__ bShowSounds; TYPE_2__ ssSoundSentry; int uCaretBlinkTime; TYPE_2__ uCaretWidth; TYPE_2__ highContrast; TYPE_2__ bKeyboardPref; TYPE_2__ toggleKeys; TYPE_2__ filterKeys; TYPE_2__ stickyKeys; } ;
+typedef int TOGGLEKEYS ;
+typedef int STICKYKEYS ;
+typedef int SOUNDSENTRY ;
+typedef int SERIALKEYS ;
+typedef TYPE_1__* PGLOBAL_DATA ;
+typedef int MOUSEKEYS ;
+typedef int LPBYTE ;
+typedef scalar_t__ LONG ;
+typedef int HKEY ;
+typedef int HIGHCONTRAST ;
+typedef int FILTERKEYS ;
+typedef int DWORD ;
+typedef void* BOOL ;
+typedef int ACCESSTIMEOUT ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ void* FALSE ;
+ int GetCaretBlinkTime () ;
+ int HKEY_CURRENT_USER ;
+ int KEY_EXECUTE ;
+ int KEY_QUERY_VALUE ;
+ int REG_OPTION_NON_VOLATILE ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegCreateKeyEx (int ,int ,int ,int *,int ,int,int *,int *,int*) ;
+ scalar_t__ RegQueryValueEx (int ,int ,int *,int *,int ,int*) ;
+ int SPI_GETACCESSTIMEOUT ;
+ int SPI_GETCARETWIDTH ;
+ int SPI_GETFILTERKEYS ;
+ int SPI_GETHIGHCONTRAST ;
+ int SPI_GETKEYBOARDPREF ;
+ int SPI_GETMOUSEKEYS ;
+ int SPI_GETSERIALKEYS ;
+ int SPI_GETSHOWSOUNDS ;
+ int SPI_GETSOUNDSENTRY ;
+ int SPI_GETSTICKYKEYS ;
+ int SPI_GETTOGGLEKEYS ;
+ int SystemParametersInfo (int ,int,TYPE_2__*,int ) ;
+ void* TRUE ;
+ int _T (char*) ;
 
 __attribute__((used)) static BOOL
 ReadSettings(PGLOBAL_DATA pGlobalData)
@@ -63,7 +63,7 @@ ReadSettings(PGLOBAL_DATA pGlobalData)
     HKEY hKey;
     LONG lError;
 
-    /* Get sticky keys information */
+
     pGlobalData->stickyKeys.cbSize = sizeof(STICKYKEYS);
     if (!SystemParametersInfo(SPI_GETSTICKYKEYS,
                               sizeof(STICKYKEYS),
@@ -71,7 +71,7 @@ ReadSettings(PGLOBAL_DATA pGlobalData)
                               0))
         return FALSE;
 
-    /* Get filter keys information */
+
     pGlobalData->filterKeys.cbSize = sizeof(FILTERKEYS);
     if (!SystemParametersInfo(SPI_GETFILTERKEYS,
                               sizeof(FILTERKEYS),
@@ -79,7 +79,7 @@ ReadSettings(PGLOBAL_DATA pGlobalData)
                               0))
         return FALSE;
 
-    /* Get toggle keys information */
+
     pGlobalData->toggleKeys.cbSize = sizeof(TOGGLEKEYS);
     if (!SystemParametersInfo(SPI_GETTOGGLEKEYS,
                               sizeof(TOGGLEKEYS),
@@ -87,14 +87,14 @@ ReadSettings(PGLOBAL_DATA pGlobalData)
                               0))
         return FALSE;
 
-    /* Get keyboard preference information */
+
     if (!SystemParametersInfo(SPI_GETKEYBOARDPREF,
                               0,
                               &pGlobalData->bKeyboardPref,
                               0))
         return FALSE;
 
-    /* Get high contrast information */
+
     pGlobalData->highContrast.cbSize = sizeof(HIGHCONTRAST);
     SystemParametersInfo(SPI_GETHIGHCONTRAST,
                          sizeof(HIGHCONTRAST),
@@ -108,7 +108,7 @@ ReadSettings(PGLOBAL_DATA pGlobalData)
 
     pGlobalData->uCaretBlinkTime = GetCaretBlinkTime();
 
-    /* Get sound settings */
+
     pGlobalData->ssSoundSentry.cbSize = sizeof(SOUNDSENTRY);
     SystemParametersInfo(SPI_GETSOUNDSENTRY,
                          sizeof(SOUNDSENTRY),
@@ -120,21 +120,21 @@ ReadSettings(PGLOBAL_DATA pGlobalData)
                          &pGlobalData->bShowSounds,
                          0);
 
-    /* Get mouse keys information */
+
     pGlobalData->mouseKeys.cbSize = sizeof(MOUSEKEYS);
     SystemParametersInfo(SPI_GETMOUSEKEYS,
                          sizeof(MOUSEKEYS),
                          &pGlobalData->mouseKeys,
                          0);
 
-    /* Get access timeout information */
+
     pGlobalData->accessTimeout.cbSize = sizeof(ACCESSTIMEOUT);
     SystemParametersInfo(SPI_GETACCESSTIMEOUT,
                          sizeof(ACCESSTIMEOUT),
                          &pGlobalData->accessTimeout,
                          0);
 
-    /* Get serial keys information */
+
     pGlobalData->serialKeys.cbSize = sizeof(SERIALKEYS);
     pGlobalData->serialKeys.lpszActivePort = pGlobalData->szActivePort;
     pGlobalData->serialKeys.lpszPort = pGlobalData->szPort;
@@ -149,10 +149,10 @@ ReadSettings(PGLOBAL_DATA pGlobalData)
     lError = RegCreateKeyEx(HKEY_CURRENT_USER,
                             _T("Control Panel\\Accessibility"),
                             0,
-                            NULL,
+                            ((void*)0),
                             REG_OPTION_NON_VOLATILE,
                             KEY_EXECUTE | KEY_QUERY_VALUE,
-                            NULL,
+                            ((void*)0),
                             &hKey,
                             &dwDisposition);
     if (lError != ERROR_SUCCESS)
@@ -161,8 +161,8 @@ ReadSettings(PGLOBAL_DATA pGlobalData)
     dwLength = sizeof(BOOL);
     lError = RegQueryValueEx(hKey,
                              _T("Warning Sounds"),
-                             NULL,
-                             NULL,
+                             ((void*)0),
+                             ((void*)0),
                              (LPBYTE)&pGlobalData->bWarningSounds,
                              &dwLength);
     if (lError != ERROR_SUCCESS)
@@ -171,8 +171,8 @@ ReadSettings(PGLOBAL_DATA pGlobalData)
     dwLength = sizeof(BOOL);
     lError = RegQueryValueEx(hKey,
                              _T("Sound On Activation"),
-                             NULL,
-                             NULL,
+                             ((void*)0),
+                             ((void*)0),
                              (LPBYTE)&pGlobalData->bSoundOnActivation,
                              &dwLength);
     if (lError != ERROR_SUCCESS)

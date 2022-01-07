@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct wined3d_gl_info {scalar_t__* supported; } ;
-struct TYPE_5__ {int /*<<< orphan*/  id; int /*<<< orphan*/  sync; } ;
+struct TYPE_5__ {int id; int sync; } ;
 struct wined3d_fence {TYPE_2__ object; TYPE_3__* context; } ;
 struct wined3d_device {int dummy; } ;
 struct wined3d_context {struct wined3d_gl_info* gl_info; } ;
-typedef  enum wined3d_fence_result { ____Placeholder_wined3d_fence_result } wined3d_fence_result ;
+typedef enum wined3d_fence_result { ____Placeholder_wined3d_fence_result } wined3d_fence_result ;
 struct TYPE_6__ {TYPE_1__* gl_info; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * supported; } ;
-typedef  int GLenum ;
-typedef  int DWORD ;
-typedef  void* BOOL ;
+struct TYPE_4__ {int * supported; } ;
+typedef int GLenum ;
+typedef int DWORD ;
+typedef void* BOOL ;
 
-/* Variables and functions */
- size_t APPLE_FENCE ; 
- size_t ARB_SYNC ; 
- int /*<<< orphan*/  ERR (char*,...) ; 
-#define  GL_ALREADY_SIGNALED 131 
-#define  GL_CONDITION_SATISFIED 130 
- void* GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_SYNC_FLUSH_COMMANDS_BIT ; 
-#define  GL_TIMEOUT_EXPIRED 129 
-#define  GL_WAIT_FAILED 128 
- size_t NV_FENCE ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int WINED3DGETDATA_FLUSH ; 
- int WINED3D_FENCE_ERROR ; 
- int WINED3D_FENCE_NOT_STARTED ; 
- int WINED3D_FENCE_OK ; 
- int WINED3D_FENCE_WAITING ; 
- int WINED3D_FENCE_WRONG_THREAD ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- struct wined3d_context* context_acquire (struct wined3d_device const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct wined3d_context* context_reacquire (struct wined3d_device const*,TYPE_3__*) ; 
- int /*<<< orphan*/  context_release (struct wined3d_context*) ; 
- int /*<<< orphan*/  glClientWaitSync (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glTestFenceAPPLE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glTestFenceNV (int /*<<< orphan*/ ) ; 
+
+ size_t APPLE_FENCE ;
+ size_t ARB_SYNC ;
+ int ERR (char*,...) ;
+
+
+ void* GL_EXTCALL (int ) ;
+ int GL_SYNC_FLUSH_COMMANDS_BIT ;
+
+
+ size_t NV_FENCE ;
+ int TRACE (char*,...) ;
+ int WARN (char*) ;
+ int WINED3DGETDATA_FLUSH ;
+ int WINED3D_FENCE_ERROR ;
+ int WINED3D_FENCE_NOT_STARTED ;
+ int WINED3D_FENCE_OK ;
+ int WINED3D_FENCE_WAITING ;
+ int WINED3D_FENCE_WRONG_THREAD ;
+ int checkGLcall (char*) ;
+ struct wined3d_context* context_acquire (struct wined3d_device const*,int *,int ) ;
+ struct wined3d_context* context_reacquire (struct wined3d_device const*,TYPE_3__*) ;
+ int context_release (struct wined3d_context*) ;
+ int glClientWaitSync (int ,int ,int ) ;
+ int glTestFenceAPPLE (int ) ;
+ int glTestFenceNV (int ) ;
 
 __attribute__((used)) static enum wined3d_fence_result wined3d_fence_test(const struct wined3d_fence *fence,
         const struct wined3d_device *device, DWORD flags)
@@ -75,7 +75,7 @@ __attribute__((used)) static enum wined3d_fence_result wined3d_fence_test(const 
             WARN("Fence tested from wrong thread.\n");
             return WINED3D_FENCE_WRONG_THREAD;
         }
-        context = context_acquire(device, NULL, 0);
+        context = context_acquire(device, ((void*)0), 0);
     }
     gl_info = context->gl_info;
 
@@ -87,16 +87,16 @@ __attribute__((used)) static enum wined3d_fence_result wined3d_fence_test(const 
 
         switch (gl_ret)
         {
-            case GL_ALREADY_SIGNALED:
-            case GL_CONDITION_SATISFIED:
+            case 131:
+            case 130:
                 ret = WINED3D_FENCE_OK;
                 break;
 
-            case GL_TIMEOUT_EXPIRED:
+            case 129:
                 ret = WINED3D_FENCE_WAITING;
                 break;
 
-            case GL_WAIT_FAILED:
+            case 128:
             default:
                 ERR("glClientWaitSync returned %#x.\n", gl_ret);
                 ret = WINED3D_FENCE_ERROR;

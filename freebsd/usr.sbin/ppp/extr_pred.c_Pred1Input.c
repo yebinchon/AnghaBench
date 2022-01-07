@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_short ;
-typedef  int u_char ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u_short ;
+typedef int u_char ;
 struct pred1_state {int dummy; } ;
 struct mbuf {int m_len; scalar_t__ m_offset; } ;
 struct TYPE_4__ {TYPE_1__* link; } ;
 struct ccp {int uncompin; int compin; TYPE_2__ fsm; } ;
-struct TYPE_3__ {int /*<<< orphan*/  name; } ;
+struct TYPE_3__ {int name; } ;
 
-/* Variables and functions */
- int GOODFCS ; 
- int /*<<< orphan*/  LogCCP ; 
- int /*<<< orphan*/  LogDEBUG ; 
- scalar_t__ MAX_MRU ; 
- int* MBUF_CTOP (struct mbuf*) ; 
- int /*<<< orphan*/  MB_CCPIN ; 
- int /*<<< orphan*/  SyncTable (struct pred1_state*,int*,int*,int) ; 
- int decompress (struct pred1_state*,int*,int*,int) ; 
- int /*<<< orphan*/  fsm_Reopen (TYPE_2__*) ; 
- int hdlc_Fcs (int*,int) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  m_freem (struct mbuf*) ; 
- struct mbuf* m_get (scalar_t__,int /*<<< orphan*/ ) ; 
- int m_length (struct mbuf*) ; 
+
+ int GOODFCS ;
+ int LogCCP ;
+ int LogDEBUG ;
+ scalar_t__ MAX_MRU ;
+ int* MBUF_CTOP (struct mbuf*) ;
+ int MB_CCPIN ;
+ int SyncTable (struct pred1_state*,int*,int*,int) ;
+ int decompress (struct pred1_state*,int*,int*,int) ;
+ int fsm_Reopen (TYPE_2__*) ;
+ int hdlc_Fcs (int*,int) ;
+ int log_Printf (int ,char*,int,...) ;
+ int m_freem (struct mbuf*) ;
+ struct mbuf* m_get (scalar_t__,int ) ;
+ int m_length (struct mbuf*) ;
 
 __attribute__((used)) static struct mbuf *
 Pred1Input(void *v, struct ccp *ccp, u_short *proto, struct mbuf *bp)
@@ -59,12 +59,12 @@ Pred1Input(void *v, struct ccp *ccp, u_short *proto, struct mbuf *bp)
     len1 = decompress(state, cp, pp, olen - 4);
     ccp->compin += olen;
     len &= 0x7fff;
-    if (len != len1) {		/* Error is detected. Send reset request */
+    if (len != len1) {
       log_Printf(LogCCP, "Pred1: Length error (got %d, not %d)\n", len1, len);
       fsm_Reopen(&ccp->fsm);
       m_freem(bp);
       m_freem(wp);
-      return NULL;
+      return ((void*)0);
     }
     cp += olen - 4;
     pp += len1;
@@ -73,19 +73,19 @@ Pred1Input(void *v, struct ccp *ccp, u_short *proto, struct mbuf *bp)
     fsm_Reopen(&ccp->fsm);
     m_freem(wp);
     m_freem(bp);
-    return NULL;
+    return ((void*)0);
   } else {
     ccp->compin += len;
     SyncTable(state, cp, pp, len);
     cp += len;
     pp += len;
   }
-  *pp++ = *cp++;		/* CRC */
+  *pp++ = *cp++;
   *pp++ = *cp++;
   fcs = hdlc_Fcs(bufp, wp->m_len = pp - bufp);
   if (fcs == GOODFCS) {
-    wp->m_offset += 2;		/* skip length */
-    wp->m_len -= 4;		/* skip length & CRC */
+    wp->m_offset += 2;
+    wp->m_len -= 4;
     pp = MBUF_CTOP(wp);
     *proto = *pp++;
     if (*proto & 1) {
@@ -101,12 +101,12 @@ Pred1Input(void *v, struct ccp *ccp, u_short *proto, struct mbuf *bp)
   } else {
     const char *pre = *MBUF_CTOP(bp) & 0x80 ? "" : "un";
     log_Printf(LogDEBUG, "Pred1Input: fcs = 0x%04x (%scompressed), len = 0x%x,"
-	      " olen = 0x%x\n", fcs, pre, len, olen);
+       " olen = 0x%x\n", fcs, pre, len, olen);
     log_Printf(LogCCP, "%s: Bad %scompressed CRC-16\n",
                ccp->fsm.link->name, pre);
     fsm_Reopen(&ccp->fsm);
     m_freem(wp);
   }
   m_freem(bp);
-  return NULL;
+  return ((void*)0);
 }

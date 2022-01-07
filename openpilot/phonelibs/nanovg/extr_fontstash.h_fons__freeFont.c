@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {struct TYPE_4__* data; scalar_t__ freeData; struct TYPE_4__* glyphs; } ;
-typedef  TYPE_1__ FONSfont ;
+typedef TYPE_1__ FONSfont ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_1__*) ; 
+
+ int free (TYPE_1__*) ;
 
 __attribute__((used)) static void fons__freeFont(FONSfont* font)
 {
-	if (font == NULL) return;
-	if (font->glyphs) free(font->glyphs);
-	if (font->freeData && font->data) free(font->data);
-	free(font);
+ if (font == ((void*)0)) return;
+ if (font->glyphs) free(font->glyphs);
+ if (font->freeData && font->data) free(font->data);
+ free(font);
 }

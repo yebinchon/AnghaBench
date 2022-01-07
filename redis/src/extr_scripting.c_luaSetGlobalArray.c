@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ ptr; } ;
-typedef  TYPE_1__ robj ;
-typedef  int /*<<< orphan*/  lua_State ;
+typedef TYPE_1__ robj ;
+typedef int lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lua_newtable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushlstring (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_rawseti (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  lua_setglobal (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  sdslen (scalar_t__) ; 
+
+ int lua_newtable (int *) ;
+ int lua_pushlstring (int *,char*,int ) ;
+ int lua_rawseti (int *,int,int) ;
+ int lua_setglobal (int *,char*) ;
+ int sdslen (scalar_t__) ;
 
 void luaSetGlobalArray(lua_State *lua, char *var, robj **elev, int elec) {
     int j;

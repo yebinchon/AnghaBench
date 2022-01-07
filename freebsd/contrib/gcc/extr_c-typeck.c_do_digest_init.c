@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  digest_init (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
+
+
+
+typedef int tree ;
+
+
+ int digest_init (int ,int ,int,int) ;
 
 tree do_digest_init (tree type, tree init)
 {
-  return digest_init (type, init, true, false);
+  return digest_init (type, init, 1, 0);
 }

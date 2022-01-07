@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ malloc (int) ; 
- int stbgl_TexImage2D (int /*<<< orphan*/ ,int,int,unsigned char*,char*) ; 
- int stbgl_rand () ; 
+ int assert (int) ;
+ scalar_t__ malloc (int) ;
+ int stbgl_TexImage2D (int ,int,int,unsigned char*,char*) ;
+ int stbgl_rand () ;
 
 int stbgl_TestTextureEx(int w, char *scale_table, int checks_log2, int r1,int g1,int b1, int r2, int b2, int g2)
 {
@@ -27,10 +19,10 @@ int stbgl_TestTextureEx(int w, char *scale_table, int checks_log2, int r1,int g1
    data[0] = 128;
    for (s=0; s < 16; ++s) if ((1 << s) == w) break;
    assert(w == (1 << s));
-   // plasma fractal noise
+
    for (k=s-1; k >= 0; --k) {
       int step = 1 << k;
-      // interpolate from "parents"
+
       for (j=0; j < w; j += step*2) {
          for (i=0; i < w; i += step*2) {
             int i1 = i+step, j1=j+step;
@@ -43,9 +35,9 @@ int stbgl_TestTextureEx(int w, char *scale_table, int checks_log2, int r1,int g1
          }
       }
       scale = scale_table[s-k+1];
-      if (!scale) continue; // just interpolate down the remaining data
+      if (!scale) continue;
       for (j=0,i=0; i < 256; i += 2, j == scale ? j=0 : ++j)
-         modded[i] = j, modded[i+1] = -j; // precompute i%scale (plus sign)
+         modded[i] = j, modded[i+1] = -j;
       for (j=0; j < w; j += step)
          for (i=0; i < w; i += step) {
             int x = data[(j*w+i)*3] + modded[(stbgl_rand() >> 12) & 255];
@@ -60,5 +52,5 @@ int stbgl_TestTextureEx(int w, char *scale_table, int checks_log2, int r1,int g1
          data[(j*w+i)*3+1] = gt[check]-v;
          data[(j*w+i)*3+2] = bt[check]-v;
       }
-   return stbgl_TexImage2D(0, w, w, data, "3m!"); // 3 channels, mipmap, free
+   return stbgl_TexImage2D(0, w, w, data, "3m!");
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  client ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int client ;
 struct TYPE_2__ {long long repl_backlog_histlen; long long repl_backlog_size; long long repl_backlog_off; long long repl_backlog_idx; scalar_t__ repl_backlog; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LL_DEBUG ; 
- int /*<<< orphan*/  addReplySds (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdsnewlen (scalar_t__,long long) ; 
- TYPE_1__ server ; 
- int /*<<< orphan*/  serverLog (int /*<<< orphan*/ ,char*,...) ; 
+
+ int LL_DEBUG ;
+ int addReplySds (int *,int ) ;
+ int sdsnewlen (scalar_t__,long long) ;
+ TYPE_1__ server ;
+ int serverLog (int ,char*,...) ;
 
 long long addReplyReplicationBacklog(client *c, long long offset) {
     long long j, skip, len;
@@ -40,22 +40,22 @@ long long addReplyReplicationBacklog(client *c, long long offset) {
     serverLog(LL_DEBUG, "[PSYNC] Current index: %lld",
              server.repl_backlog_idx);
 
-    /* Compute the amount of bytes we need to discard. */
+
     skip = offset - server.repl_backlog_off;
     serverLog(LL_DEBUG, "[PSYNC] Skipping: %lld", skip);
 
-    /* Point j to the oldest byte, that is actually our
-     * server.repl_backlog_off byte. */
+
+
     j = (server.repl_backlog_idx +
         (server.repl_backlog_size-server.repl_backlog_histlen)) %
         server.repl_backlog_size;
     serverLog(LL_DEBUG, "[PSYNC] Index of first byte: %lld", j);
 
-    /* Discard the amount of data to seek to the specified 'offset'. */
+
     j = (j + skip) % server.repl_backlog_size;
 
-    /* Feed slave with data. Since it is a circular buffer we have to
-     * split the reply in two parts if we are cross-boundary. */
+
+
     len = server.repl_backlog_histlen - skip;
     serverLog(LL_DEBUG, "[PSYNC] Reply total length: %lld", len);
     while(len) {

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  visorbus_state_complete_func ;
+
+
+
+
+typedef int visorbus_state_complete_func ;
 struct visornic_devdata {int dummy; } ;
-struct visor_device {int /*<<< orphan*/  device; } ;
+struct visor_device {int device; } ;
 
-/* Variables and functions */
- struct visornic_devdata* dev_get_drvdata (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  visornic_serverdown (struct visornic_devdata*,int /*<<< orphan*/ ) ; 
+
+ struct visornic_devdata* dev_get_drvdata (int *) ;
+ int visornic_serverdown (struct visornic_devdata*,int ) ;
 
 __attribute__((used)) static int visornic_pause(struct visor_device *dev,
-			  visorbus_state_complete_func complete_func)
+     visorbus_state_complete_func complete_func)
 {
-	struct visornic_devdata *devdata = dev_get_drvdata(&dev->device);
+ struct visornic_devdata *devdata = dev_get_drvdata(&dev->device);
 
-	visornic_serverdown(devdata, complete_func);
-	return 0;
+ visornic_serverdown(devdata, complete_func);
+ return 0;
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  metrics; } ;
-typedef  TYPE_1__ textbox ;
 
-/* Variables and functions */
- int PANGO_SCALE ; 
- int /*<<< orphan*/  WIDGET (TYPE_1__ const*) ; 
- int pango_font_metrics_get_ascent (int /*<<< orphan*/ ) ; 
- int pango_font_metrics_get_descent (int /*<<< orphan*/ ) ; 
- int widget_padding_get_padding_height (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int metrics; } ;
+typedef TYPE_1__ textbox ;
+
+
+ int PANGO_SCALE ;
+ int WIDGET (TYPE_1__ const*) ;
+ int pango_font_metrics_get_ascent (int ) ;
+ int pango_font_metrics_get_descent (int ) ;
+ int widget_padding_get_padding_height (int ) ;
 
 int textbox_get_estimated_height ( const textbox *tb, int eh )
 {

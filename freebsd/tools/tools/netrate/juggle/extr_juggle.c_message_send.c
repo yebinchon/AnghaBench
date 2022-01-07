@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EMSGSIZE ; 
- int MESSAGELEN ; 
- int /*<<< orphan*/  bzero (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  errno ; 
- int write (int,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int u_char ;
+typedef int ssize_t ;
+typedef int buffer ;
+
+
+ int EMSGSIZE ;
+ int MESSAGELEN ;
+ int bzero (int *,int) ;
+ int errno ;
+ int write (int,int *,int) ;
 
 __attribute__((used)) static int
 message_send(int s)
 {
-	u_char buffer[MESSAGELEN];
-	ssize_t len;
+ u_char buffer[MESSAGELEN];
+ ssize_t len;
 
-	bzero(buffer, sizeof(buffer));
+ bzero(buffer, sizeof(buffer));
 
-	len = write(s, buffer, sizeof(buffer));
-	if (len == -1)
-		return (-1);
-	if (len != sizeof(buffer)) {
-		errno = EMSGSIZE;
-		return (-1);
-	}
-	return (0);
+ len = write(s, buffer, sizeof(buffer));
+ if (len == -1)
+  return (-1);
+ if (len != sizeof(buffer)) {
+  errno = EMSGSIZE;
+  return (-1);
+ }
+ return (0);
 }

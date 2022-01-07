@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int Halt; int /*<<< orphan*/  AdminListenSock; int /*<<< orphan*/  AdminAcceptThread; int /*<<< orphan*/  HaltEvent; } ;
-typedef  TYPE_1__ NAT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Disconnect (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseSock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseThread (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Set (int /*<<< orphan*/ ) ; 
- int WaitThread (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int Halt; int AdminListenSock; int AdminAcceptThread; int HaltEvent; } ;
+typedef TYPE_1__ NAT ;
+
+
+ int Disconnect (int ) ;
+ int ReleaseSock (int ) ;
+ int ReleaseThread (int ) ;
+ int Set (int ) ;
+ int WaitThread (int ,int) ;
 
 void NiFreeAdminAccept(NAT *n)
 {
-	// Validate arguments
-	if (n == NULL)
-	{
-		return;
-	}
 
-	n->Halt = true;
-	Disconnect(n->AdminListenSock);
-	Set(n->HaltEvent);
+ if (n == ((void*)0))
+ {
+  return;
+ }
 
-	while (true)
-	{
-		if (WaitThread(n->AdminAcceptThread, 1000) == false)
-		{
-			Disconnect(n->AdminListenSock);
-		}
-		else
-		{
-			break;
-		}
-	}
-	ReleaseThread(n->AdminAcceptThread);
+ n->Halt = 1;
+ Disconnect(n->AdminListenSock);
+ Set(n->HaltEvent);
 
-	ReleaseSock(n->AdminListenSock);
+ while (1)
+ {
+  if (WaitThread(n->AdminAcceptThread, 1000) == 0)
+  {
+   Disconnect(n->AdminListenSock);
+  }
+  else
+  {
+   break;
+  }
+ }
+ ReleaseThread(n->AdminAcceptThread);
+
+ ReleaseSock(n->AdminListenSock);
 }

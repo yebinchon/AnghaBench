@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  seed; } ;
-typedef  TYPE_1__ js_State ;
 
-/* Variables and functions */
- double JS_RAND_MAX ; 
- double jsM_rand_r (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  js_pushnumber (TYPE_1__*,double) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int seed; } ;
+typedef TYPE_1__ js_State ;
+
+
+ double JS_RAND_MAX ;
+ double jsM_rand_r (int *) ;
+ int js_pushnumber (TYPE_1__*,double) ;
 
 __attribute__((used)) static void Math_random(js_State *J)
 {
-	js_pushnumber(J, jsM_rand_r(&J->seed) / (JS_RAND_MAX + 1.0));
+ js_pushnumber(J, jsM_rand_r(&J->seed) / (JS_RAND_MAX + 1.0));
 }

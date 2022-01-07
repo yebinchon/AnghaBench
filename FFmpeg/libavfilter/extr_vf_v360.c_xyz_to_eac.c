@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
 struct TYPE_4__ {int* in_cubemap_face_order; } ;
-typedef  TYPE_1__ V360Context ;
+typedef TYPE_1__ V360Context ;
 
-/* Variables and functions */
- float M_2_PI ; 
- float atanf (float) ; 
- int /*<<< orphan*/  av_clip (int,int /*<<< orphan*/ ,int) ; 
- int floorf (float) ; 
- int /*<<< orphan*/  xyz_to_cube (TYPE_1__ const*,float const*,float*,float*,int*) ; 
+
+ float M_2_PI ;
+ float atanf (float) ;
+ int av_clip (int,int ,int) ;
+ int floorf (float) ;
+ int xyz_to_cube (TYPE_1__ const*,float const*,float*,float*,int*) ;
 
 __attribute__((used)) static void xyz_to_eac(const V360Context *s,
                        const float *vec, int width, int height,
@@ -44,7 +44,7 @@ __attribute__((used)) static void xyz_to_eac(const V360Context *s,
     uf = M_2_PI * atanf(uf) + 0.5f;
     vf = M_2_PI * atanf(vf) + 0.5f;
 
-    // These formulas are inversed from eac_to_xyz ones
+
     uf = (uf + u_face) * (1.f - 2.f * u_pad) / 3.f + u_pad;
     vf = vf * (0.5f - 2.f * v_pad) + v_pad + 0.5f * v_face;
 
@@ -62,7 +62,7 @@ __attribute__((used)) static void xyz_to_eac(const V360Context *s,
 
     for (int i = -1; i < 3; i++) {
         for (int j = -1; j < 3; j++) {
-            us[i + 1][j + 1] = av_clip(ui + j, 0, width  - 1);
+            us[i + 1][j + 1] = av_clip(ui + j, 0, width - 1);
             vs[i + 1][j + 1] = av_clip(vi + i, 0, height - 1);
         }
     }

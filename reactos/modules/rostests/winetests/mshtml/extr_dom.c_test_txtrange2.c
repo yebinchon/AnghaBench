@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IHTMLTxtRange ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IHTMLTxtRange_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VARIANT_FALSE ; 
- int /*<<< orphan*/  characterW ; 
- int /*<<< orphan*/ * test_create_body_range (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_range_collapse (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_range_move (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  test_range_moveend (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  test_range_text (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int IHTMLTxtRange ;
+typedef int IHTMLDocument2 ;
+
+
+ int IHTMLTxtRange_Release (int *) ;
+ int VARIANT_FALSE ;
+ int characterW ;
+ int * test_create_body_range (int *) ;
+ int test_range_collapse (int *,int ) ;
+ int test_range_move (int *,int ,int,int) ;
+ int test_range_moveend (int *,int ,int,int) ;
+ int test_range_text (int *,char*) ;
 
 __attribute__((used)) static void test_txtrange2(IHTMLDocument2 *doc)
 {

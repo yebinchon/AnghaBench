@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  node; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int node; } ;
 struct TYPE_9__ {TYPE_2__* plugin_host; TYPE_1__ element; } ;
-struct TYPE_10__ {int /*<<< orphan*/  IHTMLObjectElement_iface; TYPE_3__ plugin_container; int /*<<< orphan*/  IHTMLObjectElement2_iface; } ;
+struct TYPE_10__ {int IHTMLObjectElement_iface; TYPE_3__ plugin_container; int IHTMLObjectElement2_iface; } ;
 struct TYPE_8__ {scalar_t__ plugin_unk; } ;
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  TYPE_4__ HTMLObjectElement ;
-typedef  int /*<<< orphan*/  HTMLDOMNode ;
-typedef  scalar_t__ HRESULT ;
+typedef int REFIID ;
+typedef int IUnknown ;
+typedef TYPE_4__ HTMLObjectElement ;
+typedef int HTMLDOMNode ;
+typedef scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ E_NOINTERFACE ; 
- scalar_t__ FAILED (scalar_t__) ; 
- scalar_t__ HTMLElement_QI (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  IID_HTMLPluginContainer ; 
- int /*<<< orphan*/  IID_IDispatch ; 
- int /*<<< orphan*/  IID_IHTMLObjectElement ; 
- int /*<<< orphan*/  IID_IHTMLObjectElement2 ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  IUnknown_AddRef (int /*<<< orphan*/ *) ; 
- scalar_t__ IUnknown_QueryInterface (scalar_t__,int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_4__*,int /*<<< orphan*/ *,...) ; 
- int /*<<< orphan*/  debugstr_mshtml_guid (int /*<<< orphan*/ ) ; 
- TYPE_4__* impl_from_HTMLDOMNode (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  node_addref (int /*<<< orphan*/ *) ; 
- scalar_t__ wrap_iface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
+
+ scalar_t__ E_NOINTERFACE ;
+ scalar_t__ FAILED (scalar_t__) ;
+ scalar_t__ HTMLElement_QI (int *,int ,void**) ;
+ int IID_HTMLPluginContainer ;
+ int IID_IDispatch ;
+ int IID_IHTMLObjectElement ;
+ int IID_IHTMLObjectElement2 ;
+ int IID_IUnknown ;
+ int IUnknown_AddRef (int *) ;
+ scalar_t__ IUnknown_QueryInterface (scalar_t__,int ,void**) ;
+ int IUnknown_Release (int *) ;
+ scalar_t__ IsEqualGUID (int *,int ) ;
+ scalar_t__ S_OK ;
+ int TRACE (char*,TYPE_4__*,int *,...) ;
+ int debugstr_mshtml_guid (int ) ;
+ TYPE_4__* impl_from_HTMLDOMNode (int *) ;
+ int node_addref (int *) ;
+ scalar_t__ wrap_iface (int *,int *,int **) ;
 
 __attribute__((used)) static HRESULT HTMLObjectElement_QI(HTMLDOMNode *iface, REFIID riid, void **ppv)
 {
@@ -59,7 +59,7 @@ __attribute__((used)) static HRESULT HTMLObjectElement_QI(HTMLDOMNode *iface, RE
     }else if(IsEqualGUID(&IID_IHTMLObjectElement2, riid)) {
         *ppv = &This->IHTMLObjectElement2_iface;
     }else if(IsEqualGUID(&IID_HTMLPluginContainer, riid)) {
-        /* Special pseudo-interface returning HTMLPluginContainse struct. */
+
         *ppv = &This->plugin_container;
         node_addref(&This->plugin_container.element.node);
         return S_OK;

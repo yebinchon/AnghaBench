@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-struct TYPE_16__ {int* linesize; int key_frame; int palette_has_changed; scalar_t__* data; int /*<<< orphan*/  pict_type; } ;
+
+
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_16__ {int* linesize; int key_frame; int palette_has_changed; scalar_t__* data; int pict_type; } ;
 struct TYPE_15__ {int height; int width; TYPE_1__* priv_data; } ;
 struct TYPE_14__ {int* data; int size; } ;
-struct TYPE_13__ {int* palette; int palette_has_changed; TYPE_5__* frame; int /*<<< orphan*/  bdsp; } ;
-typedef  TYPE_1__ JvContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVCodecContext ;
+struct TYPE_13__ {int* palette; int palette_has_changed; TYPE_5__* frame; int bdsp; } ;
+typedef TYPE_1__ JvContext ;
+typedef int GetBitContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int AVPALETTE_COUNT ; 
- int /*<<< orphan*/  AVPALETTE_SIZE ; 
- int /*<<< orphan*/  AV_GET_BUFFER_FLAG_REF ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_I ; 
- int AV_RB24 (int const*) ; 
- int AV_RL32 (int const*) ; 
- int av_frame_ref (void*,TYPE_5__*) ; 
- int /*<<< orphan*/  av_frame_unref (TYPE_5__*) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  decode8x8 (int /*<<< orphan*/ *,scalar_t__,int,int /*<<< orphan*/ *) ; 
- int ff_get_buffer (TYPE_3__*,TYPE_5__*,int /*<<< orphan*/ ) ; 
- int ff_reget_buffer (TYPE_3__*,TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_get_bits (int /*<<< orphan*/ *,int const*,int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (scalar_t__,int,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AVPALETTE_COUNT ;
+ int AVPALETTE_SIZE ;
+ int AV_GET_BUFFER_FLAG_REF ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ int AV_PICTURE_TYPE_I ;
+ int AV_RB24 (int const*) ;
+ int AV_RL32 (int const*) ;
+ int av_frame_ref (void*,TYPE_5__*) ;
+ int av_frame_unref (TYPE_5__*) ;
+ int av_log (TYPE_3__*,int ,char*,...) ;
+ int decode8x8 (int *,scalar_t__,int,int *) ;
+ int ff_get_buffer (TYPE_3__*,TYPE_5__*,int ) ;
+ int ff_reget_buffer (TYPE_3__*,TYPE_5__*,int ) ;
+ int init_get_bits (int *,int const*,int) ;
+ int memcpy (scalar_t__,int*,int ) ;
+ int memset (scalar_t__,int,int) ;
 
 __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data, int *got_frame,
                         AVPacket *avpkt)
@@ -112,10 +112,10 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
     }
 
     if (video_size) {
-        s->frame->key_frame           = 1;
-        s->frame->pict_type           = AV_PICTURE_TYPE_I;
+        s->frame->key_frame = 1;
+        s->frame->pict_type = AV_PICTURE_TYPE_I;
         s->frame->palette_has_changed = s->palette_has_changed;
-        s->palette_has_changed        = 0;
+        s->palette_has_changed = 0;
         memcpy(s->frame->data[1], s->palette, AVPALETTE_SIZE);
 
         if ((ret = av_frame_ref(data, s->frame)) < 0)

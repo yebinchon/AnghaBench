@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jv ;
 
-/* Variables and functions */
- scalar_t__ JV_KIND_ARRAY ; 
- int /*<<< orphan*/  jv_array_get (int /*<<< orphan*/ ,int) ; 
- int jv_array_length (int /*<<< orphan*/ ) ; 
- int jv_cmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_copy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_free (int /*<<< orphan*/ ) ; 
- scalar_t__ jv_get_kind (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_null () ; 
- int /*<<< orphan*/  type_error2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int jv ;
+
+
+ scalar_t__ JV_KIND_ARRAY ;
+ int jv_array_get (int ,int) ;
+ int jv_array_length (int ) ;
+ int jv_cmp (int ,int ) ;
+ int jv_copy (int ) ;
+ int jv_free (int ) ;
+ scalar_t__ jv_get_kind (int ) ;
+ int jv_null () ;
+ int type_error2 (int ,int ,char*) ;
 
 __attribute__((used)) static jv minmax_by(jv values, jv keys, int is_min) {
   if (jv_get_kind(values) != JV_KIND_ARRAY)

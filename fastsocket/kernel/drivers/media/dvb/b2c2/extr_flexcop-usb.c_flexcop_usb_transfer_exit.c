@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct flexcop_usb {int /*<<< orphan*/  dma_addr; int /*<<< orphan*/ * iso_buffer; int /*<<< orphan*/  buffer_size; int /*<<< orphan*/ ** iso_urb; } ;
 
-/* Variables and functions */
- int B2C2_USB_NUM_ISO_URB ; 
- int /*<<< orphan*/  deb_ts (char*,int) ; 
- int /*<<< orphan*/  pci_free_consistent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usb_free_urb (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usb_kill_urb (int /*<<< orphan*/ *) ; 
+
+
+
+struct flexcop_usb {int dma_addr; int * iso_buffer; int buffer_size; int ** iso_urb; } ;
+
+
+ int B2C2_USB_NUM_ISO_URB ;
+ int deb_ts (char*,int) ;
+ int pci_free_consistent (int *,int ,int *,int ) ;
+ int usb_free_urb (int *) ;
+ int usb_kill_urb (int *) ;
 
 __attribute__((used)) static void flexcop_usb_transfer_exit(struct flexcop_usb *fc_usb)
 {
-	int i;
-	for (i = 0; i < B2C2_USB_NUM_ISO_URB; i++)
-		if (fc_usb->iso_urb[i] != NULL) {
-			deb_ts("unlinking/killing urb no. %d\n",i);
-			usb_kill_urb(fc_usb->iso_urb[i]);
-			usb_free_urb(fc_usb->iso_urb[i]);
-		}
+ int i;
+ for (i = 0; i < B2C2_USB_NUM_ISO_URB; i++)
+  if (fc_usb->iso_urb[i] != ((void*)0)) {
+   deb_ts("unlinking/killing urb no. %d\n",i);
+   usb_kill_urb(fc_usb->iso_urb[i]);
+   usb_free_urb(fc_usb->iso_urb[i]);
+  }
 
-	if (fc_usb->iso_buffer != NULL)
-		pci_free_consistent(NULL,
-			fc_usb->buffer_size, fc_usb->iso_buffer,
-			fc_usb->dma_addr);
+ if (fc_usb->iso_buffer != ((void*)0))
+  pci_free_consistent(((void*)0),
+   fc_usb->buffer_size, fc_usb->iso_buffer,
+   fc_usb->dma_addr);
 }

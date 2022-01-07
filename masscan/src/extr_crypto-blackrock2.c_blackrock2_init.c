@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  double uint64_t ;
+
+
+
+
+typedef double uint64_t ;
 struct BlackRock {double range; double a; unsigned long long a_mask; double b; unsigned int rounds; double seed; scalar_t__ b_mask; void* b_bits; void* a_bits; } ;
 
-/* Variables and functions */
- void* bit_count (double) ; 
- double next_power_of_two (double) ; 
- scalar_t__ sqrt (double) ; 
+
+ void* bit_count (double) ;
+ double next_power_of_two (double) ;
+ scalar_t__ sqrt (double) ;
 
 void
 blackrock2_init(struct BlackRock *br, uint64_t range, uint64_t seed, unsigned rounds)
@@ -29,7 +29,7 @@ blackrock2_init(struct BlackRock *br, uint64_t range, uint64_t seed, unsigned ro
                           );
     b = next_power_of_two(range/a);
 
-    //printf("a=%llu b=%llu seed = 0x%llu\n", a, b, seed);
+
 
     br->range = range;
 
@@ -41,8 +41,8 @@ blackrock2_init(struct BlackRock *br, uint64_t range, uint64_t seed, unsigned ro
     br->b_bits = bit_count(br->b);
     br->b_mask = br->b - 1ULL;
 
-    //printf("a: 0x%llx / %llu\n", br->a_mask, br->a_bits);
-    //printf("b: 0x%llx / %llu\n", br->b_mask, br->b_bits);
+
+
 
     br->rounds = rounds;
     br->seed = seed;

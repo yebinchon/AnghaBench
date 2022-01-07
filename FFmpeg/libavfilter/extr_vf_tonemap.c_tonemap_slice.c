@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TonemapContext ;
-struct TYPE_7__ {double peak; int /*<<< orphan*/ * desc; TYPE_2__* out; TYPE_2__* in; } ;
-typedef  TYPE_1__ ThreadData ;
-struct TYPE_9__ {int /*<<< orphan*/ * priv; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int TonemapContext ;
+struct TYPE_7__ {double peak; int * desc; TYPE_2__* out; TYPE_2__* in; } ;
+typedef TYPE_1__ ThreadData ;
+struct TYPE_9__ {int * priv; } ;
 struct TYPE_8__ {int height; int width; } ;
-typedef  int /*<<< orphan*/  AVPixFmtDescriptor ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVFilterContext ;
+typedef int AVPixFmtDescriptor ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  tonemap (int /*<<< orphan*/ *,TYPE_2__*,TYPE_2__*,int /*<<< orphan*/  const*,int,int,double) ; 
+
+ int tonemap (int *,TYPE_2__*,TYPE_2__*,int const*,int,int,double) ;
 
 __attribute__((used)) static int tonemap_slice(AVFilterContext *ctx, void *arg, int jobnr, int nb_jobs)
 {

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  text_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+typedef int text_t ;
 struct TYPE_5__ {scalar_t__ i_start; scalar_t__ i_stop; char* psz_text; } ;
-typedef  TYPE_1__ subtitle_t ;
-typedef  int /*<<< orphan*/  subs_properties_t ;
+typedef TYPE_1__ subtitle_t ;
+typedef int subs_properties_t ;
 
-/* Variables and functions */
- char* TextGetLine (int /*<<< orphan*/ *) ; 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  VLC_UNUSED (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memmove (char*,char*,size_t) ; 
- char* realloc_or_free (char*,size_t) ; 
- int /*<<< orphan*/  strcat (char*,char const*) ; 
- char* strdup (char*) ; 
- size_t strlen (char const*) ; 
- char* strstr (char*,char*) ; 
+
+ char* TextGetLine (int *) ;
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int VLC_UNUSED (int *) ;
+ int memmove (char*,char*,size_t) ;
+ char* realloc_or_free (char*,size_t) ;
+ int strcat (char*,char const*) ;
+ char* strdup (char*) ;
+ size_t strlen (char const*) ;
+ char* strstr (char*,char*) ;
 
 __attribute__((used)) static int ParseSubRipSubViewer( vlc_object_t *p_obj, subs_properties_t *p_props,
                                  text_t *txt, subtitle_t *p_subtitle,
@@ -37,7 +37,7 @@ __attribute__((used)) static int ParseSubRipSubViewer( vlc_object_t *p_obj, subs
 {
     VLC_UNUSED(p_obj);
     VLC_UNUSED(p_props);
-    char    *psz_text;
+    char *psz_text;
 
     for( ;; )
     {
@@ -53,7 +53,7 @@ __attribute__((used)) static int ParseSubRipSubViewer( vlc_object_t *p_obj, subs
         }
     }
 
-    /* Now read text until an empty line */
+
     psz_text = strdup("");
     if( !psz_text )
         return VLC_ENOMEM;
@@ -80,7 +80,7 @@ __attribute__((used)) static int ParseSubRipSubViewer( vlc_object_t *p_obj, subs
         strcat( psz_text, s );
         strcat( psz_text, "\n" );
 
-        /* replace [br] by \n */
+
         if( b_replace_br )
         {
             char *p;

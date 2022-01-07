@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int /*<<< orphan*/  u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TitanCreatePixel (int,int,int,int) ; 
- int TitanGetAlpha (int /*<<< orphan*/ ) ; 
- int TitanGetBlue (int /*<<< orphan*/ ) ; 
- int TitanGetGreen (int /*<<< orphan*/ ) ; 
- int TitanGetRed (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u8 ;
+typedef int u32 ;
+
+
+ int TitanCreatePixel (int,int,int,int) ;
+ int TitanGetAlpha (int ) ;
+ int TitanGetBlue (int ) ;
+ int TitanGetGreen (int ) ;
+ int TitanGetRed (int ) ;
 
 __attribute__((used)) static u32 TitanBlendPixelsTop(u32 top, u32 bottom)
 {

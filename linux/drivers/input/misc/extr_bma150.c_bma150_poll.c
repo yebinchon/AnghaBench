@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct input_polled_dev {int /*<<< orphan*/  private; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bma150_report_xyz (int /*<<< orphan*/ ) ; 
+
+
+
+struct input_polled_dev {int private; } ;
+
+
+ int bma150_report_xyz (int ) ;
 
 __attribute__((used)) static void bma150_poll(struct input_polled_dev *dev)
 {
-	bma150_report_xyz(dev->private);
+ bma150_report_xyz(dev->private);
 }

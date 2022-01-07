@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* avctx; } ;
-struct TYPE_4__ {void* colorspace; void* color_trc; void* color_primaries; int /*<<< orphan*/  color_range; } ;
-typedef  TYPE_2__ MpegEncContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+struct TYPE_4__ {void* colorspace; void* color_trc; void* color_primaries; int color_range; } ;
+typedef TYPE_2__ MpegEncContext ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVCOL_RANGE_JPEG ; 
- int /*<<< orphan*/  AVCOL_RANGE_MPEG ; 
- int VOT_STILL_TEXTURE_ID ; 
- int VOT_VIDEO_ID ; 
- void* get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip_bits (int /*<<< orphan*/ *,int) ; 
+
+ int AVCOL_RANGE_JPEG ;
+ int AVCOL_RANGE_MPEG ;
+ int VOT_STILL_TEXTURE_ID ;
+ int VOT_VIDEO_ID ;
+ void* get_bits (int *,int) ;
+ int get_bits1 (int *) ;
+ int skip_bits (int *,int) ;
 
 __attribute__((used)) static int mpeg4_decode_visual_object(MpegEncContext *s, GetBitContext *gb)
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static int mpeg4_decode_visual_object(MpegEncContext *s, G
         int video_signal_type = get_bits1(gb);
         if (video_signal_type) {
             int video_range, color_description;
-            skip_bits(gb, 3); // video_format
+            skip_bits(gb, 3);
             video_range = get_bits1(gb);
             color_description = get_bits1(gb);
 
@@ -49,8 +49,8 @@ __attribute__((used)) static int mpeg4_decode_visual_object(MpegEncContext *s, G
 
             if (color_description) {
                 s->avctx->color_primaries = get_bits(gb, 8);
-                s->avctx->color_trc       = get_bits(gb, 8);
-                s->avctx->colorspace      = get_bits(gb, 8);
+                s->avctx->color_trc = get_bits(gb, 8);
+                s->avctx->colorspace = get_bits(gb, 8);
             }
         }
     }

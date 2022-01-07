@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u64 ;
-struct thread_stack {int cnt; int /*<<< orphan*/  kernel_start; TYPE_1__* stack; TYPE_2__* crp; } ;
-struct perf_sample {int /*<<< orphan*/  time; scalar_t__ insn_len; scalar_t__ ip; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ u64 ;
+struct thread_stack {int cnt; int kernel_start; TYPE_1__* stack; TYPE_2__* crp; } ;
+struct perf_sample {int time; scalar_t__ insn_len; scalar_t__ ip; } ;
 struct call_path_root {int dummy; } ;
 struct call_path {int dummy; } ;
 struct TYPE_4__ {struct call_path_root* cpr; } ;
-struct TYPE_3__ {int /*<<< orphan*/  cp; scalar_t__ ref; } ;
+struct TYPE_3__ {int cp; scalar_t__ ref; } ;
 
-/* Variables and functions */
- struct call_path* call_path__findnew (struct call_path_root*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int thread_stack__push_cp (struct thread_stack*,scalar_t__,int /*<<< orphan*/ ,scalar_t__,struct call_path*,int,int) ; 
+
+ struct call_path* call_path__findnew (struct call_path_root*,int ,int *,int ,int ) ;
+ int thread_stack__push_cp (struct thread_stack*,scalar_t__,int ,scalar_t__,struct call_path*,int,int) ;
 
 __attribute__((used)) static int thread_stack__trace_end(struct thread_stack *ts,
-				   struct perf_sample *sample, u64 ref)
+       struct perf_sample *sample, u64 ref)
 {
-	struct call_path_root *cpr = ts->crp->cpr;
-	struct call_path *cp;
-	u64 ret_addr;
+ struct call_path_root *cpr = ts->crp->cpr;
+ struct call_path *cp;
+ u64 ret_addr;
 
-	/* No point having 'trace end' on the bottom of the stack */
-	if (!ts->cnt || (ts->cnt == 1 && ts->stack[0].ref == ref))
-		return 0;
 
-	cp = call_path__findnew(cpr, ts->stack[ts->cnt - 1].cp, NULL, 0,
-				ts->kernel_start);
+ if (!ts->cnt || (ts->cnt == 1 && ts->stack[0].ref == ref))
+  return 0;
 
-	ret_addr = sample->ip + sample->insn_len;
+ cp = call_path__findnew(cpr, ts->stack[ts->cnt - 1].cp, ((void*)0), 0,
+    ts->kernel_start);
 
-	return thread_stack__push_cp(ts, ret_addr, sample->time, ref, cp,
-				     false, true);
+ ret_addr = sample->ip + sample->insn_len;
+
+ return thread_stack__push_cp(ts, ret_addr, sample->time, ref, cp,
+         0, 1);
 }

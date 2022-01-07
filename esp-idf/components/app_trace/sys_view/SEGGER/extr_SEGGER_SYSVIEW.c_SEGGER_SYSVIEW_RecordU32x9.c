@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  U8 ;
-typedef  int /*<<< orphan*/  U32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENCODE_U32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RECORD_END () ; 
- int /*<<< orphan*/  RECORD_START (scalar_t__) ; 
- scalar_t__ SEGGER_SYSVIEW_INFO_SIZE ; 
- int SEGGER_SYSVIEW_QUANTA_U32 ; 
- int /*<<< orphan*/  _SendPacket (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned int) ; 
+
+
+
+typedef int U8 ;
+typedef int U32 ;
+
+
+ int ENCODE_U32 (int *,int ) ;
+ int RECORD_END () ;
+ int RECORD_START (scalar_t__) ;
+ scalar_t__ SEGGER_SYSVIEW_INFO_SIZE ;
+ int SEGGER_SYSVIEW_QUANTA_U32 ;
+ int _SendPacket (int *,int *,unsigned int) ;
 
 void SEGGER_SYSVIEW_RecordU32x9(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5, U32 Para6, U32 Para7, U32 Para8) {
   U8* pPayload;
   U8* pPayloadStart;
   RECORD_START(SEGGER_SYSVIEW_INFO_SIZE + 9 * SEGGER_SYSVIEW_QUANTA_U32);
-  //
+
   pPayload = pPayloadStart;
   ENCODE_U32(pPayload, Para0);
   ENCODE_U32(pPayload, Para1);

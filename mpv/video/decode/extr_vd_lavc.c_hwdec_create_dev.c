@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ hwdec_devs; } ;
-typedef  TYPE_1__ vd_ffmpeg_ctx ;
-struct mp_filter {int /*<<< orphan*/  log; int /*<<< orphan*/  global; TYPE_1__* priv; } ;
-struct hwdec_info {int /*<<< orphan*/  lavc_device; scalar_t__ copying; } ;
-struct hwcontext_fns {int /*<<< orphan*/ * (* create_dev ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct hwcontext_create_dev_params*) ;} ;
+typedef TYPE_1__ vd_ffmpeg_ctx ;
+struct mp_filter {int log; int global; TYPE_1__* priv; } ;
+struct hwdec_info {int lavc_device; scalar_t__ copying; } ;
+struct hwcontext_fns {int * (* create_dev ) (int ,int ,struct hwcontext_create_dev_params*) ;} ;
 struct hwcontext_create_dev_params {int probing; } ;
-typedef  int /*<<< orphan*/  AVBufferRef ;
+typedef int AVBufferRef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_hwdevice_ctx_create (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * hwdec_devices_get_lavc (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hwdec_devices_request_all (scalar_t__) ; 
- struct hwcontext_fns* hwdec_get_hwcontext_fns (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct hwcontext_create_dev_params*) ; 
+
+ int assert (int ) ;
+ int av_hwdevice_ctx_create (int **,int ,int *,int *,int ) ;
+ int * hwdec_devices_get_lavc (scalar_t__,int ) ;
+ int hwdec_devices_request_all (scalar_t__) ;
+ struct hwcontext_fns* hwdec_get_hwcontext_fns (int ) ;
+ int * stub1 (int ,int ,struct hwcontext_create_dev_params*) ;
 
 __attribute__((used)) static AVBufferRef *hwdec_create_dev(struct mp_filter *vd,
                                      struct hwdec_info *hwdec,
@@ -43,8 +43,8 @@ __attribute__((used)) static AVBufferRef *hwdec_create_dev(struct mp_filter *vd,
             };
             return fns->create_dev(vd->global, vd->log, &params);
         } else {
-            AVBufferRef* ref = NULL;
-            av_hwdevice_ctx_create(&ref, hwdec->lavc_device, NULL, NULL, 0);
+            AVBufferRef* ref = ((void*)0);
+            av_hwdevice_ctx_create(&ref, hwdec->lavc_device, ((void*)0), ((void*)0), 0);
             return ref;
         }
     } else if (ctx->hwdec_devs) {
@@ -52,5 +52,5 @@ __attribute__((used)) static AVBufferRef *hwdec_create_dev(struct mp_filter *vd,
         return hwdec_devices_get_lavc(ctx->hwdec_devs, hwdec->lavc_device);
     }
 
-    return NULL;
+    return ((void*)0);
 }

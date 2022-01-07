@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  glyph_count; int /*<<< orphan*/  extra1; } ;
-typedef  TYPE_1__* OTV_Validator ;
-typedef  int FT_UInt ;
-typedef  int FT_Bytes ;
 
-/* Variables and functions */
- int DefJstfLangSys ; 
- int ExtGlyph ; 
- int /*<<< orphan*/  ExtenderGlyph ; 
- int FT_NEXT_USHORT (int) ; 
- int /*<<< orphan*/  JstfLangSys ; 
- int /*<<< orphan*/  JstfPriority ; 
- int /*<<< orphan*/  OTV_EXIT ; 
- int /*<<< orphan*/  OTV_LIMIT_CHECK (int) ; 
- int /*<<< orphan*/  OTV_NAME_ENTER (char*) ; 
- int /*<<< orphan*/  OTV_NEST1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OTV_NEST2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OTV_OPTIONAL_OFFSET (int) ; 
- int /*<<< orphan*/  OTV_OPTIONAL_TABLE (int) ; 
- int /*<<< orphan*/  OTV_RUN (int,TYPE_1__*) ; 
- int /*<<< orphan*/  OTV_SIZE_CHECK (int) ; 
- int /*<<< orphan*/  OTV_TRACE (char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int glyph_count; int extra1; } ;
+typedef TYPE_1__* OTV_Validator ;
+typedef int FT_UInt ;
+typedef int FT_Bytes ;
+
+
+ int DefJstfLangSys ;
+ int ExtGlyph ;
+ int ExtenderGlyph ;
+ int FT_NEXT_USHORT (int) ;
+ int JstfLangSys ;
+ int JstfPriority ;
+ int OTV_EXIT ;
+ int OTV_LIMIT_CHECK (int) ;
+ int OTV_NAME_ENTER (char*) ;
+ int OTV_NEST1 (int ) ;
+ int OTV_NEST2 (int ,int ) ;
+ int OTV_OPTIONAL_OFFSET (int) ;
+ int OTV_OPTIONAL_TABLE (int) ;
+ int OTV_RUN (int,TYPE_1__*) ;
+ int OTV_SIZE_CHECK (int) ;
+ int OTV_TRACE (char*) ;
 
 __attribute__((used)) static void
-  otv_JstfScript_validate( FT_Bytes       table,
-                           OTV_Validator  otvalid )
+  otv_JstfScript_validate( FT_Bytes table,
+                           OTV_Validator otvalid )
   {
-    FT_Bytes  p = table;
-    FT_UInt   table_size;
-    FT_UInt   JstfLangSysCount;
+    FT_Bytes p = table;
+    FT_UInt table_size;
+    FT_UInt JstfLangSysCount;
 
     OTV_OPTIONAL_TABLE( ExtGlyph );
     OTV_OPTIONAL_TABLE( DefJstfLangSys );
@@ -74,11 +74,11 @@ __attribute__((used)) static void
 
     OTV_LIMIT_CHECK( 6 * JstfLangSysCount );
 
-    /* JstfLangSysRecord */
+
     OTV_NEST2( JstfLangSys, JstfPriority );
     for ( ; JstfLangSysCount > 0; JstfLangSysCount-- )
     {
-      p += 4;       /* skip JstfLangSysTag */
+      p += 4;
 
       OTV_RUN( table + FT_NEXT_USHORT( p ), otvalid );
     }

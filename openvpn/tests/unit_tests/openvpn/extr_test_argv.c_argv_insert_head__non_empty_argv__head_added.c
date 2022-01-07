@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct argv {int argc; int /*<<< orphan*/ * argv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PATH1 ; 
- int /*<<< orphan*/  PATH2 ; 
- struct argv argv_insert_head (struct argv*,int /*<<< orphan*/ ) ; 
- struct argv argv_new () ; 
- int /*<<< orphan*/  argv_printf (struct argv*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  argv_reset (struct argv*) ; 
- int /*<<< orphan*/  assert_int_equal (int,int) ; 
- int /*<<< orphan*/  assert_string_equal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct argv {int argc; int * argv; } ;
+
+
+ int PATH1 ;
+ int PATH2 ;
+ struct argv argv_insert_head (struct argv*,int ) ;
+ struct argv argv_new () ;
+ int argv_printf (struct argv*,char*,int ) ;
+ int argv_reset (struct argv*) ;
+ int assert_int_equal (int,int) ;
+ int assert_string_equal (int ,int ) ;
 
 __attribute__((used)) static void
 argv_insert_head__non_empty_argv__head_added(void **state)

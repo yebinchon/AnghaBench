@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsIDocument ;
-typedef  int /*<<< orphan*/  nsIDOMNodeList ;
-typedef  int /*<<< orphan*/  nsIDOMNode ;
-typedef  int /*<<< orphan*/  nsIContentSerializer ;
-typedef  int /*<<< orphan*/  nsIContent ;
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  scalar_t__ cpp_bool ;
-typedef  scalar_t__ UINT32 ;
-typedef  int UINT16 ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
-#define  COMMENT_NODE 133 
-#define  DOCUMENT_FRAGMENT_NODE 132 
-#define  DOCUMENT_NODE 131 
-#define  DOCUMENT_TYPE_NODE 130 
-#define  ELEMENT_NODE 129 
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_FAIL ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int /*<<< orphan*/  IID_nsIContent ; 
- int /*<<< orphan*/  IID_nsIDocument ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ NS_SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
-#define  TEXT_NODE 128 
- int /*<<< orphan*/  nsIContentSerializer_AppendComment (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIContentSerializer_AppendDoctype (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIContentSerializer_AppendDocumentStart (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIContentSerializer_AppendElementEnd (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIContentSerializer_AppendElementStart (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIContentSerializer_AppendText (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIContent_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMNodeList_GetLength (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  nsIDOMNodeList_Item (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  nsIDOMNodeList_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMNode_GetChildNodes (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  nsIDOMNode_GetNodeType (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  nsIDOMNode_HasChildNodes (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  nsIDOMNode_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  nsIDOMNode_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDocument_Release (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int nsresult ;
+typedef int nsIDocument ;
+typedef int nsIDOMNodeList ;
+typedef int nsIDOMNode ;
+typedef int nsIContentSerializer ;
+typedef int nsIContent ;
+typedef int nsAString ;
+typedef scalar_t__ cpp_bool ;
+typedef scalar_t__ UINT32 ;
+typedef int UINT16 ;
+typedef int HRESULT ;
+
+
+
+
+
+
+
+ int ERR (char*,int ) ;
+ int E_FAIL ;
+ scalar_t__ FALSE ;
+ int FIXME (char*,int) ;
+ int IID_nsIContent ;
+ int IID_nsIDocument ;
+ scalar_t__ NS_FAILED (int ) ;
+ scalar_t__ NS_SUCCEEDED (int ) ;
+ int S_OK ;
+
+ int nsIContentSerializer_AppendComment (int *,int *,int ,int,int *) ;
+ int nsIContentSerializer_AppendDoctype (int *,int *,int *) ;
+ int nsIContentSerializer_AppendDocumentStart (int *,int *,int *) ;
+ int nsIContentSerializer_AppendElementEnd (int *,int *,int *) ;
+ int nsIContentSerializer_AppendElementStart (int *,int *,int *,int *) ;
+ int nsIContentSerializer_AppendText (int *,int *,int ,int,int *) ;
+ int nsIContent_Release (int *) ;
+ int nsIDOMNodeList_GetLength (int *,scalar_t__*) ;
+ int nsIDOMNodeList_Item (int *,scalar_t__,int **) ;
+ int nsIDOMNodeList_Release (int *) ;
+ int nsIDOMNode_GetChildNodes (int *,int **) ;
+ int nsIDOMNode_GetNodeType (int *,int*) ;
+ int nsIDOMNode_HasChildNodes (int *,scalar_t__*) ;
+ int nsIDOMNode_QueryInterface (int *,int *,void**) ;
+ int nsIDOMNode_Release (int *) ;
+ int nsIDocument_Release (int *) ;
 
 __attribute__((used)) static HRESULT nsnode_to_nsstring_rec(nsIContentSerializer *serializer, nsIDOMNode *nsnode, nsAString *str)
 {
-    nsIDOMNodeList *node_list = NULL;
+    nsIDOMNodeList *node_list = ((void*)0);
     cpp_bool has_children = FALSE;
     nsIContent *nscontent;
     UINT16 type;
@@ -71,7 +71,7 @@ __attribute__((used)) static HRESULT nsnode_to_nsstring_rec(nsIContentSerializer
         return E_FAIL;
     }
 
-    if(type != DOCUMENT_NODE) {
+    if(type != 131) {
         nsres = nsIDOMNode_QueryInterface(nsnode, &IID_nsIContent, (void**)&nscontent);
         if(NS_FAILED(nsres)) {
             ERR("Could not get nsIContent interface: %08x\n", nsres);
@@ -80,26 +80,26 @@ __attribute__((used)) static HRESULT nsnode_to_nsstring_rec(nsIContentSerializer
     }
 
     switch(type) {
-    case ELEMENT_NODE:
+    case 129:
         nsIContentSerializer_AppendElementStart(serializer, nscontent, nscontent, str);
         break;
-    case TEXT_NODE:
+    case 128:
         nsIContentSerializer_AppendText(serializer, nscontent, 0, -1, str);
         break;
-    case COMMENT_NODE:
+    case 133:
         nsres = nsIContentSerializer_AppendComment(serializer, nscontent, 0, -1, str);
         break;
-    case DOCUMENT_NODE: {
+    case 131: {
         nsIDocument *nsdoc;
         nsIDOMNode_QueryInterface(nsnode, &IID_nsIDocument, (void**)&nsdoc);
         nsIContentSerializer_AppendDocumentStart(serializer, nsdoc, str);
         nsIDocument_Release(nsdoc);
         break;
     }
-    case DOCUMENT_TYPE_NODE:
+    case 130:
         nsIContentSerializer_AppendDoctype(serializer, nscontent, str);
         break;
-    case DOCUMENT_FRAGMENT_NODE:
+    case 132:
         break;
     default:
         FIXME("Unhandled type %u\n", type);
@@ -125,10 +125,10 @@ __attribute__((used)) static HRESULT nsnode_to_nsstring_rec(nsIContentSerializer
         nsIDOMNodeList_Release(node_list);
     }
 
-    if(type == ELEMENT_NODE)
+    if(type == 129)
         nsIContentSerializer_AppendElementEnd(serializer, nscontent, str);
 
-    if(type != DOCUMENT_NODE)
+    if(type != 131)
         nsIContent_Release(nscontent);
     return S_OK;
 }

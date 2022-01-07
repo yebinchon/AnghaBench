@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
 struct TYPE_3__ {float* pf_gain; float* pf_peak; scalar_t__* pb_peak; scalar_t__* pb_gain; } ;
-typedef  TYPE_1__ audio_replay_gain_t ;
+typedef TYPE_1__ audio_replay_gain_t ;
 
-/* Variables and functions */
- unsigned int AUDIO_REPLAY_GAIN_ALBUM ; 
- unsigned int AUDIO_REPLAY_GAIN_MAX ; 
- unsigned int AUDIO_REPLAY_GAIN_TRACK ; 
- float fminf (float,float) ; 
- scalar_t__ likely (int /*<<< orphan*/ ) ; 
- float powf (float,float) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- scalar_t__ var_InheritBool (int /*<<< orphan*/ *,char*) ; 
- float var_InheritFloat (int /*<<< orphan*/ *,char*) ; 
+
+ unsigned int AUDIO_REPLAY_GAIN_ALBUM ;
+ unsigned int AUDIO_REPLAY_GAIN_MAX ;
+ unsigned int AUDIO_REPLAY_GAIN_TRACK ;
+ float fminf (float,float) ;
+ scalar_t__ likely (int ) ;
+ float powf (float,float) ;
+ int strcmp (char const*,char*) ;
+ scalar_t__ var_InheritBool (int *,char*) ;
+ float var_InheritFloat (int *,char*) ;
 
 __attribute__((used)) static float aout_ReplayGainSelect(vlc_object_t *obj, const char *str,
                                    const audio_replay_gain_t *replay_gain)
 {
     unsigned mode = AUDIO_REPLAY_GAIN_MAX;
 
-    if (likely(str != NULL))
-    {   /* Find selectrf mode */
+    if (likely(str != ((void*)0)))
+    {
         if (!strcmp (str, "track"))
             mode = AUDIO_REPLAY_GAIN_TRACK;
         else
@@ -40,7 +40,7 @@ __attribute__((used)) static float aout_ReplayGainSelect(vlc_object_t *obj, cons
             mode = AUDIO_REPLAY_GAIN_ALBUM;
     }
 
-    /* */
+
     float multiplier;
 
     if (mode == AUDIO_REPLAY_GAIN_MAX)
@@ -51,7 +51,7 @@ __attribute__((used)) static float aout_ReplayGainSelect(vlc_object_t *obj, cons
     {
         float gain;
 
-        /* If the selectrf mode is not available, prefer the other one */
+
         if (!replay_gain->pb_gain[mode] && replay_gain->pb_gain[!mode])
             mode = !mode;
 
@@ -69,7 +69,7 @@ __attribute__((used)) static float aout_ReplayGainSelect(vlc_object_t *obj, cons
                                             : 1.f);
     }
 
-    /* Command line / configuration gain */
+
     multiplier *= var_InheritFloat (obj, "gain");
 
     return multiplier;

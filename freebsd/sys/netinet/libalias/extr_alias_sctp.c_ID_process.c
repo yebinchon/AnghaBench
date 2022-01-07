@@ -1,103 +1,103 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_2__* Init; } ;
 struct sctp_nat_msg {int msg; TYPE_4__* ip_hdr; TYPE_3__ sctpchnk; TYPE_1__* sctp_hdr; } ;
-struct sctp_nat_assoc {int /*<<< orphan*/  exp; int /*<<< orphan*/  state; int /*<<< orphan*/  TableRegister; int /*<<< orphan*/  l_vtag; int /*<<< orphan*/  g_port; int /*<<< orphan*/  l_port; int /*<<< orphan*/  a_addr; int /*<<< orphan*/  l_addr; int /*<<< orphan*/  g_vtag; } ;
+struct sctp_nat_assoc {int exp; int state; int TableRegister; int l_vtag; int g_port; int l_port; int a_addr; int l_addr; int g_vtag; } ;
 struct libalias {int dummy; } ;
-struct TYPE_8__ {int /*<<< orphan*/  ip_src; int /*<<< orphan*/  ip_dst; } ;
-struct TYPE_6__ {int /*<<< orphan*/  initiate_tag; } ;
-struct TYPE_5__ {int /*<<< orphan*/  src_port; int /*<<< orphan*/  dest_port; } ;
+struct TYPE_8__ {int ip_src; int ip_dst; } ;
+struct TYPE_6__ {int initiate_tag; } ;
+struct TYPE_5__ {int src_port; int dest_port; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddGlobalIPAddresses (struct sctp_nat_msg*,struct sctp_nat_assoc*,int) ; 
- int /*<<< orphan*/  AddSctpAssocGlobal (struct libalias*,struct sctp_nat_assoc*) ; 
- int /*<<< orphan*/  AddSctpAssocLocal (struct libalias*,struct sctp_nat_assoc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FindAliasAddress (struct libalias*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FindSctpRedirectAddress (struct libalias*,struct sctp_nat_msg*) ; 
- int /*<<< orphan*/  GetAsconfVtags (struct libalias*,struct sctp_nat_msg*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int SN_DROP_PKT ; 
- int /*<<< orphan*/  SN_INa ; 
- int /*<<< orphan*/  SN_INi ; 
- int /*<<< orphan*/  SN_I_T (struct libalias*) ; 
- int SN_NAT_PKT ; 
- int SN_REPLY_ABORT ; 
- int SN_REPLY_ERROR ; 
-#define  SN_SCTP_ASCONF 131 
-#define  SN_SCTP_INIT 130 
-#define  SN_TO_GLOBAL 129 
-#define  SN_TO_LOCAL 128 
- int /*<<< orphan*/  SN_WAIT_TOGLOBAL ; 
- int /*<<< orphan*/  SN_WAIT_TOLOCAL ; 
- int /*<<< orphan*/  sctp_AddTimeOut (struct libalias*,struct sctp_nat_assoc*) ; 
- int /*<<< orphan*/  sysctl_accept_global_ootb_addip ; 
- int /*<<< orphan*/  sysctl_track_global_addresses ; 
+
+ int AddGlobalIPAddresses (struct sctp_nat_msg*,struct sctp_nat_assoc*,int) ;
+ int AddSctpAssocGlobal (struct libalias*,struct sctp_nat_assoc*) ;
+ int AddSctpAssocLocal (struct libalias*,struct sctp_nat_assoc*,int ) ;
+ int FindAliasAddress (struct libalias*,int ) ;
+ int FindSctpRedirectAddress (struct libalias*,struct sctp_nat_msg*) ;
+ int GetAsconfVtags (struct libalias*,struct sctp_nat_msg*,int *,int *,int) ;
+ int SN_DROP_PKT ;
+ int SN_INa ;
+ int SN_INi ;
+ int SN_I_T (struct libalias*) ;
+ int SN_NAT_PKT ;
+ int SN_REPLY_ABORT ;
+ int SN_REPLY_ERROR ;
+
+
+
+
+ int SN_WAIT_TOGLOBAL ;
+ int SN_WAIT_TOLOCAL ;
+ int sctp_AddTimeOut (struct libalias*,struct sctp_nat_assoc*) ;
+ int sysctl_accept_global_ootb_addip ;
+ int sysctl_track_global_addresses ;
 
 __attribute__((used)) static int
 ID_process(struct libalias *la, int direction, struct sctp_nat_assoc *assoc, struct sctp_nat_msg *sm)
 {
-	switch (sm->msg) {
-	case SN_SCTP_ASCONF:           /* a packet containing an ASCONF chunk with ADDIP */
-		if (!sysctl_accept_global_ootb_addip && (direction == SN_TO_LOCAL))
-			return (SN_DROP_PKT);
-		/* if this Asconf packet does not contain the Vtag parameters it is of no use in Idle state */
-		if (!GetAsconfVtags(la, sm, &(assoc->l_vtag), &(assoc->g_vtag), direction))
-			return (SN_DROP_PKT);
-		/* FALLTHROUGH */
-	case SN_SCTP_INIT:            /* a packet containing an INIT chunk or an ASCONF AddIP */
-		if (sysctl_track_global_addresses)
-			AddGlobalIPAddresses(sm, assoc, direction);
-		switch (direction) {
-		case SN_TO_GLOBAL:
-			assoc->l_addr = sm->ip_hdr->ip_src;
-			assoc->a_addr = FindAliasAddress(la, assoc->l_addr);
-			assoc->l_port = sm->sctp_hdr->src_port;
-			assoc->g_port = sm->sctp_hdr->dest_port;
-			if (sm->msg == SN_SCTP_INIT)
-				assoc->g_vtag = sm->sctpchnk.Init->initiate_tag;
-			if (AddSctpAssocGlobal(la, assoc)) /* DB clash *///**** need to add dst address
-				return ((sm->msg == SN_SCTP_INIT) ? SN_REPLY_ABORT : SN_REPLY_ERROR);
-			if (sm->msg == SN_SCTP_ASCONF) {
-				if (AddSctpAssocLocal(la, assoc, sm->ip_hdr->ip_dst)) /* DB clash */
-					return (SN_REPLY_ERROR);
-				assoc->TableRegister |= SN_WAIT_TOLOCAL; /* wait for tolocal ack */
-			}
-		break;
-		case SN_TO_LOCAL:
-			assoc->l_addr = FindSctpRedirectAddress(la, sm);
-			assoc->a_addr = sm->ip_hdr->ip_dst;
-			assoc->l_port = sm->sctp_hdr->dest_port;
-			assoc->g_port = sm->sctp_hdr->src_port;
-			if (sm->msg == SN_SCTP_INIT)
-				assoc->l_vtag = sm->sctpchnk.Init->initiate_tag;
-			if (AddSctpAssocLocal(la, assoc, sm->ip_hdr->ip_src)) /* DB clash */
-				return ((sm->msg == SN_SCTP_INIT) ? SN_REPLY_ABORT : SN_REPLY_ERROR);
-			if (sm->msg == SN_SCTP_ASCONF) {
-				if (AddSctpAssocGlobal(la, assoc)) /* DB clash */ //**** need to add src address
-					return (SN_REPLY_ERROR);
-				assoc->TableRegister |= SN_WAIT_TOGLOBAL; /* wait for toglobal ack */
-					}
-			break;
-		}
-		assoc->state = (sm->msg == SN_SCTP_INIT) ? SN_INi : SN_INa;
-		assoc->exp = SN_I_T(la);
-		sctp_AddTimeOut(la,assoc);
-		return (SN_NAT_PKT);
-	default: /* Any other type of SCTP message is not valid in Idle */
-		return (SN_DROP_PKT);
-	}
-	return (SN_DROP_PKT);/* shouldn't get here very bad: log, drop and hope for the best */
+ switch (sm->msg) {
+ case 131:
+  if (!sysctl_accept_global_ootb_addip && (direction == 128))
+   return (SN_DROP_PKT);
+
+  if (!GetAsconfVtags(la, sm, &(assoc->l_vtag), &(assoc->g_vtag), direction))
+   return (SN_DROP_PKT);
+
+ case 130:
+  if (sysctl_track_global_addresses)
+   AddGlobalIPAddresses(sm, assoc, direction);
+  switch (direction) {
+  case 129:
+   assoc->l_addr = sm->ip_hdr->ip_src;
+   assoc->a_addr = FindAliasAddress(la, assoc->l_addr);
+   assoc->l_port = sm->sctp_hdr->src_port;
+   assoc->g_port = sm->sctp_hdr->dest_port;
+   if (sm->msg == 130)
+    assoc->g_vtag = sm->sctpchnk.Init->initiate_tag;
+   if (AddSctpAssocGlobal(la, assoc))
+    return ((sm->msg == 130) ? SN_REPLY_ABORT : SN_REPLY_ERROR);
+   if (sm->msg == 131) {
+    if (AddSctpAssocLocal(la, assoc, sm->ip_hdr->ip_dst))
+     return (SN_REPLY_ERROR);
+    assoc->TableRegister |= SN_WAIT_TOLOCAL;
+   }
+  break;
+  case 128:
+   assoc->l_addr = FindSctpRedirectAddress(la, sm);
+   assoc->a_addr = sm->ip_hdr->ip_dst;
+   assoc->l_port = sm->sctp_hdr->dest_port;
+   assoc->g_port = sm->sctp_hdr->src_port;
+   if (sm->msg == 130)
+    assoc->l_vtag = sm->sctpchnk.Init->initiate_tag;
+   if (AddSctpAssocLocal(la, assoc, sm->ip_hdr->ip_src))
+    return ((sm->msg == 130) ? SN_REPLY_ABORT : SN_REPLY_ERROR);
+   if (sm->msg == 131) {
+    if (AddSctpAssocGlobal(la, assoc))
+     return (SN_REPLY_ERROR);
+    assoc->TableRegister |= SN_WAIT_TOGLOBAL;
+     }
+   break;
+  }
+  assoc->state = (sm->msg == 130) ? SN_INi : SN_INa;
+  assoc->exp = SN_I_T(la);
+  sctp_AddTimeOut(la,assoc);
+  return (SN_NAT_PKT);
+ default:
+  return (SN_DROP_PKT);
+ }
+ return (SN_DROP_PKT);
 }

@@ -1,40 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int EINVAL ;
+ int EXIT_FAILURE ;
+ int FORK_DEATHSIG ;
+ int FORK_LOG ;
+ int FORK_RESET_SIGNALS ;
+ int FORK_RLIMIT_NOFILE_SAFE ;
+ int FORK_WAIT ;
+ int F_OK ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int FORK_DEATHSIG ; 
- int FORK_LOG ; 
- int FORK_RESET_SIGNALS ; 
- int FORK_RLIMIT_NOFILE_SAFE ; 
- int FORK_WAIT ; 
- int /*<<< orphan*/  F_OK ; 
-#define  QUOTACHECK 128 
- int /*<<< orphan*/  SYNTHETIC_ERRNO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _exit (int /*<<< orphan*/ ) ; 
- scalar_t__ access (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  arg_force ; 
- scalar_t__ arg_skip ; 
- int /*<<< orphan*/  execv (char const* const,char**) ; 
- int log_error_errno (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  log_setup_service () ; 
- int /*<<< orphan*/  log_warning_errno (int,char*) ; 
- int /*<<< orphan*/  parse_proc_cmdline_item ; 
- int proc_cmdline_parse (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int safe_fork (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_files () ; 
- int /*<<< orphan*/  umask (int) ; 
+ int SYNTHETIC_ERRNO (int ) ;
+ int _exit (int ) ;
+ scalar_t__ access (char*,int ) ;
+ int arg_force ;
+ scalar_t__ arg_skip ;
+ int execv (char const* const,char**) ;
+ int log_error_errno (int ,char*) ;
+ int log_setup_service () ;
+ int log_warning_errno (int,char*) ;
+ int parse_proc_cmdline_item ;
+ int proc_cmdline_parse (int ,int *,int ) ;
+ int safe_fork (char*,int,int *) ;
+ int test_files () ;
+ int umask (int) ;
 
 __attribute__((used)) static int run(int argc, char *argv[]) {
         int r;
@@ -47,7 +39,7 @@ __attribute__((used)) static int run(int argc, char *argv[]) {
 
         umask(0022);
 
-        r = proc_cmdline_parse(parse_proc_cmdline_item, NULL, 0);
+        r = proc_cmdline_parse(parse_proc_cmdline_item, ((void*)0), 0);
         if (r < 0)
                 log_warning_errno(r, "Failed to parse kernel command line, ignoring: %m");
 
@@ -61,20 +53,20 @@ __attribute__((used)) static int run(int argc, char *argv[]) {
                         return 0;
         }
 
-        r = safe_fork("(quotacheck)", FORK_RESET_SIGNALS|FORK_DEATHSIG|FORK_RLIMIT_NOFILE_SAFE|FORK_WAIT|FORK_LOG, NULL);
+        r = safe_fork("(quotacheck)", FORK_RESET_SIGNALS|FORK_DEATHSIG|FORK_RLIMIT_NOFILE_SAFE|FORK_WAIT|FORK_LOG, ((void*)0));
         if (r < 0)
                 return r;
         if (r == 0) {
                 static const char * const cmdline[] = {
-                        QUOTACHECK,
+                        128,
                         "-anug",
-                        NULL
+                        ((void*)0)
                 };
 
-                /* Child */
+
 
                 execv(cmdline[0], (char**) cmdline);
-                _exit(EXIT_FAILURE); /* Operational error */
+                _exit(EXIT_FAILURE);
         }
 
         return 0;

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_2__* data; } ;
-struct web_client {TYPE_1__ response; int /*<<< orphan*/  id; } ;
-struct TYPE_7__ {int /*<<< orphan*/  contenttype; } ;
-typedef  int /*<<< orphan*/  RRDHOST ;
-typedef  int /*<<< orphan*/  RRDCALC_STATUS ;
-typedef  int /*<<< orphan*/  BUFFER ;
+struct web_client {TYPE_1__ response; int id; } ;
+struct TYPE_7__ {int contenttype; } ;
+typedef int RRDHOST ;
+typedef int RRDCALC_STATUS ;
+typedef int BUFFER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CT_APPLICATION_JSON ; 
- int /*<<< orphan*/  D_WEB_CLIENT ; 
- int /*<<< orphan*/  RRDCALC_STATUS_CLEAR ; 
- int /*<<< orphan*/  RRDCALC_STATUS_CRITICAL ; 
- int /*<<< orphan*/  RRDCALC_STATUS_RAISED ; 
- int /*<<< orphan*/  RRDCALC_STATUS_REMOVED ; 
- int /*<<< orphan*/  RRDCALC_STATUS_UNDEFINED ; 
- int /*<<< orphan*/  RRDCALC_STATUS_UNINITIALIZED ; 
- int /*<<< orphan*/  RRDCALC_STATUS_WARNING ; 
- int /*<<< orphan*/ * buffer_create (int) ; 
- int /*<<< orphan*/  buffer_flush (TYPE_2__*) ; 
- int /*<<< orphan*/  buffer_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  buffer_no_cacheable (TYPE_2__*) ; 
- int /*<<< orphan*/  buffer_sprintf (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  buffer_strcat (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  health_aggregate_alarms (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* mystrsep (char**,char*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- char toupper (char) ; 
+
+ int CT_APPLICATION_JSON ;
+ int D_WEB_CLIENT ;
+ int RRDCALC_STATUS_CLEAR ;
+ int RRDCALC_STATUS_CRITICAL ;
+ int RRDCALC_STATUS_RAISED ;
+ int RRDCALC_STATUS_REMOVED ;
+ int RRDCALC_STATUS_UNDEFINED ;
+ int RRDCALC_STATUS_UNINITIALIZED ;
+ int RRDCALC_STATUS_WARNING ;
+ int * buffer_create (int) ;
+ int buffer_flush (TYPE_2__*) ;
+ int buffer_free (int *) ;
+ int buffer_no_cacheable (TYPE_2__*) ;
+ int buffer_sprintf (TYPE_2__*,char*) ;
+ int buffer_strcat (int *,char*) ;
+ int debug (int ,char*,int ,char*,char*) ;
+ int health_aggregate_alarms (int *,TYPE_2__*,int *,int ) ;
+ char* mystrsep (char**,char*) ;
+ int strcmp (char*,char*) ;
+ char toupper (char) ;
 
 inline int web_client_api_request_v1_alarm_count(RRDHOST *host, struct web_client *w, char *url) {
     RRDCALC_STATUS status = RRDCALC_STATUS_RAISED;
-    BUFFER *contexts = NULL;
+    BUFFER *contexts = ((void*)0);
 
     buffer_flush(w->response.data);
     buffer_sprintf(w->response.data, "[");

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_int ;
+
+
+
+
+typedef int u_int ;
 struct jz4780_pic_softc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JZ_ICMCR0 ; 
- int /*<<< orphan*/  JZ_ICMCR1 ; 
- int /*<<< orphan*/  WRITE4 (struct jz4780_pic_softc*,int /*<<< orphan*/ ,unsigned int) ; 
+
+ int JZ_ICMCR0 ;
+ int JZ_ICMCR1 ;
+ int WRITE4 (struct jz4780_pic_softc*,int ,unsigned int) ;
 
 __attribute__((used)) static inline void
 pic_irq_unmask(struct jz4780_pic_softc *sc, u_int irq)
 {
-	if (irq < 32)
-		WRITE4(sc, JZ_ICMCR0, (1u << irq));
-	else
-		WRITE4(sc, JZ_ICMCR1, (1u << (irq - 32)));
+ if (irq < 32)
+  WRITE4(sc, JZ_ICMCR0, (1u << irq));
+ else
+  WRITE4(sc, JZ_ICMCR1, (1u << (irq - 32)));
 }

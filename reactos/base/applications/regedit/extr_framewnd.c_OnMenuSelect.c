@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WCHAR ;
-typedef  int UINT ;
-typedef  int* LPWSTR ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  scalar_t__ HMENU ;
 
-/* Variables and functions */
- scalar_t__ GetMenu (int /*<<< orphan*/ ) ; 
- scalar_t__ LoadStringW (int /*<<< orphan*/ ,int,int*,int) ; 
- int MF_POPUP ; 
- int /*<<< orphan*/  SB_SETTEXTW ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hInst ; 
- int /*<<< orphan*/  hStatusBar ; 
- int* wcschr (int*,int) ; 
- int /*<<< orphan*/  wcscpy (int*,char*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int UINT ;
+typedef int* LPWSTR ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef scalar_t__ HMENU ;
+
+
+ scalar_t__ GetMenu (int ) ;
+ scalar_t__ LoadStringW (int ,int,int*,int) ;
+ int MF_POPUP ;
+ int SB_SETTEXTW ;
+ int SendMessageW (int ,int ,int ,int ) ;
+ int hInst ;
+ int hStatusBar ;
+ int* wcschr (int*,int) ;
+ int wcscpy (int*,char*) ;
 
 __attribute__((used)) static void OnMenuSelect(HWND hWnd, UINT nItemID, UINT nFlags, HMENU hSysMenu)
 {
@@ -42,11 +42,11 @@ __attribute__((used)) static void OnMenuSelect(HWND hWnd, UINT nItemID, UINT nFl
     }
     if (LoadStringW(hInst, nItemID, str, 100))
     {
-        /* load appropriate string*/
+
         LPWSTR lpsz = str;
-        /* first newline terminates actual string*/
+
         lpsz = wcschr(lpsz, L'\n');
-        if (lpsz != NULL)
+        if (lpsz != ((void*)0))
             *lpsz = L'\0';
     }
     SendMessageW(hStatusBar, SB_SETTEXTW, 0, (LPARAM)str);

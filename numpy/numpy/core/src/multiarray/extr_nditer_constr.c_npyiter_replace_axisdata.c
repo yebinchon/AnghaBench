@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  npy_uint32 ;
-typedef  int npy_intp ;
-typedef  int npy_int8 ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
-typedef  int /*<<< orphan*/  NpyIter_AxisData ;
-typedef  int /*<<< orphan*/  NpyIter ;
 
-/* Variables and functions */
- char** NAD_PTRS (int /*<<< orphan*/ *) ; 
- int* NAD_STRIDES (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NIT_ADVANCE_AXISDATA (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * NIT_AXISDATA (int /*<<< orphan*/ *) ; 
- int NIT_AXISDATA_SIZEOF (int /*<<< orphan*/ ,int,int) ; 
- int* NIT_BASEOFFSETS (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NIT_ITFLAGS (int /*<<< orphan*/ *) ; 
- int NIT_NDIM (int /*<<< orphan*/ *) ; 
- int NIT_NOP (int /*<<< orphan*/ *) ; 
- int* NIT_PERM (int /*<<< orphan*/ *) ; 
- char** NIT_RESETDATAPTR (int /*<<< orphan*/ *) ; 
- int PyArray_DIM (int /*<<< orphan*/ *,int) ; 
- int PyArray_STRIDE (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int npy_uint32 ;
+typedef int npy_intp ;
+typedef int npy_int8 ;
+typedef int PyArrayObject ;
+typedef int NpyIter_AxisData ;
+typedef int NpyIter ;
+
+
+ char** NAD_PTRS (int *) ;
+ int* NAD_STRIDES (int *) ;
+ int NIT_ADVANCE_AXISDATA (int *,int) ;
+ int * NIT_AXISDATA (int *) ;
+ int NIT_AXISDATA_SIZEOF (int ,int,int) ;
+ int* NIT_BASEOFFSETS (int *) ;
+ int NIT_ITFLAGS (int *) ;
+ int NIT_NDIM (int *) ;
+ int NIT_NOP (int *) ;
+ int* NIT_PERM (int *) ;
+ char** NIT_RESETDATAPTR (int *) ;
+ int PyArray_DIM (int *,int) ;
+ int PyArray_STRIDE (int *,int) ;
 
 __attribute__((used)) static void
 npyiter_replace_axisdata(NpyIter *iter, int iop,
@@ -51,19 +51,19 @@ npyiter_replace_axisdata(NpyIter *iter, int iop,
     axisdata0 = NIT_AXISDATA(iter);
     sizeof_axisdata = NIT_AXISDATA_SIZEOF(itflags, ndim, nop);
 
-    /*
-     * Replace just the strides which were non-zero, and compute
-     * the base data address.
-     */
+
+
+
+
     axisdata = axisdata0;
 
-    if (op_axes != NULL) {
+    if (op_axes != ((void*)0)) {
         for (idim = 0; idim < ndim; ++idim, NIT_ADVANCE_AXISDATA(axisdata, 1)) {
             npy_int8 p;
             int i;
             npy_intp shape;
 
-            /* Apply the perm to get the original axis */
+
             p = perm[idim];
             if (p < 0) {
                 i = op_axes[ndim+p];
@@ -77,7 +77,7 @@ npyiter_replace_axisdata(NpyIter *iter, int iop,
                 if (shape != 1) {
                     npy_intp stride = PyArray_STRIDE(op, i);
                     if (p < 0) {
-                        /* If the perm entry is negative, flip the axis */
+
                         NAD_STRIDES(axisdata)[iop] = -stride;
                         baseoffset += stride*(shape-1);
                     }
@@ -94,7 +94,7 @@ npyiter_replace_axisdata(NpyIter *iter, int iop,
             int i;
             npy_intp shape;
 
-            /* Apply the perm to get the original axis */
+
             p = perm[idim];
             if (p < 0) {
                 i = op_ndim+p;
@@ -108,7 +108,7 @@ npyiter_replace_axisdata(NpyIter *iter, int iop,
                 if (shape != 1) {
                     npy_intp stride = PyArray_STRIDE(op, i);
                     if (p < 0) {
-                        /* If the perm entry is negative, flip the axis */
+
                         NAD_STRIDES(axisdata)[iop] = -stride;
                         baseoffset += stride*(shape-1);
                     }
@@ -122,11 +122,11 @@ npyiter_replace_axisdata(NpyIter *iter, int iop,
 
     op_dataptr += baseoffset;
 
-    /* Now the base data pointer is calculated, set it everywhere it's needed */
+
     NIT_RESETDATAPTR(iter)[iop] = op_dataptr;
     NIT_BASEOFFSETS(iter)[iop] = baseoffset;
     axisdata = axisdata0;
-    /* Fill at least one axisdata, for the 0-d case */
+
     NAD_PTRS(axisdata)[iop] = op_dataptr;
     NIT_ADVANCE_AXISDATA(axisdata, 1);
     for (idim = 1; idim < ndim; ++idim, NIT_ADVANCE_AXISDATA(axisdata, 1)) {

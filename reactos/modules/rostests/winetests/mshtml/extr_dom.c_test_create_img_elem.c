@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IHTMLImgElement ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IHTMLImgElement_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * create_img_elem (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  test_img_put_height (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  test_img_put_width (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int IHTMLImgElement ;
+typedef int IHTMLDocument2 ;
+
+
+ int IHTMLImgElement_Release (int *) ;
+ int * create_img_elem (int *,int,int) ;
+ int test_img_put_height (int *,int) ;
+ int test_img_put_width (int *,int) ;
 
 __attribute__((used)) static void test_create_img_elem(IHTMLDocument2 *doc)
 {
@@ -30,7 +30,7 @@ __attribute__((used)) static void test_create_img_elem(IHTMLDocument2 *doc)
         test_img_put_height(img, 20);
 
         IHTMLImgElement_Release(img);
-        img = NULL;
+        img = ((void*)0);
     }
 
     img = create_img_elem(doc, -1, -1);

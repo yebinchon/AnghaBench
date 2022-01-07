@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ppc_trap_frame_t ;
 
-/* Variables and functions */
- int ActualCsum ; 
- int ComputedCsum ; 
- scalar_t__ Continue ; 
- size_t DataInAddr ; 
- int* DataInBuffer ; 
- int /*<<< orphan*/  GotPacket () ; 
- int /*<<< orphan*/  PacketWriteSignal (int) ; 
- int ParseState ; 
- int /*<<< orphan*/ * RegisterSaveArea ; 
- int SerialRead () ; 
- int /*<<< orphan*/  SerialWrite (char) ; 
- int Signal ; 
- int /*<<< orphan*/  chr (int /*<<< orphan*/ ) ; 
- int hex2int (int) ; 
- int /*<<< orphan*/  serport ; 
+
+
+
+typedef int ppc_trap_frame_t ;
+
+
+ int ActualCsum ;
+ int ComputedCsum ;
+ scalar_t__ Continue ;
+ size_t DataInAddr ;
+ int* DataInBuffer ;
+ int GotPacket () ;
+ int PacketWriteSignal (int) ;
+ int ParseState ;
+ int * RegisterSaveArea ;
+ int SerialRead () ;
+ int SerialWrite (char) ;
+ int Signal ;
+ int chr (int ) ;
+ int hex2int (int) ;
+ int serport ;
 
 int SerialInterrupt(int signal, ppc_trap_frame_t *tf)
 {
@@ -42,14 +42,14 @@ int SerialInterrupt(int signal, ppc_trap_frame_t *tf)
     {
         ch = SerialRead();
 
-        if (ch == 3) /* Break in - tehe */
+        if (ch == 3)
         {
             Continue = 0;
             PacketWriteSignal(3);
         }
         else if (ch == '+')
         {
-            /* Nothing */
+
         }
         else if (ch == '$')
         {

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int int64_t ;
 struct TYPE_5__ {scalar_t__ ijkio_manager_ctx; void* ijkio_inject_opaque; } ;
-typedef  TYPE_1__ FFPlayer ;
+typedef TYPE_1__ FFPlayer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FFP_OPT_CATEGORY_FORMAT ; 
- int /*<<< orphan*/  ffp_set_option_int (TYPE_1__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ijkio_app_func_event ; 
- int /*<<< orphan*/  ijkio_manager_create (scalar_t__*,TYPE_1__*) ; 
- int /*<<< orphan*/  ijkio_manager_destroyp (scalar_t__*) ; 
- int /*<<< orphan*/  ijkio_manager_set_callback (scalar_t__,int /*<<< orphan*/ ) ; 
+
+ int FFP_OPT_CATEGORY_FORMAT ;
+ int ffp_set_option_int (TYPE_1__*,int ,char*,int ) ;
+ int ijkio_app_func_event ;
+ int ijkio_manager_create (scalar_t__*,TYPE_1__*) ;
+ int ijkio_manager_destroyp (scalar_t__*) ;
+ int ijkio_manager_set_callback (scalar_t__,int ) ;
 
 void *ffp_set_ijkio_inject_opaque(FFPlayer *ffp, void *opaque)
 {
     if (!ffp)
-        return NULL;
+        return ((void*)0);
     void *prev_weak_thiz = ffp->ijkio_inject_opaque;
     ffp->ijkio_inject_opaque = opaque;
 

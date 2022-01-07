@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int hsv2grb (int const,int const,int const) ; 
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int,int,char*) ; 
- int luaL_checkint (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushnumber (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint32_t ;
+typedef int lua_State ;
+
+
+ int hsv2grb (int const,int const,int const) ;
+ int luaL_argcheck (int *,int,int,char*) ;
+ int luaL_checkint (int *,int) ;
+ int lua_pushnumber (int *,int) ;
 
 __attribute__((used)) static int cu_hsv2grb(lua_State *L) {
   const int hue = luaL_checkint(L, 1);
@@ -28,10 +28,10 @@ __attribute__((used)) static int cu_hsv2grb(lua_State *L) {
   luaL_argcheck(L, sat >= 0 && sat <= 255, 2, "should be 0-255");
   luaL_argcheck(L, val >= 0 && val <= 255, 3, "should be 0-255");
 
-  // convert to grb
+
   uint32_t tmp_color = hsv2grb(hue, sat, val);
 
-  // return
+
   lua_pushnumber(L, (tmp_color & 0x00FF0000) >> 16);
   lua_pushnumber(L, (tmp_color & 0x0000FF00) >> 8);
   lua_pushnumber(L, (tmp_color & 0x000000FF));

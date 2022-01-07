@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct usb_hub {int dummy; } ;
 struct usb_device {TYPE_1__* actconfig; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * interface; } ;
+struct TYPE_2__ {int * interface; } ;
 
-/* Variables and functions */
- struct usb_hub* usb_get_intfdata (int /*<<< orphan*/ ) ; 
+
+ struct usb_hub* usb_get_intfdata (int ) ;
 
 __attribute__((used)) static struct usb_hub *hdev_to_hub(struct usb_device *hdev)
 {
-	if (!hdev || !hdev->actconfig)
-		return NULL;
-	return usb_get_intfdata(hdev->actconfig->interface[0]);
+ if (!hdev || !hdev->actconfig)
+  return ((void*)0);
+ return usb_get_intfdata(hdev->actconfig->interface[0]);
 }

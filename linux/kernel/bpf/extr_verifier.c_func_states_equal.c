@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct idpair {int dummy; } ;
-struct bpf_func_state {int /*<<< orphan*/ * regs; } ;
+struct bpf_func_state {int * regs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  ID_MAP_SIZE ; 
- int MAX_BPF_REG ; 
- struct idpair* kcalloc (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (struct idpair*) ; 
- int /*<<< orphan*/  refsafe (struct bpf_func_state*,struct bpf_func_state*) ; 
- int /*<<< orphan*/  regsafe (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct idpair*) ; 
- int /*<<< orphan*/  stacksafe (struct bpf_func_state*,struct bpf_func_state*,struct idpair*) ; 
+
+ int GFP_KERNEL ;
+ int ID_MAP_SIZE ;
+ int MAX_BPF_REG ;
+ struct idpair* kcalloc (int ,int,int ) ;
+ int kfree (struct idpair*) ;
+ int refsafe (struct bpf_func_state*,struct bpf_func_state*) ;
+ int regsafe (int *,int *,struct idpair*) ;
+ int stacksafe (struct bpf_func_state*,struct bpf_func_state*,struct idpair*) ;
 
 __attribute__((used)) static bool func_states_equal(struct bpf_func_state *old,
-			      struct bpf_func_state *cur)
+         struct bpf_func_state *cur)
 {
-	struct idpair *idmap;
-	bool ret = false;
-	int i;
+ struct idpair *idmap;
+ bool ret = 0;
+ int i;
 
-	idmap = kcalloc(ID_MAP_SIZE, sizeof(struct idpair), GFP_KERNEL);
-	/* If we failed to allocate the idmap, just say it's not safe */
-	if (!idmap)
-		return false;
+ idmap = kcalloc(ID_MAP_SIZE, sizeof(struct idpair), GFP_KERNEL);
 
-	for (i = 0; i < MAX_BPF_REG; i++) {
-		if (!regsafe(&old->regs[i], &cur->regs[i], idmap))
-			goto out_free;
-	}
+ if (!idmap)
+  return 0;
 
-	if (!stacksafe(old, cur, idmap))
-		goto out_free;
+ for (i = 0; i < MAX_BPF_REG; i++) {
+  if (!regsafe(&old->regs[i], &cur->regs[i], idmap))
+   goto out_free;
+ }
 
-	if (!refsafe(old, cur))
-		goto out_free;
-	ret = true;
+ if (!stacksafe(old, cur, idmap))
+  goto out_free;
+
+ if (!refsafe(old, cur))
+  goto out_free;
+ ret = 1;
 out_free:
-	kfree(idmap);
-	return ret;
+ kfree(idmap);
+ return ret;
 }

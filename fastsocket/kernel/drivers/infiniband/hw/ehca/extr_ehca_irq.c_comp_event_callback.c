@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  cq_context; int /*<<< orphan*/  (* comp_handler ) (TYPE_1__*,int /*<<< orphan*/ ) ;} ;
-struct ehca_cq {int /*<<< orphan*/  cb_lock; TYPE_1__ ib_cq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int cq_context; int (* comp_handler ) (TYPE_1__*,int ) ;} ;
+struct ehca_cq {int cb_lock; TYPE_1__ ib_cq; } ;
+
+
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int stub1 (TYPE_1__*,int ) ;
 
 __attribute__((used)) static inline void comp_event_callback(struct ehca_cq *cq)
 {
-	if (!cq->ib_cq.comp_handler)
-		return;
+ if (!cq->ib_cq.comp_handler)
+  return;
 
-	spin_lock(&cq->cb_lock);
-	cq->ib_cq.comp_handler(&cq->ib_cq, cq->ib_cq.cq_context);
-	spin_unlock(&cq->cb_lock);
+ spin_lock(&cq->cb_lock);
+ cq->ib_cq.comp_handler(&cq->ib_cq, cq->ib_cq.cq_context);
+ spin_unlock(&cq->cb_lock);
 
-	return;
+ return;
 }

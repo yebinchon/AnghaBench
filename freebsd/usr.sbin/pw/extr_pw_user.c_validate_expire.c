@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EX_DATAERR ; 
- int /*<<< orphan*/  errx (int /*<<< orphan*/ ,char*,char,char*) ; 
- int /*<<< orphan*/  numerics (char*) ; 
- long strtol (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int EX_DATAERR ;
+ int errx (int ,char*,char,char*) ;
+ int numerics (char*) ;
+ long strtol (char*,int *,int ) ;
 
 __attribute__((used)) static long
 validate_expire(char *str, int opt)
 {
-	if (!numerics(str))
-		errx(EX_DATAERR, "-%c argument must be numeric "
-		     "when setting defaults: %s", (char)opt, str);
-	return strtol(str, NULL, 0);
+ if (!numerics(str))
+  errx(EX_DATAERR, "-%c argument must be numeric "
+       "when setting defaults: %s", (char)opt, str);
+ return strtol(str, ((void*)0), 0);
 }

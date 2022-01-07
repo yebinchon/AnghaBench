@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t uint8_t ;
+
+
+
+
+typedef size_t uint8_t ;
 struct sbc_frame {int subbands; size_t frequency; scalar_t__ mode; int channels; scalar_t__ allocation; int** scale_factor; int bitpool; } ;
 
-/* Variables and functions */
- scalar_t__ DUAL_CHANNEL ; 
- scalar_t__ JOINT_STEREO ; 
- scalar_t__ MONO ; 
- scalar_t__ SNR ; 
- scalar_t__ STEREO ; 
- int** sbc_offset4 ; 
- int** sbc_offset8 ; 
+
+ scalar_t__ DUAL_CHANNEL ;
+ scalar_t__ JOINT_STEREO ;
+ scalar_t__ MONO ;
+ scalar_t__ SNR ;
+ scalar_t__ STEREO ;
+ int** sbc_offset4 ;
+ int** sbc_offset8 ;
 
 void ff_sbc_calculate_bits(const struct sbc_frame *frame, int (*bits)[8])
 {

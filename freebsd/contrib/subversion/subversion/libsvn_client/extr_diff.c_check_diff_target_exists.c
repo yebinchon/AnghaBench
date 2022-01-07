@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_session_t ;
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_FS_NOT_FOUND ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- scalar_t__ strcmp (char const*,char const*) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,scalar_t__,...) ; 
- scalar_t__ svn_node_none ; 
- int /*<<< orphan*/  svn_ra_check_path (int /*<<< orphan*/ *,char*,scalar_t__,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_get_session_url (int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_reparent (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ svn_revnum_t ;
+typedef int svn_ra_session_t ;
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_FS_NOT_FOUND ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ scalar_t__ strcmp (char const*,char const*) ;
+ int * svn_error_createf (int ,int *,int ,char const*,scalar_t__,...) ;
+ scalar_t__ svn_node_none ;
+ int svn_ra_check_path (int *,char*,scalar_t__,scalar_t__*,int *) ;
+ int svn_ra_get_session_url (int *,char const**,int *) ;
+ int svn_ra_reparent (int *,char const*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 check_diff_target_exists(const char *url,
@@ -47,12 +47,12 @@ check_diff_target_exists(const char *url,
   if (kind == svn_node_none)
     {
       if (revision == other_revision)
-        return svn_error_createf(SVN_ERR_FS_NOT_FOUND, NULL,
+        return svn_error_createf(SVN_ERR_FS_NOT_FOUND, ((void*)0),
                                  _("Diff target '%s' was not found in the "
                                    "repository at revision '%ld'"),
                                  url, revision);
       else
-        return svn_error_createf(SVN_ERR_FS_NOT_FOUND, NULL,
+        return svn_error_createf(SVN_ERR_FS_NOT_FOUND, ((void*)0),
                                  _("Diff target '%s' was not found in the "
                                    "repository at revision '%ld' or '%ld'"),
                                  url, revision, other_revision);

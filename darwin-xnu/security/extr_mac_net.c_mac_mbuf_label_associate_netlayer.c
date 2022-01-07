@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mbuf {int dummy; } ;
 struct label {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAC_PERFORM (int /*<<< orphan*/ ,struct mbuf*,struct label*,struct mbuf*,struct label*) ; 
- struct label* mac_mbuf_to_label (struct mbuf*) ; 
- int /*<<< orphan*/  mbuf_label_associate_netlayer ; 
+
+ int MAC_PERFORM (int ,struct mbuf*,struct label*,struct mbuf*,struct label*) ;
+ struct label* mac_mbuf_to_label (struct mbuf*) ;
+ int mbuf_label_associate_netlayer ;
 
 void
 mac_mbuf_label_associate_netlayer(struct mbuf *oldmbuf, struct mbuf *newmbuf)
 {
-	struct label *oldmbuflabel, *newmbuflabel;
+ struct label *oldmbuflabel, *newmbuflabel;
 
-	oldmbuflabel = mac_mbuf_to_label(oldmbuf);
-	newmbuflabel = mac_mbuf_to_label(newmbuf);
+ oldmbuflabel = mac_mbuf_to_label(oldmbuf);
+ newmbuflabel = mac_mbuf_to_label(newmbuf);
 
-	MAC_PERFORM(mbuf_label_associate_netlayer, oldmbuf, oldmbuflabel,
-	    newmbuf, newmbuflabel);
+ MAC_PERFORM(mbuf_label_associate_netlayer, oldmbuf, oldmbuflabel,
+     newmbuf, newmbuflabel);
 }

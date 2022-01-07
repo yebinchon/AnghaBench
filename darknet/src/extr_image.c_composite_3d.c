@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int h; int w; int c; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_1__ image ;
 
-/* Variables and functions */
- int best_3d_shift_r (TYPE_1__,TYPE_1__,int,int) ; 
- TYPE_1__ crop_image (TYPE_1__,int,int,int,int) ; 
- float dist_array (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ; 
- TYPE_1__ load_image (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,int) ; 
- int /*<<< orphan*/  save_image (TYPE_1__,char*) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int h; int w; int c; int * data; } ;
+typedef TYPE_1__ image ;
+
+
+ int best_3d_shift_r (TYPE_1__,TYPE_1__,int,int) ;
+ TYPE_1__ crop_image (TYPE_1__,int,int,int,int) ;
+ float dist_array (int *,int *,int,int) ;
+ TYPE_1__ load_image (char*,int ,int ,int ) ;
+ int printf (char*,int) ;
+ int save_image (TYPE_1__,char*) ;
 
 void composite_3d(char *f1, char *f2, char *out, int delta)
 {

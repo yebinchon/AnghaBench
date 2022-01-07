@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xinput_joypad_state ;
-struct TYPE_2__ {int /*<<< orphan*/  (* destroy ) () ;} ;
 
-/* Variables and functions */
- TYPE_1__ dinput_joypad ; 
- int /*<<< orphan*/  dylib_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * g_XInputGetStateEx ; 
- int /*<<< orphan*/ * g_XInputSetState ; 
- int g_xinput_block_pads ; 
- int /*<<< orphan*/ * g_xinput_dll ; 
- int /*<<< orphan*/ * g_xinput_states ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub1 () ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int xinput_joypad_state ;
+struct TYPE_2__ {int (* destroy ) () ;} ;
+
+
+ TYPE_1__ dinput_joypad ;
+ int dylib_close (int *) ;
+ int * g_XInputGetStateEx ;
+ int * g_XInputSetState ;
+ int g_xinput_block_pads ;
+ int * g_xinput_dll ;
+ int * g_xinput_states ;
+ int memset (int *,int ,int) ;
+ int stub1 () ;
 
 __attribute__((used)) static void xinput_joypad_destroy(void)
 {
@@ -32,17 +32,17 @@ __attribute__((used)) static void xinput_joypad_destroy(void)
    for (i = 0; i < 4; ++i)
       memset(&g_xinput_states[i], 0, sizeof(xinput_joypad_state));
 
-#if defined(HAVE_DYNAMIC) && !defined(__WINRT__)
-   dylib_close(g_xinput_dll);
 
-   g_xinput_dll        = NULL;
-#endif
-   g_XInputGetStateEx  = NULL;
-   g_XInputSetState    = NULL;
 
-#ifdef HAVE_DINPUT
-   dinput_joypad.destroy();
 
-   g_xinput_block_pads = false;
-#endif
+
+
+   g_XInputGetStateEx = ((void*)0);
+   g_XInputSetState = ((void*)0);
+
+
+
+
+
+
 }

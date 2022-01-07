@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {size_t width; size_t pixsize; int client; int height; scalar_t__ screen; } ;
-typedef  TYPE_1__ gfx_ctx_osmesa_data_t ;
+typedef TYPE_1__ gfx_ctx_osmesa_data_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSG_NOSIGNAL ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,char*) ; 
- int send (int,scalar_t__,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (int /*<<< orphan*/ ) ; 
+
+ int MSG_NOSIGNAL ;
+ int close (int) ;
+ int errno ;
+ int fprintf (int ,char*,int,char*) ;
+ int send (int,scalar_t__,size_t,int ) ;
+ int stderr ;
+ char* strerror (int ) ;
 
 __attribute__((used)) static void osmesa_fifo_write(gfx_ctx_osmesa_data_t *osmesa)
 {

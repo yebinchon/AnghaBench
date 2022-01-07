@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int h; int linew; TYPE_1__* format; int /*<<< orphan*/  data; int /*<<< orphan*/  w; } ;
-typedef  TYPE_2__ vncBuffer ;
-struct TYPE_6__ {int bitsPerPixel; int /*<<< orphan*/  depth; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- TYPE_2__* vncNewBuffer (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int h; int linew; TYPE_1__* format; int data; int w; } ;
+typedef TYPE_2__ vncBuffer ;
+struct TYPE_6__ {int bitsPerPixel; int depth; } ;
+
+
+ int memcpy (int ,int ,int) ;
+ TYPE_2__* vncNewBuffer (int ,int,int ) ;
 
 vncBuffer *
 vncDupBuffer(vncBuffer * b)
 {
-	vncBuffer *buf = vncNewBuffer(b->w, b->h, b->format->depth);
-	memcpy(buf->data, b->data, b->linew * b->h * b->format->bitsPerPixel / 8);
-	return buf;
+ vncBuffer *buf = vncNewBuffer(b->w, b->h, b->format->depth);
+ memcpy(buf->data, b->data, b->linew * b->h * b->format->bitsPerPixel / 8);
+ return buf;
 }

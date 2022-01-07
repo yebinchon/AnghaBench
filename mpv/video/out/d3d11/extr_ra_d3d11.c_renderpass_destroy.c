@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ra_renderpass {struct d3d_rpass* priv; } ;
 struct ra {int dummy; } ;
-struct d3d_rpass {int /*<<< orphan*/  bstate; int /*<<< orphan*/  layout; int /*<<< orphan*/  cs; int /*<<< orphan*/  ps; int /*<<< orphan*/  vs; } ;
+struct d3d_rpass {int bstate; int layout; int cs; int ps; int vs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SAFE_RELEASE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  talloc_free (struct ra_renderpass*) ; 
+
+ int SAFE_RELEASE (int ) ;
+ int talloc_free (struct ra_renderpass*) ;
 
 __attribute__((used)) static void renderpass_destroy(struct ra *ra, struct ra_renderpass *pass)
 {

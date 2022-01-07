@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct inode {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CIFS_I (struct inode*) ; 
- int /*<<< orphan*/  cifs_inode_cachep ; 
- int /*<<< orphan*/  kmem_cache_free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CIFS_I (struct inode*) ;
+ int cifs_inode_cachep ;
+ int kmem_cache_free (int ,int ) ;
 
 __attribute__((used)) static void
 cifs_free_inode(struct inode *inode)
 {
-	kmem_cache_free(cifs_inode_cachep, CIFS_I(inode));
+ kmem_cache_free(cifs_inode_cachep, CIFS_I(inode));
 }

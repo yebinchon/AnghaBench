@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  read_lock; int /*<<< orphan*/  write_lock; int /*<<< orphan*/  rx_func; int /*<<< orphan*/  tx_func; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _lock_acquire_recursive (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _lock_release_recursive (int /*<<< orphan*/ *) ; 
- TYPE_1__** s_ctx ; 
- int /*<<< orphan*/  uart_rx_char ; 
- int /*<<< orphan*/  uart_tx_char ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int read_lock; int write_lock; int rx_func; int tx_func; } ;
+
+
+ int _lock_acquire_recursive (int *) ;
+ int _lock_release_recursive (int *) ;
+ TYPE_1__** s_ctx ;
+ int uart_rx_char ;
+ int uart_tx_char ;
 
 void esp_vfs_dev_uart_use_nonblocking(int uart_num)
 {

@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wbuf_small ;
-typedef  char uint8_t ;
+
+
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int wbuf_small ;
+typedef char uint8_t ;
 struct timeval {int tv_sec; scalar_t__ tv_usec; } ;
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  ptls_t ;
+typedef int ssize_t ;
+typedef int ptls_t ;
 struct TYPE_14__ {scalar_t__ early_data_acceptance; size_t* max_early_data_size; } ;
 struct TYPE_15__ {TYPE_1__ client; } ;
-typedef  TYPE_2__ ptls_handshake_properties_t ;
-typedef  int /*<<< orphan*/  ptls_context_t ;
+typedef TYPE_2__ ptls_handshake_properties_t ;
+typedef int ptls_context_t ;
 struct TYPE_16__ {scalar_t__ off; char* base; } ;
-typedef  TYPE_3__ ptls_buffer_t ;
-typedef  int /*<<< orphan*/  fd_set ;
-typedef  int /*<<< orphan*/  bytebuf ;
+typedef TYPE_3__ ptls_buffer_t ;
+typedef int fd_set ;
+typedef int bytebuf ;
 
-/* Variables and functions */
- scalar_t__ EAGAIN ; 
- scalar_t__ EINTR ; 
- scalar_t__ EWOULDBLOCK ; 
- scalar_t__ FD_ISSET (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_SET (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  F_SETFL ; 
- int /*<<< orphan*/  O_NONBLOCK ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  PTLS_ALERT_CLOSE_NOTIFY ; 
- int /*<<< orphan*/  PTLS_ALERT_LEVEL_WARNING ; 
- scalar_t__ PTLS_EARLY_DATA_ACCEPTANCE_UNKNOWN ; 
- scalar_t__ PTLS_EARLY_DATA_ACCEPTED ; 
- int PTLS_ERROR_IN_PROGRESS ; 
- int /*<<< orphan*/  SHUT_WR ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  fcntl (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int open (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ptls_buffer_dispose (TYPE_3__*) ; 
- int /*<<< orphan*/  ptls_buffer_init (TYPE_3__*,char*,int) ; 
- int /*<<< orphan*/  ptls_buffer_pushv (TYPE_3__*,char*,int) ; 
- int /*<<< orphan*/  ptls_free (int /*<<< orphan*/ *) ; 
- int ptls_handshake (int /*<<< orphan*/ *,TYPE_3__*,char*,size_t*,TYPE_2__*) ; 
- scalar_t__ ptls_is_server (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ptls_new (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int ptls_receive (int /*<<< orphan*/ *,TYPE_3__*,char*,size_t*) ; 
- int ptls_send (int /*<<< orphan*/ *,TYPE_3__*,char*,int) ; 
- int ptls_send_alert (int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ptls_set_server_name (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ptls_update_key (int /*<<< orphan*/ *,int) ; 
- int read (int,char*,int) ; 
- int select (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
- int /*<<< orphan*/  shift_buffer (TYPE_3__*,int) ; 
- int /*<<< orphan*/  shutdown (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (scalar_t__) ; 
- int write (int,char*,scalar_t__) ; 
+
+ scalar_t__ EAGAIN ;
+ scalar_t__ EINTR ;
+ scalar_t__ EWOULDBLOCK ;
+ scalar_t__ FD_ISSET (int,int *) ;
+ int FD_SET (int,int *) ;
+ int FD_ZERO (int *) ;
+ int F_SETFL ;
+ int O_NONBLOCK ;
+ int O_RDONLY ;
+ int PTLS_ALERT_CLOSE_NOTIFY ;
+ int PTLS_ALERT_LEVEL_WARNING ;
+ scalar_t__ PTLS_EARLY_DATA_ACCEPTANCE_UNKNOWN ;
+ scalar_t__ PTLS_EARLY_DATA_ACCEPTED ;
+ int PTLS_ERROR_IN_PROGRESS ;
+ int SHUT_WR ;
+ int assert (int) ;
+ int close (int) ;
+ scalar_t__ errno ;
+ int fcntl (int,int ,int ) ;
+ int fprintf (int ,char*,...) ;
+ int open (char const*,int ) ;
+ int ptls_buffer_dispose (TYPE_3__*) ;
+ int ptls_buffer_init (TYPE_3__*,char*,int) ;
+ int ptls_buffer_pushv (TYPE_3__*,char*,int) ;
+ int ptls_free (int *) ;
+ int ptls_handshake (int *,TYPE_3__*,char*,size_t*,TYPE_2__*) ;
+ scalar_t__ ptls_is_server (int *) ;
+ int * ptls_new (int *,int ) ;
+ int ptls_receive (int *,TYPE_3__*,char*,size_t*) ;
+ int ptls_send (int *,TYPE_3__*,char*,int) ;
+ int ptls_send_alert (int *,TYPE_3__*,int ,int ) ;
+ int ptls_set_server_name (int *,char const*,int ) ;
+ int ptls_update_key (int *,int) ;
+ int read (int,char*,int) ;
+ int select (int,int *,int *,int *,struct timeval*) ;
+ int shift_buffer (TYPE_3__*,int) ;
+ int shutdown (int,int ) ;
+ int stderr ;
+ char* strerror (scalar_t__) ;
+ int write (int,char*,scalar_t__) ;
 
 __attribute__((used)) static int handle_connection(int sockfd, ptls_context_t *ctx, const char *server_name, const char *input_file,
                              ptls_handshake_properties_t *hsprop, int request_key_update, int keep_sender_open)
 {
-    ptls_t *tls = ptls_new(ctx, server_name == NULL);
+    ptls_t *tls = ptls_new(ctx, server_name == ((void*)0));
     ptls_buffer_t rbuf, encbuf, ptbuf;
     char bytebuf[16384];
     enum { IN_HANDSHAKE, IN_1RTT, IN_SHUTDOWN } state = IN_HANDSHAKE;
@@ -86,16 +86,16 @@ __attribute__((used)) static int handle_connection(int sockfd, ptls_context_t *c
 
     fcntl(sockfd, F_SETFL, O_NONBLOCK);
 
-    if (input_file != NULL) {
+    if (input_file != ((void*)0)) {
         if ((inputfd = open(input_file, O_RDONLY)) == -1) {
             fprintf(stderr, "failed to open file:%s:%s\n", input_file, strerror(errno));
             ret = 1;
             goto Exit;
         }
     }
-    if (server_name != NULL) {
+    if (server_name != ((void*)0)) {
         ptls_set_server_name(tls, server_name, 0);
-        if ((ret = ptls_handshake(tls, &encbuf, NULL, NULL, hsprop)) != PTLS_ERROR_IN_PROGRESS) {
+        if ((ret = ptls_handshake(tls, &encbuf, ((void*)0), ((void*)0), hsprop)) != PTLS_ERROR_IN_PROGRESS) {
             fprintf(stderr, "ptls_handshake:%d\n", ret);
             ret = 1;
             goto Exit;
@@ -103,7 +103,7 @@ __attribute__((used)) static int handle_connection(int sockfd, ptls_context_t *c
     }
 
     while (1) {
-        /* check if data is available */
+
         fd_set readfds, writefds, exceptfds;
         int maxfd = 0;
         struct timeval timeout;
@@ -126,13 +126,13 @@ __attribute__((used)) static int handle_connection(int sockfd, ptls_context_t *c
             timeout.tv_usec = 0;
         } while (select(maxfd, &readfds, &writefds, &exceptfds, &timeout) == -1);
 
-        /* consume incoming messages */
+
         if (FD_ISSET(sockfd, &readfds) || FD_ISSET(sockfd, &exceptfds)) {
             size_t off = 0, leftlen;
             while ((ioret = read(sockfd, bytebuf, sizeof(bytebuf))) == -1 && errno == EINTR)
                 ;
             if (ioret == -1 && (errno == EWOULDBLOCK || errno == EAGAIN)) {
-                /* no data */
+
                 ioret = 0;
             } else if (ioret <= 0) {
                 goto Exit;
@@ -142,7 +142,7 @@ __attribute__((used)) static int handle_connection(int sockfd, ptls_context_t *c
                     if ((ret = ptls_handshake(tls, &encbuf, bytebuf + off, &leftlen, hsprop)) == 0) {
                         state = IN_1RTT;
                         assert(ptls_is_server(tls) || hsprop->client.early_data_acceptance != PTLS_EARLY_DATA_ACCEPTANCE_UNKNOWN);
-                        /* release data sent as early-data, if server accepted it */
+
                         if (hsprop->client.early_data_acceptance == PTLS_EARLY_DATA_ACCEPTED)
                             shift_buffer(&ptbuf, early_bytes_sent);
                         if (request_key_update)
@@ -155,7 +155,7 @@ __attribute__((used)) static int handle_connection(int sockfd, ptls_context_t *c
                             ptbuf.off = 0;
                         }
                     } else if (ret == PTLS_ERROR_IN_PROGRESS) {
-                        /* ok */
+
                     } else {
                         if (encbuf.off != 0)
                             (void)write(sockfd, encbuf.base, encbuf.off);
@@ -169,7 +169,7 @@ __attribute__((used)) static int handle_connection(int sockfd, ptls_context_t *c
                             rbuf.off = 0;
                         }
                     } else if (ret == PTLS_ERROR_IN_PROGRESS) {
-                        /* ok */
+
                     } else {
                         fprintf(stderr, "ptls_receive:%d\n", ret);
                         goto Exit;
@@ -179,7 +179,7 @@ __attribute__((used)) static int handle_connection(int sockfd, ptls_context_t *c
             }
         }
 
-        /* read input (and send if possible) */
+
         if (inputfd != -1 && (FD_ISSET(inputfd, &readfds) || FD_ISSET(inputfd, &exceptfds))) {
             while ((ioret = read(inputfd, bytebuf, sizeof(bytebuf))) == -1 && errno == EINTR)
                 ;
@@ -187,7 +187,7 @@ __attribute__((used)) static int handle_connection(int sockfd, ptls_context_t *c
                 ptls_buffer_pushv(&ptbuf, bytebuf, ioret);
                 if (state == IN_HANDSHAKE) {
                     size_t send_amount = 0;
-                    if (server_name != NULL && hsprop->client.max_early_data_size != NULL) {
+                    if (server_name != ((void*)0) && hsprop->client.max_early_data_size != ((void*)0)) {
                         size_t max_can_be_sent = *hsprop->client.max_early_data_size;
                         if (max_can_be_sent > ptbuf.off)
                             max_can_be_sent = ptbuf.off;
@@ -208,19 +208,19 @@ __attribute__((used)) static int handle_connection(int sockfd, ptls_context_t *c
                     ptbuf.off = 0;
                 }
             } else {
-                /* closed */
-                if (input_file != NULL)
+
+                if (input_file != ((void*)0))
                     close(inputfd);
                 inputfd = -1;
             }
         }
 
-        /* send any data */
+
         if (encbuf.off != 0) {
             while ((ioret = write(sockfd, encbuf.base, encbuf.off)) == -1 && errno == EINTR)
                 ;
             if (ioret == -1 && (errno == EWOULDBLOCK || errno == EAGAIN)) {
-                /* no data */
+
             } else if (ioret <= 0) {
                 goto Exit;
             } else {
@@ -228,7 +228,7 @@ __attribute__((used)) static int handle_connection(int sockfd, ptls_context_t *c
             }
         }
 
-        /* close the sender side when necessary */
+
         if (state == IN_1RTT && inputfd == -1) {
             if (!keep_sender_open) {
                 ptls_buffer_t wbuf;
@@ -250,7 +250,7 @@ __attribute__((used)) static int handle_connection(int sockfd, ptls_context_t *c
 Exit:
     if (sockfd != -1)
         close(sockfd);
-    if (input_file != NULL && inputfd != -1)
+    if (input_file != ((void*)0) && inputfd != -1)
         close(inputfd);
     ptls_buffer_dispose(&rbuf);
     ptls_buffer_dispose(&encbuf);

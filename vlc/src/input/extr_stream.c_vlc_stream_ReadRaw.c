@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {scalar_t__ (* pf_read ) (TYPE_1__*,char*,int) ;int /*<<< orphan*/ * (* pf_block ) (TYPE_1__*,int*) ;} ;
-typedef  TYPE_1__ stream_t ;
-struct TYPE_8__ {int /*<<< orphan*/ * block; } ;
-typedef  TYPE_2__ stream_priv_t ;
-typedef  scalar_t__ ssize_t ;
-typedef  int /*<<< orphan*/  dummy ;
 
-/* Variables and functions */
- size_t SSIZE_MAX ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ stub1 (TYPE_1__*,char*,int) ; 
- scalar_t__ stub2 (TYPE_1__*,void*,size_t) ; 
- int /*<<< orphan*/ * stub3 (TYPE_1__*,int*) ; 
- scalar_t__ unlikely (int) ; 
- scalar_t__ vlc_killed () ; 
- scalar_t__ vlc_stream_CopyBlock (int /*<<< orphan*/ **,void*,size_t) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {scalar_t__ (* pf_read ) (TYPE_1__*,char*,int) ;int * (* pf_block ) (TYPE_1__*,int*) ;} ;
+typedef TYPE_1__ stream_t ;
+struct TYPE_8__ {int * block; } ;
+typedef TYPE_2__ stream_priv_t ;
+typedef scalar_t__ ssize_t ;
+typedef int dummy ;
+
+
+ size_t SSIZE_MAX ;
+ int assert (int) ;
+ scalar_t__ stub1 (TYPE_1__*,char*,int) ;
+ scalar_t__ stub2 (TYPE_1__*,void*,size_t) ;
+ int * stub3 (TYPE_1__*,int*) ;
+ scalar_t__ unlikely (int) ;
+ scalar_t__ vlc_killed () ;
+ scalar_t__ vlc_stream_CopyBlock (int **,void*,size_t) ;
 
 __attribute__((used)) static ssize_t vlc_stream_ReadRaw(stream_t *s, void *buf, size_t len)
 {
@@ -39,10 +39,10 @@ __attribute__((used)) static ssize_t vlc_stream_ReadRaw(stream_t *s, void *buf, 
     if (vlc_killed())
         return 0;
 
-    if (s->pf_read != NULL)
+    if (s->pf_read != ((void*)0))
     {
-        assert(priv->block == NULL);
-        if (buf == NULL)
+        assert(priv->block == ((void*)0));
+        if (buf == ((void*)0))
         {
             if (unlikely(len == 0))
                 return 0;
@@ -59,9 +59,9 @@ __attribute__((used)) static ssize_t vlc_stream_ReadRaw(stream_t *s, void *buf, 
     if (ret >= 0)
         return ret;
 
-    if (s->pf_block != NULL)
+    if (s->pf_block != ((void*)0))
     {
-        bool eof = false;
+        bool eof = 0;
 
         priv->block = s->pf_block(s, &eof);
         ret = vlc_stream_CopyBlock(&priv->block, buf, len);

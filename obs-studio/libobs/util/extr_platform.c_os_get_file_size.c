@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int64_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int os_fgetsize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * os_fopen (char const*,char*) ; 
+
+
+
+typedef int int64_t ;
+typedef int FILE ;
+
+
+ int fclose (int *) ;
+ int os_fgetsize (int *) ;
+ int * os_fopen (char const*,char*) ;
 
 int64_t os_get_file_size(const char *path)
 {
-	FILE *f = os_fopen(path, "rb");
-	if (!f)
-		return -1;
+ FILE *f = os_fopen(path, "rb");
+ if (!f)
+  return -1;
 
-	int64_t sz = os_fgetsize(f);
-	fclose(f);
+ int64_t sz = os_fgetsize(f);
+ fclose(f);
 
-	return sz;
+ return sz;
 }

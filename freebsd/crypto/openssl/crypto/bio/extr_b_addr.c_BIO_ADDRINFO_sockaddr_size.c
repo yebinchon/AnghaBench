@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  socklen_t ;
-struct TYPE_3__ {int /*<<< orphan*/  bai_addrlen; } ;
-typedef  TYPE_1__ BIO_ADDRINFO ;
 
-/* Variables and functions */
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int socklen_t ;
+struct TYPE_3__ {int bai_addrlen; } ;
+typedef TYPE_1__ BIO_ADDRINFO ;
+
+
 
 socklen_t BIO_ADDRINFO_sockaddr_size(const BIO_ADDRINFO *bai)
 {
-    if (bai != NULL)
+    if (bai != ((void*)0))
         return bai->bai_addrlen;
     return 0;
 }

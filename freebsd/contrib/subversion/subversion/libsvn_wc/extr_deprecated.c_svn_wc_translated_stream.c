@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_adm_access_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_uint32_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_dirent_get_absolute (char const**,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_wc__adm_get_db (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__internal_translated_stream (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_wc_adm_access_t ;
+typedef int svn_stream_t ;
+typedef int svn_error_t ;
+typedef int apr_uint32_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int svn_dirent_get_absolute (char const**,char const*,int *) ;
+ int * svn_error_trace (int ) ;
+ int svn_wc__adm_get_db (int *) ;
+ int svn_wc__internal_translated_stream (int **,int ,char const*,char const*,int ,int *,int *) ;
 
 svn_error_t *
 svn_wc_translated_stream(svn_stream_t **stream,

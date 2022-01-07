@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct umask_args {int /*<<< orphan*/  newmask; } ;
-typedef  int /*<<< orphan*/  proc_t ;
-typedef  int /*<<< orphan*/  int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UMASK_NOXSECURITY ; 
- int umask1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct umask_args {int newmask; } ;
+typedef int proc_t ;
+typedef int int32_t ;
+
+
+ int UMASK_NOXSECURITY ;
+ int umask1 (int ,int ,int ,int *) ;
 
 int
 umask(proc_t p, struct umask_args *uap, int32_t *retval)
 {
-	return(umask1(p, uap->newmask, UMASK_NOXSECURITY, retval));
+ return(umask1(p, uap->newmask, UMASK_NOXSECURITY, retval));
 }

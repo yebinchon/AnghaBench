@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct string_list {unsigned int size; TYPE_1__* elems; } ;
-struct netplay_room {int has_password; int has_spectate_password; int fixed; int /*<<< orphan*/  host_method; int /*<<< orphan*/  country; int /*<<< orphan*/  retroarch_version; int /*<<< orphan*/  gamecrc; int /*<<< orphan*/  gamename; int /*<<< orphan*/  coreversion; int /*<<< orphan*/  frontend; int /*<<< orphan*/  corename; int /*<<< orphan*/  mitm_port; int /*<<< orphan*/  port; int /*<<< orphan*/  mitm_address; int /*<<< orphan*/  address; int /*<<< orphan*/  nickname; int /*<<< orphan*/  id; } ;
-typedef  int /*<<< orphan*/  retro_task_t ;
+struct netplay_room {int has_password; int has_spectate_password; int fixed; int host_method; int country; int retroarch_version; int gamecrc; int gamename; int coreversion; int frontend; int corename; int mitm_port; int port; int mitm_address; int address; int nickname; int id; } ;
+typedef int retro_task_t ;
 struct TYPE_4__ {scalar_t__ len; char* data; } ;
-typedef  TYPE_2__ http_transfer_data_t ;
-typedef  void discord_userdata_t ;
+typedef TYPE_2__ http_transfer_data_t ;
+typedef void discord_userdata_t ;
 struct TYPE_3__ {char* data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CMD_EVENT_DISCORD_UPDATE ; 
- int /*<<< orphan*/  CMD_EVENT_NETPLAY_DEINIT ; 
- int /*<<< orphan*/  CMD_EVENT_NETPLAY_INIT ; 
- int /*<<< orphan*/  CMD_EVENT_NETPLAY_INIT_DIRECT_DEFERRED ; 
- int /*<<< orphan*/  DISCORD_PRESENCE_NETPLAY_HOSTING ; 
- int /*<<< orphan*/  NETPLAY_HOST_METHOD_MITM ; 
- int /*<<< orphan*/  RARCH_LOG (char*,...) ; 
- int /*<<< orphan*/  RARCH_NETPLAY_CTL_ENABLE_CLIENT ; 
- int /*<<< orphan*/  RARCH_NETPLAY_CTL_IS_DATA_INITED ; 
- scalar_t__ calloc (int,unsigned int) ; 
- int /*<<< orphan*/  command_event (int /*<<< orphan*/ ,void*) ; 
- scalar_t__ discord_is_inited ; 
- int /*<<< orphan*/  free (char*) ; 
- int is_mitm ; 
- int /*<<< orphan*/  memcpy (char*,char*,unsigned int) ; 
- int /*<<< orphan*/  memset (struct netplay_room*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ netplay_driver_ctl (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- struct netplay_room* netplay_get_host_room () ; 
- int /*<<< orphan*/  sscanf (char const*,char*,int /*<<< orphan*/ *) ; 
- char* strdup (char const*) ; 
- int /*<<< orphan*/  string_is_empty (char const*) ; 
- scalar_t__ string_is_equal (char const*,char*) ; 
- scalar_t__ string_is_equal_noncase (char const*,char*) ; 
- int /*<<< orphan*/  string_list_free (struct string_list*) ; 
- struct string_list* string_split (char const*,char*) ; 
- int /*<<< orphan*/  strlcpy (int /*<<< orphan*/ ,char const*,int) ; 
- scalar_t__ strlen (char*) ; 
+
+ int CMD_EVENT_DISCORD_UPDATE ;
+ int CMD_EVENT_NETPLAY_DEINIT ;
+ int CMD_EVENT_NETPLAY_INIT ;
+ int CMD_EVENT_NETPLAY_INIT_DIRECT_DEFERRED ;
+ int DISCORD_PRESENCE_NETPLAY_HOSTING ;
+ int NETPLAY_HOST_METHOD_MITM ;
+ int RARCH_LOG (char*,...) ;
+ int RARCH_NETPLAY_CTL_ENABLE_CLIENT ;
+ int RARCH_NETPLAY_CTL_IS_DATA_INITED ;
+ scalar_t__ calloc (int,unsigned int) ;
+ int command_event (int ,void*) ;
+ scalar_t__ discord_is_inited ;
+ int free (char*) ;
+ int is_mitm ;
+ int memcpy (char*,char*,unsigned int) ;
+ int memset (struct netplay_room*,int ,int) ;
+ scalar_t__ netplay_driver_ctl (int ,int *) ;
+ struct netplay_room* netplay_get_host_room () ;
+ int sscanf (char const*,char*,int *) ;
+ char* strdup (char const*) ;
+ int string_is_empty (char const*) ;
+ scalar_t__ string_is_equal (char const*,char*) ;
+ scalar_t__ string_is_equal_noncase (char const*,char*) ;
+ int string_list_free (struct string_list*) ;
+ struct string_list* string_split (char const*,char*) ;
+ int strlcpy (int ,char const*,int) ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static void netplay_announce_cb(retro_task_t *task,
       void *task_data, void *user_data, const char *error)
@@ -57,13 +57,13 @@ __attribute__((used)) static void netplay_announce_cb(retro_task_t *task,
    if (task_data)
    {
       unsigned i, ip_len, port_len;
-      http_transfer_data_t *data     = (http_transfer_data_t*)task_data;
+      http_transfer_data_t *data = (http_transfer_data_t*)task_data;
       struct netplay_room *host_room = netplay_get_host_room();
-      struct string_list *lines      = NULL;
-      char *mitm_ip                  = NULL;
-      char *mitm_port                = NULL;
-      char *buf                      = NULL;
-      char *host_string              = NULL;
+      struct string_list *lines = ((void*)0);
+      char *mitm_ip = ((void*)0);
+      char *mitm_port = ((void*)0);
+      char *buf = ((void*)0);
+      char *host_string = ((void*)0);
 
       if (data->len == 0)
       {
@@ -94,8 +94,8 @@ __attribute__((used)) static void netplay_announce_cb(retro_task_t *task,
          if (!string_is_empty(line))
          {
             struct string_list *kv = string_split(line, "=");
-            const char *key = NULL;
-            const char *val = NULL;
+            const char *key = ((void*)0);
+            const char *val = ((void*)0);
 
             if (!kv)
                continue;
@@ -142,23 +142,23 @@ __attribute__((used)) static void netplay_announce_cb(retro_task_t *task,
             if (string_is_equal(key, "has_password"))
             {
                if (string_is_equal_noncase(val, "true") || string_is_equal(val, "1"))
-                  host_room->has_password = true;
+                  host_room->has_password = 1;
                else
-                  host_room->has_password = false;
+                  host_room->has_password = 0;
             }
             if (string_is_equal(key, "has_spectate_password"))
             {
                if (string_is_equal_noncase(val, "true") || string_is_equal(val, "1"))
-                  host_room->has_spectate_password = true;
+                  host_room->has_spectate_password = 1;
                else
-                  host_room->has_spectate_password = false;
+                  host_room->has_spectate_password = 0;
             }
             if (string_is_equal(key, "fixed"))
             {
                if (string_is_equal_noncase(val, "true") || string_is_equal(val, "1"))
-                  host_room->fixed = true;
+                  host_room->fixed = 1;
                else
-                  host_room->fixed = false;
+                  host_room->fixed = 0;
             }
             if (string_is_equal(key, "retroarch_version"))
                strlcpy(host_room->retroarch_version, val, sizeof(host_room->retroarch_version));
@@ -173,18 +173,18 @@ __attribute__((used)) static void netplay_announce_cb(retro_task_t *task,
       {
          RARCH_LOG("[netplay] joining relay server: %s:%s\n", mitm_ip, mitm_port);
 
-         ip_len   = (unsigned)strlen(mitm_ip);
+         ip_len = (unsigned)strlen(mitm_ip);
          port_len = (unsigned)strlen(mitm_port);
 
-         /* Enable Netplay client mode */
-         if (netplay_driver_ctl(RARCH_NETPLAY_CTL_IS_DATA_INITED, NULL))
+
+         if (netplay_driver_ctl(RARCH_NETPLAY_CTL_IS_DATA_INITED, ((void*)0)))
          {
-            command_event(CMD_EVENT_NETPLAY_DEINIT, NULL);
-            is_mitm = true;
+            command_event(CMD_EVENT_NETPLAY_DEINIT, ((void*)0));
+            is_mitm = 1;
             host_room->host_method = NETPLAY_HOST_METHOD_MITM;
          }
 
-         netplay_driver_ctl(RARCH_NETPLAY_CTL_ENABLE_CLIENT, NULL);
+         netplay_driver_ctl(RARCH_NETPLAY_CTL_ENABLE_CLIENT, ((void*)0));
 
          host_string = (char*)calloc(1, ip_len + port_len + 2);
 
@@ -192,22 +192,12 @@ __attribute__((used)) static void netplay_announce_cb(retro_task_t *task,
          memcpy(host_string + ip_len, "|", 1);
          memcpy(host_string + ip_len + 1, mitm_port, port_len);
 
-         /* Enable Netplay */
+
          command_event(CMD_EVENT_NETPLAY_INIT_DIRECT_DEFERRED, (void*)host_string);
          command_event(CMD_EVENT_NETPLAY_INIT, (void*)host_string);
 
          free(host_string);
       }
-
-#ifdef HAVE_DISCORD
-      if (discord_is_inited)
-      {
-         discord_userdata_t userdata;
-         userdata.status = DISCORD_PRESENCE_NETPLAY_HOSTING;
-         command_event(CMD_EVENT_DISCORD_UPDATE, &userdata);
-      }
-#endif
-
       string_list_free(lines);
       free(buf);
       free(task_data);

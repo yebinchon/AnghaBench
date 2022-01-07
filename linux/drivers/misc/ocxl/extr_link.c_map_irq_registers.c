@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct spa {int /*<<< orphan*/  reg_pe_handle; int /*<<< orphan*/  reg_tfc; int /*<<< orphan*/  reg_dar; int /*<<< orphan*/  reg_dsisr; } ;
+
+
+
+
+struct spa {int reg_pe_handle; int reg_tfc; int reg_dar; int reg_dsisr; } ;
 struct pci_dev {int dummy; } ;
 
-/* Variables and functions */
- int pnv_ocxl_map_xsl_regs (struct pci_dev*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int pnv_ocxl_map_xsl_regs (struct pci_dev*,int *,int *,int *,int *) ;
 
 __attribute__((used)) static int map_irq_registers(struct pci_dev *dev, struct spa *spa)
 {
-	return pnv_ocxl_map_xsl_regs(dev, &spa->reg_dsisr, &spa->reg_dar,
-				&spa->reg_tfc, &spa->reg_pe_handle);
+ return pnv_ocxl_map_xsl_regs(dev, &spa->reg_dsisr, &spa->reg_dar,
+    &spa->reg_tfc, &spa->reg_pe_handle);
 }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned int u8 ;
+
+
+
+
+typedef unsigned int u8 ;
 struct element {int datalen; } ;
-typedef  int /*<<< orphan*/  match ;
+typedef int match ;
 
-/* Variables and functions */
- scalar_t__ WARN_ON (int) ; 
- int /*<<< orphan*/  WLAN_EID_VENDOR_SPECIFIC ; 
- struct element* cfg80211_find_elem_match (int /*<<< orphan*/ ,unsigned int const*,unsigned int,unsigned int*,int,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ WARN_ON (int) ;
+ int WLAN_EID_VENDOR_SPECIFIC ;
+ struct element* cfg80211_find_elem_match (int ,unsigned int const*,unsigned int,unsigned int*,int,int ) ;
 
 const struct element *cfg80211_find_vendor_elem(unsigned int oui, int oui_type,
-						const u8 *ies,
-						unsigned int len)
+      const u8 *ies,
+      unsigned int len)
 {
-	const struct element *elem;
-	u8 match[] = { oui >> 16, oui >> 8, oui, oui_type };
-	int match_len = (oui_type < 0) ? 3 : sizeof(match);
+ const struct element *elem;
+ u8 match[] = { oui >> 16, oui >> 8, oui, oui_type };
+ int match_len = (oui_type < 0) ? 3 : sizeof(match);
 
-	if (WARN_ON(oui_type > 0xff))
-		return NULL;
+ if (WARN_ON(oui_type > 0xff))
+  return ((void*)0);
 
-	elem = cfg80211_find_elem_match(WLAN_EID_VENDOR_SPECIFIC, ies, len,
-					match, match_len, 0);
+ elem = cfg80211_find_elem_match(WLAN_EID_VENDOR_SPECIFIC, ies, len,
+     match, match_len, 0);
 
-	if (!elem || elem->datalen < 4)
-		return NULL;
+ if (!elem || elem->datalen < 4)
+  return ((void*)0);
 
-	return elem;
+ return elem;
 }

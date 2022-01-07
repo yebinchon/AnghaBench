@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  float64 ;
-typedef  int /*<<< orphan*/  flag ;
 
-/* Variables and functions */
- int /*<<< orphan*/  float64ToFloatX (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  floatXLt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int float64 ;
+typedef int flag ;
+
+
+ int float64ToFloatX (int ) ;
+ int floatXLt (int ,int ) ;
 
 flag slow_float64_lt_quiet( float64 a, float64 b )
 {

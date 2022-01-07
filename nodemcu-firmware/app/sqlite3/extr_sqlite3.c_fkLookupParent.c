@@ -1,99 +1,91 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_26__   TYPE_4__ ;
-typedef  struct TYPE_25__   TYPE_3__ ;
-typedef  struct TYPE_24__   TYPE_2__ ;
-typedef  struct TYPE_23__   TYPE_1__ ;
-typedef  struct TYPE_22__   TYPE_12__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vdbe ;
+
+
+typedef struct TYPE_26__ TYPE_4__ ;
+typedef struct TYPE_25__ TYPE_3__ ;
+typedef struct TYPE_24__ TYPE_2__ ;
+typedef struct TYPE_23__ TYPE_1__ ;
+typedef struct TYPE_22__ TYPE_12__ ;
+
+
+typedef int Vdbe ;
 struct TYPE_23__ {int iPKey; } ;
-typedef  TYPE_1__ Table ;
+typedef TYPE_1__ Table ;
 struct TYPE_26__ {int isDeferred; int nCol; TYPE_1__* pFrom; } ;
 struct TYPE_25__ {int tnum; int* aiColumn; } ;
-struct TYPE_24__ {int nTab; int /*<<< orphan*/  isMultiWrite; int /*<<< orphan*/  pToplevel; TYPE_12__* db; } ;
+struct TYPE_24__ {int nTab; int isMultiWrite; int pToplevel; TYPE_12__* db; } ;
 struct TYPE_22__ {int flags; } ;
-typedef  TYPE_2__ Parse ;
-typedef  TYPE_3__ Index ;
-typedef  TYPE_4__ FKey ;
+typedef TYPE_2__ Parse ;
+typedef TYPE_3__ Index ;
+typedef TYPE_4__ FKey ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OE_Abort ; 
- int /*<<< orphan*/  OP_Close ; 
- int /*<<< orphan*/  OP_Copy ; 
- int /*<<< orphan*/  OP_Eq ; 
- int /*<<< orphan*/  OP_FkCounter ; 
- int /*<<< orphan*/  OP_FkIfZero ; 
- int /*<<< orphan*/  OP_Found ; 
- int /*<<< orphan*/  OP_IsNull ; 
- int /*<<< orphan*/  OP_MakeRecord ; 
- int /*<<< orphan*/  OP_MustBeInt ; 
- int /*<<< orphan*/  OP_Ne ; 
- int /*<<< orphan*/  OP_NotExists ; 
- int /*<<< orphan*/  OP_OpenRead ; 
- int /*<<< orphan*/  OP_SCopy ; 
- int /*<<< orphan*/  P4_STATIC ; 
- int /*<<< orphan*/  P5_ConstraintFK ; 
- int /*<<< orphan*/  SQLITE_CONSTRAINT_FOREIGNKEY ; 
- int SQLITE_DeferFKs ; 
- int /*<<< orphan*/  SQLITE_JUMPIFNULL ; 
- int /*<<< orphan*/  SQLITE_NOTNULL ; 
- int /*<<< orphan*/  VdbeCoverage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int) ; 
- int sqlite3GetTempRange (TYPE_2__*,int) ; 
- int sqlite3GetTempReg (TYPE_2__*) ; 
- int /*<<< orphan*/ * sqlite3GetVdbe (TYPE_2__*) ; 
- int /*<<< orphan*/  sqlite3HaltConstraint (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3IndexAffinityStr (TYPE_12__*,TYPE_3__*) ; 
- int /*<<< orphan*/  sqlite3MayAbort (TYPE_2__*) ; 
- int /*<<< orphan*/  sqlite3OpenTable (TYPE_2__*,int,int,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3ReleaseTempRange (TYPE_2__*,int,int) ; 
- int /*<<< orphan*/  sqlite3ReleaseTempReg (TYPE_2__*,int) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int sqlite3VdbeAddOp2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp3 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp4 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp4Int (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3VdbeChangeP5 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int sqlite3VdbeCurrentAddr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3VdbeGoto (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3VdbeJumpHere (int /*<<< orphan*/ *,int) ; 
- int sqlite3VdbeMakeLabel (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3VdbeResolveLabel (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3VdbeSetP4KeyInfo (TYPE_2__*,TYPE_3__*) ; 
+
+ int OE_Abort ;
+ int OP_Close ;
+ int OP_Copy ;
+ int OP_Eq ;
+ int OP_FkCounter ;
+ int OP_FkIfZero ;
+ int OP_Found ;
+ int OP_IsNull ;
+ int OP_MakeRecord ;
+ int OP_MustBeInt ;
+ int OP_Ne ;
+ int OP_NotExists ;
+ int OP_OpenRead ;
+ int OP_SCopy ;
+ int P4_STATIC ;
+ int P5_ConstraintFK ;
+ int SQLITE_CONSTRAINT_FOREIGNKEY ;
+ int SQLITE_DeferFKs ;
+ int SQLITE_JUMPIFNULL ;
+ int SQLITE_NOTNULL ;
+ int VdbeCoverage (int *) ;
+ int assert (int) ;
+ int sqlite3GetTempRange (TYPE_2__*,int) ;
+ int sqlite3GetTempReg (TYPE_2__*) ;
+ int * sqlite3GetVdbe (TYPE_2__*) ;
+ int sqlite3HaltConstraint (TYPE_2__*,int ,int ,int ,int ,int ) ;
+ int sqlite3IndexAffinityStr (TYPE_12__*,TYPE_3__*) ;
+ int sqlite3MayAbort (TYPE_2__*) ;
+ int sqlite3OpenTable (TYPE_2__*,int,int,TYPE_1__*,int ) ;
+ int sqlite3ReleaseTempRange (TYPE_2__*,int,int) ;
+ int sqlite3ReleaseTempReg (TYPE_2__*,int) ;
+ int sqlite3VdbeAddOp1 (int *,int ,int) ;
+ int sqlite3VdbeAddOp2 (int *,int ,int,int) ;
+ int sqlite3VdbeAddOp3 (int *,int ,int,int,int) ;
+ int sqlite3VdbeAddOp4 (int *,int ,int,int,int,int ,int) ;
+ int sqlite3VdbeAddOp4Int (int *,int ,int,int,int,int ) ;
+ int sqlite3VdbeChangeP5 (int *,int ) ;
+ int sqlite3VdbeCurrentAddr (int *) ;
+ int sqlite3VdbeGoto (int *,int) ;
+ int sqlite3VdbeJumpHere (int *,int) ;
+ int sqlite3VdbeMakeLabel (int *) ;
+ int sqlite3VdbeResolveLabel (int *,int) ;
+ int sqlite3VdbeSetP4KeyInfo (TYPE_2__*,TYPE_3__*) ;
 
 __attribute__((used)) static void fkLookupParent(
-  Parse *pParse,        /* Parse context */
-  int iDb,              /* Index of database housing pTab */
-  Table *pTab,          /* Parent table of FK pFKey */
-  Index *pIdx,          /* Unique index on parent key columns in pTab */
-  FKey *pFKey,          /* Foreign key constraint */
-  int *aiCol,           /* Map from parent key columns to child table columns */
-  int regData,          /* Address of array containing child table row */
-  int nIncr,            /* Increment constraint counter by this */
-  int isIgnore          /* If true, pretend pTab contains all NULL values */
+  Parse *pParse,
+  int iDb,
+  Table *pTab,
+  Index *pIdx,
+  FKey *pFKey,
+  int *aiCol,
+  int regData,
+  int nIncr,
+  int isIgnore
 ){
-  int i;                                    /* Iterator variable */
-  Vdbe *v = sqlite3GetVdbe(pParse);         /* Vdbe to add code to */
-  int iCur = pParse->nTab - 1;              /* Cursor number to use */
-  int iOk = sqlite3VdbeMakeLabel(v);        /* jump here if parent key found */
-
-  /* If nIncr is less than zero, then check at runtime if there are any
-  ** outstanding constraints to resolve. If there are not, there is no need
-  ** to check if deleting this row resolves any outstanding violations.
-  **
-  ** Check if any of the key columns in the child table row are NULL. If
-  ** any are, then the constraint is considered satisfied. No need to
-  ** search for a matching row in the parent table.  */
+  int i;
+  Vdbe *v = sqlite3GetVdbe(pParse);
+  int iCur = pParse->nTab - 1;
+  int iOk = sqlite3VdbeMakeLabel(v);
   if( nIncr<0 ){
     sqlite3VdbeAddOp2(v, OP_FkIfZero, pFKey->isDeferred, iOk);
     VdbeCoverage(v);
@@ -105,24 +97,24 @@ __attribute__((used)) static void fkLookupParent(
 
   if( isIgnore==0 ){
     if( pIdx==0 ){
-      /* If pIdx is NULL, then the parent key is the INTEGER PRIMARY KEY
-      ** column of the parent table (table pTab).  */
-      int iMustBeInt;               /* Address of MustBeInt instruction */
+
+
+      int iMustBeInt;
       int regTemp = sqlite3GetTempReg(pParse);
 
-      /* Invoke MustBeInt to coerce the child key value to an integer (i.e.
-      ** apply the affinity of the parent key). If this fails, then there
-      ** is no matching parent key. Before using MustBeInt, make a copy of
-      ** the value. Otherwise, the value inserted into the child key column
-      ** will have INTEGER affinity applied to it, which may not be correct.  */
+
+
+
+
+
       sqlite3VdbeAddOp2(v, OP_SCopy, aiCol[0]+1+regData, regTemp);
       iMustBeInt = sqlite3VdbeAddOp2(v, OP_MustBeInt, regTemp, 0);
       VdbeCoverage(v);
 
-      /* If the parent table is the same as the child table, and we are about
-      ** to increment the constraint-counter (i.e. this is an INSERT operation),
-      ** then check if the row being inserted matches itself. If so, do not
-      ** increment the constraint-counter.  */
+
+
+
+
       if( pTab==pFKey->pFrom && nIncr==1 ){
         sqlite3VdbeAddOp3(v, OP_Eq, regData, iOk, regTemp); VdbeCoverage(v);
         sqlite3VdbeChangeP5(v, SQLITE_NOTNULL);
@@ -144,17 +136,6 @@ __attribute__((used)) static void fkLookupParent(
       for(i=0; i<nCol; i++){
         sqlite3VdbeAddOp2(v, OP_Copy, aiCol[i]+1+regData, regTemp+i);
       }
-
-      /* If the parent table is the same as the child table, and we are about
-      ** to increment the constraint-counter (i.e. this is an INSERT operation),
-      ** then check if the row being inserted matches itself. If so, do not
-      ** increment the constraint-counter.
-      **
-      ** If any of the parent-key values are NULL, then the row cannot match
-      ** itself. So set JUMPIFNULL to make sure we do the OP_Found if any
-      ** of the parent-key values are NULL (at this point it is known that
-      ** none of the child key values are).
-      */
       if( pTab==pFKey->pFrom && nIncr==1 ){
         int iJump = sqlite3VdbeCurrentAddr(v) + nCol + 1;
         for(i=0; i<nCol; i++){
@@ -163,7 +144,7 @@ __attribute__((used)) static void fkLookupParent(
           assert( pIdx->aiColumn[i]>=0 );
           assert( aiCol[i]!=pTab->iPKey );
           if( pIdx->aiColumn[i]==pTab->iPKey ){
-            /* The parent key is a composite key that includes the IPK column */
+
             iParent = regData;
           }
           sqlite3VdbeAddOp3(v, OP_Ne, iChild, iJump, iParent); VdbeCoverage(v);
@@ -185,10 +166,10 @@ __attribute__((used)) static void fkLookupParent(
    && !pParse->pToplevel
    && !pParse->isMultiWrite
   ){
-    /* Special case: If this is an INSERT statement that will insert exactly
-    ** one row into the table, raise a constraint immediately instead of
-    ** incrementing a counter. This is necessary as the VM code is being
-    ** generated for will not open a statement transaction.  */
+
+
+
+
     assert( nIncr==1 );
     sqlite3HaltConstraint(pParse, SQLITE_CONSTRAINT_FOREIGNKEY,
         OE_Abort, 0, P4_STATIC, P5_ConstraintFK);

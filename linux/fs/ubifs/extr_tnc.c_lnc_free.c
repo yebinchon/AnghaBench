@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ubifs_zbranch {int /*<<< orphan*/ * leaf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
+
+
+
+struct ubifs_zbranch {int * leaf; } ;
+
+
+ int kfree (int *) ;
 
 __attribute__((used)) static void lnc_free(struct ubifs_zbranch *zbr)
 {
-	if (!zbr->leaf)
-		return;
-	kfree(zbr->leaf);
-	zbr->leaf = NULL;
+ if (!zbr->leaf)
+  return;
+ kfree(zbr->leaf);
+ zbr->leaf = ((void*)0);
 }

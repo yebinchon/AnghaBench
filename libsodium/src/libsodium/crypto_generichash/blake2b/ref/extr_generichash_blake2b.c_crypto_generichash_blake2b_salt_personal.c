@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
 
-/* Variables and functions */
- size_t BLAKE2B_KEYBYTES ; 
- size_t BLAKE2B_OUTBYTES ; 
- unsigned long long UINT64_MAX ; 
- size_t UINT8_MAX ; 
- int /*<<< orphan*/  assert (int) ; 
- int blake2b_salt_personal (int /*<<< orphan*/ *,unsigned char const*,unsigned char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char const*,unsigned char const*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+
+
+ size_t BLAKE2B_KEYBYTES ;
+ size_t BLAKE2B_OUTBYTES ;
+ unsigned long long UINT64_MAX ;
+ size_t UINT8_MAX ;
+ int assert (int) ;
+ int blake2b_salt_personal (int *,unsigned char const*,unsigned char const*,int ,int ,int ,unsigned char const*,unsigned char const*) ;
 
 int
 crypto_generichash_blake2b_salt_personal(

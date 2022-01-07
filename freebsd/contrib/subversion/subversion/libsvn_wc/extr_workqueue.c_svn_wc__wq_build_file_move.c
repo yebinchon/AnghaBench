@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_skel_t ;
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- char const* OP_FILE_MOVE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_WC_PATH_NOT_FOUND ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  svn_dirent_is_absolute (char const*) ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_io_check_path (char const*,scalar_t__*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_none ; 
- int /*<<< orphan*/ * svn_skel__make_empty_list (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_skel__prepend_str (char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_to_relpath (char const**,int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_wc__db_t ;
+typedef int svn_skel_t ;
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+
+
+ char const* OP_FILE_MOVE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int SVN_ERR_WC_PATH_NOT_FOUND ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int svn_dirent_is_absolute (char const*) ;
+ int svn_dirent_local_style (char const*,int *) ;
+ int * svn_error_createf (int ,int *,int ,int ) ;
+ int svn_io_check_path (char const*,scalar_t__*,int *) ;
+ scalar_t__ svn_node_none ;
+ int * svn_skel__make_empty_list (int *) ;
+ int svn_skel__prepend_str (char const*,int *,int *) ;
+ int svn_wc__db_to_relpath (char const**,int *,char const*,char const*,int *,int *) ;
 
 svn_error_t *
 svn_wc__wq_build_file_move(svn_skel_t **work_item,
@@ -49,11 +49,11 @@ svn_wc__wq_build_file_move(svn_skel_t **work_item,
   SVN_ERR_ASSERT(svn_dirent_is_absolute(src_abspath));
   SVN_ERR_ASSERT(svn_dirent_is_absolute(dst_abspath));
 
-  /* File must exist */
+
   SVN_ERR(svn_io_check_path(src_abspath, &kind, result_pool));
 
   if (kind == svn_node_none)
-    return svn_error_createf(SVN_ERR_WC_PATH_NOT_FOUND, NULL,
+    return svn_error_createf(SVN_ERR_WC_PATH_NOT_FOUND, ((void*)0),
                              _("'%s' not found"),
                              svn_dirent_local_style(src_abspath,
                                                     scratch_pool));

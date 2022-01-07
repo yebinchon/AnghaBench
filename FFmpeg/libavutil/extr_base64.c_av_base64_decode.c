@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char uint8_t ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_WN32 (char*,unsigned int) ; 
- int /*<<< orphan*/  BASE64_DEC_STEP (int) ; 
- unsigned int av_be2ne32 (unsigned int) ; 
+
+
+
+typedef char uint8_t ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_WN32 (char*,unsigned int) ;
+ int BASE64_DEC_STEP (int) ;
+ unsigned int av_be2ne32 (unsigned int) ;
 
 int av_base64_decode(uint8_t *out, const char *in_str, int out_size)
 {
     uint8_t *dst = out;
     uint8_t *end = out + out_size;
-    // no sign extension
+
     const uint8_t *in = in_str;
     unsigned bits = 0xff;
     unsigned v;
@@ -32,7 +32,7 @@ int av_base64_decode(uint8_t *out, const char *in_str, int out_size)
         BASE64_DEC_STEP(1);
         BASE64_DEC_STEP(2);
         BASE64_DEC_STEP(3);
-        // Using AV_WB32 directly confuses compiler
+
         v = av_be2ne32(v << 8);
         AV_WN32(dst, v);
         dst += 3;

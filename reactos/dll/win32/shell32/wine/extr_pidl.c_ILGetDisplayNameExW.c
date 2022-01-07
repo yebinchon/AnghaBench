@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  STRRET ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  scalar_t__ LPSHELLFOLDER ;
-typedef  scalar_t__ LPCITEMIDLIST ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_FAIL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int /*<<< orphan*/  IID_IShellFolder ; 
-#define  ILGDN_FORPARSING 130 
-#define  ILGDN_INFOLDER 129 
-#define  ILGDN_NORMAL 128 
- int /*<<< orphan*/  IShellFolder_GetDisplayNameOf (scalar_t__,scalar_t__,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IShellFolder_Release (scalar_t__) ; 
- int /*<<< orphan*/  MAX_PATH ; 
- int /*<<< orphan*/  NO_ERROR ; 
- int /*<<< orphan*/  SHBindToParent (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*) ; 
- int SHGDN_FORADDRESSBAR ; 
- int SHGDN_FORPARSING ; 
- int SHGDN_INFOLDER ; 
- int SHGDN_NORMAL ; 
- int /*<<< orphan*/  SHGetDesktopFolder (scalar_t__*) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StrRetToStrNW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__,scalar_t__,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int WORD ;
+typedef int STRRET ;
+typedef int LPWSTR ;
+typedef int LPVOID ;
+typedef scalar_t__ LPSHELLFOLDER ;
+typedef scalar_t__ LPCITEMIDLIST ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ int E_FAIL ;
+ scalar_t__ FAILED (int ) ;
+ scalar_t__ FALSE ;
+ int FIXME (char*,int) ;
+ int IID_IShellFolder ;
+
+
+
+ int IShellFolder_GetDisplayNameOf (scalar_t__,scalar_t__,int,int *) ;
+ int IShellFolder_Release (scalar_t__) ;
+ int MAX_PATH ;
+ int NO_ERROR ;
+ int SHBindToParent (scalar_t__,int *,int *,scalar_t__*) ;
+ int SHGDN_FORADDRESSBAR ;
+ int SHGDN_FORPARSING ;
+ int SHGDN_INFOLDER ;
+ int SHGDN_NORMAL ;
+ int SHGetDesktopFolder (scalar_t__*) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int StrRetToStrNW (int ,int ,int *,scalar_t__) ;
+ int TRACE (char*,scalar_t__,scalar_t__,int ,...) ;
+ int debugstr_w (int ) ;
 
 BOOL ILGetDisplayNameExW(LPSHELLFOLDER psf, LPCITEMIDLIST pidl, LPWSTR path, DWORD type)
 {
@@ -66,13 +66,13 @@ BOOL ILGetDisplayNameExW(LPSHELLFOLDER psf, LPCITEMIDLIST pidl, LPWSTR path, DWO
 
     switch (type)
     {
-    case ILGDN_FORPARSING:
+    case 130:
         flag = SHGDN_FORPARSING | SHGDN_FORADDRESSBAR;
         break;
-    case ILGDN_NORMAL:
+    case 128:
         flag = SHGDN_NORMAL;
         break;
-    case ILGDN_INFOLDER:
+    case 129:
         flag = SHGDN_INFOLDER;
         break;
     default:
@@ -81,7 +81,7 @@ BOOL ILGetDisplayNameExW(LPSHELLFOLDER psf, LPCITEMIDLIST pidl, LPWSTR path, DWO
         break;
     }
 
-    if (!*(const WORD*)pidl || type == ILGDN_FORPARSING)
+    if (!*(const WORD*)pidl || type == 130)
     {
         ret = IShellFolder_GetDisplayNameOf(lsf, pidl, flag, &strret);
         if (SUCCEEDED(ret))

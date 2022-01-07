@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DIV_ROUND_CLOSEST (int,int) ; 
- int clamp_val (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+ int DIV_ROUND_CLOSEST (int,int) ;
+ int clamp_val (int ,int ,int) ;
 
 __attribute__((used)) static inline int MV_TO_LIMIT(int mv, int range)
 {
-	return clamp_val(DIV_ROUND_CLOSEST(mv * 256, range), 0, 255);
+ return clamp_val(DIV_ROUND_CLOSEST(mv * 256, range), 0, 255);
 }

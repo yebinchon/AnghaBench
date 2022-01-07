@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* ifnet_t ;
-typedef  int /*<<< orphan*/  errno_t ;
-struct TYPE_3__ {int /*<<< orphan*/  if_lastchange; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  TOUCHLASTCHANGE (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* ifnet_t ;
+typedef int errno_t ;
+struct TYPE_3__ {int if_lastchange; } ;
+
+
+ int EINVAL ;
+ int TOUCHLASTCHANGE (int *) ;
 
 errno_t
 ifnet_touch_lastchange(ifnet_t interface)
 {
-	if (interface == NULL)
-		return (EINVAL);
+ if (interface == ((void*)0))
+  return (EINVAL);
 
-	TOUCHLASTCHANGE(&interface->if_lastchange);
+ TOUCHLASTCHANGE(&interface->if_lastchange);
 
-	return (0);
+ return (0);
 }

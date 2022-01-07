@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef size_t UINT ;
 struct TYPE_8__ {size_t offset; } ;
-struct TYPE_7__ {size_t col_count; size_t row_count; int /*<<< orphan*/ ** data; TYPE_2__* colinfo; } ;
-typedef  TYPE_1__ MSITABLE ;
-typedef  int /*<<< orphan*/  MSIDATABASE ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
+struct TYPE_7__ {size_t col_count; size_t row_count; int ** data; TYPE_2__* colinfo; } ;
+typedef TYPE_1__ MSITABLE ;
+typedef int MSIDATABASE ;
+typedef int LPCWSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LONG_STR_BYTES ; 
- TYPE_1__* find_cached_table (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  msi_free (TYPE_2__*) ; 
- int /*<<< orphan*/  msi_free_colinfo (TYPE_2__*,size_t) ; 
- int /*<<< orphan*/ * msi_realloc (int /*<<< orphan*/ *,size_t) ; 
- size_t msi_table_get_row_size (int /*<<< orphan*/ *,TYPE_2__*,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  table_get_column_info (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__**,size_t*) ; 
+
+ int LONG_STR_BYTES ;
+ TYPE_1__* find_cached_table (int *,int ) ;
+ int memset (int *,int ,size_t) ;
+ int msi_free (TYPE_2__*) ;
+ int msi_free_colinfo (TYPE_2__*,size_t) ;
+ int * msi_realloc (int *,size_t) ;
+ size_t msi_table_get_row_size (int *,TYPE_2__*,size_t,int ) ;
+ int table_get_column_info (int *,int ,TYPE_2__**,size_t*) ;
 
 __attribute__((used)) static void msi_update_table_columns( MSIDATABASE *db, LPCWSTR name )
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static void msi_update_table_columns( MSIDATABASE *db, LPC
     old_count = table->col_count;
     msi_free_colinfo( table->colinfo, table->col_count );
     msi_free( table->colinfo );
-    table->colinfo = NULL;
+    table->colinfo = ((void*)0);
 
     table_get_column_info( db, name, &table->colinfo, &table->col_count );
     if (!table->col_count) return;

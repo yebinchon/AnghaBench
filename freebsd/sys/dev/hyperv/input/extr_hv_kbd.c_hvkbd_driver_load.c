@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  module_t ;
 
-/* Variables and functions */
-#define  MOD_LOAD 129 
-#define  MOD_UNLOAD 128 
- int /*<<< orphan*/  hvkbd_kbd_driver ; 
- int /*<<< orphan*/  kbd_add_driver (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kbd_delete_driver (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int module_t ;
+
+
+
+
+ int hvkbd_kbd_driver ;
+ int kbd_add_driver (int *) ;
+ int kbd_delete_driver (int *) ;
 
 int
 hvkbd_driver_load(module_t mod, int what, void *arg)
 {
-	switch (what) {
-	case MOD_LOAD:
-		kbd_add_driver(&hvkbd_kbd_driver);
-		break;
-	case MOD_UNLOAD:
-		kbd_delete_driver(&hvkbd_kbd_driver);
-		break;
-	}
-	return (0);
+ switch (what) {
+ case 129:
+  kbd_add_driver(&hvkbd_kbd_driver);
+  break;
+ case 128:
+  kbd_delete_driver(&hvkbd_kbd_driver);
+  break;
+ }
+ return (0);
 }

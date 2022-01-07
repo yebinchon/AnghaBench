@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct per_core_single_number_file {int found; int fd; scalar_t__ value; int /*<<< orphan*/  filename; } ;
+
+
+
+
+struct per_core_single_number_file {int found; int fd; scalar_t__ value; int filename; } ;
 struct cpu_chart {struct per_core_single_number_file* files; } ;
-typedef  size_t ssize_t ;
+typedef size_t ssize_t ;
 
-/* Variables and functions */
- scalar_t__ CONFIG_BOOLEAN_YES ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  error (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ keep_per_core_fds_open ; 
- scalar_t__ likely (int) ; 
- int lseek (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t read (int,char*,int) ; 
- scalar_t__ str2ll (char*,int /*<<< orphan*/ *) ; 
- scalar_t__ unlikely (int) ; 
+
+ scalar_t__ CONFIG_BOOLEAN_YES ;
+ int O_RDONLY ;
+ int SEEK_SET ;
+ int close (int) ;
+ int error (char*,int ) ;
+ scalar_t__ keep_per_core_fds_open ;
+ scalar_t__ likely (int) ;
+ int lseek (int,int ,int ) ;
+ int open (int ,int ) ;
+ size_t read (int,char*,int) ;
+ scalar_t__ str2ll (char*,int *) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static int read_per_core_files(struct cpu_chart *all_cpu_charts, size_t len, size_t index) {
     char buf[50 + 1];
@@ -50,7 +50,7 @@ __attribute__((used)) static int read_per_core_files(struct cpu_chart *all_cpu_c
 
         ssize_t ret = read(f->fd, buf, 50);
         if(unlikely(ret < 0)) {
-            // cannot read that file
+
 
             error("Cannot read file '%s'", f->filename);
             close(f->fd);
@@ -58,9 +58,9 @@ __attribute__((used)) static int read_per_core_files(struct cpu_chart *all_cpu_c
             continue;
         }
         else {
-            // successful read
 
-            // terminate the buffer
+
+
             buf[ret] = '\0';
 
             if(unlikely(keep_per_core_fds_open != CONFIG_BOOLEAN_YES)) {
@@ -77,7 +77,7 @@ __attribute__((used)) static int read_per_core_files(struct cpu_chart *all_cpu_c
         files_read++;
         f->found = 1;
 
-        f->value = str2ll(buf, NULL);
+        f->value = str2ll(buf, ((void*)0));
         if(likely(f->value != 0))
             files_nonzero++;
     }

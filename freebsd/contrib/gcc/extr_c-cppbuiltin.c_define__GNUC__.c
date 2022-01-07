@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ISDIGIT (char const) ; 
- int /*<<< orphan*/  builtin_define_with_value_n (char*,char const*,int) ; 
- scalar_t__ c_dialect_cxx () ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- char const* version_string ; 
+ int ISDIGIT (char const) ;
+ int builtin_define_with_value_n (char*,char const*,int) ;
+ scalar_t__ c_dialect_cxx () ;
+ int gcc_assert (int) ;
+ char const* version_string ;
 
 __attribute__((used)) static void
 define__GNUC__ (void)
 {
-  /* The format of the version string, enforced below, is
-     ([^0-9]*-)?[0-9]+[.][0-9]+([.][0-9]+)?([- ].*)?  */
+
+
   const char *q, *v = version_string;
 
   while (*v && !ISDIGIT (*v))
@@ -48,7 +40,7 @@ define__GNUC__ (void)
       gcc_assert (ISDIGIT (v[1]));
       q = ++v;
       while (ISDIGIT (*v))
-	v++;
+ v++;
       builtin_define_with_value_n ("__GNUC_PATCHLEVEL__", q, v - q);
     }
   else

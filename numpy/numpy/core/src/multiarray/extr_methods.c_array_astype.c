@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArray_Descr ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
-typedef  scalar_t__ NPY_ORDER ;
-typedef  int /*<<< orphan*/  NPY_CASTING ;
 
-/* Variables and functions */
- scalar_t__ NPY_ANYORDER ; 
- scalar_t__ NPY_CORDER ; 
- scalar_t__ NPY_FORTRANORDER ; 
- scalar_t__ NPY_KEEPORDER ; 
- int /*<<< orphan*/  NPY_UNSAFE_CASTING ; 
- int /*<<< orphan*/  PyArg_ParseTupleAndKeywords (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,char**,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/ * PyArray_AdaptFlexibleDType (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_CanCastArrayTo (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PyArray_CastingConverter ; 
- scalar_t__ PyArray_CheckExact (int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_CopyInto (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_DESCR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_DescrConverter ; 
- scalar_t__ PyArray_EquivTypes (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ PyArray_IS_C_CONTIGUOUS (int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_IS_F_CONTIGUOUS (int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_NewLikeArray (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  PyArray_OrderConverter ; 
- int /*<<< orphan*/  PyErr_SetObject (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyExc_TypeError ; 
- int /*<<< orphan*/ * PyObject_Repr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyUString_ConcatAndDel (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyUString_FromFormat (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * PyUString_FromString (char*) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  npy_casting_to_string (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int PyObject ;
+typedef int PyArray_Descr ;
+typedef int PyArrayObject ;
+typedef scalar_t__ NPY_ORDER ;
+typedef int NPY_CASTING ;
+
+
+ scalar_t__ NPY_ANYORDER ;
+ scalar_t__ NPY_CORDER ;
+ scalar_t__ NPY_FORTRANORDER ;
+ scalar_t__ NPY_KEEPORDER ;
+ int NPY_UNSAFE_CASTING ;
+ int PyArg_ParseTupleAndKeywords (int *,int *,char*,char**,int ,int **,int ,scalar_t__*,int ,int *,int*,int*) ;
+ int * PyArray_AdaptFlexibleDType (int *,scalar_t__,int *) ;
+ scalar_t__ PyArray_CanCastArrayTo (int *,int *,int ) ;
+ int PyArray_CastingConverter ;
+ scalar_t__ PyArray_CheckExact (int *) ;
+ scalar_t__ PyArray_CopyInto (int *,int *) ;
+ scalar_t__ PyArray_DESCR (int *) ;
+ int PyArray_DescrConverter ;
+ scalar_t__ PyArray_EquivTypes (int *,scalar_t__) ;
+ scalar_t__ PyArray_IS_C_CONTIGUOUS (int *) ;
+ scalar_t__ PyArray_IS_F_CONTIGUOUS (int *) ;
+ scalar_t__ PyArray_NewLikeArray (int *,scalar_t__,int *,int) ;
+ int PyArray_OrderConverter ;
+ int PyErr_SetObject (int ,int *) ;
+ int PyExc_TypeError ;
+ int * PyObject_Repr (int *) ;
+ int PyUString_ConcatAndDel (int **,int *) ;
+ int * PyUString_FromFormat (char*,int ) ;
+ int * PyUString_FromString (char*) ;
+ int Py_DECREF (int *) ;
+ int Py_INCREF (int *) ;
+ int Py_XDECREF (int *) ;
+ int npy_casting_to_string (int ) ;
 
 __attribute__((used)) static PyObject *
 array_astype(PyArrayObject *self, PyObject *args, PyObject *kwds)
 {
     static char *kwlist[] = {"dtype", "order", "casting",
-                             "subok", "copy", NULL};
-    PyArray_Descr *dtype = NULL;
-    /*
-     * TODO: UNSAFE default for compatibility, I think
-     *       switching to SAME_KIND by default would be good.
-     */
+                             "subok", "copy", ((void*)0)};
+    PyArray_Descr *dtype = ((void*)0);
+
+
+
+
     NPY_CASTING casting = NPY_UNSAFE_CASTING;
     NPY_ORDER order = NPY_KEEPORDER;
     int forcecopy = 1, subok = 1;
@@ -67,14 +67,14 @@ array_astype(PyArrayObject *self, PyObject *args, PyObject *kwds)
                             &subok,
                             &forcecopy)) {
         Py_XDECREF(dtype);
-        return NULL;
+        return ((void*)0);
     }
 
-    /*
-     * If the memory layout matches and, data types are equivalent,
-     * and it's not a subtype if subok is False, then we
-     * can skip the copy.
-     */
+
+
+
+
+
     if (!forcecopy && (order == NPY_KEEPORDER ||
                        (order == NPY_ANYORDER &&
                             (PyArray_IS_C_CONTIGUOUS(self) ||
@@ -92,23 +92,23 @@ array_astype(PyArrayObject *self, PyObject *args, PyObject *kwds)
     else if (PyArray_CanCastArrayTo(self, dtype, casting)) {
         PyArrayObject *ret;
 
-        /* If the requested dtype is flexible, adapt it */
+
         dtype = PyArray_AdaptFlexibleDType((PyObject *)self,
                                            PyArray_DESCR(self), dtype);
-        if (dtype == NULL) {
-            return NULL;
+        if (dtype == ((void*)0)) {
+            return ((void*)0);
         }
 
-        /* This steals the reference to dtype, so no DECREF of dtype */
+
         ret = (PyArrayObject *)PyArray_NewLikeArray(
                                     self, order, dtype, subok);
-        if (ret == NULL) {
-            return NULL;
+        if (ret == ((void*)0)) {
+            return ((void*)0);
         }
 
         if (PyArray_CopyInto(ret, self) < 0) {
             Py_DECREF(ret);
-            return NULL;
+            return ((void*)0);
         }
 
         return (PyObject *)ret;
@@ -128,6 +128,6 @@ array_astype(PyArrayObject *self, PyObject *args, PyObject *kwds)
         PyErr_SetObject(PyExc_TypeError, errmsg);
         Py_DECREF(errmsg);
         Py_DECREF(dtype);
-        return NULL;
+        return ((void*)0);
     }
 }

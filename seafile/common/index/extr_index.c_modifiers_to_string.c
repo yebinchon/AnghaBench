@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct index_state {int cache_nr; struct cache_entry** cache; } ;
-struct cache_entry {int ce_flags; int /*<<< orphan*/  modifier; int /*<<< orphan*/  name; int /*<<< orphan*/  ce_mode; } ;
-typedef  int /*<<< orphan*/  GString ;
+struct cache_entry {int ce_flags; int modifier; int name; int ce_mode; } ;
+typedef int GString ;
 
-/* Variables and functions */
- int CE_REMOVE ; 
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_string_append_printf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seaf_warning (char*,int /*<<< orphan*/ ) ; 
+
+ int CE_REMOVE ;
+ scalar_t__ S_ISDIR (int ) ;
+ int g_string_append_printf (int *,char*,int ) ;
+ int seaf_warning (char*,int ) ;
 
 __attribute__((used)) static int
 modifiers_to_string (GString *buf, struct index_state *istate)

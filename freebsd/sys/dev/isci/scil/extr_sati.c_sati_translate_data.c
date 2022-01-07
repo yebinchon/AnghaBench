@@ -1,208 +1,185 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_24__ {int type; int /*<<< orphan*/  device; } ;
-typedef  TYPE_1__ SATI_TRANSLATOR_SEQUENCE_T ;
-typedef  int /*<<< orphan*/  ATA_IDENTIFY_DEVICE_DATA_T ;
 
-/* Variables and functions */
-#define  SATI_SEQUENCE_INQUIRY_ATA_INFORMATION 148 
-#define  SATI_SEQUENCE_INQUIRY_BLOCK_DEVICE 147 
-#define  SATI_SEQUENCE_INQUIRY_DEVICE_ID 146 
-#define  SATI_SEQUENCE_INQUIRY_SERIAL_NUMBER 145 
-#define  SATI_SEQUENCE_INQUIRY_STANDARD 144 
-#define  SATI_SEQUENCE_MODE_SENSE_10_ALL_PAGES 143 
-#define  SATI_SEQUENCE_MODE_SENSE_10_CACHING 142 
-#define  SATI_SEQUENCE_MODE_SENSE_10_CONTROL 141 
-#define  SATI_SEQUENCE_MODE_SENSE_10_DISCONNECT_RECONNECT 140 
-#define  SATI_SEQUENCE_MODE_SENSE_10_INFORMATIONAL_EXCP_CONTROL 139 
-#define  SATI_SEQUENCE_MODE_SENSE_10_POWER_CONDITION 138 
-#define  SATI_SEQUENCE_MODE_SENSE_10_READ_WRITE_ERROR 137 
-#define  SATI_SEQUENCE_MODE_SENSE_6_ALL_PAGES 136 
-#define  SATI_SEQUENCE_MODE_SENSE_6_CACHING 135 
-#define  SATI_SEQUENCE_MODE_SENSE_6_CONTROL 134 
-#define  SATI_SEQUENCE_MODE_SENSE_6_DISCONNECT_RECONNECT 133 
-#define  SATI_SEQUENCE_MODE_SENSE_6_INFORMATIONAL_EXCP_CONTROL 132 
-#define  SATI_SEQUENCE_MODE_SENSE_6_POWER_CONDITION 131 
-#define  SATI_SEQUENCE_MODE_SENSE_6_READ_WRITE_ERROR 130 
-#define  SATI_SEQUENCE_READ_CAPACITY_10 129 
-#define  SATI_SEQUENCE_READ_CAPACITY_16 128 
- int /*<<< orphan*/  sati_device_update_capabilities (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sati_inquiry_ata_information_translate_data (TYPE_1__*,void*,void*) ; 
- int /*<<< orphan*/  sati_inquiry_block_device_translate_data (TYPE_1__*,void*,void*) ; 
- int /*<<< orphan*/  sati_inquiry_device_id_translate_data (TYPE_1__*,void*,void*) ; 
- int /*<<< orphan*/  sati_inquiry_serial_number_translate_data (TYPE_1__*,void*,void*) ; 
- int /*<<< orphan*/  sati_inquiry_standard_translate_data (TYPE_1__*,void*,void*) ; 
- int /*<<< orphan*/  sati_mode_sense_10_all_pages_translate_data (TYPE_1__*,void*,void*) ; 
- int /*<<< orphan*/  sati_mode_sense_10_caching_translate_data (TYPE_1__*,void*,void*) ; 
- int /*<<< orphan*/  sati_mode_sense_10_control_translate_data (TYPE_1__*,void*,void*) ; 
- int /*<<< orphan*/  sati_mode_sense_10_disconnect_reconnect_translate_data (TYPE_1__*,void*,void*) ; 
- int /*<<< orphan*/  sati_mode_sense_10_informational_excp_control_translate_data (TYPE_1__*,void*,void*) ; 
- int /*<<< orphan*/  sati_mode_sense_10_power_condition_translate_data (TYPE_1__*,void*,void*) ; 
- int /*<<< orphan*/  sati_mode_sense_10_read_write_error_translate_data (TYPE_1__*,void*,void*) ; 
- int /*<<< orphan*/  sati_mode_sense_6_all_pages_translate_data (TYPE_1__*,void*,void*) ; 
- int /*<<< orphan*/  sati_mode_sense_6_caching_translate_data (TYPE_1__*,void*,void*) ; 
- int /*<<< orphan*/  sati_mode_sense_6_control_translate_data (TYPE_1__*,void*,void*) ; 
- int /*<<< orphan*/  sati_mode_sense_6_disconnect_reconnect_translate_data (TYPE_1__*,void*,void*) ; 
- int /*<<< orphan*/  sati_mode_sense_6_informational_excp_control_translate_data (TYPE_1__*,void*,void*) ; 
- int /*<<< orphan*/  sati_mode_sense_6_power_condition_translate_data (TYPE_1__*,void*,void*) ; 
- int /*<<< orphan*/  sati_mode_sense_6_read_write_error_translate_data (TYPE_1__*,void*,void*) ; 
- int /*<<< orphan*/  sati_read_capacity_10_translate_data (TYPE_1__*,void*,void*) ; 
- int /*<<< orphan*/  sati_read_capacity_16_translate_data (TYPE_1__*,void*,void*) ; 
+
+typedef struct TYPE_24__ TYPE_1__ ;
+
+
+struct TYPE_24__ {int type; int device; } ;
+typedef TYPE_1__ SATI_TRANSLATOR_SEQUENCE_T ;
+typedef int ATA_IDENTIFY_DEVICE_DATA_T ;
+ int sati_device_update_capabilities (int ,int *) ;
+ int sati_inquiry_ata_information_translate_data (TYPE_1__*,void*,void*) ;
+ int sati_inquiry_block_device_translate_data (TYPE_1__*,void*,void*) ;
+ int sati_inquiry_device_id_translate_data (TYPE_1__*,void*,void*) ;
+ int sati_inquiry_serial_number_translate_data (TYPE_1__*,void*,void*) ;
+ int sati_inquiry_standard_translate_data (TYPE_1__*,void*,void*) ;
+ int sati_mode_sense_10_all_pages_translate_data (TYPE_1__*,void*,void*) ;
+ int sati_mode_sense_10_caching_translate_data (TYPE_1__*,void*,void*) ;
+ int sati_mode_sense_10_control_translate_data (TYPE_1__*,void*,void*) ;
+ int sati_mode_sense_10_disconnect_reconnect_translate_data (TYPE_1__*,void*,void*) ;
+ int sati_mode_sense_10_informational_excp_control_translate_data (TYPE_1__*,void*,void*) ;
+ int sati_mode_sense_10_power_condition_translate_data (TYPE_1__*,void*,void*) ;
+ int sati_mode_sense_10_read_write_error_translate_data (TYPE_1__*,void*,void*) ;
+ int sati_mode_sense_6_all_pages_translate_data (TYPE_1__*,void*,void*) ;
+ int sati_mode_sense_6_caching_translate_data (TYPE_1__*,void*,void*) ;
+ int sati_mode_sense_6_control_translate_data (TYPE_1__*,void*,void*) ;
+ int sati_mode_sense_6_disconnect_reconnect_translate_data (TYPE_1__*,void*,void*) ;
+ int sati_mode_sense_6_informational_excp_control_translate_data (TYPE_1__*,void*,void*) ;
+ int sati_mode_sense_6_power_condition_translate_data (TYPE_1__*,void*,void*) ;
+ int sati_mode_sense_6_read_write_error_translate_data (TYPE_1__*,void*,void*) ;
+ int sati_read_capacity_10_translate_data (TYPE_1__*,void*,void*) ;
+ int sati_read_capacity_16_translate_data (TYPE_1__*,void*,void*) ;
 
 __attribute__((used)) static
 void sati_translate_data(
    SATI_TRANSLATOR_SEQUENCE_T * sequence,
-   void                       * ata_input_data,
-   void                       * scsi_io
+   void * ata_input_data,
+   void * scsi_io
 )
 {
-   // Update the device capabilities in the odd/crazy event something changed.
+
    sati_device_update_capabilities(
       sequence->device, (ATA_IDENTIFY_DEVICE_DATA_T*) ata_input_data
    );
 
-   // Look at the first byte to determine the SCSI command to translate.
+
    switch (sequence->type)
    {
-#if !defined(DISABLE_SATI_INQUIRY)
-      case SATI_SEQUENCE_INQUIRY_STANDARD:
+
+      case 144:
          sati_inquiry_standard_translate_data(
             sequence, ata_input_data, scsi_io
          );
       break;
 
-      case SATI_SEQUENCE_INQUIRY_SERIAL_NUMBER:
+      case 145:
          sati_inquiry_serial_number_translate_data(
             sequence, ata_input_data, scsi_io
          );
       break;
 
-      case SATI_SEQUENCE_INQUIRY_DEVICE_ID:
+      case 146:
          sati_inquiry_device_id_translate_data(
             sequence, ata_input_data, scsi_io
          );
       break;
 
-      case SATI_SEQUENCE_INQUIRY_BLOCK_DEVICE:
+      case 147:
          sati_inquiry_block_device_translate_data(
             sequence, ata_input_data, scsi_io
          );
       break;
 
-      case SATI_SEQUENCE_INQUIRY_ATA_INFORMATION:
+      case 148:
          sati_inquiry_ata_information_translate_data(
             sequence, ata_input_data, scsi_io
          );
       break;
 
-#endif // !defined(DISABLE_SATI_INQUIRY)
 
-#if !defined(DISABLE_SATI_READ_CAPACITY)
-      case SATI_SEQUENCE_READ_CAPACITY_10:
+
+
+      case 129:
          sati_read_capacity_10_translate_data(sequence, ata_input_data, scsi_io);
       break;
 
-      case SATI_SEQUENCE_READ_CAPACITY_16:
+      case 128:
          sati_read_capacity_16_translate_data(sequence, ata_input_data, scsi_io);
       break;
-#endif // !defined(DISABLE_SATI_READ_CAPACITY)
 
-#if !defined(DISABLE_SATI_MODE_SENSE)
-      case SATI_SEQUENCE_MODE_SENSE_6_CACHING:
+
+
+      case 135:
          sati_mode_sense_6_caching_translate_data(
             sequence, ata_input_data, scsi_io
          );
       break;
 
-      case SATI_SEQUENCE_MODE_SENSE_6_INFORMATIONAL_EXCP_CONTROL:
+      case 132:
          sati_mode_sense_6_informational_excp_control_translate_data(
             sequence, ata_input_data, scsi_io
          );
       break;
 
-      case SATI_SEQUENCE_MODE_SENSE_6_READ_WRITE_ERROR:
+      case 130:
          sati_mode_sense_6_read_write_error_translate_data(
             sequence, ata_input_data, scsi_io
          );
       break;
 
-      case SATI_SEQUENCE_MODE_SENSE_6_DISCONNECT_RECONNECT:
+      case 133:
          sati_mode_sense_6_disconnect_reconnect_translate_data(
             sequence, ata_input_data, scsi_io
          );
       break;
 
-      case SATI_SEQUENCE_MODE_SENSE_6_CONTROL:
+      case 134:
          sati_mode_sense_6_control_translate_data(
             sequence, ata_input_data, scsi_io
          );
       break;
 
-      case SATI_SEQUENCE_MODE_SENSE_6_ALL_PAGES:
+      case 136:
          sati_mode_sense_6_all_pages_translate_data(
             sequence, ata_input_data, scsi_io
          );
       break;
 
-      case SATI_SEQUENCE_MODE_SENSE_6_POWER_CONDITION:
+      case 131:
          sati_mode_sense_6_power_condition_translate_data(
             sequence, ata_input_data, scsi_io
          );
       break;
 
-      case SATI_SEQUENCE_MODE_SENSE_10_POWER_CONDITION:
+      case 138:
          sati_mode_sense_10_power_condition_translate_data(
             sequence, ata_input_data, scsi_io
          );
       break;
 
-      case SATI_SEQUENCE_MODE_SENSE_10_CACHING:
+      case 142:
          sati_mode_sense_10_caching_translate_data(
             sequence, ata_input_data, scsi_io
          );
       break;
 
-      case SATI_SEQUENCE_MODE_SENSE_10_INFORMATIONAL_EXCP_CONTROL:
+      case 139:
          sati_mode_sense_10_informational_excp_control_translate_data(
             sequence, ata_input_data, scsi_io
          );
       break;
 
-      case SATI_SEQUENCE_MODE_SENSE_10_READ_WRITE_ERROR:
+      case 137:
          sati_mode_sense_10_read_write_error_translate_data(
             sequence, ata_input_data, scsi_io
          );
       break;
 
-      case SATI_SEQUENCE_MODE_SENSE_10_DISCONNECT_RECONNECT:
+      case 140:
          sati_mode_sense_10_disconnect_reconnect_translate_data(
             sequence, ata_input_data, scsi_io
          );
       break;
 
-      case SATI_SEQUENCE_MODE_SENSE_10_CONTROL:
+      case 141:
          sati_mode_sense_10_control_translate_data(
             sequence, ata_input_data, scsi_io
          );
       break;
 
-      case SATI_SEQUENCE_MODE_SENSE_10_ALL_PAGES:
+      case 143:
          sati_mode_sense_10_all_pages_translate_data(
             sequence, ata_input_data, scsi_io
          );
       break;
-#endif // !defined(DISABLE_SATI_MODE_SENSE)
+
 
       default:
       break;

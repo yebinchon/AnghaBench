@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  WriterContext ;
-struct TYPE_5__ {int /*<<< orphan*/  str; } ;
-typedef  TYPE_1__ AVBPrint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_BPRINT_SIZE_UNLIMITED ; 
- int /*<<< orphan*/  AV_RN16 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AV_RN32 (int /*<<< orphan*/ *) ; 
- int FFMIN (int,int) ; 
- int /*<<< orphan*/  av_bprint_finalize (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_bprint_init (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_bprintf (TYPE_1__*,char const*,...) ; 
- int /*<<< orphan*/  writer_print_string (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int WriterContext ;
+struct TYPE_5__ {int str; } ;
+typedef TYPE_1__ AVBPrint ;
+
+
+ int AV_BPRINT_SIZE_UNLIMITED ;
+ int AV_RN16 (int *) ;
+ int AV_RN32 (int *) ;
+ int FFMIN (int,int) ;
+ int av_bprint_finalize (TYPE_1__*,int *) ;
+ int av_bprint_init (TYPE_1__*,int ,int ) ;
+ int av_bprintf (TYPE_1__*,char const*,...) ;
+ int writer_print_string (int *,char const*,int ,int ) ;
 
 __attribute__((used)) static void writer_print_integers(WriterContext *wctx, const char *name,
                                   uint8_t *data, int size, const char *format,
@@ -39,7 +39,7 @@ __attribute__((used)) static void writer_print_integers(WriterContext *wctx, con
         av_bprintf(&bp, "%08x: ", offset);
         l = FFMIN(size, columns);
         for (i = 0; i < l; i++) {
-            if      (bytes == 1) av_bprintf(&bp, format, *data);
+            if (bytes == 1) av_bprintf(&bp, format, *data);
             else if (bytes == 2) av_bprintf(&bp, format, AV_RN16(data));
             else if (bytes == 4) av_bprintf(&bp, format, AV_RN32(data));
             data += bytes;
@@ -49,5 +49,5 @@ __attribute__((used)) static void writer_print_integers(WriterContext *wctx, con
         offset += offset_add;
     }
     writer_print_string(wctx, name, bp.str, 0);
-    av_bprint_finalize(&bp, NULL);
+    av_bprint_finalize(&bp, ((void*)0));
 }

@@ -1,61 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  Configindex ; 
- int EOF ; 
- int /*<<< orphan*/  Passfile ; 
- char* Progname ; 
- int /*<<< orphan*/  USAGE () ; 
- int /*<<< orphan*/  atoi (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  doit (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  optarg ; 
- scalar_t__ optind ; 
+ int Configindex ;
+ int EOF ;
+ int Passfile ;
+ char* Progname ;
+ int USAGE () ;
+ int atoi (int ) ;
+ int doit (char*) ;
+ int exit (int) ;
+ int getopt (int,char**,char*) ;
+ int optarg ;
+ scalar_t__ optind ;
 
 int main(int argc, char **argv)
 {
-	int c;
+ int c;
 
-	Progname = *argv;
+ Progname = *argv;
 
-	/* Parse option arguments. */
 
-	while ((c = getopt(argc, argv, "n:p:")) != EOF) {
-		switch (c) {
 
-		case 'n':
-			Configindex = atoi(optarg);
-			break;
+ while ((c = getopt(argc, argv, "n:p:")) != EOF) {
+  switch (c) {
 
-		case 'p':
-			Passfile = optarg;
-			break;
+  case 'n':
+   Configindex = atoi(optarg);
+   break;
 
-		default:
-			USAGE();
-			exit(1);
-		}
-	}
-	argc -= optind;
-	argv += optind;
+  case 'p':
+   Passfile = optarg;
+   break;
 
-	if (argc != 1) {
-		USAGE();
-		exit(1);
-	}
-	doit(argv[0]);
+  default:
+   USAGE();
+   exit(1);
+  }
+ }
+ argc -= optind;
+ argv += optind;
 
-	return 0;
+ if (argc != 1) {
+  USAGE();
+  exit(1);
+ }
+ doit(argv[0]);
+
+ return 0;
 }

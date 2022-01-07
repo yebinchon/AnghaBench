@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char gchar ;
-typedef  int /*<<< orphan*/  GhbValue ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRUE ; 
- void* ghb_dict_get (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/ * ghb_dict_get_value (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  ghb_dict_set (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- scalar_t__ ghb_value_cmp (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ghb_value_dup (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * prefsDict ; 
- int /*<<< orphan*/  prefs_modified ; 
+
+
+
+typedef char gchar ;
+typedef int GhbValue ;
+
+
+ int TRUE ;
+ void* ghb_dict_get (int *,char const*) ;
+ int * ghb_dict_get_value (int *,char const*) ;
+ int ghb_dict_set (int *,char const*,int ) ;
+ scalar_t__ ghb_value_cmp (int const*,int const*) ;
+ int ghb_value_dup (int const*) ;
+ int * prefsDict ;
+ int prefs_modified ;
 
 void
 ghb_pref_set(GhbValue *settings, const gchar *key)
@@ -29,11 +29,11 @@ ghb_pref_set(GhbValue *settings, const gchar *key)
     const GhbValue *value, *value2;
 
     value = ghb_dict_get_value(settings, key);
-    if (value != NULL)
+    if (value != ((void*)0))
     {
         GhbValue *dict;
         dict = ghb_dict_get(prefsDict, "Preferences");
-        if (dict == NULL) return;
+        if (dict == ((void*)0)) return;
         value2 = ghb_dict_get(dict, key);
         if (ghb_value_cmp(value, value2) != 0)
         {

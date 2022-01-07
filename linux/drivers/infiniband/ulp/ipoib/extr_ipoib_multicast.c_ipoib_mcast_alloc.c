@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {int dummy; } ;
-struct ipoib_mcast {int backoff; int /*<<< orphan*/  pkt_queue; int /*<<< orphan*/  neigh_list; int /*<<< orphan*/  list; void* delay_until; void* created; struct net_device* dev; } ;
+struct ipoib_mcast {int backoff; int pkt_queue; int neigh_list; int list; void* delay_until; void* created; struct net_device* dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_ATOMIC ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- void* jiffies ; 
- struct ipoib_mcast* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  skb_queue_head_init (int /*<<< orphan*/ *) ; 
+
+ int GFP_ATOMIC ;
+ int GFP_KERNEL ;
+ int INIT_LIST_HEAD (int *) ;
+ void* jiffies ;
+ struct ipoib_mcast* kzalloc (int,int ) ;
+ int skb_queue_head_init (int *) ;
 
 __attribute__((used)) static struct ipoib_mcast *ipoib_mcast_alloc(struct net_device *dev,
-					     int can_sleep)
+          int can_sleep)
 {
-	struct ipoib_mcast *mcast;
+ struct ipoib_mcast *mcast;
 
-	mcast = kzalloc(sizeof(*mcast), can_sleep ? GFP_KERNEL : GFP_ATOMIC);
-	if (!mcast)
-		return NULL;
+ mcast = kzalloc(sizeof(*mcast), can_sleep ? GFP_KERNEL : GFP_ATOMIC);
+ if (!mcast)
+  return ((void*)0);
 
-	mcast->dev = dev;
-	mcast->created = jiffies;
-	mcast->delay_until = jiffies;
-	mcast->backoff = 1;
+ mcast->dev = dev;
+ mcast->created = jiffies;
+ mcast->delay_until = jiffies;
+ mcast->backoff = 1;
 
-	INIT_LIST_HEAD(&mcast->list);
-	INIT_LIST_HEAD(&mcast->neigh_list);
-	skb_queue_head_init(&mcast->pkt_queue);
+ INIT_LIST_HEAD(&mcast->list);
+ INIT_LIST_HEAD(&mcast->neigh_list);
+ skb_queue_head_init(&mcast->pkt_queue);
 
-	return mcast;
+ return mcast;
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sst_data {int /*<<< orphan*/ * soc_card; } ;
-struct snd_soc_component {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- struct sst_data* dev_get_drvdata (int /*<<< orphan*/ ) ; 
+
+
+
+struct sst_data {int * soc_card; } ;
+struct snd_soc_component {int dev; } ;
+
+
+ struct sst_data* dev_get_drvdata (int ) ;
 
 __attribute__((used)) static void sst_soc_remove(struct snd_soc_component *component)
 {
-	struct sst_data *drv = dev_get_drvdata(component->dev);
+ struct sst_data *drv = dev_get_drvdata(component->dev);
 
-	drv->soc_card = NULL;
+ drv->soc_card = ((void*)0);
 }

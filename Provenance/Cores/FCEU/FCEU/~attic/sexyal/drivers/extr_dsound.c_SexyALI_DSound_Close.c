@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {struct TYPE_5__* private; scalar_t__ ppDS; scalar_t__ ppbuf; scalar_t__ ppbufsec; } ;
-typedef  TYPE_1__ SexyAL_device ;
-typedef  TYPE_1__ DSFobby ;
+typedef TYPE_1__ SexyAL_device ;
+typedef TYPE_1__ DSFobby ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IDirectSoundBuffer_Release (scalar_t__) ; 
- int /*<<< orphan*/  IDirectSoundBuffer_Stop (scalar_t__) ; 
- int /*<<< orphan*/  IDirectSound_Release (scalar_t__) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  timeEndPeriod (int) ; 
+
+ int IDirectSoundBuffer_Release (scalar_t__) ;
+ int IDirectSoundBuffer_Stop (scalar_t__) ;
+ int IDirectSound_Release (scalar_t__) ;
+ int free (TYPE_1__*) ;
+ int timeEndPeriod (int) ;
 
 int SexyALI_DSound_Close(SexyAL_device *device)
 {

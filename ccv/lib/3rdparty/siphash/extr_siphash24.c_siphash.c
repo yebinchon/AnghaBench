@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SIPROUND ; 
- int /*<<< orphan*/  TRACE ; 
- int /*<<< orphan*/  U64TO8_LE (int /*<<< orphan*/ *,int) ; 
- int U8TO64_LE (int /*<<< orphan*/  const*) ; 
- int cROUNDS ; 
- int dROUNDS ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+
+
+ int SIPROUND ;
+ int TRACE ;
+ int U64TO8_LE (int *,int) ;
+ int U8TO64_LE (int const*) ;
+ int cROUNDS ;
+ int dROUNDS ;
 
 int siphash(uint8_t *out, const uint8_t *in, uint64_t inlen, const uint8_t *k) {
-  /* "somepseudorandomlygeneratedbytes" */
+
   uint64_t v0 = 0x736f6d6570736575ULL;
   uint64_t v1 = 0x646f72616e646f6dULL;
   uint64_t v2 = 0x6c7967656e657261ULL;
@@ -40,9 +40,9 @@ int siphash(uint8_t *out, const uint8_t *in, uint64_t inlen, const uint8_t *k) {
   v1 ^= k1;
   v0 ^= k0;
 
-#ifdef DOUBLE
-  v1 ^= 0xee;
-#endif
+
+
+
 
   for (; in != end; in += 8) {
     m = U8TO64_LE(in);
@@ -83,11 +83,11 @@ int siphash(uint8_t *out, const uint8_t *in, uint64_t inlen, const uint8_t *k) {
 
   v0 ^= b;
 
-#ifndef DOUBLE
+
   v2 ^= 0xff;
-#else
-  v2 ^= 0xee;
-#endif
+
+
+
 
   TRACE;
   for (i = 0; i < dROUNDS; ++i)
@@ -95,17 +95,5 @@ int siphash(uint8_t *out, const uint8_t *in, uint64_t inlen, const uint8_t *k) {
 
   b = v0 ^ v1 ^ v2 ^ v3;
   U64TO8_LE(out, b);
-
-#ifdef DOUBLE
-  v1 ^= 0xdd;
-
-  TRACE;
-  for (i = 0; i < dROUNDS; ++i)
-    SIPROUND;
-
-  b = v0 ^ v1 ^ v2 ^ v3;
-  U64TO8_LE(out + 8, b);
-#endif
-
   return 0;
 }

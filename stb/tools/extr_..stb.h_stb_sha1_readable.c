@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
+ int assert (int) ;
 
 void stb_sha1_readable(char display[27], unsigned char sha[20])
 {
@@ -22,7 +14,7 @@ void stb_sha1_readable(char display[27], unsigned char sha[20])
    int i=0,o=0;
    while (o < 26) {
       int v;
-      // expand the accumulator
+
       if (num_bits < 6) {
          assert(i != 20);
          acc += sha[i++] << num_bits;
@@ -34,5 +26,5 @@ void stb_sha1_readable(char display[27], unsigned char sha[20])
       num_bits -= 6;
    }
    assert(num_bits == 20*8 - 26*6);
-   display[o++] = encoding[acc];   
+   display[o++] = encoding[acc];
 }

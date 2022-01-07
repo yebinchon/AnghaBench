@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  INT_MAX ; 
- int /*<<< orphan*/  new_unrhdr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pts_pool ; 
+ int INT_MAX ;
+ int new_unrhdr (int ,int ,int *) ;
+ int pts_pool ;
 
 __attribute__((used)) static void
 pts_init(void *unused)
 {
 
-	pts_pool = new_unrhdr(0, INT_MAX, NULL);
+ pts_pool = new_unrhdr(0, INT_MAX, ((void*)0));
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_diff_tree_processor_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  void* svn_boolean_t ;
-struct edit_baton_t {int /*<<< orphan*/ * pool; void* cancel_baton; int /*<<< orphan*/  cancel_func; void* diff_pristine; void* local_before_remote; void* ignore_ancestry; int /*<<< orphan*/  depth; int /*<<< orphan*/  const* processor; void* target; void* anchor_abspath; int /*<<< orphan*/ * db; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- struct edit_baton_t* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- void* apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  svn_dirent_is_absolute (char const*) ; 
+
+
+
+typedef int svn_wc__db_t ;
+typedef int svn_error_t ;
+typedef int svn_diff_tree_processor_t ;
+typedef int svn_depth_t ;
+typedef int svn_cancel_func_t ;
+typedef void* svn_boolean_t ;
+struct edit_baton_t {int * pool; void* cancel_baton; int cancel_func; void* diff_pristine; void* local_before_remote; void* ignore_ancestry; int depth; int const* processor; void* target; void* anchor_abspath; int * db; } ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR_ASSERT (int ) ;
+ int * SVN_NO_ERROR ;
+ struct edit_baton_t* apr_pcalloc (int *,int) ;
+ void* apr_pstrdup (int *,char const*) ;
+ int svn_dirent_is_absolute (char const*) ;
 
 __attribute__((used)) static svn_error_t *
 make_edit_baton(struct edit_baton_t **edit_baton,

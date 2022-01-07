@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct msgbuf {int dummy; } ;
-typedef  int /*<<< orphan*/  caddr_t ;
-struct TYPE_2__ {int sc_state; int sc_pgid; int /*<<< orphan*/  sc_selp; struct msgbuf* sc_mbp; } ;
+typedef int caddr_t ;
+struct TYPE_2__ {int sc_state; int sc_pgid; int sc_selp; struct msgbuf* sc_mbp; } ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int LOG_ASYNC ; 
- int /*<<< orphan*/  LOG_LOCK () ; 
- int LOG_RDWAIT ; 
- int /*<<< orphan*/  LOG_UNLOCK () ; 
- int /*<<< orphan*/  SIGIO ; 
- int /*<<< orphan*/  gsignal (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_open ; 
- TYPE_1__ logsoftc ; 
- scalar_t__ oslog_is_safe () ; 
- int /*<<< orphan*/  proc_signal (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  selwakeup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wakeup (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ FALSE ;
+ int LOG_ASYNC ;
+ int LOG_LOCK () ;
+ int LOG_RDWAIT ;
+ int LOG_UNLOCK () ;
+ int SIGIO ;
+ int gsignal (int,int ) ;
+ int log_open ;
+ TYPE_1__ logsoftc ;
+ scalar_t__ oslog_is_safe () ;
+ int proc_signal (int,int ) ;
+ int selwakeup (int *) ;
+ int wakeup (int ) ;
 
 void
 logwakeup(struct msgbuf *mbp)
 {
-	/* cf. r24974766 & r25201228*/
-	if (oslog_is_safe() == FALSE) {
-		return;
-	}
 
-	LOG_LOCK();	
-	if (!log_open) {
-		LOG_UNLOCK();
-		return;
-	}
-	if (NULL == mbp)
-		mbp = logsoftc.sc_mbp;
-	if (mbp != logsoftc.sc_mbp)
-		goto out;
-	selwakeup(&logsoftc.sc_selp);
-	if (logsoftc.sc_state & LOG_ASYNC) {
-		int pgid = logsoftc.sc_pgid;
-		LOG_UNLOCK();
-		if (pgid < 0)
-			gsignal(-pgid, SIGIO); 
-		else 
-			proc_signal(pgid, SIGIO);
-		LOG_LOCK();
-	}
-	if (logsoftc.sc_state & LOG_RDWAIT) {
-		wakeup((caddr_t)mbp);
-		logsoftc.sc_state &= ~LOG_RDWAIT;
-	}
+ if (oslog_is_safe() == FALSE) {
+  return;
+ }
+
+ LOG_LOCK();
+ if (!log_open) {
+  LOG_UNLOCK();
+  return;
+ }
+ if (((void*)0) == mbp)
+  mbp = logsoftc.sc_mbp;
+ if (mbp != logsoftc.sc_mbp)
+  goto out;
+ selwakeup(&logsoftc.sc_selp);
+ if (logsoftc.sc_state & LOG_ASYNC) {
+  int pgid = logsoftc.sc_pgid;
+  LOG_UNLOCK();
+  if (pgid < 0)
+   gsignal(-pgid, SIGIO);
+  else
+   proc_signal(pgid, SIGIO);
+  LOG_LOCK();
+ }
+ if (logsoftc.sc_state & LOG_RDWAIT) {
+  wakeup((caddr_t)mbp);
+  logsoftc.sc_state &= ~LOG_RDWAIT;
+ }
 out:
-	LOG_UNLOCK();
+ LOG_UNLOCK();
 }

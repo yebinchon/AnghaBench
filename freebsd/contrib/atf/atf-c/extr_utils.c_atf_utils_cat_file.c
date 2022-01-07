@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t ssize_t ;
-typedef  int /*<<< orphan*/  buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATF_REQUIRE (int) ; 
- int /*<<< orphan*/  ATF_REQUIRE_MSG (int,char*,char const*) ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int open (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,char const*) ; 
- size_t read (int const,char*,int) ; 
- char* strchr (char*,char) ; 
+
+
+
+typedef size_t ssize_t ;
+typedef int buffer ;
+
+
+ int ATF_REQUIRE (int) ;
+ int ATF_REQUIRE_MSG (int,char*,char const*) ;
+ int O_RDONLY ;
+ int open (char const*,int ) ;
+ int printf (char*,char const*) ;
+ size_t read (int const,char*,int) ;
+ char* strchr (char*,char) ;
 
 void
 atf_utils_cat_file(const char *name, const char *prefix)
@@ -30,7 +30,7 @@ atf_utils_cat_file(const char *name, const char *prefix)
 
     char buffer[1024];
     ssize_t count;
-    bool continued = false;
+    bool continued = 0;
     while ((count = read(fd, buffer, sizeof(buffer) - 1)) > 0) {
         buffer[count] = '\0';
 
@@ -39,7 +39,7 @@ atf_utils_cat_file(const char *name, const char *prefix)
 
         char *iter = buffer;
         char *end;
-        while ((end = strchr(iter, '\n')) != NULL) {
+        while ((end = strchr(iter, '\n')) != ((void*)0)) {
             *end = '\0';
             printf("%s\n", iter);
 
@@ -47,11 +47,11 @@ atf_utils_cat_file(const char *name, const char *prefix)
             if (iter != buffer + count)
                 printf("%s", prefix);
             else
-                continued = false;
+                continued = 0;
         }
         if (iter < buffer + count) {
             printf("%s", iter);
-            continued = true;
+            continued = 1;
         }
     }
     ATF_REQUIRE(count == 0);

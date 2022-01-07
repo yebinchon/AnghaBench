@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mg_connection {int dummy; } ;
-typedef  int /*<<< orphan*/  chunk_size ;
+typedef int chunk_size ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mg_send (struct mg_connection*,char const*,int) ; 
- int snprintf (char*,int,char*,unsigned long) ; 
+
+ int mg_send (struct mg_connection*,char const*,int) ;
+ int snprintf (char*,int,char*,unsigned long) ;
 
 void mg_send_http_chunk(struct mg_connection *nc, const char *buf, size_t len) {
   char chunk_size[50];

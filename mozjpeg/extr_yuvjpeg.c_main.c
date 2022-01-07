@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct jpeg_error_mgr {int dummy; } ;
-struct jpeg_compress_struct {int image_width; int image_height; int input_components; int next_scanline; void* optimize_coding; TYPE_1__* comp_info; void* raw_data_in; int /*<<< orphan*/  in_color_space; int /*<<< orphan*/  err; } ;
+struct jpeg_compress_struct {int image_width; int image_height; int input_components; int next_scanline; void* optimize_coding; TYPE_1__* comp_info; void* raw_data_in; int in_color_space; int err; } ;
 struct TYPE_2__ {int h_samp_factor; int v_samp_factor; int dc_tbl_no; int ac_tbl_no; int quant_tbl_no; } ;
-typedef  unsigned char* JSAMPROW ;
-typedef  unsigned char JSAMPLE ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef unsigned char* JSAMPROW ;
+typedef unsigned char JSAMPLE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JCS_YCbCr ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- void* TRUE ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  extend_edge (unsigned char*,int,int,unsigned char*,int,int,int,int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int fread (unsigned char*,size_t,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t ftell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jpeg_create_compress (struct jpeg_compress_struct*) ; 
- int /*<<< orphan*/  jpeg_destroy_compress (struct jpeg_compress_struct*) ; 
- int /*<<< orphan*/  jpeg_finish_compress (struct jpeg_compress_struct*) ; 
- int /*<<< orphan*/  jpeg_set_defaults (struct jpeg_compress_struct*) ; 
- int /*<<< orphan*/  jpeg_set_quality (struct jpeg_compress_struct*,long,void*) ; 
- int /*<<< orphan*/  jpeg_start_compress (struct jpeg_compress_struct*,void*) ; 
- int /*<<< orphan*/  jpeg_std_error (struct jpeg_error_mgr*) ; 
- int /*<<< orphan*/  jpeg_stdio_dest (struct jpeg_compress_struct*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jpeg_write_raw_data (struct jpeg_compress_struct*,unsigned char***,int) ; 
- unsigned char* malloc (int) ; 
- int sscanf (char*,char*,int*,int*) ; 
- int /*<<< orphan*/  stderr ; 
- long strtol (char*,int /*<<< orphan*/ *,int) ; 
+
+ int JCS_YCbCr ;
+ int SEEK_END ;
+ int SEEK_SET ;
+ void* TRUE ;
+ scalar_t__ errno ;
+ int extend_edge (unsigned char*,int,int,unsigned char*,int,int,int,int) ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int ,char*) ;
+ int fread (unsigned char*,size_t,int,int *) ;
+ int free (unsigned char*) ;
+ int fseek (int *,int ,int ) ;
+ size_t ftell (int *) ;
+ int jpeg_create_compress (struct jpeg_compress_struct*) ;
+ int jpeg_destroy_compress (struct jpeg_compress_struct*) ;
+ int jpeg_finish_compress (struct jpeg_compress_struct*) ;
+ int jpeg_set_defaults (struct jpeg_compress_struct*) ;
+ int jpeg_set_quality (struct jpeg_compress_struct*,long,void*) ;
+ int jpeg_start_compress (struct jpeg_compress_struct*,void*) ;
+ int jpeg_std_error (struct jpeg_error_mgr*) ;
+ int jpeg_stdio_dest (struct jpeg_compress_struct*,int *) ;
+ int jpeg_write_raw_data (struct jpeg_compress_struct*,unsigned char***,int) ;
+ unsigned char* malloc (int) ;
+ int sscanf (char*,char*,int*,int*) ;
+ int stderr ;
+ long strtol (char*,int *,int) ;
 
 int main(int argc, char *argv[]) {
   long quality;
@@ -81,7 +81,7 @@ int main(int argc, char *argv[]) {
 
   errno = 0;
 
-  quality = strtol(argv[1], NULL, 10);
+  quality = strtol(argv[1], ((void*)0), 10);
   if (errno != 0 || quality < 0 || quality > 100) {
     fprintf(stderr, "Invalid JPEG quality value!\n");
     return 1;
@@ -100,7 +100,7 @@ int main(int argc, char *argv[]) {
   chroma_width = (luma_width + 1) >> 1;
   chroma_height = (luma_height + 1) >> 1;
 
-  /* Will check these for validity when opening via 'fopen'. */
+
   yuv_path = argv[3];
   jpg_path = argv[4];
 
@@ -114,7 +114,7 @@ int main(int argc, char *argv[]) {
   yuv_size = ftell(yuv_fd);
   fseek(yuv_fd, 0, SEEK_SET);
 
-  /* Check that the file size matches 4:2:0 yuv. */
+
   if (yuv_size !=
    (size_t)luma_width*luma_height + 2*chroma_width*chroma_height) {
     fclose(yuv_fd);
@@ -155,7 +155,7 @@ int main(int argc, char *argv[]) {
   jpeg_create_compress(&cinfo);
 
   jpg_fd = fopen(jpg_path, "wb");
-  if (!jpg_fd) {    
+  if (!jpg_fd) {
     free(jpg_buffer);
     fprintf(stderr, "Invalid path to JPEG file!\n");
     return 1;

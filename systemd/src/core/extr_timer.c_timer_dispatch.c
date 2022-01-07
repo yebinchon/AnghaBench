@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  sd_event_source ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int sd_event_source ;
 struct TYPE_6__ {scalar_t__ state; } ;
-typedef  TYPE_1__ Timer ;
+typedef TYPE_1__ Timer ;
 
-/* Variables and functions */
- TYPE_1__* TIMER (void*) ; 
- scalar_t__ TIMER_WAITING ; 
- int /*<<< orphan*/  UNIT (TYPE_1__*) ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  log_unit_debug (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  timer_enter_running (TYPE_1__*) ; 
+
+ TYPE_1__* TIMER (void*) ;
+ scalar_t__ TIMER_WAITING ;
+ int UNIT (TYPE_1__*) ;
+ int assert (TYPE_1__*) ;
+ int log_unit_debug (int ,char*) ;
+ int timer_enter_running (TYPE_1__*) ;
 
 __attribute__((used)) static int timer_dispatch(sd_event_source *s, uint64_t usec, void *userdata) {
         Timer *t = TIMER(userdata);

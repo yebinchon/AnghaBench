@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {unsigned int samples; int /*<<< orphan*/ * samplers; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {unsigned int samples; int * samplers; } ;
 struct wined3d_gl_info {int quirks; TYPE_1__ limits; scalar_t__* supported; } ;
 struct wined3d_format_texture_info {int flags; } ;
 struct wined3d_format {scalar_t__ glInternal; scalar_t__ glGammaInternal; int* flags; scalar_t__ id; unsigned int multisample_types; } ;
 struct wined3d_adapter {int dummy; } ;
 struct TYPE_4__ {scalar_t__ offscreen_rendering_mode; } ;
-typedef  unsigned int GLint ;
-typedef  int /*<<< orphan*/  GLenum ;
-typedef  scalar_t__ BOOL ;
+typedef unsigned int GLint ;
+typedef int GLenum ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- size_t ARB_DEPTH_TEXTURE ; 
- size_t ARB_INTERNALFORMAT_QUERY ; 
- size_t ARB_INTERNALFORMAT_QUERY2 ; 
- size_t ARB_TEXTURE_MULTISAMPLE ; 
- int CHAR_BIT ; 
- size_t EXT_TEXTURE_SRGB ; 
- size_t EXT_TEXTURE_SRGB_DECODE ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_FILTER ; 
- int /*<<< orphan*/  GL_NUM_SAMPLE_COUNTS ; 
- int /*<<< orphan*/  GL_RENDERBUFFER ; 
- int /*<<< orphan*/  GL_SAMPLES ; 
- int /*<<< orphan*/  GL_SRGB_READ ; 
- int /*<<< orphan*/  GL_SRGB_WRITE ; 
- int /*<<< orphan*/  GL_TEXTURE_2D_MULTISAMPLE ; 
- int /*<<< orphan*/  GL_VERTEX_TEXTURE ; 
- int MAX_MULTISAMPLE_TYPES ; 
- scalar_t__ ORM_FBO ; 
- int WINED3DFMT_FLAG_DEPTH ; 
- int WINED3DFMT_FLAG_FILTERING ; 
- int WINED3DFMT_FLAG_RENDERTARGET ; 
- int WINED3DFMT_FLAG_SRGB_READ ; 
- int WINED3DFMT_FLAG_SRGB_WRITE ; 
- int WINED3DFMT_FLAG_STENCIL ; 
- int WINED3DFMT_FLAG_TEXTURE ; 
- int WINED3DFMT_FLAG_VTF ; 
- scalar_t__ WINED3DFMT_R32G32B32A32_FLOAT ; 
- scalar_t__ WINED3DFMT_R32_FLOAT ; 
- size_t WINED3D_GL_RES_TYPE_RB ; 
- size_t WINED3D_GL_RES_TYPE_TEX_1D ; 
- size_t WINED3D_GL_RES_TYPE_TEX_2D ; 
- size_t WINED3D_GL_RES_TYPE_TEX_3D ; 
- size_t WINED3D_GL_RES_TYPE_TEX_CUBE ; 
- size_t WINED3D_GL_RES_TYPE_TEX_RECT ; 
- int WINED3D_QUIRK_LIMITED_TEX_FILTERING ; 
- size_t WINED3D_SHADER_TYPE_VERTEX ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- int /*<<< orphan*/  format_clear_flag (struct wined3d_format*,int) ; 
- int /*<<< orphan*/  format_set_flag (struct wined3d_format*,int) ; 
- int /*<<< orphan*/  glGetInternalformativ (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,unsigned int,unsigned int*) ; 
- unsigned int min (unsigned int,int) ; 
- int /*<<< orphan*/  query_format_flag (struct wined3d_gl_info*,struct wined3d_format*,scalar_t__,int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  query_view_class (struct wined3d_format*) ; 
- unsigned int wined3d_log2i (unsigned int) ; 
- TYPE_2__ wined3d_settings ; 
+
+ size_t ARB_DEPTH_TEXTURE ;
+ size_t ARB_INTERNALFORMAT_QUERY ;
+ size_t ARB_INTERNALFORMAT_QUERY2 ;
+ size_t ARB_TEXTURE_MULTISAMPLE ;
+ int CHAR_BIT ;
+ size_t EXT_TEXTURE_SRGB ;
+ size_t EXT_TEXTURE_SRGB_DECODE ;
+ int GL_EXTCALL (int ) ;
+ int GL_FILTER ;
+ int GL_NUM_SAMPLE_COUNTS ;
+ int GL_RENDERBUFFER ;
+ int GL_SAMPLES ;
+ int GL_SRGB_READ ;
+ int GL_SRGB_WRITE ;
+ int GL_TEXTURE_2D_MULTISAMPLE ;
+ int GL_VERTEX_TEXTURE ;
+ int MAX_MULTISAMPLE_TYPES ;
+ scalar_t__ ORM_FBO ;
+ int WINED3DFMT_FLAG_DEPTH ;
+ int WINED3DFMT_FLAG_FILTERING ;
+ int WINED3DFMT_FLAG_RENDERTARGET ;
+ int WINED3DFMT_FLAG_SRGB_READ ;
+ int WINED3DFMT_FLAG_SRGB_WRITE ;
+ int WINED3DFMT_FLAG_STENCIL ;
+ int WINED3DFMT_FLAG_TEXTURE ;
+ int WINED3DFMT_FLAG_VTF ;
+ scalar_t__ WINED3DFMT_R32G32B32A32_FLOAT ;
+ scalar_t__ WINED3DFMT_R32_FLOAT ;
+ size_t WINED3D_GL_RES_TYPE_RB ;
+ size_t WINED3D_GL_RES_TYPE_TEX_1D ;
+ size_t WINED3D_GL_RES_TYPE_TEX_2D ;
+ size_t WINED3D_GL_RES_TYPE_TEX_3D ;
+ size_t WINED3D_GL_RES_TYPE_TEX_CUBE ;
+ size_t WINED3D_GL_RES_TYPE_TEX_RECT ;
+ int WINED3D_QUIRK_LIMITED_TEX_FILTERING ;
+ size_t WINED3D_SHADER_TYPE_VERTEX ;
+ int checkGLcall (char*) ;
+ int format_clear_flag (struct wined3d_format*,int) ;
+ int format_set_flag (struct wined3d_format*,int) ;
+ int glGetInternalformativ (int ,scalar_t__,int ,unsigned int,unsigned int*) ;
+ unsigned int min (unsigned int,int) ;
+ int query_format_flag (struct wined3d_gl_info*,struct wined3d_format*,scalar_t__,int ,int,char*) ;
+ int query_view_class (struct wined3d_format*) ;
+ unsigned int wined3d_log2i (unsigned int) ;
+ TYPE_2__ wined3d_settings ;
 
 __attribute__((used)) static void query_internal_format(struct wined3d_adapter *adapter,
         struct wined3d_format *format, const struct wined3d_format_texture_info *texture_info,
@@ -114,7 +114,7 @@ __attribute__((used)) static void query_internal_format(struct wined3d_adapter *
 
         if (srgb_format || format->glGammaInternal != format->glInternal)
         {
-            /* Filter sRGB capabilities if EXT_texture_sRGB is not supported. */
+
             if (!gl_info->supported[EXT_TEXTURE_SRGB])
             {
                 format->glGammaInternal = format->glInternal;
@@ -165,16 +165,16 @@ __attribute__((used)) static void query_internal_format(struct wined3d_adapter *
         }
         else
         {
-#ifdef __REACTOS__
-            if (gl_info->limits.samples) {
-#endif
+
+
+
                 max_log2 = wined3d_log2i(min(gl_info->limits.samples,
                         sizeof(format->multisample_types) * CHAR_BIT));
                 for (i = 1; i <= max_log2; ++i)
                     format->multisample_types |= 1u << ((1u << i) - 1);
-#ifdef __REACTOS__
-            }
-#endif
+
+
+
         }
     }
 }

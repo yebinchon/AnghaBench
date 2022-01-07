@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/ * PVOID ;
-typedef  int /*<<< orphan*/  PCRegKeySecurity ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRegKeySecurity_fnAddRef (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_NOINTERFACE ; 
- int /*<<< orphan*/  IEffectivePermission ; 
- int /*<<< orphan*/  IID_IEffectivePermission ; 
- int /*<<< orphan*/  IID_IRegKeySecurity ; 
- int /*<<< orphan*/  IID_IRegKeySecurity2 ; 
- int /*<<< orphan*/  IID_ISecurityObjectTypeInfo ; 
- int /*<<< orphan*/  ISecurityInformation ; 
- int /*<<< orphan*/  ISecurityInformation2 ; 
- int /*<<< orphan*/  ISecurityObjectTypeInfo ; 
- scalar_t__ IsEqualGUID (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- scalar_t__ impl_to_interface (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int REFIID ;
+typedef int * PVOID ;
+typedef int PCRegKeySecurity ;
+typedef int HRESULT ;
+
+
+ int CRegKeySecurity_fnAddRef (int ) ;
+ int E_NOINTERFACE ;
+ int IEffectivePermission ;
+ int IID_IEffectivePermission ;
+ int IID_IRegKeySecurity ;
+ int IID_IRegKeySecurity2 ;
+ int IID_ISecurityObjectTypeInfo ;
+ int ISecurityInformation ;
+ int ISecurityInformation2 ;
+ int ISecurityObjectTypeInfo ;
+ scalar_t__ IsEqualGUID (int ,int *) ;
+ int S_OK ;
+ scalar_t__ impl_to_interface (int ,int ) ;
 
 __attribute__((used)) static __inline HRESULT
 CRegKeySecurity_fnQueryInterface(PCRegKeySecurity obj,
                                  REFIID iid,
                                  PVOID *pvObject)
 {
-    PVOID pvObj = NULL;
+    PVOID pvObj = ((void*)0);
 
     if (IsEqualGUID(iid,
                     &IID_IRegKeySecurity))
@@ -43,14 +43,6 @@ CRegKeySecurity_fnQueryInterface(PCRegKeySecurity obj,
         pvObj = (PVOID)impl_to_interface(obj,
                                          ISecurityInformation);
     }
-#if REGEDIT_IMPLEMENT_ISECURITYINFORMATION2
-    else if (IsEqualGUID(iid,
-                         &IID_IRegKeySecurity2))
-    {
-        pvObj = (PVOID)impl_to_interface(obj,
-                                         ISecurityInformation2);
-    }
-#endif
     else if (IsEqualGUID(iid,
                          &IID_IEffectivePermission))
     {
@@ -64,7 +56,7 @@ CRegKeySecurity_fnQueryInterface(PCRegKeySecurity obj,
                                          ISecurityObjectTypeInfo);
     }
 
-    if (pvObj == NULL)
+    if (pvObj == ((void*)0))
     {
         return E_NOINTERFACE;
     }

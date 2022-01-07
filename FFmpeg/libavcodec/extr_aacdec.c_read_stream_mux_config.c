@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  avctx; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int avctx; } ;
 struct LATMContext {int audio_mux_version_A; int frame_length_type; int frame_length; TYPE_1__ aac_ctx; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int AVERROR_PATCHWELCOME ; 
- int /*<<< orphan*/  avpriv_request_sample (int /*<<< orphan*/ ,char*) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits_left (int /*<<< orphan*/ *) ; 
- int latm_decode_audio_specific_config (struct LATMContext*,int /*<<< orphan*/ *,int) ; 
- int latm_get_value (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip_bits (int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AVERROR_PATCHWELCOME ;
+ int avpriv_request_sample (int ,char*) ;
+ int get_bits (int *,int) ;
+ int get_bits_left (int *) ;
+ int latm_decode_audio_specific_config (struct LATMContext*,int *,int) ;
+ int latm_get_value (int *) ;
+ int skip_bits (int *,int) ;
 
 __attribute__((used)) static int read_stream_mux_config(struct LATMContext *latmctx,
                                   GetBitContext *gb)
@@ -37,25 +37,25 @@ __attribute__((used)) static int read_stream_mux_config(struct LATMContext *latm
     if (!latmctx->audio_mux_version_A) {
 
         if (audio_mux_version)
-            latm_get_value(gb);                 // taraFullness
+            latm_get_value(gb);
 
-        skip_bits(gb, 1);                       // allStreamSameTimeFraming
-        skip_bits(gb, 6);                       // numSubFrames
-        // numPrograms
-        if (get_bits(gb, 4)) {                  // numPrograms
+        skip_bits(gb, 1);
+        skip_bits(gb, 6);
+
+        if (get_bits(gb, 4)) {
             avpriv_request_sample(latmctx->aac_ctx.avctx, "Multiple programs");
             return AVERROR_PATCHWELCOME;
         }
 
-        // for each program (which there is only one in DVB)
 
-        // for each layer (which there is only one in DVB)
-        if (get_bits(gb, 3)) {                   // numLayer
+
+
+        if (get_bits(gb, 3)) {
             avpriv_request_sample(latmctx->aac_ctx.avctx, "Multiple layers");
             return AVERROR_PATCHWELCOME;
         }
 
-        // for all but first stream: use_same_config = get_bits(gb, 1);
+
         if (!audio_mux_version) {
             if ((ret = latm_decode_audio_specific_config(latmctx, gb, 0)) < 0)
                 return ret;
@@ -68,7 +68,7 @@ __attribute__((used)) static int read_stream_mux_config(struct LATMContext *latm
         latmctx->frame_length_type = get_bits(gb, 3);
         switch (latmctx->frame_length_type) {
         case 0:
-            skip_bits(gb, 8);       // latmBufferFullness
+            skip_bits(gb, 8);
             break;
         case 1:
             latmctx->frame_length = get_bits(gb, 9);
@@ -76,17 +76,17 @@ __attribute__((used)) static int read_stream_mux_config(struct LATMContext *latm
         case 3:
         case 4:
         case 5:
-            skip_bits(gb, 6);       // CELP frame length table index
+            skip_bits(gb, 6);
             break;
         case 6:
         case 7:
-            skip_bits(gb, 1);       // HVXC frame length table index
+            skip_bits(gb, 1);
             break;
         }
 
-        if (get_bits(gb, 1)) {                  // other data
+        if (get_bits(gb, 1)) {
             if (audio_mux_version) {
-                latm_get_value(gb);             // other_data_bits
+                latm_get_value(gb);
             } else {
                 int esc;
                 do {
@@ -98,8 +98,8 @@ __attribute__((used)) static int read_stream_mux_config(struct LATMContext *latm
             }
         }
 
-        if (get_bits(gb, 1))                     // crc present
-            skip_bits(gb, 8);                    // config_crc
+        if (get_bits(gb, 1))
+            skip_bits(gb, 8);
     }
 
     return 0;

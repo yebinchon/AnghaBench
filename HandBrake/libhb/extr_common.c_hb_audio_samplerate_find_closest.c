@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_4__ {int rate; } ;
-typedef  TYPE_1__ hb_rate_t ;
+typedef TYPE_1__ hb_rate_t ;
 
-/* Variables and functions */
- TYPE_1__* hb_audio_samplerate_get_next_for_codec (TYPE_1__ const*,int /*<<< orphan*/ ) ; 
+
+ TYPE_1__* hb_audio_samplerate_get_next_for_codec (TYPE_1__ const*,int ) ;
 
 int hb_audio_samplerate_find_closest(int samplerate, uint32_t codec)
 {
     const hb_rate_t * rate, * prev, * next;
 
-    rate = prev = next = hb_audio_samplerate_get_next_for_codec(NULL, codec);
+    rate = prev = next = hb_audio_samplerate_get_next_for_codec(((void*)0), codec);
 
-    if (rate == NULL)
+    if (rate == ((void*)0))
     {
-        // This codec doesn't support any samplerate
+
         return 0;
     }
 
-    while (rate != NULL && next->rate < samplerate)
+    while (rate != ((void*)0) && next->rate < samplerate)
     {
         rate = hb_audio_samplerate_get_next_for_codec(rate, codec);
-        if (rate != NULL)
+        if (rate != ((void*)0))
         {
             prev = next;
             next = rate;

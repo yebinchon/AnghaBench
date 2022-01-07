@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct fimc_context {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXYNOS_CIICBSA (int) ; 
- int /*<<< orphan*/  EXYNOS_CIICRSA (int) ; 
- int /*<<< orphan*/  EXYNOS_CIIYSA (int) ; 
- int /*<<< orphan*/  EXYNOS_CIOCBSA (int) ; 
- int /*<<< orphan*/  EXYNOS_CIOCRSA (int) ; 
- int /*<<< orphan*/  EXYNOS_CIOYSA (int) ; 
- int FIMC_MAX_DST ; 
- int FIMC_MAX_SRC ; 
- int /*<<< orphan*/  fimc_write (struct fimc_context*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int EXYNOS_CIICBSA (int) ;
+ int EXYNOS_CIICRSA (int) ;
+ int EXYNOS_CIIYSA (int) ;
+ int EXYNOS_CIOCBSA (int) ;
+ int EXYNOS_CIOCRSA (int) ;
+ int EXYNOS_CIOYSA (int) ;
+ int FIMC_MAX_DST ;
+ int FIMC_MAX_SRC ;
+ int fimc_write (struct fimc_context*,int ,int ) ;
 
 __attribute__((used)) static void fimc_clear_addr(struct fimc_context *ctx)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < FIMC_MAX_SRC; i++) {
-		fimc_write(ctx, 0, EXYNOS_CIIYSA(i));
-		fimc_write(ctx, 0, EXYNOS_CIICBSA(i));
-		fimc_write(ctx, 0, EXYNOS_CIICRSA(i));
-	}
+ for (i = 0; i < FIMC_MAX_SRC; i++) {
+  fimc_write(ctx, 0, EXYNOS_CIIYSA(i));
+  fimc_write(ctx, 0, EXYNOS_CIICBSA(i));
+  fimc_write(ctx, 0, EXYNOS_CIICRSA(i));
+ }
 
-	for (i = 0; i < FIMC_MAX_DST; i++) {
-		fimc_write(ctx, 0, EXYNOS_CIOYSA(i));
-		fimc_write(ctx, 0, EXYNOS_CIOCBSA(i));
-		fimc_write(ctx, 0, EXYNOS_CIOCRSA(i));
-	}
+ for (i = 0; i < FIMC_MAX_DST; i++) {
+  fimc_write(ctx, 0, EXYNOS_CIOYSA(i));
+  fimc_write(ctx, 0, EXYNOS_CIOCBSA(i));
+  fimc_write(ctx, 0, EXYNOS_CIOCRSA(i));
+ }
 }

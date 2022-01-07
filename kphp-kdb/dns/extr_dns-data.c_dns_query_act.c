@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  flags; } ;
-struct TYPE_8__ {int /*<<< orphan*/  record_start; int /*<<< orphan*/  wptr; } ;
-struct TYPE_9__ {int truncated; TYPE_1__ header; TYPE_2__ Out; int /*<<< orphan*/ * q; } ;
-typedef  TYPE_3__ dns_response_t ;
-typedef  int /*<<< orphan*/  dns_query_t ;
 
-/* Variables and functions */
- int dns_gen_response (TYPE_3__*,unsigned char*,int) ; 
- int /*<<< orphan*/  dns_header_flag_tc ; 
- int dns_store_header (TYPE_3__*) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int flags; } ;
+struct TYPE_8__ {int record_start; int wptr; } ;
+struct TYPE_9__ {int truncated; TYPE_1__ header; TYPE_2__ Out; int * q; } ;
+typedef TYPE_3__ dns_response_t ;
+typedef int dns_query_t ;
+
+
+ int dns_gen_response (TYPE_3__*,unsigned char*,int) ;
+ int dns_header_flag_tc ;
+ int dns_store_header (TYPE_3__*) ;
 
 int dns_query_act (dns_query_t *q, dns_response_t *r, unsigned char *out, int olen) {
   r->truncated = 0;

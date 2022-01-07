@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
 
-/* Variables and functions */
- int const AV_PIX_FMT_NONE ; 
- int const AV_PIX_FMT_VAAPI ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+typedef int AVCodecContext ;
+
+
+ int const AV_PIX_FMT_NONE ;
+ int const AV_PIX_FMT_VAAPI ;
+ int fprintf (int ,char*) ;
+ int stderr ;
 
 __attribute__((used)) static enum AVPixelFormat get_vaapi_format(AVCodecContext *ctx,
                                            const enum AVPixelFormat *pix_fmts)

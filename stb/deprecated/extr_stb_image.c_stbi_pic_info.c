@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stbi ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int stbi ;
 struct TYPE_2__ {int size; int channel; void* type; } ;
-typedef  TYPE_1__ pic_packet_t ;
-typedef  int /*<<< orphan*/  packets ;
+typedef TYPE_1__ pic_packet_t ;
+typedef int packets ;
 
-/* Variables and functions */
- scalar_t__ at_eof (int /*<<< orphan*/ *) ; 
- int get16 (int /*<<< orphan*/ *) ; 
- int get8 (int /*<<< orphan*/ *) ; 
- void* get8u (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stbi_rewind (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ at_eof (int *) ;
+ int get16 (int *) ;
+ int get8 (int *) ;
+ void* get8u (int *) ;
+ int skip (int *,int) ;
+ int stbi_rewind (int *) ;
 
 __attribute__((used)) static int stbi_pic_info(stbi *s, int *x, int *y, int *comp)
 {
@@ -33,7 +33,7 @@ __attribute__((used)) static int stbi_pic_info(stbi *s, int *x, int *y, int *com
 
    *x = get16(s);
    *y = get16(s);
-   if (at_eof(s))  return 0;
+   if (at_eof(s)) return 0;
    if ( (*x) != 0 && (1 << 28) / (*x) < (*y)) {
        stbi_rewind( s );
        return 0;
@@ -49,8 +49,8 @@ __attribute__((used)) static int stbi_pic_info(stbi *s, int *x, int *y, int *com
 
       packet = &packets[num_packets++];
       chained = get8(s);
-      packet->size    = get8u(s);
-      packet->type    = get8u(s);
+      packet->size = get8u(s);
+      packet->type = get8u(s);
       packet->channel = get8u(s);
       act_comp |= packet->channel;
 

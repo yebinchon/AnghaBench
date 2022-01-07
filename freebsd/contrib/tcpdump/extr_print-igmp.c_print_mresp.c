@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_long ;
-typedef  int u_int ;
-typedef  int /*<<< orphan*/  u_char ;
-struct tr_query {int /*<<< orphan*/  tr_rttlqid; int /*<<< orphan*/  tr_raddr; int /*<<< orphan*/  tr_dst; int /*<<< orphan*/  tr_src; } ;
-typedef  int /*<<< orphan*/  netdissect_options ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXTRACT_32BITS (int /*<<< orphan*/ *) ; 
- scalar_t__ IN_CLASSD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ND_PRINT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ND_TCHECK (struct tr_query const) ; 
- scalar_t__ TR_GETQID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TR_GETTTL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ipaddr_string (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tstr ; 
+
+
+
+typedef int u_long ;
+typedef int u_int ;
+typedef int u_char ;
+struct tr_query {int tr_rttlqid; int tr_raddr; int tr_dst; int tr_src; } ;
+typedef int netdissect_options ;
+
+
+ int EXTRACT_32BITS (int *) ;
+ scalar_t__ IN_CLASSD (int ) ;
+ int ND_PRINT (int *) ;
+ int ND_TCHECK (struct tr_query const) ;
+ scalar_t__ TR_GETQID (int ) ;
+ int TR_GETTTL (int ) ;
+ int ipaddr_string (int *,int *) ;
+ int tstr ;
 
 __attribute__((used)) static void
 print_mresp(netdissect_options *ndo,
@@ -34,8 +34,8 @@ print_mresp(netdissect_options *ndo,
 
     ND_TCHECK(*tr);
     if (len < 8 + sizeof (struct tr_query)) {
-	ND_PRINT((ndo, " [invalid len %d]", len));
-	return;
+ ND_PRINT((ndo, " [invalid len %d]", len));
+ return;
     }
     ND_PRINT((ndo, "mresp %lu: %s to %s reply-to %s",
         (u_long)TR_GETQID(EXTRACT_32BITS(&tr->tr_rttlqid)),

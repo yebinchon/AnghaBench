@@ -1,69 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_3__ ;
-typedef  struct TYPE_24__   TYPE_2__ ;
-typedef  struct TYPE_23__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_25__ TYPE_3__ ;
+typedef struct TYPE_24__ TYPE_2__ ;
+typedef struct TYPE_23__ TYPE_1__ ;
+
+
 struct TYPE_23__ {unsigned int ptr_tfsoff; } ;
 struct TYPE_24__ {TYPE_1__ array; } ;
-struct TYPE_25__ {unsigned int typestring_offset; int /*<<< orphan*/  name; TYPE_2__ details; } ;
-typedef  TYPE_3__ type_t ;
-typedef  int /*<<< orphan*/  expr_list_t ;
-typedef  enum type_context { ____Placeholder_type_context } type_context ;
-typedef  int /*<<< orphan*/  attr_list_t ;
-typedef  int /*<<< orphan*/  FILE ;
+struct TYPE_25__ {unsigned int typestring_offset; int name; TYPE_2__ details; } ;
+typedef TYPE_3__ type_t ;
+typedef int expr_list_t ;
+typedef enum type_context { ____Placeholder_type_context } type_context ;
+typedef int attr_list_t ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATTR_RANGE ; 
- int FC_RP ; 
- int /*<<< orphan*/  TDT_ALL_TYPES ; 
-#define  TGT_ARRAY 140 
-#define  TGT_BASIC 139 
-#define  TGT_CTXT_HANDLE 138 
-#define  TGT_CTXT_HANDLE_POINTER 137 
-#define  TGT_ENUM 136 
-#define  TGT_IFACE_POINTER 135 
-#define  TGT_INVALID 134 
-#define  TGT_POINTER 133 
-#define  TGT_RANGE 132 
-#define  TGT_STRING 131 
-#define  TGT_STRUCT 130 
-#define  TGT_UNION 129 
-#define  TGT_USER_TYPE 128 
- int TYPE_CONTEXT_CONTAINER ; 
- int TYPE_CONTEXT_CONTAINER_NO_POINTERS ; 
- int TYPE_CONTEXT_PARAM ; 
- int TYPE_CONTEXT_TOPLEVELPARAM ; 
- int /*<<< orphan*/  error (char*,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/ * get_aliaschain_attrp (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * get_attrp (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int get_pointer_fc (TYPE_3__*,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  is_conformant_array (TYPE_3__*) ; 
- int /*<<< orphan*/  is_string_type (int /*<<< orphan*/  const*,TYPE_3__*) ; 
- int /*<<< orphan*/  print_file (int /*<<< orphan*/ *,int,char*,short,...) ; 
- int /*<<< orphan*/  string_of_type (int) ; 
- int /*<<< orphan*/  type_array_is_decl_as_ptr (TYPE_3__*) ; 
- TYPE_3__* type_pointer_get_ref (TYPE_3__*) ; 
- int typegen_detect_type (TYPE_3__*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_tfsoff (TYPE_3__*,unsigned int,int /*<<< orphan*/ *) ; 
- unsigned int write_array_tfs (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,TYPE_3__*,char const*,unsigned int*) ; 
- unsigned int write_contexthandle_tfs (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,TYPE_3__*,int,unsigned int*) ; 
- unsigned int write_ip_tfs (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,TYPE_3__*,unsigned int*) ; 
- unsigned int write_pointer_tfs (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,TYPE_3__*,unsigned int,int,unsigned int*) ; 
- unsigned int write_range_tfs (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,TYPE_3__*,int /*<<< orphan*/ *,unsigned int*) ; 
- unsigned int write_string_tfs (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,TYPE_3__*,int,char const*,unsigned int*) ; 
- unsigned int write_struct_tfs (int /*<<< orphan*/ *,TYPE_3__*,char const*,unsigned int*) ; 
- unsigned int write_union_tfs (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,TYPE_3__*,unsigned int*) ; 
- unsigned int write_user_tfs (int /*<<< orphan*/ *,TYPE_3__*,unsigned int*) ; 
+
+ int ATTR_RANGE ;
+ int FC_RP ;
+ int TDT_ALL_TYPES ;
+ int TYPE_CONTEXT_CONTAINER ;
+ int TYPE_CONTEXT_CONTAINER_NO_POINTERS ;
+ int TYPE_CONTEXT_PARAM ;
+ int TYPE_CONTEXT_TOPLEVELPARAM ;
+ int error (char*,int ,char const*) ;
+ int * get_aliaschain_attrp (TYPE_3__*,int ) ;
+ int * get_attrp (int const*,int ) ;
+ int get_pointer_fc (TYPE_3__*,int const*,int) ;
+ int is_conformant_array (TYPE_3__*) ;
+ int is_string_type (int const*,TYPE_3__*) ;
+ int print_file (int *,int,char*,short,...) ;
+ int string_of_type (int) ;
+ int type_array_is_decl_as_ptr (TYPE_3__*) ;
+ TYPE_3__* type_pointer_get_ref (TYPE_3__*) ;
+ int typegen_detect_type (TYPE_3__*,int const*,int ) ;
+ int update_tfsoff (TYPE_3__*,unsigned int,int *) ;
+ unsigned int write_array_tfs (int *,int const*,TYPE_3__*,char const*,unsigned int*) ;
+ unsigned int write_contexthandle_tfs (int *,int const*,TYPE_3__*,int,unsigned int*) ;
+ unsigned int write_ip_tfs (int *,int const*,TYPE_3__*,unsigned int*) ;
+ unsigned int write_pointer_tfs (int *,int const*,TYPE_3__*,unsigned int,int,unsigned int*) ;
+ unsigned int write_range_tfs (int *,int const*,TYPE_3__*,int *,unsigned int*) ;
+ unsigned int write_string_tfs (int *,int const*,TYPE_3__*,int,char const*,unsigned int*) ;
+ unsigned int write_struct_tfs (int *,TYPE_3__*,char const*,unsigned int*) ;
+ unsigned int write_union_tfs (int *,int const*,TYPE_3__*,unsigned int*) ;
+ unsigned int write_user_tfs (int *,TYPE_3__*,unsigned int*) ;
 
 __attribute__((used)) static unsigned int write_type_tfs(FILE *file, int indent,
                                    const attr_list_t *attrs, type_t *type,
@@ -75,18 +62,18 @@ __attribute__((used)) static unsigned int write_type_tfs(FILE *file, int indent,
 
     switch (typegen_detect_type(type, attrs, TDT_ALL_TYPES))
     {
-    case TGT_CTXT_HANDLE:
-    case TGT_CTXT_HANDLE_POINTER:
+    case 138:
+    case 137:
         return write_contexthandle_tfs(file, attrs, type,
                                        context == TYPE_CONTEXT_TOPLEVELPARAM, typeformat_offset);
-    case TGT_USER_TYPE:
+    case 128:
         return write_user_tfs(file, type, typeformat_offset);
-    case TGT_STRING:
+    case 131:
         return write_string_tfs(file, attrs, type, context, name, typeformat_offset);
-    case TGT_ARRAY:
+    case 140:
     {
         unsigned int off;
-        /* conformant and pointer arrays are handled specially */
+
         if ((context != TYPE_CONTEXT_CONTAINER &&
              context != TYPE_CONTEXT_CONTAINER_NO_POINTERS) ||
             !is_conformant_array(type) || type_array_is_decl_as_ptr(type))
@@ -116,24 +103,24 @@ __attribute__((used)) static unsigned int write_type_tfs(FILE *file, int indent,
         }
         return off;
     }
-    case TGT_STRUCT:
+    case 130:
         return write_struct_tfs(file, type, name, typeformat_offset);
-    case TGT_UNION:
+    case 129:
         return write_union_tfs(file, attrs, type, typeformat_offset);
-    case TGT_ENUM:
-    case TGT_BASIC:
-        /* nothing to do */
+    case 136:
+    case 139:
+
         return 0;
-    case TGT_RANGE:
+    case 132:
     {
         expr_list_t *range_list = get_attrp(attrs, ATTR_RANGE);
         if (!range_list)
             range_list = get_aliaschain_attrp(type, ATTR_RANGE);
         return write_range_tfs(file, attrs, type, range_list, typeformat_offset);
     }
-    case TGT_IFACE_POINTER:
+    case 135:
         return write_ip_tfs(file, attrs, type, typeformat_offset);
-    case TGT_POINTER:
+    case 133:
     {
         enum type_context ref_context;
         type_t *ref = type_pointer_get_ref(type);
@@ -162,7 +149,7 @@ __attribute__((used)) static unsigned int write_type_tfs(FILE *file, int indent,
             return 0;
         return write_pointer_tfs(file, attrs, type, offset, context, typeformat_offset);
     }
-    case TGT_INVALID:
+    case 134:
         break;
     }
     error("invalid type %s for var %s\n", type->name, name);

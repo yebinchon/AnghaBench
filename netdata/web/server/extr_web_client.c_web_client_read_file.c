@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ rlen; TYPE_2__* data; } ;
-struct web_client {scalar_t__ ifd; scalar_t__ ofd; int /*<<< orphan*/  id; TYPE_1__ response; } ;
-typedef  scalar_t__ ssize_t ;
+struct web_client {scalar_t__ ifd; scalar_t__ ofd; int id; TYPE_1__ response; } ;
+typedef scalar_t__ ssize_t ;
 struct TYPE_4__ {scalar_t__ size; scalar_t__ len; char* buffer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_WEB_CLIENT ; 
- int /*<<< orphan*/  D_WEB_DATA ; 
- int /*<<< orphan*/  WEB_CLIENT_IS_DEAD (struct web_client*) ; 
- scalar_t__ WEB_SERVER_MODE_STATIC_THREADED ; 
- int /*<<< orphan*/  buffer_need_bytes (TYPE_2__*,scalar_t__) ; 
- int /*<<< orphan*/  close (scalar_t__) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,...) ; 
- scalar_t__ likely (int) ; 
- scalar_t__ read (scalar_t__,char*,size_t) ; 
- scalar_t__ unlikely (int) ; 
- int /*<<< orphan*/  web_client_disable_wait_receive (struct web_client*) ; 
- int /*<<< orphan*/  web_client_enable_wait_send (struct web_client*) ; 
- scalar_t__ web_server_mode ; 
+
+ int D_WEB_CLIENT ;
+ int D_WEB_DATA ;
+ int WEB_CLIENT_IS_DEAD (struct web_client*) ;
+ scalar_t__ WEB_SERVER_MODE_STATIC_THREADED ;
+ int buffer_need_bytes (TYPE_2__*,scalar_t__) ;
+ int close (scalar_t__) ;
+ int debug (int ,char*,int ,...) ;
+ scalar_t__ likely (int) ;
+ scalar_t__ read (scalar_t__,char*,size_t) ;
+ scalar_t__ unlikely (int) ;
+ int web_client_disable_wait_receive (struct web_client*) ;
+ int web_client_enable_wait_send (struct web_client*) ;
+ scalar_t__ web_server_mode ;
 
 ssize_t web_client_read_file(struct web_client *w)
 {
@@ -60,12 +60,12 @@ ssize_t web_client_read_file(struct web_client *w)
     else if(likely(bytes == 0)) {
         debug(D_WEB_CLIENT, "%llu: Out of input file data.", w->id);
 
-        // if we cannot read, it means we have an error on input.
-        // if however, we are copying a file from ifd to ofd, we should not return an error.
-        // in this case, the error should be generated when the file has been sent to the client.
 
-        // we are copying data from ifd to ofd
-        // let it finish copying...
+
+
+
+
+
         web_client_disable_wait_receive(w);
 
         debug(D_WEB_CLIENT, "%llu: Read the whole file.", w->id);

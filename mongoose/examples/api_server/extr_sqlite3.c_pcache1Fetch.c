@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
 struct TYPE_15__ {scalar_t__ pExtra; } ;
-typedef  TYPE_1__ sqlite3_pcache_page ;
-typedef  int /*<<< orphan*/  sqlite3_pcache ;
+typedef TYPE_1__ sqlite3_pcache_page ;
+typedef int sqlite3_pcache ;
 struct TYPE_18__ {scalar_t__ bPurgeable; int nMin; unsigned int nHash; unsigned int nPage; unsigned int nRecyclable; int n90pct; int nMax; int szPage; int szExtra; unsigned int iMaxKey; TYPE_2__** apHash; TYPE_3__* pGroup; } ;
 struct TYPE_17__ {unsigned int mxPinned; unsigned int nMaxPage; unsigned int nMinPage; scalar_t__ nCurrentPage; TYPE_2__* pLruTail; } ;
 struct TYPE_16__ {unsigned int iKey; TYPE_1__ page; scalar_t__ pLruNext; scalar_t__ pLruPrev; TYPE_4__* pCache; struct TYPE_16__* pNext; } ;
-typedef  TYPE_2__ PgHdr1 ;
-typedef  TYPE_3__ PGroup ;
-typedef  TYPE_4__ PCache1 ;
+typedef TYPE_2__ PgHdr1 ;
+typedef TYPE_3__ PGroup ;
+typedef TYPE_4__ PCache1 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- TYPE_2__* pcache1AllocPage (TYPE_4__*) ; 
- int /*<<< orphan*/  pcache1EnterMutex (TYPE_3__*) ; 
- int /*<<< orphan*/  pcache1FreePage (TYPE_2__*) ; 
- int /*<<< orphan*/  pcache1LeaveMutex (TYPE_3__*) ; 
- int /*<<< orphan*/  pcache1PinPage (TYPE_2__*) ; 
- int /*<<< orphan*/  pcache1RemoveFromHash (TYPE_2__*) ; 
- scalar_t__ pcache1ResizeHash (TYPE_4__*) ; 
- scalar_t__ pcache1UnderMemoryPressure (TYPE_4__*) ; 
- int /*<<< orphan*/  sqlite3BeginBenignMalloc () ; 
- int /*<<< orphan*/  sqlite3EndBenignMalloc () ; 
+
+ int assert (int) ;
+ TYPE_2__* pcache1AllocPage (TYPE_4__*) ;
+ int pcache1EnterMutex (TYPE_3__*) ;
+ int pcache1FreePage (TYPE_2__*) ;
+ int pcache1LeaveMutex (TYPE_3__*) ;
+ int pcache1PinPage (TYPE_2__*) ;
+ int pcache1RemoveFromHash (TYPE_2__*) ;
+ scalar_t__ pcache1ResizeHash (TYPE_4__*) ;
+ scalar_t__ pcache1UnderMemoryPressure (TYPE_4__*) ;
+ int sqlite3BeginBenignMalloc () ;
+ int sqlite3EndBenignMalloc () ;
 
 __attribute__((used)) static sqlite3_pcache_page *pcache1Fetch(
-  sqlite3_pcache *p, 
-  unsigned int iKey, 
+  sqlite3_pcache *p,
+  unsigned int iKey,
   int createFlag
 ){
   unsigned int nPinned;
@@ -53,30 +53,17 @@ __attribute__((used)) static sqlite3_pcache_page *pcache1Fetch(
   assert( pCache->nMin==0 || pCache->bPurgeable );
   pcache1EnterMutex(pGroup = pCache->pGroup);
 
-  /* Step 1: Search the hash table for an existing entry. */
+
   if( pCache->nHash>0 ){
     unsigned int h = iKey % pCache->nHash;
     for(pPage=pCache->apHash[h]; pPage&&pPage->iKey!=iKey; pPage=pPage->pNext);
   }
 
-  /* Step 2: Abort if no existing page is found and createFlag is 0 */
+
   if( pPage || createFlag==0 ){
     pcache1PinPage(pPage);
     goto fetch_out;
   }
-
-  /* The pGroup local variable will normally be initialized by the
-  ** pcache1EnterMutex() macro above.  But if SQLITE_MUTEX_OMIT is defined,
-  ** then pcache1EnterMutex() is a no-op, so we have to initialize the
-  ** local variable here.  Delaying the initialization of pGroup is an
-  ** optimization:  The common case is to exit the module before reaching
-  ** this point.
-  */
-#ifdef SQLITE_MUTEX_OMIT
-  pGroup = pCache->pGroup;
-#endif
-
-  /* Step 3: Abort if createFlag is 1 but the cache is nearly full */
   assert( pCache->nPage >= pCache->nRecyclable );
   nPinned = pCache->nPage - pCache->nRecyclable;
   assert( pGroup->mxPinned == pGroup->nMaxPage + 10 - pGroup->nMinPage );
@@ -93,7 +80,7 @@ __attribute__((used)) static sqlite3_pcache_page *pcache1Fetch(
     goto fetch_out;
   }
 
-  /* Step 4. Try to recycle a page. */
+
   if( pCache->bPurgeable && pGroup->pLruTail && (
          (pCache->nPage+1>=pCache->nMax)
       || pGroup->nCurrentPage>=pGroup->nMaxPage
@@ -105,8 +92,8 @@ __attribute__((used)) static sqlite3_pcache_page *pcache1Fetch(
     pcache1PinPage(pPage);
     pOther = pPage->pCache;
 
-    /* We want to verify that szPage and szExtra are the same for pOther
-    ** and pCache.  Assert that we can verify this by comparing sums. */
+
+
     assert( (pCache->szPage & (pCache->szPage-1))==0 && pCache->szPage>=512 );
     assert( pCache->szExtra<512 );
     assert( (pOther->szPage & (pOther->szPage-1))==0 && pOther->szPage>=512 );
@@ -120,9 +107,9 @@ __attribute__((used)) static sqlite3_pcache_page *pcache1Fetch(
     }
   }
 
-  /* Step 5. If a usable page buffer has still not been found, 
-  ** attempt to allocate a new one. 
-  */
+
+
+
   if( !pPage ){
     if( createFlag==1 ) sqlite3BeginBenignMalloc();
     pPage = pcache1AllocPage(pCache);

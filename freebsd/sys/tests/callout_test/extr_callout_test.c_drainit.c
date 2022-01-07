@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct callout_run {int /*<<< orphan*/  lock; int /*<<< orphan*/  drain_calls; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mtx_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mtx_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct callout_run {int lock; int drain_calls; } ;
+
+
+ int mtx_lock (int *) ;
+ int mtx_unlock (int *) ;
 
 __attribute__((used)) static void
 drainit(void *arg)
 {
-	struct callout_run *rn;
+ struct callout_run *rn;
 
-	rn = (struct callout_run *)arg;
-	mtx_lock(&rn->lock);
-	rn->drain_calls++;
-	mtx_unlock(&rn->lock);
+ rn = (struct callout_run *)arg;
+ mtx_lock(&rn->lock);
+ rn->drain_calls++;
+ mtx_unlock(&rn->lock);
 }

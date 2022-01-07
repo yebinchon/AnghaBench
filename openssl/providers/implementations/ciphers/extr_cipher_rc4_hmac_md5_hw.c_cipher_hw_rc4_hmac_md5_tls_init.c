@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  enc; } ;
-struct TYPE_4__ {unsigned int payload_length; int /*<<< orphan*/  md; int /*<<< orphan*/  head; } ;
-typedef  TYPE_1__ PROV_RC4_HMAC_MD5_CTX ;
-typedef  TYPE_2__ PROV_CIPHER_CTX ;
 
-/* Variables and functions */
- size_t EVP_AEAD_TLS1_AAD_LEN ; 
- unsigned int MD5_DIGEST_LENGTH ; 
- int /*<<< orphan*/  MD5_Update (int /*<<< orphan*/ *,unsigned char*,size_t) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int enc; } ;
+struct TYPE_4__ {unsigned int payload_length; int md; int head; } ;
+typedef TYPE_1__ PROV_RC4_HMAC_MD5_CTX ;
+typedef TYPE_2__ PROV_CIPHER_CTX ;
+
+
+ size_t EVP_AEAD_TLS1_AAD_LEN ;
+ unsigned int MD5_DIGEST_LENGTH ;
+ int MD5_Update (int *,unsigned char*,size_t) ;
 
 __attribute__((used)) static int cipher_hw_rc4_hmac_md5_tls_init(PROV_CIPHER_CTX *bctx,
                                            unsigned char *aad, size_t aad_len)

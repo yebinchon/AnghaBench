@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u32 ;
+
+
+
+
+typedef scalar_t__ u32 ;
 struct platform_device {int dummy; } ;
-struct dsi_data {int /*<<< orphan*/  errors_lock; scalar_t__ errors; } ;
+struct dsi_data {int errors_lock; scalar_t__ errors; } ;
 
-/* Variables and functions */
- struct dsi_data* dsi_get_dsidrv_data (struct platform_device*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ struct dsi_data* dsi_get_dsidrv_data (struct platform_device*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static u32 dsi_get_errors(struct platform_device *dsidev)
 {
-	struct dsi_data *dsi = dsi_get_dsidrv_data(dsidev);
-	unsigned long flags;
-	u32 e;
-	spin_lock_irqsave(&dsi->errors_lock, flags);
-	e = dsi->errors;
-	dsi->errors = 0;
-	spin_unlock_irqrestore(&dsi->errors_lock, flags);
-	return e;
+ struct dsi_data *dsi = dsi_get_dsidrv_data(dsidev);
+ unsigned long flags;
+ u32 e;
+ spin_lock_irqsave(&dsi->errors_lock, flags);
+ e = dsi->errors;
+ dsi->errors = 0;
+ spin_unlock_irqrestore(&dsi->errors_lock, flags);
+ return e;
 }

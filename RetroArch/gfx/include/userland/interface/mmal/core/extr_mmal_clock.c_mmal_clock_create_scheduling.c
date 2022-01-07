@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int VCOS_UNSIGNED ;
-typedef  int /*<<< orphan*/  VCOS_STATUS_T ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int VCOS_UNSIGNED ;
+typedef int VCOS_STATUS_T ;
 struct TYPE_8__ {void* list_pending; void* list_free; TYPE_1__* pool; } ;
-struct TYPE_9__ {TYPE_2__ request; int /*<<< orphan*/  timer; int /*<<< orphan*/  event; int /*<<< orphan*/  scheduling; int /*<<< orphan*/  thread; } ;
-struct TYPE_7__ {int /*<<< orphan*/  link; } ;
-typedef  int /*<<< orphan*/  MMAL_STATUS_T ;
-typedef  TYPE_3__ MMAL_CLOCK_PRIVATE_T ;
-typedef  scalar_t__ MMAL_BOOL_T ;
+struct TYPE_9__ {TYPE_2__ request; int timer; int event; int scheduling; int thread; } ;
+struct TYPE_7__ {int link; } ;
+typedef int MMAL_STATUS_T ;
+typedef TYPE_3__ MMAL_CLOCK_PRIVATE_T ;
+typedef scalar_t__ MMAL_BOOL_T ;
 
-/* Variables and functions */
- unsigned int CLOCK_REQUEST_SLOTS ; 
- int /*<<< orphan*/  LOG_ERROR (char*,...) ; 
- int /*<<< orphan*/  MMAL_ENOSPC ; 
- scalar_t__ MMAL_FALSE ; 
- int /*<<< orphan*/  MMAL_SUCCESS ; 
- int /*<<< orphan*/  MMAL_TRUE ; 
- int VCOS_AFFINITY_MASK ; 
- int /*<<< orphan*/  VCOS_EINVAL ; 
- int /*<<< orphan*/  VCOS_SUCCESS ; 
- scalar_t__ mmal_clock_timer_create (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  mmal_clock_timer_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mmal_clock_worker_thread ; 
- void* mmal_list_create () ; 
- int /*<<< orphan*/  mmal_list_destroy (void*) ; 
- int /*<<< orphan*/  mmal_list_push_back (void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_semaphore_create (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_semaphore_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_thread_create (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int vcos_thread_get_priority (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_thread_set_priority (int /*<<< orphan*/ *,int) ; 
+
+ unsigned int CLOCK_REQUEST_SLOTS ;
+ int LOG_ERROR (char*,...) ;
+ int MMAL_ENOSPC ;
+ scalar_t__ MMAL_FALSE ;
+ int MMAL_SUCCESS ;
+ int MMAL_TRUE ;
+ int VCOS_AFFINITY_MASK ;
+ int VCOS_EINVAL ;
+ int VCOS_SUCCESS ;
+ scalar_t__ mmal_clock_timer_create (int *,TYPE_3__*) ;
+ int mmal_clock_timer_destroy (int *) ;
+ int mmal_clock_worker_thread ;
+ void* mmal_list_create () ;
+ int mmal_list_destroy (void*) ;
+ int mmal_list_push_back (void*,int *) ;
+ int vcos_semaphore_create (int *,char*,int ) ;
+ int vcos_semaphore_delete (int *) ;
+ int vcos_thread_create (int *,char*,int *,int ,TYPE_3__*) ;
+ int vcos_thread_get_priority (int *) ;
+ int vcos_thread_set_priority (int *,int) ;
 
 __attribute__((used)) static MMAL_STATUS_T mmal_clock_create_scheduling(MMAL_CLOCK_PRIVATE_T *private)
 {
@@ -73,11 +73,11 @@ __attribute__((used)) static MMAL_STATUS_T mmal_clock_create_scheduling(MMAL_CLO
       goto error;
    }
 
-   /* Populate the list of available request slots */
+
    for (i = 0; i < CLOCK_REQUEST_SLOTS; ++i)
       mmal_list_push_back(private->request.list_free, &private->request.pool[i].link);
 
-   if (vcos_thread_create(&private->thread, "mmal-clock thread", NULL,
+   if (vcos_thread_create(&private->thread, "mmal-clock thread", ((void*)0),
                           mmal_clock_worker_thread, private) != VCOS_SUCCESS)
    {
       LOG_ERROR("failed to create worker thread");

@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  set_type_range_case () ; 
- int /*<<< orphan*/  set_type_str () ; 
- int /*<<< orphan*/  show_type_command (char*,int) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  type ; 
- int /*<<< orphan*/  type_check ; 
- int /*<<< orphan*/  type_check_off ; 
- int /*<<< orphan*/  type_check_on ; 
- int /*<<< orphan*/  type_check_warn ; 
- int /*<<< orphan*/  type_mode ; 
- int /*<<< orphan*/  type_mode_auto ; 
- int /*<<< orphan*/  type_mode_manual ; 
- int /*<<< orphan*/  warning (char*,int /*<<< orphan*/ ) ; 
+ int set_type_range_case () ;
+ int set_type_str () ;
+ int show_type_command (char*,int) ;
+ scalar_t__ strcmp (int ,char*) ;
+ int type ;
+ int type_check ;
+ int type_check_off ;
+ int type_check_on ;
+ int type_check_warn ;
+ int type_mode ;
+ int type_mode_auto ;
+ int type_mode_manual ;
+ int warning (char*,int ) ;
 
 __attribute__((used)) static void
 set_type_command (char *ignore, int from_tty)
@@ -48,8 +40,8 @@ set_type_command (char *ignore, int from_tty)
     {
       type_mode = type_mode_auto;
       set_type_range_case ();
-      /* Avoid hitting the set_type_str call below.  We
-         did it in set_type_range_case. */
+
+
       return;
     }
   else
@@ -57,5 +49,5 @@ set_type_command (char *ignore, int from_tty)
       warning ("Unrecognized type check setting: \"%s\"", type);
     }
   set_type_str ();
-  show_type_command ((char *) NULL, from_tty);
+  show_type_command ((char *) ((void*)0), from_tty);
 }

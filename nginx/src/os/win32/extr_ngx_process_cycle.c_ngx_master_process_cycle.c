@@ -1,95 +1,95 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_9__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t u_long ;
-typedef  int /*<<< orphan*/  u_char ;
-typedef  int /*<<< orphan*/  ngx_uint_t ;
-typedef  scalar_t__ ngx_msec_t ;
-typedef  size_t ngx_int_t ;
-typedef  int /*<<< orphan*/  ngx_err_t ;
-struct TYPE_18__ {int /*<<< orphan*/  log; } ;
-typedef  TYPE_1__ ngx_cycle_t ;
+
+
+typedef struct TYPE_19__ TYPE_9__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+typedef size_t u_long ;
+typedef int u_char ;
+typedef int ngx_uint_t ;
+typedef scalar_t__ ngx_msec_t ;
+typedef size_t ngx_int_t ;
+typedef int ngx_err_t ;
+struct TYPE_18__ {int log; } ;
+typedef TYPE_1__ ngx_cycle_t ;
 struct TYPE_19__ {scalar_t__ handle; } ;
-typedef  scalar_t__ HANDLE ;
+typedef scalar_t__ HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CreateEvent (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/ * CreateMutex (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t) ; 
- size_t INFINITE ; 
- int MAXIMUM_WAIT_OBJECTS ; 
- int /*<<< orphan*/  NGX_LOG_ALERT ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_CORE ; 
- int /*<<< orphan*/  NGX_LOG_NOTICE ; 
- scalar_t__ NGX_OK ; 
- int /*<<< orphan*/  NGX_PROCESS_JUST_RESPAWN ; 
- int /*<<< orphan*/  NGX_PROCESS_RESPAWN ; 
- scalar_t__ NGX_PROCESS_WORKER ; 
- scalar_t__ ResetEvent (scalar_t__) ; 
- int /*<<< orphan*/  SetEnvironmentVariable (char*,int /*<<< orphan*/ ) ; 
- size_t WAIT_FAILED ; 
- size_t WAIT_OBJECT_0 ; 
- size_t WAIT_TIMEOUT ; 
- size_t WaitForMultipleObjects (size_t,scalar_t__*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/ * ngx_cache_manager_mutex ; 
- size_t ngx_cache_manager_mutex_name ; 
- int /*<<< orphan*/  ngx_close_listening_sockets (TYPE_1__*) ; 
- int /*<<< orphan*/  ngx_console_init (TYPE_1__*) ; 
- scalar_t__ ngx_create_signal_events (TYPE_1__*) ; 
- scalar_t__ ngx_current_msec ; 
- TYPE_1__* ngx_cycle ; 
- int /*<<< orphan*/  ngx_errno ; 
- TYPE_1__* ngx_init_cycle (TYPE_1__*) ; 
- size_t ngx_last_process ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,size_t) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/ * ngx_master_process_event ; 
- size_t ngx_master_process_event_name ; 
- int /*<<< orphan*/  ngx_master_process_exit (TYPE_1__*) ; 
- scalar_t__ ngx_process ; 
- TYPE_9__* ngx_processes ; 
- int ngx_quit ; 
- scalar_t__ ngx_quit_event ; 
- size_t ngx_quit_event_name ; 
- int /*<<< orphan*/  ngx_quit_worker_processes (TYPE_1__*,int) ; 
- int /*<<< orphan*/  ngx_reap_worker (TYPE_1__*,scalar_t__) ; 
- scalar_t__ ngx_reload_event ; 
- size_t ngx_reload_event_name ; 
- scalar_t__ ngx_reopen_event ; 
- size_t ngx_reopen_event_name ; 
- int /*<<< orphan*/  ngx_reopen_files (TYPE_1__*,int) ; 
- int /*<<< orphan*/  ngx_reopen_worker_processes (TYPE_1__*) ; 
- int /*<<< orphan*/  ngx_sprintf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_start_worker_processes (TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_stop_event ; 
- size_t ngx_stop_event_name ; 
- int ngx_terminate ; 
- int /*<<< orphan*/  ngx_terminate_worker_processes (TYPE_1__*) ; 
- int /*<<< orphan*/  ngx_time_update () ; 
- int /*<<< orphan*/  ngx_unique ; 
- int /*<<< orphan*/  ngx_worker_process_cycle (TYPE_1__*,size_t) ; 
+
+ int * CreateEvent (int *,int,int ,size_t) ;
+ int * CreateMutex (int *,int ,size_t) ;
+ size_t INFINITE ;
+ int MAXIMUM_WAIT_OBJECTS ;
+ int NGX_LOG_ALERT ;
+ int NGX_LOG_DEBUG_CORE ;
+ int NGX_LOG_NOTICE ;
+ scalar_t__ NGX_OK ;
+ int NGX_PROCESS_JUST_RESPAWN ;
+ int NGX_PROCESS_RESPAWN ;
+ scalar_t__ NGX_PROCESS_WORKER ;
+ scalar_t__ ResetEvent (scalar_t__) ;
+ int SetEnvironmentVariable (char*,int ) ;
+ size_t WAIT_FAILED ;
+ size_t WAIT_OBJECT_0 ;
+ size_t WAIT_TIMEOUT ;
+ size_t WaitForMultipleObjects (size_t,scalar_t__*,int ,size_t) ;
+ int exit (int) ;
+ int * ngx_cache_manager_mutex ;
+ size_t ngx_cache_manager_mutex_name ;
+ int ngx_close_listening_sockets (TYPE_1__*) ;
+ int ngx_console_init (TYPE_1__*) ;
+ scalar_t__ ngx_create_signal_events (TYPE_1__*) ;
+ scalar_t__ ngx_current_msec ;
+ TYPE_1__* ngx_cycle ;
+ int ngx_errno ;
+ TYPE_1__* ngx_init_cycle (TYPE_1__*) ;
+ size_t ngx_last_process ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int ngx_log_debug1 (int ,int ,int ,char*,size_t) ;
+ int ngx_log_error (int ,int ,int ,char*,...) ;
+ int * ngx_master_process_event ;
+ size_t ngx_master_process_event_name ;
+ int ngx_master_process_exit (TYPE_1__*) ;
+ scalar_t__ ngx_process ;
+ TYPE_9__* ngx_processes ;
+ int ngx_quit ;
+ scalar_t__ ngx_quit_event ;
+ size_t ngx_quit_event_name ;
+ int ngx_quit_worker_processes (TYPE_1__*,int) ;
+ int ngx_reap_worker (TYPE_1__*,scalar_t__) ;
+ scalar_t__ ngx_reload_event ;
+ size_t ngx_reload_event_name ;
+ scalar_t__ ngx_reopen_event ;
+ size_t ngx_reopen_event_name ;
+ int ngx_reopen_files (TYPE_1__*,int) ;
+ int ngx_reopen_worker_processes (TYPE_1__*) ;
+ int ngx_sprintf (int *,char*,int ) ;
+ scalar_t__ ngx_start_worker_processes (TYPE_1__*,int ) ;
+ scalar_t__ ngx_stop_event ;
+ size_t ngx_stop_event_name ;
+ int ngx_terminate ;
+ int ngx_terminate_worker_processes (TYPE_1__*) ;
+ int ngx_time_update () ;
+ int ngx_unique ;
+ int ngx_worker_process_cycle (TYPE_1__*,size_t) ;
 
 void
 ngx_master_process_cycle(ngx_cycle_t *cycle)
 {
-    u_long      nev, ev, timeout;
-    ngx_err_t   err;
-    ngx_int_t   n;
-    ngx_msec_t  timer;
-    ngx_uint_t  live;
-    HANDLE      events[MAXIMUM_WAIT_OBJECTS];
+    u_long nev, ev, timeout;
+    ngx_err_t err;
+    ngx_int_t n;
+    ngx_msec_t timer;
+    ngx_uint_t live;
+    HANDLE events[MAXIMUM_WAIT_OBJECTS];
 
     ngx_sprintf((u_char *) ngx_master_process_event_name,
                 "ngx_master_%s%Z", ngx_unique);
@@ -105,9 +105,9 @@ ngx_master_process_cycle(ngx_cycle_t *cycle)
 
     SetEnvironmentVariable("ngx_unique", ngx_unique);
 
-    ngx_master_process_event = CreateEvent(NULL, 1, 0,
+    ngx_master_process_event = CreateEvent(((void*)0), 1, 0,
                                            ngx_master_process_event_name);
-    if (ngx_master_process_event == NULL) {
+    if (ngx_master_process_event == ((void*)0)) {
         ngx_log_error(NGX_LOG_ALERT, cycle->log, ngx_errno,
                       "CreateEvent(\"%s\") failed",
                       ngx_master_process_event_name);
@@ -121,9 +121,9 @@ ngx_master_process_cycle(ngx_cycle_t *cycle)
     ngx_sprintf((u_char *) ngx_cache_manager_mutex_name,
                 "ngx_cache_manager_mutex_%s%Z", ngx_unique);
 
-    ngx_cache_manager_mutex = CreateMutex(NULL, 0,
+    ngx_cache_manager_mutex = CreateMutex(((void*)0), 0,
                                           ngx_cache_manager_mutex_name);
-    if (ngx_cache_manager_mutex == NULL) {
+    if (ngx_cache_manager_mutex == ((void*)0)) {
         ngx_log_error(NGX_LOG_ALERT, cycle->log, ngx_errno,
                    "CreateMutex(\"%s\") failed", ngx_cache_manager_mutex_name);
         exit(2);
@@ -222,7 +222,7 @@ ngx_master_process_cycle(ngx_cycle_t *cycle)
             }
 
             cycle = ngx_init_cycle(cycle);
-            if (cycle == NULL) {
+            if (cycle == ((void*)0)) {
                 cycle = (ngx_cycle_t *) ngx_cycle;
                 continue;
             }

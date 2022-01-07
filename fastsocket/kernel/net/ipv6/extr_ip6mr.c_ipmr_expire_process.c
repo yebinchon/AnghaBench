@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ipmr_do_expire_process (unsigned long) ; 
- int /*<<< orphan*/  ipmr_expire_timer ; 
- scalar_t__ jiffies ; 
- int /*<<< orphan*/  mfc_unres_lock ; 
- int /*<<< orphan*/ * mfc_unres_queue ; 
- int /*<<< orphan*/  mod_timer (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  spin_trylock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+ int ipmr_do_expire_process (unsigned long) ;
+ int ipmr_expire_timer ;
+ scalar_t__ jiffies ;
+ int mfc_unres_lock ;
+ int * mfc_unres_queue ;
+ int mod_timer (int *,scalar_t__) ;
+ int spin_trylock (int *) ;
+ int spin_unlock (int *) ;
 
 __attribute__((used)) static void ipmr_expire_process(unsigned long dummy)
 {
-	if (!spin_trylock(&mfc_unres_lock)) {
-		mod_timer(&ipmr_expire_timer, jiffies + 1);
-		return;
-	}
+ if (!spin_trylock(&mfc_unres_lock)) {
+  mod_timer(&ipmr_expire_timer, jiffies + 1);
+  return;
+ }
 
-	if (mfc_unres_queue != NULL)
-		ipmr_do_expire_process(dummy);
+ if (mfc_unres_queue != ((void*)0))
+  ipmr_do_expire_process(dummy);
 
-	spin_unlock(&mfc_unres_lock);
+ spin_unlock(&mfc_unres_lock);
 }

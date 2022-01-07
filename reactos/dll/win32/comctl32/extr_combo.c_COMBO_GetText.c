@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
 struct TYPE_3__ {int wState; scalar_t__ hWndLBox; scalar_t__ hWndEdit; } ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  scalar_t__* LPWSTR ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  TYPE_1__ HEADCOMBO ;
+typedef int LRESULT ;
+typedef scalar_t__* LPWSTR ;
+typedef int LPARAM ;
+typedef int INT ;
+typedef TYPE_1__ HEADCOMBO ;
 
-/* Variables and functions */
- int CBF_EDIT ; 
- int /*<<< orphan*/  LB_ERR ; 
- int /*<<< orphan*/  LB_GETCURSEL ; 
- int /*<<< orphan*/  LB_GETTEXT ; 
- int /*<<< orphan*/  LB_GETTEXTLEN ; 
- int /*<<< orphan*/  SendMessageW (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WM_GETTEXT ; 
- int /*<<< orphan*/ * heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lstrcpynW (scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int CBF_EDIT ;
+ int LB_ERR ;
+ int LB_GETCURSEL ;
+ int LB_GETTEXT ;
+ int LB_GETTEXTLEN ;
+ int SendMessageW (scalar_t__,int ,int ,int ) ;
+ int WM_GETTEXT ;
+ int * heap_alloc (int) ;
+ int heap_free (int *) ;
+ int lstrcpynW (scalar_t__*,int *,int ) ;
 
 __attribute__((used)) static LRESULT COMBO_GetText( HEADCOMBO *lphc, INT count, LPWSTR buf )
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static LRESULT COMBO_GetText( HEADCOMBO *lphc, INT count, 
     if( lphc->wState & CBF_EDIT )
         return SendMessageW( lphc->hWndEdit, WM_GETTEXT, count, (LPARAM)buf );
 
-    /* get it from the listbox */
+
 
     if (!count || !buf) return 0;
     if( lphc->hWndLBox )
@@ -48,14 +48,14 @@ __attribute__((used)) static LRESULT COMBO_GetText( HEADCOMBO *lphc, INT count, 
         length = SendMessageW(lphc->hWndLBox, LB_GETTEXTLEN, idx, 0 );
         if (length == LB_ERR) goto error;
 
-        /* 'length' is without the terminating character */
+
         if (length >= count)
         {
             WCHAR *lpBuffer = heap_alloc((length + 1) * sizeof(WCHAR));
             if (!lpBuffer) goto error;
             length = SendMessageW(lphc->hWndLBox, LB_GETTEXT, idx, (LPARAM)lpBuffer);
 
-            /* truncate if buffer is too short */
+
             if (length != LB_ERR)
             {
                 lstrcpynW( buf, lpBuffer, count );
@@ -69,7 +69,7 @@ __attribute__((used)) static LRESULT COMBO_GetText( HEADCOMBO *lphc, INT count, 
         return length;
     }
 
- error:  /* error - truncate string, return zero */
+ error:
     buf[0] = 0;
     return 0;
 }

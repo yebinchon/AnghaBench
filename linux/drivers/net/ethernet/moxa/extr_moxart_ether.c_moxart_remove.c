@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct platform_device {int dummy; } ;
-struct net_device {int /*<<< orphan*/  irq; } ;
+struct net_device {int irq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free_irq (int /*<<< orphan*/ ,struct net_device*) ; 
- int /*<<< orphan*/  free_netdev (struct net_device*) ; 
- int /*<<< orphan*/  moxart_mac_free_memory (struct net_device*) ; 
- struct net_device* platform_get_drvdata (struct platform_device*) ; 
- int /*<<< orphan*/  unregister_netdev (struct net_device*) ; 
+
+ int free_irq (int ,struct net_device*) ;
+ int free_netdev (struct net_device*) ;
+ int moxart_mac_free_memory (struct net_device*) ;
+ struct net_device* platform_get_drvdata (struct platform_device*) ;
+ int unregister_netdev (struct net_device*) ;
 
 __attribute__((used)) static int moxart_remove(struct platform_device *pdev)
 {
-	struct net_device *ndev = platform_get_drvdata(pdev);
+ struct net_device *ndev = platform_get_drvdata(pdev);
 
-	unregister_netdev(ndev);
-	free_irq(ndev->irq, ndev);
-	moxart_mac_free_memory(ndev);
-	free_netdev(ndev);
+ unregister_netdev(ndev);
+ free_irq(ndev->irq, ndev);
+ moxart_mac_free_memory(ndev);
+ free_netdev(ndev);
 
-	return 0;
+ return 0;
 }

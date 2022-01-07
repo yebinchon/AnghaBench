@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_7__ ;
-typedef  struct TYPE_11__   TYPE_6__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_7__ ;
+typedef struct TYPE_11__ TYPE_6__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ window; scalar_t__ x; scalar_t__ y; scalar_t__ width; scalar_t__ height; } ;
-typedef  TYPE_1__ xcb_configure_notify_event_t ;
-struct TYPE_12__ {scalar_t__ main_window; int /*<<< orphan*/  edit_surf; int /*<<< orphan*/  edit_draw; int /*<<< orphan*/  edit_pixmap; } ;
-struct TYPE_11__ {int /*<<< orphan*/  depth; } ;
-struct TYPE_10__ {int /*<<< orphan*/  connection; } ;
-struct TYPE_9__ {scalar_t__ x; scalar_t__ y; scalar_t__ width; scalar_t__ height; int /*<<< orphan*/  main_window; } ;
-typedef  TYPE_2__ RofiViewState ;
+typedef TYPE_1__ xcb_configure_notify_event_t ;
+struct TYPE_12__ {scalar_t__ main_window; int edit_surf; int edit_draw; int edit_pixmap; } ;
+struct TYPE_11__ {int depth; } ;
+struct TYPE_10__ {int connection; } ;
+struct TYPE_9__ {scalar_t__ x; scalar_t__ y; scalar_t__ width; scalar_t__ height; int main_window; } ;
+typedef TYPE_2__ RofiViewState ;
 
-/* Variables and functions */
- TYPE_7__ CacheState ; 
- int /*<<< orphan*/  WIDGET (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cairo_create (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cairo_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cairo_surface_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cairo_xcb_surface_create (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- TYPE_6__* depth ; 
- int /*<<< orphan*/  g_debug (char*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  visual ; 
- int /*<<< orphan*/  widget_queue_redraw (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  widget_resize (int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- TYPE_3__* xcb ; 
- int /*<<< orphan*/  xcb_create_pixmap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  xcb_free_pixmap (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xcb_generate_id (int /*<<< orphan*/ ) ; 
+
+ TYPE_7__ CacheState ;
+ int WIDGET (int ) ;
+ int cairo_create (int ) ;
+ int cairo_destroy (int ) ;
+ int cairo_surface_destroy (int ) ;
+ int cairo_xcb_surface_create (int ,int ,int ,scalar_t__,scalar_t__) ;
+ TYPE_6__* depth ;
+ int g_debug (char*,scalar_t__,scalar_t__) ;
+ int visual ;
+ int widget_queue_redraw (int ) ;
+ int widget_resize (int ,scalar_t__,scalar_t__) ;
+ TYPE_3__* xcb ;
+ int xcb_create_pixmap (int ,int ,int ,scalar_t__,scalar_t__,scalar_t__) ;
+ int xcb_free_pixmap (int ,int ) ;
+ int xcb_generate_id (int ) ;
 
 void rofi_view_temp_configure_notify ( RofiViewState *state, xcb_configure_notify_event_t *xce )
 {
@@ -49,7 +49,7 @@ void rofi_view_temp_configure_notify ( RofiViewState *state, xcb_configure_notif
             widget_queue_redraw ( WIDGET ( state->main_window ) );
         }
         if ( state->width != xce->width || state->height != xce->height ) {
-            state->width  = xce->width;
+            state->width = xce->width;
             state->height = xce->height;
 
             cairo_destroy ( CacheState.edit_draw );

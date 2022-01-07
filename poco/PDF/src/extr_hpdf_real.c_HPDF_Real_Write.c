@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  value; } ;
-typedef  int /*<<< orphan*/  HPDF_Stream ;
-typedef  int /*<<< orphan*/  HPDF_STATUS ;
-typedef  TYPE_1__* HPDF_Real ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HPDF_Stream_WriteReal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int value; } ;
+typedef int HPDF_Stream ;
+typedef int HPDF_STATUS ;
+typedef TYPE_1__* HPDF_Real ;
+
+
+ int HPDF_Stream_WriteReal (int ,int ) ;
 
 HPDF_STATUS
-HPDF_Real_Write  (HPDF_Real    obj,
-                  HPDF_Stream  stream)
+HPDF_Real_Write (HPDF_Real obj,
+                  HPDF_Stream stream)
 {
     return HPDF_Stream_WriteReal (stream, obj->value);
 }

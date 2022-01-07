@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mfxStatus ;
-typedef  TYPE_1__* mfxMemId ;
-typedef  int /*<<< orphan*/  mfxHDL ;
-typedef  int /*<<< orphan*/  mfxFrameData ;
-struct TYPE_4__ {int /*<<< orphan*/  hw_frame; int /*<<< orphan*/  locked_frame; } ;
-typedef  TYPE_1__ QSVMid ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MFX_ERR_NONE ; 
- int /*<<< orphan*/  av_frame_free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int mfxStatus ;
+typedef TYPE_1__* mfxMemId ;
+typedef int mfxHDL ;
+typedef int mfxFrameData ;
+struct TYPE_4__ {int hw_frame; int locked_frame; } ;
+typedef TYPE_1__ QSVMid ;
+
+
+ int MFX_ERR_NONE ;
+ int av_frame_free (int *) ;
 
 __attribute__((used)) static mfxStatus qsv_frame_unlock(mfxHDL pthis, mfxMemId mid, mfxFrameData *ptr)
 {

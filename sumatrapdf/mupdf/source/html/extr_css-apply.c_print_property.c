@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char* name; scalar_t__ important; int /*<<< orphan*/  value; } ;
-typedef  TYPE_1__ fz_css_property ;
 
-/* Variables and functions */
- int /*<<< orphan*/  print_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char* name; scalar_t__ important; int value; } ;
+typedef TYPE_1__ fz_css_property ;
+
+
+ int print_value (int ) ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static void print_property(fz_css_property *prop)
 {
-	printf("\t%s: ", prop->name);
-	print_value(prop->value);
-	if (prop->important)
-		printf(" !important");
-	printf(";\n");
+ printf("\t%s: ", prop->name);
+ print_value(prop->value);
+ if (prop->important)
+  printf(" !important");
+ printf(";\n");
 }

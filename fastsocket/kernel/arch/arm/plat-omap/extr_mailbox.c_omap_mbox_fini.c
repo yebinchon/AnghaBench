@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct omap_mbox {TYPE_1__* ops; int /*<<< orphan*/  irq; int /*<<< orphan*/  rxq; int /*<<< orphan*/  txq; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* shutdown ) (struct omap_mbox*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free_irq (int /*<<< orphan*/ ,struct omap_mbox*) ; 
- int /*<<< orphan*/  mbox_queue_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (struct omap_mbox*) ; 
- scalar_t__ unlikely (int /*<<< orphan*/  (*) (struct omap_mbox*)) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct omap_mbox {TYPE_1__* ops; int irq; int rxq; int txq; } ;
+struct TYPE_2__ {int (* shutdown ) (struct omap_mbox*) ;} ;
+
+
+ int free_irq (int ,struct omap_mbox*) ;
+ int mbox_queue_free (int ) ;
+ int stub1 (struct omap_mbox*) ;
+ scalar_t__ unlikely (int (*) (struct omap_mbox*)) ;
 
 __attribute__((used)) static void omap_mbox_fini(struct omap_mbox *mbox)
 {
-	mbox_queue_free(mbox->txq);
-	mbox_queue_free(mbox->rxq);
+ mbox_queue_free(mbox->txq);
+ mbox_queue_free(mbox->rxq);
 
-	free_irq(mbox->irq, mbox);
+ free_irq(mbox->irq, mbox);
 
-	if (unlikely(mbox->ops->shutdown))
-		mbox->ops->shutdown(mbox);
+ if (unlikely(mbox->ops->shutdown))
+  mbox->ops->shutdown(mbox);
 }

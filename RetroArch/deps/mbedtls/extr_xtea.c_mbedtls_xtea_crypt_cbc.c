@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbedtls_xtea_context ;
 
-/* Variables and functions */
- int MBEDTLS_ERR_XTEA_INVALID_INPUT_LENGTH ; 
- int MBEDTLS_XTEA_DECRYPT ; 
- int /*<<< orphan*/  mbedtls_xtea_crypt_ecb (int /*<<< orphan*/ *,int,unsigned char const*,unsigned char*) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,int) ; 
+
+
+
+typedef int mbedtls_xtea_context ;
+
+
+ int MBEDTLS_ERR_XTEA_INVALID_INPUT_LENGTH ;
+ int MBEDTLS_XTEA_DECRYPT ;
+ int mbedtls_xtea_crypt_ecb (int *,int,unsigned char const*,unsigned char*) ;
+ int memcpy (unsigned char*,unsigned char const*,int) ;
 
 int mbedtls_xtea_crypt_cbc( mbedtls_xtea_context *ctx, int mode, size_t length,
                     unsigned char iv[8], const unsigned char *input,
@@ -40,7 +40,7 @@ int mbedtls_xtea_crypt_cbc( mbedtls_xtea_context *ctx, int mode, size_t length,
 
             memcpy( iv, temp, 8 );
 
-            input  += 8;
+            input += 8;
             output += 8;
             length -= 8;
         }
@@ -55,7 +55,7 @@ int mbedtls_xtea_crypt_cbc( mbedtls_xtea_context *ctx, int mode, size_t length,
             mbedtls_xtea_crypt_ecb( ctx, mode, output, output );
             memcpy( iv, output, 8 );
 
-            input  += 8;
+            input += 8;
             output += 8;
             length -= 8;
         }

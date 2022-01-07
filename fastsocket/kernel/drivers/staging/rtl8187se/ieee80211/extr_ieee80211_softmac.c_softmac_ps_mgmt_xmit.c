@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct sk_buff {scalar_t__ data; } ;
 struct ieee80211_hdr_3addr {void* seq_ctl; } ;
-struct ieee80211_device {short softmac_features; int* seq_ctrl; TYPE_1__* dev; int /*<<< orphan*/  (* softmac_hard_start_xmit ) (struct sk_buff*,TYPE_1__*) ;int /*<<< orphan*/  basic_rate; int /*<<< orphan*/  (* softmac_data_hard_start_xmit ) (struct sk_buff*,TYPE_1__*,int /*<<< orphan*/ ) ;} ;
+struct ieee80211_device {short softmac_features; int* seq_ctrl; TYPE_1__* dev; int (* softmac_hard_start_xmit ) (struct sk_buff*,TYPE_1__*) ;int basic_rate; int (* softmac_data_hard_start_xmit ) (struct sk_buff*,TYPE_1__*,int ) ;} ;
 struct TYPE_3__ {void* trans_start; } ;
 
-/* Variables and functions */
- short IEEE_SOFTMAC_SINGLE_QUEUE ; 
- void* cpu_to_le16 (int) ; 
- void* jiffies ; 
- int /*<<< orphan*/  stub1 (struct sk_buff*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (struct sk_buff*,TYPE_1__*) ; 
+
+ short IEEE_SOFTMAC_SINGLE_QUEUE ;
+ void* cpu_to_le16 (int) ;
+ void* jiffies ;
+ int stub1 (struct sk_buff*,TYPE_1__*,int ) ;
+ int stub2 (struct sk_buff*,TYPE_1__*) ;
 
 inline void softmac_ps_mgmt_xmit(struct sk_buff *skb, struct ieee80211_device *ieee)
 {
 
-	short single = ieee->softmac_features & IEEE_SOFTMAC_SINGLE_QUEUE;
-	struct ieee80211_hdr_3addr  *header =
-		(struct ieee80211_hdr_3addr  *) skb->data;
+ short single = ieee->softmac_features & IEEE_SOFTMAC_SINGLE_QUEUE;
+ struct ieee80211_hdr_3addr *header =
+  (struct ieee80211_hdr_3addr *) skb->data;
 
 
-	if(single){
+ if(single){
 
-		header->seq_ctl = cpu_to_le16(ieee->seq_ctrl[0] << 4);
+  header->seq_ctl = cpu_to_le16(ieee->seq_ctrl[0] << 4);
 
-		if (ieee->seq_ctrl[0] == 0xFFF)
-			ieee->seq_ctrl[0] = 0;
-		else
-			ieee->seq_ctrl[0]++;
+  if (ieee->seq_ctrl[0] == 0xFFF)
+   ieee->seq_ctrl[0] = 0;
+  else
+   ieee->seq_ctrl[0]++;
 
-		/* avoid watchdog triggers */
-		ieee->dev->trans_start = jiffies;
-		ieee->softmac_data_hard_start_xmit(skb,ieee->dev,ieee->basic_rate);
 
-	}else{
+  ieee->dev->trans_start = jiffies;
+  ieee->softmac_data_hard_start_xmit(skb,ieee->dev,ieee->basic_rate);
 
-		header->seq_ctl = cpu_to_le16(ieee->seq_ctrl[0] << 4);
+ }else{
 
-		if (ieee->seq_ctrl[0] == 0xFFF)
-			ieee->seq_ctrl[0] = 0;
-		else
-			ieee->seq_ctrl[0]++;
+  header->seq_ctl = cpu_to_le16(ieee->seq_ctrl[0] << 4);
 
-		/* avoid watchdog triggers */
-		ieee->dev->trans_start = jiffies;
-		ieee->softmac_hard_start_xmit(skb,ieee->dev);
+  if (ieee->seq_ctrl[0] == 0xFFF)
+   ieee->seq_ctrl[0] = 0;
+  else
+   ieee->seq_ctrl[0]++;
 
-	}
-//	dev_kfree_skb_any(skb);//edit by thomas
+
+  ieee->dev->trans_start = jiffies;
+  ieee->softmac_hard_start_xmit(skb,ieee->dev);
+
+ }
+
 }

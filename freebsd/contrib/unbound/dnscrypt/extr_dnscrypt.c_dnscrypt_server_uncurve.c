@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct sldns_buffer {int dummy; } ;
-struct lruhash_entry {int /*<<< orphan*/  lock; int /*<<< orphan*/ * data; } ;
-struct dnscrypt_query_header {int /*<<< orphan*/ * nonce; int /*<<< orphan*/  publickey; } ;
-struct dnsc_env {int /*<<< orphan*/  shared_secrets_cache; int /*<<< orphan*/  shared_secrets_cache_lock; int /*<<< orphan*/  num_query_dnscrypt_secret_missed_cache; int /*<<< orphan*/  nonces_cache_lock; int /*<<< orphan*/  nonces_cache; int /*<<< orphan*/  num_query_dnscrypt_replay; } ;
-struct TYPE_5__ {int* es_version; TYPE_1__* keypair; int /*<<< orphan*/  magic_query; } ;
-typedef  TYPE_2__ dnsccert ;
-struct TYPE_4__ {int /*<<< orphan*/  crypt_secretkey; } ;
+struct lruhash_entry {int lock; int * data; } ;
+struct dnscrypt_query_header {int * nonce; int publickey; } ;
+struct dnsc_env {int shared_secrets_cache; int shared_secrets_cache_lock; int num_query_dnscrypt_secret_missed_cache; int nonces_cache_lock; int nonces_cache; int num_query_dnscrypt_replay; } ;
+struct TYPE_5__ {int* es_version; TYPE_1__* keypair; int magic_query; } ;
+typedef TYPE_2__ dnsccert ;
+struct TYPE_4__ {int crypt_secretkey; } ;
 
-/* Variables and functions */
- int DNSCRYPT_QUERY_BOX_OFFSET ; 
- size_t DNSCRYPT_QUERY_HEADER_SIZE ; 
- int DNSCRYPT_SHARED_SECRET_KEY_LENGTH ; 
- int crypto_box_BEFORENMBYTES ; 
- int crypto_box_HALF_NONCEBYTES ; 
- int crypto_box_NONCEBYTES ; 
- scalar_t__ crypto_box_beforenm (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ crypto_box_curve25519xchacha20poly1305_beforenm (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ crypto_box_curve25519xchacha20poly1305_open_easy_afternm (int /*<<< orphan*/ * const,int /*<<< orphan*/ * const,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ crypto_box_open_easy_afternm (int /*<<< orphan*/ * const,int /*<<< orphan*/ * const,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dnsc_nonce_cache_insert (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dnsc_nonce_cache_key_hash (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct lruhash_entry* dnsc_nonces_lookup (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dnsc_shared_secret_cache_insert (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dnsc_shared_secrets_cache_key (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct lruhash_entry* dnsc_shared_secrets_lookup (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lock_basic_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lock_basic_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lock_rw_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int* sldns_buffer_at (struct sldns_buffer*,size_t) ; 
- int /*<<< orphan*/ * sldns_buffer_begin (struct sldns_buffer*) ; 
- size_t sldns_buffer_limit (struct sldns_buffer*) ; 
- int /*<<< orphan*/  sldns_buffer_set_limit (struct sldns_buffer*,size_t) ; 
- int /*<<< orphan*/  sldns_buffer_set_position (struct sldns_buffer*,int /*<<< orphan*/ ) ; 
+
+ int DNSCRYPT_QUERY_BOX_OFFSET ;
+ size_t DNSCRYPT_QUERY_HEADER_SIZE ;
+ int DNSCRYPT_SHARED_SECRET_KEY_LENGTH ;
+ int crypto_box_BEFORENMBYTES ;
+ int crypto_box_HALF_NONCEBYTES ;
+ int crypto_box_NONCEBYTES ;
+ scalar_t__ crypto_box_beforenm (int *,int ,int ) ;
+ scalar_t__ crypto_box_curve25519xchacha20poly1305_beforenm (int *,int ,int ) ;
+ scalar_t__ crypto_box_curve25519xchacha20poly1305_open_easy_afternm (int * const,int * const,int,int *,int *) ;
+ scalar_t__ crypto_box_open_easy_afternm (int * const,int * const,int,int *,int *) ;
+ int dnsc_nonce_cache_insert (int ,int *,int ,int ,int ) ;
+ int dnsc_nonce_cache_key_hash (int *,int ,int ) ;
+ struct lruhash_entry* dnsc_nonces_lookup (int ,int *,int ,int ,int ) ;
+ int dnsc_shared_secret_cache_insert (int ,int *,int ,int *) ;
+ int dnsc_shared_secrets_cache_key (int *,int,int ,int ) ;
+ struct lruhash_entry* dnsc_shared_secrets_lookup (int ,int *,int ) ;
+ int lock_basic_lock (int *) ;
+ int lock_basic_unlock (int *) ;
+ int lock_rw_unlock (int *) ;
+ int memcpy (int *,int *,int) ;
+ int memset (int *,int ,int) ;
+ int* sldns_buffer_at (struct sldns_buffer*,size_t) ;
+ int * sldns_buffer_begin (struct sldns_buffer*) ;
+ size_t sldns_buffer_limit (struct sldns_buffer*) ;
+ int sldns_buffer_set_limit (struct sldns_buffer*,size_t) ;
+ int sldns_buffer_set_position (struct sldns_buffer*,int ) ;
 
 __attribute__((used)) static int
 dnscrypt_server_uncurve(struct dnsc_env* env,
@@ -61,7 +61,7 @@ dnscrypt_server_uncurve(struct dnsc_env* env,
     uint8_t *const buf = sldns_buffer_begin(buffer);
     uint8_t nonce[crypto_box_NONCEBYTES];
     struct dnscrypt_query_header *query_header;
-    // shared secret cache
+
     uint8_t key[DNSCRYPT_SHARED_SECRET_KEY_LENGTH];
     struct lruhash_entry* entry;
     uint32_t hash;
@@ -74,7 +74,7 @@ dnscrypt_server_uncurve(struct dnsc_env* env,
 
     query_header = (struct dnscrypt_query_header *)buf;
 
-    /* Detect replay attacks */
+
     nonce_hash = dnsc_nonce_cache_key_hash(
         query_header->nonce,
         cert->magic_query,
@@ -103,7 +103,7 @@ dnscrypt_server_uncurve(struct dnsc_env* env,
         nonce_hash);
     lock_basic_unlock(&env->nonces_cache_lock);
 
-    /* Find existing shared secret */
+
     hash = dnsc_shared_secrets_cache_key(key,
                                          cert->es_version[1],
                                          query_header->publickey,
@@ -117,15 +117,15 @@ dnscrypt_server_uncurve(struct dnsc_env* env,
         env->num_query_dnscrypt_secret_missed_cache++;
         lock_basic_unlock(&env->shared_secrets_cache_lock);
         if(cert->es_version[1] == 2) {
-#ifdef USE_DNSCRYPT_XCHACHA20
-            if (crypto_box_curve25519xchacha20poly1305_beforenm(
-                        nmkey, query_header->publickey,
-                        cert->keypair->crypt_secretkey) != 0) {
-                return -1;
-            }
-#else
+
+
+
+
+
+
+
             return -1;
-#endif
+
     } else {
         if (crypto_box_beforenm(nmkey,
                                 query_header->publickey,
@@ -133,13 +133,13 @@ dnscrypt_server_uncurve(struct dnsc_env* env,
             return -1;
         }
     }
-    // Cache the shared secret we just computed.
+
     dnsc_shared_secret_cache_insert(env->shared_secrets_cache,
                                     key,
                                     hash,
                                     nmkey);
     } else {
-        /* copy shared secret and unlock entry */
+
         memcpy(nmkey, entry->data, crypto_box_BEFORENMBYTES);
         lock_rw_unlock(&entry->lock);
     }
@@ -148,17 +148,8 @@ dnscrypt_server_uncurve(struct dnsc_env* env,
     memset(nonce + crypto_box_HALF_NONCEBYTES, 0, crypto_box_HALF_NONCEBYTES);
 
     if(cert->es_version[1] == 2) {
-#ifdef USE_DNSCRYPT_XCHACHA20
-        if (crypto_box_curve25519xchacha20poly1305_open_easy_afternm
-                (buf,
-                buf + DNSCRYPT_QUERY_BOX_OFFSET,
-                len - DNSCRYPT_QUERY_BOX_OFFSET, nonce,
-                nmkey) != 0) {
-            return -1;
-        }
-#else
         return -1;
-#endif
+
     } else {
         if (crypto_box_open_easy_afternm
             (buf,

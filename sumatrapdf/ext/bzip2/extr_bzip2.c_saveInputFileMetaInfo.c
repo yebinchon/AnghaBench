@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IntNative ;
-typedef  int /*<<< orphan*/  Char ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_IF_NOT_ZERO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MY_STAT (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fileMetaInfo ; 
 
-__attribute__((used)) static 
+
+
+typedef int IntNative ;
+typedef int Char ;
+
+
+ int ERROR_IF_NOT_ZERO (int ) ;
+ int MY_STAT (int *,int *) ;
+ int fileMetaInfo ;
+
+__attribute__((used)) static
 void saveInputFileMetaInfo ( Char *srcName )
 {
-#  if BZ_UNIX
-   IntNative retVal;
-   /* Note use of stat here, not lstat. */
-   retVal = MY_STAT( srcName, &fileMetaInfo );
-   ERROR_IF_NOT_ZERO ( retVal );
-#  endif
+
+
+
+
+
+
 }

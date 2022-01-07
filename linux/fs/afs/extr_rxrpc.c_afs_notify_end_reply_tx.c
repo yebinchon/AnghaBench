@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sock {int dummy; } ;
 struct rxrpc_call {int dummy; } ;
 struct afs_call {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AFS_CALL_SV_AWAIT_ACK ; 
- int /*<<< orphan*/  AFS_CALL_SV_REPLYING ; 
- int /*<<< orphan*/  afs_set_call_state (struct afs_call*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AFS_CALL_SV_AWAIT_ACK ;
+ int AFS_CALL_SV_REPLYING ;
+ int afs_set_call_state (struct afs_call*,int ,int ) ;
 
 __attribute__((used)) static void afs_notify_end_reply_tx(struct sock *sock,
-				    struct rxrpc_call *rxcall,
-				    unsigned long call_user_ID)
+        struct rxrpc_call *rxcall,
+        unsigned long call_user_ID)
 {
-	struct afs_call *call = (struct afs_call *)call_user_ID;
+ struct afs_call *call = (struct afs_call *)call_user_ID;
 
-	afs_set_call_state(call, AFS_CALL_SV_REPLYING, AFS_CALL_SV_AWAIT_ACK);
+ afs_set_call_state(call, AFS_CALL_SV_REPLYING, AFS_CALL_SV_AWAIT_ACK);
 }

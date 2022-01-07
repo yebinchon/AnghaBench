@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
 struct TYPE_10__ {int i_actual_angle; int i_actual_mirror; TYPE_2__* ps_piece_in_plane; } ;
-typedef  TYPE_3__ piece_t ;
-typedef  int int8_t ;
-typedef  size_t int32_t ;
+typedef TYPE_3__ piece_t ;
+typedef int int8_t ;
+typedef size_t int32_t ;
 struct TYPE_11__ {TYPE_5__* p_sys; } ;
-typedef  TYPE_4__ filter_t ;
+typedef TYPE_4__ filter_t ;
 struct TYPE_8__ {int i_rotate; } ;
 struct TYPE_12__ {TYPE_1__ s_current_param; TYPE_3__* ps_pieces; } ;
-typedef  TYPE_5__ filter_sys_t ;
+typedef TYPE_5__ filter_sys_t ;
 struct TYPE_9__ {size_t i_actual_y; size_t i_actual_x; } ;
 
-/* Variables and functions */
- scalar_t__ abs (int) ; 
- int /*<<< orphan*/  puzzle_calculate_corners (TYPE_4__*,size_t) ; 
+
+ scalar_t__ abs (int) ;
+ int puzzle_calculate_corners (TYPE_4__*,size_t) ;
 
 void puzzle_rotate_pce( filter_t *p_filter, int32_t i_piece, int8_t i_rotate_mirror, int32_t i_center_x, int32_t i_center_y, bool b_avoid_mirror )
 {
@@ -45,7 +45,7 @@ void puzzle_rotate_pce( filter_t *p_filter, int32_t i_piece, int8_t i_rotate_mir
     for ( uint8_t i=0; i < abs( i_rotate_mirror ); i++) {
         int32_t i_tempx, i_tempy;
 
-        /* piece has to be rotated by 90° */
+
         if ( i_rotate_mirror > 0 ) {
             ps_piece->i_actual_angle++;
             ps_piece->i_actual_angle &= 0x03;

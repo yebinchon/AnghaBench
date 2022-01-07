@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_tick_t ;
-typedef  scalar_t__ ssize_t ;
-struct TYPE_8__ {scalar_t__ i_buffer; int /*<<< orphan*/  p_buffer; } ;
-typedef  TYPE_1__ block_t ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int vlc_tick_t ;
+typedef scalar_t__ ssize_t ;
+struct TYPE_8__ {scalar_t__ i_buffer; int p_buffer; } ;
+typedef TYPE_1__ block_t ;
 struct TYPE_9__ {TYPE_3__* sys; } ;
-typedef  TYPE_2__ audio_output_t ;
+typedef TYPE_2__ audio_output_t ;
 struct TYPE_10__ {int fd; } ;
-typedef  TYPE_3__ aout_sys_t ;
+typedef TYPE_3__ aout_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  block_Release (TYPE_1__*) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  msg_Err (TYPE_2__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_strerror_c (int /*<<< orphan*/ ) ; 
- scalar_t__ write (int,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int block_Release (TYPE_1__*) ;
+ int errno ;
+ int msg_Err (TYPE_2__*,char*,int ) ;
+ int vlc_strerror_c (int ) ;
+ scalar_t__ write (int,int ,scalar_t__) ;
 
 __attribute__((used)) static void Play(audio_output_t *aout, block_t *block, vlc_tick_t date)
 {

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  audio_output_t ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  IMMDevice ;
 
-/* Variables and functions */
- char* DeviceGetFriendlyName (int /*<<< orphan*/ *) ; 
- char* FromWide (int /*<<< orphan*/ ) ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  aout_HotplugReport (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
+
+
+
+typedef int audio_output_t ;
+typedef int LPCWSTR ;
+typedef int IMMDevice ;
+
+
+ char* DeviceGetFriendlyName (int *) ;
+ char* FromWide (int ) ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int aout_HotplugReport (int *,char*,char*) ;
+ int free (char*) ;
 
 __attribute__((used)) static int DeviceHotplugReport(audio_output_t *aout, LPCWSTR wid,
                                IMMDevice *dev)
@@ -30,7 +30,7 @@ __attribute__((used)) static int DeviceHotplugReport(audio_output_t *aout, LPCWS
         return VLC_EGENERIC;
 
     char *name = DeviceGetFriendlyName(dev);
-    if (name == NULL)
+    if (name == ((void*)0))
         name = id;
 
     aout_HotplugReport(aout, id, name);

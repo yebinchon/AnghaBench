@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT32 ;
-typedef  int /*<<< orphan*/  HDC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ *) ; 
- int GetDeviceCaps (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOGPIXELSX ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT32 ;
+typedef int HDC ;
+
+
+ int GetDC (int *) ;
+ int GetDeviceCaps (int ,int ) ;
+ int LOGPIXELSX ;
+ int ReleaseDC (int *,int ) ;
 
 __attribute__((used)) static UINT32 get_pixelsperxlogicalinch(void)
 {
-    HDC hdc = GetDC( NULL );
+    HDC hdc = GetDC( ((void*)0) );
     UINT32 ret;
 
     if (!hdc) return 96;
     ret = GetDeviceCaps( hdc, LOGPIXELSX );
-    ReleaseDC( NULL, hdc );
+    ReleaseDC( ((void*)0), hdc );
     return ret;
 }

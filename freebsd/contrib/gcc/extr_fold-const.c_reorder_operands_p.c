@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- scalar_t__ TREE_CONSTANT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_SIDE_EFFECTS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  flag_evaluation_order ; 
+
+
+
+typedef int tree ;
+
+
+ scalar_t__ TREE_CONSTANT (int ) ;
+ int TREE_SIDE_EFFECTS (int ) ;
+ int flag_evaluation_order ;
 
 __attribute__((used)) static bool
 reorder_operands_p (tree arg0, tree arg1)
 {
   if (! flag_evaluation_order)
-      return true;
+      return 1;
   if (TREE_CONSTANT (arg0) || TREE_CONSTANT (arg1))
-    return true;
+    return 1;
   return ! TREE_SIDE_EFFECTS (arg0)
-	 && ! TREE_SIDE_EFFECTS (arg1);
+  && ! TREE_SIDE_EFFECTS (arg1);
 }

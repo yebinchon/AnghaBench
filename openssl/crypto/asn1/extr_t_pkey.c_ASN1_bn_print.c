@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIO ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_PRINT_MAX_INDENT ; 
- scalar_t__ ASN1_buf_print (int /*<<< orphan*/ *,unsigned char*,int,int) ; 
- int /*<<< orphan*/  BIO_indent (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- scalar_t__ BIO_printf (int /*<<< orphan*/ *,char*,char const*,...) ; 
- int BN_BYTES ; 
- int BN_bn2bin (int /*<<< orphan*/  const*,unsigned char*) ; 
- scalar_t__ BN_is_negative (int /*<<< orphan*/  const*) ; 
- scalar_t__ BN_is_zero (int /*<<< orphan*/  const*) ; 
- int BN_num_bytes (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  OPENSSL_clear_free (unsigned char*,int) ; 
- unsigned char* OPENSSL_malloc (int) ; 
- scalar_t__* bn_get_words (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int BIO ;
+typedef int BIGNUM ;
+
+
+ int ASN1_PRINT_MAX_INDENT ;
+ scalar_t__ ASN1_buf_print (int *,unsigned char*,int,int) ;
+ int BIO_indent (int *,int,int ) ;
+ scalar_t__ BIO_printf (int *,char*,char const*,...) ;
+ int BN_BYTES ;
+ int BN_bn2bin (int const*,unsigned char*) ;
+ scalar_t__ BN_is_negative (int const*) ;
+ scalar_t__ BN_is_zero (int const*) ;
+ int BN_num_bytes (int const*) ;
+ int OPENSSL_clear_free (unsigned char*,int) ;
+ unsigned char* OPENSSL_malloc (int) ;
+ scalar_t__* bn_get_words (int const*) ;
 
 int ASN1_bn_print(BIO *bp, const char *number, const BIGNUM *num,
                   unsigned char *ign, int indent)
 {
     int n, rv = 0;
     const char *neg;
-    unsigned char *buf = NULL, *tmp = NULL;
+    unsigned char *buf = ((void*)0), *tmp = ((void*)0);
     int buflen;
 
-    if (num == NULL)
+    if (num == ((void*)0))
         return 1;
     neg = BN_is_negative(num) ? "-" : "";
     if (!BIO_indent(bp, indent, ASN1_PRINT_MAX_INDENT))
@@ -56,7 +56,7 @@ int ASN1_bn_print(BIO *bp, const char *number, const BIGNUM *num,
 
     buflen = BN_num_bytes(num) + 1;
     buf = tmp = OPENSSL_malloc(buflen);
-    if (buf == NULL)
+    if (buf == ((void*)0))
         goto err;
     buf[0] = 0;
     if (BIO_printf(bp, "%s%s\n", number,

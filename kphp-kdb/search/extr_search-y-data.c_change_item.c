@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct index_item {int extra; } ;
-struct TYPE_7__ {int extra; int mask; int /*<<< orphan*/  words; } ;
-typedef  TYPE_1__ item_t ;
+struct TYPE_7__ {int extra; int mask; int words; } ;
+typedef TYPE_1__ item_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD_NOT_FOUND_ITEM ; 
- int FLAG_DELETED ; 
- int /*<<< orphan*/  ONLY_FIND ; 
- int /*<<< orphan*/  Q ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  clear_cur_wordlist () ; 
- int /*<<< orphan*/  creation_date ; 
- int /*<<< orphan*/  cur_wordlist_head ; 
- int /*<<< orphan*/  del_items ; 
- int /*<<< orphan*/  fits (long long) ; 
- struct index_item* get_idx_item (long long) ; 
- TYPE_1__* get_item_f (long long,int /*<<< orphan*/ ) ; 
- scalar_t__ import_only_mode ; 
- int /*<<< orphan*/  item_add_words (TYPE_1__*,int) ; 
- int /*<<< orphan*/  item_clear_wordlist (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int log_last_ts ; 
- int /*<<< orphan*/  mod_items ; 
- int /*<<< orphan*/  move_item_rates (TYPE_1__*,struct index_item*) ; 
- int searchy_extract_words (char const*,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,long long,int*) ; 
- int /*<<< orphan*/  set_multiple_rates_item (TYPE_1__*,int,int*) ; 
- int /*<<< orphan*/  tag_owner ; 
- int /*<<< orphan*/  universal ; 
- int /*<<< orphan*/  vkprintf (int,char*,char const*,int,long long,int,int) ; 
+
+ int ADD_NOT_FOUND_ITEM ;
+ int FLAG_DELETED ;
+ int ONLY_FIND ;
+ int Q ;
+ int assert (int) ;
+ int clear_cur_wordlist () ;
+ int creation_date ;
+ int cur_wordlist_head ;
+ int del_items ;
+ int fits (long long) ;
+ struct index_item* get_idx_item (long long) ;
+ TYPE_1__* get_item_f (long long,int ) ;
+ scalar_t__ import_only_mode ;
+ int item_add_words (TYPE_1__*,int) ;
+ int item_clear_wordlist (TYPE_1__*,int *) ;
+ int log_last_ts ;
+ int mod_items ;
+ int move_item_rates (TYPE_1__*,struct index_item*) ;
+ int searchy_extract_words (char const*,int,int ,int,int ,int ,long long,int*) ;
+ int set_multiple_rates_item (TYPE_1__*,int,int*) ;
+ int tag_owner ;
+ int universal ;
+ int vkprintf (int,char*,char const*,int,long long,int,int) ;
 
 __attribute__((used)) static int change_item (const char *text, int len, long long item_id, int rate, int rate2) {
   item_t *I;
@@ -62,7 +62,7 @@ __attribute__((used)) static int change_item (const char *text, int len, long lo
   if (II) {
     mod_items++;
     II->extra |= FLAG_DELETED;
-    //item_clear_wordlist ((item_t *) II, get_index_item_words_ptr (II, 0));
+
   }
 
   I = get_item_f (item_id, ONLY_FIND);

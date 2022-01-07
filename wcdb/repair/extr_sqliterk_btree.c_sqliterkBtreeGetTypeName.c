@@ -1,45 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int sqliterk_btree_type ;
 
-/* Variables and functions */
-#define  sqliterk_btree_type_autoindex 133 
-#define  sqliterk_btree_type_index 132 
-#define  sqliterk_btree_type_master 131 
-#define  sqliterk_btree_type_sequence 130 
-#define  sqliterk_btree_type_stat 129 
-#define  sqliterk_btree_type_table 128 
 
+
+
+typedef int sqliterk_btree_type ;
 const char *sqliterkBtreeGetTypeName(sqliterk_btree_type type)
 {
     char *name;
     switch (type) {
-        case sqliterk_btree_type_autoindex:
+        case 133:
             name = "sqlite_autoindex";
             break;
-        case sqliterk_btree_type_sequence:
+        case 130:
             name = "sqlite_sequence";
             break;
-        case sqliterk_btree_type_stat:
+        case 129:
             name = "sqlite_stat";
             break;
-        case sqliterk_btree_type_master:
+        case 131:
             name = "sqlite_master";
             break;
-        case sqliterk_btree_type_table:
+        case 128:
             name = "table";
             break;
-        case sqliterk_btree_type_index:
+        case 132:
             name = "index";
             break;
         default:

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct socket {struct sock* sk; } ;
 struct sock {TYPE_1__* sk_prot; } ;
 struct msghdr {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  sendmsg; } ;
+struct TYPE_2__ {int sendmsg; } ;
 
-/* Variables and functions */
- int EAGAIN ; 
- int INDIRECT_CALL_2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct sock*,struct msghdr*,size_t) ; 
- int /*<<< orphan*/  inet_send_prepare (struct sock*) ; 
- int /*<<< orphan*/  tcp_sendmsg ; 
- int /*<<< orphan*/  udp_sendmsg ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
+
+ int EAGAIN ;
+ int INDIRECT_CALL_2 (int ,int ,int ,struct sock*,struct msghdr*,size_t) ;
+ int inet_send_prepare (struct sock*) ;
+ int tcp_sendmsg ;
+ int udp_sendmsg ;
+ scalar_t__ unlikely (int ) ;
 
 int inet_sendmsg(struct socket *sock, struct msghdr *msg, size_t size)
 {
-	struct sock *sk = sock->sk;
+ struct sock *sk = sock->sk;
 
-	if (unlikely(inet_send_prepare(sk)))
-		return -EAGAIN;
+ if (unlikely(inet_send_prepare(sk)))
+  return -EAGAIN;
 
-	return INDIRECT_CALL_2(sk->sk_prot->sendmsg, tcp_sendmsg, udp_sendmsg,
-			       sk, msg, size);
+ return INDIRECT_CALL_2(sk->sk_prot->sendmsg, tcp_sendmsg, udp_sendmsg,
+          sk, msg, size);
 }

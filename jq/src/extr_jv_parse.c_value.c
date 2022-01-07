@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct jv_parser {int flags; scalar_t__ last_seen; scalar_t__ stacklen; int /*<<< orphan*/  next; } ;
-typedef  char* pfunc ;
-typedef  int /*<<< orphan*/  jv ;
 
-/* Variables and functions */
- scalar_t__ JV_LAST_NONE ; 
- scalar_t__ JV_LAST_VALUE ; 
- int JV_PARSE_STREAMING ; 
- int /*<<< orphan*/  jv_free (int /*<<< orphan*/ ) ; 
- scalar_t__ jv_is_valid (int /*<<< orphan*/ ) ; 
+
+
+
+struct jv_parser {int flags; scalar_t__ last_seen; scalar_t__ stacklen; int next; } ;
+typedef char* pfunc ;
+typedef int jv ;
+
+
+ scalar_t__ JV_LAST_NONE ;
+ scalar_t__ JV_LAST_VALUE ;
+ int JV_PARSE_STREAMING ;
+ int jv_free (int ) ;
+ scalar_t__ jv_is_valid (int ) ;
 
 __attribute__((used)) static pfunc value(struct jv_parser* p, jv val) {
   if ((p->flags & JV_PARSE_STREAMING)) {

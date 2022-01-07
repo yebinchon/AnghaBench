@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pinctrl_gpio_range {int dummy; } ;
 struct pinctrl_dev {int dummy; } ;
 
-/* Variables and functions */
- int EINVAL ; 
+
+ int EINVAL ;
 
 __attribute__((used)) static int lochnagar_gpio_set_direction(struct pinctrl_dev *pctldev,
-					struct pinctrl_gpio_range *range,
-					unsigned int offset,
-					bool input)
+     struct pinctrl_gpio_range *range,
+     unsigned int offset,
+     bool input)
 {
-	/* The GPIOs only support output */
-	if (input)
-		return -EINVAL;
 
-	return 0;
+ if (input)
+  return -EINVAL;
+
+ return 0;
 }

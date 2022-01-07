@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int Char ;
 
-/* Variables and functions */
- int* Strend (int*) ; 
- int TRIM ; 
+
+
+
+typedef int Char ;
+
+
+ int* Strend (int*) ;
+ int TRIM ;
 
 __attribute__((used)) static int
 is_suffix(Char *check, Char *template)
@@ -24,9 +24,9 @@ is_suffix(Char *check, Char *template)
     t = Strend(template);
     c = Strend(check);
     for (;;) {
-	if (t == template)
-	    return 1;
-	if (c == check || (*--t & TRIM) != (*--c & TRIM))
-	    return 0;
+ if (t == template)
+     return 1;
+ if (c == check || (*--t & TRIM) != (*--c & TRIM))
+     return 0;
     }
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ npy_intp ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
 
-/* Variables and functions */
- scalar_t__ PyArray_DIM (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * PyArray_GETITEM (int /*<<< orphan*/ *,char*) ; 
- int PyArray_NDIM (int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_STRIDE (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * PyList_New (scalar_t__) ; 
- int /*<<< orphan*/  PyList_SET_ITEM (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ npy_intp ;
+typedef int PyObject ;
+typedef int PyArrayObject ;
+
+
+ scalar_t__ PyArray_DIM (int *,int) ;
+ int * PyArray_GETITEM (int *,char*) ;
+ int PyArray_NDIM (int *) ;
+ scalar_t__ PyArray_STRIDE (int *,int) ;
+ int * PyList_New (scalar_t__) ;
+ int PyList_SET_ITEM (int *,scalar_t__,int *) ;
+ int Py_DECREF (int *) ;
 
 __attribute__((used)) static PyObject *
 recursive_tolist(PyArrayObject *self, char *dataptr, int startdim)
@@ -29,7 +29,7 @@ recursive_tolist(PyArrayObject *self, char *dataptr, int startdim)
     npy_intp i, n, stride;
     PyObject *ret, *item;
 
-    /* Base case */
+
     if (startdim >= PyArray_NDIM(self)) {
         return PyArray_GETITEM(self, dataptr);
     }
@@ -38,15 +38,15 @@ recursive_tolist(PyArrayObject *self, char *dataptr, int startdim)
     stride = PyArray_STRIDE(self, startdim);
 
     ret = PyList_New(n);
-    if (ret == NULL) {
-        return NULL;
+    if (ret == ((void*)0)) {
+        return ((void*)0);
     }
 
     for (i = 0; i < n; ++i) {
         item = recursive_tolist(self, dataptr, startdim+1);
-        if (item == NULL) {
+        if (item == ((void*)0)) {
             Py_DECREF(ret);
-            return NULL;
+            return ((void*)0);
         }
         PyList_SET_ITEM(ret, i, item);
 

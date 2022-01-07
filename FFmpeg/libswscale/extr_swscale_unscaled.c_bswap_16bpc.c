@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
 struct TYPE_3__ {int chrDstVSubSample; } ;
-typedef  TYPE_1__ SwsContext ;
+typedef TYPE_1__ SwsContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FFABS (int) ; 
- int FFMIN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_bswap16 (int /*<<< orphan*/  const) ; 
+
+ int FFABS (int) ;
+ int FFMIN (int ,int ) ;
+ int av_bswap16 (int const) ;
 
 __attribute__((used)) static int bswap_16bpc(SwsContext *c, const uint8_t *src[],
                               int srcStride[], int srcSliceY, int srcSliceH,
@@ -30,9 +30,9 @@ __attribute__((used)) static int bswap_16bpc(SwsContext *c, const uint8_t *src[]
     for (p = 0; p < 4; p++) {
         int srcstr = srcStride[p] / 2;
         int dststr = dstStride[p] / 2;
-        uint16_t       *dstPtr =       (uint16_t *) dst[p];
+        uint16_t *dstPtr = (uint16_t *) dst[p];
         const uint16_t *srcPtr = (const uint16_t *) src[p];
-        int min_stride         = FFMIN(FFABS(srcstr), FFABS(dststr));
+        int min_stride = FFMIN(FFABS(srcstr), FFABS(dststr));
         if(!dstPtr || !srcPtr)
             continue;
         dstPtr += (srcSliceY >> c->chrDstVSubSample) * dststr;

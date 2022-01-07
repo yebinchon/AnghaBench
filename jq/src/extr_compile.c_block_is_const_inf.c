@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_2__* first; } ;
-typedef  TYPE_3__ block ;
-struct TYPE_6__ {int /*<<< orphan*/  constant; } ;
+typedef TYPE_3__ block ;
+struct TYPE_6__ {int constant; } ;
 struct TYPE_7__ {scalar_t__ op; TYPE_1__ imm; } ;
 
-/* Variables and functions */
- scalar_t__ JV_KIND_NUMBER ; 
- scalar_t__ LOADK ; 
- scalar_t__ block_is_single (TYPE_3__) ; 
- scalar_t__ isinf (int /*<<< orphan*/ ) ; 
- scalar_t__ jv_get_kind (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_number_value (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ JV_KIND_NUMBER ;
+ scalar_t__ LOADK ;
+ scalar_t__ block_is_single (TYPE_3__) ;
+ scalar_t__ isinf (int ) ;
+ scalar_t__ jv_get_kind (int ) ;
+ int jv_number_value (int ) ;
 
 int block_is_const_inf(block b) {
   return (block_is_single(b) && b.first->op == LOADK &&

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u64 ;
-typedef  char u32 ;
-struct shash_desc {int /*<<< orphan*/  tfm; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u64 ;
+typedef char u32 ;
+struct shash_desc {int tfm; } ;
 struct md5_hmac_ctx {int byte_count; int* block; int dbn; char* hash; } ;
-struct TYPE_2__ {int GO; int /*<<< orphan*/  DGRY; scalar_t__ BSY; } ;
+struct TYPE_2__ {int GO; int DGRY; scalar_t__ BSY; } ;
 struct deu_hash_t {int DBN; char MR; char D1R; char D2R; char D3R; char D4R; char D5R; TYPE_1__ controlr; } ;
-typedef  int /*<<< orphan*/  MD5_HASH_WORDS ;
-typedef  int /*<<< orphan*/  MD5_BLOCK_WORDS ;
+typedef int MD5_HASH_WORDS ;
+typedef int MD5_BLOCK_WORDS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRTCL_SECT_END ; 
- int /*<<< orphan*/  CRTCL_SECT_START ; 
- scalar_t__ HASH_START ; 
- int* IFX_HASH_CON ; 
- int MD5_HMAC_DBN_TEMP_SIZE ; 
- struct md5_hmac_ctx* crypto_shash_ctx (int /*<<< orphan*/ ) ; 
- int endian_swap (int) ; 
- int /*<<< orphan*/  md5_hmac_transform (struct shash_desc*,int*) ; 
- int /*<<< orphan*/  memset (char*,int,int) ; 
- char* temp ; 
+
+ int CRTCL_SECT_END ;
+ int CRTCL_SECT_START ;
+ scalar_t__ HASH_START ;
+ int* IFX_HASH_CON ;
+ int MD5_HMAC_DBN_TEMP_SIZE ;
+ struct md5_hmac_ctx* crypto_shash_ctx (int ) ;
+ int endian_swap (int) ;
+ int md5_hmac_transform (struct shash_desc*,int*) ;
+ int memset (char*,int,int) ;
+ char* temp ;
 
 __attribute__((used)) static int md5_hmac_final(struct shash_desc *desc, u8 *out)
 {
@@ -55,22 +55,22 @@ __attribute__((used)) static int md5_hmac_final(struct shash_desc *desc, u8 *out
     }
 
     memset(p, 0, padding);
-    mctx->block[14] = endian_swap((mctx->byte_count + 64) << 3); // need to add 512 bit of the IPAD operation 
+    mctx->block[14] = endian_swap((mctx->byte_count + 64) << 3);
     mctx->block[15] = 0x00000000;
 
     md5_hmac_transform(desc, mctx->block);
 
     CRTCL_SECT_START;
 
-    //printk("\ndbn = %d\n", mctx->dbn); 
+
     hashs->DBN = mctx->dbn;
     asm("sync");
-    
-    *IFX_HASH_CON = 0x0703002D; //khs, go, init, ndc, endi, kyue, hmen, md5 	
 
-    //wait for processing
+    *IFX_HASH_CON = 0x0703002D;
+
+
     while (hashs->controlr.BSY) {
-        // this will not take long
+
     }
 
     for (dbn = 0; dbn < mctx->dbn; dbn++)
@@ -82,21 +82,21 @@ __attribute__((used)) static int md5_hmac_final(struct shash_desc *desc, u8 *out
         hashs->controlr.GO = 1;
         asm("sync");
 
-        //wait for processing
+
         while (hashs->controlr.BSY) {
-           // this will not take long
+
         }
-    
+
         in += 16;
 }
 
 
-#if 1
-    //wait for digest ready
+
+
     while (! hashs->controlr.DGRY) {
-        // this will not take long
+
     }
-#endif
+
 
     *((u32 *) out + 0) = hashs->D1R;
     *((u32 *) out + 1) = hashs->D2R;
@@ -104,7 +104,7 @@ __attribute__((used)) static int md5_hmac_final(struct shash_desc *desc, u8 *out
     *((u32 *) out + 3) = hashs->D4R;
     *((u32 *) out + 4) = hashs->D5R;
 
-    /* reset the context after we finish with the hash */
+
     mctx->byte_count = 0;
     memset(&mctx->hash[0], 0, sizeof(MD5_HASH_WORDS));
     memset(&mctx->block[0], 0, sizeof(MD5_BLOCK_WORDS));

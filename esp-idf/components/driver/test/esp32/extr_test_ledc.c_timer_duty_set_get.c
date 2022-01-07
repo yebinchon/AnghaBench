@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  ledc_mode_t ;
-typedef  int /*<<< orphan*/  ledc_channel_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_ASSERT_EQUAL_INT32 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ESP_OK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ledc_get_duty (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ledc_set_duty (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ledc_update_duty (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int portTICK_RATE_MS ; 
- int /*<<< orphan*/  vTaskDelay (int) ; 
+
+
+
+typedef int uint32_t ;
+typedef int ledc_mode_t ;
+typedef int ledc_channel_t ;
+
+
+ int TEST_ASSERT_EQUAL_INT32 (int ,int ) ;
+ int TEST_ESP_OK (int ) ;
+ int ledc_get_duty (int ,int ) ;
+ int ledc_set_duty (int ,int ,int ) ;
+ int ledc_update_duty (int ,int ) ;
+ int portTICK_RATE_MS ;
+ int vTaskDelay (int) ;
 
 __attribute__((used)) static void timer_duty_set_get(ledc_mode_t speed_mode, ledc_channel_t channel, uint32_t duty)
 {

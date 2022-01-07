@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int wd; int /*<<< orphan*/  loop; int /*<<< orphan*/  watchers; int /*<<< orphan*/ * path; } ;
-typedef  TYPE_1__ uv_fs_event_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int wd; int loop; int watchers; int * path; } ;
+typedef TYPE_1__ uv_fs_event_t ;
 struct watcher_list {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  QUEUE_REMOVE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- struct watcher_list* find_watcher (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  maybe_free_watcher_list (struct watcher_list*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv__handle_stop (TYPE_1__*) ; 
- int /*<<< orphan*/  uv__is_active (TYPE_1__*) ; 
+
+ int QUEUE_REMOVE (int *) ;
+ int assert (int ) ;
+ struct watcher_list* find_watcher (int ,int) ;
+ int maybe_free_watcher_list (struct watcher_list*,int ) ;
+ int uv__handle_stop (TYPE_1__*) ;
+ int uv__is_active (TYPE_1__*) ;
 
 int uv_fs_event_stop(uv_fs_event_t* handle) {
   struct watcher_list* w;
@@ -30,10 +30,10 @@ int uv_fs_event_stop(uv_fs_event_t* handle) {
     return 0;
 
   w = find_watcher(handle->loop, handle->wd);
-  assert(w != NULL);
+  assert(w != ((void*)0));
 
   handle->wd = -1;
-  handle->path = NULL;
+  handle->path = ((void*)0);
   uv__handle_stop(handle);
   QUEUE_REMOVE(&handle->watchers);
 

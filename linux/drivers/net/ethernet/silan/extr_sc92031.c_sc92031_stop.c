@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sc92031_priv {int /*<<< orphan*/  rx_ring_dma_addr; int /*<<< orphan*/  rx_ring; int /*<<< orphan*/  tx_bufs_dma_addr; int /*<<< orphan*/  tx_bufs; int /*<<< orphan*/  lock; struct pci_dev* pdev; } ;
-struct pci_dev {int /*<<< orphan*/  irq; } ;
+
+
+
+
+struct sc92031_priv {int rx_ring_dma_addr; int rx_ring; int tx_bufs_dma_addr; int tx_bufs; int lock; struct pci_dev* pdev; } ;
+struct pci_dev {int irq; } ;
 struct net_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RX_BUF_LEN ; 
- int /*<<< orphan*/  TX_BUF_TOT_LEN ; 
- int /*<<< orphan*/  _sc92031_disable_tx_rx (struct net_device*) ; 
- int /*<<< orphan*/  _sc92031_tx_clear (struct net_device*) ; 
- int /*<<< orphan*/  free_irq (int /*<<< orphan*/ ,struct net_device*) ; 
- struct sc92031_priv* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  netif_tx_disable (struct net_device*) ; 
- int /*<<< orphan*/  pci_free_consistent (struct pci_dev*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sc92031_disable_interrupts (struct net_device*) ; 
- int /*<<< orphan*/  spin_lock_bh (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_bh (int /*<<< orphan*/ *) ; 
+
+ int RX_BUF_LEN ;
+ int TX_BUF_TOT_LEN ;
+ int _sc92031_disable_tx_rx (struct net_device*) ;
+ int _sc92031_tx_clear (struct net_device*) ;
+ int free_irq (int ,struct net_device*) ;
+ struct sc92031_priv* netdev_priv (struct net_device*) ;
+ int netif_tx_disable (struct net_device*) ;
+ int pci_free_consistent (struct pci_dev*,int ,int ,int ) ;
+ int sc92031_disable_interrupts (struct net_device*) ;
+ int spin_lock_bh (int *) ;
+ int spin_unlock_bh (int *) ;
 
 __attribute__((used)) static int sc92031_stop(struct net_device *dev)
 {
-	struct sc92031_priv *priv = netdev_priv(dev);
-	struct pci_dev *pdev = priv->pdev;
+ struct sc92031_priv *priv = netdev_priv(dev);
+ struct pci_dev *pdev = priv->pdev;
 
-	netif_tx_disable(dev);
+ netif_tx_disable(dev);
 
-	/* Disable interrupts, stop Tx and Rx. */
-	sc92031_disable_interrupts(dev);
 
-	spin_lock_bh(&priv->lock);
+ sc92031_disable_interrupts(dev);
 
-	_sc92031_disable_tx_rx(dev);
-	_sc92031_tx_clear(dev);
+ spin_lock_bh(&priv->lock);
 
-	spin_unlock_bh(&priv->lock);
+ _sc92031_disable_tx_rx(dev);
+ _sc92031_tx_clear(dev);
 
-	free_irq(pdev->irq, dev);
-	pci_free_consistent(pdev, TX_BUF_TOT_LEN, priv->tx_bufs,
-			priv->tx_bufs_dma_addr);
-	pci_free_consistent(pdev, RX_BUF_LEN, priv->rx_ring,
-			priv->rx_ring_dma_addr);
+ spin_unlock_bh(&priv->lock);
 
-	return 0;
+ free_irq(pdev->irq, dev);
+ pci_free_consistent(pdev, TX_BUF_TOT_LEN, priv->tx_bufs,
+   priv->tx_bufs_dma_addr);
+ pci_free_consistent(pdev, RX_BUF_LEN, priv->rx_ring,
+   priv->rx_ring_dma_addr);
+
+ return 0;
 }

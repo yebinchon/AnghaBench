@@ -1,0 +1,140 @@
+; ModuleID = '/home/carl/AnghaBench/linux/sound/firewire/fireworks/extr_fireworks_transaction.c_handle_resp_for_user.c'
+source_filename = "/home/carl/AnghaBench/linux/sound/firewire/fireworks/extr_fireworks_transaction.c_handle_resp_for_user.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.snd_efw = type { i32 }
+%struct.fw_card = type { i32 }
+%struct.fw_device = type { i32, i32, %struct.fw_card* }
+
+@instances_lock = common dso_local global i32 0, align 4
+@SNDRV_CARDS = common dso_local global i32 0, align 4
+@instances = common dso_local global %struct.snd_efw** null, align 8
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void (%struct.fw_card*, i32, i32, i8*, i64, i32*)* @handle_resp_for_user to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @handle_resp_for_user(%struct.fw_card* %0, i32 %1, i32 %2, i8* %3, i64 %4, i32* %5) #0 {
+  %7 = alloca %struct.fw_card*, align 8
+  %8 = alloca i32, align 4
+  %9 = alloca i32, align 4
+  %10 = alloca i8*, align 8
+  %11 = alloca i64, align 8
+  %12 = alloca i32*, align 8
+  %13 = alloca %struct.fw_device*, align 8
+  %14 = alloca %struct.snd_efw*, align 8
+  %15 = alloca i32, align 4
+  store %struct.fw_card* %0, %struct.fw_card** %7, align 8
+  store i32 %1, i32* %8, align 4
+  store i32 %2, i32* %9, align 4
+  store i8* %3, i8** %10, align 8
+  store i64 %4, i64* %11, align 8
+  store i32* %5, i32** %12, align 8
+  %16 = call i32 @spin_lock_irq(i32* @instances_lock)
+  store i32 0, i32* %15, align 4
+  br label %17
+
+17:                                               ; preds = %56, %6
+  %18 = load i32, i32* %15, align 4
+  %19 = load i32, i32* @SNDRV_CARDS, align 4
+  %20 = icmp ult i32 %18, %19
+  br i1 %20, label %21, label %59
+
+21:                                               ; preds = %17
+  %22 = load %struct.snd_efw**, %struct.snd_efw*** @instances, align 8
+  %23 = load i32, i32* %15, align 4
+  %24 = zext i32 %23 to i64
+  %25 = getelementptr inbounds %struct.snd_efw*, %struct.snd_efw** %22, i64 %24
+  %26 = load %struct.snd_efw*, %struct.snd_efw** %25, align 8
+  store %struct.snd_efw* %26, %struct.snd_efw** %14, align 8
+  %27 = load %struct.snd_efw*, %struct.snd_efw** %14, align 8
+  %28 = icmp eq %struct.snd_efw* %27, null
+  br i1 %28, label %29, label %30
+
+29:                                               ; preds = %21
+  br label %56
+
+30:                                               ; preds = %21
+  %31 = load %struct.snd_efw*, %struct.snd_efw** %14, align 8
+  %32 = getelementptr inbounds %struct.snd_efw, %struct.snd_efw* %31, i32 0, i32 0
+  %33 = load i32, i32* %32, align 4
+  %34 = call %struct.fw_device* @fw_parent_device(i32 %33)
+  store %struct.fw_device* %34, %struct.fw_device** %13, align 8
+  %35 = load %struct.fw_device*, %struct.fw_device** %13, align 8
+  %36 = getelementptr inbounds %struct.fw_device, %struct.fw_device* %35, i32 0, i32 2
+  %37 = load %struct.fw_card*, %struct.fw_card** %36, align 8
+  %38 = load %struct.fw_card*, %struct.fw_card** %7, align 8
+  %39 = icmp ne %struct.fw_card* %37, %38
+  br i1 %39, label %46, label %40
+
+40:                                               ; preds = %30
+  %41 = load %struct.fw_device*, %struct.fw_device** %13, align 8
+  %42 = getelementptr inbounds %struct.fw_device, %struct.fw_device* %41, i32 0, i32 0
+  %43 = load i32, i32* %42, align 8
+  %44 = load i32, i32* %8, align 4
+  %45 = icmp ne i32 %43, %44
+  br i1 %45, label %46, label %47
+
+46:                                               ; preds = %40, %30
+  br label %56
+
+47:                                               ; preds = %40
+  %48 = call i32 (...) @smp_rmb()
+  %49 = load %struct.fw_device*, %struct.fw_device** %13, align 8
+  %50 = getelementptr inbounds %struct.fw_device, %struct.fw_device* %49, i32 0, i32 1
+  %51 = load i32, i32* %50, align 4
+  %52 = load i32, i32* %9, align 4
+  %53 = icmp ne i32 %51, %52
+  br i1 %53, label %54, label %55
+
+54:                                               ; preds = %47
+  br label %56
+
+55:                                               ; preds = %47
+  br label %59
+
+56:                                               ; preds = %54, %46, %29
+  %57 = load i32, i32* %15, align 4
+  %58 = add i32 %57, 1
+  store i32 %58, i32* %15, align 4
+  br label %17
+
+59:                                               ; preds = %55, %17
+  %60 = load i32, i32* %15, align 4
+  %61 = load i32, i32* @SNDRV_CARDS, align 4
+  %62 = icmp eq i32 %60, %61
+  br i1 %62, label %63, label %64
+
+63:                                               ; preds = %59
+  br label %70
+
+64:                                               ; preds = %59
+  %65 = load %struct.snd_efw*, %struct.snd_efw** %14, align 8
+  %66 = load i8*, i8** %10, align 8
+  %67 = load i64, i64* %11, align 8
+  %68 = load i32*, i32** %12, align 8
+  %69 = call i32 @copy_resp_to_buf(%struct.snd_efw* %65, i8* %66, i64 %67, i32* %68)
+  br label %70
+
+70:                                               ; preds = %64, %63
+  %71 = call i32 @spin_unlock_irq(i32* @instances_lock)
+  ret void
+}
+
+declare dso_local i32 @spin_lock_irq(i32*) #1
+
+declare dso_local %struct.fw_device* @fw_parent_device(i32) #1
+
+declare dso_local i32 @smp_rmb(...) #1
+
+declare dso_local i32 @copy_resp_to_buf(%struct.snd_efw*, i8*, i64, i32*) #1
+
+declare dso_local i32 @spin_unlock_irq(i32*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

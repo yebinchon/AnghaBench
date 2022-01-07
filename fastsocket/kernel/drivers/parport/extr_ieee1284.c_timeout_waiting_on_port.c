@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned long PARPORT_MAX ; 
- int /*<<< orphan*/  parport_ieee1284_wakeup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * port_from_cookie ; 
+ unsigned long PARPORT_MAX ;
+ int parport_ieee1284_wakeup (int ) ;
+ int * port_from_cookie ;
 
 __attribute__((used)) static void timeout_waiting_on_port (unsigned long cookie)
 {
-	parport_ieee1284_wakeup (port_from_cookie[cookie % PARPORT_MAX]);
+ parport_ieee1284_wakeup (port_from_cookie[cookie % PARPORT_MAX]);
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mpc_val_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * mpca_count (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * mpca_many (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * mpca_many1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * mpca_maybe (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * mpca_not (int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ *,char*) ; 
 
-__attribute__((used)) static mpc_val_t *mpcaf_grammar_repeat(int n, mpc_val_t **xs) { 
+
+
+typedef int mpc_val_t ;
+
+
+ int free (int *) ;
+ int * mpca_count (int,int *) ;
+ int * mpca_many (int *) ;
+ int * mpca_many1 (int *) ;
+ int * mpca_maybe (int *) ;
+ int * mpca_not (int *) ;
+ scalar_t__ strcmp (int *,char*) ;
+
+__attribute__((used)) static mpc_val_t *mpcaf_grammar_repeat(int n, mpc_val_t **xs) {
   int num;
   (void) n;
-  if (!xs[1]) { return xs[0]; }  
+  if (!xs[1]) { return xs[0]; }
   if (strcmp(xs[1], "*") == 0) { free(xs[1]); return mpca_many(xs[0]); }
   if (strcmp(xs[1], "+") == 0) { free(xs[1]); return mpca_many1(xs[0]); }
   if (strcmp(xs[1], "?") == 0) { free(xs[1]); return mpca_maybe(xs[0]); }

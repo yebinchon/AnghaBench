@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  expect (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  no_declaration () ; 
- int /*<<< orphan*/  oldstyle1 (int,int) ; 
- int /*<<< orphan*/  oldstyle2 () ; 
- int /*<<< orphan*/  oldstyle3 (int) ; 
- int /*<<< orphan*/  oldstyle4 (int,double) ; 
- int /*<<< orphan*/  print (char*) ; 
+ int expect (int,int ) ;
+ int no_declaration () ;
+ int oldstyle1 (int,int) ;
+ int oldstyle2 () ;
+ int oldstyle3 (int) ;
+ int oldstyle4 (int,double) ;
+ int print (char*) ;
 
 void testmain() {
     print("K&R");

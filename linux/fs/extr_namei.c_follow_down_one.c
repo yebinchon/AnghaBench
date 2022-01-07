@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vfsmount {int /*<<< orphan*/  mnt_root; } ;
-struct path {int /*<<< orphan*/  dentry; struct vfsmount* mnt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dget (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dput (int /*<<< orphan*/ ) ; 
- struct vfsmount* lookup_mnt (struct path*) ; 
- int /*<<< orphan*/  mntput (struct vfsmount*) ; 
+
+
+
+struct vfsmount {int mnt_root; } ;
+struct path {int dentry; struct vfsmount* mnt; } ;
+
+
+ int dget (int ) ;
+ int dput (int ) ;
+ struct vfsmount* lookup_mnt (struct path*) ;
+ int mntput (struct vfsmount*) ;
 
 int follow_down_one(struct path *path)
 {
-	struct vfsmount *mounted;
+ struct vfsmount *mounted;
 
-	mounted = lookup_mnt(path);
-	if (mounted) {
-		dput(path->dentry);
-		mntput(path->mnt);
-		path->mnt = mounted;
-		path->dentry = dget(mounted->mnt_root);
-		return 1;
-	}
-	return 0;
+ mounted = lookup_mnt(path);
+ if (mounted) {
+  dput(path->dentry);
+  mntput(path->mnt);
+  path->mnt = mounted;
+  path->dentry = dget(mounted->mnt_root);
+  return 1;
+ }
+ return 0;
 }

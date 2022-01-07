@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  Cleanup ; 
- int /*<<< orphan*/  CreateSocket () ; 
- int /*<<< orphan*/  ErrorExit (char*) ; 
- int /*<<< orphan*/  SetConsoleCtrlHandler (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  StartSocketInterface () ; 
- int /*<<< orphan*/  WSACleanup () ; 
- int /*<<< orphan*/  WaitForConnect () ; 
- int /*<<< orphan*/  bShutdown ; 
- int /*<<< orphan*/  printf (char*) ; 
+ int Cleanup ;
+ int CreateSocket () ;
+ int ErrorExit (char*) ;
+ int SetConsoleCtrlHandler (int ,int) ;
+ int StartSocketInterface () ;
+ int WSACleanup () ;
+ int WaitForConnect () ;
+ int bShutdown ;
+ int printf (char*) ;
 
 int kickoff_telnetd(void)
 {
   printf("Attempting to start Simple TelnetD\n");
 
-//  DetectPlatform();
+
   SetConsoleCtrlHandler(Cleanup, 1);
 
   if (!StartSocketInterface())

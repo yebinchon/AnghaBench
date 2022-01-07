@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
-typedef  struct TYPE_12__   TYPE_11__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+typedef struct TYPE_12__ TYPE_11__ ;
+
+
 struct TYPE_13__ {scalar_t__ unsynced; } ;
-typedef  TYPE_1__ ogg_sync_state ;
-typedef  int /*<<< orphan*/  ogg_stream_state ;
-typedef  int /*<<< orphan*/  ogg_page ;
-typedef  scalar_t__ int64_t ;
-struct TYPE_14__ {int /*<<< orphan*/  s; TYPE_3__* p_sys; } ;
-typedef  TYPE_2__ demux_t ;
+typedef TYPE_1__ ogg_sync_state ;
+typedef int ogg_stream_state ;
+typedef int ogg_page ;
+typedef scalar_t__ int64_t ;
+struct TYPE_14__ {int s; TYPE_3__* p_sys; } ;
+typedef TYPE_2__ demux_t ;
 struct TYPE_15__ {int i_streams; scalar_t__ i_length; TYPE_11__** pp_stream; } ;
-typedef  TYPE_3__ demux_sys_t ;
-struct TYPE_12__ {scalar_t__ i_serial_no; int /*<<< orphan*/  b_contiguous; } ;
+typedef TYPE_3__ demux_sys_t ;
+struct TYPE_12__ {scalar_t__ i_serial_no; int b_contiguous; } ;
 
-/* Variables and functions */
- int MAX_PAGE_SIZE ; 
- int OGGSEEK_BYTES_TO_READ ; 
- scalar_t__ Ogg_GranuleToTime (TYPE_11__*,scalar_t__,int,int) ; 
- scalar_t__ SEC_FROM_VLC_TICK (scalar_t__) ; 
- int UINT_MAX ; 
- scalar_t__ VLC_TICK_0 ; 
- scalar_t__ VLC_TICK_INVALID ; 
- scalar_t__ __MAX (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ ogg_page_granulepos (int /*<<< orphan*/ *) ; 
- scalar_t__ ogg_page_serialno (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ogg_stream_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ogg_stream_init (int /*<<< orphan*/ *,int) ; 
- char* ogg_sync_buffer (TYPE_1__*,int) ; 
- int /*<<< orphan*/  ogg_sync_clear (TYPE_1__*) ; 
- int /*<<< orphan*/  ogg_sync_init (TYPE_1__*) ; 
- int ogg_sync_pageout (TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ ogg_sync_pageseek (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ogg_sync_wrote (TYPE_1__*,scalar_t__) ; 
- scalar_t__ stream_Size (int /*<<< orphan*/ ) ; 
- scalar_t__ vlc_stream_Read (int /*<<< orphan*/ ,void*,int) ; 
- scalar_t__ vlc_stream_Seek (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ vlc_stream_Tell (int /*<<< orphan*/ ) ; 
+
+ int MAX_PAGE_SIZE ;
+ int OGGSEEK_BYTES_TO_READ ;
+ scalar_t__ Ogg_GranuleToTime (TYPE_11__*,scalar_t__,int,int) ;
+ scalar_t__ SEC_FROM_VLC_TICK (scalar_t__) ;
+ int UINT_MAX ;
+ scalar_t__ VLC_TICK_0 ;
+ scalar_t__ VLC_TICK_INVALID ;
+ scalar_t__ __MAX (scalar_t__,scalar_t__) ;
+ int assert (int) ;
+ scalar_t__ ogg_page_granulepos (int *) ;
+ scalar_t__ ogg_page_serialno (int *) ;
+ int ogg_stream_clear (int *) ;
+ int ogg_stream_init (int *,int) ;
+ char* ogg_sync_buffer (TYPE_1__*,int) ;
+ int ogg_sync_clear (TYPE_1__*) ;
+ int ogg_sync_init (TYPE_1__*) ;
+ int ogg_sync_pageout (TYPE_1__*,int *) ;
+ scalar_t__ ogg_sync_pageseek (TYPE_1__*,int *) ;
+ int ogg_sync_wrote (TYPE_1__*,scalar_t__) ;
+ scalar_t__ stream_Size (int ) ;
+ scalar_t__ vlc_stream_Read (int ,void*,int) ;
+ scalar_t__ vlc_stream_Seek (int ,scalar_t__) ;
+ scalar_t__ vlc_stream_Tell (int ) ;
 
 void Oggseek_ProbeEnd( demux_t *p_demux )
 {
-    /* Temporary state */
+
     ogg_stream_state os;
     ogg_sync_state oy;
     ogg_page page;
@@ -69,7 +69,7 @@ void Oggseek_ProbeEnd( demux_t *p_demux )
     ogg_stream_init( &os, -1 );
     ogg_sync_init( &oy );
 
-    /* Try to lookup last granule from each logical stream */
+
     i_lowerbound = stream_Size( p_demux->s ) - p_sys->i_streams * MAX_PAGE_SIZE * 2;
     i_lowerbound = __MAX( 0, i_lowerbound );
 
@@ -91,7 +91,7 @@ void Oggseek_ProbeEnd( demux_t *p_demux )
                 i_result = ogg_sync_pageseek( &oy, &page );
 
             buffer = ogg_sync_buffer( &oy, OGGSEEK_BYTES_TO_READ );
-            if ( buffer == NULL ) goto clean;
+            if ( buffer == ((void*)0) ) goto clean;
             i_result = vlc_stream_Read( p_demux->s, (void*) buffer, OGGSEEK_BYTES_TO_READ );
             if ( i_result < 1 ) goto clean;
             i_pos += i_result;
@@ -108,10 +108,10 @@ void Oggseek_ProbeEnd( demux_t *p_demux )
                         continue;
 
                     i_length = Ogg_GranuleToTime( p_sys->pp_stream[i], i_granule,
-                                                  !p_sys->pp_stream[i]->b_contiguous, false );
+                                                  !p_sys->pp_stream[i]->b_contiguous, 0 );
                     if( i_length != VLC_TICK_INVALID )
                     {
-                        /* We found at least a page with valid granule */
+
                         p_sys->i_length = __MAX( p_sys->i_length, SEC_FROM_VLC_TICK(i_length - VLC_TICK_0) );
                         goto clean;
                     }
@@ -120,7 +120,7 @@ void Oggseek_ProbeEnd( demux_t *p_demux )
             }
         }
 
-        /* Otherwise increase read size, starting earlier */
+
         if ( i_backoffset <= ( UINT_MAX >> 1 ) )
         {
             i_backoffset <<= 1;

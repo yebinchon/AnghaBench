@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const hb_value_t ;
-typedef  int /*<<< orphan*/  hb_value_array_t ;
-typedef  int /*<<< orphan*/  hb_dict_t ;
 
-/* Variables and functions */
- scalar_t__ HB_VALUE_TYPE_STRING ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/ * hb_audio_encoder_get_from_codec (int) ; 
- int hb_audio_encoder_get_from_name (char*) ; 
- int hb_audio_samplerate_get_from_name (char const*) ; 
- int /*<<< orphan*/ * hb_audio_samplerate_get_name (int) ; 
- void* hb_dict_get (int /*<<< orphan*/  const*,char*) ; 
- int /*<<< orphan*/  hb_error (char*,char*) ; 
- int /*<<< orphan*/ * hb_mixdown_get_from_mixdown (int) ; 
- int /*<<< orphan*/ * hb_value_array_get (int /*<<< orphan*/ *,int) ; 
- int hb_value_array_len (int /*<<< orphan*/ *) ; 
- int hb_value_get_int (int /*<<< orphan*/  const*) ; 
- char* hb_value_get_string (int /*<<< orphan*/  const*) ; 
- char* hb_value_get_string_xform (int /*<<< orphan*/  const*) ; 
- scalar_t__ hb_value_type (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  strcasecmp (char const*,char*) ; 
+
+
+
+typedef int const hb_value_t ;
+typedef int hb_value_array_t ;
+typedef int hb_dict_t ;
+
+
+ scalar_t__ HB_VALUE_TYPE_STRING ;
+ int free (char*) ;
+ int * hb_audio_encoder_get_from_codec (int) ;
+ int hb_audio_encoder_get_from_name (char*) ;
+ int hb_audio_samplerate_get_from_name (char const*) ;
+ int * hb_audio_samplerate_get_name (int) ;
+ void* hb_dict_get (int const*,char*) ;
+ int hb_error (char*,char*) ;
+ int * hb_mixdown_get_from_mixdown (int) ;
+ int * hb_value_array_get (int *,int) ;
+ int hb_value_array_len (int *) ;
+ int hb_value_get_int (int const*) ;
+ char* hb_value_get_string (int const*) ;
+ char* hb_value_get_string_xform (int const*) ;
+ scalar_t__ hb_value_type (int const*) ;
+ int strcasecmp (char const*,char*) ;
 
 __attribute__((used)) static int validate_audio_encoders(const hb_dict_t *preset)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static int validate_audio_encoders(const hb_dict_t *preset
         {
             codec = hb_value_get_int(value);
         }
-        if (hb_audio_encoder_get_from_codec(codec) == NULL)
+        if (hb_audio_encoder_get_from_codec(codec) == ((void*)0))
         {
             char *str = hb_value_get_string_xform(value);
             hb_error("Invalid audio encoder (%s)", str);
@@ -68,7 +68,7 @@ __attribute__((used)) static int validate_audio_encoders(const hb_dict_t *preset
         {
             mix = hb_value_get_int(value);
         }
-        if (hb_mixdown_get_from_mixdown(mix) == NULL)
+        if (hb_mixdown_get_from_mixdown(mix) == ((void*)0))
         {
             char *str = hb_value_get_string_xform(value);
             hb_error("Invalid audio mixdown (%s)", str);
@@ -81,7 +81,7 @@ __attribute__((used)) static int validate_audio_encoders(const hb_dict_t *preset
         {
             const char *str = hb_value_get_string(value);
             if (!strcasecmp(str, "source") ||
-                !strcasecmp(str, "auto")   ||
+                !strcasecmp(str, "auto") ||
                 !strcasecmp(str, "same as source"))
             {
                 sr = 0;
@@ -95,7 +95,7 @@ __attribute__((used)) static int validate_audio_encoders(const hb_dict_t *preset
         {
             sr = hb_value_get_int(value);
         }
-        if (sr != 0 && hb_audio_samplerate_get_name(sr) == NULL)
+        if (sr != 0 && hb_audio_samplerate_get_name(sr) == ((void*)0))
         {
             char *str = hb_value_get_string_xform(value);
             hb_error("Invalid audio samplerate (%s)", str);

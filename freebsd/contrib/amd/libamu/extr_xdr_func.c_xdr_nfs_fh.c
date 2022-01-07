@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  caddr_t ;
-typedef  int /*<<< orphan*/  bool_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int caddr_t ;
+typedef int bool_t ;
 struct TYPE_3__ {scalar_t__ fh_data; } ;
-typedef  TYPE_1__ am_nfs_fh ;
-typedef  int /*<<< orphan*/  XDR ;
+typedef TYPE_1__ am_nfs_fh ;
+typedef int XDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_XDRTRACE ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  NFS_FHSIZE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  XLOG_DEBUG ; 
- scalar_t__ amuDebug (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  plog (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  xdr_opaque (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int D_XDRTRACE ;
+ int FALSE ;
+ int NFS_FHSIZE ;
+ int TRUE ;
+ int XLOG_DEBUG ;
+ scalar_t__ amuDebug (int ) ;
+ int plog (int ,char*) ;
+ int xdr_opaque (int *,int ,int ) ;
 
 bool_t
 xdr_nfs_fh(XDR *xdrs, am_nfs_fh *objp)

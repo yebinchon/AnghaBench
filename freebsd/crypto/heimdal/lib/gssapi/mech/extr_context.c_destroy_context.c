@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mg_thread_ctx {int /*<<< orphan*/  min_error; int /*<<< orphan*/  maj_error; } ;
-typedef  int /*<<< orphan*/  OM_uint32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (struct mg_thread_ctx*) ; 
- int /*<<< orphan*/  gss_release_buffer (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct mg_thread_ctx {int min_error; int maj_error; } ;
+typedef int OM_uint32 ;
+
+
+ int free (struct mg_thread_ctx*) ;
+ int gss_release_buffer (int *,int *) ;
 
 __attribute__((used)) static void
 destroy_context(void *ptr)
@@ -23,8 +23,8 @@ destroy_context(void *ptr)
     struct mg_thread_ctx *mg = ptr;
     OM_uint32 junk;
 
-    if (mg == NULL)
-	return;
+    if (mg == ((void*)0))
+ return;
 
     gss_release_buffer(&junk, &mg->maj_error);
     gss_release_buffer(&junk, &mg->min_error);

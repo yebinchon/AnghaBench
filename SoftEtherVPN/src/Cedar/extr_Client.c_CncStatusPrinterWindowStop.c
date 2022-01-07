@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  Thread; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int Thread; } ;
 struct TYPE_7__ {scalar_t__ Param; } ;
-typedef  TYPE_1__ SOCK ;
-typedef  TYPE_2__ CNC_STATUS_PRINTER_WINDOW_PARAM ;
+typedef TYPE_1__ SOCK ;
+typedef TYPE_2__ CNC_STATUS_PRINTER_WINDOW_PARAM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Disconnect (TYPE_1__*) ; 
- int /*<<< orphan*/  Free (TYPE_2__*) ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  ReleaseSock (TYPE_1__*) ; 
- int /*<<< orphan*/  ReleaseThread (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WaitThread (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int Disconnect (TYPE_1__*) ;
+ int Free (TYPE_2__*) ;
+ int INFINITE ;
+ int ReleaseSock (TYPE_1__*) ;
+ int ReleaseThread (int ) ;
+ int WaitThread (int ,int ) ;
 
 void CncStatusPrinterWindowStop(SOCK *s)
 {
-	CNC_STATUS_PRINTER_WINDOW_PARAM *param;
-	// Validate arguments
-	if (s == NULL)
-	{
-		return;
-	}
+ CNC_STATUS_PRINTER_WINDOW_PARAM *param;
 
-	param = (CNC_STATUS_PRINTER_WINDOW_PARAM *)s->Param;
+ if (s == ((void*)0))
+ {
+  return;
+ }
 
-	// Disconnect the client socket 
-	Disconnect(s);
+ param = (CNC_STATUS_PRINTER_WINDOW_PARAM *)s->Param;
 
-	// Terminate the thread
-	WaitThread(param->Thread, INFINITE);
-	ReleaseThread(param->Thread);
 
-	Free(param);
-	ReleaseSock(s);
+ Disconnect(s);
+
+
+ WaitThread(param->Thread, INFINITE);
+ ReleaseThread(param->Thread);
+
+ Free(param);
+ ReleaseSock(s);
 }

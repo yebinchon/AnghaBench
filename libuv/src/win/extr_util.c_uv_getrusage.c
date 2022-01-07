@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_13__ {int tv_usec; scalar_t__ tv_sec; } ;
 struct TYPE_12__ {int tv_usec; scalar_t__ tv_sec; } ;
 struct TYPE_14__ {int ru_majflt; int ru_maxrss; int ru_oublock; int ru_inblock; TYPE_2__ ru_stime; TYPE_1__ ru_utime; } ;
-typedef  TYPE_3__ uv_rusage_t ;
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  memCounters ;
+typedef TYPE_3__ uv_rusage_t ;
+typedef int uint64_t ;
+typedef int memCounters ;
 struct TYPE_17__ {scalar_t__ ReadOperationCount; scalar_t__ WriteOperationCount; } ;
 struct TYPE_16__ {scalar_t__ PeakWorkingSetSize; scalar_t__ PageFaultCount; } ;
 struct TYPE_15__ {int wHour; int wMinute; int wMilliseconds; scalar_t__ wSecond; } ;
-typedef  TYPE_4__ SYSTEMTIME ;
-typedef  TYPE_5__ PROCESS_MEMORY_COUNTERS ;
-typedef  TYPE_6__ IO_COUNTERS ;
-typedef  int /*<<< orphan*/  FILETIME ;
+typedef TYPE_4__ SYSTEMTIME ;
+typedef TYPE_5__ PROCESS_MEMORY_COUNTERS ;
+typedef TYPE_6__ IO_COUNTERS ;
+typedef int FILETIME ;
 
-/* Variables and functions */
- int FileTimeToSystemTime (int /*<<< orphan*/ *,TYPE_4__*) ; 
- int /*<<< orphan*/  GetCurrentProcess () ; 
- int /*<<< orphan*/  GetLastError () ; 
- int GetProcessIoCounters (int /*<<< orphan*/ ,TYPE_6__*) ; 
- int GetProcessMemoryInfo (int /*<<< orphan*/ ,TYPE_5__*,int) ; 
- int GetProcessTimes (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- int uv_translate_sys_error (int /*<<< orphan*/ ) ; 
+
+ int FileTimeToSystemTime (int *,TYPE_4__*) ;
+ int GetCurrentProcess () ;
+ int GetLastError () ;
+ int GetProcessIoCounters (int ,TYPE_6__*) ;
+ int GetProcessMemoryInfo (int ,TYPE_5__*,int) ;
+ int GetProcessTimes (int ,int *,int *,int *,int *) ;
+ int memset (TYPE_3__*,int ,int) ;
+ int uv_translate_sys_error (int ) ;
 
 int uv_getrusage(uv_rusage_t *uv_rusage) {
   FILETIME createTime, exitTime, kernelTime, userTime;

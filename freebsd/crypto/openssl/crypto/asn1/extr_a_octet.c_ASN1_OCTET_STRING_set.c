@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ASN1_OCTET_STRING ;
 
-/* Variables and functions */
- int ASN1_STRING_set (int /*<<< orphan*/ *,unsigned char const*,int) ; 
+
+
+
+typedef int ASN1_OCTET_STRING ;
+
+
+ int ASN1_STRING_set (int *,unsigned char const*,int) ;
 
 int ASN1_OCTET_STRING_set(ASN1_OCTET_STRING *x, const unsigned char *d,
                           int len)

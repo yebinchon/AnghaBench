@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_3__ {int /*<<< orphan*/  db; } ;
-typedef  int /*<<< orphan*/  SID_NAME_USE ;
-typedef  int /*<<< orphan*/ * PSID ;
-typedef  TYPE_1__ MSIPACKAGE ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConvertSidToStringSidW (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ERROR_FUNCTION_FAILED ; 
- int /*<<< orphan*/  ERROR_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetUserNameW (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  LocalFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LookupAccountNameW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * msi_alloc (int) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msi_set_property (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  szUserSID ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int UINT ;
+struct TYPE_3__ {int db; } ;
+typedef int SID_NAME_USE ;
+typedef int * PSID ;
+typedef TYPE_1__ MSIPACKAGE ;
+typedef int * LPWSTR ;
+typedef int DWORD ;
+
+
+ int ConvertSidToStringSidW (int *,int **) ;
+ int ERROR_FUNCTION_FAILED ;
+ int ERROR_OUTOFMEMORY ;
+ int GetUserNameW (int *,int*) ;
+ int LocalFree (int *) ;
+ int LookupAccountNameW (int *,int *,int *,int*,int *,int*,int *) ;
+ int * msi_alloc (int) ;
+ int msi_free (int *) ;
+ int msi_set_property (int ,int ,int *,int) ;
+ int szUserSID ;
 
 __attribute__((used)) static UINT set_user_sid_prop( MSIPACKAGE *package )
 {
     SID_NAME_USE use;
     LPWSTR user_name;
-    LPWSTR sid_str = NULL, dom = NULL;
+    LPWSTR sid_str = ((void*)0), dom = ((void*)0);
     DWORD size, dom_size;
-    PSID psid = NULL;
+    PSID psid = ((void*)0);
     UINT r = ERROR_FUNCTION_FAILED;
 
     size = 0;
-    GetUserNameW( NULL, &size );
+    GetUserNameW( ((void*)0), &size );
 
     user_name = msi_alloc( (size + 1) * sizeof(WCHAR) );
     if (!user_name)
@@ -53,7 +53,7 @@ __attribute__((used)) static UINT set_user_sid_prop( MSIPACKAGE *package )
 
     size = 0;
     dom_size = 0;
-    LookupAccountNameW( NULL, user_name, NULL, &size, NULL, &dom_size, &use );
+    LookupAccountNameW( ((void*)0), user_name, ((void*)0), &size, ((void*)0), &dom_size, &use );
 
     psid = msi_alloc( size );
     dom = msi_alloc( dom_size*sizeof (WCHAR) );
@@ -63,7 +63,7 @@ __attribute__((used)) static UINT set_user_sid_prop( MSIPACKAGE *package )
         goto done;
     }
 
-    if (!LookupAccountNameW( NULL, user_name, psid, &size, dom, &dom_size, &use ))
+    if (!LookupAccountNameW( ((void*)0), user_name, psid, &size, dom, &dom_size, &use ))
         goto done;
 
     if (!ConvertSidToStringSidW( psid, &sid_str ))

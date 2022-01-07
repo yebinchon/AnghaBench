@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sway_container {int dummy; } ;
 
-/* Variables and functions */
- int container_find_child (struct sway_container*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  find_urgent_iterator ; 
+
+ int container_find_child (struct sway_container*,int ,int *) ;
+ int find_urgent_iterator ;
 
 bool container_has_urgent_child(struct sway_container *container) {
-	return container_find_child(container, find_urgent_iterator, NULL);
+ return container_find_child(container, find_urgent_iterator, ((void*)0));
 }

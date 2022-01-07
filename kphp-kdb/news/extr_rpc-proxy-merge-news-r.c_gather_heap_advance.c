@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct news_id {int dummy; } ;
-struct TYPE_4__ {int cur; scalar_t__ last; struct news_id id; int /*<<< orphan*/  remaining; } ;
-typedef  TYPE_1__ gh_entry_t ;
+struct TYPE_4__ {int cur; scalar_t__ last; struct news_id id; int remaining; } ;
+typedef TYPE_1__ gh_entry_t ;
 
-/* Variables and functions */
- TYPE_1__** GH ; 
- int GH_N ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  load_heap_v (TYPE_1__*) ; 
- scalar_t__ news_id_compare (struct news_id,struct news_id) ; 
+
+ TYPE_1__** GH ;
+ int GH_N ;
+ int assert (int ) ;
+ int load_heap_v (TYPE_1__*) ;
+ scalar_t__ news_id_compare (struct news_id,struct news_id) ;
 
 __attribute__((used)) static void gather_heap_advance (void) {
   gh_entry_t *H;

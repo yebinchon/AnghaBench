@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nvmet_ctrl {scalar_t__ cc; int /*<<< orphan*/  csts; int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NVME_CSTS_RDY ; 
- int /*<<< orphan*/  lockdep_assert_held (int /*<<< orphan*/ *) ; 
+
+
+
+struct nvmet_ctrl {scalar_t__ cc; int csts; int lock; } ;
+
+
+ int NVME_CSTS_RDY ;
+ int lockdep_assert_held (int *) ;
 
 __attribute__((used)) static void nvmet_clear_ctrl(struct nvmet_ctrl *ctrl)
 {
-	lockdep_assert_held(&ctrl->lock);
+ lockdep_assert_held(&ctrl->lock);
 
-	/* XXX: tear down queues? */
-	ctrl->csts &= ~NVME_CSTS_RDY;
-	ctrl->cc = 0;
+
+ ctrl->csts &= ~NVME_CSTS_RDY;
+ ctrl->cc = 0;
 }

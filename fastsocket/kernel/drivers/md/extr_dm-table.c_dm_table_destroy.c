@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct dm_target {TYPE_1__* type; } ;
-struct dm_table {int depth; unsigned int num_targets; int /*<<< orphan*/  mempools; int /*<<< orphan*/  devices; int /*<<< orphan*/  highs; struct dm_target* targets; int /*<<< orphan*/ * index; int /*<<< orphan*/  holders; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* dtr ) (struct dm_target*) ;} ;
+struct dm_table {int depth; unsigned int num_targets; int mempools; int devices; int highs; struct dm_target* targets; int * index; int holders; } ;
+struct TYPE_2__ {int (* dtr ) (struct dm_target*) ;} ;
 
-/* Variables and functions */
- scalar_t__ atomic_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dm_free_md_mempools (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dm_put_target_type (TYPE_1__*) ; 
- int /*<<< orphan*/  free_devices (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (struct dm_table*) ; 
- int /*<<< orphan*/  msleep (int) ; 
- int /*<<< orphan*/  smp_mb () ; 
- int /*<<< orphan*/  stub1 (struct dm_target*) ; 
- int /*<<< orphan*/  vfree (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ atomic_read (int *) ;
+ int dm_free_md_mempools (int ) ;
+ int dm_put_target_type (TYPE_1__*) ;
+ int free_devices (int *) ;
+ int kfree (struct dm_table*) ;
+ int msleep (int) ;
+ int smp_mb () ;
+ int stub1 (struct dm_target*) ;
+ int vfree (int ) ;
 
 void dm_table_destroy(struct dm_table *t)
 {
-	unsigned int i;
+ unsigned int i;
 
-	if (!t)
-		return;
+ if (!t)
+  return;
 
-	while (atomic_read(&t->holders))
-		msleep(1);
-	smp_mb();
+ while (atomic_read(&t->holders))
+  msleep(1);
+ smp_mb();
 
-	/* free the indexes */
-	if (t->depth >= 2)
-		vfree(t->index[t->depth - 2]);
 
-	/* free the targets */
-	for (i = 0; i < t->num_targets; i++) {
-		struct dm_target *tgt = t->targets + i;
+ if (t->depth >= 2)
+  vfree(t->index[t->depth - 2]);
 
-		if (tgt->type->dtr)
-			tgt->type->dtr(tgt);
 
-		dm_put_target_type(tgt->type);
-	}
+ for (i = 0; i < t->num_targets; i++) {
+  struct dm_target *tgt = t->targets + i;
 
-	vfree(t->highs);
+  if (tgt->type->dtr)
+   tgt->type->dtr(tgt);
 
-	/* free the device list */
-	free_devices(&t->devices);
+  dm_put_target_type(tgt->type);
+ }
 
-	dm_free_md_mempools(t->mempools);
+ vfree(t->highs);
 
-	kfree(t);
+
+ free_devices(&t->devices);
+
+ dm_free_md_mempools(t->mempools);
+
+ kfree(t);
 }

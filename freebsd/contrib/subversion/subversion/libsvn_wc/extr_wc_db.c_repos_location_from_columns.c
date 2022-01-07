@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INVALID_REPOS_ID ; 
- int /*<<< orphan*/  svn_sqlite__column_int64 (int /*<<< orphan*/ *,int) ; 
- scalar_t__ svn_sqlite__column_is_null (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  svn_sqlite__column_revnum (int /*<<< orphan*/ *,int) ; 
- char* svn_sqlite__column_text (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_sqlite__stmt_t ;
+typedef int svn_revnum_t ;
+typedef int apr_pool_t ;
+typedef int apr_int64_t ;
+
+
+ int INVALID_REPOS_ID ;
+ int svn_sqlite__column_int64 (int *,int) ;
+ scalar_t__ svn_sqlite__column_is_null (int *,int) ;
+ int svn_sqlite__column_revnum (int *,int) ;
+ char* svn_sqlite__column_text (int *,int,int *) ;
 
 __attribute__((used)) static void
 repos_location_from_columns(apr_int64_t *repos_id,
@@ -34,7 +34,7 @@ repos_location_from_columns(apr_int64_t *repos_id,
 {
   if (repos_id)
     {
-      /* Fetch repository information via REPOS_ID. */
+
       if (svn_sqlite__column_is_null(stmt, col_repos_id))
         *repos_id = INVALID_REPOS_ID;
       else

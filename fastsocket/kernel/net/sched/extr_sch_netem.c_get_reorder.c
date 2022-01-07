@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tc_netem_reorder {int /*<<< orphan*/  correlation; int /*<<< orphan*/  probability; } ;
+
+
+
+
+struct tc_netem_reorder {int correlation; int probability; } ;
 struct nlattr {int dummy; } ;
-struct netem_sched_data {int /*<<< orphan*/  reorder_cor; int /*<<< orphan*/  reorder; } ;
+struct netem_sched_data {int reorder_cor; int reorder; } ;
 struct Qdisc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  init_crandom (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct tc_netem_reorder* nla_data (struct nlattr const*) ; 
- struct netem_sched_data* qdisc_priv (struct Qdisc*) ; 
+
+ int init_crandom (int *,int ) ;
+ struct tc_netem_reorder* nla_data (struct nlattr const*) ;
+ struct netem_sched_data* qdisc_priv (struct Qdisc*) ;
 
 __attribute__((used)) static void get_reorder(struct Qdisc *sch, const struct nlattr *attr)
 {
-	struct netem_sched_data *q = qdisc_priv(sch);
-	const struct tc_netem_reorder *r = nla_data(attr);
+ struct netem_sched_data *q = qdisc_priv(sch);
+ const struct tc_netem_reorder *r = nla_data(attr);
 
-	q->reorder = r->probability;
-	init_crandom(&q->reorder_cor, r->correlation);
+ q->reorder = r->probability;
+ init_crandom(&q->reorder_cor, r->correlation);
 }

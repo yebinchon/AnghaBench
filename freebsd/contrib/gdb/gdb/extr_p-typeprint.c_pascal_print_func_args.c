@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ui_file {int dummy; } ;
 struct type {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TYPE_FIELD_TYPE (struct type*,int) ; 
- int TYPE_NFIELDS (struct type*) ; 
- int /*<<< orphan*/  fprintf_filtered (struct ui_file*,char*) ; 
- int /*<<< orphan*/  fputs_filtered (char*,struct ui_file*) ; 
- int /*<<< orphan*/  pascal_print_type (int /*<<< orphan*/ ,char*,struct ui_file*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wrap_here (char*) ; 
+
+ int TYPE_FIELD_TYPE (struct type*,int) ;
+ int TYPE_NFIELDS (struct type*) ;
+ int fprintf_filtered (struct ui_file*,char*) ;
+ int fputs_filtered (char*,struct ui_file*) ;
+ int pascal_print_type (int ,char*,struct ui_file*,int,int ) ;
+ int wrap_here (char*) ;
 
 __attribute__((used)) static void
 pascal_print_func_args (struct type *type, struct ui_file *stream)
@@ -32,17 +32,17 @@ pascal_print_func_args (struct type *type, struct ui_file *stream)
   for (i = 0; i < len; i++)
     {
       if (i > 0)
-	{
-	  fputs_filtered (", ", stream);
-	  wrap_here ("    ");
-	}
-      /*  can we find if it is a var parameter ??
-         if ( TYPE_FIELD(type, i) == )
-         {
-         fprintf_filtered (stream, "var ");
-         } */
-      pascal_print_type (TYPE_FIELD_TYPE (type, i), ""	/* TYPE_FIELD_NAME seems invalid ! */
-			 ,stream, -1, 0);
+ {
+   fputs_filtered (", ", stream);
+   wrap_here ("    ");
+ }
+
+
+
+
+
+      pascal_print_type (TYPE_FIELD_TYPE (type, i), ""
+    ,stream, -1, 0);
     }
   if (len)
     {

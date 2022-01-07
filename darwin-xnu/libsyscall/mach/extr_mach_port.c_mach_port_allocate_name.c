@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mach_port_right_t ;
-typedef  int /*<<< orphan*/  mach_port_name_t ;
-typedef  int /*<<< orphan*/  kern_return_t ;
-typedef  int /*<<< orphan*/  ipc_space_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _kernelrpc_mach_port_allocate_name (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mach_port_right_t ;
+typedef int mach_port_name_t ;
+typedef int kern_return_t ;
+typedef int ipc_space_t ;
+
+
+ int _kernelrpc_mach_port_allocate_name (int ,int ,int ) ;
 
 kern_return_t
 mach_port_allocate_name(
-	ipc_space_t task,
-	mach_port_right_t right,
-	mach_port_name_t name)
+ ipc_space_t task,
+ mach_port_right_t right,
+ mach_port_name_t name)
 {
-	kern_return_t rv;
+ kern_return_t rv;
 
-	rv = _kernelrpc_mach_port_allocate_name(task, right, name);
+ rv = _kernelrpc_mach_port_allocate_name(task, right, name);
 
-	return (rv);
+ return (rv);
 }

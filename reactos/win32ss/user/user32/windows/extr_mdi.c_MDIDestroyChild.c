@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT ;
-struct TYPE_6__ {scalar_t__ nActiveChildren; scalar_t__ hwndActiveChild; scalar_t__ hwndChildMaximized; scalar_t__* child; int /*<<< orphan*/  hBmpClose; } ;
-typedef  TYPE_1__ MDICLIENTINFO ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  scalar_t__ HWND ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DestroyWindow (scalar_t__) ; 
- scalar_t__ GetParent (scalar_t__) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- scalar_t__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  MDI_ChildActivate (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ MDI_GetWindow (TYPE_1__*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MDI_PostUpdate (scalar_t__,TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  MDI_RestoreFrameMenu (scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MDI_SwitchActiveChild (TYPE_1__*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MDI_UpdateFrameText (scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ SB_BOTH ; 
- int /*<<< orphan*/  SW_HIDE ; 
- int /*<<< orphan*/  SendMessageW (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ShowWindow (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WM_MDIREFRESHMENU ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,scalar_t__*,size_t) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef size_t UINT ;
+struct TYPE_6__ {scalar_t__ nActiveChildren; scalar_t__ hwndActiveChild; scalar_t__ hwndChildMaximized; scalar_t__* child; int hBmpClose; } ;
+typedef TYPE_1__ MDICLIENTINFO ;
+typedef int LRESULT ;
+typedef scalar_t__ HWND ;
+typedef scalar_t__ BOOL ;
+
+
+ int DestroyWindow (scalar_t__) ;
+ scalar_t__ GetParent (scalar_t__) ;
+ int GetProcessHeap () ;
+ scalar_t__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,scalar_t__*) ;
+ int MDI_ChildActivate (scalar_t__,int ) ;
+ scalar_t__ MDI_GetWindow (TYPE_1__*,scalar_t__,int ,int ) ;
+ int MDI_PostUpdate (scalar_t__,TYPE_1__*,scalar_t__) ;
+ int MDI_RestoreFrameMenu (scalar_t__,scalar_t__,int ) ;
+ int MDI_SwitchActiveChild (TYPE_1__*,scalar_t__,int ) ;
+ int MDI_UpdateFrameText (scalar_t__,scalar_t__,int ,int *) ;
+ scalar_t__ SB_BOTH ;
+ int SW_HIDE ;
+ int SendMessageW (scalar_t__,int ,int ,int ) ;
+ int ShowWindow (scalar_t__,int ) ;
+ int TRACE (char*,scalar_t__) ;
+ int TRUE ;
+ int WM_MDIREFRESHMENU ;
+ int memcpy (scalar_t__*,scalar_t__*,size_t) ;
 
 __attribute__((used)) static LRESULT MDIDestroyChild( HWND client, MDICLIENTINFO *ci,
                                 HWND child, BOOL flagDestroy )
@@ -59,7 +59,7 @@ __attribute__((used)) static LRESULT MDIDestroyChild( HWND client, MDICLIENTINFO
                 HWND frame = GetParent(client);
                 MDI_RestoreFrameMenu(frame, child, ci->hBmpClose);
                 ci->hwndChildMaximized = 0;
-                MDI_UpdateFrameText(frame, client, TRUE, NULL);
+                MDI_UpdateFrameText(frame, client, TRUE, ((void*)0));
             }
             if (flagDestroy)
                 MDI_ChildActivate(client, 0);
@@ -71,7 +71,7 @@ __attribute__((used)) static LRESULT MDIDestroyChild( HWND client, MDICLIENTINFO
         if (ci->child[i] == child)
         {
             HWND *new_child = HeapAlloc(GetProcessHeap(), 0, (ci->nActiveChildren - 1) * sizeof(HWND));
-            if (new_child != NULL)
+            if (new_child != ((void*)0))
             {
                 memcpy(new_child, ci->child, i * sizeof(HWND));
                 if (i + 1 < ci->nActiveChildren)

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_tick_t ;
-typedef  int /*<<< orphan*/  vlc_player_t ;
-struct TYPE_10__ {int /*<<< orphan*/  event_manager; } ;
-typedef  TYPE_4__ libvlc_media_player_t ;
-struct TYPE_7__ {int /*<<< orphan*/  new_time; } ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int vlc_tick_t ;
+typedef int vlc_player_t ;
+struct TYPE_10__ {int event_manager; } ;
+typedef TYPE_4__ libvlc_media_player_t ;
+struct TYPE_7__ {int new_time; } ;
 struct TYPE_8__ {float new_position; } ;
 struct TYPE_9__ {TYPE_1__ media_player_time_changed; TYPE_2__ media_player_position_changed; } ;
-struct TYPE_11__ {TYPE_3__ u; int /*<<< orphan*/  type; } ;
-typedef  TYPE_5__ libvlc_event_t ;
+struct TYPE_11__ {TYPE_3__ u; int type; } ;
+typedef TYPE_5__ libvlc_event_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MS_FROM_VLC_TICK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  libvlc_MediaPlayerPositionChanged ; 
- int /*<<< orphan*/  libvlc_MediaPlayerTimeChanged ; 
- int /*<<< orphan*/  libvlc_event_send (int /*<<< orphan*/ *,TYPE_5__*) ; 
+
+ int MS_FROM_VLC_TICK (int ) ;
+ int libvlc_MediaPlayerPositionChanged ;
+ int libvlc_MediaPlayerTimeChanged ;
+ int libvlc_event_send (int *,TYPE_5__*) ;
 
 __attribute__((used)) static void
 on_position_changed(vlc_player_t *player, vlc_tick_t new_time, float new_pos,

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uid_t ;
-typedef  scalar_t__ gid_t ;
 
-/* Variables and functions */
- int EOVERFLOW ; 
- scalar_t__ GID_INVALID ; 
- scalar_t__ UID_INVALID ; 
- scalar_t__ USER_NAMESPACE_NO ; 
- scalar_t__ arg_uid_range ; 
- scalar_t__ arg_uid_shift ; 
- scalar_t__ arg_userns_mode ; 
- int /*<<< orphan*/  assert (char const*) ; 
- int errno ; 
- scalar_t__ lchown (char const*,scalar_t__,scalar_t__) ; 
+
+
+
+typedef scalar_t__ uid_t ;
+typedef scalar_t__ gid_t ;
+
+
+ int EOVERFLOW ;
+ scalar_t__ GID_INVALID ;
+ scalar_t__ UID_INVALID ;
+ scalar_t__ USER_NAMESPACE_NO ;
+ scalar_t__ arg_uid_range ;
+ scalar_t__ arg_uid_shift ;
+ scalar_t__ arg_userns_mode ;
+ int assert (char const*) ;
+ int errno ;
+ scalar_t__ lchown (char const*,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static int userns_lchown(const char *p, uid_t uid, gid_t gid) {
         assert(p);

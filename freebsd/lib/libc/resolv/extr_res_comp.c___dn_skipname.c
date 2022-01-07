@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
 
-/* Variables and functions */
- int ns_name_skip (int /*<<< orphan*/  const**,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int u_char ;
+
+
+ int ns_name_skip (int const**,int const*) ;
 
 int
 dn_skipname(const u_char *ptr, const u_char *eom) {
-	const u_char *saveptr = ptr;
+ const u_char *saveptr = ptr;
 
-	if (ns_name_skip(&ptr, eom) == -1)
-		return (-1);
-	return (ptr - saveptr);
+ if (ns_name_skip(&ptr, eom) == -1)
+  return (-1);
+ return (ptr - saveptr);
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ removeType; } ;
-struct TYPE_7__ {char const* data; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ StringInfoData ;
-typedef  TYPE_2__ DropStmt ;
+struct TYPE_7__ {char const* data; int member_0; } ;
+typedef TYPE_1__ StringInfoData ;
+typedef TYPE_2__ DropStmt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AppendDropTypeStmt (TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  Assert (int) ; 
- scalar_t__ OBJECT_TYPE ; 
- int /*<<< orphan*/  initStringInfo (TYPE_1__*) ; 
+
+ int AppendDropTypeStmt (TYPE_1__*,TYPE_2__*) ;
+ int Assert (int) ;
+ scalar_t__ OBJECT_TYPE ;
+ int initStringInfo (TYPE_1__*) ;
 
 const char *
 DeparseDropTypeStmt(DropStmt *stmt)
 {
-	StringInfoData str = { 0 };
-	initStringInfo(&str);
+ StringInfoData str = { 0 };
+ initStringInfo(&str);
 
-	Assert(stmt->removeType == OBJECT_TYPE);
+ Assert(stmt->removeType == OBJECT_TYPE);
 
-	AppendDropTypeStmt(&str, stmt);
+ AppendDropTypeStmt(&str, stmt);
 
-	return str.data;
+ return str.data;
 }

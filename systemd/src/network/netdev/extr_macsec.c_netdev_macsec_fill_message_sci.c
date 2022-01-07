@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  as_uint64; } ;
-typedef  TYPE_1__ sd_netlink_message ;
-typedef  TYPE_1__ NetDev ;
-typedef  TYPE_1__ MACsecSCI ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MACSEC_ATTR_RXSC_CONFIG ; 
- int /*<<< orphan*/  MACSEC_RXSC_ATTR_SCI ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int log_netdev_error_errno (TYPE_1__*,int,char*) ; 
- int sd_netlink_message_append_u64 (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int sd_netlink_message_close_container (TYPE_1__*) ; 
- int sd_netlink_message_open_container (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int as_uint64; } ;
+typedef TYPE_1__ sd_netlink_message ;
+typedef TYPE_1__ NetDev ;
+typedef TYPE_1__ MACsecSCI ;
+
+
+ int MACSEC_ATTR_RXSC_CONFIG ;
+ int MACSEC_RXSC_ATTR_SCI ;
+ int assert (TYPE_1__*) ;
+ int log_netdev_error_errno (TYPE_1__*,int,char*) ;
+ int sd_netlink_message_append_u64 (TYPE_1__*,int ,int ) ;
+ int sd_netlink_message_close_container (TYPE_1__*) ;
+ int sd_netlink_message_open_container (TYPE_1__*,int ) ;
 
 __attribute__((used)) static int netdev_macsec_fill_message_sci(NetDev *netdev, MACsecSCI *sci, sd_netlink_message *m) {
         int r;

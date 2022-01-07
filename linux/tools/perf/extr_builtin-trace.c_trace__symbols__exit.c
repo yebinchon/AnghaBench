@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct trace {int /*<<< orphan*/ * host; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  machine__exit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  symbol__exit () ; 
+
+
+
+struct trace {int * host; } ;
+
+
+ int machine__exit (int *) ;
+ int symbol__exit () ;
 
 __attribute__((used)) static void trace__symbols__exit(struct trace *trace)
 {
-	machine__exit(trace->host);
-	trace->host = NULL;
+ machine__exit(trace->host);
+ trace->host = ((void*)0);
 
-	symbol__exit();
+ symbol__exit();
 }

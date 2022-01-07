@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct hlsl_type {scalar_t__ type; int dimx; int dimy; int /*<<< orphan*/  base_type; } ;
-struct TYPE_5__ {int /*<<< orphan*/  col; int /*<<< orphan*/  line; int /*<<< orphan*/  file; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct hlsl_type {scalar_t__ type; int dimx; int dimy; int base_type; } ;
+struct TYPE_5__ {int col; int line; int file; } ;
 struct hlsl_ir_node {scalar_t__ type; TYPE_2__ loc; struct hlsl_type* data_type; } ;
-struct TYPE_4__ {int /*<<< orphan*/  var; } ;
-struct hlsl_ir_deref {scalar_t__ type; int /*<<< orphan*/  node; TYPE_1__ v; } ;
+struct TYPE_4__ {int var; } ;
+struct hlsl_ir_deref {scalar_t__ type; int node; TYPE_1__ v; } ;
 struct hlsl_ir_assignment {int writemask; struct hlsl_ir_node node; struct hlsl_ir_node* rhs; struct hlsl_ir_node* lhs; } ;
-typedef  enum parse_assign_op { ____Placeholder_parse_assign_op } parse_assign_op ;
-typedef  enum hlsl_type_class { ____Placeholder_hlsl_type_class } hlsl_type_class ;
-typedef  enum hlsl_ir_expr_op { ____Placeholder_hlsl_ir_expr_op } hlsl_ir_expr_op ;
-typedef  int DWORD ;
+typedef enum parse_assign_op { ____Placeholder_parse_assign_op } parse_assign_op ;
+typedef enum hlsl_type_class { ____Placeholder_hlsl_type_class } hlsl_type_class ;
+typedef enum hlsl_ir_expr_op { ____Placeholder_hlsl_ir_expr_op } hlsl_ir_expr_op ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int ASSIGN_OP_ASSIGN ; 
- int BWRITERSP_WRITEMASK_ALL ; 
- int /*<<< orphan*/  ERR (char*,...) ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- scalar_t__ HLSL_CLASS_LAST_NUMERIC ; 
- scalar_t__ HLSL_CLASS_MATRIX ; 
- int HLSL_CLASS_SCALAR ; 
- scalar_t__ HLSL_IR_ASSIGNMENT ; 
- scalar_t__ HLSL_IR_DEREF ; 
- scalar_t__ HLSL_IR_DEREF_VAR ; 
- int /*<<< orphan*/  HLSL_LEVEL_ERROR ; 
- int /*<<< orphan*/  HLSL_LEVEL_WARNING ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  compare_hlsl_types (struct hlsl_type*,struct hlsl_type*) ; 
- struct hlsl_ir_assignment* d3dcompiler_alloc (int) ; 
- int /*<<< orphan*/  d3dcompiler_free (struct hlsl_ir_assignment*) ; 
- int /*<<< orphan*/  debug_hlsl_type (struct hlsl_type*) ; 
- struct hlsl_ir_deref* deref_from_node (struct hlsl_ir_node*) ; 
- int /*<<< orphan*/  free_instr (struct hlsl_ir_node*) ; 
- int /*<<< orphan*/  hlsl_report_message (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  implicit_compatible_data_types (struct hlsl_type*,struct hlsl_type*) ; 
- struct hlsl_ir_node* implicit_conversion (struct hlsl_ir_node*,struct hlsl_type*,TYPE_2__*) ; 
- struct hlsl_ir_node* new_binary_expr (int,int /*<<< orphan*/ *,struct hlsl_ir_node*,TYPE_2__) ; 
- struct hlsl_type* new_hlsl_type (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,unsigned int,int) ; 
- struct hlsl_ir_deref* new_var_deref (int /*<<< orphan*/ ) ; 
- int op_from_assignment (int) ; 
+
+ int ASSIGN_OP_ASSIGN ;
+ int BWRITERSP_WRITEMASK_ALL ;
+ int ERR (char*,...) ;
+ int FIXME (char*) ;
+ scalar_t__ HLSL_CLASS_LAST_NUMERIC ;
+ scalar_t__ HLSL_CLASS_MATRIX ;
+ int HLSL_CLASS_SCALAR ;
+ scalar_t__ HLSL_IR_ASSIGNMENT ;
+ scalar_t__ HLSL_IR_DEREF ;
+ scalar_t__ HLSL_IR_DEREF_VAR ;
+ int HLSL_LEVEL_ERROR ;
+ int HLSL_LEVEL_WARNING ;
+ int TRACE (char*) ;
+ int compare_hlsl_types (struct hlsl_type*,struct hlsl_type*) ;
+ struct hlsl_ir_assignment* d3dcompiler_alloc (int) ;
+ int d3dcompiler_free (struct hlsl_ir_assignment*) ;
+ int debug_hlsl_type (struct hlsl_type*) ;
+ struct hlsl_ir_deref* deref_from_node (struct hlsl_ir_node*) ;
+ int free_instr (struct hlsl_ir_node*) ;
+ int hlsl_report_message (int ,int ,int ,int ,char*,...) ;
+ int implicit_compatible_data_types (struct hlsl_type*,struct hlsl_type*) ;
+ struct hlsl_ir_node* implicit_conversion (struct hlsl_ir_node*,struct hlsl_type*,TYPE_2__*) ;
+ struct hlsl_ir_node* new_binary_expr (int,int *,struct hlsl_ir_node*,TYPE_2__) ;
+ struct hlsl_type* new_hlsl_type (int *,int,int ,unsigned int,int) ;
+ struct hlsl_ir_deref* new_var_deref (int ) ;
+ int op_from_assignment (int) ;
 
 struct hlsl_ir_node *make_assignment(struct hlsl_ir_node *left, enum parse_assign_op assign_op,
         DWORD writemask, struct hlsl_ir_node *right)
@@ -61,7 +61,7 @@ struct hlsl_ir_node *make_assignment(struct hlsl_ir_node *left, enum parse_assig
     if (!assign)
     {
         ERR("Out of memory\n");
-        return NULL;
+        return ((void*)0);
     }
 
     TRACE("Creating proper assignment expression.\n");
@@ -79,7 +79,7 @@ struct hlsl_ir_node *make_assignment(struct hlsl_ir_node *left, enum parse_assig
             hlsl_report_message(left->loc.file, left->loc.line, left->loc.col, HLSL_LEVEL_ERROR,
                     "writemask on a non scalar/vector/matrix type");
             d3dcompiler_free(assign);
-            return NULL;
+            return ((void*)0);
         }
         bitmask = writemask & ((1 << left->data_type->dimx) - 1);
         while (bitmask)
@@ -94,7 +94,7 @@ struct hlsl_ir_node *make_assignment(struct hlsl_ir_node *left, enum parse_assig
             type_class = HLSL_CLASS_SCALAR;
         else
             type_class = left->data_type->type;
-        type = new_hlsl_type(NULL, type_class, left->data_type->base_type, dimx, 1);
+        type = new_hlsl_type(((void*)0), type_class, left->data_type->base_type, dimx, 1);
     }
     assign->node.type = HLSL_IR_ASSIGNMENT;
     assign->node.loc = left->loc;
@@ -103,7 +103,7 @@ struct hlsl_ir_node *make_assignment(struct hlsl_ir_node *left, enum parse_assig
     FIXME("Check for casts in the lhs.\n");
 
     lhs = left;
-    /* FIXME: check for invalid writemasks on the lhs. */
+
 
     if (!compare_hlsl_types(type, rhs->data_type))
     {
@@ -117,7 +117,7 @@ struct hlsl_ir_node *make_assignment(struct hlsl_ir_node *left, enum parse_assig
             free_instr(lhs);
             free_instr(rhs);
             d3dcompiler_free(assign);
-            return NULL;
+            return ((void*)0);
         }
         if (lhs->data_type->dimx * lhs->data_type->dimy < rhs->data_type->dimx * rhs->data_type->dimy)
             hlsl_report_message(rhs->loc.file, rhs->loc.line, rhs->loc.col, HLSL_LEVEL_WARNING,
@@ -130,7 +130,7 @@ struct hlsl_ir_node *make_assignment(struct hlsl_ir_node *left, enum parse_assig
             free_instr(lhs);
             free_instr(rhs);
             d3dcompiler_free(assign);
-            return NULL;
+            return ((void*)0);
         }
         rhs = converted_rhs;
     }

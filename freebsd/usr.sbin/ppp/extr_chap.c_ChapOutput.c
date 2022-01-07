@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t u_int ;
-typedef  struct fsmheader {size_t code; size_t id; int /*<<< orphan*/  length; } const fsmheader ;
-typedef  struct fsmheader u_char ;
-struct physical {int /*<<< orphan*/  link; TYPE_1__* dl; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef size_t u_int ;
+typedef struct fsmheader {size_t code; size_t id; int length; } const fsmheader ;
+typedef struct fsmheader u_char ;
+struct physical {int link; TYPE_1__* dl; } ;
 struct mbuf {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  bundle; } ;
+struct TYPE_2__ {int bundle; } ;
 
-/* Variables and functions */
- scalar_t__ LINK_QUEUES (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LogDEBUG ; 
- int /*<<< orphan*/  LogPHASE ; 
- scalar_t__ MBUF_CTOP (struct mbuf*) ; 
- int /*<<< orphan*/  MB_CHAPOUT ; 
- int /*<<< orphan*/  PROTO_CHAP ; 
- int /*<<< orphan*/ * chapcodes ; 
- int /*<<< orphan*/  htons (int) ; 
- int /*<<< orphan*/  link_PushPacket (int /*<<< orphan*/ *,struct mbuf*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_DumpBp (int /*<<< orphan*/ ,char*,struct mbuf*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,...) ; 
- struct mbuf* m_get (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,struct fsmheader const*,int) ; 
+
+ scalar_t__ LINK_QUEUES (int *) ;
+ int LogDEBUG ;
+ int LogPHASE ;
+ scalar_t__ MBUF_CTOP (struct mbuf*) ;
+ int MB_CHAPOUT ;
+ int PROTO_CHAP ;
+ int * chapcodes ;
+ int htons (int) ;
+ int link_PushPacket (int *,struct mbuf*,int ,scalar_t__,int ) ;
+ int log_DumpBp (int ,char*,struct mbuf*) ;
+ int log_Printf (int ,char*,int ,...) ;
+ struct mbuf* m_get (int,int ) ;
+ int memcpy (scalar_t__,struct fsmheader const*,int) ;
 
 __attribute__((used)) static void
 ChapOutput(struct physical *physical, u_int code, u_int id,
-	   const u_char *ptr, int count, const char *text)
+    const u_char *ptr, int count, const char *text)
 {
   int plen;
   struct fsmheader lh;
@@ -50,7 +50,7 @@ ChapOutput(struct physical *physical, u_int code, u_int id,
   if (count)
     memcpy(MBUF_CTOP(bp) + sizeof(struct fsmheader), ptr, count);
   log_DumpBp(LogDEBUG, "ChapOutput", bp);
-  if (text == NULL)
+  if (text == ((void*)0))
     log_Printf(LogPHASE, "Chap Output: %s\n", chapcodes[code]);
   else
     log_Printf(LogPHASE, "Chap Output: %s (%s)\n", chapcodes[code], text);

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vla_hwint_t ;
 
-/* Variables and functions */
- scalar_t__ VEC_index (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
- size_t VEC_length (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,long) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  output_file ; 
- int /*<<< orphan*/  vect_el_t ; 
+
+
+
+typedef int vla_hwint_t ;
+
+
+ scalar_t__ VEC_index (int ,int ,size_t) ;
+ size_t VEC_length (int ,int ) ;
+ int fprintf (int ,char*,long) ;
+ int fputs (char*,int ) ;
+ int output_file ;
+ int vect_el_t ;
 
 __attribute__((used)) static void
 output_vect (vla_hwint_t vect)
@@ -33,14 +33,14 @@ output_vect (vla_hwint_t vect)
   else
     for (i = 0; i < vect_length; i++)
       {
-	fprintf (output_file, "%5ld", (long) VEC_index (vect_el_t, vect, i));
-	if (els_on_line == 10)
-	  {
-	    els_on_line = 0;
-	    fputs (",\n", output_file);
-	  }
-	else if (i < vect_length-1)
-	  fputs (", ", output_file);
-	els_on_line++;
+ fprintf (output_file, "%5ld", (long) VEC_index (vect_el_t, vect, i));
+ if (els_on_line == 10)
+   {
+     els_on_line = 0;
+     fputs (",\n", output_file);
+   }
+ else if (i < vect_length-1)
+   fputs (", ", output_file);
+ els_on_line++;
       }
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
 struct TYPE_6__ {scalar_t__* hash; } ;
-struct TYPE_5__ {scalar_t__ next; int /*<<< orphan*/  name; } ;
-typedef  scalar_t__ CTypeID1 ;
-typedef  scalar_t__ CTypeID ;
-typedef  TYPE_1__ CType ;
-typedef  TYPE_2__ CTState ;
+struct TYPE_5__ {scalar_t__ next; int name; } ;
+typedef scalar_t__ CTypeID1 ;
+typedef scalar_t__ CTypeID ;
+typedef TYPE_1__ CType ;
+typedef TYPE_2__ CTState ;
 
-/* Variables and functions */
- size_t ct_hashname (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcref (int /*<<< orphan*/ ) ; 
+
+ size_t ct_hashname (int ) ;
+ int gcref (int ) ;
 
 void lj_ctype_addname(CTState *cts, CType *ct, CTypeID id)
 {

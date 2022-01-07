@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- scalar_t__ BIO_do_accept (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_free_all (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_new_accept (char*) ; 
- int /*<<< orphan*/ * BIO_new_ssl (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * BIO_pop (int /*<<< orphan*/ *) ; 
- int BIO_read (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  BIO_set_accept_bios (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CERT_FILE ; 
- int /*<<< orphan*/  ERR_print_errors_fp (int /*<<< orphan*/ ) ; 
- int EXIT_FAILURE ; 
- int EXIT_SUCCESS ; 
- int /*<<< orphan*/  SSL_CTX_check_private_key (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SSL_CTX_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_CTX_use_PrivateKey_file (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_CTX_use_certificate_chain_file (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_FILETYPE_PEM ; 
- int /*<<< orphan*/  TLS_server_method () ; 
- int /*<<< orphan*/  done ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fwrite (char*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  sigsetup () ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+typedef int SSL_CTX ;
+typedef int BIO ;
+
+
+ scalar_t__ BIO_do_accept (int *) ;
+ int BIO_free (int *) ;
+ int BIO_free_all (int *) ;
+ int * BIO_new_accept (char*) ;
+ int * BIO_new_ssl (int *,int ) ;
+ int * BIO_pop (int *) ;
+ int BIO_read (int *,char*,int) ;
+ int BIO_set_accept_bios (int *,int *) ;
+ int CERT_FILE ;
+ int ERR_print_errors_fp (int ) ;
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int SSL_CTX_check_private_key (int *) ;
+ int * SSL_CTX_new (int ) ;
+ int SSL_CTX_use_PrivateKey_file (int *,int ,int ) ;
+ int SSL_CTX_use_certificate_chain_file (int *,int ) ;
+ int SSL_FILETYPE_PEM ;
+ int TLS_server_method () ;
+ int done ;
+ int fflush (int ) ;
+ int fwrite (char*,int,int,int ) ;
+ int printf (char*) ;
+ int sigsetup () ;
+ int stderr ;
+ int stdout ;
 
 int main(int argc, char *argv[])
 {
-    char *port = NULL;
-    BIO *in = NULL;
+    char *port = ((void*)0);
+    BIO *in = ((void*)0);
     BIO *ssl_bio, *tmp;
     SSL_CTX *ctx;
     char buf[512];
@@ -62,28 +62,28 @@ int main(int argc, char *argv[])
     if (!SSL_CTX_check_private_key(ctx))
         goto err;
 
-    /* Setup server side SSL bio */
+
     ssl_bio = BIO_new_ssl(ctx, 0);
 
-    if ((in = BIO_new_accept(port)) == NULL)
+    if ((in = BIO_new_accept(port)) == ((void*)0))
         goto err;
 
-    /*
-     * This means that when a new connection is accepted on 'in', The ssl_bio
-     * will be 'duplicated' and have the new socket BIO push into it.
-     * Basically it means the SSL BIO will be automatically setup
-     */
+
+
+
+
+
     BIO_set_accept_bios(in, ssl_bio);
 
-    /* Arrange to leave server loop on interrupt */
+
     sigsetup();
 
  again:
-    /*
-     * The first call will setup the accept socket, and the second will get a
-     * socket.  In this loop, the first actual accept will occur in the
-     * BIO_read() function.
-     */
+
+
+
+
+
 
     if (BIO_do_accept(in) <= 0)
         goto err;
@@ -91,11 +91,11 @@ int main(int argc, char *argv[])
     while (!done) {
         i = BIO_read(in, buf, 512);
         if (i == 0) {
-            /*
-             * If we have finished, remove the underlying BIO stack so the
-             * next time we call any function for this BIO, it will attempt
-             * to do an accept
-             */
+
+
+
+
+
             printf("Done\n");
             tmp = BIO_pop(in);
             BIO_free_all(tmp);

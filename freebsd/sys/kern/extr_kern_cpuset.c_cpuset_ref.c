@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cpuset {int /*<<< orphan*/  cs_ref; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  refcount_acquire (int /*<<< orphan*/ *) ; 
+
+
+
+struct cpuset {int cs_ref; } ;
+
+
+ int refcount_acquire (int *) ;
 
 struct cpuset *
 cpuset_ref(struct cpuset *set)
 {
 
-	refcount_acquire(&set->cs_ref);
-	return (set);
+ refcount_acquire(&set->cs_ref);
+ return (set);
 }

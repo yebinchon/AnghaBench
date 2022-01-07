@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
 struct TYPE_11__ {int width; int height; scalar_t__ codec_tag; } ;
-struct TYPE_10__ {int key_frame; int* linesize; scalar_t__* data; int /*<<< orphan*/  pict_type; } ;
-struct TYPE_9__ {int size; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_1__ AVPacket ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVCodecContext ;
+struct TYPE_10__ {int key_frame; int* linesize; scalar_t__* data; int pict_type; } ;
+struct TYPE_9__ {int size; int * data; } ;
+typedef TYPE_1__ AVPacket ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_I ; 
- int AV_RL32 (int /*<<< orphan*/  const*) ; 
- scalar_t__ MKTAG (int /*<<< orphan*/ ,char,char,char) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,int const,int) ; 
- int ff_get_buffer (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_PICTURE_TYPE_I ;
+ int AV_RL32 (int const*) ;
+ scalar_t__ MKTAG (int ,char,char,char) ;
+ int av_log (TYPE_3__*,int ,char*,int const,int) ;
+ int ff_get_buffer (TYPE_3__*,TYPE_2__*,int ) ;
+ int memcpy (int*,int*,int) ;
 
 __attribute__((used)) static int zero12v_decode_frame(AVCodecContext *avctx, void *data,
                                 int *got_frame, AVPacket *avpkt)
@@ -48,7 +48,7 @@ __attribute__((used)) static int zero12v_decode_frame(AVCodecContext *avctx, voi
         return AVERROR_INVALIDDATA;
     }
 
-    if (   avctx->codec_tag == MKTAG('0', '1', '2', 'v')
+    if ( avctx->codec_tag == MKTAG('0', '1', '2', 'v')
         && avpkt->size % avctx->height == 0
         && avpkt->size / avctx->height * 3 >= width * 8)
         stride = avpkt->size / avctx->height;
@@ -89,8 +89,8 @@ __attribute__((used)) static int zero12v_decode_frame(AVCodecContext *avctx, voi
 
             t = AV_RL32(src);
             src += 4;
-            *u++ = t <<  6 & 0xFFC0;
-            *y++ = t >>  4 & 0xFFC0;
+            *u++ = t << 6 & 0xFFC0;
+            *y++ = t >> 4 & 0xFFC0;
             *v++ = t >> 14 & 0xFFC0;
 
             if (line_end - src < 4)
@@ -98,8 +98,8 @@ __attribute__((used)) static int zero12v_decode_frame(AVCodecContext *avctx, voi
 
             t = AV_RL32(src);
             src += 4;
-            *y++ = t <<  6 & 0xFFC0;
-            *u++ = t >>  4 & 0xFFC0;
+            *y++ = t << 6 & 0xFFC0;
+            *u++ = t >> 4 & 0xFFC0;
             *y++ = t >> 14 & 0xFFC0;
 
             if (line_end - src < 4)
@@ -107,8 +107,8 @@ __attribute__((used)) static int zero12v_decode_frame(AVCodecContext *avctx, voi
 
             t = AV_RL32(src);
             src += 4;
-            *v++ = t <<  6 & 0xFFC0;
-            *y++ = t >>  4 & 0xFFC0;
+            *v++ = t << 6 & 0xFFC0;
+            *y++ = t >> 4 & 0xFFC0;
             *u++ = t >> 14 & 0xFFC0;
 
             if (line_end - src < 4)
@@ -116,8 +116,8 @@ __attribute__((used)) static int zero12v_decode_frame(AVCodecContext *avctx, voi
 
             t = AV_RL32(src);
             src += 4;
-            *y++ = t <<  6 & 0xFFC0;
-            *v++ = t >>  4 & 0xFFC0;
+            *y++ = t << 6 & 0xFFC0;
+            *v++ = t >> 4 & 0xFFC0;
             *y++ = t >> 14 & 0xFFC0;
 
             if (width - x < 6)
@@ -125,7 +125,7 @@ __attribute__((used)) static int zero12v_decode_frame(AVCodecContext *avctx, voi
         }
 
         if (x < width) {
-            y = x   + (uint16_t *)(pic->data[0] + line * pic->linesize[0]);
+            y = x + (uint16_t *)(pic->data[0] + line * pic->linesize[0]);
             u = x/2 + (uint16_t *)(pic->data[1] + line * pic->linesize[1]);
             v = x/2 + (uint16_t *)(pic->data[2] + line * pic->linesize[2]);
             memcpy(y, y_temp, sizeof(*y) * (width - x));

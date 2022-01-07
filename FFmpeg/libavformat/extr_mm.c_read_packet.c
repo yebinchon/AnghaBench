@@ -1,47 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/ * pb; TYPE_1__* priv_data; } ;
-struct TYPE_10__ {int data; int size; int stream_index; int /*<<< orphan*/  pts; } ;
-struct TYPE_9__ {int /*<<< orphan*/  audio_pts; int /*<<< orphan*/  video_pts; } ;
-typedef  TYPE_1__ MmDemuxContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_INFO ; 
- unsigned int AV_RL16 (unsigned char*) ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  ENOMEM ; 
- int MM_PREAMBLE_SIZE ; 
-#define  MM_TYPE_AUDIO 135 
-#define  MM_TYPE_INTER 134 
-#define  MM_TYPE_INTER_HH 133 
-#define  MM_TYPE_INTER_HHV 132 
-#define  MM_TYPE_INTRA 131 
-#define  MM_TYPE_INTRA_HH 130 
-#define  MM_TYPE_INTRA_HHV 129 
-#define  MM_TYPE_PALETTE 128 
- int /*<<< orphan*/  av_get_packet (int /*<<< orphan*/ *,TYPE_2__*,unsigned int) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,unsigned int) ; 
- int /*<<< orphan*/  av_new_packet (TYPE_2__*,int) ; 
- unsigned int avio_read (int /*<<< orphan*/ *,...) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  memcpy (int,unsigned char*,int) ; 
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int * pb; TYPE_1__* priv_data; } ;
+struct TYPE_10__ {int data; int size; int stream_index; int pts; } ;
+struct TYPE_9__ {int audio_pts; int video_pts; } ;
+typedef TYPE_1__ MmDemuxContext ;
+typedef TYPE_2__ AVPacket ;
+typedef int AVIOContext ;
+typedef TYPE_3__ AVFormatContext ;
+
+
+ int AVERROR (int ) ;
+ int AV_LOG_INFO ;
+ unsigned int AV_RL16 (unsigned char*) ;
+ int EIO ;
+ int ENOMEM ;
+ int MM_PREAMBLE_SIZE ;
+ int av_get_packet (int *,TYPE_2__*,unsigned int) ;
+ int av_log (TYPE_3__*,int ,char*,unsigned int) ;
+ int av_new_packet (TYPE_2__*,int) ;
+ unsigned int avio_read (int *,...) ;
+ int avio_skip (int *,unsigned int) ;
+ int memcpy (int,unsigned char*,int) ;
 
 __attribute__((used)) static int read_packet(AVFormatContext *s,
                            AVPacket *pkt)
@@ -61,14 +53,14 @@ __attribute__((used)) static int read_packet(AVFormatContext *s,
         length = AV_RL16(&preamble[2]);
 
         switch(type) {
-        case MM_TYPE_PALETTE :
-        case MM_TYPE_INTER :
-        case MM_TYPE_INTRA :
-        case MM_TYPE_INTRA_HH :
-        case MM_TYPE_INTER_HH :
-        case MM_TYPE_INTRA_HHV :
-        case MM_TYPE_INTER_HHV :
-            /* output preamble + data */
+        case 128 :
+        case 134 :
+        case 131 :
+        case 130 :
+        case 133 :
+        case 129 :
+        case 132 :
+
             if (av_new_packet(pkt, length + MM_PREAMBLE_SIZE))
                 return AVERROR(ENOMEM);
             memcpy(pkt->data, preamble, MM_PREAMBLE_SIZE);
@@ -77,11 +69,11 @@ __attribute__((used)) static int read_packet(AVFormatContext *s,
             pkt->size = length + MM_PREAMBLE_SIZE;
             pkt->stream_index = 0;
             pkt->pts = mm->video_pts;
-            if (type!=MM_TYPE_PALETTE)
+            if (type!=128)
                 mm->video_pts++;
             return 0;
 
-        case MM_TYPE_AUDIO :
+        case 135 :
             if (av_get_packet(s->pb, pkt, length)<0)
                 return AVERROR(ENOMEM);
             pkt->stream_index = 1;

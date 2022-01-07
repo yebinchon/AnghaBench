@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_status3_t ;
-typedef  int /*<<< orphan*/  svn_wc_status2_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct status4_wrapper_baton {int /*<<< orphan*/  old_baton; int /*<<< orphan*/ * (* old_func ) (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;int /*<<< orphan*/ * anchor_abspath; int /*<<< orphan*/  anchor_relpath; int /*<<< orphan*/  wc_ctx; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * stub1 (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_dirent_join (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_skip_ancestor (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  svn_wc__status2_from_3 (int /*<<< orphan*/ **,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_wc_status3_t ;
+typedef int svn_wc_status2_t ;
+typedef int svn_error_t ;
+struct status4_wrapper_baton {int old_baton; int * (* old_func ) (int ,char const*,int *,int *) ;int * anchor_abspath; int anchor_relpath; int wc_ctx; } ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * stub1 (int ,char const*,int *,int *) ;
+ char* svn_dirent_join (int ,int ,int *) ;
+ int svn_dirent_skip_ancestor (int *,char const*) ;
+ int svn_wc__status2_from_3 (int **,int const*,int ,char const*,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 status4_wrapper_func(void *baton,
@@ -36,7 +36,7 @@ status4_wrapper_func(void *baton,
   SVN_ERR(svn_wc__status2_from_3(&dup, status, swb->wc_ctx, local_abspath,
                                  scratch_pool, scratch_pool));
 
-  if (swb->anchor_abspath != NULL)
+  if (swb->anchor_abspath != ((void*)0))
     {
       path = svn_dirent_join(
                 swb->anchor_relpath,

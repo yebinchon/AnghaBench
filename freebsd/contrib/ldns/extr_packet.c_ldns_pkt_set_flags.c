@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  ldns_pkt ;
 
-/* Variables and functions */
- int LDNS_AA ; 
- int LDNS_AD ; 
- int LDNS_CD ; 
- int LDNS_QR ; 
- int LDNS_RA ; 
- int LDNS_RD ; 
- int LDNS_TC ; 
- int /*<<< orphan*/  ldns_pkt_set_aa (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ldns_pkt_set_ad (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ldns_pkt_set_cd (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ldns_pkt_set_qr (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ldns_pkt_set_ra (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ldns_pkt_set_rd (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ldns_pkt_set_tc (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint16_t ;
+typedef int ldns_pkt ;
+
+
+ int LDNS_AA ;
+ int LDNS_AD ;
+ int LDNS_CD ;
+ int LDNS_QR ;
+ int LDNS_RA ;
+ int LDNS_RD ;
+ int LDNS_TC ;
+ int ldns_pkt_set_aa (int *,int) ;
+ int ldns_pkt_set_ad (int *,int) ;
+ int ldns_pkt_set_cd (int *,int) ;
+ int ldns_pkt_set_qr (int *,int) ;
+ int ldns_pkt_set_ra (int *,int) ;
+ int ldns_pkt_set_rd (int *,int) ;
+ int ldns_pkt_set_tc (int *,int) ;
 
 bool
 ldns_pkt_set_flags(ldns_pkt *packet, uint16_t flags)
 {
-	if (!packet) {
-		return false;
-	}
-	if ((flags & LDNS_QR) == LDNS_QR) {
-		ldns_pkt_set_qr(packet, true);
-	}
-	if ((flags & LDNS_AA) == LDNS_AA) {
-		ldns_pkt_set_aa(packet, true);
-	}
-	if ((flags & LDNS_RD) == LDNS_RD) {
-		ldns_pkt_set_rd(packet, true);
-	}
-	if ((flags & LDNS_TC) == LDNS_TC) {
-		ldns_pkt_set_tc(packet, true);
-	}
-	if ((flags & LDNS_CD) == LDNS_CD) {
-		ldns_pkt_set_cd(packet, true);
-	}
-	if ((flags & LDNS_RA) == LDNS_RA) {
-		ldns_pkt_set_ra(packet, true);
-	}
-	if ((flags & LDNS_AD) == LDNS_AD) {
-		ldns_pkt_set_ad(packet, true);
-	}
-	return true;
+ if (!packet) {
+  return 0;
+ }
+ if ((flags & LDNS_QR) == LDNS_QR) {
+  ldns_pkt_set_qr(packet, 1);
+ }
+ if ((flags & LDNS_AA) == LDNS_AA) {
+  ldns_pkt_set_aa(packet, 1);
+ }
+ if ((flags & LDNS_RD) == LDNS_RD) {
+  ldns_pkt_set_rd(packet, 1);
+ }
+ if ((flags & LDNS_TC) == LDNS_TC) {
+  ldns_pkt_set_tc(packet, 1);
+ }
+ if ((flags & LDNS_CD) == LDNS_CD) {
+  ldns_pkt_set_cd(packet, 1);
+ }
+ if ((flags & LDNS_RA) == LDNS_RA) {
+  ldns_pkt_set_ra(packet, 1);
+ }
+ if ((flags & LDNS_AD) == LDNS_AD) {
+  ldns_pkt_set_ad(packet, 1);
+ }
+ return 1;
 }

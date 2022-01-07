@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_DEBUG (char*) ; 
- int /*<<< orphan*/  tcadbput (void*,int*,int,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint64_t ;
+
+
+ int LOG_DEBUG (char*) ;
+ int tcadbput (void*,int*,int,int *,int) ;
 
 __attribute__((used)) static int
 ins_iu64 (void *hash, int key, uint64_t value)
@@ -22,7 +22,7 @@ ins_iu64 (void *hash, int key, uint64_t value)
   if (!hash)
     return -1;
 
-  /* if key exists in the database, it is overwritten */
+
   if (!tcadbput (hash, &key, sizeof (int), &value, sizeof (uint64_t)))
     LOG_DEBUG (("Unable to tcadbput\n"));
 

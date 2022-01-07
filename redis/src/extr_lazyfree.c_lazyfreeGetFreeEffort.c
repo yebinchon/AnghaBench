@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {size_t len; TYPE_1__* zsl; } ;
-typedef  TYPE_2__ zset ;
+typedef TYPE_2__ zset ;
 struct TYPE_10__ {scalar_t__ type; scalar_t__ encoding; TYPE_2__* ptr; } ;
-typedef  TYPE_3__ robj ;
-typedef  TYPE_2__ quicklist ;
-typedef  TYPE_2__ dict ;
+typedef TYPE_3__ robj ;
+typedef TYPE_2__ quicklist ;
+typedef TYPE_2__ dict ;
 struct TYPE_8__ {size_t length; } ;
 
-/* Variables and functions */
- scalar_t__ OBJ_ENCODING_HT ; 
- scalar_t__ OBJ_ENCODING_SKIPLIST ; 
- scalar_t__ OBJ_HASH ; 
- scalar_t__ OBJ_LIST ; 
- scalar_t__ OBJ_SET ; 
- scalar_t__ OBJ_ZSET ; 
- size_t dictSize (TYPE_2__*) ; 
+
+ scalar_t__ OBJ_ENCODING_HT ;
+ scalar_t__ OBJ_ENCODING_SKIPLIST ;
+ scalar_t__ OBJ_HASH ;
+ scalar_t__ OBJ_LIST ;
+ scalar_t__ OBJ_SET ;
+ scalar_t__ OBJ_ZSET ;
+ size_t dictSize (TYPE_2__*) ;
 
 size_t lazyfreeGetFreeEffort(robj *obj) {
     if (obj->type == OBJ_LIST) {
@@ -44,6 +44,6 @@ size_t lazyfreeGetFreeEffort(robj *obj) {
         dict *ht = obj->ptr;
         return dictSize(ht);
     } else {
-        return 1; /* Everything else is a single allocation. */
+        return 1;
     }
 }

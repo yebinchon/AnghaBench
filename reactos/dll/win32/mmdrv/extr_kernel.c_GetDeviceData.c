@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  overlap ;
-struct TYPE_5__ {int /*<<< orphan*/  hEvent; } ;
-typedef  int /*<<< orphan*/  PBYTE ;
-typedef  TYPE_1__ OVERLAPPED ;
-typedef  int /*<<< orphan*/  MMRESULT ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateEvent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DPRINT (char*) ; 
- int /*<<< orphan*/  DeviceIoControl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__*) ; 
- scalar_t__ ERROR_IO_PENDING ; 
- int /*<<< orphan*/  ErrorToMmResult (scalar_t__) ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  GetOverlappedResult (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  MMSYSERR_NOERROR ; 
- int /*<<< orphan*/  MMSYSERR_NOMEM ; 
- int /*<<< orphan*/  SetEvent (int /*<<< orphan*/ ) ; 
- scalar_t__ TRUE ; 
- scalar_t__ WAIT_IO_COMPLETION ; 
- scalar_t__ WaitForSingleObjectEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int overlap ;
+struct TYPE_5__ {int hEvent; } ;
+typedef int PBYTE ;
+typedef TYPE_1__ OVERLAPPED ;
+typedef int MMRESULT ;
+typedef int HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int CloseHandle (int ) ;
+ int CreateEvent (int *,int ,int ,int *) ;
+ int DPRINT (char*) ;
+ int DeviceIoControl (int ,int ,int *,int ,int ,int ,int *,TYPE_1__*) ;
+ scalar_t__ ERROR_IO_PENDING ;
+ int ErrorToMmResult (scalar_t__) ;
+ int FALSE ;
+ scalar_t__ GetLastError () ;
+ int GetOverlappedResult (int ,TYPE_1__*,int *,scalar_t__) ;
+ int MMSYSERR_NOERROR ;
+ int MMSYSERR_NOMEM ;
+ int SetEvent (int ) ;
+ scalar_t__ TRUE ;
+ scalar_t__ WAIT_IO_COMPLETION ;
+ scalar_t__ WaitForSingleObjectEx (int ,int ,scalar_t__) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 MMRESULT
 GetDeviceData(
@@ -54,14 +54,14 @@ GetDeviceData(
 
     memset(&overlap, 0, sizeof(overlap));
 
-    overlap.hEvent = CreateEvent(NULL, FALSE, FALSE, NULL);
+    overlap.hEvent = CreateEvent(((void*)0), FALSE, FALSE, ((void*)0));
 
     if ( ! overlap.hEvent )
         return MMSYSERR_NOMEM;
 
     success = DeviceIoControl(device_handle,
                               ioctl,
-                              NULL,
+                              ((void*)0),
                               0,
                               output_buffer,
                               buffer_size,

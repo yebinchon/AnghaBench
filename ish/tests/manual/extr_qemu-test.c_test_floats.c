@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int d; } ;
 
-/* Variables and functions */
- scalar_t__ TEST_CMOV ; 
- TYPE_1__ q_nan ; 
- int /*<<< orphan*/  test_fbcd (double) ; 
- int /*<<< orphan*/  test_fcmov () ; 
- int /*<<< orphan*/  test_fcmp (double,int) ; 
- int /*<<< orphan*/  test_fconst () ; 
- int /*<<< orphan*/  test_fcvt (double) ; 
- int /*<<< orphan*/  test_fenv () ; 
- int /*<<< orphan*/  test_fops (double,int) ; 
+
+ scalar_t__ TEST_CMOV ;
+ TYPE_1__ q_nan ;
+ int test_fbcd (double) ;
+ int test_fcmov () ;
+ int test_fcmp (double,int) ;
+ int test_fconst () ;
+ int test_fcvt (double) ;
+ int test_fenv () ;
+ int test_fops (double,int) ;
 
 void test_floats(void)
 {

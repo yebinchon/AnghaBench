@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  capability; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int capability; } ;
 struct TYPE_3__ {scalar_t__ brightness; scalar_t__ mailled; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACER_CAP_BRIGHTNESS ; 
- int /*<<< orphan*/  ACER_CAP_MAILLED ; 
- TYPE_2__* interface ; 
- TYPE_1__* quirks ; 
+
+ int ACER_CAP_BRIGHTNESS ;
+ int ACER_CAP_MAILLED ;
+ TYPE_2__* interface ;
+ TYPE_1__* quirks ;
 
 __attribute__((used)) static void set_quirks(void)
 {
-	if (!interface)
-		return;
+ if (!interface)
+  return;
 
-	if (quirks->mailled)
-		interface->capability |= ACER_CAP_MAILLED;
+ if (quirks->mailled)
+  interface->capability |= ACER_CAP_MAILLED;
 
-	if (quirks->brightness)
-		interface->capability |= ACER_CAP_BRIGHTNESS;
+ if (quirks->brightness)
+  interface->capability |= ACER_CAP_BRIGHTNESS;
 }

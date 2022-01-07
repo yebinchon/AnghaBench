@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {unsigned int base; int frames; } ;
-typedef  TYPE_1__ tt_time_t ;
+typedef TYPE_1__ tt_time_t ;
 
-/* Variables and functions */
- unsigned int CLOCK_FREQ ; 
- int asprintf (char**,char*,unsigned int,unsigned int,unsigned int,...) ; 
- int /*<<< orphan*/  tt_time_Valid (TYPE_1__*) ; 
+
+ unsigned int CLOCK_FREQ ;
+ int asprintf (char**,char*,unsigned int,unsigned int,unsigned int,...) ;
+ int tt_time_Valid (TYPE_1__*) ;
 
 __attribute__((used)) static char *tt_genTiming( tt_time_t t )
 {
@@ -35,10 +35,10 @@ __attribute__((used)) static char *tt_genTiming( tt_time_t t )
     {
         const char *lz = "000000";
         const char *psz_lz = &lz[6];
-        /* add leading zeroes */
+
         for( unsigned i=10*f; i<CLOCK_FREQ; i *= 10 )
             psz_lz--;
-        /* strip trailing zeroes */
+
         for( ; f > 0 && (f % 10) == 0; f /= 10 );
         i_ret = asprintf( &psz, "%02u:%02u:%02u.%s%u",
                                  h, m, s, psz_lz, f );
@@ -54,5 +54,5 @@ __attribute__((used)) static char *tt_genTiming( tt_time_t t )
                                  h, m, s );
     }
 
-    return i_ret < 0 ? NULL : psz;
+    return i_ret < 0 ? ((void*)0) : psz;
 }

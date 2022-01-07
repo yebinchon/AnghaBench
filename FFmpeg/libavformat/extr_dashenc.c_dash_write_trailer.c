@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  filename ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int filename ;
 struct TYPE_14__ {int nb_streams; char* url; TYPE_1__** streams; TYPE_3__* priv_data; } ;
 struct TYPE_13__ {char* dirname; scalar_t__ master_playlist_created; scalar_t__ hls_playlist; TYPE_2__* streams; scalar_t__ remove_at_exit; void* total_duration; void* last_duration; } ;
-struct TYPE_12__ {scalar_t__ segment_type; int /*<<< orphan*/  initfile; int /*<<< orphan*/  nb_segments; scalar_t__ first_pts; scalar_t__ max_pts; scalar_t__ start_pts; } ;
-struct TYPE_11__ {int /*<<< orphan*/  time_base; } ;
-typedef  TYPE_2__ OutputStream ;
-typedef  TYPE_3__ DASHContext ;
-typedef  TYPE_4__ AVFormatContext ;
+struct TYPE_12__ {scalar_t__ segment_type; int initfile; int nb_segments; scalar_t__ first_pts; scalar_t__ max_pts; scalar_t__ start_pts; } ;
+struct TYPE_11__ {int time_base; } ;
+typedef TYPE_2__ OutputStream ;
+typedef TYPE_3__ DASHContext ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_TIME_BASE_Q ; 
- scalar_t__ SEGMENT_TYPE_MP4 ; 
- void* av_rescale_q (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dash_flush (TYPE_4__*,int,int) ; 
- int /*<<< orphan*/  dashenc_delete_file (TYPE_4__*,char*) ; 
- int /*<<< orphan*/  dashenc_delete_media_segments (TYPE_4__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dashenc_delete_segment_file (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_hls_playlist_name (char*,int,char*,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
+
+ int AV_TIME_BASE_Q ;
+ scalar_t__ SEGMENT_TYPE_MP4 ;
+ void* av_rescale_q (scalar_t__,int ,int ) ;
+ int dash_flush (TYPE_4__*,int,int) ;
+ int dashenc_delete_file (TYPE_4__*,char*) ;
+ int dashenc_delete_media_segments (TYPE_4__*,TYPE_2__*,int ) ;
+ int dashenc_delete_segment_file (TYPE_4__*,int ) ;
+ int get_hls_playlist_name (char*,int,char*,int) ;
+ int snprintf (char*,int,char*,char*) ;
 
 __attribute__((used)) static int dash_write_trailer(AVFormatContext *s)
 {
@@ -41,8 +41,8 @@ __attribute__((used)) static int dash_write_trailer(AVFormatContext *s)
 
     if (s->nb_streams > 0) {
         OutputStream *os = &c->streams[0];
-        // If no segments have been written so far, try to do a crude
-        // guess of the segment duration
+
+
         if (!c->last_duration)
             c->last_duration = av_rescale_q(os->max_pts - os->start_pts,
                                             s->streams[0]->time_base,

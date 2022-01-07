@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
 
-/* Variables and functions */
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fatalx (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int vasprintf (char**,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int va_list ;
+
+
+ int errno ;
+ int fatalx (char*,int ) ;
+ int strerror (int ) ;
+ int vasprintf (char**,char const*,int ) ;
 
 int
 xvasprintf(char **ret, const char *fmt, va_list ap)
 {
-	int i;
+ int i;
 
-	i = vasprintf(ret, fmt, ap);
+ i = vasprintf(ret, fmt, ap);
 
-	if (i == -1)
-		fatalx("xasprintf: %s", strerror(errno));
+ if (i == -1)
+  fatalx("xasprintf: %s", strerror(errno));
 
-	return i;
+ return i;
 }

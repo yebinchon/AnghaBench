@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char* sds ;
 
-/* Variables and functions */
- int hex_digit_to_int (char const) ; 
- scalar_t__ is_hex_digit (char const) ; 
- scalar_t__ isspace (char const) ; 
- int /*<<< orphan*/  s_free (char**) ; 
- char** s_malloc (int) ; 
- char** s_realloc (char**,int) ; 
- char* sdscatlen (char*,char const*,int) ; 
- char* sdsempty () ; 
- int /*<<< orphan*/  sdsfree (char*) ; 
+
+
+
+typedef char* sds ;
+
+
+ int hex_digit_to_int (char const) ;
+ scalar_t__ is_hex_digit (char const) ;
+ scalar_t__ isspace (char const) ;
+ int s_free (char**) ;
+ char** s_malloc (int) ;
+ char** s_realloc (char**,int) ;
+ char* sdscatlen (char*,char const*,int) ;
+ char* sdsempty () ;
+ int sdsfree (char*) ;
 
 sds *sdssplitargs(const char *line, int *argc) {
     const char *p = line;
-    char *current = NULL;
-    char **vector = NULL;
+    char *current = ((void*)0);
+    char **vector = ((void*)0);
 
     *argc = 0;
     while(1) {
-        /* skip blanks */
+
         while(*p && isspace(*p)) p++;
         if (*p) {
-            /* get a token */
-            int inq=0;  /* set to 1 if we are in "quotes" */
-            int insq=0; /* set to 1 if we are in 'single quotes' */
+
+            int inq=0;
+            int insq=0;
             int done=0;
 
-            if (current == NULL) current = sdsempty();
+            if (current == ((void*)0)) current = sdsempty();
             while(!done) {
                 if (inq) {
                     if (*p == '\\' && *(p+1) == 'x' &&
@@ -65,12 +65,12 @@ sds *sdssplitargs(const char *line, int *argc) {
                         }
                         current = sdscatlen(current,&c,1);
                     } else if (*p == '"') {
-                        /* closing quote must be followed by a space or
-                         * nothing at all. */
+
+
                         if (*(p+1) && !isspace(*(p+1))) goto err;
                         done=1;
                     } else if (!*p) {
-                        /* unterminated quotes */
+
                         goto err;
                     } else {
                         current = sdscatlen(current,p,1);
@@ -80,12 +80,12 @@ sds *sdssplitargs(const char *line, int *argc) {
                         p++;
                         current = sdscatlen(current,"'",1);
                     } else if (*p == '\'') {
-                        /* closing quote must be followed by a space or
-                         * nothing at all. */
+
+
                         if (*(p+1) && !isspace(*(p+1))) goto err;
                         done=1;
                     } else if (!*p) {
-                        /* unterminated quotes */
+
                         goto err;
                     } else {
                         current = sdscatlen(current,p,1);
@@ -112,22 +112,22 @@ sds *sdssplitargs(const char *line, int *argc) {
                 }
                 if (*p) p++;
             }
-            /* add the token to the vector */
+
             {
                 char **new_vector = s_realloc(vector,((*argc)+1)*sizeof(char*));
-                if (new_vector == NULL) {
+                if (new_vector == ((void*)0)) {
                     s_free(vector);
-                    return NULL;
+                    return ((void*)0);
                 }
 
                 vector = new_vector;
                 vector[*argc] = current;
                 (*argc)++;
-                current = NULL;
+                current = ((void*)0);
             }
         } else {
-            /* Even on empty input string return something not NULL. */
-            if (vector == NULL) vector = s_malloc(sizeof(void*));
+
+            if (vector == ((void*)0)) vector = s_malloc(sizeof(void*));
             return vector;
         }
     }
@@ -138,5 +138,5 @@ err:
     s_free(vector);
     if (current) sdsfree(current);
     *argc = 0;
-    return NULL;
+    return ((void*)0);
 }

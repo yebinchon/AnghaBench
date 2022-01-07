@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {scalar_t__ exposed; int /*<<< orphan*/  name; int /*<<< orphan*/  hash_name; int /*<<< orphan*/  id; } ;
-struct TYPE_7__ {int /*<<< orphan*/  config_section; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ RRDSET ;
-typedef  TYPE_2__ RRDDIM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONFIG_MAX_NAME ; 
- int /*<<< orphan*/  D_RRD_CALLS ; 
- int /*<<< orphan*/  RRDSET_FLAG_UPSTREAM_EXPOSED ; 
- int /*<<< orphan*/  config_set_default (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  rrddimvar_rename_all (TYPE_2__*) ; 
- int /*<<< orphan*/  rrdset_flag_clear (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  simple_hash (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintfz (char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ unlikely (int) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {scalar_t__ exposed; int name; int hash_name; int id; } ;
+struct TYPE_7__ {int config_section; int name; } ;
+typedef TYPE_1__ RRDSET ;
+typedef TYPE_2__ RRDDIM ;
+
+
+ int CONFIG_MAX_NAME ;
+ int D_RRD_CALLS ;
+ int RRDSET_FLAG_UPSTREAM_EXPOSED ;
+ int config_set_default (int ,char*,char const*) ;
+ int debug (int ,char*,int ,int ,int ,char const*) ;
+ int rrddimvar_rename_all (TYPE_2__*) ;
+ int rrdset_flag_clear (TYPE_1__*,int ) ;
+ int simple_hash (int ) ;
+ int snprintfz (char*,int ,char*,int ) ;
+ int strcmp (int ,char const*) ;
+ scalar_t__ unlikely (int) ;
 
 inline int rrddim_set_name(RRDSET *st, RRDDIM *rd, const char *name) {
     if(unlikely(!name || !*name || !strcmp(rd->name, name)))

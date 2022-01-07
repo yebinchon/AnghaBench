@@ -1,174 +1,160 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {float value; float time; int shape; struct TYPE_10__* next; struct TYPE_10__* prev; } ;
-typedef  TYPE_1__ lwKey ;
+typedef TYPE_1__ lwKey ;
 struct TYPE_11__ {int nkeys; int* behavior; TYPE_1__* key; } ;
-typedef  TYPE_2__ lwEnvelope ;
-
-/* Variables and functions */
-#define  BEH_CONSTANT 139 
-#define  BEH_LINEAR 138 
-#define  BEH_OFFSET 137 
-#define  BEH_OSCILLATE 136 
-#define  BEH_REPEAT 135 
-#define  BEH_RESET 134 
-#define  ID_BEZ2 133 
-#define  ID_BEZI 132 
-#define  ID_HERM 131 
-#define  ID_LINE 130 
-#define  ID_STEP 129 
-#define  ID_TCB 128 
- int /*<<< orphan*/  bez2 (TYPE_1__*,TYPE_1__*,float) ; 
- int /*<<< orphan*/  hermite (float,float*,float*,float*,float*) ; 
- float incoming (TYPE_1__*,TYPE_1__*) ; 
- float outgoing (TYPE_1__*,TYPE_1__*) ; 
- float range (float,float,float,int*) ; 
+typedef TYPE_2__ lwEnvelope ;
+ int bez2 (TYPE_1__*,TYPE_1__*,float) ;
+ int hermite (float,float*,float*,float*,float*) ;
+ float incoming (TYPE_1__*,TYPE_1__*) ;
+ float outgoing (TYPE_1__*,TYPE_1__*) ;
+ float range (float,float,float,int*) ;
 
 float evalEnvelope( lwEnvelope *env, float time ){
-	lwKey *key0, *key1, *skey, *ekey;
-	float t, h1, h2, h3, h4, in, out, offset = 0.0f;
-	int noff;
+ lwKey *key0, *key1, *skey, *ekey;
+ float t, h1, h2, h3, h4, in, out, offset = 0.0f;
+ int noff;
 
 
-	/* if there's no key, the value is 0 */
 
-	if ( env->nkeys == 0 ) {
-		return 0.0f;
-	}
 
-	/* if there's only one key, the value is constant */
+ if ( env->nkeys == 0 ) {
+  return 0.0f;
+ }
 
-	if ( env->nkeys == 1 ) {
-		return env->key->value;
-	}
 
-	/* find the first and last keys */
 
-	skey = ekey = env->key;
-	while ( ekey->next ) ekey = ekey->next;
+ if ( env->nkeys == 1 ) {
+  return env->key->value;
+ }
 
-	/* use pre-behavior if time is before first key time */
 
-	if ( time < skey->time ) {
-		switch ( env->behavior[ 0 ] )
-		{
-		case BEH_RESET:
-			return 0.0f;
 
-		case BEH_CONSTANT:
-			return skey->value;
+ skey = ekey = env->key;
+ while ( ekey->next ) ekey = ekey->next;
 
-		case BEH_REPEAT:
-			time = range( time, skey->time, ekey->time, NULL );
-			break;
 
-		case BEH_OSCILLATE:
-			time = range( time, skey->time, ekey->time, &noff );
-			if ( noff % 2 ) {
-				time = ekey->time - skey->time - time;
-			}
-			break;
 
-		case BEH_OFFSET:
-			time = range( time, skey->time, ekey->time, &noff );
-			offset = noff * ( ekey->value - skey->value );
-			break;
+ if ( time < skey->time ) {
+  switch ( env->behavior[ 0 ] )
+  {
+  case 134:
+   return 0.0f;
 
-		case BEH_LINEAR:
-			out = outgoing( skey, skey->next )
-				  / ( skey->next->time - skey->time );
-			return out * ( time - skey->time ) + skey->value;
-		}
-	}
+  case 139:
+   return skey->value;
 
-	/* use post-behavior if time is after last key time */
+  case 135:
+   time = range( time, skey->time, ekey->time, ((void*)0) );
+   break;
 
-	else if ( time > ekey->time ) {
-		switch ( env->behavior[ 1 ] )
-		{
-		case BEH_RESET:
-			return 0.0f;
+  case 136:
+   time = range( time, skey->time, ekey->time, &noff );
+   if ( noff % 2 ) {
+    time = ekey->time - skey->time - time;
+   }
+   break;
 
-		case BEH_CONSTANT:
-			return ekey->value;
+  case 137:
+   time = range( time, skey->time, ekey->time, &noff );
+   offset = noff * ( ekey->value - skey->value );
+   break;
 
-		case BEH_REPEAT:
-			time = range( time, skey->time, ekey->time, NULL );
-			break;
+  case 138:
+   out = outgoing( skey, skey->next )
+      / ( skey->next->time - skey->time );
+   return out * ( time - skey->time ) + skey->value;
+  }
+ }
 
-		case BEH_OSCILLATE:
-			time = range( time, skey->time, ekey->time, &noff );
-			if ( noff % 2 ) {
-				time = ekey->time - skey->time - time;
-			}
-			break;
 
-		case BEH_OFFSET:
-			time = range( time, skey->time, ekey->time, &noff );
-			offset = noff * ( ekey->value - skey->value );
-			break;
 
-		case BEH_LINEAR:
-			in = incoming( ekey->prev, ekey )
-				 / ( ekey->time - ekey->prev->time );
-			return in * ( time - ekey->time ) + ekey->value;
-		}
-	}
+ else if ( time > ekey->time ) {
+  switch ( env->behavior[ 1 ] )
+  {
+  case 134:
+   return 0.0f;
 
-	/* get the endpoints of the interval being evaluated */
+  case 139:
+   return ekey->value;
 
-	key0 = env->key;
-	while ( time > key0->next->time )
-		key0 = key0->next;
-	key1 = key0->next;
+  case 135:
+   time = range( time, skey->time, ekey->time, ((void*)0) );
+   break;
 
-	/* check for singularities first */
+  case 136:
+   time = range( time, skey->time, ekey->time, &noff );
+   if ( noff % 2 ) {
+    time = ekey->time - skey->time - time;
+   }
+   break;
 
-	if ( time == key0->time ) {
-		return key0->value + offset;
-	}
-	else if ( time == key1->time ) {
-		return key1->value + offset;
-	}
+  case 137:
+   time = range( time, skey->time, ekey->time, &noff );
+   offset = noff * ( ekey->value - skey->value );
+   break;
 
-	/* get interval length, time in [0, 1] */
+  case 138:
+   in = incoming( ekey->prev, ekey )
+     / ( ekey->time - ekey->prev->time );
+   return in * ( time - ekey->time ) + ekey->value;
+  }
+ }
 
-	t = ( time - key0->time ) / ( key1->time - key0->time );
 
-	/* interpolate */
 
-	switch ( key1->shape )
-	{
-	case ID_TCB:
-	case ID_BEZI:
-	case ID_HERM:
-		out = outgoing( key0, key1 );
-		in = incoming( key0, key1 );
-		hermite( t, &h1, &h2, &h3, &h4 );
-		return h1 * key0->value + h2 * key1->value + h3 * out + h4 * in + offset;
+ key0 = env->key;
+ while ( time > key0->next->time )
+  key0 = key0->next;
+ key1 = key0->next;
 
-	case ID_BEZ2:
-		return bez2( key0, key1, time ) + offset;
 
-	case ID_LINE:
-		return key0->value + t * ( key1->value - key0->value ) + offset;
 
-	case ID_STEP:
-		return key0->value + offset;
+ if ( time == key0->time ) {
+  return key0->value + offset;
+ }
+ else if ( time == key1->time ) {
+  return key1->value + offset;
+ }
 
-	default:
-		return offset;
-	}
+
+
+ t = ( time - key0->time ) / ( key1->time - key0->time );
+
+
+
+ switch ( key1->shape )
+ {
+ case 128:
+ case 132:
+ case 131:
+  out = outgoing( key0, key1 );
+  in = incoming( key0, key1 );
+  hermite( t, &h1, &h2, &h3, &h4 );
+  return h1 * key0->value + h2 * key1->value + h3 * out + h4 * in + offset;
+
+ case 133:
+  return bez2( key0, key1, time ) + offset;
+
+ case 130:
+  return key0->value + t * ( key1->value - key0->value ) + offset;
+
+ case 129:
+  return key0->value + offset;
+
+ default:
+  return offset;
+ }
 }

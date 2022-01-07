@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int int64_t ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  int /*<<< orphan*/  AVDictionary ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- char* LIBAVFORMAT_IDENT ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * av_malloc (int) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  bytestream_put_be24 (int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  bytestream_put_byte (int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  ff_metadata_conv (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int ff_vorbiscomment_length (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_vorbiscomment_metadata_conv ; 
- int /*<<< orphan*/  ff_vorbiscomment_write (int /*<<< orphan*/ **,int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef int int64_t ;
+typedef int AVIOContext ;
+typedef int AVDictionary ;
+
+
+ int AVERROR (int ) ;
+ int EINVAL ;
+ int ENOMEM ;
+ char* LIBAVFORMAT_IDENT ;
+ int av_freep (int **) ;
+ int * av_malloc (int) ;
+ int avio_write (int *,int *,int) ;
+ int bytestream_put_be24 (int **,int) ;
+ int bytestream_put_byte (int **,int) ;
+ int ff_metadata_conv (int **,int ,int *) ;
+ int ff_vorbiscomment_length (int *,char const*,int *,int ) ;
+ int ff_vorbiscomment_metadata_conv ;
+ int ff_vorbiscomment_write (int **,int **,char const*,int *,int ) ;
 
 __attribute__((used)) static int flac_write_block_comment(AVIOContext *pb, AVDictionary **m,
                                     int last_block, int bitexact)
@@ -37,9 +37,9 @@ __attribute__((used)) static int flac_write_block_comment(AVIOContext *pb, AVDic
     int64_t len;
     uint8_t *p, *p0;
 
-    ff_metadata_conv(m, ff_vorbiscomment_metadata_conv, NULL);
+    ff_metadata_conv(m, ff_vorbiscomment_metadata_conv, ((void*)0));
 
-    len = ff_vorbiscomment_length(*m, vendor, NULL, 0);
+    len = ff_vorbiscomment_length(*m, vendor, ((void*)0), 0);
     if (len >= ((1<<24) - 4))
         return AVERROR(EINVAL);
     p0 = av_malloc(len+4);
@@ -49,11 +49,11 @@ __attribute__((used)) static int flac_write_block_comment(AVIOContext *pb, AVDic
 
     bytestream_put_byte(&p, last_block ? 0x84 : 0x04);
     bytestream_put_be24(&p, len);
-    ff_vorbiscomment_write(&p, m, vendor, NULL, 0);
+    ff_vorbiscomment_write(&p, m, vendor, ((void*)0), 0);
 
     avio_write(pb, p0, len+4);
     av_freep(&p0);
-    p = NULL;
+    p = ((void*)0);
 
     return 0;
 }

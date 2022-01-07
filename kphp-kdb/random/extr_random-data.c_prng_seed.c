@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timespec {unsigned short tv_sec; unsigned short tv_nsec; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_REALTIME ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  RAND_seed (unsigned char*,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- unsigned char* calloc (int,int) ; 
- scalar_t__ clock_gettime (int /*<<< orphan*/ ,struct timespec*) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- int get_random_bytes (unsigned char*,int) ; 
- unsigned short getpid () ; 
- int /*<<< orphan*/  kprintf (char*,char const*) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,...) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int open (char const*,int /*<<< orphan*/ ) ; 
- long long rdtsc () ; 
- int read (int,unsigned char*,int) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int) ; 
+
+ int CLOCK_REALTIME ;
+ int O_RDONLY ;
+ int RAND_seed (unsigned char*,int) ;
+ int assert (int) ;
+ unsigned char* calloc (int,int) ;
+ scalar_t__ clock_gettime (int ,struct timespec*) ;
+ int close (int) ;
+ int free (unsigned char*) ;
+ int get_random_bytes (unsigned char*,int) ;
+ unsigned short getpid () ;
+ int kprintf (char*,char const*) ;
+ int memcpy (unsigned char*,...) ;
+ int memset (unsigned char*,int ,int) ;
+ int open (char const*,int ) ;
+ long long rdtsc () ;
+ int read (int,unsigned char*,int) ;
+ int vkprintf (int,char*,int) ;
 
 __attribute__((used)) static void prng_seed (const char *password_filename, int password_length) {
   unsigned char *a = calloc (64 + password_length, 1);
-  assert (a != NULL);
+  assert (a != ((void*)0));
   long long r = rdtsc ();
   struct timespec T;
   assert (clock_gettime(CLOCK_REALTIME, &T) >= 0);

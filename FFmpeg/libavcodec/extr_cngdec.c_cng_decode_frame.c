@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int16_t ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int int16_t ;
 struct TYPE_14__ {int frame_size; TYPE_1__* internal; TYPE_2__* priv_data; } ;
 struct TYPE_13__ {int nb_samples; scalar_t__* data; } ;
 struct TYPE_12__ {int size; int* data; } ;
-struct TYPE_11__ {int target_energy; int* target_refl_coef; int order; int inited; int energy; double* refl_coef; float* excitation; double* filter_out; int /*<<< orphan*/  lpc_coef; int /*<<< orphan*/  lfg; } ;
+struct TYPE_11__ {int target_energy; int* target_refl_coef; int order; int inited; int energy; double* refl_coef; float* excitation; double* filter_out; int lpc_coef; int lfg; } ;
 struct TYPE_10__ {int skip_samples; } ;
-typedef  TYPE_2__ CNGContext ;
-typedef  TYPE_3__ AVPacket ;
-typedef  TYPE_4__ AVFrame ;
-typedef  TYPE_5__ AVCodecContext ;
+typedef TYPE_2__ CNGContext ;
+typedef TYPE_3__ AVPacket ;
+typedef TYPE_4__ AVFrame ;
+typedef TYPE_5__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int FFMIN (int,int) ; 
- int /*<<< orphan*/  av_clip_int16 (double) ; 
- int av_lfg_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_celp_lp_synthesis_filterf (double*,int /*<<< orphan*/ ,float*,int,int) ; 
- int ff_exp10 (int) ; 
- int ff_get_buffer (TYPE_5__*,TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  make_lpc_coefs (int /*<<< orphan*/ ,double*,int) ; 
- int /*<<< orphan*/  memcpy (double*,double*,int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- float sqrt (float) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int FFMIN (int,int) ;
+ int av_clip_int16 (double) ;
+ int av_lfg_get (int *) ;
+ int ff_celp_lp_synthesis_filterf (double*,int ,float*,int,int) ;
+ int ff_exp10 (int) ;
+ int ff_get_buffer (TYPE_5__*,TYPE_4__*,int ) ;
+ int make_lpc_coefs (int ,double*,int) ;
+ int memcpy (double*,double*,int) ;
+ int memset (int*,int ,int) ;
+ float sqrt (float) ;
 
 __attribute__((used)) static int cng_decode_frame(AVCodecContext *avctx, void *data,
                             int *got_frame_ptr, AVPacket *avpkt)
 {
     AVFrame *frame = data;
     CNGContext *p = avctx->priv_data;
-    int buf_size  = avpkt->size;
+    int buf_size = avpkt->size;
     int ret, i;
     int16_t *buf_out;
     float e = 1.0;

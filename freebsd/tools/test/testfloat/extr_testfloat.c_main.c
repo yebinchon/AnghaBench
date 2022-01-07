@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8 ;
-typedef  int int8 ;
-typedef  void* flag ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef size_t uint8 ;
+typedef int int8 ;
+typedef void* flag ;
 struct TYPE_2__ {char* name; int numInputs; } ;
 
-/* Variables and functions */
- int EXIT_SUCCESS ; 
- void* FALSE ; 
- size_t NUM_FUNCTIONS ; 
- int ROUND_DOWN ; 
- int ROUND_NEAREST_EVEN ; 
- int ROUND_TO_ZERO ; 
- int ROUND_UP ; 
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  SIGTERM ; 
- void* TRUE ; 
- int atoi (char*) ; 
- int /*<<< orphan*/  catchSIGINT ; 
- void* checkNaNs ; 
- void* errorStop ; 
- int /*<<< orphan*/  exitWithStatus () ; 
- int /*<<< orphan*/  fail (char*,...) ; 
- char* fail_programName ; 
- int /*<<< orphan*/  float_detect_tininess ; 
- int /*<<< orphan*/  float_exception_flags ; 
- int /*<<< orphan*/  float_tininess_after_rounding ; 
- int /*<<< orphan*/  float_tininess_before_rounding ; 
- void* forever ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ ) ; 
- scalar_t__* functionExists ; 
- TYPE_1__* functions ; 
- int maxErrorCount ; 
- int /*<<< orphan*/  puts (char*) ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  syst_float_flags_clear ; 
- int /*<<< orphan*/  testCases_setLevel (int) ; 
- int /*<<< orphan*/  testFlagsFunctionPtr ; 
- int /*<<< orphan*/  testFunction (size_t,int,int) ; 
- char* testName ; 
- scalar_t__ tininessModeName ; 
- int /*<<< orphan*/ * trueFlagsPtr ; 
- char* trueName ; 
+
+ int EXIT_SUCCESS ;
+ void* FALSE ;
+ size_t NUM_FUNCTIONS ;
+ int ROUND_DOWN ;
+ int ROUND_NEAREST_EVEN ;
+ int ROUND_TO_ZERO ;
+ int ROUND_UP ;
+ int SIGINT ;
+ int SIGTERM ;
+ void* TRUE ;
+ int atoi (char*) ;
+ int catchSIGINT ;
+ void* checkNaNs ;
+ void* errorStop ;
+ int exitWithStatus () ;
+ int fail (char*,...) ;
+ char* fail_programName ;
+ int float_detect_tininess ;
+ int float_exception_flags ;
+ int float_tininess_after_rounding ;
+ int float_tininess_before_rounding ;
+ void* forever ;
+ int fputs (char*,int ) ;
+ scalar_t__* functionExists ;
+ TYPE_1__* functions ;
+ int maxErrorCount ;
+ int puts (char*) ;
+ int signal (int ,int ) ;
+ int stdout ;
+ scalar_t__ strcmp (char*,char*) ;
+ int syst_float_flags_clear ;
+ int testCases_setLevel (int) ;
+ int testFlagsFunctionPtr ;
+ int testFunction (size_t,int,int) ;
+ char* testName ;
+ scalar_t__ tininessModeName ;
+ int * trueFlagsPtr ;
+ char* trueName ;
 
 int
 main( int argc, char **argv )
@@ -98,11 +98,11 @@ main( int argc, char **argv )
 "    -errorstop       --Exit after first function with any error.\n"
 "    -forever         --Test one function repeatedly (implies `-level 2').\n"
 "    -checkNaNs       --Check for bitwise correctness of NaN results.\n"
-#ifdef FLOATX80
-"    -precision32     --Only test rounding precision equivalent to float32.\n"
-"    -precision64     --Only test rounding precision equivalent to float64.\n"
-"    -precision80     --Only test maximum rounding precision.\n"
-#endif
+
+
+
+
+
 "    -nearesteven     --Only test rounding to nearest/even.\n"
 "    -tozero          --Only test rounding to zero.\n"
 "    -down            --Only test rounding down.\n"
@@ -113,30 +113,22 @@ main( int argc, char **argv )
 "    int32_to_<float>                 <float>_add   <float>_eq\n"
 "    <float>_to_int32                 <float>_sub   <float>_le\n"
 "    <float>_to_int32_round_to_zero   <float>_mul   <float>_lt\n"
-#ifdef BITS64
-"    int64_to_<float>                 <float>_div   <float>_eq_signaling\n"
-"    <float>_to_int64                 <float>_rem   <float>_le_quiet\n"
-"    <float>_to_int64_round_to_zero                 <float>_lt_quiet\n"
-"    <float>_to_<float>\n"
-"    <float>_round_to_int\n"
-"    <float>_sqrt\n"
-#else
 "    <float>_to_<float>               <float>_div   <float>_eq_signaling\n"
 "    <float>_round_to_int             <float>_rem   <float>_le_quiet\n"
 "    <float>_sqrt                                   <float>_lt_quiet\n"
-#endif
+
 "    -all1            --All 1-operand functions.\n"
 "    -all2            --All 2-operand functions.\n"
 "    -all             --All functions.\n"
 "  <float>:\n"
 "    float32          --Single precision.\n"
 "    float64          --Double precision.\n"
-#ifdef FLOATX80
-"    floatx80         --Extended double precision.\n"
-#endif
-#ifdef FLOAT128
-"    float128         --Quadruple precision.\n"
-#endif
+
+
+
+
+
+
                 ,
                 stdout
             );
@@ -181,26 +173,15 @@ main( int argc, char **argv )
             testCases_setLevel( 2 );
             forever = TRUE;
         }
-        else if (    ( strcmp( argPtr, "checkNaNs" ) == 0 )
+        else if ( ( strcmp( argPtr, "checkNaNs" ) == 0 )
                   || ( strcmp( argPtr, "checknans" ) == 0 ) ) {
             checkNaNs = TRUE;
         }
-#ifdef FLOATX80
-        else if ( strcmp( argPtr, "precision32" ) == 0 ) {
-            roundingPrecision = 32;
-        }
-        else if ( strcmp( argPtr, "precision64" ) == 0 ) {
-            roundingPrecision = 64;
-        }
-        else if ( strcmp( argPtr, "precision80" ) == 0 ) {
-            roundingPrecision = 80;
-        }
-#endif
-        else if (    ( strcmp( argPtr, "nearesteven" ) == 0 )
+        else if ( ( strcmp( argPtr, "nearesteven" ) == 0 )
                   || ( strcmp( argPtr, "nearest_even" ) == 0 ) ) {
             roundingMode = ROUND_NEAREST_EVEN;
         }
-        else if (    ( strcmp( argPtr, "tozero" ) == 0 )
+        else if ( ( strcmp( argPtr, "tozero" ) == 0 )
                   || ( strcmp( argPtr, "to_zero" ) == 0 ) ) {
             roundingMode = ROUND_TO_ZERO;
         }
@@ -273,7 +254,7 @@ main( int argc, char **argv )
                   functionCode < NUM_FUNCTIONS;
                   ++functionCode
                 ) {
-                if (    functionExists[ functionCode ]
+                if ( functionExists[ functionCode ]
                      && ( functions[ functionCode ].numInputs == 1 ) ) {
                     testFunction(
                         functionCode, roundingPrecision, roundingMode );
@@ -285,7 +266,7 @@ main( int argc, char **argv )
                   functionCode < NUM_FUNCTIONS;
                   ++functionCode
                 ) {
-                if (    functionExists[ functionCode ]
+                if ( functionExists[ functionCode ]
                      && ( functions[ functionCode ].numInputs == 2 ) ) {
                     testFunction(
                         functionCode, roundingPrecision, roundingMode );

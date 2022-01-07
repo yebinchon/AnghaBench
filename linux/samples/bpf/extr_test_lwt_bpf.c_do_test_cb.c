@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct __sk_buff {int /*<<< orphan*/ * cb; } ;
 
-/* Variables and functions */
- int BPF_OK ; 
- int /*<<< orphan*/  printk (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
+
+
+
+struct __sk_buff {int * cb; } ;
+
+
+ int BPF_OK ;
+ int printk (char*,int ,int ,...) ;
 
 int do_test_cb(struct __sk_buff *skb)
 {
-	printk("cb0: %x cb1: %x cb2: %x\n", skb->cb[0], skb->cb[1],
-	       skb->cb[2]);
-	printk("cb3: %x cb4: %x\n", skb->cb[3], skb->cb[4]);
+ printk("cb0: %x cb1: %x cb2: %x\n", skb->cb[0], skb->cb[1],
+        skb->cb[2]);
+ printk("cb3: %x cb4: %x\n", skb->cb[3], skb->cb[4]);
 
-	return BPF_OK;
+ return BPF_OK;
 }

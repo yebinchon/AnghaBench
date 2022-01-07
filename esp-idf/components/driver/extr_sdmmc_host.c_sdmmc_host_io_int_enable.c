@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  esp_err_t ;
-struct TYPE_2__ {int /*<<< orphan*/  d1_gpio; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_OK ; 
- int /*<<< orphan*/  configure_pin (int /*<<< orphan*/ ) ; 
- TYPE_1__* sdmmc_slot_info ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int esp_err_t ;
+struct TYPE_2__ {int d1_gpio; } ;
+
+
+ int ESP_OK ;
+ int configure_pin (int ) ;
+ TYPE_1__* sdmmc_slot_info ;
 
 esp_err_t sdmmc_host_io_int_enable(int slot)
 {

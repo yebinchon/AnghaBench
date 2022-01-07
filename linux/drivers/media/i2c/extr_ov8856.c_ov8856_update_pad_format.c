@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct v4l2_mbus_framefmt {int /*<<< orphan*/  field; int /*<<< orphan*/  code; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
-struct ov8856_mode {int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MEDIA_BUS_FMT_SGRBG10_1X10 ; 
- int /*<<< orphan*/  V4L2_FIELD_NONE ; 
+
+
+
+struct v4l2_mbus_framefmt {int field; int code; int height; int width; } ;
+struct ov8856_mode {int height; int width; } ;
+
+
+ int MEDIA_BUS_FMT_SGRBG10_1X10 ;
+ int V4L2_FIELD_NONE ;
 
 __attribute__((used)) static void ov8856_update_pad_format(const struct ov8856_mode *mode,
-				     struct v4l2_mbus_framefmt *fmt)
+         struct v4l2_mbus_framefmt *fmt)
 {
-	fmt->width = mode->width;
-	fmt->height = mode->height;
-	fmt->code = MEDIA_BUS_FMT_SGRBG10_1X10;
-	fmt->field = V4L2_FIELD_NONE;
+ fmt->width = mode->width;
+ fmt->height = mode->height;
+ fmt->code = MEDIA_BUS_FMT_SGRBG10_1X10;
+ fmt->field = V4L2_FIELD_NONE;
 }

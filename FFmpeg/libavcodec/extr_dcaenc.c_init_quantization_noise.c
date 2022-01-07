@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-struct TYPE_6__ {int consumed_bits; int fullband_channels; int** peak_cb; int* band_masking_cb; int** abits; int** prediction_mode; int /*<<< orphan*/ * quant_index_sel; int /*<<< orphan*/ ** quantized; int /*<<< orphan*/ ** quant; int /*<<< orphan*/ ** scale_factor; int /*<<< orphan*/ * bit_allocation_sel; scalar_t__ lfe_channel; scalar_t__ consumed_adpcm_bits; } ;
-typedef  TYPE_1__ DCAEncContext ;
 
-/* Variables and functions */
- int DCA_CODE_BOOKS ; 
- int MAX_CHANNELS ; 
- int USED_1ABITS ; 
- int USED_26ABITS ; 
- int /*<<< orphan*/  accumulate_huff_bit_consumption (int,int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__* bit_consumption ; 
- int /*<<< orphan*/  calc_one_scale (TYPE_1__*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (scalar_t__**,int /*<<< orphan*/ ,int) ; 
- void* mul32 (int,int) ; 
- int /*<<< orphan*/  quantize_adpcm (TYPE_1__*) ; 
- int /*<<< orphan*/  quantize_pcm (TYPE_1__*) ; 
- scalar_t__ set_best_abits_code (int*,int,int /*<<< orphan*/ *) ; 
- scalar_t__ set_best_code (scalar_t__**,scalar_t__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+struct TYPE_6__ {int consumed_bits; int fullband_channels; int** peak_cb; int* band_masking_cb; int** abits; int** prediction_mode; int * quant_index_sel; int ** quantized; int ** quant; int ** scale_factor; int * bit_allocation_sel; scalar_t__ lfe_channel; scalar_t__ consumed_adpcm_bits; } ;
+typedef TYPE_1__ DCAEncContext ;
+
+
+ int DCA_CODE_BOOKS ;
+ int MAX_CHANNELS ;
+ int USED_1ABITS ;
+ int USED_26ABITS ;
+ int accumulate_huff_bit_consumption (int,int ,scalar_t__*) ;
+ scalar_t__* bit_consumption ;
+ int calc_one_scale (TYPE_1__*,int,int,int *) ;
+ int memset (scalar_t__**,int ,int) ;
+ void* mul32 (int,int) ;
+ int quantize_adpcm (TYPE_1__*) ;
+ int quantize_pcm (TYPE_1__*) ;
+ scalar_t__ set_best_abits_code (int*,int,int *) ;
+ scalar_t__ set_best_code (scalar_t__**,scalar_t__*,int ) ;
 
 __attribute__((used)) static int init_quantization_noise(DCAEncContext *c, int noise, int forbid_zero)
 {
@@ -42,7 +42,7 @@ __attribute__((used)) static int init_quantization_noise(DCAEncContext *c, int n
     if (c->lfe_channel)
         c->consumed_bits += 72;
 
-    /* attempt to guess the bit distribution based on the prevoius frame */
+
     for (ch = 0; ch < c->fullband_channels; ch++) {
         for (band = 0; band < 32; band++) {
             int snr_cb = c->peak_cb[ch][band] - c->band_masking_cb[band] - noise;
@@ -68,9 +68,9 @@ __attribute__((used)) static int init_quantization_noise(DCAEncContext *c, int n
                                                 &c->bit_allocation_sel[ch]);
     }
 
-    /* Recalc scale_factor each time to get bits consumption in case of Huffman coding.
-       It is suboptimal solution */
-    /* TODO: May be cache scaled values */
+
+
+
     for (ch = 0; ch < c->fullband_channels; ch++) {
         for (band = 0; band < 32; band++) {
             if (c->prediction_mode[ch][band] == -1) {

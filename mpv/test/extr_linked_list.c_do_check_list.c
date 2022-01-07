@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct the_list {struct list_item* tail; struct list_item* head; } ;
 struct TYPE_2__ {struct list_item* prev; struct list_item* next; } ;
 struct list_item {int v; TYPE_1__ list_node; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert_true (int) ; 
+
+ int assert_true (int) ;
 
 __attribute__((used)) static bool do_check_list(struct the_list *lst, int *c, int num_c)
 {
@@ -40,16 +40,16 @@ __attribute__((used)) static bool do_check_list(struct the_list *lst, int *c, in
         }
 
         if (num_c < 1)
-            return false;
+            return 0;
         if (c[0] != cur->v)
-            return false;
+            return 0;
 
         num_c--;
         c++;
     }
 
     if (num_c)
-        return false;
+        return 0;
 
-    return true;
+    return 1;
 }

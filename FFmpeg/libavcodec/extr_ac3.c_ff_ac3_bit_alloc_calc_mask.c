@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int int16_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int16_t ;
 struct TYPE_3__ {int slow_gain; int fast_decay; int slow_decay; int cpl_fast_leak; int cpl_slow_leak; int db_per_bit; int sr_shift; size_t sr_code; } ;
-typedef  TYPE_1__ AC3BitAllocParameters ;
+typedef TYPE_1__ AC3BitAllocParameters ;
 
-/* Variables and functions */
- int AC3_CRITICAL_BANDS ; 
- int AVERROR_INVALIDDATA ; 
- int DBA_NEW ; 
- int DBA_REUSE ; 
- int FFMAX (int,int) ; 
- int FFMIN (int,int) ; 
- int calc_lowcomp (int,int,int,int) ; 
- int calc_lowcomp1 (int,int,int,int) ; 
- int* ff_ac3_bin_to_band_tab ; 
- int** ff_ac3_hearing_threshold_tab ; 
+
+ int AC3_CRITICAL_BANDS ;
+ int AVERROR_INVALIDDATA ;
+ int DBA_NEW ;
+ int DBA_REUSE ;
+ int FFMAX (int,int) ;
+ int FFMIN (int,int) ;
+ int calc_lowcomp (int,int,int,int) ;
+ int calc_lowcomp1 (int,int,int,int) ;
+ int* ff_ac3_bin_to_band_tab ;
+ int** ff_ac3_hearing_threshold_tab ;
 
 int ff_ac3_bit_alloc_calc_mask(AC3BitAllocParameters *s, int16_t *band_psd,
                                int start, int end, int fast_gain, int is_lfe,
@@ -34,7 +34,7 @@ int ff_ac3_bit_alloc_calc_mask(AC3BitAllocParameters *s, int16_t *band_psd,
                                uint8_t *dba_lengths, uint8_t *dba_values,
                                int16_t *mask)
 {
-    int16_t excite[AC3_CRITICAL_BANDS]; /* excitation */
+    int16_t excite[AC3_CRITICAL_BANDS];
     int band;
     int band_start, band_end, begin, end1;
     int lowcomp, fastleak, slowleak;
@@ -42,9 +42,9 @@ int ff_ac3_bit_alloc_calc_mask(AC3BitAllocParameters *s, int16_t *band_psd,
     if (end <= 0)
         return AVERROR_INVALIDDATA;
 
-    /* excitation function */
+
     band_start = ff_ac3_bin_to_band_tab[start];
-    band_end   = ff_ac3_bin_to_band_tab[end-1] + 1;
+    band_end = ff_ac3_bin_to_band_tab[end-1] + 1;
 
     if (band_start == 0) {
         lowcomp = 0;
@@ -77,7 +77,7 @@ int ff_ac3_bit_alloc_calc_mask(AC3BitAllocParameters *s, int16_t *band_psd,
         }
         begin = 22;
     } else {
-        /* coupling channel */
+
         begin = band_start;
         fastleak = (s->cpl_fast_leak << 8) + 768;
         slowleak = (s->cpl_slow_leak << 8) + 768;
@@ -89,7 +89,7 @@ int ff_ac3_bit_alloc_calc_mask(AC3BitAllocParameters *s, int16_t *band_psd,
         excite[band] = FFMAX(fastleak, slowleak);
     }
 
-    /* compute masking curve */
+
 
     for (band = band_start; band < band_end; band++) {
         int tmp = s->db_per_bit - band_psd[band];
@@ -99,7 +99,7 @@ int ff_ac3_bit_alloc_calc_mask(AC3BitAllocParameters *s, int16_t *band_psd,
         mask[band] = FFMAX(ff_ac3_hearing_threshold_tab[band >> s->sr_shift][s->sr_code], excite[band]);
     }
 
-    /* delta bit allocation */
+
 
     if (dba_mode == DBA_REUSE || dba_mode == DBA_NEW) {
         int i, seg, delta;

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int LRESULT ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  scalar_t__ LPDWORD ;
-typedef  char* LPCWSTR ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int /*<<< orphan*/  HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int KEY_READ ; 
- int KEY_WRITE ; 
- int /*<<< orphan*/  REG_OPTION_NON_VOLATILE ; 
- int RegCreateKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- int RegOpenKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lstrcatW (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  lstrcpyW (int /*<<< orphan*/ ,char const*) ; 
- int lstrlenW (char const*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int LRESULT ;
+typedef int LPWSTR ;
+typedef scalar_t__ LPDWORD ;
+typedef char* LPCWSTR ;
+typedef int LONG ;
+typedef int HKEY ;
+
+
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ int HKEY_CURRENT_USER ;
+ int HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int ) ;
+ int KEY_READ ;
+ int KEY_WRITE ;
+ int REG_OPTION_NON_VOLATILE ;
+ int RegCreateKeyExW (int ,int ,int ,int *,int ,int,int *,int *,scalar_t__) ;
+ int RegOpenKeyExW (int ,int ,int ,int,int *) ;
+ int lstrcatW (int ,char*) ;
+ int lstrcpyW (int ,char const*) ;
+ int lstrlenW (char const*) ;
 
 __attribute__((used)) static LRESULT registry_get_handle(HKEY *hKey, LPDWORD action, LPCWSTR subKey)
 {
@@ -61,8 +61,8 @@ __attribute__((used)) static LRESULT registry_get_handle(HKEY *hKey, LPDWORD act
 
         if(action)
         {
-            ret = RegCreateKeyExW(HKEY_CURRENT_USER, key, 0, NULL, REG_OPTION_NON_VOLATILE,
-                                  KEY_READ | KEY_WRITE, NULL, hKey, action);
+            ret = RegCreateKeyExW(HKEY_CURRENT_USER, key, 0, ((void*)0), REG_OPTION_NON_VOLATILE,
+                                  KEY_READ | KEY_WRITE, ((void*)0), hKey, action);
         } else
         {
             ret = RegOpenKeyExW(HKEY_CURRENT_USER, key, 0, KEY_READ | KEY_WRITE, hKey);

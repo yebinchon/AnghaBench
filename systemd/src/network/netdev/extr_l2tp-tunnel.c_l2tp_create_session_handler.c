@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_netlink_message ;
-typedef  int /*<<< orphan*/  sd_netlink ;
-struct TYPE_5__ {int /*<<< orphan*/  name; struct TYPE_5__* tunnel; } ;
-typedef  int /*<<< orphan*/  NetDev ;
-typedef  TYPE_1__ L2tpSession ;
 
-/* Variables and functions */
- int EEXIST ; 
- int /*<<< orphan*/ * NETDEV (TYPE_1__*) ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  log_netdev_debug (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_netdev_info (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_netdev_warning_errno (int /*<<< orphan*/ *,int,char*,int /*<<< orphan*/ ) ; 
- int sd_netlink_message_get_errno (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int sd_netlink_message ;
+typedef int sd_netlink ;
+struct TYPE_5__ {int name; struct TYPE_5__* tunnel; } ;
+typedef int NetDev ;
+typedef TYPE_1__ L2tpSession ;
+
+
+ int EEXIST ;
+ int * NETDEV (TYPE_1__*) ;
+ int assert (TYPE_1__*) ;
+ int log_netdev_debug (int *,char*,int ) ;
+ int log_netdev_info (int *,char*,int ) ;
+ int log_netdev_warning_errno (int *,int,char*,int ) ;
+ int sd_netlink_message_get_errno (int *) ;
 
 __attribute__((used)) static int l2tp_create_session_handler(sd_netlink *rtnl, sd_netlink_message *m, L2tpSession *session) {
         NetDev *netdev;

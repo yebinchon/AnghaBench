@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ disk_id; scalar_t__ server_id; scalar_t__ node_id; } ;
 union cache_packed_local_copy_location {TYPE_1__ p; } ;
 struct cache_local_copy {char* location; int cached_at; } ;
 
-/* Variables and functions */
- int VALUE_BUFF_SIZE ; 
- int cache_local_copy_get_flags (struct cache_local_copy*,union cache_packed_local_copy_location*) ; 
- scalar_t__ snprintf (scalar_t__,int,char*,char*,int,int,int,int,int) ; 
- scalar_t__ value_buff ; 
+
+ int VALUE_BUFF_SIZE ;
+ int cache_local_copy_get_flags (struct cache_local_copy*,union cache_packed_local_copy_location*) ;
+ scalar_t__ snprintf (scalar_t__,int,char*,char*,int,int,int,int,int) ;
+ scalar_t__ value_buff ;
 
 __attribute__((used)) static int serialize_local_copies_as_text (struct cache_local_copy *LC, int n) {
   int i, o = 0;

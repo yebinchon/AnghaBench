@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  seccomp; int /*<<< orphan*/  sysctl; int /*<<< orphan*/  network_namespace_path; int /*<<< orphan*/  n_extra_nodes; int /*<<< orphan*/  extra_nodes; int /*<<< orphan*/  supplementary_gids; int /*<<< orphan*/  properties; int /*<<< orphan*/  slice; int /*<<< orphan*/  n_oci_hooks_poststop; int /*<<< orphan*/  oci_hooks_poststop; int /*<<< orphan*/  n_oci_hooks_poststart; int /*<<< orphan*/  oci_hooks_poststart; int /*<<< orphan*/  n_oci_hooks_prestart; int /*<<< orphan*/  oci_hooks_prestart; int /*<<< orphan*/  root; int /*<<< orphan*/  bundle; int /*<<< orphan*/  n_custom_mounts; int /*<<< orphan*/  custom_mounts; int /*<<< orphan*/  expose_ports; int /*<<< orphan*/  network_zone; int /*<<< orphan*/  network_bridge; int /*<<< orphan*/  network_veth_extra; int /*<<< orphan*/  network_ipvlan; int /*<<< orphan*/  network_macvlan; int /*<<< orphan*/  network_interfaces; int /*<<< orphan*/  cpu_set; int /*<<< orphan*/  hostname; int /*<<< orphan*/  rlimit; int /*<<< orphan*/  syscall_blacklist; int /*<<< orphan*/  syscall_whitelist; int /*<<< orphan*/  working_directory; int /*<<< orphan*/  pivot_root_old; int /*<<< orphan*/  pivot_root_new; int /*<<< orphan*/  user; int /*<<< orphan*/  environment; int /*<<< orphan*/  parameters; } ;
-typedef  TYPE_1__ Settings ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cpu_set_reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  custom_mount_free_all (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_node_array_free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expose_port_free_all (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_oci_hooks (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* mfree (TYPE_1__*) ; 
- int /*<<< orphan*/  rlimit_free_all (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_bus_message_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seccomp_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strv_free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int seccomp; int sysctl; int network_namespace_path; int n_extra_nodes; int extra_nodes; int supplementary_gids; int properties; int slice; int n_oci_hooks_poststop; int oci_hooks_poststop; int n_oci_hooks_poststart; int oci_hooks_poststart; int n_oci_hooks_prestart; int oci_hooks_prestart; int root; int bundle; int n_custom_mounts; int custom_mounts; int expose_ports; int network_zone; int network_bridge; int network_veth_extra; int network_ipvlan; int network_macvlan; int network_interfaces; int cpu_set; int hostname; int rlimit; int syscall_blacklist; int syscall_whitelist; int working_directory; int pivot_root_old; int pivot_root_new; int user; int environment; int parameters; } ;
+typedef TYPE_1__ Settings ;
+
+
+ int cpu_set_reset (int *) ;
+ int custom_mount_free_all (int ,int ) ;
+ int device_node_array_free (int ,int ) ;
+ int expose_port_free_all (int ) ;
+ int free (int ) ;
+ int free_oci_hooks (int ,int ) ;
+ TYPE_1__* mfree (TYPE_1__*) ;
+ int rlimit_free_all (int ) ;
+ int sd_bus_message_unref (int ) ;
+ int seccomp_release (int ) ;
+ int strv_free (int ) ;
 
 Settings* settings_free(Settings *s) {
         if (!s)
-                return NULL;
+                return ((void*)0);
 
         strv_free(s->parameters);
         strv_free(s->environment);
@@ -69,9 +69,9 @@ Settings* settings_free(Settings *s) {
 
         strv_free(s->sysctl);
 
-#if HAVE_SECCOMP
-        seccomp_release(s->seccomp);
-#endif
+
+
+
 
         return mfree(s);
 }

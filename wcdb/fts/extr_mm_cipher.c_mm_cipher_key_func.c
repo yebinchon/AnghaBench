@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-struct TYPE_2__ {int /*<<< orphan*/  key; } ;
-typedef  TYPE_1__ mm_cipher_context_t ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_BLOB ; 
- int /*<<< orphan*/  SQLITE_MISUSE ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3_result_error_code (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_null (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_user_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_value_blob (int /*<<< orphan*/ *) ; 
- int sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_type (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+struct TYPE_2__ {int key; } ;
+typedef TYPE_1__ mm_cipher_context_t ;
+
+
+ scalar_t__ SQLITE_BLOB ;
+ int SQLITE_MISUSE ;
+ int memcpy (int ,int ,int) ;
+ int sqlite3_result_error_code (int *,int ) ;
+ int sqlite3_result_null (int *) ;
+ scalar_t__ sqlite3_user_data (int *) ;
+ int sqlite3_value_blob (int *) ;
+ int sqlite3_value_bytes (int *) ;
+ scalar_t__ sqlite3_value_type (int *) ;
 
 __attribute__((used)) static void
 mm_cipher_key_func(sqlite3_context *db, int argc, sqlite3_value **argv)
 {
     mm_cipher_context_t *ctx;
 
-    // only accept 1 BLOB argument.
+
     if (argc != 1)
         goto error_misuse;
     if (sqlite3_value_type(argv[0]) != SQLITE_BLOB)

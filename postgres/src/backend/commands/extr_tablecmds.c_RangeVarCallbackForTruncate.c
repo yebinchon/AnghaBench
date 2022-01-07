@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RangeVar ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  HeapTuple ;
-typedef  int /*<<< orphan*/  Form_pg_class ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR ; 
- scalar_t__ GETSTRUCT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapTupleIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ObjectIdGetDatum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OidIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RELOID ; 
- int /*<<< orphan*/  ReleaseSysCache (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SearchSysCache1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  truncate_check_rel (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int RangeVar ;
+typedef int Oid ;
+typedef int HeapTuple ;
+typedef int Form_pg_class ;
+
+
+ int ERROR ;
+ scalar_t__ GETSTRUCT (int ) ;
+ int HeapTupleIsValid (int ) ;
+ int ObjectIdGetDatum (int ) ;
+ int OidIsValid (int ) ;
+ int RELOID ;
+ int ReleaseSysCache (int ) ;
+ int SearchSysCache1 (int ,int ) ;
+ int elog (int ,char*,int ) ;
+ int truncate_check_rel (int ,int ) ;
 
 __attribute__((used)) static void
 RangeVarCallbackForTruncate(const RangeVar *relation,
-							Oid relId, Oid oldRelId, void *arg)
+       Oid relId, Oid oldRelId, void *arg)
 {
-	HeapTuple	tuple;
+ HeapTuple tuple;
 
-	/* Nothing to do if the relation was not found. */
-	if (!OidIsValid(relId))
-		return;
 
-	tuple = SearchSysCache1(RELOID, ObjectIdGetDatum(relId));
-	if (!HeapTupleIsValid(tuple))	/* should not happen */
-		elog(ERROR, "cache lookup failed for relation %u", relId);
+ if (!OidIsValid(relId))
+  return;
 
-	truncate_check_rel(relId, (Form_pg_class) GETSTRUCT(tuple));
+ tuple = SearchSysCache1(RELOID, ObjectIdGetDatum(relId));
+ if (!HeapTupleIsValid(tuple))
+  elog(ERROR, "cache lookup failed for relation %u", relId);
 
-	ReleaseSysCache(tuple);
+ truncate_check_rel(relId, (Form_pg_class) GETSTRUCT(tuple));
+
+ ReleaseSysCache(tuple);
 }

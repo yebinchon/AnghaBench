@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- size_t crypto_box_BEFORENMBYTES ; 
- size_t crypto_box_MACBYTES ; 
- size_t crypto_box_NONCEBYTES ; 
- size_t crypto_box_PUBLICKEYBYTES ; 
- size_t crypto_box_SECRETKEYBYTES ; 
- int crypto_box_beforenm (unsigned char*,unsigned char*,unsigned char*) ; 
- int crypto_box_detached (unsigned char*,unsigned char*,unsigned char*,unsigned long long,unsigned char*,unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  crypto_box_detached_afternm (unsigned char*,unsigned char*,unsigned char*,unsigned long long,unsigned char*,unsigned char*) ; 
- int crypto_box_easy (unsigned char*,unsigned char*,unsigned long long,unsigned char*,unsigned char*,unsigned char*) ; 
- scalar_t__ crypto_box_easy_afternm (unsigned char*,unsigned char*,unsigned long long,unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  crypto_box_keypair (unsigned char*,unsigned char*) ; 
- int crypto_box_open_detached (unsigned char*,unsigned char*,unsigned char*,unsigned long long,unsigned char*,unsigned char*,unsigned char*) ; 
- scalar_t__ crypto_box_open_detached_afternm (unsigned char*,unsigned char*,unsigned char*,unsigned long long,unsigned char*,unsigned char*) ; 
- scalar_t__ crypto_box_open_easy (unsigned char*,unsigned char*,unsigned long long,unsigned char*,unsigned char*,unsigned char*) ; 
- scalar_t__ crypto_box_open_easy_afternm (unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*) ; 
- int memcmp (unsigned char*,unsigned char*,size_t) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,size_t) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  randombytes_buf (unsigned char*,size_t) ; 
- size_t randombytes_uniform (int) ; 
- unsigned char* small_order_p ; 
- int /*<<< orphan*/  sodium_free (unsigned char*) ; 
- scalar_t__ sodium_malloc (size_t) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int assert (int) ;
+ size_t crypto_box_BEFORENMBYTES ;
+ size_t crypto_box_MACBYTES ;
+ size_t crypto_box_NONCEBYTES ;
+ size_t crypto_box_PUBLICKEYBYTES ;
+ size_t crypto_box_SECRETKEYBYTES ;
+ int crypto_box_beforenm (unsigned char*,unsigned char*,unsigned char*) ;
+ int crypto_box_detached (unsigned char*,unsigned char*,unsigned char*,unsigned long long,unsigned char*,unsigned char*,unsigned char*) ;
+ int crypto_box_detached_afternm (unsigned char*,unsigned char*,unsigned char*,unsigned long long,unsigned char*,unsigned char*) ;
+ int crypto_box_easy (unsigned char*,unsigned char*,unsigned long long,unsigned char*,unsigned char*,unsigned char*) ;
+ scalar_t__ crypto_box_easy_afternm (unsigned char*,unsigned char*,unsigned long long,unsigned char*,unsigned char*) ;
+ int crypto_box_keypair (unsigned char*,unsigned char*) ;
+ int crypto_box_open_detached (unsigned char*,unsigned char*,unsigned char*,unsigned long long,unsigned char*,unsigned char*,unsigned char*) ;
+ scalar_t__ crypto_box_open_detached_afternm (unsigned char*,unsigned char*,unsigned char*,unsigned long long,unsigned char*,unsigned char*) ;
+ scalar_t__ crypto_box_open_easy (unsigned char*,unsigned char*,unsigned long long,unsigned char*,unsigned char*,unsigned char*) ;
+ scalar_t__ crypto_box_open_easy_afternm (unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*) ;
+ int memcmp (unsigned char*,unsigned char*,size_t) ;
+ int memcpy (unsigned char*,unsigned char*,size_t) ;
+ int memset (unsigned char*,int ,size_t) ;
+ int printf (char*,...) ;
+ int randombytes_buf (unsigned char*,size_t) ;
+ size_t randombytes_uniform (int) ;
+ unsigned char* small_order_p ;
+ int sodium_free (unsigned char*) ;
+ scalar_t__ sodium_malloc (size_t) ;
 
 int
 main(void)
@@ -53,26 +53,26 @@ main(void)
     unsigned char *m;
     unsigned char *m2;
     unsigned char *c;
-    size_t         mlen;
-    size_t         i;
-    size_t         m_size;
-    size_t         m2_size;
-    size_t         c_size;
-    int            ret;
+    size_t mlen;
+    size_t i;
+    size_t m_size;
+    size_t m2_size;
+    size_t c_size;
+    int ret;
 
     m2_size = m_size = 7U + randombytes_uniform(1000);
-    c_size           = crypto_box_MACBYTES + m_size;
-    m                = (unsigned char *) sodium_malloc(m_size);
-    m2               = (unsigned char *) sodium_malloc(m2_size);
-    c                = (unsigned char *) sodium_malloc(c_size);
+    c_size = crypto_box_MACBYTES + m_size;
+    m = (unsigned char *) sodium_malloc(m_size);
+    m2 = (unsigned char *) sodium_malloc(m2_size);
+    c = (unsigned char *) sodium_malloc(c_size);
     alicepk = (unsigned char *) sodium_malloc(crypto_box_PUBLICKEYBYTES);
     alicesk = (unsigned char *) sodium_malloc(crypto_box_SECRETKEYBYTES);
-    bobpk   = (unsigned char *) sodium_malloc(crypto_box_PUBLICKEYBYTES);
-    bobsk   = (unsigned char *) sodium_malloc(crypto_box_SECRETKEYBYTES);
-    mac     = (unsigned char *) sodium_malloc(crypto_box_MACBYTES);
-    nonce   = (unsigned char *) sodium_malloc(crypto_box_NONCEBYTES);
-    k1      = (unsigned char *) sodium_malloc(crypto_box_BEFORENMBYTES);
-    k2      = (unsigned char *) sodium_malloc(crypto_box_BEFORENMBYTES);
+    bobpk = (unsigned char *) sodium_malloc(crypto_box_PUBLICKEYBYTES);
+    bobsk = (unsigned char *) sodium_malloc(crypto_box_SECRETKEYBYTES);
+    mac = (unsigned char *) sodium_malloc(crypto_box_MACBYTES);
+    nonce = (unsigned char *) sodium_malloc(crypto_box_NONCEBYTES);
+    k1 = (unsigned char *) sodium_malloc(crypto_box_BEFORENMBYTES);
+    k2 = (unsigned char *) sodium_malloc(crypto_box_BEFORENMBYTES);
     crypto_box_keypair(alicepk, alicesk);
     crypto_box_keypair(bobpk, bobsk);
     mlen = (size_t) randombytes_uniform((uint32_t) m_size) + 1U;

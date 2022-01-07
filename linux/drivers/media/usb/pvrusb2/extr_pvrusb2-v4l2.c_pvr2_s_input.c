@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_1__* mc_head; } ;
-struct pvr2_v4l2_fh {unsigned int input_cnt; int /*<<< orphan*/ * input_map; TYPE_2__ channel; } ;
+struct pvr2_v4l2_fh {unsigned int input_cnt; int * input_map; TYPE_2__ channel; } ;
 struct pvr2_hdw {int dummy; } ;
 struct file {struct pvr2_v4l2_fh* private_data; } ;
 struct TYPE_3__ {struct pvr2_hdw* hdw; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  PVR2_CID_INPUT ; 
- int pvr2_ctrl_set_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pvr2_hdw_commit_ctl (struct pvr2_hdw*) ; 
- int /*<<< orphan*/  pvr2_hdw_get_ctrl_by_id (struct pvr2_hdw*,int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ int PVR2_CID_INPUT ;
+ int pvr2_ctrl_set_value (int ,int ) ;
+ int pvr2_hdw_commit_ctl (struct pvr2_hdw*) ;
+ int pvr2_hdw_get_ctrl_by_id (struct pvr2_hdw*,int ) ;
 
 __attribute__((used)) static int pvr2_s_input(struct file *file, void *priv, unsigned int inp)
 {
-	struct pvr2_v4l2_fh *fh = file->private_data;
-	struct pvr2_hdw *hdw = fh->channel.mc_head->hdw;
-	int ret;
+ struct pvr2_v4l2_fh *fh = file->private_data;
+ struct pvr2_hdw *hdw = fh->channel.mc_head->hdw;
+ int ret;
 
-	if (inp >= fh->input_cnt)
-		return -EINVAL;
-	ret = pvr2_ctrl_set_value(
-			pvr2_hdw_get_ctrl_by_id(hdw, PVR2_CID_INPUT),
-			fh->input_map[inp]);
-	pvr2_hdw_commit_ctl(hdw);
-	return ret;
+ if (inp >= fh->input_cnt)
+  return -EINVAL;
+ ret = pvr2_ctrl_set_value(
+   pvr2_hdw_get_ctrl_by_id(hdw, PVR2_CID_INPUT),
+   fh->input_map[inp]);
+ pvr2_hdw_commit_ctl(hdw);
+ return ret;
 }

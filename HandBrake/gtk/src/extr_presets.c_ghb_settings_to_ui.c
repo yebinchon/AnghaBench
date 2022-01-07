@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  signal_user_data_t ;
-typedef  int /*<<< orphan*/  gchar ;
-typedef  int /*<<< orphan*/  GhbValue ;
-typedef  int /*<<< orphan*/  GhbDictIter ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ghb_dict_get_value (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ghb_dict_iter_init (int /*<<< orphan*/ *) ; 
- scalar_t__ ghb_dict_iter_next (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ghb_ui_settings_update (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ghb_value_dup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ghb_value_free (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ ** widget_priority_list ; 
+
+
+
+typedef int signal_user_data_t ;
+typedef int gchar ;
+typedef int GhbValue ;
+typedef int GhbDictIter ;
+
+
+ int * ghb_dict_get_value (int *,int const*) ;
+ int ghb_dict_iter_init (int *) ;
+ scalar_t__ ghb_dict_iter_next (int *,int *,int const**,int **) ;
+ int ghb_ui_settings_update (int *,int *,int const*,int *) ;
+ int * ghb_value_dup (int *) ;
+ int ghb_value_free (int **) ;
+ int ** widget_priority_list ;
 
 void
 ghb_settings_to_ui(signal_user_data_t *ud, GhbValue *dict)
 {
-    GhbDictIter  iter;
+    GhbDictIter iter;
     const gchar *key;
-    GhbValue    *gval;
-    int          ii;
-    GhbValue    *tmp = ghb_value_dup(dict);
+    GhbValue *gval;
+    int ii;
+    GhbValue *tmp = ghb_value_dup(dict);
 
-    if (dict == NULL)
+    if (dict == ((void*)0))
         return;
 
-    for (ii = 0; widget_priority_list[ii] != NULL; ii++)
+    for (ii = 0; widget_priority_list[ii] != ((void*)0); ii++)
     {
         key = widget_priority_list[ii];
         gval = ghb_dict_get_value(tmp, key);
-        if (gval != NULL)
+        if (gval != ((void*)0))
             ghb_ui_settings_update(ud, dict, key, gval);
     }
 
     iter = ghb_dict_iter_init(tmp);
-    // middle (void*) cast prevents gcc warning "defreferencing type-punned
-    // pointer will break strict-aliasing rules"
+
+
     while (ghb_dict_iter_next(tmp, &iter, &key, &gval))
     {
         ghb_ui_settings_update(ud, dict, key, gval);

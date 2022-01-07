@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint128_t ;
-typedef  int* largefelem ;
-typedef  int* felem ;
 
-/* Variables and functions */
- int /*<<< orphan*/  felem_scalar (int*,int* const,int) ; 
+
+
+
+typedef int uint128_t ;
+typedef int* largefelem ;
+typedef int* felem ;
+
+
+ int felem_scalar (int*,int* const,int) ;
 
 __attribute__((used)) static void felem_mul(largefelem out, const felem in1, const felem in2)
 {
@@ -76,7 +76,7 @@ __attribute__((used)) static void felem_mul(largefelem out, const felem in1, con
              ((uint128_t) in1[7]) * in2[1] +
              ((uint128_t) in1[8]) * in2[0];
 
-    /* See comment in felem_square about the use of in2x2 here */
+
 
     out[0] += ((uint128_t) in1[1]) * in2x2[8] +
               ((uint128_t) in1[2]) * in2x2[7] +

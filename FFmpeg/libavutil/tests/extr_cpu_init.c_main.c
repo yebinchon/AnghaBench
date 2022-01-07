@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pthread_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int pthread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  pthread_join (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (int) ; 
- int /*<<< orphan*/  thread_main ; 
+
+
+
+typedef int pthread_t ;
+
+
+ int fprintf (int ,char*,char*) ;
+ int pthread_create (int *,int *,int ,int*) ;
+ int pthread_join (int ,int *) ;
+ int stderr ;
+ char* strerror (int) ;
+ int thread_main ;
 
 int main(void)
 {
@@ -28,16 +28,16 @@ int main(void)
     pthread_t thread1;
     pthread_t thread2;
 
-    if ((ret = pthread_create(&thread1, NULL, thread_main, &cpu_flags1))) {
+    if ((ret = pthread_create(&thread1, ((void*)0), thread_main, &cpu_flags1))) {
         fprintf(stderr, "pthread_create failed: %s.\n", strerror(ret));
         return 1;
     }
-    if ((ret = pthread_create(&thread2, NULL, thread_main, &cpu_flags2))) {
+    if ((ret = pthread_create(&thread2, ((void*)0), thread_main, &cpu_flags2))) {
         fprintf(stderr, "pthread_create failed: %s.\n", strerror(ret));
         return 1;
     }
-    pthread_join(thread1, NULL);
-    pthread_join(thread2, NULL);
+    pthread_join(thread1, ((void*)0));
+    pthread_join(thread2, ((void*)0));
 
     if (cpu_flags1 < 0)
         return 2;

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  (* qpel_mc_func ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ;
-typedef  int /*<<< orphan*/  op_pixels_func ;
-struct TYPE_9__ {int /*<<< orphan*/ * edge_emu_buffer; } ;
-struct TYPE_8__ {int /*<<< orphan*/  (* emulated_edge_mc ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int,int,int,int,int) ;} ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int (* qpel_mc_func ) (int *,int *,int) ;
+typedef int op_pixels_func ;
+struct TYPE_9__ {int * edge_emu_buffer; } ;
+struct TYPE_8__ {int (* emulated_edge_mc ) (int *,int *,int,int,int,int,int,int,int,int) ;} ;
 struct TYPE_11__ {int mb_x; int mb_y; int*** mv; int width; int height; int linesize; int h_edge_pos; int v_edge_pos; TYPE_3__* avctx; TYPE_2__ sc; TYPE_1__ vdsp; scalar_t__ quarter_sample; } ;
 struct TYPE_10__ {int flags; } ;
-typedef  TYPE_4__ MpegEncContext ;
+typedef TYPE_4__ MpegEncContext ;
 
-/* Variables and functions */
- int AV_CODEC_FLAG_GRAY ; 
- int /*<<< orphan*/  CONFIG_GRAY ; 
- unsigned int FFMAX (int,int /*<<< orphan*/ ) ; 
- int av_clip (int,int,int) ; 
- int /*<<< orphan*/  chroma_4mv_motion (TYPE_4__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  hpel_motion (TYPE_4__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int AV_CODEC_FLAG_GRAY ;
+ int CONFIG_GRAY ;
+ unsigned int FFMAX (int,int ) ;
+ int av_clip (int,int,int) ;
+ int chroma_4mv_motion (TYPE_4__*,int *,int *,int **,int *,int,int) ;
+ int hpel_motion (TYPE_4__*,int *,int *,int,int,int *,int,int) ;
+ int stub1 (int *,int *,int,int,int,int,int,int,int,int) ;
+ int stub2 (int *,int *,int) ;
 
 __attribute__((used)) static inline void apply_8x8(MpegEncContext *s,
                              uint8_t *dest_y,
@@ -55,11 +55,11 @@ __attribute__((used)) static inline void apply_8x8(MpegEncContext *s,
             int motion_x = s->mv[dir][i][0];
             int motion_y = s->mv[dir][i][1];
 
-            dxy   = ((motion_y & 3) << 2) | (motion_x & 3);
+            dxy = ((motion_y & 3) << 2) | (motion_x & 3);
             src_x = mb_x * 16 + (motion_x >> 2) + (i & 1) * 8;
             src_y = mb_y * 16 + (motion_y >> 2) + (i >> 1) * 8;
 
-            /* WARNING: do no forget half pels */
+
             src_x = av_clip(src_x, -16, s->width);
             if (src_x == s->width)
                 dxy &= ~3;

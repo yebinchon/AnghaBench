@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_8__ ;
-typedef  struct TYPE_21__   TYPE_7__ ;
-typedef  struct TYPE_20__   TYPE_6__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_19__ {int complete_lengths; int complete_values; int no_resolve; int /*<<< orphan*/  url; scalar_t__ variables; int /*<<< orphan*/ * values; scalar_t__* lengths; int /*<<< orphan*/ * source; TYPE_8__* cf; } ;
-typedef  TYPE_4__ ngx_url_t ;
-typedef  scalar_t__ ngx_uint_t ;
-typedef  int /*<<< orphan*/  ngx_str_t ;
-typedef  TYPE_4__ ngx_http_script_compile_t ;
-struct TYPE_17__ {int /*<<< orphan*/ * upstream; } ;
-struct TYPE_20__ {TYPE_2__ upstream; int /*<<< orphan*/  scgi_values; scalar_t__ scgi_lengths; } ;
-typedef  TYPE_6__ ngx_http_scgi_loc_conf_t ;
+
+
+typedef struct TYPE_22__ TYPE_8__ ;
+typedef struct TYPE_21__ TYPE_7__ ;
+typedef struct TYPE_20__ TYPE_6__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+struct TYPE_19__ {int complete_lengths; int complete_values; int no_resolve; int url; scalar_t__ variables; int * values; scalar_t__* lengths; int * source; TYPE_8__* cf; } ;
+typedef TYPE_4__ ngx_url_t ;
+typedef scalar_t__ ngx_uint_t ;
+typedef int ngx_str_t ;
+typedef TYPE_4__ ngx_http_script_compile_t ;
+struct TYPE_17__ {int * upstream; } ;
+struct TYPE_20__ {TYPE_2__ upstream; int scgi_values; scalar_t__ scgi_lengths; } ;
+typedef TYPE_6__ ngx_http_scgi_loc_conf_t ;
 struct TYPE_18__ {int len; char* data; } ;
-struct TYPE_21__ {int auto_redirect; TYPE_3__ name; int /*<<< orphan*/  handler; } ;
-typedef  TYPE_7__ ngx_http_core_loc_conf_t ;
+struct TYPE_21__ {int auto_redirect; TYPE_3__ name; int handler; } ;
+typedef TYPE_7__ ngx_http_core_loc_conf_t ;
 struct TYPE_22__ {TYPE_1__* args; } ;
-typedef  TYPE_8__ ngx_conf_t ;
-typedef  int /*<<< orphan*/  ngx_command_t ;
-struct TYPE_16__ {int /*<<< orphan*/ * elts; } ;
+typedef TYPE_8__ ngx_conf_t ;
+typedef int ngx_command_t ;
+struct TYPE_16__ {int * elts; } ;
 
-/* Variables and functions */
- char* NGX_CONF_ERROR ; 
- char* NGX_CONF_OK ; 
- scalar_t__ NGX_OK ; 
- TYPE_7__* ngx_http_conf_get_module_loc_conf (TYPE_8__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_core_module ; 
- int /*<<< orphan*/  ngx_http_scgi_handler ; 
- scalar_t__ ngx_http_script_compile (TYPE_4__*) ; 
- scalar_t__ ngx_http_script_variables_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ngx_http_upstream_add (TYPE_8__*,TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_memzero (TYPE_4__*,int) ; 
+
+ char* NGX_CONF_ERROR ;
+ char* NGX_CONF_OK ;
+ scalar_t__ NGX_OK ;
+ TYPE_7__* ngx_http_conf_get_module_loc_conf (TYPE_8__*,int ) ;
+ int ngx_http_core_module ;
+ int ngx_http_scgi_handler ;
+ scalar_t__ ngx_http_script_compile (TYPE_4__*) ;
+ scalar_t__ ngx_http_script_variables_count (int *) ;
+ int * ngx_http_upstream_add (TYPE_8__*,TYPE_4__*,int ) ;
+ int ngx_memzero (TYPE_4__*,int) ;
 
 __attribute__((used)) static char *
 ngx_http_scgi_pass(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 {
     ngx_http_scgi_loc_conf_t *scf = conf;
 
-    ngx_url_t                   u;
-    ngx_str_t                  *value, *url;
-    ngx_uint_t                  n;
-    ngx_http_core_loc_conf_t   *clcf;
-    ngx_http_script_compile_t   sc;
+    ngx_url_t u;
+    ngx_str_t *value, *url;
+    ngx_uint_t n;
+    ngx_http_core_loc_conf_t *clcf;
+    ngx_http_script_compile_t sc;
 
     if (scf->upstream.upstream || scf->scgi_lengths) {
         return "is duplicate";
@@ -94,7 +94,7 @@ ngx_http_scgi_pass(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
     u.no_resolve = 1;
 
     scf->upstream.upstream = ngx_http_upstream_add(cf, &u, 0);
-    if (scf->upstream.upstream == NULL) {
+    if (scf->upstream.upstream == ((void*)0)) {
         return NGX_CONF_ERROR;
     }
 

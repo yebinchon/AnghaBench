@@ -1,38 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LOG_DEBUG ; 
- int /*<<< orphan*/  TEST_REQ_RUNNING_SYSTEMD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_cg_get_keyed_attribute () ; 
- int /*<<< orphan*/  test_cg_tests () ; 
- int /*<<< orphan*/  test_controller_is_valid () ; 
- int /*<<< orphan*/  test_escape () ; 
- int /*<<< orphan*/  test_fd_is_cgroup_fs () ; 
- int /*<<< orphan*/  test_get_paths () ; 
- int /*<<< orphan*/  test_is_cgroup_fs () ; 
- int /*<<< orphan*/  test_mask_supported () ; 
- int /*<<< orphan*/  test_path_decode_unit () ; 
- int /*<<< orphan*/  test_path_get_owner_uid () ; 
- int /*<<< orphan*/  test_path_get_session () ; 
- int /*<<< orphan*/  test_path_get_slice () ; 
- int /*<<< orphan*/  test_path_get_unit () ; 
- int /*<<< orphan*/  test_path_get_user_slice () ; 
- int /*<<< orphan*/  test_path_get_user_unit () ; 
- int /*<<< orphan*/  test_proc () ; 
- int /*<<< orphan*/  test_setup_logging (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_shift_path () ; 
- int /*<<< orphan*/  test_slice_to_path () ; 
+ int LOG_DEBUG ;
+ int TEST_REQ_RUNNING_SYSTEMD (int ) ;
+ int test_cg_get_keyed_attribute () ;
+ int test_cg_tests () ;
+ int test_controller_is_valid () ;
+ int test_escape () ;
+ int test_fd_is_cgroup_fs () ;
+ int test_get_paths () ;
+ int test_is_cgroup_fs () ;
+ int test_mask_supported () ;
+ int test_path_decode_unit () ;
+ int test_path_get_owner_uid () ;
+ int test_path_get_session () ;
+ int test_path_get_slice () ;
+ int test_path_get_unit () ;
+ int test_path_get_user_slice () ;
+ int test_path_get_user_unit () ;
+ int test_proc () ;
+ int test_setup_logging (int ) ;
+ int test_shift_path () ;
+ int test_slice_to_path () ;
 
 int main(void) {
         test_setup_logging(LOG_DEBUG);

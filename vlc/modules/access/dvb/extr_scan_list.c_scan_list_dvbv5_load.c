@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int ssize_t ;
-struct TYPE_8__ {int /*<<< orphan*/  psz_channel; } ;
-typedef  TYPE_1__ scan_list_entry_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- int getline (char**,size_t*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*,char const*) ; 
- int /*<<< orphan*/  scan_list_dvbv5_entry_fill (TYPE_1__*,char const*,int) ; 
- int /*<<< orphan*/  scan_list_entry_Delete (TYPE_1__*) ; 
- TYPE_1__* scan_list_entry_New () ; 
- scalar_t__ scan_list_entry_add (TYPE_1__***,TYPE_1__*) ; 
- int /*<<< orphan*/  scan_token_strip (char const**,size_t*) ; 
- int /*<<< orphan*/  strndup (char const*,size_t) ; 
- char* strstr (char const*,char*) ; 
- int /*<<< orphan*/ * vlc_fopen (char const*,char*) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+typedef int ssize_t ;
+struct TYPE_8__ {int psz_channel; } ;
+typedef TYPE_1__ scan_list_entry_t ;
+typedef int FILE ;
+
+
+ int fclose (int *) ;
+ int free (char*) ;
+ int getline (char**,size_t*,int *) ;
+ int msg_Err (int *,char*,char const*) ;
+ int scan_list_dvbv5_entry_fill (TYPE_1__*,char const*,int) ;
+ int scan_list_entry_Delete (TYPE_1__*) ;
+ TYPE_1__* scan_list_entry_New () ;
+ scalar_t__ scan_list_entry_add (TYPE_1__***,TYPE_1__*) ;
+ int scan_token_strip (char const**,size_t*) ;
+ int strndup (char const*,size_t) ;
+ char* strstr (char const*,char*) ;
+ int * vlc_fopen (char const*,char*) ;
 
 scan_list_entry_t * scan_list_dvbv5_load( vlc_object_t *p_obj, const char *psz_source, size_t *pi_count )
 {
@@ -37,18 +37,18 @@ scan_list_entry_t * scan_list_dvbv5_load( vlc_object_t *p_obj, const char *psz_s
     if( !p_file )
     {
         msg_Err( p_obj, "failed to open dvbv5 file (%s)", psz_source );
-        return NULL;
+        return ((void*)0);
     }
 
-    scan_list_entry_t *p_list = NULL;
+    scan_list_entry_t *p_list = ((void*)0);
     scan_list_entry_t **pp_list_last = &p_list;
-    scan_list_entry_t *p_entry = NULL;
+    scan_list_entry_t *p_entry = ((void*)0);
     *pi_count = 0;
 
-    char *psz_line = NULL;
+    char *psz_line = ((void*)0);
     size_t i_len = 0;
     ssize_t i_read;
-    bool b_error = false;
+    bool b_error = 0;
 
     while ( (i_read = getline( &psz_line, &i_len, p_file )) != -1 && !b_error )
     {
@@ -61,7 +61,7 @@ scan_list_entry_t * scan_list_dvbv5_load( vlc_object_t *p_obj, const char *psz_s
         {
             case 0:
             case '\n':
-            case '#': /* comment line */
+            case '#':
                 continue;
             case '[':
             {
@@ -70,13 +70,13 @@ scan_list_entry_t * scan_list_dvbv5_load( vlc_object_t *p_obj, const char *psz_s
                 p_entry = scan_list_entry_New();
                 if( !p_entry )
                 {
-                    b_error = true;
+                    b_error = 1;
                 }
                 else
                 {
                     char *p_end = strstr( p, "]" );
                     if( !p_end )
-                        b_error = true;
+                        b_error = 1;
                     else
                     {
                         const char *psz_name = p + 1;

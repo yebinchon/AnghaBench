@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  atoi (char*) ; 
- void* atoll (char*) ; 
- int find_arg (char*,int,char**) ; 
- int get_counts () ; 
- void* max_vocab ; 
- void* min_count ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  verbose ; 
+ int atoi (char*) ;
+ void* atoll (char*) ;
+ int find_arg (char*,int,char**) ;
+ int get_counts () ;
+ void* max_vocab ;
+ void* min_count ;
+ int printf (char*) ;
+ int verbose ;
 
 int main(int argc, char **argv) {
     int i;
@@ -37,7 +29,7 @@ int main(int argc, char **argv) {
         printf("./vocab_count -verbose 2 -max-vocab 100000 -min-count 10 < corpus.txt > vocab.txt\n");
         return 0;
     }
-    
+
     if ((i = find_arg((char *)"-verbose", argc, argv)) > 0) verbose = atoi(argv[i + 1]);
     if ((i = find_arg((char *)"-max-vocab", argc, argv)) > 0) max_vocab = atoll(argv[i + 1]);
     if ((i = find_arg((char *)"-min-count", argc, argv)) > 0) min_count = atoll(argv[i + 1]);

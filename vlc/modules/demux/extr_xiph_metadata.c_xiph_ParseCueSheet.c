@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_meta_t ;
-typedef  int /*<<< orphan*/  seekpoint_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TAB_APPEND (int,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* strndup (char const*,int) ; 
- int /*<<< orphan*/  vlc_seekpoint_Delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xiph_ParseCueSheetMeta (unsigned int*,int /*<<< orphan*/ *,char*,int*,int /*<<< orphan*/ ***,int /*<<< orphan*/ **,int*) ; 
+
+
+
+typedef int vlc_meta_t ;
+typedef int seekpoint_t ;
+
+
+ int TAB_APPEND (int,int **,int *) ;
+ int free (char*) ;
+ char* strndup (char const*,int) ;
+ int vlc_seekpoint_Delete (int *) ;
+ int xiph_ParseCueSheetMeta (unsigned int*,int *,char*,int*,int ***,int **,int*) ;
 
 __attribute__((used)) static void xiph_ParseCueSheet( unsigned *pi_flags, vlc_meta_t *p_meta,
                                 const char *p_data, int i_data,
                                 int *pi_seekpoint, seekpoint_t ***ppp_seekpoint )
 {
-    seekpoint_t *p_seekpoint = NULL;
-    bool b_valid = false;
+    seekpoint_t *p_seekpoint = ((void*)0);
+    bool b_valid = 0;
 
     const char *p_head = p_data;
     const char *p_tail = p_head;

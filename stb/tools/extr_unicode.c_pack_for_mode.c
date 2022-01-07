@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uval ;
-struct TYPE_6__ {scalar_t__ dont_care; int length; int fastpath; scalar_t__* input; scalar_t__ fallback; size_t input_size; scalar_t__ depth; scalar_t__ inherited_storage; scalar_t__ splittable; int /*<<< orphan*/  has_sign; int /*<<< orphan*/  replace_fallback_with_codepoint; } ;
-typedef  TYPE_1__ table ;
-struct TYPE_7__ {size_t overhead; scalar_t__ trim_end; scalar_t__ special; scalar_t__ indirect; int /*<<< orphan*/  aligned; scalar_t__ trim_start; } ;
-typedef  TYPE_2__ mode_info ;
 
-/* Variables and functions */
- int MODECOUNT ; 
- scalar_t__ UVAL_DONT_CARE_DEFAULT ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ find_packed (scalar_t__**,scalar_t__*,int,int /*<<< orphan*/ ,int,scalar_t__*,int,int /*<<< orphan*/ ) ; 
- TYPE_2__* modes ; 
- int /*<<< orphan*/  output_table (char*,char*,scalar_t__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  output_table_with_trims (char*,char*,scalar_t__*,int) ; 
- int /*<<< orphan*/  printf (char*,size_t) ; 
- size_t size_for_max_number (scalar_t__) ; 
- size_t size_for_max_number_aligned (scalar_t__) ; 
- int /*<<< orphan*/  stb_arr_free (scalar_t__*) ; 
- int stb_arr_len (scalar_t__*) ; 
- int /*<<< orphan*/  stb_arr_push (scalar_t__*,scalar_t__) ; 
- int stb_max (scalar_t__,scalar_t__) ; 
- size_t weight ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ uval ;
+struct TYPE_6__ {scalar_t__ dont_care; int length; int fastpath; scalar_t__* input; scalar_t__ fallback; size_t input_size; scalar_t__ depth; scalar_t__ inherited_storage; scalar_t__ splittable; int has_sign; int replace_fallback_with_codepoint; } ;
+typedef TYPE_1__ table ;
+struct TYPE_7__ {size_t overhead; scalar_t__ trim_end; scalar_t__ special; scalar_t__ indirect; int aligned; scalar_t__ trim_start; } ;
+typedef TYPE_2__ mode_info ;
+
+
+ int MODECOUNT ;
+ scalar_t__ UVAL_DONT_CARE_DEFAULT ;
+ int assert (int) ;
+ scalar_t__ find_packed (scalar_t__**,scalar_t__*,int,int ,int,scalar_t__*,int,int ) ;
+ TYPE_2__* modes ;
+ int output_table (char*,char*,scalar_t__*,int,int ,int *) ;
+ int output_table_with_trims (char*,char*,scalar_t__*,int) ;
+ int printf (char*,size_t) ;
+ size_t size_for_max_number (scalar_t__) ;
+ size_t size_for_max_number_aligned (scalar_t__) ;
+ int stb_arr_free (scalar_t__*) ;
+ int stb_arr_len (scalar_t__*) ;
+ int stb_arr_push (scalar_t__*,scalar_t__) ;
+ int stb_max (scalar_t__,scalar_t__) ;
+ size_t weight ;
 
 table pack_for_mode(table *t, int mode, char *table_name)
 {
@@ -43,10 +43,10 @@ table pack_for_mode(table *t, int mode, char *table_name)
    mode_info mi = modes[mode % MODECOUNT];
    int size = 8 << (mode / MODECOUNT);
    table newtab;
-   uval *packed = NULL;
-   uval *index = NULL;
-   uval *indirect = NULL;
-   uval *specials = NULL;
+   uval *packed = ((void*)0);
+   uval *index = ((void*)0);
+   uval *indirect = ((void*)0);
+   uval *specials = ((void*)0);
    newtab.dont_care = UVAL_DONT_CARE_DEFAULT;
    if (table_name)
       printf("// clusters of %d\n", size);
@@ -57,16 +57,16 @@ table pack_for_mode(table *t, int mode, char *table_name)
          int end_trim = size-1;
          int start_trim = 0;
          uval special;
-         // @TODO: pick special from start or end instead of only end depending on which is longer
+
          for(;;) {
             special = t->input[i + end_trim];
             if (special != t->dont_care || end_trim == 0)
                break;
             --end_trim;
          }
-         // at this point, special==inp[end_trim], and end_trim >= 0
+
          if (special == t->dont_care && !fastpath) {
-            // entire block is don't care, so OUTPUT don't care
+
             stb_arr_push(index, newtab.dont_care);
             continue;
          } else {
@@ -89,12 +89,12 @@ table pack_for_mode(table *t, int mode, char *table_name)
                }
             }
 
-            // end_trim points to the last character we have to output
 
-            // find the first match, or add it
+
+
             pos = find_packed(&packed, &t->input[i+start_trim], end_trim-start_trim+1, mi.aligned, fastpath, &t->input[t->length], i+start_trim, t->replace_fallback_with_codepoint);
 
-            // encode as a uval
+
             if (!mi.trim_end) {
                if (end_trim == 0)
                   pos = special;
@@ -102,7 +102,7 @@ table pack_for_mode(table *t, int mode, char *table_name)
                   pos = pos | 0x80000000;
             } else {
                assert(end_trim < size && end_trim >= -1);
-               if (!fastpath) assert(end_trim < size-1); // special always matches last one
+               if (!fastpath) assert(end_trim < size-1);
                assert(end_trim < size && end_trim+1 >= 0);
                if (!fastpath) assert(end_trim+1 < size);
 
@@ -111,7 +111,7 @@ table pack_for_mode(table *t, int mode, char *table_name)
                else
                   trim = end_trim+1;
 
-               assert(pos < 65536); // @TODO: if this triggers, just bail on this search path
+               assert(pos < 65536);
                pos = pos + (trim << 16);
             }
 
@@ -139,13 +139,13 @@ table pack_for_mode(table *t, int mode, char *table_name)
             }
          }
 
-         // end_trim points to the last character we have to output, and can be -1
-         ++end_trim; // make exclusive at end
+
+         ++end_trim;
 
          if (end_trim == 0 && size == 256)
-            start_trim = end_trim = 1;  // we can't make encode a length from 0..256 in 8 bits, so restrict end_trim to 1..256
+            start_trim = end_trim = 1;
 
-         // find the first match, or add it
+
          pos = find_packed(&packed, &t->input[i+start_trim], end_trim - start_trim, mi.aligned, fastpath, &t->input[t->length], i+start_trim, t->replace_fallback_with_codepoint);
 
          assert(end_trim <= size && end_trim >= 0);
@@ -161,7 +161,7 @@ table pack_for_mode(table *t, int mode, char *table_name)
          else
             trim = end_trim;
 
-         assert(pos < 65536); // @TODO: if this triggers, just bail on this search path
+         assert(pos < 65536);
          pos = pos + (trim << 16);
 
          newval = pos;
@@ -182,20 +182,20 @@ table pack_for_mode(table *t, int mode, char *table_name)
       }
    }
 
-   // total up the new size for everything but the index table
-   extra_size = mi.overhead * weight; // not the actual overhead cost; a penalty to avoid excessive complexity
-   extra_size += 150; // per indirection
+
+   extra_size = mi.overhead * weight;
+   extra_size += 150;
    if (table_name)
       extra_size = 0;
-   
+
    if (t->has_sign) {
-      // 'packed' contains two values, which should be packed positive & negative for size
+
       uval maxv2;
       for (i=0; i < stb_arr_len(packed); ++i)
          if (packed[i] & 0x80000000)
             maxv2 = stb_max(maxv2, packed[i]);
          else
-            maxv  = stb_max(maxv, packed[i]);
+            maxv = stb_max(maxv, packed[i]);
       maxv = stb_max(maxv, maxv2) << 1;
    } else {
       maxv = 0;
@@ -208,7 +208,7 @@ table pack_for_mode(table *t, int mode, char *table_name)
       if (t->splittable)
          output_table_with_trims(table_name, "", packed, stb_arr_len(packed));
       else
-         output_table(table_name, "", packed, stb_arr_len(packed), t->has_sign, NULL);
+         output_table(table_name, "", packed, stb_arr_len(packed), t->has_sign, ((void*)0));
    }
 
    maxv = 0;
@@ -217,7 +217,7 @@ table pack_for_mode(table *t, int mode, char *table_name)
          maxv = specials[i];
    extra_size += stb_arr_len(specials) * size_for_max_number_aligned(maxv);
    if (table_name)
-      output_table(table_name, "_default", specials, stb_arr_len(specials), 0, NULL);
+      output_table(table_name, "_default", specials, stb_arr_len(specials), 0, ((void*)0));
 
    maxv = 0;
    for (i=0; i < stb_arr_len(indirect); ++i)
@@ -229,8 +229,8 @@ table pack_for_mode(table *t, int mode, char *table_name)
       if (mi.trim_end)
          output_table_with_trims(table_name, "_index", indirect, stb_arr_len(indirect));
       else {
-         assert(0); // this case should only trigger in very extreme circumstances
-         output_table(table_name, "_index", indirect, stb_arr_len(indirect), 0, NULL);
+         assert(0);
+         output_table(table_name, "_index", indirect, stb_arr_len(indirect), 0, ((void*)0));
       }
       mi.trim_end = mi.special = 0;
    }

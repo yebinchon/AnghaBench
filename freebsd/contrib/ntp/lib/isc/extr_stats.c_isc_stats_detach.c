@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ references; int ncounters; int /*<<< orphan*/  mctx; int /*<<< orphan*/  counterlock; int /*<<< orphan*/  lock; int /*<<< orphan*/  counters; int /*<<< orphan*/  copiedcounters; } ;
-typedef  TYPE_1__ isc_stats_t ;
-typedef  int /*<<< orphan*/  isc_stat_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DESTROYLOCK (int /*<<< orphan*/ *) ; 
- scalar_t__ ISC_STATS_VALID (TYPE_1__*) ; 
- int /*<<< orphan*/  LOCK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  REQUIRE (int) ; 
- int /*<<< orphan*/  UNLOCK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  isc_mem_put (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  isc_mem_putanddetach (int /*<<< orphan*/ *,TYPE_1__*,int) ; 
- int /*<<< orphan*/  isc_rwlock_destroy (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ references; int ncounters; int mctx; int counterlock; int lock; int counters; int copiedcounters; } ;
+typedef TYPE_1__ isc_stats_t ;
+typedef int isc_stat_t ;
+
+
+ int DESTROYLOCK (int *) ;
+ scalar_t__ ISC_STATS_VALID (TYPE_1__*) ;
+ int LOCK (int *) ;
+ int REQUIRE (int) ;
+ int UNLOCK (int *) ;
+ int isc_mem_put (int ,int ,int) ;
+ int isc_mem_putanddetach (int *,TYPE_1__*,int) ;
+ int isc_rwlock_destroy (int *) ;
 
 void
 isc_stats_detach(isc_stats_t **statsp) {
-	isc_stats_t *stats;
+ isc_stats_t *stats;
 
-	REQUIRE(statsp != NULL && ISC_STATS_VALID(*statsp));
+ REQUIRE(statsp != ((void*)0) && ISC_STATS_VALID(*statsp));
 
-	stats = *statsp;
-	*statsp = NULL;
+ stats = *statsp;
+ *statsp = ((void*)0);
 
-	LOCK(&stats->lock);
-	stats->references--;
-	UNLOCK(&stats->lock);
+ LOCK(&stats->lock);
+ stats->references--;
+ UNLOCK(&stats->lock);
 
-	if (stats->references == 0) {
-		isc_mem_put(stats->mctx, stats->copiedcounters,
-			    sizeof(isc_stat_t) * stats->ncounters);
-		isc_mem_put(stats->mctx, stats->counters,
-			    sizeof(isc_stat_t) * stats->ncounters);
-		DESTROYLOCK(&stats->lock);
-#ifdef ISC_RWLOCK_USEATOMIC
-		isc_rwlock_destroy(&stats->counterlock);
-#endif
-		isc_mem_putanddetach(&stats->mctx, stats, sizeof(*stats));
-	}
+ if (stats->references == 0) {
+  isc_mem_put(stats->mctx, stats->copiedcounters,
+       sizeof(isc_stat_t) * stats->ncounters);
+  isc_mem_put(stats->mctx, stats->counters,
+       sizeof(isc_stat_t) * stats->ncounters);
+  DESTROYLOCK(&stats->lock);
+
+
+
+  isc_mem_putanddetach(&stats->mctx, stats, sizeof(*stats));
+ }
 }

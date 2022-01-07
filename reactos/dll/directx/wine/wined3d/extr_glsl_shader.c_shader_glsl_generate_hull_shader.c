@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct wined3d_string_buffer_list {int dummy; } ;
-struct wined3d_string_buffer {int /*<<< orphan*/  buffer; } ;
+struct wined3d_string_buffer {int buffer; } ;
 struct wined3d_shader_reg_maps {scalar_t__ vocp; } ;
-struct wined3d_shader_phase {unsigned int temporary_count; int /*<<< orphan*/  end; int /*<<< orphan*/  start; } ;
-struct TYPE_6__ {unsigned int fork_count; unsigned int join_count; int /*<<< orphan*/ * join; int /*<<< orphan*/ * fork; struct wined3d_shader_phase* control_point; } ;
-struct wined3d_hull_shader {TYPE_3__ phases; int /*<<< orphan*/  output_vertex_count; } ;
+struct wined3d_shader_phase {unsigned int temporary_count; int end; int start; } ;
+struct TYPE_6__ {unsigned int fork_count; unsigned int join_count; int * join; int * fork; struct wined3d_shader_phase* control_point; } ;
+struct wined3d_hull_shader {TYPE_3__ phases; int output_vertex_count; } ;
 struct TYPE_4__ {struct wined3d_hull_shader hs; } ;
-struct wined3d_shader {struct wined3d_shader_reg_maps reg_maps; int /*<<< orphan*/  output_signature; TYPE_2__* limits; int /*<<< orphan*/  patch_constant_signature; TYPE_1__ u; } ;
+struct wined3d_shader {struct wined3d_shader_reg_maps reg_maps; int output_signature; TYPE_2__* limits; int patch_constant_signature; TYPE_1__ u; } ;
 struct wined3d_gl_info {int dummy; } ;
 struct wined3d_context {struct wined3d_gl_info* gl_info; } ;
 struct shader_glsl_priv {struct wined3d_string_buffer shader_buffer; struct wined3d_string_buffer_list string_buffers; } ;
 struct shader_glsl_ctx_priv {struct wined3d_string_buffer_list* string_buffers; } ;
-typedef  int /*<<< orphan*/  priv_ctx ;
-struct TYPE_5__ {int /*<<< orphan*/  packed_output; int /*<<< orphan*/  packed_input; } ;
-typedef  int /*<<< orphan*/  GLuint ;
+typedef int priv_ctx ;
+struct TYPE_5__ {int packed_output; int packed_input; } ;
+typedef int GLuint ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_TESS_CONTROL_SHADER ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glCreateShader (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct shader_glsl_ctx_priv*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  shader_addline (struct wined3d_string_buffer*,char*,...) ; 
- int /*<<< orphan*/  shader_generate_code (struct wined3d_shader const*,struct wined3d_string_buffer*,struct wined3d_shader_reg_maps const*,struct shader_glsl_ctx_priv*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shader_generate_glsl_declarations (struct wined3d_context const*,struct wined3d_string_buffer*,struct wined3d_shader const*,struct wined3d_shader_reg_maps const*,struct shader_glsl_ctx_priv*) ; 
- int /*<<< orphan*/  shader_glsl_add_version_declaration (struct wined3d_string_buffer*,struct wined3d_gl_info const*) ; 
- int /*<<< orphan*/  shader_glsl_compile (struct wined3d_gl_info const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shader_glsl_enable_extensions (struct wined3d_string_buffer*,struct wined3d_gl_info const*) ; 
- int /*<<< orphan*/  shader_glsl_generate_default_control_point_phase (struct wined3d_shader const*,struct wined3d_string_buffer*,struct wined3d_shader_reg_maps const*) ; 
- int /*<<< orphan*/  shader_glsl_generate_patch_constant_setup (struct wined3d_string_buffer*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shader_glsl_generate_shader_phase (struct wined3d_shader const*,struct wined3d_string_buffer*,struct wined3d_shader_reg_maps const*,struct shader_glsl_ctx_priv*,int /*<<< orphan*/ *,char*,unsigned int) ; 
- int /*<<< orphan*/  shader_glsl_generate_shader_phase_invocation (struct wined3d_string_buffer*,int /*<<< orphan*/ *,char*,unsigned int) ; 
- int /*<<< orphan*/  shader_glsl_setup_sm4_shader_output (struct shader_glsl_priv*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,struct wined3d_shader_reg_maps*,char*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int GL_EXTCALL (int ) ;
+ int GL_TESS_CONTROL_SHADER ;
+ int TRACE (char*,int ) ;
+ int glCreateShader (int ) ;
+ int memset (struct shader_glsl_ctx_priv*,int ,int) ;
+ int shader_addline (struct wined3d_string_buffer*,char*,...) ;
+ int shader_generate_code (struct wined3d_shader const*,struct wined3d_string_buffer*,struct wined3d_shader_reg_maps const*,struct shader_glsl_ctx_priv*,int ,int ) ;
+ int shader_generate_glsl_declarations (struct wined3d_context const*,struct wined3d_string_buffer*,struct wined3d_shader const*,struct wined3d_shader_reg_maps const*,struct shader_glsl_ctx_priv*) ;
+ int shader_glsl_add_version_declaration (struct wined3d_string_buffer*,struct wined3d_gl_info const*) ;
+ int shader_glsl_compile (struct wined3d_gl_info const*,int ,int ) ;
+ int shader_glsl_enable_extensions (struct wined3d_string_buffer*,struct wined3d_gl_info const*) ;
+ int shader_glsl_generate_default_control_point_phase (struct wined3d_shader const*,struct wined3d_string_buffer*,struct wined3d_shader_reg_maps const*) ;
+ int shader_glsl_generate_patch_constant_setup (struct wined3d_string_buffer*,int *,int ) ;
+ int shader_glsl_generate_shader_phase (struct wined3d_shader const*,struct wined3d_string_buffer*,struct wined3d_shader_reg_maps const*,struct shader_glsl_ctx_priv*,int *,char*,unsigned int) ;
+ int shader_glsl_generate_shader_phase_invocation (struct wined3d_string_buffer*,int *,char*,unsigned int) ;
+ int shader_glsl_setup_sm4_shader_output (struct shader_glsl_priv*,int ,int *,struct wined3d_shader_reg_maps*,char*,int ) ;
 
 __attribute__((used)) static GLuint shader_glsl_generate_hull_shader(const struct wined3d_context *context,
         struct shader_glsl_priv *priv, const struct wined3d_shader *shader)

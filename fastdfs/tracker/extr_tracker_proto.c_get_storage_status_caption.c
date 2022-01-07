@@ -1,50 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  FDFS_STORAGE_STATUS_ACTIVE 136 
-#define  FDFS_STORAGE_STATUS_DELETED 135 
-#define  FDFS_STORAGE_STATUS_INIT 134 
-#define  FDFS_STORAGE_STATUS_IP_CHANGED 133 
-#define  FDFS_STORAGE_STATUS_OFFLINE 132 
-#define  FDFS_STORAGE_STATUS_ONLINE 131 
-#define  FDFS_STORAGE_STATUS_RECOVERY 130 
-#define  FDFS_STORAGE_STATUS_SYNCING 129 
-#define  FDFS_STORAGE_STATUS_WAIT_SYNC 128 
-
 const char *get_storage_status_caption(const int status)
 {
-	switch (status)
-	{
-		case FDFS_STORAGE_STATUS_INIT:
-			return "INIT";
-		case FDFS_STORAGE_STATUS_WAIT_SYNC:
-			return "WAIT_SYNC";
-		case FDFS_STORAGE_STATUS_SYNCING:
-			return "SYNCING";
-		case FDFS_STORAGE_STATUS_OFFLINE:
-			return "OFFLINE";
-		case FDFS_STORAGE_STATUS_ONLINE:
-			return "ONLINE";
-		case FDFS_STORAGE_STATUS_DELETED:
-			return "DELETED";
-		case FDFS_STORAGE_STATUS_IP_CHANGED:
-			return "IP_CHANGED";
-		case FDFS_STORAGE_STATUS_ACTIVE:
-			return "ACTIVE";
-		case FDFS_STORAGE_STATUS_RECOVERY:
-			return "RECOVERY";
-		default:
-			return "UNKOWN";
-	}
+ switch (status)
+ {
+  case 134:
+   return "INIT";
+  case 128:
+   return "WAIT_SYNC";
+  case 129:
+   return "SYNCING";
+  case 132:
+   return "OFFLINE";
+  case 131:
+   return "ONLINE";
+  case 135:
+   return "DELETED";
+  case 133:
+   return "IP_CHANGED";
+  case 136:
+   return "ACTIVE";
+  case 130:
+   return "RECOVERY";
+  default:
+   return "UNKOWN";
+ }
 }

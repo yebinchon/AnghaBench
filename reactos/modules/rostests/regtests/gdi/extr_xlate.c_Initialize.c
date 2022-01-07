@@ -1,43 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ CreateBitmap (int,int,int,int,int /*<<< orphan*/ ) ; 
- scalar_t__ CreateCompatibleBitmap (int /*<<< orphan*/ ,int,int) ; 
- void* CreateCompatibleDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetRealColorDepth () ; 
- int /*<<< orphan*/  ajBits1 ; 
- int /*<<< orphan*/  ajBits16 ; 
- int /*<<< orphan*/  ajBits24 ; 
- int /*<<< orphan*/  ajBits32 ; 
- int /*<<< orphan*/  ajBits8 ; 
- scalar_t__ hbmp16bpp_a ; 
- scalar_t__ hbmp16bpp_b ; 
- scalar_t__ hbmp1bpp_a ; 
- scalar_t__ hbmp1bpp_b ; 
- scalar_t__ hbmp24bpp_a ; 
- scalar_t__ hbmp24bpp_b ; 
- scalar_t__ hbmp32bpp_a ; 
- scalar_t__ hbmp32bpp_b ; 
- scalar_t__ hbmp8bpp_a ; 
- scalar_t__ hbmp8bpp_b ; 
- scalar_t__ hbmpCompat ; 
- void* hdcDst ; 
- void* hdcSrc ; 
- int /*<<< orphan*/  iDcFormat ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- int /*<<< orphan*/  printf (char*,int /*<<< orphan*/ ) ; 
+ scalar_t__ CreateBitmap (int,int,int,int,int ) ;
+ scalar_t__ CreateCompatibleBitmap (int ,int,int) ;
+ void* CreateCompatibleDC (int ) ;
+ int GetDC (int ) ;
+ int GetRealColorDepth () ;
+ int ajBits1 ;
+ int ajBits16 ;
+ int ajBits24 ;
+ int ajBits32 ;
+ int ajBits8 ;
+ scalar_t__ hbmp16bpp_a ;
+ scalar_t__ hbmp16bpp_b ;
+ scalar_t__ hbmp1bpp_a ;
+ scalar_t__ hbmp1bpp_b ;
+ scalar_t__ hbmp24bpp_a ;
+ scalar_t__ hbmp24bpp_b ;
+ scalar_t__ hbmp32bpp_a ;
+ scalar_t__ hbmp32bpp_b ;
+ scalar_t__ hbmp8bpp_a ;
+ scalar_t__ hbmp8bpp_b ;
+ scalar_t__ hbmpCompat ;
+ void* hdcDst ;
+ void* hdcSrc ;
+ int iDcFormat ;
+ int ok (int,char*) ;
+ int printf (char*,int ) ;
 
 __attribute__((used)) static
 void

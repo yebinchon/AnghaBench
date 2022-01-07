@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* Sock; } ;
-struct TYPE_4__ {int /*<<< orphan*/  SendTube; int /*<<< orphan*/  RecvTube; } ;
-typedef  TYPE_2__ IPC ;
+struct TYPE_4__ {int SendTube; int RecvTube; } ;
+typedef TYPE_2__ IPC ;
 
-/* Variables and functions */
- int IsTubeConnected (int /*<<< orphan*/ ) ; 
+
+ int IsTubeConnected (int ) ;
 
 bool IsIPCConnected(IPC *ipc)
 {
-	// Validate arguments
-	if (ipc == NULL)
-	{
-		return false;
-	}
 
-	if (IsTubeConnected(ipc->Sock->RecvTube) == false || IsTubeConnected(ipc->Sock->SendTube) == false)
-	{
-		return false;
-	}
+ if (ipc == ((void*)0))
+ {
+  return 0;
+ }
 
-	return true;
+ if (IsTubeConnected(ipc->Sock->RecvTube) == 0 || IsTubeConnected(ipc->Sock->SendTube) == 0)
+ {
+  return 0;
+ }
+
+ return 1;
 }

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
 
-/* Variables and functions */
- int /*<<< orphan*/  last_char ; 
+
+
+
+typedef int u_char ;
+
+
+ int last_char ;
 
 __attribute__((used)) static void read_buff_add(u_char ch)
 {
-	last_char = ch;
+ last_char = ch;
 }

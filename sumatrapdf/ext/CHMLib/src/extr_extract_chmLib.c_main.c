@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct extract_context {char* base_path; } ;
 struct chmFile {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHM_ENUMERATE_ALL ; 
- int /*<<< orphan*/  _extract_callback ; 
- int /*<<< orphan*/  chm_close (struct chmFile*) ; 
- int /*<<< orphan*/  chm_enumerate (struct chmFile*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- struct chmFile* chm_open (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int CHM_ENUMERATE_ALL ;
+ int _extract_callback ;
+ int chm_close (struct chmFile*) ;
+ int chm_enumerate (struct chmFile*,int ,int ,void*) ;
+ struct chmFile* chm_open (char*) ;
+ int exit (int) ;
+ int fprintf (int ,char*,char*) ;
+ int printf (char*,...) ;
+ int stderr ;
 
 int main(int c, char **v)
 {
@@ -36,7 +36,7 @@ int main(int c, char **v)
     }
 
     h = chm_open(v[1]);
-    if (h == NULL)
+    if (h == ((void*)0))
     {
         fprintf(stderr, "failed to open %s\n", v[1]);
         exit(1);

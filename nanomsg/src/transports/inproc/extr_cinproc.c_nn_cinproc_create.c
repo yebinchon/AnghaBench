@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nn_ep {int dummy; } ;
-struct nn_cinproc {int /*<<< orphan*/  item; int /*<<< orphan*/  fsm; int /*<<< orphan*/  sinprocs; int /*<<< orphan*/  state; } ;
+struct nn_cinproc {int item; int fsm; int sinprocs; int state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NN_CINPROC_STATE_IDLE ; 
- int /*<<< orphan*/  NN_STAT_INPROGRESS_CONNECTIONS ; 
- int /*<<< orphan*/  alloc_assert (struct nn_cinproc*) ; 
- struct nn_cinproc* nn_alloc (int,char*) ; 
- int /*<<< orphan*/  nn_cinproc_connect ; 
- int /*<<< orphan*/  nn_cinproc_handler ; 
- int /*<<< orphan*/  nn_cinproc_ops ; 
- int /*<<< orphan*/  nn_cinproc_shutdown ; 
- int /*<<< orphan*/  nn_ep_getctx (struct nn_ep*) ; 
- int /*<<< orphan*/  nn_ep_stat_increment (struct nn_ep*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  nn_ep_tran_setup (struct nn_ep*,int /*<<< orphan*/ *,struct nn_cinproc*) ; 
- int /*<<< orphan*/  nn_fsm_init_root (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nn_fsm_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_ins_connect (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nn_ins_item_init (int /*<<< orphan*/ *,struct nn_ep*) ; 
- int /*<<< orphan*/  nn_list_init (int /*<<< orphan*/ *) ; 
+
+ int NN_CINPROC_STATE_IDLE ;
+ int NN_STAT_INPROGRESS_CONNECTIONS ;
+ int alloc_assert (struct nn_cinproc*) ;
+ struct nn_cinproc* nn_alloc (int,char*) ;
+ int nn_cinproc_connect ;
+ int nn_cinproc_handler ;
+ int nn_cinproc_ops ;
+ int nn_cinproc_shutdown ;
+ int nn_ep_getctx (struct nn_ep*) ;
+ int nn_ep_stat_increment (struct nn_ep*,int ,int) ;
+ int nn_ep_tran_setup (struct nn_ep*,int *,struct nn_cinproc*) ;
+ int nn_fsm_init_root (int *,int ,int ,int ) ;
+ int nn_fsm_start (int *) ;
+ int nn_ins_connect (int *,int ) ;
+ int nn_ins_item_init (int *,struct nn_ep*) ;
+ int nn_list_init (int *) ;
 
 int nn_cinproc_create (struct nn_ep *ep)
 {
@@ -48,10 +48,10 @@ int nn_cinproc_create (struct nn_ep *ep)
 
     nn_ep_stat_increment (ep, NN_STAT_INPROGRESS_CONNECTIONS, 1);
 
-    /*  Start the state machine. */
+
     nn_fsm_start (&self->fsm);
 
-    /*  Register the inproc endpoint into a global repository. */
+
     nn_ins_connect (&self->item, nn_cinproc_connect);
 
     return 0;

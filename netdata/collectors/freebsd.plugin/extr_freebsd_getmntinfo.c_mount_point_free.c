@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mount_point {struct mount_point* name; int /*<<< orphan*/  st_inodes; int /*<<< orphan*/  st_space; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  freez (struct mount_point*) ; 
- scalar_t__ likely (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mount_points_added ; 
- int /*<<< orphan*/  rrdset_is_obsolete (int /*<<< orphan*/ ) ; 
+
+
+
+struct mount_point {struct mount_point* name; int st_inodes; int st_space; } ;
+
+
+ int freez (struct mount_point*) ;
+ scalar_t__ likely (int ) ;
+ int mount_points_added ;
+ int rrdset_is_obsolete (int ) ;
 
 __attribute__((used)) static void mount_point_free(struct mount_point *m) {
     if (likely(m->st_space))

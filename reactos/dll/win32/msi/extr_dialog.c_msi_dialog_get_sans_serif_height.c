@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-struct TYPE_7__ {int /*<<< orphan*/  lfFaceName; int /*<<< orphan*/  lfHeight; } ;
-struct TYPE_6__ {int /*<<< orphan*/  tmHeight; } ;
-typedef  TYPE_1__ TEXTMETRICW ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  TYPE_2__ LOGFONTW ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  scalar_t__ HFONT ;
-typedef  scalar_t__ HDC ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ CreateFontIndirectW (TYPE_2__*) ; 
- int /*<<< orphan*/  DeleteObject (scalar_t__) ; 
- scalar_t__ GetDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDeviceCaps (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ GetTextMetricsW (scalar_t__,TYPE_1__*) ; 
- int /*<<< orphan*/  LOGPIXELSY ; 
- int /*<<< orphan*/  MulDiv (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ SelectObject (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  strcpyW (int /*<<< orphan*/ ,char const*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+struct TYPE_7__ {int lfFaceName; int lfHeight; } ;
+struct TYPE_6__ {int tmHeight; } ;
+typedef TYPE_1__ TEXTMETRICW ;
+typedef int LONG ;
+typedef TYPE_2__ LOGFONTW ;
+typedef int INT ;
+typedef int HWND ;
+typedef scalar_t__ HFONT ;
+typedef scalar_t__ HDC ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ CreateFontIndirectW (TYPE_2__*) ;
+ int DeleteObject (scalar_t__) ;
+ scalar_t__ GetDC (int ) ;
+ int GetDeviceCaps (scalar_t__,int ) ;
+ scalar_t__ GetTextMetricsW (scalar_t__,TYPE_1__*) ;
+ int LOGPIXELSY ;
+ int MulDiv (int,int ,int) ;
+ int ReleaseDC (int ,scalar_t__) ;
+ scalar_t__ SelectObject (scalar_t__,scalar_t__) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int strcpyW (int ,char const*) ;
 
 __attribute__((used)) static INT msi_dialog_get_sans_serif_height( HWND hwnd )
 {

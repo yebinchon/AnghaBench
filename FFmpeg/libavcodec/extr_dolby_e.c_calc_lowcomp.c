@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FFMAX (int,int) ; 
- int INT_MIN ; 
- int log_add (int,int) ; 
- scalar_t__* lwc_adj_tab ; 
- int** lwc_gain_tab ; 
+ int FFMAX (int,int) ;
+ int INT_MIN ;
+ int log_add (int,int) ;
+ scalar_t__* lwc_adj_tab ;
+ int** lwc_gain_tab ;
 
 __attribute__((used)) static void calc_lowcomp(int *msk_val)
 {
@@ -26,7 +18,7 @@ __attribute__((used)) static void calc_lowcomp(int *msk_val)
     for (i = 0; i < 11; i++) {
         int max_j = 0;
         int max_v = INT_MIN;
-        int thr   = 0;
+        int thr = 0;
 
         for (j = FFMAX(i - 3, 0), k = 0; j <= i + 3; j++, k++) {
             int v = msk_val[j] + lwc_gain_tab[i][k];

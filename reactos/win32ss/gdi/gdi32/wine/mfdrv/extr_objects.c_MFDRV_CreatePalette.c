@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WORD ;
-struct TYPE_5__ {int rdSize; int* rdParm; int /*<<< orphan*/  rdFunction; } ;
-typedef  int /*<<< orphan*/  PHYSDEV ;
-typedef  TYPE_1__ METARECORD ;
-typedef  int /*<<< orphan*/  LOGPALETTE ;
-typedef  int /*<<< orphan*/  HPALETTE ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  META_CREATEPALETTE ; 
- int /*<<< orphan*/  META_SELECTPALETTE ; 
- int MFDRV_AddHandle (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ MFDRV_WriteRecord (int /*<<< orphan*/ ,TYPE_1__*,int) ; 
- int /*<<< orphan*/  memcpy (int**,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int WORD ;
+struct TYPE_5__ {int rdSize; int* rdParm; int rdFunction; } ;
+typedef int PHYSDEV ;
+typedef TYPE_1__ METARECORD ;
+typedef int LOGPALETTE ;
+typedef int HPALETTE ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ FALSE ;
+ int GetProcessHeap () ;
+ TYPE_1__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_1__*) ;
+ int META_CREATEPALETTE ;
+ int META_SELECTPALETTE ;
+ int MFDRV_AddHandle (int ,int ) ;
+ scalar_t__ MFDRV_WriteRecord (int ,TYPE_1__*,int) ;
+ int memcpy (int**,int *,int) ;
 
 __attribute__((used)) static BOOL MFDRV_CreatePalette(PHYSDEV dev, HPALETTE hPalette, LOGPALETTE* logPalette, int sizeofPalette)
 {

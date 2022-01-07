@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mousevsc_dev {int init_complete; int /*<<< orphan*/  wait_event; struct hv_device* device; } ;
+
+
+
+
+struct mousevsc_dev {int init_complete; int wait_event; struct hv_device* device; } ;
 struct hv_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  hv_set_drvdata (struct hv_device*,struct mousevsc_dev*) ; 
- int /*<<< orphan*/  init_completion (int /*<<< orphan*/ *) ; 
- struct mousevsc_dev* kzalloc (int,int /*<<< orphan*/ ) ; 
+
+ int GFP_KERNEL ;
+ int hv_set_drvdata (struct hv_device*,struct mousevsc_dev*) ;
+ int init_completion (int *) ;
+ struct mousevsc_dev* kzalloc (int,int ) ;
 
 __attribute__((used)) static struct mousevsc_dev *mousevsc_alloc_device(struct hv_device *device)
 {
-	struct mousevsc_dev *input_dev;
+ struct mousevsc_dev *input_dev;
 
-	input_dev = kzalloc(sizeof(struct mousevsc_dev), GFP_KERNEL);
+ input_dev = kzalloc(sizeof(struct mousevsc_dev), GFP_KERNEL);
 
-	if (!input_dev)
-		return NULL;
+ if (!input_dev)
+  return ((void*)0);
 
-	input_dev->device = device;
-	hv_set_drvdata(device, input_dev);
-	init_completion(&input_dev->wait_event);
-	input_dev->init_complete = false;
+ input_dev->device = device;
+ hv_set_drvdata(device, input_dev);
+ init_completion(&input_dev->wait_event);
+ input_dev->init_complete = 0;
 
-	return input_dev;
+ return input_dev;
 }

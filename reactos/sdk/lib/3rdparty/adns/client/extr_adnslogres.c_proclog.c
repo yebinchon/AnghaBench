@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/ ** str; } ;
-struct TYPE_10__ {scalar_t__ status; struct TYPE_10__* next; TYPE_1__ rrs; scalar_t__ rest; scalar_t__ addr; int /*<<< orphan*/  start; int /*<<< orphan*/  query; } ;
-typedef  TYPE_2__ logline ;
-typedef  int /*<<< orphan*/  adns_state ;
-typedef  int /*<<< orphan*/  adns_initflags ;
-typedef  TYPE_2__ adns_answer ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int EAGAIN ; 
- int EWOULDBLOCK ; 
- int OPT_DEBUG ; 
- int OPT_POLL ; 
- int /*<<< orphan*/  aargh (char*) ; 
- int adns_check (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  adns_finish (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  adns_if_debug ; 
- scalar_t__ adns_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ adns_init_strcfg (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ adns_s_ok ; 
- int adns_wait (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__**,int /*<<< orphan*/ *) ; 
- int adns_wait_poll (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__**,int /*<<< orphan*/ *) ; 
- scalar_t__ config_text ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  guard_null (scalar_t__) ; 
- int /*<<< orphan*/  msg (char*,int,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printline (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,scalar_t__,int /*<<< orphan*/ *) ; 
- char* progname ; 
- TYPE_2__* readline (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (int) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int ** str; } ;
+struct TYPE_10__ {scalar_t__ status; struct TYPE_10__* next; TYPE_1__ rrs; scalar_t__ rest; scalar_t__ addr; int start; int query; } ;
+typedef TYPE_2__ logline ;
+typedef int adns_state ;
+typedef int adns_initflags ;
+typedef TYPE_2__ adns_answer ;
+typedef int FILE ;
+
+
+ int EAGAIN ;
+ int EWOULDBLOCK ;
+ int OPT_DEBUG ;
+ int OPT_POLL ;
+ int aargh (char*) ;
+ int adns_check (int ,int *,TYPE_2__**,int *) ;
+ int adns_finish (int ) ;
+ int adns_if_debug ;
+ scalar_t__ adns_init (int *,int ,int ) ;
+ scalar_t__ adns_init_strcfg (int *,int ,int ,scalar_t__) ;
+ scalar_t__ adns_s_ok ;
+ int adns_wait (int ,int *,TYPE_2__**,int *) ;
+ int adns_wait_poll (int ,int *,TYPE_2__**,int *) ;
+ scalar_t__ config_text ;
+ scalar_t__ errno ;
+ int exit (int) ;
+ int fprintf (int ,char*,char*,char*) ;
+ int free (TYPE_2__*) ;
+ int guard_null (scalar_t__) ;
+ int msg (char*,int,scalar_t__,int ) ;
+ int printline (int *,int ,scalar_t__,scalar_t__,int *) ;
+ char* progname ;
+ TYPE_2__* readline (int *,int ,int) ;
+ int stderr ;
+ char* strerror (int) ;
 
 __attribute__((used)) static void proclog(FILE *inf, FILE *outf, int maxpending, int opts) {
   int eof, err, len;
@@ -66,25 +66,25 @@ __attribute__((used)) static void proclog(FILE *inf, FILE *outf, int maxpending,
   while (head) {
     while (head) {
       if (opts & OPT_DEBUG)
-	msg("%d in queue; checking %.*s", len,
-	    head->rest-head->addr, guard_null(head->addr));
+ msg("%d in queue; checking %.*s", len,
+     head->rest-head->addr, guard_null(head->addr));
       if (eof || len >= maxpending) {
-#ifdef HAVE_POLL
-	if (opts & OPT_POLL)
-	  err= adns_wait_poll(adns, &head->query, &answer, NULL);
-	else
-#endif
-	  err= adns_wait(adns, &head->query, &answer, NULL);
+
+
+
+
+
+   err= adns_wait(adns, &head->query, &answer, ((void*)0));
       } else {
-	err= adns_check(adns, &head->query, &answer, NULL);
+ err= adns_check(adns, &head->query, &answer, ((void*)0));
       }
       if ((err == EAGAIN) || (EWOULDBLOCK == err)) break;
       if (err) {
-	fprintf(stderr, "%s: adns_wait/check: %s", progname, strerror(err));
-	exit(1);
+ fprintf(stderr, "%s: adns_wait/check: %s", progname, strerror(err));
+ exit(1);
       }
       printline(outf, head->start, head->addr, head->rest,
-		answer->status == adns_s_ok ? *answer->rrs.str : NULL);
+  answer->status == adns_s_ok ? *answer->rrs.str : ((void*)0));
       line= head; head= head->next;
       free(line);
       free(answer);
@@ -97,7 +97,7 @@ __attribute__((used)) static void proclog(FILE *inf, FILE *outf, int maxpending,
         else tail->next= line;
         tail= line; len++;
       } else {
-	eof= 1;
+ eof= 1;
       }
     }
   }

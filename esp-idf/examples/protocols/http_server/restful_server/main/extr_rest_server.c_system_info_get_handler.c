@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  httpd_req_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
-struct TYPE_3__ {int /*<<< orphan*/  cores; } ;
-typedef  TYPE_1__ esp_chip_info_t ;
-typedef  int /*<<< orphan*/  cJSON ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_OK ; 
- int /*<<< orphan*/  IDF_VER ; 
- int /*<<< orphan*/  cJSON_AddNumberToObject (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cJSON_AddStringToObject (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * cJSON_CreateObject () ; 
- int /*<<< orphan*/  cJSON_Delete (int /*<<< orphan*/ *) ; 
- char* cJSON_Print (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  esp_chip_info (TYPE_1__*) ; 
- int /*<<< orphan*/  free (void*) ; 
- int /*<<< orphan*/  httpd_resp_sendstr (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  httpd_resp_set_type (int /*<<< orphan*/ *,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int httpd_req_t ;
+typedef int esp_err_t ;
+struct TYPE_3__ {int cores; } ;
+typedef TYPE_1__ esp_chip_info_t ;
+typedef int cJSON ;
+
+
+ int ESP_OK ;
+ int IDF_VER ;
+ int cJSON_AddNumberToObject (int *,char*,int ) ;
+ int cJSON_AddStringToObject (int *,char*,int ) ;
+ int * cJSON_CreateObject () ;
+ int cJSON_Delete (int *) ;
+ char* cJSON_Print (int *) ;
+ int esp_chip_info (TYPE_1__*) ;
+ int free (void*) ;
+ int httpd_resp_sendstr (int *,char const*) ;
+ int httpd_resp_set_type (int *,char*) ;
 
 __attribute__((used)) static esp_err_t system_info_get_handler(httpd_req_t *req)
 {

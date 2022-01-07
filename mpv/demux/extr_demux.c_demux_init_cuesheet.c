@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct demuxer {TYPE_1__* chapters; int /*<<< orphan*/  num_chapters; int /*<<< orphan*/  metadata; } ;
-struct cue_track {int /*<<< orphan*/  tags; int /*<<< orphan*/  start; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct demuxer {TYPE_1__* chapters; int num_chapters; int metadata; } ;
+struct cue_track {int tags; int start; } ;
 struct cue_file {int num_tracks; struct cue_track* tracks; } ;
-struct TYPE_2__ {int /*<<< orphan*/  metadata; } ;
+struct TYPE_2__ {int metadata; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_WARN (struct demuxer*,char*) ; 
- int /*<<< orphan*/  bstr0 (char*) ; 
- int demuxer_add_chapter (struct demuxer*,char*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ mp_check_embedded_cue (struct cue_file*) ; 
- struct cue_file* mp_parse_cue (int /*<<< orphan*/ ) ; 
- char* mp_tags_get_str (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mp_tags_merge (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  talloc_free (struct cue_file*) ; 
+
+ int MP_WARN (struct demuxer*,char*) ;
+ int bstr0 (char*) ;
+ int demuxer_add_chapter (struct demuxer*,char*,int ,int) ;
+ scalar_t__ mp_check_embedded_cue (struct cue_file*) ;
+ struct cue_file* mp_parse_cue (int ) ;
+ char* mp_tags_get_str (int ,char*) ;
+ int mp_tags_merge (int ,int ) ;
+ int talloc_free (struct cue_file*) ;
 
 __attribute__((used)) static void demux_init_cuesheet(struct demuxer *demuxer)
 {

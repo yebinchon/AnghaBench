@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct x509_pm {int /*<<< orphan*/ * ex_crt; int /*<<< orphan*/ * x509_crt; } ;
-typedef  int /*<<< orphan*/  mbedtls_x509_crt ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct x509_pm {int * ex_crt; int * x509_crt; } ;
+typedef int mbedtls_x509_crt ;
 struct TYPE_3__ {struct x509_pm* x509_pm; } ;
-typedef  TYPE_1__ X509 ;
+typedef TYPE_1__ X509 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SSL_DEBUG (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  SSL_DEBUG_ON ; 
- int /*<<< orphan*/  SSL_PLATFORM_ERROR_LEVEL ; 
- scalar_t__ X509_INFO_STRING_LENGTH ; 
- int mbedtls_x509_crt_info (char*,scalar_t__,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ssl_mem_free (char*) ; 
- char* ssl_mem_malloc (scalar_t__) ; 
+
+ int SSL_DEBUG (int ,char*,...) ;
+ int SSL_DEBUG_ON ;
+ int SSL_PLATFORM_ERROR_LEVEL ;
+ scalar_t__ X509_INFO_STRING_LENGTH ;
+ int mbedtls_x509_crt_info (char*,scalar_t__,char*,int *) ;
+ int ssl_mem_free (char*) ;
+ char* ssl_mem_malloc (scalar_t__) ;
 
 int x509_pm_show_info(X509 *x)
 {
@@ -37,7 +37,7 @@ int x509_pm_show_info(X509 *x)
     else if (x509_pm->ex_crt)
         x509_crt = x509_pm->ex_crt;
     else
-        x509_crt = NULL;
+        x509_crt = ((void*)0);
 
     if (!x509_crt)
         return -1;

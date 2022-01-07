@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  repo_mgr; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int repo_mgr; } ;
 struct TYPE_8__ {scalar_t__ data; struct TYPE_8__* next; } ;
-struct TYPE_7__ {char* email; int /*<<< orphan*/  id; } ;
-typedef  TYPE_1__ SeafRepo ;
-typedef  TYPE_2__ GList ;
-typedef  int /*<<< orphan*/  GError ;
+struct TYPE_7__ {char* email; int id; } ;
+typedef TYPE_1__ SeafRepo ;
+typedef TYPE_2__ GList ;
+typedef int GError ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEAFILE_DOMAIN ; 
- int /*<<< orphan*/  SEAF_ERR_BAD_ARGS ; 
- int /*<<< orphan*/  cancel_clone_tasks_by_account (char const*,char const*) ; 
- scalar_t__ do_unsync_repo (TYPE_1__*) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- int /*<<< orphan*/  g_list_free (TYPE_2__*) ; 
- int /*<<< orphan*/  g_set_error (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ g_strcmp0 (char*,char const*) ; 
- TYPE_4__* seaf ; 
- TYPE_2__* seaf_repo_manager_get_repo_list (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  seaf_repo_manager_get_repo_relay_info (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char**,int /*<<< orphan*/ *) ; 
+
+ int SEAFILE_DOMAIN ;
+ int SEAF_ERR_BAD_ARGS ;
+ int cancel_clone_tasks_by_account (char const*,char const*) ;
+ scalar_t__ do_unsync_repo (TYPE_1__*) ;
+ int g_free (char*) ;
+ int g_list_free (TYPE_2__*) ;
+ int g_set_error (int **,int ,int ,char*) ;
+ scalar_t__ g_strcmp0 (char*,char const*) ;
+ TYPE_4__* seaf ;
+ TYPE_2__* seaf_repo_manager_get_repo_list (int ,int,int) ;
+ int seaf_repo_manager_get_repo_relay_info (int ,int ,char**,int *) ;
 
 int
 seafile_unsync_repos_by_account (const char *server_addr, const char *email, GError **error)
@@ -48,11 +48,11 @@ seafile_unsync_repos_by_account (const char *server_addr, const char *email, GEr
 
     for (ptr = repos; ptr; ptr = ptr->next) {
         SeafRepo *repo = (SeafRepo*)ptr->data;
-        char *addr = NULL;
+        char *addr = ((void*)0);
         seaf_repo_manager_get_repo_relay_info(seaf->repo_mgr,
                                               repo->id,
-                                              &addr, /* addr */
-                                              NULL); /* port */
+                                              &addr,
+                                              ((void*)0));
 
         if (g_strcmp0(addr, server_addr) == 0 && g_strcmp0(repo->email, email) == 0) {
             if (do_unsync_repo(repo) < 0) {

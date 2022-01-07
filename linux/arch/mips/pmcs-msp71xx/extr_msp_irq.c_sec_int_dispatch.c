@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int MSP_INT_SEC ;
+ int do_IRQ (int ) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  MSP_INT_SEC ; 
- int /*<<< orphan*/  do_IRQ (int /*<<< orphan*/ ) ; 
-
-__attribute__((used)) static inline void sec_int_dispatch(void)  { do_IRQ(MSP_INT_SEC);  }
+__attribute__((used)) static inline void sec_int_dispatch(void) { do_IRQ(MSP_INT_SEC); }

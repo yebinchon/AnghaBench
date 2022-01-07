@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mdev_link {int /*<<< orphan*/  num_buffers; int /*<<< orphan*/  channel; int /*<<< orphan*/  device; } ;
 
-/* Variables and functions */
- int most_set_cfg_num_buffers (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct mdev_link {int num_buffers; int channel; int device; } ;
+
+
+ int most_set_cfg_num_buffers (int ,int ,int ) ;
 
 __attribute__((used)) static int set_cfg_num_buffers(struct mdev_link *link)
 {
-	return most_set_cfg_num_buffers(link->device, link->channel,
-					link->num_buffers);
+ return most_set_cfg_num_buffers(link->device, link->channel,
+     link->num_buffers);
 }

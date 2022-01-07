@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  status ;
-typedef  int /*<<< orphan*/ * HINTERNET ;
-typedef  int DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int GetLastError () ; 
- int HTTP_QUERY_FLAG_NUMBER ; 
- int HTTP_QUERY_STATUS_CODE ; 
- int /*<<< orphan*/ * HttpOpenRequestA (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int HttpQueryInfoA (int /*<<< orphan*/ *,int,int*,int*,int /*<<< orphan*/ *) ; 
- int HttpSendRequestA (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INTERNET_OPEN_TYPE_DIRECT ; 
- int /*<<< orphan*/  INTERNET_SERVICE_HTTP ; 
- int /*<<< orphan*/  InternetCloseHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * InternetConnectA (int /*<<< orphan*/ *,char*,int,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * InternetOpenA (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int status ;
+typedef int * HINTERNET ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int GetLastError () ;
+ int HTTP_QUERY_FLAG_NUMBER ;
+ int HTTP_QUERY_STATUS_CODE ;
+ int * HttpOpenRequestA (int *,char*,char*,int *,int *,int *,int ,int ) ;
+ int HttpQueryInfoA (int *,int,int*,int*,int *) ;
+ int HttpSendRequestA (int *,int *,int ,int *,int ) ;
+ int INTERNET_OPEN_TYPE_DIRECT ;
+ int INTERNET_SERVICE_HTTP ;
+ int InternetCloseHandle (int *) ;
+ int * InternetConnectA (int *,char*,int,char*,char*,int ,int ,int ) ;
+ int * InternetOpenA (char*,int ,int *,int *,int ) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_basic_auth_credentials_reuse(int port)
 {
@@ -35,22 +35,22 @@ __attribute__((used)) static void test_basic_auth_credentials_reuse(int port)
     DWORD status, size;
     BOOL ret;
 
-    ses = InternetOpenA( "winetest", INTERNET_OPEN_TYPE_DIRECT, NULL, NULL, 0 );
-    ok( ses != NULL, "InternetOpenA failed\n" );
+    ses = InternetOpenA( "winetest", INTERNET_OPEN_TYPE_DIRECT, ((void*)0), ((void*)0), 0 );
+    ok( ses != ((void*)0), "InternetOpenA failed\n" );
 
     con = InternetConnectA( ses, "localhost", port, "user", "pwd",
                             INTERNET_SERVICE_HTTP, 0, 0 );
-    ok( con != NULL, "InternetConnectA failed %u\n", GetLastError() );
+    ok( con != ((void*)0), "InternetConnectA failed %u\n", GetLastError() );
 
-    req = HttpOpenRequestA( con, "HEAD", "/upload.txt", NULL, NULL, NULL, 0, 0 );
-    ok( req != NULL, "HttpOpenRequestA failed %u\n", GetLastError() );
+    req = HttpOpenRequestA( con, "HEAD", "/upload.txt", ((void*)0), ((void*)0), ((void*)0), 0, 0 );
+    ok( req != ((void*)0), "HttpOpenRequestA failed %u\n", GetLastError() );
 
-    ret = HttpSendRequestA( req, NULL, 0, NULL, 0 );
+    ret = HttpSendRequestA( req, ((void*)0), 0, ((void*)0), 0 );
     ok( ret, "HttpSendRequestA failed %u\n", GetLastError() );
 
     status = 0xdeadbeef;
     size = sizeof(status);
-    ret = HttpQueryInfoA( req, HTTP_QUERY_STATUS_CODE|HTTP_QUERY_FLAG_NUMBER, &status, &size, NULL );
+    ret = HttpQueryInfoA( req, HTTP_QUERY_STATUS_CODE|HTTP_QUERY_FLAG_NUMBER, &status, &size, ((void*)0) );
     ok( ret, "HttpQueryInfoA failed %u\n", GetLastError() );
     ok( status == 200, "got %u\n", status );
 
@@ -58,22 +58,22 @@ __attribute__((used)) static void test_basic_auth_credentials_reuse(int port)
     InternetCloseHandle( con );
     InternetCloseHandle( ses );
 
-    ses = InternetOpenA( "winetest", INTERNET_OPEN_TYPE_DIRECT, NULL, NULL, 0 );
-    ok( ses != NULL, "InternetOpenA failed\n" );
+    ses = InternetOpenA( "winetest", INTERNET_OPEN_TYPE_DIRECT, ((void*)0), ((void*)0), 0 );
+    ok( ses != ((void*)0), "InternetOpenA failed\n" );
 
-    con = InternetConnectA( ses, "localhost", port, NULL, NULL,
+    con = InternetConnectA( ses, "localhost", port, ((void*)0), ((void*)0),
                             INTERNET_SERVICE_HTTP, 0, 0 );
-    ok( con != NULL, "InternetConnectA failed %u\n", GetLastError() );
+    ok( con != ((void*)0), "InternetConnectA failed %u\n", GetLastError() );
 
-    req = HttpOpenRequestA( con, "PUT", "/upload2.txt", NULL, NULL, NULL, 0, 0 );
-    ok( req != NULL, "HttpOpenRequestA failed %u\n", GetLastError() );
+    req = HttpOpenRequestA( con, "PUT", "/upload2.txt", ((void*)0), ((void*)0), ((void*)0), 0, 0 );
+    ok( req != ((void*)0), "HttpOpenRequestA failed %u\n", GetLastError() );
 
-    ret = HttpSendRequestA( req, NULL, 0, NULL, 0 );
+    ret = HttpSendRequestA( req, ((void*)0), 0, ((void*)0), 0 );
     ok( ret, "HttpSendRequestA failed %u\n", GetLastError() );
 
     status = 0xdeadbeef;
     size = sizeof(status);
-    ret = HttpQueryInfoA( req, HTTP_QUERY_STATUS_CODE|HTTP_QUERY_FLAG_NUMBER, &status, &size, NULL );
+    ret = HttpQueryInfoA( req, HTTP_QUERY_STATUS_CODE|HTTP_QUERY_FLAG_NUMBER, &status, &size, ((void*)0) );
     ok( ret, "HttpQueryInfoA failed %u\n", GetLastError() );
     ok( status == 200, "got %u\n", status );
 

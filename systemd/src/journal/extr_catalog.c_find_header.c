@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  NEWLINE ; 
- int /*<<< orphan*/  WHITESPACE ; 
- int /*<<< orphan*/  next_header (char const**) ; 
- char* startswith (char const*,char const*) ; 
- int /*<<< orphan*/  strcspn (char const*,int /*<<< orphan*/ ) ; 
- char* strndup (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strspn (char const*,int /*<<< orphan*/ ) ; 
+ int NEWLINE ;
+ int WHITESPACE ;
+ int next_header (char const**) ;
+ char* startswith (char const*,char const*) ;
+ int strcspn (char const*,int ) ;
+ char* strndup (char const*,int ) ;
+ int strspn (char const*,int ) ;
 
 __attribute__((used)) static char *find_header(const char *s, const char *header) {
 
@@ -32,6 +24,6 @@ __attribute__((used)) static char *find_header(const char *s, const char *header
                 }
 
                 if (!next_header(&s))
-                        return NULL;
+                        return ((void*)0);
         }
 }

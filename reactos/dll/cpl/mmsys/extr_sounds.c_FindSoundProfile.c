@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  szName; } ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  TYPE_1__* PSOUND_SCHEME_CONTEXT ;
-typedef  scalar_t__ LRESULT ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- scalar_t__ CB_ERR ; 
- scalar_t__ ComboBox_GetCount (int /*<<< orphan*/ ) ; 
- scalar_t__ ComboBox_GetItemData (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_SOUND_SCHEME ; 
- int /*<<< orphan*/  _tcsicmp (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int szName; } ;
+typedef int TCHAR ;
+typedef TYPE_1__* PSOUND_SCHEME_CONTEXT ;
+typedef scalar_t__ LRESULT ;
+typedef int HWND ;
+
+
+ scalar_t__ CB_ERR ;
+ scalar_t__ ComboBox_GetCount (int ) ;
+ scalar_t__ ComboBox_GetItemData (int ,scalar_t__) ;
+ int GetDlgItem (int ,int ) ;
+ int IDC_SOUND_SCHEME ;
+ int _tcsicmp (int ,int *) ;
 
 PSOUND_SCHEME_CONTEXT FindSoundProfile(HWND hwndDlg, TCHAR * szName)
 {
@@ -35,7 +35,7 @@ PSOUND_SCHEME_CONTEXT FindSoundProfile(HWND hwndDlg, TCHAR * szName)
     lCount = ComboBox_GetCount(hwndComboBox);
     if (lCount == CB_ERR)
     {
-        return NULL;
+        return ((void*)0);
     }
 
     for (lIndex = 0; lIndex < lCount; lIndex++)
@@ -52,5 +52,5 @@ PSOUND_SCHEME_CONTEXT FindSoundProfile(HWND hwndDlg, TCHAR * szName)
             return pScheme;
         }
     }
-    return NULL;
+    return ((void*)0);
 }

@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int nitrox_register_aeads () ; 
- int nitrox_register_skciphers () ; 
- int /*<<< orphan*/  nitrox_unregister_skciphers () ; 
+ int nitrox_register_aeads () ;
+ int nitrox_register_skciphers () ;
+ int nitrox_unregister_skciphers () ;
 
 int nitrox_crypto_register(void)
 {
-	int err;
+ int err;
 
-	err = nitrox_register_skciphers();
-	if (err)
-		return err;
+ err = nitrox_register_skciphers();
+ if (err)
+  return err;
 
-	err = nitrox_register_aeads();
-	if (err) {
-		nitrox_unregister_skciphers();
-		return err;
-	}
+ err = nitrox_register_aeads();
+ if (err) {
+  nitrox_unregister_skciphers();
+  return err;
+ }
 
-	return 0;
+ return 0;
 }

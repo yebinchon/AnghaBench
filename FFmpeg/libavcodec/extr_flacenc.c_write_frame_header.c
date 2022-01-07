@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  buf; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int buf; } ;
 struct TYPE_8__ {int* bs_code; int ch_mode; } ;
-struct TYPE_9__ {int* sr_code; int channels; int bps_code; TYPE_3__ pb; int /*<<< orphan*/  frame_count; TYPE_1__ frame; } ;
-typedef  TYPE_1__ FlacFrame ;
-typedef  TYPE_2__ FlacEncodeContext ;
+struct TYPE_9__ {int* sr_code; int channels; int bps_code; TYPE_3__ pb; int frame_count; TYPE_1__ frame; } ;
+typedef TYPE_1__ FlacFrame ;
+typedef TYPE_2__ FlacEncodeContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_CRC_8_ATM ; 
- int FLAC_CHMODE_INDEPENDENT ; 
- int FLAC_MAX_CHANNELS ; 
- int av_crc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  av_crc_get_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  flush_put_bits (TYPE_3__*) ; 
- int /*<<< orphan*/  put_bits (TYPE_3__*,int,int) ; 
- int put_bits_count (TYPE_3__*) ; 
- int /*<<< orphan*/  write_utf8 (TYPE_3__*,int /*<<< orphan*/ ) ; 
+
+ int AV_CRC_8_ATM ;
+ int FLAC_CHMODE_INDEPENDENT ;
+ int FLAC_MAX_CHANNELS ;
+ int av_crc (int ,int ,int ,int) ;
+ int av_crc_get_table (int ) ;
+ int flush_put_bits (TYPE_3__*) ;
+ int put_bits (TYPE_3__*,int,int) ;
+ int put_bits_count (TYPE_3__*) ;
+ int write_utf8 (TYPE_3__*,int ) ;
 
 __attribute__((used)) static void write_frame_header(FlacEncodeContext *s)
 {

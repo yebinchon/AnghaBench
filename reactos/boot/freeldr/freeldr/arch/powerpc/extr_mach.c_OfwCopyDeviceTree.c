@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  data ;
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  int /*<<< orphan*/  PCONFIGURATION_COMPONENT_DATA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AdapterClass ; 
- int /*<<< orphan*/  FldrCreateComponentKey (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MultiFunctionAdapter ; 
- int /*<<< orphan*/  NarrowToWide (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  OfwHandleDiskController (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OfwHandleDiskObject (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ofw_child (int) ; 
- int /*<<< orphan*/  ofw_getprop (int,char*,char*,int) ; 
- int ofw_getproplen (int,char*) ; 
- int ofw_nextprop (int,char*,char*) ; 
- int /*<<< orphan*/  ofw_package_to_path (int,char*,int) ; 
- int ofw_peer (int) ; 
- int /*<<< orphan*/  printf (char*,char*,int) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- char* strrchr (char*,char) ; 
+
+
+
+typedef int wchar_t ;
+typedef int data ;
+typedef int VOID ;
+typedef int ULONG ;
+typedef int PCONFIGURATION_COMPONENT_DATA ;
+
+
+ int AdapterClass ;
+ int FldrCreateComponentKey (int ,int ,int ,int ,int ,int ,int *,int *,int ,int *) ;
+ int MultiFunctionAdapter ;
+ int NarrowToWide (int *,char*) ;
+ int OfwHandleDiskController (int ,int,int ) ;
+ int OfwHandleDiskObject (int ,int,int ,int ) ;
+ int ofw_child (int) ;
+ int ofw_getprop (int,char*,char*,int) ;
+ int ofw_getproplen (int,char*) ;
+ int ofw_nextprop (int,char*,char*) ;
+ int ofw_package_to_path (int,char*,int) ;
+ int ofw_peer (int) ;
+ int printf (char*,char*,int) ;
+ int strcmp (char*,char*) ;
+ int strcpy (char*,char*) ;
+ char* strrchr (char*,char) ;
 
 VOID OfwCopyDeviceTree
 (PCONFIGURATION_COMPONENT_DATA ParentKey,
@@ -49,7 +49,7 @@ VOID OfwCopyDeviceTree
 
     NarrowToWide(wide_name, name);
 
-    /* Create a key for this device */
+
     FldrCreateComponentKey
         (ParentKey,
          AdapterClass,
@@ -57,12 +57,12 @@ VOID OfwCopyDeviceTree
          0,
          0,
          (ULONG)-1,
-         NULL,
-         NULL,
+         ((void*)0),
+         ((void*)0),
          0,
          &NewKey);
 
-    /* Add properties */
+
     for (prev_name = ""; ofw_nextprop(node, prev_name, cur_name) == 1; )
     {
         proplen = ofw_getproplen(node, cur_name);
@@ -74,33 +74,16 @@ VOID OfwCopyDeviceTree
         }
         ofw_getprop(node, cur_name, data, sizeof(data));
 
-        /* Get device type so we can examine it */
+
         if (!strcmp(cur_name, "device_type"))
             strcpy(devtype, (char *)data);
 
         NarrowToWide(wide_name, cur_name);
-        //RegSetValue(NewKey, wide_name, REG_BINARY, data, proplen);
+
 
         strcpy(data, cur_name);
         prev_name = data;
     }
-
-#if 0
-    /* Special device handling */
-    if (!strcmp(devtype, "ata"))
-    {
-        OfwHandleDiskController(NewKey, node, *DiskController);
-        (*DiskController)++;
-        *DiskNumber = 0;
-    }
-    else if (!strcmp(devtype, "disk"))
-    {
-        OfwHandleDiskObject(NewKey, node, *DiskController, *DiskNumber);
-        (*DiskNumber)++;
-    }
-#endif
-
-    /* Subdevices */
     for (node = ofw_child(node); node; node = ofw_peer(node))
     {
         ofw_package_to_path(node, data, sizeof(data));

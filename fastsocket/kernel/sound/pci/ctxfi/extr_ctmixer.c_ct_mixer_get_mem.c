@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ct_mixer {struct ct_mixer* amixers; void* sums; } ;
 
-/* Variables and functions */
- int CHN_NUM ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int NUM_CT_AMIXERS ; 
- int NUM_CT_SUMS ; 
- int /*<<< orphan*/  kfree (struct ct_mixer*) ; 
- void* kzalloc (int,int /*<<< orphan*/ ) ; 
+
+ int CHN_NUM ;
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int NUM_CT_AMIXERS ;
+ int NUM_CT_SUMS ;
+ int kfree (struct ct_mixer*) ;
+ void* kzalloc (int,int ) ;
 
 __attribute__((used)) static int ct_mixer_get_mem(struct ct_mixer **rmixer)
 {
-	struct ct_mixer *mixer;
-	int err;
+ struct ct_mixer *mixer;
+ int err;
 
-	*rmixer = NULL;
-	/* Allocate mem for mixer obj */
-	mixer = kzalloc(sizeof(*mixer), GFP_KERNEL);
-	if (!mixer)
-		return -ENOMEM;
+ *rmixer = ((void*)0);
 
-	mixer->amixers = kzalloc(sizeof(void *)*(NUM_CT_AMIXERS*CHN_NUM),
-				 GFP_KERNEL);
-	if (!mixer->amixers) {
-		err = -ENOMEM;
-		goto error1;
-	}
-	mixer->sums = kzalloc(sizeof(void *)*(NUM_CT_SUMS*CHN_NUM), GFP_KERNEL);
-	if (!mixer->sums) {
-		err = -ENOMEM;
-		goto error2;
-	}
+ mixer = kzalloc(sizeof(*mixer), GFP_KERNEL);
+ if (!mixer)
+  return -ENOMEM;
 
-	*rmixer = mixer;
-	return 0;
+ mixer->amixers = kzalloc(sizeof(void *)*(NUM_CT_AMIXERS*CHN_NUM),
+     GFP_KERNEL);
+ if (!mixer->amixers) {
+  err = -ENOMEM;
+  goto error1;
+ }
+ mixer->sums = kzalloc(sizeof(void *)*(NUM_CT_SUMS*CHN_NUM), GFP_KERNEL);
+ if (!mixer->sums) {
+  err = -ENOMEM;
+  goto error2;
+ }
+
+ *rmixer = mixer;
+ return 0;
 
 error2:
-	kfree(mixer->amixers);
+ kfree(mixer->amixers);
 error1:
-	kfree(mixer);
-	return err;
+ kfree(mixer);
+ return err;
 }

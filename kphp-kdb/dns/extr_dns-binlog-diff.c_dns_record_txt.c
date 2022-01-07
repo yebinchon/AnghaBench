@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lev_dns_record_txt {int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int add_record (struct lev_dns_record_txt*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dns_type_txt ; 
+
+
+
+struct lev_dns_record_txt {int name; } ;
+
+
+ int add_record (struct lev_dns_record_txt*,int,int ,int ) ;
+ int dns_type_txt ;
 
 __attribute__((used)) static int dns_record_txt (struct lev_dns_record_txt *E, int s) {
   return add_record (E, s, dns_type_txt, E->name);

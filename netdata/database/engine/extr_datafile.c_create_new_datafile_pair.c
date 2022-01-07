@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rrdengine_journalfile {scalar_t__ pos; struct rrdengine_journalfile* journalfile; } ;
-struct rrdengine_instance {char* dbfiles_path; int /*<<< orphan*/  disk_space; } ;
+struct rrdengine_instance {char* dbfiles_path; int disk_space; } ;
 struct rrdengine_datafile {scalar_t__ pos; struct rrdengine_datafile* journalfile; } ;
-typedef  int /*<<< orphan*/  path ;
+typedef int path ;
 
-/* Variables and functions */
- int RRDENG_PATH_MAX ; 
- int create_data_file (struct rrdengine_journalfile*) ; 
- int create_journal_file (struct rrdengine_journalfile*,struct rrdengine_journalfile*) ; 
- int /*<<< orphan*/  datafile_init (struct rrdengine_journalfile*,struct rrdengine_instance*,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  datafile_list_insert (struct rrdengine_instance*,struct rrdengine_journalfile*) ; 
- int /*<<< orphan*/  destroy_data_file (struct rrdengine_journalfile*) ; 
- int /*<<< orphan*/  freez (struct rrdengine_journalfile*) ; 
- int /*<<< orphan*/  generate_datafilepath (struct rrdengine_journalfile*,char*,int) ; 
- int /*<<< orphan*/  generate_journalfilepath (struct rrdengine_journalfile*,char*,int) ; 
- int /*<<< orphan*/  info (char*,char*) ; 
- int /*<<< orphan*/  journalfile_init (struct rrdengine_journalfile*,struct rrdengine_journalfile*) ; 
- struct rrdengine_journalfile* mallocz (int) ; 
+
+ int RRDENG_PATH_MAX ;
+ int create_data_file (struct rrdengine_journalfile*) ;
+ int create_journal_file (struct rrdengine_journalfile*,struct rrdengine_journalfile*) ;
+ int datafile_init (struct rrdengine_journalfile*,struct rrdengine_instance*,unsigned int,unsigned int) ;
+ int datafile_list_insert (struct rrdengine_instance*,struct rrdengine_journalfile*) ;
+ int destroy_data_file (struct rrdengine_journalfile*) ;
+ int freez (struct rrdengine_journalfile*) ;
+ int generate_datafilepath (struct rrdengine_journalfile*,char*,int) ;
+ int generate_journalfilepath (struct rrdengine_journalfile*,char*,int) ;
+ int info (char*,char*) ;
+ int journalfile_init (struct rrdengine_journalfile*,struct rrdengine_journalfile*) ;
+ struct rrdengine_journalfile* mallocz (int) ;
 
 int create_new_datafile_pair(struct rrdengine_instance *ctx, unsigned tier, unsigned fileno)
 {

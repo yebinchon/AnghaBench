@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_repos_t ;
-typedef  int /*<<< orphan*/  svn_repos_parse_fns3_t ;
-typedef  int /*<<< orphan*/  svn_repos_parse_fns2_t ;
-typedef  int /*<<< orphan*/  svn_repos_notify_func_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  enum svn_repos_load_uuid { ____Placeholder_svn_repos_load_uuid } svn_repos_load_uuid ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/ * fns2_from_fns3 (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_repos_get_fs_build_parser4 (int /*<<< orphan*/  const**,void**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_repos_t ;
+typedef int svn_repos_parse_fns3_t ;
+typedef int svn_repos_parse_fns2_t ;
+typedef int svn_repos_notify_func_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+typedef enum svn_repos_load_uuid { ____Placeholder_svn_repos_load_uuid } svn_repos_load_uuid ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_INVALID_REVNUM ;
+ int * SVN_NO_ERROR ;
+ int * fns2_from_fns3 (int const*,int *) ;
+ int svn_repos_get_fs_build_parser4 (int const**,void**,int *,int ,int ,int ,int ,int,char const*,int ,void*,int *) ;
 
 svn_error_t *
 svn_repos_get_fs_build_parser3(const svn_repos_parse_fns2_t **callbacks,

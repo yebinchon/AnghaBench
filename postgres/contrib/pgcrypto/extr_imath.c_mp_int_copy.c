@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mp_size ;
-typedef  int /*<<< orphan*/  mp_result ;
-typedef  TYPE_1__* mp_int ;
-typedef  int /*<<< orphan*/  mp_digit ;
-struct TYPE_7__ {int /*<<< orphan*/  sign; int /*<<< orphan*/  used; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COPY (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * MP_DIGITS (TYPE_1__*) ; 
- int /*<<< orphan*/  MP_MEMORY ; 
- int /*<<< orphan*/  MP_OK ; 
- int /*<<< orphan*/  MP_USED (TYPE_1__*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  s_pad (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int mp_size ;
+typedef int mp_result ;
+typedef TYPE_1__* mp_int ;
+typedef int mp_digit ;
+struct TYPE_7__ {int sign; int used; } ;
+
+
+ int COPY (int *,int *,int ) ;
+ int * MP_DIGITS (TYPE_1__*) ;
+ int MP_MEMORY ;
+ int MP_OK ;
+ int MP_USED (TYPE_1__*) ;
+ int assert (int) ;
+ int s_pad (TYPE_1__*,int ) ;
 
 mp_result
 mp_int_copy(mp_int a, mp_int c)
 {
-	assert(a != NULL && c != NULL);
+ assert(a != ((void*)0) && c != ((void*)0));
 
-	if (a != c)
-	{
-		mp_size		ua = MP_USED(a);
-		mp_digit   *da,
-				   *dc;
+ if (a != c)
+ {
+  mp_size ua = MP_USED(a);
+  mp_digit *da,
+       *dc;
 
-		if (!s_pad(c, ua))
-			return MP_MEMORY;
+  if (!s_pad(c, ua))
+   return MP_MEMORY;
 
-		da = MP_DIGITS(a);
-		dc = MP_DIGITS(c);
-		COPY(da, dc, ua);
+  da = MP_DIGITS(a);
+  dc = MP_DIGITS(c);
+  COPY(da, dc, ua);
 
-		c->used = ua;
-		c->sign = a->sign;
-	}
+  c->used = ua;
+  c->sign = a->sign;
+ }
 
-	return MP_OK;
+ return MP_OK;
 }

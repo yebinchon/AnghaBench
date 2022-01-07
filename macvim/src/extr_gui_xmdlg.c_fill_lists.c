@@ -1,247 +1,247 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum ListSpecifier { ____Placeholder_ListSpecifier } ListSpecifier ;
-typedef  int /*<<< orphan*/  XtPointer ;
-typedef  int /*<<< orphan*/  XtCallbackProc ;
-typedef  int /*<<< orphan*/  XmString ;
-typedef  scalar_t__* WidgetList ;
-typedef  scalar_t__ Widget ;
-struct TYPE_5__ {int num; char** sel; scalar_t__* list; int /*<<< orphan*/  encoding_menu; int /*<<< orphan*/  encoding_pulldown; int /*<<< orphan*/  in_pixels; } ;
-typedef  TYPE_1__ SharedFontSelData ;
-typedef  scalar_t__ Cardinal ;
 
-/* Variables and functions */
- int ENCODING ; 
- int /*<<< orphan*/  False ; 
- int MAX_ENTRIES_IN_LIST ; 
-#define  NAME 130 
- int NONE ; 
-#define  SIZE 129 
-#define  STYLE 128 
- int TEMP_BUF_SIZE ; 
- int /*<<< orphan*/  XmListAddItems (scalar_t__,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  XmListDeleteAllItems (scalar_t__) ; 
- int /*<<< orphan*/  XmListSelectItem (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XmListSetBottomItem (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XmNactivateCallback ; 
- int /*<<< orphan*/  XmNchildren ; 
- int /*<<< orphan*/  XmNlabelString ; 
- int /*<<< orphan*/  XmNmenuHistory ; 
- int /*<<< orphan*/  XmNnumChildren ; 
- int /*<<< orphan*/  XmNuserData ; 
- int /*<<< orphan*/  XmStringCreateLocalized (char*) ; 
- int /*<<< orphan*/  XmStringFree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XtAddCallback (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XtDestroyWidget (scalar_t__) ; 
- int /*<<< orphan*/  XtFree (char*) ; 
- int /*<<< orphan*/  XtManageChild (scalar_t__) ; 
- int /*<<< orphan*/  XtUnmanageChild (scalar_t__) ; 
- scalar_t__ XtVaCreateManagedWidget (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  XtVaGetValues (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__**,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  XtVaSetValues (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,...) ; 
- int /*<<< orphan*/  add_to_list (char**,char*,int*) ; 
- scalar_t__ encoding_callback ; 
- int /*<<< orphan*/  encoding_part (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  fn (TYPE_1__*,int) ; 
- scalar_t__ match (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  name_part (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ proportional (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  size_part (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  style_part (int /*<<< orphan*/ ,char*) ; 
- char* wild ; 
- int /*<<< orphan*/  xmPushButtonGadgetClass ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef enum ListSpecifier { ____Placeholder_ListSpecifier } ListSpecifier ;
+typedef int XtPointer ;
+typedef int XtCallbackProc ;
+typedef int XmString ;
+typedef scalar_t__* WidgetList ;
+typedef scalar_t__ Widget ;
+struct TYPE_5__ {int num; char** sel; scalar_t__* list; int encoding_menu; int encoding_pulldown; int in_pixels; } ;
+typedef TYPE_1__ SharedFontSelData ;
+typedef scalar_t__ Cardinal ;
+
+
+ int ENCODING ;
+ int False ;
+ int MAX_ENTRIES_IN_LIST ;
+
+ int NONE ;
+
+
+ int TEMP_BUF_SIZE ;
+ int XmListAddItems (scalar_t__,int *,int,int) ;
+ int XmListDeleteAllItems (scalar_t__) ;
+ int XmListSelectItem (scalar_t__,int ,int ) ;
+ int XmListSetBottomItem (scalar_t__,int ) ;
+ int XmNactivateCallback ;
+ int XmNchildren ;
+ int XmNlabelString ;
+ int XmNmenuHistory ;
+ int XmNnumChildren ;
+ int XmNuserData ;
+ int XmStringCreateLocalized (char*) ;
+ int XmStringFree (int ) ;
+ int XtAddCallback (scalar_t__,int ,int ,int ) ;
+ int XtDestroyWidget (scalar_t__) ;
+ int XtFree (char*) ;
+ int XtManageChild (scalar_t__) ;
+ int XtUnmanageChild (scalar_t__) ;
+ scalar_t__ XtVaCreateManagedWidget (char*,int ,int ,int ,int ,int ,int,int *) ;
+ int XtVaGetValues (int ,int ,scalar_t__**,int ,scalar_t__*,int *) ;
+ int XtVaSetValues (int ,int ,scalar_t__,int *,...) ;
+ int add_to_list (char**,char*,int*) ;
+ scalar_t__ encoding_callback ;
+ int encoding_part (int ,char*) ;
+ int fn (TYPE_1__*,int) ;
+ scalar_t__ match (TYPE_1__*,int,int) ;
+ int name_part (int ,char*) ;
+ scalar_t__ proportional (int ) ;
+ int size_part (int ,char*,int ) ;
+ int strcmp (char*,char*) ;
+ int style_part (int ,char*) ;
+ char* wild ;
+ int xmPushButtonGadgetClass ;
 
 __attribute__((used)) static void
 fill_lists(enum ListSpecifier fix, SharedFontSelData *data)
 {
-    char	*list[NONE][MAX_ENTRIES_IN_LIST];
-    int		count[NONE];
-    char	buf[TEMP_BUF_SIZE];
-    XmString	items[MAX_ENTRIES_IN_LIST];
-    int		i;
-    int		idx;
+    char *list[NONE][MAX_ENTRIES_IN_LIST];
+    int count[NONE];
+    char buf[TEMP_BUF_SIZE];
+    XmString items[MAX_ENTRIES_IN_LIST];
+    int i;
+    int idx;
 
     for (idx = (int)ENCODING; idx < (int)NONE; ++idx)
-	count[idx] = 0;
+ count[idx] = 0;
 
-    /* First we insert the wild char into every single list. */
+
     if (fix != ENCODING)
-	add_to_list(list[ENCODING], wild, &count[ENCODING]);
-    if (fix != NAME)
-	add_to_list(list[NAME], wild, &count[NAME]);
-    if (fix != STYLE)
-	add_to_list(list[STYLE], wild, &count[STYLE]);
-    if (fix != SIZE)
-	add_to_list(list[SIZE], wild, &count[SIZE]);
+ add_to_list(list[ENCODING], wild, &count[ENCODING]);
+    if (fix != 130)
+ add_to_list(list[130], wild, &count[130]);
+    if (fix != 128)
+ add_to_list(list[128], wild, &count[128]);
+    if (fix != 129)
+ add_to_list(list[129], wild, &count[129]);
 
     for (i = 0; i < data->num && i < MAX_ENTRIES_IN_LIST; i++)
     {
-	if (proportional(fn(data, i)))
-	    continue;
+ if (proportional(fn(data, i)))
+     continue;
 
-	if (fix != ENCODING
-		&& match(data, NAME, i)
-		&& match(data, STYLE, i)
-		&& match(data, SIZE, i))
-	{
-	    encoding_part(fn(data, i), buf);
-	    add_to_list(list[ENCODING], buf, &count[ENCODING]);
-	}
+ if (fix != ENCODING
+  && match(data, 130, i)
+  && match(data, 128, i)
+  && match(data, 129, i))
+ {
+     encoding_part(fn(data, i), buf);
+     add_to_list(list[ENCODING], buf, &count[ENCODING]);
+ }
 
-	if (fix != NAME
-		&& match(data, ENCODING, i)
-		&& match(data, STYLE, i)
-		&& match(data, SIZE, i))
-	{
-	    name_part(fn(data, i), buf);
-	    add_to_list(list[NAME], buf, &count[NAME]);
-	}
+ if (fix != 130
+  && match(data, ENCODING, i)
+  && match(data, 128, i)
+  && match(data, 129, i))
+ {
+     name_part(fn(data, i), buf);
+     add_to_list(list[130], buf, &count[130]);
+ }
 
-	if (fix != STYLE
-		&& match(data, ENCODING, i)
-		&& match(data, NAME, i)
-		&& match(data, SIZE, i))
-	{
-	    style_part(fn(data, i), buf);
-	    add_to_list(list[STYLE], buf, &count[STYLE]);
-	}
+ if (fix != 128
+  && match(data, ENCODING, i)
+  && match(data, 130, i)
+  && match(data, 129, i))
+ {
+     style_part(fn(data, i), buf);
+     add_to_list(list[128], buf, &count[128]);
+ }
 
-	if (fix != SIZE
-		&& match(data, ENCODING, i)
-		&& match(data, NAME, i)
-		&& match(data, STYLE, i))
-	{
-	    size_part(fn(data, i), buf, data->in_pixels);
-	    add_to_list(list[SIZE], buf, &count[SIZE]);
-	}
+ if (fix != 129
+  && match(data, ENCODING, i)
+  && match(data, 130, i)
+  && match(data, 128, i))
+ {
+     size_part(fn(data, i), buf, data->in_pixels);
+     add_to_list(list[129], buf, &count[129]);
+ }
     }
 
-    /*
-     * And now do the preselection in all lists where there was one:
-     */
+
+
+
 
     if (fix != ENCODING)
     {
-	Cardinal n_items;
-	WidgetList children;
-	Widget selected_button = 0;
+ Cardinal n_items;
+ WidgetList children;
+ Widget selected_button = 0;
 
-	/* Get and update the current button list.  */
-	XtVaGetValues(data->encoding_pulldown,
-		XmNchildren, &children,
-		XmNnumChildren, &n_items,
-		NULL);
 
-	for (i = 0; i < count[ENCODING]; ++i)
-	{
-	    Widget button;
+ XtVaGetValues(data->encoding_pulldown,
+  XmNchildren, &children,
+  XmNnumChildren, &n_items,
+  ((void*)0));
 
-	    items[i] = XmStringCreateLocalized(list[ENCODING][i]);
+ for (i = 0; i < count[ENCODING]; ++i)
+ {
+     Widget button;
 
-	    if (i < (int)n_items)
-	    {
-		/* recycle old button */
-		XtVaSetValues(children[i],
-			XmNlabelString, items[i],
-			XmNuserData, i,
-			NULL);
-		button = children[i];
-	    }
-	    else
-	    {
-		/* create a new button */
-		button = XtVaCreateManagedWidget("button",
-			xmPushButtonGadgetClass,
-			data->encoding_pulldown,
-			XmNlabelString, items[i],
-			XmNuserData, i,
-			NULL);
-		XtAddCallback(button, XmNactivateCallback,
-			(XtCallbackProc) encoding_callback, (XtPointer) data);
-		XtManageChild(button);
-	    }
+     items[i] = XmStringCreateLocalized(list[ENCODING][i]);
 
-	    if (data->sel[ENCODING])
-	    {
-		if (!strcmp(data->sel[ENCODING], list[ENCODING][i]))
-		    selected_button = button;
-	    }
-	    XtFree(list[ENCODING][i]);
-	}
+     if (i < (int)n_items)
+     {
 
-	/* Destroy all the outstanding menu items.
-	 */
-	for (i = count[ENCODING]; i < (int)n_items; ++i)
-	{
-	    XtUnmanageChild(children[i]);
-	    XtDestroyWidget(children[i]);
-	}
+  XtVaSetValues(children[i],
+   XmNlabelString, items[i],
+   XmNuserData, i,
+   ((void*)0));
+  button = children[i];
+     }
+     else
+     {
 
-	/* Preserve the current selection visually.
-	 */
-	if (selected_button)
-	{
-	    XtVaSetValues(data->encoding_menu,
-		    XmNmenuHistory, selected_button,
-		    NULL);
-	}
+  button = XtVaCreateManagedWidget("button",
+   xmPushButtonGadgetClass,
+   data->encoding_pulldown,
+   XmNlabelString, items[i],
+   XmNuserData, i,
+   ((void*)0));
+  XtAddCallback(button, XmNactivateCallback,
+   (XtCallbackProc) encoding_callback, (XtPointer) data);
+  XtManageChild(button);
+     }
 
-	for (i = 0; i < count[ENCODING]; ++i)
-	    XmStringFree(items[i]);
+     if (data->sel[ENCODING])
+     {
+  if (!strcmp(data->sel[ENCODING], list[ENCODING][i]))
+      selected_button = button;
+     }
+     XtFree(list[ENCODING][i]);
+ }
+
+
+
+ for (i = count[ENCODING]; i < (int)n_items; ++i)
+ {
+     XtUnmanageChild(children[i]);
+     XtDestroyWidget(children[i]);
+ }
+
+
+
+ if (selected_button)
+ {
+     XtVaSetValues(data->encoding_menu,
+      XmNmenuHistory, selected_button,
+      ((void*)0));
+ }
+
+ for (i = 0; i < count[ENCODING]; ++i)
+     XmStringFree(items[i]);
     }
 
-    /*
-     * Now loop trough the remaining lists and set them up.
-     */
-    for (idx = (int)NAME; idx < (int)NONE; ++idx)
+
+
+
+    for (idx = (int)130; idx < (int)NONE; ++idx)
     {
-	Widget w;
+ Widget w;
 
-	if (fix == (enum ListSpecifier)idx)
-	    continue;
+ if (fix == (enum ListSpecifier)idx)
+     continue;
 
-	switch ((enum ListSpecifier)idx)
-	{
-	    case NAME:
-		w = data->list[NAME];
-		break;
-	    case STYLE:
-		w = data->list[STYLE];
-		break;
-	    case SIZE:
-		w = data->list[SIZE];
-		break;
-	    default:
-		w = (Widget)0;	/* for lint */
-	}
+ switch ((enum ListSpecifier)idx)
+ {
+     case 130:
+  w = data->list[130];
+  break;
+     case 128:
+  w = data->list[128];
+  break;
+     case 129:
+  w = data->list[129];
+  break;
+     default:
+  w = (Widget)0;
+ }
 
-	for (i = 0; i < count[idx]; ++i)
-	{
-	    items[i] = XmStringCreateLocalized(list[idx][i]);
-	    XtFree(list[idx][i]);
-	}
-	XmListDeleteAllItems(w);
-	XmListAddItems(w, items, count[idx], 1);
-	if (data->sel[idx])
-	{
-	    XmStringFree(items[0]);
-	    items[0] = XmStringCreateLocalized(data->sel[idx]);
-	    XmListSelectItem(w, items[0], False);
-	    XmListSetBottomItem(w, items[0]);
-	}
-	for (i = 0; i < count[idx]; ++i)
-	    XmStringFree(items[i]);
+ for (i = 0; i < count[idx]; ++i)
+ {
+     items[i] = XmStringCreateLocalized(list[idx][i]);
+     XtFree(list[idx][i]);
+ }
+ XmListDeleteAllItems(w);
+ XmListAddItems(w, items, count[idx], 1);
+ if (data->sel[idx])
+ {
+     XmStringFree(items[0]);
+     items[0] = XmStringCreateLocalized(data->sel[idx]);
+     XmListSelectItem(w, items[0], False);
+     XmListSetBottomItem(w, items[0]);
+ }
+ for (i = 0; i < count[idx]; ++i)
+     XmStringFree(items[i]);
     }
 }

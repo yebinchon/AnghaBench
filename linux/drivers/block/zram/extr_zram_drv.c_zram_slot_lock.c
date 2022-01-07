@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t u32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef size_t u32 ;
 struct zram {TYPE_1__* table; } ;
-struct TYPE_2__ {int /*<<< orphan*/  flags; } ;
+struct TYPE_2__ {int flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZRAM_LOCK ; 
- int /*<<< orphan*/  bit_spin_lock (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int ZRAM_LOCK ;
+ int bit_spin_lock (int ,int *) ;
 
 __attribute__((used)) static void zram_slot_lock(struct zram *zram, u32 index)
 {
-	bit_spin_lock(ZRAM_LOCK, &zram->table[index].flags);
+ bit_spin_lock(ZRAM_LOCK, &zram->table[index].flags);
 }

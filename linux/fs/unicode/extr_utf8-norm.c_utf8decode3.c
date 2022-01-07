@@ -1,28 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 __attribute__((used)) static unsigned int
 utf8decode3(const char *str)
 {
-	unsigned int		uc;
+ unsigned int uc;
 
-	uc = *str++ & 0x0F;
-	uc <<= 6;
-	uc |= *str++ & 0x3F;
-	uc <<= 6;
-	uc |= *str++ & 0x3F;
+ uc = *str++ & 0x0F;
+ uc <<= 6;
+ uc |= *str++ & 0x3F;
+ uc <<= 6;
+ uc |= *str++ & 0x3F;
 
-	return uc;
+ return uc;
 }

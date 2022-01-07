@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct usb_gadget_driver {int /*<<< orphan*/  (* disconnect ) (TYPE_1__*) ;} ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct usb_gadget_driver {int (* disconnect ) (TYPE_1__*) ;} ;
 struct TYPE_2__ {scalar_t__ speed; } ;
-struct net2272 {int /*<<< orphan*/  lock; TYPE_1__ gadget; int /*<<< orphan*/ * ep; } ;
+struct net2272 {int lock; TYPE_1__ gadget; int * ep; } ;
 
-/* Variables and functions */
- scalar_t__ USB_SPEED_UNKNOWN ; 
- int /*<<< orphan*/  net2272_dequeue_all (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  net2272_usb_reinit (struct net2272*) ; 
- int /*<<< orphan*/  net2272_usb_reset (struct net2272*) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*) ; 
+
+ scalar_t__ USB_SPEED_UNKNOWN ;
+ int net2272_dequeue_all (int *) ;
+ int net2272_usb_reinit (struct net2272*) ;
+ int net2272_usb_reset (struct net2272*) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int stub1 (TYPE_1__*) ;
 
 __attribute__((used)) static void
 stop_activity(struct net2272 *dev, struct usb_gadget_driver *driver)
 {
-	int i;
+ int i;
 
-	/* don't disconnect if it's not connected */
-	if (dev->gadget.speed == USB_SPEED_UNKNOWN)
-		driver = NULL;
 
-	/* stop hardware; prevent new request submissions;
-	 * and kill any outstanding requests.
-	 */
-	net2272_usb_reset(dev);
-	for (i = 0; i < 4; ++i)
-		net2272_dequeue_all(&dev->ep[i]);
+ if (dev->gadget.speed == USB_SPEED_UNKNOWN)
+  driver = ((void*)0);
 
-	/* report disconnect; the driver is already quiesced */
-	if (driver) {
-		spin_unlock(&dev->lock);
-		driver->disconnect(&dev->gadget);
-		spin_lock(&dev->lock);
-	}
 
-	net2272_usb_reinit(dev);
+
+
+ net2272_usb_reset(dev);
+ for (i = 0; i < 4; ++i)
+  net2272_dequeue_all(&dev->ep[i]);
+
+
+ if (driver) {
+  spin_unlock(&dev->lock);
+  driver->disconnect(&dev->gadget);
+  spin_lock(&dev->lock);
+ }
+
+ net2272_usb_reinit(dev);
 }

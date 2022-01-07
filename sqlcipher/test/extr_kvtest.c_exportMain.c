@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  scalar_t__ sqlite3_int64 ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int PATH_DIR ; 
- int PATH_TREE ; 
- scalar_t__ SQLITE_ROW ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fatalError (char*,...) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- size_t fwrite (void const*,int,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kvtest_mkdir (char*) ; 
- int pathType (char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  sqlite3_close (int /*<<< orphan*/ *) ; 
- void* sqlite3_column_blob (int /*<<< orphan*/ *,int) ; 
- scalar_t__ sqlite3_column_bytes (int /*<<< orphan*/ *,int) ; 
- int sqlite3_column_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_errmsg (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,char*) ; 
- int sqlite3_open (char*,int /*<<< orphan*/ **) ; 
- int sqlite3_prepare_v2 (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_snprintf (int,char*,char*,int,...) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ strcmp (char const*,char*) ; 
- scalar_t__ strlen (char*) ; 
+
+
+
+typedef int sqlite3_stmt ;
+typedef scalar_t__ sqlite3_int64 ;
+typedef int sqlite3 ;
+typedef int FILE ;
+
+
+ int PATH_DIR ;
+ int PATH_TREE ;
+ scalar_t__ SQLITE_ROW ;
+ int assert (int) ;
+ int fatalError (char*,...) ;
+ int fclose (int *) ;
+ int fflush (int ) ;
+ int * fopen (char*,char*) ;
+ size_t fwrite (void const*,int,size_t,int *) ;
+ int kvtest_mkdir (char*) ;
+ int pathType (char*) ;
+ int printf (char*,...) ;
+ int sqlite3_close (int *) ;
+ void* sqlite3_column_blob (int *,int) ;
+ scalar_t__ sqlite3_column_bytes (int *,int) ;
+ int sqlite3_column_int (int *,int ) ;
+ int sqlite3_errmsg (int *) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,char*) ;
+ int sqlite3_open (char*,int **) ;
+ int sqlite3_prepare_v2 (int *,char*,int,int **,int ) ;
+ int sqlite3_snprintf (int,char*,char*,int,...) ;
+ scalar_t__ sqlite3_step (int *) ;
+ int stdout ;
+ scalar_t__ strcmp (char const*,char*) ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static int exportMain(int argc, char **argv){
   char *zDb;
@@ -107,7 +107,7 @@ __attribute__((used)) static int exportMain(int argc, char **argv){
       sqlite3_snprintf(20, zTail, "%02d/%02d/%02d",
                        iKey/10000, (iKey/100)%100, iKey%100);
     }
-    out = fopen(zFN, "wb");      
+    out = fopen(zFN, "wb");
     nWrote = fwrite(pData, 1, (size_t)nData, out);
     fclose(out);
     printf("\r%s   ", zTail); fflush(stdout);

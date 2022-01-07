@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int prev_1_is_literal; int /*<<< orphan*/  back_prev; } ;
-typedef  TYPE_1__ lzma_optimal ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UINT32_MAX ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int prev_1_is_literal; int back_prev; } ;
+typedef TYPE_1__ lzma_optimal ;
+
+
+ int UINT32_MAX ;
 
 __attribute__((used)) static inline void
 make_literal(lzma_optimal *optimal)
 {
-	optimal->back_prev = UINT32_MAX;
-	optimal->prev_1_is_literal = false;
+ optimal->back_prev = UINT32_MAX;
+ optimal->prev_1_is_literal = 0;
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VCOS_STATUS_T ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int VCOS_STATUS_T ;
 struct TYPE_4__ {scalar_t__ tail; scalar_t__ head; } ;
-struct TYPE_5__ {TYPE_1__ waiters; scalar_t__ events; int /*<<< orphan*/  lock; } ;
-typedef  TYPE_2__ VCOS_EVENT_FLAGS_T ;
+struct TYPE_5__ {TYPE_1__ waiters; scalar_t__ events; int lock; } ;
+typedef TYPE_2__ VCOS_EVENT_FLAGS_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VCOS_SUCCESS ; 
- int /*<<< orphan*/  vcos_mutex_create (int /*<<< orphan*/ *,char const*) ; 
+
+ int VCOS_SUCCESS ;
+ int vcos_mutex_create (int *,char const*) ;
 
 VCOS_STATUS_T vcos_generic_event_flags_create(VCOS_EVENT_FLAGS_T *flags, const char *name)
 {

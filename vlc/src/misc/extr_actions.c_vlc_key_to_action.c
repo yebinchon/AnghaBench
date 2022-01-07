@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  i_int; } ;
-typedef  TYPE_1__ vlc_value_t ;
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct mapping {int /*<<< orphan*/  action; } ;
 
-/* Variables and functions */
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  keycmp ; 
- void** tfind (int /*<<< orphan*/ *,void* const*,int /*<<< orphan*/ ) ; 
- int var_SetInteger (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int i_int; } ;
+typedef TYPE_1__ vlc_value_t ;
+typedef int vlc_object_t ;
+typedef int uint32_t ;
+struct mapping {int action; } ;
+
+
+ int VLC_SUCCESS ;
+ int keycmp ;
+ void** tfind (int *,void* const*,int ) ;
+ int var_SetInteger (int *,char*,int ) ;
 
 __attribute__((used)) static int vlc_key_to_action (vlc_object_t *obj, const char *varname,
                               vlc_value_t prevkey, vlc_value_t curkey, void *d)
@@ -31,7 +31,7 @@ __attribute__((used)) static int vlc_key_to_action (vlc_object_t *obj, const cha
     uint32_t keycode = curkey.i_int;
 
     pent = tfind (&keycode, map, keycmp);
-    if (pent == NULL)
+    if (pent == ((void*)0))
         return VLC_SUCCESS;
 
     const struct mapping *ent = *pent;

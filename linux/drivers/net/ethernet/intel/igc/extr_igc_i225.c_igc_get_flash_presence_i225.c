@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct igc_hw {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IGC_EECD ; 
- int IGC_EECD_FLASH_DETECTED_I225 ; 
- int rd32 (int /*<<< orphan*/ ) ; 
+
+ int IGC_EECD ;
+ int IGC_EECD_FLASH_DETECTED_I225 ;
+ int rd32 (int ) ;
 
 bool igc_get_flash_presence_i225(struct igc_hw *hw)
 {
-	bool ret_val = false;
-	u32 eec = 0;
+ bool ret_val = 0;
+ u32 eec = 0;
 
-	eec = rd32(IGC_EECD);
-	if (eec & IGC_EECD_FLASH_DETECTED_I225)
-		ret_val = true;
+ eec = rd32(IGC_EECD);
+ if (eec & IGC_EECD_FLASH_DETECTED_I225)
+  ret_val = 1;
 
-	return ret_val;
+ return ret_val;
 }

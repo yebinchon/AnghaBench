@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  void* t_Handle ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+typedef void* t_Handle ;
 struct TYPE_8__ {void* h_StatsCounters; void* h_StatsAd; } ;
-typedef  TYPE_1__ t_FmPcdStatsObj ;
-struct TYPE_9__ {scalar_t__ maxNumOfKeys; int /*<<< orphan*/  availableStatsLst; int /*<<< orphan*/  countersArraySize; int /*<<< orphan*/  h_FmPcd; } ;
-typedef  TYPE_2__ t_FmPcdCcNode ;
-typedef  int /*<<< orphan*/  t_Error ;
+typedef TYPE_1__ t_FmPcdStatsObj ;
+struct TYPE_9__ {scalar_t__ maxNumOfKeys; int availableStatsLst; int countersArraySize; int h_FmPcd; } ;
+typedef TYPE_2__ t_FmPcdCcNode ;
+typedef int t_Error ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_INVALID_HANDLE ; 
- int /*<<< orphan*/  E_NO_MEMORY ; 
- int /*<<< orphan*/  E_OK ; 
- int /*<<< orphan*/  EnqueueStatsObj (int /*<<< orphan*/ *,TYPE_1__*) ; 
- scalar_t__ FM_MURAM_AllocMem (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FM_MURAM_FreeMem (void*,void*) ; 
- int /*<<< orphan*/  FM_PCD_CC_AD_ENTRY_SIZE ; 
- int /*<<< orphan*/  FM_PCD_CC_AD_TABLE_ALIGN ; 
- void* FmPcdGetMuramHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FreeStatObjects (int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  MAJOR ; 
- int /*<<< orphan*/  MemSet8 (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RETURN_ERROR (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  XX_Free (TYPE_1__*) ; 
- TYPE_1__* XX_Malloc (int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+ int E_INVALID_HANDLE ;
+ int E_NO_MEMORY ;
+ int E_OK ;
+ int EnqueueStatsObj (int *,TYPE_1__*) ;
+ scalar_t__ FM_MURAM_AllocMem (void*,int ,int ) ;
+ int FM_MURAM_FreeMem (void*,void*) ;
+ int FM_PCD_CC_AD_ENTRY_SIZE ;
+ int FM_PCD_CC_AD_TABLE_ALIGN ;
+ void* FmPcdGetMuramHandle (int ) ;
+ int FreeStatObjects (int *,void*) ;
+ int MAJOR ;
+ int MemSet8 (void*,int ,int ) ;
+ int RETURN_ERROR (int ,int ,char*) ;
+ int XX_Free (TYPE_1__*) ;
+ TYPE_1__* XX_Malloc (int) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static t_Error AllocStatsObjs(t_FmPcdCcNode *p_CcNode)
 {
@@ -48,11 +48,11 @@ __attribute__((used)) static t_Error AllocStatsObjs(t_FmPcdCcNode *p_CcNode)
     if (!h_FmMuram)
         RETURN_ERROR(MAJOR, E_INVALID_HANDLE, ("FM MURAM"));
 
-    /* Allocate statistics ADs and statistics counter. An extra pair (AD + counters)
-     will be allocated to support runtime modifications */
+
+
     for (i = 0; i < p_CcNode->maxNumOfKeys + 2; i++)
     {
-        /* Allocate list object structure */
+
         p_StatsObj = XX_Malloc(sizeof(t_FmPcdStatsObj));
         if (!p_StatsObj)
         {
@@ -61,7 +61,7 @@ __attribute__((used)) static t_Error AllocStatsObjs(t_FmPcdCcNode *p_CcNode)
         }
         memset(p_StatsObj, 0, sizeof(t_FmPcdStatsObj));
 
-        /* Allocate statistics AD from MURAM */
+
         h_StatsAd = (t_Handle)FM_MURAM_AllocMem(h_FmMuram,
                                                 FM_PCD_CC_AD_ENTRY_SIZE,
                                                 FM_PCD_CC_AD_TABLE_ALIGN);
@@ -74,7 +74,7 @@ __attribute__((used)) static t_Error AllocStatsObjs(t_FmPcdCcNode *p_CcNode)
         }
         MemSet8(h_StatsAd, 0, FM_PCD_CC_AD_ENTRY_SIZE);
 
-        /* Allocate statistics counters from MURAM */
+
         h_StatsCounters = (t_Handle)FM_MURAM_AllocMem(
                 h_FmMuram, p_CcNode->countersArraySize,
                 FM_PCD_CC_AD_TABLE_ALIGN);

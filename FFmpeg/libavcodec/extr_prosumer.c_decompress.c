@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  PutByteContext ;
-typedef  int /*<<< orphan*/  GetByteContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_WN16 (int*,int /*<<< orphan*/ ) ; 
- int PAIR (int,int) ; 
- int /*<<< orphan*/  SEEK_SET ; 
- scalar_t__ bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- scalar_t__ bytestream2_get_bytes_left_p (int /*<<< orphan*/ *) ; 
- scalar_t__ bytestream2_get_eof (int /*<<< orphan*/ *) ; 
- int bytestream2_get_le32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_peek_le16 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_put_le16 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  bytestream2_put_le32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  bytestream2_seek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,int) ; 
- int bytestream2_tell (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint32_t ;
+typedef int PutByteContext ;
+typedef int GetByteContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_WN16 (int*,int ) ;
+ int PAIR (int,int) ;
+ int SEEK_SET ;
+ scalar_t__ bytestream2_get_bytes_left (int *) ;
+ scalar_t__ bytestream2_get_bytes_left_p (int *) ;
+ scalar_t__ bytestream2_get_eof (int *) ;
+ int bytestream2_get_le32 (int *) ;
+ int bytestream2_peek_le16 (int *) ;
+ int bytestream2_put_le16 (int *,int) ;
+ int bytestream2_put_le32 (int *,int) ;
+ int bytestream2_seek (int *,int,int ) ;
+ int bytestream2_skip (int *,int) ;
+ int bytestream2_tell (int *) ;
 
 __attribute__((used)) static int decompress(GetByteContext *gb, int size, PutByteContext *pb, const uint32_t *lut)
 {

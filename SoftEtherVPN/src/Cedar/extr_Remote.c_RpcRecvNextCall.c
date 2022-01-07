@@ -1,117 +1,117 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
+
+
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef int UINT ;
 struct TYPE_17__ {int Size; int* Buf; } ;
 struct TYPE_16__ {TYPE_1__* Sock; } ;
-struct TYPE_15__ {int /*<<< orphan*/  SecureMode; } ;
-typedef  TYPE_1__ SOCK ;
-typedef  TYPE_2__ RPC ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  TYPE_3__ BUF ;
+struct TYPE_15__ {int SecureMode; } ;
+typedef TYPE_1__ SOCK ;
+typedef TYPE_2__ RPC ;
+typedef int PACK ;
+typedef TYPE_3__ BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BufToPack (TYPE_3__*) ; 
- int /*<<< orphan*/ * CallRpcDispatcher (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERR_NOT_SUPPORTED ; 
- int Endian32 (int) ; 
- int /*<<< orphan*/  Free (void*) ; 
- int /*<<< orphan*/  FreeBuf (TYPE_3__*) ; 
- int /*<<< orphan*/  FreePack (int /*<<< orphan*/ *) ; 
- int MAX_PACK_SIZE ; 
- void* MallocEx (int,int) ; 
- TYPE_3__* NewBuf () ; 
- int /*<<< orphan*/ * PackError (int /*<<< orphan*/ ) ; 
- TYPE_3__* PackToBuf (int /*<<< orphan*/ *) ; 
- int RecvAll (TYPE_1__*,void*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SeekBuf (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SendAdd (TYPE_1__*,int*,int) ; 
- int SendNow (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WriteBuf (TYPE_3__*,void*,int) ; 
+
+ int * BufToPack (TYPE_3__*) ;
+ int * CallRpcDispatcher (TYPE_2__*,int *) ;
+ int ERR_NOT_SUPPORTED ;
+ int Endian32 (int) ;
+ int Free (void*) ;
+ int FreeBuf (TYPE_3__*) ;
+ int FreePack (int *) ;
+ int MAX_PACK_SIZE ;
+ void* MallocEx (int,int) ;
+ TYPE_3__* NewBuf () ;
+ int * PackError (int ) ;
+ TYPE_3__* PackToBuf (int *) ;
+ int RecvAll (TYPE_1__*,void*,int,int ) ;
+ int SeekBuf (TYPE_3__*,int ,int ) ;
+ int SendAdd (TYPE_1__*,int*,int) ;
+ int SendNow (TYPE_1__*,int ) ;
+ int WriteBuf (TYPE_3__*,void*,int) ;
 
 bool RpcRecvNextCall(RPC *r)
 {
-	UINT size;
-	void *tmp;
-	SOCK *s;
-	BUF *b;
-	PACK *p;
-	PACK *ret;
-	// Validate arguments
-	if (r == NULL)
-	{
-		return false;
-	}
+ UINT size;
+ void *tmp;
+ SOCK *s;
+ BUF *b;
+ PACK *p;
+ PACK *ret;
 
-	s = r->Sock;
+ if (r == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (RecvAll(s, &size, sizeof(UINT), s->SecureMode) == false)
-	{
-		return false;
-	}
+ s = r->Sock;
 
-	size = Endian32(size);
+ if (RecvAll(s, &size, sizeof(UINT), s->SecureMode) == 0)
+ {
+  return 0;
+ }
 
-	if (size > MAX_PACK_SIZE)
-	{
-		return false;
-	}
+ size = Endian32(size);
 
-	tmp = MallocEx(size, true);
+ if (size > MAX_PACK_SIZE)
+ {
+  return 0;
+ }
 
-	if (RecvAll(s, tmp, size, s->SecureMode) == false)
-	{
-		Free(tmp);
-		return false;
-	}
+ tmp = MallocEx(size, 1);
 
-	b = NewBuf();
-	WriteBuf(b, tmp, size);
-	SeekBuf(b, 0, 0);
-	Free(tmp);
+ if (RecvAll(s, tmp, size, s->SecureMode) == 0)
+ {
+  Free(tmp);
+  return 0;
+ }
 
-	p = BufToPack(b);
-	FreeBuf(b);
+ b = NewBuf();
+ WriteBuf(b, tmp, size);
+ SeekBuf(b, 0, 0);
+ Free(tmp);
 
-	if (p == NULL)
-	{
-		return false;
-	}
+ p = BufToPack(b);
+ FreeBuf(b);
 
-	ret = CallRpcDispatcher(r, p);
-	FreePack(p);
+ if (p == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (ret == NULL)
-	{
-		ret = PackError(ERR_NOT_SUPPORTED);
-	}
+ ret = CallRpcDispatcher(r, p);
+ FreePack(p);
 
-	b = PackToBuf(ret);
-	FreePack(ret);
+ if (ret == ((void*)0))
+ {
+  ret = PackError(ERR_NOT_SUPPORTED);
+ }
 
-	size = Endian32(b->Size);
-	SendAdd(s, &size, sizeof(UINT));
-	SendAdd(s, b->Buf, b->Size);
+ b = PackToBuf(ret);
+ FreePack(ret);
 
-	if (SendNow(s, s->SecureMode) == false)
-	{
-		FreeBuf(b);
-		return false;
-	}
+ size = Endian32(b->Size);
+ SendAdd(s, &size, sizeof(UINT));
+ SendAdd(s, b->Buf, b->Size);
 
-	FreeBuf(b);
+ if (SendNow(s, s->SecureMode) == 0)
+ {
+  FreeBuf(b);
+  return 0;
+ }
 
-	return true;
+ FreeBuf(b);
+
+ return 1;
 }

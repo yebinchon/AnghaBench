@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {char* command; char* help; TYPE_2__* argtable; int /*<<< orphan*/ * func; int /*<<< orphan*/ * hint; } ;
-typedef  TYPE_1__ esp_console_cmd_t ;
-struct TYPE_5__ {int /*<<< orphan*/  end; void* data_length; void* register_address; int /*<<< orphan*/  chip_address; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERROR_CHECK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  arg_end (int) ; 
- void* arg_int0 (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  arg_int1 (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  do_i2cget_cmd ; 
- int /*<<< orphan*/  esp_console_cmd_register (TYPE_1__ const*) ; 
- TYPE_2__ i2cget_args ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {char* command; char* help; TYPE_2__* argtable; int * func; int * hint; } ;
+typedef TYPE_1__ esp_console_cmd_t ;
+struct TYPE_5__ {int end; void* data_length; void* register_address; int chip_address; } ;
+
+
+ int ESP_ERROR_CHECK (int ) ;
+ int arg_end (int) ;
+ void* arg_int0 (char*,char*,char*,char*) ;
+ int arg_int1 (char*,char*,char*,char*) ;
+ int do_i2cget_cmd ;
+ int esp_console_cmd_register (TYPE_1__ const*) ;
+ TYPE_2__ i2cget_args ;
 
 __attribute__((used)) static void register_i2cget(void)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static void register_i2cget(void)
     const esp_console_cmd_t i2cget_cmd = {
         .command = "i2cget",
         .help = "Read registers visible through the I2C bus",
-        .hint = NULL,
+        .hint = ((void*)0),
         .func = &do_i2cget_cmd,
         .argtable = &i2cget_args
     };

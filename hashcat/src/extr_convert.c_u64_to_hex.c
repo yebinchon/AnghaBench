@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char u8 ;
-typedef  int u64 ;
 
-/* Variables and functions */
+
+
+
+typedef char u8 ;
+typedef int u64 ;
+
+
 
 void u64_to_hex (const u64 v, u8 hex[16])
 {
@@ -23,9 +23,9 @@ void u64_to_hex (const u64 v, u8 hex[16])
     'a', 'b', 'c', 'd', 'e', 'f',
   };
 
-  hex[ 1] = tbl[v >>  0 & 15];
-  hex[ 0] = tbl[v >>  4 & 15];
-  hex[ 3] = tbl[v >>  8 & 15];
+  hex[ 1] = tbl[v >> 0 & 15];
+  hex[ 0] = tbl[v >> 4 & 15];
+  hex[ 3] = tbl[v >> 8 & 15];
   hex[ 2] = tbl[v >> 12 & 15];
   hex[ 5] = tbl[v >> 16 & 15];
   hex[ 4] = tbl[v >> 20 & 15];

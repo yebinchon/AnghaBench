@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct statsx_gather_extra {int flags; scalar_t__ Q_raw; } ;
 struct gather_entry {int res_bytes; int num; scalar_t__* data; } ;
-struct connection {int /*<<< orphan*/  Out; } ;
+struct connection {int Out; } ;
 
-/* Variables and functions */
- int FLAG_BAD_SERVERS ; 
- int FLAG_COUNTER ; 
- int FLAG_DOUBLE ; 
- int FLAG_MONTHLY ; 
- int FLAG_NO_SERIALIZE ; 
- int FLAG_ONE_INT ; 
- int FLAG_UNION ; 
- int Q_bad_servers ; 
- scalar_t__ Q_raw ; 
- int bad_servers ; 
- char* buff ; 
- int /*<<< orphan*/  clear_gather_heap (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  gather_heap_advance () ; 
- int /*<<< orphan*/  gather_heap_insert (struct gather_entry*) ; 
- int /*<<< orphan*/  gather_sum_res (struct gather_entry*,struct statsx_gather_extra*) ; 
- int get_counter_serialized (char*,struct statsx_gather_extra*) ; 
- int* get_gather_heap_head () ; 
- int sprintf (char*,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ *,char*,int) ; 
+
+ int FLAG_BAD_SERVERS ;
+ int FLAG_COUNTER ;
+ int FLAG_DOUBLE ;
+ int FLAG_MONTHLY ;
+ int FLAG_NO_SERIALIZE ;
+ int FLAG_ONE_INT ;
+ int FLAG_UNION ;
+ int Q_bad_servers ;
+ scalar_t__ Q_raw ;
+ int bad_servers ;
+ char* buff ;
+ int clear_gather_heap (int) ;
+ int fprintf (int ,char*,int,int) ;
+ int gather_heap_advance () ;
+ int gather_heap_insert (struct gather_entry*) ;
+ int gather_sum_res (struct gather_entry*,struct statsx_gather_extra*) ;
+ int get_counter_serialized (char*,struct statsx_gather_extra*) ;
+ int* get_gather_heap_head () ;
+ int sprintf (char*,char*,...) ;
+ int stderr ;
+ int verbosity ;
+ int write_out (int *,char*,int) ;
 
 int statsx_merge_end_query (struct connection *c, const char *key, int key_len, void *E, struct gather_entry *data, int tot_num) {
   struct statsx_gather_extra *extra = E;
@@ -50,16 +50,16 @@ int statsx_merge_end_query (struct connection *c, const char *key, int key_len, 
   int monthly = extra->flags & FLAG_MONTHLY;
   int counter_mode = extra->flags & FLAG_COUNTER;
   bad_servers = 0;
-  
+
   if (verbosity >= 4) {
-	  fprintf (stderr, "one_int = %d, union_mode = %d\n", one_int, union_mode);
-	}
+   fprintf (stderr, "one_int = %d, union_mode = %d\n", one_int, union_mode);
+ }
   int res = 0;
 
   clear_gather_heap (extra->flags & FLAG_DOUBLE);
 
   for (i = 0; i < tot_num; i++) if (data[i].res_bytes > 0) {
-  	//fprintf (stderr, "!!!");
+
     if (!one_int) {
       if (!union_mode) {
         gather_sum_res (&data[i], extra);
@@ -79,7 +79,7 @@ int statsx_merge_end_query (struct connection *c, const char *key, int key_len, 
       fprintf (stderr, "Dropping result %d (num = %d)\n", i, data[i].num);
     }
   }
-  
+
 
   if (union_mode) {
     res = 0;
@@ -164,7 +164,7 @@ int statsx_merge_end_query (struct connection *c, const char *key, int key_len, 
   if (counter_mode) {
     res = get_counter_serialized (buff, extra);
   }
-  
+
 
 
   if (one_int) {
@@ -175,7 +175,7 @@ int statsx_merge_end_query (struct connection *c, const char *key, int key_len, 
       } else {
         res = sprintf (buff, "%d,%d", bad_servers, res);
       }
-    } else {      
+    } else {
       *(int *)buff = res;
       res = 4;
     }

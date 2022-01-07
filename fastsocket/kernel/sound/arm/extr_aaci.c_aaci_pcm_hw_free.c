@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct snd_pcm_substream {TYPE_1__* runtime; } ;
-struct aaci_runtime {int cr; scalar_t__ pcm_open; int /*<<< orphan*/  pcm; } ;
+struct aaci_runtime {int cr; scalar_t__ pcm_open; int pcm; } ;
 struct TYPE_2__ {struct aaci_runtime* private_data; } ;
 
-/* Variables and functions */
- int CR_EN ; 
- int /*<<< orphan*/  WARN_ON (int) ; 
- int /*<<< orphan*/  devdma_hw_free (int /*<<< orphan*/ *,struct snd_pcm_substream*) ; 
- int /*<<< orphan*/  snd_ac97_pcm_close (int /*<<< orphan*/ ) ; 
+
+ int CR_EN ;
+ int WARN_ON (int) ;
+ int devdma_hw_free (int *,struct snd_pcm_substream*) ;
+ int snd_ac97_pcm_close (int ) ;
 
 __attribute__((used)) static int aaci_pcm_hw_free(struct snd_pcm_substream *substream)
 {
-	struct aaci_runtime *aacirun = substream->runtime->private_data;
+ struct aaci_runtime *aacirun = substream->runtime->private_data;
 
-	/*
-	 * This must not be called with the device enabled.
-	 */
-	WARN_ON(aacirun->cr & CR_EN);
 
-	if (aacirun->pcm_open)
-		snd_ac97_pcm_close(aacirun->pcm);
-	aacirun->pcm_open = 0;
 
-	/*
-	 * Clear out the DMA and any allocated buffers.
-	 */
-	devdma_hw_free(NULL, substream);
 
-	return 0;
+ WARN_ON(aacirun->cr & CR_EN);
+
+ if (aacirun->pcm_open)
+  snd_ac97_pcm_close(aacirun->pcm);
+ aacirun->pcm_open = 0;
+
+
+
+
+ devdma_hw_free(((void*)0), substream);
+
+ return 0;
 }

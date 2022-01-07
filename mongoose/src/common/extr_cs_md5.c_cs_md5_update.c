@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-struct TYPE_3__ {int* bits; unsigned char* in; int /*<<< orphan*/  buf; } ;
-typedef  TYPE_1__ cs_md5_ctx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  byteReverse (unsigned char*,int) ; 
- int /*<<< orphan*/  cs_md5_transform (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,size_t) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_3__ {int* bits; unsigned char* in; int buf; } ;
+typedef TYPE_1__ cs_md5_ctx ;
+
+
+ int byteReverse (unsigned char*,int) ;
+ int cs_md5_transform (int ,int*) ;
+ int memcpy (unsigned char*,unsigned char const*,size_t) ;
 
 void cs_md5_update(cs_md5_ctx *ctx, const unsigned char *buf, size_t len) {
   uint32_t t;

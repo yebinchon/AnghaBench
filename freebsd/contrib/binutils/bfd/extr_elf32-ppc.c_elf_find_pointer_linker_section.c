@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  elf_linker_section_t ;
-struct TYPE_4__ {scalar_t__ addend; int /*<<< orphan*/ * lsect; struct TYPE_4__* next; } ;
-typedef  TYPE_1__ elf_linker_section_pointers_t ;
-typedef  scalar_t__ bfd_vma ;
 
-/* Variables and functions */
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int elf_linker_section_t ;
+struct TYPE_4__ {scalar_t__ addend; int * lsect; struct TYPE_4__* next; } ;
+typedef TYPE_1__ elf_linker_section_pointers_t ;
+typedef scalar_t__ bfd_vma ;
+
+
 
 __attribute__((used)) static elf_linker_section_pointers_t *
 elf_find_pointer_linker_section
@@ -24,9 +24,9 @@ elf_find_pointer_linker_section
    bfd_vma addend,
    elf_linker_section_t *lsect)
 {
-  for ( ; linker_pointers != NULL; linker_pointers = linker_pointers->next)
+  for ( ; linker_pointers != ((void*)0); linker_pointers = linker_pointers->next)
     if (lsect == linker_pointers->lsect && addend == linker_pointers->addend)
       return linker_pointers;
 
-  return NULL;
+  return ((void*)0);
 }

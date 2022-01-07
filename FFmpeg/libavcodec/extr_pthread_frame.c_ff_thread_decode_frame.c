@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_7__ ;
-typedef  struct TYPE_23__   TYPE_6__ ;
-typedef  struct TYPE_22__   TYPE_5__ ;
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_24__ TYPE_7__ ;
+typedef struct TYPE_23__ TYPE_6__ ;
+typedef struct TYPE_22__ TYPE_5__ ;
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
 struct TYPE_24__ {int thread_count; scalar_t__ codec_id; TYPE_1__* internal; } ;
-struct TYPE_23__ {int /*<<< orphan*/  pkt_dts; } ;
+struct TYPE_23__ {int pkt_dts; } ;
 struct TYPE_22__ {int size; } ;
 struct TYPE_21__ {int next_finished; size_t next_decoding; TYPE_3__* threads; scalar_t__ delaying; } ;
-struct TYPE_19__ {int /*<<< orphan*/  dts; } ;
-struct TYPE_20__ {int got_frame; int result; int /*<<< orphan*/  avctx; TYPE_2__ avpkt; int /*<<< orphan*/  frame; int /*<<< orphan*/  progress_mutex; int /*<<< orphan*/  output_cond; int /*<<< orphan*/  state; } ;
+struct TYPE_19__ {int dts; } ;
+struct TYPE_20__ {int got_frame; int result; int avctx; TYPE_2__ avpkt; int frame; int progress_mutex; int output_cond; int state; } ;
 struct TYPE_18__ {TYPE_4__* thread_ctx; } ;
-typedef  TYPE_3__ PerThreadContext ;
-typedef  TYPE_4__ FrameThreadContext ;
-typedef  TYPE_5__ AVPacket ;
-typedef  TYPE_6__ AVFrame ;
-typedef  TYPE_7__ AVCodecContext ;
+typedef TYPE_3__ PerThreadContext ;
+typedef TYPE_4__ FrameThreadContext ;
+typedef TYPE_5__ AVPacket ;
+typedef TYPE_6__ AVFrame ;
+typedef TYPE_7__ AVCodecContext ;
 
-/* Variables and functions */
- scalar_t__ AV_CODEC_ID_FFV1 ; 
- scalar_t__ STATE_INPUT_READY ; 
- int /*<<< orphan*/  async_lock (TYPE_4__*) ; 
- int /*<<< orphan*/  async_unlock (TYPE_4__*) ; 
- scalar_t__ atomic_load (int /*<<< orphan*/ *) ; 
- scalar_t__ atomic_load_explicit (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_frame_move_ref (TYPE_6__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memory_order_relaxed ; 
- int /*<<< orphan*/  pthread_cond_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int submit_packet (TYPE_3__*,TYPE_7__*,TYPE_5__*) ; 
- int /*<<< orphan*/  update_context_from_thread (TYPE_7__*,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ AV_CODEC_ID_FFV1 ;
+ scalar_t__ STATE_INPUT_READY ;
+ int async_lock (TYPE_4__*) ;
+ int async_unlock (TYPE_4__*) ;
+ scalar_t__ atomic_load (int *) ;
+ scalar_t__ atomic_load_explicit (int *,int ) ;
+ int av_frame_move_ref (TYPE_6__*,int ) ;
+ int memory_order_relaxed ;
+ int pthread_cond_wait (int *,int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int submit_packet (TYPE_3__*,TYPE_7__*,TYPE_5__*) ;
+ int update_context_from_thread (TYPE_7__*,int ,int) ;
 
 int ff_thread_decode_frame(AVCodecContext *avctx,
                            AVFrame *picture, int *got_picture_ptr,
@@ -54,22 +54,22 @@ int ff_thread_decode_frame(AVCodecContext *avctx,
     PerThreadContext *p;
     int err;
 
-    /* release the async lock, permitting blocked hwaccel threads to
-     * go forward while we are in this function */
+
+
     async_unlock(fctx);
 
-    /*
-     * Submit a packet to the next decoding thread.
-     */
+
+
+
 
     p = &fctx->threads[fctx->next_decoding];
     err = submit_packet(p, avctx, avpkt);
     if (err)
         goto finish;
 
-    /*
-     * If we're still receiving the initial packets, don't return a frame.
-     */
+
+
+
 
     if (fctx->next_decoding > (avctx->thread_count-1-(avctx->codec_id == AV_CODEC_ID_FFV1)))
         fctx->delaying = 0;
@@ -81,14 +81,6 @@ int ff_thread_decode_frame(AVCodecContext *avctx,
             goto finish;
         }
     }
-
-    /*
-     * Return the next available frame from the oldest thread.
-     * If we're at the end of the stream, then we have to skip threads that
-     * didn't output a frame/error, because we don't want to accidentally signal
-     * EOF (avpkt->size == 0 && *got_picture_ptr == 0 && err >= 0).
-     */
-
     do {
         p = &fctx->threads[finished++];
 
@@ -104,12 +96,12 @@ int ff_thread_decode_frame(AVCodecContext *avctx,
         picture->pkt_dts = p->avpkt.dts;
         err = p->result;
 
-        /*
-         * A later call with avkpt->size == 0 may loop over all threads,
-         * including this one, searching for a frame/error to return before being
-         * stopped by the "finished != fctx->next_finished" condition.
-         * Make sure we don't mistakenly return the same frame/error again.
-         */
+
+
+
+
+
+
         p->got_frame = 0;
         p->result = 0;
 
@@ -122,7 +114,7 @@ int ff_thread_decode_frame(AVCodecContext *avctx,
 
     fctx->next_finished = finished;
 
-    /* return the size of the consumed packet if no error occurred */
+
     if (err >= 0)
         err = avpkt->size;
 finish:

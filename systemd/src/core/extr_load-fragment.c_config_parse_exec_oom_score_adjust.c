@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int oom_score_adjust_set; int oom_score_adjust; } ;
-typedef  TYPE_1__ ExecContext ;
+typedef TYPE_1__ ExecContext ;
 
-/* Variables and functions */
- int ERANGE ; 
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  assert (void*) ; 
- scalar_t__ isempty (char const*) ; 
- int /*<<< orphan*/  log_syntax (char const*,int /*<<< orphan*/ ,char const*,unsigned int,int,char*,char const*) ; 
- int parse_oom_score_adjust (char const*,int*) ; 
+
+ int ERANGE ;
+ int LOG_ERR ;
+ int assert (void*) ;
+ scalar_t__ isempty (char const*) ;
+ int log_syntax (char const*,int ,char const*,unsigned int,int,char*,char const*) ;
+ int parse_oom_score_adjust (char const*,int*) ;
 
 int config_parse_exec_oom_score_adjust(
                 const char* unit,
@@ -43,7 +43,7 @@ int config_parse_exec_oom_score_adjust(
         assert(data);
 
         if (isempty(rvalue)) {
-                c->oom_score_adjust_set = false;
+                c->oom_score_adjust_set = 0;
                 return 0;
         }
 
@@ -57,7 +57,7 @@ int config_parse_exec_oom_score_adjust(
         }
 
         c->oom_score_adjust = oa;
-        c->oom_score_adjust_set = true;
+        c->oom_score_adjust_set = 1;
 
         return 0;
 }

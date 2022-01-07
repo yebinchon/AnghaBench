@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  isnmp ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int isnmp ;
 struct TYPE_4__ {int ipsi_numroutes; } ;
-typedef  int /*<<< orphan*/  TDIEntityID ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  TYPE_1__ IPSNMPInfo ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int DWORD ;
+typedef int TDIEntityID ;
+typedef int NTSTATUS ;
+typedef TYPE_1__ IPSNMPInfo ;
+typedef int HANDLE ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  FILE_READ_DATA ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  closeTcpFile (int /*<<< orphan*/ ) ; 
- scalar_t__ isIpEntity (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  openTcpFile (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tdiFreeThingSet (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tdiGetEntityIDSet (int /*<<< orphan*/ ,int /*<<< orphan*/ **,int*) ; 
- int /*<<< orphan*/  tdiGetMibForIpEntity (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+ int ERR (char*,int ,...) ;
+ int FILE_READ_DATA ;
+ int NT_SUCCESS (int ) ;
+ int TRACE (char*,...) ;
+ int closeTcpFile (int ) ;
+ scalar_t__ isIpEntity (int ,int *) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int openTcpFile (int *,int ) ;
+ int tdiFreeThingSet (int *) ;
+ int tdiGetEntityIDSet (int ,int **,int*) ;
+ int tdiGetMibForIpEntity (int ,int *,TYPE_1__*) ;
 
 DWORD getNumRoutes(void)
 {

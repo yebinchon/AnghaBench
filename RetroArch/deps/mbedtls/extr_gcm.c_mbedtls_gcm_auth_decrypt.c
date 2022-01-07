@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbedtls_gcm_context ;
 
-/* Variables and functions */
- int MBEDTLS_ERR_GCM_AUTH_FAILED ; 
- int /*<<< orphan*/  MBEDTLS_GCM_DECRYPT ; 
- int mbedtls_gcm_crypt_and_tag (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t,unsigned char const*,size_t,unsigned char const*,size_t,unsigned char const*,unsigned char*,size_t,unsigned char*) ; 
- int /*<<< orphan*/  mbedtls_zeroize (unsigned char*,size_t) ; 
+
+
+
+typedef int mbedtls_gcm_context ;
+
+
+ int MBEDTLS_ERR_GCM_AUTH_FAILED ;
+ int MBEDTLS_GCM_DECRYPT ;
+ int mbedtls_gcm_crypt_and_tag (int *,int ,size_t,unsigned char const*,size_t,unsigned char const*,size_t,unsigned char const*,unsigned char*,size_t,unsigned char*) ;
+ int mbedtls_zeroize (unsigned char*,size_t) ;
 
 int mbedtls_gcm_auth_decrypt( mbedtls_gcm_context *ctx,
                       size_t length,
@@ -41,7 +41,7 @@ int mbedtls_gcm_auth_decrypt( mbedtls_gcm_context *ctx,
         return( ret );
     }
 
-    /* Check tag in "constant-time" */
+
     for( diff = 0, i = 0; i < tag_len; i++ )
         diff |= tag[i] ^ check_tag[i];
 

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct RClass {int dummy; } ;
-struct TYPE_6__ {int /*<<< orphan*/  object_class; } ;
-typedef  TYPE_1__ mrb_state ;
+struct TYPE_6__ {int object_class; } ;
+typedef TYPE_1__ mrb_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MRB_ARGS_NONE () ; 
- int /*<<< orphan*/  MRB_ARGS_REQ (int) ; 
- int /*<<< orphan*/  MRB_SET_INSTANCE_TT (struct RClass*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MRB_TT_ISTRUCT ; 
- int /*<<< orphan*/  istruct_test_initialize ; 
- int /*<<< orphan*/  istruct_test_length ; 
- int /*<<< orphan*/  istruct_test_mutate ; 
- int /*<<< orphan*/  istruct_test_test_receive ; 
- int /*<<< orphan*/  istruct_test_test_receive_direct ; 
- int /*<<< orphan*/  istruct_test_to_s ; 
- struct RClass* mrb_define_class (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_define_class_method (TYPE_1__*,struct RClass*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_define_method (TYPE_1__*,struct RClass*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int MRB_ARGS_NONE () ;
+ int MRB_ARGS_REQ (int) ;
+ int MRB_SET_INSTANCE_TT (struct RClass*,int ) ;
+ int MRB_TT_ISTRUCT ;
+ int istruct_test_initialize ;
+ int istruct_test_length ;
+ int istruct_test_mutate ;
+ int istruct_test_test_receive ;
+ int istruct_test_test_receive_direct ;
+ int istruct_test_to_s ;
+ struct RClass* mrb_define_class (TYPE_1__*,char*,int ) ;
+ int mrb_define_class_method (TYPE_1__*,struct RClass*,char*,int ,int ) ;
+ int mrb_define_method (TYPE_1__*,struct RClass*,char*,int ,int ) ;
 
 void mrb_mruby_inline_struct_gem_test(mrb_state *mrb)
 {

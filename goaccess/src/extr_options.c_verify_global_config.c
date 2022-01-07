@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int load_global_config; int /*<<< orphan*/  iconfigfile; } ;
-struct TYPE_4__ {int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int EOF ; 
- int /*<<< orphan*/  EXIT_FAILURE ; 
- TYPE_3__ conf ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int getopt_long (int,char**,int /*<<< orphan*/ ,TYPE_1__*,int*) ; 
- TYPE_1__* long_opts ; 
- int /*<<< orphan*/  optarg ; 
- int optind ; 
- int /*<<< orphan*/  short_options ; 
- int /*<<< orphan*/  strcmp (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xstrdup (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int load_global_config; int iconfigfile; } ;
+struct TYPE_4__ {int name; } ;
+
+
+ int EOF ;
+ int EXIT_FAILURE ;
+ TYPE_3__ conf ;
+ int exit (int ) ;
+ int getopt_long (int,char**,int ,TYPE_1__*,int*) ;
+ TYPE_1__* long_opts ;
+ int optarg ;
+ int optind ;
+ int short_options ;
+ int strcmp (char*,int ) ;
+ int xstrdup (int ) ;
 
 void
 verify_global_config (int argc, char **argv)
@@ -51,6 +51,6 @@ verify_global_config (int argc, char **argv)
     }
   }
 
-  /* reset it to 1 */
+
   optind = 1;
 }

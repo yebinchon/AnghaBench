@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ulong ;
-typedef  int /*<<< orphan*/  DwarfAbbrev ;
-typedef  int /*<<< orphan*/  Dwarf ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * findabbrev (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int loadabbrevs (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * nil ; 
- int /*<<< orphan*/  werrstr (char*) ; 
+
+
+
+typedef int ulong ;
+typedef int DwarfAbbrev ;
+typedef int Dwarf ;
+
+
+ int * findabbrev (int *,int,int ) ;
+ int loadabbrevs (int *,int ,int **) ;
+ int * nil ;
+ int werrstr (char*) ;
 
 DwarfAbbrev*
 dwarfgetabbrev(Dwarf *d, ulong off, ulong num)
 {
-	DwarfAbbrev *a;
-	int na;
+ DwarfAbbrev *a;
+ int na;
 
-	if((na = loadabbrevs(d, off, &a)) < 0){
-		werrstr("loadabbrevs: %r");
-		return nil;
-	}
-	return findabbrev(a, na, num);
+ if((na = loadabbrevs(d, off, &a)) < 0){
+  werrstr("loadabbrevs: %r");
+  return nil;
+ }
+ return findabbrev(a, na, num);
 }

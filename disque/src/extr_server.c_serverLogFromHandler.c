@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int buf ;
 struct TYPE_2__ {char* logfile; int verbosity; scalar_t__ daemonize; } ;
 
-/* Variables and functions */
- int O_APPEND ; 
- int O_CREAT ; 
- int O_WRONLY ; 
- int STDOUT_FILENO ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  getpid () ; 
- int /*<<< orphan*/  ll2string (char*,int,int /*<<< orphan*/ ) ; 
- int open (char*,int,int) ; 
- TYPE_1__ server ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
- int write (int,char const*,int) ; 
+
+ int O_APPEND ;
+ int O_CREAT ;
+ int O_WRONLY ;
+ int STDOUT_FILENO ;
+ int close (int) ;
+ int getpid () ;
+ int ll2string (char*,int,int ) ;
+ int open (char*,int,int) ;
+ TYPE_1__ server ;
+ int strlen (char const*) ;
+ int time (int *) ;
+ int write (int,char const*,int) ;
 
 void serverLogFromHandler(int level, const char *msg) {
     int fd;
@@ -41,7 +41,7 @@ void serverLogFromHandler(int level, const char *msg) {
     ll2string(buf,sizeof(buf),getpid());
     if (write(fd,buf,strlen(buf)) == -1) goto err;
     if (write(fd,":signal-handler (",17) == -1) goto err;
-    ll2string(buf,sizeof(buf),time(NULL));
+    ll2string(buf,sizeof(buf),time(((void*)0)));
     if (write(fd,buf,strlen(buf)) == -1) goto err;
     if (write(fd,") ",2) == -1) goto err;
     if (write(fd,msg,strlen(msg)) == -1) goto err;

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  input_attachment_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLC_UNUSED (void*) ; 
- int /*<<< orphan*/  vlc_input_attachment_Delete (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int input_attachment_t ;
+
+
+ int VLC_UNUSED (void*) ;
+ int vlc_input_attachment_Delete (int *) ;
 
 __attribute__((used)) static void FreeDictAttachment( void *p_value, void *p_obj )
 {

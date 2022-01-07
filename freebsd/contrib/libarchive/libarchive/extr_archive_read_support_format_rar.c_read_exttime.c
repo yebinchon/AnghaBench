@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void* time_t ;
+
+
+
+
+typedef void* time_t ;
 struct tm {unsigned int tm_sec; } ;
 struct rar {long mnsec; long cnsec; long ansec; long arcnsec; void* arctime; void* atime; void* ctime; void* mtime; } ;
 
-/* Variables and functions */
- unsigned int NS_UNIT ; 
- unsigned int archive_le16dec (char const*) ; 
- int archive_le32dec (char const*) ; 
- void* get_time (int) ; 
- struct tm* localtime (void**) ; 
- void* mktime (struct tm*) ; 
+
+ unsigned int NS_UNIT ;
+ unsigned int archive_le16dec (char const*) ;
+ int archive_le32dec (char const*) ;
+ void* get_time (int) ;
+ struct tm* localtime (void**) ;
+ void* mktime (struct tm*) ;
 
 __attribute__((used)) static int
 read_exttime(const char *p, struct rar *rar, const char *endp)

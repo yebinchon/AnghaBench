@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ composition_len; scalar_t__ selection_start; scalar_t__ selection_end; scalar_t__ composition_start; int flags; } ;
-typedef  int LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HIMC ;
-typedef  TYPE_1__ EDITSTATE ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef int HIMC ;
+typedef TYPE_1__ EDITSTATE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EDIT_EM_ReplaceSel (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EDIT_GetCompositionStr (int /*<<< orphan*/ ,int,TYPE_1__*) ; 
- int /*<<< orphan*/  EDIT_GetResultStr (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  EDIT_SetCaretPos (TYPE_1__*,scalar_t__,int) ; 
- int EF_AFTER_WRAP ; 
- int GCS_COMPSTR ; 
- int /*<<< orphan*/  GCS_CURSORPOS ; 
- int GCS_RESULTSTR ; 
- int ImmGetCompositionStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ImmGetContext (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ImmReleaseContext (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  empty_stringW ; 
+
+ int EDIT_EM_ReplaceSel (TYPE_1__*,int ,int ,int ,int ) ;
+ int EDIT_GetCompositionStr (int ,int,TYPE_1__*) ;
+ int EDIT_GetResultStr (int ,TYPE_1__*) ;
+ int EDIT_SetCaretPos (TYPE_1__*,scalar_t__,int) ;
+ int EF_AFTER_WRAP ;
+ int GCS_COMPSTR ;
+ int GCS_CURSORPOS ;
+ int GCS_RESULTSTR ;
+ int ImmGetCompositionStringW (int ,int ,int ,int ) ;
+ int ImmGetContext (int ) ;
+ int ImmReleaseContext (int ,int ) ;
+ int TRUE ;
+ int empty_stringW ;
 
 __attribute__((used)) static void EDIT_ImeComposition(HWND hwnd, LPARAM CompFlag, EDITSTATE *es)
 {

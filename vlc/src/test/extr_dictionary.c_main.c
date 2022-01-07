@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_dictionary_t ;
-typedef  int /*<<< orphan*/  our_keys ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free (char**) ; 
- int /*<<< orphan*/  test_dictionary_validity (int /*<<< orphan*/ *,char const**,int const) ; 
- char** vlc_dictionary_all_keys (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_dictionary_clear (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int vlc_dictionary_has_key (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  vlc_dictionary_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_dictionary_insert (int /*<<< orphan*/ *,char const*,void*) ; 
- int vlc_dictionary_is_empty (int /*<<< orphan*/ *) ; 
- scalar_t__ vlc_dictionary_keys_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_dictionary_remove_value_for_key (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vlc_dictionary_t ;
+typedef int our_keys ;
+
+
+ int assert (int) ;
+ int free (char**) ;
+ int test_dictionary_validity (int *,char const**,int const) ;
+ char** vlc_dictionary_all_keys (int *) ;
+ int vlc_dictionary_clear (int *,int *,int *) ;
+ int vlc_dictionary_has_key (int *,char const*) ;
+ int vlc_dictionary_init (int *,int ) ;
+ int vlc_dictionary_insert (int *,char const*,void*) ;
+ int vlc_dictionary_is_empty (int *) ;
+ scalar_t__ vlc_dictionary_keys_count (int *) ;
+ int vlc_dictionary_remove_value_for_key (int *,char const*,int *,int *) ;
 
 int main (void)
 {
@@ -46,7 +46,7 @@ int main (void)
     free(keys);
 
 
-    /* Insert some values */
+
     for( i = 0; i < size; i++ )
     {
         vlc_dictionary_insert( &dict, our_keys[i], (void *)i );
@@ -58,11 +58,11 @@ int main (void)
     assert( !vlc_dictionary_is_empty( &dict ) );
     test_dictionary_validity( &dict, our_keys, size );
 
-    vlc_dictionary_remove_value_for_key( &dict, our_keys[size-1], NULL, NULL );
+    vlc_dictionary_remove_value_for_key( &dict, our_keys[size-1], ((void*)0), ((void*)0) );
 
     test_dictionary_validity( &dict, our_keys, size-1 );
 
-    vlc_dictionary_clear( &dict, NULL, NULL );
+    vlc_dictionary_clear( &dict, ((void*)0), ((void*)0) );
 
     assert( vlc_dictionary_keys_count( &dict ) == 0 );
     assert( vlc_dictionary_is_empty( &dict ) );

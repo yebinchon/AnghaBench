@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nn_thread {int dummy; } ;
 struct nn_device_recipe {int dummy; } ;
-struct nn_device_forwarder_args {int s1; int s2; scalar_t__ rc; int /*<<< orphan*/  err; struct nn_device_recipe* device; } ;
+struct nn_device_forwarder_args {int s1; int s2; scalar_t__ rc; int err; struct nn_device_recipe* device; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  nn_device_forwarder ; 
- int /*<<< orphan*/  nn_thread_init (struct nn_thread*,int /*<<< orphan*/ ,struct nn_device_forwarder_args*) ; 
- int /*<<< orphan*/  nn_thread_term (struct nn_thread*) ; 
+
+ int errno ;
+ int nn_device_forwarder ;
+ int nn_thread_init (struct nn_thread*,int ,struct nn_device_forwarder_args*) ;
+ int nn_thread_term (struct nn_thread*) ;
 
 int nn_device_twoway (struct nn_device_recipe *device, int s1, int s2)
 {

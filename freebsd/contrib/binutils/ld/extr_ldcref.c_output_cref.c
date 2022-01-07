@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cref_hash_entry {int dummy; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int FILECOL ; 
- char* _ (char*) ; 
- int /*<<< orphan*/  cref_fill_array ; 
- int /*<<< orphan*/  cref_hash_traverse (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct cref_hash_entry***) ; 
- int /*<<< orphan*/  cref_initialized ; 
- int /*<<< orphan*/  cref_sort_array ; 
- int cref_symcount ; 
- int /*<<< orphan*/  cref_table ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  output_one_cref (int /*<<< orphan*/ *,struct cref_hash_entry*) ; 
- int /*<<< orphan*/  putc (char,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  qsort (struct cref_hash_entry**,int,int,int /*<<< orphan*/ ) ; 
- int strlen (char const*) ; 
- struct cref_hash_entry** xmalloc (int) ; 
+
+ int ASSERT (int) ;
+ int FILECOL ;
+ char* _ (char*) ;
+ int cref_fill_array ;
+ int cref_hash_traverse (int *,int ,struct cref_hash_entry***) ;
+ int cref_initialized ;
+ int cref_sort_array ;
+ int cref_symcount ;
+ int cref_table ;
+ int fprintf (int *,char*,...) ;
+ int output_one_cref (int *,struct cref_hash_entry*) ;
+ int putc (char,int *) ;
+ int qsort (struct cref_hash_entry**,int,int,int ) ;
+ int strlen (char const*) ;
+ struct cref_hash_entry** xmalloc (int) ;
 
 void
 output_cref (FILE *fp)

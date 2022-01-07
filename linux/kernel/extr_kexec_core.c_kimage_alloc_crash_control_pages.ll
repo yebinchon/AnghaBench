@@ -1,0 +1,196 @@
+; ModuleID = '/home/carl/AnghaBench/linux/kernel/extr_kexec_core.c_kimage_alloc_crash_control_pages.c'
+source_filename = "/home/carl/AnghaBench/linux/kernel/extr_kexec_core.c_kimage_alloc_crash_control_pages.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.TYPE_4__ = type { i64 }
+%struct.page = type { i32 }
+%struct.kimage = type { i64, i64, %struct.TYPE_3__* }
+%struct.TYPE_3__ = type { i64, i64 }
+
+@PAGE_SHIFT = common dso_local global i32 0, align 4
+@crashk_res = common dso_local global %struct.TYPE_4__ zeroinitializer, align 8
+@KEXEC_CRASH_CONTROL_MEMORY_LIMIT = common dso_local global i64 0, align 8
+@llvm.used = appending global [1 x i8*] [i8* bitcast (%struct.page* (%struct.kimage*, i32)* @kimage_alloc_crash_control_pages to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal %struct.page* @kimage_alloc_crash_control_pages(%struct.kimage* %0, i32 %1) #0 {
+  %3 = alloca %struct.kimage*, align 8
+  %4 = alloca i32, align 4
+  %5 = alloca i64, align 8
+  %6 = alloca i64, align 8
+  %7 = alloca i64, align 8
+  %8 = alloca %struct.page*, align 8
+  %9 = alloca i64, align 8
+  %10 = alloca i64, align 8
+  %11 = alloca i64, align 8
+  store %struct.kimage* %0, %struct.kimage** %3, align 8
+  store i32 %1, i32* %4, align 4
+  store %struct.page* null, %struct.page** %8, align 8
+  %12 = load i32, i32* %4, align 4
+  %13 = shl i32 1, %12
+  %14 = load i32, i32* @PAGE_SHIFT, align 4
+  %15 = shl i32 %13, %14
+  %16 = sext i32 %15 to i64
+  store i64 %16, i64* %7, align 8
+  %17 = load %struct.kimage*, %struct.kimage** %3, align 8
+  %18 = getelementptr inbounds %struct.kimage, %struct.kimage* %17, i32 0, i32 0
+  %19 = load i64, i64* %18, align 8
+  %20 = load i64, i64* %7, align 8
+  %21 = sub i64 %20, 1
+  %22 = add i64 %19, %21
+  %23 = load i64, i64* %7, align 8
+  %24 = sub i64 %23, 1
+  %25 = xor i64 %24, -1
+  %26 = and i64 %22, %25
+  store i64 %26, i64* %5, align 8
+  %27 = load i64, i64* %5, align 8
+  %28 = load i64, i64* %7, align 8
+  %29 = add i64 %27, %28
+  %30 = sub i64 %29, 1
+  store i64 %30, i64* %6, align 8
+  br label %31
+
+31:                                               ; preds = %105, %2
+  %32 = load i64, i64* %6, align 8
+  %33 = load i64, i64* getelementptr inbounds (%struct.TYPE_4__, %struct.TYPE_4__* @crashk_res, i32 0, i32 0), align 8
+  %34 = icmp ule i64 %32, %33
+  br i1 %34, label %35, label %106
+
+35:                                               ; preds = %31
+  %36 = call i32 (...) @cond_resched()
+  %37 = load i64, i64* %6, align 8
+  %38 = load i64, i64* @KEXEC_CRASH_CONTROL_MEMORY_LIMIT, align 8
+  %39 = icmp ugt i64 %37, %38
+  br i1 %39, label %40, label %41
+
+40:                                               ; preds = %35
+  br label %106
+
+41:                                               ; preds = %35
+  store i64 0, i64* %9, align 8
+  br label %42
+
+42:                                               ; preds = %87, %41
+  %43 = load i64, i64* %9, align 8
+  %44 = load %struct.kimage*, %struct.kimage** %3, align 8
+  %45 = getelementptr inbounds %struct.kimage, %struct.kimage* %44, i32 0, i32 1
+  %46 = load i64, i64* %45, align 8
+  %47 = icmp ult i64 %43, %46
+  br i1 %47, label %48, label %90
+
+48:                                               ; preds = %42
+  %49 = load %struct.kimage*, %struct.kimage** %3, align 8
+  %50 = getelementptr inbounds %struct.kimage, %struct.kimage* %49, i32 0, i32 2
+  %51 = load %struct.TYPE_3__*, %struct.TYPE_3__** %50, align 8
+  %52 = load i64, i64* %9, align 8
+  %53 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %51, i64 %52
+  %54 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %53, i32 0, i32 0
+  %55 = load i64, i64* %54, align 8
+  store i64 %55, i64* %10, align 8
+  %56 = load i64, i64* %10, align 8
+  %57 = load %struct.kimage*, %struct.kimage** %3, align 8
+  %58 = getelementptr inbounds %struct.kimage, %struct.kimage* %57, i32 0, i32 2
+  %59 = load %struct.TYPE_3__*, %struct.TYPE_3__** %58, align 8
+  %60 = load i64, i64* %9, align 8
+  %61 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %59, i64 %60
+  %62 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %61, i32 0, i32 1
+  %63 = load i64, i64* %62, align 8
+  %64 = add i64 %56, %63
+  %65 = sub i64 %64, 1
+  store i64 %65, i64* %11, align 8
+  %66 = load i64, i64* %6, align 8
+  %67 = load i64, i64* %10, align 8
+  %68 = icmp uge i64 %66, %67
+  br i1 %68, label %69, label %86
+
+69:                                               ; preds = %48
+  %70 = load i64, i64* %5, align 8
+  %71 = load i64, i64* %11, align 8
+  %72 = icmp ule i64 %70, %71
+  br i1 %72, label %73, label %86
+
+73:                                               ; preds = %69
+  %74 = load i64, i64* %11, align 8
+  %75 = load i64, i64* %7, align 8
+  %76 = sub i64 %75, 1
+  %77 = add i64 %74, %76
+  %78 = load i64, i64* %7, align 8
+  %79 = sub i64 %78, 1
+  %80 = xor i64 %79, -1
+  %81 = and i64 %77, %80
+  store i64 %81, i64* %5, align 8
+  %82 = load i64, i64* %5, align 8
+  %83 = load i64, i64* %7, align 8
+  %84 = add i64 %82, %83
+  %85 = sub i64 %84, 1
+  store i64 %85, i64* %6, align 8
+  br label %90
+
+86:                                               ; preds = %69, %48
+  br label %87
+
+87:                                               ; preds = %86
+  %88 = load i64, i64* %9, align 8
+  %89 = add i64 %88, 1
+  store i64 %89, i64* %9, align 8
+  br label %42
+
+90:                                               ; preds = %73, %42
+  %91 = load i64, i64* %9, align 8
+  %92 = load %struct.kimage*, %struct.kimage** %3, align 8
+  %93 = getelementptr inbounds %struct.kimage, %struct.kimage* %92, i32 0, i32 1
+  %94 = load i64, i64* %93, align 8
+  %95 = icmp eq i64 %91, %94
+  br i1 %95, label %96, label %105
+
+96:                                               ; preds = %90
+  %97 = load i64, i64* %5, align 8
+  %98 = load i32, i32* @PAGE_SHIFT, align 4
+  %99 = zext i32 %98 to i64
+  %100 = lshr i64 %97, %99
+  %101 = call %struct.page* @pfn_to_page(i64 %100)
+  store %struct.page* %101, %struct.page** %8, align 8
+  %102 = load i64, i64* %6, align 8
+  %103 = load %struct.kimage*, %struct.kimage** %3, align 8
+  %104 = getelementptr inbounds %struct.kimage, %struct.kimage* %103, i32 0, i32 0
+  store i64 %102, i64* %104, align 8
+  br label %106
+
+105:                                              ; preds = %90
+  br label %31
+
+106:                                              ; preds = %96, %40, %31
+  %107 = load %struct.page*, %struct.page** %8, align 8
+  %108 = icmp ne %struct.page* %107, null
+  br i1 %108, label %109, label %115
+
+109:                                              ; preds = %106
+  %110 = load %struct.page*, %struct.page** %8, align 8
+  %111 = call i32 @page_address(%struct.page* %110)
+  %112 = load i32, i32* %4, align 4
+  %113 = shl i32 1, %112
+  %114 = call i32 @arch_kexec_post_alloc_pages(i32 %111, i32 %113, i32 0)
+  br label %115
+
+115:                                              ; preds = %109, %106
+  %116 = load %struct.page*, %struct.page** %8, align 8
+  ret %struct.page* %116
+}
+
+declare dso_local i32 @cond_resched(...) #1
+
+declare dso_local %struct.page* @pfn_to_page(i64) #1
+
+declare dso_local i32 @arch_kexec_post_alloc_pages(i32, i32, i32) #1
+
+declare dso_local i32 @page_address(%struct.page*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

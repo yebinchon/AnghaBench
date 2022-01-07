@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ ** outputs; int /*<<< orphan*/ ** inputs; } ;
-typedef  int /*<<< orphan*/  AVFrame ;
-typedef  int /*<<< orphan*/  AVFilterLink ;
-typedef  TYPE_1__ AVFilterContext ;
 
-/* Variables and functions */
- int FFERROR_NOT_READY ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_STATUS (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_STATUS_BACK (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_WANTED (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FRAME_SIZE ; 
- int ff_inlink_consume_samples (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int filter_frame (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int ** outputs; int ** inputs; } ;
+typedef int AVFrame ;
+typedef int AVFilterLink ;
+typedef TYPE_1__ AVFilterContext ;
+
+
+ int FFERROR_NOT_READY ;
+ int FF_FILTER_FORWARD_STATUS (int *,int *) ;
+ int FF_FILTER_FORWARD_STATUS_BACK (int *,int *) ;
+ int FF_FILTER_FORWARD_WANTED (int *,int *) ;
+ int FRAME_SIZE ;
+ int ff_inlink_consume_samples (int *,int ,int ,int **) ;
+ int filter_frame (int *,int *) ;
 
 __attribute__((used)) static int activate(AVFilterContext *ctx)
 {
     AVFilterLink *inlink = ctx->inputs[0];
     AVFilterLink *outlink = ctx->outputs[0];
-    AVFrame *in = NULL;
+    AVFrame *in = ((void*)0);
     int ret;
 
     FF_FILTER_FORWARD_STATUS_BACK(outlink, inlink);

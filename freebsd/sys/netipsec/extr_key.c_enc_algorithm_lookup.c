@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct enc_xform {int dummy; } ;
 struct TYPE_3__ {int sadb_alg; struct enc_xform const* xform; } ;
 
-/* Variables and functions */
- int nitems (TYPE_1__*) ; 
- TYPE_1__* supported_ealgs ; 
+
+ int nitems (TYPE_1__*) ;
+ TYPE_1__* supported_ealgs ;
 
 const struct enc_xform *
 enc_algorithm_lookup(int alg)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < nitems(supported_ealgs); i++)
-		if (alg == supported_ealgs[i].sadb_alg)
-			return (supported_ealgs[i].xform);
-	return (NULL);
+ for (i = 0; i < nitems(supported_ealgs); i++)
+  if (alg == supported_ealgs[i].sadb_alg)
+   return (supported_ealgs[i].xform);
+ return (((void*)0));
 }

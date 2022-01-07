@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int iLastPos; int iLastColumn; int /*<<< orphan*/  p; TYPE_1__* pDoclist; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int iLastPos; int iLastColumn; int p; TYPE_1__* pDoclist; } ;
 struct TYPE_5__ {int iType; } ;
-typedef  TYPE_2__ DocListReader ;
+typedef TYPE_2__ DocListReader ;
 
-/* Variables and functions */
- int DL_POSITIONS ; 
- int DL_POSITIONS_OFFSETS ; 
- int POS_BASE ; 
- int POS_COLUMN ; 
- int POS_END ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  atEnd (TYPE_2__*) ; 
- scalar_t__ getVarint32 (int /*<<< orphan*/ ,int*) ; 
+
+ int DL_POSITIONS ;
+ int DL_POSITIONS_OFFSETS ;
+ int POS_BASE ;
+ int POS_COLUMN ;
+ int POS_END ;
+ int assert (int) ;
+ int atEnd (TYPE_2__*) ;
+ scalar_t__ getVarint32 (int ,int*) ;
 
 __attribute__((used)) static int readPosition(DocListReader *pReader, int *iColumn){
   int i;
@@ -52,7 +52,7 @@ __attribute__((used)) static int readPosition(DocListReader *pReader, int *iColu
   }
   pReader->iLastPos += ((int) i)-POS_BASE;
   if( iType>=DL_POSITIONS_OFFSETS ){
-    /* Skip over offsets, ignoring them for now. */
+
     int iStart, iEnd;
     pReader->p += getVarint32(pReader->p, &iStart);
     pReader->p += getVarint32(pReader->p, &iEnd);

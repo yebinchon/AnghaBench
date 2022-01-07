@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LJ_LIB_REG (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jit_util ; 
+
+
+
+typedef int lua_State ;
+
+
+ int LJ_LIB_REG (int *,int *,int ) ;
+ int jit_util ;
 
 __attribute__((used)) static int luaopen_jit_util(lua_State *L)
 {
-  LJ_LIB_REG(L, NULL, jit_util);
+  LJ_LIB_REG(L, ((void*)0), jit_util);
   return 1;
 }

@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DebugFileOpen () ; 
- int /*<<< orphan*/  InitBufferPoolAccess () ; 
- int /*<<< orphan*/  InitCommunication () ; 
- int /*<<< orphan*/  InitFileAccess () ; 
- int /*<<< orphan*/  InitSync () ; 
- int /*<<< orphan*/  smgrinit () ; 
+ int DebugFileOpen () ;
+ int InitBufferPoolAccess () ;
+ int InitCommunication () ;
+ int InitFileAccess () ;
+ int InitSync () ;
+ int smgrinit () ;
 
 void
 BaseInit(void)
 {
-	/*
-	 * Attach to shared memory and semaphores, and initialize our
-	 * input/output/debugging file descriptors.
-	 */
-	InitCommunication();
-	DebugFileOpen();
 
-	/* Do local initialization of file, storage and buffer managers */
-	InitFileAccess();
-	InitSync();
-	smgrinit();
-	InitBufferPoolAccess();
+
+
+
+ InitCommunication();
+ DebugFileOpen();
+
+
+ InitFileAccess();
+ InitSync();
+ smgrinit();
+ InitBufferPoolAccess();
 }

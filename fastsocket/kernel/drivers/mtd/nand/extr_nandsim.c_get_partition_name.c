@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- char* kstrdup (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
+ int GFP_KERNEL ;
+ char* kstrdup (char*,int ) ;
+ int sprintf (char*,char*,int) ;
 
 __attribute__((used)) static char *get_partition_name(int i)
 {
-	char buf[64];
-	sprintf(buf, "NAND simulator partition %d", i);
-	return kstrdup(buf, GFP_KERNEL);
+ char buf[64];
+ sprintf(buf, "NAND simulator partition %d", i);
+ return kstrdup(buf, GFP_KERNEL);
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  double uint32_t ;
-typedef  int int64_t ;
-typedef  double int32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef double uint32_t ;
+typedef int int64_t ;
+typedef double int32_t ;
 struct TYPE_3__ {scalar_t__ data_type; int data_size; scalar_t__ data; } ;
-typedef  TYPE_1__ OSSL_PARAM ;
+typedef TYPE_1__ OSSL_PARAM ;
 
-/* Variables and functions */
- scalar_t__ OSSL_PARAM_INTEGER ; 
- scalar_t__ OSSL_PARAM_REAL ; 
- scalar_t__ OSSL_PARAM_UNSIGNED_INTEGER ; 
+
+ scalar_t__ OSSL_PARAM_INTEGER ;
+ scalar_t__ OSSL_PARAM_REAL ;
+ scalar_t__ OSSL_PARAM_UNSIGNED_INTEGER ;
 
 int OSSL_PARAM_get_double(const OSSL_PARAM *p, double *val)
 {
     int64_t i64;
     uint64_t u64;
 
-    if (val == NULL || p == NULL)
+    if (val == ((void*)0) || p == ((void*)0))
         return 0;
 
     if (p->data_type == OSSL_PARAM_REAL) {
@@ -44,7 +44,7 @@ int OSSL_PARAM_get_double(const OSSL_PARAM *p, double *val)
             return 1;
         case sizeof(uint64_t):
             u64 = *(const uint64_t *)p->data;
-            if ((u64 >> 53) == 0) { /* 53 significant bits in the mantissa */
+            if ((u64 >> 53) == 0) {
                 *val = (double)u64;
                 return 1;
             }
@@ -58,7 +58,7 @@ int OSSL_PARAM_get_double(const OSSL_PARAM *p, double *val)
         case sizeof(int64_t):
             i64 = *(const int64_t *)p->data;
             u64 = i64 < 0 ? -i64 : i64;
-            if ((u64 >> 53) == 0) { /* 53 significant bits in the mantissa */
+            if ((u64 >> 53) == 0) {
                 *val = 0.0 + i64;
                 return 1;
             }

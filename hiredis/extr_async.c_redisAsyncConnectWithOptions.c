@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  options; } ;
-typedef  TYPE_1__ redisOptions ;
-typedef  int /*<<< orphan*/  redisContext ;
-typedef  int /*<<< orphan*/  redisAsyncContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REDIS_OPT_NONBLOCK ; 
- int /*<<< orphan*/  __redisAsyncCopyError (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * redisAsyncInitialize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * redisConnectWithOptions (TYPE_1__*) ; 
- int /*<<< orphan*/  redisFree (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int options; } ;
+typedef TYPE_1__ redisOptions ;
+typedef int redisContext ;
+typedef int redisAsyncContext ;
+
+
+ int REDIS_OPT_NONBLOCK ;
+ int __redisAsyncCopyError (int *) ;
+ int * redisAsyncInitialize (int *) ;
+ int * redisConnectWithOptions (TYPE_1__*) ;
+ int redisFree (int *) ;
 
 redisAsyncContext *redisAsyncConnectWithOptions(const redisOptions *options) {
     redisOptions myOptions = *options;
@@ -30,13 +30,13 @@ redisAsyncContext *redisAsyncConnectWithOptions(const redisOptions *options) {
 
     myOptions.options |= REDIS_OPT_NONBLOCK;
     c = redisConnectWithOptions(&myOptions);
-    if (c == NULL) {
-        return NULL;
+    if (c == ((void*)0)) {
+        return ((void*)0);
     }
     ac = redisAsyncInitialize(c);
-    if (ac == NULL) {
+    if (ac == ((void*)0)) {
         redisFree(c);
-        return NULL;
+        return ((void*)0);
     }
     __redisAsyncCopyError(ac);
     return ac;

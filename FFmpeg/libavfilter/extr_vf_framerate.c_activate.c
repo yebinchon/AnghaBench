@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
-struct TYPE_11__ {TYPE_1__* priv; int /*<<< orphan*/ ** outputs; int /*<<< orphan*/ ** inputs; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
+struct TYPE_11__ {TYPE_1__* priv; int ** outputs; int ** inputs; } ;
 struct TYPE_10__ {scalar_t__ pts; scalar_t__ interlaced_frame; } ;
-struct TYPE_9__ {scalar_t__ pts1; scalar_t__ pts0; scalar_t__ delta; double score; scalar_t__ start_pts; int flush; TYPE_2__* f0; scalar_t__ n; TYPE_2__* f1; int /*<<< orphan*/  dest_time_base; int /*<<< orphan*/  srce_time_base; int /*<<< orphan*/  work; } ;
-typedef  TYPE_1__ FrameRateContext ;
-typedef  TYPE_2__ AVFrame ;
-typedef  int /*<<< orphan*/  AVFilterLink ;
-typedef  TYPE_3__ AVFilterContext ;
+struct TYPE_9__ {scalar_t__ pts1; scalar_t__ pts0; scalar_t__ delta; double score; scalar_t__ start_pts; int flush; TYPE_2__* f0; scalar_t__ n; TYPE_2__* f1; int dest_time_base; int srce_time_base; int work; } ;
+typedef TYPE_1__ FrameRateContext ;
+typedef TYPE_2__ AVFrame ;
+typedef int AVFilterLink ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- scalar_t__ AV_NOPTS_VALUE ; 
- int FFERROR_NOT_READY ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_STATUS_BACK (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_WANTED (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_2__**) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ av_rescale_q (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ff_filter_frame (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ ff_inlink_acknowledge_status (int /*<<< orphan*/ *,int*,scalar_t__*) ; 
- int ff_inlink_consume_frame (int /*<<< orphan*/ *,TYPE_2__**) ; 
- int /*<<< orphan*/  ff_outlink_set_status (int /*<<< orphan*/ *,int,scalar_t__) ; 
- int process_work_frame (TYPE_3__*) ; 
+
+ int AV_LOG_WARNING ;
+ scalar_t__ AV_NOPTS_VALUE ;
+ int FFERROR_NOT_READY ;
+ int FF_FILTER_FORWARD_STATUS_BACK (int *,int *) ;
+ int FF_FILTER_FORWARD_WANTED (int *,int *) ;
+ int av_frame_free (TYPE_2__**) ;
+ int av_log (TYPE_3__*,int ,char*) ;
+ scalar_t__ av_rescale_q (scalar_t__,int ,int ) ;
+ int ff_filter_frame (int *,int ) ;
+ scalar_t__ ff_inlink_acknowledge_status (int *,int*,scalar_t__*) ;
+ int ff_inlink_consume_frame (int *,TYPE_2__**) ;
+ int ff_outlink_set_status (int *,int,scalar_t__) ;
+ int process_work_frame (TYPE_3__*) ;
 
 __attribute__((used)) static int activate(AVFilterContext *ctx)
 {

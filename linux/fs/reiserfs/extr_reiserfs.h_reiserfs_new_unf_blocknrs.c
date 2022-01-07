@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct treepath {int dummy; } ;
 struct reiserfs_transaction_handle {int dummy; } ;
 struct inode {int dummy; } ;
-typedef  int /*<<< orphan*/  sector_t ;
-struct TYPE_3__ {int /*<<< orphan*/  preallocate; int /*<<< orphan*/  formatted_node; int /*<<< orphan*/  block; struct inode* inode; struct treepath* path; struct reiserfs_transaction_handle* th; } ;
-typedef  TYPE_1__ reiserfs_blocknr_hint_t ;
-typedef  int /*<<< orphan*/  b_blocknr_t ;
+typedef int sector_t ;
+struct TYPE_3__ {int preallocate; int formatted_node; int block; struct inode* inode; struct treepath* path; struct reiserfs_transaction_handle* th; } ;
+typedef TYPE_1__ reiserfs_blocknr_hint_t ;
+typedef int b_blocknr_t ;
 
-/* Variables and functions */
- int reiserfs_allocate_blocknrs (TYPE_1__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+ int reiserfs_allocate_blocknrs (TYPE_1__*,int *,int,int ) ;
 
 __attribute__((used)) static inline int reiserfs_new_unf_blocknrs(struct reiserfs_transaction_handle
-					    *th, struct inode *inode,
-					    b_blocknr_t * new_blocknrs,
-					    struct treepath *path,
-					    sector_t block)
+         *th, struct inode *inode,
+         b_blocknr_t * new_blocknrs,
+         struct treepath *path,
+         sector_t block)
 {
-	reiserfs_blocknr_hint_t hint = {
-		.th = th,
-		.path = path,
-		.inode = inode,
-		.block = block,
-		.formatted_node = 0,
-		.preallocate = 0
-	};
-	return reiserfs_allocate_blocknrs(&hint, new_blocknrs, 1, 0);
+ reiserfs_blocknr_hint_t hint = {
+  .th = th,
+  .path = path,
+  .inode = inode,
+  .block = block,
+  .formatted_node = 0,
+  .preallocate = 0
+ };
+ return reiserfs_allocate_blocknrs(&hint, new_blocknrs, 1, 0);
 }

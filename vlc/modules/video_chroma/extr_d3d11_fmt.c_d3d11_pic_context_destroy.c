@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct d3d11_pic_context {int /*<<< orphan*/  picsys; } ;
-typedef  int /*<<< orphan*/  picture_context_t ;
 
-/* Variables and functions */
- struct d3d11_pic_context* D3D11_PICCONTEXT_FROM_PICCTX (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseD3D11PictureSys (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (struct d3d11_pic_context*) ; 
+
+
+
+struct d3d11_pic_context {int picsys; } ;
+typedef int picture_context_t ;
+
+
+ struct d3d11_pic_context* D3D11_PICCONTEXT_FROM_PICCTX (int *) ;
+ int ReleaseD3D11PictureSys (int *) ;
+ int free (struct d3d11_pic_context*) ;
 
 void d3d11_pic_context_destroy(picture_context_t *ctx)
 {

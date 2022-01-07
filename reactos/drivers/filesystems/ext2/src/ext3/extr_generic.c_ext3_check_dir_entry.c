@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct inode {int /*<<< orphan*/  i_ino; TYPE_3__* i_sb; } ;
-struct ext3_dir_entry_2 {int name_len; int /*<<< orphan*/  inode; int /*<<< orphan*/  rec_len; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct inode {int i_ino; TYPE_3__* i_sb; } ;
+struct ext3_dir_entry_2 {int name_len; int inode; int rec_len; } ;
 struct buffer_head {char* b_data; } ;
 struct TYPE_6__ {int s_blocksize; } ;
 struct TYPE_5__ {TYPE_1__* s_es; } ;
-struct TYPE_4__ {int /*<<< orphan*/  s_inodes_count; } ;
+struct TYPE_4__ {int s_inodes_count; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  DL_ERR ; 
- int const EXT3_DIR_REC_LEN (int) ; 
- TYPE_2__* EXT3_SB (TYPE_3__*) ; 
- int ext3_rec_len_from_disk (int /*<<< orphan*/ ) ; 
- scalar_t__ le32_to_cpu (int /*<<< orphan*/ ) ; 
+
+ int DEBUG (int ,char*) ;
+ int DL_ERR ;
+ int const EXT3_DIR_REC_LEN (int) ;
+ TYPE_2__* EXT3_SB (TYPE_3__*) ;
+ int ext3_rec_len_from_disk (int ) ;
+ scalar_t__ le32_to_cpu (int ) ;
 
 int ext3_check_dir_entry (const char * function, struct inode * dir,
                           struct ext3_dir_entry_2 * de,
                           struct buffer_head * bh,
                           unsigned long offset)
 {
-    const char * error_msg = NULL;
+    const char * error_msg = ((void*)0);
     const int rlen = ext3_rec_len_from_disk(de->rec_len);
 
     if (rlen < EXT3_DIR_REC_LEN(1))
@@ -48,12 +48,12 @@ int ext3_check_dir_entry (const char * function, struct inode * dir,
              le32_to_cpu(EXT3_SB(dir->i_sb)->s_es->s_inodes_count))
         error_msg = "inode out of bounds";
 
-    if (error_msg != NULL) {
+    if (error_msg != ((void*)0)) {
         DEBUG(DL_ERR, ("%s: bad entry in directory %u: %s - "
                        "offset=%u, inode=%u, rec_len=%d, name_len=%d\n",
                        function, dir->i_ino, error_msg, offset,
                        (unsigned long) le32_to_cpu(de->inode),
                        rlen, de->name_len));
     }
-    return error_msg == NULL ? 1 : 0;
+    return error_msg == ((void*)0) ? 1 : 0;
 }

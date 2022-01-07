@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {unsigned int* Message_Digest; scalar_t__ Message_Block_Index; scalar_t__* Message_Block; } ;
-typedef  TYPE_1__ SHA1Context ;
+typedef TYPE_1__ SHA1Context ;
 
-/* Variables and functions */
- unsigned int SHA1CircularShift (int,unsigned int) ; 
+
+ unsigned int SHA1CircularShift (int,unsigned int) ;
 
 void SHA1ProcessMessageBlock(SHA1Context *context)
 {
-   const unsigned K[] =            /* Constants defined in SHA-1   */
+   const unsigned K[] =
    {
       0x5A827999,
       0x6ED9EBA1,
       0x8F1BBCDC,
       0xCA62C1D6
    };
-   int         t;                  /* Loop counter                 */
-   unsigned    temp;               /* Temporary word value         */
-   unsigned    W[80];              /* Word sequence                */
-   unsigned    A, B, C, D, E;      /* Word buffers                 */
+   int t;
+   unsigned temp;
+   unsigned W[80];
+   unsigned A, B, C, D, E;
 
-   /*
-    *  Initialize the first 16 words in the array W
-    */
+
+
+
    for(t = 0; t < 16; t++)
    {
       W[t] = ((unsigned) context->Message_Block[t * 4]) << 24;
@@ -55,7 +55,7 @@ void SHA1ProcessMessageBlock(SHA1Context *context)
 
    for(t = 0; t < 20; t++)
    {
-      temp =  SHA1CircularShift(5,A) +
+      temp = SHA1CircularShift(5,A) +
          ((B & C) | ((~B) & D)) + E + W[t] + K[0];
       temp &= 0xFFFFFFFF;
       E = D;

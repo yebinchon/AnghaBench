@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/ * alias; } ;
-typedef  TYPE_2__ X509_CERT_AUX ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int * alias; } ;
+typedef TYPE_2__ X509_CERT_AUX ;
 struct TYPE_9__ {TYPE_1__* aux; } ;
-typedef  TYPE_3__ X509 ;
-struct TYPE_7__ {int /*<<< orphan*/ * alias; } ;
+typedef TYPE_3__ X509 ;
+struct TYPE_7__ {int * alias; } ;
 
-/* Variables and functions */
- int ASN1_STRING_set (int /*<<< orphan*/ *,unsigned char const*,int) ; 
- int /*<<< orphan*/  ASN1_UTF8STRING_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ASN1_UTF8STRING_new () ; 
- TYPE_2__* aux_get (TYPE_3__*) ; 
+
+ int ASN1_STRING_set (int *,unsigned char const*,int) ;
+ int ASN1_UTF8STRING_free (int *) ;
+ int * ASN1_UTF8STRING_new () ;
+ TYPE_2__* aux_get (TYPE_3__*) ;
 
 int X509_alias_set1(X509 *x, const unsigned char *name, int len)
 {
@@ -32,12 +32,12 @@ int X509_alias_set1(X509 *x, const unsigned char *name, int len)
         if (!x || !x->aux || !x->aux->alias)
             return 1;
         ASN1_UTF8STRING_free(x->aux->alias);
-        x->aux->alias = NULL;
+        x->aux->alias = ((void*)0);
         return 1;
     }
-    if ((aux = aux_get(x)) == NULL)
+    if ((aux = aux_get(x)) == ((void*)0))
         return 0;
-    if (aux->alias == NULL && (aux->alias = ASN1_UTF8STRING_new()) == NULL)
+    if (aux->alias == ((void*)0) && (aux->alias = ASN1_UTF8STRING_new()) == ((void*)0))
         return 0;
     return ASN1_STRING_set(aux->alias, name, len);
 }

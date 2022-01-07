@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ maxSessions; } ;
-struct TYPE_9__ {int /*<<< orphan*/  meterIndex; int /*<<< orphan*/  vmutex; TYPE_1__ cfg; } ;
-typedef  TYPE_2__ SVnodeObj ;
+struct TYPE_9__ {int meterIndex; int vmutex; TYPE_1__ cfg; } ;
+typedef TYPE_2__ SVnodeObj ;
 
-/* Variables and functions */
- int TSDB_CODE_ACTION_IN_PROGRESS ; 
- int TSDB_CODE_SUCCESS ; 
- int /*<<< orphan*/  dmutex ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pthread_mutex_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tfree (int /*<<< orphan*/ ) ; 
- int tsMaxVnode ; 
- int /*<<< orphan*/  vnodeCalcOpenVnodes () ; 
- int /*<<< orphan*/  vnodeCancelCommit (TYPE_2__*) ; 
- int /*<<< orphan*/  vnodeCleanUpCommit (int) ; 
- int /*<<< orphan*/  vnodeCloseCachePool (int) ; 
- int /*<<< orphan*/  vnodeCloseMetersVnode (int) ; 
- int /*<<< orphan*/  vnodeClosePeerVnode (int) ; 
- int /*<<< orphan*/  vnodeCloseShellVnode (int) ; 
- int /*<<< orphan*/  vnodeCloseStream (TYPE_2__*) ; 
- TYPE_2__* vnodeList ; 
- int vnodeMarkAllMetersDropped (TYPE_2__*) ; 
+
+ int TSDB_CODE_ACTION_IN_PROGRESS ;
+ int TSDB_CODE_SUCCESS ;
+ int dmutex ;
+ int memset (TYPE_2__*,int ,int) ;
+ int pthread_mutex_destroy (int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int tfree (int ) ;
+ int tsMaxVnode ;
+ int vnodeCalcOpenVnodes () ;
+ int vnodeCancelCommit (TYPE_2__*) ;
+ int vnodeCleanUpCommit (int) ;
+ int vnodeCloseCachePool (int) ;
+ int vnodeCloseMetersVnode (int) ;
+ int vnodeClosePeerVnode (int) ;
+ int vnodeCloseShellVnode (int) ;
+ int vnodeCloseStream (TYPE_2__*) ;
+ TYPE_2__* vnodeList ;
+ int vnodeMarkAllMetersDropped (TYPE_2__*) ;
 
 int vnodeCloseVnode(int vnode) {
-  if (vnodeList == NULL) return TSDB_CODE_SUCCESS;
+  if (vnodeList == ((void*)0)) return TSDB_CODE_SUCCESS;
 
   SVnodeObj* pVnode = &vnodeList[vnode];
 
@@ -48,7 +48,7 @@ int vnodeCloseVnode(int vnode) {
     return TSDB_CODE_SUCCESS;
   }
 
-  // set the meter is dropped flag 
+
   if (vnodeMarkAllMetersDropped(pVnode) != TSDB_CODE_SUCCESS) {
     pthread_mutex_unlock(&dmutex);
     return TSDB_CODE_ACTION_IN_PROGRESS;

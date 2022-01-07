@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
 struct TYPE_8__ {scalar_t__ layers_num; scalar_t__ operands_num; size_t nb_output; int* output_indexes; TYPE_1__* operands; } ;
 struct TYPE_7__ {int height; int width; int channels; int* data; } ;
-struct TYPE_6__ {scalar_t__ type; int* dims; int* data; int /*<<< orphan*/  name; int /*<<< orphan*/  length; } ;
-typedef  TYPE_1__ DnnOperand ;
-typedef  int /*<<< orphan*/  DNNReturnType ;
-typedef  TYPE_2__ DNNData ;
-typedef  TYPE_3__ ConvolutionalNetwork ;
+struct TYPE_6__ {scalar_t__ type; int* dims; int* data; int name; int length; } ;
+typedef TYPE_1__ DnnOperand ;
+typedef int DNNReturnType ;
+typedef TYPE_2__ DNNData ;
+typedef TYPE_3__ ConvolutionalNetwork ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DNN_ERROR ; 
- int /*<<< orphan*/  DNN_SUCCESS ; 
- scalar_t__ DOT_INPUT ; 
- int /*<<< orphan*/  av_freep (int**) ; 
- int* av_malloc (int /*<<< orphan*/ ) ; 
- int* av_mallocz_array (size_t,int) ; 
- int /*<<< orphan*/  calculate_operand_data_length (TYPE_1__*) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char const*) ; 
+
+ int DNN_ERROR ;
+ int DNN_SUCCESS ;
+ scalar_t__ DOT_INPUT ;
+ int av_freep (int**) ;
+ int* av_malloc (int ) ;
+ int* av_mallocz_array (size_t,int) ;
+ int calculate_operand_data_length (TYPE_1__*) ;
+ scalar_t__ strcmp (int ,char const*) ;
 
 __attribute__((used)) static DNNReturnType set_input_output_native(void *model, DNNData *input, const char *input_name, const char **output_names, uint32_t nb_output)
 {
     ConvolutionalNetwork *network = (ConvolutionalNetwork *)model;
-    DnnOperand *oprd = NULL;
+    DnnOperand *oprd = ((void*)0);
 
     if (network->layers_num <= 0 || network->operands_num <= 0)
         return DNN_ERROR;
 
-    /* inputs */
+
     for (int i = 0; i < network->operands_num; ++i) {
         oprd = &network->operands[i];
         if (strcmp(oprd->name, input_name) == 0) {
@@ -48,7 +48,7 @@ __attribute__((used)) static DNNReturnType set_input_output_native(void *model, 
                 return DNN_ERROR;
             break;
         }
-        oprd = NULL;
+        oprd = ((void*)0);
     }
 
     if (!oprd)
@@ -67,7 +67,7 @@ __attribute__((used)) static DNNReturnType set_input_output_native(void *model, 
 
     input->data = oprd->data;
 
-    /* outputs */
+
     network->nb_output = 0;
     av_freep(&network->output_indexes);
     network->output_indexes = av_mallocz_array(nb_output, sizeof(*network->output_indexes));

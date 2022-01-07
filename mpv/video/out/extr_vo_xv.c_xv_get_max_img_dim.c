@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct xvctx {int /*<<< orphan*/  xv_port; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct xvctx {int xv_port; } ;
 struct vo {TYPE_1__* x11; struct xvctx* priv; } ;
-struct TYPE_6__ {int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  name; } ;
-typedef  TYPE_2__ XvEncodingInfo ;
-struct TYPE_5__ {int /*<<< orphan*/  display; } ;
+struct TYPE_6__ {int height; int width; int name; } ;
+typedef TYPE_2__ XvEncodingInfo ;
+struct TYPE_5__ {int display; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_VERBOSE (struct vo*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XvFreeEncodingInfo (TYPE_2__*) ; 
- int /*<<< orphan*/  XvQueryEncodings (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int*,TYPE_2__**) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
+
+ int MP_VERBOSE (struct vo*,char*,int ,int ) ;
+ int XvFreeEncodingInfo (TYPE_2__*) ;
+ int XvQueryEncodings (int ,int ,unsigned int*,TYPE_2__**) ;
+ scalar_t__ strcmp (int ,char*) ;
 
 __attribute__((used)) static void xv_get_max_img_dim(struct vo *vo, uint32_t *width, uint32_t *height)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static void xv_get_max_img_dim(struct vo *vo, uint32_t *wi
     if (encodings) {
         for (idx = 0; idx < num_encodings; ++idx) {
             if (strcmp(encodings[idx].name, "XV_IMAGE") == 0) {
-                *width  = encodings[idx].width;
+                *width = encodings[idx].width;
                 *height = encodings[idx].height;
                 break;
             }

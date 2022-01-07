@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {void* check_idle; void* connections; void* call_later; int /*<<< orphan*/  idle_timeout; int /*<<< orphan*/ * check_interval; } ;
-typedef  TYPE_1__ Reaper ;
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEFAULT_IDLE_TIMEOUT ; 
- int /*<<< orphan*/  PyArg_ParseTupleAndKeywords (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,char**,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  PyLong_AsLong (int /*<<< orphan*/ *) ; 
- void* PyObject_GetAttrString (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Reaper_schedule_check_idle (TYPE_1__*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  debug_print (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * default_check_interval ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {void* check_idle; void* connections; void* call_later; int idle_timeout; int * check_interval; } ;
+typedef TYPE_1__ Reaper ;
+typedef int PyObject ;
+
+
+ int DEFAULT_IDLE_TIMEOUT ;
+ int PyArg_ParseTupleAndKeywords (int *,int *,char*,char**,int **,int **,int **) ;
+ int PyLong_AsLong (int *) ;
+ void* PyObject_GetAttrString (int *,char*) ;
+ int Py_INCREF (int *) ;
+ int Py_XDECREF (int *) ;
+ int Reaper_schedule_check_idle (TYPE_1__*) ;
+ int assert (int) ;
+ int debug_print (char*,int ) ;
+ int * default_check_interval ;
 
 __attribute__((used)) static int
 Reaper_init(Reaper* self, PyObject* args, PyObject* kwds)
 {
-  PyObject* loop = NULL;
+  PyObject* loop = ((void*)0);
   int result = 0;
 
-  PyObject* app = NULL;
-  PyObject* idle_timeout = NULL;
+  PyObject* app = ((void*)0);
+  PyObject* idle_timeout = ((void*)0);
 
-  static char* kwlist[] = {"app", "check_interval", "idle_timeout", NULL};
+  static char* kwlist[] = {"app", "check_interval", "idle_timeout", ((void*)0)};
 
   if (!PyArg_ParseTupleAndKeywords(
       args, kwds, "|OOO", kwlist, &app, &self->check_interval, &idle_timeout))
@@ -68,15 +68,6 @@ Reaper_init(Reaper* self, PyObject* args, PyObject* kwds)
 
   if(!(self->connections = PyObject_GetAttrString(app, "_connections")))
     goto error;
-
-#ifdef REAPER_ENABLED
-  if(!(self->check_idle = PyObject_GetAttrString((PyObject*)self, "_check_idle")))
-    goto error;
-
-  if(!Reaper_schedule_check_idle(self))
-    goto error;
-#endif
-
   goto finally;
 
   error:

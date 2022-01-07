@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int SERIAL_TIMEOUT ; 
- int /*<<< orphan*/  e7000_desc ; 
- scalar_t__ echo ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  gdb_flush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gdb_stdout ; 
- int normal (int) ; 
- int /*<<< orphan*/  putchar_unfiltered (int) ; 
- scalar_t__ remote_debug ; 
- int serial_readchar (int /*<<< orphan*/ ,int) ; 
+ int SERIAL_TIMEOUT ;
+ int e7000_desc ;
+ scalar_t__ echo ;
+ int error (char*) ;
+ int gdb_flush (int ) ;
+ int gdb_stdout ;
+ int normal (int) ;
+ int putchar_unfiltered (int) ;
+ scalar_t__ remote_debug ;
+ int serial_readchar (int ,int) ;
 
 __attribute__((used)) static int
 readchar (int timeout)
@@ -37,7 +29,7 @@ readchar (int timeout)
   if (c == SERIAL_TIMEOUT)
     {
       if (timeout == 0)
-	return -1;
+ return -1;
       echo = 0;
       error ("Timeout reading from remote system.");
     }

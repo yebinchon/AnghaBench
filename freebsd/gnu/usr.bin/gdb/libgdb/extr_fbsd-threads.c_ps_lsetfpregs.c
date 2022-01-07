@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ps_prochandle {int dummy; } ;
 struct cleanup {int dummy; } ;
-typedef  int /*<<< orphan*/  ps_err_e ;
-typedef  int /*<<< orphan*/  prfpregset_t ;
-typedef  int /*<<< orphan*/  lwpid_t ;
-typedef  int /*<<< orphan*/  gdb_fpregset_t ;
+typedef int ps_err_e ;
+typedef int prfpregset_t ;
+typedef int lwpid_t ;
+typedef int gdb_fpregset_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUILD_LWP (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PIDGET (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PS_OK ; 
- int /*<<< orphan*/  do_cleanups (struct cleanup*) ; 
- int /*<<< orphan*/  inferior_ptid ; 
- struct cleanup* save_inferior_ptid () ; 
- int /*<<< orphan*/  supply_fpregset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  target_store_registers (int) ; 
+
+ int BUILD_LWP (int ,int ) ;
+ int PIDGET (int ) ;
+ int PS_OK ;
+ int do_cleanups (struct cleanup*) ;
+ int inferior_ptid ;
+ struct cleanup* save_inferior_ptid () ;
+ int supply_fpregset (int *) ;
+ int target_store_registers (int) ;
 
 ps_err_e
 ps_lsetfpregs (struct ps_prochandle *ph, lwpid_t lwpid,

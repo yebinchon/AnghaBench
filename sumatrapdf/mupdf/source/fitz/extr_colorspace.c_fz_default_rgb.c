@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * rgb; } ;
-typedef  TYPE_1__ fz_default_colorspaces ;
-typedef  int /*<<< orphan*/  fz_context ;
-typedef  int /*<<< orphan*/  fz_colorspace ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * fz_device_rgb (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * rgb; } ;
+typedef TYPE_1__ fz_default_colorspaces ;
+typedef int fz_context ;
+typedef int fz_colorspace ;
+
+
+ int * fz_device_rgb (int *) ;
 
 fz_colorspace *fz_default_rgb(fz_context *ctx, const fz_default_colorspaces *default_cs)
 {
-	return default_cs ? default_cs->rgb : fz_device_rgb(ctx);
+ return default_cs ? default_cs->rgb : fz_device_rgb(ctx);
 }

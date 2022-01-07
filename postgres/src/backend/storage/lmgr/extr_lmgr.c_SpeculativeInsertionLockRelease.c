@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TransactionId ;
-typedef  int /*<<< orphan*/  LOCKTAG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ExclusiveLock ; 
- int /*<<< orphan*/  LockRelease (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SET_LOCKTAG_SPECULATIVE_INSERTION (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  speculativeInsertionToken ; 
+
+
+
+typedef int TransactionId ;
+typedef int LOCKTAG ;
+
+
+ int ExclusiveLock ;
+ int LockRelease (int *,int ,int) ;
+ int SET_LOCKTAG_SPECULATIVE_INSERTION (int ,int ,int ) ;
+ int speculativeInsertionToken ;
 
 void
 SpeculativeInsertionLockRelease(TransactionId xid)
 {
-	LOCKTAG		tag;
+ LOCKTAG tag;
 
-	SET_LOCKTAG_SPECULATIVE_INSERTION(tag, xid, speculativeInsertionToken);
+ SET_LOCKTAG_SPECULATIVE_INSERTION(tag, xid, speculativeInsertionToken);
 
-	LockRelease(&tag, ExclusiveLock, false);
+ LockRelease(&tag, ExclusiveLock, 0);
 }

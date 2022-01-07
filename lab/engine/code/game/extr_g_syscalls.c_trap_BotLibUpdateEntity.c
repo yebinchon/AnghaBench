@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int BOTLIB_UPDATENTITY ;
+ int syscall (int ,int,void*) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BOTLIB_UPDATENTITY ; 
- int syscall (int /*<<< orphan*/ ,int,void*) ; 
-
-int trap_BotLibUpdateEntity(int ent, void /* struct bot_updateentity_s */ *bue) {
-	return syscall( BOTLIB_UPDATENTITY, ent, bue );
+int trap_BotLibUpdateEntity(int ent, void *bue) {
+ return syscall( BOTLIB_UPDATENTITY, ent, bue );
 }

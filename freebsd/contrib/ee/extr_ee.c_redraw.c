@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int TRUE ;
+ int clearok (int ,int ) ;
+ int info_win ;
+ scalar_t__ info_window ;
+ int midscreen (int ,int ) ;
+ int paint_info_win () ;
+ int point ;
+ int scr_vert ;
+ int text_win ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  clearok (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  info_win ; 
- scalar_t__ info_window ; 
- int /*<<< orphan*/  midscreen (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  paint_info_win () ; 
- int /*<<< orphan*/  point ; 
- int /*<<< orphan*/  scr_vert ; 
- int /*<<< orphan*/  text_win ; 
-
-void 
+void
 redraw()
 {
-	if (info_window)
+ if (info_window)
         {
                 clearok(info_win, TRUE);
-        	paint_info_win();
+         paint_info_win();
         }
         else
-		clearok(text_win, TRUE);
-	midscreen(scr_vert, point);
+  clearok(text_win, TRUE);
+ midscreen(scr_vert, point);
 }

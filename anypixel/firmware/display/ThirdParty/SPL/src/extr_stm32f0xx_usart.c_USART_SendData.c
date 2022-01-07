@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
 struct TYPE_4__ {int TDR; } ;
-typedef  TYPE_1__ USART_TypeDef ;
+typedef TYPE_1__ USART_TypeDef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IS_USART_ALL_PERIPH (TYPE_1__*) ; 
- int /*<<< orphan*/  IS_USART_DATA (int) ; 
- int /*<<< orphan*/  assert_param (int /*<<< orphan*/ ) ; 
+
+ int IS_USART_ALL_PERIPH (TYPE_1__*) ;
+ int IS_USART_DATA (int) ;
+ int assert_param (int ) ;
 
 void USART_SendData(USART_TypeDef* USARTx, uint16_t Data)
 {
-  /* Check the parameters */
+
   assert_param(IS_USART_ALL_PERIPH(USARTx));
-  assert_param(IS_USART_DATA(Data)); 
-    
-  /* Transmit Data */
+  assert_param(IS_USART_DATA(Data));
+
+
   USARTx->TDR = (Data & (uint16_t)0x01FF);
 }

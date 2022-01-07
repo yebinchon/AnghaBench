@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct NthValueCtx {double nStep; int /*<<< orphan*/  pValue; } ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  double i64 ;
 
-/* Variables and functions */
-#define  SQLITE_FLOAT 129 
-#define  SQLITE_INTEGER 128 
- int /*<<< orphan*/  UNUSED_PARAMETER (int) ; 
- scalar_t__ sqlite3_aggregate_context (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_result_error (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  sqlite3_result_error_nomem (int /*<<< orphan*/ *) ; 
- double sqlite3_value_double (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_value_dup (int /*<<< orphan*/ *) ; 
- double sqlite3_value_int64 (int /*<<< orphan*/ *) ; 
- int sqlite3_value_numeric_type (int /*<<< orphan*/ *) ; 
+
+
+
+struct NthValueCtx {double nStep; int pValue; } ;
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+typedef double i64 ;
+
+
+
+
+ int UNUSED_PARAMETER (int) ;
+ scalar_t__ sqlite3_aggregate_context (int *,int) ;
+ int sqlite3_result_error (int *,char*,int) ;
+ int sqlite3_result_error_nomem (int *) ;
+ double sqlite3_value_double (int *) ;
+ int sqlite3_value_dup (int *) ;
+ double sqlite3_value_int64 (int *) ;
+ int sqlite3_value_numeric_type (int *) ;
 
 __attribute__((used)) static void nth_valueStepFunc(
-  sqlite3_context *pCtx, 
+  sqlite3_context *pCtx,
   int nArg,
   sqlite3_value **apArg
 ){
@@ -37,10 +37,10 @@ __attribute__((used)) static void nth_valueStepFunc(
   if( p ){
     i64 iVal;
     switch( sqlite3_value_numeric_type(apArg[1]) ){
-      case SQLITE_INTEGER:
+      case 128:
         iVal = sqlite3_value_int64(apArg[1]);
         break;
-      case SQLITE_FLOAT: {
+      case 129: {
         double fVal = sqlite3_value_double(apArg[1]);
         if( ((i64)fVal)!=fVal ) goto error_out;
         iVal = (i64)fVal;

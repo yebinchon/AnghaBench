@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Mode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  const** modi ; 
+
+
+
+typedef int Mode ;
+
+
+ int const** modi ;
 
 const Mode * rofi_get_mode ( unsigned int index )
 {

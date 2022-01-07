@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int UINT ;
-struct TYPE_3__ {scalar_t__ set_filename; int /*<<< orphan*/  dlg_hwnd; } ;
-typedef  scalar_t__ LPWSTR ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  TYPE_1__ FileDialogImpl ;
 
-/* Variables and functions */
- scalar_t__ CoTaskMemAlloc (int) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_FILENAME ; 
- int SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WM_GETTEXT ; 
- int /*<<< orphan*/  WM_GETTEXTLENGTH ; 
- int /*<<< orphan*/  lstrcpyW (scalar_t__,scalar_t__) ; 
- int lstrlenW (scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int UINT ;
+struct TYPE_3__ {scalar_t__ set_filename; int dlg_hwnd; } ;
+typedef scalar_t__ LPWSTR ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef TYPE_1__ FileDialogImpl ;
+
+
+ scalar_t__ CoTaskMemAlloc (int) ;
+ int GetDlgItem (int ,int ) ;
+ int IDC_FILENAME ;
+ int SendMessageW (int ,int ,int,int ) ;
+ int WM_GETTEXT ;
+ int WM_GETTEXTLENGTH ;
+ int lstrcpyW (scalar_t__,scalar_t__) ;
+ int lstrlenW (scalar_t__) ;
 
 __attribute__((used)) static UINT get_file_name(FileDialogImpl *This, LPWSTR *str)
 {

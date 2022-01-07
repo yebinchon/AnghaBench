@@ -1,0 +1,116 @@
+; ModuleID = '/home/carl/AnghaBench/fastsocket/kernel/fs/gfs2/extr_rgrp.c_gfs2_rindex_update.c'
+source_filename = "/home/carl/AnghaBench/fastsocket/kernel/fs/gfs2/extr_rgrp.c_gfs2_rindex_update.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.gfs2_sbd = type { i32, i32 }
+%struct.gfs2_inode = type { %struct.gfs2_glock* }
+%struct.gfs2_glock = type { i32 }
+%struct.gfs2_holder = type { i32 }
+
+@LM_ST_SHARED = common dso_local global i32 0, align 4
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local i32 @gfs2_rindex_update(%struct.gfs2_sbd* %0) #0 {
+  %2 = alloca i32, align 4
+  %3 = alloca %struct.gfs2_sbd*, align 8
+  %4 = alloca %struct.gfs2_inode*, align 8
+  %5 = alloca %struct.gfs2_glock*, align 8
+  %6 = alloca %struct.gfs2_holder, align 4
+  %7 = alloca i32, align 4
+  %8 = alloca i32, align 4
+  store %struct.gfs2_sbd* %0, %struct.gfs2_sbd** %3, align 8
+  %9 = load %struct.gfs2_sbd*, %struct.gfs2_sbd** %3, align 8
+  %10 = getelementptr inbounds %struct.gfs2_sbd, %struct.gfs2_sbd* %9, i32 0, i32 1
+  %11 = load i32, i32* %10, align 4
+  %12 = call %struct.gfs2_inode* @GFS2_I(i32 %11)
+  store %struct.gfs2_inode* %12, %struct.gfs2_inode** %4, align 8
+  %13 = load %struct.gfs2_inode*, %struct.gfs2_inode** %4, align 8
+  %14 = getelementptr inbounds %struct.gfs2_inode, %struct.gfs2_inode* %13, i32 0, i32 0
+  %15 = load %struct.gfs2_glock*, %struct.gfs2_glock** %14, align 8
+  store %struct.gfs2_glock* %15, %struct.gfs2_glock** %5, align 8
+  store i32 0, i32* %7, align 4
+  store i32 0, i32* %8, align 4
+  %16 = load %struct.gfs2_sbd*, %struct.gfs2_sbd** %3, align 8
+  %17 = getelementptr inbounds %struct.gfs2_sbd, %struct.gfs2_sbd* %16, i32 0, i32 0
+  %18 = load i32, i32* %17, align 4
+  %19 = icmp ne i32 %18, 0
+  br i1 %19, label %47, label %20
+
+20:                                               ; preds = %1
+  %21 = load %struct.gfs2_glock*, %struct.gfs2_glock** %5, align 8
+  %22 = call i32 @gfs2_glock_is_locked_by_me(%struct.gfs2_glock* %21)
+  %23 = icmp ne i32 %22, 0
+  br i1 %23, label %33, label %24
+
+24:                                               ; preds = %20
+  %25 = load %struct.gfs2_glock*, %struct.gfs2_glock** %5, align 8
+  %26 = load i32, i32* @LM_ST_SHARED, align 4
+  %27 = call i32 @gfs2_glock_nq_init(%struct.gfs2_glock* %25, i32 %26, i32 0, %struct.gfs2_holder* %6)
+  store i32 %27, i32* %7, align 4
+  %28 = load i32, i32* %7, align 4
+  %29 = icmp ne i32 %28, 0
+  br i1 %29, label %30, label %32
+
+30:                                               ; preds = %24
+  %31 = load i32, i32* %7, align 4
+  store i32 %31, i32* %2, align 4
+  br label %49
+
+32:                                               ; preds = %24
+  store i32 1, i32* %8, align 4
+  br label %33
+
+33:                                               ; preds = %32, %20
+  %34 = load %struct.gfs2_sbd*, %struct.gfs2_sbd** %3, align 8
+  %35 = getelementptr inbounds %struct.gfs2_sbd, %struct.gfs2_sbd* %34, i32 0, i32 0
+  %36 = load i32, i32* %35, align 4
+  %37 = icmp ne i32 %36, 0
+  br i1 %37, label %41, label %38
+
+38:                                               ; preds = %33
+  %39 = load %struct.gfs2_inode*, %struct.gfs2_inode** %4, align 8
+  %40 = call i32 @gfs2_ri_update(%struct.gfs2_inode* %39)
+  store i32 %40, i32* %7, align 4
+  br label %41
+
+41:                                               ; preds = %38, %33
+  %42 = load i32, i32* %8, align 4
+  %43 = icmp ne i32 %42, 0
+  br i1 %43, label %44, label %46
+
+44:                                               ; preds = %41
+  %45 = call i32 @gfs2_glock_dq_uninit(%struct.gfs2_holder* %6)
+  br label %46
+
+46:                                               ; preds = %44, %41
+  br label %47
+
+47:                                               ; preds = %46, %1
+  %48 = load i32, i32* %7, align 4
+  store i32 %48, i32* %2, align 4
+  br label %49
+
+49:                                               ; preds = %47, %30
+  %50 = load i32, i32* %2, align 4
+  ret i32 %50
+}
+
+declare dso_local %struct.gfs2_inode* @GFS2_I(i32) #1
+
+declare dso_local i32 @gfs2_glock_is_locked_by_me(%struct.gfs2_glock*) #1
+
+declare dso_local i32 @gfs2_glock_nq_init(%struct.gfs2_glock*, i32, i32, %struct.gfs2_holder*) #1
+
+declare dso_local i32 @gfs2_ri_update(%struct.gfs2_inode*) #1
+
+declare dso_local i32 @gfs2_glock_dq_uninit(%struct.gfs2_holder*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct idi_48_gpio {scalar_t__ base; } ;
-struct gpio_chip {int /*<<< orphan*/  ngpio; } ;
+struct gpio_chip {int ngpio; } ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (size_t const*) ; 
- unsigned int BITS_PER_LONG ; 
- size_t BIT_WORD (unsigned int) ; 
- unsigned long GENMASK (unsigned int const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bitmap_zero (unsigned long*,int /*<<< orphan*/ ) ; 
- struct idi_48_gpio* gpiochip_get_data (struct gpio_chip*) ; 
- unsigned long inb (scalar_t__) ; 
+
+ size_t ARRAY_SIZE (size_t const*) ;
+ unsigned int BITS_PER_LONG ;
+ size_t BIT_WORD (unsigned int) ;
+ unsigned long GENMASK (unsigned int const,int ) ;
+ int bitmap_zero (unsigned long*,int ) ;
+ struct idi_48_gpio* gpiochip_get_data (struct gpio_chip*) ;
+ unsigned long inb (scalar_t__) ;
 
 __attribute__((used)) static int idi_48_gpio_get_multiple(struct gpio_chip *chip, unsigned long *mask,
-	unsigned long *bits)
+ unsigned long *bits)
 {
-	struct idi_48_gpio *const idi48gpio = gpiochip_get_data(chip);
-	size_t i;
-	static const size_t ports[] = { 0, 1, 2, 4, 5, 6 };
-	const unsigned int gpio_reg_size = 8;
-	unsigned int bits_offset;
-	size_t word_index;
-	unsigned int word_offset;
-	unsigned long word_mask;
-	const unsigned long port_mask = GENMASK(gpio_reg_size - 1, 0);
-	unsigned long port_state;
+ struct idi_48_gpio *const idi48gpio = gpiochip_get_data(chip);
+ size_t i;
+ static const size_t ports[] = { 0, 1, 2, 4, 5, 6 };
+ const unsigned int gpio_reg_size = 8;
+ unsigned int bits_offset;
+ size_t word_index;
+ unsigned int word_offset;
+ unsigned long word_mask;
+ const unsigned long port_mask = GENMASK(gpio_reg_size - 1, 0);
+ unsigned long port_state;
 
-	/* clear bits array to a clean slate */
-	bitmap_zero(bits, chip->ngpio);
 
-	/* get bits are evaluated a gpio port register at a time */
-	for (i = 0; i < ARRAY_SIZE(ports); i++) {
-		/* gpio offset in bits array */
-		bits_offset = i * gpio_reg_size;
+ bitmap_zero(bits, chip->ngpio);
 
-		/* word index for bits array */
-		word_index = BIT_WORD(bits_offset);
 
-		/* gpio offset within current word of bits array */
-		word_offset = bits_offset % BITS_PER_LONG;
+ for (i = 0; i < ARRAY_SIZE(ports); i++) {
 
-		/* mask of get bits for current gpio within current word */
-		word_mask = mask[word_index] & (port_mask << word_offset);
-		if (!word_mask) {
-			/* no get bits in this port so skip to next one */
-			continue;
-		}
+  bits_offset = i * gpio_reg_size;
 
-		/* read bits from current gpio port */
-		port_state = inb(idi48gpio->base + ports[i]);
 
-		/* store acquired bits at respective bits array offset */
-		bits[word_index] |= (port_state << word_offset) & word_mask;
-	}
+  word_index = BIT_WORD(bits_offset);
 
-	return 0;
+
+  word_offset = bits_offset % BITS_PER_LONG;
+
+
+  word_mask = mask[word_index] & (port_mask << word_offset);
+  if (!word_mask) {
+
+   continue;
+  }
+
+
+  port_state = inb(idi48gpio->base + ports[i]);
+
+
+  bits[word_index] |= (port_state << word_offset) & word_mask;
+ }
+
+ return 0;
 }

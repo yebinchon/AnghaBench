@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u16 ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u16 ;
 struct TYPE_7__ {int iFirst; int bTermEq; } ;
 struct TYPE_6__ {int nSeg; int bRev; TYPE_1__* aSeg; TYPE_3__* aFirst; } ;
-struct TYPE_5__ {scalar_t__ pLeaf; scalar_t__ iRowid; int /*<<< orphan*/  bDel; int /*<<< orphan*/  term; } ;
-typedef  TYPE_1__ Fts5SegIter ;
-typedef  TYPE_2__ Fts5Iter ;
-typedef  TYPE_3__ Fts5CResult ;
+struct TYPE_5__ {scalar_t__ pLeaf; scalar_t__ iRowid; int bDel; int term; } ;
+typedef TYPE_1__ Fts5SegIter ;
+typedef TYPE_2__ Fts5Iter ;
+typedef TYPE_3__ Fts5CResult ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  assert_nc (int) ; 
- int fts5BufferCompare (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int assert (int) ;
+ int assert_nc (int) ;
+ int fts5BufferCompare (int *,int *) ;
 
 __attribute__((used)) static int fts5MultiIterDoCompare(Fts5Iter *pIter, int iOut){
-  int i1;                         /* Index of left-hand Fts5SegIter */
-  int i2;                         /* Index of right-hand Fts5SegIter */
+  int i1;
+  int i2;
   int iRes;
-  Fts5SegIter *p1;                /* Left-hand Fts5SegIter */
-  Fts5SegIter *p2;                /* Right-hand Fts5SegIter */
+  Fts5SegIter *p1;
+  Fts5SegIter *p2;
   Fts5CResult *pRes = &pIter->aFirst[iOut];
 
   assert( iOut<pIter->nSeg && iOut>0 );
@@ -48,9 +48,9 @@ __attribute__((used)) static int fts5MultiIterDoCompare(Fts5Iter *pIter, int iOu
   p2 = &pIter->aSeg[i2];
 
   pRes->bTermEq = 0;
-  if( p1->pLeaf==0 ){           /* If p1 is at EOF */
+  if( p1->pLeaf==0 ){
     iRes = i2;
-  }else if( p2->pLeaf==0 ){     /* If p2 is at EOF */
+  }else if( p2->pLeaf==0 ){
     iRes = i1;
   }else{
     int res = fts5BufferCompare(&p1->term, &p2->term);

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * public_key; int /*<<< orphan*/  log_id; int /*<<< orphan*/ * name; } ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
-typedef  TYPE_1__ CTLOG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CTLOG_free (TYPE_1__*) ; 
- int /*<<< orphan*/  CT_F_CTLOG_NEW ; 
- int /*<<< orphan*/  CTerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/ * OPENSSL_strdup (char const*) ; 
- TYPE_1__* OPENSSL_zalloc (int) ; 
- int ct_v1_log_id_from_pkey (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * public_key; int log_id; int * name; } ;
+typedef int EVP_PKEY ;
+typedef TYPE_1__ CTLOG ;
+
+
+ int CTLOG_free (TYPE_1__*) ;
+ int CT_F_CTLOG_NEW ;
+ int CTerr (int ,int ) ;
+ int ERR_R_MALLOC_FAILURE ;
+ int * OPENSSL_strdup (char const*) ;
+ TYPE_1__* OPENSSL_zalloc (int) ;
+ int ct_v1_log_id_from_pkey (int *,int ) ;
 
 CTLOG *CTLOG_new(EVP_PKEY *public_key, const char *name)
 {
     CTLOG *ret = OPENSSL_zalloc(sizeof(*ret));
 
-    if (ret == NULL) {
+    if (ret == ((void*)0)) {
         CTerr(CT_F_CTLOG_NEW, ERR_R_MALLOC_FAILURE);
-        return NULL;
+        return ((void*)0);
     }
 
     ret->name = OPENSSL_strdup(name);
-    if (ret->name == NULL) {
+    if (ret->name == ((void*)0)) {
         CTerr(CT_F_CTLOG_NEW, ERR_R_MALLOC_FAILURE);
         goto err;
     }
@@ -46,5 +46,5 @@ CTLOG *CTLOG_new(EVP_PKEY *public_key, const char *name)
     return ret;
 err:
     CTLOG_free(ret);
-    return NULL;
+    return ((void*)0);
 }

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zReverse ;
 
-/* Variables and functions */
- int /*<<< orphan*/  copy_stemmer (char const*,int,char*,int*) ; 
- scalar_t__ doubleConsonant (char*) ; 
- scalar_t__ hasVowel (char*) ; 
- scalar_t__ m_eq_1 (char*) ; 
- scalar_t__ m_gt_0 (char*) ; 
- scalar_t__ m_gt_1 (char*) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ star_oh (char*) ; 
- scalar_t__ stem (char**,char*,char*,scalar_t__ (*) (char*)) ; 
- int strlen (char*) ; 
+
+
+
+typedef int zReverse ;
+
+
+ int copy_stemmer (char const*,int,char*,int*) ;
+ scalar_t__ doubleConsonant (char*) ;
+ scalar_t__ hasVowel (char*) ;
+ scalar_t__ m_eq_1 (char*) ;
+ scalar_t__ m_gt_0 (char*) ;
+ scalar_t__ m_gt_1 (char*) ;
+ int memset (char*,int ,int) ;
+ scalar_t__ star_oh (char*) ;
+ scalar_t__ stem (char**,char*,char*,scalar_t__ (*) (char*)) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static void porter_stemmer(const char *zIn, int nIn, char *zOut, int *pnOut){
   int i, j, c;
   char zReverse[28];
   char *z, *z2;
   if( nIn<3 || nIn>=sizeof(zReverse)-7 ){
-    /* The word is too big or too small for the porter stemmer.
-    ** Fallback to the copy stemmer */
+
+
     copy_stemmer(zIn, nIn, zOut, pnOut);
     return;
   }
@@ -41,8 +41,8 @@ __attribute__((used)) static void porter_stemmer(const char *zIn, int nIn, char 
     }else if( c>='a' && c<='z' ){
       zReverse[j] = c;
     }else{
-      /* The use of a character not in [a-zA-Z] means that we fallback
-      ** to the copy stemmer */
+
+
       copy_stemmer(zIn, nIn, zOut, pnOut);
       return;
     }
@@ -51,29 +51,29 @@ __attribute__((used)) static void porter_stemmer(const char *zIn, int nIn, char 
   z = &zReverse[j+1];
 
 
-  /* Step 1a */
+
   if( z[0]=='s' ){
     if(
      !stem(&z, "sess", "ss", 0) &&
-     !stem(&z, "sei", "i", 0)  &&
+     !stem(&z, "sei", "i", 0) &&
      !stem(&z, "ss", "ss", 0)
     ){
       z++;
     }
   }
 
-  /* Step 1b */  
+
   z2 = z;
   if( stem(&z, "dee", "ee", m_gt_0) ){
-    /* Do nothing.  The work was all in the test */
-  }else if( 
+
+  }else if(
      (stem(&z, "gni", "", hasVowel) || stem(&z, "de", "", hasVowel))
       && z!=z2
   ){
      if( stem(&z, "ta", "ate", 0) ||
          stem(&z, "lb", "ble", 0) ||
          stem(&z, "zi", "ize", 0) ){
-       /* Do nothing.  The work was all in the test */
+
      }else if( doubleConsonant(z) && (*z!='l' && *z!='s' && *z!='z') ){
        z++;
      }else if( m_eq_1(z) && star_oh(z) ){
@@ -81,12 +81,12 @@ __attribute__((used)) static void porter_stemmer(const char *zIn, int nIn, char 
      }
   }
 
-  /* Step 1c */
+
   if( z[0]=='y' && hasVowel(z+1) ){
     z[0] = 'i';
   }
 
-  /* Step 2 */
+
   switch( z[1] ){
    case 'a':
      stem(&z, "lanoita", "ate", m_gt_0) ||
@@ -127,11 +127,11 @@ __attribute__((used)) static void porter_stemmer(const char *zIn, int nIn, char 
      break;
   }
 
-  /* Step 3 */
+
   switch( z[0] ){
    case 'e':
      stem(&z, "etaci", "ic", m_gt_0) ||
-     stem(&z, "evita", "", m_gt_0)   ||
+     stem(&z, "evita", "", m_gt_0) ||
      stem(&z, "ezila", "al", m_gt_0);
      break;
    case 'i':
@@ -146,7 +146,7 @@ __attribute__((used)) static void porter_stemmer(const char *zIn, int nIn, char 
      break;
   }
 
-  /* Step 4 */
+
   switch( z[1] ){
    case 'a':
      if( z[0]=='l' && m_gt_1(z+2) ){
@@ -154,7 +154,7 @@ __attribute__((used)) static void porter_stemmer(const char *zIn, int nIn, char 
      }
      break;
    case 'c':
-     if( z[0]=='e' && z[2]=='n' && (z[3]=='a' || z[3]=='e')  && m_gt_1(z+4)  ){
+     if( z[0]=='e' && z[2]=='n' && (z[3]=='a' || z[3]=='e') && m_gt_1(z+4) ){
        z += 4;
      }
      break;
@@ -217,7 +217,7 @@ __attribute__((used)) static void porter_stemmer(const char *zIn, int nIn, char 
      break;
   }
 
-  /* Step 5a */
+
   if( z[0]=='e' ){
     if( m_gt_1(z+1) ){
       z++;
@@ -226,14 +226,14 @@ __attribute__((used)) static void porter_stemmer(const char *zIn, int nIn, char 
     }
   }
 
-  /* Step 5b */
+
   if( m_gt_1(z) && z[0]=='l' && z[1]=='l' ){
     z++;
   }
 
-  /* z[] is now the stemmed word in reverse order.  Flip it back
-  ** around into forward order and return.
-  */
+
+
+
   *pnOut = i = strlen(z);
   zOut[i] = 0;
   while( *z ){

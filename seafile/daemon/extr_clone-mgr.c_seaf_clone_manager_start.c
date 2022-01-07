@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  db; int /*<<< orphan*/  check_timer; } ;
-typedef  TYPE_1__ SeafCloneManager ;
-typedef  int /*<<< orphan*/  GCallback ;
 
-/* Variables and functions */
- int CHECK_CONNECT_INTERVAL ; 
- int /*<<< orphan*/  check_connect_pulse ; 
- int /*<<< orphan*/  g_signal_connect (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ on_repo_http_fetched ; 
- int /*<<< orphan*/  restart_task ; 
- int /*<<< orphan*/  seaf ; 
- int /*<<< orphan*/  seaf_timer_new (int /*<<< orphan*/ ,TYPE_1__*,int) ; 
- scalar_t__ sqlite_foreach_selected_row (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int db; int check_timer; } ;
+typedef TYPE_1__ SeafCloneManager ;
+typedef int GCallback ;
+
+
+ int CHECK_CONNECT_INTERVAL ;
+ int check_connect_pulse ;
+ int g_signal_connect (int ,char*,int ,TYPE_1__*) ;
+ scalar_t__ on_repo_http_fetched ;
+ int restart_task ;
+ int seaf ;
+ int seaf_timer_new (int ,TYPE_1__*,int) ;
+ scalar_t__ sqlite_foreach_selected_row (int ,char*,int ,TYPE_1__*) ;
 
 int
 seaf_clone_manager_start (SeafCloneManager *mgr)

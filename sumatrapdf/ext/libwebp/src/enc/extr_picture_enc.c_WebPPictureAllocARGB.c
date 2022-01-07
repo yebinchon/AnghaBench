@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_5__ {int argb_stride; int /*<<< orphan*/ * argb; void* memory_argb_; } ;
-typedef  TYPE_1__ WebPPicture ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VP8_ENC_ERROR_BAD_DIMENSION ; 
- int /*<<< orphan*/  VP8_ENC_ERROR_OUT_OF_MEMORY ; 
- scalar_t__ WEBP_ALIGN (void*) ; 
- int const WEBP_ALIGN_CST ; 
- int WebPEncodingSetError (TYPE_1__* const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WebPPictureResetBufferARGB (TYPE_1__* const) ; 
- int /*<<< orphan*/  WebPSafeFree (void*) ; 
- void* WebPSafeMalloc (int const,int) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int uint32_t ;
+struct TYPE_5__ {int argb_stride; int * argb; void* memory_argb_; } ;
+typedef TYPE_1__ WebPPicture ;
+
+
+ int VP8_ENC_ERROR_BAD_DIMENSION ;
+ int VP8_ENC_ERROR_OUT_OF_MEMORY ;
+ scalar_t__ WEBP_ALIGN (void*) ;
+ int const WEBP_ALIGN_CST ;
+ int WebPEncodingSetError (TYPE_1__* const,int ) ;
+ int WebPPictureResetBufferARGB (TYPE_1__* const) ;
+ int WebPSafeFree (void*) ;
+ void* WebPSafeMalloc (int const,int) ;
+ int assert (int ) ;
 
 int WebPPictureAllocARGB(WebPPicture* const picture, int width, int height) {
   void* memory;
   const uint64_t argb_size = (uint64_t)width * height;
 
-  assert(picture != NULL);
+  assert(picture != ((void*)0));
 
   WebPSafeFree(picture->memory_argb_);
   WebPPictureResetBufferARGB(picture);
@@ -39,9 +39,9 @@ int WebPPictureAllocARGB(WebPPicture* const picture, int width, int height) {
   if (width <= 0 || height <= 0) {
     return WebPEncodingSetError(picture, VP8_ENC_ERROR_BAD_DIMENSION);
   }
-  // allocate a new buffer.
+
   memory = WebPSafeMalloc(argb_size + WEBP_ALIGN_CST, sizeof(*picture->argb));
-  if (memory == NULL) {
+  if (memory == ((void*)0)) {
     return WebPEncodingSetError(picture, VP8_ENC_ERROR_OUT_OF_MEMORY);
   }
   picture->memory_argb_ = memory;

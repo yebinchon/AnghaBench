@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
- void* OPENSSL_memdup (char const*,size_t) ; 
- size_t strlen (char const*) ; 
+ int OPENSSL_free (char*) ;
+ void* OPENSSL_memdup (char const*,size_t) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static int int_x509_param_set1(char **pdest, size_t *pdestlen,
                                const char *src, size_t srclen)
@@ -25,15 +17,15 @@ __attribute__((used)) static int int_x509_param_set1(char **pdest, size_t *pdest
             srclen = strlen(src);
 
         tmp = OPENSSL_memdup(src, srclen);
-        if (tmp == NULL)
+        if (tmp == ((void*)0))
             return 0;
     } else {
-        tmp = NULL;
+        tmp = ((void*)0);
         srclen = 0;
     }
     OPENSSL_free(*pdest);
     *pdest = tmp;
-    if (pdestlen != NULL)
+    if (pdestlen != ((void*)0))
         *pdestlen = srclen;
     return 1;
 }

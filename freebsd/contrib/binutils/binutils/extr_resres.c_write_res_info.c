@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  windres_bfd ;
-struct bin_res_info {int /*<<< orphan*/  characteristics; int /*<<< orphan*/  version2; int /*<<< orphan*/  language; int /*<<< orphan*/  memflags; int /*<<< orphan*/  version; } ;
-typedef  scalar_t__ rc_uint_type ;
-struct TYPE_3__ {int /*<<< orphan*/  characteristics; int /*<<< orphan*/  version; int /*<<< orphan*/  language; int /*<<< orphan*/  memflags; } ;
-typedef  TYPE_1__ rc_res_res_info ;
 
-/* Variables and functions */
- scalar_t__ BIN_RES_INFO_SIZE ; 
- int /*<<< orphan*/  set_windres_bfd_content (int /*<<< orphan*/ *,struct bin_res_info*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  windres_put_16 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  windres_put_32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int windres_bfd ;
+struct bin_res_info {int characteristics; int version2; int language; int memflags; int version; } ;
+typedef scalar_t__ rc_uint_type ;
+struct TYPE_3__ {int characteristics; int version; int language; int memflags; } ;
+typedef TYPE_1__ rc_res_res_info ;
+
+
+ scalar_t__ BIN_RES_INFO_SIZE ;
+ int set_windres_bfd_content (int *,struct bin_res_info*,scalar_t__,scalar_t__) ;
+ int windres_put_16 (int *,int ,int ) ;
+ int windres_put_32 (int *,int ,int ) ;
 
 __attribute__((used)) static rc_uint_type
 write_res_info (windres_bfd *wrbfd, rc_uint_type off, const rc_res_res_info *info)
@@ -29,7 +29,7 @@ write_res_info (windres_bfd *wrbfd, rc_uint_type off, const rc_res_res_info *inf
   if (wrbfd)
     {
       struct bin_res_info l;
-      
+
       windres_put_32 (wrbfd, l.version, info->version);
       windres_put_16 (wrbfd, l.memflags, info->memflags);
       windres_put_16 (wrbfd, l.language, info->language);

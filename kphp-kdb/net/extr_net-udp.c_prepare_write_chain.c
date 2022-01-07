@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  total_bytes; } ;
-struct udp_message {int our_ip_idx; struct udp_message* next; TYPE_3__ raw; int /*<<< orphan*/  ipv6; int /*<<< orphan*/  port; } ;
-struct TYPE_5__ {int /*<<< orphan*/  s_addr; } ;
-struct sockaddr_in6 {int /*<<< orphan*/  sin6_addr; void* sin6_port; int /*<<< orphan*/  sin6_family; TYPE_1__ sin_addr; void* sin_port; int /*<<< orphan*/  sin_family; } ;
-struct sockaddr_in {int /*<<< orphan*/  sin6_addr; void* sin6_port; int /*<<< orphan*/  sin6_family; TYPE_1__ sin_addr; void* sin_port; int /*<<< orphan*/  sin_family; } ;
-struct TYPE_6__ {int msg_namelen; int msg_iovlen; scalar_t__ msg_controllen; int /*<<< orphan*/  msg_control; int /*<<< orphan*/  msg_flags; scalar_t__ msg_iov; struct sockaddr_in6* msg_name; } ;
-struct our_mmsghdr {TYPE_2__ msg_hdr; int /*<<< orphan*/  msg_len; } ;
-struct TYPE_8__ {scalar_t__ msg_controllen; int /*<<< orphan*/  msg_control; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  AF_INET6 ; 
- int MAX_OUR_IPS ; 
- scalar_t__ MAX_UDP_SEND_BUFFERS ; 
- int /*<<< orphan*/  MAX_UDP_SEND_DATAGRAM ; 
- int /*<<< orphan*/  MSG_DONTWAIT ; 
- int /*<<< orphan*/  extract_4in6 (int /*<<< orphan*/ ) ; 
- void* htons (int /*<<< orphan*/ ) ; 
- scalar_t__ is_4in6 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- TYPE_4__* outbound_src_ip_hdr ; 
- int rwm_prepare_iovec (TYPE_3__*,scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- struct sockaddr_in6* udp_send_addr ; 
- struct sockaddr_in6* udp_send_addr6 ; 
- scalar_t__ udp_send_iovec ; 
- struct our_mmsghdr* udp_send_msgvec ; 
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int total_bytes; } ;
+struct udp_message {int our_ip_idx; struct udp_message* next; TYPE_3__ raw; int ipv6; int port; } ;
+struct TYPE_5__ {int s_addr; } ;
+struct sockaddr_in6 {int sin6_addr; void* sin6_port; int sin6_family; TYPE_1__ sin_addr; void* sin_port; int sin_family; } ;
+struct sockaddr_in {int sin6_addr; void* sin6_port; int sin6_family; TYPE_1__ sin_addr; void* sin_port; int sin_family; } ;
+struct TYPE_6__ {int msg_namelen; int msg_iovlen; scalar_t__ msg_controllen; int msg_control; int msg_flags; scalar_t__ msg_iov; struct sockaddr_in6* msg_name; } ;
+struct our_mmsghdr {TYPE_2__ msg_hdr; int msg_len; } ;
+struct TYPE_8__ {scalar_t__ msg_controllen; int msg_control; } ;
+
+
+ int AF_INET ;
+ int AF_INET6 ;
+ int MAX_OUR_IPS ;
+ scalar_t__ MAX_UDP_SEND_BUFFERS ;
+ int MAX_UDP_SEND_DATAGRAM ;
+ int MSG_DONTWAIT ;
+ int extract_4in6 (int ) ;
+ void* htons (int ) ;
+ scalar_t__ is_4in6 (int ) ;
+ int memcpy (int *,int ,int) ;
+ TYPE_4__* outbound_src_ip_hdr ;
+ int rwm_prepare_iovec (TYPE_3__*,scalar_t__,scalar_t__,int ) ;
+ struct sockaddr_in6* udp_send_addr ;
+ struct sockaddr_in6* udp_send_addr6 ;
+ scalar_t__ udp_send_iovec ;
+ struct our_mmsghdr* udp_send_msgvec ;
 
 int prepare_write_chain (struct udp_message *m, int max_messages) {
   int iovec_ptr = 0, msgvec_ptr = 0;

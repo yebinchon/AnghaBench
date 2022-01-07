@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_8__ ;
-typedef  struct TYPE_22__   TYPE_7__ ;
-typedef  struct TYPE_21__   TYPE_6__ ;
-typedef  struct TYPE_20__   TYPE_5__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
-typedef  struct TYPE_15__   TYPE_11__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ssize_t ;
-typedef  scalar_t__ ngx_int_t ;
-struct TYPE_17__ {int /*<<< orphan*/  connection_close; } ;
-struct TYPE_16__ {int /*<<< orphan*/  tag; } ;
-struct TYPE_23__ {scalar_t__ pos; scalar_t__ last; int flush; int memory; int /*<<< orphan*/  tag; } ;
-struct TYPE_19__ {int keepalive; scalar_t__ length; TYPE_2__ headers_in; TYPE_1__ output; int /*<<< orphan*/  free_bufs; TYPE_7__* out_bufs; TYPE_8__ buffer; } ;
-typedef  TYPE_4__ ngx_http_upstream_t ;
-struct TYPE_20__ {TYPE_3__* connection; int /*<<< orphan*/  pool; TYPE_4__* upstream; } ;
-typedef  TYPE_5__ ngx_http_request_t ;
+
+
+typedef struct TYPE_23__ TYPE_8__ ;
+typedef struct TYPE_22__ TYPE_7__ ;
+typedef struct TYPE_21__ TYPE_6__ ;
+typedef struct TYPE_20__ TYPE_5__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+typedef struct TYPE_15__ TYPE_11__ ;
+
+
+typedef scalar_t__ ssize_t ;
+typedef scalar_t__ ngx_int_t ;
+struct TYPE_17__ {int connection_close; } ;
+struct TYPE_16__ {int tag; } ;
+struct TYPE_23__ {scalar_t__ pos; scalar_t__ last; int flush; int memory; int tag; } ;
+struct TYPE_19__ {int keepalive; scalar_t__ length; TYPE_2__ headers_in; TYPE_1__ output; int free_bufs; TYPE_7__* out_bufs; TYPE_8__ buffer; } ;
+typedef TYPE_4__ ngx_http_upstream_t ;
+struct TYPE_20__ {TYPE_3__* connection; int pool; TYPE_4__* upstream; } ;
+typedef TYPE_5__ ngx_http_request_t ;
 struct TYPE_15__ {scalar_t__ size; } ;
 struct TYPE_21__ {TYPE_11__ chunked; } ;
-typedef  TYPE_6__ ngx_http_proxy_ctx_t ;
+typedef TYPE_6__ ngx_http_proxy_ctx_t ;
 struct TYPE_22__ {TYPE_8__* buf; struct TYPE_22__* next; } ;
-typedef  TYPE_7__ ngx_chain_t ;
-typedef  TYPE_8__ ngx_buf_t ;
-struct TYPE_18__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_7__ ngx_chain_t ;
+typedef TYPE_8__ ngx_buf_t ;
+struct TYPE_18__ {int log; } ;
 
-/* Variables and functions */
- scalar_t__ NGX_AGAIN ; 
- scalar_t__ NGX_DONE ; 
- scalar_t__ NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- scalar_t__ NGX_OK ; 
- TYPE_7__* ngx_chain_get_free_buf (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_6__* ngx_http_get_module_ctx (TYPE_5__*,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_http_parse_chunked (TYPE_5__*,TYPE_8__*,TYPE_11__*) ; 
- int /*<<< orphan*/  ngx_http_proxy_module ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+ scalar_t__ NGX_AGAIN ;
+ scalar_t__ NGX_DONE ;
+ scalar_t__ NGX_ERROR ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_LOG_ERR ;
+ scalar_t__ NGX_OK ;
+ TYPE_7__* ngx_chain_get_free_buf (int ,int *) ;
+ TYPE_6__* ngx_http_get_module_ctx (TYPE_5__*,int ) ;
+ scalar_t__ ngx_http_parse_chunked (TYPE_5__*,TYPE_8__*,TYPE_11__*) ;
+ int ngx_http_proxy_module ;
+ int ngx_log_debug2 (int ,int ,int ,char*,scalar_t__,scalar_t__) ;
+ int ngx_log_error (int ,int ,int ,char*) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_proxy_non_buffered_chunked_filter(void *data, ssize_t bytes)
 {
-    ngx_http_request_t   *r = data;
+    ngx_http_request_t *r = data;
 
-    ngx_int_t              rc;
-    ngx_buf_t             *b, *buf;
-    ngx_chain_t           *cl, **ll;
-    ngx_http_upstream_t   *u;
-    ngx_http_proxy_ctx_t  *ctx;
+    ngx_int_t rc;
+    ngx_buf_t *b, *buf;
+    ngx_chain_t *cl, **ll;
+    ngx_http_upstream_t *u;
+    ngx_http_proxy_ctx_t *ctx;
 
     ctx = ngx_http_get_module_ctx(r, ngx_http_proxy_module);
 
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         return NGX_ERROR;
     }
 
@@ -83,10 +83,10 @@ ngx_http_proxy_non_buffered_chunked_filter(void *data, ssize_t bytes)
 
         if (rc == NGX_OK) {
 
-            /* a chunk has been parsed successfully */
+
 
             cl = ngx_chain_get_free_buf(r->pool, &u->free_bufs);
-            if (cl == NULL) {
+            if (cl == ((void*)0)) {
                 return NGX_ERROR;
             }
 
@@ -121,7 +121,7 @@ ngx_http_proxy_non_buffered_chunked_filter(void *data, ssize_t bytes)
 
         if (rc == NGX_DONE) {
 
-            /* a whole response has been parsed successfully */
+
 
             u->keepalive = !u->headers_in.connection_close;
             u->length = 0;
@@ -133,7 +133,7 @@ ngx_http_proxy_non_buffered_chunked_filter(void *data, ssize_t bytes)
             break;
         }
 
-        /* invalid response */
+
 
         ngx_log_error(NGX_LOG_ERR, r->connection->log, 0,
                       "upstream sent invalid chunked response");

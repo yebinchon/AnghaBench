@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ proposal_hashes; scalar_t__ proposal; int /*<<< orphan*/  uid; } ;
-typedef  TYPE_1__ user_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  add_user_hashlist (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  delete_user_hashlist (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ exact_strdup (char*,int) ; 
- int /*<<< orphan*/  exact_strfree (scalar_t__) ; 
- int /*<<< orphan*/  prepare_words_hashlist (char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  q_proposal ; 
- scalar_t__ save_words_hashlist (scalar_t__,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ proposal_hashes; scalar_t__ proposal; int uid; } ;
+typedef TYPE_1__ user_t ;
+
+
+ int add_user_hashlist (int ,scalar_t__) ;
+ int assert (int) ;
+ int delete_user_hashlist (int ,scalar_t__) ;
+ scalar_t__ exact_strdup (char*,int) ;
+ int exact_strfree (scalar_t__) ;
+ int prepare_words_hashlist (char*,int ,int,int ,int ) ;
+ int q_proposal ;
+ scalar_t__ save_words_hashlist (scalar_t__,int,int ) ;
 
 int store_proposal (user_t *U, char *proposal, int len) {
   int i;

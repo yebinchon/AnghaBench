@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * LPBYTE ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileA (char*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int MOVEFILE_COPY_ALLOWED ; 
- int MOVEFILE_REPLACE_EXISTING ; 
- int /*<<< orphan*/  MoveFileExA (char*,char*,int) ; 
- int /*<<< orphan*/  REG_MULTI_SZ ; 
- int /*<<< orphan*/  RegDeleteValueA (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ RegQueryValueExA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  RegSetValueExA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  lstrcpyA (char*,char*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  rename_ops ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  strstr (char*,char*) ; 
+
+
+
+typedef int * LPBYTE ;
+typedef scalar_t__ LONG ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int DeleteFileA (char*) ;
+ int FALSE ;
+ int GetLastError () ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ char* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,char*) ;
+ int MOVEFILE_COPY_ALLOWED ;
+ int MOVEFILE_REPLACE_EXISTING ;
+ int MoveFileExA (char*,char*,int) ;
+ int REG_MULTI_SZ ;
+ int RegDeleteValueA (int ,int ) ;
+ scalar_t__ RegQueryValueExA (int ,int ,int *,int *,int *,int*) ;
+ int RegSetValueExA (int ,int ,int ,int ,int *,int) ;
+ int TRUE ;
+ scalar_t__ broken (int) ;
+ int lstrcpyA (char*,char*) ;
+ int ok (int,char*,...) ;
+ int rename_ops ;
+ int strlen (char*) ;
+ int strstr (char*,char*) ;
 
 __attribute__((used)) static void process_pending_renames(HKEY hkey)
 {
@@ -46,13 +46,13 @@ __attribute__((used)) static void process_pending_renames(HKEY hkey)
     LONG ret;
     BOOL found = FALSE;
 
-    ret = RegQueryValueExA(hkey, rename_ops, NULL, NULL, NULL, &size);
+    ret = RegQueryValueExA(hkey, rename_ops, ((void*)0), ((void*)0), ((void*)0), &size);
     ok(!ret, "RegQueryValueExA failed %d\n", ret);
 
     buf = HeapAlloc(GetProcessHeap(), 0, size + 1);
     buf2ptr = buf2 = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, size + 1);
 
-    ret = RegQueryValueExA(hkey, rename_ops, NULL, NULL, (LPBYTE)buf, &size);
+    ret = RegQueryValueExA(hkey, rename_ops, ((void*)0), ((void*)0), (LPBYTE)buf, &size);
     buf[size] = 0;
     ok(!ret, "RegQueryValueExA failed %d\n", ret);
     if (ret) return;
@@ -90,7 +90,7 @@ __attribute__((used)) static void process_pending_renames(HKEY hkey)
         else
         {
             fileret = DeleteFileA(src);
-            ok(fileret || broken(!fileret) /* win2k3 */, "Failed to delete file %s (%u)\n", src, GetLastError());
+            ok(fileret || broken(!fileret) , "Failed to delete file %s (%u)\n", src, GetLastError());
         }
     }
 

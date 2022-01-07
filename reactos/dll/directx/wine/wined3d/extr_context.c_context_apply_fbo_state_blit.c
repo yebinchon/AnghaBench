@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct wined3d_surface {TYPE_1__* container; } ;
 struct wined3d_context {TYPE_2__* blit_targets; } ;
-struct TYPE_5__ {int layer_count; int /*<<< orphan*/  sub_resource_idx; int /*<<< orphan*/ * resource; } ;
-struct TYPE_4__ {int /*<<< orphan*/  resource; } ;
-typedef  int /*<<< orphan*/  GLenum ;
-typedef  int /*<<< orphan*/  DWORD ;
+struct TYPE_5__ {int layer_count; int sub_resource_idx; int * resource; } ;
+struct TYPE_4__ {int resource; } ;
+typedef int GLenum ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  context_apply_fbo_state (struct wined3d_context*,int /*<<< orphan*/ ,TYPE_2__*,struct wined3d_surface*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  surface_get_sub_resource_idx (struct wined3d_surface*) ; 
+
+ int context_apply_fbo_state (struct wined3d_context*,int ,TYPE_2__*,struct wined3d_surface*,int ,int ) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int surface_get_sub_resource_idx (struct wined3d_surface*) ;
 
 void context_apply_fbo_state_blit(struct wined3d_context *context, GLenum target,
         struct wined3d_surface *render_target, struct wined3d_surface *depth_stencil, DWORD location)

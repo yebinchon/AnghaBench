@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  b_italic; int /*<<< orphan*/  b_bold; struct TYPE_6__* p_next; } ;
-typedef  TYPE_1__ vlc_font_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int b_italic; int b_bold; struct TYPE_6__* p_next; } ;
+typedef TYPE_1__ vlc_font_t ;
 struct TYPE_7__ {TYPE_1__* p_fonts; } ;
-typedef  TYPE_2__ vlc_family_t ;
-typedef  scalar_t__ uni_char_t ;
-typedef  int /*<<< orphan*/  filter_t ;
-typedef  scalar_t__ FT_Face ;
+typedef TYPE_2__ vlc_family_t ;
+typedef scalar_t__ uni_char_t ;
+typedef int filter_t ;
+typedef scalar_t__ FT_Face ;
 
-/* Variables and functions */
- scalar_t__ FT_Get_Char_Index (scalar_t__,scalar_t__) ; 
- scalar_t__ GetFace (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+ scalar_t__ FT_Get_Char_Index (scalar_t__,scalar_t__) ;
+ scalar_t__ GetFace (int *,TYPE_1__*) ;
 
 __attribute__((used)) static vlc_font_t *GetBestFont( filter_t *p_filter, const vlc_family_t *p_family,
                                 bool b_bold, bool b_italic, uni_char_t codepoint )

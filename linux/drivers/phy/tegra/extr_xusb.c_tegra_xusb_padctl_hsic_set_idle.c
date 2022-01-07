@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct tegra_xusb_padctl {TYPE_2__* soc; } ;
 struct TYPE_4__ {TYPE_1__* ops; } ;
 struct TYPE_3__ {int (* hsic_set_idle ) (struct tegra_xusb_padctl*,unsigned int,int) ;} ;
 
-/* Variables and functions */
- int ENOSYS ; 
- int stub1 (struct tegra_xusb_padctl*,unsigned int,int) ; 
+
+ int ENOSYS ;
+ int stub1 (struct tegra_xusb_padctl*,unsigned int,int) ;
 
 int tegra_xusb_padctl_hsic_set_idle(struct tegra_xusb_padctl *padctl,
-				    unsigned int port, bool idle)
+        unsigned int port, bool idle)
 {
-	if (padctl->soc->ops->hsic_set_idle)
-		return padctl->soc->ops->hsic_set_idle(padctl, port, idle);
+ if (padctl->soc->ops->hsic_set_idle)
+  return padctl->soc->ops->hsic_set_idle(padctl, port, idle);
 
-	return -ENOSYS;
+ return -ENOSYS;
 }

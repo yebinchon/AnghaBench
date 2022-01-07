@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct xt_match_param {struct xt_conntrack_mtinfo2* matchinfo; } ;
-struct xt_conntrack_mtinfo2 {int /*<<< orphan*/  status_mask; int /*<<< orphan*/  state_mask; } ;
+struct xt_conntrack_mtinfo2 {int status_mask; int state_mask; } ;
 struct sk_buff {int dummy; } ;
 
-/* Variables and functions */
- int conntrack_mt (struct sk_buff const*,struct xt_match_param const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int conntrack_mt (struct sk_buff const*,struct xt_match_param const*,int ,int ) ;
 
 __attribute__((used)) static bool
 conntrack_mt_v2(const struct sk_buff *skb, const struct xt_match_param *par)
 {
-	const struct xt_conntrack_mtinfo2 *info = par->matchinfo;
+ const struct xt_conntrack_mtinfo2 *info = par->matchinfo;
 
-	return conntrack_mt(skb, par, info->state_mask, info->status_mask);
+ return conntrack_mt(skb, par, info->state_mask, info->status_mask);
 }

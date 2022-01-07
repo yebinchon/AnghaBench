@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64 ;
-typedef  int /*<<< orphan*/  uint32 ;
-typedef  int /*<<< orphan*/  TaskType ;
-struct TYPE_4__ {int /*<<< orphan*/  taskId; int /*<<< orphan*/  jobId; int /*<<< orphan*/  taskType; } ;
-typedef  TYPE_1__ TaskMapKey ;
-struct TYPE_5__ {int /*<<< orphan*/ * task; } ;
-typedef  TYPE_2__ TaskMapEntry ;
-typedef  int /*<<< orphan*/  Task ;
-typedef  int /*<<< orphan*/  HTAB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HASH_FIND ; 
- scalar_t__ hash_search (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint64 ;
+typedef int uint32 ;
+typedef int TaskType ;
+struct TYPE_4__ {int taskId; int jobId; int taskType; } ;
+typedef TYPE_1__ TaskMapKey ;
+struct TYPE_5__ {int * task; } ;
+typedef TYPE_2__ TaskMapEntry ;
+typedef int Task ;
+typedef int HTAB ;
+
+
+ int HASH_FIND ;
+ scalar_t__ hash_search (int *,void*,int ,int*) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static Task *
 TaskHashLookup(HTAB *taskHash, TaskType taskType, uint64 jobId, uint32 taskId)
 {
-	TaskMapEntry *taskEntry = NULL;
-	Task *task = NULL;
-	void *hashKey = NULL;
-	bool handleFound = false;
+ TaskMapEntry *taskEntry = ((void*)0);
+ Task *task = ((void*)0);
+ void *hashKey = ((void*)0);
+ bool handleFound = 0;
 
-	TaskMapKey taskKey;
-	memset(&taskKey, 0, sizeof(TaskMapKey));
+ TaskMapKey taskKey;
+ memset(&taskKey, 0, sizeof(TaskMapKey));
 
-	taskKey.taskType = taskType;
-	taskKey.jobId = jobId;
-	taskKey.taskId = taskId;
+ taskKey.taskType = taskType;
+ taskKey.jobId = jobId;
+ taskKey.taskId = taskId;
 
-	hashKey = (void *) &taskKey;
-	taskEntry = (TaskMapEntry *) hash_search(taskHash, hashKey, HASH_FIND, &handleFound);
+ hashKey = (void *) &taskKey;
+ taskEntry = (TaskMapEntry *) hash_search(taskHash, hashKey, HASH_FIND, &handleFound);
 
-	if (taskEntry != NULL)
-	{
-		task = taskEntry->task;
-	}
+ if (taskEntry != ((void*)0))
+ {
+  task = taskEntry->task;
+ }
 
-	return task;
+ return task;
 }

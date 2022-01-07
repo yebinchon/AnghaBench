@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  StringBuffer ;
 
-/* Variables and functions */
- scalar_t__ safe_isspace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * stringBufferData (int /*<<< orphan*/ *) ; 
- int stringBufferLength (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int StringBuffer ;
+
+
+ scalar_t__ safe_isspace (int ) ;
+ int * stringBufferData (int *) ;
+ int stringBufferLength (int *) ;
 
 __attribute__((used)) static int endsInWhiteSpace(StringBuffer *p){
   return stringBufferLength(p)>0 &&

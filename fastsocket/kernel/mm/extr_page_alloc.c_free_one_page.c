@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct zone {int /*<<< orphan*/  lock; scalar_t__ pages_scanned; } ;
+
+
+
+
+struct zone {int lock; scalar_t__ pages_scanned; } ;
 struct page {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NR_FREE_PAGES ; 
- int /*<<< orphan*/  ZONE_ALL_UNRECLAIMABLE ; 
- int /*<<< orphan*/  __free_one_page (struct page*,struct zone*,int,int) ; 
- int /*<<< orphan*/  __mod_zone_page_state (struct zone*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  watermark_check_zone (struct zone*) ; 
- int /*<<< orphan*/  zone_clear_flag (struct zone*,int /*<<< orphan*/ ) ; 
+
+ int NR_FREE_PAGES ;
+ int ZONE_ALL_UNRECLAIMABLE ;
+ int __free_one_page (struct page*,struct zone*,int,int) ;
+ int __mod_zone_page_state (struct zone*,int ,int) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int watermark_check_zone (struct zone*) ;
+ int zone_clear_flag (struct zone*,int ) ;
 
 __attribute__((used)) static void free_one_page(struct zone *zone, struct page *page, int order,
-				int migratetype)
+    int migratetype)
 {
-	spin_lock(&zone->lock);
-	zone_clear_flag(zone, ZONE_ALL_UNRECLAIMABLE);
-	zone->pages_scanned = 0;
+ spin_lock(&zone->lock);
+ zone_clear_flag(zone, ZONE_ALL_UNRECLAIMABLE);
+ zone->pages_scanned = 0;
 
-	__free_one_page(page, zone, order, migratetype);
-	__mod_zone_page_state(zone, NR_FREE_PAGES, 1 << order);
-	spin_unlock(&zone->lock);
-	/* A batch of pages have been freed so check zone pressure */
-	watermark_check_zone(zone);
+ __free_one_page(page, zone, order, migratetype);
+ __mod_zone_page_state(zone, NR_FREE_PAGES, 1 << order);
+ spin_unlock(&zone->lock);
+
+ watermark_check_zone(zone);
 }

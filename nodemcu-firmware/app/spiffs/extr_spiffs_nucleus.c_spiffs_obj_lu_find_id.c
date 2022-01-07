@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  spiffs_obj_id ;
-typedef  int /*<<< orphan*/  spiffs_block_ix ;
-typedef  int /*<<< orphan*/  spiffs ;
-typedef  scalar_t__ s32_t ;
 
-/* Variables and functions */
- scalar_t__ SPIFFS_ERR_NOT_FOUND ; 
- int /*<<< orphan*/  SPIFFS_VIS_CHECK_ID ; 
- scalar_t__ SPIFFS_VIS_END ; 
- scalar_t__ spiffs_obj_lu_find_entry_visitor (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
+
+
+
+typedef int spiffs_obj_id ;
+typedef int spiffs_block_ix ;
+typedef int spiffs ;
+typedef scalar_t__ s32_t ;
+
+
+ scalar_t__ SPIFFS_ERR_NOT_FOUND ;
+ int SPIFFS_VIS_CHECK_ID ;
+ scalar_t__ SPIFFS_VIS_END ;
+ scalar_t__ spiffs_obj_lu_find_entry_visitor (int *,int ,int,int ,int ,int ,int ,int ,int *,int*) ;
 
 s32_t spiffs_obj_lu_find_id(
     spiffs *fs,

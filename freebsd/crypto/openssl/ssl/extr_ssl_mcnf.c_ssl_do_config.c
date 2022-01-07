@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_10__ {TYPE_1__* method; } ;
 struct TYPE_9__ {TYPE_1__* method; } ;
 struct TYPE_8__ {scalar_t__ ssl_accept; scalar_t__ ssl_connect; } ;
-typedef  TYPE_1__ SSL_METHOD ;
-typedef  TYPE_2__ SSL_CTX ;
-typedef  int /*<<< orphan*/  SSL_CONF_CTX ;
-typedef  int /*<<< orphan*/  SSL_CONF_CMD ;
-typedef  TYPE_3__ SSL ;
+typedef TYPE_1__ SSL_METHOD ;
+typedef TYPE_2__ SSL_CTX ;
+typedef int SSL_CONF_CTX ;
+typedef int SSL_CONF_CMD ;
+typedef TYPE_3__ SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_PASSED_NULL_PARAMETER ; 
- int /*<<< orphan*/  ERR_add_error_data (int,char*,char const*,...) ; 
- int SSL_CONF_CTX_finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CONF_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SSL_CONF_CTX_new () ; 
- int /*<<< orphan*/  SSL_CONF_CTX_set_flags (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  SSL_CONF_CTX_set_ssl (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  SSL_CONF_CTX_set_ssl_ctx (int /*<<< orphan*/ *,TYPE_2__*) ; 
- unsigned int SSL_CONF_FLAG_CERTIFICATE ; 
- unsigned int SSL_CONF_FLAG_CLIENT ; 
- unsigned int SSL_CONF_FLAG_FILE ; 
- unsigned int SSL_CONF_FLAG_REQUIRE_PRIVATE ; 
- unsigned int SSL_CONF_FLAG_SERVER ; 
- int SSL_CONF_cmd (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  SSL_F_SSL_DO_CONFIG ; 
- int /*<<< orphan*/  SSL_R_BAD_VALUE ; 
- int /*<<< orphan*/  SSL_R_INVALID_CONFIGURATION_NAME ; 
- int /*<<< orphan*/  SSL_R_UNKNOWN_COMMAND ; 
- int /*<<< orphan*/  SSLerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * conf_ssl_get (size_t,char const**,size_t*) ; 
- int /*<<< orphan*/  conf_ssl_get_cmd (int /*<<< orphan*/  const*,size_t,char**,char**) ; 
- int /*<<< orphan*/  conf_ssl_name_find (char const*,size_t*) ; 
- scalar_t__ ssl_undefined_function ; 
+
+ int ERR_R_PASSED_NULL_PARAMETER ;
+ int ERR_add_error_data (int,char*,char const*,...) ;
+ int SSL_CONF_CTX_finish (int *) ;
+ int SSL_CONF_CTX_free (int *) ;
+ int * SSL_CONF_CTX_new () ;
+ int SSL_CONF_CTX_set_flags (int *,unsigned int) ;
+ int SSL_CONF_CTX_set_ssl (int *,TYPE_3__*) ;
+ int SSL_CONF_CTX_set_ssl_ctx (int *,TYPE_2__*) ;
+ unsigned int SSL_CONF_FLAG_CERTIFICATE ;
+ unsigned int SSL_CONF_FLAG_CLIENT ;
+ unsigned int SSL_CONF_FLAG_FILE ;
+ unsigned int SSL_CONF_FLAG_REQUIRE_PRIVATE ;
+ unsigned int SSL_CONF_FLAG_SERVER ;
+ int SSL_CONF_cmd (int *,char*,char*) ;
+ int SSL_F_SSL_DO_CONFIG ;
+ int SSL_R_BAD_VALUE ;
+ int SSL_R_INVALID_CONFIGURATION_NAME ;
+ int SSL_R_UNKNOWN_COMMAND ;
+ int SSLerr (int ,int ) ;
+ int * conf_ssl_get (size_t,char const**,size_t*) ;
+ int conf_ssl_get_cmd (int const*,size_t,char**,char**) ;
+ int conf_ssl_name_find (char const*,size_t*) ;
+ scalar_t__ ssl_undefined_function ;
 
 __attribute__((used)) static int ssl_do_config(SSL *s, SSL_CTX *ctx, const char *name, int system)
 {
-    SSL_CONF_CTX *cctx = NULL;
+    SSL_CONF_CTX *cctx = ((void*)0);
     size_t i, idx, cmd_count;
     int rv = 0;
     unsigned int flags;
     const SSL_METHOD *meth;
     const SSL_CONF_CMD *cmds;
 
-    if (s == NULL && ctx == NULL) {
+    if (s == ((void*)0) && ctx == ((void*)0)) {
         SSLerr(SSL_F_SSL_DO_CONFIG, ERR_R_PASSED_NULL_PARAMETER);
         goto err;
     }
 
-    if (name == NULL && system)
+    if (name == ((void*)0) && system)
         name = "system_default";
     if (!conf_ssl_name_find(name, &idx)) {
         if (!system) {
@@ -72,12 +72,12 @@ __attribute__((used)) static int ssl_do_config(SSL *s, SSL_CTX *ctx, const char 
     }
     cmds = conf_ssl_get(idx, &name, &cmd_count);
     cctx = SSL_CONF_CTX_new();
-    if (cctx == NULL)
+    if (cctx == ((void*)0))
         goto err;
     flags = SSL_CONF_FLAG_FILE;
     if (!system)
         flags |= SSL_CONF_FLAG_CERTIFICATE | SSL_CONF_FLAG_REQUIRE_PRIVATE;
-    if (s != NULL) {
+    if (s != ((void*)0)) {
         meth = s->method;
         SSL_CONF_CTX_set_ssl(cctx, s);
     } else {

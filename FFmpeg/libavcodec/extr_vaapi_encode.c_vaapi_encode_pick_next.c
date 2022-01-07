@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_18__ {scalar_t__ type; int nb_refs; int is_reference; int /*<<< orphan*/ * ref_count; scalar_t__ force_idr; scalar_t__ encode_issued; struct TYPE_18__* next; int /*<<< orphan*/  b_depth; TYPE_1__** refs; } ;
-typedef  TYPE_2__ VAAPIEncodePicture ;
+
+
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+struct TYPE_18__ {scalar_t__ type; int nb_refs; int is_reference; int * ref_count; scalar_t__ force_idr; scalar_t__ encode_issued; struct TYPE_18__* next; int b_depth; TYPE_1__** refs; } ;
+typedef TYPE_2__ VAAPIEncodePicture ;
 struct TYPE_19__ {int idr_counter; int gop_per_idr; int b_per_p; int gop_counter; int gop_size; scalar_t__ input_order; scalar_t__ decode_delay; TYPE_2__* next_prev; scalar_t__ end_of_stream; TYPE_2__* pic_end; TYPE_2__* pic_start; scalar_t__ closed_gop; } ;
-typedef  TYPE_3__ VAAPIEncodeContext ;
+typedef TYPE_3__ VAAPIEncodeContext ;
 struct TYPE_20__ {TYPE_3__* priv_data; } ;
-struct TYPE_17__ {int /*<<< orphan*/  encode_issued; } ;
-typedef  TYPE_4__ AVCodecContext ;
+struct TYPE_17__ {int encode_issued; } ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  EAGAIN ; 
- scalar_t__ PICTURE_TYPE_B ; 
- scalar_t__ PICTURE_TYPE_I ; 
- scalar_t__ PICTURE_TYPE_IDR ; 
- scalar_t__ PICTURE_TYPE_P ; 
- int /*<<< orphan*/  av_assert0 (TYPE_2__*) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  vaapi_encode_add_ref (TYPE_4__*,TYPE_2__*,TYPE_2__*,int,int,int) ; 
- int /*<<< orphan*/  vaapi_encode_set_b_pictures (TYPE_4__*,TYPE_2__*,TYPE_2__*,TYPE_2__*,int,TYPE_2__**) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AV_LOG_DEBUG ;
+ int EAGAIN ;
+ scalar_t__ PICTURE_TYPE_B ;
+ scalar_t__ PICTURE_TYPE_I ;
+ scalar_t__ PICTURE_TYPE_IDR ;
+ scalar_t__ PICTURE_TYPE_P ;
+ int av_assert0 (TYPE_2__*) ;
+ int av_log (TYPE_4__*,int ,char*,...) ;
+ int vaapi_encode_add_ref (TYPE_4__*,TYPE_2__*,TYPE_2__*,int,int,int) ;
+ int vaapi_encode_set_b_pictures (TYPE_4__*,TYPE_2__*,TYPE_2__*,TYPE_2__*,int,TYPE_2__**) ;
 
 __attribute__((used)) static int vaapi_encode_pick_next(AVCodecContext *avctx,
                                   VAAPIEncodePicture **pic_out)
 {
     VAAPIEncodeContext *ctx = avctx->priv_data;
-    VAAPIEncodePicture *pic = NULL, *next, *start;
+    VAAPIEncodePicture *pic = ((void*)0), *next, *start;
     int i, b_counter, closed_gop_end;
 
-    // If there are any B-frames already queued, the next one to encode
-    // is the earliest not-yet-issued frame for which all references are
-    // available.
+
+
+
     for (pic = ctx->pic_start; pic; pic = pic->next) {
         if (pic->encode_issued)
             continue;
@@ -66,9 +66,9 @@ __attribute__((used)) static int vaapi_encode_pick_next(AVCodecContext *avctx,
         return 0;
     }
 
-    // Find the B-per-Pth available picture to become the next picture
-    // on the top layer.
-    start = NULL;
+
+
+    start = ((void*)0);
     b_counter = 0;
     closed_gop_end = ctx->closed_gop ||
                      ctx->idr_counter == ctx->gop_per_idr;
@@ -78,24 +78,24 @@ __attribute__((used)) static int vaapi_encode_pick_next(AVCodecContext *avctx,
             start = pic;
             continue;
         }
-        // If the next available picture is force-IDR, encode it to start
-        // a new GOP immediately.
+
+
         if (pic->force_idr)
             break;
         if (b_counter == ctx->b_per_p)
             break;
-        // If this picture ends a closed GOP or starts a new GOP then it
-        // needs to be in the top layer.
+
+
         if (ctx->gop_counter + b_counter + closed_gop_end >= ctx->gop_size)
             break;
-        // If the picture after this one is force-IDR, we need to encode
-        // this one in the top layer.
+
+
         if (next && next->force_idr)
             break;
         ++b_counter;
     }
 
-    // At the end of the stream the last picture must be in the top layer.
+
     if (!pic && ctx->end_of_stream) {
         --b_counter;
         pic = ctx->pic_end;

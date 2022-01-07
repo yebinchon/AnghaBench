@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EINTR ; 
- int /*<<< orphan*/  cond_resched () ; 
- int /*<<< orphan*/  current ; 
- int /*<<< orphan*/  pr_info (char*) ; 
- scalar_t__ signal_pending (int /*<<< orphan*/ ) ; 
+ int EINTR ;
+ int cond_resched () ;
+ int current ;
+ int pr_info (char*) ;
+ scalar_t__ signal_pending (int ) ;
 
 __attribute__((used)) static inline int mtdtest_relax(void)
 {
-	cond_resched();
-	if (signal_pending(current)) {
-		pr_info("aborting test due to pending signal!\n");
-		return -EINTR;
-	}
+ cond_resched();
+ if (signal_pending(current)) {
+  pr_info("aborting test due to pending signal!\n");
+  return -EINTR;
+ }
 
-	return 0;
+ return 0;
 }

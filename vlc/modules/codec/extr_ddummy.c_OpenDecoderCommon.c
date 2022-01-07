@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  psz_file ;
-typedef  int /*<<< orphan*/  p_dec ;
-struct TYPE_5__ {int /*<<< orphan*/  fmt_in; int /*<<< orphan*/  fmt_out; int /*<<< orphan*/  pf_decode; int /*<<< orphan*/ * p_sys; } ;
-typedef  TYPE_1__ decoder_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DecodeBlock ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  es_format_Copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_1__*,char*,char*) ; 
- int /*<<< orphan*/  msg_Err (TYPE_1__*,char*,char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,void*) ; 
- int var_InheritBool (TYPE_1__*,char*) ; 
- int /*<<< orphan*/ * vlc_fopen (char*,char*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+typedef int psz_file ;
+typedef int p_dec ;
+struct TYPE_5__ {int fmt_in; int fmt_out; int pf_decode; int * p_sys; } ;
+typedef TYPE_1__ decoder_t ;
+typedef int FILE ;
+
+
+ int DecodeBlock ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int es_format_Copy (int *,int *) ;
+ int msg_Dbg (TYPE_1__*,char*,char*) ;
+ int msg_Err (TYPE_1__*,char*,char*) ;
+ int snprintf (char*,int,char*,void*) ;
+ int var_InheritBool (TYPE_1__*,char*) ;
+ int * vlc_fopen (char*,char*) ;
 
 __attribute__((used)) static int OpenDecoderCommon( vlc_object_t *p_this, bool b_force_dump )
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static int OpenDecoderCommon( vlc_object_t *p_this, bool b
     if( b_force_dump )
     {
         FILE *stream = vlc_fopen( psz_file, "wb" );
-        if( stream == NULL )
+        if( stream == ((void*)0) )
         {
             msg_Err( p_dec, "cannot create `%s'", psz_file );
             return VLC_EGENERIC;
@@ -50,9 +50,9 @@ __attribute__((used)) static int OpenDecoderCommon( vlc_object_t *p_this, bool b
         p_dec->p_sys = (void *)stream;
     }
     else
-        p_dec->p_sys = NULL;
+        p_dec->p_sys = ((void*)0);
 
-    /* Set callbacks */
+
     p_dec->pf_decode = DecodeBlock;
 
     es_format_Copy( &p_dec->fmt_out, &p_dec->fmt_in );

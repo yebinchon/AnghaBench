@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int i64 ;
-struct TYPE_7__ {int /*<<< orphan*/  pCompress; } ;
-typedef  int /*<<< orphan*/  Segment ;
-typedef  TYPE_1__ FileSystem ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int fsBlockPrev (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int fsFirstPageOnBlock (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int fsLastPageOnBlock (TYPE_1__*,int) ; 
- int /*<<< orphan*/  fsPageToBlock (TYPE_1__*,int) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int i64 ;
+struct TYPE_7__ {int pCompress; } ;
+typedef int Segment ;
+typedef TYPE_1__ FileSystem ;
+
+
+ int LSM_OK ;
+ int assert (int ) ;
+ int fsBlockPrev (TYPE_1__*,int *,int ,int*) ;
+ int fsFirstPageOnBlock (TYPE_1__*,int ) ;
+ int fsLastPageOnBlock (TYPE_1__*,int) ;
+ int fsPageToBlock (TYPE_1__*,int) ;
 
 __attribute__((used)) static int fsSubtractOffset(
-  FileSystem *pFS, 
+  FileSystem *pFS,
   Segment *pSeg,
-  i64 iOff, 
-  int iSub, 
+  i64 iOff,
+  int iSub,
   i64 *piRes
 ){
   i64 iStart;

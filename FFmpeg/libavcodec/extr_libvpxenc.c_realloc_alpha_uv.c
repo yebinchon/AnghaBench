@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct vpx_image {unsigned char** planes; int* stride; scalar_t__ d_h; scalar_t__ d_w; } ;
 struct TYPE_4__ {struct vpx_image rawimg_alpha; } ;
-typedef  TYPE_1__ VPxContext ;
+typedef TYPE_1__ VPxContext ;
 struct TYPE_5__ {TYPE_1__* priv_data; } ;
-typedef  TYPE_2__ AVCodecContext ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  VPX_IMG_FMT_I420 ; 
- size_t VPX_PLANE_U ; 
- size_t VPX_PLANE_V ; 
- int /*<<< orphan*/  av_freep (unsigned char**) ; 
- unsigned char* av_malloc_array (int,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int,int) ; 
- int /*<<< orphan*/  vpx_img_wrap (struct vpx_image*,int /*<<< orphan*/ ,int,int,int,unsigned char*) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int VPX_IMG_FMT_I420 ;
+ size_t VPX_PLANE_U ;
+ size_t VPX_PLANE_V ;
+ int av_freep (unsigned char**) ;
+ unsigned char* av_malloc_array (int,int) ;
+ int memset (unsigned char*,int,int) ;
+ int vpx_img_wrap (struct vpx_image*,int ,int,int,int,unsigned char*) ;
 
 __attribute__((used)) static int realloc_alpha_uv(AVCodecContext *avctx, int width, int height)
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static int realloc_alpha_uv(AVCodecContext *avctx, int wid
 
     if (!planes[VPX_PLANE_U] ||
         !planes[VPX_PLANE_V] ||
-        width  != (int)rawimg_alpha->d_w ||
+        width != (int)rawimg_alpha->d_w ||
         height != (int)rawimg_alpha->d_h) {
         av_freep(&planes[VPX_PLANE_U]);
         av_freep(&planes[VPX_PLANE_V]);

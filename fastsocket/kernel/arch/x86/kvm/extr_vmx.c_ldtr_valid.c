@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct kvm_vcpu {int dummy; } ;
-struct kvm_segment {int selector; int type; int /*<<< orphan*/  present; scalar_t__ unusable; } ;
+struct kvm_segment {int selector; int type; int present; scalar_t__ unusable; } ;
 
-/* Variables and functions */
- int SELECTOR_TI_MASK ; 
- int /*<<< orphan*/  VCPU_SREG_LDTR ; 
- int /*<<< orphan*/  vmx_get_segment (struct kvm_vcpu*,struct kvm_segment*,int /*<<< orphan*/ ) ; 
+
+ int SELECTOR_TI_MASK ;
+ int VCPU_SREG_LDTR ;
+ int vmx_get_segment (struct kvm_vcpu*,struct kvm_segment*,int ) ;
 
 __attribute__((used)) static bool ldtr_valid(struct kvm_vcpu *vcpu)
 {
-	struct kvm_segment ldtr;
+ struct kvm_segment ldtr;
 
-	vmx_get_segment(vcpu, &ldtr, VCPU_SREG_LDTR);
+ vmx_get_segment(vcpu, &ldtr, VCPU_SREG_LDTR);
 
-	if (ldtr.unusable)
-		return true;
-	if (ldtr.selector & SELECTOR_TI_MASK)	/* TI = 1 */
-		return false;
-	if (ldtr.type != 2)
-		return false;
-	if (!ldtr.present)
-		return false;
+ if (ldtr.unusable)
+  return 1;
+ if (ldtr.selector & SELECTOR_TI_MASK)
+  return 0;
+ if (ldtr.type != 2)
+  return 0;
+ if (!ldtr.present)
+  return 0;
 
-	return true;
+ return 1;
 }

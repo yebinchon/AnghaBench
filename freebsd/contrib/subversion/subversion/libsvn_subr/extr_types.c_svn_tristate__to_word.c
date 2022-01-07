@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int svn_tristate_t ;
 
-/* Variables and functions */
-#define  svn_tristate_false 130 
-#define  svn_tristate_true 129 
-#define  svn_tristate_unknown 128 
+
+
+
+typedef int svn_tristate_t ;
+
+
+
+
+
 
 const char *
 svn_tristate__to_word(svn_tristate_t tristate)
 {
   switch (tristate)
     {
-      case svn_tristate_false:
+      case 130:
         return "false";
-      case svn_tristate_true:
+      case 129:
         return "true";
-      case svn_tristate_unknown:
+      case 128:
       default:
-        return NULL;
+        return ((void*)0);
     }
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CURLM ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLMOPT_MAX_HOST_CONNECTIONS ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- int /*<<< orphan*/  curl_multi_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  easy_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  global_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  multi_add_handle (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  multi_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  multi_perform (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  multi_remove_handle (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  multi_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int CURLM ;
+typedef int CURL ;
+
+
+ int CURLMOPT_MAX_HOST_CONNECTIONS ;
+ int CURLOPT_URL ;
+ int CURL_GLOBAL_ALL ;
+ int curl_easy_cleanup (int *) ;
+ int curl_global_cleanup () ;
+ int curl_multi_cleanup (int *) ;
+ int easy_init (int *) ;
+ int easy_setopt (int *,int ,char*) ;
+ int global_init (int ) ;
+ int multi_add_handle (int *,int *) ;
+ int multi_init (int *) ;
+ int multi_perform (int *,int*) ;
+ int multi_remove_handle (int *,int *) ;
+ int multi_setopt (int *,int ,int) ;
 
 int test(char *URL)
 {
-  CURLM *curlm = NULL;
-  CURL *curl1 = NULL;
-  CURL *curl2 = NULL;
+  CURLM *curlm = ((void*)0);
+  CURL *curl1 = ((void*)0);
+  CURL *curl2 = ((void*)0);
   int running_handles = 0;
   int res = 0;
 
@@ -55,7 +55,7 @@ int test(char *URL)
   multi_remove_handle(curlm, curl2);
   curl_easy_cleanup(curl2);
 
-  /* If curl2 is still in the connect-pending list, this will crash */
+
   multi_remove_handle(curlm, curl1);
   curl_easy_cleanup(curl1);
 

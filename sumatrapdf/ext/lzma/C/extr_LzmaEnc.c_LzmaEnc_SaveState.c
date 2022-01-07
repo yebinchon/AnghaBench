@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  litProbs; int /*<<< orphan*/  reps; int /*<<< orphan*/  posAlignEncoder; int /*<<< orphan*/  posEncoders; int /*<<< orphan*/  isRepG2; int /*<<< orphan*/  isRepG1; int /*<<< orphan*/  isRepG0; int /*<<< orphan*/  isRep; int /*<<< orphan*/ * posSlotEncoder; int /*<<< orphan*/ * isRep0Long; int /*<<< orphan*/ * isMatch; int /*<<< orphan*/  state; int /*<<< orphan*/  repLenEnc; int /*<<< orphan*/  lenEnc; } ;
-struct TYPE_4__ {int lclp; int /*<<< orphan*/  litProbs; int /*<<< orphan*/  reps; int /*<<< orphan*/  posAlignEncoder; int /*<<< orphan*/  posEncoders; int /*<<< orphan*/  isRepG2; int /*<<< orphan*/  isRepG1; int /*<<< orphan*/  isRepG0; int /*<<< orphan*/  isRep; int /*<<< orphan*/ * posSlotEncoder; int /*<<< orphan*/ * isRep0Long; int /*<<< orphan*/ * isMatch; int /*<<< orphan*/  state; int /*<<< orphan*/  repLenEnc; int /*<<< orphan*/  lenEnc; TYPE_1__ saveState; } ;
-typedef  TYPE_1__ CSaveState ;
-typedef  int /*<<< orphan*/  CLzmaProb ;
-typedef  scalar_t__ CLzmaEncHandle ;
-typedef  TYPE_2__ CLzmaEnc ;
 
-/* Variables and functions */
- int kNumLenToPosStates ; 
- int kNumStates ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int litProbs; int reps; int posAlignEncoder; int posEncoders; int isRepG2; int isRepG1; int isRepG0; int isRep; int * posSlotEncoder; int * isRep0Long; int * isMatch; int state; int repLenEnc; int lenEnc; } ;
+struct TYPE_4__ {int lclp; int litProbs; int reps; int posAlignEncoder; int posEncoders; int isRepG2; int isRepG1; int isRepG0; int isRep; int * posSlotEncoder; int * isRep0Long; int * isMatch; int state; int repLenEnc; int lenEnc; TYPE_1__ saveState; } ;
+typedef TYPE_1__ CSaveState ;
+typedef int CLzmaProb ;
+typedef scalar_t__ CLzmaEncHandle ;
+typedef TYPE_2__ CLzmaEnc ;
+
+
+ int kNumLenToPosStates ;
+ int kNumStates ;
+ int memcpy (int ,int ,int) ;
 
 void LzmaEnc_SaveState(CLzmaEncHandle pp)
 {

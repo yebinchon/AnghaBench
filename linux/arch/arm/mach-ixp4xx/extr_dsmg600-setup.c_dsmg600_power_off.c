@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DSMG600_PO_GPIO ; 
- int /*<<< orphan*/  gpio_direction_output (int /*<<< orphan*/ ,int) ; 
+ int DSMG600_PO_GPIO ;
+ int gpio_direction_output (int ,int) ;
 
 __attribute__((used)) static void dsmg600_power_off(void)
 {
-	/* enable the pwr cntl and drive it high */
-	gpio_direction_output(DSMG600_PO_GPIO, 1);
+
+ gpio_direction_output(DSMG600_PO_GPIO, 1);
 }

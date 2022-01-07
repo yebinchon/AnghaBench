@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_7__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {TYPE_5__* thread; scalar_t__ written; int /*<<< orphan*/  parser; } ;
-typedef  TYPE_2__ connection ;
-typedef  int /*<<< orphan*/  aeEventLoop ;
-struct TYPE_13__ {int /*<<< orphan*/  host; } ;
-struct TYPE_9__ {int /*<<< orphan*/  connect; } ;
-struct TYPE_12__ {TYPE_1__ errors; int /*<<< orphan*/  loop; } ;
-struct TYPE_11__ {int (* connect ) (TYPE_2__*,int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AE_READABLE ; 
- int /*<<< orphan*/  AE_WRITABLE ; 
-#define  ERROR 130 
- int /*<<< orphan*/  HTTP_RESPONSE ; 
-#define  OK 129 
-#define  RETRY 128 
- int /*<<< orphan*/  aeCreateFileEvent (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- TYPE_7__ cfg ; 
- int /*<<< orphan*/  http_parser_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  reconnect_socket (TYPE_5__*,TYPE_2__*) ; 
- TYPE_4__ sock ; 
- int /*<<< orphan*/  socket_readable ; 
- int /*<<< orphan*/  socket_writeable ; 
- int stub1 (TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_13__ TYPE_7__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_10__ {TYPE_5__* thread; scalar_t__ written; int parser; } ;
+typedef TYPE_2__ connection ;
+typedef int aeEventLoop ;
+struct TYPE_13__ {int host; } ;
+struct TYPE_9__ {int connect; } ;
+struct TYPE_12__ {TYPE_1__ errors; int loop; } ;
+struct TYPE_11__ {int (* connect ) (TYPE_2__*,int ) ;} ;
+
+
+ int AE_READABLE ;
+ int AE_WRITABLE ;
+
+ int HTTP_RESPONSE ;
+
+
+ int aeCreateFileEvent (int ,int,int ,int ,TYPE_2__*) ;
+ TYPE_7__ cfg ;
+ int http_parser_init (int *,int ) ;
+ int reconnect_socket (TYPE_5__*,TYPE_2__*) ;
+ TYPE_4__ sock ;
+ int socket_readable ;
+ int socket_writeable ;
+ int stub1 (TYPE_2__*,int ) ;
 
 __attribute__((used)) static void socket_connected(aeEventLoop *loop, int fd, void *data, int mask) {
     connection *c = data;
 
     switch (sock.connect(c, cfg.host)) {
-        case OK:    break;
-        case ERROR: goto error;
-        case RETRY: return;
+        case 129: break;
+        case 130: goto error;
+        case 128: return;
     }
 
     http_parser_init(&c->parser, HTTP_RESPONSE);

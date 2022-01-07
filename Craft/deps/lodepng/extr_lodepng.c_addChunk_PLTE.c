@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  size; int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ ucvector ;
-struct TYPE_10__ {int palettesize; int /*<<< orphan*/ * palette; } ;
-typedef  TYPE_2__ LodePNGColorMode ;
 
-/* Variables and functions */
- unsigned int addChunk (TYPE_1__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ucvector_cleanup (TYPE_1__*) ; 
- int /*<<< orphan*/  ucvector_init (TYPE_1__*) ; 
- int /*<<< orphan*/  ucvector_push_back (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int size; int data; } ;
+typedef TYPE_1__ ucvector ;
+struct TYPE_10__ {int palettesize; int * palette; } ;
+typedef TYPE_2__ LodePNGColorMode ;
+
+
+ unsigned int addChunk (TYPE_1__*,char*,int ,int ) ;
+ int ucvector_cleanup (TYPE_1__*) ;
+ int ucvector_init (TYPE_1__*) ;
+ int ucvector_push_back (TYPE_1__*,int ) ;
 
 __attribute__((used)) static unsigned addChunk_PLTE(ucvector* out, const LodePNGColorMode* info)
 {
@@ -31,7 +31,7 @@ __attribute__((used)) static unsigned addChunk_PLTE(ucvector* out, const LodePNG
   ucvector_init(&PLTE);
   for(i = 0; i < info->palettesize * 4; i++)
   {
-    /*add all channels except alpha channel*/
+
     if(i % 4 != 3) ucvector_push_back(&PLTE, info->palette[i]);
   }
   error = addChunk(out, "PLTE", PLTE.data, PLTE.size);

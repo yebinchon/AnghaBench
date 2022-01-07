@@ -1,134 +1,134 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_mode; } ;
-typedef  int /*<<< orphan*/  mode_t ;
-typedef  int /*<<< orphan*/  dsttmpname ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COPYFILE_DATA ; 
- int /*<<< orphan*/  EX_NOINPUT ; 
- int /*<<< orphan*/  EX_UNAVAILABLE ; 
- int /*<<< orphan*/  EX_USAGE ; 
- int MAXPATHLEN ; 
- int O_RDONLY ; 
- int O_SYMLINK ; 
- int /*<<< orphan*/  S_ISREG (int /*<<< orphan*/ ) ; 
- int close (int) ; 
- int /*<<< orphan*/  err (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  errx (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int fchmod (int,int /*<<< orphan*/ ) ; 
- int fcopyfile (int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (void*) ; 
- int fstat (int,struct stat*) ; 
- int futimes (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  getmode (void*,int /*<<< orphan*/ ) ; 
- int getopt (int,char**,char*) ; 
- int mkstemp (char*) ; 
- int open (char const*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  optarg ; 
- scalar_t__ optind ; 
- int rename (char*,char const*) ; 
- void* setmode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*) ; 
- int /*<<< orphan*/  usage () ; 
+
+
+
+struct stat {int st_mode; } ;
+typedef int mode_t ;
+typedef int dsttmpname ;
+
+
+ int COPYFILE_DATA ;
+ int EX_NOINPUT ;
+ int EX_UNAVAILABLE ;
+ int EX_USAGE ;
+ int MAXPATHLEN ;
+ int O_RDONLY ;
+ int O_SYMLINK ;
+ int S_ISREG (int ) ;
+ int close (int) ;
+ int err (int ,char*,...) ;
+ int errx (int ,char*,int ) ;
+ int fchmod (int,int ) ;
+ int fcopyfile (int,int,int *,int ) ;
+ int free (void*) ;
+ int fstat (int,struct stat*) ;
+ int futimes (int,int *) ;
+ int getmode (void*,int ) ;
+ int getopt (int,char**,char*) ;
+ int mkstemp (char*) ;
+ int open (char const*,int,int ) ;
+ int optarg ;
+ scalar_t__ optind ;
+ int rename (char*,char const*) ;
+ void* setmode (int ) ;
+ int snprintf (char*,int,char*,char const*) ;
+ int usage () ;
 
 int main(int argc, char * argv[])
 {
-	struct stat sb;
-	void *mset;
-	mode_t mode;
-	bool gotmode = false;
-	int ch;
-	int ret;
-	int srcfd, dstfd;
-	const char *src = NULL;
-	const char *dst = NULL;
-	char dsttmpname[MAXPATHLEN];
+ struct stat sb;
+ void *mset;
+ mode_t mode;
+ bool gotmode = 0;
+ int ch;
+ int ret;
+ int srcfd, dstfd;
+ const char *src = ((void*)0);
+ const char *dst = ((void*)0);
+ char dsttmpname[MAXPATHLEN];
 
-	while ((ch = getopt(argc, argv, "cSm:")) != -1) {
-		switch(ch) {
-			case 'c':
-			case 'S':
-				/* ignored for compatibility */
-				break;
-			case 'm':
-				gotmode = true;
-				mset = setmode(optarg);
-				if (!mset)
-					errx(EX_USAGE, "Unrecognized mode %s", optarg);
+ while ((ch = getopt(argc, argv, "cSm:")) != -1) {
+  switch(ch) {
+   case 'c':
+   case 'S':
 
-				mode = getmode(mset, 0);
-				free(mset);
-				break;
-			case '?':
-			default:
-				usage();
-		}
-	}
+    break;
+   case 'm':
+    gotmode = 1;
+    mset = setmode(optarg);
+    if (!mset)
+     errx(EX_USAGE, "Unrecognized mode %s", optarg);
 
-	argc -= optind;
-	argv += optind;
+    mode = getmode(mset, 0);
+    free(mset);
+    break;
+   case '?':
+   default:
+    usage();
+  }
+ }
 
-	if (argc < 2) {
-		usage();
-	}
+ argc -= optind;
+ argv += optind;
 
-	src = argv[0];
-	dst = argv[1];
+ if (argc < 2) {
+  usage();
+ }
 
-	srcfd = open(src, O_RDONLY | O_SYMLINK, 0);
-	if (srcfd < 0)
-		err(EX_NOINPUT, "open(%s)", src);
+ src = argv[0];
+ dst = argv[1];
 
-	ret = fstat(srcfd, &sb);
-	if (ret < 0)
-		err(EX_NOINPUT, "fstat(%s)", src);
+ srcfd = open(src, O_RDONLY | O_SYMLINK, 0);
+ if (srcfd < 0)
+  err(EX_NOINPUT, "open(%s)", src);
 
-	if (!S_ISREG(sb.st_mode))
-		err(EX_USAGE, "%s is not a regular file", src);
+ ret = fstat(srcfd, &sb);
+ if (ret < 0)
+  err(EX_NOINPUT, "fstat(%s)", src);
 
-	snprintf(dsttmpname, sizeof(dsttmpname), "%s.XXXXXX", dst);
+ if (!S_ISREG(sb.st_mode))
+  err(EX_USAGE, "%s is not a regular file", src);
 
-	dstfd = mkstemp(dsttmpname);
-	if (dstfd < 0)
-		err(EX_UNAVAILABLE, "mkstemp(%s)", dsttmpname);
+ snprintf(dsttmpname, sizeof(dsttmpname), "%s.XXXXXX", dst);
 
-	ret = fcopyfile(srcfd, dstfd, NULL,
-					COPYFILE_DATA);
-	if (ret < 0)
-		err(EX_UNAVAILABLE, "fcopyfile(%s, %s)", src, dsttmpname);
+ dstfd = mkstemp(dsttmpname);
+ if (dstfd < 0)
+  err(EX_UNAVAILABLE, "mkstemp(%s)", dsttmpname);
 
-	ret = futimes(dstfd, NULL);
-	if (ret < 0)
-		err(EX_UNAVAILABLE, "futimes(%s)", dsttmpname);
+ ret = fcopyfile(srcfd, dstfd, ((void*)0),
+     COPYFILE_DATA);
+ if (ret < 0)
+  err(EX_UNAVAILABLE, "fcopyfile(%s, %s)", src, dsttmpname);
 
-	if (gotmode) {
-		ret = fchmod(dstfd, mode);
-		if (ret < 0)
-			err(EX_NOINPUT, "fchmod(%s, %ho)", dsttmpname, mode);
-	}
+ ret = futimes(dstfd, ((void*)0));
+ if (ret < 0)
+  err(EX_UNAVAILABLE, "futimes(%s)", dsttmpname);
 
-	ret = rename(dsttmpname, dst);
-	if (ret < 0)
-		err(EX_NOINPUT, "rename(%s, %s)", dsttmpname, dst);
+ if (gotmode) {
+  ret = fchmod(dstfd, mode);
+  if (ret < 0)
+   err(EX_NOINPUT, "fchmod(%s, %ho)", dsttmpname, mode);
+ }
 
-	ret = close(dstfd);
-	if (ret < 0)
-		err(EX_NOINPUT, "close(dst)");
+ ret = rename(dsttmpname, dst);
+ if (ret < 0)
+  err(EX_NOINPUT, "rename(%s, %s)", dsttmpname, dst);
 
-	ret = close(srcfd);
-	if (ret < 0)
-		err(EX_NOINPUT, "close(src)");
+ ret = close(dstfd);
+ if (ret < 0)
+  err(EX_NOINPUT, "close(dst)");
 
-	return 0;
+ ret = close(srcfd);
+ if (ret < 0)
+  err(EX_NOINPUT, "close(src)");
+
+ return 0;
 }

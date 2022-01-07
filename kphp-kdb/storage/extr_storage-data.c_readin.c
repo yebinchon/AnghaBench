@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ IO_BUFFSIZE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  idx_fd ; 
- scalar_t__ io_buff ; 
- int /*<<< orphan*/  memcpy (scalar_t__,scalar_t__,scalar_t__) ; 
- int read (int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- scalar_t__ rptr ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ wptr ; 
+ scalar_t__ IO_BUFFSIZE ;
+ int assert (int) ;
+ int fprintf (int ,char*) ;
+ int idx_fd ;
+ scalar_t__ io_buff ;
+ int memcpy (scalar_t__,scalar_t__,scalar_t__) ;
+ int read (int ,scalar_t__,scalar_t__) ;
+ scalar_t__ rptr ;
+ int stderr ;
+ scalar_t__ wptr ;
 
 __attribute__((used)) static void *readin (size_t len) {
   assert (len >= 0);

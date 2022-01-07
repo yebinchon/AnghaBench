@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_va_t ;
-struct va_pool_cfg {scalar_t__ (* pf_create_device ) (int /*<<< orphan*/ *) ;} ;
-struct TYPE_4__ {int /*<<< orphan*/  poolrefs; scalar_t__ surface_count; struct va_pool_cfg callbacks; } ;
-typedef  TYPE_1__ va_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atomic_init (int /*<<< orphan*/ *,int) ; 
- TYPE_1__* malloc (int) ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ stub1 (int /*<<< orphan*/ *) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int vlc_va_t ;
+struct va_pool_cfg {scalar_t__ (* pf_create_device ) (int *) ;} ;
+struct TYPE_4__ {int poolrefs; scalar_t__ surface_count; struct va_pool_cfg callbacks; } ;
+typedef TYPE_1__ va_pool_t ;
+
+
+ int atomic_init (int *,int) ;
+ TYPE_1__* malloc (int) ;
+ int msg_Dbg (int *,char*) ;
+ int msg_Err (int *,char*) ;
+ scalar_t__ stub1 (int *) ;
+ scalar_t__ unlikely (int ) ;
 
 va_pool_t * va_pool_Create(vlc_va_t *va, const struct va_pool_cfg *cbs)
 {
     va_pool_t *va_pool = malloc(sizeof(*va_pool));
-    if (unlikely(va_pool == NULL))
-        return NULL;
+    if (unlikely(va_pool == ((void*)0)))
+        return ((void*)0);
 
     va_pool->callbacks = *cbs;
 
-    /* */
+
     if (cbs->pf_create_device(va)) {
         msg_Err(va, "Failed to create device");
-        return NULL;
+        return ((void*)0);
     }
     msg_Dbg(va, "CreateDevice succeed");
 

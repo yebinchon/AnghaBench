@@ -1,0 +1,233 @@
+; ModuleID = '/home/carl/AnghaBench/linux/tools/perf/tests/extr_parse-events.c_test__checkevent_list.c'
+source_filename = "/home/carl/AnghaBench/linux/tools/perf/tests/extr_parse-events.c_test__checkevent_list.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.evlist = type { %struct.TYPE_4__ }
+%struct.TYPE_4__ = type { i32 }
+%struct.evsel = type { %struct.TYPE_6__ }
+%struct.TYPE_6__ = type { %struct.TYPE_5__ }
+%struct.TYPE_5__ = type { i32, i32, i64, i64, i32, i32, i32, i32, i64, i32 }
+
+@.str = private unnamed_addr constant [24 x i8] c"wrong number of entries\00", align 1
+@.str.1 = private unnamed_addr constant [11 x i8] c"wrong type\00", align 1
+@PERF_TYPE_RAW = common dso_local global i32 0, align 4
+@.str.2 = private unnamed_addr constant [13 x i8] c"wrong config\00", align 1
+@.str.3 = private unnamed_addr constant [14 x i8] c"wrong config1\00", align 1
+@.str.4 = private unnamed_addr constant [14 x i8] c"wrong config2\00", align 1
+@.str.5 = private unnamed_addr constant [19 x i8] c"wrong exclude_user\00", align 1
+@.str.6 = private unnamed_addr constant [21 x i8] c"wrong exclude_kernel\00", align 1
+@.str.7 = private unnamed_addr constant [17 x i8] c"wrong exclude_hv\00", align 1
+@.str.8 = private unnamed_addr constant [17 x i8] c"wrong precise_ip\00", align 1
+@PERF_TYPE_TRACEPOINT = common dso_local global i32 0, align 4
+@.str.9 = private unnamed_addr constant [18 x i8] c"wrong sample_type\00", align 1
+@PERF_TP_SAMPLE_TYPE = common dso_local global i64 0, align 8
+@.str.10 = private unnamed_addr constant [20 x i8] c"wrong sample_period\00", align 1
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.evlist*)* @test__checkevent_list to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @test__checkevent_list(%struct.evlist* %0) #0 {
+  %2 = alloca %struct.evlist*, align 8
+  %3 = alloca %struct.evsel*, align 8
+  store %struct.evlist* %0, %struct.evlist** %2, align 8
+  %4 = load %struct.evlist*, %struct.evlist** %2, align 8
+  %5 = call %struct.evsel* @evlist__first(%struct.evlist* %4)
+  store %struct.evsel* %5, %struct.evsel** %3, align 8
+  %6 = load %struct.evlist*, %struct.evlist** %2, align 8
+  %7 = getelementptr inbounds %struct.evlist, %struct.evlist* %6, i32 0, i32 0
+  %8 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %7, i32 0, i32 0
+  %9 = load i32, i32* %8, align 4
+  %10 = icmp eq i32 3, %9
+  %11 = zext i1 %10 to i32
+  %12 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([24 x i8], [24 x i8]* @.str, i64 0, i64 0), i32 %11)
+  %13 = load i32, i32* @PERF_TYPE_RAW, align 4
+  %14 = load %struct.evsel*, %struct.evsel** %3, align 8
+  %15 = getelementptr inbounds %struct.evsel, %struct.evsel* %14, i32 0, i32 0
+  %16 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %15, i32 0, i32 0
+  %17 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %16, i32 0, i32 0
+  %18 = load i32, i32* %17, align 8
+  %19 = icmp eq i32 %13, %18
+  %20 = zext i1 %19 to i32
+  %21 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.1, i64 0, i64 0), i32 %20)
+  %22 = load %struct.evsel*, %struct.evsel** %3, align 8
+  %23 = getelementptr inbounds %struct.evsel, %struct.evsel* %22, i32 0, i32 0
+  %24 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %23, i32 0, i32 0
+  %25 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %24, i32 0, i32 1
+  %26 = load i32, i32* %25, align 4
+  %27 = icmp eq i32 1, %26
+  %28 = zext i1 %27 to i32
+  %29 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0), i32 %28)
+  %30 = load %struct.evsel*, %struct.evsel** %3, align 8
+  %31 = getelementptr inbounds %struct.evsel, %struct.evsel* %30, i32 0, i32 0
+  %32 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %31, i32 0, i32 0
+  %33 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %32, i32 0, i32 2
+  %34 = load i64, i64* %33, align 8
+  %35 = icmp eq i64 0, %34
+  %36 = zext i1 %35 to i32
+  %37 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.3, i64 0, i64 0), i32 %36)
+  %38 = load %struct.evsel*, %struct.evsel** %3, align 8
+  %39 = getelementptr inbounds %struct.evsel, %struct.evsel* %38, i32 0, i32 0
+  %40 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %39, i32 0, i32 0
+  %41 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %40, i32 0, i32 3
+  %42 = load i64, i64* %41, align 8
+  %43 = icmp eq i64 0, %42
+  %44 = zext i1 %43 to i32
+  %45 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0), i32 %44)
+  %46 = load %struct.evsel*, %struct.evsel** %3, align 8
+  %47 = getelementptr inbounds %struct.evsel, %struct.evsel* %46, i32 0, i32 0
+  %48 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %47, i32 0, i32 0
+  %49 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %48, i32 0, i32 4
+  %50 = load i32, i32* %49, align 8
+  %51 = icmp ne i32 %50, 0
+  %52 = xor i1 %51, true
+  %53 = zext i1 %52 to i32
+  %54 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.5, i64 0, i64 0), i32 %53)
+  %55 = load %struct.evsel*, %struct.evsel** %3, align 8
+  %56 = getelementptr inbounds %struct.evsel, %struct.evsel* %55, i32 0, i32 0
+  %57 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %56, i32 0, i32 0
+  %58 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %57, i32 0, i32 5
+  %59 = load i32, i32* %58, align 4
+  %60 = icmp ne i32 %59, 0
+  %61 = xor i1 %60, true
+  %62 = zext i1 %61 to i32
+  %63 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.6, i64 0, i64 0), i32 %62)
+  %64 = load %struct.evsel*, %struct.evsel** %3, align 8
+  %65 = getelementptr inbounds %struct.evsel, %struct.evsel* %64, i32 0, i32 0
+  %66 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %65, i32 0, i32 0
+  %67 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %66, i32 0, i32 6
+  %68 = load i32, i32* %67, align 8
+  %69 = icmp ne i32 %68, 0
+  %70 = xor i1 %69, true
+  %71 = zext i1 %70 to i32
+  %72 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([17 x i8], [17 x i8]* @.str.7, i64 0, i64 0), i32 %71)
+  %73 = load %struct.evsel*, %struct.evsel** %3, align 8
+  %74 = getelementptr inbounds %struct.evsel, %struct.evsel* %73, i32 0, i32 0
+  %75 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %74, i32 0, i32 0
+  %76 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %75, i32 0, i32 7
+  %77 = load i32, i32* %76, align 4
+  %78 = icmp ne i32 %77, 0
+  %79 = xor i1 %78, true
+  %80 = zext i1 %79 to i32
+  %81 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([17 x i8], [17 x i8]* @.str.8, i64 0, i64 0), i32 %80)
+  %82 = load %struct.evsel*, %struct.evsel** %3, align 8
+  %83 = call %struct.evsel* @perf_evsel__next(%struct.evsel* %82)
+  store %struct.evsel* %83, %struct.evsel** %3, align 8
+  %84 = load i32, i32* @PERF_TYPE_TRACEPOINT, align 4
+  %85 = load %struct.evsel*, %struct.evsel** %3, align 8
+  %86 = getelementptr inbounds %struct.evsel, %struct.evsel* %85, i32 0, i32 0
+  %87 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %86, i32 0, i32 0
+  %88 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %87, i32 0, i32 0
+  %89 = load i32, i32* %88, align 8
+  %90 = icmp eq i32 %84, %89
+  %91 = zext i1 %90 to i32
+  %92 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.1, i64 0, i64 0), i32 %91)
+  %93 = load i64, i64* @PERF_TP_SAMPLE_TYPE, align 8
+  %94 = load %struct.evsel*, %struct.evsel** %3, align 8
+  %95 = getelementptr inbounds %struct.evsel, %struct.evsel* %94, i32 0, i32 0
+  %96 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %95, i32 0, i32 0
+  %97 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %96, i32 0, i32 8
+  %98 = load i64, i64* %97, align 8
+  %99 = icmp eq i64 %93, %98
+  %100 = zext i1 %99 to i32
+  %101 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.9, i64 0, i64 0), i32 %100)
+  %102 = load %struct.evsel*, %struct.evsel** %3, align 8
+  %103 = getelementptr inbounds %struct.evsel, %struct.evsel* %102, i32 0, i32 0
+  %104 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %103, i32 0, i32 0
+  %105 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %104, i32 0, i32 9
+  %106 = load i32, i32* %105, align 8
+  %107 = icmp eq i32 1, %106
+  %108 = zext i1 %107 to i32
+  %109 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([20 x i8], [20 x i8]* @.str.10, i64 0, i64 0), i32 %108)
+  %110 = load %struct.evsel*, %struct.evsel** %3, align 8
+  %111 = getelementptr inbounds %struct.evsel, %struct.evsel* %110, i32 0, i32 0
+  %112 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %111, i32 0, i32 0
+  %113 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %112, i32 0, i32 4
+  %114 = load i32, i32* %113, align 8
+  %115 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.5, i64 0, i64 0), i32 %114)
+  %116 = load %struct.evsel*, %struct.evsel** %3, align 8
+  %117 = getelementptr inbounds %struct.evsel, %struct.evsel* %116, i32 0, i32 0
+  %118 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %117, i32 0, i32 0
+  %119 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %118, i32 0, i32 5
+  %120 = load i32, i32* %119, align 4
+  %121 = icmp ne i32 %120, 0
+  %122 = xor i1 %121, true
+  %123 = zext i1 %122 to i32
+  %124 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.6, i64 0, i64 0), i32 %123)
+  %125 = load %struct.evsel*, %struct.evsel** %3, align 8
+  %126 = getelementptr inbounds %struct.evsel, %struct.evsel* %125, i32 0, i32 0
+  %127 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %126, i32 0, i32 0
+  %128 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %127, i32 0, i32 6
+  %129 = load i32, i32* %128, align 8
+  %130 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([17 x i8], [17 x i8]* @.str.7, i64 0, i64 0), i32 %129)
+  %131 = load %struct.evsel*, %struct.evsel** %3, align 8
+  %132 = getelementptr inbounds %struct.evsel, %struct.evsel* %131, i32 0, i32 0
+  %133 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %132, i32 0, i32 0
+  %134 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %133, i32 0, i32 7
+  %135 = load i32, i32* %134, align 4
+  %136 = icmp ne i32 %135, 0
+  %137 = xor i1 %136, true
+  %138 = zext i1 %137 to i32
+  %139 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([17 x i8], [17 x i8]* @.str.8, i64 0, i64 0), i32 %138)
+  %140 = load %struct.evsel*, %struct.evsel** %3, align 8
+  %141 = call %struct.evsel* @perf_evsel__next(%struct.evsel* %140)
+  store %struct.evsel* %141, %struct.evsel** %3, align 8
+  %142 = load %struct.evsel*, %struct.evsel** %3, align 8
+  %143 = getelementptr inbounds %struct.evsel, %struct.evsel* %142, i32 0, i32 0
+  %144 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %143, i32 0, i32 0
+  %145 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %144, i32 0, i32 0
+  %146 = load i32, i32* %145, align 8
+  %147 = icmp eq i32 1, %146
+  %148 = zext i1 %147 to i32
+  %149 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.1, i64 0, i64 0), i32 %148)
+  %150 = load %struct.evsel*, %struct.evsel** %3, align 8
+  %151 = getelementptr inbounds %struct.evsel, %struct.evsel* %150, i32 0, i32 0
+  %152 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %151, i32 0, i32 0
+  %153 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %152, i32 0, i32 1
+  %154 = load i32, i32* %153, align 4
+  %155 = icmp eq i32 1, %154
+  %156 = zext i1 %155 to i32
+  %157 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0), i32 %156)
+  %158 = load %struct.evsel*, %struct.evsel** %3, align 8
+  %159 = getelementptr inbounds %struct.evsel, %struct.evsel* %158, i32 0, i32 0
+  %160 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %159, i32 0, i32 0
+  %161 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %160, i32 0, i32 4
+  %162 = load i32, i32* %161, align 8
+  %163 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.5, i64 0, i64 0), i32 %162)
+  %164 = load %struct.evsel*, %struct.evsel** %3, align 8
+  %165 = getelementptr inbounds %struct.evsel, %struct.evsel* %164, i32 0, i32 0
+  %166 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %165, i32 0, i32 0
+  %167 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %166, i32 0, i32 5
+  %168 = load i32, i32* %167, align 4
+  %169 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.6, i64 0, i64 0), i32 %168)
+  %170 = load %struct.evsel*, %struct.evsel** %3, align 8
+  %171 = getelementptr inbounds %struct.evsel, %struct.evsel* %170, i32 0, i32 0
+  %172 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %171, i32 0, i32 0
+  %173 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %172, i32 0, i32 6
+  %174 = load i32, i32* %173, align 8
+  %175 = icmp ne i32 %174, 0
+  %176 = xor i1 %175, true
+  %177 = zext i1 %176 to i32
+  %178 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([17 x i8], [17 x i8]* @.str.7, i64 0, i64 0), i32 %177)
+  %179 = load %struct.evsel*, %struct.evsel** %3, align 8
+  %180 = getelementptr inbounds %struct.evsel, %struct.evsel* %179, i32 0, i32 0
+  %181 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %180, i32 0, i32 0
+  %182 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %181, i32 0, i32 7
+  %183 = load i32, i32* %182, align 4
+  %184 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([17 x i8], [17 x i8]* @.str.8, i64 0, i64 0), i32 %183)
+  ret i32 0
+}
+
+declare dso_local %struct.evsel* @evlist__first(%struct.evlist*) #1
+
+declare dso_local i32 @TEST_ASSERT_VAL(i8*, i32) #1
+
+declare dso_local %struct.evsel* @perf_evsel__next(%struct.evsel*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

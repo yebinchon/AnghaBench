@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPCTSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_NORMAL ; 
- int /*<<< orphan*/  SetFileAttributes (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int LPCTSTR ;
+
+
+ int DeleteFile (int ) ;
+ int FILE_ATTRIBUTE_NORMAL ;
+ int SetFileAttributes (int ,int ) ;
 
 __attribute__((used)) static void
 DeleteTestFile(LPCTSTR filename)
 {
-	SetFileAttributes(filename, FILE_ATTRIBUTE_NORMAL);
-	DeleteFile(filename);
+ SetFileAttributes(filename, FILE_ATTRIBUTE_NORMAL);
+ DeleteFile(filename);
 }

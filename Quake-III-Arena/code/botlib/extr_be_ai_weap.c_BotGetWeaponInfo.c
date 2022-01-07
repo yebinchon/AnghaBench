@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  weaponinfo_t ;
-typedef  int /*<<< orphan*/  bot_weaponstate_t ;
-struct TYPE_2__ {int /*<<< orphan*/ * weaponinfo; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BotValidWeaponNumber (int) ; 
- int /*<<< orphan*/ * BotWeaponStateFromHandle (int) ; 
- int /*<<< orphan*/  Com_Memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- TYPE_1__* weaponconfig ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int weaponinfo_t ;
+typedef int bot_weaponstate_t ;
+struct TYPE_2__ {int * weaponinfo; } ;
+
+
+ int BotValidWeaponNumber (int) ;
+ int * BotWeaponStateFromHandle (int) ;
+ int Com_Memcpy (int *,int *,int) ;
+ TYPE_1__* weaponconfig ;
 
 void BotGetWeaponInfo(int weaponstate, int weapon, weaponinfo_t *weaponinfo)
 {
-	bot_weaponstate_t *ws;
+ bot_weaponstate_t *ws;
 
-	if (!BotValidWeaponNumber(weapon)) return;
-	ws = BotWeaponStateFromHandle(weaponstate);
-	if (!ws) return;
-	if (!weaponconfig) return;
-	Com_Memcpy(weaponinfo, &weaponconfig->weaponinfo[weapon], sizeof(weaponinfo_t));
+ if (!BotValidWeaponNumber(weapon)) return;
+ ws = BotWeaponStateFromHandle(weaponstate);
+ if (!ws) return;
+ if (!weaponconfig) return;
+ Com_Memcpy(weaponinfo, &weaponconfig->weaponinfo[weapon], sizeof(weaponinfo_t));
 }

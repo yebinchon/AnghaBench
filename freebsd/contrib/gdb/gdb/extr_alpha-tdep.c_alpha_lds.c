@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONGEST ;
 
-/* Variables and functions */
- int extract_unsigned_integer (void const*,int) ; 
- int /*<<< orphan*/  store_unsigned_integer (void*,int,int) ; 
+
+
+
+typedef int ULONGEST ;
+
+
+ int extract_unsigned_integer (void const*,int) ;
+ int store_unsigned_integer (void*,int,int) ;
 
 __attribute__((used)) static void
 alpha_lds (void *out, const void *in)
 {
-  ULONGEST mem     = extract_unsigned_integer (in, 4);
-  ULONGEST frac    = (mem >>  0) & 0x7fffff;
-  ULONGEST sign    = (mem >> 31) & 1;
+  ULONGEST mem = extract_unsigned_integer (in, 4);
+  ULONGEST frac = (mem >> 0) & 0x7fffff;
+  ULONGEST sign = (mem >> 31) & 1;
   ULONGEST exp_msb = (mem >> 30) & 1;
   ULONGEST exp_low = (mem >> 23) & 0x7f;
   ULONGEST exp, reg;
@@ -30,12 +30,12 @@ alpha_lds (void *out, const void *in)
   if (exp_msb)
     {
       if (exp_low == 0x7f)
-	exp = 0x7ff;
+ exp = 0x7ff;
     }
   else
     {
       if (exp_low != 0x00)
-	exp |= 0x380;
+ exp |= 0x380;
     }
 
   reg = (sign << 63) | (exp << 52) | (frac << 29);

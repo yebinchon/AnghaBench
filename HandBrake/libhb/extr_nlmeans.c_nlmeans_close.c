@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int* nframes; int threads; int max_frames; struct TYPE_7__* thread_data; struct TYPE_7__* frame; TYPE_1__* plane; int /*<<< orphan*/  taskset; } ;
-typedef  TYPE_2__ hb_filter_private_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int* nframes; int threads; int max_frames; struct TYPE_7__* thread_data; struct TYPE_7__* frame; TYPE_1__* plane; int taskset; } ;
+typedef TYPE_2__ hb_filter_private_t ;
 struct TYPE_8__ {TYPE_2__* private_data; } ;
-typedef  TYPE_3__ hb_filter_object_t ;
-struct TYPE_6__ {int /*<<< orphan*/  mutex; TYPE_2__* mem; TYPE_2__* mem_pre; } ;
+typedef TYPE_3__ hb_filter_object_t ;
+struct TYPE_6__ {int mutex; TYPE_2__* mem; TYPE_2__* mem_pre; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  hb_lock_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  taskset_fini (int /*<<< orphan*/ *) ; 
+
+ int free (TYPE_2__*) ;
+ int hb_lock_close (int *) ;
+ int taskset_fini (int *) ;
 
 __attribute__((used)) static void nlmeans_close(hb_filter_object_t *filter)
 {
     hb_filter_private_t *pv = filter->private_data;
 
-    if (pv == NULL)
+    if (pv == ((void*)0))
     {
         return;
     }
@@ -38,16 +38,16 @@ __attribute__((used)) static void nlmeans_close(hb_filter_object_t *filter)
     {
         for (int f = 0; f < pv->nframes[c]; f++)
         {
-            if (pv->frame[f].plane[c].mem_pre != NULL &&
+            if (pv->frame[f].plane[c].mem_pre != ((void*)0) &&
                 pv->frame[f].plane[c].mem_pre != pv->frame[f].plane[c].mem)
             {
                 free(pv->frame[f].plane[c].mem_pre);
-                pv->frame[f].plane[c].mem_pre = NULL;
+                pv->frame[f].plane[c].mem_pre = ((void*)0);
             }
-            if (pv->frame[f].plane[c].mem != NULL)
+            if (pv->frame[f].plane[c].mem != ((void*)0))
             {
                 free(pv->frame[f].plane[c].mem);
-                pv->frame[f].plane[c].mem = NULL;
+                pv->frame[f].plane[c].mem = ((void*)0);
             }
         }
     }
@@ -63,5 +63,5 @@ __attribute__((used)) static void nlmeans_close(hb_filter_object_t *filter)
     free(pv->frame);
     free(pv->thread_data);
     free(pv);
-    filter->private_data = NULL;
+    filter->private_data = ((void*)0);
 }

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_checksum_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct context {TYPE_1__* editor; int /*<<< orphan*/  target_root; int /*<<< orphan*/  source_root; int /*<<< orphan*/  authz_read_baton; int /*<<< orphan*/  (* authz_read_func ) (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_2__ {int /*<<< orphan*/ * (* close_file ) (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* open_file ) (char const*,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ;int /*<<< orphan*/ * (* close_directory ) (void*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* open_directory ) (char const*,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAYBE_DEMOTE_DEPTH (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * absent_file_or_dir (struct context*,void*,char const*,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  delta_dirs (struct context*,void*,int /*<<< orphan*/ ,char const*,char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  delta_files (struct context*,void*,char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_path_revision (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (char const*,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/ * stub3 (void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub4 (char const*,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/ * stub5 (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_checksum_md5 ; 
- int /*<<< orphan*/  svn_checksum_to_cstring (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_file_checksum (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_dir ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef int svn_checksum_t ;
+typedef int svn_boolean_t ;
+struct context {TYPE_1__* editor; int target_root; int source_root; int authz_read_baton; int (* authz_read_func ) (int *,int ,char const*,int ,int *) ;} ;
+typedef int apr_pool_t ;
+struct TYPE_2__ {int * (* close_file ) (void*,int ,int *) ;int (* open_file ) (char const*,void*,int ,int *,void**) ;int * (* close_directory ) (void*,int *) ;int (* open_directory ) (char const*,void*,int ,int *,void**) ;} ;
+
+
+ int MAYBE_DEMOTE_DEPTH (int ) ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int SVN_INVALID_REVNUM ;
+ int TRUE ;
+ int * absent_file_or_dir (struct context*,void*,char const*,scalar_t__,int *) ;
+ int delta_dirs (struct context*,void*,int ,char const*,char const*,char const*,int *) ;
+ int delta_files (struct context*,void*,char const*,char const*,int *) ;
+ int get_path_revision (int ,char const*,int *) ;
+ int stub1 (int *,int ,char const*,int ,int *) ;
+ int stub2 (char const*,void*,int ,int *,void**) ;
+ int * stub3 (void*,int *) ;
+ int stub4 (char const*,void*,int ,int *,void**) ;
+ int * stub5 (void*,int ,int *) ;
+ int svn_checksum_md5 ;
+ int svn_checksum_to_cstring (int *,int *) ;
+ int svn_fs_file_checksum (int **,int ,int ,char const*,int ,int *) ;
+ scalar_t__ svn_node_dir ;
 
 __attribute__((used)) static svn_error_t *
 replace_file_or_dir(struct context *c,
@@ -64,7 +64,7 @@ replace_file_or_dir(struct context *c,
         return absent_file_or_dir(c, dir_baton, edit_path, tgt_kind, pool);
     }
 
-  /* Get the base revision for the entry from the hash. */
+
   base_revision = get_path_revision(c->source_root, source_path, pool);
 
   if (tgt_kind == svn_node_dir)

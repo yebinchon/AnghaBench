@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  header ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int header ;
 struct TYPE_4__ {int e_shoff; int e_shnum; int e_shstrndx; } ;
-typedef  TYPE_1__ Elf32_Ehdr ;
+typedef TYPE_1__ Elf32_Ehdr ;
 
-/* Variables and functions */
- TYPE_1__* MAP_FAILED ; 
- int /*<<< orphan*/  MAP_SHARED ; 
- int /*<<< orphan*/  MS_SYNC ; 
- int /*<<< orphan*/  O_RDWR ; 
- int PROT_READ ; 
- int PROT_WRITE ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ mmap (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int msync (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  munmap (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+ TYPE_1__* MAP_FAILED ;
+ int MAP_SHARED ;
+ int MS_SYNC ;
+ int O_RDWR ;
+ int PROT_READ ;
+ int PROT_WRITE ;
+ int close (int) ;
+ scalar_t__ mmap (int *,int,int,int ,int,int ) ;
+ int msync (int *,int ,int ) ;
+ int munmap (TYPE_1__*,int ) ;
+ int open (char*,int ) ;
+ int perror (char*) ;
+ int printf (char*,...) ;
 
 int main(int argc, char** argv) {
     int f;
@@ -46,8 +46,8 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-    //MAP_SHARED is required to actually update the file
-    if((header = (Elf32_Ehdr *) mmap(NULL, sizeof(header), PROT_READ | PROT_WRITE, MAP_SHARED, f, 0)) == MAP_FAILED){
+
+    if((header = (Elf32_Ehdr *) mmap(((void*)0), sizeof(header), PROT_READ | PROT_WRITE, MAP_SHARED, f, 0)) == MAP_FAILED){
         perror("mmap");
         close(f);
         return 1;
@@ -65,7 +65,7 @@ int main(int argc, char** argv) {
     printf("\te_shoff:%d\n\te_shnum:%d\n\te_shstrndx:%d\n",
             header->e_shoff, header->e_shnum, header->e_shstrndx);
 
-    if(msync(NULL, 0, MS_SYNC) == -1){
+    if(msync(((void*)0), 0, MS_SYNC) == -1){
         perror("msync");
         close(f);
         return 1;

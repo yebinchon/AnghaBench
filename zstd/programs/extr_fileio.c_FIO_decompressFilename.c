@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dRess_t ;
-typedef  int /*<<< orphan*/  FIO_prefs_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIO_createDResources (int /*<<< orphan*/ * const,char const*) ; 
- int FIO_decompressSrcFile (int /*<<< orphan*/ * const,int /*<<< orphan*/  const,char const*,char const*) ; 
- int /*<<< orphan*/  FIO_freeDResources (int /*<<< orphan*/  const) ; 
+
+
+
+typedef int dRess_t ;
+typedef int FIO_prefs_t ;
+
+
+ int FIO_createDResources (int * const,char const*) ;
+ int FIO_decompressSrcFile (int * const,int const,char const*,char const*) ;
+ int FIO_freeDResources (int const) ;
 
 int FIO_decompressFilename(FIO_prefs_t* const prefs,
                            const char* dstFileName, const char* srcFileName,

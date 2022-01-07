@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum Type { ____Placeholder_Type } Type ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef enum Type { ____Placeholder_Type } Type ;
 struct TYPE_6__ {int type; unsigned int hash; scalar_t__ num_needed; TYPE_1__* last_entry; TYPE_1__* first_entry; struct TYPE_6__* next; } ;
-struct TYPE_5__ {unsigned short old_id; int need_symlink; int /*<<< orphan*/  digest; struct TYPE_5__* next; int /*<<< orphan*/  filename; } ;
-typedef  TYPE_1__ HENTRY ;
-typedef  TYPE_2__ BUCKET ;
+struct TYPE_5__ {unsigned short old_id; int need_symlink; int digest; struct TYPE_5__* next; int filename; } ;
+typedef TYPE_1__ HENTRY ;
+typedef TYPE_2__ BUCKET ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char const*,...) ; 
- scalar_t__ MAX_COLLISIONS ; 
- int /*<<< orphan*/  OPENSSL_strdup (char const*) ; 
- int OSSL_NELEM (TYPE_2__**) ; 
- int TYPE_CERT ; 
- void* app_malloc (int,char*) ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/  evpmdsize ; 
- TYPE_2__** hash_table ; 
- scalar_t__ memcmp (unsigned char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,unsigned char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  opt_getprog () ; 
- scalar_t__ strcmp (char const*,int /*<<< orphan*/ ) ; 
+
+ int BIO_printf (int ,char*,int ,char const*,...) ;
+ scalar_t__ MAX_COLLISIONS ;
+ int OPENSSL_strdup (char const*) ;
+ int OSSL_NELEM (TYPE_2__**) ;
+ int TYPE_CERT ;
+ void* app_malloc (int,char*) ;
+ int bio_err ;
+ int evpmdsize ;
+ TYPE_2__** hash_table ;
+ scalar_t__ memcmp (unsigned char const*,int ,int ) ;
+ int memcpy (int ,unsigned char const*,int ) ;
+ int opt_getprog () ;
+ scalar_t__ strcmp (char const*,int ) ;
 
 __attribute__((used)) static int add_entry(enum Type type, unsigned int hash, const char *filename,
                       const unsigned char *digest, int need_symlink,
@@ -40,13 +40,13 @@ __attribute__((used)) static int add_entry(enum Type type, unsigned int hash, co
     static BUCKET nilbucket;
     static HENTRY nilhentry;
     BUCKET *bp;
-    HENTRY *ep, *found = NULL;
+    HENTRY *ep, *found = ((void*)0);
     unsigned int ndx = (type + hash) % OSSL_NELEM(hash_table);
 
     for (bp = hash_table[ndx]; bp; bp = bp->next)
         if (bp->type == type && bp->hash == hash)
             break;
-    if (bp == NULL) {
+    if (bp == ((void*)0)) {
         bp = app_malloc(sizeof(*bp), "hash bucket");
         *bp = nilbucket;
         bp->next = hash_table[ndx];
@@ -65,12 +65,12 @@ __attribute__((used)) static int add_entry(enum Type type, unsigned int hash, co
         }
         if (strcmp(filename, ep->filename) == 0) {
             found = ep;
-            if (digest == NULL)
+            if (digest == ((void*)0))
                 break;
         }
     }
     ep = found;
-    if (ep == NULL) {
+    if (ep == ((void*)0)) {
         if (bp->num_needed >= MAX_COLLISIONS) {
             BIO_printf(bio_err,
                        "%s: error: hash table overflow for %s\n",
@@ -83,7 +83,7 @@ __attribute__((used)) static int add_entry(enum Type type, unsigned int hash, co
         ep->filename = OPENSSL_strdup(filename);
         if (bp->last_entry)
             bp->last_entry->next = ep;
-        if (bp->first_entry == NULL)
+        if (bp->first_entry == ((void*)0))
             bp->first_entry = ep;
         bp->last_entry = ep;
     }

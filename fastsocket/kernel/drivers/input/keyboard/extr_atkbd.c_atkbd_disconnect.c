@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  kobj; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int kobj; } ;
 struct serio {TYPE_1__ dev; } ;
-struct atkbd {int /*<<< orphan*/  dev; int /*<<< orphan*/  event_work; } ;
+struct atkbd {int dev; int event_work; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atkbd_attribute_group ; 
- int /*<<< orphan*/  atkbd_disable (struct atkbd*) ; 
- int /*<<< orphan*/  cancel_delayed_work_sync (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  input_unregister_device (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (struct atkbd*) ; 
- int /*<<< orphan*/  serio_close (struct serio*) ; 
- struct atkbd* serio_get_drvdata (struct serio*) ; 
- int /*<<< orphan*/  serio_set_drvdata (struct serio*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sysfs_remove_group (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int atkbd_attribute_group ;
+ int atkbd_disable (struct atkbd*) ;
+ int cancel_delayed_work_sync (int *) ;
+ int input_unregister_device (int ) ;
+ int kfree (struct atkbd*) ;
+ int serio_close (struct serio*) ;
+ struct atkbd* serio_get_drvdata (struct serio*) ;
+ int serio_set_drvdata (struct serio*,int *) ;
+ int sysfs_remove_group (int *,int *) ;
 
 __attribute__((used)) static void atkbd_disconnect(struct serio *serio)
 {
-	struct atkbd *atkbd = serio_get_drvdata(serio);
+ struct atkbd *atkbd = serio_get_drvdata(serio);
 
-	atkbd_disable(atkbd);
+ atkbd_disable(atkbd);
 
-	/* make sure we don't have a command in flight */
-	cancel_delayed_work_sync(&atkbd->event_work);
 
-	sysfs_remove_group(&serio->dev.kobj, &atkbd_attribute_group);
-	input_unregister_device(atkbd->dev);
-	serio_close(serio);
-	serio_set_drvdata(serio, NULL);
-	kfree(atkbd);
+ cancel_delayed_work_sync(&atkbd->event_work);
+
+ sysfs_remove_group(&serio->dev.kobj, &atkbd_attribute_group);
+ input_unregister_device(atkbd->dev);
+ serio_close(serio);
+ serio_set_drvdata(serio, ((void*)0));
+ kfree(atkbd);
 }

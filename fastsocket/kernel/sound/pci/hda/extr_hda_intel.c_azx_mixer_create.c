@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct azx {int /*<<< orphan*/  bus; } ;
 
-/* Variables and functions */
- int snd_hda_build_controls (int /*<<< orphan*/ ) ; 
+
+
+
+struct azx {int bus; } ;
+
+
+ int snd_hda_build_controls (int ) ;
 
 __attribute__((used)) static int azx_mixer_create(struct azx *chip)
 {
-	return snd_hda_build_controls(chip->bus);
+ return snd_hda_build_controls(chip->bus);
 }

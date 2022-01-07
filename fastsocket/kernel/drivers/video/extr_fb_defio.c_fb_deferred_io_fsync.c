@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct file {struct fb_info* private_data; } ;
-struct fb_info {int /*<<< orphan*/  deferred_work; int /*<<< orphan*/  fbdefio; } ;
+struct fb_info {int deferred_work; int fbdefio; } ;
 struct dentry {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cancel_rearming_delayed_work (int /*<<< orphan*/ *) ; 
- int schedule_delayed_work (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int cancel_rearming_delayed_work (int *) ;
+ int schedule_delayed_work (int *,int ) ;
 
 int fb_deferred_io_fsync(struct file *file, struct dentry *dentry, int datasync)
 {
-	struct fb_info *info = file->private_data;
+ struct fb_info *info = file->private_data;
 
-	/* Skip if deferred io is complied-in but disabled on this fbdev */
-	if (!info->fbdefio)
-		return 0;
 
-	/* Kill off the delayed work */
-	cancel_rearming_delayed_work(&info->deferred_work);
+ if (!info->fbdefio)
+  return 0;
 
-	/* Run it immediately */
-	return schedule_delayed_work(&info->deferred_work, 0);
+
+ cancel_rearming_delayed_work(&info->deferred_work);
+
+
+ return schedule_delayed_work(&info->deferred_work, 0);
 }

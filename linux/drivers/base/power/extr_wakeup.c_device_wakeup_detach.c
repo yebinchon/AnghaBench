@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wakeup_source {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  lock; struct wakeup_source* wakeup; } ;
+struct TYPE_2__ {int lock; struct wakeup_source* wakeup; } ;
 struct device {TYPE_1__ power; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
+
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
 
 __attribute__((used)) static struct wakeup_source *device_wakeup_detach(struct device *dev)
 {
-	struct wakeup_source *ws;
+ struct wakeup_source *ws;
 
-	spin_lock_irq(&dev->power.lock);
-	ws = dev->power.wakeup;
-	dev->power.wakeup = NULL;
-	spin_unlock_irq(&dev->power.lock);
-	return ws;
+ spin_lock_irq(&dev->power.lock);
+ ws = dev->power.wakeup;
+ dev->power.wakeup = ((void*)0);
+ spin_unlock_irq(&dev->power.lock);
+ return ws;
 }

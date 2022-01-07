@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct max77650_onkey {int /*<<< orphan*/  input; int /*<<< orphan*/  code; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  input_report_key (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  input_sync (int /*<<< orphan*/ ) ; 
+
+
+
+struct max77650_onkey {int input; int code; } ;
+typedef int irqreturn_t ;
+
+
+ int IRQ_HANDLED ;
+ int input_report_key (int ,int ,int ) ;
+ int input_sync (int ) ;
 
 __attribute__((used)) static irqreturn_t max77650_onkey_falling(int irq, void *data)
 {
-	struct max77650_onkey *onkey = data;
+ struct max77650_onkey *onkey = data;
 
-	input_report_key(onkey->input, onkey->code, 0);
-	input_sync(onkey->input);
+ input_report_key(onkey->input, onkey->code, 0);
+ input_sync(onkey->input);
 
-	return IRQ_HANDLED;
+ return IRQ_HANDLED;
 }

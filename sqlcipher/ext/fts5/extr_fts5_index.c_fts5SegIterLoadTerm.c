@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_8__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+typedef struct TYPE_12__ TYPE_8__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int u8 ;
 struct TYPE_12__ {int n; int nSpace; } ;
-struct TYPE_11__ {int /*<<< orphan*/  rc; } ;
-struct TYPE_10__ {int iLeafOffset; int iTermLeafOffset; size_t iPgidxOff; size_t iEndofDoclist; TYPE_1__* pLeaf; int /*<<< orphan*/  iLeafPgno; int /*<<< orphan*/  iTermLeafPgno; TYPE_8__ term; } ;
-struct TYPE_9__ {int szLeaf; size_t nn; int /*<<< orphan*/ * p; } ;
-typedef  TYPE_2__ Fts5SegIter ;
-typedef  TYPE_3__ Fts5Index ;
+struct TYPE_11__ {int rc; } ;
+struct TYPE_10__ {int iLeafOffset; int iTermLeafOffset; size_t iPgidxOff; size_t iEndofDoclist; TYPE_1__* pLeaf; int iLeafPgno; int iTermLeafPgno; TYPE_8__ term; } ;
+struct TYPE_9__ {int szLeaf; size_t nn; int * p; } ;
+typedef TYPE_2__ Fts5SegIter ;
+typedef TYPE_3__ Fts5Index ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FTS5_CORRUPT ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fts5BufferAppendBlob (int /*<<< orphan*/ *,TYPE_8__*,int,int /*<<< orphan*/ *) ; 
- scalar_t__ fts5GetVarint32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  fts5SegIterLoadRowid (TYPE_3__*,TYPE_2__*) ; 
+
+ int FTS5_CORRUPT ;
+ int assert (int) ;
+ int fts5BufferAppendBlob (int *,TYPE_8__*,int,int *) ;
+ scalar_t__ fts5GetVarint32 (int *,int) ;
+ int fts5SegIterLoadRowid (TYPE_3__*,TYPE_2__*) ;
 
 __attribute__((used)) static void fts5SegIterLoadTerm(Fts5Index *p, Fts5SegIter *pIter, int nKeep){
-  u8 *a = pIter->pLeaf->p;        /* Buffer to read data from */
-  int iOff = pIter->iLeafOffset;  /* Offset to read at */
-  int nNew;                       /* Bytes of new data */
+  u8 *a = pIter->pLeaf->p;
+  int iOff = pIter->iLeafOffset;
+  int nNew;
 
   iOff += fts5GetVarint32(&a[iOff], nNew);
   if( iOff+nNew>pIter->pLeaf->szLeaf || nKeep>pIter->term.n || nNew==0 ){

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stream_t ;
-struct trailing_context_printer {TYPE_1__* mob; int /*<<< orphan*/  lines_to_print; } ;
-struct TYPE_3__ {int /*<<< orphan*/ * output_stream; int /*<<< orphan*/  pool; int /*<<< orphan*/  context_size; } ;
-typedef  TYPE_1__ merge_output_baton_t ;
 
-/* Variables and functions */
- struct trailing_context_printer* apr_pcalloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_stream_empty (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stream_set_baton (int /*<<< orphan*/ *,struct trailing_context_printer*) ; 
- int /*<<< orphan*/  svn_stream_set_write (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trailing_context_printer_write ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_stream_t ;
+struct trailing_context_printer {TYPE_1__* mob; int lines_to_print; } ;
+struct TYPE_3__ {int * output_stream; int pool; int context_size; } ;
+typedef TYPE_1__ merge_output_baton_t ;
+
+
+ struct trailing_context_printer* apr_pcalloc (int ,int) ;
+ int svn_pool_clear (int ) ;
+ int * svn_stream_empty (int ) ;
+ int svn_stream_set_baton (int *,struct trailing_context_printer*) ;
+ int svn_stream_set_write (int *,int ) ;
+ int trailing_context_printer_write ;
 
 __attribute__((used)) static void
 make_trailing_context_printer(merge_output_baton_t *btn)

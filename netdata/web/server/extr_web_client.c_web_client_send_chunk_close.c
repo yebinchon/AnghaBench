@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct web_client {int /*<<< orphan*/  id; int /*<<< orphan*/  stats_sent_bytes; } ;
-typedef  scalar_t__ ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_DEFLATE ; 
- int /*<<< orphan*/  D_WEB_CLIENT ; 
- int /*<<< orphan*/  WEB_CLIENT_IS_DEAD (struct web_client*) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,...) ; 
- scalar_t__ web_client_send_data (struct web_client*,char*,int,int /*<<< orphan*/ ) ; 
+
+
+
+struct web_client {int id; int stats_sent_bytes; } ;
+typedef scalar_t__ ssize_t ;
+
+
+ int D_DEFLATE ;
+ int D_WEB_CLIENT ;
+ int WEB_CLIENT_IS_DEAD (struct web_client*) ;
+ int debug (int ,char*,int ,...) ;
+ scalar_t__ web_client_send_data (struct web_client*,char*,int,int ) ;
 
 ssize_t web_client_send_chunk_close(struct web_client *w)
 {
-    //debug(D_DEFLATE, "%llu: CLOSE CHUNK.", w->id);
+
 
     ssize_t bytes;
     bytes = web_client_send_data(w,"\r\n",2,0);

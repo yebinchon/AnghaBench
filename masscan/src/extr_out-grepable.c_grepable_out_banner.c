@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned int time_t ;
+
+
+
+
+typedef unsigned int time_t ;
 struct Output {int dummy; } ;
-typedef  enum ApplicationProtocol { ____Placeholder_ApplicationProtocol } ApplicationProtocol ;
-typedef  int /*<<< orphan*/  banner_buffer ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef enum ApplicationProtocol { ____Placeholder_ApplicationProtocol } ApplicationProtocol ;
+typedef int banner_buffer ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UNUSEDPARM (unsigned int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- char* masscan_app_to_string (int) ; 
- int /*<<< orphan*/  normalize_string (unsigned char const*,unsigned int,char*,int) ; 
+
+ int UNUSEDPARM (unsigned int) ;
+ int fprintf (int *,char*,...) ;
+ char* masscan_app_to_string (int) ;
+ int normalize_string (unsigned char const*,unsigned int,char*,int) ;
 
 __attribute__((used)) static void
 grepable_out_banner(struct Output *out, FILE *fp, time_t timestamp,
@@ -34,7 +34,7 @@ grepable_out_banner(struct Output *out, FILE *fp, time_t timestamp,
     UNUSEDPARM(timestamp);
     UNUSEDPARM(out);
     UNUSEDPARM(ip_proto);
-    
+
     fprintf(fp, "Host: %u.%u.%u.%u ()",
                     (unsigned char)(ip>>24),
                     (unsigned char)(ip>>16),

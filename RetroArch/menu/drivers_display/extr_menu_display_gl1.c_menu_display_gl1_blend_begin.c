@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  video_frame_info_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_BLEND ; 
- int /*<<< orphan*/  GL_ONE_MINUS_SRC_ALPHA ; 
- int /*<<< orphan*/  GL_SRC_ALPHA ; 
- int /*<<< orphan*/  glBlendFunc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glEnable (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int video_frame_info_t ;
+
+
+ int GL_BLEND ;
+ int GL_ONE_MINUS_SRC_ALPHA ;
+ int GL_SRC_ALPHA ;
+ int glBlendFunc (int ,int ) ;
+ int glEnable (int ) ;
 
 __attribute__((used)) static void menu_display_gl1_blend_begin(video_frame_info_t *video_info)
 {

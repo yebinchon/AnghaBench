@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SERVER ;
-typedef  int /*<<< orphan*/  RPC_READ_LOG_FILE ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  int /*<<< orphan*/  FARM_MEMBER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreePack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeRpcReadLogFile (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InRpcReadLogFile (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewPack () ; 
- int /*<<< orphan*/  OutRpcReadLogFile (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SiCallTask (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  Zero (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int SERVER ;
+typedef int RPC_READ_LOG_FILE ;
+typedef int PACK ;
+typedef int FARM_MEMBER ;
+
+
+ int FreePack (int *) ;
+ int FreeRpcReadLogFile (int *) ;
+ int InRpcReadLogFile (int *,int *) ;
+ int * NewPack () ;
+ int OutRpcReadLogFile (int *,int *) ;
+ int * SiCallTask (int *,int *,char*) ;
+ int Zero (int *,int) ;
 
 bool SiCallReadLogFile(SERVER *s, FARM_MEMBER *f, RPC_READ_LOG_FILE *t)
 {
-	PACK *p;
-	// Validate arguments
-	if (s == NULL || f == NULL)
-	{
-		return false;
-	}
+ PACK *p;
 
-	p = NewPack();
-	OutRpcReadLogFile(p, t);
-	FreeRpcReadLogFile(t);
-	Zero(t, sizeof(RPC_READ_LOG_FILE));
+ if (s == ((void*)0) || f == ((void*)0))
+ {
+  return 0;
+ }
 
-	p = SiCallTask(f, p, "readlogfile");
+ p = NewPack();
+ OutRpcReadLogFile(p, t);
+ FreeRpcReadLogFile(t);
+ Zero(t, sizeof(RPC_READ_LOG_FILE));
 
-	if (p == NULL)
-	{
-		return false;
-	}
+ p = SiCallTask(f, p, "readlogfile");
 
-	InRpcReadLogFile(t, p);
-	FreePack(p);
+ if (p == ((void*)0))
+ {
+  return 0;
+ }
 
-	return true;
+ InRpcReadLogFile(t, p);
+ FreePack(p);
+
+ return 1;
 }

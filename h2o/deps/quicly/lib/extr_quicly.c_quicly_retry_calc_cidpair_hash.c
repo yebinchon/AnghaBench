@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-struct TYPE_4__ {scalar_t__ len; int /*<<< orphan*/  base; } ;
-typedef  TYPE_1__ ptls_iovec_t ;
-typedef  int /*<<< orphan*/  ptls_hash_algorithm_t ;
 
-/* Variables and functions */
- int PTLS_SHA256_DIGEST_SIZE ; 
- int /*<<< orphan*/  QUICLY_MAX_CID_LEN_V1 ; 
- int /*<<< orphan*/  memcpy (void**,int /*<<< orphan*/ ,scalar_t__) ; 
- int ptls_calc_hash (int /*<<< orphan*/ *,void**,void**,int) ; 
- int /*<<< orphan*/  quicly_decode64 (void*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef void* uint8_t ;
+typedef int uint64_t ;
+struct TYPE_4__ {scalar_t__ len; int base; } ;
+typedef TYPE_1__ ptls_iovec_t ;
+typedef int ptls_hash_algorithm_t ;
+
+
+ int PTLS_SHA256_DIGEST_SIZE ;
+ int QUICLY_MAX_CID_LEN_V1 ;
+ int memcpy (void**,int ,scalar_t__) ;
+ int ptls_calc_hash (int *,void**,void**,int) ;
+ int quicly_decode64 (void*) ;
 
 int quicly_retry_calc_cidpair_hash(ptls_hash_algorithm_t *sha256, ptls_iovec_t client_cid, ptls_iovec_t server_cid, uint64_t *value)
 {

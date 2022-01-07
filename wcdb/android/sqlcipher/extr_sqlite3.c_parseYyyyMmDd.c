@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char u8 ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef char u8 ;
 struct TYPE_5__ {int validYMD; int Y; int M; int D; scalar_t__ validTZ; scalar_t__ validJD; scalar_t__ validHMS; } ;
-typedef  TYPE_1__ DateTime ;
+typedef TYPE_1__ DateTime ;
 
-/* Variables and functions */
- int /*<<< orphan*/  computeJD (TYPE_1__*) ; 
- int getDigits (char const*,char*,int*,int*,int*) ; 
- scalar_t__ parseHhMmSs (char const*,TYPE_1__*) ; 
- scalar_t__ sqlite3Isspace (char const) ; 
+
+ int computeJD (TYPE_1__*) ;
+ int getDigits (char const*,char*,int*,int*,int*) ;
+ scalar_t__ parseHhMmSs (char const*,TYPE_1__*) ;
+ scalar_t__ sqlite3Isspace (char const) ;
 
 __attribute__((used)) static int parseYyyyMmDd(const char *zDate, DateTime *p){
   int Y, M, D, neg;
@@ -36,7 +36,7 @@ __attribute__((used)) static int parseYyyyMmDd(const char *zDate, DateTime *p){
   zDate += 10;
   while( sqlite3Isspace(*zDate) || 'T'==*(u8*)zDate ){ zDate++; }
   if( parseHhMmSs(zDate, p)==0 ){
-    /* We got the time */
+
   }else if( *zDate==0 ){
     p->validHMS = 0;
   }else{

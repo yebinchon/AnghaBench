@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ i64 ;
-typedef  int /*<<< orphan*/  aBuf ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ i64 ;
+typedef int aBuf ;
 struct TYPE_6__ {scalar_t__ rc; } ;
-typedef  TYPE_1__ Error ;
+typedef TYPE_1__ Error ;
 
-/* Variables and functions */
- int O_CREAT ; 
- int O_EXCL ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int O_RDWR ; 
- scalar_t__ SQLITE_OK ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ filesize_x (TYPE_1__*,char const*) ; 
- int open (char const*,int,...) ; 
- int read (int,char*,int) ; 
- int /*<<< orphan*/  sqlite3_mprintf (char*,char const*) ; 
- int /*<<< orphan*/  system_error (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_error_x (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unlink (char const*) ; 
- int write (int,char*,int) ; 
+
+ int O_CREAT ;
+ int O_EXCL ;
+ int O_RDONLY ;
+ int O_RDWR ;
+ scalar_t__ SQLITE_OK ;
+ int close (int) ;
+ int errno ;
+ scalar_t__ filesize_x (TYPE_1__*,char const*) ;
+ int open (char const*,int,...) ;
+ int read (int,char*,int) ;
+ int sqlite3_mprintf (char*,char const*) ;
+ int system_error (TYPE_1__*,int ) ;
+ int test_error_x (TYPE_1__*,int ) ;
+ int unlink (char const*) ;
+ int write (int,char*,int) ;
 
 __attribute__((used)) static void filecopy_x(
   Error *pErr,

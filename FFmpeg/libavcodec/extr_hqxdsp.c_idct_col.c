@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int int16_t ;
 
-/* Variables and functions */
+
+
+
+typedef int uint8_t ;
+typedef int int16_t ;
+
+
 
 __attribute__((used)) static inline void idct_col(int16_t *blk, const uint8_t *quant)
 {
@@ -30,22 +30,22 @@ __attribute__((used)) static inline void idct_col(int16_t *blk, const uint8_t *q
     s6 = (int) blk[6 * 8] * quant[6 * 8];
     s7 = (int) blk[7 * 8] * quant[7 * 8];
 
-    t0  =  (int)(s3 * 19266U + s5 * 12873U) >> 15;
-    t1  =  (int)(s5 * 19266U - s3 * 12873U) >> 15;
-    t2  = ((int)(s7 * 4520U  + s1 * 22725U) >> 15) - t0;
-    t3  = ((int)(s1 * 4520U  - s7 * 22725U) >> 15) - t1;
-    t4  = t0 * 2 + t2;
-    t5  = t1 * 2 + t3;
-    t6  = t2 - t3;
-    t7  = t3 * 2 + t6;
-    t8  = (int)(t6 * 11585U) >> 14;
-    t9  = (int)(t7 * 11585U) >> 14;
-    tA  = (int)(s2 * 8867U - s6 * 21407U) >> 14;
-    tB  = (int)(s6 * 8867U + s2 * 21407U) >> 14;
-    tC  = (s0 >> 1) - (s4 >> 1);
-    tD  = (s4 >> 1) * 2 + tC;
-    tE  = tC - (tA >> 1);
-    tF  = tD - (tB >> 1);
+    t0 = (int)(s3 * 19266U + s5 * 12873U) >> 15;
+    t1 = (int)(s5 * 19266U - s3 * 12873U) >> 15;
+    t2 = ((int)(s7 * 4520U + s1 * 22725U) >> 15) - t0;
+    t3 = ((int)(s1 * 4520U - s7 * 22725U) >> 15) - t1;
+    t4 = t0 * 2 + t2;
+    t5 = t1 * 2 + t3;
+    t6 = t2 - t3;
+    t7 = t3 * 2 + t6;
+    t8 = (int)(t6 * 11585U) >> 14;
+    t9 = (int)(t7 * 11585U) >> 14;
+    tA = (int)(s2 * 8867U - s6 * 21407U) >> 14;
+    tB = (int)(s6 * 8867U + s2 * 21407U) >> 14;
+    tC = (s0 >> 1) - (s4 >> 1);
+    tD = (s4 >> 1) * 2 + tC;
+    tE = tC - (tA >> 1);
+    tF = tD - (tB >> 1);
     t10 = tF - t5;
     t11 = tE - t8;
     t12 = tE + (tA >> 1) * 2 - t9;

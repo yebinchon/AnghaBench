@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
 
-/* Variables and functions */
-#define  ARMV8_PMU_CYCLE_IDX 128 
- int /*<<< orphan*/  PMEVTYPER_CASES (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  READ ; 
- int /*<<< orphan*/  WARN_ON (int) ; 
- int /*<<< orphan*/  pmccfiltr_el0 ; 
- int /*<<< orphan*/  read_sysreg (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u64 ;
+
+
+
+ int PMEVTYPER_CASES (int ) ;
+ int READ ;
+ int WARN_ON (int) ;
+ int pmccfiltr_el0 ;
+ int read_sysreg (int ) ;
 
 __attribute__((used)) static u64 kvm_vcpu_pmu_read_evtype_direct(int idx)
 {
-	switch (idx) {
-	PMEVTYPER_CASES(READ);
-	case ARMV8_PMU_CYCLE_IDX:
-		return read_sysreg(pmccfiltr_el0);
-	default:
-		WARN_ON(1);
-	}
+ switch (idx) {
+ PMEVTYPER_CASES(READ);
+ case 128:
+  return read_sysreg(pmccfiltr_el0);
+ default:
+  WARN_ON(1);
+ }
 
-	return 0;
+ return 0;
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* intree_t ;
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef TYPE_1__* intree_t ;
 struct TYPE_5__ {int flags; } ;
-struct TYPE_4__ {int /*<<< orphan*/  z; int /*<<< orphan*/  x; } ;
+struct TYPE_4__ {int z; int x; } ;
 
-/* Variables and functions */
- int ADF_NEWANCIENT ; 
- int /*<<< orphan*/  ancient_ad_users ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- TYPE_3__* get_ad (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  writeout_int (int /*<<< orphan*/ ) ; 
+
+ int ADF_NEWANCIENT ;
+ int ancient_ad_users ;
+ int assert (int ) ;
+ TYPE_3__* get_ad (int ) ;
+ int writeout_int (int ) ;
 
 __attribute__((used)) static int writeout_xz_not_ancient (intree_t TC) {
   if (get_ad (TC->x)->flags & ADF_NEWANCIENT) {

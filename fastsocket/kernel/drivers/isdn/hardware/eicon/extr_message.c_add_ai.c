@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int word ;
-struct TYPE_6__ {scalar_t__ length; int /*<<< orphan*/ * info; } ;
-typedef  int /*<<< orphan*/  PLCI ;
-typedef  TYPE_1__ API_PARSE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FTY ; 
- int /*<<< orphan*/  KEY ; 
- int /*<<< orphan*/  UUI ; 
- int /*<<< orphan*/  add_s (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  add_ss (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ api_parse (int /*<<< orphan*/ *,int,char*,TYPE_1__*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int word ;
+struct TYPE_6__ {scalar_t__ length; int * info; } ;
+typedef int PLCI ;
+typedef TYPE_1__ API_PARSE ;
+
+
+ int FTY ;
+ int KEY ;
+ int UUI ;
+ int add_s (int *,int ,TYPE_1__*) ;
+ int add_ss (int *,int ,TYPE_1__*) ;
+ scalar_t__ api_parse (int *,int,char*,TYPE_1__*) ;
 
 __attribute__((used)) static void add_ai(PLCI *plci, API_PARSE *ai)
 {

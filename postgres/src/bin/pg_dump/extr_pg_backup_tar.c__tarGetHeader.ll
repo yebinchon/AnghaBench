@@ -1,0 +1,224 @@
+; ModuleID = '/home/carl/AnghaBench/postgres/src/bin/pg_dump/extr_pg_backup_tar.c__tarGetHeader.c'
+source_filename = "/home/carl/AnghaBench/postgres/src/bin/pg_dump/extr_pg_backup_tar.c__tarGetHeader.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.TYPE_9__ = type { i64 }
+%struct.TYPE_8__ = type { i32, i32 }
+%struct.TYPE_7__ = type { i32, i32 }
+
+@.str = private unnamed_addr constant [39 x i8] c"incomplete tar header found (%lu byte)\00", align 1
+@.str.1 = private unnamed_addr constant [40 x i8] c"incomplete tar header found (%lu bytes)\00", align 1
+@UINT64_FORMAT = common dso_local global i8* null, align 8
+@.str.2 = private unnamed_addr constant [44 x i8] c"TOC Entry %s at %s (length %s, checksum %d)\00", align 1
+@.str.3 = private unnamed_addr constant [75 x i8] c"corrupt tar header found in %s (expected %d, computed %d) file position %s\00", align 1
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.TYPE_9__*, %struct.TYPE_8__*)* @_tarGetHeader to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @_tarGetHeader(%struct.TYPE_9__* %0, %struct.TYPE_8__* %1) #0 {
+  %3 = alloca i32, align 4
+  %4 = alloca %struct.TYPE_9__*, align 8
+  %5 = alloca %struct.TYPE_8__*, align 8
+  %6 = alloca %struct.TYPE_7__*, align 8
+  %7 = alloca [512 x i8], align 16
+  %8 = alloca [101 x i8], align 16
+  %9 = alloca i32, align 4
+  %10 = alloca i32, align 4
+  %11 = alloca i32, align 4
+  %12 = alloca i32, align 4
+  %13 = alloca i32, align 4
+  %14 = alloca i32, align 4
+  %15 = alloca [32 x i8], align 16
+  %16 = alloca [32 x i8], align 16
+  %17 = alloca [32 x i8], align 16
+  store %struct.TYPE_9__* %0, %struct.TYPE_9__** %4, align 8
+  store %struct.TYPE_8__* %1, %struct.TYPE_8__** %5, align 8
+  %18 = load %struct.TYPE_9__*, %struct.TYPE_9__** %4, align 8
+  %19 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %18, i32 0, i32 0
+  %20 = load i64, i64* %19, align 8
+  %21 = inttoptr i64 %20 to %struct.TYPE_7__*
+  store %struct.TYPE_7__* %21, %struct.TYPE_7__** %6, align 8
+  store i32 0, i32* %13, align 4
+  br label %22
+
+22:                                               ; preds = %76, %2
+  %23 = load i32, i32* %13, align 4
+  %24 = icmp ne i32 %23, 0
+  %25 = xor i1 %24, true
+  br i1 %25, label %26, label %77
+
+26:                                               ; preds = %22
+  %27 = load %struct.TYPE_7__*, %struct.TYPE_7__** %6, align 8
+  %28 = getelementptr inbounds %struct.TYPE_7__, %struct.TYPE_7__* %27, i32 0, i32 0
+  %29 = load i32, i32* %28, align 4
+  store i32 %29, i32* %12, align 4
+  %30 = load %struct.TYPE_9__*, %struct.TYPE_9__** %4, align 8
+  %31 = getelementptr inbounds [512 x i8], [512 x i8]* %7, i64 0, i64 0
+  %32 = load %struct.TYPE_7__*, %struct.TYPE_7__** %6, align 8
+  %33 = getelementptr inbounds %struct.TYPE_7__, %struct.TYPE_7__* %32, i32 0, i32 1
+  %34 = load i32, i32* %33, align 4
+  %35 = call i32 @_tarReadRaw(%struct.TYPE_9__* %30, i8* %31, i32 512, i32* null, i32 %34)
+  store i32 %35, i32* %11, align 4
+  %36 = load i32, i32* %11, align 4
+  %37 = icmp eq i32 %36, 0
+  br i1 %37, label %38, label %39
+
+38:                                               ; preds = %26
+  store i32 0, i32* %3, align 4
+  br label %121
+
+39:                                               ; preds = %26
+  %40 = load i32, i32* %11, align 4
+  %41 = icmp ne i32 %40, 512
+  br i1 %41, label %42, label %50
+
+42:                                               ; preds = %39
+  %43 = load i32, i32* %11, align 4
+  %44 = call i32 @ngettext(i8* getelementptr inbounds ([39 x i8], [39 x i8]* @.str, i64 0, i64 0), i8* getelementptr inbounds ([40 x i8], [40 x i8]* @.str.1, i64 0, i64 0), i32 %43)
+  %45 = sext i32 %44 to i64
+  %46 = inttoptr i64 %45 to i8*
+  %47 = load i32, i32* %11, align 4
+  %48 = sext i32 %47 to i64
+  %49 = call i32 (i8*, ...) @fatal(i8* %46, i64 %48)
+  br label %50
+
+50:                                               ; preds = %42, %39
+  %51 = getelementptr inbounds [512 x i8], [512 x i8]* %7, i64 0, i64 0
+  %52 = call i32 @tarChecksum(i8* %51)
+  store i32 %52, i32* %10, align 4
+  %53 = getelementptr inbounds [512 x i8], [512 x i8]* %7, i64 0, i64 148
+  %54 = call i32 @read_tar_number(i8* %53, i32 8)
+  store i32 %54, i32* %9, align 4
+  %55 = load i32, i32* %10, align 4
+  %56 = load i32, i32* %9, align 4
+  %57 = icmp eq i32 %55, %56
+  br i1 %57, label %58, label %59
+
+58:                                               ; preds = %50
+  store i32 1, i32* %13, align 4
+  br label %76
+
+59:                                               ; preds = %50
+  store i32 0, i32* %14, align 4
+  br label %60
+
+60:                                               ; preds = %72, %59
+  %61 = load i32, i32* %14, align 4
+  %62 = icmp slt i32 %61, 512
+  br i1 %62, label %63, label %75
+
+63:                                               ; preds = %60
+  %64 = load i32, i32* %14, align 4
+  %65 = sext i32 %64 to i64
+  %66 = getelementptr inbounds [512 x i8], [512 x i8]* %7, i64 0, i64 %65
+  %67 = load i8, i8* %66, align 1
+  %68 = sext i8 %67 to i32
+  %69 = icmp ne i32 %68, 0
+  br i1 %69, label %70, label %71
+
+70:                                               ; preds = %63
+  store i32 1, i32* %13, align 4
+  br label %75
+
+71:                                               ; preds = %63
+  br label %72
+
+72:                                               ; preds = %71
+  %73 = load i32, i32* %14, align 4
+  %74 = add nsw i32 %73, 1
+  store i32 %74, i32* %14, align 4
+  br label %60
+
+75:                                               ; preds = %70, %60
+  br label %76
+
+76:                                               ; preds = %75, %58
+  br label %22
+
+77:                                               ; preds = %22
+  %78 = getelementptr inbounds [101 x i8], [101 x i8]* %8, i64 0, i64 0
+  %79 = getelementptr inbounds [512 x i8], [512 x i8]* %7, i64 0, i64 0
+  %80 = call i32 @strlcpy(i8* %78, i8* %79, i32 101)
+  %81 = getelementptr inbounds [512 x i8], [512 x i8]* %7, i64 0, i64 124
+  %82 = call i32 @read_tar_number(i8* %81, i32 12)
+  store i32 %82, i32* %11, align 4
+  %83 = getelementptr inbounds [32 x i8], [32 x i8]* %15, i64 0, i64 0
+  %84 = load i8*, i8** @UINT64_FORMAT, align 8
+  %85 = load i32, i32* %12, align 4
+  %86 = call i32 @snprintf(i8* %83, i32 32, i8* %84, i32 %85)
+  %87 = getelementptr inbounds [32 x i8], [32 x i8]* %16, i64 0, i64 0
+  %88 = load i8*, i8** @UINT64_FORMAT, align 8
+  %89 = load i32, i32* %11, align 4
+  %90 = call i32 @snprintf(i8* %87, i32 32, i8* %88, i32 %89)
+  %91 = getelementptr inbounds [101 x i8], [101 x i8]* %8, i64 0, i64 0
+  %92 = getelementptr inbounds [32 x i8], [32 x i8]* %15, i64 0, i64 0
+  %93 = getelementptr inbounds [32 x i8], [32 x i8]* %16, i64 0, i64 0
+  %94 = load i32, i32* %9, align 4
+  %95 = call i32 @pg_log_debug(i8* getelementptr inbounds ([44 x i8], [44 x i8]* @.str.2, i64 0, i64 0), i8* %91, i8* %92, i8* %93, i32 %94)
+  %96 = load i32, i32* %10, align 4
+  %97 = load i32, i32* %9, align 4
+  %98 = icmp ne i32 %96, %97
+  br i1 %98, label %99, label %113
+
+99:                                               ; preds = %77
+  %100 = getelementptr inbounds [32 x i8], [32 x i8]* %17, i64 0, i64 0
+  %101 = load i8*, i8** @UINT64_FORMAT, align 8
+  %102 = load %struct.TYPE_7__*, %struct.TYPE_7__** %6, align 8
+  %103 = getelementptr inbounds %struct.TYPE_7__, %struct.TYPE_7__* %102, i32 0, i32 1
+  %104 = load i32, i32* %103, align 4
+  %105 = call i64 @ftello(i32 %104)
+  %106 = trunc i64 %105 to i32
+  %107 = call i32 @snprintf(i8* %100, i32 32, i8* %101, i32 %106)
+  %108 = getelementptr inbounds [101 x i8], [101 x i8]* %8, i64 0, i64 0
+  %109 = load i32, i32* %9, align 4
+  %110 = load i32, i32* %10, align 4
+  %111 = getelementptr inbounds [32 x i8], [32 x i8]* %17, i64 0, i64 0
+  %112 = call i32 (i8*, ...) @fatal(i8* getelementptr inbounds ([75 x i8], [75 x i8]* @.str.3, i64 0, i64 0), i8* %108, i32 %109, i32 %110, i8* %111)
+  br label %113
+
+113:                                              ; preds = %99, %77
+  %114 = getelementptr inbounds [101 x i8], [101 x i8]* %8, i64 0, i64 0
+  %115 = call i32 @pg_strdup(i8* %114)
+  %116 = load %struct.TYPE_8__*, %struct.TYPE_8__** %5, align 8
+  %117 = getelementptr inbounds %struct.TYPE_8__, %struct.TYPE_8__* %116, i32 0, i32 1
+  store i32 %115, i32* %117, align 4
+  %118 = load i32, i32* %11, align 4
+  %119 = load %struct.TYPE_8__*, %struct.TYPE_8__** %5, align 8
+  %120 = getelementptr inbounds %struct.TYPE_8__, %struct.TYPE_8__* %119, i32 0, i32 0
+  store i32 %118, i32* %120, align 4
+  store i32 1, i32* %3, align 4
+  br label %121
+
+121:                                              ; preds = %113, %38
+  %122 = load i32, i32* %3, align 4
+  ret i32 %122
+}
+
+declare dso_local i32 @_tarReadRaw(%struct.TYPE_9__*, i8*, i32, i32*, i32) #1
+
+declare dso_local i32 @fatal(i8*, ...) #1
+
+declare dso_local i32 @ngettext(i8*, i8*, i32) #1
+
+declare dso_local i32 @tarChecksum(i8*) #1
+
+declare dso_local i32 @read_tar_number(i8*, i32) #1
+
+declare dso_local i32 @strlcpy(i8*, i8*, i32) #1
+
+declare dso_local i32 @snprintf(i8*, i32, i8*, i32) #1
+
+declare dso_local i32 @pg_log_debug(i8*, i8*, i8*, i8*, i32) #1
+
+declare dso_local i64 @ftello(i32) #1
+
+declare dso_local i32 @pg_strdup(i8*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

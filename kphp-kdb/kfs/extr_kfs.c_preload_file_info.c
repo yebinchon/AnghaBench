@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct lev_start {int type; } ;
 struct kfs_file_info {int start; char* filename; int flags; int preloaded_bytes; scalar_t__ kfs_file_type; int kfs_headers; scalar_t__ log_pos; scalar_t__ min_log_pos; scalar_t__ max_log_pos; scalar_t__ file_size; TYPE_1__* replica; struct kfs_file_header* khdr; scalar_t__ iv; } ;
 struct kfs_file_header {scalar_t__ magic; scalar_t__ header_seq_num; scalar_t__ data_size; scalar_t__ raw_size; scalar_t__ kfs_file_type; scalar_t__ log_pos; scalar_t__ replica_id_hash; } ;
-typedef  TYPE_1__* kfs_replica_handle_t ;
-typedef  int /*<<< orphan*/  kfs_binlog_zip_header_t ;
-struct TYPE_4__ {int /*<<< orphan*/  (* ctr_crypt ) (TYPE_2__*,unsigned char*,unsigned char*,int,scalar_t__,unsigned long long) ;} ;
+typedef TYPE_1__* kfs_replica_handle_t ;
+typedef int kfs_binlog_zip_header_t ;
+struct TYPE_4__ {int (* ctr_crypt ) (TYPE_2__*,unsigned char*,unsigned char*,int,scalar_t__,unsigned long long) ;} ;
 struct TYPE_3__ {scalar_t__ replica_id_hash; TYPE_2__* ctx_crypto; } ;
 
-/* Variables and functions */
-#define  KFS_BINLOG_ZIP_MAGIC 130 
- scalar_t__ KFS_MAGIC ; 
-#define  LEV_ROTATE_FROM 129 
-#define  LEV_START 128 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  START_BUFFER_SIZE ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ check_kfs_header_basic (struct kfs_file_header*) ; 
- scalar_t__ close (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  free (int) ; 
- scalar_t__ kfs_binlog ; 
- scalar_t__ kfs_file_compute_initialization_vector (struct kfs_file_info*) ; 
- int lseek (int,int,int /*<<< orphan*/ ) ; 
- int malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcmp (struct kfs_file_header*,struct kfs_file_header*,int) ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  process_binlog_zip_header (struct kfs_file_info*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  process_first36_bytes (struct kfs_file_info*,int,int,struct lev_start*) ; 
- int read (int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*,unsigned char*,unsigned char*,int,scalar_t__,unsigned long long) ; 
- int verbosity ; 
+
+
+ scalar_t__ KFS_MAGIC ;
+
+
+ int O_RDONLY ;
+ int SEEK_SET ;
+ int START_BUFFER_SIZE ;
+ int assert (int) ;
+ scalar_t__ check_kfs_header_basic (struct kfs_file_header*) ;
+ scalar_t__ close (int) ;
+ int fprintf (int ,char*,...) ;
+ int free (int) ;
+ scalar_t__ kfs_binlog ;
+ scalar_t__ kfs_file_compute_initialization_vector (struct kfs_file_info*) ;
+ int lseek (int,int,int ) ;
+ int malloc (int ) ;
+ int memcmp (struct kfs_file_header*,struct kfs_file_header*,int) ;
+ int open (char*,int ) ;
+ int process_binlog_zip_header (struct kfs_file_info*,int,int *) ;
+ int process_first36_bytes (struct kfs_file_info*,int,int,struct lev_start*) ;
+ int read (int,int,int ) ;
+ int stderr ;
+ int stub1 (TYPE_2__*,unsigned char*,unsigned char*,int,scalar_t__,unsigned long long) ;
+ int verbosity ;
 
 int preload_file_info (struct kfs_file_info *FI) {
   if (!FI->start) {
@@ -117,8 +117,8 @@ int preload_file_info (struct kfs_file_info *FI) {
       r -= 4096 * headers;
 
       switch (E->type) {
-      case LEV_START:
-      case LEV_ROTATE_FROM:
+      case 128:
+      case 129:
         if (FI->flags & 16) {
           fprintf (stderr, "error: zipped binlog file '%s' starts from LEV_START or LEV_ROTATE_FROM.\n", FI->filename);
           assert (close (fd) >= 0);
@@ -128,7 +128,7 @@ int preload_file_info (struct kfs_file_info *FI) {
           return -2;
         }
         break;
-      case KFS_BINLOG_ZIP_MAGIC:
+      case 130:
         if (headers) {
           fprintf (stderr, "error: zipped binlog file '%s' contains KFS headers\n", FI->filename);
           assert (close (fd) >= 0);

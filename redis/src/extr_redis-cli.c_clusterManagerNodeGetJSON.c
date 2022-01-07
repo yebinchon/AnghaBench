@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char* sds ;
-struct TYPE_5__ {unsigned long replicate; scalar_t__ migrating_count; char** migrating; scalar_t__ importing_count; char** importing; scalar_t__ current_epoch; int /*<<< orphan*/  slots_count; int /*<<< orphan*/  port; int /*<<< orphan*/  ip; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ clusterManagerNode ;
 
-/* Variables and functions */
- char* clusterManagerNodeFlagString (TYPE_1__*) ; 
- char* clusterManagerNodeSlotsString (TYPE_1__*) ; 
- char* sdscat (char*,char*) ; 
- char* sdscatfmt (char*,char*,char*,...) ; 
- char* sdscatprintf (char*,char*,unsigned long,...) ; 
- char* sdsempty () ; 
- int /*<<< orphan*/  sdsfree (char*) ; 
- scalar_t__ sdslen (char*) ; 
- char* strchr (char*,char) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef char* sds ;
+struct TYPE_5__ {unsigned long replicate; scalar_t__ migrating_count; char** migrating; scalar_t__ importing_count; char** importing; scalar_t__ current_epoch; int slots_count; int port; int ip; int name; } ;
+typedef TYPE_1__ clusterManagerNode ;
+
+
+ char* clusterManagerNodeFlagString (TYPE_1__*) ;
+ char* clusterManagerNodeSlotsString (TYPE_1__*) ;
+ char* sdscat (char*,char*) ;
+ char* sdscatfmt (char*,char*,char*,...) ;
+ char* sdscatprintf (char*,char*,unsigned long,...) ;
+ char* sdsempty () ;
+ int sdsfree (char*) ;
+ scalar_t__ sdslen (char*) ;
+ char* strchr (char*,char) ;
 
 __attribute__((used)) static sds clusterManagerNodeGetJSON(clusterManagerNode *node,
                                      unsigned long error_count)
@@ -38,7 +38,7 @@ __attribute__((used)) static sds clusterManagerNodeGetJSON(clusterManagerNode *n
     sds slots = clusterManagerNodeSlotsString(node);
     sds flags = clusterManagerNodeFlagString(node);
     char *p = slots;
-    while ((p = strchr(p, '-')) != NULL)
+    while ((p = strchr(p, '-')) != ((void*)0))
         *(p++) = ',';
     json = sdscatprintf(json,
         "  {\n"
@@ -63,7 +63,7 @@ __attribute__((used)) static sds clusterManagerNodeGetJSON(clusterManagerNode *n
         json = sdscatprintf(json, ",\n    \"cluster_errors\": %lu",
                             error_count);
     }
-    if (node->migrating_count > 0 && node->migrating != NULL) {
+    if (node->migrating_count > 0 && node->migrating != ((void*)0)) {
         int i = 0;
         sds migrating = sdsempty();
         for (; i < node->migrating_count; i += 2) {
@@ -78,7 +78,7 @@ __attribute__((used)) static sds clusterManagerNodeGetJSON(clusterManagerNode *n
             json = sdscatfmt(json, ",\n    \"migrating\": {%S}", migrating);
         sdsfree(migrating);
     }
-    if (node->importing_count > 0 && node->importing != NULL) {
+    if (node->importing_count > 0 && node->importing != ((void*)0)) {
         int i = 0;
         sds importing = sdsempty();
         for (; i < node->importing_count; i += 2) {

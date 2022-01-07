@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  long uint8_t ;
-typedef  int ossl_ssize_t ;
 
-/* Variables and functions */
- int ERANGE ; 
- long LONG_MAX ; 
- long LONG_MIN ; 
- int /*<<< orphan*/  _UC (char const) ; 
- scalar_t__ isspace (int /*<<< orphan*/ ) ; 
- int restore_errno () ; 
- int /*<<< orphan*/  save_errno () ; 
- long strtol (char const*,char**,int) ; 
+
+
+
+typedef long uint8_t ;
+typedef int ossl_ssize_t ;
+
+
+ int ERANGE ;
+ long LONG_MAX ;
+ long LONG_MIN ;
+ int _UC (char const) ;
+ scalar_t__ isspace (int ) ;
+ int restore_errno () ;
+ int save_errno () ;
+ long strtol (char const*,char**,int) ;
 
 __attribute__((used)) static ossl_ssize_t checked_uint8(const char *in, void *out)
 {

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_7__ ;
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_18__ TYPE_7__ ;
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_15__ {TYPE_5__* sys; } ;
-typedef  TYPE_4__ vlc_va_t ;
-struct TYPE_14__ {int /*<<< orphan*/  display; } ;
-struct TYPE_16__ {int /*<<< orphan*/  render_targets; TYPE_3__ hw_ctx; } ;
-typedef  TYPE_5__ vlc_va_sys_t ;
-struct TYPE_17__ {int /*<<< orphan*/  i_visible_height; int /*<<< orphan*/  i_visible_width; int /*<<< orphan*/  i_chroma; } ;
-typedef  TYPE_6__ video_format_t ;
+typedef TYPE_4__ vlc_va_t ;
+struct TYPE_14__ {int display; } ;
+struct TYPE_16__ {int render_targets; TYPE_3__ hw_ctx; } ;
+typedef TYPE_5__ vlc_va_sys_t ;
+struct TYPE_17__ {int i_visible_height; int i_visible_width; int i_chroma; } ;
+typedef TYPE_6__ video_format_t ;
 struct TYPE_12__ {int i; } ;
-struct TYPE_13__ {TYPE_1__ value; int /*<<< orphan*/  type; } ;
-struct TYPE_18__ {TYPE_2__ value; int /*<<< orphan*/  flags; int /*<<< orphan*/  type; } ;
-typedef  TYPE_7__ VASurfaceAttrib ;
+struct TYPE_13__ {TYPE_1__ value; int type; } ;
+struct TYPE_18__ {TYPE_2__ value; int flags; int type; } ;
+typedef TYPE_7__ VASurfaceAttrib ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VAGenericValueTypeInteger ; 
- int /*<<< orphan*/  VASurfaceAttribPixelFormat ; 
- int /*<<< orphan*/  VA_CALL (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t,TYPE_7__*,int) ; 
- int /*<<< orphan*/  VA_SURFACE_ATTRIB_SETTABLE ; 
- int VLC_EGENERIC ; 
- int /*<<< orphan*/  VLC_OBJECT (TYPE_4__*) ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  VLC_UNUSED (int) ; 
- int /*<<< orphan*/  vaCreateSurfaces ; 
- int /*<<< orphan*/  vlc_chroma_to_vaapi (int /*<<< orphan*/ ,unsigned int*,int*) ; 
+
+ int VAGenericValueTypeInteger ;
+ int VASurfaceAttribPixelFormat ;
+ int VA_CALL (int ,int ,int ,unsigned int,int ,int ,int ,size_t,TYPE_7__*,int) ;
+ int VA_SURFACE_ATTRIB_SETTABLE ;
+ int VLC_EGENERIC ;
+ int VLC_OBJECT (TYPE_4__*) ;
+ int VLC_SUCCESS ;
+ int VLC_UNUSED (int) ;
+ int vaCreateSurfaces ;
+ int vlc_chroma_to_vaapi (int ,unsigned int*,int*) ;
 
 __attribute__((used)) static int VAAPICreateDecoderSurfaces(vlc_va_t *va, int codec_id,
                                       const video_format_t *fmt,
@@ -56,7 +56,7 @@ __attribute__((used)) static int VAAPICreateDecoderSurfaces(vlc_va_t *va, int co
         {
             .type = VASurfaceAttribPixelFormat,
             .flags = VA_SURFACE_ATTRIB_SETTABLE,
-            .value.type    = VAGenericValueTypeInteger,
+            .value.type = VAGenericValueTypeInteger,
             .value.value.i = va_fourcc,
         }
     };

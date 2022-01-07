@@ -1,0 +1,263 @@
+; ModuleID = '/home/carl/AnghaBench/fastsocket/kernel/tools/perf/tests/extr_parse-events.c_test__group2.c'
+source_filename = "/home/carl/AnghaBench/fastsocket/kernel/tools/perf/tests/extr_parse-events.c_test__group2.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.perf_evlist = type { i32 }
+%struct.perf_evsel = type { %struct.TYPE_2__, %struct.perf_evsel* }
+%struct.TYPE_2__ = type { i64, i64, i32, i32, i32, i32, i32, i32 }
+
+@.str = private unnamed_addr constant [24 x i8] c"wrong number of entries\00", align 1
+@.str.1 = private unnamed_addr constant [11 x i8] c"wrong type\00", align 1
+@PERF_TYPE_SOFTWARE = common dso_local global i64 0, align 8
+@.str.2 = private unnamed_addr constant [13 x i8] c"wrong config\00", align 1
+@PERF_COUNT_SW_PAGE_FAULTS = common dso_local global i64 0, align 8
+@.str.3 = private unnamed_addr constant [19 x i8] c"wrong exclude_user\00", align 1
+@.str.4 = private unnamed_addr constant [21 x i8] c"wrong exclude_kernel\00", align 1
+@.str.5 = private unnamed_addr constant [17 x i8] c"wrong exclude_hv\00", align 1
+@.str.6 = private unnamed_addr constant [20 x i8] c"wrong exclude guest\00", align 1
+@.str.7 = private unnamed_addr constant [19 x i8] c"wrong exclude host\00", align 1
+@.str.8 = private unnamed_addr constant [17 x i8] c"wrong precise_ip\00", align 1
+@.str.9 = private unnamed_addr constant [13 x i8] c"wrong leader\00", align 1
+@PERF_TYPE_HARDWARE = common dso_local global i64 0, align 8
+@PERF_COUNT_HW_CACHE_REFERENCES = common dso_local global i64 0, align 8
+@PERF_COUNT_HW_CPU_CYCLES = common dso_local global i64 0, align 8
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.perf_evlist*)* @test__group2 to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @test__group2(%struct.perf_evlist* %0) #0 {
+  %2 = alloca %struct.perf_evlist*, align 8
+  %3 = alloca %struct.perf_evsel*, align 8
+  %4 = alloca %struct.perf_evsel*, align 8
+  store %struct.perf_evlist* %0, %struct.perf_evlist** %2, align 8
+  %5 = load %struct.perf_evlist*, %struct.perf_evlist** %2, align 8
+  %6 = getelementptr inbounds %struct.perf_evlist, %struct.perf_evlist* %5, i32 0, i32 0
+  %7 = load i32, i32* %6, align 4
+  %8 = icmp eq i32 3, %7
+  %9 = zext i1 %8 to i32
+  %10 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([24 x i8], [24 x i8]* @.str, i64 0, i64 0), i32 %9)
+  %11 = load %struct.perf_evlist*, %struct.perf_evlist** %2, align 8
+  %12 = call %struct.perf_evsel* @perf_evlist__first(%struct.perf_evlist* %11)
+  store %struct.perf_evsel* %12, %struct.perf_evsel** %4, align 8
+  store %struct.perf_evsel* %12, %struct.perf_evsel** %3, align 8
+  %13 = load i64, i64* @PERF_TYPE_SOFTWARE, align 8
+  %14 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %15 = getelementptr inbounds %struct.perf_evsel, %struct.perf_evsel* %14, i32 0, i32 0
+  %16 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %15, i32 0, i32 0
+  %17 = load i64, i64* %16, align 8
+  %18 = icmp eq i64 %13, %17
+  %19 = zext i1 %18 to i32
+  %20 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.1, i64 0, i64 0), i32 %19)
+  %21 = load i64, i64* @PERF_COUNT_SW_PAGE_FAULTS, align 8
+  %22 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %23 = getelementptr inbounds %struct.perf_evsel, %struct.perf_evsel* %22, i32 0, i32 0
+  %24 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %23, i32 0, i32 1
+  %25 = load i64, i64* %24, align 8
+  %26 = icmp eq i64 %21, %25
+  %27 = zext i1 %26 to i32
+  %28 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0), i32 %27)
+  %29 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %30 = getelementptr inbounds %struct.perf_evsel, %struct.perf_evsel* %29, i32 0, i32 0
+  %31 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %30, i32 0, i32 2
+  %32 = load i32, i32* %31, align 8
+  %33 = icmp ne i32 %32, 0
+  %34 = xor i1 %33, true
+  %35 = zext i1 %34 to i32
+  %36 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.3, i64 0, i64 0), i32 %35)
+  %37 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %38 = getelementptr inbounds %struct.perf_evsel, %struct.perf_evsel* %37, i32 0, i32 0
+  %39 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %38, i32 0, i32 3
+  %40 = load i32, i32* %39, align 4
+  %41 = icmp ne i32 %40, 0
+  %42 = xor i1 %41, true
+  %43 = zext i1 %42 to i32
+  %44 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.4, i64 0, i64 0), i32 %43)
+  %45 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %46 = getelementptr inbounds %struct.perf_evsel, %struct.perf_evsel* %45, i32 0, i32 0
+  %47 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %46, i32 0, i32 4
+  %48 = load i32, i32* %47, align 8
+  %49 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([17 x i8], [17 x i8]* @.str.5, i64 0, i64 0), i32 %48)
+  %50 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %51 = getelementptr inbounds %struct.perf_evsel, %struct.perf_evsel* %50, i32 0, i32 0
+  %52 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %51, i32 0, i32 7
+  %53 = load i32, i32* %52, align 4
+  %54 = icmp ne i32 %53, 0
+  %55 = xor i1 %54, true
+  %56 = zext i1 %55 to i32
+  %57 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([20 x i8], [20 x i8]* @.str.6, i64 0, i64 0), i32 %56)
+  %58 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %59 = getelementptr inbounds %struct.perf_evsel, %struct.perf_evsel* %58, i32 0, i32 0
+  %60 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %59, i32 0, i32 6
+  %61 = load i32, i32* %60, align 8
+  %62 = icmp ne i32 %61, 0
+  %63 = xor i1 %62, true
+  %64 = zext i1 %63 to i32
+  %65 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.7, i64 0, i64 0), i32 %64)
+  %66 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %67 = getelementptr inbounds %struct.perf_evsel, %struct.perf_evsel* %66, i32 0, i32 0
+  %68 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %67, i32 0, i32 5
+  %69 = load i32, i32* %68, align 4
+  %70 = icmp ne i32 %69, 0
+  %71 = xor i1 %70, true
+  %72 = zext i1 %71 to i32
+  %73 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([17 x i8], [17 x i8]* @.str.8, i64 0, i64 0), i32 %72)
+  %74 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %75 = call i32 @perf_evsel__is_group_member(%struct.perf_evsel* %74)
+  %76 = icmp ne i32 %75, 0
+  %77 = xor i1 %76, true
+  %78 = zext i1 %77 to i32
+  %79 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.9, i64 0, i64 0), i32 %78)
+  %80 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %81 = call %struct.perf_evsel* @perf_evsel__next(%struct.perf_evsel* %80)
+  store %struct.perf_evsel* %81, %struct.perf_evsel** %3, align 8
+  %82 = load i64, i64* @PERF_TYPE_HARDWARE, align 8
+  %83 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %84 = getelementptr inbounds %struct.perf_evsel, %struct.perf_evsel* %83, i32 0, i32 0
+  %85 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %84, i32 0, i32 0
+  %86 = load i64, i64* %85, align 8
+  %87 = icmp eq i64 %82, %86
+  %88 = zext i1 %87 to i32
+  %89 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.1, i64 0, i64 0), i32 %88)
+  %90 = load i64, i64* @PERF_COUNT_HW_CACHE_REFERENCES, align 8
+  %91 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %92 = getelementptr inbounds %struct.perf_evsel, %struct.perf_evsel* %91, i32 0, i32 0
+  %93 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %92, i32 0, i32 1
+  %94 = load i64, i64* %93, align 8
+  %95 = icmp eq i64 %90, %94
+  %96 = zext i1 %95 to i32
+  %97 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0), i32 %96)
+  %98 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %99 = getelementptr inbounds %struct.perf_evsel, %struct.perf_evsel* %98, i32 0, i32 0
+  %100 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %99, i32 0, i32 2
+  %101 = load i32, i32* %100, align 8
+  %102 = icmp ne i32 %101, 0
+  %103 = xor i1 %102, true
+  %104 = zext i1 %103 to i32
+  %105 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.3, i64 0, i64 0), i32 %104)
+  %106 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %107 = getelementptr inbounds %struct.perf_evsel, %struct.perf_evsel* %106, i32 0, i32 0
+  %108 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %107, i32 0, i32 3
+  %109 = load i32, i32* %108, align 4
+  %110 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.4, i64 0, i64 0), i32 %109)
+  %111 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %112 = getelementptr inbounds %struct.perf_evsel, %struct.perf_evsel* %111, i32 0, i32 0
+  %113 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %112, i32 0, i32 4
+  %114 = load i32, i32* %113, align 8
+  %115 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([17 x i8], [17 x i8]* @.str.5, i64 0, i64 0), i32 %114)
+  %116 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %117 = getelementptr inbounds %struct.perf_evsel, %struct.perf_evsel* %116, i32 0, i32 0
+  %118 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %117, i32 0, i32 7
+  %119 = load i32, i32* %118, align 4
+  %120 = icmp ne i32 %119, 0
+  %121 = xor i1 %120, true
+  %122 = zext i1 %121 to i32
+  %123 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([20 x i8], [20 x i8]* @.str.6, i64 0, i64 0), i32 %122)
+  %124 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %125 = getelementptr inbounds %struct.perf_evsel, %struct.perf_evsel* %124, i32 0, i32 0
+  %126 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %125, i32 0, i32 6
+  %127 = load i32, i32* %126, align 8
+  %128 = icmp ne i32 %127, 0
+  %129 = xor i1 %128, true
+  %130 = zext i1 %129 to i32
+  %131 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.7, i64 0, i64 0), i32 %130)
+  %132 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %133 = getelementptr inbounds %struct.perf_evsel, %struct.perf_evsel* %132, i32 0, i32 0
+  %134 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %133, i32 0, i32 5
+  %135 = load i32, i32* %134, align 4
+  %136 = icmp ne i32 %135, 0
+  %137 = xor i1 %136, true
+  %138 = zext i1 %137 to i32
+  %139 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([17 x i8], [17 x i8]* @.str.8, i64 0, i64 0), i32 %138)
+  %140 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %141 = getelementptr inbounds %struct.perf_evsel, %struct.perf_evsel* %140, i32 0, i32 1
+  %142 = load %struct.perf_evsel*, %struct.perf_evsel** %141, align 8
+  %143 = load %struct.perf_evsel*, %struct.perf_evsel** %4, align 8
+  %144 = icmp eq %struct.perf_evsel* %142, %143
+  %145 = zext i1 %144 to i32
+  %146 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.9, i64 0, i64 0), i32 %145)
+  %147 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %148 = call %struct.perf_evsel* @perf_evsel__next(%struct.perf_evsel* %147)
+  store %struct.perf_evsel* %148, %struct.perf_evsel** %3, align 8
+  %149 = load i64, i64* @PERF_TYPE_HARDWARE, align 8
+  %150 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %151 = getelementptr inbounds %struct.perf_evsel, %struct.perf_evsel* %150, i32 0, i32 0
+  %152 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %151, i32 0, i32 0
+  %153 = load i64, i64* %152, align 8
+  %154 = icmp eq i64 %149, %153
+  %155 = zext i1 %154 to i32
+  %156 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.1, i64 0, i64 0), i32 %155)
+  %157 = load i64, i64* @PERF_COUNT_HW_CPU_CYCLES, align 8
+  %158 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %159 = getelementptr inbounds %struct.perf_evsel, %struct.perf_evsel* %158, i32 0, i32 0
+  %160 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %159, i32 0, i32 1
+  %161 = load i64, i64* %160, align 8
+  %162 = icmp eq i64 %157, %161
+  %163 = zext i1 %162 to i32
+  %164 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0), i32 %163)
+  %165 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %166 = getelementptr inbounds %struct.perf_evsel, %struct.perf_evsel* %165, i32 0, i32 0
+  %167 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %166, i32 0, i32 2
+  %168 = load i32, i32* %167, align 8
+  %169 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.3, i64 0, i64 0), i32 %168)
+  %170 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %171 = getelementptr inbounds %struct.perf_evsel, %struct.perf_evsel* %170, i32 0, i32 0
+  %172 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %171, i32 0, i32 3
+  %173 = load i32, i32* %172, align 4
+  %174 = icmp ne i32 %173, 0
+  %175 = xor i1 %174, true
+  %176 = zext i1 %175 to i32
+  %177 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.4, i64 0, i64 0), i32 %176)
+  %178 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %179 = getelementptr inbounds %struct.perf_evsel, %struct.perf_evsel* %178, i32 0, i32 0
+  %180 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %179, i32 0, i32 4
+  %181 = load i32, i32* %180, align 8
+  %182 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([17 x i8], [17 x i8]* @.str.5, i64 0, i64 0), i32 %181)
+  %183 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %184 = getelementptr inbounds %struct.perf_evsel, %struct.perf_evsel* %183, i32 0, i32 0
+  %185 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %184, i32 0, i32 7
+  %186 = load i32, i32* %185, align 4
+  %187 = icmp ne i32 %186, 0
+  %188 = xor i1 %187, true
+  %189 = zext i1 %188 to i32
+  %190 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([20 x i8], [20 x i8]* @.str.6, i64 0, i64 0), i32 %189)
+  %191 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %192 = getelementptr inbounds %struct.perf_evsel, %struct.perf_evsel* %191, i32 0, i32 0
+  %193 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %192, i32 0, i32 6
+  %194 = load i32, i32* %193, align 8
+  %195 = icmp ne i32 %194, 0
+  %196 = xor i1 %195, true
+  %197 = zext i1 %196 to i32
+  %198 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.7, i64 0, i64 0), i32 %197)
+  %199 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %200 = getelementptr inbounds %struct.perf_evsel, %struct.perf_evsel* %199, i32 0, i32 0
+  %201 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %200, i32 0, i32 5
+  %202 = load i32, i32* %201, align 4
+  %203 = icmp ne i32 %202, 0
+  %204 = xor i1 %203, true
+  %205 = zext i1 %204 to i32
+  %206 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([17 x i8], [17 x i8]* @.str.8, i64 0, i64 0), i32 %205)
+  %207 = load %struct.perf_evsel*, %struct.perf_evsel** %3, align 8
+  %208 = call i32 @perf_evsel__is_group_member(%struct.perf_evsel* %207)
+  %209 = icmp ne i32 %208, 0
+  %210 = xor i1 %209, true
+  %211 = zext i1 %210 to i32
+  %212 = call i32 @TEST_ASSERT_VAL(i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.9, i64 0, i64 0), i32 %211)
+  ret i32 0
+}
+
+declare dso_local i32 @TEST_ASSERT_VAL(i8*, i32) #1
+
+declare dso_local %struct.perf_evsel* @perf_evlist__first(%struct.perf_evlist*) #1
+
+declare dso_local i32 @perf_evsel__is_group_member(%struct.perf_evsel*) #1
+
+declare dso_local %struct.perf_evsel* @perf_evsel__next(%struct.perf_evsel*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

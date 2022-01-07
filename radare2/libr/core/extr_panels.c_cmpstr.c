@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int strcmp (char*,char*) ; 
+ int strcmp (char*,char*) ;
 
 int cmpstr(const void *_a, const void *_b) {
-	char *a = (char *)_a, *b = (char *)_b;
-	return strcmp (a, b);
+ char *a = (char *)_a, *b = (char *)_b;
+ return strcmp (a, b);
 }

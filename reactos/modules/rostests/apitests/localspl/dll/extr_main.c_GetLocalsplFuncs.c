@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PRINTPROVIDOR ;
-typedef  int /*<<< orphan*/  (* PInitializePrintProvidor ) (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ;
-typedef  int /*<<< orphan*/  LPPRINTPROVIDOR ;
-typedef  int /*<<< orphan*/  HMODULE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  GetModuleHandleW (char*) ; 
- scalar_t__ GetProcAddress (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  skip (char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int PRINTPROVIDOR ;
+typedef int (* PInitializePrintProvidor ) (int ,int,int *) ;
+typedef int LPPRINTPROVIDOR ;
+typedef int HMODULE ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int GetLastError () ;
+ int GetModuleHandleW (char*) ;
+ scalar_t__ GetProcAddress (int ,char*) ;
+ int TRUE ;
+ int skip (char*,int ) ;
 
 BOOL
 GetLocalsplFuncs(LPPRINTPROVIDOR pp)
@@ -30,7 +30,7 @@ GetLocalsplFuncs(LPPRINTPROVIDOR pp)
     HMODULE hLocalspl;
     PInitializePrintProvidor pfnInitializePrintProvidor;
 
-    // Get us a handle to the loaded localspl.dll.
+
     hLocalspl = GetModuleHandleW(L"localspl");
     if (!hLocalspl)
     {
@@ -38,7 +38,7 @@ GetLocalsplFuncs(LPPRINTPROVIDOR pp)
         return FALSE;
     }
 
-    // Get a pointer to its InitializePrintProvidor function.
+
     pfnInitializePrintProvidor = (PInitializePrintProvidor)GetProcAddress(hLocalspl, "InitializePrintProvidor");
     if (!pfnInitializePrintProvidor)
     {
@@ -46,8 +46,8 @@ GetLocalsplFuncs(LPPRINTPROVIDOR pp)
         return FALSE;
     }
 
-    // Get localspl's function pointers.
-    if (!pfnInitializePrintProvidor(pp, sizeof(PRINTPROVIDOR), NULL))
+
+    if (!pfnInitializePrintProvidor(pp, sizeof(PRINTPROVIDOR), ((void*)0)))
     {
         skip("pfnInitializePrintProvidor failed with error %u!\n", GetLastError());
         return FALSE;

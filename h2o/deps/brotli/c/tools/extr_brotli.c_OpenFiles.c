@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  force_overwrite; int /*<<< orphan*/  fout; int /*<<< orphan*/  current_output_path; int /*<<< orphan*/  test_integrity; int /*<<< orphan*/  fin; int /*<<< orphan*/  current_input_path; } ;
-typedef  TYPE_1__ Context ;
-typedef  scalar_t__ BROTLI_BOOL ;
 
-/* Variables and functions */
- scalar_t__ OpenInputFile (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ OpenOutputFile (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int force_overwrite; int fout; int current_output_path; int test_integrity; int fin; int current_input_path; } ;
+typedef TYPE_1__ Context ;
+typedef scalar_t__ BROTLI_BOOL ;
+
+
+ scalar_t__ OpenInputFile (int ,int *) ;
+ scalar_t__ OpenOutputFile (int ,int *,int ) ;
 
 __attribute__((used)) static BROTLI_BOOL OpenFiles(Context* context) {
   BROTLI_BOOL is_ok = OpenInputFile(context->current_input_path, &context->fin);

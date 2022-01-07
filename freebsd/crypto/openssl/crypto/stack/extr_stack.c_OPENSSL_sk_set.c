@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int num; void const** data; scalar_t__ sorted; } ;
-typedef  TYPE_1__ OPENSSL_STACK ;
+typedef TYPE_1__ OPENSSL_STACK ;
 
-/* Variables and functions */
+
 
 void *OPENSSL_sk_set(OPENSSL_STACK *st, int i, const void *data)
 {
-    if (st == NULL || i < 0 || i >= st->num)
-        return NULL;
+    if (st == ((void*)0) || i < 0 || i >= st->num)
+        return ((void*)0);
     st->data[i] = data;
     st->sorted = 0;
     return (void *)st->data[i];

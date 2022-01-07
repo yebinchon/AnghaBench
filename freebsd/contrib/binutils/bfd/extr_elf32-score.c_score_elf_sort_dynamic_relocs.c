@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  r_info; } ;
-typedef  TYPE_1__ Elf_Internal_Rela ;
 
-/* Variables and functions */
- int ELF32_R_SYM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bfd_elf32_swap_reloc_in (int /*<<< orphan*/ ,void const*,TYPE_1__*) ; 
- int /*<<< orphan*/  reldyn_sorting_bfd ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int r_info; } ;
+typedef TYPE_1__ Elf_Internal_Rela ;
+
+
+ int ELF32_R_SYM (int ) ;
+ int bfd_elf32_swap_reloc_in (int ,void const*,TYPE_1__*) ;
+ int reldyn_sorting_bfd ;
 
 __attribute__((used)) static int
 score_elf_sort_dynamic_relocs (const void *arg1, const void *arg2)

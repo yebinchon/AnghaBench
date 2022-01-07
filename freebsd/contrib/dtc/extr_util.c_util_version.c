@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* DTC_VERSION ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
+ char* DTC_VERSION ;
+ int exit (int ) ;
+ int printf (char*,char*) ;
 
 void util_version(void)
 {
-	printf("Version: %s\n", DTC_VERSION);
-	exit(0);
+ printf("Version: %s\n", DTC_VERSION);
+ exit(0);
 }

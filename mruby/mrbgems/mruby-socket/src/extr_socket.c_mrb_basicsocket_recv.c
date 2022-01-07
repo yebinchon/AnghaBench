@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  scalar_t__ mrb_int ;
-typedef  int /*<<< orphan*/  fsize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RSTRING_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  mrb_str_buf_new (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  mrb_str_resize (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  mrb_sys_fail (int /*<<< orphan*/ *,char*) ; 
- int recv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  socket_fd (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ssize_t ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef scalar_t__ mrb_int ;
+typedef int fsize_t ;
+
+
+ int RSTRING_PTR (int ) ;
+ int mrb_get_args (int *,char*,scalar_t__*,scalar_t__*) ;
+ int mrb_str_buf_new (int *,scalar_t__) ;
+ int mrb_str_resize (int *,int ,scalar_t__) ;
+ int mrb_sys_fail (int *,char*) ;
+ int recv (int ,int ,int ,int) ;
+ int socket_fd (int *,int ) ;
 
 __attribute__((used)) static mrb_value
 mrb_basicsocket_recv(mrb_state *mrb, mrb_value self)

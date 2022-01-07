@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct msghdr {size_t msg_iovlen; size_t member_1; struct iovec* member_0; struct iovec* msg_iov; } ;
 struct iovec {int dummy; } ;
-typedef  scalar_t__ ssize_t ;
-struct TYPE_4__ {int digest_valid; int /*<<< orphan*/  fd; } ;
-typedef  TYPE_1__ khash ;
+typedef scalar_t__ ssize_t ;
+struct TYPE_4__ {int digest_valid; int fd; } ;
+typedef TYPE_1__ khash ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSG_MORE ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int errno ; 
- scalar_t__ sendmsg (int /*<<< orphan*/ ,struct msghdr*,int /*<<< orphan*/ ) ; 
+
+ int MSG_MORE ;
+ int assert (TYPE_1__*) ;
+ int errno ;
+ scalar_t__ sendmsg (int ,struct msghdr*,int ) ;
 
 int khash_put_iovec(khash *h, const struct iovec *iovec, size_t n) {
         struct msghdr mh = {
@@ -40,7 +40,7 @@ int khash_put_iovec(khash *h, const struct iovec *iovec, size_t n) {
         if (k < 0)
                 return -errno;
 
-        h->digest_valid = false;
+        h->digest_valid = 0;
 
         return 0;
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct intel_uncore {int dummy; } ;
-struct i915_wa_list {unsigned int count; int /*<<< orphan*/  name; struct i915_wa* list; } ;
-struct i915_wa {int /*<<< orphan*/  reg; } ;
+struct i915_wa_list {unsigned int count; int name; struct i915_wa* list; } ;
+struct i915_wa {int reg; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  intel_uncore_read (struct intel_uncore*,int /*<<< orphan*/ ) ; 
- int wa_verify (struct i915_wa*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
+
+ int intel_uncore_read (struct intel_uncore*,int ) ;
+ int wa_verify (struct i915_wa*,int ,int ,char const*) ;
 
 __attribute__((used)) static bool wa_list_verify(struct intel_uncore *uncore,
-			   const struct i915_wa_list *wal,
-			   const char *from)
+      const struct i915_wa_list *wal,
+      const char *from)
 {
-	struct i915_wa *wa;
-	unsigned int i;
-	bool ok = true;
+ struct i915_wa *wa;
+ unsigned int i;
+ bool ok = 1;
 
-	for (i = 0, wa = wal->list; i < wal->count; i++, wa++)
-		ok &= wa_verify(wa,
-				intel_uncore_read(uncore, wa->reg),
-				wal->name, from);
+ for (i = 0, wa = wal->list; i < wal->count; i++, wa++)
+  ok &= wa_verify(wa,
+    intel_uncore_read(uncore, wa->reg),
+    wal->name, from);
 
-	return ok;
+ return ok;
 }

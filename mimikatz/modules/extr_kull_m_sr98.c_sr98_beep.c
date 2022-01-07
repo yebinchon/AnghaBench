@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SR98_IOCTL_BEEP ; 
- int /*<<< orphan*/  sr98_send_receive (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int HANDLE ;
+typedef int BYTE ;
+typedef int BOOL ;
+
+
+ int SR98_IOCTL_BEEP ;
+ int sr98_send_receive (int ,int ,int*,int,int *,int *) ;
 
 BOOL sr98_beep(HANDLE hFile, BYTE duration)
 {
-	if(duration > 9)
-		duration = 9;
-	return sr98_send_receive(hFile, SR98_IOCTL_BEEP, &duration, 1, NULL, NULL);
+ if(duration > 9)
+  duration = 9;
+ return sr98_send_receive(hFile, SR98_IOCTL_BEEP, &duration, 1, ((void*)0), ((void*)0));
 }

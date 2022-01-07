@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct track {scalar_t__ dec; struct dec_sub* d_sub; } ;
 struct m_config_option {int dummy; } ;
 struct dec_sub {int dummy; } ;
 struct command_ctx {void* cur_ipc_input; void* cur_ipc; } ;
 struct MPOpts {void* input_file; void* ipc_path; } ;
-struct MPContext {scalar_t__ video_out; int /*<<< orphan*/  global; int /*<<< orphan*/  clients; int /*<<< orphan*/  ipc_ctx; struct MPOpts* opts; int /*<<< orphan*/  input; struct track*** current_track; int /*<<< orphan*/  osd; struct command_ctx* command_ctx; } ;
+struct MPContext {scalar_t__ video_out; int global; int clients; int ipc_ctx; struct MPOpts* opts; int input; struct track*** current_track; int osd; struct command_ctx* command_ctx; } ;
 
-/* Variables and functions */
- int NUM_PTRACKS ; 
- size_t STREAM_SUB ; 
- size_t STREAM_VIDEO ; 
- int UPDATE_AUDIO ; 
- int UPDATE_BUILTIN_SCRIPTS ; 
- int UPDATE_IMGPAR ; 
- int UPDATE_INPUT ; 
- int UPDATE_LAVFI_COMPLEX ; 
- int UPDATE_OSD ; 
- int UPDATE_PRIORITY ; 
- int UPDATE_SCREENSAVER ; 
- int UPDATE_TERM ; 
- int UPDATE_VOL ; 
- int UPDATE_VO_RESIZE ; 
- int /*<<< orphan*/  VOCTRL_EXTERNAL_RESIZE ; 
- int /*<<< orphan*/  audio_update_volume (struct MPContext*) ; 
- int /*<<< orphan*/  bstr0 (void*) ; 
- int /*<<< orphan*/  bstr_equals (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_decoder_wrapper_reset_params (scalar_t__) ; 
- int /*<<< orphan*/  mp_force_video_refresh (struct MPContext*) ; 
- int /*<<< orphan*/  mp_init_ipc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_input_update_opts (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_load_builtin_scripts (struct MPContext*) ; 
- int /*<<< orphan*/  mp_uninit_ipc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_update_logging (struct MPContext*,int) ; 
- int /*<<< orphan*/  mp_wakeup_core (struct MPContext*) ; 
- int /*<<< orphan*/  osd_changed (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  reload_audio_output (struct MPContext*) ; 
- int /*<<< orphan*/  sub_update_opts (struct dec_sub*) ; 
- int /*<<< orphan*/  talloc_free (void*) ; 
- void* talloc_strdup (struct command_ctx*,void*) ; 
- int /*<<< orphan*/  update_lavfi_complex (struct MPContext*) ; 
- int /*<<< orphan*/  update_priority (struct MPContext*) ; 
- int /*<<< orphan*/  update_screensaver_state (struct MPContext*) ; 
- int /*<<< orphan*/  vo_control (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int NUM_PTRACKS ;
+ size_t STREAM_SUB ;
+ size_t STREAM_VIDEO ;
+ int UPDATE_AUDIO ;
+ int UPDATE_BUILTIN_SCRIPTS ;
+ int UPDATE_IMGPAR ;
+ int UPDATE_INPUT ;
+ int UPDATE_LAVFI_COMPLEX ;
+ int UPDATE_OSD ;
+ int UPDATE_PRIORITY ;
+ int UPDATE_SCREENSAVER ;
+ int UPDATE_TERM ;
+ int UPDATE_VOL ;
+ int UPDATE_VO_RESIZE ;
+ int VOCTRL_EXTERNAL_RESIZE ;
+ int audio_update_volume (struct MPContext*) ;
+ int bstr0 (void*) ;
+ int bstr_equals (int ,int ) ;
+ int mp_decoder_wrapper_reset_params (scalar_t__) ;
+ int mp_force_video_refresh (struct MPContext*) ;
+ int mp_init_ipc (int ,int ) ;
+ int mp_input_update_opts (int ) ;
+ int mp_load_builtin_scripts (struct MPContext*) ;
+ int mp_uninit_ipc (int ) ;
+ int mp_update_logging (struct MPContext*,int) ;
+ int mp_wakeup_core (struct MPContext*) ;
+ int osd_changed (int ) ;
+ int reload_audio_output (struct MPContext*) ;
+ int sub_update_opts (struct dec_sub*) ;
+ int talloc_free (void*) ;
+ void* talloc_strdup (struct command_ctx*,void*) ;
+ int update_lavfi_complex (struct MPContext*) ;
+ int update_priority (struct MPContext*) ;
+ int update_screensaver_state (struct MPContext*) ;
+ int vo_control (scalar_t__,int ,int *) ;
 
 void mp_option_change_callback(void *ctx, struct m_config_option *co, int flags)
 {
@@ -60,12 +60,12 @@ void mp_option_change_callback(void *ctx, struct m_config_option *co, int flags)
     struct command_ctx *cmd = mpctx->command_ctx;
 
     if (flags & UPDATE_TERM)
-        mp_update_logging(mpctx, false);
+        mp_update_logging(mpctx, 0);
 
     if (flags & UPDATE_OSD) {
         for (int n = 0; n < NUM_PTRACKS; n++) {
             struct track *track = mpctx->current_track[n][STREAM_SUB];
-            struct dec_sub *sub = track ? track->d_sub : NULL;
+            struct dec_sub *sub = track ? track->d_sub : ((void*)0);
             if (sub)
                 sub_update_opts(track->d_sub);
         }
@@ -87,7 +87,7 @@ void mp_option_change_callback(void *ctx, struct m_config_option *co, int flags)
     if (flags & UPDATE_INPUT) {
         mp_input_update_opts(mpctx->input);
 
-        // Rather coarse change-detection, but sufficient effort.
+
         struct MPOpts *opts = mpctx->opts;
         if (!bstr_equals(bstr0(cmd->cur_ipc), bstr0(opts->ipc_path)) ||
             !bstr_equals(bstr0(cmd->cur_ipc_input), bstr0(opts->input_file)))
@@ -118,6 +118,6 @@ void mp_option_change_callback(void *ctx, struct m_config_option *co, int flags)
 
     if (flags & UPDATE_VO_RESIZE) {
         if (mpctx->video_out)
-            vo_control(mpctx->video_out, VOCTRL_EXTERNAL_RESIZE, NULL);
+            vo_control(mpctx->video_out, VOCTRL_EXTERNAL_RESIZE, ((void*)0));
     }
 }

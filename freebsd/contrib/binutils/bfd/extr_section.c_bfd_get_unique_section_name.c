@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  section_htab; } ;
-typedef  TYPE_1__ bfd ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  abort () ; 
- char* bfd_malloc (unsigned int) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,unsigned int) ; 
- scalar_t__ section_hash_lookup (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int /*<<< orphan*/ ) ; 
- unsigned int strlen (char const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int section_htab; } ;
+typedef TYPE_1__ bfd ;
+
+
+ int FALSE ;
+ int abort () ;
+ char* bfd_malloc (unsigned int) ;
+ int memcpy (char*,char const*,unsigned int) ;
+ scalar_t__ section_hash_lookup (int *,char*,int ,int ) ;
+ int sprintf (char*,char*,int ) ;
+ unsigned int strlen (char const*) ;
 
 char *
 bfd_get_unique_section_name (bfd *abfd, const char *templat, int *count)
@@ -32,23 +32,23 @@ bfd_get_unique_section_name (bfd *abfd, const char *templat, int *count)
 
   len = strlen (templat);
   sname = bfd_malloc (len + 8);
-  if (sname == NULL)
-    return NULL;
+  if (sname == ((void*)0))
+    return ((void*)0);
   memcpy (sname, templat, len);
   num = 1;
-  if (count != NULL)
+  if (count != ((void*)0))
     num = *count;
 
   do
     {
-      /* If we have a million sections, something is badly wrong.  */
+
       if (num > 999999)
-	abort ();
+ abort ();
       sprintf (sname + len, ".%d", num++);
     }
   while (section_hash_lookup (&abfd->section_htab, sname, FALSE, FALSE));
 
-  if (count != NULL)
+  if (count != ((void*)0))
     *count = num;
   return sname;
 }

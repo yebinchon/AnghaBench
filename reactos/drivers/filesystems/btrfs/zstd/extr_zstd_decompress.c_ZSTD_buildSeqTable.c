@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int symbolEncodingType_e ;
-typedef  int /*<<< orphan*/  ZSTD_seqSymbol ;
-typedef  size_t const U32 ;
-typedef  int /*<<< orphan*/  S16 ;
-typedef  size_t BYTE ;
 
-/* Variables and functions */
- size_t ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FSE_isError (size_t const) ; 
- size_t FSE_readNCount (int /*<<< orphan*/ *,size_t const*,size_t const*,void const*,size_t) ; 
- int /*<<< orphan*/  GENERIC ; 
- int /*<<< orphan*/  MaxSeq ; 
- int /*<<< orphan*/  PREFETCH_AREA (void const* const,size_t const) ; 
- int SEQSYMBOL_TABLE_SIZE (size_t const) ; 
- int /*<<< orphan*/  ZSTD_buildFSETable (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t const,size_t const*,size_t const*,size_t const) ; 
- int /*<<< orphan*/  ZSTD_buildSeqTable_rle (int /*<<< orphan*/ *,size_t const,size_t const) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  corruption_detected ; 
-#define  set_basic 131 
-#define  set_compressed 130 
-#define  set_repeat 129 
-#define  set_rle 128 
- int /*<<< orphan*/  srcSize_wrong ; 
+
+
+
+typedef int symbolEncodingType_e ;
+typedef int ZSTD_seqSymbol ;
+typedef size_t const U32 ;
+typedef int S16 ;
+typedef size_t BYTE ;
+
+
+ size_t ERROR (int ) ;
+ int FSE_isError (size_t const) ;
+ size_t FSE_readNCount (int *,size_t const*,size_t const*,void const*,size_t) ;
+ int GENERIC ;
+ int MaxSeq ;
+ int PREFETCH_AREA (void const* const,size_t const) ;
+ int SEQSYMBOL_TABLE_SIZE (size_t const) ;
+ int ZSTD_buildFSETable (int *,int *,size_t const,size_t const*,size_t const*,size_t const) ;
+ int ZSTD_buildSeqTable_rle (int *,size_t const,size_t const) ;
+ int assert (int ) ;
+ int corruption_detected ;
+
+
+
+
+ int srcSize_wrong ;
 
 __attribute__((used)) static size_t ZSTD_buildSeqTable(ZSTD_seqSymbol* DTableSpace, const ZSTD_seqSymbol** DTablePtr,
                                  symbolEncodingType_e type, U32 max, U32 maxLog,
@@ -43,30 +43,30 @@ __attribute__((used)) static size_t ZSTD_buildSeqTable(ZSTD_seqSymbol* DTableSpa
 {
     switch(type)
     {
-    case set_rle :
+    case 128 :
         if (!srcSize) return ERROR(srcSize_wrong);
         if ( (*(const BYTE*)src) > max) return ERROR(corruption_detected);
-        {   U32 const symbol = *(const BYTE*)src;
+        { U32 const symbol = *(const BYTE*)src;
             U32 const baseline = baseValue[symbol];
             U32 const nbBits = nbAdditionalBits[symbol];
             ZSTD_buildSeqTable_rle(DTableSpace, baseline, nbBits);
         }
         *DTablePtr = DTableSpace;
         return 1;
-    case set_basic :
+    case 131 :
         *DTablePtr = defaultTable;
         return 0;
-    case set_repeat:
+    case 129:
         if (!flagRepeatTable) return ERROR(corruption_detected);
-        /* prefetch FSE table if used */
-        if (ddictIsCold && (nbSeq > 24 /* heuristic */)) {
+
+        if (ddictIsCold && (nbSeq > 24 )) {
             const void* const pStart = *DTablePtr;
             size_t const pSize = sizeof(ZSTD_seqSymbol) * (SEQSYMBOL_TABLE_SIZE(maxLog));
             PREFETCH_AREA(pStart, pSize);
         }
         return 0;
-    case set_compressed :
-        {   U32 tableLog;
+    case 130 :
+        { U32 tableLog;
             S16 norm[MaxSeq+1];
             size_t const headerSize = FSE_readNCount(norm, &max, &tableLog, src, srcSize);
             if (FSE_isError(headerSize)) return ERROR(corruption_detected);
@@ -75,7 +75,7 @@ __attribute__((used)) static size_t ZSTD_buildSeqTable(ZSTD_seqSymbol* DTableSpa
             *DTablePtr = DTableSpace;
             return headerSize;
         }
-    default :   /* impossible */
+    default :
         assert(0);
         return ERROR(GENERIC);
     }

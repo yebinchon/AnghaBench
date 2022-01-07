@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
-typedef  struct TYPE_17__   TYPE_16__ ;
 
-/* Type definitions */
-struct TYPE_18__ {int /*<<< orphan*/  tmp_heap; } ;
-typedef  TYPE_1__ script_ctx_t ;
-struct TYPE_19__ {int match_len; int /*<<< orphan*/  const* cp; } ;
-typedef  TYPE_2__ match_state_t ;
+
+
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+typedef struct TYPE_17__ TYPE_16__ ;
+
+
+struct TYPE_18__ {int tmp_heap; } ;
+typedef TYPE_1__ script_ctx_t ;
+struct TYPE_19__ {int match_len; int const* cp; } ;
+typedef TYPE_2__ match_state_t ;
 struct TYPE_20__ {int index; int length; } ;
-typedef  TYPE_3__ match_result_t ;
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int /*<<< orphan*/  heap_pool_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
+typedef TYPE_3__ match_result_t ;
+typedef int jsstr_t ;
+typedef int jsdisp_t ;
+typedef int heap_pool_t ;
+typedef int WCHAR ;
 struct TYPE_21__ {TYPE_16__* jsregexp; } ;
 struct TYPE_17__ {int flags; } ;
-typedef  TYPE_4__ RegExpInstance ;
-typedef  scalar_t__ HRESULT ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_4__ RegExpInstance ;
+typedef scalar_t__ HRESULT ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ E_OUTOFMEMORY ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int REG_GLOB ; 
- scalar_t__ S_FALSE ; 
- scalar_t__ S_OK ; 
- TYPE_2__* alloc_match_state (TYPE_16__*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- scalar_t__ do_regexp_match_next (TYPE_1__*,TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,TYPE_2__*) ; 
- TYPE_3__* heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (TYPE_3__*) ; 
- int /*<<< orphan*/  heap_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * heap_pool_mark (int /*<<< orphan*/ *) ; 
- TYPE_3__* heap_realloc (TYPE_3__*,int) ; 
- int /*<<< orphan*/ * jsstr_flatten (int /*<<< orphan*/ *) ; 
- TYPE_4__* regexp_from_jsdisp (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ E_OUTOFMEMORY ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int REG_GLOB ;
+ scalar_t__ S_FALSE ;
+ scalar_t__ S_OK ;
+ TYPE_2__* alloc_match_state (TYPE_16__*,int *,int const*) ;
+ scalar_t__ do_regexp_match_next (TYPE_1__*,TYPE_4__*,int ,int *,int const*,TYPE_2__*) ;
+ TYPE_3__* heap_alloc (int) ;
+ int heap_free (TYPE_3__*) ;
+ int heap_pool_clear (int *) ;
+ int * heap_pool_mark (int *) ;
+ TYPE_3__* heap_realloc (TYPE_3__*,int) ;
+ int * jsstr_flatten (int *) ;
+ TYPE_4__* regexp_from_jsdisp (int *) ;
 
 __attribute__((used)) static HRESULT regexp_match(script_ctx_t *ctx, jsdisp_t *dispex, jsstr_t *jsstr, BOOL gflag,
         match_result_t **match_result, DWORD *result_cnt)
 {
     RegExpInstance *This = regexp_from_jsdisp(dispex);
-    match_result_t *ret = NULL;
+    match_result_t *ret = ((void*)0);
     match_state_t *result;
     DWORD i=0, ret_size = 0;
     heap_pool_t *mark;

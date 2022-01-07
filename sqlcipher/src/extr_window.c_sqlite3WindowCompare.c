@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ eFrmType; scalar_t__ eStart; scalar_t__ eEnd; scalar_t__ eExclude; int /*<<< orphan*/  pOrderBy; int /*<<< orphan*/  pPartition; int /*<<< orphan*/  pEnd; int /*<<< orphan*/  pStart; } ;
-typedef  TYPE_1__ Window ;
-typedef  int /*<<< orphan*/  Parse ;
 
-/* Variables and functions */
- scalar_t__ sqlite3ExprCompare (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ sqlite3ExprListCompare (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ eFrmType; scalar_t__ eStart; scalar_t__ eEnd; scalar_t__ eExclude; int pOrderBy; int pPartition; int pEnd; int pStart; } ;
+typedef TYPE_1__ Window ;
+typedef int Parse ;
+
+
+ scalar_t__ sqlite3ExprCompare (int *,int ,int ,int) ;
+ scalar_t__ sqlite3ExprListCompare (int ,int ,int) ;
 
 int sqlite3WindowCompare(Parse *pParse, Window *p1, Window *p2){
   if( p1->eFrmType!=p2->eFrmType ) return 1;

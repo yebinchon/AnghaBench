@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- scalar_t__ fflush (int /*<<< orphan*/ ) ; 
- int luaL_fileresult (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tofile (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int lua_State ;
+
+
+ scalar_t__ fflush (int ) ;
+ int luaL_fileresult (int *,int,int *) ;
+ int tofile (int *) ;
 
 __attribute__((used)) static int f_flush (lua_State *L) {
-  return luaL_fileresult(L, fflush(tofile(L)) == 0, NULL);
+  return luaL_fileresult(L, fflush(tofile(L)) == 0, ((void*)0));
 }

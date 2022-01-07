@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int ssize_t ;
 
-/* Variables and functions */
+
+
+
+typedef int uint8_t ;
+typedef int ssize_t ;
+
+
 
 __attribute__((used)) static int copy_emulation_prev(const uint8_t *src,
-                               size_t         src_size,
-                               uint8_t       *dst,
-                               ssize_t        dst_offset,
-                               size_t         dst_size)
+                               size_t src_size,
+                               uint8_t *dst,
+                               ssize_t dst_offset,
+                               size_t dst_size)
 {
     int zeros = 0;
     int wrote_bytes;

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct extension_widget_value_t {struct extension_widget_value_t* psz_text; struct extension_widget_value_t* p_next; } ;
-typedef  int /*<<< orphan*/  lua_State ;
+typedef int lua_State ;
 struct TYPE_4__ {scalar_t__ type; int b_update; TYPE_1__* p_dialog; struct extension_widget_value_t* p_values; } ;
-typedef  TYPE_2__ extension_widget_t ;
-struct TYPE_3__ {int /*<<< orphan*/  lock; } ;
+typedef TYPE_2__ extension_widget_t ;
+struct TYPE_3__ {int lock; } ;
 
-/* Variables and functions */
- scalar_t__ EXTENSION_WIDGET_DROPDOWN ; 
- scalar_t__ EXTENSION_WIDGET_LIST ; 
- int /*<<< orphan*/  free (struct extension_widget_value_t*) ; 
- scalar_t__ luaL_checkudata (int /*<<< orphan*/ *,int,char*) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_SetDialogUpdate (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ EXTENSION_WIDGET_DROPDOWN ;
+ scalar_t__ EXTENSION_WIDGET_LIST ;
+ int free (struct extension_widget_value_t*) ;
+ scalar_t__ luaL_checkudata (int *,int,char*) ;
+ int luaL_error (int *,char*) ;
+ int lua_SetDialogUpdate (int *,int) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 __attribute__((used)) static int vlclua_widget_clear( lua_State *L )
 {
-    /* Get widget */
+
     extension_widget_t **pp_widget =
             (extension_widget_t **) luaL_checkudata( L, 1, "widget" );
     if( !pp_widget || !*pp_widget )
@@ -46,7 +46,7 @@ __attribute__((used)) static int vlclua_widget_clear( lua_State *L )
     vlc_mutex_lock( &p_widget->p_dialog->lock );
 
     for( p_value = p_widget->p_values;
-         p_value != NULL;
+         p_value != ((void*)0);
          p_value = p_next )
     {
         p_next = p_value->p_next;
@@ -54,8 +54,8 @@ __attribute__((used)) static int vlclua_widget_clear( lua_State *L )
         free( p_value );
     }
 
-    p_widget->p_values = NULL;
-    p_widget->b_update = true;
+    p_widget->p_values = ((void*)0);
+    p_widget->b_update = 1;
 
     vlc_mutex_unlock( &p_widget->p_dialog->lock );
 

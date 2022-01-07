@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  device_t ;
-typedef  int /*<<< orphan*/  ae_softc_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AE_LOCK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AE_UNLOCK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ae_pm_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ae_stop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * device_get_softc (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int device_t ;
+typedef int ae_softc_t ;
+
+
+ int AE_LOCK (int *) ;
+ int AE_UNLOCK (int *) ;
+ int ae_pm_init (int *) ;
+ int ae_stop (int *) ;
+ int * device_get_softc (int ) ;
 
 __attribute__((used)) static int
 ae_suspend(device_t dev)
 {
-	ae_softc_t *sc;
+ ae_softc_t *sc;
 
-	sc = device_get_softc(dev);
+ sc = device_get_softc(dev);
 
-	AE_LOCK(sc);
-	ae_stop(sc);
-	ae_pm_init(sc);
-	AE_UNLOCK(sc);
+ AE_LOCK(sc);
+ ae_stop(sc);
+ ae_pm_init(sc);
+ AE_UNLOCK(sc);
 
-	return (0);
+ return (0);
 }

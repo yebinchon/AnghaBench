@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ ** l_h; int /*<<< orphan*/ ** subband; int /*<<< orphan*/  idwt_tmp; int /*<<< orphan*/  idwt_buf; } ;
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int ** l_h; int ** subband; int idwt_tmp; int idwt_buf; } ;
 struct TYPE_4__ {scalar_t__ a_width; scalar_t__ a_height; TYPE_3__* plane; } ;
-typedef  TYPE_1__ CFHDContext ;
+typedef TYPE_1__ CFHDContext ;
 
-/* Variables and functions */
- int FF_ARRAY_ELEMS (TYPE_3__*) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ *) ; 
+
+ int FF_ARRAY_ELEMS (TYPE_3__*) ;
+ int av_freep (int *) ;
 
 __attribute__((used)) static void free_buffers(CFHDContext *s)
 {
@@ -29,11 +29,11 @@ __attribute__((used)) static void free_buffers(CFHDContext *s)
         av_freep(&s->plane[i].idwt_tmp);
 
         for (j = 0; j < 9; j++)
-            s->plane[i].subband[j] = NULL;
+            s->plane[i].subband[j] = ((void*)0);
 
         for (j = 0; j < 8; j++)
-            s->plane[i].l_h[j] = NULL;
+            s->plane[i].l_h[j] = ((void*)0);
     }
     s->a_height = 0;
-    s->a_width  = 0;
+    s->a_width = 0;
 }

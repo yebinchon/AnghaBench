@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct command_line {char* line; struct command_line* next; } ;
 struct cmd_list_element {scalar_t__ class; char* doc; } ;
 
-/* Variables and functions */
- scalar_t__ class_user ; 
- int /*<<< orphan*/  cmdlist ; 
- int /*<<< orphan*/  error (char*,char*) ; 
- int /*<<< orphan*/  free_command_lines (struct command_line**) ; 
- struct cmd_list_element* lookup_cmd (char**,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int) ; 
- struct command_line* read_command_lines (char*,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- scalar_t__ strlen (char*) ; 
- int /*<<< orphan*/  validate_comname (char*) ; 
- int /*<<< orphan*/  xfree (char*) ; 
- scalar_t__ xmalloc (int) ; 
+
+ scalar_t__ class_user ;
+ int cmdlist ;
+ int error (char*,char*) ;
+ int free_command_lines (struct command_line**) ;
+ struct cmd_list_element* lookup_cmd (char**,int ,char*,int ,int) ;
+ struct command_line* read_command_lines (char*,int) ;
+ int sprintf (char*,char*,char*) ;
+ int strcat (char*,char*) ;
+ scalar_t__ strlen (char*) ;
+ int validate_comname (char*) ;
+ int xfree (char*) ;
+ scalar_t__ xmalloc (int) ;
 
 void
 document_command (char *comname, int from_tty)
@@ -60,9 +60,9 @@ document_command (char *comname, int from_tty)
 
     for (cl1 = doclines; cl1; cl1 = cl1->next)
       {
-	strcat (c->doc, cl1->line);
-	if (cl1->next)
-	  strcat (c->doc, "\n");
+ strcat (c->doc, cl1->line);
+ if (cl1->next)
+   strcat (c->doc, "\n");
       }
   }
 

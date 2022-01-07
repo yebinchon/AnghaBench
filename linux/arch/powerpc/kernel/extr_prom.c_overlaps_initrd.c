@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PAGE_SIZE ; 
- unsigned long _ALIGN_DOWN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned long _ALIGN_UP (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  initrd_end ; 
- int /*<<< orphan*/  initrd_start ; 
+ int PAGE_SIZE ;
+ unsigned long _ALIGN_DOWN (int ,int ) ;
+ unsigned long _ALIGN_UP (int ,int ) ;
+ int initrd_end ;
+ int initrd_start ;
 
 __attribute__((used)) static inline int overlaps_initrd(unsigned long start, unsigned long size)
 {
-#ifdef CONFIG_BLK_DEV_INITRD
-	if (!initrd_start)
-		return 0;
 
-	return	(start + size) > _ALIGN_DOWN(initrd_start, PAGE_SIZE) &&
-			start <= _ALIGN_UP(initrd_end, PAGE_SIZE);
-#else
-	return 0;
-#endif
+
+
+
+
+
+
+ return 0;
+
 }

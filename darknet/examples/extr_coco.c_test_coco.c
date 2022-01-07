@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_17__ {int n; int /*<<< orphan*/  h; int /*<<< orphan*/  w; TYPE_2__* layers; } ;
-typedef  TYPE_1__ network ;
-struct TYPE_18__ {int side; int n; int /*<<< orphan*/  classes; } ;
-typedef  TYPE_2__ layer ;
+
+
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+struct TYPE_17__ {int n; int h; int w; TYPE_2__* layers; } ;
+typedef TYPE_1__ network ;
+struct TYPE_18__ {int side; int n; int classes; } ;
+typedef TYPE_2__ layer ;
 struct TYPE_19__ {float* data; } ;
-typedef  TYPE_3__ image ;
-typedef  int /*<<< orphan*/  detection ;
-typedef  scalar_t__ clock_t ;
+typedef TYPE_3__ image ;
+typedef int detection ;
+typedef scalar_t__ clock_t ;
 
-/* Variables and functions */
- scalar_t__ clock () ; 
- int /*<<< orphan*/  coco_classes ; 
- int /*<<< orphan*/  do_nms_sort (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,float) ; 
- int /*<<< orphan*/  draw_detections (TYPE_3__,int /*<<< orphan*/ *,int,float,int /*<<< orphan*/ ,TYPE_3__**,int) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- char* fgets (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_detections (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  free_image (TYPE_3__) ; 
- int /*<<< orphan*/ * get_network_boxes (TYPE_1__*,int,int,float,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- TYPE_3__** load_alphabet () ; 
- TYPE_3__ load_image_color (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* load_network (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  network_predict (TYPE_1__*,float*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- TYPE_3__ resize_image (TYPE_3__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  save_image (TYPE_3__,char*) ; 
- double sec (scalar_t__) ; 
- int /*<<< orphan*/  set_batch_network (TYPE_1__*,int) ; 
- int /*<<< orphan*/  show_image (TYPE_3__,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  srand (int) ; 
- int /*<<< orphan*/  stdin ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  strncpy (char*,char*,int) ; 
- int /*<<< orphan*/  strtok (char*,char*) ; 
+
+ scalar_t__ clock () ;
+ int coco_classes ;
+ int do_nms_sort (int *,int,int ,float) ;
+ int draw_detections (TYPE_3__,int *,int,float,int ,TYPE_3__**,int) ;
+ int fflush (int ) ;
+ char* fgets (char*,int,int ) ;
+ int free_detections (int *,int) ;
+ int free_image (TYPE_3__) ;
+ int * get_network_boxes (TYPE_1__*,int,int,float,int ,int ,int ,int*) ;
+ TYPE_3__** load_alphabet () ;
+ TYPE_3__ load_image_color (char*,int ,int ) ;
+ TYPE_1__* load_network (char*,char*,int ) ;
+ int network_predict (TYPE_1__*,float*) ;
+ int printf (char*,...) ;
+ TYPE_3__ resize_image (TYPE_3__,int ,int ) ;
+ int save_image (TYPE_3__,char*) ;
+ double sec (scalar_t__) ;
+ int set_batch_network (TYPE_1__*,int) ;
+ int show_image (TYPE_3__,char*,int ) ;
+ int srand (int) ;
+ int stdin ;
+ int stdout ;
+ int strncpy (char*,char*,int) ;
+ int strtok (char*,char*) ;
 
 void test_coco(char *cfgfile, char *weightfile, char *filename, float thresh)
 {

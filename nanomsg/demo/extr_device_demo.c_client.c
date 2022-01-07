@@ -1,38 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  AF_SP ; 
- int /*<<< orphan*/  NN_MSG ; 
- int /*<<< orphan*/  NN_REQ ; 
- char* calloc (int,int) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  nn_close (int) ; 
- scalar_t__ nn_connect (int,char const*) ; 
- int /*<<< orphan*/  nn_errno () ; 
- int /*<<< orphan*/  nn_freemsg (char*) ; 
- int nn_recv (int,char**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ nn_send (int,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int nn_socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* nn_strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- int /*<<< orphan*/  usleep (int) ; 
+ int AF_SP ;
+ int NN_MSG ;
+ int NN_REQ ;
+ char* calloc (int,int) ;
+ int errno ;
+ int fprintf (int ,char*,char*) ;
+ int free (char*) ;
+ int memcpy (char*,char*,int) ;
+ int nn_close (int) ;
+ scalar_t__ nn_connect (int,char const*) ;
+ int nn_errno () ;
+ int nn_freemsg (char*) ;
+ int nn_recv (int,char**,int ,int ) ;
+ scalar_t__ nn_send (int,char const*,int ,int ) ;
+ int nn_socket (int ,int ) ;
+ char* nn_strerror (int ) ;
+ int printf (char*,char*) ;
+ int stderr ;
+ char* strerror (int ) ;
+ int strlen (char const*) ;
+ int usleep (int) ;
 
 int client (const char *url, const char *username)
 {
@@ -50,7 +42,7 @@ int client (const char *url, const char *username)
     if (nn_connect (fd, url) < 0) {
         fprintf (stderr, "nn_socket: %s\n", nn_strerror (nn_errno ()));
         nn_close (fd);
-        return (-1);        
+        return (-1);
     }
 
     usleep(1000);
@@ -61,7 +53,7 @@ int client (const char *url, const char *username)
         return (-1);
     }
 
-    /*  Here we ask the library to allocate response buffer for us (NN_MSG). */
+
     rc = nn_recv (fd, &msg, NN_MSG, 0);
     if (rc < 0) {
         fprintf (stderr, "nn_recv: %s\n", nn_strerror (nn_errno ()));
@@ -71,16 +63,16 @@ int client (const char *url, const char *username)
 
     nn_close (fd);
 
-    /*  Response is not ASCIIZ terminated. */
+
     greeting = calloc (rc + 1, 1);
-    if (greeting == NULL) {
+    if (greeting == ((void*)0)) {
         fprintf (stderr, "calloc: %s\n", strerror (errno));
         return (-1);
     }
     memcpy(greeting, msg, rc);
 
     nn_freemsg (msg);
-    printf ("%s\n", greeting); 
+    printf ("%s\n", greeting);
     free (greeting);
     return (0);
 }

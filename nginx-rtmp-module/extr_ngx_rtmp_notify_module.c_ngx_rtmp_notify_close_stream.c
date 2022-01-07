@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_8__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_8__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {scalar_t__ auto_pushed; } ;
-typedef  TYPE_1__ ngx_rtmp_session_t ;
+typedef TYPE_1__ ngx_rtmp_session_t ;
 struct TYPE_12__ {scalar_t__ timer_set; } ;
 struct TYPE_11__ {int flags; TYPE_8__ update_evt; } ;
-typedef  TYPE_2__ ngx_rtmp_notify_ctx_t ;
-typedef  int /*<<< orphan*/  ngx_rtmp_notify_app_conf_t ;
-typedef  int /*<<< orphan*/  ngx_rtmp_close_stream_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
+typedef TYPE_2__ ngx_rtmp_notify_ctx_t ;
+typedef int ngx_rtmp_notify_app_conf_t ;
+typedef int ngx_rtmp_close_stream_t ;
+typedef int ngx_int_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_RTMP_NOTIFY_DONE ; 
- int NGX_RTMP_NOTIFY_PLAYING ; 
- int /*<<< orphan*/  NGX_RTMP_NOTIFY_PLAY_DONE ; 
- int NGX_RTMP_NOTIFY_PUBLISHING ; 
- int /*<<< orphan*/  NGX_RTMP_NOTIFY_PUBLISH_DONE ; 
- int /*<<< orphan*/  next_close_stream (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_del_timer (TYPE_8__*) ; 
- int /*<<< orphan*/ * ngx_rtmp_get_module_app_conf (TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_2__* ngx_rtmp_get_module_ctx (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_rtmp_notify_done (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_rtmp_notify_module ; 
+
+ int NGX_RTMP_NOTIFY_DONE ;
+ int NGX_RTMP_NOTIFY_PLAYING ;
+ int NGX_RTMP_NOTIFY_PLAY_DONE ;
+ int NGX_RTMP_NOTIFY_PUBLISHING ;
+ int NGX_RTMP_NOTIFY_PUBLISH_DONE ;
+ int next_close_stream (TYPE_1__*,int *) ;
+ int ngx_del_timer (TYPE_8__*) ;
+ int * ngx_rtmp_get_module_app_conf (TYPE_1__*,int ) ;
+ TYPE_2__* ngx_rtmp_get_module_ctx (TYPE_1__*,int ) ;
+ int ngx_rtmp_notify_done (TYPE_1__*,char*,int ) ;
+ int ngx_rtmp_notify_module ;
 
 __attribute__((used)) static ngx_int_t
 ngx_rtmp_notify_close_stream(ngx_rtmp_session_t *s,
                              ngx_rtmp_close_stream_t *v)
 {
-    ngx_rtmp_notify_ctx_t          *ctx;
-    ngx_rtmp_notify_app_conf_t     *nacf;
+    ngx_rtmp_notify_ctx_t *ctx;
+    ngx_rtmp_notify_app_conf_t *nacf;
 
     if (s->auto_pushed) {
         goto next;
@@ -48,13 +48,13 @@ ngx_rtmp_notify_close_stream(ngx_rtmp_session_t *s,
 
     ctx = ngx_rtmp_get_module_ctx(s, ngx_rtmp_notify_module);
 
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         goto next;
     }
 
     nacf = ngx_rtmp_get_module_app_conf(s, ngx_rtmp_notify_module);
 
-    if (nacf == NULL) {
+    if (nacf == ((void*)0)) {
         goto next;
     }
 

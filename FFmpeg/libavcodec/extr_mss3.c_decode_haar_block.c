@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int ptrdiff_t ;
-struct TYPE_3__ {int scale; int /*<<< orphan*/  coef_hi_model; int /*<<< orphan*/  coef_model; } ;
-typedef  int /*<<< orphan*/  RangeCoder ;
-typedef  TYPE_1__ HaarBlockCoder ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_clip_uint8 (int) ; 
- int decode_coeff (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int rac_get_model256_sym (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int ptrdiff_t ;
+struct TYPE_3__ {int scale; int coef_hi_model; int coef_model; } ;
+typedef int RangeCoder ;
+typedef TYPE_1__ HaarBlockCoder ;
+
+
+ int av_clip_uint8 (int) ;
+ int decode_coeff (int *,int *) ;
+ int rac_get_model256_sym (int *,int *) ;
 
 __attribute__((used)) static void decode_haar_block(RangeCoder *c, HaarBlockCoder *hc,
                               uint8_t *dst, ptrdiff_t stride,
@@ -53,12 +53,12 @@ __attribute__((used)) static void decode_haar_block(RangeCoder *c, HaarBlockCode
             t2 = C - D;
             t3 = A + B;
             t4 = C + D;
-            dst[i * 2]              = av_clip_uint8(t1 - t2);
-            dst[i * 2 + stride]     = av_clip_uint8(t1 + t2);
-            dst[i * 2 + 1]          = av_clip_uint8(t3 - t4);
+            dst[i * 2] = av_clip_uint8(t1 - t2);
+            dst[i * 2 + stride] = av_clip_uint8(t1 + t2);
+            dst[i * 2 + 1] = av_clip_uint8(t3 - t4);
             dst[i * 2 + 1 + stride] = av_clip_uint8(t3 + t4);
         }
         block += block_size;
-        dst   += stride * 2;
+        dst += stride * 2;
     }
 }

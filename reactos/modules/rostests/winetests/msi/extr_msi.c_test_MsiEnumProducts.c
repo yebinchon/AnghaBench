@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int REGSAM ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_ACCESS_DENIED ; 
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- scalar_t__ ERROR_NO_MORE_ITEMS ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int KEY_ALL_ACCESS ; 
- int KEY_WOW64_64KEY ; 
- int /*<<< orphan*/  LocalFree (char*) ; 
- int MAX_PATH ; 
- scalar_t__ MsiEnumProductsA (int,char*) ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegCreateKeyA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- scalar_t__ RegCreateKeyExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegDeleteKeyA (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  create_test_guid (char*,char*) ; 
- int /*<<< orphan*/  delete_key (int /*<<< orphan*/ ,char*,int) ; 
- char* get_user_sid () ; 
- scalar_t__ is_wow64 ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int REGSAM ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ scalar_t__ ERROR_ACCESS_DENIED ;
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ scalar_t__ ERROR_NO_MORE_ITEMS ;
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int HKEY_CURRENT_USER ;
+ int HKEY_LOCAL_MACHINE ;
+ int KEY_ALL_ACCESS ;
+ int KEY_WOW64_64KEY ;
+ int LocalFree (char*) ;
+ int MAX_PATH ;
+ scalar_t__ MsiEnumProductsA (int,char*) ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegCreateKeyA (int ,char*,int *) ;
+ scalar_t__ RegCreateKeyExA (int ,char*,int ,int *,int ,int,int *,int *,int *) ;
+ int RegDeleteKeyA (int ,char*) ;
+ int TRUE ;
+ int create_test_guid (char*,char*) ;
+ int delete_key (int ,char*,int) ;
+ char* get_user_sid () ;
+ scalar_t__ is_wow64 ;
+ int ok (int,char*,...) ;
+ int skip (char*) ;
+ int strcat (char*,char*) ;
+ int strcmp (char*,char*) ;
+ int strcpy (char*,char*) ;
 
 __attribute__((used)) static void test_MsiEnumProducts(void)
 {
@@ -69,7 +69,7 @@ __attribute__((used)) static void test_MsiEnumProducts(void)
     strcat(keypath2, "\\Installer\\Products\\");
     strcat(keypath2, product_squashed2);
 
-    r = RegCreateKeyExA(HKEY_LOCAL_MACHINE, keypath2, 0, NULL, 0, access, NULL, &key2, NULL);
+    r = RegCreateKeyExA(HKEY_LOCAL_MACHINE, keypath2, 0, ((void*)0), 0, access, ((void*)0), &key2, ((void*)0));
     if (r == ERROR_ACCESS_DENIED)
     {
         skip("Not enough rights to perform tests\n");
@@ -81,7 +81,7 @@ __attribute__((used)) static void test_MsiEnumProducts(void)
     strcpy(keypath1, "Software\\Classes\\Installer\\Products\\");
     strcat(keypath1, product_squashed1);
 
-    r = RegCreateKeyExA(HKEY_LOCAL_MACHINE, keypath1, 0, NULL, 0, access, NULL, &key1, NULL);
+    r = RegCreateKeyExA(HKEY_LOCAL_MACHINE, keypath1, 0, ((void*)0), 0, access, ((void*)0), &key1, ((void*)0));
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);
 
     strcpy(keypath3, "Software\\Microsoft\\Installer\\Products\\");
@@ -94,7 +94,7 @@ __attribute__((used)) static void test_MsiEnumProducts(void)
     r = MsiEnumProductsA(index, guid);
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %u\n", r);
 
-    r = MsiEnumProductsA(index, NULL);
+    r = MsiEnumProductsA(index, ((void*)0));
     ok(r == ERROR_INVALID_PARAMETER, "Expected ERROR_INVALID_PARAMETER, got %u\n", r);
 
     index = 2;

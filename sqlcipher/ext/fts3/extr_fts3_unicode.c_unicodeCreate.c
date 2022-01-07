@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int eRemoveDiacritic; } ;
-typedef  TYPE_1__ unicode_tokenizer ;
-typedef  int /*<<< orphan*/  sqlite3_tokenizer ;
+typedef TYPE_1__ unicode_tokenizer ;
+typedef int sqlite3_tokenizer ;
 
-/* Variables and functions */
- int SQLITE_ERROR ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- scalar_t__ memcmp (char*,char const*,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ sqlite3_malloc (int) ; 
- scalar_t__ strlen (char const*) ; 
- int unicodeAddExceptions (TYPE_1__*,int,char const*,int) ; 
- int /*<<< orphan*/  unicodeDestroy (int /*<<< orphan*/ *) ; 
+
+ int SQLITE_ERROR ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ scalar_t__ memcmp (char*,char const*,int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ scalar_t__ sqlite3_malloc (int) ;
+ scalar_t__ strlen (char const*) ;
+ int unicodeAddExceptions (TYPE_1__*,int,char const*,int) ;
+ int unicodeDestroy (int *) ;
 
 __attribute__((used)) static int unicodeCreate(
-  int nArg,                       /* Size of array argv[] */
-  const char * const *azArg,      /* Tokenizer creation arguments */
-  sqlite3_tokenizer **pp          /* OUT: New tokenizer handle */
+  int nArg,
+  const char * const *azArg,
+  sqlite3_tokenizer **pp
 ){
-  unicode_tokenizer *pNew;        /* New tokenizer object */
+  unicode_tokenizer *pNew;
   int i;
   int rc = SQLITE_OK;
 
   pNew = (unicode_tokenizer *) sqlite3_malloc(sizeof(unicode_tokenizer));
-  if( pNew==NULL ) return SQLITE_NOMEM;
+  if( pNew==((void*)0) ) return SQLITE_NOMEM;
   memset(pNew, 0, sizeof(unicode_tokenizer));
   pNew->eRemoveDiacritic = 1;
 
@@ -60,8 +60,8 @@ __attribute__((used)) static int unicodeCreate(
       rc = unicodeAddExceptions(pNew, 0, &z[11], n-11);
     }
     else{
-      /* Unrecognized argument */
-      rc  = SQLITE_ERROR;
+
+      rc = SQLITE_ERROR;
     }
   }
 

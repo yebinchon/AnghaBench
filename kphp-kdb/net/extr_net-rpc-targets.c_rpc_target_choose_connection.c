@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct rpc_target {struct connection* first; TYPE_1__* target; } ;
 struct process_id {int dummy; } ;
 struct connection {int unreliability; struct connection* next; } ;
-struct TYPE_4__ {int /*<<< orphan*/  remote_pid; } ;
+struct TYPE_4__ {int remote_pid; } ;
 struct TYPE_3__ {struct connection* first_conn; } ;
 
-/* Variables and functions */
- TYPE_2__* RPCS_DATA (struct connection*) ; 
- int cr_ok ; 
- int cr_stopped ; 
- int matches_pid (int /*<<< orphan*/ *,struct process_id*) ; 
- int server_check_ready (struct connection*) ; 
+
+ TYPE_2__* RPCS_DATA (struct connection*) ;
+ int cr_ok ;
+ int cr_stopped ;
+ int matches_pid (int *,struct process_id*) ;
+ int server_check_ready (struct connection*) ;
 
 struct connection *rpc_target_choose_connection (struct rpc_target *S, struct process_id *PID) {
   if (!S) {

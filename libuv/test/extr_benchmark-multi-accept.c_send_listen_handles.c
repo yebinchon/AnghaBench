@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_tcp_t ;
-typedef  int /*<<< orphan*/  uv_stream_t ;
-typedef  int /*<<< orphan*/  uv_loop_t ;
-typedef  scalar_t__ uv_handle_type ;
-typedef  int /*<<< orphan*/  uv_handle_t ;
+
+
+
+
+typedef int uv_tcp_t ;
+typedef int uv_stream_t ;
+typedef int uv_loop_t ;
+typedef scalar_t__ uv_handle_type ;
+typedef int uv_handle_t ;
 struct sockaddr {int dummy; } ;
-struct server_ctx {int /*<<< orphan*/  semaphore; } ;
-struct ipc_server_ctx {unsigned int num_connects; int /*<<< orphan*/  server_handle; int /*<<< orphan*/  ipc_pipe; } ;
+struct server_ctx {int semaphore; } ;
+struct ipc_server_ctx {unsigned int num_connects; int server_handle; int ipc_pipe; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  IPC_PIPE_NAME ; 
- int /*<<< orphan*/  UV_RUN_DEFAULT ; 
- scalar_t__ UV_TCP ; 
- int /*<<< orphan*/  ipc_connection_cb ; 
- int /*<<< orphan*/  listen_addr ; 
- int /*<<< orphan*/  uv_close (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * uv_default_loop () ; 
- scalar_t__ uv_listen (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- scalar_t__ uv_pipe_bind (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ uv_pipe_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ uv_run (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv_sem_post (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_sem_wait (int /*<<< orphan*/ *) ; 
- scalar_t__ uv_tcp_bind (int /*<<< orphan*/ *,struct sockaddr const*,int /*<<< orphan*/ ) ; 
- scalar_t__ uv_tcp_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int ASSERT (int) ;
+ int IPC_PIPE_NAME ;
+ int UV_RUN_DEFAULT ;
+ scalar_t__ UV_TCP ;
+ int ipc_connection_cb ;
+ int listen_addr ;
+ int uv_close (int *,int *) ;
+ int * uv_default_loop () ;
+ scalar_t__ uv_listen (int *,int,int ) ;
+ scalar_t__ uv_pipe_bind (int *,int ) ;
+ scalar_t__ uv_pipe_init (int *,int *,int) ;
+ scalar_t__ uv_run (int *,int ) ;
+ int uv_sem_post (int *) ;
+ int uv_sem_wait (int *) ;
+ scalar_t__ uv_tcp_bind (int *,struct sockaddr const*,int ) ;
+ scalar_t__ uv_tcp_init (int *,int *) ;
 
 __attribute__((used)) static void send_listen_handles(uv_handle_type type,
                                 unsigned int num_servers,
@@ -64,7 +64,7 @@ __attribute__((used)) static void send_listen_handles(uv_handle_type type,
     uv_sem_post(&servers[i].semaphore);
 
   ASSERT(0 == uv_run(loop, UV_RUN_DEFAULT));
-  uv_close((uv_handle_t*) &ctx.server_handle, NULL);
+  uv_close((uv_handle_t*) &ctx.server_handle, ((void*)0));
   ASSERT(0 == uv_run(loop, UV_RUN_DEFAULT));
 
   for (i = 0; i < num_servers; i++)

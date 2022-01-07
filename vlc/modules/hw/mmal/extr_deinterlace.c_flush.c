@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  picture_t ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int picture_t ;
 struct TYPE_7__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ filter_t ;
-struct TYPE_8__ {int /*<<< orphan*/  started; int /*<<< orphan*/  filtered_pictures; int /*<<< orphan*/  sem; int /*<<< orphan*/  output_in_transit; int /*<<< orphan*/  input_in_transit; int /*<<< orphan*/  input; int /*<<< orphan*/  output; } ;
-typedef  TYPE_2__ filter_sys_t ;
+typedef TYPE_1__ filter_t ;
+struct TYPE_8__ {int started; int filtered_pictures; int sem; int output_in_transit; int input_in_transit; int input; int output; } ;
+typedef TYPE_2__ filter_sys_t ;
 struct TYPE_9__ {scalar_t__ user_data; } ;
-typedef  TYPE_3__ MMAL_BUFFER_HEADER_T ;
+typedef TYPE_3__ MMAL_BUFFER_HEADER_T ;
 
-/* Variables and functions */
- scalar_t__ atomic_load (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atomic_store (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mmal_port_flush (int /*<<< orphan*/ ) ; 
- TYPE_3__* mmal_queue_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_1__*,char*,...) ; 
- int /*<<< orphan*/  picture_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_sem_wait (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ atomic_load (int *) ;
+ int atomic_store (int *,int) ;
+ int mmal_port_flush (int ) ;
+ TYPE_3__* mmal_queue_get (int ) ;
+ int msg_Dbg (TYPE_1__*,char*,...) ;
+ int picture_Release (int *) ;
+ int vlc_sem_wait (int *) ;
 
 __attribute__((used)) static void flush(filter_t *filter)
 {
@@ -53,6 +53,6 @@ __attribute__((used)) static void flush(filter_t *filter)
                 (void *)pic);
         picture_Release(pic);
     }
-    atomic_store(&sys->started, false);
+    atomic_store(&sys->started, 0);
     msg_Dbg(filter, "flush: done");
 }

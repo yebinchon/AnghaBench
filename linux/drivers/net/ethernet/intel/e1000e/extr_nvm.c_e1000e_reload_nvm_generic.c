@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct e1000_hw {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CTRL_EXT ; 
- int /*<<< orphan*/  E1000_CTRL_EXT_EE_RST ; 
- int /*<<< orphan*/  e1e_flush () ; 
- int /*<<< orphan*/  er32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ew32 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usleep_range (int,int) ; 
+
+ int CTRL_EXT ;
+ int E1000_CTRL_EXT_EE_RST ;
+ int e1e_flush () ;
+ int er32 (int ) ;
+ int ew32 (int ,int ) ;
+ int usleep_range (int,int) ;
 
 void e1000e_reload_nvm_generic(struct e1000_hw *hw)
 {
-	u32 ctrl_ext;
+ u32 ctrl_ext;
 
-	usleep_range(10, 20);
-	ctrl_ext = er32(CTRL_EXT);
-	ctrl_ext |= E1000_CTRL_EXT_EE_RST;
-	ew32(CTRL_EXT, ctrl_ext);
-	e1e_flush();
+ usleep_range(10, 20);
+ ctrl_ext = er32(CTRL_EXT);
+ ctrl_ext |= E1000_CTRL_EXT_EE_RST;
+ ew32(CTRL_EXT, ctrl_ext);
+ e1e_flush();
 }

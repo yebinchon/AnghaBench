@@ -1,86 +1,86 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int VOID ;
 struct TYPE_6__ {void* QuadPart; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * SectionObjectPointer; } ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int /*<<< orphan*/ * PSECTION_OBJECT_POINTERS ;
-typedef  TYPE_1__* PFILE_OBJECT ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  TYPE_2__ LARGE_INTEGER ;
-typedef  int /*<<< orphan*/ * HANDLE ;
+struct TYPE_5__ {int * SectionObjectPointer; } ;
+typedef int PVOID ;
+typedef int * PSECTION_OBJECT_POINTERS ;
+typedef TYPE_1__* PFILE_OBJECT ;
+typedef int NTSTATUS ;
+typedef TYPE_2__ LARGE_INTEGER ;
+typedef int * HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CREATE_SECTION (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CheckObject (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  CheckSection (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IGNORE ; 
- int /*<<< orphan*/ * IoFileObjectType ; 
- int /*<<< orphan*/  KernelMode ; 
- int /*<<< orphan*/  NO_HANDLE_CLOSE ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ObDereferenceObject (TYPE_1__*) ; 
- int /*<<< orphan*/  ObReferenceObjectByHandle (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PAGE_READONLY ; 
- int /*<<< orphan*/  SECTION_ALL_ACCESS ; 
- int /*<<< orphan*/  SEC_COMMIT ; 
- int /*<<< orphan*/  SEC_FILE ; 
- int /*<<< orphan*/  STANDARD_RIGHTS_ALL ; 
- int /*<<< orphan*/  STATUS_INVALID_FILE_FOR_SECTION ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- void* TestStringSize ; 
- int /*<<< orphan*/  ZwClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip (int /*<<< orphan*/ ,char*) ; 
+
+ int CREATE_SECTION (int *,int ,int *,TYPE_2__,int ,int ,int *,int ,int ) ;
+ int CheckObject (int *,int,int) ;
+ int CheckSection (int *,int ,void*,int ) ;
+ int IGNORE ;
+ int * IoFileObjectType ;
+ int KernelMode ;
+ int NO_HANDLE_CLOSE ;
+ int NT_SUCCESS (int ) ;
+ int ObDereferenceObject (TYPE_1__*) ;
+ int ObReferenceObjectByHandle (int *,int ,int ,int ,int *,int *) ;
+ int PAGE_READONLY ;
+ int SECTION_ALL_ACCESS ;
+ int SEC_COMMIT ;
+ int SEC_FILE ;
+ int STANDARD_RIGHTS_ALL ;
+ int STATUS_INVALID_FILE_FOR_SECTION ;
+ int STATUS_SUCCESS ;
+ void* TestStringSize ;
+ int ZwClose (int *) ;
+ int skip (int ,char*) ;
 
 __attribute__((used)) static
 VOID
 BasicBehaviorChecks(HANDLE FileHandle)
 {
     NTSTATUS Status;
-    HANDLE Section = NULL;
+    HANDLE Section = ((void*)0);
     PFILE_OBJECT FileObject;
     LARGE_INTEGER Length;
     Length.QuadPart = TestStringSize;
 
-    //mimic lack of section support for a particular file as well.
-    Status = ObReferenceObjectByHandle(FileHandle, STANDARD_RIGHTS_ALL, *IoFileObjectType, KernelMode, (PVOID *)&FileObject, NULL);
+
+    Status = ObReferenceObjectByHandle(FileHandle, STANDARD_RIGHTS_ALL, *IoFileObjectType, KernelMode, (PVOID *)&FileObject, ((void*)0));
     if (!skip(NT_SUCCESS(Status), "Cannot reference object by handle\n"))
     {
         PSECTION_OBJECT_POINTERS Pointers = FileObject->SectionObjectPointer;
 
-        FileObject->SectionObjectPointer = NULL;
-        CREATE_SECTION(Section, SECTION_ALL_ACCESS, NULL, Length, PAGE_READONLY, SEC_COMMIT, FileHandle, STATUS_INVALID_FILE_FOR_SECTION, IGNORE);
+        FileObject->SectionObjectPointer = ((void*)0);
+        CREATE_SECTION(Section, SECTION_ALL_ACCESS, ((void*)0), Length, PAGE_READONLY, SEC_COMMIT, FileHandle, STATUS_INVALID_FILE_FOR_SECTION, IGNORE);
         FileObject->SectionObjectPointer = Pointers;
         ObDereferenceObject(FileObject);
     }
 
     Length.QuadPart = TestStringSize;
-    CREATE_SECTION(Section, (SECTION_ALL_ACCESS), NULL, Length, PAGE_READONLY, SEC_COMMIT, FileHandle, STATUS_SUCCESS, NO_HANDLE_CLOSE);
+    CREATE_SECTION(Section, (SECTION_ALL_ACCESS), ((void*)0), Length, PAGE_READONLY, SEC_COMMIT, FileHandle, STATUS_SUCCESS, NO_HANDLE_CLOSE);
     CheckObject(Section, 2, 1);
     CheckSection(Section, SEC_FILE, Length.QuadPart, STATUS_SUCCESS);
-    ZwClose(Section); //manually close it due to NO_HANDLE_CLOSE in CREATE_SECTION
+    ZwClose(Section);
 
-    //section length should be set to that of file
+
     Length.QuadPart = 0;
-    CREATE_SECTION(Section, SECTION_ALL_ACCESS, NULL, Length, PAGE_READONLY, SEC_COMMIT, FileHandle, STATUS_SUCCESS, NO_HANDLE_CLOSE);
+    CREATE_SECTION(Section, SECTION_ALL_ACCESS, ((void*)0), Length, PAGE_READONLY, SEC_COMMIT, FileHandle, STATUS_SUCCESS, NO_HANDLE_CLOSE);
     CheckSection(Section, SEC_FILE, TestStringSize, STATUS_SUCCESS);
     ZwClose(Section);
 
-    //create a smaller section than file
+
     Length.QuadPart = TestStringSize - 100;
-    CREATE_SECTION(Section, SECTION_ALL_ACCESS, NULL, Length, PAGE_READONLY, SEC_COMMIT, FileHandle, STATUS_SUCCESS, NO_HANDLE_CLOSE);
+    CREATE_SECTION(Section, SECTION_ALL_ACCESS, ((void*)0), Length, PAGE_READONLY, SEC_COMMIT, FileHandle, STATUS_SUCCESS, NO_HANDLE_CLOSE);
     CheckSection(Section, SEC_FILE, TestStringSize - 100, STATUS_SUCCESS);
     ZwClose(Section);
 }

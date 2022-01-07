@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pud_t ;
-typedef  int /*<<< orphan*/  pgd_t ;
 
-/* Variables and functions */
- int PTRS_PER_PGD ; 
- scalar_t__ kvm_mips_flush_gva_pud (int /*<<< orphan*/ *,unsigned long,unsigned long) ; 
- int /*<<< orphan*/  pgd_clear (int /*<<< orphan*/ *) ; 
- int pgd_index (unsigned long) ; 
- int /*<<< orphan*/  pgd_present (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pud_free (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * pud_offset (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int pud_t ;
+typedef int pgd_t ;
+
+
+ int PTRS_PER_PGD ;
+ scalar_t__ kvm_mips_flush_gva_pud (int *,unsigned long,unsigned long) ;
+ int pgd_clear (int *) ;
+ int pgd_index (unsigned long) ;
+ int pgd_present (int ) ;
+ int pud_free (int *,int *) ;
+ int * pud_offset (int *,int ) ;
 
 __attribute__((used)) static bool kvm_mips_flush_gva_pgd(pgd_t *pgd, unsigned long start_gva,
-				   unsigned long end_gva)
+       unsigned long end_gva)
 {
-	pud_t *pud;
-	unsigned long end = ~0ul;
-	int i_min = pgd_index(start_gva);
-	int i_max = pgd_index(end_gva);
-	bool safe_to_remove = (i_min == 0 && i_max == PTRS_PER_PGD - 1);
-	int i;
+ pud_t *pud;
+ unsigned long end = ~0ul;
+ int i_min = pgd_index(start_gva);
+ int i_max = pgd_index(end_gva);
+ bool safe_to_remove = (i_min == 0 && i_max == PTRS_PER_PGD - 1);
+ int i;
 
-	for (i = i_min; i <= i_max; ++i, start_gva = 0) {
-		if (!pgd_present(pgd[i]))
-			continue;
+ for (i = i_min; i <= i_max; ++i, start_gva = 0) {
+  if (!pgd_present(pgd[i]))
+   continue;
 
-		pud = pud_offset(pgd + i, 0);
-		if (i == i_max)
-			end = end_gva;
+  pud = pud_offset(pgd + i, 0);
+  if (i == i_max)
+   end = end_gva;
 
-		if (kvm_mips_flush_gva_pud(pud, start_gva, end)) {
-			pgd_clear(pgd + i);
-			pud_free(NULL, pud);
-		} else {
-			safe_to_remove = false;
-		}
-	}
-	return safe_to_remove;
+  if (kvm_mips_flush_gva_pud(pud, start_gva, end)) {
+   pgd_clear(pgd + i);
+   pud_free(((void*)0), pud);
+  } else {
+   safe_to_remove = 0;
+  }
+ }
+ return safe_to_remove;
 }

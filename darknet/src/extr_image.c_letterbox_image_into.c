@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int w; int h; } ;
-typedef  TYPE_1__ image ;
+typedef TYPE_1__ image ;
 
-/* Variables and functions */
- int /*<<< orphan*/  embed_image (TYPE_1__,TYPE_1__,int,int) ; 
- int /*<<< orphan*/  free_image (TYPE_1__) ; 
- TYPE_1__ resize_image (TYPE_1__,int,int) ; 
+
+ int embed_image (TYPE_1__,TYPE_1__,int,int) ;
+ int free_image (TYPE_1__) ;
+ TYPE_1__ resize_image (TYPE_1__,int,int) ;
 
 void letterbox_image_into(image im, int w, int h, image boxed)
 {
@@ -31,6 +31,6 @@ void letterbox_image_into(image im, int w, int h, image boxed)
         new_w = (im.w * h)/im.h;
     }
     image resized = resize_image(im, new_w, new_h);
-    embed_image(resized, boxed, (w-new_w)/2, (h-new_h)/2); 
+    embed_image(resized, boxed, (w-new_w)/2, (h-new_h)/2);
     free_image(resized);
 }

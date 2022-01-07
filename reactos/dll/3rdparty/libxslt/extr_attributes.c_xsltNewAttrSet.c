@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * xsltAttrSetPtr ;
-typedef  int /*<<< orphan*/  xsltAttrSet ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ xmlMalloc (int) ; 
- int /*<<< orphan*/  xsltGenericError (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  xsltGenericErrorContext ; 
+
+
+
+typedef int * xsltAttrSetPtr ;
+typedef int xsltAttrSet ;
+
+
+ int memset (int *,int ,int) ;
+ scalar_t__ xmlMalloc (int) ;
+ int xsltGenericError (int ,char*) ;
+ int xsltGenericErrorContext ;
 
 __attribute__((used)) static xsltAttrSetPtr
 xsltNewAttrSet() {
     xsltAttrSetPtr cur;
 
     cur = (xsltAttrSetPtr) xmlMalloc(sizeof(xsltAttrSet));
-    if (cur == NULL) {
+    if (cur == ((void*)0)) {
         xsltGenericError(xsltGenericErrorContext,
-		"xsltNewAttrSet : malloc failed\n");
-	return(NULL);
+  "xsltNewAttrSet : malloc failed\n");
+ return(((void*)0));
     }
     memset(cur, 0, sizeof(xsltAttrSet));
     return(cur);

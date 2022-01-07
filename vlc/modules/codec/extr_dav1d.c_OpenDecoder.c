@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_9__ ;
-typedef  struct TYPE_17__   TYPE_7__ ;
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-struct TYPE_14__ {scalar_t__ i_sar_num; scalar_t__ i_sar_den; int /*<<< orphan*/  color_range; int /*<<< orphan*/  space; int /*<<< orphan*/  transfer; int /*<<< orphan*/  primaries; int /*<<< orphan*/  i_height; int /*<<< orphan*/  i_width; } ;
+
+
+typedef struct TYPE_18__ TYPE_9__ ;
+typedef struct TYPE_17__ TYPE_7__ ;
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+struct TYPE_14__ {scalar_t__ i_sar_num; scalar_t__ i_sar_den; int color_range; int space; int transfer; int primaries; int i_height; int i_width; } ;
 struct TYPE_15__ {scalar_t__ i_codec; TYPE_4__ video; } ;
-struct TYPE_12__ {scalar_t__ i_sar_num; scalar_t__ i_sar_den; int /*<<< orphan*/  color_range; int /*<<< orphan*/  space; int /*<<< orphan*/  transfer; int /*<<< orphan*/  primaries; int /*<<< orphan*/  i_height; int /*<<< orphan*/  i_width; } ;
-struct TYPE_13__ {TYPE_2__ video; int /*<<< orphan*/  i_codec; } ;
-struct TYPE_16__ {scalar_t__ i_extra_picture_buffers; TYPE_5__ fmt_in; TYPE_3__ fmt_out; TYPE_7__* p_sys; int /*<<< orphan*/  pf_flush; int /*<<< orphan*/  pf_decode; } ;
-typedef  TYPE_6__ decoder_t ;
-struct TYPE_11__ {int /*<<< orphan*/  release_picture_callback; int /*<<< orphan*/  alloc_picture_callback; TYPE_6__* cookie; } ;
+struct TYPE_12__ {scalar_t__ i_sar_num; scalar_t__ i_sar_den; int color_range; int space; int transfer; int primaries; int i_height; int i_width; } ;
+struct TYPE_13__ {TYPE_2__ video; int i_codec; } ;
+struct TYPE_16__ {scalar_t__ i_extra_picture_buffers; TYPE_5__ fmt_in; TYPE_3__ fmt_out; TYPE_7__* p_sys; int pf_flush; int pf_decode; } ;
+typedef TYPE_6__ decoder_t ;
+struct TYPE_11__ {int release_picture_callback; int alloc_picture_callback; TYPE_6__* cookie; } ;
 struct TYPE_18__ {scalar_t__ n_tile_threads; scalar_t__ n_frame_threads; TYPE_1__ allocator; } ;
-struct TYPE_17__ {TYPE_9__ s; int /*<<< orphan*/  c; } ;
-typedef  TYPE_7__ decoder_sys_t ;
+struct TYPE_17__ {TYPE_9__ s; int c; } ;
+typedef TYPE_7__ decoder_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Decode ; 
- int /*<<< orphan*/  FlushDecoder ; 
- int /*<<< orphan*/  FreePicture ; 
- int /*<<< orphan*/  NewPicture ; 
- scalar_t__ VLC_CLIP (int /*<<< orphan*/ ,int,int) ; 
- scalar_t__ VLC_CODEC_AV1 ; 
- int /*<<< orphan*/  VLC_CODEC_I420 ; 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- scalar_t__ __MAX (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dav1d_default_settings (TYPE_9__*) ; 
- scalar_t__ dav1d_open (int /*<<< orphan*/ *,TYPE_9__*) ; 
- int /*<<< orphan*/  dav1d_version () ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*) ; 
- void* var_InheritInteger (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  vlc_GetCPUCount () ; 
- TYPE_7__* vlc_obj_malloc (int /*<<< orphan*/ *,int) ; 
+
+ int Decode ;
+ int FlushDecoder ;
+ int FreePicture ;
+ int NewPicture ;
+ scalar_t__ VLC_CLIP (int ,int,int) ;
+ scalar_t__ VLC_CODEC_AV1 ;
+ int VLC_CODEC_I420 ;
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ scalar_t__ __MAX (int,int ) ;
+ int dav1d_default_settings (TYPE_9__*) ;
+ scalar_t__ dav1d_open (int *,TYPE_9__*) ;
+ int dav1d_version () ;
+ int msg_Dbg (int *,char*,int ,scalar_t__,scalar_t__) ;
+ int msg_Err (int *,char*) ;
+ void* var_InheritInteger (int *,char*) ;
+ int vlc_GetCPUCount () ;
+ TYPE_7__* vlc_obj_malloc (int *,int) ;
 
 __attribute__((used)) static int OpenDecoder(vlc_object_t *p_this)
 {
@@ -95,9 +95,9 @@ __attribute__((used)) static int OpenDecoder(vlc_object_t *p_this)
         dec->fmt_out.video.i_sar_num = dec->fmt_in.video.i_sar_num;
         dec->fmt_out.video.i_sar_den = dec->fmt_in.video.i_sar_den;
     }
-    dec->fmt_out.video.primaries   = dec->fmt_in.video.primaries;
-    dec->fmt_out.video.transfer    = dec->fmt_in.video.transfer;
-    dec->fmt_out.video.space       = dec->fmt_in.video.space;
+    dec->fmt_out.video.primaries = dec->fmt_in.video.primaries;
+    dec->fmt_out.video.transfer = dec->fmt_in.video.transfer;
+    dec->fmt_out.video.space = dec->fmt_in.video.space;
     dec->fmt_out.video.color_range = dec->fmt_in.video.color_range;
 
     return VLC_SUCCESS;

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsUInt16Number ;
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/  cmsContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Fn8D1 (int /*<<< orphan*/  const,int /*<<< orphan*/  const,int /*<<< orphan*/  const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  Fn8D2 (int /*<<< orphan*/  const,int /*<<< orphan*/  const,int /*<<< orphan*/  const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  Fn8D3 (int /*<<< orphan*/  const,int /*<<< orphan*/  const,int /*<<< orphan*/  const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  cmsUNUSED_PARAMETER (void*) ; 
+
+
+
+typedef int cmsUInt16Number ;
+typedef int cmsInt32Number ;
+typedef int cmsContext ;
+
+
+ int Fn8D1 (int const,int const,int const,int ,int ,int ,int ,int ,int) ;
+ int Fn8D2 (int const,int const,int const,int ,int ,int ,int ,int ,int) ;
+ int Fn8D3 (int const,int const,int const,int ,int ,int ,int ,int ,int) ;
+ int cmsUNUSED_PARAMETER (void*) ;
 
 __attribute__((used)) static
 cmsInt32Number Sampler3D(cmsContext ContextID, register const cmsUInt16Number In[],

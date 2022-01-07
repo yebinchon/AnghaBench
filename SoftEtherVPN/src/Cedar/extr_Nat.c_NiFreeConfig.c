@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  AdminK; int /*<<< orphan*/  AdminX; int /*<<< orphan*/  ClientAuth; int /*<<< orphan*/  ClientOption; int /*<<< orphan*/ * CfgRw; } ;
-typedef  TYPE_1__ NAT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CiFreeClientAuth (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FreeCfgRw (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FreeX (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NiWriteConfig (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int AdminK; int AdminX; int ClientAuth; int ClientOption; int * CfgRw; } ;
+typedef TYPE_1__ NAT ;
+
+
+ int CiFreeClientAuth (int ) ;
+ int Free (int ) ;
+ int FreeCfgRw (int *) ;
+ int FreeK (int ) ;
+ int FreeX (int ) ;
+ int NiWriteConfig (TYPE_1__*) ;
 
 void NiFreeConfig(NAT *n)
 {
-	// Validate arguments
-	if (n == NULL)
-	{
-		return;
-	}
 
-	// Write the latest configuration
-	NiWriteConfig(n);
+ if (n == ((void*)0))
+ {
+  return;
+ }
 
-	// Release the configuration R/W
-	FreeCfgRw(n->CfgRw);
-	n->CfgRw = NULL;
 
-	Free(n->ClientOption);
-	CiFreeClientAuth(n->ClientAuth);
+ NiWriteConfig(n);
 
-	FreeX(n->AdminX);
-	FreeK(n->AdminK);
+
+ FreeCfgRw(n->CfgRw);
+ n->CfgRw = ((void*)0);
+
+ Free(n->ClientOption);
+ CiFreeClientAuth(n->ClientAuth);
+
+ FreeX(n->AdminX);
+ FreeK(n->AdminK);
 }

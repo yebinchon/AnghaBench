@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_10__ {scalar_t__ yend; scalar_t__ xend; scalar_t__ ystart; scalar_t__ xstart; } ;
 struct TYPE_9__ {int PRISA; int PRISB; int PRISC; int PRISD; int CRAOFB; int SPCTL; int CLOFEN; int CLOFSL; int COBR; int COBG; int COBB; int COAR; int COAG; int COAB; int CCCTL; int WCTLC; } ;
-struct TYPE_7__ {int cor; int cog; int cob; int /*<<< orphan*/ * PostPixelFetchCalc; } ;
-struct TYPE_8__ {int* prioritytable; int coloroffset; scalar_t__ linewnd1addr; scalar_t__ linewnd0addr; int /*<<< orphan*/  islinewindow; TYPE_4__* clip; TYPE_1__ info; } ;
+struct TYPE_7__ {int cor; int cog; int cob; int * PostPixelFetchCalc; } ;
+struct TYPE_8__ {int* prioritytable; int coloroffset; scalar_t__ linewnd1addr; scalar_t__ linewnd0addr; int islinewindow; TYPE_4__* clip; TYPE_1__ info; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DoColorCalc ; 
- int /*<<< orphan*/  DoColorCalcWithColorOffset ; 
- int /*<<< orphan*/  DoColorOffset ; 
- int /*<<< orphan*/  DoNothing ; 
- int /*<<< orphan*/  ReadLineWindowData (int /*<<< orphan*/ *,int,scalar_t__*,scalar_t__*,TYPE_3__*) ; 
- int /*<<< orphan*/  ReadWindowData (int,TYPE_4__*,TYPE_3__*) ; 
- int /*<<< orphan*/  Vdp2DrawBackScreen () ; 
- TYPE_3__* Vdp2Regs ; 
- TYPE_2__ vdp1draw_info ; 
- int vdp1spritetype ; 
+
+ int DoColorCalc ;
+ int DoColorCalcWithColorOffset ;
+ int DoColorOffset ;
+ int DoNothing ;
+ int ReadLineWindowData (int *,int,scalar_t__*,scalar_t__*,TYPE_3__*) ;
+ int ReadWindowData (int,TYPE_4__*,TYPE_3__*) ;
+ int Vdp2DrawBackScreen () ;
+ TYPE_3__* Vdp2Regs ;
+ TYPE_2__ vdp1draw_info ;
+ int vdp1spritetype ;
 
 void VIDGCDVdp2DrawStart(void)
 {
@@ -49,9 +49,9 @@ void VIDGCDVdp2DrawStart(void)
     vdp1spritetype = Vdp2Regs->SPCTL & 0xF;
 
     if(Vdp2Regs->CLOFEN & 0x40) {
-        // color offset enable
+
         if(Vdp2Regs->CLOFSL & 0x40) {
-            // color offset B
+
             vdp1draw_info.info.cor = Vdp2Regs->COBR & 0xFF;
             if(Vdp2Regs->COBR & 0x100)
                 vdp1draw_info.info.cor |= 0xFFFFFF00;
@@ -65,7 +65,7 @@ void VIDGCDVdp2DrawStart(void)
                 vdp1draw_info.info.cob |= 0xFFFFFF00;
         }
         else {
-            // color offset A
+
             vdp1draw_info.info.cor = Vdp2Regs->COAR & 0xFF;
             if(Vdp2Regs->COAR & 0x100)
                 vdp1draw_info.info.cor |= 0xFFFFFF00;
@@ -92,7 +92,7 @@ void VIDGCDVdp2DrawStart(void)
                 vdp1draw_info.info.PostPixelFetchCalc = &DoColorOffset;
         }
     }
-    else { // color offset disable
+    else {
         if(Vdp2Regs->CCCTL & 0x40)
             vdp1draw_info.info.PostPixelFetchCalc = &DoColorCalc;
         else

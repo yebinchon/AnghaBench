@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_search_text_short_entry {int rate2; long long obj_id; char* text; } ;
 struct lev_search_text_long_entry {int rate2; long long obj_id; int text_len; char* text; } ;
-typedef  int /*<<< orphan*/  netbuffer_t ;
+typedef int netbuffer_t ;
 
-/* Variables and functions */
- scalar_t__ LEV_SEARCH_TEXT_LONG ; 
- scalar_t__ LEV_SEARCH_TEXT_SHORT ; 
- int /*<<< orphan*/  advance_read_ptr (int /*<<< orphan*/ *,int) ; 
- void* alloc_log_event (scalar_t__,int,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int change_item (char*,int,long long,int,int) ; 
- int /*<<< orphan*/  fits (long long) ; 
- int read_in (int /*<<< orphan*/ *,char*,int) ; 
+
+ scalar_t__ LEV_SEARCH_TEXT_LONG ;
+ scalar_t__ LEV_SEARCH_TEXT_SHORT ;
+ int advance_read_ptr (int *,int) ;
+ void* alloc_log_event (scalar_t__,int,int) ;
+ int assert (int) ;
+ int change_item (char*,int,long long,int,int) ;
+ int fits (long long) ;
+ int read_in (int *,char*,int) ;
 
 int do_change_item_long (netbuffer_t *Source, int len, long long item_id, int rate, int rate2) {
   char *q, *qe;

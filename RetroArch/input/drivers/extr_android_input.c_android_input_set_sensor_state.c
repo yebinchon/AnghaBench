@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct android_app {int /*<<< orphan*/  sensor_state_mask; int /*<<< orphan*/  accelerometerSensor; int /*<<< orphan*/  sensorEventQueue; } ;
-typedef  enum retro_sensor_action { ____Placeholder_retro_sensor_action } retro_sensor_action ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASensorEventQueue_disableSensor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ASensorEventQueue_enableSensor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ASensorEventQueue_setEventRate (int /*<<< orphan*/ ,int /*<<< orphan*/ ,long) ; 
- int /*<<< orphan*/  BIT64_CLEAR (int /*<<< orphan*/ ,int const) ; 
- int /*<<< orphan*/  BIT64_SET (int /*<<< orphan*/ ,int const) ; 
-#define  RETRO_SENSOR_ACCELEROMETER_DISABLE 129 
-#define  RETRO_SENSOR_ACCELEROMETER_ENABLE 128 
- int /*<<< orphan*/  android_input_enable_sensor_manager (struct android_app*) ; 
- scalar_t__ g_android ; 
+
+
+
+struct android_app {int sensor_state_mask; int accelerometerSensor; int sensorEventQueue; } ;
+typedef enum retro_sensor_action { ____Placeholder_retro_sensor_action } retro_sensor_action ;
+
+
+ int ASensorEventQueue_disableSensor (int ,int ) ;
+ int ASensorEventQueue_enableSensor (int ,int ) ;
+ int ASensorEventQueue_setEventRate (int ,int ,long) ;
+ int BIT64_CLEAR (int ,int const) ;
+ int BIT64_SET (int ,int const) ;
+
+
+ int android_input_enable_sensor_manager (struct android_app*) ;
+ scalar_t__ g_android ;
 
 __attribute__((used)) static bool android_input_set_sensor_state(void *data, unsigned port,
       enum retro_sensor_action action, unsigned event_rate)
@@ -34,7 +34,7 @@ __attribute__((used)) static bool android_input_set_sensor_state(void *data, uns
 
    switch (action)
    {
-      case RETRO_SENSOR_ACCELEROMETER_ENABLE:
+      case 128:
          if (!android_app->accelerometerSensor)
             android_input_enable_sensor_manager(android_app);
 
@@ -42,27 +42,27 @@ __attribute__((used)) static bool android_input_set_sensor_state(void *data, uns
             ASensorEventQueue_enableSensor(android_app->sensorEventQueue,
                   android_app->accelerometerSensor);
 
-         /* Events per second (in microseconds). */
+
          if (android_app->accelerometerSensor)
             ASensorEventQueue_setEventRate(android_app->sensorEventQueue,
                   android_app->accelerometerSensor, (1000L / event_rate)
                   * 1000);
 
-         BIT64_CLEAR(android_app->sensor_state_mask, RETRO_SENSOR_ACCELEROMETER_DISABLE);
-         BIT64_SET(android_app->sensor_state_mask, RETRO_SENSOR_ACCELEROMETER_ENABLE);
-         return true;
+         BIT64_CLEAR(android_app->sensor_state_mask, 129);
+         BIT64_SET(android_app->sensor_state_mask, 128);
+         return 1;
 
-      case RETRO_SENSOR_ACCELEROMETER_DISABLE:
+      case 129:
          if (android_app->accelerometerSensor)
             ASensorEventQueue_disableSensor(android_app->sensorEventQueue,
                   android_app->accelerometerSensor);
 
-         BIT64_CLEAR(android_app->sensor_state_mask, RETRO_SENSOR_ACCELEROMETER_ENABLE);
-         BIT64_SET(android_app->sensor_state_mask, RETRO_SENSOR_ACCELEROMETER_DISABLE);
-         return true;
+         BIT64_CLEAR(android_app->sensor_state_mask, 128);
+         BIT64_SET(android_app->sensor_state_mask, 129);
+         return 1;
       default:
-         return false;
+         return 0;
    }
 
-   return false;
+   return 0;
 }

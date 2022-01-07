@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mp_log {int dummy; } ;
-typedef  int /*<<< orphan*/  bstr ;
+typedef int bstr ;
 
-/* Variables and functions */
- int MP_ICONV_ALLOW_CUTOFF ; 
- int bstr_validate_utf8 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_err (struct mp_log*,char*) ; 
- char* mp_uchardet (void*,struct mp_log*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_verbose (struct mp_log*,char*,...) ; 
- char* ms_bom_guess (int /*<<< orphan*/ ) ; 
- scalar_t__ strcasecmp (char const*,char*) ; 
- scalar_t__ strchr (char const*,char) ; 
- scalar_t__ strncasecmp (char const*,char*,int) ; 
 
-const char *mp_charset_guess(void *talloc_ctx, struct mp_log *log,  bstr buf,
+ int MP_ICONV_ALLOW_CUTOFF ;
+ int bstr_validate_utf8 (int ) ;
+ int mp_err (struct mp_log*,char*) ;
+ char* mp_uchardet (void*,struct mp_log*,int ) ;
+ int mp_verbose (struct mp_log*,char*,...) ;
+ char* ms_bom_guess (int ) ;
+ scalar_t__ strcasecmp (char const*,char*) ;
+ scalar_t__ strchr (char const*,char) ;
+ scalar_t__ strncasecmp (char const*,char*,int) ;
+
+const char *mp_charset_guess(void *talloc_ctx, struct mp_log *log, bstr buf,
                              const char *user_cp, int flags)
 {
     if (strcasecmp(user_cp, "enca") == 0 || strcasecmp(user_cp, "guess") == 0 ||
@@ -56,11 +56,11 @@ const char *mp_charset_guess(void *talloc_ctx, struct mp_log *log,  bstr buf,
         return "utf-8";
     }
 
-    const char *res = NULL;
+    const char *res = ((void*)0);
     if (strcasecmp(user_cp, "auto") == 0) {
-#if HAVE_UCHARDET
-        res = mp_uchardet(talloc_ctx, log, buf);
-#endif
+
+
+
         if (!res) {
             mp_verbose(log, "Charset auto-detection failed.\n");
             res = "UTF-8-BROKEN";

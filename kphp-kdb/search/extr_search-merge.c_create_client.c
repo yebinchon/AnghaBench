@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct connection {int fd; int /*<<< orphan*/  state; struct connection* prev; struct connection* next; int /*<<< orphan*/  out_buff; int /*<<< orphan*/  Out; int /*<<< orphan*/  in_buff; int /*<<< orphan*/  In; struct cluster_server* serv; int /*<<< orphan*/ * ev; } ;
-struct TYPE_2__ {int /*<<< orphan*/  s_addr; } ;
-struct cluster_server {int port; int id; TYPE_1__ addr; int /*<<< orphan*/  conn; struct connection* c; } ;
-typedef  int /*<<< orphan*/  event_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUFF_SIZE ; 
- int /*<<< orphan*/  C_INCONN ; 
- struct connection* Connections ; 
- int EVT_SPEC ; 
- int EVT_WRITE ; 
- int /*<<< orphan*/ * Events ; 
- int MAX_EVENTS ; 
- int /*<<< orphan*/  assert (int) ; 
- int client_socket (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  client_worker ; 
- int /*<<< orphan*/  epoll_insert (int,int) ; 
- int /*<<< orphan*/  epoll_sethandler (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct connection*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- char* inet_ntoa (TYPE_1__) ; 
- int /*<<< orphan*/  init_builtin_buffer (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct connection*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  outbound_connections ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct connection {int fd; int state; struct connection* prev; struct connection* next; int out_buff; int Out; int in_buff; int In; struct cluster_server* serv; int * ev; } ;
+struct TYPE_2__ {int s_addr; } ;
+struct cluster_server {int port; int id; TYPE_1__ addr; int conn; struct connection* c; } ;
+typedef int event_t ;
+
+
+ int BUFF_SIZE ;
+ int C_INCONN ;
+ struct connection* Connections ;
+ int EVT_SPEC ;
+ int EVT_WRITE ;
+ int * Events ;
+ int MAX_EVENTS ;
+ int assert (int) ;
+ int client_socket (int ,int,int ) ;
+ int client_worker ;
+ int epoll_insert (int,int) ;
+ int epoll_sethandler (int,int ,int ,struct connection*) ;
+ int exit (int) ;
+ int fprintf (int ,char*,...) ;
+ char* inet_ntoa (TYPE_1__) ;
+ int init_builtin_buffer (int *,int ,int ) ;
+ int memset (struct connection*,int ,int) ;
+ int outbound_connections ;
+ int stderr ;
+ int verbosity ;
 
 struct connection *create_client (struct cluster_server *S) {
   int cfd = client_socket (S->addr.s_addr, S->port, 0);
@@ -51,7 +51,7 @@ struct connection *create_client (struct cluster_server *S) {
   assert (cfd < MAX_EVENTS);
 
   ev = Events + cfd;
-  //  memcpy (&ev->peer, &peer, sizeof(peer));
+
 
   c = Connections + cfd;
   memset (c, 0, sizeof (struct connection));
@@ -78,7 +78,7 @@ struct connection *create_client (struct cluster_server *S) {
     h->prev = c;
   }
 
-  c->state = C_INCONN;  /* connecting */
+  c->state = C_INCONN;
   S->conn++;
   outbound_connections++;
 

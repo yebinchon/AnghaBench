@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* tree ;
-struct omp_region {int /*<<< orphan*/  exit; int /*<<< orphan*/  cont; int /*<<< orphan*/  entry; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef void* tree ;
+struct omp_region {int exit; int cont; int entry; } ;
 struct omp_for_data {scalar_t__ cond_code; void* v; void* step; void* n1; void* n2; } ;
-typedef  int /*<<< orphan*/  block_stmt_iterator ;
-typedef  int /*<<< orphan*/  basic_block ;
-struct TYPE_2__ {int /*<<< orphan*/  flags; } ;
+typedef int block_stmt_iterator ;
+typedef int basic_block ;
+struct TYPE_2__ {int flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BSI_CONTINUE_LINKING ; 
- int /*<<< orphan*/  BSI_SAME_STMT ; 
- size_t BUILT_IN_OMP_GET_NUM_THREADS ; 
- size_t BUILT_IN_OMP_GET_THREAD_NUM ; 
- int /*<<< orphan*/  COND_EXPR ; 
- int /*<<< orphan*/  EDGE_FALLTHRU ; 
- int /*<<< orphan*/  EDGE_FALSE_VALUE ; 
- int /*<<< orphan*/  EDGE_TRUE_VALUE ; 
- scalar_t__ GE_EXPR ; 
- scalar_t__ LT_EXPR ; 
- scalar_t__ MINUS_EXPR ; 
- scalar_t__ MIN_EXPR ; 
- scalar_t__ MODIFY_EXPR ; 
- scalar_t__ MULT_EXPR ; 
- scalar_t__ NE_EXPR ; 
- scalar_t__ OMP_CONTINUE ; 
- scalar_t__ OMP_FOR ; 
- int /*<<< orphan*/  OMP_RETURN_NOWAIT (int /*<<< orphan*/ ) ; 
- scalar_t__ PLUS_EXPR ; 
- scalar_t__ TREE_CODE (int /*<<< orphan*/ ) ; 
- void* TREE_TYPE (void*) ; 
- scalar_t__ TRUNC_DIV_EXPR ; 
- void* alloc_stmt_list () ; 
- int /*<<< orphan*/  append_to_statement_list (void*,void**) ; 
- void* boolean_type_node ; 
- int /*<<< orphan*/  bsi_insert_after (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bsi_last (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bsi_remove (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  bsi_start (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bsi_stmt (int /*<<< orphan*/ ) ; 
- void* build2 (scalar_t__,void*,void*,void*) ; 
- void* build3 (int /*<<< orphan*/ ,void*,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  build_and_jump (void**) ; 
- void* build_function_call_expr (void*,int /*<<< orphan*/ *) ; 
- void* build_int_cst (void*,int) ; 
- int /*<<< orphan*/  build_omp_barrier (void**) ; 
- void** built_in_decls ; 
- int /*<<< orphan*/  create_empty_bb (int /*<<< orphan*/ ) ; 
- TYPE_1__* find_edge (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* fold_build2 (scalar_t__,void*,void*,void*) ; 
- void* fold_convert (void*,void*) ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- void* get_formal_tmp_var (void*,void**) ; 
- int /*<<< orphan*/  gimplify_and_add (void*,void**) ; 
- scalar_t__ is_gimple_val (void*) ; 
- int /*<<< orphan*/  make_edge (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  remove_edge (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  single_succ (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  single_succ_edge (int /*<<< orphan*/ ) ; 
- void* tree_block_label (int /*<<< orphan*/ ) ; 
- void* void_type_node ; 
+
+ int BSI_CONTINUE_LINKING ;
+ int BSI_SAME_STMT ;
+ size_t BUILT_IN_OMP_GET_NUM_THREADS ;
+ size_t BUILT_IN_OMP_GET_THREAD_NUM ;
+ int COND_EXPR ;
+ int EDGE_FALLTHRU ;
+ int EDGE_FALSE_VALUE ;
+ int EDGE_TRUE_VALUE ;
+ scalar_t__ GE_EXPR ;
+ scalar_t__ LT_EXPR ;
+ scalar_t__ MINUS_EXPR ;
+ scalar_t__ MIN_EXPR ;
+ scalar_t__ MODIFY_EXPR ;
+ scalar_t__ MULT_EXPR ;
+ scalar_t__ NE_EXPR ;
+ scalar_t__ OMP_CONTINUE ;
+ scalar_t__ OMP_FOR ;
+ int OMP_RETURN_NOWAIT (int ) ;
+ scalar_t__ PLUS_EXPR ;
+ scalar_t__ TREE_CODE (int ) ;
+ void* TREE_TYPE (void*) ;
+ scalar_t__ TRUNC_DIV_EXPR ;
+ void* alloc_stmt_list () ;
+ int append_to_statement_list (void*,void**) ;
+ void* boolean_type_node ;
+ int bsi_insert_after (int *,void*,int ) ;
+ int bsi_last (int ) ;
+ int bsi_remove (int *,int) ;
+ int bsi_start (int ) ;
+ int bsi_stmt (int ) ;
+ void* build2 (scalar_t__,void*,void*,void*) ;
+ void* build3 (int ,void*,void*,int ,int ) ;
+ int build_and_jump (void**) ;
+ void* build_function_call_expr (void*,int *) ;
+ void* build_int_cst (void*,int) ;
+ int build_omp_barrier (void**) ;
+ void** built_in_decls ;
+ int create_empty_bb (int ) ;
+ TYPE_1__* find_edge (int ,int ) ;
+ void* fold_build2 (scalar_t__,void*,void*,void*) ;
+ void* fold_convert (void*,void*) ;
+ int gcc_assert (int) ;
+ void* get_formal_tmp_var (void*,void**) ;
+ int gimplify_and_add (void*,void**) ;
+ scalar_t__ is_gimple_val (void*) ;
+ int make_edge (int ,int ,int ) ;
+ int remove_edge (int ) ;
+ int single_succ (int ) ;
+ int single_succ_edge (int ) ;
+ void* tree_block_label (int ) ;
+ void* void_type_node ;
 
 __attribute__((used)) static void
 expand_omp_for_static_nochunk (struct omp_region *region,
-			       struct omp_for_data *fd)
+          struct omp_for_data *fd)
 {
   tree l0, l1, l2, n, q, s0, e0, e, t, nthreads, threadid;
   tree type, list;
@@ -94,16 +94,16 @@ expand_omp_for_static_nochunk (struct omp_region *region,
   l1 = tree_block_label (body_bb);
   l2 = tree_block_label (fin_bb);
 
-  /* Iteration space partitioning goes in ENTRY_BB.  */
+
   list = alloc_stmt_list ();
 
   t = built_in_decls[BUILT_IN_OMP_GET_NUM_THREADS];
-  t = build_function_call_expr (t, NULL);
+  t = build_function_call_expr (t, ((void*)0));
   t = fold_convert (type, t);
   nthreads = get_formal_tmp_var (t, &list);
-  
+
   t = built_in_decls[BUILT_IN_OMP_GET_THREAD_NUM];
-  t = build_function_call_expr (t, NULL);
+  t = build_function_call_expr (t, ((void*)0));
   t = fold_convert (type, t);
   threadid = get_formal_tmp_var (t, &list);
 
@@ -147,15 +147,15 @@ expand_omp_for_static_nochunk (struct omp_region *region,
 
   t = build2 (GE_EXPR, boolean_type_node, s0, e0);
   t = build3 (COND_EXPR, void_type_node, t, build_and_jump (&l2),
-	      build_and_jump (&l0));
+       build_and_jump (&l0));
   append_to_statement_list (t, &list);
 
   si = bsi_last (entry_bb);
   gcc_assert (TREE_CODE (bsi_stmt (si)) == OMP_FOR);
   bsi_insert_after (&si, list, BSI_SAME_STMT);
-  bsi_remove (&si, true);
+  bsi_remove (&si, 1);
 
-  /* Setup code for sequential iteration goes in SEQ_START_BB.  */
+
   list = alloc_stmt_list ();
 
   t = fold_convert (type, s0);
@@ -172,7 +172,7 @@ expand_omp_for_static_nochunk (struct omp_region *region,
   si = bsi_start (seq_start_bb);
   bsi_insert_after (&si, list, BSI_CONTINUE_LINKING);
 
-  /* The code controlling the sequential loop replaces the OMP_CONTINUE.  */
+
   list = alloc_stmt_list ();
 
   t = build2 (PLUS_EXPR, type, fd->v, fd->step);
@@ -182,15 +182,15 @@ expand_omp_for_static_nochunk (struct omp_region *region,
   t = build2 (fd->cond_code, boolean_type_node, fd->v, e);
   t = get_formal_tmp_var (t, &list);
   t = build3 (COND_EXPR, void_type_node, t, build_and_jump (&l1),
-	      build_and_jump (&l2));
+       build_and_jump (&l2));
   append_to_statement_list (t, &list);
 
   si = bsi_last (cont_bb);
   gcc_assert (TREE_CODE (bsi_stmt (si)) == OMP_CONTINUE);
   bsi_insert_after (&si, list, BSI_SAME_STMT);
-  bsi_remove (&si, true);
+  bsi_remove (&si, 1);
 
-  /* Replace the OMP_RETURN with a barrier, or nothing.  */
+
   si = bsi_last (exit_bb);
   if (!OMP_RETURN_NOWAIT (bsi_stmt (si)))
     {
@@ -198,9 +198,9 @@ expand_omp_for_static_nochunk (struct omp_region *region,
       build_omp_barrier (&list);
       bsi_insert_after (&si, list, BSI_SAME_STMT);
     }
-  bsi_remove (&si, true);
+  bsi_remove (&si, 1);
 
-  /* Connect all the blocks.  */
+
   make_edge (seq_start_bb, body_bb, EDGE_FALLTHRU);
 
   remove_edge (single_succ_edge (entry_bb));

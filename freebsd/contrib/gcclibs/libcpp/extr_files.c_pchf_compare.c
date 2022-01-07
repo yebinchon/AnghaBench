@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct pchf_entry {scalar_t__ once_only; int /*<<< orphan*/ * sum; int /*<<< orphan*/  size; } ;
-struct pchf_compare_data {int sum_computed; scalar_t__ check_included; int /*<<< orphan*/ * sum; TYPE_2__* f; int /*<<< orphan*/  size; } ;
-typedef  int /*<<< orphan*/  off_t ;
-struct TYPE_3__ {int /*<<< orphan*/  st_size; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct pchf_entry {scalar_t__ once_only; int * sum; int size; } ;
+struct pchf_compare_data {int sum_computed; scalar_t__ check_included; int * sum; TYPE_2__* f; int size; } ;
+typedef int off_t ;
+struct TYPE_3__ {int st_size; } ;
 struct TYPE_4__ {TYPE_1__ st; scalar_t__ buffer; } ;
-typedef  TYPE_2__ _cpp_file ;
+typedef TYPE_2__ _cpp_file ;
 
-/* Variables and functions */
- int /*<<< orphan*/  md5_buffer (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int md5_buffer (char const*,int ,int *) ;
+ int memcmp (int *,int *,int) ;
 
 __attribute__((used)) static int
 pchf_compare (const void *d_p, const void *e_p)
@@ -39,7 +39,7 @@ pchf_compare (const void *d_p, const void *e_p)
       _cpp_file *const f = d->f;
 
       md5_buffer ((const char *)f->buffer, f->st.st_size, d->sum);
-      d->sum_computed = true;
+      d->sum_computed = 1;
     }
 
   result = memcmp (d->sum, e->sum, 16);

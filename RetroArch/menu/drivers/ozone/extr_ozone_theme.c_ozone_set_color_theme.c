@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  message_background; int /*<<< orphan*/  entries_icon; int /*<<< orphan*/  entries_border; int /*<<< orphan*/  selection; int /*<<< orphan*/  selection_border; } ;
-typedef  TYPE_2__ ozone_theme_t ;
-struct TYPE_9__ {int /*<<< orphan*/  message_background; int /*<<< orphan*/  cursor_alpha; int /*<<< orphan*/  entries_checkmark; int /*<<< orphan*/  entries_icon; int /*<<< orphan*/  entries_border; int /*<<< orphan*/  selection; int /*<<< orphan*/  selection_border; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int message_background; int entries_icon; int entries_border; int selection; int selection_border; } ;
+typedef TYPE_2__ ozone_theme_t ;
+struct TYPE_9__ {int message_background; int cursor_alpha; int entries_checkmark; int entries_icon; int entries_border; int selection; int selection_border; } ;
 struct TYPE_11__ {TYPE_2__* theme; TYPE_1__ theme_dynamic; } ;
-typedef  TYPE_3__ ozone_handle_t ;
+typedef TYPE_3__ ozone_handle_t ;
 
-/* Variables and functions */
- unsigned int last_color_theme ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- TYPE_2__* ozone_default_theme ; 
- int /*<<< orphan*/  ozone_pure_white ; 
- int /*<<< orphan*/  ozone_restart_cursor_animation (TYPE_3__*) ; 
- TYPE_2__ ozone_theme_dark ; 
- TYPE_2__ ozone_theme_light ; 
+
+ unsigned int last_color_theme ;
+ int memcpy (int ,int ,int) ;
+ TYPE_2__* ozone_default_theme ;
+ int ozone_pure_white ;
+ int ozone_restart_cursor_animation (TYPE_3__*) ;
+ TYPE_2__ ozone_theme_dark ;
+ TYPE_2__ ozone_theme_light ;
 
 void ozone_set_color_theme(ozone_handle_t *ozone, unsigned color_theme)
 {

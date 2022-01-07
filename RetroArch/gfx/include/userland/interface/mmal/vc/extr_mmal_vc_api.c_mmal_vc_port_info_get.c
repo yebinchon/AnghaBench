@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_9__ ;
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  reply ;
-typedef  int /*<<< orphan*/  msg ;
-struct TYPE_12__ {int /*<<< orphan*/  header; int /*<<< orphan*/  index; int /*<<< orphan*/  port_type; int /*<<< orphan*/  component_handle; } ;
-typedef  TYPE_3__ mmal_worker_port_info_get ;
-struct TYPE_16__ {int /*<<< orphan*/  extradata_size; int /*<<< orphan*/  extradata; int /*<<< orphan*/ * es; } ;
-struct TYPE_11__ {int /*<<< orphan*/  capabilities; int /*<<< orphan*/  is_enabled; int /*<<< orphan*/  buffer_alignment_min; int /*<<< orphan*/  buffer_size; int /*<<< orphan*/  buffer_size_recommended; int /*<<< orphan*/  buffer_size_min; int /*<<< orphan*/  buffer_num; int /*<<< orphan*/  buffer_num_recommended; int /*<<< orphan*/  buffer_num_min; } ;
-struct TYPE_13__ {scalar_t__ status; int /*<<< orphan*/  extradata; int /*<<< orphan*/  es; TYPE_9__ format; TYPE_2__ port; int /*<<< orphan*/  port_handle; } ;
-typedef  TYPE_4__ mmal_worker_port_info ;
-struct TYPE_15__ {int /*<<< orphan*/  port_handle; int /*<<< orphan*/  component_handle; } ;
-struct TYPE_14__ {TYPE_9__* format; int /*<<< orphan*/  capabilities; int /*<<< orphan*/  is_enabled; int /*<<< orphan*/  buffer_alignment_min; int /*<<< orphan*/  buffer_size; int /*<<< orphan*/  buffer_size_recommended; int /*<<< orphan*/  buffer_size_min; int /*<<< orphan*/  buffer_num; int /*<<< orphan*/  buffer_num_recommended; int /*<<< orphan*/  buffer_num_min; int /*<<< orphan*/  index; int /*<<< orphan*/  type; TYPE_1__* priv; } ;
+
+
+typedef struct TYPE_16__ TYPE_9__ ;
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int reply ;
+typedef int msg ;
+struct TYPE_12__ {int header; int index; int port_type; int component_handle; } ;
+typedef TYPE_3__ mmal_worker_port_info_get ;
+struct TYPE_16__ {int extradata_size; int extradata; int * es; } ;
+struct TYPE_11__ {int capabilities; int is_enabled; int buffer_alignment_min; int buffer_size; int buffer_size_recommended; int buffer_size_min; int buffer_num; int buffer_num_recommended; int buffer_num_min; } ;
+struct TYPE_13__ {scalar_t__ status; int extradata; int es; TYPE_9__ format; TYPE_2__ port; int port_handle; } ;
+typedef TYPE_4__ mmal_worker_port_info ;
+struct TYPE_15__ {int port_handle; int component_handle; } ;
+struct TYPE_14__ {TYPE_9__* format; int capabilities; int is_enabled; int buffer_alignment_min; int buffer_size; int buffer_size_recommended; int buffer_size_min; int buffer_num; int buffer_num_recommended; int buffer_num_min; int index; int type; TYPE_1__* priv; } ;
 struct TYPE_10__ {TYPE_6__* module; } ;
-typedef  scalar_t__ MMAL_STATUS_T ;
-typedef  TYPE_5__ MMAL_PORT_T ;
-typedef  TYPE_6__ MMAL_PORT_MODULE_T ;
+typedef scalar_t__ MMAL_STATUS_T ;
+typedef TYPE_5__ MMAL_PORT_T ;
+typedef TYPE_6__ MMAL_PORT_MODULE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_ERROR (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  LOG_TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ MMAL_ENOMEM ; 
- int /*<<< orphan*/  MMAL_FALSE ; 
- scalar_t__ MMAL_SUCCESS ; 
- int /*<<< orphan*/  MMAL_WORKER_PORT_INFO_GET ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ mmal_format_extradata_alloc (TYPE_9__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mmal_status_to_string (scalar_t__) ; 
- int /*<<< orphan*/  mmal_vc_get_client () ; 
- scalar_t__ mmal_vc_sendwait_message (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,TYPE_4__*,size_t*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_assert (int) ; 
+
+ int LOG_ERROR (char*,int ,...) ;
+ int LOG_TRACE (char*,int ,int ) ;
+ scalar_t__ MMAL_ENOMEM ;
+ int MMAL_FALSE ;
+ scalar_t__ MMAL_SUCCESS ;
+ int MMAL_WORKER_PORT_INFO_GET ;
+ int memcpy (int ,int ,int ) ;
+ scalar_t__ mmal_format_extradata_alloc (TYPE_9__*,int ) ;
+ int mmal_status_to_string (scalar_t__) ;
+ int mmal_vc_get_client () ;
+ scalar_t__ mmal_vc_sendwait_message (int ,int *,int,int ,TYPE_4__*,size_t*,int ) ;
+ int vcos_assert (int) ;
 
 __attribute__((used)) static MMAL_STATUS_T mmal_vc_port_info_get(MMAL_PORT_T *port)
 {

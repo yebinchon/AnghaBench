@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct journal_head {int /*<<< orphan*/  b_jcount; struct buffer_head* b_bh; } ;
-struct buffer_head {struct journal_head* b_private; TYPE_1__* b_page; int /*<<< orphan*/  b_count; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct journal_head {int b_jcount; struct buffer_head* b_bh; } ;
+struct buffer_head {struct journal_head* b_private; TYPE_1__* b_page; int b_count; } ;
 struct TYPE_2__ {scalar_t__ mapping; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUFFER_TRACE (struct buffer_head*,char*) ; 
- int /*<<< orphan*/  J_ASSERT_BH (struct buffer_head*,int) ; 
- scalar_t__ atomic_read (int /*<<< orphan*/ *) ; 
- struct journal_head* bh2jh (struct buffer_head*) ; 
- scalar_t__ buffer_jbd (struct buffer_head*) ; 
- int /*<<< orphan*/  get_bh (struct buffer_head*) ; 
- int /*<<< orphan*/  jbd_lock_bh_journal_head (struct buffer_head*) ; 
- int /*<<< orphan*/  jbd_unlock_bh_journal_head (struct buffer_head*) ; 
- struct journal_head* journal_alloc_journal_head () ; 
- int /*<<< orphan*/  journal_free_journal_head (struct journal_head*) ; 
- int /*<<< orphan*/  memset (struct journal_head*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  set_buffer_jbd (struct buffer_head*) ; 
+
+ int BUFFER_TRACE (struct buffer_head*,char*) ;
+ int J_ASSERT_BH (struct buffer_head*,int) ;
+ scalar_t__ atomic_read (int *) ;
+ struct journal_head* bh2jh (struct buffer_head*) ;
+ scalar_t__ buffer_jbd (struct buffer_head*) ;
+ int get_bh (struct buffer_head*) ;
+ int jbd_lock_bh_journal_head (struct buffer_head*) ;
+ int jbd_unlock_bh_journal_head (struct buffer_head*) ;
+ struct journal_head* journal_alloc_journal_head () ;
+ int journal_free_journal_head (struct journal_head*) ;
+ int memset (struct journal_head*,int ,int) ;
+ int set_buffer_jbd (struct buffer_head*) ;
 
 struct journal_head *journal_add_journal_head(struct buffer_head *bh)
 {
     struct journal_head *jh;
-    struct journal_head *new_jh = NULL;
+    struct journal_head *new_jh = ((void*)0);
 
 repeat:
     if (!buffer_jbd(bh)) {
@@ -54,7 +54,7 @@ repeat:
         }
 
         jh = new_jh;
-        new_jh = NULL;		/* We consumed it */
+        new_jh = ((void*)0);
         set_buffer_jbd(bh);
         bh->b_private = jh;
         jh->b_bh = bh;

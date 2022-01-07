@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int byte ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int byte ;
 struct TYPE_6__ {int width; int height; int stride; scalar_t__ data; } ;
-struct TYPE_5__ {int /*<<< orphan*/  number; } ;
-typedef  TYPE_1__ Jbig2Segment ;
-typedef  TYPE_2__ Jbig2Image ;
-typedef  int /*<<< orphan*/  Jbig2GenericRegionParams ;
-typedef  int /*<<< orphan*/  Jbig2Ctx ;
-typedef  int /*<<< orphan*/  Jbig2ArithState ;
-typedef  int /*<<< orphan*/  Jbig2ArithCx ;
+struct TYPE_5__ {int number; } ;
+typedef TYPE_1__ Jbig2Segment ;
+typedef TYPE_2__ Jbig2Image ;
+typedef int Jbig2GenericRegionParams ;
+typedef int Jbig2Ctx ;
+typedef int Jbig2ArithState ;
+typedef int Jbig2ArithCx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JBIG2_SEVERITY_FATAL ; 
- int /*<<< orphan*/  fwrite (int*,int,int const,int /*<<< orphan*/ ) ; 
- int jbig2_arith_decode (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int jbig2_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  printf (char*,int const,int const) ; 
- int /*<<< orphan*/  stdout ; 
+
+ int JBIG2_SEVERITY_FATAL ;
+ int fwrite (int*,int,int const,int ) ;
+ int jbig2_arith_decode (int *,int *,int*) ;
+ int jbig2_error (int *,int ,int ,char*) ;
+ int printf (char*,int const,int const) ;
+ int stdout ;
 
 __attribute__((used)) static int
 jbig2_decode_generic_template2(Jbig2Ctx *ctx,
@@ -40,14 +40,14 @@ jbig2_decode_generic_template2(Jbig2Ctx *ctx,
     const uint32_t GBH = image->height;
     const uint32_t rowstride = image->stride;
     uint32_t x, y;
-    byte *line2 = NULL;
-    byte *line1 = NULL;
+    byte *line2 = ((void*)0);
+    byte *line1 = ((void*)0);
     byte *gbreg_line = (byte *) image->data;
     int code = 0;
 
-#ifdef OUTPUT_PBM
-    printf("P4\n%d %d\n", GBW, GBH);
-#endif
+
+
+
 
     if (GBW <= 0)
         return 0;
@@ -62,7 +62,7 @@ jbig2_decode_generic_template2(Jbig2Ctx *ctx,
         line_m2 = line2 ? line2[0] << 4 : 0;
         CONTEXT = ((line_m1 >> 3) & 0x7c) | ((line_m2 >> 3) & 0x380);
 
-        /* 6.2.5.7 3d */
+
         for (x = 0; x < padded_width; x += 8) {
             byte result = 0;
             int x_minor;
@@ -74,7 +74,7 @@ jbig2_decode_generic_template2(Jbig2Ctx *ctx,
             if (line2)
                 line_m2 = (line_m2 << 8) | (x + 8 < GBW ? line2[(x >> 3) + 1] << 4 : 0);
 
-            /* This is the speed-critical inner loop. */
+
             for (x_minor = 0; x_minor < minor_width; x_minor++) {
                 bool bit;
 
@@ -86,9 +86,9 @@ jbig2_decode_generic_template2(Jbig2Ctx *ctx,
             }
             gbreg_line[x >> 3] = result;
         }
-#ifdef OUTPUT_PBM
-        fwrite(gbreg_line, 1, rowstride, stdout);
-#endif
+
+
+
         line2 = line1;
         line1 = gbreg_line;
         gbreg_line += rowstride;

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  float* vec2_t ;
 
-/* Variables and functions */
- int qfalse ; 
- int qtrue ; 
+
+
+
+typedef float* vec2_t ;
+
+
+ int qfalse ;
+ int qtrue ;
 
 int Intersection(vec2_t p1, vec2_t p2, vec2_t p3, vec2_t p4, vec2_t out)
 {
@@ -32,10 +32,10 @@ int Intersection(vec2_t p1, vec2_t p2, vec2_t p3, vec2_t p4, vec2_t out)
       x2 = p3[1] * dx2 - p3[0] * dy2;
       out[0] = (int) ((dx1 * x2 - dx2 * x1) / d);
       out[1] = (int) ((dy1 * x2 - dy2 * x1) / d);
-		return qtrue;
-   } //end if
+  return qtrue;
+   }
    else
    {
       return qfalse;
-   } //end else
+   }
 }

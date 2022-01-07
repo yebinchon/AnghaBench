@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  serial; } ;
-typedef  TYPE_1__ Clock ;
 
-/* Variables and functions */
- scalar_t__ AV_NOSYNC_THRESHOLD ; 
- scalar_t__ fabs (double) ; 
- double get_clock (TYPE_1__*) ; 
- scalar_t__ isnan (double) ; 
- int /*<<< orphan*/  set_clock (TYPE_1__*,double,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int serial; } ;
+typedef TYPE_1__ Clock ;
+
+
+ scalar_t__ AV_NOSYNC_THRESHOLD ;
+ scalar_t__ fabs (double) ;
+ double get_clock (TYPE_1__*) ;
+ scalar_t__ isnan (double) ;
+ int set_clock (TYPE_1__*,double,int ) ;
 
 __attribute__((used)) static void sync_clock_to_slave(Clock *c, Clock *slave)
 {

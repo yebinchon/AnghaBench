@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct i2c_client {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  i2c_get_clientdata (struct i2c_client*) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  maven_shutdown_client (struct i2c_client*) ; 
+
+ int i2c_get_clientdata (struct i2c_client*) ;
+ int kfree (int ) ;
+ int maven_shutdown_client (struct i2c_client*) ;
 
 __attribute__((used)) static int maven_remove(struct i2c_client *client)
 {
-	maven_shutdown_client(client);
-	kfree(i2c_get_clientdata(client));
-	return 0;
+ maven_shutdown_client(client);
+ kfree(i2c_get_clientdata(client));
+ return 0;
 }

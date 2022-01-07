@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  ref; } ;
-typedef  TYPE_1__ collsym_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RESOLVED ; 
- int /*<<< orphan*/  T_COLLSYM ; 
- int /*<<< orphan*/  nextpri ; 
- int /*<<< orphan*/  set_pri (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  start_order (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int ref; } ;
+typedef TYPE_1__ collsym_t ;
+
+
+ int RESOLVED ;
+ int T_COLLSYM ;
+ int nextpri ;
+ int set_pri (int ,int ,int ) ;
+ int start_order (int ) ;
 
 void
 end_order_collsym(collsym_t *sym)
 {
-	start_order(T_COLLSYM);
-	/* update the weight */
+ start_order(T_COLLSYM);
 
-	set_pri(sym->ref, nextpri, RESOLVED);
-	nextpri++;
+
+ set_pri(sym->ref, nextpri, RESOLVED);
+ nextpri++;
 }

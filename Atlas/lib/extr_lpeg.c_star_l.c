@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_3__ {int /*<<< orphan*/  cs; } ;
-typedef  int /*<<< orphan*/  Instruction ;
-typedef  TYPE_1__ CharsetTag ;
 
-/* Variables and functions */
- scalar_t__ ISCHARSET ; 
- int /*<<< orphan*/ * getpatt (int /*<<< orphan*/ *,int,int*) ; 
- scalar_t__ isheadfail (int /*<<< orphan*/ *) ; 
- int luaL_checkint (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  optimizecaptures (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  optimizejumps (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  optionalheadfail (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  optionals (int /*<<< orphan*/ *,int,int) ; 
- int repeatcharset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/ * repeatheadfail (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/ * repeats (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ; 
- scalar_t__ tocharset (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+struct TYPE_3__ {int cs; } ;
+typedef int Instruction ;
+typedef TYPE_1__ CharsetTag ;
+
+
+ scalar_t__ ISCHARSET ;
+ int * getpatt (int *,int,int*) ;
+ scalar_t__ isheadfail (int *) ;
+ int luaL_checkint (int *,int) ;
+ int optimizecaptures (int *) ;
+ int optimizejumps (int *) ;
+ int optionalheadfail (int *,int,int) ;
+ int optionals (int *,int,int) ;
+ int repeatcharset (int *,int ,int,int) ;
+ int * repeatheadfail (int *,int,int) ;
+ int * repeats (int *,int *,int,int) ;
+ scalar_t__ tocharset (int *,TYPE_1__*) ;
 
 __attribute__((used)) static int star_l (lua_State *L) {
   int l1;

@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  psz_url; int /*<<< orphan*/ * pf_readdir; } ;
-typedef  TYPE_2__ stream_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  input_item_t ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int psz_url; int * pf_readdir; } ;
+typedef TYPE_2__ stream_t ;
+typedef int lua_State ;
+typedef int input_item_t ;
 struct TYPE_10__ {int i_children; TYPE_1__** pp_children; } ;
-typedef  TYPE_3__ input_item_node_t ;
-struct TYPE_8__ {int /*<<< orphan*/  p_item; } ;
+typedef TYPE_3__ input_item_node_t ;
+struct TYPE_8__ {int p_item; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLC_INPUT_OPTION_TRUSTED ; 
- scalar_t__ asprintf (char**,char*,char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  input_item_AddOption (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * input_item_New (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  input_item_Release (int /*<<< orphan*/ *) ; 
- TYPE_3__* input_item_node_Create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  input_item_node_Delete (TYPE_3__*) ; 
- scalar_t__ luaL_checkudata (int /*<<< orphan*/ *,int,char*) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_newtable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_settable (int /*<<< orphan*/ *,int) ; 
- int lua_toboolean (int /*<<< orphan*/ *,int) ; 
- char* lua_tostring (int /*<<< orphan*/ *,int) ; 
- scalar_t__ vlc_stream_ReadDir (TYPE_2__*,TYPE_3__*) ; 
- int vlclua_error (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlclua_input_item_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int VLC_INPUT_OPTION_TRUSTED ;
+ scalar_t__ asprintf (char**,char*,char const*) ;
+ int free (char*) ;
+ int input_item_AddOption (int *,char*,int ) ;
+ int * input_item_New (int ,int *) ;
+ int input_item_Release (int *) ;
+ TYPE_3__* input_item_node_Create (int *) ;
+ int input_item_node_Delete (TYPE_3__*) ;
+ scalar_t__ luaL_checkudata (int *,int,char*) ;
+ int lua_gettop (int *) ;
+ int lua_newtable (int *) ;
+ int lua_pushinteger (int *,int) ;
+ int lua_settable (int *,int) ;
+ int lua_toboolean (int *,int) ;
+ char* lua_tostring (int *,int) ;
+ scalar_t__ vlc_stream_ReadDir (TYPE_2__*,TYPE_3__*) ;
+ int vlclua_error (int *) ;
+ int vlclua_input_item_get (int *,int ) ;
 
 __attribute__((used)) static int vlclua_stream_readdir( lua_State *L )
 {
     stream_t **pp_stream = (stream_t **)luaL_checkudata( L, 1, "stream" );
-    const char *psz_filter = NULL;
-    bool b_show_hidden = false;
+    const char *psz_filter = ((void*)0);
+    bool b_show_hidden = 0;
     if( lua_gettop( L ) >= 2 )
     {
         psz_filter = lua_tostring( L, 2 );
@@ -55,10 +55,10 @@ __attribute__((used)) static int vlclua_stream_readdir( lua_State *L )
 
     if( !pp_stream || !*pp_stream )
         return vlclua_error( L );
-    if( (*pp_stream)->pf_readdir == NULL )
+    if( (*pp_stream)->pf_readdir == ((void*)0) )
         return vlclua_error( L );
 
-    input_item_t *p_input = input_item_New( (*pp_stream)->psz_url, NULL );
+    input_item_t *p_input = input_item_New( (*pp_stream)->psz_url, ((void*)0) );
     if( psz_filter )
     {
         char *psz_opt;

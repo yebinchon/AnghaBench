@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  node; } ;
-struct TYPE_6__ {TYPE_1__ element; int /*<<< orphan*/  IHTMLOptionElement_iface; } ;
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  TYPE_2__ HTMLOptionElement ;
-typedef  int /*<<< orphan*/  HTMLDOMNode ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HTMLElement_QI (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  IID_IDispatch ; 
- int /*<<< orphan*/  IID_IHTMLOptionElement ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  IUnknown_AddRef (int /*<<< orphan*/ *) ; 
- scalar_t__ IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_2__*,void**) ; 
- TYPE_2__* impl_from_HTMLDOMNode (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int node; } ;
+struct TYPE_6__ {TYPE_1__ element; int IHTMLOptionElement_iface; } ;
+typedef int REFIID ;
+typedef int IUnknown ;
+typedef TYPE_2__ HTMLOptionElement ;
+typedef int HTMLDOMNode ;
+typedef int HRESULT ;
+
+
+ int HTMLElement_QI (int *,int ,void**) ;
+ int IID_IDispatch ;
+ int IID_IHTMLOptionElement ;
+ int IID_IUnknown ;
+ int IUnknown_AddRef (int *) ;
+ scalar_t__ IsEqualGUID (int *,int ) ;
+ int S_OK ;
+ int TRACE (char*,TYPE_2__*,void**) ;
+ TYPE_2__* impl_from_HTMLDOMNode (int *) ;
 
 __attribute__((used)) static HRESULT HTMLOptionElement_QI(HTMLDOMNode *iface, REFIID riid, void **ppv)
 {
     HTMLOptionElement *This = impl_from_HTMLDOMNode(iface);
 
-    *ppv = NULL;
+    *ppv = ((void*)0);
 
     if(IsEqualGUID(&IID_IUnknown, riid)) {
         TRACE("(%p)->(IID_IUnknown %p)\n", This, ppv);

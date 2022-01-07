@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int D3D_SHADER_VARIABLE_TYPE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3D_SVT_APPEND_STRUCTURED_BUFFER ; 
- int /*<<< orphan*/  D3D_SVT_BLEND ; 
- int /*<<< orphan*/  D3D_SVT_BOOL ; 
- int /*<<< orphan*/  D3D_SVT_BUFFER ; 
- int /*<<< orphan*/  D3D_SVT_BYTEADDRESS_BUFFER ; 
- int /*<<< orphan*/  D3D_SVT_CBUFFER ; 
- int /*<<< orphan*/  D3D_SVT_COMPUTESHADER ; 
- int /*<<< orphan*/  D3D_SVT_CONSUME_STRUCTURED_BUFFER ; 
- int /*<<< orphan*/  D3D_SVT_DEPTHSTENCIL ; 
- int /*<<< orphan*/  D3D_SVT_DEPTHSTENCILVIEW ; 
- int /*<<< orphan*/  D3D_SVT_DOMAINSHADER ; 
- int /*<<< orphan*/  D3D_SVT_DOUBLE ; 
- int /*<<< orphan*/  D3D_SVT_FLOAT ; 
- int /*<<< orphan*/  D3D_SVT_GEOMETRYSHADER ; 
- int /*<<< orphan*/  D3D_SVT_HULLSHADER ; 
- int /*<<< orphan*/  D3D_SVT_INT ; 
- int /*<<< orphan*/  D3D_SVT_INTERFACE_POINTER ; 
- int /*<<< orphan*/  D3D_SVT_PIXELSHADER ; 
- int /*<<< orphan*/  D3D_SVT_RASTERIZER ; 
- int /*<<< orphan*/  D3D_SVT_RENDERTARGETVIEW ; 
- int /*<<< orphan*/  D3D_SVT_RWBUFFER ; 
- int /*<<< orphan*/  D3D_SVT_RWBYTEADDRESS_BUFFER ; 
- int /*<<< orphan*/  D3D_SVT_RWSTRUCTURED_BUFFER ; 
- int /*<<< orphan*/  D3D_SVT_RWTEXTURE1D ; 
- int /*<<< orphan*/  D3D_SVT_RWTEXTURE1DARRAY ; 
- int /*<<< orphan*/  D3D_SVT_RWTEXTURE2D ; 
- int /*<<< orphan*/  D3D_SVT_RWTEXTURE2DARRAY ; 
- int /*<<< orphan*/  D3D_SVT_RWTEXTURE3D ; 
- int /*<<< orphan*/  D3D_SVT_SAMPLER ; 
- int /*<<< orphan*/  D3D_SVT_STRING ; 
- int /*<<< orphan*/  D3D_SVT_STRUCTURED_BUFFER ; 
- int /*<<< orphan*/  D3D_SVT_TBUFFER ; 
- int /*<<< orphan*/  D3D_SVT_TEXTURE ; 
- int /*<<< orphan*/  D3D_SVT_TEXTURE1D ; 
- int /*<<< orphan*/  D3D_SVT_TEXTURE1DARRAY ; 
- int /*<<< orphan*/  D3D_SVT_TEXTURE2D ; 
- int /*<<< orphan*/  D3D_SVT_TEXTURE2DARRAY ; 
- int /*<<< orphan*/  D3D_SVT_TEXTURE2DMS ; 
- int /*<<< orphan*/  D3D_SVT_TEXTURE2DMSARRAY ; 
- int /*<<< orphan*/  D3D_SVT_TEXTURE3D ; 
- int /*<<< orphan*/  D3D_SVT_TEXTURECUBE ; 
- int /*<<< orphan*/  D3D_SVT_TEXTURECUBEARRAY ; 
- int /*<<< orphan*/  D3D_SVT_UINT ; 
- int /*<<< orphan*/  D3D_SVT_UINT8 ; 
- int /*<<< orphan*/  D3D_SVT_VERTEXSHADER ; 
- int /*<<< orphan*/  D3D_SVT_VOID ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int /*<<< orphan*/  WINE_D3DCOMPILER_TO_STR (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int D3D_SHADER_VARIABLE_TYPE ;
+
+
+ int D3D_SVT_APPEND_STRUCTURED_BUFFER ;
+ int D3D_SVT_BLEND ;
+ int D3D_SVT_BOOL ;
+ int D3D_SVT_BUFFER ;
+ int D3D_SVT_BYTEADDRESS_BUFFER ;
+ int D3D_SVT_CBUFFER ;
+ int D3D_SVT_COMPUTESHADER ;
+ int D3D_SVT_CONSUME_STRUCTURED_BUFFER ;
+ int D3D_SVT_DEPTHSTENCIL ;
+ int D3D_SVT_DEPTHSTENCILVIEW ;
+ int D3D_SVT_DOMAINSHADER ;
+ int D3D_SVT_DOUBLE ;
+ int D3D_SVT_FLOAT ;
+ int D3D_SVT_GEOMETRYSHADER ;
+ int D3D_SVT_HULLSHADER ;
+ int D3D_SVT_INT ;
+ int D3D_SVT_INTERFACE_POINTER ;
+ int D3D_SVT_PIXELSHADER ;
+ int D3D_SVT_RASTERIZER ;
+ int D3D_SVT_RENDERTARGETVIEW ;
+ int D3D_SVT_RWBUFFER ;
+ int D3D_SVT_RWBYTEADDRESS_BUFFER ;
+ int D3D_SVT_RWSTRUCTURED_BUFFER ;
+ int D3D_SVT_RWTEXTURE1D ;
+ int D3D_SVT_RWTEXTURE1DARRAY ;
+ int D3D_SVT_RWTEXTURE2D ;
+ int D3D_SVT_RWTEXTURE2DARRAY ;
+ int D3D_SVT_RWTEXTURE3D ;
+ int D3D_SVT_SAMPLER ;
+ int D3D_SVT_STRING ;
+ int D3D_SVT_STRUCTURED_BUFFER ;
+ int D3D_SVT_TBUFFER ;
+ int D3D_SVT_TEXTURE ;
+ int D3D_SVT_TEXTURE1D ;
+ int D3D_SVT_TEXTURE1DARRAY ;
+ int D3D_SVT_TEXTURE2D ;
+ int D3D_SVT_TEXTURE2DARRAY ;
+ int D3D_SVT_TEXTURE2DMS ;
+ int D3D_SVT_TEXTURE2DMSARRAY ;
+ int D3D_SVT_TEXTURE3D ;
+ int D3D_SVT_TEXTURECUBE ;
+ int D3D_SVT_TEXTURECUBEARRAY ;
+ int D3D_SVT_UINT ;
+ int D3D_SVT_UINT8 ;
+ int D3D_SVT_VERTEXSHADER ;
+ int D3D_SVT_VOID ;
+ int FIXME (char*,int) ;
+ int WINE_D3DCOMPILER_TO_STR (int ) ;
 
 const char *debug_d3dcompiler_shader_variable_type(D3D_SHADER_VARIABLE_TYPE t)
 {

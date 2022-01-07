@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_4__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  parser_ctx_t ;
+
+
+typedef struct TYPE_6__ TYPE_4__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int parser_ctx_t ;
 struct TYPE_5__ {TYPE_4__* tail; } ;
-typedef  TYPE_1__ parameter_list_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
+typedef TYPE_1__ parameter_list_t ;
+typedef int WCHAR ;
 struct TYPE_6__ {struct TYPE_6__* next; } ;
 
-/* Variables and functions */
- TYPE_4__* new_parameter (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
+
+ TYPE_4__* new_parameter (int *,int const*) ;
 
 __attribute__((used)) static parameter_list_t *parameter_list_add(parser_ctx_t *ctx, parameter_list_t *list, const WCHAR *identifier)
 {

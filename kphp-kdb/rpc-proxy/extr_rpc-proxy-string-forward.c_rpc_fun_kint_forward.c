@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {unsigned long long step; unsigned long long tot_buckets; int /*<<< orphan*/ * buckets; scalar_t__* extensions_extra; } ;
 
-/* Variables and functions */
- TYPE_1__* CC ; 
- int /*<<< orphan*/  TL_ERROR_PROXY_NO_TARGET ; 
- int /*<<< orphan*/  assert (int) ; 
- size_t extension_firstint_num ; 
- unsigned long long extract_num (char*,int,char**) ; 
- int /*<<< orphan*/  tl_fetch_set_error_format (int /*<<< orphan*/ ,char*,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {unsigned long long step; unsigned long long tot_buckets; int * buckets; scalar_t__* extensions_extra; } ;
+
+
+ TYPE_1__* CC ;
+ int TL_ERROR_PROXY_NO_TARGET ;
+ int assert (int) ;
+ size_t extension_firstint_num ;
+ unsigned long long extract_num (char*,int,char**) ;
+ int tl_fetch_set_error_format (int ,char*,int) ;
 
 int rpc_fun_kint_forward (void **IP, void **Data) {
   const char *key = *Data;

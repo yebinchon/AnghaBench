@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pci_device_id {int /*<<< orphan*/  driver_data; } ;
+
+
+
+
+struct pci_device_id {int driver_data; } ;
 struct pci_dev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cb_pcidda_driver ; 
- int comedi_pci_auto_config (struct pci_dev*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int cb_pcidda_driver ;
+ int comedi_pci_auto_config (struct pci_dev*,int *,int ) ;
 
 __attribute__((used)) static int cb_pcidda_pci_probe(struct pci_dev *dev,
-			       const struct pci_device_id *id)
+          const struct pci_device_id *id)
 {
-	return comedi_pci_auto_config(dev, &cb_pcidda_driver,
-				      id->driver_data);
+ return comedi_pci_auto_config(dev, &cb_pcidda_driver,
+          id->driver_data);
 }

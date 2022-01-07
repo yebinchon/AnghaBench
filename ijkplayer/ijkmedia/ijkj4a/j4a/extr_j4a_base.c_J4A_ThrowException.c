@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * jclass ;
-typedef  int /*<<< orphan*/  JNIEnv ;
 
-/* Variables and functions */
- int /*<<< orphan*/  J4A_ALOGE (char*) ; 
- int /*<<< orphan*/  J4A_DeleteLocalRef__p (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ J4A_ExceptionCheck__catchAll (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  J4A_FUNC_FAIL_TRACE () ; 
- int /*<<< orphan*/ * J4A_FindClass__catchAll (int /*<<< orphan*/ *,char const*) ; 
- int J4A_ThrowExceptionOfClass (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*) ; 
+
+
+
+typedef int * jclass ;
+typedef int JNIEnv ;
+
+
+ int J4A_ALOGE (char*) ;
+ int J4A_DeleteLocalRef__p (int *,int **) ;
+ scalar_t__ J4A_ExceptionCheck__catchAll (int *) ;
+ int J4A_FUNC_FAIL_TRACE () ;
+ int * J4A_FindClass__catchAll (int *,char const*) ;
+ int J4A_ThrowExceptionOfClass (int *,int *,char const*) ;
 
 int J4A_ThrowException(JNIEnv* env, const char* class_sign, const char* msg)
 {
@@ -30,7 +30,7 @@ int J4A_ThrowException(JNIEnv* env, const char* class_sign, const char* msg)
     }
 
     jclass exceptionClass = J4A_FindClass__catchAll(env, class_sign);
-    if (exceptionClass == NULL) {
+    if (exceptionClass == ((void*)0)) {
         J4A_FUNC_FAIL_TRACE();
         ret = -1;
         goto fail;

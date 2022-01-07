@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TYPE_STRR ; 
- size_t __nosan_strlen (char const*) ; 
- int /*<<< orphan*/  kasan_check_range (char const*,size_t,int /*<<< orphan*/ ) ; 
+ int TYPE_STRR ;
+ size_t __nosan_strlen (char const*) ;
+ int kasan_check_range (char const*,size_t,int ) ;
 
 size_t
 __asan_strlen(const char *src)
 {
-	size_t sz = __nosan_strlen(src);
-	kasan_check_range(src, sz + 1, TYPE_STRR);
-	return sz;
+ size_t sz = __nosan_strlen(src);
+ kasan_check_range(src, sz + 1, TYPE_STRR);
+ return sz;
 }

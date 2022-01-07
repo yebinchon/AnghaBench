@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct hda_codec {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONTROL_PARAM_STREAMS_CHANNELS ; 
- int /*<<< orphan*/  CONTROL_PARAM_STREAM_ID ; 
- int /*<<< orphan*/  chipio_set_control_param_no_mutex (struct hda_codec*,int /*<<< orphan*/ ,unsigned int) ; 
+
+ int CONTROL_PARAM_STREAMS_CHANNELS ;
+ int CONTROL_PARAM_STREAM_ID ;
+ int chipio_set_control_param_no_mutex (struct hda_codec*,int ,unsigned int) ;
 
 __attribute__((used)) static void chipio_set_stream_channels(struct hda_codec *codec,
-				int streamid, unsigned int channels)
+    int streamid, unsigned int channels)
 {
-	chipio_set_control_param_no_mutex(codec,
-			CONTROL_PARAM_STREAM_ID, streamid);
-	chipio_set_control_param_no_mutex(codec,
-			CONTROL_PARAM_STREAMS_CHANNELS, channels);
+ chipio_set_control_param_no_mutex(codec,
+   CONTROL_PARAM_STREAM_ID, streamid);
+ chipio_set_control_param_no_mutex(codec,
+   CONTROL_PARAM_STREAMS_CHANNELS, channels);
 }

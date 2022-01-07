@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct playlist {int id3_found; int id3_changed; int /*<<< orphan*/ * id3_deferred_extra; int /*<<< orphan*/  parent; int /*<<< orphan*/ * id3_initial; TYPE_1__* ctx; scalar_t__ id3_offset; scalar_t__ id3_mpegts_timestamp; } ;
-typedef  scalar_t__ int64_t ;
-struct TYPE_3__ {int /*<<< orphan*/  metadata; scalar_t__ nb_streams; } ;
-typedef  int /*<<< orphan*/  ID3v2ExtraMetaAPIC ;
-typedef  int /*<<< orphan*/  ID3v2ExtraMeta ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  int /*<<< orphan*/  AVDictionary ;
 
-/* Variables and functions */
- scalar_t__ AV_NOPTS_VALUE ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  av_dict_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_dict_free (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  avpriv_report_missing_feature (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ff_id3v2_free_extra_meta (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ff_id3v2_parse_apic (TYPE_1__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ff_id3v2_parse_priv_dict (int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- scalar_t__ id3_has_changed_values (struct playlist*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  parse_id3 (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ **,scalar_t__*,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct playlist {int id3_found; int id3_changed; int * id3_deferred_extra; int parent; int * id3_initial; TYPE_1__* ctx; scalar_t__ id3_offset; scalar_t__ id3_mpegts_timestamp; } ;
+typedef scalar_t__ int64_t ;
+struct TYPE_3__ {int metadata; scalar_t__ nb_streams; } ;
+typedef int ID3v2ExtraMetaAPIC ;
+typedef int ID3v2ExtraMeta ;
+typedef int AVIOContext ;
+typedef int AVDictionary ;
+
+
+ scalar_t__ AV_NOPTS_VALUE ;
+ int av_assert0 (int) ;
+ int av_dict_copy (int *,int *,int ) ;
+ int av_dict_free (int **) ;
+ int avpriv_report_missing_feature (int ,char*) ;
+ int ff_id3v2_free_extra_meta (int **) ;
+ int ff_id3v2_parse_apic (TYPE_1__*,int **) ;
+ int ff_id3v2_parse_priv_dict (int **,int **) ;
+ scalar_t__ id3_has_changed_values (struct playlist*,int *,int *) ;
+ int parse_id3 (TYPE_1__*,int *,int **,scalar_t__*,int **,int **) ;
 
 __attribute__((used)) static void handle_id3(AVIOContext *pb, struct playlist *pls)
 {
-    AVDictionary *metadata = NULL;
-    ID3v2ExtraMetaAPIC *apic = NULL;
-    ID3v2ExtraMeta *extra_meta = NULL;
+    AVDictionary *metadata = ((void*)0);
+    ID3v2ExtraMetaAPIC *apic = ((void*)0);
+    ID3v2ExtraMeta *extra_meta = ((void*)0);
     int64_t timestamp = AV_NOPTS_VALUE;
 
     parse_id3(pls->ctx, pb, &metadata, &timestamp, &apic, &extra_meta);
@@ -46,15 +46,15 @@ __attribute__((used)) static void handle_id3(AVIOContext *pb, struct playlist *p
     }
 
     if (!pls->id3_found) {
-        /* initial ID3 tags */
+
         av_assert0(!pls->id3_deferred_extra);
         pls->id3_found = 1;
 
-        /* get picture attachment and set text metadata */
+
         if (pls->ctx->nb_streams)
             ff_id3v2_parse_apic(pls->ctx, &extra_meta);
         else
-            /* demuxer not yet opened, defer picture attachment */
+
             pls->id3_deferred_extra = extra_meta;
 
         ff_id3v2_parse_priv_dict(&metadata, &extra_meta);

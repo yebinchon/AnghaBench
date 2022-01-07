@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int find_arg (int,char**,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  test_super (char*,char*,char*) ; 
- int /*<<< orphan*/  train_super (char*,char*,int) ; 
+ int find_arg (int,char**,char*) ;
+ int fprintf (int ,char*,char*,char*) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
+ int test_super (char*,char*,char*) ;
+ int train_super (char*,char*,int) ;
 
 void run_super(int argc, char **argv)
 {
@@ -32,7 +24,7 @@ void run_super(int argc, char **argv)
     int clear = find_arg(argc, argv, "-clear");
     if(0==strcmp(argv[2], "train")) train_super(cfg, weights, clear);
     else if(0==strcmp(argv[2], "test")) test_super(cfg, weights, filename);
-    /*
-    else if(0==strcmp(argv[2], "valid")) validate_super(cfg, weights);
-    */
+
+
+
 }

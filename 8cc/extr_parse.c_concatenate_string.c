@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int enc; scalar_t__ slen; int /*<<< orphan*/  sval; } ;
-typedef  TYPE_1__ Token ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int enc; scalar_t__ slen; int sval; } ;
+typedef TYPE_1__ Token ;
 struct TYPE_8__ {scalar_t__ kind; } ;
-typedef  int /*<<< orphan*/  Buffer ;
+typedef int Buffer ;
 
-/* Variables and functions */
- int ENC_NONE ; 
- scalar_t__ TSTRING ; 
- int /*<<< orphan*/  buf_append (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  buf_body (int /*<<< orphan*/ *) ; 
- scalar_t__ buf_len (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  buf_write (int /*<<< orphan*/ *,char) ; 
- int /*<<< orphan*/  errort (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * make_buffer () ; 
- TYPE_4__* peek () ; 
- TYPE_1__* read_token () ; 
- int /*<<< orphan*/  tok2s (TYPE_1__*) ; 
+
+ int ENC_NONE ;
+ scalar_t__ TSTRING ;
+ int buf_append (int *,int ,scalar_t__) ;
+ int buf_body (int *) ;
+ scalar_t__ buf_len (int *) ;
+ int buf_write (int *,char) ;
+ int errort (TYPE_1__*,char*,int ) ;
+ int * make_buffer () ;
+ TYPE_4__* peek () ;
+ TYPE_1__* read_token () ;
+ int tok2s (TYPE_1__*) ;
 
 __attribute__((used)) static void concatenate_string(Token *tok) {
     int enc = tok->enc;

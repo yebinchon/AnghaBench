@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sec_buffer {int /*<<< orphan*/  length; int /*<<< orphan*/  offset; } ;
-typedef  int /*<<< orphan*/  krb5_storage ;
-typedef  int /*<<< orphan*/  krb5_error_code ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  krb5_storage_seek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ret_string (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,char**) ; 
+
+
+
+struct sec_buffer {int length; int offset; } ;
+typedef int krb5_storage ;
+typedef int krb5_error_code ;
+
+
+ int CHECK (int ,int ) ;
+ int SEEK_SET ;
+ int krb5_storage_seek (int *,int ,int ) ;
+ int ret_string (int *,int,int ,char**) ;
 
 __attribute__((used)) static krb5_error_code
 ret_sec_string(krb5_storage *sp, int ucs2, struct sec_buffer *desc, char **s)

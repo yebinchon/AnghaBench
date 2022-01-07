@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  strtoul (char*,int /*<<< orphan*/ *,int) ; 
+ int strtoul (char*,int *,int) ;
 
 char *vlc_uri_decode (char *str)
 {
     char *in = str, *out = str;
-    if (in == NULL)
-        return NULL;
+    if (in == ((void*)0))
+        return ((void*)0);
 
     char c;
     while ((c = *(in++)) != '\0')
@@ -28,9 +20,9 @@ char *vlc_uri_decode (char *str)
             char hex[3];
 
             if (!(hex[0] = *(in++)) || !(hex[1] = *(in++)))
-                return NULL;
+                return ((void*)0);
             hex[2] = '\0';
-            *(out++) = strtoul (hex, NULL, 0x10);
+            *(out++) = strtoul (hex, ((void*)0), 0x10);
         }
         else
             *(out++) = c;

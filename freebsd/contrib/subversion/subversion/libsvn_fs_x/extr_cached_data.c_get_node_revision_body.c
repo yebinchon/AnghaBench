@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_32__   TYPE_5__ ;
-typedef  struct TYPE_31__   TYPE_4__ ;
-typedef  struct TYPE_30__   TYPE_3__ ;
-typedef  struct TYPE_29__   TYPE_2__ ;
-typedef  struct TYPE_28__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_fs_x__revision_file_t ;
-struct TYPE_28__ {int /*<<< orphan*/  second; int /*<<< orphan*/  revision; } ;
-typedef  TYPE_1__ svn_fs_x__pair_cache_key_t ;
-typedef  int /*<<< orphan*/  svn_fs_x__noderev_t ;
-struct TYPE_29__ {int /*<<< orphan*/  number; int /*<<< orphan*/  change_set; } ;
-typedef  TYPE_2__ svn_fs_x__id_t ;
-struct TYPE_30__ {int /*<<< orphan*/  node_revision_cache; scalar_t__ noderevs_container_cache; } ;
-typedef  TYPE_3__ svn_fs_x__data_t ;
+
+
+typedef struct TYPE_32__ TYPE_5__ ;
+typedef struct TYPE_31__ TYPE_4__ ;
+typedef struct TYPE_30__ TYPE_3__ ;
+typedef struct TYPE_29__ TYPE_2__ ;
+typedef struct TYPE_28__ TYPE_1__ ;
+
+
+typedef int svn_stream_t ;
+typedef int svn_revnum_t ;
+typedef int svn_fs_x__revision_file_t ;
+struct TYPE_28__ {int second; int revision; } ;
+typedef TYPE_1__ svn_fs_x__pair_cache_key_t ;
+typedef int svn_fs_x__noderev_t ;
+struct TYPE_29__ {int number; int change_set; } ;
+typedef TYPE_2__ svn_fs_x__id_t ;
+struct TYPE_30__ {int node_revision_cache; scalar_t__ noderevs_container_cache; } ;
+typedef TYPE_3__ svn_fs_x__data_t ;
 struct TYPE_31__ {TYPE_3__* fsap_data; } ;
-typedef  TYPE_4__ svn_fs_t ;
-struct TYPE_32__ {int /*<<< orphan*/  apr_err; } ;
-typedef  TYPE_5__ svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_uint32_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_off_t ;
-typedef  int /*<<< orphan*/  apr_file_t ;
+typedef TYPE_4__ svn_fs_t ;
+struct TYPE_32__ {int apr_err; } ;
+typedef TYPE_5__ svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_uint32_t ;
+typedef int apr_pool_t ;
+typedef int apr_off_t ;
+typedef int apr_file_t ;
 
-/* Variables and functions */
- int APR_BUFFERED ; 
- int /*<<< orphan*/  APR_OS_DEFAULT ; 
- int APR_READ ; 
- scalar_t__ APR_STATUS_IS_ENOENT (int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- TYPE_5__* SVN_NO_ERROR ; 
- int /*<<< orphan*/  block_read (void**,TYPE_4__*,TYPE_2__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_5__* err_dangling_id (TYPE_4__*,TYPE_2__ const*) ; 
- int /*<<< orphan*/  svn_cache__get (void**,scalar_t__*,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_cache__get_partial (void**,scalar_t__*,scalar_t__,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_5__*) ; 
- TYPE_5__* svn_error_trace (TYPE_5__*) ; 
- int /*<<< orphan*/  svn_fs_x__close_revision_file (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_x__get_revnum (int /*<<< orphan*/ ) ; 
- scalar_t__ svn_fs_x__is_packed_rev (TYPE_4__*,int /*<<< orphan*/ ) ; 
- scalar_t__ svn_fs_x__is_txn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_fs_x__item_offset (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_4__*,int /*<<< orphan*/ *,TYPE_2__ const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_x__noderevs_get_func ; 
- int /*<<< orphan*/  svn_fs_x__packed_base_rev (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_fs_x__path_txn_node_rev (TYPE_4__*,TYPE_2__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_x__read_noderev (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_x__rev_file_init (int /*<<< orphan*/ **,TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_5__* svn_io_file_open (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_stream_from_aprfile2 (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
+
+ int APR_BUFFERED ;
+ int APR_OS_DEFAULT ;
+ int APR_READ ;
+ scalar_t__ APR_STATUS_IS_ENOENT (int ) ;
+ scalar_t__ FALSE ;
+ int SVN_ERR (int ) ;
+ TYPE_5__* SVN_NO_ERROR ;
+ int block_read (void**,TYPE_4__*,TYPE_2__ const*,int *,int *,int *,int *) ;
+ TYPE_5__* err_dangling_id (TYPE_4__*,TYPE_2__ const*) ;
+ int svn_cache__get (void**,scalar_t__*,int ,TYPE_1__*,int *) ;
+ int svn_cache__get_partial (void**,scalar_t__*,scalar_t__,TYPE_1__*,int ,int *,int *) ;
+ int svn_error_clear (TYPE_5__*) ;
+ TYPE_5__* svn_error_trace (TYPE_5__*) ;
+ int svn_fs_x__close_revision_file (int *) ;
+ int svn_fs_x__get_revnum (int ) ;
+ scalar_t__ svn_fs_x__is_packed_rev (TYPE_4__*,int ) ;
+ scalar_t__ svn_fs_x__is_txn (int ) ;
+ int svn_fs_x__item_offset (int *,int *,TYPE_4__*,int *,TYPE_2__ const*,int *) ;
+ int svn_fs_x__noderevs_get_func ;
+ int svn_fs_x__packed_base_rev (TYPE_4__*,int ) ;
+ int svn_fs_x__path_txn_node_rev (TYPE_4__*,TYPE_2__ const*,int *,int *) ;
+ int svn_fs_x__read_noderev (int **,int *,int *,int *) ;
+ int svn_fs_x__rev_file_init (int **,TYPE_4__*,int ,int *) ;
+ TYPE_5__* svn_io_file_open (int **,int ,int,int ,int *) ;
+ int * svn_stream_from_aprfile2 (int *,scalar_t__,int *) ;
 
 __attribute__((used)) static svn_error_t *
 get_node_revision_body(svn_fs_x__noderev_t **noderev_p,
@@ -78,8 +78,8 @@ get_node_revision_body(svn_fs_x__noderev_t **noderev_p,
       apr_file_t *file;
       svn_stream_t *stream;
 
-      /* This is a transaction node-rev.  Its storage logic is very
-         different from that of rev / pack files. */
+
+
       err = svn_io_file_open(&file,
                              svn_fs_x__path_txn_node_rev(fs, id,
                                                          scratch_pool,
@@ -96,7 +96,7 @@ get_node_revision_body(svn_fs_x__noderev_t **noderev_p,
           return svn_error_trace(err);
         }
 
-      /* Be sure to close the file ASAP. */
+
       stream = svn_stream_from_aprfile2(file, FALSE, scratch_pool);
       SVN_ERR(svn_fs_x__read_noderev(noderev_p, stream,
                                      result_pool, scratch_pool));
@@ -105,15 +105,15 @@ get_node_revision_body(svn_fs_x__noderev_t **noderev_p,
     {
       svn_fs_x__revision_file_t *revision_file;
 
-      /* noderevs in rev / pack files can be cached */
+
       svn_revnum_t revision = svn_fs_x__get_revnum(id->change_set);
       svn_fs_x__pair_cache_key_t key;
 
       SVN_ERR(svn_fs_x__rev_file_init(&revision_file, fs, revision,
                                       scratch_pool));
 
-      /* First, try a noderevs container cache lookup. */
-      if (   svn_fs_x__is_packed_rev(fs, revision)
+
+      if ( svn_fs_x__is_packed_rev(fs, revision)
           && ffd->noderevs_container_cache)
         {
           apr_off_t offset;
@@ -134,8 +134,8 @@ get_node_revision_body(svn_fs_x__noderev_t **noderev_p,
       key.revision = revision;
       key.second = id->number;
 
-      /* Not found or not applicable. Try a noderev cache lookup.
-       * If that succeeds, we are done here. */
+
+
       SVN_ERR(svn_cache__get((void **) noderev_p,
                              &is_cached,
                              ffd->node_revision_cache,
@@ -144,12 +144,12 @@ get_node_revision_body(svn_fs_x__noderev_t **noderev_p,
       if (is_cached)
         return SVN_NO_ERROR;
 
-      /* block-read will parse the whole block and will also return
-         the one noderev that we need right now. */
+
+
       SVN_ERR(block_read((void **)noderev_p, fs,
                          id,
                          revision_file,
-                         NULL,
+                         ((void*)0),
                          result_pool,
                          scratch_pool));
       SVN_ERR(svn_fs_x__close_revision_file(revision_file));

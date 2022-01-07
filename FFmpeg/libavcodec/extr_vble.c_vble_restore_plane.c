@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_6__ {int /*<<< orphan*/  (* add_median_pred ) (int*,int*,int*,int,int*,int*) ;} ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_6__ {int (* add_median_pred ) (int*,int*,int*,int,int*,int*) ;} ;
 struct TYPE_7__ {int* val; TYPE_1__ llviddsp; } ;
-typedef  TYPE_2__ VBLEContext ;
+typedef TYPE_2__ VBLEContext ;
 struct TYPE_8__ {int** data; int* linesize; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_3__ AVFrame ;
+typedef int GetBitContext ;
+typedef TYPE_3__ AVFrame ;
 
-/* Variables and functions */
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stub1 (int*,int*,int*,int,int*,int*) ; 
+
+ int get_bits (int *,int) ;
+ int stub1 (int*,int*,int*,int,int*,int*) ;
 
 __attribute__((used)) static void vble_restore_plane(VBLEContext *ctx, AVFrame *pic,
                                GetBitContext *gb, int plane,
@@ -36,7 +36,7 @@ __attribute__((used)) static void vble_restore_plane(VBLEContext *ctx, AVFrame *
 
     for (i = 0; i < height; i++) {
         for (j = 0; j < width; j++) {
-            /* get_bits can't take a length of 0 */
+
             if (val[j]) {
                 int v = (1 << val[j]) + get_bits(gb, val[j]) - 1;
                 val[j] = (v >> 1) ^ -(v & 1);

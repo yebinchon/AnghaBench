@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
-struct test_mb_skcipher_data {int /*<<< orphan*/  wait; int /*<<< orphan*/  req; } ;
 
-/* Variables and functions */
- int ENCRYPT ; 
- int crypto_skcipher_decrypt (int /*<<< orphan*/ ) ; 
- int crypto_skcipher_encrypt (int /*<<< orphan*/ ) ; 
- int crypto_wait_req (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pr_info (char*,int,int) ; 
+
+
+
+typedef int u32 ;
+struct test_mb_skcipher_data {int wait; int req; } ;
+
+
+ int ENCRYPT ;
+ int crypto_skcipher_decrypt (int ) ;
+ int crypto_skcipher_encrypt (int ) ;
+ int crypto_wait_req (int,int *) ;
+ int pr_info (char*,int,int) ;
 
 __attribute__((used)) static int do_mult_acipher_op(struct test_mb_skcipher_data *data, int enc,
-				u32 num_mb, int *rc)
+    u32 num_mb, int *rc)
 {
-	int i, err = 0;
+ int i, err = 0;
 
-	/* Fire up a bunch of concurrent requests */
-	for (i = 0; i < num_mb; i++) {
-		if (enc == ENCRYPT)
-			rc[i] = crypto_skcipher_encrypt(data[i].req);
-		else
-			rc[i] = crypto_skcipher_decrypt(data[i].req);
-	}
 
-	/* Wait for all requests to finish */
-	for (i = 0; i < num_mb; i++) {
-		rc[i] = crypto_wait_req(rc[i], &data[i].wait);
+ for (i = 0; i < num_mb; i++) {
+  if (enc == ENCRYPT)
+   rc[i] = crypto_skcipher_encrypt(data[i].req);
+  else
+   rc[i] = crypto_skcipher_decrypt(data[i].req);
+ }
 
-		if (rc[i]) {
-			pr_info("concurrent request %d error %d\n", i, rc[i]);
-			err = rc[i];
-		}
-	}
 
-	return err;
+ for (i = 0; i < num_mb; i++) {
+  rc[i] = crypto_wait_req(rc[i], &data[i].wait);
+
+  if (rc[i]) {
+   pr_info("concurrent request %d error %d\n", i, rc[i]);
+   err = rc[i];
+  }
+ }
+
+ return err;
 }

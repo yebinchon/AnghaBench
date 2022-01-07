@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rtx_constant_pool {scalar_t__ offset; int /*<<< orphan*/ * last; int /*<<< orphan*/ * first; int /*<<< orphan*/  const_rtx_htab; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  const_desc_rtx_eq ; 
- int /*<<< orphan*/  const_desc_rtx_hash ; 
- struct rtx_constant_pool* ggc_alloc (int) ; 
- int /*<<< orphan*/  htab_create_ggc (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct rtx_constant_pool {scalar_t__ offset; int * last; int * first; int const_rtx_htab; } ;
+
+
+ int const_desc_rtx_eq ;
+ int const_desc_rtx_hash ;
+ struct rtx_constant_pool* ggc_alloc (int) ;
+ int htab_create_ggc (int,int ,int ,int *) ;
 
 __attribute__((used)) static struct rtx_constant_pool *
 create_constant_pool (void)
@@ -25,9 +25,9 @@ create_constant_pool (void)
 
   pool = ggc_alloc (sizeof (struct rtx_constant_pool));
   pool->const_rtx_htab = htab_create_ggc (31, const_desc_rtx_hash,
-					  const_desc_rtx_eq, NULL);
-  pool->first = NULL;
-  pool->last = NULL;
+       const_desc_rtx_eq, ((void*)0));
+  pool->first = ((void*)0);
+  pool->last = ((void*)0);
   pool->offset = 0;
   return pool;
 }

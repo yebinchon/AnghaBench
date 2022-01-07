@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char* buf; char const len; } ;
 struct mg_connection {TYPE_1__ send_mbuf; } ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (int*) ; 
- int /*<<< orphan*/  ASSERT_EQ (char const,int) ; 
- int /*<<< orphan*/  ASSERT_STREQ_NZ (char const*,char*) ; 
- int MG_DNS_AAAA_RECORD ; 
- int MG_DNS_A_RECORD ; 
- int /*<<< orphan*/  init_test_connection (struct mg_connection*) ; 
- int /*<<< orphan*/  mbuf_free (TYPE_1__*) ; 
- int /*<<< orphan*/  mg_send_dns_query (struct mg_connection*,char*,int) ; 
+
+ size_t ARRAY_SIZE (int*) ;
+ int ASSERT_EQ (char const,int) ;
+ int ASSERT_STREQ_NZ (char const*,char*) ;
+ int MG_DNS_AAAA_RECORD ;
+ int MG_DNS_A_RECORD ;
+ int init_test_connection (struct mg_connection*) ;
+ int mbuf_free (TYPE_1__*) ;
+ int mg_send_dns_query (struct mg_connection*,char*,int) ;
 
 __attribute__((used)) static const char *test_dns_encode(void) {
   struct mg_connection nc;
@@ -31,10 +31,10 @@ __attribute__((used)) static const char *test_dns_encode(void) {
   size_t i;
   init_test_connection(&nc);
 
-  /*
-   * Testing TCP encoding since when the connection
-   * is in UDP mode the data is not stored in the send buffer.
-   */
+
+
+
+
 
   for (i = 0; i < ARRAY_SIZE(query_types); i++) {
     mg_send_dns_query(&nc, "www.cesanta.com", query_types[i]);
@@ -54,5 +54,5 @@ __attribute__((used)) static const char *test_dns_encode(void) {
 
     mbuf_free(&nc.send_mbuf);
   }
-  return NULL;
+  return ((void*)0);
 }

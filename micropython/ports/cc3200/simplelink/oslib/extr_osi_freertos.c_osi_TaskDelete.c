@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TaskHandle_t ;
-typedef  scalar_t__ OsiTaskHandle ;
 
-/* Variables and functions */
- int /*<<< orphan*/  vTaskDelete (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int TaskHandle_t ;
+typedef scalar_t__ OsiTaskHandle ;
+
+
+ int vTaskDelete (int ) ;
 
 void osi_TaskDelete(OsiTaskHandle* pTaskHandle)
 {
-	vTaskDelete((TaskHandle_t)*pTaskHandle);
+ vTaskDelete((TaskHandle_t)*pTaskHandle);
 }

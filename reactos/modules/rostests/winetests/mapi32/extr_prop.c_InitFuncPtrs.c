@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ GetProcAddress (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  LoadLibraryA (char*) ; 
- int /*<<< orphan*/  hMapi32 ; 
- void* pCreateIProp ; 
- void* pDeinitMapiUtil ; 
- void* pFBadColumnSet ; 
- void* pFBadProp ; 
- void* pFBadPropTag ; 
- void* pFBadRglpszA ; 
- void* pFBadRglpszW ; 
- void* pFBadRow ; 
- void* pFBadRowSet ; 
- void* pFPropCompareProp ; 
- void* pFPropContainsProp ; 
- void* pLPropCompareProp ; 
- void* pLpValFindProp ; 
- void* pMAPIAllocateBuffer ; 
- void* pMAPIAllocateMore ; 
- void* pMAPIFreeBuffer ; 
- void* pMAPIInitialize ; 
- void* pMAPIUninitialize ; 
- void* pPpropFindProp ; 
- void* pPropCopyMore ; 
- void* pScCopyProps ; 
- void* pScCountProps ; 
- void* pScInitMapiUtil ; 
- void* pScRelocProps ; 
- void* pUlPropSize ; 
+
+
+
+typedef int BOOL ;
+
+
+ scalar_t__ GetProcAddress (int ,char*) ;
+ int LoadLibraryA (char*) ;
+ int hMapi32 ;
+ void* pCreateIProp ;
+ void* pDeinitMapiUtil ;
+ void* pFBadColumnSet ;
+ void* pFBadProp ;
+ void* pFBadPropTag ;
+ void* pFBadRglpszA ;
+ void* pFBadRglpszW ;
+ void* pFBadRow ;
+ void* pFBadRowSet ;
+ void* pFPropCompareProp ;
+ void* pFPropContainsProp ;
+ void* pLPropCompareProp ;
+ void* pLpValFindProp ;
+ void* pMAPIAllocateBuffer ;
+ void* pMAPIAllocateMore ;
+ void* pMAPIFreeBuffer ;
+ void* pMAPIInitialize ;
+ void* pMAPIUninitialize ;
+ void* pPpropFindProp ;
+ void* pPropCopyMore ;
+ void* pScCopyProps ;
+ void* pScCountProps ;
+ void* pScInitMapiUtil ;
+ void* pScRelocProps ;
+ void* pUlPropSize ;
 
 __attribute__((used)) static BOOL InitFuncPtrs(void)
 {

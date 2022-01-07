@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int8_t ;
-typedef  int /*<<< orphan*/  u_int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NTOHS (int /*<<< orphan*/ ) ; 
- int pf_match (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u_int8_t ;
+typedef int u_int16_t ;
+
+
+ int NTOHS (int ) ;
+ int pf_match (int ,int ,int ,int ) ;
 
 int
 pf_match_port(u_int8_t op, u_int16_t a1, u_int16_t a2, u_int16_t p)
 {
-#if BYTE_ORDER != BIG_ENDIAN
-	NTOHS(a1);
-	NTOHS(a2);
-	NTOHS(p);
-#endif
-	return (pf_match(op, a1, a2, p));
+
+
+
+
+
+ return (pf_match(op, a1, a2, p));
 }

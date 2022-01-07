@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct Track {int /*<<< orphan*/  codec_private; int /*<<< orphan*/  codec_private_size; } ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct Track {int codec_private; int codec_private_size; } ;
 struct TYPE_4__ {scalar_t__ codec_id; int extradata_size; int* extradata; } ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_1__ AVCodecParameters ;
+typedef int AVIOContext ;
+typedef TYPE_1__ AVCodecParameters ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ AV_CODEC_ID_VC1 ; 
- int AV_RB16 (int*) ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  avio_close_dyn_buf (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int avio_open_dyn_buf (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  avio_wb32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ *,int*,int) ; 
- int get_private_data (struct Track*,TYPE_1__*) ; 
+
+ int AVERROR (int ) ;
+ scalar_t__ AV_CODEC_ID_VC1 ;
+ int AV_RB16 (int*) ;
+ int EINVAL ;
+ int avio_close_dyn_buf (int *,int *) ;
+ int avio_open_dyn_buf (int **) ;
+ int avio_wb32 (int *,int) ;
+ int avio_write (int *,int*,int) ;
+ int get_private_data (struct Track*,TYPE_1__*) ;
 
 __attribute__((used)) static int get_video_private_data(struct Track *track, AVCodecParameters *codecpar)
 {
-    AVIOContext *io = NULL;
+    AVIOContext *io = ((void*)0);
     uint16_t sps_size, pps_size;
     int err;
 

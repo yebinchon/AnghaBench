@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct list_head {struct list_head* next; } ;
-struct ieee80211_crypto_ops {int /*<<< orphan*/  name; } ;
+struct ieee80211_crypto_ops {int name; } ;
 struct ieee80211_crypto_alg {struct ieee80211_crypto_ops* ops; } ;
-struct TYPE_2__ {int /*<<< orphan*/  lock; struct list_head algs; } ;
+struct TYPE_2__ {int lock; struct list_head algs; } ;
 
-/* Variables and functions */
- TYPE_1__* hcrypt ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char const*) ; 
+
+ TYPE_1__* hcrypt ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ scalar_t__ strcmp (int ,char const*) ;
 
 struct ieee80211_crypto_ops * ieee80211_get_crypto_ops(const char *name)
 {
-	unsigned long flags;
-	struct list_head *ptr;
-	struct ieee80211_crypto_alg *found_alg = NULL;
+ unsigned long flags;
+ struct list_head *ptr;
+ struct ieee80211_crypto_alg *found_alg = ((void*)0);
 
-	if (hcrypt == NULL)
-		return NULL;
+ if (hcrypt == ((void*)0))
+  return ((void*)0);
 
-	spin_lock_irqsave(&hcrypt->lock, flags);
-	for (ptr = hcrypt->algs.next; ptr != &hcrypt->algs; ptr = ptr->next) {
-		struct ieee80211_crypto_alg *alg =
-			(struct ieee80211_crypto_alg *) ptr;
-		if (strcmp(alg->ops->name, name) == 0) {
-			found_alg = alg;
-			break;
-		}
-	}
-	spin_unlock_irqrestore(&hcrypt->lock, flags);
+ spin_lock_irqsave(&hcrypt->lock, flags);
+ for (ptr = hcrypt->algs.next; ptr != &hcrypt->algs; ptr = ptr->next) {
+  struct ieee80211_crypto_alg *alg =
+   (struct ieee80211_crypto_alg *) ptr;
+  if (strcmp(alg->ops->name, name) == 0) {
+   found_alg = alg;
+   break;
+  }
+ }
+ spin_unlock_irqrestore(&hcrypt->lock, flags);
 
-	if (found_alg)
-		return found_alg->ops;
-	else
-		return NULL;
+ if (found_alg)
+  return found_alg->ops;
+ else
+  return ((void*)0);
 }

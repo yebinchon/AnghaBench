@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int dim; TYPE_2__** cells; scalar_t__ points; } ;
-typedef  TYPE_1__ elbg_data ;
+typedef TYPE_1__ elbg_data ;
 struct TYPE_5__ {int index; struct TYPE_5__* next; } ;
-typedef  TYPE_2__ cell ;
+typedef TYPE_2__ cell ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INT_MAX ; 
- scalar_t__ distance_limited (scalar_t__,int*,int,int /*<<< orphan*/ ) ; 
+
+ int INT_MAX ;
+ scalar_t__ distance_limited (scalar_t__,int*,int,int ) ;
 
 __attribute__((used)) static void shift_codebook(elbg_data *elbg, int *indexes,
                            int *newcentroid[3])
@@ -32,9 +32,9 @@ __attribute__((used)) static void shift_codebook(elbg_data *elbg, int *indexes,
 
     *pp = elbg->cells[indexes[0]];
 
-    elbg->cells[indexes[0]] = NULL;
+    elbg->cells[indexes[0]] = ((void*)0);
     tempdata = elbg->cells[indexes[1]];
-    elbg->cells[indexes[1]] = NULL;
+    elbg->cells[indexes[1]] = ((void*)0);
 
     while(tempdata) {
         cell *tempcell2 = tempdata->next;

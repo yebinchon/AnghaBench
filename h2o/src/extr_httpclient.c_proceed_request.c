@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  cb; } ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int cb; } ;
 struct st_timeout_ctx {TYPE_4__ _timeout; TYPE_2__* client; } ;
-typedef  int /*<<< orphan*/  h2o_send_state_t ;
+typedef int h2o_send_state_t ;
 struct TYPE_6__ {TYPE_1__* ctx; } ;
-typedef  TYPE_2__ h2o_httpclient_t ;
-struct TYPE_5__ {int /*<<< orphan*/  loop; } ;
+typedef TYPE_2__ h2o_httpclient_t ;
+struct TYPE_5__ {int loop; } ;
 
-/* Variables and functions */
- scalar_t__ cur_req_body_size ; 
- int /*<<< orphan*/  delay_interval_ms ; 
- struct st_timeout_ctx* h2o_mem_alloc (int) ; 
- int /*<<< orphan*/  h2o_timer_link (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_4__*) ; 
- int /*<<< orphan*/  memset (struct st_timeout_ctx*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  timeout_cb ; 
+
+ scalar_t__ cur_req_body_size ;
+ int delay_interval_ms ;
+ struct st_timeout_ctx* h2o_mem_alloc (int) ;
+ int h2o_timer_link (int ,int ,TYPE_4__*) ;
+ int memset (struct st_timeout_ctx*,int ,int) ;
+ int timeout_cb ;
 
 __attribute__((used)) static void proceed_request(h2o_httpclient_t *client, size_t written, h2o_send_state_t send_state)
 {

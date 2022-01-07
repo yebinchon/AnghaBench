@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int flags; int /*<<< orphan*/  winding; } ;
-typedef  TYPE_1__ side_t ;
-typedef  scalar_t__ qboolean ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int flags; int winding; } ;
+typedef TYPE_1__ side_t ;
+typedef scalar_t__ qboolean ;
 struct TYPE_5__ {int numsides; TYPE_1__* sides; struct TYPE_5__* next; } ;
-typedef  TYPE_2__ bspbrush_t ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_2__ bspbrush_t ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OutputWinding (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int SFL_VISIBLE ; 
- int /*<<< orphan*/ * SafeOpenWrite (char*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  qprintf (char*,char*) ; 
+
+ int OutputWinding (int ,int *) ;
+ int SFL_VISIBLE ;
+ int * SafeOpenWrite (char*) ;
+ int fclose (int *) ;
+ int qprintf (char*,char*) ;
 
 void WriteBrushList (char *name, bspbrush_t *brush, qboolean onlyvis)
 {
-	int		i;
-	side_t	*s;
-	FILE	*f;
+ int i;
+ side_t *s;
+ FILE *f;
 
-	qprintf ("writing %s\n", name);
-	f = SafeOpenWrite (name);
+ qprintf ("writing %s\n", name);
+ f = SafeOpenWrite (name);
 
-	for ( ; brush ; brush=brush->next)
-	{
-		for (i=0 ; i<brush->numsides ; i++)
-		{
-			s = &brush->sides[i];
-			if (!s->winding)
-				continue;
-			if (onlyvis && !(s->flags & SFL_VISIBLE))
-				continue;
-			OutputWinding (brush->sides[i].winding, f);
-		}
-	}
+ for ( ; brush ; brush=brush->next)
+ {
+  for (i=0 ; i<brush->numsides ; i++)
+  {
+   s = &brush->sides[i];
+   if (!s->winding)
+    continue;
+   if (onlyvis && !(s->flags & SFL_VISIBLE))
+    continue;
+   OutputWinding (brush->sides[i].winding, f);
+  }
+ }
 
-	fclose (f);
+ fclose (f);
 }

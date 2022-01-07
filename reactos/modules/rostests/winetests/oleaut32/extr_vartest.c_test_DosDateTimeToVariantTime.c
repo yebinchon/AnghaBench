@@ -1,50 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CHECKPTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DOS2DT (int,int,int,int,int,int,int,double) ; 
- int /*<<< orphan*/  DosDateTimeToVariantTime ; 
+ int CHECKPTR (int ) ;
+ int DOS2DT (int,int,int,int,int,int,int,double) ;
+ int DosDateTimeToVariantTime ;
 
 __attribute__((used)) static void test_DosDateTimeToVariantTime(void)
 {
   CHECKPTR(DosDateTimeToVariantTime);
 
-  /* Date */
-  DOS2DT(1,1,1980,0,0,0,1,29221.0); /* 1/1/1980 */
-  DOS2DT(31,12,2099,0,0,0,1,73050.0); /* 31/12/2099 */
-  /* Dates are limited to the dos date max of 31/12/2099 */
-  DOS2DT(31,12,2100,0,0,0,0,0.0); /* 31/12/2100 */
-  /* Days and months of 0 cause date to roll back 1 day or month */
-  DOS2DT(0,1,1980,0,0,0,1,29220.0); /* 0 Day => 31/12/1979 */
-  DOS2DT(1,0,1980,0,0,0,1,29190.0); /* 0 Mth =>  1/12/1979 */
-  DOS2DT(0,0,1980,0,0,0,1,29189.0); /* 0 D/M => 30/11/1979 */
-  /* Days > days in the month cause date to roll forward 1 month */
-  DOS2DT(29,2,1981,0,0,0,1,29646.0); /* 29/2/1981 -> 3/1/1980 */
-  DOS2DT(30,2,1981,0,0,0,1,29647.0); /* 30/2/1981 -> 4/1/1980 */
-  /* Takes leap years into account when rolling forward */
-  DOS2DT(29,2,1980,0,0,0,1,29280.0); /* 2/29/1980 */
-  /* Months > 12 cause an error */
+
+  DOS2DT(1,1,1980,0,0,0,1,29221.0);
+  DOS2DT(31,12,2099,0,0,0,1,73050.0);
+
+  DOS2DT(31,12,2100,0,0,0,0,0.0);
+
+  DOS2DT(0,1,1980,0,0,0,1,29220.0);
+  DOS2DT(1,0,1980,0,0,0,1,29190.0);
+  DOS2DT(0,0,1980,0,0,0,1,29189.0);
+
+  DOS2DT(29,2,1981,0,0,0,1,29646.0);
+  DOS2DT(30,2,1981,0,0,0,1,29647.0);
+
+  DOS2DT(29,2,1980,0,0,0,1,29280.0);
+
   DOS2DT(2,13,1980,0,0,0,0,0.0);
 
-  /* Time */
-  DOS2DT(1,1,1980,0,0,29,1,29221.00032407407); /* 1/1/1980 12:00:28 AM */
-  DOS2DT(1,1,1980,0,0,31,1,29221.00034722222); /* 1/1/1980 12:00:30 AM */
-  DOS2DT(1,1,1980,0,59,0,1,29221.04097222222); /* 1/1/1980 12:59:00 AM */
-  DOS2DT(1,1,1980,0,60,0,0,0.0);               /* Invalid minutes */
-  DOS2DT(1,1,1980,0,0,60,0,0.0);               /* Invalid seconds */
-  DOS2DT(1,1,1980,23,0,0,1,29221.95833333333); /* 1/1/1980 11:00:00 PM */
-  DOS2DT(1,1,1980,24,0,0,0,0.0);               /* Invalid hours */
+
+  DOS2DT(1,1,1980,0,0,29,1,29221.00032407407);
+  DOS2DT(1,1,1980,0,0,31,1,29221.00034722222);
+  DOS2DT(1,1,1980,0,59,0,1,29221.04097222222);
+  DOS2DT(1,1,1980,0,60,0,0,0.0);
+  DOS2DT(1,1,1980,0,0,60,0,0.0);
+  DOS2DT(1,1,1980,23,0,0,1,29221.95833333333);
+  DOS2DT(1,1,1980,24,0,0,0,0.0);
 
   DOS2DT(1,1,1980,0,0,1,1,29221.0);
   DOS2DT(2,1,1980,0,0,0,1,29222.0);

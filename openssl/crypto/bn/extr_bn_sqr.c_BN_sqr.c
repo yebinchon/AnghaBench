@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bn_check_top (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bn_correct_top (int /*<<< orphan*/ *) ; 
- int bn_sqr_fixed_top (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int bn_check_top (int *) ;
+ int bn_correct_top (int *) ;
+ int bn_sqr_fixed_top (int *,int const*,int *) ;
 
 int BN_sqr(BIGNUM *r, const BIGNUM *a, BN_CTX *ctx)
 {

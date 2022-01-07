@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int len; char* data; } ;
-typedef  TYPE_1__ svn_stringbuf_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ apr_off_t ;
-typedef  scalar_t__ apr_int64_t ;
+typedef TYPE_1__ svn_stringbuf_t ;
+typedef int svn_revnum_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ apr_off_t ;
+typedef scalar_t__ apr_int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_FS_CORRUPT ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  svn_cstring_atoi64 (scalar_t__*,char const*) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_FS_CORRUPT ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int svn_cstring_atoi64 (scalar_t__*,char const*) ;
+ int * svn_error_createf (int ,int *,int ,int ) ;
 
 svn_error_t *
 svn_fs_fs__parse_revision_trailer(apr_off_t *root_offset,
@@ -35,19 +35,19 @@ svn_fs_fs__parse_revision_trailer(apr_off_t *root_offset,
   int i, num_bytes;
   const char *str;
 
-  /* This cast should be safe since the maximum amount read, 64, will
-     never be bigger than the size of an int. */
+
+
   num_bytes = (int) trailer->len;
 
-  /* The last byte should be a newline. */
+
   if (trailer->len == 0 || trailer->data[trailer->len - 1] != '\n')
     {
-      return svn_error_createf(SVN_ERR_FS_CORRUPT, NULL,
+      return svn_error_createf(SVN_ERR_FS_CORRUPT, ((void*)0),
                                _("Revision file (r%ld) lacks trailing newline"),
                                rev);
     }
 
-  /* Look for the next previous newline. */
+
   for (i = num_bytes - 2; i >= 0; i--)
     {
       if (trailer->data[i] == '\n')
@@ -56,7 +56,7 @@ svn_fs_fs__parse_revision_trailer(apr_off_t *root_offset,
 
   if (i < 0)
     {
-      return svn_error_createf(SVN_ERR_FS_CORRUPT, NULL,
+      return svn_error_createf(SVN_ERR_FS_CORRUPT, ((void*)0),
                                _("Final line in revision file (r%ld) longer "
                                  "than 64 characters"),
                                rev);
@@ -65,13 +65,13 @@ svn_fs_fs__parse_revision_trailer(apr_off_t *root_offset,
   i++;
   str = &trailer->data[i];
 
-  /* find the next space */
+
   for ( ; i < (num_bytes - 2) ; i++)
     if (trailer->data[i] == ' ')
       break;
 
   if (i == (num_bytes - 2))
-    return svn_error_createf(SVN_ERR_FS_CORRUPT, NULL,
+    return svn_error_createf(SVN_ERR_FS_CORRUPT, ((void*)0),
                              _("Final line in revision file r%ld missing space"),
                              rev);
 
@@ -87,7 +87,7 @@ svn_fs_fs__parse_revision_trailer(apr_off_t *root_offset,
   i++;
   str = &trailer->data[i];
 
-  /* find the next newline */
+
   for ( ; i < num_bytes; i++)
     if (trailer->data[i] == '\n')
       break;

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int OPJ_UINT32 ;
 
-/* Variables and functions */
- int T1_CTXNO_SC ; 
- int T1_LUT_SGN_E ; 
- int T1_LUT_SGN_N ; 
- int T1_LUT_SGN_S ; 
- int T1_LUT_SGN_W ; 
- int T1_LUT_SIG_E ; 
- int T1_LUT_SIG_N ; 
- int T1_LUT_SIG_S ; 
- int T1_LUT_SIG_W ; 
- int opj_int_min (int,int) ; 
+
+
+
+typedef int OPJ_UINT32 ;
+
+
+ int T1_CTXNO_SC ;
+ int T1_LUT_SGN_E ;
+ int T1_LUT_SGN_N ;
+ int T1_LUT_SGN_S ;
+ int T1_LUT_SGN_W ;
+ int T1_LUT_SIG_E ;
+ int T1_LUT_SIG_N ;
+ int T1_LUT_SIG_S ;
+ int T1_LUT_SIG_W ;
+ int opj_int_min (int,int) ;
 
 __attribute__((used)) static int t1_init_ctxno_sc(OPJ_UINT32 f)
 {

@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * thread_t ;
-struct nfsbuf {int /*<<< orphan*/  nb_flags; int /*<<< orphan*/  nb_rcred; int /*<<< orphan*/  nb_np; } ;
-typedef  int /*<<< orphan*/  nfsnode_t ;
-typedef  int /*<<< orphan*/  kauth_cred_t ;
-struct TYPE_2__ {int /*<<< orphan*/  read_bios; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLR (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ISSET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ IS_VALID_CRED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NB_ASYNC ; 
- int /*<<< orphan*/  NB_DONE ; 
- int /*<<< orphan*/  NB_READ ; 
- int /*<<< orphan*/  NFS_BUF_MAP (struct nfsbuf*) ; 
- int /*<<< orphan*/  OSAddAtomic64 (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * current_thread () ; 
- int /*<<< orphan*/  kauth_cred_ref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kauth_cred_unref (int /*<<< orphan*/ *) ; 
- int nfs_buf_read_rpc (struct nfsbuf*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_1__ nfsstats ; 
- int /*<<< orphan*/  panic (char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int * thread_t ;
+struct nfsbuf {int nb_flags; int nb_rcred; int nb_np; } ;
+typedef int nfsnode_t ;
+typedef int kauth_cred_t ;
+struct TYPE_2__ {int read_bios; } ;
+
+
+ int CLR (int ,int ) ;
+ scalar_t__ ISSET (int ,int ) ;
+ scalar_t__ IS_VALID_CRED (int ) ;
+ int NB_ASYNC ;
+ int NB_DONE ;
+ int NB_READ ;
+ int NFS_BUF_MAP (struct nfsbuf*) ;
+ int OSAddAtomic64 (int,int *) ;
+ int * current_thread () ;
+ int kauth_cred_ref (int ) ;
+ int kauth_cred_unref (int *) ;
+ int nfs_buf_read_rpc (struct nfsbuf*,int *,int ) ;
+ TYPE_1__ nfsstats ;
+ int panic (char*) ;
 
 int
 nfs_buf_read(struct nfsbuf *bp)
 {
-	int error = 0;
-	nfsnode_t np;
-	thread_t thd;
-	kauth_cred_t cred;
+ int error = 0;
+ nfsnode_t np;
+ thread_t thd;
+ kauth_cred_t cred;
 
-	np = bp->nb_np;
-	cred = bp->nb_rcred;
-	if (IS_VALID_CRED(cred))
-		kauth_cred_ref(cred);
-	thd = ISSET(bp->nb_flags, NB_ASYNC) ? NULL : current_thread();
+ np = bp->nb_np;
+ cred = bp->nb_rcred;
+ if (IS_VALID_CRED(cred))
+  kauth_cred_ref(cred);
+ thd = ISSET(bp->nb_flags, NB_ASYNC) ? ((void*)0) : current_thread();
 
-	/* sanity checks */
-	if (!ISSET(bp->nb_flags, NB_READ))
-		panic("nfs_buf_read: !NB_READ");
-	if (ISSET(bp->nb_flags, NB_DONE))
-		CLR(bp->nb_flags, NB_DONE);
 
-	NFS_BUF_MAP(bp);
+ if (!ISSET(bp->nb_flags, NB_READ))
+  panic("nfs_buf_read: !NB_READ");
+ if (ISSET(bp->nb_flags, NB_DONE))
+  CLR(bp->nb_flags, NB_DONE);
 
-	OSAddAtomic64(1, &nfsstats.read_bios);
+ NFS_BUF_MAP(bp);
 
-	error = nfs_buf_read_rpc(bp, thd, cred);
-	/*
-	 * For async I/O, the callbacks will finish up the
-	 * read.  Otherwise, the read has already been finished.
-	 */
+ OSAddAtomic64(1, &nfsstats.read_bios);
 
-	if (IS_VALID_CRED(cred))
-		kauth_cred_unref(&cred);
-	return (error);
+ error = nfs_buf_read_rpc(bp, thd, cred);
+
+
+
+
+
+ if (IS_VALID_CRED(cred))
+  kauth_cred_unref(&cred);
+ return (error);
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  Env ;
-typedef  int /*<<< orphan*/  Data ;
-typedef  int DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int CloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetCurrentProcess () ; 
- int GetEnvironmentVariableA (char*,char*,int) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  TOKEN_QUERY ; 
- int /*<<< orphan*/  ok (int,char*,char*,...) ; 
- int pGetUserProfileDirectoryA (int /*<<< orphan*/ ,char*,int*) ; 
- int pOpenProcessToken (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip (char*) ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+
+
+typedef int HANDLE ;
+typedef int Env ;
+typedef int Data ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int CloseHandle (int ) ;
+ int GetCurrentProcess () ;
+ int GetEnvironmentVariableA (char*,char*,int) ;
+ int GetLastError () ;
+ int TOKEN_QUERY ;
+ int ok (int,char*,char*,...) ;
+ int pGetUserProfileDirectoryA (int ,char*,int*) ;
+ int pOpenProcessToken (int ,int ,int *) ;
+ int skip (char*) ;
+ scalar_t__ strcmp (char*,char*) ;
 
 __attribute__((used)) static void test_Predefined(void)
 {
@@ -37,11 +37,11 @@ __attribute__((used)) static void test_Predefined(void)
     HANDLE Token;
     BOOL NoErr;
 
-    /*
-     * Check value of %USERPROFILE%, should be same as GetUserProfileDirectory()
-     * If this fails, your test environment is probably not set up
-     */
-    if (pOpenProcessToken == NULL || pGetUserProfileDirectoryA == NULL)
+
+
+
+
+    if (pOpenProcessToken == ((void*)0) || pGetUserProfileDirectoryA == ((void*)0))
     {
         skip("Skipping USERPROFILE check\n");
         return;

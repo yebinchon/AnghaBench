@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct section {int flags; int name; scalar_t__ id; } ;
 struct TYPE_7__ {size_t level; int nb_section_packet_frame; int* nb_item; struct section** section; TYPE_3__* section_pbuf; TYPE_2__* priv; } ;
-typedef  TYPE_1__ WriterContext ;
-struct TYPE_9__ {int /*<<< orphan*/  str; } ;
-struct TYPE_8__ {int /*<<< orphan*/  sep_str; scalar_t__ hierarchical; } ;
-typedef  TYPE_2__ FlatContext ;
-typedef  TYPE_3__ AVBPrint ;
+typedef TYPE_1__ WriterContext ;
+struct TYPE_9__ {int str; } ;
+struct TYPE_8__ {int sep_str; scalar_t__ hierarchical; } ;
+typedef TYPE_2__ FlatContext ;
+typedef TYPE_3__ AVBPrint ;
 
-/* Variables and functions */
- int SECTION_FLAG_IS_ARRAY ; 
- int SECTION_FLAG_IS_WRAPPER ; 
- scalar_t__ SECTION_ID_PACKETS_AND_FRAMES ; 
- int /*<<< orphan*/  av_bprint_clear (TYPE_3__*) ; 
- int /*<<< orphan*/  av_bprintf (TYPE_3__*,char*,int,...) ; 
+
+ int SECTION_FLAG_IS_ARRAY ;
+ int SECTION_FLAG_IS_WRAPPER ;
+ scalar_t__ SECTION_ID_PACKETS_AND_FRAMES ;
+ int av_bprint_clear (TYPE_3__*) ;
+ int av_bprintf (TYPE_3__*,char*,int,...) ;
 
 __attribute__((used)) static void flat_print_section_header(WriterContext *wctx)
 {
@@ -34,9 +34,9 @@ __attribute__((used)) static void flat_print_section_header(WriterContext *wctx)
     AVBPrint *buf = &wctx->section_pbuf[wctx->level];
     const struct section *section = wctx->section[wctx->level];
     const struct section *parent_section = wctx->level ?
-        wctx->section[wctx->level-1] : NULL;
+        wctx->section[wctx->level-1] : ((void*)0);
 
-    /* build section header */
+
     av_bprint_clear(buf);
     if (!parent_section)
         return;

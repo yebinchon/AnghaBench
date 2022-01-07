@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_9__ ;
-typedef  struct TYPE_23__   TYPE_8__ ;
-typedef  struct TYPE_22__   TYPE_7__ ;
-typedef  struct TYPE_21__   TYPE_6__ ;
-typedef  struct TYPE_20__   TYPE_5__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
-typedef  struct TYPE_15__   TYPE_12__ ;
-typedef  struct TYPE_14__   TYPE_11__ ;
-typedef  struct TYPE_13__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  unsigned int uint16_t ;
+
+
+typedef struct TYPE_24__ TYPE_9__ ;
+typedef struct TYPE_23__ TYPE_8__ ;
+typedef struct TYPE_22__ TYPE_7__ ;
+typedef struct TYPE_21__ TYPE_6__ ;
+typedef struct TYPE_20__ TYPE_5__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+typedef struct TYPE_15__ TYPE_12__ ;
+typedef struct TYPE_14__ TYPE_11__ ;
+typedef struct TYPE_13__ TYPE_10__ ;
+
+
+typedef unsigned int uint16_t ;
 struct TYPE_24__ {TYPE_8__* buttons; } ;
 struct TYPE_23__ {unsigned int half_transition_count; unsigned int ended_down; } ;
 struct TYPE_22__ {unsigned int u; } ;
@@ -32,17 +32,17 @@ struct TYPE_19__ {unsigned int u; } ;
 struct TYPE_18__ {unsigned int u; } ;
 struct TYPE_17__ {unsigned int u; } ;
 struct TYPE_16__ {unsigned int u; } ;
-struct TYPE_15__ {unsigned int version; unsigned int player1_score; unsigned int player2_score; unsigned int is_initialized; unsigned int player2_human; TYPE_11__* player; TYPE_9__* g_input; int /*<<< orphan*/ * previnput; TYPE_7__ current_play_points; TYPE_6__ ball_speed; TYPE_5__ ball_dpy; TYPE_4__ ball_dpx; TYPE_3__ ball_py; TYPE_2__ ball_px; TYPE_1__ player2_speed; } ;
-struct TYPE_13__ {int /*<<< orphan*/  u; } ;
+struct TYPE_15__ {unsigned int version; unsigned int player1_score; unsigned int player2_score; unsigned int is_initialized; unsigned int player2_human; TYPE_11__* player; TYPE_9__* g_input; int * previnput; TYPE_7__ current_play_points; TYPE_6__ ball_speed; TYPE_5__ ball_dpy; TYPE_4__ ball_dpx; TYPE_3__ ball_py; TYPE_2__ ball_px; TYPE_1__ player2_speed; } ;
+struct TYPE_13__ {int u; } ;
 struct TYPE_14__ {TYPE_10__ py; } ;
 
-/* Variables and functions */
- int B_COUNT ; 
- int MAX_PLAYERS ; 
- TYPE_12__* g_state ; 
- int /*<<< orphan*/  memcpy (unsigned char*,...) ; 
- unsigned int swap_if_little16 (int /*<<< orphan*/ ) ; 
- void* swap_if_little32 (unsigned int) ; 
+
+ int B_COUNT ;
+ int MAX_PLAYERS ;
+ TYPE_12__* g_state ;
+ int memcpy (unsigned char*,...) ;
+ unsigned int swap_if_little16 (int ) ;
+ void* swap_if_little32 (unsigned int) ;
 
 __attribute__((used)) static void save_state(void *data, size_t size)
 {
@@ -100,7 +100,7 @@ __attribute__((used)) static void save_state(void *data, size_t size)
    memcpy(buf, &player2_human, sizeof(unsigned));
    buf += sizeof(unsigned);
 
-   /* previnput */
+
    for (i = 0; i < MAX_PLAYERS; i++)
    {
       uint16_t previnput = swap_if_little16(g_state->previnput[i]);
@@ -108,7 +108,7 @@ __attribute__((used)) static void save_state(void *data, size_t size)
       buf += sizeof(uint16_t);
    }
 
-   /* g_input */
+
    for (i = 0; i < MAX_PLAYERS; i++)
    {
       for (j = 0; j < B_COUNT; j++)
@@ -124,11 +124,11 @@ __attribute__((used)) static void save_state(void *data, size_t size)
       }
    }
 
-   /* player */
+
    for (i = 0; i < MAX_PLAYERS; i++)
    {
       unsigned py = swap_if_little32((unsigned)g_state->player[i].py.u);
-       
+
       memcpy(buf, &py, sizeof(unsigned));
       buf += sizeof(uint16_t);
    }

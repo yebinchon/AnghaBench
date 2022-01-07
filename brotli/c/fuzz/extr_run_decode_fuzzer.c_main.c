@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- int /*<<< orphan*/  LLVMFuzzerTestOneInput (unsigned char*,size_t) ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ ferror (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- size_t fread (unsigned char*,int,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- scalar_t__ malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,size_t) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int FILE ;
+
+
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int LLVMFuzzerTestOneInput (unsigned char*,size_t) ;
+ int exit (int ) ;
+ int fclose (int *) ;
+ scalar_t__ ferror (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*) ;
+ size_t fread (unsigned char*,int,size_t,int *) ;
+ int free (unsigned char*) ;
+ scalar_t__ malloc (size_t) ;
+ int memcpy (unsigned char*,unsigned char*,size_t) ;
+ int stderr ;
 
 int main(int argc, char* *argv) {
   if (argc != 2) {
@@ -47,7 +47,7 @@ int main(int argc, char* *argv) {
     fprintf(stderr, "Failed read input file.");
     exit(EXIT_FAILURE);
   }
-  /* Make data after the end "inaccessible". */
+
   unsigned char* data = (unsigned char*)malloc(len);
   memcpy(data, tmp, len);
   free(tmp);

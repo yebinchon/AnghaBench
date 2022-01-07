@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int F4 ;
+ int setPinOutput (int ) ;
+ int writePinLow (int ) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  F4 ; 
- int /*<<< orphan*/  setPinOutput (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  writePinLow (int /*<<< orphan*/ ) ; 
-
-inline void gh60_poker_leds_on(void)    { setPinOutput(F4); writePinLow(F4); }
+inline void gh60_poker_leds_on(void) { setPinOutput(F4); writePinLow(F4); }

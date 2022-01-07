@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  bus_space_handle_t ;
-typedef  int /*<<< orphan*/  bus_size_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * __ppc_ba (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  powerpc_iomb () ; 
+
+
+
+typedef int uint8_t ;
+typedef int bus_space_handle_t ;
+typedef int bus_size_t ;
+
+
+ int * __ppc_ba (int ,int ) ;
+ int powerpc_iomb () ;
 
 __attribute__((used)) static void
 bs_be_wr_1(bus_space_handle_t bsh, bus_size_t ofs, const uint8_t *addr,
     size_t cnt)
 {
-	volatile uint8_t *d = __ppc_ba(bsh, ofs);
+ volatile uint8_t *d = __ppc_ba(bsh, ofs);
 
-	while (cnt--)
-		*d++ = *addr++;
-	powerpc_iomb();
+ while (cnt--)
+  *d++ = *addr++;
+ powerpc_iomb();
 }

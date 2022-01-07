@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bfd ;
-struct TYPE_6__ {int /*<<< orphan*/  r_addend; int /*<<< orphan*/  r_type; int /*<<< orphan*/  r_type2; int /*<<< orphan*/  r_type3; int /*<<< orphan*/  r_ssym; int /*<<< orphan*/  r_sym; int /*<<< orphan*/  r_offset; } ;
-struct TYPE_5__ {int /*<<< orphan*/  r_addend; int /*<<< orphan*/  r_type; int /*<<< orphan*/  r_type2; int /*<<< orphan*/  r_type3; int /*<<< orphan*/  r_ssym; int /*<<< orphan*/  r_sym; int /*<<< orphan*/  r_offset; } ;
-typedef  TYPE_1__ Elf64_Mips_Internal_Rela ;
-typedef  TYPE_2__ Elf64_Mips_External_Rela ;
 
-/* Variables and functions */
- int /*<<< orphan*/  H_PUT_32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  H_PUT_64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  H_PUT_8 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  H_PUT_S64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int bfd ;
+struct TYPE_6__ {int r_addend; int r_type; int r_type2; int r_type3; int r_ssym; int r_sym; int r_offset; } ;
+struct TYPE_5__ {int r_addend; int r_type; int r_type2; int r_type3; int r_ssym; int r_sym; int r_offset; } ;
+typedef TYPE_1__ Elf64_Mips_Internal_Rela ;
+typedef TYPE_2__ Elf64_Mips_External_Rela ;
+
+
+ int H_PUT_32 (int *,int ,int ) ;
+ int H_PUT_64 (int *,int ,int ) ;
+ int H_PUT_8 (int *,int ,int ) ;
+ int H_PUT_S64 (int *,int ,int ) ;
 
 __attribute__((used)) static void
 mips_elf64_swap_reloca_out (bfd *abfd, const Elf64_Mips_Internal_Rela *src,
-			    Elf64_Mips_External_Rela *dst)
+       Elf64_Mips_External_Rela *dst)
 {
   H_PUT_64 (abfd, src->r_offset, dst->r_offset);
   H_PUT_32 (abfd, src->r_sym, dst->r_sym);

@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
 struct nig_stats {scalar_t__ brb_truncate; scalar_t__ brb_discard; } ;
 struct mac_stx {int dummy; } ;
-struct host_port_stats {int /*<<< orphan*/  host_port_stats_counter; int /*<<< orphan*/  brb_drop_lo; int /*<<< orphan*/  brb_drop_hi; struct nig_stats* mac_stx; } ;
+struct host_port_stats {int host_port_stats_counter; int brb_drop_lo; int brb_drop_hi; struct nig_stats* mac_stx; } ;
 struct TYPE_5__ {int mac_type; } ;
-struct bxe_eth_stats {scalar_t__ nig_timer_max; int /*<<< orphan*/  eee_tx_lpi; int /*<<< orphan*/  brb_drop_lo; int /*<<< orphan*/  brb_drop_hi; struct nig_stats rx_stat_ifhcinbadoctets_hi; int /*<<< orphan*/  brb_truncate_lo; int /*<<< orphan*/  brb_truncate_hi; } ;
+struct bxe_eth_stats {scalar_t__ nig_timer_max; int eee_tx_lpi; int brb_drop_lo; int brb_drop_hi; struct nig_stats rx_stat_ifhcinbadoctets_hi; int brb_truncate_lo; int brb_truncate_hi; } ;
 struct TYPE_4__ {struct nig_stats old_nig_stats; } ;
 struct bxe_softc {TYPE_2__ link_vars; struct bxe_eth_stats eth_stats; TYPE_1__ port; } ;
-struct TYPE_6__ {int /*<<< orphan*/  stat_nig_timer; } ;
+struct TYPE_6__ {int stat_nig_timer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD_EXTEND_64 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  BLOGD (struct bxe_softc*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  BLOGE (struct bxe_softc*,char*,...) ; 
- int /*<<< orphan*/  BXE_NOMCP (struct bxe_softc*) ; 
- void* BXE_SP (struct bxe_softc*,int /*<<< orphan*/ ) ; 
- scalar_t__ CHIP_IS_E3 (struct bxe_softc*) ; 
- int /*<<< orphan*/  DBG_STATS ; 
-#define  ELINK_MAC_TYPE_BMAC 132 
-#define  ELINK_MAC_TYPE_EMAC 131 
-#define  ELINK_MAC_TYPE_NONE 130 
-#define  ELINK_MAC_TYPE_UMAC 129 
-#define  ELINK_MAC_TYPE_XMAC 128 
- scalar_t__ MISC_REG_CPMU_LP_SM_ENT_CNT_P0 ; 
- scalar_t__ MISC_REG_CPMU_LP_SM_ENT_CNT_P1 ; 
- scalar_t__ REG_RD (struct bxe_softc*,scalar_t__) ; 
- size_t SC_PORT (struct bxe_softc*) ; 
- scalar_t__ SHMEM_RD (struct bxe_softc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UPDATE_STAT64_NIG (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bxe_bmac_stats_update (struct bxe_softc*) ; 
- int /*<<< orphan*/  bxe_emac_stats_update (struct bxe_softc*) ; 
- int /*<<< orphan*/  bxe_mstat_stats_update (struct bxe_softc*) ; 
- int /*<<< orphan*/  egress_mac_pkt0 ; 
- int /*<<< orphan*/  egress_mac_pkt1 ; 
- int /*<<< orphan*/  etherstatspkts1024octetsto1522octets ; 
- int /*<<< orphan*/  etherstatspktsover1522octets ; 
- int /*<<< orphan*/  memcpy (struct nig_stats*,struct nig_stats*,int) ; 
- int /*<<< orphan*/  nig_stats ; 
- TYPE_3__* port_mb ; 
- int /*<<< orphan*/  port_stats ; 
+
+ int ADD_EXTEND_64 (int ,int ,scalar_t__) ;
+ int BLOGD (struct bxe_softc*,int ,char*) ;
+ int BLOGE (struct bxe_softc*,char*,...) ;
+ int BXE_NOMCP (struct bxe_softc*) ;
+ void* BXE_SP (struct bxe_softc*,int ) ;
+ scalar_t__ CHIP_IS_E3 (struct bxe_softc*) ;
+ int DBG_STATS ;
+
+
+
+
+
+ scalar_t__ MISC_REG_CPMU_LP_SM_ENT_CNT_P0 ;
+ scalar_t__ MISC_REG_CPMU_LP_SM_ENT_CNT_P1 ;
+ scalar_t__ REG_RD (struct bxe_softc*,scalar_t__) ;
+ size_t SC_PORT (struct bxe_softc*) ;
+ scalar_t__ SHMEM_RD (struct bxe_softc*,int ) ;
+ int UPDATE_STAT64_NIG (int ,int ) ;
+ int bxe_bmac_stats_update (struct bxe_softc*) ;
+ int bxe_emac_stats_update (struct bxe_softc*) ;
+ int bxe_mstat_stats_update (struct bxe_softc*) ;
+ int egress_mac_pkt0 ;
+ int egress_mac_pkt1 ;
+ int etherstatspkts1024octetsto1522octets ;
+ int etherstatspktsover1522octets ;
+ int memcpy (struct nig_stats*,struct nig_stats*,int) ;
+ int nig_stats ;
+ TYPE_3__* port_mb ;
+ int port_stats ;
 
 __attribute__((used)) static int
 bxe_hw_stats_update(struct bxe_softc *sc)
@@ -68,25 +68,25 @@ bxe_hw_stats_update(struct bxe_softc *sc)
     } diff;
 
     switch (sc->link_vars.mac_type) {
-    case ELINK_MAC_TYPE_BMAC:
+    case 132:
         bxe_bmac_stats_update(sc);
         break;
 
-    case ELINK_MAC_TYPE_EMAC:
+    case 131:
         bxe_emac_stats_update(sc);
         break;
 
-    case ELINK_MAC_TYPE_UMAC:
-    case ELINK_MAC_TYPE_XMAC:
+    case 129:
+    case 128:
         bxe_mstat_stats_update(sc);
         break;
 
-    case ELINK_MAC_TYPE_NONE: /* unreached */
+    case 130:
         BLOGD(sc, DBG_STATS,
               "stats updated by DMAE but no MAC active\n");
         return (-1);
 
-    default: /* unreached */
+    default:
         BLOGE(sc, "stats update failed, unknown MAC type\n");
     }
 
@@ -122,7 +122,7 @@ bxe_hw_stats_update(struct bxe_softc *sc)
         nig_timer_max = SHMEM_RD(sc, port_mb[SC_PORT(sc)].stat_nig_timer);
         if (nig_timer_max != estats->nig_timer_max) {
             estats->nig_timer_max = nig_timer_max;
-	    /*NOTE: not setting error bit */
+
             BLOGE(sc, "invalid NIG timer max (%u)\n",
                   estats->nig_timer_max);
         }

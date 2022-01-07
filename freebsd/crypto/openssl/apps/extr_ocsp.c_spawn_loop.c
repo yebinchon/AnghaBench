@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ pid_t ;
 
-/* Variables and functions */
- scalar_t__ EINTR ; 
- int /*<<< orphan*/  LOG_DAEMON ; 
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  LOG_INFO ; 
- int /*<<< orphan*/  LOG_PID ; 
- int /*<<< orphan*/  LOG_WARNING ; 
- int /*<<< orphan*/  OPENSSL_free (scalar_t__*) ; 
- int /*<<< orphan*/  RAND_poll () ; 
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  SIGTERM ; 
- int /*<<< orphan*/  SIG_DFL ; 
- scalar_t__ WCOREDUMP (int) ; 
- int /*<<< orphan*/  WEXITSTATUS (int) ; 
- scalar_t__ WIFEXITED (int) ; 
- scalar_t__ WIFSIGNALED (int) ; 
- int /*<<< orphan*/  WTERMSIG (int) ; 
- int /*<<< orphan*/  _exit (int) ; 
- scalar_t__* app_malloc (int,char*) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__ fork () ; 
- int /*<<< orphan*/  killall (int,scalar_t__*) ; 
- int multi ; 
- int /*<<< orphan*/  noteterm ; 
- int /*<<< orphan*/  openlog (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  prog ; 
- scalar_t__ setpgid (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sleep (int) ; 
- long strerror (scalar_t__) ; 
- int /*<<< orphan*/  syslog (int /*<<< orphan*/ ,char*,...) ; 
- long termsig ; 
- scalar_t__ waitpid (int,int*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ pid_t ;
+
+
+ scalar_t__ EINTR ;
+ int LOG_DAEMON ;
+ int LOG_ERR ;
+ int LOG_INFO ;
+ int LOG_PID ;
+ int LOG_WARNING ;
+ int OPENSSL_free (scalar_t__*) ;
+ int RAND_poll () ;
+ int SIGINT ;
+ int SIGTERM ;
+ int SIG_DFL ;
+ scalar_t__ WCOREDUMP (int) ;
+ int WEXITSTATUS (int) ;
+ scalar_t__ WIFEXITED (int) ;
+ scalar_t__ WIFSIGNALED (int) ;
+ int WTERMSIG (int) ;
+ int _exit (int) ;
+ scalar_t__* app_malloc (int,char*) ;
+ scalar_t__ errno ;
+ int exit (int) ;
+ scalar_t__ fork () ;
+ int killall (int,scalar_t__*) ;
+ int multi ;
+ int noteterm ;
+ int openlog (int ,int ,int ) ;
+ int prog ;
+ scalar_t__ setpgid (int ,int ) ;
+ int signal (int ,int ) ;
+ int sleep (int) ;
+ long strerror (scalar_t__) ;
+ int syslog (int ,char*,...) ;
+ long termsig ;
+ scalar_t__ waitpid (int,int*,int ) ;
 
 __attribute__((used)) static void spawn_loop(void)
 {
-    pid_t *kidpids = NULL;
+    pid_t *kidpids = ((void*)0);
     int status;
     int procs = 0;
     int i;
@@ -71,10 +71,10 @@ __attribute__((used)) static void spawn_loop(void)
     while (termsig == 0) {
         pid_t fpid;
 
-        /*
-         * Wait for a child to replace when we're at the limit.
-         * Slow down if a child exited abnormally or waitpid() < 0
-         */
+
+
+
+
         while (termsig == 0 && procs >= multi) {
             if ((fpid = waitpid(-1, &status, 0)) > 0) {
                 for (i = 0; i < procs; ++i) {
@@ -97,9 +97,9 @@ __attribute__((used)) static void spawn_loop(void)
                     else if (WIFSIGNALED(status))
                         syslog(LOG_WARNING, "child process: %ld, term signal %d%s",
                                (long)fpid, WTERMSIG(status),
-#ifdef WCOREDUMP
-                               WCOREDUMP(status) ? " (core dumped)" :
-#endif
+
+
+
                                "");
                     sleep(1);
                 }
@@ -113,11 +113,11 @@ __attribute__((used)) static void spawn_loop(void)
             break;
 
         switch(fpid = fork()) {
-        case -1:            /* error */
-            /* System critically low on memory, pause and try again later */
+        case -1:
+
             sleep(30);
             break;
-        case 0:             /* child */
+        case 0:
             OPENSSL_free(kidpids);
             signal(SIGINT, SIG_DFL);
             signal(SIGTERM, SIG_DFL);
@@ -128,7 +128,7 @@ __attribute__((used)) static void spawn_loop(void)
                 _exit(1);
             }
             return;
-        default:            /* parent */
+        default:
             for (i = 0; i < multi; ++i) {
                 if (kidpids[i] == 0) {
                     kidpids[i] = fpid;
@@ -144,7 +144,7 @@ __attribute__((used)) static void spawn_loop(void)
         }
     }
 
-    /* The loop above can only break on termsig */
+
     syslog(LOG_INFO, "terminating on signal: %d", termsig);
     killall(0, kidpids);
 }

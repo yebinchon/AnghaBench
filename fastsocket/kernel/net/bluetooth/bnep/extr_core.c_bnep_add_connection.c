@@ -1,138 +1,127 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ulong ;
-typedef  int /*<<< orphan*/  u8 ;
-struct socket {int /*<<< orphan*/  sk; } ;
-struct net_device {int /*<<< orphan*/  name; int /*<<< orphan*/  broadcast; int /*<<< orphan*/ ** dev_addr; } ;
-struct TYPE_5__ {int /*<<< orphan*/  msg_flags; } ;
-struct TYPE_4__ {int /*<<< orphan*/ ** h_dest; int /*<<< orphan*/ ** h_source; } ;
-struct bnep_session {scalar_t__ state; int /*<<< orphan*/  mc_filter; TYPE_2__ msg; int /*<<< orphan*/  role; struct socket* sock; struct net_device* dev; TYPE_1__ eh; } ;
-struct bnep_connadd_req {char* device; int /*<<< orphan*/  role; } ;
-struct TYPE_6__ {int /*<<< orphan*/  src; int /*<<< orphan*/  dst; } ;
 
-/* Variables and functions */
- scalar_t__ BT_CONNECTED ; 
- int /*<<< orphan*/  BT_DBG (char*) ; 
- int /*<<< orphan*/  CLONE_KERNEL ; 
- int EEXIST ; 
- int ENOMEM ; 
- int ETH_ALEN ; 
- int /*<<< orphan*/  MSG_NOSIGNAL ; 
- int /*<<< orphan*/  SET_NETDEV_DEV (struct net_device*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SET_NETDEV_DEVTYPE (struct net_device*,int /*<<< orphan*/ *) ; 
- struct bnep_session* __bnep_get_session (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  __bnep_link_session (struct bnep_session*) ; 
- int /*<<< orphan*/  __bnep_unlink_session (struct bnep_session*) ; 
- struct net_device* alloc_netdev (int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  baswap (void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bnep_get_device (struct bnep_session*) ; 
- int /*<<< orphan*/  bnep_mc_hash (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bnep_net_setup ; 
- int /*<<< orphan*/  bnep_session ; 
- int /*<<< orphan*/  bnep_session_sem ; 
- int /*<<< orphan*/  bnep_set_default_proto_filter (struct bnep_session*) ; 
- int /*<<< orphan*/  bnep_type ; 
- TYPE_3__* bt_sk (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  down_write (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_netdev (struct net_device*) ; 
- int kernel_thread (int /*<<< orphan*/ ,struct bnep_session*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ **,int /*<<< orphan*/ **,int) ; 
- struct bnep_session* netdev_priv (struct net_device*) ; 
- int register_netdev (struct net_device*) ; 
- int /*<<< orphan*/  set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcpy (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unregister_netdev (struct net_device*) ; 
- int /*<<< orphan*/  up_write (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int ulong ;
+typedef int u8 ;
+struct socket {int sk; } ;
+struct net_device {int name; int broadcast; int ** dev_addr; } ;
+struct TYPE_5__ {int msg_flags; } ;
+struct TYPE_4__ {int ** h_dest; int ** h_source; } ;
+struct bnep_session {scalar_t__ state; int mc_filter; TYPE_2__ msg; int role; struct socket* sock; struct net_device* dev; TYPE_1__ eh; } ;
+struct bnep_connadd_req {char* device; int role; } ;
+struct TYPE_6__ {int src; int dst; } ;
+
+
+ scalar_t__ BT_CONNECTED ;
+ int BT_DBG (char*) ;
+ int CLONE_KERNEL ;
+ int EEXIST ;
+ int ENOMEM ;
+ int ETH_ALEN ;
+ int MSG_NOSIGNAL ;
+ int SET_NETDEV_DEV (struct net_device*,int ) ;
+ int SET_NETDEV_DEVTYPE (struct net_device*,int *) ;
+ struct bnep_session* __bnep_get_session (int *) ;
+ int __bnep_link_session (struct bnep_session*) ;
+ int __bnep_unlink_session (struct bnep_session*) ;
+ struct net_device* alloc_netdev (int,char*,int ) ;
+ int baswap (void*,int *) ;
+ int bnep_get_device (struct bnep_session*) ;
+ int bnep_mc_hash (int ) ;
+ int bnep_net_setup ;
+ int bnep_session ;
+ int bnep_session_sem ;
+ int bnep_set_default_proto_filter (struct bnep_session*) ;
+ int bnep_type ;
+ TYPE_3__* bt_sk (int ) ;
+ int down_write (int *) ;
+ int free_netdev (struct net_device*) ;
+ int kernel_thread (int ,struct bnep_session*,int ) ;
+ int memcpy (int **,int **,int) ;
+ struct bnep_session* netdev_priv (struct net_device*) ;
+ int register_netdev (struct net_device*) ;
+ int set_bit (int ,int *) ;
+ int strcpy (char*,int ) ;
+ int unregister_netdev (struct net_device*) ;
+ int up_write (int *) ;
 
 int bnep_add_connection(struct bnep_connadd_req *req, struct socket *sock)
 {
-	struct net_device *dev;
-	struct bnep_session *s, *ss;
-	u8 dst[ETH_ALEN], src[ETH_ALEN];
-	int err;
+ struct net_device *dev;
+ struct bnep_session *s, *ss;
+ u8 dst[ETH_ALEN], src[ETH_ALEN];
+ int err;
 
-	BT_DBG("");
+ BT_DBG("");
 
-	baswap((void *) dst, &bt_sk(sock->sk)->dst);
-	baswap((void *) src, &bt_sk(sock->sk)->src);
+ baswap((void *) dst, &bt_sk(sock->sk)->dst);
+ baswap((void *) src, &bt_sk(sock->sk)->src);
 
-	/* session struct allocated as private part of net_device */
-	dev = alloc_netdev(sizeof(struct bnep_session),
-			   (*req->device) ? req->device : "bnep%d",
-			   bnep_net_setup);
-	if (!dev)
-		return -ENOMEM;
 
-	down_write(&bnep_session_sem);
+ dev = alloc_netdev(sizeof(struct bnep_session),
+      (*req->device) ? req->device : "bnep%d",
+      bnep_net_setup);
+ if (!dev)
+  return -ENOMEM;
 
-	ss = __bnep_get_session(dst);
-	if (ss && ss->state == BT_CONNECTED) {
-		err = -EEXIST;
-		goto failed;
-	}
+ down_write(&bnep_session_sem);
 
-	s = netdev_priv(dev);
+ ss = __bnep_get_session(dst);
+ if (ss && ss->state == BT_CONNECTED) {
+  err = -EEXIST;
+  goto failed;
+ }
 
-	/* This is rx header therefore addresses are swapped.
-	 * ie eh.h_dest is our local address. */
-	memcpy(s->eh.h_dest,   &src, ETH_ALEN);
-	memcpy(s->eh.h_source, &dst, ETH_ALEN);
-	memcpy(dev->dev_addr, s->eh.h_dest, ETH_ALEN);
+ s = netdev_priv(dev);
 
-	s->dev   = dev;
-	s->sock  = sock;
-	s->role  = req->role;
-	s->state = BT_CONNECTED;
 
-	s->msg.msg_flags = MSG_NOSIGNAL;
 
-#ifdef CONFIG_BT_BNEP_MC_FILTER
-	/* Set default mc filter */
-	set_bit(bnep_mc_hash(dev->broadcast), (ulong *) &s->mc_filter);
-#endif
+ memcpy(s->eh.h_dest, &src, ETH_ALEN);
+ memcpy(s->eh.h_source, &dst, ETH_ALEN);
+ memcpy(dev->dev_addr, s->eh.h_dest, ETH_ALEN);
 
-#ifdef CONFIG_BT_BNEP_PROTO_FILTER
-	/* Set default protocol filter */
-	bnep_set_default_proto_filter(s);
-#endif
+ s->dev = dev;
+ s->sock = sock;
+ s->role = req->role;
+ s->state = BT_CONNECTED;
 
-	SET_NETDEV_DEV(dev, bnep_get_device(s));
-	SET_NETDEV_DEVTYPE(dev, &bnep_type);
+ s->msg.msg_flags = MSG_NOSIGNAL;
+ SET_NETDEV_DEV(dev, bnep_get_device(s));
+ SET_NETDEV_DEVTYPE(dev, &bnep_type);
 
-	err = register_netdev(dev);
-	if (err) {
-		goto failed;
-	}
+ err = register_netdev(dev);
+ if (err) {
+  goto failed;
+ }
 
-	__bnep_link_session(s);
+ __bnep_link_session(s);
 
-	err = kernel_thread(bnep_session, s, CLONE_KERNEL);
-	if (err < 0) {
-		/* Session thread start failed, gotta cleanup. */
-		unregister_netdev(dev);
-		__bnep_unlink_session(s);
-		goto failed;
-	}
+ err = kernel_thread(bnep_session, s, CLONE_KERNEL);
+ if (err < 0) {
 
-	up_write(&bnep_session_sem);
-	strcpy(req->device, dev->name);
-	return 0;
+  unregister_netdev(dev);
+  __bnep_unlink_session(s);
+  goto failed;
+ }
+
+ up_write(&bnep_session_sem);
+ strcpy(req->device, dev->name);
+ return 0;
 
 failed:
-	up_write(&bnep_session_sem);
-	free_netdev(dev);
-	return err;
+ up_write(&bnep_session_sem);
+ free_netdev(dev);
+ return err;
 }

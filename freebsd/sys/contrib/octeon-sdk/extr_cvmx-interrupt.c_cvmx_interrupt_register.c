@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cvmx_interrupt_func_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int cvmx_interrupt_func_t ;
 struct TYPE_4__ {TYPE_1__* handlers; } ;
-struct TYPE_3__ {void* data; int /*<<< orphan*/  handler; } ;
+struct TYPE_3__ {void* data; int handler; } ;
 
-/* Variables and functions */
- int CVMX_IRQ_MAX ; 
- int /*<<< orphan*/  CVMX_SYNCWS ; 
- TYPE_2__ cvmx_interrupt_state ; 
- int /*<<< orphan*/  cvmx_warn (char*,int) ; 
+
+ int CVMX_IRQ_MAX ;
+ int CVMX_SYNCWS ;
+ TYPE_2__ cvmx_interrupt_state ;
+ int cvmx_warn (char*,int) ;
 
 void cvmx_interrupt_register(int irq_number, cvmx_interrupt_func_t func, void *user_arg)
 {

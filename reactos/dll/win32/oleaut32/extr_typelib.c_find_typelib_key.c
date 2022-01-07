@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  typelibW ;
-typedef  int /*<<< orphan*/  key_name ;
-typedef  int WORD ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  REFGUID ;
-typedef  scalar_t__ INT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  HKEY_CLASSES_ROOT ; 
- int /*<<< orphan*/  KEY_READ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegEnumKeyExA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  StringFromGUID2 (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__,scalar_t__,...) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  debugstr_w (char*) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int sscanf (char*,char*,scalar_t__*,scalar_t__*) ; 
- int strlenW (char*) ; 
+
+
+
+typedef int typelibW ;
+typedef int key_name ;
+typedef int WORD ;
+typedef char WCHAR ;
+typedef int REFGUID ;
+typedef scalar_t__ INT ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int HKEY_CLASSES_ROOT ;
+ int KEY_READ ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegEnumKeyExA (int ,int ,char*,int*,int *,int *,int *,int *) ;
+ scalar_t__ RegOpenKeyExW (int ,char*,int ,int ,int *) ;
+ int StringFromGUID2 (int ,char*,int) ;
+ int TRACE (char*,scalar_t__,scalar_t__,...) ;
+ int TRUE ;
+ int debugstr_w (char*) ;
+ int memcpy (char*,char const*,int) ;
+ int sscanf (char*,char*,scalar_t__*,scalar_t__*) ;
+ int strlenW (char*) ;
 
 __attribute__((used)) static BOOL find_typelib_key( REFGUID guid, WORD *wMaj, WORD *wMin )
 {
@@ -53,7 +53,7 @@ __attribute__((used)) static BOOL find_typelib_key( REFGUID guid, WORD *wMaj, WO
 
     len = sizeof(key_name);
     i = 0;
-    while (RegEnumKeyExA(hkey, i++, key_name, &len, NULL, NULL, NULL, NULL) == ERROR_SUCCESS)
+    while (RegEnumKeyExA(hkey, i++, key_name, &len, ((void*)0), ((void*)0), ((void*)0), ((void*)0)) == ERROR_SUCCESS)
     {
         INT v_maj, v_min;
 
@@ -73,7 +73,7 @@ __attribute__((used)) static BOOL find_typelib_key( REFGUID guid, WORD *wMaj, WO
                 if (*wMin == v_min)
                 {
                     best_min = v_min;
-                    break; /* exact match */
+                    break;
                 }
                 if (*wMin != 0xffff && v_min > best_min) best_min = v_min;
             }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  sem; TYPE_1__* waiters; } ;
-typedef  TYPE_2__ WFC_WAITPOOL_T ;
-typedef  scalar_t__ VCOS_STATUS_T ;
-struct TYPE_4__ {int /*<<< orphan*/  sem; scalar_t__ inuse; } ;
 
-/* Variables and functions */
- char* VCOS_FUNCTION ; 
- scalar_t__ VCOS_SUCCESS ; 
- int WFC_CLIENT_IPC_MAX_WAITERS ; 
- scalar_t__ vcos_semaphore_create (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  vcos_semaphore_delete (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int sem; TYPE_1__* waiters; } ;
+typedef TYPE_2__ WFC_WAITPOOL_T ;
+typedef scalar_t__ VCOS_STATUS_T ;
+struct TYPE_4__ {int sem; scalar_t__ inuse; } ;
+
+
+ char* VCOS_FUNCTION ;
+ scalar_t__ VCOS_SUCCESS ;
+ int WFC_CLIENT_IPC_MAX_WAITERS ;
+ scalar_t__ vcos_semaphore_create (int *,char*,int) ;
+ int vcos_semaphore_delete (int *) ;
 
 __attribute__((used)) static VCOS_STATUS_T wfc_client_ipc_create_waitpool(WFC_WAITPOOL_T *waitpool)
 {
@@ -45,7 +45,7 @@ __attribute__((used)) static VCOS_STATUS_T wfc_client_ipc_create_waitpool(WFC_WA
 
    if (status != VCOS_SUCCESS)
    {
-      /* clean up */
+
       i--;
       while (i >= 0)
       {

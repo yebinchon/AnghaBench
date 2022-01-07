@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sum ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int sum ;
 struct TYPE_5__ {unsigned char* ipad; unsigned char* opad; } ;
-typedef  TYPE_1__ md5_context ;
+typedef TYPE_1__ md5_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  md5 (unsigned char*,int,unsigned char*) ; 
- int /*<<< orphan*/  md5_starts (TYPE_1__*) ; 
- int /*<<< orphan*/  md5_update (TYPE_1__*,unsigned char*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int,int) ; 
+
+ int md5 (unsigned char*,int,unsigned char*) ;
+ int md5_starts (TYPE_1__*) ;
+ int md5_update (TYPE_1__*,unsigned char*,int) ;
+ int memset (unsigned char*,int,int) ;
 
 void md5_hmac_starts( md5_context *ctx, unsigned char *key, int keylen )
 {

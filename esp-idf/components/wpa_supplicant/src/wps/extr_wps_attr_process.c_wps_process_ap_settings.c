@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wps_parse_attr {int /*<<< orphan*/  mac_addr; int /*<<< orphan*/  network_key_len; int /*<<< orphan*/  network_key; int /*<<< orphan*/  network_key_idx; int /*<<< orphan*/  encr_type; int /*<<< orphan*/  auth_type; int /*<<< orphan*/  ssid_len; int /*<<< orphan*/  ssid; } ;
+
+
+
+
+struct wps_parse_attr {int mac_addr; int network_key_len; int network_key; int network_key_idx; int encr_type; int auth_type; int ssid_len; int ssid; } ;
 struct wps_credential {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSG_DEBUG ; 
- int /*<<< orphan*/  os_memset (struct wps_credential*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  wpa_printf (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ wps_process_cred_auth_type (struct wps_credential*,int /*<<< orphan*/ ) ; 
- scalar_t__ wps_process_cred_encr_type (struct wps_credential*,int /*<<< orphan*/ ) ; 
- scalar_t__ wps_process_cred_mac_addr (struct wps_credential*,int /*<<< orphan*/ ) ; 
- scalar_t__ wps_process_cred_network_key (struct wps_credential*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ wps_process_cred_network_key_idx (struct wps_credential*,int /*<<< orphan*/ ) ; 
- scalar_t__ wps_process_cred_ssid (struct wps_credential*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int wps_workaround_cred_key (struct wps_credential*) ; 
+
+ int MSG_DEBUG ;
+ int os_memset (struct wps_credential*,int ,int) ;
+ int wpa_printf (int ,char*) ;
+ scalar_t__ wps_process_cred_auth_type (struct wps_credential*,int ) ;
+ scalar_t__ wps_process_cred_encr_type (struct wps_credential*,int ) ;
+ scalar_t__ wps_process_cred_mac_addr (struct wps_credential*,int ) ;
+ scalar_t__ wps_process_cred_network_key (struct wps_credential*,int ,int ) ;
+ scalar_t__ wps_process_cred_network_key_idx (struct wps_credential*,int ) ;
+ scalar_t__ wps_process_cred_ssid (struct wps_credential*,int ,int ) ;
+ int wps_workaround_cred_key (struct wps_credential*) ;
 
 int wps_process_ap_settings(struct wps_parse_attr *attr,
-			    struct wps_credential *cred)
+       struct wps_credential *cred)
 {
-	wpa_printf(MSG_DEBUG,  "WPS: Processing AP Settings");
-	os_memset(cred, 0, sizeof(*cred));
-	/* TODO: optional attributes New Password and Device Password ID */
-	if (wps_process_cred_ssid(cred, attr->ssid, attr->ssid_len) ||
-	    wps_process_cred_auth_type(cred, attr->auth_type) ||
-	    wps_process_cred_encr_type(cred, attr->encr_type) ||
-	    wps_process_cred_network_key_idx(cred, attr->network_key_idx) ||
-	    wps_process_cred_network_key(cred, attr->network_key,
-					 attr->network_key_len) ||
-	    wps_process_cred_mac_addr(cred, attr->mac_addr))
-		return -1;
+ wpa_printf(MSG_DEBUG, "WPS: Processing AP Settings");
+ os_memset(cred, 0, sizeof(*cred));
 
-	return wps_workaround_cred_key(cred);
+ if (wps_process_cred_ssid(cred, attr->ssid, attr->ssid_len) ||
+     wps_process_cred_auth_type(cred, attr->auth_type) ||
+     wps_process_cred_encr_type(cred, attr->encr_type) ||
+     wps_process_cred_network_key_idx(cred, attr->network_key_idx) ||
+     wps_process_cred_network_key(cred, attr->network_key,
+      attr->network_key_len) ||
+     wps_process_cred_mac_addr(cred, attr->mac_addr))
+  return -1;
+
+ return wps_workaround_cred_key(cred);
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int num_slices; int /*<<< orphan*/ * ss; } ;
-typedef  TYPE_1__ mxge_softc_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mxge_free_slice_rings (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int num_slices; int * ss; } ;
+typedef TYPE_1__ mxge_softc_t ;
+
+
+ int mxge_free_slice_rings (int *) ;
 
 __attribute__((used)) static void
 mxge_free_rings(mxge_softc_t *sc)
 {
-	int slice;
+ int slice;
 
-	for (slice = 0; slice < sc->num_slices; slice++)
-		mxge_free_slice_rings(&sc->ss[slice]);
+ for (slice = 0; slice < sc->num_slices; slice++)
+  mxge_free_slice_rings(&sc->ss[slice]);
 }

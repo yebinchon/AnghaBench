@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  header_parsed; } ;
-struct TYPE_7__ {int /*<<< orphan*/  chunk_seq; TYPE_2__ mms; } ;
-typedef  TYPE_1__ MMSHContext ;
-typedef  TYPE_2__ MMSContext ;
-typedef  int ChunkType ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
-#define  CHUNK_TYPE_DATA 130 
-#define  CHUNK_TYPE_END 129 
-#define  CHUNK_TYPE_STREAM_CHANGE 128 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,...) ; 
- int get_chunk_header (TYPE_1__*,int*) ; 
- int get_http_header_data (TYPE_1__*) ; 
- int read_data_packet (TYPE_1__*,int) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int header_parsed; } ;
+struct TYPE_7__ {int chunk_seq; TYPE_2__ mms; } ;
+typedef TYPE_1__ MMSHContext ;
+typedef TYPE_2__ MMSContext ;
+typedef int ChunkType ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+
+
+
+ int EIO ;
+ int av_log (int *,int ,char*,...) ;
+ int get_chunk_header (TYPE_1__*,int*) ;
+ int get_http_header_data (TYPE_1__*) ;
+ int read_data_packet (TYPE_1__*,int) ;
 
 __attribute__((used)) static int handle_chunk_type(MMSHContext *mmsh)
 {
@@ -39,21 +39,21 @@ __attribute__((used)) static int handle_chunk_type(MMSHContext *mmsh)
     chunk_type = get_chunk_header(mmsh, &len);
 
     switch (chunk_type) {
-    case CHUNK_TYPE_END:
+    case 129:
         mmsh->chunk_seq = 0;
-        av_log(NULL, AV_LOG_ERROR, "Stream ended!\n");
+        av_log(((void*)0), AV_LOG_ERROR, "Stream ended!\n");
         return AVERROR(EIO);
-    case CHUNK_TYPE_STREAM_CHANGE:
+    case 128:
         mms->header_parsed = 0;
         if (res = get_http_header_data(mmsh)) {
-            av_log(NULL, AV_LOG_ERROR,"Stream changed! Failed to get new header!\n");
+            av_log(((void*)0), AV_LOG_ERROR,"Stream changed! Failed to get new header!\n");
             return res;
         }
         break;
-    case CHUNK_TYPE_DATA:
+    case 130:
         return read_data_packet(mmsh, len);
     default:
-        av_log(NULL, AV_LOG_ERROR, "Recv other type packet %d\n", chunk_type);
+        av_log(((void*)0), AV_LOG_ERROR, "Recv other type packet %d\n", chunk_type);
         return AVERROR_INVALIDDATA;
     }
     return 0;

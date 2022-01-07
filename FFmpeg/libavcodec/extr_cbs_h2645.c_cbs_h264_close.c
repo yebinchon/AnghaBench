@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_2__* priv_data; } ;
-struct TYPE_5__ {int /*<<< orphan*/  write_buffer; int /*<<< orphan*/  read_packet; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * pps_ref; int /*<<< orphan*/  pps; int /*<<< orphan*/ * sps_ref; int /*<<< orphan*/  sps; TYPE_1__ common; } ;
-typedef  TYPE_2__ CodedBitstreamH264Context ;
-typedef  TYPE_3__ CodedBitstreamContext ;
+struct TYPE_5__ {int write_buffer; int read_packet; } ;
+struct TYPE_6__ {int * pps_ref; int pps; int * sps_ref; int sps; TYPE_1__ common; } ;
+typedef TYPE_2__ CodedBitstreamH264Context ;
+typedef TYPE_3__ CodedBitstreamContext ;
 
-/* Variables and functions */
- int FF_ARRAY_ELEMS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_buffer_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_h2645_packet_uninit (int /*<<< orphan*/ *) ; 
+
+ int FF_ARRAY_ELEMS (int ) ;
+ int av_buffer_unref (int *) ;
+ int av_freep (int *) ;
+ int ff_h2645_packet_uninit (int *) ;
 
 __attribute__((used)) static void cbs_h264_close(CodedBitstreamContext *ctx)
 {

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const WCHAR ;
-struct TYPE_2__ {int attr; int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int DeleteFileW (int /*<<< orphan*/  const*) ; 
- scalar_t__ ERROR_PATH_NOT_FOUND ; 
- int FILE_ATTRIBUTE_DIRECTORY ; 
- scalar_t__ GetLastError () ; 
- int MAX_PATH ; 
- int RemoveDirectoryW (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  backslashW ; 
- int /*<<< orphan*/  dotW ; 
- int /*<<< orphan*/  dotdotW ; 
- int /*<<< orphan*/  lstrcatW (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- scalar_t__ lstrcmpW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lstrcpyW (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ,scalar_t__) ; 
- int test_dir_count ; 
- TYPE_1__* testfiles ; 
- int /*<<< orphan*/  wine_dbgstr_w (int /*<<< orphan*/  const*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int const WCHAR ;
+struct TYPE_2__ {int attr; int name; } ;
+
+
+ int DeleteFileW (int const*) ;
+ scalar_t__ ERROR_PATH_NOT_FOUND ;
+ int FILE_ATTRIBUTE_DIRECTORY ;
+ scalar_t__ GetLastError () ;
+ int MAX_PATH ;
+ int RemoveDirectoryW (int const*) ;
+ int backslashW ;
+ int dotW ;
+ int dotdotW ;
+ int lstrcatW (int const*,int ) ;
+ scalar_t__ lstrcmpW (int ,int ) ;
+ int lstrcpyW (int const*,int const*) ;
+ int ok (int,char*,int ,scalar_t__) ;
+ int test_dir_count ;
+ TYPE_1__* testfiles ;
+ int wine_dbgstr_w (int const*) ;
 
 __attribute__((used)) static void tear_down_attribute_test(const WCHAR *testdir)
 {

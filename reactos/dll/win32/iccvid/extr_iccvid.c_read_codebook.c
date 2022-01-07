@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int y0; int y1; int y2; int y3; int u; int v; int* r; int* g; int* b; } ;
-typedef  TYPE_1__ cvid_codebook ;
+typedef TYPE_1__ cvid_codebook ;
 
-/* Variables and functions */
- void* get_byte () ; 
- void** uiclp ; 
+
+ void* get_byte () ;
+ void** uiclp ;
 
 __attribute__((used)) static inline void read_codebook(cvid_codebook *c, int mode)
 {
 int uvr, uvg, uvb;
 
-    if(mode)        /* black and white */
+    if(mode)
         {
         c->y0 = get_byte();
         c->y1 = get_byte();
@@ -35,13 +35,13 @@ int uvr, uvg, uvb;
         c->r[2] = c->g[2] = c->b[2] = c->y2;
         c->r[3] = c->g[3] = c->b[3] = c->y3;
         }
-    else            /* colour */
+    else
         {
-        c->y0 = get_byte();  /* luma */
+        c->y0 = get_byte();
         c->y1 = get_byte();
         c->y2 = get_byte();
         c->y3 = get_byte();
-        c->u = get_byte(); /* chroma */
+        c->u = get_byte();
         c->v = get_byte();
 
         uvr = c->v << 1;

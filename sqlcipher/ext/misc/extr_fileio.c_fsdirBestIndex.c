@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct sqlite3_index_constraint {scalar_t__ op; int iColumn; int /*<<< orphan*/  usable; } ;
-typedef  int /*<<< orphan*/  sqlite3_vtab ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct sqlite3_index_constraint {scalar_t__ op; int iColumn; int usable; } ;
+typedef int sqlite3_vtab ;
 struct TYPE_5__ {int nConstraint; int idxNum; int estimatedRows; double estimatedCost; TYPE_1__* aConstraintUsage; struct sqlite3_index_constraint* aConstraint; } ;
-typedef  TYPE_2__ sqlite3_index_info ;
+typedef TYPE_2__ sqlite3_index_info ;
 struct TYPE_4__ {int omit; int argvIndex; } ;
 
-/* Variables and functions */
-#define  FSDIR_COLUMN_DIR 129 
-#define  FSDIR_COLUMN_PATH 128 
- int SQLITE_CONSTRAINT ; 
- scalar_t__ SQLITE_INDEX_CONSTRAINT_EQ ; 
- int SQLITE_OK ; 
+
+
+
+ int SQLITE_CONSTRAINT ;
+ scalar_t__ SQLITE_INDEX_CONSTRAINT_EQ ;
+ int SQLITE_OK ;
 
 __attribute__((used)) static int fsdirBestIndex(
   sqlite3_vtab *tab,
   sqlite3_index_info *pIdxInfo
 ){
-  int i;                 /* Loop over constraints */
-  int idxPath = -1;      /* Index in pIdxInfo->aConstraint of PATH= */
-  int idxDir = -1;       /* Index in pIdxInfo->aConstraint of DIR= */
-  int seenPath = 0;      /* True if an unusable PATH= constraint is seen */
-  int seenDir = 0;       /* True if an unusable DIR= constraint is seen */
+  int i;
+  int idxPath = -1;
+  int idxDir = -1;
+  int seenPath = 0;
+  int seenDir = 0;
   const struct sqlite3_index_constraint *pConstraint;
 
   (void)tab;
@@ -41,7 +41,7 @@ __attribute__((used)) static int fsdirBestIndex(
   for(i=0; i<pIdxInfo->nConstraint; i++, pConstraint++){
     if( pConstraint->op!=SQLITE_INDEX_CONSTRAINT_EQ ) continue;
     switch( pConstraint->iColumn ){
-      case FSDIR_COLUMN_PATH: {
+      case 128: {
         if( pConstraint->usable ){
           idxPath = i;
           seenPath = 0;
@@ -50,7 +50,7 @@ __attribute__((used)) static int fsdirBestIndex(
         }
         break;
       }
-      case FSDIR_COLUMN_DIR: {
+      case 129: {
         if( pConstraint->usable ){
           idxDir = i;
           seenDir = 0;
@@ -59,17 +59,17 @@ __attribute__((used)) static int fsdirBestIndex(
         }
         break;
       }
-    } 
+    }
   }
   if( seenPath || seenDir ){
-    /* If input parameters are unusable, disallow this plan */
+
     return SQLITE_CONSTRAINT;
   }
 
   if( idxPath<0 ){
     pIdxInfo->idxNum = 0;
-    /* The pIdxInfo->estimatedCost should have been initialized to a huge
-    ** number.  Leave it unchanged. */
+
+
     pIdxInfo->estimatedRows = 0x7fffffff;
   }else{
     pIdxInfo->aConstraintUsage[idxPath].omit = 1;

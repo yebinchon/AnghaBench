@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_5__ {int width; int height; int palette_set; int /*<<< orphan*/ * palette; } ;
-typedef  TYPE_1__ hb_subtitle_t ;
-struct TYPE_6__ {int extradata_size; int /*<<< orphan*/  extradata; } ;
-typedef  TYPE_2__ AVCodecParameters ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  hb_rgb2yuv (int /*<<< orphan*/ ) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,int) ; 
- int sscanf (char*,char*,int*,int*,...) ; 
- char* strtok_r (char*,char*,char**) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_5__ {int width; int height; int palette_set; int * palette; } ;
+typedef TYPE_1__ hb_subtitle_t ;
+struct TYPE_6__ {int extradata_size; int extradata; } ;
+typedef TYPE_2__ AVCodecParameters ;
+
+
+ int free (char*) ;
+ int hb_rgb2yuv (int ) ;
+ char* malloc (int) ;
+ int memcpy (char*,int ,int) ;
+ int sscanf (char*,char*,int*,int*,...) ;
+ char* strtok_r (char*,char*,char**) ;
 
 __attribute__((used)) static int ffmpeg_parse_vobsub_extradata_mkv( AVCodecParameters *codecpar,
                                               hb_subtitle_t *subtitle )
 {
-    // lines = (string) codecpar->extradata;
+
     char *lines = malloc( codecpar->extradata_size + 1 );
-    if ( lines == NULL )
+    if ( lines == ((void*)0) )
         return 1;
     memcpy( lines, codecpar->extradata, codecpar->extradata_size );
     lines[codecpar->extradata_size] = '\0';
@@ -43,7 +43,7 @@ __attribute__((used)) static int ffmpeg_parse_vobsub_extradata_mkv( AVCodecParam
     char *curLine, *curLine_parserData;
     for ( curLine = strtok_r( lines, "\n", &curLine_parserData );
           curLine;
-          curLine = strtok_r( NULL, "\n", &curLine_parserData ) )
+          curLine = strtok_r( ((void*)0), "\n", &curLine_parserData ) )
     {
         if (!gotPalette)
         {
@@ -52,9 +52,9 @@ __attribute__((used)) static int ffmpeg_parse_vobsub_extradata_mkv( AVCodecParam
                 "%06x, %06x, %06x, %06x, "
                 "%06x, %06x, %06x, %06x, "
                 "%06x, %06x, %06x, %06x",
-                &rgb[0],  &rgb[1],  &rgb[2],  &rgb[3],
-                &rgb[4],  &rgb[5],  &rgb[6],  &rgb[7],
-                &rgb[8],  &rgb[9],  &rgb[10], &rgb[11],
+                &rgb[0], &rgb[1], &rgb[2], &rgb[3],
+                &rgb[4], &rgb[5], &rgb[6], &rgb[7],
+                &rgb[8], &rgb[9], &rgb[10], &rgb[11],
                 &rgb[12], &rgb[13], &rgb[14], &rgb[15]);
 
             if (numElementsRead == 16) {

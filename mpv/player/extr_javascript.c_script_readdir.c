@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_mode; } ;
+
+
+
+
+struct stat {int st_mode; } ;
 struct dirent {char* d_name; } ;
-typedef  int /*<<< orphan*/  js_State ;
-typedef  int /*<<< orphan*/  DIR ;
+typedef int js_State ;
+typedef int DIR ;
 
-/* Variables and functions */
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- scalar_t__ S_ISREG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  add_af_dir (void*,int /*<<< orphan*/ *) ; 
- int checkopt (int /*<<< orphan*/ *,int,char*,char const**,char*) ; 
- int /*<<< orphan*/  jctx (int /*<<< orphan*/ *) ; 
- scalar_t__ js_isundefined (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  js_newarray (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  js_pushstring (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  js_setindex (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- char* js_tostring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * opendir (char const*) ; 
- int /*<<< orphan*/  push_failure (int /*<<< orphan*/ *,char*) ; 
- struct dirent* readdir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_last_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ stat (char*,struct stat*) ; 
- scalar_t__ strcmp (char*,char*) ; 
- char* talloc_asprintf_append (char*,char*,char const*,char*) ; 
- char* talloc_strdup (void*,char*) ; 
+
+ scalar_t__ S_ISDIR (int ) ;
+ scalar_t__ S_ISREG (int ) ;
+ int add_af_dir (void*,int *) ;
+ int checkopt (int *,int,char*,char const**,char*) ;
+ int jctx (int *) ;
+ scalar_t__ js_isundefined (int *,int) ;
+ int js_newarray (int *) ;
+ int js_pushstring (int *,char*) ;
+ int js_setindex (int *,int,int ) ;
+ char* js_tostring (int *,int) ;
+ int * opendir (char const*) ;
+ int push_failure (int *,char*) ;
+ struct dirent* readdir (int *) ;
+ int set_last_error (int ,int ,int *) ;
+ scalar_t__ stat (char*,struct stat*) ;
+ scalar_t__ strcmp (char*,char*) ;
+ char* talloc_asprintf_append (char*,char*,char const*,char*) ;
+ char* talloc_strdup (void*,char*) ;
 
 __attribute__((used)) static void script_readdir(js_State *J, void *af)
 {
-    //                    0      1        2       3
-    const char *filters[] = {"all", "files", "dirs", "normal", NULL};
+
+    const char *filters[] = {"all", "files", "dirs", "normal", ((void*)0)};
     const char *path = js_isundefined(J, 1) ? "." : js_tostring(J, 1);
     int t = checkopt(J, 2, "normal", filters, "listing filter");
 
@@ -48,8 +48,8 @@ __attribute__((used)) static void script_readdir(js_State *J, void *af)
         return;
     }
     add_af_dir(af, dir);
-    set_last_error(jctx(J), 0, NULL);
-    js_newarray(J);  // the return value
+    set_last_error(jctx(J), 0, ((void*)0));
+    js_newarray(J);
     char *fullpath = talloc_strdup(af, "");
     struct dirent *e;
     int n = 0;

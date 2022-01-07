@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct rpc_get_file_data {int fwd_header_ints; struct rpc_get_file_data* fwd_header; TYPE_1__* meta; } ;
-struct TYPE_2__ {int /*<<< orphan*/  refcnt; } ;
+struct TYPE_2__ {int refcnt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  zfree (struct rpc_get_file_data*,int) ; 
+
+ int zfree (struct rpc_get_file_data*,int) ;
 
 __attribute__((used)) static void rpc_get_file_data_free (struct rpc_get_file_data *L) {
   if (L->meta) {

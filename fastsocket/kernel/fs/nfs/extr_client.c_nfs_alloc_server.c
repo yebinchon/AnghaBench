@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nfs_server {int /*<<< orphan*/  io_stats; int /*<<< orphan*/  backing_dev_info; int /*<<< orphan*/  active; int /*<<< orphan*/  state_owners_lru; int /*<<< orphan*/  layouts; int /*<<< orphan*/  delegations; int /*<<< orphan*/  master_link; int /*<<< orphan*/  client_link; int /*<<< orphan*/  client_acl; int /*<<< orphan*/  client; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ERR_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atomic_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ bdi_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (struct nfs_server*) ; 
- struct nfs_server* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nfs_alloc_iostats () ; 
- int /*<<< orphan*/  nfs_free_iostats (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pnfs_init_server (struct nfs_server*) ; 
+
+
+
+struct nfs_server {int io_stats; int backing_dev_info; int active; int state_owners_lru; int layouts; int delegations; int master_link; int client_link; int client_acl; int client; } ;
+
+
+ int EINVAL ;
+ int ERR_PTR (int ) ;
+ int GFP_KERNEL ;
+ int INIT_LIST_HEAD (int *) ;
+ int atomic_set (int *,int ) ;
+ scalar_t__ bdi_init (int *) ;
+ int kfree (struct nfs_server*) ;
+ struct nfs_server* kzalloc (int,int ) ;
+ int nfs_alloc_iostats () ;
+ int nfs_free_iostats (int ) ;
+ int pnfs_init_server (struct nfs_server*) ;
 
 __attribute__((used)) static struct nfs_server *nfs_alloc_server(void)
 {
-	struct nfs_server *server;
+ struct nfs_server *server;
 
-	server = kzalloc(sizeof(struct nfs_server), GFP_KERNEL);
-	if (!server)
-		return NULL;
+ server = kzalloc(sizeof(struct nfs_server), GFP_KERNEL);
+ if (!server)
+  return ((void*)0);
 
-	server->client = server->client_acl = ERR_PTR(-EINVAL);
+ server->client = server->client_acl = ERR_PTR(-EINVAL);
 
-	/* Zero out the NFS state stuff */
-	INIT_LIST_HEAD(&server->client_link);
-	INIT_LIST_HEAD(&server->master_link);
-	INIT_LIST_HEAD(&server->delegations);
-	INIT_LIST_HEAD(&server->layouts);
-	INIT_LIST_HEAD(&server->state_owners_lru);
 
-	atomic_set(&server->active, 0);
+ INIT_LIST_HEAD(&server->client_link);
+ INIT_LIST_HEAD(&server->master_link);
+ INIT_LIST_HEAD(&server->delegations);
+ INIT_LIST_HEAD(&server->layouts);
+ INIT_LIST_HEAD(&server->state_owners_lru);
 
-	server->io_stats = nfs_alloc_iostats();
-	if (!server->io_stats) {
-		kfree(server);
-		return NULL;
-	}
+ atomic_set(&server->active, 0);
 
-	if (bdi_init(&server->backing_dev_info)) {
-		nfs_free_iostats(server->io_stats);
-		kfree(server);
-		return NULL;
-	}
+ server->io_stats = nfs_alloc_iostats();
+ if (!server->io_stats) {
+  kfree(server);
+  return ((void*)0);
+ }
 
-	pnfs_init_server(server);
+ if (bdi_init(&server->backing_dev_info)) {
+  nfs_free_iostats(server->io_stats);
+  kfree(server);
+  return ((void*)0);
+ }
 
-	return server;
+ pnfs_init_server(server);
+
+ return server;
 }

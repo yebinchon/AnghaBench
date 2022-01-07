@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int num_buffers; TYPE_2__* buffers; int /*<<< orphan*/  type; } ;
-typedef  TYPE_1__ V4L2Context ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int num_buffers; TYPE_2__* buffers; int type; } ;
+typedef TYPE_1__ V4L2Context ;
 struct TYPE_7__ {scalar_t__ status; } ;
-typedef  TYPE_2__ V4L2Buffer ;
+typedef TYPE_2__ V4L2Buffer ;
 
-/* Variables and functions */
- scalar_t__ V4L2BUF_AVAILABLE ; 
- scalar_t__ V4L2_TYPE_IS_OUTPUT (int /*<<< orphan*/ ) ; 
- scalar_t__ v4l2_dequeue_v4l2buf (TYPE_1__*,int) ; 
+
+ scalar_t__ V4L2BUF_AVAILABLE ;
+ scalar_t__ V4L2_TYPE_IS_OUTPUT (int ) ;
+ scalar_t__ v4l2_dequeue_v4l2buf (TYPE_1__*,int) ;
 
 __attribute__((used)) static V4L2Buffer* v4l2_getfree_v4l2buf(V4L2Context *ctx)
 {
-    int timeout = 0; /* return when no more buffers to dequeue */
+    int timeout = 0;
     int i;
 
-    /* get back as many output buffers as possible */
+
     if (V4L2_TYPE_IS_OUTPUT(ctx->type)) {
           do {
           } while (v4l2_dequeue_v4l2buf(ctx, timeout));
@@ -38,5 +38,5 @@ __attribute__((used)) static V4L2Buffer* v4l2_getfree_v4l2buf(V4L2Context *ctx)
             return &ctx->buffers[i];
     }
 
-    return NULL;
+    return ((void*)0);
 }

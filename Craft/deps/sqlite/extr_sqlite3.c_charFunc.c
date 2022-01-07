@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void* u8 ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int sqlite3_int64 ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sqlite3_free ; 
- unsigned char* sqlite3_malloc (int) ; 
- int /*<<< orphan*/  sqlite3_result_error_nomem (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
- int sqlite3_value_int64 (int /*<<< orphan*/ *) ; 
+
+
+
+typedef void* u8 ;
+typedef int sqlite3_value ;
+typedef int sqlite3_int64 ;
+typedef int sqlite3_context ;
+
+
+ int sqlite3_free ;
+ unsigned char* sqlite3_malloc (int) ;
+ int sqlite3_result_error_nomem (int *) ;
+ int sqlite3_result_text (int *,char*,int,int ) ;
+ int sqlite3_value_int64 (int *) ;
 
 __attribute__((used)) static void charFunc(
   sqlite3_context *context,
@@ -54,7 +54,7 @@ __attribute__((used)) static void charFunc(
       *zOut++ = 0x80 + (u8)((c>>12) & 0x3F);
       *zOut++ = 0x80 + (u8)((c>>6) & 0x3F);
       *zOut++ = 0x80 + (u8)(c & 0x3F);
-    }                                                    \
-  }
+    } }
+
   sqlite3_result_text(context, (char*)z, (int)(zOut-z), sqlite3_free);
 }

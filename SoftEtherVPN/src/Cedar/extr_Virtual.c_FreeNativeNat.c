@@ -1,120 +1,120 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_7__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-struct TYPE_15__ {int /*<<< orphan*/  AllList; } ;
-struct TYPE_14__ {int Halt; TYPE_7__* NatTableForRecv; TYPE_7__* NatTableForSend; int /*<<< orphan*/  Cancel; int /*<<< orphan*/  SendQueue; int /*<<< orphan*/  RecvQueue; TYPE_1__* HaltTube3; TYPE_1__* HaltTube2; int /*<<< orphan*/  HaltEvent; int /*<<< orphan*/  CancelLock; int /*<<< orphan*/  Lock; int /*<<< orphan*/  Thread; TYPE_1__* HaltTube; } ;
-struct TYPE_13__ {int /*<<< orphan*/  Ref; } ;
-typedef  TYPE_1__ TUBE ;
-typedef  TYPE_2__ NATIVE_NAT_ENTRY ;
-typedef  TYPE_2__ NATIVE_NAT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddRef (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteLock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Free (TYPE_2__*) ; 
- int /*<<< orphan*/  INFINITE ; 
- TYPE_2__* LIST_DATA (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NnClearQueue (TYPE_2__*) ; 
- int /*<<< orphan*/  NnFreeIpCombineList (TYPE_2__*) ; 
- int /*<<< orphan*/  ReleaseCancel (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseHashList (TYPE_7__*) ; 
- int /*<<< orphan*/  ReleaseQueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseThread (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseTube (TYPE_1__*) ; 
- int /*<<< orphan*/  Set (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SleepThread (int) ; 
- int /*<<< orphan*/  TubeDisconnect (TYPE_1__*) ; 
- int /*<<< orphan*/  TubeFlushEx (TYPE_1__*,int) ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WaitThread (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_15__ TYPE_7__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+struct TYPE_15__ {int AllList; } ;
+struct TYPE_14__ {int Halt; TYPE_7__* NatTableForRecv; TYPE_7__* NatTableForSend; int Cancel; int SendQueue; int RecvQueue; TYPE_1__* HaltTube3; TYPE_1__* HaltTube2; int HaltEvent; int CancelLock; int Lock; int Thread; TYPE_1__* HaltTube; } ;
+struct TYPE_13__ {int Ref; } ;
+typedef TYPE_1__ TUBE ;
+typedef TYPE_2__ NATIVE_NAT_ENTRY ;
+typedef TYPE_2__ NATIVE_NAT ;
+
+
+ int AddRef (int ) ;
+ int DeleteLock (int ) ;
+ int Free (TYPE_2__*) ;
+ int INFINITE ;
+ TYPE_2__* LIST_DATA (int ,scalar_t__) ;
+ scalar_t__ LIST_NUM (int ) ;
+ int Lock (int ) ;
+ int NnClearQueue (TYPE_2__*) ;
+ int NnFreeIpCombineList (TYPE_2__*) ;
+ int ReleaseCancel (int ) ;
+ int ReleaseEvent (int ) ;
+ int ReleaseHashList (TYPE_7__*) ;
+ int ReleaseQueue (int ) ;
+ int ReleaseThread (int ) ;
+ int ReleaseTube (TYPE_1__*) ;
+ int Set (int ) ;
+ int SleepThread (int) ;
+ int TubeDisconnect (TYPE_1__*) ;
+ int TubeFlushEx (TYPE_1__*,int) ;
+ int Unlock (int ) ;
+ int WaitThread (int ,int ) ;
 
 void FreeNativeNat(NATIVE_NAT *t)
 {
-	TUBE *tube;
-	UINT i;
-	// Validate arguments
-	if (t == NULL)
-	{
-		return;
-	}
+ TUBE *tube;
+ UINT i;
 
-	t->Halt = true;
+ if (t == ((void*)0))
+ {
+  return;
+ }
 
-	Lock(t->Lock);
-	{
-		tube = t->HaltTube;
+ t->Halt = 1;
 
-		if (tube != NULL)
-		{
-			AddRef(tube->Ref);
-		}
-	}
-	Unlock(t->Lock);
+ Lock(t->Lock);
+ {
+  tube = t->HaltTube;
 
-	if (tube != NULL)
-	{
-		TubeFlushEx(tube, true);
+  if (tube != ((void*)0))
+  {
+   AddRef(tube->Ref);
+  }
+ }
+ Unlock(t->Lock);
 
-		SleepThread(100);
+ if (tube != ((void*)0))
+ {
+  TubeFlushEx(tube, 1);
 
-		TubeDisconnect(tube);
+  SleepThread(100);
 
-		ReleaseTube(tube);
-	}
+  TubeDisconnect(tube);
 
-	TubeDisconnect(t->HaltTube2);
-	TubeDisconnect(t->HaltTube3);
+  ReleaseTube(tube);
+ }
 
-	Set(t->HaltEvent);
+ TubeDisconnect(t->HaltTube2);
+ TubeDisconnect(t->HaltTube3);
 
-	WaitThread(t->Thread, INFINITE);
+ Set(t->HaltEvent);
 
-	ReleaseThread(t->Thread);
+ WaitThread(t->Thread, INFINITE);
 
-	DeleteLock(t->Lock);
+ ReleaseThread(t->Thread);
 
-	DeleteLock(t->CancelLock);
+ DeleteLock(t->Lock);
 
-	ReleaseEvent(t->HaltEvent);
+ DeleteLock(t->CancelLock);
 
-	ReleaseTube(t->HaltTube2);
-	ReleaseTube(t->HaltTube3);
+ ReleaseEvent(t->HaltEvent);
 
-	NnClearQueue(t);
+ ReleaseTube(t->HaltTube2);
+ ReleaseTube(t->HaltTube3);
 
-	ReleaseQueue(t->RecvQueue);
-	ReleaseQueue(t->SendQueue);
+ NnClearQueue(t);
 
-	ReleaseCancel(t->Cancel);
+ ReleaseQueue(t->RecvQueue);
+ ReleaseQueue(t->SendQueue);
 
-	// Release the NAT table
-	for (i = 0;i < LIST_NUM(t->NatTableForSend->AllList);i++)
-	{
-		NATIVE_NAT_ENTRY *e = LIST_DATA(t->NatTableForSend->AllList, i);
+ ReleaseCancel(t->Cancel);
 
-		Free(e);
-	}
 
-	ReleaseHashList(t->NatTableForSend);
-	ReleaseHashList(t->NatTableForRecv);
+ for (i = 0;i < LIST_NUM(t->NatTableForSend->AllList);i++)
+ {
+  NATIVE_NAT_ENTRY *e = LIST_DATA(t->NatTableForSend->AllList, i);
 
-	NnFreeIpCombineList(t);
+  Free(e);
+ }
 
-	Free(t);
+ ReleaseHashList(t->NatTableForSend);
+ ReleaseHashList(t->NatTableForRecv);
+
+ NnFreeIpCombineList(t);
+
+ Free(t);
 }

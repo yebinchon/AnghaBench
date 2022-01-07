@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {double last_query_timeout; scalar_t__ status; double last_response_time; double last_query_sent_time; int ready; double last_query_time; int unreliability; int fd; int flags; struct conn_query* first_query; int /*<<< orphan*/  Out; } ;
+
+
+
+
+struct connection {double last_query_timeout; scalar_t__ status; double last_response_time; double last_query_sent_time; int ready; double last_query_time; int unreliability; int fd; int flags; struct conn_query* first_query; int Out; } ;
 struct conn_query {double start_time; } ;
 
-/* Variables and functions */
- double CONNECT_TIMEOUT ; 
- int C_FAILED ; 
- double RESPONSE_FAIL_TIMEOUT ; 
- scalar_t__ conn_connecting ; 
- scalar_t__ conn_reading_answer ; 
- scalar_t__ conn_wait_answer ; 
- scalar_t__ cr_failed ; 
- int cr_notyet ; 
- scalar_t__ cr_ok ; 
- scalar_t__ cr_stopped ; 
- double drand48 () ; 
- int /*<<< orphan*/  fail_connection (struct connection*,int) ; 
- int /*<<< orphan*/  flush_output (struct connection*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,scalar_t__,scalar_t__,double,double,double,double,double,int) ; 
- double ping_interval ; 
- double precise_now ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ *,char*,int) ; 
+
+ double CONNECT_TIMEOUT ;
+ int C_FAILED ;
+ double RESPONSE_FAIL_TIMEOUT ;
+ scalar_t__ conn_connecting ;
+ scalar_t__ conn_reading_answer ;
+ scalar_t__ conn_wait_answer ;
+ scalar_t__ cr_failed ;
+ int cr_notyet ;
+ scalar_t__ cr_ok ;
+ scalar_t__ cr_stopped ;
+ double drand48 () ;
+ int fail_connection (struct connection*,int) ;
+ int flush_output (struct connection*) ;
+ int fprintf (int ,char*,int,scalar_t__,scalar_t__,double,double,double,double,double,int) ;
+ double ping_interval ;
+ double precise_now ;
+ int stderr ;
+ int verbosity ;
+ int write_out (int *,char*,int) ;
 
 int mcp_check_ready (struct connection *c) {
   double first_query_time = 0;
@@ -68,7 +68,7 @@ int mcp_check_ready (struct connection *c) {
     }
     return c->ready = cr_stopped;
   }
-    
+
   if (!(c->flags & C_FAILED) && c->last_response_time > 0 && (c->status == conn_wait_answer || c->status == conn_reading_answer)) {
     if (verbosity > 1 && c->ready != cr_ok) {
       fprintf (stderr, "changing connection %d readiness from %d to %d [OK] fq=%.03f lq=%.03f lqt=%.03f lr=%.03f now=%.03f unr=%d\n", c->fd, c->ready, cr_ok, first_query_time, c->last_query_sent_time, c->last_query_timeout, c->last_response_time, precise_now, c->unreliability);

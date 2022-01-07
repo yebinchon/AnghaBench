@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_2__* priv_data; } ;
 struct TYPE_5__ {int state; scalar_t__ last_index; scalar_t__ index; scalar_t__ overread_index; scalar_t__ overread; scalar_t__ frame_start_found; } ;
-struct TYPE_6__ {scalar_t__ pp_time; scalar_t__ bitstream_buffer_size; TYPE_1__ parse_context; scalar_t__ closed_gop; scalar_t__ mb_y; scalar_t__ mb_x; int /*<<< orphan*/  next_picture; int /*<<< orphan*/  avctx; int /*<<< orphan*/  last_picture; int /*<<< orphan*/  current_picture; int /*<<< orphan*/ * next_picture_ptr; int /*<<< orphan*/  last_picture_ptr; int /*<<< orphan*/  current_picture_ptr; int /*<<< orphan*/ * picture; } ;
-typedef  TYPE_2__ MpegEncContext ;
-typedef  TYPE_3__ AVCodecContext ;
+struct TYPE_6__ {scalar_t__ pp_time; scalar_t__ bitstream_buffer_size; TYPE_1__ parse_context; scalar_t__ closed_gop; scalar_t__ mb_y; scalar_t__ mb_x; int next_picture; int avctx; int last_picture; int current_picture; int * next_picture_ptr; int last_picture_ptr; int current_picture_ptr; int * picture; } ;
+typedef TYPE_2__ MpegEncContext ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int MAX_PICTURE_COUNT ; 
- int /*<<< orphan*/  ff_mpeg_unref_picture (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int MAX_PICTURE_COUNT ;
+ int ff_mpeg_unref_picture (int ,int *) ;
 
 void ff_mpeg_flush(AVCodecContext *avctx){
     int i;
@@ -32,7 +32,7 @@ void ff_mpeg_flush(AVCodecContext *avctx){
 
     for (i = 0; i < MAX_PICTURE_COUNT; i++)
         ff_mpeg_unref_picture(s->avctx, &s->picture[i]);
-    s->current_picture_ptr = s->last_picture_ptr = s->next_picture_ptr = NULL;
+    s->current_picture_ptr = s->last_picture_ptr = s->next_picture_ptr = ((void*)0);
 
     ff_mpeg_unref_picture(s->avctx, &s->current_picture);
     ff_mpeg_unref_picture(s->avctx, &s->last_picture);

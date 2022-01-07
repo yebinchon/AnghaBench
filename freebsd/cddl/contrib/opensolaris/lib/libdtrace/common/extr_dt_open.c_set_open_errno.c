@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dtrace_hdl_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dtrace_close (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int dtrace_hdl_t ;
+
+
+ int dtrace_close (int *) ;
 
 __attribute__((used)) static dtrace_hdl_t *
 set_open_errno(dtrace_hdl_t *dtp, int *errp, int err)
 {
-	if (dtp != NULL)
-		dtrace_close(dtp);
-	if (errp != NULL)
-		*errp = err;
-	return (NULL);
+ if (dtp != ((void*)0))
+  dtrace_close(dtp);
+ if (errp != ((void*)0))
+  *errp = err;
+ return (((void*)0));
 }

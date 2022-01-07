@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ch ;
-typedef  char WCHAR ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  IMultiLanguage2 ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  CHAR ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ CP_UTF8 ; 
- scalar_t__ E_FAIL ; 
- scalar_t__ IMultiLanguage2_ConvertString (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__,scalar_t__,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ IMultiLanguage2_ConvertStringFromUnicode (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__,char*,scalar_t__*,int /*<<< orphan*/ *,scalar_t__*) ; 
- int MAX_PATH ; 
- scalar_t__ S_FALSE ; 
- scalar_t__ S_OK ; 
- int WC_COMPOSITECHECK ; 
- int WC_DEFAULTCHAR ; 
- int WC_NO_BEST_FIT_CHARS ; 
- int WideCharToMultiByte (scalar_t__,int,char*,int,char*,int,int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ lstrlenW (char*) ; 
- int /*<<< orphan*/  trace (char*,scalar_t__) ; 
+
+
+
+typedef int ch ;
+typedef char WCHAR ;
+typedef scalar_t__ UINT ;
+typedef int IMultiLanguage2 ;
+typedef scalar_t__ HRESULT ;
+typedef int CHAR ;
+typedef int BYTE ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ CP_UTF8 ;
+ scalar_t__ E_FAIL ;
+ scalar_t__ IMultiLanguage2_ConvertString (int *,int *,scalar_t__,scalar_t__,int *,scalar_t__*,int *,scalar_t__*) ;
+ scalar_t__ IMultiLanguage2_ConvertStringFromUnicode (int *,int *,scalar_t__,char*,scalar_t__*,int *,scalar_t__*) ;
+ int MAX_PATH ;
+ scalar_t__ S_FALSE ;
+ scalar_t__ S_OK ;
+ int WC_COMPOSITECHECK ;
+ int WC_DEFAULTCHAR ;
+ int WC_NO_BEST_FIT_CHARS ;
+ int WideCharToMultiByte (scalar_t__,int,char*,int,char*,int,int *,scalar_t__*) ;
+ scalar_t__ lstrlenW (char*) ;
+ int trace (char*,scalar_t__) ;
 
 __attribute__((used)) static HRESULT check_convertible(IMultiLanguage2 *iML2, UINT from, UINT to)
 {
@@ -43,14 +43,14 @@ __attribute__((used)) static HRESULT check_convertible(IMultiLanguage2 *iML2, UI
 
     static WCHAR strW[] = {'a','b','c',0};
 
-    /* Check to see if the target codepage has these characters or not */
+
     if (from != CP_UTF8)
     {
         BOOL fDefaultChar;
         char ch[10];
         int cb;
         cb = WideCharToMultiByte( from, WC_NO_BEST_FIT_CHARS | WC_COMPOSITECHECK | WC_DEFAULTCHAR,
-                                  strW, 3, ch, sizeof(ch), NULL, &fDefaultChar);
+                                  strW, 3, ch, sizeof(ch), ((void*)0), &fDefaultChar);
 
         if(cb == 0 || fDefaultChar)
         {
@@ -61,14 +61,14 @@ __attribute__((used)) static HRESULT check_convertible(IMultiLanguage2 *iML2, UI
 
     srcsz = lstrlenW(strW) + 1;
     destsz = MAX_PATH;
-    hr = IMultiLanguage2_ConvertStringFromUnicode(iML2, NULL, from, strW,
+    hr = IMultiLanguage2_ConvertStringFromUnicode(iML2, ((void*)0), from, strW,
                                                   &srcsz, convert, &destsz);
     if (hr != S_OK)
         return S_FALSE;
 
     srcsz = -1;
     destsz = MAX_PATH;
-    hr = IMultiLanguage2_ConvertString(iML2, NULL, from, to, (BYTE *)convert,
+    hr = IMultiLanguage2_ConvertString(iML2, ((void*)0), from, to, (BYTE *)convert,
                                        &srcsz, dest, &destsz);
     if (hr != S_OK)
         return S_FALSE;

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  request_data; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int request_data; } ;
 struct TYPE_6__ {TYPE_1__ bsc; TYPE_3__* nschannel; } ;
-typedef  TYPE_2__ nsChannelBSC ;
-struct TYPE_7__ {int /*<<< orphan*/  request_headers; int /*<<< orphan*/  post_data_contains_headers; scalar_t__ post_data_stream; } ;
-typedef  TYPE_3__ nsChannel ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BSCallback ;
+typedef TYPE_2__ nsChannelBSC ;
+struct TYPE_7__ {int request_headers; int post_data_contains_headers; scalar_t__ post_data_stream; } ;
+typedef TYPE_3__ nsChannel ;
+typedef int HRESULT ;
+typedef int BSCallback ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- TYPE_2__* nsChannelBSC_from_BSCallback (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  read_post_data_stream (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ FAILED (int ) ;
+ int S_OK ;
+ TYPE_2__* nsChannelBSC_from_BSCallback (int *) ;
+ int read_post_data_stream (scalar_t__,int ,int *,int *) ;
 
 __attribute__((used)) static HRESULT nsChannelBSC_init_bindinfo(BSCallback *bsc)
 {

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  error; int /*<<< orphan*/  attr; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int error; int attr; } ;
 struct TYPE_10__ {scalar_t__ offset; } ;
-struct TYPE_9__ {int /*<<< orphan*/  stream; } ;
-typedef  scalar_t__ HPDF_UINT32 ;
-typedef  scalar_t__ HPDF_UINT16 ;
-typedef  scalar_t__ HPDF_UINT ;
-typedef  TYPE_1__* HPDF_TTFontDefAttr ;
-typedef  TYPE_2__ HPDF_TTFTable ;
-typedef  scalar_t__ HPDF_STATUS ;
-typedef  scalar_t__ HPDF_INT32 ;
-typedef  TYPE_3__* HPDF_FontDef ;
+struct TYPE_9__ {int stream; } ;
+typedef scalar_t__ HPDF_UINT32 ;
+typedef scalar_t__ HPDF_UINT16 ;
+typedef scalar_t__ HPDF_UINT ;
+typedef TYPE_1__* HPDF_TTFontDefAttr ;
+typedef TYPE_2__ HPDF_TTFTable ;
+typedef scalar_t__ HPDF_STATUS ;
+typedef scalar_t__ HPDF_INT32 ;
+typedef TYPE_3__* HPDF_FontDef ;
 
-/* Variables and functions */
- TYPE_2__* FindTable (TYPE_3__*,char*) ; 
- scalar_t__ GetUINT16 (int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ GetUINT32 (int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ HPDF_Error_GetCode (int /*<<< orphan*/ ) ; 
- scalar_t__ HPDF_OK ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- int /*<<< orphan*/  HPDF_SEEK_SET ; 
- scalar_t__ HPDF_SetError (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ HPDF_Stream_Seek (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ HPDF_Stream_Tell (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_TTF_INVALID_FOMAT ; 
- int /*<<< orphan*/  HPDF_TTF_MISSING_TABLE ; 
- scalar_t__ ParseCMAP_format0 (TYPE_3__*,scalar_t__) ; 
- scalar_t__ ParseCMAP_format4 (TYPE_3__*,scalar_t__) ; 
+
+ TYPE_2__* FindTable (TYPE_3__*,char*) ;
+ scalar_t__ GetUINT16 (int ,scalar_t__*) ;
+ scalar_t__ GetUINT32 (int ,scalar_t__*) ;
+ scalar_t__ HPDF_Error_GetCode (int ) ;
+ scalar_t__ HPDF_OK ;
+ int HPDF_PTRACE (char*) ;
+ int HPDF_SEEK_SET ;
+ scalar_t__ HPDF_SetError (int ,int ,int) ;
+ scalar_t__ HPDF_Stream_Seek (int ,scalar_t__,int ) ;
+ scalar_t__ HPDF_Stream_Tell (int ) ;
+ int HPDF_TTF_INVALID_FOMAT ;
+ int HPDF_TTF_MISSING_TABLE ;
+ scalar_t__ ParseCMAP_format0 (TYPE_3__*,scalar_t__) ;
+ scalar_t__ ParseCMAP_format4 (TYPE_3__*,scalar_t__) ;
 
 __attribute__((used)) static HPDF_STATUS
-ParseCMap (HPDF_FontDef  fontdef)
+ParseCMap (HPDF_FontDef fontdef)
 {
     HPDF_TTFontDefAttr attr = (HPDF_TTFontDefAttr)fontdef->attr;
     HPDF_TTFTable *tbl = FindTable (fontdef, "cmap");
@@ -103,13 +103,13 @@ ParseCMap (HPDF_FontDef  fontdef)
                         "encodingID=%u format=%u offset=%u\n", i, platformID,
                         encodingID, format, (HPDF_UINT)offset));
 
-        /* MS-Unicode-CMAP is used for priority */
+
         if (platformID == 3 && encodingID == 1 && format == 4) {
             ms_unicode_encoding_offset = offset;
             break;
         }
 
-        /* Byte-Encoding-CMAP will be used if MS-Unicode-CMAP is not found */
+
         if (platformID == 1 && encodingID ==0 && format == 1)
             byte_encoding_offset = offset;
 

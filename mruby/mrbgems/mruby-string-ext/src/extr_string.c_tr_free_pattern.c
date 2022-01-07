@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tr_pattern {scalar_t__ flag_on_heap; struct tr_pattern* next; } ;
-typedef  int /*<<< orphan*/  mrb_state ;
+typedef int mrb_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mrb_free (int /*<<< orphan*/ *,struct tr_pattern*) ; 
+
+ int mrb_free (int *,struct tr_pattern*) ;
 
 __attribute__((used)) static inline void
 tr_free_pattern(mrb_state *mrb, struct tr_pattern *pat)

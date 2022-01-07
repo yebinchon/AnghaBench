@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int hashso_buc_populated; int hashso_buc_split; scalar_t__ numKilled; int /*<<< orphan*/ * killedItems; void* hashso_split_bucket_buf; void* hashso_bucket_buf; int /*<<< orphan*/  currPos; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int hashso_buc_populated; int hashso_buc_split; scalar_t__ numKilled; int * killedItems; void* hashso_split_bucket_buf; void* hashso_bucket_buf; int currPos; } ;
 struct TYPE_5__ {TYPE_2__* opaque; } ;
-typedef  int /*<<< orphan*/  Relation ;
-typedef  TYPE_1__* IndexScanDesc ;
-typedef  int /*<<< orphan*/  HashScanOpaqueData ;
-typedef  TYPE_2__* HashScanOpaque ;
+typedef int Relation ;
+typedef TYPE_1__* IndexScanDesc ;
+typedef int HashScanOpaqueData ;
+typedef TYPE_2__* HashScanOpaque ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- int /*<<< orphan*/  HashScanPosInvalidate (int /*<<< orphan*/ ) ; 
- void* InvalidBuffer ; 
- TYPE_1__* RelationGetIndexScan (int /*<<< orphan*/ ,int,int) ; 
- scalar_t__ palloc (int) ; 
+
+ int Assert (int) ;
+ int HashScanPosInvalidate (int ) ;
+ void* InvalidBuffer ;
+ TYPE_1__* RelationGetIndexScan (int ,int,int) ;
+ scalar_t__ palloc (int) ;
 
 IndexScanDesc
 hashbeginscan(Relation rel, int nkeys, int norderbys)
 {
-	IndexScanDesc scan;
-	HashScanOpaque so;
+ IndexScanDesc scan;
+ HashScanOpaque so;
 
-	/* no order by operators allowed */
-	Assert(norderbys == 0);
 
-	scan = RelationGetIndexScan(rel, nkeys, norderbys);
+ Assert(norderbys == 0);
 
-	so = (HashScanOpaque) palloc(sizeof(HashScanOpaqueData));
-	HashScanPosInvalidate(so->currPos);
-	so->hashso_bucket_buf = InvalidBuffer;
-	so->hashso_split_bucket_buf = InvalidBuffer;
+ scan = RelationGetIndexScan(rel, nkeys, norderbys);
 
-	so->hashso_buc_populated = false;
-	so->hashso_buc_split = false;
+ so = (HashScanOpaque) palloc(sizeof(HashScanOpaqueData));
+ HashScanPosInvalidate(so->currPos);
+ so->hashso_bucket_buf = InvalidBuffer;
+ so->hashso_split_bucket_buf = InvalidBuffer;
 
-	so->killedItems = NULL;
-	so->numKilled = 0;
+ so->hashso_buc_populated = 0;
+ so->hashso_buc_split = 0;
 
-	scan->opaque = so;
+ so->killedItems = ((void*)0);
+ so->numKilled = 0;
 
-	return scan;
+ scan->opaque = so;
+
+ return scan;
 }

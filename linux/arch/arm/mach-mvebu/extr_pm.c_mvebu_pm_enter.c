@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int suspend_state_t ;
 
-/* Variables and functions */
- int EINVAL ; 
-#define  PM_SUSPEND_MEM 129 
-#define  PM_SUSPEND_STANDBY 128 
- int /*<<< orphan*/  cpu_do_idle () ; 
- int mvebu_enter_suspend () ; 
- int /*<<< orphan*/  pr_warn (char*) ; 
+
+
+
+typedef int suspend_state_t ;
+
+
+ int EINVAL ;
+
+
+ int cpu_do_idle () ;
+ int mvebu_enter_suspend () ;
+ int pr_warn (char*) ;
 
 __attribute__((used)) static int mvebu_pm_enter(suspend_state_t state)
 {
-	switch (state) {
-	case PM_SUSPEND_STANDBY:
-		cpu_do_idle();
-		break;
-	case PM_SUSPEND_MEM:
-		pr_warn("Entering suspend to RAM. Only special wake-up sources will resume the system\n");
-		return mvebu_enter_suspend();
-	default:
-		return -EINVAL;
-	}
-	return 0;
+ switch (state) {
+ case 128:
+  cpu_do_idle();
+  break;
+ case 129:
+  pr_warn("Entering suspend to RAM. Only special wake-up sources will resume the system\n");
+  return mvebu_enter_suspend();
+ default:
+  return -EINVAL;
+ }
+ return 0;
 }

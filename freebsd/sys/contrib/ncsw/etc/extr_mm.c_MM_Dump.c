@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_2__** freeBlocks; TYPE_3__* busyBlocks; } ;
-typedef  TYPE_1__ t_MM ;
-typedef  scalar_t__ t_Handle ;
-struct TYPE_5__ {struct TYPE_5__* p_Next; int /*<<< orphan*/  end; int /*<<< orphan*/  base; } ;
-typedef  TYPE_2__ t_FreeBlock ;
-struct TYPE_6__ {struct TYPE_6__* p_Next; int /*<<< orphan*/  end; int /*<<< orphan*/  base; int /*<<< orphan*/  name; } ;
-typedef  TYPE_3__ t_BusyBlock ;
+typedef TYPE_1__ t_MM ;
+typedef scalar_t__ t_Handle ;
+struct TYPE_5__ {struct TYPE_5__* p_Next; int end; int base; } ;
+typedef TYPE_2__ t_FreeBlock ;
+struct TYPE_6__ {struct TYPE_6__* p_Next; int end; int base; int name; } ;
+typedef TYPE_3__ t_BusyBlock ;
 
-/* Variables and functions */
- int MM_MAX_ALIGNMENT ; 
- int /*<<< orphan*/  XX_Print (char*,...) ; 
+
+ int MM_MAX_ALIGNMENT ;
+ int XX_Print (char*,...) ;
 
 void MM_Dump(t_Handle h_MM)
 {
-    t_MM        *p_MM = (t_MM *)h_MM;
+    t_MM *p_MM = (t_MM *)h_MM;
     t_FreeBlock *p_FreeB;
     t_BusyBlock *p_BusyB;
-    int          i;
+    int i;
 
     p_BusyB = p_MM->busyBlocks;
     XX_Print("List of busy blocks:\n");

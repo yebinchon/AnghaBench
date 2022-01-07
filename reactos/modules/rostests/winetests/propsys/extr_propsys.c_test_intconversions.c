@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int USHORT ;
-typedef  int ULONGLONG ;
-typedef  int ULONG ;
+
+
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int USHORT ;
+typedef int ULONGLONG ;
+typedef int ULONG ;
 struct TYPE_13__ {int QuadPart; } ;
 struct TYPE_12__ {int QuadPart; } ;
 struct TYPE_14__ {int ulVal; int lVal; int uiVal; int iVal; TYPE_2__ hVal; TYPE_1__ uhVal; } ;
 struct TYPE_15__ {int vt; TYPE_3__ u; } ;
-typedef  int SHORT ;
-typedef  TYPE_4__ PROPVARIANT ;
-typedef  int LONGLONG ;
-typedef  int LONG ;
-typedef  int HRESULT ;
+typedef int SHORT ;
+typedef TYPE_4__ PROPVARIANT ;
+typedef int LONGLONG ;
+typedef int LONG ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_ARITHMETIC_OVERFLOW ; 
- int /*<<< orphan*/  FAILED (int) ; 
- int HRESULT_FROM_WIN32 (int /*<<< orphan*/ ) ; 
- int PropVariantClear (TYPE_4__*) ; 
- int PropVariantToInt16 (TYPE_4__*,int*) ; 
- int PropVariantToInt32 (TYPE_4__*,int*) ; 
- int PropVariantToInt64 (TYPE_4__*,int*) ; 
- int PropVariantToUInt16 (TYPE_4__*,int*) ; 
- int PropVariantToUInt32 (TYPE_4__*,int*) ; 
- int PropVariantToUInt64 (TYPE_4__*,int*) ; 
- int S_OK ; 
- int VT_I2 ; 
- int VT_I4 ; 
- void* VT_I8 ; 
- int VT_UI2 ; 
- int VT_UI4 ; 
- int VT_UI8 ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int wine_dbgstr_longlong (int) ; 
+
+ int ERROR_ARITHMETIC_OVERFLOW ;
+ int FAILED (int) ;
+ int HRESULT_FROM_WIN32 (int ) ;
+ int PropVariantClear (TYPE_4__*) ;
+ int PropVariantToInt16 (TYPE_4__*,int*) ;
+ int PropVariantToInt32 (TYPE_4__*,int*) ;
+ int PropVariantToInt64 (TYPE_4__*,int*) ;
+ int PropVariantToUInt16 (TYPE_4__*,int*) ;
+ int PropVariantToUInt32 (TYPE_4__*,int*) ;
+ int PropVariantToUInt64 (TYPE_4__*,int*) ;
+ int S_OK ;
+ int VT_I2 ;
+ int VT_I4 ;
+ void* VT_I8 ;
+ int VT_UI2 ;
+ int VT_UI4 ;
+ int VT_UI8 ;
+ int ok (int,char*,...) ;
+ int wine_dbgstr_longlong (int) ;
 
 __attribute__((used)) static void test_intconversions(void)
 {

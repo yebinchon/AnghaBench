@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  TCP_Server ;
-typedef  int /*<<< orphan*/  TCP_Secure_Connection ;
 
-/* Variables and functions */
- int add_accepted (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int handle_TCP_packet (int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kill_TCP_connection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kill_accepted (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sodium_memzero (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int TCP_Server ;
+typedef int TCP_Secure_Connection ;
+
+
+ int add_accepted (int *,int *) ;
+ int handle_TCP_packet (int *,int,int const*,int ) ;
+ int kill_TCP_connection (int *) ;
+ int kill_accepted (int *,int) ;
+ int sodium_memzero (int *,int) ;
 
 __attribute__((used)) static int confirm_TCP_connection(TCP_Server *TCP_server, TCP_Secure_Connection *con, const uint8_t *data,
                                   uint16_t length)

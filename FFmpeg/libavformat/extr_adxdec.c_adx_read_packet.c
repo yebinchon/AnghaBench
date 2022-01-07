@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_15__ {int header_size; } ;
 struct TYPE_14__ {int channels; } ;
-struct TYPE_13__ {int /*<<< orphan*/  pb; TYPE_1__** streams; TYPE_5__* priv_data; } ;
-struct TYPE_12__ {int pos; int size; int duration; int pts; int /*<<< orphan*/  data; scalar_t__ stream_index; } ;
+struct TYPE_13__ {int pb; TYPE_1__** streams; TYPE_5__* priv_data; } ;
+struct TYPE_12__ {int pos; int size; int duration; int pts; int data; scalar_t__ stream_index; } ;
 struct TYPE_11__ {TYPE_4__* codecpar; } ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFormatContext ;
-typedef  TYPE_4__ AVCodecParameters ;
-typedef  TYPE_5__ ADXDemuxerContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFormatContext ;
+typedef TYPE_4__ AVCodecParameters ;
+typedef TYPE_5__ ADXDemuxerContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int AV_RB16 (int /*<<< orphan*/ ) ; 
- int BLOCK_SIZE ; 
- int /*<<< orphan*/  EIO ; 
- int av_get_packet (int /*<<< orphan*/ ,TYPE_2__*,int) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_2__*) ; 
- int avio_tell (int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_RB16 (int ) ;
+ int BLOCK_SIZE ;
+ int EIO ;
+ int av_get_packet (int ,TYPE_2__*,int) ;
+ int av_log (TYPE_3__*,int ,char*,int) ;
+ int av_packet_unref (TYPE_2__*) ;
+ int avio_tell (int ) ;
 
 __attribute__((used)) static int adx_read_packet(AVFormatContext *s, AVPacket *pkt)
 {
@@ -63,9 +63,9 @@ __attribute__((used)) static int adx_read_packet(AVFormatContext *s, AVPacket *p
         av_packet_unref(pkt);
         return AVERROR_EOF;
     }
-    pkt->size     = size;
+    pkt->size = size;
     pkt->duration = 1;
-    pkt->pts      = (pkt->pos - c->header_size) / size;
+    pkt->pts = (pkt->pos - c->header_size) / size;
 
     return 0;
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct inf_section {char* name; int /*<<< orphan*/  entry; int /*<<< orphan*/  values; struct inf_file* file; } ;
-struct inf_file {int /*<<< orphan*/  sections; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  S_OK ; 
- struct inf_section* heap_alloc_zero (int) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_init (int /*<<< orphan*/ *) ; 
- char* strchr (char*,char) ; 
- char* trim (char*,char**,int /*<<< orphan*/ ) ; 
+
+
+
+struct inf_section {char* name; int entry; int values; struct inf_file* file; } ;
+struct inf_file {int sections; } ;
+typedef int HRESULT ;
+
+
+ int E_OUTOFMEMORY ;
+ int FALSE ;
+ int S_OK ;
+ struct inf_section* heap_alloc_zero (int) ;
+ int list_add_tail (int *,int *) ;
+ int list_init (int *) ;
+ char* strchr (char*,char) ;
+ char* trim (char*,char**,int ) ;
 
 __attribute__((used)) static HRESULT inf_section_parse(struct inf_file *inf, char *line, char *last_chr, struct inf_section **section)
 {
@@ -46,7 +46,7 @@ __attribute__((used)) static HRESULT inf_section_parse(struct inf_file *inf, cha
         return S_OK;
 
     *last_chr = 0;
-    name = trim(line, NULL, FALSE);
+    name = trim(line, ((void*)0), FALSE);
     if (!name) return S_OK;
 
     sec = heap_alloc_zero(sizeof(*sec));

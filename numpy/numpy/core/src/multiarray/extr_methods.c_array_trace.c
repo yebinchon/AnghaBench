@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArray_Descr ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyArg_ParseTupleAndKeywords (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,char**,int*,int*,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  PyArray_DescrConverter2 ; 
- int /*<<< orphan*/  PyArray_OutputConverter ; 
- int /*<<< orphan*/ * PyArray_Return (int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_Trace (int /*<<< orphan*/ *,int,int,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
- int _CHKTYPENUM (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int PyObject ;
+typedef int PyArray_Descr ;
+typedef int PyArrayObject ;
+
+
+ int PyArg_ParseTupleAndKeywords (int *,int *,char*,char**,int*,int*,int*,int ,int **,int ,int **) ;
+ int PyArray_DescrConverter2 ;
+ int PyArray_OutputConverter ;
+ int * PyArray_Return (int *) ;
+ scalar_t__ PyArray_Trace (int *,int,int,int,int,int *) ;
+ int Py_XDECREF (int *) ;
+ int _CHKTYPENUM (int *) ;
 
 __attribute__((used)) static PyObject *
 array_trace(PyArrayObject *self, PyObject *args, PyObject *kwds)
 {
     int axis1 = 0, axis2 = 1, offset = 0;
-    PyArray_Descr *dtype = NULL;
-    PyArrayObject *out = NULL;
+    PyArray_Descr *dtype = ((void*)0);
+    PyArrayObject *out = ((void*)0);
     int rtype;
-    static char *kwlist[] = {"offset", "axis1", "axis2", "dtype", "out", NULL};
+    static char *kwlist[] = {"offset", "axis1", "axis2", "dtype", "out", ((void*)0)};
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "|iiiO&O&:trace", kwlist,
                                      &offset,
@@ -39,7 +39,7 @@ array_trace(PyArrayObject *self, PyObject *args, PyObject *kwds)
                                      PyArray_DescrConverter2, &dtype,
                                      PyArray_OutputConverter, &out)) {
         Py_XDECREF(dtype);
-        return NULL;
+        return ((void*)0);
     }
 
     rtype = _CHKTYPENUM(dtype);

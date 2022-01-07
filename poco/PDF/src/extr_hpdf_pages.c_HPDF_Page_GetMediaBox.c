@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  top; int /*<<< orphan*/  right; int /*<<< orphan*/  bottom; int /*<<< orphan*/  left; int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-struct TYPE_10__ {int /*<<< orphan*/  error; } ;
-struct TYPE_9__ {int /*<<< orphan*/  value; } ;
-typedef  TYPE_1__* HPDF_Real ;
-typedef  TYPE_2__* HPDF_Page ;
-typedef  TYPE_3__ HPDF_Box ;
-typedef  scalar_t__ HPDF_Array ;
 
-/* Variables and functions */
- TYPE_1__* HPDF_Array_GetItem (scalar_t__,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_CheckError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_OCLASS_ARRAY ; 
- int /*<<< orphan*/  HPDF_OCLASS_REAL ; 
- int /*<<< orphan*/  HPDF_PAGE_CANNOT_FIND_OBJECT ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- scalar_t__ HPDF_Page_GetInheritableItem (TYPE_2__*,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ HPDF_Page_Validate (TYPE_2__*) ; 
- int /*<<< orphan*/  HPDF_RaiseError (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int top; int right; int bottom; int left; int member_3; int member_2; int member_1; int member_0; } ;
+struct TYPE_10__ {int error; } ;
+struct TYPE_9__ {int value; } ;
+typedef TYPE_1__* HPDF_Real ;
+typedef TYPE_2__* HPDF_Page ;
+typedef TYPE_3__ HPDF_Box ;
+typedef scalar_t__ HPDF_Array ;
+
+
+ TYPE_1__* HPDF_Array_GetItem (scalar_t__,int,int ) ;
+ int HPDF_CheckError (int ) ;
+ int HPDF_OCLASS_ARRAY ;
+ int HPDF_OCLASS_REAL ;
+ int HPDF_PAGE_CANNOT_FIND_OBJECT ;
+ int HPDF_PTRACE (char*) ;
+ scalar_t__ HPDF_Page_GetInheritableItem (TYPE_2__*,char*,int ) ;
+ scalar_t__ HPDF_Page_Validate (TYPE_2__*) ;
+ int HPDF_RaiseError (int ,int ,int ) ;
 
 HPDF_Box
-HPDF_Page_GetMediaBox  (HPDF_Page   page)
+HPDF_Page_GetMediaBox (HPDF_Page page)
 {
     HPDF_Box media_box = {0, 0, 0, 0};
 

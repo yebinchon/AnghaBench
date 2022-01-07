@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cluster {void* crc64_array; void* binlog_buffer; void* fptr; void* wptr; void* binlog_buffer_end; } ;
 
-/* Variables and functions */
- int BINLOG_BUFFER_SIZE ; 
- int CRC64_ARRAY_STEP_LOG ; 
- int MAX_BINLOG_SIZE ; 
- int /*<<< orphan*/  assert (void*) ; 
- void* malloc (int) ; 
- int /*<<< orphan*/  vkprintf (int,char*) ; 
- struct cluster* zmalloc0 (int) ; 
+
+ int BINLOG_BUFFER_SIZE ;
+ int CRC64_ARRAY_STEP_LOG ;
+ int MAX_BINLOG_SIZE ;
+ int assert (void*) ;
+ void* malloc (int) ;
+ int vkprintf (int,char*) ;
+ struct cluster* zmalloc0 (int) ;
 
 struct cluster *alloc_new_cluster (void) {
   vkprintf (2, "Allocating new cluster\n");

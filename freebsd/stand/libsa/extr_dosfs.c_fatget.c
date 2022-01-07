@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_int ;
-typedef  int /*<<< orphan*/  u_char ;
-struct TYPE_4__ {int fatsz; int fatbuf_blknum; int /*<<< orphan*/ * fatbuf; int /*<<< orphan*/  fd; int /*<<< orphan*/  spf; } ;
-typedef  TYPE_1__ DOS_FS ;
 
-/* Variables and functions */
- int EINVAL ; 
- int FATBLKSZ ; 
- int cv2 (int /*<<< orphan*/  const*) ; 
- int cv4 (int /*<<< orphan*/  const*) ; 
- int dos_read_fatblk (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int fatoff (int,int) ; 
- int secbyt (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u_int ;
+typedef int u_char ;
+struct TYPE_4__ {int fatsz; int fatbuf_blknum; int * fatbuf; int fd; int spf; } ;
+typedef TYPE_1__ DOS_FS ;
+
+
+ int EINVAL ;
+ int FATBLKSZ ;
+ int cv2 (int const*) ;
+ int cv4 (int const*) ;
+ int dos_read_fatblk (TYPE_1__*,int ,int) ;
+ int fatoff (int,int) ;
+ int secbyt (int ) ;
 
 __attribute__((used)) static int
 fatget(DOS_FS *fs, u_int *c)
@@ -32,12 +32,12 @@ fatget(DOS_FS *fs, u_int *c)
     const u_char *p_entry;
     int err;
 
-    /* check input value to prevent overflow in fatoff() */
+
     val_in = *c;
     if (val_in & 0xf0000000)
         return (EINVAL);
 
-    /* ensure that current 128K FAT block is cached */
+
     offset = fatoff(fs->fatsz, val_in);
     nbyte = fs->fatsz != 32 ? 2 : 4;
     if (offset + nbyte > secbyt(fs->spf))
@@ -53,7 +53,7 @@ fatget(DOS_FS *fs, u_int *c)
     }
     p_entry = fs->fatbuf + offset;
 
-    /* extract cluster number from FAT entry */
+
     switch (fs->fatsz) {
     case 32:
         val_out = cv4(p_entry);

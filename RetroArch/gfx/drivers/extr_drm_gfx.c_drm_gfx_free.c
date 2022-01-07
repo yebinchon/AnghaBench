@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct drm_video {int /*<<< orphan*/  vsync_condition; int /*<<< orphan*/  vsync_cond_mutex; int /*<<< orphan*/  pending_mutex; scalar_t__ menu_surface; scalar_t__ main_surface; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  drm_surface_free (struct drm_video*,scalar_t__*) ; 
- int /*<<< orphan*/  free (struct drm_video*) ; 
- int /*<<< orphan*/ * g_drm_mode ; 
- int /*<<< orphan*/  scond_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slock_free (int /*<<< orphan*/ ) ; 
+
+
+
+struct drm_video {int vsync_condition; int vsync_cond_mutex; int pending_mutex; scalar_t__ menu_surface; scalar_t__ main_surface; } ;
+
+
+ int drm_surface_free (struct drm_video*,scalar_t__*) ;
+ int free (struct drm_video*) ;
+ int * g_drm_mode ;
+ int scond_free (int ) ;
+ int slock_free (int ) ;
 
 __attribute__((used)) static void drm_gfx_free(void *data)
 {
@@ -31,12 +31,12 @@ __attribute__((used)) static void drm_gfx_free(void *data)
    if (_drmvars->menu_surface)
       drm_surface_free(_drmvars, &_drmvars->menu_surface);
 
-   /* Destroy mutexes and conditions. */
+
    slock_free(_drmvars->pending_mutex);
    slock_free(_drmvars->vsync_cond_mutex);
    scond_free(_drmvars->vsync_condition);
 
-   g_drm_mode = NULL;
+   g_drm_mode = ((void*)0);
 
    free(_drmvars);
 }

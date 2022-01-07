@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_28__   TYPE_6__ ;
-typedef  struct TYPE_27__   TYPE_5__ ;
-typedef  struct TYPE_26__   TYPE_4__ ;
-typedef  struct TYPE_25__   TYPE_3__ ;
-typedef  struct TYPE_24__   TYPE_2__ ;
-typedef  struct TYPE_23__   TYPE_1__ ;
-typedef  struct TYPE_22__   TYPE_17__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_28__ TYPE_6__ ;
+typedef struct TYPE_27__ TYPE_5__ ;
+typedef struct TYPE_26__ TYPE_4__ ;
+typedef struct TYPE_25__ TYPE_3__ ;
+typedef struct TYPE_24__ TYPE_2__ ;
+typedef struct TYPE_23__ TYPE_1__ ;
+typedef struct TYPE_22__ TYPE_17__ ;
+
+
 struct TYPE_25__ {TYPE_1__* item; } ;
-typedef  TYPE_3__ traverse_ptr ;
+typedef TYPE_3__ traverse_ptr ;
 struct TYPE_24__ {TYPE_17__* opts; } ;
-struct TYPE_26__ {int /*<<< orphan*/  tree_lock; int /*<<< orphan*/  root_root; TYPE_2__ balance; } ;
-typedef  TYPE_4__ device_extension ;
-struct TYPE_28__ {int /*<<< orphan*/  system; int /*<<< orphan*/  flags; int /*<<< orphan*/  metadata; int /*<<< orphan*/  data; } ;
-struct TYPE_27__ {scalar_t__ offset; int /*<<< orphan*/  obj_type; int /*<<< orphan*/  obj_id; } ;
-struct TYPE_23__ {int /*<<< orphan*/  key; } ;
+struct TYPE_26__ {int tree_lock; int root_root; TYPE_2__ balance; } ;
+typedef TYPE_4__ device_extension ;
+struct TYPE_28__ {int system; int flags; int metadata; int data; } ;
+struct TYPE_27__ {scalar_t__ offset; int obj_type; int obj_id; } ;
+struct TYPE_23__ {int key; } ;
 struct TYPE_22__ {int flags; } ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  TYPE_5__ KEY ;
-typedef  TYPE_6__ BALANCE_ITEM ;
+typedef int NTSTATUS ;
+typedef TYPE_5__ KEY ;
+typedef TYPE_6__ BALANCE_ITEM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALLOC_TAG ; 
- int /*<<< orphan*/  BALANCE_FLAGS_DATA ; 
- int /*<<< orphan*/  BALANCE_FLAGS_METADATA ; 
- int /*<<< orphan*/  BALANCE_FLAGS_SYSTEM ; 
- int /*<<< orphan*/  BALANCE_ITEM_ID ; 
- size_t BALANCE_OPTS_DATA ; 
- size_t BALANCE_OPTS_METADATA ; 
- size_t BALANCE_OPTS_SYSTEM ; 
- int BTRFS_BALANCE_OPTS_ENABLED ; 
- int /*<<< orphan*/  ERR (char*,...) ; 
- int /*<<< orphan*/  ExAcquireResourceExclusiveLite (int /*<<< orphan*/ *,int) ; 
- TYPE_6__* ExAllocatePoolWithTag (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExFreePool (TYPE_6__*) ; 
- int /*<<< orphan*/  ExReleaseResourceLite (int /*<<< orphan*/ *) ; 
- scalar_t__ NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PagedPool ; 
- int /*<<< orphan*/  RtlZeroMemory (TYPE_6__*,int) ; 
- int /*<<< orphan*/  STATUS_INSUFFICIENT_RESOURCES ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  TYPE_TEMP_ITEM ; 
- int /*<<< orphan*/  copy_balance_args (TYPE_17__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  delete_tree_item (TYPE_4__*,TYPE_3__*) ; 
- int /*<<< orphan*/  do_write (TYPE_4__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  find_item (TYPE_4__*,int /*<<< orphan*/ ,TYPE_3__*,TYPE_5__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_trees (TYPE_4__*) ; 
- int /*<<< orphan*/  insert_tree_item (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_6__*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  keycmp (int /*<<< orphan*/ ,TYPE_5__) ; 
+
+ int ALLOC_TAG ;
+ int BALANCE_FLAGS_DATA ;
+ int BALANCE_FLAGS_METADATA ;
+ int BALANCE_FLAGS_SYSTEM ;
+ int BALANCE_ITEM_ID ;
+ size_t BALANCE_OPTS_DATA ;
+ size_t BALANCE_OPTS_METADATA ;
+ size_t BALANCE_OPTS_SYSTEM ;
+ int BTRFS_BALANCE_OPTS_ENABLED ;
+ int ERR (char*,...) ;
+ int ExAcquireResourceExclusiveLite (int *,int) ;
+ TYPE_6__* ExAllocatePoolWithTag (int ,int,int ) ;
+ int ExFreePool (TYPE_6__*) ;
+ int ExReleaseResourceLite (int *) ;
+ scalar_t__ NT_SUCCESS (int ) ;
+ int PagedPool ;
+ int RtlZeroMemory (TYPE_6__*,int) ;
+ int STATUS_INSUFFICIENT_RESOURCES ;
+ int STATUS_SUCCESS ;
+ int TYPE_TEMP_ITEM ;
+ int copy_balance_args (TYPE_17__*,int *) ;
+ int delete_tree_item (TYPE_4__*,TYPE_3__*) ;
+ int do_write (TYPE_4__*,int *) ;
+ int find_item (TYPE_4__*,int ,TYPE_3__*,TYPE_5__*,int,int *) ;
+ int free_trees (TYPE_4__*) ;
+ int insert_tree_item (TYPE_4__*,int ,int ,int ,int ,TYPE_6__*,int,int *,int *) ;
+ int keycmp (int ,TYPE_5__) ;
 
 __attribute__((used)) static NTSTATUS add_balance_item(device_extension* Vcb) {
     KEY searchkey;
@@ -69,9 +69,9 @@ __attribute__((used)) static NTSTATUS add_balance_item(device_extension* Vcb) {
     searchkey.obj_type = TYPE_TEMP_ITEM;
     searchkey.offset = 0;
 
-    ExAcquireResourceExclusiveLite(&Vcb->tree_lock, true);
+    ExAcquireResourceExclusiveLite(&Vcb->tree_lock, 1);
 
-    Status = find_item(Vcb, Vcb->root_root, &tp, &searchkey, false, NULL);
+    Status = find_item(Vcb, Vcb->root_root, &tp, &searchkey, 0, ((void*)0));
     if (!NT_SUCCESS(Status)) {
         ERR("find_item returned %08x\n", Status);
         goto end;
@@ -109,7 +109,7 @@ __attribute__((used)) static NTSTATUS add_balance_item(device_extension* Vcb) {
         copy_balance_args(&Vcb->balance.opts[BALANCE_OPTS_SYSTEM], &bi->system);
     }
 
-    Status = insert_tree_item(Vcb, Vcb->root_root, BALANCE_ITEM_ID, TYPE_TEMP_ITEM, 0, bi, sizeof(BALANCE_ITEM), NULL, NULL);
+    Status = insert_tree_item(Vcb, Vcb->root_root, BALANCE_ITEM_ID, TYPE_TEMP_ITEM, 0, bi, sizeof(BALANCE_ITEM), ((void*)0), ((void*)0));
     if (!NT_SUCCESS(Status)) {
         ERR("insert_tree_item returned %08x\n", Status);
         ExFreePool(bi);
@@ -120,7 +120,7 @@ __attribute__((used)) static NTSTATUS add_balance_item(device_extension* Vcb) {
 
 end:
     if (NT_SUCCESS(Status)) {
-        Status = do_write(Vcb, NULL);
+        Status = do_write(Vcb, ((void*)0));
         if (!NT_SUCCESS(Status))
             ERR("do_write returned %08x\n", Status);
     }

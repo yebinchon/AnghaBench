@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sdhci_msm_host {int /*<<< orphan*/  pwr_irq_wait; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  init_waitqueue_head (int /*<<< orphan*/ *) ; 
+
+
+
+struct sdhci_msm_host {int pwr_irq_wait; } ;
+
+
+ int init_waitqueue_head (int *) ;
 
 __attribute__((used)) static inline void sdhci_msm_init_pwr_irq_wait(struct sdhci_msm_host *msm_host)
 {
-	init_waitqueue_head(&msm_host->pwr_irq_wait);
+ init_waitqueue_head(&msm_host->pwr_irq_wait);
 }

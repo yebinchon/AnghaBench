@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ pReader; struct TYPE_5__* zDataTbl; int /*<<< orphan*/  pHash; int /*<<< orphan*/  pDataVersion; int /*<<< orphan*/  pIdxSelect; int /*<<< orphan*/  pIdxDeleter; int /*<<< orphan*/  pIdxWriter; int /*<<< orphan*/  pDeleter; int /*<<< orphan*/  pWriter; } ;
-typedef  TYPE_1__ Fts5Index ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fts5StructureInvalidate (TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3Fts5HashFree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_free (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ pReader; struct TYPE_5__* zDataTbl; int pHash; int pDataVersion; int pIdxSelect; int pIdxDeleter; int pIdxWriter; int pDeleter; int pWriter; } ;
+typedef TYPE_1__ Fts5Index ;
+
+
+ int SQLITE_OK ;
+ int assert (int) ;
+ int fts5StructureInvalidate (TYPE_1__*) ;
+ int sqlite3Fts5HashFree (int ) ;
+ int sqlite3_finalize (int ) ;
+ int sqlite3_free (TYPE_1__*) ;
 
 int sqlite3Fts5IndexClose(Fts5Index *p){
   int rc = SQLITE_OK;

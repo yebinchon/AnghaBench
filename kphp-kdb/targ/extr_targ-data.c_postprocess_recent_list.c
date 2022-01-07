@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- long Q_limit ; 
- int* R ; 
- long R_cnt ; 
- int /*<<< orphan*/  do_llswap (int*,long) ; 
- int /*<<< orphan*/  sort_recent_views (long long*,long) ; 
+ long Q_limit ;
+ int* R ;
+ long R_cnt ;
+ int do_llswap (int*,long) ;
+ int sort_recent_views (long long*,long) ;
 
 int postprocess_recent_list (int count) {
   R_cnt = 0;

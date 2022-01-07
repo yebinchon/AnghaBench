@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gpio_chip {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KEYDETR ; 
- int __raw_readw (int /*<<< orphan*/ ) ; 
+
+ int KEYDETR ;
+ int __raw_readw (int ) ;
 
 __attribute__((used)) static int x3proto_gpio_get(struct gpio_chip *chip, unsigned gpio)
 {
-	return !!(__raw_readw(KEYDETR) & (1 << gpio));
+ return !!(__raw_readw(KEYDETR) & (1 << gpio));
 }

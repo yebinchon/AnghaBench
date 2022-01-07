@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  bound_by_links; int /*<<< orphan*/  bound_to_links; } ;
-typedef  TYPE_1__ Link ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  hashmap_isempty (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  link_dirty (TYPE_1__*) ; 
- int /*<<< orphan*/  link_free_bound_by_list (TYPE_1__*) ; 
- int /*<<< orphan*/  link_free_bound_to_list (TYPE_1__*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int bound_by_links; int bound_to_links; } ;
+typedef TYPE_1__ Link ;
+
+
+ int assert (TYPE_1__*) ;
+ int hashmap_isempty (int ) ;
+ int link_dirty (TYPE_1__*) ;
+ int link_free_bound_by_list (TYPE_1__*) ;
+ int link_free_bound_to_list (TYPE_1__*) ;
 
 __attribute__((used)) static void link_free_carrier_maps(Link *link) {
-        bool list_updated = false;
+        bool list_updated = 0;
 
         assert(link);
 
         if (!hashmap_isempty(link->bound_to_links)) {
                 link_free_bound_to_list(link);
-                list_updated = true;
+                list_updated = 1;
         }
 
         if (!hashmap_isempty(link->bound_by_links)) {
                 link_free_bound_by_list(link);
-                list_updated = true;
+                list_updated = 1;
         }
 
         if (list_updated)

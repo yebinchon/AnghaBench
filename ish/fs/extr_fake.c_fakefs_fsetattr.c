@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ish_stat {int dummy; } ;
-struct fd {int /*<<< orphan*/  mount; int /*<<< orphan*/  fake_inode; } ;
+struct fd {int mount; int fake_inode; } ;
 struct attr {scalar_t__ type; } ;
 struct TYPE_2__ {int (* fsetattr ) (struct fd*,struct attr) ;} ;
 
-/* Variables and functions */
- scalar_t__ attr_size ; 
- int /*<<< orphan*/  db_begin (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  db_commit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fake_stat_setattr (struct ish_stat*,struct attr) ; 
- int /*<<< orphan*/  inode_read_stat (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct ish_stat*) ; 
- int /*<<< orphan*/  inode_write_stat (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct ish_stat*) ; 
- TYPE_1__ realfs ; 
- int stub1 (struct fd*,struct attr) ; 
+
+ scalar_t__ attr_size ;
+ int db_begin (int ) ;
+ int db_commit (int ) ;
+ int fake_stat_setattr (struct ish_stat*,struct attr) ;
+ int inode_read_stat (int ,int ,struct ish_stat*) ;
+ int inode_write_stat (int ,int ,struct ish_stat*) ;
+ TYPE_1__ realfs ;
+ int stub1 (struct fd*,struct attr) ;
 
 __attribute__((used)) static int fakefs_fsetattr(struct fd *fd, struct attr attr) {
     if (attr.type == attr_size)

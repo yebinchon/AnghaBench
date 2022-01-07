@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GC_EVENT_FLAGS ; 
- int /*<<< orphan*/  OpenEventW (int /*<<< orphan*/ ,int,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int wchar_t ;
+typedef int HANDLE ;
+
+
+ int GC_EVENT_FLAGS ;
+ int OpenEventW (int ,int,int const*) ;
 
 __attribute__((used)) static inline HANDLE open_event(const wchar_t *name)
 {
-	return OpenEventW(GC_EVENT_FLAGS, false, name);
+ return OpenEventW(GC_EVENT_FLAGS, 0, name);
 }

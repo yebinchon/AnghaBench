@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mm_struct {int /*<<< orphan*/  ioctx_list; int /*<<< orphan*/  ioctx_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_HLIST_HEAD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
+
+
+
+struct mm_struct {int ioctx_list; int ioctx_lock; } ;
+
+
+ int INIT_HLIST_HEAD (int *) ;
+ int spin_lock_init (int *) ;
 
 __attribute__((used)) static void mm_init_aio(struct mm_struct *mm)
 {
-#ifdef CONFIG_AIO
-	spin_lock_init(&mm->ioctx_lock);
-	INIT_HLIST_HEAD(&mm->ioctx_list);
-#endif
+
+
+
+
 }

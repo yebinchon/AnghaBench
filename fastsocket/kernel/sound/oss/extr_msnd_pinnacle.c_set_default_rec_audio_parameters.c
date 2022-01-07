@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  rec_channels; int /*<<< orphan*/  rec_sample_rate; int /*<<< orphan*/  rec_sample_size; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEFCHANNELS ; 
- int /*<<< orphan*/  DEFSAMPLERATE ; 
- int /*<<< orphan*/  DEFSAMPLESIZE ; 
- TYPE_1__ dev ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int rec_channels; int rec_sample_rate; int rec_sample_size; } ;
+
+
+ int DEFCHANNELS ;
+ int DEFSAMPLERATE ;
+ int DEFSAMPLESIZE ;
+ TYPE_1__ dev ;
 
 __attribute__((used)) static void set_default_rec_audio_parameters(void)
 {
-	dev.rec_sample_size = DEFSAMPLESIZE;
-	dev.rec_sample_rate = DEFSAMPLERATE;
-	dev.rec_channels = DEFCHANNELS;
+ dev.rec_sample_size = DEFSAMPLESIZE;
+ dev.rec_sample_rate = DEFSAMPLERATE;
+ dev.rec_channels = DEFCHANNELS;
 }

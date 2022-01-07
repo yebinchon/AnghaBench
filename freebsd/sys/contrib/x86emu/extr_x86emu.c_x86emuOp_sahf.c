@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int R_FLG; int R_AH; } ;
 struct x86emu {TYPE_1__ x86; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void
 x86emuOp_sahf(struct x86emu *emu)
 {
-	/* clear the lower bits of the flag register */
-	emu->x86.R_FLG &= 0xffffff00;
-	/* or in the AH register into the flags register */
-	emu->x86.R_FLG |= emu->x86.R_AH;
+
+ emu->x86.R_FLG &= 0xffffff00;
+
+ emu->x86.R_FLG |= emu->x86.R_AH;
 }

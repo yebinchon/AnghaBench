@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-struct TYPE_2__ {scalar_t__ encoding; int /*<<< orphan*/  coding; } ;
-typedef  int /*<<< orphan*/  OMX_VIDEO_CODINGTYPE ;
 
-/* Variables and functions */
- scalar_t__ MMAL_ENCODING_UNKNOWN ; 
- TYPE_1__* mmal_omx_video_coding_table ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+struct TYPE_2__ {scalar_t__ encoding; int coding; } ;
+typedef int OMX_VIDEO_CODINGTYPE ;
+
+
+ scalar_t__ MMAL_ENCODING_UNKNOWN ;
+ TYPE_1__* mmal_omx_video_coding_table ;
 
 OMX_VIDEO_CODINGTYPE mmalil_encoding_to_omx_video_coding(uint32_t encoding)
 {

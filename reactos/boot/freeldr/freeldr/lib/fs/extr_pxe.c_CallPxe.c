@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT16 ;
-struct TYPE_4__ {int /*<<< orphan*/  offset; int /*<<< orphan*/  segment; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UINT16 ;
+struct TYPE_4__ {int offset; int segment; } ;
 struct TYPE_5__ {TYPE_1__ EntryPointSP; } ;
-typedef  int /*<<< orphan*/  PXENV_STATUS ;
-typedef  scalar_t__ PXENV_EXIT ;
-typedef  scalar_t__ PVOID ;
-typedef  TYPE_2__* PPXE ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+typedef int PXENV_STATUS ;
+typedef scalar_t__ PXENV_EXIT ;
+typedef scalar_t__ PVOID ;
+typedef TYPE_2__* PPXE ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ,scalar_t__,scalar_t__,...) ; 
- int /*<<< orphan*/  FALSE ; 
- TYPE_2__* GetPxeStructure () ; 
- int /*<<< orphan*/  KeStallExecutionProcessor (int) ; 
- scalar_t__ PXENV_EXIT_SUCCESS ; 
- int /*<<< orphan*/  PXENV_STATUS_SUCCESS ; 
- int /*<<< orphan*/  PXENV_TFTP_READ ; 
- scalar_t__ PxeCallApi (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int ERR (char*,int ,scalar_t__,scalar_t__,...) ;
+ int FALSE ;
+ TYPE_2__* GetPxeStructure () ;
+ int KeStallExecutionProcessor (int) ;
+ scalar_t__ PXENV_EXIT_SUCCESS ;
+ int PXENV_STATUS_SUCCESS ;
+ int PXENV_TFTP_READ ;
+ scalar_t__ PxeCallApi (int ,int ,int ,scalar_t__) ;
+ int TRACE (char*,int ,scalar_t__) ;
+ int TRUE ;
 
 BOOLEAN CallPxe(UINT16 Service, PVOID Parameter)
 {
@@ -44,8 +44,8 @@ BOOLEAN CallPxe(UINT16 Service, PVOID Parameter)
 
     if (Service != PXENV_TFTP_READ)
     {
-        // HACK: this delay shouldn't be necessary
-        KeStallExecutionProcessor(100 * 1000); // 100 ms
+
+        KeStallExecutionProcessor(100 * 1000);
         TRACE("PxeCall(0x%x, %p)\n", Service, Parameter);
     }
 

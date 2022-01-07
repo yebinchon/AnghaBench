@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * dpy; int /*<<< orphan*/  fd; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * surface; scalar_t__ theme; } ;
-struct TYPE_7__ {scalar_t__ height; scalar_t__ width; int /*<<< orphan*/ * zxdg_toplevel; int /*<<< orphan*/ * xdg_toplevel; int /*<<< orphan*/ * surface; int /*<<< orphan*/ * xdg_surface; TYPE_2__ input; int /*<<< orphan*/ * registry; int /*<<< orphan*/ * compositor; int /*<<< orphan*/ * zxdg_shell; int /*<<< orphan*/ * xdg_shell; int /*<<< orphan*/ * win; scalar_t__ idle_inhibitor; scalar_t__ deco_manager; scalar_t__ deco; scalar_t__ idle_inhibit_manager; scalar_t__ zxdg_surface; scalar_t__ seat; TYPE_1__ cursor; scalar_t__ wl_touch; scalar_t__ wl_pointer; scalar_t__ wl_keyboard; int /*<<< orphan*/  vk; int /*<<< orphan*/  egl; } ;
-typedef  TYPE_3__ gfx_ctx_wayland_data_t ;
 
-/* Variables and functions */
-#define  GFX_CTX_NONE 132 
-#define  GFX_CTX_OPENGL_API 131 
-#define  GFX_CTX_OPENGL_ES_API 130 
-#define  GFX_CTX_OPENVG_API 129 
-#define  GFX_CTX_VULKAN_API 128 
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  egl_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_xkb () ; 
- int /*<<< orphan*/  vulkan_context_destroy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int wl_api ; 
- int /*<<< orphan*/  wl_compositor_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wl_cursor_theme_destroy (scalar_t__) ; 
- int /*<<< orphan*/  wl_display_disconnect (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wl_display_flush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wl_egl_window_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wl_keyboard_destroy (scalar_t__) ; 
- int /*<<< orphan*/  wl_pointer_destroy (scalar_t__) ; 
- int /*<<< orphan*/  wl_registry_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wl_seat_destroy (scalar_t__) ; 
- int /*<<< orphan*/  wl_surface_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wl_touch_destroy (scalar_t__) ; 
- int /*<<< orphan*/  xdg_surface_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xdg_toplevel_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xdg_wm_base_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zwp_idle_inhibit_manager_v1_destroy (scalar_t__) ; 
- int /*<<< orphan*/  zwp_idle_inhibitor_v1_destroy (scalar_t__) ; 
- int /*<<< orphan*/  zxdg_decoration_manager_v1_destroy (scalar_t__) ; 
- int /*<<< orphan*/  zxdg_shell_v6_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zxdg_surface_v6_destroy (scalar_t__) ; 
- int /*<<< orphan*/  zxdg_toplevel_decoration_v1_destroy (scalar_t__) ; 
- int /*<<< orphan*/  zxdg_toplevel_v6_destroy (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * dpy; int fd; } ;
+struct TYPE_5__ {int * surface; scalar_t__ theme; } ;
+struct TYPE_7__ {scalar_t__ height; scalar_t__ width; int * zxdg_toplevel; int * xdg_toplevel; int * surface; int * xdg_surface; TYPE_2__ input; int * registry; int * compositor; int * zxdg_shell; int * xdg_shell; int * win; scalar_t__ idle_inhibitor; scalar_t__ deco_manager; scalar_t__ deco; scalar_t__ idle_inhibit_manager; scalar_t__ zxdg_surface; scalar_t__ seat; TYPE_1__ cursor; scalar_t__ wl_touch; scalar_t__ wl_pointer; scalar_t__ wl_keyboard; int vk; int egl; } ;
+typedef TYPE_3__ gfx_ctx_wayland_data_t ;
+
+
+
+
+
+
+
+ int close (int ) ;
+ int egl_destroy (int *) ;
+ int free_xkb () ;
+ int vulkan_context_destroy (int *,int *) ;
+ int wl_api ;
+ int wl_compositor_destroy (int *) ;
+ int wl_cursor_theme_destroy (scalar_t__) ;
+ int wl_display_disconnect (int *) ;
+ int wl_display_flush (int *) ;
+ int wl_egl_window_destroy (int *) ;
+ int wl_keyboard_destroy (scalar_t__) ;
+ int wl_pointer_destroy (scalar_t__) ;
+ int wl_registry_destroy (int *) ;
+ int wl_seat_destroy (scalar_t__) ;
+ int wl_surface_destroy (int *) ;
+ int wl_touch_destroy (scalar_t__) ;
+ int xdg_surface_destroy (int *) ;
+ int xdg_toplevel_destroy (int *) ;
+ int xdg_wm_base_destroy (int *) ;
+ int zwp_idle_inhibit_manager_v1_destroy (scalar_t__) ;
+ int zwp_idle_inhibitor_v1_destroy (scalar_t__) ;
+ int zxdg_decoration_manager_v1_destroy (scalar_t__) ;
+ int zxdg_shell_v6_destroy (int *) ;
+ int zxdg_surface_v6_destroy (scalar_t__) ;
+ int zxdg_toplevel_decoration_v1_destroy (scalar_t__) ;
+ int zxdg_toplevel_v6_destroy (int *) ;
 
 __attribute__((used)) static void gfx_ctx_wl_destroy_resources(gfx_ctx_wayland_data_t *wl)
 {
@@ -58,32 +58,32 @@ __attribute__((used)) static void gfx_ctx_wl_destroy_resources(gfx_ctx_wayland_d
 
    switch (wl_api)
    {
-      case GFX_CTX_OPENGL_API:
-      case GFX_CTX_OPENGL_ES_API:
-      case GFX_CTX_OPENVG_API:
-#ifdef HAVE_EGL
-         egl_destroy(&wl->egl);
+      case 131:
+      case 130:
+      case 129:
 
-         if (wl->win)
-            wl_egl_window_destroy(wl->win);
-#endif
-         break;
-      case GFX_CTX_VULKAN_API:
-#ifdef HAVE_VULKAN
-         vulkan_context_destroy(&wl->vk, wl->surface);
 
-         if (wl->input.dpy != NULL && wl->input.fd >= 0)
-            close(wl->input.fd);
-#endif
+
+
+
+
          break;
-      case GFX_CTX_NONE:
+      case 128:
+
+
+
+
+
+
+         break;
+      case 132:
       default:
          break;
    }
 
-#ifdef HAVE_XKBCOMMON
-   free_xkb();
-#endif
+
+
+
 
    if (wl->wl_keyboard)
       wl_keyboard_destroy(wl->wl_keyboard);
@@ -132,20 +132,20 @@ __attribute__((used)) static void gfx_ctx_wl_destroy_resources(gfx_ctx_wayland_d
       wl_display_disconnect(wl->input.dpy);
    }
 
-#ifdef HAVE_EGL
-   wl->win              = NULL;
-#endif
-   wl->xdg_shell        = NULL;
-   wl->zxdg_shell       = NULL;
-   wl->compositor       = NULL;
-   wl->registry         = NULL;
-   wl->input.dpy        = NULL;
-   wl->xdg_surface      = NULL;
-   wl->surface          = NULL;
-   wl->xdg_toplevel     = NULL;
-   wl->zxdg_toplevel    = NULL;
 
-   wl->width            = 0;
-   wl->height           = 0;
+
+
+   wl->xdg_shell = ((void*)0);
+   wl->zxdg_shell = ((void*)0);
+   wl->compositor = ((void*)0);
+   wl->registry = ((void*)0);
+   wl->input.dpy = ((void*)0);
+   wl->xdg_surface = ((void*)0);
+   wl->surface = ((void*)0);
+   wl->xdg_toplevel = ((void*)0);
+   wl->zxdg_toplevel = ((void*)0);
+
+   wl->width = 0;
+   wl->height = 0;
 
 }

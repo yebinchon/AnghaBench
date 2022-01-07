@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  key ;
-typedef  int /*<<< orphan*/  iv ;
-typedef  int /*<<< orphan*/  expected ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PTLS_CIPHER_SUITE_CHACHA20_POLY1305_SHA256 ; 
- int /*<<< orphan*/  ctx ; 
- int /*<<< orphan*/  find_cipher (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_ctr (int /*<<< orphan*/ ,int const*,int,int const*,int,int const*,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int key ;
+typedef int iv ;
+typedef int expected ;
+
+
+ int PTLS_CIPHER_SUITE_CHACHA20_POLY1305_SHA256 ;
+ int ctx ;
+ int find_cipher (int ,int ) ;
+ int test_ctr (int ,int const*,int,int const*,int,int const*,int) ;
 
 __attribute__((used)) static void test_chacha20(void)
 {
-    static const uint8_t key[] = {0,  1,  2,  3,  4,  5,  6,  7,  8,  9,  10, 11, 12, 13, 14, 15,
+    static const uint8_t key[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
                                   16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31},
                          iv[] = {1, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0x4a, 0, 0, 0, 0},
                          expected[] = {0x10, 0xf1, 0xe7, 0xe4, 0xd1, 0x3b, 0x59, 0x15, 0x50, 0x0f, 0xdd,

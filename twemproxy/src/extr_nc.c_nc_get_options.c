@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-struct instance {int log_level; int stats_interval; size_t mbuf_chunk_size; void* pid_filename; void* stats_addr; int /*<<< orphan*/  stats_port; void* conf_filename; void* log_filename; } ;
-typedef  int /*<<< orphan*/  rstatus_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NC_ERROR ; 
- int NC_MBUF_MAX_SIZE ; 
- int NC_MBUF_MIN_SIZE ; 
- int /*<<< orphan*/  NC_OK ; 
- int daemonize ; 
- int describe_stats ; 
- int getopt_long (int,char**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  log_stderr (char*,...) ; 
- int /*<<< orphan*/  long_options ; 
- int nc_atoi (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nc_valid_port (int) ; 
- void* optarg ; 
- scalar_t__ opterr ; 
- int optopt ; 
- int /*<<< orphan*/  short_options ; 
- int show_help ; 
- int show_version ; 
- int /*<<< orphan*/  strlen (void*) ; 
- int test_conf ; 
+
+
+
+typedef int uint16_t ;
+struct instance {int log_level; int stats_interval; size_t mbuf_chunk_size; void* pid_filename; void* stats_addr; int stats_port; void* conf_filename; void* log_filename; } ;
+typedef int rstatus_t ;
+
+
+ int NC_ERROR ;
+ int NC_MBUF_MAX_SIZE ;
+ int NC_MBUF_MIN_SIZE ;
+ int NC_OK ;
+ int daemonize ;
+ int describe_stats ;
+ int getopt_long (int,char**,int ,int ,int *) ;
+ int log_stderr (char*,...) ;
+ int long_options ;
+ int nc_atoi (void*,int ) ;
+ int nc_valid_port (int) ;
+ void* optarg ;
+ scalar_t__ opterr ;
+ int optopt ;
+ int short_options ;
+ int show_help ;
+ int show_version ;
+ int strlen (void*) ;
+ int test_conf ;
 
 __attribute__((used)) static rstatus_t
 nc_get_options(int argc, char **argv, struct instance *nci)
@@ -43,9 +43,9 @@ nc_get_options(int argc, char **argv, struct instance *nci)
     opterr = 0;
 
     for (;;) {
-        c = getopt_long(argc, argv, short_options, long_options, NULL);
+        c = getopt_long(argc, argv, short_options, long_options, ((void*)0));
         if (c == -1) {
-            /* no more options */
+
             break;
         }
 

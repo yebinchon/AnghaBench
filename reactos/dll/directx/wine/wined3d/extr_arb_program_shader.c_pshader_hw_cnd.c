@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct wined3d_string_buffer {int dummy; } ;
-struct wined3d_shader_src_param {int /*<<< orphan*/  modifiers; } ;
+struct wined3d_shader_src_param {int modifiers; } ;
 struct wined3d_shader_instruction {struct wined3d_shader_src_param* src; struct wined3d_shader_dst_param* dst; scalar_t__ coissue; TYPE_3__* ctx; } ;
 struct wined3d_shader_dst_param {scalar_t__ write_mask; } ;
 struct TYPE_6__ {TYPE_2__* reg_maps; struct wined3d_string_buffer* buffer; } ;
 struct TYPE_4__ {int major; int minor; } ;
 struct TYPE_5__ {TYPE_1__ shader_version; } ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef int DWORD ;
 
-/* Variables and functions */
- scalar_t__ WINED3DSP_WRITEMASK_3 ; 
- int /*<<< orphan*/  WINED3D_SHADER_VERSION (int,int) ; 
- int /*<<< orphan*/  negate_modifiers (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  shader_addline (struct wined3d_string_buffer*,char*,char,char*,...) ; 
- int /*<<< orphan*/  shader_arb_get_dst_param (struct wined3d_shader_instruction const*,struct wined3d_shader_dst_param const*,char*) ; 
- int /*<<< orphan*/  shader_arb_get_modifier (struct wined3d_shader_instruction const*) ; 
- int /*<<< orphan*/  shader_arb_get_src_param (struct wined3d_shader_instruction const*,struct wined3d_shader_src_param*,int,char*) ; 
+
+ scalar_t__ WINED3DSP_WRITEMASK_3 ;
+ int WINED3D_SHADER_VERSION (int,int) ;
+ int negate_modifiers (int ,char*) ;
+ int shader_addline (struct wined3d_string_buffer*,char*,char,char*,...) ;
+ int shader_arb_get_dst_param (struct wined3d_shader_instruction const*,struct wined3d_shader_dst_param const*,char*) ;
+ int shader_arb_get_modifier (struct wined3d_shader_instruction const*) ;
+ int shader_arb_get_src_param (struct wined3d_shader_instruction const*,struct wined3d_shader_src_param*,int,char*) ;
 
 __attribute__((used)) static void pshader_hw_cnd(const struct wined3d_shader_instruction *ins)
 {
@@ -53,7 +53,7 @@ __attribute__((used)) static void pshader_hw_cnd(const struct wined3d_shader_ins
         struct wined3d_shader_src_param src0_copy = ins->src[0];
         char extra_neg;
 
-        /* src0 may have a negate srcmod set, so we can't blindly add "-" to the name */
+
         src0_copy.modifiers = negate_modifiers(src0_copy.modifiers, &extra_neg);
 
         shader_arb_get_src_param(ins, &src0_copy, 0, src_name[0]);

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  VP8BitReader ;
 
-/* Variables and functions */
- int VP8GetBit (int /*<<< orphan*/ * const,int,char const*) ; 
+
+
+
+typedef int uint32_t ;
+typedef int VP8BitReader ;
+
+
+ int VP8GetBit (int * const,int,char const*) ;
 
 uint32_t VP8GetValue(VP8BitReader* const br, int bits, const char label[]) {
   uint32_t v = 0;

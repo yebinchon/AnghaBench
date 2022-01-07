@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  enb; } ;
-struct TYPE_8__ {TYPE_1__ s; int /*<<< orphan*/  u64; } ;
-typedef  TYPE_2__ cvmx_fpa_ctl_status_t ;
-typedef  scalar_t__ cvmx_cmd_queue_result_t ;
-typedef  int /*<<< orphan*/  cvmx_cmd_queue_id_t ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int enb; } ;
+struct TYPE_8__ {TYPE_1__ s; int u64; } ;
+typedef TYPE_2__ cvmx_fpa_ctl_status_t ;
+typedef scalar_t__ cvmx_cmd_queue_result_t ;
+typedef int cvmx_cmd_queue_id_t ;
 struct TYPE_9__ {int base_ptr_div128; int max_depth; int fpa_pool; int pool_size_m1; } ;
-typedef  TYPE_3__ __cvmx_cmd_queue_state_t ;
+typedef TYPE_3__ __cvmx_cmd_queue_state_t ;
 struct TYPE_10__ {scalar_t__* ticket; } ;
 
-/* Variables and functions */
- scalar_t__ CVMX_CMD_QUEUE_ALREADY_SETUP ; 
- scalar_t__ CVMX_CMD_QUEUE_ENABLE_MAX_DEPTH ; 
- scalar_t__ CVMX_CMD_QUEUE_INVALID_PARAM ; 
- scalar_t__ CVMX_CMD_QUEUE_NO_MEMORY ; 
- scalar_t__ CVMX_CMD_QUEUE_SUCCESS ; 
- int /*<<< orphan*/  CVMX_FPA_CTL_STATUS ; 
- int /*<<< orphan*/  CVMX_SYNCWS ; 
- size_t __cvmx_cmd_queue_get_index (int /*<<< orphan*/ ) ; 
- TYPE_3__* __cvmx_cmd_queue_get_state (int /*<<< orphan*/ ) ; 
- scalar_t__ __cvmx_cmd_queue_init_state_ptr () ; 
- TYPE_5__* __cvmx_cmd_queue_state_ptr ; 
- int /*<<< orphan*/  cvmx_dprintf (char*,...) ; 
- void* cvmx_fpa_alloc (int) ; 
- int cvmx_ptr_to_phys (void*) ; 
- int /*<<< orphan*/  cvmx_read_csr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ CVMX_CMD_QUEUE_ALREADY_SETUP ;
+ scalar_t__ CVMX_CMD_QUEUE_ENABLE_MAX_DEPTH ;
+ scalar_t__ CVMX_CMD_QUEUE_INVALID_PARAM ;
+ scalar_t__ CVMX_CMD_QUEUE_NO_MEMORY ;
+ scalar_t__ CVMX_CMD_QUEUE_SUCCESS ;
+ int CVMX_FPA_CTL_STATUS ;
+ int CVMX_SYNCWS ;
+ size_t __cvmx_cmd_queue_get_index (int ) ;
+ TYPE_3__* __cvmx_cmd_queue_get_state (int ) ;
+ scalar_t__ __cvmx_cmd_queue_init_state_ptr () ;
+ TYPE_5__* __cvmx_cmd_queue_state_ptr ;
+ int cvmx_dprintf (char*,...) ;
+ void* cvmx_fpa_alloc (int) ;
+ int cvmx_ptr_to_phys (void*) ;
+ int cvmx_read_csr (int ) ;
+ int memset (TYPE_3__*,int ,int) ;
 
 cvmx_cmd_queue_result_t cvmx_cmd_queue_initialize(cvmx_cmd_queue_id_t queue_id, int max_depth, int fpa_pool, int pool_size)
 {
@@ -49,10 +49,10 @@ cvmx_cmd_queue_result_t cvmx_cmd_queue_initialize(cvmx_cmd_queue_id_t queue_id, 
         return result;
 
     qstate = __cvmx_cmd_queue_get_state(queue_id);
-    if (qstate == NULL)
+    if (qstate == ((void*)0))
         return CVMX_CMD_QUEUE_INVALID_PARAM;
 
-    /* We artificially limit max_depth to 1<<20 words. It is an arbitrary limit */
+
     if (CVMX_CMD_QUEUE_ENABLE_MAX_DEPTH)
     {
         if ((max_depth < 0) || (max_depth > 1<<20))
@@ -66,7 +66,7 @@ cvmx_cmd_queue_result_t cvmx_cmd_queue_initialize(cvmx_cmd_queue_id_t queue_id, 
     if ((pool_size < 128) || (pool_size > 65536))
         return CVMX_CMD_QUEUE_INVALID_PARAM;
 
-    /* See if someone else has already initialized the queue */
+
     if (qstate->base_ptr_div128)
     {
         if (max_depth != (int)qstate->max_depth)
@@ -99,7 +99,7 @@ cvmx_cmd_queue_result_t cvmx_cmd_queue_initialize(cvmx_cmd_queue_id_t queue_id, 
             return CVMX_CMD_QUEUE_NO_MEMORY;
         }
         buffer = cvmx_fpa_alloc(fpa_pool);
-        if (buffer == NULL)
+        if (buffer == ((void*)0))
         {
             cvmx_dprintf("ERROR: cvmx_cmd_queue_initialize: Unable to allocate initial buffer.\n");
             return CVMX_CMD_QUEUE_NO_MEMORY;
@@ -110,7 +110,7 @@ cvmx_cmd_queue_result_t cvmx_cmd_queue_initialize(cvmx_cmd_queue_id_t queue_id, 
         qstate->fpa_pool = fpa_pool;
         qstate->pool_size_m1 = (pool_size>>3)-1;
         qstate->base_ptr_div128 = cvmx_ptr_to_phys(buffer) / 128;
-        /* We zeroed the now serving field so we need to also zero the ticket */
+
         __cvmx_cmd_queue_state_ptr->ticket[__cvmx_cmd_queue_get_index(queue_id)] = 0;
         CVMX_SYNCWS;
         return CVMX_CMD_QUEUE_SUCCESS;

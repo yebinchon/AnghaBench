@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
+
+
+
+
+typedef int u_char ;
 struct sshbuf {int dummy; } ;
 
-/* Variables and functions */
- int SSH_ERR_ALLOC_FAIL ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  sshbuf_free (struct sshbuf*) ; 
- struct sshbuf* sshbuf_from (int /*<<< orphan*/  const*,size_t) ; 
- int sshbuf_get_cstring (struct sshbuf*,char**,int /*<<< orphan*/ *) ; 
+
+ int SSH_ERR_ALLOC_FAIL ;
+ int free (char*) ;
+ int sshbuf_free (struct sshbuf*) ;
+ struct sshbuf* sshbuf_from (int const*,size_t) ;
+ int sshbuf_get_cstring (struct sshbuf*,char**,int *) ;
 
 __attribute__((used)) static int
 get_sigtype(const u_char *sig, size_t siglen, char **sigtypep)
 {
-	int r;
-	struct sshbuf *b = NULL;
-	char *sigtype = NULL;
+ int r;
+ struct sshbuf *b = ((void*)0);
+ char *sigtype = ((void*)0);
 
-	if (sigtypep != NULL)
-		*sigtypep = NULL;
-	if ((b = sshbuf_from(sig, siglen)) == NULL)
-		return SSH_ERR_ALLOC_FAIL;
-	if ((r = sshbuf_get_cstring(b, &sigtype, NULL)) != 0)
-		goto out;
-	/* success */
-	if (sigtypep != NULL) {
-		*sigtypep = sigtype;
-		sigtype = NULL;
-	}
-	r = 0;
+ if (sigtypep != ((void*)0))
+  *sigtypep = ((void*)0);
+ if ((b = sshbuf_from(sig, siglen)) == ((void*)0))
+  return SSH_ERR_ALLOC_FAIL;
+ if ((r = sshbuf_get_cstring(b, &sigtype, ((void*)0))) != 0)
+  goto out;
+
+ if (sigtypep != ((void*)0)) {
+  *sigtypep = sigtype;
+  sigtype = ((void*)0);
+ }
+ r = 0;
  out:
-	free(sigtype);
-	sshbuf_free(b);
-	return r;
+ free(sigtype);
+ sshbuf_free(b);
+ return r;
 }

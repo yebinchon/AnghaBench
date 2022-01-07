@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nfs4_state {int /*<<< orphan*/  seqlock; } ;
-typedef  int /*<<< orphan*/  nfs4_stateid ;
-typedef  int /*<<< orphan*/  fmode_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  nfs_set_open_stateid_locked (struct nfs4_state*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_seqlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_sequnlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct nfs4_state {int seqlock; } ;
+typedef int nfs4_stateid ;
+typedef int fmode_t ;
+
+
+ int nfs_set_open_stateid_locked (struct nfs4_state*,int *,int ) ;
+ int write_seqlock (int *) ;
+ int write_sequnlock (int *) ;
 
 __attribute__((used)) static void nfs_set_open_stateid(struct nfs4_state *state, nfs4_stateid *stateid, fmode_t fmode)
 {
-	write_seqlock(&state->seqlock);
-	nfs_set_open_stateid_locked(state, stateid, fmode);
-	write_sequnlock(&state->seqlock);
+ write_seqlock(&state->seqlock);
+ nfs_set_open_stateid_locked(state, stateid, fmode);
+ write_sequnlock(&state->seqlock);
 }

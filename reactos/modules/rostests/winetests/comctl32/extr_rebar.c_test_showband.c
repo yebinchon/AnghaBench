@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int fMask; int cx; int cxMinChild; int cyMinChild; int /*<<< orphan*/ * hwndChild; int /*<<< orphan*/  cbSize; } ;
-typedef  TYPE_1__ REBARBANDINFOA ;
-typedef  scalar_t__ LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DestroyWindow (int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- int RBBIM_CHILD ; 
- int RBBIM_CHILDSIZE ; 
- int RBBIM_SIZE ; 
- int /*<<< orphan*/  RB_INSERTBANDA ; 
- int /*<<< orphan*/  RB_SHOWBAND ; 
- int /*<<< orphan*/  REBARBANDINFOA_V6_SIZE ; 
- scalar_t__ SendMessageA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,scalar_t__) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  create_rebar_control () ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int fMask; int cx; int cxMinChild; int cyMinChild; int * hwndChild; int cbSize; } ;
+typedef TYPE_1__ REBARBANDINFOA ;
+typedef scalar_t__ LPARAM ;
+typedef int HWND ;
+typedef scalar_t__ BOOL ;
+
+
+ int DestroyWindow (int ) ;
+ scalar_t__ FALSE ;
+ int RBBIM_CHILD ;
+ int RBBIM_CHILDSIZE ;
+ int RBBIM_SIZE ;
+ int RB_INSERTBANDA ;
+ int RB_SHOWBAND ;
+ int REBARBANDINFOA_V6_SIZE ;
+ scalar_t__ SendMessageA (int ,int ,int,scalar_t__) ;
+ scalar_t__ TRUE ;
+ int create_rebar_control () ;
+ int ok (int,char*,scalar_t__) ;
 
 __attribute__((used)) static void test_showband(void)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static void test_showband(void)
 
     hRebar = create_rebar_control();
 
-    /* no bands */
+
     ret = SendMessageA(hRebar, RB_SHOWBAND, 0, TRUE);
     ok(ret == FALSE, "got %d\n", ret);
 
@@ -48,10 +48,10 @@ __attribute__((used)) static void test_showband(void)
     rbi.cx = 200;
     rbi.cxMinChild = 100;
     rbi.cyMinChild = 30;
-    rbi.hwndChild = NULL;
+    rbi.hwndChild = ((void*)0);
     SendMessageA(hRebar, RB_INSERTBANDA, -1, (LPARAM)&rbi);
 
-    /* index out of range */
+
     ret = SendMessageA(hRebar, RB_SHOWBAND, 1, TRUE);
     ok(ret == FALSE, "got %d\n", ret);
 

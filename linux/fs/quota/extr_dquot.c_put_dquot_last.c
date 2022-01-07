@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dquot {int /*<<< orphan*/  dq_free; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DQST_FREE_DQUOTS ; 
- int /*<<< orphan*/  dqstats_inc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_dquots ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct dquot {int dq_free; } ;
+
+
+ int DQST_FREE_DQUOTS ;
+ int dqstats_inc (int ) ;
+ int free_dquots ;
+ int list_add_tail (int *,int *) ;
 
 __attribute__((used)) static inline void put_dquot_last(struct dquot *dquot)
 {
-	list_add_tail(&dquot->dq_free, &free_dquots);
-	dqstats_inc(DQST_FREE_DQUOTS);
+ list_add_tail(&dquot->dq_free, &free_dquots);
+ dqstats_inc(DQST_FREE_DQUOTS);
 }

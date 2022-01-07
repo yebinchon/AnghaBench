@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ szCol; int iCol; int /*<<< orphan*/  iRowid; int /*<<< orphan*/  cksum; TYPE_1__* pConfig; int /*<<< orphan*/ * pTermset; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ szCol; int iCol; int iRowid; int cksum; TYPE_1__* pConfig; int * pTermset; } ;
 struct TYPE_3__ {int eDetail; int nPrefix; int* aPrefix; } ;
-typedef  int /*<<< orphan*/  Fts5Termset ;
-typedef  TYPE_2__ Fts5IntegrityCtx ;
+typedef int Fts5Termset ;
+typedef TYPE_2__ Fts5IntegrityCtx ;
 
-/* Variables and functions */
-#define  FTS5_DETAIL_COLUMNS 129 
-#define  FTS5_DETAIL_FULL 128 
- int FTS5_DETAIL_NONE ; 
- int FTS5_MAX_TOKEN_SIZE ; 
- int FTS5_TOKEN_COLOCATED ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  UNUSED_PARAM2 (int,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int sqlite3Fts5IndexCharlenToBytelen (char const*,int,int const) ; 
- int /*<<< orphan*/  sqlite3Fts5IndexEntryCksum (int /*<<< orphan*/ ,int,int,int,char const*,int) ; 
- int sqlite3Fts5TermsetAdd (int /*<<< orphan*/ *,int,char const*,int,int*) ; 
+
+
+
+ int FTS5_DETAIL_NONE ;
+ int FTS5_MAX_TOKEN_SIZE ;
+ int FTS5_TOKEN_COLOCATED ;
+ int SQLITE_OK ;
+ int UNUSED_PARAM2 (int,int) ;
+ int assert (int) ;
+ int sqlite3Fts5IndexCharlenToBytelen (char const*,int,int const) ;
+ int sqlite3Fts5IndexEntryCksum (int ,int,int,int,char const*,int) ;
+ int sqlite3Fts5TermsetAdd (int *,int,char const*,int,int*) ;
 
 __attribute__((used)) static int fts5StorageIntegrityCallback(
-  void *pContext,                 /* Pointer to Fts5IntegrityCtx object */
+  void *pContext,
   int tflags,
-  const char *pToken,             /* Buffer containing token */
-  int nToken,                     /* Size of token in bytes */
-  int iUnused1,                   /* Start offset of token */
-  int iUnused2                    /* End offset of token */
+  const char *pToken,
+  int nToken,
+  int iUnused1,
+  int iUnused2
 ){
   Fts5IntegrityCtx *pCtx = (Fts5IntegrityCtx*)pContext;
   Fts5Termset *pTermset = pCtx->pTermset;
@@ -54,12 +54,12 @@ __attribute__((used)) static int fts5StorageIntegrityCallback(
   }
 
   switch( pCtx->pConfig->eDetail ){
-    case FTS5_DETAIL_FULL:
+    case 128:
       iPos = pCtx->szCol-1;
       iCol = pCtx->iCol;
       break;
 
-    case FTS5_DETAIL_COLUMNS:
+    case 129:
       iPos = pCtx->iCol;
       iCol = 0;
       break;

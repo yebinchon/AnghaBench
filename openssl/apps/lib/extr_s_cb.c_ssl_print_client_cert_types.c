@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ *,char*,unsigned char) ; 
- int /*<<< orphan*/  BIO_puts (int /*<<< orphan*/ *,char const*) ; 
- int SSL_get0_certificate_types (int /*<<< orphan*/ *,unsigned char const**) ; 
- int /*<<< orphan*/  cert_type_list ; 
- char* lookup (int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int SSL ;
+typedef int BIO ;
+
+
+ int BIO_printf (int *,char*,unsigned char) ;
+ int BIO_puts (int *,char const*) ;
+ int SSL_get0_certificate_types (int *,unsigned char const**) ;
+ int cert_type_list ;
+ char* lookup (int,int ,int *) ;
 
 __attribute__((used)) static void ssl_print_client_cert_types(BIO *bio, SSL *s)
 {
@@ -30,11 +30,11 @@ __attribute__((used)) static void ssl_print_client_cert_types(BIO *bio, SSL *s)
     BIO_puts(bio, "Client Certificate Types: ");
     for (i = 0; i < cert_type_num; i++) {
         unsigned char cert_type = p[i];
-        const char *cname = lookup((int)cert_type, cert_type_list, NULL);
+        const char *cname = lookup((int)cert_type, cert_type_list, ((void*)0));
 
         if (i)
             BIO_puts(bio, ", ");
-        if (cname != NULL)
+        if (cname != ((void*)0))
             BIO_puts(bio, cname);
         else
             BIO_printf(bio, "UNKNOWN (%d),", cert_type);

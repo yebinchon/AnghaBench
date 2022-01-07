@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_6__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {scalar_t__ surface; int /*<<< orphan*/  context; int /*<<< orphan*/  config; } ;
+
+
+typedef struct TYPE_10__ TYPE_6__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {scalar_t__ surface; int context; int config; } ;
 struct TYPE_9__ {TYPE_2__ egl; } ;
-typedef  TYPE_3__ _GLFWwindow ;
-struct TYPE_7__ {int /*<<< orphan*/  display; } ;
+typedef TYPE_3__ _GLFWwindow ;
+struct TYPE_7__ {int display; } ;
 struct TYPE_10__ {TYPE_1__ egl; } ;
-typedef  int /*<<< orphan*/  EGLNativeWindowType ;
+typedef int EGLNativeWindowType ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EGL_NO_CONTEXT ; 
- scalar_t__ EGL_NO_SURFACE ; 
- int /*<<< orphan*/  GLFW_PLATFORM_ERROR ; 
- scalar_t__ _GLFW_EGL_NATIVE_WINDOW ; 
- TYPE_6__ _glfw ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _glfwSetContextTLS (TYPE_3__*) ; 
- scalar_t__ _glfw_eglCreateWindowSurface (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _glfw_eglGetError () ; 
- int /*<<< orphan*/  _glfw_eglMakeCurrent (int /*<<< orphan*/ ,scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  getErrorString (int /*<<< orphan*/ ) ; 
+
+ int EGL_NO_CONTEXT ;
+ scalar_t__ EGL_NO_SURFACE ;
+ int GLFW_PLATFORM_ERROR ;
+ scalar_t__ _GLFW_EGL_NATIVE_WINDOW ;
+ TYPE_6__ _glfw ;
+ int _glfwInputError (int ,char*,int ) ;
+ int _glfwSetContextTLS (TYPE_3__*) ;
+ scalar_t__ _glfw_eglCreateWindowSurface (int ,int ,int ,int *) ;
+ int _glfw_eglGetError () ;
+ int _glfw_eglMakeCurrent (int ,scalar_t__,scalar_t__,int ) ;
+ int getErrorString (int ) ;
 
 void _glfwPlatformMakeContextCurrent(_GLFWwindow* window)
 {
@@ -44,7 +44,7 @@ void _glfwPlatformMakeContextCurrent(_GLFWwindow* window)
                 _glfw_eglCreateWindowSurface(_glfw.egl.display,
                                              window->egl.config,
                                              (EGLNativeWindowType)_GLFW_EGL_NATIVE_WINDOW,
-                                             NULL);
+                                             ((void*)0));
             if (window->egl.surface == EGL_NO_SURFACE)
             {
                 _glfwInputError(GLFW_PLATFORM_ERROR,

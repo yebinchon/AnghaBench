@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  user; } ;
-struct TYPE_13__ {scalar_t__ daysToKeep1; scalar_t__ daysToKeep2; scalar_t__ daysToKeep; int /*<<< orphan*/  acct; int /*<<< orphan*/  db; } ;
-struct TYPE_12__ {TYPE_2__ cfg; int /*<<< orphan*/  createdTime; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ SDbObj ;
-typedef  TYPE_2__ SCreateDbMsg ;
-typedef  TYPE_3__ SAcctObj ;
 
-/* Variables and functions */
- int TSDB_CODE_DB_ALREADY_EXIST ; 
- int TSDB_CODE_SDB_ERROR ; 
- int TSDB_CODE_SUCCESS ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  dbSdb ; 
- TYPE_1__* malloc (int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int mgmtCheckDbGrant () ; 
- int mgmtCheckDbLimit (TYPE_3__*) ; 
- int mgmtCheckDbParams (TYPE_2__*) ; 
- scalar_t__ sdbGetRow (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ sdbInsertRow (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  taosGetTimestampMs () ; 
- int /*<<< orphan*/  tfree (TYPE_1__*) ; 
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int user; } ;
+struct TYPE_13__ {scalar_t__ daysToKeep1; scalar_t__ daysToKeep2; scalar_t__ daysToKeep; int acct; int db; } ;
+struct TYPE_12__ {TYPE_2__ cfg; int createdTime; int name; } ;
+typedef TYPE_1__ SDbObj ;
+typedef TYPE_2__ SCreateDbMsg ;
+typedef TYPE_3__ SAcctObj ;
+
+
+ int TSDB_CODE_DB_ALREADY_EXIST ;
+ int TSDB_CODE_SDB_ERROR ;
+ int TSDB_CODE_SUCCESS ;
+ int assert (int) ;
+ int dbSdb ;
+ TYPE_1__* malloc (int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int mgmtCheckDbGrant () ;
+ int mgmtCheckDbLimit (TYPE_3__*) ;
+ int mgmtCheckDbParams (TYPE_2__*) ;
+ scalar_t__ sdbGetRow (int ,int ) ;
+ scalar_t__ sdbInsertRow (int ,TYPE_1__*,int ) ;
+ int strcpy (int ,int ) ;
+ int taosGetTimestampMs () ;
+ int tfree (TYPE_1__*) ;
 
 int mgmtCreateDb(SAcctObj *pAcct, SCreateDbMsg *pCreate) {
   SDbObj *pDb;
@@ -47,7 +47,7 @@ int mgmtCreateDb(SAcctObj *pAcct, SCreateDbMsg *pCreate) {
   }
 
   pDb = (SDbObj *)sdbGetRow(dbSdb, pCreate->db);
-  if (pDb != NULL) {
+  if (pDb != ((void*)0)) {
     return TSDB_CODE_DB_ALREADY_EXIST;
   }
 

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int apr_off_t ;
-typedef  int /*<<< orphan*/  apr_bucket_brigade ;
-typedef  int /*<<< orphan*/  apr_bucket_alloc_t ;
-typedef  int /*<<< orphan*/  abts_case ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ABTS_ASSERT (int /*<<< orphan*/ *,char*,int) ; 
- int COUNT ; 
- int /*<<< orphan*/  THESTR ; 
- int /*<<< orphan*/  apr_assert_success (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * apr_brigade_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_brigade_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_brigade_length (int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/  apr_brigade_write (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * apr_bucket_alloc_create (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  apr_bucket_alloc_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  p ; 
+
+
+
+typedef int apr_off_t ;
+typedef int apr_bucket_brigade ;
+typedef int apr_bucket_alloc_t ;
+typedef int abts_case ;
+
+
+ int ABTS_ASSERT (int *,char*,int) ;
+ int COUNT ;
+ int THESTR ;
+ int apr_assert_success (int *,char*,int ) ;
+ int * apr_brigade_create (int ,int *) ;
+ int apr_brigade_destroy (int *) ;
+ int apr_brigade_length (int *,int,int*) ;
+ int apr_brigade_write (int *,int *,int *,int ,int) ;
+ int * apr_bucket_alloc_create (int ) ;
+ int apr_bucket_alloc_destroy (int *) ;
+ int p ;
 
 __attribute__((used)) static void test_bwrite(abts_case *tc, void *data)
 {
@@ -36,8 +36,8 @@ __attribute__((used)) static void test_bwrite(abts_case *tc, void *data)
     int n;
 
     for (n = 0; n < COUNT; n++) {
-        apr_assert_success(tc, "brigade_write", 
-                           apr_brigade_write(bb, NULL, NULL,
+        apr_assert_success(tc, "brigade_write",
+                           apr_brigade_write(bb, ((void*)0), ((void*)0),
                                              THESTR, sizeof THESTR));
     }
 
@@ -46,7 +46,7 @@ __attribute__((used)) static void test_bwrite(abts_case *tc, void *data)
 
     ABTS_ASSERT(tc, "brigade has correct length",
                 length == (COUNT * sizeof THESTR));
-    
+
     apr_brigade_destroy(bb);
     apr_bucket_alloc_destroy(ba);
 }

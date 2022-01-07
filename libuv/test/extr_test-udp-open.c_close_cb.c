@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_handle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close_cb_called ; 
+
+
+
+typedef int uv_handle_t ;
+
+
+ int ASSERT (int ) ;
+ int close_cb_called ;
 
 __attribute__((used)) static void close_cb(uv_handle_t* handle) {
-  ASSERT(handle != NULL);
+  ASSERT(handle != ((void*)0));
   close_cb_called++;
 }

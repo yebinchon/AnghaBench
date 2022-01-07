@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wined3d_vertex_element {int /*<<< orphan*/  usage_idx; int /*<<< orphan*/  usage; int /*<<< orphan*/  method; int /*<<< orphan*/  instance_data_step_rate; int /*<<< orphan*/  input_slot_class; int /*<<< orphan*/  output_slot; int /*<<< orphan*/  offset; int /*<<< orphan*/  input_slot; int /*<<< orphan*/  format; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  debug_d3ddeclmethod (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debug_d3ddeclusage (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debug_d3dformat (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debug_d3dinput_classification (int /*<<< orphan*/ ) ; 
+
+
+
+struct wined3d_vertex_element {int usage_idx; int usage; int method; int instance_data_step_rate; int input_slot_class; int output_slot; int offset; int input_slot; int format; } ;
+
+
+ int TRACE (char*,int ,...) ;
+ int debug_d3ddeclmethod (int ) ;
+ int debug_d3ddeclusage (int ) ;
+ int debug_d3dformat (int ) ;
+ int debug_d3dinput_classification (int ) ;
 
 __attribute__((used)) static void dump_wined3d_vertex_element(const struct wined3d_vertex_element *element)
 {

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SMDB_DATABASE ;
 
-/* Variables and functions */
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,char,int) ; 
+
+
+
+typedef int SMDB_DATABASE ;
+
+
+ scalar_t__ malloc (int) ;
+ int memset (int *,char,int) ;
 
 SMDB_DATABASE *
 smdb_malloc_database()
 {
-	SMDB_DATABASE *db;
+ SMDB_DATABASE *db;
 
-	db = (SMDB_DATABASE *) malloc(sizeof(SMDB_DATABASE));
+ db = (SMDB_DATABASE *) malloc(sizeof(SMDB_DATABASE));
 
-	if (db != NULL)
-		(void) memset(db, '\0', sizeof(SMDB_DATABASE));
+ if (db != ((void*)0))
+  (void) memset(db, '\0', sizeof(SMDB_DATABASE));
 
-	return db;
+ return db;
 }

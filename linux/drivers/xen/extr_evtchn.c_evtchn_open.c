@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct per_user_data {int /*<<< orphan*/  restrict_domid; int /*<<< orphan*/  ring_prod_lock; int /*<<< orphan*/  ring_cons_mutex; int /*<<< orphan*/  bind_mutex; int /*<<< orphan*/  evtchn_wait; int /*<<< orphan*/ * name; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct per_user_data {int restrict_domid; int ring_prod_lock; int ring_cons_mutex; int bind_mutex; int evtchn_wait; int * name; } ;
 struct inode {int dummy; } ;
 struct file {struct per_user_data* private_data; } ;
-struct TYPE_2__ {int /*<<< orphan*/  comm; } ;
+struct TYPE_2__ {int comm; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  UNRESTRICTED_DOMID ; 
- TYPE_1__* current ; 
- int /*<<< orphan*/  init_waitqueue_head (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * kasprintf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (struct per_user_data*) ; 
- struct per_user_data* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
- int stream_open (struct inode*,struct file*) ; 
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int UNRESTRICTED_DOMID ;
+ TYPE_1__* current ;
+ int init_waitqueue_head (int *) ;
+ int * kasprintf (int ,char*,int ) ;
+ int kfree (struct per_user_data*) ;
+ struct per_user_data* kzalloc (int,int ) ;
+ int mutex_init (int *) ;
+ int spin_lock_init (int *) ;
+ int stream_open (struct inode*,struct file*) ;
 
 __attribute__((used)) static int evtchn_open(struct inode *inode, struct file *filp)
 {
-	struct per_user_data *u;
+ struct per_user_data *u;
 
-	u = kzalloc(sizeof(*u), GFP_KERNEL);
-	if (u == NULL)
-		return -ENOMEM;
+ u = kzalloc(sizeof(*u), GFP_KERNEL);
+ if (u == ((void*)0))
+  return -ENOMEM;
 
-	u->name = kasprintf(GFP_KERNEL, "evtchn:%s", current->comm);
-	if (u->name == NULL) {
-		kfree(u);
-		return -ENOMEM;
-	}
+ u->name = kasprintf(GFP_KERNEL, "evtchn:%s", current->comm);
+ if (u->name == ((void*)0)) {
+  kfree(u);
+  return -ENOMEM;
+ }
 
-	init_waitqueue_head(&u->evtchn_wait);
+ init_waitqueue_head(&u->evtchn_wait);
 
-	mutex_init(&u->bind_mutex);
-	mutex_init(&u->ring_cons_mutex);
-	spin_lock_init(&u->ring_prod_lock);
+ mutex_init(&u->bind_mutex);
+ mutex_init(&u->ring_cons_mutex);
+ spin_lock_init(&u->ring_prod_lock);
 
-	u->restrict_domid = UNRESTRICTED_DOMID;
+ u->restrict_domid = UNRESTRICTED_DOMID;
 
-	filp->private_data = u;
+ filp->private_data = u;
 
-	return stream_open(inode, filp);
+ return stream_open(inode, filp);
 }

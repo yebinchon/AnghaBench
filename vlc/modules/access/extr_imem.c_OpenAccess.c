@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-struct TYPE_2__ {int /*<<< orphan*/ * p_sys; int /*<<< orphan*/ * pf_seek; int /*<<< orphan*/  pf_block; int /*<<< orphan*/ * pf_read; int /*<<< orphan*/  pf_control; int /*<<< orphan*/  psz_location; } ;
-typedef  TYPE_1__ stream_t ;
-typedef  int /*<<< orphan*/  imem_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Block ; 
- int /*<<< orphan*/  CloseCommon (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ControlAccess ; 
- scalar_t__ OpenCommon (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int var_InheritInteger (int /*<<< orphan*/ *,char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+struct TYPE_2__ {int * p_sys; int * pf_seek; int pf_block; int * pf_read; int pf_control; int psz_location; } ;
+typedef TYPE_1__ stream_t ;
+typedef int imem_sys_t ;
+
+
+ int Block ;
+ int CloseCommon (int *) ;
+ int ControlAccess ;
+ scalar_t__ OpenCommon (int *,int **,int ) ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int var_InheritInteger (int *,char*) ;
 
 __attribute__((used)) static int OpenAccess(vlc_object_t *object)
 {
-    stream_t   *access = (stream_t *)object;
+    stream_t *access = (stream_t *)object;
     imem_sys_t *sys;
 
     if (OpenCommon(object, &sys, access->psz_location))
@@ -38,12 +38,12 @@ __attribute__((used)) static int OpenAccess(vlc_object_t *object)
         return VLC_EGENERIC;
     }
 
-    /* */
+
     access->pf_control = ControlAccess;
-    access->pf_read    = NULL;
-    access->pf_block   = Block;
-    access->pf_seek    = NULL;
-    access->p_sys      = sys;
+    access->pf_read = ((void*)0);
+    access->pf_block = Block;
+    access->pf_seek = ((void*)0);
+    access->p_sys = sys;
 
     return VLC_SUCCESS;
 }

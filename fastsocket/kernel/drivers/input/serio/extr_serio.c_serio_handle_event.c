@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct serio_event {int type; int /*<<< orphan*/  object; } ;
 
-/* Variables and functions */
-#define  SERIO_ATTACH_DRIVER 132 
-#define  SERIO_RECONNECT_CHAIN 131 
-#define  SERIO_RECONNECT_PORT 130 
-#define  SERIO_REGISTER_PORT 129 
-#define  SERIO_RESCAN_PORT 128 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  serio_add_port (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  serio_attach_driver (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  serio_disconnect_port (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  serio_find_driver (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  serio_free_event (struct serio_event*) ; 
- struct serio_event* serio_get_event () ; 
- int /*<<< orphan*/  serio_mutex ; 
- int /*<<< orphan*/  serio_reconnect_chain (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  serio_reconnect_port (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  serio_remove_duplicate_events (struct serio_event*) ; 
+
+
+
+struct serio_event {int type; int object; } ;
+
+
+
+
+
+
+
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int serio_add_port (int ) ;
+ int serio_attach_driver (int ) ;
+ int serio_disconnect_port (int ) ;
+ int serio_find_driver (int ) ;
+ int serio_free_event (struct serio_event*) ;
+ struct serio_event* serio_get_event () ;
+ int serio_mutex ;
+ int serio_reconnect_chain (int ) ;
+ int serio_reconnect_port (int ) ;
+ int serio_remove_duplicate_events (struct serio_event*) ;
 
 __attribute__((used)) static void serio_handle_event(void)
 {
-	struct serio_event *event;
+ struct serio_event *event;
 
-	mutex_lock(&serio_mutex);
+ mutex_lock(&serio_mutex);
 
-	/*
-	 * Note that we handle only one event here to give swsusp
-	 * a chance to freeze kseriod thread. Serio events should
-	 * be pretty rare so we are not concerned about taking
-	 * performance hit.
-	 */
-	if ((event = serio_get_event())) {
 
-		switch (event->type) {
-			case SERIO_REGISTER_PORT:
-				serio_add_port(event->object);
-				break;
 
-			case SERIO_RECONNECT_PORT:
-				serio_reconnect_port(event->object);
-				break;
 
-			case SERIO_RESCAN_PORT:
-				serio_disconnect_port(event->object);
-				serio_find_driver(event->object);
-				break;
 
-			case SERIO_RECONNECT_CHAIN:
-				serio_reconnect_chain(event->object);
-				break;
 
-			case SERIO_ATTACH_DRIVER:
-				serio_attach_driver(event->object);
-				break;
 
-			default:
-				break;
-		}
+ if ((event = serio_get_event())) {
 
-		serio_remove_duplicate_events(event);
-		serio_free_event(event);
-	}
+  switch (event->type) {
+   case 129:
+    serio_add_port(event->object);
+    break;
 
-	mutex_unlock(&serio_mutex);
+   case 130:
+    serio_reconnect_port(event->object);
+    break;
+
+   case 128:
+    serio_disconnect_port(event->object);
+    serio_find_driver(event->object);
+    break;
+
+   case 131:
+    serio_reconnect_chain(event->object);
+    break;
+
+   case 132:
+    serio_attach_driver(event->object);
+    break;
+
+   default:
+    break;
+  }
+
+  serio_remove_duplicate_events(event);
+  serio_free_event(event);
+ }
+
+ mutex_unlock(&serio_mutex);
 }

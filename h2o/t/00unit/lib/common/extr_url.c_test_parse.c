@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  len; int /*<<< orphan*/  base; } ;
-struct TYPE_9__ {int /*<<< orphan*/  len; int /*<<< orphan*/  base; } ;
-struct TYPE_8__ {int /*<<< orphan*/  len; int /*<<< orphan*/  base; } ;
-struct TYPE_10__ {int _port; TYPE_1__ path; TYPE_3__ host; TYPE_2__ authority; int /*<<< orphan*/ * scheme; } ;
-typedef  TYPE_4__ h2o_url_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  H2O_STRLIT (char*) ; 
- int /*<<< orphan*/  H2O_URL_SCHEME_HTTP ; 
- int /*<<< orphan*/  H2O_URL_SCHEME_HTTPS ; 
- int /*<<< orphan*/  SIZE_MAX ; 
- int h2o_memis (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int h2o_url_get_port (TYPE_4__*) ; 
- int h2o_url_parse (char*,int /*<<< orphan*/ ,TYPE_4__*) ; 
- int /*<<< orphan*/  ok (int) ; 
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int len; int base; } ;
+struct TYPE_9__ {int len; int base; } ;
+struct TYPE_8__ {int len; int base; } ;
+struct TYPE_10__ {int _port; TYPE_1__ path; TYPE_3__ host; TYPE_2__ authority; int * scheme; } ;
+typedef TYPE_4__ h2o_url_t ;
+
+
+ int H2O_STRLIT (char*) ;
+ int H2O_URL_SCHEME_HTTP ;
+ int H2O_URL_SCHEME_HTTPS ;
+ int SIZE_MAX ;
+ int h2o_memis (int ,int ,int ) ;
+ int h2o_url_get_port (TYPE_4__*) ;
+ int h2o_url_parse (char*,int ,TYPE_4__*) ;
+ int ok (int) ;
 
 __attribute__((used)) static void test_parse(void)
 {

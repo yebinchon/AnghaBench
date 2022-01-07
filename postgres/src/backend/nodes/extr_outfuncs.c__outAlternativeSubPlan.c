@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  StringInfo ;
-typedef  int /*<<< orphan*/  AlternativeSubPlan ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WRITE_NODE_FIELD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WRITE_NODE_TYPE (char*) ; 
- int /*<<< orphan*/  subplans ; 
+
+
+
+typedef int StringInfo ;
+typedef int AlternativeSubPlan ;
+
+
+ int WRITE_NODE_FIELD (int ) ;
+ int WRITE_NODE_TYPE (char*) ;
+ int subplans ;
 
 __attribute__((used)) static void
 _outAlternativeSubPlan(StringInfo str, const AlternativeSubPlan *node)
 {
-	WRITE_NODE_TYPE("ALTERNATIVESUBPLAN");
+ WRITE_NODE_TYPE("ALTERNATIVESUBPLAN");
 
-	WRITE_NODE_FIELD(subplans);
+ WRITE_NODE_FIELD(subplans);
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  ptls_minicrypto_log_ctx_t ;
 
-/* Variables and functions */
- int PTLS_ERROR_BER_MALFORMED_TYPE ; 
- size_t ptls_asn1_error_message (char*,size_t,size_t,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int ptls_minicrypto_log_ctx_t ;
+
+
+ int PTLS_ERROR_BER_MALFORMED_TYPE ;
+ size_t ptls_asn1_error_message (char*,size_t,size_t,int,int *) ;
 
 size_t ptls_asn1_read_type(const uint8_t *bytes, size_t bytes_max, int *structure_bit, int *type_class, uint32_t *type_number,
                            int *decode_error, int level, ptls_minicrypto_log_ctx_t *log_ctx)
 {
-    /* Get the type byte */
+
     size_t byte_index = 1;
     uint8_t first_byte = bytes[0];
     *structure_bit = (first_byte >> 5) & 1;
@@ -47,7 +47,7 @@ size_t ptls_asn1_read_type(const uint8_t *bytes, size_t bytes_max, int *structur
         if (end_found) {
             *type_number = long_type;
         } else {
-            /* This is an error */
+
             byte_index = ptls_asn1_error_message("Incorrect type coding", bytes_max, byte_index, level, log_ctx);
             *decode_error = PTLS_ERROR_BER_MALFORMED_TYPE;
         }

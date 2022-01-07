@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ Curl_gethostname (char*,int) ; 
- int HOSTNAME_MAX ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
+ scalar_t__ Curl_gethostname (char*,int) ;
+ int HOSTNAME_MAX ;
+ int printf (char*,...) ;
+ scalar_t__ strncmp (char*,char*,int) ;
 
 int main(int argc, char *argv[])
 {
@@ -30,7 +22,7 @@ int main(int argc, char *argv[])
     return 1;
   }
 
-  /* compare the name returned by Curl_gethostname() with the expected one */
+
   if(strncmp(buff, argv[1], HOSTNAME_MAX)) {
     printf("got unexpected host name back, LD_PRELOAD failed\n");
     return 1;

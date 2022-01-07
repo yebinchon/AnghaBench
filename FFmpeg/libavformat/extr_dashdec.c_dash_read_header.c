@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct representation {int stream_index; scalar_t__ bandwidth; char* id; TYPE_1__* assoc_stream; } ;
-typedef  int int64_t ;
-struct TYPE_12__ {int duration; TYPE_1__** streams; int /*<<< orphan*/  pb; int /*<<< orphan*/  url; int /*<<< orphan*/  interrupt_callback; TYPE_2__* priv_data; } ;
-struct TYPE_11__ {int n_videos; int n_audios; int n_subtitles; struct representation** subtitles; struct representation** audios; struct representation** videos; void* is_init_section_common_audio; void* is_init_section_common_video; int /*<<< orphan*/  avio_opts; scalar_t__ media_presentation_duration; int /*<<< orphan*/  is_live; int /*<<< orphan*/ * interrupt_callback; } ;
-struct TYPE_10__ {int /*<<< orphan*/  metadata; } ;
-typedef  TYPE_2__ DASHContext ;
-typedef  int /*<<< orphan*/  AVProgram ;
-typedef  TYPE_3__ AVFormatContext ;
+typedef int int64_t ;
+struct TYPE_12__ {int duration; TYPE_1__** streams; int pb; int url; int interrupt_callback; TYPE_2__* priv_data; } ;
+struct TYPE_11__ {int n_videos; int n_audios; int n_subtitles; struct representation** subtitles; struct representation** audios; struct representation** videos; void* is_init_section_common_audio; void* is_init_section_common_video; int avio_opts; scalar_t__ media_presentation_duration; int is_live; int * interrupt_callback; } ;
+struct TYPE_10__ {int metadata; } ;
+typedef TYPE_2__ DASHContext ;
+typedef int AVProgram ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int AV_TIME_BASE ; 
- int /*<<< orphan*/  av_dict_set (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_dict_set_int (int /*<<< orphan*/ *,char*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * av_new_program (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_program_add_stream_index (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- int copy_init_section (struct representation*,struct representation*) ; 
- void* is_common_init_section_exist (struct representation**,int) ; 
- int open_demux_for_component (TYPE_3__*,struct representation*) ; 
- int parse_manifest (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int save_avio_options (TYPE_3__*) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_TIME_BASE ;
+ int av_dict_set (int *,char*,char*,int ) ;
+ int av_dict_set_int (int *,char*,scalar_t__,int ) ;
+ int * av_new_program (TYPE_3__*,int ) ;
+ int av_program_add_stream_index (TYPE_3__*,int ,int) ;
+ int copy_init_section (struct representation*,struct representation*) ;
+ void* is_common_init_section_exist (struct representation**,int) ;
+ int open_demux_for_component (TYPE_3__*,struct representation*) ;
+ int parse_manifest (TYPE_3__*,int ,int ) ;
+ int save_avio_options (TYPE_3__*) ;
 
 __attribute__((used)) static int dash_read_header(AVFormatContext *s)
 {
@@ -51,8 +51,8 @@ __attribute__((used)) static int dash_read_header(AVFormatContext *s)
     if ((ret = parse_manifest(s, s->url, s->pb)) < 0)
         goto fail;
 
-    /* If this isn't a live stream, fill the total duration of the
-     * stream. */
+
+
     if (!c->is_live) {
         s->duration = (int64_t) c->media_presentation_duration * AV_TIME_BASE;
     } else {
@@ -62,7 +62,7 @@ __attribute__((used)) static int dash_read_header(AVFormatContext *s)
     if(c->n_videos)
         c->is_init_section_common_video = is_common_init_section_exist(c->videos, c->n_videos);
 
-    /* Open the demuxer for video and audio components if available */
+
     for (i = 0; i < c->n_videos; i++) {
         rep = c->videos[i];
         if (i > 0 && c->is_init_section_common_video) {
@@ -119,7 +119,7 @@ __attribute__((used)) static int dash_read_header(AVFormatContext *s)
         goto fail;
     }
 
-    /* Create a program */
+
     if (!ret) {
         AVProgram *program;
         program = av_new_program(s, 0);

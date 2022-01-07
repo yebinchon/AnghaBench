@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct strbuf {int /*<<< orphan*/  buf; } ;
+
+
+
+
+struct strbuf {int buf; } ;
 struct repository {int dummy; } ;
-typedef  struct branch branch ;
+typedef struct branch branch ;
 
-/* Variables and functions */
- struct strbuf STRBUF_INIT ; 
- struct branch* branch_get (char*) ; 
- int /*<<< orphan*/  branch_interpret_allowed (char const*,unsigned int) ; 
- int /*<<< orphan*/  die (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ memchr (char const*,char,int) ; 
- int /*<<< orphan*/  set_shortened_ref (struct repository*,struct strbuf*,char const*) ; 
- char* xmemdupz (char const*,int) ; 
+
+ struct strbuf STRBUF_INIT ;
+ struct branch* branch_get (char*) ;
+ int branch_interpret_allowed (char const*,unsigned int) ;
+ int die (char*,int ) ;
+ int free (char*) ;
+ scalar_t__ memchr (char const*,char,int) ;
+ int set_shortened_ref (struct repository*,struct strbuf*,char const*) ;
+ char* xmemdupz (char const*,int) ;
 
 __attribute__((used)) static int interpret_branch_mark(struct repository *r,
-				 const char *name, int namelen,
-				 int at, struct strbuf *buf,
-				 int (*get_mark)(const char *, int),
-				 const char *(*get_data)(struct branch *,
-							 struct strbuf *),
-				 unsigned allowed)
+     const char *name, int namelen,
+     int at, struct strbuf *buf,
+     int (*get_mark)(const char *, int),
+     const char *(*get_data)(struct branch *,
+        struct strbuf *),
+     unsigned allowed)
 {
-	int len;
-	struct branch *branch;
-	struct strbuf err = STRBUF_INIT;
-	const char *value;
+ int len;
+ struct branch *branch;
+ struct strbuf err = STRBUF_INIT;
+ const char *value;
 
-	len = get_mark(name + at, namelen - at);
-	if (!len)
-		return -1;
+ len = get_mark(name + at, namelen - at);
+ if (!len)
+  return -1;
 
-	if (memchr(name, ':', at))
-		return -1;
+ if (memchr(name, ':', at))
+  return -1;
 
-	if (at) {
-		char *name_str = xmemdupz(name, at);
-		branch = branch_get(name_str);
-		free(name_str);
-	} else
-		branch = branch_get(NULL);
+ if (at) {
+  char *name_str = xmemdupz(name, at);
+  branch = branch_get(name_str);
+  free(name_str);
+ } else
+  branch = branch_get(((void*)0));
 
-	value = get_data(branch, &err);
-	if (!value)
-		die("%s", err.buf);
+ value = get_data(branch, &err);
+ if (!value)
+  die("%s", err.buf);
 
-	if (!branch_interpret_allowed(value, allowed))
-		return -1;
+ if (!branch_interpret_allowed(value, allowed))
+  return -1;
 
-	set_shortened_ref(r, buf, value);
-	return len + at;
+ set_shortened_ref(r, buf, value);
+ return len + at;
 }

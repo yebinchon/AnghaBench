@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Datum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PROCSIG_PARALLEL_MESSAGE ; 
- int /*<<< orphan*/  ParallelMasterBackendId ; 
- int /*<<< orphan*/  ParallelMasterPid ; 
- int /*<<< orphan*/  SendProcSignal (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Datum ;
+
+
+ int PROCSIG_PARALLEL_MESSAGE ;
+ int ParallelMasterBackendId ;
+ int ParallelMasterPid ;
+ int SendProcSignal (int ,int ,int ) ;
 
 __attribute__((used)) static void
 ParallelWorkerShutdown(int code, Datum arg)
 {
-	SendProcSignal(ParallelMasterPid,
-				   PROCSIG_PARALLEL_MESSAGE,
-				   ParallelMasterBackendId);
+ SendProcSignal(ParallelMasterPid,
+       PROCSIG_PARALLEL_MESSAGE,
+       ParallelMasterBackendId);
 }

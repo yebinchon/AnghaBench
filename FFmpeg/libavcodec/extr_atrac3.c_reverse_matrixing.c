@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- float INTERPOLATE (float,float,int) ; 
- int /*<<< orphan*/  av_assert1 (int /*<<< orphan*/ ) ; 
- float* matrix_coeffs ; 
+ float INTERPOLATE (float,float,int) ;
+ int av_assert1 (int ) ;
+ float* matrix_coeffs ;
 
 __attribute__((used)) static void reverse_matrixing(float *su1, float *su2, int *prev_code,
                               int *curr_code)
@@ -28,13 +20,13 @@ __attribute__((used)) static void reverse_matrixing(float *su1, float *su2, int 
         nsample = band;
 
         if (s1 != s2) {
-            /* Selector value changed, interpolation needed. */
-            mc1_l = matrix_coeffs[s1 * 2    ];
+
+            mc1_l = matrix_coeffs[s1 * 2 ];
             mc1_r = matrix_coeffs[s1 * 2 + 1];
-            mc2_l = matrix_coeffs[s2 * 2    ];
+            mc2_l = matrix_coeffs[s2 * 2 ];
             mc2_r = matrix_coeffs[s2 * 2 + 1];
 
-            /* Interpolation is done over the first eight samples. */
+
             for (; nsample < band + 8; nsample++) {
                 float c1 = su1[nsample];
                 float c2 = su2[nsample];
@@ -45,13 +37,13 @@ __attribute__((used)) static void reverse_matrixing(float *su1, float *su2, int 
             }
         }
 
-        /* Apply the matrix without interpolation. */
+
         switch (s2) {
-        case 0:     /* M/S decoding */
+        case 0:
             for (; nsample < band + 256; nsample++) {
                 float c1 = su1[nsample];
                 float c2 = su2[nsample];
-                su1[nsample] =  c2       * 2.0;
+                su1[nsample] = c2 * 2.0;
                 su2[nsample] = (c1 - c2) * 2.0;
             }
             break;
@@ -59,8 +51,8 @@ __attribute__((used)) static void reverse_matrixing(float *su1, float *su2, int 
             for (; nsample < band + 256; nsample++) {
                 float c1 = su1[nsample];
                 float c2 = su2[nsample];
-                su1[nsample] = (c1 + c2) *  2.0;
-                su2[nsample] =  c2       * -2.0;
+                su1[nsample] = (c1 + c2) * 2.0;
+                su2[nsample] = c2 * -2.0;
             }
             break;
         case 2:

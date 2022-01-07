@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  is_app_container ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- scalar_t__ ERROR_INVALID_FUNCTION ; 
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- int /*<<< orphan*/  GetCurrentProcess () ; 
- int GetLastError () ; 
- int GetTokenInformation (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int,int*) ; 
- int /*<<< orphan*/  MAXIMUM_ALLOWED ; 
- int OpenProcessToken (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TokenIsAppContainer ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
+
+
+
+typedef int is_app_container ;
+typedef int HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int CloseHandle (int ) ;
+ scalar_t__ ERROR_INVALID_FUNCTION ;
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ int GetCurrentProcess () ;
+ int GetLastError () ;
+ int GetTokenInformation (int ,int ,int*,int,int*) ;
+ int MAXIMUM_ALLOWED ;
+ int OpenProcessToken (int ,int ,int *) ;
+ int TokenIsAppContainer ;
+ scalar_t__ broken (int) ;
+ int ok (int,char*,int) ;
 
 __attribute__((used)) static void test_GetTokenInformation(void)
 {
@@ -42,7 +42,7 @@ __attribute__((used)) static void test_GetTokenInformation(void)
     ret = GetTokenInformation(token, TokenIsAppContainer, &is_app_container,
                               sizeof(is_app_container), &size);
     ok(ret || broken(GetLastError() == ERROR_INVALID_PARAMETER ||
-                     GetLastError() == ERROR_INVALID_FUNCTION), /* pre-win8 */
+                     GetLastError() == ERROR_INVALID_FUNCTION),
        "GetTokenInformation failed: %u\n", GetLastError());
     if(ret) {
         ok(size == sizeof(is_app_container), "size = %u\n", size);

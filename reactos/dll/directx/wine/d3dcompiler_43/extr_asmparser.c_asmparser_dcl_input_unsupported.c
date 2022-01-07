@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct shader_reg {int dummy; } ;
-struct asm_parser {int /*<<< orphan*/  status; int /*<<< orphan*/  line_no; } ;
-typedef  int /*<<< orphan*/  DWORD ;
+struct asm_parser {int status; int line_no; } ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PARSE_ERR ; 
- int /*<<< orphan*/  asmparser_message (struct asm_parser*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_parse_status (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int PARSE_ERR ;
+ int asmparser_message (struct asm_parser*,char*,int ) ;
+ int set_parse_status (int *,int ) ;
 
 __attribute__((used)) static void asmparser_dcl_input_unsupported(struct asm_parser *This,
         DWORD usage, DWORD num, DWORD mod, const struct shader_reg *reg)

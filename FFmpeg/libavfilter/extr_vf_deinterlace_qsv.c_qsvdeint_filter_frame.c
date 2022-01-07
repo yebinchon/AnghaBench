@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mfxFrameSurface1 ;
-struct TYPE_3__ {int /*<<< orphan*/ * dst; } ;
-typedef  int /*<<< orphan*/  AVFrame ;
-typedef  TYPE_1__ AVFilterLink ;
-typedef  int /*<<< orphan*/  AVFilterContext ;
 
-/* Variables and functions */
- int QSVDEINT_MORE_OUTPUT ; 
- int /*<<< orphan*/  av_frame_free (int /*<<< orphan*/ **) ; 
- int process_frame (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int submit_frame (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int mfxFrameSurface1 ;
+struct TYPE_3__ {int * dst; } ;
+typedef int AVFrame ;
+typedef TYPE_1__ AVFilterLink ;
+typedef int AVFilterContext ;
+
+
+ int QSVDEINT_MORE_OUTPUT ;
+ int av_frame_free (int **) ;
+ int process_frame (int *,int *,int *) ;
+ int submit_frame (int *,int *,int **) ;
 
 __attribute__((used)) static int qsvdeint_filter_frame(AVFilterLink *link, AVFrame *in)
 {

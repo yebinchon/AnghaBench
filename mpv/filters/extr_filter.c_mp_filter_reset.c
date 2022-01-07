@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct mp_pin {struct mp_pin* other; } ;
 struct mp_filter {int num_pins; TYPE_2__* in; struct mp_pin** ppins; } ;
 struct TYPE_4__ {int num_children; TYPE_1__* info; struct mp_filter** children; } ;
-struct TYPE_3__ {int /*<<< orphan*/  (* reset ) (struct mp_filter*) ;} ;
+struct TYPE_3__ {int (* reset ) (struct mp_filter*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  reset_pin (struct mp_pin*) ; 
- int /*<<< orphan*/  stub1 (struct mp_filter*) ; 
+
+ int reset_pin (struct mp_pin*) ;
+ int stub1 (struct mp_filter*) ;
 
 void mp_filter_reset(struct mp_filter *filter)
 {

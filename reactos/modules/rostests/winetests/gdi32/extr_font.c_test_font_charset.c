@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cd ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  scalar_t__ const INT ;
 
-/* Variables and functions */
-#define  ANSI_CHARSET 131 
-#define  CP_SYMBOL 130 
- int /*<<< orphan*/  FALSE ; 
-#define  RUSSIAN_CHARSET 129 
-#define  SYMBOL_CHARSET 128 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ get_glyph_indices (scalar_t__ const,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_font_installed (char*) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  pGetGlyphIndicesA ; 
- int /*<<< orphan*/  pGetGlyphIndicesW ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int cd ;
+typedef int WORD ;
+typedef int UINT ;
+typedef scalar_t__ const INT ;
+
+
+
+
+ int FALSE ;
+
+
+ int TRUE ;
+ scalar_t__ get_glyph_indices (scalar_t__ const,int ,int *,int,int ) ;
+ int is_font_installed (char*) ;
+ int memcmp (int *,int *,int) ;
+ int ok (int,char*,...) ;
+ int pGetGlyphIndicesA ;
+ int pGetGlyphIndicesW ;
+ int skip (char*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_font_charset(void)
 {
@@ -40,9 +40,9 @@ __attribute__((used)) static void test_font_charset(void)
         WORD font_idxA[128], font_idxW[128];
     } cd[] =
     {
-        { ANSI_CHARSET, 1252 },
-        { RUSSIAN_CHARSET, 1251 },
-        { SYMBOL_CHARSET, CP_SYMBOL } /* keep it as the last one */
+        { 131, 1252 },
+        { 129, 1251 },
+        { 128, 130 }
     };
     int i;
 
@@ -60,7 +60,7 @@ __attribute__((used)) static void test_font_charset(void)
 
     for (i = 0; i < sizeof(cd)/sizeof(cd[0]); i++)
     {
-        if (cd[i].charset == SYMBOL_CHARSET)
+        if (cd[i].charset == 128)
         {
             if (!is_font_installed("Symbol") && !is_font_installed("Wingdings"))
             {

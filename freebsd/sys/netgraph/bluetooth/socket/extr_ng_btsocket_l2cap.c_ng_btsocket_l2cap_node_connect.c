@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hook_p ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NG_HOOK_FORCE_QUEUE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NG_HOOK_PEER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NG_HOOK_REF (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NG_HOOK_SET_PRIVATE (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int hook_p ;
+
+
+ int NG_HOOK_FORCE_QUEUE (int ) ;
+ int NG_HOOK_PEER (int ) ;
+ int NG_HOOK_REF (int ) ;
+ int NG_HOOK_SET_PRIVATE (int ,int *) ;
 
 __attribute__((used)) static int
 ng_btsocket_l2cap_node_connect(hook_p hook)
 {
-	NG_HOOK_SET_PRIVATE(hook, NULL);
-	NG_HOOK_REF(hook); /* Keep extra reference to the hook */
+ NG_HOOK_SET_PRIVATE(hook, ((void*)0));
+ NG_HOOK_REF(hook);
 
-#if 0
-	NG_HOOK_FORCE_QUEUE(NG_HOOK_PEER(hook));
-	NG_HOOK_FORCE_QUEUE(hook);
-#endif
 
-	return (0);
+
+
+
+
+ return (0);
 }

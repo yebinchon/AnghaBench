@@ -1,42 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int TSDB_MOD_MGMT ; 
- int /*<<< orphan*/  mTrace (char*) ; 
- int /*<<< orphan*/  mgmtCleanUpAccts () ; 
- int /*<<< orphan*/  mgmtCleanUpDbs () ; 
- int /*<<< orphan*/  mgmtCleanUpDnodeInt () ; 
- int /*<<< orphan*/  mgmtCleanUpDnodes () ; 
- int /*<<< orphan*/  mgmtCleanUpMeters () ; 
- int /*<<< orphan*/  mgmtCleanUpRedirect () ; 
- int /*<<< orphan*/  mgmtCleanUpShell () ; 
- int /*<<< orphan*/  mgmtCleanUpUsers () ; 
- int /*<<< orphan*/  mgmtCleanUpVgroups () ; 
- int /*<<< orphan*/  mgmtCleanupBalance () ; 
- scalar_t__ mgmtDnodeConns ; 
- int /*<<< orphan*/ * mgmtQhandle ; 
- scalar_t__ mgmtShellConns ; 
- int /*<<< orphan*/  mgmtStatisticTimer ; 
- int /*<<< orphan*/ * mgmtTmr ; 
- int /*<<< orphan*/ * mgmtTranQhandle ; 
- int /*<<< orphan*/ * pShellConn ; 
- int /*<<< orphan*/  sdbCleanUpPeers () ; 
- int /*<<< orphan*/  taosCleanUpScheduler (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  taosTmrCleanUp (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  taosTmrStopA (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tclearModuleStatus (int) ; 
- int tsModuleStatus ; 
+ int TSDB_MOD_MGMT ;
+ int mTrace (char*) ;
+ int mgmtCleanUpAccts () ;
+ int mgmtCleanUpDbs () ;
+ int mgmtCleanUpDnodeInt () ;
+ int mgmtCleanUpDnodes () ;
+ int mgmtCleanUpMeters () ;
+ int mgmtCleanUpRedirect () ;
+ int mgmtCleanUpShell () ;
+ int mgmtCleanUpUsers () ;
+ int mgmtCleanUpVgroups () ;
+ int mgmtCleanupBalance () ;
+ scalar_t__ mgmtDnodeConns ;
+ int * mgmtQhandle ;
+ scalar_t__ mgmtShellConns ;
+ int mgmtStatisticTimer ;
+ int * mgmtTmr ;
+ int * mgmtTranQhandle ;
+ int * pShellConn ;
+ int sdbCleanUpPeers () ;
+ int taosCleanUpScheduler (int *) ;
+ int taosTmrCleanUp (int *) ;
+ int taosTmrStopA (int *) ;
+ int tclearModuleStatus (int) ;
+ int tsModuleStatus ;
 
 void mgmtCleanUpSystem() {
   if (tsModuleStatus & (1 << TSDB_MOD_MGMT)) {
@@ -59,12 +51,12 @@ void mgmtCleanUpSystem() {
     mgmtCleanUpRedirect();
   }
 
-  mgmtTmr = NULL;
-  mgmtQhandle = NULL;
+  mgmtTmr = ((void*)0);
+  mgmtQhandle = ((void*)0);
   mgmtShellConns = 0;
   mgmtDnodeConns = 0;
   tclearModuleStatus(TSDB_MOD_MGMT);
-  pShellConn = NULL;
+  pShellConn = ((void*)0);
 
   mTrace("mgmt is cleaned up");
 }

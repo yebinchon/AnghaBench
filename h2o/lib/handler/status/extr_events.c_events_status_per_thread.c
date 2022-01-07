@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct st_events_status_ctx_t {int /*<<< orphan*/  mutex; int /*<<< orphan*/  h2_write_closed; int /*<<< orphan*/  h2_read_closed; int /*<<< orphan*/ * h2_protocol_level_errors; int /*<<< orphan*/  ssl_errors; int /*<<< orphan*/ * emitted_status_errors; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct st_events_status_ctx_t {int mutex; int h2_write_closed; int h2_read_closed; int * h2_protocol_level_errors; int ssl_errors; int * emitted_status_errors; } ;
 struct TYPE_7__ {scalar_t__ write_closed; scalar_t__ read_closed; scalar_t__* protocol_level_errors; } ;
 struct TYPE_8__ {TYPE_2__ events; } ;
 struct TYPE_6__ {scalar_t__ errors; } ;
 struct TYPE_9__ {TYPE_3__ http2; TYPE_1__ ssl; scalar_t__* emitted_error_status; } ;
-typedef  TYPE_4__ h2o_context_t ;
+typedef TYPE_4__ h2o_context_t ;
 
-/* Variables and functions */
- size_t H2O_HTTP2_ERROR_MAX ; 
- size_t H2O_STATUS_ERROR_MAX ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ size_t H2O_HTTP2_ERROR_MAX ;
+ size_t H2O_STATUS_ERROR_MAX ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 __attribute__((used)) static void events_status_per_thread(void *priv, h2o_context_t *ctx)
 {

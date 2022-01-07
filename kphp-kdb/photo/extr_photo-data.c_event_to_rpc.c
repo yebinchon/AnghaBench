@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_11__ {int field_i; TYPE_2__* fields; } ;
-typedef  TYPE_1__ type_desc ;
+typedef TYPE_1__ type_desc ;
 struct TYPE_12__ {int type; } ;
-typedef  TYPE_2__ field_desc ;
-typedef  int /*<<< orphan*/  event ;
-struct TYPE_13__ {scalar_t__ deleted; int /*<<< orphan*/ * dyn; int /*<<< orphan*/ * obj; } ;
-typedef  TYPE_3__ actual_object ;
+typedef TYPE_2__ field_desc ;
+typedef int event ;
+struct TYPE_13__ {scalar_t__ deleted; int * dyn; int * obj; } ;
+typedef TYPE_3__ actual_object ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * GET_DOUBLE (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int* GET_INT (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/ * GET_LONG (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  GET_RAW (int /*<<< orphan*/ *,TYPE_2__*) ; 
- char* GET_STRING (int /*<<< orphan*/ *,TYPE_2__*) ; 
-#define  MODE_AUDIO 135 
-#define  MODE_PHOTO 134 
-#define  MODE_VIDEO 133 
- char* RAW_DATA (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  READ_CHAR (char*,char) ; 
- int /*<<< orphan*/  READ_INT (char*,int) ; 
- int /*<<< orphan*/  READ_LONG (char*,unsigned long long) ; 
- int TL_PHOTO_AUDIO_LOCATION ; 
- int TL_PHOTO_AUDIO_LOCATION_STORAGE ; 
- int TL_PHOTO_PHOTO_LOCATION ; 
- int TL_PHOTO_PHOTO_LOCATION_STORAGE ; 
- int TL_PHOTO_VIDEO_LOCATION ; 
- int TL_PHOTO_VIDEO_LOCATION_STORAGE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  base64url_encode (unsigned char*,int,char*,int) ; 
- int get_server (int) ; 
- scalar_t__ has_field (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mode ; 
- int strlen (char*) ; 
-#define  t_double 132 
-#define  t_int 131 
-#define  t_long 130 
-#define  t_raw 129 
-#define  t_string 128 
- int /*<<< orphan*/  tl_store_double (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tl_store_int (int) ; 
- int /*<<< orphan*/  tl_store_long (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tl_store_raw_data (char*,int) ; 
- int /*<<< orphan*/  tl_store_string (char*,int) ; 
- TYPE_1__* types ; 
+
+ int * GET_DOUBLE (int *,TYPE_2__*) ;
+ int* GET_INT (int *,TYPE_2__*) ;
+ int * GET_LONG (int *,TYPE_2__*) ;
+ int GET_RAW (int *,TYPE_2__*) ;
+ char* GET_STRING (int *,TYPE_2__*) ;
+
+
+
+ char* RAW_DATA (int ) ;
+ int READ_CHAR (char*,char) ;
+ int READ_INT (char*,int) ;
+ int READ_LONG (char*,unsigned long long) ;
+ int TL_PHOTO_AUDIO_LOCATION ;
+ int TL_PHOTO_AUDIO_LOCATION_STORAGE ;
+ int TL_PHOTO_PHOTO_LOCATION ;
+ int TL_PHOTO_PHOTO_LOCATION_STORAGE ;
+ int TL_PHOTO_VIDEO_LOCATION ;
+ int TL_PHOTO_VIDEO_LOCATION_STORAGE ;
+ int assert (int) ;
+ int base64url_encode (unsigned char*,int,char*,int) ;
+ int get_server (int) ;
+ scalar_t__ has_field (int *,int) ;
+ int mode ;
+ int strlen (char*) ;
+
+
+
+
+
+ int tl_store_double (int ) ;
+ int tl_store_int (int) ;
+ int tl_store_long (int ) ;
+ int tl_store_raw_data (char*,int) ;
+ int tl_store_string (char*,int) ;
+ TYPE_1__* types ;
 
 void event_to_rpc (actual_object *o, int type_id, long long mask) {
   event *e = o->obj, *e2 = o->dyn;
@@ -66,8 +66,8 @@ void event_to_rpc (actual_object *o, int type_id, long long mask) {
   int i;
   for (i = 0; i < t->field_i; i++) {
     if ((mask >> i) & 1) {
-      if (e2 == NULL || !has_field (e2, i)) {
-        if (e == NULL || !has_field (e, i)) {
+      if (e2 == ((void*)0) || !has_field (e2, i)) {
+        if (e == ((void*)0) || !has_field (e, i)) {
           mask -= (1ll << i);
         }
       }
@@ -84,36 +84,36 @@ void event_to_rpc (actual_object *o, int type_id, long long mask) {
 
   for (i = 0; i < t->field_i; i++) {
     if ((mask >> i) & 1) {
-      event *ev = NULL;
-      if (e2 != NULL && has_field (e2, i)) {
+      event *ev = ((void*)0);
+      if (e2 != ((void*)0) && has_field (e2, i)) {
         ev = e2;
-      } else if (e != NULL && has_field (e, i)) {
+      } else if (e != ((void*)0) && has_field (e, i)) {
         ev = e;
       }
       assert (ev);
 
       field_desc *f = &t->fields[i];
       switch (f->type) {
-        case t_int: {
+        case 131: {
           int value = *GET_INT(ev, f);
 
           tl_store_int (value);
           break;
         }
-        case t_long:
+        case 130:
           tl_store_long (*GET_LONG(ev, f));
           break;
-        case t_double:
+        case 132:
           tl_store_double (*GET_DOUBLE(ev, f));
           break;
-        case t_string: {
+        case 128: {
           char *res = GET_STRING(ev, f);
           tl_store_string (res, strlen (res));
           break;
         }
-        case t_raw: {
+        case 129: {
           char *loc = RAW_DATA (GET_RAW (ev, f));
-          assert (loc != NULL);
+          assert (loc != ((void*)0));
 
           char *loc_begin = loc;
           int count = 0;
@@ -128,13 +128,13 @@ void event_to_rpc (actual_object *o, int type_id, long long mask) {
 
           if (loc[0] < 0) {
             switch (mode) {
-              case MODE_PHOTO:
+              case 134:
                 type_name = TL_PHOTO_PHOTO_LOCATION;
                 break;
-              case MODE_VIDEO:
+              case 133:
                 type_name = TL_PHOTO_VIDEO_LOCATION;
                 break;
-              case MODE_AUDIO:
+              case 135:
                 type_name = TL_PHOTO_AUDIO_LOCATION;
                 break;
               default:
@@ -153,13 +153,13 @@ void event_to_rpc (actual_object *o, int type_id, long long mask) {
           }
 
           switch (mode) {
-            case MODE_PHOTO:
+            case 134:
               type_name = TL_PHOTO_PHOTO_LOCATION_STORAGE;
               break;
-            case MODE_VIDEO:
+            case 133:
               type_name = TL_PHOTO_VIDEO_LOCATION_STORAGE;
               break;
-            case MODE_AUDIO:
+            case 135:
               type_name = TL_PHOTO_AUDIO_LOCATION_STORAGE;
               break;
             default:

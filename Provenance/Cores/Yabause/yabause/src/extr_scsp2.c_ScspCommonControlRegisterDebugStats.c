@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int dgate; int ddir; int dexe; int tima; int tactl; int timb; int tbctl; int timc; int tcctl; int /*<<< orphan*/  mcieb; int /*<<< orphan*/  mcipd; int /*<<< orphan*/  scilv2; int /*<<< orphan*/  scilv1; int /*<<< orphan*/  scilv0; int /*<<< orphan*/  scieb; int /*<<< orphan*/  scipd; int /*<<< orphan*/  drga; scalar_t__ dmea; int /*<<< orphan*/  mslc; scalar_t__ rbp; int /*<<< orphan*/  rbl; int /*<<< orphan*/  mvol; scalar_t__ mem4mb; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddString (char*,char*,...) ; 
- int ScspReadWordDirect (int) ; 
- TYPE_1__ scsp ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int dgate; int ddir; int dexe; int tima; int tactl; int timb; int tbctl; int timc; int tcctl; int mcieb; int mcipd; int scilv2; int scilv1; int scilv0; int scieb; int scipd; int drga; scalar_t__ dmea; int mslc; scalar_t__ rbp; int rbl; int mvol; scalar_t__ mem4mb; } ;
+
+
+ int AddString (char*,char*,...) ;
+ int ScspReadWordDirect (int) ;
+ TYPE_1__ scsp ;
 
 void ScspCommonControlRegisterDebugStats(char *outstring)
 {

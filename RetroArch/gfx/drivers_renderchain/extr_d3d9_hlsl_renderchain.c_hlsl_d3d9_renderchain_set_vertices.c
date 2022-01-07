@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-struct TYPE_7__ {int /*<<< orphan*/  tex_h; int /*<<< orphan*/  tex_w; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct TYPE_7__ {int tex_h; int tex_w; } ;
 struct shader_pass {unsigned int last_width; unsigned int last_height; TYPE_1__ info; } ;
-struct TYPE_9__ {int /*<<< orphan*/  dev; } ;
+struct TYPE_9__ {int dev; } ;
 struct TYPE_8__ {TYPE_4__ chain; } ;
-typedef  TYPE_2__ hlsl_renderchain_t ;
-typedef  int /*<<< orphan*/  d3d9_video_t ;
+typedef TYPE_2__ hlsl_renderchain_t ;
+typedef int d3d9_video_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  d3d9_renderchain_set_vertices_on_change (TYPE_4__*,struct shader_pass*,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  hlsl_d3d9_renderchain_calc_and_set_shader_mvp (TYPE_2__*,struct shader_pass*,unsigned int,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  hlsl_d3d9_renderchain_set_shader_params (TYPE_4__*,int /*<<< orphan*/ ,struct shader_pass*,unsigned int,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,unsigned int) ; 
+
+ int d3d9_renderchain_set_vertices_on_change (TYPE_4__*,struct shader_pass*,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int) ;
+ int hlsl_d3d9_renderchain_calc_and_set_shader_mvp (TYPE_2__*,struct shader_pass*,unsigned int,unsigned int,unsigned int) ;
+ int hlsl_d3d9_renderchain_set_shader_params (TYPE_4__*,int ,struct shader_pass*,unsigned int,unsigned int,int ,int ,unsigned int,unsigned int) ;
 
 __attribute__((used)) static void hlsl_d3d9_renderchain_set_vertices(
       d3d9_video_t *d3d,

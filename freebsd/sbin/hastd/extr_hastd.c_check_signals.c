@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct timespec {scalar_t__ tv_nsec; scalar_t__ tv_sec; } ;
-typedef  int /*<<< orphan*/  sigset_t ;
-struct TYPE_2__ {int /*<<< orphan*/  hc_controlconn; } ;
+typedef int sigset_t ;
+struct TYPE_2__ {int hc_controlconn; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EX_OK ; 
- int /*<<< orphan*/  PJDLOG_ABORT (char*,int) ; 
- int /*<<< orphan*/  PJDLOG_VERIFY (int) ; 
-#define  SIGCHLD 131 
-#define  SIGHUP 130 
-#define  SIGINT 129 
-#define  SIGTERM 128 
- TYPE_1__* cfg ; 
- int /*<<< orphan*/  child_exit () ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hastd_reload () ; 
- int /*<<< orphan*/  proto_close (int /*<<< orphan*/ ) ; 
- scalar_t__ sigaddset (int /*<<< orphan*/ *,int) ; 
- scalar_t__ sigemptyset (int /*<<< orphan*/ *) ; 
- int sigexit_received ; 
- int sigtimedwait (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timespec*) ; 
- int /*<<< orphan*/  terminate_workers () ; 
+
+ int EX_OK ;
+ int PJDLOG_ABORT (char*,int) ;
+ int PJDLOG_VERIFY (int) ;
+
+
+
+
+ TYPE_1__* cfg ;
+ int child_exit () ;
+ int exit (int ) ;
+ int hastd_reload () ;
+ int proto_close (int ) ;
+ scalar_t__ sigaddset (int *,int) ;
+ scalar_t__ sigemptyset (int *) ;
+ int sigexit_received ;
+ int sigtimedwait (int *,int *,struct timespec*) ;
+ int terminate_workers () ;
 
 __attribute__((used)) static void
 check_signals(void)
 {
-	struct timespec sigtimeout;
-	sigset_t mask;
-	int signo;
+ struct timespec sigtimeout;
+ sigset_t mask;
+ int signo;
 
-	sigtimeout.tv_sec = 0;
-	sigtimeout.tv_nsec = 0;
+ sigtimeout.tv_sec = 0;
+ sigtimeout.tv_nsec = 0;
 
-	PJDLOG_VERIFY(sigemptyset(&mask) == 0);
-	PJDLOG_VERIFY(sigaddset(&mask, SIGHUP) == 0);
-	PJDLOG_VERIFY(sigaddset(&mask, SIGINT) == 0);
-	PJDLOG_VERIFY(sigaddset(&mask, SIGTERM) == 0);
-	PJDLOG_VERIFY(sigaddset(&mask, SIGCHLD) == 0);
+ PJDLOG_VERIFY(sigemptyset(&mask) == 0);
+ PJDLOG_VERIFY(sigaddset(&mask, 130) == 0);
+ PJDLOG_VERIFY(sigaddset(&mask, 129) == 0);
+ PJDLOG_VERIFY(sigaddset(&mask, 128) == 0);
+ PJDLOG_VERIFY(sigaddset(&mask, 131) == 0);
 
-	while ((signo = sigtimedwait(&mask, NULL, &sigtimeout)) != -1) {
-		switch (signo) {
-		case SIGINT:
-		case SIGTERM:
-			sigexit_received = true;
-			terminate_workers();
-			proto_close(cfg->hc_controlconn);
-			exit(EX_OK);
-			break;
-		case SIGCHLD:
-			child_exit();
-			break;
-		case SIGHUP:
-			hastd_reload();
-			break;
-		default:
-			PJDLOG_ABORT("Unexpected signal (%d).", signo);
-		}
-	}
+ while ((signo = sigtimedwait(&mask, ((void*)0), &sigtimeout)) != -1) {
+  switch (signo) {
+  case 129:
+  case 128:
+   sigexit_received = 1;
+   terminate_workers();
+   proto_close(cfg->hc_controlconn);
+   exit(EX_OK);
+   break;
+  case 131:
+   child_exit();
+   break;
+  case 130:
+   hastd_reload();
+   break;
+  default:
+   PJDLOG_ABORT("Unexpected signal (%d).", signo);
+  }
+ }
 }

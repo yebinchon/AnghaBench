@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct reg_entry {int number; int type; char const* name; int /*<<< orphan*/ * neon; scalar_t__ builtin; } ;
-typedef  int /*<<< orphan*/  PTR ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  arm_reg_hsh ; 
- int /*<<< orphan*/  as_warn (int /*<<< orphan*/ ,char*) ; 
- struct reg_entry* hash_find (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ hash_insert (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- struct reg_entry* xmalloc (int) ; 
- char* xstrdup (char*) ; 
+
+
+
+struct reg_entry {int number; int type; char const* name; int * neon; scalar_t__ builtin; } ;
+typedef int PTR ;
+
+
+ scalar_t__ FALSE ;
+ int _ (char*) ;
+ int abort () ;
+ int arm_reg_hsh ;
+ int as_warn (int ,char*) ;
+ struct reg_entry* hash_find (int ,char*) ;
+ scalar_t__ hash_insert (int ,char const*,int ) ;
+ struct reg_entry* xmalloc (int) ;
+ char* xstrdup (char*) ;
 
 __attribute__((used)) static struct reg_entry *
 insert_reg_alias (char *str, int number, int type)
@@ -33,12 +33,12 @@ insert_reg_alias (char *str, int number, int type)
   if ((new = hash_find (arm_reg_hsh, str)) != 0)
     {
       if (new->builtin)
-	as_warn (_("ignoring attempt to redefine built-in register '%s'"), str);
+ as_warn (_("ignoring attempt to redefine built-in register '%s'"), str);
 
-      /* Only warn about a redefinition if it's not defined as the
-	 same register.	 */
+
+
       else if (new->number != number || new->type != type)
-	as_warn (_("ignoring redefinition of register alias '%s'"), str);
+ as_warn (_("ignoring redefinition of register alias '%s'"), str);
 
       return 0;
     }
@@ -50,10 +50,10 @@ insert_reg_alias (char *str, int number, int type)
   new->number = number;
   new->type = type;
   new->builtin = FALSE;
-  new->neon = NULL;
+  new->neon = ((void*)0);
 
   if (hash_insert (arm_reg_hsh, name, (PTR) new))
     abort ();
-  
+
   return new;
 }

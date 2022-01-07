@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ieee754sp ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ieee754sp_div (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ieee754sp_one (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ieee754sp ;
+
+
+ int ieee754sp_div (int ,int ) ;
+ int ieee754sp_one (int ) ;
 
 __attribute__((used)) static ieee754sp fpemu_sp_recip(ieee754sp s)
 {
-	return ieee754sp_div(ieee754sp_one(0), s);
+ return ieee754sp_div(ieee754sp_one(0), s);
 }

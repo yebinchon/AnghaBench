@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FFFILE ;
 
-/* Variables and functions */
- int INT_MAX ; 
- int LLONG_MAX ; 
- long long LLONG_MIN ; 
- int shgetc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  shunget (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int FFFILE ;
+
+
+ int INT_MAX ;
+ int LLONG_MAX ;
+ long long LLONG_MIN ;
+ int shgetc (int *) ;
+ int shunget (int *) ;
 
 __attribute__((used)) static long long scanexp(FFFILE *f, int pok)
 {

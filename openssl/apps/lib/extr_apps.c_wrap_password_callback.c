@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PW_CB_DATA ;
 
-/* Variables and functions */
- int password_callback (char*,int,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int PW_CB_DATA ;
+
+
+ int password_callback (char*,int,int,int *) ;
 
 int wrap_password_callback(char *buf, int bufsiz, int verify, void *userdata)
 {

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rgb32_xp ;
-typedef  int /*<<< orphan*/  rgb24 ;
-typedef  int /*<<< orphan*/  pargb ;
-typedef  int /*<<< orphan*/  argb ;
-struct TYPE_4__ {int Width; int Height; int Stride; int* Scan0; int /*<<< orphan*/  PixelFormat; } ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpImage ;
-typedef  int /*<<< orphan*/  GpBitmap ;
-typedef  TYPE_1__ BitmapData ;
-typedef  int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GdipBitmapLockBits (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  GdipBitmapUnlockBits (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  GdipCreateBitmapFromScan0 (int,int,int,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDisposeImage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ImageLockModeRead ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  PixelFormat24bppRGB ; 
- int /*<<< orphan*/  PixelFormat32bppARGB ; 
- int /*<<< orphan*/  PixelFormat32bppPARGB ; 
- int /*<<< orphan*/  PixelFormat32bppRGB ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcmp (int*,int*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  trace (char*,int /*<<< orphan*/ ,int,int,int,int,int,int,int,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int rgb32_xp ;
+typedef int rgb24 ;
+typedef int pargb ;
+typedef int argb ;
+struct TYPE_4__ {int Width; int Height; int Stride; int* Scan0; int PixelFormat; } ;
+typedef int GpStatus ;
+typedef int GpImage ;
+typedef int GpBitmap ;
+typedef TYPE_1__ BitmapData ;
+typedef int BYTE ;
+
+
+ int GdipBitmapLockBits (int *,int *,int ,int ,TYPE_1__*) ;
+ int GdipBitmapUnlockBits (int *,TYPE_1__*) ;
+ int GdipCreateBitmapFromScan0 (int,int,int,int ,int*,int **) ;
+ int GdipDisposeImage (int *) ;
+ int ImageLockModeRead ;
+ int Ok ;
+ int PixelFormat24bppRGB ;
+ int PixelFormat32bppARGB ;
+ int PixelFormat32bppPARGB ;
+ int PixelFormat32bppRGB ;
+ int expect (int ,int ) ;
+ int memcmp (int*,int*,int) ;
+ int ok (int,char*,...) ;
+ int trace (char*,int ,int,int,int,int,int,int,int,int) ;
 
 __attribute__((used)) static void test_ARGB_conversion(void)
 {
@@ -53,7 +53,7 @@ __attribute__((used)) static void test_ARGB_conversion(void)
     status = GdipCreateBitmapFromScan0(2, 1, 8, PixelFormat32bppARGB, argb, &bitmap);
     expect(Ok, status);
 
-    status = GdipBitmapLockBits(bitmap, NULL, ImageLockModeRead, PixelFormat32bppPARGB, &data);
+    status = GdipBitmapLockBits(bitmap, ((void*)0), ImageLockModeRead, PixelFormat32bppPARGB, &data);
     expect(Ok, status);
     ok(data.Width == 2, "expected 2, got %d\n", data.Width);
     ok(data.Height == 1, "expected 1, got %d\n", data.Height);
@@ -70,7 +70,7 @@ __attribute__((used)) static void test_ARGB_conversion(void)
     status = GdipBitmapUnlockBits(bitmap, &data);
     expect(Ok, status);
 
-    status = GdipBitmapLockBits(bitmap, NULL, ImageLockModeRead, PixelFormat32bppRGB, &data);
+    status = GdipBitmapLockBits(bitmap, ((void*)0), ImageLockModeRead, PixelFormat32bppRGB, &data);
     expect(Ok, status);
     ok(data.Width == 2, "expected 2, got %d\n", data.Width);
     ok(data.Height == 1, "expected 1, got %d\n", data.Height);
@@ -88,7 +88,7 @@ __attribute__((used)) static void test_ARGB_conversion(void)
     status = GdipBitmapUnlockBits(bitmap, &data);
     expect(Ok, status);
 
-    status = GdipBitmapLockBits(bitmap, NULL, ImageLockModeRead, PixelFormat24bppRGB, &data);
+    status = GdipBitmapLockBits(bitmap, ((void*)0), ImageLockModeRead, PixelFormat24bppRGB, &data);
     expect(Ok, status);
     ok(data.Width == 2, "expected 2, got %d\n", data.Width);
     ok(data.Height == 1, "expected 1, got %d\n", data.Height);

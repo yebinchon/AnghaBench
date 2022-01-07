@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct pid {int dummy; } ;
-struct TYPE_2__ {int pid_type; int /*<<< orphan*/  lock; int /*<<< orphan*/  euid; int /*<<< orphan*/  uid; scalar_t__ pid; } ;
+struct TYPE_2__ {int pid_type; int lock; int euid; int uid; scalar_t__ pid; } ;
 struct file {TYPE_1__ f_owner; } ;
-struct cred {int /*<<< orphan*/  euid; int /*<<< orphan*/  uid; } ;
-typedef  enum pid_type { ____Placeholder_pid_type } pid_type ;
+struct cred {int euid; int uid; } ;
+typedef enum pid_type { ____Placeholder_pid_type } pid_type ;
 
-/* Variables and functions */
- struct cred* current_cred () ; 
- scalar_t__ get_pid (struct pid*) ; 
- int /*<<< orphan*/  put_pid (scalar_t__) ; 
- int /*<<< orphan*/  write_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_unlock_irq (int /*<<< orphan*/ *) ; 
+
+ struct cred* current_cred () ;
+ scalar_t__ get_pid (struct pid*) ;
+ int put_pid (scalar_t__) ;
+ int write_lock_irq (int *) ;
+ int write_unlock_irq (int *) ;
 
 __attribute__((used)) static void f_modown(struct file *filp, struct pid *pid, enum pid_type type,
                      int force)
 {
-	write_lock_irq(&filp->f_owner.lock);
-	if (force || !filp->f_owner.pid) {
-		put_pid(filp->f_owner.pid);
-		filp->f_owner.pid = get_pid(pid);
-		filp->f_owner.pid_type = type;
+ write_lock_irq(&filp->f_owner.lock);
+ if (force || !filp->f_owner.pid) {
+  put_pid(filp->f_owner.pid);
+  filp->f_owner.pid = get_pid(pid);
+  filp->f_owner.pid_type = type;
 
-		if (pid) {
-			const struct cred *cred = current_cred();
-			filp->f_owner.uid = cred->uid;
-			filp->f_owner.euid = cred->euid;
-		}
-	}
-	write_unlock_irq(&filp->f_owner.lock);
+  if (pid) {
+   const struct cred *cred = current_cred();
+   filp->f_owner.uid = cred->uid;
+   filp->f_owner.euid = cred->euid;
+  }
+ }
+ write_unlock_irq(&filp->f_owner.lock);
 }

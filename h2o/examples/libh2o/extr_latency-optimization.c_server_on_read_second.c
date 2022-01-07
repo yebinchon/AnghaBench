@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  h2o_socket_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int server_flag_received ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int h2o_socket_t ;
+
+
+ int exit (int) ;
+ int fprintf (int ,char*,...) ;
+ int server_flag_received ;
+ int stderr ;
 
 __attribute__((used)) static void server_on_read_second(h2o_socket_t *sock, const char *err)
 {
-    if (err != NULL) {
+    if (err != ((void*)0)) {
         fprintf(stderr, "connection closed unexpectedly:%s\n", err);
         exit(1);
         return;

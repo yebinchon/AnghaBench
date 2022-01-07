@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * member_0; } ;
-struct unk_impl {int member_1; int ref; int /*<<< orphan*/ * inner_unk; int /*<<< orphan*/  IUnknown_iface; int /*<<< orphan*/ * member_2; TYPE_1__ member_0; } ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IPersistFile ;
-typedef  int /*<<< orphan*/  IAVIStream ;
-typedef  int /*<<< orphan*/  IAVIFile ;
-typedef  int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_WAVFile ; 
- int CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int E_NOINTERFACE ; 
- int IAVIFile_AddRef (int /*<<< orphan*/ *) ; 
- int IAVIFile_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int IAVIFile_Release (int /*<<< orphan*/ *) ; 
- int IAVIStream_AddRef (int /*<<< orphan*/ *) ; 
- int IAVIStream_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IAVIFile ; 
- int /*<<< orphan*/  IID_IAVIStream ; 
- int /*<<< orphan*/  IID_IAVIStreaming ; 
- int /*<<< orphan*/  IID_IPersistFile ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int IPersistFile_AddRef (int /*<<< orphan*/ *) ; 
- int IPersistFile_Release (int /*<<< orphan*/ *) ; 
- int IUnknown_AddRef (int /*<<< orphan*/ *) ; 
- int IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int IUnknown_Release (int /*<<< orphan*/ *) ; 
- int S_OK ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  unk_vtbl ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * member_0; } ;
+struct unk_impl {int member_1; int ref; int * inner_unk; int IUnknown_iface; int * member_2; TYPE_1__ member_0; } ;
+typedef int ULONG ;
+typedef int IUnknown ;
+typedef int IPersistFile ;
+typedef int IAVIStream ;
+typedef int IAVIFile ;
+typedef int HRESULT ;
+
+
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_WAVFile ;
+ int CoCreateInstance (int *,int *,int ,int *,void**) ;
+ int E_NOINTERFACE ;
+ int IAVIFile_AddRef (int *) ;
+ int IAVIFile_QueryInterface (int *,int *,void**) ;
+ int IAVIFile_Release (int *) ;
+ int IAVIStream_AddRef (int *) ;
+ int IAVIStream_Release (int *) ;
+ int IID_IAVIFile ;
+ int IID_IAVIStream ;
+ int IID_IAVIStreaming ;
+ int IID_IPersistFile ;
+ int IID_IUnknown ;
+ int IPersistFile_AddRef (int *) ;
+ int IPersistFile_Release (int *) ;
+ int IUnknown_AddRef (int *) ;
+ int IUnknown_QueryInterface (int *,int *,void**) ;
+ int IUnknown_Release (int *) ;
+ int S_OK ;
+ int ok (int,char*,...) ;
+ int unk_vtbl ;
 
 __attribute__((used)) static void test_COM_wavfile(void)
 {
-    struct unk_impl unk_obj = {{&unk_vtbl}, 19, NULL};
-    IAVIFile *avif = NULL;
+    struct unk_impl unk_obj = {{&unk_vtbl}, 19, ((void*)0)};
+    IAVIFile *avif = ((void*)0);
     IPersistFile *pf;
     IAVIStream *avis;
     IUnknown *unk;
     ULONG refcount;
     HRESULT hr;
 
-    /* COM aggregation */
+
     hr = CoCreateInstance(&CLSID_WAVFile, &unk_obj.IUnknown_iface, CLSCTX_INPROC_SERVER,
             &IID_IUnknown, (void**)&unk_obj.inner_unk);
     ok(hr == S_OK, "COM aggregation failed: %08x, expected S_OK\n", hr);
@@ -73,13 +73,13 @@ __attribute__((used)) static void test_COM_wavfile(void)
     refcount = IUnknown_Release(unk_obj.inner_unk);
     ok(refcount == 0, "Inner ref count should be 0 but is %u\n", refcount);
 
-    /* Invalid RIID */
-    hr = CoCreateInstance(&CLSID_WAVFile, NULL, CLSCTX_INPROC_SERVER, &IID_IAVIStreaming,
+
+    hr = CoCreateInstance(&CLSID_WAVFile, ((void*)0), CLSCTX_INPROC_SERVER, &IID_IAVIStreaming,
             (void**)&avif);
     ok(hr == E_NOINTERFACE, "WAVFile create failed: %08x, expected E_NOINTERFACE\n", hr);
 
-    /* Same refcount for all WAVFile interfaces */
-    hr = CoCreateInstance(&CLSID_WAVFile, NULL, CLSCTX_INPROC_SERVER, &IID_IAVIFile, (void**)&avif);
+
+    hr = CoCreateInstance(&CLSID_WAVFile, ((void*)0), CLSCTX_INPROC_SERVER, &IID_IAVIFile, (void**)&avif);
     ok(hr == S_OK, "WAVFile create failed: %08x, expected S_OK\n", hr);
     refcount = IAVIFile_AddRef(avif);
     ok(refcount == 2, "refcount == %u, expected 2\n", refcount);

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_2__* s3; } ;
 struct TYPE_6__ {unsigned char* ciphers_raw; scalar_t__ ciphers_rawlen; } ;
 struct TYPE_7__ {TYPE_1__ tmp; } ;
-typedef  TYPE_3__ SSL ;
-typedef  int /*<<< orphan*/  PACKET ;
+typedef TYPE_3__ SSL ;
+typedef int PACKET ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_INTERNAL_ERROR ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- unsigned char* OPENSSL_malloc (size_t) ; 
- int /*<<< orphan*/  PACKET_copy_bytes (int /*<<< orphan*/ *,unsigned char*,size_t) ; 
- int /*<<< orphan*/  PACKET_forward (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  PACKET_get_1 (int /*<<< orphan*/ *,unsigned int*) ; 
- int /*<<< orphan*/  PACKET_memdup (int /*<<< orphan*/ *,unsigned char**,scalar_t__*) ; 
- scalar_t__ PACKET_remaining (int /*<<< orphan*/ *) ; 
- size_t SSLV2_CIPHER_LEN ; 
- int /*<<< orphan*/  SSL_AD_DECODE_ERROR ; 
- int /*<<< orphan*/  SSL_AD_ILLEGAL_PARAMETER ; 
- int /*<<< orphan*/  SSL_AD_INTERNAL_ERROR ; 
- int /*<<< orphan*/  SSL_F_SSL_CACHE_CIPHERLIST ; 
- int /*<<< orphan*/  SSL_R_BAD_PACKET ; 
- int /*<<< orphan*/  SSL_R_ERROR_IN_RECEIVED_CIPHER_LIST ; 
- int /*<<< orphan*/  SSL_R_NO_CIPHERS_SPECIFIED ; 
- int /*<<< orphan*/  SSLfatal (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t TLS_CIPHER_LEN ; 
+
+ int ERR_R_INTERNAL_ERROR ;
+ int ERR_R_MALLOC_FAILURE ;
+ int OPENSSL_free (unsigned char*) ;
+ unsigned char* OPENSSL_malloc (size_t) ;
+ int PACKET_copy_bytes (int *,unsigned char*,size_t) ;
+ int PACKET_forward (int *,size_t) ;
+ int PACKET_get_1 (int *,unsigned int*) ;
+ int PACKET_memdup (int *,unsigned char**,scalar_t__*) ;
+ scalar_t__ PACKET_remaining (int *) ;
+ size_t SSLV2_CIPHER_LEN ;
+ int SSL_AD_DECODE_ERROR ;
+ int SSL_AD_ILLEGAL_PARAMETER ;
+ int SSL_AD_INTERNAL_ERROR ;
+ int SSL_F_SSL_CACHE_CIPHERLIST ;
+ int SSL_R_BAD_PACKET ;
+ int SSL_R_ERROR_IN_RECEIVED_CIPHER_LIST ;
+ int SSL_R_NO_CIPHERS_SPECIFIED ;
+ int SSLfatal (TYPE_3__*,int ,int ,int ) ;
+ size_t TLS_CIPHER_LEN ;
 
 int ssl_cache_cipherlist(SSL *s, PACKET *cipher_suites, int sslv2format)
 {
@@ -59,7 +59,7 @@ int ssl_cache_cipherlist(SSL *s, PACKET *cipher_suites, int sslv2format)
     }
 
     OPENSSL_free(s->s3->tmp.ciphers_raw);
-    s->s3->tmp.ciphers_raw = NULL;
+    s->s3->tmp.ciphers_raw = ((void*)0);
     s->s3->tmp.ciphers_rawlen = 0;
 
     if (sslv2format) {
@@ -67,17 +67,9 @@ int ssl_cache_cipherlist(SSL *s, PACKET *cipher_suites, int sslv2format)
         PACKET sslv2ciphers = *cipher_suites;
         unsigned int leadbyte;
         unsigned char *raw;
-
-        /*
-         * We store the raw ciphers list in SSLv3+ format so we need to do some
-         * preprocessing to convert the list first. If there are any SSLv2 only
-         * ciphersuites with a non-zero leading byte then we are going to
-         * slightly over allocate because we won't store those. But that isn't a
-         * problem.
-         */
         raw = OPENSSL_malloc(numciphers * TLS_CIPHER_LEN);
         s->s3->tmp.ciphers_raw = raw;
-        if (raw == NULL) {
+        if (raw == ((void*)0)) {
             SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_SSL_CACHE_CIPHERLIST,
                      ERR_R_MALLOC_FAILURE);
             return 0;
@@ -94,7 +86,7 @@ int ssl_cache_cipherlist(SSL *s, PACKET *cipher_suites, int sslv2format)
                 SSLfatal(s, SSL_AD_DECODE_ERROR, SSL_F_SSL_CACHE_CIPHERLIST,
                          SSL_R_BAD_PACKET);
                 OPENSSL_free(s->s3->tmp.ciphers_raw);
-                s->s3->tmp.ciphers_raw = NULL;
+                s->s3->tmp.ciphers_raw = ((void*)0);
                 s->s3->tmp.ciphers_rawlen = 0;
                 return 0;
             }

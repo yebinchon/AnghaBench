@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct irq_data {int irq; } ;
 struct TYPE_2__ {int intena; } ;
 
-/* Variables and functions */
- int IRQ_USER ; 
- TYPE_1__ amiga_custom ; 
+
+ int IRQ_USER ;
+ TYPE_1__ amiga_custom ;
 
 __attribute__((used)) static void amiga_irq_disable(struct irq_data *data)
 {
-	amiga_custom.intena = 1 << (data->irq - IRQ_USER);
+ amiga_custom.intena = 1 << (data->irq - IRQ_USER);
 }

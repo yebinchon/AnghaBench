@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_3__ ;
-typedef  struct TYPE_24__   TYPE_2__ ;
-typedef  struct TYPE_23__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
-struct TYPE_25__ {char* Name; int /*<<< orphan*/  NumSamples; int /*<<< orphan*/  Dimension; int /*<<< orphan*/  ReturnType; int /*<<< orphan*/  uFlags; int /*<<< orphan*/  BindCount; int /*<<< orphan*/  BindPoint; int /*<<< orphan*/  Type; } ;
+
+
+typedef struct TYPE_25__ TYPE_3__ ;
+typedef struct TYPE_24__ TYPE_2__ ;
+typedef struct TYPE_23__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG ;
+struct TYPE_25__ {char* Name; int NumSamples; int Dimension; int ReturnType; int uFlags; int BindCount; int BindPoint; int Type; } ;
 struct TYPE_24__ {TYPE_1__* lpVtbl; } ;
 struct TYPE_23__ {scalar_t__ (* GetResourceBindingDesc ) (TYPE_2__*,int,TYPE_3__*) ;scalar_t__ (* GetResourceBindingDescByName ) (TYPE_2__*,char*,TYPE_3__*) ;scalar_t__ (* Release ) (TYPE_2__*) ;} ;
-typedef  TYPE_2__ ID3D11ShaderReflection ;
-typedef  scalar_t__ HRESULT ;
-typedef  TYPE_3__ D3D11_SHADER_INPUT_BIND_DESC ;
+typedef TYPE_2__ ID3D11ShaderReflection ;
+typedef scalar_t__ HRESULT ;
+typedef TYPE_3__ D3D11_SHADER_INPUT_BIND_DESC ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (TYPE_3__*) ; 
- scalar_t__ E_INVALIDARG ; 
- int /*<<< orphan*/  IID_ID3D11ShaderReflection ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,...) ; 
- scalar_t__ pD3DReflect (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- scalar_t__ stub1 (TYPE_2__*,int,TYPE_3__*) ; 
- scalar_t__ stub2 (TYPE_2__*,int,TYPE_3__*) ; 
- scalar_t__ stub3 (TYPE_2__*,char*,TYPE_3__*) ; 
- scalar_t__ stub4 (TYPE_2__*,char*,TYPE_3__*) ; 
- scalar_t__ stub5 (TYPE_2__*,char*,TYPE_3__*) ; 
- scalar_t__ stub6 (TYPE_2__*,char*,TYPE_3__*) ; 
- scalar_t__ stub7 (TYPE_2__*,unsigned int,TYPE_3__*) ; 
- scalar_t__ stub8 (TYPE_2__*,char*,TYPE_3__*) ; 
- scalar_t__ stub9 (TYPE_2__*) ; 
- int /*<<< orphan*/ * test_reflection_bound_resources_blob ; 
- TYPE_3__* test_reflection_bound_resources_result ; 
+
+ unsigned int ARRAY_SIZE (TYPE_3__*) ;
+ scalar_t__ E_INVALIDARG ;
+ int IID_ID3D11ShaderReflection ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,scalar_t__,...) ;
+ scalar_t__ pD3DReflect (int *,int ,int *,void**) ;
+ int strcmp (char*,char*) ;
+ scalar_t__ stub1 (TYPE_2__*,int,TYPE_3__*) ;
+ scalar_t__ stub2 (TYPE_2__*,int,TYPE_3__*) ;
+ scalar_t__ stub3 (TYPE_2__*,char*,TYPE_3__*) ;
+ scalar_t__ stub4 (TYPE_2__*,char*,TYPE_3__*) ;
+ scalar_t__ stub5 (TYPE_2__*,char*,TYPE_3__*) ;
+ scalar_t__ stub6 (TYPE_2__*,char*,TYPE_3__*) ;
+ scalar_t__ stub7 (TYPE_2__*,unsigned int,TYPE_3__*) ;
+ scalar_t__ stub8 (TYPE_2__*,char*,TYPE_3__*) ;
+ scalar_t__ stub9 (TYPE_2__*) ;
+ int * test_reflection_bound_resources_blob ;
+ TYPE_3__* test_reflection_bound_resources_result ;
 
 __attribute__((used)) static void test_reflection_bound_resources(void)
 {
@@ -53,26 +53,26 @@ __attribute__((used)) static void test_reflection_bound_resources(void)
     hr = pD3DReflect(test_reflection_bound_resources_blob, test_reflection_bound_resources_blob[6], &IID_ID3D11ShaderReflection, (void **)&ref11);
     ok(hr == S_OK, "D3DReflect failed %x\n", hr);
 
-    /* check invalid cases */
-    hr = ref11->lpVtbl->GetResourceBindingDesc(ref11, 0, NULL);
+
+    hr = ref11->lpVtbl->GetResourceBindingDesc(ref11, 0, ((void*)0));
     ok(hr == E_INVALIDARG, "GetResourceBindingDesc failed, got %x, expected %x\n", hr, E_INVALIDARG);
 
     hr = ref11->lpVtbl->GetResourceBindingDesc(ref11, 0xffffffff, &desc);
     ok(hr == E_INVALIDARG, "GetResourceBindingDesc failed, got %x, expected %x\n", hr, E_INVALIDARG);
 
-    hr = ref11->lpVtbl->GetResourceBindingDescByName(ref11, NULL, &desc);
+    hr = ref11->lpVtbl->GetResourceBindingDescByName(ref11, ((void*)0), &desc);
     ok(hr == E_INVALIDARG, "GetResourceBindingDescByName failed, got %x, expected %x\n", hr, E_INVALIDARG);
 
-    hr = ref11->lpVtbl->GetResourceBindingDescByName(ref11, "sam", NULL);
+    hr = ref11->lpVtbl->GetResourceBindingDescByName(ref11, "sam", ((void*)0));
     ok(hr == E_INVALIDARG, "GetResourceBindingDescByName failed, got %x, expected %x\n", hr, E_INVALIDARG);
 
-    hr = ref11->lpVtbl->GetResourceBindingDescByName(ref11, "invalid", NULL);
+    hr = ref11->lpVtbl->GetResourceBindingDescByName(ref11, "invalid", ((void*)0));
     ok(hr == E_INVALIDARG, "GetResourceBindingDescByName failed, got %x, expected %x\n", hr, E_INVALIDARG);
 
     hr = ref11->lpVtbl->GetResourceBindingDescByName(ref11, "invalid", &desc);
     ok(hr == E_INVALIDARG, "GetResourceBindingDescByName failed, got %x, expected %x\n", hr, E_INVALIDARG);
 
-    /* GetResourceBindingDesc */
+
     for (i = 0; i < ARRAY_SIZE(test_reflection_bound_resources_result); ++i)
     {
         pdesc = &test_reflection_bound_resources_result[i];
@@ -98,7 +98,7 @@ __attribute__((used)) static void test_reflection_bound_resources(void)
                 i, desc.NumSamples, pdesc->NumSamples);
     }
 
-    /* GetResourceBindingDescByName */
+
     for (i = 0; i < ARRAY_SIZE(test_reflection_bound_resources_result); ++i)
     {
         pdesc = &test_reflection_bound_resources_result[i];

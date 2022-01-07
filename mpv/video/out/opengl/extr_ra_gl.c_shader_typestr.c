@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int GLenum ;
 
-/* Variables and functions */
-#define  GL_COMPUTE_SHADER 130 
-#define  GL_FRAGMENT_SHADER 129 
-#define  GL_VERTEX_SHADER 128 
- int /*<<< orphan*/  abort () ; 
+
+
+
+typedef int GLenum ;
+
+
+
+
+
+ int abort () ;
 
 __attribute__((used)) static const char *shader_typestr(GLenum type)
 {
     switch (type) {
-    case GL_VERTEX_SHADER:   return "vertex";
-    case GL_FRAGMENT_SHADER: return "fragment";
-    case GL_COMPUTE_SHADER:  return "compute";
+    case 128: return "vertex";
+    case 129: return "fragment";
+    case 130: return "compute";
     default: abort();
     }
 }

@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  value ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  nvpair_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ERRNO_RESTORE () ; 
- int /*<<< orphan*/  ERRNO_SAVE () ; 
- int /*<<< orphan*/  ERRNO_SET (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NV_TYPE_BOOL_ARRAY ; 
- int /*<<< orphan*/  memcpy (void*,int const*,size_t) ; 
- int /*<<< orphan*/  nv_free (void*) ; 
- void* nv_malloc (size_t) ; 
- int /*<<< orphan*/ * nvpair_allocv (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t,size_t) ; 
+
+
+
+typedef int value ;
+typedef int uint64_t ;
+typedef int nvpair_t ;
+
+
+ int EINVAL ;
+ int ERRNO_RESTORE () ;
+ int ERRNO_SAVE () ;
+ int ERRNO_SET (int ) ;
+ int NV_TYPE_BOOL_ARRAY ;
+ int memcpy (void*,int const*,size_t) ;
+ int nv_free (void*) ;
+ void* nv_malloc (size_t) ;
+ int * nvpair_allocv (char const*,int ,int ,size_t,size_t) ;
 
 nvpair_t *
 nvpair_create_bool_array(const char *name, const bool *value, size_t nitems)
 {
-	nvpair_t *nvp;
-	size_t size;
-	void *data;
+ nvpair_t *nvp;
+ size_t size;
+ void *data;
 
-	if (value == NULL || nitems == 0) {
-		ERRNO_SET(EINVAL);
-		return (NULL);
-	}
+ if (value == ((void*)0) || nitems == 0) {
+  ERRNO_SET(EINVAL);
+  return (((void*)0));
+ }
 
-	size = sizeof(value[0]) * nitems;
-	data = nv_malloc(size);
-	if (data == NULL)
-		return (NULL);
+ size = sizeof(value[0]) * nitems;
+ data = nv_malloc(size);
+ if (data == ((void*)0))
+  return (((void*)0));
 
-	memcpy(data, value, size);
-	nvp = nvpair_allocv(name, NV_TYPE_BOOL_ARRAY, (uint64_t)(uintptr_t)data,
-	    size, nitems);
-	if (nvp == NULL) {
-		ERRNO_SAVE();
-		nv_free(data);
-		ERRNO_RESTORE();
-	}
+ memcpy(data, value, size);
+ nvp = nvpair_allocv(name, NV_TYPE_BOOL_ARRAY, (uint64_t)(uintptr_t)data,
+     size, nitems);
+ if (nvp == ((void*)0)) {
+  ERRNO_SAVE();
+  nv_free(data);
+  ERRNO_RESTORE();
+ }
 
-	return (nvp);
+ return (nvp);
 }

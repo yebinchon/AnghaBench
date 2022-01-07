@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mtd_info {int dummy; } ;
 
-/* Variables and functions */
- int LBICTRL_LPCCTL_NR ; 
- int inl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lpcctl ; 
+
+ int LBICTRL_LPCCTL_NR ;
+ int inl (int ) ;
+ int lpcctl ;
 
 int pasemi_device_ready(struct mtd_info *mtd)
 {
-	return !!(inl(lpcctl) & LBICTRL_LPCCTL_NR);
+ return !!(inl(lpcctl) & LBICTRL_LPCCTL_NR);
 }

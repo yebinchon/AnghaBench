@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_long ;
-typedef  int byte ;
-typedef  int /*<<< orphan*/  VGLBitmap ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u_long ;
+typedef int byte ;
+typedef int VGLBitmap ;
 struct TYPE_2__ {int Width; int Height; int* BitmapArray; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VGLSetXY (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- TYPE_1__* VGLTextFont ; 
+
+ int VGLSetXY (int *,int,int,int ) ;
+ TYPE_1__* VGLTextFont ;
 
 void
-VGLBitmapPutChar(VGLBitmap *Object, int x, int y, byte ch, 
-		 u_long fgcol, u_long bgcol, int fill, int dir)
+VGLBitmapPutChar(VGLBitmap *Object, int x, int y, byte ch,
+   u_long fgcol, u_long bgcol, int fill, int dir)
 {
   int b, Bpc, Bpl, lin, bit, topbit;
 
@@ -36,37 +36,37 @@ VGLBitmapPutChar(VGLBitmap *Object, int x, int y, byte ch,
         switch (dir) {
           case 0:
             VGLSetXY(Object, (x+topbit-bit), (y+lin), fgcol);
-	    break;
+     break;
           case 1:
             VGLSetXY(Object, (x+lin), (y-topbit+bit), fgcol);
-	    break;
+     break;
           case 2:
             VGLSetXY(Object, (x-topbit+bit), (y-lin), fgcol);
-	    break;
+     break;
           case 3:
             VGLSetXY(Object, (x-lin), (y+topbit-bit), fgcol);
-	    break;
+     break;
           case 4:
             VGLSetXY(Object, (x+lin+topbit-bit), (y+lin+bit), fgcol);
-	    break;
+     break;
         }
       else if (fill)
         switch (dir) {
           case 0:
             VGLSetXY(Object, (x+topbit-bit), (y+lin), bgcol);
-	    break;
+     break;
           case 1:
             VGLSetXY(Object, (x+lin), (y-topbit+bit), bgcol);
-	    break;
+     break;
           case 2:
             VGLSetXY(Object, (x-topbit+bit), (y-lin), bgcol);
-	    break;
+     break;
           case 3:
             VGLSetXY(Object, (x-lin), (y+topbit-bit), bgcol);
-	    break;
+     break;
           case 4:
             VGLSetXY(Object, (x+lin+topbit-bit), (y+lin+bit), bgcol);
-	    break;
+     break;
         }
     }
   }

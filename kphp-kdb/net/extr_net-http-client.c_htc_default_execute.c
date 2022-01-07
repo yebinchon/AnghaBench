@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct htc_data {int /*<<< orphan*/  header_size; } ;
+
+
+
+
+struct htc_data {int header_size; } ;
 struct connection {int dummy; } ;
 
-/* Variables and functions */
- struct htc_data* HTC_DATA (struct connection*) ; 
- int SKIP_ALL_BYTES ; 
- int /*<<< orphan*/  vkprintf (int,char*,int,int /*<<< orphan*/ ) ; 
+
+ struct htc_data* HTC_DATA (struct connection*) ;
+ int SKIP_ALL_BYTES ;
+ int vkprintf (int,char*,int,int ) ;
 
 int htc_default_execute (struct connection *c, int op) {
   struct htc_data *D = HTC_DATA(c);

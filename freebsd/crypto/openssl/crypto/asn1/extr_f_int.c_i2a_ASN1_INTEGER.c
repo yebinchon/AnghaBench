@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int type; int length; scalar_t__* data; } ;
-typedef  int /*<<< orphan*/  BIO ;
-typedef  TYPE_1__ ASN1_INTEGER ;
+typedef int BIO ;
+typedef TYPE_1__ ASN1_INTEGER ;
 
-/* Variables and functions */
- int BIO_write (int /*<<< orphan*/ *,char*,int) ; 
- int V_ASN1_NEG ; 
+
+ int BIO_write (int *,char*,int) ;
+ int V_ASN1_NEG ;
 
 int i2a_ASN1_INTEGER(BIO *bp, const ASN1_INTEGER *a)
 {
@@ -25,7 +25,7 @@ int i2a_ASN1_INTEGER(BIO *bp, const ASN1_INTEGER *a)
     static const char *h = "0123456789ABCDEF";
     char buf[2];
 
-    if (a == NULL)
+    if (a == ((void*)0))
         return 0;
 
     if (a->type & V_ASN1_NEG) {

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- scalar_t__ SQLITE_ROW ; 
- int /*<<< orphan*/  execSql (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  printf (char*,char const*) ; 
- scalar_t__ sqlite3_column_text (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* sqlite3_errmsg (int /*<<< orphan*/ *) ; 
- int sqlite3_prepare (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  vacuumFinalize (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
+
+
+ int SQLITE_OK ;
+ scalar_t__ SQLITE_ROW ;
+ int execSql (int *,char*) ;
+ int exit (int) ;
+ int fprintf (int ,char*,char*) ;
+ int printf (char*,char const*) ;
+ scalar_t__ sqlite3_column_text (int *,int ) ;
+ char* sqlite3_errmsg (int *) ;
+ int sqlite3_prepare (int *,char const*,int,int **,int ) ;
+ scalar_t__ sqlite3_step (int *) ;
+ int stderr ;
+ int vacuumFinalize (int *) ;
 
 __attribute__((used)) static void execExecSql(sqlite3 *db, const char *zSql){
   sqlite3_stmt *pStmt;

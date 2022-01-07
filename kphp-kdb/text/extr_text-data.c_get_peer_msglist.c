@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  listree_t ;
 
-/* Variables and functions */
- unsigned int MAX_RES ; 
- int /*<<< orphan*/  R ; 
- int /*<<< orphan*/  RA ; 
- int R_cnt ; 
- int /*<<< orphan*/  assert (int) ; 
- int listree_get_range (int /*<<< orphan*/ *,int,int) ; 
- int listree_get_range_rev (int /*<<< orphan*/ *,int,int) ; 
- int listree_get_size (int /*<<< orphan*/ *) ; 
- int prepare_peer_msglist (int,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int listree_t ;
+
+
+ unsigned int MAX_RES ;
+ int R ;
+ int RA ;
+ int R_cnt ;
+ int assert (int) ;
+ int listree_get_range (int *,int,int) ;
+ int listree_get_range_rev (int *,int,int) ;
+ int listree_get_size (int *) ;
+ int prepare_peer_msglist (int,int,int *) ;
 
 int get_peer_msglist (int user_id, int peer_id, int from, int to) {
   static listree_t X;

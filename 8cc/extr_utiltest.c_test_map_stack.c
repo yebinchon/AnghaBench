@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Map ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert_int (int,int) ; 
- int /*<<< orphan*/ * make_map () ; 
- int /*<<< orphan*/ * make_map_parent (int /*<<< orphan*/ *) ; 
- scalar_t__ map_get (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  map_put (int /*<<< orphan*/ *,char*,void*) ; 
+
+
+
+typedef int Map ;
+
+
+ int assert_int (int,int) ;
+ int * make_map () ;
+ int * make_map_parent (int *) ;
+ scalar_t__ map_get (int *,char*) ;
+ int map_put (int *,char*,void*) ;
 
 __attribute__((used)) static void test_map_stack() {
     Map *m1 = make_map();

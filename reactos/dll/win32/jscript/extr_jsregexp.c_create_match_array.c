@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int script_ctx_t ;
 struct TYPE_5__ {size_t paren_count; char const* cp; int match_len; TYPE_1__* parens; } ;
-typedef  TYPE_2__ match_state_t ;
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  char WCHAR ;
-struct TYPE_4__ {int index; int /*<<< orphan*/  length; } ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  size_t DWORD ;
+typedef TYPE_2__ match_state_t ;
+typedef int jsstr_t ;
+typedef int jsdisp_t ;
+typedef char WCHAR ;
+struct TYPE_4__ {int index; int length; } ;
+typedef int IDispatch ;
+typedef int HRESULT ;
+typedef size_t DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  create_array (int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  jsdisp_propput_idx (int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_propput_name (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * jsstr_addref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * jsstr_alloc_len (char const*,int) ; 
- int /*<<< orphan*/ * jsstr_empty () ; 
- char* jsstr_flatten (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsstr_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * jsstr_substr (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_number (int) ; 
- int /*<<< orphan*/  jsval_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * to_disp (int /*<<< orphan*/ *) ; 
+
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int create_array (int *,size_t,int **) ;
+ int jsdisp_propput_idx (int *,size_t,int ) ;
+ int jsdisp_propput_name (int *,char const*,int ) ;
+ int jsdisp_release (int *) ;
+ int * jsstr_addref (int *) ;
+ int * jsstr_alloc_len (char const*,int) ;
+ int * jsstr_empty () ;
+ char* jsstr_flatten (int *) ;
+ int jsstr_release (int *) ;
+ int * jsstr_substr (int *,int,int ) ;
+ int jsval_number (int) ;
+ int jsval_string (int *) ;
+ int * to_disp (int *) ;
 
 __attribute__((used)) static HRESULT create_match_array(script_ctx_t *ctx, jsstr_t *input_str,
         const match_state_t *result, IDispatch **ret)

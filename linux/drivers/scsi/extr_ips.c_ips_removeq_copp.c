@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {struct TYPE_8__* next; } ;
-typedef  TYPE_1__ ips_copp_wait_item_t ;
-struct TYPE_9__ {int /*<<< orphan*/  count; TYPE_1__* tail; TYPE_1__* head; } ;
-typedef  TYPE_2__ ips_copp_queue_t ;
+typedef TYPE_1__ ips_copp_wait_item_t ;
+struct TYPE_9__ {int count; TYPE_1__* tail; TYPE_1__* head; } ;
+typedef TYPE_2__ ips_copp_queue_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  METHOD_TRACE (char*,int) ; 
- TYPE_1__* ips_removeq_copp_head (TYPE_2__*) ; 
+
+ int METHOD_TRACE (char*,int) ;
+ TYPE_1__* ips_removeq_copp_head (TYPE_2__*) ;
 
 __attribute__((used)) static ips_copp_wait_item_t *
 ips_removeq_copp(ips_copp_queue_t * queue, ips_copp_wait_item_t * item)
 {
-	ips_copp_wait_item_t *p;
+ ips_copp_wait_item_t *p;
 
-	METHOD_TRACE("ips_removeq_copp", 1);
+ METHOD_TRACE("ips_removeq_copp", 1);
 
-	if (!item)
-		return (NULL);
+ if (!item)
+  return (((void*)0));
 
-	if (item == queue->head) {
-		return (ips_removeq_copp_head(queue));
-	}
+ if (item == queue->head) {
+  return (ips_removeq_copp_head(queue));
+ }
 
-	p = queue->head;
+ p = queue->head;
 
-	while ((p) && (item != p->next))
-		p = p->next;
+ while ((p) && (item != p->next))
+  p = p->next;
 
-	if (p) {
-		/* found a match */
-		p->next = item->next;
+ if (p) {
 
-		if (!item->next)
-			queue->tail = p;
+  p->next = item->next;
 
-		item->next = NULL;
-		queue->count--;
+  if (!item->next)
+   queue->tail = p;
 
-		return (item);
-	}
+  item->next = ((void*)0);
+  queue->count--;
 
-	return (NULL);
+  return (item);
+ }
+
+ return (((void*)0));
 }

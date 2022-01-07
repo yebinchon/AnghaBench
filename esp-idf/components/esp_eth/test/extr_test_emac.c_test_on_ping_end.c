@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  transmitted ;
-typedef  int /*<<< orphan*/  total_time_ms ;
-typedef  int /*<<< orphan*/  received ;
-typedef  int /*<<< orphan*/  esp_ping_handle_t ;
-typedef  int /*<<< orphan*/  EventGroupHandle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_PING_PROF_DURATION ; 
- int /*<<< orphan*/  ESP_PING_PROF_REPLY ; 
- int /*<<< orphan*/  ESP_PING_PROF_REQUEST ; 
- int /*<<< orphan*/  ETH_PING_END_BIT ; 
- int /*<<< orphan*/  esp_ping_get_profile (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  printf (char*,int,int,int) ; 
- int /*<<< orphan*/  xEventGroupSetBits (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+typedef int transmitted ;
+typedef int total_time_ms ;
+typedef int received ;
+typedef int esp_ping_handle_t ;
+typedef int EventGroupHandle_t ;
+
+
+ int ESP_PING_PROF_DURATION ;
+ int ESP_PING_PROF_REPLY ;
+ int ESP_PING_PROF_REQUEST ;
+ int ETH_PING_END_BIT ;
+ int esp_ping_get_profile (int ,int ,int*,int) ;
+ int printf (char*,int,int,int) ;
+ int xEventGroupSetBits (int ,int ) ;
 
 __attribute__((used)) static void test_on_ping_end(esp_ping_handle_t hdl, void *args)
 {

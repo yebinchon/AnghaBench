@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-struct TYPE_7__ {int /*<<< orphan*/  mutex; } ;
-typedef  TYPE_1__ sqlite3 ;
-typedef  int /*<<< orphan*/  Vdbe ;
 
-/* Variables and functions */
- int SQLITE_MISUSE_BKPT ; 
- int SQLITE_OK ; 
- int SQLITE_SCHEMA ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3BtreeEnterAll (TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3BtreeLeaveAll (TYPE_1__*) ; 
- int sqlite3Prepare (TYPE_1__*,char const*,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ **,char const**) ; 
- int /*<<< orphan*/  sqlite3SafetyCheckOk (TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_mutex_enter (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_mutex_leave (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+struct TYPE_7__ {int mutex; } ;
+typedef TYPE_1__ sqlite3 ;
+typedef int Vdbe ;
+
+
+ int SQLITE_MISUSE_BKPT ;
+ int SQLITE_OK ;
+ int SQLITE_SCHEMA ;
+ int assert (int) ;
+ int sqlite3BtreeEnterAll (TYPE_1__*) ;
+ int sqlite3BtreeLeaveAll (TYPE_1__*) ;
+ int sqlite3Prepare (TYPE_1__*,char const*,int,int,int *,int **,char const**) ;
+ int sqlite3SafetyCheckOk (TYPE_1__*) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_mutex_enter (int ) ;
+ int sqlite3_mutex_leave (int ) ;
 
 __attribute__((used)) static int sqlite3LockAndPrepare(
-  sqlite3 *db,              /* Database handle. */
-  const char *zSql,         /* UTF-8 encoded SQL statement. */
-  int nBytes,               /* Length of zSql in bytes. */
-  int saveSqlFlag,          /* True to copy SQL text into the sqlite3_stmt */
-  Vdbe *pOld,               /* VM being reprepared */
-  sqlite3_stmt **ppStmt,    /* OUT: A pointer to the prepared statement */
-  const char **pzTail       /* OUT: End of parsed string */
+  sqlite3 *db,
+  const char *zSql,
+  int nBytes,
+  int saveSqlFlag,
+  Vdbe *pOld,
+  sqlite3_stmt **ppStmt,
+  const char **pzTail
 ){
   int rc;
   assert( ppStmt!=0 );

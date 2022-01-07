@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_3__* right; TYPE_3__* left; } ;
-struct TYPE_9__ {TYPE_1__ combine; int /*<<< orphan*/  path; int /*<<< orphan*/  rect; } ;
+struct TYPE_9__ {TYPE_1__ combine; int path; int rect; } ;
 struct TYPE_10__ {int type; TYPE_2__ elementdata; } ;
-typedef  TYPE_3__ region_element ;
-typedef  int /*<<< orphan*/  GpStatus ;
+typedef TYPE_3__ region_element ;
+typedef int GpStatus ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GdipClonePath (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  OutOfMemory ; 
-#define  RegionDataEmptyRect 131 
-#define  RegionDataInfiniteRect 130 
-#define  RegionDataPath 129 
-#define  RegionDataRect 128 
- int /*<<< orphan*/  delete_element (TYPE_3__*) ; 
- TYPE_3__* heap_alloc_zero (int) ; 
+
+ int GdipClonePath (int ,int *) ;
+ int Ok ;
+ int OutOfMemory ;
+
+
+
+
+ int delete_element (TYPE_3__*) ;
+ TYPE_3__* heap_alloc_zero (int) ;
 
 __attribute__((used)) static inline GpStatus clone_element(const region_element* element,
         region_element** element2)
 {
     GpStatus stat;
 
-    /* root node is allocated with GpRegion */
+
     if(!*element2){
         *element2 = heap_alloc_zero(sizeof(region_element));
         if (!*element2)
@@ -46,19 +46,19 @@ __attribute__((used)) static inline GpStatus clone_element(const region_element*
 
     switch (element->type)
     {
-        case RegionDataRect:
+        case 128:
             (*element2)->elementdata.rect = element->elementdata.rect;
             return Ok;
-        case RegionDataEmptyRect:
-        case RegionDataInfiniteRect:
+        case 131:
+        case 130:
             return Ok;
-        case RegionDataPath:
+        case 129:
             stat = GdipClonePath(element->elementdata.path, &(*element2)->elementdata.path);
             if (stat == Ok) return Ok;
             break;
         default:
-            (*element2)->elementdata.combine.left  = NULL;
-            (*element2)->elementdata.combine.right = NULL;
+            (*element2)->elementdata.combine.left = ((void*)0);
+            (*element2)->elementdata.combine.right = ((void*)0);
 
             stat = clone_element(element->elementdata.combine.left,
                     &(*element2)->elementdata.combine.left);
@@ -72,6 +72,6 @@ __attribute__((used)) static inline GpStatus clone_element(const region_element*
     }
 
     delete_element(*element2);
-    *element2 = NULL;
+    *element2 = ((void*)0);
     return stat;
 }

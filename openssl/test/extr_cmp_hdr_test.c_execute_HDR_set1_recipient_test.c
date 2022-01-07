@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_NAME ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int X509_NAME ;
 struct TYPE_9__ {TYPE_1__* recipient; } ;
 struct TYPE_8__ {TYPE_4__* hdr; } ;
-struct TYPE_7__ {int /*<<< orphan*/  directoryName; } ;
-struct TYPE_6__ {TYPE_2__ d; int /*<<< orphan*/  type; } ;
-typedef  TYPE_3__ CMP_HDR_TEST_FIXTURE ;
+struct TYPE_7__ {int directoryName; } ;
+struct TYPE_6__ {TYPE_2__ d; int type; } ;
+typedef TYPE_3__ CMP_HDR_TEST_FIXTURE ;
 
-/* Variables and functions */
- int GEN_DIRNAME ; 
- int /*<<< orphan*/  TEST_int_eq (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_NAME_ADD (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  X509_NAME_cmp (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_NAME_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * X509_NAME_new () ; 
- int /*<<< orphan*/  ossl_cmp_hdr_set1_recipient (TYPE_4__*,int /*<<< orphan*/ *) ; 
+
+ int GEN_DIRNAME ;
+ int TEST_int_eq (int ,int) ;
+ int TEST_ptr (int *) ;
+ int X509_NAME_ADD (int *,char*,char*) ;
+ int X509_NAME_cmp (int ,int *) ;
+ int X509_NAME_free (int *) ;
+ int * X509_NAME_new () ;
+ int ossl_cmp_hdr_set1_recipient (TYPE_4__*,int *) ;
 
 __attribute__((used)) static int execute_HDR_set1_recipient_test(CMP_HDR_TEST_FIXTURE *fixture)
 {

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  float WCHAR ;
-typedef  int /*<<< orphan*/ * HANDLE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (float*) ; 
- int /*<<< orphan*/  CREATE_ALWAYS ; 
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CreateFileW (float*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FILE_FLAG_DELETE_ON_CLOSE ; 
- int /*<<< orphan*/  GENERIC_WRITE ; 
- int /*<<< orphan*/  GetTempPathW (int /*<<< orphan*/ ,float*) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  lstrcatW (float*,float const*) ; 
- int /*<<< orphan*/  lstrcmpW (float*,float*) ; 
- int /*<<< orphan*/  lstrcpyW (float*,float*) ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  pPathYetAnotherMakeUniqueName (float*,float*,float const*,float const*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
- int /*<<< orphan*/  wine_dbgstr_w (float*) ; 
+
+
+
+typedef float WCHAR ;
+typedef int * HANDLE ;
+typedef int BOOL ;
+
+
+ int ARRAY_SIZE (float*) ;
+ int CREATE_ALWAYS ;
+ int CloseHandle (int *) ;
+ int * CreateFileW (float*,int ,int ,int *,int ,int ,int *) ;
+ int FILE_FLAG_DELETE_ON_CLOSE ;
+ int GENERIC_WRITE ;
+ int GetTempPathW (int ,float*) ;
+ int MAX_PATH ;
+ int lstrcatW (float*,float const*) ;
+ int lstrcmpW (float*,float*) ;
+ int lstrcpyW (float*,float*) ;
+ int ok (int,char*,int ,...) ;
+ int pPathYetAnotherMakeUniqueName (float*,float*,float const*,float const*) ;
+ int win_skip (char*) ;
+ int wine_dbgstr_w (float*) ;
 
 __attribute__((used)) static void test_PathYetAnotherMakeUniqueName(void)
 {
@@ -50,30 +50,30 @@ __attribute__((used)) static void test_PathYetAnotherMakeUniqueName(void)
 
 if (0)
 {
-    /* crashes on Windows */
-    ret = pPathYetAnotherMakeUniqueName(NULL, NULL, NULL, NULL);
+
+    ret = pPathYetAnotherMakeUniqueName(((void*)0), ((void*)0), ((void*)0), ((void*)0));
     ok(!ret, "got %d\n", ret);
 
-    ret = pPathYetAnotherMakeUniqueName(nameW, NULL, NULL, NULL);
+    ret = pPathYetAnotherMakeUniqueName(nameW, ((void*)0), ((void*)0), ((void*)0));
     ok(!ret, "got %d\n", ret);
 }
 
     GetTempPathW(ARRAY_SIZE(pathW), pathW);
 
-    /* Using short name only first */
+
     nameW[0] = 0;
-    ret = pPathYetAnotherMakeUniqueName(nameW, pathW, shortW, NULL);
+    ret = pPathYetAnotherMakeUniqueName(nameW, pathW, shortW, ((void*)0));
     ok(ret, "got %d\n", ret);
     lstrcpyW(buffW, pathW);
     lstrcatW(buffW, shortW);
     ok(!lstrcmpW(nameW, buffW), "got %s, expected %s\n", wine_dbgstr_w(nameW), wine_dbgstr_w(buffW));
 
-    /* now create a file with this name and get next name */
-    file = CreateFileW(nameW, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_FLAG_DELETE_ON_CLOSE, NULL);
-    ok(file != NULL, "got %p\n", file);
+
+    file = CreateFileW(nameW, GENERIC_WRITE, 0, ((void*)0), CREATE_ALWAYS, FILE_FLAG_DELETE_ON_CLOSE, ((void*)0));
+    ok(file != ((void*)0), "got %p\n", file);
 
     nameW[0] = 0;
-    ret = pPathYetAnotherMakeUniqueName(nameW, pathW, shortW, NULL);
+    ret = pPathYetAnotherMakeUniqueName(nameW, pathW, shortW, ((void*)0));
     ok(ret, "got %d\n", ret);
     lstrcpyW(buffW, pathW);
     lstrcatW(buffW, short2W);
@@ -81,7 +81,7 @@ if (0)
 
     CloseHandle(file);
 
-    /* Using short and long */
+
     nameW[0] = 0;
     ret = pPathYetAnotherMakeUniqueName(nameW, pathW, tmpW, longW);
     ok(ret, "got %d\n", ret);
@@ -89,8 +89,8 @@ if (0)
     lstrcatW(buffW, longW);
     ok(!lstrcmpW(nameW, buffW), "got %s, expected %s\n", wine_dbgstr_w(nameW), wine_dbgstr_w(buffW));
 
-    file = CreateFileW(nameW, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_FLAG_DELETE_ON_CLOSE, NULL);
-    ok(file != NULL, "got %p\n", file);
+    file = CreateFileW(nameW, GENERIC_WRITE, 0, ((void*)0), CREATE_ALWAYS, FILE_FLAG_DELETE_ON_CLOSE, ((void*)0));
+    ok(file != ((void*)0), "got %p\n", file);
 
     nameW[0] = 0;
     ret = pPathYetAnotherMakeUniqueName(nameW, pathW, tmpW, longW);
@@ -101,9 +101,9 @@ if (0)
 
     CloseHandle(file);
 
-    /* Using long only */
+
     nameW[0] = 0;
-    ret = pPathYetAnotherMakeUniqueName(nameW, pathW, NULL, longW);
+    ret = pPathYetAnotherMakeUniqueName(nameW, pathW, ((void*)0), longW);
     ok(ret, "got %d\n", ret);
     lstrcpyW(buffW, pathW);
     lstrcatW(buffW, longW);

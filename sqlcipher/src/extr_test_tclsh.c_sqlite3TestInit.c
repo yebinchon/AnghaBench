@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rlimit {int /*<<< orphan*/  rlim_max; int /*<<< orphan*/  rlim_cur; } ;
-typedef  int /*<<< orphan*/  Tcl_Interp ;
-typedef  int /*<<< orphan*/  Tcl_CmdInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RLIMIT_CORE ; 
- int /*<<< orphan*/  Tcl_CreateObjCommand (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ Tcl_GetCommandInfo (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  getrlimit (int /*<<< orphan*/ ,struct rlimit*) ; 
- int /*<<< orphan*/  load_testfixture_extensions ; 
- int /*<<< orphan*/  setrlimit (int /*<<< orphan*/ ,struct rlimit*) ; 
+
+
+
+struct rlimit {int rlim_max; int rlim_cur; } ;
+typedef int Tcl_Interp ;
+typedef int Tcl_CmdInfo ;
+
+
+ int RLIMIT_CORE ;
+ int Tcl_CreateObjCommand (int *,char*,int ,int ,int ) ;
+ scalar_t__ Tcl_GetCommandInfo (int *,char*,int *) ;
+ int getrlimit (int ,struct rlimit*) ;
+ int load_testfixture_extensions ;
+ int setrlimit (int ,struct rlimit*) ;
 
 const char *sqlite3TestInit(Tcl_Interp *interp){
   extern int Sqlite3_Init(Tcl_Interp*);
@@ -58,41 +58,41 @@ const char *sqlite3TestInit(Tcl_Interp *interp){
   extern int Sqlitemultiplex_Init(Tcl_Interp*);
   extern int SqliteSuperlock_Init(Tcl_Interp*);
   extern int SqlitetestSyscall_Init(Tcl_Interp*);
-#if defined(SQLITE_ENABLE_SESSION) && defined(SQLITE_ENABLE_PREUPDATE_HOOK)
-  extern int TestSession_Init(Tcl_Interp*);
-#endif
+
+
+
   extern int Md5_Init(Tcl_Interp*);
   extern int Fts5tcl_Init(Tcl_Interp *);
   extern int SqliteRbu_Init(Tcl_Interp*);
   extern int Sqlitetesttcl_Init(Tcl_Interp*);
-#if defined(SQLITE_ENABLE_FTS3) || defined(SQLITE_ENABLE_FTS4)
-  extern int Sqlitetestfts3_Init(Tcl_Interp *interp);
-#endif
-#ifdef SQLITE_ENABLE_ZIPVFS
-  extern int Zipvfs_Init(Tcl_Interp*);
-#endif
+
+
+
+
+
+
   extern int TestExpert_Init(Tcl_Interp*);
   extern int Sqlitetest_window_Init(Tcl_Interp *);
   extern int Sqlitetestvdbecov_Init(Tcl_Interp *);
 
   Tcl_CmdInfo cmdInfo;
 
-  /* Since the primary use case for this binary is testing of SQLite,
-  ** be sure to generate core files if we crash */
-#if defined(unix)
+
+
+
   { struct rlimit x;
     getrlimit(RLIMIT_CORE, &x);
     x.rlim_cur = x.rlim_max;
     setrlimit(RLIMIT_CORE, &x);
   }
-#endif /* unix */
+
 
   if( Tcl_GetCommandInfo(interp, "sqlite3", &cmdInfo)==0 ){
     Sqlite3_Init(interp);
   }
-#ifdef SQLITE_ENABLE_ZIPVFS
-  Zipvfs_Init(interp);
-#endif
+
+
+
   Md5_Init(interp);
   Sqliteconfig_Init(interp);
   Sqlitetest1_Init(interp);
@@ -127,16 +127,16 @@ const char *sqlite3TestInit(Tcl_Interp *interp){
   Sqlitemultiplex_Init(interp);
   SqliteSuperlock_Init(interp);
   SqlitetestSyscall_Init(interp);
-#if defined(SQLITE_ENABLE_SESSION) && defined(SQLITE_ENABLE_PREUPDATE_HOOK)
-  TestSession_Init(interp);
-#endif
+
+
+
   Fts5tcl_Init(interp);
   SqliteRbu_Init(interp);
   Sqlitetesttcl_Init(interp);
 
-#if defined(SQLITE_ENABLE_FTS3) || defined(SQLITE_ENABLE_FTS4)
-  Sqlitetestfts3_Init(interp);
-#endif
+
+
+
   TestExpert_Init(interp);
   Sqlitetest_window_Init(interp);
   Sqlitetestvdbecov_Init(interp);

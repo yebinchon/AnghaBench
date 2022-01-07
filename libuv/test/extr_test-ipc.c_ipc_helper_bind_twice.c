@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_stream_t ;
-typedef  int /*<<< orphan*/  uv_handle_t ;
-typedef  int /*<<< orphan*/  uv_buf_t ;
+
+
+
+
+typedef int uv_stream_t ;
+typedef int uv_handle_t ;
+typedef int uv_buf_t ;
 struct sockaddr_in {int dummy; } ;
 struct sockaddr {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  MAKE_VALGRIND_HAPPY () ; 
- int /*<<< orphan*/  TEST_PORT ; 
- int /*<<< orphan*/  UV_RUN_DEFAULT ; 
- int /*<<< orphan*/  channel ; 
- int /*<<< orphan*/  tcp_server ; 
- int /*<<< orphan*/  tcp_server2 ; 
- int /*<<< orphan*/  uv_buf_init (char*,int) ; 
- int /*<<< orphan*/  uv_default_loop () ; 
- scalar_t__ uv_ip4_addr (char*,int /*<<< orphan*/ ,struct sockaddr_in*) ; 
- scalar_t__ uv_is_closing (int /*<<< orphan*/ *) ; 
- int uv_is_readable (int /*<<< orphan*/ *) ; 
- int uv_is_writable (int /*<<< orphan*/ *) ; 
- int uv_pipe_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  uv_pipe_open (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int uv_run (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int uv_tcp_bind (int /*<<< orphan*/ *,struct sockaddr const*,int /*<<< orphan*/ ) ; 
- int uv_tcp_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int uv_write2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_req ; 
- int /*<<< orphan*/  write_req2 ; 
+
+ int ASSERT (int) ;
+ int MAKE_VALGRIND_HAPPY () ;
+ int TEST_PORT ;
+ int UV_RUN_DEFAULT ;
+ int channel ;
+ int tcp_server ;
+ int tcp_server2 ;
+ int uv_buf_init (char*,int) ;
+ int uv_default_loop () ;
+ scalar_t__ uv_ip4_addr (char*,int ,struct sockaddr_in*) ;
+ scalar_t__ uv_is_closing (int *) ;
+ int uv_is_readable (int *) ;
+ int uv_is_writable (int *) ;
+ int uv_pipe_init (int ,int *,int) ;
+ int uv_pipe_open (int *,int ) ;
+ int uv_run (int ,int ) ;
+ int uv_tcp_bind (int *,struct sockaddr const*,int ) ;
+ int uv_tcp_init (int ,int *) ;
+ int uv_write2 (int *,int *,int *,int,int *,int *) ;
+ int write_req ;
+ int write_req2 ;
 
 int ipc_helper_bind_twice(void) {
-  /*
-   * This is launched from test-ipc.c. stdin is a duplex channel
-   * over which two handles will be transmitted.
-   */
+
+
+
+
   struct sockaddr_in addr;
   int r;
   uv_buf_t buf;
@@ -72,10 +72,10 @@ int ipc_helper_bind_twice(void) {
   ASSERT(r == 0);
 
   r = uv_write2(&write_req, (uv_stream_t*)&channel, &buf, 1,
-                (uv_stream_t*)&tcp_server, NULL);
+                (uv_stream_t*)&tcp_server, ((void*)0));
   ASSERT(r == 0);
   r = uv_write2(&write_req2, (uv_stream_t*)&channel, &buf, 1,
-                (uv_stream_t*)&tcp_server2, NULL);
+                (uv_stream_t*)&tcp_server2, ((void*)0));
   ASSERT(r == 0);
 
   r = uv_run(uv_default_loop(), UV_RUN_DEFAULT);

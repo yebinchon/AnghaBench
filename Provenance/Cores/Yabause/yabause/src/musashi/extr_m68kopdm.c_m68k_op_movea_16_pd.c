@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  AX ; 
- int /*<<< orphan*/  MAKE_INT_16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPER_AY_PD_16 () ; 
+ int AX ;
+ int MAKE_INT_16 (int ) ;
+ int OPER_AY_PD_16 () ;
 
 void m68k_op_movea_16_pd(void)
 {
-	AX = MAKE_INT_16(OPER_AY_PD_16());
+ AX = MAKE_INT_16(OPER_AY_PD_16());
 }

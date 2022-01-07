@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int serial; } ;
-typedef  TYPE_1__ yrmcds_response ;
-typedef  int /*<<< orphan*/  yrmcds_error ;
-typedef  int /*<<< orphan*/  yrmcds ;
-typedef  int uint32_t ;
+typedef TYPE_1__ yrmcds_response ;
+typedef int yrmcds_error ;
+typedef int yrmcds ;
+typedef int uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CHECK_RESPONSE (TYPE_1__*) ; 
- scalar_t__ debug ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  print_response (TYPE_1__*) ; 
- scalar_t__ quiet ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  yrmcds_noop (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  yrmcds_recv (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  yrmcds_unlockall (int /*<<< orphan*/ *,scalar_t__,int*) ; 
+
+ int CHECK_ERROR (int ) ;
+ int CHECK_RESPONSE (TYPE_1__*) ;
+ scalar_t__ debug ;
+ int fprintf (int ,char*,int) ;
+ int print_response (TYPE_1__*) ;
+ scalar_t__ quiet ;
+ int stderr ;
+ int yrmcds_noop (int *,int*) ;
+ int yrmcds_recv (int *,TYPE_1__*) ;
+ int yrmcds_unlockall (int *,scalar_t__,int*) ;
 
 int cmd_unlockall(int argc, char** argv, yrmcds* s) {
     yrmcds_response r[1];

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct fwnet_packet_task {int enqueued; scalar_t__ outstanding_pkts; struct fwnet_device* dev; } ;
-struct fwnet_device {int /*<<< orphan*/  lock; TYPE_2__* netdev; } ;
-struct TYPE_3__ {int /*<<< orphan*/  tx_errors; int /*<<< orphan*/  tx_dropped; } ;
+struct fwnet_device {int lock; TYPE_2__* netdev; } ;
+struct TYPE_3__ {int tx_errors; int tx_dropped; } ;
 struct TYPE_4__ {TYPE_1__ stats; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dec_queued_datagrams (struct fwnet_device*) ; 
- int /*<<< orphan*/  fwnet_free_ptask (struct fwnet_packet_task*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int dec_queued_datagrams (struct fwnet_device*) ;
+ int fwnet_free_ptask (struct fwnet_packet_task*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void fwnet_transmit_packet_failed(struct fwnet_packet_task *ptask)
 {
-	struct fwnet_device *dev = ptask->dev;
-	unsigned long flags;
-	bool free;
+ struct fwnet_device *dev = ptask->dev;
+ unsigned long flags;
+ bool free;
 
-	spin_lock_irqsave(&dev->lock, flags);
+ spin_lock_irqsave(&dev->lock, flags);
 
-	/* One fragment failed; don't try to send remaining fragments. */
-	ptask->outstanding_pkts = 0;
 
-	/* Check whether we or the networking TX soft-IRQ is last user. */
-	free = ptask->enqueued;
-	if (free)
-		dec_queued_datagrams(dev);
+ ptask->outstanding_pkts = 0;
 
-	dev->netdev->stats.tx_dropped++;
-	dev->netdev->stats.tx_errors++;
 
-	spin_unlock_irqrestore(&dev->lock, flags);
+ free = ptask->enqueued;
+ if (free)
+  dec_queued_datagrams(dev);
 
-	if (free)
-		fwnet_free_ptask(ptask);
+ dev->netdev->stats.tx_dropped++;
+ dev->netdev->stats.tx_errors++;
+
+ spin_unlock_irqrestore(&dev->lock, flags);
+
+ if (free)
+  fwnet_free_ptask(ptask);
 }

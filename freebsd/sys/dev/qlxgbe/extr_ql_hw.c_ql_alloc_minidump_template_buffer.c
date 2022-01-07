@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  size; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int size; } ;
 struct TYPE_7__ {TYPE_1__ minidump; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * mdump_template; int /*<<< orphan*/  mdump_template_size; TYPE_2__ dma_buf; } ;
+struct TYPE_8__ {int * mdump_template; int mdump_template_size; TYPE_2__ dma_buf; } ;
 struct TYPE_9__ {TYPE_3__ hw; } ;
-typedef  TYPE_4__ qla_host_t ;
+typedef TYPE_4__ qla_host_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_NOWAIT ; 
- int /*<<< orphan*/  M_QLA83XXBUF ; 
- int /*<<< orphan*/ * malloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int M_NOWAIT ;
+ int M_QLA83XXBUF ;
+ int * malloc (int ,int ,int ) ;
 
 __attribute__((used)) static int
 ql_alloc_minidump_template_buffer(qla_host_t *ha)
 {
-	ha->hw.mdump_template_size = ha->hw.dma_buf.minidump.size;
+ ha->hw.mdump_template_size = ha->hw.dma_buf.minidump.size;
 
-	ha->hw.mdump_template = malloc(ha->hw.mdump_template_size,
-					M_QLA83XXBUF, M_NOWAIT);
+ ha->hw.mdump_template = malloc(ha->hw.mdump_template_size,
+     M_QLA83XXBUF, M_NOWAIT);
 
-	if (ha->hw.mdump_template == NULL)
-		return (-1);
+ if (ha->hw.mdump_template == ((void*)0))
+  return (-1);
 
-	return (0);
+ return (0);
 }

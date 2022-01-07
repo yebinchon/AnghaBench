@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_7__ ;
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_19__ TYPE_7__ ;
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_14__ {scalar_t__ offset; } ;
 struct TYPE_15__ {TYPE_2__ info; } ;
 struct TYPE_13__ {int fd; } ;
 struct TYPE_18__ {TYPE_3__ fs; TYPE_1__ file; } ;
-typedef  TYPE_6__ uv_fs_t ;
+typedef TYPE_6__ uv_fs_t ;
 struct TYPE_17__ {scalar_t__ QuadPart; } ;
-struct TYPE_16__ {scalar_t__ QuadPart; int /*<<< orphan*/  LowPart; int /*<<< orphan*/  HighPart; } ;
-struct uv__fd_info_s {void* mapping; int flags; TYPE_5__ current_pos; TYPE_4__ size; scalar_t__ is_directory; int /*<<< orphan*/  member_0; } ;
+struct TYPE_16__ {scalar_t__ QuadPart; int LowPart; int HighPart; } ;
+struct uv__fd_info_s {void* mapping; int flags; TYPE_5__ current_pos; TYPE_4__ size; scalar_t__ is_directory; int member_0; } ;
 struct TYPE_19__ {TYPE_4__ EndOfFile; } ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  IO_STATUS_BLOCK ;
-typedef  void* HANDLE ;
-typedef  TYPE_7__ FILE_END_OF_FILE_INFORMATION ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef int NTSTATUS ;
+typedef int IO_STATUS_BLOCK ;
+typedef void* HANDLE ;
+typedef TYPE_7__ FILE_END_OF_FILE_INFORMATION ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (void*) ; 
- void* CreateFileMapping (void*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERROR_ACCESS_DENIED ; 
- int /*<<< orphan*/  FileEndOfFileInformation ; 
- int /*<<< orphan*/  GetLastError () ; 
- void* INVALID_HANDLE_VALUE ; 
- scalar_t__ NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PAGE_READONLY ; 
- int /*<<< orphan*/  PAGE_READWRITE ; 
- int /*<<< orphan*/  SET_REQ_RESULT (TYPE_6__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SET_REQ_WIN32_ERROR (TYPE_6__*,int /*<<< orphan*/ ) ; 
- int UV_FS_O_RDONLY ; 
- int UV_FS_O_RDWR ; 
- int UV_FS_O_WRONLY ; 
- int /*<<< orphan*/  VERIFY_FD (int,TYPE_6__*) ; 
- int /*<<< orphan*/  pNtSetInformationFile (void*,int /*<<< orphan*/ *,TYPE_7__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pRtlNtStatusToDosError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv__fd_hash_add (int,struct uv__fd_info_s*) ; 
- scalar_t__ uv__fd_hash_get (int,struct uv__fd_info_s*) ; 
- void* uv__get_osfhandle (int) ; 
+
+ int CloseHandle (void*) ;
+ void* CreateFileMapping (void*,int *,int ,int ,int ,int *) ;
+ int ERROR_ACCESS_DENIED ;
+ int FileEndOfFileInformation ;
+ int GetLastError () ;
+ void* INVALID_HANDLE_VALUE ;
+ scalar_t__ NT_SUCCESS (int ) ;
+ int PAGE_READONLY ;
+ int PAGE_READWRITE ;
+ int SET_REQ_RESULT (TYPE_6__*,int ) ;
+ int SET_REQ_WIN32_ERROR (TYPE_6__*,int ) ;
+ int UV_FS_O_RDONLY ;
+ int UV_FS_O_RDWR ;
+ int UV_FS_O_WRONLY ;
+ int VERIFY_FD (int,TYPE_6__*) ;
+ int pNtSetInformationFile (void*,int *,TYPE_7__*,int,int ) ;
+ int pRtlNtStatusToDosError (int ) ;
+ int uv__fd_hash_add (int,struct uv__fd_info_s*) ;
+ scalar_t__ uv__fd_hash_get (int,struct uv__fd_info_s*) ;
+ void* uv__get_osfhandle (int) ;
 
 __attribute__((used)) static void fs__ftruncate(uv_fs_t* req) {
   int fd = req->file.fd;
@@ -109,12 +109,12 @@ __attribute__((used)) static void fs__ftruncate(uv_fs_t* req) {
       DWORD flProtect = (fd_info.flags & (UV_FS_O_RDONLY | UV_FS_O_WRONLY |
         UV_FS_O_RDWR)) == UV_FS_O_RDONLY ? PAGE_READONLY : PAGE_READWRITE;
       fd_info.mapping = CreateFileMapping(handle,
-                                          NULL,
+                                          ((void*)0),
                                           flProtect,
                                           fd_info.size.HighPart,
                                           fd_info.size.LowPart,
-                                          NULL);
-      if (fd_info.mapping == NULL) {
+                                          ((void*)0));
+      if (fd_info.mapping == ((void*)0)) {
         SET_REQ_WIN32_ERROR(req, GetLastError());
         CloseHandle(handle);
         fd_info.mapping = INVALID_HANDLE_VALUE;

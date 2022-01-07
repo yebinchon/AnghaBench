@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct command {int dummy; } ;
-typedef  int /*<<< orphan*/  Char ;
+typedef int Char ;
 
-/* Variables and functions */
- int /*<<< orphan*/  USE (struct command*) ; 
- int /*<<< orphan*/  aliases ; 
- int /*<<< orphan*/  tw_cmd_free () ; 
- int /*<<< orphan*/  unset1 (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
+
+ int USE (struct command*) ;
+ int aliases ;
+ int tw_cmd_free () ;
+ int unset1 (int **,int *) ;
 
 void
 unalias(Char **v, struct command *c)

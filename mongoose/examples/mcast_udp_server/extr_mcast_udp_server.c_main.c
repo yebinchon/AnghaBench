@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct mg_mgr {int dummy; } ;
-struct mg_connection {int /*<<< orphan*/  sock; } ;
+struct mg_connection {int sock; } ;
 struct TYPE_4__ {void* s_addr; } ;
 struct TYPE_3__ {void* s_addr; } ;
 struct ip_mreq {TYPE_2__ imr_interface; TYPE_1__ imr_multiaddr; } ;
-typedef  int /*<<< orphan*/  listen ;
-typedef  int /*<<< orphan*/  group ;
+typedef int listen ;
+typedef int group ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPPROTO_IP ; 
- int /*<<< orphan*/  IP_ADD_MEMBERSHIP ; 
- char* MCAST_GROUP ; 
- int /*<<< orphan*/  ev_handler ; 
- int /*<<< orphan*/  exit (int) ; 
- void* inet_addr (char const*) ; 
- struct mg_connection* mg_bind (struct mg_mgr*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mg_mgr_free (struct mg_mgr*) ; 
- int /*<<< orphan*/  mg_mgr_init (struct mg_mgr*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mg_mgr_poll (struct mg_mgr*,int) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  printf (char*,char const*,char const*) ; 
- scalar_t__ setsockopt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  usage (char**) ; 
+
+ int IPPROTO_IP ;
+ int IP_ADD_MEMBERSHIP ;
+ char* MCAST_GROUP ;
+ int ev_handler ;
+ int exit (int) ;
+ void* inet_addr (char const*) ;
+ struct mg_connection* mg_bind (struct mg_mgr*,char*,int ) ;
+ int mg_mgr_free (struct mg_mgr*) ;
+ int mg_mgr_init (struct mg_mgr*,int *) ;
+ int mg_mgr_poll (struct mg_mgr*,int) ;
+ int perror (char*) ;
+ int printf (char*,char const*,char const*) ;
+ scalar_t__ setsockopt (int ,int ,int ,char*,int) ;
+ int snprintf (char*,int,char*,char const*) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int usage (char**) ;
 
 int main(int argc, char **argv) {
   struct mg_mgr mgr;
   const char *port = "1234";
   struct mg_connection *nc;
   struct ip_mreq group;
-  const char *interface = NULL;
+  const char *interface = ((void*)0);
   const char *mcast_group = MCAST_GROUP;
   int i;
 
-  /* Parse command line arguments */
+
   for (i = 1; i < argc; i++) {
-    // IP address of the interface where to join a multicast group.
+
     if (strcmp(argv[i], "-i") == 0) {
       interface = argv[++i];
     } else if (strcmp(argv[i], "-g") == 0) {
@@ -59,18 +59,18 @@ int main(int argc, char **argv) {
     }
   }
 
-  if (interface == NULL) {
+  if (interface == ((void*)0)) {
     usage(argv);
   }
 
-  mg_mgr_init(&mgr, NULL);
+  mg_mgr_init(&mgr, ((void*)0));
   {
     char listen[256];
     snprintf(listen, sizeof(listen), "udp://%s", port);
     nc = mg_bind(&mgr, listen, ev_handler);
   }
 
-  if (nc == NULL) {
+  if (nc == ((void*)0)) {
     perror("cannot bind\n");
     exit(1);
   }

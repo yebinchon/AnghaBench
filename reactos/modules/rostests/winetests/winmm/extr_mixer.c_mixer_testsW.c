@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  capsW ;
-typedef  scalar_t__ UINT ;
-typedef  scalar_t__ MMRESULT ;
-typedef  int /*<<< orphan*/  MIXERCAPSW ;
 
-/* Variables and functions */
- scalar_t__ MMSYSERR_BADDEVICEID ; 
- scalar_t__ MMSYSERR_NOTSUPPORTED ; 
- scalar_t__ mixerGetDevCapsW (scalar_t__,int /*<<< orphan*/ *,int) ; 
- scalar_t__ mixerGetNumDevs () ; 
- int /*<<< orphan*/  mixer_test_deviceW (scalar_t__) ; 
- int /*<<< orphan*/  mmsys_error (scalar_t__) ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trace (char*,...) ; 
+
+
+
+typedef int capsW ;
+typedef scalar_t__ UINT ;
+typedef scalar_t__ MMRESULT ;
+typedef int MIXERCAPSW ;
+
+
+ scalar_t__ MMSYSERR_BADDEVICEID ;
+ scalar_t__ MMSYSERR_NOTSUPPORTED ;
+ scalar_t__ mixerGetDevCapsW (scalar_t__,int *,int) ;
+ scalar_t__ mixerGetNumDevs () ;
+ int mixer_test_deviceW (scalar_t__) ;
+ int mmsys_error (scalar_t__) ;
+ int ok (int,char*,int ) ;
+ int trace (char*,...) ;
 
 __attribute__((used)) static void mixer_testsW(void)
 {

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ error; int /*<<< orphan*/  error_msg; int /*<<< orphan*/  result; scalar_t__ nodes; } ;
-typedef  int /*<<< orphan*/  EVAL_NODE ;
-typedef  TYPE_1__ EVAL_EXPRESSION ;
 
-/* Variables and functions */
- scalar_t__ EVAL_ERROR_OK ; 
- scalar_t__ EVAL_ERROR_UNKNOWN_VARIABLE ; 
- scalar_t__ EVAL_ERROR_VALUE_IS_INFINITE ; 
- scalar_t__ EVAL_ERROR_VALUE_IS_NAN ; 
- int /*<<< orphan*/  NAN ; 
- int /*<<< orphan*/  buffer_reset (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  buffer_sprintf (int /*<<< orphan*/ ,char*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  buffer_strcat (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ buffer_strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eval_node (TYPE_1__*,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  expression_strerror (scalar_t__) ; 
- int isinf (int /*<<< orphan*/ ) ; 
- int isnan (int /*<<< orphan*/ ) ; 
- scalar_t__ unlikely (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ error; int error_msg; int result; scalar_t__ nodes; } ;
+typedef int EVAL_NODE ;
+typedef TYPE_1__ EVAL_EXPRESSION ;
+
+
+ scalar_t__ EVAL_ERROR_OK ;
+ scalar_t__ EVAL_ERROR_UNKNOWN_VARIABLE ;
+ scalar_t__ EVAL_ERROR_VALUE_IS_INFINITE ;
+ scalar_t__ EVAL_ERROR_VALUE_IS_NAN ;
+ int NAN ;
+ int buffer_reset (int ) ;
+ int buffer_sprintf (int ,char*,scalar_t__,int ) ;
+ int buffer_strcat (int ,char*) ;
+ scalar_t__ buffer_strlen (int ) ;
+ int eval_node (TYPE_1__*,int *,scalar_t__*) ;
+ int expression_strerror (scalar_t__) ;
+ int isinf (int ) ;
+ int isnan (int ) ;
+ scalar_t__ unlikely (int) ;
 
 int expression_evaluate(EVAL_EXPRESSION *expression) {
     expression->error = EVAL_ERROR_OK;
@@ -46,8 +46,8 @@ int expression_evaluate(EVAL_EXPRESSION *expression) {
             expression->error = EVAL_ERROR_VALUE_IS_INFINITE;
     }
     else if(unlikely(expression->error == EVAL_ERROR_UNKNOWN_VARIABLE)) {
-        // although there is an unknown variable
-        // the expression was evaluated successfully
+
+
         expression->error = EVAL_ERROR_OK;
     }
 

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct opaque_auth {int /*<<< orphan*/  data; int /*<<< orphan*/  flavor; } ;
-typedef  int /*<<< orphan*/  krb5_storage ;
-typedef  scalar_t__ krb5_error_code ;
 
-/* Variables and functions */
- scalar_t__ krb5_ret_uint32 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ ret_data_xdr (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct opaque_auth {int data; int flavor; } ;
+typedef int krb5_storage ;
+typedef scalar_t__ krb5_error_code ;
+
+
+ scalar_t__ krb5_ret_uint32 (int *,int *) ;
+ scalar_t__ ret_data_xdr (int *,int *) ;
 
 __attribute__((used)) static krb5_error_code
 ret_auth_opaque(krb5_storage *msg, struct opaque_auth *ao)

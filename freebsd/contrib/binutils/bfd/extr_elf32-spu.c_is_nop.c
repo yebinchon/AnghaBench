@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bfd_vma ;
-typedef  int /*<<< orphan*/  bfd_boolean ;
-struct TYPE_4__ {scalar_t__ size; int /*<<< orphan*/  owner; } ;
-typedef  TYPE_1__ asection ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  bfd_get_section_contents (int /*<<< orphan*/ ,TYPE_1__*,unsigned char*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int bfd_vma ;
+typedef int bfd_boolean ;
+struct TYPE_4__ {scalar_t__ size; int owner; } ;
+typedef TYPE_1__ asection ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int bfd_get_section_contents (int ,TYPE_1__*,unsigned char*,int ,int) ;
 
 __attribute__((used)) static bfd_boolean
 is_nop (asection *sec, bfd_vma off)

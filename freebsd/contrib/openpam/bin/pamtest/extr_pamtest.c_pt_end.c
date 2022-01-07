@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int PAM_SUCCESS ; 
- int pam_end (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * pamh ; 
- int /*<<< orphan*/  pt_error (int,char*) ; 
+ int PAM_SUCCESS ;
+ int pam_end (int *,int) ;
+ int * pamh ;
+ int pt_error (int,char*) ;
 
 __attribute__((used)) static int
 pt_end(int pame)
 {
 
-	if (pamh != NULL && (pame = pam_end(pamh, pame)) != PAM_SUCCESS)
-		/* can't happen */
-		pt_error(pame, "pam_end()");
-	return (pame);
+ if (pamh != ((void*)0) && (pame = pam_end(pamh, pame)) != PAM_SUCCESS)
+
+  pt_error(pame, "pam_end()");
+ return (pame);
 }

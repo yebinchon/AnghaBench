@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct curl_slist {char* data; struct curl_slist* next; } ;
-typedef  scalar_t__ CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
+typedef scalar_t__ CURLcode ;
+typedef int CURL ;
 
-/* Variables and functions */
- scalar_t__ CURLE_OK ; 
- int /*<<< orphan*/  CURLINFO_COOKIELIST ; 
- scalar_t__ curl_easy_getinfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct curl_slist**) ; 
- char* curl_easy_strerror (scalar_t__) ; 
- int /*<<< orphan*/  curl_slist_free_all (struct curl_slist*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stderr ; 
+
+ scalar_t__ CURLE_OK ;
+ int CURLINFO_COOKIELIST ;
+ scalar_t__ curl_easy_getinfo (int *,int ,struct curl_slist**) ;
+ char* curl_easy_strerror (scalar_t__) ;
+ int curl_slist_free_all (struct curl_slist*) ;
+ int exit (int) ;
+ int fprintf (int ,char*,char*) ;
+ int printf (char*,...) ;
+ int stderr ;
 
 __attribute__((used)) static void
 print_cookies(CURL *curl)

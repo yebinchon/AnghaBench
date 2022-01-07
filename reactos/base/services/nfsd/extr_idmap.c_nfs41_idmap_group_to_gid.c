@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct idmap_lookup {char const* value; int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
+
+
+
+
+struct idmap_lookup {char const* value; int member_3; int member_2; int member_1; int member_0; } ;
 struct idmap_group {int gid; } ;
 struct idmap_context {int dummy; } ;
-typedef  int gid_t ;
+typedef int gid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATTR_GROUP_NAME ; 
- int /*<<< orphan*/  CLASS_GROUP ; 
- int /*<<< orphan*/  IDLVL ; 
- int /*<<< orphan*/  TYPE_STR ; 
- int /*<<< orphan*/  dprintf (int /*<<< orphan*/ ,char*,char const*,...) ; 
- int /*<<< orphan*/  group_cmp ; 
- int idmap_lookup_group (struct idmap_context*,struct idmap_lookup*,struct idmap_group*) ; 
+
+ int ATTR_GROUP_NAME ;
+ int CLASS_GROUP ;
+ int IDLVL ;
+ int TYPE_STR ;
+ int dprintf (int ,char*,char const*,...) ;
+ int group_cmp ;
+ int idmap_lookup_group (struct idmap_context*,struct idmap_lookup*,struct idmap_group*) ;
 
 int nfs41_idmap_group_to_gid(
     struct idmap_context *context,
@@ -38,7 +38,7 @@ int nfs41_idmap_group_to_gid(
 
     lookup.value = name;
 
-    /* look up the group entry */
+
     status = idmap_lookup_group(context, &lookup, &group);
     if (status) {
         dprintf(IDLVL, "<-- nfs41_idmap_group_to_gid('%s') "

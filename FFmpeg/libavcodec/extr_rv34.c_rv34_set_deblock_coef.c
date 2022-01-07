@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int mb_x; int mb_y; int b8_stride; int mb_stride; scalar_t__ first_slice_line; TYPE_1__* current_picture_ptr; } ;
 struct TYPE_6__ {int* deblock_coefs; scalar_t__ rv30; TYPE_3__ s; } ;
-struct TYPE_5__ {int /*<<< orphan*/ ** motion_val; } ;
-typedef  TYPE_2__ RV34DecContext ;
-typedef  TYPE_3__ MpegEncContext ;
+struct TYPE_5__ {int ** motion_val; } ;
+typedef TYPE_2__ RV34DecContext ;
+typedef TYPE_3__ MpegEncContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/ ** int16_t (int /*<<< orphan*/ ) ; 
- scalar_t__ is_mv_diff_gt_3 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * motion_val ; 
+
+ int ** int16_t (int ) ;
+ scalar_t__ is_mv_diff_gt_3 (int *,int) ;
+ int * motion_val ;
 
 __attribute__((used)) static int rv34_set_deblock_coef(RV34DecContext *r)
 {
@@ -43,7 +43,7 @@ __attribute__((used)) static int rv34_set_deblock_coef(RV34DecContext *r)
         hmvmask &= ~0x000F;
     if(!s->mb_x)
         vmvmask &= ~0x1111;
-    if(r->rv30){ //RV30 marks both subblocks on the edge for filtering
+    if(r->rv30){
         vmvmask |= (vmvmask & 0x4444) >> 1;
         hmvmask |= (hmvmask & 0x0F00) >> 4;
         if(s->mb_x)

@@ -1,83 +1,83 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_11__ {double f_float; } ;
-typedef  TYPE_1__ vlc_value_t ;
-typedef  scalar_t__ vlc_tick_t ;
-typedef  int /*<<< orphan*/  vlc_meta_t ;
-typedef  int /*<<< orphan*/  input_thread_t ;
-struct TYPE_12__ {int b_out_pace_control; int i_slave; TYPE_4__* p_sout; int /*<<< orphan*/ * p_es_out; int /*<<< orphan*/ * p_resource; int /*<<< orphan*/  p_es_out_display; TYPE_6__* p_item; TYPE_3__** slave; int /*<<< orphan*/  b_preparsing; int /*<<< orphan*/  normal_time; TYPE_3__* master; int /*<<< orphan*/  rate; } ;
-typedef  TYPE_2__ input_thread_private_t ;
-struct TYPE_13__ {int /*<<< orphan*/  p_demux; } ;
-typedef  TYPE_3__ input_source_t ;
+typedef TYPE_1__ vlc_value_t ;
+typedef scalar_t__ vlc_tick_t ;
+typedef int vlc_meta_t ;
+typedef int input_thread_t ;
+struct TYPE_12__ {int b_out_pace_control; int i_slave; TYPE_4__* p_sout; int * p_es_out; int * p_resource; int p_es_out_display; TYPE_6__* p_item; TYPE_3__** slave; int b_preparsing; int normal_time; TYPE_3__* master; int rate; } ;
+typedef TYPE_2__ input_thread_private_t ;
+struct TYPE_13__ {int p_demux; } ;
+typedef TYPE_3__ input_source_t ;
 struct TYPE_15__ {char* psz_uri; } ;
 struct TYPE_14__ {scalar_t__ i_out_pace_nocontrol; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEMUX_GET_LENGTH ; 
- int /*<<< orphan*/  ERROR_S ; 
- int /*<<< orphan*/  ES_OUT_MODE_END ; 
- int /*<<< orphan*/  INPUT_CONTROL_SET_RATE ; 
- int /*<<< orphan*/  InitPrograms (int /*<<< orphan*/ *) ; 
- scalar_t__ InitSout (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InitTitle (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  InputMetaUser (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InputSourceMeta (int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ *) ; 
- TYPE_3__* InputSourceNew (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  LoadSlaves (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OPENING_S ; 
- int /*<<< orphan*/  PLAYING_S ; 
- int /*<<< orphan*/  SetSubtitlesOptions (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  StartTitle (int /*<<< orphan*/ *) ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- scalar_t__ VLC_TICK_INVALID ; 
- scalar_t__ demux_Control (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  es_out_ControlSetMeta (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  es_out_Delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  es_out_SetMode (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  input_ChangeState (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  input_ControlPushHelper (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/ * input_EsOutTimeshiftNew (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  input_SendEventCache (int /*<<< orphan*/ *,double) ; 
- int /*<<< orphan*/  input_SendEventTimes (int /*<<< orphan*/ *,double,scalar_t__,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ input_item_GetDuration (TYPE_6__*) ; 
- int /*<<< orphan*/  input_item_IsPreparsed (TYPE_6__*) ; 
- TYPE_2__* input_priv (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  input_resource_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  input_resource_RequestSout (int /*<<< orphan*/ *,TYPE_4__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  input_resource_SetInput (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,...) ; 
- double var_GetFloat (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  var_SetBool (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  var_SetInteger (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  var_SetString (int /*<<< orphan*/ *,char*,char*) ; 
- scalar_t__ var_Type (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  vlc_meta_Delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vlc_meta_New () ; 
- int /*<<< orphan*/  vlc_object_parent (int /*<<< orphan*/ *) ; 
- scalar_t__ vlc_tick_now () ; 
+
+ int DEMUX_GET_LENGTH ;
+ int ERROR_S ;
+ int ES_OUT_MODE_END ;
+ int INPUT_CONTROL_SET_RATE ;
+ int InitPrograms (int *) ;
+ scalar_t__ InitSout (int *) ;
+ int InitTitle (int *,int) ;
+ int InputMetaUser (int *,int *) ;
+ int InputSourceMeta (int *,TYPE_3__*,int *) ;
+ TYPE_3__* InputSourceNew (int *,char*,int *,int) ;
+ int LoadSlaves (int *) ;
+ int OPENING_S ;
+ int PLAYING_S ;
+ int SetSubtitlesOptions (int *) ;
+ int StartTitle (int *) ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ scalar_t__ VLC_TICK_INVALID ;
+ scalar_t__ demux_Control (int ,int ,scalar_t__*) ;
+ int es_out_ControlSetMeta (int *,int *) ;
+ int es_out_Delete (int *) ;
+ int es_out_SetMode (int ,int ) ;
+ int input_ChangeState (int *,int ,scalar_t__) ;
+ int input_ControlPushHelper (int *,int ,TYPE_1__*) ;
+ int * input_EsOutTimeshiftNew (int *,int ,int ) ;
+ int input_SendEventCache (int *,double) ;
+ int input_SendEventTimes (int *,double,scalar_t__,int ,scalar_t__) ;
+ scalar_t__ input_item_GetDuration (TYPE_6__*) ;
+ int input_item_IsPreparsed (TYPE_6__*) ;
+ TYPE_2__* input_priv (int *) ;
+ int input_resource_Release (int *) ;
+ int input_resource_RequestSout (int *,TYPE_4__*,int *) ;
+ int input_resource_SetInput (int *,int *) ;
+ int msg_Dbg (int *,char*,...) ;
+ double var_GetFloat (int *,char*) ;
+ int var_SetBool (int *,char*,int) ;
+ int var_SetInteger (int *,char*,int ) ;
+ int var_SetString (int *,char*,char*) ;
+ scalar_t__ var_Type (int ,char*) ;
+ int vlc_meta_Delete (int *) ;
+ int * vlc_meta_New () ;
+ int vlc_object_parent (int *) ;
+ scalar_t__ vlc_tick_now () ;
 
 __attribute__((used)) static int Init( input_thread_t * p_input )
 {
     input_thread_private_t *priv = input_priv(p_input);
     input_source_t *master;
 
-    /* */
+
     input_ChangeState( p_input, OPENING_S, VLC_TICK_INVALID );
     input_SendEventCache( p_input, 0.0 );
 
@@ -85,33 +85,33 @@ __attribute__((used)) static int Init( input_thread_t * p_input )
     {
         msg_Dbg( p_input, "Input is a meta file: disabling unneeded options" );
         var_SetString( p_input, "sout", "" );
-        var_SetBool( p_input, "sout-all", false );
+        var_SetBool( p_input, "sout-all", 0 );
         var_SetString( p_input, "input-slave", "" );
         var_SetInteger( p_input, "input-repeat", 0 );
         var_SetString( p_input, "sub-file", "" );
-        var_SetBool( p_input, "sub-autodetect-file", false );
+        var_SetBool( p_input, "sub-autodetect-file", 0 );
     }
 
-#ifdef ENABLE_SOUT
-    if( InitSout( p_input ) )
-        goto error;
-#endif
 
-    /* Create es out */
+
+
+
+
+
     priv->p_es_out = input_EsOutTimeshiftNew( p_input, priv->p_es_out_display, priv->rate );
-    if( priv->p_es_out == NULL )
+    if( priv->p_es_out == ((void*)0) )
         goto error;
 
-    /* */
-    master = InputSourceNew( p_input, priv->p_item->psz_uri, NULL, false );
-    if( master == NULL )
+
+    master = InputSourceNew( p_input, priv->p_item->psz_uri, ((void*)0), 0 );
+    if( master == ((void*)0) )
         goto error;
     priv->master = master;
 
-    InitTitle( p_input, false );
+    InitTitle( p_input, 0 );
 
-    /* Load master infos */
-    /* Init length */
+
+
     vlc_tick_t i_length;
     if( demux_Control( master->p_demux, DEMUX_GET_LENGTH, &i_length ) )
         i_length = VLC_TICK_INVALID;
@@ -147,15 +147,15 @@ __attribute__((used)) static int Init( input_thread_t * p_input )
     if (!input_item_IsPreparsed(input_priv(p_input)->p_item))
     {
         vlc_meta_t *p_meta = vlc_meta_New();
-        if( p_meta != NULL )
+        if( p_meta != ((void*)0) )
         {
-            /* Get meta data from users */
+
             InputMetaUser( p_input, p_meta );
 
-            /* Get meta data from master input */
+
             InputSourceMeta( p_input, master, p_meta );
 
-            /* And from slave */
+
             for( int i = 0; i < priv->i_slave; i++ )
                 InputSourceMeta( p_input, priv->slave[i], p_meta );
 
@@ -167,7 +167,7 @@ __attribute__((used)) static int Init( input_thread_t * p_input )
     msg_Dbg( p_input, "`%s' successfully opened",
              input_priv(p_input)->p_item->psz_uri );
 
-    /* initialization is complete */
+
     input_ChangeState( p_input, PLAYING_S, vlc_tick_now() );
 
     return VLC_SUCCESS;
@@ -182,18 +182,18 @@ error:
     {
         if( input_priv(p_input)->p_sout )
             input_resource_RequestSout( input_priv(p_input)->p_resource,
-                                         input_priv(p_input)->p_sout, NULL );
-        input_resource_SetInput( input_priv(p_input)->p_resource, NULL );
+                                         input_priv(p_input)->p_sout, ((void*)0) );
+        input_resource_SetInput( input_priv(p_input)->p_resource, ((void*)0) );
         if( input_priv(p_input)->p_resource )
         {
             input_resource_Release( input_priv(p_input)->p_resource );
-            input_priv(p_input)->p_resource = NULL;
+            input_priv(p_input)->p_resource = ((void*)0);
         }
     }
 
-    /* Mark them deleted */
-    input_priv(p_input)->p_es_out = NULL;
-    input_priv(p_input)->p_sout = NULL;
+
+    input_priv(p_input)->p_es_out = ((void*)0);
+    input_priv(p_input)->p_sout = ((void*)0);
 
     return VLC_EGENERIC;
 }

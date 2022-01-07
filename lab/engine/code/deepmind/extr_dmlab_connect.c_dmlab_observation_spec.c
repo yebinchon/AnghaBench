@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  (* custom_observation_spec ) (int /*<<< orphan*/ ,int,TYPE_3__*) ;} ;
-struct TYPE_10__ {int /*<<< orphan*/  userdata; TYPE_1__ hooks; } ;
-struct TYPE_9__ {int dims; int* shape; int /*<<< orphan*/  type; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int (* custom_observation_spec ) (int ,int,TYPE_3__*) ;} ;
+struct TYPE_10__ {int userdata; TYPE_1__ hooks; } ;
+struct TYPE_9__ {int dims; int* shape; int type; } ;
 struct TYPE_8__ {int* map_frame_number_shape; int* image_shape; int height; int width; TYPE_4__* dm_ctx; } ;
-typedef  TYPE_2__ GameContext ;
-typedef  TYPE_3__ EnvCApi_ObservationSpec ;
-typedef  TYPE_4__ DeepmindContext ;
+typedef TYPE_2__ GameContext ;
+typedef TYPE_3__ EnvCApi_ObservationSpec ;
+typedef TYPE_4__ DeepmindContext ;
 
-/* Variables and functions */
- int ARRAY_LEN (char**) ; 
- int /*<<< orphan*/  EnvCApi_ObservationBytes ; 
- int /*<<< orphan*/  EnvCApi_ObservationDoubles ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- char** kObservationNames ; 
-#define  kObservations_BgrInterleaved 135 
-#define  kObservations_BgrdInterleaved 134 
- int kObservations_MapFrameNumber ; 
-#define  kObservations_RgbInterlaced 133 
-#define  kObservations_RgbInterleaved 132 
-#define  kObservations_RgbPlanar 131 
-#define  kObservations_RgbdInterlaced 130 
-#define  kObservations_RgbdInterleaved 129 
-#define  kObservations_RgbdPlanar 128 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int,TYPE_3__*) ; 
+
+ int ARRAY_LEN (char**) ;
+ int EnvCApi_ObservationBytes ;
+ int EnvCApi_ObservationDoubles ;
+ int fprintf (int ,char*,char*) ;
+ char** kObservationNames ;
+
+
+ int kObservations_MapFrameNumber ;
+
+
+
+
+
+
+ int stderr ;
+ int stub1 (int ,int,TYPE_3__*) ;
 
 __attribute__((used)) static void dmlab_observation_spec(
     void* context, int observation_idx, EnvCApi_ObservationSpec* spec) {
@@ -54,32 +54,32 @@ __attribute__((used)) static void dmlab_observation_spec(
     spec->shape = gc->image_shape;
 
     switch (observation_idx) {
-      case kObservations_RgbInterlaced:
+      case 133:
         fprintf(stderr, "Using deprecated observation format: '%s'\n",
                 kObservationNames[observation_idx]);
-        // FALLTHROUGH_INTENDED
-      case kObservations_RgbInterleaved:
-      case kObservations_BgrInterleaved:
+
+      case 132:
+      case 135:
         gc->image_shape[0] = gc->height;
         gc->image_shape[1] = gc->width;
         gc->image_shape[2] = 3;
         break;
-      case kObservations_RgbdInterlaced:
+      case 130:
         fprintf(stderr, "Using deprecated observation format: '%s'\n",
                 kObservationNames[observation_idx]);
-        // FALLTHROUGH_INTENDED
-      case kObservations_RgbdInterleaved:
-      case kObservations_BgrdInterleaved:
+
+      case 129:
+      case 134:
         gc->image_shape[0] = gc->height;
         gc->image_shape[1] = gc->width;
         gc->image_shape[2] = 4;
         break;
-      case kObservations_RgbPlanar:
+      case 131:
         gc->image_shape[0] = 3;
         gc->image_shape[1] = gc->height;
         gc->image_shape[2] = gc->width;
         break;
-      case kObservations_RgbdPlanar:
+      case 128:
         gc->image_shape[0] = 4;
         gc->image_shape[1] = gc->height;
         gc->image_shape[2] = gc->width;

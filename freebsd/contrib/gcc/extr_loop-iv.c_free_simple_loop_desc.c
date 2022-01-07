@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct niter_desc {int dummy; } ;
-struct loop {int /*<<< orphan*/ * aux; } ;
+struct loop {int * aux; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (struct niter_desc*) ; 
- struct niter_desc* simple_loop_desc (struct loop*) ; 
+
+ int free (struct niter_desc*) ;
+ struct niter_desc* simple_loop_desc (struct loop*) ;
 
 void
 free_simple_loop_desc (struct loop *loop)
@@ -26,5 +26,5 @@ free_simple_loop_desc (struct loop *loop)
     return;
 
   free (desc);
-  loop->aux = NULL;
+  loop->aux = ((void*)0);
 }

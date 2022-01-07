@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vop_readdir_args {int /*<<< orphan*/  a_vp; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NOTE_READ ; 
- int /*<<< orphan*/  VFS_KNOTE_LOCKED (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct vop_readdir_args {int a_vp; } ;
+
+
+ int NOTE_READ ;
+ int VFS_KNOTE_LOCKED (int ,int ) ;
 
 void
 vop_readdir_post(void *ap, int rc)
 {
-	struct vop_readdir_args *a = ap;
+ struct vop_readdir_args *a = ap;
 
-	if (!rc)
-		VFS_KNOTE_LOCKED(a->a_vp, NOTE_READ);
+ if (!rc)
+  VFS_KNOTE_LOCKED(a->a_vp, NOTE_READ);
 }

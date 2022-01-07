@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct o2nm_cluster {int /*<<< orphan*/  cl_nodes_lock; int /*<<< orphan*/  cl_nodes_bitmap; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int EINVAL ; 
- int /*<<< orphan*/  memcpy (unsigned long*,int /*<<< orphan*/ ,int) ; 
- struct o2nm_cluster* o2nm_single_cluster ; 
- int /*<<< orphan*/  read_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  read_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct o2nm_cluster {int cl_nodes_lock; int cl_nodes_bitmap; } ;
+
+
+ int BUG_ON (int) ;
+ int EINVAL ;
+ int memcpy (unsigned long*,int ,int) ;
+ struct o2nm_cluster* o2nm_single_cluster ;
+ int read_lock (int *) ;
+ int read_unlock (int *) ;
 
 int o2nm_configured_node_map(unsigned long *map, unsigned bytes)
 {
-	struct o2nm_cluster *cluster = o2nm_single_cluster;
+ struct o2nm_cluster *cluster = o2nm_single_cluster;
 
-	BUG_ON(bytes < (sizeof(cluster->cl_nodes_bitmap)));
+ BUG_ON(bytes < (sizeof(cluster->cl_nodes_bitmap)));
 
-	if (cluster == NULL)
-		return -EINVAL;
+ if (cluster == ((void*)0))
+  return -EINVAL;
 
-	read_lock(&cluster->cl_nodes_lock);
-	memcpy(map, cluster->cl_nodes_bitmap, sizeof(cluster->cl_nodes_bitmap));
-	read_unlock(&cluster->cl_nodes_lock);
+ read_lock(&cluster->cl_nodes_lock);
+ memcpy(map, cluster->cl_nodes_bitmap, sizeof(cluster->cl_nodes_bitmap));
+ read_unlock(&cluster->cl_nodes_lock);
 
-	return 0;
+ return 0;
 }

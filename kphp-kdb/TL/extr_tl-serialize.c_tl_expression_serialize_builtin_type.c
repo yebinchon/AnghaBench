@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tl_scheme_object {int dummy; } ;
 struct tl_int_array {int dummy; } ;
 struct tl_compiler {int dummy; } ;
 
-/* Variables and functions */
- int CODE_double ; 
- int CODE_int ; 
- int CODE_long ; 
- int CODE_string ; 
- int /*<<< orphan*/  isupper (char const) ; 
- int /*<<< orphan*/  strcmp (char const* const,char*) ; 
- int /*<<< orphan*/  tl_int_array_append (struct tl_int_array*,int) ; 
- int /*<<< orphan*/  tl_int_array_append_double (struct tl_int_array*,double) ; 
- int /*<<< orphan*/  tl_int_array_append_long (struct tl_int_array*,long long) ; 
- int /*<<< orphan*/  tl_int_array_append_string (struct tl_int_array*,char*) ; 
- int /*<<< orphan*/  tl_scheme_double_value (struct tl_scheme_object*,double*) ; 
- int /*<<< orphan*/  tl_scheme_int_value (struct tl_scheme_object*,int*) ; 
- int /*<<< orphan*/  tl_scheme_long_value (struct tl_scheme_object*,long long*) ; 
- int /*<<< orphan*/  tl_scheme_string_value (struct tl_scheme_object*,char**) ; 
- int tl_serialize_failf (struct tl_compiler*,struct tl_scheme_object*,char*) ; 
- int tolower (char const) ; 
+
+ int CODE_double ;
+ int CODE_int ;
+ int CODE_long ;
+ int CODE_string ;
+ int isupper (char const) ;
+ int strcmp (char const* const,char*) ;
+ int tl_int_array_append (struct tl_int_array*,int) ;
+ int tl_int_array_append_double (struct tl_int_array*,double) ;
+ int tl_int_array_append_long (struct tl_int_array*,long long) ;
+ int tl_int_array_append_string (struct tl_int_array*,char*) ;
+ int tl_scheme_double_value (struct tl_scheme_object*,double*) ;
+ int tl_scheme_int_value (struct tl_scheme_object*,int*) ;
+ int tl_scheme_long_value (struct tl_scheme_object*,long long*) ;
+ int tl_scheme_string_value (struct tl_scheme_object*,char**) ;
+ int tl_serialize_failf (struct tl_compiler*,struct tl_scheme_object*,char*) ;
+ int tolower (char const) ;
 
 int tl_expression_serialize_builtin_type (struct tl_compiler *C, struct tl_scheme_object *E, const char *const name, struct tl_int_array *a) {
   int i;

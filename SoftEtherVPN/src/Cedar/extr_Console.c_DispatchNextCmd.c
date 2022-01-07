@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  CONSOLE ;
-typedef  int /*<<< orphan*/  CMD ;
 
-/* Variables and functions */
- int DispatchNextCmdEx (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*) ; 
+
+
+
+typedef int UINT ;
+typedef int CONSOLE ;
+typedef int CMD ;
+
+
+ int DispatchNextCmdEx (int *,int *,char*,int *,int ,void*) ;
 
 bool DispatchNextCmd(CONSOLE *c, char *prompt, CMD cmd[], UINT num_cmd, void *param)
 {
-	return DispatchNextCmdEx(c, NULL, prompt, cmd, num_cmd, param);
+ return DispatchNextCmdEx(c, ((void*)0), prompt, cmd, num_cmd, param);
 }

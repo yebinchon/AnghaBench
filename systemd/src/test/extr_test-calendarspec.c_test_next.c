@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ usec_t ;
-typedef  int /*<<< orphan*/  CalendarSpec ;
 
-/* Variables and functions */
- int ENOENT ; 
- int FORMAT_TIMESTAMP_MAX ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/  calendar_spec_free (int /*<<< orphan*/ *) ; 
- scalar_t__ calendar_spec_from_string (char const*,int /*<<< orphan*/ **) ; 
- int calendar_spec_next_usec (int /*<<< orphan*/ *,scalar_t__,scalar_t__*) ; 
- char* format_timestamp_us (char*,int,scalar_t__) ; 
- char* getenv (char*) ; 
- int /*<<< orphan*/  printf (char*,char const*) ; 
- scalar_t__ setenv (char*,char*,int) ; 
- char* strdupa (char*) ; 
- char* strerror_safe (int) ; 
- char* strjoina (char*,char const*) ; 
- int /*<<< orphan*/  tzset () ; 
- scalar_t__ unsetenv (char*) ; 
+
+
+
+typedef scalar_t__ usec_t ;
+typedef int CalendarSpec ;
+
+
+ int ENOENT ;
+ int FORMAT_TIMESTAMP_MAX ;
+ int assert (int) ;
+ int assert_se (int) ;
+ int calendar_spec_free (int *) ;
+ scalar_t__ calendar_spec_from_string (char const*,int **) ;
+ int calendar_spec_next_usec (int *,scalar_t__,scalar_t__*) ;
+ char* format_timestamp_us (char*,int,scalar_t__) ;
+ char* getenv (char*) ;
+ int printf (char*,char const*) ;
+ scalar_t__ setenv (char*,char*,int) ;
+ char* strdupa (char*) ;
+ char* strerror_safe (int) ;
+ char* strjoina (char*,char const*) ;
+ int tzset () ;
+ scalar_t__ unsetenv (char*) ;
 
 __attribute__((used)) static void test_next(const char *input, const char *new_tz, usec_t after, usec_t expect) {
         CalendarSpec *c;

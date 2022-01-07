@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int nb_units; TYPE_2__* units; } ;
 struct TYPE_8__ {scalar_t__ type; TYPE_1__* content; } ;
-struct TYPE_7__ {int payload_count; int /*<<< orphan*/ * payload; } ;
-typedef  TYPE_1__ H264RawSEI ;
-typedef  TYPE_2__ CodedBitstreamUnit ;
-typedef  TYPE_3__ CodedBitstreamFragment ;
-typedef  int /*<<< orphan*/  CodedBitstreamContext ;
+struct TYPE_7__ {int payload_count; int * payload; } ;
+typedef TYPE_1__ H264RawSEI ;
+typedef TYPE_2__ CodedBitstreamUnit ;
+typedef TYPE_3__ CodedBitstreamFragment ;
+typedef int CodedBitstreamContext ;
 
-/* Variables and functions */
- scalar_t__ H264_NAL_SEI ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  cbs_h264_free_sei_payload (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_cbs_delete_unit (int /*<<< orphan*/ *,TYPE_3__*,int) ; 
- int /*<<< orphan*/  memmove (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ scalar_t__ H264_NAL_SEI ;
+ int av_assert0 (int) ;
+ int cbs_h264_free_sei_payload (int *) ;
+ int ff_cbs_delete_unit (int *,TYPE_3__*,int) ;
+ int memmove (int *,int *,int) ;
 
 void ff_cbs_h264_delete_sei_message(CodedBitstreamContext *ctx,
                                     CodedBitstreamFragment *au,
@@ -39,7 +39,7 @@ void ff_cbs_h264_delete_sei_message(CodedBitstreamContext *ctx,
     av_assert0(position >= 0 && position < sei->payload_count);
 
     if (position == 0 && sei->payload_count == 1) {
-        // Deleting NAL unit entirely.
+
         int i;
 
         for (i = 0; i < au->nb_units; i++) {

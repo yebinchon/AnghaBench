@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsContext ;
 
-/* Variables and functions */
- scalar_t__ InputColorant ; 
- scalar_t__ OutputColorant ; 
- int /*<<< orphan*/  cmsDeleteTransform (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  cmsFreeNamedColorList (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ hTrans ; 
- scalar_t__ hTransLab ; 
- scalar_t__ hTransXYZ ; 
+
+
+
+typedef int cmsContext ;
+
+
+ scalar_t__ InputColorant ;
+ scalar_t__ OutputColorant ;
+ int cmsDeleteTransform (int ,scalar_t__) ;
+ int cmsFreeNamedColorList (int ,scalar_t__) ;
+ scalar_t__ hTrans ;
+ scalar_t__ hTransLab ;
+ scalar_t__ hTransXYZ ;
 
 __attribute__((used)) static
 void CloseTransforms(cmsContext ContextID)

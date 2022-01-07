@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ int64_t ;
-typedef  int /*<<< orphan*/  buf_padded ;
-struct TYPE_6__ {int /*<<< orphan*/  st; scalar_t__ pts; scalar_t__ dts; } ;
-struct TYPE_5__ {scalar_t__ timestamp_res; int /*<<< orphan*/  timestamp_len; int /*<<< orphan*/  inst_bitrate_len; int /*<<< orphan*/  au_len; scalar_t__ use_timestamps; int /*<<< orphan*/  au_seq_num_len; scalar_t__ use_rand_acc_pt; int /*<<< orphan*/  ocr_len; int /*<<< orphan*/  degr_prior_len; int /*<<< orphan*/  packet_seq_num_len; scalar_t__ use_padding; scalar_t__ use_idle; scalar_t__ use_au_end; scalar_t__ use_au_start; } ;
-typedef  TYPE_1__ SLConfigDescr ;
-typedef  TYPE_2__ PESContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
- int AV_INPUT_BUFFER_PADDING_SIZE ; 
- scalar_t__ AV_NOPTS_VALUE ; 
- int FFMIN (int,int) ; 
- int /*<<< orphan*/  avpriv_set_pts_info (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,scalar_t__) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits1 (int /*<<< orphan*/ *) ; 
- int get_bits_count (int /*<<< orphan*/ *) ; 
- scalar_t__ get_ts64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_get_bits (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  skip_bits (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  skip_bits_long (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ int64_t ;
+typedef int buf_padded ;
+struct TYPE_6__ {int st; scalar_t__ pts; scalar_t__ dts; } ;
+struct TYPE_5__ {scalar_t__ timestamp_res; int timestamp_len; int inst_bitrate_len; int au_len; scalar_t__ use_timestamps; int au_seq_num_len; scalar_t__ use_rand_acc_pt; int ocr_len; int degr_prior_len; int packet_seq_num_len; scalar_t__ use_padding; scalar_t__ use_idle; scalar_t__ use_au_end; scalar_t__ use_au_start; } ;
+typedef TYPE_1__ SLConfigDescr ;
+typedef TYPE_2__ PESContext ;
+typedef int GetBitContext ;
+
+
+ int AV_INPUT_BUFFER_PADDING_SIZE ;
+ scalar_t__ AV_NOPTS_VALUE ;
+ int FFMIN (int,int) ;
+ int avpriv_set_pts_info (int ,int ,int,scalar_t__) ;
+ int get_bits (int *,int) ;
+ int get_bits1 (int *) ;
+ int get_bits_count (int *) ;
+ scalar_t__ get_ts64 (int *,int ) ;
+ int init_get_bits (int *,int *,int) ;
+ int memcpy (int *,int const*,int) ;
+ int skip_bits (int *,int ) ;
+ int skip_bits_long (int *,int ) ;
 
 __attribute__((used)) static int read_sl_header(PESContext *pes, SLConfigDescr *sl,
                           const uint8_t *buf, int buf_size)

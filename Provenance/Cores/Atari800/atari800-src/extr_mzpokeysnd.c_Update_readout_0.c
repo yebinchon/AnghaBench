@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  readout_0; scalar_t__ c0sw4; scalar_t__ c0vo; } ;
-typedef  TYPE_1__ PokeyState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  readout0_hipass ; 
- int /*<<< orphan*/  readout0_normal ; 
- int /*<<< orphan*/  readout0_vo ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int readout_0; scalar_t__ c0sw4; scalar_t__ c0vo; } ;
+typedef TYPE_1__ PokeyState ;
+
+
+ int readout0_hipass ;
+ int readout0_normal ;
+ int readout0_vo ;
 
 __attribute__((used)) static void Update_readout_0(PokeyState* ps)
 {

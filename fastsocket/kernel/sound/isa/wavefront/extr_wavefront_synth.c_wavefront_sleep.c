@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  current ; 
- int /*<<< orphan*/  schedule_timeout_interruptible (int) ; 
- int signal_pending (int /*<<< orphan*/ ) ; 
+ int current ;
+ int schedule_timeout_interruptible (int) ;
+ int signal_pending (int ) ;
 
 __attribute__((used)) static int
 wavefront_sleep (int limit)
 
 {
-	schedule_timeout_interruptible(limit);
+ schedule_timeout_interruptible(limit);
 
-	return signal_pending(current);
+ return signal_pending(current);
 }

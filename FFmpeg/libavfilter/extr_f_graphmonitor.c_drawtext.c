@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_3__ {int height; int width; int** data; int* linesize; } ;
-typedef  TYPE_1__ AVFrame ;
+typedef TYPE_1__ AVFrame ;
 
-/* Variables and functions */
- int* avpriv_cga_font ; 
- int strlen (char const*) ; 
+
+ int* avpriv_cga_font ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static void drawtext(AVFrame *pic, int x, int y, const char *txt, uint8_t *color)
 {
@@ -25,7 +25,7 @@ __attribute__((used)) static void drawtext(AVFrame *pic, int x, int y, const cha
     int font_height;
     int i;
 
-    font = avpriv_cga_font,   font_height =  8;
+    font = avpriv_cga_font, font_height = 8;
 
     if (y + 8 >= pic->height ||
         x + strlen(txt) * 8 >= pic->width)

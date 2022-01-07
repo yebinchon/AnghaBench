@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  writeflags; int /*<<< orphan*/  readflags; int /*<<< orphan*/ * innerloopsizeptr; int /*<<< orphan*/ * innerstrides; int /*<<< orphan*/  operands; int /*<<< orphan*/  dtypes; int /*<<< orphan*/  dataptrs; int /*<<< orphan*/ * get_multi_index; int /*<<< orphan*/ * iternext; int /*<<< orphan*/ * iter; } ;
-typedef  int /*<<< orphan*/  NpyIter ;
-typedef  TYPE_1__ NewNpyArrayIterObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NpyIter_GetDataPtrArray (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NpyIter_GetDescrArray (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NpyIter_GetGetMultiIndex (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NpyIter_GetInnerLoopSizePtr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NpyIter_GetInnerStrideArray (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NpyIter_GetIterNext (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NpyIter_GetOperandArray (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NpyIter_GetReadFlags (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NpyIter_GetWriteFlags (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NpyIter_HasDelayedBufAlloc (int /*<<< orphan*/ *) ; 
- scalar_t__ NpyIter_HasExternalLoop (int /*<<< orphan*/ *) ; 
- scalar_t__ NpyIter_HasMultiIndex (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int writeflags; int readflags; int * innerloopsizeptr; int * innerstrides; int operands; int dtypes; int dataptrs; int * get_multi_index; int * iternext; int * iter; } ;
+typedef int NpyIter ;
+typedef TYPE_1__ NewNpyArrayIterObject ;
+
+
+ int NpyIter_GetDataPtrArray (int *) ;
+ int NpyIter_GetDescrArray (int *) ;
+ int * NpyIter_GetGetMultiIndex (int *,int *) ;
+ int * NpyIter_GetInnerLoopSizePtr (int *) ;
+ int * NpyIter_GetInnerStrideArray (int *) ;
+ int * NpyIter_GetIterNext (int *,int *) ;
+ int NpyIter_GetOperandArray (int *) ;
+ int NpyIter_GetReadFlags (int *,int ) ;
+ int NpyIter_GetWriteFlags (int *,int ) ;
+ int NpyIter_HasDelayedBufAlloc (int *) ;
+ scalar_t__ NpyIter_HasExternalLoop (int *) ;
+ scalar_t__ NpyIter_HasMultiIndex (int *) ;
 
 __attribute__((used)) static int npyiter_cache_values(NewNpyArrayIterObject *self)
 {
     NpyIter *iter = self->iter;
 
-    /* iternext and get_multi_index functions */
-    self->iternext = NpyIter_GetIterNext(iter, NULL);
-    if (self->iternext == NULL) {
+
+    self->iternext = NpyIter_GetIterNext(iter, ((void*)0));
+    if (self->iternext == ((void*)0)) {
         return -1;
     }
 
     if (NpyIter_HasMultiIndex(iter) && !NpyIter_HasDelayedBufAlloc(iter)) {
-        self->get_multi_index = NpyIter_GetGetMultiIndex(iter, NULL);
+        self->get_multi_index = NpyIter_GetGetMultiIndex(iter, ((void*)0));
     }
     else {
-        self->get_multi_index = NULL;
+        self->get_multi_index = ((void*)0);
     }
 
-    /* Internal data pointers */
+
     self->dataptrs = NpyIter_GetDataPtrArray(iter);
     self->dtypes = NpyIter_GetDescrArray(iter);
     self->operands = NpyIter_GetOperandArray(iter);
@@ -56,11 +56,11 @@ __attribute__((used)) static int npyiter_cache_values(NewNpyArrayIterObject *sel
         self->innerloopsizeptr = NpyIter_GetInnerLoopSizePtr(iter);
     }
     else {
-        self->innerstrides = NULL;
-        self->innerloopsizeptr = NULL;
+        self->innerstrides = ((void*)0);
+        self->innerloopsizeptr = ((void*)0);
     }
 
-    /* The read/write settings */
+
     NpyIter_GetReadFlags(iter, self->readflags);
     NpyIter_GetWriteFlags(iter, self->writeflags);
     return 0;

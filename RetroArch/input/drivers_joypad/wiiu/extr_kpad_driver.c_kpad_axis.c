@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
-struct TYPE_5__ {int /*<<< orphan*/  is_negative; int /*<<< orphan*/  axis; } ;
-typedef  TYPE_1__ axis_data ;
-struct TYPE_7__ {int /*<<< orphan*/  (* get_axis_value ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* read_axis_data ) (scalar_t__,TYPE_1__*) ;} ;
-struct TYPE_6__ {int /*<<< orphan*/  analog_state; } ;
 
-/* Variables and functions */
- scalar_t__ AXIS_NONE ; 
- int /*<<< orphan*/  kpad_query_pad (unsigned int) ; 
- TYPE_4__ pad_functions ; 
- int /*<<< orphan*/  stub1 (scalar_t__,TYPE_1__*) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int to_wiimote_channel (unsigned int) ; 
- TYPE_2__* wiimotes ; 
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+typedef int int16_t ;
+struct TYPE_5__ {int is_negative; int axis; } ;
+typedef TYPE_1__ axis_data ;
+struct TYPE_7__ {int (* get_axis_value ) (int ,int ,int ) ;int (* read_axis_data ) (scalar_t__,TYPE_1__*) ;} ;
+struct TYPE_6__ {int analog_state; } ;
+
+
+ scalar_t__ AXIS_NONE ;
+ int kpad_query_pad (unsigned int) ;
+ TYPE_4__ pad_functions ;
+ int stub1 (scalar_t__,TYPE_1__*) ;
+ int stub2 (int ,int ,int ) ;
+ int to_wiimote_channel (unsigned int) ;
+ TYPE_2__* wiimotes ;
 
 __attribute__((used)) static int16_t kpad_axis(unsigned pad, uint32_t axis)
 {

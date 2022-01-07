@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_NAME ;
-struct TYPE_3__ {int length; int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ ASN1_STRING ;
-typedef  int /*<<< orphan*/  ASN1_OBJECT ;
 
-/* Variables and functions */
- TYPE_1__* X509_NAME_ENTRY_get_data (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_NAME_get_entry (int /*<<< orphan*/ *,int) ; 
- int X509_NAME_get_index_by_OBJ (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int X509_NAME ;
+struct TYPE_3__ {int length; int data; } ;
+typedef TYPE_1__ ASN1_STRING ;
+typedef int ASN1_OBJECT ;
+
+
+ TYPE_1__* X509_NAME_ENTRY_get_data (int ) ;
+ int X509_NAME_get_entry (int *,int) ;
+ int X509_NAME_get_index_by_OBJ (int *,int const*,int) ;
+ int memcpy (char*,int ,int) ;
 
 int X509_NAME_get_text_by_OBJ(X509_NAME *name, const ASN1_OBJECT *obj,
                               char *buf, int len)
@@ -32,7 +32,7 @@ int X509_NAME_get_text_by_OBJ(X509_NAME *name, const ASN1_OBJECT *obj,
     if (i < 0)
         return -1;
     data = X509_NAME_ENTRY_get_data(X509_NAME_get_entry(name, i));
-    if (buf == NULL)
+    if (buf == ((void*)0))
         return data->length;
     if (len <= 0)
         return 0;

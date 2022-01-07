@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ ev_first; } ;
-typedef  TYPE_1__ queue ;
+typedef TYPE_1__ queue ;
 
-/* Variables and functions */
- scalar_t__ dl_get_memory_used () ; 
- TYPE_1__* dl_malloc0 (int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- TYPE_1__* qs ; 
- int /*<<< orphan*/  queues_cnt ; 
- int /*<<< orphan*/  queues_memory ; 
+
+ scalar_t__ dl_get_memory_used () ;
+ TYPE_1__* dl_malloc0 (int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ TYPE_1__* qs ;
+ int queues_cnt ;
+ int queues_memory ;
 
 queue *queue_malloc (void) {
   queues_cnt++;
-  if (qs == NULL) {
+  if (qs == ((void*)0)) {
     queues_memory -= dl_get_memory_used();
     queue *res = dl_malloc0 (sizeof (queue));
     queues_memory += dl_get_memory_used();

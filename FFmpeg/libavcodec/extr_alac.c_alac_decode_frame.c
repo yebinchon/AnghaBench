@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum AlacRawDataBlockType { ____Placeholder_AlacRawDataBlockType } AlacRawDataBlockType ;
-struct TYPE_11__ {int channels; scalar_t__ nb_samples; int /*<<< orphan*/  gb; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef enum AlacRawDataBlockType { ____Placeholder_AlacRawDataBlockType } AlacRawDataBlockType ;
+struct TYPE_11__ {int channels; scalar_t__ nb_samples; int gb; } ;
 struct TYPE_10__ {TYPE_3__* priv_data; } ;
-struct TYPE_9__ {int size; int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ AVPacket ;
-typedef  int /*<<< orphan*/  AVFrame ;
-typedef  TYPE_2__ AVCodecContext ;
-typedef  TYPE_3__ ALACContext ;
+struct TYPE_9__ {int size; int data; } ;
+typedef TYPE_1__ AVPacket ;
+typedef int AVFrame ;
+typedef TYPE_2__ AVCodecContext ;
+typedef TYPE_3__ ALACContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int AVERROR_PATCHWELCOME ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int TYPE_CPE ; 
- int TYPE_END ; 
- int TYPE_LFE ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  avpriv_report_missing_feature (TYPE_2__*,char*,int) ; 
- int decode_element (TYPE_2__*,int /*<<< orphan*/ *,int,int) ; 
- int** ff_alac_channel_layout_offsets ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits_count (int /*<<< orphan*/ *) ; 
- int get_bits_left (int /*<<< orphan*/ *) ; 
- int init_get_bits8 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AVERROR_PATCHWELCOME ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ int TYPE_CPE ;
+ int TYPE_END ;
+ int TYPE_LFE ;
+ int av_log (TYPE_2__*,int ,char*,...) ;
+ int avpriv_report_missing_feature (TYPE_2__*,char*,int) ;
+ int decode_element (TYPE_2__*,int *,int,int) ;
+ int** ff_alac_channel_layout_offsets ;
+ int get_bits (int *,int) ;
+ int get_bits_count (int *) ;
+ int get_bits_left (int *) ;
+ int init_get_bits8 (int *,int ,int) ;
 
 __attribute__((used)) static int alac_decode_frame(AVCodecContext *avctx, void *data,
                              int *got_frame_ptr, AVPacket *avpkt)
 {
     ALACContext *alac = avctx->priv_data;
-    AVFrame *frame    = data;
+    AVFrame *frame = data;
     enum AlacRawDataBlockType element;
     int channels;
     int ch, ret, got_end;

@@ -1,115 +1,115 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cao ;
-typedef  int UINT ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int cao ;
+typedef int UINT ;
 struct TYPE_9__ {scalar_t__ IsL3Mode; } ;
-struct TYPE_8__ {int LeaseTime; int /*<<< orphan*/  ClasslessRoute; int /*<<< orphan*/  Gateway; int /*<<< orphan*/  SubnetMask; int /*<<< orphan*/  ClientAddress; } ;
-struct TYPE_7__ {int L3DhcpRenewInterval; int DhcpAllocFailed; int Done; int /*<<< orphan*/ * SockEvent; int /*<<< orphan*/ * Ipc; scalar_t__ L3NextDhcpRenewTick; int /*<<< orphan*/  L3ClientAddressOption; int /*<<< orphan*/  TubeForDisconnect; TYPE_4__ Param; int /*<<< orphan*/  ErrorCode; int /*<<< orphan*/  Cedar; } ;
-typedef  int /*<<< orphan*/  THREAD ;
-typedef  TYPE_1__ IPC_ASYNC ;
-typedef  int /*<<< orphan*/  IP ;
-typedef  TYPE_2__ DHCP_OPTION_LIST ;
+struct TYPE_8__ {int LeaseTime; int ClasslessRoute; int Gateway; int SubnetMask; int ClientAddress; } ;
+struct TYPE_7__ {int L3DhcpRenewInterval; int DhcpAllocFailed; int Done; int * SockEvent; int * Ipc; scalar_t__ L3NextDhcpRenewTick; int L3ClientAddressOption; int TubeForDisconnect; TYPE_4__ Param; int ErrorCode; int Cedar; } ;
+typedef int THREAD ;
+typedef TYPE_1__ IPC_ASYNC ;
+typedef int IP ;
+typedef TYPE_2__ DHCP_OPTION_LIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Copy (int /*<<< orphan*/ *,TYPE_2__*,int) ; 
- int /*<<< orphan*/  Debug (char*) ; 
- int /*<<< orphan*/  FreeIPC (int /*<<< orphan*/ *) ; 
- scalar_t__ IPCDhcpAllocateIP (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IPCSetIPv4Parameters (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewIPCByParam (int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetSockEvent (int /*<<< orphan*/ *) ; 
- scalar_t__ Tick64 () ; 
- int /*<<< orphan*/  UINTToIP (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Zero (TYPE_2__*,int) ; 
+
+ int Copy (int *,TYPE_2__*,int) ;
+ int Debug (char*) ;
+ int FreeIPC (int *) ;
+ scalar_t__ IPCDhcpAllocateIP (int *,TYPE_2__*,int ) ;
+ int IPCSetIPv4Parameters (int *,int *,int *,int *,int *) ;
+ int * NewIPCByParam (int ,TYPE_4__*,int *) ;
+ int SetSockEvent (int *) ;
+ scalar_t__ Tick64 () ;
+ int UINTToIP (int *,int ) ;
+ int Zero (TYPE_2__*,int) ;
 
 void IPCAsyncThreadProc(THREAD *thread, void *param)
 {
-	IPC_ASYNC *a;
-	// Validate arguments
-	if (thread == NULL || param == NULL)
-	{
-		return;
-	}
+ IPC_ASYNC *a;
 
-	a = (IPC_ASYNC *)param;
+ if (thread == ((void*)0) || param == ((void*)0))
+ {
+  return;
+ }
 
-	// Attempt to connect
-	a->Ipc = NewIPCByParam(a->Cedar, &a->Param, &a->ErrorCode);
+ a = (IPC_ASYNC *)param;
 
-	if (a->Ipc != NULL)
-	{
-		if (a->Param.IsL3Mode)
-		{
-			DHCP_OPTION_LIST cao;
 
-			Zero(&cao, sizeof(cao));
+ a->Ipc = NewIPCByParam(a->Cedar, &a->Param, &a->ErrorCode);
 
-			// Get an IP address from the DHCP server in the case of L3 mode
-			Debug("IPCDhcpAllocateIP() start...\n");
-			if (IPCDhcpAllocateIP(a->Ipc, &cao, a->TubeForDisconnect))
-			{
-				UINT t;
-				IP ip, subnet, gw;
+ if (a->Ipc != ((void*)0))
+ {
+  if (a->Param.IsL3Mode)
+  {
+   DHCP_OPTION_LIST cao;
 
-				Debug("IPCDhcpAllocateIP() Ok.\n");
+   Zero(&cao, sizeof(cao));
 
-				// Calculate the DHCP update interval
-				t = cao.LeaseTime;
-				if (t == 0)
-				{
-					t = 600;
-				}
 
-				t = t / 3;
+   Debug("IPCDhcpAllocateIP() start...\n");
+   if (IPCDhcpAllocateIP(a->Ipc, &cao, a->TubeForDisconnect))
+   {
+    UINT t;
+    IP ip, subnet, gw;
 
-				if (t == 0)
-				{
-					t = 1;
-				}
+    Debug("IPCDhcpAllocateIP() Ok.\n");
 
-				// Save the options list
-				Copy(&a->L3ClientAddressOption, &cao, sizeof(DHCP_OPTION_LIST));
-				a->L3DhcpRenewInterval = t * 1000;
 
-				// Set the obtained IP address parameters to the IPC virtual host
-				UINTToIP(&ip, cao.ClientAddress);
-				UINTToIP(&subnet, cao.SubnetMask);
-				UINTToIP(&gw, cao.Gateway);
+    t = cao.LeaseTime;
+    if (t == 0)
+    {
+     t = 600;
+    }
 
-				IPCSetIPv4Parameters(a->Ipc, &ip, &subnet, &gw, &cao.ClasslessRoute);
+    t = t / 3;
 
-				a->L3NextDhcpRenewTick = Tick64() + a->L3DhcpRenewInterval;
-			}
-			else
-			{
-				Debug("IPCDhcpAllocateIP() Error.\n");
+    if (t == 0)
+    {
+     t = 1;
+    }
 
-				a->DhcpAllocFailed = true;
 
-				FreeIPC(a->Ipc);
-				a->Ipc = NULL;
-			}
-		}
-	}
+    Copy(&a->L3ClientAddressOption, &cao, sizeof(DHCP_OPTION_LIST));
+    a->L3DhcpRenewInterval = t * 1000;
 
-	// Procedure complete
-	a->Done = true;
 
-	if (a->SockEvent != NULL)
-	{
-		SetSockEvent(a->SockEvent);
-	}
+    UINTToIP(&ip, cao.ClientAddress);
+    UINTToIP(&subnet, cao.SubnetMask);
+    UINTToIP(&gw, cao.Gateway);
+
+    IPCSetIPv4Parameters(a->Ipc, &ip, &subnet, &gw, &cao.ClasslessRoute);
+
+    a->L3NextDhcpRenewTick = Tick64() + a->L3DhcpRenewInterval;
+   }
+   else
+   {
+    Debug("IPCDhcpAllocateIP() Error.\n");
+
+    a->DhcpAllocFailed = 1;
+
+    FreeIPC(a->Ipc);
+    a->Ipc = ((void*)0);
+   }
+  }
+ }
+
+
+ a->Done = 1;
+
+ if (a->SockEvent != ((void*)0))
+ {
+  SetSockEvent(a->SockEvent);
+ }
 }

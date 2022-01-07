@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cxgbi_sock {int /*<<< orphan*/ * cpl_abort_rpl; int /*<<< orphan*/ * cpl_abort_req; int /*<<< orphan*/ * cpl_close; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree_skb (int /*<<< orphan*/ *) ; 
+
+
+
+struct cxgbi_sock {int * cpl_abort_rpl; int * cpl_abort_req; int * cpl_close; } ;
+
+
+ int kfree_skb (int *) ;
 
 void cxgbi_sock_free_cpl_skbs(struct cxgbi_sock *csk)
 {
-	if (csk->cpl_close) {
-		kfree_skb(csk->cpl_close);
-		csk->cpl_close = NULL;
-	}
-	if (csk->cpl_abort_req) {
-		kfree_skb(csk->cpl_abort_req);
-		csk->cpl_abort_req = NULL;
-	}
-	if (csk->cpl_abort_rpl) {
-		kfree_skb(csk->cpl_abort_rpl);
-		csk->cpl_abort_rpl = NULL;
-	}
+ if (csk->cpl_close) {
+  kfree_skb(csk->cpl_close);
+  csk->cpl_close = ((void*)0);
+ }
+ if (csk->cpl_abort_req) {
+  kfree_skb(csk->cpl_abort_req);
+  csk->cpl_abort_req = ((void*)0);
+ }
+ if (csk->cpl_abort_rpl) {
+  kfree_skb(csk->cpl_abort_rpl);
+  csk->cpl_abort_rpl = ((void*)0);
+ }
 }

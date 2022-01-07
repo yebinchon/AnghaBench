@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RedisModuleCtx ;
-typedef  int /*<<< orphan*/  RedisModuleCallReply ;
 
-/* Variables and functions */
- scalar_t__ REDISMODULE_REPLY_INTEGER ; 
- long long RedisModule_CallReplyInteger (int /*<<< orphan*/ *) ; 
- scalar_t__ RedisModule_CallReplyType (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_Log (int /*<<< orphan*/ *,char*,char*,long long,...) ; 
+
+
+
+typedef int RedisModuleCtx ;
+typedef int RedisModuleCallReply ;
+
+
+ scalar_t__ REDISMODULE_REPLY_INTEGER ;
+ long long RedisModule_CallReplyInteger (int *) ;
+ scalar_t__ RedisModule_CallReplyType (int *) ;
+ int RedisModule_Log (int *,char*,char*,long long,...) ;
 
 int TestAssertIntegerReply(RedisModuleCtx *ctx, RedisModuleCallReply *reply, long long expected) {
     if (RedisModule_CallReplyType(reply) != REDISMODULE_REPLY_INTEGER) {

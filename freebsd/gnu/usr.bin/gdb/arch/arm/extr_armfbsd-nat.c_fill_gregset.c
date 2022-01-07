@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct reg {int /*<<< orphan*/  r_cpsr; int /*<<< orphan*/  r_pc; int /*<<< orphan*/  r_lr; int /*<<< orphan*/  r_sp; int /*<<< orphan*/ * r; } ;
 
-/* Variables and functions */
- int ARM_A1_REGNUM ; 
- int ARM_LR_REGNUM ; 
- int ARM_PC_REGNUM ; 
- int ARM_PS_REGNUM ; 
- int ARM_SP_REGNUM ; 
- int /*<<< orphan*/  regcache_collect (int,int /*<<< orphan*/ *) ; 
+
+
+
+struct reg {int r_cpsr; int r_pc; int r_lr; int r_sp; int * r; } ;
+
+
+ int ARM_A1_REGNUM ;
+ int ARM_LR_REGNUM ;
+ int ARM_PC_REGNUM ;
+ int ARM_PS_REGNUM ;
+ int ARM_SP_REGNUM ;
+ int regcache_collect (int,int *) ;
 
 void
 fill_gregset (struct reg *gregset, int regno)

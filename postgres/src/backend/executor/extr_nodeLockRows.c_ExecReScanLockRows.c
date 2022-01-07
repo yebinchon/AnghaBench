@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/ * chgParam; } ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int * chgParam; } ;
 struct TYPE_5__ {TYPE_4__* lefttree; } ;
 struct TYPE_6__ {TYPE_1__ ps; } ;
-typedef  TYPE_2__ LockRowsState ;
+typedef TYPE_2__ LockRowsState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ExecReScan (TYPE_4__*) ; 
+
+ int ExecReScan (TYPE_4__*) ;
 
 void
 ExecReScanLockRows(LockRowsState *node)
 {
-	/*
-	 * if chgParam of subnode is not null then plan will be re-scanned by
-	 * first ExecProcNode.
-	 */
-	if (node->ps.lefttree->chgParam == NULL)
-		ExecReScan(node->ps.lefttree);
+
+
+
+
+ if (node->ps.lefttree->chgParam == ((void*)0))
+  ExecReScan(node->ps.lefttree);
 }

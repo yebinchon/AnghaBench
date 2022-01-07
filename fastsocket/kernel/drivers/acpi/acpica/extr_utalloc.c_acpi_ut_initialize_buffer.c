@@ -1,93 +1,93 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct acpi_buffer {int length; int /*<<< orphan*/  pointer; } ;
-typedef  int /*<<< orphan*/  acpi_status ;
-typedef  int acpi_size ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_ALLOCATE (int) ; 
-#define  ACPI_ALLOCATE_BUFFER 130 
-#define  ACPI_ALLOCATE_LOCAL_BUFFER 129 
- int /*<<< orphan*/  ACPI_MEMSET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
-#define  ACPI_NO_BUFFER 128 
- int /*<<< orphan*/  AE_BAD_PARAMETER ; 
- int /*<<< orphan*/  AE_BUFFER_OVERFLOW ; 
- int /*<<< orphan*/  AE_NO_MEMORY ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  acpi_os_allocate (int) ; 
+
+
+
+struct acpi_buffer {int length; int pointer; } ;
+typedef int acpi_status ;
+typedef int acpi_size ;
+
+
+ int ACPI_ALLOCATE (int) ;
+
+
+ int ACPI_MEMSET (int ,int ,int) ;
+
+ int AE_BAD_PARAMETER ;
+ int AE_BUFFER_OVERFLOW ;
+ int AE_NO_MEMORY ;
+ int AE_OK ;
+ int acpi_os_allocate (int) ;
 
 acpi_status
 acpi_ut_initialize_buffer(struct acpi_buffer * buffer,
-			  acpi_size required_length)
+     acpi_size required_length)
 {
-	acpi_size input_buffer_length;
+ acpi_size input_buffer_length;
 
-	/* Parameter validation */
 
-	if (!buffer || !required_length) {
-		return (AE_BAD_PARAMETER);
-	}
 
-	/*
-	 * Buffer->Length is used as both an input and output parameter. Get the
-	 * input actual length and set the output required buffer length.
-	 */
-	input_buffer_length = buffer->length;
-	buffer->length = required_length;
+ if (!buffer || !required_length) {
+  return (AE_BAD_PARAMETER);
+ }
 
-	/*
-	 * The input buffer length contains the actual buffer length, or the type
-	 * of buffer to be allocated by this routine.
-	 */
-	switch (input_buffer_length) {
-	case ACPI_NO_BUFFER:
 
-		/* Return the exception (and the required buffer length) */
 
-		return (AE_BUFFER_OVERFLOW);
 
-	case ACPI_ALLOCATE_BUFFER:
 
-		/* Allocate a new buffer */
+ input_buffer_length = buffer->length;
+ buffer->length = required_length;
 
-		buffer->pointer = acpi_os_allocate(required_length);
-		break;
 
-	case ACPI_ALLOCATE_LOCAL_BUFFER:
 
-		/* Allocate a new buffer with local interface to allow tracking */
 
-		buffer->pointer = ACPI_ALLOCATE(required_length);
-		break;
 
-	default:
+ switch (input_buffer_length) {
+ case 128:
 
-		/* Existing buffer: Validate the size of the buffer */
 
-		if (input_buffer_length < required_length) {
-			return (AE_BUFFER_OVERFLOW);
-		}
-		break;
-	}
 
-	/* Validate allocation from above or input buffer pointer */
+  return (AE_BUFFER_OVERFLOW);
 
-	if (!buffer->pointer) {
-		return (AE_NO_MEMORY);
-	}
+ case 130:
 
-	/* Have a valid buffer, clear it */
 
-	ACPI_MEMSET(buffer->pointer, 0, required_length);
-	return (AE_OK);
+
+  buffer->pointer = acpi_os_allocate(required_length);
+  break;
+
+ case 129:
+
+
+
+  buffer->pointer = ACPI_ALLOCATE(required_length);
+  break;
+
+ default:
+
+
+
+  if (input_buffer_length < required_length) {
+   return (AE_BUFFER_OVERFLOW);
+  }
+  break;
+ }
+
+
+
+ if (!buffer->pointer) {
+  return (AE_NO_MEMORY);
+ }
+
+
+
+ ACPI_MEMSET(buffer->pointer, 0, required_length);
+ return (AE_OK);
 }

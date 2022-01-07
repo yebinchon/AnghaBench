@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  scalar_t__ BOOLEAN ;
 
-/* Variables and functions */
- scalar_t__ DeviceIoControl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FSCTL_LOCK_VOLUME ; 
- int /*<<< orphan*/  FSCTL_UNLOCK_VOLUME ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  PrintErrorMessage (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ULONG ;
+typedef int HANDLE ;
+typedef int DWORD ;
+typedef scalar_t__ BOOLEAN ;
+
+
+ scalar_t__ DeviceIoControl (int ,int ,int *,int ,int *,int ,int *,int *) ;
+ scalar_t__ FALSE ;
+ int FSCTL_LOCK_VOLUME ;
+ int FSCTL_UNLOCK_VOLUME ;
+ int GetLastError () ;
+ int PrintErrorMessage (int ) ;
 
 __attribute__((used)) static int
 LockOrUnlockVolume(HANDLE Volume, BOOLEAN Lock)
@@ -30,8 +30,8 @@ LockOrUnlockVolume(HANDLE Volume, BOOLEAN Lock)
     ULONG BytesRead;
 
     Operation = (Lock ? FSCTL_LOCK_VOLUME : FSCTL_UNLOCK_VOLUME);
-    if (DeviceIoControl(Volume, Operation, NULL, 0, NULL, 0,
-                        &BytesRead, NULL) == FALSE)
+    if (DeviceIoControl(Volume, Operation, ((void*)0), 0, ((void*)0), 0,
+                        &BytesRead, ((void*)0)) == FALSE)
     {
         PrintErrorMessage(GetLastError());
         return 1;

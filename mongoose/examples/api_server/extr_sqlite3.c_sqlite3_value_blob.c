@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int sqlite3_value ;
 struct TYPE_3__ {int flags; void const* z; scalar_t__ n; } ;
-typedef  TYPE_1__ Mem ;
+typedef TYPE_1__ Mem ;
 
-/* Variables and functions */
- int MEM_Blob ; 
- int MEM_Str ; 
- int /*<<< orphan*/  sqlite3VdbeMemExpandBlob (TYPE_1__*) ; 
- void const* sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+ int MEM_Blob ;
+ int MEM_Str ;
+ int sqlite3VdbeMemExpandBlob (TYPE_1__*) ;
+ void const* sqlite3_value_text (int *) ;
 
 const void *sqlite3_value_blob(sqlite3_value *pVal){
   Mem *p = (Mem*)pVal;

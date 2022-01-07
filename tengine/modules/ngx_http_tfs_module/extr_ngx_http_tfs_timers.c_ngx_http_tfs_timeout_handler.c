@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_29__   TYPE_9__ ;
-typedef  struct TYPE_28__   TYPE_8__ ;
-typedef  struct TYPE_27__   TYPE_7__ ;
-typedef  struct TYPE_26__   TYPE_6__ ;
-typedef  struct TYPE_25__   TYPE_5__ ;
-typedef  struct TYPE_24__   TYPE_4__ ;
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
-typedef  struct TYPE_20__   TYPE_13__ ;
-typedef  struct TYPE_19__   TYPE_12__ ;
-typedef  struct TYPE_18__   TYPE_11__ ;
-typedef  struct TYPE_17__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ngx_pool_t ;
-typedef  scalar_t__ ngx_int_t ;
-struct TYPE_29__ {TYPE_8__* lock; int /*<<< orphan*/  main_conf; TYPE_7__* upstream; } ;
-typedef  TYPE_9__ ngx_http_tfs_timers_data_t ;
-struct TYPE_24__ {int /*<<< orphan*/  code; } ;
+
+
+typedef struct TYPE_29__ TYPE_9__ ;
+typedef struct TYPE_28__ TYPE_8__ ;
+typedef struct TYPE_27__ TYPE_7__ ;
+typedef struct TYPE_26__ TYPE_6__ ;
+typedef struct TYPE_25__ TYPE_5__ ;
+typedef struct TYPE_24__ TYPE_4__ ;
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+typedef struct TYPE_20__ TYPE_13__ ;
+typedef struct TYPE_19__ TYPE_12__ ;
+typedef struct TYPE_18__ TYPE_11__ ;
+typedef struct TYPE_17__ TYPE_10__ ;
+
+
+typedef int ngx_pool_t ;
+typedef scalar_t__ ngx_int_t ;
+struct TYPE_29__ {TYPE_8__* lock; int main_conf; TYPE_7__* upstream; } ;
+typedef TYPE_9__ ngx_http_tfs_timers_data_t ;
+struct TYPE_24__ {int code; } ;
 struct TYPE_25__ {int version; TYPE_4__ action; } ;
-struct TYPE_17__ {int /*<<< orphan*/  main_conf; TYPE_6__* loc_conf; TYPE_5__ r_ctx; TYPE_12__* finalize_data; int /*<<< orphan*/  finalize_request; int /*<<< orphan*/  log; TYPE_11__* data; int /*<<< orphan*/ * pool; } ;
-typedef  TYPE_10__ ngx_http_tfs_t ;
-typedef  int /*<<< orphan*/  ngx_http_tfs_loc_conf_t ;
-struct TYPE_18__ {TYPE_3__* connection; int /*<<< orphan*/ * pool; } ;
-typedef  TYPE_11__ ngx_http_request_t ;
-struct TYPE_19__ {int /*<<< orphan*/  log; TYPE_13__* data; } ;
-typedef  TYPE_12__ ngx_event_t ;
+struct TYPE_17__ {int main_conf; TYPE_6__* loc_conf; TYPE_5__ r_ctx; TYPE_12__* finalize_data; int finalize_request; int log; TYPE_11__* data; int * pool; } ;
+typedef TYPE_10__ ngx_http_tfs_t ;
+typedef int ngx_http_tfs_loc_conf_t ;
+struct TYPE_18__ {TYPE_3__* connection; int * pool; } ;
+typedef TYPE_11__ ngx_http_request_t ;
+struct TYPE_19__ {int log; TYPE_13__* data; } ;
+typedef TYPE_12__ ngx_event_t ;
 struct TYPE_20__ {TYPE_9__* data; } ;
-typedef  TYPE_13__ ngx_connection_t ;
-struct TYPE_28__ {int /*<<< orphan*/  ngx_http_tfs_kp_mutex; } ;
-struct TYPE_27__ {int /*<<< orphan*/  rcs_interval; TYPE_2__* rc_ctx; } ;
+typedef TYPE_13__ ngx_connection_t ;
+struct TYPE_28__ {int ngx_http_tfs_kp_mutex; } ;
+struct TYPE_27__ {int rcs_interval; TYPE_2__* rc_ctx; } ;
 struct TYPE_26__ {TYPE_7__* upstream; } ;
-struct TYPE_23__ {int destroyed; int /*<<< orphan*/  log; } ;
+struct TYPE_23__ {int destroyed; int log; } ;
 struct TYPE_22__ {TYPE_1__* sh; } ;
-struct TYPE_21__ {int /*<<< orphan*/  kp_queue; } ;
+struct TYPE_21__ {int kp_queue; } ;
 
-/* Variables and functions */
- scalar_t__ NGX_ERROR ; 
- int /*<<< orphan*/  NGX_HTTP_TFS_ACTION_KEEPALIVE ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_EVENT ; 
- int /*<<< orphan*/  ngx_add_timer (TYPE_12__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ngx_create_pool (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_destroy_pool (int /*<<< orphan*/ *) ; 
- scalar_t__ ngx_http_tfs_init (TYPE_10__*) ; 
- int /*<<< orphan*/  ngx_http_tfs_timers_finalize_request_handler ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- void* ngx_pcalloc (int /*<<< orphan*/ *,int) ; 
- scalar_t__ ngx_queue_empty (int /*<<< orphan*/ *) ; 
- scalar_t__ ngx_shmtx_trylock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_shmtx_unlock (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ NGX_ERROR ;
+ int NGX_HTTP_TFS_ACTION_KEEPALIVE ;
+ int NGX_LOG_DEBUG_EVENT ;
+ int ngx_add_timer (TYPE_12__*,int ) ;
+ int * ngx_create_pool (int,int ) ;
+ int ngx_destroy_pool (int *) ;
+ scalar_t__ ngx_http_tfs_init (TYPE_10__*) ;
+ int ngx_http_tfs_timers_finalize_request_handler ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ void* ngx_pcalloc (int *,int) ;
+ scalar_t__ ngx_queue_empty (int *) ;
+ scalar_t__ ngx_shmtx_trylock (int *) ;
+ int ngx_shmtx_unlock (int *) ;
 
 __attribute__((used)) static void
 ngx_http_tfs_timeout_handler(ngx_event_t *event)
 {
-    ngx_int_t                   rc;
-    ngx_pool_t                  *pool;
-    ngx_http_tfs_t              *t;
-    ngx_connection_t            *dummy;
-    ngx_http_request_t          *r;
-    ngx_http_tfs_timers_data_t  *data;
+    ngx_int_t rc;
+    ngx_pool_t *pool;
+    ngx_http_tfs_t *t;
+    ngx_connection_t *dummy;
+    ngx_http_request_t *r;
+    ngx_http_tfs_timers_data_t *data;
 
     dummy = event->data;
     data = dummy->data;
@@ -83,31 +83,31 @@ ngx_http_tfs_timeout_handler(ngx_event_t *event)
         }
 
         pool = ngx_create_pool(8192, event->log);
-        if (pool == NULL) {
+        if (pool == ((void*)0)) {
             ngx_shmtx_unlock(&data->lock->ngx_http_tfs_kp_mutex);
             return;
         }
 
-        /* fake ngx_http_request_t */
+
         r = ngx_pcalloc(pool, sizeof(ngx_http_request_t));
-        if (r == NULL) {
+        if (r == ((void*)0)) {
             ngx_shmtx_unlock(&data->lock->ngx_http_tfs_kp_mutex);
             return;
         }
 
         r->pool = pool;
         r->connection = ngx_pcalloc(pool, sizeof(ngx_connection_t));
-        if (r->connection == NULL) {
+        if (r->connection == ((void*)0)) {
             ngx_destroy_pool(pool);
             ngx_shmtx_unlock(&data->lock->ngx_http_tfs_kp_mutex);
             return;
         }
         r->connection->log = event->log;
-        /* in order to return from ngx_http_run_posted_requests()  */
+
         r->connection->destroyed = 1;
 
         t = ngx_pcalloc(pool, sizeof(ngx_http_tfs_t));
-        if (t == NULL) {
+        if (t == ((void*)0)) {
             ngx_destroy_pool(pool);
             ngx_shmtx_unlock(&data->lock->ngx_http_tfs_kp_mutex);
             return;
@@ -122,7 +122,7 @@ ngx_http_tfs_timeout_handler(ngx_event_t *event)
         t->r_ctx.action.code = NGX_HTTP_TFS_ACTION_KEEPALIVE;
         t->r_ctx.version = 1;
         t->loc_conf = ngx_pcalloc(pool, sizeof(ngx_http_tfs_loc_conf_t));
-        if (t->loc_conf == NULL) {
+        if (t->loc_conf == ((void*)0)) {
             ngx_destroy_pool(pool);
             ngx_shmtx_unlock(&data->lock->ngx_http_tfs_kp_mutex);
             return;

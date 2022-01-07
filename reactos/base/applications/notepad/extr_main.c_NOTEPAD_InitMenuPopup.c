@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_2__ {int /*<<< orphan*/  hMainWnd; int /*<<< orphan*/  hEdit; scalar_t__ bShowStatusBar; scalar_t__ bWrapLongLines; } ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HMENU ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CF_TEXT ; 
- int /*<<< orphan*/  CMD_COPY ; 
- int /*<<< orphan*/  CMD_CUT ; 
- int /*<<< orphan*/  CMD_DELETE ; 
- int /*<<< orphan*/  CMD_PASTE ; 
- int /*<<< orphan*/  CMD_SELECT_ALL ; 
- int /*<<< orphan*/  CMD_STATUSBAR ; 
- int /*<<< orphan*/  CMD_UNDO ; 
- int /*<<< orphan*/  CMD_WRAP ; 
- int /*<<< orphan*/  CheckMenuItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  DrawMenuBar (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EM_CANUNDO ; 
- int /*<<< orphan*/  EM_GETSEL ; 
- int /*<<< orphan*/  EnableMenuItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  GetMenu (int /*<<< orphan*/ ) ; 
- scalar_t__ GetWindowTextLength (int /*<<< orphan*/ ) ; 
- TYPE_1__ Globals ; 
- scalar_t__ HIWORD (int) ; 
- scalar_t__ IsClipboardFormatAvailable (int /*<<< orphan*/ ) ; 
- scalar_t__ LOWORD (int) ; 
- int MF_BYCOMMAND ; 
- int MF_CHECKED ; 
- int MF_ENABLED ; 
- int MF_GRAYED ; 
- int MF_UNCHECKED ; 
- scalar_t__ SendMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UNREFERENCED_PARAMETER (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int VOID ;
+struct TYPE_2__ {int hMainWnd; int hEdit; scalar_t__ bShowStatusBar; scalar_t__ bWrapLongLines; } ;
+typedef int LPARAM ;
+typedef int HMENU ;
+
+
+ int CF_TEXT ;
+ int CMD_COPY ;
+ int CMD_CUT ;
+ int CMD_DELETE ;
+ int CMD_PASTE ;
+ int CMD_SELECT_ALL ;
+ int CMD_STATUSBAR ;
+ int CMD_UNDO ;
+ int CMD_WRAP ;
+ int CheckMenuItem (int ,int ,int) ;
+ int DrawMenuBar (int ) ;
+ int EM_CANUNDO ;
+ int EM_GETSEL ;
+ int EnableMenuItem (int ,int ,int) ;
+ int GetMenu (int ) ;
+ scalar_t__ GetWindowTextLength (int ) ;
+ TYPE_1__ Globals ;
+ scalar_t__ HIWORD (int) ;
+ scalar_t__ IsClipboardFormatAvailable (int ) ;
+ scalar_t__ LOWORD (int) ;
+ int MF_BYCOMMAND ;
+ int MF_CHECKED ;
+ int MF_ENABLED ;
+ int MF_GRAYED ;
+ int MF_UNCHECKED ;
+ scalar_t__ SendMessage (int ,int ,int ,int ) ;
+ int UNREFERENCED_PARAMETER (int ) ;
 
 __attribute__((used)) static VOID NOTEPAD_InitMenuPopup(HMENU menu, LPARAM index)
 {

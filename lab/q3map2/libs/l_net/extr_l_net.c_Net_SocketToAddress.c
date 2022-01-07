@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  addr; } ;
-typedef  TYPE_1__ socket_t ;
-struct TYPE_6__ {int /*<<< orphan*/  ip; } ;
-typedef  TYPE_2__ address_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WINS_AddrToString (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int addr; } ;
+typedef TYPE_1__ socket_t ;
+struct TYPE_6__ {int ip; } ;
+typedef TYPE_2__ address_t ;
+
+
+ int WINS_AddrToString (int *) ;
+ int strcpy (int ,int ) ;
 
 void Net_SocketToAddress( socket_t *sock, address_t *address ){
-	strcpy( address->ip, WINS_AddrToString( &sock->addr ) );
+ strcpy( address->ip, WINS_AddrToString( &sock->addr ) );
 }

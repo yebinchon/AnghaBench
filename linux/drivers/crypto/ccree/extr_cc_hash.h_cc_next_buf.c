@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct ahash_req_ctx {int buff_index; int /*<<< orphan*/ ** buffers; } ;
 
-/* Variables and functions */
+
+
+
+typedef int u8 ;
+struct ahash_req_ctx {int buff_index; int ** buffers; } ;
+
+
 
 __attribute__((used)) static inline u8 *cc_next_buf(struct ahash_req_ctx *state)
 {
-	return state->buffers[state->buff_index ^ 1];
+ return state->buffers[state->buff_index ^ 1];
 }

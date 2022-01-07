@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ output_off; scalar_t__ output; } ;
-typedef  TYPE_1__ user_data_t ;
-typedef  int /*<<< orphan*/  XML_Char ;
+typedef TYPE_1__ user_data_t ;
+typedef int XML_Char ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_ASSERT_EQUAL (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  insert_space (TYPE_1__*) ; 
- int snprintf (scalar_t__,scalar_t__,char*,char*) ; 
- int /*<<< orphan*/  strlcpy (char*,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+ int TEST_ASSERT_EQUAL (int ,int) ;
+ int insert_space (TYPE_1__*) ;
+ int snprintf (scalar_t__,scalar_t__,char*,char*) ;
+ int strlcpy (char*,int const*,int) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static void data_handler(void *userData, const XML_Char *s, int len)
 {
@@ -28,7 +28,7 @@ __attribute__((used)) static void data_handler(void *userData, const XML_Char *s
 
     insert_space(user_data);
 
-    // s is not zero-terminated
+
     char tmp_str[len+1];
     strlcpy(tmp_str, s, len+1);
 

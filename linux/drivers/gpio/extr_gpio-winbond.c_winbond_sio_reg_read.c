@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  inb (unsigned long) ; 
- int /*<<< orphan*/  outb (int /*<<< orphan*/ ,unsigned long) ; 
+
+
+
+typedef int u8 ;
+
+
+ int inb (unsigned long) ;
+ int outb (int ,unsigned long) ;
 
 __attribute__((used)) static u8 winbond_sio_reg_read(unsigned long base, u8 reg)
 {
-	outb(reg, base);
-	return inb(base + 1);
+ outb(reg, base);
+ return inb(base + 1);
 }

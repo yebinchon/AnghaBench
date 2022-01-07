@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ZSTD_parameters ;
-typedef  int /*<<< orphan*/  ZSTD_CCtx_params ;
-struct TYPE_4__ {int /*<<< orphan*/  requestedParams; } ;
-typedef  TYPE_1__ ZSTD_CCtx ;
-typedef  int /*<<< orphan*/  U32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUGLOG (int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZSTD_CONTENTSIZE_UNKNOWN ; 
- int /*<<< orphan*/  ZSTD_assignParamsToCCtxParams (int /*<<< orphan*/ ,int /*<<< orphan*/  const) ; 
- size_t ZSTD_compressBegin_internal (TYPE_1__*,void const*,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/  const,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZSTD_dct_auto ; 
- int /*<<< orphan*/  ZSTD_dtlm_fast ; 
- int /*<<< orphan*/  ZSTD_getParams (int,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  ZSTDb_not_buffered ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int ZSTD_parameters ;
+typedef int ZSTD_CCtx_params ;
+struct TYPE_4__ {int requestedParams; } ;
+typedef TYPE_1__ ZSTD_CCtx ;
+typedef int U32 ;
+
+
+ int DEBUGLOG (int,char*,int ) ;
+ int ZSTD_CONTENTSIZE_UNKNOWN ;
+ int ZSTD_assignParamsToCCtxParams (int ,int const) ;
+ size_t ZSTD_compressBegin_internal (TYPE_1__*,void const*,size_t,int ,int ,int *,int const,int ,int ) ;
+ int ZSTD_dct_auto ;
+ int ZSTD_dtlm_fast ;
+ int ZSTD_getParams (int,int ,size_t) ;
+ int ZSTDb_not_buffered ;
 
 size_t ZSTD_compressBegin_usingDict(ZSTD_CCtx* cctx, const void* dict, size_t dictSize, int compressionLevel)
 {
@@ -33,6 +33,6 @@ size_t ZSTD_compressBegin_usingDict(ZSTD_CCtx* cctx, const void* dict, size_t di
     ZSTD_CCtx_params const cctxParams =
             ZSTD_assignParamsToCCtxParams(cctx->requestedParams, params);
     DEBUGLOG(4, "ZSTD_compressBegin_usingDict (dictSize=%u)", (U32)dictSize);
-    return ZSTD_compressBegin_internal(cctx, dict, dictSize, ZSTD_dct_auto, ZSTD_dtlm_fast, NULL,
+    return ZSTD_compressBegin_internal(cctx, dict, dictSize, ZSTD_dct_auto, ZSTD_dtlm_fast, ((void*)0),
                                        cctxParams, ZSTD_CONTENTSIZE_UNKNOWN, ZSTDb_not_buffered);
 }

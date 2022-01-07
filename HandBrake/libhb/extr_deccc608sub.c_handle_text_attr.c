@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct s_write {scalar_t__ new_channel; TYPE_1__* data608; } ;
 struct TYPE_2__ {scalar_t__ channel; size_t color; size_t font; int cursor_column; } ;
 
-/* Variables and functions */
- scalar_t__ cc_channel ; 
- unsigned char const** color_text ; 
- scalar_t__ debug_608 ; 
- unsigned char const* font_text ; 
- int /*<<< orphan*/  hb_log (char*,...) ; 
- void*** pac2_attribs ; 
+
+ scalar_t__ cc_channel ;
+ unsigned char const** color_text ;
+ scalar_t__ debug_608 ;
+ unsigned char const* font_text ;
+ int hb_log (char*,...) ;
+ void*** pac2_attribs ;
 
 __attribute__((used)) static void handle_text_attr(const unsigned char c1, const unsigned char c2,
                              struct s_write *wb)
 {
-    // Handle channel change
+
     wb->data608->channel=wb->new_channel;
     if (wb->data608->channel!=cc_channel)
         return;

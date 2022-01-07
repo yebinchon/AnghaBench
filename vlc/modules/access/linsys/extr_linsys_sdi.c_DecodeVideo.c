@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct block_extension_t {int b_progressive; int i_nb_fields; int b_top_field_first; scalar_t__ i_aspect; } ;
-struct TYPE_5__ {int /*<<< orphan*/  out; TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ demux_t ;
-struct TYPE_6__ {int i_block_size; TYPE_3__* p_current_picture; int /*<<< orphan*/  p_es_video; int /*<<< orphan*/  i_next_date; scalar_t__ i_aspect; scalar_t__ i_forced_aspect; } ;
-typedef  TYPE_2__ demux_sys_t ;
-struct TYPE_7__ {int /*<<< orphan*/  i_pts; int /*<<< orphan*/  i_dts; int /*<<< orphan*/ * p_buffer; } ;
+struct TYPE_5__ {int out; TYPE_2__* p_sys; } ;
+typedef TYPE_1__ demux_t ;
+struct TYPE_6__ {int i_block_size; TYPE_3__* p_current_picture; int p_es_video; int i_next_date; scalar_t__ i_aspect; scalar_t__ i_forced_aspect; } ;
+typedef TYPE_2__ demux_sys_t ;
+struct TYPE_7__ {int i_pts; int i_dts; int * p_buffer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  es_out_Send (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,struct block_extension_t*,int) ; 
+
+ int es_out_Send (int ,int ,TYPE_3__*) ;
+ int memcpy (int *,struct block_extension_t*,int) ;
 
 __attribute__((used)) static void DecodeVideo( demux_t *p_demux )
 {
     demux_sys_t *p_sys = p_demux->p_sys;
     struct block_extension_t ext;
 
-    /* FIXME: progressive formats ? */
-    ext.b_progressive     = false;
-    ext.i_nb_fields       = 2;
-    ext.b_top_field_first = true;
+
+    ext.b_progressive = 0;
+    ext.i_nb_fields = 2;
+    ext.b_top_field_first = 1;
     ext.i_aspect = p_sys->i_forced_aspect ? p_sys->i_forced_aspect :
                    p_sys->i_aspect;
 

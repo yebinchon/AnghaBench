@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int disabled; int binlogs; scalar_t__ cur_log_pos; int /*<<< orphan*/  mutex_write; TYPE_3__** B; } ;
-typedef  TYPE_1__ volume_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int disabled; int binlogs; scalar_t__ cur_log_pos; int mutex_write; TYPE_3__** B; } ;
+typedef TYPE_1__ volume_t ;
 struct stat {scalar_t__ st_size; } ;
-struct TYPE_7__ {int disabled; int /*<<< orphan*/  st_fsync; int /*<<< orphan*/  st_read; } ;
-typedef  TYPE_2__ storage_dir_t ;
-struct TYPE_8__ {int dir_id; int fd_rdonly; int fd_wronly; int /*<<< orphan*/  st_fsync; int /*<<< orphan*/  st_read; int /*<<< orphan*/  abs_filename; } ;
-typedef  TYPE_3__ storage_binlog_file_t ;
+struct TYPE_7__ {int disabled; int st_fsync; int st_read; } ;
+typedef TYPE_2__ storage_dir_t ;
+struct TYPE_8__ {int dir_id; int fd_rdonly; int fd_wronly; int st_fsync; int st_read; int abs_filename; } ;
+typedef TYPE_3__ storage_binlog_file_t ;
 
-/* Variables and functions */
- TYPE_2__* Dirs ; 
- int /*<<< orphan*/  F_WRLCK ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  O_WRONLY ; 
- TYPE_1__** Volumes ; 
- int /*<<< orphan*/  close (int) ; 
- int dirs ; 
- int /*<<< orphan*/  fstat (int,struct stat*) ; 
- scalar_t__ lock_whole_file (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int /*<<< orphan*/ ) ; 
- int volumes ; 
+
+ TYPE_2__* Dirs ;
+ int F_WRLCK ;
+ int O_RDONLY ;
+ int O_WRONLY ;
+ TYPE_1__** Volumes ;
+ int close (int) ;
+ int dirs ;
+ int fstat (int,struct stat*) ;
+ scalar_t__ lock_whole_file (int,int ) ;
+ int memset (int *,int ,int) ;
+ int open (int ,int ) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int vkprintf (int,char*,int ) ;
+ int volumes ;
 
 int change_dir_write_status (int dir_id, int disabled) {
   int mask = 1 << dir_id;
@@ -52,7 +52,7 @@ int change_dir_write_status (int dir_id, int disabled) {
   }
   for (i = 0; i < volumes; i++) {
     volume_t *V = Volumes[i];
-    storage_binlog_file_t *B = NULL;
+    storage_binlog_file_t *B = ((void*)0);
     if ((V->disabled & mask) != a) {
       for (j = 0; j < V->binlogs; j++) {
         if (V->B[j]->dir_id == dir_id) {

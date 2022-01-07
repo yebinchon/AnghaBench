@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ section; int /*<<< orphan*/ * name; } ;
-typedef  TYPE_1__ CONF_VALUE ;
 
-/* Variables and functions */
- int strcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ section; int * name; } ;
+typedef TYPE_1__ CONF_VALUE ;
+
+
+ int strcmp (int *,int *) ;
 
 __attribute__((used)) static int conf_value_cmp(const CONF_VALUE *a, const CONF_VALUE *b)
 {
@@ -27,11 +27,11 @@ __attribute__((used)) static int conf_value_cmp(const CONF_VALUE *a, const CONF_
             return i;
     }
 
-    if ((a->name != NULL) && (b->name != NULL)) {
+    if ((a->name != ((void*)0)) && (b->name != ((void*)0))) {
         i = strcmp(a->name, b->name);
         return i;
     } else if (a->name == b->name)
         return 0;
     else
-        return ((a->name == NULL) ? -1 : 1);
+        return ((a->name == ((void*)0)) ? -1 : 1);
 }

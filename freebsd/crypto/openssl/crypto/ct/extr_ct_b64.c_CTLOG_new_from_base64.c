@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EVP_PKEY ;
-typedef  int /*<<< orphan*/  CTLOG ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CTLOG_new (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  CT_F_CTLOG_NEW_FROM_BASE64 ; 
- int /*<<< orphan*/  CT_R_LOG_CONF_INVALID_KEY ; 
- int /*<<< orphan*/  CTerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_PASSED_INVALID_ARGUMENT ; 
- int /*<<< orphan*/  EVP_PKEY_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- int ct_base64_decode (char const*,unsigned char**) ; 
- int /*<<< orphan*/ * d2i_PUBKEY (int /*<<< orphan*/ *,unsigned char const**,int) ; 
+
+
+
+typedef int EVP_PKEY ;
+typedef int CTLOG ;
+
+
+ int * CTLOG_new (int *,char const*) ;
+ int CT_F_CTLOG_NEW_FROM_BASE64 ;
+ int CT_R_LOG_CONF_INVALID_KEY ;
+ int CTerr (int ,int ) ;
+ int ERR_R_PASSED_INVALID_ARGUMENT ;
+ int EVP_PKEY_free (int *) ;
+ int OPENSSL_free (unsigned char*) ;
+ int ct_base64_decode (char const*,unsigned char**) ;
+ int * d2i_PUBKEY (int *,unsigned char const**,int) ;
 
 int CTLOG_new_from_base64(CTLOG **ct_log, const char *pkey_base64, const char *name)
 {
-    unsigned char *pkey_der = NULL;
+    unsigned char *pkey_der = ((void*)0);
     int pkey_der_len;
     const unsigned char *p;
-    EVP_PKEY *pkey = NULL;
+    EVP_PKEY *pkey = ((void*)0);
 
-    if (ct_log == NULL) {
+    if (ct_log == ((void*)0)) {
         CTerr(CT_F_CTLOG_NEW_FROM_BASE64, ERR_R_PASSED_INVALID_ARGUMENT);
         return 0;
     }
@@ -43,15 +43,15 @@ int CTLOG_new_from_base64(CTLOG **ct_log, const char *pkey_base64, const char *n
     }
 
     p = pkey_der;
-    pkey = d2i_PUBKEY(NULL, &p, pkey_der_len);
+    pkey = d2i_PUBKEY(((void*)0), &p, pkey_der_len);
     OPENSSL_free(pkey_der);
-    if (pkey == NULL) {
+    if (pkey == ((void*)0)) {
         CTerr(CT_F_CTLOG_NEW_FROM_BASE64, CT_R_LOG_CONF_INVALID_KEY);
         return 0;
     }
 
     *ct_log = CTLOG_new(pkey, name);
-    if (*ct_log == NULL) {
+    if (*ct_log == ((void*)0)) {
         EVP_PKEY_free(pkey);
         return 0;
     }

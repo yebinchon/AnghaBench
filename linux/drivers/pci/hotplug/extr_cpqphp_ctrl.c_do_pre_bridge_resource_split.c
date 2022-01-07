@@ -1,91 +1,91 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct pci_resource {scalar_t__ base; scalar_t__ length; struct pci_resource* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int cpqhp_resource_sort_and_combine (struct pci_resource**) ; 
- int /*<<< orphan*/  dbg (char*) ; 
- struct pci_resource* kmalloc (int,int /*<<< orphan*/ ) ; 
+
+ int GFP_KERNEL ;
+ int cpqhp_resource_sort_and_combine (struct pci_resource**) ;
+ int dbg (char*) ;
+ struct pci_resource* kmalloc (int,int ) ;
 
 __attribute__((used)) static struct pci_resource *do_pre_bridge_resource_split(struct pci_resource **head,
-				struct pci_resource **orig_head, u32 alignment)
+    struct pci_resource **orig_head, u32 alignment)
 {
-	struct pci_resource *prevnode = NULL;
-	struct pci_resource *node;
-	struct pci_resource *split_node;
-	u32 rc;
-	u32 temp_dword;
-	dbg("do_pre_bridge_resource_split\n");
+ struct pci_resource *prevnode = ((void*)0);
+ struct pci_resource *node;
+ struct pci_resource *split_node;
+ u32 rc;
+ u32 temp_dword;
+ dbg("do_pre_bridge_resource_split\n");
 
-	if (!(*head) || !(*orig_head))
-		return NULL;
+ if (!(*head) || !(*orig_head))
+  return ((void*)0);
 
-	rc = cpqhp_resource_sort_and_combine(head);
+ rc = cpqhp_resource_sort_and_combine(head);
 
-	if (rc)
-		return NULL;
+ if (rc)
+  return ((void*)0);
 
-	if ((*head)->base != (*orig_head)->base)
-		return NULL;
+ if ((*head)->base != (*orig_head)->base)
+  return ((void*)0);
 
-	if ((*head)->length == (*orig_head)->length)
-		return NULL;
+ if ((*head)->length == (*orig_head)->length)
+  return ((void*)0);
 
 
-	/* If we got here, there the bridge requires some of the resource, but
-	 * we may be able to split some off of the front
-	 */
 
-	node = *head;
 
-	if (node->length & (alignment - 1)) {
-		/* this one isn't an aligned length, so we'll make a new entry
-		 * and split it up.
-		 */
-		split_node = kmalloc(sizeof(*split_node), GFP_KERNEL);
 
-		if (!split_node)
-			return NULL;
 
-		temp_dword = (node->length | (alignment-1)) + 1 - alignment;
+ node = *head;
 
-		split_node->base = node->base;
-		split_node->length = temp_dword;
+ if (node->length & (alignment - 1)) {
 
-		node->length -= temp_dword;
-		node->base += split_node->length;
 
-		/* Put it in the list */
-		*head = split_node;
-		split_node->next = node;
-	}
 
-	if (node->length < alignment)
-		return NULL;
+  split_node = kmalloc(sizeof(*split_node), GFP_KERNEL);
 
-	/* Now unlink it */
-	if (*head == node) {
-		*head = node->next;
-	} else {
-		prevnode = *head;
-		while (prevnode->next != node)
-			prevnode = prevnode->next;
+  if (!split_node)
+   return ((void*)0);
 
-		prevnode->next = node->next;
-	}
-	node->next = NULL;
+  temp_dword = (node->length | (alignment-1)) + 1 - alignment;
 
-	return node;
+  split_node->base = node->base;
+  split_node->length = temp_dword;
+
+  node->length -= temp_dword;
+  node->base += split_node->length;
+
+
+  *head = split_node;
+  split_node->next = node;
+ }
+
+ if (node->length < alignment)
+  return ((void*)0);
+
+
+ if (*head == node) {
+  *head = node->next;
+ } else {
+  prevnode = *head;
+  while (prevnode->next != node)
+   prevnode = prevnode->next;
+
+  prevnode->next = node->next;
+ }
+ node->next = ((void*)0);
+
+ return node;
 }

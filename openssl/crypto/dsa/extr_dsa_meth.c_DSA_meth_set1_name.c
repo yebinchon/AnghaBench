@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* name; } ;
-typedef  TYPE_1__ DSA_METHOD ;
+typedef TYPE_1__ DSA_METHOD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DSA_F_DSA_METH_SET1_NAME ; 
- int /*<<< orphan*/  DSAerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
- char* OPENSSL_strdup (char const*) ; 
+
+ int DSA_F_DSA_METH_SET1_NAME ;
+ int DSAerr (int ,int ) ;
+ int ERR_R_MALLOC_FAILURE ;
+ int OPENSSL_free (char*) ;
+ char* OPENSSL_strdup (char const*) ;
 
 int DSA_meth_set1_name(DSA_METHOD *dsam, const char *name)
 {
     char *tmpname = OPENSSL_strdup(name);
 
-    if (tmpname == NULL) {
+    if (tmpname == ((void*)0)) {
         DSAerr(DSA_F_DSA_METH_SET1_NAME, ERR_R_MALLOC_FAILURE);
         return 0;
     }

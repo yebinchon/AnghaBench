@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct i915_request {int /*<<< orphan*/  fence; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dma_fence_get (int /*<<< orphan*/ *) ; 
- struct i915_request* to_request (int /*<<< orphan*/ ) ; 
+
+
+
+struct i915_request {int fence; } ;
+
+
+ int dma_fence_get (int *) ;
+ struct i915_request* to_request (int ) ;
 
 __attribute__((used)) static inline struct i915_request *
 i915_request_get(struct i915_request *rq)
 {
-	return to_request(dma_fence_get(&rq->fence));
+ return to_request(dma_fence_get(&rq->fence));
 }

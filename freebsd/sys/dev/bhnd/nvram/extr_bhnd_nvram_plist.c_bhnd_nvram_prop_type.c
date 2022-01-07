@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bhnd_nvram_type ;
-struct TYPE_3__ {int /*<<< orphan*/  val; } ;
-typedef  TYPE_1__ bhnd_nvram_prop ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bhnd_nvram_val_type (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int bhnd_nvram_type ;
+struct TYPE_3__ {int val; } ;
+typedef TYPE_1__ bhnd_nvram_prop ;
+
+
+ int bhnd_nvram_val_type (int ) ;
 
 bhnd_nvram_type
 bhnd_nvram_prop_type(bhnd_nvram_prop *prop)
 {
-	return (bhnd_nvram_val_type(prop->val));
+ return (bhnd_nvram_val_type(prop->val));
 }

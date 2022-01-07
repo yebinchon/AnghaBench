@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
 struct TYPE_7__ {scalar_t__* psz_text; scalar_t__ style; } ;
-typedef  TYPE_1__ text_segment_t ;
-struct TYPE_8__ {scalar_t__* characters; int /*<<< orphan*/ * styles; } ;
-typedef  TYPE_2__ cea708_text_row_t ;
+typedef TYPE_1__ text_segment_t ;
+struct TYPE_8__ {scalar_t__* characters; int * styles; } ;
+typedef TYPE_2__ cea708_text_row_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CEA708PenStyleToSegment (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  STYLE_NO_DEFAULTS ; 
- scalar_t__* malloc (unsigned int) ; 
- int /*<<< orphan*/  text_segment_Delete (TYPE_1__*) ; 
- TYPE_1__* text_segment_New (int /*<<< orphan*/ *) ; 
- scalar_t__ text_style_Create (int /*<<< orphan*/ ) ; 
+
+ int CEA708PenStyleToSegment (int *,scalar_t__) ;
+ int STYLE_NO_DEFAULTS ;
+ scalar_t__* malloc (unsigned int) ;
+ int text_segment_Delete (TYPE_1__*) ;
+ TYPE_1__* text_segment_New (int *) ;
+ scalar_t__ text_style_Create (int ) ;
 
 __attribute__((used)) static text_segment_t * CEA708CharsToSegment( const cea708_text_row_t *p_row,
                                               uint8_t i_start, uint8_t i_end,
                                               bool b_newline )
 {
-    text_segment_t *p_segment = text_segment_New( NULL );
+    text_segment_t *p_segment = text_segment_New( ((void*)0) );
     if( !p_segment )
-        return NULL;
+        return ((void*)0);
 
     p_segment->style = text_style_Create( STYLE_NO_DEFAULTS );
     if( p_segment->style )
@@ -42,7 +42,7 @@ __attribute__((used)) static text_segment_t * CEA708CharsToSegment( const cea708
     if( !p_segment->psz_text )
     {
         text_segment_Delete( p_segment );
-        return NULL;
+        return ((void*)0);
     }
 
     size_t offsetw = 0;

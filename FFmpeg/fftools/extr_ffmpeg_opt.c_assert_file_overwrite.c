@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_2__* ctx; } ;
 struct TYPE_6__ {char* url; TYPE_1__* iformat; } ;
 struct TYPE_5__ {int flags; } ;
-typedef  TYPE_3__ InputFile ;
+typedef TYPE_3__ InputFile ;
 
-/* Variables and functions */
- int AVFMT_NOFILE ; 
- int /*<<< orphan*/  AV_LOG_FATAL ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  SIG_DFL ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ avio_check (char const*,int /*<<< orphan*/ ) ; 
- char* avio_find_protocol_name (char const*) ; 
- int /*<<< orphan*/  exit_program (int) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- scalar_t__ file_overwrite ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- TYPE_3__** input_files ; 
- int nb_input_files ; 
- scalar_t__ no_file_overwrite ; 
- int /*<<< orphan*/  read_yesno () ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ stdin_interaction ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- int /*<<< orphan*/  term_exit () ; 
- int /*<<< orphan*/  term_init () ; 
+
+ int AVFMT_NOFILE ;
+ int AV_LOG_FATAL ;
+ int AV_LOG_WARNING ;
+ int SIGINT ;
+ int SIG_DFL ;
+ int av_log (int *,int ,char*,...) ;
+ scalar_t__ avio_check (char const*,int ) ;
+ char* avio_find_protocol_name (char const*) ;
+ int exit_program (int) ;
+ int fflush (int ) ;
+ scalar_t__ file_overwrite ;
+ int fprintf (int ,char*,...) ;
+ TYPE_3__** input_files ;
+ int nb_input_files ;
+ scalar_t__ no_file_overwrite ;
+ int read_yesno () ;
+ int signal (int ,int ) ;
+ int stderr ;
+ scalar_t__ stdin_interaction ;
+ int strcmp (char const*,char*) ;
+ int term_exit () ;
+ int term_init () ;
 
 __attribute__((used)) static void assert_file_overwrite(const char *filename)
 {
@@ -59,13 +59,13 @@ __attribute__((used)) static void assert_file_overwrite(const char *filename)
                 term_exit();
                 signal(SIGINT, SIG_DFL);
                 if (!read_yesno()) {
-                    av_log(NULL, AV_LOG_FATAL, "Not overwriting - exiting\n");
+                    av_log(((void*)0), AV_LOG_FATAL, "Not overwriting - exiting\n");
                     exit_program(1);
                 }
                 term_init();
             }
             else {
-                av_log(NULL, AV_LOG_FATAL, "File '%s' already exists. Exiting.\n", filename);
+                av_log(((void*)0), AV_LOG_FATAL, "File '%s' already exists. Exiting.\n", filename);
                 exit_program(1);
             }
         }
@@ -77,8 +77,8 @@ __attribute__((used)) static void assert_file_overwrite(const char *filename)
              if (file->ctx->iformat->flags & AVFMT_NOFILE)
                  continue;
              if (!strcmp(filename, file->ctx->url)) {
-                 av_log(NULL, AV_LOG_FATAL, "Output %s same as Input #%d - exiting\n", filename, i);
-                 av_log(NULL, AV_LOG_WARNING, "FFmpeg cannot edit existing files in-place.\n");
+                 av_log(((void*)0), AV_LOG_FATAL, "Output %s same as Input #%d - exiting\n", filename, i);
+                 av_log(((void*)0), AV_LOG_WARNING, "FFmpeg cannot edit existing files in-place.\n");
                  exit_program(1);
              }
         }

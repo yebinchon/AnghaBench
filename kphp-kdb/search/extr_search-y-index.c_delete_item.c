@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct item {int extra; int rates_len; int len; scalar_t__ str; scalar_t__ mask; scalar_t__ rates; } ;
 
-/* Variables and functions */
- int FLAG_DELETED ; 
- int /*<<< orphan*/  del_items ; 
- int deleted_text_bytes ; 
- struct item* get_item_f (long long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zzfree (scalar_t__,int) ; 
+
+ int FLAG_DELETED ;
+ int del_items ;
+ int deleted_text_bytes ;
+ struct item* get_item_f (long long,int ) ;
+ int zzfree (scalar_t__,int) ;
 
 __attribute__((used)) static int delete_item (long long item_id) {
   struct item *I = get_item_f (item_id, 0);

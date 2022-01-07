@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct so_list {int dummy; } ;
-struct section_table {int /*<<< orphan*/  endaddr; int /*<<< orphan*/  addr; } ;
+struct section_table {int endaddr; int addr; } ;
 
-/* Variables and functions */
- scalar_t__ LM_ADDR (struct so_list*) ; 
+
+ scalar_t__ LM_ADDR (struct so_list*) ;
 
 __attribute__((used)) static void
 sunos_relocate_section_addresses (struct so_list *so,

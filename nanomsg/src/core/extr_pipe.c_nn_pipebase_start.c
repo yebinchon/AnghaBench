@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nn_pipebase {int /*<<< orphan*/  out; int /*<<< orphan*/  fsm; int /*<<< orphan*/  state; int /*<<< orphan*/  sock; int /*<<< orphan*/  outstate; int /*<<< orphan*/  instate; } ;
+
+
+
+
+struct nn_pipebase {int out; int fsm; int state; int sock; int outstate; int instate; } ;
 struct nn_pipe {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NN_PIPEBASE_INSTATE_ASYNC ; 
- int /*<<< orphan*/  NN_PIPEBASE_OUTSTATE_IDLE ; 
- int /*<<< orphan*/  NN_PIPEBASE_STATE_ACTIVE ; 
- int /*<<< orphan*/  NN_PIPEBASE_STATE_FAILED ; 
- int /*<<< orphan*/  NN_PIPEBASE_STATE_IDLE ; 
- int /*<<< orphan*/  NN_PIPE_OUT ; 
- int /*<<< orphan*/  nn_assert_state (struct nn_pipebase*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nn_fsm_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ nn_slow (int) ; 
- int nn_sock_add (int /*<<< orphan*/ ,struct nn_pipe*) ; 
+
+ int NN_PIPEBASE_INSTATE_ASYNC ;
+ int NN_PIPEBASE_OUTSTATE_IDLE ;
+ int NN_PIPEBASE_STATE_ACTIVE ;
+ int NN_PIPEBASE_STATE_FAILED ;
+ int NN_PIPEBASE_STATE_IDLE ;
+ int NN_PIPE_OUT ;
+ int nn_assert_state (struct nn_pipebase*,int ) ;
+ int nn_fsm_raise (int *,int *,int ) ;
+ scalar_t__ nn_slow (int) ;
+ int nn_sock_add (int ,struct nn_pipe*) ;
 
 int nn_pipebase_start (struct nn_pipebase *self)
 {

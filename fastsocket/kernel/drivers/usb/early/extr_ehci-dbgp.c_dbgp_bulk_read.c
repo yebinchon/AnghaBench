@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct TYPE_2__ {int /*<<< orphan*/  pids; int /*<<< orphan*/  address; int /*<<< orphan*/  control; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DBGP_EPADDR (unsigned int,unsigned int) ; 
- int /*<<< orphan*/  DBGP_GO ; 
- int DBGP_MAX_PACKET ; 
- int /*<<< orphan*/  DBGP_OUT ; 
- int /*<<< orphan*/  USB_PID_IN ; 
- int /*<<< orphan*/  dbgp_get_data (void*,int) ; 
- int /*<<< orphan*/  dbgp_len_update (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  dbgp_pid_update (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int dbgp_wait_until_done (int /*<<< orphan*/ ) ; 
- TYPE_1__* ehci_debug ; 
- int /*<<< orphan*/  readl (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  writel (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct TYPE_2__ {int pids; int address; int control; } ;
+
+
+ int DBGP_EPADDR (unsigned int,unsigned int) ;
+ int DBGP_GO ;
+ int DBGP_MAX_PACKET ;
+ int DBGP_OUT ;
+ int USB_PID_IN ;
+ int dbgp_get_data (void*,int) ;
+ int dbgp_len_update (int ,int) ;
+ int dbgp_pid_update (int ,int ) ;
+ int dbgp_wait_until_done (int ) ;
+ TYPE_1__* ehci_debug ;
+ int readl (int *) ;
+ int writel (int ,int *) ;
 
 __attribute__((used)) static int dbgp_bulk_read(unsigned devnum, unsigned endpoint, void *data,
-				 int size)
+     int size)
 {
-	u32 pids, addr, ctrl;
-	int ret;
+ u32 pids, addr, ctrl;
+ int ret;
 
-	if (size > DBGP_MAX_PACKET)
-		return -1;
+ if (size > DBGP_MAX_PACKET)
+  return -1;
 
-	addr = DBGP_EPADDR(devnum, endpoint);
+ addr = DBGP_EPADDR(devnum, endpoint);
 
-	pids = readl(&ehci_debug->pids);
-	pids = dbgp_pid_update(pids, USB_PID_IN);
+ pids = readl(&ehci_debug->pids);
+ pids = dbgp_pid_update(pids, USB_PID_IN);
 
-	ctrl = readl(&ehci_debug->control);
-	ctrl = dbgp_len_update(ctrl, size);
-	ctrl &= ~DBGP_OUT;
-	ctrl |= DBGP_GO;
+ ctrl = readl(&ehci_debug->control);
+ ctrl = dbgp_len_update(ctrl, size);
+ ctrl &= ~DBGP_OUT;
+ ctrl |= DBGP_GO;
 
-	writel(addr, &ehci_debug->address);
-	writel(pids, &ehci_debug->pids);
-	ret = dbgp_wait_until_done(ctrl);
-	if (ret < 0)
-		return ret;
+ writel(addr, &ehci_debug->address);
+ writel(pids, &ehci_debug->pids);
+ ret = dbgp_wait_until_done(ctrl);
+ if (ret < 0)
+  return ret;
 
-	if (size > ret)
-		size = ret;
-	dbgp_get_data(data, size);
-	return ret;
+ if (size > ret)
+  size = ret;
+ dbgp_get_data(data, size);
+ return ret;
 }

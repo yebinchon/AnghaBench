@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  scalar_t__ u32 ;
-typedef  int /*<<< orphan*/  sqlite3_vtab_cursor ;
-struct TYPE_2__ {int atEof; scalar_t__ isDesc; scalar_t__ nKey2; scalar_t__ zData; scalar_t__ pKey2; int /*<<< orphan*/  pLsmCur; scalar_t__ bUnique; } ;
-typedef  TYPE_1__ lsm1_cursor ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int SQLITE_ERROR ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int lsm_csr_key (int /*<<< orphan*/ ,void const**,int*) ; 
- int lsm_csr_next (int /*<<< orphan*/ ) ; 
- int lsm_csr_prev (int /*<<< orphan*/ ) ; 
- scalar_t__ lsm_csr_valid (int /*<<< orphan*/ ) ; 
- int memcmp (int /*<<< orphan*/  const*,scalar_t__,scalar_t__) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef scalar_t__ u32 ;
+typedef int sqlite3_vtab_cursor ;
+struct TYPE_2__ {int atEof; scalar_t__ isDesc; scalar_t__ nKey2; scalar_t__ zData; scalar_t__ pKey2; int pLsmCur; scalar_t__ bUnique; } ;
+typedef TYPE_1__ lsm1_cursor ;
+
+
+ int LSM_OK ;
+ int SQLITE_ERROR ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int lsm_csr_key (int ,void const**,int*) ;
+ int lsm_csr_next (int ) ;
+ int lsm_csr_prev (int ) ;
+ scalar_t__ lsm_csr_valid (int ) ;
+ int memcmp (int const*,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static int lsm1Next(sqlite3_vtab_cursor *cur){
   lsm1_cursor *pCur = (lsm1_cursor*)cur;

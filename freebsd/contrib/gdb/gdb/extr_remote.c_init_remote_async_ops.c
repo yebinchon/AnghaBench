@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {char* to_shortname; char* to_longname; char* to_doc; int to_has_all_memory; int to_has_memory; int to_has_stack; int to_has_registers; int to_has_execution; int to_async_mask_value; int /*<<< orphan*/  to_magic; int /*<<< orphan*/  to_async; int /*<<< orphan*/  to_is_async_p; int /*<<< orphan*/  to_can_async_p; int /*<<< orphan*/  to_has_thread_control; int /*<<< orphan*/  to_stratum; int /*<<< orphan*/  to_rcmd; int /*<<< orphan*/  to_xfer_partial; int /*<<< orphan*/  to_stop; int /*<<< orphan*/  to_extra_thread_info; int /*<<< orphan*/  to_pid_to_str; int /*<<< orphan*/  to_find_new_threads; int /*<<< orphan*/  to_thread_alive; int /*<<< orphan*/  to_mourn_inferior; int /*<<< orphan*/  to_load; int /*<<< orphan*/  to_kill; int /*<<< orphan*/  to_terminal_ours; int /*<<< orphan*/  to_terminal_inferior; int /*<<< orphan*/  to_stopped_data_address; int /*<<< orphan*/  to_stopped_by_watchpoint; int /*<<< orphan*/  to_remove_watchpoint; int /*<<< orphan*/  to_insert_watchpoint; int /*<<< orphan*/  to_remove_hw_breakpoint; int /*<<< orphan*/  to_insert_hw_breakpoint; int /*<<< orphan*/  to_can_use_hw_breakpoint; int /*<<< orphan*/  to_remove_breakpoint; int /*<<< orphan*/  to_insert_breakpoint; int /*<<< orphan*/  to_files_info; int /*<<< orphan*/  to_xfer_memory; int /*<<< orphan*/  to_prepare_to_store; int /*<<< orphan*/  to_store_registers; int /*<<< orphan*/  to_fetch_registers; int /*<<< orphan*/  to_wait; int /*<<< orphan*/  to_resume; int /*<<< orphan*/  to_disconnect; int /*<<< orphan*/  to_detach; int /*<<< orphan*/  to_close; int /*<<< orphan*/  to_open; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPS_MAGIC ; 
- int /*<<< orphan*/  generic_load ; 
- int /*<<< orphan*/  process_stratum ; 
- int /*<<< orphan*/  remote_async ; 
- int /*<<< orphan*/  remote_async_kill ; 
- int /*<<< orphan*/  remote_async_mourn ; 
- int /*<<< orphan*/  remote_async_open ; 
- TYPE_1__ remote_async_ops ; 
- int /*<<< orphan*/  remote_async_resume ; 
- int /*<<< orphan*/  remote_async_terminal_inferior ; 
- int /*<<< orphan*/  remote_async_terminal_ours ; 
- int /*<<< orphan*/  remote_async_wait ; 
- int /*<<< orphan*/  remote_can_async_p ; 
- int /*<<< orphan*/  remote_check_watch_resources ; 
- int /*<<< orphan*/  remote_close ; 
- int /*<<< orphan*/  remote_detach ; 
- int /*<<< orphan*/  remote_disconnect ; 
- int /*<<< orphan*/  remote_fetch_registers ; 
- int /*<<< orphan*/  remote_files_info ; 
- int /*<<< orphan*/  remote_insert_breakpoint ; 
- int /*<<< orphan*/  remote_insert_hw_breakpoint ; 
- int /*<<< orphan*/  remote_insert_watchpoint ; 
- int /*<<< orphan*/  remote_is_async_p ; 
- int /*<<< orphan*/  remote_pid_to_str ; 
- int /*<<< orphan*/  remote_prepare_to_store ; 
- int /*<<< orphan*/  remote_rcmd ; 
- int /*<<< orphan*/  remote_remove_breakpoint ; 
- int /*<<< orphan*/  remote_remove_hw_breakpoint ; 
- int /*<<< orphan*/  remote_remove_watchpoint ; 
- int /*<<< orphan*/  remote_stop ; 
- int /*<<< orphan*/  remote_stopped_by_watchpoint ; 
- int /*<<< orphan*/  remote_stopped_data_address ; 
- int /*<<< orphan*/  remote_store_registers ; 
- int /*<<< orphan*/  remote_thread_alive ; 
- int /*<<< orphan*/  remote_threads_extra_info ; 
- int /*<<< orphan*/  remote_threads_info ; 
- int /*<<< orphan*/  remote_xfer_memory ; 
- int /*<<< orphan*/  remote_xfer_partial ; 
- int /*<<< orphan*/  tc_schedlock ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {char* to_shortname; char* to_longname; char* to_doc; int to_has_all_memory; int to_has_memory; int to_has_stack; int to_has_registers; int to_has_execution; int to_async_mask_value; int to_magic; int to_async; int to_is_async_p; int to_can_async_p; int to_has_thread_control; int to_stratum; int to_rcmd; int to_xfer_partial; int to_stop; int to_extra_thread_info; int to_pid_to_str; int to_find_new_threads; int to_thread_alive; int to_mourn_inferior; int to_load; int to_kill; int to_terminal_ours; int to_terminal_inferior; int to_stopped_data_address; int to_stopped_by_watchpoint; int to_remove_watchpoint; int to_insert_watchpoint; int to_remove_hw_breakpoint; int to_insert_hw_breakpoint; int to_can_use_hw_breakpoint; int to_remove_breakpoint; int to_insert_breakpoint; int to_files_info; int to_xfer_memory; int to_prepare_to_store; int to_store_registers; int to_fetch_registers; int to_wait; int to_resume; int to_disconnect; int to_detach; int to_close; int to_open; } ;
+
+
+ int OPS_MAGIC ;
+ int generic_load ;
+ int process_stratum ;
+ int remote_async ;
+ int remote_async_kill ;
+ int remote_async_mourn ;
+ int remote_async_open ;
+ TYPE_1__ remote_async_ops ;
+ int remote_async_resume ;
+ int remote_async_terminal_inferior ;
+ int remote_async_terminal_ours ;
+ int remote_async_wait ;
+ int remote_can_async_p ;
+ int remote_check_watch_resources ;
+ int remote_close ;
+ int remote_detach ;
+ int remote_disconnect ;
+ int remote_fetch_registers ;
+ int remote_files_info ;
+ int remote_insert_breakpoint ;
+ int remote_insert_hw_breakpoint ;
+ int remote_insert_watchpoint ;
+ int remote_is_async_p ;
+ int remote_pid_to_str ;
+ int remote_prepare_to_store ;
+ int remote_rcmd ;
+ int remote_remove_breakpoint ;
+ int remote_remove_hw_breakpoint ;
+ int remote_remove_watchpoint ;
+ int remote_stop ;
+ int remote_stopped_by_watchpoint ;
+ int remote_stopped_data_address ;
+ int remote_store_registers ;
+ int remote_thread_alive ;
+ int remote_threads_extra_info ;
+ int remote_threads_info ;
+ int remote_xfer_memory ;
+ int remote_xfer_partial ;
+ int tc_schedlock ;
 
 __attribute__((used)) static void
 init_remote_async_ops (void)
@@ -60,8 +60,8 @@ init_remote_async_ops (void)
   remote_async_ops.to_shortname = "async";
   remote_async_ops.to_longname = "Remote serial target in async version of the gdb-specific protocol";
   remote_async_ops.to_doc =
-    "Use a remote computer via a serial line, using a gdb-specific protocol.\n\
-Specify the serial device it is connected to (e.g. /dev/ttya).";
+    "Use a remote computer via a serial line, using a gdb-specific protocol.\nSpecify the serial device it is connected to (e.g. /dev/ttya).";
+
   remote_async_ops.to_open = remote_async_open;
   remote_async_ops.to_close = remote_close;
   remote_async_ops.to_detach = remote_detach;
@@ -100,7 +100,7 @@ Specify the serial device it is connected to (e.g. /dev/ttya).";
   remote_async_ops.to_has_stack = 1;
   remote_async_ops.to_has_registers = 1;
   remote_async_ops.to_has_execution = 1;
-  remote_async_ops.to_has_thread_control = tc_schedlock;	/* can lock scheduler */
+  remote_async_ops.to_has_thread_control = tc_schedlock;
   remote_async_ops.to_can_async_p = remote_can_async_p;
   remote_async_ops.to_is_async_p = remote_is_async_p;
   remote_async_ops.to_async = remote_async;

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  scalar_t__ HANDLE ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int N_TEST_MESSAGES ; 
- int /*<<< orphan*/  O_BINARY ; 
- int /*<<< orphan*/  O_TEXT ; 
- int /*<<< orphan*/  Sleep (int) ; 
- int /*<<< orphan*/  _O_WTEXT ; 
- int /*<<< orphan*/  _P_NOWAIT ; 
- scalar_t__ _pipe (int*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ _spawnvp (int /*<<< orphan*/ ,char const*,char const**) ; 
- int close (int) ; 
- int /*<<< orphan*/  errno ; 
- int fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fdopen (int,char*) ; 
- int feof (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ferror (int /*<<< orphan*/ *) ; 
- int fread (char*,int,int,int /*<<< orphan*/ *) ; 
- char* get_base_name (char const*) ; 
- int /*<<< orphan*/  memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ p_fopen_s ; 
- char* pipe_string ; 
- scalar_t__* proc_handles ; 
- int read (int,char*,int) ; 
- int /*<<< orphan*/  setmode (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
- int write (int,char*,int) ; 
+
+
+
+typedef int buf ;
+typedef scalar_t__ HANDLE ;
+typedef int FILE ;
+
+
+ int N_TEST_MESSAGES ;
+ int O_BINARY ;
+ int O_TEXT ;
+ int Sleep (int) ;
+ int _O_WTEXT ;
+ int _P_NOWAIT ;
+ scalar_t__ _pipe (int*,int,int ) ;
+ scalar_t__ _spawnvp (int ,char const*,char const**) ;
+ int close (int) ;
+ int errno ;
+ int fclose (int *) ;
+ int * fdopen (int,char*) ;
+ int feof (int *) ;
+ int ferror (int *) ;
+ int fread (char*,int,int,int *) ;
+ char* get_base_name (char const*) ;
+ int memcmp (char*,char*,int) ;
+ int ok (int,char*,...) ;
+ scalar_t__ p_fopen_s ;
+ char* pipe_string ;
+ scalar_t__* proc_handles ;
+ int read (int,char*,int) ;
+ int setmode (int,int ) ;
+ int sprintf (char*,char*,int) ;
+ int strcat (char*,char*) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strlen (char*) ;
+ int win_skip (char*) ;
+ int write (int,char*,int) ;
 
 __attribute__((used)) static void test_pipes(const char* selfname)
 {
@@ -56,7 +56,7 @@ __attribute__((used)) static void test_pipes(const char* selfname)
     int r;
     int i;
 
-    /* Test reading from a pipe with read() */
+
     if (_pipe(pipes, 1024, O_BINARY) < 0)
     {
         ok(0, "pipe failed with errno %d\n", errno);
@@ -68,7 +68,7 @@ __attribute__((used)) static void test_pipes(const char* selfname)
     arg_v[2] = "pipes";
     arg_v[3] = str_fdr; sprintf(str_fdr, "%d", pipes[0]);
     arg_v[4] = str_fdw; sprintf(str_fdw, "%d", pipes[1]);
-    arg_v[5] = NULL;
+    arg_v[5] = ((void*)0);
     proc_handles[0] = (HANDLE)_spawnvp(_P_NOWAIT, selfname, arg_v);
     i=close(pipes[1]);
     ok(!i, "unable to close %d: %d\n", pipes[1], errno);
@@ -86,7 +86,7 @@ __attribute__((used)) static void test_pipes(const char* selfname)
     i=close(pipes[0]);
     ok(!i, "unable to close %d: %d\n", pipes[0], errno);
 
-    /* Test reading from a pipe with fread() */
+
     if (_pipe(pipes, 1024, O_BINARY) < 0)
     {
         ok(0, "pipe failed with errno %d\n", errno);
@@ -97,16 +97,16 @@ __attribute__((used)) static void test_pipes(const char* selfname)
     arg_v[2] = "pipes";
     arg_v[3] = str_fdr; sprintf(str_fdr, "%d", pipes[0]);
     arg_v[4] = str_fdw; sprintf(str_fdw, "%d", pipes[1]);
-    arg_v[5] = NULL;
+    arg_v[5] = ((void*)0);
     proc_handles[1] = (HANDLE)_spawnvp(_P_NOWAIT, selfname, arg_v);
     i=close(pipes[1]);
     ok(!i, "unable to close %d: %d\n", pipes[1], errno);
     file=fdopen(pipes[0], "r");
 
-    /* In blocking mode, fread will keep calling read() until it gets
-     * enough bytes, or EOF, even on Unix.  (If this were a Unix terminal
-     * in cooked mode instead of a pipe, it would also stop on EOL.)
-     */
+
+
+
+
     expected[0] = 0;
     for (i=0; i<N_TEST_MESSAGES; i++)
        strcat(expected, pipe_string);
@@ -116,7 +116,7 @@ __attribute__((used)) static void test_pipes(const char* selfname)
        buf[r]='\0';
     ok(strcmp(buf, expected) == 0, "got '%s' expected '%s'\n", buf, expected);
 
-    /* Let child close the file before we read, so we can sense EOF reliably */
+
     Sleep(100);
     r=fread(buf, 1, sizeof(buf)-1, file);
     ok(r == 0, "fread() returned %d instead of 0\n", r);
@@ -126,7 +126,7 @@ __attribute__((used)) static void test_pipes(const char* selfname)
     i=fclose(file);
     ok(!i, "unable to close the pipe: %d\n", errno);
 
-    /* test \r handling when it's the last character read */
+
     if (_pipe(pipes, 1024, O_BINARY) < 0)
     {
         ok(0, "pipe failed with errno %d\n", errno);
@@ -151,7 +151,7 @@ __attribute__((used)) static void test_pipes(const char* selfname)
 
     if (p_fopen_s)
     {
-        /* test utf16 read with insufficient data */
+
         r = write(pipes[1], "a\0b", 3);
         ok(r == 3, "write returned %d, errno = %d\n", r, errno);
         buf[2] = 'z';

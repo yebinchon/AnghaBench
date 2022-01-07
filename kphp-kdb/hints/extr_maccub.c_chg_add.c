@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  trp_node_ptr ;
-struct TYPE_3__ {int size; int /*<<< orphan*/  root; } ;
-typedef  TYPE_1__ treap ;
-typedef  int* changes ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  dl_free (int*,int) ; 
- int* dl_malloc (int) ; 
- int* dl_malloc0 (int) ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
- int /*<<< orphan*/  my_rand () ; 
- int /*<<< orphan*/  trp_add_or_set (TYPE_1__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trp_conv_from_array (int*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int trp_node_ptr ;
+struct TYPE_3__ {int size; int root; } ;
+typedef TYPE_1__ treap ;
+typedef int* changes ;
+
+
+ int assert (int) ;
+ int dl_free (int*,int) ;
+ int* dl_malloc (int) ;
+ int* dl_malloc0 (int) ;
+ int memcpy (int*,int*,int) ;
+ int my_rand () ;
+ int trp_add_or_set (TYPE_1__*,int,int ) ;
+ int trp_conv_from_array (int*,int) ;
 
 void chg_add (changes *_x, int val) {
   assert (val > 0);
@@ -32,7 +32,7 @@ void chg_add (changes *_x, int val) {
   changes x = *_x;
 
   int *t = 0;
-#ifdef __x86_64__
+
   if ((long)x < 0) {
     if ((long)x == -val) {
       return;
@@ -40,9 +40,9 @@ void chg_add (changes *_x, int val) {
       x = (int *)((long)-val);
     } else {
       int old = -(long)x;
-      x = dl_malloc  (sizeof (int) * 3);
+      x = dl_malloc (sizeof (int) * 3);
 
-      assert (x != NULL);
+      assert (x != ((void*)0));
 
       x[0] = 2;
       if (val < old) {
@@ -54,7 +54,7 @@ void chg_add (changes *_x, int val) {
       }
     }
   } else
-#endif
+
   if (x) {
     if (x[0] > 0) {
       int len = x[0], i = 1;
@@ -72,21 +72,21 @@ void chg_add (changes *_x, int val) {
         j++;
       }
 
-//      fprintf (stderr, "i = %d, j = %d\n", i, j);
+
 
       if (j > len) {
         if (len == 8) {
           trp_node_ptr root = trp_conv_from_array ((int *)x + 1, len);
           dl_free (x, sizeof (int) * (len + 1));
           x = dl_malloc (sizeof (treap));
-          //x[0] = -len;
+
 
           ((treap *)(x))->size = -len;
           ((treap *)(x))->root = root;
         } else {
           t = dl_malloc0 (sizeof (int) * (len * 2 + 1));
 
-          assert (t != NULL);
+          assert (t != ((void*)0));
 
           t[0] = len * 2;
           memcpy (t + 1, x + 1, sizeof (int) * len);
@@ -110,13 +110,13 @@ void chg_add (changes *_x, int val) {
     }
 
   } else {
-#ifdef __x86_64__
+
     x = (changes)((long)-val);
-#else
-    x = dl_malloc0 (sizeof (int) * 2);
-    x[0] = 1;
-    x[1] = val;
-#endif
+
+
+
+
+
   }
 
   *_x = x;

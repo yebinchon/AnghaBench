@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
 struct TYPE_17__ {scalar_t__ r; scalar_t__ i; } ;
-typedef  TYPE_1__ kiss_fft_cpx ;
-typedef  TYPE_2__* kiss_fft_cfg ;
+typedef TYPE_1__ kiss_fft_cpx ;
+typedef TYPE_2__* kiss_fft_cfg ;
 struct TYPE_18__ {scalar_t__ inverse; TYPE_1__* twiddles; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  C_ADD (TYPE_1__,TYPE_1__,TYPE_1__) ; 
- int /*<<< orphan*/  C_ADDTO (TYPE_1__,TYPE_1__) ; 
- int /*<<< orphan*/  C_FIXDIV (TYPE_1__,int) ; 
- int /*<<< orphan*/  C_MUL (TYPE_1__,TYPE_1__,TYPE_1__) ; 
- int /*<<< orphan*/  C_SUB (TYPE_1__,TYPE_1__,TYPE_1__) ; 
+
+ int C_ADD (TYPE_1__,TYPE_1__,TYPE_1__) ;
+ int C_ADDTO (TYPE_1__,TYPE_1__) ;
+ int C_FIXDIV (TYPE_1__,int) ;
+ int C_MUL (TYPE_1__,TYPE_1__,TYPE_1__) ;
+ int C_SUB (TYPE_1__,TYPE_1__,TYPE_1__) ;
 
 __attribute__((used)) static void kf_bfly4(
         kiss_fft_cpx * Fout,

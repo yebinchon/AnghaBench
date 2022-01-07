@@ -1,41 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int svn_depth_t ;
 
-/* Variables and functions */
-#define  svn_depth_empty 133 
-#define  svn_depth_exclude 132 
-#define  svn_depth_files 131 
-#define  svn_depth_immediates 130 
-#define  svn_depth_infinity 129 
-#define  svn_depth_unknown 128 
 
+
+
+typedef int svn_depth_t ;
 const char *
 svn_depth_to_word(svn_depth_t depth)
 {
   switch (depth)
     {
-    case svn_depth_exclude:
+    case 132:
       return "exclude";
-    case svn_depth_unknown:
+    case 128:
       return "unknown";
-    case svn_depth_empty:
+    case 133:
       return "empty";
-    case svn_depth_files:
+    case 131:
       return "files";
-    case svn_depth_immediates:
+    case 130:
       return "immediates";
-    case svn_depth_infinity:
+    case 129:
       return "infinity";
     default:
       return "INVALID-DEPTH";

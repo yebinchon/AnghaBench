@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct multiplexReal {scalar_t__ z; } ;
-typedef  int /*<<< orphan*/  p ;
-struct TYPE_3__ {int nReal; int nName; int /*<<< orphan*/  flags; scalar_t__ zName; struct multiplexReal* aReal; } ;
-typedef  TYPE_1__ multiplexGroup ;
+typedef int p ;
+struct TYPE_3__ {int nReal; int nName; int flags; scalar_t__ zName; struct multiplexReal* aReal; } ;
+typedef TYPE_1__ multiplexGroup ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  memset (struct multiplexReal*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  multiplexFilename (scalar_t__,int,int /*<<< orphan*/ ,int,char*) ; 
- char* sqlite3_malloc64 (int) ; 
- struct multiplexReal* sqlite3_realloc64 (struct multiplexReal*,int) ; 
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int memset (struct multiplexReal*,int ,int) ;
+ int multiplexFilename (scalar_t__,int,int ,int,char*) ;
+ char* sqlite3_malloc64 (int) ;
+ struct multiplexReal* sqlite3_realloc64 (struct multiplexReal*,int) ;
 
 __attribute__((used)) static int multiplexSubFilename(multiplexGroup *pGroup, int iChunk){
   if( iChunk>=pGroup->nReal ){

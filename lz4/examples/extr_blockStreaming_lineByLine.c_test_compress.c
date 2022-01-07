@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  LZ4_stream_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- size_t LZ4_COMPRESSBOUND (size_t) ; 
- int LZ4_compress_fast_continue (int /*<<< orphan*/ * const,char* const,char* const,int,size_t const,int) ; 
- int /*<<< orphan*/ * LZ4_createStream () ; 
- int /*<<< orphan*/  LZ4_freeStream (int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  fgets (char* const,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char* const) ; 
- scalar_t__ malloc (size_t const) ; 
- size_t rand () ; 
- scalar_t__ read_bin (int /*<<< orphan*/ *,char* const,int const) ; 
- scalar_t__ strlen (char* const) ; 
- int /*<<< orphan*/  write_bin (int /*<<< orphan*/ *,char* const,int const) ; 
- int /*<<< orphan*/  write_uint16 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint16_t ;
+typedef int LZ4_stream_t ;
+typedef int FILE ;
+
+
+ size_t LZ4_COMPRESSBOUND (size_t) ;
+ int LZ4_compress_fast_continue (int * const,char* const,char* const,int,size_t const,int) ;
+ int * LZ4_createStream () ;
+ int LZ4_freeStream (int * const) ;
+ int fgets (char* const,int,int *) ;
+ int free (char* const) ;
+ scalar_t__ malloc (size_t const) ;
+ size_t rand () ;
+ scalar_t__ read_bin (int *,char* const,int const) ;
+ scalar_t__ strlen (char* const) ;
+ int write_bin (int *,char* const,int const) ;
+ int write_uint16 (int *,int ) ;
 
 __attribute__((used)) static void test_compress(
     FILE* outFp,
@@ -43,19 +43,11 @@ __attribute__((used)) static void test_compress(
     for ( ; ; )
     {
         char* const inpPtr = &inpBuf[inpOffset];
-
-#if 0
-        // Read random length data to the ring buffer.
-        const int randomLength = (rand() % messageMaxBytes) + 1;
-        const int inpBytes = (int) read_bin(inpFp, inpPtr, randomLength);
-        if (0 == inpBytes) break;
-#else
-        // Read line to the ring buffer.
         int inpBytes = 0;
         if (!fgets(inpPtr, (int) messageMaxBytes, inpFp))
             break;
         inpBytes = (int) strlen(inpPtr);
-#endif
+
 
         {
             const int cmpBytes = LZ4_compress_fast_continue(
@@ -64,7 +56,7 @@ __attribute__((used)) static void test_compress(
             write_uint16(outFp, (uint16_t) cmpBytes);
             write_bin(outFp, cmpBuf, cmpBytes);
 
-            // Add and wraparound the ringbuffer offset
+
             inpOffset += inpBytes;
             if ((size_t)inpOffset >= ringBufferBytes - messageMaxBytes) inpOffset = 0;
         }

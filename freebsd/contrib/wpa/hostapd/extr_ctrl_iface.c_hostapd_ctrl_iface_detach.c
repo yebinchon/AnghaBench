@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr_storage {int dummy; } ;
-struct hostapd_data {int /*<<< orphan*/  ctrl_dst; } ;
-typedef  int /*<<< orphan*/  socklen_t ;
+struct hostapd_data {int ctrl_dst; } ;
+typedef int socklen_t ;
 
-/* Variables and functions */
- int ctrl_iface_detach (int /*<<< orphan*/ *,struct sockaddr_storage*,int /*<<< orphan*/ ) ; 
+
+ int ctrl_iface_detach (int *,struct sockaddr_storage*,int ) ;
 
 __attribute__((used)) static int hostapd_ctrl_iface_detach(struct hostapd_data *hapd,
-				     struct sockaddr_storage *from,
-				     socklen_t fromlen)
+         struct sockaddr_storage *from,
+         socklen_t fromlen)
 {
-	return ctrl_iface_detach(&hapd->ctrl_dst, from, fromlen);
+ return ctrl_iface_detach(&hapd->ctrl_dst, from, fromlen);
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_fs_t ;
-struct TYPE_4__ {int /*<<< orphan*/  stream; int /*<<< orphan*/  start_revision; int /*<<< orphan*/  is_packed; int /*<<< orphan*/ * file; } ;
-typedef  TYPE_1__ svn_fs_fs__revision_file_t ;
-typedef  int /*<<< orphan*/  svn_fs_fs__id_part_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_file_t ;
 
-/* Variables and functions */
- int APR_BUFFERED ; 
- int /*<<< orphan*/  APR_OS_DEFAULT ; 
- int APR_READ ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- TYPE_1__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  svn_fs_fs__path_txn_proto_rev (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_file_open (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_from_aprfile2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int svn_fs_t ;
+struct TYPE_4__ {int stream; int start_revision; int is_packed; int * file; } ;
+typedef TYPE_1__ svn_fs_fs__revision_file_t ;
+typedef int svn_fs_fs__id_part_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+typedef int apr_file_t ;
+
+
+ int APR_BUFFERED ;
+ int APR_OS_DEFAULT ;
+ int APR_READ ;
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_INVALID_REVNUM ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ TYPE_1__* apr_pcalloc (int *,int) ;
+ int svn_fs_fs__path_txn_proto_rev (int *,int const*,int *) ;
+ int svn_io_file_open (int **,int ,int,int ,int *) ;
+ int svn_stream_from_aprfile2 (int *,int ,int *) ;
 
 svn_error_t *
 svn_fs_fs__open_proto_rev_file(svn_fs_fs__revision_file_t **file,

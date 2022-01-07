@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {struct key const* raw_data; } ;
-struct keyring_search_context {int /*<<< orphan*/  result; TYPE_1__ match_data; } ;
-struct key {int /*<<< orphan*/  serial; } ;
+struct keyring_search_context {int result; TYPE_1__ match_data; } ;
+struct key {int serial; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EDEADLK ; 
- int /*<<< orphan*/  ERR_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kenter (char*,int /*<<< orphan*/ ) ; 
- struct key* keyring_ptr_to_key (void const*) ; 
+
+ int EDEADLK ;
+ int ERR_PTR (int ) ;
+ int kenter (char*,int ) ;
+ struct key* keyring_ptr_to_key (void const*) ;
 
 __attribute__((used)) static int keyring_detect_cycle_iterator(const void *object,
-					 void *iterator_data)
+      void *iterator_data)
 {
-	struct keyring_search_context *ctx = iterator_data;
-	const struct key *key = keyring_ptr_to_key(object);
+ struct keyring_search_context *ctx = iterator_data;
+ const struct key *key = keyring_ptr_to_key(object);
 
-	kenter("{%d}", key->serial);
+ kenter("{%d}", key->serial);
 
-	/* We might get a keyring with matching index-key that is nonetheless a
-	 * different keyring. */
-	if (key != ctx->match_data.raw_data)
-		return 0;
 
-	ctx->result = ERR_PTR(-EDEADLK);
-	return 1;
+
+ if (key != ctx->match_data.raw_data)
+  return 0;
+
+ ctx->result = ERR_PTR(-EDEADLK);
+ return 1;
 }

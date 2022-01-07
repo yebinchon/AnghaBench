@@ -1,18 +1,9 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 __attribute__((used)) static unsigned uv__utf8_decode1_slow(const char** p,
                                       const char* pe,
                                       unsigned a) {
@@ -34,7 +25,7 @@ __attribute__((used)) static unsigned uv__utf8_decode1_slow(const char** p,
       d = (unsigned char) *(*p)++;
       break;
     }
-    /* Fall through. */
+
   case 2:
     if (a > 0xDF) {
       min = 0x800;
@@ -44,7 +35,7 @@ __attribute__((used)) static unsigned uv__utf8_decode1_slow(const char** p,
       a = 0;
       break;
     }
-    /* Fall through. */
+
   case 1:
     if (a > 0xBF) {
       min = 0x80;
@@ -54,11 +45,11 @@ __attribute__((used)) static unsigned uv__utf8_decode1_slow(const char** p,
       a = 0;
       break;
     }
-    return -1;  /* Invalid continuation byte. */
+    return -1;
   }
 
   if (0x80 != (0xC0 & (b ^ c ^ d)))
-    return -1;  /* Invalid sequence. */
+    return -1;
 
   b &= 63;
   c &= 63;
@@ -66,13 +57,13 @@ __attribute__((used)) static unsigned uv__utf8_decode1_slow(const char** p,
   a = (a << 18) | (b << 12) | (c << 6) | d;
 
   if (a < min)
-    return -1;  /* Overlong sequence. */
+    return -1;
 
   if (a > 0x10FFFF)
-    return -1;  /* Four-byte sequence > U+10FFFF. */
+    return -1;
 
   if (a >= 0xD800 && a <= 0xDFFF)
-    return -1;  /* Surrogate pair. */
+    return -1;
 
   return a;
 }

@@ -1,125 +1,115 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_47__   TYPE_6__ ;
-typedef  struct TYPE_46__   TYPE_5__ ;
-typedef  struct TYPE_45__   TYPE_4__ ;
-typedef  struct TYPE_44__   TYPE_3__ ;
-typedef  struct TYPE_43__   TYPE_39__ ;
-typedef  struct TYPE_42__   TYPE_2__ ;
-typedef  struct TYPE_41__   TYPE_1__ ;
-typedef  struct TYPE_40__   TYPE_13__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_T ;
-typedef  int VCOS_UNSIGNED ;
-struct TYPE_43__ {int /*<<< orphan*/  hdr; } ;
-struct TYPE_47__ {scalar_t__ init_result; char* uri; int seconds_per_change; int change; int /*<<< orphan*/  init_sem; TYPE_39__ encoder_stats; TYPE_39__ render_stats; int /*<<< orphan*/  focus_test; int /*<<< orphan*/  tunneling; int /*<<< orphan*/  zero_copy; } ;
-struct TYPE_46__ {int /*<<< orphan*/  length; int /*<<< orphan*/  data; } ;
+
+
+typedef struct TYPE_47__ TYPE_6__ ;
+typedef struct TYPE_46__ TYPE_5__ ;
+typedef struct TYPE_45__ TYPE_4__ ;
+typedef struct TYPE_44__ TYPE_3__ ;
+typedef struct TYPE_43__ TYPE_39__ ;
+typedef struct TYPE_42__ TYPE_2__ ;
+typedef struct TYPE_41__ TYPE_1__ ;
+typedef struct TYPE_40__ TYPE_13__ ;
+
+
+typedef int uint32_t ;
+typedef int VC_CONTAINER_T ;
+typedef int VCOS_UNSIGNED ;
+struct TYPE_43__ {int hdr; } ;
+struct TYPE_47__ {scalar_t__ init_result; char* uri; int seconds_per_change; int change; int init_sem; TYPE_39__ encoder_stats; TYPE_39__ render_stats; int focus_test; int tunneling; int zero_copy; } ;
+struct TYPE_46__ {int length; int data; } ;
 struct TYPE_45__ {TYPE_2__** output; TYPE_2__** input; } ;
-struct TYPE_41__ {int member_1; int /*<<< orphan*/  member_0; } ;
-struct TYPE_44__ {int member_1; int /*<<< orphan*/  hdr; TYPE_1__ member_0; } ;
+struct TYPE_41__ {int member_1; int member_0; } ;
+struct TYPE_44__ {int member_1; int hdr; TYPE_1__ member_0; } ;
 struct TYPE_42__ {TYPE_13__* format; } ;
 struct TYPE_40__ {scalar_t__ encoding; } ;
-typedef  scalar_t__ MMAL_STATUS_T ;
-typedef  int /*<<< orphan*/  MMAL_QUEUE_T ;
-typedef  TYPE_2__ MMAL_PORT_T ;
-typedef  int /*<<< orphan*/  MMAL_POOL_T ;
-typedef  TYPE_3__ MMAL_PARAMETER_BOOLEAN_T ;
-typedef  TYPE_4__ MMAL_COMPONENT_T ;
-typedef  TYPE_5__ MMAL_BUFFER_HEADER_T ;
-typedef  TYPE_6__ MMALCAM_BEHAVIOUR_T ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef scalar_t__ MMAL_STATUS_T ;
+typedef int MMAL_QUEUE_T ;
+typedef TYPE_2__ MMAL_PORT_T ;
+typedef int MMAL_POOL_T ;
+typedef TYPE_3__ MMAL_PARAMETER_BOOLEAN_T ;
+typedef TYPE_4__ MMAL_COMPONENT_T ;
+typedef TYPE_5__ MMAL_BUFFER_HEADER_T ;
+typedef TYPE_6__ MMALCAM_BEHAVIOUR_T ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_PARAMETER (TYPE_39__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOG_ERROR (char*,int,...) ; 
- int MAX_PACKET_COUNT ; 
-#define  MMALCAM_CHANGE_BRIGHTNESS 137 
-#define  MMALCAM_CHANGE_CONTRAST 136 
-#define  MMALCAM_CHANGE_DRC 135 
-#define  MMALCAM_CHANGE_FOCUS 134 
-#define  MMALCAM_CHANGE_HDR 133 
-#define  MMALCAM_CHANGE_IMAGE_EFFECT 132 
-#define  MMALCAM_CHANGE_ROTATION 131 
-#define  MMALCAM_CHANGE_SATURATION 130 
-#define  MMALCAM_CHANGE_SHARPNESS 129 
-#define  MMALCAM_CHANGE_ZOOM 128 
- scalar_t__ MMALCAM_INIT_ERROR_CAMERA ; 
- scalar_t__ MMALCAM_INIT_ERROR_CAMERA_CAPTURE ; 
- scalar_t__ MMALCAM_INIT_ERROR_ENCODER ; 
- scalar_t__ MMALCAM_INIT_ERROR_ENCODER_IN ; 
- scalar_t__ MMALCAM_INIT_ERROR_ENCODER_OUT ; 
- scalar_t__ MMALCAM_INIT_ERROR_EVENT_FLAGS ; 
- scalar_t__ MMALCAM_INIT_ERROR_RENDER ; 
- scalar_t__ MMALCAM_INIT_ERROR_VIEWFINDER ; 
- scalar_t__ MMALCAM_INIT_SUCCESS ; 
- int /*<<< orphan*/  MMAL_CAM_ANY_EVENT ; 
- int MMAL_CAM_AUTOFOCUS_COMPLETE ; 
- scalar_t__ MMAL_ENCODING_JPEG ; 
- scalar_t__ MMAL_ENOSYS ; 
- int /*<<< orphan*/  MMAL_PARAMETER_BRIGHTNESS ; 
- int /*<<< orphan*/  MMAL_PARAMETER_CAPTURE ; 
- int /*<<< orphan*/  MMAL_PARAMETER_CONTRAST ; 
- int /*<<< orphan*/  MMAL_PARAMETER_SATURATION ; 
- int /*<<< orphan*/  MMAL_PARAMETER_SHARPNESS ; 
- int /*<<< orphan*/  MMAL_PARAMETER_STATISTICS ; 
- int /*<<< orphan*/  MMAL_PARAM_FOCUS_MAX ; 
- scalar_t__ MMAL_SUCCESS ; 
- int /*<<< orphan*/  VCOS_OR_CONSUME ; 
- scalar_t__ VCOS_SUCCESS ; 
- int /*<<< orphan*/  VCOS_TICKS_TO_MS (int) ; 
- scalar_t__ connect_ports (TYPE_2__*,TYPE_2__*,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  disable_port (TYPE_2__*) ; 
- int /*<<< orphan*/  events ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ fill_port_from_pool (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  fwrite (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mmal_buffer_header_mem_lock (TYPE_5__*) ; 
- int /*<<< orphan*/  mmal_buffer_header_mem_unlock (TYPE_5__*) ; 
- int /*<<< orphan*/  mmal_buffer_header_release (TYPE_5__*) ; 
- int /*<<< orphan*/  mmal_component_destroy (TYPE_4__*) ; 
- int /*<<< orphan*/  mmal_component_disable (TYPE_4__*) ; 
- int /*<<< orphan*/  mmal_port_parameter_get (TYPE_2__*,int /*<<< orphan*/ *) ; 
- scalar_t__ mmal_port_parameter_set (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mmal_port_pool_destroy (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mmal_queue_destroy (int /*<<< orphan*/ *) ; 
- TYPE_5__* mmal_queue_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mmalcam_next_colour_param (TYPE_4__*,int /*<<< orphan*/ ,int,int,char*) ; 
- int /*<<< orphan*/  mmalcam_next_drc (TYPE_4__*) ; 
- int /*<<< orphan*/  mmalcam_next_effect (TYPE_4__*) ; 
- int /*<<< orphan*/  mmalcam_next_focus (TYPE_4__*) ; 
- int /*<<< orphan*/  mmalcam_next_hdr (TYPE_4__*) ; 
- int /*<<< orphan*/  mmalcam_next_rotation (TYPE_4__*) ; 
- int /*<<< orphan*/  mmalcam_next_zoom (TYPE_4__*) ; 
- int /*<<< orphan*/  mmalcam_reset_focus (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,int) ; 
- scalar_t__ send_buffer_from_queue (TYPE_2__*,int /*<<< orphan*/ *) ; 
- scalar_t__ setup_output_port (TYPE_2__*,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  stderr ; 
- TYPE_4__* test_camera_create (TYPE_6__*,scalar_t__*) ; 
- int /*<<< orphan*/ * test_container_open (char*,TYPE_13__*,scalar_t__*) ; 
- int /*<<< orphan*/  test_container_write (int /*<<< orphan*/ *,TYPE_5__*) ; 
- TYPE_4__* test_video_encoder_create (TYPE_6__*,scalar_t__*) ; 
- TYPE_4__* test_video_render_create (TYPE_6__*,scalar_t__*) ; 
- int /*<<< orphan*/  tunneling ; 
- int /*<<< orphan*/  vc_container_close (int /*<<< orphan*/ *) ; 
- scalar_t__ vcos_event_flags_create (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  vcos_event_flags_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_event_flags_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int vcos_get_ms () ; 
- int /*<<< orphan*/  vcos_semaphore_post (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zero_copy ; 
+
+ int INIT_PARAMETER (TYPE_39__,int ) ;
+ int LOG_ERROR (char*,int,...) ;
+ int MAX_PACKET_COUNT ;
+ scalar_t__ MMALCAM_INIT_ERROR_CAMERA ;
+ scalar_t__ MMALCAM_INIT_ERROR_CAMERA_CAPTURE ;
+ scalar_t__ MMALCAM_INIT_ERROR_ENCODER ;
+ scalar_t__ MMALCAM_INIT_ERROR_ENCODER_IN ;
+ scalar_t__ MMALCAM_INIT_ERROR_ENCODER_OUT ;
+ scalar_t__ MMALCAM_INIT_ERROR_EVENT_FLAGS ;
+ scalar_t__ MMALCAM_INIT_ERROR_RENDER ;
+ scalar_t__ MMALCAM_INIT_ERROR_VIEWFINDER ;
+ scalar_t__ MMALCAM_INIT_SUCCESS ;
+ int MMAL_CAM_ANY_EVENT ;
+ int MMAL_CAM_AUTOFOCUS_COMPLETE ;
+ scalar_t__ MMAL_ENCODING_JPEG ;
+ scalar_t__ MMAL_ENOSYS ;
+ int MMAL_PARAMETER_BRIGHTNESS ;
+ int MMAL_PARAMETER_CAPTURE ;
+ int MMAL_PARAMETER_CONTRAST ;
+ int MMAL_PARAMETER_SATURATION ;
+ int MMAL_PARAMETER_SHARPNESS ;
+ int MMAL_PARAMETER_STATISTICS ;
+ int MMAL_PARAM_FOCUS_MAX ;
+ scalar_t__ MMAL_SUCCESS ;
+ int VCOS_OR_CONSUME ;
+ scalar_t__ VCOS_SUCCESS ;
+ int VCOS_TICKS_TO_MS (int) ;
+ scalar_t__ connect_ports (TYPE_2__*,TYPE_2__*,int **,int **) ;
+ int disable_port (TYPE_2__*) ;
+ int events ;
+ int fclose (int *) ;
+ scalar_t__ fill_port_from_pool (TYPE_2__*,int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int fwrite (int ,int,int ,int *) ;
+ int mmal_buffer_header_mem_lock (TYPE_5__*) ;
+ int mmal_buffer_header_mem_unlock (TYPE_5__*) ;
+ int mmal_buffer_header_release (TYPE_5__*) ;
+ int mmal_component_destroy (TYPE_4__*) ;
+ int mmal_component_disable (TYPE_4__*) ;
+ int mmal_port_parameter_get (TYPE_2__*,int *) ;
+ scalar_t__ mmal_port_parameter_set (TYPE_2__*,int *) ;
+ int mmal_port_pool_destroy (TYPE_2__*,int *) ;
+ int mmal_queue_destroy (int *) ;
+ TYPE_5__* mmal_queue_get (int *) ;
+ int mmalcam_next_colour_param (TYPE_4__*,int ,int,int,char*) ;
+ int mmalcam_next_drc (TYPE_4__*) ;
+ int mmalcam_next_effect (TYPE_4__*) ;
+ int mmalcam_next_focus (TYPE_4__*) ;
+ int mmalcam_next_hdr (TYPE_4__*) ;
+ int mmalcam_next_rotation (TYPE_4__*) ;
+ int mmalcam_next_zoom (TYPE_4__*) ;
+ int mmalcam_reset_focus (TYPE_4__*,int ) ;
+ int printf (char*,int) ;
+ scalar_t__ send_buffer_from_queue (TYPE_2__*,int *) ;
+ scalar_t__ setup_output_port (TYPE_2__*,int **,int **) ;
+ int stderr ;
+ TYPE_4__* test_camera_create (TYPE_6__*,scalar_t__*) ;
+ int * test_container_open (char*,TYPE_13__*,scalar_t__*) ;
+ int test_container_write (int *,TYPE_5__*) ;
+ TYPE_4__* test_video_encoder_create (TYPE_6__*,scalar_t__*) ;
+ TYPE_4__* test_video_render_create (TYPE_6__*,scalar_t__*) ;
+ int tunneling ;
+ int vc_container_close (int *) ;
+ scalar_t__ vcos_event_flags_create (int *,char*) ;
+ int vcos_event_flags_delete (int *) ;
+ int vcos_event_flags_get (int *,int ,int ,int ,int*) ;
+ int vcos_get_ms () ;
+ int vcos_semaphore_post (int *) ;
+ int zero_copy ;
 
 int test_mmal_start_camcorder(volatile int *stop, MMALCAM_BEHAVIOUR_T *behaviour)
 {
@@ -131,10 +121,10 @@ int test_mmal_start_camcorder(volatile int *stop, MMALCAM_BEHAVIOUR_T *behaviour
    MMAL_PORT_T *render_port = 0, *encoder_input = 0, *encoder_output = 0;
    uint32_t ms_per_change, last_change_ms, set_focus_delay_ms;
    int packet_count = 0;
-#if USE_CONTAINER
-   VC_CONTAINER_T *container = 0;
-#endif
-   FILE *output = NULL;
+
+
+
+   FILE *output = ((void*)0);
 
    if(vcos_event_flags_create(&events, "MMALCam") != VCOS_SUCCESS)
    {
@@ -145,7 +135,7 @@ int test_mmal_start_camcorder(volatile int *stop, MMALCAM_BEHAVIOUR_T *behaviour
    zero_copy = behaviour->zero_copy;
    tunneling = behaviour->tunneling;
 
-   /* Create and setup camera viewfinder component */
+
    camera = test_camera_create(behaviour, &status);
    if(!camera)
    {
@@ -156,7 +146,7 @@ int test_mmal_start_camcorder(volatile int *stop, MMALCAM_BEHAVIOUR_T *behaviour
    video_port = camera->output[1];
    still_port = camera->output[2];
 
-   /* Create and setup video render component */
+
    render = test_video_render_create(behaviour, &status);
    if(!render)
    {
@@ -177,7 +167,7 @@ int test_mmal_start_camcorder(volatile int *stop, MMALCAM_BEHAVIOUR_T *behaviour
       MMAL_PARAMETER_BOOLEAN_T camera_capture =
             {{MMAL_PARAMETER_CAPTURE, sizeof(MMAL_PARAMETER_BOOLEAN_T)}, 1};
 
-      /* Create and setup video encoder component */
+
       encoder = test_video_encoder_create(behaviour, &status);
       if(!encoder)
       {
@@ -210,26 +200,16 @@ int test_mmal_start_camcorder(volatile int *stop, MMALCAM_BEHAVIOUR_T *behaviour
          behaviour->init_result = MMALCAM_INIT_ERROR_CAMERA_CAPTURE;
          goto error;
       }
-
-#if USE_CONTAINER
-      container = test_container_open(behaviour->uri, encoder_output->format, &status);
-      if (!container)
-      {
-         /* Notify user, carry on discarding encoded output buffers */
-         fprintf(stderr, "Error (%i) opening container: %s\n", status, behaviour->uri);
-      }
-#else
-
       output = fopen(behaviour->uri, "wb");
       if(!output)
       {
-         /* Notify user, carry on discarding encoded output buffers */
+
          fprintf(stderr, "Error opening output file: %s\n", behaviour->uri);
       }
-#endif
+
    }
 
-   /* Initialisation now complete */
+
    behaviour->init_result = MMALCAM_INIT_SUCCESS;
    vcos_semaphore_post(&behaviour->init_sem);
 
@@ -255,7 +235,7 @@ int test_mmal_start_camcorder(volatile int *stop, MMALCAM_BEHAVIOUR_T *behaviour
          }
       }
 
-      /* Send empty buffers to the output ports */
+
       status = fill_port_from_pool(viewfinder_port, pool_viewfinder);
       if (status != MMAL_SUCCESS)
          break;
@@ -266,7 +246,7 @@ int test_mmal_start_camcorder(volatile int *stop, MMALCAM_BEHAVIOUR_T *behaviour
       if (status != MMAL_SUCCESS)
          break;
 
-      /* Process filled output buffers */
+
       status = send_buffer_from_queue(render_port, queue_viewfinder);
       if (status != MMAL_SUCCESS)
          break;
@@ -274,36 +254,36 @@ int test_mmal_start_camcorder(volatile int *stop, MMALCAM_BEHAVIOUR_T *behaviour
       if (status != MMAL_SUCCESS)
          break;
 
-      /* Process output buffers from encoder */
+
       if (queue_encoder_out)
       {
          buffer = mmal_queue_get(queue_encoder_out);
          if (buffer)
          {
             if (output
-#if USE_CONTAINER
-                || container
-#endif
+
+
+
                 )
             {
                mmal_buffer_header_mem_lock(buffer);
-#if USE_CONTAINER
-               test_container_write(container, buffer);
-#else
+
+
+
                LOG_ERROR("Write %d bytes of data from %p", buffer->length, buffer->data);
                fwrite(buffer->data, 1, buffer->length, output);
-#endif
+
                mmal_buffer_header_mem_unlock(buffer);
                packet_count++;
                if (packet_count > MAX_PACKET_COUNT)
                {
-#if USE_CONTAINER
-                  vc_container_close(container);
-                  container = 0;
-#else
+
+
+
+
                   fclose(output);
-#endif
-                  output = NULL;
+
+                  output = ((void*)0);
                   fprintf(stderr, "All packets written\n");
                }
             }
@@ -311,7 +291,7 @@ int test_mmal_start_camcorder(volatile int *stop, MMALCAM_BEHAVIOUR_T *behaviour
          }
       }
 
-      /* Change a camera parameter if requested */
+
       if (ms_per_change != 0)
       {
          if((vcos_get_ms() - last_change_ms) >= ms_per_change)
@@ -319,43 +299,43 @@ int test_mmal_start_camcorder(volatile int *stop, MMALCAM_BEHAVIOUR_T *behaviour
             last_change_ms = vcos_get_ms();
             switch (behaviour->change)
             {
-               case MMALCAM_CHANGE_IMAGE_EFFECT:
+               case 132:
                   if (!mmalcam_next_effect(camera))
                      *stop = 1;
                   break;
-               case MMALCAM_CHANGE_ROTATION:
+               case 131:
                   if (!mmalcam_next_rotation(camera))
                      *stop = 1;
                   break;
-               case MMALCAM_CHANGE_ZOOM:
+               case 128:
                   if (!mmalcam_next_zoom(camera))
                      *stop = 1;
                   break;
-               case MMALCAM_CHANGE_FOCUS:
+               case 134:
                   if (!mmalcam_next_focus(camera))
                      *stop = 1;
                   break;
-               case MMALCAM_CHANGE_DRC:
+               case 135:
                   if (!mmalcam_next_drc(camera))
                      *stop = 1;
                   break;
-               case MMALCAM_CHANGE_HDR:
+               case 133:
                   if (!mmalcam_next_hdr(camera))
                      *stop = 1;
                   break;
-               case MMALCAM_CHANGE_CONTRAST:
+               case 136:
                   if (!mmalcam_next_colour_param(camera, MMAL_PARAMETER_CONTRAST, -100, 100, "contrast"))
                      *stop = 1;
                   break;
-               case MMALCAM_CHANGE_BRIGHTNESS:
+               case 137:
                   if (!mmalcam_next_colour_param(camera, MMAL_PARAMETER_BRIGHTNESS, 0, 100, "brightness"))
                      *stop = 1;
                   break;
-               case MMALCAM_CHANGE_SATURATION:
+               case 130:
                   if (!mmalcam_next_colour_param(camera, MMAL_PARAMETER_SATURATION, -100, 100, "saturation"))
                      *stop = 1;
                   break;
-               case MMALCAM_CHANGE_SHARPNESS:
+               case 129:
                   if (!mmalcam_next_colour_param(camera, MMAL_PARAMETER_SHARPNESS, -100, 100, "sharpness"))
                      *stop = 1;
                   break;
@@ -367,14 +347,14 @@ int test_mmal_start_camcorder(volatile int *stop, MMALCAM_BEHAVIOUR_T *behaviour
       }
    }
 
-   /* Disable ports */
+
    disable_port(viewfinder_port);
    disable_port(render_port);
    disable_port(video_port);
    disable_port(encoder_input);
    disable_port(encoder_output);
 
-   /* Disable components */
+
    mmal_component_disable(render);
    if (encoder)
       mmal_component_disable(encoder);
@@ -389,7 +369,7 @@ int test_mmal_start_camcorder(volatile int *stop, MMALCAM_BEHAVIOUR_T *behaviour
    }
 
  error:
-   /* The pools need to be destroyed first since they are owned by the components */
+
    if(pool_viewfinder)
       mmal_port_pool_destroy(viewfinder_port, pool_viewfinder);
    if(pool_encoder_in)
@@ -411,10 +391,10 @@ int test_mmal_start_camcorder(volatile int *stop, MMALCAM_BEHAVIOUR_T *behaviour
    if(queue_encoder_out)
       mmal_queue_destroy(queue_encoder_out);
 
-#if USE_CONTAINER
-   if(container)
-      vc_container_close(container);
-#endif
+
+
+
+
    if(output)
       fclose(output);
 

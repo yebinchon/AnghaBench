@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void tree_ext_large_t ;
-typedef  int /*<<< orphan*/  object_id_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OTree ; 
- int /*<<< orphan*/  R_end ; 
- int R_mode ; 
- int /*<<< orphan*/  SMALL_NODE (void*) ; 
- int /*<<< orphan*/  assert (void*) ; 
- int barray_out_node_rev (int /*<<< orphan*/ ,int) ; 
- int btree_out_node_rev (int /*<<< orphan*/ ) ; 
- void* listree_lookup_large (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  store_object_id_rev (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef void tree_ext_large_t ;
+typedef int object_id_t ;
+
+
+ int OTree ;
+ int R_end ;
+ int R_mode ;
+ int SMALL_NODE (void*) ;
+ int assert (void*) ;
+ int barray_out_node_rev (int ,int) ;
+ int btree_out_node_rev (int ) ;
+ void* listree_lookup_large (int *,int ,int*) ;
+ int store_object_id_rev (int *,int ) ;
 
 __attribute__((used)) static inline int b_out_rev (object_id_t object_id) {
   int m = R_mode;

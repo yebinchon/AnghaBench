@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int int64_t ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int int64_t ;
 struct TYPE_12__ {int height; int width; scalar_t__ discard_damaged_percentage; TYPE_1__* priv_data; } ;
-struct TYPE_11__ {int* linesize; int key_frame; int /*<<< orphan*/  pict_type; int /*<<< orphan*/ ** data; } ;
-struct TYPE_10__ {int size; int /*<<< orphan*/  data; } ;
-struct TYPE_9__ {int size; int stride; int /*<<< orphan*/ * decbuffer; scalar_t__ initial_line; int /*<<< orphan*/  pb; int /*<<< orphan*/  lut; int /*<<< orphan*/  gb; } ;
-typedef  TYPE_1__ ProSumerContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVCodecContext ;
+struct TYPE_11__ {int* linesize; int key_frame; int pict_type; int ** data; } ;
+struct TYPE_10__ {int size; int data; } ;
+struct TYPE_9__ {int size; int stride; int * decbuffer; scalar_t__ initial_line; int pb; int lut; int gb; } ;
+typedef TYPE_1__ ProSumerContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_I ; 
- int AV_RL32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int bytestream2_get_bytes_left_p (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  bytestream2_init_writer (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int bytestream2_tell_p (int /*<<< orphan*/ *) ; 
- int decompress (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int ff_get_buffer (TYPE_4__*,TYPE_3__* const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  vertical_predict (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_PICTURE_TYPE_I ;
+ int AV_RL32 (int ) ;
+ int av_assert0 (int) ;
+ int bytestream2_get_bytes_left_p (int *) ;
+ int bytestream2_init (int *,int ,int) ;
+ int bytestream2_init_writer (int *,int *,int) ;
+ int bytestream2_tell_p (int *) ;
+ int decompress (int *,int,int *,int ) ;
+ int ff_get_buffer (TYPE_4__*,TYPE_3__* const,int ) ;
+ int memset (int *,int ,int) ;
+ int vertical_predict (int *,int,int *,int,int) ;
 
 __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
                         int *got_frame, AVPacket *avpkt)

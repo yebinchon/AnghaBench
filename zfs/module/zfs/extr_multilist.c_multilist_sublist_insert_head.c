@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  mls_list; int /*<<< orphan*/  mls_lock; } ;
-typedef  TYPE_1__ multilist_sublist_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MUTEX_HELD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_insert_head (int /*<<< orphan*/ *,void*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int mls_list; int mls_lock; } ;
+typedef TYPE_1__ multilist_sublist_t ;
+
+
+ int ASSERT (int ) ;
+ int MUTEX_HELD (int *) ;
+ int list_insert_head (int *,void*) ;
 
 void
 multilist_sublist_insert_head(multilist_sublist_t *mls, void *obj)
 {
-	ASSERT(MUTEX_HELD(&mls->mls_lock));
-	list_insert_head(&mls->mls_list, obj);
+ ASSERT(MUTEX_HELD(&mls->mls_lock));
+ list_insert_head(&mls->mls_list, obj);
 }

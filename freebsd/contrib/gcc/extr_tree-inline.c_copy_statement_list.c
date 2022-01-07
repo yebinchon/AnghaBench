@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree_stmt_iterator ;
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TSI_NEW_STMT ; 
- int /*<<< orphan*/  alloc_stmt_list () ; 
- int /*<<< orphan*/  tsi_end_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tsi_link_after (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tsi_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tsi_start (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tsi_stmt (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree_stmt_iterator ;
+typedef int tree ;
+
+
+ int TSI_NEW_STMT ;
+ int alloc_stmt_list () ;
+ int tsi_end_p (int ) ;
+ int tsi_link_after (int *,int ,int ) ;
+ int tsi_next (int *) ;
+ int tsi_start (int ) ;
+ int tsi_stmt (int ) ;
 
 __attribute__((used)) static void
 copy_statement_list (tree *tp)

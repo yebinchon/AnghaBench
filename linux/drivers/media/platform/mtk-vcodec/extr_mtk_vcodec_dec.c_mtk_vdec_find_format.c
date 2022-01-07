@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ pixelformat; } ;
 struct TYPE_4__ {TYPE_1__ pix_mp; } ;
 struct v4l2_format {TYPE_2__ fmt; } ;
 struct mtk_video_fmt {scalar_t__ fourcc; } ;
 
-/* Variables and functions */
- unsigned int NUM_FORMATS ; 
- struct mtk_video_fmt* mtk_video_formats ; 
+
+ unsigned int NUM_FORMATS ;
+ struct mtk_video_fmt* mtk_video_formats ;
 
 __attribute__((used)) static const struct mtk_video_fmt *mtk_vdec_find_format(struct v4l2_format *f)
 {
-	const struct mtk_video_fmt *fmt;
-	unsigned int k;
+ const struct mtk_video_fmt *fmt;
+ unsigned int k;
 
-	for (k = 0; k < NUM_FORMATS; k++) {
-		fmt = &mtk_video_formats[k];
-		if (fmt->fourcc == f->fmt.pix_mp.pixelformat)
-			return fmt;
-	}
+ for (k = 0; k < NUM_FORMATS; k++) {
+  fmt = &mtk_video_formats[k];
+  if (fmt->fourcc == f->fmt.pix_mp.pixelformat)
+   return fmt;
+ }
 
-	return NULL;
+ return ((void*)0);
 }

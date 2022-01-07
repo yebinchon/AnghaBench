@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct eventop {char* name; } ;
 
-/* Variables and functions */
- struct eventop** eventops ; 
- char** mm_calloc (int,int) ; 
- int /*<<< orphan*/  mm_free (char**) ; 
+
+ struct eventop** eventops ;
+ char** mm_calloc (int,int) ;
+ int mm_free (char**) ;
 
 const char **
 event_get_supported_methods(void)
 {
-	static const char **methods = NULL;
-	const struct eventop **method;
-	const char **tmp;
-	int i = 0, k;
+ static const char **methods = ((void*)0);
+ const struct eventop **method;
+ const char **tmp;
+ int i = 0, k;
 
-	/* count all methods */
-	for (method = &eventops[0]; *method != NULL; ++method) {
-		++i;
-	}
 
-	/* allocate one more than we need for the NULL pointer */
-	tmp = mm_calloc((i + 1), sizeof(char *));
-	if (tmp == NULL)
-		return (NULL);
+ for (method = &eventops[0]; *method != ((void*)0); ++method) {
+  ++i;
+ }
 
-	/* populate the array with the supported methods */
-	for (k = 0, i = 0; eventops[k] != NULL; ++k) {
-		tmp[i++] = eventops[k]->name;
-	}
-	tmp[i] = NULL;
 
-	if (methods != NULL)
-		mm_free((char**)methods);
+ tmp = mm_calloc((i + 1), sizeof(char *));
+ if (tmp == ((void*)0))
+  return (((void*)0));
 
-	methods = tmp;
 
-	return (methods);
+ for (k = 0, i = 0; eventops[k] != ((void*)0); ++k) {
+  tmp[i++] = eventops[k]->name;
+ }
+ tmp[i] = ((void*)0);
+
+ if (methods != ((void*)0))
+  mm_free((char**)methods);
+
+ methods = tmp;
+
+ return (methods);
 }

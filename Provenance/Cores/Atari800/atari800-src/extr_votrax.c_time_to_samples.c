@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {size_t actIntonation; } ;
 
-/* Variables and functions */
- int* sample_rate ; 
- TYPE_1__ votraxsc01_locals ; 
+
+ int* sample_rate ;
+ TYPE_1__ votraxsc01_locals ;
 
 __attribute__((used)) static int time_to_samples(int ms)
 {
-	return sample_rate[votraxsc01_locals.actIntonation]*ms/1000;
+ return sample_rate[votraxsc01_locals.actIntonation]*ms/1000;
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LZ4_stream_t ;
-typedef  int /*<<< orphan*/  LZ4F_CDict ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LZ4F_blockIndependent ; 
- int /*<<< orphan*/  LZ4F_initStream (void*,int /*<<< orphan*/  const*,int,int /*<<< orphan*/ ) ; 
- int LZ4_compress_fast_continue (int /*<<< orphan*/ *,char const*,char*,int,int,int const) ; 
- int LZ4_compress_fast_extState_fastReset (void*,char const*,char*,int,int,int const) ; 
+
+
+
+typedef int LZ4_stream_t ;
+typedef int LZ4F_CDict ;
+
+
+ int LZ4F_blockIndependent ;
+ int LZ4F_initStream (void*,int const*,int,int ) ;
+ int LZ4_compress_fast_continue (int *,char const*,char*,int,int,int const) ;
+ int LZ4_compress_fast_extState_fastReset (void*,char const*,char*,int,int,int const) ;
 
 __attribute__((used)) static int LZ4F_compressBlock(void* ctx, const char* src, char* dst, int srcSize, int dstCapacity, int level, const LZ4F_CDict* cdict)
 {

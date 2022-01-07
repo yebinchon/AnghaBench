@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int Flags; TYPE_4__* Next; TYPE_4__* Handler; int /*<<< orphan*/  SpaceId; } ;
-struct TYPE_12__ {int /*<<< orphan*/  Context; int /*<<< orphan*/  (* Setup ) (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void**) ;TYPE_4__* RegionList; } ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int Flags; TYPE_4__* Next; TYPE_4__* Handler; int SpaceId; } ;
+struct TYPE_12__ {int Context; int (* Setup ) (TYPE_4__*,int ,int ,void**) ;TYPE_4__* RegionList; } ;
 struct TYPE_11__ {void* RegionContext; } ;
 struct TYPE_14__ {TYPE_3__ Region; TYPE_2__ AddressSpace; TYPE_1__ Extra; } ;
-typedef  scalar_t__ BOOLEAN ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  TYPE_4__ ACPI_OPERAND_OBJECT ;
-typedef  int /*<<< orphan*/  (* ACPI_ADR_SPACE_SETUP ) (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void**) ;
+typedef scalar_t__ BOOLEAN ;
+typedef int ACPI_STATUS ;
+typedef TYPE_4__ ACPI_OPERAND_OBJECT ;
+typedef int (* ACPI_ADR_SPACE_SETUP ) (TYPE_4__*,int ,int ,void**) ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_DB_OPREGION ; 
- int /*<<< orphan*/  ACPI_DEBUG_PRINT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_EXCEPTION (int /*<<< orphan*/ ) ; 
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_FUNCTION_TRACE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_MTX_NAMESPACE ; 
- int /*<<< orphan*/  ACPI_REGION_DEACTIVATE ; 
- int /*<<< orphan*/  ACPI_REG_DISCONNECT ; 
- int /*<<< orphan*/  AE_INFO ; 
- int AOPOBJ_SETUP_COMPLETE ; 
- int /*<<< orphan*/  AcpiEvExecuteRegMethod (TYPE_4__*,int /*<<< orphan*/ ) ; 
- TYPE_4__* AcpiNsGetSecondaryObject (TYPE_4__*) ; 
- int /*<<< orphan*/  AcpiUtAcquireMutex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiUtGetRegionName (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiUtReleaseMutex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiUtRemoveReference (TYPE_4__*) ; 
- int /*<<< orphan*/  EvDetachRegion ; 
- int /*<<< orphan*/  return_VOID ; 
+
+ int ACPI_DB_OPREGION ;
+ int ACPI_DEBUG_PRINT (int ) ;
+ int ACPI_ERROR (int ) ;
+ int ACPI_EXCEPTION (int ) ;
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int ACPI_FUNCTION_TRACE (int ) ;
+ int ACPI_MTX_NAMESPACE ;
+ int ACPI_REGION_DEACTIVATE ;
+ int ACPI_REG_DISCONNECT ;
+ int AE_INFO ;
+ int AOPOBJ_SETUP_COMPLETE ;
+ int AcpiEvExecuteRegMethod (TYPE_4__*,int ) ;
+ TYPE_4__* AcpiNsGetSecondaryObject (TYPE_4__*) ;
+ int AcpiUtAcquireMutex (int ) ;
+ int AcpiUtGetRegionName (int ) ;
+ int AcpiUtReleaseMutex (int ) ;
+ int AcpiUtRemoveReference (TYPE_4__*) ;
+ int EvDetachRegion ;
+ int return_VOID ;
 
 void
 AcpiEvDetachRegion (
-    ACPI_OPERAND_OBJECT     *RegionObj,
-    BOOLEAN                 AcpiNsIsLocked)
+    ACPI_OPERAND_OBJECT *RegionObj,
+    BOOLEAN AcpiNsIsLocked)
 {
-    ACPI_OPERAND_OBJECT     *HandlerObj;
-    ACPI_OPERAND_OBJECT     *ObjDesc;
-    ACPI_OPERAND_OBJECT     *StartDesc;
-    ACPI_OPERAND_OBJECT     **LastObjPtr;
-    ACPI_ADR_SPACE_SETUP    RegionSetup;
-    void                    **RegionContext;
-    ACPI_OPERAND_OBJECT     *RegionObj2;
-    ACPI_STATUS             Status;
+    ACPI_OPERAND_OBJECT *HandlerObj;
+    ACPI_OPERAND_OBJECT *ObjDesc;
+    ACPI_OPERAND_OBJECT *StartDesc;
+    ACPI_OPERAND_OBJECT **LastObjPtr;
+    ACPI_ADR_SPACE_SETUP RegionSetup;
+    void **RegionContext;
+    ACPI_OPERAND_OBJECT *RegionObj2;
+    ACPI_STATUS Status;
 
 
     ACPI_FUNCTION_TRACE (EvDetachRegion);
@@ -69,17 +69,17 @@ AcpiEvDetachRegion (
     }
     RegionContext = &RegionObj2->Extra.RegionContext;
 
-    /* Get the address handler from the region object */
+
 
     HandlerObj = RegionObj->Region.Handler;
     if (!HandlerObj)
     {
-        /* This region has no handler, all done */
+
 
         return_VOID;
     }
 
-    /* Find this region in the handler's list */
+
 
     ObjDesc = HandlerObj->AddressSpace.RegionList;
     StartDesc = ObjDesc;
@@ -87,7 +87,7 @@ AcpiEvDetachRegion (
 
     while (ObjDesc)
     {
-        /* Is this the correct Region? */
+
 
         if (ObjDesc == RegionObj)
         {
@@ -95,10 +95,10 @@ AcpiEvDetachRegion (
                 "Removing Region %p from address handler %p\n",
                 RegionObj, HandlerObj));
 
-            /* This is it, remove it from the handler's list */
+
 
             *LastObjPtr = ObjDesc->Region.Next;
-            ObjDesc->Region.Next = NULL;        /* Must clear field */
+            ObjDesc->Region.Next = ((void*)0);
 
             if (AcpiNsIsLocked)
             {
@@ -109,7 +109,7 @@ AcpiEvDetachRegion (
                 }
             }
 
-            /* Now stop region accesses by executing the _REG method */
+
 
             Status = AcpiEvExecuteRegMethod (RegionObj, ACPI_REG_DISCONNECT);
             if (ACPI_FAILURE (Status))
@@ -127,26 +127,26 @@ AcpiEvDetachRegion (
                 }
             }
 
-            /*
-             * If the region has been activated, call the setup handler with
-             * the deactivate notification
-             */
+
+
+
+
             if (RegionObj->Region.Flags & AOPOBJ_SETUP_COMPLETE)
             {
                 RegionSetup = HandlerObj->AddressSpace.Setup;
                 Status = RegionSetup (RegionObj, ACPI_REGION_DEACTIVATE,
                     HandlerObj->AddressSpace.Context, RegionContext);
 
-                /*
-                 * RegionContext should have been released by the deactivate
-                 * operation. We don't need access to it anymore here.
-                 */
+
+
+
+
                 if (RegionContext)
                 {
-                    *RegionContext = NULL;
+                    *RegionContext = ((void*)0);
                 }
 
-                /* Init routine may fail, Just ignore errors */
+
 
                 if (ACPI_FAILURE (Status))
                 {
@@ -157,28 +157,18 @@ AcpiEvDetachRegion (
 
                 RegionObj->Region.Flags &= ~(AOPOBJ_SETUP_COMPLETE);
             }
-
-            /*
-             * Remove handler reference in the region
-             *
-             * NOTE: this doesn't mean that the region goes away, the region
-             * is just inaccessible as indicated to the _REG method
-             *
-             * If the region is on the handler's list, this must be the
-             * region's handler
-             */
-            RegionObj->Region.Handler = NULL;
+            RegionObj->Region.Handler = ((void*)0);
             AcpiUtRemoveReference (HandlerObj);
 
             return_VOID;
         }
 
-        /* Walk the linked list of handlers */
+
 
         LastObjPtr = &ObjDesc->Region.Next;
         ObjDesc = ObjDesc->Region.Next;
 
-        /* Prevent infinite loop if list is corrupted */
+
 
         if (ObjDesc == StartDesc)
         {
@@ -189,7 +179,7 @@ AcpiEvDetachRegion (
         }
     }
 
-    /* If we get here, the region was not in the handler's region list */
+
 
     ACPI_DEBUG_PRINT ((ACPI_DB_OPREGION,
         "Cannot remove region %p from address handler %p\n",

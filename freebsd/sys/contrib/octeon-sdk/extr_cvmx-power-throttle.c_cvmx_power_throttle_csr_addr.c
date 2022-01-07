@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
 
-/* Variables and functions */
- int CVMX_L2C_COP0_MAPX (int /*<<< orphan*/ ) ; 
- int CVMX_MAX_CORES ; 
- int /*<<< orphan*/  OCTEON_CN6XXX ; 
- scalar_t__ OCTEON_IS_MODEL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+
+
+typedef int uint64_t ;
+
+
+ int CVMX_L2C_COP0_MAPX (int ) ;
+ int CVMX_MAX_CORES ;
+ int OCTEON_CN6XXX ;
+ scalar_t__ OCTEON_IS_MODEL (int ) ;
+ int assert (int) ;
 
 __attribute__((used)) static uint64_t cvmx_power_throttle_csr_addr(int ppid)
 {
@@ -27,9 +27,9 @@ __attribute__((used)) static uint64_t cvmx_power_throttle_csr_addr(int ppid)
 
         assert(ppid < CVMX_MAX_CORES);
 
-        /*
-         * register 11 selection 6
-         */
+
+
+
         reg_reg = 11;
         reg_sel = 6;
         reg_num = (ppid << 8) + (reg_reg << 3) + reg_sel;

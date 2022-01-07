@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * string; int /*<<< orphan*/  num; } ;
-struct value {int type; int /*<<< orphan*/ * array; TYPE_1__ u; } ;
 
-/* Variables and functions */
-#define  BCODE_NONE 130 
-#define  BCODE_NUMBER 129 
-#define  BCODE_STRING 128 
- int /*<<< orphan*/ * array_dup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dup_number (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  err (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * strdup (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * string; int num; } ;
+struct value {int type; int * array; TYPE_1__ u; } ;
+
+
+
+
+
+ int * array_dup (int *) ;
+ int dup_number (int ) ;
+ int err (int,int *) ;
+ int * strdup (int *) ;
 
 struct value *
 stack_dup_value(const struct value *a, struct value *copy)
 {
 
-	copy->type = a->type;
+ copy->type = a->type;
 
-	switch (a->type) {
-	case BCODE_NONE:
-		break;
-	case BCODE_NUMBER:
-		copy->u.num = dup_number(a->u.num);
-		break;
-	case BCODE_STRING:
-		copy->u.string = strdup(a->u.string);
-		if (copy->u.string == NULL)
-			err(1, NULL);
-		break;
-	}
+ switch (a->type) {
+ case 130:
+  break;
+ case 129:
+  copy->u.num = dup_number(a->u.num);
+  break;
+ case 128:
+  copy->u.string = strdup(a->u.string);
+  if (copy->u.string == ((void*)0))
+   err(1, ((void*)0));
+  break;
+ }
 
-	copy->array = a->array == NULL ? NULL : array_dup(a->array);
+ copy->array = a->array == ((void*)0) ? ((void*)0) : array_dup(a->array);
 
-	return (copy);
+ return (copy);
 }

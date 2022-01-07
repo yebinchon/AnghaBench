@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  errno ; 
- scalar_t__ gethostname (char*,int) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char*) ; 
- char* socket_strerror (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int errno ;
+ scalar_t__ gethostname (char*,int) ;
+ int lua_pushnil (int *) ;
+ int lua_pushstring (int *,char*) ;
+ char* socket_strerror (int ) ;
 
 __attribute__((used)) static int inet_global_gethostname(lua_State *L)
 {

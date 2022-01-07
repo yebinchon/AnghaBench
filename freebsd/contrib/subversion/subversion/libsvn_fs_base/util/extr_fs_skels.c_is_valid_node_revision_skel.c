@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {TYPE_1__* next; struct TYPE_9__* children; scalar_t__ len; scalar_t__ is_atom; } ;
-typedef  TYPE_2__ svn_skel_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
+typedef TYPE_2__ svn_skel_t ;
+typedef int svn_boolean_t ;
 struct TYPE_8__ {scalar_t__ is_atom; TYPE_2__* next; scalar_t__ len; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  is_valid_node_revision_header_skel (TYPE_2__*,TYPE_2__**) ; 
- int svn_skel__list_length (TYPE_2__*) ; 
- scalar_t__ svn_skel__matches_atom (TYPE_2__*,char*) ; 
+
+ int FALSE ;
+ int TRUE ;
+ int is_valid_node_revision_header_skel (TYPE_2__*,TYPE_2__**) ;
+ int svn_skel__list_length (TYPE_2__*) ;
+ scalar_t__ svn_skel__matches_atom (TYPE_2__*,char*) ;
 
 __attribute__((used)) static svn_boolean_t
 is_valid_node_revision_skel(svn_skel_t *skel)
@@ -52,8 +52,8 @@ is_valid_node_revision_skel(svn_skel_t *skel)
       if (! header->next->is_atom)
         return FALSE;
 
-      /* As of SVN_FS_BASE__MIN_REP_SHARING_FORMAT version, the
-         DATA-KEY slot can be a 2-tuple. */
+
+
       if (! header->next->next->is_atom)
         {
           if (! ((svn_skel__list_length(header->next->next) == 2)

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct parse {TYPE_1__* g; } ;
-typedef  int /*<<< orphan*/  cset ;
-struct TYPE_2__ {scalar_t__ ncsets; int /*<<< orphan*/ * sets; } ;
+typedef int cset ;
+struct TYPE_2__ {scalar_t__ ncsets; int * sets; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REG_ESPACE ; 
- int /*<<< orphan*/  SETERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * reallocarray (int /*<<< orphan*/ *,scalar_t__,int) ; 
+
+ int REG_ESPACE ;
+ int SETERROR (int ) ;
+ int memset (int *,int ,int) ;
+ int * reallocarray (int *,scalar_t__,int) ;
 
 __attribute__((used)) static cset *
 allocset(struct parse *p)
 {
-	cset *cs, *ncs;
+ cset *cs, *ncs;
 
-	ncs = reallocarray(p->g->sets, p->g->ncsets + 1, sizeof(*ncs));
-	if (ncs == NULL) {
-		SETERROR(REG_ESPACE);
-		return (NULL);
-	}
-	p->g->sets = ncs;
-	cs = &p->g->sets[p->g->ncsets++];
-	memset(cs, 0, sizeof(*cs));
+ ncs = reallocarray(p->g->sets, p->g->ncsets + 1, sizeof(*ncs));
+ if (ncs == ((void*)0)) {
+  SETERROR(REG_ESPACE);
+  return (((void*)0));
+ }
+ p->g->sets = ncs;
+ cs = &p->g->sets[p->g->ncsets++];
+ memset(cs, 0, sizeof(*cs));
 
-	return(cs);
+ return(cs);
 }

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct irq_desc {int /*<<< orphan*/  status_use_accessors; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _IRQ_NOTHREAD ; 
+
+
+
+struct irq_desc {int status_use_accessors; } ;
+
+
+ int _IRQ_NOTHREAD ;
 
 __attribute__((used)) static inline void irq_settings_set_nothread(struct irq_desc *desc)
 {
-	desc->status_use_accessors |= _IRQ_NOTHREAD;
+ desc->status_use_accessors |= _IRQ_NOTHREAD;
 }

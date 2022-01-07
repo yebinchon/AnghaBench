@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_11__ {scalar_t__ len; int /*<<< orphan*/ * deformatted; int /*<<< orphan*/  groups; int /*<<< orphan*/  n; int /*<<< orphan*/  propfailed; int /*<<< orphan*/ * record; int /*<<< orphan*/ * package; } ;
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_11__ {scalar_t__ len; int * deformatted; int groups; int n; int propfailed; int * record; int * package; } ;
 struct TYPE_10__ {int len; int type; } ;
-typedef  int /*<<< orphan*/  STACK ;
-typedef  int /*<<< orphan*/  MSIRECORD ;
-typedef  int /*<<< orphan*/  MSIPACKAGE ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  TYPE_1__ FORMSTR ;
-typedef  TYPE_2__ FORMAT ;
-typedef  scalar_t__ DWORD ;
+typedef int STACK ;
+typedef int MSIRECORD ;
+typedef int MSIPACKAGE ;
+typedef int LPCWSTR ;
+typedef TYPE_1__ FORMSTR ;
+typedef TYPE_2__ FORMAT ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int FORMAT_ESCAPE ; 
- int FORMAT_LBRACE ; 
- int FORMAT_LBRACK ; 
- int FORMAT_LITERAL ; 
- int FORMAT_NULL ; 
- int FORMAT_NUMBER ; 
- int FORMAT_PROPNULL ; 
- int FORMAT_RBRACE ; 
- int FORMAT_RBRACK ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_2__*,int) ; 
- int /*<<< orphan*/ * create_stack () ; 
- int format_lex (TYPE_2__*,TYPE_1__**) ; 
- int /*<<< orphan*/  free_stack (int /*<<< orphan*/ *) ; 
- int left_type (int) ; 
- scalar_t__ lstrlenW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msi_free (TYPE_1__*) ; 
- int /*<<< orphan*/  replace_stack (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ stack_find (int /*<<< orphan*/ *,int) ; 
- TYPE_1__* stack_pop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stack_push (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/ * strdupW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  verify_format (int /*<<< orphan*/ *) ; 
 
-__attribute__((used)) static DWORD deformat_string_internal(MSIPACKAGE *package, LPCWSTR ptr, 
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int FORMAT_ESCAPE ;
+ int FORMAT_LBRACE ;
+ int FORMAT_LBRACK ;
+ int FORMAT_LITERAL ;
+ int FORMAT_NULL ;
+ int FORMAT_NUMBER ;
+ int FORMAT_PROPNULL ;
+ int FORMAT_RBRACE ;
+ int FORMAT_RBRACK ;
+ int ZeroMemory (TYPE_2__*,int) ;
+ int * create_stack () ;
+ int format_lex (TYPE_2__*,TYPE_1__**) ;
+ int free_stack (int *) ;
+ int left_type (int) ;
+ scalar_t__ lstrlenW (int ) ;
+ int msi_free (TYPE_1__*) ;
+ int replace_stack (TYPE_2__*,int *,int *) ;
+ scalar_t__ stack_find (int *,int) ;
+ TYPE_1__* stack_pop (int *) ;
+ int stack_push (int *,TYPE_1__*) ;
+ int * strdupW (int ) ;
+ int verify_format (int *) ;
+
+__attribute__((used)) static DWORD deformat_string_internal(MSIPACKAGE *package, LPCWSTR ptr,
                                       WCHAR** data, DWORD *len,
                                       MSIRECORD* record)
 {
     FORMAT format;
-    FORMSTR *str = NULL;
+    FORMSTR *str = ((void*)0);
     STACK *stack, *temp;
     FORMSTR *node;
     int type;
 
     if (!ptr)
     {
-        *data = NULL;
+        *data = ((void*)0);
         *len = 0;
         return ERROR_SUCCESS;
     }

@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  replica_prefix; } ;
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int replica_prefix; } ;
 struct TYPE_12__ {TYPE_2__* info; } ;
 struct TYPE_11__ {TYPE_1__* info; } ;
-struct TYPE_10__ {char* filename; int /*<<< orphan*/  file_size; } ;
-struct TYPE_9__ {scalar_t__ file_size; int /*<<< orphan*/  filename; } ;
+struct TYPE_10__ {char* filename; int file_size; } ;
+struct TYPE_9__ {scalar_t__ file_size; int filename; } ;
 
-/* Variables and functions */
- TYPE_4__* Binlog ; 
- TYPE_3__* Snapshot ; 
- int /*<<< orphan*/  aes_pwd_file ; 
- int /*<<< orphan*/  binlog_disabled ; 
- int /*<<< orphan*/  binlog_load_time ; 
- char* binlogname ; 
- int /*<<< orphan*/  clear_log () ; 
- int /*<<< orphan*/  clear_read_log () ; 
- int /*<<< orphan*/  clear_write_log () ; 
- int /*<<< orphan*/  engine_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ engine_preload_filelist (char*,char*) ; 
- TYPE_5__* engine_replica ; 
- int /*<<< orphan*/ * engine_snapshot_name ; 
- int /*<<< orphan*/  engine_snapshot_replica ; 
- scalar_t__ engine_snapshot_size ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  f_parse_option ; 
- int /*<<< orphan*/  index_load_time ; 
- scalar_t__ index_mode ; 
- int /*<<< orphan*/  init_log_data (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jump_log_crc32 ; 
- int /*<<< orphan*/  jump_log_pos ; 
- int /*<<< orphan*/  jump_log_ts ; 
- int /*<<< orphan*/  kprintf (char*,...) ; 
- int load_index () ; 
- int /*<<< orphan*/  mytime () ; 
- int /*<<< orphan*/  no_argument ; 
- TYPE_4__* open_binlog (TYPE_5__*,int /*<<< orphan*/ ) ; 
- TYPE_3__* open_recent_snapshot (int /*<<< orphan*/ ) ; 
- int optind ; 
- int /*<<< orphan*/  parse_engine_options_long (int,char**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_option (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char,char*) ; 
- char* progname ; 
- int /*<<< orphan*/  remove_parse_option (int) ; 
- int replay_log (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  save_index (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_debug_handlers () ; 
- int /*<<< orphan*/  start_server () ; 
- int /*<<< orphan*/  start_time ; 
- int /*<<< orphan*/ * strdup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usage () ; 
- int /*<<< orphan*/  vkprintf (int,char*,...) ; 
- int /*<<< orphan*/  weights_engine ; 
+
+ TYPE_4__* Binlog ;
+ TYPE_3__* Snapshot ;
+ int aes_pwd_file ;
+ int binlog_disabled ;
+ int binlog_load_time ;
+ char* binlogname ;
+ int clear_log () ;
+ int clear_read_log () ;
+ int clear_write_log () ;
+ int engine_init (int *,int ,scalar_t__) ;
+ scalar_t__ engine_preload_filelist (char*,char*) ;
+ TYPE_5__* engine_replica ;
+ int * engine_snapshot_name ;
+ int engine_snapshot_replica ;
+ scalar_t__ engine_snapshot_size ;
+ int exit (int) ;
+ int f_parse_option ;
+ int index_load_time ;
+ scalar_t__ index_mode ;
+ int init_log_data (int ,int ,int ) ;
+ int jump_log_crc32 ;
+ int jump_log_pos ;
+ int jump_log_ts ;
+ int kprintf (char*,...) ;
+ int load_index () ;
+ int mytime () ;
+ int no_argument ;
+ TYPE_4__* open_binlog (TYPE_5__*,int ) ;
+ TYPE_3__* open_recent_snapshot (int ) ;
+ int optind ;
+ int parse_engine_options_long (int,char**,int ) ;
+ int parse_option (char*,int ,int ,unsigned char,char*) ;
+ char* progname ;
+ int remove_parse_option (int) ;
+ int replay_log (int ,int) ;
+ int save_index (int ) ;
+ int set_debug_handlers () ;
+ int start_server () ;
+ int start_time ;
+ int * strdup (int ) ;
+ int time (int ) ;
+ int usage () ;
+ int vkprintf (int,char*,...) ;
+ int weights_engine ;
 
 int main (int argc, char *argv[]) {
   int i;
@@ -91,7 +91,7 @@ int main (int argc, char *argv[]) {
 
   vkprintf (3, "engine_preload_filelist done\n");
 
-  //Snapshot reading
+
   Snapshot = open_recent_snapshot (engine_snapshot_replica);
 
   if (Snapshot) {
@@ -109,12 +109,12 @@ int main (int argc, char *argv[]) {
     }
     index_load_time += mytime();
   } else {
-    engine_snapshot_name = NULL;
+    engine_snapshot_name = ((void*)0);
     engine_snapshot_size = 0;
     index_load_time = 0;
   }
 
-  //Binlog reading
+
   Binlog = open_binlog (engine_replica, jump_log_pos);
   if (!Binlog) {
     kprintf ("fatal: cannot find binlog for %s, log position %lld\n", engine_replica->replica_prefix, jump_log_pos);

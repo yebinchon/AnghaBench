@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FFFILE ;
 
-/* Variables and functions */
- int DBL_MANT_DIG ; 
- int /*<<< orphan*/  DBL_MIN_EXP ; 
- int /*<<< orphan*/  EINVAL ; 
- int FLT_MANT_DIG ; 
- int /*<<< orphan*/  FLT_MIN_EXP ; 
- int INFINITY ; 
- double NAN ; 
- scalar_t__ av_isspace (int) ; 
- double decfloat (int /*<<< orphan*/ *,int,int,int,int,int) ; 
- int /*<<< orphan*/  errno ; 
- double hexfloat (int /*<<< orphan*/ *,int,int,int,int) ; 
- char shgetc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  shlim (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shunget (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int FFFILE ;
+
+
+ int DBL_MANT_DIG ;
+ int DBL_MIN_EXP ;
+ int EINVAL ;
+ int FLT_MANT_DIG ;
+ int FLT_MIN_EXP ;
+ int INFINITY ;
+ double NAN ;
+ scalar_t__ av_isspace (int) ;
+ double decfloat (int *,int,int,int,int,int) ;
+ int errno ;
+ double hexfloat (int *,int,int,int,int) ;
+ char shgetc (int *) ;
+ int shlim (int *,int ) ;
+ int shunget (int *) ;
 
 __attribute__((used)) static double fffloatscan(FFFILE *f, int prec, int pok)
 {

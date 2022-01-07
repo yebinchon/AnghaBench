@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetModuleHandleA (char*) ; 
- int /*<<< orphan*/  NTDLL_GET_PROC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  TpAllocCleanupGroup ; 
- int /*<<< orphan*/  TpAllocPool ; 
- int /*<<< orphan*/  TpAllocTimer ; 
- int /*<<< orphan*/  TpAllocWait ; 
- int /*<<< orphan*/  TpAllocWork ; 
- int /*<<< orphan*/  TpCallbackMayRunLong ; 
- int /*<<< orphan*/  TpCallbackReleaseSemaphoreOnCompletion ; 
- int /*<<< orphan*/  TpDisassociateCallback ; 
- int /*<<< orphan*/  TpIsTimerSet ; 
- int /*<<< orphan*/  TpPostWork ; 
- int /*<<< orphan*/  TpReleaseCleanupGroup ; 
- int /*<<< orphan*/  TpReleaseCleanupGroupMembers ; 
- int /*<<< orphan*/  TpReleasePool ; 
- int /*<<< orphan*/  TpReleaseTimer ; 
- int /*<<< orphan*/  TpReleaseWait ; 
- int /*<<< orphan*/  TpReleaseWork ; 
- int /*<<< orphan*/  TpSetPoolMaxThreads ; 
- int /*<<< orphan*/  TpSetTimer ; 
- int /*<<< orphan*/  TpSetWait ; 
- int /*<<< orphan*/  TpSimpleTryPost ; 
- int /*<<< orphan*/  TpWaitForTimer ; 
- int /*<<< orphan*/  TpWaitForWait ; 
- int /*<<< orphan*/  TpWaitForWork ; 
- int /*<<< orphan*/  hntdll ; 
- int /*<<< orphan*/  pTpAllocPool ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int GetModuleHandleA (char*) ;
+ int NTDLL_GET_PROC (int ) ;
+ int TRUE ;
+ int TpAllocCleanupGroup ;
+ int TpAllocPool ;
+ int TpAllocTimer ;
+ int TpAllocWait ;
+ int TpAllocWork ;
+ int TpCallbackMayRunLong ;
+ int TpCallbackReleaseSemaphoreOnCompletion ;
+ int TpDisassociateCallback ;
+ int TpIsTimerSet ;
+ int TpPostWork ;
+ int TpReleaseCleanupGroup ;
+ int TpReleaseCleanupGroupMembers ;
+ int TpReleasePool ;
+ int TpReleaseTimer ;
+ int TpReleaseWait ;
+ int TpReleaseWork ;
+ int TpSetPoolMaxThreads ;
+ int TpSetTimer ;
+ int TpSetWait ;
+ int TpSimpleTryPost ;
+ int TpWaitForTimer ;
+ int TpWaitForWait ;
+ int TpWaitForWork ;
+ int hntdll ;
+ int pTpAllocPool ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static BOOL init_threadpool(void)
 {

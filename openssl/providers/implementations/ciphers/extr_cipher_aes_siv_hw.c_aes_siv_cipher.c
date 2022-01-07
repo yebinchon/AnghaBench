@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {scalar_t__ enc; int /*<<< orphan*/  siv; } ;
-typedef  int /*<<< orphan*/  SIV128_CONTEXT ;
-typedef  TYPE_1__ PROV_AES_SIV_CTX ;
 
-/* Variables and functions */
- int CRYPTO_siv128_aad (int /*<<< orphan*/ *,unsigned char const*,size_t) ; 
- scalar_t__ CRYPTO_siv128_decrypt (int /*<<< orphan*/ *,unsigned char const*,unsigned char*,size_t) ; 
- scalar_t__ CRYPTO_siv128_encrypt (int /*<<< orphan*/ *,unsigned char const*,unsigned char*,size_t) ; 
- scalar_t__ CRYPTO_siv128_finish (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {scalar_t__ enc; int siv; } ;
+typedef int SIV128_CONTEXT ;
+typedef TYPE_1__ PROV_AES_SIV_CTX ;
+
+
+ int CRYPTO_siv128_aad (int *,unsigned char const*,size_t) ;
+ scalar_t__ CRYPTO_siv128_decrypt (int *,unsigned char const*,unsigned char*,size_t) ;
+ scalar_t__ CRYPTO_siv128_encrypt (int *,unsigned char const*,unsigned char*,size_t) ;
+ scalar_t__ CRYPTO_siv128_finish (int *) ;
 
 __attribute__((used)) static int aes_siv_cipher(void *vctx, unsigned char *out,
                           const unsigned char *in, size_t len)
@@ -27,12 +27,12 @@ __attribute__((used)) static int aes_siv_cipher(void *vctx, unsigned char *out,
     PROV_AES_SIV_CTX *ctx = (PROV_AES_SIV_CTX *)vctx;
     SIV128_CONTEXT *sctx = &ctx->siv;
 
-    /* EncryptFinal or DecryptFinal */
-    if (in == NULL)
+
+    if (in == ((void*)0))
         return CRYPTO_siv128_finish(sctx) == 0;
 
-    /* Deal with associated data */
-    if (out == NULL)
+
+    if (out == ((void*)0))
         return (CRYPTO_siv128_aad(sctx, in, len) == 1);
 
     if (ctx->enc)

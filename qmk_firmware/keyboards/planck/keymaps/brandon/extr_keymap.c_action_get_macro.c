@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  macro_t ;
-struct TYPE_6__ {int /*<<< orphan*/  count; int /*<<< orphan*/  interrupted; } ;
-struct TYPE_5__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int macro_t ;
+struct TYPE_6__ {int count; int interrupted; } ;
+struct TYPE_5__ {int pressed; } ;
 struct TYPE_7__ {TYPE_2__ tap; TYPE_1__ event; } ;
-typedef  TYPE_3__ keyrecord_t ;
+typedef TYPE_3__ keyrecord_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KC_LBRACKET ; 
- int /*<<< orphan*/  KC_RBRACKET ; 
-#define  LALT_BRACE 129 
- int /*<<< orphan*/  const* MACRO_NONE ; 
- int /*<<< orphan*/  MOD_LALT ; 
- int /*<<< orphan*/  MOD_LSFT ; 
- int /*<<< orphan*/  MOD_RALT ; 
-#define  RALT_BRACE 128 
- int /*<<< orphan*/  add_weak_mods (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  del_weak_mods (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  register_code (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  register_mods (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unregister_code (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unregister_mods (int /*<<< orphan*/ ) ; 
+
+ int KC_LBRACKET ;
+ int KC_RBRACKET ;
+
+ int const* MACRO_NONE ;
+ int MOD_LALT ;
+ int MOD_LSFT ;
+ int MOD_RALT ;
+
+ int add_weak_mods (int ) ;
+ int del_weak_mods (int ) ;
+ int register_code (int ) ;
+ int register_mods (int ) ;
+ int unregister_code (int ) ;
+ int unregister_mods (int ) ;
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
   switch(id) {
-    case LALT_BRACE:
+    case 129:
       if (record->event.pressed) {
         register_mods(MOD_LALT);
         record->tap.interrupted = 0;
@@ -56,7 +56,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         record->tap.count = 0;
       }
       break;
-    case RALT_BRACE:
+    case 128:
       if (record->event.pressed) {
         register_mods(MOD_RALT);
         record->tap.interrupted = 0;

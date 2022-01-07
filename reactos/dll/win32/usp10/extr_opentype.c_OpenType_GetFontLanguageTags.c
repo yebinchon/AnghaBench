@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ tag; scalar_t__* table; } ;
 struct TYPE_8__ {int language_count; TYPE_2__ default_language; TYPE_1__* languages; } ;
 struct TYPE_6__ {scalar_t__ tag; } ;
-typedef  int /*<<< orphan*/  ScriptCache ;
-typedef  scalar_t__ OPENTYPE_TAG ;
-typedef  TYPE_3__ LoadedScript ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef int ScriptCache ;
+typedef scalar_t__ OPENTYPE_TAG ;
+typedef TYPE_3__ LoadedScript ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- size_t USP10_LANGUAGE_TABLE_GSUB ; 
- int /*<<< orphan*/  _initialize_language_cache (TYPE_3__*) ; 
- int /*<<< orphan*/  _initialize_script_cache (int /*<<< orphan*/ *) ; 
- TYPE_3__* usp10_script_cache_get_script (int /*<<< orphan*/ *,scalar_t__) ; 
+
+ int E_INVALIDARG ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int S_OK ;
+ size_t USP10_LANGUAGE_TABLE_GSUB ;
+ int _initialize_language_cache (TYPE_3__*) ;
+ int _initialize_script_cache (int *) ;
+ TYPE_3__* usp10_script_cache_get_script (int *,scalar_t__) ;
 
 HRESULT OpenType_GetFontLanguageTags(ScriptCache *psc, OPENTYPE_TAG script_tag, OPENTYPE_TAG searchingFor, int cMaxTags, OPENTYPE_TAG *pLanguageTags, int *pcTags)
 {
     int i;
     HRESULT rc = S_OK;
-    LoadedScript *script = NULL;
+    LoadedScript *script = ((void*)0);
 
     _initialize_script_cache(psc);
     if (!(script = usp10_script_cache_get_script(psc, script_tag)))
@@ -72,7 +72,7 @@ HRESULT OpenType_GetFontLanguageTags(ScriptCache *psc, OPENTYPE_TAG script_tag, 
         if (i < cMaxTags)
             pLanguageTags[i] = script->default_language.tag;
 
-        if (searchingFor  && FAILED(rc))
+        if (searchingFor && FAILED(rc))
         {
             pLanguageTags[0] = script->default_language.tag;
         }

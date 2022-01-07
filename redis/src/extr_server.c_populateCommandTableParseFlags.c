@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
+
+
+
+
+typedef int uint64_t ;
 struct redisCommand {int flags; } ;
-typedef  char* sds ;
+typedef char* sds ;
 
-/* Variables and functions */
- int ACLGetCommandCategoryFlagByName (char*) ; 
- int CMD_ADMIN ; 
- int CMD_ASKING ; 
- int CMD_CATEGORY_ADMIN ; 
- int CMD_CATEGORY_DANGEROUS ; 
- int CMD_CATEGORY_FAST ; 
- int CMD_CATEGORY_PUBSUB ; 
- int CMD_CATEGORY_READ ; 
- int CMD_CATEGORY_SLOW ; 
- int CMD_CATEGORY_WRITE ; 
- int CMD_DENYOOM ; 
- int CMD_FAST ; 
- int CMD_LOADING ; 
- int CMD_NOSCRIPT ; 
- int CMD_PUBSUB ; 
- int CMD_RANDOM ; 
- int CMD_READONLY ; 
- int CMD_SKIP_MONITOR ; 
- int CMD_SKIP_SLOWLOG ; 
- int CMD_SORT_FOR_SCRIPT ; 
- int CMD_STALE ; 
- int CMD_WRITE ; 
- int C_ERR ; 
- int C_OK ; 
- int /*<<< orphan*/  sdsfreesplitres (char**,int) ; 
- char** sdssplitargs (char*,int*) ; 
- int /*<<< orphan*/  strcasecmp (char*,char*) ; 
+
+ int ACLGetCommandCategoryFlagByName (char*) ;
+ int CMD_ADMIN ;
+ int CMD_ASKING ;
+ int CMD_CATEGORY_ADMIN ;
+ int CMD_CATEGORY_DANGEROUS ;
+ int CMD_CATEGORY_FAST ;
+ int CMD_CATEGORY_PUBSUB ;
+ int CMD_CATEGORY_READ ;
+ int CMD_CATEGORY_SLOW ;
+ int CMD_CATEGORY_WRITE ;
+ int CMD_DENYOOM ;
+ int CMD_FAST ;
+ int CMD_LOADING ;
+ int CMD_NOSCRIPT ;
+ int CMD_PUBSUB ;
+ int CMD_RANDOM ;
+ int CMD_READONLY ;
+ int CMD_SKIP_MONITOR ;
+ int CMD_SKIP_SLOWLOG ;
+ int CMD_SORT_FOR_SCRIPT ;
+ int CMD_STALE ;
+ int CMD_WRITE ;
+ int C_ERR ;
+ int C_OK ;
+ int sdsfreesplitres (char**,int) ;
+ char** sdssplitargs (char*,int*) ;
+ int strcasecmp (char*,char*) ;
 
 int populateCommandTableParseFlags(struct redisCommand *c, char *strflags) {
     int argc;
     sds *argv;
 
-    /* Split the line into arguments for processing. */
+
     argv = sdssplitargs(strflags,&argc);
-    if (argv == NULL) return C_ERR;
+    if (argv == ((void*)0)) return C_ERR;
 
     for (int j = 0; j < argc; j++) {
         char *flag = argv[j];
@@ -82,7 +82,7 @@ int populateCommandTableParseFlags(struct redisCommand *c, char *strflags) {
         } else if (!strcasecmp(flag,"fast")) {
             c->flags |= CMD_FAST | CMD_CATEGORY_FAST;
         } else {
-            /* Parse ACL categories here if the flag name starts with @. */
+
             uint64_t catflag;
             if (flag[0] == '@' &&
                 (catflag = ACLGetCommandCategoryFlagByName(flag+1)) != 0)
@@ -94,7 +94,7 @@ int populateCommandTableParseFlags(struct redisCommand *c, char *strflags) {
             }
         }
     }
-    /* If it's not @fast is @slow in this binary world. */
+
     if (!(c->flags & CMD_CATEGORY_FAST)) c->flags |= CMD_CATEGORY_SLOW;
 
     sdsfreesplitres(argv,argc);

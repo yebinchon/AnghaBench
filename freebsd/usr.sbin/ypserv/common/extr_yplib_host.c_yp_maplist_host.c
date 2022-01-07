@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xdrproc_t ;
-struct ypresp_maplist {int /*<<< orphan*/  stat; struct ypmaplist* maps; } ;
+
+
+
+
+typedef int xdrproc_t ;
+struct ypresp_maplist {int stat; struct ypmaplist* maps; } ;
 struct ypmaplist {int dummy; } ;
-struct timeval {scalar_t__ tv_usec; int /*<<< orphan*/  tv_sec; } ;
-typedef  int /*<<< orphan*/  CLIENT ;
+struct timeval {scalar_t__ tv_usec; int tv_sec; } ;
+typedef int CLIENT ;
 
-/* Variables and functions */
- int RPC_SUCCESS ; 
- int /*<<< orphan*/  YPPROC_MAPLIST ; 
- int /*<<< orphan*/  _yplib_host_timeout ; 
- int clnt_call (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char**,int /*<<< orphan*/ ,struct ypresp_maplist*,struct timeval) ; 
- int /*<<< orphan*/  clnt_perror (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  memset (struct ypresp_maplist*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ xdr_domainname ; 
- scalar_t__ xdr_ypresp_maplist ; 
- int ypprot_err (int /*<<< orphan*/ ) ; 
+
+ int RPC_SUCCESS ;
+ int YPPROC_MAPLIST ;
+ int _yplib_host_timeout ;
+ int clnt_call (int *,int ,int ,char**,int ,struct ypresp_maplist*,struct timeval) ;
+ int clnt_perror (int *,char*) ;
+ int memset (struct ypresp_maplist*,int ,int) ;
+ scalar_t__ xdr_domainname ;
+ scalar_t__ xdr_ypresp_maplist ;
+ int ypprot_err (int ) ;
 
 int
 yp_maplist_host(CLIENT *client, char *indomain, struct ypmaplist **outmaplist)
 {
-	struct ypresp_maplist ypml;
-	struct timeval tv;
-	int r;
+ struct ypresp_maplist ypml;
+ struct timeval tv;
+ int r;
 
-	tv.tv_sec = _yplib_host_timeout;
-	tv.tv_usec = 0;
+ tv.tv_sec = _yplib_host_timeout;
+ tv.tv_usec = 0;
 
-	memset(&ypml, 0, sizeof ypml);
+ memset(&ypml, 0, sizeof ypml);
 
-	r = clnt_call(client, YPPROC_MAPLIST,
-	    (xdrproc_t)xdr_domainname, &indomain,
-	    (xdrproc_t)xdr_ypresp_maplist, &ypml, tv);
-	if (r != RPC_SUCCESS)
-		clnt_perror(client, "yp_maplist: clnt_call");
-	*outmaplist = ypml.maps;
-	/* NO: xdr_free(xdr_ypresp_maplist, &ypml);*/
+ r = clnt_call(client, YPPROC_MAPLIST,
+     (xdrproc_t)xdr_domainname, &indomain,
+     (xdrproc_t)xdr_ypresp_maplist, &ypml, tv);
+ if (r != RPC_SUCCESS)
+  clnt_perror(client, "yp_maplist: clnt_call");
+ *outmaplist = ypml.maps;
 
-	return ypprot_err(ypml.stat);
+
+ return ypprot_err(ypml.stat);
 }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int VOID ;
 struct TYPE_3__ {scalar_t__ szCurrSymbol; } ;
-typedef  TYPE_1__* PGLOBALDATA ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
+typedef TYPE_1__* PGLOBALDATA ;
+typedef int LPARAM ;
+typedef int HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CB_ADDSTRING ; 
- int /*<<< orphan*/  CB_LIMITTEXT ; 
- int /*<<< orphan*/  CB_SETCURSEL ; 
- int /*<<< orphan*/  IDC_CURRENCYSYMBOL ; 
- scalar_t__ MAX_CURRSYMBOL ; 
- int /*<<< orphan*/  SendDlgItemMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
+
+ int CB_ADDSTRING ;
+ int CB_LIMITTEXT ;
+ int CB_SETCURSEL ;
+ int IDC_CURRENCYSYMBOL ;
+ scalar_t__ MAX_CURRSYMBOL ;
+ int SendDlgItemMessageW (int ,int ,int ,scalar_t__,int ) ;
 
 __attribute__((used)) static VOID
 InitCurrencySymbols(HWND hwndDlg, PGLOBALDATA pGlobalData)
 {
-    /* Limit text length */
+
     SendDlgItemMessageW(hwndDlg, IDC_CURRENCYSYMBOL,
                         CB_LIMITTEXT,
                         MAX_CURRSYMBOL - 1,
                         0);
 
-    /* Set currency symbols */
+
     SendDlgItemMessageW(hwndDlg, IDC_CURRENCYSYMBOL,
                         CB_ADDSTRING,
                         0,
@@ -42,6 +42,6 @@ InitCurrencySymbols(HWND hwndDlg, PGLOBALDATA pGlobalData)
 
     SendDlgItemMessageW(hwndDlg, IDC_CURRENCYSYMBOL,
                         CB_SETCURSEL,
-                        0, /* Index */
+                        0,
                         0);
 }

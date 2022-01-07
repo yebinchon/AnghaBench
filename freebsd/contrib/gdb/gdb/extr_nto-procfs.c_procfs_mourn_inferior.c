@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PIDGET (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SIGKILL ; 
- int /*<<< orphan*/  SignalKill (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ attach_flag ; 
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ctl_fd ; 
- int /*<<< orphan*/  generic_mourn_inferior () ; 
- int /*<<< orphan*/  inferior_ptid ; 
- int /*<<< orphan*/  init_thread_list () ; 
- int /*<<< orphan*/  nto_node () ; 
- int /*<<< orphan*/  null_ptid ; 
- int /*<<< orphan*/  procfs_ops ; 
- int /*<<< orphan*/  ptid_equal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unpush_target (int /*<<< orphan*/ *) ; 
+ int PIDGET (int ) ;
+ int SIGKILL ;
+ int SignalKill (int ,int ,int ,int ,int ,int ) ;
+ scalar_t__ attach_flag ;
+ int close (int ) ;
+ int ctl_fd ;
+ int generic_mourn_inferior () ;
+ int inferior_ptid ;
+ int init_thread_list () ;
+ int nto_node () ;
+ int null_ptid ;
+ int procfs_ops ;
+ int ptid_equal (int ,int ) ;
+ int unpush_target (int *) ;
 
 __attribute__((used)) static void
 procfs_mourn_inferior (void)

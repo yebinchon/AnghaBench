@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PutByteContext ;
 
-/* Variables and functions */
- int WP_IDF_ODD ; 
- int /*<<< orphan*/  bytestream2_put_byte (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int PutByteContext ;
+
+
+ int WP_IDF_ODD ;
+ int bytestream2_put_byte (int *,int) ;
 
 __attribute__((used)) static void put_metadata_block(PutByteContext *pb, int flags, int size)
 {

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {TYPE_1__* qp; int /*<<< orphan*/  history; int /*<<< orphan*/  flags; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {TYPE_1__* qp; int history; int flags; } ;
 struct c4iw_ep {TYPE_2__ com; } ;
-struct TYPE_3__ {int /*<<< orphan*/  ibqp; } ;
+struct TYPE_3__ {int ibqp; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  QP_REFED ; 
- int /*<<< orphan*/  QP_REFERENCED ; 
- int /*<<< orphan*/  c4iw_qp_add_ref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int QP_REFED ;
+ int QP_REFERENCED ;
+ int c4iw_qp_add_ref (int *) ;
+ int set_bit (int ,int *) ;
 
 __attribute__((used)) static void ref_qp(struct c4iw_ep *ep)
 {
-	set_bit(QP_REFERENCED, &ep->com.flags);
-	set_bit(QP_REFED, &ep->com.history);
-	c4iw_qp_add_ref(&ep->com.qp->ibqp);
+ set_bit(QP_REFERENCED, &ep->com.flags);
+ set_bit(QP_REFED, &ep->com.history);
+ c4iw_qp_add_ref(&ep->com.qp->ibqp);
 }

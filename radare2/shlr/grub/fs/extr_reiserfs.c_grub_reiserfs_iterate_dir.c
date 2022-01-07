@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct grub_reiserfs_stat_item_v2 {int size; int /*<<< orphan*/  mode; int /*<<< orphan*/  first_direct_byte; int /*<<< orphan*/  blocks; int /*<<< orphan*/  ctime; int /*<<< orphan*/  mtime; int /*<<< orphan*/  atime; int /*<<< orphan*/  gid; int /*<<< orphan*/  uid; int /*<<< orphan*/  hardlink_count; int /*<<< orphan*/  reserved; } ;
-struct grub_reiserfs_stat_item_v1 {int /*<<< orphan*/  mode; int /*<<< orphan*/  first_direct_byte; int /*<<< orphan*/  rdev; int /*<<< orphan*/  ctime; int /*<<< orphan*/  mtime; int /*<<< orphan*/  atime; int /*<<< orphan*/  size; int /*<<< orphan*/  gid; int /*<<< orphan*/  uid; int /*<<< orphan*/  hardlink_count; } ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct grub_reiserfs_stat_item_v2 {int size; int mode; int first_direct_byte; int blocks; int ctime; int mtime; int atime; int gid; int uid; int hardlink_count; int reserved; } ;
+struct grub_reiserfs_stat_item_v1 {int mode; int first_direct_byte; int rdev; int ctime; int mtime; int atime; int size; int gid; int uid; int hardlink_count; } ;
 struct TYPE_8__ {scalar_t__ offset_type; } ;
 struct TYPE_9__ {TYPE_3__ v2; } ;
-struct grub_reiserfs_key {TYPE_4__ u; int /*<<< orphan*/  object_id; int /*<<< orphan*/  directory_id; } ;
-struct TYPE_7__ {int /*<<< orphan*/  entry_count; } ;
-struct grub_reiserfs_item_header {struct grub_reiserfs_key key; TYPE_2__ u; int /*<<< orphan*/  item_location; } ;
-struct grub_reiserfs_directory_header {int /*<<< orphan*/  object_id; int /*<<< orphan*/  directory_id; int /*<<< orphan*/  location; int /*<<< orphan*/  state; } ;
-struct TYPE_6__ {int /*<<< orphan*/  block_size; } ;
-struct grub_reiserfs_data {int /*<<< orphan*/  disk; TYPE_1__ superblock; } ;
-struct TYPE_10__ {int /*<<< orphan*/  item_location; int /*<<< orphan*/  version; } ;
-struct grub_reiserfs_block_header {int next_offset; scalar_t__ type; int block_number; int block_position; TYPE_5__ header; int /*<<< orphan*/  level; int /*<<< orphan*/  member_0; struct grub_reiserfs_data* data; } ;
-struct grub_fshelp_node {int next_offset; scalar_t__ type; int block_number; int block_position; TYPE_5__ header; int /*<<< orphan*/  level; int /*<<< orphan*/  member_0; struct grub_reiserfs_data* data; } ;
-typedef  int grub_uint64_t ;
-typedef  int grub_uint32_t ;
-typedef  int grub_uint16_t ;
-typedef  int grub_off_t ;
-typedef  struct grub_reiserfs_block_header* grub_fshelp_node_t ;
-typedef  int grub_disk_addr_t ;
-typedef  enum grub_fshelp_filetype { ____Placeholder_grub_fshelp_filetype } grub_fshelp_filetype ;
-typedef  int /*<<< orphan*/  entry_v2_stat ;
-typedef  int /*<<< orphan*/  entry_v1_stat ;
+struct grub_reiserfs_key {TYPE_4__ u; int object_id; int directory_id; } ;
+struct TYPE_7__ {int entry_count; } ;
+struct grub_reiserfs_item_header {struct grub_reiserfs_key key; TYPE_2__ u; int item_location; } ;
+struct grub_reiserfs_directory_header {int object_id; int directory_id; int location; int state; } ;
+struct TYPE_6__ {int block_size; } ;
+struct grub_reiserfs_data {int disk; TYPE_1__ superblock; } ;
+struct TYPE_10__ {int item_location; int version; } ;
+struct grub_reiserfs_block_header {int next_offset; scalar_t__ type; int block_number; int block_position; TYPE_5__ header; int level; int member_0; struct grub_reiserfs_data* data; } ;
+struct grub_fshelp_node {int next_offset; scalar_t__ type; int block_number; int block_position; TYPE_5__ header; int level; int member_0; struct grub_reiserfs_data* data; } ;
+typedef int grub_uint64_t ;
+typedef int grub_uint32_t ;
+typedef int grub_uint16_t ;
+typedef int grub_off_t ;
+typedef struct grub_reiserfs_block_header* grub_fshelp_node_t ;
+typedef int grub_disk_addr_t ;
+typedef enum grub_fshelp_filetype { ____Placeholder_grub_fshelp_filetype } grub_fshelp_filetype ;
+typedef int entry_v2_stat ;
+typedef int entry_v1_stat ;
 
-/* Variables and functions */
- int GRUB_DISK_SECTOR_BITS ; 
- int GRUB_DISK_SECTOR_SIZE ; 
- int /*<<< orphan*/  GRUB_ERR_BAD_FILE_TYPE ; 
- int GRUB_ERR_NONE ; 
- int /*<<< orphan*/  GRUB_ERR_TEST_FAILURE ; 
- int GRUB_FSHELP_DIR ; 
- int GRUB_FSHELP_REG ; 
- int GRUB_FSHELP_SYMLINK ; 
- scalar_t__ GRUB_REISERFS_DIRECTORY ; 
- scalar_t__ GRUB_REISERFS_STAT ; 
- int GRUB_REISERFS_VISIBLE_MASK ; 
- int S_IFLNK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  grub_disk_read (int /*<<< orphan*/ ,int,int,int,char*) ; 
- int /*<<< orphan*/  grub_dprintf (char*,char*,...) ; 
- int grub_errno ; 
- int /*<<< orphan*/  grub_error (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  grub_free (struct grub_reiserfs_block_header*) ; 
- int grub_le_to_cpu16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  grub_le_to_cpu32 (int /*<<< orphan*/ ) ; 
- int grub_le_to_cpu64 (int) ; 
- struct grub_reiserfs_block_header* grub_malloc (int) ; 
- int grub_reiserfs_get_item (struct grub_reiserfs_data*,struct grub_reiserfs_key*,struct grub_reiserfs_block_header*) ; 
- int /*<<< orphan*/  grub_reiserfs_set_key_offset (struct grub_reiserfs_key*,int) ; 
- int /*<<< orphan*/  grub_reiserfs_set_key_type (struct grub_reiserfs_key*,scalar_t__,int) ; 
- scalar_t__ grub_strcmp (char*,char*) ; 
+
+ int GRUB_DISK_SECTOR_BITS ;
+ int GRUB_DISK_SECTOR_SIZE ;
+ int GRUB_ERR_BAD_FILE_TYPE ;
+ int GRUB_ERR_NONE ;
+ int GRUB_ERR_TEST_FAILURE ;
+ int GRUB_FSHELP_DIR ;
+ int GRUB_FSHELP_REG ;
+ int GRUB_FSHELP_SYMLINK ;
+ scalar_t__ GRUB_REISERFS_DIRECTORY ;
+ scalar_t__ GRUB_REISERFS_STAT ;
+ int GRUB_REISERFS_VISIBLE_MASK ;
+ int S_IFLNK ;
+ int assert (int) ;
+ int grub_disk_read (int ,int,int,int,char*) ;
+ int grub_dprintf (char*,char*,...) ;
+ int grub_errno ;
+ int grub_error (int ,char*,...) ;
+ int grub_free (struct grub_reiserfs_block_header*) ;
+ int grub_le_to_cpu16 (int ) ;
+ int grub_le_to_cpu32 (int ) ;
+ int grub_le_to_cpu64 (int) ;
+ struct grub_reiserfs_block_header* grub_malloc (int) ;
+ int grub_reiserfs_get_item (struct grub_reiserfs_data*,struct grub_reiserfs_key*,struct grub_reiserfs_block_header*) ;
+ int grub_reiserfs_set_key_offset (struct grub_reiserfs_key*,int) ;
+ int grub_reiserfs_set_key_type (struct grub_reiserfs_key*,scalar_t__,int) ;
+ scalar_t__ grub_strcmp (char*,char*) ;
 
 __attribute__((used)) static int
 grub_reiserfs_iterate_dir (grub_fshelp_node_t item,
                            int (*hook) (const char *filename,
-					enum grub_fshelp_filetype filetype,
-					grub_fshelp_node_t node,
-					void *closure),
-			   void *closure)
+     enum grub_fshelp_filetype filetype,
+     grub_fshelp_node_t node,
+     void *closure),
+      void *closure)
 {
   struct grub_reiserfs_data *data = item->data;
   struct grub_reiserfs_block_header *block_header = 0;
@@ -110,17 +110,6 @@ grub_reiserfs_iterate_dir (grub_fshelp_node_t item,
                       block_size, (char *) block_header);
       if (grub_errno)
         goto fail;
-
-#if 0
-      if (grub_le_to_cpu16 (block_header->level) != 1)
-        {
-          grub_error (GRUB_ERR_TEST_FAILURE,
-                      "reiserfs: block %d is not a leaf block",
-                      block_number);
-          goto fail;
-        }
-#endif
-
       item_headers = (struct grub_reiserfs_item_header *) (block_header + 1);
       directory_headers
         = ((struct grub_reiserfs_directory_header *)
@@ -139,7 +128,7 @@ grub_reiserfs_iterate_dir (grub_fshelp_node_t item,
             {
               grub_fshelp_node_t entry_item;
               struct grub_reiserfs_key entry_key;
-	      enum grub_fshelp_filetype entry_type;
+       enum grub_fshelp_filetype entry_type;
               char *entry_name;
 
               entry_name = (((char *) directory_headers)
@@ -167,10 +156,10 @@ grub_reiserfs_iterate_dir (grub_fshelp_node_t item,
               else
                 {
                   grub_uint32_t entry_block_number;
-                  /* Order is very important here.
-                     First set the offset to 0 using current key version.
-                     Then change the key type, which affects key version
-                     detection.  */
+
+
+
+
                   grub_reiserfs_set_key_offset (&entry_key, 0);
                   grub_reiserfs_set_key_type (&entry_key, GRUB_REISERFS_STAT,
                                               2);
@@ -187,14 +176,14 @@ grub_reiserfs_iterate_dir (grub_fshelp_node_t item,
                       entry_version
                         = grub_le_to_cpu16 (entry_item->header.version);
                       entry_block_number = entry_item->block_number;
-#if 0
-		      grub_dprintf ("reiserfs",
-                                    "version %04x block %08x (%08x) position %08x\n",
-                                    entry_version, entry_block_number,
-                                    ((grub_disk_addr_t) entry_block_number * block_size) / GRUB_DISK_SECTOR_SIZE,
-                                    grub_le_to_cpu16 (entry_item->header.item_location));
-#endif
-                      if (entry_version == 0) /* Version 1 stat item. */
+
+
+
+
+
+
+
+                      if (entry_version == 0)
                         {
                           struct grub_reiserfs_stat_item_v1 entry_v1_stat;
                           grub_disk_read (data->disk,
@@ -204,32 +193,6 @@ grub_reiserfs_iterate_dir (grub_fshelp_node_t item,
                                           (char *) &entry_v1_stat);
                           if (grub_errno)
                             goto fail;
-#if 0
-			  grub_dprintf ("reiserfs",
-                                        "%04x %04x %04x %04x %08x %08x | %08x %08x %08x %08x\n",
-                                        grub_le_to_cpu16 (entry_v1_stat.mode),
-                                        grub_le_to_cpu16 (entry_v1_stat.hardlink_count),
-                                        grub_le_to_cpu16 (entry_v1_stat.uid),
-                                        grub_le_to_cpu16 (entry_v1_stat.gid),
-                                        grub_le_to_cpu32 (entry_v1_stat.size),
-                                        grub_le_to_cpu32 (entry_v1_stat.atime),
-                                        grub_le_to_cpu32 (entry_v1_stat.mtime),
-                                        grub_le_to_cpu32 (entry_v1_stat.ctime),
-                                        grub_le_to_cpu32 (entry_v1_stat.rdev),
-                                        grub_le_to_cpu32 (entry_v1_stat.first_direct_byte));
-			  grub_dprintf ("reiserfs",
-                                        "%04x %04x %04x %04x %08x %08x | %08x %08x %08x %08x\n",
-                                        entry_v1_stat.mode,
-                                        entry_v1_stat.hardlink_count,
-                                        entry_v1_stat.uid,
-                                        entry_v1_stat.gid,
-                                        entry_v1_stat.size,
-                                        entry_v1_stat.atime,
-                                        entry_v1_stat.mtime,
-                                        entry_v1_stat.ctime,
-                                        entry_v1_stat.rdev,
-                                        entry_v1_stat.first_direct_byte);
-#endif
                           if ((grub_le_to_cpu16 (entry_v1_stat.mode) & S_IFLNK)
                               == S_IFLNK)
                             entry_type = GRUB_FSHELP_SYMLINK;
@@ -246,36 +209,6 @@ grub_reiserfs_iterate_dir (grub_fshelp_node_t item,
                                           (char *) &entry_v2_stat);
                           if (grub_errno)
                             goto fail;
-#if 0
-			  grub_dprintf ("reiserfs",
-                                        "%04x %04x %08x %08x%08x | %08x %08x %08x %08x | %08x %08x %08x\n",
-                                        grub_le_to_cpu16 (entry_v2_stat.mode),
-                                        grub_le_to_cpu16 (entry_v2_stat.reserved),
-                                        grub_le_to_cpu32 (entry_v2_stat.hardlink_count),
-                                        (unsigned int) (grub_le_to_cpu64 (entry_v2_stat.size) >> 32),
-                                        (unsigned int) (grub_le_to_cpu64 (entry_v2_stat.size) && 0xFFFFFFFF),
-                                        grub_le_to_cpu32 (entry_v2_stat.uid),
-                                        grub_le_to_cpu32 (entry_v2_stat.gid),
-                                        grub_le_to_cpu32 (entry_v2_stat.atime),
-                                        grub_le_to_cpu32 (entry_v2_stat.mtime),
-                                        grub_le_to_cpu32 (entry_v2_stat.ctime),
-                                        grub_le_to_cpu32 (entry_v2_stat.blocks),
-                                        grub_le_to_cpu32 (entry_v2_stat.first_direct_byte));
-			  grub_dprintf ("reiserfs",
-                                        "%04x %04x %08x %08x%08x | %08x %08x %08x %08x | %08x %08x %08x\n",
-                                        entry_v2_stat.mode,
-                                        entry_v2_stat.reserved,
-                                        entry_v2_stat.hardlink_count,
-                                        (unsigned int) (entry_v2_stat.size >> 32),
-                                        (unsigned int) (entry_v2_stat.size && 0xFFFFFFFF),
-                                        entry_v2_stat.uid,
-                                        entry_v2_stat.gid,
-                                        entry_v2_stat.atime,
-                                        entry_v2_stat.mtime,
-                                        entry_v2_stat.ctime,
-                                        entry_v2_stat.blocks,
-                                        entry_v2_stat.first_direct_byte);
-#endif
                           if ((grub_le_to_cpu16 (entry_v2_stat.mode) & S_IFLNK)
                               == S_IFLNK)
                             entry_type = GRUB_FSHELP_SYMLINK;
@@ -285,7 +218,7 @@ grub_reiserfs_iterate_dir (grub_fshelp_node_t item,
                     }
                   else
                     {
-                      /* Pseudo file ".." never has stat block.  */
+
                       if (grub_strcmp (entry_name, ".."))
                         grub_dprintf ("reiserfs",
                                       "Warning : %s has no stat block !\n",
@@ -302,9 +235,9 @@ grub_reiserfs_iterate_dir (grub_fshelp_node_t item,
                   goto found;
                 }
 
-              *entry_name = 0; /* Make sure next entry name (which is just
-                                  before this one in disk order) stops before
-                                  the current one.  */
+              *entry_name = 0;
+
+
             }
         }
 

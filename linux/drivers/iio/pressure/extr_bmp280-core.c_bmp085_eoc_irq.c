@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bmp280_data {int /*<<< orphan*/  done; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  complete (int /*<<< orphan*/ *) ; 
+
+
+
+struct bmp280_data {int done; } ;
+typedef int irqreturn_t ;
+
+
+ int IRQ_HANDLED ;
+ int complete (int *) ;
 
 __attribute__((used)) static irqreturn_t bmp085_eoc_irq(int irq, void *d)
 {
-	struct bmp280_data *data = d;
+ struct bmp280_data *data = d;
 
-	complete(&data->done);
+ complete(&data->done);
 
-	return IRQ_HANDLED;
+ return IRQ_HANDLED;
 }

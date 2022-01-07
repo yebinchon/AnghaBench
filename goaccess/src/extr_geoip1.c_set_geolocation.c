@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ geoip_database; } ;
 
-/* Variables and functions */
- TYPE_1__ conf ; 
- int /*<<< orphan*/  geoip_get_city (char*,char*,int) ; 
- int /*<<< orphan*/  geoip_get_continent (char*,char*,int) ; 
- int /*<<< orphan*/  geoip_get_country (char*,char*,int) ; 
- scalar_t__ invalid_ipaddr (char*,int*) ; 
- int /*<<< orphan*/  is_geoip_resource () ; 
+
+ TYPE_1__ conf ;
+ int geoip_get_city (char*,char*,int) ;
+ int geoip_get_continent (char*,char*,int) ;
+ int geoip_get_country (char*,char*,int) ;
+ scalar_t__ invalid_ipaddr (char*,int*) ;
+ int is_geoip_resource () ;
 
 int
 set_geolocation (char *host, char *continent, char *country, char *city)

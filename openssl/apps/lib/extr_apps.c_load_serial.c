@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIO ;
-typedef  int /*<<< orphan*/  BIGNUM ;
-typedef  int /*<<< orphan*/  ASN1_INTEGER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_INTEGER_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ASN1_INTEGER_new () ; 
- int /*<<< orphan*/ * ASN1_INTEGER_to_BN (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_new_file (char const*,char*) ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/ * BN_new () ; 
- int /*<<< orphan*/  ERR_clear_error () ; 
- int /*<<< orphan*/  a2i_ASN1_INTEGER (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/  perror (char const*) ; 
- int /*<<< orphan*/  rand_serial (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int BIO ;
+typedef int BIGNUM ;
+typedef int ASN1_INTEGER ;
+
+
+ int ASN1_INTEGER_free (int *) ;
+ int * ASN1_INTEGER_new () ;
+ int * ASN1_INTEGER_to_BN (int *,int *) ;
+ int BIO_free (int *) ;
+ int * BIO_new_file (char const*,char*) ;
+ int BIO_printf (int ,char*,...) ;
+ int * BN_new () ;
+ int ERR_clear_error () ;
+ int a2i_ASN1_INTEGER (int *,int *,char*,int) ;
+ int bio_err ;
+ int perror (char const*) ;
+ int rand_serial (int *,int *) ;
 
 BIGNUM *load_serial(const char *serialfile, int create, ASN1_INTEGER **retai)
 {
-    BIO *in = NULL;
-    BIGNUM *ret = NULL;
+    BIO *in = ((void*)0);
+    BIGNUM *ret = ((void*)0);
     char buf[1024];
-    ASN1_INTEGER *ai = NULL;
+    ASN1_INTEGER *ai = ((void*)0);
 
     ai = ASN1_INTEGER_new();
-    if (ai == NULL)
+    if (ai == ((void*)0))
         goto err;
 
     in = BIO_new_file(serialfile, "r");
-    if (in == NULL) {
+    if (in == ((void*)0)) {
         if (!create) {
             perror(serialfile);
             goto err;
         }
         ERR_clear_error();
         ret = BN_new();
-        if (ret == NULL || !rand_serial(ret, ai))
+        if (ret == ((void*)0) || !rand_serial(ret, ai))
             BIO_printf(bio_err, "Out of memory\n");
     } else {
         if (!a2i_ASN1_INTEGER(in, ai, buf, 1024)) {
@@ -55,8 +55,8 @@ BIGNUM *load_serial(const char *serialfile, int create, ASN1_INTEGER **retai)
                        serialfile);
             goto err;
         }
-        ret = ASN1_INTEGER_to_BN(ai, NULL);
-        if (ret == NULL) {
+        ret = ASN1_INTEGER_to_BN(ai, ((void*)0));
+        if (ret == ((void*)0)) {
             BIO_printf(bio_err,
                        "error converting number from bin to BIGNUM\n");
             goto err;
@@ -65,7 +65,7 @@ BIGNUM *load_serial(const char *serialfile, int create, ASN1_INTEGER **retai)
 
     if (ret && retai) {
         *retai = ai;
-        ai = NULL;
+        ai = ((void*)0);
     }
  err:
     BIO_free(in);

@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  expires; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int expires; } ;
 struct TYPE_8__ {scalar_t__ eee; } ;
-struct sxgbe_priv_data {int eee_active; int /*<<< orphan*/  tx_lpi_timer; int /*<<< orphan*/  ioaddr; TYPE_2__* hw; TYPE_4__ eee_ctrl_timer; TYPE_3__ hw_cap; struct net_device* dev; } ;
-struct net_device {int /*<<< orphan*/  phydev; } ;
+struct sxgbe_priv_data {int eee_active; int tx_lpi_timer; int ioaddr; TYPE_2__* hw; TYPE_4__ eee_ctrl_timer; TYPE_3__ hw_cap; struct net_device* dev; } ;
+struct net_device {int phydev; } ;
 struct TYPE_7__ {TYPE_1__* mac; } ;
-struct TYPE_6__ {int /*<<< orphan*/  (* set_eee_timer ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
+struct TYPE_6__ {int (* set_eee_timer ) (int ,int ,int ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SXGBE_DEFAULT_LPI_TIMER ; 
- int /*<<< orphan*/  SXGBE_LPI_TIMER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  add_timer (TYPE_4__*) ; 
- int /*<<< orphan*/  eee_timer ; 
- scalar_t__ phy_init_eee (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pr_info (char*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sxgbe_eee_ctrl_timer ; 
- int /*<<< orphan*/  timer_setup (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int SXGBE_DEFAULT_LPI_TIMER ;
+ int SXGBE_LPI_TIMER (int ) ;
+ int add_timer (TYPE_4__*) ;
+ int eee_timer ;
+ scalar_t__ phy_init_eee (int ,int) ;
+ int pr_info (char*) ;
+ int stub1 (int ,int ,int ) ;
+ int sxgbe_eee_ctrl_timer ;
+ int timer_setup (TYPE_4__*,int ,int ) ;
 
 bool sxgbe_eee_init(struct sxgbe_priv_data * const priv)
 {
-	struct net_device *ndev = priv->dev;
-	bool ret = false;
+ struct net_device *ndev = priv->dev;
+ bool ret = 0;
 
-	/* MAC core supports the EEE feature. */
-	if (priv->hw_cap.eee) {
-		/* Check if the PHY supports EEE */
-		if (phy_init_eee(ndev->phydev, 1))
-			return false;
 
-		priv->eee_active = 1;
-		timer_setup(&priv->eee_ctrl_timer, sxgbe_eee_ctrl_timer, 0);
-		priv->eee_ctrl_timer.expires = SXGBE_LPI_TIMER(eee_timer);
-		add_timer(&priv->eee_ctrl_timer);
+ if (priv->hw_cap.eee) {
 
-		priv->hw->mac->set_eee_timer(priv->ioaddr,
-					     SXGBE_DEFAULT_LPI_TIMER,
-					     priv->tx_lpi_timer);
+  if (phy_init_eee(ndev->phydev, 1))
+   return 0;
 
-		pr_info("Energy-Efficient Ethernet initialized\n");
+  priv->eee_active = 1;
+  timer_setup(&priv->eee_ctrl_timer, sxgbe_eee_ctrl_timer, 0);
+  priv->eee_ctrl_timer.expires = SXGBE_LPI_TIMER(eee_timer);
+  add_timer(&priv->eee_ctrl_timer);
 
-		ret = true;
-	}
+  priv->hw->mac->set_eee_timer(priv->ioaddr,
+          SXGBE_DEFAULT_LPI_TIMER,
+          priv->tx_lpi_timer);
 
-	return ret;
+  pr_info("Energy-Efficient Ethernet initialized\n");
+
+  ret = 1;
+ }
+
+ return ret;
 }

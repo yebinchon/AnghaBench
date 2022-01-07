@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct ieee80211_local {int started; int /*<<< orphan*/  tasklet; int /*<<< orphan*/  hw; TYPE_1__* ops; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* stop ) (int /*<<< orphan*/ *) ;} ;
 
-/* Variables and functions */
- scalar_t__ WARN_ON (int) ; 
- int /*<<< orphan*/  barrier () ; 
- int /*<<< orphan*/  might_sleep () ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tasklet_disable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tasklet_enable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  trace_drv_return_void (struct ieee80211_local*) ; 
- int /*<<< orphan*/  trace_drv_stop (struct ieee80211_local*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct ieee80211_local {int started; int tasklet; int hw; TYPE_1__* ops; } ;
+struct TYPE_2__ {int (* stop ) (int *) ;} ;
+
+
+ scalar_t__ WARN_ON (int) ;
+ int barrier () ;
+ int might_sleep () ;
+ int stub1 (int *) ;
+ int tasklet_disable (int *) ;
+ int tasklet_enable (int *) ;
+ int trace_drv_return_void (struct ieee80211_local*) ;
+ int trace_drv_stop (struct ieee80211_local*) ;
 
 void drv_stop(struct ieee80211_local *local)
 {
-	might_sleep();
+ might_sleep();
 
-	if (WARN_ON(!local->started))
-		return;
+ if (WARN_ON(!local->started))
+  return;
 
-	trace_drv_stop(local);
-	local->ops->stop(&local->hw);
-	trace_drv_return_void(local);
+ trace_drv_stop(local);
+ local->ops->stop(&local->hw);
+ trace_drv_return_void(local);
 
-	/* sync away all work on the tasklet before clearing started */
-	tasklet_disable(&local->tasklet);
-	tasklet_enable(&local->tasklet);
 
-	barrier();
+ tasklet_disable(&local->tasklet);
+ tasklet_enable(&local->tasklet);
 
-	local->started = false;
+ barrier();
+
+ local->started = 0;
 }

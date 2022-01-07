@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct in_addr {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LogWARN ; 
- int inet_aton (char*,struct in_addr*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int,char const*) ; 
- int /*<<< orphan*/  strncpy (char*,char const*,int) ; 
+
+ int LogWARN ;
+ int inet_aton (char*,struct in_addr*) ;
+ int log_Printf (int ,char*,int,char const*) ;
+ int strncpy (char*,char const*,int) ;
 
 __attribute__((used)) static int
 do_inet_aton(const char *start, const char *end, struct in_addr *ip)

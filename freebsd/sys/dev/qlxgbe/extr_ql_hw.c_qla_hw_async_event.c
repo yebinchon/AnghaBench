@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int aen_mb0; int /*<<< orphan*/  aen_mb4; int /*<<< orphan*/  aen_mb3; int /*<<< orphan*/  aen_mb2; int /*<<< orphan*/  aen_mb1; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int aen_mb0; int aen_mb4; int aen_mb3; int aen_mb2; int aen_mb1; } ;
 struct TYPE_6__ {TYPE_1__ hw; } ;
-typedef  TYPE_2__ qla_host_t ;
+typedef TYPE_2__ qla_host_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  qla_idc_ack (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int qla_idc_ack (TYPE_2__*,int ,int ,int ,int ) ;
 
 void
 qla_hw_async_event(qla_host_t *ha)

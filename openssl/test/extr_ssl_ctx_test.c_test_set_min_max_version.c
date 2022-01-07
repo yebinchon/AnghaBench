@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  expected_max; int /*<<< orphan*/  expected_min; int /*<<< orphan*/  max_ok; int /*<<< orphan*/  max_version; int /*<<< orphan*/  min_ok; int /*<<< orphan*/  min_version; } ;
-typedef  TYPE_1__ version_test ;
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SSL_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CTX_get_max_proto_version (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CTX_get_min_proto_version (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SSL_CTX_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_CTX_set_max_proto_version (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_CTX_set_min_proto_version (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_get_max_proto_version (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_get_min_proto_version (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SSL_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_set_max_proto_version (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_set_min_proto_version (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_int_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TLS_server_method () ; 
- TYPE_1__* version_testdata ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int expected_max; int expected_min; int max_ok; int max_version; int min_ok; int min_version; } ;
+typedef TYPE_1__ version_test ;
+typedef int SSL_CTX ;
+typedef int SSL ;
+
+
+ int SSL_CTX_free (int *) ;
+ int SSL_CTX_get_max_proto_version (int *) ;
+ int SSL_CTX_get_min_proto_version (int *) ;
+ int * SSL_CTX_new (int ) ;
+ int SSL_CTX_set_max_proto_version (int *,int ) ;
+ int SSL_CTX_set_min_proto_version (int *,int ) ;
+ int SSL_free (int *) ;
+ int SSL_get_max_proto_version (int *) ;
+ int SSL_get_min_proto_version (int *) ;
+ int * SSL_new (int *) ;
+ int SSL_set_max_proto_version (int *,int ) ;
+ int SSL_set_min_proto_version (int *,int ) ;
+ int TEST_int_eq (int ,int ) ;
+ int TLS_server_method () ;
+ TYPE_1__* version_testdata ;
 
 __attribute__((used)) static int test_set_min_max_version(int idx_tst)
 {
-    SSL_CTX *ctx = NULL;
-    SSL *ssl = NULL;
+    SSL_CTX *ctx = ((void*)0);
+    SSL *ssl = ((void*)0);
     int testresult = 0;
     version_test t = version_testdata[idx_tst];
 
     ctx = SSL_CTX_new(TLS_server_method());
-    if (ctx == NULL)
+    if (ctx == ((void*)0))
         goto end;
 
     ssl = SSL_new(ctx);
-    if (ssl == NULL)
+    if (ssl == ((void*)0))
         goto end;
 
     if (!TEST_int_eq(SSL_CTX_set_min_proto_version(ctx, t.min_version), t.min_ok))

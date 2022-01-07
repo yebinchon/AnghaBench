@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mac ;
-struct TYPE_2__ {unsigned char* buf; int /*<<< orphan*/ * cmac_ctx; } ;
-typedef  TYPE_1__ loopargs_t ;
-typedef  int /*<<< orphan*/  key ;
-typedef  int /*<<< orphan*/  CMAC_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CMAC_Final (int /*<<< orphan*/ *,unsigned char*,size_t*) ; 
- int /*<<< orphan*/  CMAC_Init (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CMAC_Update (int /*<<< orphan*/ *,unsigned char*,int) ; 
- scalar_t__ COND (int) ; 
- int /*<<< orphan*/  evp_cmac_cipher ; 
- int* lengths ; 
- int save_count ; 
- size_t testnum ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int mac ;
+struct TYPE_2__ {unsigned char* buf; int * cmac_ctx; } ;
+typedef TYPE_1__ loopargs_t ;
+typedef int key ;
+typedef int CMAC_CTX ;
+
+
+ int CMAC_Final (int *,unsigned char*,size_t*) ;
+ int CMAC_Init (int *,char const*,int,int ,int *) ;
+ int CMAC_Update (int *,unsigned char*,int) ;
+ scalar_t__ COND (int) ;
+ int evp_cmac_cipher ;
+ int* lengths ;
+ int save_count ;
+ size_t testnum ;
 
 __attribute__((used)) static int EVP_CMAC_loop(void *args)
 {
@@ -36,12 +36,12 @@ __attribute__((used)) static int EVP_CMAC_loop(void *args)
     unsigned char mac[16];
     size_t len = sizeof(mac);
     int count;
-#ifndef SIGALRM
+
     int nb_iter = save_count * 4 * lengths[0] / lengths[testnum];
-#endif
+
 
     for (count = 0; COND(nb_iter); count++) {
-        if (!CMAC_Init(cmac_ctx, key, sizeof(key), evp_cmac_cipher, NULL)
+        if (!CMAC_Init(cmac_ctx, key, sizeof(key), evp_cmac_cipher, ((void*)0))
                 || !CMAC_Update(cmac_ctx, buf, lengths[testnum])
                 || !CMAC_Final(cmac_ctx, mac, &len))
             return -1;

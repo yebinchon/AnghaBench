@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MAX_NAME_SIZE ; 
- int /*<<< orphan*/  assert (int) ; 
- char* clean_str (char*) ; 
- char* name_buff ; 
- char* prepare_res ; 
- int* prepare_str_UTF8 (char*) ; 
- int /*<<< orphan*/  put_char_utf8 (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  sp_init () ; 
- char* sp_to_lower (char*) ; 
- char* win_to_utf8_convert ; 
+ int MAX_NAME_SIZE ;
+ int assert (int) ;
+ char* clean_str (char*) ;
+ char* name_buff ;
+ char* prepare_res ;
+ int* prepare_str_UTF8 (char*) ;
+ int put_char_utf8 (int ,char*) ;
+ int sp_init () ;
+ char* sp_to_lower (char*) ;
+ char* win_to_utf8_convert ;
 
 char *prepare_str_cp1251 (char *s, int len) {
   if (len >= MAX_NAME_SIZE / 4 - 1) {
-    return NULL;
+    return ((void*)0);
   }
 
   sp_init();

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct rite_binary_header {int /*<<< orphan*/  binary_size; int /*<<< orphan*/  binary_crc; int /*<<< orphan*/  binary_ident; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FLAG_BYTEORDER_BIG ; 
- int /*<<< orphan*/  FLAG_BYTEORDER_LIL ; 
- int /*<<< orphan*/  FLAG_BYTEORDER_NATIVE ; 
- int MRB_DUMP_INVALID_FILE_HEADER ; 
- int MRB_DUMP_OK ; 
- int /*<<< orphan*/  RITE_BINARY_IDENT ; 
- int /*<<< orphan*/  RITE_BINARY_IDENT_LIL ; 
- scalar_t__ bigendian_p () ; 
- int /*<<< orphan*/  bin_to_uint16 (int /*<<< orphan*/ ) ; 
- scalar_t__ bin_to_uint32 (int /*<<< orphan*/ ) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+struct rite_binary_header {int binary_size; int binary_crc; int binary_ident; } ;
+
+
+ int FLAG_BYTEORDER_BIG ;
+ int FLAG_BYTEORDER_LIL ;
+ int FLAG_BYTEORDER_NATIVE ;
+ int MRB_DUMP_INVALID_FILE_HEADER ;
+ int MRB_DUMP_OK ;
+ int RITE_BINARY_IDENT ;
+ int RITE_BINARY_IDENT_LIL ;
+ scalar_t__ bigendian_p () ;
+ int bin_to_uint16 (int ) ;
+ scalar_t__ bin_to_uint32 (int ) ;
+ scalar_t__ memcmp (int ,int ,int) ;
 
 __attribute__((used)) static int
 read_binary_header(const uint8_t *bin, size_t *bin_size, uint16_t *crc, uint8_t *flags)

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bfd ;
-struct TYPE_6__ {int /*<<< orphan*/  vna_next; int /*<<< orphan*/  vna_name; int /*<<< orphan*/  vna_other; int /*<<< orphan*/  vna_flags; int /*<<< orphan*/  vna_hash; } ;
-struct TYPE_5__ {int /*<<< orphan*/  vna_next; int /*<<< orphan*/  vna_name; int /*<<< orphan*/  vna_other; int /*<<< orphan*/  vna_flags; int /*<<< orphan*/  vna_hash; } ;
-typedef  TYPE_1__ Elf_Internal_Vernaux ;
-typedef  TYPE_2__ Elf_External_Vernaux ;
 
-/* Variables and functions */
- int /*<<< orphan*/  H_PUT_16 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  H_PUT_32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int bfd ;
+struct TYPE_6__ {int vna_next; int vna_name; int vna_other; int vna_flags; int vna_hash; } ;
+struct TYPE_5__ {int vna_next; int vna_name; int vna_other; int vna_flags; int vna_hash; } ;
+typedef TYPE_1__ Elf_Internal_Vernaux ;
+typedef TYPE_2__ Elf_External_Vernaux ;
+
+
+ int H_PUT_16 (int *,int ,int ) ;
+ int H_PUT_32 (int *,int ,int ) ;
 
 void
 _bfd_elf_swap_vernaux_out (bfd *abfd,
-			   const Elf_Internal_Vernaux *src,
-			   Elf_External_Vernaux *dst)
+      const Elf_Internal_Vernaux *src,
+      Elf_External_Vernaux *dst)
 {
   H_PUT_32 (abfd, src->vna_hash, dst->vna_hash);
   H_PUT_16 (abfd, src->vna_flags, dst->vna_flags);

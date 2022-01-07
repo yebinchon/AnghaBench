@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EINVAL ; 
- int mxc_iomux_alloc_pin (unsigned int const,char const*) ; 
- int /*<<< orphan*/  mxc_iomux_release_multiple_pins (unsigned int const*,int) ; 
+ int EINVAL ;
+ int mxc_iomux_alloc_pin (unsigned int const,char const*) ;
+ int mxc_iomux_release_multiple_pins (unsigned int const*,int) ;
 
 int mxc_iomux_setup_multiple_pins(const unsigned int *pin_list, unsigned count,
-		const char *label)
+  const char *label)
 {
-	const unsigned int *p = pin_list;
-	int i;
-	int ret = -EINVAL;
+ const unsigned int *p = pin_list;
+ int i;
+ int ret = -EINVAL;
 
-	for (i = 0; i < count; i++) {
-		ret = mxc_iomux_alloc_pin(*p, label);
-		if (ret)
-			goto setup_error;
-		p++;
-	}
-	return 0;
+ for (i = 0; i < count; i++) {
+  ret = mxc_iomux_alloc_pin(*p, label);
+  if (ret)
+   goto setup_error;
+  p++;
+ }
+ return 0;
 
 setup_error:
-	mxc_iomux_release_multiple_pins(pin_list, i);
-	return ret;
+ mxc_iomux_release_multiple_pins(pin_list, i);
+ return ret;
 }

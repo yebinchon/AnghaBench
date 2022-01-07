@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  add_com (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  add_target (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  class_obscure ; 
- int /*<<< orphan*/  gdbsim_ops ; 
- int /*<<< orphan*/  init_gdbsim_ops () ; 
- int /*<<< orphan*/  simulator_command ; 
+ int add_com (char*,int ,int ,char*) ;
+ int add_target (int *) ;
+ int class_obscure ;
+ int gdbsim_ops ;
+ int init_gdbsim_ops () ;
+ int simulator_command ;
 
 void
 _initialize_remote_sim (void)
@@ -26,5 +18,5 @@ _initialize_remote_sim (void)
   add_target (&gdbsim_ops);
 
   add_com ("sim <command>", class_obscure, simulator_command,
-	   "Send a command to the simulator.");
+    "Send a command to the simulator.");
 }

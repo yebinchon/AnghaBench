@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct controller {int dummy; } ;
-struct TYPE_2__ {int keycode; int /*<<< orphan*/  action; scalar_t__ metastate; } ;
-struct control_msg {TYPE_1__ inject_keycode; int /*<<< orphan*/  type; } ;
-typedef  enum android_keycode { ____Placeholder_android_keycode } android_keycode ;
+struct TYPE_2__ {int keycode; int action; scalar_t__ metastate; } ;
+struct control_msg {TYPE_1__ inject_keycode; int type; } ;
+typedef enum android_keycode { ____Placeholder_android_keycode } android_keycode ;
 
-/* Variables and functions */
- int ACTION_DOWN ; 
- int ACTION_UP ; 
- int /*<<< orphan*/  AKEY_EVENT_ACTION_DOWN ; 
- int /*<<< orphan*/  AKEY_EVENT_ACTION_UP ; 
- int /*<<< orphan*/  CONTROL_MSG_TYPE_INJECT_KEYCODE ; 
- int /*<<< orphan*/  LOGW (char*,char const*) ; 
- int /*<<< orphan*/  controller_push_msg (struct controller*,struct control_msg*) ; 
+
+ int ACTION_DOWN ;
+ int ACTION_UP ;
+ int AKEY_EVENT_ACTION_DOWN ;
+ int AKEY_EVENT_ACTION_UP ;
+ int CONTROL_MSG_TYPE_INJECT_KEYCODE ;
+ int LOGW (char*,char const*) ;
+ int controller_push_msg (struct controller*,struct control_msg*) ;
 
 __attribute__((used)) static void
 send_keycode(struct controller *controller, enum android_keycode keycode,
              int actions, const char *name) {
-    // send DOWN event
+
     struct control_msg msg;
     msg.type = CONTROL_MSG_TYPE_INJECT_KEYCODE;
     msg.inject_keycode.keycode = keycode;

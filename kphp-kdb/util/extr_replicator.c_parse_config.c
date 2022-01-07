@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct repl_server_status {int dummy; } ;
 struct remote_binlog {char* binlog_tag; int flags; struct location_list_entry* first; } ;
 struct location_list_entry {int location_len; char* location; int flags; struct location_list_entry* next; } ;
 struct TYPE_2__ {int flags; struct location_list_entry* master; struct location_list_entry* local; struct remote_binlog* binlog; struct repl_server_status* server_last; struct repl_server_status* server_first; } ;
 
-/* Variables and functions */
- int HASH_PRIME ; 
- TYPE_1__* LR ; 
- int MAX_CONFIG_SIZE ; 
- int MAX_LOCAL_RBS ; 
- int /*<<< orphan*/  assert (int) ; 
- int* cfg_cur ; 
- scalar_t__* cfg_end ; 
- int /*<<< orphan*/  cfg_getlex () ; 
- int cfg_getword (int) ; 
- scalar_t__ cfg_lex ; 
- int cfg_lno ; 
- int /*<<< orphan*/  cfg_skipspc () ; 
- int /*<<< orphan*/  cfg_skonlyspc () ; 
- void* cfg_start ; 
- scalar_t__ check_all_locations ; 
- scalar_t__ check_location (struct remote_binlog*) ; 
- void* config_buff ; 
- int config_bytes ; 
- char* config_filename ; 
- int /*<<< orphan*/ * fd ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- struct location_list_entry* get_master (struct remote_binlog*) ; 
- struct remote_binlog* get_rb_hash (int*,int,int) ; 
- char* hostname ; 
- int hostname_len ; 
- int local_masters ; 
- int local_rbs ; 
- int /*<<< orphan*/  memchr (char*,char,int) ; 
- int /*<<< orphan*/  memcmp (char*,...) ; 
- int /*<<< orphan*/  memcpy (char*,int*,int) ; 
- struct remote_binlog** rb_hash ; 
- int read (int /*<<< orphan*/ ,void*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int syntax (char*) ; 
- scalar_t__ verbosity ; 
- void* zmalloc (int) ; 
+
+ int HASH_PRIME ;
+ TYPE_1__* LR ;
+ int MAX_CONFIG_SIZE ;
+ int MAX_LOCAL_RBS ;
+ int assert (int) ;
+ int* cfg_cur ;
+ scalar_t__* cfg_end ;
+ int cfg_getlex () ;
+ int cfg_getword (int) ;
+ scalar_t__ cfg_lex ;
+ int cfg_lno ;
+ int cfg_skipspc () ;
+ int cfg_skonlyspc () ;
+ void* cfg_start ;
+ scalar_t__ check_all_locations ;
+ scalar_t__ check_location (struct remote_binlog*) ;
+ void* config_buff ;
+ int config_bytes ;
+ char* config_filename ;
+ int * fd ;
+ int fprintf (int ,char*,...) ;
+ struct location_list_entry* get_master (struct remote_binlog*) ;
+ struct remote_binlog* get_rb_hash (int*,int,int) ;
+ char* hostname ;
+ int hostname_len ;
+ int local_masters ;
+ int local_rbs ;
+ int memchr (char*,char,int) ;
+ int memcmp (char*,...) ;
+ int memcpy (char*,int*,int) ;
+ struct remote_binlog** rb_hash ;
+ int read (int ,void*,int) ;
+ int stderr ;
+ int syntax (char*) ;
+ scalar_t__ verbosity ;
+ void* zmalloc (int) ;
 
 int parse_config (int flags) {
   int r, l, i;
-  //struct hostent *h;
+
   struct remote_binlog *B;
 
   if (!(flags & 1)) {
@@ -134,7 +134,7 @@ int parse_config (int flags) {
           flags |= 2;
           if (!(B->flags & 2)) {
             B->flags |= 2;
-            /* add here B to local interest group */
+
             assert (local_rbs < MAX_LOCAL_RBS);
             for (i = 0; i < local_rbs; i++) {
               if (LR[i].local->location_len == l && !memcmp (LR[i].local->location, s, l)) {

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * merged_value; int /*<<< orphan*/  save_merged; int /*<<< orphan*/  merged_file; int /*<<< orphan*/  choice; } ;
-typedef  TYPE_1__ svn_wc_conflict_result_t ;
-typedef  int /*<<< orphan*/  svn_wc_conflict_choice_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- TYPE_1__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * merged_value; int save_merged; int merged_file; int choice; } ;
+typedef TYPE_1__ svn_wc_conflict_result_t ;
+typedef int svn_wc_conflict_choice_t ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ TYPE_1__* apr_pcalloc (int *,int) ;
+ int apr_pstrdup (int *,char const*) ;
 
 svn_wc_conflict_result_t *
 svn_wc_create_conflict_result(svn_wc_conflict_choice_t choice,
@@ -30,9 +30,9 @@ svn_wc_create_conflict_result(svn_wc_conflict_choice_t choice,
   result->choice = choice;
   result->merged_file = apr_pstrdup(pool, merged_file);
   result->save_merged = FALSE;
-  result->merged_value = NULL;
+  result->merged_value = ((void*)0);
 
-  /* If we add more fields to svn_wc_conflict_result_t, add them here. */
+
 
   return result;
 }

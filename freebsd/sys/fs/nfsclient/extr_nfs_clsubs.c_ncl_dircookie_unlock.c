@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nfsnode {int /*<<< orphan*/  n_flag; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NDIRCOOKIELK ; 
- int /*<<< orphan*/  NFSLOCKNODE (struct nfsnode*) ; 
- int /*<<< orphan*/  NFSUNLOCKNODE (struct nfsnode*) ; 
- int /*<<< orphan*/  wakeup (int /*<<< orphan*/ *) ; 
 
-void 
+
+
+struct nfsnode {int n_flag; } ;
+
+
+ int NDIRCOOKIELK ;
+ int NFSLOCKNODE (struct nfsnode*) ;
+ int NFSUNLOCKNODE (struct nfsnode*) ;
+ int wakeup (int *) ;
+
+void
 ncl_dircookie_unlock(struct nfsnode *np)
 {
-	NFSLOCKNODE(np);
-	np->n_flag &= ~NDIRCOOKIELK;
-	wakeup(&np->n_flag);
-	NFSUNLOCKNODE(np);
+ NFSLOCKNODE(np);
+ np->n_flag &= ~NDIRCOOKIELK;
+ wakeup(&np->n_flag);
+ NFSUNLOCKNODE(np);
 }

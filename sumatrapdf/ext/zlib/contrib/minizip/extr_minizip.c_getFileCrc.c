@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * FOPEN_FUNC (char const*,char*) ; 
- int ZIP_ERRNO ; 
- int ZIP_OK ; 
- unsigned long crc32 (unsigned long,void*,unsigned long) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ feof (int /*<<< orphan*/ *) ; 
- scalar_t__ fread (void*,int,unsigned long,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,char const*,...) ; 
+
+
+
+typedef int FILE ;
+
+
+ int * FOPEN_FUNC (char const*,char*) ;
+ int ZIP_ERRNO ;
+ int ZIP_OK ;
+ unsigned long crc32 (unsigned long,void*,unsigned long) ;
+ int fclose (int *) ;
+ scalar_t__ feof (int *) ;
+ scalar_t__ fread (void*,int,unsigned long,int *) ;
+ int printf (char*,char const*,...) ;
 
 int getFileCrc(const char* filenameinzip,void*buf,unsigned long size_buf,unsigned long* result_crc)
 {
@@ -30,7 +30,7 @@ int getFileCrc(const char* filenameinzip,void*buf,unsigned long size_buf,unsigne
 
    unsigned long size_read = 0;
    unsigned long total_read = 0;
-   if (fin==NULL)
+   if (fin==((void*)0))
    {
        err = ZIP_ERRNO;
    }

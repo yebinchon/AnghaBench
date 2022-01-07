@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct loopinfo {int type; int /*<<< orphan*/  acc; int /*<<< orphan*/  ensure_level; struct loopinfo* prev; scalar_t__ pc3; scalar_t__ pc2; scalar_t__ pc1; scalar_t__ pc0; } ;
-typedef  enum looptype { ____Placeholder_looptype } looptype ;
-struct TYPE_4__ {struct loopinfo* loop; int /*<<< orphan*/  ensure_level; } ;
-typedef  TYPE_1__ codegen_scope ;
 
-/* Variables and functions */
- scalar_t__ codegen_palloc (TYPE_1__*,int) ; 
- int /*<<< orphan*/  cursp () ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct loopinfo {int type; int acc; int ensure_level; struct loopinfo* prev; scalar_t__ pc3; scalar_t__ pc2; scalar_t__ pc1; scalar_t__ pc0; } ;
+typedef enum looptype { ____Placeholder_looptype } looptype ;
+struct TYPE_4__ {struct loopinfo* loop; int ensure_level; } ;
+typedef TYPE_1__ codegen_scope ;
+
+
+ scalar_t__ codegen_palloc (TYPE_1__*,int) ;
+ int cursp () ;
 
 __attribute__((used)) static struct loopinfo*
 loop_push(codegen_scope *s, enum looptype t)

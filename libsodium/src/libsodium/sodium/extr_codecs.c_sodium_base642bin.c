@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ERANGE ; 
- unsigned int VARIANT_NO_PADDING_MASK ; 
- unsigned int VARIANT_URLSAFE_MASK ; 
- int _sodium_base642bin_skip_padding (char const* const,size_t const,size_t*,char const* const,size_t) ; 
- unsigned int b64_char_to_byte (char) ; 
- unsigned int b64_urlsafe_char_to_byte (char) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  sodium_base64_check_variant (int const) ; 
- int /*<<< orphan*/ * strchr (char const* const,char const) ; 
+ int EINVAL ;
+ int ERANGE ;
+ unsigned int VARIANT_NO_PADDING_MASK ;
+ unsigned int VARIANT_URLSAFE_MASK ;
+ int _sodium_base642bin_skip_padding (char const* const,size_t const,size_t*,char const* const,size_t) ;
+ unsigned int b64_char_to_byte (char) ;
+ unsigned int b64_urlsafe_char_to_byte (char) ;
+ int errno ;
+ int sodium_base64_check_variant (int const) ;
+ int * strchr (char const* const,char const) ;
 
 int
 sodium_base642bin(unsigned char * const bin, const size_t bin_maxlen,
@@ -29,14 +21,14 @@ sodium_base642bin(unsigned char * const bin, const size_t bin_maxlen,
                   const char * const ignore, size_t * const bin_len,
                   const char ** const b64_end, const int variant)
 {
-    size_t       acc_len = (size_t) 0;
-    size_t       b64_pos = (size_t) 0;
-    size_t       bin_pos = (size_t) 0;
-    int          is_urlsafe;
-    int          ret = 0;
+    size_t acc_len = (size_t) 0;
+    size_t b64_pos = (size_t) 0;
+    size_t bin_pos = (size_t) 0;
+    int is_urlsafe;
+    int ret = 0;
     unsigned int acc = 0U;
     unsigned int d;
-    char         c;
+    char c;
 
     sodium_base64_check_variant(variant);
     is_urlsafe = ((unsigned int) variant) & VARIANT_URLSAFE_MASK;
@@ -48,7 +40,7 @@ sodium_base642bin(unsigned char * const bin, const size_t bin_maxlen,
             d = b64_char_to_byte(c);
         }
         if (d == 0xFF) {
-            if (ignore != NULL && strchr(ignore, c) != NULL) {
+            if (ignore != ((void*)0) && strchr(ignore, c) != ((void*)0)) {
                 b64_pos++;
                 continue;
             }
@@ -76,18 +68,18 @@ sodium_base642bin(unsigned char * const bin, const size_t bin_maxlen,
     }
     if (ret != 0) {
         bin_pos = (size_t) 0U;
-    } else if (ignore != NULL) {
-        while (b64_pos < b64_len && strchr(ignore, b64[b64_pos]) != NULL) {
+    } else if (ignore != ((void*)0)) {
+        while (b64_pos < b64_len && strchr(ignore, b64[b64_pos]) != ((void*)0)) {
             b64_pos++;
         }
     }
-    if (b64_end != NULL) {
+    if (b64_end != ((void*)0)) {
         *b64_end = &b64[b64_pos];
     } else if (b64_pos != b64_len) {
         errno = EINVAL;
         ret = -1;
     }
-    if (bin_len != NULL) {
+    if (bin_len != ((void*)0)) {
         *bin_len = bin_pos;
     }
     return ret;

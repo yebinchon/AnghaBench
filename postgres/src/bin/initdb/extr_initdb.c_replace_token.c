@@ -1,69 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- scalar_t__ pg_malloc (int) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int strlen (char const*) ; 
- char* strstr (char*,char const*) ; 
+ int memcpy (char*,char const*,int) ;
+ scalar_t__ pg_malloc (int) ;
+ int strcpy (char*,char*) ;
+ int strlen (char const*) ;
+ char* strstr (char*,char const*) ;
 
 __attribute__((used)) static char **
 replace_token(char **lines, const char *token, const char *replacement)
 {
-	int			numlines = 1;
-	int			i;
-	char	  **result;
-	int			toklen,
-				replen,
-				diff;
+ int numlines = 1;
+ int i;
+ char **result;
+ int toklen,
+    replen,
+    diff;
 
-	for (i = 0; lines[i]; i++)
-		numlines++;
+ for (i = 0; lines[i]; i++)
+  numlines++;
 
-	result = (char **) pg_malloc(numlines * sizeof(char *));
+ result = (char **) pg_malloc(numlines * sizeof(char *));
 
-	toklen = strlen(token);
-	replen = strlen(replacement);
-	diff = replen - toklen;
+ toklen = strlen(token);
+ replen = strlen(replacement);
+ diff = replen - toklen;
 
-	for (i = 0; i < numlines; i++)
-	{
-		char	   *where;
-		char	   *newline;
-		int			pre;
+ for (i = 0; i < numlines; i++)
+ {
+  char *where;
+  char *newline;
+  int pre;
 
-		/* just copy pointer if NULL or no change needed */
-		if (lines[i] == NULL || (where = strstr(lines[i], token)) == NULL)
-		{
-			result[i] = lines[i];
-			continue;
-		}
 
-		/* if we get here a change is needed - set up new line */
+  if (lines[i] == ((void*)0) || (where = strstr(lines[i], token)) == ((void*)0))
+  {
+   result[i] = lines[i];
+   continue;
+  }
 
-		newline = (char *) pg_malloc(strlen(lines[i]) + diff + 1);
 
-		pre = where - lines[i];
 
-		memcpy(newline, lines[i], pre);
+  newline = (char *) pg_malloc(strlen(lines[i]) + diff + 1);
 
-		memcpy(newline + pre, replacement, replen);
+  pre = where - lines[i];
 
-		strcpy(newline + pre + replen, lines[i] + pre + toklen);
+  memcpy(newline, lines[i], pre);
 
-		result[i] = newline;
-	}
+  memcpy(newline + pre, replacement, replen);
 
-	return result;
+  strcpy(newline + pre + replen, lines[i] + pre + toklen);
+
+  result[i] = newline;
+ }
+
+ return result;
 }

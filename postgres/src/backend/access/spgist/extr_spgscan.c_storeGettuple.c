@@ -1,82 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  distances ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int distances ;
 struct TYPE_6__ {double value; int isnull; } ;
-struct TYPE_5__ {size_t nPtrs; int* recheck; int* recheckDistances; int numberOfOrderBys; scalar_t__ numberOfNonNullOrderBys; int* nonNullOrderByOffsets; int /*<<< orphan*/  indexTupDesc; int /*<<< orphan*/ * reconTups; scalar_t__ want_itup; TYPE_2__** distances; int /*<<< orphan*/ * heapPtrs; } ;
-typedef  TYPE_1__* SpGistScanOpaque ;
-typedef  int /*<<< orphan*/ * ItemPointer ;
-typedef  TYPE_2__ IndexOrderByDistance ;
-typedef  int /*<<< orphan*/  Datum ;
+struct TYPE_5__ {size_t nPtrs; int* recheck; int* recheckDistances; int numberOfOrderBys; scalar_t__ numberOfNonNullOrderBys; int* nonNullOrderByOffsets; int indexTupDesc; int * reconTups; scalar_t__ want_itup; TYPE_2__** distances; int * heapPtrs; } ;
+typedef TYPE_1__* SpGistScanOpaque ;
+typedef int * ItemPointer ;
+typedef TYPE_2__ IndexOrderByDistance ;
+typedef int Datum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- size_t MaxIndexTuplesPerPage ; 
- int /*<<< orphan*/  heap_form_tuple (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- TYPE_2__* palloc (int) ; 
+
+ int Assert (int) ;
+ size_t MaxIndexTuplesPerPage ;
+ int heap_form_tuple (int ,int *,int*) ;
+ TYPE_2__* palloc (int) ;
 
 __attribute__((used)) static void
 storeGettuple(SpGistScanOpaque so, ItemPointer heapPtr,
-			  Datum leafValue, bool isnull, bool recheck, bool recheckDistances,
-			  double *nonNullDistances)
+     Datum leafValue, bool isnull, bool recheck, bool recheckDistances,
+     double *nonNullDistances)
 {
-	Assert(so->nPtrs < MaxIndexTuplesPerPage);
-	so->heapPtrs[so->nPtrs] = *heapPtr;
-	so->recheck[so->nPtrs] = recheck;
-	so->recheckDistances[so->nPtrs] = recheckDistances;
+ Assert(so->nPtrs < MaxIndexTuplesPerPage);
+ so->heapPtrs[so->nPtrs] = *heapPtr;
+ so->recheck[so->nPtrs] = recheck;
+ so->recheckDistances[so->nPtrs] = recheckDistances;
 
-	if (so->numberOfOrderBys > 0)
-	{
-		if (isnull || so->numberOfNonNullOrderBys <= 0)
-			so->distances[so->nPtrs] = NULL;
-		else
-		{
-			IndexOrderByDistance *distances =
-			palloc(sizeof(distances[0]) * so->numberOfOrderBys);
-			int			i;
+ if (so->numberOfOrderBys > 0)
+ {
+  if (isnull || so->numberOfNonNullOrderBys <= 0)
+   so->distances[so->nPtrs] = ((void*)0);
+  else
+  {
+   IndexOrderByDistance *distances =
+   palloc(sizeof(distances[0]) * so->numberOfOrderBys);
+   int i;
 
-			for (i = 0; i < so->numberOfOrderBys; i++)
-			{
-				int			offset = so->nonNullOrderByOffsets[i];
+   for (i = 0; i < so->numberOfOrderBys; i++)
+   {
+    int offset = so->nonNullOrderByOffsets[i];
 
-				if (offset >= 0)
-				{
-					/* Copy non-NULL distance value */
-					distances[i].value = nonNullDistances[offset];
-					distances[i].isnull = false;
-				}
-				else
-				{
-					/* Set distance's NULL flag. */
-					distances[i].value = 0.0;
-					distances[i].isnull = true;
-				}
-			}
+    if (offset >= 0)
+    {
 
-			so->distances[so->nPtrs] = distances;
-		}
-	}
+     distances[i].value = nonNullDistances[offset];
+     distances[i].isnull = 0;
+    }
+    else
+    {
 
-	if (so->want_itup)
-	{
-		/*
-		 * Reconstruct index data.  We have to copy the datum out of the temp
-		 * context anyway, so we may as well create the tuple here.
-		 */
-		so->reconTups[so->nPtrs] = heap_form_tuple(so->indexTupDesc,
-												   &leafValue,
-												   &isnull);
-	}
-	so->nPtrs++;
+     distances[i].value = 0.0;
+     distances[i].isnull = 1;
+    }
+   }
+
+   so->distances[so->nPtrs] = distances;
+  }
+ }
+
+ if (so->want_itup)
+ {
+
+
+
+
+  so->reconTups[so->nPtrs] = heap_form_tuple(so->indexTupDesc,
+               &leafValue,
+               &isnull);
+ }
+ so->nPtrs++;
 }

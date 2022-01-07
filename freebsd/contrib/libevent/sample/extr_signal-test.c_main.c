@@ -1,58 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct event_base {int dummy; } ;
 struct event {int dummy; } ;
-typedef  int /*<<< orphan*/  WSADATA ;
-typedef  int /*<<< orphan*/  WORD ;
+typedef int WSADATA ;
+typedef int WORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAKEWORD (int,int) ; 
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  WSAStartup (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  event_add (struct event*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  event_base_dispatch (struct event_base*) ; 
- int /*<<< orphan*/  event_base_free (struct event_base*) ; 
- struct event_base* event_base_new () ; 
- int /*<<< orphan*/  event_free (struct event*) ; 
- int /*<<< orphan*/  event_self_cbarg () ; 
- struct event* evsignal_new (struct event_base*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  signal_cb ; 
+
+ int MAKEWORD (int,int) ;
+ int SIGINT ;
+ int WSAStartup (int ,int *) ;
+ int event_add (struct event*,int *) ;
+ int event_base_dispatch (struct event_base*) ;
+ int event_base_free (struct event_base*) ;
+ struct event_base* event_base_new () ;
+ int event_free (struct event*) ;
+ int event_self_cbarg () ;
+ struct event* evsignal_new (struct event_base*,int ,int ,int ) ;
+ int signal_cb ;
 
 int
 main(int argc, char **argv)
 {
-	struct event *signal_int;
-	struct event_base* base;
-#ifdef _WIN32
-	WORD wVersionRequested;
-	WSADATA wsaData;
+ struct event *signal_int;
+ struct event_base* base;
+ base = event_base_new();
 
-	wVersionRequested = MAKEWORD(2, 2);
 
-	(void) WSAStartup(wVersionRequested, &wsaData);
-#endif
+ signal_int = evsignal_new(base, SIGINT, signal_cb, event_self_cbarg());
 
-	/* Initalize the event library */
-	base = event_base_new();
+ event_add(signal_int, ((void*)0));
 
-	/* Initalize one event */
-	signal_int = evsignal_new(base, SIGINT, signal_cb, event_self_cbarg());
+ event_base_dispatch(base);
+ event_free(signal_int);
+ event_base_free(base);
 
-	event_add(signal_int, NULL);
-
-	event_base_dispatch(base);
-	event_free(signal_int);
-	event_base_free(base);
-
-	return (0);
+ return (0);
 }

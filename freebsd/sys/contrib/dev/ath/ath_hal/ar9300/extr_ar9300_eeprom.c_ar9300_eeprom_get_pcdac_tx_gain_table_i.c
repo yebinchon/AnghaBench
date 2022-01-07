@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_int8_t ;
+
+
+
+
+typedef int u_int8_t ;
 struct ath_hal {int dummy; } ;
 
-/* Variables and functions */
- int AH_FALSE ; 
- int AH_TRUE ; 
- scalar_t__ AR_PHY_TXGAIN_TAB (int) ; 
- unsigned long OS_REG_READ (struct ath_hal*,scalar_t__) ; 
- int ar9300_eeprom_get_tx_gain_table_number_max (struct ath_hal*) ; 
 
-__attribute__((used)) static u_int8_t ar9300_eeprom_get_pcdac_tx_gain_table_i(struct ath_hal *ah, 
+ int AH_FALSE ;
+ int AH_TRUE ;
+ scalar_t__ AR_PHY_TXGAIN_TAB (int) ;
+ unsigned long OS_REG_READ (struct ath_hal*,scalar_t__) ;
+ int ar9300_eeprom_get_tx_gain_table_number_max (struct ath_hal*) ;
+
+__attribute__((used)) static u_int8_t ar9300_eeprom_get_pcdac_tx_gain_table_i(struct ath_hal *ah,
                                                int i, u_int8_t *pcdac)
 {
     unsigned long tx_gain;

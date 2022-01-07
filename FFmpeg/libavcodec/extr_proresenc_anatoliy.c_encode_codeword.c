@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PutBitContext ;
 
-/* Variables and functions */
- unsigned int av_log2 (int) ; 
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  put_sbits (int /*<<< orphan*/ *,unsigned int,int) ; 
+
+
+
+typedef int PutBitContext ;
+
+
+ unsigned int av_log2 (int) ;
+ int put_bits (int *,int,int) ;
+ int put_sbits (int *,unsigned int,int) ;
 
 __attribute__((used)) static void encode_codeword(PutBitContext *pb, int val, int codebook)
 {
     unsigned int rice_order, exp_order, switch_bits, first_exp, exp, zeros;
 
-    /* number of bits to switch between rice and exp golomb */
+
     switch_bits = codebook & 3;
-    rice_order  = codebook >> 5;
-    exp_order   = (codebook >> 2) & 7;
+    rice_order = codebook >> 5;
+    exp_order = (codebook >> 2) & 7;
 
     first_exp = ((switch_bits + 1) << rice_order);
 
-    if (val >= first_exp) { /* exp golomb */
+    if (val >= first_exp) {
         val -= first_exp;
         val += (1 << exp_order);
         exp = av_log2(val);

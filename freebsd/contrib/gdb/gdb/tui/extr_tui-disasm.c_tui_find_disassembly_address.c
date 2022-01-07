@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tui_asm_line {scalar_t__ addr; int /*<<< orphan*/  insn; int /*<<< orphan*/  addr_string; } ;
+
+
+
+
+struct tui_asm_line {scalar_t__ addr; int insn; int addr_string; } ;
 struct minimal_symbol {int dummy; } ;
-typedef  scalar_t__ CORE_ADDR ;
+typedef scalar_t__ CORE_ADDR ;
 
-/* Variables and functions */
- scalar_t__ SYMBOL_VALUE_ADDRESS (struct minimal_symbol*) ; 
- scalar_t__ alloca (int) ; 
- struct minimal_symbol* lookup_minimal_symbol_by_pc_section (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct tui_asm_line*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ tui_disassemble (struct tui_asm_line*,scalar_t__,int) ; 
- int /*<<< orphan*/  xfree (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ SYMBOL_VALUE_ADDRESS (struct minimal_symbol*) ;
+ scalar_t__ alloca (int) ;
+ struct minimal_symbol* lookup_minimal_symbol_by_pc_section (scalar_t__,int ) ;
+ int memset (struct tui_asm_line*,int ,int) ;
+ scalar_t__ tui_disassemble (struct tui_asm_line*,scalar_t__,int) ;
+ int xfree (int ) ;
 
 __attribute__((used)) static CORE_ADDR
 tui_find_disassembly_address (CORE_ADDR pc, int from)
@@ -49,10 +49,10 @@ tui_find_disassembly_address (CORE_ADDR pc, int from)
       CORE_ADDR last_addr;
       int pos;
       struct minimal_symbol* msymbol;
-              
-      /* Find backward an address which is a symbol
-         and for which disassembling from that address will fill
-         completely the window.  */
+
+
+
+
       pos = max_lines - 1;
       do {
          new_low -= 1 * max_lines;
@@ -67,23 +67,23 @@ tui_find_disassembly_address (CORE_ADDR pc, int from)
          last_addr = asm_lines[pos].addr;
       } while (last_addr > pc && msymbol);
 
-      /* Scan forward disassembling one instruction at a time
-         until the last visible instruction of the window
-         matches the pc.  We keep the disassembled instructions
-         in the 'lines' window and shift it downward (increasing
-         its addresses).  */
+
+
+
+
+
       if (last_addr < pc)
         do
           {
             CORE_ADDR next_addr;
-                 
+
             pos++;
             if (pos >= max_lines)
               pos = 0;
 
             next_addr = tui_disassemble (&asm_lines[pos], last_addr, 1);
 
-            /* If there are some problems while disassembling exit.  */
+
             if (next_addr <= last_addr)
               break;
             last_addr = next_addr;

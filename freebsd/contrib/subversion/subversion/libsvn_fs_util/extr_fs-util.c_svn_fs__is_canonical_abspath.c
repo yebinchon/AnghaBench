@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_boolean_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  is_canonical_abspath (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+
+
+typedef int svn_boolean_t ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int is_canonical_abspath (char const*,int ) ;
+ int strlen (char const*) ;
 
 svn_boolean_t
 svn_fs__is_canonical_abspath(const char *path)
 {
-  /* No PATH?  No problem. */
+
   if (! path)
     return TRUE;
 
-  /* Empty PATH?  That's just "/". */
+
   if (! *path)
     return FALSE;
 
-  /* detailed checks */
+
   return is_canonical_abspath(path, strlen(path));
 }

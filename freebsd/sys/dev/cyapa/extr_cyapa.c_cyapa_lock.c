@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cyapa_softc {int /*<<< orphan*/  mutex; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mtx_lock (int /*<<< orphan*/ *) ; 
+
+
+
+struct cyapa_softc {int mutex; } ;
+
+
+ int mtx_lock (int *) ;
 
 __attribute__((used)) static void
 cyapa_lock(struct cyapa_softc *sc)
 {
 
-	mtx_lock(&sc->mutex);
+ mtx_lock(&sc->mutex);
 }

@@ -1,39 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int cd_media ; 
- int cd_media_bd ; 
- int cd_media_bd_r ; 
- int cd_media_bd_re ; 
- int cd_media_cd_r ; 
- int cd_media_cd_rom ; 
- int cd_media_cd_rw ; 
- int cd_media_dvd_plus_r ; 
- int cd_media_dvd_plus_r_dl ; 
- int cd_media_dvd_plus_rw ; 
- int cd_media_dvd_plus_rw_dl ; 
- int cd_media_dvd_r ; 
- int cd_media_dvd_ram ; 
- int cd_media_dvd_rom ; 
- int cd_media_dvd_rw ; 
- int cd_media_dvd_rw_ro ; 
- int cd_media_dvd_rw_seq ; 
- int cd_media_hddvd ; 
- int cd_media_hddvd_r ; 
- int cd_media_hddvd_rw ; 
- int cd_media_mo ; 
- int /*<<< orphan*/  log_debug (char*,int) ; 
+ int cd_media ;
+ int cd_media_bd ;
+ int cd_media_bd_r ;
+ int cd_media_bd_re ;
+ int cd_media_cd_r ;
+ int cd_media_cd_rom ;
+ int cd_media_cd_rw ;
+ int cd_media_dvd_plus_r ;
+ int cd_media_dvd_plus_r_dl ;
+ int cd_media_dvd_plus_rw ;
+ int cd_media_dvd_plus_rw_dl ;
+ int cd_media_dvd_r ;
+ int cd_media_dvd_ram ;
+ int cd_media_dvd_rom ;
+ int cd_media_dvd_rw ;
+ int cd_media_dvd_rw_ro ;
+ int cd_media_dvd_rw_seq ;
+ int cd_media_hddvd ;
+ int cd_media_hddvd_r ;
+ int cd_media_hddvd_rw ;
+ int cd_media_mo ;
+ int log_debug (char*,int) ;
 
 __attribute__((used)) static void feature_profile_media(int cur_profile) {
         switch (cur_profile) {

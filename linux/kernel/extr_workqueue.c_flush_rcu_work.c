@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rcu_work {int /*<<< orphan*/  work; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WORK_STRUCT_PENDING_BIT ; 
- int flush_work (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rcu_barrier () ; 
- scalar_t__ test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  work_data_bits (int /*<<< orphan*/ *) ; 
+
+
+
+struct rcu_work {int work; } ;
+
+
+ int WORK_STRUCT_PENDING_BIT ;
+ int flush_work (int *) ;
+ int rcu_barrier () ;
+ scalar_t__ test_bit (int ,int ) ;
+ int work_data_bits (int *) ;
 
 bool flush_rcu_work(struct rcu_work *rwork)
 {
-	if (test_bit(WORK_STRUCT_PENDING_BIT, work_data_bits(&rwork->work))) {
-		rcu_barrier();
-		flush_work(&rwork->work);
-		return true;
-	} else {
-		return flush_work(&rwork->work);
-	}
+ if (test_bit(WORK_STRUCT_PENDING_BIT, work_data_bits(&rwork->work))) {
+  rcu_barrier();
+  flush_work(&rwork->work);
+  return 1;
+ } else {
+  return flush_work(&rwork->work);
+ }
 }

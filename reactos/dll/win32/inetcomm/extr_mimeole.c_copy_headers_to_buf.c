@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int QuadPart; } ;
-typedef  int LONGLONG ;
-typedef  TYPE_1__ LARGE_INTEGER ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
-typedef  scalar_t__ BOOL ;
+typedef int LONGLONG ;
+typedef TYPE_1__ LARGE_INTEGER ;
+typedef int IStream ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- char* HeapReAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  IStream_Read (int /*<<< orphan*/ *,char*,int,int*) ; 
- int /*<<< orphan*/  IStream_Seek (int /*<<< orphan*/ *,TYPE_1__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int PARSER_BUF_SIZE ; 
- int /*<<< orphan*/  STREAM_SEEK_CUR ; 
- int /*<<< orphan*/  S_OK ; 
- scalar_t__ TRUE ; 
- char* strstr (char*,char*) ; 
+
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ scalar_t__ FALSE ;
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,char*) ;
+ char* HeapReAlloc (int ,int ,char*,int) ;
+ int IStream_Read (int *,char*,int,int*) ;
+ int IStream_Seek (int *,TYPE_1__,int ,int *) ;
+ int PARSER_BUF_SIZE ;
+ int STREAM_SEEK_CUR ;
+ int S_OK ;
+ scalar_t__ TRUE ;
+ char* strstr (char*,char*) ;
 
 __attribute__((used)) static HRESULT copy_headers_to_buf(IStream *stm, char **ptr)
 {
-    char *buf = NULL;
+    char *buf = ((void*)0);
     DWORD size = PARSER_BUF_SIZE, offset = 0, last_end = 0;
     HRESULT hr;
     BOOL done = FALSE;
 
-    *ptr = NULL;
+    *ptr = ((void*)0);
 
     do
     {
@@ -77,7 +77,7 @@ __attribute__((used)) static HRESULT copy_headers_to_buf(IStream *stm, char **pt
             {
                 LARGE_INTEGER off;
                 off.QuadPart = (LONGLONG)new_end - offset;
-                IStream_Seek(stm, off, STREAM_SEEK_CUR, NULL);
+                IStream_Seek(stm, off, STREAM_SEEK_CUR, ((void*)0));
                 buf[new_end] = '\0';
                 done = TRUE;
             }

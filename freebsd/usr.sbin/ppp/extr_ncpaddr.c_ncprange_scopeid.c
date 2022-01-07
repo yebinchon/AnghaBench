@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_short ;
-struct in6_addr {int /*<<< orphan*/ * s6_addr; } ;
+
+
+
+
+typedef int u_short ;
+struct in6_addr {int * s6_addr; } ;
 struct ncprange {scalar_t__ ncprange_family; struct in6_addr ncprange_ip6addr; } ;
 
-/* Variables and functions */
- scalar_t__ AF_INET6 ; 
- scalar_t__ IN6_IS_ADDR_LINKLOCAL (struct in6_addr const*) ; 
- scalar_t__ IN6_IS_ADDR_MC_LINKLOCAL (struct in6_addr const*) ; 
- int ntohs (int /*<<< orphan*/  const) ; 
+
+ scalar_t__ AF_INET6 ;
+ scalar_t__ IN6_IS_ADDR_LINKLOCAL (struct in6_addr const*) ;
+ scalar_t__ IN6_IS_ADDR_MC_LINKLOCAL (struct in6_addr const*) ;
+ int ntohs (int const) ;
 
 int
 ncprange_scopeid(const struct ncprange *range)

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  siginfo_t ;
-typedef  int /*<<< orphan*/  sd_event_source ;
 
-/* Variables and functions */
- void* INT_TO_PTR (float) ; 
- int /*<<< orphan*/  PTR_TO_INT (void*) ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/  log_info (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ sd_event_exit (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_event_source_get_event (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sd_event_source_unref (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int siginfo_t ;
+typedef int sd_event_source ;
+
+
+ void* INT_TO_PTR (float) ;
+ int PTR_TO_INT (void*) ;
+ int assert_se (int) ;
+ int log_info (char*,int ) ;
+ scalar_t__ sd_event_exit (int ,int ) ;
+ int sd_event_source_get_event (int *) ;
+ int sd_event_source_unref (int *) ;
 
 __attribute__((used)) static int child_handler(sd_event_source *s, const siginfo_t *si, void *userdata) {
 

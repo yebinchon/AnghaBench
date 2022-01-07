@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  progress_written; int /*<<< orphan*/  progress_read; int /*<<< orphan*/  progress_baton; int /*<<< orphan*/  (* progress_func ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_1__ serf_context_t ;
-typedef  scalar_t__ apr_off_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int progress_written; int progress_read; int progress_baton; int (* progress_func ) (int ,int ,int ) ;} ;
+typedef TYPE_1__ serf_context_t ;
+typedef scalar_t__ apr_off_t ;
+
+
+ int stub1 (int ,int ,int ) ;
 
 void serf__context_progress_delta(
     void *progress_baton,

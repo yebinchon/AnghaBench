@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CreateEnumStmt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMPARE_NODE_FIELD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  typeName ; 
- int /*<<< orphan*/  vals ; 
+
+
+
+typedef int CreateEnumStmt ;
+
+
+ int COMPARE_NODE_FIELD (int ) ;
+ int typeName ;
+ int vals ;
 
 __attribute__((used)) static bool
 _equalCreateEnumStmt(const CreateEnumStmt *a, const CreateEnumStmt *b)
 {
-	COMPARE_NODE_FIELD(typeName);
-	COMPARE_NODE_FIELD(vals);
+ COMPARE_NODE_FIELD(typeName);
+ COMPARE_NODE_FIELD(vals);
 
-	return true;
+ return 1;
 }

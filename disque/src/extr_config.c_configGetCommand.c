@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_7__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char* sds ;
+
+
+typedef struct TYPE_15__ TYPE_7__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef char* sds ;
 struct TYPE_13__ {char* ptr; } ;
-typedef  TYPE_2__ robj ;
+typedef TYPE_2__ robj ;
 struct TYPE_14__ {TYPE_2__** argv; } ;
-typedef  TYPE_3__ client ;
-typedef  int /*<<< orphan*/  buf ;
-struct TYPE_15__ {scalar_t__ aof_state; int unixsocketperm; int /*<<< orphan*/  bindaddr_count; int /*<<< orphan*/  bindaddr; TYPE_1__* client_obuf_limits; int /*<<< orphan*/  syslog_facility; int /*<<< orphan*/  aof_fsync; int /*<<< orphan*/  verbosity; int /*<<< orphan*/  maxmemory_policy; int /*<<< orphan*/  aof_enqueue_jobs_once; int /*<<< orphan*/  aof_load_truncated; int /*<<< orphan*/  aof_rewrite_incremental_fsync; int /*<<< orphan*/  activerehashing; int /*<<< orphan*/  daemonize; int /*<<< orphan*/  aof_no_fsync_on_rewrite; int /*<<< orphan*/  tcpkeepalive; int /*<<< orphan*/  cluster_node_timeout; int /*<<< orphan*/  hz; int /*<<< orphan*/  watchdog_period; int /*<<< orphan*/  maxclients; int /*<<< orphan*/  dbnum; int /*<<< orphan*/  tcp_backlog; int /*<<< orphan*/  port; int /*<<< orphan*/  slowlog_max_len; int /*<<< orphan*/  latency_monitor_threshold; int /*<<< orphan*/  slowlog_log_slower_than; int /*<<< orphan*/  aof_rewrite_min_size; int /*<<< orphan*/  aof_rewrite_perc; int /*<<< orphan*/  maxidletime; int /*<<< orphan*/  maxmemory_samples; int /*<<< orphan*/  maxmemory; int /*<<< orphan*/  pidfile; int /*<<< orphan*/  logfile; int /*<<< orphan*/  unixsocket; int /*<<< orphan*/  requirepass; } ;
-struct TYPE_12__ {scalar_t__ soft_limit_seconds; int /*<<< orphan*/  soft_limit_bytes; int /*<<< orphan*/  hard_limit_bytes; } ;
+typedef TYPE_3__ client ;
+typedef int buf ;
+struct TYPE_15__ {scalar_t__ aof_state; int unixsocketperm; int bindaddr_count; int bindaddr; TYPE_1__* client_obuf_limits; int syslog_facility; int aof_fsync; int verbosity; int maxmemory_policy; int aof_enqueue_jobs_once; int aof_load_truncated; int aof_rewrite_incremental_fsync; int activerehashing; int daemonize; int aof_no_fsync_on_rewrite; int tcpkeepalive; int cluster_node_timeout; int hz; int watchdog_period; int maxclients; int dbnum; int tcp_backlog; int port; int slowlog_max_len; int latency_monitor_threshold; int slowlog_log_slower_than; int aof_rewrite_min_size; int aof_rewrite_perc; int maxidletime; int maxmemory_samples; int maxmemory; int pidfile; int logfile; int unixsocket; int requirepass; } ;
+struct TYPE_12__ {scalar_t__ soft_limit_seconds; int soft_limit_bytes; int hard_limit_bytes; } ;
 
-/* Variables and functions */
- scalar_t__ AOF_OFF ; 
- int CLIENT_TYPE_COUNT ; 
- void* addDeferredMultiBulkLength (TYPE_3__*) ; 
- int /*<<< orphan*/  addReplyBulkCString (TYPE_3__*,char*) ; 
- int /*<<< orphan*/  aof_fsync_enum ; 
- int /*<<< orphan*/  config_get_bool_field (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  config_get_enum_field (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  config_get_numerical_field (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  config_get_string_field (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  getClientTypeName (int) ; 
- int /*<<< orphan*/ * getcwd (char*,int) ; 
- int /*<<< orphan*/  loglevel_enum ; 
- int /*<<< orphan*/  maxmemory_policy_enum ; 
- int /*<<< orphan*/  sdsEncodedObject (TYPE_2__*) ; 
- char* sdscatlen (char*,char*,int) ; 
- char* sdscatprintf (char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,long) ; 
- char* sdsempty () ; 
- int /*<<< orphan*/  sdsfree (char*) ; 
- char* sdsjoin (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- TYPE_7__ server ; 
- int /*<<< orphan*/  serverAssertWithInfo (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setDeferredMultiBulkLength (TYPE_3__*,void*,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
- scalar_t__ stringmatch (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  syslog_facility_enum ; 
+
+ scalar_t__ AOF_OFF ;
+ int CLIENT_TYPE_COUNT ;
+ void* addDeferredMultiBulkLength (TYPE_3__*) ;
+ int addReplyBulkCString (TYPE_3__*,char*) ;
+ int aof_fsync_enum ;
+ int config_get_bool_field (char*,int ) ;
+ int config_get_enum_field (char*,int ,int ) ;
+ int config_get_numerical_field (char*,int ) ;
+ int config_get_string_field (char*,int ) ;
+ int getClientTypeName (int) ;
+ int * getcwd (char*,int) ;
+ int loglevel_enum ;
+ int maxmemory_policy_enum ;
+ int sdsEncodedObject (TYPE_2__*) ;
+ char* sdscatlen (char*,char*,int) ;
+ char* sdscatprintf (char*,char*,int ,int ,int ,long) ;
+ char* sdsempty () ;
+ int sdsfree (char*) ;
+ char* sdsjoin (int ,int ,char*) ;
+ TYPE_7__ server ;
+ int serverAssertWithInfo (TYPE_3__*,TYPE_2__*,int ) ;
+ int setDeferredMultiBulkLength (TYPE_3__*,void*,int) ;
+ int snprintf (char*,int,char*,int) ;
+ scalar_t__ stringmatch (char*,char*,int ) ;
+ int syslog_facility_enum ;
 
 void configGetCommand(client *c) {
     robj *o = c->argv[2];
@@ -58,13 +58,13 @@ void configGetCommand(client *c) {
     int matches = 0;
     serverAssertWithInfo(c,o,sdsEncodedObject(o));
 
-    /* String values */
+
     config_get_string_field("requirepass",server.requirepass);
     config_get_string_field("unixsocket",server.unixsocket);
     config_get_string_field("logfile",server.logfile);
     config_get_string_field("pidfile",server.pidfile);
 
-    /* Numerical values */
+
     config_get_numerical_field("maxmemory",server.maxmemory);
     config_get_numerical_field("maxmemory-samples",server.maxmemory_samples);
     config_get_numerical_field("timeout",server.maxidletime);
@@ -86,7 +86,7 @@ void configGetCommand(client *c) {
     config_get_numerical_field("hz",server.hz);
     config_get_numerical_field("cluster-node-timeout",server.cluster_node_timeout);
 
-    /* Bool (yes/no) values */
+
     config_get_bool_field("tcp-keepalive",server.tcpkeepalive);
     config_get_bool_field("no-appendfsync-on-rewrite",
             server.aof_no_fsync_on_rewrite);
@@ -99,7 +99,7 @@ void configGetCommand(client *c) {
     config_get_bool_field("aof-enqueue-jobs-once",
             server.aof_enqueue_jobs_once);
 
-    /* Enum values */
+
     config_get_enum_field("maxmemory-policy",
             server.maxmemory_policy,maxmemory_policy_enum);
     config_get_enum_field("loglevel",
@@ -109,7 +109,7 @@ void configGetCommand(client *c) {
     config_get_enum_field("syslog-facility",
             server.syslog_facility,syslog_facility_enum);
 
-    /* Everything we can't handle with macros follows. */
+
 
     if (stringmatch(pattern,"appendonly",0)) {
         addReplyBulkCString(c,"appendonly");
@@ -119,7 +119,7 @@ void configGetCommand(client *c) {
     if (stringmatch(pattern,"dir",0)) {
         char buf[1024];
 
-        if (getcwd(buf,sizeof(buf)) == NULL)
+        if (getcwd(buf,sizeof(buf)) == ((void*)0))
             buf[0] = '\0';
 
         addReplyBulkCString(c,"dir");

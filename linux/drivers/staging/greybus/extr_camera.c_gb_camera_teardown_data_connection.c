@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct gb_camera {int /*<<< orphan*/ * data_connection; TYPE_1__* connection; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct gb_camera {int * data_connection; TYPE_1__* connection; } ;
 struct ap_csi_config_request {int csi_id; } ;
-typedef  int /*<<< orphan*/  csi_cfg ;
-struct TYPE_2__ {int /*<<< orphan*/  hd; } ;
+typedef int csi_cfg ;
+struct TYPE_2__ {int hd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GB_APB_REQUEST_CSI_TX_CONTROL ; 
- int /*<<< orphan*/  gb_camera_set_power_mode (struct gb_camera*,int) ; 
- int /*<<< orphan*/  gb_connection_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gb_connection_disable (int /*<<< orphan*/ *) ; 
- int gb_hd_output (int /*<<< orphan*/ ,struct ap_csi_config_request*,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  gcam_err (struct gb_camera*,char*) ; 
- int /*<<< orphan*/  memset (struct ap_csi_config_request*,int /*<<< orphan*/ ,int) ; 
+
+ int GB_APB_REQUEST_CSI_TX_CONTROL ;
+ int gb_camera_set_power_mode (struct gb_camera*,int) ;
+ int gb_connection_destroy (int *) ;
+ int gb_connection_disable (int *) ;
+ int gb_hd_output (int ,struct ap_csi_config_request*,int,int ,int) ;
+ int gcam_err (struct gb_camera*,char*) ;
+ int memset (struct ap_csi_config_request*,int ,int) ;
 
 __attribute__((used)) static void gb_camera_teardown_data_connection(struct gb_camera *gcam)
 {
-	struct ap_csi_config_request csi_cfg;
-	int ret;
+ struct ap_csi_config_request csi_cfg;
+ int ret;
 
-	/* Stop the APB1 CSI transmitter. */
-	memset(&csi_cfg, 0, sizeof(csi_cfg));
-	csi_cfg.csi_id = 1;
 
-	ret = gb_hd_output(gcam->connection->hd, &csi_cfg,
-			   sizeof(csi_cfg),
-			   GB_APB_REQUEST_CSI_TX_CONTROL, false);
+ memset(&csi_cfg, 0, sizeof(csi_cfg));
+ csi_cfg.csi_id = 1;
 
-	if (ret < 0)
-		gcam_err(gcam, "failed to stop the CSI transmitter\n");
+ ret = gb_hd_output(gcam->connection->hd, &csi_cfg,
+      sizeof(csi_cfg),
+      GB_APB_REQUEST_CSI_TX_CONTROL, 0);
 
-	/* Set the UniPro link to low speed mode. */
-	gb_camera_set_power_mode(gcam, false);
+ if (ret < 0)
+  gcam_err(gcam, "failed to stop the CSI transmitter\n");
 
-	/* Destroy the data connection. */
-	gb_connection_disable(gcam->data_connection);
-	gb_connection_destroy(gcam->data_connection);
-	gcam->data_connection = NULL;
+
+ gb_camera_set_power_mode(gcam, 0);
+
+
+ gb_connection_disable(gcam->data_connection);
+ gb_connection_destroy(gcam->data_connection);
+ gcam->data_connection = ((void*)0);
 }

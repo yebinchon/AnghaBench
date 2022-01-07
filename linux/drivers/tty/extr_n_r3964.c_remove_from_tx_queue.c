@@ -1,75 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct r3964_info {int /*<<< orphan*/ * tx_last; struct r3964_block_header* tx_first; int /*<<< orphan*/  lock; TYPE_1__* tty; } ;
-struct r3964_block_header {struct r3964_block_header* next; int /*<<< orphan*/  length; scalar_t__ owner; } ;
-struct TYPE_2__ {int /*<<< orphan*/  read_wait; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  R3964_MSG_ACK ; 
- int /*<<< orphan*/  TRACE_M (char*,struct r3964_block_header*) ; 
- int /*<<< orphan*/  TRACE_Q (char*,struct r3964_block_header*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  add_msg (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (struct r3964_block_header*) ; 
- int /*<<< orphan*/  printk (char*,...) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  wake_up_interruptible (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct r3964_info {int * tx_last; struct r3964_block_header* tx_first; int lock; TYPE_1__* tty; } ;
+struct r3964_block_header {struct r3964_block_header* next; int length; scalar_t__ owner; } ;
+struct TYPE_2__ {int read_wait; } ;
+
+
+ int R3964_MSG_ACK ;
+ int TRACE_M (char*,struct r3964_block_header*) ;
+ int TRACE_Q (char*,struct r3964_block_header*,int *) ;
+ int add_msg (scalar_t__,int ,int ,int,int *) ;
+ int kfree (struct r3964_block_header*) ;
+ int printk (char*,...) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int wake_up_interruptible (int *) ;
 
 __attribute__((used)) static void remove_from_tx_queue(struct r3964_info *pInfo, int error_code)
 {
-	struct r3964_block_header *pHeader;
-	unsigned long flags;
-#ifdef DEBUG_QUEUE
-	struct r3964_block_header *pDump;
-#endif
+ struct r3964_block_header *pHeader;
+ unsigned long flags;
 
-	pHeader = pInfo->tx_first;
 
-	if (pHeader == NULL)
-		return;
 
-#ifdef DEBUG_QUEUE
-	printk("r3964: remove_from_tx_queue: %p, length %u - ",
-		pHeader, pHeader->length);
-	for (pDump = pHeader; pDump; pDump = pDump->next)
-		printk("%p ", pDump);
-	printk("\n");
-#endif
 
-	if (pHeader->owner) {
-		if (error_code) {
-			add_msg(pHeader->owner, R3964_MSG_ACK, 0,
-				error_code, NULL);
-		} else {
-			add_msg(pHeader->owner, R3964_MSG_ACK, pHeader->length,
-				error_code, NULL);
-		}
-		wake_up_interruptible(&pInfo->tty->read_wait);
-	}
+ pHeader = pInfo->tx_first;
 
-	spin_lock_irqsave(&pInfo->lock, flags);
+ if (pHeader == ((void*)0))
+  return;
+ if (pHeader->owner) {
+  if (error_code) {
+   add_msg(pHeader->owner, R3964_MSG_ACK, 0,
+    error_code, ((void*)0));
+  } else {
+   add_msg(pHeader->owner, R3964_MSG_ACK, pHeader->length,
+    error_code, ((void*)0));
+  }
+  wake_up_interruptible(&pInfo->tty->read_wait);
+ }
 
-	pInfo->tx_first = pHeader->next;
-	if (pInfo->tx_first == NULL) {
-		pInfo->tx_last = NULL;
-	}
+ spin_lock_irqsave(&pInfo->lock, flags);
 
-	spin_unlock_irqrestore(&pInfo->lock, flags);
+ pInfo->tx_first = pHeader->next;
+ if (pInfo->tx_first == ((void*)0)) {
+  pInfo->tx_last = ((void*)0);
+ }
 
-	kfree(pHeader);
-	TRACE_M("remove_from_tx_queue - kfree %p", pHeader);
+ spin_unlock_irqrestore(&pInfo->lock, flags);
 
-	TRACE_Q("remove_from_tx_queue: tx_first = %p, tx_last = %p",
-		pInfo->tx_first, pInfo->tx_last);
+ kfree(pHeader);
+ TRACE_M("remove_from_tx_queue - kfree %p", pHeader);
+
+ TRACE_Q("remove_from_tx_queue: tx_first = %p, tx_last = %p",
+  pInfo->tx_first, pInfo->tx_last);
 }

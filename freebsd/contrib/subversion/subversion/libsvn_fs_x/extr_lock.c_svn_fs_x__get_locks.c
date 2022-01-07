@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  path; } ;
-typedef  TYPE_1__ svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_fs_get_locks_callback_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-struct TYPE_8__ {char const* path; void* get_locks_baton; int /*<<< orphan*/  get_locks_func; int /*<<< orphan*/  requested_depth; } ;
-typedef  TYPE_2__ get_locks_filter_baton_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  digest_path_from_path (char const**,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_locks_filter_func ; 
- char* svn_fs__canonicalize_abspath (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs__check_fs (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  walk_locks (TYPE_1__*,char const*,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int path; } ;
+typedef TYPE_1__ svn_fs_t ;
+typedef int svn_fs_get_locks_callback_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+struct TYPE_8__ {char const* path; void* get_locks_baton; int get_locks_func; int requested_depth; } ;
+typedef TYPE_2__ get_locks_filter_baton_t ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int digest_path_from_path (char const**,int ,char const*,int *) ;
+ int get_locks_filter_func ;
+ char* svn_fs__canonicalize_abspath (char const*,int *) ;
+ int svn_fs__check_fs (TYPE_1__*,int ) ;
+ int walk_locks (TYPE_1__*,char const*,int ,TYPE_2__*,int ,int *) ;
 
 svn_error_t *
 svn_fs_x__get_locks(svn_fs_t *fs,
@@ -51,7 +51,7 @@ svn_fs_x__get_locks(svn_fs_t *fs,
   glfb.get_locks_func = get_locks_func;
   glfb.get_locks_baton = get_locks_baton;
 
-  /* Get the top digest path in our tree of interest, and then walk it. */
+
   SVN_ERR(digest_path_from_path(&digest_path, fs->path, path, scratch_pool));
   SVN_ERR(walk_locks(fs, digest_path, get_locks_filter_func, &glfb,
                      FALSE, scratch_pool));

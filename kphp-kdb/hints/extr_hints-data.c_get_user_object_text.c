@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  user ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NOAIO ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  bad_requests ; 
- int /*<<< orphan*/  check_object_id (long long) ; 
- int /*<<< orphan*/  check_type (int) ; 
- int /*<<< orphan*/  check_user_id (int) ; 
- char* clean_str (char*) ; 
- int /*<<< orphan*/ * conv_user_id (int) ; 
- int get_local_user_id (int) ; 
- int /*<<< orphan*/ * load_user_metafile (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int user_get_object_local_id (int /*<<< orphan*/ *,int,long long) ; 
- char* user_get_object_name (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int user ;
+
+
+ int NOAIO ;
+ int assert (int) ;
+ int bad_requests ;
+ int check_object_id (long long) ;
+ int check_type (int) ;
+ int check_user_id (int) ;
+ char* clean_str (char*) ;
+ int * conv_user_id (int) ;
+ int get_local_user_id (int) ;
+ int * load_user_metafile (int *,int,int ) ;
+ int user_get_object_local_id (int *,int,long long) ;
+ char* user_get_object_name (int *,int) ;
 
 int get_user_object_text (int user_id, int type, long long object_id, char **text) {
   if (!check_user_id (user_id) || !check_type (type) || !check_object_id (object_id)) {
@@ -39,9 +39,9 @@ int get_user_object_text (int user_id, int type, long long object_id, char **tex
   assert (local_user_id > 0);
 
   user *u = conv_user_id (user_id);
-  assert (u != NULL);
+  assert (u != ((void*)0));
 
-  if (load_user_metafile (u, local_user_id, NOAIO) == NULL) {
+  if (load_user_metafile (u, local_user_id, NOAIO) == ((void*)0)) {
     return -2;
   }
 
@@ -51,7 +51,7 @@ int get_user_object_text (int user_id, int type, long long object_id, char **tex
   }
 
   char *name = user_get_object_name (u, local_id);
-  if (name == NULL) {
+  if (name == ((void*)0)) {
     return 0;
   }
 

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  what ;
-typedef  int /*<<< orphan*/  n ;
-typedef  scalar_t__ gdb_wince_id ;
-typedef  scalar_t__ WORD ;
-typedef  int /*<<< orphan*/  LPCSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  s ; 
- int sockread (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,int) ; 
- int /*<<< orphan*/  stub_error (char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int what ;
+typedef int n ;
+typedef scalar_t__ gdb_wince_id ;
+typedef scalar_t__ WORD ;
+typedef int LPCSTR ;
+
+
+ int s ;
+ int sockread (int ,int ,scalar_t__*,int) ;
+ int stub_error (char*,int ) ;
 
 __attribute__((used)) static WORD
 getword (LPCSTR huh, gdb_wince_id what_this)

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  rq_pool; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int rq_pool; } ;
 struct request_queue {TYPE_1__ rq; } ;
 struct request {unsigned int cmd_flags; } ;
-typedef  int /*<<< orphan*/  gfp_t ;
+typedef int gfp_t ;
 
-/* Variables and functions */
- unsigned int REQ_ALLOCED ; 
- unsigned int REQ_ELVPRIV ; 
- int /*<<< orphan*/  blk_rq_init (struct request_queue*,struct request*) ; 
- int /*<<< orphan*/  elv_set_request (struct request_queue*,struct request*,int /*<<< orphan*/ ) ; 
- struct request* mempool_alloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mempool_free (struct request*,int /*<<< orphan*/ ) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
+
+ unsigned int REQ_ALLOCED ;
+ unsigned int REQ_ELVPRIV ;
+ int blk_rq_init (struct request_queue*,struct request*) ;
+ int elv_set_request (struct request_queue*,struct request*,int ) ;
+ struct request* mempool_alloc (int ,int ) ;
+ int mempool_free (struct request*,int ) ;
+ scalar_t__ unlikely (int ) ;
 
 __attribute__((used)) static struct request *
 blk_alloc_request(struct request_queue *q, unsigned int flags, gfp_t gfp_mask)
 {
-	struct request *rq = mempool_alloc(q->rq.rq_pool, gfp_mask);
+ struct request *rq = mempool_alloc(q->rq.rq_pool, gfp_mask);
 
-	if (!rq)
-		return NULL;
+ if (!rq)
+  return ((void*)0);
 
-	blk_rq_init(q, rq);
+ blk_rq_init(q, rq);
 
-	rq->cmd_flags = flags | REQ_ALLOCED;
+ rq->cmd_flags = flags | REQ_ALLOCED;
 
-	if ((flags & REQ_ELVPRIV) &&
-	    unlikely(elv_set_request(q, rq, gfp_mask))) {
-		mempool_free(rq, q->rq.rq_pool);
-		return NULL;
-	}
+ if ((flags & REQ_ELVPRIV) &&
+     unlikely(elv_set_request(q, rq, gfp_mask))) {
+  mempool_free(rq, q->rq.rq_pool);
+  return ((void*)0);
+ }
 
-	return rq;
+ return rq;
 }

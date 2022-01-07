@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPTSTR ;
-typedef  scalar_t__* LPCTSTR ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConErrResPuts (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  PARSE_IDENT (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  STRING_EXPECTED_CLOSE_PAREN ; 
- int /*<<< orphan*/  STRING_EXPECTED_NUMBER_OR_VARIABLE ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ _T (char) ; 
- scalar_t__ __iscsymf (scalar_t__) ; 
- int /*<<< orphan*/  _tcstol (scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ isdigit (scalar_t__) ; 
- int /*<<< orphan*/  seta_identval (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seta_stmt (scalar_t__**,int /*<<< orphan*/ *) ; 
- scalar_t__* skip_ws (scalar_t__*) ; 
+
+
+
+typedef int LPTSTR ;
+typedef scalar_t__* LPCTSTR ;
+typedef int INT ;
+typedef int BOOL ;
+
+
+ int ConErrResPuts (int ) ;
+ int FALSE ;
+ int PARSE_IDENT (int ,int ,scalar_t__*) ;
+ int STRING_EXPECTED_CLOSE_PAREN ;
+ int STRING_EXPECTED_NUMBER_OR_VARIABLE ;
+ int TRUE ;
+ scalar_t__ _T (char) ;
+ scalar_t__ __iscsymf (scalar_t__) ;
+ int _tcstol (scalar_t__*,int *,int ) ;
+ scalar_t__ isdigit (scalar_t__) ;
+ int seta_identval (int ) ;
+ int seta_stmt (scalar_t__**,int *) ;
+ scalar_t__* skip_ws (scalar_t__*) ;
 
 __attribute__((used)) static BOOL
 seta_unaryTerm(LPCTSTR* p_, INT* result)

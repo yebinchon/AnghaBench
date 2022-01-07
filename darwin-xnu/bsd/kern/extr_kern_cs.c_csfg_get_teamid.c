@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  struct vnode* vnode_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef struct vnode* vnode_t ;
 struct vnode {struct ubc_info* v_ubcinfo; } ;
 struct ubc_info {TYPE_1__* cs_blobs; } ;
 struct fileglob {scalar_t__ fg_data; } ;
 struct TYPE_2__ {char* csb_teamid; } ;
 
-/* Variables and functions */
- scalar_t__ DTYPE_VNODE ; 
- scalar_t__ FILEGLOB_DTYPE (struct fileglob*) ; 
- int /*<<< orphan*/  UBCINFOEXISTS (struct vnode*) ; 
- int /*<<< orphan*/  vnode_lock (struct vnode*) ; 
- int /*<<< orphan*/  vnode_unlock (struct vnode*) ; 
+
+ scalar_t__ DTYPE_VNODE ;
+ scalar_t__ FILEGLOB_DTYPE (struct fileglob*) ;
+ int UBCINFOEXISTS (struct vnode*) ;
+ int vnode_lock (struct vnode*) ;
+ int vnode_unlock (struct vnode*) ;
 
 const char *
 csfg_get_teamid(struct fileglob *fg)
 {
-	struct ubc_info *uip;
-	const char *str = NULL;
-	vnode_t vp;
+ struct ubc_info *uip;
+ const char *str = ((void*)0);
+ vnode_t vp;
 
-	if (FILEGLOB_DTYPE(fg) != DTYPE_VNODE)
-		return NULL;
-	
-	vp = (struct vnode *)fg->fg_data;
-	if (vp == NULL)
-		return NULL;
+ if (FILEGLOB_DTYPE(fg) != DTYPE_VNODE)
+  return ((void*)0);
 
-	vnode_lock(vp);
-	if (!UBCINFOEXISTS(vp))
-		goto out;
-	
-	uip = vp->v_ubcinfo;
-	if (uip == NULL)
-		goto out;
-	
-	if (uip->cs_blobs == NULL)
-		goto out;
+ vp = (struct vnode *)fg->fg_data;
+ if (vp == ((void*)0))
+  return ((void*)0);
 
-	/* It is OK to extract the teamid from the first blob
-	   because all blobs of a vnode must have the same teamid */	
-	str = uip->cs_blobs->csb_teamid;
+ vnode_lock(vp);
+ if (!UBCINFOEXISTS(vp))
+  goto out;
+
+ uip = vp->v_ubcinfo;
+ if (uip == ((void*)0))
+  goto out;
+
+ if (uip->cs_blobs == ((void*)0))
+  goto out;
+
+
+
+ str = uip->cs_blobs->csb_teamid;
 out:
-	vnode_unlock(vp);
+ vnode_unlock(vp);
 
-	return str;
+ return str;
 }

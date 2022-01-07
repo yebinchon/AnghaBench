@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct spu_state {int dummy; } ;
-struct spu_context {int /*<<< orphan*/  last_ran; } ;
+struct spu_context {int last_ran; } ;
 struct spu {struct spu_context* ctx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  spu_cpu_affinity_set (struct spu*,int /*<<< orphan*/ ) ; 
+
+ int spu_cpu_affinity_set (struct spu*,int ) ;
 
 __attribute__((used)) static inline void set_int_route(struct spu_state *csa, struct spu *spu)
 {
-	struct spu_context *ctx = spu->ctx;
+ struct spu_context *ctx = spu->ctx;
 
-	spu_cpu_affinity_set(spu, ctx->last_ran);
+ spu_cpu_affinity_set(spu, ctx->last_ran);
 }

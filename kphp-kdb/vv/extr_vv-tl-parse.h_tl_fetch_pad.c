@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TL_ERROR_SYNTAX ; 
- int TL_IN_POS ; 
- int TL_IN_REMAINING ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ tl_fetch_check (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tl_fetch_raw_data (int*,int) ; 
- int /*<<< orphan*/  tl_fetch_set_error (char*,int /*<<< orphan*/ ) ; 
+ int TL_ERROR_SYNTAX ;
+ int TL_IN_POS ;
+ int TL_IN_REMAINING ;
+ int assert (int) ;
+ scalar_t__ tl_fetch_check (int ) ;
+ int tl_fetch_raw_data (int*,int) ;
+ int tl_fetch_set_error (char*,int ) ;
 
 __attribute__((used)) static inline int tl_fetch_pad (void) {
   if (tl_fetch_check (0) < 0) {
@@ -32,5 +24,5 @@ __attribute__((used)) static inline int tl_fetch_pad (void) {
     tl_fetch_set_error ("Padding with non-zeroes", TL_ERROR_SYNTAX);
     return -1;
   }
-  return pad;  
+  return pad;
 }

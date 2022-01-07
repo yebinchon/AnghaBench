@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int override ; 
- int /*<<< orphan*/  pthread_atfork (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_reset_override ; 
+ int override ;
+ int pthread_atfork (int *,int *,int ) ;
+ int vlc_reset_override ;
 
 void vlc_enable_override (void)
 {
-    override = true;
-    pthread_atfork (NULL, NULL, vlc_reset_override);
+    override = 1;
+    pthread_atfork (((void*)0), ((void*)0), vlc_reset_override);
 }

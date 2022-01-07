@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int /*<<< orphan*/  PNDIS_PACKET ;
-typedef  int /*<<< orphan*/  PNDIS_BUFFER ;
-typedef  scalar_t__ PCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG_PBUFFER ; 
- int /*<<< orphan*/  NdisGetNextBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RtlCopyMemory (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int SkipToOffset (int /*<<< orphan*/ ,scalar_t__,scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  TI_DbgPrint (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  XNdisGetFirstBufferFromPacket (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  XNdisQueryBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int PVOID ;
+typedef int PNDIS_PACKET ;
+typedef int PNDIS_BUFFER ;
+typedef scalar_t__ PCHAR ;
+
+
+ int DEBUG_PBUFFER ;
+ int NdisGetNextBuffer (int ,int *) ;
+ int RtlCopyMemory (int ,int ,scalar_t__) ;
+ int SkipToOffset (int ,scalar_t__,scalar_t__*,scalar_t__*) ;
+ int TI_DbgPrint (int ,char*) ;
+ int XNdisGetFirstBufferFromPacket (int ,int *,int *,scalar_t__*,scalar_t__*) ;
+ int XNdisQueryBuffer (int ,int ,scalar_t__*) ;
 
 UINT CopyPacketToBufferChain(
     PNDIS_BUFFER DstBuffer,
@@ -31,20 +31,6 @@ UINT CopyPacketToBufferChain(
     PNDIS_PACKET SrcPacket,
     UINT SrcOffset,
     UINT Length)
-/*
- * FUNCTION: Copies data from an NDIS packet to an NDIS buffer chain
- * ARGUMENTS:
- *     DstBuffer = Pointer to destination NDIS buffer
- *     DstOffset = Destination start offset
- *     SrcPacket = Pointer to source NDIS packet
- *     SrcOffset = Source start offset
- *     Length    = Number of bytes to copy
- * RETURNS:
- *     Number of bytes copied to destination buffer
- * NOTES:
- *     The number of bytes copied may be limited by the source and
- *     destination buffer sizes
- */
 {
     PNDIS_BUFFER SrcBuffer;
     PCHAR DstData, SrcData;
@@ -53,19 +39,19 @@ UINT CopyPacketToBufferChain(
 
     TI_DbgPrint(DEBUG_PBUFFER, ("DstBuffer (0x%X)  DstOffset (0x%X)  SrcPacket (0x%X)  SrcOffset (0x%X)  Length (%d)\n", DstBuffer, DstOffset, SrcPacket, SrcOffset, Length));
 
-    /* Skip DstOffset bytes in the destination buffer chain */
+
     XNdisQueryBuffer(DstBuffer, (PVOID)&DstData, &DstSize);
     if (SkipToOffset(DstBuffer, DstOffset, &DstData, &DstSize) == -1)
         return 0;
 
-    /* Skip SrcOffset bytes in the source packet */
+
     XNdisGetFirstBufferFromPacket(SrcPacket, &SrcBuffer, (PVOID *)&SrcData, &SrcSize, &Total);
     if (SkipToOffset(SrcBuffer, SrcOffset, &SrcData, &SrcSize) == -1)
         return 0;
 
-    /* Copy the data */
+
     for (Total = 0;;) {
-        /* Find out how many bytes we can copy at one time */
+
         if (Length < SrcSize)
             Count = Length;
         else
@@ -75,15 +61,15 @@ UINT CopyPacketToBufferChain(
 
         RtlCopyMemory((PVOID)DstData, (PVOID)SrcData, Count);
 
-        Total  += Count;
+        Total += Count;
         Length -= Count;
         if (Length == 0)
             break;
 
         DstSize -= Count;
         if (DstSize == 0) {
-            /* No more bytes in destination buffer. Proceed to
-               the next buffer in the destination buffer chain */
+
+
             NdisGetNextBuffer(DstBuffer, &DstBuffer);
             if (!DstBuffer)
                 break;
@@ -93,8 +79,8 @@ UINT CopyPacketToBufferChain(
 
         SrcSize -= Count;
         if (SrcSize == 0) {
-            /* No more bytes in source buffer. Proceed to
-               the next buffer in the source buffer chain */
+
+
             NdisGetNextBuffer(SrcBuffer, &SrcBuffer);
             if (!SrcBuffer)
                 break;

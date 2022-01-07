@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int int64_t ;
 struct TYPE_3__ {scalar_t__ first_sector; unsigned int pos; int size; int current_sector_offset; int current_sector; int sector_buffer_valid; } ;
-typedef  TYPE_1__ cdfs_file_t ;
+typedef TYPE_1__ cdfs_file_t ;
 
-/* Variables and functions */
-#define  SEEK_CUR 130 
-#define  SEEK_END 129 
-#define  SEEK_SET 128 
+
+
+
+
 
 int64_t cdfs_seek(cdfs_file_t* file, int64_t offset, int whence)
 {
@@ -30,15 +30,15 @@ int64_t cdfs_seek(cdfs_file_t* file, int64_t offset, int whence)
 
    switch (whence)
    {
-      case SEEK_SET:
+      case 128:
          new_pos = offset;
          break;
 
-      case SEEK_CUR:
+      case 130:
          new_pos = file->pos + offset;
          break;
 
-      case SEEK_END:
+      case 129:
          new_pos = file->size - offset;
          break;
 
@@ -58,7 +58,7 @@ int64_t cdfs_seek(cdfs_file_t* file, int64_t offset, int whence)
    if (new_sector != file->current_sector)
    {
       file->current_sector = new_sector;
-      file->sector_buffer_valid = false;
+      file->sector_buffer_valid = 0;
    }
 
    return 0;

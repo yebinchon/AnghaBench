@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int U64 ;
-typedef  int U32 ;
 
-/* Variables and functions */
- double COMPRESSIBILITY_DEFAULT ; 
- int /*<<< orphan*/  DISPLAYLEVEL (int,char*,...) ; 
- int /*<<< orphan*/  LZ4_VERSION_STRING ; 
- int /*<<< orphan*/  RDG_genOut (int,double,double,int) ; 
- int SEED_DEFAULT ; 
- int SIZE_DEFAULT ; 
- int displayLevel ; 
- int usage (char*) ; 
+
+
+
+typedef int U64 ;
+typedef int U32 ;
+
+
+ double COMPRESSIBILITY_DEFAULT ;
+ int DISPLAYLEVEL (int,char*,...) ;
+ int LZ4_VERSION_STRING ;
+ int RDG_genOut (int,double,double,int) ;
+ int SEED_DEFAULT ;
+ int SIZE_DEFAULT ;
+ int displayLevel ;
+ int usage (char*) ;
 
 int main(int argc, char** argv)
 {
@@ -32,15 +32,15 @@ int main(int argc, char** argv)
     U32 seed = SEED_DEFAULT;
     char* programName;
 
-    /* Check command line */
+
     programName = argv[0];
     for(argNb=1; argNb<argc; argNb++)
     {
         char* argument = argv[argNb];
 
-        if(!argument) continue;   /* Protection if argument empty */
+        if(!argument) continue;
 
-        /* Handle commands. Aggregated commands are allowed */
+
         if (*argument=='-')
         {
             argument++;
@@ -86,7 +86,7 @@ int main(int argc, char** argv)
                     if (proba>100.) proba=100.;
                     proba /= 100.;
                     break;
-                case 'L':   /* hidden argument : Literal distribution probability */
+                case 'L':
                     argument++;
                     litProba=0.;
                     while ((*argument>='0') && (*argument<='9'))

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cckprng_ctx_t ;
-struct TYPE_2__ {int (* addentropy ) (int /*<<< orphan*/ ,size_t,void const*) ;} ;
 
-/* Variables and functions */
- int CCKPRNG_ABORT ; 
- int /*<<< orphan*/  panic (char*) ; 
- TYPE_1__* prng_fns ; 
- int stub1 (int /*<<< orphan*/ ,size_t,void const*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int cckprng_ctx_t ;
+struct TYPE_2__ {int (* addentropy ) (int ,size_t,void const*) ;} ;
+
+
+ int CCKPRNG_ABORT ;
+ int panic (char*) ;
+ TYPE_1__* prng_fns ;
+ int stub1 (int ,size_t,void const*) ;
 
 __attribute__((used)) static int
 prng_addentropy(cckprng_ctx_t ctx, size_t nbytes, const void * entropy)
 {
-	int err = prng_fns->addentropy(ctx, nbytes, entropy);
-	if (err == CCKPRNG_ABORT) {
-		panic("prng_addentropy");
-	}
-	return err;
+ int err = prng_fns->addentropy(ctx, nbytes, entropy);
+ if (err == CCKPRNG_ABORT) {
+  panic("prng_addentropy");
+ }
+ return err;
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mode_tree_data {scalar_t__ line_size; int /*<<< orphan*/ * line_list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
+
+
+
+struct mode_tree_data {scalar_t__ line_size; int * line_list; } ;
+
+
+ int free (int *) ;
 
 __attribute__((used)) static void
 mode_tree_clear_lines(struct mode_tree_data *mtd)
 {
-	free(mtd->line_list);
-	mtd->line_list = NULL;
-	mtd->line_size = 0;
+ free(mtd->line_list);
+ mtd->line_list = ((void*)0);
+ mtd->line_size = 0;
 }

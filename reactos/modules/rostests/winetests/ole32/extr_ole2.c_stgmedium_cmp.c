@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
-struct TYPE_9__ {int /*<<< orphan*/  hMetaFilePict; int /*<<< orphan*/  hGlobal; } ;
-struct TYPE_8__ {int /*<<< orphan*/  hMF; } ;
-struct TYPE_7__ {scalar_t__ tymed; int /*<<< orphan*/  hGlobal; int /*<<< orphan*/  hEnhMetaFile; } ;
-typedef  TYPE_1__ const STGMEDIUM ;
-typedef  TYPE_2__ METAFILEPICT ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_NOTIMPL ; 
- scalar_t__ GetEnhMetaFileBits (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ GetMetaFileBitsEx (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- void* GlobalLock (int /*<<< orphan*/ ) ; 
- scalar_t__ GlobalSize (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GlobalUnlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- scalar_t__ TYMED_ENHMF ; 
- scalar_t__ TYMED_HGLOBAL ; 
- scalar_t__ TYMED_MFPICT ; 
- TYPE_5__* U (TYPE_1__ const*) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG ;
+struct TYPE_9__ {int hMetaFilePict; int hGlobal; } ;
+struct TYPE_8__ {int hMF; } ;
+struct TYPE_7__ {scalar_t__ tymed; int hGlobal; int hEnhMetaFile; } ;
+typedef TYPE_1__ const STGMEDIUM ;
+typedef TYPE_2__ METAFILEPICT ;
+typedef int HRESULT ;
+typedef int BYTE ;
+
+
+ int E_FAIL ;
+ int E_NOTIMPL ;
+ scalar_t__ GetEnhMetaFileBits (int ,scalar_t__,int *) ;
+ scalar_t__ GetMetaFileBitsEx (int ,scalar_t__,int *) ;
+ int GetProcessHeap () ;
+ void* GlobalLock (int ) ;
+ scalar_t__ GlobalSize (int ) ;
+ int GlobalUnlock (int ) ;
+ int * HeapAlloc (int ,int ,scalar_t__) ;
+ int HeapFree (int ,int ,int *) ;
+ int S_OK ;
+ scalar_t__ TYMED_ENHMF ;
+ scalar_t__ TYMED_HGLOBAL ;
+ scalar_t__ TYMED_MFPICT ;
+ TYPE_5__* U (TYPE_1__ const*) ;
+ scalar_t__ memcmp (int *,int *,scalar_t__) ;
 
 __attribute__((used)) static HRESULT stgmedium_cmp(const STGMEDIUM *med1, STGMEDIUM *med2)
 {
@@ -53,8 +53,8 @@ __attribute__((used)) static HRESULT stgmedium_cmp(const STGMEDIUM *med1, STGMED
         METAFILEPICT *mfpict1 = GlobalLock(U(med1)->hMetaFilePict);
         METAFILEPICT *mfpict2 = GlobalLock(U(med2)->hMetaFilePict);
 
-        datasize1 = GetMetaFileBitsEx(mfpict1->hMF, 0, NULL);
-        datasize2 = GetMetaFileBitsEx(mfpict2->hMF, 0, NULL);
+        datasize1 = GetMetaFileBitsEx(mfpict1->hMF, 0, ((void*)0));
+        datasize2 = GetMetaFileBitsEx(mfpict2->hMF, 0, ((void*)0));
         if (datasize1 == datasize2)
         {
             data1 = HeapAlloc(GetProcessHeap(), 0, datasize1);
@@ -66,8 +66,8 @@ __attribute__((used)) static HRESULT stgmedium_cmp(const STGMEDIUM *med1, STGMED
     }
     else if (med1->tymed == TYMED_ENHMF)
     {
-        datasize1 = GetEnhMetaFileBits(med1->hEnhMetaFile, 0, NULL);
-        datasize2 = GetEnhMetaFileBits(med2->hEnhMetaFile, 0, NULL);
+        datasize1 = GetEnhMetaFileBits(med1->hEnhMetaFile, 0, ((void*)0));
+        datasize2 = GetEnhMetaFileBits(med2->hEnhMetaFile, 0, ((void*)0));
         if (datasize1 == datasize2)
         {
             data1 = HeapAlloc(GetProcessHeap(), 0, datasize1);

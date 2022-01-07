@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  targets ;
-typedef  int /*<<< orphan*/  XPointer ;
-struct TYPE_8__ {scalar_t__ property; int /*<<< orphan*/  requestor; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int targets ;
+typedef int XPointer ;
+struct TYPE_8__ {scalar_t__ property; int requestor; } ;
 struct TYPE_9__ {TYPE_2__ xselection; } ;
-typedef  TYPE_3__ XEvent ;
-struct TYPE_7__ {scalar_t__ const UTF8_STRING; scalar_t__ PRIMARY; char* primarySelectionString; char* clipboardString; scalar_t__ helperWindowHandle; scalar_t__ INCR; int /*<<< orphan*/  display; int /*<<< orphan*/  GLFW_SELECTION; } ;
+typedef TYPE_3__ XEvent ;
+struct TYPE_7__ {scalar_t__ const UTF8_STRING; scalar_t__ PRIMARY; char* primarySelectionString; char* clipboardString; scalar_t__ helperWindowHandle; scalar_t__ INCR; int display; int GLFW_SELECTION; } ;
 struct TYPE_10__ {TYPE_1__ x11; } ;
-typedef  scalar_t__ Atom ;
+typedef scalar_t__ Atom ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AnyPropertyType ; 
- int /*<<< orphan*/  CurrentTime ; 
- int /*<<< orphan*/  GLFW_FORMAT_UNAVAILABLE ; 
- int /*<<< orphan*/  LONG_MAX ; 
- scalar_t__ None ; 
- int /*<<< orphan*/  SelectionNotify ; 
- int /*<<< orphan*/  True ; 
- scalar_t__ const XA_STRING ; 
- int /*<<< orphan*/  XCheckIfEvent (int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XCheckTypedWindowEvent (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  XConvertSelection (int /*<<< orphan*/ ,scalar_t__,scalar_t__ const,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XFree (char*) ; 
- scalar_t__ XGetSelectionOwner (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  XGetWindowProperty (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,int*,unsigned long*,unsigned long*,unsigned char**) ; 
- TYPE_4__ _glfw ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*) ; 
- char* _glfw_strdup (char*) ; 
- char* convertLatin1toUTF8 (char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  isSelPropNewValueNotify ; 
- char* realloc (char*,size_t) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  waitForEvent (int /*<<< orphan*/ *) ; 
+
+ int AnyPropertyType ;
+ int CurrentTime ;
+ int GLFW_FORMAT_UNAVAILABLE ;
+ int LONG_MAX ;
+ scalar_t__ None ;
+ int SelectionNotify ;
+ int True ;
+ scalar_t__ const XA_STRING ;
+ int XCheckIfEvent (int ,TYPE_3__*,int ,int ) ;
+ int XCheckTypedWindowEvent (int ,scalar_t__,int ,TYPE_3__*) ;
+ int XConvertSelection (int ,scalar_t__,scalar_t__ const,int ,scalar_t__,int ) ;
+ int XFree (char*) ;
+ scalar_t__ XGetSelectionOwner (int ,scalar_t__) ;
+ int XGetWindowProperty (int ,int ,scalar_t__,int ,int ,int ,int ,scalar_t__*,int*,unsigned long*,unsigned long*,unsigned char**) ;
+ TYPE_4__ _glfw ;
+ int _glfwInputError (int ,char*) ;
+ char* _glfw_strdup (char*) ;
+ char* convertLatin1toUTF8 (char*) ;
+ int free (char*) ;
+ int isSelPropNewValueNotify ;
+ char* realloc (char*,size_t) ;
+ int strcat (char*,char*) ;
+ int waitForEvent (int *) ;
 
 __attribute__((used)) static const char* getSelectionString(Atom selection)
 {
-    char** selectionString = NULL;
+    char** selectionString = ((void*)0);
     const Atom targets[] = { _glfw.x11.UTF8_STRING, XA_STRING };
     const size_t targetCount = sizeof(targets) / sizeof(targets[0]);
 
@@ -62,15 +62,15 @@ __attribute__((used)) static const char* getSelectionString(Atom selection)
     if (XGetSelectionOwner(_glfw.x11.display, selection) ==
         _glfw.x11.helperWindowHandle)
     {
-        // Instead of doing a large number of X round-trips just to put this
-        // string into a window property and then read it back, just return it
+
+
         return *selectionString;
     }
 
     free(*selectionString);
-    *selectionString = NULL;
+    *selectionString = ((void*)0);
 
-    for (size_t i = 0;  i < targetCount;  i++)
+    for (size_t i = 0; i < targetCount; i++)
     {
         char* data;
         Atom actualType;
@@ -90,7 +90,7 @@ __attribute__((used)) static const char* getSelectionString(Atom selection)
                                        SelectionNotify,
                                        &notification))
         {
-            waitForEvent(NULL);
+            waitForEvent(((void*)0));
         }
 
         if (notification.xselection.property == None)
@@ -117,7 +117,7 @@ __attribute__((used)) static const char* getSelectionString(Atom selection)
         if (actualType == _glfw.x11.INCR)
         {
             size_t size = 1;
-            char* string = NULL;
+            char* string = ((void*)0);
 
             for (;;)
             {
@@ -126,7 +126,7 @@ __attribute__((used)) static const char* getSelectionString(Atom selection)
                                       isSelPropNewValueNotify,
                                       (XPointer) &notification))
                 {
-                    waitForEvent(NULL);
+                    waitForEvent(((void*)0));
                 }
 
                 XFree(data);

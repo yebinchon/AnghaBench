@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct ra_hwdec {struct priv_owner* priv; } ;
 struct priv_owner {TYPE_1__* ctx; } ;
 struct TYPE_6__ {scalar_t__* valid_sw_formats; } ;
-struct TYPE_5__ {int /*<<< orphan*/  av_device_ref; } ;
-typedef  int /*<<< orphan*/  AVVAAPIHWConfig ;
-typedef  TYPE_2__ AVHWFramesConstraints ;
+struct TYPE_5__ {int av_device_ref; } ;
+typedef int AVVAAPIHWConfig ;
+typedef TYPE_2__ AVHWFramesConstraints ;
 
-/* Variables and functions */
- scalar_t__ AV_PIX_FMT_NONE ; 
- int /*<<< orphan*/  MP_WARN (struct ra_hwdec*,char*) ; 
- TYPE_2__* av_hwdevice_get_hwframe_constraints (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_hwframe_constraints_free (TYPE_2__**) ; 
- int /*<<< orphan*/  try_format_pixfmt (struct ra_hwdec*,scalar_t__) ; 
+
+ scalar_t__ AV_PIX_FMT_NONE ;
+ int MP_WARN (struct ra_hwdec*,char*) ;
+ TYPE_2__* av_hwdevice_get_hwframe_constraints (int ,int *) ;
+ int av_hwframe_constraints_free (TYPE_2__**) ;
+ int try_format_pixfmt (struct ra_hwdec*,scalar_t__) ;
 
 __attribute__((used)) static void try_format_config(struct ra_hwdec *hw, AVVAAPIHWConfig *hwconfig)
 {

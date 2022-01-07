@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct intr_irqsrc {int dummy; } ;
-typedef  int /*<<< orphan*/  device_t ;
+typedef int device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mtk_gpio_pic_enable_intr (int /*<<< orphan*/ ,struct intr_irqsrc*) ; 
+
+ int mtk_gpio_pic_enable_intr (int ,struct intr_irqsrc*) ;
 
 __attribute__((used)) static void
 mtk_gpio_pic_post_ithread(device_t dev, struct intr_irqsrc *isrc)
 {
 
-	mtk_gpio_pic_enable_intr(dev, isrc);
+ mtk_gpio_pic_enable_intr(dev, isrc);
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * sym_label; } ;
-typedef  int /*<<< orphan*/  Sym ;
 
-/* Variables and functions */
- scalar_t__ TOK_IDENT ; 
- TYPE_1__** table_ident ; 
- scalar_t__ tok_ident ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * sym_label; } ;
+typedef int Sym ;
+
+
+ scalar_t__ TOK_IDENT ;
+ TYPE_1__** table_ident ;
+ scalar_t__ tok_ident ;
 
 Sym *label_find(int v)
 {
-	v -= TOK_IDENT;
-	if ((unsigned) v >= (unsigned) (tok_ident - TOK_IDENT)) {
-		return NULL;
-	}
-	return table_ident[v]->sym_label;
+ v -= TOK_IDENT;
+ if ((unsigned) v >= (unsigned) (tok_ident - TOK_IDENT)) {
+  return ((void*)0);
+ }
+ return table_ident[v]->sym_label;
 }

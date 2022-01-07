@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int mrb_int ;
-typedef  int mrb_bool ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef int mrb_int ;
+typedef int mrb_bool ;
 struct TYPE_2__ {int* beg; int* end; int num_regs; } ;
-typedef  TYPE_1__ OnigRegion ;
-typedef  int /*<<< orphan*/  OnigRegex ;
+typedef TYPE_1__ OnigRegion ;
+typedef int OnigRegex ;
 
-/* Variables and functions */
- scalar_t__ DATA_PTR (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  Data_Get_Struct (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_TYPE_ERROR ; 
- int /*<<< orphan*/  ONIG_REGEXP_P (int /*<<< orphan*/ ) ; 
- int RARRAY_LEN (int /*<<< orphan*/ ) ; 
- scalar_t__ RSTRING_LEN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_onig_region (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_ary_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_ary_new_from_values (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_ary_pop (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_ary_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_ary_ref (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mrb_class_get (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  mrb_fixnum_value (int) ; 
- int /*<<< orphan*/  mrb_funcall (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ,...) ; 
- int mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  mrb_gv_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_intern_lit (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ mrb_nil_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_nil_value () ; 
- int /*<<< orphan*/  mrb_obj_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_onig_regexp_type ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mrb_str_new_lit (int /*<<< orphan*/ *,char*) ; 
- char* mrb_str_to_cstr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_string_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_string_type (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int onig_match_common (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  str_substr (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,scalar_t__) ; 
- int utf8len (char*,char*) ; 
+
+ scalar_t__ DATA_PTR (int const) ;
+ int Data_Get_Struct (int *,int ,int *,int ) ;
+ int E_TYPE_ERROR ;
+ int ONIG_REGEXP_P (int ) ;
+ int RARRAY_LEN (int ) ;
+ scalar_t__ RSTRING_LEN (int ) ;
+ int create_onig_region (int *,int ,int ) ;
+ int mrb_ary_new (int *) ;
+ int mrb_ary_new_from_values (int *,int,int *) ;
+ int mrb_ary_pop (int *,int ) ;
+ int mrb_ary_push (int *,int ,int ) ;
+ int mrb_ary_ref (int *,int ,int) ;
+ int mrb_class_get (int *,char*) ;
+ int mrb_fixnum_value (int) ;
+ int mrb_funcall (int *,int ,char*,int,int ,...) ;
+ int mrb_get_args (int *,char*,int *,int*) ;
+ int mrb_gv_get (int *,int ) ;
+ int mrb_intern_lit (int *,char*) ;
+ scalar_t__ mrb_nil_p (int ) ;
+ int mrb_nil_value () ;
+ int mrb_obj_value (int ) ;
+ int mrb_onig_regexp_type ;
+ int mrb_raise (int *,int ,char*) ;
+ int mrb_str_new_lit (int *,char*) ;
+ char* mrb_str_to_cstr (int *,int ) ;
+ scalar_t__ mrb_string_p (int ) ;
+ int mrb_string_type (int *,int ) ;
+ int onig_match_common (int *,int ,int const,int ,int) ;
+ int str_substr (int *,int ,int,scalar_t__) ;
+ int utf8len (char*,char*) ;
 
 __attribute__((used)) static mrb_value
 string_split(mrb_state* mrb, mrb_value self) {
@@ -58,7 +58,7 @@ string_split(mrb_state* mrb, mrb_value self) {
   mrb_value result, tmp;
   mrb_bool lim_p = !(argc == 2 && 0 < limit);
 
-  if(mrb_nil_p(pattern)) { // check $; global variable
+  if(mrb_nil_p(pattern)) {
     pattern = mrb_gv_get(mrb, mrb_intern_lit(mrb, "$;"));
     if (mrb_nil_p(pattern)) {
       pattern = mrb_str_new_lit(mrb, " ");
@@ -71,7 +71,7 @@ string_split(mrb_state* mrb, mrb_value self) {
   if (!ONIG_REGEXP_P(pattern)) {
     if(!mrb_nil_p(pattern)) { pattern = mrb_string_type(mrb, pattern); }
     if(mrb_string_p(pattern) && RSTRING_LEN(pattern) == 0) {
-      /* Special case - split into chars */
+
       pattern = mrb_funcall(mrb, mrb_obj_value(mrb_class_get(mrb, "OnigRegexp")), "new", 1, pattern);
     } else {
       return mrb_funcall(mrb, self, "string_split", argc, pattern, mrb_fixnum_value(limit));

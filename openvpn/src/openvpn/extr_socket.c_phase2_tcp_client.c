@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct signal_info {scalar_t__ signal_received; } ;
 struct TYPE_7__ {TYPE_2__* lsa; } ;
-struct TYPE_5__ {int /*<<< orphan*/  residual; } ;
-struct link_socket {TYPE_3__ info; int /*<<< orphan*/  sd; int /*<<< orphan*/  proxy_dest_port; int /*<<< orphan*/  proxy_dest_host; scalar_t__ socks_proxy; TYPE_1__ stream_buf; int /*<<< orphan*/  server_poll_timeout; scalar_t__ http_proxy; } ;
-struct TYPE_8__ {int /*<<< orphan*/  ai_addr; } ;
+struct TYPE_5__ {int residual; } ;
+struct link_socket {TYPE_3__ info; int sd; int proxy_dest_port; int proxy_dest_host; scalar_t__ socks_proxy; TYPE_1__ stream_buf; int server_poll_timeout; scalar_t__ http_proxy; } ;
+struct TYPE_8__ {int ai_addr; } ;
 struct TYPE_6__ {TYPE_4__* current_remote; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  create_socket_tcp (TYPE_4__*) ; 
- int establish_http_proxy_passthru (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  establish_socks_proxy_passthru (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  get_server_poll_remaining_time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  openvpn_close_socket (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  socket_connect (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct signal_info*) ; 
+
+ int create_socket_tcp (TYPE_4__*) ;
+ int establish_http_proxy_passthru (scalar_t__,int ,int ,int ,int ,int *,scalar_t__*) ;
+ int establish_socks_proxy_passthru (scalar_t__,int ,int ,int ,scalar_t__*) ;
+ int get_server_poll_remaining_time (int ) ;
+ int openvpn_close_socket (int ) ;
+ int socket_connect (int *,int ,int ,struct signal_info*) ;
 
 __attribute__((used)) static void
 phase2_tcp_client(struct link_socket *sock, struct signal_info *sig_info)
 {
-    bool proxy_retry = false;
+    bool proxy_retry = 0;
     do
     {
         socket_connect(&sock->sd,

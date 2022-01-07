@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct snd_rawmidi_substream {struct snd_rawmidi_runtime* runtime; } ;
-struct snd_rawmidi_runtime {int /*<<< orphan*/  lock; } ;
+struct snd_rawmidi_runtime {int lock; } ;
 
-/* Variables and functions */
- int __snd_rawmidi_transmit_peek (struct snd_rawmidi_substream*,unsigned char*,int) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int __snd_rawmidi_transmit_peek (struct snd_rawmidi_substream*,unsigned char*,int) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 int snd_rawmidi_transmit_peek(struct snd_rawmidi_substream *substream,
-			      unsigned char *buffer, int count)
+         unsigned char *buffer, int count)
 {
-	struct snd_rawmidi_runtime *runtime = substream->runtime;
-	int result;
-	unsigned long flags;
+ struct snd_rawmidi_runtime *runtime = substream->runtime;
+ int result;
+ unsigned long flags;
 
-	spin_lock_irqsave(&runtime->lock, flags);
-	result = __snd_rawmidi_transmit_peek(substream, buffer, count);
-	spin_unlock_irqrestore(&runtime->lock, flags);
-	return result;
+ spin_lock_irqsave(&runtime->lock, flags);
+ result = __snd_rawmidi_transmit_peek(substream, buffer, count);
+ spin_unlock_irqrestore(&runtime->lock, flags);
+ return result;
 }

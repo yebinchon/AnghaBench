@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ssize_t ;
 
-/* Variables and functions */
- int EINTR ; 
- int S_BUF_SIZE ; 
- int /*<<< orphan*/  assert (int) ; 
- int errno ; 
- int /*<<< orphan*/  getpid () ; 
- int /*<<< orphan*/  kwrite_print_int (char**,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
- scalar_t__ write (int,void const*,size_t) ; 
+
+
+
+typedef scalar_t__ ssize_t ;
+
+
+ int EINTR ;
+ int S_BUF_SIZE ;
+ int assert (int) ;
+ int errno ;
+ int getpid () ;
+ int kwrite_print_int (char**,char*,int,int ) ;
+ int time (int *) ;
+ scalar_t__ write (int,void const*,size_t) ;
 
 ssize_t kwrite (int fd, const void *buf, size_t count) {
   int old_errno = errno;
 
-#define S_BUF_SIZE 100
-  char s[S_BUF_SIZE], *s_begin = s + S_BUF_SIZE;
 
-  kwrite_print_int (&s_begin, "time", 4, time (NULL));
+  char s[100], *s_begin = s + 100;
+
+  kwrite_print_int (&s_begin, "time", 4, time (((void*)0)));
   kwrite_print_int (&s_begin, "pid" , 3, getpid ());
 
   assert (s_begin >= s);
 
-  size_t s_count = s + S_BUF_SIZE - s_begin;
+  size_t s_count = s + 100 - s_begin;
   ssize_t result = s_count + count;
   while (s_count > 0) {
     errno = 0;
@@ -69,5 +69,5 @@ ssize_t kwrite (int fd, const void *buf, size_t count) {
 
   errno = old_errno;
   return result;
-#undef S_BUF_SIZE
+
 }

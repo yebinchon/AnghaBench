@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ strglobmatch (char*,char const*) ; 
+ scalar_t__ strglobmatch (char*,char const*) ;
 
 __attribute__((used)) static bool match_pat(char *file, const char **pat)
 {
-	int i = 0;
+ int i = 0;
 
-	if (!pat)
-		return true;
+ if (!pat)
+  return 1;
 
-	while (pat[i]) {
-		if (strglobmatch(file, pat[i]))
-			return true;
+ while (pat[i]) {
+  if (strglobmatch(file, pat[i]))
+   return 1;
 
-		i++;
-	}
+  i++;
+ }
 
-	return false;
+ return 0;
 }

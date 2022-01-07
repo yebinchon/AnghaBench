@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_7__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
+
+
+typedef struct TYPE_12__ TYPE_7__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
 struct TYPE_12__ {TYPE_2__* ctx; } ;
-struct TYPE_11__ {int /*<<< orphan*/  time_base; scalar_t__ start; } ;
-struct TYPE_10__ {int /*<<< orphan*/  time_base; } ;
+struct TYPE_11__ {int time_base; scalar_t__ start; } ;
+struct TYPE_10__ {int time_base; } ;
 struct TYPE_9__ {int nb_chapters; TYPE_4__** chapters; } ;
 struct TYPE_8__ {size_t file_index; int forced_kf_count; scalar_t__* forced_kf_pts; } ;
-typedef  TYPE_1__ OutputStream ;
-typedef  TYPE_2__ AVFormatContext ;
-typedef  TYPE_3__ AVCodecContext ;
-typedef  TYPE_4__ AVChapter ;
+typedef TYPE_1__ OutputStream ;
+typedef TYPE_2__ AVFormatContext ;
+typedef TYPE_3__ AVCodecContext ;
+typedef TYPE_4__ AVChapter ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_FATAL ; 
- int /*<<< orphan*/  AV_TIME_BASE_Q ; 
- int INT_MAX ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  av_assert1 (int) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- scalar_t__* av_malloc_array (int,int) ; 
- scalar_t__* av_realloc_f (scalar_t__*,int,int) ; 
- scalar_t__ av_rescale_q (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  compare_int64 ; 
- int /*<<< orphan*/  exit_program (int) ; 
- int /*<<< orphan*/  memcmp (char*,char*,int) ; 
- TYPE_7__** output_files ; 
- scalar_t__ parse_time_or_die (char*,char*,int) ; 
- int /*<<< orphan*/  qsort (scalar_t__*,int,int,int /*<<< orphan*/ ) ; 
- char* strchr (char*,char) ; 
+
+ int AV_LOG_FATAL ;
+ int AV_TIME_BASE_Q ;
+ int INT_MAX ;
+ int av_assert0 (int) ;
+ int av_assert1 (int) ;
+ int av_log (int *,int ,char*) ;
+ scalar_t__* av_malloc_array (int,int) ;
+ scalar_t__* av_realloc_f (scalar_t__*,int,int) ;
+ scalar_t__ av_rescale_q (scalar_t__,int ,int ) ;
+ int compare_int64 ;
+ int exit_program (int) ;
+ int memcmp (char*,char*,int) ;
+ TYPE_7__** output_files ;
+ scalar_t__ parse_time_or_die (char*,char*,int) ;
+ int qsort (scalar_t__*,int,int,int ) ;
+ char* strchr (char*,char) ;
 
 __attribute__((used)) static void parse_forced_key_frames(char *kf, OutputStream *ost,
                                     AVCodecContext *avctx)
@@ -57,7 +57,7 @@ __attribute__((used)) static void parse_forced_key_frames(char *kf, OutputStream
     size = n;
     pts = av_malloc_array(size, sizeof(*pts));
     if (!pts) {
-        av_log(NULL, AV_LOG_FATAL, "Could not allocate forced key frames array.\n");
+        av_log(((void*)0), AV_LOG_FATAL, "Could not allocate forced key frames array.\n");
         exit_program(1);
     }
 
@@ -76,7 +76,7 @@ __attribute__((used)) static void parse_forced_key_frames(char *kf, OutputStream
             if (avf->nb_chapters > INT_MAX - size ||
                 !(pts = av_realloc_f(pts, size += avf->nb_chapters - 1,
                                      sizeof(*pts)))) {
-                av_log(NULL, AV_LOG_FATAL,
+                av_log(((void*)0), AV_LOG_FATAL,
                        "Could not allocate forced key frames array.\n");
                 exit_program(1);
             }
@@ -104,5 +104,5 @@ __attribute__((used)) static void parse_forced_key_frames(char *kf, OutputStream
     av_assert0(index == size);
     qsort(pts, size, sizeof(*pts), compare_int64);
     ost->forced_kf_count = size;
-    ost->forced_kf_pts   = pts;
+    ost->forced_kf_pts = pts;
 }

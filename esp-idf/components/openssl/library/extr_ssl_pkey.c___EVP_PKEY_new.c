@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  method; } ;
-typedef  TYPE_1__ EVP_PKEY ;
 
-/* Variables and functions */
- int EVP_PKEY_METHOD_CALL (int /*<<< orphan*/ ,TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  EVP_PKEY_method () ; 
- int /*<<< orphan*/  SSL_DEBUG (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  SSL_PKEY_ERROR_LEVEL ; 
- int /*<<< orphan*/  new ; 
- int /*<<< orphan*/  ssl_mem_free (TYPE_1__*) ; 
- TYPE_1__* ssl_mem_zalloc (int) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int method; } ;
+typedef TYPE_1__ EVP_PKEY ;
+
+
+ int EVP_PKEY_METHOD_CALL (int ,TYPE_1__*,TYPE_1__*) ;
+ int EVP_PKEY_method () ;
+ int SSL_DEBUG (int ,char*,...) ;
+ int SSL_PKEY_ERROR_LEVEL ;
+ int new ;
+ int ssl_mem_free (TYPE_1__*) ;
+ TYPE_1__* ssl_mem_zalloc (int) ;
 
 EVP_PKEY* __EVP_PKEY_new(EVP_PKEY *ipk)
 {
@@ -51,5 +51,5 @@ EVP_PKEY* __EVP_PKEY_new(EVP_PKEY *ipk)
 failed:
     ssl_mem_free(pkey);
 no_mem:
-    return NULL;
+    return ((void*)0);
 }

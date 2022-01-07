@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  v8u16 ;
-typedef  int /*<<< orphan*/  v8i16 ;
-typedef  scalar_t__ v16u8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  int8_t ;
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DOTP_UB4_UH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ILVR_B4_UB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  INSERT_D2_UB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  LD4 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LD_SH (int /*<<< orphan*/  const*) ; 
- scalar_t__ LD_UB (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  LD_UB8 (int /*<<< orphan*/  const*,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  PCKEV_AVG_ST8x4_UB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SAT_UH4_UH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SRARI_H4_UH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ __msa_splati_h (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int v8u16 ;
+typedef int v8i16 ;
+typedef scalar_t__ v16u8 ;
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int int8_t ;
+typedef int int64_t ;
+typedef int int32_t ;
+
+
+ int DOTP_UB4_UH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int ,int ,int ,int ) ;
+ int ILVR_B4_UB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int INSERT_D2_UB (int ,int ,scalar_t__) ;
+ int LD4 (int *,int,int ,int ,int ,int ) ;
+ int LD_SH (int const*) ;
+ scalar_t__ LD_UB (int const*) ;
+ int LD_UB8 (int const*,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int PCKEV_AVG_ST8x4_UB (int ,int ,int ,int ,scalar_t__,scalar_t__,int *,int) ;
+ int SAT_UH4_UH (int ,int ,int ,int ,int) ;
+ int SRARI_H4_UH (int ,int ,int ,int ,int) ;
+ scalar_t__ __msa_splati_h (int ,int ) ;
 
 __attribute__((used)) static void common_vt_2t_and_aver_dst_8x8mult_msa(const uint8_t *src,
                                                   int32_t src_stride,
@@ -47,7 +47,7 @@ __attribute__((used)) static void common_vt_2t_and_aver_dst_8x8mult_msa(const ui
     v8u16 tmp0, tmp1, tmp2, tmp3;
     v8i16 filt;
 
-    /* rearranging filter_y */
+
     filt = LD_SH(filter);
     filt0 = (v16u8) __msa_splati_h(filt, 0);
 

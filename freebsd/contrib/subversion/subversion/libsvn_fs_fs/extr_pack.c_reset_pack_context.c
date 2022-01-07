@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_3__ {int /*<<< orphan*/  info_pool; int /*<<< orphan*/  paths; int /*<<< orphan*/  reps_file; int /*<<< orphan*/  dir_props_file; int /*<<< orphan*/  file_props_file; int /*<<< orphan*/  changes_file; int /*<<< orphan*/  reps; int /*<<< orphan*/  references; int /*<<< orphan*/  path_order; int /*<<< orphan*/  rev_offsets; int /*<<< orphan*/  dir_props; int /*<<< orphan*/  file_props; int /*<<< orphan*/  changes; } ;
-typedef  TYPE_1__ pack_context_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  apr_array_clear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_io_file_close (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_file_del_on_close ; 
- int /*<<< orphan*/  svn_io_open_unique_file3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_temp_dir (char const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_prefix_tree__create (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+struct TYPE_3__ {int info_pool; int paths; int reps_file; int dir_props_file; int file_props_file; int changes_file; int reps; int references; int path_order; int rev_offsets; int dir_props; int file_props; int changes; } ;
+typedef TYPE_1__ pack_context_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int apr_array_clear (int ) ;
+ int svn_io_file_close (int ,int *) ;
+ int svn_io_file_del_on_close ;
+ int svn_io_open_unique_file3 (int *,int *,char const*,int ,int ,int *) ;
+ int svn_io_temp_dir (char const**,int *) ;
+ int svn_pool_clear (int ) ;
+ int svn_prefix_tree__create (int ) ;
 
 __attribute__((used)) static svn_error_t *
 reset_pack_context(pack_context_t *context,
@@ -48,19 +48,19 @@ reset_pack_context(pack_context_t *context,
 
   svn_pool_clear(context->info_pool);
 
-  /* The new temporary files must live at least as long as any other info
-   * object in CONTEXT. */
+
+
   SVN_ERR(svn_io_temp_dir(&temp_dir, pool));
-  SVN_ERR(svn_io_open_unique_file3(&context->changes_file, NULL, temp_dir,
+  SVN_ERR(svn_io_open_unique_file3(&context->changes_file, ((void*)0), temp_dir,
                                    svn_io_file_del_on_close,
                                    context->info_pool, pool));
-  SVN_ERR(svn_io_open_unique_file3(&context->file_props_file, NULL, temp_dir,
+  SVN_ERR(svn_io_open_unique_file3(&context->file_props_file, ((void*)0), temp_dir,
                                    svn_io_file_del_on_close,
                                    context->info_pool, pool));
-  SVN_ERR(svn_io_open_unique_file3(&context->dir_props_file, NULL, temp_dir,
+  SVN_ERR(svn_io_open_unique_file3(&context->dir_props_file, ((void*)0), temp_dir,
                                    svn_io_file_del_on_close,
                                    context->info_pool, pool));
-  SVN_ERR(svn_io_open_unique_file3(&context->reps_file, NULL, temp_dir,
+  SVN_ERR(svn_io_open_unique_file3(&context->reps_file, ((void*)0), temp_dir,
                                    svn_io_file_del_on_close,
                                    context->info_pool, pool));
   context->paths = svn_prefix_tree__create(context->info_pool);

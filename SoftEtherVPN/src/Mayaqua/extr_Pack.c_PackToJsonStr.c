@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PACK ;
-typedef  int /*<<< orphan*/  JSON_VALUE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JsonFree (int /*<<< orphan*/ *) ; 
- char* JsonToStr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PackToJson (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int PACK ;
+typedef int JSON_VALUE ;
+
+
+ int JsonFree (int *) ;
+ char* JsonToStr (int *) ;
+ int * PackToJson (int *) ;
 
 char *PackToJsonStr(PACK *p)
 {
-	char *ret;
-	JSON_VALUE *json = PackToJson(p);
+ char *ret;
+ JSON_VALUE *json = PackToJson(p);
 
-	ret = JsonToStr(json);
+ ret = JsonToStr(json);
 
-	JsonFree(json);
+ JsonFree(json);
 
-	return ret;
+ return ret;
 }

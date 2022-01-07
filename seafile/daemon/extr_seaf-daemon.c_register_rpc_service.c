@@ -1,81 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  register_marshals ; 
- int /*<<< orphan*/  seafile_cancel_clone_task ; 
- int /*<<< orphan*/  seafile_check_path_for_clone ; 
- int /*<<< orphan*/  seafile_clone ; 
- int /*<<< orphan*/  seafile_destroy_repo ; 
- int /*<<< orphan*/  seafile_diff ; 
- int /*<<< orphan*/  seafile_disable_auto_sync ; 
- int /*<<< orphan*/  seafile_download ; 
- int /*<<< orphan*/  seafile_enable_auto_sync ; 
- int /*<<< orphan*/  seafile_find_transfer_task ; 
- int /*<<< orphan*/  seafile_gen_default_worktree ; 
- int /*<<< orphan*/  seafile_generate_magic_and_random_key ; 
- int /*<<< orphan*/  seafile_get_clone_tasks ; 
- int /*<<< orphan*/  seafile_get_config ; 
- int /*<<< orphan*/  seafile_get_config_int ; 
- int /*<<< orphan*/  seafile_get_download_rate ; 
- int /*<<< orphan*/  seafile_get_file_sync_errors ; 
- int /*<<< orphan*/  seafile_get_path_sync_status ; 
- int /*<<< orphan*/  seafile_get_repo ; 
- int /*<<< orphan*/  seafile_get_repo_list ; 
- int /*<<< orphan*/  seafile_get_repo_property ; 
- int /*<<< orphan*/  seafile_get_repo_sync_task ; 
- int /*<<< orphan*/  seafile_get_server_property ; 
- int /*<<< orphan*/  seafile_get_session_info ; 
- int /*<<< orphan*/  seafile_get_sync_notification ; 
- int /*<<< orphan*/  seafile_get_upload_rate ; 
- int /*<<< orphan*/  seafile_is_auto_sync_enabled ; 
- int /*<<< orphan*/  seafile_mark_file_locked ; 
- int /*<<< orphan*/  seafile_mark_file_unlocked ; 
- int /*<<< orphan*/  seafile_remove_clone_task ; 
- int /*<<< orphan*/  seafile_remove_repo_tokens_by_account ; 
- int /*<<< orphan*/  seafile_set_config ; 
- int /*<<< orphan*/  seafile_set_config_int ; 
- int /*<<< orphan*/  seafile_set_download_rate_limit ; 
- int /*<<< orphan*/  seafile_set_repo_property ; 
- int /*<<< orphan*/  seafile_set_repo_token ; 
- int /*<<< orphan*/  seafile_set_server_property ; 
- int /*<<< orphan*/  seafile_set_upload_rate_limit ; 
- int /*<<< orphan*/  seafile_shutdown ; 
- int /*<<< orphan*/  seafile_sync ; 
- int /*<<< orphan*/  seafile_sync_error_id_to_str ; 
- int /*<<< orphan*/  seafile_unsync_repos_by_account ; 
- int /*<<< orphan*/  seafile_update_repos_server_host ; 
- int /*<<< orphan*/  searpc_create_service (char*) ; 
- int /*<<< orphan*/  searpc_server_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  searpc_server_register_function (char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  searpc_signature_int__int () ; 
- int /*<<< orphan*/  searpc_signature_int__string () ; 
- int /*<<< orphan*/  searpc_signature_int__string_int () ; 
- int /*<<< orphan*/  searpc_signature_int__string_string () ; 
- int /*<<< orphan*/  searpc_signature_int__string_string_string () ; 
- int /*<<< orphan*/  searpc_signature_int__void () ; 
- int /*<<< orphan*/  searpc_signature_json__void () ; 
- int /*<<< orphan*/  searpc_signature_object__int_string_string () ; 
- int /*<<< orphan*/  searpc_signature_object__string () ; 
- int /*<<< orphan*/  searpc_signature_object__void () ; 
- int /*<<< orphan*/  searpc_signature_objlist__int_int () ; 
- int /*<<< orphan*/  searpc_signature_objlist__string_string_string_int () ; 
- int /*<<< orphan*/  searpc_signature_objlist__void () ; 
- int /*<<< orphan*/  searpc_signature_string__int () ; 
- int /*<<< orphan*/  searpc_signature_string__string () ; 
- int /*<<< orphan*/  searpc_signature_string__string_int_string_string_string_string_string_string_string_string_string_string_int_string () ; 
- int /*<<< orphan*/  searpc_signature_string__string_string () ; 
- int /*<<< orphan*/  searpc_signature_string__string_string_int () ; 
+ int register_marshals ;
+ int seafile_cancel_clone_task ;
+ int seafile_check_path_for_clone ;
+ int seafile_clone ;
+ int seafile_destroy_repo ;
+ int seafile_diff ;
+ int seafile_disable_auto_sync ;
+ int seafile_download ;
+ int seafile_enable_auto_sync ;
+ int seafile_find_transfer_task ;
+ int seafile_gen_default_worktree ;
+ int seafile_generate_magic_and_random_key ;
+ int seafile_get_clone_tasks ;
+ int seafile_get_config ;
+ int seafile_get_config_int ;
+ int seafile_get_download_rate ;
+ int seafile_get_file_sync_errors ;
+ int seafile_get_path_sync_status ;
+ int seafile_get_repo ;
+ int seafile_get_repo_list ;
+ int seafile_get_repo_property ;
+ int seafile_get_repo_sync_task ;
+ int seafile_get_server_property ;
+ int seafile_get_session_info ;
+ int seafile_get_sync_notification ;
+ int seafile_get_upload_rate ;
+ int seafile_is_auto_sync_enabled ;
+ int seafile_mark_file_locked ;
+ int seafile_mark_file_unlocked ;
+ int seafile_remove_clone_task ;
+ int seafile_remove_repo_tokens_by_account ;
+ int seafile_set_config ;
+ int seafile_set_config_int ;
+ int seafile_set_download_rate_limit ;
+ int seafile_set_repo_property ;
+ int seafile_set_repo_token ;
+ int seafile_set_server_property ;
+ int seafile_set_upload_rate_limit ;
+ int seafile_shutdown ;
+ int seafile_sync ;
+ int seafile_sync_error_id_to_str ;
+ int seafile_unsync_repos_by_account ;
+ int seafile_update_repos_server_host ;
+ int searpc_create_service (char*) ;
+ int searpc_server_init (int ) ;
+ int searpc_server_register_function (char*,int ,char*,int ) ;
+ int searpc_signature_int__int () ;
+ int searpc_signature_int__string () ;
+ int searpc_signature_int__string_int () ;
+ int searpc_signature_int__string_string () ;
+ int searpc_signature_int__string_string_string () ;
+ int searpc_signature_int__void () ;
+ int searpc_signature_json__void () ;
+ int searpc_signature_object__int_string_string () ;
+ int searpc_signature_object__string () ;
+ int searpc_signature_object__void () ;
+ int searpc_signature_objlist__int_int () ;
+ int searpc_signature_objlist__string_string_string_int () ;
+ int searpc_signature_objlist__void () ;
+ int searpc_signature_string__int () ;
+ int searpc_signature_string__string () ;
+ int searpc_signature_string__string_int_string_string_string_string_string_string_string_string_string_string_int_string () ;
+ int searpc_signature_string__string_string () ;
+ int searpc_signature_string__string_string_int () ;
 
 __attribute__((used)) static void
 register_rpc_service ()
@@ -85,12 +77,12 @@ register_rpc_service ()
     searpc_create_service ("seafile-rpcserver");
     searpc_create_service ("seafile-threaded-rpcserver");
 
-    /* seafile-rpcserver */
+
     searpc_server_register_function ("seafile-rpcserver",
                                      seafile_sync_error_id_to_str,
                                      "seafile_sync_error_id_to_str",
                                      searpc_signature_string__int());
-    
+
     searpc_server_register_function ("seafile-rpcserver",
                                      seafile_get_session_info,
                                      "seafile_get_session_info",
@@ -194,7 +186,7 @@ register_rpc_service ()
                                      "seafile_check_path_for_clone",
                                      searpc_signature_int__string());
 
-    /* clone means sync with existing folder, download means sync to a new folder. */
+
     searpc_server_register_function ("seafile-rpcserver",
                                      seafile_clone,
                                      "seafile_clone",
@@ -284,7 +276,7 @@ register_rpc_service ()
                                      "seafile_shutdown",
                                      searpc_signature_int__void());
 
-    /* Need to run in a thread since diff may take long. */
+
     searpc_server_register_function ("seafile-threaded-rpcserver",
                                      seafile_diff,
                                      "seafile_diff",

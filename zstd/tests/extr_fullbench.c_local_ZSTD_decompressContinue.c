@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZSTD_decompressBegin (int /*<<< orphan*/ ) ; 
- size_t ZSTD_decompressContinue (int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t,int /*<<< orphan*/  const*,size_t const) ; 
- size_t ZSTD_nextSrcSizeToDecompress (int /*<<< orphan*/ ) ; 
- int g_cSize ; 
- int /*<<< orphan*/  g_zdc ; 
+
+
+
+typedef int BYTE ;
+
+
+ int ZSTD_decompressBegin (int ) ;
+ size_t ZSTD_decompressContinue (int ,int *,size_t,int const*,size_t const) ;
+ size_t ZSTD_nextSrcSizeToDecompress (int ) ;
+ int g_cSize ;
+ int g_zdc ;
 
 __attribute__((used)) static size_t local_ZSTD_decompressContinue(const void* src, size_t srcSize,
                                             void* dst, size_t dstCapacity,
@@ -29,7 +29,7 @@ __attribute__((used)) static size_t local_ZSTD_decompressContinue(const void* sr
     BYTE* op = (BYTE*)dst;
     size_t remainingCapacity = dstCapacity;
 
-    (void)src; (void)srcSize;  /* unused */
+    (void)src; (void)srcSize;
     ZSTD_decompressBegin(g_zdc);
     while (ip < iend) {
         size_t const iSize = ZSTD_nextSrcSizeToDecompress(g_zdc);

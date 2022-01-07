@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct parser {int /*<<< orphan*/ * hkey; int /*<<< orphan*/  key_name; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
 
-/* Variables and functions */
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  KEY_ALL_ACCESS ; 
- int /*<<< orphan*/  REG_OPTION_NON_VOLATILE ; 
- scalar_t__ RegCreateKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  close_key (struct parser*) ; 
- int /*<<< orphan*/  heap_xalloc (int) ; 
- int /*<<< orphan*/  lstrcpyW (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int lstrlenW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  parse_key_name (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
+
+
+
+struct parser {int * hkey; int key_name; } ;
+typedef int WCHAR ;
+typedef scalar_t__ LONG ;
+typedef int HKEY ;
+
+
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ scalar_t__ ERROR_SUCCESS ;
+ int KEY_ALL_ACCESS ;
+ int REG_OPTION_NON_VOLATILE ;
+ scalar_t__ RegCreateKeyExW (int ,int *,int ,int *,int ,int ,int *,int **,int *) ;
+ int close_key (struct parser*) ;
+ int heap_xalloc (int) ;
+ int lstrcpyW (int ,int *) ;
+ int lstrlenW (int *) ;
+ int parse_key_name (int *,int **) ;
 
 __attribute__((used)) static LONG open_key(struct parser *parser, WCHAR *path)
 {
@@ -35,12 +35,12 @@ __attribute__((used)) static LONG open_key(struct parser *parser, WCHAR *path)
 
     close_key(parser);
 
-    /* Get the registry class */
+
     if (!path || !(key_class = parse_key_name(path, &key_path)))
         return ERROR_INVALID_PARAMETER;
 
-    res = RegCreateKeyExW(key_class, key_path, 0, NULL, REG_OPTION_NON_VOLATILE,
-                          KEY_ALL_ACCESS, NULL, &parser->hkey, NULL);
+    res = RegCreateKeyExW(key_class, key_path, 0, ((void*)0), REG_OPTION_NON_VOLATILE,
+                          KEY_ALL_ACCESS, ((void*)0), &parser->hkey, ((void*)0));
 
     if (res == ERROR_SUCCESS)
     {
@@ -48,7 +48,7 @@ __attribute__((used)) static LONG open_key(struct parser *parser, WCHAR *path)
         lstrcpyW(parser->key_name, path);
     }
     else
-        parser->hkey = NULL;
+        parser->hkey = ((void*)0);
 
     return res;
 }

@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ADD_PMALLOC (int /*<<< orphan*/ ) ; 
- long long MAX_TL_CONFIG_SIZE ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  do_rpc_parse (char*,long long) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,long long) ; 
- int /*<<< orphan*/  free (char*) ; 
- long long lseek (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* malloc (long long) ; 
- int open (char const*,int /*<<< orphan*/ ) ; 
- long long read (int,char*,long long) ; 
- int renew_tl_config () ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tl_config_name ; 
- int verbosity ; 
- int /*<<< orphan*/  zzstrdup (char const*) ; 
+ int ADD_PMALLOC (int ) ;
+ long long MAX_TL_CONFIG_SIZE ;
+ int O_RDONLY ;
+ int SEEK_END ;
+ int SEEK_SET ;
+ int assert (int) ;
+ int close (int) ;
+ int do_rpc_parse (char*,long long) ;
+ int fprintf (int ,char*,char const*,long long) ;
+ int free (char*) ;
+ long long lseek (int,int ,int ) ;
+ char* malloc (long long) ;
+ int open (char const*,int ) ;
+ long long read (int,char*,long long) ;
+ int renew_tl_config () ;
+ int stderr ;
+ int strlen (int ) ;
+ int tl_config_name ;
+ int verbosity ;
+ int zzstrdup (char const*) ;
 
 int read_tl_config (const char *name) {
   int fd = open (name, O_RDONLY);
-//  fprintf (stderr, "fd = %d\n", fd);
+
   if (fd < 0) { return -1; }
   long long x = lseek (fd, 0, SEEK_END);
   if (x < 0) { return -1; }

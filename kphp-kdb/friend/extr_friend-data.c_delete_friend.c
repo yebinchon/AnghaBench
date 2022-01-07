@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int user_id; scalar_t__ fr_cnt; int /*<<< orphan*/  fr_tree; } ;
-typedef  TYPE_1__ user_t ;
-typedef  int /*<<< orphan*/  tree_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  rev_friends ; 
- int /*<<< orphan*/  rev_friends_delete (int /*<<< orphan*/ ,int,int) ; 
- scalar_t__ reverse_friends_mode ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  tree_delete (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * tree_lookup (int /*<<< orphan*/ ,int) ; 
- int verbosity ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int user_id; scalar_t__ fr_cnt; int fr_tree; } ;
+typedef TYPE_1__ user_t ;
+typedef int tree_t ;
+
+
+ int assert (int) ;
+ int fprintf (int ,char*,int,int) ;
+ int rev_friends ;
+ int rev_friends_delete (int ,int,int) ;
+ scalar_t__ reverse_friends_mode ;
+ int stderr ;
+ int tree_delete (int ,int) ;
+ int * tree_lookup (int ,int) ;
+ int verbosity ;
 
 __attribute__((used)) static int delete_friend (user_t *U, int friend_id) {
   tree_t *P;

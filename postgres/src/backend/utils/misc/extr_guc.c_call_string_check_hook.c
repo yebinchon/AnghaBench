@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  name; } ;
-struct config_string {TYPE_1__ gen; int /*<<< orphan*/  (* check_hook ) (char**,void**,int /*<<< orphan*/ ) ;} ;
-typedef  int /*<<< orphan*/  GucSource ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERRCODE_INVALID_PARAMETER_VALUE ; 
- int /*<<< orphan*/  FlushErrorState () ; 
- int /*<<< orphan*/  GUC_check_errcode_value ; 
- int /*<<< orphan*/ * GUC_check_errdetail_string ; 
- int /*<<< orphan*/ * GUC_check_errhint_string ; 
- int /*<<< orphan*/ * GUC_check_errmsg_string ; 
- int /*<<< orphan*/  ereport (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errdetail_internal (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  errhint (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  errmsg (char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  errmsg_internal (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (char**,void**,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int name; } ;
+struct config_string {TYPE_1__ gen; int (* check_hook ) (char**,void**,int ) ;} ;
+typedef int GucSource ;
+
+
+ int ERRCODE_INVALID_PARAMETER_VALUE ;
+ int FlushErrorState () ;
+ int GUC_check_errcode_value ;
+ int * GUC_check_errdetail_string ;
+ int * GUC_check_errhint_string ;
+ int * GUC_check_errmsg_string ;
+ int ereport (int,int ) ;
+ int errcode (int ) ;
+ int errdetail_internal (char*,int *) ;
+ int errhint (char*,int *) ;
+ int errmsg (char*,int ,char*) ;
+ int errmsg_internal (char*,int *) ;
+ int stub1 (char**,void**,int ) ;
 
 __attribute__((used)) static bool
 call_string_check_hook(struct config_string *conf, char **newval, void **extra,
-					   GucSource source, int elevel)
+        GucSource source, int elevel)
 {
-	/* Quick success if no hook */
-	if (!conf->check_hook)
-		return true;
 
-	/* Reset variables that might be set by hook */
-	GUC_check_errcode_value = ERRCODE_INVALID_PARAMETER_VALUE;
-	GUC_check_errmsg_string = NULL;
-	GUC_check_errdetail_string = NULL;
-	GUC_check_errhint_string = NULL;
+ if (!conf->check_hook)
+  return 1;
 
-	if (!conf->check_hook(newval, extra, source))
-	{
-		ereport(elevel,
-				(errcode(GUC_check_errcode_value),
-				 GUC_check_errmsg_string ?
-				 errmsg_internal("%s", GUC_check_errmsg_string) :
-				 errmsg("invalid value for parameter \"%s\": \"%s\"",
-						conf->gen.name, *newval ? *newval : ""),
-				 GUC_check_errdetail_string ?
-				 errdetail_internal("%s", GUC_check_errdetail_string) : 0,
-				 GUC_check_errhint_string ?
-				 errhint("%s", GUC_check_errhint_string) : 0));
-		/* Flush any strings created in ErrorContext */
-		FlushErrorState();
-		return false;
-	}
 
-	return true;
+ GUC_check_errcode_value = ERRCODE_INVALID_PARAMETER_VALUE;
+ GUC_check_errmsg_string = ((void*)0);
+ GUC_check_errdetail_string = ((void*)0);
+ GUC_check_errhint_string = ((void*)0);
+
+ if (!conf->check_hook(newval, extra, source))
+ {
+  ereport(elevel,
+    (errcode(GUC_check_errcode_value),
+     GUC_check_errmsg_string ?
+     errmsg_internal("%s", GUC_check_errmsg_string) :
+     errmsg("invalid value for parameter \"%s\": \"%s\"",
+      conf->gen.name, *newval ? *newval : ""),
+     GUC_check_errdetail_string ?
+     errdetail_internal("%s", GUC_check_errdetail_string) : 0,
+     GUC_check_errhint_string ?
+     errhint("%s", GUC_check_errhint_string) : 0));
+
+  FlushErrorState();
+  return 0;
+ }
+
+ return 1;
 }

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
-typedef  int /*<<< orphan*/  cl_int ;
+
+
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+typedef int cl_int ;
 struct TYPE_16__ {TYPE_4__* priv; } ;
 struct TYPE_15__ {int nb_components; int log2_chroma_w; int log2_chroma_h; TYPE_1__* comp; } ;
-struct TYPE_13__ {int /*<<< orphan*/  program; TYPE_2__* hwctx; } ;
-struct TYPE_14__ {int nb_planes; int x_subsample; int y_subsample; int x_position; int y_position; int alpha_separate; int initialised; int /*<<< orphan*/  kernel; scalar_t__ command_queue; TYPE_3__ ocf; } ;
-struct TYPE_12__ {int /*<<< orphan*/  device_id; int /*<<< orphan*/  context; } ;
+struct TYPE_13__ {int program; TYPE_2__* hwctx; } ;
+struct TYPE_14__ {int nb_planes; int x_subsample; int y_subsample; int x_position; int y_position; int alpha_separate; int initialised; int kernel; scalar_t__ command_queue; TYPE_3__ ocf; } ;
+struct TYPE_12__ {int device_id; int context; } ;
 struct TYPE_11__ {scalar_t__ plane; } ;
-typedef  TYPE_4__ OverlayOpenCLContext ;
-typedef  TYPE_5__ AVPixFmtDescriptor ;
-typedef  TYPE_6__ AVFilterContext ;
+typedef TYPE_4__ OverlayOpenCLContext ;
+typedef TYPE_5__ AVPixFmtDescriptor ;
+typedef TYPE_6__ AVFilterContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  CL_FAIL_ON_ERROR (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EIO ; 
- int FFMAX (int,scalar_t__) ; 
- int /*<<< orphan*/  av_log (TYPE_6__*,int /*<<< orphan*/ ,char*,...) ; 
- TYPE_5__* av_pix_fmt_desc_get (int) ; 
- scalar_t__ clCreateCommandQueue (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  clCreateKernel (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  clReleaseCommandQueue (scalar_t__) ; 
- int /*<<< orphan*/  clReleaseKernel (int /*<<< orphan*/ ) ; 
- int ff_opencl_filter_load_program (TYPE_6__*,char const**,int) ; 
- char* ff_opencl_source_overlay ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_WARNING ;
+ int CL_FAIL_ON_ERROR (int ,char*,int ) ;
+ int EIO ;
+ int FFMAX (int,scalar_t__) ;
+ int av_log (TYPE_6__*,int ,char*,...) ;
+ TYPE_5__* av_pix_fmt_desc_get (int) ;
+ scalar_t__ clCreateCommandQueue (int ,int ,int ,int *) ;
+ int clCreateKernel (int ,char const*,int *) ;
+ int clReleaseCommandQueue (scalar_t__) ;
+ int clReleaseKernel (int ) ;
+ int ff_opencl_filter_load_program (TYPE_6__*,char const**,int) ;
+ char* ff_opencl_source_overlay ;
 
 __attribute__((used)) static int overlay_opencl_load(AVFilterContext *avctx,
                                enum AVPixelFormat main_format,
@@ -55,7 +55,7 @@ __attribute__((used)) static int overlay_opencl_load(AVFilterContext *avctx,
     const AVPixFmtDescriptor *main_desc, *overlay_desc;
     int err, i, main_planes, overlay_planes;
 
-    main_desc    = av_pix_fmt_desc_get(main_format);
+    main_desc = av_pix_fmt_desc_get(main_format);
     overlay_desc = av_pix_fmt_desc_get(overlay_format);
 
     main_planes = overlay_planes = 0;

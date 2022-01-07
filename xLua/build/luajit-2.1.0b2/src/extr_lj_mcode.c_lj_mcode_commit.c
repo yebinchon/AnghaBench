@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * mctop; } ;
-typedef  TYPE_1__ jit_State ;
-typedef  int /*<<< orphan*/  MCode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MCPROT_RUN ; 
- int /*<<< orphan*/  mcode_protect (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * mctop; } ;
+typedef TYPE_1__ jit_State ;
+typedef int MCode ;
+
+
+ int MCPROT_RUN ;
+ int mcode_protect (TYPE_1__*,int ) ;
 
 void lj_mcode_commit(jit_State *J, MCode *top)
 {

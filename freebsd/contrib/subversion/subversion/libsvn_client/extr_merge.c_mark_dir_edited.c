@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  prop_state; int /*<<< orphan*/  content_state; int /*<<< orphan*/  kind; } ;
-typedef  TYPE_4__ svn_wc_notify_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct merge_dir_baton_t {scalar_t__ tree_conflict_reason; int /*<<< orphan*/  tree_conflict_action; int /*<<< orphan*/  tree_conflict_merge_right_node_kind; int /*<<< orphan*/  tree_conflict_merge_left_node_kind; int /*<<< orphan*/  tree_conflict_local_node_kind; struct merge_dir_baton_t* parent_baton; int /*<<< orphan*/  skip_reason; TYPE_1__* delete_state; int /*<<< orphan*/  shadowed; void* edited; } ;
+
+
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int prop_state; int content_state; int kind; } ;
+typedef TYPE_4__ svn_wc_notify_t ;
+typedef int svn_error_t ;
+struct merge_dir_baton_t {scalar_t__ tree_conflict_reason; int tree_conflict_action; int tree_conflict_merge_right_node_kind; int tree_conflict_merge_left_node_kind; int tree_conflict_local_node_kind; struct merge_dir_baton_t* parent_baton; int skip_reason; TYPE_1__* delete_state; int shadowed; void* edited; } ;
 struct TYPE_13__ {scalar_t__ ancestral; } ;
-struct TYPE_15__ {int /*<<< orphan*/  skipped_abspaths; scalar_t__ reintegrate_merge; TYPE_3__ merge_source; TYPE_2__* ctx; } ;
-typedef  TYPE_5__ merge_cmd_baton_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_12__ {int /*<<< orphan*/  notify_baton2; int /*<<< orphan*/  (* notify_func2 ) (int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ *) ;} ;
+struct TYPE_15__ {int skipped_abspaths; scalar_t__ reintegrate_merge; TYPE_3__ merge_source; TYPE_2__* ctx; } ;
+typedef TYPE_5__ merge_cmd_baton_t ;
+typedef int apr_pool_t ;
+struct TYPE_12__ {int notify_baton2; int (* notify_func2 ) (int ,TYPE_4__*,int *) ;} ;
 struct TYPE_11__ {void* found_edit; } ;
 
-/* Variables and functions */
- scalar_t__ CONFLICT_REASON_NONE ; 
- scalar_t__ CONFLICT_REASON_SKIP ; 
- scalar_t__ CONFLICT_REASON_SKIP_WC ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- void* TRUE ; 
- int /*<<< orphan*/ * notify_merge_begin (TYPE_5__*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * record_tree_conflict (TYPE_5__*,char const*,struct merge_dir_baton_t*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  store_path (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ *) ; 
- char* svn_dirent_dirname (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_node_dir ; 
- TYPE_4__* svn_wc_create_notify (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_notify_skip ; 
- int /*<<< orphan*/  svn_wc_notify_update_skip_obstruction ; 
+
+ scalar_t__ CONFLICT_REASON_NONE ;
+ scalar_t__ CONFLICT_REASON_SKIP ;
+ scalar_t__ CONFLICT_REASON_SKIP_WC ;
+ int FALSE ;
+ int SVN_ERR (int *) ;
+ int * SVN_NO_ERROR ;
+ void* TRUE ;
+ int * notify_merge_begin (TYPE_5__*,char const*,int ,int *) ;
+ int * record_tree_conflict (TYPE_5__*,char const*,struct merge_dir_baton_t*,int ,int ,int ,int ,scalar_t__,int *,void*,int *) ;
+ int store_path (int ,char const*) ;
+ int stub1 (int ,TYPE_4__*,int *) ;
+ char* svn_dirent_dirname (char const*,int *) ;
+ int svn_node_dir ;
+ TYPE_4__* svn_wc_create_notify (char const*,int ,int *) ;
+ int svn_wc_notify_skip ;
+ int svn_wc_notify_update_skip_obstruction ;
 
 __attribute__((used)) static svn_error_t *
 mark_dir_edited(merge_cmd_baton_t *merge_b,
@@ -50,7 +50,7 @@ mark_dir_edited(merge_cmd_baton_t *merge_b,
                 const char *local_abspath,
                 apr_pool_t *scratch_pool)
 {
-  /* ### Too much common code with mark_file_edited */
+
   if (db->edited)
     return SVN_NO_ERROR;
 
@@ -66,7 +66,7 @@ mark_dir_edited(merge_cmd_baton_t *merge_b,
   db->edited = TRUE;
 
   if (! db->shadowed)
-    return SVN_NO_ERROR; /* Easy out */
+    return SVN_NO_ERROR;
 
   if (db->parent_baton
       && db->parent_baton->delete_state
@@ -77,9 +77,9 @@ mark_dir_edited(merge_cmd_baton_t *merge_b,
   else if (db->tree_conflict_reason == CONFLICT_REASON_SKIP
            || db->tree_conflict_reason == CONFLICT_REASON_SKIP_WC)
     {
-      /* open_directory() decided not to flag a tree conflict, but
-         for clarity we produce a skip for this node that
-         most likely isn't touched by the merge itself */
+
+
+
 
       if (merge_b->ctx->notify_func2)
         {
@@ -110,7 +110,7 @@ mark_dir_edited(merge_cmd_baton_t *merge_b,
     }
   else if (db->tree_conflict_reason != CONFLICT_REASON_NONE)
     {
-      /* open_directory() decided that a tree conflict should be raised */
+
 
       SVN_ERR(record_tree_conflict(merge_b, local_abspath, db->parent_baton,
                                    db->tree_conflict_local_node_kind,
@@ -118,7 +118,7 @@ mark_dir_edited(merge_cmd_baton_t *merge_b,
                                    db->tree_conflict_merge_right_node_kind,
                                    db->tree_conflict_action,
                                    db->tree_conflict_reason,
-                                   NULL, TRUE,
+                                   ((void*)0), TRUE,
                                    scratch_pool));
     }
 

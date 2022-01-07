@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {struct TYPE_5__* next; struct TYPE_5__* prev; } ;
-typedef  TYPE_1__ cvmx_usb_pipe_t ;
+typedef TYPE_1__ cvmx_usb_pipe_t ;
 struct TYPE_6__ {TYPE_1__* tail; TYPE_1__* head; } ;
-typedef  TYPE_2__ cvmx_usb_pipe_list_t ;
+typedef TYPE_2__ cvmx_usb_pipe_list_t ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static inline void __cvmx_usb_remove_pipe(cvmx_usb_pipe_list_t *list, cvmx_usb_pipe_t *pipe)
 {
     if (list->head == pipe)
     {
         list->head = pipe->next;
-        pipe->next = NULL;
+        pipe->next = ((void*)0);
         if (list->head)
-            list->head->prev = NULL;
+            list->head->prev = ((void*)0);
         else
-            list->tail = NULL;
+            list->tail = ((void*)0);
     }
     else if (list->tail == pipe)
     {
         list->tail = pipe->prev;
-        list->tail->next = NULL;
-        pipe->prev = NULL;
+        list->tail->next = ((void*)0);
+        pipe->prev = ((void*)0);
     }
     else
     {
         pipe->prev->next = pipe->next;
         pipe->next->prev = pipe->prev;
-        pipe->prev = NULL;
-        pipe->next = NULL;
+        pipe->prev = ((void*)0);
+        pipe->next = ((void*)0);
     }
 }

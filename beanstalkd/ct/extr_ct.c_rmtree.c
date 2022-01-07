@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dirent {char* d_name; } ;
-typedef  int /*<<< orphan*/  DIR ;
+typedef int DIR ;
 
-/* Variables and functions */
- int ENOENT ; 
- int ENOTDIR ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- int errno ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/ * opendir (char*) ; 
- int /*<<< orphan*/  perror (char*) ; 
- struct dirent* readdir (int /*<<< orphan*/ *) ; 
- int rmdir (char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
- char* strerror (int) ; 
- int strlen (char*) ; 
- int unlink (char*) ; 
+
+ int ENOENT ;
+ int ENOTDIR ;
+ int closedir (int *) ;
+ int errno ;
+ int fprintf (int ,char*,char*) ;
+ int * opendir (char*) ;
+ int perror (char*) ;
+ struct dirent* readdir (int *) ;
+ int rmdir (char*) ;
+ int sprintf (char*,char*,char*,char*) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
+ char* strerror (int) ;
+ int strlen (char*) ;
+ int unlink (char*) ;
 
 __attribute__((used)) static void
 rmtree(char *path)
 {
     int r = unlink(path);
     if (r == 0 || errno == ENOENT) {
-        return; /* success */
+        return;
     }
     int unlinkerr = errno;
 

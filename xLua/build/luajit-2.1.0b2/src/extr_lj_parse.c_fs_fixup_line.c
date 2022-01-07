@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ uint16_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ uint16_t ;
 struct TYPE_8__ {int line; } ;
 struct TYPE_7__ {int linedefined; size_t pc; TYPE_3__* bcbase; } ;
-struct TYPE_6__ {int firstline; int numline; int /*<<< orphan*/  lineinfo; } ;
-typedef  size_t MSize ;
-typedef  TYPE_1__ GCproto ;
-typedef  TYPE_2__ FuncState ;
-typedef  int BCLine ;
-typedef  TYPE_3__ BCInsLine ;
+struct TYPE_6__ {int firstline; int numline; int lineinfo; } ;
+typedef size_t MSize ;
+typedef TYPE_1__ GCproto ;
+typedef TYPE_2__ FuncState ;
+typedef int BCLine ;
+typedef TYPE_3__ BCInsLine ;
 
-/* Variables and functions */
- scalar_t__ LJ_LIKELY (int) ; 
- int /*<<< orphan*/  lua_assert (int) ; 
- int /*<<< orphan*/  setmref (int /*<<< orphan*/ ,void*) ; 
+
+ scalar_t__ LJ_LIKELY (int) ;
+ int lua_assert (int) ;
+ int setmref (int ,void*) ;
 
 __attribute__((used)) static void fs_fixup_line(FuncState *fs, GCproto *pt,
-			  void *lineinfo, BCLine numline)
+     void *lineinfo, BCLine numline)
 {
   BCInsLine *base = fs->bcbase + 1;
   BCLine first = fs->linedefined;

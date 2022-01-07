@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct command {int dummy; } ;
-typedef  int /*<<< orphan*/  Char ;
+typedef int Char ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STR1 ; 
- int /*<<< orphan*/  STRautorehash ; 
- int /*<<< orphan*/  STRstatus ; 
- int /*<<< orphan*/  USE (struct command*) ; 
- int /*<<< orphan*/  VAR_READWRITE ; 
- scalar_t__ adrof (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dohash (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int find_cmd (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  setcopy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int STR1 ;
+ int STRautorehash ;
+ int STRstatus ;
+ int USE (struct command*) ;
+ int VAR_READWRITE ;
+ scalar_t__ adrof (int ) ;
+ int dohash (int *,int *) ;
+ int find_cmd (int *,int) ;
+ int setcopy (int ,int ,int ) ;
 
 void
 dowhere(Char **v, struct command *c)
@@ -31,10 +31,10 @@ dowhere(Char **v, struct command *c)
     USE(c);
 
     if (adrof(STRautorehash))
-	dohash(NULL, NULL);
+ dohash(((void*)0), ((void*)0));
     for (v++; *v; v++)
-	found &= find_cmd(*v, 1);
-    /* Make status nonzero if any command is not found. */
+ found &= find_cmd(*v, 1);
+
     if (!found)
-	setcopy(STRstatus, STR1, VAR_READWRITE);
+ setcopy(STRstatus, STR1, VAR_READWRITE);
 }

@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (char*,char*,unsigned int) ; 
- char* tl_zzmalloc (unsigned int) ; 
+ int memcpy (char*,char*,unsigned int) ;
+ char* tl_zzmalloc (unsigned int) ;
 
 int tl_fetch_string (int *in_ptr, int ilen, char **s, int *slen, int allocate_new_cstr) {
-  *s = NULL;
+  *s = ((void*)0);
   int *in_end = in_ptr + ilen;
   if (in_ptr >= in_end) {
     return -1;

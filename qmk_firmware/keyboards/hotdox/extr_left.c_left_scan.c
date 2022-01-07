@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HOTDOX_I2C_TIMEOUT ; 
- int /*<<< orphan*/  I2C_ADDR_WRITE ; 
- int /*<<< orphan*/  clear_keyboard () ; 
- int i2c_initialized ; 
- scalar_t__ i2c_start (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_stop () ; 
- int /*<<< orphan*/  left_config () ; 
- int /*<<< orphan*/  print (char*) ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+
+
+ int HOTDOX_I2C_TIMEOUT ;
+ int I2C_ADDR_WRITE ;
+ int clear_keyboard () ;
+ int i2c_initialized ;
+ scalar_t__ i2c_start (int ,int ) ;
+ int i2c_stop () ;
+ int left_config () ;
+ int print (char*) ;
 
 void left_scan(void)
 {
@@ -32,7 +32,7 @@ void left_scan(void)
 
         if (!i2c_initialized)
         {
-            i2c_initialized = true;
+            i2c_initialized = 1;
             left_config();
             clear_keyboard();
             print("mcp23017 attached!!!\n");
@@ -42,7 +42,7 @@ void left_scan(void)
     {
         if (i2c_initialized)
         {
-            i2c_initialized = false;
+            i2c_initialized = 0;
             clear_keyboard();
             print("mcp23017 deattached!!!\n");
         }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * HANDLE ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/ * INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  SERVER_ACCESS_ADMINISTER ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  emptyW ; 
- int /*<<< orphan*/  ok (scalar_t__,char*,scalar_t__,int /*<<< orphan*/ ,...) ; 
- scalar_t__ pXcvClosePort (int /*<<< orphan*/ *) ; 
- scalar_t__ pXcvOpenPort (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int * HANDLE ;
+typedef scalar_t__ DWORD ;
+
+
+ int GetLastError () ;
+ int * INVALID_HANDLE_VALUE ;
+ int SERVER_ACCESS_ADMINISTER ;
+ int SetLastError (int) ;
+ int emptyW ;
+ int ok (scalar_t__,char*,scalar_t__,int ,...) ;
+ scalar_t__ pXcvClosePort (int *) ;
+ scalar_t__ pXcvOpenPort (int ,int ,int **) ;
 
 __attribute__((used)) static void test_XcvClosePort(void)
 {
-    DWORD   res;
+    DWORD res;
     HANDLE hXcv2;
 
 
     if (0)
     {
-        /* crash with native localspl.dll (w2k+xp) */
-        pXcvClosePort(NULL);
+
+        pXcvClosePort(((void*)0));
         pXcvClosePort(INVALID_HANDLE_VALUE);
     }
 
@@ -49,7 +49,7 @@ __attribute__((used)) static void test_XcvClosePort(void)
 
         if (0)
         {
-            /* test for "Double Free": crash with native localspl.dll (w2k+xp) */
+
             pXcvClosePort(hXcv2);
         }
     }

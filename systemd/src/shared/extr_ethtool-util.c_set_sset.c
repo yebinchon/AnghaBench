@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct ifreq {void* ifr_data; } ;
-struct TYPE_4__ {scalar_t__ cmd; scalar_t__ link_mode_masks_nwords; int /*<<< orphan*/  eth_tp_mdix_ctrl; int /*<<< orphan*/  eth_tp_mdix; int /*<<< orphan*/  mdio_support; int /*<<< orphan*/  autoneg; int /*<<< orphan*/  phy_address; int /*<<< orphan*/  port; int /*<<< orphan*/  duplex; int /*<<< orphan*/  speed; } ;
-struct TYPE_3__ {int /*<<< orphan*/ * lp_advertising; int /*<<< orphan*/ * advertising; int /*<<< orphan*/ * supported; } ;
+struct TYPE_4__ {scalar_t__ cmd; scalar_t__ link_mode_masks_nwords; int eth_tp_mdix_ctrl; int eth_tp_mdix; int mdio_support; int autoneg; int phy_address; int port; int duplex; int speed; } ;
+struct TYPE_3__ {int * lp_advertising; int * advertising; int * supported; } ;
 struct ethtool_link_usettings {TYPE_2__ base; TYPE_1__ link_modes; } ;
-struct ethtool_cmd {int /*<<< orphan*/  eth_tp_mdix_ctrl; int /*<<< orphan*/  eth_tp_mdix; int /*<<< orphan*/  mdio_support; int /*<<< orphan*/  autoneg; int /*<<< orphan*/  phy_address; int /*<<< orphan*/  port; int /*<<< orphan*/  duplex; int /*<<< orphan*/  lp_advertising; int /*<<< orphan*/  advertising; int /*<<< orphan*/  supported; int /*<<< orphan*/  cmd; } ;
+struct ethtool_cmd {int eth_tp_mdix_ctrl; int eth_tp_mdix; int mdio_support; int autoneg; int phy_address; int port; int duplex; int lp_advertising; int advertising; int supported; int cmd; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- scalar_t__ ETHTOOL_GSET ; 
- int /*<<< orphan*/  ETHTOOL_SSET ; 
- int /*<<< orphan*/  SIOCETHTOOL ; 
- int errno ; 
- int /*<<< orphan*/  ethtool_cmd_speed_set (struct ethtool_cmd*,int /*<<< orphan*/ ) ; 
- int ioctl (int,int /*<<< orphan*/ ,struct ifreq*) ; 
+
+ int EINVAL ;
+ scalar_t__ ETHTOOL_GSET ;
+ int ETHTOOL_SSET ;
+ int SIOCETHTOOL ;
+ int errno ;
+ int ethtool_cmd_speed_set (struct ethtool_cmd*,int ) ;
+ int ioctl (int,int ,struct ifreq*) ;
 
 __attribute__((used)) static int set_sset(int fd, struct ifreq *ifr, const struct ethtool_link_usettings *u) {
         struct ethtool_cmd ecmd = {

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct target {int /*<<< orphan*/  tex; int /*<<< orphan*/  fbo; } ;
-typedef  int /*<<< orphan*/  fft_t ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  int /*<<< orphan*/  GLint ;
-typedef  scalar_t__ GLenum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_COLOR ; 
- int /*<<< orphan*/  GL_COLOR_ATTACHMENT0 ; 
- int /*<<< orphan*/  GL_COLOR_BUFFER_BIT ; 
- int /*<<< orphan*/  GL_FRAMEBUFFER ; 
- scalar_t__ GL_RG16I ; 
- scalar_t__ GL_RGBA8 ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  fft_init_texture (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__,unsigned int,unsigned int,unsigned int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  glBindFramebuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glClear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glClearBufferiv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  glClearBufferuiv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  glClearColor (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glFramebufferTexture2D (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glGenFramebuffers (int,int /*<<< orphan*/ *) ; 
+
+
+
+struct target {int tex; int fbo; } ;
+typedef int fft_t ;
+typedef int GLuint ;
+typedef int GLint ;
+typedef scalar_t__ GLenum ;
+
+
+ int GL_COLOR ;
+ int GL_COLOR_ATTACHMENT0 ;
+ int GL_COLOR_BUFFER_BIT ;
+ int GL_FRAMEBUFFER ;
+ scalar_t__ GL_RG16I ;
+ scalar_t__ GL_RGBA8 ;
+ int GL_TEXTURE_2D ;
+ int fft_init_texture (int *,int *,scalar_t__,unsigned int,unsigned int,unsigned int,scalar_t__,scalar_t__) ;
+ int glBindFramebuffer (int ,int ) ;
+ int glClear (int ) ;
+ int glClearBufferiv (int ,int ,int const*) ;
+ int glClearBufferuiv (int ,int ,int const*) ;
+ int glClearColor (int ,int ,int ,int ) ;
+ int glFramebufferTexture2D (int ,int ,int ,int ,int ) ;
+ int glGenFramebuffers (int,int *) ;
 
 __attribute__((used)) static void fft_init_target(fft_t *fft, struct target *target, GLenum format,
       unsigned width, unsigned height, unsigned levels, GLenum mag, GLenum min)

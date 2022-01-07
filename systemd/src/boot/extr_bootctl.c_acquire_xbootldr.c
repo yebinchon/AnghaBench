@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_id128_t ;
 
-/* Variables and functions */
- int ENOKEY ; 
- int /*<<< orphan*/  SD_ID128_NULL ; 
- int /*<<< orphan*/  arg_xbootldr_path ; 
- int find_xbootldr_and_warn (int /*<<< orphan*/ ,int,char**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_and_replace (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  log_debug (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_debug_errno (int,char*) ; 
- int /*<<< orphan*/  mfree (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int sd_id128_t ;
+
+
+ int ENOKEY ;
+ int SD_ID128_NULL ;
+ int arg_xbootldr_path ;
+ int find_xbootldr_and_warn (int ,int,char**,int *) ;
+ int free_and_replace (int ,char*) ;
+ int log_debug (char*,int ) ;
+ int log_debug_errno (int,char*) ;
+ int mfree (int ) ;
 
 __attribute__((used)) static int acquire_xbootldr(bool unprivileged_mode, sd_id128_t *ret_uuid) {
         char *np;

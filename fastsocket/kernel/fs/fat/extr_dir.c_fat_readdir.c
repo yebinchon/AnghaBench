@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct inode {int dummy; } ;
 struct TYPE_4__ {TYPE_1__* dentry; } ;
 struct file {TYPE_2__ f_path; } ;
-typedef  int /*<<< orphan*/  filldir_t ;
+typedef int filldir_t ;
 struct TYPE_3__ {struct inode* d_inode; } ;
 
-/* Variables and functions */
- int __fat_readdir (struct inode*,struct file*,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int __fat_readdir (struct inode*,struct file*,void*,int ,int ,int ) ;
 
 __attribute__((used)) static int fat_readdir(struct file *filp, void *dirent, filldir_t filldir)
 {
-	struct inode *inode = filp->f_path.dentry->d_inode;
-	return __fat_readdir(inode, filp, dirent, filldir, 0, 0);
+ struct inode *inode = filp->f_path.dentry->d_inode;
+ return __fat_readdir(inode, filp, dirent, filldir, 0, 0);
 }

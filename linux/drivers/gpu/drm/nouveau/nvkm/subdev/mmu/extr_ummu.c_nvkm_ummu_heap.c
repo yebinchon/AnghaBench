@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t u8 ;
-typedef  int /*<<< orphan*/  u32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef size_t u8 ;
+typedef int u32 ;
 struct nvkm_ummu {struct nvkm_mmu* mmu; } ;
 struct nvkm_mmu {size_t heap_nr; TYPE_1__* heap; } ;
-struct nvif_mmu_heap_v0 {size_t index; int /*<<< orphan*/  size; } ;
-struct TYPE_2__ {int /*<<< orphan*/  size; } ;
+struct nvif_mmu_heap_v0 {size_t index; int size; } ;
+struct TYPE_2__ {int size; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int ENOSYS ; 
- int nvif_unpack (int,void**,int /*<<< orphan*/ *,struct nvif_mmu_heap_v0,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int EINVAL ;
+ int ENOSYS ;
+ int nvif_unpack (int,void**,int *,struct nvif_mmu_heap_v0,int ,int ,int) ;
 
 __attribute__((used)) static int
 nvkm_ummu_heap(struct nvkm_ummu *ummu, void *argv, u32 argc)
 {
-	struct nvkm_mmu *mmu = ummu->mmu;
-	union {
-		struct nvif_mmu_heap_v0 v0;
-	} *args = argv;
-	int ret = -ENOSYS;
-	u8 index;
+ struct nvkm_mmu *mmu = ummu->mmu;
+ union {
+  struct nvif_mmu_heap_v0 v0;
+ } *args = argv;
+ int ret = -ENOSYS;
+ u8 index;
 
-	if (!(ret = nvif_unpack(ret, &argv, &argc, args->v0, 0, 0, false))) {
-		if ((index = args->v0.index) >= mmu->heap_nr)
-			return -EINVAL;
-		args->v0.size = mmu->heap[index].size;
-	} else
-		return ret;
+ if (!(ret = nvif_unpack(ret, &argv, &argc, args->v0, 0, 0, 0))) {
+  if ((index = args->v0.index) >= mmu->heap_nr)
+   return -EINVAL;
+  args->v0.size = mmu->heap[index].size;
+ } else
+  return ret;
 
-	return 0;
+ return 0;
 }

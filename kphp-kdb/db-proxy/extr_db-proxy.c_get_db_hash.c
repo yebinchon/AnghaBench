@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct db_table {char* table_name; int table_name_len; } ;
-typedef  struct db_table* db_hash_table_p ;
+typedef struct db_table* db_hash_table_p ;
 
-/* Variables and functions */
- int HASH_PRIME ; 
- int /*<<< orphan*/  memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- char* zmalloc (int) ; 
+
+ int HASH_PRIME ;
+ int memcmp (char*,char*,int) ;
+ int memcpy (char*,char*,int) ;
+ char* zmalloc (int) ;
 
 struct db_table *get_db_hash (db_hash_table_p db_hash, char *name, int l, int force) {
   int h1 = l, h2 = l, t;
@@ -31,12 +31,12 @@ struct db_table *get_db_hash (db_hash_table_p db_hash, char *name, int l, int fo
   }
   ++h2;
   while (db_hash[h1].table_name) {
-    if (l == db_hash[h1].table_name_len && 
+    if (l == db_hash[h1].table_name_len &&
          !memcmp (db_hash[h1].table_name, name, l)) {
       return &db_hash[h1];
     }
     h1 += h2;
-    if (h1 >= HASH_PRIME) { 
+    if (h1 >= HASH_PRIME) {
       h1 -= HASH_PRIME;
     }
   }

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmap_type ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int cmap_type ;
 struct TYPE_6__ {int version; } ;
-typedef  TYPE_1__ cmap_header ;
-typedef  int WORD ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ cmap_header ;
+typedef int WORD ;
+typedef scalar_t__ LONG ;
+typedef int HDC ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GDI_ERROR ; 
- scalar_t__ GET_BE_WORD (int) ; 
- scalar_t__ GetFontData (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  MS_CMAP_TAG ; 
- int /*<<< orphan*/  cmap_ms_symbol ; 
- int /*<<< orphan*/  cmap_ms_unicode ; 
- int /*<<< orphan*/  cmap_none ; 
- void* get_cmap (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  get_first_last_from_cmap0 (void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_first_last_from_cmap4 (void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  trace (char*,int) ; 
+
+ int FALSE ;
+ scalar_t__ GDI_ERROR ;
+ scalar_t__ GET_BE_WORD (int) ;
+ scalar_t__ GetFontData (int ,int ,int ,TYPE_1__*,scalar_t__) ;
+ int GetProcessHeap () ;
+ TYPE_1__* HeapAlloc (int ,int ,scalar_t__) ;
+ int HeapFree (int ,int ,TYPE_1__*) ;
+ int MS_CMAP_TAG ;
+ int cmap_ms_symbol ;
+ int cmap_ms_unicode ;
+ int cmap_none ;
+ void* get_cmap (TYPE_1__*,int,int) ;
+ int get_first_last_from_cmap0 (void*,int *,int *) ;
+ int get_first_last_from_cmap4 (void*,int *,int *,scalar_t__) ;
+ int ok (int,char*,...) ;
+ int trace (char*,int) ;
 
 __attribute__((used)) static BOOL get_first_last_from_cmap(HDC hdc, DWORD *first, DWORD *last, cmap_type *cmap_type)
 {
@@ -46,7 +46,7 @@ __attribute__((used)) static BOOL get_first_last_from_cmap(HDC hdc, DWORD *first
     BOOL r = FALSE;
     WORD format;
 
-    size = GetFontData(hdc, MS_CMAP_TAG, 0, NULL, 0);
+    size = GetFontData(hdc, MS_CMAP_TAG, 0, ((void*)0), 0);
     ok(size != GDI_ERROR, "no cmap table found\n");
     if(size == GDI_ERROR) return FALSE;
 

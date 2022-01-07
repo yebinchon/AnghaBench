@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ i2; int /*<<< orphan*/ * pList2; } ;
-typedef  TYPE_1__ tclvar_cursor ;
-typedef  int /*<<< orphan*/  Tcl_Obj ;
-typedef  int /*<<< orphan*/  Tcl_Interp ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TCL_EVAL_GLOBAL ; 
- int /*<<< orphan*/  Tcl_DecrRefCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Tcl_EvalObjEx (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * Tcl_GetObjResult (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Tcl_IncrRefCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Tcl_ListObjAppendElement (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Tcl_ListObjLength (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/ * Tcl_NewStringObj (char*,int) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ i2; int * pList2; } ;
+typedef TYPE_1__ tclvar_cursor ;
+typedef int Tcl_Obj ;
+typedef int Tcl_Interp ;
+
+
+ int TCL_EVAL_GLOBAL ;
+ int Tcl_DecrRefCount (int *) ;
+ int Tcl_EvalObjEx (int *,int *,int ) ;
+ int * Tcl_GetObjResult (int *) ;
+ int Tcl_IncrRefCount (int *) ;
+ int Tcl_ListObjAppendElement (int ,int *,int *) ;
+ int Tcl_ListObjLength (int ,int *,int*) ;
+ int * Tcl_NewStringObj (char*,int) ;
+ int assert (int) ;
 
 __attribute__((used)) static int next2(Tcl_Interp *interp, tclvar_cursor *pCur, Tcl_Obj *pObj){
   Tcl_Obj *p;

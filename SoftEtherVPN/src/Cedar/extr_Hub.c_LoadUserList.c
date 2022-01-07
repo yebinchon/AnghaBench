@@ -1,99 +1,99 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  UserHashList; int /*<<< orphan*/  Filename; } ;
-typedef  TYPE_1__ USERLIST ;
-typedef  int /*<<< orphan*/  UINT64 ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACCESS_LIST_INCLUDE_FILE_MAX_SIZE ; 
- int /*<<< orphan*/  Add (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  AddInt64Distinct (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* CfgReadNextLine (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Delete (int /*<<< orphan*/ *,TYPE_1__*) ; 
- TYPE_1__* FindUserList (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  Free (char*) ; 
- int /*<<< orphan*/  FreeBuf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeUserListEntry (TYPE_1__*) ; 
- int IsEmptyStr (char*) ; 
- int /*<<< orphan*/  NewInt64List (int) ; 
- int /*<<< orphan*/ * ReadDumpWithMaxSize (char*,int /*<<< orphan*/ ) ; 
- int StartWith (char*,char*) ; 
- int /*<<< orphan*/  StrCpy (int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  Trim (char*) ; 
- int /*<<< orphan*/  UsernameToInt64 (char*) ; 
- TYPE_1__* ZeroMalloc (int) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int UserHashList; int Filename; } ;
+typedef TYPE_1__ USERLIST ;
+typedef int UINT64 ;
+typedef int LIST ;
+typedef int BUF ;
+
+
+ int ACCESS_LIST_INCLUDE_FILE_MAX_SIZE ;
+ int Add (int *,TYPE_1__*) ;
+ int AddInt64Distinct (int ,int ) ;
+ char* CfgReadNextLine (int *) ;
+ int Delete (int *,TYPE_1__*) ;
+ TYPE_1__* FindUserList (int *,char*) ;
+ int Free (char*) ;
+ int FreeBuf (int *) ;
+ int FreeUserListEntry (TYPE_1__*) ;
+ int IsEmptyStr (char*) ;
+ int NewInt64List (int) ;
+ int * ReadDumpWithMaxSize (char*,int ) ;
+ int StartWith (char*,char*) ;
+ int StrCpy (int ,int,char*) ;
+ int Trim (char*) ;
+ int UsernameToInt64 (char*) ;
+ TYPE_1__* ZeroMalloc (int) ;
 
 USERLIST *LoadUserList(LIST *o, char *filename)
 {
-	USERLIST *u;
-	BUF *b;
-	// Validate arguments
-	if (o == NULL || filename == NULL)
-	{
-		return NULL;
-	}
+ USERLIST *u;
+ BUF *b;
 
-	u = FindUserList(o, filename);
+ if (o == ((void*)0) || filename == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	if (u != NULL)
-	{
-		Delete(o, u);
+ u = FindUserList(o, filename);
 
-		FreeUserListEntry(u);
-	}
+ if (u != ((void*)0))
+ {
+  Delete(o, u);
 
-	u = ZeroMalloc(sizeof(USERLIST));
+  FreeUserListEntry(u);
+ }
 
-	StrCpy(u->Filename, sizeof(u->Filename), filename);
+ u = ZeroMalloc(sizeof(USERLIST));
 
-	u->UserHashList = NewInt64List(false);
+ StrCpy(u->Filename, sizeof(u->Filename), filename);
 
-	b = ReadDumpWithMaxSize(filename, ACCESS_LIST_INCLUDE_FILE_MAX_SIZE);
-	if (b != NULL)
-	{
-		while (true)
-		{
-			char *line = CfgReadNextLine(b);
-			UINT64 ui;
-			if (line == NULL)
-			{
-				break;
-			}
+ u->UserHashList = NewInt64List(0);
 
-			Trim(line);
+ b = ReadDumpWithMaxSize(filename, ACCESS_LIST_INCLUDE_FILE_MAX_SIZE);
+ if (b != ((void*)0))
+ {
+  while (1)
+  {
+   char *line = CfgReadNextLine(b);
+   UINT64 ui;
+   if (line == ((void*)0))
+   {
+    break;
+   }
 
-			if (IsEmptyStr(line) == false)
-			{
-				if (StartWith(line, "#") == false &&
-					StartWith(line, "//") == false &&
-					StartWith(line, ";") == false)
-				{
-					ui = UsernameToInt64(line);
+   Trim(line);
 
-					AddInt64Distinct(u->UserHashList, ui);
-				}
-			}
+   if (IsEmptyStr(line) == 0)
+   {
+    if (StartWith(line, "#") == 0 &&
+     StartWith(line, "//") == 0 &&
+     StartWith(line, ";") == 0)
+    {
+     ui = UsernameToInt64(line);
 
-			Free(line);
-		}
+     AddInt64Distinct(u->UserHashList, ui);
+    }
+   }
 
-		FreeBuf(b);
-	}
+   Free(line);
+  }
 
-	Add(o, u);
+  FreeBuf(b);
+ }
 
-	return u;
+ Add(o, u);
+
+ return u;
 }

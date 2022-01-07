@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  queue; int /*<<< orphan*/  builder; } ;
-typedef  TYPE_1__ signal_user_data_t ;
-typedef  int /*<<< orphan*/  hb_title_t ;
-typedef  scalar_t__ gint ;
-typedef  int /*<<< orphan*/  const gchar ;
-typedef  int /*<<< orphan*/  gboolean ;
-typedef  int /*<<< orphan*/  GtkWindow ;
-typedef  int /*<<< orphan*/  GhbValue ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GHB_WIDGET (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  GTK_MESSAGE_ERROR ; 
- int /*<<< orphan*/  GTK_MESSAGE_QUESTION ; 
- int /*<<< orphan*/ * GTK_WINDOW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  G_FILE_TEST_EXISTS ; 
- int /*<<< orphan*/  G_FILE_TEST_IS_DIR ; 
- int R_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int W_OK ; 
- int /*<<< orphan*/ * _ (char*) ; 
- scalar_t__ g_access (int /*<<< orphan*/  const*,int) ; 
- scalar_t__ g_file_test (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_free (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  const* g_path_get_dirname (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  const* g_strdup_printf (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  g_unlink (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * ghb_array_get (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ ghb_array_len (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ghb_dict_get (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ ghb_dict_get_int (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  const* ghb_dict_get_string (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * ghb_lookup_title (scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  ghb_message_dialog (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ghb_validate_audio (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ghb_validate_filters (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ghb_validate_subtitles (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ghb_validate_video (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int queue; int builder; } ;
+typedef TYPE_1__ signal_user_data_t ;
+typedef int hb_title_t ;
+typedef scalar_t__ gint ;
+typedef int const gchar ;
+typedef int gboolean ;
+typedef int GtkWindow ;
+typedef int GhbValue ;
+
+
+ int FALSE ;
+ int GHB_WIDGET (int ,char*) ;
+ int GTK_MESSAGE_ERROR ;
+ int GTK_MESSAGE_QUESTION ;
+ int * GTK_WINDOW (int ) ;
+ int G_FILE_TEST_EXISTS ;
+ int G_FILE_TEST_IS_DIR ;
+ int R_OK ;
+ int TRUE ;
+ int W_OK ;
+ int * _ (char*) ;
+ scalar_t__ g_access (int const*,int) ;
+ scalar_t__ g_file_test (int const*,int ) ;
+ int g_free (int const*) ;
+ int const* g_path_get_dirname (int const*) ;
+ int const* g_strdup_printf (int *,int const*) ;
+ int g_unlink (int const*) ;
+ int * ghb_array_get (int ,scalar_t__) ;
+ scalar_t__ ghb_array_len (int ) ;
+ int * ghb_dict_get (int *,char*) ;
+ scalar_t__ ghb_dict_get_int (int *,char*) ;
+ int const* ghb_dict_get_string (int *,char*) ;
+ int * ghb_lookup_title (scalar_t__,scalar_t__*) ;
+ int ghb_message_dialog (int *,int ,int const*,int *,int *) ;
+ int ghb_validate_audio (int *,int *) ;
+ int ghb_validate_filters (int *,int *) ;
+ int ghb_validate_subtitles (int *,int *) ;
+ int ghb_validate_video (int *,int *) ;
+ scalar_t__ strcmp (int const*,int const*) ;
 
 __attribute__((used)) static gboolean
 validate_settings(signal_user_data_t *ud, GhbValue *settings, gint batch)
 {
-    // Check to see if the dest file exists or is
-    // already in the queue
+
+
     gchar *message;
     const gchar *dest;
     gint count, ii;
@@ -67,7 +67,7 @@ validate_settings(signal_user_data_t *ud, GhbValue *settings, gint batch)
 
     title_id = ghb_dict_get_int(settings, "title");
     title = ghb_lookup_title(title_id, &titleindex);
-    if (title == NULL) return FALSE;
+    if (title == ((void*)0)) return FALSE;
     dest = ghb_dict_get_string(settings, "destination");
     count = ghb_array_len(ud->queue);
     for (ii = 0; ii < count; ii++)
@@ -103,13 +103,13 @@ validate_settings(signal_user_data_t *ud, GhbValue *settings, gint batch)
                     "This is not a valid directory."),
                     destdir);
         ghb_message_dialog(hb_window, GTK_MESSAGE_ERROR,
-                           message, _("Cancel"), NULL);
+                           message, _("Cancel"), ((void*)0));
         g_free(message);
         g_free(destdir);
         return FALSE;
     }
-#if !defined(_WIN32)
-    // This doesn't work properly on windows
+
+
     if (g_access(destdir, R_OK|W_OK) != 0)
     {
         message = g_strdup_printf(
@@ -117,12 +117,12 @@ validate_settings(signal_user_data_t *ud, GhbValue *settings, gint batch)
                     "Can not read or write the directory."),
                     destdir);
         ghb_message_dialog(hb_window, GTK_MESSAGE_ERROR,
-                           message, _("Cancel"), NULL);
+                           message, _("Cancel"), ((void*)0));
         g_free(message);
         g_free(destdir);
         return FALSE;
     }
-#endif
+
     g_free(destdir);
     if (g_file_test(dest, G_FILE_TEST_EXISTS))
     {
@@ -140,22 +140,22 @@ validate_settings(signal_user_data_t *ud, GhbValue *settings, gint batch)
         g_free(message);
         g_unlink(dest);
     }
-    // Validate audio settings
+
     if (!ghb_validate_audio(settings, hb_window))
     {
         return FALSE;
     }
-    // Validate audio settings
+
     if (!ghb_validate_subtitles(settings, hb_window))
     {
         return FALSE;
     }
-    // Validate video settings
+
     if (!ghb_validate_video(settings, hb_window))
     {
         return FALSE;
     }
-    // Validate filter settings
+
     if (!ghb_validate_filters(settings, hb_window))
     {
         return FALSE;

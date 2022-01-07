@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tuntap {int /*<<< orphan*/  netbits_ipv6; int /*<<< orphan*/  remote_ipv6; int /*<<< orphan*/  local_ipv6; scalar_t__ did_ifconfig_ipv6_setup; scalar_t__ did_ifconfig_setup; int /*<<< orphan*/  remote_netmask; int /*<<< orphan*/  local; } ;
+
+
+
+
+struct tuntap {int netbits_ipv6; int remote_ipv6; int local_ipv6; scalar_t__ did_ifconfig_ipv6_setup; scalar_t__ did_ifconfig_setup; int remote_netmask; int local; } ;
 struct gc_arena {int dummy; } ;
 struct env_set {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gc_free (struct gc_arena*) ; 
- struct gc_arena gc_new () ; 
- int is_tun_p2p (struct tuntap const*) ; 
- char* print_in6_addr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct gc_arena*) ; 
- char* print_in_addr_t (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct gc_arena*) ; 
- int /*<<< orphan*/  setenv_int (struct env_set*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setenv_str (struct env_set*,char*,char const*) ; 
+
+ int gc_free (struct gc_arena*) ;
+ struct gc_arena gc_new () ;
+ int is_tun_p2p (struct tuntap const*) ;
+ char* print_in6_addr (int ,int ,struct gc_arena*) ;
+ char* print_in_addr_t (int ,int ,struct gc_arena*) ;
+ int setenv_int (struct env_set*,char*,int ) ;
+ int setenv_str (struct env_set*,char*,char const*) ;
 
 void
 do_ifconfig_setenv(const struct tuntap *tt, struct env_set *es)
@@ -30,9 +30,9 @@ do_ifconfig_setenv(const struct tuntap *tt, struct env_set *es)
     const char *ifconfig_local = print_in_addr_t(tt->local, 0, &gc);
     const char *ifconfig_remote_netmask = print_in_addr_t(tt->remote_netmask, 0, &gc);
 
-    /*
-     * Set environmental variables with ifconfig parameters.
-     */
+
+
+
     if (tt->did_ifconfig_setup)
     {
         bool tun = is_tun_p2p(tt);

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WINDOW ;
 
-/* Variables and functions */
- char* CISENSITIVE ; 
- char* CSENSITIVE ; 
-#define  KEY_BACKSPACE 131 
-#define  KEY_ENTER 130 
-#define  KEY_LEFT 129 
-#define  KEY_RIGHT 128 
- size_t MIN (int,size_t) ; 
- int /*<<< orphan*/  curs_set (int) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  getmaxyx (int /*<<< orphan*/ *,size_t,size_t) ; 
- int /*<<< orphan*/  isprint (size_t) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
- int /*<<< orphan*/  memmove (char*,char*,int) ; 
- int /*<<< orphan*/  mvwprintw (int /*<<< orphan*/ *,int,int,char*,char*) ; 
- int /*<<< orphan*/  stdscr ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  waddch (int /*<<< orphan*/ *,size_t) ; 
- size_t wgetch (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wmove (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  wrefresh (int /*<<< orphan*/ *) ; 
- char* xmalloc (size_t) ; 
- char* xstrdup (char*) ; 
+
+
+
+typedef int WINDOW ;
+
+
+ char* CISENSITIVE ;
+ char* CSENSITIVE ;
+
+
+
+
+ size_t MIN (int,size_t) ;
+ int curs_set (int) ;
+ int free (char*) ;
+ int getmaxyx (int *,size_t,size_t) ;
+ int isprint (size_t) ;
+ int memcpy (char*,char const*,size_t) ;
+ int memmove (char*,char*,int) ;
+ int mvwprintw (int *,int,int,char*,char*) ;
+ int stdscr ;
+ int strlen (char const*) ;
+ int waddch (int *,size_t) ;
+ size_t wgetch (int ) ;
+ int wmove (int *,int,int) ;
+ int wrefresh (int *) ;
+ char* xmalloc (size_t) ;
+ char* xstrdup (char*) ;
 
 char *
 input_string (WINDOW * win, int pos_y, int pos_x, size_t max_width,
@@ -46,14 +46,14 @@ input_string (WINDOW * win, int pos_y, int pos_x, size_t max_width,
   getmaxyx (win, size_y, size_x);
   size_x -= 4;
 
-  /* are we setting a default string */
+
   if (str) {
     len = MIN (max_width, strlen (str));
     memcpy (s, str, len);
     s[len] = '\0';
 
     x = pos = 0;
-    /* is the default str length greater than input field? */
+
     if (strlen (s) > size_x) {
       tmp = xstrdup (&s[0]);
       tmp[size_x] = '\0';
@@ -76,12 +76,12 @@ input_string (WINDOW * win, int pos_y, int pos_x, size_t max_width,
   while (quit) {
     c = wgetch (stdscr);
     switch (c) {
-    case 1:    /* ^a   */
-    case 262:  /* HOME */
+    case 1:
+    case 262:
       pos = x = 0;
       break;
     case 5:
-    case 360:  /* END of line */
+    case 360:
       if (strlen (s) > size_x) {
         x = size_x;
         pos = strlen (s) - size_x;
@@ -90,14 +90,14 @@ input_string (WINDOW * win, int pos_y, int pos_x, size_t max_width,
         x = strlen (s);
       }
       break;
-    case 7:    /* ^g  */
-    case 27:   /* ESC */
+    case 7:
+    case 27:
       pos = x = 0;
       if (str && *str == '\0')
         s[0] = '\0';
       quit = 0;
       break;
-    case 9:    /* TAB   */
+    case 9:
       if (!enable_case)
         break;
       *toggle_case = *toggle_case == 0 ? 1 : 0;
@@ -106,13 +106,13 @@ input_string (WINDOW * win, int pos_y, int pos_x, size_t max_width,
       else if (!*toggle_case)
         mvwprintw (win, size_y - 2, 1, " %s", CSENSITIVE);
       break;
-    case 21:   /* ^u */
+    case 21:
       s[0] = '\0';
       pos = x = 0;
       break;
-    case 8:    /* xterm-256color */
+    case 8:
     case 127:
-    case KEY_BACKSPACE:
+    case 131:
       if (pos + x > 0) {
         memmove (&s[(pos + x) - 1], &s[pos + x], (max_width - (pos + x)) + 1);
         if (pos <= 0)
@@ -121,13 +121,13 @@ input_string (WINDOW * win, int pos_y, int pos_x, size_t max_width,
           pos--;
       }
       break;
-    case KEY_LEFT:
+    case 129:
       if (x > 0)
         x--;
       else if (pos > 0)
         pos--;
       break;
-    case KEY_RIGHT:
+    case 128:
       if ((x + pos) < strlen (s)) {
         if (x < size_x)
           x++;
@@ -137,7 +137,7 @@ input_string (WINDOW * win, int pos_y, int pos_x, size_t max_width,
       break;
     case 0x0a:
     case 0x0d:
-    case KEY_ENTER:
+    case 130:
       quit = 0;
       break;
     default:

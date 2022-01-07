@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  delivery_count; int /*<<< orphan*/  delivery_time; } ;
-typedef  TYPE_1__ streamNACK ;
-typedef  int /*<<< orphan*/  streamID ;
-struct TYPE_10__ {int /*<<< orphan*/  pel; } ;
-typedef  TYPE_2__ streamConsumer ;
-typedef  int /*<<< orphan*/  stream ;
-typedef  int /*<<< orphan*/  startkey ;
-struct TYPE_11__ {TYPE_1__* data; int /*<<< orphan*/  key; int /*<<< orphan*/  key_len; } ;
-typedef  TYPE_3__ raxIterator ;
-typedef  int /*<<< orphan*/  client ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STREAM_RWR_RAWENTRIES ; 
- int /*<<< orphan*/  addReplyArrayLen (int /*<<< orphan*/ *,int) ; 
- void* addReplyDeferredLen (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  addReplyNullArray (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  addReplyStreamID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mstime () ; 
- scalar_t__ raxNext (TYPE_3__*) ; 
- int /*<<< orphan*/  raxSeek (TYPE_3__*,char*,unsigned char*,int) ; 
- int /*<<< orphan*/  raxStart (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  raxStop (TYPE_3__*) ; 
- int /*<<< orphan*/  setDeferredArrayLen (int /*<<< orphan*/ *,void*,size_t) ; 
- int /*<<< orphan*/  streamDecodeID (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  streamEncodeID (unsigned char*,int /*<<< orphan*/ *) ; 
- scalar_t__ streamReplyWithRange (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int delivery_count; int delivery_time; } ;
+typedef TYPE_1__ streamNACK ;
+typedef int streamID ;
+struct TYPE_10__ {int pel; } ;
+typedef TYPE_2__ streamConsumer ;
+typedef int stream ;
+typedef int startkey ;
+struct TYPE_11__ {TYPE_1__* data; int key; int key_len; } ;
+typedef TYPE_3__ raxIterator ;
+typedef int client ;
+
+
+ int STREAM_RWR_RAWENTRIES ;
+ int addReplyArrayLen (int *,int) ;
+ void* addReplyDeferredLen (int *) ;
+ int addReplyNullArray (int *) ;
+ int addReplyStreamID (int *,int *) ;
+ scalar_t__ memcmp (int ,int *,int ) ;
+ int mstime () ;
+ scalar_t__ raxNext (TYPE_3__*) ;
+ int raxSeek (TYPE_3__*,char*,unsigned char*,int) ;
+ int raxStart (TYPE_3__*,int ) ;
+ int raxStop (TYPE_3__*) ;
+ int setDeferredArrayLen (int *,void*,size_t) ;
+ int streamDecodeID (int ,int *) ;
+ int streamEncodeID (unsigned char*,int *) ;
+ scalar_t__ streamReplyWithRange (int *,int *,int *,int *,int,int ,int *,int *,int ,int *) ;
 
 size_t streamReplyWithRangeFromConsumerPEL(client *c, stream *s, streamID *start, streamID *end, size_t count, streamConsumer *consumer) {
     raxIterator ri;
@@ -56,13 +56,13 @@ size_t streamReplyWithRangeFromConsumerPEL(client *c, stream *s, streamID *start
         if (end && memcmp(ri.key,end,ri.key_len) > 0) break;
         streamID thisid;
         streamDecodeID(ri.key,&thisid);
-        if (streamReplyWithRange(c,s,&thisid,&thisid,1,0,NULL,NULL,
-                                 STREAM_RWR_RAWENTRIES,NULL) == 0)
+        if (streamReplyWithRange(c,s,&thisid,&thisid,1,0,((void*)0),((void*)0),
+                                 STREAM_RWR_RAWENTRIES,((void*)0)) == 0)
         {
-            /* Note that we may have a not acknowledged entry in the PEL
-             * about a message that's no longer here because was removed
-             * by the user by other means. In that case we signal it emitting
-             * the ID but then a NULL entry for the fields. */
+
+
+
+
             addReplyArrayLen(c,2);
             streamID id;
             streamDecodeID(ri.key,&id);

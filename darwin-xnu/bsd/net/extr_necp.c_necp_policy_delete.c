@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct necp_session_policy {int /*<<< orphan*/ * route_rules; int /*<<< orphan*/ * conditions; int /*<<< orphan*/ * result; } ;
+
+
+
+
+struct necp_session_policy {int * route_rules; int * conditions; int * result; } ;
 struct necp_session {int dummy; } ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  FREE (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FREE_ZONE (struct necp_session_policy*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LIST_REMOVE (struct necp_session_policy*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOG_DEBUG ; 
- int /*<<< orphan*/  M_NECP ; 
- int /*<<< orphan*/  M_NECP_SESSION_POLICY ; 
- int /*<<< orphan*/  NECPLOG0 (int /*<<< orphan*/ ,char*) ; 
- int TRUE ; 
- int /*<<< orphan*/  chain ; 
- scalar_t__ necp_debug ; 
+
+ int FALSE ;
+ int FREE (int *,int ) ;
+ int FREE_ZONE (struct necp_session_policy*,int,int ) ;
+ int LIST_REMOVE (struct necp_session_policy*,int ) ;
+ int LOG_DEBUG ;
+ int M_NECP ;
+ int M_NECP_SESSION_POLICY ;
+ int NECPLOG0 (int ,char*) ;
+ int TRUE ;
+ int chain ;
+ scalar_t__ necp_debug ;
 
 __attribute__((used)) static bool
 necp_policy_delete(struct necp_session *session, struct necp_session_policy *policy)
 {
-	if (session == NULL || policy == NULL) {
-		return (FALSE);
-	}
+ if (session == ((void*)0) || policy == ((void*)0)) {
+  return (FALSE);
+ }
 
-	LIST_REMOVE(policy, chain);
+ LIST_REMOVE(policy, chain);
 
-	if (policy->result) {
-		FREE(policy->result, M_NECP);
-		policy->result = NULL;
-	}
+ if (policy->result) {
+  FREE(policy->result, M_NECP);
+  policy->result = ((void*)0);
+ }
 
-	if (policy->conditions) {
-		FREE(policy->conditions, M_NECP);
-		policy->conditions = NULL;
-	}
+ if (policy->conditions) {
+  FREE(policy->conditions, M_NECP);
+  policy->conditions = ((void*)0);
+ }
 
-	if (policy->route_rules) {
-		FREE(policy->route_rules, M_NECP);
-		policy->route_rules = NULL;
-	}
+ if (policy->route_rules) {
+  FREE(policy->route_rules, M_NECP);
+  policy->route_rules = ((void*)0);
+ }
 
-	FREE_ZONE(policy, sizeof(*policy), M_NECP_SESSION_POLICY);
+ FREE_ZONE(policy, sizeof(*policy), M_NECP_SESSION_POLICY);
 
-	if (necp_debug) {
-		NECPLOG0(LOG_DEBUG, "Removed NECP policy");
-	}
-	return (TRUE);
+ if (necp_debug) {
+  NECPLOG0(LOG_DEBUG, "Removed NECP policy");
+ }
+ return (TRUE);
 }

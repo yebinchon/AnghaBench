@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u16 ;
 struct ksz_device {TYPE_1__* dev_ops; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* get_port_addr ) (int,int) ;} ;
+struct TYPE_2__ {int (* get_port_addr ) (int,int) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ksz_read16 (struct ksz_device*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int,int) ; 
+
+ int ksz_read16 (struct ksz_device*,int ,int *) ;
+ int stub1 (int,int) ;
 
 __attribute__((used)) static inline void ksz_pread16(struct ksz_device *dev, int port, int offset,
-			       u16 *data)
+          u16 *data)
 {
-	ksz_read16(dev, dev->dev_ops->get_port_addr(port, offset), data);
+ ksz_read16(dev, dev->dev_ops->get_port_addr(port, offset), data);
 }

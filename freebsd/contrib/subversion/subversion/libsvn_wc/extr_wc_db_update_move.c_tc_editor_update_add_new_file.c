@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_checksum_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-struct TYPE_9__ {TYPE_1__* b; int /*<<< orphan*/  local_relpath; void* skip; } ;
-typedef  TYPE_2__ added_node_baton_t ;
-struct TYPE_10__ {int /*<<< orphan*/  abspath; } ;
-struct TYPE_8__ {int /*<<< orphan*/  db; TYPE_3__* wcroot; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- void* TRUE ; 
- int /*<<< orphan*/  mark_update_add_add_tree_conflict (TYPE_2__*,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_dirent_join (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_check_path (char const*,scalar_t__*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_file ; 
- scalar_t__ svn_node_none ; 
- int /*<<< orphan*/  svn_wc_conflict_reason_added ; 
- int /*<<< orphan*/  svn_wc_notify_state_inapplicable ; 
- int /*<<< orphan*/  svn_wc_notify_update_add ; 
- int /*<<< orphan*/  update_local_add_mark_parent_edited (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  update_local_add_notify_obstructed_or_missing (TYPE_2__*,scalar_t__,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  update_move_list_add (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef int svn_checksum_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+struct TYPE_9__ {TYPE_1__* b; int local_relpath; void* skip; } ;
+typedef TYPE_2__ added_node_baton_t ;
+struct TYPE_10__ {int abspath; } ;
+struct TYPE_8__ {int db; TYPE_3__* wcroot; } ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ void* TRUE ;
+ int mark_update_add_add_tree_conflict (TYPE_2__*,scalar_t__,scalar_t__,int ,int *,int *) ;
+ char* svn_dirent_join (int ,int ,int *) ;
+ int svn_io_check_path (char const*,scalar_t__*,int *) ;
+ scalar_t__ svn_node_file ;
+ scalar_t__ svn_node_none ;
+ int svn_wc_conflict_reason_added ;
+ int svn_wc_notify_state_inapplicable ;
+ int svn_wc_notify_update_add ;
+ int update_local_add_mark_parent_edited (TYPE_2__*,int *) ;
+ int update_local_add_notify_obstructed_or_missing (TYPE_2__*,scalar_t__,scalar_t__,int *) ;
+ int update_move_list_add (TYPE_3__*,int ,int ,int ,scalar_t__,int ,int ,int *,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 tc_editor_update_add_new_file(added_node_baton_t *nb,
@@ -64,8 +64,8 @@ tc_editor_update_add_new_file(added_node_baton_t *nb,
       nb->skip = TRUE;
       return SVN_NO_ERROR;
     }
-  
-  /* Check for obstructions. */
+
+
   local_abspath = svn_dirent_join(nb->b->wcroot->abspath, nb->local_relpath,
                                   scratch_pool);
   SVN_ERR(svn_io_check_path(local_abspath, &kind_on_disk, scratch_pool));
@@ -78,12 +78,12 @@ tc_editor_update_add_new_file(added_node_baton_t *nb,
       return SVN_NO_ERROR;
     }
 
-  /* Nothing else to do. Locally added files are an op-root in NODES. */
+
 
   SVN_ERR(update_move_list_add(nb->b->wcroot, nb->local_relpath, nb->b->db,
                                svn_wc_notify_update_add, svn_node_file,
                                svn_wc_notify_state_inapplicable,
                                svn_wc_notify_state_inapplicable,
-                               NULL, NULL, scratch_pool));
+                               ((void*)0), ((void*)0), scratch_pool));
   return SVN_NO_ERROR;
 }

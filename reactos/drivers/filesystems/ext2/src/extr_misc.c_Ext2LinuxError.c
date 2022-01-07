@@ -1,191 +1,138 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int NTSTATUS ;
 
-/* Variables and functions */
- int EACCES ; 
- int EADDRINUSE ; 
- int EADDRNOTAVAIL ; 
- int EAGAIN ; 
- int ECONNABORTED ; 
- int ECONNREFUSED ; 
- int ECONNRESET ; 
- int EFAULT ; 
- int EHOSTUNREACH ; 
- int EINTR ; 
- int EINVAL ; 
- int EIO ; 
- int EMSGSIZE ; 
- int ENETDOWN ; 
- int ENETUNREACH ; 
- int ENOBUFS ; 
- int ENOMEM ; 
- int ENOTCONN ; 
- int EOPNOTSUPP ; 
- int ESHUTDOWN ; 
- int ETIMEDOUT ; 
- int ETOOSMALL ; 
- scalar_t__ NT_SUCCESS (int) ; 
-#define  STATUS_ACCESS_DENIED 179 
-#define  STATUS_ACCESS_VIOLATION 178 
-#define  STATUS_ADDRESS_ALREADY_EXISTS 177 
-#define  STATUS_BAD_NETWORK_PATH 176 
-#define  STATUS_BUFFER_OVERFLOW 175 
-#define  STATUS_BUFFER_TOO_SMALL 174 
-#define  STATUS_CANCELLED 173 
-#define  STATUS_CANT_WAIT 172 
-#define  STATUS_COMMITMENT_LIMIT 171 
-#define  STATUS_CONFLICTING_ADDRESSES 170 
-#define  STATUS_CONNECTION_ABORTED 169 
-#define  STATUS_CONNECTION_DISCONNECTED 168 
-#define  STATUS_CONNECTION_REFUSED 167 
-#define  STATUS_CONNECTION_RESET 166 
-#define  STATUS_DEVICE_NOT_READY 165 
-#define  STATUS_HOST_UNREACHABLE 164 
-#define  STATUS_INSUFFICIENT_RESOURCES 163 
-#define  STATUS_INVALID_ADDRESS 162 
-#define  STATUS_INVALID_ADDRESS_COMPONENT 161 
-#define  STATUS_INVALID_BUFFER_SIZE 160 
-#define  STATUS_INVALID_CONNECTION 159 
-#define  STATUS_INVALID_NETWORK_RESPONSE 158 
-#define  STATUS_INVALID_PARAMETER 157 
-#define  STATUS_IO_TIMEOUT 156 
-#define  STATUS_LINK_FAILED 155 
-#define  STATUS_LINK_TIMEOUT 154 
-#define  STATUS_LOCAL_DISCONNECT 153 
-#define  STATUS_NETWORK_BUSY 152 
-#define  STATUS_NETWORK_UNREACHABLE 151 
-#define  STATUS_NOT_IMPLEMENTED 150 
-#define  STATUS_NOT_SUPPORTED 149 
-#define  STATUS_NO_MEMORY 148 
-#define  STATUS_NO_SUCH_DEVICE 147 
-#define  STATUS_NO_SUCH_FILE 146 
-#define  STATUS_OBJECT_NAME_NOT_FOUND 145 
-#define  STATUS_OBJECT_PATH_NOT_FOUND 144 
-#define  STATUS_PAGEFILE_QUOTA 143 
-#define  STATUS_PENDING 142 
-#define  STATUS_PIPE_DISCONNECTED 141 
-#define  STATUS_PORT_UNREACHABLE 140 
-#define  STATUS_PROTOCOL_UNREACHABLE 139 
-#define  STATUS_QUOTA_EXCEEDED 138 
-#define  STATUS_REMOTE_DISCONNECT 137 
-#define  STATUS_REMOTE_NOT_LISTENING 136 
-#define  STATUS_REMOTE_RESOURCES 135 
-#define  STATUS_REQUEST_ABORTED 134 
-#define  STATUS_TIMEOUT 133 
-#define  STATUS_TOO_MANY_ADDRESSES 132 
-#define  STATUS_TOO_MANY_PAGING_FILES 131 
-#define  STATUS_TRANSACTION_ABORTED 130 
-#define  STATUS_UNEXPECTED_NETWORK_ERROR 129 
-#define  STATUS_WORKING_SET_QUOTA 128 
 
+
+
+typedef int NTSTATUS ;
+
+
+ int EACCES ;
+ int EADDRINUSE ;
+ int EADDRNOTAVAIL ;
+ int EAGAIN ;
+ int ECONNABORTED ;
+ int ECONNREFUSED ;
+ int ECONNRESET ;
+ int EFAULT ;
+ int EHOSTUNREACH ;
+ int EINTR ;
+ int EINVAL ;
+ int EIO ;
+ int EMSGSIZE ;
+ int ENETDOWN ;
+ int ENETUNREACH ;
+ int ENOBUFS ;
+ int ENOMEM ;
+ int ENOTCONN ;
+ int EOPNOTSUPP ;
+ int ESHUTDOWN ;
+ int ETIMEDOUT ;
+ int ETOOSMALL ;
+ scalar_t__ NT_SUCCESS (int) ;
 int Ext2LinuxError (NTSTATUS Status)
 {
     switch (Status) {
-    case STATUS_ACCESS_DENIED:
+    case 179:
         return (-EACCES);
 
-    case STATUS_ACCESS_VIOLATION:
+    case 178:
         return (-EFAULT);
 
-    case STATUS_BUFFER_TOO_SMALL:
+    case 174:
         return (-ETOOSMALL);
 
-    case STATUS_INVALID_PARAMETER:
+    case 157:
         return (-EINVAL);
 
-    case STATUS_NOT_IMPLEMENTED:
-    case STATUS_NOT_SUPPORTED:
+    case 150:
+    case 149:
         return (-EOPNOTSUPP);
 
-    case STATUS_INVALID_ADDRESS:
-    case STATUS_INVALID_ADDRESS_COMPONENT:
+    case 162:
+    case 161:
         return (-EADDRNOTAVAIL);
 
-    case STATUS_NO_SUCH_DEVICE:
-    case STATUS_NO_SUCH_FILE:
-    case STATUS_OBJECT_NAME_NOT_FOUND:
-    case STATUS_OBJECT_PATH_NOT_FOUND:
-    case STATUS_NETWORK_BUSY:
-    case STATUS_INVALID_NETWORK_RESPONSE:
-    case STATUS_UNEXPECTED_NETWORK_ERROR:
+    case 147:
+    case 146:
+    case 145:
+    case 144:
+    case 152:
+    case 158:
+    case 129:
         return (-ENETDOWN);
 
-    case STATUS_BAD_NETWORK_PATH:
-    case STATUS_NETWORK_UNREACHABLE:
-    case STATUS_PROTOCOL_UNREACHABLE:
+    case 176:
+    case 151:
+    case 139:
         return (-ENETUNREACH);
 
-    case STATUS_LOCAL_DISCONNECT:
-    case STATUS_TRANSACTION_ABORTED:
-    case STATUS_CONNECTION_ABORTED:
+    case 153:
+    case 130:
+    case 169:
         return (-ECONNABORTED);
 
-    case STATUS_REMOTE_DISCONNECT:
-    case STATUS_LINK_FAILED:
-    case STATUS_CONNECTION_DISCONNECTED:
-    case STATUS_CONNECTION_RESET:
-    case STATUS_PORT_UNREACHABLE:
+    case 137:
+    case 155:
+    case 168:
+    case 166:
+    case 140:
         return (-ECONNRESET);
 
-    case STATUS_INSUFFICIENT_RESOURCES:
+    case 163:
         return (-ENOMEM);
 
-    case STATUS_PAGEFILE_QUOTA:
-    case STATUS_NO_MEMORY:
-    case STATUS_CONFLICTING_ADDRESSES:
-    case STATUS_QUOTA_EXCEEDED:
-    case STATUS_TOO_MANY_PAGING_FILES:
-    case STATUS_WORKING_SET_QUOTA:
-    case STATUS_COMMITMENT_LIMIT:
-    case STATUS_TOO_MANY_ADDRESSES:
-    case STATUS_REMOTE_RESOURCES:
+    case 143:
+    case 148:
+    case 170:
+    case 138:
+    case 131:
+    case 128:
+    case 171:
+    case 132:
+    case 135:
         return (-ENOBUFS);
 
-    case STATUS_INVALID_CONNECTION:
+    case 159:
         return (-ENOTCONN);
 
-    case STATUS_PIPE_DISCONNECTED:
+    case 141:
         return (-ESHUTDOWN);
 
-    case STATUS_TIMEOUT:
-    case STATUS_IO_TIMEOUT:
-    case STATUS_LINK_TIMEOUT:
+    case 133:
+    case 156:
+    case 154:
         return (-ETIMEDOUT);
 
-    case STATUS_REMOTE_NOT_LISTENING:
-    case STATUS_CONNECTION_REFUSED:
+    case 136:
+    case 167:
         return (-ECONNREFUSED);
 
-    case STATUS_HOST_UNREACHABLE:
+    case 164:
         return (-EHOSTUNREACH);
 
-    case STATUS_CANT_WAIT:
-    case STATUS_PENDING:
+    case 172:
+    case 142:
         return (-EAGAIN);
 
-    case STATUS_DEVICE_NOT_READY:
+    case 165:
         return (-EIO);
 
-    case STATUS_CANCELLED:
-    case STATUS_REQUEST_ABORTED:
+    case 173:
+    case 134:
         return (-EINTR);
 
-    case STATUS_BUFFER_OVERFLOW:
-    case STATUS_INVALID_BUFFER_SIZE:
+    case 175:
+    case 160:
         return (-EMSGSIZE);
 
-    case STATUS_ADDRESS_ALREADY_EXISTS:
+    case 177:
         return (-EADDRINUSE);
     }
 

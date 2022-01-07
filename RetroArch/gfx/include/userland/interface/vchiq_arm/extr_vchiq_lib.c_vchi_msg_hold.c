@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  int32_t ;
-struct TYPE_6__ {int peek_size; int /*<<< orphan*/ * peek_buf; } ;
-typedef  TYPE_1__ VCHI_SERVICE_T ;
-typedef  int /*<<< orphan*/  VCHI_SERVICE_HANDLE_T ;
-struct TYPE_7__ {int /*<<< orphan*/ * service; int /*<<< orphan*/ * message; } ;
-typedef  TYPE_2__ VCHI_HELD_MSG_T ;
-typedef  int /*<<< orphan*/  VCHI_FLAGS_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VCHIQ_ERROR ; 
- int fill_peek_buf (TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_1__* find_service_by_handle (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int int32_t ;
+struct TYPE_6__ {int peek_size; int * peek_buf; } ;
+typedef TYPE_1__ VCHI_SERVICE_T ;
+typedef int VCHI_SERVICE_HANDLE_T ;
+struct TYPE_7__ {int * service; int * message; } ;
+typedef TYPE_2__ VCHI_HELD_MSG_T ;
+typedef int VCHI_FLAGS_T ;
+
+
+ int VCHIQ_ERROR ;
+ int fill_peek_buf (TYPE_1__*,int ) ;
+ TYPE_1__* find_service_by_handle (int ) ;
 
 int32_t
 vchi_msg_hold( VCHI_SERVICE_HANDLE_T handle,
@@ -47,10 +47,10 @@ vchi_msg_hold( VCHI_SERVICE_HANDLE_T handle,
       *msg_size = service->peek_size;
 
       message_handle->message = service->peek_buf;
-      message_handle->service = NULL;
+      message_handle->service = ((void*)0);
 
       service->peek_size = -1;
-      service->peek_buf = NULL;
+      service->peek_buf = ((void*)0);
    }
 
    return 0;

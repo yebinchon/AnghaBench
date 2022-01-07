@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct StringHashTable {struct StringEntry** Table; } ;
-struct StringEntry {char* String; struct StringEntry* Next; int /*<<< orphan*/  Offset; } ;
-typedef  int /*<<< orphan*/  ULONG ;
+struct StringEntry {char* String; struct StringEntry* Next; int Offset; } ;
+typedef int ULONG ;
 
-/* Variables and functions */
- struct StringEntry* calloc (int,int) ; 
+
+ struct StringEntry* calloc (int,int) ;
 
 __attribute__((used)) static void
 AddStringToHash(struct StringHashTable *StringTable,

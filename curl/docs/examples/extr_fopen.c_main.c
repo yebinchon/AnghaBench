@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int /*<<< orphan*/  URL_FILE ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FGETSFILE ; 
- int /*<<< orphan*/  FREADFILE ; 
- int /*<<< orphan*/  REWINDFILE ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  fwrite (char*,int,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- size_t strlen (char*) ; 
- int /*<<< orphan*/  url_fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  url_feof (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  url_fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * url_fopen (char const*,char*) ; 
- size_t url_fread (char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  url_rewind (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int buffer ;
+typedef int URL_FILE ;
+typedef int FILE ;
+
+
+ int FGETSFILE ;
+ int FREADFILE ;
+ int REWINDFILE ;
+ int fclose (int *) ;
+ int * fopen (int ,char*) ;
+ int fwrite (char*,int,size_t,int *) ;
+ int perror (char*) ;
+ int printf (char*,...) ;
+ size_t strlen (char*) ;
+ int url_fclose (int *) ;
+ int url_feof (int *) ;
+ int url_fgets (char*,int,int *) ;
+ int * url_fopen (char const*,char*) ;
+ size_t url_fread (char*,int,int,int *) ;
+ int url_rewind (int *) ;
 
 int main(int argc, char *argv[])
 {
@@ -41,11 +41,11 @@ int main(int argc, char *argv[])
   const char *url;
 
   if(argc < 2)
-    url = "http://192.168.7.3/testfile";/* default to testurl */
+    url = "http://192.168.7.3/testfile";
   else
-    url = argv[1];/* use passed url */
+    url = argv[1];
 
-  /* copy from url line by line with fgets */
+
   outf = fopen(FGETSFILE, "wb+");
   if(!outf) {
     perror("couldn't open fgets output file\n");
@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
   fclose(outf);
 
 
-  /* Copy from url with fread */
+
   outf = fopen(FREADFILE, "wb+");
   if(!outf) {
     perror("couldn't open fread output file\n");
@@ -93,7 +93,7 @@ int main(int argc, char *argv[])
   fclose(outf);
 
 
-  /* Test rewind */
+
   outf = fopen(REWINDFILE, "wb+");
   if(!outf) {
     perror("couldn't open fread output file\n");
@@ -121,5 +121,5 @@ int main(int argc, char *argv[])
 
   fclose(outf);
 
-  return 0;/* all done */
+  return 0;
 }

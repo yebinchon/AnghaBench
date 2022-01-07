@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  windir ;
-typedef  scalar_t__ HRESULT ;
-typedef  char CHAR ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AADBE_ADD_ENTRY ; 
- int /*<<< orphan*/  AADBE_DEL_ENTRY ; 
- char* CURR_DIR ; 
- int /*<<< orphan*/  CreateDirectoryA (char*,int /*<<< orphan*/ *) ; 
- int DeleteFileA (char*) ; 
- int FALSE ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_NORMAL ; 
- scalar_t__ GetFileAttributesA (char*) ; 
- int /*<<< orphan*/  GetWindowsDirectoryA (char*,int) ; 
- scalar_t__ INVALID_FILE_ATTRIBUTES ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  RemoveDirectoryA (char*) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SetFileAttributesA (char*,int /*<<< orphan*/ ) ; 
- int TRUE ; 
- scalar_t__ broken (int) ; 
- int check_ini_file_attr (char*) ; 
- int /*<<< orphan*/  lstrcatA (char*,char*) ; 
- int /*<<< orphan*/  lstrcpyA (char*,char*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ pAddDelBackupEntry (char*,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int windir ;
+typedef scalar_t__ HRESULT ;
+typedef char CHAR ;
+typedef int BOOL ;
+
+
+ int AADBE_ADD_ENTRY ;
+ int AADBE_DEL_ENTRY ;
+ char* CURR_DIR ;
+ int CreateDirectoryA (char*,int *) ;
+ int DeleteFileA (char*) ;
+ int FALSE ;
+ int FILE_ATTRIBUTE_NORMAL ;
+ scalar_t__ GetFileAttributesA (char*) ;
+ int GetWindowsDirectoryA (char*,int) ;
+ scalar_t__ INVALID_FILE_ATTRIBUTES ;
+ int MAX_PATH ;
+ int RemoveDirectoryA (char*) ;
+ scalar_t__ S_OK ;
+ int SetFileAttributesA (char*,int ) ;
+ int TRUE ;
+ scalar_t__ broken (int) ;
+ int check_ini_file_attr (char*) ;
+ int lstrcatA (char*,char*) ;
+ int lstrcpyA (char*,char*) ;
+ int ok (int,char*,...) ;
+ scalar_t__ pAddDelBackupEntry (char*,char*,char*,int ) ;
+ int sprintf (char*,char*,char*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_AddDelBackupEntry(void)
 {
@@ -50,17 +50,17 @@ __attribute__((used)) static void test_AddDelBackupEntry(void)
     lstrcpyA(path, CURR_DIR);
     lstrcatA(path, "\\backup\\basename.INI");
 
-    /* native AddDelBackupEntry crashes if lpcszBaseName is NULL */
 
-    /* try a NULL file list */
-    res = pAddDelBackupEntry(NULL, "backup", "basename", AADBE_ADD_ENTRY);
+
+
+    res = pAddDelBackupEntry(((void*)0), "backup", "basename", AADBE_ADD_ENTRY);
     ok(res == S_OK, "Expected S_OK, got %d\n", res);
     ok(!DeleteFileA(path), "Expected path to not exist\n");
 
     lstrcpyA(path, CURR_DIR);
     lstrcatA(path, "\\backup\\.INI");
 
-    /* try an empty base name */
+
     res = pAddDelBackupEntry("one\0two\0three\0", "backup", "", AADBE_ADD_ENTRY);
     ok(res == S_OK, "Expected S_OK, got %d\n", res);
     ok(!DeleteFileA(path), "Expected path to not exist\n");
@@ -68,14 +68,14 @@ __attribute__((used)) static void test_AddDelBackupEntry(void)
     lstrcpyA(path, CURR_DIR);
     lstrcatA(path, "\\basename.INI");
 
-    /* try an invalid flag */
-    res = pAddDelBackupEntry("one\0two\0three\0", NULL, "basename", 0);
+
+    res = pAddDelBackupEntry("one\0two\0three\0", ((void*)0), "basename", 0);
     ok(res == S_OK, "Expected S_OK, got %d\n", res);
     ok(!DeleteFileA(path), "Expected path to not exist\n");
 
     lstrcpyA(path, "c:\\basename.INI");
 
-    /* create the INF file */
+
     res = pAddDelBackupEntry("one\0two\0three\0", "c:\\", "basename", AADBE_ADD_ENTRY);
     ok(res == S_OK, "Expected S_OK, got %d\n", res);
     if (GetFileAttributesA(path) != INVALID_FILE_ATTRIBUTES)
@@ -89,15 +89,15 @@ __attribute__((used)) static void test_AddDelBackupEntry(void)
     lstrcpyA(path, CURR_DIR);
     lstrcatA(path, "\\backup\\basename.INI");
 
-    /* try to create the INI file in a nonexistent directory */
+
     RemoveDirectoryA("backup");
     res = pAddDelBackupEntry("one\0two\0three\0", "backup", "basename", AADBE_ADD_ENTRY);
     ok(res == S_OK, "Expected S_OK, got %d\n", res);
     ok(!check_ini_file_attr(path), "Expected ini file to not be hidden\n");
     ok(!DeleteFileA(path), "Expected path to not exist\n");
 
-    /* try an existent, relative backup directory */
-    CreateDirectoryA("backup", NULL);
+
+    CreateDirectoryA("backup", ((void*)0));
     res = pAddDelBackupEntry("one\0two\0three\0", "backup", "basename", AADBE_ADD_ENTRY);
     ok(res == S_OK, "Expected S_OK, got %d\n", res);
     ok(check_ini_file_attr(path), "Expected ini file to be hidden\n");
@@ -107,17 +107,17 @@ __attribute__((used)) static void test_AddDelBackupEntry(void)
     GetWindowsDirectoryA(windir, sizeof(windir));
     sprintf(path, "%s\\basename.INI", windir);
 
-    /* try a NULL backup dir, INI is created in the windows directory */
-    res = pAddDelBackupEntry("one\0two\0three\0", NULL, "basename", AADBE_ADD_ENTRY);
+
+    res = pAddDelBackupEntry("one\0two\0three\0", ((void*)0), "basename", AADBE_ADD_ENTRY);
     ok(res == S_OK, "Expected S_OK, got %d\n", res);
 
-    /* remove the entries with AADBE_DEL_ENTRY */
+
     SetFileAttributesA(path, FILE_ATTRIBUTE_NORMAL);
-    res = pAddDelBackupEntry("one\0three\0", NULL, "basename", AADBE_DEL_ENTRY);
+    res = pAddDelBackupEntry("one\0three\0", ((void*)0), "basename", AADBE_DEL_ENTRY);
     SetFileAttributesA(path, FILE_ATTRIBUTE_NORMAL);
     ok(res == S_OK, "Expected S_OK, got %d\n", res);
     ret = DeleteFileA(path);
     ok(ret == TRUE ||
-       broken(ret == FALSE), /* win98 */
+       broken(ret == FALSE),
        "Expected path to exist\n");
 }

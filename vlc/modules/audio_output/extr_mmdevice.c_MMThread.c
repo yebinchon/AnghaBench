@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_2__* sys; } ;
-typedef  TYPE_1__ audio_output_t ;
-struct TYPE_7__ {int /*<<< orphan*/  device_events; int /*<<< orphan*/  lock; int /*<<< orphan*/  work; int /*<<< orphan*/ * requested_device; int /*<<< orphan*/ * it; } ;
-typedef  TYPE_2__ aout_sys_t ;
-typedef  int /*<<< orphan*/  IMMDeviceEnumerator ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ audio_output_t ;
+struct TYPE_7__ {int device_events; int lock; int work; int * requested_device; int * it; } ;
+typedef TYPE_2__ aout_sys_t ;
+typedef int IMMDeviceEnumerator ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DevicesEnum (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EnterMTA () ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IMMDeviceEnumerator_RegisterEndpointNotificationCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMMDeviceEnumerator_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMMDeviceEnumerator_UnregisterEndpointNotificationCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LeaveMTA () ; 
- int /*<<< orphan*/  MMSession (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MMThread_DevicesEnum_Added ; 
- int /*<<< orphan*/  SleepConditionVariableCS (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
+
+ int DevicesEnum (int *,int ,TYPE_1__*) ;
+ int EnterCriticalSection (int *) ;
+ int EnterMTA () ;
+ scalar_t__ FAILED (int ) ;
+ int IMMDeviceEnumerator_RegisterEndpointNotificationCallback (int *,int *) ;
+ int IMMDeviceEnumerator_Release (int *) ;
+ int IMMDeviceEnumerator_UnregisterEndpointNotificationCallback (int *,int *) ;
+ int INFINITE ;
+ int LeaveCriticalSection (int *) ;
+ int LeaveMTA () ;
+ int MMSession (TYPE_1__*,int *) ;
+ int MMThread_DevicesEnum_Added ;
+ int SleepConditionVariableCS (int *,int *,int ) ;
+ int msg_Warn (TYPE_1__*,char*,int ) ;
 
 __attribute__((used)) static void *MMThread(void *data)
 {
@@ -51,9 +51,9 @@ __attribute__((used)) static void *MMThread(void *data)
     EnterCriticalSection(&sys->lock);
 
     do
-        if (sys->requested_device == NULL || FAILED(MMSession(aout, it)))
+        if (sys->requested_device == ((void*)0) || FAILED(MMSession(aout, it)))
             SleepConditionVariableCS(&sys->work, &sys->lock, INFINITE);
-    while (sys->it != NULL);
+    while (sys->it != ((void*)0));
 
     LeaveCriticalSection(&sys->lock);
 
@@ -61,5 +61,5 @@ __attribute__((used)) static void *MMThread(void *data)
                                                           &sys->device_events);
     IMMDeviceEnumerator_Release(it);
     LeaveMTA();
-    return NULL;
+    return ((void*)0);
 }

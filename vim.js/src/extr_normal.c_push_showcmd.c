@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  STRCPY (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  old_showcmd_buf ; 
- scalar_t__ p_sc ; 
- int /*<<< orphan*/  showcmd_buf ; 
+ int STRCPY (int ,int ) ;
+ int old_showcmd_buf ;
+ scalar_t__ p_sc ;
+ int showcmd_buf ;
 
 void
 push_showcmd()
 {
     if (p_sc)
-	STRCPY(old_showcmd_buf, showcmd_buf);
+ STRCPY(old_showcmd_buf, showcmd_buf);
 }

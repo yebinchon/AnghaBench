@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lev_pmemcached_incr_tiny {scalar_t__ type; int /*<<< orphan*/  key_len; int /*<<< orphan*/  key; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cache_load (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int pmemcached_incr_current (char) ; 
+
+
+
+struct lev_pmemcached_incr_tiny {scalar_t__ type; int key_len; int key; } ;
+
+
+ int cache_load (int ,int ,int ) ;
+ int pmemcached_incr_current (char) ;
 
 int pmemcached_incr_tiny (struct lev_pmemcached_incr_tiny *E) {
   cache_load (E->key, E->key_len, 0);

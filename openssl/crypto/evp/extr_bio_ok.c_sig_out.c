@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int buf_len; int blockout; scalar_t__ sigio; int /*<<< orphan*/ * buf; int /*<<< orphan*/ * md; } ;
-typedef  int /*<<< orphan*/  EVP_MD_CTX ;
-typedef  int /*<<< orphan*/  EVP_MD ;
-typedef  TYPE_1__ BIO_OK_CTX ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_clear_retry_flags (int /*<<< orphan*/ *) ; 
- TYPE_1__* BIO_get_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_DigestFinal_ex (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_DigestInit_ex (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_DigestUpdate (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * EVP_MD_CTX_md (int /*<<< orphan*/ *) ; 
- void* EVP_MD_CTX_md_data (int /*<<< orphan*/ *) ; 
- int EVP_MD_size (int /*<<< orphan*/  const*) ; 
- int OK_BLOCK_SIZE ; 
- scalar_t__ RAND_bytes (void*,int) ; 
- int /*<<< orphan*/  WELLKNOWN ; 
- int /*<<< orphan*/  longswap (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,void*,int) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int buf_len; int blockout; scalar_t__ sigio; int * buf; int * md; } ;
+typedef int EVP_MD_CTX ;
+typedef int EVP_MD ;
+typedef TYPE_1__ BIO_OK_CTX ;
+typedef int BIO ;
+
+
+ int BIO_clear_retry_flags (int *) ;
+ TYPE_1__* BIO_get_data (int *) ;
+ int EVP_DigestFinal_ex (int *,int *,int *) ;
+ int EVP_DigestInit_ex (int *,int const*,int *) ;
+ int EVP_DigestUpdate (int *,int ,int ) ;
+ int * EVP_MD_CTX_md (int *) ;
+ void* EVP_MD_CTX_md_data (int *) ;
+ int EVP_MD_size (int const*) ;
+ int OK_BLOCK_SIZE ;
+ scalar_t__ RAND_bytes (void*,int) ;
+ int WELLKNOWN ;
+ int longswap (int *,int) ;
+ int memcpy (int *,void*,int) ;
+ int strlen (int ) ;
 
 __attribute__((used)) static int sig_out(BIO *b)
 {
@@ -50,12 +50,12 @@ __attribute__((used)) static int sig_out(BIO *b)
     if (ctx->buf_len + 2 * md_size > OK_BLOCK_SIZE)
         return 1;
 
-    if (!EVP_DigestInit_ex(md, digest, NULL))
+    if (!EVP_DigestInit_ex(md, digest, ((void*)0)))
         goto berr;
-    /*
-     * FIXME: there's absolutely no guarantee this makes any sense at all,
-     * particularly now EVP_MD_CTX has been restructured.
-     */
+
+
+
+
     if (RAND_bytes(md_data, md_size) <= 0)
         goto berr;
     memcpy(&(ctx->buf[ctx->buf_len]), md_data, md_size);
@@ -64,7 +64,7 @@ __attribute__((used)) static int sig_out(BIO *b)
 
     if (!EVP_DigestUpdate(md, WELLKNOWN, strlen(WELLKNOWN)))
         goto berr;
-    if (!EVP_DigestFinal_ex(md, &(ctx->buf[ctx->buf_len]), NULL))
+    if (!EVP_DigestFinal_ex(md, &(ctx->buf[ctx->buf_len]), ((void*)0)))
         goto berr;
     ctx->buf_len += md_size;
     ctx->blockout = 1;

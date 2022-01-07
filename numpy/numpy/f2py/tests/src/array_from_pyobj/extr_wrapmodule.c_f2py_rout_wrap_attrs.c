@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  alignment; int /*<<< orphan*/  type; int /*<<< orphan*/  kind; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyArg_ParseTuple (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * PyArray_BASE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_DATA (int /*<<< orphan*/ *) ; 
- TYPE_1__* PyArray_DESCR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_DIM (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  PyArray_FLAGS (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_ITEMSIZE (int /*<<< orphan*/ *) ; 
- int PyArray_NDIM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_STRIDE (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  PyArray_TYPE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_Type ; 
- int /*<<< orphan*/  PyInt_FromLong (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * PyTuple_New (int) ; 
- int /*<<< orphan*/  PyTuple_SetItem (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * Py_BuildValue (char*,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * Py_None ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int alignment; int type; int kind; } ;
+typedef int PyObject ;
+typedef int PyArrayObject ;
+
+
+ int PyArg_ParseTuple (int *,char*,int *,int **) ;
+ int * PyArray_BASE (int *) ;
+ int PyArray_DATA (int *) ;
+ TYPE_1__* PyArray_DESCR (int *) ;
+ int PyArray_DIM (int *,int) ;
+ int PyArray_FLAGS (int *) ;
+ int PyArray_ITEMSIZE (int *) ;
+ int PyArray_NDIM (int *) ;
+ int PyArray_STRIDE (int *,int) ;
+ int PyArray_TYPE (int *) ;
+ int PyArray_Type ;
+ int PyInt_FromLong (int ) ;
+ int * PyTuple_New (int) ;
+ int PyTuple_SetItem (int *,int,int ) ;
+ int * Py_BuildValue (char*,char*,int,int *,int *,int *,int ,int ,int ,int ,int ,int ,int ) ;
+ int * Py_None ;
+ int memset (char*,int ,int) ;
+ int sprintf (char*,char*,int ) ;
 
 __attribute__((used)) static PyObject *f2py_rout_wrap_attrs(PyObject *capi_self,
                                       PyObject *capi_args) {
   PyObject *arr_capi = Py_None;
-  PyArrayObject *arr = NULL;
-  PyObject *dimensions = NULL;
-  PyObject *strides = NULL;
+  PyArrayObject *arr = ((void*)0);
+  PyObject *dimensions = ((void*)0);
+  PyObject *strides = ((void*)0);
   char s[100];
   int i;
   memset(s,0,100*sizeof(char));
   if (!PyArg_ParseTuple(capi_args,"O!|:wrap.attrs",
                         &PyArray_Type,&arr_capi))
-    return NULL;
+    return ((void*)0);
   arr = (PyArrayObject *)arr_capi;
   sprintf(s,"%p",PyArray_DATA(arr));
   dimensions = PyTuple_New(PyArray_NDIM(arr));
@@ -57,7 +57,7 @@ __attribute__((used)) static PyObject *f2py_rout_wrap_attrs(PyObject *capi_self,
   }
   return Py_BuildValue("siNNO(cciii)ii",s,PyArray_NDIM(arr),
                        dimensions,strides,
-                       (PyArray_BASE(arr)==NULL?Py_None:PyArray_BASE(arr)),
+                       (PyArray_BASE(arr)==((void*)0)?Py_None:PyArray_BASE(arr)),
                        PyArray_DESCR(arr)->kind,
                        PyArray_DESCR(arr)->type,
                        PyArray_TYPE(arr),

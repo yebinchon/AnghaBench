@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct platform_device {int /*<<< orphan*/  dev; } ;
-struct fsl_usb2_platform_data {int /*<<< orphan*/  (* exit ) (struct platform_device*) ;} ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct platform_device {int dev; } ;
+struct fsl_usb2_platform_data {int (* exit ) (struct platform_device*) ;} ;
 struct TYPE_5__ {TYPE_2__* otg; } ;
-struct TYPE_6__ {TYPE_1__ phy; int /*<<< orphan*/  irq; } ;
+struct TYPE_6__ {TYPE_1__ phy; int irq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FSL_OTG_MAJOR ; 
- int /*<<< orphan*/  FSL_OTG_NAME ; 
- struct fsl_usb2_platform_data* dev_get_platdata (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_irq (int /*<<< orphan*/ ,TYPE_2__*) ; 
- TYPE_2__* fsl_otg_dev ; 
- int /*<<< orphan*/  fsl_otg_uninit_timers () ; 
- int /*<<< orphan*/  iounmap (void*) ; 
- int /*<<< orphan*/  kfree (TYPE_2__*) ; 
- int /*<<< orphan*/  stub1 (struct platform_device*) ; 
- int /*<<< orphan*/  unregister_chrdev (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ usb_dr_regs ; 
- int /*<<< orphan*/  usb_remove_phy (TYPE_1__*) ; 
+
+ int FSL_OTG_MAJOR ;
+ int FSL_OTG_NAME ;
+ struct fsl_usb2_platform_data* dev_get_platdata (int *) ;
+ int free_irq (int ,TYPE_2__*) ;
+ TYPE_2__* fsl_otg_dev ;
+ int fsl_otg_uninit_timers () ;
+ int iounmap (void*) ;
+ int kfree (TYPE_2__*) ;
+ int stub1 (struct platform_device*) ;
+ int unregister_chrdev (int ,int ) ;
+ scalar_t__ usb_dr_regs ;
+ int usb_remove_phy (TYPE_1__*) ;
 
 __attribute__((used)) static int fsl_otg_remove(struct platform_device *pdev)
 {
-	struct fsl_usb2_platform_data *pdata = dev_get_platdata(&pdev->dev);
+ struct fsl_usb2_platform_data *pdata = dev_get_platdata(&pdev->dev);
 
-	usb_remove_phy(&fsl_otg_dev->phy);
-	free_irq(fsl_otg_dev->irq, fsl_otg_dev);
+ usb_remove_phy(&fsl_otg_dev->phy);
+ free_irq(fsl_otg_dev->irq, fsl_otg_dev);
 
-	iounmap((void *)usb_dr_regs);
+ iounmap((void *)usb_dr_regs);
 
-	fsl_otg_uninit_timers();
-	kfree(fsl_otg_dev->phy.otg);
-	kfree(fsl_otg_dev);
+ fsl_otg_uninit_timers();
+ kfree(fsl_otg_dev->phy.otg);
+ kfree(fsl_otg_dev);
 
-	unregister_chrdev(FSL_OTG_MAJOR, FSL_OTG_NAME);
+ unregister_chrdev(FSL_OTG_MAJOR, FSL_OTG_NAME);
 
-	if (pdata->exit)
-		pdata->exit(pdev);
+ if (pdata->exit)
+  pdata->exit(pdev);
 
-	return 0;
+ return 0;
 }

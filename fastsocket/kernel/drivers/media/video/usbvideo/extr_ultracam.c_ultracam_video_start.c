@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct uvd {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ultracam_reinit_iso (struct uvd*,int /*<<< orphan*/ ) ; 
+
+ int ultracam_reinit_iso (struct uvd*,int ) ;
 
 __attribute__((used)) static void ultracam_video_start(struct uvd *uvd)
 {
-	ultracam_reinit_iso(uvd, 0);
+ ultracam_reinit_iso(uvd, 0);
 }

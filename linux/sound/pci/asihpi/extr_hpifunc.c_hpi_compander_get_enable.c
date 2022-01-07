@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  u16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HPI_GENERIC_ENABLE ; 
- int /*<<< orphan*/  hpi_control_param1_get (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int u32 ;
+typedef int u16 ;
+
+
+ int HPI_GENERIC_ENABLE ;
+ int hpi_control_param1_get (int ,int ,int *) ;
 
 u16 hpi_compander_get_enable(u32 h_control, u32 *enable)
 {
-	return hpi_control_param1_get(h_control, HPI_GENERIC_ENABLE, enable);
+ return hpi_control_param1_get(h_control, HPI_GENERIC_ENABLE, enable);
 }

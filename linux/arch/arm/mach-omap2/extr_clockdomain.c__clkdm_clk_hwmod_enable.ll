@@ -1,0 +1,117 @@
+; ModuleID = '/home/carl/AnghaBench/linux/arch/arm/mach-omap2/extr_clockdomain.c__clkdm_clk_hwmod_enable.c'
+source_filename = "/home/carl/AnghaBench/linux/arch/arm/mach-omap2/extr_clockdomain.c__clkdm_clk_hwmod_enable.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.TYPE_4__ = type { i32 (%struct.clockdomain*)* }
+%struct.clockdomain = type { i32, i32, %struct.TYPE_3__ }
+%struct.TYPE_3__ = type { i32 }
+
+@arch_clkdm = common dso_local global %struct.TYPE_4__* null, align 8
+@EINVAL = common dso_local global i32 0, align 4
+@autodeps = common dso_local global i64 0, align 8
+@.str = private unnamed_addr constant [26 x i8] c"clockdomain: %s: enabled\0A\00", align 1
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.clockdomain*)* @_clkdm_clk_hwmod_enable to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @_clkdm_clk_hwmod_enable(%struct.clockdomain* %0) #0 {
+  %2 = alloca i32, align 4
+  %3 = alloca %struct.clockdomain*, align 8
+  store %struct.clockdomain* %0, %struct.clockdomain** %3, align 8
+  %4 = load %struct.clockdomain*, %struct.clockdomain** %3, align 8
+  %5 = icmp ne %struct.clockdomain* %4, null
+  br i1 %5, label %6, label %14
+
+6:                                                ; preds = %1
+  %7 = load %struct.TYPE_4__*, %struct.TYPE_4__** @arch_clkdm, align 8
+  %8 = icmp ne %struct.TYPE_4__* %7, null
+  br i1 %8, label %9, label %14
+
+9:                                                ; preds = %6
+  %10 = load %struct.TYPE_4__*, %struct.TYPE_4__** @arch_clkdm, align 8
+  %11 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %10, i32 0, i32 0
+  %12 = load i32 (%struct.clockdomain*)*, i32 (%struct.clockdomain*)** %11, align 8
+  %13 = icmp ne i32 (%struct.clockdomain*)* %12, null
+  br i1 %13, label %17, label %14
+
+14:                                               ; preds = %9, %6, %1
+  %15 = load i32, i32* @EINVAL, align 4
+  %16 = sub nsw i32 0, %15
+  store i32 %16, i32* %2, align 4
+  br label %60
+
+17:                                               ; preds = %9
+  %18 = load %struct.clockdomain*, %struct.clockdomain** %3, align 8
+  %19 = getelementptr inbounds %struct.clockdomain, %struct.clockdomain* %18, i32 0, i32 2
+  %20 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %19, i32 0, i32 0
+  %21 = load i32, i32* %20, align 4
+  %22 = call i32 @pwrdm_lock(i32 %21)
+  %23 = load %struct.clockdomain*, %struct.clockdomain** %3, align 8
+  %24 = getelementptr inbounds %struct.clockdomain, %struct.clockdomain* %23, i32 0, i32 0
+  %25 = load i32, i32* %24, align 4
+  %26 = add nsw i32 %25, 1
+  store i32 %26, i32* %24, align 4
+  %27 = load %struct.clockdomain*, %struct.clockdomain** %3, align 8
+  %28 = getelementptr inbounds %struct.clockdomain, %struct.clockdomain* %27, i32 0, i32 0
+  %29 = load i32, i32* %28, align 4
+  %30 = icmp sgt i32 %29, 1
+  br i1 %30, label %31, label %40
+
+31:                                               ; preds = %17
+  %32 = load i64, i64* @autodeps, align 8
+  %33 = icmp ne i64 %32, 0
+  br i1 %33, label %34, label %40
+
+34:                                               ; preds = %31
+  %35 = load %struct.clockdomain*, %struct.clockdomain** %3, align 8
+  %36 = getelementptr inbounds %struct.clockdomain, %struct.clockdomain* %35, i32 0, i32 2
+  %37 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %36, i32 0, i32 0
+  %38 = load i32, i32* %37, align 4
+  %39 = call i32 @pwrdm_unlock(i32 %38)
+  store i32 0, i32* %2, align 4
+  br label %60
+
+40:                                               ; preds = %31, %17
+  %41 = load %struct.TYPE_4__*, %struct.TYPE_4__** @arch_clkdm, align 8
+  %42 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %41, i32 0, i32 0
+  %43 = load i32 (%struct.clockdomain*)*, i32 (%struct.clockdomain*)** %42, align 8
+  %44 = load %struct.clockdomain*, %struct.clockdomain** %3, align 8
+  %45 = call i32 %43(%struct.clockdomain* %44)
+  %46 = load %struct.clockdomain*, %struct.clockdomain** %3, align 8
+  %47 = getelementptr inbounds %struct.clockdomain, %struct.clockdomain* %46, i32 0, i32 2
+  %48 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %47, i32 0, i32 0
+  %49 = load i32, i32* %48, align 4
+  %50 = call i32 @pwrdm_state_switch_nolock(i32 %49)
+  %51 = load %struct.clockdomain*, %struct.clockdomain** %3, align 8
+  %52 = getelementptr inbounds %struct.clockdomain, %struct.clockdomain* %51, i32 0, i32 2
+  %53 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %52, i32 0, i32 0
+  %54 = load i32, i32* %53, align 4
+  %55 = call i32 @pwrdm_unlock(i32 %54)
+  %56 = load %struct.clockdomain*, %struct.clockdomain** %3, align 8
+  %57 = getelementptr inbounds %struct.clockdomain, %struct.clockdomain* %56, i32 0, i32 1
+  %58 = load i32, i32* %57, align 4
+  %59 = call i32 @pr_debug(i8* getelementptr inbounds ([26 x i8], [26 x i8]* @.str, i64 0, i64 0), i32 %58)
+  store i32 0, i32* %2, align 4
+  br label %60
+
+60:                                               ; preds = %40, %34, %14
+  %61 = load i32, i32* %2, align 4
+  ret i32 %61
+}
+
+declare dso_local i32 @pwrdm_lock(i32) #1
+
+declare dso_local i32 @pwrdm_unlock(i32) #1
+
+declare dso_local i32 @pwrdm_state_switch_nolock(i32) #1
+
+declare dso_local i32 @pr_debug(i8*, i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

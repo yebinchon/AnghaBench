@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ NTSTATUS ;
 
-/* Variables and functions */
- scalar_t__ STATUS_SUCCESS ; 
- scalar_t__ STATUS_UNSUCCESSFUL ; 
- int /*<<< orphan*/  memcmp (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- scalar_t__ pSystemFunction001 (unsigned char*,unsigned char*,unsigned char*) ; 
+
+
+
+typedef scalar_t__ NTSTATUS ;
+
+
+ scalar_t__ STATUS_SUCCESS ;
+ scalar_t__ STATUS_UNSUCCESSFUL ;
+ int memcmp (unsigned char*,unsigned char*,int) ;
+ int memset (unsigned char*,int ,int) ;
+ int ok (int,char*) ;
+ scalar_t__ pSystemFunction001 (unsigned char*,unsigned char*,unsigned char*) ;
 
 __attribute__((used)) static void test_SystemFunction001(void)
 {

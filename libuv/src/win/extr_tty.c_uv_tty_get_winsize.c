@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  handle; } ;
-typedef  TYPE_1__ uv_tty_t ;
-typedef  int /*<<< orphan*/  CONSOLE_SCREEN_BUFFER_INFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetConsoleScreenBufferInfo (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  uv_sem_post (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_sem_wait (int /*<<< orphan*/ *) ; 
- int uv_translate_sys_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv_tty_output_lock ; 
- int /*<<< orphan*/  uv_tty_update_virtual_window (int /*<<< orphan*/ *) ; 
- int uv_tty_virtual_height ; 
- int uv_tty_virtual_width ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int handle; } ;
+typedef TYPE_1__ uv_tty_t ;
+typedef int CONSOLE_SCREEN_BUFFER_INFO ;
+
+
+ int GetConsoleScreenBufferInfo (int ,int *) ;
+ int GetLastError () ;
+ int uv_sem_post (int *) ;
+ int uv_sem_wait (int *) ;
+ int uv_translate_sys_error (int ) ;
+ int uv_tty_output_lock ;
+ int uv_tty_update_virtual_window (int *) ;
+ int uv_tty_virtual_height ;
+ int uv_tty_virtual_width ;
 
 int uv_tty_get_winsize(uv_tty_t* tty, int* width, int* height) {
   CONSOLE_SCREEN_BUFFER_INFO info;

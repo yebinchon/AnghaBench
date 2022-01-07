@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ vlc_fourcc_t ;
 
-/* Variables and functions */
-#define  AUDIO_ES 130 
- scalar_t__ LookupAudio (scalar_t__,char const**) ; 
- scalar_t__ LookupSpu (scalar_t__,char const**) ; 
- scalar_t__ LookupVideo (scalar_t__,char const**) ; 
-#define  SPU_ES 129 
-#define  VIDEO_ES 128 
+
+
+
+typedef scalar_t__ vlc_fourcc_t ;
+
+
+
+ scalar_t__ LookupAudio (scalar_t__,char const**) ;
+ scalar_t__ LookupSpu (scalar_t__,char const**) ;
+ scalar_t__ LookupVideo (scalar_t__,char const**) ;
+
+
 
 __attribute__((used)) static vlc_fourcc_t LookupCat(vlc_fourcc_t fourcc, const char **restrict dsc,
                               int cat)
 {
     switch (cat)
     {
-        case VIDEO_ES:
+        case 128:
             return LookupVideo(fourcc, dsc);
-        case AUDIO_ES:
+        case 130:
             return LookupAudio(fourcc, dsc);
-        case SPU_ES:
+        case 129:
             return LookupSpu(fourcc, dsc);
     }
 

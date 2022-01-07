@@ -1,85 +1,85 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-struct TYPE_7__ {char* (* ReadPassword ) (TYPE_1__*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* Write ) (TYPE_1__*,int /*<<< orphan*/ ) ;} ;
-typedef  int /*<<< orphan*/  K ;
-typedef  TYPE_1__ CONSOLE ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BufToK (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  Free (char*) ; 
- int /*<<< orphan*/  FreeBuf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IsBase64 (int /*<<< orphan*/ *) ; 
- int IsEncryptedK (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * ReadDumpW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _UU (char*) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (TYPE_1__*,int /*<<< orphan*/ ) ; 
- char* stub3 (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+struct TYPE_7__ {char* (* ReadPassword ) (TYPE_1__*,int ) ;int (* Write ) (TYPE_1__*,int ) ;} ;
+typedef int K ;
+typedef TYPE_1__ CONSOLE ;
+typedef int BUF ;
+
+
+ int * BufToK (int *,int,int ,char*) ;
+ int Free (char*) ;
+ int FreeBuf (int *) ;
+ int IsBase64 (int *) ;
+ int IsEncryptedK (int *,int) ;
+ int * ReadDumpW (int *) ;
+ int _UU (char*) ;
+ int stub1 (TYPE_1__*,int ) ;
+ int stub2 (TYPE_1__*,int ) ;
+ char* stub3 (TYPE_1__*,int ) ;
+ int stub4 (TYPE_1__*,int ) ;
 
 K *CmdLoadKey(CONSOLE *c, wchar_t *filename)
 {
-	BUF *b;
-	// Validate arguments
-	if (c == NULL || filename == NULL)
-	{
-		return NULL;
-	}
+ BUF *b;
 
-	b = ReadDumpW(filename);
-	if (b == NULL)
-	{
-		c->Write(c, _UU("CMD_LOADCERT_FAILED"));
-		return NULL;
-	}
-	else
-	{
-		K *key;
-		if (IsEncryptedK(b, true) == false)
-		{
-			key = BufToK(b, true, IsBase64(b), NULL);
-		}
-		else
-		{
-			c->Write(c, _UU("CMD_LOADKEY_ENCRYPTED_1"));
+ if (c == ((void*)0) || filename == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-			while (true)
-			{
-				char *pass = c->ReadPassword(c, _UU("CMD_LOADKEY_ENCRYPTED_2"));
+ b = ReadDumpW(filename);
+ if (b == ((void*)0))
+ {
+  c->Write(c, _UU("CMD_LOADCERT_FAILED"));
+  return ((void*)0);
+ }
+ else
+ {
+  K *key;
+  if (IsEncryptedK(b, 1) == 0)
+  {
+   key = BufToK(b, 1, IsBase64(b), ((void*)0));
+  }
+  else
+  {
+   c->Write(c, _UU("CMD_LOADKEY_ENCRYPTED_1"));
 
-				if (pass == NULL)
-				{
-					FreeBuf(b);
-					return NULL;
-				}
+   while (1)
+   {
+    char *pass = c->ReadPassword(c, _UU("CMD_LOADKEY_ENCRYPTED_2"));
 
-				key = BufToK(b, true, IsBase64(b), pass);
-				Free(pass);
+    if (pass == ((void*)0))
+    {
+     FreeBuf(b);
+     return ((void*)0);
+    }
 
-				if (key != NULL)
-				{
-					break;
-				}
+    key = BufToK(b, 1, IsBase64(b), pass);
+    Free(pass);
 
-				c->Write(c, _UU("CMD_LOADKEY_ENCRYPTED_3"));
-			}
-		}
+    if (key != ((void*)0))
+    {
+     break;
+    }
 
-		FreeBuf(b);
+    c->Write(c, _UU("CMD_LOADKEY_ENCRYPTED_3"));
+   }
+  }
 
-		return key;
-	}
+  FreeBuf(b);
+
+  return key;
+ }
 }

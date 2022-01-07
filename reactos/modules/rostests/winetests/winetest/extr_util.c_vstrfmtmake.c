@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (size_t) ; 
- char* realloc (char*,size_t) ; 
- int vsnprintf (char*,size_t,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int va_list ;
+
+
+ int free (char*) ;
+ char* malloc (size_t) ;
+ char* realloc (char*,size_t) ;
+ int vsnprintf (char*,size_t,char const*,int ) ;
 
 __attribute__((used)) static char *vstrfmtmake (size_t *lenp, const char *fmt, va_list ap)
 {
@@ -25,16 +25,16 @@ __attribute__((used)) static char *vstrfmtmake (size_t *lenp, const char *fmt, v
     int n;
 
     p = malloc (size);
-    if (!p) return NULL;
+    if (!p) return ((void*)0);
     while (1) {
         n = vsnprintf (p, size, fmt, ap);
-        if (n < 0) size *= 2;   /* Windows */
-        else if ((unsigned)n >= size) size = n+1; /* glibc */
+        if (n < 0) size *= 2;
+        else if ((unsigned)n >= size) size = n+1;
         else break;
         q = realloc (p, size);
         if (!q) {
           free (p);
-          return NULL;
+          return ((void*)0);
        }
        p = q;
     }

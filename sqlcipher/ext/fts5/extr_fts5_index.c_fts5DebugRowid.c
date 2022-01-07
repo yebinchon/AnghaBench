@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ i64 ;
-typedef  int /*<<< orphan*/  Fts5Buffer ;
 
-/* Variables and functions */
- scalar_t__ FTS5_AVERAGES_ROWID ; 
- int /*<<< orphan*/  fts5DecodeRowid (scalar_t__,int*,int*,int*,int*) ; 
- int /*<<< orphan*/  sqlite3Fts5BufferAppendPrintf (int*,int /*<<< orphan*/ *,char*,...) ; 
+
+
+
+typedef scalar_t__ i64 ;
+typedef int Fts5Buffer ;
+
+
+ scalar_t__ FTS5_AVERAGES_ROWID ;
+ int fts5DecodeRowid (scalar_t__,int*,int*,int*,int*) ;
+ int sqlite3Fts5BufferAppendPrintf (int*,int *,char*,...) ;
 
 __attribute__((used)) static void fts5DebugRowid(int *pRc, Fts5Buffer *pBuf, i64 iKey){
-  int iSegid, iHeight, iPgno, bDlidx;       /* Rowid compenents */
+  int iSegid, iHeight, iPgno, bDlidx;
   fts5DecodeRowid(iKey, &iSegid, &bDlidx, &iHeight, &iPgno);
 
   if( iSegid==0 ){

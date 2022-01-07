@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint32_t ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_CRC_24_IEEE ; 
- scalar_t__ AV_RB24 (int /*<<< orphan*/  const*) ; 
- scalar_t__ av_crc (int /*<<< orphan*/ ,int,int /*<<< orphan*/  const*,unsigned int) ; 
- int /*<<< orphan*/  av_crc_get_table (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_CRC_24_IEEE ;
+ scalar_t__ AV_RB24 (int const*) ;
+ scalar_t__ av_crc (int ,int,int const*,unsigned int) ;
+ int av_crc_get_table (int ) ;
 
 int ff_tak_check_crc(const uint8_t *buf, unsigned int buf_size)
 {

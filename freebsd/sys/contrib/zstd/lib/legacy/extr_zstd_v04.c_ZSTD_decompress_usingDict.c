@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {int blockType; } ;
-typedef  TYPE_1__ blockProperties_t ;
+typedef TYPE_1__ blockProperties_t ;
 struct TYPE_11__ {char const* dictEnd; char const* previousDstEnd; char const* vBase; char const* base; } ;
-typedef  TYPE_2__ ZSTD_DCtx ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef TYPE_2__ ZSTD_DCtx ;
+typedef int BYTE ;
 
-/* Variables and functions */
- size_t ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GENERIC ; 
- size_t ZSTD_blockHeaderSize ; 
- size_t ZSTD_copyRawBlock (int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*,size_t) ; 
- size_t ZSTD_decodeFrameHeader_Part1 (TYPE_2__*,void const*,size_t) ; 
- size_t ZSTD_decodeFrameHeader_Part2 (TYPE_2__*,void const*,size_t) ; 
- size_t ZSTD_decompressBlock_internal (TYPE_2__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  ZSTD_decompress_insertDictionary (TYPE_2__*,void const*,size_t) ; 
- size_t ZSTD_frameHeaderSize_min ; 
- size_t ZSTD_getcBlockSize (int /*<<< orphan*/  const*,int,TYPE_1__*) ; 
- scalar_t__ ZSTD_isError (size_t) ; 
- int /*<<< orphan*/  ZSTD_resetDCtx (TYPE_2__*) ; 
-#define  bt_compressed 131 
-#define  bt_end 130 
-#define  bt_raw 129 
-#define  bt_rle 128 
- int /*<<< orphan*/  srcSize_wrong ; 
+
+ size_t ERROR (int ) ;
+ int GENERIC ;
+ size_t ZSTD_blockHeaderSize ;
+ size_t ZSTD_copyRawBlock (int *,int,int const*,size_t) ;
+ size_t ZSTD_decodeFrameHeader_Part1 (TYPE_2__*,void const*,size_t) ;
+ size_t ZSTD_decodeFrameHeader_Part2 (TYPE_2__*,void const*,size_t) ;
+ size_t ZSTD_decompressBlock_internal (TYPE_2__*,int *,int,int const*,size_t) ;
+ int ZSTD_decompress_insertDictionary (TYPE_2__*,void const*,size_t) ;
+ size_t ZSTD_frameHeaderSize_min ;
+ size_t ZSTD_getcBlockSize (int const*,int,TYPE_1__*) ;
+ scalar_t__ ZSTD_isError (size_t) ;
+ int ZSTD_resetDCtx (TYPE_2__*) ;
+
+
+
+
+ int srcSize_wrong ;
 
 __attribute__((used)) static size_t ZSTD_decompress_usingDict(ZSTD_DCtx* ctx,
                                  void* dst, size_t maxDstSize,
@@ -50,7 +50,7 @@ __attribute__((used)) static size_t ZSTD_decompress_usingDict(ZSTD_DCtx* ctx,
     size_t remainingSize = srcSize;
     blockProperties_t blockProperties;
 
-    /* init */
+
     ZSTD_resetDCtx(ctx);
     if (dict)
     {
@@ -64,7 +64,7 @@ __attribute__((used)) static size_t ZSTD_decompress_usingDict(ZSTD_DCtx* ctx,
         ctx->vBase = ctx->base = ctx->dictEnd = dst;
     }
 
-    /* Frame Header */
+
     {
         size_t frameHeaderSize;
         if (srcSize < ZSTD_frameHeaderSize_min+ZSTD_blockHeaderSize) return ERROR(srcSize_wrong);
@@ -76,7 +76,7 @@ __attribute__((used)) static size_t ZSTD_decompress_usingDict(ZSTD_DCtx* ctx,
         if (ZSTD_isError(frameHeaderSize)) return frameHeaderSize;
     }
 
-    /* Loop on each block */
+
     while (1)
     {
         size_t decodedSize=0;
@@ -89,23 +89,23 @@ __attribute__((used)) static size_t ZSTD_decompress_usingDict(ZSTD_DCtx* ctx,
 
         switch(blockProperties.blockType)
         {
-        case bt_compressed:
+        case 131:
             decodedSize = ZSTD_decompressBlock_internal(ctx, op, oend-op, ip, cBlockSize);
             break;
-        case bt_raw :
+        case 129 :
             decodedSize = ZSTD_copyRawBlock(op, oend-op, ip, cBlockSize);
             break;
-        case bt_rle :
-            return ERROR(GENERIC);   /* not yet supported */
+        case 128 :
+            return ERROR(GENERIC);
             break;
-        case bt_end :
-            /* end of frame */
+        case 130 :
+
             if (remainingSize) return ERROR(srcSize_wrong);
             break;
         default:
-            return ERROR(GENERIC);   /* impossible */
+            return ERROR(GENERIC);
         }
-        if (cBlockSize == 0) break;   /* bt_end */
+        if (cBlockSize == 0) break;
 
         if (ZSTD_isError(decodedSize)) return decodedSize;
         op += decodedSize;

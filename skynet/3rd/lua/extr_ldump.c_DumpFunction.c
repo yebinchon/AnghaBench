@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
 struct TYPE_19__ {scalar_t__ strip; } ;
-struct TYPE_18__ {int /*<<< orphan*/  maxstacksize; int /*<<< orphan*/  is_vararg; int /*<<< orphan*/  numparams; int /*<<< orphan*/  lastlinedefined; int /*<<< orphan*/  linedefined; int /*<<< orphan*/ * source; } ;
-typedef  int /*<<< orphan*/  TString ;
-typedef  TYPE_1__ Proto ;
-typedef  TYPE_2__ DumpState ;
+struct TYPE_18__ {int maxstacksize; int is_vararg; int numparams; int lastlinedefined; int linedefined; int * source; } ;
+typedef int TString ;
+typedef TYPE_1__ Proto ;
+typedef TYPE_2__ DumpState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DumpByte (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  DumpCode (TYPE_1__ const*,TYPE_2__*) ; 
- int /*<<< orphan*/  DumpConstants (TYPE_1__ const*,TYPE_2__*) ; 
- int /*<<< orphan*/  DumpDebug (TYPE_1__ const*,TYPE_2__*) ; 
- int /*<<< orphan*/  DumpInt (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  DumpProtos (TYPE_1__ const*,TYPE_2__*) ; 
- int /*<<< orphan*/  DumpString (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  DumpUpvalues (TYPE_1__ const*,TYPE_2__*) ; 
+
+ int DumpByte (int ,TYPE_2__*) ;
+ int DumpCode (TYPE_1__ const*,TYPE_2__*) ;
+ int DumpConstants (TYPE_1__ const*,TYPE_2__*) ;
+ int DumpDebug (TYPE_1__ const*,TYPE_2__*) ;
+ int DumpInt (int ,TYPE_2__*) ;
+ int DumpProtos (TYPE_1__ const*,TYPE_2__*) ;
+ int DumpString (int *,TYPE_2__*) ;
+ int DumpUpvalues (TYPE_1__ const*,TYPE_2__*) ;
 
 __attribute__((used)) static void DumpFunction (const Proto *f, TString *psource, DumpState *D) {
   if (D->strip || f->source == psource)
-    DumpString(NULL, D);  /* no debug info or same source as its parent */
+    DumpString(((void*)0), D);
   else
     DumpString(f->source, D);
   DumpInt(f->linedefined, D);

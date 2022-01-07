@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_changelist_receiver_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-struct get_cl_fn_baton {int /*<<< orphan*/ * clhash; void* callback_baton; int /*<<< orphan*/  callback_func; int /*<<< orphan*/  db; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_node_changelist ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_hash_from_cstring_keys (int /*<<< orphan*/ **,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__internal_walk_children (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,struct get_cl_fn_baton*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int db; } ;
+typedef TYPE_1__ svn_wc_context_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef int svn_changelist_receiver_t ;
+typedef int svn_cancel_func_t ;
+struct get_cl_fn_baton {int * clhash; void* callback_baton; int callback_func; int db; } ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int get_node_changelist ;
+ int * svn_error_trace (int ) ;
+ int svn_hash_from_cstring_keys (int **,int const*,int *) ;
+ int svn_wc__internal_walk_children (int ,char const*,int ,int const*,int ,struct get_cl_fn_baton*,int ,int ,void*,int *) ;
 
 svn_error_t *
 svn_wc_get_changelists(svn_wc_context_t *wc_ctx,
@@ -43,7 +43,7 @@ svn_wc_get_changelists(svn_wc_context_t *wc_ctx,
   struct get_cl_fn_baton gnb;
 
   gnb.db = wc_ctx->db;
-  gnb.clhash = NULL;
+  gnb.clhash = ((void*)0);
   gnb.callback_func = callback_func;
   gnb.callback_baton = callback_baton;
 

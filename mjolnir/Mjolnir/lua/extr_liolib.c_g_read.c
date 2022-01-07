@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- scalar_t__ LUA_MINSTACK ; 
- scalar_t__ LUA_TNUMBER ; 
- int /*<<< orphan*/  clearerr (int /*<<< orphan*/ *) ; 
- scalar_t__ ferror (int /*<<< orphan*/ *) ; 
- int luaL_argerror (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaL_checkstack (int /*<<< orphan*/ *,scalar_t__,char*) ; 
- char* luaL_checkstring (int /*<<< orphan*/ *,int) ; 
- int luaL_fileresult (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- scalar_t__ lua_type (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  read_all (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int read_chars (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
- int read_line (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int read_number (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int test_eof (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int lua_State ;
+typedef int FILE ;
+
+
+ scalar_t__ LUA_MINSTACK ;
+ scalar_t__ LUA_TNUMBER ;
+ int clearerr (int *) ;
+ scalar_t__ ferror (int *) ;
+ int luaL_argerror (int *,int,char*) ;
+ int luaL_checkinteger (int *,int) ;
+ int luaL_checkstack (int *,scalar_t__,char*) ;
+ char* luaL_checkstring (int *,int) ;
+ int luaL_fileresult (int *,int ,int *) ;
+ int lua_gettop (int *) ;
+ int lua_pop (int *,int) ;
+ int lua_pushnil (int *) ;
+ scalar_t__ lua_type (int *,int) ;
+ int read_all (int *,int *) ;
+ int read_chars (int *,int *,size_t) ;
+ int read_line (int *,int *,int) ;
+ int read_number (int *,int *) ;
+ int test_eof (int *,int *) ;
 
 __attribute__((used)) static int g_read (lua_State *L, FILE *f, int first) {
   int nargs = lua_gettop(L) - 1;
   int success;
   int n;
   clearerr(f);
-  if (nargs == 0) {  /* no arguments? */
+  if (nargs == 0) {
     success = read_line(L, f, 1);
-    n = first+1;  /* to return 1 result */
+    n = first+1;
   }
-  else {  /* ensure stack space for all results and for auxlib's buffer */
+  else {
     luaL_checkstack(L, nargs+LUA_MINSTACK, "too many arguments");
     success = 1;
     for (n = first; nargs-- && success; n++) {
@@ -52,20 +52,20 @@ __attribute__((used)) static int g_read (lua_State *L, FILE *f, int first) {
       }
       else {
         const char *p = luaL_checkstring(L, n);
-        if (*p == '*') p++;  /* skip optional '*' (for compatibility) */
+        if (*p == '*') p++;
         switch (*p) {
-          case 'n':  /* number */
+          case 'n':
             success = read_number(L, f);
             break;
-          case 'l':  /* line */
+          case 'l':
             success = read_line(L, f, 1);
             break;
-          case 'L':  /* line with end-of-line */
+          case 'L':
             success = read_line(L, f, 0);
             break;
-          case 'a':  /* file */
-            read_all(L, f);  /* read entire file */
-            success = 1; /* always success */
+          case 'a':
+            read_all(L, f);
+            success = 1;
             break;
           default:
             return luaL_argerror(L, n, "invalid format");
@@ -74,10 +74,10 @@ __attribute__((used)) static int g_read (lua_State *L, FILE *f, int first) {
     }
   }
   if (ferror(f))
-    return luaL_fileresult(L, 0, NULL);
+    return luaL_fileresult(L, 0, ((void*)0));
   if (!success) {
-    lua_pop(L, 1);  /* remove last result */
-    lua_pushnil(L);  /* push nil instead */
+    lua_pop(L, 1);
+    lua_pushnil(L);
   }
   return n - first;
 }

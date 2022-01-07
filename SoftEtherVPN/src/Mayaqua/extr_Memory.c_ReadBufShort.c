@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  USHORT ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Endian16 (int /*<<< orphan*/ ) ; 
- int ReadBuf (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int USHORT ;
+typedef int BUF ;
+
+
+ int Endian16 (int ) ;
+ int ReadBuf (int *,int *,int) ;
 
 USHORT ReadBufShort(BUF *b)
 {
-	USHORT value;
-	// Validate arguments
-	if (b == NULL)
-	{
-		return 0;
-	}
+ USHORT value;
 
-	if (ReadBuf(b, &value, sizeof(USHORT)) != sizeof(USHORT))
-	{
-		return 0;
-	}
-	return Endian16(value);
+ if (b == ((void*)0))
+ {
+  return 0;
+ }
+
+ if (ReadBuf(b, &value, sizeof(USHORT)) != sizeof(USHORT))
+ {
+  return 0;
+ }
+ return Endian16(value);
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  tv1; int /*<<< orphan*/  ts1; int /*<<< orphan*/  clock_id; int /*<<< orphan*/  ft0; } ;
-typedef  TYPE_1__ timedelta_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetSystemTimeAsFileTime (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  clock_gettime (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gettimeofday (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int tv1; int ts1; int clock_id; int ft0; } ;
+typedef TYPE_1__ timedelta_t ;
+
+
+ int GetSystemTimeAsFileTime (int *) ;
+ int clock_gettime (int ,int *) ;
+ int gettimeofday (int *,int *) ;
 
 void
 timer_stop(timedelta_t *timer)
 {
 
-#ifdef _WIN32
-	GetSystemTimeAsFileTime(&timer->ft0);
-#elif JEMALLOC_CLOCK_GETTIME
-	clock_gettime(timer->clock_id, &timer->ts1);
-#else
-	gettimeofday(&timer->tv1, NULL);
-#endif
+
+
+
+
+
+ gettimeofday(&timer->tv1, ((void*)0));
+
 }

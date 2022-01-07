@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  cvtKeepRate; int /*<<< orphan*/  cvtChangeRate; } ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int cvtKeepRate; int cvtChangeRate; } ;
 struct TYPE_14__ {TYPE_1__ cvt; } ;
 struct TYPE_13__ {int fdwOpen; scalar_t__ fdwDriver; scalar_t__ dwDriver; TYPE_3__* pwfxDst; TYPE_2__* pwfxSrc; } ;
 struct TYPE_12__ {int wBitsPerSample; int nBlockAlign; int nChannels; scalar_t__ nSamplesPerSec; } ;
 struct TYPE_11__ {int wBitsPerSample; int nBlockAlign; int nChannels; scalar_t__ nSamplesPerSec; } ;
-typedef  TYPE_4__* PACMDRVSTREAMINSTANCE ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  scalar_t__ DWORD_PTR ;
-typedef  scalar_t__ DWORD ;
-typedef  TYPE_5__ AcmPcmData ;
+typedef TYPE_4__* PACMDRVSTREAMINSTANCE ;
+typedef int LRESULT ;
+typedef scalar_t__ DWORD_PTR ;
+typedef scalar_t__ DWORD ;
+typedef TYPE_5__ AcmPcmData ;
 
-/* Variables and functions */
- int ACM_STREAMOPENF_ASYNC ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_5__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_5__*) ; 
- int /*<<< orphan*/  MMSYSERR_NOERROR ; 
- int /*<<< orphan*/  MMSYSERR_NOMEM ; 
- int /*<<< orphan*/  MMSYSERR_NOTSUPPORTED ; 
- int /*<<< orphan*/ * PCM_ConvertChangeRate ; 
- int /*<<< orphan*/ * PCM_ConvertKeepRate ; 
- scalar_t__ PCM_RESAMPLE ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_4__*) ; 
- int /*<<< orphan*/  assert (int) ; 
 
-__attribute__((used)) static	LRESULT	PCM_StreamOpen(PACMDRVSTREAMINSTANCE adsi)
+ int ACM_STREAMOPENF_ASYNC ;
+ int FIXME (char*,...) ;
+ int GetProcessHeap () ;
+ TYPE_5__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_5__*) ;
+ int MMSYSERR_NOERROR ;
+ int MMSYSERR_NOMEM ;
+ int MMSYSERR_NOTSUPPORTED ;
+ int * PCM_ConvertChangeRate ;
+ int * PCM_ConvertKeepRate ;
+ scalar_t__ PCM_RESAMPLE ;
+ int TRACE (char*,TYPE_4__*) ;
+ int assert (int) ;
+
+__attribute__((used)) static LRESULT PCM_StreamOpen(PACMDRVSTREAMINSTANCE adsi)
 {
     AcmPcmData* apd;
     int idx;
@@ -88,9 +88,9 @@ __attribute__((used)) static	LRESULT	PCM_StreamOpen(PACMDRVSTREAMINSTANCE adsi)
         return MMSYSERR_NOTSUPPORTED;
     }
 
-    if (adsi->pwfxSrc->nChannels      == 1)  idx += 2;
+    if (adsi->pwfxSrc->nChannels == 1) idx += 2;
 
-    if (adsi->pwfxDst->nChannels      == 1)  idx += 1;
+    if (adsi->pwfxDst->nChannels == 1) idx += 1;
 
     apd = HeapAlloc(GetProcessHeap(), 0, sizeof(AcmPcmData));
     if (!apd)

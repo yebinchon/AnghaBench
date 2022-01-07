@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct super_block {int dummy; } ;
 struct inode {int dummy; } ;
-struct ocfs2_inode_info {struct inode vfs_inode; int /*<<< orphan*/  ip_jinode; } ;
+struct ocfs2_inode_info {struct inode vfs_inode; int ip_jinode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_NOFS ; 
- int /*<<< orphan*/  jbd2_journal_init_jbd_inode (int /*<<< orphan*/ *,struct inode*) ; 
- struct ocfs2_inode_info* kmem_cache_alloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ocfs2_inode_cachep ; 
+
+ int GFP_NOFS ;
+ int jbd2_journal_init_jbd_inode (int *,struct inode*) ;
+ struct ocfs2_inode_info* kmem_cache_alloc (int ,int ) ;
+ int ocfs2_inode_cachep ;
 
 __attribute__((used)) static struct inode *ocfs2_alloc_inode(struct super_block *sb)
 {
-	struct ocfs2_inode_info *oi;
+ struct ocfs2_inode_info *oi;
 
-	oi = kmem_cache_alloc(ocfs2_inode_cachep, GFP_NOFS);
-	if (!oi)
-		return NULL;
+ oi = kmem_cache_alloc(ocfs2_inode_cachep, GFP_NOFS);
+ if (!oi)
+  return ((void*)0);
 
-	jbd2_journal_init_jbd_inode(&oi->ip_jinode, &oi->vfs_inode);
-	return &oi->vfs_inode;
+ jbd2_journal_init_jbd_inode(&oi->ip_jinode, &oi->vfs_inode);
+ return &oi->vfs_inode;
 }

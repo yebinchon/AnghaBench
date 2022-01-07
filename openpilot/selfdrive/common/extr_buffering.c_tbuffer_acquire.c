@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int pending_idx; int num_bufs; int* reading; int /*<<< orphan*/  lock; int /*<<< orphan*/  efd; scalar_t__ stopped; int /*<<< orphan*/  cv; } ;
-typedef  TYPE_1__ TBuffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  efd_clear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pthread_cond_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int pending_idx; int num_bufs; int* reading; int lock; int efd; scalar_t__ stopped; int cv; } ;
+typedef TYPE_1__ TBuffer ;
+
+
+ int assert (int) ;
+ int efd_clear (int ) ;
+ int pthread_cond_wait (int *,int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 int tbuffer_acquire(TBuffer *tb) {
   pthread_mutex_lock(&tb->lock);
@@ -43,7 +43,7 @@ int tbuffer_acquire(TBuffer *tb) {
   int ret = tb->pending_idx;
   assert(ret < tb->num_bufs);
 
-  tb->reading[ret] = true;
+  tb->reading[ret] = 1;
   tb->pending_idx = -1;
 
   pthread_mutex_unlock(&tb->lock);

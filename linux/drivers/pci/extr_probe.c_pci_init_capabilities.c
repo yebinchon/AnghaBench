@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pci_dev {int reset_fn; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pci_aer_init (struct pci_dev*) ; 
- int /*<<< orphan*/  pci_allocate_cap_save_buffers (struct pci_dev*) ; 
- int /*<<< orphan*/  pci_ats_init (struct pci_dev*) ; 
- int /*<<< orphan*/  pci_configure_ari (struct pci_dev*) ; 
- int /*<<< orphan*/  pci_ea_init (struct pci_dev*) ; 
- int /*<<< orphan*/  pci_enable_acs (struct pci_dev*) ; 
- int /*<<< orphan*/  pci_iov_init (struct pci_dev*) ; 
- int /*<<< orphan*/  pci_msi_setup_pci_dev (struct pci_dev*) ; 
- int /*<<< orphan*/  pci_pm_init (struct pci_dev*) ; 
- scalar_t__ pci_probe_reset_function (struct pci_dev*) ; 
- int /*<<< orphan*/  pci_ptm_init (struct pci_dev*) ; 
- int /*<<< orphan*/  pci_vpd_init (struct pci_dev*) ; 
- int /*<<< orphan*/  pcie_report_downtraining (struct pci_dev*) ; 
+
+ int pci_aer_init (struct pci_dev*) ;
+ int pci_allocate_cap_save_buffers (struct pci_dev*) ;
+ int pci_ats_init (struct pci_dev*) ;
+ int pci_configure_ari (struct pci_dev*) ;
+ int pci_ea_init (struct pci_dev*) ;
+ int pci_enable_acs (struct pci_dev*) ;
+ int pci_iov_init (struct pci_dev*) ;
+ int pci_msi_setup_pci_dev (struct pci_dev*) ;
+ int pci_pm_init (struct pci_dev*) ;
+ scalar_t__ pci_probe_reset_function (struct pci_dev*) ;
+ int pci_ptm_init (struct pci_dev*) ;
+ int pci_vpd_init (struct pci_dev*) ;
+ int pcie_report_downtraining (struct pci_dev*) ;
 
 __attribute__((used)) static void pci_init_capabilities(struct pci_dev *dev)
 {
-	/* Enhanced Allocation */
-	pci_ea_init(dev);
 
-	/* Setup MSI caps & disable MSI/MSI-X interrupts */
-	pci_msi_setup_pci_dev(dev);
+ pci_ea_init(dev);
 
-	/* Buffers for saving PCIe and PCI-X capabilities */
-	pci_allocate_cap_save_buffers(dev);
 
-	/* Power Management */
-	pci_pm_init(dev);
+ pci_msi_setup_pci_dev(dev);
 
-	/* Vital Product Data */
-	pci_vpd_init(dev);
 
-	/* Alternative Routing-ID Forwarding */
-	pci_configure_ari(dev);
+ pci_allocate_cap_save_buffers(dev);
 
-	/* Single Root I/O Virtualization */
-	pci_iov_init(dev);
 
-	/* Address Translation Services */
-	pci_ats_init(dev);
+ pci_pm_init(dev);
 
-	/* Enable ACS P2P upstream forwarding */
-	pci_enable_acs(dev);
 
-	/* Precision Time Measurement */
-	pci_ptm_init(dev);
+ pci_vpd_init(dev);
 
-	/* Advanced Error Reporting */
-	pci_aer_init(dev);
 
-	pcie_report_downtraining(dev);
+ pci_configure_ari(dev);
 
-	if (pci_probe_reset_function(dev) == 0)
-		dev->reset_fn = 1;
+
+ pci_iov_init(dev);
+
+
+ pci_ats_init(dev);
+
+
+ pci_enable_acs(dev);
+
+
+ pci_ptm_init(dev);
+
+
+ pci_aer_init(dev);
+
+ pcie_report_downtraining(dev);
+
+ if (pci_probe_reset_function(dev) == 0)
+  dev->reset_fn = 1;
 }

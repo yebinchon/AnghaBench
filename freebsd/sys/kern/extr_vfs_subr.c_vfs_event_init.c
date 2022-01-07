@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  fs_knlist ; 
- int /*<<< orphan*/  knlist_init_mtx (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+ int fs_knlist ;
+ int knlist_init_mtx (int *,int *) ;
 
 __attribute__((used)) static void
 vfs_event_init(void *arg)
 {
-	knlist_init_mtx(&fs_knlist, NULL);
+ knlist_init_mtx(&fs_knlist, ((void*)0));
 }

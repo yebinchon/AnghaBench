@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/ * LPITEMIDLIST ;
-typedef  char CHAR ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ CreateDirectoryA (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int GetVersion () ; 
- int /*<<< orphan*/  ILFree (int /*<<< orphan*/ *) ; 
- scalar_t__ RemoveDirectoryA (char const*) ; 
- int /*<<< orphan*/ * SHSimpleIDListFromPath (char const*) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  verify_pidl (int /*<<< orphan*/ *,char const*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int * LPITEMIDLIST ;
+typedef char CHAR ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ CreateDirectoryA (char const*,int *) ;
+ int GetLastError () ;
+ int GetVersion () ;
+ int ILFree (int *) ;
+ scalar_t__ RemoveDirectoryA (char const*) ;
+ int * SHSimpleIDListFromPath (char const*) ;
+ scalar_t__ TRUE ;
+ int ok (int,char*,int ) ;
+ int verify_pidl (int *,char const*) ;
 
 __attribute__((used)) static void test_SHSimpleIDListFromPath(void)
 {
@@ -32,9 +32,9 @@ __attribute__((used)) static void test_SHSimpleIDListFromPath(void)
     const CHAR adirA[] = "C:\\sidlfpdir";
     BOOL br, is_unicode = !(GetVersion() & 0x80000000);
 
-    LPITEMIDLIST pidl = NULL;
+    LPITEMIDLIST pidl = ((void*)0);
 
-    br = CreateDirectoryA(adirA, NULL);
+    br = CreateDirectoryA(adirA, ((void*)0));
     ok(br == TRUE, "CreateDirectory failed: %d\n", GetLastError());
 
     if(is_unicode)

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_int32_t ;
-struct TYPE_7__ {int link; int /*<<< orphan*/  af; } ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u_int32_t ;
+struct TYPE_7__ {int link; int af; } ;
 struct TYPE_5__ {size_t his_mru; } ;
 struct link {TYPE_1__ lcp; } ;
 struct mp {size_t peer_mrru; TYPE_3__ out; struct link link; } ;
@@ -25,21 +25,21 @@ struct TYPE_8__ {struct mp mp; } ;
 struct bundle {struct datalink* links; TYPE_4__ ncp; } ;
 struct TYPE_6__ {struct link link; scalar_t__ out; } ;
 
-/* Variables and functions */
- scalar_t__ DATALINK_OPEN ; 
- int /*<<< orphan*/  LogDEBUG ; 
- int /*<<< orphan*/  MBUF_CTOP (struct mbuf*) ; 
- int /*<<< orphan*/  MB_MPOUT ; 
- struct mbuf* link_Dequeue (struct link*) ; 
- size_t link_QueueLen (struct link*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*) ; 
- struct mbuf* m_get (size_t,int /*<<< orphan*/ ) ; 
- size_t m_length (struct mbuf*) ; 
- int /*<<< orphan*/  m_settype (struct mbuf*,int /*<<< orphan*/ ) ; 
- struct mbuf* mbuf_Read (struct mbuf*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  mp_Output (struct mp*,struct bundle*,struct link*,struct mbuf*,int,int) ; 
- int /*<<< orphan*/  mp_QueueLen (struct mp*) ; 
- int /*<<< orphan*/  ncp_PushPacket (TYPE_4__*,int /*<<< orphan*/ *,struct link*) ; 
+
+ scalar_t__ DATALINK_OPEN ;
+ int LogDEBUG ;
+ int MBUF_CTOP (struct mbuf*) ;
+ int MB_MPOUT ;
+ struct mbuf* link_Dequeue (struct link*) ;
+ size_t link_QueueLen (struct link*) ;
+ int log_Printf (int ,char*) ;
+ struct mbuf* m_get (size_t,int ) ;
+ size_t m_length (struct mbuf*) ;
+ int m_settype (struct mbuf*,int ) ;
+ struct mbuf* mbuf_Read (struct mbuf*,int ,scalar_t__) ;
+ int mp_Output (struct mp*,struct bundle*,struct link*,struct mbuf*,int,int) ;
+ int mp_QueueLen (struct mp*) ;
+ int ncp_PushPacket (TYPE_4__*,int *,struct link*) ;
 
 int
 mp_FillPhysicalQueues(struct bundle *bundle)
@@ -53,8 +53,8 @@ mp_FillPhysicalQueues(struct bundle *bundle)
   struct link *bestlink;
 
   thislink = nlinks = nopenlinks = 0;
-  for (fdl = NULL, dl = bundle->links; dl; dl = dl->next) {
-    /* Include non-open links here as mp->out.link will stay more correct */
+  for (fdl = ((void*)0), dl = bundle->links; dl; dl = dl->next) {
+
     if (!fdl) {
       if (thislink == mp->out.link)
         fdl = dl;
@@ -84,37 +84,28 @@ mp_FillPhysicalQueues(struct bundle *bundle)
       continue;
 
     if (dl->physical->out)
-      /* this link has suffered a short write.  Let it continue */
+
       continue;
 
     add = link_QueueLen(&dl->physical->link);
     if (add) {
-      /* this link has got stuff already queued.  Let it continue */
+
       total += add;
       continue;
     }
 
     if (!mp_QueueLen(mp)) {
       int mrutoosmall;
-
-      /*
-       * If there's only a single open link in our bundle and we haven't got
-       * MP level link compression, queue outbound traffic directly via that
-       * link's protocol stack rather than using the MP link.  This results
-       * in the outbound traffic going out as PROTO_IP or PROTO_IPV6 rather
-       * than PROTO_MP.
-       */
-
       mrutoosmall = 0;
       sendasip = nopenlinks < 2;
       if (sendasip) {
         if (dl->physical->link.lcp.his_mru < mp->peer_mrru) {
-          /*
-           * Actually, forget it.  This test is done against the MRRU rather
-           * than the packet size so that we don't end up sending some data
-           * in MP fragments and some data in PROTO_IP packets.  That's just
-           * too likely to upset some ppp implementations.
-           */
+
+
+
+
+
+
           mrutoosmall = 1;
           sendasip = 0;
         }
@@ -122,7 +113,7 @@ mp_FillPhysicalQueues(struct bundle *bundle)
 
       bestlink = sendasip ? &dl->physical->link : &mp->link;
       if (!ncp_PushPacket(&bundle->ncp, &mp->out.af, bestlink))
-        break;	/* Nothing else to send */
+        break;
 
       if (mrutoosmall)
         log_Printf(LogDEBUG, "Don't send data as PROTO_IP, MRU < MRRU\n");
@@ -132,7 +123,7 @@ mp_FillPhysicalQueues(struct bundle *bundle)
       if (sendasip) {
         add = link_QueueLen(&dl->physical->link);
         if (add) {
-          /* this link has got stuff already queued.  Let it continue */
+
           total += add;
           continue;
         }
@@ -147,13 +138,13 @@ mp_FillPhysicalQueues(struct bundle *bundle)
 
       while (!end) {
         if (dl->state == DATALINK_OPEN) {
-          /* Write at most his_mru bytes to the physical link */
+
           if (len <= dl->physical->link.lcp.his_mru) {
             mo = m;
             end = 1;
             m_settype(mo, MB_MPOUT);
           } else {
-            /* It's > his_mru, chop the packet (`m') into bits */
+
             mo = m_get(dl->physical->link.lcp.his_mru, MB_MPOUT);
             len -= mo->m_len;
             m = mbuf_Read(m, MBUF_CTOP(mo), mo->m_len);
@@ -174,7 +165,7 @@ mp_FillPhysicalQueues(struct bundle *bundle)
       }
     }
   }
-  mp->out.link = thislink;		/* Start here next time */
+  mp->out.link = thislink;
 
   return total;
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int char_size; } ;
-union cptable {int /*<<< orphan*/  dbcs; int /*<<< orphan*/  sbcs; TYPE_1__ info; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
+union cptable {int dbcs; int sbcs; TYPE_1__ info; } ;
+typedef int WCHAR ;
 
-/* Variables and functions */
- int MB_COMPOSITE ; 
- int MB_ERR_INVALID_CHARS ; 
- scalar_t__ check_invalid_chars_dbcs (int /*<<< orphan*/ *,unsigned char const*,int) ; 
- scalar_t__ check_invalid_chars_sbcs (int /*<<< orphan*/ *,int,unsigned char const*,int) ; 
- int mbstowcs_dbcs (int /*<<< orphan*/ *,unsigned char const*,int,int /*<<< orphan*/ *,int) ; 
- int mbstowcs_dbcs_decompose (int /*<<< orphan*/ *,unsigned char const*,int,int /*<<< orphan*/ *,int) ; 
- int mbstowcs_sbcs (int /*<<< orphan*/ *,int,unsigned char const*,int,int /*<<< orphan*/ *,int) ; 
- int mbstowcs_sbcs_decompose (int /*<<< orphan*/ *,int,unsigned char const*,int,int /*<<< orphan*/ *,int) ; 
+
+ int MB_COMPOSITE ;
+ int MB_ERR_INVALID_CHARS ;
+ scalar_t__ check_invalid_chars_dbcs (int *,unsigned char const*,int) ;
+ scalar_t__ check_invalid_chars_sbcs (int *,int,unsigned char const*,int) ;
+ int mbstowcs_dbcs (int *,unsigned char const*,int,int *,int) ;
+ int mbstowcs_dbcs_decompose (int *,unsigned char const*,int,int *,int) ;
+ int mbstowcs_sbcs (int *,int,unsigned char const*,int,int *,int) ;
+ int mbstowcs_sbcs_decompose (int *,int,unsigned char const*,int,int *,int) ;
 
 int wine_cp_mbstowcs( const union cptable *table, int flags,
                       const char *s, int srclen,
@@ -44,7 +44,7 @@ int wine_cp_mbstowcs( const union cptable *table, int flags,
         }
         return mbstowcs_sbcs_decompose( &table->sbcs, flags, src, srclen, dst, dstlen );
     }
-    else /* mbcs */
+    else
     {
         if (flags & MB_ERR_INVALID_CHARS)
         {

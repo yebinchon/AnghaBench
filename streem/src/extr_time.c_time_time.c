@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int time_t ;
-struct tm {int tm_year; int tm_mon; int tm_mday; int tm_sec; int tm_min; int tm_hour; int /*<<< orphan*/  member_0; } ;
-struct timeval {long tv_sec; long tv_usec; int /*<<< orphan*/  member_0; } ;
-typedef  int /*<<< orphan*/  strm_value ;
-typedef  int /*<<< orphan*/  strm_string ;
-typedef  int /*<<< orphan*/  strm_stream ;
 
-/* Variables and functions */
- int STRM_NG ; 
- int TZ_FAIL ; 
- int TZ_NONE ; 
- int /*<<< orphan*/  gettimeofday (struct timeval*,int /*<<< orphan*/ *) ; 
- void* mktime (struct tm*) ; 
- int parse_tz (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_get_args (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,char*,char**,int*) ; 
- int /*<<< orphan*/  strm_raise (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  strm_str_len (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_str_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_time_parse_time (char*,int,long*,long*,int*) ; 
- int strm_value_int (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_value_str (int /*<<< orphan*/ ) ; 
- int time_alloc (struct timeval*,int,int /*<<< orphan*/ *) ; 
- int time_localoffset (int) ; 
+
+
+
+typedef int time_t ;
+struct tm {int tm_year; int tm_mon; int tm_mday; int tm_sec; int tm_min; int tm_hour; int member_0; } ;
+struct timeval {long tv_sec; long tv_usec; int member_0; } ;
+typedef int strm_value ;
+typedef int strm_string ;
+typedef int strm_stream ;
+
+
+ int STRM_NG ;
+ int TZ_FAIL ;
+ int TZ_NONE ;
+ int gettimeofday (struct timeval*,int *) ;
+ void* mktime (struct tm*) ;
+ int parse_tz (int ,int ) ;
+ int strm_get_args (int *,int,int *,char*,char**,int*) ;
+ int strm_raise (int *,char*) ;
+ int strm_str_len (int ) ;
+ int strm_str_ptr (int ) ;
+ int strm_time_parse_time (char*,int,long*,long*,int*) ;
+ int strm_value_int (int ) ;
+ int strm_value_str (int ) ;
+ int time_alloc (struct timeval*,int,int *) ;
+ int time_localoffset (int) ;
 
 __attribute__((used)) static int
 time_time(strm_stream* strm, int argc, strm_value* args, strm_value* ret)
@@ -43,7 +43,7 @@ time_time(strm_stream* strm, int argc, strm_value* args, strm_value* ret)
   int utc_offset = 0;
 
   switch (argc) {
-  case 1:                       /* string */
+  case 1:
     {
       char* s;
       int slen;
@@ -59,7 +59,7 @@ time_time(strm_stream* strm, int argc, strm_value* args, strm_value* ret)
       return time_alloc(&tv, utc_offset, ret);
     }
     break;
-  case 3:                       /* date (YYYY,MM,DD) */
+  case 3:
     tm.tm_year = strm_value_int(args[0]);
     tm.tm_mon = strm_value_int(args[1])-1;
     tm.tm_mday = strm_value_int(args[2]);
@@ -67,7 +67,7 @@ time_time(strm_stream* strm, int argc, strm_value* args, strm_value* ret)
     tv.tv_sec += time_localoffset(1);
     utc_offset = TZ_NONE;
     return time_alloc(&tv, utc_offset, ret);
-  case 8:                       /* date (YYYY,MM,DD,hh,mm,ss,usec,zone) */
+  case 8:
     {
       strm_string str = strm_value_str(args[7]);
       utc_offset = parse_tz(strm_str_ptr(str), strm_str_len(str));
@@ -76,13 +76,13 @@ time_time(strm_stream* strm, int argc, strm_value* args, strm_value* ret)
         return STRM_NG;
       }
     }
-  case 7:                       /* date (YYYY,MM,DD,hh,mm,ss,nsec) */
+  case 7:
     tv.tv_usec = strm_value_int(args[6])/1000;
-  case 6:                       /* date (YYYY,MM,DD,hh,mm,ss) */
+  case 6:
     tm.tm_sec = strm_value_int(args[5]);
-  case 5:                       /* date (YYYY,MM,DD,hh,mm) */
+  case 5:
     tm.tm_min = strm_value_int(args[4]);
-  case 4:                       /* date (YYYY,MM,DD,hh) */
+  case 4:
     tm.tm_year = strm_value_int(args[0]);
     tm.tm_mon = strm_value_int(args[1]);
     tm.tm_mday = strm_value_int(args[2]);
@@ -101,6 +101,6 @@ time_time(strm_stream* strm, int argc, strm_value* args, strm_value* ret)
     strm_raise(strm, "wrong # of arguments");
     return STRM_NG;
   }
-  gettimeofday(&tv, NULL);
+  gettimeofday(&tv, ((void*)0));
   return time_alloc(&tv, utc_offset, ret);
 }

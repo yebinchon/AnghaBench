@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_9__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int refcount; TYPE_9__* nonpaged; int /*<<< orphan*/  children; } ;
-typedef  TYPE_1__ file_ref ;
-struct TYPE_11__ {int /*<<< orphan*/  fileref_lookaside; int /*<<< orphan*/  fileref_np_lookaside; } ;
-typedef  TYPE_2__ device_extension ;
-struct TYPE_12__ {int /*<<< orphan*/  fileref_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- TYPE_9__* ExAllocateFromNPagedLookasideList (int /*<<< orphan*/ *) ; 
- TYPE_1__* ExAllocateFromPagedLookasideList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ExFreeToPagedLookasideList (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  ExInitializeResourceLite (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InitializeListHead (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RtlZeroMemory (TYPE_1__*,int) ; 
- int /*<<< orphan*/  WARN (char*,TYPE_1__*) ; 
+
+typedef struct TYPE_12__ TYPE_9__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int refcount; TYPE_9__* nonpaged; int children; } ;
+typedef TYPE_1__ file_ref ;
+struct TYPE_11__ {int fileref_lookaside; int fileref_np_lookaside; } ;
+typedef TYPE_2__ device_extension ;
+struct TYPE_12__ {int fileref_lock; } ;
+
+
+ int ERR (char*) ;
+ TYPE_9__* ExAllocateFromNPagedLookasideList (int *) ;
+ TYPE_1__* ExAllocateFromPagedLookasideList (int *) ;
+ int ExFreeToPagedLookasideList (int *,TYPE_1__*) ;
+ int ExInitializeResourceLite (int *) ;
+ int InitializeListHead (int *) ;
+ int RtlZeroMemory (TYPE_1__*,int) ;
+ int WARN (char*,TYPE_1__*) ;
 
 file_ref* create_fileref(device_extension* Vcb) {
     file_ref* fr;
@@ -35,7 +35,7 @@ file_ref* create_fileref(device_extension* Vcb) {
     fr = ExAllocateFromPagedLookasideList(&Vcb->fileref_lookaside);
     if (!fr) {
         ERR("out of memory\n");
-        return NULL;
+        return ((void*)0);
     }
 
     RtlZeroMemory(fr, sizeof(file_ref));
@@ -44,14 +44,14 @@ file_ref* create_fileref(device_extension* Vcb) {
     if (!fr->nonpaged) {
         ERR("out of memory\n");
         ExFreeToPagedLookasideList(&Vcb->fileref_lookaside, fr);
-        return NULL;
+        return ((void*)0);
     }
 
     fr->refcount = 1;
 
-#ifdef DEBUG_FCB_REFCOUNTS
-    WARN("fileref %p: refcount now 1\n", fr);
-#endif
+
+
+
 
     InitializeListHead(&fr->children);
 

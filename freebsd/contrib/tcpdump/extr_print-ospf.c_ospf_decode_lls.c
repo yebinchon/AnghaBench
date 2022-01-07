@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int uint16_t ;
-typedef  int u_int ;
-typedef  int /*<<< orphan*/  u_char ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int uint16_t ;
+typedef int u_int ;
+typedef int u_char ;
 struct TYPE_4__ {int db_options; } ;
 struct TYPE_3__ {int hello_options; } ;
-struct ospfhdr {int ospf_type; int* ospf_authdata; int /*<<< orphan*/  const ospf_authtype; int /*<<< orphan*/  const ospf_len; TYPE_2__ ospf_db; TYPE_1__ ospf_hello; } ;
-typedef  int /*<<< orphan*/  netdissect_options ;
+struct ospfhdr {int ospf_type; int* ospf_authdata; int const ospf_authtype; int const ospf_len; TYPE_2__ ospf_db; TYPE_1__ ospf_hello; } ;
+typedef int netdissect_options ;
 
-/* Variables and functions */
- scalar_t__ EXTRACT_16BITS (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EXTRACT_32BITS (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ND_PRINT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ND_TCHECK (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  ND_TCHECK2 (int /*<<< orphan*/  const,int) ; 
- scalar_t__ OSPF_AUTH_MD5 ; 
-#define  OSPF_LLS_EO 131 
-#define  OSPF_LLS_MD5 130 
- int OSPF_OPTION_L ; 
-#define  OSPF_TYPE_DD 129 
-#define  OSPF_TYPE_HELLO 128 
- int /*<<< orphan*/  bittok2str (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ospf_lls_eo_options ; 
- int /*<<< orphan*/  ospf_lls_tlv_values ; 
- int /*<<< orphan*/  tok2str (int /*<<< orphan*/ ,char*,int) ; 
+
+ scalar_t__ EXTRACT_16BITS (int const*) ;
+ int EXTRACT_32BITS (int const*) ;
+ int ND_PRINT (int *) ;
+ int ND_TCHECK (int const) ;
+ int ND_TCHECK2 (int const,int) ;
+ scalar_t__ OSPF_AUTH_MD5 ;
+
+
+ int OSPF_OPTION_L ;
+
+
+ int bittok2str (int ,char*,int ) ;
+ int ospf_lls_eo_options ;
+ int ospf_lls_tlv_values ;
+ int tok2str (int ,char*,int) ;
 
 __attribute__((used)) static int
 ospf_decode_lls(netdissect_options *ndo,
@@ -50,12 +50,12 @@ ospf_decode_lls(netdissect_options *ndo,
 
     switch (op->ospf_type) {
 
-    case OSPF_TYPE_HELLO:
+    case 128:
         if (!(op->ospf_hello.hello_options & OSPF_OPTION_L))
             return (0);
         break;
 
-    case OSPF_TYPE_DD:
+    case 129:
         if (!(op->ospf_db.db_options & OSPF_OPTION_L))
             return (0);
         break;
@@ -64,7 +64,7 @@ ospf_decode_lls(netdissect_options *ndo,
         return (0);
     }
 
-    /* dig deeper if LLS data is available; see RFC4813 */
+
     length2 = EXTRACT_16BITS(&op->ospf_len);
     dptr = (const u_char *)op + length2;
     dataend = (const u_char *)op + length;
@@ -100,7 +100,7 @@ ospf_decode_lls(netdissect_options *ndo,
         dptr += 2;
         switch (lls_type) {
 
-        case OSPF_LLS_EO:
+        case 131:
             if (lls_len != 4) {
                 ND_PRINT((ndo, " [should be 4]"));
                 lls_len = 4;
@@ -112,7 +112,7 @@ ospf_decode_lls(netdissect_options *ndo,
 
             break;
 
-        case OSPF_LLS_MD5:
+        case 130:
             if (lls_len != 20) {
                 ND_PRINT((ndo, " [should be 20]"));
                 lls_len = 20;

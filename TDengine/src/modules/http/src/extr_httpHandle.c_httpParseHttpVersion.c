@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  pLast; } ;
-struct TYPE_8__ {void* httpVersion; int /*<<< orphan*/  ipstr; int /*<<< orphan*/  fd; TYPE_1__ parser; } ;
-typedef  TYPE_1__ HttpParser ;
-typedef  TYPE_2__ HttpContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HTTP_PARSE_HTTP_VERSION_ERROR ; 
- void* HTTP_VERSION_10 ; 
- void* HTTP_VERSION_11 ; 
- int /*<<< orphan*/  httpError (char*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  httpSendErrorResp (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  httpTrace (char*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- char* strchr (int /*<<< orphan*/ ,char) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int pLast; } ;
+struct TYPE_8__ {void* httpVersion; int ipstr; int fd; TYPE_1__ parser; } ;
+typedef TYPE_1__ HttpParser ;
+typedef TYPE_2__ HttpContext ;
+
+
+ int HTTP_PARSE_HTTP_VERSION_ERROR ;
+ void* HTTP_VERSION_10 ;
+ void* HTTP_VERSION_11 ;
+ int httpError (char*,TYPE_2__*,int ,int ,int ) ;
+ int httpSendErrorResp (TYPE_2__*,int ) ;
+ int httpTrace (char*,TYPE_2__*,int ,int ,void*) ;
+ char* strchr (int ,char) ;
 
 bool httpParseHttpVersion(HttpContext* pContext) {
   HttpParser* pParser = &pContext->parser;
   char* pEnd = strchr(pParser->pLast, '1');
-  if (pEnd == NULL) {
+  if (pEnd == ((void*)0)) {
     httpError("context:%p, fd:%d, ip:%s, can't find http version at position:%s", pContext, pContext->fd,
               pContext->ipstr, pParser->pLast);
     httpSendErrorResp(pContext, HTTP_PARSE_HTTP_VERSION_ERROR);
-    return false;
+    return 0;
   }
 
   if (*(pEnd + 1) != '.') {
     httpError("context:%p, fd:%d, ip:%s, can't find http version at position:%s", pContext, pContext->fd,
               pContext->ipstr, pParser->pLast);
     httpSendErrorResp(pContext, HTTP_PARSE_HTTP_VERSION_ERROR);
-    return false;
+    return 0;
   }
 
   if (*(pEnd + 2) == '0')
@@ -54,5 +54,5 @@ bool httpParseHttpVersion(HttpContext* pContext) {
 
   httpTrace("context:%p, fd:%d, ip:%s, httpVersion:1.%d", pContext, pContext->fd, pContext->ipstr,
             pContext->httpVersion);
-  return true;
+  return 1;
 }

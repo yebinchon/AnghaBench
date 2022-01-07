@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_6__ ;
-typedef  struct TYPE_23__   TYPE_5__ ;
-typedef  struct TYPE_22__   TYPE_3__ ;
-typedef  struct TYPE_21__   TYPE_2__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  msi_file_state ;
-struct TYPE_22__ {int /*<<< orphan*/  dwFileVersionLS; int /*<<< orphan*/  dwFileVersionMS; } ;
-typedef  TYPE_3__ WCHAR ;
-typedef  TYPE_3__ VS_FIXEDFILEINFO ;
-struct TYPE_24__ {scalar_t__ Action; TYPE_1__* assembly; int /*<<< orphan*/  Enabled; } ;
+
+
+typedef struct TYPE_24__ TYPE_6__ ;
+typedef struct TYPE_23__ TYPE_5__ ;
+typedef struct TYPE_22__ TYPE_3__ ;
+typedef struct TYPE_21__ TYPE_2__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+
+
+typedef int msi_file_state ;
+struct TYPE_22__ {int dwFileVersionLS; int dwFileVersionMS; } ;
+typedef TYPE_3__ WCHAR ;
+typedef TYPE_3__ VS_FIXEDFILEINFO ;
+struct TYPE_24__ {scalar_t__ Action; TYPE_1__* assembly; int Enabled; } ;
 struct TYPE_21__ {scalar_t__ dwFileHashInfoSize; } ;
-struct TYPE_23__ {TYPE_3__* File; TYPE_2__ hash; int /*<<< orphan*/  FileSize; int /*<<< orphan*/  TargetPath; TYPE_3__* Version; TYPE_6__* Component; } ;
+struct TYPE_23__ {TYPE_3__* File; TYPE_2__ hash; int FileSize; int TargetPath; TYPE_3__* Version; TYPE_6__* Component; } ;
 struct TYPE_20__ {scalar_t__ installed; } ;
-typedef  int /*<<< orphan*/  MSIPACKAGE ;
-typedef  TYPE_5__ MSIFILE ;
-typedef  TYPE_6__ MSICOMPONENT ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef int MSIPACKAGE ;
+typedef TYPE_5__ MSIFILE ;
+typedef TYPE_6__ MSICOMPONENT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- scalar_t__ GetFileAttributesW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HIWORD (int /*<<< orphan*/ ) ; 
- scalar_t__ INSTALLSTATE_LOCAL ; 
- scalar_t__ INVALID_FILE_ATTRIBUTES ; 
- int /*<<< orphan*/  LOWORD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  debugstr_w (TYPE_3__*) ; 
- scalar_t__ is_obsoleted_by_patch (int /*<<< orphan*/ *,TYPE_5__*) ; 
- scalar_t__ msi_compare_file_versions (TYPE_3__*,TYPE_3__*) ; 
- scalar_t__ msi_compare_font_versions (TYPE_3__*,TYPE_3__*) ; 
- scalar_t__ msi_file_hash_matches (TYPE_5__*) ; 
- TYPE_3__* msi_font_version_from_file (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msi_free (TYPE_3__*) ; 
- scalar_t__ msi_get_component_action (int /*<<< orphan*/ *,TYPE_6__*) ; 
- int /*<<< orphan*/  msi_get_disk_file_size (int /*<<< orphan*/ ) ; 
- TYPE_3__* msi_get_disk_file_version (int /*<<< orphan*/ ) ; 
- scalar_t__ msi_is_global_assembly (TYPE_6__*) ; 
- int /*<<< orphan*/  msifs_hashmatch ; 
- int /*<<< orphan*/  msifs_missing ; 
- int /*<<< orphan*/  msifs_overwrite ; 
- int /*<<< orphan*/  msifs_present ; 
- int /*<<< orphan*/  msifs_skipped ; 
+
+ scalar_t__ GetFileAttributesW (int ) ;
+ int HIWORD (int ) ;
+ scalar_t__ INSTALLSTATE_LOCAL ;
+ scalar_t__ INVALID_FILE_ATTRIBUTES ;
+ int LOWORD (int ) ;
+ int TRACE (char*,int ,...) ;
+ int debugstr_w (TYPE_3__*) ;
+ scalar_t__ is_obsoleted_by_patch (int *,TYPE_5__*) ;
+ scalar_t__ msi_compare_file_versions (TYPE_3__*,TYPE_3__*) ;
+ scalar_t__ msi_compare_font_versions (TYPE_3__*,TYPE_3__*) ;
+ scalar_t__ msi_file_hash_matches (TYPE_5__*) ;
+ TYPE_3__* msi_font_version_from_file (int ) ;
+ int msi_free (TYPE_3__*) ;
+ scalar_t__ msi_get_component_action (int *,TYPE_6__*) ;
+ int msi_get_disk_file_size (int ) ;
+ TYPE_3__* msi_get_disk_file_version (int ) ;
+ scalar_t__ msi_is_global_assembly (TYPE_6__*) ;
+ int msifs_hashmatch ;
+ int msifs_missing ;
+ int msifs_overwrite ;
+ int msifs_present ;
+ int msifs_skipped ;
 
 __attribute__((used)) static msi_file_state calculate_install_state( MSIPACKAGE *package, MSIFILE *file )
 {
@@ -136,7 +136,7 @@ __attribute__((used)) static msi_file_state calculate_install_state( MSIPACKAGE 
             return msifs_overwrite;
         }
     }
-    /* assume present */
+
     TRACE("keeping %s\n", debugstr_w(file->File));
     return msifs_present;
 }

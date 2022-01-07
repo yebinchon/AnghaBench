@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_8__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-struct TYPE_14__ {int /*<<< orphan*/  mem_pool; } ;
-typedef  TYPE_2__ njs_vm_t ;
-typedef  int /*<<< orphan*/  njs_vm_event_t ;
-struct TYPE_13__ {int length; int /*<<< orphan*/ * start; } ;
-struct TYPE_15__ {int /*<<< orphan*/  pool; int /*<<< orphan*/ * proto; TYPE_1__ key; int /*<<< orphan*/  key_hash; } ;
-typedef  TYPE_3__ njs_lvlhsh_query_t ;
-typedef  scalar_t__ njs_int_t ;
-typedef  TYPE_4__* njs_host_event_t ;
-typedef  TYPE_5__* njs_external_ptr_t ;
-struct TYPE_18__ {int /*<<< orphan*/ * prev; } ;
-struct TYPE_16__ {TYPE_8__ link; int /*<<< orphan*/  vm_event; } ;
-typedef  TYPE_4__ njs_ev_t ;
-struct TYPE_17__ {int /*<<< orphan*/  events; TYPE_2__* vm; } ;
-typedef  TYPE_5__ njs_console_t ;
 
-/* Variables and functions */
- scalar_t__ NJS_OK ; 
- int /*<<< orphan*/  lvlhsh_proto ; 
- int /*<<< orphan*/  njs_djb_hash (int /*<<< orphan*/ *,int) ; 
- scalar_t__ njs_lvlhsh_delete (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  njs_mp_free (int /*<<< orphan*/ ,TYPE_4__*) ; 
- int /*<<< orphan*/  njs_queue_remove (TYPE_8__*) ; 
- int /*<<< orphan*/  njs_stderror (char*) ; 
+
+typedef struct TYPE_18__ TYPE_8__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int u_char ;
+struct TYPE_14__ {int mem_pool; } ;
+typedef TYPE_2__ njs_vm_t ;
+typedef int njs_vm_event_t ;
+struct TYPE_13__ {int length; int * start; } ;
+struct TYPE_15__ {int pool; int * proto; TYPE_1__ key; int key_hash; } ;
+typedef TYPE_3__ njs_lvlhsh_query_t ;
+typedef scalar_t__ njs_int_t ;
+typedef TYPE_4__* njs_host_event_t ;
+typedef TYPE_5__* njs_external_ptr_t ;
+struct TYPE_18__ {int * prev; } ;
+struct TYPE_16__ {TYPE_8__ link; int vm_event; } ;
+typedef TYPE_4__ njs_ev_t ;
+struct TYPE_17__ {int events; TYPE_2__* vm; } ;
+typedef TYPE_5__ njs_console_t ;
+
+
+ scalar_t__ NJS_OK ;
+ int lvlhsh_proto ;
+ int njs_djb_hash (int *,int) ;
+ scalar_t__ njs_lvlhsh_delete (int *,TYPE_3__*) ;
+ int njs_mp_free (int ,TYPE_4__*) ;
+ int njs_queue_remove (TYPE_8__*) ;
+ int njs_stderror (char*) ;
 
 __attribute__((used)) static void
 njs_console_clear_timer(njs_external_ptr_t external, njs_host_event_t event)
 {
-    njs_vm_t            *vm;
-    njs_ev_t            *ev;
-    njs_int_t           ret;
-    njs_console_t       *console;
-    njs_lvlhsh_query_t  lhq;
+    njs_vm_t *vm;
+    njs_ev_t *ev;
+    njs_int_t ret;
+    njs_console_t *console;
+    njs_lvlhsh_query_t lhq;
 
     ev = event;
     console = external;
@@ -61,7 +61,7 @@ njs_console_clear_timer(njs_external_ptr_t external, njs_host_event_t event)
     lhq.proto = &lvlhsh_proto;
     lhq.pool = vm->mem_pool;
 
-    if (ev->link.prev != NULL) {
+    if (ev->link.prev != ((void*)0)) {
         njs_queue_remove(&ev->link);
     }
 

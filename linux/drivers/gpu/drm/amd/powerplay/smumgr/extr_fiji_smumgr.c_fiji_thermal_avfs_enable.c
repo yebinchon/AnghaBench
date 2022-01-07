@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pp_hwmgr {int /*<<< orphan*/  avfs_supported; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PPSMC_MSG_EnableAvfs ; 
- int /*<<< orphan*/  smum_send_msg_to_smc (struct pp_hwmgr*,int /*<<< orphan*/ ) ; 
+
+
+
+struct pp_hwmgr {int avfs_supported; } ;
+
+
+ int PPSMC_MSG_EnableAvfs ;
+ int smum_send_msg_to_smc (struct pp_hwmgr*,int ) ;
 
 __attribute__((used)) static int fiji_thermal_avfs_enable(struct pp_hwmgr *hwmgr)
 {
-	if (!hwmgr->avfs_supported)
-		return 0;
+ if (!hwmgr->avfs_supported)
+  return 0;
 
-	smum_send_msg_to_smc(hwmgr, PPSMC_MSG_EnableAvfs);
+ smum_send_msg_to_smc(hwmgr, PPSMC_MSG_EnableAvfs);
 
-	return 0;
+ return 0;
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* dump_info_p ;
-struct TYPE_3__ {char* column; int /*<<< orphan*/  stream; } ;
 
-/* Variables and functions */
- char* SOL_COLUMN ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* dump_info_p ;
+struct TYPE_3__ {char* column; int stream; } ;
+
+
+ char* SOL_COLUMN ;
+ int fprintf (int ,char*,char*,char*) ;
 
 __attribute__((used)) static void
 dump_new_line (dump_info_p di)

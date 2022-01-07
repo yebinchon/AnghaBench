@@ -1,18 +1,9 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 int
 strncmp(
         const char *s1,
@@ -25,13 +16,13 @@ strncmp(
                 a = *s1++;
                 b = *s2++;
                 if (a != b)
-                        return a-b;     /* includes case when
-                                           'a' is zero and 'b' is not zero
-                                           or vice versa */
+                        return a-b;
+
+
                 if (a == '\0')
-                        return 0;       /* both are zero */
+                        return 0;
                 n--;
-	}
+ }
 
         return 0;
 }

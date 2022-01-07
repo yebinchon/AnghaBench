@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct zr364xx_camera {int /*<<< orphan*/  lock; scalar_t__ resources; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _DBG (char*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct zr364xx_camera {int lock; scalar_t__ resources; } ;
+
+
+ int _DBG (char*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 __attribute__((used)) static void res_free(struct zr364xx_camera *cam)
 {
-	mutex_lock(&cam->lock);
-	cam->resources = 0;
-	mutex_unlock(&cam->lock);
-	_DBG("res: put\n");
+ mutex_lock(&cam->lock);
+ cam->resources = 0;
+ mutex_unlock(&cam->lock);
+ _DBG("res: put\n");
 }

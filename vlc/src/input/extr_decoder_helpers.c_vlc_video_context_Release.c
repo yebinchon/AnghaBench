@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  private_type; TYPE_1__* ops; scalar_t__ device; int /*<<< orphan*/  rc; } ;
-typedef  TYPE_2__ vlc_video_context ;
-struct TYPE_6__ {int /*<<< orphan*/  (* destroy ) (int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- scalar_t__ vlc_atomic_rc_dec (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_decoder_device_Release (scalar_t__) ; 
- int /*<<< orphan*/  vlc_video_context_GetPrivate (TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int private_type; TYPE_1__* ops; scalar_t__ device; int rc; } ;
+typedef TYPE_2__ vlc_video_context ;
+struct TYPE_6__ {int (* destroy ) (int ) ;} ;
+
+
+ int free (TYPE_2__*) ;
+ int stub1 (int ) ;
+ scalar_t__ vlc_atomic_rc_dec (int *) ;
+ int vlc_decoder_device_Release (scalar_t__) ;
+ int vlc_video_context_GetPrivate (TYPE_2__*,int ) ;
 
 void vlc_video_context_Release(vlc_video_context *vctx)
 {

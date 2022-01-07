@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct net_buf_simple {int /*<<< orphan*/  data; int /*<<< orphan*/  len; } ;
-struct bt_mesh_msg_ctx {int /*<<< orphan*/  recv_op; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct net_buf_simple {int data; int len; } ;
+struct bt_mesh_msg_ctx {int recv_op; } ;
 struct bt_mesh_model {int dummy; } ;
-typedef  int /*<<< orphan*/  esp_ble_mesh_msg_ctx_t ;
-typedef  int /*<<< orphan*/  esp_ble_mesh_model_t ;
-struct TYPE_4__ {int /*<<< orphan*/  msg; int /*<<< orphan*/  length; int /*<<< orphan*/ * ctx; int /*<<< orphan*/ * model; int /*<<< orphan*/  opcode; } ;
-struct TYPE_5__ {TYPE_1__ model_operation; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ esp_ble_mesh_model_cb_param_t ;
+typedef int esp_ble_mesh_msg_ctx_t ;
+typedef int esp_ble_mesh_model_t ;
+struct TYPE_4__ {int msg; int length; int * ctx; int * model; int opcode; } ;
+struct TYPE_5__ {TYPE_1__ model_operation; int member_0; } ;
+typedef TYPE_2__ esp_ble_mesh_model_cb_param_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_BLE_MESH_MODEL_OPERATION_EVT ; 
- int /*<<< orphan*/  btc_ble_mesh_model_callback (TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+ int ESP_BLE_MESH_MODEL_OPERATION_EVT ;
+ int btc_ble_mesh_model_callback (TYPE_2__*,int ) ;
 
 __attribute__((used)) static void btc_ble_mesh_server_model_op_cb(struct bt_mesh_model *model,
         struct bt_mesh_msg_ctx *ctx,

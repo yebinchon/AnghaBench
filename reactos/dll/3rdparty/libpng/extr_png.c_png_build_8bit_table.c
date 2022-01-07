@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  png_structrp ;
-typedef  int /*<<< orphan*/  png_fixed_point ;
-typedef  scalar_t__** png_bytepp ;
-typedef  scalar_t__* png_bytep ;
-typedef  scalar_t__ png_byte ;
 
-/* Variables and functions */
- scalar_t__ png_gamma_8bit_correct (unsigned int,int /*<<< orphan*/ ) ; 
- scalar_t__ png_gamma_significant (int /*<<< orphan*/ ) ; 
- scalar_t__ png_malloc (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int png_structrp ;
+typedef int png_fixed_point ;
+typedef scalar_t__** png_bytepp ;
+typedef scalar_t__* png_bytep ;
+typedef scalar_t__ png_byte ;
+
+
+ scalar_t__ png_gamma_8bit_correct (unsigned int,int ) ;
+ scalar_t__ png_gamma_significant (int ) ;
+ scalar_t__ png_malloc (int ,int) ;
 
 __attribute__((used)) static void
 png_build_8bit_table(png_structrp png_ptr, png_bytepp ptable,

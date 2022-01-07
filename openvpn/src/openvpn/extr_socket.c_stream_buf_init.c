@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct buffer {scalar_t__ len; } ;
-struct stream_buf {int error; scalar_t__ maxlen; int /*<<< orphan*/  port_share_state; int /*<<< orphan*/  residual; struct buffer buf_init; } ;
+struct stream_buf {int error; scalar_t__ maxlen; int port_share_state; int residual; struct buffer buf_init; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_STREAM_DEBUG ; 
- int const PROTO_TCP_SERVER ; 
- int /*<<< orphan*/  PS_DISABLED ; 
- int /*<<< orphan*/  PS_ENABLED ; 
- unsigned int const SF_PORT_SHARE ; 
- int /*<<< orphan*/  alloc_buf (scalar_t__) ; 
- int /*<<< orphan*/  dmsg (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  stream_buf_reset (struct stream_buf*) ; 
+
+ int D_STREAM_DEBUG ;
+ int const PROTO_TCP_SERVER ;
+ int PS_DISABLED ;
+ int PS_ENABLED ;
+ unsigned int const SF_PORT_SHARE ;
+ int alloc_buf (scalar_t__) ;
+ int dmsg (int ,char*,scalar_t__) ;
+ int stream_buf_reset (struct stream_buf*) ;
 
 __attribute__((used)) static void
 stream_buf_init(struct stream_buf *sb,
@@ -33,12 +33,12 @@ stream_buf_init(struct stream_buf *sb,
     sb->maxlen = sb->buf_init.len;
     sb->buf_init.len = 0;
     sb->residual = alloc_buf(sb->maxlen);
-    sb->error = false;
-#if PORT_SHARE
-    sb->port_share_state = ((sockflags & SF_PORT_SHARE) && (proto == PROTO_TCP_SERVER))
-                           ? PS_ENABLED
-                           : PS_DISABLED;
-#endif
+    sb->error = 0;
+
+
+
+
+
     stream_buf_reset(sb);
 
     dmsg(D_STREAM_DEBUG, "STREAM: INIT maxlen=%d", sb->maxlen);

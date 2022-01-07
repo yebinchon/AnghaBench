@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  netdissect_options ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXTRACT_16BITS (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ISIS_MASK_MTFLAGS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ISIS_MASK_MTID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ND_PRINT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ND_TTEST2 (int /*<<< orphan*/  const,int) ; 
- int /*<<< orphan*/  bittok2str (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  isis_mt_flag_values ; 
- int /*<<< orphan*/  isis_mt_values ; 
- int /*<<< orphan*/  tok2str (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef int netdissect_options ;
+
+
+ int EXTRACT_16BITS (int const*) ;
+ int ISIS_MASK_MTFLAGS (int ) ;
+ int ISIS_MASK_MTID (int ) ;
+ int ND_PRINT (int *) ;
+ int ND_TTEST2 (int const,int) ;
+ int bittok2str (int ,char*,int ) ;
+ int isis_mt_flag_values ;
+ int isis_mt_values ;
+ int tok2str (int ,char*,int ) ;
 
 __attribute__((used)) static int
 isis_print_mtid(netdissect_options *ndo,

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int w; int h; int c; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_1__ image ;
 
-/* Variables and functions */
- float mag_array (int /*<<< orphan*/ *,int) ; 
- TYPE_1__ make_image (int,int,int) ; 
- int /*<<< orphan*/  rand_normal () ; 
- int /*<<< orphan*/  scale_array (int /*<<< orphan*/ *,int,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int w; int h; int c; int * data; } ;
+typedef TYPE_1__ image ;
+
+
+ float mag_array (int *,int) ;
+ TYPE_1__ make_image (int,int,int) ;
+ int rand_normal () ;
+ int scale_array (int *,int,int) ;
 
 image random_unit_vector_image(int w, int h, int c)
 {

@@ -1,272 +1,263 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct sd {int subtype; int /*<<< orphan*/  jpeg_hdr; } ;
-struct TYPE_2__ {int /*<<< orphan*/  width; int /*<<< orphan*/  height; } ;
-struct gspca_dev {int* usb_buf; int /*<<< orphan*/  curr_mode; TYPE_1__ pixfmt; } ;
-typedef  int __u8 ;
 
-/* Variables and functions */
-#define  AgfaCl20 142 
-#define  AiptekPocketDV 141 
-#define  BenqDC1016 140 
- int /*<<< orphan*/  Clicksmart510_defaults ; 
-#define  CreativePCCam300 139 
-#define  DLinkDSC350 138 
- int /*<<< orphan*/  D_STREAM ; 
-#define  Gsmartmini 137 
-#define  IntelPocketPCCamera 136 
-#define  KodakEZ200 135 
-#define  LogitechClickSmart310 134 
-#define  LogitechClickSmart510 133 
-#define  LogitechTraveler 132 
-#define  MustekGsmart300 131 
-#define  Optimedia 130 
-#define  PalmPixDC85 129 
- int /*<<< orphan*/  QUALITY ; 
-#define  ToptroIndus 128 
- int /*<<< orphan*/  gspca_dbg (struct gspca_dev*,int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  gspca_err (struct gspca_dev*,char*) ; 
- int /*<<< orphan*/  jpeg_define (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  jpeg_set_qual (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msleep (int) ; 
- int /*<<< orphan*/  qtable_creative_pccam ; 
- int /*<<< orphan*/  qtable_kodak_ez200 ; 
- int /*<<< orphan*/  qtable_pocketdv ; 
- int /*<<< orphan*/  reg_r (struct gspca_dev*,int,int) ; 
- int /*<<< orphan*/  reg_r_wait (struct gspca_dev*,int /*<<< orphan*/ ,int,int) ; 
- int reg_w (struct gspca_dev*,int,int,int) ; 
- int spca500_full_reset (struct gspca_dev*) ; 
- int /*<<< orphan*/  spca500_reinit (struct gspca_dev*) ; 
- int /*<<< orphan*/  spca500_setmode (struct gspca_dev*,int,int) ; 
- int /*<<< orphan*/  spca500_synch310 (struct gspca_dev*) ; 
- int /*<<< orphan*/  spca500_visual_defaults ; 
- int spca50x_setup_qtable (struct gspca_dev*,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_vector (struct gspca_dev*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct sd {int subtype; int jpeg_hdr; } ;
+struct TYPE_2__ {int width; int height; } ;
+struct gspca_dev {int* usb_buf; int curr_mode; TYPE_1__ pixfmt; } ;
+typedef int __u8 ;
+
+
+
+
+
+ int Clicksmart510_defaults ;
+
+
+ int D_STREAM ;
+ int QUALITY ;
+
+ int gspca_dbg (struct gspca_dev*,int ,char*,int,...) ;
+ int gspca_err (struct gspca_dev*,char*) ;
+ int jpeg_define (int ,int ,int ,int) ;
+ int jpeg_set_qual (int ,int ) ;
+ int msleep (int) ;
+ int qtable_creative_pccam ;
+ int qtable_kodak_ez200 ;
+ int qtable_pocketdv ;
+ int reg_r (struct gspca_dev*,int,int) ;
+ int reg_r_wait (struct gspca_dev*,int ,int,int) ;
+ int reg_w (struct gspca_dev*,int,int,int) ;
+ int spca500_full_reset (struct gspca_dev*) ;
+ int spca500_reinit (struct gspca_dev*) ;
+ int spca500_setmode (struct gspca_dev*,int,int) ;
+ int spca500_synch310 (struct gspca_dev*) ;
+ int spca500_visual_defaults ;
+ int spca50x_setup_qtable (struct gspca_dev*,int,int,int,int ) ;
+ int write_vector (struct gspca_dev*,int ) ;
 
 __attribute__((used)) static int sd_start(struct gspca_dev *gspca_dev)
 {
-	struct sd *sd = (struct sd *) gspca_dev;
-	int err;
-	__u8 Data;
-	__u8 xmult, ymult;
+ struct sd *sd = (struct sd *) gspca_dev;
+ int err;
+ __u8 Data;
+ __u8 xmult, ymult;
 
-	/* create the JPEG header */
-	jpeg_define(sd->jpeg_hdr, gspca_dev->pixfmt.height,
-			gspca_dev->pixfmt.width,
-			0x22);		/* JPEG 411 */
-	jpeg_set_qual(sd->jpeg_hdr, QUALITY);
 
-	if (sd->subtype == LogitechClickSmart310) {
-		xmult = 0x16;
-		ymult = 0x12;
-	} else {
-		xmult = 0x28;
-		ymult = 0x1e;
-	}
+ jpeg_define(sd->jpeg_hdr, gspca_dev->pixfmt.height,
+   gspca_dev->pixfmt.width,
+   0x22);
+ jpeg_set_qual(sd->jpeg_hdr, QUALITY);
 
-	/* is there a sensor here ? */
-	reg_r(gspca_dev, 0x8a04, 1);
-	gspca_dbg(gspca_dev, D_STREAM, "Spca500 Sensor Address 0x%02x\n",
-		  gspca_dev->usb_buf[0]);
-	gspca_dbg(gspca_dev, D_STREAM, "Spca500 curr_mode: %d Xmult: 0x%02x, Ymult: 0x%02x",
-		  gspca_dev->curr_mode, xmult, ymult);
+ if (sd->subtype == 134) {
+  xmult = 0x16;
+  ymult = 0x12;
+ } else {
+  xmult = 0x28;
+  ymult = 0x1e;
+ }
 
-	/* setup qtable */
-	switch (sd->subtype) {
-	case LogitechClickSmart310:
-		 spca500_setmode(gspca_dev, xmult, ymult);
 
-		/* enable drop packet */
-		reg_w(gspca_dev, 0x00, 0x850a, 0x0001);
-		reg_w(gspca_dev, 0x00, 0x8880, 3);
-		err = spca50x_setup_qtable(gspca_dev,
-					   0x00, 0x8800, 0x8840,
-					   qtable_creative_pccam);
-		if (err < 0)
-			gspca_err(gspca_dev, "spca50x_setup_qtable failed\n");
-		/* Init SDRAM - needed for SDRAM access */
-		reg_w(gspca_dev, 0x00, 0x870a, 0x04);
+ reg_r(gspca_dev, 0x8a04, 1);
+ gspca_dbg(gspca_dev, D_STREAM, "Spca500 Sensor Address 0x%02x\n",
+    gspca_dev->usb_buf[0]);
+ gspca_dbg(gspca_dev, D_STREAM, "Spca500 curr_mode: %d Xmult: 0x%02x, Ymult: 0x%02x",
+    gspca_dev->curr_mode, xmult, ymult);
 
-		/* switch to video camera mode */
-		reg_w(gspca_dev, 0x00, 0x8000, 0x0004);
-		msleep(500);
-		if (reg_r_wait(gspca_dev, 0, 0x8000, 0x44) != 0)
-			gspca_err(gspca_dev, "reg_r_wait() failed\n");
 
-		reg_r(gspca_dev, 0x816b, 1);
-		Data = gspca_dev->usb_buf[0];
-		reg_w(gspca_dev, 0x00, 0x816b, Data);
+ switch (sd->subtype) {
+ case 134:
+   spca500_setmode(gspca_dev, xmult, ymult);
 
-		spca500_synch310(gspca_dev);
 
-		write_vector(gspca_dev, spca500_visual_defaults);
-		spca500_setmode(gspca_dev, xmult, ymult);
-		/* enable drop packet */
-		err = reg_w(gspca_dev, 0x00, 0x850a, 0x0001);
-		if (err < 0)
-			gspca_err(gspca_dev, "failed to enable drop packet\n");
-		reg_w(gspca_dev, 0x00, 0x8880, 3);
-		err = spca50x_setup_qtable(gspca_dev,
-					   0x00, 0x8800, 0x8840,
-					   qtable_creative_pccam);
-		if (err < 0)
-			gspca_err(gspca_dev, "spca50x_setup_qtable failed\n");
+  reg_w(gspca_dev, 0x00, 0x850a, 0x0001);
+  reg_w(gspca_dev, 0x00, 0x8880, 3);
+  err = spca50x_setup_qtable(gspca_dev,
+        0x00, 0x8800, 0x8840,
+        qtable_creative_pccam);
+  if (err < 0)
+   gspca_err(gspca_dev, "spca50x_setup_qtable failed\n");
 
-		/* Init SDRAM - needed for SDRAM access */
-		reg_w(gspca_dev, 0x00, 0x870a, 0x04);
+  reg_w(gspca_dev, 0x00, 0x870a, 0x04);
 
-		/* switch to video camera mode */
-		reg_w(gspca_dev, 0x00, 0x8000, 0x0004);
 
-		if (reg_r_wait(gspca_dev, 0, 0x8000, 0x44) != 0)
-			gspca_err(gspca_dev, "reg_r_wait() failed\n");
+  reg_w(gspca_dev, 0x00, 0x8000, 0x0004);
+  msleep(500);
+  if (reg_r_wait(gspca_dev, 0, 0x8000, 0x44) != 0)
+   gspca_err(gspca_dev, "reg_r_wait() failed\n");
 
-		reg_r(gspca_dev, 0x816b, 1);
-		Data = gspca_dev->usb_buf[0];
-		reg_w(gspca_dev, 0x00, 0x816b, Data);
-		break;
-	case CreativePCCam300:		/* Creative PC-CAM 300 640x480 CCD */
-	case IntelPocketPCCamera:	/* FIXME: Temporary fix for
-					 *	Intel Pocket PC Camera
-					 *	- NWG (Sat 29th March 2003) */
+  reg_r(gspca_dev, 0x816b, 1);
+  Data = gspca_dev->usb_buf[0];
+  reg_w(gspca_dev, 0x00, 0x816b, Data);
 
-		/* do a full reset */
-		err = spca500_full_reset(gspca_dev);
-		if (err < 0)
-			gspca_err(gspca_dev, "spca500_full_reset failed\n");
+  spca500_synch310(gspca_dev);
 
-		/* enable drop packet */
-		err = reg_w(gspca_dev, 0x00, 0x850a, 0x0001);
-		if (err < 0)
-			gspca_err(gspca_dev, "failed to enable drop packet\n");
-		reg_w(gspca_dev, 0x00, 0x8880, 3);
-		err = spca50x_setup_qtable(gspca_dev,
-					   0x00, 0x8800, 0x8840,
-					   qtable_creative_pccam);
-		if (err < 0)
-			gspca_err(gspca_dev, "spca50x_setup_qtable failed\n");
+  write_vector(gspca_dev, spca500_visual_defaults);
+  spca500_setmode(gspca_dev, xmult, ymult);
 
-		spca500_setmode(gspca_dev, xmult, ymult);
-		reg_w(gspca_dev, 0x20, 0x0001, 0x0004);
+  err = reg_w(gspca_dev, 0x00, 0x850a, 0x0001);
+  if (err < 0)
+   gspca_err(gspca_dev, "failed to enable drop packet\n");
+  reg_w(gspca_dev, 0x00, 0x8880, 3);
+  err = spca50x_setup_qtable(gspca_dev,
+        0x00, 0x8800, 0x8840,
+        qtable_creative_pccam);
+  if (err < 0)
+   gspca_err(gspca_dev, "spca50x_setup_qtable failed\n");
 
-		/* switch to video camera mode */
-		reg_w(gspca_dev, 0x00, 0x8000, 0x0004);
 
-		if (reg_r_wait(gspca_dev, 0, 0x8000, 0x44) != 0)
-			gspca_err(gspca_dev, "reg_r_wait() failed\n");
+  reg_w(gspca_dev, 0x00, 0x870a, 0x04);
 
-		reg_r(gspca_dev, 0x816b, 1);
-		Data = gspca_dev->usb_buf[0];
-		reg_w(gspca_dev, 0x00, 0x816b, Data);
 
-/*		write_vector(gspca_dev, spca500_visual_defaults); */
-		break;
-	case KodakEZ200:		/* Kodak EZ200 */
+  reg_w(gspca_dev, 0x00, 0x8000, 0x0004);
 
-		/* do a full reset */
-		err = spca500_full_reset(gspca_dev);
-		if (err < 0)
-			gspca_err(gspca_dev, "spca500_full_reset failed\n");
-		/* enable drop packet */
-		reg_w(gspca_dev, 0x00, 0x850a, 0x0001);
-		reg_w(gspca_dev, 0x00, 0x8880, 0);
-		err = spca50x_setup_qtable(gspca_dev,
-					   0x00, 0x8800, 0x8840,
-					   qtable_kodak_ez200);
-		if (err < 0)
-			gspca_err(gspca_dev, "spca50x_setup_qtable failed\n");
-		spca500_setmode(gspca_dev, xmult, ymult);
+  if (reg_r_wait(gspca_dev, 0, 0x8000, 0x44) != 0)
+   gspca_err(gspca_dev, "reg_r_wait() failed\n");
 
-		reg_w(gspca_dev, 0x20, 0x0001, 0x0004);
+  reg_r(gspca_dev, 0x816b, 1);
+  Data = gspca_dev->usb_buf[0];
+  reg_w(gspca_dev, 0x00, 0x816b, Data);
+  break;
+ case 139:
+ case 136:
 
-		/* switch to video camera mode */
-		reg_w(gspca_dev, 0x00, 0x8000, 0x0004);
 
-		if (reg_r_wait(gspca_dev, 0, 0x8000, 0x44) != 0)
-			gspca_err(gspca_dev, "reg_r_wait() failed\n");
 
-		reg_r(gspca_dev, 0x816b, 1);
-		Data = gspca_dev->usb_buf[0];
-		reg_w(gspca_dev, 0x00, 0x816b, Data);
 
-/*		write_vector(gspca_dev, spca500_visual_defaults); */
-		break;
+  err = spca500_full_reset(gspca_dev);
+  if (err < 0)
+   gspca_err(gspca_dev, "spca500_full_reset failed\n");
 
-	case BenqDC1016:
-	case DLinkDSC350:		/* FamilyCam 300 */
-	case AiptekPocketDV:		/* Aiptek PocketDV */
-	case Gsmartmini:		/*Mustek Gsmart Mini */
-	case MustekGsmart300:		/* Mustek Gsmart 300 */
-	case PalmPixDC85:
-	case Optimedia:
-	case ToptroIndus:
-	case AgfaCl20:
-		spca500_reinit(gspca_dev);
-		reg_w(gspca_dev, 0x00, 0x0d01, 0x01);
-		/* enable drop packet */
-		reg_w(gspca_dev, 0x00, 0x850a, 0x0001);
 
-		err = spca50x_setup_qtable(gspca_dev,
-				   0x00, 0x8800, 0x8840, qtable_pocketdv);
-		if (err < 0)
-			gspca_err(gspca_dev, "spca50x_setup_qtable failed\n");
-		reg_w(gspca_dev, 0x00, 0x8880, 2);
+  err = reg_w(gspca_dev, 0x00, 0x850a, 0x0001);
+  if (err < 0)
+   gspca_err(gspca_dev, "failed to enable drop packet\n");
+  reg_w(gspca_dev, 0x00, 0x8880, 3);
+  err = spca50x_setup_qtable(gspca_dev,
+        0x00, 0x8800, 0x8840,
+        qtable_creative_pccam);
+  if (err < 0)
+   gspca_err(gspca_dev, "spca50x_setup_qtable failed\n");
 
-		/* familycam Quicksmart pocketDV stuff */
-		reg_w(gspca_dev, 0x00, 0x800a, 0x00);
-		/* Set agc transfer: synced between frames */
-		reg_w(gspca_dev, 0x00, 0x820f, 0x01);
-		/* Init SDRAM - needed for SDRAM access */
-		reg_w(gspca_dev, 0x00, 0x870a, 0x04);
+  spca500_setmode(gspca_dev, xmult, ymult);
+  reg_w(gspca_dev, 0x20, 0x0001, 0x0004);
 
-		spca500_setmode(gspca_dev, xmult, ymult);
-		/* switch to video camera mode */
-		reg_w(gspca_dev, 0x00, 0x8000, 0x0004);
 
-		reg_r_wait(gspca_dev, 0, 0x8000, 0x44);
+  reg_w(gspca_dev, 0x00, 0x8000, 0x0004);
 
-		reg_r(gspca_dev, 0x816b, 1);
-		Data = gspca_dev->usb_buf[0];
-		reg_w(gspca_dev, 0x00, 0x816b, Data);
-		break;
-	case LogitechTraveler:
-	case LogitechClickSmart510:
-		reg_w(gspca_dev, 0x02, 0x00, 0x00);
-		/* enable drop packet */
-		reg_w(gspca_dev, 0x00, 0x850a, 0x0001);
+  if (reg_r_wait(gspca_dev, 0, 0x8000, 0x44) != 0)
+   gspca_err(gspca_dev, "reg_r_wait() failed\n");
 
-		err = spca50x_setup_qtable(gspca_dev,
-					0x00, 0x8800,
-					0x8840, qtable_creative_pccam);
-		if (err < 0)
-			gspca_err(gspca_dev, "spca50x_setup_qtable failed\n");
-		reg_w(gspca_dev, 0x00, 0x8880, 3);
-		reg_w(gspca_dev, 0x00, 0x800a, 0x00);
-		/* Init SDRAM - needed for SDRAM access */
-		reg_w(gspca_dev, 0x00, 0x870a, 0x04);
+  reg_r(gspca_dev, 0x816b, 1);
+  Data = gspca_dev->usb_buf[0];
+  reg_w(gspca_dev, 0x00, 0x816b, Data);
 
-		spca500_setmode(gspca_dev, xmult, ymult);
 
-		/* switch to video camera mode */
-		reg_w(gspca_dev, 0x00, 0x8000, 0x0004);
-		reg_r_wait(gspca_dev, 0, 0x8000, 0x44);
+  break;
+ case 135:
 
-		reg_r(gspca_dev, 0x816b, 1);
-		Data = gspca_dev->usb_buf[0];
-		reg_w(gspca_dev, 0x00, 0x816b, Data);
-		write_vector(gspca_dev, Clicksmart510_defaults);
-		break;
-	}
-	return 0;
+
+  err = spca500_full_reset(gspca_dev);
+  if (err < 0)
+   gspca_err(gspca_dev, "spca500_full_reset failed\n");
+
+  reg_w(gspca_dev, 0x00, 0x850a, 0x0001);
+  reg_w(gspca_dev, 0x00, 0x8880, 0);
+  err = spca50x_setup_qtable(gspca_dev,
+        0x00, 0x8800, 0x8840,
+        qtable_kodak_ez200);
+  if (err < 0)
+   gspca_err(gspca_dev, "spca50x_setup_qtable failed\n");
+  spca500_setmode(gspca_dev, xmult, ymult);
+
+  reg_w(gspca_dev, 0x20, 0x0001, 0x0004);
+
+
+  reg_w(gspca_dev, 0x00, 0x8000, 0x0004);
+
+  if (reg_r_wait(gspca_dev, 0, 0x8000, 0x44) != 0)
+   gspca_err(gspca_dev, "reg_r_wait() failed\n");
+
+  reg_r(gspca_dev, 0x816b, 1);
+  Data = gspca_dev->usb_buf[0];
+  reg_w(gspca_dev, 0x00, 0x816b, Data);
+
+
+  break;
+
+ case 140:
+ case 138:
+ case 141:
+ case 137:
+ case 131:
+ case 129:
+ case 130:
+ case 128:
+ case 142:
+  spca500_reinit(gspca_dev);
+  reg_w(gspca_dev, 0x00, 0x0d01, 0x01);
+
+  reg_w(gspca_dev, 0x00, 0x850a, 0x0001);
+
+  err = spca50x_setup_qtable(gspca_dev,
+       0x00, 0x8800, 0x8840, qtable_pocketdv);
+  if (err < 0)
+   gspca_err(gspca_dev, "spca50x_setup_qtable failed\n");
+  reg_w(gspca_dev, 0x00, 0x8880, 2);
+
+
+  reg_w(gspca_dev, 0x00, 0x800a, 0x00);
+
+  reg_w(gspca_dev, 0x00, 0x820f, 0x01);
+
+  reg_w(gspca_dev, 0x00, 0x870a, 0x04);
+
+  spca500_setmode(gspca_dev, xmult, ymult);
+
+  reg_w(gspca_dev, 0x00, 0x8000, 0x0004);
+
+  reg_r_wait(gspca_dev, 0, 0x8000, 0x44);
+
+  reg_r(gspca_dev, 0x816b, 1);
+  Data = gspca_dev->usb_buf[0];
+  reg_w(gspca_dev, 0x00, 0x816b, Data);
+  break;
+ case 132:
+ case 133:
+  reg_w(gspca_dev, 0x02, 0x00, 0x00);
+
+  reg_w(gspca_dev, 0x00, 0x850a, 0x0001);
+
+  err = spca50x_setup_qtable(gspca_dev,
+     0x00, 0x8800,
+     0x8840, qtable_creative_pccam);
+  if (err < 0)
+   gspca_err(gspca_dev, "spca50x_setup_qtable failed\n");
+  reg_w(gspca_dev, 0x00, 0x8880, 3);
+  reg_w(gspca_dev, 0x00, 0x800a, 0x00);
+
+  reg_w(gspca_dev, 0x00, 0x870a, 0x04);
+
+  spca500_setmode(gspca_dev, xmult, ymult);
+
+
+  reg_w(gspca_dev, 0x00, 0x8000, 0x0004);
+  reg_r_wait(gspca_dev, 0, 0x8000, 0x44);
+
+  reg_r(gspca_dev, 0x816b, 1);
+  Data = gspca_dev->usb_buf[0];
+  reg_w(gspca_dev, 0x00, 0x816b, Data);
+  write_vector(gspca_dev, Clicksmart510_defaults);
+  break;
+ }
+ return 0;
 }

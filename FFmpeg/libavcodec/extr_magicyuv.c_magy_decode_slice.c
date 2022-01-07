@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int ptrdiff_t ;
+
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int ptrdiff_t ;
 struct TYPE_14__ {int coded_height; int coded_width; TYPE_4__* priv_data; } ;
 struct TYPE_13__ {int* linesize; int** data; } ;
-struct TYPE_10__ {int /*<<< orphan*/  (* add_bytes ) (int*,int*,int) ;int /*<<< orphan*/  (* add_median_pred ) (int*,int*,int*,int,int*,int*) ;int /*<<< orphan*/  (* add_left_pred ) (int*,int*,int,int) ;int /*<<< orphan*/  (* add_gradient_pred ) (int*,int,int) ;} ;
-struct TYPE_12__ {int interlaced; int planes; int slice_height; TYPE_2__ llviddsp; scalar_t__ decorrelate; TYPE_1__* vlc; TYPE_3__** slices; scalar_t__ buf; int /*<<< orphan*/ * vshift; int /*<<< orphan*/ * hshift; TYPE_5__* p; } ;
-struct TYPE_11__ {int /*<<< orphan*/  size; scalar_t__ start; } ;
-struct TYPE_9__ {int /*<<< orphan*/  bits; int /*<<< orphan*/  table; } ;
-typedef  TYPE_4__ MagicYUVContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_5__ AVFrame ;
-typedef  TYPE_6__ AVCodecContext ;
+struct TYPE_10__ {int (* add_bytes ) (int*,int*,int) ;int (* add_median_pred ) (int*,int*,int*,int,int*,int*) ;int (* add_left_pred ) (int*,int*,int,int) ;int (* add_gradient_pred ) (int*,int,int) ;} ;
+struct TYPE_12__ {int interlaced; int planes; int slice_height; TYPE_2__ llviddsp; scalar_t__ decorrelate; TYPE_1__* vlc; TYPE_3__** slices; scalar_t__ buf; int * vshift; int * hshift; TYPE_5__* p; } ;
+struct TYPE_11__ {int size; scalar_t__ start; } ;
+struct TYPE_9__ {int bits; int table; } ;
+typedef TYPE_4__ MagicYUVContext ;
+typedef int GetBitContext ;
+typedef TYPE_5__ AVFrame ;
+typedef TYPE_6__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int AV_CEIL_RSHIFT (int,int /*<<< orphan*/ ) ; 
- int FFMIN (int,int) ; 
-#define  GRADIENT 130 
-#define  LEFT 129 
-#define  MEDIAN 128 
- int /*<<< orphan*/  avpriv_request_sample (TYPE_6__*,char*,int) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits_left (int /*<<< orphan*/ *) ; 
- int get_vlc2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int init_get_bits8 (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int*,int*,int,int) ; 
- int /*<<< orphan*/  stub10 (int*,int*,int) ; 
- int /*<<< orphan*/  stub11 (int*,int*,int) ; 
- int /*<<< orphan*/  stub2 (int*,int*,int,int) ; 
- int /*<<< orphan*/  stub3 (int*,int*,int,int) ; 
- int /*<<< orphan*/  stub4 (int*,int*,int,int) ; 
- int /*<<< orphan*/  stub5 (int*,int*,int,int) ; 
- int /*<<< orphan*/  stub6 (int*,int,int) ; 
- int /*<<< orphan*/  stub7 (int*,int*,int,int) ; 
- int /*<<< orphan*/  stub8 (int*,int*,int,int) ; 
- int /*<<< orphan*/  stub9 (int*,int*,int*,int,int*,int*) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_CEIL_RSHIFT (int,int ) ;
+ int FFMIN (int,int) ;
+
+
+
+ int avpriv_request_sample (TYPE_6__*,char*,int) ;
+ int get_bits (int *,int) ;
+ int get_bits_left (int *) ;
+ int get_vlc2 (int *,int ,int ,int) ;
+ int init_get_bits8 (int *,scalar_t__,int ) ;
+ int stub1 (int*,int*,int,int) ;
+ int stub10 (int*,int*,int) ;
+ int stub11 (int*,int*,int) ;
+ int stub2 (int*,int*,int,int) ;
+ int stub3 (int*,int*,int,int) ;
+ int stub4 (int*,int*,int,int) ;
+ int stub5 (int*,int*,int,int) ;
+ int stub6 (int*,int,int) ;
+ int stub7 (int*,int*,int,int) ;
+ int stub8 (int*,int*,int,int) ;
+ int stub9 (int*,int*,int*,int,int*,int*) ;
 
 __attribute__((used)) static int magy_decode_slice(AVCodecContext *avctx, void *tdata,
                              int j, int threadnr)
@@ -78,7 +78,7 @@ __attribute__((used)) static int magy_decode_slice(AVCodecContext *avctx, void *
             return ret;
 
         flags = get_bits(&gb, 8);
-        pred  = get_bits(&gb, 8);
+        pred = get_bits(&gb, 8);
 
         dst = p->data[i] + j * sheight * stride;
         if (flags & 1) {
@@ -108,7 +108,7 @@ __attribute__((used)) static int magy_decode_slice(AVCodecContext *avctx, void *
         }
 
         switch (pred) {
-        case LEFT:
+        case 129:
             dst = p->data[i] + j * sheight * stride;
             s->llviddsp.add_left_pred(dst, dst, width, 0);
             dst += stride;
@@ -121,7 +121,7 @@ __attribute__((used)) static int magy_decode_slice(AVCodecContext *avctx, void *
                 dst += stride;
             }
             break;
-        case GRADIENT:
+        case 130:
             dst = p->data[i] + j * sheight * stride;
             s->llviddsp.add_left_pred(dst, dst, width, 0);
             dst += stride;
@@ -134,7 +134,7 @@ __attribute__((used)) static int magy_decode_slice(AVCodecContext *avctx, void *
                 top = dst[-fake_stride];
                 left = top + dst[0];
                 dst[0] = left;
-                for (x = 1; x < min_width; x++) { /* dsp need aligned 32 */
+                for (x = 1; x < min_width; x++) {
                     top = dst[x - fake_stride];
                     lefttop = dst[x - (fake_stride + 1)];
                     left += top - lefttop + dst[x];
@@ -145,7 +145,7 @@ __attribute__((used)) static int magy_decode_slice(AVCodecContext *avctx, void *
                 dst += stride;
             }
             break;
-        case MEDIAN:
+        case 128:
             dst = p->data[i] + j * sheight * stride;
             s->llviddsp.add_left_pred(dst, dst, width, 0);
             dst += stride;

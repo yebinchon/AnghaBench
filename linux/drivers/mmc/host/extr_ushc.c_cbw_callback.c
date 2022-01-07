@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ushc_data {int /*<<< orphan*/  csw_urb; int /*<<< orphan*/  data_urb; } ;
+
+
+
+
+struct ushc_data {int csw_urb; int data_urb; } ;
 struct urb {scalar_t__ status; struct ushc_data* context; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  usb_unlink_urb (int /*<<< orphan*/ ) ; 
+
+ int usb_unlink_urb (int ) ;
 
 __attribute__((used)) static void cbw_callback(struct urb *urb)
 {
-	struct ushc_data *ushc = urb->context;
+ struct ushc_data *ushc = urb->context;
 
-	if (urb->status != 0) {
-		usb_unlink_urb(ushc->data_urb);
-		usb_unlink_urb(ushc->csw_urb);
-	}
+ if (urb->status != 0) {
+  usb_unlink_urb(ushc->data_urb);
+  usb_unlink_urb(ushc->csw_urb);
+ }
 }

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  symbolS ;
-typedef  int /*<<< orphan*/  procS ;
-struct TYPE_6__ {int /*<<< orphan*/ * func_sym; } ;
-struct TYPE_5__ {int /*<<< orphan*/  flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BSF_FUNCTION ; 
- scalar_t__ DEBUG_STABS ; 
- scalar_t__ ISDIGIT (char) ; 
- int SEC_CODE ; 
- int /*<<< orphan*/  SKIP_WHITESPACE () ; 
- int /*<<< orphan*/  S_GET_NAME (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  as_warn (int /*<<< orphan*/ ) ; 
- int bfd_get_section_flags (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__ cur_proc ; 
- TYPE_2__* cur_proc_ptr ; 
- scalar_t__ debug_type ; 
- int /*<<< orphan*/  demand_empty_rest_of_line () ; 
- int /*<<< orphan*/  get_number () ; 
- int /*<<< orphan*/ * get_symbol () ; 
- char* input_line_pointer ; 
- int /*<<< orphan*/  memset (TYPE_2__*,char,int) ; 
- scalar_t__ mips_cprestore_valid ; 
- scalar_t__ mips_frame_reg_valid ; 
- int /*<<< orphan*/  now_seg ; 
- int /*<<< orphan*/  numprocs ; 
- int /*<<< orphan*/  stabs_generate_asm_func (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stdoutput ; 
- TYPE_1__* symbol_get_bfdsym (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int symbolS ;
+typedef int procS ;
+struct TYPE_6__ {int * func_sym; } ;
+struct TYPE_5__ {int flags; } ;
+
+
+ int BSF_FUNCTION ;
+ scalar_t__ DEBUG_STABS ;
+ scalar_t__ ISDIGIT (char) ;
+ int SEC_CODE ;
+ int SKIP_WHITESPACE () ;
+ int S_GET_NAME (int *) ;
+ int _ (char*) ;
+ int as_warn (int ) ;
+ int bfd_get_section_flags (int ,int ) ;
+ TYPE_2__ cur_proc ;
+ TYPE_2__* cur_proc_ptr ;
+ scalar_t__ debug_type ;
+ int demand_empty_rest_of_line () ;
+ int get_number () ;
+ int * get_symbol () ;
+ char* input_line_pointer ;
+ int memset (TYPE_2__*,char,int) ;
+ scalar_t__ mips_cprestore_valid ;
+ scalar_t__ mips_frame_reg_valid ;
+ int now_seg ;
+ int numprocs ;
+ int stabs_generate_asm_func (int ,int ) ;
+ int stdoutput ;
+ TYPE_1__* symbol_get_bfdsym (int *) ;
 
 __attribute__((used)) static void
 s_mips_ent (int aent)
@@ -64,7 +64,7 @@ s_mips_ent (int aent)
 
   if (!aent)
     {
-      /* This function needs its own .frame and .cprestore directives.  */
+
       mips_frame_reg_valid = 0;
       mips_cprestore_valid = 0;
 
@@ -79,7 +79,7 @@ s_mips_ent (int aent)
 
       if (debug_type == DEBUG_STABS)
         stabs_generate_asm_func (S_GET_NAME (symbolP),
-				 S_GET_NAME (symbolP));
+     S_GET_NAME (symbolP));
     }
 
   demand_empty_rest_of_line ();

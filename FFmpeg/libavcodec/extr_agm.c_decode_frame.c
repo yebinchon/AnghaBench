@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_34__   TYPE_4__ ;
-typedef  struct TYPE_33__   TYPE_3__ ;
-typedef  struct TYPE_32__   TYPE_2__ ;
-typedef  struct TYPE_31__   TYPE_20__ ;
-typedef  struct TYPE_30__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_34__ {int fflags; int bitstream_size; int key_frame; unsigned int output_size; int flags; int compression; long* size; TYPE_20__* prev_frame; scalar_t__ rgb; scalar_t__ dct; int /*<<< orphan*/  output; int /*<<< orphan*/  gbyte; int /*<<< orphan*/  gb; } ;
+
+
+typedef struct TYPE_34__ TYPE_4__ ;
+typedef struct TYPE_33__ TYPE_3__ ;
+typedef struct TYPE_32__ TYPE_2__ ;
+typedef struct TYPE_31__ TYPE_20__ ;
+typedef struct TYPE_30__ TYPE_1__ ;
+
+
+struct TYPE_34__ {int fflags; int bitstream_size; int key_frame; unsigned int output_size; int flags; int compression; long* size; TYPE_20__* prev_frame; scalar_t__ rgb; scalar_t__ dct; int output; int gbyte; int gb; } ;
 struct TYPE_33__ {scalar_t__ codec_tag; int width; int height; scalar_t__ coded_width; scalar_t__ coded_height; TYPE_4__* priv_data; } ;
-struct TYPE_32__ {int key_frame; scalar_t__ width; scalar_t__ height; scalar_t__ crop_left; scalar_t__ crop_top; int /*<<< orphan*/  pict_type; } ;
-struct TYPE_31__ {scalar_t__ width; scalar_t__ height; int /*<<< orphan*/ * data; } ;
-struct TYPE_30__ {unsigned int size; int flags; int /*<<< orphan*/  data; } ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_1__ AVPacket ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVCodecContext ;
-typedef  TYPE_4__ AGMContext ;
+struct TYPE_32__ {int key_frame; scalar_t__ width; scalar_t__ height; scalar_t__ crop_left; scalar_t__ crop_top; int pict_type; } ;
+struct TYPE_31__ {scalar_t__ width; scalar_t__ height; int * data; } ;
+struct TYPE_30__ {unsigned int size; int flags; int data; } ;
+typedef int GetByteContext ;
+typedef int GetBitContext ;
+typedef TYPE_1__ AVPacket ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVCodecContext ;
+typedef TYPE_4__ AGMContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int AVERROR_PATCHWELCOME ; 
- int /*<<< orphan*/  AV_GET_BUFFER_FLAG_REF ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_I ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_P ; 
- int AV_PKT_FLAG_KEY ; 
- int INT32_MIN ; 
- scalar_t__ MKTAG (char,char,char,char) ; 
- int av_frame_copy (TYPE_2__*,TYPE_20__*) ; 
- int av_frame_ref (TYPE_20__*,TYPE_2__*) ; 
- int /*<<< orphan*/  av_frame_unref (TYPE_20__*) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,...) ; 
- void* bytestream2_get_le32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,int) ; 
- int decode_huffman2 (TYPE_3__*,int,int) ; 
- int decode_inter (TYPE_3__*,int /*<<< orphan*/ *,TYPE_2__*,TYPE_20__*) ; 
- int decode_intra (TYPE_3__*,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int decode_raw_intra (TYPE_3__*,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int decode_raw_intra_rgb (TYPE_3__*,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int decode_runlen (TYPE_3__*,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int decode_runlen_rgb (TYPE_3__*,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int ff_get_buffer (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int ff_set_dimensions (TYPE_3__*,int,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AVERROR_PATCHWELCOME ;
+ int AV_GET_BUFFER_FLAG_REF ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int AV_PICTURE_TYPE_I ;
+ int AV_PICTURE_TYPE_P ;
+ int AV_PKT_FLAG_KEY ;
+ int INT32_MIN ;
+ scalar_t__ MKTAG (char,char,char,char) ;
+ int av_frame_copy (TYPE_2__*,TYPE_20__*) ;
+ int av_frame_ref (TYPE_20__*,TYPE_2__*) ;
+ int av_frame_unref (TYPE_20__*) ;
+ int av_log (TYPE_3__*,int ,char*,...) ;
+ void* bytestream2_get_le32 (int *) ;
+ int bytestream2_init (int *,int ,unsigned int) ;
+ int bytestream2_skip (int *,int) ;
+ int decode_huffman2 (TYPE_3__*,int,int) ;
+ int decode_inter (TYPE_3__*,int *,TYPE_2__*,TYPE_20__*) ;
+ int decode_intra (TYPE_3__*,int *,TYPE_2__*) ;
+ int decode_raw_intra (TYPE_3__*,int *,TYPE_2__*) ;
+ int decode_raw_intra_rgb (TYPE_3__*,int *,TYPE_2__*) ;
+ int decode_runlen (TYPE_3__*,int *,TYPE_2__*) ;
+ int decode_runlen_rgb (TYPE_3__*,int *,TYPE_2__*) ;
+ int ff_get_buffer (TYPE_3__*,TYPE_2__*,int ) ;
+ int ff_set_dimensions (TYPE_3__*,int,int) ;
 
 __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
                         int *got_frame, AVPacket *avpkt)
@@ -119,7 +119,7 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
             s->flags |= 1;
         }
 
-        width  = avctx->width;
+        width = avctx->width;
         height = avctx->height;
         if (w < width || h < height || w & 7 || h & 7)
             return AVERROR_INVALIDDATA;
@@ -185,8 +185,8 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
     if ((ret = av_frame_ref(s->prev_frame, frame)) < 0)
         return ret;
 
-    frame->crop_top  = avctx->coded_height - avctx->height;
-    frame->crop_left = avctx->coded_width  - avctx->width;
+    frame->crop_top = avctx->coded_height - avctx->height;
+    frame->crop_left = avctx->coded_width - avctx->width;
 
     *got_frame = 1;
 

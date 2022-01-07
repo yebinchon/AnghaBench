@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pool_hdr_t ;
-struct TYPE_3__ {int /*<<< orphan*/  lock; scalar_t__ use_lock; int /*<<< orphan*/  freelist; } ;
-typedef  TYPE_1__ ocs_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ocs_list_remove_head (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ocs_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ocs_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int pool_hdr_t ;
+struct TYPE_3__ {int lock; scalar_t__ use_lock; int freelist; } ;
+typedef TYPE_1__ ocs_pool_t ;
+
+
+ int * ocs_list_remove_head (int *) ;
+ int ocs_lock (int *) ;
+ int ocs_unlock (int *) ;
 
 void *
 ocs_pool_get(ocs_pool_t *pool)
 {
-	pool_hdr_t *h;
-	void *item = NULL;
+ pool_hdr_t *h;
+ void *item = ((void*)0);
 
-	if (pool->use_lock) {
-		ocs_lock(&pool->lock);
-	}
+ if (pool->use_lock) {
+  ocs_lock(&pool->lock);
+ }
 
-	h = ocs_list_remove_head(&pool->freelist);
+ h = ocs_list_remove_head(&pool->freelist);
 
-	if (h != NULL) {
-		/* Return the array item address offset by the size of pool_hdr_t */
-		item = &h[1];
-	}
+ if (h != ((void*)0)) {
 
-	if (pool->use_lock) {
-		ocs_unlock(&pool->lock);
-	}
-	return item;
+  item = &h[1];
+ }
+
+ if (pool->use_lock) {
+  ocs_unlock(&pool->lock);
+ }
+ return item;
 }

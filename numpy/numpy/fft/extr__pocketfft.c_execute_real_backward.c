@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * rfft_plan ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
 
-/* Variables and functions */
- int NPY_ARRAY_DEFAULT ; 
- int NPY_ARRAY_ENSUREARRAY ; 
- int NPY_ARRAY_FORCECAST ; 
- int /*<<< orphan*/  NPY_CDOUBLE ; 
- int /*<<< orphan*/  NPY_DOUBLE ; 
- int /*<<< orphan*/  NPY_SIGINT_OFF ; 
- int /*<<< orphan*/  NPY_SIGINT_ON ; 
- scalar_t__ PyArray_DATA (int /*<<< orphan*/ *) ; 
- int PyArray_DIM (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  PyArray_DIMS (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_DescrFromType (int /*<<< orphan*/ ) ; 
- scalar_t__ PyArray_Empty (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ PyArray_FromAny (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_NDIM (int /*<<< orphan*/ *) ; 
- int PyArray_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyErr_NoMemory () ; 
- int /*<<< orphan*/  Py_BEGIN_ALLOW_THREADS ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_END_ALLOW_THREADS ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  destroy_rfft_plan (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * make_rfft_plan (int) ; 
- int /*<<< orphan*/  memcpy (char*,double*,int) ; 
- scalar_t__ rfft_backward (int /*<<< orphan*/ *,double*,double) ; 
+
+
+
+typedef int * rfft_plan ;
+typedef int PyObject ;
+typedef int PyArrayObject ;
+
+
+ int NPY_ARRAY_DEFAULT ;
+ int NPY_ARRAY_ENSUREARRAY ;
+ int NPY_ARRAY_FORCECAST ;
+ int NPY_CDOUBLE ;
+ int NPY_DOUBLE ;
+ int NPY_SIGINT_OFF ;
+ int NPY_SIGINT_ON ;
+ scalar_t__ PyArray_DATA (int *) ;
+ int PyArray_DIM (int *,scalar_t__) ;
+ int PyArray_DIMS (int *) ;
+ int PyArray_DescrFromType (int ) ;
+ scalar_t__ PyArray_Empty (scalar_t__,int ,int ,int ) ;
+ scalar_t__ PyArray_FromAny (int *,int ,int,int ,int,int *) ;
+ scalar_t__ PyArray_NDIM (int *) ;
+ int PyArray_SIZE (int *) ;
+ int * PyErr_NoMemory () ;
+ int Py_BEGIN_ALLOW_THREADS ;
+ int Py_DECREF (int *) ;
+ int Py_END_ALLOW_THREADS ;
+ int Py_XDECREF (int *) ;
+ int destroy_rfft_plan (int *) ;
+ int * make_rfft_plan (int) ;
+ int memcpy (char*,double*,int) ;
+ scalar_t__ rfft_backward (int *,double*,double) ;
 
 __attribute__((used)) static PyObject *
 execute_real_backward(PyObject *a1, double fct)
 {
-    rfft_plan plan=NULL;
+    rfft_plan plan=((void*)0);
     PyArrayObject *data = (PyArrayObject *)PyArray_FromAny(a1,
             PyArray_DescrFromType(NPY_CDOUBLE), 1, 0,
             NPY_ARRAY_DEFAULT | NPY_ARRAY_ENSUREARRAY | NPY_ARRAY_FORCECAST,
-            NULL);
-    if (!data) return NULL;
+            ((void*)0));
+    if (!data) return ((void*)0);
     int npts = PyArray_DIM(data, PyArray_NDIM(data) - 1);
     PyArrayObject *ret = (PyArrayObject *)PyArray_Empty(PyArray_NDIM(data),
             PyArray_DIMS(data), PyArray_DescrFromType(NPY_DOUBLE), 0);

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-typedef  int u_int ;
-typedef  char u_char ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+typedef int u_int ;
+typedef char u_char ;
 struct TYPE_6__ {int ndo_vflag; } ;
-typedef  TYPE_1__ netdissect_options ;
+typedef TYPE_1__ netdissect_options ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ND_PRINT (TYPE_1__*) ; 
- int /*<<< orphan*/  ND_TCHECK2 (char const,int) ; 
- int SYSLOG_FACILITY_MASK ; 
- int SYSLOG_MAX_DIGITS ; 
- int SYSLOG_SEVERITY_MASK ; 
- int /*<<< orphan*/  print_unknown_data (TYPE_1__*,char const*,char*,int) ; 
- int /*<<< orphan*/  safeputchar (TYPE_1__*,char const) ; 
- int /*<<< orphan*/  syslog_facility_values ; 
- int /*<<< orphan*/  syslog_severity_values ; 
- int /*<<< orphan*/  tok2str (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  tstr ; 
+
+ int ND_PRINT (TYPE_1__*) ;
+ int ND_TCHECK2 (char const,int) ;
+ int SYSLOG_FACILITY_MASK ;
+ int SYSLOG_MAX_DIGITS ;
+ int SYSLOG_SEVERITY_MASK ;
+ int print_unknown_data (TYPE_1__*,char const*,char*,int) ;
+ int safeputchar (TYPE_1__*,char const) ;
+ int syslog_facility_values ;
+ int syslog_severity_values ;
+ int tok2str (int ,char*,int) ;
+ int tstr ;
 
 void
 syslog_print(netdissect_options *ndo,
@@ -38,11 +38,11 @@ syslog_print(netdissect_options *ndo,
     uint16_t pri = 0;
     uint16_t facility,severity;
 
-    /* extract decimal figures that are
-     * encapsulated within < > tags
-     * based on this decimal figure extract the
-     * severity and facility values
-     */
+
+
+
+
+
 
     ND_TCHECK2(*pptr, 1);
     if (*(pptr+msg_off) == '<') {
@@ -84,7 +84,7 @@ syslog_print(netdissect_options *ndo,
            tok2str(syslog_severity_values, "unknown (%u)", severity),
            severity));
 
-    /* print the syslog text in verbose mode */
+
     for (; msg_off < len; msg_off++) {
         ND_TCHECK2(*(pptr + msg_off), 1);
         safeputchar(ndo, *(pptr + msg_off));

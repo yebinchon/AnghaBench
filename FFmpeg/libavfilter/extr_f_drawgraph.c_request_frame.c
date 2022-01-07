@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-struct TYPE_11__ {int /*<<< orphan*/ * outputs; int /*<<< orphan*/ * inputs; TYPE_1__* priv; } ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_11__ {int * outputs; int * inputs; TYPE_1__* priv; } ;
 struct TYPE_10__ {int h; TYPE_4__* src; } ;
 struct TYPE_9__ {int* data; int* linesize; scalar_t__ pts; } ;
-struct TYPE_8__ {int slide; float nb_values; int x; float** values; double min; double max; int mode; int* prev_y; TYPE_2__* out; int /*<<< orphan*/ * first; int /*<<< orphan*/  bg; int /*<<< orphan*/ * fg_expr; scalar_t__ w; } ;
-typedef  TYPE_1__ DrawGraphContext ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
+struct TYPE_8__ {int slide; float nb_values; int x; float** values; double min; double max; int mode; int* prev_y; TYPE_2__* out; int * first; int bg; int * fg_expr; scalar_t__ w; } ;
+typedef TYPE_1__ DrawGraphContext ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR_EOF ; 
- int AV_RN32 (int /*<<< orphan*/ ) ; 
- int FFMIN (int,int) ; 
- size_t VAR_MAX ; 
- size_t VAR_MIN ; 
- size_t VAR_VAL ; 
- int VAR_VARS_NB ; 
- int av_expr_eval (int /*<<< orphan*/ ,double*,int /*<<< orphan*/ *) ; 
- int ceil (float) ; 
- int /*<<< orphan*/  draw_dot (int,int,int,TYPE_2__*) ; 
- int ff_filter_frame (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int ff_request_frame (int /*<<< orphan*/ ) ; 
- scalar_t__ isnan (float) ; 
+
+ int AVERROR_EOF ;
+ int AV_RN32 (int ) ;
+ int FFMIN (int,int) ;
+ size_t VAR_MAX ;
+ size_t VAR_MIN ;
+ size_t VAR_VAL ;
+ int VAR_VARS_NB ;
+ int av_expr_eval (int ,double*,int *) ;
+ int ceil (float) ;
+ int draw_dot (int,int,int,TYPE_2__*) ;
+ int ff_filter_frame (int ,TYPE_2__*) ;
+ int ff_request_frame (int ) ;
+ scalar_t__ isnan (float) ;
 
 __attribute__((used)) static int request_frame(AVFilterLink *outlink)
 {
@@ -66,7 +66,7 @@ __attribute__((used)) static int request_frame(AVFilterLink *outlink)
                 values[VAR_MAX] = s->max;
                 values[VAR_VAL] = vf;
 
-                fg = av_expr_eval(s->fg_expr[i], values, NULL);
+                fg = av_expr_eval(s->fg_expr[i], values, ((void*)0));
                 bg = AV_RN32(s->bg);
 
                 x = s->x;

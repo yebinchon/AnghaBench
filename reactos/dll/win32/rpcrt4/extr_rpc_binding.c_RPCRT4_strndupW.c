@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__* LPWSTR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int INT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- scalar_t__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,int /*<<< orphan*/ ,int) ; 
- int strlenW (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int WCHAR ;
+typedef scalar_t__* LPWSTR ;
+typedef int LPCWSTR ;
+typedef int INT ;
+typedef int DWORD ;
+
+
+ int GetProcessHeap () ;
+ scalar_t__* HeapAlloc (int ,int ,int) ;
+ int memcpy (scalar_t__*,int ,int) ;
+ int strlenW (int ) ;
 
 LPWSTR RPCRT4_strndupW(LPCWSTR src, INT slen)
 {
   DWORD len;
   LPWSTR s;
-  if (!src) return NULL;
+  if (!src) return ((void*)0);
   if (slen == -1) slen = strlenW(src);
   len = slen;
   s = HeapAlloc(GetProcessHeap(), 0, (len+1)*sizeof(WCHAR));

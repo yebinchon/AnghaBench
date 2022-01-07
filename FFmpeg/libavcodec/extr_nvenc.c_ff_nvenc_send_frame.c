@@ -1,90 +1,90 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_40__   TYPE_9__ ;
-typedef  struct TYPE_39__   TYPE_8__ ;
-typedef  struct TYPE_38__   TYPE_7__ ;
-typedef  struct TYPE_37__   TYPE_6__ ;
-typedef  struct TYPE_36__   TYPE_5__ ;
-typedef  struct TYPE_35__   TYPE_4__ ;
-typedef  struct TYPE_34__   TYPE_3__ ;
-typedef  struct TYPE_33__   TYPE_2__ ;
-typedef  struct TYPE_32__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  tmp_out_surf ;
-typedef  int /*<<< orphan*/  in_surf ;
+
+
+typedef struct TYPE_40__ TYPE_9__ ;
+typedef struct TYPE_39__ TYPE_8__ ;
+typedef struct TYPE_38__ TYPE_7__ ;
+typedef struct TYPE_37__ TYPE_6__ ;
+typedef struct TYPE_36__ TYPE_5__ ;
+typedef struct TYPE_35__ TYPE_4__ ;
+typedef struct TYPE_34__ TYPE_3__ ;
+typedef struct TYPE_33__ TYPE_2__ ;
+typedef struct TYPE_32__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef int tmp_out_surf ;
+typedef int in_surf ;
 struct TYPE_40__ {int flags; TYPE_1__* internal; TYPE_4__* priv_data; } ;
 struct TYPE_39__ {scalar_t__ pict_type; scalar_t__ pts; scalar_t__ top_field_first; } ;
-struct TYPE_38__ {scalar_t__ (* nvEncEncodePicture ) (int /*<<< orphan*/ ,TYPE_6__*) ;} ;
-struct TYPE_37__ {scalar_t__ inputTimeStamp; scalar_t__ encodePicFlags; int /*<<< orphan*/  pictureStruct; int /*<<< orphan*/  outputBitstream; int /*<<< orphan*/  inputPitch; int /*<<< orphan*/  inputHeight; int /*<<< orphan*/  inputWidth; int /*<<< orphan*/  bufferFmt; int /*<<< orphan*/  inputBuffer; int /*<<< orphan*/  version; int /*<<< orphan*/  member_0; } ;
-struct TYPE_36__ {int payloadType; int /*<<< orphan*/ * payload; scalar_t__ payloadSize; } ;
+struct TYPE_38__ {scalar_t__ (* nvEncEncodePicture ) (int ,TYPE_6__*) ;} ;
+struct TYPE_37__ {scalar_t__ inputTimeStamp; scalar_t__ encodePicFlags; int pictureStruct; int outputBitstream; int inputPitch; int inputHeight; int inputWidth; int bufferFmt; int inputBuffer; int version; int member_0; } ;
+struct TYPE_36__ {int payloadType; int * payload; scalar_t__ payloadSize; } ;
 struct TYPE_34__ {TYPE_7__ nvenc_funcs; } ;
-struct TYPE_35__ {int encoder_flushing; scalar_t__* initial_pts; scalar_t__ forced_idr; int /*<<< orphan*/  output_surface_ready_queue; int /*<<< orphan*/  output_surface_queue; int /*<<< orphan*/  timestamp_list; int /*<<< orphan*/  nvencoder; scalar_t__ a53_cc; scalar_t__ first_packet_output; int /*<<< orphan*/  d3d11_device; int /*<<< orphan*/  cu_context; TYPE_3__ nvenc_dload_funcs; } ;
-struct TYPE_33__ {int /*<<< orphan*/  output_surface; int /*<<< orphan*/  pitch; int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  format; int /*<<< orphan*/  input_surface; } ;
+struct TYPE_35__ {int encoder_flushing; scalar_t__* initial_pts; scalar_t__ forced_idr; int output_surface_ready_queue; int output_surface_queue; int timestamp_list; int nvencoder; scalar_t__ a53_cc; scalar_t__ first_packet_output; int d3d11_device; int cu_context; TYPE_3__ nvenc_dload_funcs; } ;
+struct TYPE_33__ {int output_surface; int pitch; int height; int width; int format; int input_surface; } ;
 struct TYPE_32__ {scalar_t__ draining; } ;
-typedef  TYPE_2__ NvencSurface ;
-typedef  TYPE_3__ NvencDynLoadFunctions ;
-typedef  TYPE_4__ NvencContext ;
-typedef  TYPE_5__ NV_ENC_SEI_PAYLOAD ;
-typedef  TYPE_6__ NV_ENC_PIC_PARAMS ;
-typedef  TYPE_7__ NV_ENCODE_API_FUNCTION_LIST ;
-typedef  scalar_t__ NVENCSTATUS ;
-typedef  TYPE_8__ AVFrame ;
-typedef  TYPE_9__ AVCodecContext ;
+typedef TYPE_2__ NvencSurface ;
+typedef TYPE_3__ NvencDynLoadFunctions ;
+typedef TYPE_4__ NvencContext ;
+typedef TYPE_5__ NV_ENC_SEI_PAYLOAD ;
+typedef TYPE_6__ NV_ENC_PIC_PARAMS ;
+typedef TYPE_7__ NV_ENCODE_API_FUNCTION_LIST ;
+typedef scalar_t__ NVENCSTATUS ;
+typedef TYPE_8__ AVFrame ;
+typedef TYPE_9__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int AV_CODEC_FLAG_INTERLACED_DCT ; 
- int /*<<< orphan*/  AV_FRAME_DATA_A53_CC ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- scalar_t__ AV_NOPTS_VALUE ; 
- scalar_t__ AV_PICTURE_TYPE_I ; 
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/  EINVAL ; 
- scalar_t__ NV_ENC_ERR_NEED_MORE_INPUT ; 
- scalar_t__ NV_ENC_PIC_FLAG_EOS ; 
- scalar_t__ NV_ENC_PIC_FLAG_FORCEIDR ; 
- scalar_t__ NV_ENC_PIC_FLAG_FORCEINTRA ; 
- int /*<<< orphan*/  NV_ENC_PIC_PARAMS_VER ; 
- int /*<<< orphan*/  NV_ENC_PIC_STRUCT_FIELD_BOTTOM_TOP ; 
- int /*<<< orphan*/  NV_ENC_PIC_STRUCT_FIELD_TOP_BOTTOM ; 
- int /*<<< orphan*/  NV_ENC_PIC_STRUCT_FRAME ; 
- scalar_t__ NV_ENC_SUCCESS ; 
- int /*<<< orphan*/  av_fifo_generic_read (int /*<<< orphan*/ ,TYPE_2__**,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_fifo_generic_write (int /*<<< orphan*/ ,TYPE_2__**,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_fifo_reset (int /*<<< orphan*/ ) ; 
- scalar_t__ av_fifo_size (int /*<<< orphan*/ ) ; 
- scalar_t__ av_frame_get_side_data (TYPE_8__ const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_free (TYPE_5__*) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ ff_alloc_a53_sei (TYPE_8__ const*,int,void**,size_t*) ; 
- TYPE_2__* get_free_frame (TYPE_4__*) ; 
- int /*<<< orphan*/  nvenc_codec_specific_pic_params (TYPE_9__*,TYPE_6__*,TYPE_5__*) ; 
- int nvenc_pop_context (TYPE_9__*) ; 
- int nvenc_print_error (TYPE_9__*,scalar_t__,char*) ; 
- int nvenc_push_context (TYPE_9__*) ; 
- int nvenc_upload_frame (TYPE_9__*,TYPE_8__ const*,TYPE_2__*) ; 
- int /*<<< orphan*/  reconfig_encoder (TYPE_9__*,TYPE_8__ const*) ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ,TYPE_6__*) ; 
- int /*<<< orphan*/  timestamp_queue_enqueue (int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AV_CODEC_FLAG_INTERLACED_DCT ;
+ int AV_FRAME_DATA_A53_CC ;
+ int AV_LOG_ERROR ;
+ scalar_t__ AV_NOPTS_VALUE ;
+ scalar_t__ AV_PICTURE_TYPE_I ;
+ int EAGAIN ;
+ int EINVAL ;
+ scalar_t__ NV_ENC_ERR_NEED_MORE_INPUT ;
+ scalar_t__ NV_ENC_PIC_FLAG_EOS ;
+ scalar_t__ NV_ENC_PIC_FLAG_FORCEIDR ;
+ scalar_t__ NV_ENC_PIC_FLAG_FORCEINTRA ;
+ int NV_ENC_PIC_PARAMS_VER ;
+ int NV_ENC_PIC_STRUCT_FIELD_BOTTOM_TOP ;
+ int NV_ENC_PIC_STRUCT_FIELD_TOP_BOTTOM ;
+ int NV_ENC_PIC_STRUCT_FRAME ;
+ scalar_t__ NV_ENC_SUCCESS ;
+ int av_fifo_generic_read (int ,TYPE_2__**,int,int *) ;
+ int av_fifo_generic_write (int ,TYPE_2__**,int,int *) ;
+ int av_fifo_reset (int ) ;
+ scalar_t__ av_fifo_size (int ) ;
+ scalar_t__ av_frame_get_side_data (TYPE_8__ const*,int ) ;
+ int av_free (TYPE_5__*) ;
+ int av_log (TYPE_4__*,int ,char*) ;
+ scalar_t__ ff_alloc_a53_sei (TYPE_8__ const*,int,void**,size_t*) ;
+ TYPE_2__* get_free_frame (TYPE_4__*) ;
+ int nvenc_codec_specific_pic_params (TYPE_9__*,TYPE_6__*,TYPE_5__*) ;
+ int nvenc_pop_context (TYPE_9__*) ;
+ int nvenc_print_error (TYPE_9__*,scalar_t__,char*) ;
+ int nvenc_push_context (TYPE_9__*) ;
+ int nvenc_upload_frame (TYPE_9__*,TYPE_8__ const*,TYPE_2__*) ;
+ int reconfig_encoder (TYPE_9__*,TYPE_8__ const*) ;
+ scalar_t__ stub1 (int ,TYPE_6__*) ;
+ int timestamp_queue_enqueue (int ,scalar_t__) ;
 
 int ff_nvenc_send_frame(AVCodecContext *avctx, const AVFrame *frame)
 {
     NVENCSTATUS nv_status;
     NvencSurface *tmp_out_surf, *in_surf;
     int res, res2;
-    NV_ENC_SEI_PAYLOAD *sei_data = NULL;
+    NV_ENC_SEI_PAYLOAD *sei_data = ((void*)0);
     size_t sei_size;
 
     NvencContext *ctx = avctx->priv_data;
@@ -187,7 +187,7 @@ int ff_nvenc_send_frame(AVCodecContext *avctx, const AVFrame *frame)
         return nvenc_print_error(avctx, nv_status, "EncodePicture failed!");
 
     if (frame) {
-        av_fifo_generic_write(ctx->output_surface_queue, &in_surf, sizeof(in_surf), NULL);
+        av_fifo_generic_write(ctx->output_surface_queue, &in_surf, sizeof(in_surf), ((void*)0));
         timestamp_queue_enqueue(ctx->timestamp_list, frame->pts);
 
         if (ctx->initial_pts[0] == AV_NOPTS_VALUE)
@@ -196,11 +196,11 @@ int ff_nvenc_send_frame(AVCodecContext *avctx, const AVFrame *frame)
             ctx->initial_pts[1] = frame->pts;
     }
 
-    /* all the pending buffers are now ready for output */
+
     if (nv_status == NV_ENC_SUCCESS) {
         while (av_fifo_size(ctx->output_surface_queue) > 0) {
-            av_fifo_generic_read(ctx->output_surface_queue, &tmp_out_surf, sizeof(tmp_out_surf), NULL);
-            av_fifo_generic_write(ctx->output_surface_ready_queue, &tmp_out_surf, sizeof(tmp_out_surf), NULL);
+            av_fifo_generic_read(ctx->output_surface_queue, &tmp_out_surf, sizeof(tmp_out_surf), ((void*)0));
+            av_fifo_generic_write(ctx->output_surface_ready_queue, &tmp_out_surf, sizeof(tmp_out_surf), ((void*)0));
         }
     }
 

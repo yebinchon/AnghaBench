@@ -1,82 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_31__   TYPE_8__ ;
-typedef  struct TYPE_30__   TYPE_7__ ;
-typedef  struct TYPE_29__   TYPE_6__ ;
-typedef  struct TYPE_28__   TYPE_5__ ;
-typedef  struct TYPE_27__   TYPE_4__ ;
-typedef  struct TYPE_26__   TYPE_3__ ;
-typedef  struct TYPE_25__   TYPE_2__ ;
-typedef  struct TYPE_24__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int u_char ;
-typedef  int ngx_uint_t ;
-struct TYPE_28__ {int in_closed; TYPE_7__* node; TYPE_1__* request; int /*<<< orphan*/ * pool; } ;
-typedef  TYPE_5__ ngx_http_v2_stream_t ;
-struct TYPE_29__ {scalar_t__ concurrent_streams; scalar_t__ preread_size; scalar_t__ max_requests; int /*<<< orphan*/  max_header_size; } ;
-typedef  TYPE_6__ ngx_http_v2_srv_conf_t ;
-struct TYPE_30__ {int weight; int /*<<< orphan*/ * parent; TYPE_5__* stream; int /*<<< orphan*/  reuse; } ;
-typedef  TYPE_7__ ngx_http_v2_node_t ;
-struct TYPE_27__ {int flags; size_t length; size_t padding; int sid; int keep_pool; int /*<<< orphan*/ * pool; TYPE_5__* stream; int /*<<< orphan*/  header_limit; } ;
-struct TYPE_31__ {int goaway; int last_sid; scalar_t__ processing; TYPE_4__ state; TYPE_2__* connection; int /*<<< orphan*/  closed_nodes; int /*<<< orphan*/  settings_ack; TYPE_3__* http_connection; } ;
-typedef  TYPE_8__ ngx_http_v2_connection_t ;
-struct TYPE_26__ {int /*<<< orphan*/  conf_ctx; } ;
-struct TYPE_25__ {scalar_t__ requests; int /*<<< orphan*/  log; } ;
+
+
+typedef struct TYPE_31__ TYPE_8__ ;
+typedef struct TYPE_30__ TYPE_7__ ;
+typedef struct TYPE_29__ TYPE_6__ ;
+typedef struct TYPE_28__ TYPE_5__ ;
+typedef struct TYPE_27__ TYPE_4__ ;
+typedef struct TYPE_26__ TYPE_3__ ;
+typedef struct TYPE_25__ TYPE_2__ ;
+typedef struct TYPE_24__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int u_char ;
+typedef int ngx_uint_t ;
+struct TYPE_28__ {int in_closed; TYPE_7__* node; TYPE_1__* request; int * pool; } ;
+typedef TYPE_5__ ngx_http_v2_stream_t ;
+struct TYPE_29__ {scalar_t__ concurrent_streams; scalar_t__ preread_size; scalar_t__ max_requests; int max_header_size; } ;
+typedef TYPE_6__ ngx_http_v2_srv_conf_t ;
+struct TYPE_30__ {int weight; int * parent; TYPE_5__* stream; int reuse; } ;
+typedef TYPE_7__ ngx_http_v2_node_t ;
+struct TYPE_27__ {int flags; size_t length; size_t padding; int sid; int keep_pool; int * pool; TYPE_5__* stream; int header_limit; } ;
+struct TYPE_31__ {int goaway; int last_sid; scalar_t__ processing; TYPE_4__ state; TYPE_2__* connection; int closed_nodes; int settings_ack; TYPE_3__* http_connection; } ;
+typedef TYPE_8__ ngx_http_v2_connection_t ;
+struct TYPE_26__ {int conf_ctx; } ;
+struct TYPE_25__ {scalar_t__ requests; int log; } ;
 struct TYPE_24__ {size_t request_length; } ;
 
-/* Variables and functions */
- scalar_t__ NGX_ERROR ; 
- int NGX_HTTP_V2_DEFAULT_WEIGHT ; 
- scalar_t__ NGX_HTTP_V2_DEFAULT_WINDOW ; 
- int NGX_HTTP_V2_END_STREAM_FLAG ; 
- int /*<<< orphan*/  NGX_HTTP_V2_INTERNAL_ERROR ; 
- int /*<<< orphan*/  NGX_HTTP_V2_NO_ERROR ; 
- int NGX_HTTP_V2_PADDED_FLAG ; 
- int NGX_HTTP_V2_PRIORITY_FLAG ; 
- int /*<<< orphan*/  NGX_HTTP_V2_PROTOCOL_ERROR ; 
- int NGX_HTTP_V2_REFUSED_STREAM ; 
- int /*<<< orphan*/  NGX_HTTP_V2_SIZE_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_LOG_INFO ; 
- scalar_t__ NGX_OK ; 
- int /*<<< orphan*/ * ngx_create_pool (int,int /*<<< orphan*/ ) ; 
- TYPE_6__* ngx_http_get_module_srv_conf (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int* ngx_http_v2_connection_error (TYPE_8__*,int /*<<< orphan*/ ) ; 
- TYPE_5__* ngx_http_v2_create_stream (TYPE_8__*,int /*<<< orphan*/ ) ; 
- TYPE_7__* ngx_http_v2_get_node_by_id (TYPE_8__*,int,int) ; 
- int /*<<< orphan*/  ngx_http_v2_module ; 
- int ngx_http_v2_parse_uint32 (int*) ; 
- scalar_t__ ngx_http_v2_send_goaway (TYPE_8__*,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_http_v2_send_rst_stream (TYPE_8__*,int,int) ; 
- int /*<<< orphan*/  ngx_http_v2_set_dependency (TYPE_8__*,TYPE_7__*,int,int) ; 
- int* ngx_http_v2_state_header_block (TYPE_8__*,int*,int*) ; 
- int* ngx_http_v2_state_save (TYPE_8__*,int*,int*,int* (*) (TYPE_8__*,int*,int*)) ; 
- int* ngx_http_v2_state_skip (TYPE_8__*,int*,int*) ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_log_debug4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int,int,int) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ngx_queue_remove (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ NGX_ERROR ;
+ int NGX_HTTP_V2_DEFAULT_WEIGHT ;
+ scalar_t__ NGX_HTTP_V2_DEFAULT_WINDOW ;
+ int NGX_HTTP_V2_END_STREAM_FLAG ;
+ int NGX_HTTP_V2_INTERNAL_ERROR ;
+ int NGX_HTTP_V2_NO_ERROR ;
+ int NGX_HTTP_V2_PADDED_FLAG ;
+ int NGX_HTTP_V2_PRIORITY_FLAG ;
+ int NGX_HTTP_V2_PROTOCOL_ERROR ;
+ int NGX_HTTP_V2_REFUSED_STREAM ;
+ int NGX_HTTP_V2_SIZE_ERROR ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_LOG_INFO ;
+ scalar_t__ NGX_OK ;
+ int * ngx_create_pool (int,int ) ;
+ TYPE_6__* ngx_http_get_module_srv_conf (int ,int ) ;
+ int* ngx_http_v2_connection_error (TYPE_8__*,int ) ;
+ TYPE_5__* ngx_http_v2_create_stream (TYPE_8__*,int ) ;
+ TYPE_7__* ngx_http_v2_get_node_by_id (TYPE_8__*,int,int) ;
+ int ngx_http_v2_module ;
+ int ngx_http_v2_parse_uint32 (int*) ;
+ scalar_t__ ngx_http_v2_send_goaway (TYPE_8__*,int ) ;
+ scalar_t__ ngx_http_v2_send_rst_stream (TYPE_8__*,int,int) ;
+ int ngx_http_v2_set_dependency (TYPE_8__*,TYPE_7__*,int,int) ;
+ int* ngx_http_v2_state_header_block (TYPE_8__*,int*,int*) ;
+ int* ngx_http_v2_state_save (TYPE_8__*,int*,int*,int* (*) (TYPE_8__*,int*,int*)) ;
+ int* ngx_http_v2_state_skip (TYPE_8__*,int*,int*) ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int ngx_log_debug4 (int ,int ,int ,char*,int,int,int,int) ;
+ int ngx_log_error (int ,int ,int ,char*,...) ;
+ int ngx_queue_remove (int *) ;
 
 __attribute__((used)) static u_char *
 ngx_http_v2_state_headers(ngx_http_v2_connection_t *h2c, u_char *pos,
     u_char *end)
 {
-    size_t                   size;
-    ngx_uint_t               padded, priority, depend, dependency, excl, weight;
-    ngx_uint_t               status;
-    ngx_http_v2_node_t      *node;
-    ngx_http_v2_stream_t    *stream;
-    ngx_http_v2_srv_conf_t  *h2scf;
+    size_t size;
+    ngx_uint_t padded, priority, depend, dependency, excl, weight;
+    ngx_uint_t status;
+    ngx_http_v2_node_t *node;
+    ngx_http_v2_stream_t *stream;
+    ngx_http_v2_srv_conf_t *h2scf;
 
     padded = h2c->state.flags & NGX_HTTP_V2_PADDED_FLAG;
     priority = h2c->state.flags & NGX_HTTP_V2_PRIORITY_FLAG;
@@ -173,7 +173,7 @@ ngx_http_v2_state_headers(ngx_http_v2_connection_t *h2c, u_char *pos,
     h2c->last_sid = h2c->state.sid;
 
     h2c->state.pool = ngx_create_pool(1024, h2c->connection->log);
-    if (h2c->state.pool == NULL) {
+    if (h2c->state.pool == ((void*)0)) {
         return ngx_http_v2_connection_error(h2c, NGX_HTTP_V2_INTERNAL_ERROR);
     }
 
@@ -204,7 +204,7 @@ ngx_http_v2_state_headers(ngx_http_v2_connection_t *h2c, u_char *pos,
 
     node = ngx_http_v2_get_node_by_id(h2c, h2c->state.sid, 1);
 
-    if (node == NULL) {
+    if (node == ((void*)0)) {
         return ngx_http_v2_connection_error(h2c, NGX_HTTP_V2_INTERNAL_ERROR);
     }
 
@@ -214,7 +214,7 @@ ngx_http_v2_state_headers(ngx_http_v2_connection_t *h2c, u_char *pos,
     }
 
     stream = ngx_http_v2_create_stream(h2c, 0);
-    if (stream == NULL) {
+    if (stream == ((void*)0)) {
         return ngx_http_v2_connection_error(h2c, NGX_HTTP_V2_INTERNAL_ERROR);
     }
 
@@ -230,7 +230,7 @@ ngx_http_v2_state_headers(ngx_http_v2_connection_t *h2c, u_char *pos,
 
     node->stream = stream;
 
-    if (priority || node->parent == NULL) {
+    if (priority || node->parent == ((void*)0)) {
         node->weight = weight;
         ngx_http_v2_set_dependency(h2c, node, depend, excl);
     }

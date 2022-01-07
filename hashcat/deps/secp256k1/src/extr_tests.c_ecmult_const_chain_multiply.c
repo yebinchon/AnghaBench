@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  secp256k1_scalar ;
-typedef  int /*<<< orphan*/  secp256k1_gej ;
-typedef  int /*<<< orphan*/  secp256k1_ge ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SECP256K1_GEJ_CONST (int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  SECP256K1_SCALAR_CONST (int,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  ge_equals_gej (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  secp256k1_ecmult_const (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  secp256k1_ge_const_g ; 
- int /*<<< orphan*/  secp256k1_ge_set_gej (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_gej_set_ge (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int secp256k1_scalar ;
+typedef int secp256k1_gej ;
+typedef int secp256k1_ge ;
+
+
+ int SECP256K1_GEJ_CONST (int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int) ;
+ int SECP256K1_SCALAR_CONST (int,int,int,int,int,int,int,int) ;
+ int ge_equals_gej (int *,int const*) ;
+ int secp256k1_ecmult_const (int *,int *,int const*,int) ;
+ int secp256k1_ge_const_g ;
+ int secp256k1_ge_set_gej (int *,int *) ;
+ int secp256k1_gej_set_ge (int *,int *) ;
 
 void ecmult_const_chain_multiply(void) {
-    /* Check known result (randomly generated test problem from sage) */
+
     const secp256k1_scalar scalar = SECP256K1_SCALAR_CONST(
         0x4968d524, 0x2abf9b7a, 0x466abbcf, 0x34b11b6d,
         0xcd83d307, 0x827bed62, 0x05fad0ce, 0x18fae63b

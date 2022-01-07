@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  InodeLookasideList; } ;
-typedef  int /*<<< orphan*/ * PVOID ;
-typedef  TYPE_1__* PEXT2_VCB ;
-typedef  int /*<<< orphan*/ * PEXT2_INODE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  DL_INF ; 
- int /*<<< orphan*/ * ExAllocateFromNPagedLookasideList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INC_MEM_COUNT (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INODE_SIZE ; 
- int /*<<< orphan*/  PS_EXT2_INODE ; 
- int /*<<< orphan*/  RtlZeroMemory (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int InodeLookasideList; } ;
+typedef int * PVOID ;
+typedef TYPE_1__* PEXT2_VCB ;
+typedef int * PEXT2_INODE ;
+
+
+ int DEBUG (int ,char*) ;
+ int DL_INF ;
+ int * ExAllocateFromNPagedLookasideList (int *) ;
+ int INC_MEM_COUNT (int ,int *,int ) ;
+ int INODE_SIZE ;
+ int PS_EXT2_INODE ;
+ int RtlZeroMemory (int *,int ) ;
 
 PEXT2_INODE
-Ext2AllocateInode (PEXT2_VCB  Vcb)
+Ext2AllocateInode (PEXT2_VCB Vcb)
 {
-    PVOID inode = NULL;
+    PVOID inode = ((void*)0);
 
     inode = ExAllocateFromNPagedLookasideList(
                 &(Vcb->InodeLookasideList));
     if (!inode) {
-        return NULL;
+        return ((void*)0);
     }
 
     RtlZeroMemory(inode, INODE_SIZE);

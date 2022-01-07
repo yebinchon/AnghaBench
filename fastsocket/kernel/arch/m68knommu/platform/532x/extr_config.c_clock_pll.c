@@ -1,105 +1,105 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
 
-/* Variables and functions */
- int BUSDIV ; 
- int /*<<< orphan*/  DEFAULT_LPD ; 
- int FREF ; 
- int MAX_FSYS ; 
- int MCF_PLL_PFDR ; 
- int MCF_PLL_PODR ; 
- int MCF_PLL_PODR_BUSDIV (int) ; 
- int MCF_PLL_PODR_CPUDIV (int) ; 
- int /*<<< orphan*/  MCF_SDRAMC_LIMP_FIX ; 
- int /*<<< orphan*/  MCF_SDRAMC_REFRESH ; 
- int MCF_SDRAMC_SDCR ; 
- int MCF_SDRAMC_SDCR_CKE ; 
- int MCF_SDRAMC_SDCR_REF ; 
- int MIN_FSYS ; 
- int /*<<< orphan*/  clock_exit_limp () ; 
- int /*<<< orphan*/  clock_limp (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u32 ;
+
+
+ int BUSDIV ;
+ int DEFAULT_LPD ;
+ int FREF ;
+ int MAX_FSYS ;
+ int MCF_PLL_PFDR ;
+ int MCF_PLL_PODR ;
+ int MCF_PLL_PODR_BUSDIV (int) ;
+ int MCF_PLL_PODR_CPUDIV (int) ;
+ int MCF_SDRAMC_LIMP_FIX ;
+ int MCF_SDRAMC_REFRESH ;
+ int MCF_SDRAMC_SDCR ;
+ int MCF_SDRAMC_SDCR_CKE ;
+ int MCF_SDRAMC_SDCR_REF ;
+ int MIN_FSYS ;
+ int clock_exit_limp () ;
+ int clock_limp (int ) ;
 
 int clock_pll(int fsys, int flags)
 {
-	int fref, temp, fout, mfd;
-	u32 i;
+ int fref, temp, fout, mfd;
+ u32 i;
 
-	fref = FREF;
-        
-	if (fsys == 0) {
-		/* Return current PLL output */
-		mfd = MCF_PLL_PFDR;
+ fref = FREF;
 
-		return (fref * mfd / (BUSDIV * 4));
-	}
+ if (fsys == 0) {
 
-	/* Check bounds of requested system clock */
-	if (fsys > MAX_FSYS)
-		fsys = MAX_FSYS;
-	if (fsys < MIN_FSYS)
-		fsys = MIN_FSYS;
+  mfd = MCF_PLL_PFDR;
 
-	/* Multiplying by 100 when calculating the temp value,
-	   and then dividing by 100 to calculate the mfd allows
-	   for exact values without needing to include floating
-	   point libraries. */
-	temp = 100 * fsys / fref;
-	mfd = 4 * BUSDIV * temp / 100;
-    	    	    	
-	/* Determine the output frequency for selected values */
-	fout = (fref * mfd / (BUSDIV * 4));
+  return (fref * mfd / (BUSDIV * 4));
+ }
 
-	/*
-	 * Check to see if the SDRAM has already been initialized.
-	 * If it has then the SDRAM needs to be put into self refresh
-	 * mode before reprogramming the PLL.
-	 */
-	if (MCF_SDRAMC_SDCR & MCF_SDRAMC_SDCR_REF)
-		/* Put SDRAM into self refresh mode */
-		MCF_SDRAMC_SDCR &= ~MCF_SDRAMC_SDCR_CKE;
 
-	/*
-	 * Initialize the PLL to generate the new system clock frequency.
-	 * The device must be put into LIMP mode to reprogram the PLL.
-	 */
+ if (fsys > MAX_FSYS)
+  fsys = MAX_FSYS;
+ if (fsys < MIN_FSYS)
+  fsys = MIN_FSYS;
 
-	/* Enter LIMP mode */
-	clock_limp(DEFAULT_LPD);
-     					
-	/* Reprogram PLL for desired fsys */
-	MCF_PLL_PODR = (0
-		| MCF_PLL_PODR_CPUDIV(BUSDIV/3)
-		| MCF_PLL_PODR_BUSDIV(BUSDIV));
-						
-	MCF_PLL_PFDR = mfd;
-		
-	/* Exit LIMP mode */
-	clock_exit_limp();
-	
-	/*
-	 * Return the SDRAM to normal operation if it is in use.
-	 */
-	if (MCF_SDRAMC_SDCR & MCF_SDRAMC_SDCR_REF)
-		/* Exit self refresh mode */
-		MCF_SDRAMC_SDCR |= MCF_SDRAMC_SDCR_CKE;
 
-	/* Errata - workaround for SDRAM opeartion after exiting LIMP mode */
-	MCF_SDRAMC_LIMP_FIX = MCF_SDRAMC_REFRESH;
 
-	/* wait for DQS logic to relock */
-	for (i = 0; i < 0x200; i++)
-		;
 
-	return fout;
+
+ temp = 100 * fsys / fref;
+ mfd = 4 * BUSDIV * temp / 100;
+
+
+ fout = (fref * mfd / (BUSDIV * 4));
+
+
+
+
+
+
+ if (MCF_SDRAMC_SDCR & MCF_SDRAMC_SDCR_REF)
+
+  MCF_SDRAMC_SDCR &= ~MCF_SDRAMC_SDCR_CKE;
+
+
+
+
+
+
+
+ clock_limp(DEFAULT_LPD);
+
+
+ MCF_PLL_PODR = (0
+  | MCF_PLL_PODR_CPUDIV(BUSDIV/3)
+  | MCF_PLL_PODR_BUSDIV(BUSDIV));
+
+ MCF_PLL_PFDR = mfd;
+
+
+ clock_exit_limp();
+
+
+
+
+ if (MCF_SDRAMC_SDCR & MCF_SDRAMC_SDCR_REF)
+
+  MCF_SDRAMC_SDCR |= MCF_SDRAMC_SDCR_CKE;
+
+
+ MCF_SDRAMC_LIMP_FIX = MCF_SDRAMC_REFRESH;
+
+
+ for (i = 0; i < 0x200; i++)
+  ;
+
+ return fout;
 }

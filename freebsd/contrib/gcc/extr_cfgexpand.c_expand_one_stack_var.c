@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  HOST_WIDE_INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DECL_SIZE_UNIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  alloc_stack_frame_space (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expand_one_stack_var_at (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_decl_align_unit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tree_low_cst (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int tree ;
+typedef int HOST_WIDE_INT ;
+
+
+ int DECL_SIZE_UNIT (int ) ;
+ int alloc_stack_frame_space (int ,int ) ;
+ int expand_one_stack_var_at (int ,int ) ;
+ int get_decl_align_unit (int ) ;
+ int tree_low_cst (int ,int) ;
 
 __attribute__((used)) static void
 expand_one_stack_var (tree var)

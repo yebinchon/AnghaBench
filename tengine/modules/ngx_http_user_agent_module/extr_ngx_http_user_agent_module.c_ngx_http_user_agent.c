@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_36__   TYPE_9__ ;
-typedef  struct TYPE_35__   TYPE_8__ ;
-typedef  struct TYPE_34__   TYPE_7__ ;
-typedef  struct TYPE_33__   TYPE_6__ ;
-typedef  struct TYPE_32__   TYPE_5__ ;
-typedef  struct TYPE_31__   TYPE_4__ ;
-typedef  struct TYPE_30__   TYPE_3__ ;
-typedef  struct TYPE_29__   TYPE_2__ ;
-typedef  struct TYPE_28__   TYPE_1__ ;
-typedef  struct TYPE_27__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int ngx_uint_t ;
+
+
+typedef struct TYPE_36__ TYPE_9__ ;
+typedef struct TYPE_35__ TYPE_8__ ;
+typedef struct TYPE_34__ TYPE_7__ ;
+typedef struct TYPE_33__ TYPE_6__ ;
+typedef struct TYPE_32__ TYPE_5__ ;
+typedef struct TYPE_31__ TYPE_4__ ;
+typedef struct TYPE_30__ TYPE_3__ ;
+typedef struct TYPE_29__ TYPE_2__ ;
+typedef struct TYPE_28__ TYPE_1__ ;
+typedef struct TYPE_27__ TYPE_10__ ;
+
+
+typedef int ngx_uint_t ;
 struct TYPE_31__ {TYPE_5__* (* insert ) (TYPE_4__*,TYPE_6__*,int) ;} ;
-typedef  TYPE_4__ ngx_trie_t ;
+typedef TYPE_4__ ngx_trie_t ;
 struct TYPE_32__ {void* value; } ;
-typedef  TYPE_5__ ngx_trie_node_t ;
-struct TYPE_33__ {int /*<<< orphan*/  data; int /*<<< orphan*/  len; } ;
-typedef  TYPE_6__ ngx_str_t ;
-typedef  int /*<<< orphan*/  ngx_http_variable_value_t ;
-typedef  int /*<<< orphan*/  ngx_http_variable_t ;
+typedef TYPE_5__ ngx_trie_node_t ;
+struct TYPE_33__ {int data; int len; } ;
+typedef TYPE_6__ ngx_str_t ;
+typedef int ngx_http_variable_value_t ;
+typedef int ngx_http_variable_t ;
 struct TYPE_34__ {scalar_t__ left; scalar_t__ right; TYPE_3__* var; } ;
-typedef  TYPE_7__ ngx_http_user_agent_interval_t ;
-struct TYPE_35__ {int /*<<< orphan*/  pool; TYPE_2__* default_value; TYPE_4__* trie; } ;
-typedef  TYPE_8__ ngx_http_user_agent_ctx_t ;
-struct TYPE_36__ {int /*<<< orphan*/  log; int /*<<< orphan*/  cycle; TYPE_1__* args; TYPE_8__* ctx; } ;
-typedef  TYPE_9__ ngx_conf_t ;
-typedef  int /*<<< orphan*/  ngx_command_t ;
+typedef TYPE_7__ ngx_http_user_agent_interval_t ;
+struct TYPE_35__ {int pool; TYPE_2__* default_value; TYPE_4__* trie; } ;
+typedef TYPE_8__ ngx_http_user_agent_ctx_t ;
+struct TYPE_36__ {int log; int cycle; TYPE_1__* args; TYPE_8__* ctx; } ;
+typedef TYPE_9__ ngx_conf_t ;
+typedef int ngx_command_t ;
 struct TYPE_27__ {int nelts; scalar_t__ elts; } ;
-typedef  TYPE_10__ ngx_array_t ;
-struct TYPE_30__ {int valid; scalar_t__ no_cacheable; scalar_t__ not_found; int /*<<< orphan*/  data; int /*<<< orphan*/  len; } ;
-struct TYPE_29__ {int valid; scalar_t__ no_cacheable; scalar_t__ not_found; int /*<<< orphan*/  data; int /*<<< orphan*/  len; } ;
+typedef TYPE_10__ ngx_array_t ;
+struct TYPE_30__ {int valid; scalar_t__ no_cacheable; scalar_t__ not_found; int data; int len; } ;
+struct TYPE_29__ {int valid; scalar_t__ no_cacheable; scalar_t__ not_found; int data; int len; } ;
 struct TYPE_28__ {int nelts; TYPE_6__* elts; } ;
 
-/* Variables and functions */
- char* NGX_CONF_ERROR ; 
- char* NGX_CONF_OK ; 
- scalar_t__ NGX_HTTP_UA_MAX_VERSION_VALUE ; 
- scalar_t__ NGX_HTTP_UA_MIN_VERSION_VALUE ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_CORE ; 
- int /*<<< orphan*/  NGX_LOG_EMERG ; 
- scalar_t__ NGX_OK ; 
- int NGX_TRIE_CONTINUE ; 
- int NGX_TRIE_REVERSE ; 
- TYPE_10__* ngx_array_create (int /*<<< orphan*/ ,int,int) ; 
- scalar_t__ ngx_array_push (TYPE_10__*) ; 
- scalar_t__ ngx_conf_full_name (int /*<<< orphan*/ ,TYPE_6__*,int) ; 
- int /*<<< orphan*/  ngx_conf_log_error (int /*<<< orphan*/ ,TYPE_9__*,int /*<<< orphan*/ ,char*) ; 
- char* ngx_conf_parse (TYPE_9__*,TYPE_6__*) ; 
- TYPE_7__* ngx_http_user_agent_get_version (TYPE_9__*,TYPE_6__*) ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- void* ngx_pcalloc (int /*<<< orphan*/ ,int) ; 
- scalar_t__ ngx_strcmp (int /*<<< orphan*/ ,char*) ; 
- TYPE_5__* stub1 (TYPE_4__*,TYPE_6__*,int) ; 
- TYPE_5__* stub2 (TYPE_4__*,TYPE_6__*,int) ; 
+
+ char* NGX_CONF_ERROR ;
+ char* NGX_CONF_OK ;
+ scalar_t__ NGX_HTTP_UA_MAX_VERSION_VALUE ;
+ scalar_t__ NGX_HTTP_UA_MIN_VERSION_VALUE ;
+ int NGX_LOG_DEBUG_CORE ;
+ int NGX_LOG_EMERG ;
+ scalar_t__ NGX_OK ;
+ int NGX_TRIE_CONTINUE ;
+ int NGX_TRIE_REVERSE ;
+ TYPE_10__* ngx_array_create (int ,int,int) ;
+ scalar_t__ ngx_array_push (TYPE_10__*) ;
+ scalar_t__ ngx_conf_full_name (int ,TYPE_6__*,int) ;
+ int ngx_conf_log_error (int ,TYPE_9__*,int ,char*) ;
+ char* ngx_conf_parse (TYPE_9__*,TYPE_6__*) ;
+ TYPE_7__* ngx_http_user_agent_get_version (TYPE_9__*,TYPE_6__*) ;
+ int ngx_log_debug1 (int ,int ,int ,char*,int ) ;
+ void* ngx_pcalloc (int ,int) ;
+ scalar_t__ ngx_strcmp (int ,char*) ;
+ TYPE_5__* stub1 (TYPE_4__*,TYPE_6__*,int) ;
+ TYPE_5__* stub2 (TYPE_4__*,TYPE_6__*,int) ;
 
 __attribute__((used)) static char *
 ngx_http_user_agent(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 {
-    ngx_str_t                      *args, *name, file;
-    ngx_uint_t                      i, nelts, mode;
-    ngx_trie_t                     *trie;
-    ngx_array_t                    *value;
-    ngx_trie_node_t                *node;
-    ngx_http_user_agent_ctx_t      *ctx;
+    ngx_str_t *args, *name, file;
+    ngx_uint_t i, nelts, mode;
+    ngx_trie_t *trie;
+    ngx_array_t *value;
+    ngx_trie_node_t *node;
+    ngx_http_user_agent_ctx_t *ctx;
     ngx_http_user_agent_interval_t *interval, *p;
 
     ctx = cf->ctx;
@@ -81,7 +81,7 @@ ngx_http_user_agent(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
     args = cf->args->elts;
     nelts = cf->args->nelts;
 
-    name = NULL;
+    name = ((void*)0);
 
     if (nelts <= 1) {
         ngx_conf_log_error(NGX_LOG_EMERG, cf, 0,
@@ -105,14 +105,14 @@ ngx_http_user_agent(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 
         if (ngx_strcmp(args[0].data, "default") == 0) {
 
-            if (ctx->default_value != NULL) {
+            if (ctx->default_value != ((void*)0)) {
                 ngx_conf_log_error(NGX_LOG_EMERG, cf, 0, "is duplicate");
                 return NGX_CONF_ERROR;
             }
 
             ctx->default_value = ngx_pcalloc(ctx->pool,
                                              sizeof(ngx_http_variable_t));
-            if (ctx->default_value == NULL) {
+            if (ctx->default_value == ((void*)0)) {
                 return NGX_CONF_ERROR;
             }
 
@@ -140,13 +140,13 @@ ngx_http_user_agent(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 
         interval = ngx_pcalloc(ctx->pool,
                                sizeof(ngx_http_user_agent_interval_t));
-        if (interval == NULL) {
+        if (interval == ((void*)0)) {
             return NGX_CONF_ERROR;
         }
 
         interval->var = ngx_pcalloc(ctx->pool,
                                     sizeof(ngx_http_variable_value_t));
-        if (interval->var == NULL) {
+        if (interval->var == ((void*)0)) {
             return NGX_CONF_ERROR;
         }
 
@@ -167,7 +167,7 @@ ngx_http_user_agent(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 
         name = args;
         interval = ngx_http_user_agent_get_version(cf, args + 1);
-        if (interval == NULL) {
+        if (interval == ((void*)0)) {
             return NGX_CONF_ERROR;
         }
 
@@ -188,15 +188,15 @@ insert:
 
     mode = NGX_TRIE_REVERSE;
     node = trie->insert(trie, name, mode);
-    if (node == NULL) {
+    if (node == ((void*)0)) {
         return NGX_CONF_ERROR;
     }
 
     value = (ngx_array_t *) node->value;
-    if (value == NULL) {
+    if (value == ((void*)0)) {
         value = ngx_array_create(ctx->pool, 2,
                                  sizeof(ngx_http_user_agent_interval_t));
-        if (value == NULL) {
+        if (value == ((void*)0)) {
             return NGX_CONF_ERROR;
         }
     }
@@ -214,7 +214,7 @@ insert:
     }
 
     p = (ngx_http_user_agent_interval_t *) ngx_array_push(value);
-    if (p == NULL) {
+    if (p == ((void*)0)) {
         return NGX_CONF_ERROR;
     }
 

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  secp256k1_sha256 ;
-struct TYPE_3__ {int /*<<< orphan*/  inner; int /*<<< orphan*/  outer; } ;
-typedef  TYPE_1__ secp256k1_hmac_sha256 ;
-typedef  int /*<<< orphan*/  rkey ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,size_t) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  secp256k1_sha256_finalize (int /*<<< orphan*/ *,unsigned char*) ; 
- int /*<<< orphan*/  secp256k1_sha256_initialize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_sha256_write (int /*<<< orphan*/ *,unsigned char const*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int secp256k1_sha256 ;
+struct TYPE_3__ {int inner; int outer; } ;
+typedef TYPE_1__ secp256k1_hmac_sha256 ;
+typedef int rkey ;
+
+
+ int memcpy (unsigned char*,unsigned char const*,size_t) ;
+ int memset (unsigned char*,int ,int) ;
+ int secp256k1_sha256_finalize (int *,unsigned char*) ;
+ int secp256k1_sha256_initialize (int *) ;
+ int secp256k1_sha256_write (int *,unsigned char const*,int) ;
 
 __attribute__((used)) static void secp256k1_hmac_sha256_initialize(secp256k1_hmac_sha256 *hash, const unsigned char *key, size_t keylen) {
     size_t n;

@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  sshbuf_fixed () ; 
- int /*<<< orphan*/  sshbuf_fuzz_tests () ; 
- int /*<<< orphan*/  sshbuf_getput_basic_tests () ; 
- int /*<<< orphan*/  sshbuf_getput_crypto_tests () ; 
- int /*<<< orphan*/  sshbuf_getput_fuzz_tests () ; 
- int /*<<< orphan*/  sshbuf_misc_tests () ; 
- int /*<<< orphan*/  sshbuf_tests () ; 
+ int sshbuf_fixed () ;
+ int sshbuf_fuzz_tests () ;
+ int sshbuf_getput_basic_tests () ;
+ int sshbuf_getput_crypto_tests () ;
+ int sshbuf_getput_fuzz_tests () ;
+ int sshbuf_misc_tests () ;
+ int sshbuf_tests () ;
 
 void
 tests(void)
 {
-	sshbuf_tests();
-	sshbuf_getput_basic_tests();
-	sshbuf_getput_crypto_tests();
-	sshbuf_misc_tests();
-	sshbuf_fuzz_tests();
-	sshbuf_getput_fuzz_tests();
-	sshbuf_fixed();
+ sshbuf_tests();
+ sshbuf_getput_basic_tests();
+ sshbuf_getput_crypto_tests();
+ sshbuf_misc_tests();
+ sshbuf_fuzz_tests();
+ sshbuf_getput_fuzz_tests();
+ sshbuf_fixed();
 }

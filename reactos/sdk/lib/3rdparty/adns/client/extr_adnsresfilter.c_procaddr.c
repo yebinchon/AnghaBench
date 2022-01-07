@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct treething {scalar_t__ qu; int /*<<< orphan*/ * bytes; scalar_t__ ans; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct treething {scalar_t__ qu; int * bytes; scalar_t__ ans; } ;
 struct sockaddr {int dummy; } ;
-struct outqueuenode {int textlen; int /*<<< orphan*/  printbefore; struct treething* addr; int /*<<< orphan*/ * textp; int /*<<< orphan*/ * buffer; } ;
-struct TYPE_2__ {int /*<<< orphan*/  sin_addr; } ;
+struct outqueuenode {int textlen; int printbefore; struct treething* addr; int * textp; int * buffer; } ;
+struct TYPE_2__ {int sin_addr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIST_LINK_TAIL (int /*<<< orphan*/ ,struct outqueuenode*) ; 
- int /*<<< orphan*/  addrtextbuf ; 
- int adns_submit_reverse (int /*<<< orphan*/ ,struct sockaddr const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct treething*,scalar_t__*) ; 
- int /*<<< orphan*/  adnsfail (char*,int) ; 
- int /*<<< orphan*/  ads ; 
- int /*<<< orphan*/  bytes ; 
- int cbyte ; 
- int /*<<< orphan*/  comparer ; 
- int inbuf ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- struct treething* newthing ; 
- int /*<<< orphan*/  outqueue ; 
- int /*<<< orphan*/  outqueuelen ; 
- int /*<<< orphan*/  printbefore ; 
- int /*<<< orphan*/  rrt ; 
- TYPE_1__ sa ; 
- int /*<<< orphan*/  sysfail (char*) ; 
- int /*<<< orphan*/  treeroot ; 
- void** tsearch (struct treething*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- void* xmalloc (int) ; 
+
+ int LIST_LINK_TAIL (int ,struct outqueuenode*) ;
+ int addrtextbuf ;
+ int adns_submit_reverse (int ,struct sockaddr const*,int ,int ,struct treething*,scalar_t__*) ;
+ int adnsfail (char*,int) ;
+ int ads ;
+ int bytes ;
+ int cbyte ;
+ int comparer ;
+ int inbuf ;
+ int memcpy (int *,int ,int) ;
+ struct treething* newthing ;
+ int outqueue ;
+ int outqueuelen ;
+ int printbefore ;
+ int rrt ;
+ TYPE_1__ sa ;
+ int sysfail (char*) ;
+ int treeroot ;
+ void** tsearch (struct treething*,int *,int ) ;
+ void* xmalloc (int) ;
 
 __attribute__((used)) static void procaddr(void) {
   struct treething *foundthing;
@@ -59,7 +59,7 @@ __attribute__((used)) static void procaddr(void) {
     newthing= 0;
     memcpy(&sa.sin_addr,bytes,4);
     r= adns_submit_reverse(ads, (const struct sockaddr*)&sa,
-			   rrt,0,foundthing,&foundthing->qu);
+      rrt,0,foundthing,&foundthing->qu);
     if (r) adnsfail("submit",r);
   }
   entry= xmalloc(sizeof(*entry));

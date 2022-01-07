@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ad7877 {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ad7877_ts_event_release (struct ad7877*) ; 
+
+ int ad7877_ts_event_release (struct ad7877*) ;
 
 __attribute__((used)) static void ad7877_timer(unsigned long handle)
 {
-	struct ad7877 *ts = (void *)handle;
+ struct ad7877 *ts = (void *)handle;
 
-	ad7877_ts_event_release(ts);
+ ad7877_ts_event_release(ts);
 }

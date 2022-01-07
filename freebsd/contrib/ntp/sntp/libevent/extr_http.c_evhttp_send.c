@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct evhttp_request {int userdone; int /*<<< orphan*/  output_buffer; struct evhttp_connection* evcon; } ;
-struct evhttp_connection {int /*<<< orphan*/  requests; } ;
+
+
+
+
+struct evhttp_request {int userdone; int output_buffer; struct evhttp_connection* evcon; } ;
+struct evhttp_connection {int requests; } ;
 struct evbuffer {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVUTIL_ASSERT (int) ; 
- struct evhttp_request* TAILQ_FIRST (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  evbuffer_add_buffer (int /*<<< orphan*/ ,struct evbuffer*) ; 
- int /*<<< orphan*/  evhttp_make_header (struct evhttp_connection*,struct evhttp_request*) ; 
- int /*<<< orphan*/  evhttp_request_free (struct evhttp_request*) ; 
- int /*<<< orphan*/  evhttp_send_done ; 
- int /*<<< orphan*/  evhttp_write_buffer (struct evhttp_connection*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int EVUTIL_ASSERT (int) ;
+ struct evhttp_request* TAILQ_FIRST (int *) ;
+ int evbuffer_add_buffer (int ,struct evbuffer*) ;
+ int evhttp_make_header (struct evhttp_connection*,struct evhttp_request*) ;
+ int evhttp_request_free (struct evhttp_request*) ;
+ int evhttp_send_done ;
+ int evhttp_write_buffer (struct evhttp_connection*,int ,int *) ;
 
 __attribute__((used)) static inline void
 evhttp_send(struct evhttp_request *req, struct evbuffer *databuf)
 {
-	struct evhttp_connection *evcon = req->evcon;
+ struct evhttp_connection *evcon = req->evcon;
 
-	if (evcon == NULL) {
-		evhttp_request_free(req);
-		return;
-	}
+ if (evcon == ((void*)0)) {
+  evhttp_request_free(req);
+  return;
+ }
 
-	EVUTIL_ASSERT(TAILQ_FIRST(&evcon->requests) == req);
+ EVUTIL_ASSERT(TAILQ_FIRST(&evcon->requests) == req);
 
-	/* we expect no more calls form the user on this request */
-	req->userdone = 1;
 
-	/* xxx: not sure if we really should expose the data buffer this way */
-	if (databuf != NULL)
-		evbuffer_add_buffer(req->output_buffer, databuf);
+ req->userdone = 1;
 
-	/* Adds headers to the response */
-	evhttp_make_header(evcon, req);
 
-	evhttp_write_buffer(evcon, evhttp_send_done, NULL);
+ if (databuf != ((void*)0))
+  evbuffer_add_buffer(req->output_buffer, databuf);
+
+
+ evhttp_make_header(evcon, req);
+
+ evhttp_write_buffer(evcon, evhttp_send_done, ((void*)0));
 }

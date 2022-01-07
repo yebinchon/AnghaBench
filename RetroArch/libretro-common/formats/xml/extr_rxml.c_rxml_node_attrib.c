@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rxml_node {struct rxml_attrib_node* attrib; } ;
-struct rxml_attrib_node {char const* value; int /*<<< orphan*/  attrib; struct rxml_attrib_node* next; } ;
+struct rxml_attrib_node {char const* value; int attrib; struct rxml_attrib_node* next; } ;
 
-/* Variables and functions */
- scalar_t__ string_is_equal (char const*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ string_is_equal (char const*,int ) ;
 
 const char *rxml_node_attrib(struct rxml_node *node, const char *attrib)
 {
-   struct rxml_attrib_node *attribs = NULL;
+   struct rxml_attrib_node *attribs = ((void*)0);
    for (attribs = node->attrib; attribs; attribs = attribs->next)
    {
       if (string_is_equal(attrib, attribs->attrib))
          return attribs->value;
    }
 
-   return NULL;
+   return ((void*)0);
 }

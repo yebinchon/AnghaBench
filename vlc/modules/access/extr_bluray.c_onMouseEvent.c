@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  i_y; int /*<<< orphan*/  i_x; } ;
-typedef  TYPE_1__ vlc_mouse_t ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int i_y; int i_x; } ;
+typedef TYPE_1__ vlc_mouse_t ;
 struct TYPE_11__ {TYPE_3__* p_sys; } ;
-typedef  TYPE_2__ demux_t ;
-struct TYPE_12__ {TYPE_1__ oldmouse; int /*<<< orphan*/  bluray; } ;
-typedef  TYPE_3__ demux_sys_t ;
+typedef TYPE_2__ demux_t ;
+struct TYPE_12__ {TYPE_1__ oldmouse; int bluray; } ;
+typedef TYPE_3__ demux_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BD_VK_MOUSE_ACTIVATE ; 
- int /*<<< orphan*/  MOUSE_BUTTON_LEFT ; 
- int /*<<< orphan*/  bd_mouse_select (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bd_user_input (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- scalar_t__ vlc_mouse_HasMoved (TYPE_1__*,TYPE_1__ const*) ; 
- scalar_t__ vlc_mouse_HasPressed (TYPE_1__*,TYPE_1__ const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_mouse_Init (TYPE_1__*) ; 
+
+ int BD_VK_MOUSE_ACTIVATE ;
+ int MOUSE_BUTTON_LEFT ;
+ int bd_mouse_select (int ,int,int ,int ) ;
+ int bd_user_input (int ,int,int ) ;
+ scalar_t__ vlc_mouse_HasMoved (TYPE_1__*,TYPE_1__ const*) ;
+ scalar_t__ vlc_mouse_HasPressed (TYPE_1__*,TYPE_1__ const*,int ) ;
+ int vlc_mouse_Init (TYPE_1__*) ;
 
 __attribute__((used)) static void onMouseEvent(const vlc_mouse_t *newmouse, void *user_data)
 {
-    demux_t     *p_demux = user_data;
-    demux_sys_t *p_sys   = p_demux->p_sys;
+    demux_t *p_demux = user_data;
+    demux_sys_t *p_sys = p_demux->p_sys;
 
     if (!newmouse) {
         vlc_mouse_Init(&p_sys->oldmouse);

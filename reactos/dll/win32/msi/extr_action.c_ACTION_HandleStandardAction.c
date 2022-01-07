@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_6__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  size_t UINT ;
-struct TYPE_9__ {scalar_t__ description; scalar_t__ template; size_t (* handler ) (TYPE_1__*) ;scalar_t__ action_rollback; int /*<<< orphan*/ * action; } ;
-struct TYPE_8__ {int /*<<< orphan*/  need_rollback; } ;
-typedef  TYPE_1__ MSIPACKAGE ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
 
-/* Variables and functions */
- size_t ERROR_FUNCTION_NOT_CALLED ; 
- size_t ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LoadStringW (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SCRIPT_ROLLBACK ; 
- TYPE_6__* StandardActions ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msi_hInstance ; 
- int /*<<< orphan*/  msi_schedule_action (TYPE_1__*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  strcmpW (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- size_t stub1 (TYPE_1__*) ; 
- int /*<<< orphan*/  ui_actioninfo (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ui_actionstart (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_9__ TYPE_6__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef size_t UINT ;
+struct TYPE_9__ {scalar_t__ description; scalar_t__ template; size_t (* handler ) (TYPE_1__*) ;scalar_t__ action_rollback; int * action; } ;
+struct TYPE_8__ {int need_rollback; } ;
+typedef TYPE_1__ MSIPACKAGE ;
+typedef int LPWSTR ;
+typedef int LPCWSTR ;
+
+
+ size_t ERROR_FUNCTION_NOT_CALLED ;
+ size_t ERROR_SUCCESS ;
+ int FALSE ;
+ int FIXME (char*,int ) ;
+ int LoadStringW (int ,scalar_t__,int ,int) ;
+ int SCRIPT_ROLLBACK ;
+ TYPE_6__* StandardActions ;
+ int TRACE (char*) ;
+ int TRUE ;
+ int debugstr_w (int ) ;
+ int msi_hInstance ;
+ int msi_schedule_action (TYPE_1__*,int ,scalar_t__) ;
+ int strcmpW (int *,int ) ;
+ size_t stub1 (TYPE_1__*) ;
+ int ui_actioninfo (TYPE_1__*,int ,int ,int) ;
+ int ui_actionstart (TYPE_1__*,int ,int *,int *) ;
 
 __attribute__((used)) static UINT ACTION_HandleStandardAction(MSIPACKAGE *package, LPCWSTR action)
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static UINT ACTION_HandleStandardAction(MSIPACKAGE *packag
     UINT i;
 
     i = 0;
-    while (StandardActions[i].action != NULL)
+    while (StandardActions[i].action != ((void*)0))
     {
         if (!strcmpW( StandardActions[i].action, action ))
         {

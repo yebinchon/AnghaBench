@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EBUSY ; 
- scalar_t__ freeze_processes () ; 
- int /*<<< orphan*/  thaw_processes () ; 
+ int EBUSY ;
+ scalar_t__ freeze_processes () ;
+ int thaw_processes () ;
 
 __attribute__((used)) static int prepare_processes(void)
 {
-	int error = 0;
+ int error = 0;
 
-	if (freeze_processes()) {
-		error = -EBUSY;
-		thaw_processes();
-	}
-	return error;
+ if (freeze_processes()) {
+  error = -EBUSY;
+  thaw_processes();
+ }
+ return error;
 }

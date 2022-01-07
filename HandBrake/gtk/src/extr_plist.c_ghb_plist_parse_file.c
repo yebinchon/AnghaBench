@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gssize ;
-typedef  scalar_t__ gchar ;
-typedef  int /*<<< orphan*/  GhbValue ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- size_t fread (scalar_t__*,int,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t ftell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * g_fopen (scalar_t__ const*,char*) ; 
- int /*<<< orphan*/  g_free (scalar_t__*) ; 
- scalar_t__* g_malloc (size_t) ; 
- int /*<<< orphan*/  g_warning (char*,scalar_t__ const*) ; 
- int /*<<< orphan*/ * ghb_plist_parse (scalar_t__*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int gssize ;
+typedef scalar_t__ gchar ;
+typedef int GhbValue ;
+typedef int FILE ;
+
+
+ int SEEK_END ;
+ int SEEK_SET ;
+ int fclose (int *) ;
+ size_t fread (scalar_t__*,int,size_t,int *) ;
+ int fseek (int *,int ,int ) ;
+ size_t ftell (int *) ;
+ int * g_fopen (scalar_t__ const*,char*) ;
+ int g_free (scalar_t__*) ;
+ scalar_t__* g_malloc (size_t) ;
+ int g_warning (char*,scalar_t__ const*) ;
+ int * ghb_plist_parse (scalar_t__*,int ) ;
 
 GhbValue*
 ghb_plist_parse_file(const gchar *filename)
@@ -37,10 +37,10 @@ ghb_plist_parse_file(const gchar *filename)
     FILE *fd;
 
     fd = g_fopen(filename, "r");
-    if (fd == NULL)
+    if (fd == ((void*)0))
     {
         g_warning("Plist parse: failed to open %s", filename);
-        return NULL;
+        return ((void*)0);
     }
     fseek(fd, 0, SEEK_END);
     size = ftell(fd);

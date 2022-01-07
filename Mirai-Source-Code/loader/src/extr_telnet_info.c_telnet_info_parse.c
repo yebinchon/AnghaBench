@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct telnet_info {int dummy; } ;
-typedef  int /*<<< orphan*/  port_t ;
-typedef  int /*<<< orphan*/  ipv4_t ;
+typedef int port_t ;
+typedef int ipv4_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atoi (char*) ; 
- int /*<<< orphan*/  htons (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  inet_addr (char*) ; 
- int strlen (char*) ; 
- char* strtok (char*,char*) ; 
- struct telnet_info* telnet_info_new (char*,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct telnet_info*) ; 
 
-struct telnet_info *telnet_info_parse(char *str, struct telnet_info *out) // Format: ip:port user:pass arch
+ int atoi (char*) ;
+ int htons (int ) ;
+ int inet_addr (char*) ;
+ int strlen (char*) ;
+ char* strtok (char*,char*) ;
+ struct telnet_info* telnet_info_new (char*,char*,char*,int ,int ,struct telnet_info*) ;
+
+struct telnet_info *telnet_info_parse(char *str, struct telnet_info *out)
 {
     char *conn, *auth, *arch;
-    char *addr_str, *port_str, *user = NULL, *pass = NULL;
+    char *addr_str, *port_str, *user = ((void*)0), *pass = ((void*)0);
     ipv4_t addr;
     port_t port;
 
-    if ((conn = strtok(str, " ")) == NULL)
-        return NULL;
-    if ((auth = strtok(NULL, " ")) == NULL)
-        return NULL;
-    arch = strtok(NULL, " "); // We don't care if we don't know the arch
+    if ((conn = strtok(str, " ")) == ((void*)0))
+        return ((void*)0);
+    if ((auth = strtok(((void*)0), " ")) == ((void*)0))
+        return ((void*)0);
+    arch = strtok(((void*)0), " ");
 
-    if ((addr_str = strtok(conn, ":")) == NULL)
-        return NULL;
-    if ((port_str = strtok(NULL, ":")) == NULL)
-        return NULL;
+    if ((addr_str = strtok(conn, ":")) == ((void*)0))
+        return ((void*)0);
+    if ((port_str = strtok(((void*)0), ":")) == ((void*)0))
+        return ((void*)0);
 
     if (strlen(auth) == 1)
     {
@@ -48,12 +48,12 @@ struct telnet_info *telnet_info_parse(char *str, struct telnet_info *out) // For
             pass = "";
         }
         else if (auth[0] != '?')
-            return NULL;
+            return ((void*)0);
     }
     else
     {
         user = strtok(auth, ":");
-        pass = strtok(NULL, ":");
+        pass = strtok(((void*)0), ":");
     }
 
     addr = inet_addr(addr_str);

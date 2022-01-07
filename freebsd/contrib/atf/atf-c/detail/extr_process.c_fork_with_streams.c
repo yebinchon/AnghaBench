@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stream_prepare_t ;
-typedef  int pid_t ;
-typedef  int /*<<< orphan*/  atf_process_stream_t ;
-typedef  int /*<<< orphan*/  atf_process_child_t ;
-typedef  int /*<<< orphan*/  atf_error_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UNREACHABLE ; 
- int /*<<< orphan*/  abort () ; 
- scalar_t__ atf_is_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atf_libc_error (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  atf_no_error () ; 
- int /*<<< orphan*/  do_child (void (*) (void*),void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  do_parent (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  errno ; 
- int fork () ; 
- int /*<<< orphan*/  stream_prepare_fini (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stream_prepare_init (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int stream_prepare_t ;
+typedef int pid_t ;
+typedef int atf_process_stream_t ;
+typedef int atf_process_child_t ;
+typedef int atf_error_t ;
+
+
+ int UNREACHABLE ;
+ int abort () ;
+ scalar_t__ atf_is_error (int ) ;
+ int atf_libc_error (int ,char*) ;
+ int atf_no_error () ;
+ int do_child (void (*) (void*),void*,int *,int *) ;
+ int do_parent (int *,int,int *,int *) ;
+ int errno ;
+ int fork () ;
+ int stream_prepare_fini (int *) ;
+ int stream_prepare_init (int *,int const*) ;
 
 __attribute__((used)) static
 atf_error_t

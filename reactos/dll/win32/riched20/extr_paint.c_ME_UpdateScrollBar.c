@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  si ;
+
+
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int si ;
 struct TYPE_14__ {int nMax; int nPage; void* nPos; } ;
 struct TYPE_13__ {scalar_t__ cx; int cy; } ;
 struct TYPE_12__ {scalar_t__ nMax; scalar_t__ nPage; void* nPos; } ;
-struct TYPE_16__ {int styleFlags; scalar_t__ nTotalWidth; int nTotalLength; int /*<<< orphan*/  texthost; scalar_t__ hWnd; TYPE_3__ vert_si; TYPE_2__ sizeWindow; TYPE_1__ horz_si; } ;
+struct TYPE_16__ {int styleFlags; scalar_t__ nTotalWidth; int nTotalLength; int texthost; scalar_t__ hWnd; TYPE_3__ vert_si; TYPE_2__ sizeWindow; TYPE_1__ horz_si; } ;
 struct TYPE_15__ {int cbSize; int fMask; int nMax; scalar_t__ nPage; void* nPos; scalar_t__ nMin; } ;
-typedef  TYPE_4__ SCROLLINFO ;
-typedef  TYPE_5__ ME_TextEditor ;
-typedef  int BOOL ;
+typedef TYPE_4__ SCROLLINFO ;
+typedef TYPE_5__ ME_TextEditor ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int ES_DISABLENOSCROLL ; 
- int ES_MULTILINE ; 
- int FALSE ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  ITextHost_TxSetScrollPos (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int) ; 
- int /*<<< orphan*/  ITextHost_TxSetScrollRange (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int,int) ; 
- int /*<<< orphan*/  ITextHost_TxShowScrollBar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ME_HScrollAbs (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int ME_PostSetScrollRangeVisibility (TYPE_4__*) ; 
- int /*<<< orphan*/  ME_VScrollAbs (TYPE_5__*,int /*<<< orphan*/ ) ; 
- scalar_t__ ME_WrapMarkedParagraphs (TYPE_5__*) ; 
- void* MulDiv (void*,int,int) ; 
- int /*<<< orphan*/  SB_HORZ ; 
- int /*<<< orphan*/  SB_VERT ; 
- int SIF_DISABLENOSCROLL ; 
- int SIF_PAGE ; 
- int SIF_POS ; 
- int SIF_RANGE ; 
- int /*<<< orphan*/  SetScrollInfo (scalar_t__,int /*<<< orphan*/ ,TYPE_4__*,int) ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__,int,scalar_t__) ; 
- int TRUE ; 
- int WS_HSCROLL ; 
- int WS_VSCROLL ; 
+
+ int ES_DISABLENOSCROLL ;
+ int ES_MULTILINE ;
+ int FALSE ;
+ int FIXME (char*) ;
+ int ITextHost_TxSetScrollPos (int ,int ,void*,int) ;
+ int ITextHost_TxSetScrollRange (int ,int ,scalar_t__,int,int) ;
+ int ITextHost_TxShowScrollBar (int ,int ,int) ;
+ int ME_HScrollAbs (TYPE_5__*,int ) ;
+ int ME_PostSetScrollRangeVisibility (TYPE_4__*) ;
+ int ME_VScrollAbs (TYPE_5__*,int ) ;
+ scalar_t__ ME_WrapMarkedParagraphs (TYPE_5__*) ;
+ void* MulDiv (void*,int,int) ;
+ int SB_HORZ ;
+ int SB_VERT ;
+ int SIF_DISABLENOSCROLL ;
+ int SIF_PAGE ;
+ int SIF_POS ;
+ int SIF_RANGE ;
+ int SetScrollInfo (scalar_t__,int ,TYPE_4__*,int) ;
+ int TRACE (char*,scalar_t__,int,scalar_t__) ;
+ int TRUE ;
+ int WS_HSCROLL ;
+ int WS_VSCROLL ;
 
 void ME_UpdateScrollBar(ME_TextEditor *editor)
 {
-  /* Note that this is the only function that should ever call
-   * SetScrollInfo with SIF_PAGE or SIF_RANGE. */
+
+
 
   SCROLLINFO si;
   BOOL bScrollBarWasVisible, bScrollBarWillBeVisible;
@@ -67,14 +67,14 @@ void ME_UpdateScrollBar(ME_TextEditor *editor)
   if (editor->styleFlags & ES_DISABLENOSCROLL)
     si.fMask |= SIF_DISABLENOSCROLL;
 
-  /* Update horizontal scrollbar */
+
   bScrollBarWasVisible = editor->horz_si.nMax > editor->horz_si.nPage;
   bScrollBarWillBeVisible = editor->nTotalWidth > editor->sizeWindow.cx;
   if (editor->horz_si.nPos && !bScrollBarWillBeVisible)
   {
     ME_HScrollAbs(editor, 0);
-    /* ME_HScrollAbs will call this function,
-     * so nothing else needs to be done here. */
+
+
     return;
   }
 
@@ -93,7 +93,7 @@ void ME_UpdateScrollBar(ME_TextEditor *editor)
     {
       if (si.nMax > 0xFFFF)
       {
-        /* Native scales the scrollbar info to 16-bit external values. */
+
         si.nPos = MulDiv(si.nPos, 0xFFFF, si.nMax);
         si.nMax = 0xFFFF;
       }
@@ -103,7 +103,7 @@ void ME_UpdateScrollBar(ME_TextEditor *editor)
         ITextHost_TxSetScrollRange(editor->texthost, SB_HORZ, si.nMin, si.nMax, FALSE);
         ITextHost_TxSetScrollPos(editor->texthost, SB_HORZ, si.nPos, TRUE);
       }
-      /* SetScrollInfo or SetScrollRange change scrollbar visibility. */
+
       bScrollBarWasVisible = ME_PostSetScrollRangeVisibility(&si);
     }
   }
@@ -120,7 +120,7 @@ void ME_UpdateScrollBar(ME_TextEditor *editor)
       ITextHost_TxShowScrollBar(editor->texthost, SB_HORZ, bScrollBarWillBeVisible);
   }
 
-  /* Update vertical scrollbar */
+
   bScrollBarWasVisible = editor->vert_si.nMax > editor->vert_si.nPage;
   bScrollBarWillBeVisible = editor->nTotalLength > editor->sizeWindow.cy &&
                             (editor->styleFlags & ES_MULTILINE);
@@ -128,8 +128,8 @@ void ME_UpdateScrollBar(ME_TextEditor *editor)
   if (editor->vert_si.nPos && !bScrollBarWillBeVisible)
   {
     ME_VScrollAbs(editor, 0);
-    /* ME_VScrollAbs will call this function,
-     * so nothing else needs to be done here. */
+
+
     return;
   }
 
@@ -148,7 +148,7 @@ void ME_UpdateScrollBar(ME_TextEditor *editor)
     {
       if (si.nMax > 0xFFFF)
       {
-        /* Native scales the scrollbar info to 16-bit external values. */
+
         si.nPos = MulDiv(si.nPos, 0xFFFF, si.nMax);
         si.nMax = 0xFFFF;
       }
@@ -158,7 +158,7 @@ void ME_UpdateScrollBar(ME_TextEditor *editor)
         ITextHost_TxSetScrollRange(editor->texthost, SB_VERT, si.nMin, si.nMax, FALSE);
         ITextHost_TxSetScrollPos(editor->texthost, SB_VERT, si.nPos, TRUE);
       }
-      /* SetScrollInfo or SetScrollRange change scrollbar visibility. */
+
       bScrollBarWasVisible = ME_PostSetScrollRangeVisibility(&si);
     }
   }

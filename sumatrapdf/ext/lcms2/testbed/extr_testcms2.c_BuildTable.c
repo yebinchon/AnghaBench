@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ cmsUInt16Number ;
-typedef  int cmsInt32Number ;
-typedef  int cmsFloat64Number ;
-typedef  scalar_t__ cmsBool ;
 
-/* Variables and functions */
- scalar_t__ floor (int) ; 
+
+
+
+typedef scalar_t__ cmsUInt16Number ;
+typedef int cmsInt32Number ;
+typedef int cmsFloat64Number ;
+typedef scalar_t__ cmsBool ;
+
+
+ scalar_t__ floor (int) ;
 
 __attribute__((used)) static
-void BuildTable(cmsInt32Number n, cmsUInt16Number Tab[], cmsBool  Descending)
+void BuildTable(cmsInt32Number n, cmsUInt16Number Tab[], cmsBool Descending)
 {
     cmsInt32Number i;
 

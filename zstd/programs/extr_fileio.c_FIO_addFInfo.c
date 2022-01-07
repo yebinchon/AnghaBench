@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  total ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int total ;
 struct TYPE_6__ {int decompUnavailable; int usesCheck; scalar_t__ nbFiles; scalar_t__ decompressedSize; scalar_t__ compressedSize; scalar_t__ numSkippableFrames; scalar_t__ numActualFrames; } ;
-typedef  TYPE_1__ fileInfo_t ;
+typedef TYPE_1__ fileInfo_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static fileInfo_t FIO_addFInfo(fileInfo_t fi1, fileInfo_t fi2)
 {

@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
-typedef  struct TYPE_12__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dd ;
-typedef  int /*<<< orphan*/  WPARAM ;
-typedef  int /*<<< orphan*/  VOID ;
+
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+typedef struct TYPE_12__ TYPE_10__ ;
+
+
+typedef int dd ;
+typedef int WPARAM ;
+typedef int VOID ;
 struct TYPE_16__ {int cb; } ;
-struct TYPE_12__ {int /*<<< orphan*/ * DeviceString; } ;
+struct TYPE_12__ {int * DeviceString; } ;
 struct TYPE_15__ {struct TYPE_15__* Next; TYPE_10__ dd; } ;
-struct TYPE_14__ {int dwMonitorCount; int /*<<< orphan*/  hwndDlg; TYPE_3__* SelMonitor; TYPE_3__* Monitors; int /*<<< orphan*/  pdtobj; int /*<<< orphan*/ * lpDevModeOnInit; int /*<<< orphan*/ * lpSelDevMode; TYPE_1__* DeskExtInterface; int /*<<< orphan*/ * lpDisplayDevice; } ;
-struct TYPE_13__ {int /*<<< orphan*/  Context; int /*<<< orphan*/ * (* GetCurrentMode ) (int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_2__* PDESKMONITOR ;
-typedef  TYPE_3__* PDESKMONINFO ;
-typedef  int /*<<< orphan*/ * LPTSTR ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  scalar_t__ INT ;
-typedef  int /*<<< orphan*/  HLOCAL ;
-typedef  scalar_t__ DWORD ;
-typedef  TYPE_4__ DISPLAY_DEVICE ;
-typedef  scalar_t__ BOOL ;
+struct TYPE_14__ {int dwMonitorCount; int hwndDlg; TYPE_3__* SelMonitor; TYPE_3__* Monitors; int pdtobj; int * lpDevModeOnInit; int * lpSelDevMode; TYPE_1__* DeskExtInterface; int * lpDisplayDevice; } ;
+struct TYPE_13__ {int Context; int * (* GetCurrentMode ) (int ) ;} ;
+typedef TYPE_2__* PDESKMONITOR ;
+typedef TYPE_3__* PDESKMONINFO ;
+typedef int * LPTSTR ;
+typedef int LPARAM ;
+typedef scalar_t__ INT ;
+typedef int HLOCAL ;
+typedef scalar_t__ DWORD ;
+typedef TYPE_4__ DISPLAY_DEVICE ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CopyMemory (TYPE_10__*,TYPE_4__*,int) ; 
- int /*<<< orphan*/  DESK_EXT_DISPLAYDEVICE ; 
- int /*<<< orphan*/  DESK_EXT_MONITORNAME ; 
- scalar_t__ EnumDisplayDevices (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_MONITORLIST ; 
- int /*<<< orphan*/  IDC_MONITORNAME ; 
- int /*<<< orphan*/  LB_ADDSTRING ; 
- int /*<<< orphan*/  LB_RESETCONTENT ; 
- int /*<<< orphan*/  LB_SETCURSEL ; 
- int /*<<< orphan*/  LB_SETITEMDATA ; 
- int /*<<< orphan*/  LMEM_FIXED ; 
- TYPE_3__* LocalAlloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  LocalFree (int /*<<< orphan*/ ) ; 
- void* QueryDeskCplString (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegisterClipboardFormat (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SW_HIDE ; 
- int /*<<< orphan*/  SW_SHOW ; 
- scalar_t__ SendDlgItemMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetDlgItemText (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ShowWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UpdateMonitorSelection (TYPE_2__*) ; 
- int /*<<< orphan*/  UpdateRefreshFrequencyList (TYPE_2__*) ; 
- int /*<<< orphan*/ * stub1 (int /*<<< orphan*/ ) ; 
+
+ int CopyMemory (TYPE_10__*,TYPE_4__*,int) ;
+ int DESK_EXT_DISPLAYDEVICE ;
+ int DESK_EXT_MONITORNAME ;
+ scalar_t__ EnumDisplayDevices (int *,int ,TYPE_4__*,int ) ;
+ int GetDlgItem (int ,int ) ;
+ int IDC_MONITORLIST ;
+ int IDC_MONITORNAME ;
+ int LB_ADDSTRING ;
+ int LB_RESETCONTENT ;
+ int LB_SETCURSEL ;
+ int LB_SETITEMDATA ;
+ int LMEM_FIXED ;
+ TYPE_3__* LocalAlloc (int ,int) ;
+ int LocalFree (int ) ;
+ void* QueryDeskCplString (int ,int ) ;
+ int RegisterClipboardFormat (int ) ;
+ int SW_HIDE ;
+ int SW_SHOW ;
+ scalar_t__ SendDlgItemMessage (int ,int ,int ,int ,int ) ;
+ int SetDlgItemText (int ,int ,int *) ;
+ int ShowWindow (int ,int ) ;
+ int UpdateMonitorSelection (TYPE_2__*) ;
+ int UpdateRefreshFrequencyList (TYPE_2__*) ;
+ int * stub1 (int ) ;
 
 __attribute__((used)) static VOID
 InitMonitorDialog(PDESKMONITOR This)
@@ -68,30 +68,30 @@ InitMonitorDialog(PDESKMONITOR This)
     INT i;
     DWORD dwIndex;
 
-    /* Free all allocated monitors */
+
     pmi = This->Monitors;
-    This->Monitors = NULL;
-    while (pmi != NULL)
+    This->Monitors = ((void*)0);
+    while (pmi != ((void*)0))
     {
         pminext = pmi->Next;
         LocalFree((HLOCAL)pmi);
         pmi = pminext;
     }
 
-    This->SelMonitor = NULL;
+    This->SelMonitor = ((void*)0);
     This->dwMonitorCount = 0;
 
-    if (This->lpDisplayDevice != NULL)
+    if (This->lpDisplayDevice != ((void*)0))
         LocalFree((HLOCAL)This->lpDisplayDevice);
 
     This->lpDisplayDevice = QueryDeskCplString(This->pdtobj,
                                                RegisterClipboardFormat(DESK_EXT_DISPLAYDEVICE));
 
-    if (This->DeskExtInterface != NULL)
+    if (This->DeskExtInterface != ((void*)0))
     {
-        if (This->lpDisplayDevice != NULL)
+        if (This->lpDisplayDevice != ((void*)0))
         {
-            /* Enumerate all monitors */
+
             dwIndex = 0;
             pmilink = &This->Monitors;
 
@@ -106,12 +106,12 @@ InitMonitorDialog(PDESKMONITOR This)
                 {
                     pmi = LocalAlloc(LMEM_FIXED,
                                      sizeof(*pmi));
-                    if (pmi != NULL)
+                    if (pmi != ((void*)0))
                     {
                         CopyMemory(&pmi->dd,
                                    &dd,
                                    sizeof(dd));
-                        pmi->Next = NULL;
+                        pmi->Next = ((void*)0);
                         *pmilink = pmi;
                         pmilink = &pmi->Next;
 
@@ -124,16 +124,16 @@ InitMonitorDialog(PDESKMONITOR This)
         This->lpDevModeOnInit = This->DeskExtInterface->GetCurrentMode(This->DeskExtInterface->Context);
     }
     else
-        This->lpDevModeOnInit = NULL;
+        This->lpDevModeOnInit = ((void*)0);
 
     This->lpSelDevMode = This->lpDevModeOnInit;
 
-    /* Setup the UI depending on how many monitors are attached */
+
     if (This->dwMonitorCount == 0)
     {
         LPTSTR lpMonitorName;
 
-        /* This is a fallback, let's hope that desk.cpl can provide us with a monitor name */
+
         lpMonitorName = QueryDeskCplString(This->pdtobj,
                                            RegisterClipboardFormat(DESK_EXT_MONITORNAME));
 
@@ -141,7 +141,7 @@ InitMonitorDialog(PDESKMONITOR This)
                        IDC_MONITORNAME,
                        lpMonitorName);
 
-        if (lpMonitorName != NULL)
+        if (lpMonitorName != ((void*)0))
             LocalFree((HLOCAL)lpMonitorName);
     }
     else if (This->dwMonitorCount == 1)
@@ -160,7 +160,7 @@ InitMonitorDialog(PDESKMONITOR This)
                            0);
 
         pmi = This->Monitors;
-        while (pmi != NULL)
+        while (pmi != ((void*)0))
         {
             i = (INT)SendDlgItemMessage(This->hwndDlg,
                                         IDC_MONITORLIST,
@@ -175,7 +175,7 @@ InitMonitorDialog(PDESKMONITOR This)
                                    (WPARAM)i,
                                    (LPARAM)pmi);
 
-                if (This->SelMonitor == NULL)
+                if (This->SelMonitor == ((void*)0))
                 {
                     SendDlgItemMessage(This->hwndDlg,
                                        IDC_MONITORLIST,
@@ -191,7 +191,7 @@ InitMonitorDialog(PDESKMONITOR This)
         }
     }
 
-    /* Show/Hide controls */
+
     ShowWindow(GetDlgItem(This->hwndDlg,
                           IDC_MONITORNAME),
                (This->dwMonitorCount <= 1 ? SW_SHOW : SW_HIDE));

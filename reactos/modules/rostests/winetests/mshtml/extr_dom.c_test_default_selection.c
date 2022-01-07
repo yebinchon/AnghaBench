@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IHTMLTxtRange ;
-typedef  int /*<<< orphan*/  IHTMLSelectionObject ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- scalar_t__ IDispatch_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IDispatch_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLDocument2_get_selection (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IHTMLSelectionObject_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLSelectionObject_createRange (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IHTMLSelectionObject_get_type (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IHTMLTxtRange_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IHTMLTxtRange ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  strcmp_wa (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  test_range_text (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ wine_dbgstr_w (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int IHTMLTxtRange ;
+typedef int IHTMLSelectionObject ;
+typedef int IHTMLDocument2 ;
+typedef int IDispatch ;
+typedef scalar_t__ HRESULT ;
+typedef int BSTR ;
+
+
+ scalar_t__ IDispatch_QueryInterface (int *,int *,void**) ;
+ int IDispatch_Release (int *) ;
+ scalar_t__ IHTMLDocument2_get_selection (int *,int **) ;
+ int IHTMLSelectionObject_Release (int *) ;
+ scalar_t__ IHTMLSelectionObject_createRange (int *,int **) ;
+ scalar_t__ IHTMLSelectionObject_get_type (int *,int *) ;
+ int IHTMLTxtRange_Release (int *) ;
+ int IID_IHTMLTxtRange ;
+ scalar_t__ S_OK ;
+ int SysFreeString (int ) ;
+ int ok (int,char*,scalar_t__) ;
+ int strcmp_wa (int ,char*) ;
+ int test_range_text (int *,int *) ;
+ scalar_t__ wine_dbgstr_w (int ) ;
 
 __attribute__((used)) static void test_default_selection(IHTMLDocument2 *doc)
 {
@@ -57,6 +57,6 @@ __attribute__((used)) static void test_default_selection(IHTMLDocument2 *doc)
     IDispatch_Release(disp);
     ok(hres == S_OK, "Could not get IHTMLTxtRange interface: %08x\n", hres);
 
-    test_range_text(range, NULL);
+    test_range_text(range, ((void*)0));
     IHTMLTxtRange_Release(range);
 }

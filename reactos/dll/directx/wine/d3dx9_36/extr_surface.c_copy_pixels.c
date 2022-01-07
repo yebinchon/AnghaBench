@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct volume {int width; int height; int depth; } ;
 struct pixel_format_desc {int block_width; int block_height; int block_byte_count; } ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef int UINT ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
+
+ int memcpy (int *,int const*,int) ;
 
 void copy_pixels(const BYTE *src, UINT src_row_pitch, UINT src_slice_pitch,
         BYTE *dst, UINT dst_row_pitch, UINT dst_slice_pitch, const struct volume *size,

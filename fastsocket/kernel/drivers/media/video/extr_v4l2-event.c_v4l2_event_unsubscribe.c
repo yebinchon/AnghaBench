@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct video_device_shadow {int /*<<< orphan*/  fh_lock; } ;
-struct v4l2_subscribed_event {int /*<<< orphan*/  list; } ;
-struct v4l2_fh {int /*<<< orphan*/  vdev; } ;
+
+
+
+
+struct video_device_shadow {int fh_lock; } ;
+struct v4l2_subscribed_event {int list; } ;
+struct v4l2_fh {int vdev; } ;
 struct v4l2_event_subscription {scalar_t__ type; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- scalar_t__ V4L2_EVENT_ALL ; 
- int /*<<< orphan*/  kfree (struct v4l2_subscribed_event*) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- struct v4l2_subscribed_event* v4l2_event_subscribed (struct v4l2_fh*,scalar_t__) ; 
- int /*<<< orphan*/  v4l2_event_unsubscribe_all (struct v4l2_fh*) ; 
- struct video_device_shadow* video_device_shadow_get (int /*<<< orphan*/ ) ; 
+
+ int ENOMEM ;
+ scalar_t__ V4L2_EVENT_ALL ;
+ int kfree (struct v4l2_subscribed_event*) ;
+ int list_del (int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ struct v4l2_subscribed_event* v4l2_event_subscribed (struct v4l2_fh*,scalar_t__) ;
+ int v4l2_event_unsubscribe_all (struct v4l2_fh*) ;
+ struct video_device_shadow* video_device_shadow_get (int ) ;
 
 int v4l2_event_unsubscribe(struct v4l2_fh *fh,
-			   struct v4l2_event_subscription *sub)
+      struct v4l2_event_subscription *sub)
 {
-	struct v4l2_subscribed_event *sev;
-	unsigned long flags;
-	struct video_device_shadow *shvdev = video_device_shadow_get(fh->vdev);
+ struct v4l2_subscribed_event *sev;
+ unsigned long flags;
+ struct video_device_shadow *shvdev = video_device_shadow_get(fh->vdev);
 
-	if (sub->type == V4L2_EVENT_ALL) {
-		v4l2_event_unsubscribe_all(fh);
-		return 0;
-	}
+ if (sub->type == V4L2_EVENT_ALL) {
+  v4l2_event_unsubscribe_all(fh);
+  return 0;
+ }
 
-	if (!shvdev)
-		return -ENOMEM;
+ if (!shvdev)
+  return -ENOMEM;
 
-	spin_lock_irqsave(&shvdev->fh_lock, flags);
+ spin_lock_irqsave(&shvdev->fh_lock, flags);
 
-	sev = v4l2_event_subscribed(fh, sub->type);
-	if (sev != NULL)
-		list_del(&sev->list);
+ sev = v4l2_event_subscribed(fh, sub->type);
+ if (sev != ((void*)0))
+  list_del(&sev->list);
 
-	spin_unlock_irqrestore(&shvdev->fh_lock, flags);
+ spin_unlock_irqrestore(&shvdev->fh_lock, flags);
 
-	kfree(sev);
+ kfree(sev);
 
-	return 0;
+ return 0;
 }

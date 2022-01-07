@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  use_operand_p ;
-typedef  scalar_t__ tree ;
 
-/* Variables and functions */
- scalar_t__ DECL_P (scalar_t__) ; 
- scalar_t__ NULL_TREE ; 
- int /*<<< orphan*/  SET_USE (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ SSA_NAME_VAR (scalar_t__) ; 
- scalar_t__ USE_FROM_PTR (int /*<<< orphan*/ ) ; 
- scalar_t__ get_reaching_def (scalar_t__) ; 
- scalar_t__ is_old_name (scalar_t__) ; 
- scalar_t__ symbol_marked_for_renaming (scalar_t__) ; 
+
+
+
+typedef int use_operand_p ;
+typedef scalar_t__ tree ;
+
+
+ scalar_t__ DECL_P (scalar_t__) ;
+ scalar_t__ NULL_TREE ;
+ int SET_USE (int ,scalar_t__) ;
+ scalar_t__ SSA_NAME_VAR (scalar_t__) ;
+ scalar_t__ USE_FROM_PTR (int ) ;
+ scalar_t__ get_reaching_def (scalar_t__) ;
+ scalar_t__ is_old_name (scalar_t__) ;
+ scalar_t__ symbol_marked_for_renaming (scalar_t__) ;
 
 __attribute__((used)) static inline void
 maybe_replace_use (use_operand_p use_p)

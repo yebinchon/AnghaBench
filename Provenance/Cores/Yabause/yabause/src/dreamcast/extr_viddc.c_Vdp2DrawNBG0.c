@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int enable; int transparencyenable; int specialprimode; int colornumber; int isbitmap; int cellw; int cellh; int x; int y; int charaddr; int paladdr; int mapwh; int planew; int planeh; int patterndatasize; int patternwh; int pagewh; int supplementdata; int auxmode; int alpha; int coloroffset; int cor; int cog; int cob; float coordincx; float coordincy; void (* PlaneAddr ) (void*,int) ;int /*<<< orphan*/  priority; int /*<<< orphan*/ * PostPixelFetchCalc; scalar_t__ specialfunction; scalar_t__ flipfunction; } ;
-typedef  TYPE_3__ vdp2draw_struct ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int enable; int transparencyenable; int specialprimode; int colornumber; int isbitmap; int cellw; int cellh; int x; int y; int charaddr; int paladdr; int mapwh; int planew; int planeh; int patterndatasize; int patternwh; int pagewh; int supplementdata; int auxmode; int alpha; int coloroffset; int cor; int cog; int cob; float coordincx; float coordincy; void (* PlaneAddr ) (void*,int) ;int priority; int * PostPixelFetchCalc; scalar_t__ specialfunction; scalar_t__ flipfunction; } ;
+typedef TYPE_3__ vdp2draw_struct ;
 struct TYPE_12__ {int disptoggle; } ;
 struct TYPE_9__ {int all; } ;
 struct TYPE_8__ {int all; } ;
 struct TYPE_11__ {int BGON; int SFPRMD; int CHCTLA; int SCXIN0; int SCYIN0; int MPOFN; int BMPNA; int PLSZ; int PNCN0; int CCCTL; int CCRNA; int CRAOFA; int CLOFEN; int CLOFSL; int COBR; int COBG; int COBB; int COAR; int COAG; int COAB; TYPE_2__ ZMYN0; TYPE_1__ ZMXN0; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DoColorCalc ; 
- int /*<<< orphan*/  DoColorCalcWithColorOffset ; 
- int /*<<< orphan*/  DoColorOffset ; 
- int /*<<< orphan*/  DoNothing ; 
- int /*<<< orphan*/  Vdp2DrawMap (TYPE_3__*) ; 
- int /*<<< orphan*/  Vdp2DrawScrollBitmap (TYPE_3__*) ; 
- TYPE_5__ Vdp2External ; 
- int /*<<< orphan*/  Vdp2NBG0PlaneAddr ; 
- TYPE_4__* Vdp2Regs ; 
- int /*<<< orphan*/  nbg0priority ; 
+
+ int DoColorCalc ;
+ int DoColorCalcWithColorOffset ;
+ int DoColorOffset ;
+ int DoNothing ;
+ int Vdp2DrawMap (TYPE_3__*) ;
+ int Vdp2DrawScrollBitmap (TYPE_3__*) ;
+ TYPE_5__ Vdp2External ;
+ int Vdp2NBG0PlaneAddr ;
+ TYPE_4__* Vdp2Regs ;
+ int nbg0priority ;
 
 __attribute__((used)) static int Vdp2DrawNBG0(void)
 {
    vdp2draw_struct info;
 
-   /* FIXME should start by checking if it's a normal
-    * or rotate scroll screen
-    */
+
+
+
    info.enable = Vdp2Regs->BGON & 0x1;
 
    if (!(info.enable & Vdp2External.disptoggle))
@@ -53,7 +53,7 @@ __attribute__((used)) static int Vdp2DrawNBG0(void)
 
    if((info.isbitmap = Vdp2Regs->CHCTLA & 0x2) != 0)
    {
-      // Bitmap Mode
+
 
       switch((Vdp2Regs->CHCTLA & 0xC) >> 2)
       {
@@ -81,7 +81,7 @@ __attribute__((used)) static int Vdp2DrawNBG0(void)
    }
    else
    {
-      // Tile Mode
+
       info.mapwh = 2;
 
       switch(Vdp2Regs->PLSZ & 0x3)
@@ -96,7 +96,7 @@ __attribute__((used)) static int Vdp2DrawNBG0(void)
          case 3:
             info.planew = info.planeh = 2;
             break;
-         default: // Not sure what 0x2 does
+         default:
             info.planew = info.planeh = 1;
             break;
       }
@@ -129,10 +129,10 @@ __attribute__((used)) static int Vdp2DrawNBG0(void)
 
    if (Vdp2Regs->CLOFEN & 0x1)
    {
-      // color offset enable
+
       if (Vdp2Regs->CLOFSL & 0x1)
       {
-         // color offset B
+
          info.cor = Vdp2Regs->COBR & 0xFF;
          if (Vdp2Regs->COBR & 0x100)
             info.cor |= 0xFFFFFF00;
@@ -147,7 +147,7 @@ __attribute__((used)) static int Vdp2DrawNBG0(void)
       }
       else
       {
-         // color offset A
+
          info.cor = Vdp2Regs->COAR & 0xFF;
          if (Vdp2Regs->COAR & 0x100)
             info.cor |= 0xFFFFFF00;
@@ -166,7 +166,7 @@ __attribute__((used)) static int Vdp2DrawNBG0(void)
       else
          info.PostPixelFetchCalc = &DoColorOffset;
    }
-   else // color offset disable
+   else
    {
       if (Vdp2Regs->CCCTL & 0x1)
          info.PostPixelFetchCalc = &DoColorCalc;

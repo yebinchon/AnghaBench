@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int retries; int measurements; void* physical_offset; } ;
-typedef  TYPE_1__ libkdump_config_t ;
+typedef TYPE_1__ libkdump_config_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  libkdump_cleanup () ; 
- TYPE_1__ libkdump_get_autoconfig () ; 
- int /*<<< orphan*/  libkdump_init (TYPE_1__) ; 
- size_t libkdump_phys_to_virt (size_t) ; 
- int libkdump_read (size_t) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ running ; 
- int /*<<< orphan*/  sigint ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- void* strtoull (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int SIGINT ;
+ int fprintf (int ,char*) ;
+ int free (char*) ;
+ int libkdump_cleanup () ;
+ TYPE_1__ libkdump_get_autoconfig () ;
+ int libkdump_init (TYPE_1__) ;
+ size_t libkdump_phys_to_virt (size_t) ;
+ int libkdump_read (size_t) ;
+ char* malloc (int) ;
+ int printf (char*,...) ;
+ scalar_t__ running ;
+ int sigint ;
+ int signal (int ,int ) ;
+ int stderr ;
+ void* strtoull (char*,int *,int ) ;
 
 int main(int argc, char *argv[]) {
-  size_t phys = 1ull * 1024ull * 1024ull * 1024ull; // start at first gigabyte
+  size_t phys = 1ull * 1024ull * 1024ull * 1024ull;
   size_t size = (size_t)-1ULL;
   if (argc >= 2) {
-    phys = strtoull(argv[1], NULL, 0);
+    phys = strtoull(argv[1], ((void*)0), 0);
   }
   if (argc >= 3) {
-    size = strtoull(argv[2], NULL, 0);
+    size = strtoull(argv[2], ((void*)0), 0);
   }
 
-  int width = 16; // characters per line
+  int width = 16;
   int suppress_empty = 1;
 
   libkdump_config_t config;
@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
   config.retries = 10;
   config.measurements = 2;
   if (argc >= 4) {
-    config.physical_offset = strtoull(argv[3], NULL, 0);
+    config.physical_offset = strtoull(argv[3], ((void*)0), 0);
   }
 
   libkdump_init(config);

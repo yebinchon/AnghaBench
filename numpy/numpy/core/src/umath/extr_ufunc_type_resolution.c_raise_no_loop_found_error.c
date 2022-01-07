@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t npy_intp ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t npy_intp ;
 struct TYPE_4__ {size_t nargs; } ;
-typedef  TYPE_1__ PyUFuncObject ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArray_Descr ;
+typedef TYPE_1__ PyUFuncObject ;
+typedef int PyObject ;
+typedef int PyArray_Descr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyErr_SetObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyTuple_New (size_t) ; 
- int /*<<< orphan*/ * PyTuple_Pack (int,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyTuple_SET_ITEM (int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  npy_cache_import (char*,char*,int /*<<< orphan*/ **) ; 
+
+ int PyErr_SetObject (int *,int *) ;
+ int * PyTuple_New (size_t) ;
+ int * PyTuple_Pack (int,TYPE_1__*,int *) ;
+ int PyTuple_SET_ITEM (int *,size_t,int *) ;
+ int Py_DECREF (int *) ;
+ int Py_INCREF (int *) ;
+ int npy_cache_import (char*,char*,int **) ;
 
 __attribute__((used)) static int
 raise_no_loop_found_error(
         PyUFuncObject *ufunc, PyArray_Descr **dtypes)
 {
-    static PyObject *exc_type = NULL;
+    static PyObject *exc_type = ((void*)0);
     PyObject *exc_value;
     PyObject *dtypes_tup;
     npy_intp i;
@@ -38,13 +38,13 @@ raise_no_loop_found_error(
     npy_cache_import(
         "numpy.core._exceptions", "_UFuncNoLoopError",
         &exc_type);
-    if (exc_type == NULL) {
+    if (exc_type == ((void*)0)) {
         return -1;
     }
 
-    /* convert dtypes to a tuple */
+
     dtypes_tup = PyTuple_New(ufunc->nargs);
-    if (dtypes_tup == NULL) {
+    if (dtypes_tup == ((void*)0)) {
         return -1;
     }
     for (i = 0; i < ufunc->nargs; ++i) {
@@ -52,10 +52,10 @@ raise_no_loop_found_error(
         PyTuple_SET_ITEM(dtypes_tup, i, (PyObject *)dtypes[i]);
     }
 
-    /* produce an error object */
+
     exc_value = PyTuple_Pack(2, ufunc, dtypes_tup);
     Py_DECREF(dtypes_tup);
-    if (exc_value == NULL){
+    if (exc_value == ((void*)0)){
         return -1;
     }
     PyErr_SetObject(exc_type, exc_value);

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct path {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOOKUP_FOLLOW ; 
- scalar_t__ kern_path (char const*,int /*<<< orphan*/ ,struct path*) ; 
- int /*<<< orphan*/  path_put (struct path*) ; 
- char* tomoyo_realpath_from_path (struct path*) ; 
+
+ int LOOKUP_FOLLOW ;
+ scalar_t__ kern_path (char const*,int ,struct path*) ;
+ int path_put (struct path*) ;
+ char* tomoyo_realpath_from_path (struct path*) ;
 
 char *tomoyo_realpath(const char *pathname)
 {
-	struct path path;
+ struct path path;
 
-	if (pathname && kern_path(pathname, LOOKUP_FOLLOW, &path) == 0) {
-		char *buf = tomoyo_realpath_from_path(&path);
-		path_put(&path);
-		return buf;
-	}
-	return NULL;
+ if (pathname && kern_path(pathname, LOOKUP_FOLLOW, &path) == 0) {
+  char *buf = tomoyo_realpath_from_path(&path);
+  path_put(&path);
+  return buf;
+ }
+ return ((void*)0);
 }

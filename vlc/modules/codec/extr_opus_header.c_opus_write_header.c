@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int /*<<< orphan*/  header_data ;
-typedef  int /*<<< orphan*/  OpusHeader ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (unsigned char const**) ; 
- scalar_t__ comment_add (char**,size_t*,char*,char*) ; 
- char* comment_init (size_t*,char const*) ; 
- scalar_t__ comment_pad (char**,size_t*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int opus_header_to_packet (int /*<<< orphan*/ *,unsigned char*,int) ; 
- scalar_t__ xiph_AppendHeaders (int*,void**,size_t,unsigned char const*) ; 
+
+
+
+typedef char uint8_t ;
+typedef int header_data ;
+typedef int OpusHeader ;
+
+
+ unsigned int ARRAY_SIZE (unsigned char const**) ;
+ scalar_t__ comment_add (char**,size_t*,char*,char*) ;
+ char* comment_init (size_t*,char const*) ;
+ scalar_t__ comment_pad (char**,size_t*) ;
+ int free (char*) ;
+ int opus_header_to_packet (int *,unsigned char*,int) ;
+ scalar_t__ xiph_AppendHeaders (int*,void**,size_t,unsigned char const*) ;
 
 int opus_write_header(uint8_t **p_extra, int *i_extra, OpusHeader *header, const char *vendor)
 {
@@ -56,7 +56,7 @@ int opus_write_header(uint8_t **p_extra, int *i_extra, OpusHeader *header, const
     size[1] = comments_length;
 
     *i_extra = 0;
-    *p_extra = NULL;
+    *p_extra = ((void*)0);
 
     for (unsigned i = 0; i < ARRAY_SIZE(data); ++i)
     {
@@ -64,7 +64,7 @@ int opus_write_header(uint8_t **p_extra, int *i_extra, OpusHeader *header, const
         {
             *i_extra = 0;
             free(*p_extra);
-            *p_extra = NULL;
+            *p_extra = ((void*)0);
         }
     }
 

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cfq_rb_root {int /*<<< orphan*/  rb; } ;
+
+
+
+
+struct cfq_rb_root {int rb; } ;
 struct cfq_queue {int dummy; } ;
-struct cfq_data {int /*<<< orphan*/  rq_queued; int /*<<< orphan*/  serving_type; int /*<<< orphan*/  serving_prio; int /*<<< orphan*/  serving_group; } ;
+struct cfq_data {int rq_queued; int serving_type; int serving_prio; int serving_group; } ;
 
-/* Variables and functions */
- scalar_t__ RB_EMPTY_ROOT (int /*<<< orphan*/ *) ; 
- struct cfq_queue* cfq_rb_first (struct cfq_rb_root*) ; 
- struct cfq_rb_root* service_tree_for (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ RB_EMPTY_ROOT (int *) ;
+ struct cfq_queue* cfq_rb_first (struct cfq_rb_root*) ;
+ struct cfq_rb_root* service_tree_for (int ,int ,int ) ;
 
 __attribute__((used)) static struct cfq_queue *cfq_get_next_queue(struct cfq_data *cfqd)
 {
-	struct cfq_rb_root *service_tree =
-		service_tree_for(cfqd->serving_group, cfqd->serving_prio,
-					cfqd->serving_type);
+ struct cfq_rb_root *service_tree =
+  service_tree_for(cfqd->serving_group, cfqd->serving_prio,
+     cfqd->serving_type);
 
-	if (!cfqd->rq_queued)
-		return NULL;
+ if (!cfqd->rq_queued)
+  return ((void*)0);
 
-	/* There is nothing to dispatch */
-	if (!service_tree)
-		return NULL;
-	if (RB_EMPTY_ROOT(&service_tree->rb))
-		return NULL;
-	return cfq_rb_first(service_tree);
+
+ if (!service_tree)
+  return ((void*)0);
+ if (RB_EMPTY_ROOT(&service_tree->rb))
+  return ((void*)0);
+ return cfq_rb_first(service_tree);
 }

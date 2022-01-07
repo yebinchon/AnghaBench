@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int uint64_t ;
-typedef  int uint32_t ;
-typedef  enum patch_error { ____Placeholder_patch_error } patch_error ;
 
-/* Variables and functions */
- int PATCH_PATCH_INVALID ; 
- int PATCH_SUCCESS ; 
- int PATCH_UNKNOWN ; 
- int ips_alloc_targetdata (char const*,int,int,char**,int*) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
+
+
+
+typedef char uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef enum patch_error { ____Placeholder_patch_error } patch_error ;
+
+
+ int PATCH_PATCH_INVALID ;
+ int PATCH_SUCCESS ;
+ int PATCH_UNKNOWN ;
+ int ips_alloc_targetdata (char const*,int,int,char**,int*) ;
+ int memcpy (char*,char const*,size_t) ;
 
 __attribute__((used)) static enum patch_error ips_apply_patch(
       const uint8_t *patchdata, uint64_t patchlen,
@@ -36,9 +36,9 @@ __attribute__((used)) static enum patch_error ips_apply_patch(
          patchdata[3] != 'C' ||
          patchdata[4] != 'H')
       return PATCH_PATCH_INVALID;
-   
-   error_patch = ips_alloc_targetdata( patchdata,     patchlen,
-                                       sourcelength,  targetdata,
+
+   error_patch = ips_alloc_targetdata( patchdata, patchlen,
+                                       sourcelength, targetdata,
                                                       targetlength);
    if ( error_patch != PATCH_SUCCESS)
       return error_patch;
@@ -53,11 +53,11 @@ __attribute__((used)) static enum patch_error ips_apply_patch(
       if (offset > patchlen - 3)
          break;
 
-      address  = patchdata[offset++] << 16;
+      address = patchdata[offset++] << 16;
       address |= patchdata[offset++] << 8;
       address |= patchdata[offset++] << 0;
 
-      if (address == 0x454f46) /* EOF */
+      if (address == 0x454f46)
       {
          if (offset == patchlen)
             return PATCH_SUCCESS;
@@ -73,10 +73,10 @@ __attribute__((used)) static enum patch_error ips_apply_patch(
       if (offset > patchlen - 2)
          break;
 
-      length  = patchdata[offset++] << 8;
+      length = patchdata[offset++] << 8;
       length |= patchdata[offset++] << 0;
 
-      if (length) /* Copy */
+      if (length)
       {
          if (offset > patchlen - length)
             break;
@@ -84,15 +84,15 @@ __attribute__((used)) static enum patch_error ips_apply_patch(
          while (length--)
             (*targetdata)[address++] = patchdata[offset++];
       }
-      else /* RLE */
+      else
       {
          if (offset > patchlen - 3)
             break;
 
-         length  = patchdata[offset++] << 8;
+         length = patchdata[offset++] << 8;
          length |= patchdata[offset++] << 0;
 
-         if (length == 0) /* Illegal */
+         if (length == 0)
             break;
 
          while (length--)

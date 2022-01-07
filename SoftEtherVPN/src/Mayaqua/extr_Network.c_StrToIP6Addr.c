@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IPV6_ADDR ;
-typedef  int /*<<< orphan*/  IP ;
 
-/* Variables and functions */
- int IPToIPv6Addr (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int StrToIP6 (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  Zero (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int IPV6_ADDR ;
+typedef int IP ;
+
+
+ int IPToIPv6Addr (int *,int *) ;
+ int StrToIP6 (int *,char*) ;
+ int Zero (int *,int) ;
 
 bool StrToIP6Addr(IPV6_ADDR *ip, char *str)
 {
-	IP ip2;
-	// Validate arguments
-	if (ip == NULL || str == NULL)
-	{
-		Zero(ip, sizeof(IPV6_ADDR));
-		return false;
-	}
+ IP ip2;
 
-	if (StrToIP6(&ip2, str) == false)
-	{
-		return false;
-	}
+ if (ip == ((void*)0) || str == ((void*)0))
+ {
+  Zero(ip, sizeof(IPV6_ADDR));
+  return 0;
+ }
 
-	if (IPToIPv6Addr(ip, &ip2) == false)
-	{
-		return false;
-	}
+ if (StrToIP6(&ip2, str) == 0)
+ {
+  return 0;
+ }
 
-	return true;
+ if (IPToIPv6Addr(ip, &ip2) == 0)
+ {
+  return 0;
+ }
+
+ return 1;
 }

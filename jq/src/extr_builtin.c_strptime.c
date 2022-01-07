@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tm {int tm_year; int /*<<< orphan*/  tm_mon; int /*<<< orphan*/  tm_sec; int /*<<< orphan*/  tm_min; int /*<<< orphan*/  tm_hour; int /*<<< orphan*/  tm_mday; } ;
 
-/* Variables and functions */
- int sscanf (char const*,char*,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
+
+
+
+struct tm {int tm_year; int tm_mon; int tm_sec; int tm_min; int tm_hour; int tm_mday; } ;
+
+
+ int sscanf (char const*,char*,int*,int *,int *,int *,int *,int *,int*) ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 __attribute__((used)) static char *strptime(const char *s, const char *format, struct tm *tm) {
   if (strcmp(format, "%Y-%m-%dT%H:%M:%SZ"))
-    return NULL;
+    return ((void*)0);
 
   int count, end;
   count = sscanf(s, "%d-%d-%dT%d:%d:%d%n",
@@ -30,5 +30,5 @@ __attribute__((used)) static char *strptime(const char *s, const char *format, s
     tm->tm_mon--;
     return (char*)s + end + 1;
   }
-  return NULL;
+  return ((void*)0);
 }

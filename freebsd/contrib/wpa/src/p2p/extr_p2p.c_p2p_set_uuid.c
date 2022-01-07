@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
 struct p2p_data {TYPE_1__* cfg; } ;
-struct TYPE_2__ {int /*<<< orphan*/  uuid; } ;
+struct TYPE_2__ {int uuid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  os_memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int) ; 
+
+ int os_memcpy (int ,int const*,int) ;
 
 void p2p_set_uuid(struct p2p_data *p2p, const u8 *uuid)
 {
-	os_memcpy(p2p->cfg->uuid, uuid, 16);
+ os_memcpy(p2p->cfg->uuid, uuid, 16);
 }

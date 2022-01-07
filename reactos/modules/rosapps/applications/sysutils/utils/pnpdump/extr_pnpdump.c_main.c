@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_7__ ;
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG_PTR ;
+
+
+typedef struct TYPE_19__ TYPE_7__ ;
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG_PTR ;
 struct TYPE_16__ {scalar_t__ Count; TYPE_3__* PartialDescriptors; } ;
 struct TYPE_19__ {TYPE_4__ PartialResourceList; } ;
 struct TYPE_18__ {scalar_t__ Size; int Node; } ;
@@ -25,34 +25,34 @@ struct TYPE_17__ {char* Signature; } ;
 struct TYPE_13__ {int DataSize; } ;
 struct TYPE_14__ {TYPE_1__ DeviceSpecificData; } ;
 struct TYPE_15__ {TYPE_2__ u; } ;
-typedef  TYPE_5__* PCM_PNP_BIOS_INSTALLATION_CHECK ;
-typedef  TYPE_6__* PCM_PNP_BIOS_DEVICE_NODE ;
-typedef  TYPE_7__* PCM_FULL_RESOURCE_DESCRIPTOR ;
-typedef  int /*<<< orphan*/  PCHAR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  scalar_t__ LONG ;
-typedef  scalar_t__ HKEY ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  CM_PNP_BIOS_INSTALLATION_CHECK ;
-typedef  int /*<<< orphan*/  CM_PARTIAL_RESOURCE_DESCRIPTOR ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_5__* PCM_PNP_BIOS_INSTALLATION_CHECK ;
+typedef TYPE_6__* PCM_PNP_BIOS_DEVICE_NODE ;
+typedef TYPE_7__* PCM_FULL_RESOURCE_DESCRIPTOR ;
+typedef int PCHAR ;
+typedef int LPBYTE ;
+typedef scalar_t__ LONG ;
+typedef scalar_t__ HKEY ;
+typedef int DWORD ;
+typedef int CM_PNP_BIOS_INSTALLATION_CHECK ;
+typedef int CM_PARTIAL_RESOURCE_DESCRIPTOR ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_MORE_DATA ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ FALSE ; 
- scalar_t__ GetPnpKey (scalar_t__*) ; 
- int /*<<< orphan*/  PrintDeviceData (TYPE_6__*) ; 
- int /*<<< orphan*/  RegCloseKey (scalar_t__) ; 
- scalar_t__ RegQueryValueEx (scalar_t__,char*,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ,int*) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  free (TYPE_7__*) ; 
- int /*<<< orphan*/  getch () ; 
- TYPE_7__* malloc (int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- TYPE_7__* realloc (TYPE_7__*,int) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- scalar_t__ strncmp (int /*<<< orphan*/ ,char*,int) ; 
+
+ scalar_t__ ERROR_MORE_DATA ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ FALSE ;
+ scalar_t__ GetPnpKey (scalar_t__*) ;
+ int PrintDeviceData (TYPE_6__*) ;
+ int RegCloseKey (scalar_t__) ;
+ scalar_t__ RegQueryValueEx (scalar_t__,char*,int *,int*,int ,int*) ;
+ scalar_t__ TRUE ;
+ int free (TYPE_7__*) ;
+ int getch () ;
+ TYPE_7__* malloc (int) ;
+ int printf (char*,...) ;
+ TYPE_7__* realloc (TYPE_7__*,int) ;
+ int strcmp (char*,char*) ;
+ scalar_t__ strncmp (int ,char*,int) ;
 
 int main (int argc, char *argv[])
 {
@@ -94,10 +94,10 @@ int main (int argc, char *argv[])
       printf("Found PnP-BIOS key\n");
     }
 
-  /* Allocate buffer */
+
   dwSize = 2048;
   lpBuffer = malloc(dwSize);
-  if (lpBuffer == NULL)
+  if (lpBuffer == ((void*)0))
     {
       printf("Error: malloc() failed\n");
       RegCloseKey(hPnpKey);
@@ -107,15 +107,15 @@ int main (int argc, char *argv[])
   do
     {
       lError = RegQueryValueEx(hPnpKey,
-			       "Configuration Data",
-			       NULL,
-			       &dwType,
-			       (LPBYTE)lpBuffer,
-			       &dwSize);
+          "Configuration Data",
+          ((void*)0),
+          &dwType,
+          (LPBYTE)lpBuffer,
+          &dwSize);
       if (lError == ERROR_MORE_DATA)
         {
           lpBuffer = realloc(lpBuffer, dwSize);
-          if (lpBuffer == NULL)
+          if (lpBuffer == ((void*)0))
             {
               printf("Error: realloc() of %u bytes failed\n", (unsigned) dwSize);
               RegCloseKey(hPnpKey);
@@ -132,11 +132,11 @@ int main (int argc, char *argv[])
       return 0;
     }
 
-//  printf ("Data size: %lu\n", dwSize);
+
 
   RegCloseKey(hPnpKey);
 
-//  printf("Resource count %lu\n", lpBuffer->PartialResourceList.Count);
+
 
   if (lpBuffer->PartialResourceList.Count == 0)
     {
@@ -145,16 +145,16 @@ int main (int argc, char *argv[])
       return 0;
     }
 
-//  printf("lpBuffer %p\n", lpBuffer);
+
 
   dwResourceSize = lpBuffer->PartialResourceList.PartialDescriptors[0].u.DeviceSpecificData.DataSize;
-//  printf("ResourceSize: %lu\n", dwResourceSize);
+
 
   lpPnpInst = (PCM_PNP_BIOS_INSTALLATION_CHECK)
-	((ULONG_PTR)(&lpBuffer->PartialResourceList.PartialDescriptors[0]) +
-	  sizeof(CM_PARTIAL_RESOURCE_DESCRIPTOR));
+ ((ULONG_PTR)(&lpBuffer->PartialResourceList.PartialDescriptors[0]) +
+   sizeof(CM_PARTIAL_RESOURCE_DESCRIPTOR));
 
-//  printf("lpPnpInst %p\n", lpPnpInst);
+
 
   printf("Signature '%.4s'\n", lpPnpInst->Signature);
   if (strncmp((PCHAR)lpPnpInst->Signature, "$PnP", 4))
@@ -164,7 +164,7 @@ int main (int argc, char *argv[])
       return 0;
     }
 
-//  printf("InstCheck length: %lu\n", lpPnpInst->Length);
+
 
   dwDataSize = sizeof(CM_PNP_BIOS_INSTALLATION_CHECK);
   lpDevNode = (PCM_PNP_BIOS_DEVICE_NODE)((DWORD)lpPnpInst + sizeof(CM_PNP_BIOS_INSTALLATION_CHECK));
@@ -174,27 +174,15 @@ int main (int argc, char *argv[])
       printf("Error: Device node size is zero!\n");
       return 0;
     }
-
-#if 0
-      printf("Node: %x  Size %hu (0x%hx)\n",
-	      lpDevNode->Node,
-	      lpDevNode->Size,
-	      lpDevNode->Size);
-
-  printf("Done.\n");
-return 0;
-#endif
-
-
   while (dwDataSize < dwResourceSize)
     {
       if (lpDevNode->Size == 0)
-	break;
+ break;
 
       printf("Node: %x  Size %hu (0x%hx)\n",
-	     lpDevNode->Node,
-	     lpDevNode->Size,
-	     lpDevNode->Size);
+      lpDevNode->Node,
+      lpDevNode->Size,
+      lpDevNode->Size);
 
       dwDataSize += lpDevNode->Size;
       lpDevNode = (PCM_PNP_BIOS_DEVICE_NODE)((DWORD)lpDevNode + lpDevNode->Size);
@@ -216,7 +204,7 @@ return 0;
   while (dwDataSize < dwResourceSize)
     {
       if (lpDevNode->Size == 0)
-	break;
+ break;
 
       PrintDeviceData(lpDevNode);
 

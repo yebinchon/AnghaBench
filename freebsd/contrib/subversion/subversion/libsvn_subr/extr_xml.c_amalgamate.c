@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * apr_hash_get (int /*<<< orphan*/ *,char const*,size_t) ; 
- int /*<<< orphan*/  apr_hash_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  apr_pstrndup (int /*<<< orphan*/ *,char const*,size_t) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- size_t strlen (char const*) ; 
+
+
+
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int * apr_hash_get (int *,char const*,size_t) ;
+ int apr_hash_set (int *,int ,size_t,int *) ;
+ int * apr_pstrdup (int *,char const*) ;
+ int apr_pstrndup (int *,char const*,size_t) ;
+ int assert (int ) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static void
 amalgamate(const char **atts,
@@ -35,15 +35,15 @@ amalgamate(const char **atts,
       {
         const char *val = *(++atts);
         size_t keylen;
-        assert(key != NULL);
-        /* kff todo: should we also insist that val be non-null here?
-           Probably. */
+        assert(key != ((void*)0));
+
+
 
         keylen = strlen(key);
-        if (preserve && ((apr_hash_get(ht, key, keylen)) != NULL))
+        if (preserve && ((apr_hash_get(ht, key, keylen)) != ((void*)0)))
           continue;
         else
           apr_hash_set(ht, apr_pstrndup(pool, key, keylen), keylen,
-                       val ? apr_pstrdup(pool, val) : NULL);
+                       val ? apr_pstrdup(pool, val) : ((void*)0));
       }
 }

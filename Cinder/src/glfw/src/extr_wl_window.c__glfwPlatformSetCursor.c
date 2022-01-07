@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
-typedef  struct TYPE_12__   TYPE_11__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+typedef struct TYPE_12__ TYPE_11__ ;
+
+
 struct wl_surface {int dummy; } ;
-struct wl_cursor_image {int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  hotspot_y; int /*<<< orphan*/  hotspot_x; } ;
+struct wl_cursor_image {int height; int width; int hotspot_y; int hotspot_x; } ;
 struct wl_cursor {struct wl_cursor_image** images; } ;
 struct wl_buffer {int dummy; } ;
 struct TYPE_13__ {TYPE_5__* currentCursor; } ;
 struct TYPE_16__ {scalar_t__ cursorMode; TYPE_1__ wl; } ;
-typedef  TYPE_4__ _GLFWwindow ;
-struct TYPE_14__ {int /*<<< orphan*/  height; int /*<<< orphan*/  width; struct wl_buffer* buffer; int /*<<< orphan*/  yhot; int /*<<< orphan*/  xhot; struct wl_cursor_image* image; } ;
+typedef TYPE_4__ _GLFWwindow ;
+struct TYPE_14__ {int height; int width; struct wl_buffer* buffer; int yhot; int xhot; struct wl_cursor_image* image; } ;
 struct TYPE_17__ {TYPE_2__ wl; } ;
-typedef  TYPE_5__ _GLFWcursor ;
-struct TYPE_15__ {int /*<<< orphan*/  pointerSerial; int /*<<< orphan*/  pointer; int /*<<< orphan*/  cursorTheme; TYPE_4__* pointerFocus; struct wl_surface* cursorSurface; } ;
+typedef TYPE_5__ _GLFWcursor ;
+struct TYPE_15__ {int pointerSerial; int pointer; int cursorTheme; TYPE_4__* pointerFocus; struct wl_surface* cursorSurface; } ;
 struct TYPE_12__ {TYPE_3__ wl; } ;
 
-/* Variables and functions */
- scalar_t__ GLFW_CURSOR_DISABLED ; 
- scalar_t__ GLFW_CURSOR_HIDDEN ; 
- scalar_t__ GLFW_CURSOR_NORMAL ; 
- int /*<<< orphan*/  GLFW_PLATFORM_ERROR ; 
- TYPE_11__ _glfw ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ isPointerLocked (TYPE_4__*) ; 
- int /*<<< orphan*/  lockPointer (TYPE_4__*) ; 
- int /*<<< orphan*/  unlockPointer (TYPE_4__*) ; 
- struct wl_buffer* wl_cursor_image_get_buffer (struct wl_cursor_image*) ; 
- struct wl_cursor* wl_cursor_theme_get_cursor (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  wl_pointer_set_cursor (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct wl_surface*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wl_surface_attach (struct wl_surface*,struct wl_buffer*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wl_surface_commit (struct wl_surface*) ; 
- int /*<<< orphan*/  wl_surface_damage (struct wl_surface*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ GLFW_CURSOR_DISABLED ;
+ scalar_t__ GLFW_CURSOR_HIDDEN ;
+ scalar_t__ GLFW_CURSOR_NORMAL ;
+ int GLFW_PLATFORM_ERROR ;
+ TYPE_11__ _glfw ;
+ int _glfwInputError (int ,char*) ;
+ scalar_t__ isPointerLocked (TYPE_4__*) ;
+ int lockPointer (TYPE_4__*) ;
+ int unlockPointer (TYPE_4__*) ;
+ struct wl_buffer* wl_cursor_image_get_buffer (struct wl_cursor_image*) ;
+ struct wl_cursor* wl_cursor_theme_get_cursor (int ,char*) ;
+ int wl_pointer_set_cursor (int ,int ,struct wl_surface*,int ,int ) ;
+ int wl_surface_attach (struct wl_surface*,struct wl_buffer*,int ,int ) ;
+ int wl_surface_commit (struct wl_surface*) ;
+ int wl_surface_damage (struct wl_surface*,int ,int ,int ,int ) ;
 
 void _glfwPlatformSetCursor(_GLFWwindow* window, _GLFWcursor* cursor)
 {
@@ -58,12 +58,12 @@ void _glfwPlatformSetCursor(_GLFWwindow* window, _GLFWcursor* cursor)
 
     window->wl.currentCursor = cursor;
 
-    // If we're not in the correct window just save the cursor
-    // the next time the pointer enters the window the cursor will change
+
+
     if (window != _glfw.wl.pointerFocus)
         return;
 
-    // Unlock possible pointer lock if no longer disabled.
+
     if (window->cursorMode != GLFW_CURSOR_DISABLED && isPointerLocked(window))
         unlockPointer(window);
 
@@ -118,6 +118,6 @@ void _glfwPlatformSetCursor(_GLFWwindow* window, _GLFWcursor* cursor)
     else if (window->cursorMode == GLFW_CURSOR_HIDDEN)
     {
         wl_pointer_set_cursor(_glfw.wl.pointer, _glfw.wl.pointerSerial,
-                              NULL, 0, 0);
+                              ((void*)0), 0, 0);
     }
 }

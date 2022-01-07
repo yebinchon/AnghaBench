@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mmc_pwrseq {int /*<<< orphan*/  owner; } ;
+
+
+
+
+struct mmc_pwrseq {int owner; } ;
 struct mmc_host {struct mmc_pwrseq* pwrseq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  module_put (int /*<<< orphan*/ ) ; 
+
+ int module_put (int ) ;
 
 void mmc_pwrseq_free(struct mmc_host *host)
 {
-	struct mmc_pwrseq *pwrseq = host->pwrseq;
+ struct mmc_pwrseq *pwrseq = host->pwrseq;
 
-	if (pwrseq) {
-		module_put(pwrseq->owner);
-		host->pwrseq = NULL;
-	}
+ if (pwrseq) {
+  module_put(pwrseq->owner);
+  host->pwrseq = ((void*)0);
+ }
 }

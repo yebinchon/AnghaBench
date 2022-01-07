@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct context {int dummy; } ;
-struct conn {int /*<<< orphan*/  err; int /*<<< orphan*/  sd; scalar_t__ proxy; scalar_t__ client; } ;
-typedef  scalar_t__ rstatus_t ;
+struct conn {int err; int sd; scalar_t__ proxy; scalar_t__ client; } ;
+typedef scalar_t__ rstatus_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  core_close (struct context*,struct conn*) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  log_warn (char*,char,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ nc_get_soerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+ int core_close (struct context*,struct conn*) ;
+ int errno ;
+ int log_warn (char*,char,int ,int ) ;
+ scalar_t__ nc_get_soerror (int ) ;
+ int strerror (int ) ;
 
 __attribute__((used)) static void
 core_error(struct context *ctx, struct conn *conn)

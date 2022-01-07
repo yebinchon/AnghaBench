@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  double uint8_t ;
-typedef  int uint32_t ;
-typedef  int cmsUInt32Number ;
-typedef  int /*<<< orphan*/  cmsHTRANSFORM ;
-typedef  int /*<<< orphan*/  cmsHPROFILE ;
-typedef  scalar_t__ cmsColorSpaceSignature ;
 
-/* Variables and functions */
- int BYTES_SH (int) ; 
- int CHANNELS_SH (int) ; 
- int COLORSPACE_SH (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PT_ANY ; 
- int /*<<< orphan*/  PT_Lab ; 
- int /*<<< orphan*/  TYPE_BGR_8 ; 
- scalar_t__ T_BYTES (int) ; 
- int cmsChannelsOf (scalar_t__) ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsCreateTransform (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  cmsCreate_sRGBProfile () ; 
- int /*<<< orphan*/  cmsDeleteTransform (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDoTransform (int /*<<< orphan*/ ,double*,double*,int) ; 
- scalar_t__ cmsGetColorSpace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsOpenProfileFromMem (double const*,size_t) ; 
- scalar_t__ cmsSigLabData ; 
+
+
+
+typedef double uint8_t ;
+typedef int uint32_t ;
+typedef int cmsUInt32Number ;
+typedef int cmsHTRANSFORM ;
+typedef int cmsHPROFILE ;
+typedef scalar_t__ cmsColorSpaceSignature ;
+
+
+ int BYTES_SH (int) ;
+ int CHANNELS_SH (int) ;
+ int COLORSPACE_SH (int ) ;
+ int PT_ANY ;
+ int PT_Lab ;
+ int TYPE_BGR_8 ;
+ scalar_t__ T_BYTES (int) ;
+ int cmsChannelsOf (scalar_t__) ;
+ int cmsCloseProfile (int ) ;
+ int cmsCreateTransform (int ,int,int ,int ,int,int) ;
+ int cmsCreate_sRGBProfile () ;
+ int cmsDeleteTransform (int ) ;
+ int cmsDoTransform (int ,double*,double*,int) ;
+ scalar_t__ cmsGetColorSpace (int ) ;
+ int cmsOpenProfileFromMem (double const*,size_t) ;
+ scalar_t__ cmsSigLabData ;
 
 int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
   cmsHPROFILE srcProfile = cmsOpenProfileFromMem(data, size);
@@ -65,7 +65,7 @@ int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
   if (!hTransform) return 0;
 
   uint8_t output[4];
-  if (T_BYTES(srcFormat) == 0) {  // 0 means double
+  if (T_BYTES(srcFormat) == 0) {
     double input[nSrcComponents];
     for (uint32_t i = 0; i < nSrcComponents; i++) input[i] = 0.5f;
     cmsDoTransform(hTransform, input, output, 1);

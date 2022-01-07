@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ctrl_req_t {int /*<<< orphan*/  (* sent ) (int /*<<< orphan*/ ,struct bte_pcb*,scalar_t__) ;int /*<<< orphan*/  state; scalar_t__ err; struct ctrl_req_t* next; int /*<<< orphan*/  p; } ;
-struct bte_pcb {scalar_t__ state; int /*<<< orphan*/  cmdq; int /*<<< orphan*/  cbarg; struct ctrl_req_t* ctrl_req_head; int /*<<< orphan*/  ctl_pcb; } ;
-typedef  scalar_t__ s32 ;
 
-/* Variables and functions */
- scalar_t__ ERR_CLSD ; 
- scalar_t__ ERR_OK ; 
- int /*<<< orphan*/  LWP_ThreadSignal (int /*<<< orphan*/ ) ; 
- scalar_t__ STATE_DISCONNECTED ; 
- scalar_t__ STATE_DISCONNECTING ; 
- int /*<<< orphan*/  STATE_FAILED ; 
- int /*<<< orphan*/  STATE_SENDING ; 
- int /*<<< orphan*/  bte_ctrl_reqs ; 
- int /*<<< orphan*/  btmemb_free (int /*<<< orphan*/ *,struct ctrl_req_t*) ; 
- int /*<<< orphan*/  btpbuf_free (int /*<<< orphan*/ ) ; 
- scalar_t__ l2ca_datawrite (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,struct bte_pcb*,scalar_t__) ; 
+
+
+
+struct ctrl_req_t {int (* sent ) (int ,struct bte_pcb*,scalar_t__) ;int state; scalar_t__ err; struct ctrl_req_t* next; int p; } ;
+struct bte_pcb {scalar_t__ state; int cmdq; int cbarg; struct ctrl_req_t* ctrl_req_head; int ctl_pcb; } ;
+typedef scalar_t__ s32 ;
+
+
+ scalar_t__ ERR_CLSD ;
+ scalar_t__ ERR_OK ;
+ int LWP_ThreadSignal (int ) ;
+ scalar_t__ STATE_DISCONNECTED ;
+ scalar_t__ STATE_DISCONNECTING ;
+ int STATE_FAILED ;
+ int STATE_SENDING ;
+ int bte_ctrl_reqs ;
+ int btmemb_free (int *,struct ctrl_req_t*) ;
+ int btpbuf_free (int ) ;
+ scalar_t__ l2ca_datawrite (int ,int ) ;
+ int stub1 (int ,struct bte_pcb*,scalar_t__) ;
 
 __attribute__((used)) static s32 __bte_send_pending_request(struct bte_pcb *pcb)
 {
-	s32 err;
-	struct ctrl_req_t *req;
+ s32 err;
+ struct ctrl_req_t *req;
 
-	if(pcb->ctrl_req_head==NULL) return ERR_OK;
-	if(pcb->state==STATE_DISCONNECTING || pcb->state==STATE_DISCONNECTED) return ERR_CLSD;
+ if(pcb->ctrl_req_head==((void*)0)) return ERR_OK;
+ if(pcb->state==STATE_DISCONNECTING || pcb->state==STATE_DISCONNECTED) return ERR_CLSD;
 
-	req = pcb->ctrl_req_head;
-	req->state = STATE_SENDING;
+ req = pcb->ctrl_req_head;
+ req->state = STATE_SENDING;
 
-	err = l2ca_datawrite(pcb->ctl_pcb,req->p);
-	btpbuf_free(req->p);
+ err = l2ca_datawrite(pcb->ctl_pcb,req->p);
+ btpbuf_free(req->p);
 
-	if(err!=ERR_OK) {
-		pcb->ctrl_req_head = req->next;
+ if(err!=ERR_OK) {
+  pcb->ctrl_req_head = req->next;
 
-		req->err = err;
-		req->state = STATE_FAILED;
-		if(req->sent) {
-			req->sent(pcb->cbarg,pcb,err);
-			btmemb_free(&bte_ctrl_reqs,req);
-		} else
-			LWP_ThreadSignal(pcb->cmdq);
-	}
+  req->err = err;
+  req->state = STATE_FAILED;
+  if(req->sent) {
+   req->sent(pcb->cbarg,pcb,err);
+   btmemb_free(&bte_ctrl_reqs,req);
+  } else
+   LWP_ThreadSignal(pcb->cmdq);
+ }
 
-	return err;
+ return err;
 }

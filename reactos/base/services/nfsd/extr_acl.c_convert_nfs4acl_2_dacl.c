@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
 struct TYPE_5__ {int count; TYPE_1__* aces; } ;
-typedef  TYPE_2__ nfsacl41 ;
-struct TYPE_4__ {scalar_t__ acetype; int /*<<< orphan*/  acemask; int /*<<< orphan*/  who; } ;
-typedef  int /*<<< orphan*/  PSID ;
-typedef  int /*<<< orphan*/ * PACL ;
-typedef  char* LPSTR ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
-typedef  int /*<<< orphan*/  ACL ;
-typedef  int /*<<< orphan*/  ACCESS_MASK ;
-typedef  int /*<<< orphan*/  ACCESS_ALLOWED_ACE ;
+typedef TYPE_2__ nfsacl41 ;
+struct TYPE_4__ {scalar_t__ acetype; int acemask; int who; } ;
+typedef int PSID ;
+typedef int * PACL ;
+typedef char* LPSTR ;
+typedef int DWORD ;
+typedef int BOOLEAN ;
+typedef int ACL ;
+typedef int ACCESS_MASK ;
+typedef int ACCESS_ALLOWED_ACE ;
 
-/* Variables and functions */
- scalar_t__ ACE4_ACCESS_ALLOWED_ACE_TYPE ; 
- scalar_t__ ACE4_ACCESS_DENIED_ACE_TYPE ; 
- int /*<<< orphan*/  ACLLVL ; 
- int /*<<< orphan*/  ACL_REVISION ; 
- int AddAccessAllowedAce (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int AddAccessDeniedAce (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ERROR_INTERNAL_ERROR ; 
- int ERROR_NOT_SUPPORTED ; 
- int ERROR_SUCCESS ; 
- int GetLastError () ; 
- scalar_t__ InitializeAcl (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int check_4_special_identifiers (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  convert_nfs4name_2_user_domain (int /*<<< orphan*/ ,char**) ; 
- int /*<<< orphan*/  dprintf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  eprintf (char*,int) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_sids (int /*<<< orphan*/ *,size_t) ; 
- void* malloc (int) ; 
- int map_name_2_sid (int*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
 
-__attribute__((used)) static int convert_nfs4acl_2_dacl(nfsacl41 *acl, int file_type, 
+ scalar_t__ ACE4_ACCESS_ALLOWED_ACE_TYPE ;
+ scalar_t__ ACE4_ACCESS_DENIED_ACE_TYPE ;
+ int ACLLVL ;
+ int ACL_REVISION ;
+ int AddAccessAllowedAce (int *,int ,int ,int ) ;
+ int AddAccessDeniedAce (int *,int ,int ,int ) ;
+ int ERROR_INTERNAL_ERROR ;
+ int ERROR_NOT_SUPPORTED ;
+ int ERROR_SUCCESS ;
+ int GetLastError () ;
+ scalar_t__ InitializeAcl (int *,int,int ) ;
+ int check_4_special_identifiers (int ,int *,int*,int *) ;
+ int convert_nfs4name_2_user_domain (int ,char**) ;
+ int dprintf (int ,char*,int ,char*) ;
+ int eprintf (char*,int) ;
+ int free (int *) ;
+ int free_sids (int *,size_t) ;
+ void* malloc (int) ;
+ int map_name_2_sid (int*,int *,int ) ;
+
+__attribute__((used)) static int convert_nfs4acl_2_dacl(nfsacl41 *acl, int file_type,
                                   PACL *dacl_out, PSID **sids_out)
 {
     int status = ERROR_NOT_SUPPORTED, size = 0;
@@ -54,19 +54,19 @@ __attribute__((used)) static int convert_nfs4acl_2_dacl(nfsacl41 *acl, int file_
     DWORD sid_len;
     PSID *sids;
     PACL dacl;
-    LPSTR domain = NULL;
+    LPSTR domain = ((void*)0);
     BOOLEAN flag;
 
     sids = malloc(acl->count * sizeof(PSID));
-    if (sids == NULL) {
+    if (sids == ((void*)0)) {
         status = GetLastError();
         goto out;
     }
     for (i = 0; i < acl->count; i++) {
         convert_nfs4name_2_user_domain(acl->aces[i].who, &domain);
-        dprintf(ACLLVL, "handle_getacl: for user=%s domain=%s\n", 
+        dprintf(ACLLVL, "handle_getacl: for user=%s domain=%s\n",
                 acl->aces[i].who, domain?domain:"<null>");
-        status = check_4_special_identifiers(acl->aces[i].who, &sids[i], 
+        status = check_4_special_identifiers(acl->aces[i].who, &sids[i],
                                              &sid_len, &flag);
         if (status) {
             free_sids(sids, i);
@@ -78,21 +78,21 @@ __attribute__((used)) static int convert_nfs4acl_2_dacl(nfsacl41 *acl, int file_
                 free_sids(sids, i);
                 goto out;
             }
-        } 
+        }
         size += sid_len - sizeof(DWORD);
     }
     size += sizeof(ACL) + (sizeof(ACCESS_ALLOWED_ACE)*acl->count);
-    size = (size + sizeof(DWORD) - 1) & 0xfffffffc; //align size on word boundry
+    size = (size + sizeof(DWORD) - 1) & 0xfffffffc;
     dacl = malloc(size);
-    if (dacl == NULL)
+    if (dacl == ((void*)0))
         goto out_free_sids;
-    
+
     if (InitializeAcl(dacl, size, ACL_REVISION)) {
         ACCESS_MASK mask;
         for (i = 0; i < acl->count; i++) {
-            // nfs4 acemask should be exactly the same as file access mask
+
             mask = acl->aces[i].acemask;
-            dprintf(ACLLVL, "access mask %x ace type %s\n", mask, 
+            dprintf(ACLLVL, "access mask %x ace type %s\n", mask,
                 acl->aces[i].acetype?"DENIED ACE":"ALLOWED ACE");
             if (acl->aces[i].acetype == ACE4_ACCESS_ALLOWED_ACE_TYPE) {
                 status = AddAccessAllowedAce(dacl, ACL_REVISION, mask, sids[i]);
@@ -111,7 +111,7 @@ __attribute__((used)) static int convert_nfs4acl_2_dacl(nfsacl41 *acl, int file_
                 }
                 else status = ERROR_SUCCESS;
             } else {
-                eprintf("convert_nfs4acl_2_dacl: unknown acetype %d\n", 
+                eprintf("convert_nfs4acl_2_dacl: unknown acetype %d\n",
                         acl->aces[i].acetype);
                 status = ERROR_INTERNAL_ERROR;
                 free(dacl);

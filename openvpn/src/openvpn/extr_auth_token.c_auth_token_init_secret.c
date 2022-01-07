@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct key_type {int dummy; } ;
 struct key_ctx {int dummy; } ;
 struct key {int dummy; } ;
 struct buffer {int dummy; } ;
-typedef  int /*<<< orphan*/  key ;
+typedef int key ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_FATAL ; 
- struct buffer alloc_buf (int) ; 
- struct key_type auth_token_kt () ; 
- int /*<<< orphan*/  auth_token_pem_name ; 
- int /*<<< orphan*/  buf_read (struct buffer*,struct key*,int) ; 
- int /*<<< orphan*/  free_buf (struct buffer*) ; 
- int generate_ephemeral_key (struct buffer*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_key_ctx (struct key_ctx*,struct key*,struct key_type*,int,char*) ; 
- int /*<<< orphan*/  msg (int /*<<< orphan*/ ,char*) ; 
- int read_pem_key_file (struct buffer*,int /*<<< orphan*/ ,char const*,char const*) ; 
+
+ int M_FATAL ;
+ struct buffer alloc_buf (int) ;
+ struct key_type auth_token_kt () ;
+ int auth_token_pem_name ;
+ int buf_read (struct buffer*,struct key*,int) ;
+ int free_buf (struct buffer*) ;
+ int generate_ephemeral_key (struct buffer*,int ) ;
+ int init_key_ctx (struct key_ctx*,struct key*,struct key_type*,int,char*) ;
+ int msg (int ,char*) ;
+ int read_pem_key_file (struct buffer*,int ,char const*,char const*) ;
 
 void
 auth_token_init_secret(struct key_ctx *key_ctx, const char *key_file,
@@ -36,7 +36,7 @@ auth_token_init_secret(struct key_ctx *key_ctx, const char *key_file,
 
     struct buffer server_secret_key = alloc_buf(2048);
 
-    bool key_loaded = false;
+    bool key_loaded = 0;
     if (key_file)
     {
         key_loaded = read_pem_key_file(&server_secret_key,
@@ -60,7 +60,7 @@ auth_token_init_secret(struct key_ctx *key_ctx, const char *key_file,
     {
         msg(M_FATAL, "ERROR: not enough data in auth-token secret");
     }
-    init_key_ctx(key_ctx, &key, &kt, false, "auth-token secret");
+    init_key_ctx(key_ctx, &key, &kt, 0, "auth-token secret");
 
     free_buf(&server_secret_key);
 }

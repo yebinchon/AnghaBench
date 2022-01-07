@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  settings; int /*<<< orphan*/  builder; } ;
-typedef  TYPE_1__ signal_user_data_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int settings; int builder; } ;
+typedef TYPE_1__ signal_user_data_t ;
 struct TYPE_6__ {int format; } ;
-typedef  TYPE_2__ hb_container_t ;
-typedef  scalar_t__ gint ;
-typedef  int /*<<< orphan*/  GtkWidget ;
+typedef TYPE_2__ hb_container_t ;
+typedef scalar_t__ gint ;
+typedef int GtkWidget ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * GHB_WIDGET (int /*<<< orphan*/ ,char*) ; 
- int HB_MUX_MASK_MP4 ; 
- scalar_t__ HB_VCODEC_X264_8BIT ; 
- char* ghb_dict_get_string (int /*<<< orphan*/ ,char*) ; 
- TYPE_2__* ghb_lookup_container_by_name (char const*) ; 
- scalar_t__ ghb_settings_video_encoder_codec (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  gtk_widget_set_visible (int /*<<< orphan*/ *,int) ; 
+
+ int * GHB_WIDGET (int ,char*) ;
+ int HB_MUX_MASK_MP4 ;
+ scalar_t__ HB_VCODEC_X264_8BIT ;
+ char* ghb_dict_get_string (int ,char*) ;
+ TYPE_2__* ghb_lookup_container_by_name (char const*) ;
+ scalar_t__ ghb_settings_video_encoder_codec (int ,char*) ;
+ int gtk_widget_set_visible (int *,int) ;
 
 void ghb_show_container_options(signal_user_data_t *ud)
 {

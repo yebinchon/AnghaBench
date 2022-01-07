@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-struct TYPE_6__ {int bErr; int /*<<< orphan*/  pCtx; } ;
-typedef  TYPE_1__ JsonString ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JSON_SUBTYPE ; 
-#define  SQLITE_FLOAT 131 
-#define  SQLITE_INTEGER 130 
-#define  SQLITE_NULL 129 
-#define  SQLITE_TEXT 128 
- int /*<<< orphan*/  jsonAppendRaw (TYPE_1__*,char const*,int) ; 
- int /*<<< orphan*/  jsonAppendString (TYPE_1__*,char const*,int) ; 
- int /*<<< orphan*/  jsonReset (TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3_result_error (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_value_subtype (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
- int sqlite3_value_type (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int u32 ;
+typedef int sqlite3_value ;
+struct TYPE_6__ {int bErr; int pCtx; } ;
+typedef TYPE_1__ JsonString ;
+
+
+ int JSON_SUBTYPE ;
+
+
+
+
+ int jsonAppendRaw (TYPE_1__*,char const*,int) ;
+ int jsonAppendString (TYPE_1__*,char const*,int) ;
+ int jsonReset (TYPE_1__*) ;
+ int sqlite3_result_error (int ,char*,int) ;
+ int sqlite3_value_bytes (int *) ;
+ int sqlite3_value_subtype (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
+ int sqlite3_value_type (int *) ;
 
 __attribute__((used)) static void jsonAppendValue(
-  JsonString *p,                 /* Append to this JSON string */
-  sqlite3_value *pValue          /* Value to append */
+  JsonString *p,
+  sqlite3_value *pValue
 ){
   switch( sqlite3_value_type(pValue) ){
-    case SQLITE_NULL: {
+    case 129: {
       jsonAppendRaw(p, "null", 4);
       break;
     }
-    case SQLITE_INTEGER:
-    case SQLITE_FLOAT: {
+    case 130:
+    case 131: {
       const char *z = (const char*)sqlite3_value_text(pValue);
       u32 n = (u32)sqlite3_value_bytes(pValue);
       jsonAppendRaw(p, z, n);
       break;
     }
-    case SQLITE_TEXT: {
+    case 128: {
       const char *z = (const char*)sqlite3_value_text(pValue);
       u32 n = (u32)sqlite3_value_bytes(pValue);
       if( sqlite3_value_subtype(pValue)==JSON_SUBTYPE ){

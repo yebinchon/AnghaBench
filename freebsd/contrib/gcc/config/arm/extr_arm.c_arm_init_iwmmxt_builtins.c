@@ -1,122 +1,122 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-struct builtin_description {scalar_t__ name; size_t icode; int /*<<< orphan*/  code; int /*<<< orphan*/  mask; } ;
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int tree ;
+struct builtin_description {scalar_t__ name; size_t icode; int code; int mask; } ;
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
 struct TYPE_4__ {TYPE_1__* operand; } ;
 struct TYPE_3__ {int mode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARM_BUILTIN_GETWCX ; 
- int /*<<< orphan*/  ARM_BUILTIN_SETWCX ; 
- int /*<<< orphan*/  ARM_BUILTIN_TEXTRMSB ; 
- int /*<<< orphan*/  ARM_BUILTIN_TEXTRMSH ; 
- int /*<<< orphan*/  ARM_BUILTIN_TEXTRMSW ; 
- int /*<<< orphan*/  ARM_BUILTIN_TEXTRMUB ; 
- int /*<<< orphan*/  ARM_BUILTIN_TEXTRMUH ; 
- int /*<<< orphan*/  ARM_BUILTIN_TEXTRMUW ; 
- int /*<<< orphan*/  ARM_BUILTIN_TINSRB ; 
- int /*<<< orphan*/  ARM_BUILTIN_TINSRH ; 
- int /*<<< orphan*/  ARM_BUILTIN_TINSRW ; 
- int /*<<< orphan*/  ARM_BUILTIN_TMIA ; 
- int /*<<< orphan*/  ARM_BUILTIN_TMIABB ; 
- int /*<<< orphan*/  ARM_BUILTIN_TMIABT ; 
- int /*<<< orphan*/  ARM_BUILTIN_TMIAPH ; 
- int /*<<< orphan*/  ARM_BUILTIN_TMIATB ; 
- int /*<<< orphan*/  ARM_BUILTIN_TMIATT ; 
- int /*<<< orphan*/  ARM_BUILTIN_TMOVMSKB ; 
- int /*<<< orphan*/  ARM_BUILTIN_TMOVMSKH ; 
- int /*<<< orphan*/  ARM_BUILTIN_TMOVMSKW ; 
- int /*<<< orphan*/  ARM_BUILTIN_WACCB ; 
- int /*<<< orphan*/  ARM_BUILTIN_WACCH ; 
- int /*<<< orphan*/  ARM_BUILTIN_WACCW ; 
- int /*<<< orphan*/  ARM_BUILTIN_WALIGN ; 
- int /*<<< orphan*/  ARM_BUILTIN_WMACS ; 
- int /*<<< orphan*/  ARM_BUILTIN_WMACSZ ; 
- int /*<<< orphan*/  ARM_BUILTIN_WMACU ; 
- int /*<<< orphan*/  ARM_BUILTIN_WMACUZ ; 
- int /*<<< orphan*/  ARM_BUILTIN_WPACKDSS ; 
- int /*<<< orphan*/  ARM_BUILTIN_WPACKDUS ; 
- int /*<<< orphan*/  ARM_BUILTIN_WPACKHSS ; 
- int /*<<< orphan*/  ARM_BUILTIN_WPACKHUS ; 
- int /*<<< orphan*/  ARM_BUILTIN_WPACKWSS ; 
- int /*<<< orphan*/  ARM_BUILTIN_WPACKWUS ; 
- int /*<<< orphan*/  ARM_BUILTIN_WRORD ; 
- int /*<<< orphan*/  ARM_BUILTIN_WRORDI ; 
- int /*<<< orphan*/  ARM_BUILTIN_WRORH ; 
- int /*<<< orphan*/  ARM_BUILTIN_WRORHI ; 
- int /*<<< orphan*/  ARM_BUILTIN_WRORW ; 
- int /*<<< orphan*/  ARM_BUILTIN_WRORWI ; 
- int /*<<< orphan*/  ARM_BUILTIN_WSADB ; 
- int /*<<< orphan*/  ARM_BUILTIN_WSADBZ ; 
- int /*<<< orphan*/  ARM_BUILTIN_WSADH ; 
- int /*<<< orphan*/  ARM_BUILTIN_WSADHZ ; 
- int /*<<< orphan*/  ARM_BUILTIN_WSHUFH ; 
- int /*<<< orphan*/  ARM_BUILTIN_WSLLD ; 
- int /*<<< orphan*/  ARM_BUILTIN_WSLLDI ; 
- int /*<<< orphan*/  ARM_BUILTIN_WSLLH ; 
- int /*<<< orphan*/  ARM_BUILTIN_WSLLHI ; 
- int /*<<< orphan*/  ARM_BUILTIN_WSLLW ; 
- int /*<<< orphan*/  ARM_BUILTIN_WSLLWI ; 
- int /*<<< orphan*/  ARM_BUILTIN_WSRAD ; 
- int /*<<< orphan*/  ARM_BUILTIN_WSRADI ; 
- int /*<<< orphan*/  ARM_BUILTIN_WSRAH ; 
- int /*<<< orphan*/  ARM_BUILTIN_WSRAHI ; 
- int /*<<< orphan*/  ARM_BUILTIN_WSRAW ; 
- int /*<<< orphan*/  ARM_BUILTIN_WSRAWI ; 
- int /*<<< orphan*/  ARM_BUILTIN_WSRLD ; 
- int /*<<< orphan*/  ARM_BUILTIN_WSRLDI ; 
- int /*<<< orphan*/  ARM_BUILTIN_WSRLH ; 
- int /*<<< orphan*/  ARM_BUILTIN_WSRLHI ; 
- int /*<<< orphan*/  ARM_BUILTIN_WSRLW ; 
- int /*<<< orphan*/  ARM_BUILTIN_WSRLWI ; 
- int /*<<< orphan*/  ARM_BUILTIN_WUNPCKEHSB ; 
- int /*<<< orphan*/  ARM_BUILTIN_WUNPCKEHSH ; 
- int /*<<< orphan*/  ARM_BUILTIN_WUNPCKEHSW ; 
- int /*<<< orphan*/  ARM_BUILTIN_WUNPCKEHUB ; 
- int /*<<< orphan*/  ARM_BUILTIN_WUNPCKEHUH ; 
- int /*<<< orphan*/  ARM_BUILTIN_WUNPCKEHUW ; 
- int /*<<< orphan*/  ARM_BUILTIN_WUNPCKELSB ; 
- int /*<<< orphan*/  ARM_BUILTIN_WUNPCKELSH ; 
- int /*<<< orphan*/  ARM_BUILTIN_WUNPCKELSW ; 
- int /*<<< orphan*/  ARM_BUILTIN_WUNPCKELUB ; 
- int /*<<< orphan*/  ARM_BUILTIN_WUNPCKELUH ; 
- int /*<<< orphan*/  ARM_BUILTIN_WUNPCKELUW ; 
- int /*<<< orphan*/  ARM_BUILTIN_WZERO ; 
- size_t ARRAY_SIZE (struct builtin_description*) ; 
-#define  DImode 131 
- int /*<<< orphan*/  FL_IWMMXT ; 
- int /*<<< orphan*/  NULL_TREE ; 
-#define  V2SImode 130 
-#define  V4HImode 129 
-#define  V8QImode 128 
- struct builtin_description* bdesc_2arg ; 
- int /*<<< orphan*/  build_function_type (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  build_vector_type_for_mode (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  def_mbuiltin (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcc_unreachable () ; 
- TYPE_2__* insn_data ; 
- int /*<<< orphan*/  intHI_type_node ; 
- int /*<<< orphan*/  intQI_type_node ; 
- int /*<<< orphan*/  intSI_type_node ; 
- int /*<<< orphan*/  integer_type_node ; 
- int /*<<< orphan*/  long_long_integer_type_node ; 
- int /*<<< orphan*/  long_long_unsigned_type_node ; 
- int /*<<< orphan*/  tree_cons (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  void_list_node ; 
- int /*<<< orphan*/  void_type_node ; 
+
+ int ARM_BUILTIN_GETWCX ;
+ int ARM_BUILTIN_SETWCX ;
+ int ARM_BUILTIN_TEXTRMSB ;
+ int ARM_BUILTIN_TEXTRMSH ;
+ int ARM_BUILTIN_TEXTRMSW ;
+ int ARM_BUILTIN_TEXTRMUB ;
+ int ARM_BUILTIN_TEXTRMUH ;
+ int ARM_BUILTIN_TEXTRMUW ;
+ int ARM_BUILTIN_TINSRB ;
+ int ARM_BUILTIN_TINSRH ;
+ int ARM_BUILTIN_TINSRW ;
+ int ARM_BUILTIN_TMIA ;
+ int ARM_BUILTIN_TMIABB ;
+ int ARM_BUILTIN_TMIABT ;
+ int ARM_BUILTIN_TMIAPH ;
+ int ARM_BUILTIN_TMIATB ;
+ int ARM_BUILTIN_TMIATT ;
+ int ARM_BUILTIN_TMOVMSKB ;
+ int ARM_BUILTIN_TMOVMSKH ;
+ int ARM_BUILTIN_TMOVMSKW ;
+ int ARM_BUILTIN_WACCB ;
+ int ARM_BUILTIN_WACCH ;
+ int ARM_BUILTIN_WACCW ;
+ int ARM_BUILTIN_WALIGN ;
+ int ARM_BUILTIN_WMACS ;
+ int ARM_BUILTIN_WMACSZ ;
+ int ARM_BUILTIN_WMACU ;
+ int ARM_BUILTIN_WMACUZ ;
+ int ARM_BUILTIN_WPACKDSS ;
+ int ARM_BUILTIN_WPACKDUS ;
+ int ARM_BUILTIN_WPACKHSS ;
+ int ARM_BUILTIN_WPACKHUS ;
+ int ARM_BUILTIN_WPACKWSS ;
+ int ARM_BUILTIN_WPACKWUS ;
+ int ARM_BUILTIN_WRORD ;
+ int ARM_BUILTIN_WRORDI ;
+ int ARM_BUILTIN_WRORH ;
+ int ARM_BUILTIN_WRORHI ;
+ int ARM_BUILTIN_WRORW ;
+ int ARM_BUILTIN_WRORWI ;
+ int ARM_BUILTIN_WSADB ;
+ int ARM_BUILTIN_WSADBZ ;
+ int ARM_BUILTIN_WSADH ;
+ int ARM_BUILTIN_WSADHZ ;
+ int ARM_BUILTIN_WSHUFH ;
+ int ARM_BUILTIN_WSLLD ;
+ int ARM_BUILTIN_WSLLDI ;
+ int ARM_BUILTIN_WSLLH ;
+ int ARM_BUILTIN_WSLLHI ;
+ int ARM_BUILTIN_WSLLW ;
+ int ARM_BUILTIN_WSLLWI ;
+ int ARM_BUILTIN_WSRAD ;
+ int ARM_BUILTIN_WSRADI ;
+ int ARM_BUILTIN_WSRAH ;
+ int ARM_BUILTIN_WSRAHI ;
+ int ARM_BUILTIN_WSRAW ;
+ int ARM_BUILTIN_WSRAWI ;
+ int ARM_BUILTIN_WSRLD ;
+ int ARM_BUILTIN_WSRLDI ;
+ int ARM_BUILTIN_WSRLH ;
+ int ARM_BUILTIN_WSRLHI ;
+ int ARM_BUILTIN_WSRLW ;
+ int ARM_BUILTIN_WSRLWI ;
+ int ARM_BUILTIN_WUNPCKEHSB ;
+ int ARM_BUILTIN_WUNPCKEHSH ;
+ int ARM_BUILTIN_WUNPCKEHSW ;
+ int ARM_BUILTIN_WUNPCKEHUB ;
+ int ARM_BUILTIN_WUNPCKEHUH ;
+ int ARM_BUILTIN_WUNPCKEHUW ;
+ int ARM_BUILTIN_WUNPCKELSB ;
+ int ARM_BUILTIN_WUNPCKELSH ;
+ int ARM_BUILTIN_WUNPCKELSW ;
+ int ARM_BUILTIN_WUNPCKELUB ;
+ int ARM_BUILTIN_WUNPCKELUH ;
+ int ARM_BUILTIN_WUNPCKELUW ;
+ int ARM_BUILTIN_WZERO ;
+ size_t ARRAY_SIZE (struct builtin_description*) ;
+
+ int FL_IWMMXT ;
+ int NULL_TREE ;
+
+
+
+ struct builtin_description* bdesc_2arg ;
+ int build_function_type (int ,int ) ;
+ int build_vector_type_for_mode (int ,int) ;
+ int def_mbuiltin (int ,char*,int ,int ) ;
+ int gcc_unreachable () ;
+ TYPE_2__* insn_data ;
+ int intHI_type_node ;
+ int intQI_type_node ;
+ int intSI_type_node ;
+ int integer_type_node ;
+ int long_long_integer_type_node ;
+ int long_long_unsigned_type_node ;
+ int tree_cons (int ,int ,int ) ;
+ int void_list_node ;
+ int void_type_node ;
 
 __attribute__((used)) static void
 arm_init_iwmmxt_builtins (void)
@@ -125,231 +125,231 @@ arm_init_iwmmxt_builtins (void)
   size_t i;
   tree endlink = void_list_node;
 
-  tree V2SI_type_node = build_vector_type_for_mode (intSI_type_node, V2SImode);
-  tree V4HI_type_node = build_vector_type_for_mode (intHI_type_node, V4HImode);
-  tree V8QI_type_node = build_vector_type_for_mode (intQI_type_node, V8QImode);
+  tree V2SI_type_node = build_vector_type_for_mode (intSI_type_node, 130);
+  tree V4HI_type_node = build_vector_type_for_mode (intHI_type_node, 129);
+  tree V8QI_type_node = build_vector_type_for_mode (intQI_type_node, 128);
 
   tree int_ftype_int
     = build_function_type (integer_type_node,
-			   tree_cons (NULL_TREE, integer_type_node, endlink));
+      tree_cons (NULL_TREE, integer_type_node, endlink));
   tree v8qi_ftype_v8qi_v8qi_int
     = build_function_type (V8QI_type_node,
-			   tree_cons (NULL_TREE, V8QI_type_node,
-				      tree_cons (NULL_TREE, V8QI_type_node,
-						 tree_cons (NULL_TREE,
-							    integer_type_node,
-							    endlink))));
+      tree_cons (NULL_TREE, V8QI_type_node,
+          tree_cons (NULL_TREE, V8QI_type_node,
+       tree_cons (NULL_TREE,
+           integer_type_node,
+           endlink))));
   tree v4hi_ftype_v4hi_int
     = build_function_type (V4HI_type_node,
-			   tree_cons (NULL_TREE, V4HI_type_node,
-				      tree_cons (NULL_TREE, integer_type_node,
-						 endlink)));
+      tree_cons (NULL_TREE, V4HI_type_node,
+          tree_cons (NULL_TREE, integer_type_node,
+       endlink)));
   tree v2si_ftype_v2si_int
     = build_function_type (V2SI_type_node,
-			   tree_cons (NULL_TREE, V2SI_type_node,
-				      tree_cons (NULL_TREE, integer_type_node,
-						 endlink)));
+      tree_cons (NULL_TREE, V2SI_type_node,
+          tree_cons (NULL_TREE, integer_type_node,
+       endlink)));
   tree v2si_ftype_di_di
     = build_function_type (V2SI_type_node,
-			   tree_cons (NULL_TREE, long_long_integer_type_node,
-				      tree_cons (NULL_TREE, long_long_integer_type_node,
-						 endlink)));
+      tree_cons (NULL_TREE, long_long_integer_type_node,
+          tree_cons (NULL_TREE, long_long_integer_type_node,
+       endlink)));
   tree di_ftype_di_int
     = build_function_type (long_long_integer_type_node,
-			   tree_cons (NULL_TREE, long_long_integer_type_node,
-				      tree_cons (NULL_TREE, integer_type_node,
-						 endlink)));
+      tree_cons (NULL_TREE, long_long_integer_type_node,
+          tree_cons (NULL_TREE, integer_type_node,
+       endlink)));
   tree di_ftype_di_int_int
     = build_function_type (long_long_integer_type_node,
-			   tree_cons (NULL_TREE, long_long_integer_type_node,
-				      tree_cons (NULL_TREE, integer_type_node,
-						 tree_cons (NULL_TREE,
-							    integer_type_node,
-							    endlink))));
+      tree_cons (NULL_TREE, long_long_integer_type_node,
+          tree_cons (NULL_TREE, integer_type_node,
+       tree_cons (NULL_TREE,
+           integer_type_node,
+           endlink))));
   tree int_ftype_v8qi
     = build_function_type (integer_type_node,
-			   tree_cons (NULL_TREE, V8QI_type_node,
-				      endlink));
+      tree_cons (NULL_TREE, V8QI_type_node,
+          endlink));
   tree int_ftype_v4hi
     = build_function_type (integer_type_node,
-			   tree_cons (NULL_TREE, V4HI_type_node,
-				      endlink));
+      tree_cons (NULL_TREE, V4HI_type_node,
+          endlink));
   tree int_ftype_v2si
     = build_function_type (integer_type_node,
-			   tree_cons (NULL_TREE, V2SI_type_node,
-				      endlink));
+      tree_cons (NULL_TREE, V2SI_type_node,
+          endlink));
   tree int_ftype_v8qi_int
     = build_function_type (integer_type_node,
-			   tree_cons (NULL_TREE, V8QI_type_node,
-				      tree_cons (NULL_TREE, integer_type_node,
-						 endlink)));
+      tree_cons (NULL_TREE, V8QI_type_node,
+          tree_cons (NULL_TREE, integer_type_node,
+       endlink)));
   tree int_ftype_v4hi_int
     = build_function_type (integer_type_node,
-			   tree_cons (NULL_TREE, V4HI_type_node,
-				      tree_cons (NULL_TREE, integer_type_node,
-						 endlink)));
+      tree_cons (NULL_TREE, V4HI_type_node,
+          tree_cons (NULL_TREE, integer_type_node,
+       endlink)));
   tree int_ftype_v2si_int
     = build_function_type (integer_type_node,
-			   tree_cons (NULL_TREE, V2SI_type_node,
-				      tree_cons (NULL_TREE, integer_type_node,
-						 endlink)));
+      tree_cons (NULL_TREE, V2SI_type_node,
+          tree_cons (NULL_TREE, integer_type_node,
+       endlink)));
   tree v8qi_ftype_v8qi_int_int
     = build_function_type (V8QI_type_node,
-			   tree_cons (NULL_TREE, V8QI_type_node,
-				      tree_cons (NULL_TREE, integer_type_node,
-						 tree_cons (NULL_TREE,
-							    integer_type_node,
-							    endlink))));
+      tree_cons (NULL_TREE, V8QI_type_node,
+          tree_cons (NULL_TREE, integer_type_node,
+       tree_cons (NULL_TREE,
+           integer_type_node,
+           endlink))));
   tree v4hi_ftype_v4hi_int_int
     = build_function_type (V4HI_type_node,
-			   tree_cons (NULL_TREE, V4HI_type_node,
-				      tree_cons (NULL_TREE, integer_type_node,
-						 tree_cons (NULL_TREE,
-							    integer_type_node,
-							    endlink))));
+      tree_cons (NULL_TREE, V4HI_type_node,
+          tree_cons (NULL_TREE, integer_type_node,
+       tree_cons (NULL_TREE,
+           integer_type_node,
+           endlink))));
   tree v2si_ftype_v2si_int_int
     = build_function_type (V2SI_type_node,
-			   tree_cons (NULL_TREE, V2SI_type_node,
-				      tree_cons (NULL_TREE, integer_type_node,
-						 tree_cons (NULL_TREE,
-							    integer_type_node,
-							    endlink))));
-  /* Miscellaneous.  */
+      tree_cons (NULL_TREE, V2SI_type_node,
+          tree_cons (NULL_TREE, integer_type_node,
+       tree_cons (NULL_TREE,
+           integer_type_node,
+           endlink))));
+
   tree v8qi_ftype_v4hi_v4hi
     = build_function_type (V8QI_type_node,
-			   tree_cons (NULL_TREE, V4HI_type_node,
-				      tree_cons (NULL_TREE, V4HI_type_node,
-						 endlink)));
+      tree_cons (NULL_TREE, V4HI_type_node,
+          tree_cons (NULL_TREE, V4HI_type_node,
+       endlink)));
   tree v4hi_ftype_v2si_v2si
     = build_function_type (V4HI_type_node,
-			   tree_cons (NULL_TREE, V2SI_type_node,
-				      tree_cons (NULL_TREE, V2SI_type_node,
-						 endlink)));
+      tree_cons (NULL_TREE, V2SI_type_node,
+          tree_cons (NULL_TREE, V2SI_type_node,
+       endlink)));
   tree v2si_ftype_v4hi_v4hi
     = build_function_type (V2SI_type_node,
-			   tree_cons (NULL_TREE, V4HI_type_node,
-				      tree_cons (NULL_TREE, V4HI_type_node,
-						 endlink)));
+      tree_cons (NULL_TREE, V4HI_type_node,
+          tree_cons (NULL_TREE, V4HI_type_node,
+       endlink)));
   tree v2si_ftype_v8qi_v8qi
     = build_function_type (V2SI_type_node,
-			   tree_cons (NULL_TREE, V8QI_type_node,
-				      tree_cons (NULL_TREE, V8QI_type_node,
-						 endlink)));
+      tree_cons (NULL_TREE, V8QI_type_node,
+          tree_cons (NULL_TREE, V8QI_type_node,
+       endlink)));
   tree v4hi_ftype_v4hi_di
     = build_function_type (V4HI_type_node,
-			   tree_cons (NULL_TREE, V4HI_type_node,
-				      tree_cons (NULL_TREE,
-						 long_long_integer_type_node,
-						 endlink)));
+      tree_cons (NULL_TREE, V4HI_type_node,
+          tree_cons (NULL_TREE,
+       long_long_integer_type_node,
+       endlink)));
   tree v2si_ftype_v2si_di
     = build_function_type (V2SI_type_node,
-			   tree_cons (NULL_TREE, V2SI_type_node,
-				      tree_cons (NULL_TREE,
-						 long_long_integer_type_node,
-						 endlink)));
+      tree_cons (NULL_TREE, V2SI_type_node,
+          tree_cons (NULL_TREE,
+       long_long_integer_type_node,
+       endlink)));
   tree void_ftype_int_int
     = build_function_type (void_type_node,
-			   tree_cons (NULL_TREE, integer_type_node,
-				      tree_cons (NULL_TREE, integer_type_node,
-						 endlink)));
+      tree_cons (NULL_TREE, integer_type_node,
+          tree_cons (NULL_TREE, integer_type_node,
+       endlink)));
   tree di_ftype_void
     = build_function_type (long_long_unsigned_type_node, endlink);
   tree di_ftype_v8qi
     = build_function_type (long_long_integer_type_node,
-			   tree_cons (NULL_TREE, V8QI_type_node,
-				      endlink));
+      tree_cons (NULL_TREE, V8QI_type_node,
+          endlink));
   tree di_ftype_v4hi
     = build_function_type (long_long_integer_type_node,
-			   tree_cons (NULL_TREE, V4HI_type_node,
-				      endlink));
+      tree_cons (NULL_TREE, V4HI_type_node,
+          endlink));
   tree di_ftype_v2si
     = build_function_type (long_long_integer_type_node,
-			   tree_cons (NULL_TREE, V2SI_type_node,
-				      endlink));
+      tree_cons (NULL_TREE, V2SI_type_node,
+          endlink));
   tree v2si_ftype_v4hi
     = build_function_type (V2SI_type_node,
-			   tree_cons (NULL_TREE, V4HI_type_node,
-				      endlink));
+      tree_cons (NULL_TREE, V4HI_type_node,
+          endlink));
   tree v4hi_ftype_v8qi
     = build_function_type (V4HI_type_node,
-			   tree_cons (NULL_TREE, V8QI_type_node,
-				      endlink));
+      tree_cons (NULL_TREE, V8QI_type_node,
+          endlink));
 
   tree di_ftype_di_v4hi_v4hi
     = build_function_type (long_long_unsigned_type_node,
-			   tree_cons (NULL_TREE,
-				      long_long_unsigned_type_node,
-				      tree_cons (NULL_TREE, V4HI_type_node,
-						 tree_cons (NULL_TREE,
-							    V4HI_type_node,
-							    endlink))));
+      tree_cons (NULL_TREE,
+          long_long_unsigned_type_node,
+          tree_cons (NULL_TREE, V4HI_type_node,
+       tree_cons (NULL_TREE,
+           V4HI_type_node,
+           endlink))));
 
   tree di_ftype_v4hi_v4hi
     = build_function_type (long_long_unsigned_type_node,
-			   tree_cons (NULL_TREE, V4HI_type_node,
-				      tree_cons (NULL_TREE, V4HI_type_node,
-						 endlink)));
+      tree_cons (NULL_TREE, V4HI_type_node,
+          tree_cons (NULL_TREE, V4HI_type_node,
+       endlink)));
 
-  /* Normal vector binops.  */
+
   tree v8qi_ftype_v8qi_v8qi
     = build_function_type (V8QI_type_node,
-			   tree_cons (NULL_TREE, V8QI_type_node,
-				      tree_cons (NULL_TREE, V8QI_type_node,
-						 endlink)));
+      tree_cons (NULL_TREE, V8QI_type_node,
+          tree_cons (NULL_TREE, V8QI_type_node,
+       endlink)));
   tree v4hi_ftype_v4hi_v4hi
     = build_function_type (V4HI_type_node,
-			   tree_cons (NULL_TREE, V4HI_type_node,
-				      tree_cons (NULL_TREE, V4HI_type_node,
-						 endlink)));
+      tree_cons (NULL_TREE, V4HI_type_node,
+          tree_cons (NULL_TREE, V4HI_type_node,
+       endlink)));
   tree v2si_ftype_v2si_v2si
     = build_function_type (V2SI_type_node,
-			   tree_cons (NULL_TREE, V2SI_type_node,
-				      tree_cons (NULL_TREE, V2SI_type_node,
-						 endlink)));
+      tree_cons (NULL_TREE, V2SI_type_node,
+          tree_cons (NULL_TREE, V2SI_type_node,
+       endlink)));
   tree di_ftype_di_di
     = build_function_type (long_long_unsigned_type_node,
-			   tree_cons (NULL_TREE, long_long_unsigned_type_node,
-				      tree_cons (NULL_TREE,
-						 long_long_unsigned_type_node,
-						 endlink)));
+      tree_cons (NULL_TREE, long_long_unsigned_type_node,
+          tree_cons (NULL_TREE,
+       long_long_unsigned_type_node,
+       endlink)));
 
-  /* Add all builtins that are more or less simple operations on two
-     operands.  */
+
+
   for (i = 0, d = bdesc_2arg; i < ARRAY_SIZE (bdesc_2arg); i++, d++)
     {
-      /* Use one of the operands; the target can have a different mode for
-	 mask-generating compares.  */
+
+
       enum machine_mode mode;
       tree type;
 
       if (d->name == 0)
-	continue;
+ continue;
 
       mode = insn_data[d->icode].operand[1].mode;
 
       switch (mode)
-	{
-	case V8QImode:
-	  type = v8qi_ftype_v8qi_v8qi;
-	  break;
-	case V4HImode:
-	  type = v4hi_ftype_v4hi_v4hi;
-	  break;
-	case V2SImode:
-	  type = v2si_ftype_v2si_v2si;
-	  break;
-	case DImode:
-	  type = di_ftype_di_di;
-	  break;
+ {
+ case 128:
+   type = v8qi_ftype_v8qi_v8qi;
+   break;
+ case 129:
+   type = v4hi_ftype_v4hi_v4hi;
+   break;
+ case 130:
+   type = v2si_ftype_v2si_v2si;
+   break;
+ case 131:
+   type = di_ftype_di_di;
+   break;
 
-	default:
-	  gcc_unreachable ();
-	}
+ default:
+   gcc_unreachable ();
+ }
 
       def_mbuiltin (d->mask, d->name, type, d->code);
     }
 
-  /* Add the remaining MMX insns with somewhat more complicated types.  */
+
   def_mbuiltin (FL_IWMMXT, "__builtin_arm_wzero", di_ftype_void, ARM_BUILTIN_WZERO);
   def_mbuiltin (FL_IWMMXT, "__builtin_arm_setwcx", void_ftype_int_int, ARM_BUILTIN_SETWCX);
   def_mbuiltin (FL_IWMMXT, "__builtin_arm_getwcx", int_ftype_int, ARM_BUILTIN_GETWCX);

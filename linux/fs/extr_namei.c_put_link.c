@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct saved {int /*<<< orphan*/  link; int /*<<< orphan*/  done; } ;
+
+
+
+
+struct saved {int link; int done; } ;
 struct nameidata {int depth; int flags; struct saved* stack; } ;
 
-/* Variables and functions */
- int LOOKUP_RCU ; 
- int /*<<< orphan*/  do_delayed_call (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  path_put (int /*<<< orphan*/ *) ; 
+
+ int LOOKUP_RCU ;
+ int do_delayed_call (int *) ;
+ int path_put (int *) ;
 
 __attribute__((used)) static inline void put_link(struct nameidata *nd)
 {
-	struct saved *last = nd->stack + --nd->depth;
-	do_delayed_call(&last->done);
-	if (!(nd->flags & LOOKUP_RCU))
-		path_put(&last->link);
+ struct saved *last = nd->stack + --nd->depth;
+ do_delayed_call(&last->done);
+ if (!(nd->flags & LOOKUP_RCU))
+  path_put(&last->link);
 }

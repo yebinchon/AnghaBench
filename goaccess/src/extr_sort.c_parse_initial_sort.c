@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int sort_panel_idx; int /*<<< orphan*/ * sort_panels; } ;
 
-/* Variables and functions */
- int SORT_FIELD_LEN ; 
- int SORT_MODULE_LEN ; 
- int SORT_ORDER_LEN ; 
- TYPE_1__ conf ; 
- int /*<<< orphan*/  set_initial_sort (char*,char*,char*) ; 
- int sscanf (int /*<<< orphan*/ ,char*,char*,char*,char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int sort_panel_idx; int * sort_panels; } ;
+
+
+ int SORT_FIELD_LEN ;
+ int SORT_MODULE_LEN ;
+ int SORT_ORDER_LEN ;
+ TYPE_1__ conf ;
+ int set_initial_sort (char*,char*,char*) ;
+ int sscanf (int ,char*,char*,char*,char*) ;
 
 void
 parse_initial_sort (void)

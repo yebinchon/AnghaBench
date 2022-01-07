@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  WARN_ON (int) ; 
- int /*<<< orphan*/  dummy_perf ; 
- int /*<<< orphan*/  perf_irq ; 
- int /*<<< orphan*/ * pmc_owner_caller ; 
- int /*<<< orphan*/  pmc_owner_lock ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+ int WARN_ON (int) ;
+ int dummy_perf ;
+ int perf_irq ;
+ int * pmc_owner_caller ;
+ int pmc_owner_lock ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 void release_pmc_hardware(void)
 {
-	spin_lock(&pmc_owner_lock);
+ spin_lock(&pmc_owner_lock);
 
-	WARN_ON(! pmc_owner_caller);
+ WARN_ON(! pmc_owner_caller);
 
-	pmc_owner_caller = NULL;
-	perf_irq = dummy_perf;
+ pmc_owner_caller = ((void*)0);
+ perf_irq = dummy_perf;
 
-	spin_unlock(&pmc_owner_lock);
+ spin_unlock(&pmc_owner_lock);
 }

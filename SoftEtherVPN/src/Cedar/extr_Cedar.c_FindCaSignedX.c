@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  issuer_name; int /*<<< orphan*/  subject_name; } ;
-typedef  TYPE_1__ X ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  int /*<<< orphan*/  K ;
 
-/* Variables and functions */
- scalar_t__ CheckSignature (TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ CheckXDateNow (TYPE_1__*) ; 
- TYPE_1__* CloneX (TYPE_1__*) ; 
- scalar_t__ CompareName (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ CompareX (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  FreeK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * GetKFromX (TYPE_1__*) ; 
- TYPE_1__* LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int issuer_name; int subject_name; } ;
+typedef TYPE_1__ X ;
+typedef scalar_t__ UINT ;
+typedef int LIST ;
+typedef int K ;
+
+
+ scalar_t__ CheckSignature (TYPE_1__*,int *) ;
+ scalar_t__ CheckXDateNow (TYPE_1__*) ;
+ TYPE_1__* CloneX (TYPE_1__*) ;
+ scalar_t__ CompareName (int ,int ) ;
+ scalar_t__ CompareX (TYPE_1__*,TYPE_1__*) ;
+ int FreeK (int *) ;
+ int * GetKFromX (TYPE_1__*) ;
+ TYPE_1__* LIST_DATA (int *,scalar_t__) ;
+ scalar_t__ LIST_NUM (int *) ;
+ int LockList (int *) ;
+ int UnlockList (int *) ;
 
 X *FindCaSignedX(LIST *o, X *x)
 {
-	X *ret;
-	// Validate arguments
-	if (o == NULL || x == NULL)
-	{
-		return NULL;
-	}
+ X *ret;
 
-	ret = NULL;
+ if (o == ((void*)0) || x == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	LockList(o);
-	{
-		UINT i;
-		for (i = 0;i < LIST_NUM(o);i++)
-		{
-			X *ca = LIST_DATA(o, i);
-			if (CheckXDateNow(ca))
-			{
-				if (CompareName(ca->subject_name, x->issuer_name))
-				{
-					K *k = GetKFromX(ca);
-					if (k != NULL)
-					{
-						if (CheckSignature(x, k))
-						{
-							ret = CloneX(ca);
-						}
-						FreeK(k);
-					}
-				}
-				else if (CompareX(ca, x))
-				{
-					ret = CloneX(ca);
-				}
-			}
+ ret = ((void*)0);
 
-			if (ret != NULL)
-			{
-				break;
-			}
-		}
-	}
-	UnlockList(o);
+ LockList(o);
+ {
+  UINT i;
+  for (i = 0;i < LIST_NUM(o);i++)
+  {
+   X *ca = LIST_DATA(o, i);
+   if (CheckXDateNow(ca))
+   {
+    if (CompareName(ca->subject_name, x->issuer_name))
+    {
+     K *k = GetKFromX(ca);
+     if (k != ((void*)0))
+     {
+      if (CheckSignature(x, k))
+      {
+       ret = CloneX(ca);
+      }
+      FreeK(k);
+     }
+    }
+    else if (CompareX(ca, x))
+    {
+     ret = CloneX(ca);
+    }
+   }
 
-	return ret;
+   if (ret != ((void*)0))
+   {
+    break;
+   }
+  }
+ }
+ UnlockList(o);
+
+ return ret;
 }

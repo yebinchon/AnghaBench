@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int usec_t ;
-typedef  struct tm {int tm_year; int tm_mon; int tm_mday; int tm_hour; int tm_min; int tm_sec; int /*<<< orphan*/  utc; int /*<<< orphan*/  microsecond; int /*<<< orphan*/  minute; int /*<<< orphan*/  hour; int /*<<< orphan*/  weekdays_bits; int /*<<< orphan*/  day; int /*<<< orphan*/  month; int /*<<< orphan*/  year; int /*<<< orphan*/  dst; int /*<<< orphan*/  tm_isdst; } const tm ;
-typedef  struct tm CalendarSpec ;
 
-/* Variables and functions */
- int ENOENT ; 
- int USEC_PER_SEC ; 
- int /*<<< orphan*/  assert (struct tm const*) ; 
- int find_matching_component (struct tm const*,int /*<<< orphan*/ ,struct tm const*,int*) ; 
- int /*<<< orphan*/  matches_weekday (int /*<<< orphan*/ ,struct tm const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mktime_or_timegm (struct tm const*,int /*<<< orphan*/ ) ; 
- int tm_within_bounds (struct tm const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int usec_t ;
+typedef struct tm {int tm_year; int tm_mon; int tm_mday; int tm_hour; int tm_min; int tm_sec; int utc; int microsecond; int minute; int hour; int weekdays_bits; int day; int month; int year; int dst; int tm_isdst; } const tm ;
+typedef struct tm CalendarSpec ;
+
+
+ int ENOENT ;
+ int USEC_PER_SEC ;
+ int assert (struct tm const*) ;
+ int find_matching_component (struct tm const*,int ,struct tm const*,int*) ;
+ int matches_weekday (int ,struct tm const*,int ) ;
+ int mktime_or_timegm (struct tm const*,int ) ;
+ int tm_within_bounds (struct tm const*,int ) ;
 
 __attribute__((used)) static int find_next(const CalendarSpec *spec, struct tm *tm, usec_t *usec) {
         struct tm c;
         int tm_usec;
         int r;
 
-        /* Returns -ENOENT if the expression is not going to elapse anymore */
+
 
         assert(spec);
         assert(tm);
@@ -37,7 +37,7 @@ __attribute__((used)) static int find_next(const CalendarSpec *spec, struct tm *
         tm_usec = *usec;
 
         for (;;) {
-                /* Normalize the current date */
+
                 (void) mktime_or_timegm(&c, spec->utc);
                 c.tm_isdst = spec->dst;
 
@@ -100,9 +100,9 @@ __attribute__((used)) static int find_next(const CalendarSpec *spec, struct tm *
                         continue;
                 }
                 if (r == 0)
-                        /* The next hour we set might be missing if there
-                         * are time zone changes. Let's try again starting at
-                         * normalized time. */
+
+
+
                         continue;
 
                 r = find_matching_component(spec, spec->minute, &c, &c.tm_min);

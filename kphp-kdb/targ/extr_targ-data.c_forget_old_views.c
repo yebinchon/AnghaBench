@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CV_r ; 
- scalar_t__ VIEWS_STATS_INTERVAL ; 
- int /*<<< orphan*/  forget_old_views_upto (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ log_last_ts ; 
+ int CV_r ;
+ scalar_t__ VIEWS_STATS_INTERVAL ;
+ int forget_old_views_upto (int ,scalar_t__) ;
+ scalar_t__ log_last_ts ;
 
 void forget_old_views (void) {
   CV_r = forget_old_views_upto (CV_r, log_last_ts - VIEWS_STATS_INTERVAL);

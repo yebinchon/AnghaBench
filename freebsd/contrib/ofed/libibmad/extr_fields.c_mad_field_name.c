@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum MAD_FIELDS { ____Placeholder_MAD_FIELDS } MAD_FIELDS ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef enum MAD_FIELDS { ____Placeholder_MAD_FIELDS } MAD_FIELDS ;
 struct TYPE_2__ {char const* name; } ;
 
-/* Variables and functions */
- TYPE_1__* ib_mad_f ; 
+
+ TYPE_1__* ib_mad_f ;
 
 const char *mad_field_name(enum MAD_FIELDS field)
 {
-	return (ib_mad_f[field].name);
+ return (ib_mad_f[field].name);
 }

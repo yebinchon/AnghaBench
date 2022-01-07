@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct page {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ClearPageActive (struct page*) ; 
- scalar_t__ PageActive (struct page*) ; 
- int /*<<< orphan*/  __lru_cache_add (struct page*) ; 
+
+ int ClearPageActive (struct page*) ;
+ scalar_t__ PageActive (struct page*) ;
+ int __lru_cache_add (struct page*) ;
 
 void lru_cache_add_file(struct page *page)
 {
-	if (PageActive(page))
-		ClearPageActive(page);
-	__lru_cache_add(page);
+ if (PageActive(page))
+  ClearPageActive(page);
+ __lru_cache_add(page);
 }

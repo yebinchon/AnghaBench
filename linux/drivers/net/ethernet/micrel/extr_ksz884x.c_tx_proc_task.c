@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ksz_hw {int dummy; } ;
-struct dev_info {int /*<<< orphan*/  hwlock; struct ksz_hw hw; } ;
+struct dev_info {int hwlock; struct ksz_hw hw; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KS884X_INT_TX ; 
- int /*<<< orphan*/  KS884X_INT_TX_MASK ; 
- int /*<<< orphan*/  hw_ack_intr (struct ksz_hw*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hw_turn_on_intr (struct ksz_hw*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tx_done (struct dev_info*) ; 
+
+ int KS884X_INT_TX ;
+ int KS884X_INT_TX_MASK ;
+ int hw_ack_intr (struct ksz_hw*,int ) ;
+ int hw_turn_on_intr (struct ksz_hw*,int ) ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
+ int tx_done (struct dev_info*) ;
 
 __attribute__((used)) static void tx_proc_task(unsigned long data)
 {
-	struct dev_info *hw_priv = (struct dev_info *) data;
-	struct ksz_hw *hw = &hw_priv->hw;
+ struct dev_info *hw_priv = (struct dev_info *) data;
+ struct ksz_hw *hw = &hw_priv->hw;
 
-	hw_ack_intr(hw, KS884X_INT_TX_MASK);
+ hw_ack_intr(hw, KS884X_INT_TX_MASK);
 
-	tx_done(hw_priv);
+ tx_done(hw_priv);
 
-	/* tasklets are interruptible. */
-	spin_lock_irq(&hw_priv->hwlock);
-	hw_turn_on_intr(hw, KS884X_INT_TX);
-	spin_unlock_irq(&hw_priv->hwlock);
+
+ spin_lock_irq(&hw_priv->hwlock);
+ hw_turn_on_intr(hw, KS884X_INT_TX);
+ spin_unlock_irq(&hw_priv->hwlock);
 }

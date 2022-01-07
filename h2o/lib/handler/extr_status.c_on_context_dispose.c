@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct st_h2o_status_context_t {int /*<<< orphan*/  receiver; } ;
-struct TYPE_5__ {size_t size; int /*<<< orphan*/ ** entries; } ;
-struct st_h2o_root_status_handler_t {TYPE_1__ receivers; int /*<<< orphan*/  super; } ;
-typedef  int /*<<< orphan*/  h2o_handler_t ;
-struct TYPE_6__ {int /*<<< orphan*/  queue; } ;
-typedef  TYPE_2__ h2o_context_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free (struct st_h2o_status_context_t*) ; 
- struct st_h2o_status_context_t* h2o_context_get_handler_context (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  h2o_multithread_unregister_receiver (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memmove (int /*<<< orphan*/ **,int /*<<< orphan*/ **,size_t) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct st_h2o_status_context_t {int receiver; } ;
+struct TYPE_5__ {size_t size; int ** entries; } ;
+struct st_h2o_root_status_handler_t {TYPE_1__ receivers; int super; } ;
+typedef int h2o_handler_t ;
+struct TYPE_6__ {int queue; } ;
+typedef TYPE_2__ h2o_context_t ;
+
+
+ int assert (int) ;
+ int free (struct st_h2o_status_context_t*) ;
+ struct st_h2o_status_context_t* h2o_context_get_handler_context (TYPE_2__*,int *) ;
+ int h2o_multithread_unregister_receiver (int ,int *) ;
+ int memmove (int **,int **,size_t) ;
 
 __attribute__((used)) static void on_context_dispose(h2o_handler_t *_self, h2o_context_t *ctx)
 {

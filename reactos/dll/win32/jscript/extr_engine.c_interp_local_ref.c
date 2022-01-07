@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
 struct TYPE_16__ {TYPE_5__* call_ctx; } ;
-typedef  TYPE_3__ script_ctx_t ;
-struct TYPE_14__ {int /*<<< orphan*/  off; } ;
-struct TYPE_17__ {TYPE_1__ u; int /*<<< orphan*/  type; } ;
-typedef  TYPE_4__ exprval_t ;
+typedef TYPE_3__ script_ctx_t ;
+struct TYPE_14__ {int off; } ;
+struct TYPE_17__ {TYPE_1__ u; int type; } ;
+typedef TYPE_4__ exprval_t ;
 struct TYPE_18__ {TYPE_2__* base_scope; } ;
-typedef  TYPE_5__ call_frame_t ;
-struct TYPE_15__ {int /*<<< orphan*/  frame; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_5__ call_frame_t ;
+struct TYPE_15__ {int frame; } ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXPRVAL_STACK_REF ; 
- int /*<<< orphan*/  TRACE (char*,int const) ; 
- int get_op_int (TYPE_3__*,int /*<<< orphan*/ ) ; 
- unsigned int get_op_uint (TYPE_3__*,int) ; 
- int /*<<< orphan*/  interp_identifier_ref (TYPE_3__*,int /*<<< orphan*/ ,unsigned int const) ; 
- int /*<<< orphan*/  local_name (TYPE_5__*,int const) ; 
- int /*<<< orphan*/  local_off (TYPE_5__*,int const) ; 
- int /*<<< orphan*/  stack_push_exprval (TYPE_3__*,TYPE_4__*) ; 
+
+ int EXPRVAL_STACK_REF ;
+ int TRACE (char*,int const) ;
+ int get_op_int (TYPE_3__*,int ) ;
+ unsigned int get_op_uint (TYPE_3__*,int) ;
+ int interp_identifier_ref (TYPE_3__*,int ,unsigned int const) ;
+ int local_name (TYPE_5__*,int const) ;
+ int local_off (TYPE_5__*,int const) ;
+ int stack_push_exprval (TYPE_3__*,TYPE_4__*) ;
 
 __attribute__((used)) static HRESULT interp_local_ref(script_ctx_t *ctx)
 {

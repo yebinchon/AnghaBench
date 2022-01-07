@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  out ;
-typedef  int /*<<< orphan*/  len ;
-typedef  int /*<<< orphan*/  expected ;
-typedef  int /*<<< orphan*/  OSSL_PARAM ;
-typedef  int /*<<< orphan*/  EVP_KDF_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_KDF_CTRL_SET_ITER ; 
- int /*<<< orphan*/  EVP_KDF_CTRL_SET_PBKDF2_PKCS5_MODE ; 
- int /*<<< orphan*/  EVP_KDF_CTRL_SET_SALT ; 
- int /*<<< orphan*/  EVP_KDF_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_KDF_CTX_set_params (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_KDF_ctrl (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  EVP_KDF_derive (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  OSSL_KDF_NAME_PBKDF2 ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_DIGEST ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_ITER ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_PASSWORD ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_PKCS5 ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_SALT ; 
- int /*<<< orphan*/  OSSL_PARAM_construct_end () ; 
- int /*<<< orphan*/  OSSL_PARAM_construct_int (int /*<<< orphan*/ ,int*) ; 
- void* OSSL_PARAM_construct_octet_string (int /*<<< orphan*/ ,unsigned char*,int) ; 
- int /*<<< orphan*/  OSSL_PARAM_construct_uint (int /*<<< orphan*/ ,unsigned int*) ; 
- int /*<<< orphan*/  OSSL_PARAM_construct_utf8_string (int /*<<< orphan*/ ,char*,int) ; 
- size_t SIZE_MAX ; 
- scalar_t__ TEST_int_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ TEST_int_gt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_mem_eq (unsigned char*,int,unsigned char const*,int) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * get_kdfbyname (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int out ;
+typedef int len ;
+typedef int expected ;
+typedef int OSSL_PARAM ;
+typedef int EVP_KDF_CTX ;
+
+
+ int EVP_KDF_CTRL_SET_ITER ;
+ int EVP_KDF_CTRL_SET_PBKDF2_PKCS5_MODE ;
+ int EVP_KDF_CTRL_SET_SALT ;
+ int EVP_KDF_CTX_free (int *) ;
+ int EVP_KDF_CTX_set_params (int *,int *) ;
+ int EVP_KDF_ctrl (int *,int ,...) ;
+ int EVP_KDF_derive (int *,unsigned char*,int) ;
+ int OSSL_KDF_NAME_PBKDF2 ;
+ int OSSL_KDF_PARAM_DIGEST ;
+ int OSSL_KDF_PARAM_ITER ;
+ int OSSL_KDF_PARAM_PASSWORD ;
+ int OSSL_KDF_PARAM_PKCS5 ;
+ int OSSL_KDF_PARAM_SALT ;
+ int OSSL_PARAM_construct_end () ;
+ int OSSL_PARAM_construct_int (int ,int*) ;
+ void* OSSL_PARAM_construct_octet_string (int ,unsigned char*,int) ;
+ int OSSL_PARAM_construct_uint (int ,unsigned int*) ;
+ int OSSL_PARAM_construct_utf8_string (int ,char*,int) ;
+ size_t SIZE_MAX ;
+ scalar_t__ TEST_int_eq (int ,int ) ;
+ scalar_t__ TEST_int_gt (int ,int ) ;
+ int TEST_mem_eq (unsigned char*,int,unsigned char const*,int) ;
+ int TEST_ptr (int *) ;
+ int TEST_true (int ) ;
+ int * get_kdfbyname (int ) ;
 
 __attribute__((used)) static int test_kdf_pbkdf2(void)
 {
@@ -80,35 +80,11 @@ __attribute__((used)) static int test_kdf_pbkdf2(void)
         || !TEST_int_gt(EVP_KDF_derive(kctx, out, sizeof(out)), 0)
         || !TEST_mem_eq(out, sizeof(out), expected, sizeof(expected))
         || !TEST_true(EVP_KDF_CTX_set_params(kctx, params))
-        /* A key length that is too small should fail */
+
         || !TEST_int_eq(EVP_KDF_derive(kctx, out, 112 / 8 - 1), 0)
-        /* A key length that is too large should fail */
+
         || (len != 0 && !TEST_int_eq(EVP_KDF_derive(kctx, out, len), 0)))
         goto err;
-#if 0
-/* TODO */
-          /* Salt length less than 128 bits should fail */
-          || TEST_int_eq(EVP_KDF_ctrl(kctx, EVP_KDF_CTRL_SET_SALT,
-                                      "123456781234567",
-                                      (size_t)15), 0)
-          /* A small iteration count should fail */
-          || TEST_int_eq(EVP_KDF_ctrl(kctx, EVP_KDF_CTRL_SET_ITER, 1), 0)
-          || TEST_int_gt(EVP_KDF_ctrl(kctx, EVP_KDF_CTRL_SET_PBKDF2_PKCS5_MODE,
-                                      1), 0)
-          /* Small salts will pass if the "pkcs5" mode is enabled */
-          || TEST_int_gt(EVP_KDF_ctrl(kctx, EVP_KDF_CTRL_SET_SALT,
-                                      "123456781234567",
-                                      (size_t)15), 0)
-          /* A small iteration count will pass if "pkcs5" mode is enabled */
-          || TEST_int_gt(EVP_KDF_ctrl(kctx, EVP_KDF_CTRL_SET_ITER, 1), 0)
-          /*
-           * If the "pkcs5" mode is disabled then the small salt and iter will
-           * fail when the derive gets called.
-           */
-          || TEST_int_gt(EVP_KDF_ctrl(kctx, EVP_KDF_CTRL_SET_PBKDF2_PKCS5_MODE,
-                                      0), 0)
-          || TEST_int_eq(EVP_KDF_derive(kctx, out, sizeof(out)), 0);
-#endif
     ret = 1;
 err:
     EVP_KDF_CTX_free(kctx);

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_1__* noderef; } ;
-struct TYPE_7__ {int prodNum; int whichSym; scalar_t__* refCountList; TYPE_2__ parent; int /*<<< orphan*/  parentIsStack; } ;
-typedef  TYPE_3__ yyyGNT ;
+struct TYPE_7__ {int prodNum; int whichSym; scalar_t__* refCountList; TYPE_2__ parent; int parentIsStack; } ;
+typedef TYPE_3__ yyyGNT ;
 struct TYPE_5__ {int prodNum; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- char* yyyAttrbStr (int,int,int) ; 
- char* yyyGSoccurStr (int,int) ; 
- int /*<<< orphan*/  yyyShowProd (int) ; 
- int yyySizeofSort (int) ; 
- int yyySortOf (int,int) ; 
+
+ int fprintf (int ,char*,...) ;
+ int fputs (char*,int ) ;
+ int stderr ;
+ char* yyyAttrbStr (int,int,int) ;
+ char* yyyGSoccurStr (int,int) ;
+ int yyyShowProd (int) ;
+ int yyySizeofSort (int) ;
+ int yyySortOf (int,int) ;
 
 void yyyCheckNodeInstancesSolved(yyyGNT *np)
   {int mysort,sortSize,i,prodNum,symPos,inTerminalNode;

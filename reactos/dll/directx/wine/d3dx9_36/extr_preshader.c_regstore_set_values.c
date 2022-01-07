@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct d3dx_regstore {int /*<<< orphan*/  const** tables; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct d3dx_regstore {int const** tables; } ;
 struct TYPE_2__ {unsigned int component_size; } ;
-typedef  int /*<<< orphan*/  const BYTE ;
+typedef int const BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,unsigned int) ; 
- TYPE_1__* table_info ; 
+
+ int assert (int) ;
+ int memcpy (int const*,int const*,unsigned int) ;
+ TYPE_1__* table_info ;
 
 __attribute__((used)) static void regstore_set_values(struct d3dx_regstore *rs, unsigned int table, const void *data,
         unsigned int start_offset, unsigned int count)

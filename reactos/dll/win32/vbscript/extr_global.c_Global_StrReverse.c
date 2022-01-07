@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vbdisp_t ;
-typedef  void* WCHAR ;
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  void** BSTR ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int SysStringLen (void**) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_variant (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  return_bstr (int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  to_string (int /*<<< orphan*/ *,void***) ; 
+
+
+
+typedef int vbdisp_t ;
+typedef void* WCHAR ;
+typedef int VARIANT ;
+typedef int HRESULT ;
+typedef void** BSTR ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int SysStringLen (void**) ;
+ int TRACE (char*,int ) ;
+ int debugstr_variant (int *) ;
+ int return_bstr (int *,void**) ;
+ int to_string (int *,void***) ;
 
 __attribute__((used)) static HRESULT Global_StrReverse(vbdisp_t *This, VARIANT *arg, unsigned args_cnt, VARIANT *res)
 {

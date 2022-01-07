@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mp_refqueue {int /*<<< orphan*/  conv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mp_autoconvert_add_imgfmt (int /*<<< orphan*/ ,int,int) ; 
+
+
+
+struct mp_refqueue {int conv; } ;
+
+
+ int mp_autoconvert_add_imgfmt (int ,int,int) ;
 
 void mp_refqueue_add_in_format(struct mp_refqueue *q, int fmt, int subfmt)
 {

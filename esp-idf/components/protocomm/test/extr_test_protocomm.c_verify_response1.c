@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_12__ {int /*<<< orphan*/ * client_pubkey; int /*<<< orphan*/  stb; int /*<<< orphan*/  rand; int /*<<< orphan*/  nc_off; int /*<<< orphan*/  ctx_aes; int /*<<< orphan*/ * device_pubkey; } ;
-typedef  TYPE_4__ session_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
-typedef  int /*<<< orphan*/  check_buf ;
+
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_12__ {int * client_pubkey; int stb; int rand; int nc_off; int ctx_aes; int * device_pubkey; } ;
+typedef TYPE_4__ session_t ;
+typedef int esp_err_t ;
+typedef int check_buf ;
 struct TYPE_14__ {TYPE_3__* sr1; } ;
 struct TYPE_13__ {scalar_t__ proto_case; TYPE_1__* sec1; } ;
-struct TYPE_10__ {int /*<<< orphan*/  data; } ;
+struct TYPE_10__ {int data; } ;
 struct TYPE_11__ {TYPE_2__ device_verify_data; } ;
 struct TYPE_9__ {scalar_t__ msg; } ;
-typedef  TYPE_5__ SessionData ;
-typedef  TYPE_6__ Sec1Payload ;
+typedef TYPE_5__ SessionData ;
+typedef TYPE_6__ Sec1Payload ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERR_INVALID_ARG ; 
- int /*<<< orphan*/  ESP_FAIL ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ESP_OK ; 
- int PUBLIC_KEY_LEN ; 
- scalar_t__ SEC1_MSG_TYPE__Session_Response1 ; 
- scalar_t__ SESSION_DATA__PROTO_SEC1 ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  hexdump (char*,int /*<<< orphan*/ *,int) ; 
- int mbedtls_aes_crypt_ctr (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int ESP_ERR_INVALID_ARG ;
+ int ESP_FAIL ;
+ int ESP_LOGE (int ,char*,...) ;
+ int ESP_OK ;
+ int PUBLIC_KEY_LEN ;
+ scalar_t__ SEC1_MSG_TYPE__Session_Response1 ;
+ scalar_t__ SESSION_DATA__PROTO_SEC1 ;
+ int TAG ;
+ int hexdump (char*,int *,int) ;
+ int mbedtls_aes_crypt_ctr (int *,int,int *,int ,int ,int ,int *) ;
+ scalar_t__ memcmp (int *,int *,int) ;
 
 __attribute__((used)) static esp_err_t verify_response1(session_t *session, SessionData *resp)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static esp_err_t verify_response1(session_t *session, Sess
     hexdump("Client pubkey", cli_pubkey, PUBLIC_KEY_LEN);
 
     if ((resp->proto_case != SESSION_DATA__PROTO_SEC1) ||
-        (resp->sec1->msg  != SEC1_MSG_TYPE__Session_Response1)) {
+        (resp->sec1->msg != SEC1_MSG_TYPE__Session_Response1)) {
         ESP_LOGE(TAG, "Invalid response type");
         return ESP_ERR_INVALID_ARG;
     }

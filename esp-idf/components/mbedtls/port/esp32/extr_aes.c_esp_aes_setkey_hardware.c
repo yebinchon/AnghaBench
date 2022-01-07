@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned int uint32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef unsigned int uint32_t ;
 struct TYPE_3__ {int key_in_hardware; int key_bytes; scalar_t__ key; } ;
-typedef  TYPE_1__ esp_aes_context ;
+typedef TYPE_1__ esp_aes_context ;
 
-/* Variables and functions */
- scalar_t__ AES_KEY_BASE ; 
- scalar_t__ AES_MODE_REG ; 
- int /*<<< orphan*/  DPORT_REG_WRITE (scalar_t__,unsigned int) ; 
- int ESP_AES_ENCRYPT ; 
- int /*<<< orphan*/  abort () ; 
+
+ scalar_t__ AES_KEY_BASE ;
+ scalar_t__ AES_MODE_REG ;
+ int DPORT_REG_WRITE (scalar_t__,unsigned int) ;
+ int ESP_AES_ENCRYPT ;
+ int abort () ;
 
 __attribute__((used)) static void esp_aes_setkey_hardware(esp_aes_context *ctx, int mode)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static void esp_aes_setkey_hardware(esp_aes_context *ctx, 
 
     DPORT_REG_WRITE(AES_MODE_REG, mode_reg_base + ((ctx->key_bytes / 8) - 2));
 
-    /* Fault injection check: all words of key data should have been written to hardware */
+
     if (ctx->key_in_hardware < 16
         || ctx->key_in_hardware != ctx->key_bytes) {
         abort();

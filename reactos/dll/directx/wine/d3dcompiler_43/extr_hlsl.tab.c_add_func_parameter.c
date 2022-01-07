@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct source_location {int dummy; } ;
-struct parse_parameter {int /*<<< orphan*/  modifiers; int /*<<< orphan*/  reg_reservation; int /*<<< orphan*/  semantic; int /*<<< orphan*/  name; int /*<<< orphan*/  type; } ;
+struct parse_parameter {int modifiers; int reg_reservation; int semantic; int name; int type; } ;
 struct list {int dummy; } ;
-struct hlsl_ir_var {int /*<<< orphan*/  param_entry; int /*<<< orphan*/  modifiers; int /*<<< orphan*/  reg_reservation; int /*<<< orphan*/  semantic; int /*<<< orphan*/  name; struct source_location loc; int /*<<< orphan*/  data_type; } ;
-struct TYPE_2__ {int /*<<< orphan*/  cur_scope; } ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct hlsl_ir_var {int param_entry; int modifiers; int reg_reservation; int semantic; int name; struct source_location loc; int data_type; } ;
+struct TYPE_2__ {int cur_scope; } ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  add_declaration (int /*<<< orphan*/ ,struct hlsl_ir_var*,int /*<<< orphan*/ ) ; 
- struct hlsl_ir_var* d3dcompiler_alloc (int) ; 
- int /*<<< orphan*/  free_declaration (struct hlsl_ir_var*) ; 
- TYPE_1__ hlsl_ctx ; 
- int /*<<< orphan*/  list_add_tail (struct list*,int /*<<< orphan*/ *) ; 
+
+ int ERR (char*) ;
+ int FALSE ;
+ int TRUE ;
+ int add_declaration (int ,struct hlsl_ir_var*,int ) ;
+ struct hlsl_ir_var* d3dcompiler_alloc (int) ;
+ int free_declaration (struct hlsl_ir_var*) ;
+ TYPE_1__ hlsl_ctx ;
+ int list_add_tail (struct list*,int *) ;
 
 __attribute__((used)) static BOOL add_func_parameter(struct list *list, struct parse_parameter *param, const struct source_location *loc)
 {

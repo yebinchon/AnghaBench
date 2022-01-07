@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_vertex_element {int /*<<< orphan*/  usage_idx; int /*<<< orphan*/  usage; int /*<<< orphan*/  method; scalar_t__ instance_data_step_rate; int /*<<< orphan*/  input_slot_class; int /*<<< orphan*/  output_slot; int /*<<< orphan*/  offset; int /*<<< orphan*/  input_slot; int /*<<< orphan*/  format; } ;
-typedef  int UINT ;
-struct TYPE_9__ {int /*<<< orphan*/  format; } ;
-struct TYPE_8__ {size_t Type; int /*<<< orphan*/  UsageIndex; int /*<<< orphan*/  Usage; int /*<<< orphan*/  Method; int /*<<< orphan*/  Offset; int /*<<< orphan*/  Stream; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct wined3d_vertex_element {int usage_idx; int usage; int method; scalar_t__ instance_data_step_rate; int input_slot_class; int output_slot; int offset; int input_slot; int format; } ;
+typedef int UINT ;
+struct TYPE_9__ {int format; } ;
+struct TYPE_8__ {size_t Type; int UsageIndex; int Usage; int Method; int Offset; int Stream; } ;
 struct TYPE_7__ {int Stream; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_2__ D3DVERTEXELEMENT9 ;
+typedef int HRESULT ;
+typedef TYPE_2__ D3DVERTEXELEMENT9 ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (TYPE_3__*) ; 
- int /*<<< orphan*/  D3DERR_OUTOFVIDEOMEMORY ; 
- int /*<<< orphan*/  D3D_OK ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_2__ const*,struct wined3d_vertex_element**,int*) ; 
- int /*<<< orphan*/  WARN (char*,size_t) ; 
- int /*<<< orphan*/  WINED3D_INPUT_PER_VERTEX_DATA ; 
- int /*<<< orphan*/  WINED3D_OUTPUT_SLOT_SEMANTIC ; 
- TYPE_3__* d3d_dtype_lookup ; 
- struct wined3d_vertex_element* heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (struct wined3d_vertex_element*) ; 
+
+ size_t ARRAY_SIZE (TYPE_3__*) ;
+ int D3DERR_OUTOFVIDEOMEMORY ;
+ int D3D_OK ;
+ int E_FAIL ;
+ int FIXME (char*) ;
+ int TRACE (char*,TYPE_2__ const*,struct wined3d_vertex_element**,int*) ;
+ int WARN (char*,size_t) ;
+ int WINED3D_INPUT_PER_VERTEX_DATA ;
+ int WINED3D_OUTPUT_SLOT_SEMANTIC ;
+ TYPE_3__* d3d_dtype_lookup ;
+ struct wined3d_vertex_element* heap_alloc (int) ;
+ int heap_free (struct wined3d_vertex_element*) ;
 
 __attribute__((used)) static HRESULT convert_to_wined3d_declaration(const D3DVERTEXELEMENT9 *d3d9_elements,
         struct wined3d_vertex_element **wined3d_elements, UINT *element_count)
@@ -49,7 +49,7 @@ __attribute__((used)) static HRESULT convert_to_wined3d_declaration(const D3DVER
 
     if (count == 128) return E_FAIL;
 
-    /* Skip the END element */
+
     --count;
 
     if (!(*wined3d_elements = heap_alloc(count * sizeof(**wined3d_elements))))

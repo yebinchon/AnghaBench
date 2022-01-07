@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ENXIO ; 
- char* SPECIAL_ROOT_SLICE ; 
- int /*<<< orphan*/  check_p_g_u_slice (char*,int /*<<< orphan*/ ,char*) ; 
+ int ENXIO ;
+ char* SPECIAL_ROOT_SLICE ;
+ int check_p_g_u_slice (char*,int ,char*) ;
 
 __attribute__((used)) static void test_path_get_user_slice(void) {
-        check_p_g_u_slice("/user.slice", -ENXIO, NULL);
-        check_p_g_u_slice("/foobar", -ENXIO, NULL);
-        check_p_g_u_slice("/user.slice/user-waldo.slice", -ENXIO, NULL);
-        check_p_g_u_slice("", -ENXIO, NULL);
-        check_p_g_u_slice("foobar", -ENXIO, NULL);
-        check_p_g_u_slice("foobar.slice", -ENXIO, NULL);
-        check_p_g_u_slice("foo.slice/foo-bar.slice/waldo.service", -ENXIO, NULL);
+        check_p_g_u_slice("/user.slice", -ENXIO, ((void*)0));
+        check_p_g_u_slice("/foobar", -ENXIO, ((void*)0));
+        check_p_g_u_slice("/user.slice/user-waldo.slice", -ENXIO, ((void*)0));
+        check_p_g_u_slice("", -ENXIO, ((void*)0));
+        check_p_g_u_slice("foobar", -ENXIO, ((void*)0));
+        check_p_g_u_slice("foobar.slice", -ENXIO, ((void*)0));
+        check_p_g_u_slice("foo.slice/foo-bar.slice/waldo.service", -ENXIO, ((void*)0));
 
         check_p_g_u_slice("foo.slice/foo-bar.slice/user@1000.service", 0, SPECIAL_ROOT_SLICE);
         check_p_g_u_slice("foo.slice/foo-bar.slice/user@1000.service/", 0, SPECIAL_ROOT_SLICE);

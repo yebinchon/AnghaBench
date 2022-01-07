@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ isdigit (char const) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int min (int,size_t) ; 
- int strlenW (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int WCHAR ;
+
+
+ int assert (int) ;
+ scalar_t__ isdigit (char const) ;
+ int memcpy (int *,int const*,int) ;
+ int min (int,size_t) ;
+ int strlenW (int const*) ;
 
 __attribute__((used)) static size_t format_string( WCHAR *buffer, size_t len, const char *format, const WCHAR *str, int str_len )
 {
@@ -25,7 +25,7 @@ __attribute__((used)) static size_t format_string( WCHAR *buffer, size_t len, co
     int i, left_align = 0, width = 0, max = 0;
 
     assert( *format == '%' );
-    format++; /* skip '%' */
+    format++;
 
     while (*format == '0' || *format == '+' || *format == '-' || *format == ' ' || *format == '#')
     {

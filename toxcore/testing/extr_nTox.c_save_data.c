@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  Tox ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  data_file_name ; 
- scalar_t__ fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ ) ; 
- size_t fwrite (int /*<<< orphan*/ *,int,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  tox_get_savedata (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- size_t tox_get_savedata_size (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+typedef int Tox ;
+typedef int FILE ;
+
+
+ int data_file_name ;
+ scalar_t__ fclose (int *) ;
+ int * fopen (int ,char*) ;
+ int fputs (char*,int ) ;
+ size_t fwrite (int *,int,size_t,int *) ;
+ int perror (char*) ;
+ int stderr ;
+ int tox_get_savedata (int *,int *) ;
+ size_t tox_get_savedata_size (int *) ;
 
 __attribute__((used)) static int save_data(Tox *m)
 {

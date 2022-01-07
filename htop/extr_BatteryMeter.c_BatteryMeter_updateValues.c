@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {double* values; scalar_t__ mode; } ;
-typedef  TYPE_1__ Meter ;
-typedef  scalar_t__ ACPresence ;
+typedef TYPE_1__ Meter ;
+typedef scalar_t__ ACPresence ;
 
-/* Variables and functions */
- scalar_t__ AC_ABSENT ; 
- scalar_t__ AC_PRESENT ; 
- int /*<<< orphan*/  Battery_getData (double*,scalar_t__*) ; 
- scalar_t__ TEXT_METERMODE ; 
- int /*<<< orphan*/  xSnprintf (char*,int,char const*,...) ; 
+
+ scalar_t__ AC_ABSENT ;
+ scalar_t__ AC_PRESENT ;
+ int Battery_getData (double*,scalar_t__*) ;
+ scalar_t__ TEXT_METERMODE ;
+ int xSnprintf (char*,int,char const*,...) ;
 
 __attribute__((used)) static void BatteryMeter_updateValues(Meter * this, char *buffer, int len) {
    ACPresence isOnAC;
    double percent;
-   
+
    Battery_getData(&percent, &isOnAC);
 
    if (percent == -1) {

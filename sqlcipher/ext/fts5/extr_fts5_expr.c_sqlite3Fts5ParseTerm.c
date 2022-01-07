@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u8 ;
-typedef  int sqlite3_int64 ;
+
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef scalar_t__ u8 ;
+typedef int sqlite3_int64 ;
 struct TYPE_14__ {int rc; TYPE_4__* pPhrase; } ;
-typedef  TYPE_2__ TokenCtx ;
+typedef TYPE_2__ TokenCtx ;
 struct TYPE_16__ {int nTerm; TYPE_1__* aTerm; } ;
-struct TYPE_15__ {int rc; int nPhrase; TYPE_4__** apPhrase; int /*<<< orphan*/ * pConfig; } ;
+struct TYPE_15__ {int rc; int nPhrase; TYPE_4__** apPhrase; int * pConfig; } ;
 struct TYPE_13__ {scalar_t__ bPrefix; } ;
-typedef  int /*<<< orphan*/  Fts5Token ;
-typedef  TYPE_3__ Fts5Parse ;
-typedef  TYPE_4__ Fts5ExprPhrase ;
-typedef  int /*<<< orphan*/  Fts5Config ;
+typedef int Fts5Token ;
+typedef TYPE_3__ Fts5Parse ;
+typedef TYPE_4__ Fts5ExprPhrase ;
+typedef int Fts5Config ;
 
-/* Variables and functions */
- int FTS5_TOKENIZE_PREFIX ; 
- int FTS5_TOKENIZE_QUERY ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  fts5ExprPhraseFree (TYPE_4__*) ; 
- int fts5ParseStringFromToken (int /*<<< orphan*/ *,char**) ; 
- int /*<<< orphan*/  fts5ParseTokenize ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3Fts5Dequote (char*) ; 
- TYPE_4__* sqlite3Fts5MallocZero (int*,int) ; 
- int sqlite3Fts5Tokenize (int /*<<< orphan*/ *,int,char*,int,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- scalar_t__ sqlite3_realloc64 (TYPE_4__**,int) ; 
- scalar_t__ strlen (char*) ; 
+
+ int FTS5_TOKENIZE_PREFIX ;
+ int FTS5_TOKENIZE_QUERY ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int fts5ExprPhraseFree (TYPE_4__*) ;
+ int fts5ParseStringFromToken (int *,char**) ;
+ int fts5ParseTokenize ;
+ int memset (TYPE_2__*,int ,int) ;
+ int sqlite3Fts5Dequote (char*) ;
+ TYPE_4__* sqlite3Fts5MallocZero (int*,int) ;
+ int sqlite3Fts5Tokenize (int *,int,char*,int,TYPE_2__*,int ) ;
+ int sqlite3_free (char*) ;
+ scalar_t__ sqlite3_realloc64 (TYPE_4__**,int) ;
+ scalar_t__ strlen (char*) ;
 
 Fts5ExprPhrase *sqlite3Fts5ParseTerm(
-  Fts5Parse *pParse,              /* Parse context */
-  Fts5ExprPhrase *pAppend,        /* Phrase to append to */
-  Fts5Token *pToken,              /* String to tokenize */
-  int bPrefix                     /* True if there is a trailing "*" */
+  Fts5Parse *pParse,
+  Fts5ExprPhrase *pAppend,
+  Fts5Token *pToken,
+  int bPrefix
 ){
   Fts5Config *pConfig = pParse->pConfig;
-  TokenCtx sCtx;                  /* Context object passed to callback */
-  int rc;                         /* Tokenize return code */
+  TokenCtx sCtx;
+  int rc;
   char *z = 0;
 
   memset(&sCtx, 0, sizeof(TokenCtx));
@@ -87,8 +87,8 @@ Fts5ExprPhrase *sqlite3Fts5ParseTerm(
     }
 
     if( sCtx.pPhrase==0 ){
-      /* This happens when parsing a token or quoted phrase that contains
-      ** no token characters at all. (e.g ... MATCH '""'). */
+
+
       sCtx.pPhrase = sqlite3Fts5MallocZero(&pParse->rc, sizeof(Fts5ExprPhrase));
     }else if( sCtx.pPhrase->nTerm ){
       sCtx.pPhrase->aTerm[sCtx.pPhrase->nTerm-1].bPrefix = (u8)bPrefix;

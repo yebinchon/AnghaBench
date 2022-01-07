@@ -1,104 +1,104 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct stat {int dummy; } ;
-typedef  int /*<<< orphan*/  rpcInit ;
-typedef  int int64_t ;
+typedef int rpcInit ;
+typedef int int64_t ;
 struct TYPE_6__ {int numOfIps; void** ipstr; void** ip; } ;
-struct TYPE_5__ {char* label; int numOfThreads; int bits; int numOfChanns; int sessionsPerChann; int /*<<< orphan*/ * qhandle; void* connType; scalar_t__ noFree; void* idMgmt; void* fp; scalar_t__ localPort; void* localIp; } ;
-typedef  int /*<<< orphan*/  SShellSubmitMsg ;
-typedef  TYPE_1__ SRpcInit ;
+struct TYPE_5__ {char* label; int numOfThreads; int bits; int numOfChanns; int sessionsPerChann; int * qhandle; void* connType; scalar_t__ noFree; void* idMgmt; void* fp; scalar_t__ localPort; void* localIp; } ;
+typedef int SShellSubmitMsg ;
+typedef TYPE_1__ SRpcInit ;
 
-/* Variables and functions */
- void* TAOS_CONN_SOCKET_TYPE_C () ; 
- void* TAOS_ID_FREE ; 
- void* inet_addr (char*) ; 
- int initialized ; 
- char* logDir ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mkdir (char*,int) ; 
- int /*<<< orphan*/ * pTscMgmtConn ; 
- int /*<<< orphan*/ * pVnodeConn ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  rand () ; 
- int /*<<< orphan*/  slaveIndex ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
- int /*<<< orphan*/  srand (int /*<<< orphan*/ ) ; 
- scalar_t__ stat (char*,struct stat*) ; 
- int /*<<< orphan*/  strcpy (void*,char*) ; 
- int /*<<< orphan*/  tError (char*) ; 
- int /*<<< orphan*/  taosCloseRpc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  taosCloseRpcConn ; 
- int /*<<< orphan*/  taosGetTimestampSec () ; 
- int /*<<< orphan*/ * taosInitDataCache (int,int /*<<< orphan*/ ,int) ; 
- scalar_t__ taosInitLog (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * taosInitScheduler (int,int,char*) ; 
- int /*<<< orphan*/  taosOpenConnCache (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- void* taosOpenRpc (TYPE_1__*) ; 
- int taosOpenRpcChann (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  taosTmrInit (int,int,int,char*) ; 
- int /*<<< orphan*/  taosTmrReset (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ tsInsertHeadSize ; 
- void* tsLocalIp ; 
- char* tsMasterIp ; 
- int tsMaxMeterConnections ; 
- int tsMaxMgmtConnections ; 
- int tsMaxVnodeConnections ; 
- scalar_t__ tsMeterMetaKeepTimer ; 
- scalar_t__ tsMetricMetaKeepTimer ; 
- double tsNumOfCores ; 
- int /*<<< orphan*/  tsNumOfLogLines ; 
- double tsNumOfThreadsPerCore ; 
- int /*<<< orphan*/  tsPrintGlobalConfig () ; 
- int /*<<< orphan*/  tsReadGlobalConfig () ; 
- int /*<<< orphan*/  tsReadGlobalLogConfig () ; 
- scalar_t__ tsRpcHeadSize ; 
- char* tsSecondIp ; 
- int tsShellActivityTimer ; 
- int /*<<< orphan*/ * tscCacheHandle ; 
- int /*<<< orphan*/  tscCheckDiskUsage ; 
- int /*<<< orphan*/  tscCheckDiskUsageTmr ; 
- int /*<<< orphan*/  tscConnCache ; 
- scalar_t__ tscEmbedded ; 
- int /*<<< orphan*/  tscError (char*) ; 
- int /*<<< orphan*/  tscInitMsgs () ; 
- TYPE_2__ tscMgmtIpList ; 
- int tscNumOfThreads ; 
- void* tscProcessMsgFromServer ; 
- int /*<<< orphan*/ * tscQhandle ; 
- int /*<<< orphan*/  tscTmr ; 
- int /*<<< orphan*/  tscTrace (char*,...) ; 
+
+ void* TAOS_CONN_SOCKET_TYPE_C () ;
+ void* TAOS_ID_FREE ;
+ void* inet_addr (char*) ;
+ int initialized ;
+ char* logDir ;
+ int memset (TYPE_1__*,int ,int) ;
+ int mkdir (char*,int) ;
+ int * pTscMgmtConn ;
+ int * pVnodeConn ;
+ int printf (char*,char*) ;
+ int rand () ;
+ int slaveIndex ;
+ int sprintf (char*,char*,char*) ;
+ int srand (int ) ;
+ scalar_t__ stat (char*,struct stat*) ;
+ int strcpy (void*,char*) ;
+ int tError (char*) ;
+ int taosCloseRpc (int *) ;
+ int taosCloseRpcConn ;
+ int taosGetTimestampSec () ;
+ int * taosInitDataCache (int,int ,int) ;
+ scalar_t__ taosInitLog (char*,int ,int) ;
+ int * taosInitScheduler (int,int,char*) ;
+ int taosOpenConnCache (int,int ,int ,int) ;
+ void* taosOpenRpc (TYPE_1__*) ;
+ int taosOpenRpcChann (int *,int,int) ;
+ int taosTmrInit (int,int,int,char*) ;
+ int taosTmrReset (int ,int,int *,int ,int *) ;
+ scalar_t__ tsInsertHeadSize ;
+ void* tsLocalIp ;
+ char* tsMasterIp ;
+ int tsMaxMeterConnections ;
+ int tsMaxMgmtConnections ;
+ int tsMaxVnodeConnections ;
+ scalar_t__ tsMeterMetaKeepTimer ;
+ scalar_t__ tsMetricMetaKeepTimer ;
+ double tsNumOfCores ;
+ int tsNumOfLogLines ;
+ double tsNumOfThreadsPerCore ;
+ int tsPrintGlobalConfig () ;
+ int tsReadGlobalConfig () ;
+ int tsReadGlobalLogConfig () ;
+ scalar_t__ tsRpcHeadSize ;
+ char* tsSecondIp ;
+ int tsShellActivityTimer ;
+ int * tscCacheHandle ;
+ int tscCheckDiskUsage ;
+ int tscCheckDiskUsageTmr ;
+ int tscConnCache ;
+ scalar_t__ tscEmbedded ;
+ int tscError (char*) ;
+ int tscInitMsgs () ;
+ TYPE_2__ tscMgmtIpList ;
+ int tscNumOfThreads ;
+ void* tscProcessMsgFromServer ;
+ int * tscQhandle ;
+ int tscTmr ;
+ int tscTrace (char*,...) ;
 
 void taos_init_imp() {
-  char        temp[128];
+  char temp[128];
   struct stat dirstat;
-  SRpcInit    rpcInit;
+  SRpcInit rpcInit;
 
   srand(taosGetTimestampSec());
 
   if (tscEmbedded == 0) {
-    /*
-     * set localIp = 0
-     * means unset tsLocalIp in client
-     * except read from config file
-     */
+
+
+
+
+
     strcpy(tsLocalIp, "0.0.0.0");
 
-    // Read global configuration.
+
     tsReadGlobalLogConfig();
 
-    // For log directory
+
     if (stat(logDir, &dirstat) < 0) mkdir(logDir, 0755);
 
     sprintf(temp, "%s/taoslog", logDir);
@@ -112,22 +112,6 @@ void taos_init_imp() {
     tscTrace("starting to initialize TAOS client ...");
     tscTrace("Local IP address is:%s", tsLocalIp);
   }
-
-#ifdef CLUSTER
-  tscMgmtIpList.numOfIps = 2;
-  strcpy(tscMgmtIpList.ipstr[0], tsMasterIp);
-  tscMgmtIpList.ip[0] = inet_addr(tsMasterIp);
-
-  strcpy(tscMgmtIpList.ipstr[1], tsMasterIp);
-  tscMgmtIpList.ip[1] = inet_addr(tsMasterIp);
-
-  if (tsSecondIp[0]) {
-    tscMgmtIpList.numOfIps = 3;
-    strcpy(tscMgmtIpList.ipstr[2], tsSecondIp);
-    tscMgmtIpList.ip[2] = inet_addr(tsSecondIp);
-  }
-#endif
-
   tscInitMsgs();
   slaveIndex = rand();
   int queueSize = tsMaxVnodeConnections + tsMaxMeterConnections + tsMaxMgmtConnections + tsMaxMgmtConnections;
@@ -141,7 +125,7 @@ void taos_init_imp() {
   if (tscNumOfThreads < 2) tscNumOfThreads = 2;
 
   tscQhandle = taosInitScheduler(queueSize, tscNumOfThreads, "tsc");
-  if (NULL == tscQhandle) {
+  if (((void*)0) == tscQhandle) {
     tscError("failed to init scheduler");
     return;
   }
@@ -160,7 +144,7 @@ void taos_init_imp() {
   rpcInit.connType = TAOS_CONN_SOCKET_TYPE_C();
   rpcInit.qhandle = tscQhandle;
   pVnodeConn = taosOpenRpc(&rpcInit);
-  if (pVnodeConn == NULL) {
+  if (pVnodeConn == ((void*)0)) {
     tscError("failed to init connection to vnode");
     return;
   }
@@ -188,20 +172,20 @@ void taos_init_imp() {
   rpcInit.connType = TAOS_CONN_SOCKET_TYPE_C();
   rpcInit.qhandle = tscQhandle;
   pTscMgmtConn = taosOpenRpc(&rpcInit);
-  if (pTscMgmtConn == NULL) {
+  if (pTscMgmtConn == ((void*)0)) {
     tscError("failed to init connection to mgmt");
     return;
   }
 
   tscTmr = taosTmrInit(tsMaxMgmtConnections * 2, 200, 60000, "TSC");
   if(0 == tscEmbedded){
-    taosTmrReset(tscCheckDiskUsage, 10, NULL, tscTmr, &tscCheckDiskUsageTmr);      
+    taosTmrReset(tscCheckDiskUsage, 10, ((void*)0), tscTmr, &tscCheckDiskUsageTmr);
   }
   int64_t refreshTime = tsMetricMetaKeepTimer < tsMeterMetaKeepTimer ? tsMetricMetaKeepTimer : tsMeterMetaKeepTimer;
   refreshTime = refreshTime > 2 ? 2 : refreshTime;
   refreshTime = refreshTime < 1 ? 1 : refreshTime;
 
-  if (tscCacheHandle == NULL) tscCacheHandle = taosInitDataCache(tsMaxMeterConnections / 2, tscTmr, refreshTime);
+  if (tscCacheHandle == ((void*)0)) tscCacheHandle = taosInitDataCache(tsMaxMeterConnections / 2, tscTmr, refreshTime);
 
   tscConnCache = taosOpenConnCache(tsMaxMeterConnections * 2, taosCloseRpcConn, tscTmr, tsShellActivityTimer * 1000);
 

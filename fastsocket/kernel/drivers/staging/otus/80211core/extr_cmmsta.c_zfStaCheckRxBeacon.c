@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zdev_t ;
-struct TYPE_3__ {scalar_t__ rxBeaconCount; int beaconMissState; int /*<<< orphan*/  bssid; } ;
-struct TYPE_4__ {scalar_t__ wlanMode; int beaconInterval; int tick; TYPE_1__ sta; int /*<<< orphan*/  ExtOffset; int /*<<< orphan*/  BandWidth40; int /*<<< orphan*/  frequency; } ;
 
-/* Variables and functions */
- scalar_t__ ZM_MODE_INFRASTRUCTURE ; 
- int ZM_MS_PER_TICK ; 
- int /*<<< orphan*/  ZM_STATUS_MEDIA_DISCONNECT_BEACON_MISS ; 
- int /*<<< orphan*/  ZM_WLAN_FRAME_TYPE_DEAUTH ; 
- TYPE_2__* wd ; 
- int /*<<< orphan*/  zfCoreSetFrequencyExV2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  zfSendMmFrame (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zfStaConnectFail (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ zfStaIsConnected (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zmw_get_wlan_dev (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int zdev_t ;
+struct TYPE_3__ {scalar_t__ rxBeaconCount; int beaconMissState; int bssid; } ;
+struct TYPE_4__ {scalar_t__ wlanMode; int beaconInterval; int tick; TYPE_1__ sta; int ExtOffset; int BandWidth40; int frequency; } ;
+
+
+ scalar_t__ ZM_MODE_INFRASTRUCTURE ;
+ int ZM_MS_PER_TICK ;
+ int ZM_STATUS_MEDIA_DISCONNECT_BEACON_MISS ;
+ int ZM_WLAN_FRAME_TYPE_DEAUTH ;
+ TYPE_2__* wd ;
+ int zfCoreSetFrequencyExV2 (int *,int ,int ,int ,int *,int) ;
+ int zfSendMmFrame (int *,int ,int ,int,int ,int ) ;
+ int zfStaConnectFail (int *,int ,int ,int ) ;
+ scalar_t__ zfStaIsConnected (int *) ;
+ int zmw_get_wlan_dev (int *) ;
 
 void zfStaCheckRxBeacon(zdev_t* dev)
 {
@@ -40,23 +40,23 @@ void zfStaCheckRxBeacon(zdev_t* dev)
         }
         if ( (wd->tick % ((wd->beaconInterval * 10) / ZM_MS_PER_TICK)) == 0 )
         {
-            /* Check rxBeaconCount */
+
             if (wd->sta.rxBeaconCount == 0)
             {
                 if (wd->sta.beaconMissState == 1)
                 {
-            	/*notify AP that we left*/
-            	zfSendMmFrame(dev, ZM_WLAN_FRAME_TYPE_DEAUTH, wd->sta.bssid, 3, 0, 0);
-                /* Beacon Lost */
+
+             zfSendMmFrame(dev, ZM_WLAN_FRAME_TYPE_DEAUTH, wd->sta.bssid, 3, 0, 0);
+
                 zfStaConnectFail(dev, ZM_STATUS_MEDIA_DISCONNECT_BEACON_MISS,
                         wd->sta.bssid, 0);
                 }
                 else
                 {
                     wd->sta.beaconMissState = 1;
-                    /* Reset channel */
+
                     zfCoreSetFrequencyExV2(dev, wd->frequency, wd->BandWidth40,
-                            wd->ExtOffset, NULL, 1);
+                            wd->ExtOffset, ((void*)0), 1);
                 }
             }
             else

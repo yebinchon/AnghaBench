@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  default_domain ;
-struct TYPE_2__ {int /*<<< orphan*/  nis_domain; } ;
 
-/* Variables and functions */
- int EIO ; 
- int ENOENT ; 
- int /*<<< orphan*/  XLOG_ERROR ; 
- int /*<<< orphan*/  XLOG_WARNING ; 
- int YPMAXDOMAIN ; 
- scalar_t__ getdomainname (char*,int) ; 
- TYPE_1__ gopt ; 
- int /*<<< orphan*/  plog (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  xstrdup (char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int default_domain ;
+struct TYPE_2__ {int nis_domain; } ;
+
+
+ int EIO ;
+ int ENOENT ;
+ int XLOG_ERROR ;
+ int XLOG_WARNING ;
+ int YPMAXDOMAIN ;
+ scalar_t__ getdomainname (char*,int) ;
+ TYPE_1__ gopt ;
+ int plog (int ,char*) ;
+ int xstrdup (char*) ;
 
 __attribute__((used)) static int
 determine_nis_domain(void)

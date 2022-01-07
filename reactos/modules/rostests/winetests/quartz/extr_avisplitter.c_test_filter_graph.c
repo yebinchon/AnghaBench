@@ -1,90 +1,90 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_3__ {int /*<<< orphan*/ * pFilter; } ;
-typedef  TYPE_1__ PIN_INFO ;
-typedef  scalar_t__ PIN_DIRECTION ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  IPin ;
-typedef  int /*<<< orphan*/  IFileSourceFilter ;
-typedef  int /*<<< orphan*/  IEnumPins ;
-typedef  int /*<<< orphan*/  IBaseFilter ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ HANDLE ;
-typedef  int /*<<< orphan*/  FILTER_STATE ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_AsyncReader ; 
- int /*<<< orphan*/  CLSID_NullRenderer ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ CreateFileW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteFileW (int /*<<< orphan*/ *) ; 
- scalar_t__ E_NOINTERFACE ; 
- int FILE_SHARE_READ ; 
- int FILE_SHARE_WRITE ; 
- int /*<<< orphan*/  GENERIC_READ ; 
- scalar_t__ IBaseFilter_EnumPins (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IBaseFilter_GetState (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IBaseFilter_Pause (int /*<<< orphan*/ *) ; 
- scalar_t__ IBaseFilter_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IBaseFilter_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IBaseFilter_Run (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IBaseFilter_Stop (int /*<<< orphan*/ *) ; 
- scalar_t__ IEnumPins_Next (int /*<<< orphan*/ *,int,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IEnumPins_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IEnumPins_Reset (int /*<<< orphan*/ *) ; 
- scalar_t__ IFileSourceFilter_Load (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IFileSourceFilter_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IBaseFilter ; 
- int /*<<< orphan*/  IID_IFileSourceFilter ; 
- int /*<<< orphan*/  INFINITE ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- scalar_t__ IPin_Connect (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IPin_ConnectedTo (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IPin_Disconnect (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IPin_QueryDirection (int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ IPin_QueryPinInfo (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  IPin_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IUnknown_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- scalar_t__ PINDIR_OUTPUT ; 
- scalar_t__ REGDB_E_CLASSNOTREG ; 
- int /*<<< orphan*/  ReadFile (scalar_t__,char*,int,int*,int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  avifile ; 
- int /*<<< orphan*/ * load_resource (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  pAviSplitter ; 
- int /*<<< orphan*/  skip (char*,...) ; 
- scalar_t__ strcmp (char*,char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- int /*<<< orphan*/  trace (char*,scalar_t__) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
- int /*<<< orphan*/  wine_dbgstr_w (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_3__ {int * pFilter; } ;
+typedef TYPE_1__ PIN_INFO ;
+typedef scalar_t__ PIN_DIRECTION ;
+typedef int LPVOID ;
+typedef int IPin ;
+typedef int IFileSourceFilter ;
+typedef int IEnumPins ;
+typedef int IBaseFilter ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ HANDLE ;
+typedef int FILTER_STATE ;
+typedef int DWORD ;
+
+
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_AsyncReader ;
+ int CLSID_NullRenderer ;
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CoCreateInstance (int *,int *,int ,int *,int *) ;
+ scalar_t__ CreateFileW (int *,int ,int,int *,int ,int ,int *) ;
+ int DeleteFileW (int *) ;
+ scalar_t__ E_NOINTERFACE ;
+ int FILE_SHARE_READ ;
+ int FILE_SHARE_WRITE ;
+ int GENERIC_READ ;
+ scalar_t__ IBaseFilter_EnumPins (int *,int **) ;
+ int IBaseFilter_GetState (int *,int ,int *) ;
+ int IBaseFilter_Pause (int *) ;
+ scalar_t__ IBaseFilter_QueryInterface (int *,int *,void**) ;
+ int IBaseFilter_Release (int *) ;
+ int IBaseFilter_Run (int *,int ) ;
+ int IBaseFilter_Stop (int *) ;
+ scalar_t__ IEnumPins_Next (int *,int,int **,int *) ;
+ int IEnumPins_Release (int *) ;
+ int IEnumPins_Reset (int *) ;
+ scalar_t__ IFileSourceFilter_Load (int *,int *,int *) ;
+ int IFileSourceFilter_Release (int *) ;
+ int IID_IBaseFilter ;
+ int IID_IFileSourceFilter ;
+ int INFINITE ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ scalar_t__ IPin_Connect (int *,int *,int *) ;
+ int IPin_ConnectedTo (int *,int **) ;
+ int IPin_Disconnect (int *) ;
+ int IPin_QueryDirection (int *,scalar_t__*) ;
+ scalar_t__ IPin_QueryPinInfo (int *,TYPE_1__*) ;
+ int IPin_Release (int *) ;
+ scalar_t__ IUnknown_QueryInterface (int ,int *,void**) ;
+ int OPEN_EXISTING ;
+ scalar_t__ PINDIR_OUTPUT ;
+ scalar_t__ REGDB_E_CLASSNOTREG ;
+ int ReadFile (scalar_t__,char*,int,int*,int *) ;
+ scalar_t__ S_OK ;
+ int avifile ;
+ int * load_resource (int ) ;
+ int memset (char*,int ,int) ;
+ int ok (int,char*,scalar_t__) ;
+ int pAviSplitter ;
+ int skip (char*,...) ;
+ scalar_t__ strcmp (char*,char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ int trace (char*,scalar_t__) ;
+ int win_skip (char*) ;
+ int wine_dbgstr_w (int *) ;
 
 __attribute__((used)) static void test_filter_graph(void)
 {
-    IFileSourceFilter *pfile = NULL;
-    IBaseFilter *preader = NULL, *pavi = NULL;
-    IEnumPins *enumpins = NULL;
-    IPin *filepin = NULL, *avipin = NULL;
+    IFileSourceFilter *pfile = ((void*)0);
+    IBaseFilter *preader = ((void*)0), *pavi = ((void*)0);
+    IEnumPins *enumpins = ((void*)0);
+    IPin *filepin = ((void*)0), *avipin = ((void*)0);
     HRESULT hr;
-    HANDLE file = NULL;
+    HANDLE file = ((void*)0);
     PIN_DIRECTION dir = PINDIR_OUTPUT;
     char buffer[13];
     DWORD readbytes;
@@ -93,7 +93,7 @@ __attribute__((used)) static void test_filter_graph(void)
     WCHAR *filename = load_resource(avifile);
 
     file = CreateFileW(filename, GENERIC_READ, FILE_SHARE_READ|FILE_SHARE_WRITE,
-        NULL, OPEN_EXISTING, 0, NULL);
+        ((void*)0), OPEN_EXISTING, 0, ((void*)0));
     if (file == INVALID_HANDLE_VALUE)
     {
         skip("Could not read test file \"%s\", skipping test\n", wine_dbgstr_w(filename));
@@ -103,7 +103,7 @@ __attribute__((used)) static void test_filter_graph(void)
 
     memset(buffer, 0, 13);
     readbytes = 12;
-    ReadFile(file, buffer, readbytes, &readbytes, NULL);
+    ReadFile(file, buffer, readbytes, &readbytes, ((void*)0));
     CloseHandle(file);
     if (strncmp(buffer, "RIFF", 4) || strcmp(buffer + 8, "AVI "))
     {
@@ -119,9 +119,9 @@ __attribute__((used)) static void test_filter_graph(void)
         "Avi splitter returns unexpected error: %08x\n", hr);
     if (pfile)
         IFileSourceFilter_Release(pfile);
-    pfile = NULL;
+    pfile = ((void*)0);
 
-    hr = CoCreateInstance(&CLSID_AsyncReader, NULL, CLSCTX_INPROC_SERVER,
+    hr = CoCreateInstance(&CLSID_AsyncReader, ((void*)0), CLSCTX_INPROC_SERVER,
         &IID_IBaseFilter, (LPVOID*)&preader);
     ok(hr == S_OK, "Could not create asynchronous reader: %08x\n", hr);
     if (hr != S_OK)
@@ -139,7 +139,7 @@ __attribute__((used)) static void test_filter_graph(void)
     if (hr != S_OK)
         goto fail;
 
-    hr = IFileSourceFilter_Load(pfile, filename, NULL);
+    hr = IFileSourceFilter_Load(pfile, filename, ((void*)0));
     if (hr != S_OK)
     {
         trace("Could not load file: %08x\n", hr);
@@ -151,49 +151,49 @@ __attribute__((used)) static void test_filter_graph(void)
     if (hr != S_OK)
         goto fail;
 
-    hr = IEnumPins_Next(enumpins, 1, &filepin, NULL);
+    hr = IEnumPins_Next(enumpins, 1, &filepin, ((void*)0));
     ok(hr == S_OK, "No pin: %08x\n", hr);
     if (hr != S_OK)
         goto fail;
 
     IEnumPins_Release(enumpins);
-    enumpins = NULL;
+    enumpins = ((void*)0);
 
     hr = IBaseFilter_EnumPins(pavi, &enumpins);
     ok(hr == S_OK, "No enumpins: %08x\n", hr);
     if (hr != S_OK)
         goto fail;
 
-    hr = IEnumPins_Next(enumpins, 1, &avipin, NULL);
+    hr = IEnumPins_Next(enumpins, 1, &avipin, ((void*)0));
     ok(hr == S_OK, "No pin: %08x\n", hr);
     if (hr != S_OK)
         goto fail;
 
-    hr = IPin_Connect(filepin, avipin, NULL);
+    hr = IPin_Connect(filepin, avipin, ((void*)0));
     ok(hr == S_OK, "Could not connect: %08x\n", hr);
     if (hr != S_OK)
         goto fail;
 
     IPin_Release(avipin);
-    avipin = NULL;
+    avipin = ((void*)0);
 
     IEnumPins_Reset(enumpins);
 
-    /* Windows puts the pins in the order: Outputpins - Inputpin,
-     * wine does the reverse, just don't test it for now
-     * Hate to admit it, but windows way makes more sense
-     */
-    while (IEnumPins_Next(enumpins, 1, &avipin, NULL) == S_OK)
+
+
+
+
+    while (IEnumPins_Next(enumpins, 1, &avipin, ((void*)0)) == S_OK)
     {
         IPin_QueryDirection(avipin, &dir);
         if (dir == PINDIR_OUTPUT)
         {
-            /* Well, connect it to a null renderer! */
-            IBaseFilter *pnull = NULL;
-            IEnumPins *nullenum = NULL;
-            IPin *nullpin = NULL;
 
-            hr = CoCreateInstance(&CLSID_NullRenderer, NULL,
+            IBaseFilter *pnull = ((void*)0);
+            IEnumPins *nullenum = ((void*)0);
+            IPin *nullpin = ((void*)0);
+
+            hr = CoCreateInstance(&CLSID_NullRenderer, ((void*)0),
                 CLSCTX_INPROC_SERVER, &IID_IBaseFilter, (LPVOID*)&pnull);
             if (hr == REGDB_E_CLASSNOTREG)
             {
@@ -204,12 +204,12 @@ __attribute__((used)) static void test_filter_graph(void)
 
             hr = IBaseFilter_EnumPins(pnull, &nullenum);
             ok(hr == S_OK, "Failed to enum pins, hr %#x.\n", hr);
-            hr = IEnumPins_Next(nullenum, 1, &nullpin, NULL);
+            hr = IEnumPins_Next(nullenum, 1, &nullpin, ((void*)0));
             ok(hr == S_OK, "Failed to get next pin, hr %#x.\n", hr);
             IEnumPins_Release(nullenum);
             IPin_QueryDirection(nullpin, &dir);
 
-            hr = IPin_Connect(avipin, nullpin, NULL);
+            hr = IPin_Connect(avipin, nullpin, ((void*)0));
             ok(hr == S_OK, "Failed to connect output pin: %08x\n", hr);
             IPin_Release(nullpin);
             if (hr != S_OK)
@@ -221,30 +221,15 @@ __attribute__((used)) static void test_filter_graph(void)
         }
 
         IPin_Release(avipin);
-        avipin = NULL;
+        avipin = ((void*)0);
     }
 
     if (avipin)
         IPin_Release(avipin);
-    avipin = NULL;
+    avipin = ((void*)0);
 
     if (hr != S_OK)
         goto fail2;
-    /* At this point there is a minimalistic connected avi splitter that can
-     * be used for all sorts of source filter tests. However that still needs
-     * to be written at a later time.
-     *
-     * Interesting tests:
-     * - Can you disconnect an output pin while running?
-     *   Expecting: Yes
-     * - Can you disconnect the pullpin while running?
-     *   Expecting: No
-     * - Is the reference count incremented during playback or when connected?
-     *   Does this happen once for every output pin? Or is there something else
-     *   going on.
-     *   Expecting: You tell me
-     */
-
     IBaseFilter_Run(preader, 0);
     IBaseFilter_Run(pavi, 0);
     IBaseFilter_GetState(pavi, INFINITE, &state);
@@ -258,9 +243,9 @@ __attribute__((used)) static void test_filter_graph(void)
 
 fail2:
     IEnumPins_Reset(enumpins);
-    while (IEnumPins_Next(enumpins, 1, &avipin, NULL) == S_OK)
+    while (IEnumPins_Next(enumpins, 1, &avipin, ((void*)0)) == S_OK)
     {
-        IPin *to = NULL;
+        IPin *to = ((void*)0);
 
         IPin_QueryDirection(avipin, &dir);
         IPin_ConnectedTo(avipin, &to);
@@ -275,9 +260,9 @@ fail2:
                 hr = IPin_QueryPinInfo(to, &info);
                 ok(hr == S_OK, "Failed to query pin info, hr %#x.\n", hr);
 
-                /* Release twice: Once normal, second from the
-                 * previous while loop
-                 */
+
+
+
                 IBaseFilter_Stop(info.pFilter);
                 IPin_Disconnect(to);
                 IPin_Disconnect(avipin);
@@ -291,7 +276,7 @@ fail2:
             }
         }
         IPin_Release(avipin);
-        avipin = NULL;
+        avipin = ((void*)0);
     }
 
 fail:
@@ -304,7 +289,7 @@ fail:
         IPin_Release(avipin);
     if (filepin)
     {
-        IPin *to = NULL;
+        IPin *to = ((void*)0);
 
         IPin_ConnectedTo(filepin, &to);
         if (to)

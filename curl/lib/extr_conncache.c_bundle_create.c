@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connectbundle {int /*<<< orphan*/  conn_list; int /*<<< orphan*/  multiuse; scalar_t__ num_connections; } ;
+
+
+
+
+struct connectbundle {int conn_list; int multiuse; scalar_t__ num_connections; } ;
 struct Curl_easy {int dummy; } ;
-typedef  int /*<<< orphan*/  curl_llist_dtor ;
-typedef  int /*<<< orphan*/  CURLcode ;
+typedef int curl_llist_dtor ;
+typedef int CURLcode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUNDLE_UNKNOWN ; 
- int /*<<< orphan*/  CURLE_OK ; 
- int /*<<< orphan*/  CURLE_OUT_OF_MEMORY ; 
- int /*<<< orphan*/  Curl_llist_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DEBUGASSERT (int /*<<< orphan*/ ) ; 
- scalar_t__ conn_llist_dtor ; 
- struct connectbundle* malloc (int) ; 
+
+ int BUNDLE_UNKNOWN ;
+ int CURLE_OK ;
+ int CURLE_OUT_OF_MEMORY ;
+ int Curl_llist_init (int *,int ) ;
+ int DEBUGASSERT (int ) ;
+ scalar_t__ conn_llist_dtor ;
+ struct connectbundle* malloc (int) ;
 
 __attribute__((used)) static CURLcode bundle_create(struct Curl_easy *data,
                               struct connectbundle **cb_ptr)
 {
   (void)data;
-  DEBUGASSERT(*cb_ptr == NULL);
+  DEBUGASSERT(*cb_ptr == ((void*)0));
   *cb_ptr = malloc(sizeof(struct connectbundle));
   if(!*cb_ptr)
     return CURLE_OUT_OF_MEMORY;

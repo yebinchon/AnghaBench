@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8 ;
 
-/* Variables and functions */
- scalar_t__ bs_is_pixel_on (char*,int,int,int,int) ; 
- int /*<<< orphan*/  bs_set_pixel_on (char*,int,int,int,int,int) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ mi_create_cursor (unsigned int,unsigned int,int,int,unsigned char*,unsigned char*) ; 
+
+
+
+typedef int uint8 ;
+
+
+ scalar_t__ bs_is_pixel_on (char*,int,int,int,int) ;
+ int bs_set_pixel_on (char*,int,int,int,int,int) ;
+ int memset (char*,int ,int) ;
+ scalar_t__ mi_create_cursor (unsigned int,unsigned int,int,int,unsigned char*,unsigned char*) ;
 
 void *
 ui_create_cursor(unsigned int x, unsigned int y,
@@ -30,7 +30,7 @@ ui_create_cursor(unsigned int x, unsigned int y,
 
   if (width != 32 || height != 32)
   {
-    return NULL;
+    return ((void*)0);
   }
   if (xor_bpp==1)
   {

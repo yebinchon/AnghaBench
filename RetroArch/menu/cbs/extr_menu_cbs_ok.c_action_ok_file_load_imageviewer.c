@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fullpath ;
-typedef  int /*<<< orphan*/  file_list_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CORE_TYPE_IMAGEVIEWER ; 
- int PATH_MAX_LENGTH ; 
- int default_action_ok_load_content_with_core_from_menu (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  file_list_get_last (int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fill_pathname_join (char*,char const*,char const*,int) ; 
- int /*<<< orphan*/ * menu_entries_get_menu_stack_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  string_is_empty (char const*) ; 
+
+
+
+typedef int fullpath ;
+typedef int file_list_t ;
+
+
+ int CORE_TYPE_IMAGEVIEWER ;
+ int PATH_MAX_LENGTH ;
+ int default_action_ok_load_content_with_core_from_menu (char*,int ) ;
+ int file_list_get_last (int *,char const**,int *,int *,int *) ;
+ int fill_pathname_join (char*,char const*,char const*,int) ;
+ int * menu_entries_get_menu_stack_ptr (int ) ;
+ int string_is_empty (char const*) ;
 
 __attribute__((used)) static int action_ok_file_load_imageviewer(const char *path,
       const char *label, unsigned type, size_t idx, size_t entry_idx)
 {
    char fullpath[PATH_MAX_LENGTH];
-   const char *menu_path           = NULL;
-   file_list_t *menu_stack         = menu_entries_get_menu_stack_ptr(0);
+   const char *menu_path = ((void*)0);
+   file_list_t *menu_stack = menu_entries_get_menu_stack_ptr(0);
 
-   file_list_get_last(menu_stack, &menu_path, NULL, NULL, NULL);
+   file_list_get_last(menu_stack, &menu_path, ((void*)0), ((void*)0), ((void*)0));
 
    fullpath[0] = '\0';
 

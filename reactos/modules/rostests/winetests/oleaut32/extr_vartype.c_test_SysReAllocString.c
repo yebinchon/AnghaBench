@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int dwLen; int /*<<< orphan*/  szString; } ;
-typedef  char OLECHAR ;
-typedef  TYPE_1__* LPINTERNAL_BSTR ;
-typedef  int /*<<< orphan*/ * BSTR ;
 
-/* Variables and functions */
- TYPE_1__* Get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SysAllocStringLen (char const*,int) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ *) ; 
- int SysReAllocString (int /*<<< orphan*/ **,char const*) ; 
- int /*<<< orphan*/  lstrcmpW (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int dwLen; int szString; } ;
+typedef char OLECHAR ;
+typedef TYPE_1__* LPINTERNAL_BSTR ;
+typedef int * BSTR ;
+
+
+ TYPE_1__* Get (int *) ;
+ int * SysAllocStringLen (char const*,int) ;
+ int SysFreeString (int *) ;
+ int SysReAllocString (int **,char const*) ;
+ int lstrcmpW (int ,char const*) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_SysReAllocString(void)
 {
@@ -32,7 +32,7 @@ __attribute__((used)) static void test_SysReAllocString(void)
   BSTR str;
 
   str = SysAllocStringLen(szTest, 4);
-  ok (str != NULL, "Expected non-NULL\n");
+  ok (str != ((void*)0), "Expected non-NULL\n");
   if (str)
   {
     LPINTERNAL_BSTR bstr;
@@ -44,16 +44,16 @@ __attribute__((used)) static void test_SysReAllocString(void)
 
     changed = SysReAllocString(&str, szSmaller);
     ok (changed == 1, "Expected 1, got %d\n", changed);
-    /* Vista creates a new string, but older versions reuse the existing string. */
-    /*ok (str == oldstr, "Created new string\n");*/
+
+
     bstr = Get(str);
     ok (bstr->dwLen == 2, "Expected 2, got %d\n", bstr->dwLen);
     ok (!lstrcmpW(bstr->szString, szSmaller), "String different\n");
 
     changed = SysReAllocString(&str, szLarger);
     ok (changed == 1, "Expected 1, got %d\n", changed);
-    /* Early versions always make new strings rather than resizing */
-    /* ok (str == oldstr, "Created new string\n"); */
+
+
     bstr = Get(str);
     ok (bstr->dwLen == 12, "Expected 12, got %d\n", bstr->dwLen);
     ok (!lstrcmpW(bstr->szString, szLarger), "String different\n");

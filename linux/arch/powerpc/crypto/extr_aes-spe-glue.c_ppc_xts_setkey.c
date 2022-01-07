@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct ppc_xts_ctx {int rounds; int /*<<< orphan*/  key_enc; int /*<<< orphan*/  key_dec; int /*<<< orphan*/  key_twk; } ;
-struct crypto_tfm {int /*<<< orphan*/  crt_flags; } ;
 
-/* Variables and functions */
-#define  AES_KEYSIZE_128 130 
-#define  AES_KEYSIZE_192 129 
-#define  AES_KEYSIZE_256 128 
- int /*<<< orphan*/  CRYPTO_TFM_RES_BAD_KEY_LEN ; 
- int EINVAL ; 
- struct ppc_xts_ctx* crypto_tfm_ctx (struct crypto_tfm*) ; 
- int /*<<< orphan*/  ppc_expand_key_128 (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ppc_expand_key_192 (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ppc_expand_key_256 (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ppc_generate_decrypt_key (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
- int xts_check_key (struct crypto_tfm*,int /*<<< orphan*/  const*,unsigned int) ; 
+
+
+
+typedef int u8 ;
+struct ppc_xts_ctx {int rounds; int key_enc; int key_dec; int key_twk; } ;
+struct crypto_tfm {int crt_flags; } ;
+
+
+
+
+
+ int CRYPTO_TFM_RES_BAD_KEY_LEN ;
+ int EINVAL ;
+ struct ppc_xts_ctx* crypto_tfm_ctx (struct crypto_tfm*) ;
+ int ppc_expand_key_128 (int ,int const*) ;
+ int ppc_expand_key_192 (int ,int const*) ;
+ int ppc_expand_key_256 (int ,int const*) ;
+ int ppc_generate_decrypt_key (int ,int ,unsigned int) ;
+ int xts_check_key (struct crypto_tfm*,int const*,unsigned int) ;
 
 __attribute__((used)) static int ppc_xts_setkey(struct crypto_tfm *tfm, const u8 *in_key,
-		   unsigned int key_len)
+     unsigned int key_len)
 {
-	struct ppc_xts_ctx *ctx = crypto_tfm_ctx(tfm);
-	int err;
+ struct ppc_xts_ctx *ctx = crypto_tfm_ctx(tfm);
+ int err;
 
-	err = xts_check_key(tfm, in_key, key_len);
-	if (err)
-		return err;
+ err = xts_check_key(tfm, in_key, key_len);
+ if (err)
+  return err;
 
-	key_len >>= 1;
+ key_len >>= 1;
 
-	if (key_len != AES_KEYSIZE_128 &&
-	    key_len != AES_KEYSIZE_192 &&
-	    key_len != AES_KEYSIZE_256) {
-		tfm->crt_flags |= CRYPTO_TFM_RES_BAD_KEY_LEN;
-		return -EINVAL;
-	}
+ if (key_len != 130 &&
+     key_len != 129 &&
+     key_len != 128) {
+  tfm->crt_flags |= CRYPTO_TFM_RES_BAD_KEY_LEN;
+  return -EINVAL;
+ }
 
-	switch (key_len) {
-	case AES_KEYSIZE_128:
-		ctx->rounds = 4;
-		ppc_expand_key_128(ctx->key_enc, in_key);
-		ppc_expand_key_128(ctx->key_twk, in_key + AES_KEYSIZE_128);
-		break;
-	case AES_KEYSIZE_192:
-		ctx->rounds = 5;
-		ppc_expand_key_192(ctx->key_enc, in_key);
-		ppc_expand_key_192(ctx->key_twk, in_key + AES_KEYSIZE_192);
-		break;
-	case AES_KEYSIZE_256:
-		ctx->rounds = 6;
-		ppc_expand_key_256(ctx->key_enc, in_key);
-		ppc_expand_key_256(ctx->key_twk, in_key + AES_KEYSIZE_256);
-		break;
-	}
+ switch (key_len) {
+ case 130:
+  ctx->rounds = 4;
+  ppc_expand_key_128(ctx->key_enc, in_key);
+  ppc_expand_key_128(ctx->key_twk, in_key + 130);
+  break;
+ case 129:
+  ctx->rounds = 5;
+  ppc_expand_key_192(ctx->key_enc, in_key);
+  ppc_expand_key_192(ctx->key_twk, in_key + 129);
+  break;
+ case 128:
+  ctx->rounds = 6;
+  ppc_expand_key_256(ctx->key_enc, in_key);
+  ppc_expand_key_256(ctx->key_twk, in_key + 128);
+  break;
+ }
 
-	ppc_generate_decrypt_key(ctx->key_dec, ctx->key_enc, key_len);
+ ppc_generate_decrypt_key(ctx->key_dec, ctx->key_enc, key_len);
 
-	return 0;
+ return 0;
 }

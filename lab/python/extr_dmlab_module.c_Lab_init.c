@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_6__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {scalar_t__ (* setting ) (int /*<<< orphan*/ ,char*,char*) ;char const* (* error_message ) (int /*<<< orphan*/ ) ;scalar_t__ (* init ) (int /*<<< orphan*/ ) ;int (* observation_count ) (int /*<<< orphan*/ ) ;char* (* observation_name ) (int /*<<< orphan*/ ,int) ;} ;
-struct TYPE_10__ {int /*<<< orphan*/  runfiles_path; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * write_level_to_cache; int /*<<< orphan*/ * fetch_level_from_cache; int /*<<< orphan*/ * context; } ;
-struct TYPE_9__ {char* optional_temp_folder; TYPE_1__ level_cache_params; int /*<<< orphan*/  renderer; int /*<<< orphan*/  runfiles_path; } ;
-struct TYPE_8__ {int observation_count; int* observation_indices; int /*<<< orphan*/  context; TYPE_6__* env_c_api; scalar_t__ episode; int /*<<< orphan*/  status; int /*<<< orphan*/ * level_cache_context; } ;
-typedef  int /*<<< orphan*/  Py_ssize_t ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  TYPE_2__ LabObject ;
-typedef  TYPE_3__ DeepMindLabLaunchParams ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeepMindLabRenderer_Hardware ; 
- int /*<<< orphan*/  DeepMindLabRenderer_Software ; 
- int /*<<< orphan*/  ENV_STATUS_UNINITIALIZED ; 
- int /*<<< orphan*/  PyArg_ParseTupleAndKeywords (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,char**,char**,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ **,char**,int /*<<< orphan*/ **,char**) ; 
- scalar_t__ PyDict_Next (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  PyDict_Type ; 
- int /*<<< orphan*/  PyErr_Format (int /*<<< orphan*/ ,char*,char const*,...) ; 
- int /*<<< orphan*/  PyErr_NoMemory () ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_RuntimeError ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- int /*<<< orphan*/ * PyImport_AddModule (char*) ; 
- int /*<<< orphan*/ * PyList_GetItem (int /*<<< orphan*/ *,int) ; 
- int PyList_Size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyList_Type ; 
- char* PyString_AsString (int /*<<< orphan*/ *) ; 
- char* PyUnicode_AsUTF8 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Py_None ; 
- int* calloc (int,int) ; 
- scalar_t__ dmlab_connect (TYPE_3__*,TYPE_6__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fetch_level_from_cache ; 
- TYPE_4__* get_module_state (int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (char*,char const*) ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ,char*,char*) ; 
- char const* stub10 (int /*<<< orphan*/ ) ; 
- int stub11 (int /*<<< orphan*/ ) ; 
- char* stub12 (int /*<<< orphan*/ ,int) ; 
- char const* stub2 (int /*<<< orphan*/ ) ; 
- scalar_t__ stub3 (int /*<<< orphan*/ ,char*,char*) ; 
- char const* stub4 (int /*<<< orphan*/ ) ; 
- scalar_t__ stub5 (int /*<<< orphan*/ ,char*,char*) ; 
- char const* stub6 (int /*<<< orphan*/ ) ; 
- scalar_t__ stub7 (int /*<<< orphan*/ ,char const*,char const*) ; 
- char const* stub8 (int /*<<< orphan*/ ) ; 
- scalar_t__ stub9 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_level_to_cache ; 
+
+typedef struct TYPE_11__ TYPE_6__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_11__ {scalar_t__ (* setting ) (int ,char*,char*) ;char const* (* error_message ) (int ) ;scalar_t__ (* init ) (int ) ;int (* observation_count ) (int ) ;char* (* observation_name ) (int ,int) ;} ;
+struct TYPE_10__ {int runfiles_path; } ;
+struct TYPE_7__ {int * write_level_to_cache; int * fetch_level_from_cache; int * context; } ;
+struct TYPE_9__ {char* optional_temp_folder; TYPE_1__ level_cache_params; int renderer; int runfiles_path; } ;
+struct TYPE_8__ {int observation_count; int* observation_indices; int context; TYPE_6__* env_c_api; scalar_t__ episode; int status; int * level_cache_context; } ;
+typedef int Py_ssize_t ;
+typedef int PyObject ;
+typedef TYPE_2__ LabObject ;
+typedef TYPE_3__ DeepMindLabLaunchParams ;
+
+
+ int DeepMindLabRenderer_Hardware ;
+ int DeepMindLabRenderer_Software ;
+ int ENV_STATUS_UNINITIALIZED ;
+ int PyArg_ParseTupleAndKeywords (int *,int *,char*,char**,char**,int *,int **,int *,int **,char**,int **,char**) ;
+ scalar_t__ PyDict_Next (int *,int *,int **,int **) ;
+ int PyDict_Type ;
+ int PyErr_Format (int ,char*,char const*,...) ;
+ int PyErr_NoMemory () ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_RuntimeError ;
+ int PyExc_ValueError ;
+ int * PyImport_AddModule (char*) ;
+ int * PyList_GetItem (int *,int) ;
+ int PyList_Size (int *) ;
+ int PyList_Type ;
+ char* PyString_AsString (int *) ;
+ char* PyUnicode_AsUTF8 (int *) ;
+ int Py_INCREF (int *) ;
+ int * Py_None ;
+ int* calloc (int,int) ;
+ scalar_t__ dmlab_connect (TYPE_3__*,TYPE_6__*,int *) ;
+ int fetch_level_from_cache ;
+ TYPE_4__* get_module_state (int *) ;
+ scalar_t__ strcmp (char*,char const*) ;
+ scalar_t__ stub1 (int ,char*,char*) ;
+ char const* stub10 (int ) ;
+ int stub11 (int ) ;
+ char* stub12 (int ,int) ;
+ char const* stub2 (int ) ;
+ scalar_t__ stub3 (int ,char*,char*) ;
+ char const* stub4 (int ) ;
+ scalar_t__ stub5 (int ,char*,char*) ;
+ char const* stub6 (int ) ;
+ scalar_t__ stub7 (int ,char const*,char const*) ;
+ char const* stub8 (int ) ;
+ scalar_t__ stub9 (int ) ;
+ int write_level_to_cache ;
 
 __attribute__((used)) static int Lab_init(PyObject* pself, PyObject* args, PyObject* kwds) {
   LabObject* self = (LabObject*)pself;
   char* level;
-  char* renderer = NULL;
-  char* temp_folder = NULL;
-  PyObject *observations = NULL, *config = NULL, *level_cache = NULL;
+  char* renderer = ((void*)0);
+  char* temp_folder = ((void*)0);
+  PyObject *observations = ((void*)0), *config = ((void*)0), *level_cache = ((void*)0);
 
   static char* kwlist[] = {
     "level",
@@ -78,10 +78,10 @@ __attribute__((used)) static int Lab_init(PyObject* pself, PyObject* args, PyObj
     "renderer",
     "level_cache",
     "temp_folder",
-    NULL
+    ((void*)0)
   };
 
-  if (self->env_c_api == NULL) {
+  if (self->env_c_api == ((void*)0)) {
     PyErr_SetString(PyExc_RuntimeError, "RL API not setup");
     return -1;
   }
@@ -96,26 +96,18 @@ __attribute__((used)) static int Lab_init(PyObject* pself, PyObject* args, PyObj
 
   self->observation_count = PyList_Size(observations);
   self->observation_indices = calloc(self->observation_count, sizeof(int));
-  if (self->observation_indices == NULL) {
+  if (self->observation_indices == ((void*)0)) {
     PyErr_NoMemory();
     return -1;
   }
   {
-#if PY_MAJOR_VERSION >= 3
-    PyObject* module =
-        PyImport_AddModule("deepmind_lab");
-    if (module == NULL) {
-      PyErr_SetString(PyExc_RuntimeError, "deepmind_lab module not loaded");
-      return -1;
-    }
-#else  // PY_MAJOR_VERSION >= 3
-    PyObject* module = NULL;
-#endif  // PY_MAJOR_VERSION >= 3
+    PyObject* module = ((void*)0);
+
 
     DeepMindLabLaunchParams params = {};
     params.runfiles_path = get_module_state(module)->runfiles_path;
     params.renderer = DeepMindLabRenderer_Software;
-    if (renderer != NULL && renderer[0] != '\0') {
+    if (renderer != ((void*)0) && renderer[0] != '\0') {
       if (strcmp(renderer, "hardware") == 0) {
         params.renderer = DeepMindLabRenderer_Hardware;
       } else if (strcmp(renderer, "software") != 0) {
@@ -127,7 +119,7 @@ __attribute__((used)) static int Lab_init(PyObject* pself, PyObject* args, PyObj
       }
     }
 
-    if (level_cache != NULL && level_cache != Py_None) {
+    if (level_cache != ((void*)0) && level_cache != Py_None) {
       Py_INCREF(level_cache);
       params.level_cache_params.context = level_cache;
       params.level_cache_params.fetch_level_from_cache =
@@ -136,7 +128,7 @@ __attribute__((used)) static int Lab_init(PyObject* pself, PyObject* args, PyObj
       self->level_cache_context = level_cache;
     }
 
-    if (temp_folder != NULL) {
+    if (temp_folder != ((void*)0)) {
       params.optional_temp_folder = temp_folder;
     }
 
@@ -144,23 +136,6 @@ __attribute__((used)) static int Lab_init(PyObject* pself, PyObject* args, PyObj
       PyErr_SetString(PyExc_RuntimeError, "Failed to connect RL API");
       return -1;
     }
-
-// When running under TSAN, switch to the interpreted VM, which is
-// instrumentable.
-//
-// It might be a better idea add __attribute__((no_sanitize("thread"))) to
-// vm_x86.c, but I have not managed to make that work.
-#ifndef __has_feature
-#  define __has_feature(x) 0
-#endif
-#if __has_feature(thread_sanitizer)
-    if (self->env_c_api->setting(self->context, "vmMode", "interpreted") != 0) {
-      PyErr_Format(PyExc_RuntimeError,
-                   "Failed to apply 'vmMode' setting - \"%s\"",
-                   self->env_c_api->error_message(self->context));
-      return -1;
-    }
-#endif
     self->status = ENV_STATUS_UNINITIALIZED;
     self->episode = 0;
   }
@@ -177,20 +152,20 @@ __attribute__((used)) static int Lab_init(PyObject* pself, PyObject* args, PyObj
     return -1;
   }
 
-  if (config != NULL) {
+  if (config != ((void*)0)) {
     PyObject *pykey, *pyvalue;
     Py_ssize_t pos = 0;
     const char *key, *value;
 
     while (PyDict_Next(config, &pos, &pykey, &pyvalue)) {
-#if PY_MAJOR_VERSION >= 3
-      key = PyUnicode_AsUTF8(pykey);
-      value = PyUnicode_AsUTF8(pyvalue);
-#else  // PY_MAJOR_VERSION >= 3
+
+
+
+
       key = PyString_AsString(pykey);
       value = PyString_AsString(pyvalue);
-#endif  // PY_MAJOR_VERSION >= 3
-      if (key == NULL || value == NULL) {
+
+      if (key == ((void*)0) || value == ((void*)0)) {
         return -1;
       }
       if (self->env_c_api->setting(self->context, key, value) != 0) {
@@ -211,12 +186,12 @@ __attribute__((used)) static int Lab_init(PyObject* pself, PyObject* args, PyObj
   const char* observation_name;
   int api_observation_count = self->env_c_api->observation_count(self->context);
   for (int i = 0; i < self->observation_count; ++i) {
-#if PY_MAJOR_VERSION >= 3
-    observation_name = PyUnicode_AsUTF8(PyList_GetItem(observations, i));
-#else  // PY_MAJOR_VERSION >= 3
+
+
+
     observation_name = PyString_AsString(PyList_GetItem(observations, i));
-#endif  // PY_MAJOR_VERSION >= 3
-    if (observation_name == NULL) {
+
+    if (observation_name == ((void*)0)) {
       return -1;
     }
     int j;

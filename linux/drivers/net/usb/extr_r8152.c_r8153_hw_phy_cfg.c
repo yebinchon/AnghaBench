@@ -1,106 +1,106 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  u16 ;
-struct r8152 {int version; int /*<<< orphan*/  flags; scalar_t__ eee_en; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CTAP_SHORT_EN ; 
- int /*<<< orphan*/  EEE_CLKDIV_EN ; 
- int /*<<< orphan*/  EN_10M_BGOFF ; 
- int /*<<< orphan*/  EN_10M_PLLOFF ; 
- int /*<<< orphan*/  MCU_TYPE_PLA ; 
- int /*<<< orphan*/  OCP_DOWN_SPEED ; 
- int /*<<< orphan*/  OCP_EEE_CFG ; 
- int /*<<< orphan*/  OCP_POWER_CFG ; 
- int /*<<< orphan*/  PFM_PWM_SWITCH ; 
- int /*<<< orphan*/  PHY_RESET ; 
- int /*<<< orphan*/  PLA_PHY_PWR ; 
-#define  RTL_VER_03 131 
-#define  RTL_VER_04 130 
-#define  RTL_VER_05 129 
-#define  RTL_VER_06 128 
- int /*<<< orphan*/  SRAM_10M_AMP1 ; 
- int /*<<< orphan*/  SRAM_10M_AMP2 ; 
- int /*<<< orphan*/  SRAM_IMPEDANCE ; 
- int /*<<< orphan*/  SRAM_LPF_CFG ; 
- int /*<<< orphan*/  ocp_read_word (struct r8152*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ocp_reg_read (struct r8152*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ocp_reg_write (struct r8152*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ocp_write_word (struct r8152*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  r8152b_enable_fc (struct r8152*) ; 
- int /*<<< orphan*/  r8153_aldps_en (struct r8152*,int) ; 
- int /*<<< orphan*/  r8153_u2p3en (struct r8152*,int) ; 
- int /*<<< orphan*/  rtl_eee_enable (struct r8152*,int) ; 
- int /*<<< orphan*/  set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sram_write (struct r8152*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int u32 ;
+typedef int u16 ;
+struct r8152 {int version; int flags; scalar_t__ eee_en; } ;
+
+
+ int CTAP_SHORT_EN ;
+ int EEE_CLKDIV_EN ;
+ int EN_10M_BGOFF ;
+ int EN_10M_PLLOFF ;
+ int MCU_TYPE_PLA ;
+ int OCP_DOWN_SPEED ;
+ int OCP_EEE_CFG ;
+ int OCP_POWER_CFG ;
+ int PFM_PWM_SWITCH ;
+ int PHY_RESET ;
+ int PLA_PHY_PWR ;
+
+
+
+
+ int SRAM_10M_AMP1 ;
+ int SRAM_10M_AMP2 ;
+ int SRAM_IMPEDANCE ;
+ int SRAM_LPF_CFG ;
+ int ocp_read_word (struct r8152*,int ,int ) ;
+ int ocp_reg_read (struct r8152*,int ) ;
+ int ocp_reg_write (struct r8152*,int ,int ) ;
+ int ocp_write_word (struct r8152*,int ,int ,int ) ;
+ int r8152b_enable_fc (struct r8152*) ;
+ int r8153_aldps_en (struct r8152*,int) ;
+ int r8153_u2p3en (struct r8152*,int) ;
+ int rtl_eee_enable (struct r8152*,int) ;
+ int set_bit (int ,int *) ;
+ int sram_write (struct r8152*,int ,int) ;
 
 __attribute__((used)) static void r8153_hw_phy_cfg(struct r8152 *tp)
 {
-	u32 ocp_data;
-	u16 data;
+ u32 ocp_data;
+ u16 data;
 
-	/* disable ALDPS before updating the PHY parameters */
-	r8153_aldps_en(tp, false);
 
-	/* disable EEE before updating the PHY parameters */
-	rtl_eee_enable(tp, false);
+ r8153_aldps_en(tp, 0);
 
-	if (tp->version == RTL_VER_03) {
-		data = ocp_reg_read(tp, OCP_EEE_CFG);
-		data &= ~CTAP_SHORT_EN;
-		ocp_reg_write(tp, OCP_EEE_CFG, data);
-	}
 
-	data = ocp_reg_read(tp, OCP_POWER_CFG);
-	data |= EEE_CLKDIV_EN;
-	ocp_reg_write(tp, OCP_POWER_CFG, data);
+ rtl_eee_enable(tp, 0);
 
-	data = ocp_reg_read(tp, OCP_DOWN_SPEED);
-	data |= EN_10M_BGOFF;
-	ocp_reg_write(tp, OCP_DOWN_SPEED, data);
-	data = ocp_reg_read(tp, OCP_POWER_CFG);
-	data |= EN_10M_PLLOFF;
-	ocp_reg_write(tp, OCP_POWER_CFG, data);
-	sram_write(tp, SRAM_IMPEDANCE, 0x0b13);
+ if (tp->version == 131) {
+  data = ocp_reg_read(tp, OCP_EEE_CFG);
+  data &= ~CTAP_SHORT_EN;
+  ocp_reg_write(tp, OCP_EEE_CFG, data);
+ }
 
-	ocp_data = ocp_read_word(tp, MCU_TYPE_PLA, PLA_PHY_PWR);
-	ocp_data |= PFM_PWM_SWITCH;
-	ocp_write_word(tp, MCU_TYPE_PLA, PLA_PHY_PWR, ocp_data);
+ data = ocp_reg_read(tp, OCP_POWER_CFG);
+ data |= EEE_CLKDIV_EN;
+ ocp_reg_write(tp, OCP_POWER_CFG, data);
 
-	/* Enable LPF corner auto tune */
-	sram_write(tp, SRAM_LPF_CFG, 0xf70f);
+ data = ocp_reg_read(tp, OCP_DOWN_SPEED);
+ data |= EN_10M_BGOFF;
+ ocp_reg_write(tp, OCP_DOWN_SPEED, data);
+ data = ocp_reg_read(tp, OCP_POWER_CFG);
+ data |= EN_10M_PLLOFF;
+ ocp_reg_write(tp, OCP_POWER_CFG, data);
+ sram_write(tp, SRAM_IMPEDANCE, 0x0b13);
 
-	/* Adjust 10M Amplitude */
-	sram_write(tp, SRAM_10M_AMP1, 0x00af);
-	sram_write(tp, SRAM_10M_AMP2, 0x0208);
+ ocp_data = ocp_read_word(tp, MCU_TYPE_PLA, PLA_PHY_PWR);
+ ocp_data |= PFM_PWM_SWITCH;
+ ocp_write_word(tp, MCU_TYPE_PLA, PLA_PHY_PWR, ocp_data);
 
-	if (tp->eee_en)
-		rtl_eee_enable(tp, true);
 
-	r8153_aldps_en(tp, true);
-	r8152b_enable_fc(tp);
+ sram_write(tp, SRAM_LPF_CFG, 0xf70f);
 
-	switch (tp->version) {
-	case RTL_VER_03:
-	case RTL_VER_04:
-		break;
-	case RTL_VER_05:
-	case RTL_VER_06:
-	default:
-		r8153_u2p3en(tp, true);
-		break;
-	}
 
-	set_bit(PHY_RESET, &tp->flags);
+ sram_write(tp, SRAM_10M_AMP1, 0x00af);
+ sram_write(tp, SRAM_10M_AMP2, 0x0208);
+
+ if (tp->eee_en)
+  rtl_eee_enable(tp, 1);
+
+ r8153_aldps_en(tp, 1);
+ r8152b_enable_fc(tp);
+
+ switch (tp->version) {
+ case 131:
+ case 130:
+  break;
+ case 129:
+ case 128:
+ default:
+  r8153_u2p3en(tp, 1);
+  break;
+ }
+
+ set_bit(PHY_RESET, &tp->flags);
 }

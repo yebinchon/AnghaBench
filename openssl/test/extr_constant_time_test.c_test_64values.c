@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
 
-/* Variables and functions */
- scalar_t__ OSSL_NELEM (scalar_t__*) ; 
- int /*<<< orphan*/  TEST_info (char*,int,int) ; 
- int /*<<< orphan*/  constant_time_lt_64 ; 
- int /*<<< orphan*/  test_binary_op_64 (int /*<<< orphan*/ *,char*,scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  test_select_64 (scalar_t__,scalar_t__) ; 
- scalar_t__* test_values_64 ; 
+
+
+
+typedef scalar_t__ uint64_t ;
+
+
+ scalar_t__ OSSL_NELEM (scalar_t__*) ;
+ int TEST_info (char*,int,int) ;
+ int constant_time_lt_64 ;
+ int test_binary_op_64 (int *,char*,scalar_t__,scalar_t__,int) ;
+ int test_select_64 (scalar_t__,scalar_t__) ;
+ scalar_t__* test_values_64 ;
 
 __attribute__((used)) static int test_64values(int i)
 {

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  decNumber ;
-typedef  int /*<<< orphan*/  decContext ;
-typedef  int /*<<< orphan*/  Int ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DECUNCONT ; 
- int /*<<< orphan*/  DECUNRESU ; 
- int /*<<< orphan*/  DECUNUSED ; 
- int /*<<< orphan*/  DEC_INIT_BASE ; 
- scalar_t__ decCheckOperands (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  decContextDefault (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * decTrim (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int decNumber ;
+typedef int decContext ;
+typedef int Int ;
+
+
+ int DECUNCONT ;
+ int DECUNRESU ;
+ int DECUNUSED ;
+ int DEC_INIT_BASE ;
+ scalar_t__ decCheckOperands (int ,int ,int *,int ) ;
+ int decContextDefault (int *,int ) ;
+ int * decTrim (int *,int *,int ,int,int *) ;
 
 decNumber * decNumberTrim(decNumber *dn) {
-  Int  dropped;                    // work
-  decContext set;                  // ..
-  #if DECCHECK
-  if (decCheckOperands(DECUNRESU, DECUNUSED, dn, DECUNCONT)) return dn;
-  #endif
-  decContextDefault(&set, DEC_INIT_BASE);    // clamp=0
+  Int dropped;
+  decContext set;
+
+
+
+  decContextDefault(&set, DEC_INIT_BASE);
   return decTrim(dn, &set, 0, 1, &dropped);
   }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArray_Descr ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyArray_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_DATA (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyArray_DESCR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_DIMS (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_FLAGS (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_NDIM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyArray_NewFromDescrAndBase (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_STRIDES (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_TypeError ; 
- int /*<<< orphan*/ * PyTuple_GET_ITEM (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int PyTuple_Size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
- scalar_t__ Py_TYPE (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int PyObject ;
+typedef int PyArray_Descr ;
+typedef int PyArrayObject ;
+
+
+ int PyArray_Check (int *) ;
+ int PyArray_DATA (int *) ;
+ int * PyArray_DESCR (int *) ;
+ int PyArray_DIMS (int *) ;
+ int PyArray_FLAGS (int *) ;
+ int PyArray_NDIM (int *) ;
+ int * PyArray_NewFromDescrAndBase (scalar_t__,int *,int ,int ,int ,int ,int ,int *,int *) ;
+ int PyArray_STRIDES (int *) ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_TypeError ;
+ int * PyTuple_GET_ITEM (int *,int ) ;
+ int PyTuple_Size (int *) ;
+ int Py_INCREF (int *) ;
+ scalar_t__ Py_TYPE (int *) ;
 
 __attribute__((used)) static PyObject *
 array_preparearray(PyArrayObject *self, PyObject *args)
@@ -40,18 +40,18 @@ array_preparearray(PyArrayObject *self, PyObject *args)
     if (PyTuple_Size(args) < 1) {
         PyErr_SetString(PyExc_TypeError,
                         "only accepts 1 argument");
-        return NULL;
+        return ((void*)0);
     }
     obj = PyTuple_GET_ITEM(args, 0);
     if (!PyArray_Check(obj)) {
         PyErr_SetString(PyExc_TypeError,
                         "can only be called with ndarray object");
-        return NULL;
+        return ((void*)0);
     }
     arr = (PyArrayObject *)obj;
 
     if (Py_TYPE(self) == Py_TYPE(arr)) {
-        /* No need to create a new view */
+
         Py_INCREF(arr);
         return (PyObject *)arr;
     }

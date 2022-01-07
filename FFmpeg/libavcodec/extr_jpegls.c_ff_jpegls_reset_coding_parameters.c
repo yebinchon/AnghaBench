@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int maxval; int bpp; int T1; int near; int T2; int reset; void* T3; } ;
-typedef  TYPE_1__ JLSState ;
+typedef TYPE_1__ JLSState ;
 
-/* Variables and functions */
- int FFMAX (int,int const) ; 
- int FFMIN (int,int) ; 
- int /*<<< orphan*/  ff_dlog (int /*<<< orphan*/ *,char*,int,int,void*) ; 
- void* iso_clip (int,int,int) ; 
+
+ int FFMAX (int,int const) ;
+ int FFMIN (int,int) ;
+ int ff_dlog (int *,char*,int,int,void*) ;
+ void* iso_clip (int,int,int) ;
 
 void ff_jpegls_reset_coding_parameters(JLSState *s, int reset_all)
 {
@@ -58,5 +58,5 @@ void ff_jpegls_reset_coding_parameters(JLSState *s, int reset_all)
 
     if (s->reset == 0 || reset_all)
         s->reset = 64;
-    ff_dlog(NULL, "[JPEG-LS RESET] T=%i,%i,%i\n", s->T1, s->T2, s->T3);
+    ff_dlog(((void*)0), "[JPEG-LS RESET] T=%i,%i,%i\n", s->T1, s->T2, s->T3);
 }

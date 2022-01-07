@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  rtx ;
-typedef  enum expand_modifier { ____Placeholder_expand_modifier } expand_modifier ;
 
-/* Variables and functions */
- int EXPAND_INITIALIZER ; 
- int /*<<< orphan*/  output_constant_def (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  use_anchored_address (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+typedef int rtx ;
+typedef enum expand_modifier { ____Placeholder_expand_modifier } expand_modifier ;
+
+
+ int EXPAND_INITIALIZER ;
+ int output_constant_def (int ,int) ;
+ int use_anchored_address (int ) ;
 
 __attribute__((used)) static rtx
 expand_expr_constant (tree exp, int defer, enum expand_modifier modifier)

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vlist {struct varobj* var; struct vlist* next; } ;
-struct varobj {int /*<<< orphan*/  obj_name; } ;
+struct varobj {int obj_name; } ;
 
-/* Variables and functions */
- unsigned int VAROBJ_TABLE_SIZE ; 
- int /*<<< orphan*/  error (char*) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
- struct vlist** varobj_table ; 
+
+ unsigned int VAROBJ_TABLE_SIZE ;
+ int error (char*) ;
+ scalar_t__ strcmp (int ,char*) ;
+ struct vlist** varobj_table ;
 
 struct varobj *
 varobj_get_handle (char *objname)
@@ -33,10 +33,10 @@ varobj_get_handle (char *objname)
     }
 
   cv = *(varobj_table + index);
-  while ((cv != NULL) && (strcmp (cv->var->obj_name, objname) != 0))
+  while ((cv != ((void*)0)) && (strcmp (cv->var->obj_name, objname) != 0))
     cv = cv->next;
 
-  if (cv == NULL)
+  if (cv == ((void*)0))
     error ("Variable object not found");
 
   return cv->var;

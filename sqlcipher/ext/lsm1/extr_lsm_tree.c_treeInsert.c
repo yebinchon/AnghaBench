@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* u32 ;
-struct TYPE_13__ {int /*<<< orphan*/  nHeight; void* iRoot; } ;
+
+
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef void* u32 ;
+struct TYPE_13__ {int nHeight; void* iRoot; } ;
 struct TYPE_14__ {TYPE_1__ root; } ;
 struct TYPE_15__ {TYPE_2__ treehdr; } ;
-typedef  TYPE_3__ lsm_db ;
+typedef TYPE_3__ lsm_db ;
 struct TYPE_16__ {int* aiKeyPtr; void** aiChildPtr; scalar_t__ iV2; } ;
-typedef  TYPE_4__ TreeNode ;
+typedef TYPE_4__ TreeNode ;
 struct TYPE_17__ {size_t iNode; int* aiCell; TYPE_4__** apTreeNode; } ;
-typedef  TYPE_5__ TreeCursor ;
+typedef TYPE_5__ TreeCursor ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int /*<<< orphan*/  WORKING_VERSION ; 
- int /*<<< orphan*/  assert (int) ; 
- void* getChildPtr (TYPE_4__*,int /*<<< orphan*/ ,int) ; 
- TYPE_4__* newTreeNode (TYPE_3__*,void**,int*) ; 
- int treeUpdatePtr (TYPE_3__*,TYPE_5__*,void*) ; 
+
+ int LSM_OK ;
+ int WORKING_VERSION ;
+ int assert (int) ;
+ void* getChildPtr (TYPE_4__*,int ,int) ;
+ TYPE_4__* newTreeNode (TYPE_3__*,void**,int*) ;
+ int treeUpdatePtr (TYPE_3__*,TYPE_5__*,void*) ;
 
 __attribute__((used)) static int treeInsert(
-  lsm_db *pDb,                    /* Database handle */
-  TreeCursor *pCsr,               /* Cursor indicating path to insert at */
-  u32 iLeftPtr,                   /* Left child pointer */
-  u32 iTreeKey,                   /* Location of key to insert */
-  u32 iRightPtr,                  /* Right child pointer */
-  int iSlot                       /* Position to insert key into */
+  lsm_db *pDb,
+  TreeCursor *pCsr,
+  u32 iLeftPtr,
+  u32 iTreeKey,
+  u32 iRightPtr,
+  int iSlot
 ){
   int rc = LSM_OK;
   TreeNode *pNode = pCsr->apTreeNode[pCsr->iNode];
 
-  /* Check if the node is currently full. If so, split pNode in two and
-  ** call this function recursively to add a key to the parent. Otherwise, 
-  ** insert the new key directly into pNode.  */
+
+
+
   assert( pNode->aiKeyPtr[1] );
   if( pNode->aiKeyPtr[0] && pNode->aiKeyPtr[2] ){
-    u32 iLeft; TreeNode *pLeft;   /* New left-hand sibling node */
-    u32 iRight; TreeNode *pRight; /* New right-hand sibling node */
+    u32 iLeft; TreeNode *pLeft;
+    u32 iRight; TreeNode *pRight;
 
     pLeft = newTreeNode(pDb, &iLeft, &rc);
     pRight = newTreeNode(pDb, &iRight, &rc);
@@ -65,8 +65,8 @@ __attribute__((used)) static int treeInsert(
     pRight->aiChildPtr[2] = getChildPtr(pNode, WORKING_VERSION, 3);
 
     if( pCsr->iNode==0 ){
-      /* pNode is the root of the tree. Grow the tree by one level. */
-      u32 iRoot; TreeNode *pRoot; /* New root node */
+
+      u32 iRoot; TreeNode *pRoot;
 
       pRoot = newTreeNode(pDb, &iRoot, &rc);
       pRoot->aiKeyPtr[1] = pNode->aiKeyPtr[1];
@@ -78,7 +78,7 @@ __attribute__((used)) static int treeInsert(
     }else{
 
       pCsr->iNode--;
-      rc = treeInsert(pDb, pCsr, 
+      rc = treeInsert(pDb, pCsr,
           iLeft, pNode->aiKeyPtr[1], iRight, pCsr->aiCell[pCsr->iNode]
       );
     }
@@ -116,7 +116,7 @@ __attribute__((used)) static int treeInsert(
     u32 iNew = 0;
     int i;
 
-    /* Allocate a new version of node pNode. */
+
     pNew = newTreeNode(pDb, &iNew, &rc);
     if( rc ) return rc;
 
@@ -145,7 +145,7 @@ __attribute__((used)) static int treeInsert(
     if( iStore ){
       *piChild = iStore;
     }else{
-      *piChild = getChildPtr(pNode, WORKING_VERSION, 
+      *piChild = getChildPtr(pNode, WORKING_VERSION,
           (pNode->aiKeyPtr[2] ? 3 : 2)
       );
     }

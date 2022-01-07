@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr {int dummy; } ;
-struct signal_info {int /*<<< orphan*/  source; scalar_t__ signal_received; } ;
+struct signal_info {int source; scalar_t__ signal_received; } ;
 struct gc_arena {int dummy; } ;
-typedef  int /*<<< orphan*/  socket_descriptor_t ;
+typedef int socket_descriptor_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_LINK_ERRORS ; 
- int /*<<< orphan*/  M_INFO ; 
- int /*<<< orphan*/  OPENVPN_STATE_TCP_CONNECT ; 
- scalar_t__ SIGUSR1 ; 
- int /*<<< orphan*/  SIG_SOURCE_CONNECTION_FAILED ; 
- int /*<<< orphan*/  SOCKET_UNDEFINED ; 
- int /*<<< orphan*/  gc_free (struct gc_arena*) ; 
- struct gc_arena gc_new () ; 
- int /*<<< orphan*/  get_signal (scalar_t__*) ; 
- scalar_t__ management ; 
- int /*<<< orphan*/  management_set_state (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  openvpn_close_socket (int /*<<< orphan*/ ) ; 
- int openvpn_connect (int /*<<< orphan*/ ,struct sockaddr const*,int const,scalar_t__*) ; 
- int /*<<< orphan*/  print_sockaddr (struct sockaddr const*,struct gc_arena*) ; 
- int /*<<< orphan*/  strerror (int) ; 
+
+ int D_LINK_ERRORS ;
+ int M_INFO ;
+ int OPENVPN_STATE_TCP_CONNECT ;
+ scalar_t__ SIGUSR1 ;
+ int SIG_SOURCE_CONNECTION_FAILED ;
+ int SOCKET_UNDEFINED ;
+ int gc_free (struct gc_arena*) ;
+ struct gc_arena gc_new () ;
+ int get_signal (scalar_t__*) ;
+ scalar_t__ management ;
+ int management_set_state (scalar_t__,int ,int *,int *,int *,int *,int *) ;
+ int msg (int ,char*,int ,...) ;
+ int openvpn_close_socket (int ) ;
+ int openvpn_connect (int ,struct sockaddr const*,int const,scalar_t__*) ;
+ int print_sockaddr (struct sockaddr const*,struct gc_arena*) ;
+ int strerror (int) ;
 
 __attribute__((used)) static void
 socket_connect(socket_descriptor_t *sd,
@@ -42,28 +42,12 @@ socket_connect(socket_descriptor_t *sd,
     struct gc_arena gc = gc_new();
     int status;
 
-#ifdef CONNECT_NONBLOCK
-    msg(M_INFO, "Attempting to establish TCP connection with %s [nonblock]",
-        print_sockaddr(dest, &gc));
-#else
+
+
+
+
     msg(M_INFO, "Attempting to establish TCP connection with %s",
         print_sockaddr(dest, &gc));
-#endif
-
-#ifdef ENABLE_MANAGEMENT
-    if (management)
-    {
-        management_set_state(management,
-                             OPENVPN_STATE_TCP_CONNECT,
-                             NULL,
-                             NULL,
-                             NULL,
-                             NULL,
-                             NULL);
-    }
-#endif
-
-    /* Set the actual address */
     status = openvpn_connect(*sd, dest, connect_timeout, &sig_info->signal_received);
 
     get_signal(&sig_info->signal_received);

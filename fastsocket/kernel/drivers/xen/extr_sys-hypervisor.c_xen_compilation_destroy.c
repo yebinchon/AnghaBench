@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  hypervisor_kobj ; 
- int /*<<< orphan*/  sysfs_remove_group (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xen_compilation_group ; 
+ int hypervisor_kobj ;
+ int sysfs_remove_group (int ,int *) ;
+ int xen_compilation_group ;
 
 __attribute__((used)) static void xen_compilation_destroy(void)
 {
-	sysfs_remove_group(hypervisor_kobj, &xen_compilation_group);
+ sysfs_remove_group(hypervisor_kobj, &xen_compilation_group);
 }

@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ BUFFSIZE ; 
- scalar_t__ Buff ; 
- int /*<<< orphan*/  F_WRLCK ; 
- int O_CREAT ; 
- int O_EXCL ; 
- int O_WRONLY ; 
- int /*<<< orphan*/  assert (int) ; 
- int buffered_write ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  kprintf (char*,char*) ; 
- scalar_t__ lock_whole_file (int,int /*<<< orphan*/ ) ; 
- int open (char*,int,int) ; 
- scalar_t__ rptr ; 
- scalar_t__ wptr ; 
- int write_fd ; 
- char* write_filename ; 
- scalar_t__ write_off ; 
+ scalar_t__ BUFFSIZE ;
+ scalar_t__ Buff ;
+ int F_WRLCK ;
+ int O_CREAT ;
+ int O_EXCL ;
+ int O_WRONLY ;
+ int assert (int) ;
+ int buffered_write ;
+ int close (int) ;
+ int kprintf (char*,char*) ;
+ scalar_t__ lock_whole_file (int,int ) ;
+ int open (char*,int,int) ;
+ scalar_t__ rptr ;
+ scalar_t__ wptr ;
+ int write_fd ;
+ char* write_filename ;
+ scalar_t__ write_off ;
 
 __attribute__((used)) static int open_write_fd (char *filename, int bwrite, int ofd) {
   buffered_write = bwrite;

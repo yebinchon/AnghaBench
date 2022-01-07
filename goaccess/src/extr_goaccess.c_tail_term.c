@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  mutex; int /*<<< orphan*/  not_empty; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  allocate_data () ; 
- int /*<<< orphan*/  allocate_holder () ; 
- int /*<<< orphan*/  dash ; 
- int /*<<< orphan*/  free_dashboard (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_holder (int /*<<< orphan*/ *) ; 
- TYPE_1__ gdns_thread ; 
- int /*<<< orphan*/  holder ; 
- int /*<<< orphan*/  main_win ; 
- int /*<<< orphan*/  main_win_height ; 
- int /*<<< orphan*/  pthread_cond_broadcast (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  render_screens () ; 
- int /*<<< orphan*/  term_size (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int mutex; int not_empty; } ;
+
+
+ int allocate_data () ;
+ int allocate_holder () ;
+ int dash ;
+ int free_dashboard (int ) ;
+ int free_holder (int *) ;
+ TYPE_1__ gdns_thread ;
+ int holder ;
+ int main_win ;
+ int main_win_height ;
+ int pthread_cond_broadcast (int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int render_screens () ;
+ int term_size (int ,int *) ;
 
 __attribute__((used)) static void
 tail_term (void)

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {int st_mode; } ;
 
-/* Variables and functions */
- int S_IFDIR ; 
- int S_IFMT ; 
- int /*<<< orphan*/  error (char*,char const*) ; 
- scalar_t__ is_valid_path_symbol (char) ; 
- scalar_t__ isalnum (char) ; 
- int stat (char const*,struct stat*) ; 
- scalar_t__ strstr (char const*,char*) ; 
+
+ int S_IFDIR ;
+ int S_IFMT ;
+ int error (char*,char const*) ;
+ scalar_t__ is_valid_path_symbol (char) ;
+ scalar_t__ isalnum (char) ;
+ int stat (char const*,struct stat*) ;
+ scalar_t__ strstr (char const*,char*) ;
 
 int verify_path(const char *path) {
     struct stat sb;

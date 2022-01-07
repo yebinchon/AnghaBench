@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct msi_intsrc {int /*<<< orphan*/  msi_vector; int /*<<< orphan*/  msi_cpu; } ;
+
+
+
+
+struct msi_intsrc {int msi_vector; int msi_cpu; } ;
 struct intsrc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  apic_enable_vector (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int apic_enable_vector (int ,int ) ;
 
 __attribute__((used)) static void
 msi_enable_intr(struct intsrc *isrc)
 {
-	struct msi_intsrc *msi = (struct msi_intsrc *)isrc;
+ struct msi_intsrc *msi = (struct msi_intsrc *)isrc;
 
-	apic_enable_vector(msi->msi_cpu, msi->msi_vector);
+ apic_enable_vector(msi->msi_cpu, msi->msi_vector);
 }

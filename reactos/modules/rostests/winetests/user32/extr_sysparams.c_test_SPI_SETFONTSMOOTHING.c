@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vals ;
-typedef  int UINT ;
-typedef  int DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int const GetLastError () ; 
- int SPIF_SENDCHANGE ; 
- int SPIF_UPDATEINIFILE ; 
- int /*<<< orphan*/  SPI_GETFONTSMOOTHING ; 
- int /*<<< orphan*/  SPI_GETFONTSMOOTHINGCONTRAST ; 
- int /*<<< orphan*/  SPI_GETFONTSMOOTHINGORIENTATION ; 
- int /*<<< orphan*/  SPI_GETFONTSMOOTHINGTYPE ; 
- int /*<<< orphan*/  SPI_SETFONTSMOOTHING ; 
- int /*<<< orphan*/  SPI_SETFONTSMOOTHINGCONTRAST ; 
- int /*<<< orphan*/  SPI_SETFONTSMOOTHINGCONTRAST_VALNAME ; 
- int /*<<< orphan*/  SPI_SETFONTSMOOTHINGORIENTATION ; 
- int /*<<< orphan*/  SPI_SETFONTSMOOTHINGORIENTATION_VALNAME ; 
- int /*<<< orphan*/  SPI_SETFONTSMOOTHINGTYPE ; 
- int /*<<< orphan*/  SPI_SETFONTSMOOTHINGTYPE_VALNAME ; 
- int /*<<< orphan*/  SPI_SETFONTSMOOTHING_REGKEY ; 
- int /*<<< orphan*/  SPI_SETFONTSMOOTHING_VALNAME ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int SystemParametersInfoA (int /*<<< orphan*/ ,int const,int*,int) ; 
- int* UlongToPtr (int const) ; 
- int /*<<< orphan*/  eq (int,int,char*,char*) ; 
- scalar_t__ iswin9x ; 
- int /*<<< orphan*/  ok (int,char*,int,int const,...) ; 
- int /*<<< orphan*/  test_change_message (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_error_msg (int,char*) ; 
- int /*<<< orphan*/  test_reg_key (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  test_reg_key_dword (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int const*) ; 
- int /*<<< orphan*/  trace (char*) ; 
 
-__attribute__((used)) static void test_SPI_SETFONTSMOOTHING( void )         /*     75 */
+
+
+typedef int vals ;
+typedef int UINT ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int const GetLastError () ;
+ int SPIF_SENDCHANGE ;
+ int SPIF_UPDATEINIFILE ;
+ int SPI_GETFONTSMOOTHING ;
+ int SPI_GETFONTSMOOTHINGCONTRAST ;
+ int SPI_GETFONTSMOOTHINGORIENTATION ;
+ int SPI_GETFONTSMOOTHINGTYPE ;
+ int SPI_SETFONTSMOOTHING ;
+ int SPI_SETFONTSMOOTHINGCONTRAST ;
+ int SPI_SETFONTSMOOTHINGCONTRAST_VALNAME ;
+ int SPI_SETFONTSMOOTHINGORIENTATION ;
+ int SPI_SETFONTSMOOTHINGORIENTATION_VALNAME ;
+ int SPI_SETFONTSMOOTHINGTYPE ;
+ int SPI_SETFONTSMOOTHINGTYPE_VALNAME ;
+ int SPI_SETFONTSMOOTHING_REGKEY ;
+ int SPI_SETFONTSMOOTHING_VALNAME ;
+ int SetLastError (int) ;
+ int SystemParametersInfoA (int ,int const,int*,int) ;
+ int* UlongToPtr (int const) ;
+ int eq (int,int,char*,char*) ;
+ scalar_t__ iswin9x ;
+ int ok (int,char*,int,int const,...) ;
+ int test_change_message (int ,int ) ;
+ int test_error_msg (int,char*) ;
+ int test_reg_key (int ,int ,char*) ;
+ int test_reg_key_dword (int ,int ,int const*) ;
+ int trace (char*) ;
+
+__attribute__((used)) static void test_SPI_SETFONTSMOOTHING( void )
 {
     BOOL rc;
     BOOL old_b;
@@ -53,7 +53,7 @@ __attribute__((used)) static void test_SPI_SETFONTSMOOTHING( void )         /*  
     unsigned int i;
 
     trace("testing SPI_{GET,SET}FONTSMOOTHING\n");
-    if( iswin9x) return; /* 95/98/ME don't seem to implement this fully */ 
+    if( iswin9x) return;
     SetLastError(0xdeadbeef);
     rc=SystemParametersInfoA( SPI_GETFONTSMOOTHING, 0, &old_b, 0 );
     if (!test_error_msg(rc,"SPI_{GET,SET}FONTSMOOTHING"))

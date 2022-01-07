@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct printer_entry {int dummy; } ;
 
-/* Variables and functions */
- struct printer_entry* TAILQ_FIRST (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TAILQ_REMOVE (int /*<<< orphan*/ *,struct printer_entry*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (struct printer_entry*) ; 
- int /*<<< orphan*/  link ; 
- int /*<<< orphan*/  printer_tbl ; 
+
+ struct printer_entry* TAILQ_FIRST (int *) ;
+ int TAILQ_REMOVE (int *,struct printer_entry*,int ) ;
+ int free (struct printer_entry*) ;
+ int link ;
+ int printer_tbl ;
 
 void
 fini_printer_tbl(void)
 {
-	struct printer_entry *n1;
+ struct printer_entry *n1;
 
-	while ((n1 = TAILQ_FIRST(&printer_tbl)) != NULL) {
-		TAILQ_REMOVE(&printer_tbl, n1, link);
-		free(n1);
-	}
+ while ((n1 = TAILQ_FIRST(&printer_tbl)) != ((void*)0)) {
+  TAILQ_REMOVE(&printer_tbl, n1, link);
+  free(n1);
+ }
 }

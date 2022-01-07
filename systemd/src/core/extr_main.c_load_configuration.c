@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char const* rlimit ;
 
-/* Variables and functions */
- scalar_t__ SHOW_STATUS_YES ; 
- int /*<<< orphan*/  SPECIAL_DEFAULT_TARGET ; 
- scalar_t__ _SHOW_STATUS_INVALID ; 
- scalar_t__ arg_default_unit ; 
- scalar_t__ arg_show_status ; 
- int /*<<< orphan*/  assert (char const**) ; 
- int log_oom () ; 
- int parse_argv (int,char**) ; 
- int /*<<< orphan*/  parse_configuration (char const* const*,char const* const*) ; 
- scalar_t__ strdup (int /*<<< orphan*/ ) ; 
+
+
+
+typedef char const* rlimit ;
+
+
+ scalar_t__ SHOW_STATUS_YES ;
+ int SPECIAL_DEFAULT_TARGET ;
+ scalar_t__ _SHOW_STATUS_INVALID ;
+ scalar_t__ arg_default_unit ;
+ scalar_t__ arg_show_status ;
+ int assert (char const**) ;
+ int log_oom () ;
+ int parse_argv (int,char**) ;
+ int parse_configuration (char const* const*,char const* const*) ;
+ scalar_t__ strdup (int ) ;
 
 __attribute__((used)) static int load_configuration(
                 int argc,
@@ -44,7 +44,7 @@ __attribute__((used)) static int load_configuration(
                 return r;
         }
 
-        /* Initialize default unit */
+
         if (!arg_default_unit) {
                 arg_default_unit = strdup(SPECIAL_DEFAULT_TARGET);
                 if (!arg_default_unit) {
@@ -53,7 +53,7 @@ __attribute__((used)) static int load_configuration(
                 }
         }
 
-        /* Initialize the show status setting if it hasn't been set explicitly yet */
+
         if (arg_show_status == _SHOW_STATUS_INVALID)
                 arg_show_status = SHOW_STATUS_YES;
 

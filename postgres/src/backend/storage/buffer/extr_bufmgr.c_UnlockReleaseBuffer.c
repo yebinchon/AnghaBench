@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUFFER_LOCK_UNLOCK ; 
- int /*<<< orphan*/  LockBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseBuffer (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Buffer ;
+
+
+ int BUFFER_LOCK_UNLOCK ;
+ int LockBuffer (int ,int ) ;
+ int ReleaseBuffer (int ) ;
 
 void
 UnlockReleaseBuffer(Buffer buffer)
 {
-	LockBuffer(buffer, BUFFER_LOCK_UNLOCK);
-	ReleaseBuffer(buffer);
+ LockBuffer(buffer, BUFFER_LOCK_UNLOCK);
+ ReleaseBuffer(buffer);
 }

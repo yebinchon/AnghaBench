@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_txdelta_window_handler_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct file_baton {int /*<<< orphan*/  pool; int /*<<< orphan*/  base_checksum; int /*<<< orphan*/  dump_text; struct dump_edit_baton* eb; } ;
-struct dump_edit_baton {int /*<<< orphan*/  delta_file; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_DELTA_COMPRESSION_LEVEL_DEFAULT ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  apr_pstrdup (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/ * svn_stream_from_aprfile2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_txdelta_to_svndiff3 (int /*<<< orphan*/ *,void**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_txdelta_window_handler_t ;
+typedef int svn_stream_t ;
+typedef int svn_error_t ;
+struct file_baton {int pool; int base_checksum; int dump_text; struct dump_edit_baton* eb; } ;
+struct dump_edit_baton {int delta_file; } ;
+typedef int apr_pool_t ;
+
+
+ int SVN_DELTA_COMPRESSION_LEVEL_DEFAULT ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int apr_pstrdup (int ,char const*) ;
+ int * svn_stream_from_aprfile2 (int ,int ,int *) ;
+ int svn_txdelta_to_svndiff3 (int *,void**,int *,int ,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 apply_textdelta(void *file_baton, const char *base_checksum,
@@ -35,15 +35,15 @@ apply_textdelta(void *file_baton, const char *base_checksum,
   struct dump_edit_baton *eb = fb->eb;
   svn_stream_t *delta_filestream;
 
-  /* Use a temporary file to measure the Text-content-length */
+
   delta_filestream = svn_stream_from_aprfile2(eb->delta_file, TRUE, pool);
 
-  /* Prepare to write the delta to the delta_filestream */
+
   svn_txdelta_to_svndiff3(handler, handler_baton,
                           delta_filestream, 0,
                           SVN_DELTA_COMPRESSION_LEVEL_DEFAULT, pool);
 
-  /* Record that there's text to be dumped, and its base checksum. */
+
   fb->dump_text = TRUE;
   fb->base_checksum = apr_pstrdup(fb->pool, base_checksum);
 

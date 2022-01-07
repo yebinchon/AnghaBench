@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct snd_soc_dapm_widget {int dummy; } ;
 struct snd_kcontrol {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  S3C2410_GPJ (int) ; 
- int /*<<< orphan*/  SND_SOC_DAPM_EVENT_OFF (int) ; 
- int /*<<< orphan*/  gpio_set_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int S3C2410_GPJ (int) ;
+ int SND_SOC_DAPM_EVENT_OFF (int) ;
+ int gpio_set_value (int ,int ) ;
 
 __attribute__((used)) static int lm4853_event(struct snd_soc_dapm_widget *w,
-			struct snd_kcontrol *k, int event)
+   struct snd_kcontrol *k, int event)
 {
-	gpio_set_value(S3C2410_GPJ(1), SND_SOC_DAPM_EVENT_OFF(event));
+ gpio_set_value(S3C2410_GPJ(1), SND_SOC_DAPM_EVENT_OFF(event));
 
-	return 0;
+ return 0;
 }

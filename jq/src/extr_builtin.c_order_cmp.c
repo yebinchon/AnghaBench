@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jv ;
-typedef  enum cmp_op { ____Placeholder_cmp_op } cmp_op ;
 
-/* Variables and functions */
- int CMP_OP_GREATER ; 
- int CMP_OP_GREATEREQ ; 
- int CMP_OP_LESS ; 
- int CMP_OP_LESSEQ ; 
- int /*<<< orphan*/  jv_bool (int) ; 
- int jv_cmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_free (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int jv ;
+typedef enum cmp_op { ____Placeholder_cmp_op } cmp_op ;
+
+
+ int CMP_OP_GREATER ;
+ int CMP_OP_GREATEREQ ;
+ int CMP_OP_LESS ;
+ int CMP_OP_LESSEQ ;
+ int jv_bool (int) ;
+ int jv_cmp (int ,int ) ;
+ int jv_free (int ) ;
 
 __attribute__((used)) static jv order_cmp(jv input, jv a, jv b, enum cmp_op op) {
   jv_free(input);

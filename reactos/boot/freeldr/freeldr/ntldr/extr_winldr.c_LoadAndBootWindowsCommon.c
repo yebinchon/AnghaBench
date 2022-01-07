@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  USHORT ;
+
+
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+typedef int USHORT ;
 struct TYPE_20__ {scalar_t__ EntryPoint; } ;
-struct TYPE_19__ {TYPE_1__* Extension; int /*<<< orphan*/  ConfigurationRoot; } ;
-struct TYPE_18__ {int /*<<< orphan*/  LoaderPagesSpanned; } ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  TYPE_2__* PLOADER_PARAMETER_BLOCK ;
-typedef  TYPE_3__* PLDR_DATA_TABLE_ENTRY ;
-typedef  scalar_t__ PCSTR ;
-typedef  int /*<<< orphan*/  PCHAR ;
-typedef  int /*<<< orphan*/  (* KERNEL_ENTRY_POINT ) (TYPE_2__*) ;
-typedef  scalar_t__ BOOLEAN ;
-typedef  int /*<<< orphan*/  ARC_STATUS ;
+struct TYPE_19__ {TYPE_1__* Extension; int ConfigurationRoot; } ;
+struct TYPE_18__ {int LoaderPagesSpanned; } ;
+typedef int PVOID ;
+typedef TYPE_2__* PLOADER_PARAMETER_BLOCK ;
+typedef TYPE_3__* PLDR_DATA_TABLE_ENTRY ;
+typedef scalar_t__ PCSTR ;
+typedef int PCHAR ;
+typedef int (* KERNEL_ENTRY_POINT ) (TYPE_2__*) ;
+typedef scalar_t__ BOOLEAN ;
+typedef int ARC_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  ENOEXEC ; 
- int /*<<< orphan*/  ESUCCESS ; 
- int /*<<< orphan*/  IniCleanup () ; 
- scalar_t__ KI_USER_SHARED_DATA ; 
- scalar_t__ LoadWindowsCore (int /*<<< orphan*/ ,TYPE_2__*,scalar_t__,scalar_t__,TYPE_3__**) ; 
- int /*<<< orphan*/  LoaderPagesSpanned ; 
- int /*<<< orphan*/  MM_PAGE_SIZE ; 
- int /*<<< orphan*/  MachHwDetect () ; 
- int /*<<< orphan*/  MachPrepareForReactOS () ; 
- TYPE_2__* PaToVa (TYPE_2__*) ; 
- int /*<<< orphan*/  RtlZeroMemory (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  UiDrawBackdrop () ; 
- int /*<<< orphan*/  UiDrawProgressBarCenter (int,int,char*) ; 
- int /*<<< orphan*/  UiMessageBox (char*) ; 
- int /*<<< orphan*/  WinLdrInitializePhase1 (TYPE_2__*,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ WinLdrLoadBootDrivers (TYPE_2__*,scalar_t__) ; 
- int /*<<< orphan*/  WinLdrSetProcessorContext () ; 
- int /*<<< orphan*/  WinLdrSetupEms (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WinLdrSetupMachineDependent (TYPE_2__*) ; 
- int /*<<< orphan*/  WinLdrSetupMemoryLayout (TYPE_2__*) ; 
- int /*<<< orphan*/  WinLdrpDumpArcDisks (TYPE_2__*) ; 
- int /*<<< orphan*/  WinLdrpDumpBootDriver (TYPE_2__*) ; 
- int /*<<< orphan*/  WinLdrpDumpMemoryDescriptors (TYPE_2__*) ; 
- scalar_t__ strstr (scalar_t__,char*) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*) ; 
+
+ int ASSERT (int) ;
+ int ENOEXEC ;
+ int ESUCCESS ;
+ int IniCleanup () ;
+ scalar_t__ KI_USER_SHARED_DATA ;
+ scalar_t__ LoadWindowsCore (int ,TYPE_2__*,scalar_t__,scalar_t__,TYPE_3__**) ;
+ int LoaderPagesSpanned ;
+ int MM_PAGE_SIZE ;
+ int MachHwDetect () ;
+ int MachPrepareForReactOS () ;
+ TYPE_2__* PaToVa (TYPE_2__*) ;
+ int RtlZeroMemory (int ,int ) ;
+ int TRACE (char*,...) ;
+ int UiDrawBackdrop () ;
+ int UiDrawProgressBarCenter (int,int,char*) ;
+ int UiMessageBox (char*) ;
+ int WinLdrInitializePhase1 (TYPE_2__*,scalar_t__,scalar_t__,scalar_t__,int ) ;
+ scalar_t__ WinLdrLoadBootDrivers (TYPE_2__*,scalar_t__) ;
+ int WinLdrSetProcessorContext () ;
+ int WinLdrSetupEms (int ) ;
+ int WinLdrSetupMachineDependent (TYPE_2__*) ;
+ int WinLdrSetupMemoryLayout (TYPE_2__*) ;
+ int WinLdrpDumpArcDisks (TYPE_2__*) ;
+ int WinLdrpDumpBootDriver (TYPE_2__*) ;
+ int WinLdrpDumpMemoryDescriptors (TYPE_2__*) ;
+ scalar_t__ strstr (scalar_t__,char*) ;
+ int stub1 (TYPE_2__*) ;
 
 ARC_STATUS
 LoadAndBootWindowsCommon(
@@ -73,20 +73,20 @@ LoadAndBootWindowsCommon(
 
     ASSERT(OperatingSystemVersion != 0);
 
-#ifdef _M_IX86
-    /* Setup redirection support */
-    WinLdrSetupEms((PCHAR)BootOptions);
-#endif
 
-    /* Convert BootPath to SystemRoot */
+
+
+
+
+
     SystemRoot = strstr(BootPath, "\\");
 
-    /* Detect hardware */
+
     UiDrawBackdrop();
     UiDrawProgressBarCenter(20, 100, "Detecting hardware...");
     LoaderBlock->ConfigurationRoot = MachHwDetect();
 
-    /* Load the operating system core: the Kernel, the HAL and the Kernel Debugger Transport DLL */
+
     Success = LoadWindowsCore(OperatingSystemVersion,
                               LoaderBlock,
                               BootOptions,
@@ -98,57 +98,57 @@ LoadAndBootWindowsCommon(
         return ENOEXEC;
     }
 
-    /* Load boot drivers */
+
     UiDrawBackdrop();
     UiDrawProgressBarCenter(100, 100, "Loading boot drivers...");
     Success = WinLdrLoadBootDrivers(LoaderBlock, BootPath);
     TRACE("Boot drivers loading %s\n", Success ? "successful" : "failed");
 
-    /* Cleanup ini file */
+
     IniCleanup();
 
-    /* Initialize Phase 1 - no drivers loading anymore */
+
     WinLdrInitializePhase1(LoaderBlock,
                            BootOptions,
                            SystemRoot,
                            BootPath,
                            OperatingSystemVersion);
 
-    /* Save entry-point pointer and Loader block VAs */
+
     KiSystemStartup = (KERNEL_ENTRY_POINT)KernelDTE->EntryPoint;
     LoaderBlockVA = PaToVa(LoaderBlock);
 
-    /* "Stop all motors", change videomode */
+
     MachPrepareForReactOS();
 
-    /* Debugging... */
-    //DumpMemoryAllocMap();
 
-    /* Do the machine specific initialization */
+
+
+
     WinLdrSetupMachineDependent(LoaderBlock);
 
-    /* Map pages and create memory descriptors */
+
     WinLdrSetupMemoryLayout(LoaderBlock);
 
-    /* Set processor context */
+
     WinLdrSetProcessorContext();
 
-    /* Save final value of LoaderPagesSpanned */
+
     LoaderBlock->Extension->LoaderPagesSpanned = LoaderPagesSpanned;
 
     TRACE("Hello from paged mode, KiSystemStartup %p, LoaderBlockVA %p!\n",
           KiSystemStartup, LoaderBlockVA);
 
-    /* Zero KI_USER_SHARED_DATA page */
+
     RtlZeroMemory((PVOID)KI_USER_SHARED_DATA, MM_PAGE_SIZE);
 
     WinLdrpDumpMemoryDescriptors(LoaderBlockVA);
     WinLdrpDumpBootDriver(LoaderBlockVA);
-#ifndef _M_AMD64
-    WinLdrpDumpArcDisks(LoaderBlockVA);
-#endif
 
-    /* Pass control */
+    WinLdrpDumpArcDisks(LoaderBlockVA);
+
+
+
     (*KiSystemStartup)(LoaderBlockVA);
     return ESUCCESS;
 }

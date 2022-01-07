@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int ELEMENTSOF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * config_file ; 
- int /*<<< orphan*/  log_open () ; 
- int /*<<< orphan*/  log_parse_environment () ; 
- int /*<<< orphan*/  test_config_parse (unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_config_parse_iec_size () ; 
- int /*<<< orphan*/  test_config_parse_iec_uint64 () ; 
- int /*<<< orphan*/  test_config_parse_int () ; 
- int /*<<< orphan*/  test_config_parse_log_facility () ; 
- int /*<<< orphan*/  test_config_parse_log_level () ; 
- int /*<<< orphan*/  test_config_parse_mode () ; 
- int /*<<< orphan*/  test_config_parse_nsec () ; 
- int /*<<< orphan*/  test_config_parse_path () ; 
- int /*<<< orphan*/  test_config_parse_sec () ; 
- int /*<<< orphan*/  test_config_parse_si_size () ; 
- int /*<<< orphan*/  test_config_parse_strv () ; 
- int /*<<< orphan*/  test_config_parse_unsigned () ; 
+ unsigned int ELEMENTSOF (int *) ;
+ int * config_file ;
+ int log_open () ;
+ int log_parse_environment () ;
+ int test_config_parse (unsigned int,int ) ;
+ int test_config_parse_iec_size () ;
+ int test_config_parse_iec_uint64 () ;
+ int test_config_parse_int () ;
+ int test_config_parse_log_facility () ;
+ int test_config_parse_log_level () ;
+ int test_config_parse_mode () ;
+ int test_config_parse_nsec () ;
+ int test_config_parse_path () ;
+ int test_config_parse_sec () ;
+ int test_config_parse_si_size () ;
+ int test_config_parse_strv () ;
+ int test_config_parse_unsigned () ;
 
 int main(int argc, char **argv) {
         unsigned i;

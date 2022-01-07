@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8_t ;
-typedef  int /*<<< orphan*/  (* bt_mesh_dh_key_cb_t ) (int /*<<< orphan*/  const*,int /*<<< orphan*/  const) ;
-struct TYPE_6__ {int /*<<< orphan*/  const* x; int /*<<< orphan*/  const* y; int /*<<< orphan*/  member_0; } ;
-struct TYPE_5__ {int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ Point ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  const* BT_OCTET32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT_DBG (char*,int /*<<< orphan*/ ) ; 
- size_t BT_OCTET32_LEN ; 
- int /*<<< orphan*/  ECC_PointMult (TYPE_2__*,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  KEY_LENGTH_DWORDS_P256 ; 
- int /*<<< orphan*/  bt_hex (int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  const* bt_mesh_private_key ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,size_t) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u8_t ;
+typedef int (* bt_mesh_dh_key_cb_t ) (int const*,int const) ;
+struct TYPE_6__ {int const* x; int const* y; int member_0; } ;
+struct TYPE_5__ {int member_0; } ;
+typedef TYPE_2__ Point ;
+typedef int DWORD ;
+typedef int const* BT_OCTET32 ;
+
+
+ int BT_DBG (char*,int ) ;
+ size_t BT_OCTET32_LEN ;
+ int ECC_PointMult (TYPE_2__*,TYPE_2__*,int *,int ) ;
+ int KEY_LENGTH_DWORDS_P256 ;
+ int bt_hex (int const*,int) ;
+ int const* bt_mesh_private_key ;
+ int memcpy (int const*,int const*,size_t) ;
 
 int bt_mesh_dh_key_gen(const u8_t remote_pk[64], bt_mesh_dh_key_cb_t cb, const u8_t idx)
 {
@@ -49,7 +49,7 @@ int bt_mesh_dh_key_gen(const u8_t remote_pk[64], bt_mesh_dh_key_cb_t cb, const u
     BT_DBG("new public key x = %s", bt_hex(new_pub_key.x, 32));
     BT_DBG("new public key y = %s", bt_hex(new_pub_key.y, 32));
 
-    if (cb != NULL) {
+    if (cb != ((void*)0)) {
         cb((const u8_t *)new_pub_key.x, idx);
     }
 

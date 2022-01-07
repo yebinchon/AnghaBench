@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  float WCHAR ;
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  IPropertyBag ;
-typedef  int /*<<< orphan*/  IMoniker ;
-typedef  int /*<<< orphan*/  IEnumMoniker ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- scalar_t__ IEnumMoniker_Next (int /*<<< orphan*/ *,int,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IPropertyBag ; 
- int /*<<< orphan*/  IMoniker_BindToStorage (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMoniker_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IPropertyBag_Read (int /*<<< orphan*/ *,float const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IPropertyBag_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SUCCEEDED (int /*<<< orphan*/ ) ; 
- scalar_t__ S_OK ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  V_BSTR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lstrcmpW (int /*<<< orphan*/ ,float const*) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef float WCHAR ;
+typedef int VARIANT ;
+typedef int ULONG ;
+typedef int LPVOID ;
+typedef int IPropertyBag ;
+typedef int IMoniker ;
+typedef int IEnumMoniker ;
+typedef int HRESULT ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ FALSE ;
+ scalar_t__ IEnumMoniker_Next (int *,int,int **,int *) ;
+ int IID_IPropertyBag ;
+ int IMoniker_BindToStorage (int *,int *,int *,int *,int *) ;
+ int IMoniker_Release (int *) ;
+ int IPropertyBag_Read (int *,float const*,int *,int *) ;
+ int IPropertyBag_Release (int *) ;
+ int SUCCEEDED (int ) ;
+ scalar_t__ S_OK ;
+ scalar_t__ TRUE ;
+ int V_BSTR (int *) ;
+ int VariantClear (int *) ;
+ int VariantInit (int *) ;
+ int lstrcmpW (int ,float const*) ;
+ int ok (int ,char*,int ) ;
 
 __attribute__((used)) static BOOL enum_find_filter(const WCHAR *wszFilterName, IEnumMoniker *pEnum)
 {
-    IMoniker *pMoniker = NULL;
+    IMoniker *pMoniker = ((void*)0);
     BOOL found = FALSE;
     ULONG nb;
     HRESULT hr;
@@ -47,15 +47,15 @@ __attribute__((used)) static BOOL enum_find_filter(const WCHAR *wszFilterName, I
 
     while(!found && IEnumMoniker_Next(pEnum, 1, &pMoniker, &nb) == S_OK)
     {
-        IPropertyBag * pPropBagCat = NULL;
+        IPropertyBag * pPropBagCat = ((void*)0);
         VARIANT var;
 
         VariantInit(&var);
 
-        hr = IMoniker_BindToStorage(pMoniker, NULL, NULL, &IID_IPropertyBag, (LPVOID*)&pPropBagCat);
+        hr = IMoniker_BindToStorage(pMoniker, ((void*)0), ((void*)0), &IID_IPropertyBag, (LPVOID*)&pPropBagCat);
         ok(SUCCEEDED(hr), "IMoniker_BindToStorage failed with %x\n", hr);
 
-        hr = IPropertyBag_Read(pPropBagCat, wszFriendlyName, &var, NULL);
+        hr = IPropertyBag_Read(pPropBagCat, wszFriendlyName, &var, ((void*)0));
         ok(SUCCEEDED(hr), "IPropertyBag_Read failed with %x\n", hr);
 
         if (!lstrcmpW(V_BSTR(&var), wszFilterName))

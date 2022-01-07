@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ipmac_telem {scalar_t__ match; int /*<<< orphan*/  timeout; } ;
 
-/* Variables and functions */
- scalar_t__ MAC_FILLED ; 
- scalar_t__ MAC_UNSET ; 
- int /*<<< orphan*/  ip_set_timeout_expired (int /*<<< orphan*/ ) ; 
+
+
+
+struct ipmac_telem {scalar_t__ match; int timeout; } ;
+
+
+ scalar_t__ MAC_FILLED ;
+ scalar_t__ MAC_UNSET ;
+ int ip_set_timeout_expired (int ) ;
 
 __attribute__((used)) static inline int
 bitmap_ipmac_exist(const struct ipmac_telem *elem)
 {
-	return elem->match == MAC_UNSET ||
-	       (elem->match == MAC_FILLED &&
-		!ip_set_timeout_expired(elem->timeout));
+ return elem->match == MAC_UNSET ||
+        (elem->match == MAC_FILLED &&
+  !ip_set_timeout_expired(elem->timeout));
 }

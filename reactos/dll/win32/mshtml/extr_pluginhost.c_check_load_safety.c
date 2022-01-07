@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct CONFIRMSAFETY {int /*<<< orphan*/  dwFlags; int /*<<< orphan*/  pUnk; int /*<<< orphan*/  clsid; } ;
-typedef  int /*<<< orphan*/  cs ;
-struct TYPE_5__ {TYPE_1__* doc; int /*<<< orphan*/  plugin_unk; int /*<<< orphan*/  clsid; } ;
-struct TYPE_4__ {int /*<<< orphan*/  IInternetHostSecurityManager_iface; } ;
-typedef  TYPE_2__ PluginHost ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONFIRMSAFETYACTION_LOADOBJECT ; 
- int /*<<< orphan*/  CoTaskMemFree (int /*<<< orphan*/ *) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int FALSE ; 
- int /*<<< orphan*/  GUID_CUSTOM_CONFIRMOBJECTSAFETY ; 
- int /*<<< orphan*/  IInternetHostSecurityManager_QueryCustomPolicy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,scalar_t__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- scalar_t__ URLPOLICY_ALLOW ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct CONFIRMSAFETY {int dwFlags; int pUnk; int clsid; } ;
+typedef int cs ;
+struct TYPE_5__ {TYPE_1__* doc; int plugin_unk; int clsid; } ;
+struct TYPE_4__ {int IInternetHostSecurityManager_iface; } ;
+typedef TYPE_2__ PluginHost ;
+typedef int HRESULT ;
+typedef scalar_t__ DWORD ;
+typedef int BYTE ;
+typedef int BOOL ;
+
+
+ int CONFIRMSAFETYACTION_LOADOBJECT ;
+ int CoTaskMemFree (int *) ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int GUID_CUSTOM_CONFIRMOBJECTSAFETY ;
+ int IInternetHostSecurityManager_QueryCustomPolicy (int *,int *,int **,scalar_t__*,int *,int,int ) ;
+ scalar_t__ URLPOLICY_ALLOW ;
 
 __attribute__((used)) static BOOL check_load_safety(PluginHost *host)
 {

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int pointer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Count ; 
- int /*<<< orphan*/  EAX ; 
- int /*<<< orphan*/  EBX ; 
- int /*<<< orphan*/  ECX ; 
- int /*<<< orphan*/  HOST_CCREG ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ dyna_linker ; 
- int /*<<< orphan*/  emit_add (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_jmp (int) ; 
- int /*<<< orphan*/  emit_movimm (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_readword (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_sub (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_writeword (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  last_count ; 
- int /*<<< orphan*/  next_interupt ; 
+
+
+
+typedef int u8 ;
+typedef int pointer ;
+
+
+ int Count ;
+ int EAX ;
+ int EBX ;
+ int ECX ;
+ int HOST_CCREG ;
+ int assert (int) ;
+ scalar_t__ dyna_linker ;
+ int emit_add (int ,int ,int ) ;
+ int emit_jmp (int) ;
+ int emit_movimm (int,int ) ;
+ int emit_readword (int,int ) ;
+ int emit_sub (int ,int ,int ) ;
+ int emit_writeword (int ,int) ;
+ int last_count ;
+ int next_interupt ;
 
 emit_extjump(pointer addr, int target)
 {
@@ -45,16 +45,5 @@ emit_extjump(pointer addr, int target)
   }
   emit_movimm(target,EAX);
   emit_movimm(addr,EBX);
-  //assert(addr>=0x7000000&&addr<0x7FFFFFF);
-//DEBUG >
-#ifdef DEBUG_CYCLE_COUNT
-  emit_readword((int)&last_count,ECX);
-  emit_add(HOST_CCREG,ECX,HOST_CCREG);
-  emit_readword((int)&next_interupt,ECX);
-  emit_writeword(HOST_CCREG,(int)&Count);
-  emit_sub(HOST_CCREG,ECX,HOST_CCREG);
-  emit_writeword(ECX,(int)&last_count);
-#endif
-//DEBUG <
   emit_jmp((pointer)dyna_linker);
 }

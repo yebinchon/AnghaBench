@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  v64 ;
-typedef  int /*<<< orphan*/  v32 ;
-typedef  int /*<<< orphan*/  v16 ;
-typedef  scalar_t__ uint8_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int v64 ;
+typedef int v32 ;
+typedef int v16 ;
+typedef scalar_t__ uint8_t ;
 struct TYPE_3__ {scalar_t__ contents; } ;
-typedef  TYPE_1__ intset ;
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  int /*<<< orphan*/  int32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
+typedef TYPE_1__ intset ;
+typedef int int64_t ;
+typedef int int32_t ;
+typedef int int16_t ;
 
-/* Variables and functions */
- scalar_t__ INTSET_ENC_INT32 ; 
- scalar_t__ INTSET_ENC_INT64 ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memrev16ifbe (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memrev32ifbe (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memrev64ifbe (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ INTSET_ENC_INT32 ;
+ scalar_t__ INTSET_ENC_INT64 ;
+ int memcpy (int *,int *,int) ;
+ int memrev16ifbe (int *) ;
+ int memrev32ifbe (int *) ;
+ int memrev64ifbe (int *) ;
 
 __attribute__((used)) static int64_t _intsetGetEncoded(intset *is, int pos, uint8_t enc) {
     int64_t v64;

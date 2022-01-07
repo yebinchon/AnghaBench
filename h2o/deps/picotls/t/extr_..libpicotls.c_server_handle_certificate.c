@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  state; int /*<<< orphan*/  key_schedule; } ;
-typedef  TYPE_1__ ptls_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int state; int key_schedule; } ;
+typedef TYPE_1__ ptls_t ;
 struct TYPE_7__ {scalar_t__ len; scalar_t__ base; } ;
-typedef  TYPE_2__ ptls_iovec_t ;
+typedef TYPE_2__ ptls_iovec_t ;
 
-/* Variables and functions */
- int PTLS_ALERT_CERTIFICATE_REQUIRED ; 
- int PTLS_ERROR_IN_PROGRESS ; 
- scalar_t__ PTLS_HANDSHAKE_HEADER_SIZE ; 
- int /*<<< orphan*/  PTLS_STATE_SERVER_EXPECT_CERTIFICATE_VERIFY ; 
- int handle_certificate (TYPE_1__*,scalar_t__,scalar_t__,int*) ; 
- int /*<<< orphan*/  ptls__key_schedule_update_hash (int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
+
+ int PTLS_ALERT_CERTIFICATE_REQUIRED ;
+ int PTLS_ERROR_IN_PROGRESS ;
+ scalar_t__ PTLS_HANDSHAKE_HEADER_SIZE ;
+ int PTLS_STATE_SERVER_EXPECT_CERTIFICATE_VERIFY ;
+ int handle_certificate (TYPE_1__*,scalar_t__,scalar_t__,int*) ;
+ int ptls__key_schedule_update_hash (int ,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static int server_handle_certificate(ptls_t *tls, ptls_iovec_t message)
 {

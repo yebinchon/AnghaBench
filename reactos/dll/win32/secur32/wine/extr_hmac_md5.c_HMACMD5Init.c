@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {unsigned char const* digest; } ;
 struct TYPE_8__ {unsigned char* outer_padding; TYPE_1__ ctx; } ;
-typedef  TYPE_1__ MD5_CTX ;
-typedef  TYPE_2__ HMAC_MD5_CTX ;
+typedef TYPE_1__ MD5_CTX ;
+typedef TYPE_2__ HMAC_MD5_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MD5Final (TYPE_1__*) ; 
- int /*<<< orphan*/  MD5Init (TYPE_1__*) ; 
- int /*<<< orphan*/  MD5Update (TYPE_1__*,unsigned char const*,int) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,unsigned int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
+
+ int MD5Final (TYPE_1__*) ;
+ int MD5Init (TYPE_1__*) ;
+ int MD5Update (TYPE_1__*,unsigned char const*,int) ;
+ int memcpy (unsigned char*,unsigned char const*,unsigned int) ;
+ int memset (unsigned char*,int ,int) ;
 
 void HMACMD5Init(HMAC_MD5_CTX *ctx, const unsigned char *key, unsigned int key_len)
 {

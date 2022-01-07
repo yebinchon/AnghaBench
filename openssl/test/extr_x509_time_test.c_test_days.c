@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct tm {int /*<<< orphan*/  tm_wday; int /*<<< orphan*/  tm_yday; } ;
-typedef  int /*<<< orphan*/  d ;
-struct TYPE_2__ {int /*<<< orphan*/  wd; int /*<<< orphan*/  yd; int /*<<< orphan*/  d; int /*<<< orphan*/  m; int /*<<< orphan*/  y; } ;
-typedef  int /*<<< orphan*/  ASN1_TIME ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_TIME_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ASN1_TIME_new () ; 
- int /*<<< orphan*/  ASN1_TIME_set_string (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ASN1_TIME_to_tm (int /*<<< orphan*/ *,struct tm*) ; 
- int /*<<< orphan*/  BIO_snprintf (char*,int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ TEST_int_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- scalar_t__ TEST_true (int /*<<< orphan*/ ) ; 
- TYPE_1__* day_of_week_tests ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct tm {int tm_wday; int tm_yday; } ;
+typedef int d ;
+struct TYPE_2__ {int wd; int yd; int d; int m; int y; } ;
+typedef int ASN1_TIME ;
+
+
+ int ASN1_TIME_free (int *) ;
+ int * ASN1_TIME_new () ;
+ int ASN1_TIME_set_string (int *,char*) ;
+ int ASN1_TIME_to_tm (int *,struct tm*) ;
+ int BIO_snprintf (char*,int,char*,int ,int ,int ) ;
+ scalar_t__ TEST_int_eq (int ,int ) ;
+ int TEST_ptr (int *) ;
+ scalar_t__ TEST_true (int ) ;
+ TYPE_1__* day_of_week_tests ;
 
 __attribute__((used)) static int test_days(int n)
 {
     char d[16];
-    ASN1_TIME *a = NULL;
+    ASN1_TIME *a = ((void*)0);
     struct tm t;
     int r;
 

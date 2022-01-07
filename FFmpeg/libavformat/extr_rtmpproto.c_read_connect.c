@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int /*<<< orphan*/  tmpstr ;
-typedef  int /*<<< orphan*/  command ;
-typedef  int /*<<< orphan*/  URLContext ;
+
+
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+typedef char uint8_t ;
+typedef int tmpstr ;
+typedef int command ;
+typedef int URLContext ;
 struct TYPE_19__ {scalar_t__ buffer; } ;
-struct TYPE_18__ {char* app; int /*<<< orphan*/ * nb_prev_pkt; int /*<<< orphan*/ * prev_pkt; int /*<<< orphan*/  out_chunk_size; int /*<<< orphan*/  stream; int /*<<< orphan*/  max_sent_unacked; int /*<<< orphan*/  in_chunk_size; } ;
-struct TYPE_17__ {scalar_t__ type; char* data; int size; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ RTMPPacket ;
-typedef  TYPE_2__ RTMPContext ;
-typedef  TYPE_3__ GetByteContext ;
+struct TYPE_18__ {char* app; int * nb_prev_pkt; int * prev_pkt; int out_chunk_size; int stream; int max_sent_unacked; int in_chunk_size; } ;
+struct TYPE_17__ {scalar_t__ type; char* data; int size; int member_0; } ;
+typedef TYPE_1__ RTMPPacket ;
+typedef TYPE_2__ RTMPContext ;
+typedef TYPE_3__ GetByteContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int AVERROR_UNKNOWN ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_TRACE ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- scalar_t__ RTMP_CTRL_ABORT_MESSAGE ; 
- int /*<<< orphan*/  RTMP_NETWORK_CHANNEL ; 
- int RTMP_PKTDATA_DEFAULT_SIZE ; 
- scalar_t__ RTMP_PT_BYTES_READ ; 
- scalar_t__ RTMP_PT_CHUNK_SIZE ; 
- scalar_t__ RTMP_PT_INVOKE ; 
- scalar_t__ RTMP_PT_SET_PEER_BW ; 
- scalar_t__ RTMP_PT_USER_CONTROL ; 
- scalar_t__ RTMP_PT_WINDOW_ACK_SIZE ; 
- int /*<<< orphan*/  RTMP_SYSTEM_CHANNEL ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ bytestream2_get_bytes_left (TYPE_3__*) ; 
- int /*<<< orphan*/  bytestream2_init (TYPE_3__*,char const*,int) ; 
- int /*<<< orphan*/  bytestream_put_be16 (char**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bytestream_put_be32 (char**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bytestream_put_byte (char**,int) ; 
- int ff_amf_get_field_value (scalar_t__,scalar_t__,char*,char*,int) ; 
- int ff_amf_read_number (TYPE_3__*,double*) ; 
- scalar_t__ ff_amf_read_string (TYPE_3__*,char*,int,int*) ; 
- int /*<<< orphan*/  ff_amf_write_field_name (char**,char*) ; 
- int /*<<< orphan*/  ff_amf_write_null (char**) ; 
- int /*<<< orphan*/  ff_amf_write_number (char**,int) ; 
- int /*<<< orphan*/  ff_amf_write_object_end (char**) ; 
- int /*<<< orphan*/  ff_amf_write_object_start (char**) ; 
- int /*<<< orphan*/  ff_amf_write_string (char**,char*) ; 
- int ff_rtmp_packet_create (TYPE_1__*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ff_rtmp_packet_destroy (TYPE_1__*) ; 
- int /*<<< orphan*/  ff_rtmp_packet_dump (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int ff_rtmp_packet_read (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int ff_rtmp_packet_write (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int handle_chunk_size (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int handle_set_peer_bw (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int handle_window_ack_size (int /*<<< orphan*/ *,TYPE_1__*) ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AVERROR_UNKNOWN ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_TRACE ;
+ int AV_LOG_WARNING ;
+ scalar_t__ RTMP_CTRL_ABORT_MESSAGE ;
+ int RTMP_NETWORK_CHANNEL ;
+ int RTMP_PKTDATA_DEFAULT_SIZE ;
+ scalar_t__ RTMP_PT_BYTES_READ ;
+ scalar_t__ RTMP_PT_CHUNK_SIZE ;
+ scalar_t__ RTMP_PT_INVOKE ;
+ scalar_t__ RTMP_PT_SET_PEER_BW ;
+ scalar_t__ RTMP_PT_USER_CONTROL ;
+ scalar_t__ RTMP_PT_WINDOW_ACK_SIZE ;
+ int RTMP_SYSTEM_CHANNEL ;
+ int av_log (int *,int ,char*,...) ;
+ scalar_t__ bytestream2_get_bytes_left (TYPE_3__*) ;
+ int bytestream2_init (TYPE_3__*,char const*,int) ;
+ int bytestream_put_be16 (char**,int ) ;
+ int bytestream_put_be32 (char**,int ) ;
+ int bytestream_put_byte (char**,int) ;
+ int ff_amf_get_field_value (scalar_t__,scalar_t__,char*,char*,int) ;
+ int ff_amf_read_number (TYPE_3__*,double*) ;
+ scalar_t__ ff_amf_read_string (TYPE_3__*,char*,int,int*) ;
+ int ff_amf_write_field_name (char**,char*) ;
+ int ff_amf_write_null (char**) ;
+ int ff_amf_write_number (char**,int) ;
+ int ff_amf_write_object_end (char**) ;
+ int ff_amf_write_object_start (char**) ;
+ int ff_amf_write_string (char**,char*) ;
+ int ff_rtmp_packet_create (TYPE_1__*,int ,scalar_t__,int ,int) ;
+ int ff_rtmp_packet_destroy (TYPE_1__*) ;
+ int ff_rtmp_packet_dump (int *,TYPE_1__*) ;
+ int ff_rtmp_packet_read (int ,TYPE_1__*,int ,int *,int *) ;
+ int ff_rtmp_packet_write (int ,TYPE_1__*,int ,int *,int *) ;
+ int handle_chunk_size (int *,TYPE_1__*) ;
+ int handle_set_peer_bw (int *,TYPE_1__*) ;
+ int handle_window_ack_size (int *,TYPE_1__*) ;
+ scalar_t__ strcmp (char*,char*) ;
 
 __attribute__((used)) static int read_connect(URLContext *s, RTMPContext *rt)
 {
@@ -77,14 +77,14 @@ __attribute__((used)) static int read_connect(URLContext *s, RTMPContext *rt)
     uint8_t tmpstr[256];
     GetByteContext gbc;
 
-    // handle RTMP Protocol Control Messages
+
     for (;;) {
         if ((ret = ff_rtmp_packet_read(rt->stream, &pkt, rt->in_chunk_size,
                                        &rt->prev_pkt[0], &rt->nb_prev_pkt[0])) < 0)
             return ret;
-#ifdef DEBUG
-        ff_rtmp_packet_dump(s, &pkt);
-#endif
+
+
+
         if (pkt.type == RTMP_PT_CHUNK_SIZE) {
             if ((ret = handle_chunk_size(s, &pkt)) < 0) {
                 ff_rtmp_packet_destroy(&pkt);
@@ -107,7 +107,7 @@ __attribute__((used)) static int read_connect(URLContext *s, RTMPContext *rt)
                 return ret;
             }
         } else if (pkt.type == RTMP_PT_INVOKE) {
-            // received RTMP Command Message
+
             break;
         } else {
             av_log(s, AV_LOG_ERROR, "Unknown control message type (%d)\n", pkt.type);
@@ -130,7 +130,7 @@ __attribute__((used)) static int read_connect(URLContext *s, RTMPContext *rt)
     ret = ff_amf_read_number(&gbc, &seqnum);
     if (ret)
         av_log(s, AV_LOG_WARNING, "SeqNum not found\n");
-    /* Here one could parse an AMF Object with data as flashVers and others. */
+
     ret = ff_amf_get_field_value(gbc.buffer,
                                  gbc.buffer + bytestream2_get_bytes_left(&gbc),
                                  "app", tmpstr, sizeof(tmpstr));
@@ -141,29 +141,14 @@ __attribute__((used)) static int read_connect(URLContext *s, RTMPContext *rt)
                tmpstr, rt->app);
     ff_rtmp_packet_destroy(&pkt);
 
-    // Send Window Acknowledgement Size (as defined in specification)
+
     if ((ret = ff_rtmp_packet_create(&pkt, RTMP_NETWORK_CHANNEL,
                                      RTMP_PT_WINDOW_ACK_SIZE, 0, 4)) < 0)
         return ret;
     p = pkt.data;
-    // Inform the peer about how often we want acknowledgements about what
-    // we send. (We don't check for the acknowledgements currently.)
+
+
     bytestream_put_be32(&p, rt->max_sent_unacked);
-    pkt.size = p - pkt.data;
-    ret = ff_rtmp_packet_write(rt->stream, &pkt, rt->out_chunk_size,
-                               &rt->prev_pkt[1], &rt->nb_prev_pkt[1]);
-    ff_rtmp_packet_destroy(&pkt);
-    if (ret < 0)
-        return ret;
-    // Set Peer Bandwidth
-    if ((ret = ff_rtmp_packet_create(&pkt, RTMP_NETWORK_CHANNEL,
-                                     RTMP_PT_SET_PEER_BW, 0, 5)) < 0)
-        return ret;
-    p = pkt.data;
-    // Tell the peer to only send this many bytes unless it gets acknowledgements.
-    // This could be any arbitrary value we want here.
-    bytestream_put_be32(&p, rt->max_sent_unacked);
-    bytestream_put_byte(&p, 2); // dynamic
     pkt.size = p - pkt.data;
     ret = ff_rtmp_packet_write(rt->stream, &pkt, rt->out_chunk_size,
                                &rt->prev_pkt[1], &rt->nb_prev_pkt[1]);
@@ -171,21 +156,36 @@ __attribute__((used)) static int read_connect(URLContext *s, RTMPContext *rt)
     if (ret < 0)
         return ret;
 
-    // User control
+    if ((ret = ff_rtmp_packet_create(&pkt, RTMP_NETWORK_CHANNEL,
+                                     RTMP_PT_SET_PEER_BW, 0, 5)) < 0)
+        return ret;
+    p = pkt.data;
+
+
+    bytestream_put_be32(&p, rt->max_sent_unacked);
+    bytestream_put_byte(&p, 2);
+    pkt.size = p - pkt.data;
+    ret = ff_rtmp_packet_write(rt->stream, &pkt, rt->out_chunk_size,
+                               &rt->prev_pkt[1], &rt->nb_prev_pkt[1]);
+    ff_rtmp_packet_destroy(&pkt);
+    if (ret < 0)
+        return ret;
+
+
     if ((ret = ff_rtmp_packet_create(&pkt, RTMP_NETWORK_CHANNEL,
                                      RTMP_PT_USER_CONTROL, 0, 6)) < 0)
         return ret;
 
     p = pkt.data;
-    bytestream_put_be16(&p, 0); // 0 -> Stream Begin
-    bytestream_put_be32(&p, 0); // Stream 0
+    bytestream_put_be16(&p, 0);
+    bytestream_put_be32(&p, 0);
     ret = ff_rtmp_packet_write(rt->stream, &pkt, rt->out_chunk_size,
                                &rt->prev_pkt[1], &rt->nb_prev_pkt[1]);
     ff_rtmp_packet_destroy(&pkt);
     if (ret < 0)
         return ret;
 
-    // Chunk size
+
     if ((ret = ff_rtmp_packet_create(&pkt, RTMP_NETWORK_CHANNEL,
                                      RTMP_PT_CHUNK_SIZE, 0, 4)) < 0)
         return ret;
@@ -198,7 +198,7 @@ __attribute__((used)) static int read_connect(URLContext *s, RTMPContext *rt)
     if (ret < 0)
         return ret;
 
-    // Send _result NetConnection.Connect.Success to connect
+
     if ((ret = ff_rtmp_packet_create(&pkt, RTMP_SYSTEM_CHANNEL,
                                      RTMP_PT_INVOKE, 0,
                                      RTMP_PKTDATA_DEFAULT_SIZE)) < 0)

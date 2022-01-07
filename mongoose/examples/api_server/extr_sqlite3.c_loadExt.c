@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  sqlite3 ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * sqlite3_context_db_handle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- scalar_t__ sqlite3_load_extension (int /*<<< orphan*/ *,char const*,char const*,char**) ; 
- int /*<<< orphan*/  sqlite3_result_error (int /*<<< orphan*/ *,char*,int) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+typedef int sqlite3 ;
+
+
+ int * sqlite3_context_db_handle (int *) ;
+ int sqlite3_free (char*) ;
+ scalar_t__ sqlite3_load_extension (int *,char const*,char const*,char**) ;
+ int sqlite3_result_error (int *,char*,int) ;
+ scalar_t__ sqlite3_value_text (int *) ;
 
 __attribute__((used)) static void loadExt(sqlite3_context *context, int argc, sqlite3_value **argv){
   const char *zFile = (const char *)sqlite3_value_text(argv[0]);

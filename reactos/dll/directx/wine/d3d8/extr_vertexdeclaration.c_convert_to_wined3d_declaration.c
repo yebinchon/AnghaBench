@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_vertex_element {size_t input_slot; int offset; size_t output_slot; int /*<<< orphan*/  usage_idx; int /*<<< orphan*/  usage; int /*<<< orphan*/  method; scalar_t__ instance_data_step_rate; int /*<<< orphan*/  input_slot_class; int /*<<< orphan*/  format; } ;
-typedef  size_t WORD ;
-typedef  unsigned int UINT ;
-struct TYPE_2__ {int /*<<< orphan*/  usage_idx; int /*<<< orphan*/  usage; } ;
-typedef  size_t DWORD ;
-typedef  int D3DVSD_TOKENTYPE ;
 
-/* Variables and functions */
- size_t const D3DVSD_DATALOADTYPEMASK ; 
- size_t const D3DVSD_DATATYPEMASK ; 
- size_t const D3DVSD_DATATYPESHIFT ; 
- size_t const D3DVSD_END () ; 
- int D3DVSD_SKIPCOUNTMASK ; 
- int D3DVSD_SKIPCOUNTSHIFT ; 
- size_t const D3DVSD_STREAMNUMBERMASK ; 
- size_t const D3DVSD_STREAMNUMBERSHIFT ; 
- size_t const D3DVSD_STREAMTESSMASK ; 
- size_t const D3DVSD_TOKENTYPEMASK ; 
- size_t const D3DVSD_TOKENTYPESHIFT ; 
- int D3DVSD_TOKEN_STREAM ; 
- int D3DVSD_TOKEN_STREAMDATA ; 
- size_t const D3DVSD_VERTEXREGMASK ; 
- size_t const D3DVSD_VERTEXREGSHIFT ; 
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  WINED3D_DECL_METHOD_DEFAULT ; 
- int /*<<< orphan*/  WINED3D_INPUT_PER_VERTEX_DATA ; 
- struct wined3d_vertex_element* heap_alloc_zero (int) ; 
- int /*<<< orphan*/  parse_token (size_t const*) ; 
- int /*<<< orphan*/ * wined3d_format_lookup ; 
- scalar_t__* wined3d_type_sizes ; 
- TYPE_1__* wined3d_usage_lookup ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct wined3d_vertex_element {size_t input_slot; int offset; size_t output_slot; int usage_idx; int usage; int method; scalar_t__ instance_data_step_rate; int input_slot_class; int format; } ;
+typedef size_t WORD ;
+typedef unsigned int UINT ;
+struct TYPE_2__ {int usage_idx; int usage; } ;
+typedef size_t DWORD ;
+typedef int D3DVSD_TOKENTYPE ;
+
+
+ size_t const D3DVSD_DATALOADTYPEMASK ;
+ size_t const D3DVSD_DATATYPEMASK ;
+ size_t const D3DVSD_DATATYPESHIFT ;
+ size_t const D3DVSD_END () ;
+ int D3DVSD_SKIPCOUNTMASK ;
+ int D3DVSD_SKIPCOUNTSHIFT ;
+ size_t const D3DVSD_STREAMNUMBERMASK ;
+ size_t const D3DVSD_STREAMNUMBERSHIFT ;
+ size_t const D3DVSD_STREAMTESSMASK ;
+ size_t const D3DVSD_TOKENTYPEMASK ;
+ size_t const D3DVSD_TOKENTYPESHIFT ;
+ int D3DVSD_TOKEN_STREAM ;
+ int D3DVSD_TOKEN_STREAMDATA ;
+ size_t const D3DVSD_VERTEXREGMASK ;
+ size_t const D3DVSD_VERTEXREGSHIFT ;
+ int ERR (char*) ;
+ int TRACE (char*,...) ;
+ int WINED3D_DECL_METHOD_DEFAULT ;
+ int WINED3D_INPUT_PER_VERTEX_DATA ;
+ struct wined3d_vertex_element* heap_alloc_zero (int) ;
+ int parse_token (size_t const*) ;
+ int * wined3d_format_lookup ;
+ scalar_t__* wined3d_type_sizes ;
+ TYPE_1__* wined3d_usage_lookup ;
 
 __attribute__((used)) static UINT convert_to_wined3d_declaration(const DWORD *d3d8_elements, DWORD *d3d8_elements_size,
         struct wined3d_vertex_element **wined3d_elements)
@@ -56,7 +56,7 @@ __attribute__((used)) static UINT convert_to_wined3d_declaration(const DWORD *d3
 
     TRACE("d3d8_elements %p, d3d8_elements_size %p, wined3d_elements %p\n", d3d8_elements, d3d8_elements_size, wined3d_elements);
 
-    /* 128 should be enough for anyone... */
+
     *wined3d_elements = heap_alloc_zero(128 * sizeof(**wined3d_elements));
     while (D3DVSD_END() != *token)
     {
@@ -68,7 +68,7 @@ __attribute__((used)) static UINT convert_to_wined3d_declaration(const DWORD *d3
             offset = 0;
         } else if (token_type == D3DVSD_TOKEN_STREAMDATA && !(*token & D3DVSD_DATALOADTYPEMASK)) {
             DWORD type = ((*token & D3DVSD_DATATYPEMASK) >> D3DVSD_DATATYPESHIFT);
-            DWORD reg  = ((*token & D3DVSD_VERTEXREGMASK) >> D3DVSD_VERTEXREGSHIFT);
+            DWORD reg = ((*token & D3DVSD_VERTEXREGMASK) >> D3DVSD_VERTEXREGSHIFT);
 
             TRACE("Adding element %d:\n", element_count);
 

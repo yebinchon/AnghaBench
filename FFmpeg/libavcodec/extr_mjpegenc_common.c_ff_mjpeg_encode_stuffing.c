@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_11__ {int active_thread_type; } ;
-struct TYPE_10__ {int /*<<< orphan*/  uni_chroma_ac_vlc_len; int /*<<< orphan*/  uni_ac_vlc_len; int /*<<< orphan*/  huff_size_ac_chrominance; int /*<<< orphan*/  huff_size_ac_luminance; } ;
-struct TYPE_9__ {int mb_y; scalar_t__ huffman; int esc_pos; int mb_height; int* last_dc; int intra_dc_precision; TYPE_5__* avctx; int /*<<< orphan*/  pb; int /*<<< orphan*/  chroma_intra_matrix; int /*<<< orphan*/  intra_matrix; int /*<<< orphan*/  pred; int /*<<< orphan*/  intra_scantable; int /*<<< orphan*/  intra_chroma_ac_vlc_last_length; int /*<<< orphan*/  intra_chroma_ac_vlc_length; int /*<<< orphan*/  intra_ac_vlc_last_length; int /*<<< orphan*/  intra_ac_vlc_length; TYPE_2__* mjpeg_ctx; int /*<<< orphan*/  mb_x; } ;
-typedef  int /*<<< orphan*/  PutBitContext ;
-typedef  TYPE_1__ MpegEncContext ;
-typedef  TYPE_2__ MJpegContext ;
+struct TYPE_10__ {int uni_chroma_ac_vlc_len; int uni_ac_vlc_len; int huff_size_ac_chrominance; int huff_size_ac_luminance; } ;
+struct TYPE_9__ {int mb_y; scalar_t__ huffman; int esc_pos; int mb_height; int* last_dc; int intra_dc_precision; TYPE_5__* avctx; int pb; int chroma_intra_matrix; int intra_matrix; int pred; int intra_scantable; int intra_chroma_ac_vlc_last_length; int intra_chroma_ac_vlc_length; int intra_ac_vlc_last_length; int intra_ac_vlc_length; TYPE_2__* mjpeg_ctx; int mb_x; } ;
+typedef int PutBitContext ;
+typedef TYPE_1__ MpegEncContext ;
+typedef TYPE_2__ MJpegContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int FF_THREAD_SLICE ; 
- scalar_t__ HUFFMAN_TABLE_OPTIMAL ; 
- scalar_t__ RST0 ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ff_init_uni_ac_vlc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_mjpeg_build_optimal_huffman (TYPE_2__*) ; 
- int /*<<< orphan*/  ff_mjpeg_encode_picture_frame (TYPE_1__*) ; 
- int /*<<< orphan*/  ff_mjpeg_encode_picture_header (TYPE_5__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_mjpeg_escape_FF (int /*<<< orphan*/ *,int) ; 
- int ff_mpv_reallocate_putbitbuffer (TYPE_1__*,int,int) ; 
- int put_bits_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  put_marker (int /*<<< orphan*/ *,scalar_t__) ; 
+
+ int AV_LOG_ERROR ;
+ int FF_THREAD_SLICE ;
+ scalar_t__ HUFFMAN_TABLE_OPTIMAL ;
+ scalar_t__ RST0 ;
+ int av_log (TYPE_5__*,int ,char*) ;
+ int ff_init_uni_ac_vlc (int ,int ) ;
+ int ff_mjpeg_build_optimal_huffman (TYPE_2__*) ;
+ int ff_mjpeg_encode_picture_frame (TYPE_1__*) ;
+ int ff_mjpeg_encode_picture_header (TYPE_5__*,int *,int *,int ,int ,int ) ;
+ int ff_mjpeg_escape_FF (int *,int) ;
+ int ff_mpv_reallocate_putbitbuffer (TYPE_1__*,int,int) ;
+ int put_bits_count (int *) ;
+ int put_marker (int *,scalar_t__) ;
 
 int ff_mjpeg_encode_stuffing(MpegEncContext *s)
 {
@@ -48,13 +48,13 @@ int ff_mjpeg_encode_stuffing(MpegEncContext *s)
     if (s->huffman == HUFFMAN_TABLE_OPTIMAL) {
         ff_mjpeg_build_optimal_huffman(m);
 
-        // Replace the VLCs with the optimal ones.
-        // The default ones may be used for trellis during quantization.
-        ff_init_uni_ac_vlc(m->huff_size_ac_luminance,   m->uni_ac_vlc_len);
+
+
+        ff_init_uni_ac_vlc(m->huff_size_ac_luminance, m->uni_ac_vlc_len);
         ff_init_uni_ac_vlc(m->huff_size_ac_chrominance, m->uni_chroma_ac_vlc_len);
-        s->intra_ac_vlc_length      =
+        s->intra_ac_vlc_length =
         s->intra_ac_vlc_last_length = m->uni_ac_vlc_len;
-        s->intra_chroma_ac_vlc_length      =
+        s->intra_chroma_ac_vlc_length =
         s->intra_chroma_ac_vlc_last_length = m->uni_chroma_ac_vlc_len;
 
         ff_mjpeg_encode_picture_header(s->avctx, &s->pb, &s->intra_scantable,

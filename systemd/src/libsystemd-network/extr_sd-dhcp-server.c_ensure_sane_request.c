@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_10__ {scalar_t__ max_lease_time; int /*<<< orphan*/  default_lease_time; } ;
-typedef  TYPE_2__ sd_dhcp_server ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_10__ {scalar_t__ max_lease_time; int default_lease_time; } ;
+typedef TYPE_2__ sd_dhcp_server ;
 struct TYPE_9__ {void* data; scalar_t__ length; } ;
-struct TYPE_11__ {scalar_t__ max_optlen; scalar_t__ lifetime; TYPE_1__ client_id; int /*<<< orphan*/  chaddr; struct TYPE_11__* message; } ;
-typedef  TYPE_3__ DHCPRequest ;
-typedef  TYPE_3__ DHCPMessage ;
+struct TYPE_11__ {scalar_t__ max_optlen; scalar_t__ lifetime; TYPE_1__ client_id; int chaddr; struct TYPE_11__* message; } ;
+typedef TYPE_3__ DHCPRequest ;
+typedef TYPE_3__ DHCPMessage ;
 
-/* Variables and functions */
- scalar_t__ DHCP_MIN_OPTIONS_SIZE ; 
- int ENOMEM ; 
- scalar_t__ ETH_ALEN ; 
- scalar_t__ MAX (unsigned long long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (TYPE_3__*) ; 
- void* malloc0 (scalar_t__) ; 
- int /*<<< orphan*/  memcpy (int*,int /*<<< orphan*/ *,scalar_t__) ; 
+
+ scalar_t__ DHCP_MIN_OPTIONS_SIZE ;
+ int ENOMEM ;
+ scalar_t__ ETH_ALEN ;
+ scalar_t__ MAX (unsigned long long,int ) ;
+ int assert (TYPE_3__*) ;
+ void* malloc0 (scalar_t__) ;
+ int memcpy (int*,int *,scalar_t__) ;
 
 __attribute__((used)) static int ensure_sane_request(sd_dhcp_server *server, DHCPRequest *req, DHCPMessage *message) {
         assert(req);
@@ -36,8 +36,8 @@ __attribute__((used)) static int ensure_sane_request(sd_dhcp_server *server, DHC
 
         req->message = message;
 
-        /* set client id based on MAC address if client did not send an explicit
-           one */
+
+
         if (!req->client_id.data) {
                 void *data;
 

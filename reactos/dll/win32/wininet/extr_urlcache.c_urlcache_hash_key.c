@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  key ;
-typedef  int* LPCSTR ;
-typedef  int DWORD ;
-typedef  int BYTE ;
 
-/* Variables and functions */
+
+
+
+typedef int key ;
+typedef int* LPCSTR ;
+typedef int DWORD ;
+typedef int BYTE ;
+
+
 
 __attribute__((used)) static DWORD urlcache_hash_key(LPCSTR lpszKey)
 {
-    /* NOTE: this uses the same lookup table as SHLWAPI.UrlHash{A,W}
-     * but the algorithm and result are not the same!
-     */
-    static const unsigned char lookupTable[256] = 
+
+
+
+    static const unsigned char lookupTable[256] =
     {
         0x01, 0x0E, 0x6E, 0x19, 0x61, 0xAE, 0x84, 0x77,
         0x8A, 0xAA, 0x7D, 0x76, 0x1B, 0xE9, 0x8C, 0x33,

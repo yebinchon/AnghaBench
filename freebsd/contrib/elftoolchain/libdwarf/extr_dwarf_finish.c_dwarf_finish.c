@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Dwarf_Error ;
-typedef  int /*<<< orphan*/ * Dwarf_Debug ;
 
-/* Variables and functions */
- int DW_DLV_OK ; 
- int /*<<< orphan*/  _dwarf_deinit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _dwarf_elf_deinit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int Dwarf_Error ;
+typedef int * Dwarf_Debug ;
+
+
+ int DW_DLV_OK ;
+ int _dwarf_deinit (int *) ;
+ int _dwarf_elf_deinit (int *) ;
+ int free (int *) ;
 
 int
 dwarf_finish(Dwarf_Debug dbg, Dwarf_Error *error)
 {
-	(void) error;	/* unused */
+ (void) error;
 
-	if (dbg == NULL)
-		return (DW_DLV_OK);
+ if (dbg == ((void*)0))
+  return (DW_DLV_OK);
 
-	_dwarf_deinit(dbg);
-	_dwarf_elf_deinit(dbg);
+ _dwarf_deinit(dbg);
+ _dwarf_elf_deinit(dbg);
 
-	free(dbg);
+ free(dbg);
 
-	return (DW_DLV_OK);
+ return (DW_DLV_OK);
 }

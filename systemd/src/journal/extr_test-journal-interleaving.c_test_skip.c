@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_journal ;
 
-/* Variables and functions */
- int REMOVE_PHYSICAL ; 
- int REMOVE_ROOT ; 
- scalar_t__ arg_keep ; 
- int /*<<< orphan*/  assert_ret (int) ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/  journal_directory_vacuum (char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  log_info (char*,...) ; 
- int /*<<< orphan*/  mkdtemp_chdir_chattr (char*) ; 
- int /*<<< orphan*/  puts (char*) ; 
- scalar_t__ rm_rf (char*,int) ; 
- int /*<<< orphan*/  sd_journal_close (int /*<<< orphan*/ *) ; 
- int sd_journal_next (int /*<<< orphan*/ *) ; 
- int sd_journal_next_skip (int /*<<< orphan*/ *,int) ; 
- int sd_journal_open_directory (int /*<<< orphan*/ **,char*,int /*<<< orphan*/ ) ; 
- int sd_journal_previous (int /*<<< orphan*/ *) ; 
- int sd_journal_previous_skip (int /*<<< orphan*/ *,int) ; 
- int sd_journal_seek_head (int /*<<< orphan*/ *) ; 
- int sd_journal_seek_tail (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_check_numbers_down (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  test_check_numbers_up (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int sd_journal ;
+
+
+ int REMOVE_PHYSICAL ;
+ int REMOVE_ROOT ;
+ scalar_t__ arg_keep ;
+ int assert_ret (int) ;
+ int assert_se (int) ;
+ int journal_directory_vacuum (char*,int,int ,int ,int *,int) ;
+ int log_info (char*,...) ;
+ int mkdtemp_chdir_chattr (char*) ;
+ int puts (char*) ;
+ scalar_t__ rm_rf (char*,int) ;
+ int sd_journal_close (int *) ;
+ int sd_journal_next (int *) ;
+ int sd_journal_next_skip (int *,int) ;
+ int sd_journal_open_directory (int **,char*,int ) ;
+ int sd_journal_previous (int *) ;
+ int sd_journal_previous_skip (int *,int) ;
+ int sd_journal_seek_head (int *) ;
+ int sd_journal_seek_tail (int *) ;
+ int test_check_numbers_down (int *,int) ;
+ int test_check_numbers_up (int *,int) ;
 
 __attribute__((used)) static void test_skip(void (*setup)(void)) {
         char t[] = "/var/tmp/journal-skip-XXXXXX";
@@ -43,24 +43,24 @@ __attribute__((used)) static void test_skip(void (*setup)(void)) {
 
         setup();
 
-        /* Seek to head, iterate down.
-         */
+
+
         assert_ret(sd_journal_open_directory(&j, t, 0));
         assert_ret(sd_journal_seek_head(j));
         assert_ret(sd_journal_next(j));
         test_check_numbers_down(j, 4);
         sd_journal_close(j);
 
-        /* Seek to tail, iterate up.
-         */
+
+
         assert_ret(sd_journal_open_directory(&j, t, 0));
         assert_ret(sd_journal_seek_tail(j));
         assert_ret(sd_journal_previous(j));
         test_check_numbers_up(j, 4);
         sd_journal_close(j);
 
-        /* Seek to tail, skip to head, iterate down.
-         */
+
+
         assert_ret(sd_journal_open_directory(&j, t, 0));
         assert_ret(sd_journal_seek_tail(j));
         assert_ret(r = sd_journal_previous_skip(j, 4));
@@ -68,8 +68,8 @@ __attribute__((used)) static void test_skip(void (*setup)(void)) {
         test_check_numbers_down(j, 4);
         sd_journal_close(j);
 
-        /* Seek to head, skip to tail, iterate up.
-         */
+
+
         assert_ret(sd_journal_open_directory(&j, t, 0));
         assert_ret(sd_journal_seek_head(j));
         assert_ret(r = sd_journal_next_skip(j, 4));
@@ -82,7 +82,7 @@ __attribute__((used)) static void test_skip(void (*setup)(void)) {
         if (arg_keep)
                 log_info("Not removing %s", t);
         else {
-                journal_directory_vacuum(".", 3000000, 0, 0, NULL, true);
+                journal_directory_vacuum(".", 3000000, 0, 0, ((void*)0), 1);
 
                 assert_se(rm_rf(t, REMOVE_ROOT|REMOVE_PHYSICAL) >= 0);
         }

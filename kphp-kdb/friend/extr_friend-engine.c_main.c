@@ -1,102 +1,102 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_15__ {char* replica_prefix; } ;
 struct TYPE_14__ {TYPE_2__* info; } ;
 struct TYPE_13__ {TYPE_1__* info; } ;
-struct TYPE_12__ {char* filename; int /*<<< orphan*/  file_size; } ;
-struct TYPE_11__ {scalar_t__ file_size; int /*<<< orphan*/  filename; } ;
+struct TYPE_12__ {char* filename; int file_size; } ;
+struct TYPE_11__ {scalar_t__ file_size; int filename; } ;
 
-/* Variables and functions */
- TYPE_4__* Binlog ; 
- int /*<<< orphan*/  CD_ENGINE ; 
- int /*<<< orphan*/  CD_INDEXER ; 
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- scalar_t__ PRIVILEGED_TCP_PORTS ; 
- int /*<<< orphan*/  SIGRTMAX ; 
- TYPE_3__* Snapshot ; 
- int /*<<< orphan*/  aes_load_pwd_file (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  aes_pwd_file ; 
- int /*<<< orphan*/  backlog ; 
- int binlog_disabled ; 
- int /*<<< orphan*/  binlog_load_time ; 
- int /*<<< orphan*/  binlog_loaded_size ; 
- char* binlogname ; 
- scalar_t__ change_user (char*) ; 
- int /*<<< orphan*/  clear_log () ; 
- int /*<<< orphan*/  clear_read_log () ; 
- int /*<<< orphan*/  clear_write_log () ; 
- int /*<<< orphan*/  close_snapshot (TYPE_3__*,int) ; 
- int /*<<< orphan*/  cstatus_binlog_name (char*) ; 
- int /*<<< orphan*/  dump_lists (int /*<<< orphan*/ ) ; 
- scalar_t__ engine_preload_filelist (char*,char*) ; 
- TYPE_5__* engine_replica ; 
- char* engine_snapshot_name ; 
- int /*<<< orphan*/  engine_snapshot_replica ; 
- scalar_t__ engine_snapshot_size ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  f_parse_option ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  get_my_ipv4 () ; 
- int /*<<< orphan*/  get_utime (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  index_load_time ; 
- int index_mode ; 
- int /*<<< orphan*/  init_common_data (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_dyn_data () ; 
- int /*<<< orphan*/  init_log_data (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_server_PID (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  jump_log_crc32 ; 
- int /*<<< orphan*/  jump_log_pos ; 
- int /*<<< orphan*/  jump_log_ts ; 
- int load_index (TYPE_3__*) ; 
- int /*<<< orphan*/  log_readto_pos ; 
- int maxconn ; 
- scalar_t__ memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  no_argument ; 
- TYPE_4__* open_binlog (TYPE_5__*,int /*<<< orphan*/ ) ; 
- TYPE_3__* open_recent_snapshot (int /*<<< orphan*/ ) ; 
- int optind ; 
- int /*<<< orphan*/  parse_engine_options_long (int,char**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_option (char*,int /*<<< orphan*/ ,int*,char,char*) ; 
- scalar_t__ port ; 
- char* progname ; 
- scalar_t__ raise_file_rlimit (int) ; 
- int replay_log (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  required_argument ; 
- scalar_t__ reverse_friends_mode ; 
- int /*<<< orphan*/  save_index (int /*<<< orphan*/ ) ; 
- scalar_t__ server_socket (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_debug_handlers () ; 
- int /*<<< orphan*/  settings_addr ; 
- scalar_t__ sfd ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sigrtmax_handler ; 
- int /*<<< orphan*/  start_server () ; 
- int /*<<< orphan*/  start_time ; 
- int /*<<< orphan*/  stderr ; 
- char* strdup (int /*<<< orphan*/ ) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  test_mode ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ ) ; 
- scalar_t__ udp_enabled ; 
- int /*<<< orphan*/  usage () ; 
- char* username ; 
- scalar_t__ verbosity ; 
- scalar_t__ w_split_mod ; 
+
+ TYPE_4__* Binlog ;
+ int CD_ENGINE ;
+ int CD_INDEXER ;
+ int CLOCK_MONOTONIC ;
+ scalar_t__ PRIVILEGED_TCP_PORTS ;
+ int SIGRTMAX ;
+ TYPE_3__* Snapshot ;
+ int aes_load_pwd_file (int ) ;
+ int aes_pwd_file ;
+ int backlog ;
+ int binlog_disabled ;
+ int binlog_load_time ;
+ int binlog_loaded_size ;
+ char* binlogname ;
+ scalar_t__ change_user (char*) ;
+ int clear_log () ;
+ int clear_read_log () ;
+ int clear_write_log () ;
+ int close_snapshot (TYPE_3__*,int) ;
+ int cstatus_binlog_name (char*) ;
+ int dump_lists (int ) ;
+ scalar_t__ engine_preload_filelist (char*,char*) ;
+ TYPE_5__* engine_replica ;
+ char* engine_snapshot_name ;
+ int engine_snapshot_replica ;
+ scalar_t__ engine_snapshot_size ;
+ int exit (int) ;
+ int f_parse_option ;
+ int fprintf (int ,char*,...) ;
+ int get_my_ipv4 () ;
+ int get_utime (int ) ;
+ int index_load_time ;
+ int index_mode ;
+ int init_common_data (int ,int ) ;
+ int init_dyn_data () ;
+ int init_log_data (int ,int ,int ) ;
+ int init_server_PID (int ,scalar_t__) ;
+ int jump_log_crc32 ;
+ int jump_log_pos ;
+ int jump_log_ts ;
+ int load_index (TYPE_3__*) ;
+ int log_readto_pos ;
+ int maxconn ;
+ scalar_t__ memcmp (char*,char*,int) ;
+ int no_argument ;
+ TYPE_4__* open_binlog (TYPE_5__*,int ) ;
+ TYPE_3__* open_recent_snapshot (int ) ;
+ int optind ;
+ int parse_engine_options_long (int,char**,int ) ;
+ int parse_option (char*,int ,int*,char,char*) ;
+ scalar_t__ port ;
+ char* progname ;
+ scalar_t__ raise_file_rlimit (int) ;
+ int replay_log (int ,int) ;
+ int required_argument ;
+ scalar_t__ reverse_friends_mode ;
+ int save_index (int ) ;
+ scalar_t__ server_socket (scalar_t__,int ,int ,int ) ;
+ int set_debug_handlers () ;
+ int settings_addr ;
+ scalar_t__ sfd ;
+ int signal (int ,int ) ;
+ int sigrtmax_handler ;
+ int start_server () ;
+ int start_time ;
+ int stderr ;
+ char* strdup (int ) ;
+ int strlen (char*) ;
+ int test_mode ;
+ int time (int ) ;
+ scalar_t__ udp_enabled ;
+ int usage () ;
+ char* username ;
+ scalar_t__ verbosity ;
+ scalar_t__ w_split_mod ;
 
 int main (int argc, char *argv[]) {
   int i;
@@ -159,7 +159,7 @@ int main (int argc, char *argv[]) {
     fprintf (stderr, "cannot open binlog files for %s\n", binlogname ? binlogname : argv[optind]);
     exit (1);
   }
-  
+
   init_common_data (0, index_mode ? CD_INDEXER : CD_ENGINE);
   cstatus_binlog_name (engine_replica->replica_prefix);
 
@@ -173,7 +173,7 @@ int main (int argc, char *argv[]) {
       fprintf (stderr, "load index file %s (size %lld)\n", engine_snapshot_name, engine_snapshot_size);
     }
   } else {
-    engine_snapshot_name = NULL;
+    engine_snapshot_name = ((void*)0);
     engine_snapshot_size = 0;
   }
 
@@ -221,17 +221,6 @@ int main (int argc, char *argv[]) {
 
   binlog_load_time = get_utime(CLOCK_MONOTONIC) - binlog_load_time;
   binlog_loaded_size = log_readto_pos;
-
-  /*if (binlog_disabled != 1) {
-    jump_log_pos = log_readto_pos;
-    jump_log_ts = log_last_ts;
-    jump_log_crc32 = ~log_crc32_complement;
-    assert (jump_log_pos == log_crc32_pos);
-    clear_read_log();
-    close_binlog (Binlog);
-    Binlog = 0;
-  }*/
-
   if (binlog_disabled != 1) {
     clear_read_log();
   }

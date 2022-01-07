@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint16_t ;
 
-/* Variables and functions */
- int av_bswap16 (int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+
+
+ int av_bswap16 (int) ;
 
 __attribute__((used)) static void packed16togbra16(const uint8_t *src, int srcStride,
                              uint16_t *dst[], int dstStride[], int srcSliceH,
                              int src_alpha, int swap, int shift, int width)
 {
     int x, h, i;
-    int dst_alpha = dst[3] != NULL;
+    int dst_alpha = dst[3] != ((void*)0);
     for (h = 0; h < srcSliceH; h++) {
         uint16_t *src_line = (uint16_t *)(src + srcStride * h);
         switch (swap) {

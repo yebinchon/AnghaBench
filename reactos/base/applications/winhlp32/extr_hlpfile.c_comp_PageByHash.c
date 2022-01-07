@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ LONG_PTR ;
-typedef  scalar_t__ LONG ;
-typedef  scalar_t__ INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GET_UINT (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WINE_TRACE (char*,scalar_t__,scalar_t__) ; 
+
+
+
+typedef scalar_t__ LONG_PTR ;
+typedef scalar_t__ LONG ;
+typedef scalar_t__ INT ;
+
+
+ int GET_UINT (void*,int ) ;
+ int WINE_TRACE (char*,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static int comp_PageByHash(void *p, const void *key,
                            int leaf, void** next)

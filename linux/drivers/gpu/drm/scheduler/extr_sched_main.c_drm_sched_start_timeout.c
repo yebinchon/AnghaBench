@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct drm_gpu_scheduler {scalar_t__ timeout; int /*<<< orphan*/  work_tdr; int /*<<< orphan*/  ring_mirror_list; } ;
 
-/* Variables and functions */
- scalar_t__ MAX_SCHEDULE_TIMEOUT ; 
- int /*<<< orphan*/  list_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  schedule_delayed_work (int /*<<< orphan*/ *,scalar_t__) ; 
+
+
+
+struct drm_gpu_scheduler {scalar_t__ timeout; int work_tdr; int ring_mirror_list; } ;
+
+
+ scalar_t__ MAX_SCHEDULE_TIMEOUT ;
+ int list_empty (int *) ;
+ int schedule_delayed_work (int *,scalar_t__) ;
 
 __attribute__((used)) static void drm_sched_start_timeout(struct drm_gpu_scheduler *sched)
 {
-	if (sched->timeout != MAX_SCHEDULE_TIMEOUT &&
-	    !list_empty(&sched->ring_mirror_list))
-		schedule_delayed_work(&sched->work_tdr, sched->timeout);
+ if (sched->timeout != MAX_SCHEDULE_TIMEOUT &&
+     !list_empty(&sched->ring_mirror_list))
+  schedule_delayed_work(&sched->work_tdr, sched->timeout);
 }

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-struct TYPE_9__ {int /*<<< orphan*/  len; int /*<<< orphan*/  data; scalar_t__ is_atom; struct TYPE_9__* next; TYPE_2__* children; } ;
-typedef  TYPE_3__ svn_skel_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int svn_wc__db_t ;
+struct TYPE_9__ {int len; int data; scalar_t__ is_atom; struct TYPE_9__* next; TYPE_2__* children; } ;
+typedef TYPE_3__ svn_skel_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
 struct TYPE_8__ {TYPE_1__* next; } ;
 struct TYPE_7__ {TYPE_3__* children; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_WC_MISSING ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_WC__CONFLICT_KIND_TEXT ; 
- int /*<<< orphan*/  _ (char*) ; 
- char* apr_pstrmemdup (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  conflict__get_conflict (TYPE_3__**,TYPE_3__ const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_wc__db_from_relpath (char const**,int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_WC_MISSING ;
+ int * SVN_NO_ERROR ;
+ int SVN_WC__CONFLICT_KIND_TEXT ;
+ int _ (char*) ;
+ char* apr_pstrmemdup (int *,int ,int ) ;
+ int conflict__get_conflict (TYPE_3__**,TYPE_3__ const*,int ) ;
+ int * svn_error_create (int ,int *,int ) ;
+ int svn_wc__db_from_relpath (char const**,int *,char const*,char const*,int *,int *) ;
 
 svn_error_t *
 svn_wc__conflict_read_text_conflict(const char **mine_abspath,
@@ -49,7 +49,7 @@ svn_wc__conflict_read_text_conflict(const char **mine_abspath,
                                  SVN_WC__CONFLICT_KIND_TEXT));
 
   if (!text_conflict)
-    return svn_error_create(SVN_ERR_WC_MISSING, NULL, _("Conflict not set"));
+    return svn_error_create(SVN_ERR_WC_MISSING, ((void*)0), _("Conflict not set"));
 
   m = text_conflict->children->next->children;
 
@@ -65,7 +65,7 @@ svn_wc__conflict_read_text_conflict(const char **mine_abspath,
                                           result_pool, scratch_pool));
         }
       else
-        *their_old_abspath = NULL;
+        *their_old_abspath = ((void*)0);
     }
   m = m->next;
 
@@ -81,7 +81,7 @@ svn_wc__conflict_read_text_conflict(const char **mine_abspath,
                                           result_pool, scratch_pool));
         }
       else
-        *mine_abspath = NULL;
+        *mine_abspath = ((void*)0);
     }
   m = m->next;
 
@@ -97,7 +97,7 @@ svn_wc__conflict_read_text_conflict(const char **mine_abspath,
                                           result_pool, scratch_pool));
         }
       else
-        *their_abspath = NULL;
+        *their_abspath = ((void*)0);
     }
 
   return SVN_NO_ERROR;

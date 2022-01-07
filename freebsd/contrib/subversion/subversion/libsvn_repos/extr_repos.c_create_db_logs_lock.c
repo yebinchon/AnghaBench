@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  fs_type; } ;
-typedef  TYPE_1__ svn_repos_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR_W (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_FS_TYPE_BDB ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- char* bdb_logs_lock_file_contents ; 
- char* pre12_compat_unneeded_file_contents ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_io_file_create (char const*,char const*,int /*<<< orphan*/ *) ; 
- char* svn_repos_db_logs_lockfile (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int fs_type; } ;
+typedef TYPE_1__ svn_repos_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR_W (int ,int ) ;
+ int SVN_FS_TYPE_BDB ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ char* bdb_logs_lock_file_contents ;
+ char* pre12_compat_unneeded_file_contents ;
+ scalar_t__ strcmp (int ,int ) ;
+ int svn_io_file_create (char const*,char const*,int *) ;
+ char* svn_repos_db_logs_lockfile (TYPE_1__*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 create_db_logs_lock(svn_repos_t *repos, apr_pool_t *pool) {

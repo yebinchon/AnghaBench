@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {char* data; } ;
-struct TYPE_7__ {long num_fields; int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ TXT_DB ;
-typedef  TYPE_2__ BUF_MEM ;
-typedef  int /*<<< orphan*/  BIO ;
+struct TYPE_7__ {long num_fields; int data; } ;
+typedef TYPE_1__ TXT_DB ;
+typedef TYPE_2__ BUF_MEM ;
+typedef int BIO ;
 
-/* Variables and functions */
- long BIO_write (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  BUF_MEM_free (TYPE_2__*) ; 
- int /*<<< orphan*/  BUF_MEM_grow_clean (TYPE_2__*,int) ; 
- TYPE_2__* BUF_MEM_new () ; 
- long sk_OPENSSL_PSTRING_num (int /*<<< orphan*/ ) ; 
- char** sk_OPENSSL_PSTRING_value (int /*<<< orphan*/ ,long) ; 
- scalar_t__ strlen (char*) ; 
+
+ long BIO_write (int *,char*,int) ;
+ int BUF_MEM_free (TYPE_2__*) ;
+ int BUF_MEM_grow_clean (TYPE_2__*,int) ;
+ TYPE_2__* BUF_MEM_new () ;
+ long sk_OPENSSL_PSTRING_num (int ) ;
+ char** sk_OPENSSL_PSTRING_value (int ,long) ;
+ scalar_t__ strlen (char*) ;
 
 long TXT_DB_write(BIO *out, TXT_DB *db)
 {
     long i, j, n, nn, l, tot = 0;
     char *p, **pp, *f;
-    BUF_MEM *buf = NULL;
+    BUF_MEM *buf = ((void*)0);
     long ret = -1;
 
-    if ((buf = BUF_MEM_new()) == NULL)
+    if ((buf = BUF_MEM_new()) == ((void*)0))
         goto err;
     n = sk_OPENSSL_PSTRING_num(db->data);
     nn = db->num_fields;
@@ -43,7 +43,7 @@ long TXT_DB_write(BIO *out, TXT_DB *db)
 
         l = 0;
         for (j = 0; j < nn; j++) {
-            if (pp[j] != NULL)
+            if (pp[j] != ((void*)0))
                 l += strlen(pp[j]);
         }
         if (!BUF_MEM_grow_clean(buf, (int)(l * 2 + nn)))
@@ -52,7 +52,7 @@ long TXT_DB_write(BIO *out, TXT_DB *db)
         p = buf->data;
         for (j = 0; j < nn; j++) {
             f = pp[j];
-            if (f != NULL)
+            if (f != ((void*)0))
                 for (;;) {
                     if (*f == '\0')
                         break;

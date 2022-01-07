@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FFPlayer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ffp_destroy (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int FFPlayer ;
+
+
+ int ffp_destroy (int *) ;
 
 void ffp_destroy_p(FFPlayer **pffp)
 {
@@ -21,5 +21,5 @@ void ffp_destroy_p(FFPlayer **pffp)
         return;
 
     ffp_destroy(*pffp);
-    *pffp = NULL;
+    *pffp = ((void*)0);
 }

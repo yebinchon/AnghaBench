@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct device_info {int /*<<< orphan*/ * cookie; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  API_DEV_ENUM ; 
- int UB_MAX_DEV ; 
- struct device_info* devices ; 
- int /*<<< orphan*/  memset (struct device_info**,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  syscall (int /*<<< orphan*/ ,int /*<<< orphan*/ *,struct device_info*) ; 
+
+
+
+struct device_info {int * cookie; } ;
+
+
+ int API_DEV_ENUM ;
+ int UB_MAX_DEV ;
+ struct device_info* devices ;
+ int memset (struct device_info**,int ,int) ;
+ int syscall (int ,int *,struct device_info*) ;
 
 int
 ub_dev_enum(void)
 {
-	struct device_info *di;
-	int n = 0;
+ struct device_info *di;
+ int n = 0;
 
-	memset(&devices, 0, sizeof(struct device_info) * UB_MAX_DEV);
-	di = &devices[0];
+ memset(&devices, 0, sizeof(struct device_info) * UB_MAX_DEV);
+ di = &devices[0];
 
-	if (!syscall(API_DEV_ENUM, NULL, di))
-		return (0);
+ if (!syscall(API_DEV_ENUM, ((void*)0), di))
+  return (0);
 
-	while (di->cookie != NULL) {
+ while (di->cookie != ((void*)0)) {
 
-		if (++n >= UB_MAX_DEV)
-			break;
+  if (++n >= UB_MAX_DEV)
+   break;
 
-		/* take another device_info */
-		di++;
 
-		/* pass on the previous cookie */
-		di->cookie = devices[n - 1].cookie;
+  di++;
 
-		if (!syscall(API_DEV_ENUM, NULL, di))
-			return (0);
-	}
 
-	return (n);
+  di->cookie = devices[n - 1].cookie;
+
+  if (!syscall(API_DEV_ENUM, ((void*)0), di))
+   return (0);
+ }
+
+ return (n);
 }

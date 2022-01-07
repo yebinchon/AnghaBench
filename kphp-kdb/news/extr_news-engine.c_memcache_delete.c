@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  Out; int /*<<< orphan*/  flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMM_MODE ; 
- int /*<<< orphan*/  C_INTIMEOUT ; 
- int /*<<< orphan*/  NOTIFY_MODE ; 
- int /*<<< orphan*/  UG_MODE ; 
- int /*<<< orphan*/  delete_queries ; 
- int do_add_del_bookmark (int,int,int,int,int /*<<< orphan*/ ) ; 
- int do_delete_comment (int,int,int,int) ; 
- int do_delete_place (int,int,int) ; 
- int do_delete_user (int) ; 
- int do_delete_user_comment (int,int,int,int,int) ; 
- int do_undelete_comment (int,int,int,int) ; 
- int do_undelete_user_comment (int,int,int,int,int) ; 
- int sscanf (char const*,char*,int*,...) ; 
- int ug_mode ; 
- int /*<<< orphan*/  undelete_queries ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ *,char*,int) ; 
+
+
+
+struct connection {int Out; int flags; } ;
+
+
+ int COMM_MODE ;
+ int C_INTIMEOUT ;
+ int NOTIFY_MODE ;
+ int UG_MODE ;
+ int delete_queries ;
+ int do_add_del_bookmark (int,int,int,int,int ) ;
+ int do_delete_comment (int,int,int,int) ;
+ int do_delete_place (int,int,int) ;
+ int do_delete_user (int) ;
+ int do_delete_user_comment (int,int,int,int,int) ;
+ int do_undelete_comment (int,int,int,int) ;
+ int do_undelete_user_comment (int,int,int,int,int) ;
+ int sscanf (char const*,char*,int*,...) ;
+ int ug_mode ;
+ int undelete_queries ;
+ int write_out (int *,char*,int) ;
 
 int memcache_delete (struct connection *c, const char *key, int key_len) {
   c->flags &= ~C_INTIMEOUT;

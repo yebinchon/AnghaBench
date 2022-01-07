@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  time_t ;
-struct PreprocessedInfo {unsigned int port_src; int* ip_src; unsigned int app_length; int /*<<< orphan*/  mac_src; int /*<<< orphan*/  app_offset; } ;
+
+
+
+
+typedef int uint64_t ;
+typedef int time_t ;
+struct PreprocessedInfo {unsigned int port_src; int* ip_src; unsigned int app_length; int mac_src; int app_offset; } ;
 struct Output {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PortStatus_Open ; 
- unsigned int coap_handle_response (struct Output*,int /*<<< orphan*/ ,unsigned char const*,unsigned int,struct PreprocessedInfo*,int /*<<< orphan*/ ) ; 
- unsigned int default_udp_parse (struct Output*,int /*<<< orphan*/ ,unsigned char const*,unsigned int,struct PreprocessedInfo*,int /*<<< orphan*/ ) ; 
- unsigned int handle_dns (struct Output*,int /*<<< orphan*/ ,unsigned char const*,unsigned int,struct PreprocessedInfo*,int /*<<< orphan*/ ) ; 
- unsigned int handle_nbtstat (struct Output*,int /*<<< orphan*/ ,unsigned char const*,unsigned int,struct PreprocessedInfo*,int /*<<< orphan*/ ) ; 
- unsigned int handle_snmp (struct Output*,int /*<<< orphan*/ ,unsigned char const*,unsigned int,struct PreprocessedInfo*,int /*<<< orphan*/ ) ; 
- unsigned int handle_zeroaccess (struct Output*,int /*<<< orphan*/ ,unsigned char const*,unsigned int,struct PreprocessedInfo*,int /*<<< orphan*/ ) ; 
- unsigned int memcached_udp_parse (struct Output*,int /*<<< orphan*/ ,unsigned char const*,unsigned int,struct PreprocessedInfo*,int /*<<< orphan*/ ) ; 
- unsigned int ntp_handle_response (struct Output*,int /*<<< orphan*/ ,unsigned char const*,unsigned int,struct PreprocessedInfo*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  output_report_status (struct Output*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,int,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
 
-void 
+ int PortStatus_Open ;
+ unsigned int coap_handle_response (struct Output*,int ,unsigned char const*,unsigned int,struct PreprocessedInfo*,int ) ;
+ unsigned int default_udp_parse (struct Output*,int ,unsigned char const*,unsigned int,struct PreprocessedInfo*,int ) ;
+ unsigned int handle_dns (struct Output*,int ,unsigned char const*,unsigned int,struct PreprocessedInfo*,int ) ;
+ unsigned int handle_nbtstat (struct Output*,int ,unsigned char const*,unsigned int,struct PreprocessedInfo*,int ) ;
+ unsigned int handle_snmp (struct Output*,int ,unsigned char const*,unsigned int,struct PreprocessedInfo*,int ) ;
+ unsigned int handle_zeroaccess (struct Output*,int ,unsigned char const*,unsigned int,struct PreprocessedInfo*,int ) ;
+ unsigned int memcached_udp_parse (struct Output*,int ,unsigned char const*,unsigned int,struct PreprocessedInfo*,int ) ;
+ unsigned int ntp_handle_response (struct Output*,int ,unsigned char const*,unsigned int,struct PreprocessedInfo*,int ) ;
+ int output_report_status (struct Output*,int ,int ,unsigned int,int,unsigned int,int ,int ,int ) ;
+
+void
 handle_udp(struct Output *out, time_t timestamp,
-        const unsigned char *px, unsigned length, 
+        const unsigned char *px, unsigned length,
         struct PreprocessedInfo *parsed, uint64_t entropy)
 {
     unsigned ip_them;
@@ -42,22 +42,22 @@ handle_udp(struct Output *out, time_t timestamp,
 
 
     switch (port_them) {
-        case 53: /* DNS - Domain Name System (amplifier) */
+        case 53:
             status = handle_dns(out, timestamp, px, length, parsed, entropy);
             break;
-        case 123: /* NTP - Network Time Protocol (amplifier) */
+        case 123:
             status = ntp_handle_response(out, timestamp, px, length, parsed, entropy);
             break;
-        case 137: /* NetBIOS (amplifier) */
+        case 137:
             status = handle_nbtstat(out, timestamp, px, length, parsed, entropy);
             break;
-        case 161: /* SNMP - Simple Network Managment Protocol (amplifier) */
+        case 161:
             status = handle_snmp(out, timestamp, px, length, parsed, entropy);
             break;
         case 5683:
             status = coap_handle_response(out, timestamp, px + parsed->app_offset, parsed->app_length, parsed, entropy);
             break;
-        case 11211: /* memcached (amplifier) */
+        case 11211:
             px += parsed->app_offset;
             length = parsed->app_length;
             status = memcached_udp_parse(out, timestamp, px, length, parsed, entropy);
@@ -81,7 +81,7 @@ handle_udp(struct Output *out, time_t timestamp,
                         timestamp,
                         PortStatus_Open,
                         ip_them,
-                        17, /* ip proto = udp */
+                        17,
                         port_them,
                         0,
                         0,

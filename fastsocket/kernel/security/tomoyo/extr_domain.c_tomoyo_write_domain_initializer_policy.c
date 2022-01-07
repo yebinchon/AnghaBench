@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* strstr (char*,char*) ; 
- int tomoyo_update_domain_initializer_entry (char*,char*,int const,int const) ; 
+ char* strstr (char*,char*) ;
+ int tomoyo_update_domain_initializer_entry (char*,char*,int const,int const) ;
 
 int tomoyo_write_domain_initializer_policy(char *data, const bool is_not,
-					   const bool is_delete)
+        const bool is_delete)
 {
-	char *cp = strstr(data, " from ");
+ char *cp = strstr(data, " from ");
 
-	if (cp) {
-		*cp = '\0';
-		return tomoyo_update_domain_initializer_entry(cp + 6, data,
-							      is_not,
-							      is_delete);
-	}
-	return tomoyo_update_domain_initializer_entry(NULL, data, is_not,
-						      is_delete);
+ if (cp) {
+  *cp = '\0';
+  return tomoyo_update_domain_initializer_entry(cp + 6, data,
+             is_not,
+             is_delete);
+ }
+ return tomoyo_update_domain_initializer_entry(((void*)0), data, is_not,
+            is_delete);
 }

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ocfs2_lock_res {int /*<<< orphan*/  l_ro_holders; int /*<<< orphan*/  l_ex_holders; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG () ; 
- int /*<<< orphan*/  BUG_ON (int) ; 
-#define  DLM_LOCK_EX 129 
-#define  DLM_LOCK_PR 128 
+
+
+
+struct ocfs2_lock_res {int l_ro_holders; int l_ex_holders; } ;
+
+
+ int BUG () ;
+ int BUG_ON (int) ;
+
+
 
 __attribute__((used)) static inline void ocfs2_inc_holders(struct ocfs2_lock_res *lockres,
-				     int level)
+         int level)
 {
-	BUG_ON(!lockres);
+ BUG_ON(!lockres);
 
-	switch(level) {
-	case DLM_LOCK_EX:
-		lockres->l_ex_holders++;
-		break;
-	case DLM_LOCK_PR:
-		lockres->l_ro_holders++;
-		break;
-	default:
-		BUG();
-	}
+ switch(level) {
+ case 129:
+  lockres->l_ex_holders++;
+  break;
+ case 128:
+  lockres->l_ro_holders++;
+  break;
+ default:
+  BUG();
+ }
 }

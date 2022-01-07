@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  time_t ;
-struct PreprocessedInfo {unsigned int port_src; unsigned int port_dst; int* ip_src; int* ip_dst; int /*<<< orphan*/  ip_ttl; scalar_t__ app_length; scalar_t__ app_offset; } ;
+
+
+
+
+typedef int uint64_t ;
+typedef int time_t ;
+struct PreprocessedInfo {unsigned int port_src; unsigned int port_dst; int* ip_src; int* ip_dst; int ip_ttl; scalar_t__ app_length; scalar_t__ app_offset; } ;
 struct Output {int dummy; } ;
 struct DNS_Incoming {int id; int qr; int rcode; unsigned int* rr_offset; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PROTO_DNS_VERSIONBIND ; 
- unsigned int Templ_UDP ; 
- unsigned int dns_name_skip (unsigned char const*,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  output_report_banner (struct Output*,int /*<<< orphan*/ ,unsigned int,int,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char const*,unsigned int) ; 
- int /*<<< orphan*/  proto_dns_parse (struct DNS_Incoming*,unsigned char const*,scalar_t__,scalar_t__) ; 
- scalar_t__ strlen (char const*) ; 
- scalar_t__ syn_cookie (unsigned int,unsigned int,unsigned int,unsigned int,int) ; 
+
+ int PROTO_DNS_VERSIONBIND ;
+ unsigned int Templ_UDP ;
+ unsigned int dns_name_skip (unsigned char const*,unsigned int,unsigned int) ;
+ int output_report_banner (struct Output*,int ,unsigned int,int,unsigned int,int ,int ,unsigned char const*,unsigned int) ;
+ int proto_dns_parse (struct DNS_Incoming*,unsigned char const*,scalar_t__,scalar_t__) ;
+ scalar_t__ strlen (char const*) ;
+ scalar_t__ syn_cookie (unsigned int,unsigned int,unsigned int,unsigned int,int) ;
 
 unsigned
 handle_dns(struct Output *out, time_t timestamp,
-            const unsigned char *px, unsigned length, 
+            const unsigned char *px, unsigned length,
             struct PreprocessedInfo *parsed,
             uint64_t entropy)
 {
@@ -52,20 +52,20 @@ handle_dns(struct Output *out, time_t timestamp,
     if ((seqno & 0xFFFF) != dns->id)
         return 1;
 
-    /*
-     * In practice, DNS queries always have the query count set to 1,
-     * though in theory servers could support multiple queries in a 
-     * single request, almost none of them do
-     */
+
+
+
+
+
     if (dns->qr != 1)
         return 0;
-    
-    /*
-     * If we get back NOERROR, we drop through and extract the strings in
-     * the packet. Otherwise, we report the error here.
-     */
+
+
+
+
+
     switch (dns->rcode) {
-        case 0: reason = 0; break; /* NOERROR */
+        case 0: reason = 0; break;
         case 1: reason = "1:FORMERR"; break;
         case 2: reason = "2:SERVFAIL"; break;
         case 3: reason = "3:NXDOMAIN"; break;
@@ -86,15 +86,6 @@ handle_dns(struct Output *out, time_t timestamp,
                          (unsigned)strlen(reason));
         return 0;
     }
-    
-    /*if (dns->qdcount != 1)
-        return 0;
-    if (dns->ancount < 1)
-        return 0;
-    if (dns->rr_count < 2)
-        return 0;*/
-
-
     offset = dns->rr_offset[1];
     offset = dns_name_skip(px, offset, length);
     if (offset + 10 >= length)

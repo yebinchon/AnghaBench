@@ -1,111 +1,102 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Node ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AlterEnumStmt ; 
- int /*<<< orphan*/  AlterFunctionStmt ; 
- int /*<<< orphan*/  AlterObjectDependsStmt ; 
- int /*<<< orphan*/  AlterObjectSchemaStmt ; 
- int /*<<< orphan*/  AlterOwnerStmt ; 
- int /*<<< orphan*/  AlterTableStmt ; 
- int /*<<< orphan*/  CompositeTypeStmt ; 
- int /*<<< orphan*/  CreateEnumStmt ; 
- int /*<<< orphan*/  QualifyAlterEnumStmt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  QualifyAlterFunctionStmt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  QualifyAlterObjectDependsStmt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  QualifyAlterObjectSchemaStmt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  QualifyAlterOwnerStmt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  QualifyAlterTableStmt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  QualifyCompositeTypeStmt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  QualifyCreateEnumStmt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  QualifyRenameStmt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RenameStmt ; 
-#define  T_AlterEnumStmt 136 
-#define  T_AlterFunctionStmt 135 
-#define  T_AlterObjectDependsStmt 134 
-#define  T_AlterObjectSchemaStmt 133 
-#define  T_AlterOwnerStmt 132 
-#define  T_AlterTableStmt 131 
-#define  T_CompositeTypeStmt 130 
-#define  T_CreateEnumStmt 129 
-#define  T_RenameStmt 128 
- int /*<<< orphan*/  castNode (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int nodeTag (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int Node ;
+
+
+ int AlterEnumStmt ;
+ int AlterFunctionStmt ;
+ int AlterObjectDependsStmt ;
+ int AlterObjectSchemaStmt ;
+ int AlterOwnerStmt ;
+ int AlterTableStmt ;
+ int CompositeTypeStmt ;
+ int CreateEnumStmt ;
+ int QualifyAlterEnumStmt (int ) ;
+ int QualifyAlterFunctionStmt (int ) ;
+ int QualifyAlterObjectDependsStmt (int ) ;
+ int QualifyAlterObjectSchemaStmt (int ) ;
+ int QualifyAlterOwnerStmt (int ) ;
+ int QualifyAlterTableStmt (int ) ;
+ int QualifyCompositeTypeStmt (int ) ;
+ int QualifyCreateEnumStmt (int ) ;
+ int QualifyRenameStmt (int ) ;
+ int RenameStmt ;
+ int castNode (int ,int *) ;
+ int nodeTag (int *) ;
 
 void
 QualifyTreeNode(Node *stmt)
 {
-	switch (nodeTag(stmt))
-	{
-		case T_RenameStmt:
-		{
-			QualifyRenameStmt(castNode(RenameStmt, stmt));
-			return;
-		}
+ switch (nodeTag(stmt))
+ {
+  case 128:
+  {
+   QualifyRenameStmt(castNode(RenameStmt, stmt));
+   return;
+  }
 
-		case T_AlterEnumStmt:
-		{
-			QualifyAlterEnumStmt(castNode(AlterEnumStmt, stmt));
-			return;
-		}
+  case 136:
+  {
+   QualifyAlterEnumStmt(castNode(AlterEnumStmt, stmt));
+   return;
+  }
 
-		case T_AlterTableStmt:
-		{
-			QualifyAlterTableStmt(castNode(AlterTableStmt, stmt));
-			return;
-		}
+  case 131:
+  {
+   QualifyAlterTableStmt(castNode(AlterTableStmt, stmt));
+   return;
+  }
 
-		case T_CompositeTypeStmt:
-		{
-			QualifyCompositeTypeStmt(castNode(CompositeTypeStmt, stmt));
-			return;
-		}
+  case 130:
+  {
+   QualifyCompositeTypeStmt(castNode(CompositeTypeStmt, stmt));
+   return;
+  }
 
-		case T_CreateEnumStmt:
-		{
-			QualifyCreateEnumStmt(castNode(CreateEnumStmt, stmt));
-			return;
-		}
+  case 129:
+  {
+   QualifyCreateEnumStmt(castNode(CreateEnumStmt, stmt));
+   return;
+  }
 
-		case T_AlterObjectSchemaStmt:
-		{
-			QualifyAlterObjectSchemaStmt(castNode(AlterObjectSchemaStmt, stmt));
-			return;
-		}
+  case 133:
+  {
+   QualifyAlterObjectSchemaStmt(castNode(AlterObjectSchemaStmt, stmt));
+   return;
+  }
 
-		case T_AlterOwnerStmt:
-		{
-			QualifyAlterOwnerStmt(castNode(AlterOwnerStmt, stmt));
-			return;
-		}
+  case 132:
+  {
+   QualifyAlterOwnerStmt(castNode(AlterOwnerStmt, stmt));
+   return;
+  }
 
-		case T_AlterFunctionStmt:
-		{
-			QualifyAlterFunctionStmt(castNode(AlterFunctionStmt, stmt));
-			return;
-		}
+  case 135:
+  {
+   QualifyAlterFunctionStmt(castNode(AlterFunctionStmt, stmt));
+   return;
+  }
 
-		case T_AlterObjectDependsStmt:
-		{
-			QualifyAlterObjectDependsStmt(castNode(AlterObjectDependsStmt, stmt));
-			return;
-		}
+  case 134:
+  {
+   QualifyAlterObjectDependsStmt(castNode(AlterObjectDependsStmt, stmt));
+   return;
+  }
 
-		default:
-		{
-			/* skip unsupported statements */
-			break;
-		}
-	}
+  default:
+  {
+
+   break;
+  }
+ }
 }

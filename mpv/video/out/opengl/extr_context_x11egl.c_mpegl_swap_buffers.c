@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ra_ctx {struct priv* priv; } ;
-struct priv {int /*<<< orphan*/  sync; int /*<<< orphan*/  egl_surface; int /*<<< orphan*/  egl_display; int /*<<< orphan*/  (* GetSyncValues ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int*,int*) ;} ;
-typedef  int int64_t ;
+struct priv {int sync; int egl_surface; int egl_display; int (* GetSyncValues ) (int ,int ,int*,int*,int*) ;} ;
+typedef int int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  eglSwapBuffers (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  oml_sync_swap (int /*<<< orphan*/ *,int,int,int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int*,int*) ; 
+
+ int eglSwapBuffers (int ,int ) ;
+ int oml_sync_swap (int *,int,int,int) ;
+ int stub1 (int ,int ,int*,int*,int*) ;
 
 __attribute__((used)) static void mpegl_swap_buffers(struct ra_ctx *ctx)
 {

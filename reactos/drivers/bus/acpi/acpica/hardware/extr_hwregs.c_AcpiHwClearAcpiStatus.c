@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  Address; } ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  int /*<<< orphan*/  ACPI_CPU_FLAGS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_BITMASK_ALL_FIXED_STATUS ; 
- int /*<<< orphan*/  ACPI_DB_IO ; 
- int /*<<< orphan*/  ACPI_DEBUG_PRINT (int /*<<< orphan*/ ) ; 
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_FORMAT_UINT64 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_FUNCTION_TRACE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_REGISTER_PM1_STATUS ; 
- int /*<<< orphan*/  AcpiEvWalkGpeList (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AcpiGbl_HardwareLock ; 
- TYPE_1__ AcpiGbl_XPm1aStatus ; 
- int /*<<< orphan*/  AcpiHwClearGpeBlock ; 
- int /*<<< orphan*/  AcpiHwRegisterWrite (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiOsAcquireLock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiOsReleaseLock (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HwClearAcpiStatus ; 
- int /*<<< orphan*/  return_ACPI_STATUS (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int Address; } ;
+typedef int ACPI_STATUS ;
+typedef int ACPI_CPU_FLAGS ;
+
+
+ int ACPI_BITMASK_ALL_FIXED_STATUS ;
+ int ACPI_DB_IO ;
+ int ACPI_DEBUG_PRINT (int ) ;
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int ACPI_FORMAT_UINT64 (int ) ;
+ int ACPI_FUNCTION_TRACE (int ) ;
+ int ACPI_REGISTER_PM1_STATUS ;
+ int AcpiEvWalkGpeList (int ,int *) ;
+ int AcpiGbl_HardwareLock ;
+ TYPE_1__ AcpiGbl_XPm1aStatus ;
+ int AcpiHwClearGpeBlock ;
+ int AcpiHwRegisterWrite (int ,int ) ;
+ int AcpiOsAcquireLock (int ) ;
+ int AcpiOsReleaseLock (int ,int ) ;
+ int HwClearAcpiStatus ;
+ int return_ACPI_STATUS (int ) ;
 
 ACPI_STATUS
 AcpiHwClearAcpiStatus (
     void)
 {
-    ACPI_STATUS             Status;
-    ACPI_CPU_FLAGS          LockFlags = 0;
+    ACPI_STATUS Status;
+    ACPI_CPU_FLAGS LockFlags = 0;
 
 
     ACPI_FUNCTION_TRACE (HwClearAcpiStatus);
@@ -50,7 +50,7 @@ AcpiHwClearAcpiStatus (
 
     LockFlags = AcpiOsAcquireLock (AcpiGbl_HardwareLock);
 
-    /* Clear the fixed events in PM1 A/B */
+
 
     Status = AcpiHwRegisterWrite (ACPI_REGISTER_PM1_STATUS,
         ACPI_BITMASK_ALL_FIXED_STATUS);
@@ -62,9 +62,9 @@ AcpiHwClearAcpiStatus (
         goto Exit;
     }
 
-    /* Clear the GPE Bits in all GPE registers in all GPE blocks */
 
-    Status = AcpiEvWalkGpeList (AcpiHwClearGpeBlock, NULL);
+
+    Status = AcpiEvWalkGpeList (AcpiHwClearGpeBlock, ((void*)0));
 
 Exit:
     return_ACPI_STATUS (Status);

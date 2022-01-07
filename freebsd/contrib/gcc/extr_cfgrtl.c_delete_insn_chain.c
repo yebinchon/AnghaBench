@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NEXT_INSN (int /*<<< orphan*/ ) ; 
- scalar_t__ NOTE_P (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  can_delete_note_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  delete_insn (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rtx ;
+
+
+ int NEXT_INSN (int ) ;
+ scalar_t__ NOTE_P (int ) ;
+ int can_delete_note_p (int ) ;
+ int delete_insn (int ) ;
 
 void
 delete_insn_chain (rtx start, rtx finish)
 {
   rtx next;
 
-  /* Unchain the insns one by one.  It would be quicker to delete all of these
-     with a single unchaining, rather than one at a time, but we need to keep
-     the NOTE's.  */
+
+
+
   while (1)
     {
       next = NEXT_INSN (start);
       if (NOTE_P (start) && !can_delete_note_p (start))
-	;
+ ;
       else
-	next = delete_insn (start);
+ next = delete_insn (start);
 
       if (start == finish)
-	break;
+ break;
       start = next;
     }
 }

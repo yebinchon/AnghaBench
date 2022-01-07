@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  MSICOMPONENT ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int KEY_QUERY_VALUE ; 
- int KEY_SET_VALUE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegDeleteValueW (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  RegQueryInfoKeyW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  delete_key (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  open_key (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int WCHAR ;
+typedef int MSICOMPONENT ;
+typedef int LONG ;
+typedef int HKEY ;
+typedef int DWORD ;
+
+
+ int FALSE ;
+ int KEY_QUERY_VALUE ;
+ int KEY_SET_VALUE ;
+ int RegCloseKey (int ) ;
+ int RegDeleteValueW (int ,int const*) ;
+ int RegQueryInfoKeyW (int ,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *) ;
+ int TRACE (char*,int ,...) ;
+ int debugstr_w (int const*) ;
+ int delete_key (int const*,int ,int const*) ;
+ int open_key (int const*,int ,int const*,int ,int) ;
 
 __attribute__((used)) static void delete_value( const MSICOMPONENT *comp, HKEY root, const WCHAR *path, const WCHAR *value )
 {
@@ -39,8 +39,8 @@ __attribute__((used)) static void delete_value( const MSICOMPONENT *comp, HKEY r
         if ((res = RegDeleteValueW( hkey, value )))
             TRACE("failed to delete value %s (%d)\n", debugstr_w(value), res);
 
-        res = RegQueryInfoKeyW( hkey, NULL, NULL, NULL, &num_subkeys, NULL, NULL, &num_values,
-                                NULL, NULL, NULL, NULL );
+        res = RegQueryInfoKeyW( hkey, ((void*)0), ((void*)0), ((void*)0), &num_subkeys, ((void*)0), ((void*)0), &num_values,
+                                ((void*)0), ((void*)0), ((void*)0), ((void*)0) );
         RegCloseKey( hkey );
         if (!res && !num_subkeys && !num_values)
         {

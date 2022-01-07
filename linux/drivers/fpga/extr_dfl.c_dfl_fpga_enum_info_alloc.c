@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dfl_fpga_enum_info {int /*<<< orphan*/  dfls; struct device* dev; } ;
+
+
+
+
+struct dfl_fpga_enum_info {int dfls; struct device* dev; } ;
 struct device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- struct dfl_fpga_enum_info* devm_kzalloc (struct device*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_device (struct device*) ; 
- int /*<<< orphan*/  put_device (struct device*) ; 
+
+ int GFP_KERNEL ;
+ int INIT_LIST_HEAD (int *) ;
+ struct dfl_fpga_enum_info* devm_kzalloc (struct device*,int,int ) ;
+ int get_device (struct device*) ;
+ int put_device (struct device*) ;
 
 struct dfl_fpga_enum_info *dfl_fpga_enum_info_alloc(struct device *dev)
 {
-	struct dfl_fpga_enum_info *info;
+ struct dfl_fpga_enum_info *info;
 
-	get_device(dev);
+ get_device(dev);
 
-	info = devm_kzalloc(dev, sizeof(*info), GFP_KERNEL);
-	if (!info) {
-		put_device(dev);
-		return NULL;
-	}
+ info = devm_kzalloc(dev, sizeof(*info), GFP_KERNEL);
+ if (!info) {
+  put_device(dev);
+  return ((void*)0);
+ }
 
-	info->dev = dev;
-	INIT_LIST_HEAD(&info->dfls);
+ info->dev = dev;
+ INIT_LIST_HEAD(&info->dfls);
 
-	return info;
+ return info;
 }

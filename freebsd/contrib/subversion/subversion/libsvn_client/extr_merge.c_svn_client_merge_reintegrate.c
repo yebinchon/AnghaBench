@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_opt_revision_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_5__ {int /*<<< orphan*/  wc_ctx; } ;
-typedef  TYPE_1__ svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  svn_client__conflict_report_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_WC__CALL_WITH_WRITE_LOCK (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_target_and_lock_abspath (char const**,char const**,char const*,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  merge_reintegrate_locked (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/  const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client__make_merge_conflict_error (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int svn_opt_revision_t ;
+typedef int svn_error_t ;
+struct TYPE_5__ {int wc_ctx; } ;
+typedef TYPE_1__ svn_client_ctx_t ;
+typedef int svn_client__conflict_report_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int SVN_WC__CALL_WITH_WRITE_LOCK (int ,int ,char const*,int ,int *) ;
+ int get_target_and_lock_abspath (char const**,char const**,char const*,TYPE_1__*,int *) ;
+ int merge_reintegrate_locked (int **,char const*,int const*,char const*,int ,int ,int const*,TYPE_1__*,int *,int *) ;
+ int svn_client__make_merge_conflict_error (int *,int *) ;
 
 svn_error_t *
 svn_client_merge_reintegrate(const char *source_path_or_url,
@@ -49,14 +49,14 @@ svn_client_merge_reintegrate(const char *source_path_or_url,
       merge_reintegrate_locked(&conflict_report,
                                source_path_or_url, source_peg_revision,
                                target_abspath,
-                               FALSE /*diff_ignore_ancestry*/,
+                               FALSE ,
                                dry_run, merge_options, ctx, pool, pool),
-      ctx->wc_ctx, lock_abspath, FALSE /* lock_anchor */, pool);
+      ctx->wc_ctx, lock_abspath, FALSE , pool);
   else
     SVN_ERR(merge_reintegrate_locked(&conflict_report,
                                      source_path_or_url, source_peg_revision,
                                      target_abspath,
-                                     FALSE /*diff_ignore_ancestry*/,
+                                     FALSE ,
                                      dry_run, merge_options, ctx, pool, pool));
 
   SVN_ERR(svn_client__make_merge_conflict_error(conflict_report, pool));

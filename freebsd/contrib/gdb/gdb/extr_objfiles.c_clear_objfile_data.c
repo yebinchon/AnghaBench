@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct objfile {int num_data; int /*<<< orphan*/ * data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gdb_assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct objfile {int num_data; int * data; } ;
+
+
+ int gdb_assert (int ) ;
+ int memset (int *,int ,int) ;
 
 void
 clear_objfile_data (struct objfile *objfile)
 {
-  gdb_assert (objfile->data != NULL);
+  gdb_assert (objfile->data != ((void*)0));
   memset (objfile->data, 0, objfile->num_data * sizeof (void *));
 }

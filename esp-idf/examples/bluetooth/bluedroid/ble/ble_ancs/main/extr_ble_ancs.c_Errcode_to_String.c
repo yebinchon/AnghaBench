@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
 
-/* Variables and functions */
-#define  Action_failed 131 
-#define  Invalid_command 130 
-#define  Invalid_parameter 129 
-#define  Unknown_command 128 
 
-char *Errcode_to_String(uint16_t status) 
+
+
+typedef int uint16_t ;
+
+
+
+
+
+
+
+char *Errcode_to_String(uint16_t status)
 {
-    char *Errstr = NULL;
+    char *Errstr = ((void*)0);
     switch (status) {
-        case Unknown_command:
+        case 128:
             Errstr = "Unknown_command";
             break;
-        case Invalid_command:
+        case 130:
             Errstr = "Invalid_command";
             break;
-        case Invalid_parameter:
+        case 129:
             Errstr = "Invalid_parameter";
             break;
-        case Action_failed:
+        case 131:
             Errstr = "Action_failed";
             break;
         default:

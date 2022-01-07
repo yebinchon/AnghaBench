@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct sk_buff {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NDISC_REDIRECT ; 
- int /*<<< orphan*/  ND_OPT_TARGET_LL_ADDR ; 
- int /*<<< orphan*/  ndisc_fill_addr_option (struct sk_buff*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ndisc_ops_fill_redirect_addr_option (int /*<<< orphan*/ ,struct sk_buff*,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int u8 ;
+struct sk_buff {int dev; } ;
+
+
+ int NDISC_REDIRECT ;
+ int ND_OPT_TARGET_LL_ADDR ;
+ int ndisc_fill_addr_option (struct sk_buff*,int ,void*,int ) ;
+ int ndisc_ops_fill_redirect_addr_option (int ,struct sk_buff*,int const*) ;
 
 __attribute__((used)) static inline void ndisc_fill_redirect_addr_option(struct sk_buff *skb,
-						   void *ha,
-						   const u8 *ops_data)
+         void *ha,
+         const u8 *ops_data)
 {
-	ndisc_fill_addr_option(skb, ND_OPT_TARGET_LL_ADDR, ha, NDISC_REDIRECT);
-	ndisc_ops_fill_redirect_addr_option(skb->dev, skb, ops_data);
+ ndisc_fill_addr_option(skb, ND_OPT_TARGET_LL_ADDR, ha, NDISC_REDIRECT);
+ ndisc_ops_fill_redirect_addr_option(skb->dev, skb, ops_data);
 }

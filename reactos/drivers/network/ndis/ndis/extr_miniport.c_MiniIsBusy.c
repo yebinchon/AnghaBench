@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ ResetStatus; int /*<<< orphan*/  Lock; scalar_t__ FirstPendingPacket; scalar_t__ PendingRequest; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ ResetStatus; int Lock; scalar_t__ FirstPendingPacket; scalar_t__ PendingRequest; } ;
 struct TYPE_6__ {TYPE_1__ NdisMiniportBlock; } ;
-typedef  TYPE_2__* PLOGICAL_ADAPTER ;
-typedef  scalar_t__ NDIS_WORK_ITEM_TYPE ;
-typedef  int /*<<< orphan*/  KIRQL ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+typedef TYPE_2__* PLOGICAL_ADAPTER ;
+typedef scalar_t__ NDIS_WORK_ITEM_TYPE ;
+typedef int KIRQL ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  KeAcquireSpinLock (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KeReleaseSpinLock (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ MiniGetFirstWorkItem (TYPE_2__*,scalar_t__) ; 
- scalar_t__ NDIS_STATUS_PENDING ; 
- scalar_t__ NdisWorkItemRequest ; 
- scalar_t__ NdisWorkItemResetRequested ; 
- scalar_t__ NdisWorkItemSend ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int FALSE ;
+ int KeAcquireSpinLock (int *,int *) ;
+ int KeReleaseSpinLock (int *,int ) ;
+ scalar_t__ MiniGetFirstWorkItem (TYPE_2__*,scalar_t__) ;
+ scalar_t__ NDIS_STATUS_PENDING ;
+ scalar_t__ NdisWorkItemRequest ;
+ scalar_t__ NdisWorkItemResetRequested ;
+ scalar_t__ NdisWorkItemSend ;
+ int TRUE ;
 
 BOOLEAN
 MiniIsBusy(

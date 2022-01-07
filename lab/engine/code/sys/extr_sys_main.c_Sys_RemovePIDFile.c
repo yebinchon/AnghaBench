@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* Sys_PIDFileName (char const*) ; 
- int /*<<< orphan*/  remove (char*) ; 
+ char* Sys_PIDFileName (char const*) ;
+ int remove (char*) ;
 
 void Sys_RemovePIDFile( const char *gamedir )
 {
-	char *pidFile = Sys_PIDFileName( gamedir );
+ char *pidFile = Sys_PIDFileName( gamedir );
 
-	if( pidFile != NULL )
-		remove( pidFile );
+ if( pidFile != ((void*)0) )
+  remove( pidFile );
 }

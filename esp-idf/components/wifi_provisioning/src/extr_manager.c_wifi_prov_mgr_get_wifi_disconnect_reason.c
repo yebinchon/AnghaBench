@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wifi_prov_sta_fail_reason_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
-struct TYPE_2__ {scalar_t__ wifi_state; int /*<<< orphan*/  wifi_disconnect_reason; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACQUIRE_LOCK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ESP_ERR_INVALID_STATE ; 
- int /*<<< orphan*/  ESP_FAIL ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ESP_OK ; 
- int /*<<< orphan*/  RELEASE_LOCK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TAG ; 
- scalar_t__ WIFI_PROV_STA_DISCONNECTED ; 
- TYPE_1__* prov_ctx ; 
- int /*<<< orphan*/  prov_ctx_lock ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int wifi_prov_sta_fail_reason_t ;
+typedef int esp_err_t ;
+struct TYPE_2__ {scalar_t__ wifi_state; int wifi_disconnect_reason; } ;
+
+
+ int ACQUIRE_LOCK (int ) ;
+ int ESP_ERR_INVALID_STATE ;
+ int ESP_FAIL ;
+ int ESP_LOGE (int ,char*) ;
+ int ESP_OK ;
+ int RELEASE_LOCK (int ) ;
+ int TAG ;
+ scalar_t__ WIFI_PROV_STA_DISCONNECTED ;
+ TYPE_1__* prov_ctx ;
+ int prov_ctx_lock ;
 
 esp_err_t wifi_prov_mgr_get_wifi_disconnect_reason(wifi_prov_sta_fail_reason_t *reason)
 {
@@ -35,7 +35,7 @@ esp_err_t wifi_prov_mgr_get_wifi_disconnect_reason(wifi_prov_sta_fail_reason_t *
     }
 
     ACQUIRE_LOCK(prov_ctx_lock);
-    if (prov_ctx == NULL || reason == NULL) {
+    if (prov_ctx == ((void*)0) || reason == ((void*)0)) {
         RELEASE_LOCK(prov_ctx_lock);
         return ESP_FAIL;
     }

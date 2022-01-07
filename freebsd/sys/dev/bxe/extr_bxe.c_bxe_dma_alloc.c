@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bxe_softc {int /*<<< orphan*/  parent_dma_tag; } ;
-struct bxe_dma {scalar_t__ size; int /*<<< orphan*/  tag; int /*<<< orphan*/  map; int /*<<< orphan*/  vaddr; int /*<<< orphan*/  msg; struct bxe_softc* sc; } ;
-typedef  scalar_t__ bus_size_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BCM_PAGE_SIZE ; 
- int /*<<< orphan*/  BLOGE (struct bxe_softc*,char*,char const*,int) ; 
- int /*<<< orphan*/  BUS_DMA_ALLOCNOW ; 
- int BUS_DMA_NOWAIT ; 
- int BUS_DMA_ZERO ; 
- int /*<<< orphan*/  BUS_SPACE_MAXADDR ; 
- int bus_dma_tag_create (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__,int,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bus_dma_tag_destroy (int /*<<< orphan*/ ) ; 
- int bus_dmamap_load (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,struct bxe_dma*,int) ; 
- int bus_dmamem_alloc (int /*<<< orphan*/ ,void**,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bus_dmamem_free (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bxe_dma_map_addr ; 
- int /*<<< orphan*/  memset (struct bxe_dma*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  snprintf (int /*<<< orphan*/ ,int,char*,char const*) ; 
+
+
+
+struct bxe_softc {int parent_dma_tag; } ;
+struct bxe_dma {scalar_t__ size; int tag; int map; int vaddr; int msg; struct bxe_softc* sc; } ;
+typedef scalar_t__ bus_size_t ;
+
+
+ int BCM_PAGE_SIZE ;
+ int BLOGE (struct bxe_softc*,char*,char const*,int) ;
+ int BUS_DMA_ALLOCNOW ;
+ int BUS_DMA_NOWAIT ;
+ int BUS_DMA_ZERO ;
+ int BUS_SPACE_MAXADDR ;
+ int bus_dma_tag_create (int ,int ,int ,int ,int ,int *,int *,scalar_t__,int,scalar_t__,int ,int *,int *,int *) ;
+ int bus_dma_tag_destroy (int ) ;
+ int bus_dmamap_load (int ,int ,int ,scalar_t__,int ,struct bxe_dma*,int) ;
+ int bus_dmamem_alloc (int ,void**,int,int *) ;
+ int bus_dmamem_free (int ,int ,int ) ;
+ int bxe_dma_map_addr ;
+ int memset (struct bxe_dma*,int ,int) ;
+ int snprintf (int ,int,char*,char const*) ;
 
 int
 bxe_dma_alloc(struct bxe_softc *sc,
-              bus_size_t       size,
-              struct bxe_dma   *dma,
-              const char       *msg)
+              bus_size_t size,
+              struct bxe_dma *dma,
+              const char *msg)
 {
     int rc;
 
@@ -44,25 +44,25 @@ bxe_dma_alloc(struct bxe_softc *sc,
         return (1);
     }
 
-    memset(dma, 0, sizeof(*dma)); /* sanity */
-    dma->sc   = sc;
+    memset(dma, 0, sizeof(*dma));
+    dma->sc = sc;
     dma->size = size;
     snprintf(dma->msg, sizeof(dma->msg), "%s", msg);
 
-    rc = bus_dma_tag_create(sc->parent_dma_tag, /* parent tag */
-                            BCM_PAGE_SIZE,      /* alignment */
-                            0,                  /* boundary limit */
-                            BUS_SPACE_MAXADDR,  /* restricted low */
-                            BUS_SPACE_MAXADDR,  /* restricted hi */
-                            NULL,               /* addr filter() */
-                            NULL,               /* addr filter() arg */
-                            size,               /* max map size */
-                            1,                  /* num discontinuous */
-                            size,               /* max seg size */
-                            BUS_DMA_ALLOCNOW,   /* flags */
-                            NULL,               /* lock() */
-                            NULL,               /* lock() arg */
-                            &dma->tag);         /* returned dma tag */
+    rc = bus_dma_tag_create(sc->parent_dma_tag,
+                            BCM_PAGE_SIZE,
+                            0,
+                            BUS_SPACE_MAXADDR,
+                            BUS_SPACE_MAXADDR,
+                            ((void*)0),
+                            ((void*)0),
+                            size,
+                            1,
+                            size,
+                            BUS_DMA_ALLOCNOW,
+                            ((void*)0),
+                            ((void*)0),
+                            &dma->tag);
     if (rc != 0) {
         BLOGE(sc, "Failed to create dma tag for '%s' (%d)\n", msg, rc);
         memset(dma, 0, sizeof(*dma));
@@ -84,7 +84,7 @@ bxe_dma_alloc(struct bxe_softc *sc,
                          dma->map,
                          dma->vaddr,
                          size,
-                         bxe_dma_map_addr, /* BLOGD in here */
+                         bxe_dma_map_addr,
                          dma,
                          BUS_DMA_NOWAIT);
     if (rc != 0) {

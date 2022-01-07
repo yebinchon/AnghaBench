@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_1__* desc; } ;
-struct TYPE_6__ {double LowerBound; double UpperBound; int /*<<< orphan*/  HintDescriptor; } ;
+struct TYPE_6__ {double LowerBound; double UpperBound; int HintDescriptor; } ;
 struct TYPE_5__ {TYPE_2__* PortRangeHints; } ;
-typedef  TYPE_2__ LADSPA_PortRangeHint ;
-typedef  double LADSPA_Data ;
-typedef  TYPE_3__ LADSPAContext ;
+typedef TYPE_2__ LADSPA_PortRangeHint ;
+typedef double LADSPA_Data ;
+typedef TYPE_3__ LADSPAContext ;
 
-/* Variables and functions */
- scalar_t__ LADSPA_IS_HINT_DEFAULT_0 (int /*<<< orphan*/ ) ; 
- scalar_t__ LADSPA_IS_HINT_DEFAULT_1 (int /*<<< orphan*/ ) ; 
- scalar_t__ LADSPA_IS_HINT_DEFAULT_100 (int /*<<< orphan*/ ) ; 
- scalar_t__ LADSPA_IS_HINT_DEFAULT_440 (int /*<<< orphan*/ ) ; 
- scalar_t__ LADSPA_IS_HINT_DEFAULT_HIGH (int /*<<< orphan*/ ) ; 
- scalar_t__ LADSPA_IS_HINT_DEFAULT_LOW (int /*<<< orphan*/ ) ; 
- scalar_t__ LADSPA_IS_HINT_DEFAULT_MAXIMUM (int /*<<< orphan*/ ) ; 
- scalar_t__ LADSPA_IS_HINT_DEFAULT_MIDDLE (int /*<<< orphan*/ ) ; 
- scalar_t__ LADSPA_IS_HINT_DEFAULT_MINIMUM (int /*<<< orphan*/ ) ; 
- scalar_t__ LADSPA_IS_HINT_LOGARITHMIC (int /*<<< orphan*/ ) ; 
- double exp (double) ; 
- double log (double const) ; 
+
+ scalar_t__ LADSPA_IS_HINT_DEFAULT_0 (int ) ;
+ scalar_t__ LADSPA_IS_HINT_DEFAULT_1 (int ) ;
+ scalar_t__ LADSPA_IS_HINT_DEFAULT_100 (int ) ;
+ scalar_t__ LADSPA_IS_HINT_DEFAULT_440 (int ) ;
+ scalar_t__ LADSPA_IS_HINT_DEFAULT_HIGH (int ) ;
+ scalar_t__ LADSPA_IS_HINT_DEFAULT_LOW (int ) ;
+ scalar_t__ LADSPA_IS_HINT_DEFAULT_MAXIMUM (int ) ;
+ scalar_t__ LADSPA_IS_HINT_DEFAULT_MIDDLE (int ) ;
+ scalar_t__ LADSPA_IS_HINT_DEFAULT_MINIMUM (int ) ;
+ scalar_t__ LADSPA_IS_HINT_LOGARITHMIC (int ) ;
+ double exp (double) ;
+ double log (double const) ;
 
 __attribute__((used)) static void set_default_ctl_value(LADSPAContext *s, int ctl,
                                   unsigned long *map, LADSPA_Data *values)

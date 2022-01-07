@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
-#define  ACPI_MADT_GIC_VERSION_V3 128 
- int BUS_PROBE_NOWILDCARD ; 
- int ENXIO ; 
- int /*<<< orphan*/  GIC_V3_DEVSTR ; 
- int /*<<< orphan*/  acpi_get_private (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_set_desc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int device_t ;
+
+
+
+ int BUS_PROBE_NOWILDCARD ;
+ int ENXIO ;
+ int GIC_V3_DEVSTR ;
+ int acpi_get_private (int ) ;
+ int device_set_desc (int ,int ) ;
 
 __attribute__((used)) static int
 gic_v3_acpi_probe(device_t dev)
 {
 
-	switch((uintptr_t)acpi_get_private(dev)) {
-	case ACPI_MADT_GIC_VERSION_V3:
-		break;
-	default:
-		return (ENXIO);
-	}
+ switch((uintptr_t)acpi_get_private(dev)) {
+ case 128:
+  break;
+ default:
+  return (ENXIO);
+ }
 
-	device_set_desc(dev, GIC_V3_DEVSTR);
-	return (BUS_PROBE_NOWILDCARD);
+ device_set_desc(dev, GIC_V3_DEVSTR);
+ return (BUS_PROBE_NOWILDCARD);
 }

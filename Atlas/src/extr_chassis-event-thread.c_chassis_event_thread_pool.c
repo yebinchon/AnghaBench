@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  network_connection_pool ;
-struct TYPE_3__ {int /*<<< orphan*/  pools; } ;
-typedef  TYPE_1__ network_backend_t ;
-typedef  int /*<<< orphan*/  guint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GPOINTER_TO_UINT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_private_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * g_ptr_array_index (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tls_index ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int network_connection_pool ;
+struct TYPE_3__ {int pools; } ;
+typedef TYPE_1__ network_backend_t ;
+typedef int guint ;
+
+
+ int GPOINTER_TO_UINT (int ) ;
+ int g_private_get (int *) ;
+ int * g_ptr_array_index (int ,int ) ;
+ int tls_index ;
 
 network_connection_pool* chassis_event_thread_pool(network_backend_t* backend) {
-	guint index = GPOINTER_TO_UINT(g_private_get(&tls_index));
-	return g_ptr_array_index(backend->pools, index);
+ guint index = GPOINTER_TO_UINT(g_private_get(&tls_index));
+ return g_ptr_array_index(backend->pools, index);
 }

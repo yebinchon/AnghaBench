@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct ieee_buflist {int dummy; } ;
 struct ieee_type_class {unsigned int indx; int pmisccount; char const* vclass; scalar_t__ ownvptr; struct ieee_buflist pmiscbuf; } ;
 struct ieee_handle {unsigned int name_indx; TYPE_2__* type_stack; } ;
-typedef  scalar_t__ bfd_boolean ;
+typedef scalar_t__ bfd_boolean ;
 struct TYPE_3__ {char* name; struct ieee_type_class* classdef; } ;
 struct TYPE_4__ {TYPE_1__ type; } ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ieee_change_buffer (struct ieee_handle*,struct ieee_buflist*) ; 
- int /*<<< orphan*/  ieee_init_buffer (struct ieee_handle*,struct ieee_buflist*) ; 
- int /*<<< orphan*/  ieee_pop_type (struct ieee_handle*) ; 
- int /*<<< orphan*/  ieee_start_struct_type (void*,char const*,unsigned int,scalar_t__,unsigned int) ; 
- int /*<<< orphan*/  ieee_write_asn (struct ieee_handle*,unsigned int,char) ; 
- int /*<<< orphan*/  ieee_write_atn65 (struct ieee_handle*,unsigned int,char const*) ; 
- int /*<<< orphan*/  memset (struct ieee_type_class*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,unsigned int) ; 
- scalar_t__ xmalloc (int) ; 
+
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
+ int assert (int ) ;
+ int ieee_change_buffer (struct ieee_handle*,struct ieee_buflist*) ;
+ int ieee_init_buffer (struct ieee_handle*,struct ieee_buflist*) ;
+ int ieee_pop_type (struct ieee_handle*) ;
+ int ieee_start_struct_type (void*,char const*,unsigned int,scalar_t__,unsigned int) ;
+ int ieee_write_asn (struct ieee_handle*,unsigned int,char) ;
+ int ieee_write_atn65 (struct ieee_handle*,unsigned int,char const*) ;
+ int memset (struct ieee_type_class*,int ,int) ;
+ int sprintf (char*,char*,unsigned int) ;
+ scalar_t__ xmalloc (int) ;
 
 __attribute__((used)) static bfd_boolean
 ieee_start_class_type (void *p, const char *tag, unsigned int id,
-		       bfd_boolean structp, unsigned int size,
-		       bfd_boolean vptr, bfd_boolean ownvptr)
+         bfd_boolean structp, unsigned int size,
+         bfd_boolean vptr, bfd_boolean ownvptr)
 {
   struct ieee_handle *info = (struct ieee_handle *) p;
   const char *vclass;
@@ -44,12 +44,12 @@ ieee_start_class_type (void *p, const char *tag, unsigned int id,
   unsigned int indx;
   struct ieee_type_class *classdef;
 
-  /* A C++ class is output as a C++ struct along with a set of pmisc
-     records describing the class.  */
 
-  /* We need to have a name so that we can associate the struct and
-     the class.  */
-  if (tag == NULL)
+
+
+
+
+  if (tag == ((void*)0))
     {
       char *t;
 
@@ -58,16 +58,16 @@ ieee_start_class_type (void *p, const char *tag, unsigned int id,
       tag = t;
     }
 
-  /* We can't write out the virtual table information until we have
-     finished the class, because we don't know the virtual table size.
-     We get the size from the largest voffset we see.  */
-  vclass = NULL;
+
+
+
+  vclass = ((void*)0);
   if (vptr && ! ownvptr)
     {
       vclass = info->type_stack->type.name;
-      assert (vclass != NULL);
-      /* We don't call ieee_pop_unused_type, since the class should
-         get defined.  */
+      assert (vclass != ((void*)0));
+
+
       (void) ieee_pop_type (info);
     }
 
@@ -77,9 +77,9 @@ ieee_start_class_type (void *p, const char *tag, unsigned int id,
   indx = info->name_indx;
   ++info->name_indx;
 
-  /* We write out pmisc records into the classdef field.  We will
-     write out the pmisc start after we know the number of records we
-     need.  */
+
+
+
   if (! ieee_init_buffer (info, &pmiscbuf)
       || ! ieee_change_buffer (info, &pmiscbuf)
       || ! ieee_write_asn (info, indx, 'T')

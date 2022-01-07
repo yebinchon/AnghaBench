@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ocxl_fn {int /*<<< orphan*/  actag_list; int /*<<< orphan*/  pasid_list; int /*<<< orphan*/  afu_list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- struct ocxl_fn* kzalloc (int,int /*<<< orphan*/ ) ; 
+
+
+
+struct ocxl_fn {int actag_list; int pasid_list; int afu_list; } ;
+
+
+ int GFP_KERNEL ;
+ int INIT_LIST_HEAD (int *) ;
+ struct ocxl_fn* kzalloc (int,int ) ;
 
 __attribute__((used)) static struct ocxl_fn *alloc_function(void)
 {
-	struct ocxl_fn *fn;
+ struct ocxl_fn *fn;
 
-	fn = kzalloc(sizeof(struct ocxl_fn), GFP_KERNEL);
-	if (!fn)
-		return NULL;
+ fn = kzalloc(sizeof(struct ocxl_fn), GFP_KERNEL);
+ if (!fn)
+  return ((void*)0);
 
-	INIT_LIST_HEAD(&fn->afu_list);
-	INIT_LIST_HEAD(&fn->pasid_list);
-	INIT_LIST_HEAD(&fn->actag_list);
+ INIT_LIST_HEAD(&fn->afu_list);
+ INIT_LIST_HEAD(&fn->pasid_list);
+ INIT_LIST_HEAD(&fn->actag_list);
 
-	return fn;
+ return fn;
 }

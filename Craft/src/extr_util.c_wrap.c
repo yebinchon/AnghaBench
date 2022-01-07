@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int char_width (char) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- int string_width (char*) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  strncat (char*,char*,int) ; 
- char* tokenize (char*,char*,char**) ; 
+ int char_width (char) ;
+ int free (char*) ;
+ char* malloc (int) ;
+ int strcpy (char*,char const*) ;
+ int string_width (char*) ;
+ int strlen (char const*) ;
+ int strncat (char*,char*,int) ;
+ char* tokenize (char*,char*,char**) ;
 
 int wrap(const char *input, int max_width, char *output, int max_length) {
     *output = '\0';
@@ -46,11 +38,11 @@ int wrap(const char *input, int max_width, char *output, int max_length) {
             }
             strncat(output, token, max_length - strlen(output) - 1);
             line_width += token_width + space_width;
-            token = tokenize(NULL, " ", &key2);
+            token = tokenize(((void*)0), " ", &key2);
         }
         line_number++;
         strncat(output, "\n", max_length - strlen(output) - 1);
-        line = tokenize(NULL, "\r\n", &key1);
+        line = tokenize(((void*)0), "\r\n", &key1);
     }
     free(text);
     return line_number;

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct unicx {int /*<<< orphan*/  indent; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  uni_print_eol (struct unicx*) ; 
- int /*<<< orphan*/  uni_print_pop_prefix (struct unicx*) ; 
+
+
+
+struct unicx {int indent; } ;
+
+
+ int uni_print_eol (struct unicx*) ;
+ int uni_print_pop_prefix (struct unicx*) ;
 
 __attribute__((used)) static void
 uni_print_ieend(struct unicx *cx)
 {
-	uni_print_pop_prefix(cx);
-	uni_print_eol(cx);
-	cx->indent--;
+ uni_print_pop_prefix(cx);
+ uni_print_eol(cx);
+ cx->indent--;
 }

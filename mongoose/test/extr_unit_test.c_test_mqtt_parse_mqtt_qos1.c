@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  p; int /*<<< orphan*/  len; } ;
-struct TYPE_3__ {int /*<<< orphan*/  p; int /*<<< orphan*/  len; } ;
-struct mg_mqtt_message {TYPE_2__ payload; TYPE_1__ topic; int /*<<< orphan*/  message_id; int /*<<< orphan*/  qos; int /*<<< orphan*/  cmd; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int p; int len; } ;
+struct TYPE_3__ {int p; int len; } ;
+struct mg_mqtt_message {TYPE_2__ payload; TYPE_1__ topic; int message_id; int qos; int cmd; } ;
 struct mbuf {int dummy; } ;
-typedef  int /*<<< orphan*/  msg_qos1 ;
-typedef  int /*<<< orphan*/  mm ;
+typedef int msg_qos1 ;
+typedef int mm ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_EQ (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ASSERT_STREQ_NZ (int /*<<< orphan*/ ,char*) ; 
- int MG_MQTT_CMD_PUBLISH ; 
- int /*<<< orphan*/  mbuf_append (struct mbuf*,char*,int) ; 
- int /*<<< orphan*/  mbuf_free (struct mbuf*) ; 
- int /*<<< orphan*/  mbuf_init (struct mbuf*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct mg_mqtt_message*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  parse_mqtt (struct mbuf*,struct mg_mqtt_message*) ; 
+
+ int ASSERT_EQ (int ,int) ;
+ int ASSERT_STREQ_NZ (int ,char*) ;
+ int MG_MQTT_CMD_PUBLISH ;
+ int mbuf_append (struct mbuf*,char*,int) ;
+ int mbuf_free (struct mbuf*) ;
+ int mbuf_init (struct mbuf*,int ) ;
+ int memset (struct mg_mqtt_message*,int ,int) ;
+ int parse_mqtt (struct mbuf*,struct mg_mqtt_message*) ;
 
 __attribute__((used)) static const char *test_mqtt_parse_mqtt_qos1(void) {
-  /* clang-format off */
+
   struct mg_mqtt_message mm;
   char msg_qos1[] = {
       ((MG_MQTT_CMD_PUBLISH << 4) | (1 << 1)),
@@ -39,7 +39,7 @@ __attribute__((used)) static const char *test_mqtt_parse_mqtt_qos1(void) {
       0x12, 0x34,
       'p', 'a', 'y', 'l', 'o', 'a', 'd',
   };
-  /* clang-format on */
+
   struct mbuf mb;
   memset(&mm, 0, sizeof(mm));
   mbuf_init(&mb, 0);
@@ -53,5 +53,5 @@ __attribute__((used)) static const char *test_mqtt_parse_mqtt_qos1(void) {
   ASSERT_EQ(mm.payload.len, 7);
   ASSERT_STREQ_NZ(mm.payload.p, "payload");
   mbuf_free(&mb);
-  return NULL;
+  return ((void*)0);
 }

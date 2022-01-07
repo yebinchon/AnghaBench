@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_13__ {int l30; int f; int l116; TYPE_2__* k; } ;
-typedef  TYPE_1__ s ;
-struct TYPE_14__ {int f; int /*<<< orphan*/  l61; int /*<<< orphan*/  j; int /*<<< orphan*/  v; int /*<<< orphan*/  l34; } ;
-typedef  TYPE_2__ e ;
+typedef TYPE_1__ s ;
+struct TYPE_14__ {int f; int l61; int j; int v; int l34; } ;
+typedef TYPE_2__ e ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cp_set_dir (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cp_set_gsyn (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cp_set_ts (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  l (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  l168 (TYPE_1__*) ; 
- int /*<<< orphan*/  l173 (TYPE_2__*) ; 
- int /*<<< orphan*/  l195 (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  l202 (TYPE_2__*) ; 
- int /*<<< orphan*/  l599 (TYPE_2__*) ; 
+
+ int cp_set_dir (TYPE_2__*,int ) ;
+ int cp_set_gsyn (TYPE_2__*,int ) ;
+ int cp_set_ts (TYPE_2__*,int ) ;
+ int l (TYPE_1__*,int,int) ;
+ int l168 (TYPE_1__*) ;
+ int l173 (TYPE_2__*) ;
+ int l195 (TYPE_1__*,int ) ;
+ int l202 (TYPE_2__*) ;
+ int l599 (TYPE_2__*) ;
 
 void cp_set_mux(s*b,int l183){e*a;int l555
 =(l183&&!b->l30);{if(!(b->f!=5&&b->f!=10&&b->f!=11&&b->f!=9))goto l581

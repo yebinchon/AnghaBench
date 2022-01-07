@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  js_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Day (double) ; 
- double HourFromTime (double) ; 
- double LocalTime (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MakeDate (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MakeTime (double,double,double,double) ; 
- double MinFromTime (double) ; 
- double SecFromTime (double) ; 
- int /*<<< orphan*/  UTC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  js_setdate (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  js_todate (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- double js_tonumber (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int js_State ;
+
+
+ int Day (double) ;
+ double HourFromTime (double) ;
+ double LocalTime (int ) ;
+ int MakeDate (int ,int ) ;
+ int MakeTime (double,double,double,double) ;
+ double MinFromTime (double) ;
+ double SecFromTime (double) ;
+ int UTC (int ) ;
+ int js_setdate (int *,int ,int ) ;
+ int js_todate (int *,int ) ;
+ double js_tonumber (int *,int) ;
 
 __attribute__((used)) static void Dp_setMilliseconds(js_State *J)
 {
-	double t = LocalTime(js_todate(J, 0));
-	double h = HourFromTime(t);
-	double m = MinFromTime(t);
-	double s = SecFromTime(t);
-	double ms = js_tonumber(J, 1);
-	js_setdate(J, 0, UTC(MakeDate(Day(t), MakeTime(h, m, s, ms))));
+ double t = LocalTime(js_todate(J, 0));
+ double h = HourFromTime(t);
+ double m = MinFromTime(t);
+ double s = SecFromTime(t);
+ double ms = js_tonumber(J, 1);
+ js_setdate(J, 0, UTC(MakeDate(Day(t), MakeTime(h, m, s, ms))));
 }

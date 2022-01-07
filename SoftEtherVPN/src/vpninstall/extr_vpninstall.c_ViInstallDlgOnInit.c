@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * hWnd; } ;
-typedef  TYPE_1__ VI_INSTALL_DLG ;
-typedef  int /*<<< orphan*/ * HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DlgFont (int /*<<< orphan*/ *,scalar_t__,int,int) ; 
- scalar_t__ IDCANCEL ; 
- int /*<<< orphan*/  IDI_MAIN ; 
- scalar_t__ IDS_DLG_TITLE ; 
- scalar_t__ IDS_INSTALL_CANCEL ; 
- scalar_t__ IDS_INSTALL_DLG__STATUS_INIT ; 
- int /*<<< orphan*/  P_PROGRESS ; 
- scalar_t__ S_STATUS ; 
- scalar_t__ S_TITLE ; 
- int /*<<< orphan*/  SetIcon (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetPos (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetRange (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SetText (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetTimer (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _U (scalar_t__) ; 
- scalar_t__ skip ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * hWnd; } ;
+typedef TYPE_1__ VI_INSTALL_DLG ;
+typedef int * HWND ;
+
+
+ int DlgFont (int *,scalar_t__,int,int) ;
+ scalar_t__ IDCANCEL ;
+ int IDI_MAIN ;
+ scalar_t__ IDS_DLG_TITLE ;
+ scalar_t__ IDS_INSTALL_CANCEL ;
+ scalar_t__ IDS_INSTALL_DLG__STATUS_INIT ;
+ int P_PROGRESS ;
+ scalar_t__ S_STATUS ;
+ scalar_t__ S_TITLE ;
+ int SetIcon (int *,int ,int ) ;
+ int SetPos (int *,int ,int ) ;
+ int SetRange (int *,int ,int ,int) ;
+ int SetText (int *,scalar_t__,int ) ;
+ int SetTimer (int *,int,int,int *) ;
+ int _U (scalar_t__) ;
+ scalar_t__ skip ;
 
 void ViInstallDlgOnInit(HWND hWnd, VI_INSTALL_DLG *d)
 {
-	// Validate arguments
-	if (hWnd == NULL || d == NULL)
-	{
-		return;
-	}
 
-	d->hWnd = hWnd;
+ if (hWnd == ((void*)0) || d == ((void*)0))
+ {
+  return;
+ }
 
-	SetIcon(hWnd, 0, IDI_MAIN);
+ d->hWnd = hWnd;
 
-	SetText(hWnd, 0, _U(IDS_DLG_TITLE+skip));
-	SetText(hWnd, S_TITLE, _U(IDS_DLG_TITLE+skip));
+ SetIcon(hWnd, 0, IDI_MAIN);
 
-	SetText(hWnd, S_STATUS, _U(IDS_INSTALL_DLG__STATUS_INIT+skip));
-	SetText(hWnd, IDCANCEL, _U(IDS_INSTALL_CANCEL+skip));
+ SetText(hWnd, 0, _U(IDS_DLG_TITLE+skip));
+ SetText(hWnd, S_TITLE, _U(IDS_DLG_TITLE+skip));
 
-	DlgFont(hWnd, S_TITLE+skip, 12, true);
-	SetRange(hWnd, P_PROGRESS, 0, 100);
-	SetPos(hWnd, P_PROGRESS, 0);
+ SetText(hWnd, S_STATUS, _U(IDS_INSTALL_DLG__STATUS_INIT+skip));
+ SetText(hWnd, IDCANCEL, _U(IDS_INSTALL_CANCEL+skip));
 
-	SetTimer(hWnd, 1, 22, NULL);
+ DlgFont(hWnd, S_TITLE+skip, 12, 1);
+ SetRange(hWnd, P_PROGRESS, 0, 100);
+ SetPos(hWnd, P_PROGRESS, 0);
+
+ SetTimer(hWnd, 1, 22, ((void*)0));
 }

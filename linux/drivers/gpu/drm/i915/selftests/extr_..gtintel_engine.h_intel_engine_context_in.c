@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {scalar_t__ enabled; scalar_t__ active; int /*<<< orphan*/  lock; int /*<<< orphan*/  start; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {scalar_t__ enabled; scalar_t__ active; int lock; int start; } ;
 struct intel_engine_cs {TYPE_1__ stats; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GEM_BUG_ON (int) ; 
- scalar_t__ READ_ONCE (scalar_t__) ; 
- int /*<<< orphan*/  ktime_get () ; 
- int /*<<< orphan*/  write_seqlock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  write_sequnlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int GEM_BUG_ON (int) ;
+ scalar_t__ READ_ONCE (scalar_t__) ;
+ int ktime_get () ;
+ int write_seqlock_irqsave (int *,unsigned long) ;
+ int write_sequnlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static inline void intel_engine_context_in(struct intel_engine_cs *engine)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	if (READ_ONCE(engine->stats.enabled) == 0)
-		return;
+ if (READ_ONCE(engine->stats.enabled) == 0)
+  return;
 
-	write_seqlock_irqsave(&engine->stats.lock, flags);
+ write_seqlock_irqsave(&engine->stats.lock, flags);
 
-	if (engine->stats.enabled > 0) {
-		if (engine->stats.active++ == 0)
-			engine->stats.start = ktime_get();
-		GEM_BUG_ON(engine->stats.active == 0);
-	}
+ if (engine->stats.enabled > 0) {
+  if (engine->stats.active++ == 0)
+   engine->stats.start = ktime_get();
+  GEM_BUG_ON(engine->stats.active == 0);
+ }
 
-	write_sequnlock_irqrestore(&engine->stats.lock, flags);
+ write_sequnlock_irqrestore(&engine->stats.lock, flags);
 }

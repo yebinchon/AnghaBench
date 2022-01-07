@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  pCertContext; } ;
-typedef  TYPE_1__* PCCRYPTUI_VIEWCERTIFICATE_STRUCTW ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CERT_NAME_ISSUER_FLAG ; 
- int /*<<< orphan*/  IDS_ISSUER_HEADING ; 
- int /*<<< orphan*/  IDS_SUBJECT_HEADING ; 
- int /*<<< orphan*/  set_cert_info (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  set_cert_name_string (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_cert_validity_period (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int pCertContext; } ;
+typedef TYPE_1__* PCCRYPTUI_VIEWCERTIFICATE_STRUCTW ;
+typedef int HWND ;
+
+
+ int CERT_NAME_ISSUER_FLAG ;
+ int IDS_ISSUER_HEADING ;
+ int IDS_SUBJECT_HEADING ;
+ int set_cert_info (int ,TYPE_1__*) ;
+ int set_cert_name_string (int ,int ,int ,int ) ;
+ int set_cert_validity_period (int ,int ) ;
 
 __attribute__((used)) static void set_general_info(HWND hwnd,
  PCCRYPTUI_VIEWCERTIFICATE_STRUCTW pCertViewInfo)

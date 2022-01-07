@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned int uint64_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef unsigned int uint64_t ;
 struct TYPE_3__ {int readahead; unsigned int sustain_reset; int count_sustain_expired; unsigned int rate; scalar_t__ _ana_snb; scalar_t__ max_gain; scalar_t__* gain_counts; scalar_t__ count_transient_filter; scalar_t__ count_peak_extend; scalar_t__ code_counterC_unmatched; scalar_t__ code_counterC; scalar_t__ code_counterB_checkfails; scalar_t__ code_counterB; scalar_t__ code_counterA_almost; scalar_t__ code_counterA; scalar_t__ sustain; scalar_t__ running_gain; scalar_t__ control; scalar_t__ arg; scalar_t__ window; } ;
-typedef  TYPE_1__ hdcd_state ;
+typedef TYPE_1__ hdcd_state ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void hdcd_reset(hdcd_state *state, unsigned rate, unsigned cdt_ms)
 {

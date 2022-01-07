@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wined3d_context {scalar_t__ render_offscreen; TYPE_1__* gl_info; } ;
 struct TYPE_2__ {scalar_t__* supported; } ;
-typedef  scalar_t__ BOOL ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- size_t ARB_CLIP_CONTROL ; 
- size_t ARB_FRAGMENT_COORD_CONVENTIONS ; 
- int /*<<< orphan*/  STATE_FRONTFACE ; 
- int /*<<< orphan*/  STATE_POINTSPRITECOORDORIGIN ; 
- int /*<<< orphan*/  STATE_SCISSORRECT ; 
- int /*<<< orphan*/  STATE_SHADER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATE_TRANSFORM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATE_VIEWPORT ; 
- int /*<<< orphan*/  WINED3D_SHADER_TYPE_DOMAIN ; 
- int /*<<< orphan*/  WINED3D_SHADER_TYPE_PIXEL ; 
- int /*<<< orphan*/  WINED3D_TS_PROJECTION ; 
- int /*<<< orphan*/  context_invalidate_state (struct wined3d_context*,int /*<<< orphan*/ ) ; 
+
+ size_t ARB_CLIP_CONTROL ;
+ size_t ARB_FRAGMENT_COORD_CONVENTIONS ;
+ int STATE_FRONTFACE ;
+ int STATE_POINTSPRITECOORDORIGIN ;
+ int STATE_SCISSORRECT ;
+ int STATE_SHADER (int ) ;
+ int STATE_TRANSFORM (int ) ;
+ int STATE_VIEWPORT ;
+ int WINED3D_SHADER_TYPE_DOMAIN ;
+ int WINED3D_SHADER_TYPE_PIXEL ;
+ int WINED3D_TS_PROJECTION ;
+ int context_invalidate_state (struct wined3d_context*,int ) ;
 
 __attribute__((used)) static void context_set_render_offscreen(struct wined3d_context *context, BOOL offscreen)
 {

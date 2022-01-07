@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  enum AVCodecID { ____Placeholder_AVCodecID } AVCodecID ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int64_t ;
+typedef enum AVCodecID { ____Placeholder_AVCodecID } AVCodecID ;
 struct TYPE_10__ {int spdif; } ;
-typedef  TYPE_3__ WAVDemuxContext ;
-struct TYPE_11__ {int /*<<< orphan*/  pb; TYPE_2__** streams; } ;
+typedef TYPE_3__ WAVDemuxContext ;
+struct TYPE_11__ {int pb; TYPE_2__** streams; } ;
 struct TYPE_9__ {TYPE_1__* codecpar; } ;
 struct TYPE_8__ {int codec_tag; int codec_id; } ;
-typedef  TYPE_4__ AVFormatContext ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVPROBE_SCORE_EXTENSION ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- scalar_t__ CONFIG_SPDIF_DEMUXER ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  av_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * av_malloc (int) ; 
- int avio_read (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_tell (int /*<<< orphan*/ ) ; 
- int ff_spdif_probe (int /*<<< orphan*/ *,int,int*) ; 
- int ffio_ensure_seekback (int /*<<< orphan*/ ,int) ; 
+
+ int AVERROR (int ) ;
+ int AVPROBE_SCORE_EXTENSION ;
+ int AV_LOG_WARNING ;
+ scalar_t__ CONFIG_SPDIF_DEMUXER ;
+ int ENOMEM ;
+ int SEEK_SET ;
+ int av_free (int *) ;
+ int av_log (TYPE_4__*,int ,char*) ;
+ int * av_malloc (int) ;
+ int avio_read (int ,int *,int) ;
+ int avio_seek (int ,int ,int ) ;
+ int avio_tell (int ) ;
+ int ff_spdif_probe (int *,int,int*) ;
+ int ffio_ensure_seekback (int ,int) ;
 
 __attribute__((used)) static void set_spdif(AVFormatContext *s, WAVDemuxContext *wav)
 {

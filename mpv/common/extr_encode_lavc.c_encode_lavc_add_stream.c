@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct mux_stream {void (* on_ready ) (void*) ;void* on_ready_ctx; TYPE_1__* st; int /*<<< orphan*/  encoder_timebase; } ;
-struct encoder_stream_info {TYPE_2__* codecpar; int /*<<< orphan*/  timebase; } ;
-struct encode_priv {int failed; int /*<<< orphan*/  muxer; } ;
-struct encode_lavc_context {int /*<<< orphan*/  lock; struct encode_priv* priv; } ;
-struct TYPE_5__ {int /*<<< orphan*/  sample_aspect_ratio; int /*<<< orphan*/  codec_type; } ;
-struct TYPE_4__ {int /*<<< orphan*/  codecpar; int /*<<< orphan*/  sample_aspect_ratio; int /*<<< orphan*/  time_base; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVMEDIA_TYPE_VIDEO ; 
- int /*<<< orphan*/  MP_ERR (struct encode_priv*,char*) ; 
- int /*<<< orphan*/  MP_HANDLE_OOM (TYPE_1__*) ; 
- scalar_t__ avcodec_parameters_copy (int /*<<< orphan*/ ,TYPE_2__*) ; 
- TYPE_1__* avformat_new_stream (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- struct mux_stream* find_mux_stream (struct encode_lavc_context*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  maybe_init_muxer (struct encode_lavc_context*) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct mux_stream {void (* on_ready ) (void*) ;void* on_ready_ctx; TYPE_1__* st; int encoder_timebase; } ;
+struct encoder_stream_info {TYPE_2__* codecpar; int timebase; } ;
+struct encode_priv {int failed; int muxer; } ;
+struct encode_lavc_context {int lock; struct encode_priv* priv; } ;
+struct TYPE_5__ {int sample_aspect_ratio; int codec_type; } ;
+struct TYPE_4__ {int codecpar; int sample_aspect_ratio; int time_base; } ;
+
+
+ int AVMEDIA_TYPE_VIDEO ;
+ int MP_ERR (struct encode_priv*,char*) ;
+ int MP_HANDLE_OOM (TYPE_1__*) ;
+ scalar_t__ avcodec_parameters_copy (int ,TYPE_2__*) ;
+ TYPE_1__* avformat_new_stream (int ,int *) ;
+ struct mux_stream* find_mux_stream (struct encode_lavc_context*,int ) ;
+ int maybe_init_muxer (struct encode_lavc_context*) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 __attribute__((used)) static struct mux_stream *encode_lavc_add_stream(struct encode_lavc_context *ctx,
                                                  struct encoder_stream_info *info,
@@ -42,27 +42,27 @@ __attribute__((used)) static struct mux_stream *encode_lavc_add_stream(struct en
     struct mux_stream *dst = find_mux_stream(ctx, info->codecpar->codec_type);
     if (!dst) {
         MP_ERR(p, "Cannot add a stream at runtime.\n");
-        p->failed = true;
+        p->failed = 1;
         goto done;
     }
     if (dst->st) {
-        // Possibly via --gapless-audio, or explicitly recreating AO/VO.
+
         MP_ERR(p, "Encoder was reinitialized; this is not allowed.\n");
-        p->failed = true;
-        dst = NULL;
+        p->failed = 1;
+        dst = ((void*)0);
         goto done;
     }
 
-    dst->st = avformat_new_stream(p->muxer, NULL);
+    dst->st = avformat_new_stream(p->muxer, ((void*)0));
     MP_HANDLE_OOM(dst->st);
 
     dst->encoder_timebase = info->timebase;
-    dst->st->time_base = info->timebase; // lavf will change this on muxer init
-    // Some muxers (e.g. Matroska one) expect the sample_aspect_ratio to be
-    // set on the AVStream.
+    dst->st->time_base = info->timebase;
+
+
     if (info->codecpar->codec_type == AVMEDIA_TYPE_VIDEO)
         dst->st->sample_aspect_ratio = info->codecpar->sample_aspect_ratio;
-    
+
     if (avcodec_parameters_copy(dst->st->codecpar, info->codecpar) < 0)
         MP_HANDLE_OOM(0);
 

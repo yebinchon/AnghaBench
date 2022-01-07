@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ label; scalar_t__ arg; scalar_t__ type; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- scalar_t__ OPT_FFLAG ; 
- scalar_t__ OPT_FLAG ; 
- scalar_t__ OPT_FSTR ; 
- char** argv ; 
- char* emsg ; 
- int /*<<< orphan*/  errline (int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  lemonStrlen (scalar_t__) ; 
- TYPE_1__* op ; 
- scalar_t__ strncmp (char*,scalar_t__,int /*<<< orphan*/ ) ; 
- void stub1 (int) ; 
- void stub2 (char*) ; 
+
+ scalar_t__ OPT_FFLAG ;
+ scalar_t__ OPT_FLAG ;
+ scalar_t__ OPT_FSTR ;
+ char** argv ;
+ char* emsg ;
+ int errline (int,int,int *) ;
+ int fprintf (int *,char*,char*) ;
+ int lemonStrlen (scalar_t__) ;
+ TYPE_1__* op ;
+ scalar_t__ strncmp (char*,scalar_t__,int ) ;
+ void stub1 (int) ;
+ void stub2 (char*) ;
 
 __attribute__((used)) static int handleflags(int i, FILE *err)
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static int handleflags(int i, FILE *err)
     }
     errcnt++;
   }else if( op[j].arg==0 ){
-    /* Ignore this option */
+
   }else if( op[j].type==OPT_FLAG ){
     *((int*)op[j].arg) = v;
   }else if( op[j].type==OPT_FFLAG ){

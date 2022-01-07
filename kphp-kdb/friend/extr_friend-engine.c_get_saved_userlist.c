@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct keep_mc_header {int num; int list_id; } ;
 struct connection {TYPE_1__* Tmp; } ;
 struct TYPE_3__ {scalar_t__ start; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  advance_read_ptr (TYPE_1__*,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int read_in (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  userlist ; 
+
+ int advance_read_ptr (TYPE_1__*,int) ;
+ int assert (int) ;
+ int read_in (TYPE_1__*,int ,int) ;
+ int userlist ;
 
 int get_saved_userlist (struct connection *c, int list_id) {
   if (!c->Tmp) {

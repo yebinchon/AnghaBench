@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* FullVersionStr ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+ char* FullVersionStr ;
+ int exit (int) ;
+ int printf (char*,...) ;
 
 void usage (void) {
   printf ("%s\n", FullVersionStr);
@@ -33,16 +25,16 @@ void usage (void) {
     "\t[-9]\t\tcompress better (default for zlib)\n"
     "\t[-K]\t\tallows to cut KFS headers (not recommend to use).\n"
     "\t\t\tKFS headers cuttings leads to broken replication and failure during binlog replaying after unpacking.\n"
-#ifdef BINLOG_ZIP_BZ2
-    "\t[-j]\t\tbz2 compression\n"
-#endif
+
+
+
   );
-/*
-  int i;
-  for (i = 0; i < 10; i++) {
-    long long x = lzma_easy_decoder_memusage (i);
-    printf ("lzma_easy_decoder_memusage (%d) = %.3lfMi\n", i, x / (double) (1<<20));
-  }
-*/
+
+
+
+
+
+
+
   exit (2);
 }

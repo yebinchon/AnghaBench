@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SYS_POWER_OFF ; 
- int /*<<< orphan*/  printk (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rtas_call (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  rtas_flash_term_hook (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rtas_token (char*) ; 
+ int SYS_POWER_OFF ;
+ int printk (char*,int ) ;
+ int rtas_call (int ,int,int,int *,int,int) ;
+ int rtas_flash_term_hook (int ) ;
+ int rtas_token (char*) ;
 
 void rtas_power_off(void)
 {
-	if (rtas_flash_term_hook)
-		rtas_flash_term_hook(SYS_POWER_OFF);
-	/* allow power on only with power button press */
-	printk("RTAS power-off returned %d\n",
-	       rtas_call(rtas_token("power-off"), 2, 1, NULL, -1, -1));
-	for (;;);
+ if (rtas_flash_term_hook)
+  rtas_flash_term_hook(SYS_POWER_OFF);
+
+ printk("RTAS power-off returned %d\n",
+        rtas_call(rtas_token("power-off"), 2, 1, ((void*)0), -1, -1));
+ for (;;);
 }

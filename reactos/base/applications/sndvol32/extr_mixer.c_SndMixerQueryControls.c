@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT ;
-struct TYPE_16__ {int cControls; int /*<<< orphan*/  dwLineID; } ;
-struct TYPE_15__ {int /*<<< orphan*/  dwControlType; int /*<<< orphan*/  fdwControl; int /*<<< orphan*/  szName; } ;
-struct TYPE_14__ {int cbStruct; size_t cControls; int cbmxctrl; TYPE_3__* pamxctrl; int /*<<< orphan*/  dwLineID; } ;
+
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef size_t UINT ;
+struct TYPE_16__ {int cControls; int dwLineID; } ;
+struct TYPE_15__ {int dwControlType; int fdwControl; int szName; } ;
+struct TYPE_14__ {int cbStruct; size_t cControls; int cbmxctrl; TYPE_3__* pamxctrl; int dwLineID; } ;
 struct TYPE_13__ {scalar_t__ hmx; } ;
-typedef  int /*<<< orphan*/ * PUINT ;
-typedef  TYPE_1__* PSND_MIXER ;
-typedef  scalar_t__ MMRESULT ;
-typedef  TYPE_2__ MIXERLINECONTROLS ;
-typedef  TYPE_3__ MIXERCONTROL ;
-typedef  int /*<<< orphan*/  LineControls ;
-typedef  TYPE_4__* LPMIXERLINE ;
-typedef  TYPE_3__* LPMIXERCONTROL ;
-typedef  int /*<<< orphan*/  HMIXEROBJ ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int * PUINT ;
+typedef TYPE_1__* PSND_MIXER ;
+typedef scalar_t__ MMRESULT ;
+typedef TYPE_2__ MIXERLINECONTROLS ;
+typedef TYPE_3__ MIXERCONTROL ;
+typedef int LineControls ;
+typedef TYPE_4__* LPMIXERLINE ;
+typedef TYPE_3__* LPMIXERCONTROL ;
+typedef int HMIXEROBJ ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,int /*<<< orphan*/ ,scalar_t__,...) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- scalar_t__ HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  MIXER_GETLINECONTROLSF_ALL ; 
- scalar_t__ MMSYSERR_NOERROR ; 
- scalar_t__ SndMixerIsDisplayControl (TYPE_1__*,TYPE_3__*) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ mixerGetLineControls (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+ int DPRINT (char*,int ,scalar_t__,...) ;
+ int FALSE ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ scalar_t__ HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_3__*) ;
+ int MIXER_GETLINECONTROLSF_ALL ;
+ scalar_t__ MMSYSERR_NOERROR ;
+ scalar_t__ SndMixerIsDisplayControl (TYPE_1__*,TYPE_3__*) ;
+ int TRUE ;
+ scalar_t__ mixerGetLineControls (int ,TYPE_2__*,int ) ;
 
 BOOL
 SndMixerQueryControls(PSND_MIXER Mixer,
@@ -54,7 +54,7 @@ SndMixerQueryControls(PSND_MIXER Mixer,
         *Controls = (MIXERCONTROL*) HeapAlloc(GetProcessHeap(),
                               HEAP_ZERO_MEMORY,
                               LineInfo->cControls * sizeof(MIXERCONTROL));
-        if (*Controls != NULL)
+        if (*Controls != ((void*)0))
         {
             MIXERLINECONTROLS LineControls;
             MMRESULT Result;
@@ -89,7 +89,7 @@ SndMixerQueryControls(PSND_MIXER Mixer,
                 HeapFree(GetProcessHeap(),
                          0,
                          *Controls);
-                *Controls = NULL;
+                *Controls = ((void*)0);
                 DPRINT("Failed to get line (ID: 0x%x) controls: %d\n", LineInfo->dwLineID, Result);
             }
         }

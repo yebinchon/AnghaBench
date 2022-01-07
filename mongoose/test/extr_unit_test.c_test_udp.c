@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  buf; int /*<<< orphan*/  len; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int buf; int len; } ;
 struct udp_res {TYPE_1__ buf_clnt; TYPE_1__ buf_srv; } ;
 struct mg_mgr {int dummy; } ;
 struct mg_connection {int dummy; } ;
-typedef  int /*<<< orphan*/  res ;
+typedef int res ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ASSERT_STREQ_NZ (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  c_int_eq ; 
- int /*<<< orphan*/  eh3_clnt ; 
- int /*<<< orphan*/  eh3_srv ; 
- int /*<<< orphan*/  mbuf_free (TYPE_1__*) ; 
- int /*<<< orphan*/  mbuf_init (TYPE_1__*,int) ; 
- int /*<<< orphan*/  memset (struct udp_res*,int /*<<< orphan*/ ,int) ; 
- struct mg_connection* mg_bind (struct mg_mgr*,char const*,int /*<<< orphan*/ ) ; 
- struct mg_connection* mg_connect (struct mg_mgr*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mg_mgr_free (struct mg_mgr*) ; 
- int /*<<< orphan*/  mg_mgr_init (struct mg_mgr*,struct udp_res*) ; 
- int /*<<< orphan*/  poll_until (struct mg_mgr*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void*) ; 
+
+ int ASSERT (int ) ;
+ int ASSERT_STREQ_NZ (int ,char*) ;
+ int c_int_eq ;
+ int eh3_clnt ;
+ int eh3_srv ;
+ int mbuf_free (TYPE_1__*) ;
+ int mbuf_init (TYPE_1__*,int) ;
+ int memset (struct udp_res*,int ,int) ;
+ struct mg_connection* mg_bind (struct mg_mgr*,char const*,int ) ;
+ struct mg_connection* mg_connect (struct mg_mgr*,char const*,int ) ;
+ int mg_mgr_free (struct mg_mgr*) ;
+ int mg_mgr_init (struct mg_mgr*,struct udp_res*) ;
+ int poll_until (struct mg_mgr*,int,int ,int *,void*) ;
 
 __attribute__((used)) static const char *test_udp(void) {
   struct mg_mgr mgr;
@@ -42,8 +42,8 @@ __attribute__((used)) static const char *test_udp(void) {
   mbuf_init(&res.buf_clnt, 100);
 
   mg_mgr_init(&mgr, &res);
-  ASSERT((nc1 = mg_bind(&mgr, address, eh3_srv)) != NULL);
-  ASSERT((nc2 = mg_connect(&mgr, address, eh3_clnt)) != NULL);
+  ASSERT((nc1 = mg_bind(&mgr, address, eh3_srv)) != ((void*)0));
+  ASSERT((nc2 = mg_connect(&mgr, address, eh3_clnt)) != ((void*)0));
 
   poll_until(&mgr, 1, c_int_eq, &res.buf_clnt.len, (void *) 23);
   ASSERT_STREQ_NZ(res.buf_srv.buf, "ACCEPT+ RECV boo! CLOSE");
@@ -53,5 +53,5 @@ __attribute__((used)) static const char *test_udp(void) {
   mbuf_free(&res.buf_clnt);
   mg_mgr_free(&mgr);
 
-  return NULL;
+  return ((void*)0);
 }

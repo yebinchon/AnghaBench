@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct ff_demuxer {TYPE_1__* audio_decoder; TYPE_2__* video_decoder; } ;
-struct TYPE_4__ {int /*<<< orphan*/  packet_queue; int /*<<< orphan*/ * stream; } ;
-struct TYPE_3__ {int /*<<< orphan*/  packet_queue; int /*<<< orphan*/ * stream; } ;
+struct TYPE_4__ {int packet_queue; int * stream; } ;
+struct TYPE_3__ {int packet_queue; int * stream; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  packet_queue_flush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  packet_queue_put_flush_packet (int /*<<< orphan*/ *) ; 
+
+ int packet_queue_flush (int *) ;
+ int packet_queue_put_flush_packet (int *) ;
 
 void ff_demuxer_flush(struct ff_demuxer *demuxer)
 {
-	if (demuxer->video_decoder != NULL &&
-	    demuxer->video_decoder->stream != NULL) {
-		packet_queue_flush(&demuxer->video_decoder->packet_queue);
-		packet_queue_put_flush_packet(
-		        &demuxer->video_decoder->packet_queue);
-	}
+ if (demuxer->video_decoder != ((void*)0) &&
+     demuxer->video_decoder->stream != ((void*)0)) {
+  packet_queue_flush(&demuxer->video_decoder->packet_queue);
+  packet_queue_put_flush_packet(
+          &demuxer->video_decoder->packet_queue);
+ }
 
-	if (demuxer->audio_decoder != NULL &&
-	    demuxer->audio_decoder->stream != NULL) {
-		packet_queue_flush(&demuxer->audio_decoder->packet_queue);
-		packet_queue_put_flush_packet(
-		        &demuxer->audio_decoder->packet_queue);
-	}
+ if (demuxer->audio_decoder != ((void*)0) &&
+     demuxer->audio_decoder->stream != ((void*)0)) {
+  packet_queue_flush(&demuxer->audio_decoder->packet_queue);
+  packet_queue_put_flush_packet(
+          &demuxer->audio_decoder->packet_queue);
+ }
 }

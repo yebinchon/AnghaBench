@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+
+
+typedef int uint16_t ;
 struct openvpn_tcphdr {int flags; } ;
-struct openvpn_iphdr {scalar_t__ protocol; int /*<<< orphan*/  frag_off; int /*<<< orphan*/  tot_len; int /*<<< orphan*/  version_len; } ;
+struct openvpn_iphdr {scalar_t__ protocol; int frag_off; int tot_len; int version_len; } ;
 struct buffer {int dummy; } ;
 
-/* Variables and functions */
- int BLEN (struct buffer*) ; 
- scalar_t__ BPTR (struct buffer*) ; 
- int OPENVPN_IPH_GET_LEN (int /*<<< orphan*/ ) ; 
- scalar_t__ OPENVPN_IPPROTO_TCP ; 
- int OPENVPN_IP_OFFMASK ; 
- int OPENVPN_TCPH_SYN_MASK ; 
- scalar_t__ buf_advance (struct buffer*,int) ; 
- int /*<<< orphan*/  mss_fixup_dowork (struct buffer*,int /*<<< orphan*/ ) ; 
- int ntohs (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  verify_align_4 (struct buffer*) ; 
+
+ int BLEN (struct buffer*) ;
+ scalar_t__ BPTR (struct buffer*) ;
+ int OPENVPN_IPH_GET_LEN (int ) ;
+ scalar_t__ OPENVPN_IPPROTO_TCP ;
+ int OPENVPN_IP_OFFMASK ;
+ int OPENVPN_TCPH_SYN_MASK ;
+ scalar_t__ buf_advance (struct buffer*,int) ;
+ int mss_fixup_dowork (struct buffer*,int ) ;
+ int ntohs (int ) ;
+ int verify_align_4 (struct buffer*) ;
 
 void
 mss_fixup_ipv4(struct buffer *buf, int maxmss)

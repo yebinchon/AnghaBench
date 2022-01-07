@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  glGenerateMipmap; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int glGenerateMipmap; } ;
 struct wined3d_gl_info {unsigned int format_count; struct wined3d_format* formats; TYPE_1__ fbo_ops; } ;
 struct wined3d_format {int* flags; } ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (int*) ; 
- int WINED3DFMT_FLAG_FILTERING ; 
- int WINED3DFMT_FLAG_GEN_MIPMAP ; 
- int WINED3DFMT_FLAG_RENDERTARGET ; 
+
+ unsigned int ARRAY_SIZE (int*) ;
+ int WINED3DFMT_FLAG_FILTERING ;
+ int WINED3DFMT_FLAG_GEN_MIPMAP ;
+ int WINED3DFMT_FLAG_RENDERTARGET ;
 
 __attribute__((used)) static void init_format_gen_mipmap_info(struct wined3d_gl_info *gl_info)
 {

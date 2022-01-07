@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int x; int y; } ;
-typedef  TYPE_1__ POINT ;
-typedef  int /*<<< orphan*/  HDC ;
+typedef TYPE_1__ POINT ;
+typedef int HDC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetBrushOrgEx (int /*<<< orphan*/ ,int,int,TYPE_1__*) ; 
- int /*<<< orphan*/  ok (int,char*,int,int) ; 
+
+ int GetDC (int ) ;
+ int ReleaseDC (int ,int ) ;
+ int SetBrushOrgEx (int ,int,int,TYPE_1__*) ;
+ int ok (int,char*,int,int) ;
 
 __attribute__((used)) static void test_brush_org( void )
 {

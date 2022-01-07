@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EINVAL ; 
+ int EINVAL ;
 
 __attribute__((used)) static inline int get_srate(int rate)
 {
-	int srate;
+ int srate;
 
-	switch (rate) {
-	case 16000:
-		srate = 3;
-		break;
-	case 32000:
-		srate = 6;
-		break;
-	case 48000:
-		srate = 8;
-		break;
-	default:
-		return -EINVAL;
-	}
-	return srate;
+ switch (rate) {
+ case 16000:
+  srate = 3;
+  break;
+ case 32000:
+  srate = 6;
+  break;
+ case 48000:
+  srate = 8;
+  break;
+ default:
+  return -EINVAL;
+ }
+ return srate;
 }

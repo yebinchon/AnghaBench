@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_19__ {int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_diff_tree_processor_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-struct TYPE_20__ {struct svn_wc__shim_fetch_baton_t* fetch_baton; int /*<<< orphan*/  fetch_base_func; int /*<<< orphan*/  fetch_props_func; int /*<<< orphan*/  fetch_kind_func; } ;
-typedef  TYPE_2__ svn_delta_shim_callbacks_t ;
-struct TYPE_21__ {int /*<<< orphan*/  close_edit; int /*<<< orphan*/  close_file; int /*<<< orphan*/  change_dir_prop; int /*<<< orphan*/  change_file_prop; int /*<<< orphan*/  apply_textdelta; int /*<<< orphan*/  open_file; int /*<<< orphan*/  add_file; int /*<<< orphan*/  close_directory; int /*<<< orphan*/  open_directory; int /*<<< orphan*/  add_directory; int /*<<< orphan*/  delete_entry; int /*<<< orphan*/  open_root; int /*<<< orphan*/  set_target_revision; } ;
-typedef  TYPE_3__ svn_delta_editor_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct svn_wc__shim_fetch_baton_t {int /*<<< orphan*/  fetch_base; int /*<<< orphan*/  base_abspath; int /*<<< orphan*/  db; } ;
-struct edit_baton_t {int /*<<< orphan*/  anchor_abspath; int /*<<< orphan*/  pool; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
+
+
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
+struct TYPE_19__ {int db; } ;
+typedef TYPE_1__ svn_wc_context_t ;
+typedef int svn_error_t ;
+typedef int svn_diff_tree_processor_t ;
+typedef int svn_depth_t ;
+struct TYPE_20__ {struct svn_wc__shim_fetch_baton_t* fetch_baton; int fetch_base_func; int fetch_props_func; int fetch_kind_func; } ;
+typedef TYPE_2__ svn_delta_shim_callbacks_t ;
+struct TYPE_21__ {int close_edit; int close_file; int change_dir_prop; int change_file_prop; int apply_textdelta; int open_file; int add_file; int close_directory; int open_directory; int add_directory; int delete_entry; int open_root; int set_target_revision; } ;
+typedef TYPE_3__ svn_delta_editor_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_boolean_t ;
+struct svn_wc__shim_fetch_baton_t {int fetch_base; int base_abspath; int db; } ;
+struct edit_baton_t {int anchor_abspath; int pool; } ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
 struct TYPE_22__ {scalar_t__ nelts; } ;
-typedef  TYPE_4__ apr_array_header_t ;
+typedef TYPE_4__ apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  add_directory ; 
- int /*<<< orphan*/  add_file ; 
- int /*<<< orphan*/  apply_textdelta ; 
- struct svn_wc__shim_fetch_baton_t* apr_palloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  change_dir_prop ; 
- int /*<<< orphan*/  change_file_prop ; 
- int /*<<< orphan*/  close_directory ; 
- int /*<<< orphan*/  close_edit ; 
- int /*<<< orphan*/  close_file ; 
- int /*<<< orphan*/  delete_entry ; 
- int /*<<< orphan*/  make_edit_baton (struct edit_baton_t**,int /*<<< orphan*/ ,char const*,char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  open_directory ; 
- int /*<<< orphan*/  open_file ; 
- int /*<<< orphan*/  open_root ; 
- int /*<<< orphan*/  set_target_revision ; 
- TYPE_3__* svn_delta_default_editor (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_delta_get_cancellation_editor (int /*<<< orphan*/ ,void*,TYPE_3__ const*,void*,TYPE_3__ const**,void**,int /*<<< orphan*/ *) ; 
- TYPE_2__* svn_delta_shim_callbacks_default (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_depth_unknown ; 
- int /*<<< orphan*/  svn_dirent_is_absolute (char const*) ; 
- int /*<<< orphan*/  svn_editor__insert_shims (TYPE_3__ const**,void**,TYPE_3__ const*,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_hash_from_cstring_keys (int /*<<< orphan*/ **,TYPE_4__ const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__ambient_depth_filter_editor (TYPE_3__ const**,void**,int /*<<< orphan*/ ,char const*,char const*,TYPE_3__ const*,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc__changelist_filter_tree_processor_create (int /*<<< orphan*/  const*,TYPE_1__*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__fetch_base_func ; 
- int /*<<< orphan*/  svn_wc__fetch_kind_func ; 
- int /*<<< orphan*/  svn_wc__fetch_props_func ; 
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int add_directory ;
+ int add_file ;
+ int apply_textdelta ;
+ struct svn_wc__shim_fetch_baton_t* apr_palloc (int *,int) ;
+ int change_dir_prop ;
+ int change_file_prop ;
+ int close_directory ;
+ int close_edit ;
+ int close_file ;
+ int delete_entry ;
+ int make_edit_baton (struct edit_baton_t**,int ,char const*,char const*,int const*,int ,int ,int ,int ,int ,void*,int *) ;
+ int open_directory ;
+ int open_file ;
+ int open_root ;
+ int set_target_revision ;
+ TYPE_3__* svn_delta_default_editor (int ) ;
+ int svn_delta_get_cancellation_editor (int ,void*,TYPE_3__ const*,void*,TYPE_3__ const**,void**,int *) ;
+ TYPE_2__* svn_delta_shim_callbacks_default (int *) ;
+ int svn_depth_unknown ;
+ int svn_dirent_is_absolute (char const*) ;
+ int svn_editor__insert_shims (TYPE_3__ const**,void**,TYPE_3__ const*,void*,int *,int *,TYPE_2__*,int *,int *) ;
+ int svn_hash_from_cstring_keys (int **,TYPE_4__ const*,int *) ;
+ int svn_wc__ambient_depth_filter_editor (TYPE_3__ const**,void**,int ,char const*,char const*,TYPE_3__ const*,void*,int *) ;
+ int * svn_wc__changelist_filter_tree_processor_create (int const*,TYPE_1__*,char const*,int *,int *) ;
+ int svn_wc__fetch_base_func ;
+ int svn_wc__fetch_kind_func ;
+ int svn_wc__fetch_props_func ;
 
 svn_error_t *
 svn_wc__get_diff_editor(const svn_delta_editor_t **editor,
@@ -93,7 +93,7 @@ svn_wc__get_diff_editor(const svn_delta_editor_t **editor,
 
   SVN_ERR_ASSERT(svn_dirent_is_absolute(anchor_abspath));
 
-  /* Apply changelist filtering to the output */
+
   if (changelist_filter && changelist_filter->nelts)
     {
       apr_hash_t *changelist_hash;
@@ -164,7 +164,7 @@ svn_wc__get_diff_editor(const svn_delta_editor_t **editor,
 
 
   SVN_ERR(svn_editor__insert_shims(editor, edit_baton, *editor, *edit_baton,
-                                   NULL, NULL, shim_callbacks,
+                                   ((void*)0), ((void*)0), shim_callbacks,
                                    result_pool, scratch_pool));
 
   return SVN_NO_ERROR;

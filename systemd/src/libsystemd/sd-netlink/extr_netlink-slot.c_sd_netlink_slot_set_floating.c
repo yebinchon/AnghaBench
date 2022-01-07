@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int floating; int /*<<< orphan*/  netlink; } ;
-typedef  TYPE_1__ sd_netlink_slot ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int ESTALE ; 
- int /*<<< orphan*/  assert_return (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_netlink_ref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_netlink_slot_ref (TYPE_1__*) ; 
- int /*<<< orphan*/  sd_netlink_slot_unref (TYPE_1__*) ; 
- int /*<<< orphan*/  sd_netlink_unref (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int floating; int netlink; } ;
+typedef TYPE_1__ sd_netlink_slot ;
+
+
+ int EINVAL ;
+ int ESTALE ;
+ int assert_return (TYPE_1__*,int ) ;
+ int sd_netlink_ref (int ) ;
+ int sd_netlink_slot_ref (TYPE_1__*) ;
+ int sd_netlink_slot_unref (TYPE_1__*) ;
+ int sd_netlink_unref (int ) ;
 
 int sd_netlink_slot_set_floating(sd_netlink_slot *slot, int b) {
         assert_return(slot, -EINVAL);
@@ -29,7 +29,7 @@ int sd_netlink_slot_set_floating(sd_netlink_slot *slot, int b) {
         if (slot->floating == !!b)
                 return 0;
 
-        if (!slot->netlink) /* Already disconnected */
+        if (!slot->netlink)
                 return -ESTALE;
 
         slot->floating = b;

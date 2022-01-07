@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  fe51 ;
-typedef  int /*<<< orphan*/  e ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPENSSL_cleanse (int*,int) ; 
- int /*<<< orphan*/  fe51_0 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fe51_1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fe51_add (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fe51_copy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fe51_cswap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  fe51_frombytes (int /*<<< orphan*/ ,int const*) ; 
- int /*<<< orphan*/  fe51_invert (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fe51_mul (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fe51_mul121666 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fe51_sq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fe51_sub (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fe51_tobytes (int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int*,int const*,int) ; 
- scalar_t__ x25519_fe64_eligible () ; 
- int /*<<< orphan*/  x25519_scalar_mulx (int*,int const*,int const*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int fe51 ;
+typedef int e ;
+
+
+ int OPENSSL_cleanse (int*,int) ;
+ int fe51_0 (int ) ;
+ int fe51_1 (int ) ;
+ int fe51_add (int ,int ,int ) ;
+ int fe51_copy (int ,int ) ;
+ int fe51_cswap (int ,int ,unsigned int) ;
+ int fe51_frombytes (int ,int const*) ;
+ int fe51_invert (int ,int ) ;
+ int fe51_mul (int ,int ,int ) ;
+ int fe51_mul121666 (int ,int ) ;
+ int fe51_sq (int ,int ) ;
+ int fe51_sub (int ,int ,int ) ;
+ int fe51_tobytes (int*,int ) ;
+ int memcpy (int*,int const*,int) ;
+ scalar_t__ x25519_fe64_eligible () ;
+ int x25519_scalar_mulx (int*,int const*,int const*) ;
 
 __attribute__((used)) static void x25519_scalar_mult(uint8_t out[32], const uint8_t scalar[32],
                                const uint8_t point[32])
@@ -39,16 +39,8 @@ __attribute__((used)) static void x25519_scalar_mult(uint8_t out[32], const uint
     uint8_t e[32];
     unsigned swap = 0;
     int pos;
-
-# ifdef BASE_2_64_IMPLEMENTED
-    if (x25519_fe64_eligible()) {
-        x25519_scalar_mulx(out, scalar, point);
-        return;
-    }
-# endif
-
     memcpy(e, scalar, 32);
-    e[0]  &= 0xf8;
+    e[0] &= 0xf8;
     e[31] &= 0x7f;
     e[31] |= 0x40;
     fe51_frombytes(x1, point);

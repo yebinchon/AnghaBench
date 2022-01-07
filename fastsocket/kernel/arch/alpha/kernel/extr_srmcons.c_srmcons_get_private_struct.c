@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct srmcons_private {int /*<<< orphan*/  timer; int /*<<< orphan*/  lock; int /*<<< orphan*/ * tty; } ;
-typedef  int /*<<< orphan*/  DEFINE_SPINLOCK ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  init_timer (int /*<<< orphan*/ *) ; 
- struct srmcons_private* kmalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct srmcons_private {int timer; int lock; int * tty; } ;
+typedef int DEFINE_SPINLOCK ;
+
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int init_timer (int *) ;
+ struct srmcons_private* kmalloc (int,int ) ;
+ int spin_lock_init (int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static int
 srmcons_get_private_struct(struct srmcons_private **ps)
 {
-	static struct srmcons_private *srmconsp = NULL;
-	static DEFINE_SPINLOCK(srmconsp_lock);
-	unsigned long flags;
-	int retval = 0;
+ static struct srmcons_private *srmconsp = ((void*)0);
+ static DEFINE_SPINLOCK(srmconsp_lock);
+ unsigned long flags;
+ int retval = 0;
 
-	if (srmconsp == NULL) {
-		srmconsp = kmalloc(sizeof(*srmconsp), GFP_KERNEL);
-		spin_lock_irqsave(&srmconsp_lock, flags);
+ if (srmconsp == ((void*)0)) {
+  srmconsp = kmalloc(sizeof(*srmconsp), GFP_KERNEL);
+  spin_lock_irqsave(&srmconsp_lock, flags);
 
-		if (srmconsp == NULL)
-			retval = -ENOMEM;
-		else {
-			srmconsp->tty = NULL;
-			spin_lock_init(&srmconsp->lock);
-			init_timer(&srmconsp->timer);
-		}
+  if (srmconsp == ((void*)0))
+   retval = -ENOMEM;
+  else {
+   srmconsp->tty = ((void*)0);
+   spin_lock_init(&srmconsp->lock);
+   init_timer(&srmconsp->timer);
+  }
 
-		spin_unlock_irqrestore(&srmconsp_lock, flags);
-	}
+  spin_unlock_irqrestore(&srmconsp_lock, flags);
+ }
 
-	*ps = srmconsp;
-	return retval;
+ *ps = srmconsp;
+ return retval;
 }

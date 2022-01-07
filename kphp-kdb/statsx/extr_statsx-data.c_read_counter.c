@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct counter {scalar_t__ prev; int type; int long_unique_visitors; int last_month_unique_visitors; int last_week_unique_visitors; int /*<<< orphan*/  visitors; int /*<<< orphan*/  timezone; void** subcnt; void* mask_subcnt; void* visitors_source; void* visitors_geoip_countries; void* visitors_countries; void* visitors_sex_age; void* visitors_cities; void* visitors_section; void* visitors_polit; void* visitors_mstatus; void* visitors_age; scalar_t__ visitors_sex; void* valid_until; void* created_at; void* deletes; void* unique_visitors; void* views; void* counter_id; } ;
 
-/* Variables and functions */
- scalar_t__ FORCE_COUNTER_TYPE ; 
- int /*<<< orphan*/  MAX_AGE ; 
- int /*<<< orphan*/  MAX_MSTATUS ; 
- int /*<<< orphan*/  MAX_POLIT ; 
- int /*<<< orphan*/  MAX_SECTION ; 
- int /*<<< orphan*/  MAX_SEX_AGE ; 
- int /*<<< orphan*/  MAX_SOURCE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int get_cnt_type (void*) ; 
- int index_version ; 
- int ipopcount (void*) ; 
- struct counter* malloc_counter (int /*<<< orphan*/ ,int) ; 
- void* read_list (int /*<<< orphan*/ ) ; 
- void* read_list2 () ; 
- int /*<<< orphan*/  read_tree () ; 
- int /*<<< orphan*/  readin (char*,int) ; 
- int /*<<< orphan*/  readin_char () ; 
- void* readin_int () ; 
- void* readin_long () ; 
- int /*<<< orphan*/  readin_skip (int) ; 
- int /*<<< orphan*/  skip_tree () ; 
- int /*<<< orphan*/  stderr ; 
- void** zzmalloc (int) ; 
+
+
+
+struct counter {scalar_t__ prev; int type; int long_unique_visitors; int last_month_unique_visitors; int last_week_unique_visitors; int visitors; int timezone; void** subcnt; void* mask_subcnt; void* visitors_source; void* visitors_geoip_countries; void* visitors_countries; void* visitors_sex_age; void* visitors_cities; void* visitors_section; void* visitors_polit; void* visitors_mstatus; void* visitors_age; scalar_t__ visitors_sex; void* valid_until; void* created_at; void* deletes; void* unique_visitors; void* views; void* counter_id; } ;
+
+
+ scalar_t__ FORCE_COUNTER_TYPE ;
+ int MAX_AGE ;
+ int MAX_MSTATUS ;
+ int MAX_POLIT ;
+ int MAX_SECTION ;
+ int MAX_SEX_AGE ;
+ int MAX_SOURCE ;
+ int assert (int) ;
+ int fprintf (int ,char*) ;
+ int get_cnt_type (void*) ;
+ int index_version ;
+ int ipopcount (void*) ;
+ struct counter* malloc_counter (int ,int) ;
+ void* read_list (int ) ;
+ void* read_list2 () ;
+ int read_tree () ;
+ int readin (char*,int) ;
+ int readin_char () ;
+ void* readin_int () ;
+ void* readin_long () ;
+ int readin_skip (int) ;
+ int skip_tree () ;
+ int stderr ;
+ void** zzmalloc (int) ;
 
 struct counter* read_counter (int readtree) {
   int i,j;
@@ -99,8 +99,8 @@ struct counter* read_counter (int readtree) {
     }
   }
 
-  //C->subcnt_number = readin_int ();
-  //if (C->subcnt_number) { C->subcnt = read_list (C->subcnt_number); }
+
+
   C->timezone = readin_char ();
   if (readtree) { C->visitors = read_tree (); }
   else { skip_tree (); }

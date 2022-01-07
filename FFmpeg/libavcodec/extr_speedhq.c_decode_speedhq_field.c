@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  last_alpha ;
-struct TYPE_8__ {int* linesize; int height; int width; int /*<<< orphan*/ ** data; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int last_alpha ;
+struct TYPE_8__ {int* linesize; int height; int width; int ** data; } ;
 struct TYPE_7__ {scalar_t__ alpha_type; scalar_t__ subsampling; } ;
-typedef  TYPE_1__ SHQContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_2__ AVFrame ;
+typedef TYPE_1__ SHQContext ;
+typedef int GetBitContext ;
+typedef TYPE_2__ AVFrame ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int AV_RL24 (int /*<<< orphan*/  const*) ; 
- scalar_t__ SHQ_DCT_ALPHA ; 
- scalar_t__ SHQ_NO_ALPHA ; 
- scalar_t__ SHQ_RLE_ALPHA ; 
- scalar_t__ SHQ_SUBSAMPLING_420 ; 
- scalar_t__ SHQ_SUBSAMPLING_444 ; 
- int decode_alpha_block (TYPE_1__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int decode_dct_block (TYPE_1__ const*,int /*<<< orphan*/ *,int*,int,int /*<<< orphan*/ *,int) ; 
- int init_get_bits8 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_RL24 (int const*) ;
+ scalar_t__ SHQ_DCT_ALPHA ;
+ scalar_t__ SHQ_NO_ALPHA ;
+ scalar_t__ SHQ_RLE_ALPHA ;
+ scalar_t__ SHQ_SUBSAMPLING_420 ;
+ scalar_t__ SHQ_SUBSAMPLING_444 ;
+ int decode_alpha_block (TYPE_1__ const*,int *,int *,int *,int) ;
+ int decode_dct_block (TYPE_1__ const*,int *,int*,int,int *,int) ;
+ int init_get_bits8 (int *,int const*,int) ;
+ int memset (int *,int,int) ;
 
 __attribute__((used)) static int decode_speedhq_field(const SHQContext *s, const uint8_t *buf, int buf_size, AVFrame *frame, int field_number, int start, int end, int line_stride)
 {
     int ret, slice_number, slice_offsets[5];
-    int linesize_y  = frame->linesize[0] * line_stride;
+    int linesize_y = frame->linesize[0] * line_stride;
     int linesize_cb = frame->linesize[1] * line_stride;
     int linesize_cr = frame->linesize[2] * line_stride;
     int linesize_a;
@@ -92,7 +92,7 @@ __attribute__((used)) static int decode_speedhq_field(const SHQContext *s, const
             }
 
             for (x = 0; x < frame->width; x += 16) {
-                /* Decode the four luma blocks. */
+
                 if ((ret = decode_dct_block(s, &gb, last_dc, 0, dest_y, linesize_y)) < 0)
                     return ret;
                 if ((ret = decode_dct_block(s, &gb, last_dc, 0, dest_y + 8, linesize_y)) < 0)
@@ -102,24 +102,24 @@ __attribute__((used)) static int decode_speedhq_field(const SHQContext *s, const
                 if ((ret = decode_dct_block(s, &gb, last_dc, 0, dest_y + 8 * linesize_y + 8, linesize_y)) < 0)
                     return ret;
 
-                /*
-                 * Decode the first chroma block. For 4:2:0, this is the only one;
-                 * for 4:2:2, it's the top block; for 4:4:4, it's the top-left block.
-                 */
+
+
+
+
                 if ((ret = decode_dct_block(s, &gb, last_dc, 1, dest_cb, linesize_cb)) < 0)
                     return ret;
                 if ((ret = decode_dct_block(s, &gb, last_dc, 2, dest_cr, linesize_cr)) < 0)
                     return ret;
 
                 if (s->subsampling != SHQ_SUBSAMPLING_420) {
-                    /* For 4:2:2, this is the bottom block; for 4:4:4, it's the bottom-left block. */
+
                     if ((ret = decode_dct_block(s, &gb, last_dc, 1, dest_cb + 8 * linesize_cb, linesize_cb)) < 0)
                         return ret;
                     if ((ret = decode_dct_block(s, &gb, last_dc, 2, dest_cr + 8 * linesize_cr, linesize_cr)) < 0)
                         return ret;
 
                     if (s->subsampling == SHQ_SUBSAMPLING_444) {
-                        /* Top-right and bottom-right blocks. */
+
                         if ((ret = decode_dct_block(s, &gb, last_dc, 1, dest_cb + 8, linesize_cb)) < 0)
                             return ret;
                         if ((ret = decode_dct_block(s, &gb, last_dc, 2, dest_cr + 8, linesize_cr)) < 0)
@@ -138,14 +138,14 @@ __attribute__((used)) static int decode_speedhq_field(const SHQContext *s, const
                 dest_cr += 8;
 
                 if (s->alpha_type == SHQ_RLE_ALPHA) {
-                    /* Alpha coded using 16x8 RLE blocks. */
+
                     if ((ret = decode_alpha_block(s, &gb, last_alpha, dest_a, linesize_a)) < 0)
                         return ret;
                     if ((ret = decode_alpha_block(s, &gb, last_alpha, dest_a + 8 * linesize_a, linesize_a)) < 0)
                         return ret;
                     dest_a += 16;
                 } else if (s->alpha_type == SHQ_DCT_ALPHA) {
-                    /* Alpha encoded exactly like luma. */
+
                     if ((ret = decode_dct_block(s, &gb, last_dc, 3, dest_a, linesize_a)) < 0)
                         return ret;
                     if ((ret = decode_dct_block(s, &gb, last_dc, 3, dest_a + 8, linesize_a)) < 0)

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArray_Descr ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
 
-/* Variables and functions */
- int NPY_NOTYPE ; 
- int /*<<< orphan*/ * PyArray_DescrFromType (int) ; 
- int /*<<< orphan*/ * PyDict_New () ; 
- int /*<<< orphan*/  PyDict_SetItemString (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int PyObject ;
+typedef int PyArray_Descr ;
+typedef int PyArrayObject ;
+
+
+ int NPY_NOTYPE ;
+ int * PyArray_DescrFromType (int) ;
+ int * PyDict_New () ;
+ int PyDict_SetItemString (int *,char*,int *) ;
+ int Py_DECREF (int *) ;
 
 __attribute__((used)) static PyObject *
 _get_keywords(int rtype, PyArrayObject *out)
 {
-    PyObject *kwds = NULL;
-    if (rtype != NPY_NOTYPE || out != NULL) {
+    PyObject *kwds = ((void*)0);
+    if (rtype != NPY_NOTYPE || out != ((void*)0)) {
         kwds = PyDict_New();
         if (rtype != NPY_NOTYPE) {
             PyArray_Descr *descr;
@@ -35,7 +35,7 @@ _get_keywords(int rtype, PyArrayObject *out)
                 Py_DECREF(descr);
             }
         }
-        if (out != NULL) {
+        if (out != ((void*)0)) {
             PyDict_SetItemString(kwds, "out", (PyObject *)out);
         }
     }

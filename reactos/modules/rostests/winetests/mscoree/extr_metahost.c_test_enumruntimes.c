@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IEnumUnknown ;
-typedef  int /*<<< orphan*/  ICLRRuntimeInfo ;
-typedef  int HRESULT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_INSUFFICIENT_BUFFER ; 
- scalar_t__ FAILED (int) ; 
- int HRESULT_FROM_WIN32 (int /*<<< orphan*/ ) ; 
- int ICLRMetaHost_EnumerateInstalledRuntimes (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int ICLRRuntimeInfo_GetVersionString (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  ICLRRuntimeInfo_Release (int /*<<< orphan*/ *) ; 
- int IEnumUnknown_Next (int /*<<< orphan*/ *,int,int /*<<< orphan*/ **,int*) ; 
- int /*<<< orphan*/  IEnumUnknown_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_ICLRRuntimeInfo ; 
- int IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- int S_FALSE ; 
- int S_OK ; 
- int /*<<< orphan*/  metahost ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int /*<<< orphan*/  trace (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wine_dbgstr_w (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int WCHAR ;
+typedef int IUnknown ;
+typedef int IEnumUnknown ;
+typedef int ICLRRuntimeInfo ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int ERROR_INSUFFICIENT_BUFFER ;
+ scalar_t__ FAILED (int) ;
+ int HRESULT_FROM_WIN32 (int ) ;
+ int ICLRMetaHost_EnumerateInstalledRuntimes (int ,int **) ;
+ int ICLRRuntimeInfo_GetVersionString (int *,int *,int*) ;
+ int ICLRRuntimeInfo_Release (int *) ;
+ int IEnumUnknown_Next (int *,int,int **,int*) ;
+ int IEnumUnknown_Release (int *) ;
+ int IID_ICLRRuntimeInfo ;
+ int IUnknown_QueryInterface (int *,int *,void**) ;
+ int IUnknown_Release (int *) ;
+ int MAX_PATH ;
+ int S_FALSE ;
+ int S_OK ;
+ int metahost ;
+ int ok (int,char*,int) ;
+ int trace (char*,int ) ;
+ int wine_dbgstr_w (int *) ;
 
 __attribute__((used)) static void test_enumruntimes(void)
 {
@@ -61,7 +61,7 @@ __attribute__((used)) static void test_enumruntimes(void)
         ok(count > 1, "GetVersionString returned count %u\n", count);
 
         count = 0xdeadbeef;
-        hr = ICLRRuntimeInfo_GetVersionString(runtime_info, NULL, &count);
+        hr = ICLRRuntimeInfo_GetVersionString(runtime_info, ((void*)0), &count);
         ok(hr == S_OK, "GetVersionString returned %x\n", hr);
         ok(count > 1 && count != 0xdeadbeef, "GetVersionString returned count %u\n", count);
 

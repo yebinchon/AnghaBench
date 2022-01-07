@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int* d; int top; int /*<<< orphan*/  flags; } ;
-typedef  int volatile BN_ULONG ;
-typedef  TYPE_1__ BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_FLG_FIXED_TOP ; 
- int /*<<< orphan*/ * bn_wexpand (TYPE_1__*,int) ; 
- int constant_time_eq_int (int,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int* d; int top; int flags; } ;
+typedef int volatile BN_ULONG ;
+typedef TYPE_1__ BIGNUM ;
+
+
+ int BN_FLG_FIXED_TOP ;
+ int * bn_wexpand (TYPE_1__*,int) ;
+ int constant_time_eq_int (int,int) ;
 
 __attribute__((used)) static int MOD_EXP_CTIME_COPY_FROM_PREBUF(BIGNUM *b, int top,
                                           unsigned char *buf, int idx,
@@ -26,17 +26,9 @@ __attribute__((used)) static int MOD_EXP_CTIME_COPY_FROM_PREBUF(BIGNUM *b, int t
 {
     int i, j;
     int width = 1 << window;
-    /*
-     * We declare table 'volatile' in order to discourage compiler
-     * from reordering loads from the table. Concern is that if
-     * reordered in specific manner loads might give away the
-     * information we are trying to conceal. Some would argue that
-     * compiler can reorder them anyway, but it can as well be
-     * argued that doing so would be violation of standard...
-     */
     volatile BN_ULONG *table = (volatile BN_ULONG *)buf;
 
-    if (bn_wexpand(b, top) == NULL)
+    if (bn_wexpand(b, top) == ((void*)0))
         return 0;
 
     if (window <= 3) {
@@ -54,8 +46,8 @@ __attribute__((used)) static int MOD_EXP_CTIME_COPY_FROM_PREBUF(BIGNUM *b, int t
         int xstride = 1 << (window - 2);
         BN_ULONG y0, y1, y2, y3;
 
-        i = idx >> (window - 2);        /* equivalent of idx / xstride */
-        idx &= xstride - 1;             /* equivalent of idx % xstride */
+        i = idx >> (window - 2);
+        idx &= xstride - 1;
 
         y0 = (BN_ULONG)0 - (constant_time_eq_int(i,0)&1);
         y1 = (BN_ULONG)0 - (constant_time_eq_int(i,1)&1);

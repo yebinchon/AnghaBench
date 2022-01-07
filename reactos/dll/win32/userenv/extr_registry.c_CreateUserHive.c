@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char* LPCWSTR ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CopyKey (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DPRINT (char*,char*) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  HKEY_USERS ; 
- int /*<<< orphan*/  KEY_ALL_ACCESS ; 
- int /*<<< orphan*/  KEY_READ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegFlushKey (int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  UpdateUsersShellFolderSettings (char*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef char* LPCWSTR ;
+typedef scalar_t__ LONG ;
+typedef int * HKEY ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int CopyKey (int *,int *) ;
+ int DPRINT (char*,char*) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int HKEY_USERS ;
+ int KEY_ALL_ACCESS ;
+ int KEY_READ ;
+ int RegCloseKey (int *) ;
+ int RegFlushKey (int *) ;
+ scalar_t__ RegOpenKeyExW (int ,char*,int ,int ,int **) ;
+ int SetLastError (int ) ;
+ int TRUE ;
+ int UpdateUsersShellFolderSettings (char*,int *) ;
 
 BOOL
 CreateUserHive(LPCWSTR lpKeyName,
                LPCWSTR lpProfilePath)
 {
-    HKEY hDefaultKey = NULL;
-    HKEY hUserKey = NULL;
+    HKEY hDefaultKey = ((void*)0);
+    HKEY hUserKey = ((void*)0);
     LONG Error;
     BOOL Ret = FALSE;
 
@@ -79,10 +79,10 @@ CreateUserHive(LPCWSTR lpKeyName,
     Ret = TRUE;
 
 Cleanup:
-    if (hUserKey != NULL)
+    if (hUserKey != ((void*)0))
         RegCloseKey (hUserKey);
 
-    if (hDefaultKey != NULL)
+    if (hDefaultKey != ((void*)0))
         RegCloseKey (hDefaultKey);
 
     return Ret;

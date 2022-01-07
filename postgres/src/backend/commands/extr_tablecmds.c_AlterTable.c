@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {TYPE_1__* relation; int /*<<< orphan*/  cmds; } ;
-struct TYPE_5__ {int /*<<< orphan*/  inh; } ;
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  LOCKMODE ;
-typedef  TYPE_2__ AlterTableStmt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATController (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CheckTableNotInUse (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  NoLock ; 
- int /*<<< orphan*/  relation_open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {TYPE_1__* relation; int cmds; } ;
+struct TYPE_5__ {int inh; } ;
+typedef int Relation ;
+typedef int Oid ;
+typedef int LOCKMODE ;
+typedef TYPE_2__ AlterTableStmt ;
+
+
+ int ATController (TYPE_2__*,int ,int ,int ,int ) ;
+ int CheckTableNotInUse (int ,char*) ;
+ int NoLock ;
+ int relation_open (int ,int ) ;
 
 void
 AlterTable(Oid relid, LOCKMODE lockmode, AlterTableStmt *stmt)
 {
-	Relation	rel;
+ Relation rel;
 
-	/* Caller is required to provide an adequate lock. */
-	rel = relation_open(relid, NoLock);
 
-	CheckTableNotInUse(rel, "ALTER TABLE");
+ rel = relation_open(relid, NoLock);
 
-	ATController(stmt, rel, stmt->cmds, stmt->relation->inh, lockmode);
+ CheckTableNotInUse(rel, "ALTER TABLE");
+
+ ATController(stmt, rel, stmt->cmds, stmt->relation->inh, lockmode);
 }

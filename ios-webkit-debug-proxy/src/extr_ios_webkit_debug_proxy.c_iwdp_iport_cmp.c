@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  TYPE_1__* iwdp_iport_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+typedef TYPE_1__* iwdp_iport_t ;
 struct TYPE_2__ {scalar_t__ port; } ;
 
-/* Variables and functions */
+
 
 int iwdp_iport_cmp(const void *a, const void *b) {
   const iwdp_iport_t ipa = *((iwdp_iport_t *)a);

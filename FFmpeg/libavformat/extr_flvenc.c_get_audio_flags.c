@@ -1,61 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int bits_per_coded_sample; int codec_id; int sample_rate; int channels; int codec_tag; } ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
-typedef  TYPE_1__ AVCodecParameters ;
+typedef int AVFormatContext ;
+typedef TYPE_1__ AVCodecParameters ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AV_CODEC_ID_AAC ; 
-#define  AV_CODEC_ID_ADPCM_SWF 135 
-#define  AV_CODEC_ID_MP3 134 
-#define  AV_CODEC_ID_NELLYMOSER 133 
-#define  AV_CODEC_ID_PCM_ALAW 132 
-#define  AV_CODEC_ID_PCM_MULAW 131 
-#define  AV_CODEC_ID_PCM_S16BE 130 
-#define  AV_CODEC_ID_PCM_S16LE 129 
-#define  AV_CODEC_ID_PCM_U8 128 
- int AV_CODEC_ID_SPEEX ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int FLV_CODECID_AAC ; 
- int FLV_CODECID_ADPCM ; 
- int FLV_CODECID_MP3 ; 
- int FLV_CODECID_NELLYMOSER ; 
- int FLV_CODECID_NELLYMOSER_16KHZ_MONO ; 
- int FLV_CODECID_NELLYMOSER_8KHZ_MONO ; 
- int FLV_CODECID_PCM ; 
- int FLV_CODECID_PCM_ALAW ; 
- int FLV_CODECID_PCM_LE ; 
- int FLV_CODECID_PCM_MULAW ; 
- int FLV_CODECID_SPEEX ; 
- int FLV_SAMPLERATE_11025HZ ; 
- int FLV_SAMPLERATE_22050HZ ; 
- int FLV_SAMPLERATE_44100HZ ; 
- int FLV_SAMPLERATE_SPECIAL ; 
- int FLV_SAMPLESSIZE_16BIT ; 
- int FLV_SAMPLESSIZE_8BIT ; 
- int FLV_STEREO ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,...) ; 
- int avcodec_get_name (int) ; 
+
+ int AVERROR (int ) ;
+ int AV_CODEC_ID_AAC ;
+ int AV_CODEC_ID_SPEEX ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int FLV_CODECID_AAC ;
+ int FLV_CODECID_ADPCM ;
+ int FLV_CODECID_MP3 ;
+ int FLV_CODECID_NELLYMOSER ;
+ int FLV_CODECID_NELLYMOSER_16KHZ_MONO ;
+ int FLV_CODECID_NELLYMOSER_8KHZ_MONO ;
+ int FLV_CODECID_PCM ;
+ int FLV_CODECID_PCM_ALAW ;
+ int FLV_CODECID_PCM_LE ;
+ int FLV_CODECID_PCM_MULAW ;
+ int FLV_CODECID_SPEEX ;
+ int FLV_SAMPLERATE_11025HZ ;
+ int FLV_SAMPLERATE_22050HZ ;
+ int FLV_SAMPLERATE_44100HZ ;
+ int FLV_SAMPLERATE_SPECIAL ;
+ int FLV_SAMPLESSIZE_16BIT ;
+ int FLV_SAMPLESSIZE_8BIT ;
+ int FLV_STEREO ;
+ int av_log (int *,int ,char*,...) ;
+ int avcodec_get_name (int) ;
 
 __attribute__((used)) static int get_audio_flags(AVFormatContext *s, AVCodecParameters *par)
 {
     int flags = (par->bits_per_coded_sample == 16) ? FLV_SAMPLESSIZE_16BIT
                                                    : FLV_SAMPLESSIZE_8BIT;
 
-    if (par->codec_id == AV_CODEC_ID_AAC) // specs force these parameters
+    if (par->codec_id == AV_CODEC_ID_AAC)
         return FLV_CODECID_AAC | FLV_SAMPLERATE_44100HZ |
                FLV_SAMPLESSIZE_16BIT | FLV_STEREO;
     else if (par->codec_id == AV_CODEC_ID_SPEEX) {
@@ -72,8 +64,8 @@ __attribute__((used)) static int get_audio_flags(AVFormatContext *s, AVCodecPara
     } else {
         switch (par->sample_rate) {
         case 48000:
-            // 48khz mp3 is stored with 44k1 samplerate identifer
-            if (par->codec_id == AV_CODEC_ID_MP3) {
+
+            if (par->codec_id == 134) {
                 flags |= FLV_SAMPLERATE_44100HZ;
                 break;
             } else {
@@ -88,10 +80,10 @@ __attribute__((used)) static int get_audio_flags(AVFormatContext *s, AVCodecPara
         case 11025:
             flags |= FLV_SAMPLERATE_11025HZ;
             break;
-        case 16000: // nellymoser only
-        case  8000: // nellymoser only
-        case  5512: // not MP3
-            if (par->codec_id != AV_CODEC_ID_MP3) {
+        case 16000:
+        case 8000:
+        case 5512:
+            if (par->codec_id != 134) {
                 flags |= FLV_SAMPLERATE_SPECIAL;
                 break;
             }
@@ -108,34 +100,34 @@ error:
         flags |= FLV_STEREO;
 
     switch (par->codec_id) {
-    case AV_CODEC_ID_MP3:
-        flags |= FLV_CODECID_MP3    | FLV_SAMPLESSIZE_16BIT;
+    case 134:
+        flags |= FLV_CODECID_MP3 | FLV_SAMPLESSIZE_16BIT;
         break;
-    case AV_CODEC_ID_PCM_U8:
-        flags |= FLV_CODECID_PCM    | FLV_SAMPLESSIZE_8BIT;
+    case 128:
+        flags |= FLV_CODECID_PCM | FLV_SAMPLESSIZE_8BIT;
         break;
-    case AV_CODEC_ID_PCM_S16BE:
-        flags |= FLV_CODECID_PCM    | FLV_SAMPLESSIZE_16BIT;
+    case 130:
+        flags |= FLV_CODECID_PCM | FLV_SAMPLESSIZE_16BIT;
         break;
-    case AV_CODEC_ID_PCM_S16LE:
+    case 129:
         flags |= FLV_CODECID_PCM_LE | FLV_SAMPLESSIZE_16BIT;
         break;
-    case AV_CODEC_ID_ADPCM_SWF:
-        flags |= FLV_CODECID_ADPCM  | FLV_SAMPLESSIZE_16BIT;
+    case 135:
+        flags |= FLV_CODECID_ADPCM | FLV_SAMPLESSIZE_16BIT;
         break;
-    case AV_CODEC_ID_NELLYMOSER:
+    case 133:
         if (par->sample_rate == 8000)
-            flags |= FLV_CODECID_NELLYMOSER_8KHZ_MONO  | FLV_SAMPLESSIZE_16BIT;
+            flags |= FLV_CODECID_NELLYMOSER_8KHZ_MONO | FLV_SAMPLESSIZE_16BIT;
         else if (par->sample_rate == 16000)
             flags |= FLV_CODECID_NELLYMOSER_16KHZ_MONO | FLV_SAMPLESSIZE_16BIT;
         else
-            flags |= FLV_CODECID_NELLYMOSER            | FLV_SAMPLESSIZE_16BIT;
+            flags |= FLV_CODECID_NELLYMOSER | FLV_SAMPLESSIZE_16BIT;
         break;
-    case AV_CODEC_ID_PCM_MULAW:
+    case 131:
         flags = FLV_CODECID_PCM_MULAW | FLV_SAMPLERATE_SPECIAL | FLV_SAMPLESSIZE_16BIT;
         break;
-    case AV_CODEC_ID_PCM_ALAW:
-        flags = FLV_CODECID_PCM_ALAW  | FLV_SAMPLERATE_SPECIAL | FLV_SAMPLESSIZE_16BIT;
+    case 132:
+        flags = FLV_CODECID_PCM_ALAW | FLV_SAMPLERATE_SPECIAL | FLV_SAMPLESSIZE_16BIT;
         break;
     case 0:
         flags |= par->codec_tag << 4;

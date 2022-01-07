@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vhost_work {int dummy; } ;
-struct vhost_flush_struct {int /*<<< orphan*/  wait_event; int /*<<< orphan*/  work; } ;
+struct vhost_flush_struct {int wait_event; int work; } ;
 struct vhost_dev {scalar_t__ worker; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  init_completion (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vhost_flush_work ; 
- int /*<<< orphan*/  vhost_work_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vhost_work_queue (struct vhost_dev*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wait_for_completion (int /*<<< orphan*/ *) ; 
+
+ int init_completion (int *) ;
+ int vhost_flush_work ;
+ int vhost_work_init (int *,int ) ;
+ int vhost_work_queue (struct vhost_dev*,int *) ;
+ int wait_for_completion (int *) ;
 
 void vhost_work_flush(struct vhost_dev *dev, struct vhost_work *work)
 {
-	struct vhost_flush_struct flush;
+ struct vhost_flush_struct flush;
 
-	if (dev->worker) {
-		init_completion(&flush.wait_event);
-		vhost_work_init(&flush.work, vhost_flush_work);
+ if (dev->worker) {
+  init_completion(&flush.wait_event);
+  vhost_work_init(&flush.work, vhost_flush_work);
 
-		vhost_work_queue(dev, &flush.work);
-		wait_for_completion(&flush.wait_event);
-	}
+  vhost_work_queue(dev, &flush.work);
+  wait_for_completion(&flush.wait_event);
+ }
 }

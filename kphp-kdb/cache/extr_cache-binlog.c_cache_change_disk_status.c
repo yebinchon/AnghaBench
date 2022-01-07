@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ disk_id; scalar_t__ server_id; scalar_t__ node_id; } ;
-union cache_packed_local_copy_location {TYPE_1__ p; int /*<<< orphan*/  i; } ;
-struct lev_cache_change_disk_status {int /*<<< orphan*/  packed_location; } ;
+union cache_packed_local_copy_location {TYPE_1__ p; int i; } ;
+struct lev_cache_change_disk_status {int packed_location; } ;
 
-/* Variables and functions */
- scalar_t__ dump_line_header (char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,int,int) ; 
- int /*<<< orphan*/  out ; 
+
+ scalar_t__ dump_line_header (char*) ;
+ int fprintf (int ,char*,int,int,int,int) ;
+ int out ;
 
 __attribute__((used)) static int cache_change_disk_status (struct lev_cache_change_disk_status *E, int enable) {
   if (dump_line_header ("LEV_CACHE_CHANGE_DISK_STATUS")) {

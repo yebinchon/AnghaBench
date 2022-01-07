@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sisusb_usb_data {int /*<<< orphan*/ * ibuf; int /*<<< orphan*/ ** obuf; } ;
 
-/* Variables and functions */
- int NUMOBUFS ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
+
+
+
+struct sisusb_usb_data {int * ibuf; int ** obuf; } ;
+
+
+ int NUMOBUFS ;
+ int kfree (int *) ;
 
 __attribute__((used)) static void sisusb_free_buffers(struct sisusb_usb_data *sisusb)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < NUMOBUFS; i++) {
-		kfree(sisusb->obuf[i]);
-		sisusb->obuf[i] = NULL;
-	}
-	kfree(sisusb->ibuf);
-	sisusb->ibuf = NULL;
+ for (i = 0; i < NUMOBUFS; i++) {
+  kfree(sisusb->obuf[i]);
+  sisusb->obuf[i] = ((void*)0);
+ }
+ kfree(sisusb->ibuf);
+ sisusb->ibuf = ((void*)0);
 }

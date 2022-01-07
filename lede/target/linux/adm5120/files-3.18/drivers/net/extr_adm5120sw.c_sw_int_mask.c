@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SWITCH_REG_INT_MASK ; 
- int /*<<< orphan*/  sw_read_reg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sw_write_reg (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u32 ;
+
+
+ int SWITCH_REG_INT_MASK ;
+ int sw_read_reg (int ) ;
+ int sw_write_reg (int ,int ) ;
 
 __attribute__((used)) static inline void sw_int_mask(u32 mask)
 {
-	u32	t;
+ u32 t;
 
-	t = sw_read_reg(SWITCH_REG_INT_MASK);
-	t |= mask;
-	sw_write_reg(SWITCH_REG_INT_MASK, t);
+ t = sw_read_reg(SWITCH_REG_INT_MASK);
+ t |= mask;
+ sw_write_reg(SWITCH_REG_INT_MASK, t);
 }

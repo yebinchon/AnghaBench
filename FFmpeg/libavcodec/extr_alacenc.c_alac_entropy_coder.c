@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int32_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int int32_t ;
 struct TYPE_5__ {unsigned int initial_history; int history_mult; } ;
 struct TYPE_6__ {int** predictor_buf; int frame_size; int write_sample_size; TYPE_1__ rc; } ;
-typedef  TYPE_2__ AlacEncodeContext ;
+typedef TYPE_2__ AlacEncodeContext ;
 
-/* Variables and functions */
- int av_log2 (unsigned int) ; 
- int /*<<< orphan*/  encode_scalar (TYPE_2__*,unsigned int,int,int) ; 
+
+ int av_log2 (unsigned int) ;
+ int encode_scalar (TYPE_2__*,unsigned int,int,int) ;
 
 __attribute__((used)) static void alac_entropy_coder(AlacEncodeContext *s, int ch)
 {
@@ -32,7 +32,7 @@ __attribute__((used)) static void alac_entropy_coder(AlacEncodeContext *s, int c
 
         k = av_log2((history >> 9) + 3);
 
-        x  = -2 * (*samples) -1;
+        x = -2 * (*samples) -1;
         x ^= x >> 31;
 
         samples++;

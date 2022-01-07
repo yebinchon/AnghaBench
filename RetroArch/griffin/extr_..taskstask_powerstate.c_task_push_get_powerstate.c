@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int mute; int /*<<< orphan*/  callback; int /*<<< orphan*/  handler; int /*<<< orphan*/ * state; int /*<<< orphan*/  type; } ;
-typedef  TYPE_1__ retro_task_t ;
-typedef  int /*<<< orphan*/  powerstate_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TASK_TYPE_NONE ; 
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- TYPE_1__* task_init () ; 
- int /*<<< orphan*/  task_powerstate_cb ; 
- int /*<<< orphan*/  task_powerstate_handler ; 
- int /*<<< orphan*/  task_queue_push (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int mute; int callback; int handler; int * state; int type; } ;
+typedef TYPE_1__ retro_task_t ;
+typedef int powerstate_t ;
+
+
+ int TASK_TYPE_NONE ;
+ scalar_t__ calloc (int,int) ;
+ int free (TYPE_1__*) ;
+ TYPE_1__* task_init () ;
+ int task_powerstate_cb ;
+ int task_powerstate_handler ;
+ int task_queue_push (TYPE_1__*) ;
 
 void task_push_get_powerstate(void)
 {
-   retro_task_t *task  = task_init();
-   powerstate_t *state = NULL;
+   retro_task_t *task = task_init();
+   powerstate_t *state = ((void*)0);
 
    if (!task)
       return;
@@ -38,11 +38,11 @@ void task_push_get_powerstate(void)
       return;
    }
 
-   task->type     = TASK_TYPE_NONE;
-   task->state    = state;
-   task->handler  = task_powerstate_handler;
+   task->type = TASK_TYPE_NONE;
+   task->state = state;
+   task->handler = task_powerstate_handler;
    task->callback = task_powerstate_cb;
-   task->mute     = true;
+   task->mute = 1;
 
    task_queue_push(task);
 }

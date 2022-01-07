@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct resource_dir_entry {int /*<<< orphan*/  children; void* id; } ;
-struct resource_data {int /*<<< orphan*/  entry; } ;
-struct TYPE_4__ {int /*<<< orphan*/  root; } ;
-typedef  TYPE_1__ QUEUEDUPDATES ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  LANGID ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- struct resource_dir_entry* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct resource_data*) ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct resource_data*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  add_resource_data_entry (int /*<<< orphan*/ *,struct resource_data*) ; 
- int /*<<< orphan*/  add_resource_dir_entry (int /*<<< orphan*/ *,struct resource_dir_entry*) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- struct resource_data* find_resource_data (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct resource_dir_entry* find_resource_dir_entry (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_remove (int /*<<< orphan*/ *) ; 
- void* res_strdupW (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct resource_dir_entry {int children; void* id; } ;
+struct resource_data {int entry; } ;
+struct TYPE_4__ {int root; } ;
+typedef TYPE_1__ QUEUEDUPDATES ;
+typedef int LPCWSTR ;
+typedef int LANGID ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int GetProcessHeap () ;
+ struct resource_dir_entry* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,struct resource_data*) ;
+ int TRACE (char*,TYPE_1__*,int ,int ,struct resource_data*,int ) ;
+ int TRUE ;
+ int add_resource_data_entry (int *,struct resource_data*) ;
+ int add_resource_dir_entry (int *,struct resource_dir_entry*) ;
+ int debugstr_w (int ) ;
+ struct resource_data* find_resource_data (int *,int ) ;
+ struct resource_dir_entry* find_resource_dir_entry (int *,int ) ;
+ int list_init (int *) ;
+ int list_remove (int *) ;
+ void* res_strdupW (int ) ;
 
 __attribute__((used)) static BOOL update_add_resource( QUEUEDUPDATES *updates, LPCWSTR Type, LPCWSTR Name,
                                  LANGID Lang, struct resource_data *resdata,
@@ -63,10 +63,10 @@ __attribute__((used)) static BOOL update_add_resource( QUEUEDUPDATES *updates, L
         add_resource_dir_entry( &restype->children, resname );
     }
 
-    /*
-     * If there's an existing resource entry with matching (Type,Name,Language)
-     *  it needs to be removed before adding the new data.
-     */
+
+
+
+
     existing = find_resource_data( &resname->children, Lang );
     if (existing)
     {

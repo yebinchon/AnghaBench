@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct drm_device {TYPE_1__* dma; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * bufs; } ;
+struct TYPE_2__ {int * bufs; } ;
 
-/* Variables and functions */
- int DRM_MAX_ORDER ; 
- int /*<<< orphan*/  DRM_MEM_DRIVER ; 
- int ENOMEM ; 
- int M_NOWAIT ; 
- int M_ZERO ; 
- TYPE_1__* malloc (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int DRM_MAX_ORDER ;
+ int DRM_MEM_DRIVER ;
+ int ENOMEM ;
+ int M_NOWAIT ;
+ int M_ZERO ;
+ TYPE_1__* malloc (int,int ,int) ;
+ int memset (int *,int ,int) ;
 
 int drm_dma_setup(struct drm_device *dev)
 {
-	int i;
+ int i;
 
-	dev->dma = malloc(sizeof(*dev->dma), DRM_MEM_DRIVER, M_NOWAIT | M_ZERO);
-	if (!dev->dma)
-		return -ENOMEM;
+ dev->dma = malloc(sizeof(*dev->dma), DRM_MEM_DRIVER, M_NOWAIT | M_ZERO);
+ if (!dev->dma)
+  return -ENOMEM;
 
-	for (i = 0; i <= DRM_MAX_ORDER; i++)
-		memset(&dev->dma->bufs[i], 0, sizeof(dev->dma->bufs[0]));
+ for (i = 0; i <= DRM_MAX_ORDER; i++)
+  memset(&dev->dma->bufs[i], 0, sizeof(dev->dma->bufs[0]));
 
-	return 0;
+ return 0;
 }

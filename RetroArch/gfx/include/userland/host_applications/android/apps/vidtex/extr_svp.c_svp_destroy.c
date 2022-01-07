@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int created; int /*<<< orphan*/  sema; int /*<<< orphan*/  mutex; int /*<<< orphan*/  timer; int /*<<< orphan*/  wd_timer; scalar_t__ queue; scalar_t__ out_pool; scalar_t__ connection; int /*<<< orphan*/ * camera; int /*<<< orphan*/ * video_decode; int /*<<< orphan*/ * reader; } ;
-typedef  TYPE_1__ SVP_T ;
-typedef  int /*<<< orphan*/  MMAL_COMPONENT_T ;
 
-/* Variables and functions */
- int SVP_CREATED_MUTEX ; 
- int SVP_CREATED_SEM ; 
- int SVP_CREATED_TIMER ; 
- int SVP_CREATED_WD_TIMER ; 
- int /*<<< orphan*/  mmal_component_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mmal_component_disable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mmal_connection_destroy (scalar_t__) ; 
- int /*<<< orphan*/  mmal_pool_destroy (scalar_t__) ; 
- int /*<<< orphan*/  mmal_queue_destroy (scalar_t__) ; 
- int /*<<< orphan*/  svp_stop (TYPE_1__*) ; 
- int vcos_countof (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  vcos_free (TYPE_1__*) ; 
- int /*<<< orphan*/  vcos_mutex_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_semaphore_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_timer_delete (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int created; int sema; int mutex; int timer; int wd_timer; scalar_t__ queue; scalar_t__ out_pool; scalar_t__ connection; int * camera; int * video_decode; int * reader; } ;
+typedef TYPE_1__ SVP_T ;
+typedef int MMAL_COMPONENT_T ;
+
+
+ int SVP_CREATED_MUTEX ;
+ int SVP_CREATED_SEM ;
+ int SVP_CREATED_TIMER ;
+ int SVP_CREATED_WD_TIMER ;
+ int mmal_component_destroy (int *) ;
+ int mmal_component_disable (int *) ;
+ int mmal_connection_destroy (scalar_t__) ;
+ int mmal_pool_destroy (scalar_t__) ;
+ int mmal_queue_destroy (scalar_t__) ;
+ int svp_stop (TYPE_1__*) ;
+ int vcos_countof (int **) ;
+ int vcos_free (TYPE_1__*) ;
+ int vcos_mutex_delete (int *) ;
+ int vcos_semaphore_delete (int *) ;
+ int vcos_timer_delete (int *) ;
 
 void svp_destroy(SVP_T *svp)
 {
@@ -39,7 +39,7 @@ void svp_destroy(SVP_T *svp)
       MMAL_COMPONENT_T *components[] = { svp->reader, svp->video_decode, svp->camera };
       MMAL_COMPONENT_T **comp;
 
-      /* Stop thread, disable connection and components */
+
       svp_stop(svp);
 
       for (comp = components; comp < components + vcos_countof(components); comp++)
@@ -47,7 +47,7 @@ void svp_destroy(SVP_T *svp)
          mmal_component_disable(*comp);
       }
 
-      /* Destroy connection + components */
+
       if (svp->connection)
       {
          mmal_connection_destroy(svp->connection);
@@ -58,7 +58,7 @@ void svp_destroy(SVP_T *svp)
          mmal_component_destroy(*comp);
       }
 
-      /* Free remaining resources */
+
       if (svp->out_pool)
       {
          mmal_pool_destroy(svp->out_pool);

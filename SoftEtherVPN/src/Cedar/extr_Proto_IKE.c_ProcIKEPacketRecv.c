@@ -1,83 +1,83 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
 struct TYPE_16__ {scalar_t__ Type; } ;
-typedef  TYPE_1__ UDPPACKET ;
+typedef TYPE_1__ UDPPACKET ;
 struct TYPE_17__ {int ExchangeType; } ;
-typedef  int /*<<< orphan*/  IKE_SERVER ;
-typedef  TYPE_2__ IKE_PACKET ;
+typedef int IKE_SERVER ;
+typedef TYPE_2__ IKE_PACKET ;
 
-/* Variables and functions */
-#define  IKE_EXCHANGE_TYPE_AGGRESSIVE 131 
-#define  IKE_EXCHANGE_TYPE_INFORMATION 130 
-#define  IKE_EXCHANGE_TYPE_MAIN 129 
-#define  IKE_EXCHANGE_TYPE_QUICK 128 
- scalar_t__ IKE_UDP_TYPE_ESP ; 
- scalar_t__ IKE_UDP_TYPE_ISAKMP ; 
- int /*<<< orphan*/  IkeFree (TYPE_2__*) ; 
- TYPE_2__* ParseIKEPacketHeader (TYPE_1__*) ; 
- int /*<<< orphan*/  ProcIPsecEspPacketRecv (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  ProcIkeAggressiveModePacketRecv (int /*<<< orphan*/ *,TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  ProcIkeInformationalExchangePacketRecv (int /*<<< orphan*/ *,TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  ProcIkeMainModePacketRecv (int /*<<< orphan*/ *,TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  ProcIkeQuickModePacketRecv (int /*<<< orphan*/ *,TYPE_1__*,TYPE_2__*) ; 
+
+
+
+
+
+ scalar_t__ IKE_UDP_TYPE_ESP ;
+ scalar_t__ IKE_UDP_TYPE_ISAKMP ;
+ int IkeFree (TYPE_2__*) ;
+ TYPE_2__* ParseIKEPacketHeader (TYPE_1__*) ;
+ int ProcIPsecEspPacketRecv (int *,TYPE_1__*) ;
+ int ProcIkeAggressiveModePacketRecv (int *,TYPE_1__*,TYPE_2__*) ;
+ int ProcIkeInformationalExchangePacketRecv (int *,TYPE_1__*,TYPE_2__*) ;
+ int ProcIkeMainModePacketRecv (int *,TYPE_1__*,TYPE_2__*) ;
+ int ProcIkeQuickModePacketRecv (int *,TYPE_1__*,TYPE_2__*) ;
 
 void ProcIKEPacketRecv(IKE_SERVER *ike, UDPPACKET *p)
 {
-	// Validate arguments
-	if (ike == NULL || p == NULL)
-	{
-		return;
-	}
 
-	if (p->Type == IKE_UDP_TYPE_ISAKMP)
-	{
-		// ISAKMP (IKE) packet
-		IKE_PACKET *header;
+ if (ike == ((void*)0) || p == ((void*)0))
+ {
+  return;
+ }
 
-		header = ParseIKEPacketHeader(p);
-		if (header == NULL)
-		{
-			return;
-		}
+ if (p->Type == IKE_UDP_TYPE_ISAKMP)
+ {
 
-		//Debug("InitiatorCookie: %I64u, ResponderCookie: %I64u\n", header->InitiatorCookie, header->ResponderCookie);
+  IKE_PACKET *header;
 
-		switch (header->ExchangeType)
-		{
-		case IKE_EXCHANGE_TYPE_MAIN:	// Main mode
-			ProcIkeMainModePacketRecv(ike, p, header);
-			break;
+  header = ParseIKEPacketHeader(p);
+  if (header == ((void*)0))
+  {
+   return;
+  }
 
-		case IKE_EXCHANGE_TYPE_AGGRESSIVE:	// Aggressive mode
-			ProcIkeAggressiveModePacketRecv(ike, p, header);
-			break;
 
-		case IKE_EXCHANGE_TYPE_QUICK:	// Quick mode
-			ProcIkeQuickModePacketRecv(ike, p, header);
-			break;
 
-		case IKE_EXCHANGE_TYPE_INFORMATION:	// Information exchange
-			ProcIkeInformationalExchangePacketRecv(ike, p, header);
-			break;
-		}
+  switch (header->ExchangeType)
+  {
+  case 129:
+   ProcIkeMainModePacketRecv(ike, p, header);
+   break;
 
-		IkeFree(header);
-	}
-	else if (p->Type == IKE_UDP_TYPE_ESP)
-	{
-		// ESP packet
-		ProcIPsecEspPacketRecv(ike, p);
-	}
+  case 131:
+   ProcIkeAggressiveModePacketRecv(ike, p, header);
+   break;
+
+  case 128:
+   ProcIkeQuickModePacketRecv(ike, p, header);
+   break;
+
+  case 130:
+   ProcIkeInformationalExchangePacketRecv(ike, p, header);
+   break;
+  }
+
+  IkeFree(header);
+ }
+ else if (p->Type == IKE_UDP_TYPE_ESP)
+ {
+
+  ProcIPsecEspPacketRecv(ike, p);
+ }
 }

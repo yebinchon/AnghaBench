@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  uvlinesize; int /*<<< orphan*/  linesize; int /*<<< orphan*/  b8_stride; int /*<<< orphan*/  mb_height; int /*<<< orphan*/  mb_width; int /*<<< orphan*/  mb_stride; int /*<<< orphan*/  out_format; int /*<<< orphan*/  chroma_y_shift; int /*<<< orphan*/  chroma_x_shift; int /*<<< orphan*/  sc; int /*<<< orphan*/  me; int /*<<< orphan*/  avctx; } ;
-typedef  int /*<<< orphan*/  Picture ;
-typedef  TYPE_1__ MpegEncContext ;
 
-/* Variables and functions */
- int ff_alloc_picture (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int uvlinesize; int linesize; int b8_stride; int mb_height; int mb_width; int mb_stride; int out_format; int chroma_y_shift; int chroma_x_shift; int sc; int me; int avctx; } ;
+typedef int Picture ;
+typedef TYPE_1__ MpegEncContext ;
+
+
+ int ff_alloc_picture (int ,int *,int *,int *,int,int,int ,int ,int ,int ,int ,int ,int ,int *,int *) ;
 
 __attribute__((used)) static int alloc_picture(MpegEncContext *s, Picture *pic, int shared)
 {

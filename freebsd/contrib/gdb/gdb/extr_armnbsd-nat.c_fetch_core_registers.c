@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct md_core {int /*<<< orphan*/  freg; int /*<<< orphan*/  intreg; } ;
-typedef  int /*<<< orphan*/  CORE_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  supply_fparegset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  supply_gregset (int /*<<< orphan*/ *) ; 
+
+
+
+struct md_core {int freg; int intreg; } ;
+typedef int CORE_ADDR ;
+
+
+ int supply_fparegset (int *) ;
+ int supply_gregset (int *) ;
 
 __attribute__((used)) static void
 fetch_core_registers (char *core_reg_sect, unsigned core_reg_size,
-		      int which, CORE_ADDR ignore)
+        int which, CORE_ADDR ignore)
 {
   struct md_core *core_reg = (struct md_core *) core_reg_sect;
   int regno;

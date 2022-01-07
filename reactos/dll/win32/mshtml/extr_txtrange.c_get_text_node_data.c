@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ nsresult ;
-typedef  int /*<<< orphan*/  nsIDOMText ;
-typedef  int /*<<< orphan*/  nsIDOMNode ;
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  int /*<<< orphan*/  PRUnichar ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,scalar_t__) ; 
- int /*<<< orphan*/  IID_nsIDOMText ; 
- scalar_t__ NS_FAILED (scalar_t__) ; 
- scalar_t__ NS_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  nsAString_GetData (int /*<<< orphan*/ *,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  nsAString_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ nsIDOMNode_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ nsIDOMText_GetData (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMText_Release (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ nsresult ;
+typedef int nsIDOMText ;
+typedef int nsIDOMNode ;
+typedef int nsAString ;
+typedef int PRUnichar ;
+
+
+ int ERR (char*,scalar_t__) ;
+ int IID_nsIDOMText ;
+ scalar_t__ NS_FAILED (scalar_t__) ;
+ scalar_t__ NS_OK ;
+ int assert (int) ;
+ int nsAString_GetData (int *,int const**) ;
+ int nsAString_Init (int *,int *) ;
+ scalar_t__ nsIDOMNode_QueryInterface (int *,int *,void**) ;
+ scalar_t__ nsIDOMText_GetData (int *,int *) ;
+ int nsIDOMText_Release (int *) ;
 
 __attribute__((used)) static void get_text_node_data(nsIDOMNode *node, nsAString *nsstr, const PRUnichar **str)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static void get_text_node_data(nsIDOMNode *node, nsAString
     nsres = nsIDOMNode_QueryInterface(node, &IID_nsIDOMText, (void**)&nstext);
     assert(nsres == NS_OK);
 
-    nsAString_Init(nsstr, NULL);
+    nsAString_Init(nsstr, ((void*)0));
     nsres = nsIDOMText_GetData(nstext, nsstr);
     nsIDOMText_Release(nstext);
     if(NS_FAILED(nsres))

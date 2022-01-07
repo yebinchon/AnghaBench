@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct perf_sample {int dummy; } ;
 struct evsel {int dummy; } ;
-struct event_key {int /*<<< orphan*/  exit_reasons; int /*<<< orphan*/  key; } ;
+struct event_key {int exit_reasons; int key; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  perf_evsel__intval (struct evsel*,struct perf_sample*,char*) ; 
- int /*<<< orphan*/  sie_diagnose_codes ; 
+
+ int perf_evsel__intval (struct evsel*,struct perf_sample*,char*) ;
+ int sie_diagnose_codes ;
 
 __attribute__((used)) static void event_diag_get_key(struct evsel *evsel,
-			       struct perf_sample *sample,
-			       struct event_key *key)
+          struct perf_sample *sample,
+          struct event_key *key)
 {
-	key->key = perf_evsel__intval(evsel, sample, "code");
-	key->exit_reasons = sie_diagnose_codes;
+ key->key = perf_evsel__intval(evsel, sample, "code");
+ key->exit_reasons = sie_diagnose_codes;
 }

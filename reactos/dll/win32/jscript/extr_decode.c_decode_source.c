@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  size_t DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (char const*) ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  FIXME (char*,char const) ; 
- int /*<<< orphan*/  JS_E_INVALID_CHAR ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (char*) ; 
- int /*<<< orphan*/  decode_dword (char const*,size_t*) ; 
- char** dictionary ; 
- size_t* pick_encoding ; 
- scalar_t__ wcsncmp (char const*,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef char WCHAR ;
+typedef int HRESULT ;
+typedef size_t DWORD ;
+
+
+ int ARRAY_SIZE (char const*) ;
+ int E_FAIL ;
+ int FIXME (char*,char const) ;
+ int JS_E_INVALID_CHAR ;
+ int S_OK ;
+ int TRACE (char*,int ) ;
+ int debugstr_w (char*) ;
+ int decode_dword (char const*,size_t*) ;
+ char** dictionary ;
+ size_t* pick_encoding ;
+ scalar_t__ wcsncmp (char const*,char const*,int ) ;
 
 HRESULT decode_source(WCHAR *code)
 {

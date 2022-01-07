@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int s; size_t n; size_t* p; } ;
-typedef  TYPE_1__ mbedtls_mpi ;
+typedef TYPE_1__ mbedtls_mpi ;
 
-/* Variables and functions */
- int MBEDTLS_ERR_MPI_BAD_INPUT_DATA ; 
- int MBEDTLS_ERR_MPI_BUFFER_TOO_SMALL ; 
- int /*<<< orphan*/  MBEDTLS_MPI_CHK (int /*<<< orphan*/ ) ; 
- size_t ciL ; 
- size_t mbedtls_mpi_bitlen (TYPE_1__ const*) ; 
- int /*<<< orphan*/  mbedtls_mpi_copy (TYPE_1__*,TYPE_1__ const*) ; 
- int /*<<< orphan*/  mbedtls_mpi_free (TYPE_1__*) ; 
- int /*<<< orphan*/  mbedtls_mpi_init (TYPE_1__*) ; 
- int /*<<< orphan*/  mpi_write_hlp (TYPE_1__*,int,char**) ; 
+
+ int MBEDTLS_ERR_MPI_BAD_INPUT_DATA ;
+ int MBEDTLS_ERR_MPI_BUFFER_TOO_SMALL ;
+ int MBEDTLS_MPI_CHK (int ) ;
+ size_t ciL ;
+ size_t mbedtls_mpi_bitlen (TYPE_1__ const*) ;
+ int mbedtls_mpi_copy (TYPE_1__*,TYPE_1__ const*) ;
+ int mbedtls_mpi_free (TYPE_1__*) ;
+ int mbedtls_mpi_init (TYPE_1__*) ;
+ int mpi_write_hlp (TYPE_1__*,int,char**) ;
 
 int mbedtls_mpi_write_string( const mbedtls_mpi *X, int radix,
                               char *buf, size_t buflen, size_t *olen )
@@ -37,13 +37,13 @@ int mbedtls_mpi_write_string( const mbedtls_mpi *X, int radix,
         return( MBEDTLS_ERR_MPI_BAD_INPUT_DATA );
 
     n = mbedtls_mpi_bitlen( X );
-    if( radix >=  4 ) n >>= 1;
+    if( radix >= 4 ) n >>= 1;
     if( radix >= 16 ) n >>= 1;
-    /*
-     * Round up the buffer length to an even value to ensure that there is
-     * enough room for hexadecimal values that can be represented in an odd
-     * number of digits.
-     */
+
+
+
+
+
     n += 3 + ( ( n + 1 ) & 1 );
 
     if( buflen < n )

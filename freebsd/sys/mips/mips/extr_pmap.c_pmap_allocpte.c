@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* vm_page_t ;
-typedef  int /*<<< orphan*/  vm_offset_t ;
-typedef  int u_int ;
-typedef  int /*<<< orphan*/  pmap_t ;
-typedef  int /*<<< orphan*/ * pd_entry_t ;
-struct TYPE_5__ {int /*<<< orphan*/  ref_count; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MIPS_DIRECT_TO_PHYS (int /*<<< orphan*/ *) ; 
- TYPE_1__* PHYS_TO_VM_PAGE (int /*<<< orphan*/ ) ; 
- int PMAP_ENTER_NOSLEEP ; 
- TYPE_1__* _pmap_allocpte (int /*<<< orphan*/ ,unsigned int,int) ; 
- int /*<<< orphan*/ ** pmap_pde (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned int pmap_pde_pindex (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef TYPE_1__* vm_page_t ;
+typedef int vm_offset_t ;
+typedef int u_int ;
+typedef int pmap_t ;
+typedef int * pd_entry_t ;
+struct TYPE_5__ {int ref_count; } ;
+
+
+ int MIPS_DIRECT_TO_PHYS (int *) ;
+ TYPE_1__* PHYS_TO_VM_PAGE (int ) ;
+ int PMAP_ENTER_NOSLEEP ;
+ TYPE_1__* _pmap_allocpte (int ,unsigned int,int) ;
+ int ** pmap_pde (int ,int ) ;
+ unsigned int pmap_pde_pindex (int ) ;
 
 __attribute__((used)) static vm_page_t
 pmap_allocpte(pmap_t pmap, vm_offset_t va, u_int flags)
 {
-	unsigned ptepindex;
-	pd_entry_t *pde;
-	vm_page_t m;
+ unsigned ptepindex;
+ pd_entry_t *pde;
+ vm_page_t m;
 
-	/*
-	 * Calculate pagetable page index
-	 */
-	ptepindex = pmap_pde_pindex(va);
+
+
+
+ ptepindex = pmap_pde_pindex(va);
 retry:
-	/*
-	 * Get the page directory entry
-	 */
-	pde = pmap_pde(pmap, va);
 
-	/*
-	 * If the page table page is mapped, we just increment the hold
-	 * count, and activate it.
-	 */
-	if (pde != NULL && *pde != NULL) {
-		m = PHYS_TO_VM_PAGE(MIPS_DIRECT_TO_PHYS(*pde));
-		m->ref_count++;
-	} else {
-		/*
-		 * Here if the pte page isn't mapped, or if it has been
-		 * deallocated.
-		 */
-		m = _pmap_allocpte(pmap, ptepindex, flags);
-		if (m == NULL && (flags & PMAP_ENTER_NOSLEEP) == 0)
-			goto retry;
-	}
-	return (m);
+
+
+ pde = pmap_pde(pmap, va);
+
+
+
+
+
+ if (pde != ((void*)0) && *pde != ((void*)0)) {
+  m = PHYS_TO_VM_PAGE(MIPS_DIRECT_TO_PHYS(*pde));
+  m->ref_count++;
+ } else {
+
+
+
+
+  m = _pmap_allocpte(pmap, ptepindex, flags);
+  if (m == ((void*)0) && (flags & PMAP_ENTER_NOSLEEP) == 0)
+   goto retry;
+ }
+ return (m);
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct forth_stack {size_t top; TYPE_1__* x; int /*<<< orphan*/  error; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct forth_stack {size_t top; TYPE_1__* x; int error; } ;
 struct TYPE_2__ {int tp; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  snprintf (int /*<<< orphan*/ ,int,char*,char*,...) ; 
- char* type_to_string (int) ; 
+
+ int snprintf (int ,int,char*,char*,...) ;
+ char* type_to_string (int) ;
 
 __attribute__((used)) static int check_type (struct forth_stack *st, int tp_bitset, char *who) {
   if (st->top < 0) {

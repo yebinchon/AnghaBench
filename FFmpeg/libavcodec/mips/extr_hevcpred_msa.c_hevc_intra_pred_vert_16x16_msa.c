@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int v8i16 ;
-typedef  int /*<<< orphan*/ * v16u8 ;
-typedef  int /*<<< orphan*/  v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  scalar_t__ int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD2 (int,int,int,int,int,int) ; 
- int /*<<< orphan*/  CLIP_SH2_0_255 (int,int) ; 
- int /*<<< orphan*/ * LD_UB (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ST_UB (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SUB2 (int,int,int,int,int,int) ; 
- int /*<<< orphan*/  UNPCK_UB_SH (int /*<<< orphan*/ *,int,int) ; 
- int __msa_fill_h (int /*<<< orphan*/  const) ; 
- scalar_t__ __msa_pckev_b (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int v8i16 ;
+typedef int * v16u8 ;
+typedef int v16i8 ;
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef scalar_t__ int32_t ;
+
+
+ int ADD2 (int,int,int,int,int,int) ;
+ int CLIP_SH2_0_255 (int,int) ;
+ int * LD_UB (int const*) ;
+ int ST_UB (int *,int *) ;
+ int SUB2 (int,int,int,int,int,int) ;
+ int UNPCK_UB_SH (int *,int,int) ;
+ int __msa_fill_h (int const) ;
+ scalar_t__ __msa_pckev_b (int ,int ) ;
 
 __attribute__((used)) static void hevc_intra_pred_vert_16x16_msa(const uint8_t *src_top,
                                            const uint8_t *src_left,

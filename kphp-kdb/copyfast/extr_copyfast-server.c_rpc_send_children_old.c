@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rpc_children_answer_old {int children_num; int /*<<< orphan*/  children; } ;
+
+
+
+
+struct rpc_children_answer_old {int children_num; int children; } ;
 struct node {int dummy; } ;
 struct connection {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ Q ; 
- int /*<<< orphan*/  RPC_TYPE_CHILDREN_ANSWER_OLD ; 
- int /*<<< orphan*/  children_list ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int generate_children (long long) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  rpc_create_query (struct rpc_children_answer_old*,int,struct connection*,int /*<<< orphan*/ ) ; 
- int rpc_send_query (struct rpc_children_answer_old*,struct connection*) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+ scalar_t__ Q ;
+ int RPC_TYPE_CHILDREN_ANSWER_OLD ;
+ int children_list ;
+ int fprintf (int ,char*) ;
+ int generate_children (long long) ;
+ int memcpy (int ,int ,int) ;
+ int rpc_create_query (struct rpc_children_answer_old*,int,struct connection*,int ) ;
+ int rpc_send_query (struct rpc_children_answer_old*,struct connection*) ;
+ int stderr ;
+ int verbosity ;
 
 int rpc_send_children_old (struct connection *c, long long id) {
   if (verbosity >= 2) {

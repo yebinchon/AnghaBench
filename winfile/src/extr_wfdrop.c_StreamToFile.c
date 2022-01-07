@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  byte ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int byte ;
 struct TYPE_6__ {TYPE_1__* lpVtbl; } ;
-struct TYPE_5__ {scalar_t__ (* Read ) (TYPE_2__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ;} ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  TYPE_2__ IStream ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
+struct TYPE_5__ {scalar_t__ (* Read ) (TYPE_2__*,int *,int,int *) ;} ;
+typedef int TCHAR ;
+typedef TYPE_2__ IStream ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int BLOCK_SIZE ; 
- int /*<<< orphan*/  CREATE_ALWAYS ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFile (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteFile (int /*<<< orphan*/ *) ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_TEMPORARY ; 
- int FILE_READ_DATA ; 
- int FILE_SHARE_READ ; 
- int FILE_SHARE_WRITE ; 
- int FILE_WRITE_DATA ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ HRESULT_FROM_WIN32 (int /*<<< orphan*/ ) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  WriteFile (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ stub1 (TYPE_2__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
+
+ int BLOCK_SIZE ;
+ int CREATE_ALWAYS ;
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFile (int *,int,int,int *,int ,int ,int *) ;
+ int DeleteFile (int *) ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int FILE_ATTRIBUTE_TEMPORARY ;
+ int FILE_READ_DATA ;
+ int FILE_SHARE_READ ;
+ int FILE_SHARE_WRITE ;
+ int FILE_WRITE_DATA ;
+ int GetLastError () ;
+ scalar_t__ HRESULT_FROM_WIN32 (int ) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_OK ;
+ int WriteFile (scalar_t__,int *,int ,int *,int *) ;
+ scalar_t__ stub1 (TYPE_2__*,int *,int,int *) ;
 
 __attribute__((used)) static HRESULT StreamToFile(IStream *stream, TCHAR *szFile)
 {
@@ -47,37 +47,37 @@ __attribute__((used)) static HRESULT StreamToFile(IStream *stream, TCHAR *szFile
     DWORD bytes_read;
     DWORD bytes_written;
     HRESULT hr;
-	HANDLE hFile;
+ HANDLE hFile;
 
     hFile = CreateFile( szFile,
           FILE_READ_DATA | FILE_WRITE_DATA,
           FILE_SHARE_READ | FILE_SHARE_WRITE,
-          NULL,
+          ((void*)0),
           CREATE_ALWAYS,
           FILE_ATTRIBUTE_TEMPORARY,
-          NULL );
+          ((void*)0) );
 
     if (hFile != INVALID_HANDLE_VALUE) {
         do {
             hr = stream->lpVtbl->Read(stream, buffer, BLOCK_SIZE, &bytes_read);
-			bytes_written = 0;
+   bytes_written = 0;
             if (SUCCEEDED(hr) && bytes_read)
-			{
-				if (!WriteFile(hFile, buffer, bytes_read, &bytes_written, NULL))
-				{
-					hr = HRESULT_FROM_WIN32(GetLastError());
-					bytes_written = 0;
-				}
-			}
+   {
+    if (!WriteFile(hFile, buffer, bytes_read, &bytes_written, ((void*)0)))
+    {
+     hr = HRESULT_FROM_WIN32(GetLastError());
+     bytes_written = 0;
+    }
+   }
         } while (S_OK == hr && bytes_written != 0);
         CloseHandle(hFile);
-		if (FAILED(hr))
-			DeleteFile(szFile);
-		else
-			hr = S_OK;
+  if (FAILED(hr))
+   DeleteFile(szFile);
+  else
+   hr = S_OK;
     }
     else
-	    hr = HRESULT_FROM_WIN32(GetLastError());
+     hr = HRESULT_FROM_WIN32(GetLastError());
 
     return hr;
 }

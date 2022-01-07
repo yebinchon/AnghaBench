@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ after; scalar_t__ print_path; scalar_t__ vimgrep; scalar_t__ ackmate; } ;
-struct TYPE_3__ {scalar_t__ lines_since_last_match; int /*<<< orphan*/  in_a_match; int /*<<< orphan*/  line; } ;
+struct TYPE_3__ {scalar_t__ lines_since_last_match; int in_a_match; int line; } ;
 
-/* Variables and functions */
- scalar_t__ INT_MAX ; 
- scalar_t__ PATH_PRINT_EACH_LINE ; 
- int /*<<< orphan*/  fputc (char,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fwrite (char const*,int,size_t,int /*<<< orphan*/ ) ; 
- TYPE_2__ opts ; 
- int /*<<< orphan*/  out_fd ; 
- TYPE_1__ print_context ; 
- int /*<<< orphan*/  print_line_number (int /*<<< orphan*/ ,char) ; 
- int /*<<< orphan*/  print_path (char const*,char) ; 
+
+ scalar_t__ INT_MAX ;
+ scalar_t__ PATH_PRINT_EACH_LINE ;
+ int fputc (char,int ) ;
+ int fwrite (char const*,int,size_t,int ) ;
+ TYPE_2__ opts ;
+ int out_fd ;
+ TYPE_1__ print_context ;
+ int print_line_number (int ,char) ;
+ int print_path (char const*,char) ;
 
 void print_trailing_context(const char *path, const char *buf, size_t n) {
     char sep = '-';

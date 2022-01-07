@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hn_tx_ring {scalar_t__ hn_txdesc_avail; scalar_t__ hn_txdesc_cnt; int /*<<< orphan*/  hn_txdesc_br; int /*<<< orphan*/  hn_txlist_spin; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  buf_ring_full (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mtx_lock_spin (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mtx_unlock_spin (int /*<<< orphan*/ *) ; 
+
+
+
+struct hn_tx_ring {scalar_t__ hn_txdesc_avail; scalar_t__ hn_txdesc_cnt; int hn_txdesc_br; int hn_txlist_spin; } ;
+
+
+ int buf_ring_full (int ) ;
+ int mtx_lock_spin (int *) ;
+ int mtx_unlock_spin (int *) ;
 
 __attribute__((used)) static bool
 hn_tx_ring_pending(struct hn_tx_ring *txr)
 {
-	bool pending = false;
+ bool pending = 0;
 
-#ifndef HN_USE_TXDESC_BUFRING
-	mtx_lock_spin(&txr->hn_txlist_spin);
-	if (txr->hn_txdesc_avail != txr->hn_txdesc_cnt)
-		pending = true;
-	mtx_unlock_spin(&txr->hn_txlist_spin);
-#else
-	if (!buf_ring_full(txr->hn_txdesc_br))
-		pending = true;
-#endif
-	return (pending);
+
+ mtx_lock_spin(&txr->hn_txlist_spin);
+ if (txr->hn_txdesc_avail != txr->hn_txdesc_cnt)
+  pending = 1;
+ mtx_unlock_spin(&txr->hn_txlist_spin);
+
+
+
+
+ return (pending);
 }

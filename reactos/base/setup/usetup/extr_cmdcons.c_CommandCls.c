@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PCONSOLE_STATE ;
-typedef  int /*<<< orphan*/  LPSTR ;
-typedef  int /*<<< orphan*/  INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONSOLE_ClearScreen () ; 
- int /*<<< orphan*/  CONSOLE_SetCursorXY (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HelpCls () ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int PCONSOLE_STATE ;
+typedef int LPSTR ;
+typedef int INT ;
+
+
+ int CONSOLE_ClearScreen () ;
+ int CONSOLE_SetCursorXY (int ,int ) ;
+ int HelpCls () ;
+ int strcmp (int ,char*) ;
 
 __attribute__((used)) static
 INT

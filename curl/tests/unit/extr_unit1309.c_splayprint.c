@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ tv_usec; scalar_t__ tv_sec; } ;
 struct Curl_tree {struct Curl_tree* smaller; struct Curl_tree* samen; TYPE_1__ key; struct Curl_tree* larger; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  printf (char*,...) ; 
+
+ int printf (char*,...) ;
 
 __attribute__((used)) static void splayprint(struct Curl_tree * t, int d, char output)
 {
   struct Curl_tree *node;
   int i;
   int count;
-  if(t == NULL)
+  if(t == ((void*)0))
     return;
 
   splayprint(t->larger, d + 1, output);

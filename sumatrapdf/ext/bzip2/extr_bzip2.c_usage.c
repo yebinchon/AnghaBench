@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char Char ;
 
-/* Variables and functions */
- char* BZ2_bzlibVersion () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
 
-__attribute__((used)) static 
+
+
+typedef char Char ;
+
+
+ char* BZ2_bzlibVersion () ;
+ int fprintf (int ,char*,char*,char*) ;
+ int stderr ;
+
+__attribute__((used)) static
 void usage ( Char *fullProgName )
 {
    fprintf (
@@ -49,9 +49,9 @@ void usage ( Char *fullProgName )
       "   If no file names are given, bzip2 compresses or decompresses\n"
       "   from standard input to standard output.  You can combine\n"
       "   short flags, so `-v -4' means the same as -v4 or -4v, &c.\n"
-#     if BZ_UNIX
-      "\n"
-#     endif
+
+
+
       ,
 
       BZ2_bzlibVersion(),

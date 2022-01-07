@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_DB_INFO ; 
- int /*<<< orphan*/  ACPI_DEBUG_PRINT (int /*<<< orphan*/ ) ; 
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_FUNCTION_TRACE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_MTX_NAMESPACE ; 
- int /*<<< orphan*/  AcpiGbl_RootNode ; 
- int /*<<< orphan*/  AcpiNsDeleteNamespaceSubtree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiNsDeleteNode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiUtAcquireMutex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiUtReleaseMutex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NsTerminate ; 
- int /*<<< orphan*/  return_VOID ; 
+
+
+
+typedef int ACPI_STATUS ;
+
+
+ int ACPI_DB_INFO ;
+ int ACPI_DEBUG_PRINT (int ) ;
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int ACPI_FUNCTION_TRACE (int ) ;
+ int ACPI_MTX_NAMESPACE ;
+ int AcpiGbl_RootNode ;
+ int AcpiNsDeleteNamespaceSubtree (int ) ;
+ int AcpiNsDeleteNode (int ) ;
+ int AcpiUtAcquireMutex (int ) ;
+ int AcpiUtReleaseMutex (int ) ;
+ int NsTerminate ;
+ int return_VOID ;
 
 void
 AcpiNsTerminate (
     void)
 {
-    ACPI_STATUS             Status;
+    ACPI_STATUS Status;
 
 
     ACPI_FUNCTION_TRACE (NsTerminate);
 
 
-    /*
-     * Free the entire namespace -- all nodes and all objects
-     * attached to the nodes
-     */
+
+
+
+
     AcpiNsDeleteNamespaceSubtree (AcpiGbl_RootNode);
 
-    /* Delete any objects attached to the root node */
+
 
     Status = AcpiUtAcquireMutex (ACPI_MTX_NAMESPACE);
     if (ACPI_FAILURE (Status))

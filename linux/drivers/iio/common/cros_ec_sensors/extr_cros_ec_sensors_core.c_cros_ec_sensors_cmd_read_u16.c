@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
-struct cros_ec_device {int (* cmd_readmem ) (struct cros_ec_device*,unsigned int,int,int /*<<< orphan*/ *) ;} ;
-typedef  int /*<<< orphan*/  __le16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  le16_to_cpu (int /*<<< orphan*/ ) ; 
- int stub1 (struct cros_ec_device*,unsigned int,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int u16 ;
+struct cros_ec_device {int (* cmd_readmem ) (struct cros_ec_device*,unsigned int,int,int *) ;} ;
+typedef int __le16 ;
+
+
+ int le16_to_cpu (int ) ;
+ int stub1 (struct cros_ec_device*,unsigned int,int,int *) ;
 
 __attribute__((used)) static int cros_ec_sensors_cmd_read_u16(struct cros_ec_device *ec,
-					 unsigned int offset, u16 *dest)
+      unsigned int offset, u16 *dest)
 {
-	__le16 tmp;
-	int ret = ec->cmd_readmem(ec, offset, 2, &tmp);
+ __le16 tmp;
+ int ret = ec->cmd_readmem(ec, offset, 2, &tmp);
 
-	if (ret >= 0)
-		*dest = le16_to_cpu(tmp);
+ if (ret >= 0)
+  *dest = le16_to_cpu(tmp);
 
-	return ret;
+ return ret;
 }

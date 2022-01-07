@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int error_depth; scalar_t__ parent; int /*<<< orphan*/  chain; TYPE_1__* param; } ;
-typedef  TYPE_2__ X509_STORE_CTX ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int error_depth; scalar_t__ parent; int chain; TYPE_1__* param; } ;
+typedef TYPE_2__ X509_STORE_CTX ;
 struct TYPE_5__ {int flags; } ;
 
-/* Variables and functions */
- int X509_V_FLAG_CRL_CHECK ; 
- int X509_V_FLAG_CRL_CHECK_ALL ; 
- int check_cert (TYPE_2__*) ; 
- int sk_X509_num (int /*<<< orphan*/ ) ; 
+
+ int X509_V_FLAG_CRL_CHECK ;
+ int X509_V_FLAG_CRL_CHECK_ALL ;
+ int check_cert (TYPE_2__*) ;
+ int sk_X509_num (int ) ;
 
 __attribute__((used)) static int check_revocation(X509_STORE_CTX *ctx)
 {
@@ -30,7 +30,7 @@ __attribute__((used)) static int check_revocation(X509_STORE_CTX *ctx)
     if (ctx->param->flags & X509_V_FLAG_CRL_CHECK_ALL)
         last = sk_X509_num(ctx->chain) - 1;
     else {
-        /* If checking CRL paths this isn't the EE certificate */
+
         if (ctx->parent)
             return 1;
         last = 0;

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint64_t ;
-struct least_conn_t {int /*<<< orphan*/  mutex; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef size_t uint64_t ;
+struct least_conn_t {int mutex; } ;
 struct TYPE_9__ {size_t size; TYPE_3__** entries; } ;
-typedef  TYPE_4__ h2o_socketpool_target_vector_t ;
-typedef  int /*<<< orphan*/  h2o_balancer_t ;
+typedef TYPE_4__ h2o_socketpool_target_vector_t ;
+typedef int h2o_balancer_t ;
 struct TYPE_7__ {scalar_t__ weight_m1; } ;
 struct TYPE_6__ {size_t leased_count; } ;
 struct TYPE_8__ {TYPE_2__ conf; TYPE_1__ _shared; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int assert (int) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 __attribute__((used)) static size_t selector(h2o_balancer_t *_self, h2o_socketpool_target_vector_t *targets, char *tried)
 {

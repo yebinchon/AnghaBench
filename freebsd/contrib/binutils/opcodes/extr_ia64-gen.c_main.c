@@ -1,91 +1,83 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int EOF ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EOF ; 
-#define  OPTION_SRCDIR 128 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  collapse_redundant_completers () ; 
- int debug ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fail (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  generate_disassembler () ; 
- int getopt_long (int,char**,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ia64_opcodes_a ; 
- int /*<<< orphan*/  ia64_opcodes_b ; 
- int /*<<< orphan*/  ia64_opcodes_d ; 
- int /*<<< orphan*/  ia64_opcodes_f ; 
- int /*<<< orphan*/  ia64_opcodes_i ; 
- int /*<<< orphan*/  ia64_opcodes_m ; 
- int /*<<< orphan*/  ia64_opcodes_x ; 
- int /*<<< orphan*/  load_dependencies () ; 
- int /*<<< orphan*/  load_insn_classes () ; 
- int /*<<< orphan*/  long_options ; 
- char* optarg ; 
- int optind ; 
- int /*<<< orphan*/  print_completer_table () ; 
- int /*<<< orphan*/  print_dependency_table () ; 
- int /*<<< orphan*/  print_main_table () ; 
- int /*<<< orphan*/  print_string_table () ; 
- int /*<<< orphan*/  print_version () ; 
- int /*<<< orphan*/  printf (char*) ; 
- char* program_name ; 
- int /*<<< orphan*/  shrink (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usage (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  xmalloc_set_program_name (char*) ; 
+ int _ (char*) ;
+ int collapse_redundant_completers () ;
+ int debug ;
+ int errno ;
+ int exit (int ) ;
+ int fail (int ,char*,int ) ;
+ int generate_disassembler () ;
+ int getopt_long (int,char**,char*,int ,int ) ;
+ int ia64_opcodes_a ;
+ int ia64_opcodes_b ;
+ int ia64_opcodes_d ;
+ int ia64_opcodes_f ;
+ int ia64_opcodes_i ;
+ int ia64_opcodes_m ;
+ int ia64_opcodes_x ;
+ int load_dependencies () ;
+ int load_insn_classes () ;
+ int long_options ;
+ char* optarg ;
+ int optind ;
+ int print_completer_table () ;
+ int print_dependency_table () ;
+ int print_main_table () ;
+ int print_string_table () ;
+ int print_version () ;
+ int printf (char*) ;
+ char* program_name ;
+ int shrink (int ) ;
+ int stderr ;
+ int stdout ;
+ int strerror (int ) ;
+ int usage (int ,int) ;
+ int xmalloc_set_program_name (char*) ;
 
 int
 main (int argc, char **argv)
 {
   extern int chdir (char *);
-  char *srcdir = NULL;
+  char *srcdir = ((void*)0);
   int c;
-  
+
   program_name = *argv;
   xmalloc_set_program_name (program_name);
 
   while ((c = getopt_long (argc, argv, "vVdh", long_options, 0)) != EOF)
     switch (c)
       {
-      case OPTION_SRCDIR:
-	srcdir = optarg;
-	break;
+      case 128:
+ srcdir = optarg;
+ break;
       case 'V':
       case 'v':
-	print_version ();
-	break;
+ print_version ();
+ break;
       case 'd':
-	debug = 1;
-	break;
+ debug = 1;
+ break;
       case 'h':
       case '?':
-	usage (stderr, 0);
+ usage (stderr, 0);
       default:
       case 0:
-	break;
+ break;
       }
 
   if (optind != argc)
     usage (stdout, 1);
 
-  if (srcdir != NULL) 
+  if (srcdir != ((void*)0))
     if (chdir (srcdir) != 0)
       fail (_("unable to change directory to \"%s\", errno = %s\n"),
-	    srcdir, strerror (errno));
+     srcdir, strerror (errno));
 
   load_insn_classes ();
   load_dependencies ();

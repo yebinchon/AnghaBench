@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GLvoid ;
-typedef  int GLenum ;
-typedef  int /*<<< orphan*/  GLcontext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_INVALID_ENUM ; 
- int /*<<< orphan*/  GL_INVALID_OPERATION ; 
-#define  GL_TEXTURE_1D 130 
-#define  GL_TEXTURE_2D 129 
-#define  GL_TEXTURE_3D_EXT 128 
- scalar_t__ INSIDE_BEGIN_END (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gl_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  gl_problem (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int GLvoid ;
+typedef int GLenum ;
+typedef int GLcontext ;
+
+
+ int GL_INVALID_ENUM ;
+ int GL_INVALID_OPERATION ;
+
+
+
+ scalar_t__ INSIDE_BEGIN_END (int *) ;
+ int gl_error (int *,int ,char*) ;
+ int gl_problem (int *,char*) ;
 
 void gl_GetColorTable( GLcontext *ctx, GLenum target, GLenum format,
                        GLenum type, GLvoid *table )
@@ -33,11 +33,11 @@ void gl_GetColorTable( GLcontext *ctx, GLenum target, GLenum format,
    }
 
    switch (target) {
-      case GL_TEXTURE_1D:
+      case 130:
          break;
-      case GL_TEXTURE_2D:
+      case 129:
          break;
-      case GL_TEXTURE_3D_EXT:
+      case 128:
          break;
       default:
          gl_error(ctx, GL_INVALID_ENUM, "glGetColorTableEXT(target)");

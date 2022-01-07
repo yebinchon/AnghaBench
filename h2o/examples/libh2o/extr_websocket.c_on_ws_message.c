@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct wslay_event_on_msg_recv_arg {int /*<<< orphan*/  msg_length; int /*<<< orphan*/  msg; int /*<<< orphan*/  opcode; } ;
-struct wslay_event_msg {int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-struct TYPE_4__ {int /*<<< orphan*/  ws_ctx; } ;
-typedef  TYPE_1__ h2o_websocket_conn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  h2o_websocket_close (TYPE_1__*) ; 
- int /*<<< orphan*/  wslay_event_queue_msg (int /*<<< orphan*/ ,struct wslay_event_msg*) ; 
- int /*<<< orphan*/  wslay_is_ctrl_frame (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct wslay_event_on_msg_recv_arg {int msg_length; int msg; int opcode; } ;
+struct wslay_event_msg {int member_2; int member_1; int member_0; } ;
+struct TYPE_4__ {int ws_ctx; } ;
+typedef TYPE_1__ h2o_websocket_conn_t ;
+
+
+ int h2o_websocket_close (TYPE_1__*) ;
+ int wslay_event_queue_msg (int ,struct wslay_event_msg*) ;
+ int wslay_is_ctrl_frame (int ) ;
 
 __attribute__((used)) static void on_ws_message(h2o_websocket_conn_t *conn, const struct wslay_event_on_msg_recv_arg *arg)
 {
-    if (arg == NULL) {
+    if (arg == ((void*)0)) {
         h2o_websocket_close(conn);
         return;
     }

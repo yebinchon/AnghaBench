@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lev_cache_uri {int /*<<< orphan*/  data; } ;
+
+
+
+
+struct lev_cache_uri {int data; } ;
 struct cache_uri {scalar_t__ last_access; } ;
 
-/* Variables and functions */
- int CACHE_FEATURE_REPLAY_DELETE ; 
- int /*<<< orphan*/  assert (int) ; 
- int cache_features_mask ; 
- int /*<<< orphan*/  cache_uri_free (struct cache_uri*) ; 
- struct cache_uri* get_uri_f (char*,int) ; 
- scalar_t__ log_last_ts ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ uri_living_time ; 
- int /*<<< orphan*/  vkprintf (int,char*,char*,...) ; 
+
+ int CACHE_FEATURE_REPLAY_DELETE ;
+ int assert (int) ;
+ int cache_features_mask ;
+ int cache_uri_free (struct cache_uri*) ;
+ struct cache_uri* get_uri_f (char*,int) ;
+ scalar_t__ log_last_ts ;
+ int memcpy (char*,int ,int) ;
+ scalar_t__ uri_living_time ;
+ int vkprintf (int,char*,char*,...) ;
 
 __attribute__((used)) static void cache_uri_delete (struct lev_cache_uri *E, int l) {
   assert (log_last_ts > 0);
@@ -31,7 +31,7 @@ __attribute__((used)) static void cache_uri_delete (struct lev_cache_uri *E, int
     memcpy (uri, E->data, l);
     uri[l] = 0;
     struct cache_uri *U = get_uri_f (uri, 0);
-    if (U == NULL) {
+    if (U == ((void*)0)) {
       vkprintf (2, "Delete not existing global uri - \"%s\".\n", uri);
       return;
     }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jpip_dec_param_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPJ_FALSE ; 
- int /*<<< orphan*/  decode_jpip (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  destroy_jpipdecoder (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  fread_jpip (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fwrite_jp2k (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * init_jpipdecoder (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int jpip_dec_param_t ;
+
+
+ int OPJ_FALSE ;
+ int decode_jpip (int *) ;
+ int destroy_jpipdecoder (int **) ;
+ int fread_jpip (char*,int *) ;
+ int fwrite_jp2k (char*,int *) ;
+ int * init_jpipdecoder (int ) ;
 
 __attribute__((used)) static int jpip_to_j2k(char *argv[])
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static int jpip_to_j2k(char *argv[])
         return 1;
     }
 
-    /*  output_log( OPJ_TRUE, OPJ_FALSE, OPJ_FALSE, dec); */
+
 
     destroy_jpipdecoder(&dec);
 

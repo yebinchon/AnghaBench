@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_8__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_16__ TYPE_8__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_16__ {int channels; scalar_t__ bps; scalar_t__ samplerate; scalar_t__ max_blocksize; } ;
-struct TYPE_15__ {int channels; scalar_t__ bits_per_raw_sample; scalar_t__ sample_rate; int /*<<< orphan*/  sample_fmt; int /*<<< orphan*/  channel_layout; } ;
-struct TYPE_14__ {int got_streaminfo; TYPE_8__ flac_stream_info; TYPE_4__* avctx; int /*<<< orphan*/  dsp; scalar_t__ blocksize; int /*<<< orphan*/  ch_mode; int /*<<< orphan*/  gb; } ;
-struct TYPE_13__ {int channels; scalar_t__ bps; scalar_t__ samplerate; scalar_t__ blocksize; int /*<<< orphan*/  ch_mode; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_1__ FLACFrameInfo ;
-typedef  TYPE_2__ FLACContext ;
+struct TYPE_15__ {int channels; scalar_t__ bits_per_raw_sample; scalar_t__ sample_rate; int sample_fmt; int channel_layout; } ;
+struct TYPE_14__ {int got_streaminfo; TYPE_8__ flac_stream_info; TYPE_4__* avctx; int dsp; scalar_t__ blocksize; int ch_mode; int gb; } ;
+struct TYPE_13__ {int channels; scalar_t__ bps; scalar_t__ samplerate; scalar_t__ blocksize; int ch_mode; } ;
+typedef int GetBitContext ;
+typedef TYPE_1__ FLACFrameInfo ;
+typedef TYPE_2__ FLACContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- scalar_t__ FLAC_MAX_BLOCKSIZE ; 
- int /*<<< orphan*/  align_get_bits (int /*<<< orphan*/ *) ; 
- int allocate_buffers (TYPE_2__*) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,...) ; 
- int decode_subframe (TYPE_2__*,int) ; 
- int /*<<< orphan*/  dump_headers (TYPE_4__*,TYPE_8__*) ; 
- int ff_flac_decode_frame_header (TYPE_4__*,int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_flac_set_channel_layout (TYPE_4__*) ; 
- int /*<<< orphan*/  ff_flacdsp_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,scalar_t__) ; 
- int /*<<< orphan*/  flac_set_bps (TYPE_2__*) ; 
- int /*<<< orphan*/  skip_bits (int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ scalar_t__ FLAC_MAX_BLOCKSIZE ;
+ int align_get_bits (int *) ;
+ int allocate_buffers (TYPE_2__*) ;
+ int av_log (TYPE_4__*,int ,char*,...) ;
+ int decode_subframe (TYPE_2__*,int) ;
+ int dump_headers (TYPE_4__*,TYPE_8__*) ;
+ int ff_flac_decode_frame_header (TYPE_4__*,int *,TYPE_1__*,int ) ;
+ int ff_flac_set_channel_layout (TYPE_4__*) ;
+ int ff_flacdsp_init (int *,int ,int,scalar_t__) ;
+ int flac_set_bps (TYPE_2__*) ;
+ int skip_bits (int *,int) ;
 
 __attribute__((used)) static int decode_frame(FLACContext *s)
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static int decode_frame(FLACContext *s)
         return ret;
     }
 
-    if (   s->flac_stream_info.channels
+    if ( s->flac_stream_info.channels
         && fi.channels != s->flac_stream_info.channels
         && s->got_streaminfo) {
         s->flac_stream_info.channels = s->avctx->channels = fi.channels;
@@ -107,9 +107,9 @@ __attribute__((used)) static int decode_frame(FLACContext *s)
     ff_flacdsp_init(&s->dsp, s->avctx->sample_fmt,
                     s->flac_stream_info.channels, s->flac_stream_info.bps);
 
-//    dump_headers(s->avctx, &s->flac_stream_info);
 
-    /* subframes */
+
+
     for (i = 0; i < s->flac_stream_info.channels; i++) {
         if ((ret = decode_subframe(s, i)) < 0)
             return ret;
@@ -117,8 +117,8 @@ __attribute__((used)) static int decode_frame(FLACContext *s)
 
     align_get_bits(gb);
 
-    /* frame footer */
-    skip_bits(gb, 16); /* data crc */
+
+    skip_bits(gb, 16);
 
     return 0;
 }

@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned long partial_crc32_one (int /*<<< orphan*/ ,unsigned long) ; 
+ unsigned long partial_crc32_one (int ,unsigned long) ;
 
 __attribute__((used)) static unsigned long partial_crc32(const char *s, unsigned long crc)
 {
-	while (*s)
-		crc = partial_crc32_one(*s++, crc);
-	return crc;
+ while (*s)
+  crc = partial_crc32_one(*s++, crc);
+ return crc;
 }

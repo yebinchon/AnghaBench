@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  inter_pix_ctx; int /*<<< orphan*/  intra_pix_ctx; int /*<<< orphan*/  pivot; int /*<<< orphan*/  edge_mode; int /*<<< orphan*/  split_mode; int /*<<< orphan*/  inter_region; int /*<<< orphan*/  intra_region; } ;
-typedef  TYPE_1__ SliceContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  model_reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pixctx_reset (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int inter_pix_ctx; int intra_pix_ctx; int pivot; int edge_mode; int split_mode; int inter_region; int intra_region; } ;
+typedef TYPE_1__ SliceContext ;
+
+
+ int model_reset (int *) ;
+ int pixctx_reset (int *) ;
 
 void ff_mss12_slicecontext_reset(SliceContext *sc)
 {

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ngm_connect {int /*<<< orphan*/  peerhook; int /*<<< orphan*/  ourhook; int /*<<< orphan*/  path; } ;
-typedef  int /*<<< orphan*/  conn ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGM_CONNECT ; 
- int /*<<< orphan*/  NGM_GENERIC_COOKIE ; 
- int /*<<< orphan*/  NG_HOOKSIZ ; 
- int /*<<< orphan*/  NG_PATHSIZ ; 
- int NgSendMsg (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct ngm_connect*,int) ; 
- int /*<<< orphan*/  csock ; 
- int /*<<< orphan*/  snprintf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  strlcpy (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+struct ngm_connect {int peerhook; int ourhook; int path; } ;
+typedef int conn ;
+
+
+ int NGM_CONNECT ;
+ int NGM_GENERIC_COOKIE ;
+ int NG_HOOKSIZ ;
+ int NG_PATHSIZ ;
+ int NgSendMsg (int ,char*,int ,int ,struct ngm_connect*,int) ;
+ int csock ;
+ int snprintf (int ,int ,char*,char const*) ;
+ int strlcpy (int ,char const*,int ) ;
 
 int
 ng_connect_node(const char *node, const char *ourhook, const char *peerhook)
 {
-	struct ngm_connect conn;
+ struct ngm_connect conn;
 
-	snprintf(conn.path, NG_PATHSIZ, "%s:", node);
-	strlcpy(conn.ourhook, ourhook, NG_HOOKSIZ);
-	strlcpy(conn.peerhook, peerhook, NG_HOOKSIZ);
-	return (NgSendMsg(csock, ".:",
-	    NGM_GENERIC_COOKIE, NGM_CONNECT, &conn, sizeof(conn)));
+ snprintf(conn.path, NG_PATHSIZ, "%s:", node);
+ strlcpy(conn.ourhook, ourhook, NG_HOOKSIZ);
+ strlcpy(conn.peerhook, peerhook, NG_HOOKSIZ);
+ return (NgSendMsg(csock, ".:",
+     NGM_GENERIC_COOKIE, NGM_CONNECT, &conn, sizeof(conn)));
 }

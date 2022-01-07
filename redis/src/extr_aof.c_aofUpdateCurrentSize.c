@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct redis_stat {int /*<<< orphan*/  st_size; } ;
-typedef  int /*<<< orphan*/  mstime_t ;
-struct TYPE_2__ {int /*<<< orphan*/  aof_current_size; int /*<<< orphan*/  aof_fd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LL_WARNING ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  latencyAddSampleIfNeeded (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  latencyEndMonitor (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  latencyStartMonitor (int /*<<< orphan*/ ) ; 
- int redis_fstat (int /*<<< orphan*/ ,struct redis_stat*) ; 
- TYPE_1__ server ; 
- int /*<<< orphan*/  serverLog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct redis_stat {int st_size; } ;
+typedef int mstime_t ;
+struct TYPE_2__ {int aof_current_size; int aof_fd; } ;
+
+
+ int LL_WARNING ;
+ int errno ;
+ int latencyAddSampleIfNeeded (char*,int ) ;
+ int latencyEndMonitor (int ) ;
+ int latencyStartMonitor (int ) ;
+ int redis_fstat (int ,struct redis_stat*) ;
+ TYPE_1__ server ;
+ int serverLog (int ,char*,int ) ;
+ int strerror (int ) ;
 
 void aofUpdateCurrentSize(void) {
     struct redis_stat sb;

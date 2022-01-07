@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  (* _flush_tlb ) (int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VMI_FLUSH_TLB ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- TYPE_1__ vmi_ops ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int (* _flush_tlb ) (int ) ;} ;
+
+
+ int VMI_FLUSH_TLB ;
+ int stub1 (int ) ;
+ TYPE_1__ vmi_ops ;
 
 __attribute__((used)) static void vmi_flush_tlb_user(void)
 {
-	vmi_ops._flush_tlb(VMI_FLUSH_TLB);
+ vmi_ops._flush_tlb(VMI_FLUSH_TLB);
 }

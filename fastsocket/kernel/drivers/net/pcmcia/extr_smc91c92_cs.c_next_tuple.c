@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tuple_t ;
+
+
+
+
+typedef int tuple_t ;
 struct pcmcia_device {int dummy; } ;
-typedef  int /*<<< orphan*/  cisparse_t ;
+typedef int cisparse_t ;
 
-/* Variables and functions */
- int pcmcia_get_next_tuple (struct pcmcia_device*,int /*<<< orphan*/ *) ; 
- int pcmcia_get_tuple_data (struct pcmcia_device*,int /*<<< orphan*/ *) ; 
- int pcmcia_parse_tuple (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int pcmcia_get_next_tuple (struct pcmcia_device*,int *) ;
+ int pcmcia_get_tuple_data (struct pcmcia_device*,int *) ;
+ int pcmcia_parse_tuple (int *,int *) ;
 
 __attribute__((used)) static int next_tuple(struct pcmcia_device *handle, tuple_t *tuple,
-		cisparse_t *parse)
+  cisparse_t *parse)
 {
-	int i;
+ int i;
 
-	if ((i = pcmcia_get_next_tuple(handle, tuple)) != 0 ||
-			(i = pcmcia_get_tuple_data(handle, tuple)) != 0)
-		return i;
-	return pcmcia_parse_tuple(tuple, parse);
+ if ((i = pcmcia_get_next_tuple(handle, tuple)) != 0 ||
+   (i = pcmcia_get_tuple_data(handle, tuple)) != 0)
+  return i;
+ return pcmcia_parse_tuple(tuple, parse);
 }

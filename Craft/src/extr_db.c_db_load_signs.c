@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SignList ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_ROW ; 
- int /*<<< orphan*/  db_enabled ; 
- int /*<<< orphan*/  load_signs_stmt ; 
- int /*<<< orphan*/  sign_list_add (int /*<<< orphan*/ *,int,int,int,int,char const*) ; 
- int /*<<< orphan*/  sqlite3_bind_int (int /*<<< orphan*/ ,int,int) ; 
- int sqlite3_column_int (int /*<<< orphan*/ ,int) ; 
- scalar_t__ sqlite3_column_text (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3_reset (int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int SignList ;
+
+
+ scalar_t__ SQLITE_ROW ;
+ int db_enabled ;
+ int load_signs_stmt ;
+ int sign_list_add (int *,int,int,int,int,char const*) ;
+ int sqlite3_bind_int (int ,int,int) ;
+ int sqlite3_column_int (int ,int) ;
+ scalar_t__ sqlite3_column_text (int ,int) ;
+ int sqlite3_reset (int ) ;
+ scalar_t__ sqlite3_step (int ) ;
 
 void db_load_signs(SignList *list, int p, int q) {
     if (!db_enabled) {

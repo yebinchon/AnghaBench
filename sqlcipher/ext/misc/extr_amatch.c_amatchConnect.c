@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_6__ {scalar_t__ zClassName; scalar_t__ zSelf; scalar_t__ zVocabTab; scalar_t__ zVocabWord; scalar_t__ zVocabLang; scalar_t__ zCostTab; int /*<<< orphan*/  base; void* zDb; int /*<<< orphan*/ * db; } ;
-typedef  TYPE_1__ amatch_vtab ;
 
-/* Variables and functions */
- int SQLITE_ERROR ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- void* amatchDequote (char const*) ; 
- int /*<<< orphan*/  amatchFree (TYPE_1__*) ; 
- int amatchLoadRules (int /*<<< orphan*/ *,TYPE_1__*,char**) ; 
- char* amatchValueOfKey (char*,char const* const) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int sqlite3_declare_vtab (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  sqlite3_free (scalar_t__) ; 
- TYPE_1__* sqlite3_malloc (int) ; 
- void* sqlite3_mprintf (char*,...) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int sqlite3_vtab ;
+typedef int sqlite3 ;
+struct TYPE_6__ {scalar_t__ zClassName; scalar_t__ zSelf; scalar_t__ zVocabTab; scalar_t__ zVocabWord; scalar_t__ zVocabLang; scalar_t__ zCostTab; int base; void* zDb; int * db; } ;
+typedef TYPE_1__ amatch_vtab ;
+
+
+ int SQLITE_ERROR ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ void* amatchDequote (char const*) ;
+ int amatchFree (TYPE_1__*) ;
+ int amatchLoadRules (int *,TYPE_1__*,char**) ;
+ char* amatchValueOfKey (char*,char const* const) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int sqlite3_declare_vtab (int *,char*) ;
+ int sqlite3_free (scalar_t__) ;
+ TYPE_1__* sqlite3_malloc (int) ;
+ void* sqlite3_mprintf (char*,...) ;
 
 __attribute__((used)) static int amatchConnect(
   sqlite3 *db,
@@ -37,8 +37,8 @@ __attribute__((used)) static int amatchConnect(
   sqlite3_vtab **ppVtab,
   char **pzErr
 ){
-  int rc = SQLITE_OK;             /* Return code */
-  amatch_vtab *pNew = 0;          /* New virtual table */
+  int rc = SQLITE_OK;
+  amatch_vtab *pNew = 0;
   const char *zModule = argv[0];
   const char *zDb = argv[1];
   const char *zVal;
@@ -103,11 +103,11 @@ __attribute__((used)) static int amatchConnect(
            "CREATE TABLE x(word,distance,language,"
            "command HIDDEN,nword HIDDEN)"
          );
-#define AMATCH_COL_WORD       0
-#define AMATCH_COL_DISTANCE   1
-#define AMATCH_COL_LANGUAGE   2
-#define AMATCH_COL_COMMAND    3
-#define AMATCH_COL_NWORD      4
+
+
+
+
+
   }
   if( rc!=SQLITE_OK ){
     amatchFree(pNew);

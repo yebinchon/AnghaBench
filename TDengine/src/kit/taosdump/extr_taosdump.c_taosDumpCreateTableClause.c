@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct arguments {int dummy; } ;
 struct TYPE_5__ {char* name; TYPE_1__* cols; } ;
 struct TYPE_4__ {char* note; char* field; char* type; int length; } ;
-typedef  TYPE_2__ STableDef ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_2__ STableDef ;
+typedef int FILE ;
 
-/* Variables and functions */
- char* buffer ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
- scalar_t__ strcasecmp (char*,char*) ; 
+
+ char* buffer ;
+ int fprintf (int *,char*,char*) ;
+ int sprintf (char*,char*,...) ;
+ scalar_t__ strcasecmp (char*,char*) ;
 
 void taosDumpCreateTableClause(STableDef *tableDes, int numOfCols, struct arguments *arguments, FILE *fp) {
-  char *pstr = NULL;
+  char *pstr = ((void*)0);
   pstr = buffer;
   int counter = 0;
   int count_temp = 0;

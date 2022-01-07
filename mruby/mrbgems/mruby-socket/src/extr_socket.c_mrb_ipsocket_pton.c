@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct in_addr {int /*<<< orphan*/  s_addr; } ;
-struct in6_addr {int /*<<< orphan*/  s6_addr; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  size_t mrb_int ;
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- size_t AF_INET ; 
- size_t AF_INET6 ; 
- int /*<<< orphan*/  E_ARGUMENT_ERROR ; 
- int inet_pton (size_t,char*,void*) ; 
- int /*<<< orphan*/  memcpy (char*,char*,size_t) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,size_t*,char**,size_t*) ; 
- int /*<<< orphan*/  mrb_nil_value () ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mrb_str_new (int /*<<< orphan*/ *,char*,int) ; 
+
+
+
+struct in_addr {int s_addr; } ;
+struct in6_addr {int s6_addr; } ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef size_t mrb_int ;
+typedef int buf ;
+
+
+ size_t AF_INET ;
+ size_t AF_INET6 ;
+ int E_ARGUMENT_ERROR ;
+ int inet_pton (size_t,char*,void*) ;
+ int memcpy (char*,char*,size_t) ;
+ int mrb_get_args (int *,char*,size_t*,char**,size_t*) ;
+ int mrb_nil_value () ;
+ int mrb_raise (int *,int ,char*) ;
+ int mrb_str_new (int *,char*,int) ;
 
 __attribute__((used)) static mrb_value
 mrb_ipsocket_pton(mrb_state *mrb, mrb_value klass)
@@ -55,5 +55,5 @@ mrb_ipsocket_pton(mrb_state *mrb, mrb_value klass)
 
 invalid:
   mrb_raise(mrb, E_ARGUMENT_ERROR, "invalid address");
-  return mrb_nil_value(); /* dummy */
+  return mrb_nil_value();
 }

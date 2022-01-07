@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pcmcia_socket {int /*<<< orphan*/  dev; int /*<<< orphan*/  owner; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  module_put (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  put_device (int /*<<< orphan*/ *) ; 
+
+
+
+struct pcmcia_socket {int dev; int owner; } ;
+
+
+ int module_put (int ) ;
+ int put_device (int *) ;
 
 void pcmcia_put_socket(struct pcmcia_socket *skt)
 {
-	module_put(skt->owner);
-	put_device(&skt->dev);
+ module_put(skt->owner);
+ put_device(&skt->dev);
 }

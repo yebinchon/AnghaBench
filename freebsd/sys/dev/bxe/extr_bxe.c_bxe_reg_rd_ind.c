@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct bxe_softc {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PCICFG_GRC_ADDRESS ; 
- int /*<<< orphan*/  PCICFG_GRC_DATA ; 
- int /*<<< orphan*/  pci_read_config (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pci_write_config (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int uint32_t ;
+struct bxe_softc {int dev; } ;
+
+
+ int PCICFG_GRC_ADDRESS ;
+ int PCICFG_GRC_DATA ;
+ int pci_read_config (int ,int ,int) ;
+ int pci_write_config (int ,int ,int ,int) ;
 
 uint32_t
 bxe_reg_rd_ind(struct bxe_softc *sc,
-               uint32_t         addr)
+               uint32_t addr)
 {
     uint32_t val;
 

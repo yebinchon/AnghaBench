@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_device ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  SYNTHETIC_ERRNO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ctx ; 
- int log_error_errno (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  module_load_and_warn (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  streq (char*,char*) ; 
+
+
+
+typedef int sd_device ;
+
+
+ int EINVAL ;
+ int SYNTHETIC_ERRNO (int ) ;
+ int ctx ;
+ int log_error_errno (int ,char*,char*) ;
+ int module_load_and_warn (int ,char*,int) ;
+ int streq (char*,char*) ;
 
 __attribute__((used)) static int builtin_kmod(sd_device *dev, int argc, char *argv[], bool test) {
         int i;
@@ -31,7 +31,7 @@ __attribute__((used)) static int builtin_kmod(sd_device *dev, int argc, char *ar
                                        "%s: expected: load <module>", argv[0]);
 
         for (i = 2; argv[i]; i++)
-                (void) module_load_and_warn(ctx, argv[i], false);
+                (void) module_load_and_warn(ctx, argv[i], 0);
 
         return 0;
 }

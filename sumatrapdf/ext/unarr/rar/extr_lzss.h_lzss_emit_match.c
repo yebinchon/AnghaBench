@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int position; int /*<<< orphan*/ * window; } ;
-typedef  TYPE_1__ LZSS ;
 
-/* Variables and functions */
- int lzss_current_window_offset (TYPE_1__*) ; 
- int lzss_mask (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int position; int * window; } ;
+typedef TYPE_1__ LZSS ;
+
+
+ int lzss_current_window_offset (TYPE_1__*) ;
+ int lzss_mask (TYPE_1__*) ;
 
 __attribute__((used)) static inline void lzss_emit_match(LZSS *self, int offset, int length) {
     int windowoffs = lzss_current_window_offset(self);

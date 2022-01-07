@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * gregset_t ;
-typedef  int /*<<< orphan*/  greg_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int * gregset_t ;
+typedef int greg_t ;
 struct TYPE_2__ {int pc; int cause; int hi; int lo; } ;
 
-/* Variables and functions */
- int CXT_CAUSE ; 
- int CXT_EPC ; 
- int CXT_MDHI ; 
- int CXT_MDLO ; 
- size_t DEPRECATED_REGISTER_BYTE (int) ; 
- int /*<<< orphan*/  current_gdbarch ; 
- int /*<<< orphan*/ * deprecated_registers ; 
- TYPE_1__* mips_regnum (int /*<<< orphan*/ ) ; 
+
+ int CXT_CAUSE ;
+ int CXT_EPC ;
+ int CXT_MDHI ;
+ int CXT_MDLO ;
+ size_t DEPRECATED_REGISTER_BYTE (int) ;
+ int current_gdbarch ;
+ int * deprecated_registers ;
+ TYPE_1__* mips_regnum (int ) ;
 
 void
 fill_gregset (gregset_t *gregsetp, int regno)

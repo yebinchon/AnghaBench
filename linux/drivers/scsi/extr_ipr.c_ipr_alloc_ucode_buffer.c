@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ipr_sglist {int order; int /*<<< orphan*/  scatterlist; int /*<<< orphan*/  num_sg; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int IPR_MAX_SGLIST ; 
- int get_order (int) ; 
- int /*<<< orphan*/  ipr_trace ; 
- int /*<<< orphan*/  kfree (struct ipr_sglist*) ; 
- struct ipr_sglist* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sgl_alloc_order (int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct ipr_sglist {int order; int scatterlist; int num_sg; } ;
+
+
+ int GFP_KERNEL ;
+ int IPR_MAX_SGLIST ;
+ int get_order (int) ;
+ int ipr_trace ;
+ int kfree (struct ipr_sglist*) ;
+ struct ipr_sglist* kzalloc (int,int ) ;
+ int sgl_alloc_order (int,int,int,int ,int *) ;
 
 __attribute__((used)) static struct ipr_sglist *ipr_alloc_ucode_buffer(int buf_len)
 {
-	int sg_size, order;
-	struct ipr_sglist *sglist;
+ int sg_size, order;
+ struct ipr_sglist *sglist;
 
-	/* Get the minimum size per scatter/gather element */
-	sg_size = buf_len / (IPR_MAX_SGLIST - 1);
 
-	/* Get the actual size per element */
-	order = get_order(sg_size);
+ sg_size = buf_len / (IPR_MAX_SGLIST - 1);
 
-	/* Allocate a scatter/gather list for the DMA */
-	sglist = kzalloc(sizeof(struct ipr_sglist), GFP_KERNEL);
-	if (sglist == NULL) {
-		ipr_trace;
-		return NULL;
-	}
-	sglist->order = order;
-	sglist->scatterlist = sgl_alloc_order(buf_len, order, false, GFP_KERNEL,
-					      &sglist->num_sg);
-	if (!sglist->scatterlist) {
-		kfree(sglist);
-		return NULL;
-	}
 
-	return sglist;
+ order = get_order(sg_size);
+
+
+ sglist = kzalloc(sizeof(struct ipr_sglist), GFP_KERNEL);
+ if (sglist == ((void*)0)) {
+  ipr_trace;
+  return ((void*)0);
+ }
+ sglist->order = order;
+ sglist->scatterlist = sgl_alloc_order(buf_len, order, 0, GFP_KERNEL,
+           &sglist->num_sg);
+ if (!sglist->scatterlist) {
+  kfree(sglist);
+  return ((void*)0);
+ }
+
+ return sglist;
 }

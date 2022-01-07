@@ -1,33 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CPUHP_AP_IRQ_BCM2836_STARTING ; 
- int /*<<< orphan*/  bcm2836_arm_irqchip_send_ipi ; 
- int /*<<< orphan*/  bcm2836_cpu_dying ; 
- int /*<<< orphan*/  bcm2836_cpu_starting ; 
- int /*<<< orphan*/  cpuhp_setup_state (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_smp_cross_call (int /*<<< orphan*/ ) ; 
+ int CPUHP_AP_IRQ_BCM2836_STARTING ;
+ int bcm2836_arm_irqchip_send_ipi ;
+ int bcm2836_cpu_dying ;
+ int bcm2836_cpu_starting ;
+ int cpuhp_setup_state (int ,char*,int ,int ) ;
+ int set_smp_cross_call (int ) ;
 
 __attribute__((used)) static void
 bcm2836_arm_irqchip_smp_init(void)
 {
-#ifdef CONFIG_SMP
-	/* Unmask IPIs to the boot CPU. */
-	cpuhp_setup_state(CPUHP_AP_IRQ_BCM2836_STARTING,
-			  "irqchip/bcm2836:starting", bcm2836_cpu_starting,
-			  bcm2836_cpu_dying);
-
-	set_smp_cross_call(bcm2836_arm_irqchip_send_ipi);
-#endif
 }

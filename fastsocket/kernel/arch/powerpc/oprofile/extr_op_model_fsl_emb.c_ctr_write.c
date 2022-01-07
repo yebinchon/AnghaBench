@@ -1,39 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PMRN_PMC0 ; 
- int /*<<< orphan*/  PMRN_PMC1 ; 
- int /*<<< orphan*/  PMRN_PMC2 ; 
- int /*<<< orphan*/  PMRN_PMC3 ; 
- int /*<<< orphan*/  mtpmr (int /*<<< orphan*/ ,unsigned int) ; 
+ int PMRN_PMC0 ;
+ int PMRN_PMC1 ;
+ int PMRN_PMC2 ;
+ int PMRN_PMC3 ;
+ int mtpmr (int ,unsigned int) ;
 
 __attribute__((used)) static inline void ctr_write(unsigned int i, unsigned int val)
 {
-	switch(i) {
-		case 0:
-			mtpmr(PMRN_PMC0, val);
-			break;
-		case 1:
-			mtpmr(PMRN_PMC1, val);
-			break;
-		case 2:
-			mtpmr(PMRN_PMC2, val);
-			break;
-		case 3:
-			mtpmr(PMRN_PMC3, val);
-			break;
-		default:
-			break;
-	}
+ switch(i) {
+  case 0:
+   mtpmr(PMRN_PMC0, val);
+   break;
+  case 1:
+   mtpmr(PMRN_PMC1, val);
+   break;
+  case 2:
+   mtpmr(PMRN_PMC2, val);
+   break;
+  case 3:
+   mtpmr(PMRN_PMC3, val);
+   break;
+  default:
+   break;
+ }
 }

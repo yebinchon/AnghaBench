@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  filledSemaphore; int /*<<< orphan*/  freeSemaphore; int /*<<< orphan*/  wasStopped; int /*<<< orphan*/  wasStarted; int /*<<< orphan*/  canStart; int /*<<< orphan*/  thread; void* csWasEntered; void* csWasInitialized; void* wasCreated; } ;
-typedef  TYPE_1__ CMtSync ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Event_Construct (int /*<<< orphan*/ *) ; 
- void* False ; 
- int /*<<< orphan*/  Semaphore_Construct (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Thread_Construct (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int filledSemaphore; int freeSemaphore; int wasStopped; int wasStarted; int canStart; int thread; void* csWasEntered; void* csWasInitialized; void* wasCreated; } ;
+typedef TYPE_1__ CMtSync ;
+
+
+ int Event_Construct (int *) ;
+ void* False ;
+ int Semaphore_Construct (int *) ;
+ int Thread_Construct (int *) ;
 
 __attribute__((used)) static void MtSync_Construct(CMtSync *p)
 {

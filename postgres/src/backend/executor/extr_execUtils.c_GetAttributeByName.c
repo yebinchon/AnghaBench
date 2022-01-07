@@ -1,104 +1,104 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32 ;
-typedef  TYPE_1__* TupleDesc ;
-struct TYPE_12__ {scalar_t__ attnum; int /*<<< orphan*/  attname; } ;
-struct TYPE_11__ {int /*<<< orphan*/ * t_data; int /*<<< orphan*/  t_tableOid; int /*<<< orphan*/  t_self; int /*<<< orphan*/  t_len; } ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int int32 ;
+typedef TYPE_1__* TupleDesc ;
+struct TYPE_12__ {scalar_t__ attnum; int attname; } ;
+struct TYPE_11__ {int * t_data; int t_tableOid; int t_self; int t_len; } ;
 struct TYPE_10__ {int natts; } ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/ * HeapTupleHeader ;
-typedef  TYPE_2__ HeapTupleData ;
-typedef  TYPE_3__* Form_pg_attribute ;
-typedef  int /*<<< orphan*/  Datum ;
-typedef  scalar_t__ AttrNumber ;
+typedef int Oid ;
+typedef int * HeapTupleHeader ;
+typedef TYPE_2__ HeapTupleData ;
+typedef TYPE_3__* Form_pg_attribute ;
+typedef int Datum ;
+typedef scalar_t__ AttrNumber ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  HeapTupleHeaderGetDatumLength (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HeapTupleHeaderGetTypMod (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HeapTupleHeaderGetTypeId (int /*<<< orphan*/ *) ; 
- scalar_t__ InvalidAttrNumber ; 
- int /*<<< orphan*/  InvalidOid ; 
- int /*<<< orphan*/  ItemPointerSetInvalid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseTupleDesc (TYPE_1__*) ; 
- TYPE_3__* TupleDescAttr (TYPE_1__*,int) ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  heap_getattr (TYPE_2__*,scalar_t__,TYPE_1__*,int*) ; 
- TYPE_1__* lookup_rowtype_tupdesc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ namestrcmp (int /*<<< orphan*/ *,char const*) ; 
+
+ int ERROR ;
+ int HeapTupleHeaderGetDatumLength (int *) ;
+ int HeapTupleHeaderGetTypMod (int *) ;
+ int HeapTupleHeaderGetTypeId (int *) ;
+ scalar_t__ InvalidAttrNumber ;
+ int InvalidOid ;
+ int ItemPointerSetInvalid (int *) ;
+ int ReleaseTupleDesc (TYPE_1__*) ;
+ TYPE_3__* TupleDescAttr (TYPE_1__*,int) ;
+ int elog (int ,char*,...) ;
+ int heap_getattr (TYPE_2__*,scalar_t__,TYPE_1__*,int*) ;
+ TYPE_1__* lookup_rowtype_tupdesc (int ,int ) ;
+ scalar_t__ namestrcmp (int *,char const*) ;
 
 Datum
 GetAttributeByName(HeapTupleHeader tuple, const char *attname, bool *isNull)
 {
-	AttrNumber	attrno;
-	Datum		result;
-	Oid			tupType;
-	int32		tupTypmod;
-	TupleDesc	tupDesc;
-	HeapTupleData tmptup;
-	int			i;
+ AttrNumber attrno;
+ Datum result;
+ Oid tupType;
+ int32 tupTypmod;
+ TupleDesc tupDesc;
+ HeapTupleData tmptup;
+ int i;
 
-	if (attname == NULL)
-		elog(ERROR, "invalid attribute name");
+ if (attname == ((void*)0))
+  elog(ERROR, "invalid attribute name");
 
-	if (isNull == NULL)
-		elog(ERROR, "a NULL isNull pointer was passed");
+ if (isNull == ((void*)0))
+  elog(ERROR, "a NULL isNull pointer was passed");
 
-	if (tuple == NULL)
-	{
-		/* Kinda bogus but compatible with old behavior... */
-		*isNull = true;
-		return (Datum) 0;
-	}
+ if (tuple == ((void*)0))
+ {
 
-	tupType = HeapTupleHeaderGetTypeId(tuple);
-	tupTypmod = HeapTupleHeaderGetTypMod(tuple);
-	tupDesc = lookup_rowtype_tupdesc(tupType, tupTypmod);
+  *isNull = 1;
+  return (Datum) 0;
+ }
 
-	attrno = InvalidAttrNumber;
-	for (i = 0; i < tupDesc->natts; i++)
-	{
-		Form_pg_attribute att = TupleDescAttr(tupDesc, i);
+ tupType = HeapTupleHeaderGetTypeId(tuple);
+ tupTypmod = HeapTupleHeaderGetTypMod(tuple);
+ tupDesc = lookup_rowtype_tupdesc(tupType, tupTypmod);
 
-		if (namestrcmp(&(att->attname), attname) == 0)
-		{
-			attrno = att->attnum;
-			break;
-		}
-	}
+ attrno = InvalidAttrNumber;
+ for (i = 0; i < tupDesc->natts; i++)
+ {
+  Form_pg_attribute att = TupleDescAttr(tupDesc, i);
 
-	if (attrno == InvalidAttrNumber)
-		elog(ERROR, "attribute \"%s\" does not exist", attname);
+  if (namestrcmp(&(att->attname), attname) == 0)
+  {
+   attrno = att->attnum;
+   break;
+  }
+ }
 
-	/*
-	 * heap_getattr needs a HeapTuple not a bare HeapTupleHeader.  We set all
-	 * the fields in the struct just in case user tries to inspect system
-	 * columns.
-	 */
-	tmptup.t_len = HeapTupleHeaderGetDatumLength(tuple);
-	ItemPointerSetInvalid(&(tmptup.t_self));
-	tmptup.t_tableOid = InvalidOid;
-	tmptup.t_data = tuple;
+ if (attrno == InvalidAttrNumber)
+  elog(ERROR, "attribute \"%s\" does not exist", attname);
 
-	result = heap_getattr(&tmptup,
-						  attrno,
-						  tupDesc,
-						  isNull);
 
-	ReleaseTupleDesc(tupDesc);
 
-	return result;
+
+
+
+ tmptup.t_len = HeapTupleHeaderGetDatumLength(tuple);
+ ItemPointerSetInvalid(&(tmptup.t_self));
+ tmptup.t_tableOid = InvalidOid;
+ tmptup.t_data = tuple;
+
+ result = heap_getattr(&tmptup,
+        attrno,
+        tupDesc,
+        isNull);
+
+ ReleaseTupleDesc(tupDesc);
+
+ return result;
 }

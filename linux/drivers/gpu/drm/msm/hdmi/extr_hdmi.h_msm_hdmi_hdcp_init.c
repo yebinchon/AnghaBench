@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct hdmi_hdcp_ctrl {int dummy; } ;
 struct hdmi {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENXIO ; 
- struct hdmi_hdcp_ctrl* ERR_PTR (int /*<<< orphan*/ ) ; 
+
+ int ENXIO ;
+ struct hdmi_hdcp_ctrl* ERR_PTR (int ) ;
 
 __attribute__((used)) static inline struct hdmi_hdcp_ctrl *msm_hdmi_hdcp_init(struct hdmi *hdmi)
 {
-	return ERR_PTR(-ENXIO);
+ return ERR_PTR(-ENXIO);
 }

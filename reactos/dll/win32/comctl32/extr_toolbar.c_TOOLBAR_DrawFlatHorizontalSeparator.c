@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_11__ {scalar_t__ clrBtnShadow; scalar_t__ clrBtnHighlight; } ;
-struct TYPE_10__ {int top; int bottom; int /*<<< orphan*/  right; int /*<<< orphan*/  left; } ;
+struct TYPE_10__ {int top; int bottom; int right; int left; } ;
 struct TYPE_9__ {scalar_t__ clrBtnShadow; scalar_t__ clrBtnHighlight; } ;
-typedef  TYPE_1__ TOOLBAR_INFO ;
-typedef  TYPE_2__ RECT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  scalar_t__ COLORREF ;
+typedef TYPE_1__ TOOLBAR_INFO ;
+typedef TYPE_2__ RECT ;
+typedef int HDC ;
+typedef scalar_t__ COLORREF ;
 
-/* Variables and functions */
- scalar_t__ CLR_DEFAULT ; 
- int /*<<< orphan*/  ETO_OPAQUE ; 
- int /*<<< orphan*/  ExtTextOutW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InflateRect (TYPE_2__*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ SetBkColor (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- TYPE_4__ comctl32_color ; 
- int /*<<< orphan*/  wine_dbgstr_rect (TYPE_2__*) ; 
+
+ scalar_t__ CLR_DEFAULT ;
+ int ETO_OPAQUE ;
+ int ExtTextOutW (int ,int ,int ,int ,TYPE_2__*,int ,int ,int ) ;
+ int InflateRect (TYPE_2__*,int,int ) ;
+ scalar_t__ SetBkColor (int ,scalar_t__) ;
+ int TRACE (char*,int ) ;
+ TYPE_4__ comctl32_color ;
+ int wine_dbgstr_rect (TYPE_2__*) ;
 
 __attribute__((used)) static void
 TOOLBAR_DrawFlatHorizontalSeparator (const RECT *lpRect, HDC hdc,
@@ -48,7 +48,7 @@ TOOLBAR_DrawFlatHorizontalSeparator (const RECT *lpRect, HDC hdc,
     TRACE("rect=(%s)\n", wine_dbgstr_rect(&myrect));
 
     newcolor = (infoPtr->clrBtnShadow == CLR_DEFAULT) ?
-	        comctl32_color.clrBtnShadow : infoPtr->clrBtnShadow;
+         comctl32_color.clrBtnShadow : infoPtr->clrBtnShadow;
     oldcolor = SetBkColor (hdc, newcolor);
     ExtTextOutW (hdc, 0, 0, ETO_OPAQUE, &myrect, 0, 0, 0);
 
@@ -56,7 +56,7 @@ TOOLBAR_DrawFlatHorizontalSeparator (const RECT *lpRect, HDC hdc,
     myrect.bottom = myrect.top + 1;
 
     newcolor = (infoPtr->clrBtnHighlight == CLR_DEFAULT) ?
-	        comctl32_color.clrBtnHighlight : infoPtr->clrBtnHighlight;
+         comctl32_color.clrBtnHighlight : infoPtr->clrBtnHighlight;
     SetBkColor (hdc, newcolor);
     ExtTextOutW (hdc, 0, 0, ETO_OPAQUE, &myrect, 0, 0, 0);
 

@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct necp_fd_data {int /*<<< orphan*/  flows; } ;
-struct necp_client_flow_registration {int flow_result_read; struct necp_client* client; int /*<<< orphan*/  flow_list; int /*<<< orphan*/  registration_id; int /*<<< orphan*/  last_interface_details; } ;
-struct necp_client {int /*<<< orphan*/  flow_registrations; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IFSCOPE_NONE ; 
- int /*<<< orphan*/  LIST_INIT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MCR_SLEEP ; 
- int /*<<< orphan*/  NECP_CLIENT_ASSERT_LOCKED (struct necp_client*) ; 
- int /*<<< orphan*/  NECP_FD_ASSERT_LOCKED (struct necp_fd_data*) ; 
- int /*<<< orphan*/  NECP_FLOW_TREE_LOCK_EXCLUSIVE () ; 
- int /*<<< orphan*/  NECP_FLOW_TREE_UNLOCK () ; 
- int /*<<< orphan*/  NSTAT_IFNET_IS_UNKNOWN_TYPE ; 
- int /*<<< orphan*/  RB_INSERT (int /*<<< orphan*/ ,int /*<<< orphan*/ *,struct necp_client_flow_registration*) ; 
- int /*<<< orphan*/  _necp_client_flow_global_tree ; 
- int /*<<< orphan*/  _necp_client_flow_tree ; 
- int /*<<< orphan*/  _necp_fd_flow_tree ; 
- int /*<<< orphan*/  combine_interface_details (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct necp_client_flow_registration* mcache_alloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct necp_client_flow_registration*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  necp_client_flow_global_tree ; 
- int /*<<< orphan*/  necp_flow_registration_cache ; 
- int /*<<< orphan*/  necp_generate_client_id (int /*<<< orphan*/ ,int) ; 
+
+
+
+struct necp_fd_data {int flows; } ;
+struct necp_client_flow_registration {int flow_result_read; struct necp_client* client; int flow_list; int registration_id; int last_interface_details; } ;
+struct necp_client {int flow_registrations; } ;
+
+
+ int IFSCOPE_NONE ;
+ int LIST_INIT (int *) ;
+ int MCR_SLEEP ;
+ int NECP_CLIENT_ASSERT_LOCKED (struct necp_client*) ;
+ int NECP_FD_ASSERT_LOCKED (struct necp_fd_data*) ;
+ int NECP_FLOW_TREE_LOCK_EXCLUSIVE () ;
+ int NECP_FLOW_TREE_UNLOCK () ;
+ int NSTAT_IFNET_IS_UNKNOWN_TYPE ;
+ int RB_INSERT (int ,int *,struct necp_client_flow_registration*) ;
+ int _necp_client_flow_global_tree ;
+ int _necp_client_flow_tree ;
+ int _necp_fd_flow_tree ;
+ int combine_interface_details (int ,int ) ;
+ struct necp_client_flow_registration* mcache_alloc (int ,int ) ;
+ int memset (struct necp_client_flow_registration*,int ,int) ;
+ int necp_client_flow_global_tree ;
+ int necp_flow_registration_cache ;
+ int necp_generate_client_id (int ,int) ;
 
 __attribute__((used)) static struct necp_client_flow_registration *
 necp_client_create_flow_registration(struct necp_fd_data *fd_data, struct necp_client *client)
 {
-	NECP_FD_ASSERT_LOCKED(fd_data);
-	NECP_CLIENT_ASSERT_LOCKED(client);
+ NECP_FD_ASSERT_LOCKED(fd_data);
+ NECP_CLIENT_ASSERT_LOCKED(client);
 
-	struct necp_client_flow_registration *new_registration = mcache_alloc(necp_flow_registration_cache, MCR_SLEEP);
-	if (new_registration == NULL) {
-		return NULL;
-	}
+ struct necp_client_flow_registration *new_registration = mcache_alloc(necp_flow_registration_cache, MCR_SLEEP);
+ if (new_registration == ((void*)0)) {
+  return ((void*)0);
+ }
 
-	memset(new_registration, 0, sizeof(*new_registration));
+ memset(new_registration, 0, sizeof(*new_registration));
 
-	new_registration->last_interface_details = combine_interface_details(IFSCOPE_NONE, NSTAT_IFNET_IS_UNKNOWN_TYPE);
+ new_registration->last_interface_details = combine_interface_details(IFSCOPE_NONE, NSTAT_IFNET_IS_UNKNOWN_TYPE);
 
-	necp_generate_client_id(new_registration->registration_id, true);
-	LIST_INIT(&new_registration->flow_list);
+ necp_generate_client_id(new_registration->registration_id, 1);
+ LIST_INIT(&new_registration->flow_list);
 
-	// Add registration to client list
-	RB_INSERT(_necp_client_flow_tree, &client->flow_registrations, new_registration);
 
-	// Add registration to fd list
-	RB_INSERT(_necp_fd_flow_tree, &fd_data->flows, new_registration);
+ RB_INSERT(_necp_client_flow_tree, &client->flow_registrations, new_registration);
 
-	// Add registration to global tree for lookup
-	NECP_FLOW_TREE_LOCK_EXCLUSIVE();
-	RB_INSERT(_necp_client_flow_global_tree, &necp_client_flow_global_tree, new_registration);
-	NECP_FLOW_TREE_UNLOCK();
 
-	new_registration->client = client;
+ RB_INSERT(_necp_fd_flow_tree, &fd_data->flows, new_registration);
 
-	// Start out assuming there is nothing to read from the flow
-	new_registration->flow_result_read = true;
 
-	return new_registration;
+ NECP_FLOW_TREE_LOCK_EXCLUSIVE();
+ RB_INSERT(_necp_client_flow_global_tree, &necp_client_flow_global_tree, new_registration);
+ NECP_FLOW_TREE_UNLOCK();
+
+ new_registration->client = client;
+
+
+ new_registration->flow_result_read = 1;
+
+ return new_registration;
 }

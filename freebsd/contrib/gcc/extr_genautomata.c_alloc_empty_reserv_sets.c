@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  set_el_t ;
-typedef  scalar_t__ reserv_sets_t ;
 
-/* Variables and functions */
- int els_in_reservs ; 
- int /*<<< orphan*/  irp ; 
- int /*<<< orphan*/  memset (scalar_t__,int /*<<< orphan*/ ,int) ; 
- scalar_t__ obstack_base (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  obstack_blank (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  obstack_finish (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int set_el_t ;
+typedef scalar_t__ reserv_sets_t ;
+
+
+ int els_in_reservs ;
+ int irp ;
+ int memset (scalar_t__,int ,int) ;
+ scalar_t__ obstack_base (int *) ;
+ int obstack_blank (int *,int) ;
+ int obstack_finish (int *) ;
 
 __attribute__((used)) static reserv_sets_t
 alloc_empty_reserv_sets (void)

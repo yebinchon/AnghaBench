@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct conf {int /*<<< orphan*/  c_name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  run (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct conf {int c_name; } ;
+
+
+ int free (int ) ;
+ int run (char*,int ,int *) ;
 
 void
 run_flush(const struct conf *c)
 {
-	free(run("flush", c->c_name, NULL));
+ free(run("flush", c->c_name, ((void*)0)));
 }

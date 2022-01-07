@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t ngx_uint_t ;
-typedef  int /*<<< orphan*/  ngx_thread_pool_t ;
-struct TYPE_5__ {size_t nelts; int /*<<< orphan*/ ** elts; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef size_t ngx_uint_t ;
+typedef int ngx_thread_pool_t ;
+struct TYPE_5__ {size_t nelts; int ** elts; } ;
 struct TYPE_6__ {TYPE_1__ pools; } ;
-typedef  TYPE_2__ ngx_thread_pool_conf_t ;
-typedef  scalar_t__ ngx_int_t ;
-struct TYPE_7__ {int /*<<< orphan*/  pool; int /*<<< orphan*/  log; int /*<<< orphan*/  conf_ctx; } ;
-typedef  TYPE_3__ ngx_cycle_t ;
+typedef TYPE_2__ ngx_thread_pool_conf_t ;
+typedef scalar_t__ ngx_int_t ;
+struct TYPE_7__ {int pool; int log; int conf_ctx; } ;
+typedef TYPE_3__ ngx_cycle_t ;
 
-/* Variables and functions */
- scalar_t__ NGX_ERROR ; 
- scalar_t__ NGX_OK ; 
- scalar_t__ NGX_PROCESS_SINGLE ; 
- scalar_t__ NGX_PROCESS_WORKER ; 
- scalar_t__ ngx_get_conf (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_process ; 
- int /*<<< orphan*/  ngx_thread_pool_done ; 
- scalar_t__ ngx_thread_pool_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_thread_pool_module ; 
- int /*<<< orphan*/  ngx_thread_pool_queue_init (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ NGX_ERROR ;
+ scalar_t__ NGX_OK ;
+ scalar_t__ NGX_PROCESS_SINGLE ;
+ scalar_t__ NGX_PROCESS_WORKER ;
+ scalar_t__ ngx_get_conf (int ,int ) ;
+ scalar_t__ ngx_process ;
+ int ngx_thread_pool_done ;
+ scalar_t__ ngx_thread_pool_init (int *,int ,int ) ;
+ int ngx_thread_pool_module ;
+ int ngx_thread_pool_queue_init (int *) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_thread_pool_init_worker(ngx_cycle_t *cycle)
 {
-    ngx_uint_t                i;
-    ngx_thread_pool_t       **tpp;
-    ngx_thread_pool_conf_t   *tcf;
+    ngx_uint_t i;
+    ngx_thread_pool_t **tpp;
+    ngx_thread_pool_conf_t *tcf;
 
     if (ngx_process != NGX_PROCESS_WORKER
         && ngx_process != NGX_PROCESS_SINGLE)
@@ -50,7 +50,7 @@ ngx_thread_pool_init_worker(ngx_cycle_t *cycle)
     tcf = (ngx_thread_pool_conf_t *) ngx_get_conf(cycle->conf_ctx,
                                                   ngx_thread_pool_module);
 
-    if (tcf == NULL) {
+    if (tcf == ((void*)0)) {
         return NGX_OK;
     }
 

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  clone_mgr; } ;
-typedef  int /*<<< orphan*/  GError ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEAFILE_DOMAIN ; 
- int /*<<< orphan*/  SEAF_ERR_BAD_ARGS ; 
- int /*<<< orphan*/  g_set_error (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- TYPE_1__* seaf ; 
- char* seaf_clone_manager_add_download_task (int /*<<< orphan*/ ,char const*,int,char const*,char const*,char const*,char const*,char const*,int,char const*,char const*,char const*,char const*,char const*,char const*,int /*<<< orphan*/ **) ; 
- int strlen (char const*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int clone_mgr; } ;
+typedef int GError ;
+
+
+ int SEAFILE_DOMAIN ;
+ int SEAF_ERR_BAD_ARGS ;
+ int g_set_error (int **,int ,int ,char*) ;
+ TYPE_1__* seaf ;
+ char* seaf_clone_manager_add_download_task (int ,char const*,int,char const*,char const*,char const*,char const*,char const*,int,char const*,char const*,char const*,char const*,char const*,char const*,int **) ;
+ int strlen (char const*) ;
 
 char *
 seafile_download (const char *repo_id,
@@ -41,24 +41,24 @@ seafile_download (const char *repo_id,
 {
     if (!repo_id || strlen(repo_id) != 36) {
         g_set_error (error, SEAFILE_DOMAIN, SEAF_ERR_BAD_ARGS, "Invalid repo id");
-        return NULL;
+        return ((void*)0);
     }
 
     if (!relay_id || strlen(relay_id) != 40) {
         g_set_error (error, SEAFILE_DOMAIN, SEAF_ERR_BAD_ARGS, "Invalid peer id");
-        return NULL;
+        return ((void*)0);
     }
 
     if (!wt_parent) {
         g_set_error (error, SEAFILE_DOMAIN, SEAF_ERR_BAD_ARGS,
                      "Worktre must be specified");
-        return NULL;
+        return ((void*)0);
     }
 
     if (!token || !peer_addr || !peer_port || !email ) {
         g_set_error (error, SEAFILE_DOMAIN, SEAF_ERR_BAD_ARGS,
                      "Argument can't be NULL");
-        return NULL;
+        return ((void*)0);
     }
 
     return seaf_clone_manager_add_download_task (seaf->clone_mgr,

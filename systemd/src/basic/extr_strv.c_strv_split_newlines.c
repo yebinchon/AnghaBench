@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  NEWLINE ; 
- int /*<<< orphan*/  assert (char const*) ; 
- scalar_t__ isempty (char*) ; 
- char* mfree (char*) ; 
- size_t strv_length (char**) ; 
- char** strv_split (char const*,int /*<<< orphan*/ ) ; 
+ int NEWLINE ;
+ int assert (char const*) ;
+ scalar_t__ isempty (char*) ;
+ char* mfree (char*) ;
+ size_t strv_length (char**) ;
+ char** strv_split (char const*,int ) ;
 
 char **strv_split_newlines(const char *s) {
         char **l;
@@ -25,12 +17,12 @@ char **strv_split_newlines(const char *s) {
 
         assert(s);
 
-        /* Special version of strv_split() that splits on newlines and
-         * suppresses an empty string at the end */
+
+
 
         l = strv_split(s, NEWLINE);
         if (!l)
-                return NULL;
+                return ((void*)0);
 
         n = strv_length(l);
         if (n <= 0)

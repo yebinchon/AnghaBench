@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ SC_HANDLE ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  scalar_t__ DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseServiceHandle (scalar_t__) ; 
- scalar_t__ CreateServiceW (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DRIVER_NAME ; 
- scalar_t__ ERROR_SERVICE_EXISTS ; 
- scalar_t__ ERROR_SERVICE_MARKED_FOR_DELETE ; 
- int FALSE ; 
- scalar_t__ GetLastError () ; 
- scalar_t__ OpenSCManagerW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SC_MANAGER_ALL_ACCESS ; 
- int /*<<< orphan*/  SERVICE_ALL_ACCESS ; 
- int /*<<< orphan*/  SERVICE_DEMAND_START ; 
- int /*<<< orphan*/  SERVICE_ERROR_NORMAL ; 
- int /*<<< orphan*/  SERVICE_KERNEL_DRIVER ; 
- int /*<<< orphan*/  StopDriver (int /*<<< orphan*/ ) ; 
- int TRUE ; 
+
+
+
+typedef scalar_t__ SC_HANDLE ;
+typedef int LPCWSTR ;
+typedef scalar_t__ DWORD ;
+typedef int BOOL ;
+
+
+ int CloseServiceHandle (scalar_t__) ;
+ scalar_t__ CreateServiceW (scalar_t__,int ,int ,int ,int ,int ,int ,int ,int *,int *,int *,int *,int *) ;
+ int DRIVER_NAME ;
+ scalar_t__ ERROR_SERVICE_EXISTS ;
+ scalar_t__ ERROR_SERVICE_MARKED_FOR_DELETE ;
+ int FALSE ;
+ scalar_t__ GetLastError () ;
+ scalar_t__ OpenSCManagerW (int *,int *,int ) ;
+ int SC_MANAGER_ALL_ACCESS ;
+ int SERVICE_ALL_ACCESS ;
+ int SERVICE_DEMAND_START ;
+ int SERVICE_ERROR_NORMAL ;
+ int SERVICE_KERNEL_DRIVER ;
+ int StopDriver (int ) ;
+ int TRUE ;
 
 BOOL
 RegisterDriver(LPCWSTR lpDriverName,
@@ -39,8 +39,8 @@ RegisterDriver(LPCWSTR lpDriverName,
     SC_HANDLE hSCManager;
     SC_HANDLE hService;
 
-    hSCManager = OpenSCManagerW(NULL,
-                                NULL,
+    hSCManager = OpenSCManagerW(((void*)0),
+                                ((void*)0),
                                 SC_MANAGER_ALL_ACCESS);
     if (!hSCManager)
         return FALSE;
@@ -54,11 +54,11 @@ retry:
                               SERVICE_DEMAND_START,
                               SERVICE_ERROR_NORMAL,
                               lpPathName,
-                              NULL,
-                              NULL,
-                              NULL,
-                              NULL,
-                              NULL);
+                              ((void*)0),
+                              ((void*)0),
+                              ((void*)0),
+                              ((void*)0),
+                              ((void*)0));
 
     if (hService)
     {
@@ -78,7 +78,7 @@ retry:
 
         CloseServiceHandle(hSCManager);
 
-        // return TRUE if the driver is already registered
+
         return (err == ERROR_SERVICE_EXISTS);
     }
 }

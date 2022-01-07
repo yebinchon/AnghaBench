@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t u8 ;
-typedef  size_t u16 ;
 
-/* Variables and functions */
+
+
+
+typedef size_t u8 ;
+typedef size_t u16 ;
+
+
 
 void ice_fill_rss_lut(u8 *lut, u16 rss_table_size, u16 rss_size)
 {
-	u16 i;
+ u16 i;
 
-	for (i = 0; i < rss_table_size; i++)
-		lut[i] = i % rss_size;
+ for (i = 0; i < rss_table_size; i++)
+  lut[i] = i % rss_size;
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  string ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int JOYSTICKTYPES ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/ * joyparams ; 
- int* joytypes ; 
- int** keysets ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int sscanf (char*,char*,int*,int*,int*,int*,int*,int*,int*,int*,int*) ; 
- char* strchr (char*,char) ; 
- scalar_t__ strcmp (char*,int /*<<< orphan*/ ) ; 
- int strlen (char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
+
+
+
+typedef int string ;
+typedef int FILE ;
+
+
+ int JOYSTICKTYPES ;
+ int exit (int) ;
+ int fclose (int *) ;
+ scalar_t__ fgets (char*,int,int *) ;
+ int * fopen (char*,char*) ;
+ int * joyparams ;
+ int* joytypes ;
+ int** keysets ;
+ int printf (char*,...) ;
+ int sscanf (char*,char*,int*,int*,int*,int*,int*,int*,int*,int*,int*) ;
+ char* strchr (char*,char) ;
+ scalar_t__ strcmp (char*,int ) ;
+ int strlen (char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
 
 void read_config()
 {
@@ -37,7 +37,7 @@ void read_config()
   int i,no;
   int bad=0;
 
-  if ((fr=fopen("atari800.cfg","r"))==NULL)
+  if ((fr=fopen("atari800.cfg","r"))==((void*)0))
   {
     printf("Error opening configuration file.\n"
            "Execute this utility from atari800 dir after configuring it!\n");
@@ -83,9 +83,9 @@ void read_config()
               bad=1;
             }
         }
-      }/*other commands are ignored*/
+      }
     }
-  } /*while*/
+  }
   fclose(fr);
   if (bad)
     exit(1);

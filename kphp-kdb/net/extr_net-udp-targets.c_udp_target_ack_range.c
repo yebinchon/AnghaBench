@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct udp_target {int send_num; int max_confirmed; scalar_t__ window_size; int flags; struct tree_udp_msg* sent; int /*<<< orphan*/  last_ack; scalar_t__ resend_state; } ;
+
+
+
+
+struct udp_target {int send_num; int max_confirmed; scalar_t__ window_size; int flags; struct tree_udp_msg* sent; int last_ack; scalar_t__ resend_state; } ;
 struct tree_udp_msg {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ START_WINDOW_SIZE ; 
- int UDP_WAIT ; 
- struct udp_target* __S ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  precise_now ; 
- int /*<<< orphan*/  start_tx_timer (struct udp_target*) ; 
- int /*<<< orphan*/  stop_tx_timer (struct udp_target*) ; 
- int /*<<< orphan*/  tree_act_udp_msg (struct tree_udp_msg*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tree_clear_udp_msg (struct tree_udp_msg*) ; 
- struct tree_udp_msg* tree_merge_udp_msg (struct tree_udp_msg*,struct tree_udp_msg*) ; 
- int /*<<< orphan*/  tree_split_udp_msg (struct tree_udp_msg**,struct tree_udp_msg**,struct tree_udp_msg*,void*) ; 
- int /*<<< orphan*/  udp_msg_confirm_free ; 
- int /*<<< orphan*/  udp_target_restart_send (struct udp_target*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int,int) ; 
+
+ scalar_t__ START_WINDOW_SIZE ;
+ int UDP_WAIT ;
+ struct udp_target* __S ;
+ int assert (int) ;
+ int precise_now ;
+ int start_tx_timer (struct udp_target*) ;
+ int stop_tx_timer (struct udp_target*) ;
+ int tree_act_udp_msg (struct tree_udp_msg*,int ) ;
+ int tree_clear_udp_msg (struct tree_udp_msg*) ;
+ struct tree_udp_msg* tree_merge_udp_msg (struct tree_udp_msg*,struct tree_udp_msg*) ;
+ int tree_split_udp_msg (struct tree_udp_msg**,struct tree_udp_msg**,struct tree_udp_msg*,void*) ;
+ int udp_msg_confirm_free ;
+ int udp_target_restart_send (struct udp_target*) ;
+ int vkprintf (int,char*,int,int) ;
 
 void udp_target_ack_range (struct udp_target *S, int x, int y) {
   if (y >= S->send_num) {

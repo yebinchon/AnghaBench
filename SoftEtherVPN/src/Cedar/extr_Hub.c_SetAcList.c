@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  int /*<<< orphan*/  AC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddAc (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DelAllAc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int LIST ;
+typedef int AC ;
+
+
+ int AddAc (int *,int *) ;
+ int DelAllAc (int *) ;
+ int * LIST_DATA (int *,scalar_t__) ;
+ scalar_t__ LIST_NUM (int *) ;
 
 void SetAcList(LIST *o, LIST *src)
 {
-	UINT i;
-	// Validate arguments
-	if (o == NULL || src == NULL)
-	{
-		return;
-	}
+ UINT i;
 
-	DelAllAc(o);
+ if (o == ((void*)0) || src == ((void*)0))
+ {
+  return;
+ }
 
-	for (i = 0;i < LIST_NUM(src);i++)
-	{
-		AC *ac = LIST_DATA(src, i);
+ DelAllAc(o);
 
-		AddAc(o, ac);
-	}
+ for (i = 0;i < LIST_NUM(src);i++)
+ {
+  AC *ac = LIST_DATA(src, i);
+
+  AddAc(o, ac);
+ }
 }

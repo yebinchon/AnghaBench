@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct hostent {int h_length; int** h_addr_list; } ;
-typedef  int BYTE ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WSAGetLastError () ; 
- struct hostent* gethostbyname (char*) ; 
- int gethostname (char*,int) ; 
- int /*<<< orphan*/  h_errno ; 
- scalar_t__ memcmp (int*,int*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  skip (char*,...) ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+ int WSAGetLastError () ;
+ struct hostent* gethostbyname (char*) ;
+ int gethostname (char*,int) ;
+ int h_errno ;
+ scalar_t__ memcmp (int*,int*,int) ;
+ int ok (int,char*,...) ;
+ int skip (char*,...) ;
+ scalar_t__ strcmp (char*,char*) ;
 
 __attribute__((used)) static void test_gethostbyname_hack(void)
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static void test_gethostbyname_hack(void)
     ok(ret == 0, "gethostname() call failed: %d\n", WSAGetLastError());
 
     he = gethostbyname("localhost");
-    ok(he != NULL, "gethostbyname(\"localhost\") failed: %d\n", h_errno);
+    ok(he != ((void*)0), "gethostbyname(\"localhost\") failed: %d\n", h_errno);
     if(he)
     {
         if(he->h_length != 4)
@@ -57,7 +57,7 @@ __attribute__((used)) static void test_gethostbyname_hack(void)
     }
 
     he = gethostbyname(name);
-    ok(he != NULL, "gethostbyname(\"%s\") failed: %d\n", name, h_errno);
+    ok(he != ((void*)0), "gethostbyname(\"%s\") failed: %d\n", name, h_errno);
     if(he)
     {
         if(he->h_length != 4)
@@ -76,6 +76,6 @@ __attribute__((used)) static void test_gethostbyname_hack(void)
     }
 
     gethostbyname("nonexistent.winehq.org");
-    /* Don't check for the return value, as some braindead ISPs will kindly
-     * resolve nonexistent host names to addresses of the ISP's spam pages. */
+
+
 }

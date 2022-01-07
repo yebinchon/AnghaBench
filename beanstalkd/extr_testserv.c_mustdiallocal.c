@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sockaddr_in {int /*<<< orphan*/  sin_addr; int /*<<< orphan*/  sin_port; int /*<<< orphan*/  sin_family; } ;
+
+
+
+
+struct sockaddr_in {int sin_addr; int sin_port; int sin_family; } ;
 struct sockaddr {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  IPPROTO_TCP ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  TCP_NODELAY ; 
- int connect (int,struct sockaddr*,int) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  htons (int) ; 
- int inet_aton (char*,int /*<<< orphan*/ *) ; 
- scalar_t__ setsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  twarn (char*,...) ; 
+
+ int AF_INET ;
+ int EINVAL ;
+ int IPPROTO_TCP ;
+ int SOCK_STREAM ;
+ int TCP_NODELAY ;
+ int connect (int,struct sockaddr*,int) ;
+ int errno ;
+ int exit (int) ;
+ int htons (int) ;
+ int inet_aton (char*,int *) ;
+ scalar_t__ setsockopt (int,int ,int ,int*,int) ;
+ int socket (int ,int ,int ) ;
+ int twarn (char*,...) ;
 
 __attribute__((used)) static int
 mustdiallocal(int port)
@@ -49,7 +49,7 @@ mustdiallocal(int port)
         exit(1);
     }
 
-    // Fix of the benchmarking issue on Linux. See issue #430.
+
     int flags = 1;
     if (setsockopt(fd, IPPROTO_TCP, TCP_NODELAY, &flags, sizeof(int))) {
         twarn("setting TCP_NODELAY on fd %d", fd);

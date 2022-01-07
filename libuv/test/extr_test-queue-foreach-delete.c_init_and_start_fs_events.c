@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_loop_t ;
-typedef  int /*<<< orphan*/  uv_fs_event_cb ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/ * fs_event ; 
- scalar_t__* fs_event_cbs ; 
- int uv_fs_event_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int uv_fs_event_start (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  watched_dir ; 
+
+
+
+typedef int uv_loop_t ;
+typedef int uv_fs_event_cb ;
+
+
+ size_t ARRAY_SIZE (int *) ;
+ int ASSERT (int) ;
+ int * fs_event ;
+ scalar_t__* fs_event_cbs ;
+ int uv_fs_event_init (int *,int *) ;
+ int uv_fs_event_start (int *,int ,int ,int ) ;
+ int watched_dir ;
 
 __attribute__((used)) static void init_and_start_fs_events(uv_loop_t* loop) {
   size_t i;

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _delay_ms (int) ; 
- int /*<<< orphan*/  iwrap_check_connection () ; 
- int /*<<< orphan*/  iwrap_mux_send (char*) ; 
- int /*<<< orphan*/  print (char*) ; 
- int /*<<< orphan*/  print_S (char*) ; 
- char* rcv_buf ; 
- char rcv_deq () ; 
- int rcv_tail ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- int /*<<< orphan*/  strncpy (char*,char*,int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int _delay_ms (int) ;
+ int iwrap_check_connection () ;
+ int iwrap_mux_send (char*) ;
+ int print (char*) ;
+ int print_S (char*) ;
+ char* rcv_buf ;
+ char rcv_deq () ;
+ int rcv_tail ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ int strncpy (char*,char*,int) ;
 
 void iwrap_kill(void) {
     char c;
@@ -35,7 +35,7 @@ void iwrap_kill(void) {
         print("no connection to kill.\n");
         return;
     }
-    // skip 10 'space' chars
+
     for (uint8_t i = 10; i; i--)
         while ((c = rcv_deq()) && c != ' ')
             ;

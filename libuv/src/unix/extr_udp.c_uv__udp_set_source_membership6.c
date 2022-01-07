@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  fd; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int fd; } ;
 struct TYPE_6__ {TYPE_1__ io_watcher; } ;
-typedef  TYPE_2__ uv_udp_t ;
-typedef  scalar_t__ uv_membership ;
+typedef TYPE_2__ uv_udp_t ;
+typedef scalar_t__ uv_membership ;
 struct sockaddr_in6 {scalar_t__ sin6_scope_id; } ;
-struct group_source_req {int /*<<< orphan*/  gsr_source; int /*<<< orphan*/  gsr_group; scalar_t__ gsr_interface; } ;
-typedef  int /*<<< orphan*/  mreq ;
+struct group_source_req {int gsr_source; int gsr_group; scalar_t__ gsr_interface; } ;
+typedef int mreq ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET6 ; 
- int /*<<< orphan*/  IPPROTO_IPV6 ; 
- int MCAST_JOIN_SOURCE_GROUP ; 
- int MCAST_LEAVE_SOURCE_GROUP ; 
- int UV_EINVAL ; 
- scalar_t__ UV_JOIN_GROUP ; 
- scalar_t__ UV_LEAVE_GROUP ; 
- int /*<<< orphan*/  UV_UDP_REUSEADDR ; 
- int UV__ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,struct sockaddr_in6 const*,int) ; 
- int /*<<< orphan*/  memset (struct group_source_req*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ setsockopt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,struct group_source_req*,int) ; 
- int uv__udp_maybe_deferred_bind (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int uv_ip6_addr (char const*,int /*<<< orphan*/ ,struct sockaddr_in6*) ; 
+
+ int AF_INET6 ;
+ int IPPROTO_IPV6 ;
+ int MCAST_JOIN_SOURCE_GROUP ;
+ int MCAST_LEAVE_SOURCE_GROUP ;
+ int UV_EINVAL ;
+ scalar_t__ UV_JOIN_GROUP ;
+ scalar_t__ UV_LEAVE_GROUP ;
+ int UV_UDP_REUSEADDR ;
+ int UV__ERR (int ) ;
+ int errno ;
+ int memcpy (int *,struct sockaddr_in6 const*,int) ;
+ int memset (struct group_source_req*,int ,int) ;
+ scalar_t__ setsockopt (int ,int ,int,struct group_source_req*,int) ;
+ int uv__udp_maybe_deferred_bind (TYPE_2__*,int ,int ) ;
+ int uv_ip6_addr (char const*,int ,struct sockaddr_in6*) ;
 
 __attribute__((used)) static int uv__udp_set_source_membership6(uv_udp_t* handle,
                                           const struct sockaddr_in6* multicast_addr,
@@ -53,7 +53,7 @@ __attribute__((used)) static int uv__udp_set_source_membership6(uv_udp_t* handle
 
   memset(&mreq, 0, sizeof(mreq));
 
-  if (interface_addr != NULL) {
+  if (interface_addr != ((void*)0)) {
     err = uv_ip6_addr(interface_addr, 0, &addr6);
     if (err)
       return err;

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned long u32 ;
+
+
+
+
+typedef unsigned long u32 ;
 struct clock_event_device {int dummy; } ;
 
-/* Variables and functions */
- unsigned long GT_READ (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GT_TC0_OFS ; 
- unsigned long GT_TC_CONTROL_ENTC0_MSK ; 
- int /*<<< orphan*/  GT_TC_CONTROL_OFS ; 
- unsigned long GT_TC_CONTROL_SELTC0_MSK ; 
- int /*<<< orphan*/  GT_WRITE (int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  gt641xx_timer_lock ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+ unsigned long GT_READ (int ) ;
+ int GT_TC0_OFS ;
+ unsigned long GT_TC_CONTROL_ENTC0_MSK ;
+ int GT_TC_CONTROL_OFS ;
+ unsigned long GT_TC_CONTROL_SELTC0_MSK ;
+ int GT_WRITE (int ,unsigned long) ;
+ int gt641xx_timer_lock ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 __attribute__((used)) static int gt641xx_timer0_set_next_event(unsigned long delta,
-					 struct clock_event_device *evt)
+      struct clock_event_device *evt)
 {
-	u32 ctrl;
+ u32 ctrl;
 
-	spin_lock(&gt641xx_timer_lock);
+ spin_lock(&gt641xx_timer_lock);
 
-	ctrl = GT_READ(GT_TC_CONTROL_OFS);
-	ctrl &= ~(GT_TC_CONTROL_ENTC0_MSK | GT_TC_CONTROL_SELTC0_MSK);
-	ctrl |= GT_TC_CONTROL_ENTC0_MSK;
+ ctrl = GT_READ(GT_TC_CONTROL_OFS);
+ ctrl &= ~(GT_TC_CONTROL_ENTC0_MSK | GT_TC_CONTROL_SELTC0_MSK);
+ ctrl |= GT_TC_CONTROL_ENTC0_MSK;
 
-	GT_WRITE(GT_TC0_OFS, delta);
-	GT_WRITE(GT_TC_CONTROL_OFS, ctrl);
+ GT_WRITE(GT_TC0_OFS, delta);
+ GT_WRITE(GT_TC_CONTROL_OFS, ctrl);
 
-	spin_unlock(&gt641xx_timer_lock);
+ spin_unlock(&gt641xx_timer_lock);
 
-	return 0;
+ return 0;
 }

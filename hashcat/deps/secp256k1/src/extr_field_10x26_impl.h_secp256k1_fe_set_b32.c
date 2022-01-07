@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_4__ {int* n; int magnitude; int normalized; } ;
-typedef  TYPE_1__ secp256k1_fe ;
+typedef TYPE_1__ secp256k1_fe ;
 
-/* Variables and functions */
- int /*<<< orphan*/  secp256k1_fe_verify (TYPE_1__*) ; 
+
+ int secp256k1_fe_verify (TYPE_1__*) ;
 
 __attribute__((used)) static int secp256k1_fe_set_b32(secp256k1_fe *r, const unsigned char *a) {
     r->n[0] = (uint32_t)a[31] | ((uint32_t)a[30] << 8) | ((uint32_t)a[29] << 16) | ((uint32_t)(a[28] & 0x3) << 24);
@@ -33,10 +33,10 @@ __attribute__((used)) static int secp256k1_fe_set_b32(secp256k1_fe *r, const uns
     if (r->n[9] == 0x3FFFFFUL && (r->n[8] & r->n[7] & r->n[6] & r->n[5] & r->n[4] & r->n[3] & r->n[2]) == 0x3FFFFFFUL && (r->n[1] + 0x40UL + ((r->n[0] + 0x3D1UL) >> 26)) > 0x3FFFFFFUL) {
         return 0;
     }
-#ifdef VERIFY
-    r->magnitude = 1;
-    r->normalized = 1;
-    secp256k1_fe_verify(r);
-#endif
+
+
+
+
+
     return 1;
 }

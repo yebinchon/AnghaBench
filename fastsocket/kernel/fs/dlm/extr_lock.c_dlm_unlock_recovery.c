@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dlm_ls {int /*<<< orphan*/  ls_in_recovery; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  up_read (int /*<<< orphan*/ *) ; 
+
+
+
+struct dlm_ls {int ls_in_recovery; } ;
+
+
+ int up_read (int *) ;
 
 void dlm_unlock_recovery(struct dlm_ls *ls)
 {
-	up_read(&ls->ls_in_recovery);
+ up_read(&ls->ls_in_recovery);
 }

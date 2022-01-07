@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_lock_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-struct TYPE_3__ {scalar_t__ current_rev; int /*<<< orphan*/  token; } ;
-typedef  TYPE_1__ svn_fs_lock_target_t ;
-typedef  int /*<<< orphan*/ * (* svn_fs_lock_callback_t ) (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  void* svn_boolean_t ;
-struct lock_args {char const* comment; scalar_t__ current_rev; int /*<<< orphan*/  path; int /*<<< orphan*/ * result_pool; int /*<<< orphan*/  expiration_date; void* steal_lock; void* is_dav_comment; int /*<<< orphan*/  token; int /*<<< orphan*/ ** lock_p; } ;
-typedef  int /*<<< orphan*/  apr_time_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_FS_NO_SUCH_REVISION ; 
- scalar_t__ SVN_INVALID_REVNUM ; 
- scalar_t__ SVN_IS_VALID_REVNUM (scalar_t__) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- char* apr_hash_this_key (int /*<<< orphan*/ *) ; 
- TYPE_1__* apr_hash_this_val (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs__canonicalize_abspath (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs__check_fs (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_fs_base__retry_txn (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct lock_args*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_base__youngest_rev (scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  txn_body_lock ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ svn_revnum_t ;
+typedef int svn_lock_t ;
+typedef int svn_fs_t ;
+struct TYPE_3__ {scalar_t__ current_rev; int token; } ;
+typedef TYPE_1__ svn_fs_lock_target_t ;
+typedef int * (* svn_fs_lock_callback_t ) (void*,int ,int *,int *,int *) ;
+typedef int svn_error_t ;
+typedef void* svn_boolean_t ;
+struct lock_args {char const* comment; scalar_t__ current_rev; int path; int * result_pool; int expiration_date; void* steal_lock; void* is_dav_comment; int token; int ** lock_p; } ;
+typedef int apr_time_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_hash_index_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_FS_NO_SUCH_REVISION ;
+ scalar_t__ SVN_INVALID_REVNUM ;
+ scalar_t__ SVN_IS_VALID_REVNUM (scalar_t__) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int _ (char*) ;
+ int * apr_hash_first (int *,int *) ;
+ int * apr_hash_next (int *) ;
+ char* apr_hash_this_key (int *) ;
+ TYPE_1__* apr_hash_this_val (int *) ;
+ int svn_error_clear (int *) ;
+ int * svn_error_createf (int ,int *,int ,scalar_t__) ;
+ int * svn_error_trace (int *) ;
+ int svn_fs__canonicalize_abspath (char const*,int *) ;
+ int svn_fs__check_fs (int *,int ) ;
+ int * svn_fs_base__retry_txn (int *,int ,struct lock_args*,int ,int *) ;
+ int svn_fs_base__youngest_rev (scalar_t__*,int *,int *) ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ int txn_body_lock ;
 
 svn_error_t *
 svn_fs_base__lock(svn_fs_t *fs,
@@ -75,7 +75,7 @@ svn_fs_base__lock(svn_fs_t *fs,
       const char *path = apr_hash_this_key(hi);
       const svn_fs_lock_target_t *target = apr_hash_this_val(hi);
       svn_lock_t *lock;
-      svn_error_t *err = NULL;
+      svn_error_t *err = ((void*)0);
 
       svn_pool_clear(iterpool);
       args.lock_p = &lock;
@@ -91,7 +91,7 @@ svn_fs_base__lock(svn_fs_t *fs,
       if (SVN_IS_VALID_REVNUM(target->current_rev))
         {
           if (target->current_rev > youngest_rev)
-            err = svn_error_createf(SVN_ERR_FS_NO_SUCH_REVISION, NULL,
+            err = svn_error_createf(SVN_ERR_FS_NO_SUCH_REVISION, ((void*)0),
                                     _("No such revision %ld"),
                                     target->current_rev);
         }

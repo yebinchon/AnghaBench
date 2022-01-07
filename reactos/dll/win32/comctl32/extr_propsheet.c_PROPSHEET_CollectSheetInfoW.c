@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/ * pszCaption; } ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int * pszCaption; } ;
 struct TYPE_9__ {scalar_t__ nStartPage; } ;
-struct TYPE_11__ {int dwFlags; TYPE_1__ u2; int /*<<< orphan*/  nPages; int /*<<< orphan*/  pszCaption; scalar_t__ pfnCallback; int /*<<< orphan*/  hInstance; int /*<<< orphan*/  hwndParent; int /*<<< orphan*/  dwSize; } ;
-struct TYPE_10__ {int useCallback; scalar_t__ active_page; int /*<<< orphan*/  nPages; TYPE_4__ ppshheader; } ;
-typedef  TYPE_2__ PropSheetInfo ;
-typedef  int /*<<< orphan*/  PROPSHEETHEADERW ;
-typedef  TYPE_3__* LPCPROPSHEETHEADERW ;
-typedef  int DWORD ;
+struct TYPE_11__ {int dwFlags; TYPE_1__ u2; int nPages; int pszCaption; scalar_t__ pfnCallback; int hInstance; int hwndParent; int dwSize; } ;
+struct TYPE_10__ {int useCallback; scalar_t__ active_page; int nPages; TYPE_4__ ppshheader; } ;
+typedef TYPE_2__ PropSheetInfo ;
+typedef int PROPSHEETHEADERW ;
+typedef TYPE_3__* LPCPROPSHEETHEADERW ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int INTRNL_ANY_WIZARD ; 
- int /*<<< orphan*/  IS_INTRESOURCE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PROPSHEET_CollectSheetInfoCommon (TYPE_2__*,int) ; 
- int PSH_USECALLBACK ; 
- int PSH_USEPSTARTPAGE ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * heap_strdupW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (TYPE_4__*,TYPE_3__*,int) ; 
- int min (int /*<<< orphan*/ ,int) ; 
+
+ int INTRNL_ANY_WIZARD ;
+ int IS_INTRESOURCE (int ) ;
+ int PROPSHEET_CollectSheetInfoCommon (TYPE_2__*,int) ;
+ int PSH_USECALLBACK ;
+ int PSH_USEPSTARTPAGE ;
+ int TRACE (char*,...) ;
+ int debugstr_w (int ) ;
+ int * heap_strdupW (int ) ;
+ int memcpy (TYPE_4__*,TYPE_3__*,int) ;
+ int min (int ,int) ;
 
 __attribute__((used)) static void PROPSHEET_CollectSheetInfoW(LPCPROPSHEETHEADERW lppsh,
                                        PropSheetInfo * psInfo)
@@ -48,7 +48,7 @@ __attribute__((used)) static void PROPSHEET_CollectSheetInfoW(LPCPROPSHEETHEADER
       lppsh->dwSize, lppsh->dwFlags, lppsh->hwndParent, lppsh->hInstance, debugstr_w(lppsh->pszCaption), lppsh->nPages, lppsh->pfnCallback);
 
   if (lppsh->dwFlags & INTRNL_ANY_WIZARD)
-     psInfo->ppshheader.pszCaption = NULL;
+     psInfo->ppshheader.pszCaption = ((void*)0);
   else
   {
      if (!IS_INTRESOURCE(lppsh->pszCaption))

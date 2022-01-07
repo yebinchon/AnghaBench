@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int mod; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OP_E (int,int) ; 
- int PREFIX_DATA ; 
- int PREFIX_REPZ ; 
- TYPE_1__ modrm ; 
- int /*<<< orphan*/  obuf ; 
- int prefixes ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char*) ; 
- int used_prefixes ; 
- int v_mode ; 
+
+ int OP_E (int,int) ;
+ int PREFIX_DATA ;
+ int PREFIX_REPZ ;
+ TYPE_1__ modrm ;
+ int obuf ;
+ int prefixes ;
+ int strcpy (int ,char*) ;
+ int used_prefixes ;
+ int v_mode ;
 
 __attribute__((used)) static void
 OP_VMX (int bytemode, int sizeflag)
@@ -36,11 +36,11 @@ OP_VMX (int bytemode, int sizeflag)
     {
       used_prefixes |= (prefixes & (PREFIX_DATA | PREFIX_REPZ));
       if (prefixes & PREFIX_DATA)
-	strcpy (obuf, "vmclear");
+ strcpy (obuf, "vmclear");
       else if (prefixes & PREFIX_REPZ)
-	strcpy (obuf, "vmxon");
+ strcpy (obuf, "vmxon");
       else
-	strcpy (obuf, "vmptrld");
+ strcpy (obuf, "vmptrld");
       OP_E (bytemode, sizeflag);
     }
 }

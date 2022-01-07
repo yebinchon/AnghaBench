@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ AVIC_INTENNUM ; 
- int /*<<< orphan*/  __raw_writel (unsigned int,scalar_t__) ; 
- scalar_t__ avic_base ; 
+ scalar_t__ AVIC_INTENNUM ;
+ int __raw_writel (unsigned int,scalar_t__) ;
+ scalar_t__ avic_base ;
 
 __attribute__((used)) static void mxc_unmask_irq(unsigned int irq)
 {
-	__raw_writel(irq, avic_base + AVIC_INTENNUM);
+ __raw_writel(irq, avic_base + AVIC_INTENNUM);
 }

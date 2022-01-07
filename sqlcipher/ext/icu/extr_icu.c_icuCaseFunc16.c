@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  scalar_t__ UErrorCode ;
-typedef  char UChar ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_STATIC ; 
- scalar_t__ U_BUFFER_OVERFLOW_ERROR ; 
- scalar_t__ U_SUCCESS (scalar_t__) ; 
- scalar_t__ U_ZERO_ERROR ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  icuFunctionError (int /*<<< orphan*/ *,char*,scalar_t__) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_realloc (char*,int) ; 
- int /*<<< orphan*/  sqlite3_result_error_nomem (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_text16 (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_user_data (int /*<<< orphan*/ *) ; 
- int sqlite3_value_bytes16 (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
- char* sqlite3_value_text16 (int /*<<< orphan*/ *) ; 
- int u_strToLower (char*,int,char const*,int,char const*,scalar_t__*) ; 
- int u_strToUpper (char*,int,char const*,int,char const*,scalar_t__*) ; 
- int /*<<< orphan*/  xFree ; 
+
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+typedef scalar_t__ UErrorCode ;
+typedef char UChar ;
+
+
+ int SQLITE_STATIC ;
+ scalar_t__ U_BUFFER_OVERFLOW_ERROR ;
+ scalar_t__ U_SUCCESS (scalar_t__) ;
+ scalar_t__ U_ZERO_ERROR ;
+ int assert (int) ;
+ int icuFunctionError (int *,char*,scalar_t__) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_realloc (char*,int) ;
+ int sqlite3_result_error_nomem (int *) ;
+ int sqlite3_result_text16 (int *,char*,int,int ) ;
+ scalar_t__ sqlite3_user_data (int *) ;
+ int sqlite3_value_bytes16 (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
+ char* sqlite3_value_text16 (int *) ;
+ int u_strToLower (char*,int,char const*,int,char const*,scalar_t__*) ;
+ int u_strToUpper (char*,int,char const*,int,char const*,scalar_t__*) ;
+ int xFree ;
 
 __attribute__((used)) static void icuCaseFunc16(sqlite3_context *p, int nArg, sqlite3_value **apArg){
-  const UChar *zInput;            /* Pointer to input string */
-  UChar *zOutput = 0;             /* Pointer to output buffer */
-  int nInput;                     /* Size of utf-16 input string in bytes */
-  int nOut;                       /* Size of output buffer in bytes */
+  const UChar *zInput;
+  UChar *zOutput = 0;
+  int nInput;
+  int nOut;
   int cnt;
-  int bToUpper;                   /* True for toupper(), false for tolower() */
+  int bToUpper;
   UErrorCode status;
   const char *zLocale = 0;
 
@@ -85,5 +85,5 @@ __attribute__((used)) static void icuCaseFunc16(sqlite3_context *p, int nArg, sq
     }
     return;
   }
-  assert( 0 );     /* Unreachable */
+  assert( 0 );
 }

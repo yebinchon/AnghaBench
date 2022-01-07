@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ revision; scalar_t__ has_children; scalar_t__ changed_paths2; int /*<<< orphan*/  revprops; } ;
-typedef  TYPE_2__ svn_log_entry_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct log_receiver_baton {int message_lines; int merged_message_lines; unsigned int changes; unsigned int merged_changes; int /*<<< orphan*/  merges; scalar_t__ merge_depth; int /*<<< orphan*/  merged_revs; int /*<<< orphan*/  revisions; scalar_t__ quiet; TYPE_1__* ctx; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_4__ {int /*<<< orphan*/  cancel_baton; int /*<<< orphan*/  (* cancel_func ) (int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_IS_VALID_REVNUM (scalar_t__) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- unsigned int apr_hash_count (scalar_t__) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_compat_log_revprops_out (char const**,char const**,char const**,int /*<<< orphan*/ ) ; 
- int svn_cstring_count_newlines (char const*) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ revision; scalar_t__ has_children; scalar_t__ changed_paths2; int revprops; } ;
+typedef TYPE_2__ svn_log_entry_t ;
+typedef int svn_error_t ;
+struct log_receiver_baton {int message_lines; int merged_message_lines; unsigned int changes; unsigned int merged_changes; int merges; scalar_t__ merge_depth; int merged_revs; int revisions; scalar_t__ quiet; TYPE_1__* ctx; } ;
+typedef int apr_pool_t ;
+struct TYPE_4__ {int cancel_baton; int (* cancel_func ) (int ) ;} ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_IS_VALID_REVNUM (scalar_t__) ;
+ int * SVN_NO_ERROR ;
+ unsigned int apr_hash_count (scalar_t__) ;
+ int stub1 (int ) ;
+ int svn_compat_log_revprops_out (char const**,char const**,char const**,int ) ;
+ int svn_cstring_count_newlines (char const*) ;
 
 __attribute__((used)) static svn_error_t *
 log_entry_receiver(void *baton,
@@ -47,20 +47,20 @@ log_entry_receiver(void *baton,
       return SVN_NO_ERROR;
     }
 
-  /* if we don't want counters, we are done */
+
   if (lb->quiet)
     return SVN_NO_ERROR;
 
-  /* extract the message and do all the other counting */
+
   svn_compat_log_revprops_out(&author, &date, &message, log_entry->revprops);
-  if (log_entry->revision == 0 && message == NULL)
+  if (log_entry->revision == 0 && message == ((void*)0))
     return SVN_NO_ERROR;
 
   lb->revisions++;
   if (lb->merge_depth)
     lb->merged_revs++;
 
-  if (message != NULL)
+  if (message != ((void*)0))
     {
       int count = svn_cstring_count_newlines(message) + 1;
       lb->message_lines += count;

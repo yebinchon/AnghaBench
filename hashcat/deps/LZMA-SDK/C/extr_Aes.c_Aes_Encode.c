@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UInt32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FT4 (int) ; 
- int /*<<< orphan*/  HT16 (scalar_t__*,scalar_t__*,int) ; 
+
+
+
+typedef scalar_t__ UInt32 ;
+
+
+ int FT4 (int) ;
+ int HT16 (scalar_t__*,scalar_t__*,int) ;
 
 __attribute__((used)) static void Aes_Encode(const UInt32 *w, UInt32 *dest, const UInt32 *src)
 {

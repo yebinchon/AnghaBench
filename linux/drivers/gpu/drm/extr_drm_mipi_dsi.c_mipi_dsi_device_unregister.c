@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mipi_dsi_device {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  device_unregister (int /*<<< orphan*/ *) ; 
+
+
+
+struct mipi_dsi_device {int dev; } ;
+
+
+ int device_unregister (int *) ;
 
 void mipi_dsi_device_unregister(struct mipi_dsi_device *dsi)
 {
-	device_unregister(&dsi->dev);
+ device_unregister(&dsi->dev);
 }

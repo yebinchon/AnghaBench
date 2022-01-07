@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct usb_endpoint_descriptor {int bEndpointAddress; int bmAttributes; } ;
 struct usb_endpoint {struct usb_endpoint_descriptor* edesc; } ;
 struct TYPE_2__ {scalar_t__ usb_mode; } ;
-struct usb_device {int /*<<< orphan*/  bus; TYPE_1__ flags; } ;
-struct saf1761_otg_softc {int /*<<< orphan*/  sc_bus; } ;
+struct usb_device {int bus; TYPE_1__ flags; } ;
+struct saf1761_otg_softc {int sc_bus; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINTFN (int,char*,struct usb_endpoint*) ; 
- int /*<<< orphan*/  MA_OWNED ; 
- struct saf1761_otg_softc* SAF1761_OTG_BUS2SC (int /*<<< orphan*/ ) ; 
- int UE_ADDR ; 
- int UE_DIR_IN ; 
- int UE_DIR_OUT ; 
- int UE_XFERTYPE ; 
- int /*<<< orphan*/  USB_BUS_LOCK_ASSERT (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  USB_BUS_SPIN_LOCK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  USB_BUS_SPIN_UNLOCK (int /*<<< orphan*/ *) ; 
- scalar_t__ USB_MODE_DEVICE ; 
- int /*<<< orphan*/  saf1761_otg_clear_stall_sub_locked (struct saf1761_otg_softc*,int,int,int) ; 
+
+ int DPRINTFN (int,char*,struct usb_endpoint*) ;
+ int MA_OWNED ;
+ struct saf1761_otg_softc* SAF1761_OTG_BUS2SC (int ) ;
+ int UE_ADDR ;
+ int UE_DIR_IN ;
+ int UE_DIR_OUT ;
+ int UE_XFERTYPE ;
+ int USB_BUS_LOCK_ASSERT (int ,int ) ;
+ int USB_BUS_SPIN_LOCK (int *) ;
+ int USB_BUS_SPIN_UNLOCK (int *) ;
+ scalar_t__ USB_MODE_DEVICE ;
+ int saf1761_otg_clear_stall_sub_locked (struct saf1761_otg_softc*,int,int,int) ;
 
 __attribute__((used)) static void
 saf1761_otg_clear_stall(struct usb_device *udev, struct usb_endpoint *ep)
 {
-	struct saf1761_otg_softc *sc;
-	struct usb_endpoint_descriptor *ed;
+ struct saf1761_otg_softc *sc;
+ struct usb_endpoint_descriptor *ed;
 
-	USB_BUS_LOCK_ASSERT(udev->bus, MA_OWNED);
+ USB_BUS_LOCK_ASSERT(udev->bus, MA_OWNED);
 
-	DPRINTFN(5, "endpoint=%p\n", ep);
+ DPRINTFN(5, "endpoint=%p\n", ep);
 
-	/* check mode */
-	if (udev->flags.usb_mode != USB_MODE_DEVICE) {
-		/* not supported */
-		return;
-	}
-	/* get softc */
-	sc = SAF1761_OTG_BUS2SC(udev->bus);
 
-	USB_BUS_SPIN_LOCK(&sc->sc_bus);
+ if (udev->flags.usb_mode != USB_MODE_DEVICE) {
 
-	/* get endpoint descriptor */
-	ed = ep->edesc;
+  return;
+ }
 
-	/* reset endpoint */
-	saf1761_otg_clear_stall_sub_locked(sc,
-	    (ed->bEndpointAddress & UE_ADDR),
-	    (ed->bmAttributes & UE_XFERTYPE),
-	    (ed->bEndpointAddress & (UE_DIR_IN | UE_DIR_OUT)));
+ sc = SAF1761_OTG_BUS2SC(udev->bus);
 
-	USB_BUS_SPIN_UNLOCK(&sc->sc_bus);
+ USB_BUS_SPIN_LOCK(&sc->sc_bus);
+
+
+ ed = ep->edesc;
+
+
+ saf1761_otg_clear_stall_sub_locked(sc,
+     (ed->bEndpointAddress & UE_ADDR),
+     (ed->bmAttributes & UE_XFERTYPE),
+     (ed->bEndpointAddress & (UE_DIR_IN | UE_DIR_OUT)));
+
+ USB_BUS_SPIN_UNLOCK(&sc->sc_bus);
 }

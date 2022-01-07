@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  identifier; int /*<<< orphan*/ * obj_expr; int /*<<< orphan*/  args; } ;
-typedef  TYPE_1__ member_expression_t ;
-typedef  int /*<<< orphan*/  expression_t ;
-typedef  int /*<<< orphan*/  compile_ctx_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OP_icall ; 
- int /*<<< orphan*/  OP_icallv ; 
- int /*<<< orphan*/  OP_mcall ; 
- int /*<<< orphan*/  OP_mcallv ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  compile_args (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int*) ; 
- int /*<<< orphan*/  compile_expression (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * lookup_const_decls (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  push_instr_bstr_uint (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int identifier; int * obj_expr; int args; } ;
+typedef TYPE_1__ member_expression_t ;
+typedef int expression_t ;
+typedef int compile_ctx_t ;
+typedef int HRESULT ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int OP_icall ;
+ int OP_icallv ;
+ int OP_mcall ;
+ int OP_mcallv ;
+ int TRUE ;
+ int compile_args (int *,int ,unsigned int*) ;
+ int compile_expression (int *,int *) ;
+ int * lookup_const_decls (int *,int ,int ) ;
+ int push_instr_bstr_uint (int *,int ,int ,unsigned int) ;
 
 __attribute__((used)) static HRESULT compile_member_expression(compile_ctx_t *ctx, member_expression_t *expr, BOOL ret_val)
 {

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_3__ {int /*<<< orphan*/  as_array; } ;
-typedef  TYPE_1__ bt_event_mask_t ;
-typedef  int /*<<< orphan*/  BT_HDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY8_TO_STREAM (int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HCI_SET_EVENT_MASK ; 
- int /*<<< orphan*/ * make_command (int /*<<< orphan*/ ,int,int**) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_3__ {int as_array; } ;
+typedef TYPE_1__ bt_event_mask_t ;
+typedef int BT_HDR ;
+
+
+ int ARRAY8_TO_STREAM (int*,int ) ;
+ int HCI_SET_EVENT_MASK ;
+ int * make_command (int ,int,int**) ;
 
 __attribute__((used)) static BT_HDR *make_set_event_mask(const bt_event_mask_t *event_mask)
 {

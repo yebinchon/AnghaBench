@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-struct TYPE_5__ {int /*<<< orphan*/  hdr; int /*<<< orphan*/  storage; } ;
-typedef  TYPE_1__ MSISUMMARYINFO ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  IStorage ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- scalar_t__ ERROR_FUNCTION_FAILED ; 
- scalar_t__ ERROR_OUTOFMEMORY ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IStorage_OpenStream (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- int STGM_READ ; 
- int STGM_SHARE_EXCLUSIVE ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,scalar_t__) ; 
- TYPE_1__* create_suminfo (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ load_summary_info (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  szSumInfo ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+struct TYPE_5__ {int hdr; int storage; } ;
+typedef TYPE_1__ MSISUMMARYINFO ;
+typedef int IStream ;
+typedef int IStorage ;
+typedef int HRESULT ;
+
+
+ scalar_t__ ERROR_FUNCTION_FAILED ;
+ scalar_t__ ERROR_OUTOFMEMORY ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ FAILED (int ) ;
+ int IStorage_OpenStream (int ,int ,int ,int,int ,int **) ;
+ int IStream_Release (int *) ;
+ int STGM_READ ;
+ int STGM_SHARE_EXCLUSIVE ;
+ int TRACE (char*,int *,scalar_t__) ;
+ TYPE_1__* create_suminfo (int *,scalar_t__) ;
+ scalar_t__ load_summary_info (TYPE_1__*,int *) ;
+ int msiobj_release (int *) ;
+ int szSumInfo ;
 
 UINT msi_get_suminfo( IStorage *stg, UINT uiUpdateCount, MSISUMMARYINFO **ret )
 {

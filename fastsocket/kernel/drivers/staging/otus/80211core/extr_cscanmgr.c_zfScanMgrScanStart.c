@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zdev_t ;
-typedef  scalar_t__ u8_t ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int zdev_t ;
+typedef scalar_t__ u8_t ;
 struct TYPE_4__ {int* scanReqs; scalar_t__ currScanType; int scanStartDelay; } ;
 struct TYPE_5__ {TYPE_1__ scanMgr; void* bScheduleScan; void* bChannelScan; } ;
 struct TYPE_6__ {TYPE_2__ sta; } ;
 
-/* Variables and functions */
- void* FALSE ; 
- void* TRUE ; 
- int /*<<< orphan*/  ZM_EVENT_IN_SCAN ; 
- int /*<<< orphan*/  ZM_EVENT_SCAN ; 
- int /*<<< orphan*/  ZM_EVENT_TIMEOUT_SCAN ; 
- scalar_t__ ZM_SCAN_MGR_SCAN_EXTERNAL ; 
- scalar_t__ ZM_SCAN_MGR_SCAN_INTERNAL ; 
- scalar_t__ ZM_SCAN_MGR_SCAN_NONE ; 
- TYPE_3__* wd ; 
- int /*<<< orphan*/  zfPowerSavingMgrIsSleeping (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zfSendNullData (int /*<<< orphan*/ *,int) ; 
- scalar_t__ zfStaIsConnected (int /*<<< orphan*/ *) ; 
- scalar_t__ zfStaIsConnecting (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zfTimerCancel (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zfTimerSchedule (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  zm_debug_msg0 (char*) ; 
- int /*<<< orphan*/  zm_debug_msg1 (char*,scalar_t__) ; 
- int /*<<< orphan*/  zmw_declare_for_critical_section () ; 
- int /*<<< orphan*/  zmw_enter_critical_section (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zmw_get_wlan_dev (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zmw_leave_critical_section (int /*<<< orphan*/ *) ; 
+
+ void* FALSE ;
+ void* TRUE ;
+ int ZM_EVENT_IN_SCAN ;
+ int ZM_EVENT_SCAN ;
+ int ZM_EVENT_TIMEOUT_SCAN ;
+ scalar_t__ ZM_SCAN_MGR_SCAN_EXTERNAL ;
+ scalar_t__ ZM_SCAN_MGR_SCAN_INTERNAL ;
+ scalar_t__ ZM_SCAN_MGR_SCAN_NONE ;
+ TYPE_3__* wd ;
+ int zfPowerSavingMgrIsSleeping (int *) ;
+ int zfSendNullData (int *,int) ;
+ scalar_t__ zfStaIsConnected (int *) ;
+ scalar_t__ zfStaIsConnecting (int *) ;
+ int zfTimerCancel (int *,int ) ;
+ int zfTimerSchedule (int *,int ,int) ;
+ int zm_debug_msg0 (char*) ;
+ int zm_debug_msg1 (char*,scalar_t__) ;
+ int zmw_declare_for_critical_section () ;
+ int zmw_enter_critical_section (int *) ;
+ int zmw_get_wlan_dev (int *) ;
+ int zmw_leave_critical_section (int *) ;
 
 u8_t zfScanMgrScanStart(zdev_t* dev, u8_t scanType)
 {
@@ -77,9 +77,9 @@ u8_t zfScanMgrScanStart(zdev_t* dev, u8_t scanType)
     wd->sta.scanMgr.scanReqs[i] = 1;
     zm_debug_msg1("scan scheduled: ", scanType);
 
-    // If there's no scan pending, we do the scan right away.
-    // If there's an internal scan and the new scan request is external one,
-    // we will restart the scan.
+
+
+
     if ( wd->sta.scanMgr.currScanType == ZM_SCAN_MGR_SCAN_NONE )
     {
         goto schedule_scan;
@@ -87,11 +87,11 @@ u8_t zfScanMgrScanStart(zdev_t* dev, u8_t scanType)
     else if ( wd->sta.scanMgr.currScanType == ZM_SCAN_MGR_SCAN_INTERNAL &&
               scanType == ZM_SCAN_MGR_SCAN_EXTERNAL )
     {
-        // Stop the internal scan & schedule external scan first
+
         zfTimerCancel(dev, ZM_EVENT_SCAN);
 
-        /* Fix for WHQL sendrecv => we do not apply delay time in which the device
-           stop transmitting packet when we already connect to some AP  */
+
+
         wd->sta.bScheduleScan = FALSE;
 
         zfTimerCancel(dev, ZM_EVENT_TIMEOUT_SCAN);
@@ -118,7 +118,7 @@ schedule_scan:
 
     zfTimerSchedule(dev, ZM_EVENT_SCAN, wd->sta.scanMgr.scanStartDelay);
     wd->sta.scanMgr.scanStartDelay = 3;
-    //wd->sta.scanMgr.scanStartDelay = 0;
+
     wd->sta.scanMgr.currScanType = scanType;
     zmw_leave_critical_section(dev);
 

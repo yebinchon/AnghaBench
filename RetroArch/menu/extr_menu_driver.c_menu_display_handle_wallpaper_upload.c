@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void texture_image ;
-typedef  int /*<<< orphan*/  retro_task_t ;
-struct TYPE_3__ {int /*<<< orphan*/  type; void* data; } ;
-typedef  TYPE_1__ menu_ctx_load_image_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MENU_IMAGE_WALLPAPER ; 
- int /*<<< orphan*/  free (void*) ; 
- int /*<<< orphan*/  image_texture_free (void*) ; 
- int /*<<< orphan*/  menu_driver_load_image (TYPE_1__*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef void texture_image ;
+typedef int retro_task_t ;
+struct TYPE_3__ {int type; void* data; } ;
+typedef TYPE_1__ menu_ctx_load_image_t ;
+
+
+ int MENU_IMAGE_WALLPAPER ;
+ int free (void*) ;
+ int image_texture_free (void*) ;
+ int menu_driver_load_image (TYPE_1__*) ;
 
 void menu_display_handle_wallpaper_upload(retro_task_t *task,
       void *task_data,

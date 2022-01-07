@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_7__ ;
-typedef  struct TYPE_20__   TYPE_6__ ;
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_17__ {int /*<<< orphan*/  pEnv; TYPE_1__* pWorker; } ;
-typedef  TYPE_2__ lsm_db ;
+
+
+typedef struct TYPE_21__ TYPE_7__ ;
+typedef struct TYPE_20__ TYPE_6__ ;
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+struct TYPE_17__ {int pEnv; TYPE_1__* pWorker; } ;
+typedef TYPE_2__ lsm_db ;
 struct TYPE_18__ {struct TYPE_18__* pSeg; TYPE_7__* pLevel; } ;
 struct TYPE_21__ {int nRight; TYPE_3__* aRhs; struct TYPE_21__* pNext; TYPE_3__ lhs; } ;
 struct TYPE_20__ {TYPE_3__* aGobble; TYPE_7__* pLevel; TYPE_5__* pCsr; } ;
 struct TYPE_19__ {int nPtr; TYPE_3__* aPtr; TYPE_3__* aTree; } ;
 struct TYPE_16__ {TYPE_7__* pLevel; } ;
-typedef  TYPE_3__ SegmentPtr ;
-typedef  TYPE_3__ Segment ;
-typedef  TYPE_5__ MultiCursor ;
-typedef  TYPE_6__ MergeWorker ;
-typedef  TYPE_7__ Level ;
+typedef TYPE_3__ SegmentPtr ;
+typedef TYPE_3__ Segment ;
+typedef TYPE_5__ MultiCursor ;
+typedef TYPE_6__ MergeWorker ;
+typedef TYPE_7__ Level ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  lsmFree (int /*<<< orphan*/ ,TYPE_3__*) ; 
- scalar_t__ lsmMallocZeroRc (int /*<<< orphan*/ ,int,int*) ; 
- int /*<<< orphan*/  memcpy (TYPE_3__*,TYPE_3__*,int) ; 
- int segmentPtrEnd (TYPE_5__*,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sortedFreeLevel (int /*<<< orphan*/ ,TYPE_7__*) ; 
+
+ int LSM_OK ;
+ int assert (int) ;
+ int lsmFree (int ,TYPE_3__*) ;
+ scalar_t__ lsmMallocZeroRc (int ,int,int*) ;
+ int memcpy (TYPE_3__*,TYPE_3__*,int) ;
+ int segmentPtrEnd (TYPE_5__*,TYPE_3__*,int ) ;
+ int sortedFreeLevel (int ,TYPE_7__*) ;
 
 __attribute__((used)) static int mergeInsertFreelistSegments(
-  lsm_db *pDb, 
+  lsm_db *pDb,
   int nFree,
   MergeWorker *pMW
 ){

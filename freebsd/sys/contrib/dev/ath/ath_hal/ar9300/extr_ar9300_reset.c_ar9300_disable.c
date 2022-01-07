@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ath_hal {int dummy; } ;
-typedef  int /*<<< orphan*/  HAL_BOOL ;
+typedef int HAL_BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AH_FALSE ; 
- int /*<<< orphan*/  AH_NULL ; 
- int /*<<< orphan*/  AH_TRUE ; 
- int /*<<< orphan*/  HAL_PM_AWAKE ; 
- int /*<<< orphan*/  HAL_RESET_COLD ; 
- int /*<<< orphan*/  ar9300_init_pll (struct ath_hal*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ar9300_set_power_mode (struct ath_hal*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ar9300_set_reset_reg (struct ath_hal*,int /*<<< orphan*/ ) ; 
+
+ int AH_FALSE ;
+ int AH_NULL ;
+ int AH_TRUE ;
+ int HAL_PM_AWAKE ;
+ int HAL_RESET_COLD ;
+ int ar9300_init_pll (struct ath_hal*,int ) ;
+ int ar9300_set_power_mode (struct ath_hal*,int ,int ) ;
+ int ar9300_set_reset_reg (struct ath_hal*,int ) ;
 
 HAL_BOOL
 ar9300_disable(struct ath_hal *ah)

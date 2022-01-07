@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LSAPI_Request ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LSAPI_AppendRespHeader_r (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LSAPI_Finish_r (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LSAPI_SetRespStatus_r (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  LSAPI_Write_r (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+
+
+typedef int LSAPI_Request ;
+
+
+ int LSAPI_AppendRespHeader_r (int *,char const*,int ) ;
+ int LSAPI_Finish_r (int *) ;
+ int LSAPI_SetRespStatus_r (int *,int) ;
+ int LSAPI_Write_r (int *,char const*,int) ;
+ int strlen (char const*) ;
 
 int LSAPI_ErrResponse_r( LSAPI_Request * pReq, int code, const char ** pRespHeaders,
                          const char * pBody, int bodyLen )

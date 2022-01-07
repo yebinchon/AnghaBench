@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int _uu_main_thread ; 
- int /*<<< orphan*/  pthread_atfork (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uu_lockup ; 
- int /*<<< orphan*/  uu_release ; 
- int /*<<< orphan*/  uu_release_child ; 
+ int _uu_main_thread ;
+ int pthread_atfork (int ,int ,int ) ;
+ int uu_lockup ;
+ int uu_release ;
+ int uu_release_child ;
 
 __attribute__((used)) static void
 uu_init(void)
 {
-	_uu_main_thread = 1;
-	(void) pthread_atfork(uu_lockup, uu_release, uu_release_child);
+ _uu_main_thread = 1;
+ (void) pthread_atfork(uu_lockup, uu_release, uu_release_child);
 }

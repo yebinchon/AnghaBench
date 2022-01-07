@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- scalar_t__ CURLE_OK ; 
- int /*<<< orphan*/  CURLOPT_HEADER ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURLOPT_VERBOSE ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * curl_easy_duphandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * curl_easy_init () ; 
- scalar_t__ curl_easy_perform (int /*<<< orphan*/ *) ; 
- scalar_t__ curl_easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- scalar_t__ curl_global_init (int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ CURLcode ;
+typedef int CURL ;
+
+
+ scalar_t__ CURLE_OK ;
+ int CURLOPT_HEADER ;
+ int CURLOPT_URL ;
+ int CURLOPT_VERBOSE ;
+ int CURL_GLOBAL_ALL ;
+ int curl_easy_cleanup (int *) ;
+ int * curl_easy_duphandle (int *) ;
+ int * curl_easy_init () ;
+ scalar_t__ curl_easy_perform (int *) ;
+ scalar_t__ curl_easy_setopt (int *,int ,...) ;
+ int curl_global_cleanup () ;
+ scalar_t__ curl_global_init (int ) ;
 
 int test(char *URL)
 {

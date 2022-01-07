@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ntb_vec {int /*<<< orphan*/  num; int /*<<< orphan*/  ntb; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  intel_ntb_interrupt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct ntb_vec {int num; int ntb; } ;
+
+
+ int intel_ntb_interrupt (int ,int ) ;
 
 __attribute__((used)) static void
 ndev_vec_isr(void *arg)
 {
-	struct ntb_vec *nvec = arg;
+ struct ntb_vec *nvec = arg;
 
-	intel_ntb_interrupt(nvec->ntb, nvec->num);
+ intel_ntb_interrupt(nvec->ntb, nvec->num);
 }

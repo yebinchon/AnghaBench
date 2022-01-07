@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum gfx_ctx_api { ____Placeholder_gfx_ctx_api } gfx_ctx_api ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EGL_OPENGL_API ; 
- int /*<<< orphan*/  EGL_OPENGL_ES_API ; 
- int /*<<< orphan*/  EGL_OPENVG_API ; 
-#define  GFX_CTX_OPENGL_API 130 
-#define  GFX_CTX_OPENGL_ES_API 129 
-#define  GFX_CTX_OPENVG_API 128 
- int eglBindAPI (int /*<<< orphan*/ ) ; 
- int vc_api ; 
+
+
+
+typedef enum gfx_ctx_api { ____Placeholder_gfx_ctx_api } gfx_ctx_api ;
+
+
+ int EGL_OPENGL_API ;
+ int EGL_OPENGL_ES_API ;
+ int EGL_OPENVG_API ;
+
+
+
+ int eglBindAPI (int ) ;
+ int vc_api ;
 
 __attribute__((used)) static bool gfx_ctx_vc_bind_api(void *data,
       enum gfx_ctx_api api, unsigned major, unsigned minor)
@@ -33,15 +33,15 @@ __attribute__((used)) static bool gfx_ctx_vc_bind_api(void *data,
 
    switch (api)
    {
-      case GFX_CTX_OPENGL_API:
+      case 130:
          return eglBindAPI(EGL_OPENGL_API);
-      case GFX_CTX_OPENGL_ES_API:
+      case 129:
          return eglBindAPI(EGL_OPENGL_ES_API);
-      case GFX_CTX_OPENVG_API:
+      case 128:
          return eglBindAPI(EGL_OPENVG_API);
       default:
          break;
    }
 
-   return false;
+   return 0;
 }

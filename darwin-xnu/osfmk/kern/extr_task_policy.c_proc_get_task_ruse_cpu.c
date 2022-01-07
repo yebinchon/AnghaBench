@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  task_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TASK_POLICY_RESOURCE_ATTRIBUTE_NONE ; 
- int /*<<< orphan*/  TASK_POLICY_RESOURCE_ATTRIBUTE_NOTIFY_EXC ; 
- int /*<<< orphan*/  TASK_POLICY_RESOURCE_ATTRIBUTE_THROTTLE ; 
- int TASK_RUSECPU_FLAGS_DEADLINE ; 
- int TASK_RUSECPU_FLAGS_PERTHR_LIMIT ; 
- int TASK_RUSECPU_FLAGS_PROC_LIMIT ; 
- int task_get_cpuusage (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  task_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  task_unlock (int /*<<< orphan*/ ) ; 
 
-int 
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int task_t ;
+
+
+ int TASK_POLICY_RESOURCE_ATTRIBUTE_NONE ;
+ int TASK_POLICY_RESOURCE_ATTRIBUTE_NOTIFY_EXC ;
+ int TASK_POLICY_RESOURCE_ATTRIBUTE_THROTTLE ;
+ int TASK_RUSECPU_FLAGS_DEADLINE ;
+ int TASK_RUSECPU_FLAGS_PERTHR_LIMIT ;
+ int TASK_RUSECPU_FLAGS_PROC_LIMIT ;
+ int task_get_cpuusage (int ,int *,int *,int *,int*) ;
+ int task_lock (int ) ;
+ int task_unlock (int ) ;
+
+int
 proc_get_task_ruse_cpu(task_t task, uint32_t *policyp, uint8_t *percentagep, uint64_t *intervalp, uint64_t *deadlinep)
 {
-	
-	int error = 0;
-	int scope;
 
-	task_lock(task);
+ int error = 0;
+ int scope;
 
-	
-	error = task_get_cpuusage(task, percentagep, intervalp, deadlinep, &scope);
-	task_unlock(task);
+ task_lock(task);
 
-	/*
-	 * Reverse-map from CPU resource limit scopes back to policies (see comment below).
-	 */
-	if (scope == TASK_RUSECPU_FLAGS_PERTHR_LIMIT) {
-		*policyp = TASK_POLICY_RESOURCE_ATTRIBUTE_NOTIFY_EXC;
-	} else if (scope == TASK_RUSECPU_FLAGS_PROC_LIMIT) {
-		*policyp = TASK_POLICY_RESOURCE_ATTRIBUTE_THROTTLE;
-	} else if (scope == TASK_RUSECPU_FLAGS_DEADLINE) {
-		*policyp = TASK_POLICY_RESOURCE_ATTRIBUTE_NONE;
-	}
 
-	return(error);
+ error = task_get_cpuusage(task, percentagep, intervalp, deadlinep, &scope);
+ task_unlock(task);
+
+
+
+
+ if (scope == TASK_RUSECPU_FLAGS_PERTHR_LIMIT) {
+  *policyp = TASK_POLICY_RESOURCE_ATTRIBUTE_NOTIFY_EXC;
+ } else if (scope == TASK_RUSECPU_FLAGS_PROC_LIMIT) {
+  *policyp = TASK_POLICY_RESOURCE_ATTRIBUTE_THROTTLE;
+ } else if (scope == TASK_RUSECPU_FLAGS_DEADLINE) {
+  *policyp = TASK_POLICY_RESOURCE_ATTRIBUTE_NONE;
+ }
+
+ return(error);
 }

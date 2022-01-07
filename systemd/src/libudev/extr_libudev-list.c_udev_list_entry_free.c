@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct udev_list_entry {int /*<<< orphan*/  value; int /*<<< orphan*/  name; TYPE_1__* list; } ;
-struct TYPE_2__ {int /*<<< orphan*/  entries; int /*<<< orphan*/  unique_entries; scalar_t__ unique; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIST_REMOVE (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct udev_list_entry*) ; 
- int /*<<< orphan*/  entries ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hashmap_remove (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct udev_list_entry* mfree (struct udev_list_entry*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct udev_list_entry {int value; int name; TYPE_1__* list; } ;
+struct TYPE_2__ {int entries; int unique_entries; scalar_t__ unique; } ;
+
+
+ int LIST_REMOVE (int ,int ,struct udev_list_entry*) ;
+ int entries ;
+ int free (int ) ;
+ int hashmap_remove (int ,int ) ;
+ struct udev_list_entry* mfree (struct udev_list_entry*) ;
 
 __attribute__((used)) static struct udev_list_entry *udev_list_entry_free(struct udev_list_entry *entry) {
         if (!entry)
-                return NULL;
+                return ((void*)0);
 
         if (entry->list) {
                 if (entry->list->unique)

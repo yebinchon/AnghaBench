@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_int8_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u_int8_t ;
 struct sk_buff {int dummy; } ;
-struct TYPE_4__ {int /*<<< orphan*/  daddr; } ;
-struct TYPE_3__ {int /*<<< orphan*/  daddr; } ;
+struct TYPE_4__ {int daddr; } ;
+struct TYPE_3__ {int daddr; } ;
 
-/* Variables and functions */
-#define  NFPROTO_IPV4 129 
-#define  NFPROTO_IPV6 128 
- int /*<<< orphan*/  WARN_ON (int) ; 
- TYPE_2__* ip_hdr (struct sk_buff const*) ; 
- int ipv4_is_multicast (int /*<<< orphan*/ ) ; 
- int ipv6_addr_is_multicast (int /*<<< orphan*/ *) ; 
- TYPE_1__* ipv6_hdr (struct sk_buff const*) ; 
+
+
+
+ int WARN_ON (int) ;
+ TYPE_2__* ip_hdr (struct sk_buff const*) ;
+ int ipv4_is_multicast (int ) ;
+ int ipv6_addr_is_multicast (int *) ;
+ TYPE_1__* ipv6_hdr (struct sk_buff const*) ;
 
 __attribute__((used)) static inline bool
 xt_cluster_is_multicast_addr(const struct sk_buff *skb, u_int8_t family)
 {
-	bool is_multicast = false;
+ bool is_multicast = 0;
 
-	switch(family) {
-	case NFPROTO_IPV4:
-		is_multicast = ipv4_is_multicast(ip_hdr(skb)->daddr);
-		break;
-	case NFPROTO_IPV6:
-		is_multicast = ipv6_addr_is_multicast(&ipv6_hdr(skb)->daddr);
-		break;
-	default:
-		WARN_ON(1);
-		break;
-	}
-	return is_multicast;
+ switch(family) {
+ case 129:
+  is_multicast = ipv4_is_multicast(ip_hdr(skb)->daddr);
+  break;
+ case 128:
+  is_multicast = ipv6_addr_is_multicast(&ipv6_hdr(skb)->daddr);
+  break;
+ default:
+  WARN_ON(1);
+  break;
+ }
+ return is_multicast;
 }

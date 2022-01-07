@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int npy_intp ;
-typedef  int /*<<< orphan*/  _subarray_broadcast_offsetrun ;
-struct TYPE_4__ {int run_count; int /*<<< orphan*/ * data_decsrcref; int /*<<< orphan*/ * data; int /*<<< orphan*/ * data_decdstref; } ;
-typedef  TYPE_1__ _subarray_broadcast_data ;
-typedef  int /*<<< orphan*/  NpyAuxData ;
 
-/* Variables and functions */
- void* NPY_AUXDATA_CLONE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NPY_AUXDATA_FREE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_free (TYPE_1__*) ; 
- scalar_t__ PyArray_malloc (int) ; 
- int /*<<< orphan*/  memcpy (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int npy_intp ;
+typedef int _subarray_broadcast_offsetrun ;
+struct TYPE_4__ {int run_count; int * data_decsrcref; int * data; int * data_decdstref; } ;
+typedef TYPE_1__ _subarray_broadcast_data ;
+typedef int NpyAuxData ;
+
+
+ void* NPY_AUXDATA_CLONE (int *) ;
+ int NPY_AUXDATA_FREE (int *) ;
+ int PyArray_free (TYPE_1__*) ;
+ scalar_t__ PyArray_malloc (int) ;
+ int memcpy (TYPE_1__*,int *,int) ;
 
 __attribute__((used)) static NpyAuxData *_subarray_broadcast_data_clone( NpyAuxData *data)
 {
@@ -33,34 +33,34 @@ __attribute__((used)) static NpyAuxData *_subarray_broadcast_data_clone( NpyAuxD
     structsize = sizeof(_subarray_broadcast_data) +
                         run_count*sizeof(_subarray_broadcast_offsetrun);
 
-    /* Allocate the data and populate it */
+
     newdata = (_subarray_broadcast_data *)PyArray_malloc(structsize);
-    if (newdata == NULL) {
-        return NULL;
+    if (newdata == ((void*)0)) {
+        return ((void*)0);
     }
     memcpy(newdata, data, structsize);
-    if (d->data != NULL) {
+    if (d->data != ((void*)0)) {
         newdata->data = NPY_AUXDATA_CLONE(d->data);
-        if (newdata->data == NULL) {
+        if (newdata->data == ((void*)0)) {
             PyArray_free(newdata);
-            return NULL;
+            return ((void*)0);
         }
     }
-    if (d->data_decsrcref != NULL) {
+    if (d->data_decsrcref != ((void*)0)) {
         newdata->data_decsrcref = NPY_AUXDATA_CLONE(d->data_decsrcref);
-        if (newdata->data_decsrcref == NULL) {
+        if (newdata->data_decsrcref == ((void*)0)) {
             NPY_AUXDATA_FREE(newdata->data);
             PyArray_free(newdata);
-            return NULL;
+            return ((void*)0);
         }
     }
-    if (d->data_decdstref != NULL) {
+    if (d->data_decdstref != ((void*)0)) {
         newdata->data_decdstref = NPY_AUXDATA_CLONE(d->data_decdstref);
-        if (newdata->data_decdstref == NULL) {
+        if (newdata->data_decdstref == ((void*)0)) {
             NPY_AUXDATA_FREE(newdata->data);
             NPY_AUXDATA_FREE(newdata->data_decsrcref);
             PyArray_free(newdata);
-            return NULL;
+            return ((void*)0);
         }
     }
 

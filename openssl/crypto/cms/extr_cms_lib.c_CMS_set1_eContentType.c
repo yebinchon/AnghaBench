@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CMS_ContentInfo ;
-typedef  int /*<<< orphan*/  ASN1_OBJECT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_OBJECT_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * OBJ_dup (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ ** cms_get0_econtent_type (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int CMS_ContentInfo ;
+typedef int ASN1_OBJECT ;
+
+
+ int ASN1_OBJECT_free (int *) ;
+ int * OBJ_dup (int const*) ;
+ int ** cms_get0_econtent_type (int *) ;
 
 int CMS_set1_eContentType(CMS_ContentInfo *cms, const ASN1_OBJECT *oid)
 {
     ASN1_OBJECT **petype, *etype;
 
     petype = cms_get0_econtent_type(cms);
-    if (petype == NULL)
+    if (petype == ((void*)0))
         return 0;
-    if (oid == NULL)
+    if (oid == ((void*)0))
         return 1;
     etype = OBJ_dup(oid);
-    if (etype == NULL)
+    if (etype == ((void*)0))
         return 0;
     ASN1_OBJECT_free(*petype);
     *petype = etype;

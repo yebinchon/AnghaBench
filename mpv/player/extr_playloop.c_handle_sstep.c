@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct MPOpts {scalar_t__ step_sec; } ;
-struct MPContext {scalar_t__ video_status; scalar_t__ max_frames; scalar_t__ step_frames; int /*<<< orphan*/  paused; scalar_t__ stop_play; int /*<<< orphan*/  restart_complete; struct MPOpts* opts; } ;
+struct MPContext {scalar_t__ video_status; scalar_t__ max_frames; scalar_t__ step_frames; int paused; scalar_t__ stop_play; int restart_complete; struct MPOpts* opts; } ;
 
-/* Variables and functions */
- scalar_t__ AT_END_OF_FILE ; 
- int /*<<< orphan*/  MPSEEK_DEFAULT ; 
- int /*<<< orphan*/  MPSEEK_RELATIVE ; 
- int /*<<< orphan*/  OSD_FFW ; 
- scalar_t__ STATUS_EOF ; 
- int /*<<< orphan*/  queue_seek (struct MPContext*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_osd_function (struct MPContext*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_pause_state (struct MPContext*,int) ; 
+
+ scalar_t__ AT_END_OF_FILE ;
+ int MPSEEK_DEFAULT ;
+ int MPSEEK_RELATIVE ;
+ int OSD_FFW ;
+ scalar_t__ STATUS_EOF ;
+ int queue_seek (struct MPContext*,int ,scalar_t__,int ,int ) ;
+ int set_osd_function (struct MPContext*,int ) ;
+ int set_pause_state (struct MPContext*,int) ;
 
 __attribute__((used)) static void handle_sstep(struct MPContext *mpctx)
 {
@@ -36,8 +36,8 @@ __attribute__((used)) static void handle_sstep(struct MPContext *mpctx)
 
     if (mpctx->video_status >= STATUS_EOF) {
         if (mpctx->max_frames >= 0 && !mpctx->stop_play)
-            mpctx->stop_play = AT_END_OF_FILE; // force EOF even if audio left
+            mpctx->stop_play = AT_END_OF_FILE;
         if (mpctx->step_frames > 0 && !mpctx->paused)
-            set_pause_state(mpctx, true);
+            set_pause_state(mpctx, 1);
     }
 }

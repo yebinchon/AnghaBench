@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_11__ {int processed; int offset; } ;
-struct TYPE_10__ {int /*<<< orphan*/  current; } ;
+struct TYPE_10__ {int current; } ;
 struct TYPE_9__ {int attr; TYPE_1__* pair; } ;
-struct TYPE_8__ {int /*<<< orphan*/  idx; } ;
-typedef  TYPE_2__ GColors ;
+struct TYPE_8__ {int idx; } ;
+typedef TYPE_2__ GColors ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COLOR_DEFAULT ; 
- int COLOR_PAIR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GO_VERSION ; 
- int /*<<< orphan*/  T_HELP_ENTER ; 
- int /*<<< orphan*/  T_QUIT ; 
- int /*<<< orphan*/  asctime (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  color_default ; 
- int /*<<< orphan*/  dash ; 
- int /*<<< orphan*/  display_content (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  display_general (int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  draw_header (int /*<<< orphan*/ ,char*,char*,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  generate_time () ; 
- TYPE_2__* get_color (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  getmaxyx (int /*<<< orphan*/ ,int,int) ; 
- TYPE_4__* glog ; 
- TYPE_3__ gscroll ; 
- int /*<<< orphan*/  header_win ; 
- int /*<<< orphan*/  holder ; 
- int /*<<< orphan*/  main_win ; 
- int /*<<< orphan*/  main_win_height ; 
- int /*<<< orphan*/  mvaddstr (int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mvprintw (int,int,char*,int,...) ; 
- int /*<<< orphan*/  now_tm ; 
- int /*<<< orphan*/  refresh () ; 
- int /*<<< orphan*/  stdscr ; 
- int /*<<< orphan*/  term_size (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  update_active_module (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wattroff (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  wattron (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  wrefresh (int /*<<< orphan*/ ) ; 
+
+ int COLOR_DEFAULT ;
+ int COLOR_PAIR (int ) ;
+ int GO_VERSION ;
+ int T_HELP_ENTER ;
+ int T_QUIT ;
+ int asctime (int ) ;
+ int color_default ;
+ int dash ;
+ int display_content (int ,int ,TYPE_3__*) ;
+ int display_general (int ,TYPE_4__*,int ) ;
+ int draw_header (int ,char*,char*,int,int ,int,int ) ;
+ int generate_time () ;
+ TYPE_2__* get_color (int ) ;
+ int getmaxyx (int ,int,int) ;
+ TYPE_4__* glog ;
+ TYPE_3__ gscroll ;
+ int header_win ;
+ int holder ;
+ int main_win ;
+ int main_win_height ;
+ int mvaddstr (int,int,int ) ;
+ int mvprintw (int,int,char*,int,...) ;
+ int now_tm ;
+ int refresh () ;
+ int stdscr ;
+ int term_size (int ,int *) ;
+ int update_active_module (int ,int ) ;
+ int wattroff (int ,int) ;
+ int wattron (int ,int) ;
+ int wrefresh (int ) ;
 
 __attribute__((used)) static void
 render_screens (void)
@@ -75,11 +75,11 @@ render_screens (void)
 
   refresh ();
 
-  /* call general stats header */
+
   display_general (header_win, glog, holder);
   wrefresh (header_win);
 
-  /* display active label based on current module */
+
   update_active_module (header_win, gscroll.current);
 
   display_content (main_win, dash, &gscroll);

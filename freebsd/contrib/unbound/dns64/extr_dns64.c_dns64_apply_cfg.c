@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dns64_env {int prefix_net; int /*<<< orphan*/  ignore_aaaa; int /*<<< orphan*/  prefix_addrlen; int /*<<< orphan*/  prefix_addr; } ;
-struct config_strlist {int /*<<< orphan*/  str; struct config_strlist* next; } ;
+
+
+
+
+struct dns64_env {int prefix_net; int ignore_aaaa; int prefix_addrlen; int prefix_addr; } ;
+struct config_strlist {int str; struct config_strlist* next; } ;
 struct config_file {struct config_strlist* dns64_ignore_aaaa; scalar_t__ dns64_prefix; } ;
 
-/* Variables and functions */
- scalar_t__ DEFAULT_DNS64_PREFIX ; 
- int /*<<< orphan*/  VERB_ALGO ; 
- int /*<<< orphan*/  addr_is_ip6 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dns64_insert_ignore_aaaa (struct dns64_env*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_err (char*,scalar_t__) ; 
- int /*<<< orphan*/  name_tree_init_parents (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  netblockstrtoaddr (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  verbose (int /*<<< orphan*/ ,char*,scalar_t__) ; 
+
+ scalar_t__ DEFAULT_DNS64_PREFIX ;
+ int VERB_ALGO ;
+ int addr_is_ip6 (int *,int ) ;
+ int dns64_insert_ignore_aaaa (struct dns64_env*,int ) ;
+ int log_err (char*,scalar_t__) ;
+ int name_tree_init_parents (int *) ;
+ int netblockstrtoaddr (scalar_t__,int ,int *,int *,int*) ;
+ int verbose (int ,char*,scalar_t__) ;
 
 __attribute__((used)) static int
 dns64_apply_cfg(struct dns64_env* dns64_env, struct config_file* cfg)
@@ -45,8 +45,8 @@ dns64_apply_cfg(struct dns64_env* dns64_env, struct config_file* cfg)
         return 0;
     }
     for(s = cfg->dns64_ignore_aaaa; s; s = s->next) {
-	    if(!dns64_insert_ignore_aaaa(dns64_env, s->str))
-		    return 0;
+     if(!dns64_insert_ignore_aaaa(dns64_env, s->str))
+      return 0;
     }
     name_tree_init_parents(&dns64_env->ignore_aaaa);
     return 1;

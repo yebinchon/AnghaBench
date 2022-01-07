@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  int /*<<< orphan*/ * LPTSTR ;
-typedef  int* LPINT ;
-typedef  int /*<<< orphan*/  LPCTSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  _tcscpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int _tcslen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * cmd_alloc (int) ; 
- int /*<<< orphan*/  cmd_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ ** cmd_realloc (int /*<<< orphan*/ **,int) ; 
+
+
+
+typedef int TCHAR ;
+typedef int * LPTSTR ;
+typedef int* LPINT ;
+typedef int LPCTSTR ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int WARN (char*) ;
+ int _tcscpy (int *,int ) ;
+ int _tcslen (int ) ;
+ int * cmd_alloc (int) ;
+ int cmd_free (int *) ;
+ int ** cmd_realloc (int **,int) ;
 
 BOOL add_entry (LPINT ac, LPTSTR **arg, LPCTSTR entry)
 {
@@ -49,9 +49,9 @@ BOOL add_entry (LPINT ac, LPTSTR **arg, LPCTSTR entry)
         return FALSE;
     }
 
-    /* save new entry */
+
     (*arg)[*ac] = q;
-    (*arg)[++(*ac)] = NULL;
+    (*arg)[++(*ac)] = ((void*)0);
 
     return TRUE;
 }

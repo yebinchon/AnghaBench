@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IHTMLFrameBase ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ BSTR ;
 
-/* Variables and functions */
- scalar_t__ E_INVALIDARG ; 
- int /*<<< orphan*/  IHTMLFrameBase_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLFrameBase_get_frameBorder (int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ IHTMLFrameBase_get_scrolling (int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ IHTMLFrameBase_put_frameBorder (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ IHTMLFrameBase_put_scrolling (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  IID_IHTMLFrameBase ; 
- scalar_t__ IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysFreeString (scalar_t__) ; 
- scalar_t__ a2bstr (char*) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  set_framebase_marginheight (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  set_framebase_marginwidth (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  strcmp_wa (scalar_t__,char*) ; 
- int /*<<< orphan*/  test_framebase_marginheight (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_framebase_marginwidth (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ wine_dbgstr_w (scalar_t__) ; 
+
+
+
+typedef int IUnknown ;
+typedef int IHTMLFrameBase ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ BSTR ;
+
+
+ scalar_t__ E_INVALIDARG ;
+ int IHTMLFrameBase_Release (int *) ;
+ scalar_t__ IHTMLFrameBase_get_frameBorder (int *,scalar_t__*) ;
+ scalar_t__ IHTMLFrameBase_get_scrolling (int *,scalar_t__*) ;
+ scalar_t__ IHTMLFrameBase_put_frameBorder (int *,scalar_t__) ;
+ scalar_t__ IHTMLFrameBase_put_scrolling (int *,scalar_t__) ;
+ int IID_IHTMLFrameBase ;
+ scalar_t__ IUnknown_QueryInterface (int *,int *,void**) ;
+ scalar_t__ S_OK ;
+ int SysFreeString (scalar_t__) ;
+ scalar_t__ a2bstr (char*) ;
+ int ok (int,char*,scalar_t__) ;
+ int set_framebase_marginheight (int *,char*) ;
+ int set_framebase_marginwidth (int *,char*) ;
+ int strcmp_wa (scalar_t__,char*) ;
+ int test_framebase_marginheight (int *,char*) ;
+ int test_framebase_marginwidth (int *,char*) ;
+ scalar_t__ wine_dbgstr_w (scalar_t__) ;
 
 __attribute__((used)) static void test_framebase(IUnknown *unk)
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static void test_framebase(IUnknown *unk)
     BSTR str;
     HRESULT hres;
 
-    /* get/put scrolling */
+
     hres = IUnknown_QueryInterface(unk, &IID_IHTMLFrameBase, (void**)&fbase);
     ok(hres == S_OK, "Could not get IHTMLFrameBase interface: 0x%08x\n", hres);
 
@@ -84,11 +84,11 @@ __attribute__((used)) static void test_framebase(IUnknown *unk)
     ok(hres == S_OK, "get_frameBorder failed: %08x\n", hres);
     ok(!strcmp_wa(str, "1"), "frameBorder = %s, expected \"1\"\n", wine_dbgstr_w(str));
 
-    test_framebase_marginheight(fbase, NULL);
+    test_framebase_marginheight(fbase, ((void*)0));
     set_framebase_marginheight(fbase, "1px");
     test_framebase_marginheight(fbase, "1");
 
-    test_framebase_marginwidth(fbase, NULL);
+    test_framebase_marginwidth(fbase, ((void*)0));
     set_framebase_marginwidth(fbase, "2px");
     test_framebase_marginwidth(fbase, "2");
 

@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_8__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_8__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_10__ {int user_id; TYPE_3__* mf; struct file_user_list_entry* dir_entry; } ;
-typedef  TYPE_2__ user_t ;
+typedef TYPE_2__ user_t ;
 struct file_user_list_entry_search_history {int user_history_min_ts; int user_history_max_ts; } ;
 struct file_user_list_entry_search {int user_search_size; } ;
-struct file_user_list_entry {int user_last_local_id; int /*<<< orphan*/  user_data_offset; } ;
+struct file_user_list_entry {int user_last_local_id; int user_data_offset; } ;
 struct file_user_header {scalar_t__ magic; int user_first_local_id; int user_last_local_id; int user_id; int sublists_num; int peers_offset; int peers_num; int sublists_offset; int legacy_list_offset; int directory_offset; int data_offset; int extra_offset; int total_bytes; } ;
 struct file_message_extras {int dummy; } ;
 struct connection {int dummy; } ;
 struct aio_connection {scalar_t__ basic_type; scalar_t__ extra; } ;
 struct TYPE_11__ {scalar_t__ mf_type; int len; int data; struct aio_connection* aio; TYPE_1__* next; TYPE_1__* prev; TYPE_2__* user; } ;
-typedef  TYPE_3__ core_mf_t ;
+typedef TYPE_3__ core_mf_t ;
 struct TYPE_13__ {int sublists_num; } ;
 struct TYPE_12__ {scalar_t__ data; } ;
 struct TYPE_9__ {struct TYPE_9__* next; struct TYPE_9__* prev; } ;
 
-/* Variables and functions */
- scalar_t__ FILE_USER_MAGIC ; 
- TYPE_8__ Header ; 
- scalar_t__ MF_USER ; 
- int /*<<< orphan*/  active_aio_queries ; 
- int /*<<< orphan*/  aio_crc_errors ; 
- int /*<<< orphan*/  aio_read_errors ; 
- int /*<<< orphan*/  allocated_metafile_bytes ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  bind_user_metafile (TYPE_2__*) ; 
- unsigned int compute_crc32 (int,int) ; 
- scalar_t__ ct_aio ; 
- int cur_user_metafile_bytes ; 
- int /*<<< orphan*/  cur_user_metafiles ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,...) ; 
- int /*<<< orphan*/  free (TYPE_3__*) ; 
- int idx_crc_enabled ; 
- scalar_t__ idx_persistent_history_enabled ; 
- scalar_t__ idx_search_enabled ; 
- int metafile_crc_check_size_threshold ; 
- int /*<<< orphan*/  stderr ; 
- int tot_user_metafile_bytes ; 
- int /*<<< orphan*/  tot_user_metafiles ; 
- TYPE_4__* touch_metafile (TYPE_3__*) ; 
- scalar_t__ verbosity ; 
+
+ scalar_t__ FILE_USER_MAGIC ;
+ TYPE_8__ Header ;
+ scalar_t__ MF_USER ;
+ int active_aio_queries ;
+ int aio_crc_errors ;
+ int aio_read_errors ;
+ int allocated_metafile_bytes ;
+ int assert (int) ;
+ int bind_user_metafile (TYPE_2__*) ;
+ unsigned int compute_crc32 (int,int) ;
+ scalar_t__ ct_aio ;
+ int cur_user_metafile_bytes ;
+ int cur_user_metafiles ;
+ int fprintf (int ,char*,int,int,...) ;
+ int free (TYPE_3__*) ;
+ int idx_crc_enabled ;
+ scalar_t__ idx_persistent_history_enabled ;
+ scalar_t__ idx_search_enabled ;
+ int metafile_crc_check_size_threshold ;
+ int stderr ;
+ int tot_user_metafile_bytes ;
+ int tot_user_metafiles ;
+ TYPE_4__* touch_metafile (TYPE_3__*) ;
+ scalar_t__ verbosity ;
 
 int onload_user_metafile (struct connection *c, int read_bytes) {
   if (verbosity > 0) {
@@ -89,7 +89,7 @@ int onload_user_metafile (struct connection *c, int read_bytes) {
     if (disk_crc32 != data_crc32) {
       aio_crc_errors++;
       if (verbosity >= 0) {
-	fprintf (stderr, "CRC mismatch: expected %08x, found %08x\n", disk_crc32, data_crc32);
+ fprintf (stderr, "CRC mismatch: expected %08x, found %08x\n", disk_crc32, data_crc32);
       }
       assert (disk_crc32 == data_crc32);
     }

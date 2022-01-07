@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_26__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_26__ TYPE_1__ ;
+
+
 struct TYPE_26__ {int* p; } ;
-typedef  TYPE_1__ const mbedtls_mpi ;
+typedef TYPE_1__ const mbedtls_mpi ;
 
-/* Variables and functions */
- int MBEDTLS_ERR_MPI_BAD_INPUT_DATA ; 
- int MBEDTLS_ERR_MPI_NOT_ACCEPTABLE ; 
- int /*<<< orphan*/  MBEDTLS_MPI_CHK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mbedtls_mpi_add_mpi (TYPE_1__ const*,TYPE_1__ const*,TYPE_1__ const*) ; 
- scalar_t__ mbedtls_mpi_cmp_int (TYPE_1__ const*,int) ; 
- scalar_t__ mbedtls_mpi_cmp_mpi (TYPE_1__ const*,TYPE_1__ const*) ; 
- int /*<<< orphan*/  mbedtls_mpi_copy (TYPE_1__ const*,TYPE_1__ const*) ; 
- int /*<<< orphan*/  mbedtls_mpi_free (TYPE_1__ const*) ; 
- int /*<<< orphan*/  mbedtls_mpi_gcd (TYPE_1__ const*,TYPE_1__ const*,TYPE_1__ const*) ; 
- int /*<<< orphan*/  mbedtls_mpi_init (TYPE_1__ const*) ; 
- int /*<<< orphan*/  mbedtls_mpi_lset (TYPE_1__ const*,int) ; 
- int /*<<< orphan*/  mbedtls_mpi_mod_mpi (TYPE_1__ const*,TYPE_1__ const*,TYPE_1__ const*) ; 
- int /*<<< orphan*/  mbedtls_mpi_shift_r (TYPE_1__ const*,int) ; 
- int /*<<< orphan*/  mbedtls_mpi_sub_mpi (TYPE_1__ const*,TYPE_1__ const*,TYPE_1__ const*) ; 
+
+ int MBEDTLS_ERR_MPI_BAD_INPUT_DATA ;
+ int MBEDTLS_ERR_MPI_NOT_ACCEPTABLE ;
+ int MBEDTLS_MPI_CHK (int ) ;
+ int mbedtls_mpi_add_mpi (TYPE_1__ const*,TYPE_1__ const*,TYPE_1__ const*) ;
+ scalar_t__ mbedtls_mpi_cmp_int (TYPE_1__ const*,int) ;
+ scalar_t__ mbedtls_mpi_cmp_mpi (TYPE_1__ const*,TYPE_1__ const*) ;
+ int mbedtls_mpi_copy (TYPE_1__ const*,TYPE_1__ const*) ;
+ int mbedtls_mpi_free (TYPE_1__ const*) ;
+ int mbedtls_mpi_gcd (TYPE_1__ const*,TYPE_1__ const*,TYPE_1__ const*) ;
+ int mbedtls_mpi_init (TYPE_1__ const*) ;
+ int mbedtls_mpi_lset (TYPE_1__ const*,int) ;
+ int mbedtls_mpi_mod_mpi (TYPE_1__ const*,TYPE_1__ const*,TYPE_1__ const*) ;
+ int mbedtls_mpi_shift_r (TYPE_1__ const*,int) ;
+ int mbedtls_mpi_sub_mpi (TYPE_1__ const*,TYPE_1__ const*,TYPE_1__ const*) ;
 
 int mbedtls_mpi_inv_mod( mbedtls_mpi *X, const mbedtls_mpi *A, const mbedtls_mpi *N )
 {

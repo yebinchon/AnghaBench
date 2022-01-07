@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  domainname ;
 
-/* Variables and functions */
- int MAXHOSTNAMELEN ; 
- int /*<<< orphan*/  err (int,char*) ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- scalar_t__ getdomainname (char*,int) ; 
- int getopt (int,char**,char*) ; 
- scalar_t__ optind ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- scalar_t__ setdomainname (char*,int) ; 
- scalar_t__ strlen (char*) ; 
- int /*<<< orphan*/  usage () ; 
+
+
+
+typedef int domainname ;
+
+
+ int MAXHOSTNAMELEN ;
+ int err (int,char*) ;
+ int exit (int ) ;
+ scalar_t__ getdomainname (char*,int) ;
+ int getopt (int,char**,char*) ;
+ scalar_t__ optind ;
+ int printf (char*,char*) ;
+ scalar_t__ setdomainname (char*,int) ;
+ scalar_t__ strlen (char*) ;
+ int usage () ;
 
 int
 main(int argc, char *argv[])
 {
-	int ch;
-	char domainname[MAXHOSTNAMELEN];
+ int ch;
+ char domainname[MAXHOSTNAMELEN];
 
-	while ((ch = getopt(argc, argv, "")) != -1)
-		switch (ch) {
-		case '?':
-			/* fall through */
-		default:
-			usage();
-		}
-	argc -= optind;
-	argv += optind;
+ while ((ch = getopt(argc, argv, "")) != -1)
+  switch (ch) {
+  case '?':
 
-	if (argc > 1)
-		usage();
+  default:
+   usage();
+  }
+ argc -= optind;
+ argv += optind;
 
-	if (*argv) {
-		if (setdomainname(*argv, (int)strlen(*argv)))
-			err(1, "setdomainname");
-	} else {
-		if (getdomainname(domainname, (int)sizeof(domainname)))
-			err(1, "getdomainname");
-		(void)printf("%s\n", domainname);
-	}
-	exit(0);
+ if (argc > 1)
+  usage();
+
+ if (*argv) {
+  if (setdomainname(*argv, (int)strlen(*argv)))
+   err(1, "setdomainname");
+ } else {
+  if (getdomainname(domainname, (int)sizeof(domainname)))
+   err(1, "getdomainname");
+  (void)printf("%s\n", domainname);
+ }
+ exit(0);
 }

@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int TJFLAG_BOTTOMUP ; 
- int TJPF_CMYK ; 
- int TJPF_GRAY ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  rgb_to_cmyk (unsigned char,unsigned char,unsigned char,unsigned char*,unsigned char*,unsigned char*,unsigned char*) ; 
- int* tjBlueOffset ; 
- int* tjGreenOffset ; 
- int* tjPixelSize ; 
- int* tjRedOffset ; 
+ int TJFLAG_BOTTOMUP ;
+ int TJPF_CMYK ;
+ int TJPF_GRAY ;
+ int memset (unsigned char*,int ,int) ;
+ int rgb_to_cmyk (unsigned char,unsigned char,unsigned char,unsigned char*,unsigned char*,unsigned char*,unsigned char*) ;
+ int* tjBlueOffset ;
+ int* tjGreenOffset ;
+ int* tjPixelSize ;
+ int* tjRedOffset ;
 
 void initBitmap(unsigned char *buf, int width, int pitch, int height, int pf,
                 int flags)

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  NO_HINT ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ get_bool (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_object (int /*<<< orphan*/ ) ; 
- scalar_t__ is_bool (int /*<<< orphan*/ ) ; 
- scalar_t__ is_null (int /*<<< orphan*/ ) ; 
- scalar_t__ is_number (int /*<<< orphan*/ ) ; 
- scalar_t__ is_object_instance (int /*<<< orphan*/ ) ; 
- scalar_t__ is_string (int /*<<< orphan*/ ) ; 
- scalar_t__ is_undefined (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_null () ; 
- int /*<<< orphan*/  jsval_number (int) ; 
- int /*<<< orphan*/  jsval_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_strict_equal (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ jsval_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  to_number (int /*<<< orphan*/ *,int /*<<< orphan*/ ,double*) ; 
- int /*<<< orphan*/  to_primitive (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int HRESULT ;
+typedef int BOOL ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int NO_HINT ;
+ int S_OK ;
+ int TRUE ;
+ scalar_t__ get_bool (int ) ;
+ int get_object (int ) ;
+ scalar_t__ is_bool (int ) ;
+ scalar_t__ is_null (int ) ;
+ scalar_t__ is_number (int ) ;
+ scalar_t__ is_object_instance (int ) ;
+ scalar_t__ is_string (int ) ;
+ scalar_t__ is_undefined (int ) ;
+ int jsval_null () ;
+ int jsval_number (int) ;
+ int jsval_release (int ) ;
+ int jsval_strict_equal (int ,int ,int *) ;
+ scalar_t__ jsval_type (int ) ;
+ int to_number (int *,int ,double*) ;
+ int to_primitive (int *,int ,int *,int ) ;
 
 __attribute__((used)) static HRESULT equal_values(script_ctx_t *ctx, jsval_t lval, jsval_t rval, BOOL *ret)
 {
     if(jsval_type(lval) == jsval_type(rval) || (is_number(lval) && is_number(rval)))
        return jsval_strict_equal(lval, rval, ret);
 
-    /* FIXME: NULL disps should be handled in more general way */
+
     if(is_object_instance(lval) && !get_object(lval))
         return equal_values(ctx, jsval_null(), rval, ret);
     if(is_object_instance(rval) && !get_object(rval))
@@ -61,7 +61,7 @@ __attribute__((used)) static HRESULT equal_values(script_ctx_t *ctx, jsval_t lva
         if(FAILED(hres))
             return hres;
 
-        /* FIXME: optimize */
+
         return equal_values(ctx, jsval_number(n), rval, ret);
     }
 
@@ -73,7 +73,7 @@ __attribute__((used)) static HRESULT equal_values(script_ctx_t *ctx, jsval_t lva
         if(FAILED(hres))
             return hres;
 
-        /* FIXME: optimize */
+
         return equal_values(ctx, lval, jsval_number(n), ret);
     }
 

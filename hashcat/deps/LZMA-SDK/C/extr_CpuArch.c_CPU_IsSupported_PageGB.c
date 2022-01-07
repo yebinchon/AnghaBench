@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UInt32 ;
-typedef  int /*<<< orphan*/  Cx86cpuid ;
-typedef  int BoolInt ;
 
-/* Variables and functions */
- int False ; 
- int /*<<< orphan*/  MyCPUID (int,int*,int*,int*,int*) ; 
- int /*<<< orphan*/  x86cpuid_CheckAndRead (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int UInt32 ;
+typedef int Cx86cpuid ;
+typedef int BoolInt ;
+
+
+ int False ;
+ int MyCPUID (int,int*,int*,int*,int*) ;
+ int x86cpuid_CheckAndRead (int *) ;
 
 BoolInt CPU_IsSupported_PageGB()
 {

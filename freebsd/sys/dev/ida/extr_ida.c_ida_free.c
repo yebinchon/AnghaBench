@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct ida_softc {int /*<<< orphan*/  lock; int /*<<< orphan*/ * regs; int /*<<< orphan*/  regs_res_id; int /*<<< orphan*/  regs_res_type; int /*<<< orphan*/  dev; int /*<<< orphan*/ * parent_dmat; int /*<<< orphan*/ * irq; int /*<<< orphan*/  irq_res_type; TYPE_1__* qcbs; int /*<<< orphan*/ * hwqcb_dmat; int /*<<< orphan*/  hwqcb_dmamap; scalar_t__ hwqcbs; scalar_t__ hwqcb_busaddr; int /*<<< orphan*/ * buffer_dmat; int /*<<< orphan*/  ch; int /*<<< orphan*/ * ih; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dmamap; } ;
 
-/* Variables and functions */
- int IDA_QCB_MAX ; 
- int /*<<< orphan*/  M_DEVBUF ; 
- int /*<<< orphan*/  bus_dma_tag_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bus_dmamap_destroy (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bus_dmamap_unload (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bus_dmamem_free (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bus_release_resource (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bus_teardown_intr (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  callout_drain (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  callout_stop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mtx_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mtx_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mtx_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct ida_softc {int lock; int * regs; int regs_res_id; int regs_res_type; int dev; int * parent_dmat; int * irq; int irq_res_type; TYPE_1__* qcbs; int * hwqcb_dmat; int hwqcb_dmamap; scalar_t__ hwqcbs; scalar_t__ hwqcb_busaddr; int * buffer_dmat; int ch; int * ih; } ;
+struct TYPE_2__ {int dmamap; } ;
+
+
+ int IDA_QCB_MAX ;
+ int M_DEVBUF ;
+ int bus_dma_tag_destroy (int *) ;
+ int bus_dmamap_destroy (int *,int ) ;
+ int bus_dmamap_unload (int *,int ) ;
+ int bus_dmamem_free (int *,scalar_t__,int ) ;
+ int bus_release_resource (int ,int ,int ,int *) ;
+ int bus_teardown_intr (int ,int *,int *) ;
+ int callout_drain (int *) ;
+ int callout_stop (int *) ;
+ int free (TYPE_1__*,int ) ;
+ int mtx_destroy (int *) ;
+ int mtx_lock (int *) ;
+ int mtx_unlock (int *) ;
 
 void
 ida_free(struct ida_softc *ida)
 {
-	int i;
+ int i;
 
-	if (ida->ih != NULL)
-		bus_teardown_intr(ida->dev, ida->irq, ida->ih);
+ if (ida->ih != ((void*)0))
+  bus_teardown_intr(ida->dev, ida->irq, ida->ih);
 
-	mtx_lock(&ida->lock);
-	callout_stop(&ida->ch);
-	mtx_unlock(&ida->lock);
-	callout_drain(&ida->ch);
+ mtx_lock(&ida->lock);
+ callout_stop(&ida->ch);
+ mtx_unlock(&ida->lock);
+ callout_drain(&ida->ch);
 
-	if (ida->buffer_dmat) {
-		for (i = 0; i < IDA_QCB_MAX; i++)
-			bus_dmamap_destroy(ida->buffer_dmat, ida->qcbs[i].dmamap);
-		bus_dma_tag_destroy(ida->buffer_dmat);
-	}
+ if (ida->buffer_dmat) {
+  for (i = 0; i < IDA_QCB_MAX; i++)
+   bus_dmamap_destroy(ida->buffer_dmat, ida->qcbs[i].dmamap);
+  bus_dma_tag_destroy(ida->buffer_dmat);
+ }
 
-	if (ida->hwqcb_dmat) {
-		if (ida->hwqcb_busaddr)
-			bus_dmamap_unload(ida->hwqcb_dmat, ida->hwqcb_dmamap);
-		if (ida->hwqcbs)
-			bus_dmamem_free(ida->hwqcb_dmat, ida->hwqcbs,
-			    ida->hwqcb_dmamap);
-		bus_dma_tag_destroy(ida->hwqcb_dmat);
-	}
+ if (ida->hwqcb_dmat) {
+  if (ida->hwqcb_busaddr)
+   bus_dmamap_unload(ida->hwqcb_dmat, ida->hwqcb_dmamap);
+  if (ida->hwqcbs)
+   bus_dmamem_free(ida->hwqcb_dmat, ida->hwqcbs,
+       ida->hwqcb_dmamap);
+  bus_dma_tag_destroy(ida->hwqcb_dmat);
+ }
 
-	if (ida->qcbs != NULL)
-		free(ida->qcbs, M_DEVBUF);
+ if (ida->qcbs != ((void*)0))
+  free(ida->qcbs, M_DEVBUF);
 
-	if (ida->irq != NULL)
-		bus_release_resource(ida->dev, ida->irq_res_type,
-		    0, ida->irq);
+ if (ida->irq != ((void*)0))
+  bus_release_resource(ida->dev, ida->irq_res_type,
+      0, ida->irq);
 
-	if (ida->parent_dmat != NULL)
-		bus_dma_tag_destroy(ida->parent_dmat);
+ if (ida->parent_dmat != ((void*)0))
+  bus_dma_tag_destroy(ida->parent_dmat);
 
-	if (ida->regs != NULL)
-		bus_release_resource(ida->dev, ida->regs_res_type,
-		    ida->regs_res_id, ida->regs);
+ if (ida->regs != ((void*)0))
+  bus_release_resource(ida->dev, ida->regs_res_type,
+      ida->regs_res_id, ida->regs);
 
-	mtx_destroy(&ida->lock);
+ mtx_destroy(&ida->lock);
 }

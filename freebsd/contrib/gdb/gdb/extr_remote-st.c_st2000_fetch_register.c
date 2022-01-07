@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  expect (char*,int) ; 
- int /*<<< orphan*/  expect_prompt (int) ; 
- int /*<<< orphan*/  get_hex_regs (int,int) ; 
- char* get_reg_name (int) ; 
- int /*<<< orphan*/  printf_stdebug (char*,char*) ; 
- int /*<<< orphan*/  st2000_fetch_registers () ; 
+ int expect (char*,int) ;
+ int expect_prompt (int) ;
+ int get_hex_regs (int,int) ;
+ char* get_reg_name (int) ;
+ int printf_stdebug (char*,char*) ;
+ int st2000_fetch_registers () ;
 
 __attribute__((used)) static void
 st2000_fetch_register (int regno)

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint32_t ;
-typedef  int /*<<< orphan*/  cdc ;
-struct TYPE_5__ {scalar_t__ blk_sha1s; int /*<<< orphan*/  file_sum; int /*<<< orphan*/  write_block; void* block_max_sz; void* block_min_sz; void* block_sz; } ;
-typedef  int /*<<< orphan*/  SeafileCrypt ;
-typedef  int /*<<< orphan*/  SeafStat ;
-typedef  TYPE_1__ CDCFileDescriptor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ filename_chunk_cdc (char const*,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (scalar_t__) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  seaf_fs_manager_calculate_seafile_id_json (int,TYPE_1__*,unsigned char*) ; 
- int /*<<< orphan*/  seaf_warning (char*) ; 
- int /*<<< orphan*/  seafile_write_chunk ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef void* uint32_t ;
+typedef int cdc ;
+struct TYPE_5__ {scalar_t__ blk_sha1s; int file_sum; int write_block; void* block_max_sz; void* block_min_sz; void* block_sz; } ;
+typedef int SeafileCrypt ;
+typedef int SeafStat ;
+typedef TYPE_1__ CDCFileDescriptor ;
+
+
+ int FALSE ;
+ scalar_t__ filename_chunk_cdc (char const*,TYPE_1__*,int *,int ) ;
+ int free (scalar_t__) ;
+ int memcpy (unsigned char*,int ,int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int seaf_fs_manager_calculate_seafile_id_json (int,TYPE_1__*,unsigned char*) ;
+ int seaf_warning (char*) ;
+ int seafile_write_chunk ;
 
 __attribute__((used)) static int
 compute_file_id_with_cdc (const char *path, SeafStat *st,

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct session {char const* cwd; } ;
 struct client {char const* cwd; struct session* session; } ;
 struct TYPE_2__ {char const* cwd; } ;
 
-/* Variables and functions */
- TYPE_1__* cfg_client ; 
- int /*<<< orphan*/  cfg_finished ; 
- char* find_home () ; 
+
+ TYPE_1__* cfg_client ;
+ int cfg_finished ;
+ char* find_home () ;
 
 const char *
 server_client_get_cwd(struct client *c, struct session *s)
 {
-	const char	*home;
+ const char *home;
 
-	if (!cfg_finished && cfg_client != NULL)
-		return (cfg_client->cwd);
-	if (c != NULL && c->session == NULL && c->cwd != NULL)
-		return (c->cwd);
-	if (s != NULL && s->cwd != NULL)
-		return (s->cwd);
-	if (c != NULL && (s = c->session) != NULL && s->cwd != NULL)
-		return (s->cwd);
-	if ((home = find_home()) != NULL)
-		return (home);
-	return ("/");
+ if (!cfg_finished && cfg_client != ((void*)0))
+  return (cfg_client->cwd);
+ if (c != ((void*)0) && c->session == ((void*)0) && c->cwd != ((void*)0))
+  return (c->cwd);
+ if (s != ((void*)0) && s->cwd != ((void*)0))
+  return (s->cwd);
+ if (c != ((void*)0) && (s = c->session) != ((void*)0) && s->cwd != ((void*)0))
+  return (s->cwd);
+ if ((home = find_home()) != ((void*)0))
+  return (home);
+ return ("/");
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GEN_INT (int) ; 
- int /*<<< orphan*/  Pmode ; 
- scalar_t__ TARGET_64BIT ; 
- int /*<<< orphan*/  gen_load_multiple (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_movdi (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_movsi (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_MEM (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_REG (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  get_frame_alias_set () ; 
- int /*<<< orphan*/  plus_constant (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  set_mem_alias_set (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rtx ;
+
+
+ int GEN_INT (int) ;
+ int Pmode ;
+ scalar_t__ TARGET_64BIT ;
+ int gen_load_multiple (int ,int ,int ) ;
+ int gen_movdi (int ,int ) ;
+ int gen_movsi (int ,int ) ;
+ int gen_rtx_MEM (int ,int ) ;
+ int gen_rtx_REG (int ,int) ;
+ int get_frame_alias_set () ;
+ int plus_constant (int ,int) ;
+ int set_mem_alias_set (int ,int ) ;
 
 __attribute__((used)) static rtx
 restore_gprs (rtx base, int offset, int first, int last)
@@ -34,7 +34,7 @@ restore_gprs (rtx base, int offset, int first, int last)
   addr = gen_rtx_MEM (Pmode, addr);
   set_mem_alias_set (addr, get_frame_alias_set ());
 
-  /* Special-case single register.  */
+
   if (first == last)
     {
       if (TARGET_64BIT)
@@ -46,7 +46,7 @@ restore_gprs (rtx base, int offset, int first, int last)
     }
 
   insn = gen_load_multiple (gen_rtx_REG (Pmode, first),
-			    addr,
-			    GEN_INT (last - first + 1));
+       addr,
+       GEN_INT (last - first + 1));
   return insn;
 }

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sockaddr_un {scalar_t__ sun_path; int /*<<< orphan*/  sun_family; } ;
+
+
+
+
+struct sockaddr_un {scalar_t__ sun_path; int sun_family; } ;
 struct sockaddr {int dummy; } ;
-typedef  int /*<<< orphan*/  serverAdd ;
+typedef int serverAdd ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_UNIX ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- scalar_t__ bind (int,struct sockaddr*,int) ; 
- int /*<<< orphan*/  bzero (char*,int) ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ listen (int,int) ; 
- int /*<<< orphan*/  pError (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pTrace (char*,char*) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,short) ; 
- int /*<<< orphan*/  strcpy (scalar_t__,char*) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tclose (int) ; 
- int /*<<< orphan*/  unlink (char*) ; 
+
+ int AF_UNIX ;
+ int SOCK_STREAM ;
+ scalar_t__ bind (int,struct sockaddr*,int) ;
+ int bzero (char*,int) ;
+ int errno ;
+ scalar_t__ listen (int,int) ;
+ int pError (char*,char*,int ) ;
+ int pTrace (char*,char*) ;
+ int socket (int ,int ,int ) ;
+ int sprintf (char*,char*,char*,short) ;
+ int strcpy (scalar_t__,char*) ;
+ int strerror (int ) ;
+ int tclose (int) ;
+ int unlink (char*) ;
 
 int taosOpenUDServerSocket(char *ip, short port) {
   struct sockaddr_un serverAdd;
-  int                sockFd;
-  char               name[128];
+  int sockFd;
+  char name[128];
 
   pTrace("open ud socket:%s", name);
-  // if (tsAllowLocalhost) ip = "0.0.0.0";
+
   sprintf(name, "%s.%d", ip, port);
 
   bzero((char *)&serverAdd, sizeof(serverAdd));
@@ -49,7 +49,7 @@ int taosOpenUDServerSocket(char *ip, short port) {
     return -1;
   }
 
-  /* bind socket to server address */
+
   if (bind(sockFd, (struct sockaddr *)&serverAdd, sizeof(serverAdd)) < 0) {
     pError("bind socket:%s failed, reason:%s", name, strerror(errno));
     tclose(sockFd);

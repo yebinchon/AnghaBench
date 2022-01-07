@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
-typedef  struct TYPE_12__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  scalar_t__ bfd_vma ;
-typedef  scalar_t__ bfd_reloc_status_type ;
-typedef  int /*<<< orphan*/  bfd_byte ;
-typedef  scalar_t__ bfd_boolean ;
-typedef  int /*<<< orphan*/  bfd ;
+
+
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+typedef struct TYPE_12__ TYPE_10__ ;
+
+
+typedef scalar_t__ bfd_vma ;
+typedef scalar_t__ bfd_reloc_status_type ;
+typedef int bfd_byte ;
+typedef scalar_t__ bfd_boolean ;
+typedef int bfd ;
 struct TYPE_15__ {int flags; TYPE_10__* section; scalar_t__ value; } ;
-typedef  TYPE_3__ asymbol ;
+typedef TYPE_3__ asymbol ;
 struct TYPE_16__ {int output_offset; } ;
-typedef  TYPE_4__ asection ;
+typedef TYPE_4__ asection ;
 struct TYPE_17__ {scalar_t__ address; scalar_t__ addend; TYPE_2__* howto; } ;
-typedef  TYPE_5__ arelent ;
+typedef TYPE_5__ arelent ;
 struct TYPE_14__ {scalar_t__ partial_inplace; } ;
-struct TYPE_13__ {scalar_t__ vma; int /*<<< orphan*/ * owner; } ;
+struct TYPE_13__ {scalar_t__ vma; int * owner; } ;
 struct TYPE_12__ {scalar_t__ output_offset; TYPE_1__* output_section; } ;
 
-/* Variables and functions */
- int BSF_LOCAL ; 
- int BSF_SECTION_SYM ; 
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
- scalar_t__ _ (char*) ; 
- scalar_t__ bfd_get_32 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ bfd_get_section_limit (int /*<<< orphan*/ *,TYPE_4__*) ; 
- scalar_t__ bfd_is_com_section (TYPE_10__*) ; 
- int /*<<< orphan*/  bfd_put_32 (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ bfd_reloc_ok ; 
- scalar_t__ bfd_reloc_outofrange ; 
- scalar_t__ mips_elf64_final_gp (int /*<<< orphan*/ *,TYPE_3__*,scalar_t__,char**,scalar_t__*) ; 
+
+ int BSF_LOCAL ;
+ int BSF_SECTION_SYM ;
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
+ scalar_t__ _ (char*) ;
+ scalar_t__ bfd_get_32 (int *,int *) ;
+ scalar_t__ bfd_get_section_limit (int *,TYPE_4__*) ;
+ scalar_t__ bfd_is_com_section (TYPE_10__*) ;
+ int bfd_put_32 (int *,scalar_t__,int *) ;
+ scalar_t__ bfd_reloc_ok ;
+ scalar_t__ bfd_reloc_outofrange ;
+ scalar_t__ mips_elf64_final_gp (int *,TYPE_3__*,scalar_t__,char**,scalar_t__*) ;
 
 __attribute__((used)) static bfd_reloc_status_type
 mips_elf64_gprel32_reloc (bfd *abfd, arelent *reloc_entry, asymbol *symbol,
-			  void *data, asection *input_section, bfd *output_bfd,
-			  char **error_message)
+     void *data, asection *input_section, bfd *output_bfd,
+     char **error_message)
 {
   bfd_boolean relocatable;
   bfd_reloc_status_type ret;
@@ -56,17 +56,17 @@ mips_elf64_gprel32_reloc (bfd *abfd, arelent *reloc_entry, asymbol *symbol,
   bfd_vma relocation;
   bfd_vma val;
 
-  /* R_MIPS_GPREL32 relocations are defined for local symbols only.  */
-  if (output_bfd != NULL
+
+  if (output_bfd != ((void*)0)
       && (symbol->flags & BSF_SECTION_SYM) == 0
       && (symbol->flags & BSF_LOCAL) != 0)
     {
       *error_message = (char *)
-	_("32bits gp relative relocation occurs for an external symbol");
+ _("32bits gp relative relocation occurs for an external symbol");
       return bfd_reloc_outofrange;
     }
 
-  if (output_bfd != NULL)
+  if (output_bfd != ((void*)0))
     relocatable = TRUE;
   else
     {
@@ -75,7 +75,7 @@ mips_elf64_gprel32_reloc (bfd *abfd, arelent *reloc_entry, asymbol *symbol,
     }
 
   ret = mips_elf64_final_gp (output_bfd, symbol, relocatable,
-			     error_message, &gp);
+        error_message, &gp);
   if (ret != bfd_reloc_ok)
     return ret;
 
@@ -90,15 +90,15 @@ mips_elf64_gprel32_reloc (bfd *abfd, arelent *reloc_entry, asymbol *symbol,
   if (reloc_entry->address > bfd_get_section_limit (abfd, input_section))
     return bfd_reloc_outofrange;
 
-  /* Set val to the offset into the section or symbol.  */
+
   val = reloc_entry->addend;
 
   if (reloc_entry->howto->partial_inplace)
     val += bfd_get_32 (abfd, (bfd_byte *) data + reloc_entry->address);
 
-  /* Adjust val for the final section location and GP value.  If we
-     are producing relocatable output, we don't want to do this for
-     an external symbol.  */
+
+
+
   if (! relocatable
       || (symbol->flags & BSF_SECTION_SYM) != 0)
     val += relocation - gp;

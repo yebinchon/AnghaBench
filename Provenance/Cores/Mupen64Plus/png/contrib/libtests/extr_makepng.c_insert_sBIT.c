@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  png_structp ;
-typedef  int /*<<< orphan*/  png_infop ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int png_structp ;
+typedef int png_infop ;
 struct TYPE_3__ {int red; int green; int blue; int gray; int alpha; } ;
-typedef  TYPE_1__ png_color_8 ;
-typedef  int /*<<< orphan*/ * png_charpp ;
+typedef TYPE_1__ png_color_8 ;
+typedef int * png_charpp ;
 
-/* Variables and functions */
- int const PNG_COLOR_MASK_ALPHA ; 
- int const PNG_COLOR_MASK_COLOR ; 
- int const PNG_COLOR_MASK_PALETTE ; 
- void* bval (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int const) ; 
- int /*<<< orphan*/  png_error (int /*<<< orphan*/ ,char*) ; 
- unsigned int png_get_bit_depth (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int png_get_color_type (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  png_set_sBIT (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+ int const PNG_COLOR_MASK_ALPHA ;
+ int const PNG_COLOR_MASK_COLOR ;
+ int const PNG_COLOR_MASK_PALETTE ;
+ void* bval (int ,int ,unsigned int const) ;
+ int png_error (int ,char*) ;
+ unsigned int png_get_bit_depth (int ,int ) ;
+ int png_get_color_type (int ,int ) ;
+ int png_set_sBIT (int ,int ,TYPE_1__*) ;
 
 __attribute__((used)) static void
 insert_sBIT(png_structp png_ptr, png_infop info_ptr, int nparams,

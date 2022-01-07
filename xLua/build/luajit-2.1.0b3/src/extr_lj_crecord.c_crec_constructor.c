@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jit_State ;
-typedef  int /*<<< orphan*/  int32_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int jit_State ;
+typedef int int32_t ;
 struct TYPE_4__ {scalar_t__ ctypeid; } ;
-typedef  int /*<<< orphan*/  TRef ;
-typedef  TYPE_1__ GCcdata ;
-typedef  scalar_t__ CTypeID ;
+typedef int TRef ;
+typedef TYPE_1__ GCcdata ;
+typedef scalar_t__ CTypeID ;
 
-/* Variables and functions */
- scalar_t__ CTID_CTYPEID ; 
- int /*<<< orphan*/  IRFL_CDATA_INT ; 
- int /*<<< orphan*/  IRT (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IRTG (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IRT_INT ; 
- int /*<<< orphan*/  IR_EQ ; 
- int /*<<< orphan*/  IR_FLOAD ; 
- scalar_t__ cdataptr (TYPE_1__*) ; 
- int /*<<< orphan*/  emitir (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lj_ir_kint (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_assert (int) ; 
- scalar_t__ tref_iscdata (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ CTID_CTYPEID ;
+ int IRFL_CDATA_INT ;
+ int IRT (int ,int ) ;
+ int IRTG (int ,int ) ;
+ int IRT_INT ;
+ int IR_EQ ;
+ int IR_FLOAD ;
+ scalar_t__ cdataptr (TYPE_1__*) ;
+ int emitir (int ,int ,int ) ;
+ int lj_ir_kint (int *,int ) ;
+ int lua_assert (int) ;
+ scalar_t__ tref_iscdata (int ) ;
 
 __attribute__((used)) static CTypeID crec_constructor(jit_State *J, GCcdata *cd, TRef tr)
 {

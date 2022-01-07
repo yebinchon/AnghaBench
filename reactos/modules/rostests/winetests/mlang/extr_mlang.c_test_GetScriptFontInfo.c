@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sfi ;
-typedef  int UINT ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sfi ;
+typedef int UINT ;
 struct TYPE_4__ {scalar_t__ scripts; int* wszFont; } ;
-typedef  TYPE_1__ SCRIPTFONTINFO ;
-typedef  int /*<<< orphan*/  IMLangFontLink2 ;
-typedef  scalar_t__ HRESULT ;
+typedef TYPE_1__ SCRIPTFONTINFO ;
+typedef int IMLangFontLink2 ;
+typedef scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ IMLangFontLink2_GetScriptFontInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,TYPE_1__*) ; 
- int /*<<< orphan*/  SCRIPTCONTF_FIXED_FONT ; 
- int /*<<< orphan*/  SCRIPTCONTF_PROPORTIONAL_FONT ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  sidAsciiLatin ; 
+
+ int GetLastError () ;
+ scalar_t__ IMLangFontLink2_GetScriptFontInfo (int *,int ,int ,int*,TYPE_1__*) ;
+ int SCRIPTCONTF_FIXED_FONT ;
+ int SCRIPTCONTF_PROPORTIONAL_FONT ;
+ scalar_t__ S_OK ;
+ int memset (TYPE_1__*,int ,int) ;
+ int ok (int,char*,...) ;
+ int sidAsciiLatin ;
 
 __attribute__((used)) static void test_GetScriptFontInfo(IMLangFontLink2 *font_link)
 {
@@ -35,17 +35,17 @@ __attribute__((used)) static void test_GetScriptFontInfo(IMLangFontLink2 *font_l
     SCRIPTFONTINFO sfi[1];
 
     nfonts = 0;
-    hr = IMLangFontLink2_GetScriptFontInfo(font_link, sidAsciiLatin, 0, &nfonts, NULL);
+    hr = IMLangFontLink2_GetScriptFontInfo(font_link, sidAsciiLatin, 0, &nfonts, ((void*)0));
     ok(hr == S_OK, "GetScriptFontInfo failed %u\n", GetLastError());
     ok(nfonts, "unexpected result\n");
 
     nfonts = 0;
-    hr = IMLangFontLink2_GetScriptFontInfo(font_link, sidAsciiLatin, SCRIPTCONTF_FIXED_FONT, &nfonts, NULL);
+    hr = IMLangFontLink2_GetScriptFontInfo(font_link, sidAsciiLatin, SCRIPTCONTF_FIXED_FONT, &nfonts, ((void*)0));
     ok(hr == S_OK, "GetScriptFontInfo failed %u\n", GetLastError());
     ok(nfonts, "unexpected result\n");
 
     nfonts = 0;
-    hr = IMLangFontLink2_GetScriptFontInfo(font_link, sidAsciiLatin, SCRIPTCONTF_PROPORTIONAL_FONT, &nfonts, NULL);
+    hr = IMLangFontLink2_GetScriptFontInfo(font_link, sidAsciiLatin, SCRIPTCONTF_PROPORTIONAL_FONT, &nfonts, ((void*)0));
     ok(hr == S_OK, "GetScriptFontInfo failed %u\n", GetLastError());
     ok(nfonts, "unexpected result\n");
 

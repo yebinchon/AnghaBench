@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  strm_value ;
-typedef  int /*<<< orphan*/  strm_stream ;
 
-/* Variables and functions */
- int STRM_OK ; 
- double sqrt (double) ; 
- int /*<<< orphan*/  strm_array_p (int /*<<< orphan*/ ) ; 
- int strm_ary_len (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * strm_ary_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_float_value (double) ; 
- int /*<<< orphan*/  strm_get_args (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ **,int*) ; 
- double strm_value_float (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int strm_value ;
+typedef int strm_stream ;
+
+
+ int STRM_OK ;
+ double sqrt (double) ;
+ int strm_array_p (int ) ;
+ int strm_ary_len (int ) ;
+ int * strm_ary_ptr (int ) ;
+ int strm_float_value (double) ;
+ int strm_get_args (int *,int,int *,char*,int **,int*) ;
+ double strm_value_float (int ) ;
 
 __attribute__((used)) static int
 ary_correl(strm_stream* strm, int argc, strm_value* args, strm_value* ret)
@@ -38,7 +38,7 @@ ary_correl(strm_stream* strm, int argc, strm_value* args, strm_value* ret)
     double dx, dy;
 
     if (!strm_array_p(data) || strm_ary_len(data) != 2) {
-      /* skip invalid data */
+
       continue;
     }
     dv = strm_ary_ptr(data);

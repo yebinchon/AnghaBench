@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct priv {int buflen; int paused; } ;
-struct mp_chmap_sel {int /*<<< orphan*/  member_0; } ;
+struct mp_chmap_sel {int member_0; } ;
 struct TYPE_7__ {scalar_t__ num; } ;
-struct ao {scalar_t__ format; int samplerate; int device_buffer; TYPE_2__ channels; int /*<<< orphan*/  probing; struct priv* priv; } ;
-struct TYPE_6__ {scalar_t__ format; int freq; int samples; scalar_t__ channels; struct ao* userdata; int /*<<< orphan*/  callback; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ SDL_AudioSpec ;
+struct ao {scalar_t__ format; int samplerate; int device_buffer; TYPE_2__ channels; int probing; struct priv* priv; } ;
+struct TYPE_6__ {scalar_t__ format; int freq; int samples; scalar_t__ channels; struct ao* userdata; int callback; int member_0; } ;
+typedef TYPE_1__ SDL_AudioSpec ;
 
-/* Variables and functions */
- scalar_t__ AUDIO_S16SYS ; 
- int MPMIN (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MP_ERR (struct ao*,char*,...) ; 
- int /*<<< orphan*/  MP_VERBOSE (struct ao*,char*,int,int,int,int) ; 
- int /*<<< orphan*/  SDL_GetError () ; 
- int /*<<< orphan*/  SDL_INIT_AUDIO ; 
- scalar_t__ SDL_InitSubSystem (int /*<<< orphan*/ ) ; 
- scalar_t__ SDL_OpenAudio (TYPE_1__*,TYPE_1__*) ; 
- scalar_t__ SDL_WasInit (int /*<<< orphan*/ ) ; 
- scalar_t__ af_fmt_from_planar (scalar_t__) ; 
- int /*<<< orphan*/  ao_chmap_sel_adjust (struct ao*,struct mp_chmap_sel*,TYPE_2__*) ; 
- int /*<<< orphan*/  ao_chmap_sel_get_def (struct ao*,struct mp_chmap_sel*,TYPE_2__*,scalar_t__) ; 
- int /*<<< orphan*/  audio_callback ; 
- int /*<<< orphan*/  ceil_power_of_two (int) ; 
- scalar_t__** fmtmap ; 
- int /*<<< orphan*/  mp_chmap_sel_add_waveext_def (struct mp_chmap_sel*) ; 
- int /*<<< orphan*/  uninit (struct ao*) ; 
+
+ scalar_t__ AUDIO_S16SYS ;
+ int MPMIN (int,int ) ;
+ int MP_ERR (struct ao*,char*,...) ;
+ int MP_VERBOSE (struct ao*,char*,int,int,int,int) ;
+ int SDL_GetError () ;
+ int SDL_INIT_AUDIO ;
+ scalar_t__ SDL_InitSubSystem (int ) ;
+ scalar_t__ SDL_OpenAudio (TYPE_1__*,TYPE_1__*) ;
+ scalar_t__ SDL_WasInit (int ) ;
+ scalar_t__ af_fmt_from_planar (scalar_t__) ;
+ int ao_chmap_sel_adjust (struct ao*,struct mp_chmap_sel*,TYPE_2__*) ;
+ int ao_chmap_sel_get_def (struct ao*,struct mp_chmap_sel*,TYPE_2__*,scalar_t__) ;
+ int audio_callback ;
+ int ceil_power_of_two (int) ;
+ scalar_t__** fmtmap ;
+ int mp_chmap_sel_add_waveext_def (struct mp_chmap_sel*) ;
+ int uninit (struct ao*) ;
 
 __attribute__((used)) static int init(struct ao *ao)
 {
@@ -98,10 +98,10 @@ __attribute__((used)) static int init(struct ao *ao)
                (int) obtained.freq, (int) obtained.channels,
                (int) obtained.format, (int) obtained.samples);
 
-    // The sample count is usually the number of samples the callback requests,
-    // which we assume is the period size. Normally, ao.c will allocate a large
-    // enough buffer. But in case the period size should be pathologically
-    // large, this will help.
+
+
+
+
     ao->device_buffer = 3 * obtained.samples;
 
     ao->format = 0;

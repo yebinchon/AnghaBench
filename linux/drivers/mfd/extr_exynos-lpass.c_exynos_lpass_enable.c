@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct exynos_lpass {int /*<<< orphan*/  top; int /*<<< orphan*/  sfr0_clk; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LPASS_DMA_SW_RESET ; 
- int /*<<< orphan*/  LPASS_I2S_SW_RESET ; 
- int LPASS_INTR_DMA ; 
- int LPASS_INTR_I2S ; 
- int LPASS_INTR_SFR ; 
- int LPASS_INTR_UART ; 
- int /*<<< orphan*/  LPASS_MEM_SW_RESET ; 
- int /*<<< orphan*/  LPASS_UART_SW_RESET ; 
- int /*<<< orphan*/  SFR_LPASS_INTR_CA5_MASK ; 
- int /*<<< orphan*/  SFR_LPASS_INTR_CPU_MASK ; 
- int /*<<< orphan*/  clk_prepare_enable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exynos_lpass_core_sw_reset (struct exynos_lpass*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  regmap_write (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct exynos_lpass {int top; int sfr0_clk; } ;
+
+
+ int LPASS_DMA_SW_RESET ;
+ int LPASS_I2S_SW_RESET ;
+ int LPASS_INTR_DMA ;
+ int LPASS_INTR_I2S ;
+ int LPASS_INTR_SFR ;
+ int LPASS_INTR_UART ;
+ int LPASS_MEM_SW_RESET ;
+ int LPASS_UART_SW_RESET ;
+ int SFR_LPASS_INTR_CA5_MASK ;
+ int SFR_LPASS_INTR_CPU_MASK ;
+ int clk_prepare_enable (int ) ;
+ int exynos_lpass_core_sw_reset (struct exynos_lpass*,int ) ;
+ int regmap_write (int ,int ,int) ;
 
 __attribute__((used)) static void exynos_lpass_enable(struct exynos_lpass *lpass)
 {
-	clk_prepare_enable(lpass->sfr0_clk);
+ clk_prepare_enable(lpass->sfr0_clk);
 
-	/* Unmask SFR, DMA and I2S interrupt */
-	regmap_write(lpass->top, SFR_LPASS_INTR_CA5_MASK,
-		     LPASS_INTR_SFR | LPASS_INTR_DMA | LPASS_INTR_I2S);
 
-	regmap_write(lpass->top, SFR_LPASS_INTR_CPU_MASK,
-		     LPASS_INTR_SFR | LPASS_INTR_DMA | LPASS_INTR_I2S |
-		     LPASS_INTR_UART);
+ regmap_write(lpass->top, SFR_LPASS_INTR_CA5_MASK,
+       LPASS_INTR_SFR | LPASS_INTR_DMA | LPASS_INTR_I2S);
 
-	exynos_lpass_core_sw_reset(lpass, LPASS_I2S_SW_RESET);
-	exynos_lpass_core_sw_reset(lpass, LPASS_DMA_SW_RESET);
-	exynos_lpass_core_sw_reset(lpass, LPASS_MEM_SW_RESET);
-	exynos_lpass_core_sw_reset(lpass, LPASS_UART_SW_RESET);
+ regmap_write(lpass->top, SFR_LPASS_INTR_CPU_MASK,
+       LPASS_INTR_SFR | LPASS_INTR_DMA | LPASS_INTR_I2S |
+       LPASS_INTR_UART);
+
+ exynos_lpass_core_sw_reset(lpass, LPASS_I2S_SW_RESET);
+ exynos_lpass_core_sw_reset(lpass, LPASS_DMA_SW_RESET);
+ exynos_lpass_core_sw_reset(lpass, LPASS_MEM_SW_RESET);
+ exynos_lpass_core_sw_reset(lpass, LPASS_UART_SW_RESET);
 }

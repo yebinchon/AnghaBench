@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * hash; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * hash; } ;
 struct batadv_priv {TYPE_1__ dat; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __batadv_dat_purge (struct batadv_priv*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  batadv_hash_destroy (int /*<<< orphan*/ *) ; 
+
+ int __batadv_dat_purge (struct batadv_priv*,int *) ;
+ int batadv_hash_destroy (int *) ;
 
 __attribute__((used)) static void batadv_dat_hash_free(struct batadv_priv *bat_priv)
 {
-	if (!bat_priv->dat.hash)
-		return;
+ if (!bat_priv->dat.hash)
+  return;
 
-	__batadv_dat_purge(bat_priv, NULL);
+ __batadv_dat_purge(bat_priv, ((void*)0));
 
-	batadv_hash_destroy(bat_priv->dat.hash);
+ batadv_hash_destroy(bat_priv->dat.hash);
 
-	bat_priv->dat.hash = NULL;
+ bat_priv->dat.hash = ((void*)0);
 }

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_17__ {int /*<<< orphan*/ * sk; } ;
-struct TYPE_16__ {int /*<<< orphan*/  argp; int /*<<< orphan*/  argl; int /*<<< orphan*/  (* dup_func ) (TYPE_3__ const*,TYPE_3__ const*,void**,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
-struct TYPE_15__ {int /*<<< orphan*/  meth; } ;
-typedef  TYPE_1__ EX_CALLBACKS ;
-typedef  TYPE_2__ EX_CALLBACK ;
-typedef  TYPE_3__ const CRYPTO_EX_DATA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPTO_F_CRYPTO_DUP_EX_DATA ; 
- int /*<<< orphan*/  CRYPTO_THREAD_unlock (int /*<<< orphan*/ ) ; 
- void* CRYPTO_get_ex_data (TYPE_3__ const*,int) ; 
- int /*<<< orphan*/  CRYPTO_set_ex_data (TYPE_3__ const*,int,void*) ; 
- int /*<<< orphan*/  CRYPTOerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  OPENSSL_free (TYPE_2__**) ; 
- TYPE_2__** OPENSSL_malloc (int) ; 
- scalar_t__ OSSL_NELEM (TYPE_2__**) ; 
- int /*<<< orphan*/  ex_data_lock ; 
- TYPE_1__* get_and_lock (int) ; 
- int sk_EX_CALLBACK_num (int /*<<< orphan*/ ) ; 
- TYPE_2__* sk_EX_CALLBACK_value (int /*<<< orphan*/ ,int) ; 
- int sk_void_num (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (TYPE_3__ const*,TYPE_3__ const*,void**,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+struct TYPE_17__ {int * sk; } ;
+struct TYPE_16__ {int argp; int argl; int (* dup_func ) (TYPE_3__ const*,TYPE_3__ const*,void**,int,int ,int ) ;} ;
+struct TYPE_15__ {int meth; } ;
+typedef TYPE_1__ EX_CALLBACKS ;
+typedef TYPE_2__ EX_CALLBACK ;
+typedef TYPE_3__ const CRYPTO_EX_DATA ;
+
+
+ int CRYPTO_F_CRYPTO_DUP_EX_DATA ;
+ int CRYPTO_THREAD_unlock (int ) ;
+ void* CRYPTO_get_ex_data (TYPE_3__ const*,int) ;
+ int CRYPTO_set_ex_data (TYPE_3__ const*,int,void*) ;
+ int CRYPTOerr (int ,int ) ;
+ int ERR_R_MALLOC_FAILURE ;
+ int OPENSSL_free (TYPE_2__**) ;
+ TYPE_2__** OPENSSL_malloc (int) ;
+ scalar_t__ OSSL_NELEM (TYPE_2__**) ;
+ int ex_data_lock ;
+ TYPE_1__* get_and_lock (int) ;
+ int sk_EX_CALLBACK_num (int ) ;
+ TYPE_2__* sk_EX_CALLBACK_value (int ,int) ;
+ int sk_void_num (int *) ;
+ int stub1 (TYPE_3__ const*,TYPE_3__ const*,void**,int,int ,int ) ;
 
 int CRYPTO_dup_ex_data(int class_index, CRYPTO_EX_DATA *to,
                        const CRYPTO_EX_DATA *from)
@@ -43,14 +43,14 @@ int CRYPTO_dup_ex_data(int class_index, CRYPTO_EX_DATA *to,
     int mx, j, i;
     void *ptr;
     EX_CALLBACK *stack[10];
-    EX_CALLBACK **storage = NULL;
+    EX_CALLBACK **storage = ((void*)0);
     EX_CALLBACKS *ip;
     int toret = 0;
 
-    if (from->sk == NULL)
-        /* Nothing to copy over */
+    if (from->sk == ((void*)0))
+
         return 1;
-    if ((ip = get_and_lock(class_index)) == NULL)
+    if ((ip = get_and_lock(class_index)) == ((void*)0))
         return 0;
 
     mx = sk_EX_CALLBACK_num(ip->meth);
@@ -62,7 +62,7 @@ int CRYPTO_dup_ex_data(int class_index, CRYPTO_EX_DATA *to,
             storage = stack;
         else
             storage = OPENSSL_malloc(sizeof(*storage) * mx);
-        if (storage != NULL)
+        if (storage != ((void*)0))
             for (i = 0; i < mx; i++)
                 storage[i] = sk_EX_CALLBACK_value(ip->meth, i);
     }
@@ -70,17 +70,17 @@ int CRYPTO_dup_ex_data(int class_index, CRYPTO_EX_DATA *to,
 
     if (mx == 0)
         return 1;
-    if (storage == NULL) {
+    if (storage == ((void*)0)) {
         CRYPTOerr(CRYPTO_F_CRYPTO_DUP_EX_DATA, ERR_R_MALLOC_FAILURE);
         return 0;
     }
-    /*
-     * Make sure the ex_data stack is at least |mx| elements long to avoid
-     * issues in the for loop that follows; so go get the |mx|'th element
-     * (if it does not exist CRYPTO_get_ex_data() returns NULL), and assign
-     * to itself. This is normally a no-op; but ensures the stack is the
-     * proper size
-     */
+
+
+
+
+
+
+
     if (!CRYPTO_set_ex_data(to, mx - 1, CRYPTO_get_ex_data(to, mx - 1)))
         goto err;
 

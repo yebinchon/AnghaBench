@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  JsonBuf ;
 
-/* Variables and functions */
- int TSDB_CODE_DB_NOT_SELECTED ; 
- int TSDB_CODE_INVALID_TABLE ; 
- int /*<<< orphan*/  httpJsonItemToken (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  httpJsonPair (int /*<<< orphan*/ *,char*,int,char*,int) ; 
- int /*<<< orphan*/  httpJsonPairIntVal (int /*<<< orphan*/ *,char*,int,int) ; 
- scalar_t__ strlen (char*) ; 
- char** tsError ; 
+
+
+
+typedef int JsonBuf ;
+
+
+ int TSDB_CODE_DB_NOT_SELECTED ;
+ int TSDB_CODE_INVALID_TABLE ;
+ int httpJsonItemToken (int *) ;
+ int httpJsonPair (int *,char*,int,char*,int) ;
+ int httpJsonPairIntVal (int *,char*,int,int) ;
+ scalar_t__ strlen (char*) ;
+ char** tsError ;
 
 void httpJsonPairStatus(JsonBuf* buf, int code) {
   if (code == 0) {

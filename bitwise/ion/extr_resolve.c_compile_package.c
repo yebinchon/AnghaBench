@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Package ;
 
-/* Variables and functions */
- int /*<<< orphan*/  add_package_decls (int /*<<< orphan*/ *) ; 
- int buf_len (int /*<<< orphan*/ ) ; 
- scalar_t__ builtin_package ; 
- int /*<<< orphan*/ * enter_package (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  import_all_package_symbols (scalar_t__) ; 
- int /*<<< orphan*/  init_builtin_syms () ; 
- int /*<<< orphan*/  leave_package (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  package_list ; 
- int /*<<< orphan*/  parse_package (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  process_package_imports (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int Package ;
+
+
+ int add_package_decls (int *) ;
+ int buf_len (int ) ;
+ scalar_t__ builtin_package ;
+ int * enter_package (int *) ;
+ int import_all_package_symbols (scalar_t__) ;
+ int init_builtin_syms () ;
+ int leave_package (int *) ;
+ int package_list ;
+ int parse_package (int *) ;
+ int process_package_imports (int *) ;
 
 bool compile_package(Package *package) {
     if (!parse_package(package)) {
-        return false;
+        return 0;
     }
     Package *old_package = enter_package(package);
     if (buf_len(package_list) == 1) {
@@ -38,5 +38,5 @@ bool compile_package(Package *package) {
     add_package_decls(package);
     process_package_imports(package);
     leave_package(old_package);
-    return true;
+    return 1;
 }

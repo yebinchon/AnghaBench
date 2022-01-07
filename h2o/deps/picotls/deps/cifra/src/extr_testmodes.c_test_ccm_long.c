@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  cf_aes_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_CHECK (int) ; 
- int /*<<< orphan*/  cf_aes ; 
- int /*<<< orphan*/  cf_aes_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  cf_ccm_encrypt (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  fill (int /*<<< orphan*/ *,int,int) ; 
- scalar_t__ memcmp (void const*,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int cf_aes_context ;
+
+
+ int TEST_CHECK (int) ;
+ int cf_aes ;
+ int cf_aes_init (int *,int *,int) ;
+ int cf_ccm_encrypt (int *,int *,int *,int,int,int *,int,int *,int,int *,int *,int) ;
+ int fill (int *,int,int) ;
+ scalar_t__ memcmp (void const*,int *,int) ;
 
 __attribute__((used)) static void test_ccm_long(void)
 {
-  /* This is example 4 from SP800-38C, to test the long AAD code path. */
+
   uint8_t header[0x10000];
   uint8_t key[16];
   uint8_t tag[14];

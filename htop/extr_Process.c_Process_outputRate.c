@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RichString ;
 
-/* Variables and functions */
- int* CRT_colors ; 
- size_t LARGE_NUMBER ; 
- double ONE_K ; 
- size_t PROCESS ; 
- size_t PROCESS_MEGABYTES ; 
- size_t PROCESS_SHADOW ; 
- int /*<<< orphan*/  RichString_appendn (int /*<<< orphan*/ *,int,char*,int) ; 
- int snprintf (char*,int,char*,...) ; 
+
+
+
+typedef int RichString ;
+
+
+ int* CRT_colors ;
+ size_t LARGE_NUMBER ;
+ double ONE_K ;
+ size_t PROCESS ;
+ size_t PROCESS_MEGABYTES ;
+ size_t PROCESS_SHADOW ;
+ int RichString_appendn (int *,int,char*,int) ;
+ int snprintf (char*,int,char*,...) ;
 
 void Process_outputRate(RichString* str, char* buffer, int n, double rate, int coloring) {
    int largeNumberColor = CRT_colors[LARGE_NUMBER];

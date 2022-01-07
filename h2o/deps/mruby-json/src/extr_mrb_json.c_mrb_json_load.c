@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int /*<<< orphan*/  JSON_Value ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_PARSER_ERROR ; 
- int /*<<< orphan*/ * json_parse_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  json_value_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  json_value_to_mrb_value (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_nil_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_nil_value () ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mrb_str_to_cstr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_yield_argv (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef int JSON_Value ;
+
+
+ int E_PARSER_ERROR ;
+ int * json_parse_string (int ) ;
+ int json_value_free (int *) ;
+ int json_value_to_mrb_value (int *,int *) ;
+ int mrb_get_args (int *,char*,int *,int *) ;
+ int mrb_nil_p (int ) ;
+ int mrb_nil_value () ;
+ int mrb_raise (int *,int ,char*) ;
+ int mrb_str_to_cstr (int *,int ) ;
+ int mrb_yield_argv (int *,int ,int,int *) ;
 
 __attribute__((used)) static mrb_value
 mrb_json_load(mrb_state *mrb, mrb_value self)

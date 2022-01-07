@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WORD ;
-typedef  char WCHAR ;
-typedef  char* LPWSTR ;
 
-/* Variables and functions */
- char* StrChrIW (char*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int WORD ;
+typedef char WCHAR ;
+typedef char* LPWSTR ;
+
+
+ char* StrChrIW (char*,int) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_StrChrIW(void)
 {
   WCHAR string[129];
   WORD count;
 
-  /* this test crashes on win2k SP4 */
-  /*ok(!StrChrIA(NULL,'\0'), "found a character in a NULL string!\n");*/
+
+
 
   for (count = 32; count < 128; count++)
     string[count] = count;
@@ -35,7 +35,7 @@ __attribute__((used)) static void test_StrChrIW(void)
     LPWSTR result = StrChrIW(string+32, count);
 
     ok(result - string == count, "found char '%c' in wrong place\n", count);
-    ok(StrChrIW(result, count)!=NULL, "didn't find lowercase '%c'\n", count);
+    ok(StrChrIW(result, count)!=((void*)0), "didn't find lowercase '%c'\n", count);
   }
 
   for (count = 'a'; count < 'z'; count++)

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  __u8 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  outb (int /*<<< orphan*/ ,unsigned int) ; 
+
+
+
+typedef int __u8 ;
+
+
+ int outb (int ,unsigned int) ;
 
 __attribute__((used)) static inline void w977_write_reg(__u8 reg, __u8 value, unsigned int efio)
 {
-	outb(reg, efio);
-	outb(value, efio+1);
+ outb(reg, efio);
+ outb(value, efio+1);
 }

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
 
-/* Variables and functions */
- int get16bits (char const*) ; 
+
+
+
+typedef int uint32_t ;
+typedef int uint16_t ;
+
+
+ int get16bits (char const*) ;
 
 uint32_t
 hash_hsieh(const char *key, size_t key_length)
@@ -22,14 +22,14 @@ hash_hsieh(const char *key, size_t key_length)
     uint32_t hash = 0, tmp;
     int rem;
 
-    if (key_length <= 0 || key == NULL) {
+    if (key_length <= 0 || key == ((void*)0)) {
         return 0;
     }
 
     rem = key_length & 3;
     key_length >>= 2;
 
-    /* Main loop */
+
     for (;key_length > 0; key_length--) {
         hash += get16bits (key);
         tmp = (get16bits (key+2) << 11) ^ hash;
@@ -38,7 +38,7 @@ hash_hsieh(const char *key, size_t key_length)
         hash += hash >> 11;
     }
 
-    /* Handle end cases */
+
     switch (rem) {
     case 3:
         hash += get16bits (key);
@@ -62,7 +62,7 @@ hash_hsieh(const char *key, size_t key_length)
         break;
     }
 
-    /* Force "avalanching" of final 127 bits */
+
     hash ^= hash << 3;
     hash += hash >> 5;
     hash ^= hash << 4;

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  NMLVCUSTOMDRAW ;
-typedef  int /*<<< orphan*/  LISTVIEW_INFO ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CDDS_POSTPAINT ; 
- int /*<<< orphan*/  notify_customdraw (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int NMLVCUSTOMDRAW ;
+typedef int LISTVIEW_INFO ;
+typedef int DWORD ;
+
+
+ int CDDS_POSTPAINT ;
+ int notify_customdraw (int const*,int ,int *) ;
 
 __attribute__((used)) static inline DWORD notify_postpaint (const LISTVIEW_INFO *infoPtr, NMLVCUSTOMDRAW *lpnmlvcd)
 {

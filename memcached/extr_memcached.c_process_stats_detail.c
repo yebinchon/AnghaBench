@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  conn ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int conn ;
 struct TYPE_2__ {int detail_enabled; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  out_string (int /*<<< orphan*/ *,char*) ; 
- TYPE_1__ settings ; 
- char* stats_prefix_dump (int*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/  write_and_free (int /*<<< orphan*/ *,char*,int) ; 
+
+ int assert (int ) ;
+ int out_string (int *,char*) ;
+ TYPE_1__ settings ;
+ char* stats_prefix_dump (int*) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int write_and_free (int *,char*,int) ;
 
 __attribute__((used)) inline static void process_stats_detail(conn *c, const char *command) {
-    assert(c != NULL);
+    assert(c != ((void*)0));
 
     if (strcmp(command, "on") == 0) {
         settings.detail_enabled = 1;

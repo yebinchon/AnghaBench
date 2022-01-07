@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct proc {int dummy; } ;
 struct inf {int dummy; } ;
-typedef  int /*<<< orphan*/  ptid_t ;
+typedef int ptid_t ;
 
-/* Variables and functions */
- int PIDGET (int /*<<< orphan*/ ) ; 
- struct inf* current_inferior ; 
- struct proc* inf_tid_to_thread (struct inf*,int) ; 
- char* proc_string (struct proc*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
+
+ int PIDGET (int ) ;
+ struct inf* current_inferior ;
+ struct proc* inf_tid_to_thread (struct inf*,int) ;
+ char* proc_string (struct proc*) ;
+ int sprintf (char*,char*,int) ;
 
 __attribute__((used)) static char *
 gnu_pid_to_str (ptid_t ptid)

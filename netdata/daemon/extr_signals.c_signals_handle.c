@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int action; char* name; scalar_t__ count; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_CHILDS ; 
- scalar_t__ EINTR ; 
-#define  NETDATA_SIGNAL_CHILD 133 
- int NETDATA_SIGNAL_END_OF_LIST ; 
-#define  NETDATA_SIGNAL_EXIT_CLEANLY 132 
-#define  NETDATA_SIGNAL_FATAL 131 
-#define  NETDATA_SIGNAL_LOG_ROTATE 130 
-#define  NETDATA_SIGNAL_RELOAD_HEALTH 129 
-#define  NETDATA_SIGNAL_SAVE_DATABASE 128 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,char const*) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  error_log_limit_reset () ; 
- int /*<<< orphan*/  error_log_limit_unlimited () ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fatal (char*,char const*) ; 
- int /*<<< orphan*/  health_reload () ; 
- int /*<<< orphan*/  info (char*,...) ; 
- int /*<<< orphan*/  netdata_cleanup_and_exit (int /*<<< orphan*/ ) ; 
- int pause () ; 
- int /*<<< orphan*/  reap_children () ; 
- int /*<<< orphan*/  reopen_all_log_files () ; 
- int /*<<< orphan*/  rrdhost_save_all () ; 
- TYPE_1__* signals_waiting ; 
+
+ int D_CHILDS ;
+ scalar_t__ EINTR ;
+
+ int NETDATA_SIGNAL_END_OF_LIST ;
+
+
+
+
+
+ int debug (int ,char*,char const*) ;
+ scalar_t__ errno ;
+ int error (char*) ;
+ int error_log_limit_reset () ;
+ int error_log_limit_unlimited () ;
+ int exit (int ) ;
+ int fatal (char*,char const*) ;
+ int health_reload () ;
+ int info (char*,...) ;
+ int netdata_cleanup_and_exit (int ) ;
+ int pause () ;
+ int reap_children () ;
+ int reopen_all_log_files () ;
+ int rrdhost_save_all () ;
+ TYPE_1__* signals_waiting ;
 
 void signals_handle(void) {
     while(1) {
 
-        // pause()  causes  the calling process (or thread) to sleep until a signal
-        // is delivered that either terminates the process or causes the invocation
-        // of a signal-catching function.
+
+
+
         if(pause() == -1 && errno == EINTR) {
 
-            // loop once, but keep looping while signals are coming in
-            // this is needed because a few operations may take some time
-            // so we need to check for new signals before pausing again
+
+
+
             int found = 1;
             while(found) {
                 found = 0;
 
-                // execute the actions of the signals
+
                 int i;
                 for (i = 0; signals_waiting[i].action != NETDATA_SIGNAL_END_OF_LIST; i++) {
                     if (signals_waiting[i].count) {
@@ -63,14 +63,14 @@ void signals_handle(void) {
                         const char *name = signals_waiting[i].name;
 
                         switch (signals_waiting[i].action) {
-                            case NETDATA_SIGNAL_RELOAD_HEALTH:
+                            case 129:
                                 error_log_limit_unlimited();
                                 info("SIGNAL: Received %s. Reloading HEALTH configuration...", name);
                                 health_reload();
                                 error_log_limit_reset();
                                 break;
 
-                            case NETDATA_SIGNAL_SAVE_DATABASE:
+                            case 128:
                                 error_log_limit_unlimited();
                                 info("SIGNAL: Received %s. Saving databases...", name);
                                 rrdhost_save_all();
@@ -78,23 +78,23 @@ void signals_handle(void) {
                                 error_log_limit_reset();
                                 break;
 
-                            case NETDATA_SIGNAL_LOG_ROTATE:
+                            case 130:
                                 error_log_limit_unlimited();
                                 info("SIGNAL: Received %s. Reopening all log files...", name);
                                 reopen_all_log_files();
                                 error_log_limit_reset();
                                 break;
 
-                            case NETDATA_SIGNAL_EXIT_CLEANLY:
+                            case 132:
                                 error_log_limit_unlimited();
                                 info("SIGNAL: Received %s. Cleaning up to exit...", name);
                                 netdata_cleanup_and_exit(0);
                                 exit(0);
 
-                            case NETDATA_SIGNAL_FATAL:
+                            case 131:
                                 fatal("SIGNAL: Received %s. netdata now exits.", name);
 
-                            case NETDATA_SIGNAL_CHILD:
+                            case 133:
                                 debug(D_CHILDS, "SIGNAL: Received %s. Reaping...", name);
                                 reap_children();
                                 break;

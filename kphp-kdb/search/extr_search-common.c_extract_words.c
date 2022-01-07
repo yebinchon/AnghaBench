@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ word; unsigned int freqs; } ;
-typedef  TYPE_1__ pair_word_freqs_t ;
+typedef TYPE_1__ pair_word_freqs_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int get_notword (char const*) ; 
- int get_word (char const*) ; 
- int /*<<< orphan*/  kprintf (char*,char const*) ; 
- scalar_t__ make_tag (char*,int,int) ; 
- int my_lc_str (char*,char const*,int) ; 
- int /*<<< orphan*/  qsort_q (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- void* word_hash (char const*,int) ; 
+
+ int assert (int) ;
+ int exit (int) ;
+ int get_notword (char const*) ;
+ int get_word (char const*) ;
+ int kprintf (char*,char const*) ;
+ scalar_t__ make_tag (char*,int,int) ;
+ int my_lc_str (char*,char const*,int) ;
+ int qsort_q (TYPE_1__*,int ,int) ;
+ void* word_hash (char const*,int) ;
 
 int extract_words (const char *text, int len, int universal, pair_word_freqs_t *Q, int max_words, int tag_owner, long long item_id) {
   static char buff[512];
@@ -80,7 +80,7 @@ int extract_words (const char *text, int len, int universal, pair_word_freqs_t *
     assert (wl > 0 && wl < 511);
     if (*text == 0x1f) {
       Q[Qw].word = word_hash (text, wl);
-      Q[Qw].freqs = 0; /* we don't count tags */
+      Q[Qw].freqs = 0;
       Qw++;
     } else {
       int wl2 = my_lc_str (buff, text, wl);
@@ -103,7 +103,7 @@ int extract_words (const char *text, int len, int universal, pair_word_freqs_t *
       }
       Q[t].word = Q[i].word;
       Q[t].freqs = freqs;
-      //vkprintf (3, "Q[%d].word = %llx, Q[%d].freqs = %u\n", t, Q[t].word, t, Q[t].freqs);
+
       t++;
     }
   }

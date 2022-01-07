@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  THREAD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ElStart () ; 
- int /*<<< orphan*/  ElStop () ; 
- int /*<<< orphan*/ * el ; 
+
+
+
+typedef int THREAD ;
+
+
+ int ElStart () ;
+ int ElStop () ;
+ int * el ;
 
 void EiRebootServerThread(THREAD *thread, void *param)
 {
-	// Validate arguments
-	if (thread == NULL)
-	{
-		return;
-	}
 
-	if (el == NULL)
-	{
-		return;
-	}
+ if (thread == ((void*)0))
+ {
+  return;
+ }
 
-	// Stopping the server
-	ElStop();
+ if (el == ((void*)0))
+ {
+  return;
+ }
 
-	// Starting the server
-	ElStart();
+
+ ElStop();
+
+
+ ElStart();
 }

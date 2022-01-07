@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int JOB_DATA_SIZE_LIMIT_MAX ; 
- int SERVER () ; 
- int /*<<< orphan*/  ckresp (int,char*) ; 
- int job_data_size_limit ; 
- int /*<<< orphan*/  memset (char*,char,int const) ; 
- int mustdiallocal (int) ; 
- int /*<<< orphan*/  mustsend (int,char*) ; 
+ int JOB_DATA_SIZE_LIMIT_MAX ;
+ int SERVER () ;
+ int ckresp (int,char*) ;
+ int job_data_size_limit ;
+ int memset (char*,char,int const) ;
+ int mustdiallocal (int) ;
+ int mustsend (int,char*) ;
 
 void
 cttest_job_size_max_plus_1()
 {
-    /* verify that server reject the job larger than maximum allowed. */
+
     job_data_size_limit = JOB_DATA_SIZE_LIMIT_MAX;
     int port = SERVER();
     int fd = mustdiallocal(port);

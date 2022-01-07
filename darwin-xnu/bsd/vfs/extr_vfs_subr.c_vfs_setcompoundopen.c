@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* mount_t ;
-struct TYPE_5__ {int /*<<< orphan*/  mnt_compound_ops; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMPOUND_VNOP_OPEN ; 
- int /*<<< orphan*/  mount_lock_spin (TYPE_1__*) ; 
- int /*<<< orphan*/  mount_unlock (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef TYPE_1__* mount_t ;
+struct TYPE_5__ {int mnt_compound_ops; } ;
+
+
+ int COMPOUND_VNOP_OPEN ;
+ int mount_lock_spin (TYPE_1__*) ;
+ int mount_unlock (TYPE_1__*) ;
 
 void
 vfs_setcompoundopen(mount_t mp)
 {
-	mount_lock_spin(mp);
-	mp->mnt_compound_ops |= COMPOUND_VNOP_OPEN;
-	mount_unlock(mp);
+ mount_lock_spin(mp);
+ mp->mnt_compound_ops |= COMPOUND_VNOP_OPEN;
+ mount_unlock(mp);
 }

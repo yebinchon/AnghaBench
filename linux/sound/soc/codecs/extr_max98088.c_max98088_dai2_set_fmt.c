@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
+
+
+
+
+typedef int u8 ;
 struct snd_soc_dai {struct snd_soc_component* component; } ;
-struct snd_soc_component {int /*<<< orphan*/  dev; } ;
+struct snd_soc_component {int dev; } ;
 struct max98088_priv {struct max98088_cdata* dai; } ;
 struct max98088_cdata {unsigned int fmt; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int M98088_DAI_BCI ; 
- int M98088_DAI_BSEL64 ; 
- int M98088_DAI_DLY ; 
- int M98088_DAI_MAS ; 
- int M98088_DAI_WCI ; 
- int /*<<< orphan*/  M98088_REG_1A_DAI2_CLKCFG_HI ; 
- int /*<<< orphan*/  M98088_REG_1B_DAI2_CLKCFG_LO ; 
- int /*<<< orphan*/  M98088_REG_1C_DAI2_FORMAT ; 
- int /*<<< orphan*/  M98088_REG_1D_DAI2_CLOCK ; 
-#define  SND_SOC_DAIFMT_CBM_CFM 137 
-#define  SND_SOC_DAIFMT_CBM_CFS 136 
-#define  SND_SOC_DAIFMT_CBS_CFM 135 
-#define  SND_SOC_DAIFMT_CBS_CFS 134 
- unsigned int SND_SOC_DAIFMT_FORMAT_MASK ; 
-#define  SND_SOC_DAIFMT_I2S 133 
-#define  SND_SOC_DAIFMT_IB_IF 132 
-#define  SND_SOC_DAIFMT_IB_NF 131 
- unsigned int SND_SOC_DAIFMT_INV_MASK ; 
-#define  SND_SOC_DAIFMT_LEFT_J 130 
- unsigned int SND_SOC_DAIFMT_MASTER_MASK ; 
-#define  SND_SOC_DAIFMT_NB_IF 129 
-#define  SND_SOC_DAIFMT_NB_NF 128 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ ,char*) ; 
- struct max98088_priv* snd_soc_component_get_drvdata (struct snd_soc_component*) ; 
- int /*<<< orphan*/  snd_soc_component_update_bits (struct snd_soc_component*,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  snd_soc_component_write (struct snd_soc_component*,int /*<<< orphan*/ ,int) ; 
+
+ int EINVAL ;
+ int M98088_DAI_BCI ;
+ int M98088_DAI_BSEL64 ;
+ int M98088_DAI_DLY ;
+ int M98088_DAI_MAS ;
+ int M98088_DAI_WCI ;
+ int M98088_REG_1A_DAI2_CLKCFG_HI ;
+ int M98088_REG_1B_DAI2_CLKCFG_LO ;
+ int M98088_REG_1C_DAI2_FORMAT ;
+ int M98088_REG_1D_DAI2_CLOCK ;
+
+
+
+
+ unsigned int SND_SOC_DAIFMT_FORMAT_MASK ;
+
+
+
+ unsigned int SND_SOC_DAIFMT_INV_MASK ;
+
+ unsigned int SND_SOC_DAIFMT_MASTER_MASK ;
+
+
+ int dev_err (int ,char*) ;
+ struct max98088_priv* snd_soc_component_get_drvdata (struct snd_soc_component*) ;
+ int snd_soc_component_update_bits (struct snd_soc_component*,int ,int,int) ;
+ int snd_soc_component_write (struct snd_soc_component*,int ,int) ;
 
 __attribute__((used)) static int max98088_dai2_set_fmt(struct snd_soc_dai *codec_dai,
                                 unsigned int fmt)
@@ -59,44 +59,44 @@ __attribute__((used)) static int max98088_dai2_set_fmt(struct snd_soc_dai *codec
                cdata->fmt = fmt;
 
                switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
-               case SND_SOC_DAIFMT_CBS_CFS:
-                       /* Slave mode PLL */
+               case 134:
+
                        snd_soc_component_write(component, M98088_REG_1A_DAI2_CLKCFG_HI,
                                0x80);
                        snd_soc_component_write(component, M98088_REG_1B_DAI2_CLKCFG_LO,
                                0x00);
                        break;
-               case SND_SOC_DAIFMT_CBM_CFM:
-                       /* Set to master mode */
+               case 137:
+
                        reg1Cval |= M98088_DAI_MAS;
                        break;
-               case SND_SOC_DAIFMT_CBS_CFM:
-               case SND_SOC_DAIFMT_CBM_CFS:
+               case 135:
+               case 136:
                default:
                        dev_err(component->dev, "Clock mode unsupported");
                        return -EINVAL;
                }
 
                switch (fmt & SND_SOC_DAIFMT_FORMAT_MASK) {
-               case SND_SOC_DAIFMT_I2S:
+               case 133:
                        reg1Cval |= M98088_DAI_DLY;
                        break;
-               case SND_SOC_DAIFMT_LEFT_J:
+               case 130:
                        break;
                default:
                        return -EINVAL;
                }
 
                switch (fmt & SND_SOC_DAIFMT_INV_MASK) {
-               case SND_SOC_DAIFMT_NB_NF:
+               case 128:
                        break;
-               case SND_SOC_DAIFMT_NB_IF:
+               case 129:
                        reg1Cval |= M98088_DAI_WCI;
                        break;
-               case SND_SOC_DAIFMT_IB_NF:
+               case 131:
                        reg1Cval |= M98088_DAI_BCI;
                        break;
-               case SND_SOC_DAIFMT_IB_IF:
+               case 132:
                        reg1Cval |= M98088_DAI_BCI|M98088_DAI_WCI;
                        break;
                default:

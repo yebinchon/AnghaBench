@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_short ;
-struct servent {int /*<<< orphan*/  s_port; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LogWARN ; 
- struct servent* getservbyname (char const*,char const*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,char const*,char const*) ; 
- int /*<<< orphan*/  ntohs (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strtol (char const*,char**,int) ; 
+
+
+
+typedef int u_short ;
+struct servent {int s_port; } ;
+
+
+ int LogWARN ;
+ struct servent* getservbyname (char const*,char const*) ;
+ int log_Printf (int ,char*,char const*,char const*) ;
+ int ntohs (int ) ;
+ int strtol (char const*,char**,int) ;
 
 __attribute__((used)) static int
 StrToPort(const char *str, u_short *port, const char *proto)
@@ -29,9 +29,9 @@ StrToPort(const char *str, u_short *port, const char *proto)
   *port = strtol(str, &end, 10);
   if (*end != '\0') {
     sp = getservbyname(str, proto);
-    if (sp == NULL) {
+    if (sp == ((void*)0)) {
       log_Printf(LogWARN, "StrToAddr: Unknown port or service %s/%s.\n",
-	        str, proto);
+         str, proto);
       return -1;
     }
     *port = ntohs(sp->s_port);

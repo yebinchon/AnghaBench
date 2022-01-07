@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
+
+
+
+
+typedef int uint64_t ;
 struct stream {scalar_t__ eof; } ;
-struct ebml_parse_ctx {int has_errors; int /*<<< orphan*/  talloc_ctx; scalar_t__ no_error_messages; } ;
-struct ebml_elem_desc {int /*<<< orphan*/  name; } ;
+struct ebml_parse_ctx {int has_errors; int talloc_ctx; scalar_t__ no_error_messages; } ;
+struct ebml_elem_desc {int name; } ;
 
-/* Variables and functions */
- int EBML_UINT_INVALID ; 
- int /*<<< orphan*/  MP_MSG (struct ebml_parse_ctx*,int,char*,...) ; 
- int MSGL_DEBUG ; 
- int MSGL_WARN ; 
- int /*<<< orphan*/  ebml_parse_element (struct ebml_parse_ctx*,void*,int /*<<< orphan*/ ,int,struct ebml_elem_desc const*,int /*<<< orphan*/ ) ; 
- int ebml_read_length (struct stream*) ; 
- int stream_read (struct stream*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  talloc_size (int /*<<< orphan*/ *,int) ; 
+
+ int EBML_UINT_INVALID ;
+ int MP_MSG (struct ebml_parse_ctx*,int,char*,...) ;
+ int MSGL_DEBUG ;
+ int MSGL_WARN ;
+ int ebml_parse_element (struct ebml_parse_ctx*,void*,int ,int,struct ebml_elem_desc const*,int ) ;
+ int ebml_read_length (struct stream*) ;
+ int stream_read (struct stream*,int ,int) ;
+ int talloc_size (int *,int) ;
 
 int ebml_read_element(struct stream *s, struct ebml_parse_ctx *ctx,
                       void *target, const struct ebml_elem_desc *desc)
 {
-    ctx->has_errors = false;
+    ctx->has_errors = 0;
     int msglevel = ctx->no_error_messages ? MSGL_DEBUG : MSGL_WARN;
     uint64_t length = ebml_read_length(s);
     if (s->eof) {
@@ -44,7 +44,7 @@ int ebml_read_element(struct stream *s, struct ebml_parse_ctx *ctx,
         MP_MSG(ctx, msglevel, "Refusing to read element over 100 MB in size\n");
         return -1;
     }
-    ctx->talloc_ctx = talloc_size(NULL, length);
+    ctx->talloc_ctx = talloc_size(((void*)0), length);
     int read_len = stream_read(s, ctx->talloc_ctx, length);
     if (read_len < length)
         MP_MSG(ctx, msglevel, "Unexpected end of file - partial or corrupt file?\n");

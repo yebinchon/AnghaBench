@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vt_h264_encoder {int /*<<< orphan*/  extra_data; int /*<<< orphan*/  packet_data; int /*<<< orphan*/ * session; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CFRelease (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VTCompressionSessionInvalidate (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bfree (struct vt_h264_encoder*) ; 
- int /*<<< orphan*/  da_free (int /*<<< orphan*/ ) ; 
+
+
+
+struct vt_h264_encoder {int extra_data; int packet_data; int * session; } ;
+
+
+ int CFRelease (int *) ;
+ int VTCompressionSessionInvalidate (int *) ;
+ int bfree (struct vt_h264_encoder*) ;
+ int da_free (int ) ;
 
 __attribute__((used)) static void vt_h264_destroy(void *data)
 {
-	struct vt_h264_encoder *enc = data;
+ struct vt_h264_encoder *enc = data;
 
-	if (enc) {
-		if (enc->session != NULL) {
-			VTCompressionSessionInvalidate(enc->session);
-			CFRelease(enc->session);
-		}
-		da_free(enc->packet_data);
-		da_free(enc->extra_data);
-		bfree(enc);
-	}
+ if (enc) {
+  if (enc->session != ((void*)0)) {
+   VTCompressionSessionInvalidate(enc->session);
+   CFRelease(enc->session);
+  }
+  da_free(enc->packet_data);
+  da_free(enc->extra_data);
+  bfree(enc);
+ }
 }

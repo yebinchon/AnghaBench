@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
-typedef  struct TYPE_18__   TYPE_14__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+typedef struct TYPE_18__ TYPE_14__ ;
+
+
 struct TYPE_19__ {scalar_t__ multi_select; } ;
-typedef  TYPE_1__ listview ;
+typedef TYPE_1__ listview ;
 struct TYPE_20__ {TYPE_1__* textbox; TYPE_1__* box; TYPE_1__* icon; } ;
-typedef  TYPE_2__ _listview_row ;
-typedef  int TextboxFlags ;
+typedef TYPE_2__ _listview_row ;
+typedef int TextboxFlags ;
 struct TYPE_21__ {scalar_t__ data; } ;
 struct TYPE_18__ {scalar_t__ show_icons; } ;
-typedef  TYPE_3__ GList ;
+typedef TYPE_3__ GList ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  NORMAL ; 
- int /*<<< orphan*/  ROFI_ORIENTATION_HORIZONTAL ; 
- int TB_AUTOHEIGHT ; 
- int TB_INDICATOR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WIDGET (TYPE_1__*) ; 
- int /*<<< orphan*/  WIDGET_TYPE_LISTVIEW_ELEMENT ; 
- int /*<<< orphan*/  WIDGET_TYPE_TEXTBOX_TEXT ; 
- int /*<<< orphan*/  box_add (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* box_create (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- TYPE_14__ config ; 
- int /*<<< orphan*/  g_free ; 
- TYPE_3__* g_list_first (TYPE_3__*) ; 
- int /*<<< orphan*/  g_list_free_full (TYPE_3__*,int /*<<< orphan*/ ) ; 
- TYPE_3__* g_list_next (TYPE_3__*) ; 
- TYPE_1__* icon_create (int /*<<< orphan*/ ,char*) ; 
- TYPE_3__* rofi_theme_get_list (int /*<<< orphan*/ ,char*,char*) ; 
- scalar_t__ strcasecmp (char*,char*) ; 
- TYPE_1__* textbox_create (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  widget_set_type (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ int NORMAL ;
+ int ROFI_ORIENTATION_HORIZONTAL ;
+ int TB_AUTOHEIGHT ;
+ int TB_INDICATOR ;
+ int TRUE ;
+ int WIDGET (TYPE_1__*) ;
+ int WIDGET_TYPE_LISTVIEW_ELEMENT ;
+ int WIDGET_TYPE_TEXTBOX_TEXT ;
+ int box_add (TYPE_1__*,int ,int ) ;
+ TYPE_1__* box_create (int ,char*,int ) ;
+ TYPE_14__ config ;
+ int g_free ;
+ TYPE_3__* g_list_first (TYPE_3__*) ;
+ int g_list_free_full (TYPE_3__*,int ) ;
+ TYPE_3__* g_list_next (TYPE_3__*) ;
+ TYPE_1__* icon_create (int ,char*) ;
+ TYPE_3__* rofi_theme_get_list (int ,char*,char*) ;
+ scalar_t__ strcasecmp (char*,char*) ;
+ TYPE_1__* textbox_create (int ,int ,char*,int,int ,char*,int ,int ) ;
+ int widget_set_type (int ,int ) ;
 
 __attribute__((used)) static void listview_create_row ( listview *lv, _listview_row *row )
 {
     TextboxFlags flags = ( lv->multi_select ) ? TB_INDICATOR : 0;
-    row->box  = box_create ( WIDGET ( lv ), "element",ROFI_ORIENTATION_HORIZONTAL );
+    row->box = box_create ( WIDGET ( lv ), "element",ROFI_ORIENTATION_HORIZONTAL );
     widget_set_type ( WIDGET(row->box), WIDGET_TYPE_LISTVIEW_ELEMENT);
     GList *list = rofi_theme_get_list ( WIDGET(row->box), "children", "element-icon,element-text");
 
-    row->textbox = NULL;
-    row->icon    = NULL;
+    row->textbox = ((void*)0);
+    row->icon = ((void*)0);
 
-    for ( GList *iter = g_list_first(list); iter != NULL;iter = g_list_next(iter)){
+    for ( GList *iter = g_list_first(list); iter != ((void*)0);iter = g_list_next(iter)){
         if ( strcasecmp((char *)iter->data, "element-icon") == 0 ) {
             if ( config.show_icons ) {
                 row->icon = icon_create ( WIDGET ( row->box ), "element-icon" );

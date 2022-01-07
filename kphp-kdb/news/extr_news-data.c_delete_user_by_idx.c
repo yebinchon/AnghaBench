@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int user_id; } ;
-typedef  TYPE_1__ user_t ;
-typedef  int /*<<< orphan*/  recommend_user_t ;
-typedef  int /*<<< orphan*/  notify_user_t ;
+typedef TYPE_1__ user_t ;
+typedef int recommend_user_t ;
+typedef int notify_user_t ;
 
-/* Variables and functions */
- scalar_t__ NOTIFY_MODE ; 
- int RECOMMEND_MODE ; 
- scalar_t__ UG_MODE ; 
- TYPE_1__** User ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free_item_list (TYPE_1__*) ; 
- int /*<<< orphan*/  free_notify_user_list (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_recommend_user_list (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_user_struct (TYPE_1__*) ; 
- int /*<<< orphan*/  tot_users ; 
+
+ scalar_t__ NOTIFY_MODE ;
+ int RECOMMEND_MODE ;
+ scalar_t__ UG_MODE ;
+ TYPE_1__** User ;
+ int assert (int) ;
+ int free_item_list (TYPE_1__*) ;
+ int free_notify_user_list (int *) ;
+ int free_recommend_user_list (int *) ;
+ int free_user_struct (TYPE_1__*) ;
+ int tot_users ;
 
 __attribute__((used)) static int delete_user_by_idx (int i) {
   if (i < 0) {

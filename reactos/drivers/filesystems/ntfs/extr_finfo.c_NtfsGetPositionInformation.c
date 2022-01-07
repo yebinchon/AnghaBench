@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  QuadPart; } ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int QuadPart; } ;
 struct TYPE_12__ {TYPE_1__ CurrentByteOffset; } ;
-struct TYPE_10__ {int /*<<< orphan*/  QuadPart; } ;
+struct TYPE_10__ {int QuadPart; } ;
 struct TYPE_11__ {TYPE_2__ CurrentByteOffset; } ;
-typedef  int* PULONG ;
-typedef  TYPE_3__* PFILE_POSITION_INFORMATION ;
-typedef  TYPE_4__* PFILE_OBJECT ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  FILE_POSITION_INFORMATION ;
+typedef int* PULONG ;
+typedef TYPE_3__* PFILE_POSITION_INFORMATION ;
+typedef TYPE_4__* PFILE_OBJECT ;
+typedef int NTSTATUS ;
+typedef int FILE_POSITION_INFORMATION ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPRINT1 (char*,TYPE_4__*,TYPE_3__*,int*) ; 
- int /*<<< orphan*/  STATUS_BUFFER_TOO_SMALL ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
+
+ int DPRINT (char*,int ) ;
+ int DPRINT1 (char*,TYPE_4__*,TYPE_3__*,int*) ;
+ int STATUS_BUFFER_TOO_SMALL ;
+ int STATUS_SUCCESS ;
 
 __attribute__((used)) static
 NTSTATUS

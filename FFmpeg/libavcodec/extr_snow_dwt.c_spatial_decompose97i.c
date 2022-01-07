@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DWTELEM ;
 
-/* Variables and functions */
- int avpriv_mirror (int,int) ; 
- int /*<<< orphan*/  horizontal_decompose97i (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vertical_decompose97iH0 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vertical_decompose97iH1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vertical_decompose97iL0 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vertical_decompose97iL1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int DWTELEM ;
+
+
+ int avpriv_mirror (int,int) ;
+ int horizontal_decompose97i (int *,int *,int) ;
+ int vertical_decompose97iH0 (int *,int *,int *,int) ;
+ int vertical_decompose97iH1 (int *,int *,int *,int) ;
+ int vertical_decompose97iL0 (int *,int *,int *,int) ;
+ int vertical_decompose97iL1 (int *,int *,int *,int) ;
 
 __attribute__((used)) static void spatial_decompose97i(DWTELEM *buffer, DWTELEM *temp,
                                  int width, int height, int stride)
 {
     int y;
     DWTELEM *b0 = buffer + avpriv_mirror(-4 - 1, height - 1) * stride;
-    DWTELEM *b1 = buffer + avpriv_mirror(-4,     height - 1) * stride;
+    DWTELEM *b1 = buffer + avpriv_mirror(-4, height - 1) * stride;
     DWTELEM *b2 = buffer + avpriv_mirror(-4 + 1, height - 1) * stride;
     DWTELEM *b3 = buffer + avpriv_mirror(-4 + 2, height - 1) * stride;
 

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVFilterLink ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVERROR_EOF ; 
- int /*<<< orphan*/  AV_NOPTS_VALUE ; 
- int /*<<< orphan*/  ff_avfilter_link_set_out_status (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int AVFilterLink ;
+
+
+ int AVERROR_EOF ;
+ int AV_NOPTS_VALUE ;
+ int ff_avfilter_link_set_out_status (int *,int ,int ) ;
 
 void avfilter_link_set_closed(AVFilterLink *link, int closed)
 {

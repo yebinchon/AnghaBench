@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int l116; TYPE_2__* k; int /*<<< orphan*/  l30; } ;
-typedef  TYPE_1__ s ;
-typedef  int /*<<< orphan*/  l72 ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int l116; TYPE_2__* k; int l30; } ;
+typedef TYPE_1__ s ;
+typedef int l72 ;
 struct TYPE_10__ {int* j; int* l40; } ;
-struct TYPE_9__ {int f; int p; int v; int j; TYPE_3__ o; int /*<<< orphan*/  l46; int /*<<< orphan*/  l34; TYPE_1__* d; } ;
-typedef  TYPE_2__ e ;
+struct TYPE_9__ {int f; int p; int v; int j; TYPE_3__ o; int l46; int l34; TYPE_1__* d; } ;
+typedef TYPE_2__ e ;
 
-/* Variables and functions */
- int /*<<< orphan*/  l (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  l138 (TYPE_2__*) ; 
- int /*<<< orphan*/  memcpy (TYPE_3__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
+
+ int l (TYPE_1__*,int,int) ;
+ int l138 (TYPE_2__*) ;
+ int memcpy (TYPE_3__*,int *,int) ;
+ int memset (TYPE_3__*,int ,int) ;
 
 __attribute__((used)) static void l179(e*a,l72*l149){s*b=a->d;e*h;int c;{if
 (!(a->f!=3||!a->l34))goto l247;return;l247:;}{if(!(!b->l30))goto l248

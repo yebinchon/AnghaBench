@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct irq_data {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ack_dynirq (struct irq_data*) ; 
- int /*<<< orphan*/  disable_dynirq (struct irq_data*) ; 
+
+ int ack_dynirq (struct irq_data*) ;
+ int disable_dynirq (struct irq_data*) ;
 
 __attribute__((used)) static void mask_ack_dynirq(struct irq_data *data)
 {
-	disable_dynirq(data);
-	ack_dynirq(data);
+ disable_dynirq(data);
+ ack_dynirq(data);
 }

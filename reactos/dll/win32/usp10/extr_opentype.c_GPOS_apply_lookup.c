@@ -1,68 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_51__   TYPE_8__ ;
-typedef  struct TYPE_50__   TYPE_7__ ;
-typedef  struct TYPE_49__   TYPE_6__ ;
-typedef  struct TYPE_48__   TYPE_5__ ;
-typedef  struct TYPE_47__   TYPE_4__ ;
-typedef  struct TYPE_46__   TYPE_3__ ;
-typedef  struct TYPE_45__   TYPE_2__ ;
-typedef  struct TYPE_44__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum gpos_lookup_type { ____Placeholder_gpos_lookup_type } gpos_lookup_type ;
-typedef  int /*<<< orphan*/  WORD ;
+
+
+typedef struct TYPE_51__ TYPE_8__ ;
+typedef struct TYPE_50__ TYPE_7__ ;
+typedef struct TYPE_49__ TYPE_6__ ;
+typedef struct TYPE_48__ TYPE_5__ ;
+typedef struct TYPE_47__ TYPE_4__ ;
+typedef struct TYPE_46__ TYPE_3__ ;
+typedef struct TYPE_45__ TYPE_2__ ;
+typedef struct TYPE_44__ TYPE_1__ ;
+
+
+typedef enum gpos_lookup_type { ____Placeholder_gpos_lookup_type } gpos_lookup_type ;
+typedef int WORD ;
 struct TYPE_51__ {int du; int dv; } ;
-struct TYPE_50__ {int /*<<< orphan*/  PosFormat; int /*<<< orphan*/  ExtensionLookupType; } ;
-struct TYPE_49__ {int /*<<< orphan*/ * Lookup; } ;
-struct TYPE_48__ {int /*<<< orphan*/ * SubTable; int /*<<< orphan*/  SubTableCount; int /*<<< orphan*/  LookupFlag; int /*<<< orphan*/  LookupType; } ;
+struct TYPE_50__ {int PosFormat; int ExtensionLookupType; } ;
+struct TYPE_49__ {int * Lookup; } ;
+struct TYPE_48__ {int * SubTable; int SubTableCount; int LookupFlag; int LookupType; } ;
 struct TYPE_44__ {int tmAscent; int tmDescent; int tmInternalLeading; } ;
 struct TYPE_47__ {TYPE_1__ otmTextMetrics; } ;
-struct TYPE_46__ {int /*<<< orphan*/  y; int /*<<< orphan*/  x; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-struct TYPE_45__ {int /*<<< orphan*/  fLogicalOrder; int /*<<< orphan*/  fRTL; } ;
-typedef  int /*<<< orphan*/  ScriptCache ;
-typedef  TYPE_2__ SCRIPT_ANALYSIS ;
-typedef  TYPE_3__ POINT ;
-typedef  TYPE_4__ OUTLINETEXTMETRICW ;
-typedef  TYPE_5__ OT_LookupTable ;
-typedef  TYPE_6__ OT_LookupList ;
-typedef  int /*<<< orphan*/  LOGFONTW ;
-typedef  TYPE_7__ GPOS_ExtensionPosFormat1 ;
-typedef  TYPE_8__ GOFFSET ;
-typedef  int /*<<< orphan*/  BYTE ;
+struct TYPE_46__ {int y; int x; int member_1; int member_0; } ;
+struct TYPE_45__ {int fLogicalOrder; int fRTL; } ;
+typedef int ScriptCache ;
+typedef TYPE_2__ SCRIPT_ANALYSIS ;
+typedef TYPE_3__ POINT ;
+typedef TYPE_4__ OUTLINETEXTMETRICW ;
+typedef TYPE_5__ OT_LookupTable ;
+typedef TYPE_6__ OT_LookupList ;
+typedef int LOGFONTW ;
+typedef TYPE_7__ GPOS_ExtensionPosFormat1 ;
+typedef TYPE_8__ GOFFSET ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int GET_BE_WORD (int /*<<< orphan*/ ) ; 
-#define  GPOS_LOOKUP_ADJUST_PAIR 135 
-#define  GPOS_LOOKUP_ADJUST_SINGLE 134 
-#define  GPOS_LOOKUP_ATTACH_CURSIVE 133 
-#define  GPOS_LOOKUP_ATTACH_MARK_TO_BASE 132 
-#define  GPOS_LOOKUP_ATTACH_MARK_TO_LIGATURE 131 
-#define  GPOS_LOOKUP_ATTACH_MARK_TO_MARK 130 
-#define  GPOS_LOOKUP_POSITION_CONTEXT 129 
-#define  GPOS_LOOKUP_POSITION_CONTEXT_CHAINED 128 
- int GPOS_LOOKUP_POSITION_EXTENSION ; 
- unsigned int GPOS_apply_ChainContextPos (int /*<<< orphan*/  const*,TYPE_4__ const*,int /*<<< orphan*/  const*,TYPE_2__ const*,int*,TYPE_6__ const*,TYPE_5__ const*,int /*<<< orphan*/  const*,unsigned int,unsigned int,TYPE_8__*) ; 
- unsigned int GPOS_apply_ContextPos (int /*<<< orphan*/  const*,TYPE_4__ const*,int /*<<< orphan*/  const*,TYPE_2__ const*,int*,TYPE_6__ const*,TYPE_5__ const*,int /*<<< orphan*/  const*,unsigned int,unsigned int,TYPE_8__*) ; 
- int /*<<< orphan*/  GPOS_apply_CursiveAttachment (TYPE_5__ const*,TYPE_2__ const*,int /*<<< orphan*/  const*,unsigned int,unsigned int,int,TYPE_3__*) ; 
- int GPOS_apply_MarkToBase (int /*<<< orphan*/  const*,TYPE_5__ const*,TYPE_2__ const*,int /*<<< orphan*/  const*,unsigned int,unsigned int,int,TYPE_3__*) ; 
- int /*<<< orphan*/  GPOS_apply_MarkToLigature (TYPE_5__ const*,TYPE_2__ const*,int /*<<< orphan*/  const*,unsigned int,unsigned int,int,TYPE_3__*) ; 
- int /*<<< orphan*/  GPOS_apply_MarkToMark (TYPE_5__ const*,TYPE_2__ const*,int /*<<< orphan*/  const*,unsigned int,unsigned int,int,TYPE_3__*) ; 
- int GPOS_apply_PairAdjustment (TYPE_5__ const*,TYPE_2__ const*,int /*<<< orphan*/  const*,unsigned int,unsigned int,int,TYPE_3__*,TYPE_3__*) ; 
- int /*<<< orphan*/  GPOS_apply_SingleAdjustment (TYPE_5__ const*,TYPE_2__ const*,int /*<<< orphan*/  const*,unsigned int,unsigned int,int,TYPE_3__*,TYPE_3__*) ; 
- int /*<<< orphan*/  GPOS_convert_design_units_to_device (TYPE_4__ const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,double*,double*) ; 
- int /*<<< orphan*/  TRACE (char*,int,...) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int round (double) ; 
+
+ int FIXME (char*,...) ;
+ int GET_BE_WORD (int ) ;
+ int GPOS_LOOKUP_POSITION_EXTENSION ;
+ unsigned int GPOS_apply_ChainContextPos (int const*,TYPE_4__ const*,int const*,TYPE_2__ const*,int*,TYPE_6__ const*,TYPE_5__ const*,int const*,unsigned int,unsigned int,TYPE_8__*) ;
+ unsigned int GPOS_apply_ContextPos (int const*,TYPE_4__ const*,int const*,TYPE_2__ const*,int*,TYPE_6__ const*,TYPE_5__ const*,int const*,unsigned int,unsigned int,TYPE_8__*) ;
+ int GPOS_apply_CursiveAttachment (TYPE_5__ const*,TYPE_2__ const*,int const*,unsigned int,unsigned int,int,TYPE_3__*) ;
+ int GPOS_apply_MarkToBase (int const*,TYPE_5__ const*,TYPE_2__ const*,int const*,unsigned int,unsigned int,int,TYPE_3__*) ;
+ int GPOS_apply_MarkToLigature (TYPE_5__ const*,TYPE_2__ const*,int const*,unsigned int,unsigned int,int,TYPE_3__*) ;
+ int GPOS_apply_MarkToMark (TYPE_5__ const*,TYPE_2__ const*,int const*,unsigned int,unsigned int,int,TYPE_3__*) ;
+ int GPOS_apply_PairAdjustment (TYPE_5__ const*,TYPE_2__ const*,int const*,unsigned int,unsigned int,int,TYPE_3__*,TYPE_3__*) ;
+ int GPOS_apply_SingleAdjustment (TYPE_5__ const*,TYPE_2__ const*,int const*,unsigned int,unsigned int,int,TYPE_3__*,TYPE_3__*) ;
+ int GPOS_convert_design_units_to_device (TYPE_4__ const*,int const*,int ,int ,double*,double*) ;
+ int TRACE (char*,int,...) ;
+ int WARN (char*) ;
+ int round (double) ;
 
 __attribute__((used)) static unsigned int GPOS_apply_lookup(const ScriptCache *script_cache, const OUTLINETEXTMETRICW *lpotm,
         const LOGFONTW *lplogfont, const SCRIPT_ANALYSIS *analysis, int *piAdvance, const OT_LookupList *lookup,
@@ -102,7 +94,7 @@ __attribute__((used)) static unsigned int GPOS_apply_lookup(const ScriptCache *s
     }
     switch (type)
     {
-        case GPOS_LOOKUP_ADJUST_SINGLE:
+        case 134:
         {
             double devX, devY;
             POINT adjust = {0,0};
@@ -124,7 +116,7 @@ __attribute__((used)) static unsigned int GPOS_apply_lookup(const ScriptCache *s
             break;
         }
 
-        case GPOS_LOOKUP_ADJUST_PAIR:
+        case 135:
         {
             POINT advance[2]= {{0,0},{0,0}};
             POINT adjust[2]= {{0,0},{0,0}};
@@ -160,7 +152,7 @@ __attribute__((used)) static unsigned int GPOS_apply_lookup(const ScriptCache *s
             return index_offset;
         }
 
-        case GPOS_LOOKUP_ATTACH_CURSIVE:
+        case 133:
         {
             POINT desU = {0,0};
             double devX, devY;
@@ -170,13 +162,13 @@ __attribute__((used)) static unsigned int GPOS_apply_lookup(const ScriptCache *s
             if (desU.x || desU.y)
             {
                 GPOS_convert_design_units_to_device(lpotm, lplogfont, desU.x, desU.y, &devX, &devY);
-                /* Windows does not appear to apply X offsets here */
+
                 pGoffset[glyph_index].dv = round(devY) + pGoffset[glyph_index+write_dir].dv;
             }
             break;
         }
 
-        case GPOS_LOOKUP_ATTACH_MARK_TO_BASE:
+        case 132:
         {
             double devX, devY;
             POINT desU = {0,0};
@@ -196,7 +188,7 @@ __attribute__((used)) static unsigned int GPOS_apply_lookup(const ScriptCache *s
             break;
         }
 
-        case GPOS_LOOKUP_ATTACH_MARK_TO_LIGATURE:
+        case 131:
         {
             double devX, devY;
             POINT desU = {0,0};
@@ -210,7 +202,7 @@ __attribute__((used)) static unsigned int GPOS_apply_lookup(const ScriptCache *s
             break;
         }
 
-        case GPOS_LOOKUP_ATTACH_MARK_TO_MARK:
+        case 130:
         {
             double devX, devY;
             POINT desU = {0,0};
@@ -225,11 +217,11 @@ __attribute__((used)) static unsigned int GPOS_apply_lookup(const ScriptCache *s
             break;
         }
 
-        case GPOS_LOOKUP_POSITION_CONTEXT:
+        case 129:
             return GPOS_apply_ContextPos(script_cache, lpotm, lplogfont, analysis, piAdvance,
                     lookup, look, glyphs, glyph_index, glyph_count, pGoffset);
 
-        case GPOS_LOOKUP_POSITION_CONTEXT_CHAINED:
+        case 128:
             return GPOS_apply_ChainContextPos(script_cache, lpotm, lplogfont, analysis, piAdvance,
                     lookup, look, glyphs, glyph_index, glyph_count, pGoffset);
 

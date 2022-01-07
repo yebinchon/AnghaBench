@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * PCRYPT_DATA_BLOB ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  CRYPT_DATA_BLOB ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ CRYPT_ConstructBlob (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * CryptMemAlloc (int) ; 
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int * PCRYPT_DATA_BLOB ;
+typedef int DWORD ;
+typedef int CRYPT_DATA_BLOB ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ CRYPT_ConstructBlob (int *,int const*) ;
+ int * CryptMemAlloc (int) ;
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
+ int memset (int *,int ,int) ;
 
 __attribute__((used)) static BOOL CRYPT_ConstructBlobArray(DWORD *outCBlobs,
  PCRYPT_DATA_BLOB *outPBlobs, DWORD cBlobs, const CRYPT_DATA_BLOB *pBlobs)

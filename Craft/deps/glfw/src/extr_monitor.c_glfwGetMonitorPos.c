@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  _GLFWmonitor ;
-typedef  int /*<<< orphan*/  GLFWmonitor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _GLFW_REQUIRE_INIT () ; 
- int /*<<< orphan*/  _glfwPlatformGetMonitorPos (int /*<<< orphan*/ *,int*,int*) ; 
+
+
+
+typedef int _GLFWmonitor ;
+typedef int GLFWmonitor ;
+
+
+ int _GLFW_REQUIRE_INIT () ;
+ int _glfwPlatformGetMonitorPos (int *,int*,int*) ;
 
 void glfwGetMonitorPos(GLFWmonitor* handle, int* xpos, int* ypos)
 {

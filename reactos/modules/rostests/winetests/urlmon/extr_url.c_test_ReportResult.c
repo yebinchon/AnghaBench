@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IMoniker ;
-typedef  int /*<<< orphan*/  IBindStatusCallback ;
-typedef  int /*<<< orphan*/  IBindCtx ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ABOUT_TEST ; 
- int /*<<< orphan*/  BINDTEST_EMULATE ; 
- int /*<<< orphan*/  CHECK_CALLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CLEAR_CALLED (int /*<<< orphan*/ ) ; 
- scalar_t__ CreateAsyncBindCtx (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ CreateURLMoniker (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GetBindInfo ; 
- int /*<<< orphan*/  IBindCtx_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IStream ; 
- scalar_t__ IMoniker_BindToStorage (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IMoniker_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ MK_S_ASYNCHRONOUS ; 
- int /*<<< orphan*/  OnStartBinding ; 
- int /*<<< orphan*/  QueryInterface_IBindStatusCallbackEx ; 
- int /*<<< orphan*/  QueryInterface_IInternetProtocol ; 
- int /*<<< orphan*/  QueryInterface_IServiceProvider ; 
- int /*<<< orphan*/  SET_EXPECT (int /*<<< orphan*/ ) ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SetPriority ; 
- int /*<<< orphan*/  Start ; 
- int /*<<< orphan*/  TYMED_ISTREAM ; 
- int /*<<< orphan*/  about_blankW ; 
- scalar_t__ binding_hres ; 
- int /*<<< orphan*/  bsc ; 
- int /*<<< orphan*/  init_bind_test (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ is_urlmon_protocol (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,...) ; 
- int /*<<< orphan*/  test_protocol ; 
+
+
+
+typedef int IUnknown ;
+typedef int IMoniker ;
+typedef int IBindStatusCallback ;
+typedef int IBindCtx ;
+typedef scalar_t__ HRESULT ;
+
+
+ int ABOUT_TEST ;
+ int BINDTEST_EMULATE ;
+ int CHECK_CALLED (int ) ;
+ int CLEAR_CALLED (int ) ;
+ scalar_t__ CreateAsyncBindCtx (int ,int *,int *,int **) ;
+ scalar_t__ CreateURLMoniker (int *,int ,int **) ;
+ int GetBindInfo ;
+ int IBindCtx_Release (int *) ;
+ int IID_IStream ;
+ scalar_t__ IMoniker_BindToStorage (int *,int *,int *,int *,void**) ;
+ int IMoniker_Release (int *) ;
+ scalar_t__ MK_S_ASYNCHRONOUS ;
+ int OnStartBinding ;
+ int QueryInterface_IBindStatusCallbackEx ;
+ int QueryInterface_IInternetProtocol ;
+ int QueryInterface_IServiceProvider ;
+ int SET_EXPECT (int ) ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_OK ;
+ int SetPriority ;
+ int Start ;
+ int TYMED_ISTREAM ;
+ int about_blankW ;
+ scalar_t__ binding_hres ;
+ int bsc ;
+ int init_bind_test (int ,int ,int ) ;
+ scalar_t__ is_urlmon_protocol (int ) ;
+ int ok (int,char*,scalar_t__,...) ;
+ int test_protocol ;
 
 __attribute__((used)) static void test_ReportResult(HRESULT exhres)
 {
-    IMoniker *mon = NULL;
-    IBindCtx *bctx = NULL;
+    IMoniker *mon = ((void*)0);
+    IBindCtx *bctx = ((void*)0);
     IUnknown *unk = (void*)0xdeadbeef;
     HRESULT hres;
 
     init_bind_test(ABOUT_TEST, BINDTEST_EMULATE, TYMED_ISTREAM);
     binding_hres = exhres;
 
-    hres = CreateURLMoniker(NULL, about_blankW, &mon);
+    hres = CreateURLMoniker(((void*)0), about_blankW, &mon);
     ok(hres == S_OK, "CreateURLMoniker failed: %08x\n", hres);
 
     SET_EXPECT(QueryInterface_IServiceProvider);
-    hres = CreateAsyncBindCtx(0, (IBindStatusCallback*)&bsc, NULL, &bctx);
+    hres = CreateAsyncBindCtx(0, (IBindStatusCallback*)&bsc, ((void*)0), &bctx);
     ok(hres == S_OK, "CreateAsyncBindCtx failed: %08x\n\n", hres);
     CHECK_CALLED(QueryInterface_IServiceProvider);
 
@@ -73,22 +73,22 @@ __attribute__((used)) static void test_ReportResult(HRESULT exhres)
         SET_EXPECT(SetPriority);
     SET_EXPECT(Start);
 
-    hres = IMoniker_BindToStorage(mon, bctx, NULL, &IID_IStream, (void**)&unk);
+    hres = IMoniker_BindToStorage(mon, bctx, ((void*)0), &IID_IStream, (void**)&unk);
     if(SUCCEEDED(exhres))
         ok(hres == S_OK || hres == MK_S_ASYNCHRONOUS, "BindToStorage failed: %08x\n", hres);
     else
         ok(hres == exhres || hres == MK_S_ASYNCHRONOUS,
            "BindToStorage failed: %08x, expected %08x or MK_S_ASYNCHRONOUS\n", hres, exhres);
 
-    CLEAR_CALLED(QueryInterface_IBindStatusCallbackEx); /* IE 8 */
+    CLEAR_CALLED(QueryInterface_IBindStatusCallbackEx);
     CHECK_CALLED(GetBindInfo);
     CHECK_CALLED(QueryInterface_IInternetProtocol);
     CHECK_CALLED(OnStartBinding);
     if(is_urlmon_protocol(test_protocol))
-        CLEAR_CALLED(SetPriority); /* Not called by IE11 */
+        CLEAR_CALLED(SetPriority);
     CHECK_CALLED(Start);
 
-    ok(unk == NULL, "unk=%p\n", unk);
+    ok(unk == ((void*)0), "unk=%p\n", unk);
 
     IBindCtx_Release(bctx);
     IMoniker_Release(mon);

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct redirect_priv {int code; int /*<<< orphan*/ * to; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct redirect_priv {int code; int * to; } ;
 struct lwan_response {struct lwan_key_value* headers; } ;
 struct lwan_request {TYPE_1__* conn; } ;
-struct lwan_key_value {char* key; int /*<<< orphan*/ * value; } ;
-typedef  enum lwan_http_status { ____Placeholder_lwan_http_status } lwan_http_status ;
-struct TYPE_2__ {int /*<<< orphan*/  coro; } ;
+struct lwan_key_value {char* key; int * value; } ;
+typedef enum lwan_http_status { ____Placeholder_lwan_http_status } lwan_http_status ;
+struct TYPE_2__ {int coro; } ;
 
-/* Variables and functions */
- int HTTP_INTERNAL_ERROR ; 
- scalar_t__ UNLIKELY (int) ; 
- struct lwan_key_value* coro_malloc (int /*<<< orphan*/ ,int) ; 
+
+ int HTTP_INTERNAL_ERROR ;
+ scalar_t__ UNLIKELY (int) ;
+ struct lwan_key_value* coro_malloc (int ,int) ;
 
 __attribute__((used)) static enum lwan_http_status
 redirect_handle_request(struct lwan_request *request,
@@ -37,8 +37,8 @@ redirect_handle_request(struct lwan_request *request,
 
     headers[0].key = "Location";
     headers[0].value = priv->to;
-    headers[1].key = NULL;
-    headers[1].value = NULL;
+    headers[1].key = ((void*)0);
+    headers[1].value = ((void*)0);
 
     response->headers = headers;
 

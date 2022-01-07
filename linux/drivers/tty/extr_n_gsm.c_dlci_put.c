@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gsm_dlci {int /*<<< orphan*/  port; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  tty_port_put (int /*<<< orphan*/ *) ; 
+
+
+
+struct gsm_dlci {int port; } ;
+
+
+ int tty_port_put (int *) ;
 
 __attribute__((used)) static inline void dlci_put(struct gsm_dlci *dlci)
 {
-	tty_port_put(&dlci->port);
+ tty_port_put(&dlci->port);
 }

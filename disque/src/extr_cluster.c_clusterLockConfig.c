@@ -1,41 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int C_ERR ; 
- int C_OK ; 
- scalar_t__ EWOULDBLOCK ; 
- int /*<<< orphan*/  LL_WARNING ; 
- int LOCK_EX ; 
- int LOCK_NB ; 
- int O_CREAT ; 
- int O_WRONLY ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ errno ; 
- int flock (int,int) ; 
- int open (char*,int,int) ; 
- int /*<<< orphan*/  serverLog (int /*<<< orphan*/ ,char*,char*,...) ; 
- int /*<<< orphan*/  strerror (scalar_t__) ; 
+ int C_ERR ;
+ int C_OK ;
+ scalar_t__ EWOULDBLOCK ;
+ int LL_WARNING ;
+ int LOCK_EX ;
+ int LOCK_NB ;
+ int O_CREAT ;
+ int O_WRONLY ;
+ int close (int) ;
+ scalar_t__ errno ;
+ int flock (int,int) ;
+ int open (char*,int,int) ;
+ int serverLog (int ,char*,char*,...) ;
+ int strerror (scalar_t__) ;
 
 int clusterLockConfig(char *filename) {
-/* flock() does not exist on Solaris
- * and a fcntl-based solution won't help, as we constantly re-open that file,
- * which will release _all_ locks anyway
- */
-#if !defined(__sun)
-    /* To lock it, we need to open the file in a way it is created if
-     * it does not exist, otherwise there is a race condition with other
-     * processes. */
     int fd = open(filename,O_WRONLY|O_CREAT,0644);
     if (fd == -1) {
         serverLog(LL_WARNING,
@@ -58,9 +42,9 @@ int clusterLockConfig(char *filename) {
         close(fd);
         return C_ERR;
     }
-    /* Lock acquired: leak the 'fd' by not closing it, so that we'll retain the
-     * lock to the file as long as the process exists. */
-#endif /* __sun */
+
+
+
 
     return C_OK;
 }

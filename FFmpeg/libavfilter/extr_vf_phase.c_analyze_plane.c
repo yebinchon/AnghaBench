@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  enum PhaseMode { ____Placeholder_PhaseMode } PhaseMode ;
-struct TYPE_4__ {int* linesize; int height; int width; int /*<<< orphan*/ ** data; scalar_t__ top_field_first; scalar_t__ interlaced_frame; } ;
-typedef  TYPE_1__ AVFrame ;
 
-/* Variables and functions */
-#define  ANALYZE 131 
- int AUTO ; 
- int AUTO_ANALYZE ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int BOTTOM_FIRST ; 
-#define  BOTTOM_FIRST_ANALYZE 130 
- int DIFF (int /*<<< orphan*/  const*,int const,int /*<<< orphan*/  const*,int const) ; 
-#define  FULL_ANALYZE 129 
- int PROGRESSIVE ; 
- int TOP_FIRST ; 
-#define  TOP_FIRST_ANALYZE 128 
- int /*<<< orphan*/  av_assert0 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,char,double,double,double) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef enum PhaseMode { ____Placeholder_PhaseMode } PhaseMode ;
+struct TYPE_4__ {int* linesize; int height; int width; int ** data; scalar_t__ top_field_first; scalar_t__ interlaced_frame; } ;
+typedef TYPE_1__ AVFrame ;
+
+
+
+ int AUTO ;
+ int AUTO_ANALYZE ;
+ int AV_LOG_DEBUG ;
+ int BOTTOM_FIRST ;
+
+ int DIFF (int const*,int const,int const*,int const) ;
+
+ int PROGRESSIVE ;
+ int TOP_FIRST ;
+
+ int av_assert0 (int ) ;
+ int av_log (void*,int ,char*,char,double,double,double) ;
 
 __attribute__((used)) static enum PhaseMode analyze_plane(void *ctx, enum PhaseMode mode, AVFrame *old, AVFrame *new)
 {
@@ -40,7 +40,7 @@ __attribute__((used)) static enum PhaseMode analyze_plane(void *ctx, enum PhaseM
                TOP_FIRST : BOTTOM_FIRST : PROGRESSIVE;
     } else if (mode == AUTO_ANALYZE) {
         mode = new->interlaced_frame ? new->top_field_first ?
-               TOP_FIRST_ANALYZE : BOTTOM_FIRST_ANALYZE : FULL_ANALYZE;
+               128 : 130 : 129;
     }
 
     if (mode <= BOTTOM_FIRST) {
@@ -66,7 +66,7 @@ __attribute__((used)) static enum PhaseMode analyze_plane(void *ctx, enum PhaseM
             pdif = tdif = bdif = 0;
 
             switch (mode) {
-            case TOP_FIRST_ANALYZE:
+            case 128:
                 if (top) {
                     for (rend = nptr + w; nptr < rend; nptr++, optr++) {
                         pdif += DIFF(nptr, ns, nptr, ns);
@@ -79,7 +79,7 @@ __attribute__((used)) static enum PhaseMode analyze_plane(void *ctx, enum PhaseM
                     }
                 }
                 break;
-            case BOTTOM_FIRST_ANALYZE:
+            case 130:
                 if (top) {
                     for (rend = nptr + w; nptr < rend; nptr++, optr++) {
                         pdif += DIFF(nptr, ns, nptr, ns);
@@ -92,7 +92,7 @@ __attribute__((used)) static enum PhaseMode analyze_plane(void *ctx, enum PhaseM
                     }
                 }
                 break;
-            case ANALYZE:
+            case 131:
                 if (top) {
                     for (rend = nptr + w; nptr < rend; nptr++, optr++) {
                         tdif += DIFF(nptr, ns, optr, os);
@@ -105,7 +105,7 @@ __attribute__((used)) static enum PhaseMode analyze_plane(void *ctx, enum PhaseM
                     }
                 }
                 break;
-            case FULL_ANALYZE:
+            case 129:
                 if (top) {
                     for (rend = nptr + w; nptr < rend; nptr++, optr++) {
                         pdif += DIFF(nptr, ns, nptr, ns);
@@ -137,11 +137,11 @@ __attribute__((used)) static enum PhaseMode analyze_plane(void *ctx, enum PhaseM
         tdiff *= scale;
         bdiff *= scale;
 
-        if (mode == TOP_FIRST_ANALYZE) {
+        if (mode == 128) {
             bdiff = 65536.0;
-        } else if (mode == BOTTOM_FIRST_ANALYZE) {
+        } else if (mode == 130) {
             tdiff = 65536.0;
-        } else if (mode == ANALYZE) {
+        } else if (mode == 131) {
             pdiff = 65536.0;
         }
 

@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_6__ ;
-typedef  struct TYPE_23__   TYPE_5__ ;
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
+
+
+typedef struct TYPE_24__ TYPE_6__ ;
+typedef struct TYPE_23__ TYPE_5__ ;
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
 struct TYPE_24__ {scalar_t__ codec_type; scalar_t__ codec_id; } ;
 struct TYPE_23__ {int nb_streams; TYPE_1__** streams; TYPE_3__* pb; TYPE_4__* priv_data; } ;
-struct TYPE_22__ {int riff_id; int master_index_max_size; scalar_t__ odml_list; int /*<<< orphan*/  riff_start; int /*<<< orphan*/  movi_list; } ;
+struct TYPE_22__ {int riff_id; int master_index_max_size; scalar_t__ odml_list; int riff_start; int movi_list; } ;
 struct TYPE_21__ {int seekable; } ;
-struct TYPE_20__ {int packet_count; int max_size; scalar_t__ frames_hdr_strm; int /*<<< orphan*/  last_dts; } ;
+struct TYPE_20__ {int packet_count; int max_size; scalar_t__ frames_hdr_strm; int last_dts; } ;
 struct TYPE_19__ {TYPE_2__* priv_data; TYPE_6__* codecpar; } ;
-typedef  TYPE_2__ AVIStream ;
-typedef  TYPE_3__ AVIOContext ;
-typedef  TYPE_4__ AVIContext ;
-typedef  TYPE_5__ AVFormatContext ;
-typedef  TYPE_6__ AVCodecParameters ;
+typedef TYPE_2__ AVIStream ;
+typedef TYPE_3__ AVIOContext ;
+typedef TYPE_4__ AVIContext ;
+typedef TYPE_5__ AVFormatContext ;
+typedef TYPE_6__ AVCodecParameters ;
 
-/* Variables and functions */
- int AVIO_SEEKABLE_NORMAL ; 
- int AVI_MASTER_INDEX_ENTRY_SIZE ; 
- int AVI_MASTER_INDEX_PREFIX_SIZE ; 
- scalar_t__ AVMEDIA_TYPE_VIDEO ; 
- scalar_t__ AV_CODEC_ID_MP2 ; 
- scalar_t__ AV_CODEC_ID_MP3 ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  avi_write_counters (TYPE_5__*,int) ; 
- int avi_write_idx1 (TYPE_5__*) ; 
- int /*<<< orphan*/  avi_write_ix (TYPE_5__*) ; 
- int /*<<< orphan*/  avio_seek (TYPE_3__*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_skip (TYPE_3__*,int) ; 
- scalar_t__ avio_tell (TYPE_3__*) ; 
- int /*<<< orphan*/  avio_wl32 (TYPE_3__*,int) ; 
- int /*<<< orphan*/  ff_end_tag (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ffio_wfourcc (TYPE_3__*,char*) ; 
- int /*<<< orphan*/  write_skip_frames (TYPE_5__*,int,int /*<<< orphan*/ ) ; 
+
+ int AVIO_SEEKABLE_NORMAL ;
+ int AVI_MASTER_INDEX_ENTRY_SIZE ;
+ int AVI_MASTER_INDEX_PREFIX_SIZE ;
+ scalar_t__ AVMEDIA_TYPE_VIDEO ;
+ scalar_t__ AV_CODEC_ID_MP2 ;
+ scalar_t__ AV_CODEC_ID_MP3 ;
+ int AV_LOG_WARNING ;
+ int SEEK_SET ;
+ int av_log (TYPE_5__*,int ,char*,int) ;
+ int avi_write_counters (TYPE_5__*,int) ;
+ int avi_write_idx1 (TYPE_5__*) ;
+ int avi_write_ix (TYPE_5__*) ;
+ int avio_seek (TYPE_3__*,scalar_t__,int ) ;
+ int avio_skip (TYPE_3__*,int) ;
+ scalar_t__ avio_tell (TYPE_3__*) ;
+ int avio_wl32 (TYPE_3__*,int) ;
+ int ff_end_tag (TYPE_3__*,int ) ;
+ int ffio_wfourcc (TYPE_3__*,char*) ;
+ int write_skip_frames (TYPE_5__*,int,int ) ;
 
 __attribute__((used)) static int avi_write_trailer(AVFormatContext *s)
 {
@@ -75,12 +75,12 @@ __attribute__((used)) static int avi_write_trailer(AVFormatContext *s)
 
             file_size = avio_tell(pb);
             avio_seek(pb, avi->odml_list - 8, SEEK_SET);
-            ffio_wfourcc(pb, "LIST"); /* Making this AVI OpenDML one */
+            ffio_wfourcc(pb, "LIST");
             avio_skip(pb, 16);
 
             for (n = nb_frames = 0; n < s->nb_streams; n++) {
                 AVCodecParameters *par = s->streams[n]->codecpar;
-                AVIStream *avist       = s->streams[n]->priv_data;
+                AVIStream *avist = s->streams[n]->priv_data;
 
                 if (par->codec_type == AVMEDIA_TYPE_VIDEO) {
                     if (nb_frames < avist->packet_count)

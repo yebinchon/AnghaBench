@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  lock; } ;
-struct mm {int refcount; TYPE_1__ mem; int /*<<< orphan*/  exefile; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MEM_PAGES ; 
- int /*<<< orphan*/  fd_retain (int /*<<< orphan*/ ) ; 
- struct mm* malloc (int) ; 
- int /*<<< orphan*/  mem_init (TYPE_1__*) ; 
- int /*<<< orphan*/  pt_copy_on_write (TYPE_1__*,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  read_wrlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  read_wrunlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int lock; } ;
+struct mm {int refcount; TYPE_1__ mem; int exefile; } ;
+
+
+ int MEM_PAGES ;
+ int fd_retain (int ) ;
+ struct mm* malloc (int) ;
+ int mem_init (TYPE_1__*) ;
+ int pt_copy_on_write (TYPE_1__*,TYPE_1__*,int ,int ) ;
+ int read_wrlock (int *) ;
+ int read_wrunlock (int *) ;
 
 struct mm *mm_copy(struct mm *mm) {
     struct mm *new_mm = malloc(sizeof(struct mm));
-    if (new_mm == NULL)
-        return NULL;
+    if (new_mm == ((void*)0))
+        return ((void*)0);
     *new_mm = *mm;
     new_mm->refcount = 1;
     mem_init(&new_mm->mem);

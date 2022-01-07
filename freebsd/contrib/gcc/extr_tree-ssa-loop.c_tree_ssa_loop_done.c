@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * current_loops ; 
- int /*<<< orphan*/  free_numbers_of_iterations_estimates (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  loop_optimizer_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scev_finalize () ; 
+ int * current_loops ;
+ int free_numbers_of_iterations_estimates (int *) ;
+ int loop_optimizer_finalize (int *) ;
+ int scev_finalize () ;
 
 __attribute__((used)) static unsigned int
 tree_ssa_loop_done (void)
@@ -26,6 +18,6 @@ tree_ssa_loop_done (void)
   free_numbers_of_iterations_estimates (current_loops);
   scev_finalize ();
   loop_optimizer_finalize (current_loops);
-  current_loops = NULL;
+  current_loops = ((void*)0);
   return 0;
 }

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int UINT ;
 struct TYPE_2__ {int member_0; int member_1; int member_2; int member_3; int right; int left; int bottom; int top; } ;
-typedef  TYPE_1__ RECT ;
-typedef  int /*<<< orphan*/  GpTexture ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpImage ;
-typedef  int /*<<< orphan*/  GpGraphics ;
-typedef  int /*<<< orphan*/  GpBrush ;
-typedef  int /*<<< orphan*/  GpBitmap ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  scalar_t__ ARGB ;
+typedef TYPE_1__ RECT ;
+typedef int GpTexture ;
+typedef int GpStatus ;
+typedef int GpImage ;
+typedef int GpGraphics ;
+typedef int GpBrush ;
+typedef int GpBitmap ;
+typedef int DWORD ;
+typedef int BYTE ;
+typedef scalar_t__ ARGB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLUE_COLOR ; 
- int /*<<< orphan*/  CombineModeReplace ; 
- int /*<<< orphan*/ * GdipAlloc (int) ; 
- int /*<<< orphan*/  GdipBitmapGetPixel (int /*<<< orphan*/ *,int,int,scalar_t__*) ; 
- int /*<<< orphan*/  GdipCreateBitmapFromScan0 (int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreateTexture (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteBrush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDisposeImage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipFillRectangleI (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  GdipFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetImageGraphicsContext (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipSetClipRectI (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  PixelFormat32bppARGB ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ is_blue_color (scalar_t__) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
+
+ int BLUE_COLOR ;
+ int CombineModeReplace ;
+ int * GdipAlloc (int) ;
+ int GdipBitmapGetPixel (int *,int,int,scalar_t__*) ;
+ int GdipCreateBitmapFromScan0 (int,int,int,int ,int *,int **) ;
+ int GdipCreateTexture (int *,int ,int **) ;
+ int GdipDeleteBrush (int *) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipDisposeImage (int *) ;
+ int GdipFillRectangleI (int *,int *,int ,int ,int,int) ;
+ int GdipFree (int *) ;
+ int GdipGetImageGraphicsContext (int *,int **) ;
+ int GdipSetClipRectI (int *,int ,int ,int,int,int ) ;
+ int Ok ;
+ int PixelFormat32bppARGB ;
+ int expect (int ,int ) ;
+ scalar_t__ is_blue_color (scalar_t__) ;
+ int ok (int,char*) ;
 
 __attribute__((used)) static void test_GdipFillRectanglesOnBitmapTextureBrush(void)
 {
@@ -67,17 +67,17 @@ __attribute__((used)) static void test_GdipFillRectanglesOnBitmapTextureBrush(vo
         GpImage *image;
     } dst_img;
 
-    GpTexture *brush = NULL;
-    GpGraphics *graphics = NULL;
+    GpTexture *brush = ((void*)0);
+    GpGraphics *graphics = ((void*)0);
     BYTE *src_img_data = GdipAlloc(src_img_width*src_img_height*4);
     DWORD *pixel = (DWORD *)src_img_data;
-    ok(pixel != NULL, "Expected src_img_data is valid\n");
+    ok(pixel != ((void*)0), "Expected src_img_data is valid\n");
 
     status = GdipCreateBitmapFromScan0(width, height, width*4,
-            PixelFormat32bppARGB, NULL, &dst_img.bitmap);
+            PixelFormat32bppARGB, ((void*)0), &dst_img.bitmap);
     expect(Ok, status);
 
-    /*build a blue solid image!*/
+
     for(y = 0; y < src_img_height; ++y)
     {
         for(x = 0; x < src_img_width; ++x)

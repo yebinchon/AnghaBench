@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  passtab ;
-typedef  int /*<<< orphan*/  orders ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int passtab ;
+typedef int orders ;
 struct TYPE_2__ {double member_0; double member_1; double member_2; double member_3; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REMEZ_BANDPASS ; 
- int /*<<< orphan*/  REMEZ_CreateFilter (double*,int,int,double*,double*,double*,int /*<<< orphan*/ ) ; 
- int SND_FILTER_SIZE ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- double* filter_data ; 
- int /*<<< orphan*/  printf (char*,int const,...) ; 
- int /*<<< orphan*/  stdout ; 
 
-__attribute__((used)) static int remez_filter_table(double resamp_rate, /* output_rate/input_rate */
+ int REMEZ_BANDPASS ;
+ int REMEZ_CreateFilter (double*,int,int,double*,double*,double*,int ) ;
+ int SND_FILTER_SIZE ;
+ int exit (int) ;
+ int fflush (int ) ;
+ double* filter_data ;
+ int printf (char*,int const,...) ;
+ int stdout ;
+
+__attribute__((used)) static int remez_filter_table(double resamp_rate,
                               double *cutoff, int quality)
 {
   int i;
   static const int orders[] = {600, 800, 1000, 1200};
   static const struct {
-    int stop;		/* stopband ripple */
-    double weight;	/* stopband weight */
+    int stop;
+    double weight;
     double twidth[sizeof(orders)/sizeof(orders[0])];
   } paramtab[] =
   {
@@ -58,30 +58,20 @@ __attribute__((used)) static int remez_filter_table(double resamp_rate, /* outpu
     for (order = 0; order < (int) (sizeof(orders)/sizeof(orders[0])); order++)
     {
       if ((*cutoff - paramtab[ripple].twidth[order])
-	  > passtab[quality] * 0.5 * resamp_rate)
-	/* transition width OK */
-	goto found;
+   > passtab[quality] * 0.5 * resamp_rate)
+
+ goto found;
     }
   }
 
-  /* not found -- use shortest transition */
+
   ripple--;
   order--;
 
 found:
-
-#if 0
-  printf("order: %d, cutoff: %g\tstopband:%d\ttranswidth:%f\n",
-         orders[order],
-	 1789790 * *cutoff,
-	 paramtab[ripple].stop,
-	 1789790 * paramtab[ripple].twidth[order]);
-  exit(1);
-#endif
-
   size = orders[order] + 1;
 
-  if (size > SND_FILTER_SIZE) /* static table too short */
+  if (size > SND_FILTER_SIZE)
     return 0;
 
   desired[0] = 1;
@@ -111,16 +101,8 @@ found:
     }
   }
 
-  /* compute reversed cumulative sum table */
+
   for (i = size - 2; i >= 0; i--)
     filter_data[i] += filter_data[i + 1];
-
-#if 0
-  for (i = 0; i < size; i++)
-    printf("%.15f,\n", filter_data[i]);
-  fflush(stdout);
-  exit(1);
-#endif
-
   return size;
 }

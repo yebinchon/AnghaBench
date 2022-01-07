@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int** linelen; int ndeclevels; int* i_linebuf; int** mod; } ;
-typedef  TYPE_1__ DWTContext ;
+typedef TYPE_1__ DWTContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sd_1d53 (int*,int,int) ; 
+
+ int sd_1d53 (int*,int,int) ;
 
 __attribute__((used)) static void dwt_encode53(DWTContext *s, int *t)
 {
@@ -32,7 +32,7 @@ __attribute__((used)) static void dwt_encode53(DWTContext *s, int *t)
             lp;
         int *l;
 
-        // VER_SD
+
         l = line + mv;
         for (lp = 0; lp < lh; lp++) {
             int i, j = 0;
@@ -42,14 +42,14 @@ __attribute__((used)) static void dwt_encode53(DWTContext *s, int *t)
 
             sd_1d53(line, mv, mv + lv);
 
-            // copy back and deinterleave
-            for (i =   mv; i < lv; i+=2, j++)
+
+            for (i = mv; i < lv; i+=2, j++)
                 t[w*j + lp] = l[i];
             for (i = 1-mv; i < lv; i+=2, j++)
                 t[w*j + lp] = l[i];
         }
 
-        // HOR_SD
+
         l = line + mh;
         for (lp = 0; lp < lv; lp++){
             int i, j = 0;
@@ -59,8 +59,8 @@ __attribute__((used)) static void dwt_encode53(DWTContext *s, int *t)
 
             sd_1d53(line, mh, mh + lh);
 
-            // copy back and deinterleave
-            for (i =   mh; i < lh; i+=2, j++)
+
+            for (i = mh; i < lh; i+=2, j++)
                 t[w*lp + j] = l[i];
             for (i = 1-mh; i < lh; i+=2, j++)
                 t[w*lp + j] = l[i];

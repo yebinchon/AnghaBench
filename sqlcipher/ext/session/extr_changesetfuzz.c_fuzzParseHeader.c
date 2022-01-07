@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u8 ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ u8 ;
 struct TYPE_7__ {scalar_t__ bPatchset; } ;
-struct TYPE_6__ {scalar_t__* aPK; char const* zTab; int /*<<< orphan*/  nCol; } ;
-typedef  TYPE_1__ FuzzChangesetGroup ;
-typedef  TYPE_2__ FuzzChangeset ;
+struct TYPE_6__ {scalar_t__* aPK; char const* zTab; int nCol; } ;
+typedef TYPE_1__ FuzzChangesetGroup ;
+typedef TYPE_2__ FuzzChangeset ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int fuzzCorrupt () ; 
- int /*<<< orphan*/  fuzzFree (TYPE_1__*) ; 
- int /*<<< orphan*/  fuzzGetVarint (scalar_t__*,int /*<<< orphan*/ *) ; 
- scalar_t__ fuzzMalloc (int) ; 
- int strlen (char const*) ; 
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int fuzzCorrupt () ;
+ int fuzzFree (TYPE_1__*) ;
+ int fuzzGetVarint (scalar_t__*,int *) ;
+ scalar_t__ fuzzMalloc (int) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static int fuzzParseHeader(
-  FuzzChangeset *pParse,          /* Changeset parse object */
-  u8 **ppHdr,                     /* IN/OUT: Iterator */
-  u8 *pEnd,                       /* 1 byte past EOF */
-  FuzzChangesetGroup **ppGrp      /* OUT: New change-group object */
+  FuzzChangeset *pParse,
+  u8 **ppHdr,
+  u8 *pEnd,
+  FuzzChangesetGroup **ppGrp
 ){
   int rc = SQLITE_OK;
   FuzzChangesetGroup *pGrp;

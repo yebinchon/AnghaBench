@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * umem; } ;
-struct TYPE_3__ {int /*<<< orphan*/ * umem; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * umem; } ;
+struct TYPE_3__ {int * umem; } ;
 struct qlnxr_qp {TYPE_2__ urq; TYPE_1__ usq; } ;
-struct qlnxr_dev {int /*<<< orphan*/ * ha; } ;
-typedef  int /*<<< orphan*/  qlnx_host_t ;
+struct qlnxr_dev {int * ha; } ;
+typedef int qlnx_host_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  QL_DPRINT12 (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ib_umem_release (int /*<<< orphan*/ *) ; 
+
+ int QL_DPRINT12 (int *,char*) ;
+ int ib_umem_release (int *) ;
 
 __attribute__((used)) static void
 qlnxr_cleanup_user(struct qlnxr_dev *dev, struct qlnxr_qp *qp)
 {
-	qlnx_host_t	*ha;
+ qlnx_host_t *ha;
 
-	ha = dev->ha;
+ ha = dev->ha;
 
-	QL_DPRINT12(ha, "enter\n");
- 
-	if (qp->usq.umem)
-		ib_umem_release(qp->usq.umem);
+ QL_DPRINT12(ha, "enter\n");
 
-	qp->usq.umem = NULL;
+ if (qp->usq.umem)
+  ib_umem_release(qp->usq.umem);
 
-	if (qp->urq.umem)
-		ib_umem_release(qp->urq.umem);
+ qp->usq.umem = ((void*)0);
 
-	qp->urq.umem = NULL;
+ if (qp->urq.umem)
+  ib_umem_release(qp->urq.umem);
 
-	QL_DPRINT12(ha, "exit\n");
-	return;
+ qp->urq.umem = ((void*)0);
+
+ QL_DPRINT12(ha, "exit\n");
+ return;
 }

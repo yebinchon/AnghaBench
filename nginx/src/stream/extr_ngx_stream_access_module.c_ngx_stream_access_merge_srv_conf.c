@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * rules_un; int /*<<< orphan*/ * rules6; int /*<<< orphan*/ * rules; } ;
-typedef  TYPE_1__ ngx_stream_access_srv_conf_t ;
-typedef  int /*<<< orphan*/  ngx_conf_t ;
 
-/* Variables and functions */
- char* NGX_CONF_OK ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * rules_un; int * rules6; int * rules; } ;
+typedef TYPE_1__ ngx_stream_access_srv_conf_t ;
+typedef int ngx_conf_t ;
+
+
+ char* NGX_CONF_OK ;
 
 __attribute__((used)) static char *
 ngx_stream_access_merge_srv_conf(ngx_conf_t *cf, void *parent, void *child)
 {
-    ngx_stream_access_srv_conf_t  *prev = parent;
-    ngx_stream_access_srv_conf_t  *conf = child;
+    ngx_stream_access_srv_conf_t *prev = parent;
+    ngx_stream_access_srv_conf_t *conf = child;
 
-    if (conf->rules == NULL
-#if (NGX_HAVE_INET6)
-        && conf->rules6 == NULL
-#endif
-#if (NGX_HAVE_UNIX_DOMAIN)
-        && conf->rules_un == NULL
-#endif
+    if (conf->rules == ((void*)0)
+
+
+
+
+
+
     ) {
         conf->rules = prev->rules;
-#if (NGX_HAVE_INET6)
-        conf->rules6 = prev->rules6;
-#endif
-#if (NGX_HAVE_UNIX_DOMAIN)
-        conf->rules_un = prev->rules_un;
-#endif
+
+
+
+
+
+
     }
 
     return NGX_CONF_OK;

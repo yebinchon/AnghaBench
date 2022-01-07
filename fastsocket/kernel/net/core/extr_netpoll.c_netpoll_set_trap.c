@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  atomic_dec (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atomic_inc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  trapped ; 
+ int atomic_dec (int *) ;
+ int atomic_inc (int *) ;
+ int trapped ;
 
 void netpoll_set_trap(int trap)
 {
-	if (trap)
-		atomic_inc(&trapped);
-	else
-		atomic_dec(&trapped);
+ if (trap)
+  atomic_inc(&trapped);
+ else
+  atomic_dec(&trapped);
 }

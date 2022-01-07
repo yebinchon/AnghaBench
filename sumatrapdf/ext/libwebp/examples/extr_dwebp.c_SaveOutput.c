@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WebPOutputFileFormat ;
-typedef  int /*<<< orphan*/  WebPDecBuffer ;
-typedef  int /*<<< orphan*/  W_CHAR ;
-typedef  int /*<<< orphan*/  Stopwatch ;
 
-/* Variables and functions */
- double StopwatchReadAndReset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  StopwatchReset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WFPRINTF (int /*<<< orphan*/ ,char*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  WSTRCMP (char const* const,char*) ; 
- int WebPSaveImage (int /*<<< orphan*/  const* const,int /*<<< orphan*/ ,char const* const) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  quiet ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbose ; 
+
+
+
+typedef int WebPOutputFileFormat ;
+typedef int WebPDecBuffer ;
+typedef int W_CHAR ;
+typedef int Stopwatch ;
+
+
+ double StopwatchReadAndReset (int *) ;
+ int StopwatchReset (int *) ;
+ int WFPRINTF (int ,char*,int const*) ;
+ int WSTRCMP (char const* const,char*) ;
+ int WebPSaveImage (int const* const,int ,char const* const) ;
+ int fprintf (int ,char*,...) ;
+ int quiet ;
+ int stderr ;
+ scalar_t__ verbose ;
 
 __attribute__((used)) static int SaveOutput(const WebPDecBuffer* const buffer,
                       WebPOutputFileFormat format, const char* const out_file) {
-  const int use_stdout = (out_file != NULL) && !WSTRCMP(out_file, "-");
+  const int use_stdout = (out_file != ((void*)0)) && !WSTRCMP(out_file, "-");
   int ok = 1;
   Stopwatch stop_watch;
 

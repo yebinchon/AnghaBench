@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab_cursor ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-struct TYPE_6__ {int /*<<< orphan*/  zName; int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ fulltext_vtab ;
-struct TYPE_7__ {int iCursorType; int /*<<< orphan*/  pStmt; int /*<<< orphan*/  result; } ;
-typedef  TYPE_2__ fulltext_cursor ;
-typedef  int /*<<< orphan*/  DocList ;
 
-/* Variables and functions */
-#define  QUERY_FULLTEXT 129 
-#define  QUERY_GENERIC 128 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_1__* cursor_vtab (TYPE_2__*) ; 
- int fulltextNext (int /*<<< orphan*/ *) ; 
- int fulltext_query (TYPE_1__*,char const*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  readerInit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int sql_prepare (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char const*) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int sqlite3_vtab_cursor ;
+typedef int sqlite3_value ;
+struct TYPE_6__ {int zName; int db; } ;
+typedef TYPE_1__ fulltext_vtab ;
+struct TYPE_7__ {int iCursorType; int pStmt; int result; } ;
+typedef TYPE_2__ fulltext_cursor ;
+typedef int DocList ;
+
+
+
+
+ int SQLITE_OK ;
+ int assert (int) ;
+ TYPE_1__* cursor_vtab (TYPE_2__*) ;
+ int fulltextNext (int *) ;
+ int fulltext_query (TYPE_1__*,char const*,int **) ;
+ int readerInit (int *,int *) ;
+ int sql_prepare (int ,int ,int *,char const*) ;
+ scalar_t__ sqlite3_value_text (int *) ;
 
 __attribute__((used)) static int fulltextFilter(sqlite3_vtab_cursor *pCursor,
                           int idxNum, const char *idxStr,
@@ -42,11 +42,11 @@ __attribute__((used)) static int fulltextFilter(sqlite3_vtab_cursor *pCursor,
 
   c->iCursorType = idxNum;
   switch( idxNum ){
-    case QUERY_GENERIC:
+    case 128:
       zStatement = "select rowid, content from %_content";
       break;
 
-    case QUERY_FULLTEXT:   /* full-text search */
+    case 129:
     {
       const char *zQuery = (const char *)sqlite3_value_text(argv[0]);
       DocList *pResult;

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Net_Crypto ;
 
-/* Variables and functions */
- int /*<<< orphan*/  do_tcp (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kill_timedout (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  send_crypto_packets (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  unix_time_update () ; 
+
+
+
+typedef int Net_Crypto ;
+
+
+ int do_tcp (int *) ;
+ int kill_timedout (int *) ;
+ int send_crypto_packets (int *) ;
+ int unix_time_update () ;
 
 void do_net_crypto(Net_Crypto *c)
 {

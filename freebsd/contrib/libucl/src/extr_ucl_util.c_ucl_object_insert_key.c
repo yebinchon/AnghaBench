@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ucl_object_t ;
 
-/* Variables and functions */
- int ucl_object_insert_key_common (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,size_t,int,int,int) ; 
+
+
+
+typedef int ucl_object_t ;
+
+
+ int ucl_object_insert_key_common (int *,int *,char const*,size_t,int,int,int) ;
 
 bool
 ucl_object_insert_key (ucl_object_t *top, ucl_object_t *elt,
-		const char *key, size_t keylen, bool copy_key)
+  const char *key, size_t keylen, bool copy_key)
 {
-	return ucl_object_insert_key_common (top, elt, key, keylen, copy_key, false, false);
+ return ucl_object_insert_key_common (top, elt, key, keylen, copy_key, 0, 0);
 }

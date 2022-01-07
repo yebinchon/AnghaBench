@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ WCHAR ;
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  scalar_t__ SHORT ;
-typedef  int /*<<< orphan*/  OBJECT_ATTRIBUTES ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CsrImpersonateClient (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CsrRevertToSelf () ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  InitializeObjectAttributes (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IsGlobalSymbolicLink (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtClose (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtOpenSymbolicLinkObject (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OBJ_CASE_INSENSITIVE ; 
- int /*<<< orphan*/  RtlInitUnicodeString (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  SYMBOLIC_LINK_QUERY ; 
- scalar_t__ UNICODE_NULL ; 
- int /*<<< orphan*/  wcsncpy (scalar_t__*,char*,int) ; 
+
+
+
+typedef scalar_t__ WCHAR ;
+typedef int UNICODE_STRING ;
+typedef scalar_t__ SHORT ;
+typedef int OBJECT_ATTRIBUTES ;
+typedef int NTSTATUS ;
+typedef int HANDLE ;
+typedef int BOOLEAN ;
+
+
+ int CsrImpersonateClient (int *) ;
+ int CsrRevertToSelf () ;
+ int FALSE ;
+ int InitializeObjectAttributes (int *,int *,int ,int *,int *) ;
+ int IsGlobalSymbolicLink (int ,int *) ;
+ int NT_SUCCESS (int ) ;
+ int NtClose (int ) ;
+ int NtOpenSymbolicLinkObject (int *,int ,int *) ;
+ int OBJ_CASE_INSENSITIVE ;
+ int RtlInitUnicodeString (int *,scalar_t__*) ;
+ int SYMBOLIC_LINK_QUERY ;
+ scalar_t__ UNICODE_NULL ;
+ int wcsncpy (scalar_t__*,char*,int) ;
 
 BOOLEAN
 CheckForGlobalDriveLetter(SHORT DriveLetter)
@@ -43,26 +43,26 @@ CheckForGlobalDriveLetter(SHORT DriveLetter)
     HANDLE SymbolicLinkHandle;
     OBJECT_ATTRIBUTES ObjectAttributes;
 
-    /* Setup our drive path */
+
     wcsncpy(Path, L"\\??\\X:", (sizeof(L"\\??\\X:") / sizeof(WCHAR)));
     Path[4] = DriveLetter + L'A';
     Path[6] = UNICODE_NULL;
 
-    /* Prepare everything to open the link */
+
     RtlInitUnicodeString(&PathU, Path);
     InitializeObjectAttributes(&ObjectAttributes,
                                &PathU,
                                OBJ_CASE_INSENSITIVE,
-                               NULL,
-                               NULL);
+                               ((void*)0),
+                               ((void*)0));
 
-    /* Impersonate the caller */
-    if (!CsrImpersonateClient(NULL))
+
+    if (!CsrImpersonateClient(((void*)0)))
     {
         return FALSE;
     }
 
-    /* Open our drive letter */
+
     Status = NtOpenSymbolicLinkObject(&SymbolicLinkHandle,
                                       SYMBOLIC_LINK_QUERY,
                                       &ObjectAttributes);
@@ -74,7 +74,7 @@ CheckForGlobalDriveLetter(SHORT DriveLetter)
         return FALSE;
     }
 
-    /* Check whether it's global */
+
     Status = IsGlobalSymbolicLink(SymbolicLinkHandle, &IsGlobal);
     NtClose(SymbolicLinkHandle);
 

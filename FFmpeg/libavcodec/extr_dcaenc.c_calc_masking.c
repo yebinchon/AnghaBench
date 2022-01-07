@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int32_t ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int int32_t ;
 struct TYPE_6__ {int** masking_curve_cb; int fullband_channels; int* channel_order_tab; int** history; int channels; int* eff_masking_curve_cb; int* band_masking_cb; } ;
-typedef  TYPE_1__ DCAEncContext ;
+typedef TYPE_1__ DCAEncContext ;
 
-/* Variables and functions */
- int SUBSUBFRAMES ; 
- int /*<<< orphan*/  adjust_jnd (TYPE_1__*,int*,int*) ; 
- int /*<<< orphan*/  update_band_masking ; 
- int /*<<< orphan*/  walk_band_high (TYPE_1__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  walk_band_low (TYPE_1__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int SUBSUBFRAMES ;
+ int adjust_jnd (TYPE_1__*,int*,int*) ;
+ int update_band_masking ;
+ int walk_band_high (TYPE_1__*,int,int ,int ,int *) ;
+ int walk_band_low (TYPE_1__*,int,int ,int ,int *) ;
 
 __attribute__((used)) static void calc_masking(DCAEncContext *c, const int32_t *input)
 {
@@ -52,7 +52,7 @@ __attribute__((used)) static void calc_masking(DCAEncContext *c, const int32_t *
 
     for (band = 0; band < 32; band++) {
         c->band_masking_cb[band] = 2048;
-        walk_band_low(c, band, 0, update_band_masking, NULL);
-        walk_band_high(c, band, 0, update_band_masking, NULL);
+        walk_band_low(c, band, 0, update_band_masking, ((void*)0));
+        walk_band_high(c, band, 0, update_band_masking, ((void*)0));
     }
 }

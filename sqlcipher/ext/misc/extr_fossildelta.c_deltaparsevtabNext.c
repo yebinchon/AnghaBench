@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab_cursor ;
-struct TYPE_2__ {int iCursor; int iNext; char* aDelta; size_t a1; unsigned int a2; int nDelta; int /*<<< orphan*/  eOp; } ;
-typedef  TYPE_1__ deltaparsevtab_cursor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DELTAPARSE_OP_CHECKSUM ; 
- int /*<<< orphan*/  DELTAPARSE_OP_COPY ; 
- int /*<<< orphan*/  DELTAPARSE_OP_EOF ; 
- int /*<<< orphan*/  DELTAPARSE_OP_ERROR ; 
- int /*<<< orphan*/  DELTAPARSE_OP_INSERT ; 
- int SQLITE_OK ; 
- void* deltaGetInt (char const**,int*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sqlite3_vtab_cursor ;
+struct TYPE_2__ {int iCursor; int iNext; char* aDelta; size_t a1; unsigned int a2; int nDelta; int eOp; } ;
+typedef TYPE_1__ deltaparsevtab_cursor ;
+
+
+ int DELTAPARSE_OP_CHECKSUM ;
+ int DELTAPARSE_OP_COPY ;
+ int DELTAPARSE_OP_EOF ;
+ int DELTAPARSE_OP_ERROR ;
+ int DELTAPARSE_OP_INSERT ;
+ int SQLITE_OK ;
+ void* deltaGetInt (char const**,int*) ;
 
 __attribute__((used)) static int deltaparsevtabNext(sqlite3_vtab_cursor *cur){
   deltaparsevtab_cursor *pCur = (deltaparsevtab_cursor*)cur;

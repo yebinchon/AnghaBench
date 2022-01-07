@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  (* Error ) (int /*<<< orphan*/ ,char*) ;} ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  int /*<<< orphan*/  GLint ;
-typedef  int /*<<< orphan*/  GLenum ;
-typedef  int /*<<< orphan*/  GLchar ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_DROP ; 
- int /*<<< orphan*/  GLSL_PRINTLOG_SHADER_INFO ; 
- int /*<<< orphan*/  GLSL_PRINTLOG_SHADER_SOURCE ; 
- int /*<<< orphan*/  GLSL_PrintLog (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_COMPILE_STATUS ; 
- int /*<<< orphan*/  qfalse ; 
- int /*<<< orphan*/  qglAttachShader (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qglCompileShader (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qglCreateShader (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qglDeleteShader (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qglDetachShader (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qglGetShaderiv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  qglShaderSource (int /*<<< orphan*/ ,int,int /*<<< orphan*/  const**,int*) ; 
- TYPE_1__ ri ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int (* Error ) (int ,char*) ;} ;
+typedef int GLuint ;
+typedef int GLint ;
+typedef int GLenum ;
+typedef int GLchar ;
+
+
+ int ERR_DROP ;
+ int GLSL_PRINTLOG_SHADER_INFO ;
+ int GLSL_PRINTLOG_SHADER_SOURCE ;
+ int GLSL_PrintLog (int ,int ,int ) ;
+ int GL_COMPILE_STATUS ;
+ int qfalse ;
+ int qglAttachShader (int ,int ) ;
+ int qglCompileShader (int ) ;
+ int qglCreateShader (int ) ;
+ int qglDeleteShader (int ) ;
+ int qglDetachShader (int ,int ) ;
+ int qglGetShaderiv (int ,int ,int *) ;
+ int qglShaderSource (int ,int,int const**,int*) ;
+ TYPE_1__ ri ;
+ int stub1 (int ,char*) ;
 
 __attribute__((used)) static int GLSL_CompileGPUShader(GLuint program, GLuint *prevShader, const GLchar *buffer, int size, GLenum shaderType)
 {
-	GLint           compiled;
-	GLuint          shader;
+ GLint compiled;
+ GLuint shader;
 
-	shader = qglCreateShader(shaderType);
+ shader = qglCreateShader(shaderType);
 
-	qglShaderSource(shader, 1, (const GLchar **)&buffer, &size);
+ qglShaderSource(shader, 1, (const GLchar **)&buffer, &size);
 
-	// compile shader
-	qglCompileShader(shader);
 
-	// check if shader compiled
-	qglGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
-	if(!compiled)
-	{
-		GLSL_PrintLog(shader, GLSL_PRINTLOG_SHADER_SOURCE, qfalse);
-		GLSL_PrintLog(shader, GLSL_PRINTLOG_SHADER_INFO, qfalse);
-		ri.Error(ERR_DROP, "Couldn't compile shader");
-		return 0;
-	}
+ qglCompileShader(shader);
 
-	if (*prevShader)
-	{
-		qglDetachShader(program, *prevShader);
-		qglDeleteShader(*prevShader);
-	}
 
-	// attach shader to program
-	qglAttachShader(program, shader);
+ qglGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
+ if(!compiled)
+ {
+  GLSL_PrintLog(shader, GLSL_PRINTLOG_SHADER_SOURCE, qfalse);
+  GLSL_PrintLog(shader, GLSL_PRINTLOG_SHADER_INFO, qfalse);
+  ri.Error(ERR_DROP, "Couldn't compile shader");
+  return 0;
+ }
 
-	*prevShader = shader;
+ if (*prevShader)
+ {
+  qglDetachShader(program, *prevShader);
+  qglDeleteShader(*prevShader);
+ }
 
-	return 1;
+
+ qglAttachShader(program, shader);
+
+ *prevShader = shader;
+
+ return 1;
 }

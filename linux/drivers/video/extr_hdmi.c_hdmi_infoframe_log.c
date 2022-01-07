@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int type; } ;
-union hdmi_infoframe {int /*<<< orphan*/  drm; int /*<<< orphan*/  vendor; int /*<<< orphan*/  audio; int /*<<< orphan*/  spd; int /*<<< orphan*/  avi; TYPE_1__ any; } ;
+union hdmi_infoframe {int drm; int vendor; int audio; int spd; int avi; TYPE_1__ any; } ;
 struct device {int dummy; } ;
 
-/* Variables and functions */
-#define  HDMI_INFOFRAME_TYPE_AUDIO 132 
-#define  HDMI_INFOFRAME_TYPE_AVI 131 
-#define  HDMI_INFOFRAME_TYPE_DRM 130 
-#define  HDMI_INFOFRAME_TYPE_SPD 129 
-#define  HDMI_INFOFRAME_TYPE_VENDOR 128 
- int /*<<< orphan*/  hdmi_audio_infoframe_log (char const*,struct device*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hdmi_avi_infoframe_log (char const*,struct device*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hdmi_drm_infoframe_log (char const*,struct device*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hdmi_spd_infoframe_log (char const*,struct device*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hdmi_vendor_any_infoframe_log (char const*,struct device*,int /*<<< orphan*/ *) ; 
+
+
+
+
+
+
+ int hdmi_audio_infoframe_log (char const*,struct device*,int *) ;
+ int hdmi_avi_infoframe_log (char const*,struct device*,int *) ;
+ int hdmi_drm_infoframe_log (char const*,struct device*,int *) ;
+ int hdmi_spd_infoframe_log (char const*,struct device*,int *) ;
+ int hdmi_vendor_any_infoframe_log (char const*,struct device*,int *) ;
 
 void hdmi_infoframe_log(const char *level,
-			struct device *dev,
-			const union hdmi_infoframe *frame)
+   struct device *dev,
+   const union hdmi_infoframe *frame)
 {
-	switch (frame->any.type) {
-	case HDMI_INFOFRAME_TYPE_AVI:
-		hdmi_avi_infoframe_log(level, dev, &frame->avi);
-		break;
-	case HDMI_INFOFRAME_TYPE_SPD:
-		hdmi_spd_infoframe_log(level, dev, &frame->spd);
-		break;
-	case HDMI_INFOFRAME_TYPE_AUDIO:
-		hdmi_audio_infoframe_log(level, dev, &frame->audio);
-		break;
-	case HDMI_INFOFRAME_TYPE_VENDOR:
-		hdmi_vendor_any_infoframe_log(level, dev, &frame->vendor);
-		break;
-	case HDMI_INFOFRAME_TYPE_DRM:
-		hdmi_drm_infoframe_log(level, dev, &frame->drm);
-		break;
-	}
+ switch (frame->any.type) {
+ case 131:
+  hdmi_avi_infoframe_log(level, dev, &frame->avi);
+  break;
+ case 129:
+  hdmi_spd_infoframe_log(level, dev, &frame->spd);
+  break;
+ case 132:
+  hdmi_audio_infoframe_log(level, dev, &frame->audio);
+  break;
+ case 128:
+  hdmi_vendor_any_infoframe_log(level, dev, &frame->vendor);
+  break;
+ case 130:
+  hdmi_drm_infoframe_log(level, dev, &frame->drm);
+  break;
+ }
 }

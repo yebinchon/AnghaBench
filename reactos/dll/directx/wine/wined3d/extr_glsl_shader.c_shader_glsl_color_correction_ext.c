@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_string_buffer {int dummy; } ;
-struct color_fixup_desc {int /*<<< orphan*/  w_source; int /*<<< orphan*/  w_sign_fixup; int /*<<< orphan*/  z_source; int /*<<< orphan*/  z_sign_fixup; int /*<<< orphan*/  y_source; int /*<<< orphan*/  y_sign_fixup; int /*<<< orphan*/  x_source; int /*<<< orphan*/  x_sign_fixup; } ;
-typedef  enum complex_fixup { ____Placeholder_complex_fixup } complex_fixup ;
-typedef  int DWORD ;
+struct color_fixup_desc {int w_source; int w_sign_fixup; int z_source; int z_sign_fixup; int y_source; int y_sign_fixup; int x_source; int x_sign_fixup; } ;
+typedef enum complex_fixup { ____Placeholder_complex_fixup } complex_fixup ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHANNEL_SOURCE_W ; 
- int /*<<< orphan*/  CHANNEL_SOURCE_X ; 
- int /*<<< orphan*/  CHANNEL_SOURCE_Y ; 
- int /*<<< orphan*/  CHANNEL_SOURCE_Z ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int WINED3DSP_WRITEMASK_0 ; 
- int WINED3DSP_WRITEMASK_1 ; 
- int WINED3DSP_WRITEMASK_2 ; 
- int WINED3DSP_WRITEMASK_3 ; 
- int get_complex_fixup (struct color_fixup_desc) ; 
- scalar_t__ is_complex_fixup (struct color_fixup_desc) ; 
- int /*<<< orphan*/  shader_addline (struct wined3d_string_buffer*,char*,char const*,char*,...) ; 
- int /*<<< orphan*/  shader_glsl_append_fixup_arg (char*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned int shader_glsl_get_write_mask_size (int) ; 
- int /*<<< orphan*/  shader_glsl_write_mask_to_str (int,char*) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
+
+ int CHANNEL_SOURCE_W ;
+ int CHANNEL_SOURCE_X ;
+ int CHANNEL_SOURCE_Y ;
+ int CHANNEL_SOURCE_Z ;
+ int FIXME (char*,int) ;
+ int WINED3DSP_WRITEMASK_0 ;
+ int WINED3DSP_WRITEMASK_1 ;
+ int WINED3DSP_WRITEMASK_2 ;
+ int WINED3DSP_WRITEMASK_3 ;
+ int get_complex_fixup (struct color_fixup_desc) ;
+ scalar_t__ is_complex_fixup (struct color_fixup_desc) ;
+ int shader_addline (struct wined3d_string_buffer*,char*,char const*,char*,...) ;
+ int shader_glsl_append_fixup_arg (char*,char const*,int ,int ) ;
+ unsigned int shader_glsl_get_write_mask_size (int) ;
+ int shader_glsl_write_mask_to_str (int,char*) ;
+ int strcat (char*,char*) ;
 
 __attribute__((used)) static void shader_glsl_color_correction_ext(struct wined3d_string_buffer *buffer,
         const char *reg_name, DWORD mask, struct color_fixup_desc fixup)

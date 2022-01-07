@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct usbhs_priv {int /*<<< orphan*/ * clks; } ;
 
-/* Variables and functions */
- int ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  clk_disable_unprepare (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usbhsc_is_multi_clks (struct usbhs_priv*) ; 
+
+
+
+struct usbhs_priv {int * clks; } ;
+
+
+ int ARRAY_SIZE (int *) ;
+ int clk_disable_unprepare (int ) ;
+ int usbhsc_is_multi_clks (struct usbhs_priv*) ;
 
 __attribute__((used)) static void usbhsc_clk_disable_unprepare(struct usbhs_priv *priv)
 {
-	int i;
+ int i;
 
-	if (!usbhsc_is_multi_clks(priv))
-		return;
+ if (!usbhsc_is_multi_clks(priv))
+  return;
 
-	for (i = 0; i < ARRAY_SIZE(priv->clks); i++)
-		clk_disable_unprepare(priv->clks[i]);
+ for (i = 0; i < ARRAY_SIZE(priv->clks); i++)
+  clk_disable_unprepare(priv->clks[i]);
 }

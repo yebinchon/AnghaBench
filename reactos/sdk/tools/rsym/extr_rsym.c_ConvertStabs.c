@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct StringHashTable {int dummy; } ;
-typedef  scalar_t__ ULONG_PTR ;
-typedef  int ULONG ;
-struct TYPE_9__ {scalar_t__ Address; int /*<<< orphan*/  SourceLine; void* FunctionOffset; void* FileOffset; } ;
-struct TYPE_8__ {scalar_t__ n_value; int n_type; int n_strx; int /*<<< orphan*/  n_desc; } ;
-typedef  int /*<<< orphan*/  STAB_ENTRY ;
-typedef  int /*<<< orphan*/  ROSSYM_ENTRY ;
-typedef  TYPE_1__* PSTAB_ENTRY ;
-typedef  TYPE_2__* PROSSYM_ENTRY ;
-typedef  int /*<<< orphan*/  PIMAGE_SECTION_HEADER ;
-typedef  int /*<<< orphan*/  PIMAGE_FILE_HEADER ;
-typedef  int /*<<< orphan*/  FuncName ;
+typedef scalar_t__ ULONG_PTR ;
+typedef int ULONG ;
+struct TYPE_9__ {scalar_t__ Address; int SourceLine; void* FunctionOffset; void* FileOffset; } ;
+struct TYPE_8__ {scalar_t__ n_value; int n_type; int n_strx; int n_desc; } ;
+typedef int STAB_ENTRY ;
+typedef int ROSSYM_ENTRY ;
+typedef TYPE_1__* PSTAB_ENTRY ;
+typedef TYPE_2__* PROSSYM_ENTRY ;
+typedef int PIMAGE_SECTION_HEADER ;
+typedef int PIMAGE_FILE_HEADER ;
+typedef int FuncName ;
 
-/* Variables and functions */
- scalar_t__ CompareSymEntry ; 
- void* FindOrAddString (struct StringHashTable*,char*,int*,void*) ; 
-#define  N_BINCL 132 
-#define  N_FUN 131 
-#define  N_SLINE 130 
-#define  N_SO 129 
-#define  N_SOL 128 
- int /*<<< orphan*/  StringHashTableFree (struct StringHashTable*) ; 
- int /*<<< orphan*/  StringHashTableInit (struct StringHashTable*,int,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- TYPE_2__* malloc (int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  qsort (TYPE_2__*,int,int,int (*) (void const*,void const*)) ; 
- int /*<<< orphan*/  stderr ; 
- int strcspn (char*,char*) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+ scalar_t__ CompareSymEntry ;
+ void* FindOrAddString (struct StringHashTable*,char*,int*,void*) ;
+
+
+
+
+
+ int StringHashTableFree (struct StringHashTable*) ;
+ int StringHashTableInit (struct StringHashTable*,int,char*) ;
+ int fprintf (int ,char*) ;
+ int free (TYPE_2__*) ;
+ TYPE_2__* malloc (int) ;
+ int memcpy (char*,char*,int) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int qsort (TYPE_2__*,int,int,int (*) (void const*,void const*)) ;
+ int stderr ;
+ int strcspn (char*,char*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static int
 ConvertStabs(ULONG *SymbolsCount, PROSSYM_ENTRY *SymbolsBase,
@@ -69,13 +69,13 @@ ConvertStabs(ULONG *SymbolsCount, PROSSYM_ENTRY *SymbolsBase,
 
     if (Count == 0)
     {
-        /* No symbol info */
-        *SymbolsBase = NULL;
+
+        *SymbolsBase = ((void*)0);
         return 0;
     }
 
     *SymbolsBase = malloc(Count * sizeof(ROSSYM_ENTRY));
-    if (*SymbolsBase == NULL)
+    if (*SymbolsBase == ((void*)0))
     {
         fprintf(stderr, "Failed to allocate memory for converted .stab symbols\n");
         return 1;
@@ -98,9 +98,9 @@ ConvertStabs(ULONG *SymbolsCount, PROSSYM_ENTRY *SymbolsBase,
         }
         switch (StabEntry[i].n_type)
         {
-            case N_SO:
-            case N_SOL:
-            case N_BINCL:
+            case 129:
+            case 128:
+            case 132:
                 Name = (char *) StabStringsBase + StabEntry[i].n_strx;
                 if (StabStringsLength < StabEntry[i].n_strx
                     || *Name == '\0' || Name[strlen(Name) - 1] == '/'
@@ -125,10 +125,10 @@ ConvertStabs(ULONG *SymbolsCount, PROSSYM_ENTRY *SymbolsBase,
                                                       StringsLength,
                                                       StringsBase);
                 break;
-            case N_FUN:
+            case 131:
                 if (StabEntry[i].n_desc == 0 || StabEntry[i].n_value < ImageBase)
                 {
-                    LastFunctionAddress = 0; /* line # 0 = end of function */
+                    LastFunctionAddress = 0;
                     continue;
                 }
                 if (First || Address != Current->Address)
@@ -157,7 +157,7 @@ ConvertStabs(ULONG *SymbolsCount, PROSSYM_ENTRY *SymbolsBase,
                 Current->SourceLine = 0;
                 LastFunctionAddress = Address;
                 break;
-            case N_SLINE:
+            case 130:
                 if (First || Address != Current->Address)
                 {
                     if (!First)

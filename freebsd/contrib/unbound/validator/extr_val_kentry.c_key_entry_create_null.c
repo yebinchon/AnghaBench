@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  scalar_t__ time_t ;
+
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef scalar_t__ time_t ;
 struct regional {int dummy; } ;
 struct key_entry_key {int dummy; } ;
-struct key_entry_data {int /*<<< orphan*/ * algo; int /*<<< orphan*/ * rrset_data; int /*<<< orphan*/  rrset_type; int /*<<< orphan*/ * reason; scalar_t__ isbad; scalar_t__ ttl; } ;
+struct key_entry_data {int * algo; int * rrset_data; int rrset_type; int * reason; scalar_t__ isbad; scalar_t__ ttl; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LDNS_RR_TYPE_DNSKEY ; 
- int /*<<< orphan*/  key_entry_setup (struct regional*,int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ ,struct key_entry_key**,struct key_entry_data**) ; 
 
-struct key_entry_key* 
+ int LDNS_RR_TYPE_DNSKEY ;
+ int key_entry_setup (struct regional*,int *,size_t,int ,struct key_entry_key**,struct key_entry_data**) ;
+
+struct key_entry_key*
 key_entry_create_null(struct regional* region,
-	uint8_t* name, size_t namelen, uint16_t dclass, time_t ttl,
-	time_t now)
+ uint8_t* name, size_t namelen, uint16_t dclass, time_t ttl,
+ time_t now)
 {
-	struct key_entry_key* k;
-	struct key_entry_data* d;
-	if(!key_entry_setup(region, name, namelen, dclass, &k, &d))
-		return NULL;
-	d->ttl = now + ttl;
-	d->isbad = 0;
-	d->reason = NULL;
-	d->rrset_type = LDNS_RR_TYPE_DNSKEY;
-	d->rrset_data = NULL;
-	d->algo = NULL;
-	return k;
+ struct key_entry_key* k;
+ struct key_entry_data* d;
+ if(!key_entry_setup(region, name, namelen, dclass, &k, &d))
+  return ((void*)0);
+ d->ttl = now + ttl;
+ d->isbad = 0;
+ d->reason = ((void*)0);
+ d->rrset_type = LDNS_RR_TYPE_DNSKEY;
+ d->rrset_data = ((void*)0);
+ d->algo = ((void*)0);
+ return k;
 }

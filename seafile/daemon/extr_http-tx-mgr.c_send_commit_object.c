@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_6__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_6__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_12__ {TYPE_1__* commit_mgr; } ;
-struct TYPE_11__ {int /*<<< orphan*/  release; int /*<<< orphan*/ * curl; } ;
-struct TYPE_10__ {int /*<<< orphan*/  token; int /*<<< orphan*/  head; int /*<<< orphan*/  repo_id; int /*<<< orphan*/  host; int /*<<< orphan*/  use_fileserver_port; int /*<<< orphan*/  error; int /*<<< orphan*/  repo_version; } ;
-struct TYPE_9__ {int /*<<< orphan*/  obj_store; } ;
-typedef  TYPE_2__ HttpTxTask ;
-typedef  TYPE_3__ Connection ;
-typedef  int /*<<< orphan*/  CURL ;
+struct TYPE_11__ {int release; int * curl; } ;
+struct TYPE_10__ {int token; int head; int repo_id; int host; int use_fileserver_port; int error; int repo_version; } ;
+struct TYPE_9__ {int obj_store; } ;
+typedef TYPE_2__ HttpTxTask ;
+typedef TYPE_3__ Connection ;
+typedef int CURL ;
 
-/* Variables and functions */
- int HTTP_OK ; 
- int /*<<< orphan*/  SYNC_ERROR_ID_LOCAL_DATA_CORRUPT ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  curl_easy_reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- char* g_strdup_printf (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  handle_curl_errors (TYPE_2__*,int) ; 
- int /*<<< orphan*/  handle_http_errors (TYPE_2__*,int) ; 
- scalar_t__ http_put (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- TYPE_6__* seaf ; 
- scalar_t__ seaf_obj_store_read_obj (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void**,int*) ; 
- int /*<<< orphan*/  seaf_warning (char*,char*,...) ; 
+
+ int HTTP_OK ;
+ int SYNC_ERROR_ID_LOCAL_DATA_CORRUPT ;
+ int TRUE ;
+ int curl_easy_reset (int *) ;
+ int g_free (char*) ;
+ char* g_strdup_printf (char*,int ,int ,int ) ;
+ int handle_curl_errors (TYPE_2__*,int) ;
+ int handle_http_errors (TYPE_2__*,int) ;
+ scalar_t__ http_put (int *,char*,int ,char*,int,int *,int *,int*,int *,int *,int ,int*) ;
+ TYPE_6__* seaf ;
+ scalar_t__ seaf_obj_store_read_obj (int ,int ,int ,int ,void**,int*) ;
+ int seaf_warning (char*,char*,...) ;
 
 __attribute__((used)) static int
 send_commit_object (HttpTxTask *task, Connection *conn)
@@ -66,8 +66,8 @@ send_commit_object (HttpTxTask *task, Connection *conn)
     int curl_error;
     if (http_put (curl, url, task->token,
                   data, len,
-                  NULL, NULL,
-                  &status, NULL, NULL, TRUE, &curl_error) < 0) {
+                  ((void*)0), ((void*)0),
+                  &status, ((void*)0), ((void*)0), TRUE, &curl_error) < 0) {
         conn->release = TRUE;
         handle_curl_errors (task, curl_error);
         ret = -1;

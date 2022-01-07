@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int __int64 ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int __int64 ;
 struct TYPE_3__ {int QuadPart; } ;
-typedef  int /*<<< orphan*/  PKTIMER ;
-typedef  TYPE_1__ LARGE_INTEGER ;
-typedef  int /*<<< orphan*/  KTIMER ;
+typedef int PKTIMER ;
+typedef TYPE_1__ LARGE_INTEGER ;
+typedef int KTIMER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Executive ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  KeInitializeTimerEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  KeSetTimerEx (int /*<<< orphan*/ ,TYPE_1__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KeWaitForSingleObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KernelMode ; 
- int /*<<< orphan*/  NotificationTimer ; 
- int /*<<< orphan*/  SlFree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SlMalloc (int) ; 
+
+ int Executive ;
+ int FALSE ;
+ int KeInitializeTimerEx (int ,int ) ;
+ int KeSetTimerEx (int ,TYPE_1__,int ,int *) ;
+ int KeWaitForSingleObject (int ,int ,int ,int ,int *) ;
+ int KernelMode ;
+ int NotificationTimer ;
+ int SlFree (int ) ;
+ int SlMalloc (int) ;
 
 void SlSleep(int milliSeconds)
 {
-	PKTIMER timer = SlMalloc(sizeof(KTIMER));
-	LARGE_INTEGER duetime;
+ PKTIMER timer = SlMalloc(sizeof(KTIMER));
+ LARGE_INTEGER duetime;
 
-	duetime.QuadPart = (__int64)milliSeconds * -10000;
-	KeInitializeTimerEx(timer, NotificationTimer);
-	KeSetTimerEx(timer, duetime, 0, NULL);
+ duetime.QuadPart = (__int64)milliSeconds * -10000;
+ KeInitializeTimerEx(timer, NotificationTimer);
+ KeSetTimerEx(timer, duetime, 0, ((void*)0));
 
-	KeWaitForSingleObject(timer, Executive, KernelMode, FALSE, NULL);
+ KeWaitForSingleObject(timer, Executive, KernelMode, FALSE, ((void*)0));
 
-	SlFree(timer);
+ SlFree(timer);
 }

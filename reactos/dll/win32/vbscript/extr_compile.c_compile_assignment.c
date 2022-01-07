@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vbsop_t ;
-struct TYPE_3__ {int /*<<< orphan*/  identifier; int /*<<< orphan*/  args; int /*<<< orphan*/ * obj_expr; } ;
-typedef  TYPE_1__ member_expression_t ;
-typedef  int /*<<< orphan*/  expression_t ;
-typedef  int /*<<< orphan*/  compile_ctx_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OP_assign_ident ; 
- int /*<<< orphan*/  OP_assign_member ; 
- int /*<<< orphan*/  OP_set_ident ; 
- int /*<<< orphan*/  OP_set_member ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  compile_args (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int*) ; 
- int /*<<< orphan*/  compile_expression (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  emit_catch (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  push_instr_bstr_uint (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int vbsop_t ;
+struct TYPE_3__ {int identifier; int args; int * obj_expr; } ;
+typedef TYPE_1__ member_expression_t ;
+typedef int expression_t ;
+typedef int compile_ctx_t ;
+typedef int HRESULT ;
+typedef scalar_t__ BOOL ;
+
+
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int OP_assign_ident ;
+ int OP_assign_member ;
+ int OP_set_ident ;
+ int OP_set_member ;
+ int S_OK ;
+ int compile_args (int *,int ,unsigned int*) ;
+ int compile_expression (int *,int *) ;
+ int emit_catch (int *,int ) ;
+ int push_instr_bstr_uint (int *,int ,int ,unsigned int) ;
 
 __attribute__((used)) static HRESULT compile_assignment(compile_ctx_t *ctx, member_expression_t *member_expr, expression_t *value_expr, BOOL is_set)
 {

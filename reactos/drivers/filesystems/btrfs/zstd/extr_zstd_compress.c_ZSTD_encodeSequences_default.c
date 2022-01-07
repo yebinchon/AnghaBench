@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  seqDef ;
-typedef  int /*<<< orphan*/  FSE_CTable ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- size_t ZSTD_encodeSequences_body (void*,size_t,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,size_t,int) ; 
+
+
+
+typedef int seqDef ;
+typedef int FSE_CTable ;
+typedef int BYTE ;
+
+
+ size_t ZSTD_encodeSequences_body (void*,size_t,int const*,int const*,int const*,int const*,int const*,int const*,int const*,size_t,int) ;
 
 __attribute__((used)) static size_t
 ZSTD_encodeSequences_default(

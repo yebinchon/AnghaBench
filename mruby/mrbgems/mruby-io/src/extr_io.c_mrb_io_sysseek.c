@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mrb_io {int /*<<< orphan*/  fd; } ;
-typedef  int off_t ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  scalar_t__ mrb_int ;
-typedef  int /*<<< orphan*/  mrb_float ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_IO_ERROR ; 
- int MRB_INT_MAX ; 
- struct mrb_io* io_get_open_fptr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int lseek (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  mrb_fixnum_value (int) ; 
- int /*<<< orphan*/  mrb_float_value (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mrb_sys_fail (int /*<<< orphan*/ *,char*) ; 
+
+
+
+struct mrb_io {int fd; } ;
+typedef int off_t ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef scalar_t__ mrb_int ;
+typedef int mrb_float ;
+
+
+ int E_IO_ERROR ;
+ int MRB_INT_MAX ;
+ struct mrb_io* io_get_open_fptr (int *,int ) ;
+ int lseek (int ,int,int) ;
+ int mrb_fixnum_value (int) ;
+ int mrb_float_value (int *,int ) ;
+ int mrb_get_args (int *,char*,scalar_t__*,scalar_t__*) ;
+ int mrb_raise (int *,int ,char*) ;
+ int mrb_sys_fail (int *,char*) ;
 
 mrb_value
 mrb_io_sysseek(mrb_state *mrb, mrb_value io)
@@ -46,11 +46,11 @@ mrb_io_sysseek(mrb_state *mrb, mrb_value io)
     mrb_sys_fail(mrb, "sysseek");
   }
   if (pos > MRB_INT_MAX) {
-#ifndef MRB_WITHOUT_FLOAT
+
     return mrb_float_value(mrb, (mrb_float)pos);
-#else
-    mrb_raise(mrb, E_IO_ERROR, "sysseek reached too far for MRB_WITHOUT_FLOAT");
-#endif
+
+
+
   } else {
     return mrb_fixnum_value(pos);
   }

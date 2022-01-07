@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t u8 ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (char const**) ; 
- char const** cmd_status_names ; 
+
+
+
+typedef size_t u8 ;
+
+
+ size_t ARRAY_SIZE (char const**) ;
+ char const** cmd_status_names ;
 
 __attribute__((used)) static const char *sdvo_cmd_status(u8 status)
 {
-	if (status < ARRAY_SIZE(cmd_status_names))
-		return cmd_status_names[status];
-	else
-		return NULL;
+ if (status < ARRAY_SIZE(cmd_status_names))
+  return cmd_status_names[status];
+ else
+  return ((void*)0);
 }

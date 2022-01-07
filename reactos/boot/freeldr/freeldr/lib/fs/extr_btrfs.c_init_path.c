@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct btrfs_path {int /*<<< orphan*/  tree_buf; } ;
-struct TYPE_3__ {int /*<<< orphan*/  nodesize; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct btrfs_path {int tree_buf; } ;
+struct TYPE_3__ {int nodesize; } ;
 struct TYPE_4__ {TYPE_1__ SuperBlock; } ;
 
-/* Variables and functions */
- TYPE_2__* BtrFsInfo ; 
- int /*<<< orphan*/  FrLdrTempAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TAG_BTRFS_NODE ; 
- int /*<<< orphan*/  memset (struct btrfs_path*,int /*<<< orphan*/ ,int) ; 
+
+ TYPE_2__* BtrFsInfo ;
+ int FrLdrTempAlloc (int ,int ) ;
+ int TAG_BTRFS_NODE ;
+ int memset (struct btrfs_path*,int ,int) ;
 
 __attribute__((used)) static inline void init_path(struct btrfs_path *path)
 {

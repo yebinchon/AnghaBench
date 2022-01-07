@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_7__ {int block_size; int* planewidth; int pgroup_size; int group_size; float sigma; int /*<<< orphan*/  (* get_block_row ) (int /*<<< orphan*/  const*,int,int const,int const,int const,float*) ;TYPE_2__* slices; } ;
-struct TYPE_6__ {int nb_match_blocks; float* buffer; float* bufferh; float* bufferv; float* bufferz; float* rbuffer; float* rbufferh; float* rbufferv; float* rbufferz; float* num; float* den; int /*<<< orphan*/  dcti; int /*<<< orphan*/  gdcti; int /*<<< orphan*/  gdctf; int /*<<< orphan*/  dctf; TYPE_1__* match_blocks; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_7__ {int block_size; int* planewidth; int pgroup_size; int group_size; float sigma; int (* get_block_row ) (int const*,int,int const,int const,int const,float*) ;TYPE_2__* slices; } ;
+struct TYPE_6__ {int nb_match_blocks; float* buffer; float* bufferh; float* bufferv; float* bufferz; float* rbuffer; float* rbufferh; float* rbufferv; float* rbufferz; float* num; float* den; int dcti; int gdcti; int gdctf; int dctf; TYPE_1__* match_blocks; } ;
 struct TYPE_5__ {int y; int x; } ;
-typedef  TYPE_2__ SliceContext ;
-typedef  TYPE_3__ BM3DContext ;
+typedef TYPE_2__ SliceContext ;
+typedef TYPE_3__ BM3DContext ;
 
-/* Variables and functions */
- float FFMAX (float,float) ; 
- int /*<<< orphan*/  av_dct_calc (int /*<<< orphan*/ ,float*) ; 
- scalar_t__ isnan (float) ; 
- int /*<<< orphan*/  memcpy (float*,float*,int const) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/  const*,int,int const,int const,int const,float*) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/  const*,int,int const,int const,int const,float*) ; 
+
+ float FFMAX (float,float) ;
+ int av_dct_calc (int ,float*) ;
+ scalar_t__ isnan (float) ;
+ int memcpy (float*,float*,int const) ;
+ int stub1 (int const*,int,int const,int const,int const,float*) ;
+ int stub2 (int const*,int,int const,int const,int const,float*) ;
 
 __attribute__((used)) static void final_block_filtering(BM3DContext *s, const uint8_t *src, int src_linesize,
                                   const uint8_t *ref, int ref_linesize,

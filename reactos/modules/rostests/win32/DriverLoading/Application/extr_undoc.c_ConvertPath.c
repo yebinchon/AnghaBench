@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_12__ {int Length; int /*<<< orphan*/  Buffer; } ;
+
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_12__ {int Length; int Buffer; } ;
 struct TYPE_13__ {TYPE_1__ Name; } ;
-typedef  TYPE_2__* POBJECT_NAME_INFORMATION ;
-typedef  scalar_t__ NTSTATUS ;
-typedef  TYPE_2__* LPWSTR ;
-typedef  scalar_t__ LPCWSTR ;
-typedef  scalar_t__ HANDLE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_2__* POBJECT_NAME_INFORMATION ;
+typedef scalar_t__ NTSTATUS ;
+typedef TYPE_2__* LPWSTR ;
+typedef scalar_t__ LPCWSTR ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ CreateFileW (TYPE_2__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- char* DRIVER_NAME ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_NORMAL ; 
- int GENERIC_READ ; 
- int GENERIC_WRITE ; 
- int GetLastError () ; 
- int GetLongPathNameW (scalar_t__,TYPE_2__*,int) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_2__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int MAX_PATH ; 
- scalar_t__ NtQueryObject (scalar_t__,int /*<<< orphan*/ ,TYPE_2__*,int,int*) ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- int /*<<< orphan*/  ObjectNameInformation ; 
- scalar_t__ STATUS_SUCCESS ; 
- int /*<<< orphan*/  TRUE ; 
- TYPE_2__ UNICODE_NULL ; 
- int /*<<< orphan*/  wcsncpy (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  wprintf (char*,int,char*) ; 
+
+ scalar_t__ CreateFileW (TYPE_2__*,int,int ,int *,int ,int ,int *) ;
+ char* DRIVER_NAME ;
+ int FALSE ;
+ int FILE_ATTRIBUTE_NORMAL ;
+ int GENERIC_READ ;
+ int GENERIC_WRITE ;
+ int GetLastError () ;
+ int GetLongPathNameW (scalar_t__,TYPE_2__*,int) ;
+ int GetProcessHeap () ;
+ TYPE_2__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_2__*) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int MAX_PATH ;
+ scalar_t__ NtQueryObject (scalar_t__,int ,TYPE_2__*,int,int*) ;
+ int OPEN_EXISTING ;
+ int ObjectNameInformation ;
+ scalar_t__ STATUS_SUCCESS ;
+ int TRUE ;
+ TYPE_2__ UNICODE_NULL ;
+ int wcsncpy (TYPE_2__*,int ,int) ;
+ int wprintf (char*,int,char*) ;
 
 BOOL
 ConvertPath(LPCWSTR lpPath,
             LPWSTR lpDevice)
 {
-    LPWSTR lpFullPath = NULL;
+    LPWSTR lpFullPath = ((void*)0);
     DWORD size;
 
     if (lpPath)
@@ -81,10 +81,10 @@ ConvertPath(LPCWSTR lpPath,
             hDevice = CreateFileW(lpFullPath,
                                   GENERIC_READ | GENERIC_WRITE,
                                   0,
-                                  NULL,
+                                  ((void*)0),
                                   OPEN_EXISTING,
                                   FILE_ATTRIBUTE_NORMAL,
-                                  NULL);
+                                  ((void*)0));
 
             HeapFree(GetProcessHeap(), 0, lpFullPath);
 

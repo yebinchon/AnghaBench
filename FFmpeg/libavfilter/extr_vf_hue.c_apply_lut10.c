@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_3__ {int /*<<< orphan*/ ** lut_v10; int /*<<< orphan*/ ** lut_u10; } ;
-typedef  TYPE_1__ HueContext ;
 
-/* Variables and functions */
- int av_clip_uintp2 (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_3__ {int ** lut_v10; int ** lut_u10; } ;
+typedef TYPE_1__ HueContext ;
+
+
+ int av_clip_uintp2 (int ,int) ;
 
 __attribute__((used)) static void apply_lut10(HueContext *s,
                       uint16_t *udst, uint16_t *vdst, const int dst_linesize,

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SceUID ;
 
-/* Variables and functions */
- unsigned int ALIGN (unsigned int,int) ; 
- int /*<<< orphan*/  SCE_KERNEL_MEMBLOCK_TYPE_USER_RW_UNCACHE ; 
- scalar_t__ sceGxmMapVertexUsseMemory (void*,unsigned int,unsigned int*) ; 
- int /*<<< orphan*/  sceKernelAllocMemBlock (char*,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ *) ; 
- scalar_t__ sceKernelGetMemBlockBase (int /*<<< orphan*/ ,void**) ; 
+
+
+
+typedef int SceUID ;
+
+
+ unsigned int ALIGN (unsigned int,int) ;
+ int SCE_KERNEL_MEMBLOCK_TYPE_USER_RW_UNCACHE ;
+ scalar_t__ sceGxmMapVertexUsseMemory (void*,unsigned int,unsigned int*) ;
+ int sceKernelAllocMemBlock (char*,int ,unsigned int,int *) ;
+ scalar_t__ sceKernelGetMemBlockBase (int ,void**) ;
 
 void *vertex_usse_alloc(unsigned int size, SceUID *uid, unsigned int *usse_offset)
 {
-	void *mem = NULL;
+ void *mem = ((void*)0);
 
-	size = ALIGN(size, 4096);
-	*uid = sceKernelAllocMemBlock("vertex_usse", SCE_KERNEL_MEMBLOCK_TYPE_USER_RW_UNCACHE, size, NULL);
+ size = ALIGN(size, 4096);
+ *uid = sceKernelAllocMemBlock("vertex_usse", SCE_KERNEL_MEMBLOCK_TYPE_USER_RW_UNCACHE, size, ((void*)0));
 
-	if (sceKernelGetMemBlockBase(*uid, &mem) < 0)
-		return NULL;
-	if (sceGxmMapVertexUsseMemory(mem, size, usse_offset) < 0)
-		return NULL;
+ if (sceKernelGetMemBlockBase(*uid, &mem) < 0)
+  return ((void*)0);
+ if (sceGxmMapVertexUsseMemory(mem, size, usse_offset) < 0)
+  return ((void*)0);
 
-	return mem;
+ return mem;
 }

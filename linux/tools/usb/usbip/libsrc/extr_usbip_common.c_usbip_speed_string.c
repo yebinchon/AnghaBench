@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int num; char const* desc; int /*<<< orphan*/ * speed; } ;
 
-/* Variables and functions */
- TYPE_1__* speed_strings ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int num; char const* desc; int * speed; } ;
+
+
+ TYPE_1__* speed_strings ;
 
 const char *usbip_speed_string(int num)
 {
-	for (int i = 0; speed_strings[i].speed != NULL; i++)
-		if (speed_strings[i].num == num)
-			return speed_strings[i].desc;
+ for (int i = 0; speed_strings[i].speed != ((void*)0); i++)
+  if (speed_strings[i].num == num)
+   return speed_strings[i].desc;
 
-	return "Unknown Speed";
+ return "Unknown Speed";
 }

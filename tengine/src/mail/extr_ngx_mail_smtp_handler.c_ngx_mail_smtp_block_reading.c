@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {scalar_t__ handler; } ;
-typedef  TYPE_1__ ngx_resolver_ctx_t ;
+typedef TYPE_1__ ngx_resolver_ctx_t ;
 struct TYPE_11__ {TYPE_1__* resolver_ctx; } ;
-typedef  TYPE_2__ ngx_mail_session_t ;
+typedef TYPE_2__ ngx_mail_session_t ;
 struct TYPE_12__ {TYPE_4__* data; } ;
-typedef  TYPE_3__ ngx_event_t ;
-struct TYPE_13__ {int /*<<< orphan*/  log; TYPE_2__* data; } ;
-typedef  TYPE_4__ ngx_connection_t ;
+typedef TYPE_3__ ngx_event_t ;
+struct TYPE_13__ {int log; TYPE_2__* data; } ;
+typedef TYPE_4__ ngx_connection_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_LOG_DEBUG_MAIL ; 
- scalar_t__ NGX_OK ; 
- scalar_t__ ngx_handle_read_event (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_mail_close_connection (TYPE_4__*) ; 
- scalar_t__ ngx_mail_smtp_resolve_addr_handler ; 
- scalar_t__ ngx_mail_smtp_resolve_name_handler ; 
- int /*<<< orphan*/  ngx_resolve_addr_done (TYPE_1__*) ; 
- int /*<<< orphan*/  ngx_resolve_name_done (TYPE_1__*) ; 
+
+ int NGX_LOG_DEBUG_MAIL ;
+ scalar_t__ NGX_OK ;
+ scalar_t__ ngx_handle_read_event (TYPE_3__*,int ) ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int ngx_mail_close_connection (TYPE_4__*) ;
+ scalar_t__ ngx_mail_smtp_resolve_addr_handler ;
+ scalar_t__ ngx_mail_smtp_resolve_name_handler ;
+ int ngx_resolve_addr_done (TYPE_1__*) ;
+ int ngx_resolve_name_done (TYPE_1__*) ;
 
 __attribute__((used)) static void
 ngx_mail_smtp_block_reading(ngx_event_t *rev)
 {
-    ngx_connection_t    *c;
-    ngx_mail_session_t  *s;
-    ngx_resolver_ctx_t  *ctx;
+    ngx_connection_t *c;
+    ngx_mail_session_t *s;
+    ngx_resolver_ctx_t *ctx;
 
     c = rev->data;
     s = c->data;
@@ -58,7 +58,7 @@ ngx_mail_smtp_block_reading(ngx_event_t *rev)
                 ngx_resolve_name_done(ctx);
             }
 
-            s->resolver_ctx = NULL;
+            s->resolver_ctx = ((void*)0);
         }
 
         ngx_mail_close_connection(c);

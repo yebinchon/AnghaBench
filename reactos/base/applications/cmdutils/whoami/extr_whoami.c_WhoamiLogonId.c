@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {size_t GroupCount; TYPE_1__* Groups; } ;
 struct TYPE_4__ {int Attributes; scalar_t__ Sid; } ;
-typedef  TYPE_2__* PTOKEN_GROUPS ;
-typedef  scalar_t__ PSID ;
-typedef  char* LPWSTR ;
-typedef  size_t DWORD ;
+typedef TYPE_2__* PTOKEN_GROUPS ;
+typedef scalar_t__ PSID ;
+typedef char* LPWSTR ;
+typedef size_t DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConvertSidToStringSidW (scalar_t__,char**) ; 
- int /*<<< orphan*/  LocalFree (char*) ; 
- int SE_GROUP_LOGON_ID ; 
- int /*<<< orphan*/  TokenGroups ; 
- int /*<<< orphan*/  WhoamiFree (TYPE_2__*) ; 
- int /*<<< orphan*/  WhoamiGetTokenInfo (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wprintf (char*,...) ; 
+
+ int ConvertSidToStringSidW (scalar_t__,char**) ;
+ int LocalFree (char*) ;
+ int SE_GROUP_LOGON_ID ;
+ int TokenGroups ;
+ int WhoamiFree (TYPE_2__*) ;
+ int WhoamiGetTokenInfo (int ) ;
+ int wprintf (char*,...) ;
 
 int WhoamiLogonId(void)
 {
@@ -35,10 +35,10 @@ int WhoamiLogonId(void)
     LPWSTR pSidStr = 0;
     PSID pSid = 0;
 
-    if (pGroupInfo == NULL)
+    if (pGroupInfo == ((void*)0))
         return 0;
 
-    /* lets see if we can find the logon SID in that list, should be there */
+
     for (dwIndex = 0; dwIndex < pGroupInfo->GroupCount; dwIndex++)
     {
         if ((pGroupInfo->Groups[dwIndex].Attributes & SE_GROUP_LOGON_ID) == SE_GROUP_LOGON_ID)
@@ -61,11 +61,11 @@ int WhoamiLogonId(void)
     }
     else
     {
-        /* let's show our converted logon SID */
+
         wprintf(L"%s\n", pSidStr);
     }
 
-    /* cleanup our allocations */
+
     LocalFree(pSidStr);
     WhoamiFree(pGroupInfo);
 

@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ port; } ;
 
-/* Variables and functions */
- TYPE_1__ PID ; 
- int /*<<< orphan*/  PING_INTERVAL ; 
- scalar_t__ PRIVILEGED_TCP_PORTS ; 
- int /*<<< orphan*/  aes_load_pwd_file (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  aes_pwd_file ; 
- int /*<<< orphan*/  backlog ; 
- scalar_t__ bname ; 
- char* config_filename ; 
- int do_reload_config (int /*<<< orphan*/ ) ; 
- scalar_t__ enable_ipv6 ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  f_parse_option ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  get_my_ipv4 () ; 
- int /*<<< orphan*/  init_dyn_data () ; 
- int /*<<< orphan*/  init_server_PID (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  kprintf (char*,scalar_t__) ; 
- int maxconn ; 
- int /*<<< orphan*/  no_argument ; 
- int optind ; 
- int /*<<< orphan*/  parse_engine_options_long (int,char**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_option (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char,char*,...) ; 
- scalar_t__ port ; 
- char* progname ; 
- scalar_t__ raise_file_rlimit (int) ; 
- int /*<<< orphan*/  read_binlog (scalar_t__) ; 
- int /*<<< orphan*/  remove_parse_option (char) ; 
- int /*<<< orphan*/  required_argument ; 
- int rpc_disable_crc32_check ; 
- scalar_t__ server_socket (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  set_debug_handlers () ; 
- int /*<<< orphan*/  settings_addr ; 
- scalar_t__ sfd ; 
- int /*<<< orphan*/  start_server () ; 
- int /*<<< orphan*/  start_time ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  test_mode ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usage () ; 
- scalar_t__ usfd ; 
- int /*<<< orphan*/  vkprintf (int,char*) ; 
+
+ TYPE_1__ PID ;
+ int PING_INTERVAL ;
+ scalar_t__ PRIVILEGED_TCP_PORTS ;
+ int aes_load_pwd_file (int ) ;
+ int aes_pwd_file ;
+ int backlog ;
+ scalar_t__ bname ;
+ char* config_filename ;
+ int do_reload_config (int ) ;
+ scalar_t__ enable_ipv6 ;
+ int exit (int) ;
+ int f_parse_option ;
+ int fprintf (int ,char*,...) ;
+ int get_my_ipv4 () ;
+ int init_dyn_data () ;
+ int init_server_PID (int ,scalar_t__) ;
+ int kprintf (char*,scalar_t__) ;
+ int maxconn ;
+ int no_argument ;
+ int optind ;
+ int parse_engine_options_long (int,char**,int ) ;
+ int parse_option (char*,int ,int ,char,char*,...) ;
+ scalar_t__ port ;
+ char* progname ;
+ scalar_t__ raise_file_rlimit (int) ;
+ int read_binlog (scalar_t__) ;
+ int remove_parse_option (char) ;
+ int required_argument ;
+ int rpc_disable_crc32_check ;
+ scalar_t__ server_socket (scalar_t__,int ,int ,scalar_t__) ;
+ int set_debug_handlers () ;
+ int settings_addr ;
+ scalar_t__ sfd ;
+ int start_server () ;
+ int start_time ;
+ int stderr ;
+ int test_mode ;
+ int time (int ) ;
+ int usage () ;
+ scalar_t__ usfd ;
+ int vkprintf (int,char*) ;
 
 int main (int argc, char *argv[]) {
   rpc_disable_crc32_check = 1;

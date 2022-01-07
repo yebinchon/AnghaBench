@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct sway_seat {TYPE_1__* seatop_impl; } ;
 struct sway_output {int dummy; } ;
-typedef  int /*<<< orphan*/  pixman_region32_t ;
-struct TYPE_2__ {int /*<<< orphan*/  (* render ) (struct sway_seat*,struct sway_output*,int /*<<< orphan*/ *) ;} ;
+typedef int pixman_region32_t ;
+struct TYPE_2__ {int (* render ) (struct sway_seat*,struct sway_output*,int *) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (struct sway_seat*,struct sway_output*,int /*<<< orphan*/ *) ; 
+
+ int stub1 (struct sway_seat*,struct sway_output*,int *) ;
 
 void seatop_render(struct sway_seat *seat, struct sway_output *output,
-		pixman_region32_t *damage) {
-	if (seat->seatop_impl->render) {
-		seat->seatop_impl->render(seat, output, damage);
-	}
+  pixman_region32_t *damage) {
+ if (seat->seatop_impl->render) {
+  seat->seatop_impl->render(seat, output, damage);
+ }
 }

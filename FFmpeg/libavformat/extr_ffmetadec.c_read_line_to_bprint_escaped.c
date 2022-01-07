@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
-typedef  scalar_t__ int64_t ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int tmp ;
+typedef scalar_t__ int64_t ;
 struct TYPE_6__ {scalar_t__ error; } ;
-typedef  TYPE_1__ AVIOContext ;
-typedef  int /*<<< orphan*/  AVBPrint ;
+typedef TYPE_1__ AVIOContext ;
+typedef int AVBPrint ;
 
-/* Variables and functions */
- scalar_t__ AVERROR_EOF ; 
- int /*<<< orphan*/  av_bprint_append_data (int /*<<< orphan*/ *,char*,int) ; 
- scalar_t__ avio_feof (TYPE_1__*) ; 
- char avio_r8 (TYPE_1__*) ; 
- int /*<<< orphan*/  avio_skip (TYPE_1__*,int) ; 
+
+ scalar_t__ AVERROR_EOF ;
+ int av_bprint_append_data (int *,char*,int) ;
+ scalar_t__ avio_feof (TYPE_1__*) ;
+ char avio_r8 (TYPE_1__*) ;
+ int avio_skip (TYPE_1__*,int) ;
 
 __attribute__((used)) static int64_t read_line_to_bprint_escaped(AVIOContext *s, AVBPrint *bp)
 {

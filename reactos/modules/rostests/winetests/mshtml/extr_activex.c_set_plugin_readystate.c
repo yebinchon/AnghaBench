@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  READYSTATE ;
-typedef  int /*<<< orphan*/  IPropertyNotifySink ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISPID_READYSTATE ; 
- int /*<<< orphan*/  IID_IPropertyNotifySink ; 
- scalar_t__ IOleClientSite_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ IPropertyNotifySink_OnChanged (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IPropertyNotifySink_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  client_site ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  plugin_readystate ; 
+
+
+
+typedef int READYSTATE ;
+typedef int IPropertyNotifySink ;
+typedef scalar_t__ HRESULT ;
+
+
+ int DISPID_READYSTATE ;
+ int IID_IPropertyNotifySink ;
+ scalar_t__ IOleClientSite_QueryInterface (int ,int *,void**) ;
+ scalar_t__ IPropertyNotifySink_OnChanged (int *,int ) ;
+ int IPropertyNotifySink_Release (int *) ;
+ scalar_t__ S_OK ;
+ int client_site ;
+ int ok (int,char*,scalar_t__) ;
+ int plugin_readystate ;
 
 __attribute__((used)) static void set_plugin_readystate(READYSTATE state)
 {

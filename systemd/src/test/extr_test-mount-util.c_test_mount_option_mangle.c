@@ -1,42 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned long MS_NODEV ; 
- unsigned long MS_NOEXEC ; 
- unsigned long MS_NOSUID ; 
- unsigned long MS_RDONLY ; 
- unsigned long MS_RELATIME ; 
- int /*<<< orphan*/  assert_se (int) ; 
- char* mfree (char*) ; 
- scalar_t__ mount_option_mangle (char*,unsigned long,unsigned long*,char**) ; 
- int streq (char*,char*) ; 
+ unsigned long MS_NODEV ;
+ unsigned long MS_NOEXEC ;
+ unsigned long MS_NOSUID ;
+ unsigned long MS_RDONLY ;
+ unsigned long MS_RELATIME ;
+ int assert_se (int) ;
+ char* mfree (char*) ;
+ scalar_t__ mount_option_mangle (char*,unsigned long,unsigned long*,char**) ;
+ int streq (char*,char*) ;
 
 __attribute__((used)) static void test_mount_option_mangle(void) {
-        char *opts = NULL;
+        char *opts = ((void*)0);
         unsigned long f;
 
-        assert_se(mount_option_mangle(NULL, MS_RDONLY|MS_NOSUID, &f, &opts) == 0);
+        assert_se(mount_option_mangle(((void*)0), MS_RDONLY|MS_NOSUID, &f, &opts) == 0);
         assert_se(f == (MS_RDONLY|MS_NOSUID));
-        assert_se(opts == NULL);
+        assert_se(opts == ((void*)0));
 
         assert_se(mount_option_mangle("", MS_RDONLY|MS_NOSUID, &f, &opts) == 0);
         assert_se(f == (MS_RDONLY|MS_NOSUID));
-        assert_se(opts == NULL);
+        assert_se(opts == ((void*)0));
 
         assert_se(mount_option_mangle("ro,nosuid,nodev,noexec", 0, &f, &opts) == 0);
         assert_se(f == (MS_RDONLY|MS_NOSUID|MS_NODEV|MS_NOEXEC));
-        assert_se(opts == NULL);
+        assert_se(opts == ((void*)0));
 
         assert_se(mount_option_mangle("ro,nosuid,nodev,noexec,mode=755", 0, &f, &opts) == 0);
         assert_se(f == (MS_RDONLY|MS_NOSUID|MS_NODEV|MS_NOEXEC));

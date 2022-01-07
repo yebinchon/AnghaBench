@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ unsigned char HIBYTE (short) ;
+ unsigned char LOBYTE (short) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned char HIBYTE (short) ; 
- unsigned char LOBYTE (short) ; 
-
-__attribute__((used)) static inline void  W16(unsigned char* dst, short s)
+__attribute__((used)) static inline void W16(unsigned char* dst, short s)
 {
     dst[0] = LOBYTE(s);
     dst[1] = HIBYTE(s);

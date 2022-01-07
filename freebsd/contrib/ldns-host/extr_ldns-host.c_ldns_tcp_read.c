@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint32_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
 struct timeval {int tv_sec; int tv_usec; } ;
-typedef  scalar_t__ ldns_status ;
+typedef scalar_t__ ldns_status ;
 struct TYPE_4__ {scalar_t__ _socket; } ;
-typedef  TYPE_1__ ldns_resolver ;
-typedef  int /*<<< orphan*/  ldns_pkt ;
+typedef TYPE_1__ ldns_resolver ;
+typedef int ldns_pkt ;
 
-/* Variables and functions */
- scalar_t__ LDNS_STATUS_ERR ; 
- scalar_t__ LDNS_STATUS_OK ; 
- int /*<<< orphan*/  close (scalar_t__) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gettimeofday (struct timeval*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ldns_pkt_set_querytime (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  ldns_pkt_set_timestamp (int /*<<< orphan*/ *,struct timeval) ; 
- int /*<<< orphan*/  ldns_resolver_timeout (TYPE_1__*) ; 
- int /*<<< orphan*/ * ldns_tcp_read_wire_timeout (scalar_t__,size_t*,int /*<<< orphan*/ ) ; 
- scalar_t__ ldns_wire2pkt (int /*<<< orphan*/ **,int /*<<< orphan*/ *,size_t) ; 
+
+ scalar_t__ LDNS_STATUS_ERR ;
+ scalar_t__ LDNS_STATUS_OK ;
+ int close (scalar_t__) ;
+ int free (int *) ;
+ int gettimeofday (struct timeval*,int *) ;
+ int ldns_pkt_set_querytime (int *,scalar_t__) ;
+ int ldns_pkt_set_timestamp (int *,struct timeval) ;
+ int ldns_resolver_timeout (TYPE_1__*) ;
+ int * ldns_tcp_read_wire_timeout (scalar_t__,size_t*,int ) ;
+ scalar_t__ ldns_wire2pkt (int **,int *,size_t) ;
 
 __attribute__((used)) static ldns_status
 ldns_tcp_read(ldns_pkt **answer, ldns_resolver *res) {
@@ -41,10 +41,10 @@ ldns_tcp_read(ldns_pkt **answer, ldns_resolver *res) {
     if (res->_socket <= 0)
         return LDNS_STATUS_ERR;
 
-    gettimeofday(&t1, NULL);
+    gettimeofday(&t1, ((void*)0));
     data = ldns_tcp_read_wire_timeout(
             res->_socket, &size, ldns_resolver_timeout(res));
-    if (data == NULL)
+    if (data == ((void*)0))
         goto error;
 
     status = ldns_wire2pkt(answer, data, size);
@@ -52,7 +52,7 @@ ldns_tcp_read(ldns_pkt **answer, ldns_resolver *res) {
     if (status != LDNS_STATUS_OK)
         goto error;
 
-    gettimeofday(&t2, NULL);
+    gettimeofday(&t2, ((void*)0));
     ldns_pkt_set_querytime(*answer,
             (uint32_t)((t2.tv_sec - t1.tv_sec)*1000) +
                 (t2.tv_usec - t1.tv_usec)/1000);

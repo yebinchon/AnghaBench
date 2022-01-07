@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int (* nfs_shareopt_callback_t ) (char*,char*,void*) ;
 
-/* Variables and functions */
- int SA_NO_MEMORY ; 
- int SA_OK ; 
- int /*<<< orphan*/  free (char*) ; 
- char* strchr (char*,char) ; 
- char* strdup (char const*) ; 
+
+
+
+typedef int (* nfs_shareopt_callback_t ) (char*,char*,void*) ;
+
+
+ int SA_NO_MEMORY ;
+ int SA_OK ;
+ int free (char*) ;
+ char* strchr (char*,char) ;
+ char* strdup (char const*) ;
 
 __attribute__((used)) static int
 foreach_nfs_shareopt(const char *shareopts,
     nfs_shareopt_callback_t callback, void *cookie)
 {
-	char *shareopts_dup, *opt, *cur, *value;
-	int was_nul, rc;
+ char *shareopts_dup, *opt, *cur, *value;
+ int was_nul, rc;
 
-	if (shareopts == NULL)
-		return (SA_OK);
+ if (shareopts == ((void*)0))
+  return (SA_OK);
 
-	shareopts_dup = strdup(shareopts);
+ shareopts_dup = strdup(shareopts);
 
-	if (shareopts_dup == NULL)
-		return (SA_NO_MEMORY);
+ if (shareopts_dup == ((void*)0))
+  return (SA_NO_MEMORY);
 
-	opt = shareopts_dup;
-	was_nul = 0;
+ opt = shareopts_dup;
+ was_nul = 0;
 
-	while (1) {
-		cur = opt;
+ while (1) {
+  cur = opt;
 
-		while (*cur != ',' && *cur != '\0')
-			cur++;
+  while (*cur != ',' && *cur != '\0')
+   cur++;
 
-		if (*cur == '\0')
-			was_nul = 1;
+  if (*cur == '\0')
+   was_nul = 1;
 
-		*cur = '\0';
+  *cur = '\0';
 
-		if (cur > opt) {
-			value = strchr(opt, '=');
+  if (cur > opt) {
+   value = strchr(opt, '=');
 
-			if (value != NULL) {
-				*value = '\0';
-				value++;
-			}
+   if (value != ((void*)0)) {
+    *value = '\0';
+    value++;
+   }
 
-			rc = callback(opt, value, cookie);
+   rc = callback(opt, value, cookie);
 
-			if (rc != SA_OK) {
-				free(shareopts_dup);
-				return (rc);
-			}
-		}
+   if (rc != SA_OK) {
+    free(shareopts_dup);
+    return (rc);
+   }
+  }
 
-		opt = cur + 1;
+  opt = cur + 1;
 
-		if (was_nul)
-			break;
-	}
+  if (was_nul)
+   break;
+ }
 
-	free(shareopts_dup);
+ free(shareopts_dup);
 
-	return (0);
+ return (0);
 }

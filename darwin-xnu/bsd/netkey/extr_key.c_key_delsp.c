@@ -1,80 +1,80 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * internal_if; } ;
-struct secpolicy {scalar_t__ refcnt; struct ipsecrequest* req; int /*<<< orphan*/ * outgoing_if; int /*<<< orphan*/ * ipsec_if; TYPE_1__ spidx; int /*<<< orphan*/  state; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * internal_if; } ;
+struct secpolicy {scalar_t__ refcnt; struct ipsecrequest* req; int * outgoing_if; int * ipsec_if; TYPE_1__ spidx; int state; } ;
 struct ipsecrequest {struct ipsecrequest* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPSEC_SPSTATE_DEAD ; 
- int /*<<< orphan*/  KFREE (struct ipsecrequest*) ; 
- int /*<<< orphan*/  LCK_MTX_ASSERT (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LCK_MTX_ASSERT_OWNED ; 
- int /*<<< orphan*/  LIST_REMOVE (struct secpolicy*,int /*<<< orphan*/ ) ; 
- scalar_t__ __LIST_CHAINED (struct secpolicy*) ; 
- int /*<<< orphan*/  chain ; 
- int /*<<< orphan*/  ifnet_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ipsec_policy_count ; 
- int /*<<< orphan*/  keydb_delsecpolicy (struct secpolicy*) ; 
- int /*<<< orphan*/  panic (char*) ; 
- int /*<<< orphan*/  sadb_mutex ; 
+
+ int IPSEC_SPSTATE_DEAD ;
+ int KFREE (struct ipsecrequest*) ;
+ int LCK_MTX_ASSERT (int ,int ) ;
+ int LCK_MTX_ASSERT_OWNED ;
+ int LIST_REMOVE (struct secpolicy*,int ) ;
+ scalar_t__ __LIST_CHAINED (struct secpolicy*) ;
+ int chain ;
+ int ifnet_release (int *) ;
+ int ipsec_policy_count ;
+ int keydb_delsecpolicy (struct secpolicy*) ;
+ int panic (char*) ;
+ int sadb_mutex ;
 
 __attribute__((used)) static void
 key_delsp(
-		  struct secpolicy *sp)
+    struct secpolicy *sp)
 {
-	
-	/* sanity check */
-	if (sp == NULL)
-		panic("key_delsp: NULL pointer is passed.\n");
-	
-	LCK_MTX_ASSERT(sadb_mutex, LCK_MTX_ASSERT_OWNED);
-	sp->state = IPSEC_SPSTATE_DEAD;
-	
-	if (sp->refcnt > 0)
-		return; /* can't free */
-	
-	/* remove from SP index */
-	if (__LIST_CHAINED(sp)) {
-		LIST_REMOVE(sp, chain);
-		ipsec_policy_count--;
-	}
-	
+
+
+ if (sp == ((void*)0))
+  panic("key_delsp: NULL pointer is passed.\n");
+
+ LCK_MTX_ASSERT(sadb_mutex, LCK_MTX_ASSERT_OWNED);
+ sp->state = IPSEC_SPSTATE_DEAD;
+
+ if (sp->refcnt > 0)
+  return;
+
+
+ if (__LIST_CHAINED(sp)) {
+  LIST_REMOVE(sp, chain);
+  ipsec_policy_count--;
+ }
+
     if (sp->spidx.internal_if) {
         ifnet_release(sp->spidx.internal_if);
-        sp->spidx.internal_if = NULL;
+        sp->spidx.internal_if = ((void*)0);
     }
-    
+
     if (sp->ipsec_if) {
         ifnet_release(sp->ipsec_if);
-        sp->ipsec_if = NULL;
+        sp->ipsec_if = ((void*)0);
     }
-    
+
     if (sp->outgoing_if) {
         ifnet_release(sp->outgoing_if);
-        sp->outgoing_if = NULL;
+        sp->outgoing_if = ((void*)0);
     }
-	
+
     {
-		struct ipsecrequest *isr = sp->req, *nextisr;
-		
-		while (isr != NULL) {
-			nextisr = isr->next;
-			KFREE(isr);
-			isr = nextisr;
-    	}
-	}
-	keydb_delsecpolicy(sp);
-	
-	return;
+  struct ipsecrequest *isr = sp->req, *nextisr;
+
+  while (isr != ((void*)0)) {
+   nextisr = isr->next;
+   KFREE(isr);
+   isr = nextisr;
+     }
+ }
+ keydb_delsecpolicy(sp);
+
+ return;
 }

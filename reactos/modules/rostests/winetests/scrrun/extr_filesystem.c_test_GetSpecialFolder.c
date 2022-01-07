@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  IFolder ;
-typedef  scalar_t__ HRESULT ;
-typedef  int DWORD ;
-typedef  char* BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (char*) ; 
- scalar_t__ E_INVALIDARG ; 
- scalar_t__ E_POINTER ; 
- int /*<<< orphan*/  GetSystemDirectoryW (char*,int /*<<< orphan*/ ) ; 
- int GetTempPathW (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  GetWindowsDirectoryW (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ IFileSystem3_GetSpecialFolder (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IFolder_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IFolder_get_Path (int /*<<< orphan*/ *,char**) ; 
- int MAX_PATH ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysFreeString (char*) ; 
- scalar_t__ SystemFolder ; 
- scalar_t__ TemporaryFolder ; 
- scalar_t__ WindowsFolder ; 
- int /*<<< orphan*/  fs3 ; 
- int /*<<< orphan*/  lstrcmpiW (char*,char*) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,...) ; 
- int /*<<< orphan*/  wine_dbgstr_w (char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int IFolder ;
+typedef scalar_t__ HRESULT ;
+typedef int DWORD ;
+typedef char* BSTR ;
+
+
+ int ARRAY_SIZE (char*) ;
+ scalar_t__ E_INVALIDARG ;
+ scalar_t__ E_POINTER ;
+ int GetSystemDirectoryW (char*,int ) ;
+ int GetTempPathW (int ,char*) ;
+ int GetWindowsDirectoryW (char*,int ) ;
+ scalar_t__ IFileSystem3_GetSpecialFolder (int ,scalar_t__,int **) ;
+ int IFolder_Release (int *) ;
+ scalar_t__ IFolder_get_Path (int *,char**) ;
+ int MAX_PATH ;
+ scalar_t__ S_OK ;
+ int SysFreeString (char*) ;
+ scalar_t__ SystemFolder ;
+ scalar_t__ TemporaryFolder ;
+ scalar_t__ WindowsFolder ;
+ int fs3 ;
+ int lstrcmpiW (char*,char*) ;
+ int ok (int,char*,scalar_t__,...) ;
+ int wine_dbgstr_w (char*) ;
 
 __attribute__((used)) static void test_GetSpecialFolder(void)
 {
@@ -45,10 +45,10 @@ __attribute__((used)) static void test_GetSpecialFolder(void)
     DWORD ret;
     BSTR path;
 
-    hr = IFileSystem3_GetSpecialFolder(fs3, WindowsFolder, NULL);
+    hr = IFileSystem3_GetSpecialFolder(fs3, WindowsFolder, ((void*)0));
     ok(hr == E_POINTER, "got 0x%08x\n", hr);
 
-    hr = IFileSystem3_GetSpecialFolder(fs3, TemporaryFolder+1, NULL);
+    hr = IFileSystem3_GetSpecialFolder(fs3, TemporaryFolder+1, ((void*)0));
     ok(hr == E_POINTER, "got 0x%08x\n", hr);
 
     hr = IFileSystem3_GetSpecialFolder(fs3, TemporaryFolder+1, &folder);

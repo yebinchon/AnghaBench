@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__* exclude_mask; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_1__ DynamicRangeControl ;
+typedef int GetBitContext ;
+typedef TYPE_1__ DynamicRangeControl ;
 
-/* Variables and functions */
- int MAX_CHANNELS ; 
- scalar_t__ get_bits1 (int /*<<< orphan*/ *) ; 
+
+ int MAX_CHANNELS ;
+ scalar_t__ get_bits1 (int *) ;
 
 __attribute__((used)) static int decode_drc_channel_exclusions(DynamicRangeControl *che_drc,
                                          GetBitContext *gb)

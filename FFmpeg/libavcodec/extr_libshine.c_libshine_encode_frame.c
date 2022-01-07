@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
-typedef  struct TYPE_16__   TYPE_11__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int16_t ;
-struct TYPE_21__ {int /*<<< orphan*/  frame_size; TYPE_1__* priv_data; } ;
+
+
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+typedef struct TYPE_16__ TYPE_11__ ;
+
+
+typedef int int16_t ;
+struct TYPE_21__ {int frame_size; TYPE_1__* priv_data; } ;
 struct TYPE_20__ {scalar_t__ data; } ;
-struct TYPE_19__ {unsigned char* data; int size; int /*<<< orphan*/  duration; int /*<<< orphan*/  pts; } ;
+struct TYPE_19__ {unsigned char* data; int size; int duration; int pts; } ;
 struct TYPE_18__ {int frame_size; } ;
-struct TYPE_16__ {int /*<<< orphan*/  frame_count; } ;
-struct TYPE_17__ {int buffer_index; unsigned char* buffer; TYPE_11__ afq; int /*<<< orphan*/  shine; } ;
-typedef  TYPE_1__ SHINEContext ;
-typedef  TYPE_2__ MPADecodeHeader ;
-typedef  TYPE_3__ AVPacket ;
-typedef  TYPE_4__ AVFrame ;
-typedef  TYPE_5__ AVCodecContext ;
+struct TYPE_16__ {int frame_count; } ;
+struct TYPE_17__ {int buffer_index; unsigned char* buffer; TYPE_11__ afq; int shine; } ;
+typedef TYPE_1__ SHINEContext ;
+typedef TYPE_2__ MPADecodeHeader ;
+typedef TYPE_3__ AVPacket ;
+typedef TYPE_4__ AVFrame ;
+typedef TYPE_5__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_BUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_RB32 (unsigned char*) ; 
- int BUFFER_SIZE ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ avpriv_mpegaudio_decode_header (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int ff_af_queue_add (TYPE_11__*,TYPE_4__ const*) ; 
- int /*<<< orphan*/  ff_af_queue_remove (TYPE_11__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int ff_alloc_packet2 (TYPE_5__*,TYPE_3__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  memmove (unsigned char*,unsigned char*,int) ; 
- unsigned char* shine_encode_buffer (int /*<<< orphan*/ ,int /*<<< orphan*/ **,int*) ; 
- unsigned char* shine_flush (int /*<<< orphan*/ ,int*) ; 
+
+ int AVERROR_BUG ;
+ int AV_LOG_ERROR ;
+ int AV_RB32 (unsigned char*) ;
+ int BUFFER_SIZE ;
+ int av_log (TYPE_5__*,int ,char*) ;
+ scalar_t__ avpriv_mpegaudio_decode_header (TYPE_2__*,int ) ;
+ int ff_af_queue_add (TYPE_11__*,TYPE_4__ const*) ;
+ int ff_af_queue_remove (TYPE_11__*,int ,int *,int *) ;
+ int ff_alloc_packet2 (TYPE_5__*,TYPE_3__*,int,int ) ;
+ int memcpy (unsigned char*,unsigned char*,int) ;
+ int memmove (unsigned char*,unsigned char*,int) ;
+ unsigned char* shine_encode_buffer (int ,int **,int*) ;
+ unsigned char* shine_flush (int ,int*) ;
 
 __attribute__((used)) static int libshine_encode_frame(AVCodecContext *avctx, AVPacket *avpkt,
                                  const AVFrame *frame, int *got_packet_ptr)

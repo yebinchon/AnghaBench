@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device {int dummy; } ;
-typedef  int /*<<< orphan*/  gfp_t ;
-typedef  int /*<<< orphan*/  dma_addr_t ;
+typedef int gfp_t ;
+typedef int dma_addr_t ;
 
-/* Variables and functions */
- scalar_t__ __alloc_dma_pages (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_pages (size_t) ; 
- int /*<<< orphan*/  memset (void*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  virt_to_phys (void*) ; 
+
+ scalar_t__ __alloc_dma_pages (int ) ;
+ int get_pages (size_t) ;
+ int memset (void*,int ,size_t) ;
+ int virt_to_phys (void*) ;
 
 void *dma_alloc_coherent(struct device *dev, size_t size,
-			 dma_addr_t * dma_handle, gfp_t gfp)
+    dma_addr_t * dma_handle, gfp_t gfp)
 {
-	void *ret;
+ void *ret;
 
-	ret = (void *)__alloc_dma_pages(get_pages(size));
+ ret = (void *)__alloc_dma_pages(get_pages(size));
 
-	if (ret) {
-		memset(ret, 0, size);
-		*dma_handle = virt_to_phys(ret);
-	}
+ if (ret) {
+  memset(ret, 0, size);
+  *dma_handle = virt_to_phys(ret);
+ }
 
-	return ret;
+ return ret;
 }

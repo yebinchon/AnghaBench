@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  line; int /*<<< orphan*/  filename; } ;
-struct TYPE_6__ {scalar_t__ session_id; scalar_t__ peer_session_id; TYPE_2__* section; int /*<<< orphan*/  name; struct TYPE_6__* tunnel; } ;
-typedef  int /*<<< orphan*/  NetDev ;
-typedef  TYPE_1__ L2tpSession ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/ * NETDEV (TYPE_1__*) ; 
- int /*<<< orphan*/  SYNTHETIC_ERRNO (int) ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int log_netdev_error_errno (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ section_is_invalid (TYPE_2__*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int line; int filename; } ;
+struct TYPE_6__ {scalar_t__ session_id; scalar_t__ peer_session_id; TYPE_2__* section; int name; struct TYPE_6__* tunnel; } ;
+typedef int NetDev ;
+typedef TYPE_1__ L2tpSession ;
+
+
+ int EINVAL ;
+ int * NETDEV (TYPE_1__*) ;
+ int SYNTHETIC_ERRNO (int) ;
+ int assert (TYPE_1__*) ;
+ int log_netdev_error_errno (int *,int ,char*,int ,int ) ;
+ scalar_t__ section_is_invalid (TYPE_2__*) ;
 
 __attribute__((used)) static int l2tp_session_verify(L2tpSession *session) {
         NetDev *netdev;

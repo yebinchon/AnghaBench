@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xmlstr_t ;
-typedef  int /*<<< orphan*/  xmlbuf_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int xmlstr_t ;
+typedef int xmlbuf_t ;
 struct dll_redirect {void* name; void* hash; } ;
 struct assembly {int dummy; } ;
 struct actctx_loader {TYPE_1__* actctx; } ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-struct TYPE_2__ {int /*<<< orphan*/  sections; } ;
-typedef  scalar_t__ BOOL ;
+typedef char WCHAR ;
+typedef int UNICODE_STRING ;
+struct TYPE_2__ {int sections; } ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DLLREDIRECT_SECTION ; 
- int /*<<< orphan*/  DPRINT (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DPRINT1 (char*,...) ; 
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
- struct dll_redirect* add_dll_redirect (struct assembly*) ; 
- int /*<<< orphan*/  asmv2W ; 
- int /*<<< orphan*/  comClassW ; 
- int /*<<< orphan*/  comInterfaceProxyStubW ; 
- int /*<<< orphan*/  fileW ; 
- int /*<<< orphan*/  g_nameW ; 
- int /*<<< orphan*/  hashW ; 
- int /*<<< orphan*/  hashalgW ; 
- scalar_t__ next_xml_attr (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,scalar_t__*) ; 
- scalar_t__ next_xml_elem (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ parse_com_class_elem (int /*<<< orphan*/ *,struct dll_redirect*,struct actctx_loader*) ; 
- scalar_t__ parse_cominterface_proxy_stub_elem (int /*<<< orphan*/ *,struct dll_redirect*,struct actctx_loader*) ; 
- scalar_t__ parse_end_element (int /*<<< orphan*/ *) ; 
- scalar_t__ parse_typelib_elem (int /*<<< orphan*/ *,struct dll_redirect*,struct actctx_loader*) ; 
- scalar_t__ parse_unknown_elem (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ parse_window_class_elem (int /*<<< orphan*/ *,struct dll_redirect*,struct actctx_loader*) ; 
- int /*<<< orphan*/  typelibW ; 
- int /*<<< orphan*/  windowClassW ; 
- scalar_t__ xml_elem_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xmlstr2unicode (int /*<<< orphan*/ *) ; 
- scalar_t__ xmlstr_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ xmlstr_cmp_end (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xmlstr_cmpi (int /*<<< orphan*/ *,char const*) ; 
- void* xmlstrdupW (int /*<<< orphan*/ *) ; 
+
+ int DLLREDIRECT_SECTION ;
+ int DPRINT (char*,int *) ;
+ int DPRINT1 (char*,...) ;
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
+ struct dll_redirect* add_dll_redirect (struct assembly*) ;
+ int asmv2W ;
+ int comClassW ;
+ int comInterfaceProxyStubW ;
+ int fileW ;
+ int g_nameW ;
+ int hashW ;
+ int hashalgW ;
+ scalar_t__ next_xml_attr (int *,int *,int *,scalar_t__*,scalar_t__*) ;
+ scalar_t__ next_xml_elem (int *,int *) ;
+ scalar_t__ parse_com_class_elem (int *,struct dll_redirect*,struct actctx_loader*) ;
+ scalar_t__ parse_cominterface_proxy_stub_elem (int *,struct dll_redirect*,struct actctx_loader*) ;
+ scalar_t__ parse_end_element (int *) ;
+ scalar_t__ parse_typelib_elem (int *,struct dll_redirect*,struct actctx_loader*) ;
+ scalar_t__ parse_unknown_elem (int *,int *) ;
+ scalar_t__ parse_window_class_elem (int *,struct dll_redirect*,struct actctx_loader*) ;
+ int typelibW ;
+ int windowClassW ;
+ scalar_t__ xml_elem_cmp (int *,int ,int ) ;
+ int xmlstr2unicode (int *) ;
+ scalar_t__ xmlstr_cmp (int *,int ) ;
+ scalar_t__ xmlstr_cmp_end (int *,int ) ;
+ int xmlstr_cmpi (int *,char const*) ;
+ void* xmlstrdupW (int *) ;
 
 __attribute__((used)) static BOOL parse_file_elem(xmlbuf_t* xmlbuf, struct assembly* assembly, struct actctx_loader* acl)
 {
-    xmlstr_t    attr_name, attr_value, elem;
+    xmlstr_t attr_name, attr_value, elem;
     UNICODE_STRING attr_nameU, attr_valueU;
-    BOOL        end = FALSE, error, ret = TRUE;
+    BOOL end = FALSE, error, ret = TRUE;
     struct dll_redirect* dll;
 
     if (!(dll = add_dll_redirect(assembly))) return FALSE;

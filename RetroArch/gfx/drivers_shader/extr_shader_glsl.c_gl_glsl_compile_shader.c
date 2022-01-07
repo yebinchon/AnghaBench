@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  version ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int version ;
 struct TYPE_3__ {char* alias_define; } ;
-typedef  TYPE_1__ glsl_shader_data_t ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  scalar_t__ GLint ;
+typedef TYPE_1__ glsl_shader_data_t ;
+typedef int GLuint ;
+typedef scalar_t__ GLint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (char const**) ; 
- int /*<<< orphan*/  GL_COMPILE_STATUS ; 
- scalar_t__ GL_TRUE ; 
- int /*<<< orphan*/  RARCH_LOG (char*,unsigned int,...) ; 
- int /*<<< orphan*/  glCompileShader (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glGetShaderiv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  glShaderSource (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gl_glsl_print_shader_log (int /*<<< orphan*/ ) ; 
- scalar_t__ glsl_core ; 
- int glsl_major ; 
- int glsl_minor ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,unsigned int,...) ; 
- char* strstr (char const*,char*) ; 
- int /*<<< orphan*/  strtoul (char const*,char**,int) ; 
+
+ int ARRAY_SIZE (char const**) ;
+ int GL_COMPILE_STATUS ;
+ scalar_t__ GL_TRUE ;
+ int RARCH_LOG (char*,unsigned int,...) ;
+ int glCompileShader (int ) ;
+ int glGetShaderiv (int ,int ,scalar_t__*) ;
+ int glShaderSource (int ,int ,char const**,int *) ;
+ int gl_glsl_print_shader_log (int ) ;
+ scalar_t__ glsl_core ;
+ int glsl_major ;
+ int glsl_minor ;
+ int snprintf (char*,int,char*,unsigned int,...) ;
+ char* strstr (char const*,char*) ;
+ int strtoul (char const*,char**,int) ;
 
 __attribute__((used)) static bool gl_glsl_compile_shader(glsl_shader_data_t *glsl,
       GLuint shader,
@@ -42,21 +42,12 @@ __attribute__((used)) static bool gl_glsl_compile_shader(glsl_shader_data_t *gls
    char version[32];
    const char *existing_version = strstr(program, "#version");
 
-   version[0]                   = '\0';
+   version[0] = '\0';
 
    if (existing_version)
    {
       const char* version_extra = "";
       unsigned version_no = (unsigned)strtoul(existing_version + 8, (char**)&program, 10);
-#ifdef HAVE_OPENGLES
-      if (version_no < 130)
-         version_no = 100;
-      else
-      {
-         version_extra = " es";
-         version_no = 300;
-      }
-#endif
       snprintf(version, sizeof(version), "#version %u%s\n", version_no, version_extra);
       RARCH_LOG("[GLSL]: Using GLSL version %u%s.\n", version_no, version_extra);
    }
@@ -90,7 +81,7 @@ __attribute__((used)) static bool gl_glsl_compile_shader(glsl_shader_data_t *gls
    source[2] = glsl->alias_define;
    source[3] = program;
 
-   glShaderSource(shader, ARRAY_SIZE(source), source, NULL);
+   glShaderSource(shader, ARRAY_SIZE(source), source, ((void*)0));
    glCompileShader(shader);
 
    glGetShaderiv(shader, GL_COMPILE_STATUS, &status);

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  volume_t ;
-struct gather_data {long long req_id; unsigned char* filedata; int filedata_len; int content_type; struct gather_data* prev; struct gather_data* next; int /*<<< orphan*/  q; int /*<<< orphan*/  writing_thread; void* filename; void* key; scalar_t__ key_len; int /*<<< orphan*/ * V; struct connection* c; } ;
-struct connection {int /*<<< orphan*/  query_start_time; } ;
-typedef  int /*<<< orphan*/  pthread_attr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PTHREAD_CREATE_DETACHED ; 
- int /*<<< orphan*/  active_gathers ; 
- struct gather_data* active_write_threads ; 
- int /*<<< orphan*/  create_inbound_query (struct gather_data*,struct connection*,double) ; 
- int /*<<< orphan*/  free_gather (struct gather_data*) ; 
- int /*<<< orphan*/  mytime () ; 
- int /*<<< orphan*/  pthread_attr_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_attr_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_attr_setdetachstate (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pthread_attr_setstacksize (int /*<<< orphan*/ *,int) ; 
- int pthread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  rpc_create_inbound_query (struct gather_data*,struct connection*,double) ; 
- scalar_t__ rpc_mode (struct gather_data*) ; 
- int /*<<< orphan*/  strcpy (void*,char const*) ; 
- scalar_t__ strlen (char const*) ; 
- int /*<<< orphan*/  stub1 (struct gather_data*,struct connection*,double) ; 
- void* tszmalloc (scalar_t__) ; 
- int /*<<< orphan*/  vkprintf (int,char*) ; 
- int /*<<< orphan*/  write_thread ; 
- struct gather_data* zmalloc0 (int) ; 
+
+
+
+typedef int volume_t ;
+struct gather_data {long long req_id; unsigned char* filedata; int filedata_len; int content_type; struct gather_data* prev; struct gather_data* next; int q; int writing_thread; void* filename; void* key; scalar_t__ key_len; int * V; struct connection* c; } ;
+struct connection {int query_start_time; } ;
+typedef int pthread_attr_t ;
+
+
+ int PTHREAD_CREATE_DETACHED ;
+ int active_gathers ;
+ struct gather_data* active_write_threads ;
+ int create_inbound_query (struct gather_data*,struct connection*,double) ;
+ int free_gather (struct gather_data*) ;
+ int mytime () ;
+ int pthread_attr_destroy (int *) ;
+ int pthread_attr_init (int *) ;
+ int pthread_attr_setdetachstate (int *,int ) ;
+ int pthread_attr_setstacksize (int *,int) ;
+ int pthread_create (int *,int *,int ,void*) ;
+ int rpc_create_inbound_query (struct gather_data*,struct connection*,double) ;
+ scalar_t__ rpc_mode (struct gather_data*) ;
+ int strcpy (void*,char const*) ;
+ scalar_t__ strlen (char const*) ;
+ int stub1 (struct gather_data*,struct connection*,double) ;
+ void* tszmalloc (scalar_t__) ;
+ int vkprintf (int,char*) ;
+ int write_thread ;
+ struct gather_data* zmalloc0 (int) ;
 
 int create_write_thread (struct connection *c, long long req_id, volume_t *V, const char *key, const char *filename, unsigned char *filedata, int filedata_len, int content_type) {
   pthread_attr_t attr;

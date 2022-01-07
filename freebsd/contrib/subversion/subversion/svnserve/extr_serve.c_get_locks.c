@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_ra_svn_conn_t ;
-typedef  int /*<<< orphan*/  svn_ra_svn__list_t ;
-typedef  int /*<<< orphan*/  svn_lock_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_depth_t ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int svn_ra_svn_conn_t ;
+typedef int svn_ra_svn__list_t ;
+typedef int svn_lock_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_depth_t ;
 struct TYPE_12__ {TYPE_2__* repository; } ;
-typedef  TYPE_3__ server_baton_t ;
-struct TYPE_13__ {int /*<<< orphan*/ * conn; TYPE_3__* server; } ;
-typedef  TYPE_4__ authz_baton_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
-struct TYPE_11__ {int /*<<< orphan*/  repos; TYPE_1__* fs_path; } ;
-struct TYPE_10__ {int /*<<< orphan*/  data; } ;
+typedef TYPE_3__ server_baton_t ;
+struct TYPE_13__ {int * conn; TYPE_3__* server; } ;
+typedef TYPE_4__ authz_baton_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_hash_index_t ;
+struct TYPE_11__ {int repos; TYPE_1__* fs_path; } ;
+struct TYPE_10__ {int data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_CMD_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_INCORRECT_PARAMS ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_this_val (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  authz_check_access_cb_func (TYPE_3__*) ; 
- int /*<<< orphan*/  log_command (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * log_fail_and_flush (int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_depth_empty ; 
- scalar_t__ svn_depth_files ; 
- scalar_t__ svn_depth_from_word (char const*) ; 
- scalar_t__ svn_depth_immediates ; 
- scalar_t__ svn_depth_infinity ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- char* svn_fspath__join (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_path_uri_encode (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_svn__parse_tuple (int /*<<< orphan*/ *,char*,char const**,char const**) ; 
- int /*<<< orphan*/  svn_ra_svn__write_tuple (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  svn_relpath_canonicalize (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_repos_fs_get_locks2 (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*,scalar_t__,int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  trivial_auth_request (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  write_lock (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int SVN_CMD_ERR (int ) ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_INCORRECT_PARAMS ;
+ int * SVN_NO_ERROR ;
+ int * apr_hash_first (int *,int *) ;
+ int * apr_hash_next (int *) ;
+ int * apr_hash_this_val (int *) ;
+ int authz_check_access_cb_func (TYPE_3__*) ;
+ int log_command (TYPE_3__*,int *,int *,char*,int ) ;
+ int * log_fail_and_flush (int *,TYPE_3__*,int *,int *) ;
+ scalar_t__ svn_depth_empty ;
+ scalar_t__ svn_depth_files ;
+ scalar_t__ svn_depth_from_word (char const*) ;
+ scalar_t__ svn_depth_immediates ;
+ scalar_t__ svn_depth_infinity ;
+ int * svn_error_create (int ,int *,char*) ;
+ char* svn_fspath__join (int ,int ,int *) ;
+ int svn_path_uri_encode (char const*,int *) ;
+ int svn_ra_svn__parse_tuple (int *,char*,char const**,char const**) ;
+ int svn_ra_svn__write_tuple (int *,int *,char*,...) ;
+ int svn_relpath_canonicalize (char const*,int *) ;
+ int svn_repos_fs_get_locks2 (int **,int ,char const*,scalar_t__,int ,TYPE_4__*,int *) ;
+ int trivial_auth_request (int *,int *,TYPE_3__*) ;
+ int write_lock (int *,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 get_locks(svn_ra_svn_conn_t *conn,
@@ -82,7 +82,7 @@ get_locks(svn_ra_svn_conn_t *conn,
       (depth != svn_depth_immediates) &&
       (depth != svn_depth_infinity))
     {
-      err = svn_error_create(SVN_ERR_INCORRECT_PARAMS, NULL,
+      err = svn_error_create(SVN_ERR_INCORRECT_PARAMS, ((void*)0),
                              "Invalid 'depth' specified in get-locks request");
       return log_fail_and_flush(err, b, conn, pool);
     }

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int UINT ;
 struct TYPE_11__ {scalar_t__ Action; } ;
-struct TYPE_10__ {int /*<<< orphan*/  hdr; } ;
-typedef  TYPE_1__ MSIRECORD ;
-typedef  int /*<<< orphan*/  MSIPACKAGE ;
-typedef  int /*<<< orphan*/  MSIFOLDER ;
-typedef  TYPE_2__ MSICOMPONENT ;
-typedef  int /*<<< orphan*/ * LPVOID ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
+struct TYPE_10__ {int hdr; } ;
+typedef TYPE_1__ MSIRECORD ;
+typedef int MSIPACKAGE ;
+typedef int MSIFOLDER ;
+typedef TYPE_2__ MSICOMPONENT ;
+typedef int * LPVOID ;
+typedef int LPCWSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,...) ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  INSTALLMESSAGE_ACTIONDATA ; 
- scalar_t__ INSTALLSTATE_ABSENT ; 
- TYPE_1__* MSI_CreateRecord (int) ; 
- int /*<<< orphan*/  MSI_ProcessMessage (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  MSI_RecordGetString (TYPE_1__*,int) ; 
- int /*<<< orphan*/  MSI_RecordSetStringW (TYPE_1__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- scalar_t__ msi_get_component_action (int /*<<< orphan*/ *,TYPE_2__*) ; 
- TYPE_2__* msi_get_loaded_component (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * msi_get_loaded_folder (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msi_get_target_folder (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  remove_persistent_folder (int /*<<< orphan*/ *) ; 
+
+ int ERR (char*,...) ;
+ int ERROR_SUCCESS ;
+ int INSTALLMESSAGE_ACTIONDATA ;
+ scalar_t__ INSTALLSTATE_ABSENT ;
+ TYPE_1__* MSI_CreateRecord (int) ;
+ int MSI_ProcessMessage (int *,int ,TYPE_1__*) ;
+ int MSI_RecordGetString (TYPE_1__*,int) ;
+ int MSI_RecordSetStringW (TYPE_1__*,int,int ) ;
+ int TRACE (char*,int ) ;
+ int debugstr_w (int ) ;
+ scalar_t__ msi_get_component_action (int *,TYPE_2__*) ;
+ TYPE_2__* msi_get_loaded_component (int *,int ) ;
+ int * msi_get_loaded_folder (int *,int ) ;
+ int msi_get_target_folder (int *,int ) ;
+ int msiobj_release (int *) ;
+ int remove_persistent_folder (int *) ;
 
 __attribute__((used)) static UINT ITERATE_RemoveFolders( MSIRECORD *row, LPVOID param )
 {

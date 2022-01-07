@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int dwFileVersionMS; int dwFileVersionLS; } ;
-typedef  TYPE_1__ VS_FIXEDFILEINFO ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  scalar_t__ DWORD ;
+typedef TYPE_1__ VS_FIXEDFILEINFO ;
+typedef int UINT ;
+typedef int LPVOID ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ GetFileVersionInfoA (char*,scalar_t__,scalar_t__,char*) ; 
- scalar_t__ GetFileVersionInfoSizeA (char*,scalar_t__*) ; 
- scalar_t__ VerQueryValueA (char*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
- char* xmalloc (scalar_t__) ; 
+
+ scalar_t__ GetFileVersionInfoA (char*,scalar_t__,scalar_t__,char*) ;
+ scalar_t__ GetFileVersionInfoSizeA (char*,scalar_t__*) ;
+ scalar_t__ VerQueryValueA (char*,char*,int *,int *) ;
+ int free (char*) ;
+ int sprintf (char*,char*,...) ;
+ char* xmalloc (scalar_t__) ;
 
 __attribute__((used)) static char * get_file_version(char * file_name)
 {

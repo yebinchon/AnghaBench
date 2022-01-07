@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  luaL_checkany (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaL_tolstring (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int luaL_checkany (int *,int) ;
+ int luaL_tolstring (int *,int,int *) ;
 
 __attribute__((used)) static int luaB_tostring (lua_State *L) {
   luaL_checkany(L, 1);
-  luaL_tolstring(L, 1, NULL);
+  luaL_tolstring(L, 1, ((void*)0));
   return 1;
 }

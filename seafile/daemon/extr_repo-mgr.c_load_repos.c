@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3 ;
-typedef  int /*<<< orphan*/  SeafRepoManager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  load_repo_cb ; 
- int /*<<< orphan*/ * open_db (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  remove_deleted_repo ; 
- int /*<<< orphan*/  seaf_warning (char*) ; 
- scalar_t__ sqlite_foreach_selected_row (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3 ;
+typedef int SeafRepoManager ;
+
+
+ int load_repo_cb ;
+ int * open_db (int *,char const*) ;
+ int remove_deleted_repo ;
+ int seaf_warning (char*) ;
+ scalar_t__ sqlite_foreach_selected_row (int *,char*,int ,int *) ;
 
 __attribute__((used)) static void
 load_repos (SeafRepoManager *manager, const char *seaf_dir)

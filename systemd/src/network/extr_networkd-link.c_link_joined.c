@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {int flags; int /*<<< orphan*/  configure_without_carrier; struct TYPE_15__* network; int /*<<< orphan*/  kind; scalar_t__ bridge; scalar_t__ use_br_vlan; scalar_t__ bond; int /*<<< orphan*/  bound_to_links; } ;
-typedef  TYPE_1__ Link ;
 
-/* Variables and functions */
- int IFF_UP ; 
- int /*<<< orphan*/  LINK_STATE_CONFIGURING ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  hashmap_isempty (int /*<<< orphan*/ ) ; 
- int link_append_to_master (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  link_enter_failed (TYPE_1__*) ; 
- int link_handle_bound_to_list (TYPE_1__*) ; 
- int /*<<< orphan*/  link_has_carrier (TYPE_1__*) ; 
- int link_request_set_addresses (TYPE_1__*) ; 
- int link_set_bond (TYPE_1__*) ; 
- int link_set_bridge (TYPE_1__*) ; 
- int link_set_bridge_vlan (TYPE_1__*) ; 
- int /*<<< orphan*/  link_set_state (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int link_up (TYPE_1__*) ; 
- int /*<<< orphan*/  log_link_error_errno (TYPE_1__*,int,char*) ; 
- scalar_t__ streq_ptr (char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+struct TYPE_15__ {int flags; int configure_without_carrier; struct TYPE_15__* network; int kind; scalar_t__ bridge; scalar_t__ use_br_vlan; scalar_t__ bond; int bound_to_links; } ;
+typedef TYPE_1__ Link ;
+
+
+ int IFF_UP ;
+ int LINK_STATE_CONFIGURING ;
+ int assert (TYPE_1__*) ;
+ int hashmap_isempty (int ) ;
+ int link_append_to_master (TYPE_1__*,scalar_t__) ;
+ int link_enter_failed (TYPE_1__*) ;
+ int link_handle_bound_to_list (TYPE_1__*) ;
+ int link_has_carrier (TYPE_1__*) ;
+ int link_request_set_addresses (TYPE_1__*) ;
+ int link_set_bond (TYPE_1__*) ;
+ int link_set_bridge (TYPE_1__*) ;
+ int link_set_bridge_vlan (TYPE_1__*) ;
+ int link_set_state (TYPE_1__*,int ) ;
+ int link_up (TYPE_1__*) ;
+ int log_link_error_errno (TYPE_1__*,int,char*) ;
+ scalar_t__ streq_ptr (char*,int ) ;
 
 __attribute__((used)) static int link_joined(Link *link) {
         int r;
@@ -77,9 +77,9 @@ __attribute__((used)) static int link_joined(Link *link) {
                         log_link_error_errno(link, r, "Could not set bridge vlan: %m");
         }
 
-        /* Skip setting up addresses until it gets carrier,
-           or it would try to set addresses twice,
-           which is bad for non-idempotent steps. */
+
+
+
         if (!link_has_carrier(link) && !link->network->configure_without_carrier)
                 return 0;
 

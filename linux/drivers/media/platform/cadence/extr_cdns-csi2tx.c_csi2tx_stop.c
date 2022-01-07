@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct csi2tx_priv {scalar_t__ base; } ;
 
-/* Variables and functions */
- int CSI2TX_CONFIG_CFG_REQ ; 
- scalar_t__ CSI2TX_CONFIG_REG ; 
- int CSI2TX_CONFIG_SRST_REQ ; 
- int /*<<< orphan*/  writel (int,scalar_t__) ; 
+
+ int CSI2TX_CONFIG_CFG_REQ ;
+ scalar_t__ CSI2TX_CONFIG_REG ;
+ int CSI2TX_CONFIG_SRST_REQ ;
+ int writel (int,scalar_t__) ;
 
 __attribute__((used)) static void csi2tx_stop(struct csi2tx_priv *csi2tx)
 {
-	writel(CSI2TX_CONFIG_CFG_REQ | CSI2TX_CONFIG_SRST_REQ,
-	       csi2tx->base + CSI2TX_CONFIG_REG);
+ writel(CSI2TX_CONFIG_CFG_REQ | CSI2TX_CONFIG_SRST_REQ,
+        csi2tx->base + CSI2TX_CONFIG_REG);
 }

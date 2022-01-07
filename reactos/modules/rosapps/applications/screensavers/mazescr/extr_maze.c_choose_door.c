@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HDC ;
 
-/* Variables and functions */
- int DOOR_IN_ANY ; 
- int DOOR_IN_BOTTOM ; 
- int DOOR_IN_LEFT ; 
- int DOOR_IN_RIGHT ; 
- int DOOR_IN_TOP ; 
- int DOOR_OUT_BOTTOM ; 
- int DOOR_OUT_LEFT ; 
- int DOOR_OUT_RIGHT ; 
- int DOOR_OUT_TOP ; 
- int WALL_BOTTOM ; 
- int WALL_LEFT ; 
- int WALL_RIGHT ; 
- int WALL_TOP ; 
- size_t cur_sq_x ; 
- size_t cur_sq_y ; 
- int /*<<< orphan*/  draw_wall (size_t,size_t,int,int /*<<< orphan*/ ) ; 
- size_t get_random (int) ; 
- int** maze ; 
 
-__attribute__((used)) static int choose_door(HDC hDC)                                    /* pick a new path */
+
+
+typedef int HDC ;
+
+
+ int DOOR_IN_ANY ;
+ int DOOR_IN_BOTTOM ;
+ int DOOR_IN_LEFT ;
+ int DOOR_IN_RIGHT ;
+ int DOOR_IN_TOP ;
+ int DOOR_OUT_BOTTOM ;
+ int DOOR_OUT_LEFT ;
+ int DOOR_OUT_RIGHT ;
+ int DOOR_OUT_TOP ;
+ int WALL_BOTTOM ;
+ int WALL_LEFT ;
+ int WALL_RIGHT ;
+ int WALL_TOP ;
+ size_t cur_sq_x ;
+ size_t cur_sq_y ;
+ int draw_wall (size_t,size_t,int,int ) ;
+ size_t get_random (int) ;
+ int** maze ;
+
+__attribute__((used)) static int choose_door(HDC hDC)
 {
     int candidates[3];
     register int num_candidates;
 
     num_candidates = 0;
 
-    /* top wall */
+
     if (maze[cur_sq_x][cur_sq_y] & DOOR_IN_TOP)
         goto rightwall;
     if (maze[cur_sq_x][cur_sq_y] & DOOR_OUT_TOP)
@@ -55,7 +55,7 @@ __attribute__((used)) static int choose_door(HDC hDC)                           
     candidates[num_candidates++] = 0;
 
 rightwall:
-    /* right wall */
+
     if (maze[cur_sq_x][cur_sq_y] & DOOR_IN_RIGHT)
         goto bottomwall;
     if (maze[cur_sq_x][cur_sq_y] & DOOR_OUT_RIGHT)
@@ -71,7 +71,7 @@ rightwall:
     candidates[num_candidates++] = 1;
 
 bottomwall:
-    /* bottom wall */
+
     if (maze[cur_sq_x][cur_sq_y] & DOOR_IN_BOTTOM)
         goto leftwall;
     if (maze[cur_sq_x][cur_sq_y] & DOOR_OUT_BOTTOM)
@@ -87,7 +87,7 @@ bottomwall:
     candidates[num_candidates++] = 2;
 
 leftwall:
-    /* left wall */
+
     if (maze[cur_sq_x][cur_sq_y] & DOOR_IN_LEFT)
         goto donewall;
     if (maze[cur_sq_x][cur_sq_y] & DOOR_OUT_LEFT)

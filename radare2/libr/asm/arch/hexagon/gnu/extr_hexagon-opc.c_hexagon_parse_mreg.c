@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hexagon_operand ;
-typedef  int /*<<< orphan*/  hexagon_opcode ;
-typedef  int /*<<< orphan*/  hexagon_insn ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int HEXAGON_OPERAND_IS_MODIFIER ; 
- scalar_t__ hexagon_encode_operand (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char**) ; 
- int hexagon_reg_num (int /*<<< orphan*/  const*,char**,char,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char) ; 
+
+
+
+typedef int hexagon_operand ;
+typedef int hexagon_opcode ;
+typedef int hexagon_insn ;
+
+
+ int FALSE ;
+ int HEXAGON_OPERAND_IS_MODIFIER ;
+ scalar_t__ hexagon_encode_operand (int const*,int *,int const*,int,int *,int ,int ,char**) ;
+ int hexagon_reg_num (int const*,char**,char,int *,int ,int *,char) ;
 
 char *
 hexagon_parse_mreg
@@ -27,12 +27,12 @@ hexagon_parse_mreg
 {
   int reg;
 
-  reg = hexagon_reg_num (operand, &input, 'm', NULL, 0, NULL, '\0');
+  reg = hexagon_reg_num (operand, &input, 'm', ((void*)0), 0, ((void*)0), '\0');
   if (reg < 0)
-    return (NULL);
+    return (((void*)0));
 
   if (hexagon_encode_operand
-        (operand, insn, opcode, reg, NULL, FALSE, FALSE, errmsg))
+        (operand, insn, opcode, reg, ((void*)0), FALSE, FALSE, errmsg))
     {
       if (flag)
         *flag = HEXAGON_OPERAND_IS_MODIFIER;
@@ -41,5 +41,5 @@ hexagon_parse_mreg
       return (input);
     }
 
-  return (NULL);
+  return (((void*)0));
 }

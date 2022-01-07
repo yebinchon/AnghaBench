@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- scalar_t__ EINVAL ; 
- scalar_t__ ERANGE ; 
- long double HUGE_VAL ; 
- int MAX_LONG_DOUBLE_CHARS ; 
- scalar_t__ errno ; 
- scalar_t__ isnan (long double) ; 
- scalar_t__ isspace (char) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
- long double strtold (char*,char**) ; 
+
+
+
+typedef int buf ;
+
+
+ scalar_t__ EINVAL ;
+ scalar_t__ ERANGE ;
+ long double HUGE_VAL ;
+ int MAX_LONG_DOUBLE_CHARS ;
+ scalar_t__ errno ;
+ scalar_t__ isnan (long double) ;
+ scalar_t__ isspace (char) ;
+ int memcpy (char*,char const*,size_t) ;
+ long double strtold (char*,char**) ;
 
 int string2ld(const char *s, size_t slen, long double *dp) {
     char buf[MAX_LONG_DOUBLE_CHARS];

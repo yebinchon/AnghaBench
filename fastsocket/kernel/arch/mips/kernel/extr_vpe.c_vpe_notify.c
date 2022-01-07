@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vpe_notifications {int /*<<< orphan*/  list; } ;
-struct vpe {int /*<<< orphan*/  notify; } ;
 
-/* Variables and functions */
- struct vpe* get_vpe (int) ; 
- int /*<<< orphan*/  list_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct vpe_notifications {int list; } ;
+struct vpe {int notify; } ;
+
+
+ struct vpe* get_vpe (int) ;
+ int list_add (int *,int *) ;
 
 int vpe_notify(int index, struct vpe_notifications *notify)
 {
-	struct vpe *v;
+ struct vpe *v;
 
-	if ((v = get_vpe(index)) == NULL)
-		return -1;
+ if ((v = get_vpe(index)) == ((void*)0))
+  return -1;
 
-	list_add(&notify->list, &v->notify);
-	return 0;
+ list_add(&notify->list, &v->notify);
+ return 0;
 }

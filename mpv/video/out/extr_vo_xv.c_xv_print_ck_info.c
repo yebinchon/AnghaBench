@@ -1,55 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int method; int source; } ;
-struct xvctx {int /*<<< orphan*/  xv_colorkey; TYPE_1__ xv_ck_info; } ;
+struct xvctx {int xv_colorkey; TYPE_1__ xv_ck_info; } ;
 struct vo {struct xvctx* priv; } ;
-
-/* Variables and functions */
-#define  CK_METHOD_AUTOPAINT 134 
-#define  CK_METHOD_BACKGROUND 133 
-#define  CK_METHOD_MANUALFILL 132 
-#define  CK_METHOD_NONE 131 
-#define  CK_SRC_CUR 130 
-#define  CK_SRC_SET 129 
-#define  CK_SRC_USE 128 
- int /*<<< orphan*/  MP_VERBOSE (struct vo*,char*,...) ; 
+ int MP_VERBOSE (struct vo*,char*,...) ;
 
 __attribute__((used)) static void xv_print_ck_info(struct vo *vo)
 {
     struct xvctx *xv = vo->priv;
 
     switch (xv->xv_ck_info.method) {
-    case CK_METHOD_NONE:
+    case 131:
         MP_VERBOSE(vo, "Drawing no colorkey.\n");
         return;
-    case CK_METHOD_AUTOPAINT:
+    case 134:
         MP_VERBOSE(vo, "Colorkey is drawn by Xv.\n");
         break;
-    case CK_METHOD_MANUALFILL:
+    case 132:
         MP_VERBOSE(vo, "Drawing colorkey manually.\n");
         break;
-    case CK_METHOD_BACKGROUND:
+    case 133:
         MP_VERBOSE(vo, "Colorkey is drawn as window background.\n");
         break;
     }
 
     switch (xv->xv_ck_info.source) {
-    case CK_SRC_CUR:
+    case 130:
         MP_VERBOSE(vo, "Using colorkey from Xv (0x%06lx).\n", xv->xv_colorkey);
         break;
-    case CK_SRC_USE:
-        if (xv->xv_ck_info.method == CK_METHOD_AUTOPAINT) {
+    case 128:
+        if (xv->xv_ck_info.method == 134) {
             MP_VERBOSE(vo, "Ignoring colorkey from mpv (0x%06lx).\n",
                        xv->xv_colorkey);
         } else {
@@ -57,7 +48,7 @@ __attribute__((used)) static void xv_print_ck_info(struct vo *vo)
                        xv->xv_colorkey);
         }
         break;
-    case CK_SRC_SET:
+    case 129:
         MP_VERBOSE(vo, "Setting and using colorkey from mpv (0x%06lx)."
                    " Use -colorkey to change.\n", xv->xv_colorkey);
         break;

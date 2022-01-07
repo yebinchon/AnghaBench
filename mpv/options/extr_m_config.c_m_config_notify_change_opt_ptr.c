@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct m_config_option {void* data; } ;
 struct m_config {int num_opts; struct m_config_option* opts; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  m_config_notify_change_co (struct m_config*,struct m_config_option*) ; 
+
+ int assert (int) ;
+ int m_config_notify_change_co (struct m_config*,struct m_config_option*) ;
 
 void m_config_notify_change_opt_ptr(struct m_config *config, void *ptr)
 {
@@ -26,7 +26,7 @@ void m_config_notify_change_opt_ptr(struct m_config *config, void *ptr)
             return;
         }
     }
-    // ptr doesn't point to any config->optstruct field declared in the
-    // option list?
-    assert(false);
+
+
+    assert(0);
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_CALL_NOT_IMPLEMENTED ; 
- scalar_t__ ERROR_ENVVAR_NOT_FOUND ; 
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- scalar_t__ FALSE ; 
- scalar_t__ GetEnvironmentVariableW (char const*,char*,scalar_t__) ; 
- scalar_t__ GetLastError () ; 
- scalar_t__ SetEnvironmentVariableW (char const*,char const*) ; 
- scalar_t__ TRUE ; 
- scalar_t__ lstrcmpW (char*,char const*) ; 
- int /*<<< orphan*/  lstrcpyW (char*,char const*) ; 
- scalar_t__ lstrlenW (char const*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  ok_w (int,char*,char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef scalar_t__ DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ ERROR_CALL_NOT_IMPLEMENTED ;
+ scalar_t__ ERROR_ENVVAR_NOT_FOUND ;
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ scalar_t__ FALSE ;
+ scalar_t__ GetEnvironmentVariableW (char const*,char*,scalar_t__) ;
+ scalar_t__ GetLastError () ;
+ scalar_t__ SetEnvironmentVariableW (char const*,char const*) ;
+ scalar_t__ TRUE ;
+ scalar_t__ lstrcmpW (char*,char const*) ;
+ int lstrcpyW (char*,char const*) ;
+ scalar_t__ lstrlenW (char const*) ;
+ int ok (int,char*,...) ;
+ int ok_w (int,char*,char*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_GetSetEnvironmentVariableW(void)
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static void test_GetSetEnvironmentVariableW(void)
     ret = SetEnvironmentVariableW(name, value);
     if (ret == FALSE && GetLastError()==ERROR_CALL_NOT_IMPLEMENTED)
     {
-        /* Must be Win9x which doesn't support the Unicode functions */
+
         win_skip("SetEnvironmentVariableW is not implemented\n");
         return;
     }
@@ -52,8 +52,8 @@ __attribute__((used)) static void test_GetSetEnvironmentVariableW(void)
        "unexpected error in SetEnvironmentVariableW, GetLastError=%d\n",
        GetLastError());
 
-    /* Try to retrieve the environment variable we just set */
-    ret_size = GetEnvironmentVariableW(name, NULL, 0);
+
+    ret_size = GetEnvironmentVariableW(name, ((void*)0), 0);
     ok(ret_size == lstrlenW(value) + 1,
        "should return length with terminating 0 ret_size=%d\n",
        ret_size);
@@ -61,7 +61,7 @@ __attribute__((used)) static void test_GetSetEnvironmentVariableW(void)
     lstrcpyW(buf, fooW);
     ret_size = GetEnvironmentVariableW(name, buf, lstrlenW(value));
     ok_w(lstrcmpW(buf, fooW) == 0 ||
-         lstrlenW(buf) == 0, /* Vista */
+         lstrlenW(buf) == 0,
          "Expected untouched or empty buffer, got \"%s\"\n", buf);
 
     ok(ret_size == lstrlenW(value) + 1,
@@ -79,8 +79,8 @@ __attribute__((used)) static void test_GetSetEnvironmentVariableW(void)
     ok(ret_size == lstrlenW(value),
        "should return length without terminating 0 ret_size=%d\n", ret_size);
 
-    /* Remove that environment variable */
-    ret = SetEnvironmentVariableW(name_cased, NULL);
+
+    ret = SetEnvironmentVariableW(name_cased, ((void*)0));
     ok(ret == TRUE, "should erase existing variable\n");
 
     lstrcpyW(buf, fooW);
@@ -90,7 +90,7 @@ __attribute__((used)) static void test_GetSetEnvironmentVariableW(void)
        "should not find variable but ret_size=%d GetLastError=%d\n",
        ret_size, GetLastError());
 
-    /* Check behavior of SetEnvironmentVariableW(name, "") */
+
     ret = SetEnvironmentVariableW(name, value);
     ok(ret == TRUE,
        "unexpected error in SetEnvironmentVariableW, GetLastError=%d\n",
@@ -112,20 +112,20 @@ __attribute__((used)) static void test_GetSetEnvironmentVariableW(void)
        ret_size, GetLastError());
     ok(lstrcmpW(buf, empty_strW) == 0, "should copy an empty string\n");
 
-    /* Test the limits */
-    ret_size = GetEnvironmentVariableW(NULL, NULL, 0);
+
+    ret_size = GetEnvironmentVariableW(((void*)0), ((void*)0), 0);
     ok(ret_size == 0 && GetLastError() == ERROR_ENVVAR_NOT_FOUND,
        "should not find variable but ret_size=%d GetLastError=%d\n",
        ret_size, GetLastError());
 
-    if (0) /* Both tests crash on Vista */
+    if (0)
     {
-        ret_size = GetEnvironmentVariableW(NULL, buf, lstrlenW(value) + 1);
+        ret_size = GetEnvironmentVariableW(((void*)0), buf, lstrlenW(value) + 1);
         ok(ret_size == 0 && GetLastError() == ERROR_ENVVAR_NOT_FOUND,
            "should not find variable but ret_size=%d GetLastError=%d\n",
            ret_size, GetLastError());
 
-        ret = SetEnvironmentVariableW(NULL, NULL);
+        ret = SetEnvironmentVariableW(((void*)0), ((void*)0));
         ok(ret == FALSE && (GetLastError() == ERROR_INVALID_PARAMETER || GetLastError() == ERROR_ENVVAR_NOT_FOUND),
            "should fail with NULL, NULL but ret=%d and GetLastError=%d\n",
            ret, GetLastError());

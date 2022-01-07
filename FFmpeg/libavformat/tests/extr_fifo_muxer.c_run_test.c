@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int write_header_ret; int write_trailer_ret; int (* test_func ) (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ;char* test_name; int /*<<< orphan*/  pkt_data; scalar_t__ print_summary_on_deinit; int /*<<< orphan*/  options; } ;
-typedef  TYPE_1__ TestCase ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
-typedef  int /*<<< orphan*/  AVDictionary ;
 
-/* Variables and functions */
- int BUFFER_SIZE ; 
- int /*<<< orphan*/  av_dict_free (int /*<<< orphan*/ **) ; 
- int av_dict_parse_string (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char*,char*,int /*<<< orphan*/ ) ; 
- int av_dict_set (int /*<<< orphan*/ **,char*,char*,int /*<<< orphan*/ ) ; 
- char* av_err2str (int) ; 
- int /*<<< orphan*/  avformat_free_context (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int initialize_fifo_tst_muxer_chain (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  printf (char*,char*,char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int,int,int) ; 
- int /*<<< orphan*/  stderr ; 
- int stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int write_header_ret; int write_trailer_ret; int (* test_func ) (int *,int **,int *) ;char* test_name; int pkt_data; scalar_t__ print_summary_on_deinit; int options; } ;
+typedef TYPE_1__ TestCase ;
+typedef int AVFormatContext ;
+typedef int AVDictionary ;
+
+
+ int BUFFER_SIZE ;
+ int av_dict_free (int **) ;
+ int av_dict_parse_string (int **,int ,char*,char*,int ) ;
+ int av_dict_set (int **,char*,char*,int ) ;
+ char* av_err2str (int) ;
+ int avformat_free_context (int *) ;
+ int fprintf (int ,char*,char*) ;
+ int initialize_fifo_tst_muxer_chain (int **) ;
+ int printf (char*,char*,char*) ;
+ int snprintf (char*,int,char*,int,int,int) ;
+ int stderr ;
+ int stub1 (int *,int **,int *) ;
 
 __attribute__((used)) static int run_test(const TestCase *test)
 {
-    AVDictionary *opts = NULL;
-    AVFormatContext *oc = NULL;
+    AVDictionary *opts = ((void*)0);
+    AVFormatContext *oc = ((void*)0);
     char buffer[BUFFER_SIZE];
     int ret, ret1;
 

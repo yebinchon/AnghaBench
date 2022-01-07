@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct AsnDecodeSequenceItem {int const tag; int pointerOffset; int (* decodeFunc ) (int const*,int,int,int*,scalar_t__*,int*) ;int offset; scalar_t__ size; scalar_t__ minSize; scalar_t__ optional; scalar_t__ hasPointer; } ;
-typedef  int DWORD ;
-typedef  int BYTE ;
-typedef  int BOOL ;
+typedef int DWORD ;
+typedef int BYTE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ ALIGN_DWORD_PTR (scalar_t__) ; 
- int CMSG_INDEFINITE_LENGTH ; 
- int CRYPT_DECODE_ALLOC_FLAG ; 
- int /*<<< orphan*/  CRYPT_E_ASN1_BADTAG ; 
- int /*<<< orphan*/  CRYPT_E_ASN1_CORRUPT ; 
- int CRYPT_GetLengthIndefinite (int const*,int,int*) ; 
- int /*<<< orphan*/  ERR (char*) ; 
- int FALSE ; 
- int GET_LEN_BYTES (int const) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  NOERROR ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int TRUE ; 
- int /*<<< orphan*/  WARN (char*,int,int) ; 
- int stub1 (int const*,int,int,int*,scalar_t__*,int*) ; 
+
+ scalar_t__ ALIGN_DWORD_PTR (scalar_t__) ;
+ int CMSG_INDEFINITE_LENGTH ;
+ int CRYPT_DECODE_ALLOC_FLAG ;
+ int CRYPT_E_ASN1_BADTAG ;
+ int CRYPT_E_ASN1_CORRUPT ;
+ int CRYPT_GetLengthIndefinite (int const*,int,int*) ;
+ int ERR (char*) ;
+ int FALSE ;
+ int GET_LEN_BYTES (int const) ;
+ int GetLastError () ;
+ int NOERROR ;
+ int SetLastError (int ) ;
+ int TRACE (char*,...) ;
+ int TRUE ;
+ int WARN (char*,int,int) ;
+ int stub1 (int const*,int,int,int*,scalar_t__*,int*) ;
 
 __attribute__((used)) static BOOL CRYPT_AsnDecodeSequenceItems(struct AsnDecodeSequenceItem items[],
  DWORD cItem, const BYTE *pbEncoded, DWORD cbEncoded, DWORD dwFlags,
@@ -80,15 +80,15 @@ __attribute__((used)) static BOOL CRYPT_AsnDecodeSequenceItems(struct AsnDecodeS
                             TRACE("sizing item %d\n", i);
                         ret = items[i].decodeFunc(ptr, itemEncodedLen,
                          dwFlags & ~CRYPT_DECODE_ALLOC_FLAG,
-                         pvStructInfo ?  (BYTE *)pvStructInfo + items[i].offset
-                         : NULL, &items[i].size, &itemDecoded);
+                         pvStructInfo ? (BYTE *)pvStructInfo + items[i].offset
+                         : ((void*)0), &items[i].size, &itemDecoded);
                         if (ret)
                         {
                             if (items[i].size < items[i].minSize)
                                 items[i].size = items[i].minSize;
                             else if (items[i].size > items[i].minSize)
                             {
-                                /* Account for alignment padding */
+
                                 items[i].size = ALIGN_DWORD_PTR(items[i].size);
                             }
                             TRACE("item %d size: %d\n", i, items[i].size);

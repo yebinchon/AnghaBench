@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IMXAttributes ;
-typedef  int /*<<< orphan*/  IDispatchEx ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_SAXAttributes ; 
- int /*<<< orphan*/  CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  EXPECT_HR (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDispatchEx_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IDispatchEx_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IDispatchEx ; 
- int /*<<< orphan*/  IID_IMXAttributes ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  IMXAttributes_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IMXAttributes_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  test_obj_dispex (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int IUnknown ;
+typedef int IMXAttributes ;
+typedef int IDispatchEx ;
+typedef int HRESULT ;
+
+
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_SAXAttributes ;
+ int CoCreateInstance (int *,int *,int ,int *,void**) ;
+ int EXPECT_HR (int ,int ) ;
+ int IDispatchEx_QueryInterface (int *,int *,void**) ;
+ int IDispatchEx_Release (int *) ;
+ int IID_IDispatchEx ;
+ int IID_IMXAttributes ;
+ int IID_IUnknown ;
+ int IMXAttributes_QueryInterface (int *,int *,void**) ;
+ int IMXAttributes_Release (int *) ;
+ int IUnknown_Release (int *) ;
+ int S_OK ;
+ int test_obj_dispex (int *) ;
 
 __attribute__((used)) static void test_mxattr_dispex(void)
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static void test_mxattr_dispex(void)
     IUnknown *unk;
     HRESULT hr;
 
-    hr = CoCreateInstance(&CLSID_SAXAttributes, NULL, CLSCTX_INPROC_SERVER,
+    hr = CoCreateInstance(&CLSID_SAXAttributes, ((void*)0), CLSCTX_INPROC_SERVER,
             &IID_IMXAttributes, (void**)&mxattr);
     EXPECT_HR(hr, S_OK);
 

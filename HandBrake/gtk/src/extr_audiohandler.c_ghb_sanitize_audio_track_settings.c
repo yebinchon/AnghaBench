@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GhbValue ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ghb_array_get (int /*<<< orphan*/ *,int) ; 
- int ghb_array_len (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ghb_get_job_audio_list (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ghb_sanitize_audio_settings (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int GhbValue ;
+
+
+ int * ghb_array_get (int *,int) ;
+ int ghb_array_len (int *) ;
+ int * ghb_get_job_audio_list (int *) ;
+ int ghb_sanitize_audio_settings (int *,int *) ;
 
 void ghb_sanitize_audio_track_settings(GhbValue *settings)
 {

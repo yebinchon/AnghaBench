@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  In; } ;
 
-/* Variables and functions */
- int FN ; 
- int /*<<< orphan*/  INIT ; 
- int MAX_QUERY_LEN ; 
- int MAX_VALUE_LEN ; 
- int /*<<< orphan*/  MESSAGE (struct connection*) ; 
- int /*<<< orphan*/  RETURN (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  assert (char*) ; 
- char* buf ; 
- int do_add_event (char*,int*,char*) ; 
- int /*<<< orphan*/  eat_at (char const*,int,char**,int*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- char* msg_get_buf (int /*<<< orphan*/ ) ; 
- scalar_t__ msg_reinit (int /*<<< orphan*/ ,int,int) ; 
- int read_long (char const*,long long*,int*) ; 
- int /*<<< orphan*/  safe_read_in (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  set ; 
- int sscanf (char*,char*,int*) ; 
- char* stats_buff ; 
- scalar_t__* std_t ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- int verbosity ; 
- int /*<<< orphan*/  write_only ; 
+
+
+
+struct connection {int In; } ;
+
+
+ int FN ;
+ int INIT ;
+ int MAX_QUERY_LEN ;
+ int MAX_VALUE_LEN ;
+ int MESSAGE (struct connection*) ;
+ int RETURN (int ,int) ;
+ int assert (char*) ;
+ char* buf ;
+ int do_add_event (char*,int*,char*) ;
+ int eat_at (char const*,int,char**,int*) ;
+ int fprintf (int ,char*,...) ;
+ char* msg_get_buf (int ) ;
+ scalar_t__ msg_reinit (int ,int,int) ;
+ int read_long (char const*,long long*,int*) ;
+ int safe_read_in (int *,char*,int) ;
+ int set ;
+ int sscanf (char*,char*,int*) ;
+ char* stats_buff ;
+ scalar_t__* std_t ;
+ int stderr ;
+ int strncmp (char*,char*,int) ;
+ int verbosity ;
+ int write_only ;
 
 int memcache_store (struct connection *c, int op, const char *old_key, int old_key_len, int flags, int delay, int size) {
   INIT;
@@ -62,7 +62,7 @@ int memcache_store (struct connection *c, int op, const char *old_key, int old_k
 
       if (msg_reinit (MESSAGE(c), size, random_tag) < 0) {
         fprintf (stderr, "WARNING: not enough memory for message allocating\n");
-        RETURN(set, -2); // not_enough memory
+        RETURN(set, -2);
       }
 
       char *s = msg_get_buf (MESSAGE(c));
@@ -76,7 +76,7 @@ int memcache_store (struct connection *c, int op, const char *old_key, int old_k
     if (key_len >= 9 && !strncmp (key, "add_event", 9) && key_len < 1000) {
       const char *s = key + 9;
       int sn = key_len - 9;
-      if (s[0] != '(' || s[sn - 1] != ')')  {
+      if (s[0] != '(' || s[sn - 1] != ')') {
         RETURN(set, -2);
       }
       s++, sn -= 2;

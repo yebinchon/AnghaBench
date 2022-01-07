@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_meta_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int vlc_meta_t ;
+typedef int uint32_t ;
 struct TYPE_8__ {int i_handler; scalar_t__ p_father; struct TYPE_8__* p_next; struct TYPE_8__* p_first; } ;
-typedef  TYPE_1__ MP4_Box_t ;
+typedef TYPE_1__ MP4_Box_t ;
 
-/* Variables and functions */
-#define  HANDLER_ID32 130 
-#define  HANDLER_mdir 129 
-#define  HANDLER_mdta 128 
- TYPE_1__* MP4_BoxGet (scalar_t__,char*) ; 
- int /*<<< orphan*/  SetupID3v2Meta (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  SetupmdirMeta (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  SetupmdtaMeta (int /*<<< orphan*/ *,TYPE_1__*,TYPE_1__*) ; 
+
+
+
+
+ TYPE_1__* MP4_BoxGet (scalar_t__,char*) ;
+ int SetupID3v2Meta (int *,TYPE_1__*) ;
+ int SetupmdirMeta (int *,TYPE_1__*) ;
+ int SetupmdtaMeta (int *,TYPE_1__*,TYPE_1__*) ;
 
 void SetupMeta( vlc_meta_t *p_meta, MP4_Box_t *p_udta )
 {
@@ -35,18 +35,18 @@ void SetupMeta( vlc_meta_t *p_meta, MP4_Box_t *p_udta )
     {
         switch( i_handler )
         {
-            case HANDLER_mdta:
+            case 128:
             {
                 MP4_Box_t *p_keys = MP4_BoxGet( p_udta->p_father, "keys" );
                 SetupmdtaMeta( p_meta, p_box, p_keys );
                 break;
             }
 
-            case HANDLER_ID32:
+            case 130:
                 SetupID3v2Meta( p_meta, p_box );
                 break;
 
-            case HANDLER_mdir:
+            case 129:
             default:
                 SetupmdirMeta( p_meta, p_box );
                 break;

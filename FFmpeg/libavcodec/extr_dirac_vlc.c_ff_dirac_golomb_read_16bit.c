@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int int32_t ;
-typedef  int int16_t ;
-struct TYPE_3__ {int sign; int* ready; scalar_t__ need_s; int /*<<< orphan*/  leftover; scalar_t__ ready_num; int /*<<< orphan*/  preamble; } ;
-typedef  TYPE_1__ DiracGolombLUT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APPEND_RESIDUE (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INIT_RESIDUE (int) ; 
- int LUT_BITS ; 
- int LUT_SIZE ; 
- int RSIZE_BITS ; 
- int res ; 
- int res_bits ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int32_t ;
+typedef int int16_t ;
+struct TYPE_3__ {int sign; int* ready; scalar_t__ need_s; int leftover; scalar_t__ ready_num; int preamble; } ;
+typedef TYPE_1__ DiracGolombLUT ;
+
+
+ int APPEND_RESIDUE (int,int ) ;
+ int INIT_RESIDUE (int) ;
+ int LUT_BITS ;
+ int LUT_SIZE ;
+ int RSIZE_BITS ;
+ int res ;
+ int res_bits ;
 
 int ff_dirac_golomb_read_16bit(DiracGolombLUT *lut_ctx, const uint8_t *buf,
                                int bytes, uint8_t *_dst, int coeffs)

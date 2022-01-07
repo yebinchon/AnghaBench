@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IHTMLDocument ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int CLSCTX_INPROC_HANDLER ; 
- int CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_XMLView ; 
- scalar_t__ CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ FAILED (scalar_t__) ; 
- scalar_t__ IHTMLDocument_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IHTMLDocument_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IHTMLDocument ; 
- int /*<<< orphan*/  IID_IOleCommandTarget ; 
- int /*<<< orphan*/  IID_IOleObject ; 
- int /*<<< orphan*/  IID_IPersistHistory ; 
- int /*<<< orphan*/  IID_IPersistMoniker ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- scalar_t__ IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int IUnknown ;
+typedef int IHTMLDocument ;
+typedef scalar_t__ HRESULT ;
+
+
+ int CLSCTX_INPROC_HANDLER ;
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_XMLView ;
+ scalar_t__ CoCreateInstance (int *,int *,int,int *,void**) ;
+ scalar_t__ FAILED (scalar_t__) ;
+ scalar_t__ IHTMLDocument_QueryInterface (int *,int *,void**) ;
+ int IHTMLDocument_Release (int *) ;
+ int IID_IHTMLDocument ;
+ int IID_IOleCommandTarget ;
+ int IID_IOleObject ;
+ int IID_IPersistHistory ;
+ int IID_IPersistMoniker ;
+ int IID_IUnknown ;
+ scalar_t__ IUnknown_QueryInterface (int *,int *,void**) ;
+ int IUnknown_Release (int *) ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,...) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_QueryInterface(void)
 {
@@ -40,7 +40,7 @@ __attribute__((used)) static void test_QueryInterface(void)
     IHTMLDocument *htmldoc;
     HRESULT hres;
 
-    hres = CoCreateInstance(&CLSID_XMLView, NULL, CLSCTX_INPROC_SERVER|CLSCTX_INPROC_HANDLER,
+    hres = CoCreateInstance(&CLSID_XMLView, ((void*)0), CLSCTX_INPROC_SERVER|CLSCTX_INPROC_HANDLER,
             &IID_IUnknown, (void**)&xmlview);
     if(FAILED(hres)) {
         win_skip("Failed to create XMLView instance\n");

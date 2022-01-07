@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int atoi (char*) ; 
- int* calloc (int,int) ; 
- int /*<<< orphan*/  demo_segmenter (char*,char*,char*,int,char*) ; 
- int find_arg (int,char**,char*) ; 
- char* find_char_arg (int,char**,char*,int /*<<< orphan*/ ) ; 
- int find_int_arg (int,char**,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
- int gpu_index ; 
- int /*<<< orphan*/  predict_segmenter (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- char* strchr (char*,char) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  train_segmenter (char*,char*,char*,int*,int,int,int) ; 
+ int atoi (char*) ;
+ int* calloc (int,int) ;
+ int demo_segmenter (char*,char*,char*,int,char*) ;
+ int find_arg (int,char**,char*) ;
+ char* find_char_arg (int,char**,char*,int ) ;
+ int find_int_arg (int,char**,char*,int ) ;
+ int fprintf (int ,char*,char*,char*) ;
+ int gpu_index ;
+ int predict_segmenter (char*,char*,char*,char*) ;
+ int printf (char*,char*) ;
+ int stderr ;
+ char* strchr (char*,char) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strlen (char*) ;
+ int train_segmenter (char*,char*,char*,int*,int,int,int) ;
 
 void run_segmenter(int argc, char **argv)
 {

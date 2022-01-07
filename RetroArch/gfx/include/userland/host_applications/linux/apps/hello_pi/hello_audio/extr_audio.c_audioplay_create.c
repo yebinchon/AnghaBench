@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  scalar_t__ int32_t ;
-struct TYPE_14__ {int bytes_per_sample; int num_buffers; int /*<<< orphan*/ * audio_render; int /*<<< orphan*/  sema; int /*<<< orphan*/ * client; int /*<<< orphan*/ ** list; } ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef scalar_t__ int32_t ;
+struct TYPE_14__ {int bytes_per_sample; int num_buffers; int * audio_render; int sema; int * client; int ** list; } ;
 struct TYPE_12__ {void* nVersion; } ;
-struct TYPE_13__ {int nSize; int nPortIndex; int nBufferSize; int nBufferCountActual; int nChannels; int nSamplingRate; int nBitPerSample; void** eChannelMapping; int /*<<< orphan*/  ePCMMode; int /*<<< orphan*/  bInterleaved; int /*<<< orphan*/  eEndian; int /*<<< orphan*/  eNumData; TYPE_1__ nVersion; } ;
-typedef  TYPE_2__ OMX_PARAM_PORTDEFINITIONTYPE ;
-typedef  scalar_t__ OMX_ERRORTYPE ;
-typedef  TYPE_2__ OMX_AUDIO_PARAM_PCMMODETYPE ;
-typedef  TYPE_4__ AUDIOPLAY_STATE_T ;
+struct TYPE_13__ {int nSize; int nPortIndex; int nBufferSize; int nBufferCountActual; int nChannels; int nSamplingRate; int nBitPerSample; void** eChannelMapping; int ePCMMode; int bInterleaved; int eEndian; int eNumData; TYPE_1__ nVersion; } ;
+typedef TYPE_2__ OMX_PARAM_PORTDEFINITIONTYPE ;
+typedef scalar_t__ OMX_ERRORTYPE ;
+typedef TYPE_2__ OMX_AUDIO_PARAM_PCMMODETYPE ;
+typedef TYPE_4__ AUDIOPLAY_STATE_T ;
 
-/* Variables and functions */
- int ILCLIENT_DISABLE_ALL_PORTS ; 
- int ILCLIENT_ENABLE_INPUT_BUFFERS ; 
- int /*<<< orphan*/  ILC_GET_HANDLE (int /*<<< orphan*/ *) ; 
- void* OMX_AUDIO_ChannelCF ; 
- void* OMX_AUDIO_ChannelLF ; 
- void* OMX_AUDIO_ChannelLFE ; 
- void* OMX_AUDIO_ChannelLR ; 
- void* OMX_AUDIO_ChannelLS ; 
- void* OMX_AUDIO_ChannelRF ; 
- void* OMX_AUDIO_ChannelRR ; 
- void* OMX_AUDIO_ChannelRS ; 
- int /*<<< orphan*/  OMX_AUDIO_PCMModeLinear ; 
- scalar_t__ OMX_Deinit () ; 
- int /*<<< orphan*/  OMX_EndianLittle ; 
- scalar_t__ OMX_ErrorNone ; 
- scalar_t__ OMX_GetParameter (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  OMX_IndexParamAudioPcm ; 
- int /*<<< orphan*/  OMX_IndexParamPortDefinition ; 
- scalar_t__ OMX_Init () ; 
- int /*<<< orphan*/  OMX_NumericalDataSigned ; 
- scalar_t__ OMX_SetParameter (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  OMX_StateExecuting ; 
- int /*<<< orphan*/  OMX_StateIdle ; 
- int /*<<< orphan*/  OMX_StateLoaded ; 
- int /*<<< orphan*/  OMX_TRUE ; 
- void* OMX_VERSION ; 
- int OUT_CHANNELS (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_4__* calloc (int,int) ; 
- int /*<<< orphan*/  free (TYPE_4__*) ; 
- int /*<<< orphan*/  ilclient_change_component_state (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ilclient_cleanup_components (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ilclient_create_component (int /*<<< orphan*/ *,int /*<<< orphan*/ **,char*,int) ; 
- int /*<<< orphan*/  ilclient_destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ ilclient_enable_port_buffers (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ilclient_init () ; 
- int /*<<< orphan*/  ilclient_set_empty_buffer_done_callback (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_4__*) ; 
- int /*<<< orphan*/  input_buffer_callback ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sem_destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ sem_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int ILCLIENT_DISABLE_ALL_PORTS ;
+ int ILCLIENT_ENABLE_INPUT_BUFFERS ;
+ int ILC_GET_HANDLE (int *) ;
+ void* OMX_AUDIO_ChannelCF ;
+ void* OMX_AUDIO_ChannelLF ;
+ void* OMX_AUDIO_ChannelLFE ;
+ void* OMX_AUDIO_ChannelLR ;
+ void* OMX_AUDIO_ChannelLS ;
+ void* OMX_AUDIO_ChannelRF ;
+ void* OMX_AUDIO_ChannelRR ;
+ void* OMX_AUDIO_ChannelRS ;
+ int OMX_AUDIO_PCMModeLinear ;
+ scalar_t__ OMX_Deinit () ;
+ int OMX_EndianLittle ;
+ scalar_t__ OMX_ErrorNone ;
+ scalar_t__ OMX_GetParameter (int ,int ,TYPE_2__*) ;
+ int OMX_IndexParamAudioPcm ;
+ int OMX_IndexParamPortDefinition ;
+ scalar_t__ OMX_Init () ;
+ int OMX_NumericalDataSigned ;
+ scalar_t__ OMX_SetParameter (int ,int ,TYPE_2__*) ;
+ int OMX_StateExecuting ;
+ int OMX_StateIdle ;
+ int OMX_StateLoaded ;
+ int OMX_TRUE ;
+ void* OMX_VERSION ;
+ int OUT_CHANNELS (int) ;
+ int assert (int) ;
+ TYPE_4__* calloc (int,int) ;
+ int free (TYPE_4__*) ;
+ int ilclient_change_component_state (int *,int ) ;
+ int ilclient_cleanup_components (int **) ;
+ int ilclient_create_component (int *,int **,char*,int) ;
+ int ilclient_destroy (int *) ;
+ scalar_t__ ilclient_enable_port_buffers (int *,int,int *,int *,int *) ;
+ int * ilclient_init () ;
+ int ilclient_set_empty_buffer_done_callback (int *,int ,TYPE_4__*) ;
+ int input_buffer_callback ;
+ int memset (TYPE_2__*,int ,int) ;
+ int sem_destroy (int *) ;
+ scalar_t__ sem_init (int *,int ,int) ;
 
 int32_t audioplay_create(AUDIOPLAY_STATE_T **handle,
                          uint32_t sample_rate,
@@ -76,20 +76,20 @@ int32_t audioplay_create(AUDIOPLAY_STATE_T **handle,
    uint32_t bytes_per_sample = (bit_depth * OUT_CHANNELS(num_channels)) >> 3;
    int32_t ret = -1;
 
-   *handle = NULL;
+   *handle = ((void*)0);
 
-   // basic sanity check on arguments
+
    if(sample_rate >= 8000 && sample_rate <= 192000 &&
       (num_channels >= 1 && num_channels <= 8) &&
       (bit_depth == 16 || bit_depth == 32) &&
       num_buffers > 0 &&
       buffer_size >= bytes_per_sample)
    {
-      // buffer lengths must be 16 byte aligned for VCHI
+
       int size = (buffer_size + 15) & ~15;
       AUDIOPLAY_STATE_T *st;
 
-      // buffer offsets must also be 16 byte aligned for VCHI
+
       st = calloc(1, sizeof(AUDIOPLAY_STATE_T));
 
       if(st)
@@ -102,7 +102,7 @@ int32_t audioplay_create(AUDIOPLAY_STATE_T **handle,
          ret = 0;
          *handle = st;
 
-         // create and start up everything
+
          s = sem_init(&st->sema, 0, 1);
          assert(s == 0);
 
@@ -110,7 +110,7 @@ int32_t audioplay_create(AUDIOPLAY_STATE_T **handle,
          st->num_buffers = num_buffers;
 
          st->client = ilclient_init();
-         assert(st->client != NULL);
+         assert(st->client != ((void*)0));
 
          ilclient_set_empty_buffer_done_callback(st->client, input_buffer_callback, st);
 
@@ -118,11 +118,11 @@ int32_t audioplay_create(AUDIOPLAY_STATE_T **handle,
          assert(error == OMX_ErrorNone);
 
          ilclient_create_component(st->client, &st->audio_render, "audio_render", ILCLIENT_ENABLE_INPUT_BUFFERS | ILCLIENT_DISABLE_ALL_PORTS);
-         assert(st->audio_render != NULL);
+         assert(st->audio_render != ((void*)0));
 
          st->list[0] = st->audio_render;
 
-         // set up the number/size of buffers
+
          memset(&param, 0, sizeof(OMX_PARAM_PORTDEFINITIONTYPE));
          param.nSize = sizeof(OMX_PARAM_PORTDEFINITIONTYPE);
          param.nVersion.nVersion = OMX_VERSION;
@@ -137,7 +137,7 @@ int32_t audioplay_create(AUDIOPLAY_STATE_T **handle,
          error = OMX_SetParameter(ILC_GET_HANDLE(st->audio_render), OMX_IndexParamPortDefinition, &param);
          assert(error == OMX_ErrorNone);
 
-         // set the pcm parameters
+
          memset(&pcm, 0, sizeof(OMX_AUDIO_PARAM_PCMMODETYPE));
          pcm.nSize = sizeof(OMX_AUDIO_PARAM_PCMMODETYPE);
          pcm.nVersion.nVersion = OMX_VERSION;
@@ -180,9 +180,9 @@ int32_t audioplay_create(AUDIOPLAY_STATE_T **handle,
          assert(error == OMX_ErrorNone);
 
          ilclient_change_component_state(st->audio_render, OMX_StateIdle);
-         if(ilclient_enable_port_buffers(st->audio_render, 100, NULL, NULL, NULL) < 0)
+         if(ilclient_enable_port_buffers(st->audio_render, 100, ((void*)0), ((void*)0), ((void*)0)) < 0)
          {
-            // error
+
             ilclient_change_component_state(st->audio_render, OMX_StateLoaded);
             ilclient_cleanup_components(st->list);
 
@@ -193,7 +193,7 @@ int32_t audioplay_create(AUDIOPLAY_STATE_T **handle,
 
             sem_destroy(&st->sema);
             free(st);
-            *handle = NULL;
+            *handle = ((void*)0);
             return -1;
          }
 

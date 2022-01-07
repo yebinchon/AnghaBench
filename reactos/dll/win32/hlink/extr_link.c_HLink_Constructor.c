@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * lpVtbl; } ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int * lpVtbl; } ;
+struct TYPE_9__ {int * lpVtbl; } ;
+struct TYPE_8__ {int * lpVtbl; } ;
+struct TYPE_7__ {int * lpVtbl; } ;
 struct TYPE_11__ {int ref; TYPE_4__ IBindStatusCallback_iface; TYPE_3__ IDataObject_iface; TYPE_2__ IPersistStream_iface; TYPE_1__ IHlink_iface; } ;
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  TYPE_5__ HlinkImpl ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef int REFIID ;
+typedef int IUnknown ;
+typedef TYPE_5__ HlinkImpl ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLASS_E_NOAGGREGATION ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bind_callback_vtbl ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dovt ; 
- TYPE_5__* heap_alloc_zero (int) ; 
- int /*<<< orphan*/  hlvt ; 
- int /*<<< orphan*/  psvt ; 
+
+ int CLASS_E_NOAGGREGATION ;
+ int E_OUTOFMEMORY ;
+ int S_OK ;
+ int TRACE (char*,int *,int ) ;
+ int bind_callback_vtbl ;
+ int debugstr_guid (int ) ;
+ int dovt ;
+ TYPE_5__* heap_alloc_zero (int) ;
+ int hlvt ;
+ int psvt ;
 
 HRESULT HLink_Constructor(IUnknown *pUnkOuter, REFIID riid, void **ppv)
 {
     HlinkImpl * hl;
 
     TRACE("unkOut=%p riid=%s\n", pUnkOuter, debugstr_guid(riid));
-    *ppv = NULL;
+    *ppv = ((void*)0);
 
     if (pUnkOuter)
         return CLASS_E_NOAGGREGATION;

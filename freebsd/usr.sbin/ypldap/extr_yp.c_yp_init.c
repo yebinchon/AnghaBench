@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct yp_data {int /*<<< orphan*/ * yp_trans_tcp; int /*<<< orphan*/ * yp_trans_udp; int /*<<< orphan*/  yd_events; } ;
+
+
+
+
+struct yp_data {int * yp_trans_tcp; int * yp_trans_udp; int yd_events; } ;
 struct env {struct yp_data* sc_yp; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPPROTO_TCP ; 
- int /*<<< orphan*/  IPPROTO_UDP ; 
- int /*<<< orphan*/  RPC_ANYSOCK ; 
- int /*<<< orphan*/  TAILQ_INIT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  YPPROG ; 
- int /*<<< orphan*/  YPVERS ; 
- struct yp_data* calloc (int,int) ; 
- struct env* env ; 
- int /*<<< orphan*/  fatal (char*) ; 
- int /*<<< orphan*/  pmap_unset (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svc_register (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svctcp_create (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svcudp_create (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  yp_dispatch ; 
+
+ int IPPROTO_TCP ;
+ int IPPROTO_UDP ;
+ int RPC_ANYSOCK ;
+ int TAILQ_INIT (int *) ;
+ int YPPROG ;
+ int YPVERS ;
+ struct yp_data* calloc (int,int) ;
+ struct env* env ;
+ int fatal (char*) ;
+ int pmap_unset (int ,int ) ;
+ int svc_register (int *,int ,int ,int ,int ) ;
+ int * svctcp_create (int ,int ,int ) ;
+ int * svcudp_create (int ) ;
+ int yp_dispatch ;
 
 void
 yp_init(struct env *x_env)
 {
-	struct yp_data	*yp;
+ struct yp_data *yp;
 
-	if ((yp = calloc(1, sizeof(*yp))) == NULL)
-		fatal(NULL);
-	TAILQ_INIT(&yp->yd_events);
+ if ((yp = calloc(1, sizeof(*yp))) == ((void*)0))
+  fatal(((void*)0));
+ TAILQ_INIT(&yp->yd_events);
 
-	env = x_env;
-	env->sc_yp = yp;
-	
-	(void)pmap_unset(YPPROG, YPVERS);
+ env = x_env;
+ env->sc_yp = yp;
 
-	if ((yp->yp_trans_udp = svcudp_create(RPC_ANYSOCK)) == NULL)
-		fatal("cannot create udp service");
-	if ((yp->yp_trans_tcp = svctcp_create(RPC_ANYSOCK, 0, 0)) == NULL)
-		fatal("cannot create tcp service");
+ (void)pmap_unset(YPPROG, YPVERS);
 
-	if (!svc_register(yp->yp_trans_udp, YPPROG, YPVERS,
-	    yp_dispatch, IPPROTO_UDP)) {
-		fatal("unable to register (YPPROG, YPVERS, udp)");
-	}
-	if (!svc_register(yp->yp_trans_tcp, YPPROG, YPVERS,
-	    yp_dispatch, IPPROTO_TCP)) {
-		fatal("unable to register (YPPROG, YPVERS, tcp)");
-	}
+ if ((yp->yp_trans_udp = svcudp_create(RPC_ANYSOCK)) == ((void*)0))
+  fatal("cannot create udp service");
+ if ((yp->yp_trans_tcp = svctcp_create(RPC_ANYSOCK, 0, 0)) == ((void*)0))
+  fatal("cannot create tcp service");
+
+ if (!svc_register(yp->yp_trans_udp, YPPROG, YPVERS,
+     yp_dispatch, IPPROTO_UDP)) {
+  fatal("unable to register (YPPROG, YPVERS, udp)");
+ }
+ if (!svc_register(yp->yp_trans_tcp, YPPROG, YPVERS,
+     yp_dispatch, IPPROTO_TCP)) {
+  fatal("unable to register (YPPROG, YPVERS, tcp)");
+ }
 }

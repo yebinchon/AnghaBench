@@ -1,42 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int STACKSIZE ; 
- int /*<<< orphan*/  _catchException0 ; 
- int /*<<< orphan*/  _catchException1 ; 
- int /*<<< orphan*/  _catchException10 ; 
- int /*<<< orphan*/  _catchException11 ; 
- int /*<<< orphan*/  _catchException12 ; 
- int /*<<< orphan*/  _catchException13 ; 
- int /*<<< orphan*/  _catchException14 ; 
- int /*<<< orphan*/  _catchException16 ; 
- int /*<<< orphan*/  _catchException3 ; 
- int /*<<< orphan*/  _catchException4 ; 
- int /*<<< orphan*/  _catchException5 ; 
- int /*<<< orphan*/  _catchException6 ; 
- int /*<<< orphan*/  _catchException7 ; 
- int /*<<< orphan*/  _catchException8 ; 
- int /*<<< orphan*/  _catchException9 ; 
- int /*<<< orphan*/  exceptionHandler (int,int /*<<< orphan*/ ) ; 
- int initialized ; 
- int /*<<< orphan*/ * remcomStack ; 
- int /*<<< orphan*/ * stackPtr ; 
+ int STACKSIZE ;
+ int _catchException0 ;
+ int _catchException1 ;
+ int _catchException10 ;
+ int _catchException11 ;
+ int _catchException12 ;
+ int _catchException13 ;
+ int _catchException14 ;
+ int _catchException16 ;
+ int _catchException3 ;
+ int _catchException4 ;
+ int _catchException5 ;
+ int _catchException6 ;
+ int _catchException7 ;
+ int _catchException8 ;
+ int _catchException9 ;
+ int exceptionHandler (int,int ) ;
+ int initialized ;
+ int * remcomStack ;
+ int * stackPtr ;
 
 void
 set_debug_traps (void)
 {
-#ifndef WIN32 //MF
+
   stackPtr = &remcomStack[STACKSIZE / sizeof (int) - 1];
 
   exceptionHandler (0, _catchException0);
@@ -54,7 +46,7 @@ set_debug_traps (void)
   exceptionHandler (13, _catchException13);
   exceptionHandler (14, _catchException14);
   exceptionHandler (16, _catchException16);
-#endif // WIN32
+
 
   initialized = 1;
 }

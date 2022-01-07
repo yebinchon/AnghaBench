@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pmic_wrapper {int dummy; } ;
 
-/* Variables and functions */
- int PWRAP_STATE_SYNC_IDLE0 ; 
- int /*<<< orphan*/  PWRAP_WACS2_RDATA ; 
- int pwrap_readl (struct pmic_wrapper*,int /*<<< orphan*/ ) ; 
+
+ int PWRAP_STATE_SYNC_IDLE0 ;
+ int PWRAP_WACS2_RDATA ;
+ int pwrap_readl (struct pmic_wrapper*,int ) ;
 
 __attribute__((used)) static bool pwrap_is_sync_idle(struct pmic_wrapper *wrp)
 {
-	return pwrap_readl(wrp, PWRAP_WACS2_RDATA) & PWRAP_STATE_SYNC_IDLE0;
+ return pwrap_readl(wrp, PWRAP_WACS2_RDATA) & PWRAP_STATE_SYNC_IDLE0;
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct debug_obj {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ODEBUG_FREE_WORK_DELAY ; 
- int /*<<< orphan*/  WRITE_ONCE (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  __free_object (struct debug_obj*) ; 
- int /*<<< orphan*/  debug_obj_work ; 
- int /*<<< orphan*/  obj_freeing ; 
- scalar_t__ obj_nr_tofree ; 
- int /*<<< orphan*/  schedule_delayed_work (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int ODEBUG_FREE_WORK_DELAY ;
+ int WRITE_ONCE (int ,int) ;
+ int __free_object (struct debug_obj*) ;
+ int debug_obj_work ;
+ int obj_freeing ;
+ scalar_t__ obj_nr_tofree ;
+ int schedule_delayed_work (int *,int ) ;
 
 __attribute__((used)) static void free_object(struct debug_obj *obj)
 {
-	__free_object(obj);
-	if (!obj_freeing && obj_nr_tofree) {
-		WRITE_ONCE(obj_freeing, true);
-		schedule_delayed_work(&debug_obj_work, ODEBUG_FREE_WORK_DELAY);
-	}
+ __free_object(obj);
+ if (!obj_freeing && obj_nr_tofree) {
+  WRITE_ONCE(obj_freeing, 1);
+  schedule_delayed_work(&debug_obj_work, ODEBUG_FREE_WORK_DELAY);
+ }
 }

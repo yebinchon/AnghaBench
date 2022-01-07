@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-struct sockaddr_storage {int /*<<< orphan*/  member_0; } ;
+
+
+
+
+typedef int uint16_t ;
+struct sockaddr_storage {int member_0; } ;
 struct sockaddr_in6 {int sin6_family; void* sin6_port; } ;
 struct sockaddr_in {int sin_family; void* sin_port; } ;
 struct sockaddr {int dummy; } ;
-typedef  int /*<<< orphan*/  sock_t ;
+typedef int sock_t ;
 
-/* Variables and functions */
- int AF_INET ; 
- int AF_INET6 ; 
- scalar_t__ bind (int /*<<< orphan*/ ,struct sockaddr*,size_t) ; 
- void* htons (int /*<<< orphan*/ ) ; 
+
+ int AF_INET ;
+ int AF_INET6 ;
+ scalar_t__ bind (int ,struct sockaddr*,size_t) ;
+ void* htons (int ) ;
 
 __attribute__((used)) static int bind_to_port(sock_t sock, int family, uint16_t port)
 {

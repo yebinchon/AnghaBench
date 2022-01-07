@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {struct TYPE_5__* firstChild; struct TYPE_5__* lastChild; struct TYPE_5__* prevSibling; struct TYPE_5__* nextSibling; struct TYPE_5__* parent; } ;
-typedef  TYPE_1__ TREEVIEW_ITEM ;
+typedef TYPE_1__ TREEVIEW_ITEM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
+
+ int assert (int) ;
 
 __attribute__((used)) static void
 TREEVIEW_InsertAfter(TREEVIEW_ITEM *newItem, TREEVIEW_ITEM *sibling,
-		     TREEVIEW_ITEM *parent)
+       TREEVIEW_ITEM *parent)
 {
-    assert(parent != NULL);
+    assert(parent != ((void*)0));
 
-    if (sibling != NULL)
+    if (sibling != ((void*)0))
     {
-	assert(sibling->parent == parent);
+ assert(sibling->parent == parent);
 
-	if (sibling->nextSibling != NULL)
-	    sibling->nextSibling->prevSibling = newItem;
+ if (sibling->nextSibling != ((void*)0))
+     sibling->nextSibling->prevSibling = newItem;
 
-	newItem->nextSibling = sibling->nextSibling;
-	sibling->nextSibling = newItem;
+ newItem->nextSibling = sibling->nextSibling;
+ sibling->nextSibling = newItem;
     }
     else
-       newItem->nextSibling = NULL;
+       newItem->nextSibling = ((void*)0);
 
     newItem->prevSibling = sibling;
 
     if (parent->lastChild == sibling)
-	parent->lastChild = newItem;
+ parent->lastChild = newItem;
 
-    if (parent->firstChild == NULL)
-	parent->firstChild = newItem;
+    if (parent->firstChild == ((void*)0))
+ parent->firstChild = newItem;
 }

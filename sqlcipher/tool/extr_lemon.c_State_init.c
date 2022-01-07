@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  x3node ;
-struct s_x3 {int size; int /*<<< orphan*/ ** ht; int /*<<< orphan*/ * tbl; scalar_t__ count; } ;
 
-/* Variables and functions */
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  free (struct s_x3*) ; 
- scalar_t__ malloc (int) ; 
- struct s_x3* x3a ; 
+
+
+
+typedef int x3node ;
+struct s_x3 {int size; int ** ht; int * tbl; scalar_t__ count; } ;
+
+
+ scalar_t__ calloc (int,int) ;
+ int free (struct s_x3*) ;
+ scalar_t__ malloc (int) ;
+ struct s_x3* x3a ;
 
 void State_init(void){
   if( x3a ) return;

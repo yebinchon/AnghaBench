@@ -1,90 +1,90 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {scalar_t__ type; int /*<<< orphan*/ * valuestring; } ;
-typedef  TYPE_1__ cJSON ;
-struct TYPE_13__ {int /*<<< orphan*/  size; TYPE_2__* schemas; } ;
-struct TYPE_12__ {int fieldNum; void** fields; void* tbName; void* name; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ STgSchema ;
 
-/* Variables and functions */
- int TSDB_MAX_COLUMNS ; 
- int TSDB_METER_NAME_LEN ; 
- TYPE_1__* cJSON_GetArrayItem (TYPE_1__*,int) ; 
- int cJSON_GetArraySize (TYPE_1__*) ; 
- TYPE_1__* cJSON_GetObjectItem (TYPE_1__*,char*) ; 
- scalar_t__ cJSON_String ; 
- void* calloc (int,int) ; 
- int /*<<< orphan*/  strcpy (void*,int /*<<< orphan*/ *) ; 
- scalar_t__ strlen (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tgFreeSchema (TYPE_2__*) ; 
- TYPE_3__ tgSchemas ; 
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_11__ {scalar_t__ type; int * valuestring; } ;
+typedef TYPE_1__ cJSON ;
+struct TYPE_13__ {int size; TYPE_2__* schemas; } ;
+struct TYPE_12__ {int fieldNum; void** fields; void* tbName; void* name; int member_0; } ;
+typedef TYPE_2__ STgSchema ;
+
+
+ int TSDB_MAX_COLUMNS ;
+ int TSDB_METER_NAME_LEN ;
+ TYPE_1__* cJSON_GetArrayItem (TYPE_1__*,int) ;
+ int cJSON_GetArraySize (TYPE_1__*) ;
+ TYPE_1__* cJSON_GetObjectItem (TYPE_1__*,char*) ;
+ scalar_t__ cJSON_String ;
+ void* calloc (int,int) ;
+ int strcpy (void*,int *) ;
+ scalar_t__ strlen (int *) ;
+ int tgFreeSchema (TYPE_2__*) ;
+ TYPE_3__ tgSchemas ;
 
 void tgParseSchemaMetric(cJSON *metric) {
-  STgSchema  schema = {0};
-  bool       parsedOk = true;
+  STgSchema schema = {0};
+  bool parsedOk = 1;
 
-  // name
+
   cJSON *name = cJSON_GetObjectItem(metric, "name");
-  if (name == NULL) {
-    parsedOk = false;
+  if (name == ((void*)0)) {
+    parsedOk = 0;
     goto ParseEnd;
   }
   if (name->type != cJSON_String) {
-    parsedOk = false;
+    parsedOk = 0;
     goto ParseEnd;
   }
-  if (name->valuestring == NULL) {
-    parsedOk = false;
+  if (name->valuestring == ((void*)0)) {
+    parsedOk = 0;
     goto ParseEnd;
   }
   int nameLen = (int)strlen(name->valuestring);
   if (nameLen == 0) {
-    parsedOk = false;
+    parsedOk = 0;
     goto ParseEnd;
   }
 
   schema.name = calloc(nameLen + 1, 1);
   strcpy(schema.name, name->valuestring);
 
-  // tbname
+
   cJSON *tbname = cJSON_GetObjectItem(metric, "tbname");
-  if (tbname == NULL) {
-    parsedOk = false;
+  if (tbname == ((void*)0)) {
+    parsedOk = 0;
     goto ParseEnd;
   }
   if (tbname->type != cJSON_String) {
-    parsedOk = false;
+    parsedOk = 0;
     goto ParseEnd;
   }
-  if (tbname->valuestring == NULL) {
-    parsedOk = false;
+  if (tbname->valuestring == ((void*)0)) {
+    parsedOk = 0;
     goto ParseEnd;
   }
   int tbnameLen = (int)strlen(tbname->valuestring);
   if (tbnameLen == 0) {
-    parsedOk = false;
+    parsedOk = 0;
     goto ParseEnd;
   }
 
   schema.tbName = calloc(tbnameLen + 1, 1);
   strcpy(schema.tbName, tbname->valuestring);
 
-    // fields
+
   cJSON *fields = cJSON_GetObjectItem(metric, "fields");
-  if (fields == NULL) {
+  if (fields == ((void*)0)) {
     goto ParseEnd;
   }
   int fieldSize = cJSON_GetArraySize(fields);
@@ -97,17 +97,17 @@ void tgParseSchemaMetric(cJSON *metric) {
     schema.fieldNum = fieldSize;
     for (int i = 0; i < fieldSize; i++) {
       cJSON *field = cJSON_GetArrayItem(fields, i);
-      if (field == NULL) {
-        parsedOk = false;
+      if (field == ((void*)0)) {
+        parsedOk = 0;
         goto ParseEnd;
       }
-      if (field->valuestring == NULL) {
-        parsedOk = false;
+      if (field->valuestring == ((void*)0)) {
+        parsedOk = 0;
         goto ParseEnd;
       }
       int nameLen = (int)strlen(field->valuestring);
       if (nameLen == 0 || nameLen > TSDB_METER_NAME_LEN) {
-        parsedOk = false;
+        parsedOk = 0;
         goto ParseEnd;
       }
       schema.fields[i] = calloc(nameLen + 1, 1);

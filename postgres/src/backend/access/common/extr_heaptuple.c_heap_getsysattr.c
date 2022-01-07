@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TupleDesc ;
-struct TYPE_4__ {int /*<<< orphan*/  t_tableOid; int /*<<< orphan*/  t_data; int /*<<< orphan*/  t_self; } ;
-typedef  TYPE_1__* HeapTuple ;
-typedef  int /*<<< orphan*/  Datum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (TYPE_1__*) ; 
- int /*<<< orphan*/  CommandIdGetDatum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  HeapTupleHeaderGetRawCommandId (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapTupleHeaderGetRawXmax (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapTupleHeaderGetRawXmin (int /*<<< orphan*/ ) ; 
-#define  MaxCommandIdAttributeNumber 133 
-#define  MaxTransactionIdAttributeNumber 132 
-#define  MinCommandIdAttributeNumber 131 
-#define  MinTransactionIdAttributeNumber 130 
- int /*<<< orphan*/  ObjectIdGetDatum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PointerGetDatum (int /*<<< orphan*/ *) ; 
-#define  SelfItemPointerAttributeNumber 129 
-#define  TableOidAttributeNumber 128 
- int /*<<< orphan*/  TransactionIdGetDatum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int TupleDesc ;
+struct TYPE_4__ {int t_tableOid; int t_data; int t_self; } ;
+typedef TYPE_1__* HeapTuple ;
+typedef int Datum ;
+
+
+ int Assert (TYPE_1__*) ;
+ int CommandIdGetDatum (int ) ;
+ int ERROR ;
+ int HeapTupleHeaderGetRawCommandId (int ) ;
+ int HeapTupleHeaderGetRawXmax (int ) ;
+ int HeapTupleHeaderGetRawXmin (int ) ;
+
+
+
+
+ int ObjectIdGetDatum (int ) ;
+ int PointerGetDatum (int *) ;
+
+
+ int TransactionIdGetDatum (int ) ;
+ int elog (int ,char*,int) ;
 
 Datum
 heap_getsysattr(HeapTuple tup, int attnum, TupleDesc tupleDesc, bool *isnull)
 {
-	Datum		result;
+ Datum result;
 
-	Assert(tup);
+ Assert(tup);
 
-	/* Currently, no sys attribute ever reads as NULL. */
-	*isnull = false;
 
-	switch (attnum)
-	{
-		case SelfItemPointerAttributeNumber:
-			/* pass-by-reference datatype */
-			result = PointerGetDatum(&(tup->t_self));
-			break;
-		case MinTransactionIdAttributeNumber:
-			result = TransactionIdGetDatum(HeapTupleHeaderGetRawXmin(tup->t_data));
-			break;
-		case MaxTransactionIdAttributeNumber:
-			result = TransactionIdGetDatum(HeapTupleHeaderGetRawXmax(tup->t_data));
-			break;
-		case MinCommandIdAttributeNumber:
-		case MaxCommandIdAttributeNumber:
+ *isnull = 0;
 
-			/*
-			 * cmin and cmax are now both aliases for the same field, which
-			 * can in fact also be a combo command id.  XXX perhaps we should
-			 * return the "real" cmin or cmax if possible, that is if we are
-			 * inside the originating transaction?
-			 */
-			result = CommandIdGetDatum(HeapTupleHeaderGetRawCommandId(tup->t_data));
-			break;
-		case TableOidAttributeNumber:
-			result = ObjectIdGetDatum(tup->t_tableOid);
-			break;
-		default:
-			elog(ERROR, "invalid attnum: %d", attnum);
-			result = 0;			/* keep compiler quiet */
-			break;
-	}
-	return result;
+ switch (attnum)
+ {
+  case 129:
+
+   result = PointerGetDatum(&(tup->t_self));
+   break;
+  case 130:
+   result = TransactionIdGetDatum(HeapTupleHeaderGetRawXmin(tup->t_data));
+   break;
+  case 132:
+   result = TransactionIdGetDatum(HeapTupleHeaderGetRawXmax(tup->t_data));
+   break;
+  case 131:
+  case 133:
+
+
+
+
+
+
+
+   result = CommandIdGetDatum(HeapTupleHeaderGetRawCommandId(tup->t_data));
+   break;
+  case 128:
+   result = ObjectIdGetDatum(tup->t_tableOid);
+   break;
+  default:
+   elog(ERROR, "invalid attnum: %d", attnum);
+   result = 0;
+   break;
+ }
+ return result;
 }

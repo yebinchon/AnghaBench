@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {scalar_t__ encoding; int /*<<< orphan*/  input_len; int /*<<< orphan*/  input; int /*<<< orphan*/  output_len; int /*<<< orphan*/  output; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {scalar_t__ encoding; int input_len; int input; int output_len; int output; } ;
 struct TYPE_5__ {char* err; TYPE_2__* data; } ;
-typedef  TYPE_1__ EVP_TEST ;
-typedef  unsigned char EVP_ENCODE_CTX ;
-typedef  TYPE_2__ ENCODE_DATA ;
+typedef TYPE_1__ EVP_TEST ;
+typedef unsigned char EVP_ENCODE_CTX ;
+typedef TYPE_2__ ENCODE_DATA ;
 
-/* Variables and functions */
- scalar_t__ BASE64_CANONICAL_ENCODING ; 
- scalar_t__ BASE64_INVALID_ENCODING ; 
- int /*<<< orphan*/  EVP_DECODE_LENGTH (int /*<<< orphan*/ ) ; 
- int EVP_DecodeFinal (unsigned char*,unsigned char*,int*) ; 
- int /*<<< orphan*/  EVP_DecodeInit (unsigned char*) ; 
- scalar_t__ EVP_DecodeUpdate (unsigned char*,unsigned char*,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_ENCODE_CTX_free (unsigned char*) ; 
- unsigned char* EVP_ENCODE_CTX_new () ; 
- int /*<<< orphan*/  EVP_ENCODE_LENGTH (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_EncodeFinal (unsigned char*,unsigned char*,int*) ; 
- int /*<<< orphan*/  EVP_EncodeInit (unsigned char*) ; 
- int /*<<< orphan*/  EVP_EncodeUpdate (unsigned char*,unsigned char*,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- unsigned char* OPENSSL_malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ptr (unsigned char*) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memory_err_compare (TYPE_1__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*,int) ; 
+
+ scalar_t__ BASE64_CANONICAL_ENCODING ;
+ scalar_t__ BASE64_INVALID_ENCODING ;
+ int EVP_DECODE_LENGTH (int ) ;
+ int EVP_DecodeFinal (unsigned char*,unsigned char*,int*) ;
+ int EVP_DecodeInit (unsigned char*) ;
+ scalar_t__ EVP_DecodeUpdate (unsigned char*,unsigned char*,int*,int ,int ) ;
+ int EVP_ENCODE_CTX_free (unsigned char*) ;
+ unsigned char* EVP_ENCODE_CTX_new () ;
+ int EVP_ENCODE_LENGTH (int ) ;
+ int EVP_EncodeFinal (unsigned char*,unsigned char*,int*) ;
+ int EVP_EncodeInit (unsigned char*) ;
+ int EVP_EncodeUpdate (unsigned char*,unsigned char*,int*,int ,int ) ;
+ int OPENSSL_free (unsigned char*) ;
+ unsigned char* OPENSSL_malloc (int ) ;
+ int TEST_ptr (unsigned char*) ;
+ int TEST_true (int ) ;
+ int memory_err_compare (TYPE_1__*,char*,int ,int ,unsigned char*,int) ;
 
 __attribute__((used)) static int encode_test_run(EVP_TEST *t)
 {
     ENCODE_DATA *expected = t->data;
-    unsigned char *encode_out = NULL, *decode_out = NULL;
+    unsigned char *encode_out = ((void*)0), *decode_out = ((void*)0);
     int output_len, chunk_len;
-    EVP_ENCODE_CTX *decode_ctx = NULL, *encode_ctx = NULL;
+    EVP_ENCODE_CTX *decode_ctx = ((void*)0), *encode_ctx = ((void*)0);
 
     if (!TEST_ptr(decode_ctx = EVP_ENCODE_CTX_new())) {
         t->err = "INTERNAL_ERROR";
@@ -98,7 +98,7 @@ __attribute__((used)) static int encode_test_run(EVP_TEST *t)
         goto err;
     }
 
-    t->err = NULL;
+    t->err = ((void*)0);
  err:
     OPENSSL_free(encode_out);
     OPENSSL_free(decode_out);

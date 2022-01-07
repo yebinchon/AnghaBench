@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_4__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_6__ {int /*<<< orphan*/ * table; int /*<<< orphan*/  dwNumEntries; } ;
-struct TYPE_5__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ SnmpVarBind ;
-typedef  int BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
-typedef  int /*<<< orphan*/  AsnObjectIdentifier ;
-typedef  int /*<<< orphan*/  AsnInteger32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEFINE_OID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DEFINE_SIZEOF (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int /*<<< orphan*/  SNMP_ERRORSTATUS_NOSUCHNAME ; 
- int /*<<< orphan*/  SNMP_ERRORSTATUS_READONLY ; 
-#define  SNMP_PDU_GET 130 
-#define  SNMP_PDU_GETNEXT 129 
-#define  SNMP_PDU_SET 128 
- int /*<<< orphan*/  SnmpUtilOidToA (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  getItemAndIntegerInstanceFromOid (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_4__* ifTable ; 
- int /*<<< orphan*/  mapStructEntryToValue (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  mib2IfEntry ; 
- int /*<<< orphan*/  mib2IfEntryMap ; 
- int /*<<< orphan*/  setOidWithItemAndInteger (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_4__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_6__ {int * table; int dwNumEntries; } ;
+struct TYPE_5__ {int name; } ;
+typedef TYPE_1__ SnmpVarBind ;
+typedef int BYTE ;
+typedef int BOOL ;
+typedef int AsnObjectIdentifier ;
+typedef int AsnInteger32 ;
+
+
+ int DEFINE_OID (int ) ;
+ int DEFINE_SIZEOF (int ) ;
+ int FALSE ;
+ int FIXME (char*,int) ;
+ int SNMP_ERRORSTATUS_NOSUCHNAME ;
+ int SNMP_ERRORSTATUS_READONLY ;
+
+
+
+ int SnmpUtilOidToA (int *) ;
+ int TRACE (char*,int,int ,int *) ;
+ int TRUE ;
+ int assert (int ) ;
+ int getItemAndIntegerInstanceFromOid (int *,int *,int,int *,int *) ;
+ TYPE_4__* ifTable ;
+ int mapStructEntryToValue (int ,int ,int *,int ,TYPE_1__*) ;
+ int mib2IfEntry ;
+ int mib2IfEntryMap ;
+ int setOidWithItemAndInteger (int *,int *,int ,int ) ;
 
 __attribute__((used)) static BOOL mib2IfEntryQuery(BYTE bPduType, SnmpVarBind *pVarBind,
     AsnInteger32 *pErrorStatus)
@@ -53,13 +53,13 @@ __attribute__((used)) static BOOL mib2IfEntryQuery(BYTE bPduType, SnmpVarBind *p
 
     switch (bPduType)
     {
-    case SNMP_PDU_GET:
-    case SNMP_PDU_GETNEXT:
+    case 130:
+    case 129:
         if (!ifTable)
         {
-            /* There is no interface present, so let the caller deal
-             * with finding the successor.
-             */
+
+
+
             *pErrorStatus = SNMP_ERRORSTATUS_NOSUCHNAME;
         }
         else
@@ -80,14 +80,14 @@ __attribute__((used)) static BOOL mib2IfEntryQuery(BYTE bPduType, SnmpVarBind *p
                         DEFINE_SIZEOF(mib2IfEntryMap),
                         &ifTable->table[tableIndex - 1], item,
                         pVarBind);
-                    if (bPduType == SNMP_PDU_GETNEXT)
+                    if (bPduType == 129)
                         ret = setOidWithItemAndInteger(&pVarBind->name,
                             &entryOid, item, tableIndex);
                 }
             }
         }
         break;
-    case SNMP_PDU_SET:
+    case 128:
         *pErrorStatus = SNMP_ERRORSTATUS_READONLY;
         ret = FALSE;
         break;

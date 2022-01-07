@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vo {int dummy; } ;
 struct ra_ctx {struct vo* vo; struct priv* priv; } ;
-struct priv {int /*<<< orphan*/  egl_config; int /*<<< orphan*/  egl_context; int /*<<< orphan*/  egl_display; } ;
+struct priv {int egl_config; int egl_context; int egl_display; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EGL_EXTENSIONS ; 
- int /*<<< orphan*/  MP_DBG (struct vo*,char*,char const*) ; 
- int /*<<< orphan*/  MP_FATAL (struct vo*,char*) ; 
- int /*<<< orphan*/  context_destroy (struct ra_ctx*) ; 
- int /*<<< orphan*/  eglInitialize (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* eglQueryString (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpegl_create_context (struct ra_ctx*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int EGL_EXTENSIONS ;
+ int MP_DBG (struct vo*,char*,char const*) ;
+ int MP_FATAL (struct vo*,char*) ;
+ int context_destroy (struct ra_ctx*) ;
+ int eglInitialize (int ,int *,int *) ;
+ char* eglQueryString (int ,int ) ;
+ int mpegl_create_context (struct ra_ctx*,int ,int *,int *) ;
 
 __attribute__((used)) static bool context_init(struct ra_ctx *ctx)
 {
     struct priv *p = ctx->priv;
     struct vo *vo = ctx->vo;
 
-    if (!eglInitialize(p->egl_display, NULL, NULL)) {
+    if (!eglInitialize(p->egl_display, ((void*)0), ((void*)0))) {
         MP_FATAL(vo, "Couldn't initialize EGL\n");
         goto fail;
     }
@@ -44,8 +44,8 @@ __attribute__((used)) static bool context_init(struct ra_ctx *ctx)
         goto fail;
     }
 
-    return true;
+    return 1;
 fail:
     context_destroy(ctx);
-    return false;
+    return 0;
 }

@@ -1,109 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  IEEE80211_IOCTL_ADDMAC 156 
-#define  IEEE80211_IOCTL_CHANSWITCH 155 
-#define  IEEE80211_IOCTL_DELKEY 154 
-#define  IEEE80211_IOCTL_DELMAC 153 
-#define  IEEE80211_IOCTL_FILTERFRAME 152 
-#define  IEEE80211_IOCTL_GETCHANINFO 151 
-#define  IEEE80211_IOCTL_GETCHANLIST 150 
-#define  IEEE80211_IOCTL_GETMODE 149 
-#define  IEEE80211_IOCTL_GETOPTIE 148 
-#define  IEEE80211_IOCTL_GETPARAM 147 
-#define  IEEE80211_IOCTL_GETWMMPARAMS 146 
-#define  IEEE80211_IOCTL_GETWPAIE 145 
-#define  IEEE80211_IOCTL_GET_APPIEBUF 144 
-#define  IEEE80211_IOCTL_GET_MACADDR 143 
-#define  IEEE80211_IOCTL_KICKMAC 142 
-#define  IEEE80211_IOCTL_SETCHANLIST 141 
-#define  IEEE80211_IOCTL_SETKEY 140 
-#define  IEEE80211_IOCTL_SETMLME 139 
-#define  IEEE80211_IOCTL_SETMODE 138 
-#define  IEEE80211_IOCTL_SETOPTIE 137 
-#define  IEEE80211_IOCTL_SETPARAM 136 
-#define  IEEE80211_IOCTL_SETWMMPARAMS 135 
-#define  IEEE80211_IOCTL_SET_ACPARAMS 134 
-#define  IEEE80211_IOCTL_SET_APPIEBUF 133 
-#define  IEEE80211_IOCTL_SET_HBRPARAMS 132 
-#define  IEEE80211_IOCTL_SET_MEDENYENTRY 131 
-#define  IEEE80211_IOCTL_SET_RTPARAMS 130 
-#define  IEEE80211_IOCTL_SET_RXTIMEOUT 129 
-#define  IEEE80211_IOCTL_STA_STATS 128 
-
 __attribute__((used)) static const char * athr_get_ioctl_name(int op)
 {
-	switch (op) {
-	case IEEE80211_IOCTL_SETPARAM:
-		return "SETPARAM";
-	case IEEE80211_IOCTL_GETPARAM:
-		return "GETPARAM";
-	case IEEE80211_IOCTL_SETKEY:
-		return "SETKEY";
-	case IEEE80211_IOCTL_SETWMMPARAMS:
-		return "SETWMMPARAMS";
-	case IEEE80211_IOCTL_DELKEY:
-		return "DELKEY";
-	case IEEE80211_IOCTL_GETWMMPARAMS:
-		return "GETWMMPARAMS";
-	case IEEE80211_IOCTL_SETMLME:
-		return "SETMLME";
-	case IEEE80211_IOCTL_GETCHANINFO:
-		return "GETCHANINFO";
-	case IEEE80211_IOCTL_SETOPTIE:
-		return "SETOPTIE";
-	case IEEE80211_IOCTL_GETOPTIE:
-		return "GETOPTIE";
-	case IEEE80211_IOCTL_ADDMAC:
-		return "ADDMAC";
-	case IEEE80211_IOCTL_DELMAC:
-		return "DELMAC";
-	case IEEE80211_IOCTL_GETCHANLIST:
-		return "GETCHANLIST";
-	case IEEE80211_IOCTL_SETCHANLIST:
-		return "SETCHANLIST";
-	case IEEE80211_IOCTL_KICKMAC:
-		return "KICKMAC";
-	case IEEE80211_IOCTL_CHANSWITCH:
-		return "CHANSWITCH";
-	case IEEE80211_IOCTL_GETMODE:
-		return "GETMODE";
-	case IEEE80211_IOCTL_SETMODE:
-		return "SETMODE";
-	case IEEE80211_IOCTL_GET_APPIEBUF:
-		return "GET_APPIEBUF";
-	case IEEE80211_IOCTL_SET_APPIEBUF:
-		return "SET_APPIEBUF";
-	case IEEE80211_IOCTL_SET_ACPARAMS:
-		return "SET_ACPARAMS";
-	case IEEE80211_IOCTL_FILTERFRAME:
-		return "FILTERFRAME";
-	case IEEE80211_IOCTL_SET_RTPARAMS:
-		return "SET_RTPARAMS";
-	case IEEE80211_IOCTL_SET_MEDENYENTRY:
-		return "SET_MEDENYENTRY";
-	case IEEE80211_IOCTL_GET_MACADDR:
-		return "GET_MACADDR";
-	case IEEE80211_IOCTL_SET_HBRPARAMS:
-		return "SET_HBRPARAMS";
-	case IEEE80211_IOCTL_SET_RXTIMEOUT:
-		return "SET_RXTIMEOUT";
-	case IEEE80211_IOCTL_STA_STATS:
-		return "STA_STATS";
-	case IEEE80211_IOCTL_GETWPAIE:
-		return "GETWPAIE";
-	default:
-		return "??";
-	}
+ switch (op) {
+ case 136:
+  return "SETPARAM";
+ case 147:
+  return "GETPARAM";
+ case 140:
+  return "SETKEY";
+ case 135:
+  return "SETWMMPARAMS";
+ case 154:
+  return "DELKEY";
+ case 146:
+  return "GETWMMPARAMS";
+ case 139:
+  return "SETMLME";
+ case 151:
+  return "GETCHANINFO";
+ case 137:
+  return "SETOPTIE";
+ case 148:
+  return "GETOPTIE";
+ case 156:
+  return "ADDMAC";
+ case 153:
+  return "DELMAC";
+ case 150:
+  return "GETCHANLIST";
+ case 141:
+  return "SETCHANLIST";
+ case 142:
+  return "KICKMAC";
+ case 155:
+  return "CHANSWITCH";
+ case 149:
+  return "GETMODE";
+ case 138:
+  return "SETMODE";
+ case 144:
+  return "GET_APPIEBUF";
+ case 133:
+  return "SET_APPIEBUF";
+ case 134:
+  return "SET_ACPARAMS";
+ case 152:
+  return "FILTERFRAME";
+ case 130:
+  return "SET_RTPARAMS";
+ case 131:
+  return "SET_MEDENYENTRY";
+ case 143:
+  return "GET_MACADDR";
+ case 132:
+  return "SET_HBRPARAMS";
+ case 129:
+  return "SET_RXTIMEOUT";
+ case 128:
+  return "STA_STATS";
+ case 145:
+  return "GETWPAIE";
+ default:
+  return "??";
+ }
 }

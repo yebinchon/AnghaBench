@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  szFmt ;
-typedef  int /*<<< orphan*/  szBuffer ;
-typedef  int /*<<< orphan*/  WPARAM ;
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_10__ {int /*<<< orphan*/  hwndDlg; TYPE_1__* DeskExtInterface; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int szFmt ;
+typedef int szBuffer ;
+typedef int WPARAM ;
+typedef int VOID ;
+struct TYPE_10__ {int hwndDlg; TYPE_1__* DeskExtInterface; } ;
 struct TYPE_9__ {scalar_t__ dmBitsPerPel; scalar_t__ dmPelsWidth; scalar_t__ dmPelsHeight; int dmDisplayFrequency; } ;
-struct TYPE_8__ {int /*<<< orphan*/  Context; TYPE_2__* (* EnumAllModes ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;TYPE_2__* (* GetCurrentMode ) (int /*<<< orphan*/ ) ;} ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  TYPE_2__* PDEVMODEW ;
-typedef  TYPE_3__* PDESKMONITOR ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  scalar_t__ INT ;
-typedef  scalar_t__ DWORD ;
-typedef  scalar_t__ BOOL ;
+struct TYPE_8__ {int Context; TYPE_2__* (* EnumAllModes ) (int ,int ) ;TYPE_2__* (* GetCurrentMode ) (int ) ;} ;
+typedef int TCHAR ;
+typedef TYPE_2__* PDEVMODEW ;
+typedef TYPE_3__* PDESKMONITOR ;
+typedef int LPARAM ;
+typedef scalar_t__ INT ;
+typedef scalar_t__ DWORD ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CB_ADDSTRING ; 
- int /*<<< orphan*/  CB_RESETCONTENT ; 
- int /*<<< orphan*/  CB_SETCURSEL ; 
- int /*<<< orphan*/  CB_SETITEMDATA ; 
- int /*<<< orphan*/  EnableWindow (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetPruningSettings (TYPE_3__*) ; 
- int /*<<< orphan*/  IDC_REFRESHRATE ; 
- int /*<<< orphan*/  IDS_FREQFMT ; 
- int /*<<< orphan*/  IDS_MONITORSETTINGSGROUP ; 
- int /*<<< orphan*/  IDS_REFRESHRATELABEL ; 
- int /*<<< orphan*/  IDS_USEDEFFRQUENCY ; 
- int /*<<< orphan*/  LoadString (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- scalar_t__ SendDlgItemMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEXT (char) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  _sntprintf (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  hInstance ; 
- TYPE_2__* stub1 (int /*<<< orphan*/ ) ; 
- TYPE_2__* stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CB_ADDSTRING ;
+ int CB_RESETCONTENT ;
+ int CB_SETCURSEL ;
+ int CB_SETITEMDATA ;
+ int EnableWindow (int ,scalar_t__) ;
+ scalar_t__ FALSE ;
+ int GetDlgItem (int ,int ) ;
+ int GetPruningSettings (TYPE_3__*) ;
+ int IDC_REFRESHRATE ;
+ int IDS_FREQFMT ;
+ int IDS_MONITORSETTINGSGROUP ;
+ int IDS_REFRESHRATELABEL ;
+ int IDS_USEDEFFRQUENCY ;
+ int LoadString (int ,int ,int *,int) ;
+ scalar_t__ SendDlgItemMessage (int ,int ,int ,int ,int ) ;
+ int TEXT (char) ;
+ scalar_t__ TRUE ;
+ int _sntprintf (int *,int,int *,int) ;
+ int hInstance ;
+ TYPE_2__* stub1 (int ) ;
+ TYPE_2__* stub2 (int ,int ) ;
 
 __attribute__((used)) static VOID
 UpdateRefreshFrequencyList(PDESKMONITOR This)
@@ -61,7 +61,7 @@ UpdateRefreshFrequencyList(PDESKMONITOR This)
     BOOL bHasDef = FALSE;
     BOOL bAdded = FALSE;
 
-    /* Fill the refresh rate combo box */
+
     SendDlgItemMessage(This->hwndDlg,
                        IDC_REFRESHRATE,
                        CB_RESETCONTENT,
@@ -75,16 +75,16 @@ UpdateRefreshFrequencyList(PDESKMONITOR This)
     {
         lpMode = This->DeskExtInterface->EnumAllModes(This->DeskExtInterface->Context,
                                                       dwIndex++);
-        if (lpMode != NULL &&
+        if (lpMode != ((void*)0) &&
             lpMode->dmBitsPerPel == lpCurrentMode->dmBitsPerPel &&
             lpMode->dmPelsWidth == lpCurrentMode->dmPelsWidth &&
             lpMode->dmPelsHeight == lpCurrentMode->dmPelsHeight)
         {
-            /* We're only interested in refresh rates for the current resolution and color depth */
+
 
             if (lpMode->dmDisplayFrequency <= 1)
             {
-                /* Default hardware frequency */
+
                 if (bHasDef)
                     continue;
 
@@ -142,7 +142,7 @@ UpdateRefreshFrequencyList(PDESKMONITOR This)
             }
         }
 
-    } while (lpMode != NULL);
+    } while (lpMode != ((void*)0));
 
     EnableWindow(GetDlgItem(This->hwndDlg,
                             IDS_MONITORSETTINGSGROUP),

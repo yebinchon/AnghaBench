@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int vlc_tick_t ;
-typedef  scalar_t__ uint64_t ;
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int vlc_tick_t ;
+typedef scalar_t__ uint64_t ;
+typedef int uint16_t ;
 struct stat {int st_size; } ;
 struct TYPE_13__ {TYPE_4__* p_sys; } ;
-typedef  TYPE_1__ stream_t ;
+typedef TYPE_1__ stream_t ;
 struct TYPE_14__ {int i_time_offset; void* psz_name; } ;
-typedef  TYPE_2__ seekpoint_t ;
-typedef  int int64_t ;
-struct TYPE_15__ {int i_length; int i_seekpoint; int /*<<< orphan*/  seekpoint; void* psz_name; } ;
-typedef  TYPE_3__ input_title_t ;
-struct TYPE_16__ {int fps; scalar_t__* offsets; TYPE_3__* p_marks; int /*<<< orphan*/  b_ts_format; } ;
-typedef  TYPE_4__ access_sys_t ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_2__ seekpoint_t ;
+typedef int int64_t ;
+struct TYPE_15__ {int i_length; int i_seekpoint; int seekpoint; void* psz_name; } ;
+typedef TYPE_3__ input_title_t ;
+struct TYPE_16__ {int fps; scalar_t__* offsets; TYPE_3__* p_marks; int b_ts_format; } ;
+typedef TYPE_4__ access_sys_t ;
+typedef int FILE ;
 
-/* Variables and functions */
- int CLOCK_FREQ ; 
- int FILE_COUNT ; 
- scalar_t__ FILE_SIZE (int) ; 
- int MIN_CHAPTER_SIZE ; 
- int /*<<< orphan*/ * OpenRelativeFile (TYPE_1__*,char*) ; 
- int ParseFrameNumber (char*,int) ; 
- int /*<<< orphan*/  ReadIndexRecord (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,scalar_t__*,int*) ; 
- scalar_t__ ReadLine (char**,size_t*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TAB_APPEND (int,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  TAB_INSERT (int,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ) ; 
- char* _ (char*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fileno (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (scalar_t__*) ; 
- scalar_t__ fstat (int /*<<< orphan*/ ,struct stat*) ; 
- int /*<<< orphan*/  memmove (scalar_t__*,scalar_t__*,int) ; 
- void* strdup (char*) ; 
- int var_InheritInteger (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  vlc_input_title_Delete (TYPE_3__*) ; 
- TYPE_3__* vlc_input_title_New () ; 
- TYPE_2__* vlc_seekpoint_New () ; 
- scalar_t__* xrealloc (scalar_t__*,int) ; 
+
+ int CLOCK_FREQ ;
+ int FILE_COUNT ;
+ scalar_t__ FILE_SIZE (int) ;
+ int MIN_CHAPTER_SIZE ;
+ int * OpenRelativeFile (TYPE_1__*,char*) ;
+ int ParseFrameNumber (char*,int) ;
+ int ReadIndexRecord (int *,int ,int,scalar_t__*,int*) ;
+ scalar_t__ ReadLine (char**,size_t*,int *) ;
+ int TAB_APPEND (int,int ,TYPE_2__*) ;
+ int TAB_INSERT (int,int ,TYPE_2__*,int ) ;
+ char* _ (char*) ;
+ int fclose (int *) ;
+ int fileno (int *) ;
+ int free (scalar_t__*) ;
+ scalar_t__ fstat (int ,struct stat*) ;
+ int memmove (scalar_t__*,scalar_t__*,int) ;
+ void* strdup (char*) ;
+ int var_InheritInteger (TYPE_1__*,char*) ;
+ int vlc_input_title_Delete (TYPE_3__*) ;
+ TYPE_3__* vlc_input_title_New () ;
+ TYPE_2__* vlc_seekpoint_New () ;
+ scalar_t__* xrealloc (scalar_t__*,int) ;
 
 __attribute__((used)) static void ImportMarks( stream_t *p_access )
 {
@@ -68,7 +68,7 @@ __attribute__((used)) static void ImportMarks( stream_t *p_access )
         return;
     }
 
-    /* get the length of this recording (index stores 8 bytes per frame) */
+
     struct stat st;
     if( fstat( fileno( indexfile ), &st ) )
     {
@@ -78,7 +78,7 @@ __attribute__((used)) static void ImportMarks( stream_t *p_access )
     }
     int64_t i_frame_count = st.st_size / 8;
 
-    /* Put all cut marks in a "dummy" title */
+
     input_title_t *p_marks = vlc_input_title_New();
     if( !p_marks )
     {
@@ -89,33 +89,33 @@ __attribute__((used)) static void ImportMarks( stream_t *p_access )
     p_marks->psz_name = strdup( _("VDR Cut Marks") );
     p_marks->i_length = i_frame_count * (vlc_tick_t)( CLOCK_FREQ / p_sys->fps );
 
-    uint64_t *offsetv = NULL;
+    uint64_t *offsetv = ((void*)0);
 
-    /* offset for chapter positions */
+
     int i_chapter_offset = p_sys->fps / 1000 *
         var_InheritInteger( p_access, "vdr-chapter-offset" );
 
-    /* minimum chapter size in frames */
+
     int i_min_chapter_size = p_sys->fps * MIN_CHAPTER_SIZE;
 
-    /* the last chapter started at this frame (init to 0 so
-     * we skip useless chapters near the beginning as well) */
+
+
     int64_t i_prev_chapter = 0;
 
-    /* parse lines of the form "0:00:00.00 foobar" */
-    char *line = NULL;
+
+    char *line = ((void*)0);
     size_t line_len;
     while( ReadLine( &line, &line_len, marksfile ) )
     {
         int64_t i_frame = ParseFrameNumber( line, p_sys->fps );
 
-        /* skip chapters which are near the end or too close to each other */
+
         if( i_frame - i_prev_chapter < i_min_chapter_size ||
             i_frame >= i_frame_count - i_min_chapter_size )
             continue;
         i_prev_chapter = i_frame;
 
-        /* move chapters (simple workaround for inaccurate cut marks) */
+
         if( i_frame > -i_chapter_offset )
             i_frame += i_chapter_offset;
         else
@@ -129,7 +129,7 @@ __attribute__((used)) static void ImportMarks( stream_t *p_access )
         if( i_file_number < 1 || i_file_number > FILE_COUNT )
             continue;
 
-        /* add file sizes to get the "global" offset */
+
         seekpoint_t *sp = vlc_seekpoint_New();
         if( !sp )
             continue;
@@ -145,7 +145,7 @@ __attribute__((used)) static void ImportMarks( stream_t *p_access )
         offsetv[p_marks->i_seekpoint - 1] = i_offset;
     }
 
-    /* add a chapter at the beginning if missing */
+
     if( p_marks->i_seekpoint > 0 && offsetv[0] > 0 )
     {
         seekpoint_t *sp = vlc_seekpoint_New();

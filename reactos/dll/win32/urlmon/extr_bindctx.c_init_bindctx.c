@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int cbStruct; int grfMode; scalar_t__ dwTickCountDeadline; int /*<<< orphan*/  grfFlags; } ;
-typedef  int /*<<< orphan*/  IEnumFORMATETC ;
-typedef  int /*<<< orphan*/  IBindStatusCallback ;
-typedef  int /*<<< orphan*/  IBindCtx ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ DWORD ;
-typedef  TYPE_1__ BIND_OPTS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIND_MAYBOTHERUSER ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  IBindCtx_SetBindOptions (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  RegisterBindStatusCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int STGM_READWRITE ; 
- int STGM_SHARE_EXCLUSIVE ; 
- int /*<<< orphan*/  S_OK ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int cbStruct; int grfMode; scalar_t__ dwTickCountDeadline; int grfFlags; } ;
+typedef int IEnumFORMATETC ;
+typedef int IBindStatusCallback ;
+typedef int IBindCtx ;
+typedef int HRESULT ;
+typedef scalar_t__ DWORD ;
+typedef TYPE_1__ BIND_OPTS ;
+
+
+ int BIND_MAYBOTHERUSER ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,...) ;
+ int IBindCtx_SetBindOptions (int *,TYPE_1__*) ;
+ int RegisterBindStatusCallback (int *,int *,int *,int ) ;
+ int STGM_READWRITE ;
+ int STGM_SHARE_EXCLUSIVE ;
+ int S_OK ;
 
 __attribute__((used)) static HRESULT init_bindctx(IBindCtx *bindctx, DWORD options,
        IBindStatusCallback *callback, IEnumFORMATETC *format)
@@ -50,7 +50,7 @@ __attribute__((used)) static HRESULT init_bindctx(IBindCtx *bindctx, DWORD optio
        return hres;
 
     if(callback) {
-        hres = RegisterBindStatusCallback(bindctx, callback, NULL, 0);
+        hres = RegisterBindStatusCallback(bindctx, callback, ((void*)0), 0);
         if(FAILED(hres))
             return hres;
     }

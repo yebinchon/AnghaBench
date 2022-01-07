@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct serverCommand {int /*<<< orphan*/  keystep; int /*<<< orphan*/  lastkey; int /*<<< orphan*/  firstkey; int /*<<< orphan*/  arity; int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  client ;
-struct TYPE_2__ {int /*<<< orphan*/  nullbulk; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CMD_ADMIN ; 
- int /*<<< orphan*/  CMD_DENYOOM ; 
- int /*<<< orphan*/  CMD_FAST ; 
- int /*<<< orphan*/  CMD_LOADING ; 
- int /*<<< orphan*/  CMD_RANDOM ; 
- int /*<<< orphan*/  CMD_READONLY ; 
- int /*<<< orphan*/  CMD_SKIP_MONITOR ; 
- int /*<<< orphan*/  CMD_WRITE ; 
- void* addDeferredMultiBulkLength (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  addReply (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  addReplyBulkCString (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ addReplyCommandFlag (int /*<<< orphan*/ *,struct serverCommand*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  addReplyLongLong (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  addReplyMultiBulkLen (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  setDeferredMultiBulkLength (int /*<<< orphan*/ *,void*,int) ; 
- TYPE_1__ shared ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct serverCommand {int keystep; int lastkey; int firstkey; int arity; int name; } ;
+typedef int client ;
+struct TYPE_2__ {int nullbulk; } ;
+
+
+ int CMD_ADMIN ;
+ int CMD_DENYOOM ;
+ int CMD_FAST ;
+ int CMD_LOADING ;
+ int CMD_RANDOM ;
+ int CMD_READONLY ;
+ int CMD_SKIP_MONITOR ;
+ int CMD_WRITE ;
+ void* addDeferredMultiBulkLength (int *) ;
+ int addReply (int *,int ) ;
+ int addReplyBulkCString (int *,int ) ;
+ scalar_t__ addReplyCommandFlag (int *,struct serverCommand*,int ,char*) ;
+ int addReplyLongLong (int *,int ) ;
+ int addReplyMultiBulkLen (int *,int) ;
+ int setDeferredMultiBulkLength (int *,void*,int) ;
+ TYPE_1__ shared ;
 
 void addReplyCommand(client *c, struct serverCommand *cmd) {
     if (!cmd) {
         addReply(c, shared.nullbulk);
     } else {
-        /* We are adding: command name, arg count, flags, first, last, offset */
+
         addReplyMultiBulkLen(c, 6);
         addReplyBulkCString(c, cmd->name);
         addReplyLongLong(c, cmd->arity);

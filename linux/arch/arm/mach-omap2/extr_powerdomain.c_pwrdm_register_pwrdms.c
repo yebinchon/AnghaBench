@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct powerdomain {int dummy; } ;
 
-/* Variables and functions */
- int EEXIST ; 
- int EINVAL ; 
- int /*<<< orphan*/  _pwrdm_register (struct powerdomain*) ; 
- int /*<<< orphan*/  arch_pwrdm ; 
+
+ int EEXIST ;
+ int EINVAL ;
+ int _pwrdm_register (struct powerdomain*) ;
+ int arch_pwrdm ;
 
 int pwrdm_register_pwrdms(struct powerdomain **ps)
 {
-	struct powerdomain **p = NULL;
+ struct powerdomain **p = ((void*)0);
 
-	if (!arch_pwrdm)
-		return -EEXIST;
+ if (!arch_pwrdm)
+  return -EEXIST;
 
-	if (!ps)
-		return -EINVAL;
+ if (!ps)
+  return -EINVAL;
 
-	for (p = ps; *p; p++)
-		_pwrdm_register(*p);
+ for (p = ps; *p; p++)
+  _pwrdm_register(*p);
 
-	return 0;
+ return 0;
 }

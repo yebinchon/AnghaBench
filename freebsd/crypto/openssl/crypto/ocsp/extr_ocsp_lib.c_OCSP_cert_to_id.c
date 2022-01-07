@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_NAME ;
-typedef  int /*<<< orphan*/  X509 ;
-typedef  int /*<<< orphan*/  OCSP_CERTID ;
-typedef  int /*<<< orphan*/  EVP_MD ;
-typedef  int /*<<< orphan*/  ASN1_INTEGER ;
-typedef  int /*<<< orphan*/  ASN1_BIT_STRING ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * EVP_sha1 () ; 
- int /*<<< orphan*/ * OCSP_cert_id_new (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * X509_get0_pubkey_bitstr (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * X509_get0_serialNumber (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * X509_get_issuer_name (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * X509_get_subject_name (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int X509_NAME ;
+typedef int X509 ;
+typedef int OCSP_CERTID ;
+typedef int EVP_MD ;
+typedef int ASN1_INTEGER ;
+typedef int ASN1_BIT_STRING ;
+
+
+ int * EVP_sha1 () ;
+ int * OCSP_cert_id_new (int const*,int *,int *,int const*) ;
+ int * X509_get0_pubkey_bitstr (int const*) ;
+ int * X509_get0_serialNumber (int const*) ;
+ int * X509_get_issuer_name (int const*) ;
+ int * X509_get_subject_name (int const*) ;
 
 OCSP_CERTID *OCSP_cert_to_id(const EVP_MD *dgst, const X509 *subject,
                              const X509 *issuer)
@@ -38,7 +38,7 @@ OCSP_CERTID *OCSP_cert_to_id(const EVP_MD *dgst, const X509 *subject,
         serial = X509_get0_serialNumber(subject);
     } else {
         iname = X509_get_subject_name(issuer);
-        serial = NULL;
+        serial = ((void*)0);
     }
     ikey = X509_get0_pubkey_bitstr(issuer);
     return OCSP_cert_id_new(dgst, iname, ikey, serial);

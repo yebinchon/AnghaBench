@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32 ;
-typedef  int /*<<< orphan*/  WorkerNode ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32 ;
+typedef int WorkerNode ;
 struct TYPE_4__ {char* data; } ;
-typedef  TYPE_1__* StringInfo ;
-typedef  int /*<<< orphan*/  List ;
+typedef TYPE_1__* StringInfo ;
+typedef int List ;
 
-/* Variables and functions */
- char* ClientHostAddress (TYPE_1__*) ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  WORKER_LENGTH ; 
- int /*<<< orphan*/ * WorkerGetNodeWithName (char*) ; 
- int /*<<< orphan*/ * WorkerGetRandomCandidateNode (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errdetail (char*) ; 
- int /*<<< orphan*/  errhint (char*) ; 
- int /*<<< orphan*/  errmsg (char*,char*) ; 
- scalar_t__ list_length (int /*<<< orphan*/ *) ; 
- TYPE_1__* makeStringInfo () ; 
- char* pstrdup (char*) ; 
- scalar_t__ strncmp (char*,char*,int /*<<< orphan*/ ) ; 
+
+ char* ClientHostAddress (TYPE_1__*) ;
+ int ERROR ;
+ int WORKER_LENGTH ;
+ int * WorkerGetNodeWithName (char*) ;
+ int * WorkerGetRandomCandidateNode (int *) ;
+ int ereport (int ,int ) ;
+ int errdetail (char*) ;
+ int errhint (char*) ;
+ int errmsg (char*,char*) ;
+ scalar_t__ list_length (int *) ;
+ TYPE_1__* makeStringInfo () ;
+ char* pstrdup (char*) ;
+ scalar_t__ strncmp (char*,char*,int ) ;
 
 WorkerNode *
 WorkerGetLocalFirstCandidateNode(List *currentNodeList)
 {
-	WorkerNode *candidateNode = NULL;
-	uint32 currentNodeCount = list_length(currentNodeList);
+ WorkerNode *candidateNode = ((void*)0);
+ uint32 currentNodeCount = list_length(currentNodeList);
 
-	/* choose first candidate node to be the client's host */
-	if (currentNodeCount == 0)
-	{
-		StringInfo clientHostStringInfo = makeStringInfo();
-		char *clientHost = NULL;
-		char *errorMessage = ClientHostAddress(clientHostStringInfo);
 
-		if (errorMessage != NULL)
-		{
-			ereport(ERROR, (errmsg("%s", errorMessage),
-							errdetail("Could not find the first worker "
-									  "node for local-node-first policy."),
-							errhint("Make sure that you are not on the "
-									"master node.")));
-		}
+ if (currentNodeCount == 0)
+ {
+  StringInfo clientHostStringInfo = makeStringInfo();
+  char *clientHost = ((void*)0);
+  char *errorMessage = ClientHostAddress(clientHostStringInfo);
 
-		/* if hostname is localhost.localdomain, change it to localhost */
-		clientHost = clientHostStringInfo->data;
-		if (strncmp(clientHost, "localhost.localdomain", WORKER_LENGTH) == 0)
-		{
-			clientHost = pstrdup("localhost");
-		}
+  if (errorMessage != ((void*)0))
+  {
+   ereport(ERROR, (errmsg("%s", errorMessage),
+       errdetail("Could not find the first worker "
+           "node for local-node-first policy."),
+       errhint("Make sure that you are not on the "
+         "master node.")));
+  }
 
-		candidateNode = WorkerGetNodeWithName(clientHost);
-		if (candidateNode == NULL)
-		{
-			ereport(ERROR, (errmsg("could not find worker node for "
-								   "host: %s", clientHost)));
-		}
-	}
-	else
-	{
-		/* find a candidate node different from those already selected */
-		candidateNode = WorkerGetRandomCandidateNode(currentNodeList);
-	}
 
-	return candidateNode;
+  clientHost = clientHostStringInfo->data;
+  if (strncmp(clientHost, "localhost.localdomain", WORKER_LENGTH) == 0)
+  {
+   clientHost = pstrdup("localhost");
+  }
+
+  candidateNode = WorkerGetNodeWithName(clientHost);
+  if (candidateNode == ((void*)0))
+  {
+   ereport(ERROR, (errmsg("could not find worker node for "
+           "host: %s", clientHost)));
+  }
+ }
+ else
+ {
+
+  candidateNode = WorkerGetRandomCandidateNode(currentNodeList);
+ }
+
+ return candidateNode;
 }

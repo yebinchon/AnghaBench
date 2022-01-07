@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {size_t emptySlot; int queueSize; int /*<<< orphan*/  label; int /*<<< orphan*/  fullSem; int /*<<< orphan*/  queueMutex; int /*<<< orphan*/ * queue; int /*<<< orphan*/  emptySem; } ;
-typedef  TYPE_1__ SSchedQueue ;
-typedef  int /*<<< orphan*/  SSchedMsg ;
 
-/* Variables and functions */
- scalar_t__ EINTR ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  pError (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  pTrace (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strerror (scalar_t__) ; 
- scalar_t__ tsem_post (int /*<<< orphan*/ *) ; 
- scalar_t__ tsem_wait (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {size_t emptySlot; int queueSize; int label; int fullSem; int queueMutex; int * queue; int emptySem; } ;
+typedef TYPE_1__ SSchedQueue ;
+typedef int SSchedMsg ;
+
+
+ scalar_t__ EINTR ;
+ scalar_t__ errno ;
+ int pError (char*,int ,...) ;
+ int pTrace (char*,int ) ;
+ scalar_t__ pthread_mutex_lock (int *) ;
+ scalar_t__ pthread_mutex_unlock (int *) ;
+ int strerror (scalar_t__) ;
+ scalar_t__ tsem_post (int *) ;
+ scalar_t__ tsem_wait (int *) ;
 
 int taosScheduleTask(void *qhandle, SSchedMsg *pMsg) {
   SSchedQueue *pSched = (SSchedQueue *)qhandle;
-  if (pSched == NULL) {
+  if (pSched == ((void*)0)) {
     pError("sched is not ready, msg:%p is dropped", pMsg);
     return 0;
   }

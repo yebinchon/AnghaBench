@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct qib_diag_client {int /*<<< orphan*/  state; int /*<<< orphan*/  pid; struct qib_devdata* dd; struct qib_diag_client* next; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct qib_diag_client {int state; int pid; struct qib_devdata* dd; struct qib_diag_client* next; } ;
 struct qib_devdata {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  pid; } ;
+struct TYPE_2__ {int pid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  OPENED ; 
- struct qib_diag_client* client_pool ; 
- TYPE_1__* current ; 
- struct qib_diag_client* kmalloc (int,int /*<<< orphan*/ ) ; 
+
+ int GFP_KERNEL ;
+ int OPENED ;
+ struct qib_diag_client* client_pool ;
+ TYPE_1__* current ;
+ struct qib_diag_client* kmalloc (int,int ) ;
 
 __attribute__((used)) static struct qib_diag_client *get_client(struct qib_devdata *dd)
 {
-	struct qib_diag_client *dc;
+ struct qib_diag_client *dc;
 
-	dc = client_pool;
-	if (dc)
-		/* got from pool remove it and use */
-		client_pool = dc->next;
-	else
-		/* None in pool, alloc and init */
-		dc = kmalloc(sizeof *dc, GFP_KERNEL);
+ dc = client_pool;
+ if (dc)
 
-	if (dc) {
-		dc->next = NULL;
-		dc->dd = dd;
-		dc->pid = current->pid;
-		dc->state = OPENED;
-	}
-	return dc;
+  client_pool = dc->next;
+ else
+
+  dc = kmalloc(sizeof *dc, GFP_KERNEL);
+
+ if (dc) {
+  dc->next = ((void*)0);
+  dc->dd = dd;
+  dc->pid = current->pid;
+  dc->state = OPENED;
+ }
+ return dc;
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CURLcode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHKRET (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CURLE_OK ; 
- int /*<<< orphan*/  easysrc_add (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  easysrc_code ; 
+
+
+
+typedef int CURLcode ;
+
+
+ int CHKRET (int ) ;
+ int CURLE_OK ;
+ int easysrc_add (int *,char*) ;
+ int easysrc_code ;
 
 CURLcode easysrc_init(void)
 {

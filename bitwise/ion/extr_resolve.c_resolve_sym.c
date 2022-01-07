@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Type ;
-struct TYPE_15__ {int /*<<< orphan*/  type; } ;
-struct TYPE_14__ {int /*<<< orphan*/  type; } ;
-struct TYPE_17__ {scalar_t__ kind; scalar_t__ is_incomplete; int /*<<< orphan*/  pos; TYPE_2__ enum_decl; TYPE_1__ typedef_decl; } ;
-struct TYPE_16__ {scalar_t__ state; int kind; int /*<<< orphan*/  type; int /*<<< orphan*/  val; int /*<<< orphan*/  home_package; TYPE_4__* decl; scalar_t__ reachable; } ;
-typedef  TYPE_3__ Sym ;
-typedef  int /*<<< orphan*/  Package ;
-typedef  TYPE_4__ Decl ;
 
-/* Variables and functions */
- scalar_t__ DECL_ENUM ; 
- scalar_t__ DECL_STRUCT ; 
- scalar_t__ DECL_TYPEDEF ; 
- scalar_t__ DECL_UNION ; 
-#define  SYM_CONST 132 
-#define  SYM_FUNC 131 
-#define  SYM_PACKAGE 130 
- scalar_t__ SYM_RESOLVED ; 
- scalar_t__ SYM_RESOLVING ; 
-#define  SYM_TYPE 129 
- scalar_t__ SYM_UNRESOLVED ; 
-#define  SYM_VAR 128 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  buf_push (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/ * enter_package (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fatal_error (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  is_decl_foreign (TYPE_4__*) ; 
- int /*<<< orphan*/  is_integer_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  is_local_sym (TYPE_3__*) ; 
- int /*<<< orphan*/  leave_package (int /*<<< orphan*/ *) ; 
- scalar_t__ reachable_phase ; 
- int /*<<< orphan*/  reachable_syms ; 
- int /*<<< orphan*/  resolve_decl_const (TYPE_4__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  resolve_decl_func (TYPE_4__*) ; 
- int /*<<< orphan*/  resolve_decl_var (TYPE_4__*) ; 
- int /*<<< orphan*/ * resolve_typespec (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  resolve_typespec_strict (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sorted_syms ; 
- int /*<<< orphan*/  type_enum (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  type_incomplete (TYPE_3__*) ; 
- int /*<<< orphan*/ * type_int ; 
+
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int Type ;
+struct TYPE_15__ {int type; } ;
+struct TYPE_14__ {int type; } ;
+struct TYPE_17__ {scalar_t__ kind; scalar_t__ is_incomplete; int pos; TYPE_2__ enum_decl; TYPE_1__ typedef_decl; } ;
+struct TYPE_16__ {scalar_t__ state; int kind; int type; int val; int home_package; TYPE_4__* decl; scalar_t__ reachable; } ;
+typedef TYPE_3__ Sym ;
+typedef int Package ;
+typedef TYPE_4__ Decl ;
+
+
+ scalar_t__ DECL_ENUM ;
+ scalar_t__ DECL_STRUCT ;
+ scalar_t__ DECL_TYPEDEF ;
+ scalar_t__ DECL_UNION ;
+
+
+
+ scalar_t__ SYM_RESOLVED ;
+ scalar_t__ SYM_RESOLVING ;
+
+ scalar_t__ SYM_UNRESOLVED ;
+
+ int assert (int) ;
+ int buf_push (int ,TYPE_3__*) ;
+ int * enter_package (int ) ;
+ int fatal_error (int ,char*) ;
+ int is_decl_foreign (TYPE_4__*) ;
+ int is_integer_type (int *) ;
+ int is_local_sym (TYPE_3__*) ;
+ int leave_package (int *) ;
+ scalar_t__ reachable_phase ;
+ int reachable_syms ;
+ int resolve_decl_const (TYPE_4__*,int *) ;
+ int resolve_decl_func (TYPE_4__*) ;
+ int resolve_decl_var (TYPE_4__*) ;
+ int * resolve_typespec (int ) ;
+ int resolve_typespec_strict (int ,int ) ;
+ int sorted_syms ;
+ int type_enum (TYPE_3__*,int *) ;
+ int type_incomplete (TYPE_3__*) ;
+ int * type_int ;
 
 void resolve_sym(Sym *sym) {
     if (sym->state == SYM_RESOLVED) {
@@ -73,7 +73,7 @@ void resolve_sym(Sym *sym) {
     Decl *decl = sym->decl;
     Package *old_package = enter_package(sym->home_package);
     switch (sym->kind) {
-    case SYM_TYPE:
+    case 129:
         if (decl && decl->kind == DECL_TYPEDEF) {
             sym->type = resolve_typespec_strict(decl->typedef_decl.type, is_decl_foreign(decl));
         } else if (decl->kind == DECL_ENUM) {
@@ -86,17 +86,17 @@ void resolve_sym(Sym *sym) {
             sym->type = type_incomplete(sym);
         }
         break;
-    case SYM_VAR:
+    case 128:
         sym->type = resolve_decl_var(decl);
         break;
-    case SYM_CONST:
+    case 132:
         sym->type = resolve_decl_const(decl, &sym->val);
         break;
-    case SYM_FUNC:
+    case 131:
         sym->type = resolve_decl_func(decl);
         break;
-    case SYM_PACKAGE:
-        // Do nothing
+    case 130:
+
         break;
     default:
         assert(0);

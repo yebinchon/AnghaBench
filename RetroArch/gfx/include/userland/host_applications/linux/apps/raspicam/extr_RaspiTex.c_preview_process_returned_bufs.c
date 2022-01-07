@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int preview_stop; int /*<<< orphan*/  preview_queue; } ;
-typedef  TYPE_1__ RASPITEX_STATE ;
-typedef  int /*<<< orphan*/  MMAL_BUFFER_HEADER_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VCOS_FUNCTION ; 
- int /*<<< orphan*/ * mmal_queue_get (int /*<<< orphan*/ ) ; 
- int raspitex_draw (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_log_error (char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int preview_stop; int preview_queue; } ;
+typedef TYPE_1__ RASPITEX_STATE ;
+typedef int MMAL_BUFFER_HEADER_T ;
+
+
+ int VCOS_FUNCTION ;
+ int * mmal_queue_get (int ) ;
+ int raspitex_draw (TYPE_1__*,int *) ;
+ int vcos_log_error (char*,int ) ;
 
 __attribute__((used)) static int preview_process_returned_bufs(RASPITEX_STATE* state)
 {
@@ -27,7 +27,7 @@ __attribute__((used)) static int preview_process_returned_bufs(RASPITEX_STATE* s
    int new_frame = 0;
    int rc = 0;
 
-   while ((buf = mmal_queue_get(state->preview_queue)) != NULL)
+   while ((buf = mmal_queue_get(state->preview_queue)) != ((void*)0))
    {
       if (state->preview_stop == 0)
       {
@@ -42,11 +42,11 @@ __attribute__((used)) static int preview_process_returned_bufs(RASPITEX_STATE* s
       }
    }
 
-   /* If there were no new frames then redraw the scene again with the previous
-    * texture. Otherwise, go round the loop again to see if any new buffers
-    * are returned.
-    */
+
+
+
+
    if (! new_frame)
-      rc = raspitex_draw(state, NULL);
+      rc = raspitex_draw(state, ((void*)0));
    return rc;
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  libvlc_media_t ;
-typedef  int /*<<< orphan*/  libvlc_media_list_t ;
-typedef  int /*<<< orphan*/  libvlc_instance_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int libvlc_media_list_add_media (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int libvlc_media_list_count (int /*<<< orphan*/ *) ; 
- int libvlc_media_list_index_of_item (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int libvlc_media_list_insert_media (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * libvlc_media_list_item_at_index (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * libvlc_media_list_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_media_list_release (int /*<<< orphan*/ *) ; 
- int libvlc_media_list_remove_index (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * libvlc_media_new_path (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  libvlc_media_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * libvlc_new (int,char const**) ; 
- int /*<<< orphan*/  libvlc_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_log (char*) ; 
+
+
+
+typedef int libvlc_media_t ;
+typedef int libvlc_media_list_t ;
+typedef int libvlc_instance_t ;
+
+
+ int assert (int) ;
+ int libvlc_media_list_add_media (int *,int *) ;
+ int libvlc_media_list_count (int *) ;
+ int libvlc_media_list_index_of_item (int *,int *) ;
+ int libvlc_media_list_insert_media (int *,int *,int) ;
+ int * libvlc_media_list_item_at_index (int *,int) ;
+ int * libvlc_media_list_new (int *) ;
+ int libvlc_media_list_release (int *) ;
+ int libvlc_media_list_remove_index (int *,int) ;
+ int * libvlc_media_new_path (int *,char*) ;
+ int libvlc_media_release (int *) ;
+ int * libvlc_new (int,char const**) ;
+ int libvlc_release (int *) ;
+ int test_log (char*) ;
 
 __attribute__((used)) static void test_media_list (const char ** argv, int argc)
 {
@@ -40,17 +40,17 @@ __attribute__((used)) static void test_media_list (const char ** argv, int argc)
     test_log ("Testing media_list\n");
 
     vlc = libvlc_new (argc, argv);
-    assert (vlc != NULL);
+    assert (vlc != ((void*)0));
 
     ml = libvlc_media_list_new (vlc);
-    assert (ml != NULL);
+    assert (ml != ((void*)0));
 
     md1 = libvlc_media_new_path (vlc, "/dev/null");
-    assert (md1 != NULL);
+    assert (md1 != ((void*)0));
     md2 = libvlc_media_new_path (vlc, "/dev/null");
-    assert (md2 != NULL);
+    assert (md2 != ((void*)0));
     md3 = libvlc_media_new_path (vlc, "/dev/null");
-    assert (md3 != NULL);
+    assert (md3 != ((void*)0));
 
     ret = libvlc_media_list_add_media (ml, md1);
     assert (!ret);
@@ -61,29 +61,29 @@ __attribute__((used)) static void test_media_list (const char ** argv, int argc)
     assert( libvlc_media_list_index_of_item (ml, md1) == 0 );
     assert( libvlc_media_list_index_of_item (ml, md2) == 1 );
 
-    ret = libvlc_media_list_remove_index (ml, 0);  /* removing first item */
+    ret = libvlc_media_list_remove_index (ml, 0);
     assert (!ret);
 
-    /* test if second item was moved on first place */
+
     assert( libvlc_media_list_index_of_item (ml, md2) == 0 );
-    ret = libvlc_media_list_add_media (ml, md1); /* add 2 items */
+    ret = libvlc_media_list_add_media (ml, md1);
     assert (!ret);
     ret = libvlc_media_list_add_media (ml, md1);
     assert (!ret);
 
-    /* there should be 3 pieces */
+
     assert( libvlc_media_list_count (ml) == 3 );
 
     ret = libvlc_media_list_insert_media (ml, md3, 2);
     assert (!ret);
 
-    /* there should be 4 pieces */
+
     assert( libvlc_media_list_count (ml) == 4 );
 
-    /* test inserting on right place */
+
     assert( libvlc_media_list_index_of_item (ml, md3) == 2 );
 
-    /* test right returning descriptor*/
+
     md = libvlc_media_list_item_at_index (ml, 0);
     assert(md == md2);
     libvlc_media_release(md);
@@ -92,8 +92,8 @@ __attribute__((used)) static void test_media_list (const char ** argv, int argc)
     assert(md == md3);
     libvlc_media_release(md);
 
-    /* test if give errors, when it should */
-    /* have 4 items, so index 4 should give error */
+
+
     ret = libvlc_media_list_remove_index (ml, 4);
     assert (ret == -1);
 
@@ -103,21 +103,21 @@ __attribute__((used)) static void test_media_list (const char ** argv, int argc)
     ret = libvlc_media_list_remove_index (ml, -1);
     assert (ret == -1);
 
-    /* getting non valid items */
+
     libvlc_media_t * p_non_exist =
         libvlc_media_list_item_at_index (ml, 4);
-    assert (p_non_exist == NULL);
+    assert (p_non_exist == ((void*)0));
 
     p_non_exist = libvlc_media_list_item_at_index (ml, 100);
-    assert (p_non_exist == NULL);
+    assert (p_non_exist == ((void*)0));
 
     p_non_exist = libvlc_media_list_item_at_index (ml, -1);
-    assert (p_non_exist == NULL);
+    assert (p_non_exist == ((void*)0));
 
     md4 = libvlc_media_new_path (vlc, "/dev/null");
-    assert (md4 != NULL);
+    assert (md4 != ((void*)0));
 
-    /* try to find non inserted item */
+
     int i_non_exist = 0;
     i_non_exist = libvlc_media_list_index_of_item (ml, md4);
     assert ( i_non_exist == -1 );

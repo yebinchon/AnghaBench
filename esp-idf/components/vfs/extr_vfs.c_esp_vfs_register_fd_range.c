@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  esp_vfs_t ;
-typedef  scalar_t__ esp_err_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int esp_vfs_t ;
+typedef scalar_t__ esp_err_t ;
 struct TYPE_3__ {int vfs_index; int permanent; int local_fd; } ;
 
-/* Variables and functions */
- scalar_t__ ESP_ERR_INVALID_ARG ; 
- int /*<<< orphan*/  ESP_LOGD (int /*<<< orphan*/ ,char*,int,...) ; 
- scalar_t__ ESP_OK ; 
- TYPE_1__ FD_TABLE_ENTRY_UNUSED ; 
- int /*<<< orphan*/  LEN_PATH_PREFIX_IGNORED ; 
- int MAX_FDS ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  _lock_acquire (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _lock_release (int /*<<< orphan*/ *) ; 
- scalar_t__ esp_vfs_register_common (char*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,void*,int*) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- TYPE_1__* s_fd_table ; 
- int /*<<< orphan*/  s_fd_table_lock ; 
- int /*<<< orphan*/ ** s_vfs ; 
+
+ scalar_t__ ESP_ERR_INVALID_ARG ;
+ int ESP_LOGD (int ,char*,int,...) ;
+ scalar_t__ ESP_OK ;
+ TYPE_1__ FD_TABLE_ENTRY_UNUSED ;
+ int LEN_PATH_PREFIX_IGNORED ;
+ int MAX_FDS ;
+ int TAG ;
+ int _lock_acquire (int *) ;
+ int _lock_release (int *) ;
+ scalar_t__ esp_vfs_register_common (char*,int ,int const*,void*,int*) ;
+ int free (int *) ;
+ TYPE_1__* s_fd_table ;
+ int s_fd_table_lock ;
+ int ** s_vfs ;
 
 esp_err_t esp_vfs_register_fd_range(const esp_vfs_t *vfs, void *ctx, int min_fd, int max_fd)
 {
@@ -46,7 +46,7 @@ esp_err_t esp_vfs_register_fd_range(const esp_vfs_t *vfs, void *ctx, int min_fd,
         for (int i = min_fd; i < max_fd; ++i) {
             if (s_fd_table[i].vfs_index != -1) {
                 free(s_vfs[i]);
-                s_vfs[i] = NULL;
+                s_vfs[i] = ((void*)0);
                 for (int j = min_fd; j < i; ++j) {
                     if (s_fd_table[j].vfs_index == index) {
                         s_fd_table[j] = FD_TABLE_ENTRY_UNUSED;
@@ -56,7 +56,7 @@ esp_err_t esp_vfs_register_fd_range(const esp_vfs_t *vfs, void *ctx, int min_fd,
                 ESP_LOGD(TAG, "esp_vfs_register_fd_range cannot set fd %d (used by other VFS)", i);
                 return ESP_ERR_INVALID_ARG;
             }
-            s_fd_table[i].permanent = true;
+            s_fd_table[i].permanent = 1;
             s_fd_table[i].vfs_index = index;
             s_fd_table[i].local_fd = i;
         }

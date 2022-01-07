@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- void* auxiliar_getgroupudata (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  luaL_argerror (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char const*) ; 
+
+
+
+typedef int lua_State ;
+
+
+ void* auxiliar_getgroupudata (int *,char const*,int) ;
+ int luaL_argerror (int *,int,char*) ;
+ int sprintf (char*,char*,char const*) ;
 
 void *auxiliar_checkgroup(lua_State *L, const char *groupname, int objidx) {
     void *data = auxiliar_getgroupudata(L, groupname, objidx);

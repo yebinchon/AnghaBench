@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gdbarch {int /*<<< orphan*/  cannot_store_register; } ;
-typedef  int /*<<< orphan*/  gdbarch_cannot_store_register_ftype ;
 
-/* Variables and functions */
+
+
+
+struct gdbarch {int cannot_store_register; } ;
+typedef int gdbarch_cannot_store_register_ftype ;
+
+
 
 void
 set_gdbarch_cannot_store_register (struct gdbarch *gdbarch,

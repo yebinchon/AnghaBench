@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct alarm_base {int /*<<< orphan*/  (* gettime ) () ;} ;
-struct TYPE_2__ {int /*<<< orphan*/  expires; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct alarm_base {int (* gettime ) () ;} ;
+struct TYPE_2__ {int expires; } ;
 struct alarm {size_t type; TYPE_1__ node; } ;
-typedef  int /*<<< orphan*/  ktime_t ;
+typedef int ktime_t ;
 
-/* Variables and functions */
- struct alarm_base* alarm_bases ; 
- int /*<<< orphan*/  ktime_sub (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 () ; 
+
+ struct alarm_base* alarm_bases ;
+ int ktime_sub (int ,int ) ;
+ int stub1 () ;
 
 ktime_t alarm_expires_remaining(const struct alarm *alarm)
 {
-	struct alarm_base *base = &alarm_bases[alarm->type];
-	return ktime_sub(alarm->node.expires, base->gettime());
+ struct alarm_base *base = &alarm_bases[alarm->type];
+ return ktime_sub(alarm->node.expires, base->gettime());
 }

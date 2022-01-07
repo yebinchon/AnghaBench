@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct Range {scalar_t__ begin; scalar_t__ end; } ;
 struct TYPE_7__ {unsigned int count; struct Range* list; } ;
 struct TYPE_6__ {unsigned int count; struct Range* list; } ;
-struct Masscan {unsigned int echo_all; unsigned int nic_count; int http_user_agent; char* http_user_agent_length; TYPE_1__* http_headers; TYPE_3__ targets; TYPE_2__ ports; int /*<<< orphan*/ * echo; } ;
-struct TYPE_8__ {int /*<<< orphan*/  (* set ) (struct Masscan*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;scalar_t__ name; } ;
-struct TYPE_5__ {char* header_name; char* header_value_length; int /*<<< orphan*/  header_value; } ;
-typedef  int /*<<< orphan*/  FILE ;
+struct Masscan {unsigned int echo_all; unsigned int nic_count; int http_user_agent; char* http_user_agent_length; TYPE_1__* http_headers; TYPE_3__ targets; TYPE_2__ ports; int * echo; } ;
+struct TYPE_8__ {int (* set ) (struct Masscan*,int ,int ) ;scalar_t__ name; } ;
+struct TYPE_5__ {char* header_name; char* header_value_length; int header_value; } ;
+typedef int FILE ;
 
-/* Variables and functions */
- scalar_t__ Templ_ICMP_echo ; 
- scalar_t__ Templ_Oproto_first ; 
- scalar_t__ Templ_Oproto_last ; 
- scalar_t__ Templ_SCTP ; 
- scalar_t__ Templ_UDP ; 
- TYPE_4__* config_parameters ; 
- unsigned int count_cidr_bits (struct Range) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  masscan_echo_nic (struct Masscan*,int /*<<< orphan*/ *,unsigned int) ; 
- scalar_t__ min (scalar_t__,int) ; 
- int /*<<< orphan*/  stub1 (struct Masscan*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ Templ_ICMP_echo ;
+ scalar_t__ Templ_Oproto_first ;
+ scalar_t__ Templ_Oproto_last ;
+ scalar_t__ Templ_SCTP ;
+ scalar_t__ Templ_UDP ;
+ TYPE_4__* config_parameters ;
+ unsigned int count_cidr_bits (struct Range) ;
+ int fprintf (int *,char*,...) ;
+ int masscan_echo_nic (struct Masscan*,int *,unsigned int) ;
+ scalar_t__ min (scalar_t__,int) ;
+ int stub1 (struct Masscan*,int ,int ) ;
 
 __attribute__((used)) static void
 masscan_echo(struct Masscan *masscan, FILE *fp, unsigned is_echo_all)
 {
     unsigned i;
     unsigned l = 0;
-    
-    /*
-     * NEW:
-     * Print all configuration parameters
-     */
+
+
+
+
+
     masscan->echo = fp;
     masscan->echo_all = is_echo_all;
     for (i=0; config_parameters[i].name; i++) {
@@ -52,26 +52,26 @@ masscan_echo(struct Masscan *masscan, FILE *fp, unsigned is_echo_all)
     }
     masscan->echo = 0;
     masscan->echo_all = 0;
-    
-    /*
-     * OLD:
-     * Things here below are the old way of echoing parameters.
-     * TODO: cleanup this code, replacing with the new way.
-     */
+
+
+
+
+
+
     if (masscan->nic_count == 0)
         masscan_echo_nic(masscan, fp, 0);
     else {
         for (i=0; i<masscan->nic_count; i++)
             masscan_echo_nic(masscan, fp, i);
     }
-    
-    
-    /*
-     * Targets
-     */
+
+
+
+
+
     fprintf(fp, "# TARGET SELECTION (IP, PORTS, EXCLUDES)\n");
     fprintf(fp, "ports = ");
-    /* Disable comma generation for the first element */
+
     l = 0;
     for (i=0; i<masscan->ports.count; i++) {
         struct Range range = masscan->ports.list[i];
@@ -124,7 +124,7 @@ masscan_echo(struct Masscan *masscan, FILE *fp, unsigned is_echo_all)
                 );
         if (range.begin != range.end) {
             unsigned cidr_bits = count_cidr_bits(range);
-            
+
             if (cidr_bits) {
                 fprintf(fp, "/%u", cidr_bits);
             } else
@@ -137,26 +137,26 @@ masscan_echo(struct Masscan *masscan, FILE *fp, unsigned is_echo_all)
         }
         fprintf(fp, "\n");
     }
-    
+
     fprintf(fp, "\n");
     if (masscan->http_user_agent)
-        fprintf(    fp,
+        fprintf( fp,
                 "http-user-agent = %.*s\n",
                 masscan->http_user_agent_length,
                 masscan->http_user_agent);
-    
+
     for (i=0; i<sizeof(masscan->http_headers)/sizeof(masscan->http_headers[0]); i++) {
         if (masscan->http_headers[i].header_name == 0)
             continue;
-        fprintf(    fp,
+        fprintf( fp,
                 "http-header[%s] = %.*s\n",
                 masscan->http_headers[i].header_name,
                 masscan->http_headers[i].header_value_length,
                 masscan->http_headers[i].header_value);
     }
-    
-    
-    
-    
-    
+
+
+
+
+
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct fcb_table_entry {int i; int p; } ;
-typedef  int /*<<< orphan*/  T ;
+typedef int T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- struct fcb_table_entry* calloc (int,int) ; 
- int /*<<< orphan*/  cmp_fcb_table_entry ; 
- int /*<<< orphan*/  free (struct fcb_table_entry*) ; 
- unsigned int gf32_matrix_times (unsigned int*,unsigned int) ; 
- unsigned int gf32_pow (int,int) ; 
- unsigned int gf32_shl (unsigned int,int) ; 
- int /*<<< orphan*/  qsort (struct fcb_table_entry*,int,int,int /*<<< orphan*/ ) ; 
- unsigned int revbin (unsigned int) ; 
- scalar_t__ sqrt (int) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int,int) ; 
- int xmult (int) ; 
+
+ int assert (int) ;
+ struct fcb_table_entry* calloc (int,int) ;
+ int cmp_fcb_table_entry ;
+ int free (struct fcb_table_entry*) ;
+ unsigned int gf32_matrix_times (unsigned int*,unsigned int) ;
+ unsigned int gf32_pow (int,int) ;
+ unsigned int gf32_shl (unsigned int,int) ;
+ int qsort (struct fcb_table_entry*,int,int,int ) ;
+ unsigned int revbin (unsigned int) ;
+ scalar_t__ sqrt (int) ;
+ int vkprintf (int,char*,int,int) ;
+ int xmult (int) ;
 
 __attribute__((used)) static int find_corrupted_bit (int size, unsigned d) {
   int i, j;
@@ -35,7 +35,7 @@ __attribute__((used)) static int find_corrupted_bit (int size, unsigned d) {
   int r = (int) (sqrt (n) + 0.5);
   vkprintf (3, "n = %d, r = %d\n", n, r);
   struct fcb_table_entry *T = calloc (r, sizeof (struct fcb_table_entry));
-  assert (T != NULL);
+  assert (T != ((void*)0));
   T[0].i = 0;
   T[0].p = 1;
   for (i = 1; i < r; i++) {

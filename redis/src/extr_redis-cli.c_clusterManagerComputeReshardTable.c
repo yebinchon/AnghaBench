@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_3__* value; } ;
-typedef  TYPE_1__ listNode ;
-typedef  int /*<<< orphan*/  listIter ;
-typedef  int /*<<< orphan*/  list ;
+typedef TYPE_1__ listNode ;
+typedef int listIter ;
+typedef int list ;
 struct TYPE_9__ {int slot; TYPE_3__* source; } ;
-typedef  TYPE_2__ clusterManagerReshardTableItem ;
+typedef TYPE_2__ clusterManagerReshardTableItem ;
 struct TYPE_10__ {float slots_count; int* slots; } ;
-typedef  TYPE_3__ clusterManagerNode ;
+typedef TYPE_3__ clusterManagerNode ;
 
-/* Variables and functions */
- int CLUSTER_MANAGER_SLOTS ; 
- float ceil (float) ; 
- int /*<<< orphan*/  clusterManagerSlotCountCompareDesc ; 
- float floor (float) ; 
- int /*<<< orphan*/  listAddNodeTail (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/ * listCreate () ; 
- int listLength (int /*<<< orphan*/ *) ; 
- TYPE_1__* listNext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  listRewind (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  qsort (TYPE_3__**,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zfree (TYPE_3__**) ; 
- void* zmalloc (int) ; 
+
+ int CLUSTER_MANAGER_SLOTS ;
+ float ceil (float) ;
+ int clusterManagerSlotCountCompareDesc ;
+ float floor (float) ;
+ int listAddNodeTail (int *,TYPE_2__*) ;
+ int * listCreate () ;
+ int listLength (int *) ;
+ TYPE_1__* listNext (int *) ;
+ int listRewind (int *,int *) ;
+ int qsort (TYPE_3__**,int,int,int ) ;
+ int zfree (TYPE_3__**) ;
+ void* zmalloc (int) ;
 
 __attribute__((used)) static list *clusterManagerComputeReshardTable(list *sources, int numslots) {
     list *moved = listCreate();
@@ -43,7 +43,7 @@ __attribute__((used)) static list *clusterManagerComputeReshardTable(list *sourc
     listIter li;
     listNode *ln;
     listRewind(sources, &li);
-    while ((ln = listNext(&li)) != NULL) {
+    while ((ln = listNext(&li)) != ((void*)0)) {
         clusterManagerNode *node = ln->value;
         tot_slots += node->slots_count;
         sorted[i++] = node;

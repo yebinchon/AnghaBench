@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  i64 ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int i64 ;
 struct TYPE_12__ {TYPE_2__* aReadr; } ;
-struct TYPE_11__ {int /*<<< orphan*/  iEof; } ;
-struct TYPE_10__ {int /*<<< orphan*/  file; } ;
-typedef  TYPE_1__ SortSubtask ;
-typedef  TYPE_2__ PmaReader ;
-typedef  TYPE_3__ MergeEngine ;
+struct TYPE_11__ {int iEof; } ;
+struct TYPE_10__ {int file; } ;
+typedef TYPE_1__ SortSubtask ;
+typedef TYPE_2__ PmaReader ;
+typedef TYPE_3__ MergeEngine ;
 
-/* Variables and functions */
- int SQLITE_NOMEM_BKPT ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  vdbeMergeEngineFree (TYPE_3__*) ; 
- TYPE_3__* vdbeMergeEngineNew (int) ; 
- int vdbePmaReaderInit (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+ int SQLITE_NOMEM_BKPT ;
+ int SQLITE_OK ;
+ int vdbeMergeEngineFree (TYPE_3__*) ;
+ TYPE_3__* vdbeMergeEngineNew (int) ;
+ int vdbePmaReaderInit (TYPE_1__*,int *,int ,TYPE_2__*,int *) ;
 
 __attribute__((used)) static int vdbeMergeEngineLevel0(
-  SortSubtask *pTask,             /* Sorter task to read from */
-  int nPMA,                       /* Number of PMAs to read */
-  i64 *piOffset,                  /* IN/OUT: Readr offset in pTask->file */
-  MergeEngine **ppOut             /* OUT: New merge-engine */
+  SortSubtask *pTask,
+  int nPMA,
+  i64 *piOffset,
+  MergeEngine **ppOut
 ){
-  MergeEngine *pNew;              /* Merge engine to return */
+  MergeEngine *pNew;
   i64 iOff = *piOffset;
   int i;
   int rc = SQLITE_OK;

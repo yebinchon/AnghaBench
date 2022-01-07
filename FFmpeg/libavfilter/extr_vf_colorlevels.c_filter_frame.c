@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_6__ ;
-typedef  struct TYPE_24__   TYPE_5__ ;
-typedef  struct TYPE_23__   TYPE_4__ ;
-typedef  struct TYPE_22__   TYPE_3__ ;
-typedef  struct TYPE_21__   TYPE_2__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct thread_data {double coeff; int h; int imin; int omin; int /*<<< orphan*/  offset; int /*<<< orphan*/  src_linesize; int /*<<< orphan*/  dst_linesize; int /*<<< orphan*/ * dstrow; int /*<<< orphan*/  const* srcrow; } ;
+
+
+typedef struct TYPE_25__ TYPE_6__ ;
+typedef struct TYPE_24__ TYPE_5__ ;
+typedef struct TYPE_23__ TYPE_4__ ;
+typedef struct TYPE_22__ TYPE_3__ ;
+typedef struct TYPE_21__ TYPE_2__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+struct thread_data {double coeff; int h; int imin; int omin; int offset; int src_linesize; int dst_linesize; int * dstrow; int const* srcrow; } ;
 struct TYPE_25__ {TYPE_1__* internal; TYPE_5__** outputs; TYPE_3__* priv; } ;
-struct TYPE_24__ {int h; int /*<<< orphan*/  w; TYPE_6__* dst; } ;
-struct TYPE_23__ {int /*<<< orphan*/ * linesize; int /*<<< orphan*/ ** data; } ;
-struct TYPE_22__ {int step; int bpp; int nb_comp; int linesize; int /*<<< orphan*/ * rgba_map; TYPE_2__* range; } ;
+struct TYPE_24__ {int h; int w; TYPE_6__* dst; } ;
+struct TYPE_23__ {int * linesize; int ** data; } ;
+struct TYPE_22__ {int step; int bpp; int nb_comp; int linesize; int * rgba_map; TYPE_2__* range; } ;
 struct TYPE_21__ {int in_min; int in_max; int out_min; int out_max; } ;
-struct TYPE_20__ {int /*<<< orphan*/  (* execute ) (TYPE_6__*,int /*<<< orphan*/ ,struct thread_data*,int /*<<< orphan*/ *,int) ;} ;
-typedef  TYPE_2__ Range ;
-typedef  TYPE_3__ ColorLevelsContext ;
-typedef  TYPE_4__ AVFrame ;
-typedef  TYPE_5__ AVFilterLink ;
-typedef  TYPE_6__ AVFilterContext ;
+struct TYPE_20__ {int (* execute ) (TYPE_6__*,int ,struct thread_data*,int *,int) ;} ;
+typedef TYPE_2__ Range ;
+typedef TYPE_3__ ColorLevelsContext ;
+typedef TYPE_4__ AVFrame ;
+typedef TYPE_5__ AVFilterLink ;
+typedef TYPE_6__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFMAX (int,int /*<<< orphan*/  const) ; 
- int FFMIN (int,int /*<<< orphan*/  const) ; 
- int UINT16_MAX ; 
- int UINT8_MAX ; 
- int /*<<< orphan*/  av_frame_copy_props (TYPE_4__*,TYPE_4__*) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_4__**) ; 
- scalar_t__ av_frame_is_writable (TYPE_4__*) ; 
- int /*<<< orphan*/  colorlevel_slice_16 ; 
- int /*<<< orphan*/  colorlevel_slice_8 ; 
- int ff_filter_frame (TYPE_5__*,TYPE_4__*) ; 
- int /*<<< orphan*/  const ff_filter_get_nb_threads (TYPE_6__*) ; 
- TYPE_4__* ff_get_video_buffer (TYPE_5__*,int /*<<< orphan*/ ,int) ; 
- int lrint (int) ; 
- int /*<<< orphan*/  stub1 (TYPE_6__*,int /*<<< orphan*/ ,struct thread_data*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stub2 (TYPE_6__*,int /*<<< orphan*/ ,struct thread_data*,int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int FFMAX (int,int const) ;
+ int FFMIN (int,int const) ;
+ int UINT16_MAX ;
+ int UINT8_MAX ;
+ int av_frame_copy_props (TYPE_4__*,TYPE_4__*) ;
+ int av_frame_free (TYPE_4__**) ;
+ scalar_t__ av_frame_is_writable (TYPE_4__*) ;
+ int colorlevel_slice_16 ;
+ int colorlevel_slice_8 ;
+ int ff_filter_frame (TYPE_5__*,TYPE_4__*) ;
+ int const ff_filter_get_nb_threads (TYPE_6__*) ;
+ TYPE_4__* ff_get_video_buffer (TYPE_5__*,int ,int) ;
+ int lrint (int) ;
+ int stub1 (TYPE_6__*,int ,struct thread_data*,int *,int) ;
+ int stub2 (TYPE_6__*,int ,struct thread_data*,int *,int) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
 {
@@ -77,8 +77,8 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
             const uint8_t offset = s->rgba_map[i];
             const uint8_t *srcrow = in->data[0];
             uint8_t *dstrow = out->data[0];
-            int imin = lrint(r->in_min  * UINT8_MAX);
-            int imax = lrint(r->in_max  * UINT8_MAX);
+            int imin = lrint(r->in_min * UINT8_MAX);
+            int imax = lrint(r->in_max * UINT8_MAX);
             int omin = lrint(r->out_min * UINT8_MAX);
             int omax = lrint(r->out_max * UINT8_MAX);
             double coeff;
@@ -109,17 +109,17 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
             srcrow = in->data[0];
             coeff = (omax - omin) / (double)(imax - imin);
 
-            td.srcrow        = srcrow;
-            td.dstrow        = dstrow;
-            td.dst_linesize  = out->linesize[0];
-            td.src_linesize  = in->linesize[0];
-            td.coeff         = coeff;
-            td.offset        = offset;
-            td.h             = inlink->h;
-            td.imin          = imin;
-            td.omin          = omin;
+            td.srcrow = srcrow;
+            td.dstrow = dstrow;
+            td.dst_linesize = out->linesize[0];
+            td.src_linesize = in->linesize[0];
+            td.coeff = coeff;
+            td.offset = offset;
+            td.h = inlink->h;
+            td.imin = imin;
+            td.omin = omin;
 
-            ctx->internal->execute(ctx, colorlevel_slice_8, &td, NULL,
+            ctx->internal->execute(ctx, colorlevel_slice_8, &td, ((void*)0),
                                    FFMIN(inlink->h, ff_filter_get_nb_threads(ctx)));
         }
         break;
@@ -129,8 +129,8 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
             const uint8_t offset = s->rgba_map[i];
             const uint8_t *srcrow = in->data[0];
             uint8_t *dstrow = out->data[0];
-            int imin = lrint(r->in_min  * UINT16_MAX);
-            int imax = lrint(r->in_max  * UINT16_MAX);
+            int imin = lrint(r->in_min * UINT16_MAX);
+            int imax = lrint(r->in_max * UINT16_MAX);
             int omin = lrint(r->out_min * UINT16_MAX);
             int omax = lrint(r->out_max * UINT16_MAX);
             double coeff;
@@ -161,17 +161,17 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
             srcrow = in->data[0];
             coeff = (omax - omin) / (double)(imax - imin);
 
-            td.srcrow        = srcrow;
-            td.dstrow        = dstrow;
-            td.dst_linesize  = out->linesize[0];
-            td.src_linesize  = in->linesize[0];
-            td.coeff         = coeff;
-            td.offset        = offset;
-            td.h             = inlink->h;
-            td.imin          = imin;
-            td.omin          = omin;
+            td.srcrow = srcrow;
+            td.dstrow = dstrow;
+            td.dst_linesize = out->linesize[0];
+            td.src_linesize = in->linesize[0];
+            td.coeff = coeff;
+            td.offset = offset;
+            td.h = inlink->h;
+            td.imin = imin;
+            td.omin = omin;
 
-            ctx->internal->execute(ctx, colorlevel_slice_16, &td, NULL,
+            ctx->internal->execute(ctx, colorlevel_slice_16, &td, ((void*)0),
                                    FFMIN(inlink->h, ff_filter_get_nb_threads(ctx)));
         }
     }

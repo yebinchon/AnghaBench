@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct i2c_client {int dummy; } ;
 struct device {int dummy; } ;
-struct blinkm_data {int /*<<< orphan*/  blue; int /*<<< orphan*/  green; int /*<<< orphan*/  red; } ;
-typedef  int ssize_t ;
+struct blinkm_data {int blue; int green; int red; } ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLM_GET_CUR_RGB ; 
-#define  BLUE 130 
- int EINVAL ; 
-#define  GREEN 129 
- int /*<<< orphan*/  PAGE_SIZE ; 
-#define  RED 128 
- int blinkm_transfer_hw (struct i2c_client*,int /*<<< orphan*/ ) ; 
- struct blinkm_data* i2c_get_clientdata (struct i2c_client*) ; 
- int scnprintf (char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- struct i2c_client* to_i2c_client (struct device*) ; 
+
+ int BLM_GET_CUR_RGB ;
+
+ int EINVAL ;
+
+ int PAGE_SIZE ;
+
+ int blinkm_transfer_hw (struct i2c_client*,int ) ;
+ struct blinkm_data* i2c_get_clientdata (struct i2c_client*) ;
+ int scnprintf (char*,int ,char*,int ) ;
+ struct i2c_client* to_i2c_client (struct device*) ;
 
 __attribute__((used)) static ssize_t show_color_common(struct device *dev, char *buf, int color)
 {
-	struct i2c_client *client;
-	struct blinkm_data *data;
-	int ret;
+ struct i2c_client *client;
+ struct blinkm_data *data;
+ int ret;
 
-	client = to_i2c_client(dev);
-	data = i2c_get_clientdata(client);
+ client = to_i2c_client(dev);
+ data = i2c_get_clientdata(client);
 
-	ret = blinkm_transfer_hw(client, BLM_GET_CUR_RGB);
-	if (ret < 0)
-		return ret;
-	switch (color) {
-	case RED:
-		return scnprintf(buf, PAGE_SIZE, "%02X\n", data->red);
-	case GREEN:
-		return scnprintf(buf, PAGE_SIZE, "%02X\n", data->green);
-	case BLUE:
-		return scnprintf(buf, PAGE_SIZE, "%02X\n", data->blue);
-	default:
-		return -EINVAL;
-	}
-	return -EINVAL;
+ ret = blinkm_transfer_hw(client, BLM_GET_CUR_RGB);
+ if (ret < 0)
+  return ret;
+ switch (color) {
+ case 128:
+  return scnprintf(buf, PAGE_SIZE, "%02X\n", data->red);
+ case 129:
+  return scnprintf(buf, PAGE_SIZE, "%02X\n", data->green);
+ case 130:
+  return scnprintf(buf, PAGE_SIZE, "%02X\n", data->blue);
+ default:
+  return -EINVAL;
+ }
+ return -EINVAL;
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  sig; scalar_t__ integer; } ;
-struct target_waitstatus {TYPE_1__ value; int /*<<< orphan*/  kind; } ;
-typedef  int /*<<< orphan*/  ptid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TARGET_SIGNAL_TRAP ; 
- int /*<<< orphan*/  TARGET_WAITKIND_EXITED ; 
- int /*<<< orphan*/  TARGET_WAITKIND_STOPPED ; 
- int /*<<< orphan*/  expect_prompt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  inferior_ptid ; 
- int timeout ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int sig; scalar_t__ integer; } ;
+struct target_waitstatus {TYPE_1__ value; int kind; } ;
+typedef int ptid_t ;
+
+
+ int TARGET_SIGNAL_TRAP ;
+ int TARGET_WAITKIND_EXITED ;
+ int TARGET_WAITKIND_STOPPED ;
+ int expect_prompt (int ) ;
+ int inferior_ptid ;
+ int timeout ;
 
 __attribute__((used)) static ptid_t
 st2000_wait (ptid_t ptid, struct target_waitstatus *status)
@@ -31,9 +31,9 @@ st2000_wait (ptid_t ptid, struct target_waitstatus *status)
   status->kind = TARGET_WAITKIND_EXITED;
   status->value.integer = 0;
 
-  timeout = 0;			/* Don't time out -- user program is running. */
+  timeout = 0;
 
-  expect_prompt (0);		/* Wait for prompt, outputting extraneous text */
+  expect_prompt (0);
 
   status->kind = TARGET_WAITKIND_STOPPED;
   status->value.sig = TARGET_SIGNAL_TRAP;

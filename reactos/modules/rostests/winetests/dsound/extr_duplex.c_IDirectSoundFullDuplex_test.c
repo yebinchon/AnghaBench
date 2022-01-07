@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/ * LPDIRECTSOUNDFULLDUPLEX ;
-typedef  int /*<<< orphan*/  LPCGUID ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IDirectSoundFullDuplex ;
-typedef  int /*<<< orphan*/  IDirectSoundCapture ;
-typedef  int /*<<< orphan*/  IDirectSound8 ;
-typedef  int /*<<< orphan*/  IDirectSound ;
-typedef  int HRESULT ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int DS_OK ; 
- int E_NOINTERFACE ; 
- int IDirectSound8_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IDirectSound8_Release (int /*<<< orphan*/ *) ; 
- int IDirectSoundCapture_Release (int /*<<< orphan*/ *) ; 
- int IDirectSoundFullDuplex_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IDirectSoundFullDuplex_Release (int /*<<< orphan*/ *) ; 
- int IDirectSound_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IDirectSound ; 
- int /*<<< orphan*/  IID_IDirectSound8 ; 
- int /*<<< orphan*/  IID_IDirectSoundCapture ; 
- int /*<<< orphan*/  IID_IDirectSoundFullDuplex ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int LPVOID ;
+typedef int * LPDIRECTSOUNDFULLDUPLEX ;
+typedef int LPCGUID ;
+typedef int IUnknown ;
+typedef int IDirectSoundFullDuplex ;
+typedef int IDirectSoundCapture ;
+typedef int IDirectSound8 ;
+typedef int IDirectSound ;
+typedef int HRESULT ;
+typedef scalar_t__ BOOL ;
+
+
+ int DS_OK ;
+ int E_NOINTERFACE ;
+ int IDirectSound8_QueryInterface (int *,int *,int *) ;
+ int IDirectSound8_Release (int *) ;
+ int IDirectSoundCapture_Release (int *) ;
+ int IDirectSoundFullDuplex_QueryInterface (int *,int *,int *) ;
+ int IDirectSoundFullDuplex_Release (int *) ;
+ int IDirectSound_Release (int *) ;
+ int IID_IDirectSound ;
+ int IID_IDirectSound8 ;
+ int IID_IDirectSoundCapture ;
+ int IID_IDirectSoundFullDuplex ;
+ int IID_IUnknown ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void IDirectSoundFullDuplex_test(LPDIRECTSOUNDFULLDUPLEX dsfdo,
                                         BOOL initialized, LPCGUID lpGuidCapture,
@@ -49,7 +49,7 @@ __attribute__((used)) static void IDirectSoundFullDuplex_test(LPDIRECTSOUNDFULLD
     IDirectSoundCapture * dsc;
     IDirectSoundFullDuplex * dsfd;
 
-    /* Try to Query for objects */
+
     rc=IDirectSoundFullDuplex_QueryInterface(dsfdo,&IID_IUnknown,(LPVOID*)&unknown);
     ok(rc==DS_OK,"IDirectSoundFullDuplex_QueryInterface(IID_IUnknown) failed: %08x\n", rc);
     if (rc==DS_OK) {

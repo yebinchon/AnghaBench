@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int uint16_t ;
 struct TYPE_2__ {int MISR; } ;
-typedef  scalar_t__ ITStatus ;
+typedef scalar_t__ ITStatus ;
 
-/* Variables and functions */
- TYPE_1__* DCMI ; 
- int /*<<< orphan*/  IS_DCMI_GET_IT (int) ; 
- scalar_t__ RESET ; 
- scalar_t__ SET ; 
- int /*<<< orphan*/  assert_param (int /*<<< orphan*/ ) ; 
+
+ TYPE_1__* DCMI ;
+ int IS_DCMI_GET_IT (int) ;
+ scalar_t__ RESET ;
+ scalar_t__ SET ;
+ int assert_param (int ) ;
 
 ITStatus DCMI_GetITStatus(uint16_t DCMI_IT)
 {
   ITStatus bitstatus = RESET;
   uint32_t itstatus = 0;
-  
-  /* Check the parameters */
+
+
   assert_param(IS_DCMI_GET_IT(DCMI_IT));
-  
-  itstatus = DCMI->MISR & DCMI_IT; /* Only masked interrupts are checked */
-  
+
+  itstatus = DCMI->MISR & DCMI_IT;
+
   if ((itstatus != (uint16_t)RESET))
   {
     bitstatus = SET;

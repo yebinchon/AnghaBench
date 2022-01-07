@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_6__ {int /*<<< orphan*/ * table; } ;
-typedef  TYPE_1__ VLC ;
-struct TYPE_7__ {int /*<<< orphan*/  avctx; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_2__ CLLCContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int VLC_BITS ; 
- int VLC_DEPTH ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int ff_init_vlc_sparse (TYPE_1__*,int,int,int*,int,int,int /*<<< orphan*/ *,int,int,int*,int,int,int /*<<< orphan*/ ) ; 
- void* get_bits (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+struct TYPE_6__ {int * table; } ;
+typedef TYPE_1__ VLC ;
+struct TYPE_7__ {int avctx; } ;
+typedef int GetBitContext ;
+typedef TYPE_2__ CLLCContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int VLC_BITS ;
+ int VLC_DEPTH ;
+ int av_log (int ,int ,char*,int) ;
+ int ff_init_vlc_sparse (TYPE_1__*,int,int,int*,int,int,int *,int,int,int*,int,int,int ) ;
+ void* get_bits (int *,int) ;
 
 __attribute__((used)) static int read_code_table(CLLCContext *ctx, GetBitContext *gb, VLC *vlc)
 {
@@ -37,25 +37,25 @@ __attribute__((used)) static int read_code_table(CLLCContext *ctx, GetBitContext
     int num_lens, num_codes, num_codes_sum, prefix;
     int i, j, count;
 
-    prefix        = 0;
-    count         = 0;
+    prefix = 0;
+    count = 0;
     num_codes_sum = 0;
 
     num_lens = get_bits(gb, 5);
 
     if (num_lens > VLC_BITS * VLC_DEPTH) {
-        vlc->table = NULL;
+        vlc->table = ((void*)0);
 
         av_log(ctx->avctx, AV_LOG_ERROR, "To long VLCs %d\n", num_lens);
         return AVERROR_INVALIDDATA;
     }
 
     for (i = 0; i < num_lens; i++) {
-        num_codes      = get_bits(gb, 9);
+        num_codes = get_bits(gb, 9);
         num_codes_sum += num_codes;
 
         if (num_codes_sum > 256) {
-            vlc->table = NULL;
+            vlc->table = ((void*)0);
 
             av_log(ctx->avctx, AV_LOG_ERROR,
                    "Too many VLCs (%d) to be read.\n", num_codes_sum);
@@ -64,13 +64,13 @@ __attribute__((used)) static int read_code_table(CLLCContext *ctx, GetBitContext
 
         for (j = 0; j < num_codes; j++) {
             symbols[count] = get_bits(gb, 8);
-            bits[count]    = i + 1;
-            codes[count]   = prefix++;
+            bits[count] = i + 1;
+            codes[count] = prefix++;
 
             count++;
         }
         if (prefix > (65535 - 256)/2) {
-            vlc->table = NULL;
+            vlc->table = ((void*)0);
             return AVERROR_INVALIDDATA;
         }
 

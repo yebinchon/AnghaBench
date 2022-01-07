@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  b_has_video_layout_listener; } ;
-typedef  int /*<<< orphan*/  JNIEnv ;
-typedef  TYPE_1__ AWindowHandler ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * AWindowHandler_getEnv (TYPE_1__*) ; 
- int /*<<< orphan*/  CallVoidMethod ; 
- int /*<<< orphan*/  JNI_ANWCALL (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int,int,int) ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setVideoLayout ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int b_has_video_layout_listener; } ;
+typedef int JNIEnv ;
+typedef TYPE_1__ AWindowHandler ;
+
+
+ int * AWindowHandler_getEnv (TYPE_1__*) ;
+ int CallVoidMethod ;
+ int JNI_ANWCALL (int ,int ,int,int,int,int,int,int) ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int assert (int ) ;
+ int setVideoLayout ;
 
 int
 AWindowHandler_setVideoLayout(AWindowHandler *p_awh,

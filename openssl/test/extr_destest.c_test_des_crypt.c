@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DES_crypt (char*,char*) ; 
- int /*<<< orphan*/  TEST_ptr_null (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_str_eq (char*,int /*<<< orphan*/ ) ; 
+ int DES_crypt (char*,char*) ;
+ int TEST_ptr_null (int ) ;
+ int TEST_str_eq (char*,int ) ;
 
 __attribute__((used)) static int test_des_crypt(void)
 {

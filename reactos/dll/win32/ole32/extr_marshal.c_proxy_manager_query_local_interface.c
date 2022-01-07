@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct proxy_manager {int /*<<< orphan*/  IClientSecurity_iface; int /*<<< orphan*/  IMarshal_iface; int /*<<< orphan*/  IMultiQI_iface; } ;
+
+
+
+
+struct proxy_manager {int IClientSecurity_iface; int IMarshal_iface; int IMultiQI_iface; } ;
 struct ifproxy {void* iface; } ;
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  scalar_t__ HRESULT ;
+typedef int REFIID ;
+typedef int IUnknown ;
+typedef scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ E_NOINTERFACE ; 
- int /*<<< orphan*/  IClientSecurity_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IClientSecurity ; 
- int /*<<< orphan*/  IID_IMarshal ; 
- int /*<<< orphan*/  IID_IMultiQI ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  IMarshal_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMultiQI_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_AddRef (int /*<<< orphan*/ *) ; 
- scalar_t__ IsEqualIID (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ ) ; 
- scalar_t__ proxy_manager_find_ifproxy (struct proxy_manager*,int /*<<< orphan*/ ,struct ifproxy**) ; 
+
+ scalar_t__ E_NOINTERFACE ;
+ int IClientSecurity_AddRef (int *) ;
+ int IID_IClientSecurity ;
+ int IID_IMarshal ;
+ int IID_IMultiQI ;
+ int IID_IUnknown ;
+ int IMarshal_AddRef (int *) ;
+ int IMultiQI_AddRef (int *) ;
+ int IUnknown_AddRef (int *) ;
+ scalar_t__ IsEqualIID (int ,int *) ;
+ scalar_t__ S_OK ;
+ int TRACE (char*,int ) ;
+ int debugstr_guid (int ) ;
+ scalar_t__ proxy_manager_find_ifproxy (struct proxy_manager*,int ,struct ifproxy**) ;
 
 __attribute__((used)) static HRESULT proxy_manager_query_local_interface(struct proxy_manager * This, REFIID riid, void ** ppv)
 {
@@ -67,6 +67,6 @@ __attribute__((used)) static HRESULT proxy_manager_query_local_interface(struct 
         return S_OK;
     }
 
-    *ppv = NULL;
+    *ppv = ((void*)0);
     return E_NOINTERFACE;
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int size; scalar_t__ data; } ;
-struct TYPE_7__ {size_t entry; int /*<<< orphan*/  has_keyframes; TYPE_1__* cluster; } ;
-struct TYPE_6__ {int /*<<< orphan*/  flags; } ;
-typedef  TYPE_2__ MOVTrack ;
-typedef  TYPE_3__ AVPacket ;
+struct TYPE_7__ {size_t entry; int has_keyframes; TYPE_1__* cluster; } ;
+struct TYPE_6__ {int flags; } ;
+typedef TYPE_2__ MOVTrack ;
+typedef TYPE_3__ AVPacket ;
 
-/* Variables and functions */
- int AV_RB16 (scalar_t__) ; 
- int AV_RB32 (scalar_t__) ; 
- int /*<<< orphan*/  MOV_SYNC_SAMPLE ; 
+
+ int AV_RB16 (scalar_t__) ;
+ int AV_RB32 (scalar_t__) ;
+ int MOV_SYNC_SAMPLE ;
 
 __attribute__((used)) static void mov_parse_truehd_frame(AVPacket *pkt, MOVTrack *trk)
 {

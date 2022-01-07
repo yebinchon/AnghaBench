@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char const* LPSTR ;
-typedef  char const* LPCSTR ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- char* CERT_HEADER ; 
- char* CERT_REQUEST_HEADER ; 
- char* CERT_REQUEST_TRAILER ; 
- char* CERT_TRAILER ; 
-#define  CRYPT_STRING_BASE64 131 
-#define  CRYPT_STRING_BASE64HEADER 130 
-#define  CRYPT_STRING_BASE64REQUESTHEADER 129 
-#define  CRYPT_STRING_BASE64X509CRLHEADER 128 
- int CRYPT_STRING_NOCR ; 
- int CRYPT_STRING_NOCRLF ; 
- int /*<<< orphan*/  ERROR_INSUFFICIENT_BUFFER ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- char* X509_HEADER ; 
- char* X509_TRAILER ; 
- int /*<<< orphan*/  encodeBase64A (int /*<<< orphan*/  const*,int,char const*,char const*,int*) ; 
- int /*<<< orphan*/  strcpy (char const*,char const*) ; 
- int strlen (char const*) ; 
+
+
+
+typedef char const* LPSTR ;
+typedef char const* LPCSTR ;
+typedef int DWORD ;
+typedef int BYTE ;
+typedef int BOOL ;
+
+
+ char* CERT_HEADER ;
+ char* CERT_REQUEST_HEADER ;
+ char* CERT_REQUEST_TRAILER ;
+ char* CERT_TRAILER ;
+
+
+
+
+ int CRYPT_STRING_NOCR ;
+ int CRYPT_STRING_NOCRLF ;
+ int ERROR_INSUFFICIENT_BUFFER ;
+ int FALSE ;
+ int SetLastError (int ) ;
+ int TRUE ;
+ char* X509_HEADER ;
+ char* X509_TRAILER ;
+ int encodeBase64A (int const*,int,char const*,char const*,int*) ;
+ int strcpy (char const*,char const*) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static BOOL BinaryToBase64A(const BYTE *pbBinary,
  DWORD cbBinary, DWORD dwFlags, LPSTR pszString, DWORD *pcchString)
 {
     static const char crlf[] = "\r\n", lf[] = "\n";
     BOOL ret = TRUE;
-    LPCSTR header = NULL, trailer = NULL, sep;
+    LPCSTR header = ((void*)0), trailer = ((void*)0), sep;
     DWORD charsNeeded;
 
     if (dwFlags & CRYPT_STRING_NOCR)
@@ -53,25 +53,25 @@ __attribute__((used)) static BOOL BinaryToBase64A(const BYTE *pbBinary,
         sep = crlf;
     switch (dwFlags & 0x0fffffff)
     {
-    case CRYPT_STRING_BASE64:
-        /* no header or footer */
+    case 131:
+
         break;
-    case CRYPT_STRING_BASE64HEADER:
+    case 130:
         header = CERT_HEADER;
         trailer = CERT_TRAILER;
         break;
-    case CRYPT_STRING_BASE64REQUESTHEADER:
+    case 129:
         header = CERT_REQUEST_HEADER;
         trailer = CERT_REQUEST_TRAILER;
         break;
-    case CRYPT_STRING_BASE64X509CRLHEADER:
+    case 128:
         header = X509_HEADER;
         trailer = X509_TRAILER;
         break;
     }
 
     charsNeeded = 0;
-    encodeBase64A(pbBinary, cbBinary, sep, NULL, &charsNeeded);
+    encodeBase64A(pbBinary, cbBinary, sep, ((void*)0), &charsNeeded);
     if (header)
         charsNeeded += strlen(header) + strlen(sep);
     if (trailer)

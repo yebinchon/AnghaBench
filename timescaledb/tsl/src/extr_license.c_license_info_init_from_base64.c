@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LicenseInfo ;
-typedef  int /*<<< orphan*/  Jsonb ;
-typedef  int /*<<< orphan*/  Datum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CStringGetDatum (char*) ; 
- scalar_t__ DatumGetPointer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DirectFunctionCall1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EmitErrorReport () ; 
- int /*<<< orphan*/  PG_CATCH () ; 
- int /*<<< orphan*/  PG_END_TRY () ; 
- int /*<<< orphan*/  PG_TRY () ; 
- char* base64_decode (char*) ; 
- int /*<<< orphan*/  jsonb_in ; 
- int /*<<< orphan*/  license_info_init_from_jsonb (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int LicenseInfo ;
+typedef int Jsonb ;
+typedef int Datum ;
+
+
+ int CStringGetDatum (char*) ;
+ scalar_t__ DatumGetPointer (int ) ;
+ int DirectFunctionCall1 (int ,int ) ;
+ int EmitErrorReport () ;
+ int PG_CATCH () ;
+ int PG_END_TRY () ;
+ int PG_TRY () ;
+ char* base64_decode (char*) ;
+ int jsonb_in ;
+ int license_info_init_from_jsonb (int *,int *) ;
 
 __attribute__((used)) static bool
 license_info_init_from_base64(char *license_key, LicenseInfo *out)
 {
-	char *expanded = base64_decode(license_key);
+ char *expanded = base64_decode(license_key);
 
-	if (expanded == NULL)
-		return false;
+ if (expanded == ((void*)0))
+  return 0;
 
-	PG_TRY();
-	{
-		Datum json_key = DirectFunctionCall1(jsonb_in, CStringGetDatum(expanded));
+ PG_TRY();
+ {
+  Datum json_key = DirectFunctionCall1(jsonb_in, CStringGetDatum(expanded));
 
-		license_info_init_from_jsonb((Jsonb *) DatumGetPointer(json_key), out);
-	}
-	PG_CATCH();
-	{
-#ifdef TS_DEBUG
-		EmitErrorReport();
-#endif
-		return false;
-	}
-	PG_END_TRY();
-	return true;
+  license_info_init_from_jsonb((Jsonb *) DatumGetPointer(json_key), out);
+ }
+ PG_CATCH();
+ {
+
+
+
+  return 0;
+ }
+ PG_END_TRY();
+ return 1;
 }

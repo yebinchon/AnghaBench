@@ -1,98 +1,98 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hubname ;
-typedef  scalar_t__ UINT ;
-struct TYPE_9__ {int /*<<< orphan*/  Name; TYPE_1__* Cedar; } ;
-struct TYPE_8__ {scalar_t__ ServerType; int /*<<< orphan*/ * FarmMemberList; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int hubname ;
+typedef scalar_t__ UINT ;
+struct TYPE_9__ {int Name; TYPE_1__* Cedar; } ;
+struct TYPE_8__ {scalar_t__ ServerType; int * FarmMemberList; } ;
 struct TYPE_7__ {TYPE_2__* Server; } ;
-typedef  TYPE_2__ SERVER ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  TYPE_3__ HUB ;
-typedef  int /*<<< orphan*/  FARM_MEMBER ;
+typedef TYPE_2__ SERVER ;
+typedef int LIST ;
+typedef TYPE_3__ HUB ;
+typedef int FARM_MEMBER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IsInList (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MAX_HUBNAME_LEN ; 
- int /*<<< orphan*/ * NewListFast (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseList (int /*<<< orphan*/ *) ; 
- scalar_t__ SERVER_TYPE_FARM_CONTROLLER ; 
- int /*<<< orphan*/  SiCallDeleteHub (TYPE_2__*,int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  StrCpy (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ *) ; 
+
+ int Add (int *,int *) ;
+ int IsInList (int *,int *) ;
+ int * LIST_DATA (int *,scalar_t__) ;
+ scalar_t__ LIST_NUM (int *) ;
+ int LockList (int *) ;
+ int MAX_HUBNAME_LEN ;
+ int * NewListFast (int *) ;
+ int ReleaseList (int *) ;
+ scalar_t__ SERVER_TYPE_FARM_CONTROLLER ;
+ int SiCallDeleteHub (TYPE_2__*,int *,TYPE_3__*) ;
+ int StrCpy (char*,int,int ) ;
+ int UnlockList (int *) ;
 
 void SiHubOfflineProc(HUB *h)
 {
-	SERVER *s;
-	char hubname[MAX_HUBNAME_LEN + 1];
-	UINT i;
-	LIST *fm_list;
-	// Validate arguments
-	if (h == NULL || h->Cedar->Server == NULL || h->Cedar->Server->ServerType != SERVER_TYPE_FARM_CONTROLLER)
-	{
-		// Process only on the farm controller
-		return;
-	}
+ SERVER *s;
+ char hubname[MAX_HUBNAME_LEN + 1];
+ UINT i;
+ LIST *fm_list;
 
-	s = h->Cedar->Server;
+ if (h == ((void*)0) || h->Cedar->Server == ((void*)0) || h->Cedar->Server->ServerType != SERVER_TYPE_FARM_CONTROLLER)
+ {
 
-	if (s->FarmMemberList == NULL)
-	{
-		return;
-	}
+  return;
+ }
 
-	StrCpy(hubname, sizeof(hubname), h->Name);
+ s = h->Cedar->Server;
 
-	fm_list = NewListFast(NULL);
+ if (s->FarmMemberList == ((void*)0))
+ {
+  return;
+ }
 
-	LockList(s->FarmMemberList);
-	{
-		while (true)
-		{
-			bool escape = true;
+ StrCpy(hubname, sizeof(hubname), h->Name);
 
-			// Stop the HUB on all members
-			for (i = 0;i < LIST_NUM(s->FarmMemberList);i++)
-			{
-				FARM_MEMBER *f = LIST_DATA(s->FarmMemberList, i);
+ fm_list = NewListFast(((void*)0));
 
-				if (IsInList(fm_list, f) == false)
-				{
-					Add(fm_list, f);
-					escape = false;
+ LockList(s->FarmMemberList);
+ {
+  while (1)
+  {
+   bool escape = 1;
 
-					SiCallDeleteHub(s, f, h);
 
-					break;
-				}
-			}
+   for (i = 0;i < LIST_NUM(s->FarmMemberList);i++)
+   {
+    FARM_MEMBER *f = LIST_DATA(s->FarmMemberList, i);
 
-			if (escape)
-			{
-				break;
-			}
+    if (IsInList(fm_list, f) == 0)
+    {
+     Add(fm_list, f);
+     escape = 0;
 
-			UnlockList(s->FarmMemberList);
-			LockList(s->FarmMemberList);
-		}
-	}
-	UnlockList(s->FarmMemberList);
+     SiCallDeleteHub(s, f, h);
 
-	ReleaseList(fm_list);
+     break;
+    }
+   }
+
+   if (escape)
+   {
+    break;
+   }
+
+   UnlockList(s->FarmMemberList);
+   LockList(s->FarmMemberList);
+  }
+ }
+ UnlockList(s->FarmMemberList);
+
+ ReleaseList(fm_list);
 }

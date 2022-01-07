@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gpio_chip {unsigned int base; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PIN_GPIO ; 
- int stmp3xxx_request_pin (unsigned int,int /*<<< orphan*/ ,char*) ; 
+
+ int PIN_GPIO ;
+ int stmp3xxx_request_pin (unsigned int,int ,char*) ;
 
 __attribute__((used)) static int stmp3xxx_gpio_request(struct gpio_chip *chip, unsigned offset)
 {
-	return stmp3xxx_request_pin(chip->base + offset, PIN_GPIO, "gpio");
+ return stmp3xxx_request_pin(chip->base + offset, PIN_GPIO, "gpio");
 }

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct ecore_rx_mode_ramrod_params {unsigned long ramrod_flags; unsigned long rx_mode_flags; unsigned long rx_accept_flags; unsigned long tx_accept_flags; int /*<<< orphan*/  rdata_mapping; int /*<<< orphan*/  rdata; int /*<<< orphan*/  state; int /*<<< orphan*/ * pstate; int /*<<< orphan*/  func_id; int /*<<< orphan*/ * rx_mode_obj; int /*<<< orphan*/  cl_id; scalar_t__ cid; } ;
-struct bxe_softc {int /*<<< orphan*/  rx_mode; int /*<<< orphan*/  sp_state; int /*<<< orphan*/  rx_mode_obj; } ;
-typedef  int /*<<< orphan*/  ramrod_param ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOGE (struct bxe_softc*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  BXE_SP (struct bxe_softc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BXE_SP_MAPPING (struct bxe_softc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ECORE_FILTER_RX_MODE_PENDING ; 
- int /*<<< orphan*/  SC_FUNC (struct bxe_softc*) ; 
- int /*<<< orphan*/  bxe_set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int ecore_config_rx_mode (struct bxe_softc*,struct ecore_rx_mode_ramrod_params*) ; 
- int /*<<< orphan*/  memset (struct ecore_rx_mode_ramrod_params*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  rx_mode_rdata ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct ecore_rx_mode_ramrod_params {unsigned long ramrod_flags; unsigned long rx_mode_flags; unsigned long rx_accept_flags; unsigned long tx_accept_flags; int rdata_mapping; int rdata; int state; int * pstate; int func_id; int * rx_mode_obj; int cl_id; scalar_t__ cid; } ;
+struct bxe_softc {int rx_mode; int sp_state; int rx_mode_obj; } ;
+typedef int ramrod_param ;
+
+
+ int BLOGE (struct bxe_softc*,char*,int ,int ,int ,int ,int ,int ,int) ;
+ int BXE_SP (struct bxe_softc*,int ) ;
+ int BXE_SP_MAPPING (struct bxe_softc*,int ) ;
+ int ECORE_FILTER_RX_MODE_PENDING ;
+ int SC_FUNC (struct bxe_softc*) ;
+ int bxe_set_bit (int ,int *) ;
+ int ecore_config_rx_mode (struct bxe_softc*,struct ecore_rx_mode_ramrod_params*) ;
+ int memset (struct ecore_rx_mode_ramrod_params*,int ,int) ;
+ int rx_mode_rdata ;
 
 __attribute__((used)) static int
 bxe_set_q_rx_mode(struct bxe_softc *sc,
-                  uint8_t          cl_id,
-                  unsigned long    rx_mode_flags,
-                  unsigned long    rx_accept_flags,
-                  unsigned long    tx_accept_flags,
-                  unsigned long    ramrod_flags)
+                  uint8_t cl_id,
+                  unsigned long rx_mode_flags,
+                  unsigned long rx_accept_flags,
+                  unsigned long tx_accept_flags,
+                  unsigned long ramrod_flags)
 {
     struct ecore_rx_mode_ramrod_params ramrod_param;
     int rc;
 
     memset(&ramrod_param, 0, sizeof(ramrod_param));
 
-    /* Prepare ramrod parameters */
+
     ramrod_param.cid = 0;
     ramrod_param.cl_id = cl_id;
     ramrod_param.rx_mode_obj = &sc->rx_mode_obj;

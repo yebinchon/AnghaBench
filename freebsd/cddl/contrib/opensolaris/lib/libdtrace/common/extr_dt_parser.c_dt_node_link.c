@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {struct TYPE_5__* dn_list; } ;
-typedef  TYPE_1__ dt_node_t ;
+typedef TYPE_1__ dt_node_t ;
 
-/* Variables and functions */
+
 
 dt_node_t *
 dt_node_link(dt_node_t *lp, dt_node_t *rp)
 {
-	dt_node_t *dnp;
+ dt_node_t *dnp;
 
-	if (lp == NULL)
-		return (rp);
-	else if (rp == NULL)
-		return (lp);
+ if (lp == ((void*)0))
+  return (rp);
+ else if (rp == ((void*)0))
+  return (lp);
 
-	for (dnp = lp; dnp->dn_list != NULL; dnp = dnp->dn_list)
-		continue;
+ for (dnp = lp; dnp->dn_list != ((void*)0); dnp = dnp->dn_list)
+  continue;
 
-	dnp->dn_list = rp;
-	return (lp);
+ dnp->dn_list = rp;
+ return (lp);
 }

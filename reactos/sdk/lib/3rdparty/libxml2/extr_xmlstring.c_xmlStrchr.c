@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ xmlChar ;
 
-/* Variables and functions */
+
+
+
+typedef scalar_t__ xmlChar ;
+
+
 
 const xmlChar *
 xmlStrchr(const xmlChar *str, xmlChar val) {
-    if (str == NULL) return(NULL);
-    while (*str != 0) { /* non input consuming */
+    if (str == ((void*)0)) return(((void*)0));
+    while (*str != 0) {
         if (*str == val) return((xmlChar *) str);
         str++;
     }
-    return(NULL);
+    return(((void*)0));
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
 struct TYPE_6__ {int nVertex; } ;
-typedef  TYPE_1__ GeoPoly ;
+typedef TYPE_1__ GeoPoly ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GeoX (TYPE_1__*,int) ; 
- int /*<<< orphan*/  GeoY (TYPE_1__*,int) ; 
- TYPE_1__* geopolyFuncParam (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int pointBeneathLine (double,double,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_free (TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3_result_int (int /*<<< orphan*/ *,int) ; 
- double sqlite3_value_double (int /*<<< orphan*/ *) ; 
+
+ int GeoX (TYPE_1__*,int) ;
+ int GeoY (TYPE_1__*,int) ;
+ TYPE_1__* geopolyFuncParam (int *,int *,int ) ;
+ int pointBeneathLine (double,double,int ,int ,int ,int ) ;
+ int sqlite3_free (TYPE_1__*) ;
+ int sqlite3_result_int (int *,int) ;
+ double sqlite3_value_double (int *) ;
 
 __attribute__((used)) static void geopolyContainsPointFunc(
   sqlite3_context *context,
@@ -45,7 +45,7 @@ __attribute__((used)) static void geopolyContainsPointFunc(
   }
   if( v!=2 ){
     v = pointBeneathLine(x0,y0,GeoX(p1,ii), GeoY(p1,ii),
-                               GeoX(p1,0),  GeoY(p1,0));
+                               GeoX(p1,0), GeoY(p1,0));
   }
   if( v==2 ){
     sqlite3_result_int(context, 1);

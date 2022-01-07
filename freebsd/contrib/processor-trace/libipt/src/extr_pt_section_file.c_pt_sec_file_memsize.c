@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned long long uint64_t ;
-struct pt_section {int /*<<< orphan*/  mapping; } ;
 
-/* Variables and functions */
- int pte_internal ; 
+
+
+
+typedef unsigned long long uint64_t ;
+struct pt_section {int mapping; } ;
+
+
+ int pte_internal ;
 
 int pt_sec_file_memsize(const struct pt_section *section, uint64_t *size)
 {
-	if (!section || !size)
-		return -pte_internal;
+ if (!section || !size)
+  return -pte_internal;
 
-	if (!section->mapping)
-		return -pte_internal;
+ if (!section->mapping)
+  return -pte_internal;
 
-	*size = 0ull;
+ *size = 0ull;
 
-	return 0;
+ return 0;
 }

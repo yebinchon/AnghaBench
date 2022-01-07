@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fz_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FZ_LOCK_FREETYPE ; 
- int /*<<< orphan*/  fz_lock (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_hb_context (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int fz_context ;
+
+
+ int FZ_LOCK_FREETYPE ;
+ int fz_lock (int *,int ) ;
+ int set_hb_context (int *) ;
 
 void fz_hb_lock(fz_context *ctx)
 {
-	fz_lock(ctx, FZ_LOCK_FREETYPE);
+ fz_lock(ctx, FZ_LOCK_FREETYPE);
 
-	set_hb_context(ctx);
+ set_hb_context(ctx);
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {void* value; } ;
-typedef  TYPE_1__ listNode ;
-typedef  int /*<<< orphan*/  listIter ;
-struct TYPE_11__ {void* (* dup ) (void*) ;int /*<<< orphan*/  match; int /*<<< orphan*/  free; } ;
-typedef  TYPE_2__ list ;
+typedef TYPE_1__ listNode ;
+typedef int listIter ;
+struct TYPE_11__ {void* (* dup ) (void*) ;int match; int free; } ;
+typedef TYPE_2__ list ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * listAddNodeTail (TYPE_2__*,void*) ; 
- TYPE_2__* listCreate () ; 
- TYPE_1__* listNext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  listRelease (TYPE_2__*) ; 
- int /*<<< orphan*/  listRewind (TYPE_2__*,int /*<<< orphan*/ *) ; 
- void* stub1 (void*) ; 
+
+ int * listAddNodeTail (TYPE_2__*,void*) ;
+ TYPE_2__* listCreate () ;
+ TYPE_1__* listNext (int *) ;
+ int listRelease (TYPE_2__*) ;
+ int listRewind (TYPE_2__*,int *) ;
+ void* stub1 (void*) ;
 
 list *listDup(list *orig)
 {
@@ -32,26 +32,26 @@ list *listDup(list *orig)
     listIter iter;
     listNode *node;
 
-    if ((copy = listCreate()) == NULL)
-        return NULL;
+    if ((copy = listCreate()) == ((void*)0))
+        return ((void*)0);
     copy->dup = orig->dup;
     copy->free = orig->free;
     copy->match = orig->match;
     listRewind(orig, &iter);
-    while((node = listNext(&iter)) != NULL) {
+    while((node = listNext(&iter)) != ((void*)0)) {
         void *value;
 
         if (copy->dup) {
             value = copy->dup(node->value);
-            if (value == NULL) {
+            if (value == ((void*)0)) {
                 listRelease(copy);
-                return NULL;
+                return ((void*)0);
             }
         } else
             value = node->value;
-        if (listAddNodeTail(copy, value) == NULL) {
+        if (listAddNodeTail(copy, value) == ((void*)0)) {
             listRelease(copy);
-            return NULL;
+            return ((void*)0);
         }
     }
     return copy;

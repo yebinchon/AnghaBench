@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int IA64_DVS_DATA ; 
- int IA64_DVS_IMPLIED ; 
- int IA64_DVS_IMPLIEDF ; 
- int IA64_DVS_INSTR ; 
- int IA64_DVS_NONE ; 
- int IA64_DVS_OTHER ; 
- int IA64_DVS_SPECIFIC ; 
- int IA64_DVS_STOP ; 
- scalar_t__ strcmp (char*,char*) ; 
+ int IA64_DVS_DATA ;
+ int IA64_DVS_IMPLIED ;
+ int IA64_DVS_IMPLIEDF ;
+ int IA64_DVS_INSTR ;
+ int IA64_DVS_NONE ;
+ int IA64_DVS_OTHER ;
+ int IA64_DVS_SPECIFIC ;
+ int IA64_DVS_STOP ;
+ scalar_t__ strcmp (char*,char*) ;
 
 __attribute__((used)) static int
 parse_semantics (char *sem)
@@ -39,6 +31,6 @@ parse_semantics (char *sem)
     return IA64_DVS_SPECIFIC;
   else if (strcmp (sem, "stop") == 0)
     return IA64_DVS_STOP;
-  else 
+  else
     return IA64_DVS_OTHER;
 }

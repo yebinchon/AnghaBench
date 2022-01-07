@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wined3d_swapchain_desc {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct d3d8_swapchain {int refcount; int /*<<< orphan*/ * parent_device; int /*<<< orphan*/  wined3d_swapchain; TYPE_1__ IDirect3DSwapChain8_iface; } ;
-struct d3d8_device {int /*<<< orphan*/  IDirect3DDevice8_iface; int /*<<< orphan*/  wined3d_device; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
+struct TYPE_2__ {int * lpVtbl; } ;
+struct d3d8_swapchain {int refcount; int * parent_device; int wined3d_swapchain; TYPE_1__ IDirect3DSwapChain8_iface; } ;
+struct d3d8_device {int IDirect3DDevice8_iface; int wined3d_device; } ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3D_OK ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDirect3DDevice8_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  d3d8_swapchain_vtbl ; 
- int /*<<< orphan*/  d3d8_swapchain_wined3d_parent_ops ; 
- int /*<<< orphan*/  wined3d_mutex_lock () ; 
- int /*<<< orphan*/  wined3d_mutex_unlock () ; 
- int /*<<< orphan*/  wined3d_swapchain_create (int /*<<< orphan*/ ,struct wined3d_swapchain_desc*,struct d3d8_swapchain*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int D3D_OK ;
+ scalar_t__ FAILED (int ) ;
+ int IDirect3DDevice8_AddRef (int *) ;
+ int WARN (char*,int ) ;
+ int d3d8_swapchain_vtbl ;
+ int d3d8_swapchain_wined3d_parent_ops ;
+ int wined3d_mutex_lock () ;
+ int wined3d_mutex_unlock () ;
+ int wined3d_swapchain_create (int ,struct wined3d_swapchain_desc*,struct d3d8_swapchain*,int *,int *) ;
 
 __attribute__((used)) static HRESULT swapchain_init(struct d3d8_swapchain *swapchain, struct d3d8_device *device,
         struct wined3d_swapchain_desc *desc)

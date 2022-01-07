@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vsock_transport_recv_notify_data {int dummy; } ;
 struct vsock_sock {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static
 int hvs_notify_recv_post_dequeue(struct vsock_sock *vsk, size_t target,
-				 ssize_t copied, bool data_read,
-				 struct vsock_transport_recv_notify_data *d)
+     ssize_t copied, bool data_read,
+     struct vsock_transport_recv_notify_data *d)
 {
-	return 0;
+ return 0;
 }

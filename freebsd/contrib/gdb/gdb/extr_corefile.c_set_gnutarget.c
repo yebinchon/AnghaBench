@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * gnutarget_string ; 
- int /*<<< orphan*/ * savestring (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_gnutarget_command (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  xfree (int /*<<< orphan*/ *) ; 
+ int * gnutarget_string ;
+ int * savestring (char*,int ) ;
+ int set_gnutarget_command (int *,int ,int *) ;
+ int strlen (char*) ;
+ int xfree (int *) ;
 
 void
 set_gnutarget (char *newtarget)
 {
-  if (gnutarget_string != NULL)
+  if (gnutarget_string != ((void*)0))
     xfree (gnutarget_string);
   gnutarget_string = savestring (newtarget, strlen (newtarget));
-  set_gnutarget_command (NULL, 0, NULL);
+  set_gnutarget_command (((void*)0), 0, ((void*)0));
 }

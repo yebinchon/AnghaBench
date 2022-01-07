@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BIO_flush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ batch ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/  ebcdic2ascii (char*,char*,int) ; 
- int /*<<< orphan*/  fgets (char*,int const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  join (char*,int const,char const*,char*,char const*) ; 
- int /*<<< orphan*/  req_check_len (int,int,int) ; 
- int /*<<< orphan*/  stdin ; 
- int strlen (char*) ; 
+ int BIO_flush (int ) ;
+ int BIO_printf (int ,char*,...) ;
+ scalar_t__ batch ;
+ int bio_err ;
+ int ebcdic2ascii (char*,char*,int) ;
+ int fgets (char*,int const,int ) ;
+ int join (char*,int const,char const*,char*,char const*) ;
+ int req_check_len (int,int,int) ;
+ int stdin ;
+ int strlen (char*) ;
 
 __attribute__((used)) static int build_data(char *text, const char *def,
                          char *value, int n_min, int n_max,
@@ -34,7 +26,7 @@ __attribute__((used)) static int build_data(char *text, const char *def,
     if (!batch)
         BIO_printf(bio_err, "%s [%s]:", text, def);
     (void)BIO_flush(bio_err);
-    if (value != NULL) {
+    if (value != ((void*)0)) {
         if (!join(buf, buf_size, value, "\n", desc1))
             return 0;
         BIO_printf(bio_err, "%s\n", value);
@@ -52,7 +44,7 @@ __attribute__((used)) static int build_data(char *text, const char *def,
     if (buf[0] == '\0')
         return 0;
     if (buf[0] == '\n') {
-        if ((def == NULL) || (def[0] == '\0'))
+        if ((def == ((void*)0)) || (def[0] == '\0'))
             return 1;
         if (!join(buf, buf_size, def, "\n", desc2))
             return 0;
@@ -66,9 +58,9 @@ __attribute__((used)) static int build_data(char *text, const char *def,
         return 0;
     }
     buf[--i] = '\0';
-#ifdef CHARSET_EBCDIC
-    ebcdic2ascii(buf, buf, i);
-#endif
+
+
+
     if (!req_check_len(i, n_min, n_max)) {
         if (batch || value)
             return 0;

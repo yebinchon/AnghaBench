@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_2__* esp_http_client_handle_t ;
-struct TYPE_7__ {scalar_t__ len; int /*<<< orphan*/  data; } ;
-typedef  TYPE_3__ esp_http_buffer_t ;
-struct TYPE_6__ {scalar_t__ state; TYPE_1__* response; int /*<<< orphan*/  parser_settings; int /*<<< orphan*/  parser; int /*<<< orphan*/  timeout_ms; int /*<<< orphan*/  buffer_size_rx; int /*<<< orphan*/  transport; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef TYPE_2__* esp_http_client_handle_t ;
+struct TYPE_7__ {scalar_t__ len; int data; } ;
+typedef TYPE_3__ esp_http_buffer_t ;
+struct TYPE_6__ {scalar_t__ state; TYPE_1__* response; int parser_settings; int parser; int timeout_ms; int buffer_size_rx; int transport; } ;
 struct TYPE_5__ {int status_code; scalar_t__ content_length; int is_chunked; TYPE_3__* buffer; } ;
 
-/* Variables and functions */
- int ESP_FAIL ; 
- int /*<<< orphan*/  ESP_LOGD (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- scalar_t__ HTTP_STATE_REQ_COMPLETE_DATA ; 
- scalar_t__ HTTP_STATE_REQ_COMPLETE_HEADER ; 
- scalar_t__ HTTP_STATE_RES_COMPLETE_HEADER ; 
- int /*<<< orphan*/  TAG ; 
- scalar_t__ esp_transport_read (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  http_parser_execute (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int ESP_FAIL ;
+ int ESP_LOGD (int ,char*,scalar_t__) ;
+ scalar_t__ HTTP_STATE_REQ_COMPLETE_DATA ;
+ scalar_t__ HTTP_STATE_REQ_COMPLETE_HEADER ;
+ scalar_t__ HTTP_STATE_RES_COMPLETE_HEADER ;
+ int TAG ;
+ scalar_t__ esp_transport_read (int ,int ,int ,int ) ;
+ int http_parser_execute (int ,int ,int ,scalar_t__) ;
 
 int esp_http_client_fetch_headers(esp_http_client_handle_t client)
 {
@@ -48,7 +48,7 @@ int esp_http_client_fetch_headers(esp_http_client_handle_t client)
     }
     ESP_LOGD(TAG, "content_length = %d", client->response->content_length);
     if (client->response->content_length <= 0) {
-        client->response->is_chunked = true;
+        client->response->is_chunked = 1;
         return 0;
     }
     return client->response->content_length;

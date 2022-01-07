@@ -1,39 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int IP (unsigned int) ; 
- int /*<<< orphan*/  add (int /*<<< orphan*/ *,unsigned int,unsigned int,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int* buff ; 
- int end_parse () ; 
- int /*<<< orphan*/  fgets (int*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  init_parse () ; 
- int mode ; 
- int /*<<< orphan*/  pack (int /*<<< orphan*/ *) ; 
- unsigned int parse_country () ; 
- unsigned int parse_int () ; 
- unsigned int parse_ip () ; 
- int /*<<< orphan*/  parse_ip_mask (unsigned int*,unsigned int*) ; 
- int parse_string () ; 
- int /*<<< orphan*/  root ; 
- int rules ; 
- int skip_parse () ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdin ; 
- int total ; 
- int verbosity ; 
+ int IP (unsigned int) ;
+ int add (int *,unsigned int,unsigned int,unsigned int,unsigned int) ;
+ int assert (int) ;
+ int* buff ;
+ int end_parse () ;
+ int fgets (int*,int,int ) ;
+ int fprintf (int ,char*,int,...) ;
+ int init_parse () ;
+ int mode ;
+ int pack (int *) ;
+ unsigned int parse_country () ;
+ unsigned int parse_int () ;
+ unsigned int parse_ip () ;
+ int parse_ip_mask (unsigned int*,unsigned int*) ;
+ int parse_string () ;
+ int root ;
+ int rules ;
+ int skip_parse () ;
+ int stderr ;
+ int stdin ;
+ int total ;
+ int verbosity ;
 
 void run (void) {
   while (1) {
@@ -81,8 +73,8 @@ void run (void) {
       assert (0);
     }
     if (verbosity >= 3) {
-      #define IP(a) (a >> 24) & 0xff, (a >> 16) & 0xff, (a >> 8) & 0xff, (a >> 0) & 0xff
-      fprintf (stderr, "add: start_ip = %u.%u.%u.%u, end_ip = %u.%u.%u.%u, color = %d\n", IP(start_ip), IP(end_ip), country);
+
+      fprintf (stderr, "add: start_ip = %u.%u.%u.%u, end_ip = %u.%u.%u.%u, color = %d\n", (start_ip >> 24) & 0xff, (start_ip >> 16) & 0xff, (start_ip >> 8) & 0xff, (start_ip >> 0) & 0xff, (end_ip >> 24) & 0xff, (end_ip >> 16) & 0xff, (end_ip >> 8) & 0xff, (end_ip >> 0) & 0xff, country);
     }
     add (&root, start_ip, end_ip, country, end_ip - start_ip);
     rules ++;

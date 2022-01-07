@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* doc_obj; } ;
 struct TYPE_4__ {scalar_t__ hostui; } ;
-typedef  int /*<<< orphan*/  OLECHAR ;
-typedef  int /*<<< orphan*/  IUri ;
-typedef  TYPE_2__ HTMLOuterWindow ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/ * BSTR ;
+typedef int OLECHAR ;
+typedef int IUri ;
+typedef TYPE_2__ HTMLOuterWindow ;
+typedef int HRESULT ;
+typedef int * BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CoTaskMemFree (int /*<<< orphan*/ *) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDocHostUIHandler_TranslateUrl (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IUri_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUri_GetDisplayUri (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IUri_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_uri (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ *) ; 
+
+ int CoTaskMemFree (int *) ;
+ scalar_t__ FAILED (int ) ;
+ int IDocHostUIHandler_TranslateUrl (scalar_t__,int ,int *,int **) ;
+ int IUri_AddRef (int *) ;
+ int IUri_GetDisplayUri (int *,int **) ;
+ int IUri_Release (int *) ;
+ int S_OK ;
+ int SysFreeString (int *) ;
+ int TRACE (char*,int ,int ,int ) ;
+ int create_uri (int *,int ,int **) ;
+ int debugstr_w (int *) ;
 
 __attribute__((used)) static HRESULT translate_uri(HTMLOuterWindow *window, IUri *orig_uri, BSTR *ret_display_uri, IUri **ret_uri)
 {
-    IUri *uri = NULL;
+    IUri *uri = ((void*)0);
     BSTR display_uri;
     HRESULT hres;
 
@@ -44,7 +44,7 @@ __attribute__((used)) static HRESULT translate_uri(HTMLOuterWindow *window, IUri
         return hres;
 
     if(window->doc_obj && window->doc_obj->hostui) {
-        OLECHAR *translated_url = NULL;
+        OLECHAR *translated_url = ((void*)0);
 
         hres = IDocHostUIHandler_TranslateUrl(window->doc_obj->hostui, 0, display_uri,
                 &translated_url);

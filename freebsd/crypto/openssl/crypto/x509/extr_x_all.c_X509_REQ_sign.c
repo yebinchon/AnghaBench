@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  req_info; int /*<<< orphan*/  signature; int /*<<< orphan*/  sig_alg; } ;
-typedef  TYPE_1__ X509_REQ ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
-typedef  int /*<<< orphan*/  EVP_MD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_ITEM_rptr (int /*<<< orphan*/ ) ; 
- int ASN1_item_sign (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  X509_REQ_INFO ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int req_info; int signature; int sig_alg; } ;
+typedef TYPE_1__ X509_REQ ;
+typedef int EVP_PKEY ;
+typedef int EVP_MD ;
+
+
+ int ASN1_ITEM_rptr (int ) ;
+ int ASN1_item_sign (int ,int *,int *,int ,int *,int *,int const*) ;
+ int X509_REQ_INFO ;
 
 int X509_REQ_sign(X509_REQ *x, EVP_PKEY *pkey, const EVP_MD *md)
 {
-    return (ASN1_item_sign(ASN1_ITEM_rptr(X509_REQ_INFO), &x->sig_alg, NULL,
+    return (ASN1_item_sign(ASN1_ITEM_rptr(X509_REQ_INFO), &x->sig_alg, ((void*)0),
                            x->signature, &x->req_info, pkey, md));
 }

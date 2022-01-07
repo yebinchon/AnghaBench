@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  (* op_pixels_func ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ;
-struct TYPE_6__ {int /*<<< orphan*/ * edge_emu_buffer; } ;
-struct TYPE_5__ {int /*<<< orphan*/  (* emulated_edge_mc ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int,int,int,int,int) ;} ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int (* op_pixels_func ) (int *,int *,int,int) ;
+struct TYPE_6__ {int * edge_emu_buffer; } ;
+struct TYPE_5__ {int (* emulated_edge_mc ) (int *,int *,int,int,int,int,int,int,int,int) ;} ;
 struct TYPE_7__ {int width; int height; int linesize; int h_edge_pos; int v_edge_pos; TYPE_2__ sc; TYPE_1__ vdsp; } ;
-typedef  TYPE_3__ MpegEncContext ;
+typedef TYPE_3__ MpegEncContext ;
 
-/* Variables and functions */
- unsigned int FFMAX (int,int /*<<< orphan*/ ) ; 
- int av_clip (int,int,int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ; 
+
+ unsigned int FFMAX (int,int ) ;
+ int av_clip (int,int,int) ;
+ int stub1 (int *,int *,int,int,int,int,int,int,int,int) ;
+ int stub2 (int *,int *,int,int) ;
 
 __attribute__((used)) static inline int hpel_motion(MpegEncContext *s,
                               uint8_t *dest, uint8_t *src,
@@ -38,8 +38,8 @@ __attribute__((used)) static inline int hpel_motion(MpegEncContext *s,
     src_x += motion_x >> 1;
     src_y += motion_y >> 1;
 
-    /* WARNING: do no forget half pels */
-    src_x = av_clip(src_x, -16, s->width); // FIXME unneeded for emu?
+
+    src_x = av_clip(src_x, -16, s->width);
     if (src_x != s->width)
         dxy |= motion_x & 1;
     src_y = av_clip(src_y, -16, s->height);

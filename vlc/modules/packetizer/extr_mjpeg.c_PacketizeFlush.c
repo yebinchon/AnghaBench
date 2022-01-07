@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ decoder_t ;
-struct TYPE_5__ {int /*<<< orphan*/  packetizer; int /*<<< orphan*/  i_next_block_flags; int /*<<< orphan*/  date; } ;
-typedef  TYPE_2__ decoder_sys_t ;
+typedef TYPE_1__ decoder_t ;
+struct TYPE_5__ {int packetizer; int i_next_block_flags; int date; } ;
+typedef TYPE_2__ decoder_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOCK_FLAG_DISCONTINUITY ; 
- int /*<<< orphan*/  VLC_TICK_INVALID ; 
- int /*<<< orphan*/  date_Set (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  packetizer_Flush (int /*<<< orphan*/ *) ; 
+
+ int BLOCK_FLAG_DISCONTINUITY ;
+ int VLC_TICK_INVALID ;
+ int date_Set (int *,int ) ;
+ int packetizer_Flush (int *) ;
 
 __attribute__((used)) static void PacketizeFlush( decoder_t *p_dec )
 {

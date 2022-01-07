@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fwohci_softc_t ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bus_generic_shutdown (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fwohci_stop (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int fwohci_softc_t ;
+typedef int device_t ;
+
+
+ int bus_generic_shutdown (int ) ;
+ int * device_get_softc (int ) ;
+ int fwohci_stop (int *,int ) ;
 
 __attribute__((used)) static int
 fwohci_pci_shutdown(device_t dev)
 {
-	fwohci_softc_t *sc = device_get_softc(dev);
+ fwohci_softc_t *sc = device_get_softc(dev);
 
-	bus_generic_shutdown(dev);
-	fwohci_stop(sc, dev);
-	return 0;
+ bus_generic_shutdown(dev);
+ fwohci_stop(sc, dev);
+ return 0;
 }

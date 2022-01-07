@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tv ;
+
+
+
+
+typedef int tv ;
 struct timeval {int dummy; } ;
-typedef  struct timeval pid_t ;
-typedef  int /*<<< orphan*/  pid ;
-typedef  int /*<<< orphan*/  EVP_MD_CTX ;
+typedef struct timeval pid_t ;
+typedef int pid ;
+typedef int EVP_MD_CTX ;
 
-/* Variables and functions */
- int DIGEST_SIZE ; 
- int /*<<< orphan*/  EVP_DigestFinal (int /*<<< orphan*/ *,unsigned char*,unsigned int*) ; 
- int /*<<< orphan*/  EVP_DigestInit (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_DigestUpdate (int /*<<< orphan*/ *,struct timeval*,int) ; 
- int /*<<< orphan*/  EVP_sha1 () ; 
- int RAND_bytes (unsigned char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SALT_SIZE ; 
- struct timeval getpid () ; 
- int /*<<< orphan*/  gettimeofday (struct timeval*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int /*<<< orphan*/ ) ; 
+
+ int DIGEST_SIZE ;
+ int EVP_DigestFinal (int *,unsigned char*,unsigned int*) ;
+ int EVP_DigestInit (int *,int ) ;
+ int EVP_DigestUpdate (int *,struct timeval*,int) ;
+ int EVP_sha1 () ;
+ int RAND_bytes (unsigned char*,int ) ;
+ int SALT_SIZE ;
+ struct timeval getpid () ;
+ int gettimeofday (struct timeval*,int ) ;
+ int memcpy (unsigned char*,unsigned char*,int ) ;
 
 __attribute__((used)) static void
 init_salt(unsigned char *salt) {

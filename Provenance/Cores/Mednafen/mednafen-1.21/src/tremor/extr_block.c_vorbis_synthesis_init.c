@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vorbis_info ;
-typedef  int /*<<< orphan*/  vorbis_dsp_state ;
 
-/* Variables and functions */
- scalar_t__ _vds_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vorbis_synthesis_restart (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vorbis_info ;
+typedef int vorbis_dsp_state ;
+
+
+ scalar_t__ _vds_init (int *,int *) ;
+ int vorbis_synthesis_restart (int *) ;
 
 int vorbis_synthesis_init(vorbis_dsp_state *v,vorbis_info *vi){
   if(_vds_init(v,vi))return 1;

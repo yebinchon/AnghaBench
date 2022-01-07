@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_repos_t ;
-typedef  int /*<<< orphan*/  svn_repos_authz_func_t ;
-typedef  int /*<<< orphan*/  svn_log_entry_receiver_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * svn_repos__get_logs_compat (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_revnum_t ;
+typedef int svn_repos_t ;
+typedef int svn_repos_authz_func_t ;
+typedef int svn_log_entry_receiver_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+
+
+ int * svn_repos__get_logs_compat (int *,int const*,int ,int ,int,int ,int ,int ,int const*,int ,void*,int ,void*,int *) ;
 
 svn_error_t *
 svn_repos_get_logs4(svn_repos_t *repos,

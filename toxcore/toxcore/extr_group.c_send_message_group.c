@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int const uint32_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  peer_num ;
-typedef  int /*<<< orphan*/  packet ;
-typedef  int /*<<< orphan*/  message_num ;
-struct TYPE_3__ {scalar_t__ status; int /*<<< orphan*/  message_number; int /*<<< orphan*/  peer_number; } ;
-typedef  TYPE_1__ Group_c ;
-typedef  int /*<<< orphan*/  Group_Chats ;
 
-/* Variables and functions */
- scalar_t__ GROUPCHAT_STATUS_CONNECTED ; 
- int MAX_GROUP_MESSAGE_DATA_LEN ; 
- TYPE_1__* get_group_c (int /*<<< orphan*/  const*,int) ; 
- int htonl (int /*<<< orphan*/ ) ; 
- int htons (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int*,int const*,int) ; 
- unsigned int send_message_all_close (int /*<<< orphan*/  const*,int,int*,int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int const uint32_t ;
+typedef int uint16_t ;
+typedef int peer_num ;
+typedef int packet ;
+typedef int message_num ;
+struct TYPE_3__ {scalar_t__ status; int message_number; int peer_number; } ;
+typedef TYPE_1__ Group_c ;
+typedef int Group_Chats ;
+
+
+ scalar_t__ GROUPCHAT_STATUS_CONNECTED ;
+ int MAX_GROUP_MESSAGE_DATA_LEN ;
+ TYPE_1__* get_group_c (int const*,int) ;
+ int htonl (int ) ;
+ int htons (int ) ;
+ int memcpy (int*,int const*,int) ;
+ unsigned int send_message_all_close (int const*,int,int*,int,int) ;
 
 __attribute__((used)) static unsigned int send_message_group(const Group_Chats *g_c, int groupnumber, uint8_t message_id, const uint8_t *data,
                                        uint16_t len)

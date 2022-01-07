@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  out ;
-typedef  int cmsUInt8Number ;
-typedef  int cmsUInt16Number ;
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/  cmsHTRANSFORM ;
-typedef  int /*<<< orphan*/ * cmsHPROFILE ;
-typedef  int /*<<< orphan*/  buf3 ;
-typedef  int /*<<< orphan*/  buf2 ;
-typedef  int /*<<< orphan*/  buf1 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  Fail (char*) ; 
- int /*<<< orphan*/  INTENT_PERCEPTUAL ; 
- int /*<<< orphan*/  TYPE_RGBA_16 ; 
- int /*<<< orphan*/  TYPE_RGBA_8 ; 
- int /*<<< orphan*/  TYPE_RGB_8 ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsCreateTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * cmsCreate_sRGBProfile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDeleteTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDoTransformLineStride (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int*,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsFLAGS_COPY_ALPHA ; 
- int /*<<< orphan*/ * cmsOpenProfileFromFile (int /*<<< orphan*/ ,char*,char*) ; 
- scalar_t__ memcmp (int*,int*,int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int out ;
+typedef int cmsUInt8Number ;
+typedef int cmsUInt16Number ;
+typedef int cmsInt32Number ;
+typedef int cmsHTRANSFORM ;
+typedef int * cmsHPROFILE ;
+typedef int buf3 ;
+typedef int buf2 ;
+typedef int buf1 ;
+
+
+ int DbgThread () ;
+ int Fail (char*) ;
+ int INTENT_PERCEPTUAL ;
+ int TYPE_RGBA_16 ;
+ int TYPE_RGBA_8 ;
+ int TYPE_RGB_8 ;
+ int cmsCloseProfile (int ,int *) ;
+ int cmsCreateTransform (int ,int *,int ,int *,int ,int ,int ) ;
+ int * cmsCreate_sRGBProfile (int ) ;
+ int cmsDeleteTransform (int ,int ) ;
+ int cmsDoTransformLineStride (int ,int ,int*,int*,int,int,int,int,int ,int ) ;
+ int cmsFLAGS_COPY_ALPHA ;
+ int * cmsOpenProfileFromFile (int ,char*,char*) ;
+ scalar_t__ memcmp (int*,int*,int) ;
+ int memset (int*,int ,int) ;
 
 __attribute__((used)) static
 cmsInt32Number CheckTransformLineStride(void)
@@ -45,21 +45,21 @@ cmsInt32Number CheckTransformLineStride(void)
        cmsHPROFILE pOut;
        cmsHTRANSFORM t;
 
-       // Our buffer is formed by 4 RGB8 lines, each line is 2 pixels wide plus a padding of one byte
+
 
        cmsUInt8Number buf1[]= { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0,
                                 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0,
                                 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0,
                                 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0, };
 
-       // Our buffer2 is formed by 4 RGBA lines, each line is 2 pixels wide plus a padding of one byte
+
 
        cmsUInt8Number buf2[] = { 0xff, 0xff, 0xff, 1, 0xff, 0xff, 0xff, 1, 0,
                                  0xff, 0xff, 0xff, 1, 0xff, 0xff, 0xff, 1, 0,
                                  0xff, 0xff, 0xff, 1, 0xff, 0xff, 0xff, 1, 0,
                                  0xff, 0xff, 0xff, 1, 0xff, 0xff, 0xff, 1, 0};
 
-       // Our buffer3 is formed by 4 RGBA16 lines, each line is 2 pixels wide plus a padding of two bytes
+
 
        cmsUInt16Number buf3[] = { 0xffff, 0xffff, 0xffff, 0x0101, 0xffff, 0xffff, 0xffff, 0x0101, 0,
                                   0xffff, 0xffff, 0xffff, 0x0101, 0xffff, 0xffff, 0xffff, 0x0101, 0,
@@ -71,8 +71,8 @@ cmsInt32Number CheckTransformLineStride(void)
 
        memset(out, 0, sizeof(out));
        pIn = cmsCreate_sRGBProfile(DbgThread());
-       pOut = cmsOpenProfileFromFile(DbgThread(),  "ibm-t61.icc", "r");
-       if (pIn == NULL || pOut == NULL)
+       pOut = cmsOpenProfileFromFile(DbgThread(), "ibm-t61.icc", "r");
+       if (pIn == ((void*)0) || pOut == ((void*)0))
               return 0;
 
        t = cmsCreateTransform(DbgThread(), pIn, TYPE_RGB_8, pOut, TYPE_RGB_8, INTENT_PERCEPTUAL, cmsFLAGS_COPY_ALPHA);
@@ -122,7 +122,7 @@ cmsInt32Number CheckTransformLineStride(void)
        memset(out, 0, sizeof(out));
 
 
-       // From 8 to 16
+
        t = cmsCreateTransform(DbgThread(), pIn, TYPE_RGBA_8, pOut, TYPE_RGBA_16, INTENT_PERCEPTUAL, cmsFLAGS_COPY_ALPHA);
 
        cmsDoTransformLineStride(DbgThread(), t, buf2, out, 2, 4, 9, 18, 0, 0);

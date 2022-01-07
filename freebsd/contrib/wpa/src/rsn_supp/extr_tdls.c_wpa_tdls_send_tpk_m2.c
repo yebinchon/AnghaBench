@@ -1,132 +1,119 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  timeoutie ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u32 ;
+typedef int timeoutie ;
 struct wpa_tdls_timeoutie {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  kck; } ;
-struct wpa_tdls_peer {int /*<<< orphan*/  initiator; int /*<<< orphan*/  rsnie_p; TYPE_1__ tpk; int /*<<< orphan*/  lifetime; int /*<<< orphan*/  inonce; int /*<<< orphan*/  rnonce; int /*<<< orphan*/  rsnie_p_len; scalar_t__ rsnie_i_len; } ;
+struct TYPE_2__ {int kck; } ;
+struct wpa_tdls_peer {int initiator; int rsnie_p; TYPE_1__ tpk; int lifetime; int inonce; int rnonce; int rsnie_p_len; scalar_t__ rsnie_i_len; } ;
 struct wpa_tdls_lnkid {int dummy; } ;
-struct wpa_tdls_ftie {int ie_len; int* mic; int /*<<< orphan*/  Snonce; int /*<<< orphan*/  Anonce; int /*<<< orphan*/  ie_type; } ;
+struct wpa_tdls_ftie {int ie_len; int* mic; int Snonce; int Anonce; int ie_type; } ;
 struct wpa_sm {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSG_DEBUG ; 
- int TDLS_TESTING_LONG_FRAME ; 
- int TDLS_TESTING_WRONG_LIFETIME_RESP ; 
- int TDLS_TESTING_WRONG_MIC ; 
- int /*<<< orphan*/  WLAN_EID_FAST_BSS_TRANSITION ; 
- int /*<<< orphan*/  WLAN_TDLS_SETUP_RESPONSE ; 
- int /*<<< orphan*/  WPA_NONCE_LEN ; 
- int /*<<< orphan*/  os_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  os_memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * os_zalloc (size_t) ; 
- int tdls_testing ; 
- int /*<<< orphan*/ * wpa_add_ie (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * wpa_add_tdls_timeoutie (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wpa_hexdump (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  wpa_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  wpa_tdls_ftie_mic (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- scalar_t__ wpa_tdls_get_privacy (struct wpa_sm*) ; 
- int wpa_tdls_tpk_send (struct wpa_sm*,unsigned char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+ int MSG_DEBUG ;
+ int TDLS_TESTING_LONG_FRAME ;
+ int TDLS_TESTING_WRONG_LIFETIME_RESP ;
+ int TDLS_TESTING_WRONG_MIC ;
+ int WLAN_EID_FAST_BSS_TRANSITION ;
+ int WLAN_TDLS_SETUP_RESPONSE ;
+ int WPA_NONCE_LEN ;
+ int os_free (int *) ;
+ int os_memcpy (int ,int ,int ) ;
+ int * os_zalloc (size_t) ;
+ int tdls_testing ;
+ int * wpa_add_ie (int *,int ,int ) ;
+ int * wpa_add_tdls_timeoutie (int *,int *,int,int ) ;
+ int wpa_hexdump (int ,char*,int *,int) ;
+ int wpa_printf (int ,char*,...) ;
+ int wpa_tdls_ftie_mic (int ,int,int *,int ,int *,int *,int*) ;
+ scalar_t__ wpa_tdls_get_privacy (struct wpa_sm*) ;
+ int wpa_tdls_tpk_send (struct wpa_sm*,unsigned char const*,int ,int ,int ,int ,int ,int *,int) ;
 
 __attribute__((used)) static int wpa_tdls_send_tpk_m2(struct wpa_sm *sm,
-				const unsigned char *src_addr, u8 dtoken,
-				struct wpa_tdls_lnkid *lnkid,
-				const struct wpa_tdls_peer *peer)
+    const unsigned char *src_addr, u8 dtoken,
+    struct wpa_tdls_lnkid *lnkid,
+    const struct wpa_tdls_peer *peer)
 {
-	u8 *rbuf, *pos;
-	size_t buf_len;
-	u32 lifetime;
-	struct wpa_tdls_timeoutie timeoutie;
-	struct wpa_tdls_ftie *ftie;
-	int status;
+ u8 *rbuf, *pos;
+ size_t buf_len;
+ u32 lifetime;
+ struct wpa_tdls_timeoutie timeoutie;
+ struct wpa_tdls_ftie *ftie;
+ int status;
 
-	buf_len = 0;
-	if (wpa_tdls_get_privacy(sm)) {
-		/* Peer RSN IE, FTIE(Initiator Nonce, Responder Nonce),
-		 * Lifetime */
-		buf_len += peer->rsnie_i_len + sizeof(struct wpa_tdls_ftie) +
-			sizeof(struct wpa_tdls_timeoutie);
-#ifdef CONFIG_TDLS_TESTING
-		if (tdls_testing & TDLS_TESTING_LONG_FRAME)
-			buf_len += 170;
-#endif /* CONFIG_TDLS_TESTING */
-	}
+ buf_len = 0;
+ if (wpa_tdls_get_privacy(sm)) {
 
-	rbuf = os_zalloc(buf_len + 1);
-	if (rbuf == NULL)
-		return -1;
-	pos = rbuf;
 
-	if (!wpa_tdls_get_privacy(sm))
-		goto skip_ies;
+  buf_len += peer->rsnie_i_len + sizeof(struct wpa_tdls_ftie) +
+   sizeof(struct wpa_tdls_timeoutie);
 
-	/* Peer RSN IE */
-	pos = wpa_add_ie(pos, peer->rsnie_p, peer->rsnie_p_len);
 
-	ftie = (struct wpa_tdls_ftie *) pos;
-	ftie->ie_type = WLAN_EID_FAST_BSS_TRANSITION;
-	/* TODO: ftie->mic_control to set 2-RESPONSE */
-	os_memcpy(ftie->Anonce, peer->rnonce, WPA_NONCE_LEN);
-	os_memcpy(ftie->Snonce, peer->inonce, WPA_NONCE_LEN);
-	ftie->ie_len = sizeof(struct wpa_tdls_ftie) - 2;
-	wpa_hexdump(MSG_DEBUG, "TDLS: FTIE for TPK M2",
-		    (u8 *) ftie, sizeof(*ftie));
 
-	pos = (u8 *) (ftie + 1);
 
-#ifdef CONFIG_TDLS_TESTING
-	if (tdls_testing & TDLS_TESTING_LONG_FRAME) {
-		wpa_printf(MSG_DEBUG, "TDLS: Testing - add extra subelem to "
-			   "FTIE");
-		ftie->ie_len += 170;
-		*pos++ = 255; /* FTIE subelem */
-		*pos++ = 168; /* FTIE subelem length */
-		pos += 168;
-	}
-#endif /* CONFIG_TDLS_TESTING */
+ }
 
-	/* Lifetime */
-	lifetime = peer->lifetime;
-#ifdef CONFIG_TDLS_TESTING
-	if (tdls_testing & TDLS_TESTING_WRONG_LIFETIME_RESP) {
-		wpa_printf(MSG_DEBUG, "TDLS: Testing - use wrong TPK "
-			   "lifetime in response");
-		lifetime++;
-	}
-#endif /* CONFIG_TDLS_TESTING */
-	pos = wpa_add_tdls_timeoutie(pos, (u8 *) &timeoutie,
-				     sizeof(timeoutie), lifetime);
-	wpa_printf(MSG_DEBUG, "TDLS: TPK lifetime %u seconds from initiator",
-		   lifetime);
+ rbuf = os_zalloc(buf_len + 1);
+ if (rbuf == ((void*)0))
+  return -1;
+ pos = rbuf;
 
-	/* compute MIC before sending */
-	wpa_tdls_ftie_mic(peer->tpk.kck, 2, (u8 *) lnkid, peer->rsnie_p,
-			  (u8 *) &timeoutie, (u8 *) ftie, ftie->mic);
-#ifdef CONFIG_TDLS_TESTING
-	if (tdls_testing & TDLS_TESTING_WRONG_MIC) {
-		wpa_printf(MSG_DEBUG, "TDLS: Testing - use wrong MIC");
-		ftie->mic[0] ^= 0x01;
-	}
-#endif /* CONFIG_TDLS_TESTING */
+ if (!wpa_tdls_get_privacy(sm))
+  goto skip_ies;
+
+
+ pos = wpa_add_ie(pos, peer->rsnie_p, peer->rsnie_p_len);
+
+ ftie = (struct wpa_tdls_ftie *) pos;
+ ftie->ie_type = WLAN_EID_FAST_BSS_TRANSITION;
+
+ os_memcpy(ftie->Anonce, peer->rnonce, WPA_NONCE_LEN);
+ os_memcpy(ftie->Snonce, peer->inonce, WPA_NONCE_LEN);
+ ftie->ie_len = sizeof(struct wpa_tdls_ftie) - 2;
+ wpa_hexdump(MSG_DEBUG, "TDLS: FTIE for TPK M2",
+      (u8 *) ftie, sizeof(*ftie));
+
+ pos = (u8 *) (ftie + 1);
+ lifetime = peer->lifetime;
+
+
+
+
+
+
+
+ pos = wpa_add_tdls_timeoutie(pos, (u8 *) &timeoutie,
+         sizeof(timeoutie), lifetime);
+ wpa_printf(MSG_DEBUG, "TDLS: TPK lifetime %u seconds from initiator",
+     lifetime);
+
+
+ wpa_tdls_ftie_mic(peer->tpk.kck, 2, (u8 *) lnkid, peer->rsnie_p,
+     (u8 *) &timeoutie, (u8 *) ftie, ftie->mic);
+
+
+
+
+
+
 
 skip_ies:
-	status = wpa_tdls_tpk_send(sm, src_addr, WLAN_TDLS_SETUP_RESPONSE,
-				   dtoken, 0, 0, peer->initiator, rbuf,
-				   pos - rbuf);
-	os_free(rbuf);
+ status = wpa_tdls_tpk_send(sm, src_addr, WLAN_TDLS_SETUP_RESPONSE,
+       dtoken, 0, 0, peer->initiator, rbuf,
+       pos - rbuf);
+ os_free(rbuf);
 
-	return status;
+ return status;
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct afswtch {int af_af; struct afswtch* af_next; } ;
 
-/* Variables and functions */
- struct afswtch* afs ; 
+
+ struct afswtch* afs ;
 
 __attribute__((used)) static struct afswtch *
 af_getbyfamily(int af)
 {
-	struct afswtch *afp;
+ struct afswtch *afp;
 
-	for (afp = afs; afp != NULL; afp = afp->af_next)
-		if (afp->af_af == af)
-			return afp;
-	return NULL;
+ for (afp = afs; afp != ((void*)0); afp = afp->af_next)
+  if (afp->af_af == af)
+   return afp;
+ return ((void*)0);
 }

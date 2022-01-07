@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct tgroup {TYPE_1__* tty; int /*<<< orphan*/  sid; int /*<<< orphan*/  session; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct tgroup {TYPE_1__* tty; int sid; int session; } ;
 struct task {struct tgroup* group; } ;
-struct TYPE_4__ {int /*<<< orphan*/  session; } ;
-struct TYPE_3__ {int /*<<< orphan*/  lock; scalar_t__ session; } ;
+struct TYPE_4__ {int session; } ;
+struct TYPE_3__ {int lock; scalar_t__ session; } ;
 
-/* Variables and functions */
- scalar_t__ list_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_remove_safe (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lock (int /*<<< orphan*/ *) ; 
- TYPE_2__* pid_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tty_release (TYPE_1__*) ; 
- int /*<<< orphan*/  ttys_lock ; 
- int /*<<< orphan*/  unlock (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ list_empty (int *) ;
+ int list_remove_safe (int *) ;
+ int lock (int *) ;
+ TYPE_2__* pid_get (int ) ;
+ int tty_release (TYPE_1__*) ;
+ int ttys_lock ;
+ int unlock (int *) ;
 
 void task_leave_session(struct task *task) {
     struct tgroup *group = task->group;
@@ -37,7 +37,7 @@ void task_leave_session(struct task *task) {
             unlock(&group->tty->lock);
         }
         tty_release(group->tty);
-        group->tty = NULL;
+        group->tty = ((void*)0);
         unlock(&ttys_lock);
     }
 }

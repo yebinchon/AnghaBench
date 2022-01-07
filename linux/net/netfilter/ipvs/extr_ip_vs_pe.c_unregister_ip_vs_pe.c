@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ip_vs_pe {int /*<<< orphan*/  name; int /*<<< orphan*/  n_list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ip_vs_pe_mutex ; 
- int /*<<< orphan*/  ip_vs_use_count_dec () ; 
- int /*<<< orphan*/  list_del_rcu (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pr_info (char*,int /*<<< orphan*/ ) ; 
+
+
+
+struct ip_vs_pe {int name; int n_list; } ;
+
+
+ int ip_vs_pe_mutex ;
+ int ip_vs_use_count_dec () ;
+ int list_del_rcu (int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int pr_info (char*,int ) ;
 
 int unregister_ip_vs_pe(struct ip_vs_pe *pe)
 {
-	mutex_lock(&ip_vs_pe_mutex);
-	/* Remove it from the d-linked pe list */
-	list_del_rcu(&pe->n_list);
-	mutex_unlock(&ip_vs_pe_mutex);
+ mutex_lock(&ip_vs_pe_mutex);
 
-	/* decrease the module use count */
-	ip_vs_use_count_dec();
+ list_del_rcu(&pe->n_list);
+ mutex_unlock(&ip_vs_pe_mutex);
 
-	pr_info("[%s] pe unregistered.\n", pe->name);
 
-	return 0;
+ ip_vs_use_count_dec();
+
+ pr_info("[%s] pe unregistered.\n", pe->name);
+
+ return 0;
 }

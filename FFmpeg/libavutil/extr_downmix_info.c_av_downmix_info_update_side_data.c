@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ data; } ;
-typedef  TYPE_1__ AVFrameSideData ;
-typedef  int /*<<< orphan*/  AVFrame ;
-typedef  int /*<<< orphan*/  AVDownmixInfo ;
+typedef TYPE_1__ AVFrameSideData ;
+typedef int AVFrame ;
+typedef int AVDownmixInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_FRAME_DATA_DOWNMIX_INFO ; 
- TYPE_1__* av_frame_get_side_data (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_1__* av_frame_new_side_data (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int AV_FRAME_DATA_DOWNMIX_INFO ;
+ TYPE_1__* av_frame_get_side_data (int *,int ) ;
+ TYPE_1__* av_frame_new_side_data (int *,int ,int) ;
 
 AVDownmixInfo *av_downmix_info_update_side_data(AVFrame *frame)
 {
@@ -32,7 +32,7 @@ AVDownmixInfo *av_downmix_info_update_side_data(AVFrame *frame)
                                            sizeof(AVDownmixInfo));
 
     if (!side_data)
-        return NULL;
+        return ((void*)0);
 
     return (AVDownmixInfo*)side_data->data;
 }

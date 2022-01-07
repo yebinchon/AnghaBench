@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {double X; double Y; } ;
-typedef  float REAL ;
-typedef  int INT ;
-typedef  int GpStatus ;
-typedef  TYPE_1__ GpPointF ;
-typedef  int /*<<< orphan*/  GpLineGradient ;
-typedef  int /*<<< orphan*/  GpBrush ;
+typedef float REAL ;
+typedef int INT ;
+typedef int GpStatus ;
+typedef TYPE_1__ GpPointF ;
+typedef int GpLineGradient ;
+typedef int GpBrush ;
 
-/* Variables and functions */
- int GdipCreateLineBrush (TYPE_1__*,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int GdipDeleteBrush (int /*<<< orphan*/ *) ; 
- int GdipGetLineBlend (int /*<<< orphan*/ *,float*,float*,int) ; 
- int GdipGetLineBlendCount (int /*<<< orphan*/ *,int*) ; 
- int GdipSetLineLinearBlend (int /*<<< orphan*/ *,double,double) ; 
- int InvalidParameter ; 
- int Ok ; 
- int /*<<< orphan*/  WrapModeTile ; 
- int /*<<< orphan*/  expect (int,int) ; 
- int /*<<< orphan*/  expectf (double,float) ; 
+
+ int GdipCreateLineBrush (TYPE_1__*,TYPE_1__*,int ,int ,int ,int **) ;
+ int GdipDeleteBrush (int *) ;
+ int GdipGetLineBlend (int *,float*,float*,int) ;
+ int GdipGetLineBlendCount (int *,int*) ;
+ int GdipSetLineLinearBlend (int *,double,double) ;
+ int InvalidParameter ;
+ int Ok ;
+ int WrapModeTile ;
+ int expect (int,int) ;
+ int expectf (double,float) ;
 
 __attribute__((used)) static void test_linelinearblend(void)
 {
@@ -40,7 +40,7 @@ __attribute__((used)) static void test_linelinearblend(void)
     REAL res_factors[3] = {0.3f};
     REAL res_positions[3] = {0.3f};
 
-    status = GdipSetLineLinearBlend(NULL, 0.6, 0.8);
+    status = GdipSetLineLinearBlend(((void*)0), 0.6, 0.8);
     expect(InvalidParameter, status);
 
     pt1.X = pt1.Y = 1.0;

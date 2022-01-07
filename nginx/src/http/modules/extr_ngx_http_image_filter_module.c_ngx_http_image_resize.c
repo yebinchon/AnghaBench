@@ -1,93 +1,93 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_30__   TYPE_6__ ;
-typedef  struct TYPE_29__   TYPE_5__ ;
-typedef  struct TYPE_28__   TYPE_4__ ;
-typedef  struct TYPE_27__   TYPE_3__ ;
-typedef  struct TYPE_26__   TYPE_2__ ;
-typedef  struct TYPE_25__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-typedef  int ngx_uint_t ;
-struct TYPE_26__ {int /*<<< orphan*/ * data; int /*<<< orphan*/  handler; } ;
-typedef  TYPE_2__ ngx_pool_cleanup_t ;
-struct TYPE_27__ {int /*<<< orphan*/  pool; TYPE_1__* connection; } ;
-typedef  TYPE_3__ ngx_http_request_t ;
-struct TYPE_28__ {int angle; int max_width; int max_height; int /*<<< orphan*/  image; int /*<<< orphan*/  type; int /*<<< orphan*/  force; } ;
-typedef  TYPE_4__ ngx_http_image_filter_ctx_t ;
-struct TYPE_29__ {scalar_t__ filter; scalar_t__ interlace; int /*<<< orphan*/  sharpen; int /*<<< orphan*/  shcv; scalar_t__ transparency; } ;
-typedef  TYPE_5__ ngx_http_image_filter_conf_t ;
-struct TYPE_30__ {int memory; int last_buf; int /*<<< orphan*/ * last; int /*<<< orphan*/ * pos; } ;
-typedef  TYPE_6__ ngx_buf_t ;
-typedef  int /*<<< orphan*/ * gdImagePtr ;
-struct TYPE_25__ {int /*<<< orphan*/  log; } ;
 
-/* Variables and functions */
- scalar_t__ NGX_HTTP_IMAGE_CROP ; 
- scalar_t__ NGX_HTTP_IMAGE_RESIZE ; 
- scalar_t__ NGX_HTTP_IMAGE_ROTATE ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  gdFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gdImageAlphaBlending (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int gdImageBlue (int /*<<< orphan*/ *,int) ; 
- int gdImageColorExact (int /*<<< orphan*/ *,int,int,int) ; 
- int /*<<< orphan*/  gdImageColorTransparent (int /*<<< orphan*/ *,int) ; 
- int gdImageColorsTotal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gdImageCopy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int) ; 
- int /*<<< orphan*/  gdImageCopyResampled (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int) ; 
- int /*<<< orphan*/  gdImageCopyRotated (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  gdImageDestroy (int /*<<< orphan*/ *) ; 
- int gdImageGetTransparent (int /*<<< orphan*/ *) ; 
- int gdImageGreen (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  gdImageInterlace (int /*<<< orphan*/ *,int) ; 
- int gdImageRed (int /*<<< orphan*/ *,int) ; 
- int gdImageSX (int /*<<< orphan*/ *) ; 
- int gdImageSY (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gdImageSaveAlpha (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  gdImageSharpen (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  gdImageTrueColorToPalette (int /*<<< orphan*/ *,int,int) ; 
- TYPE_6__* ngx_calloc_buf (int /*<<< orphan*/ ) ; 
- TYPE_5__* ngx_http_get_module_loc_conf (TYPE_3__*,int /*<<< orphan*/ ) ; 
- TYPE_6__* ngx_http_image_asis (TYPE_3__*,TYPE_4__*) ; 
- int /*<<< orphan*/  ngx_http_image_cleanup ; 
- int ngx_http_image_filter_get_value (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_image_filter_module ; 
- int /*<<< orphan*/  ngx_http_image_length (TYPE_3__*,TYPE_6__*) ; 
- int /*<<< orphan*/ * ngx_http_image_new (TYPE_3__*,int,int,int) ; 
- int /*<<< orphan*/ * ngx_http_image_out (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/ * ngx_http_image_source (TYPE_3__*,TYPE_4__*) ; 
- int /*<<< orphan*/  ngx_http_weak_etag (TYPE_3__*) ; 
- int /*<<< orphan*/  ngx_log_debug3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int,int) ; 
- int /*<<< orphan*/  ngx_log_debug4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int,int,int) ; 
- int /*<<< orphan*/  ngx_pfree (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__* ngx_pool_cleanup_add (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_30__ TYPE_6__ ;
+typedef struct TYPE_29__ TYPE_5__ ;
+typedef struct TYPE_28__ TYPE_4__ ;
+typedef struct TYPE_27__ TYPE_3__ ;
+typedef struct TYPE_26__ TYPE_2__ ;
+typedef struct TYPE_25__ TYPE_1__ ;
+
+
+typedef int u_char ;
+typedef int ngx_uint_t ;
+struct TYPE_26__ {int * data; int handler; } ;
+typedef TYPE_2__ ngx_pool_cleanup_t ;
+struct TYPE_27__ {int pool; TYPE_1__* connection; } ;
+typedef TYPE_3__ ngx_http_request_t ;
+struct TYPE_28__ {int angle; int max_width; int max_height; int image; int type; int force; } ;
+typedef TYPE_4__ ngx_http_image_filter_ctx_t ;
+struct TYPE_29__ {scalar_t__ filter; scalar_t__ interlace; int sharpen; int shcv; scalar_t__ transparency; } ;
+typedef TYPE_5__ ngx_http_image_filter_conf_t ;
+struct TYPE_30__ {int memory; int last_buf; int * last; int * pos; } ;
+typedef TYPE_6__ ngx_buf_t ;
+typedef int * gdImagePtr ;
+struct TYPE_25__ {int log; } ;
+
+
+ scalar_t__ NGX_HTTP_IMAGE_CROP ;
+ scalar_t__ NGX_HTTP_IMAGE_RESIZE ;
+ scalar_t__ NGX_HTTP_IMAGE_ROTATE ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int gdFree (int *) ;
+ int gdImageAlphaBlending (int *,int ) ;
+ int gdImageBlue (int *,int) ;
+ int gdImageColorExact (int *,int,int,int) ;
+ int gdImageColorTransparent (int *,int) ;
+ int gdImageColorsTotal (int *) ;
+ int gdImageCopy (int *,int *,int ,int ,int,int,int,int) ;
+ int gdImageCopyResampled (int *,int *,int ,int ,int ,int ,int,int,int,int) ;
+ int gdImageCopyRotated (int *,int *,int,int,int ,int ,int,int,int) ;
+ int gdImageDestroy (int *) ;
+ int gdImageGetTransparent (int *) ;
+ int gdImageGreen (int *,int) ;
+ int gdImageInterlace (int *,int) ;
+ int gdImageRed (int *,int) ;
+ int gdImageSX (int *) ;
+ int gdImageSY (int *) ;
+ int gdImageSaveAlpha (int *,int) ;
+ int gdImageSharpen (int *,int) ;
+ int gdImageTrueColorToPalette (int *,int,int) ;
+ TYPE_6__* ngx_calloc_buf (int ) ;
+ TYPE_5__* ngx_http_get_module_loc_conf (TYPE_3__*,int ) ;
+ TYPE_6__* ngx_http_image_asis (TYPE_3__*,TYPE_4__*) ;
+ int ngx_http_image_cleanup ;
+ int ngx_http_image_filter_get_value (TYPE_3__*,int ,int ) ;
+ int ngx_http_image_filter_module ;
+ int ngx_http_image_length (TYPE_3__*,TYPE_6__*) ;
+ int * ngx_http_image_new (TYPE_3__*,int,int,int) ;
+ int * ngx_http_image_out (TYPE_3__*,int ,int *,int*) ;
+ int * ngx_http_image_source (TYPE_3__*,TYPE_4__*) ;
+ int ngx_http_weak_etag (TYPE_3__*) ;
+ int ngx_log_debug3 (int ,int ,int ,char*,int,int,int) ;
+ int ngx_log_debug4 (int ,int ,int ,char*,int,int,int,int) ;
+ int ngx_pfree (int ,int ) ;
+ TYPE_2__* ngx_pool_cleanup_add (int ,int ) ;
 
 __attribute__((used)) static ngx_buf_t *
 ngx_http_image_resize(ngx_http_request_t *r, ngx_http_image_filter_ctx_t *ctx)
 {
-    int                            sx, sy, dx, dy, ox, oy, ax, ay, size,
+    int sx, sy, dx, dy, ox, oy, ax, ay, size,
                                    colors, palette, transparent, sharpen,
                                    red, green, blue, t;
-    u_char                        *out;
-    ngx_buf_t                     *b;
-    ngx_uint_t                     resize;
-    gdImagePtr                     src, dst;
-    ngx_pool_cleanup_t            *cln;
-    ngx_http_image_filter_conf_t  *conf;
+    u_char *out;
+    ngx_buf_t *b;
+    ngx_uint_t resize;
+    gdImagePtr src, dst;
+    ngx_pool_cleanup_t *cln;
+    ngx_http_image_filter_conf_t *conf;
 
     src = ngx_http_image_source(r, ctx);
 
-    if (src == NULL) {
-        return NULL;
+    if (src == ((void*)0)) {
+        return ((void*)0);
     }
 
     sx = gdImageSX(src);
@@ -152,7 +152,7 @@ transparent:
 
         resize = 0;
 
-    } else { /* NGX_HTTP_IMAGE_CROP */
+    } else {
 
         resize = 0;
 
@@ -176,9 +176,9 @@ transparent:
 
     if (resize) {
         dst = ngx_http_image_new(r, dx, dy, palette);
-        if (dst == NULL) {
+        if (dst == ((void*)0)) {
             gdImageDestroy(src);
-            return NULL;
+            return ((void*)0);
         }
 
         if (colors == 0) {
@@ -209,9 +209,9 @@ transparent:
         case 90:
         case 270:
             dst = ngx_http_image_new(r, dy, dx, palette);
-            if (dst == NULL) {
+            if (dst == ((void*)0)) {
                 gdImageDestroy(src);
-                return NULL;
+                return ((void*)0);
             }
             if (ctx->angle == 90) {
                 ox = dy / 2 + ay;
@@ -233,9 +233,9 @@ transparent:
 
         case 180:
             dst = ngx_http_image_new(r, dx, dy, palette);
-            if (dst == NULL) {
+            if (dst == ((void*)0)) {
                 gdImageDestroy(src);
-                return NULL;
+                return ((void*)0);
             }
             gdImageCopyRotated(dst, src, dx / 2 - ax, dy / 2 - ay, 0, 0,
                                dx + ax, dy + ay, ctx->angle);
@@ -266,9 +266,9 @@ transparent:
 
             dst = ngx_http_image_new(r, dx - ox, dy - oy, colors);
 
-            if (dst == NULL) {
+            if (dst == ((void*)0)) {
                 gdImageDestroy(src);
-                return NULL;
+                return ((void*)0);
             }
 
             ox /= 2;
@@ -312,20 +312,20 @@ transparent:
     gdImageDestroy(dst);
     ngx_pfree(r->pool, ctx->image);
 
-    if (out == NULL) {
-        return NULL;
+    if (out == ((void*)0)) {
+        return ((void*)0);
     }
 
     cln = ngx_pool_cleanup_add(r->pool, 0);
-    if (cln == NULL) {
+    if (cln == ((void*)0)) {
         gdFree(out);
-        return NULL;
+        return ((void*)0);
     }
 
     b = ngx_calloc_buf(r->pool);
-    if (b == NULL) {
+    if (b == ((void*)0)) {
         gdFree(out);
-        return NULL;
+        return ((void*)0);
     }
 
     cln->handler = ngx_http_image_cleanup;

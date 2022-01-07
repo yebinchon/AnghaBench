@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_2__* sys; } ;
-typedef  TYPE_1__ audio_output_t ;
-struct TYPE_6__ {int /*<<< orphan*/  stream; int /*<<< orphan*/ * client; } ;
-typedef  TYPE_2__ aout_sys_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ audio_output_t ;
+struct TYPE_6__ {int stream; int * client; } ;
+typedef TYPE_2__ aout_sys_t ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EnterMTA () ; 
- int /*<<< orphan*/  LeaveMTA () ; 
- int /*<<< orphan*/  aout_stream_Flush (int /*<<< orphan*/ ) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_FromHR (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ int EnterMTA () ;
+ int LeaveMTA () ;
+ int aout_stream_Flush (int ) ;
+ scalar_t__ unlikely (int ) ;
+ int vlc_FromHR (TYPE_1__*,int ) ;
 
 __attribute__((used)) static void Flush(audio_output_t *aout)
 {
     aout_sys_t *sys = aout->sys;
-    if( unlikely( sys->client == NULL ) )
+    if( unlikely( sys->client == ((void*)0) ) )
         return;
 
     EnterMTA();

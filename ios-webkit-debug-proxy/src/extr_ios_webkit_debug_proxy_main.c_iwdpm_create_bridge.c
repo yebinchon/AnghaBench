@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* sm_t ;
-typedef  TYPE_2__* iwdpm_t ;
-typedef  TYPE_3__* iwdp_t ;
-struct TYPE_10__ {int /*<<< orphan*/ * is_debug; TYPE_2__* state; int /*<<< orphan*/  remove_fd; int /*<<< orphan*/  add_fd; int /*<<< orphan*/  send; int /*<<< orphan*/  connect; int /*<<< orphan*/  listen; int /*<<< orphan*/  select_port; int /*<<< orphan*/  attach; int /*<<< orphan*/  subscribe; } ;
-struct TYPE_9__ {int /*<<< orphan*/  is_debug; TYPE_3__* iwdp; TYPE_1__* sm; int /*<<< orphan*/  sim_wi_socket_addr; int /*<<< orphan*/  frontend; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * is_debug; TYPE_2__* state; int /*<<< orphan*/  on_close; int /*<<< orphan*/  on_recv; int /*<<< orphan*/  on_sent; int /*<<< orphan*/  on_accept; } ;
 
-/* Variables and functions */
- TYPE_3__* iwdp_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  iwdpm_add_fd ; 
- int /*<<< orphan*/  iwdpm_attach ; 
- int /*<<< orphan*/  iwdpm_connect ; 
- int /*<<< orphan*/  iwdpm_listen ; 
- int /*<<< orphan*/  iwdpm_on_accept ; 
- int /*<<< orphan*/  iwdpm_on_close ; 
- int /*<<< orphan*/  iwdpm_on_recv ; 
- int /*<<< orphan*/  iwdpm_on_sent ; 
- int /*<<< orphan*/  iwdpm_remove_fd ; 
- int /*<<< orphan*/  iwdpm_select_port ; 
- int /*<<< orphan*/  iwdpm_send ; 
- int /*<<< orphan*/  iwdpm_subscribe ; 
- int /*<<< orphan*/  sm_free (TYPE_1__*) ; 
- TYPE_1__* sm_new (int) ; 
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef TYPE_1__* sm_t ;
+typedef TYPE_2__* iwdpm_t ;
+typedef TYPE_3__* iwdp_t ;
+struct TYPE_10__ {int * is_debug; TYPE_2__* state; int remove_fd; int add_fd; int send; int connect; int listen; int select_port; int attach; int subscribe; } ;
+struct TYPE_9__ {int is_debug; TYPE_3__* iwdp; TYPE_1__* sm; int sim_wi_socket_addr; int frontend; } ;
+struct TYPE_8__ {int * is_debug; TYPE_2__* state; int on_close; int on_recv; int on_sent; int on_accept; } ;
+
+
+ TYPE_3__* iwdp_new (int ,int ) ;
+ int iwdpm_add_fd ;
+ int iwdpm_attach ;
+ int iwdpm_connect ;
+ int iwdpm_listen ;
+ int iwdpm_on_accept ;
+ int iwdpm_on_close ;
+ int iwdpm_on_recv ;
+ int iwdpm_on_sent ;
+ int iwdpm_remove_fd ;
+ int iwdpm_select_port ;
+ int iwdpm_send ;
+ int iwdpm_subscribe ;
+ int sm_free (TYPE_1__*) ;
+ TYPE_1__* sm_new (int) ;
 
 void iwdpm_create_bridge(iwdpm_t self) {
   sm_t sm = sm_new(4096);

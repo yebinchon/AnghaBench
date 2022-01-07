@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  services_discovery_t ;
-typedef  int /*<<< orphan*/  netbios_ns_entry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  entry_item_remove (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int services_discovery_t ;
+typedef int netbios_ns_entry ;
+
+
+ int entry_item_remove (int *,int *) ;
 
 __attribute__((used)) static void netbios_ns_discover_on_entry_removed( void *p_opaque,
                                                   netbios_ns_entry *p_entry )

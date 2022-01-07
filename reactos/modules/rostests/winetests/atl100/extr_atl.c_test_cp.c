@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int HRESULT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int AtlAdvise (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int AtlUnadvise (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  CLSID_Test ; 
- int /*<<< orphan*/  ConnectionPointContainer ; 
- int E_INVALIDARG ; 
- int S_OK ; 
- int advise_cnt ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
+
+
+
+typedef int IUnknown ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int AtlAdvise (int *,int *,int *,int*) ;
+ int AtlUnadvise (int *,int *,int) ;
+ int CLSID_Test ;
+ int ConnectionPointContainer ;
+ int E_INVALIDARG ;
+ int S_OK ;
+ int advise_cnt ;
+ int ok (int,char*,int) ;
 
 __attribute__((used)) static void test_cp(void)
 {
     DWORD cookie = 0;
     HRESULT hres;
 
-    hres = AtlAdvise(NULL, (IUnknown*)0xdeed0000, &CLSID_Test, &cookie);
+    hres = AtlAdvise(((void*)0), (IUnknown*)0xdeed0000, &CLSID_Test, &cookie);
     ok(hres == E_INVALIDARG, "expect E_INVALIDARG, returned %08x\n", hres);
 
-    hres = AtlUnadvise(NULL, &CLSID_Test, 0xdeadbeef);
+    hres = AtlUnadvise(((void*)0), &CLSID_Test, 0xdeadbeef);
     ok(hres == E_INVALIDARG, "expect E_INVALIDARG, returned %08x\n", hres);
 
     hres = AtlAdvise((IUnknown*)&ConnectionPointContainer, (IUnknown*)0xdead0000, &CLSID_Test, &cookie);

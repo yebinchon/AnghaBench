@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  umode_t ;
+
+
+
+
+typedef int umode_t ;
 struct kobject {int dummy; } ;
 struct device {int dummy; } ;
-struct attribute {int /*<<< orphan*/  mode; } ;
+struct attribute {int mode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PORT_FEATURE_ID_ERROR ; 
- int /*<<< orphan*/  dfl_get_feature_by_id (struct device*,int /*<<< orphan*/ ) ; 
- struct device* kobj_to_dev (struct kobject*) ; 
+
+ int PORT_FEATURE_ID_ERROR ;
+ int dfl_get_feature_by_id (struct device*,int ) ;
+ struct device* kobj_to_dev (struct kobject*) ;
 
 __attribute__((used)) static umode_t port_err_attrs_visible(struct kobject *kobj,
-				      struct attribute *attr, int n)
+          struct attribute *attr, int n)
 {
-	struct device *dev = kobj_to_dev(kobj);
+ struct device *dev = kobj_to_dev(kobj);
 
-	/*
-	 * sysfs entries are visible only if related private feature is
-	 * enumerated.
-	 */
-	if (!dfl_get_feature_by_id(dev, PORT_FEATURE_ID_ERROR))
-		return 0;
 
-	return attr->mode;
+
+
+
+ if (!dfl_get_feature_by_id(dev, PORT_FEATURE_ID_ERROR))
+  return 0;
+
+ return attr->mode;
 }

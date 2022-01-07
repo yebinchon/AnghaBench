@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hx509_crypto ;
-typedef  int /*<<< orphan*/  hx509_context ;
-struct TYPE_5__ {int /*<<< orphan*/  length; int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ heim_octet_string ;
 
-/* Variables and functions */
- int decode_CMSCBCParameter (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hx509_clear_error_string (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int hx509_crypto ;
+typedef int hx509_context ;
+struct TYPE_5__ {int length; int data; } ;
+typedef TYPE_1__ heim_octet_string ;
+
+
+ int decode_CMSCBCParameter (int ,int ,TYPE_1__*,int *) ;
+ int hx509_clear_error_string (int ) ;
 
 __attribute__((used)) static int
 CMSCBCParam_set(hx509_context context, const heim_octet_string *param,
-		hx509_crypto crypto, heim_octet_string *ivec)
+  hx509_crypto crypto, heim_octet_string *ivec)
 {
     int ret;
-    if (ivec == NULL)
-	return 0;
+    if (ivec == ((void*)0))
+ return 0;
 
-    ret = decode_CMSCBCParameter(param->data, param->length, ivec, NULL);
+    ret = decode_CMSCBCParameter(param->data, param->length, ivec, ((void*)0));
     if (ret)
-	hx509_clear_error_string(context);
+ hx509_clear_error_string(context);
 
     return ret;
 }

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  U16 ;
-typedef  int BYTE ;
 
-/* Variables and functions */
- scalar_t__ FSE_isLittleEndian () ; 
- int /*<<< orphan*/  FSE_read16 (void const*) ; 
+
+
+
+typedef int U16 ;
+typedef int BYTE ;
+
+
+ scalar_t__ FSE_isLittleEndian () ;
+ int FSE_read16 (void const*) ;
 
 __attribute__((used)) static U16 FSE_readLE16(const void* memPtr)
 {

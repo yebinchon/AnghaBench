@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  YYSTYPE ;
-struct TYPE_3__ {unsigned int stacksize; int /*<<< orphan*/ * s_base; int /*<<< orphan*/ * s_last; int /*<<< orphan*/ * l_mark; int /*<<< orphan*/ * l_base; int /*<<< orphan*/ * s_mark; } ;
-typedef  TYPE_1__ YYSTACKDATA ;
-typedef  int /*<<< orphan*/  YYINT ;
 
-/* Variables and functions */
- int YYENOMEM ; 
- unsigned int YYINITSTACKSIZE ; 
- unsigned int YYMAXDEPTH ; 
- scalar_t__ realloc (int /*<<< orphan*/ *,unsigned int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int YYSTYPE ;
+struct TYPE_3__ {unsigned int stacksize; int * s_base; int * s_last; int * l_mark; int * l_base; int * s_mark; } ;
+typedef TYPE_1__ YYSTACKDATA ;
+typedef int YYINT ;
+
+
+ int YYENOMEM ;
+ unsigned int YYINITSTACKSIZE ;
+ unsigned int YYMAXDEPTH ;
+ scalar_t__ realloc (int *,unsigned int) ;
 
 __attribute__((used)) static int yygrowstack(YYSTACKDATA *data)
 {

@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  free_count ; 
- int /*<<< orphan*/  malloc_count ; 
- int /*<<< orphan*/  realloc_count ; 
- int tsan_load (int /*<<< orphan*/ *) ; 
+ int free_count ;
+ int malloc_count ;
+ int realloc_count ;
+ int tsan_load (int *) ;
 
 void CRYPTO_get_alloc_counts(int *mcount, int *rcount, int *fcount)
 {
-    if (mcount != NULL)
+    if (mcount != ((void*)0))
         *mcount = tsan_load(&malloc_count);
-    if (rcount != NULL)
+    if (rcount != ((void*)0))
         *rcount = tsan_load(&realloc_count);
-    if (fcount != NULL)
+    if (fcount != ((void*)0))
         *fcount = tsan_load(&free_count);
 }

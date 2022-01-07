@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct i387_fsave {unsigned long fioff; unsigned long fooff; unsigned long fop; int /*<<< orphan*/  foseg; int /*<<< orphan*/  fiseg; int /*<<< orphan*/  ftag; int /*<<< orphan*/  fstat; int /*<<< orphan*/  fctrl; int /*<<< orphan*/ * st_space; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  collect_register (int,char*) ; 
- int /*<<< orphan*/  collect_register_by_name (char*,unsigned long*) ; 
- int find_regno (char*) ; 
+
+
+
+struct i387_fsave {unsigned long fioff; unsigned long fooff; unsigned long fop; int foseg; int fiseg; int ftag; int fstat; int fctrl; int * st_space; } ;
+
+
+ int collect_register (int,char*) ;
+ int collect_register_by_name (char*,unsigned long*) ;
+ int find_regno (char*) ;
 
 void
 i387_cache_to_fsave (void *buf)
@@ -30,12 +30,12 @@ i387_cache_to_fsave (void *buf)
 
   collect_register_by_name ("fioff", &fp->fioff);
   collect_register_by_name ("fooff", &fp->fooff);
-  
-  /* This one's 11 bits... */
+
+
   collect_register_by_name ("fop", &val2);
   fp->fop = (val2 & 0x7FF) | (fp->fop & 0xF800);
 
-  /* Some registers are 16-bit.  */
+
   collect_register_by_name ("fctrl", &val);
   *(unsigned short *) &fp->fctrl = val;
 

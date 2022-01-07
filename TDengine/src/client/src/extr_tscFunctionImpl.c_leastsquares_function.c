@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  float int8_t ;
-typedef  float int64_t ;
-typedef  size_t int32_t ;
-typedef  float int16_t ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef float int8_t ;
+typedef float int64_t ;
+typedef size_t int32_t ;
+typedef float int16_t ;
 struct TYPE_14__ {double** mat; double startVal; size_t num; } ;
-struct TYPE_13__ {int inputType; size_t size; TYPE_1__* param; int /*<<< orphan*/  hasNull; } ;
-struct TYPE_12__ {int /*<<< orphan*/  hasResult; TYPE_4__* interResultBuf; } ;
+struct TYPE_13__ {int inputType; size_t size; TYPE_1__* param; int hasNull; } ;
+struct TYPE_12__ {int hasResult; TYPE_4__* interResultBuf; } ;
 struct TYPE_11__ {double dKey; } ;
-typedef  TYPE_2__ SResultInfo ;
-typedef  TYPE_3__ SQLFunctionCtx ;
-typedef  TYPE_4__ SLeastsquareInfo ;
+typedef TYPE_2__ SResultInfo ;
+typedef TYPE_3__ SQLFunctionCtx ;
+typedef TYPE_4__ SLeastsquareInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DATA_SET_FLAG ; 
- void* GET_INPUT_CHAR (TYPE_3__*) ; 
- TYPE_2__* GET_RES_INFO (TYPE_3__*) ; 
- int /*<<< orphan*/  LEASTSQR_CAL_LOOP (TYPE_3__*,double**,double,...) ; 
- int /*<<< orphan*/  SET_VAL (TYPE_3__*,size_t,int) ; 
-#define  TSDB_DATA_TYPE_BIGINT 133 
-#define  TSDB_DATA_TYPE_DOUBLE 132 
-#define  TSDB_DATA_TYPE_FLOAT 131 
-#define  TSDB_DATA_TYPE_INT 130 
-#define  TSDB_DATA_TYPE_SMALLINT 129 
-#define  TSDB_DATA_TYPE_TINYINT 128 
- int /*<<< orphan*/  isNull (size_t*,int) ; 
+
+ int DATA_SET_FLAG ;
+ void* GET_INPUT_CHAR (TYPE_3__*) ;
+ TYPE_2__* GET_RES_INFO (TYPE_3__*) ;
+ int LEASTSQR_CAL_LOOP (TYPE_3__*,double**,double,...) ;
+ int SET_VAL (TYPE_3__*,size_t,int) ;
+
+
+
+
+
+
+ int isNull (size_t*,int) ;
 
 __attribute__((used)) static void leastsquares_function(SQLFunctionCtx *pCtx) {
-  SResultInfo *     pResInfo = GET_RES_INFO(pCtx);
+  SResultInfo * pResInfo = GET_RES_INFO(pCtx);
   SLeastsquareInfo *pInfo = pResInfo->interResultBuf;
 
   double(*param)[3] = pInfo->mat;
@@ -51,9 +51,9 @@ __attribute__((used)) static void leastsquares_function(SQLFunctionCtx *pCtx) {
 
   int32_t numOfElem = 0;
   switch (pCtx->inputType) {
-    case TSDB_DATA_TYPE_INT: {
+    case 130: {
       int32_t *p = pData;
-      //            LEASTSQR_CAL_LOOP(pCtx, param, pParamData, p);
+
       for (int32_t i = 0; i < pCtx->size; ++i) {
         if (pCtx->hasNull && isNull(p, pCtx->inputType)) {
           continue;
@@ -69,27 +69,27 @@ __attribute__((used)) static void leastsquares_function(SQLFunctionCtx *pCtx) {
       }
       break;
     };
-    case TSDB_DATA_TYPE_BIGINT: {
+    case 133: {
       int64_t *p = pData;
       LEASTSQR_CAL_LOOP(pCtx, param, x, p, pCtx->inputType, numOfElem, pCtx->param[1].dKey);
       break;
     };
-    case TSDB_DATA_TYPE_DOUBLE: {
+    case 132: {
       double *p = pData;
       LEASTSQR_CAL_LOOP(pCtx, param, x, p, pCtx->inputType, numOfElem, pCtx->param[1].dKey);
       break;
     };
-    case TSDB_DATA_TYPE_FLOAT: {
+    case 131: {
       float *p = pData;
       LEASTSQR_CAL_LOOP(pCtx, param, x, p, pCtx->inputType, numOfElem, pCtx->param[1].dKey);
       break;
     };
-    case TSDB_DATA_TYPE_SMALLINT: {
+    case 129: {
       int16_t *p = pData;
       LEASTSQR_CAL_LOOP(pCtx, param, x, p, pCtx->inputType, numOfElem, pCtx->param[1].dKey);
       break;
     };
-    case TSDB_DATA_TYPE_TINYINT: {
+    case 128: {
       int8_t *p = pData;
       LEASTSQR_CAL_LOOP(pCtx, param, x, p, pCtx->inputType, numOfElem, pCtx->param[1].dKey);
       break;

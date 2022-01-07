@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ FIELD_GET (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  NFP_FLOWER_CMSG_PORT_TYPE ; 
- scalar_t__ NFP_FLOWER_CMSG_PORT_TYPE_PHYS_PORT ; 
+ scalar_t__ FIELD_GET (int ,int) ;
+ int NFP_FLOWER_CMSG_PORT_TYPE ;
+ scalar_t__ NFP_FLOWER_CMSG_PORT_TYPE_PHYS_PORT ;
 
 __attribute__((used)) static bool nfp_tunnel_port_is_phy_repr(int port)
 {
-	if (FIELD_GET(NFP_FLOWER_CMSG_PORT_TYPE, port) ==
-	    NFP_FLOWER_CMSG_PORT_TYPE_PHYS_PORT)
-		return true;
+ if (FIELD_GET(NFP_FLOWER_CMSG_PORT_TYPE, port) ==
+     NFP_FLOWER_CMSG_PORT_TYPE_PHYS_PORT)
+  return 1;
 
-	return false;
+ return 0;
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * lacp_system_ref ;
-typedef  int /*<<< orphan*/  lacp_system_priority ;
-typedef  TYPE_1__* bond_globals_ref ;
-struct TYPE_4__ {int /*<<< orphan*/  system_priority; int /*<<< orphan*/  system; int /*<<< orphan*/  ifbond_list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_BOND ; 
- int M_WAITOK ; 
- int M_ZERO ; 
- int /*<<< orphan*/  TAILQ_INIT (int /*<<< orphan*/ *) ; 
- TYPE_1__* _MALLOC (int,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int * lacp_system_ref ;
+typedef int lacp_system_priority ;
+typedef TYPE_1__* bond_globals_ref ;
+struct TYPE_4__ {int system_priority; int system; int ifbond_list; } ;
+
+
+ int M_BOND ;
+ int M_WAITOK ;
+ int M_ZERO ;
+ int TAILQ_INIT (int *) ;
+ TYPE_1__* _MALLOC (int,int ,int) ;
 
 __attribute__((used)) static bond_globals_ref
 bond_globals_create(lacp_system_priority sys_pri,
-		    lacp_system_ref sys)
+      lacp_system_ref sys)
 {
-    bond_globals_ref	b;
+    bond_globals_ref b;
 
     b = _MALLOC(sizeof(*b), M_BOND, M_WAITOK | M_ZERO);
-    if (b == NULL) {
-	return (NULL);
+    if (b == ((void*)0)) {
+ return (((void*)0));
     }
     TAILQ_INIT(&b->ifbond_list);
     b->system = *sys;

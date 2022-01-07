@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CORE_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BREAK_FETCH ; 
- int /*<<< orphan*/  MIPS_INSTLEN ; 
- int memory_insert_breakpoint (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ monitor_supports_breakpoints ; 
- int set_breakpoint (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int CORE_ADDR ;
+
+
+ int BREAK_FETCH ;
+ int MIPS_INSTLEN ;
+ int memory_insert_breakpoint (int ,char*) ;
+ scalar_t__ monitor_supports_breakpoints ;
+ int set_breakpoint (int ,int ,int ) ;
 
 __attribute__((used)) static int
 mips_insert_breakpoint (CORE_ADDR addr, char *contents_cache)

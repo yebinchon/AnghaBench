@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct dll_version {void* revision; void* build; void* minor; void* major; int /*<<< orphan*/  member_0; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dwFileVersionLS; int /*<<< orphan*/  dwFileVersionMS; } ;
-typedef  TYPE_1__ VS_FIXEDFILEINFO ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  HRSRC ;
-typedef  int /*<<< orphan*/  HMODULE ;
-typedef  int /*<<< orphan*/  HGLOBAL ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FindResourceW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* HIWORD (int /*<<< orphan*/ ) ; 
- void* LOWORD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LoadResource (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* LockResource (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAKEINTRESOURCEW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SizeofResource (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VS_FILE_INFO ; 
- int /*<<< orphan*/  VS_VERSION_INFO ; 
- int /*<<< orphan*/  VerQueryValueW (void*,char*,void**,int*) ; 
- int /*<<< orphan*/  talloc_free (void*) ; 
- void* talloc_memdup (void*,void*,int /*<<< orphan*/ ) ; 
- void* talloc_new (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct dll_version {void* revision; void* build; void* minor; void* major; int member_0; } ;
+struct TYPE_2__ {int dwFileVersionLS; int dwFileVersionMS; } ;
+typedef TYPE_1__ VS_FIXEDFILEINFO ;
+typedef int UINT ;
+typedef int HRSRC ;
+typedef int HMODULE ;
+typedef int HGLOBAL ;
+typedef int DWORD ;
+
+
+ int FindResourceW (int ,int ,int ) ;
+ void* HIWORD (int ) ;
+ void* LOWORD (int ) ;
+ int LoadResource (int ,int ) ;
+ void* LockResource (int ) ;
+ int MAKEINTRESOURCEW (int ) ;
+ int SizeofResource (int ,int ) ;
+ int VS_FILE_INFO ;
+ int VS_VERSION_INFO ;
+ int VerQueryValueW (void*,char*,void**,int*) ;
+ int talloc_free (void*) ;
+ void* talloc_memdup (void*,void*,int ) ;
+ void* talloc_new (int *) ;
 
 __attribute__((used)) static struct dll_version get_dll_version(HMODULE dll)
 {
-    void *ctx = talloc_new(NULL);
+    void *ctx = talloc_new(((void*)0));
     struct dll_version ret = { 0 };
 
     HRSRC rsrc = FindResourceW(dll, MAKEINTRESOURCEW(VS_VERSION_INFO),

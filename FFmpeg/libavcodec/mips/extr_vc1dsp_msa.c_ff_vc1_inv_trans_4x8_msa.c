@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  v8i16 ;
-typedef  int v4i32 ;
-struct TYPE_14__ {int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  ptrdiff_t ;
-typedef  int /*<<< orphan*/  int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD4 (int,int,int,int,int,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  CLIP_SW8_0_255 (int,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  ILVR_B8_SW (TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,int,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  ILVR_H4_SW (TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,int,int,int,int) ; 
- int /*<<< orphan*/  LD_SH8 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LD_SW8 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  PCKEV_B2_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PCKEV_H4_SH (int,int,int,int,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ST_D8 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ST_W8 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRANSPOSE4x4_SW_SW (int,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  UNPCK_R_SH_SW (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int v8i16 ;
+typedef int v4i32 ;
+struct TYPE_14__ {int member_0; } ;
+typedef TYPE_1__ v16i8 ;
+typedef int uint8_t ;
+typedef int ptrdiff_t ;
+typedef int int16_t ;
+
+
+ int ADD4 (int,int,int,int,int,int,int,int,int,int,int,int) ;
+ int CLIP_SW8_0_255 (int,int,int,int,int,int,int,int) ;
+ int ILVR_B8_SW (TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,int,int,int,int,int,int,int,int) ;
+ int ILVR_H4_SW (TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,int,int,int,int) ;
+ int LD_SH8 (int *,int,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int LD_SW8 (int *,int ,int,int,int,int,int,int,int,int) ;
+ int PCKEV_B2_SH (int ,int ,int ,int ,int ,int ) ;
+ int PCKEV_H4_SH (int,int,int,int,int,int,int,int,int ,int ,int ,int ) ;
+ int ST_D8 (int ,int ,int ,int ,int ,int,int ,int,int ,int,int ,int,int *,int) ;
+ int ST_W8 (int ,int ,int ,int,int,int,int ,int,int,int,int *,int ) ;
+ int TRANSPOSE4x4_SW_SW (int,int,int,int,int,int,int,int) ;
+ int UNPCK_R_SH_SW (int ,int) ;
 
 void ff_vc1_inv_trans_4x8_msa(uint8_t *dest, ptrdiff_t linesize, int16_t *block)
 {
@@ -61,7 +61,7 @@ void ff_vc1_inv_trans_4x8_msa(uint8_t *dest, ptrdiff_t linesize, int16_t *block)
     UNPCK_R_SH_SW(in5, in_r5);
     UNPCK_R_SH_SW(in6, in_r6);
     UNPCK_R_SH_SW(in7, in_r7);
-    // First loop
+
     TRANSPOSE4x4_SW_SW(in_r0, in_r1, in_r2, in_r3, in_r0, in_r1, in_r2, in_r3);
     TRANSPOSE4x4_SW_SW(in_r4, in_r5, in_r6, in_r7, in_r4, in_r5, in_r6, in_r7);
     t1 = cnst_17 * (in_r0 + in_r2) + cnst_4;
@@ -86,7 +86,7 @@ void ff_vc1_inv_trans_4x8_msa(uint8_t *dest, ptrdiff_t linesize, int16_t *block)
     PCKEV_H4_SH(in_r1, in_r0, in_r3, in_r2, in_r5, in_r4, in_r7, in_r6,
                 in0, in1, in2, in3);
     ST_D8(in0, in1, in2, in3, 0, 1, 0, 1, 0, 1, 0, 1, block, 8);
-    // Second loop
+
     t1 = cnst_12 * (in_r0 + in_r4) + cnst_64;
     t2 = cnst_12 * (in_r0 - in_r4) + cnst_64;
     t3 = cnst_16 * in_r2 + cnst_6 * in_r6;

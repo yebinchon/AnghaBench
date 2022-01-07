@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ nschannel; scalar_t__ is_doc_channel; } ;
-typedef  TYPE_1__ nsChannelBSC ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BSCallback ;
+typedef TYPE_1__ nsChannelBSC ;
+typedef int HRESULT ;
+typedef int BSCallback ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_ABORT ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  async_stop_request (TYPE_1__*) ; 
- int /*<<< orphan*/  handle_navigation_error (TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_1__* nsChannelBSC_from_BSCallback (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  on_stop_nsrequest (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ int E_ABORT ;
+ scalar_t__ FAILED (int ) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int async_stop_request (TYPE_1__*) ;
+ int handle_navigation_error (TYPE_1__*,int ) ;
+ TYPE_1__* nsChannelBSC_from_BSCallback (int *) ;
+ int on_stop_nsrequest (TYPE_1__*,int ) ;
 
 __attribute__((used)) static HRESULT nsChannelBSC_stop_binding(BSCallback *bsc, HRESULT result)
 {

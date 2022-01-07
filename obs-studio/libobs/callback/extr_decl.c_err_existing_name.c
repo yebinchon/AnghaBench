@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cf_parser {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LEX_ERROR ; 
- int /*<<< orphan*/  cf_adderror (struct cf_parser*,char*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int LEX_ERROR ;
+ int cf_adderror (struct cf_parser*,char*,int ,char const*,int *,int *) ;
 
 __attribute__((used)) static inline void err_existing_name(struct cf_parser *cfp, const char *name)
 {
-	cf_adderror(cfp, "'$1' already exists", LEX_ERROR, name, NULL, NULL);
+ cf_adderror(cfp, "'$1' already exists", LEX_ERROR, name, ((void*)0), ((void*)0));
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
 
-/* Variables and functions */
- int GET_MODE (int /*<<< orphan*/ ) ; 
- int GET_MODE_NUNITS (int) ; 
- int VOIDmode ; 
- scalar_t__ vspltis_constant (int /*<<< orphan*/ ,unsigned int,unsigned int) ; 
+
+
+
+typedef int rtx ;
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+
+
+ int GET_MODE (int ) ;
+ int GET_MODE_NUNITS (int) ;
+ int VOIDmode ;
+ scalar_t__ vspltis_constant (int ,unsigned int,unsigned int) ;
 
 bool
 easy_altivec_constant (rtx op, enum machine_mode mode)
@@ -27,32 +27,32 @@ easy_altivec_constant (rtx op, enum machine_mode mode)
   if (mode == VOIDmode)
     mode = GET_MODE (op);
   else if (mode != GET_MODE (op))
-    return false;
+    return 0;
 
-  /* Start with a vspltisw.  */
+
   step = GET_MODE_NUNITS (mode) / 4;
   copies = 1;
 
   if (vspltis_constant (op, step, copies))
-    return true;
+    return 1;
 
-  /* Then try with a vspltish.  */
+
   if (step == 1)
     copies <<= 1;
   else
     step >>= 1;
 
   if (vspltis_constant (op, step, copies))
-    return true;
+    return 1;
 
-  /* And finally a vspltisb.  */
+
   if (step == 1)
     copies <<= 1;
   else
     step >>= 1;
 
   if (vspltis_constant (op, step, copies))
-    return true;
+    return 1;
 
-  return false;
+  return 0;
 }

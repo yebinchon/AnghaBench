@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct clk {int /*<<< orphan*/  parent; } ;
 
-/* Variables and functions */
- int clk_get_rate (int /*<<< orphan*/ ) ; 
+
+
+
+struct clk {int parent; } ;
+
+
+ int clk_get_rate (int ) ;
 
 __attribute__((used)) static unsigned long clk_ckih_x2_get_rate(struct clk *clk)
 {
-	return 2 * clk_get_rate(clk->parent);
+ return 2 * clk_get_rate(clk->parent);
 }

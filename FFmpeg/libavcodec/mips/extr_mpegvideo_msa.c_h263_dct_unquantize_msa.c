@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int v8i16 ;
-typedef  int /*<<< orphan*/  v16u8 ;
-typedef  int uint8_t ;
-typedef  int int8_t ;
-typedef  int int32_t ;
-typedef  int int16_t ;
 
-/* Variables and functions */
- int LD_SH (int*) ; 
- int /*<<< orphan*/  ST_SH (int,int*) ; 
- scalar_t__ __msa_bmnz_v (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int __msa_ceqi_h (int,int /*<<< orphan*/ ) ; 
- int __msa_clti_s_h (int,int /*<<< orphan*/ ) ; 
- int __msa_fill_h (int) ; 
+
+
+
+typedef int v8i16 ;
+typedef int v16u8 ;
+typedef int uint8_t ;
+typedef int int8_t ;
+typedef int int32_t ;
+typedef int int16_t ;
+
+
+ int LD_SH (int*) ;
+ int ST_SH (int,int*) ;
+ scalar_t__ __msa_bmnz_v (int ,int ,int ) ;
+ int __msa_ceqi_h (int,int ) ;
+ int __msa_clti_s_h (int,int ) ;
+ int __msa_fill_h (int) ;
 
 __attribute__((used)) static void h263_dct_unquantize_msa(int16_t *block, int16_t qmul,
                                     int16_t qadd, int8_t n_coeffs,

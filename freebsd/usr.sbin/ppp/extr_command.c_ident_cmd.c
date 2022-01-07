@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int NEG_ACCEPTED ; 
- unsigned int NEG_ENABLED ; 
- unsigned int NEG_HISMASK ; 
- unsigned int NEG_MYMASK ; 
+ unsigned int NEG_ACCEPTED ;
+ unsigned int NEG_ENABLED ;
+ unsigned int NEG_HISMASK ;
+ unsigned int NEG_MYMASK ;
 
 __attribute__((used)) static const char *
 ident_cmd(const char *cmd, unsigned *keep, unsigned *add)
@@ -45,7 +37,7 @@ ident_cmd(const char *cmd, unsigned *keep, unsigned *add)
           *add = 0;
           break;
         default:
-          return NULL;
+          return ((void*)0);
       }
       break;
     case 'E':
@@ -55,7 +47,7 @@ ident_cmd(const char *cmd, unsigned *keep, unsigned *add)
       *add = NEG_ENABLED;
       break;
     default:
-      return NULL;
+      return ((void*)0);
   }
 
   return result;

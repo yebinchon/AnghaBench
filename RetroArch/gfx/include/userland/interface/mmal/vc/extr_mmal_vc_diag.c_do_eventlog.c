@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  log ;
-typedef  int VC_MEM_ADDR_T ;
-typedef  int /*<<< orphan*/  VC_MEM_ACCESS_HANDLE_T ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int log ;
+typedef int VC_MEM_ADDR_T ;
+typedef int VC_MEM_ACCESS_HANDLE_T ;
 struct TYPE_4__ {int magic; int size; int elemsize; int version; int index; int num_entries; } ;
-typedef  TYPE_1__ MMAL_DBG_LOG_T ;
-typedef  int /*<<< orphan*/  MMAL_DBG_ENTRY_T ;
+typedef TYPE_1__ MMAL_DBG_LOG_T ;
+typedef int MMAL_DBG_ENTRY_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseVideoCoreMemory (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LookupVideoCoreSymbol (int /*<<< orphan*/ ,char*,int*,size_t*) ; 
- int MMAL_MAGIC ; 
- int OpenVideoCoreMemory (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReadVideoCoreMemory (int /*<<< orphan*/ ,TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  ReadVideoCoreUInt32 (int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  print_mmal_event_log (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  printf (char*,int,int,int) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int CloseVideoCoreMemory (int ) ;
+ int LookupVideoCoreSymbol (int ,char*,int*,size_t*) ;
+ int MMAL_MAGIC ;
+ int OpenVideoCoreMemory (int *) ;
+ int ReadVideoCoreMemory (int ,TYPE_1__*,int,int) ;
+ int ReadVideoCoreUInt32 (int ,int*,int) ;
+ int fprintf (int ,char*,...) ;
+ int print_mmal_event_log (int ,TYPE_1__*) ;
+ int printf (char*,int,int,int) ;
+ int stderr ;
 
 __attribute__((used)) static int do_eventlog(int argc, const char **argv)
 {
    VC_MEM_ACCESS_HANDLE_T vc;
-   VC_MEM_ADDR_T addr;     /** The address of the pointer to the log */
+   VC_MEM_ADDR_T addr;
    size_t size;
-   VC_MEM_ADDR_T logaddr;       /** The address of the log itself */
+   VC_MEM_ADDR_T logaddr;
    MMAL_DBG_LOG_T log;
 
    (void)argc; (void)argv;

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct claw_privbk {struct claw_privbk* p_mtc_envelope; struct claw_privbk* p_env; } ;
-struct ccwgroup_device {int /*<<< orphan*/  dev; } ;
+struct ccwgroup_device {int dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLAW_DBF_TEXT (int,int /*<<< orphan*/ ,char*) ; 
- struct claw_privbk* dev_get_drvdata (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dev_set_drvdata (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (struct claw_privbk*) ; 
- int /*<<< orphan*/  trace ; 
+
+ int CLAW_DBF_TEXT (int,int ,char*) ;
+ struct claw_privbk* dev_get_drvdata (int *) ;
+ int dev_set_drvdata (int *,int *) ;
+ int kfree (struct claw_privbk*) ;
+ int trace ;
 
 __attribute__((used)) static void
 probe_error( struct ccwgroup_device *cgdev)
 {
-	struct claw_privbk *privptr;
+ struct claw_privbk *privptr;
 
-	CLAW_DBF_TEXT(4, trace, "proberr");
-	privptr = dev_get_drvdata(&cgdev->dev);
-	if (privptr != NULL) {
-		dev_set_drvdata(&cgdev->dev, NULL);
-		kfree(privptr->p_env);
-		kfree(privptr->p_mtc_envelope);
-		kfree(privptr);
-	}
+ CLAW_DBF_TEXT(4, trace, "proberr");
+ privptr = dev_get_drvdata(&cgdev->dev);
+ if (privptr != ((void*)0)) {
+  dev_set_drvdata(&cgdev->dev, ((void*)0));
+  kfree(privptr->p_env);
+  kfree(privptr->p_mtc_envelope);
+  kfree(privptr);
+ }
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int spec_start; scalar_t__ succ_high; int succ_low; int eob_run; int spec_end; int code_bits; int code_buffer; } ;
-typedef  TYPE_1__ rjpeg_jpeg ;
-typedef  int /*<<< orphan*/  rjpeg_huffman ;
-typedef  int int16_t ;
+typedef TYPE_1__ rjpeg_jpeg ;
+typedef int rjpeg_huffman ;
+typedef int int16_t ;
 
-/* Variables and functions */
- int FAST_BITS ; 
- int rjpeg_extend_receive (TYPE_1__*,int) ; 
- int /*<<< orphan*/  rjpeg_grow_buffer_unsafe (TYPE_1__*) ; 
- size_t* rjpeg_jpeg_dezigzag ; 
- scalar_t__ rjpeg_jpeg_get_bit (TYPE_1__*) ; 
- scalar_t__ rjpeg_jpeg_get_bits (TYPE_1__*,int) ; 
- int rjpeg_jpeg_huff_decode (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+ int FAST_BITS ;
+ int rjpeg_extend_receive (TYPE_1__*,int) ;
+ int rjpeg_grow_buffer_unsafe (TYPE_1__*) ;
+ size_t* rjpeg_jpeg_dezigzag ;
+ scalar_t__ rjpeg_jpeg_get_bit (TYPE_1__*) ;
+ scalar_t__ rjpeg_jpeg_get_bits (TYPE_1__*,int) ;
+ int rjpeg_jpeg_huff_decode (TYPE_1__*,int *) ;
 
 __attribute__((used)) static int rjpeg_jpeg_decode_block_prog_ac(
       rjpeg_jpeg *j,
@@ -33,7 +33,7 @@ __attribute__((used)) static int rjpeg_jpeg_decode_block_prog_ac(
 {
    int k;
 
-   /* Can't merge DC and AC. Corrupt JPEG? */
+
    if (j->spec_start == 0)
       return 0;
 
@@ -58,19 +58,19 @@ __attribute__((used)) static int rjpeg_jpeg_decode_block_prog_ac(
          r = fac[c];
          if (r)
          {
-            /* fast-AC path */
-            k               += (r >> 4) & 15; /* run */
-            s                = r & 15; /* combined length */
+
+            k += (r >> 4) & 15;
+            s = r & 15;
             j->code_buffer <<= s;
-            j->code_bits    -= s;
-            zig              = rjpeg_jpeg_dezigzag[k++];
-            data[zig]        = (short) ((r >> 8) << shift);
+            j->code_bits -= s;
+            zig = rjpeg_jpeg_dezigzag[k++];
+            data[zig] = (short) ((r >> 8) << shift);
          }
          else
          {
             int rs = rjpeg_jpeg_huff_decode(j, hac);
 
-            /* Bad huffman code. Corrupt JPEG? */
+
             if (rs < 0)
                return 0;
 
@@ -90,16 +90,16 @@ __attribute__((used)) static int rjpeg_jpeg_decode_block_prog_ac(
             }
             else
             {
-               k         += r;
-               zig        = rjpeg_jpeg_dezigzag[k++];
-               data[zig]  = (short) (rjpeg_extend_receive(j,s) << shift);
+               k += r;
+               zig = rjpeg_jpeg_dezigzag[k++];
+               data[zig] = (short) (rjpeg_extend_receive(j,s) << shift);
             }
          }
       } while (k <= j->spec_end);
    }
    else
    {
-      /* refinement scan for these AC coefficients */
+
 
       short bit = (short) (1 << j->succ_low);
 
@@ -128,7 +128,7 @@ __attribute__((used)) static int rjpeg_jpeg_decode_block_prog_ac(
             int r,s;
             int rs = rjpeg_jpeg_huff_decode(j, hac);
 
-            /* Bad huffman code. Corrupt JPEG? */
+
             if (rs < 0)
                return 0;
 
@@ -141,29 +141,29 @@ __attribute__((used)) static int rjpeg_jpeg_decode_block_prog_ac(
                   j->eob_run = (1 << r) - 1;
                   if (r)
                      j->eob_run += rjpeg_jpeg_get_bits(j, r);
-                  r = 64; /* force end of block */
+                  r = 64;
                }
                else
                {
-                  /* r=15 s=0 should write 16 0s, so we just do
-                   * a run of 15 0s and then write s (which is 0),
-                   * so we don't have to do anything special here */
+
+
+
                }
             }
             else
             {
-               /* Bad huffman code. Corrupt JPEG? */
+
                if (s != 1)
                   return 0;
 
-               /* sign bit */
+
                if (rjpeg_jpeg_get_bit(j))
                   s = bit;
                else
                   s = -bit;
             }
 
-            /* advance by r */
+
             while (k <= j->spec_end)
             {
                short *p = &data[rjpeg_jpeg_dezigzag[k++]];

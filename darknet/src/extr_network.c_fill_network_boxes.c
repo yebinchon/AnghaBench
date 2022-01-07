@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int n; int /*<<< orphan*/  h; int /*<<< orphan*/  w; TYPE_2__* layers; } ;
-typedef  TYPE_1__ network ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int n; int h; int w; TYPE_2__* layers; } ;
+typedef TYPE_1__ network ;
 struct TYPE_8__ {scalar_t__ type; int w; int h; int n; } ;
-typedef  TYPE_2__ layer ;
-typedef  int /*<<< orphan*/  detection ;
+typedef TYPE_2__ layer ;
+typedef int detection ;
 
-/* Variables and functions */
- scalar_t__ DETECTION ; 
- scalar_t__ REGION ; 
- scalar_t__ YOLO ; 
- int /*<<< orphan*/  get_detection_detections (TYPE_2__,int,int,float,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_region_detections (TYPE_2__,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,float,int*,float,int,int /*<<< orphan*/ *) ; 
- int get_yolo_detections (TYPE_2__,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,float,int*,int,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ DETECTION ;
+ scalar_t__ REGION ;
+ scalar_t__ YOLO ;
+ int get_detection_detections (TYPE_2__,int,int,float,int *) ;
+ int get_region_detections (TYPE_2__,int,int,int ,int ,float,int*,float,int,int *) ;
+ int get_yolo_detections (TYPE_2__,int,int,int ,int ,float,int*,int,int *) ;
 
 void fill_network_boxes(network *net, int w, int h, float thresh, float hier, int *map, int relative, detection *dets)
 {

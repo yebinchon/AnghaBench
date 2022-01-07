@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int last_fail_time; int sequential_fails; int success; int fails; } ;
-struct TYPE_5__ {int /*<<< orphan*/  fails; int /*<<< orphan*/  success; int /*<<< orphan*/  sequential_fails; int /*<<< orphan*/  last_fail_time; } ;
+struct TYPE_5__ {int fails; int success; int sequential_fails; int last_fail_time; } ;
 struct TYPE_7__ {scalar_t__ fd_rdonly; scalar_t__ fd_wronly; char* abs_filename; int dir_id; TYPE_2__ st_read; scalar_t__ size; TYPE_1__ st_fsync; } ;
-typedef  TYPE_3__ storage_binlog_file_t ;
+typedef TYPE_3__ storage_binlog_file_t ;
 
-/* Variables and functions */
- int sprintf (char*,char*,int,int,char*,int,int,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ strlen (char*) ; 
+
+ int sprintf (char*,char*,int,int,char*,int,int,int,int,int,int,int ,int ,int ,int ) ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static int get_binlog_file_serialized (char *buffer, storage_binlog_file_t *B) {
   int mode = 0;

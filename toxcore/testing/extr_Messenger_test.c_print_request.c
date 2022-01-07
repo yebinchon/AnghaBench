@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  Messenger ;
 
-/* Variables and functions */
- int /*<<< orphan*/  m_addfriend_norequest (int /*<<< orphan*/ *,int const*) ; 
- scalar_t__ memcmp (int const*,char*,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int Messenger ;
+
+
+ int m_addfriend_norequest (int *,int const*) ;
+ scalar_t__ memcmp (int const*,char*,int) ;
+ int printf (char*,...) ;
 
 void print_request(Messenger *m, const uint8_t *public_key, const uint8_t *data, size_t length, void *userdata)
 {
@@ -39,7 +39,7 @@ void print_request(Messenger *m, const uint8_t *public_key, const uint8_t *data,
     }
 
     if (memcmp(data , "Install Gentoo", sizeof("Install Gentoo")) == 0 )
-        //if the request contained the message of peace the person is obviously a friend so we add him.
+
     {
         printf("Friend request accepted.\n");
         m_addfriend_norequest(m, public_key);

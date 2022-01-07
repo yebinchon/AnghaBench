@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct tm {int dummy; } ;
-typedef  int /*<<< orphan*/  maps ;
-struct TYPE_2__ {char* member_0; char* member_1; int /*<<< orphan*/  format; int /*<<< orphan*/  pattern; } ;
-typedef  TYPE_1__ datemap ;
+typedef int maps ;
+struct TYPE_2__ {char* member_0; char* member_1; int format; int pattern; } ;
+typedef TYPE_1__ datemap ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_small_strptime (char const*,int /*<<< orphan*/ ,struct tm*) ; 
- scalar_t__ hb_validate_param_string (int /*<<< orphan*/ ,char const*) ; 
+
+ int av_small_strptime (char const*,int ,struct tm*) ;
+ scalar_t__ hb_validate_param_string (int ,char const*) ;
 
 __attribute__((used)) static int
 parse_datestring(const char *src, struct tm *tm)

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_file ;
-typedef  int /*<<< orphan*/  MemJournal ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int /*<<< orphan*/  memjrnlFreeChunks (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_file ;
+typedef int MemJournal ;
+
+
+ int SQLITE_OK ;
+ int memjrnlFreeChunks (int *) ;
 
 __attribute__((used)) static int memjrnlClose(sqlite3_file *pJfd){
   MemJournal *p = (MemJournal *)pJfd;

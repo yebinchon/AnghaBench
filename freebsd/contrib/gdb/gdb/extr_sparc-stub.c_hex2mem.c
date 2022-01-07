@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned char hex (int /*<<< orphan*/ ) ; 
- scalar_t__ mem_err ; 
- int /*<<< orphan*/  set_mem_fault_trap (int) ; 
+ unsigned char hex (int ) ;
+ scalar_t__ mem_err ;
+ int set_mem_fault_trap (int) ;
 
 __attribute__((used)) static char *
 hex2mem (unsigned char *buf, unsigned char *mem, int count, int may_fault)
@@ -30,7 +22,7 @@ hex2mem (unsigned char *buf, unsigned char *mem, int count, int may_fault)
       ch |= hex(*buf++);
       *mem++ = ch;
       if (mem_err)
-	return 0;
+ return 0;
     }
 
   set_mem_fault_trap(0);

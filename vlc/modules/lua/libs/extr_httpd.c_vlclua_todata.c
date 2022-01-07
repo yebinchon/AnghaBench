@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*) ; 
- char* lua_tolstring (int /*<<< orphan*/ *,int,size_t*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,char const*,size_t) ; 
- int /*<<< orphan*/ * vlc_alloc (size_t,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int lua_State ;
+
+
+ int luaL_error (int *,char*) ;
+ char* lua_tolstring (int *,int,size_t*) ;
+ int memcpy (int *,char const*,size_t) ;
+ int * vlc_alloc (size_t,int) ;
 
 __attribute__((used)) static uint8_t *vlclua_todata( lua_State *L, int narg, int *pi_data )
 {
@@ -28,7 +28,7 @@ __attribute__((used)) static uint8_t *vlclua_todata( lua_State *L, int narg, int
     if( !p_data )
     {
         luaL_error( L, "Error while allocating buffer." );
-        return NULL; /* To please gcc even though luaL_error longjmp-ed out of here */
+        return ((void*)0);
     }
     memcpy( p_data, psz_data, i_data );
     return p_data;

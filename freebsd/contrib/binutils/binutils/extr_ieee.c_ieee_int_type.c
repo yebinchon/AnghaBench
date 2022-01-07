@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ieee_handle {int dummy; } ;
-typedef  int /*<<< orphan*/  bfd_boolean ;
+typedef int bfd_boolean ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- char* _ (char*) ; 
- scalar_t__ builtin_signed_char ; 
- scalar_t__ builtin_signed_long ; 
- scalar_t__ builtin_signed_long_long ; 
- scalar_t__ builtin_signed_short_int ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,unsigned int) ; 
- int /*<<< orphan*/  ieee_push_type (struct ieee_handle*,unsigned int,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int FALSE ;
+ char* _ (char*) ;
+ scalar_t__ builtin_signed_char ;
+ scalar_t__ builtin_signed_long ;
+ scalar_t__ builtin_signed_long_long ;
+ scalar_t__ builtin_signed_short_int ;
+ int fprintf (int ,char*,unsigned int) ;
+ int ieee_push_type (struct ieee_handle*,unsigned int,unsigned int,int ,int ) ;
+ int stderr ;
 
 __attribute__((used)) static bfd_boolean
 ieee_int_type (void *p, unsigned int size, bfd_boolean unsignedp)

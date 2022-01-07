@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ra_hwdec {struct cuda_hw_priv* priv; } ;
 struct cuda_hw_priv {TYPE_1__* cu; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* cuGetErrorString ) (int /*<<< orphan*/ ,char const**) ;int /*<<< orphan*/  (* cuGetErrorName ) (int /*<<< orphan*/ ,char const**) ;} ;
-typedef  int /*<<< orphan*/  CUresult ;
+struct TYPE_2__ {int (* cuGetErrorString ) (int ,char const**) ;int (* cuGetErrorName ) (int ,char const**) ;} ;
+typedef int CUresult ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CUDA_SUCCESS ; 
- int /*<<< orphan*/  MP_ERR (struct ra_hwdec const*,char*,...) ; 
- int /*<<< orphan*/  MP_TRACE (struct ra_hwdec const*,char*,char const*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,char const**) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,char const**) ; 
+
+ int CUDA_SUCCESS ;
+ int MP_ERR (struct ra_hwdec const*,char*,...) ;
+ int MP_TRACE (struct ra_hwdec const*,char*,char const*) ;
+ int stub1 (int ,char const**) ;
+ int stub2 (int ,char const**) ;
 
 int check_cu(const struct ra_hwdec *hw, CUresult err, const char *func)
 {

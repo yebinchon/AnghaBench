@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GPIO_PWMA_PCNT_INPUT ; 
- int /*<<< orphan*/  GPIO_PWMB_PCNT_INPUT ; 
- int /*<<< orphan*/  PCNT_CTRL_FLOATING_IO1 ; 
- int /*<<< orphan*/  PCNT_CTRL_FLOATING_IO2 ; 
- int /*<<< orphan*/  TEST_ASSERT_INT16_WITHIN (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pcnt_count (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int int16_t ;
+
+
+ int GPIO_PWMA_PCNT_INPUT ;
+ int GPIO_PWMB_PCNT_INPUT ;
+ int PCNT_CTRL_FLOATING_IO1 ;
+ int PCNT_CTRL_FLOATING_IO2 ;
+ int TEST_ASSERT_INT16_WITHIN (int,int ,int) ;
+ int pcnt_count (int ,int ,int) ;
 
 __attribute__((used)) static void judge_count_value(int allow_error ,int expect_freq)
 {

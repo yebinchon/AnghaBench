@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * unk; } ;
-struct TYPE_4__ {TYPE_1__ u; int /*<<< orphan*/  remote; } ;
-typedef  size_t MSIHANDLE ;
-typedef  int /*<<< orphan*/  IUnknown ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MSI_handle_cs ; 
- TYPE_2__* msihandletable ; 
- size_t msihandletable_size ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * unk; } ;
+struct TYPE_4__ {TYPE_1__ u; int remote; } ;
+typedef size_t MSIHANDLE ;
+typedef int IUnknown ;
+
+
+ int EnterCriticalSection (int *) ;
+ int IUnknown_AddRef (int *) ;
+ int LeaveCriticalSection (int *) ;
+ int MSI_handle_cs ;
+ TYPE_2__* msihandletable ;
+ size_t msihandletable_size ;
 
 IUnknown *msi_get_remote( MSIHANDLE handle )
 {
-    IUnknown *unk = NULL;
+    IUnknown *unk = ((void*)0);
 
     EnterCriticalSection( &MSI_handle_cs );
     handle--;

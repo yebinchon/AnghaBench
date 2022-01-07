@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_18__ {int /*<<< orphan*/ * outputs; TYPE_3__** inputs; TYPE_2__* priv; } ;
+
+
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+struct TYPE_18__ {int * outputs; TYPE_3__** inputs; TYPE_2__* priv; } ;
 struct TYPE_17__ {int channels; int format; TYPE_4__* src; } ;
-struct TYPE_16__ {int channels; int format; int process; int /*<<< orphan*/  iir_channel; TYPE_1__* iir; int /*<<< orphan*/  video; int /*<<< orphan*/  h; int /*<<< orphan*/  w; scalar_t__ response; int /*<<< orphan*/  b_str; int /*<<< orphan*/  a_str; int /*<<< orphan*/  g_str; } ;
+struct TYPE_16__ {int channels; int format; int process; int iir_channel; TYPE_1__* iir; int video; int h; int w; scalar_t__ response; int b_str; int a_str; int g_str; } ;
 struct TYPE_15__ {int* nb_ab; int** ab; int g; } ;
-typedef  TYPE_1__ IIRChannel ;
-typedef  TYPE_2__ AudioIIRContext ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
+typedef TYPE_1__ IIRChannel ;
+typedef TYPE_2__ AudioIIRContext ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_PATCHWELCOME ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
-#define  AV_SAMPLE_FMT_DBLP 131 
-#define  AV_SAMPLE_FMT_FLTP 130 
-#define  AV_SAMPLE_FMT_S16P 129 
-#define  AV_SAMPLE_FMT_S32P 128 
- int /*<<< orphan*/  ENOMEM ; 
- TYPE_1__* av_calloc (int,int) ; 
- int /*<<< orphan*/  av_frame_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  convert_pd2zp (TYPE_4__*,int) ; 
- int /*<<< orphan*/  convert_pr2zp (TYPE_4__*,int) ; 
- int convert_zp2tf (TYPE_4__*,int) ; 
- int decompose_zp2biquads (TYPE_4__*,int) ; 
- int /*<<< orphan*/  draw_response (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_get_video_buffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  iir_ch_dblp ; 
- int /*<<< orphan*/  iir_ch_fltp ; 
- int /*<<< orphan*/  iir_ch_s16p ; 
- int /*<<< orphan*/  iir_ch_s32p ; 
- int /*<<< orphan*/  iir_ch_serial_dblp ; 
- int /*<<< orphan*/  iir_ch_serial_fltp ; 
- int /*<<< orphan*/  iir_ch_serial_s16p ; 
- int /*<<< orphan*/  iir_ch_serial_s32p ; 
- int read_channels (TYPE_4__*,int,int /*<<< orphan*/ ,int) ; 
- int read_gains (TYPE_4__*,int /*<<< orphan*/ ,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_PATCHWELCOME ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+
+
+
+
+ int ENOMEM ;
+ TYPE_1__* av_calloc (int,int) ;
+ int av_frame_free (int *) ;
+ int av_log (TYPE_4__*,int ,char*) ;
+ int convert_pd2zp (TYPE_4__*,int) ;
+ int convert_pr2zp (TYPE_4__*,int) ;
+ int convert_zp2tf (TYPE_4__*,int) ;
+ int decompose_zp2biquads (TYPE_4__*,int) ;
+ int draw_response (TYPE_4__*,int ) ;
+ int ff_get_video_buffer (int ,int ,int ) ;
+ int iir_ch_dblp ;
+ int iir_ch_fltp ;
+ int iir_ch_s16p ;
+ int iir_ch_s32p ;
+ int iir_ch_serial_dblp ;
+ int iir_ch_serial_fltp ;
+ int iir_ch_serial_s16p ;
+ int iir_ch_serial_s32p ;
+ int read_channels (TYPE_4__*,int,int ,int) ;
+ int read_gains (TYPE_4__*,int ,int) ;
 
 __attribute__((used)) static int config_output(AVFilterLink *outlink)
 {
@@ -105,7 +105,7 @@ __attribute__((used)) static int config_output(AVFilterLink *outlink)
         av_log(ctx, AV_LOG_ERROR, "Serial cascading is not implemented for transfer function.\n");
         return AVERROR_PATCHWELCOME;
     } else if (s->format > 0 && s->process == 1) {
-        if (inlink->format == AV_SAMPLE_FMT_S16P)
+        if (inlink->format == 129)
             av_log(ctx, AV_LOG_WARNING, "Serial cascading is not recommended for i16 precision.\n");
 
         ret = decompose_zp2biquads(ctx, inlink->channels);
@@ -126,10 +126,10 @@ __attribute__((used)) static int config_output(AVFilterLink *outlink)
     }
 
     switch (inlink->format) {
-    case AV_SAMPLE_FMT_DBLP: s->iir_channel = s->process == 1 ? iir_ch_serial_dblp : iir_ch_dblp; break;
-    case AV_SAMPLE_FMT_FLTP: s->iir_channel = s->process == 1 ? iir_ch_serial_fltp : iir_ch_fltp; break;
-    case AV_SAMPLE_FMT_S32P: s->iir_channel = s->process == 1 ? iir_ch_serial_s32p : iir_ch_s32p; break;
-    case AV_SAMPLE_FMT_S16P: s->iir_channel = s->process == 1 ? iir_ch_serial_s16p : iir_ch_s16p; break;
+    case 131: s->iir_channel = s->process == 1 ? iir_ch_serial_dblp : iir_ch_dblp; break;
+    case 130: s->iir_channel = s->process == 1 ? iir_ch_serial_fltp : iir_ch_fltp; break;
+    case 128: s->iir_channel = s->process == 1 ? iir_ch_serial_s32p : iir_ch_s32p; break;
+    case 129: s->iir_channel = s->process == 1 ? iir_ch_serial_s16p : iir_ch_s16p; break;
     }
 
     return 0;

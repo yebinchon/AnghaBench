@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct http_connection_t {struct http_connection_t* useragentcopy; struct http_connection_t* postdatacopy; struct http_connection_t* contenttypecopy; struct http_connection_t* methodcopy; struct http_connection_t* urlcopy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (struct http_connection_t*) ; 
+
+ int free (struct http_connection_t*) ;
 
 void net_http_connection_free(struct http_connection_t *conn)
 {
@@ -35,11 +35,11 @@ void net_http_connection_free(struct http_connection_t *conn)
    if (conn->useragentcopy)
       free(conn->useragentcopy);
 
-   conn->urlcopy         = NULL;
-   conn->methodcopy      = NULL;
-   conn->contenttypecopy = NULL;
-   conn->postdatacopy    = NULL;
-   conn->useragentcopy   = NULL;
+   conn->urlcopy = ((void*)0);
+   conn->methodcopy = ((void*)0);
+   conn->contenttypecopy = ((void*)0);
+   conn->postdatacopy = ((void*)0);
+   conn->useragentcopy = ((void*)0);
 
    free(conn);
 }

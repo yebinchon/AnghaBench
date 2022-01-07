@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct type {int dummy; } ;
 struct frame_info {int dummy; } ;
 
-/* Variables and functions */
- int TYPE_LENGTH (struct type*) ; 
- int /*<<< orphan*/  gdb_assert (int) ; 
- int /*<<< orphan*/  get_frame_register (struct frame_info*,int,char*) ; 
- int /*<<< orphan*/  memcpy (void*,char*,int) ; 
+
+ int TYPE_LENGTH (struct type*) ;
+ int gdb_assert (int) ;
+ int get_frame_register (struct frame_info*,int,char*) ;
+ int memcpy (void*,char*,int) ;
 
 __attribute__((used)) static void
 s390_register_to_value (struct frame_info *frame, int regnum,

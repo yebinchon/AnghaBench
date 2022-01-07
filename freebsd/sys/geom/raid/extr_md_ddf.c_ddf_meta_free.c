@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ddf_meta {int /*<<< orphan*/ * bbm; int /*<<< orphan*/ * pdd; int /*<<< orphan*/ * cr; int /*<<< orphan*/ * vdr; int /*<<< orphan*/ * pdr; int /*<<< orphan*/ * cdr; int /*<<< orphan*/ * hdr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_MD_DDF ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct ddf_meta {int * bbm; int * pdd; int * cr; int * vdr; int * pdr; int * cdr; int * hdr; } ;
+
+
+ int M_MD_DDF ;
+ int free (int *,int ) ;
 
 __attribute__((used)) static void
 ddf_meta_free(struct ddf_meta *meta)
 {
 
-	if (meta->hdr != NULL) {
-		free(meta->hdr, M_MD_DDF);
-		meta->hdr = NULL;
-	}
-	if (meta->cdr != NULL) {
-		free(meta->cdr, M_MD_DDF);
-		meta->cdr = NULL;
-	}
-	if (meta->pdr != NULL) {
-		free(meta->pdr, M_MD_DDF);
-		meta->pdr = NULL;
-	}
-	if (meta->vdr != NULL) {
-		free(meta->vdr, M_MD_DDF);
-		meta->vdr = NULL;
-	}
-	if (meta->cr != NULL) {
-		free(meta->cr, M_MD_DDF);
-		meta->cr = NULL;
-	}
-	if (meta->pdd != NULL) {
-		free(meta->pdd, M_MD_DDF);
-		meta->pdd = NULL;
-	}
-	if (meta->bbm != NULL) {
-		free(meta->bbm, M_MD_DDF);
-		meta->bbm = NULL;
-	}
+ if (meta->hdr != ((void*)0)) {
+  free(meta->hdr, M_MD_DDF);
+  meta->hdr = ((void*)0);
+ }
+ if (meta->cdr != ((void*)0)) {
+  free(meta->cdr, M_MD_DDF);
+  meta->cdr = ((void*)0);
+ }
+ if (meta->pdr != ((void*)0)) {
+  free(meta->pdr, M_MD_DDF);
+  meta->pdr = ((void*)0);
+ }
+ if (meta->vdr != ((void*)0)) {
+  free(meta->vdr, M_MD_DDF);
+  meta->vdr = ((void*)0);
+ }
+ if (meta->cr != ((void*)0)) {
+  free(meta->cr, M_MD_DDF);
+  meta->cr = ((void*)0);
+ }
+ if (meta->pdd != ((void*)0)) {
+  free(meta->pdd, M_MD_DDF);
+  meta->pdd = ((void*)0);
+ }
+ if (meta->bbm != ((void*)0)) {
+  free(meta->bbm, M_MD_DDF);
+  meta->bbm = ((void*)0);
+ }
 }

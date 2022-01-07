@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct usec_timer {int /*<<< orphan*/  start; int /*<<< orphan*/  end; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  USEC_TIMER_MAX ; 
- int tv_subtract (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct usec_timer {int start; int end; } ;
+
+
+ int USEC_TIMER_MAX ;
+ int tv_subtract (int *,int *,int ) ;
 
 __attribute__((used)) static inline int
 usec_timer_interval(struct usec_timer *obj)

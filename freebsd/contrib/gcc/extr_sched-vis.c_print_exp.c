@@ -1,91 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ rtx ;
 
-/* Variables and functions */
-#define  ABS 184 
-#define  AND 183 
-#define  ASHIFT 182 
-#define  ASHIFTRT 181 
- int BUF_LEN ; 
-#define  CALL 180 
-#define  COMPARE 179 
- int const CONST_INT ; 
-#define  DIV 178 
-#define  EQ 177 
-#define  FFS 176 
-#define  FIX 175 
-#define  FLOAT 174 
-#define  FLOAT_EXTEND 173 
-#define  FLOAT_TRUNCATE 172 
-#define  GE 171 
- scalar_t__ GEN_INT (int /*<<< orphan*/ ) ; 
- int const GET_CODE (scalar_t__) ; 
- char* GET_RTX_NAME (int const) ; 
-#define  GEU 170 
-#define  GT 169 
-#define  GTU 168 
-#define  IF_THEN_ELSE 167 
- int /*<<< orphan*/  INTVAL (scalar_t__) ; 
-#define  IOR 166 
-#define  LE 165 
-#define  LEU 164 
-#define  LO_SUM 163 
-#define  LSHIFTRT 162 
-#define  LT 161 
-#define  LTU 160 
-#define  MINUS 159 
-#define  MOD 158 
-#define  MULT 157 
-#define  NE 156 
-#define  NEG 155 
-#define  NOT 154 
- scalar_t__ NULL_RTX ; 
-#define  PLUS 153 
-#define  POST_DEC 152 
-#define  POST_INC 151 
-#define  PREFETCH 150 
-#define  PRE_DEC 149 
-#define  PRE_INC 148 
-#define  ROTATE 147 
-#define  ROTATERT 146 
-#define  SIGN_EXTEND 145 
-#define  SIGN_EXTRACT 144 
-#define  SMAX 143 
-#define  SMIN 142 
-#define  SQRT 141 
- scalar_t__ TRAP_CONDITION (scalar_t__) ; 
-#define  TRAP_IF 140 
-#define  TRUNCATE 139 
-#define  UDIV 138 
-#define  UMAX 137 
-#define  UMIN 136 
-#define  UMOD 135 
-#define  UNSIGNED_FIX 134 
-#define  UNSIGNED_FLOAT 133 
-#define  UNSPEC 132 
-#define  UNSPEC_VOLATILE 131 
- scalar_t__ XEXP (scalar_t__,int) ; 
- int XINT (scalar_t__,int) ; 
-#define  XOR 130 
- int /*<<< orphan*/  XVECEXP (scalar_t__,int /*<<< orphan*/ ,int) ; 
- int XVECLEN (scalar_t__,int /*<<< orphan*/ ) ; 
-#define  ZERO_EXTEND 129 
-#define  ZERO_EXTRACT 128 
- int /*<<< orphan*/  print_pattern (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  print_value (char*,scalar_t__,int) ; 
- char* safe_concat (char*,char*,char const*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
+
+
+
+typedef scalar_t__ rtx ;
+
+
+
+
+
+
+ int BUF_LEN ;
+
+
+ int const CONST_INT ;
+ scalar_t__ GEN_INT (int ) ;
+ int const GET_CODE (scalar_t__) ;
+ char* GET_RTX_NAME (int const) ;
+
+
+
+
+ int INTVAL (scalar_t__) ;
+ scalar_t__ NULL_RTX ;
+ scalar_t__ TRAP_CONDITION (scalar_t__) ;
+ scalar_t__ XEXP (scalar_t__,int) ;
+ int XINT (scalar_t__,int) ;
+
+ int XVECEXP (scalar_t__,int ,int) ;
+ int XVECLEN (scalar_t__,int ) ;
+
+
+ int print_pattern (char*,int ,int) ;
+ int print_value (char*,scalar_t__,int) ;
+ char* safe_concat (char*,char*,char const*) ;
+ int sprintf (char*,char*,int) ;
 
 __attribute__((used)) static void
 print_exp (char *buf, rtx x, int verbose)
@@ -106,265 +62,265 @@ print_exp (char *buf, rtx x, int verbose)
 
   switch (GET_CODE (x))
     {
-    case PLUS:
+    case 153:
       op[0] = XEXP (x, 0);
       if (GET_CODE (XEXP (x, 1)) == CONST_INT
-	  && INTVAL (XEXP (x, 1)) < 0)
-	{
-	  st[1] = "-";
-	  op[1] = GEN_INT (-INTVAL (XEXP (x, 1)));
-	}
+   && INTVAL (XEXP (x, 1)) < 0)
+ {
+   st[1] = "-";
+   op[1] = GEN_INT (-INTVAL (XEXP (x, 1)));
+ }
       else
-	{
-	  st[1] = "+";
-	  op[1] = XEXP (x, 1);
-	}
+ {
+   st[1] = "+";
+   op[1] = XEXP (x, 1);
+ }
       break;
-    case LO_SUM:
+    case 163:
       op[0] = XEXP (x, 0);
       st[1] = "+low(";
       op[1] = XEXP (x, 1);
       st[2] = ")";
       break;
-    case MINUS:
+    case 159:
       op[0] = XEXP (x, 0);
       st[1] = "-";
       op[1] = XEXP (x, 1);
       break;
-    case COMPARE:
+    case 179:
       fun = "cmp";
       op[0] = XEXP (x, 0);
       op[1] = XEXP (x, 1);
       break;
-    case NEG:
+    case 155:
       st[0] = "-";
       op[0] = XEXP (x, 0);
       break;
-    case MULT:
+    case 157:
       op[0] = XEXP (x, 0);
       st[1] = "*";
       op[1] = XEXP (x, 1);
       break;
-    case DIV:
+    case 178:
       op[0] = XEXP (x, 0);
       st[1] = "/";
       op[1] = XEXP (x, 1);
       break;
-    case UDIV:
+    case 138:
       fun = "udiv";
       op[0] = XEXP (x, 0);
       op[1] = XEXP (x, 1);
       break;
-    case MOD:
+    case 158:
       op[0] = XEXP (x, 0);
       st[1] = "%";
       op[1] = XEXP (x, 1);
       break;
-    case UMOD:
+    case 135:
       fun = "umod";
       op[0] = XEXP (x, 0);
       op[1] = XEXP (x, 1);
       break;
-    case SMIN:
+    case 142:
       fun = "smin";
       op[0] = XEXP (x, 0);
       op[1] = XEXP (x, 1);
       break;
-    case SMAX:
+    case 143:
       fun = "smax";
       op[0] = XEXP (x, 0);
       op[1] = XEXP (x, 1);
       break;
-    case UMIN:
+    case 136:
       fun = "umin";
       op[0] = XEXP (x, 0);
       op[1] = XEXP (x, 1);
       break;
-    case UMAX:
+    case 137:
       fun = "umax";
       op[0] = XEXP (x, 0);
       op[1] = XEXP (x, 1);
       break;
-    case NOT:
+    case 154:
       st[0] = "!";
       op[0] = XEXP (x, 0);
       break;
-    case AND:
+    case 183:
       op[0] = XEXP (x, 0);
       st[1] = "&";
       op[1] = XEXP (x, 1);
       break;
-    case IOR:
+    case 166:
       op[0] = XEXP (x, 0);
       st[1] = "|";
       op[1] = XEXP (x, 1);
       break;
-    case XOR:
+    case 130:
       op[0] = XEXP (x, 0);
       st[1] = "^";
       op[1] = XEXP (x, 1);
       break;
-    case ASHIFT:
+    case 182:
       op[0] = XEXP (x, 0);
       st[1] = "<<";
       op[1] = XEXP (x, 1);
       break;
-    case LSHIFTRT:
+    case 162:
       op[0] = XEXP (x, 0);
       st[1] = " 0>>";
       op[1] = XEXP (x, 1);
       break;
-    case ASHIFTRT:
+    case 181:
       op[0] = XEXP (x, 0);
       st[1] = ">>";
       op[1] = XEXP (x, 1);
       break;
-    case ROTATE:
+    case 147:
       op[0] = XEXP (x, 0);
       st[1] = "<-<";
       op[1] = XEXP (x, 1);
       break;
-    case ROTATERT:
+    case 146:
       op[0] = XEXP (x, 0);
       st[1] = ">->";
       op[1] = XEXP (x, 1);
       break;
-    case ABS:
+    case 184:
       fun = "abs";
       op[0] = XEXP (x, 0);
       break;
-    case SQRT:
+    case 141:
       fun = "sqrt";
       op[0] = XEXP (x, 0);
       break;
-    case FFS:
+    case 176:
       fun = "ffs";
       op[0] = XEXP (x, 0);
       break;
-    case EQ:
+    case 177:
       op[0] = XEXP (x, 0);
       st[1] = "==";
       op[1] = XEXP (x, 1);
       break;
-    case NE:
+    case 156:
       op[0] = XEXP (x, 0);
       st[1] = "!=";
       op[1] = XEXP (x, 1);
       break;
-    case GT:
+    case 169:
       op[0] = XEXP (x, 0);
       st[1] = ">";
       op[1] = XEXP (x, 1);
       break;
-    case GTU:
+    case 168:
       fun = "gtu";
       op[0] = XEXP (x, 0);
       op[1] = XEXP (x, 1);
       break;
-    case LT:
+    case 161:
       op[0] = XEXP (x, 0);
       st[1] = "<";
       op[1] = XEXP (x, 1);
       break;
-    case LTU:
+    case 160:
       fun = "ltu";
       op[0] = XEXP (x, 0);
       op[1] = XEXP (x, 1);
       break;
-    case GE:
+    case 171:
       op[0] = XEXP (x, 0);
       st[1] = ">=";
       op[1] = XEXP (x, 1);
       break;
-    case GEU:
+    case 170:
       fun = "geu";
       op[0] = XEXP (x, 0);
       op[1] = XEXP (x, 1);
       break;
-    case LE:
+    case 165:
       op[0] = XEXP (x, 0);
       st[1] = "<=";
       op[1] = XEXP (x, 1);
       break;
-    case LEU:
+    case 164:
       fun = "leu";
       op[0] = XEXP (x, 0);
       op[1] = XEXP (x, 1);
       break;
-    case SIGN_EXTRACT:
+    case 144:
       fun = (verbose) ? "sign_extract" : "sxt";
       op[0] = XEXP (x, 0);
       op[1] = XEXP (x, 1);
       op[2] = XEXP (x, 2);
       break;
-    case ZERO_EXTRACT:
+    case 128:
       fun = (verbose) ? "zero_extract" : "zxt";
       op[0] = XEXP (x, 0);
       op[1] = XEXP (x, 1);
       op[2] = XEXP (x, 2);
       break;
-    case SIGN_EXTEND:
+    case 145:
       fun = (verbose) ? "sign_extend" : "sxn";
       op[0] = XEXP (x, 0);
       break;
-    case ZERO_EXTEND:
+    case 129:
       fun = (verbose) ? "zero_extend" : "zxn";
       op[0] = XEXP (x, 0);
       break;
-    case FLOAT_EXTEND:
+    case 173:
       fun = (verbose) ? "float_extend" : "fxn";
       op[0] = XEXP (x, 0);
       break;
-    case TRUNCATE:
+    case 139:
       fun = (verbose) ? "trunc" : "trn";
       op[0] = XEXP (x, 0);
       break;
-    case FLOAT_TRUNCATE:
+    case 172:
       fun = (verbose) ? "float_trunc" : "ftr";
       op[0] = XEXP (x, 0);
       break;
-    case FLOAT:
+    case 174:
       fun = (verbose) ? "float" : "flt";
       op[0] = XEXP (x, 0);
       break;
-    case UNSIGNED_FLOAT:
+    case 133:
       fun = (verbose) ? "uns_float" : "ufl";
       op[0] = XEXP (x, 0);
       break;
-    case FIX:
+    case 175:
       fun = "fix";
       op[0] = XEXP (x, 0);
       break;
-    case UNSIGNED_FIX:
+    case 134:
       fun = (verbose) ? "uns_fix" : "ufx";
       op[0] = XEXP (x, 0);
       break;
-    case PRE_DEC:
+    case 149:
       st[0] = "--";
       op[0] = XEXP (x, 0);
       break;
-    case PRE_INC:
+    case 148:
       st[0] = "++";
       op[0] = XEXP (x, 0);
       break;
-    case POST_DEC:
+    case 152:
       op[0] = XEXP (x, 0);
       st[1] = "--";
       break;
-    case POST_INC:
+    case 151:
       op[0] = XEXP (x, 0);
       st[1] = "++";
       break;
-    case CALL:
+    case 180:
       st[0] = "call ";
       op[0] = XEXP (x, 0);
       if (verbose)
-	{
-	  st[1] = " argc:";
-	  op[1] = XEXP (x, 1);
-	}
+ {
+   st[1] = " argc:";
+   op[1] = XEXP (x, 1);
+ }
       break;
-    case IF_THEN_ELSE:
+    case 167:
       st[0] = "{(";
       op[0] = XEXP (x, 0);
       st[1] = ")?";
@@ -373,43 +329,43 @@ print_exp (char *buf, rtx x, int verbose)
       op[2] = XEXP (x, 2);
       st[3] = "}";
       break;
-    case TRAP_IF:
+    case 140:
       fun = "trap_if";
       op[0] = TRAP_CONDITION (x);
       break;
-    case PREFETCH:
+    case 150:
       fun = "prefetch";
       op[0] = XEXP (x, 0);
       op[1] = XEXP (x, 1);
       op[2] = XEXP (x, 2);
       break;
-    case UNSPEC:
-    case UNSPEC_VOLATILE:
+    case 132:
+    case 131:
       {
-	cur = safe_concat (buf, cur, "unspec");
-	if (GET_CODE (x) == UNSPEC_VOLATILE)
-	  cur = safe_concat (buf, cur, "/v");
-	cur = safe_concat (buf, cur, "[");
-	sep = "";
-	for (i = 0; i < XVECLEN (x, 0); i++)
-	  {
-	    print_pattern (tmp, XVECEXP (x, 0, i), verbose);
-	    cur = safe_concat (buf, cur, sep);
-	    cur = safe_concat (buf, cur, tmp);
-	    sep = ",";
-	  }
-	cur = safe_concat (buf, cur, "] ");
-	sprintf (tmp, "%d", XINT (x, 1));
-	cur = safe_concat (buf, cur, tmp);
+ cur = safe_concat (buf, cur, "unspec");
+ if (GET_CODE (x) == 131)
+   cur = safe_concat (buf, cur, "/v");
+ cur = safe_concat (buf, cur, "[");
+ sep = "";
+ for (i = 0; i < XVECLEN (x, 0); i++)
+   {
+     print_pattern (tmp, XVECEXP (x, 0, i), verbose);
+     cur = safe_concat (buf, cur, sep);
+     cur = safe_concat (buf, cur, tmp);
+     sep = ",";
+   }
+ cur = safe_concat (buf, cur, "] ");
+ sprintf (tmp, "%d", XINT (x, 1));
+ cur = safe_concat (buf, cur, tmp);
       }
       break;
     default:
-      /* If (verbose) debug_rtx (x);  */
+
       st[0] = GET_RTX_NAME (GET_CODE (x));
       break;
     }
 
-  /* Print this as a function?  */
+
   if (fun)
     {
       cur = safe_concat (buf, cur, fun);
@@ -419,16 +375,16 @@ print_exp (char *buf, rtx x, int verbose)
   for (i = 0; i < 4; i++)
     {
       if (st[i])
-	cur = safe_concat (buf, cur, st[i]);
+ cur = safe_concat (buf, cur, st[i]);
 
       if (op[i])
-	{
-	  if (fun && i != 0)
-	    cur = safe_concat (buf, cur, ",");
+ {
+   if (fun && i != 0)
+     cur = safe_concat (buf, cur, ",");
 
-	  print_value (tmp, op[i], verbose);
-	  cur = safe_concat (buf, cur, tmp);
-	}
+   print_value (tmp, op[i], verbose);
+   cur = safe_concat (buf, cur, tmp);
+ }
     }
 
   if (fun)

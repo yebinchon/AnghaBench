@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_17__ {struct TYPE_17__* next; int /*<<< orphan*/ * resolved_diff; scalar_t__ latest_length; scalar_t__ latest_start; scalar_t__ modified_length; scalar_t__ modified_start; scalar_t__ original_length; scalar_t__ original_start; int /*<<< orphan*/  type; } ;
-typedef  TYPE_1__ svn_diff_t ;
-struct TYPE_18__ {int /*<<< orphan*/  (* token_discard_all ) (void*) ;int /*<<< orphan*/  (* datasources_open ) (void*,scalar_t__*,scalar_t__*,int /*<<< orphan*/ *,int) ;} ;
-typedef  TYPE_2__ svn_diff_fns2_t ;
-typedef  int /*<<< orphan*/  svn_diff_datasource_e ;
-typedef  int /*<<< orphan*/  svn_diff__tree_t ;
-typedef  int /*<<< orphan*/  svn_diff__token_index_t ;
+
+
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+struct TYPE_17__ {struct TYPE_17__* next; int * resolved_diff; scalar_t__ latest_length; scalar_t__ latest_start; scalar_t__ modified_length; scalar_t__ modified_start; scalar_t__ original_length; scalar_t__ original_start; int type; } ;
+typedef TYPE_1__ svn_diff_t ;
+struct TYPE_18__ {int (* token_discard_all ) (void*) ;int (* datasources_open ) (void*,scalar_t__*,scalar_t__*,int *,int) ;} ;
+typedef TYPE_2__ svn_diff_fns2_t ;
+typedef int svn_diff_datasource_e ;
+typedef int svn_diff__tree_t ;
+typedef int svn_diff__token_index_t ;
 struct TYPE_19__ {scalar_t__ offset; struct TYPE_19__* next; } ;
-typedef  TYPE_3__ svn_diff__position_t ;
+typedef TYPE_3__ svn_diff__position_t ;
 struct TYPE_20__ {scalar_t__ length; struct TYPE_20__* next; TYPE_3__** position; } ;
-typedef  TYPE_4__ svn_diff__lcs_t ;
-typedef  int svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  scalar_t__ apr_off_t ;
+typedef TYPE_4__ svn_diff__lcs_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef scalar_t__ apr_off_t ;
 
-/* Variables and functions */
- scalar_t__ MIN (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- TYPE_1__* apr_palloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stub1 (void*,scalar_t__*,scalar_t__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stub2 (void*) ; 
- int /*<<< orphan*/  svn_diff__get_node_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_diff__get_token_counts (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_diff__get_tokens (TYPE_3__**,int /*<<< orphan*/ *,void*,TYPE_2__ const*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *) ; 
- TYPE_4__* svn_diff__lcs (TYPE_3__*,TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_diff__resolve_conflict (TYPE_1__*,TYPE_3__**,TYPE_3__**,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_diff__tree_create (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_diff__type_common ; 
- int /*<<< orphan*/  svn_diff__type_diff_latest ; 
- int /*<<< orphan*/  svn_diff__type_diff_modified ; 
- int /*<<< orphan*/  svn_diff_datasource_latest ; 
- int /*<<< orphan*/  svn_diff_datasource_modified ; 
- int /*<<< orphan*/  svn_diff_datasource_original ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ MIN (scalar_t__,scalar_t__) ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ TYPE_1__* apr_palloc (int *,int) ;
+ int stub1 (void*,scalar_t__*,scalar_t__*,int *,int) ;
+ int stub2 (void*) ;
+ int svn_diff__get_node_count (int *) ;
+ int * svn_diff__get_token_counts (TYPE_3__*,int ,int *) ;
+ int svn_diff__get_tokens (TYPE_3__**,int *,void*,TYPE_2__ const*,int ,scalar_t__,int *) ;
+ TYPE_4__* svn_diff__lcs (TYPE_3__*,TYPE_3__*,int *,int *,int ,scalar_t__,scalar_t__,int *) ;
+ int svn_diff__resolve_conflict (TYPE_1__*,TYPE_3__**,TYPE_3__**,int ,int *) ;
+ int svn_diff__tree_create (int **,int *) ;
+ int svn_diff__type_common ;
+ int svn_diff__type_diff_latest ;
+ int svn_diff__type_diff_modified ;
+ int svn_diff_datasource_latest ;
+ int svn_diff_datasource_modified ;
+ int svn_diff_datasource_original ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
 
 svn_error_t *
 svn_diff_diff3_2(svn_diff_t **diff,
@@ -72,7 +72,7 @@ svn_diff_diff3_2(svn_diff_t **diff,
   apr_off_t prefix_lines = 0;
   apr_off_t suffix_lines = 0;
 
-  *diff = NULL;
+  *diff = ((void*)0);
 
   subpool = svn_pool_create(pool);
   treepool = svn_pool_create(pool);
@@ -105,11 +105,11 @@ svn_diff_diff3_2(svn_diff_t **diff,
 
   num_tokens = svn_diff__get_node_count(tree);
 
-  /* Get rid of the tokens, we don't need them to calc the diff */
-  if (vtable->token_discard_all != NULL)
+
+  if (vtable->token_discard_all != ((void*)0))
     vtable->token_discard_all(diff_baton);
 
-  /* We don't need the nodes in the tree either anymore, nor the tree itself */
+
   svn_pool_destroy(treepool);
 
   token_counts[0] = svn_diff__get_token_counts(position_list[0], num_tokens,
@@ -119,7 +119,7 @@ svn_diff_diff3_2(svn_diff_t **diff,
   token_counts[2] = svn_diff__get_token_counts(position_list[2], num_tokens,
                                                subpool);
 
-  /* Get the lcs for original-modified and original-latest */
+
   lcs_om = svn_diff__lcs(position_list[0], position_list[1], token_counts[0],
                          token_counts[1], num_tokens, prefix_lines,
                          suffix_lines, subpool);
@@ -127,7 +127,7 @@ svn_diff_diff3_2(svn_diff_t **diff,
                          token_counts[2], num_tokens, prefix_lines,
                          suffix_lines, subpool);
 
-  /* Produce a merged diff */
+
   {
     svn_diff_t **diff_ref = diff;
 
@@ -144,10 +144,10 @@ svn_diff_diff3_2(svn_diff_t **diff,
     svn_boolean_t is_latest;
     svn_diff__position_t sentinel_position[2];
 
-    /* Point the position lists to the start of the list
-     * so that common_diff/conflict detection actually is
-     * able to work.
-     */
+
+
+
+
     if (position_list[1])
       {
         sentinel_position[0].next = position_list[1]->next;
@@ -158,7 +158,7 @@ svn_diff_diff3_2(svn_diff_t **diff,
     else
       {
         sentinel_position[0].offset = prefix_lines + 1;
-        sentinel_position[0].next = NULL;
+        sentinel_position[0].next = ((void*)0);
         position_list[1] = &sentinel_position[0];
       }
 
@@ -172,13 +172,13 @@ svn_diff_diff3_2(svn_diff_t **diff,
     else
       {
         sentinel_position[1].offset = prefix_lines + 1;
-        sentinel_position[1].next = NULL;
+        sentinel_position[1].next = ((void*)0);
         position_list[2] = &sentinel_position[1];
       }
 
     while (1)
       {
-        /* Find the sync points */
+
         while (1)
           {
             if (lcs_om->position[0]->offset > lcs_ol->position[0]->offset)
@@ -189,9 +189,9 @@ svn_diff_diff3_2(svn_diff_t **diff,
                        < original_sync)
                   lcs_ol = lcs_ol->next;
 
-                /* If the sync point is the EOF, and our current lcs segment
-                 * doesn't reach as far as EOF, we need to skip this segment.
-                 */
+
+
+
                 if (lcs_om->length == 0 && lcs_ol->length > 0
                     && lcs_ol->position[0]->offset + lcs_ol->length
                        == original_sync
@@ -210,9 +210,9 @@ svn_diff_diff3_2(svn_diff_t **diff,
                        < original_sync)
                   lcs_om = lcs_om->next;
 
-                /* If the sync point is the EOF, and our current lcs segment
-                 * doesn't reach as far as EOF, we need to skip this segment.
-                 */
+
+
+
                 if (lcs_ol->length == 0 && lcs_om->length > 0
                     && lcs_om->position[0]->offset + lcs_om->length
                        == original_sync
@@ -230,7 +230,7 @@ svn_diff_diff3_2(svn_diff_t **diff,
         latest_sync = lcs_ol->position[1]->offset
                     + (original_sync - lcs_ol->position[0]->offset);
 
-        /* Determine what is modified, if anything */
+
         is_modified = lcs_om->position[0]->offset - original_start > 0
                       || lcs_om->position[1]->offset - modified_start > 0;
 
@@ -250,7 +250,7 @@ svn_diff_diff3_2(svn_diff_t **diff,
             (*diff_ref)->modified_length = modified_length;
             (*diff_ref)->latest_start = latest_start - 1;
             (*diff_ref)->latest_length = latest_length;
-            (*diff_ref)->resolved_diff = NULL;
+            (*diff_ref)->resolved_diff = ((void*)0);
 
             if (is_modified && is_latest)
               {
@@ -272,7 +272,7 @@ svn_diff_diff3_2(svn_diff_t **diff,
             diff_ref = &(*diff_ref)->next;
           }
 
-        /* Detect EOF */
+
         if (lcs_om->length == 0 || lcs_ol->length == 0)
             break;
 
@@ -293,28 +293,28 @@ svn_diff_diff3_2(svn_diff_t **diff,
             (*diff_ref)->modified_length = common_length;
             (*diff_ref)->latest_start = latest_sync - 1;
             (*diff_ref)->latest_length = common_length;
-            (*diff_ref)->resolved_diff = NULL;
+            (*diff_ref)->resolved_diff = ((void*)0);
 
             diff_ref = &(*diff_ref)->next;
           }
 
-        /* Set the new offsets */
+
         original_start = original_sync + common_length;
         modified_start = modified_sync + common_length;
         latest_start = latest_sync + common_length;
 
-        /* Make it easier for diff_common/conflict detection
-           by recording last lcs start positions
-         */
+
+
+
         if (position_list[1]->offset < lcs_om->position[1]->offset)
           position_list[1] = lcs_om->position[1];
 
         if (position_list[2]->offset < lcs_ol->position[1]->offset)
           position_list[2] = lcs_ol->position[1];
 
-        /* Make sure we are pointing to lcs entries beyond
-         * the range we just processed
-         */
+
+
+
         while (original_start >= lcs_om->position[0]->offset + lcs_om->length
                && lcs_om->length > 0)
           {
@@ -328,7 +328,7 @@ svn_diff_diff3_2(svn_diff_t **diff,
           }
       }
 
-    *diff_ref = NULL;
+    *diff_ref = ((void*)0);
   }
 
   svn_pool_destroy(subpool);

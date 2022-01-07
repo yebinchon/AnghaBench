@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  void* uint16_t ;
-struct TYPE_14__ {int /*<<< orphan*/  cas; int /*<<< orphan*/  opaque; int /*<<< orphan*/  bodylen; void* status; void* datatype; void* extlen; void* keylen; int /*<<< orphan*/  opcode; void* magic; } ;
+
+
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef void* uint8_t ;
+typedef int uint32_t ;
+typedef void* uint16_t ;
+struct TYPE_14__ {int cas; int opaque; int bodylen; void* status; void* datatype; void* extlen; void* keylen; int opcode; void* magic; } ;
 struct TYPE_15__ {int* bytes; TYPE_3__ response; } ;
-typedef  TYPE_4__ protocol_binary_response_header ;
-struct TYPE_12__ {int /*<<< orphan*/  opcode; } ;
+typedef TYPE_4__ protocol_binary_response_header ;
+struct TYPE_12__ {int opcode; } ;
 struct TYPE_13__ {TYPE_1__ request; } ;
-struct TYPE_16__ {int sfd; scalar_t__ wbuf; int /*<<< orphan*/  cas; int /*<<< orphan*/  opaque; TYPE_2__ binary_header; scalar_t__ iovused; scalar_t__ msgused; scalar_t__ msgcurr; } ;
-typedef  TYPE_5__ conn ;
+struct TYPE_16__ {int sfd; scalar_t__ wbuf; int cas; int opaque; TYPE_2__ binary_header; scalar_t__ iovused; scalar_t__ msgused; scalar_t__ msgcurr; } ;
+typedef TYPE_5__ conn ;
 struct TYPE_17__ {int verbose; } ;
 
-/* Variables and functions */
- scalar_t__ PROTOCOL_BINARY_RAW_BYTES ; 
- scalar_t__ PROTOCOL_BINARY_RES ; 
- int /*<<< orphan*/  add_iov (TYPE_5__*,scalar_t__,int) ; 
- scalar_t__ add_msghdr (TYPE_5__*) ; 
- int /*<<< orphan*/  assert (TYPE_5__*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  htonl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  htonll (int /*<<< orphan*/ ) ; 
- scalar_t__ htons (void*) ; 
- int /*<<< orphan*/  out_of_memory (TYPE_5__*,char*) ; 
- TYPE_6__ settings ; 
- int /*<<< orphan*/  stderr ; 
+
+ scalar_t__ PROTOCOL_BINARY_RAW_BYTES ;
+ scalar_t__ PROTOCOL_BINARY_RES ;
+ int add_iov (TYPE_5__*,scalar_t__,int) ;
+ scalar_t__ add_msghdr (TYPE_5__*) ;
+ int assert (TYPE_5__*) ;
+ int fprintf (int ,char*,...) ;
+ int htonl (int ) ;
+ int htonll (int ) ;
+ scalar_t__ htons (void*) ;
+ int out_of_memory (TYPE_5__*,char*) ;
+ TYPE_6__ settings ;
+ int stderr ;
 
 __attribute__((used)) static void add_bin_header(conn *c, uint16_t err, uint8_t hdr_len, uint16_t key_len, uint32_t body_len) {
     protocol_binary_response_header* header;
@@ -51,9 +51,9 @@ __attribute__((used)) static void add_bin_header(conn *c, uint16_t err, uint8_t 
     c->msgused = 0;
     c->iovused = 0;
     if (add_msghdr(c) != 0) {
-        /* This should never run out of memory because iov and msg lists
-         * have minimum sizes big enough to hold an error response.
-         */
+
+
+
         out_of_memory(c, "SERVER_ERROR out of memory adding binary header");
         return;
     }

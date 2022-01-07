@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int64 ;
 
-/* Variables and functions */
- int SERVER () ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  ckresp (int,char*) ; 
- int mustdiallocal (int) ; 
- int /*<<< orphan*/  mustsend (int,char*) ; 
- int nanoseconds () ; 
+
+
+
+typedef int int64 ;
+
+
+ int SERVER () ;
+ int assert (int) ;
+ int ckresp (int,char*) ;
+ int mustdiallocal (int) ;
+ int mustsend (int,char*) ;
+ int nanoseconds () ;
 
 void
 cttest_pause()
@@ -36,5 +36,5 @@ cttest_pause()
     mustsend(fd, "reserve\r\n");
     ckresp(fd, "RESERVED 1 1\r\n");
     ckresp(fd, "x\r\n");
-    assert(nanoseconds() - s >= 1000000000); // 1s
+    assert(nanoseconds() - s >= 1000000000);
 }

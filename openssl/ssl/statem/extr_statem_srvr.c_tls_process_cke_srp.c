@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  login; int /*<<< orphan*/ * A; int /*<<< orphan*/  N; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int login; int * A; int N; } ;
 struct TYPE_9__ {TYPE_2__* session; TYPE_1__ srp_ctx; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * srp_username; } ;
-typedef  TYPE_3__ SSL ;
-typedef  int /*<<< orphan*/  PACKET ;
+struct TYPE_8__ {int * srp_username; } ;
+typedef TYPE_3__ SSL ;
+typedef int PACKET ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BN_bin2bn (unsigned char const*,unsigned int,int /*<<< orphan*/ *) ; 
- scalar_t__ BN_is_zero (int /*<<< orphan*/ *) ; 
- scalar_t__ BN_ucmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_BN_LIB ; 
- int /*<<< orphan*/  ERR_R_INTERNAL_ERROR ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  OPENSSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * OPENSSL_strdup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PACKET_get_bytes (int /*<<< orphan*/ *,unsigned char const**,unsigned int) ; 
- int /*<<< orphan*/  PACKET_get_net_2 (int /*<<< orphan*/ *,unsigned int*) ; 
- int /*<<< orphan*/  SSL_AD_DECODE_ERROR ; 
- int /*<<< orphan*/  SSL_AD_ILLEGAL_PARAMETER ; 
- int /*<<< orphan*/  SSL_AD_INTERNAL_ERROR ; 
- int /*<<< orphan*/  SSL_F_TLS_PROCESS_CKE_SRP ; 
- int /*<<< orphan*/  SSL_R_BAD_SRP_A_LENGTH ; 
- int /*<<< orphan*/  SSL_R_BAD_SRP_PARAMETERS ; 
- int /*<<< orphan*/  SSLfatal (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  srp_generate_server_master_secret (TYPE_3__*) ; 
+
+ int * BN_bin2bn (unsigned char const*,unsigned int,int *) ;
+ scalar_t__ BN_is_zero (int *) ;
+ scalar_t__ BN_ucmp (int *,int ) ;
+ int ERR_R_BN_LIB ;
+ int ERR_R_INTERNAL_ERROR ;
+ int ERR_R_MALLOC_FAILURE ;
+ int OPENSSL_free (int *) ;
+ int * OPENSSL_strdup (int ) ;
+ int PACKET_get_bytes (int *,unsigned char const**,unsigned int) ;
+ int PACKET_get_net_2 (int *,unsigned int*) ;
+ int SSL_AD_DECODE_ERROR ;
+ int SSL_AD_ILLEGAL_PARAMETER ;
+ int SSL_AD_INTERNAL_ERROR ;
+ int SSL_F_TLS_PROCESS_CKE_SRP ;
+ int SSL_R_BAD_SRP_A_LENGTH ;
+ int SSL_R_BAD_SRP_PARAMETERS ;
+ int SSLfatal (TYPE_3__*,int ,int ,int ) ;
+ int srp_generate_server_master_secret (TYPE_3__*) ;
 
 __attribute__((used)) static int tls_process_cke_srp(SSL *s, PACKET *pkt)
 {
-#ifndef OPENSSL_NO_SRP
+
     unsigned int i;
     const unsigned char *data;
 
@@ -51,7 +51,7 @@ __attribute__((used)) static int tls_process_cke_srp(SSL *s, PACKET *pkt)
                  SSL_R_BAD_SRP_A_LENGTH);
         return 0;
     }
-    if ((s->srp_ctx.A = BN_bin2bn(data, i, NULL)) == NULL) {
+    if ((s->srp_ctx.A = BN_bin2bn(data, i, ((void*)0))) == ((void*)0)) {
         SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_TLS_PROCESS_CKE_SRP,
                  ERR_R_BN_LIB);
         return 0;
@@ -63,22 +63,22 @@ __attribute__((used)) static int tls_process_cke_srp(SSL *s, PACKET *pkt)
     }
     OPENSSL_free(s->session->srp_username);
     s->session->srp_username = OPENSSL_strdup(s->srp_ctx.login);
-    if (s->session->srp_username == NULL) {
+    if (s->session->srp_username == ((void*)0)) {
         SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_TLS_PROCESS_CKE_SRP,
                  ERR_R_MALLOC_FAILURE);
         return 0;
     }
 
     if (!srp_generate_server_master_secret(s)) {
-        /* SSLfatal() already called */
+
         return 0;
     }
 
     return 1;
-#else
-    /* Should never happen */
-    SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_TLS_PROCESS_CKE_SRP,
-             ERR_R_INTERNAL_ERROR);
-    return 0;
-#endif
+
+
+
+
+
+
 }

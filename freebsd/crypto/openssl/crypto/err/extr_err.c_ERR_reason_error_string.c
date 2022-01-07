@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char const* string; void* error; } ;
-typedef  TYPE_1__ ERR_STRING_DATA ;
+typedef TYPE_1__ ERR_STRING_DATA ;
 
-/* Variables and functions */
- unsigned long ERR_GET_LIB (unsigned long) ; 
- unsigned long ERR_GET_REASON (unsigned long) ; 
- void* ERR_PACK (unsigned long,int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  RUN_ONCE (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  do_err_strings_init ; 
- int /*<<< orphan*/  err_string_init ; 
- TYPE_1__* int_err_get_item (TYPE_1__*) ; 
+
+ unsigned long ERR_GET_LIB (unsigned long) ;
+ unsigned long ERR_GET_REASON (unsigned long) ;
+ void* ERR_PACK (unsigned long,int ,unsigned long) ;
+ int RUN_ONCE (int *,int ) ;
+ int do_err_strings_init ;
+ int err_string_init ;
+ TYPE_1__* int_err_get_item (TYPE_1__*) ;
 
 const char *ERR_reason_error_string(unsigned long e)
 {
-    ERR_STRING_DATA d, *p = NULL;
+    ERR_STRING_DATA d, *p = ((void*)0);
     unsigned long l, r;
 
     if (!RUN_ONCE(&err_string_init, do_err_strings_init)) {
-        return NULL;
+        return ((void*)0);
     }
 
     l = ERR_GET_LIB(e);
@@ -40,5 +40,5 @@ const char *ERR_reason_error_string(unsigned long e)
         d.error = ERR_PACK(0, 0, r);
         p = int_err_get_item(&d);
     }
-    return ((p == NULL) ? NULL : p->string);
+    return ((p == ((void*)0)) ? ((void*)0) : p->string);
 }

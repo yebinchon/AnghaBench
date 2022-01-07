@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t u8 ;
-typedef  int u32 ;
-typedef  int u16 ;
+
+
+
+
+typedef size_t u8 ;
+typedef int u32 ;
+typedef int u16 ;
 struct ixgbe_hw {int dummy; } ;
-typedef  int /*<<< orphan*/  s32 ;
+typedef int s32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IXGBE_DTXCTL ; 
- int IXGBE_DTXCTL_ENDBUBD ; 
- int /*<<< orphan*/  IXGBE_PDPMCS ; 
- int IXGBE_PDPMCS_ARBDIS ; 
- int IXGBE_PDPMCS_TPPAC ; 
- int IXGBE_PDPMCS_TRM ; 
- int IXGBE_READ_REG (struct ixgbe_hw*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IXGBE_TDPT2TCCR (size_t) ; 
- int IXGBE_TDPT2TCCR_BWG_SHIFT ; 
- int IXGBE_TDPT2TCCR_GSP ; 
- int IXGBE_TDPT2TCCR_LSP ; 
- int IXGBE_TDPT2TCCR_MCL_SHIFT ; 
- int /*<<< orphan*/  IXGBE_WRITE_REG (struct ixgbe_hw*,int /*<<< orphan*/ ,int) ; 
- size_t MAX_TRAFFIC_CLASS ; 
- size_t prio_group ; 
- size_t prio_link ; 
+
+ int IXGBE_DTXCTL ;
+ int IXGBE_DTXCTL_ENDBUBD ;
+ int IXGBE_PDPMCS ;
+ int IXGBE_PDPMCS_ARBDIS ;
+ int IXGBE_PDPMCS_TPPAC ;
+ int IXGBE_PDPMCS_TRM ;
+ int IXGBE_READ_REG (struct ixgbe_hw*,int ) ;
+ int IXGBE_TDPT2TCCR (size_t) ;
+ int IXGBE_TDPT2TCCR_BWG_SHIFT ;
+ int IXGBE_TDPT2TCCR_GSP ;
+ int IXGBE_TDPT2TCCR_LSP ;
+ int IXGBE_TDPT2TCCR_MCL_SHIFT ;
+ int IXGBE_WRITE_REG (struct ixgbe_hw*,int ,int) ;
+ size_t MAX_TRAFFIC_CLASS ;
+ size_t prio_group ;
+ size_t prio_link ;
 
 s32 ixgbe_dcb_config_tx_data_arbiter_82598(struct ixgbe_hw *hw,
-						u16 *refill,
-						u16 *max,
-						u8 *bwg_id,
-						u8 *prio_type)
+      u16 *refill,
+      u16 *max,
+      u8 *bwg_id,
+      u8 *prio_type)
 {
-	u32 reg;
-	u8 i;
+ u32 reg;
+ u8 i;
 
-	reg = IXGBE_READ_REG(hw, IXGBE_PDPMCS);
-	/* Enable Data Plane Arbiter */
-	reg &= ~IXGBE_PDPMCS_ARBDIS;
-	/* Enable DFP and Transmit Recycle Mode */
-	reg |= (IXGBE_PDPMCS_TPPAC | IXGBE_PDPMCS_TRM);
+ reg = IXGBE_READ_REG(hw, IXGBE_PDPMCS);
 
-	IXGBE_WRITE_REG(hw, IXGBE_PDPMCS, reg);
+ reg &= ~IXGBE_PDPMCS_ARBDIS;
 
-	/* Configure traffic class credits and priority */
-	for (i = 0; i < MAX_TRAFFIC_CLASS; i++) {
-		reg = refill[i];
-		reg |= (u32)(max[i]) << IXGBE_TDPT2TCCR_MCL_SHIFT;
-		reg |= (u32)(bwg_id[i]) << IXGBE_TDPT2TCCR_BWG_SHIFT;
+ reg |= (IXGBE_PDPMCS_TPPAC | IXGBE_PDPMCS_TRM);
 
-		if (prio_type[i] == prio_group)
-			reg |= IXGBE_TDPT2TCCR_GSP;
+ IXGBE_WRITE_REG(hw, IXGBE_PDPMCS, reg);
 
-		if (prio_type[i] == prio_link)
-			reg |= IXGBE_TDPT2TCCR_LSP;
 
-		IXGBE_WRITE_REG(hw, IXGBE_TDPT2TCCR(i), reg);
-	}
+ for (i = 0; i < MAX_TRAFFIC_CLASS; i++) {
+  reg = refill[i];
+  reg |= (u32)(max[i]) << IXGBE_TDPT2TCCR_MCL_SHIFT;
+  reg |= (u32)(bwg_id[i]) << IXGBE_TDPT2TCCR_BWG_SHIFT;
 
-	/* Enable Tx packet buffer division */
-	reg = IXGBE_READ_REG(hw, IXGBE_DTXCTL);
-	reg |= IXGBE_DTXCTL_ENDBUBD;
-	IXGBE_WRITE_REG(hw, IXGBE_DTXCTL, reg);
+  if (prio_type[i] == prio_group)
+   reg |= IXGBE_TDPT2TCCR_GSP;
 
-	return 0;
+  if (prio_type[i] == prio_link)
+   reg |= IXGBE_TDPT2TCCR_LSP;
+
+  IXGBE_WRITE_REG(hw, IXGBE_TDPT2TCCR(i), reg);
+ }
+
+
+ reg = IXGBE_READ_REG(hw, IXGBE_DTXCTL);
+ reg |= IXGBE_DTXCTL_ENDBUBD;
+ IXGBE_WRITE_REG(hw, IXGBE_DTXCTL, reg);
+
+ return 0;
 }

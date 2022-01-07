@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stb_ps ;
 
-/* Variables and functions */
- void** stb_ps_fastlist (int /*<<< orphan*/ *,int*) ; 
- scalar_t__ stb_ps_fastlist_valid (void*) ; 
- int /*<<< orphan*/  stb_ps_find (int /*<<< orphan*/ *,void*) ; 
+
+
+
+typedef int stb_ps ;
+
+
+ void** stb_ps_fastlist (int *,int*) ;
+ scalar_t__ stb_ps_fastlist_valid (void*) ;
+ int stb_ps_find (int *,void*) ;
 
 int stb_ps_subset(stb_ps *bigger, stb_ps *smaller)
 {

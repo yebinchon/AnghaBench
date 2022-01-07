@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NULL_RTX ; 
- int /*<<< orphan*/  SET_DECL_RTL (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* alloca (scalar_t__) ; 
- int /*<<< orphan*/  change_decl_assembler_name (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_identifier (char*) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- scalar_t__ strlen (char const*) ; 
+
+
+
+typedef int tree ;
+
+
+ int NULL_RTX ;
+ int SET_DECL_RTL (int ,int ) ;
+ char* alloca (scalar_t__) ;
+ int change_decl_assembler_name (int ,int ) ;
+ int get_identifier (char*) ;
+ int strcpy (char*,char const*) ;
+ scalar_t__ strlen (char const*) ;
 
 void
 set_user_assembler_name (tree decl, const char *name)

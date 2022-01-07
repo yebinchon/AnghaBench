@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int docs; int idx_docs; unsigned long long* Idx_Pos; unsigned long long** Pos; int /*<<< orphan*/  mutex_insert; } ;
-typedef  TYPE_1__ volume_t ;
 
-/* Variables and functions */
- unsigned long long FILE_OFFSET_MASK ; 
- int STORAGE_ERR_ILLEGAL_LOCAL_ID ; 
- int STORAGE_ERR_WRONG_SECRET ; 
- unsigned long long STORAGE_SECRET_MASK ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int docs; int idx_docs; unsigned long long* Idx_Pos; unsigned long long** Pos; int mutex_insert; } ;
+typedef TYPE_1__ volume_t ;
+
+
+ unsigned long long FILE_OFFSET_MASK ;
+ int STORAGE_ERR_ILLEGAL_LOCAL_ID ;
+ int STORAGE_ERR_WRONG_SECRET ;
+ unsigned long long STORAGE_SECRET_MASK ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 __attribute__((used)) static int doc_lookup (volume_t *V, int local_id, unsigned long long secret, unsigned long long *file_pos) {
   pthread_mutex_lock (&V->mutex_insert);

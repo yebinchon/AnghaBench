@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  HRSRC ;
-typedef  int /*<<< orphan*/  HMODULE ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/ * BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  FindResourceW (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetModuleHandleA (char*) ; 
- char* LoadResource (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SizeofResource (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SysAllocStringLen (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  lstrcpyW (int /*<<< orphan*/ *,char const*) ; 
- scalar_t__ lstrlenW (char const*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int LPCWSTR ;
+typedef int HRSRC ;
+typedef int HMODULE ;
+typedef int DWORD ;
+typedef int * BSTR ;
+
+
+ int CP_ACP ;
+ int FindResourceW (int ,char const*,int ) ;
+ int GetModuleHandleA (char*) ;
+ char* LoadResource (int ,int ) ;
+ int MultiByteToWideChar (int ,int ,char const*,int ,int *,int) ;
+ int SizeofResource (int ,int ) ;
+ int * SysAllocStringLen (int *,scalar_t__) ;
+ int lstrcpyW (int *,char const*) ;
+ scalar_t__ lstrlenW (char const*) ;
 
 __attribute__((used)) static BSTR include_pac_utils( const WCHAR *script )
 {
@@ -38,12 +38,12 @@ __attribute__((used)) static BSTR include_pac_utils( const WCHAR *script )
     BSTR ret;
     int len;
 
-    if (!(rsrc = FindResourceW( hmod, pacjsW, (LPCWSTR)40 ))) return NULL;
+    if (!(rsrc = FindResourceW( hmod, pacjsW, (LPCWSTR)40 ))) return ((void*)0);
     size = SizeofResource( hmod, rsrc );
     data = LoadResource( hmod, rsrc );
 
-    len = MultiByteToWideChar( CP_ACP, 0, data, size, NULL, 0 );
-    if (!(ret = SysAllocStringLen( NULL, len + lstrlenW( script ) + 1 ))) return NULL;
+    len = MultiByteToWideChar( CP_ACP, 0, data, size, ((void*)0), 0 );
+    if (!(ret = SysAllocStringLen( ((void*)0), len + lstrlenW( script ) + 1 ))) return ((void*)0);
     MultiByteToWideChar( CP_ACP, 0, data, size, ret, len );
     lstrcpyW( ret + len, script );
     return ret;

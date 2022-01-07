@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_6__ ;
-typedef  struct TYPE_24__   TYPE_5__ ;
-typedef  struct TYPE_23__   TYPE_4__ ;
-typedef  struct TYPE_22__   TYPE_3__ ;
-typedef  struct TYPE_21__   TYPE_2__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
-typedef  struct TYPE_19__   TYPE_15__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int int16_t ;
-struct TYPE_25__ {int /*<<< orphan*/ ** data; } ;
-struct TYPE_24__ {int /*<<< orphan*/  member_0; } ;
-struct TYPE_21__ {int /*<<< orphan*/  (* idct_put ) (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ;} ;
-struct TYPE_20__ {int /*<<< orphan*/  (* clear_block ) (int /*<<< orphan*/ ) ;} ;
-struct TYPE_23__ {int bits; int mb_width; int mb_height; int width; int height; int* comp_index; int* linesize; int* coefs_finished; int* nb_blocks; int* h_scount; int* v_scount; int** quant_matrixes; size_t* quant_sindex; int* block_stride; int*** blocks; int /*<<< orphan*/  bottom_field; TYPE_15__* avctx; int /*<<< orphan*/ * dc_index; TYPE_5__ gb; int /*<<< orphan*/  block; TYPE_2__ idsp; int /*<<< orphan*/ * ac_index; TYPE_1__ bdsp; int /*<<< orphan*/  progressive; scalar_t__ interlaced; scalar_t__ restart_interval; scalar_t__ restart_count; TYPE_3__* picture_ptr; } ;
-struct TYPE_22__ {int /*<<< orphan*/ ** data; } ;
-struct TYPE_19__ {int lowres; int /*<<< orphan*/  pix_fmt; } ;
-typedef  TYPE_4__ MJpegDecodeContext ;
-typedef  TYPE_5__ GetBitContext ;
-typedef  TYPE_6__ AVFrame ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int AV_CEIL_RSHIFT (int,int) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int MAX_COMPONENTS ; 
- int /*<<< orphan*/  av_log (TYPE_15__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  av_pix_fmt_get_chroma_sub_sample (int /*<<< orphan*/ ,int*,int*) ; 
- scalar_t__ decode_block (TYPE_4__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- scalar_t__ decode_dc_progressive (TYPE_4__*,int*,int,int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  ff_dlog (TYPE_15__*,char*,int,int,...) ; 
- int get_bits1 (TYPE_5__*) ; 
- int /*<<< orphan*/  get_bits_left (TYPE_5__*) ; 
- int /*<<< orphan*/  handle_rstn (TYPE_4__*,int) ; 
- int /*<<< orphan*/  init_get_bits (TYPE_5__*,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  mjpeg_copy_block (TYPE_4__*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int,int) ; 
- int /*<<< orphan*/  shift_output (TYPE_4__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_25__ TYPE_6__ ;
+typedef struct TYPE_24__ TYPE_5__ ;
+typedef struct TYPE_23__ TYPE_4__ ;
+typedef struct TYPE_22__ TYPE_3__ ;
+typedef struct TYPE_21__ TYPE_2__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+typedef struct TYPE_19__ TYPE_15__ ;
+
+
+typedef int uint8_t ;
+typedef int int16_t ;
+struct TYPE_25__ {int ** data; } ;
+struct TYPE_24__ {int member_0; } ;
+struct TYPE_21__ {int (* idct_put ) (int *,int,int ) ;} ;
+struct TYPE_20__ {int (* clear_block ) (int ) ;} ;
+struct TYPE_23__ {int bits; int mb_width; int mb_height; int width; int height; int* comp_index; int* linesize; int* coefs_finished; int* nb_blocks; int* h_scount; int* v_scount; int** quant_matrixes; size_t* quant_sindex; int* block_stride; int*** blocks; int bottom_field; TYPE_15__* avctx; int * dc_index; TYPE_5__ gb; int block; TYPE_2__ idsp; int * ac_index; TYPE_1__ bdsp; int progressive; scalar_t__ interlaced; scalar_t__ restart_interval; scalar_t__ restart_count; TYPE_3__* picture_ptr; } ;
+struct TYPE_22__ {int ** data; } ;
+struct TYPE_19__ {int lowres; int pix_fmt; } ;
+typedef TYPE_4__ MJpegDecodeContext ;
+typedef TYPE_5__ GetBitContext ;
+typedef TYPE_6__ AVFrame ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_CEIL_RSHIFT (int,int) ;
+ int AV_LOG_ERROR ;
+ int MAX_COMPONENTS ;
+ int av_log (TYPE_15__*,int ,char*,...) ;
+ int av_pix_fmt_get_chroma_sub_sample (int ,int*,int*) ;
+ scalar_t__ decode_block (TYPE_4__*,int ,int,int ,int ,int*) ;
+ scalar_t__ decode_dc_progressive (TYPE_4__*,int*,int,int ,int*,int) ;
+ int ff_dlog (TYPE_15__*,char*,int,int,...) ;
+ int get_bits1 (TYPE_5__*) ;
+ int get_bits_left (TYPE_5__*) ;
+ int handle_rstn (TYPE_4__*,int) ;
+ int init_get_bits (TYPE_5__*,int const*,int) ;
+ int mjpeg_copy_block (TYPE_4__*,int *,int const*,int,int) ;
+ int shift_output (TYPE_4__*,int *,int) ;
+ int stub1 (int ) ;
+ int stub2 (int *,int,int ) ;
 
 __attribute__((used)) static int mjpeg_decode_scan(MJpegDecodeContext *s, int nb_components, int Ah,
                              int Al, const uint8_t *mb_bitmask,
@@ -58,7 +58,7 @@ __attribute__((used)) static int mjpeg_decode_scan(MJpegDecodeContext *s, int nb
     uint8_t *data[MAX_COMPONENTS];
     const uint8_t *reference_data[MAX_COMPONENTS];
     int linesize[MAX_COMPONENTS];
-    GetBitContext mb_bitmask_gb = {0}; // initialize to silence gcc warning
+    GetBitContext mb_bitmask_gb = {0};
     int bytes_per_pixel = 1 + (s->bits > 8);
 
     if (mb_bitmask) {
@@ -73,13 +73,13 @@ __attribute__((used)) static int mjpeg_decode_scan(MJpegDecodeContext *s, int nb
 
     av_pix_fmt_get_chroma_sub_sample(s->avctx->pix_fmt, &chroma_h_shift,
                                      &chroma_v_shift);
-    chroma_width  = AV_CEIL_RSHIFT(s->width,  chroma_h_shift);
+    chroma_width = AV_CEIL_RSHIFT(s->width, chroma_h_shift);
     chroma_height = AV_CEIL_RSHIFT(s->height, chroma_v_shift);
 
     for (i = 0; i < nb_components; i++) {
-        int c   = s->comp_index[i];
+        int c = s->comp_index[i];
         data[c] = s->picture_ptr->data[c];
-        reference_data[c] = reference ? reference->data[c] : NULL;
+        reference_data[c] = reference ? reference->data[c] : ((void*)0);
         linesize[c] = s->linesize[c];
         s->coefs_finished[c] |= 1;
     }
@@ -112,11 +112,11 @@ __attribute__((used)) static int mjpeg_decode_scan(MJpegDecodeContext *s, int nb
 
                     if (s->interlaced && s->bottom_field)
                         block_offset += linesize[c] >> 1;
-                    if (   8*(h * mb_x + x) < ((c == 1) || (c == 2) ? chroma_width  : s->width)
+                    if ( 8*(h * mb_x + x) < ((c == 1) || (c == 2) ? chroma_width : s->width)
                         && 8*(v * mb_y + y) < ((c == 1) || (c == 2) ? chroma_height : s->height)) {
                         ptr = data[c] + block_offset;
                     } else
-                        ptr = NULL;
+                        ptr = ((void*)0);
                     if (!s->progressive) {
                         if (copy_mb) {
                             if (ptr)
@@ -139,7 +139,7 @@ __attribute__((used)) static int mjpeg_decode_scan(MJpegDecodeContext *s, int nb
                             }
                         }
                     } else {
-                        int block_idx  = s->block_stride[c] * (v * mb_y + y) +
+                        int block_idx = s->block_stride[c] * (v * mb_y + y) +
                                          (h * mb_x + x);
                         int16_t *block = s->blocks[c][block_idx];
                         if (Ah)

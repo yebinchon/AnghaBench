@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_client_status_t ;
-struct status_baton {int /*<<< orphan*/  ctx; int /*<<< orphan*/  tree_conflicts; int /*<<< orphan*/  prop_conflicts; int /*<<< orphan*/  text_conflicts; int /*<<< orphan*/  repos_locks; int /*<<< orphan*/  skip_unrecognized; int /*<<< orphan*/  show_last_committed; int /*<<< orphan*/  detailed; int /*<<< orphan*/  suppress_externals_placeholders; int /*<<< orphan*/  target_path; int /*<<< orphan*/  target_abspath; scalar_t__ xml_mode; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * svn_cl__print_status (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_cl__print_status_xml (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_error_t ;
+typedef int svn_client_status_t ;
+struct status_baton {int ctx; int tree_conflicts; int prop_conflicts; int text_conflicts; int repos_locks; int skip_unrecognized; int show_last_committed; int detailed; int suppress_externals_placeholders; int target_path; int target_abspath; scalar_t__ xml_mode; } ;
+typedef int apr_pool_t ;
+
+
+ int * svn_cl__print_status (int ,int ,char const*,int const*,int ,int ,int ,int ,int ,int *,int *,int *,int ,int *) ;
+ int * svn_cl__print_status_xml (int ,int ,char const*,int const*,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 print_status_normal_or_xml(void *baton,

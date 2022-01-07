@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cgroup {char* filename_cpu_cfs_quota; int cpu_cfs_period; int cpuset_cpus; int cpu_cfs_quota; int /*<<< orphan*/  id; } ;
-typedef  int /*<<< orphan*/  procfile ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_CGROUP ; 
- int /*<<< orphan*/  PROCFILE_FLAG_DEFAULT ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,int,int,int) ; 
- int /*<<< orphan*/  error (char*,char*,...) ; 
- int /*<<< orphan*/  freez (char*) ; 
- int get_system_cpus () ; 
- unsigned long procfile_lines (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  procfile_lineword (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * procfile_readall (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * procfile_reopen (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- void* str2ull (int /*<<< orphan*/ ) ; 
- scalar_t__ strsame (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ unlikely (int) ; 
+
+
+
+struct cgroup {char* filename_cpu_cfs_quota; int cpu_cfs_period; int cpuset_cpus; int cpu_cfs_quota; int id; } ;
+typedef int procfile ;
+
+
+ int D_CGROUP ;
+ int PROCFILE_FLAG_DEFAULT ;
+ int debug (int ,char*,int,int,int) ;
+ int error (char*,char*,...) ;
+ int freez (char*) ;
+ int get_system_cpus () ;
+ unsigned long procfile_lines (int *) ;
+ int procfile_lineword (int *,int ,int) ;
+ int * procfile_readall (int *) ;
+ int * procfile_reopen (int *,char*,int *,int ) ;
+ void* str2ull (int ) ;
+ scalar_t__ strsame (char*,int ) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static inline void update_cpu_limits2(struct cgroup *cg) {
     if(cg->filename_cpu_cfs_quota){
-        static procfile *ff = NULL;
+        static procfile *ff = ((void*)0);
 
-        ff = procfile_reopen(ff, cg->filename_cpu_cfs_quota, NULL, PROCFILE_FLAG_DEFAULT);
+        ff = procfile_reopen(ff, cg->filename_cpu_cfs_quota, ((void*)0), PROCFILE_FLAG_DEFAULT);
         if(unlikely(!ff)) {
             goto cpu_limits2_err;
         }
@@ -64,7 +64,7 @@ __attribute__((used)) static inline void update_cpu_limits2(struct cgroup *cg) {
 cpu_limits2_err:
         error("Cannot refresh cgroup %s cpu limit by reading '%s'. Will not update its limit anymore.", cg->id, cg->filename_cpu_cfs_quota);
         freez(cg->filename_cpu_cfs_quota);
-        cg->filename_cpu_cfs_quota = NULL;
+        cg->filename_cpu_cfs_quota = ((void*)0);
 
     }
 }

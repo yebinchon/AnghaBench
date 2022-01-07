@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {int st_mode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  close (int) ; 
- int fstat (int,struct stat*) ; 
- int /*<<< orphan*/  lsapi_log (char*,char const*) ; 
- int open (char const*,int /*<<< orphan*/ ,int) ; 
- int read (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  s_secret ; 
+
+ int O_RDONLY ;
+ int close (int) ;
+ int fstat (int,struct stat*) ;
+ int lsapi_log (char*,char const*) ;
+ int open (char const*,int ,int) ;
+ int read (int,int ,int) ;
+ int s_secret ;
 
 __attribute__((used)) static int readSecret( const char * pSecretFile )
 {
@@ -36,14 +36,6 @@ __attribute__((used)) static int readSecret( const char * pSecretFile )
         close( fd );
         return -1;
     }
-/*
-    if ( st.st_uid != s_uid )
-    {
-        lsapi_log("LSAPI: file owner check failure: %s!\n", pSecretFile );
-        close( fd );
-        return -1;
-    }
-*/
     if ( st.st_mode & 0077 )
     {
         lsapi_log("LSAPI: file permission check failure: %s\n", pSecretFile );

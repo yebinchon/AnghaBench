@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  test_utf8_truncate () ; 
- int /*<<< orphan*/  test_xstrjoin_just_fit () ; 
- int /*<<< orphan*/  test_xstrjoin_simple () ; 
- int /*<<< orphan*/  test_xstrjoin_truncated_after_sep () ; 
- int /*<<< orphan*/  test_xstrjoin_truncated_before_sep () ; 
- int /*<<< orphan*/  test_xstrjoin_truncated_in_token () ; 
- int /*<<< orphan*/  test_xstrncpy_just_fit () ; 
- int /*<<< orphan*/  test_xstrncpy_simple () ; 
- int /*<<< orphan*/  test_xstrncpy_truncated () ; 
+ int test_utf8_truncate () ;
+ int test_xstrjoin_just_fit () ;
+ int test_xstrjoin_simple () ;
+ int test_xstrjoin_truncated_after_sep () ;
+ int test_xstrjoin_truncated_before_sep () ;
+ int test_xstrjoin_truncated_in_token () ;
+ int test_xstrncpy_just_fit () ;
+ int test_xstrncpy_simple () ;
+ int test_xstrncpy_truncated () ;
 
 int main(void) {
     test_xstrncpy_simple();

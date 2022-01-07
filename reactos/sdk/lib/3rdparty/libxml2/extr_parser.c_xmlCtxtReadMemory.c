@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * xmlParserInputPtr ;
-typedef  int /*<<< orphan*/ * xmlParserInputBufferPtr ;
-typedef  int /*<<< orphan*/ * xmlParserCtxtPtr ;
-typedef  int /*<<< orphan*/ * xmlDocPtr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XML_CHAR_ENCODING_NONE ; 
- int /*<<< orphan*/  inputPush (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xmlCtxtReset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * xmlDoRead (int /*<<< orphan*/ *,char const*,char const*,int,int) ; 
- int /*<<< orphan*/  xmlFreeParserInputBuffer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xmlInitParser () ; 
- int /*<<< orphan*/ * xmlNewIOInputStream (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * xmlParserInputBufferCreateMem (char const*,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int * xmlParserInputPtr ;
+typedef int * xmlParserInputBufferPtr ;
+typedef int * xmlParserCtxtPtr ;
+typedef int * xmlDocPtr ;
+
+
+ int XML_CHAR_ENCODING_NONE ;
+ int inputPush (int *,int *) ;
+ int xmlCtxtReset (int *) ;
+ int * xmlDoRead (int *,char const*,char const*,int,int) ;
+ int xmlFreeParserInputBuffer (int *) ;
+ int xmlInitParser () ;
+ int * xmlNewIOInputStream (int *,int *,int ) ;
+ int * xmlParserInputBufferCreateMem (char const*,int,int ) ;
 
 xmlDocPtr
 xmlCtxtReadMemory(xmlParserCtxtPtr ctxt, const char *buffer, int size,
@@ -32,23 +32,23 @@ xmlCtxtReadMemory(xmlParserCtxtPtr ctxt, const char *buffer, int size,
     xmlParserInputBufferPtr input;
     xmlParserInputPtr stream;
 
-    if (ctxt == NULL)
-        return (NULL);
-    if (buffer == NULL)
-        return (NULL);
+    if (ctxt == ((void*)0))
+        return (((void*)0));
+    if (buffer == ((void*)0))
+        return (((void*)0));
     xmlInitParser();
 
     xmlCtxtReset(ctxt);
 
     input = xmlParserInputBufferCreateMem(buffer, size, XML_CHAR_ENCODING_NONE);
-    if (input == NULL) {
-	return(NULL);
+    if (input == ((void*)0)) {
+ return(((void*)0));
     }
 
     stream = xmlNewIOInputStream(ctxt, input, XML_CHAR_ENCODING_NONE);
-    if (stream == NULL) {
-	xmlFreeParserInputBuffer(input);
-	return(NULL);
+    if (stream == ((void*)0)) {
+ xmlFreeParserInputBuffer(input);
+ return(((void*)0));
     }
 
     inputPush(ctxt, stream);

@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ EINTR ; 
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  SIGTERM ; 
- scalar_t__ WIFEXITED (int) ; 
- scalar_t__ WIFSIGNALED (int) ; 
- int /*<<< orphan*/  WNOHANG ; 
- int /*<<< orphan*/  check_children_dead () ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int getppid () ; 
- int /*<<< orphan*/  kill_children (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kprintf (char*,int,...) ; 
- int parent_pid ; 
- int* pids ; 
- scalar_t__ slave_mode ; 
- int waitpid (int,int*,int /*<<< orphan*/ ) ; 
- int workers ; 
+ scalar_t__ EINTR ;
+ int EXIT_FAILURE ;
+ int SIGTERM ;
+ scalar_t__ WIFEXITED (int) ;
+ scalar_t__ WIFSIGNALED (int) ;
+ int WNOHANG ;
+ int check_children_dead () ;
+ scalar_t__ errno ;
+ int exit (int ) ;
+ int getppid () ;
+ int kill_children (int ) ;
+ int kprintf (char*,int,...) ;
+ int parent_pid ;
+ int* pids ;
+ scalar_t__ slave_mode ;
+ int waitpid (int,int*,int ) ;
+ int workers ;
 
 __attribute__((used)) static void check_children_status (void) {
   if (workers) {

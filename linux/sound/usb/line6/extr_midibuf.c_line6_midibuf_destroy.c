@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct midi_buffer {int /*<<< orphan*/ * buf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
+
+
+
+struct midi_buffer {int * buf; } ;
+
+
+ int kfree (int *) ;
 
 void line6_midibuf_destroy(struct midi_buffer *this)
 {
-	kfree(this->buf);
-	this->buf = NULL;
+ kfree(this->buf);
+ this->buf = ((void*)0);
 }

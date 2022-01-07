@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CompositeTypeStmt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMPARE_NODE_FIELD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  coldeflist ; 
- int /*<<< orphan*/  typevar ; 
+
+
+
+typedef int CompositeTypeStmt ;
+
+
+ int COMPARE_NODE_FIELD (int ) ;
+ int coldeflist ;
+ int typevar ;
 
 __attribute__((used)) static bool
 _equalCompositeTypeStmt(const CompositeTypeStmt *a, const CompositeTypeStmt *b)
 {
-	COMPARE_NODE_FIELD(typevar);
-	COMPARE_NODE_FIELD(coldeflist);
+ COMPARE_NODE_FIELD(typevar);
+ COMPARE_NODE_FIELD(coldeflist);
 
-	return true;
+ return 1;
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fp_rnd_t ;
 
-/* Variables and functions */
- scalar_t__ FSR_GET_RD (unsigned int) ; 
+
+
+
+typedef int fp_rnd_t ;
+
+
+ scalar_t__ FSR_GET_RD (unsigned int) ;
 
 fp_rnd_t
 fpgetround()
 {
-	unsigned int x;
+ unsigned int x;
 
-	__asm__("st %%fsr,%0" : "=m" (x));
-	return ((fp_rnd_t)FSR_GET_RD(x));
+ __asm__("st %%fsr,%0" : "=m" (x));
+ return ((fp_rnd_t)FSR_GET_RD(x));
 }

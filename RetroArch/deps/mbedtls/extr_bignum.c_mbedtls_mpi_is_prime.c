@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int s; int /*<<< orphan*/  p; int /*<<< orphan*/  n; } ;
-typedef  TYPE_1__ mbedtls_mpi ;
 
-/* Variables and functions */
- int MBEDTLS_ERR_MPI_NOT_ACCEPTABLE ; 
- scalar_t__ mbedtls_mpi_cmp_int (TYPE_1__*,int) ; 
- int mpi_check_small_factors (TYPE_1__*) ; 
- int mpi_miller_rabin (TYPE_1__*,int (*) (void*,unsigned char*,size_t),void*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int s; int p; int n; } ;
+typedef TYPE_1__ mbedtls_mpi ;
+
+
+ int MBEDTLS_ERR_MPI_NOT_ACCEPTABLE ;
+ scalar_t__ mbedtls_mpi_cmp_int (TYPE_1__*,int) ;
+ int mpi_check_small_factors (TYPE_1__*) ;
+ int mpi_miller_rabin (TYPE_1__*,int (*) (void*,unsigned char*,size_t),void*) ;
 
 int mbedtls_mpi_is_prime( const mbedtls_mpi *X,
                   int (*f_rng)(void *, unsigned char *, size_t),

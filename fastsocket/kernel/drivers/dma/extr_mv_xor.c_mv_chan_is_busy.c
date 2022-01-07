@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct mv_xor_chan {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XOR_ACTIVATION (struct mv_xor_chan*) ; 
- int __raw_readl (int /*<<< orphan*/ ) ; 
+
+ int XOR_ACTIVATION (struct mv_xor_chan*) ;
+ int __raw_readl (int ) ;
 
 __attribute__((used)) static char mv_chan_is_busy(struct mv_xor_chan *chan)
 {
-	u32 state = __raw_readl(XOR_ACTIVATION(chan));
+ u32 state = __raw_readl(XOR_ACTIVATION(chan));
 
-	state = (state >> 4) & 0x3;
+ state = (state >> 4) & 0x3;
 
-	return (state == 1) ? 1 : 0;
+ return (state == 1) ? 1 : 0;
 }

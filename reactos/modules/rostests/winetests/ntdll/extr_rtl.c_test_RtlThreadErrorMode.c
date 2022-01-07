@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int HardErrorDisabled; } ;
-typedef  int NTSTATUS ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int NTSTATUS ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetCurrentProcess () ; 
- TYPE_1__* NtCurrentTeb () ; 
- int STATUS_INVALID_PARAMETER_1 ; 
- int STATUS_SUCCESS ; 
- int STATUS_WAIT_1 ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
- int /*<<< orphan*/  pIsWow64Process (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int pRtlGetThreadErrorMode () ; 
- int pRtlSetThreadErrorMode (int,int*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+ int FALSE ;
+ int GetCurrentProcess () ;
+ TYPE_1__* NtCurrentTeb () ;
+ int STATUS_INVALID_PARAMETER_1 ;
+ int STATUS_SUCCESS ;
+ int STATUS_WAIT_1 ;
+ int ok (int,char*,int,...) ;
+ int pIsWow64Process (int ,int *) ;
+ int pRtlGetThreadErrorMode () ;
+ int pRtlSetThreadErrorMode (int,int*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_RtlThreadErrorMode(void)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static void test_RtlThreadErrorMode(void)
 
     status = pRtlSetThreadErrorMode(0x70, &mode);
     ok(status == STATUS_SUCCESS ||
-       status == STATUS_WAIT_1, /* Vista */
+       status == STATUS_WAIT_1,
        "RtlSetThreadErrorMode failed with error 0x%08x\n", status);
     ok(mode == oldmode,
        "RtlSetThreadErrorMode returned mode 0x%x, expected 0x%x\n",
@@ -65,7 +65,7 @@ __attribute__((used)) static void test_RtlThreadErrorMode(void)
 
     status = pRtlSetThreadErrorMode(0, &mode);
     ok(status == STATUS_SUCCESS ||
-       status == STATUS_WAIT_1, /* Vista */
+       status == STATUS_WAIT_1,
        "RtlSetThreadErrorMode failed with error 0x%08x\n", status);
     ok(mode == 0x70,
        "RtlSetThreadErrorMode returned mode 0x%x, expected 0x%x\n",
@@ -81,10 +81,10 @@ __attribute__((used)) static void test_RtlThreadErrorMode(void)
 
     for (mode = 1; mode; mode <<= 1)
     {
-        status = pRtlSetThreadErrorMode(mode, NULL);
+        status = pRtlSetThreadErrorMode(mode, ((void*)0));
         if (mode & 0x70)
             ok(status == STATUS_SUCCESS ||
-               status == STATUS_WAIT_1, /* Vista */
+               status == STATUS_WAIT_1,
                "RtlSetThreadErrorMode(%x,NULL) failed with error 0x%08x\n",
                mode, status);
         else
@@ -94,5 +94,5 @@ __attribute__((used)) static void test_RtlThreadErrorMode(void)
                mode, status);
     }
 
-    pRtlSetThreadErrorMode(oldmode, NULL);
+    pRtlSetThreadErrorMode(oldmode, ((void*)0));
 }

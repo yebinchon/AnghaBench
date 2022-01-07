@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int pp_needs_newline ;
-typedef  int /*<<< orphan*/  c_pretty_printer ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int tree ;
+typedef int pp_needs_newline ;
+typedef int c_pretty_printer ;
 struct TYPE_5__ {TYPE_1__* buffer; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * stream; } ;
-typedef  int /*<<< orphan*/  FILE ;
+struct TYPE_4__ {int * stream; } ;
+typedef int FILE ;
 
-/* Variables and functions */
- TYPE_2__* pp_base (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pp_c_pretty_printer_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pp_construct (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pp_flush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pp_newline (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pp_statement (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ TYPE_2__* pp_base (int *) ;
+ int pp_c_pretty_printer_init (int *) ;
+ int pp_construct (TYPE_2__*,int *,int ) ;
+ int pp_flush (int *) ;
+ int pp_newline (int *) ;
+ int pp_statement (int *,int ) ;
 
 void
 print_c_tree (FILE *file, tree t)
@@ -37,9 +37,9 @@ print_c_tree (FILE *file, tree t)
   if (!initialized)
     {
       initialized = 1;
-      pp_construct (pp_base (pp), NULL, 0);
+      pp_construct (pp_base (pp), ((void*)0), 0);
       pp_c_pretty_printer_init (pp);
-      pp_needs_newline (pp) = true;
+      pp_needs_newline (pp) = 1;
     }
   pp_base (pp)->buffer->stream = file;
 

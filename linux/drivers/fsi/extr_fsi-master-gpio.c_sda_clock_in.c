@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fsi_master_gpio {int /*<<< orphan*/  gpio_clk; int /*<<< orphan*/  no_delays; int /*<<< orphan*/  gpio_data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FSI_GPIO_STD_DLY ; 
- int gpiod_get_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gpiod_set_value (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ndelay (int /*<<< orphan*/ ) ; 
+
+
+
+struct fsi_master_gpio {int gpio_clk; int no_delays; int gpio_data; } ;
+
+
+ int FSI_GPIO_STD_DLY ;
+ int gpiod_get_value (int ) ;
+ int gpiod_set_value (int ,int) ;
+ int ndelay (int ) ;
 
 __attribute__((used)) static int sda_clock_in(struct fsi_master_gpio *master)
 {
-	int in;
+ int in;
 
-	if (!master->no_delays)
-		ndelay(FSI_GPIO_STD_DLY);
-	gpiod_set_value(master->gpio_clk, 0);
+ if (!master->no_delays)
+  ndelay(FSI_GPIO_STD_DLY);
+ gpiod_set_value(master->gpio_clk, 0);
 
-	/* Dummy read to feed the synchronizers */
-	gpiod_get_value(master->gpio_data);
 
-	/* Actual data read */
-	in = gpiod_get_value(master->gpio_data);
-	if (!master->no_delays)
-		ndelay(FSI_GPIO_STD_DLY);
-	gpiod_set_value(master->gpio_clk, 1);
-	return in ? 1 : 0;
+ gpiod_get_value(master->gpio_data);
+
+
+ in = gpiod_get_value(master->gpio_data);
+ if (!master->no_delays)
+  ndelay(FSI_GPIO_STD_DLY);
+ gpiod_set_value(master->gpio_clk, 1);
+ return in ? 1 : 0;
 }

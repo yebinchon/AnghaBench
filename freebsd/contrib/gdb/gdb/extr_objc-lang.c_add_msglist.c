@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stoken {char* ptr; int length; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  msglist_len ; 
- char* msglist_sel ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  strncat (char*,char*,int) ; 
- int /*<<< orphan*/  xfree (char*) ; 
- scalar_t__ xmalloc (int) ; 
+
+ int msglist_len ;
+ char* msglist_sel ;
+ int strcpy (char*,char*) ;
+ int strlen (char*) ;
+ int strncat (char*,char*,int) ;
+ int xfree (char*) ;
+ scalar_t__ xmalloc (int) ;
 
 void
 add_msglist(struct stoken *str, int addcolon)
@@ -27,8 +27,8 @@ add_msglist(struct stoken *str, int addcolon)
   char *s, *p;
   int len, plen;
 
-  if (str == 0) {		/* Unnamed arg, or...  */
-    if (addcolon == 0) {	/* variable number of args.  */
+  if (str == 0) {
+    if (addcolon == 0) {
       msglist_len++;
       return;
     }

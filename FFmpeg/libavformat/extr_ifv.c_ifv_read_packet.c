@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  pb; TYPE_2__** streams; TYPE_1__* priv_data; } ;
-struct TYPE_13__ {scalar_t__ timestamp; int /*<<< orphan*/  pos; int /*<<< orphan*/  size; } ;
-struct TYPE_12__ {size_t stream_index; scalar_t__ pts; int /*<<< orphan*/  pos; } ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int pb; TYPE_2__** streams; TYPE_1__* priv_data; } ;
+struct TYPE_13__ {scalar_t__ timestamp; int pos; int size; } ;
+struct TYPE_12__ {size_t stream_index; scalar_t__ pts; int pos; } ;
 struct TYPE_11__ {size_t nb_index_entries; TYPE_4__* index_entries; } ;
 struct TYPE_10__ {size_t next_video_index; size_t total_vframes; size_t video_stream_index; size_t next_audio_index; size_t total_aframes; size_t audio_stream_index; scalar_t__ is_audio_present; } ;
-typedef  TYPE_1__ IFVContext ;
-typedef  TYPE_2__ AVStream ;
-typedef  TYPE_3__ AVPacket ;
-typedef  TYPE_4__ AVIndexEntry ;
-typedef  TYPE_5__ AVFormatContext ;
+typedef TYPE_1__ IFVContext ;
+typedef TYPE_2__ AVStream ;
+typedef TYPE_3__ AVPacket ;
+typedef TYPE_4__ AVIndexEntry ;
+typedef TYPE_5__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR_EOF ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_AUDIO ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_VIDEO ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int av_get_packet (int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ) ; 
- scalar_t__ avio_feof (int /*<<< orphan*/ ) ; 
- scalar_t__ avio_rl32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ ,int) ; 
- int read_index (TYPE_5__*,int /*<<< orphan*/ ,size_t) ; 
+
+ int AVERROR_EOF ;
+ int AVMEDIA_TYPE_AUDIO ;
+ int AVMEDIA_TYPE_VIDEO ;
+ int SEEK_SET ;
+ int av_get_packet (int ,TYPE_3__*,int ) ;
+ scalar_t__ avio_feof (int ) ;
+ scalar_t__ avio_rl32 (int ) ;
+ int avio_seek (int ,int ,int ) ;
+ int avio_skip (int ,int) ;
+ int read_index (TYPE_5__*,int ,size_t) ;
 
 __attribute__((used)) static int ifv_read_packet(AVFormatContext *s, AVPacket *pkt)
 {
@@ -45,7 +45,7 @@ __attribute__((used)) static int ifv_read_packet(AVFormatContext *s, AVPacket *p
     AVIndexEntry *ev, *ea, *e_next;
     int ret;
 
-    ev = ea = e_next = NULL;
+    ev = ea = e_next = ((void*)0);
 
     if (ifv->next_video_index < ifv->total_vframes) {
         st = s->streams[ifv->video_stream_index];
@@ -65,7 +65,7 @@ __attribute__((used)) static int ifv_read_packet(AVFormatContext *s, AVPacket *p
 
     if (!ev) {
         if (ifv->is_audio_present && !ea) {
-            /*read new video and audio indexes*/
+
 
             ifv->next_video_index = ifv->total_vframes;
             ifv->next_audio_index = ifv->total_aframes;
@@ -89,7 +89,7 @@ __attribute__((used)) static int ifv_read_packet(AVFormatContext *s, AVPacket *p
             return 0;
 
         } else if (!ifv->is_audio_present) {
-            /*read new video index*/
+
 
             ifv->next_video_index = ifv->total_vframes;
 

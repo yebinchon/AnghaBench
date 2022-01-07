@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mp_image_pool {int num_images; struct mp_image** images; } ;
 struct mp_image {struct image_flags* priv; } ;
 struct image_flags {int pool_alive; int referenced; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  pool_lock () ; 
- int /*<<< orphan*/  pool_unlock () ; 
- int /*<<< orphan*/  talloc_free (struct mp_image*) ; 
+
+ int assert (int) ;
+ int pool_lock () ;
+ int pool_unlock () ;
+ int talloc_free (struct mp_image*) ;
 
 void mp_image_pool_clear(struct mp_image_pool *pool)
 {
@@ -28,7 +28,7 @@ void mp_image_pool_clear(struct mp_image_pool *pool)
         bool referenced;
         pool_lock();
         assert(it->pool_alive);
-        it->pool_alive = false;
+        it->pool_alive = 0;
         referenced = it->referenced;
         pool_unlock();
         if (!referenced)

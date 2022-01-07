@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ext4_xattr_ref {int /*<<< orphan*/ * iter_arg; } ;
+
+
+
+
+struct ext4_xattr_ref {int * iter_arg; } ;
 struct ext4_xattr_item {int name_len; int data_size; } ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/ * PULONG ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int ULONG ;
+typedef int * PULONG ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int EXT4_XATTR_ITERATE_CONT ; 
+
+ int EXT4_XATTR_ITERATE_CONT ;
 
 __attribute__((used)) static int Ext2IterateAllEa(struct ext4_xattr_ref *xattr_ref, struct ext4_xattr_item *item, BOOL is_last)
 {

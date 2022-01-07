@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_32__   TYPE_8__ ;
-typedef  struct TYPE_31__   TYPE_7__ ;
-typedef  struct TYPE_30__   TYPE_6__ ;
-typedef  struct TYPE_29__   TYPE_5__ ;
-typedef  struct TYPE_28__   TYPE_4__ ;
-typedef  struct TYPE_27__   TYPE_3__ ;
-typedef  struct TYPE_26__   TYPE_2__ ;
-typedef  struct TYPE_25__   TYPE_20__ ;
-typedef  struct TYPE_24__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int int64_t ;
-typedef  int /*<<< orphan*/  buf ;
+
+
+typedef struct TYPE_32__ TYPE_8__ ;
+typedef struct TYPE_31__ TYPE_7__ ;
+typedef struct TYPE_30__ TYPE_6__ ;
+typedef struct TYPE_29__ TYPE_5__ ;
+typedef struct TYPE_28__ TYPE_4__ ;
+typedef struct TYPE_27__ TYPE_3__ ;
+typedef struct TYPE_26__ TYPE_2__ ;
+typedef struct TYPE_25__ TYPE_20__ ;
+typedef struct TYPE_24__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int int64_t ;
+typedef int buf ;
 struct TYPE_27__ {scalar_t__ den; scalar_t__ num; } ;
 struct TYPE_32__ {scalar_t__ format; int w; int h; TYPE_20__* dst; TYPE_3__ sample_aspect_ratio; } ;
 struct TYPE_26__ {scalar_t__ den; scalar_t__ num; } ;
-struct TYPE_31__ {int width; int height; scalar_t__ format; int color_range; scalar_t__ interlaced_frame; TYPE_2__ sample_aspect_ratio; int /*<<< orphan*/  colorspace; scalar_t__* data; } ;
-struct TYPE_30__ {int /*<<< orphan*/  log2_chroma_h; int /*<<< orphan*/  log2_chroma_w; } ;
-struct TYPE_29__ {scalar_t__ eval_mode; int in_range; int out_range; scalar_t__ interlaced; int nb_slices; scalar_t__ sws; scalar_t__* isws; scalar_t__ in_color_matrix; scalar_t__ out_color_matrix; scalar_t__ output_is_pal; int /*<<< orphan*/  vsub; int /*<<< orphan*/  hsub; } ;
+struct TYPE_31__ {int width; int height; scalar_t__ format; int color_range; scalar_t__ interlaced_frame; TYPE_2__ sample_aspect_ratio; int colorspace; scalar_t__* data; } ;
+struct TYPE_30__ {int log2_chroma_h; int log2_chroma_w; } ;
+struct TYPE_29__ {scalar_t__ eval_mode; int in_range; int out_range; scalar_t__ interlaced; int nb_slices; scalar_t__ sws; scalar_t__* isws; scalar_t__ in_color_matrix; scalar_t__ out_color_matrix; scalar_t__ output_is_pal; int vsub; int hsub; } ;
 struct TYPE_24__ {scalar_t__ den; scalar_t__ num; } ;
 struct TYPE_28__ {scalar_t__ format; int w; int h; TYPE_1__ sample_aspect_ratio; } ;
 struct TYPE_25__ {TYPE_4__** inputs; TYPE_8__** outputs; TYPE_5__* priv; } ;
-typedef  TYPE_5__ ScaleContext ;
-typedef  TYPE_6__ AVPixFmtDescriptor ;
-typedef  TYPE_7__ AVFrame ;
-typedef  TYPE_8__ AVFilterLink ;
+typedef TYPE_5__ ScaleContext ;
+typedef TYPE_6__ AVPixFmtDescriptor ;
+typedef TYPE_7__ AVFrame ;
+typedef TYPE_8__ AVFilterLink ;
 
-/* Variables and functions */
- int AVCOL_RANGE_JPEG ; 
- int AVCOL_RANGE_MPEG ; 
- int AVCOL_RANGE_UNSPECIFIED ; 
- int /*<<< orphan*/  AVCOL_SPC_UNSPECIFIED ; 
- int /*<<< orphan*/  AVCOL_SPC_YCGCO ; 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- scalar_t__ AV_PIX_FMT_BGR8 ; 
- scalar_t__ AV_PIX_FMT_PAL8 ; 
- int /*<<< orphan*/  ENOMEM ; 
- scalar_t__ EVAL_MODE_INIT ; 
- int FFMIN (int,int) ; 
- int /*<<< orphan*/  INT_MAX ; 
- int /*<<< orphan*/  av_frame_copy_props (TYPE_7__*,TYPE_7__*) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_7__**) ; 
- int /*<<< orphan*/  av_log (TYPE_20__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  av_opt_set (TYPE_5__*,char*,char*,int /*<<< orphan*/ ) ; 
- TYPE_6__* av_pix_fmt_desc_get (scalar_t__) ; 
- int /*<<< orphan*/  av_reduce (scalar_t__*,scalar_t__*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avpriv_set_systematic_pal2 (int /*<<< orphan*/ *,scalar_t__) ; 
- int config_props (TYPE_8__*) ; 
- TYPE_7__* ff_get_video_buffer (TYPE_8__*,int,int) ; 
- int* parse_yuv_type (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scale_slice (TYPE_8__*,TYPE_7__*,TYPE_7__*,scalar_t__,int,int,int,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
- int /*<<< orphan*/  sws_getColorspaceDetails (scalar_t__,int**,int*,int**,int*,int*,int*,int*) ; 
- int /*<<< orphan*/  sws_setColorspaceDetails (scalar_t__,int const*,int,int const*,int,int,int,int) ; 
+
+ int AVCOL_RANGE_JPEG ;
+ int AVCOL_RANGE_MPEG ;
+ int AVCOL_RANGE_UNSPECIFIED ;
+ int AVCOL_SPC_UNSPECIFIED ;
+ int AVCOL_SPC_YCGCO ;
+ int AVERROR (int ) ;
+ int AV_LOG_WARNING ;
+ scalar_t__ AV_PIX_FMT_BGR8 ;
+ scalar_t__ AV_PIX_FMT_PAL8 ;
+ int ENOMEM ;
+ scalar_t__ EVAL_MODE_INIT ;
+ int FFMIN (int,int) ;
+ int INT_MAX ;
+ int av_frame_copy_props (TYPE_7__*,TYPE_7__*) ;
+ int av_frame_free (TYPE_7__**) ;
+ int av_log (TYPE_20__*,int ,char*) ;
+ int av_opt_set (TYPE_5__*,char*,char*,int ) ;
+ TYPE_6__* av_pix_fmt_desc_get (scalar_t__) ;
+ int av_reduce (scalar_t__*,scalar_t__*,int,int,int ) ;
+ int avpriv_set_systematic_pal2 (int *,scalar_t__) ;
+ int config_props (TYPE_8__*) ;
+ TYPE_7__* ff_get_video_buffer (TYPE_8__*,int,int) ;
+ int* parse_yuv_type (scalar_t__,int ) ;
+ int scale_slice (TYPE_8__*,TYPE_7__*,TYPE_7__*,scalar_t__,int,int,int,int) ;
+ int snprintf (char*,int,char*,int) ;
+ int sws_getColorspaceDetails (scalar_t__,int**,int*,int**,int*,int*,int*,int*) ;
+ int sws_setColorspaceDetails (scalar_t__,int const*,int,int const*,int,int,int,int) ;
 
 __attribute__((used)) static int scale_frame(AVFilterLink *link, AVFrame *in, AVFrame **frame_out)
 {
@@ -74,11 +74,11 @@ __attribute__((used)) static int scale_frame(AVFilterLink *link, AVFrame *in, AV
     char buf[32];
     int in_range;
 
-    *frame_out = NULL;
+    *frame_out = ((void*)0);
     if (in->colorspace == AVCOL_SPC_YCGCO)
         av_log(link->dst, AV_LOG_WARNING, "Detected unsupported YCgCo colorspace.\n");
 
-    if (  in->width  != link->w
+    if ( in->width != link->w
        || in->height != link->h
        || in->format != link->format
        || in->sample_aspect_ratio.den != link->sample_aspect_ratio.den || in->sample_aspect_ratio.num != link->sample_aspect_ratio.num) {
@@ -92,8 +92,8 @@ __attribute__((used)) static int scale_frame(AVFilterLink *link, AVFrame *in, AV
         }
 
         link->dst->inputs[0]->format = in->format;
-        link->dst->inputs[0]->w      = in->width;
-        link->dst->inputs[0]->h      = in->height;
+        link->dst->inputs[0]->w = in->width;
+        link->dst->inputs[0]->h = in->height;
 
         link->dst->inputs[0]->sample_aspect_ratio.den = in->sample_aspect_ratio.den;
         link->dst->inputs[0]->sample_aspect_ratio.num = in->sample_aspect_ratio.num;
@@ -118,7 +118,7 @@ __attribute__((used)) static int scale_frame(AVFilterLink *link, AVFrame *in, AV
     *frame_out = out;
 
     av_frame_copy_props(out, in);
-    out->width  = outlink->w;
+    out->width = outlink->w;
     out->height = outlink->h;
 
     if (scale->output_is_pal)
@@ -126,7 +126,7 @@ __attribute__((used)) static int scale_frame(AVFilterLink *link, AVFrame *in, AV
 
     in_range = in->color_range;
 
-    if (   scale->in_color_matrix
+    if ( scale->in_color_matrix
         || scale->out_color_matrix
         || scale-> in_range != AVCOL_RANGE_UNSPECIFIED
         || in_range != AVCOL_RANGE_UNSPECIFIED
@@ -141,14 +141,14 @@ __attribute__((used)) static int scale_frame(AVFilterLink *link, AVFrame *in, AV
         if (scale->in_color_matrix)
             inv_table = parse_yuv_type(scale->in_color_matrix, in->colorspace);
         if (scale->out_color_matrix)
-            table     = parse_yuv_type(scale->out_color_matrix, AVCOL_SPC_UNSPECIFIED);
+            table = parse_yuv_type(scale->out_color_matrix, AVCOL_SPC_UNSPECIFIED);
         else if (scale->in_color_matrix)
             table = inv_table;
 
         if (scale-> in_range != AVCOL_RANGE_UNSPECIFIED)
-            in_full  = (scale-> in_range == AVCOL_RANGE_JPEG);
+            in_full = (scale-> in_range == AVCOL_RANGE_JPEG);
         else if (in_range != AVCOL_RANGE_UNSPECIFIED)
-            in_full  = (in_range == AVCOL_RANGE_JPEG);
+            in_full = (in_range == AVCOL_RANGE_JPEG);
         if (scale->out_range != AVCOL_RANGE_UNSPECIFIED)
             out_full = (scale->out_range == AVCOL_RANGE_JPEG);
 
@@ -174,14 +174,14 @@ __attribute__((used)) static int scale_frame(AVFilterLink *link, AVFrame *in, AV
 
     if (scale->interlaced>0 || (scale->interlaced<0 && in->interlaced_frame)) {
         scale_slice(link, out, in, scale->isws[0], 0, (link->h+1)/2, 2, 0);
-        scale_slice(link, out, in, scale->isws[1], 0,  link->h   /2, 2, 1);
+        scale_slice(link, out, in, scale->isws[1], 0, link->h /2, 2, 1);
     } else if (scale->nb_slices) {
         int i, slice_h, slice_start, slice_end = 0;
         const int nb_slices = FFMIN(scale->nb_slices, link->h);
         for (i = 0; i < nb_slices; i++) {
             slice_start = slice_end;
-            slice_end   = (link->h * (i+1)) / nb_slices;
-            slice_h     = slice_end - slice_start;
+            slice_end = (link->h * (i+1)) / nb_slices;
+            slice_h = slice_end - slice_start;
             scale_slice(link, out, in, scale->sws, slice_start, slice_h, 1, 0);
         }
     } else {

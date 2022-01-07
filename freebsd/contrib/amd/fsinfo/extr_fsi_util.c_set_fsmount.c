@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int f_mask; char* f_localname; char* f_volname; char* f_fstype; char* f_opts; char* f_from; } ;
-typedef  TYPE_1__ fsmount ;
-
-/* Variables and functions */
-#define  FM_DIRECT 133 
-#define  FM_FROM 132 
-#define  FM_FSTYPE 131 
-#define  FM_LOCALNAME 130 
-#define  FM_OPTS 129 
-#define  FM_VOLNAME 128 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  fsi_error (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * fsmount_strings ; 
+typedef TYPE_1__ fsmount ;
+ int abort () ;
+ int fsi_error (char*,int ) ;
+ int * fsmount_strings ;
 
 void
 set_fsmount(fsmount *fp, int k, char *v)
@@ -38,27 +30,27 @@ set_fsmount(fsmount *fp, int k, char *v)
 
   switch (k) {
 
-  case FM_LOCALNAME:
+  case 130:
     fp->f_localname = v;
     break;
 
-  case FM_VOLNAME:
+  case 128:
     fp->f_volname = v;
     break;
 
-  case FM_FSTYPE:
+  case 131:
     fp->f_fstype = v;
     break;
 
-  case FM_OPTS:
+  case 129:
     fp->f_opts = v;
     break;
 
-  case FM_FROM:
+  case 132:
     fp->f_from = v;
     break;
 
-  case FM_DIRECT:
+  case 133:
     break;
 
   default:

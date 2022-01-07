@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERROR_CHECK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_event_loop_create_default () ; 
- int /*<<< orphan*/  esp_netif_init () ; 
- int /*<<< orphan*/  example_connect () ; 
- int /*<<< orphan*/  init_spiffs () ; 
- int /*<<< orphan*/  nvs_flash_init () ; 
- int /*<<< orphan*/  start_file_server (char*) ; 
+ int ESP_ERROR_CHECK (int ) ;
+ int esp_event_loop_create_default () ;
+ int esp_netif_init () ;
+ int example_connect () ;
+ int init_spiffs () ;
+ int nvs_flash_init () ;
+ int start_file_server (char*) ;
 
 void app_main(void)
 {
@@ -26,15 +18,15 @@ void app_main(void)
     esp_netif_init();
     ESP_ERROR_CHECK(esp_event_loop_create_default());
 
-    /* This helper function configures Wi-Fi or Ethernet, as selected in menuconfig.
-     * Read "Establishing Wi-Fi or Ethernet Connection" section in
-     * examples/protocols/README.md for more information about this function.
-     */
+
+
+
+
     ESP_ERROR_CHECK(example_connect());
 
-    /* Initialize file storage */
+
     ESP_ERROR_CHECK(init_spiffs());
 
-    /* Start the file server */
+
     ESP_ERROR_CHECK(start_file_server("/spiffs"));
 }

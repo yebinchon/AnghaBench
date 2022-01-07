@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int active; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- int /*<<< orphan*/  FATAL ; 
- TYPE_1__** active_timeouts ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*,int,int) ; 
- int num_active_timeouts ; 
+
+ int Assert (int) ;
+ int FATAL ;
+ TYPE_1__** active_timeouts ;
+ int elog (int ,char*,int,int) ;
+ int num_active_timeouts ;
 
 __attribute__((used)) static void
 remove_timeout_index(int index)
 {
-	int			i;
+ int i;
 
-	if (index < 0 || index >= num_active_timeouts)
-		elog(FATAL, "timeout index %d out of range 0..%d", index,
-			 num_active_timeouts - 1);
+ if (index < 0 || index >= num_active_timeouts)
+  elog(FATAL, "timeout index %d out of range 0..%d", index,
+    num_active_timeouts - 1);
 
-	Assert(active_timeouts[index]->active);
-	active_timeouts[index]->active = false;
+ Assert(active_timeouts[index]->active);
+ active_timeouts[index]->active = 0;
 
-	for (i = index + 1; i < num_active_timeouts; i++)
-		active_timeouts[i - 1] = active_timeouts[i];
+ for (i = index + 1; i < num_active_timeouts; i++)
+  active_timeouts[i - 1] = active_timeouts[i];
 
-	num_active_timeouts--;
+ num_active_timeouts--;
 }

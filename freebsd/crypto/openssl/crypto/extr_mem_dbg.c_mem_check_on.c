@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CRYPTO_THREAD_ID ;
 
-/* Variables and functions */
- int CRYPTO_MEM_CHECK_ENABLE ; 
- int CRYPTO_MEM_CHECK_ON ; 
- int /*<<< orphan*/  CRYPTO_THREAD_compare_id (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CRYPTO_THREAD_get_current_id () ; 
- int /*<<< orphan*/  CRYPTO_THREAD_read_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CRYPTO_THREAD_unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RUN_ONCE (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  disabling_threadid ; 
- int /*<<< orphan*/  do_memdbg_init ; 
- int /*<<< orphan*/  memdbg_init ; 
- int /*<<< orphan*/  memdbg_lock ; 
- int mh_mode ; 
+
+
+
+typedef int CRYPTO_THREAD_ID ;
+
+
+ int CRYPTO_MEM_CHECK_ENABLE ;
+ int CRYPTO_MEM_CHECK_ON ;
+ int CRYPTO_THREAD_compare_id (int ,int ) ;
+ int CRYPTO_THREAD_get_current_id () ;
+ int CRYPTO_THREAD_read_lock (int ) ;
+ int CRYPTO_THREAD_unlock (int ) ;
+ int RUN_ONCE (int *,int ) ;
+ int disabling_threadid ;
+ int do_memdbg_init ;
+ int memdbg_init ;
+ int memdbg_lock ;
+ int mh_mode ;
 
 __attribute__((used)) static int mem_check_on(void)
 {

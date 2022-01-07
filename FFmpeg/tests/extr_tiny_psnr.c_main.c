@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int F ; 
- int atoi (char*) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int run_psnr (int /*<<< orphan*/ **,int,int,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int strtol (char*,char**,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int FILE ;
+
+
+ int F ;
+ int atoi (char*) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int printf (char*,...) ;
+ int run_psnr (int **,int,int,int) ;
+ int stderr ;
+ int strcmp (char*,char*) ;
+ int strtol (char*,char**,int ) ;
 
 int main(int argc, char *argv[])
 {
@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     int skip_bytes = argc < 6 ? 0 : atoi(argv[5]);
     int shift_last = shift_first + (argc < 7 ? 0 : atoi(argv[6]));
     int shift;
-    int max_psnr   = -1;
+    int max_psnr = -1;
     int max_psnr_shift = 0;
 
     if (shift_last > shift_first)

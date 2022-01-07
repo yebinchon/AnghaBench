@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_mutex ;
-typedef  int /*<<< orphan*/  Tcl_Obj ;
-typedef  int /*<<< orphan*/  Tcl_Interp ;
 
-/* Variables and functions */
- int SQLITE_MUTEX_FAST ; 
- int SQLITE_MUTEX_RECURSIVE ; 
- scalar_t__ Tcl_GetIndexFromObj (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  aName ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * counterMutexAlloc (int) ; 
+
+
+
+typedef int sqlite3_mutex ;
+typedef int Tcl_Obj ;
+typedef int Tcl_Interp ;
+
+
+ int SQLITE_MUTEX_FAST ;
+ int SQLITE_MUTEX_RECURSIVE ;
+ scalar_t__ Tcl_GetIndexFromObj (int *,int *,int ,char*,int ,int*) ;
+ int aName ;
+ int assert (int) ;
+ int * counterMutexAlloc (int) ;
 
 __attribute__((used)) static sqlite3_mutex *getStaticMutexPointer(
   Tcl_Interp *pInterp,

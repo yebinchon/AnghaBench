@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct session {int /*<<< orphan*/  name; } ;
-struct client {int flags; int /*<<< orphan*/  peer; struct session* session; } ;
-typedef  enum msgtype { ____Placeholder_msgtype } msgtype ;
 
-/* Variables and functions */
- int CLIENT_DETACHING ; 
- int /*<<< orphan*/  notify_client (char*,struct client*) ; 
- int /*<<< orphan*/  proc_send (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ strlen (int /*<<< orphan*/ ) ; 
+
+
+
+struct session {int name; } ;
+struct client {int flags; int peer; struct session* session; } ;
+typedef enum msgtype { ____Placeholder_msgtype } msgtype ;
+
+
+ int CLIENT_DETACHING ;
+ int notify_client (char*,struct client*) ;
+ int proc_send (int ,int,int,int ,scalar_t__) ;
+ scalar_t__ strlen (int ) ;
 
 void
 server_client_detach(struct client *c, enum msgtype msgtype)
 {
-	struct session	*s = c->session;
+ struct session *s = c->session;
 
-	if (s == NULL || (c->flags & CLIENT_DETACHING))
-		return;
+ if (s == ((void*)0) || (c->flags & CLIENT_DETACHING))
+  return;
 
-	c->flags |= CLIENT_DETACHING;
-	notify_client("client-detached", c);
-	proc_send(c->peer, msgtype, -1, s->name, strlen(s->name) + 1);
+ c->flags |= CLIENT_DETACHING;
+ notify_client("client-detached", c);
+ proc_send(c->peer, msgtype, -1, s->name, strlen(s->name) + 1);
 }

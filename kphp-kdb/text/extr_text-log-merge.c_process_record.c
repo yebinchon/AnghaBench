@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,scalar_t__,int,int) ; 
- int get_logrec_size (int,scalar_t__,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,scalar_t__,int) ; 
- int /*<<< orphan*/  prepare_read () ; 
- int rd_bytes ; 
- int /*<<< orphan*/  rd_rec ; 
- scalar_t__ rend ; 
- scalar_t__ rptr ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ targ_orig_size ; 
- scalar_t__ want_write (int,scalar_t__) ; 
- scalar_t__ wr_bytes ; 
- int /*<<< orphan*/  wr_rec ; 
- int /*<<< orphan*/  write_alloc (int) ; 
+ int fprintf (int ,char*,int,int,scalar_t__,int,int) ;
+ int get_logrec_size (int,scalar_t__,int) ;
+ int memcpy (int ,scalar_t__,int) ;
+ int prepare_read () ;
+ int rd_bytes ;
+ int rd_rec ;
+ scalar_t__ rend ;
+ scalar_t__ rptr ;
+ int stderr ;
+ scalar_t__ targ_orig_size ;
+ scalar_t__ want_write (int,scalar_t__) ;
+ scalar_t__ wr_bytes ;
+ int wr_rec ;
+ int write_alloc (int) ;
 
 int process_record (void) {
   int size, type, s;

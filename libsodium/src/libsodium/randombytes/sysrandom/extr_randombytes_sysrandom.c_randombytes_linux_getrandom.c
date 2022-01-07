@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ _randombytes_linux_getrandom (unsigned char*,size_t) ; 
- int /*<<< orphan*/  assert (int) ; 
+ scalar_t__ _randombytes_linux_getrandom (unsigned char*,size_t) ;
+ int assert (int) ;
 
 __attribute__((used)) static int
 randombytes_linux_getrandom(void * const buf_, size_t size)
 {
     unsigned char *buf = (unsigned char *) buf_;
-    size_t         chunk_size = 256U;
+    size_t chunk_size = 256U;
 
     do {
         if (size < chunk_size) {

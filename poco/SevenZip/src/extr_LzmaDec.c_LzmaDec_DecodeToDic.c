@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ remainLen; scalar_t__ needFlush; scalar_t__ tempBufSize; scalar_t__* tempBuf; scalar_t__ dicPos; scalar_t__ code; scalar_t__ const* buf; scalar_t__ needInitState; } ;
-typedef  scalar_t__ SizeT ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  int /*<<< orphan*/  ELzmaStatus ;
-typedef  scalar_t__ ELzmaFinishMode ;
-typedef  TYPE_1__ CLzmaDec ;
-typedef  scalar_t__ Byte ;
+typedef scalar_t__ SizeT ;
+typedef int SRes ;
+typedef int ELzmaStatus ;
+typedef scalar_t__ ELzmaFinishMode ;
+typedef TYPE_1__ CLzmaDec ;
+typedef scalar_t__ Byte ;
 
-/* Variables and functions */
- int DUMMY_ERROR ; 
- int DUMMY_MATCH ; 
- scalar_t__ LZMA_FINISH_ANY ; 
- scalar_t__ LZMA_REQUIRED_INPUT_MAX ; 
- int /*<<< orphan*/  LZMA_STATUS_FINISHED_WITH_MARK ; 
- int /*<<< orphan*/  LZMA_STATUS_MAYBE_FINISHED_WITHOUT_MARK ; 
- int /*<<< orphan*/  LZMA_STATUS_NEEDS_MORE_INPUT ; 
- int /*<<< orphan*/  LZMA_STATUS_NOT_FINISHED ; 
- int /*<<< orphan*/  LZMA_STATUS_NOT_SPECIFIED ; 
- scalar_t__ LzmaDec_DecodeReal2 (TYPE_1__*,scalar_t__,scalar_t__ const*) ; 
- int /*<<< orphan*/  LzmaDec_InitRc (TYPE_1__*,scalar_t__*) ; 
- int /*<<< orphan*/  LzmaDec_InitStateReal (TYPE_1__*) ; 
- int LzmaDec_TryDummy (TYPE_1__*,scalar_t__ const*,unsigned int) ; 
- int /*<<< orphan*/  LzmaDec_WriteRem (TYPE_1__*,scalar_t__) ; 
- scalar_t__ RC_INIT_SIZE ; 
- int /*<<< orphan*/  SZ_ERROR_DATA ; 
- int /*<<< orphan*/  SZ_OK ; 
- scalar_t__ kMatchSpecLenStart ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,scalar_t__ const*,scalar_t__) ; 
+
+ int DUMMY_ERROR ;
+ int DUMMY_MATCH ;
+ scalar_t__ LZMA_FINISH_ANY ;
+ scalar_t__ LZMA_REQUIRED_INPUT_MAX ;
+ int LZMA_STATUS_FINISHED_WITH_MARK ;
+ int LZMA_STATUS_MAYBE_FINISHED_WITHOUT_MARK ;
+ int LZMA_STATUS_NEEDS_MORE_INPUT ;
+ int LZMA_STATUS_NOT_FINISHED ;
+ int LZMA_STATUS_NOT_SPECIFIED ;
+ scalar_t__ LzmaDec_DecodeReal2 (TYPE_1__*,scalar_t__,scalar_t__ const*) ;
+ int LzmaDec_InitRc (TYPE_1__*,scalar_t__*) ;
+ int LzmaDec_InitStateReal (TYPE_1__*) ;
+ int LzmaDec_TryDummy (TYPE_1__*,scalar_t__ const*,unsigned int) ;
+ int LzmaDec_WriteRem (TYPE_1__*,scalar_t__) ;
+ scalar_t__ RC_INIT_SIZE ;
+ int SZ_ERROR_DATA ;
+ int SZ_OK ;
+ scalar_t__ kMatchSpecLenStart ;
+ int memcpy (scalar_t__*,scalar_t__ const*,scalar_t__) ;
 
 SRes LzmaDec_DecodeToDic(CLzmaDec *p, SizeT dicLimit, const Byte *src, SizeT *srcLen,
     ELzmaFinishMode finishMode, ELzmaStatus *status)
@@ -46,7 +46,7 @@ SRes LzmaDec_DecodeToDic(CLzmaDec *p, SizeT dicLimit, const Byte *src, SizeT *sr
   SizeT inSize = *srcLen;
   (*srcLen) = 0;
   LzmaDec_WriteRem(p, dicLimit);
-  
+
   *status = LZMA_STATUS_NOT_SPECIFIED;
 
   while (p->remainLen != kMatchSpecLenStart)
@@ -92,7 +92,7 @@ SRes LzmaDec_DecodeToDic(CLzmaDec *p, SizeT dicLimit, const Byte *src, SizeT *sr
 
       if (p->needInitState)
         LzmaDec_InitStateReal(p);
-  
+
       if (p->tempBufSize == 0)
       {
         SizeT processed;

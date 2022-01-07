@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  close (int) ; 
- int open (char const*,int /*<<< orphan*/ ,int) ; 
- int read (int,char*,size_t) ; 
- scalar_t__ unlikely (int) ; 
+
+
+
+typedef int ssize_t ;
+
+
+ int O_RDONLY ;
+ int close (int) ;
+ int open (char const*,int ,int) ;
+ int read (int,char*,size_t) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static inline int read_file(const char *filename, char *buffer, size_t size) {
     if(unlikely(!size)) return 3;

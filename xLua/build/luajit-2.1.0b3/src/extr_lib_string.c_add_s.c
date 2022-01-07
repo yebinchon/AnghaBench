@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  luaL_Buffer ;
-struct TYPE_4__ {int /*<<< orphan*/  L; } ;
-typedef  TYPE_1__ MatchState ;
 
-/* Variables and functions */
- char const L_ESC ; 
- int /*<<< orphan*/  lj_char_isdigit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaL_addchar (int /*<<< orphan*/ *,char const) ; 
- int /*<<< orphan*/  luaL_addlstring (int /*<<< orphan*/ *,char const*,size_t) ; 
- int /*<<< orphan*/  luaL_addvalue (int /*<<< orphan*/ *) ; 
- char* lua_tolstring (int /*<<< orphan*/ ,int,size_t*) ; 
- int /*<<< orphan*/  push_onecapture (TYPE_1__*,char const,char const*,char const*) ; 
- int /*<<< orphan*/  uchar (char const) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int luaL_Buffer ;
+struct TYPE_4__ {int L; } ;
+typedef TYPE_1__ MatchState ;
+
+
+ char const L_ESC ;
+ int lj_char_isdigit (int ) ;
+ int luaL_addchar (int *,char const) ;
+ int luaL_addlstring (int *,char const*,size_t) ;
+ int luaL_addvalue (int *) ;
+ char* lua_tolstring (int ,int,size_t*) ;
+ int push_onecapture (TYPE_1__*,char const,char const*,char const*) ;
+ int uchar (char const) ;
 
 __attribute__((used)) static void add_s(MatchState *ms, luaL_Buffer *b, const char *s, const char *e)
 {
@@ -33,14 +33,14 @@ __attribute__((used)) static void add_s(MatchState *ms, luaL_Buffer *b, const ch
     if (news[i] != L_ESC) {
       luaL_addchar(b, news[i]);
     } else {
-      i++;  /* skip ESC */
+      i++;
       if (!lj_char_isdigit(uchar(news[i]))) {
-	luaL_addchar(b, news[i]);
+ luaL_addchar(b, news[i]);
       } else if (news[i] == '0') {
-	luaL_addlstring(b, s, (size_t)(e - s));
+ luaL_addlstring(b, s, (size_t)(e - s));
       } else {
-	push_onecapture(ms, news[i] - '1', s, e);
-	luaL_addvalue(b);  /* add capture to accumulated result */
+ push_onecapture(ms, news[i] - '1', s, e);
+ luaL_addvalue(b);
       }
     }
   }

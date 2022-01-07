@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {TYPE_1__* connection; } ;
-typedef  TYPE_2__ ngx_http_request_t ;
+typedef TYPE_2__ ngx_http_request_t ;
 struct TYPE_10__ {scalar_t__ ctx_ref; } ;
-typedef  TYPE_3__ ngx_http_lua_ctx_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_8__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_3__ ngx_http_lua_ctx_t ;
+typedef int lua_State ;
+struct TYPE_8__ {int log; } ;
 
-/* Variables and functions */
- scalar_t__ LUA_NOREF ; 
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- scalar_t__ NGX_OK ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ luaL_ref (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_createtable (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lua_pushliteral (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_rawget (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_rawgeti (int /*<<< orphan*/ *,int,scalar_t__) ; 
- TYPE_3__* ngx_http_get_module_ctx (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_lua_ctx_tables_key ; 
- TYPE_2__* ngx_http_lua_get_req (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_http_lua_module ; 
- scalar_t__ ngx_http_lua_ngx_ctx_add_cleanup (TYPE_2__*,scalar_t__) ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+ scalar_t__ LUA_NOREF ;
+ int LUA_REGISTRYINDEX ;
+ int NGX_LOG_DEBUG_HTTP ;
+ scalar_t__ NGX_OK ;
+ int luaL_error (int *,char*) ;
+ scalar_t__ luaL_ref (int *,int) ;
+ int lua_createtable (int *,int ,int) ;
+ int lua_pushliteral (int *,int ) ;
+ int lua_pushvalue (int *,int) ;
+ int lua_rawget (int *,int ) ;
+ int lua_rawgeti (int *,int,scalar_t__) ;
+ TYPE_3__* ngx_http_get_module_ctx (TYPE_2__*,int ) ;
+ int ngx_http_lua_ctx_tables_key ;
+ TYPE_2__* ngx_http_lua_get_req (int *) ;
+ int ngx_http_lua_module ;
+ scalar_t__ ngx_http_lua_ngx_ctx_add_cleanup (TYPE_2__*,scalar_t__) ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
 
 int
 ngx_http_lua_ngx_get_ctx(lua_State *L)
 {
-    ngx_http_request_t          *r;
-    ngx_http_lua_ctx_t          *ctx;
+    ngx_http_request_t *r;
+    ngx_http_lua_ctx_t *ctx;
 
     r = ngx_http_lua_get_req(L);
-    if (r == NULL) {
+    if (r == ((void*)0)) {
         return luaL_error(L, "no request found");
     }
 
     ctx = ngx_http_get_module_ctx(r, ngx_http_lua_module);
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         return luaL_error(L, "no request ctx found");
     }
 
@@ -61,7 +61,7 @@ ngx_http_lua_ngx_get_ctx(lua_State *L)
 
         lua_pushliteral(L, ngx_http_lua_ctx_tables_key);
         lua_rawget(L, LUA_REGISTRYINDEX);
-        lua_createtable(L, 0 /* narr */, 4 /* nrec */);
+        lua_createtable(L, 0 , 4 );
         lua_pushvalue(L, -1);
         ctx->ctx_ref = luaL_ref(L, -3);
 

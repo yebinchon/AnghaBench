@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jv ;
 
-/* Variables and functions */
- int JVP_HAS_KIND (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JV_KIND_ARRAY ; 
- int /*<<< orphan*/  JV_KIND_NUMBER ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  jv_array_get (int /*<<< orphan*/ ,int) ; 
- int jv_array_length (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_copy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_free (int /*<<< orphan*/ ) ; 
- int jv_number_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_string_append_codepoint (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  jv_string_empty (int) ; 
+
+
+
+typedef int jv ;
+
+
+ int JVP_HAS_KIND (int ,int ) ;
+ int JV_KIND_ARRAY ;
+ int JV_KIND_NUMBER ;
+ int assert (int) ;
+ int jv_array_get (int ,int) ;
+ int jv_array_length (int ) ;
+ int jv_copy (int ) ;
+ int jv_free (int ) ;
+ int jv_number_value (int ) ;
+ int jv_string_append_codepoint (int ,int) ;
+ int jv_string_empty (int) ;
 
 jv jv_string_implode(jv j) {
   assert(JVP_HAS_KIND(j, JV_KIND_ARRAY));
@@ -39,7 +39,7 @@ jv jv_string_implode(jv j) {
     int nv = jv_number_value(n);
     jv_free(n);
     if (nv > 0x10FFFF)
-      nv = 0xFFFD; // U+FFFD REPLACEMENT CHARACTER
+      nv = 0xFFFD;
     s = jv_string_append_codepoint(s, nv);
   }
 

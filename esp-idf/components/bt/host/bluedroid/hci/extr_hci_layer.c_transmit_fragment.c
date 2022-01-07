@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_4__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint16_t ;
-typedef  int /*<<< orphan*/  serial_data_type_t ;
-struct TYPE_6__ {int /*<<< orphan*/  (* transmit_data ) (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ;} ;
-struct TYPE_5__ {scalar_t__ event; int /*<<< orphan*/  len; scalar_t__ offset; scalar_t__ data; } ;
-typedef  TYPE_1__ BT_HDR ;
 
-/* Variables and functions */
- scalar_t__ MSG_EVT_MASK ; 
- scalar_t__ MSG_STACK_TO_HC_HCI_CMD ; 
- int /*<<< orphan*/  event_to_data_type (scalar_t__) ; 
- TYPE_4__* hal ; 
- int /*<<< orphan*/  osi_free (TYPE_1__*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_4__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint16_t ;
+typedef int serial_data_type_t ;
+struct TYPE_6__ {int (* transmit_data ) (int ,scalar_t__,int ) ;} ;
+struct TYPE_5__ {scalar_t__ event; int len; scalar_t__ offset; scalar_t__ data; } ;
+typedef TYPE_1__ BT_HDR ;
+
+
+ scalar_t__ MSG_EVT_MASK ;
+ scalar_t__ MSG_STACK_TO_HC_HCI_CMD ;
+ int event_to_data_type (scalar_t__) ;
+ TYPE_4__* hal ;
+ int osi_free (TYPE_1__*) ;
+ int stub1 (int ,scalar_t__,int ) ;
 
 __attribute__((used)) static void transmit_fragment(BT_HDR *packet, bool send_transmit_finished)
 {

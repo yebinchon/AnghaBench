@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  desc ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int desc ;
 struct TYPE_3__ {int cbSizeofstruct; short picType; } ;
-typedef  TYPE_1__ PICTDESC ;
-typedef  int OLE_HANDLE ;
-typedef  int /*<<< orphan*/  IPicture ;
-typedef  int HRESULT ;
+typedef TYPE_1__ PICTDESC ;
+typedef int OLE_HANDLE ;
+typedef int IPicture ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEFAULT_PALETTE ; 
- int E_FAIL ; 
- int E_UNEXPECTED ; 
- int /*<<< orphan*/  GetStockObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HandleToUlong (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_IPicture ; 
- int /*<<< orphan*/  IPicture_Release (int /*<<< orphan*/ *) ; 
- int IPicture_get_Handle (int /*<<< orphan*/ *,int*) ; 
- int IPicture_get_Type (int /*<<< orphan*/ *,short*) ; 
- int IPicture_get_hPal (int /*<<< orphan*/ *,int*) ; 
- int IPicture_set_hPal (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int OleCreatePictureIndirect (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void**) ; 
- short PICTYPE_BITMAP ; 
- short PICTYPE_ENHMETAFILE ; 
- short PICTYPE_NONE ; 
- short PICTYPE_UNINITIALIZED ; 
- int S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int create_picture (short,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ok (int,char*,short,...) ; 
+
+ int DEFAULT_PALETTE ;
+ int E_FAIL ;
+ int E_UNEXPECTED ;
+ int GetStockObject (int ) ;
+ int HandleToUlong (int ) ;
+ int IID_IPicture ;
+ int IPicture_Release (int *) ;
+ int IPicture_get_Handle (int *,int*) ;
+ int IPicture_get_Type (int *,short*) ;
+ int IPicture_get_hPal (int *,int*) ;
+ int IPicture_set_hPal (int *,int ) ;
+ int OleCreatePictureIndirect (TYPE_1__*,int *,int ,void**) ;
+ short PICTYPE_BITMAP ;
+ short PICTYPE_ENHMETAFILE ;
+ short PICTYPE_NONE ;
+ short PICTYPE_UNINITIALIZED ;
+ int S_OK ;
+ int TRUE ;
+ int create_picture (short,int **) ;
+ int ok (int,char*,short,...) ;
 
 __attribute__((used)) static void test_OleCreatePictureIndirect(void)
 {
@@ -50,8 +50,8 @@ __attribute__((used)) static void test_OleCreatePictureIndirect(void)
 
 if (0)
 {
-    /* crashes on native */
-    OleCreatePictureIndirect(NULL, &IID_IPicture, TRUE, NULL);
+
+    OleCreatePictureIndirect(((void*)0), &IID_IPicture, TRUE, ((void*)0));
 }
 
     desc.cbSizeofstruct = sizeof(desc);
@@ -59,7 +59,7 @@ if (0)
     pict = (void *)0xdeadbeef;
     hr = OleCreatePictureIndirect(&desc, &IID_IPicture, TRUE, (void **)&pict);
     ok(hr == E_UNEXPECTED, "got %#x\n", hr);
-    ok(pict == NULL, "got %p\n", pict);
+    ok(pict == ((void*)0), "got %p\n", pict);
 
     for (i = PICTYPE_UNINITIALIZED; i <= PICTYPE_ENHMETAFILE; i++)
     {
@@ -89,7 +89,7 @@ if (0)
         else
         {
             ok(hr == E_FAIL, "%d: got %#x\n", i, hr);
-            ok(handle == 0xdeadbeef || handle == 0 /* win64 */, "%d: got %#x\n", i, handle);
+            ok(handle == 0xdeadbeef || handle == 0 , "%d: got %#x\n", i, handle);
         }
 
         hr = IPicture_set_hPal(pict, HandleToUlong(GetStockObject(DEFAULT_PALETTE)));

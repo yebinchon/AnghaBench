@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  sem_decoded; int /*<<< orphan*/  sem_drawn; int /*<<< orphan*/  mutex; } ;
-typedef  TYPE_1__ VIDTEX_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  vcos_free (TYPE_1__*) ; 
- int /*<<< orphan*/  vcos_mutex_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_semaphore_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vidtex_gl_term (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int sem_decoded; int sem_drawn; int mutex; } ;
+typedef TYPE_1__ VIDTEX_T ;
+
+
+ int vcos_free (TYPE_1__*) ;
+ int vcos_mutex_delete (int *) ;
+ int vcos_semaphore_delete (int *) ;
+ int vidtex_gl_term (TYPE_1__*) ;
 
 __attribute__((used)) static void vidtex_destroy(VIDTEX_T *vt)
 {

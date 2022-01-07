@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  input_thread_t ;
-struct TYPE_3__ {int is_stopped; int /*<<< orphan*/  lock_control; } ;
-typedef  TYPE_1__ input_thread_private_t ;
 
-/* Variables and functions */
- TYPE_1__* input_priv (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int input_thread_t ;
+struct TYPE_3__ {int is_stopped; int lock_control; } ;
+typedef TYPE_1__ input_thread_private_t ;
+
+
+ TYPE_1__* input_priv (int *) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 bool input_Stopped( input_thread_t *input )
 {

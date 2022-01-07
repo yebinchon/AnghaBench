@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct RClass {int dummy; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_sym ;
+typedef int mrb_value ;
+typedef int mrb_sym ;
 struct TYPE_15__ {TYPE_2__* c; } ;
-typedef  TYPE_3__ mrb_state ;
-typedef  scalar_t__ mrb_int ;
+typedef TYPE_3__ mrb_state ;
+typedef scalar_t__ mrb_int ;
 struct TYPE_14__ {TYPE_1__* ci; } ;
-struct TYPE_13__ {int /*<<< orphan*/  mid; } ;
+struct TYPE_13__ {int mid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RARRAY_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_ary_new_from_values (TYPE_3__*,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_ary_unshift (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct RClass* mrb_class_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_funcall_argv (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_funcall_with_block (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_get_args (TYPE_3__*,char*,int /*<<< orphan*/ **,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_intern_lit (TYPE_3__*,char*) ; 
- int /*<<< orphan*/  mrb_iv_get (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_nil_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_symbol (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_yield_with_class (TYPE_3__*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct RClass*) ; 
+
+ int RARRAY_PTR (int ) ;
+ int mrb_ary_new_from_values (TYPE_3__*,scalar_t__,int *) ;
+ int mrb_ary_unshift (TYPE_3__*,int ,int ) ;
+ struct RClass* mrb_class_ptr (int ) ;
+ int mrb_funcall_argv (TYPE_3__*,int ,int ,scalar_t__,int ) ;
+ int mrb_funcall_with_block (TYPE_3__*,int ,int ,scalar_t__,int *,int ) ;
+ int mrb_get_args (TYPE_3__*,char*,int **,scalar_t__*,int *) ;
+ int mrb_intern_lit (TYPE_3__*,char*) ;
+ int mrb_iv_get (TYPE_3__*,int ,int ) ;
+ scalar_t__ mrb_nil_p (int ) ;
+ int mrb_symbol (int ) ;
+ int mrb_yield_with_class (TYPE_3__*,int ,scalar_t__,int *,int ,struct RClass*) ;
 
 __attribute__((used)) static mrb_value
 method_call(mrb_state *mrb, mrb_value self)
@@ -56,10 +56,10 @@ method_call(mrb_state *mrb, mrb_value self)
     ret = mrb_funcall_argv(mrb, recv, mrb_intern_lit(mrb, "method_missing"), argc + 1, RARRAY_PTR(missing_argv));
   }
   else if (!mrb_nil_p(block)) {
-    /*
-      workaround since `mrb_yield_with_class` does not support passing block as parameter
-      need new API that initializes `mrb->c->stack[argc+1]` with block passed by argument
-    */
+
+
+
+
     ret = mrb_funcall_with_block(mrb, recv, mrb_symbol(name), argc, argv, block);
   }
   else {

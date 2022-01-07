@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {void* level_idc; } ;
 struct TYPE_4__ {TYPE_3__* sub_layer_ptl; void** sub_layer_level_present_flag; void** sub_layer_profile_present_flag; TYPE_3__ general_ptl; } ;
-typedef  TYPE_1__ PTL ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
+typedef TYPE_1__ PTL ;
+typedef int GetBitContext ;
+typedef int AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ decode_profile_tier_level (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_3__*) ; 
- void* get_bits (int /*<<< orphan*/ *,int) ; 
- void* get_bits1 (int /*<<< orphan*/ *) ; 
- int get_bits_left (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip_bits (int /*<<< orphan*/ *,int) ; 
+
+ int AV_LOG_ERROR ;
+ int av_log (int *,int ,char*,...) ;
+ scalar_t__ decode_profile_tier_level (int *,int *,TYPE_3__*) ;
+ void* get_bits (int *,int) ;
+ void* get_bits1 (int *) ;
+ int get_bits_left (int *) ;
+ int skip_bits (int *,int) ;
 
 __attribute__((used)) static int parse_ptl(GetBitContext *gb, AVCodecContext *avctx,
                       PTL *ptl, int max_num_sub_layers)
@@ -41,12 +41,12 @@ __attribute__((used)) static int parse_ptl(GetBitContext *gb, AVCodecContext *av
 
     for (i = 0; i < max_num_sub_layers - 1; i++) {
         ptl->sub_layer_profile_present_flag[i] = get_bits1(gb);
-        ptl->sub_layer_level_present_flag[i]   = get_bits1(gb);
+        ptl->sub_layer_level_present_flag[i] = get_bits1(gb);
     }
 
     if (max_num_sub_layers - 1> 0)
         for (i = max_num_sub_layers - 1; i < 8; i++)
-            skip_bits(gb, 2); // reserved_zero_2bits[i]
+            skip_bits(gb, 2);
     for (i = 0; i < max_num_sub_layers - 1; i++) {
         if (ptl->sub_layer_profile_present_flag[i] &&
             decode_profile_tier_level(gb, avctx, &ptl->sub_layer_ptl[i]) < 0) {

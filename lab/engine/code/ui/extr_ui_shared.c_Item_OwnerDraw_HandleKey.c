@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  qboolean ;
-struct TYPE_5__ {int /*<<< orphan*/  ownerDrawFlags; int /*<<< orphan*/  ownerDraw; } ;
-struct TYPE_6__ {int /*<<< orphan*/  special; TYPE_1__ window; } ;
-typedef  TYPE_2__ itemDef_t ;
-struct TYPE_7__ {int /*<<< orphan*/  (* ownerDrawHandleKey ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ;} ;
 
-/* Variables and functions */
- TYPE_4__* DC ; 
- int /*<<< orphan*/  qfalse ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int qboolean ;
+struct TYPE_5__ {int ownerDrawFlags; int ownerDraw; } ;
+struct TYPE_6__ {int special; TYPE_1__ window; } ;
+typedef TYPE_2__ itemDef_t ;
+struct TYPE_7__ {int (* ownerDrawHandleKey ) (int ,int ,int *,int) ;} ;
+
+
+ TYPE_4__* DC ;
+ int qfalse ;
+ int stub1 (int ,int ,int *,int) ;
 
 qboolean Item_OwnerDraw_HandleKey(itemDef_t *item, int key) {
   if (item && DC->ownerDrawHandleKey) {

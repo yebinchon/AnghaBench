@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
+
+
+
+typedef int uint8_t ;
+
+
 
 __attribute__((used)) static int block_contrast(uint8_t *src, int x, int y, int stride, int blocksize)
 {
@@ -21,7 +21,7 @@ __attribute__((used)) static int block_contrast(uint8_t *src, int x, int y, int 
     int i, j, pos;
 
     for (i = 0; i <= blocksize * 2; i++) {
-        // We use a width of 16 here to match the sad function
+
         for (j = 0; j <= 15; j++) {
             pos = (y + i) * stride + (x + j);
             if (src[pos] < lowest)

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  szSize ;
-typedef  int /*<<< orphan*/  WPARAM ;
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_5__ {int /*<<< orphan*/  hListBox; TYPE_1__* Pagefile; } ;
-struct TYPE_4__ {int NewMinSize; int NewMaxSize; char* pszVolume; int /*<<< orphan*/  szDrive; } ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  TYPE_2__* PVIRTMEM ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  size_t INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IDS_PAGEFILE_NONE ; 
- int /*<<< orphan*/  IDS_PAGEFILE_SYSTEM ; 
- int /*<<< orphan*/  LB_DELETESTRING ; 
- int /*<<< orphan*/  LB_INSERTSTRING ; 
- int /*<<< orphan*/  LB_SETCURSEL ; 
- int /*<<< orphan*/  LoadString (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SendMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _stprintf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,...) ; 
- int /*<<< orphan*/  hApplet ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int szSize ;
+typedef int WPARAM ;
+typedef int VOID ;
+struct TYPE_5__ {int hListBox; TYPE_1__* Pagefile; } ;
+struct TYPE_4__ {int NewMinSize; int NewMaxSize; char* pszVolume; int szDrive; } ;
+typedef int TCHAR ;
+typedef TYPE_2__* PVIRTMEM ;
+typedef int LPARAM ;
+typedef size_t INT ;
+
+
+ int IDS_PAGEFILE_NONE ;
+ int IDS_PAGEFILE_SYSTEM ;
+ int LB_DELETESTRING ;
+ int LB_INSERTSTRING ;
+ int LB_SETCURSEL ;
+ int LoadString (int ,int ,int *,int) ;
+ int SendMessage (int ,int ,int ,int ) ;
+ int _T (char*) ;
+ int _stprintf (int *,int ,int,...) ;
+ int hApplet ;
 
 __attribute__((used)) static VOID
 UpdatePagefileEntry(PVIRTMEM pVirtMem,

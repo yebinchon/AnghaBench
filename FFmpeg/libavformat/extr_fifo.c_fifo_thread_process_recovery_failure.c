@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_11__ {TYPE_2__* priv_data; } ;
 struct TYPE_10__ {scalar_t__ pts; } ;
 struct TYPE_9__ {scalar_t__ max_recovery_attempts; scalar_t__ recovery_wait_streamtime; } ;
 struct TYPE_8__ {scalar_t__ last_recovery_ts; scalar_t__ recovery_nr; TYPE_4__* avf; } ;
-typedef  TYPE_1__ FifoThreadContext ;
-typedef  TYPE_2__ FifoContext ;
-typedef  TYPE_3__ AVPacket ;
-typedef  TYPE_4__ AVFormatContext ;
+typedef TYPE_1__ FifoThreadContext ;
+typedef TYPE_2__ FifoContext ;
+typedef TYPE_3__ AVPacket ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_INFO ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- scalar_t__ AV_NOPTS_VALUE ; 
- int /*<<< orphan*/  EAGAIN ; 
- scalar_t__ av_err2str (int) ; 
- scalar_t__ av_gettime_relative () ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,...) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_INFO ;
+ int AV_LOG_WARNING ;
+ scalar_t__ AV_NOPTS_VALUE ;
+ int EAGAIN ;
+ scalar_t__ av_err2str (int) ;
+ scalar_t__ av_gettime_relative () ;
+ int av_log (TYPE_4__*,int ,char*,...) ;
 
 __attribute__((used)) static int fifo_thread_process_recovery_failure(FifoThreadContext *ctx, AVPacket *pkt,
                                                 int err_no)

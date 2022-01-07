@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbedtls_sha1_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_ASSERT_EQUAL (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ASSERT_EQUAL_MEMORY_MESSAGE (int /*<<< orphan*/ ,unsigned char*,int,char*) ; 
- int /*<<< orphan*/  done_sem ; 
- int /*<<< orphan*/  mbedtls_sha1_finish_ret (int /*<<< orphan*/ *,unsigned char*) ; 
- int /*<<< orphan*/  mbedtls_sha1_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_sha1_starts_ret (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_sha1_update_ret (int /*<<< orphan*/ *,unsigned char*,int) ; 
- scalar_t__ one_hundred_as ; 
- int /*<<< orphan*/  sha1_thousand_as ; 
- int /*<<< orphan*/  vTaskDelete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xSemaphoreGive (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mbedtls_sha1_context ;
+
+
+ int TEST_ASSERT_EQUAL (int ,int ) ;
+ int TEST_ASSERT_EQUAL_MEMORY_MESSAGE (int ,unsigned char*,int,char*) ;
+ int done_sem ;
+ int mbedtls_sha1_finish_ret (int *,unsigned char*) ;
+ int mbedtls_sha1_init (int *) ;
+ int mbedtls_sha1_starts_ret (int *) ;
+ int mbedtls_sha1_update_ret (int *,unsigned char*,int) ;
+ scalar_t__ one_hundred_as ;
+ int sha1_thousand_as ;
+ int vTaskDelete (int *) ;
+ int xSemaphoreGive (int ) ;
 
 __attribute__((used)) static void tskRunSHA1Test(void *pvParameters)
 {
@@ -40,5 +40,5 @@ __attribute__((used)) static void tskRunSHA1Test(void *pvParameters)
         TEST_ASSERT_EQUAL_MEMORY_MESSAGE(sha1_thousand_as, sha1, 20, "SHA1 calculation");
     }
     xSemaphoreGive(done_sem);
-    vTaskDelete(NULL);
+    vTaskDelete(((void*)0));
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  phandle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OFIOCGETNEXT ; 
- int /*<<< orphan*/  OFW_IOCTL (int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int phandle_t ;
+
+
+ int OFIOCGETNEXT ;
+ int OFW_IOCTL (int,int ,int *) ;
 
 phandle_t
 ofw_peer(int fd, phandle_t node)
 {
-	phandle_t rv;
+ phandle_t rv;
 
-	rv = node;
-	OFW_IOCTL(fd, OFIOCGETNEXT, &rv);
-	return (rv);
+ rv = node;
+ OFW_IOCTL(fd, OFIOCGETNEXT, &rv);
+ return (rv);
 }

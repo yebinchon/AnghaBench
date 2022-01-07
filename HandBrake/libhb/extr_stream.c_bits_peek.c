@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int pos; int val; int* buf; } ;
-typedef  TYPE_1__ bitbuf_t ;
+typedef TYPE_1__ bitbuf_t ;
 
-/* Variables and functions */
- int* bitmask ; 
+
+ int* bitmask ;
 
 __attribute__((used)) static inline unsigned int bits_peek(bitbuf_t *bb, int bits)
 {
@@ -36,9 +36,9 @@ __attribute__((used)) static inline unsigned int bits_peek(bitbuf_t *bb, int bit
         if (bits > 0)
         {
             int pos = bpos >> 3;
-            int bval =  (bb->buf[pos]     << 24) |
+            int bval = (bb->buf[pos] << 24) |
                         (bb->buf[pos + 1] << 16) |
-                        (bb->buf[pos + 2] <<  8) |
+                        (bb->buf[pos + 2] << 8) |
                          bb->buf[pos + 3];
             val |= (bval >> (32 - bits)) & bitmask[bits];
         }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  cxx_pretty_printer ;
 
-/* Variables and functions */
-#define  MINUS_EXPR 132 
-#define  NOP_EXPR 131 
-#define  PLUS_EXPR 130 
- size_t TREE_CODE (int /*<<< orphan*/ ) ; 
-#define  TRUNC_DIV_EXPR 129 
-#define  TRUNC_MOD_EXPR 128 
- int /*<<< orphan*/  pp_cxx_identifier (int /*<<< orphan*/ *,char const*) ; 
- char** tree_code_name ; 
+
+
+
+typedef int tree ;
+typedef int cxx_pretty_printer ;
+
+
+
+
+
+ size_t TREE_CODE (int ) ;
+
+
+ int pp_cxx_identifier (int *,char const*) ;
+ char** tree_code_name ;
 
 __attribute__((used)) static void
 pp_cxx_assignment_operator (cxx_pretty_printer *pp, tree t)
@@ -30,23 +30,23 @@ pp_cxx_assignment_operator (cxx_pretty_printer *pp, tree t)
 
   switch (TREE_CODE (t))
     {
-    case NOP_EXPR:
+    case 131:
       op = "=";
       break;
 
-    case PLUS_EXPR:
+    case 130:
       op = "+=";
       break;
 
-    case MINUS_EXPR:
+    case 132:
       op = "-=";
       break;
 
-    case TRUNC_DIV_EXPR:
+    case 129:
       op = "/=";
       break;
 
-    case TRUNC_MOD_EXPR:
+    case 128:
       op = "%=";
       break;
 

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
+
+
+
+
+typedef int uint64_t ;
 struct sfstat {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COUNTER_ARRAY_ALLOC (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  M_WAITOK ; 
- int /*<<< orphan*/  sfstat ; 
+
+ int COUNTER_ARRAY_ALLOC (int ,int,int ) ;
+ int M_WAITOK ;
+ int sfstat ;
 
 __attribute__((used)) static void
 sfstat_init(const void *unused)
 {
 
-	COUNTER_ARRAY_ALLOC(sfstat, sizeof(struct sfstat) / sizeof(uint64_t),
-	    M_WAITOK);
+ COUNTER_ARRAY_ALLOC(sfstat, sizeof(struct sfstat) / sizeof(uint64_t),
+     M_WAITOK);
 }

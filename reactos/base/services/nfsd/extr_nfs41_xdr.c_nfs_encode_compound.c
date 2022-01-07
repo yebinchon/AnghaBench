@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-struct TYPE_5__ {int /*<<< orphan*/  (* encode ) (int /*<<< orphan*/ *,TYPE_3__*) ;} ;
-typedef  TYPE_1__ op_table_entry ;
-struct TYPE_6__ {unsigned char* tag; size_t minorversion; size_t argarray_count; TYPE_3__* argarray; int /*<<< orphan*/  tag_len; } ;
-typedef  TYPE_2__ nfs41_compound_args ;
-typedef  int /*<<< orphan*/  caddr_t ;
-typedef  int /*<<< orphan*/  bool_t ;
-typedef  int /*<<< orphan*/  XDR ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
+struct TYPE_5__ {int (* encode ) (int *,TYPE_3__*) ;} ;
+typedef TYPE_1__ op_table_entry ;
+struct TYPE_6__ {unsigned char* tag; size_t minorversion; size_t argarray_count; TYPE_3__* argarray; int tag_len; } ;
+typedef TYPE_2__ nfs41_compound_args ;
+typedef int caddr_t ;
+typedef int bool_t ;
+typedef int XDR ;
 struct TYPE_7__ {size_t op; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  NFS4_OPAQUE_LIMIT ; 
- int /*<<< orphan*/  TRUE ; 
- TYPE_1__* op_table_find (size_t) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  xdr_bytes (int /*<<< orphan*/ *,char**,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xdr_u_int32_t (int /*<<< orphan*/ *,size_t*) ; 
+
+ int FALSE ;
+ int NFS4_OPAQUE_LIMIT ;
+ int TRUE ;
+ TYPE_1__* op_table_find (size_t) ;
+ int stub1 (int *,TYPE_3__*) ;
+ int xdr_bytes (int *,char**,int *,int ) ;
+ int xdr_u_int32_t (int *,size_t*) ;
 
 bool_t nfs_encode_compound(
     XDR *xdr,
@@ -55,7 +55,7 @@ bool_t nfs_encode_compound(
     for (i = 0; i < args->argarray_count; i++)
     {
         entry = op_table_find(args->argarray[i].op);
-        if (entry == NULL || entry->encode == NULL)
+        if (entry == ((void*)0) || entry->encode == ((void*)0))
             return FALSE;
 
         if (!xdr_u_int32_t(xdr, &args->argarray[i].op))

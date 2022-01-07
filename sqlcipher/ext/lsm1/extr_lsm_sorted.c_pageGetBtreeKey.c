@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u8 ;
 struct TYPE_4__ {int nData; void* pData; } ;
-typedef  int /*<<< orphan*/  Segment ;
-typedef  int /*<<< orphan*/  Page ;
-typedef  int /*<<< orphan*/  LsmPgno ;
-typedef  TYPE_1__ LsmBlob ;
+typedef int Segment ;
+typedef int Page ;
+typedef int LsmPgno ;
+typedef TYPE_1__ LsmBlob ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GETVARINT32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  GETVARINT64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int LSM_OK ; 
- int SEGMENT_BTREE_FLAG ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * fsPageData (int /*<<< orphan*/ *,int*) ; 
- int lsmFsDbPageGet (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  lsmFsPageRelease (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lsmPageEnv (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lsmPageFS (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * pageGetCell (int /*<<< orphan*/ *,int,int) ; 
- int pageGetFlags (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  pageGetKeyCopy (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*,TYPE_1__*) ; 
- int pageGetNRec (int /*<<< orphan*/ *,int) ; 
- int rtTopic (int) ; 
+
+ int GETVARINT32 (int *,int) ;
+ int GETVARINT64 (int *,int ) ;
+ int LSM_OK ;
+ int SEGMENT_BTREE_FLAG ;
+ int assert (int) ;
+ int * fsPageData (int *,int*) ;
+ int lsmFsDbPageGet (int ,int *,int ,int **) ;
+ int lsmFsPageRelease (int *) ;
+ int lsmPageEnv (int *) ;
+ int lsmPageFS (int *) ;
+ int * pageGetCell (int *,int,int) ;
+ int pageGetFlags (int *,int) ;
+ int pageGetKeyCopy (int ,int *,int *,int ,int*,TYPE_1__*) ;
+ int pageGetNRec (int *,int) ;
+ int rtTopic (int) ;
 
 __attribute__((used)) static int pageGetBtreeKey(
-  Segment *pSeg,                  /* Segment page pPg belongs to */
+  Segment *pSeg,
   Page *pPg,
-  int iKey, 
-  LsmPgno *piPtr, 
-  int *piTopic, 
+  int iKey,
+  LsmPgno *piPtr,
+  int *piTopic,
   void **ppKey,
   int *pnKey,
   LsmBlob *pBlob
@@ -60,7 +60,7 @@ __attribute__((used)) static int pageGetBtreeKey(
 
   if( eType==0 ){
     int rc;
-    LsmPgno iRef;               /* Page number of referenced page */
+    LsmPgno iRef;
     Page *pRef;
     aCell += GETVARINT64(aCell, iRef);
     rc = lsmFsDbPageGet(lsmPageFS(pPg), pSeg, iRef, &pRef);

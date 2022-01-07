@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ipmmu_vmsa_device {int /*<<< orphan*/  lock; int /*<<< orphan*/ ** domains; int /*<<< orphan*/  ctx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clear_bit (unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct ipmmu_vmsa_device {int lock; int ** domains; int ctx; } ;
+
+
+ int clear_bit (unsigned int,int ) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void ipmmu_domain_free_context(struct ipmmu_vmsa_device *mmu,
-				      unsigned int context_id)
+          unsigned int context_id)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	spin_lock_irqsave(&mmu->lock, flags);
+ spin_lock_irqsave(&mmu->lock, flags);
 
-	clear_bit(context_id, mmu->ctx);
-	mmu->domains[context_id] = NULL;
+ clear_bit(context_id, mmu->ctx);
+ mmu->domains[context_id] = ((void*)0);
 
-	spin_unlock_irqrestore(&mmu->lock, flags);
+ spin_unlock_irqrestore(&mmu->lock, flags);
 }

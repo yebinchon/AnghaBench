@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  inner; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int inner; } ;
 struct TYPE_6__ {TYPE_1__* ijkio_app_ctx; TYPE_3__* priv_data; } ;
 struct TYPE_5__ {scalar_t__ ijkio_interrupt_callback; } ;
-typedef  TYPE_2__ IjkURLContext ;
-typedef  TYPE_3__ IjkIOFFioContext ;
-typedef  int /*<<< orphan*/  IjkAVDictionary ;
-typedef  int /*<<< orphan*/  AVIOInterruptCB ;
-typedef  int /*<<< orphan*/  AVDictionary ;
+typedef TYPE_2__ IjkURLContext ;
+typedef TYPE_3__ IjkIOFFioContext ;
+typedef int IjkAVDictionary ;
+typedef int AVIOInterruptCB ;
+typedef int AVDictionary ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_dict_free (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  av_strstart (char const*,char*,char const**) ; 
- int ffurl_open_whitelist (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ijkio_copy_options (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
+
+ int av_dict_free (int **) ;
+ int av_strstart (char const*,char*,char const**) ;
+ int ffurl_open_whitelist (int *,char const*,int,int *,int **,int *,int *,int *) ;
+ int ijkio_copy_options (int **,int *) ;
 
 __attribute__((used)) static int ijkio_ffio_open(IjkURLContext *h, const char *url, int flags, IjkAVDictionary **options) {
     int ret = -1;
@@ -35,13 +35,13 @@ __attribute__((used)) static int ijkio_ffio_open(IjkURLContext *h, const char *u
     if (!c)
         return -1;
 
-    AVDictionary *opts = NULL;
+    AVDictionary *opts = ((void*)0);
     ijkio_copy_options(&opts, *options);
 
     av_strstart(url, "ffio:", &url);
     if (h->ijkio_app_ctx) {
         ret = ffurl_open_whitelist(&c->inner, url, flags, (AVIOInterruptCB *)h->ijkio_app_ctx->ijkio_interrupt_callback,
-                                &opts, NULL, NULL, NULL);
+                                &opts, ((void*)0), ((void*)0), ((void*)0));
     } else {
         ret = -1;
     }

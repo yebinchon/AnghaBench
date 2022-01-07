@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* int64_t ;
+
+
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef void* int64_t ;
 struct TYPE_15__ {char* key; char* value; } ;
-struct TYPE_14__ {double duration; int /*<<< orphan*/  metadata; TYPE_3__* priv_data; int /*<<< orphan*/ * pb; } ;
+struct TYPE_14__ {double duration; int metadata; TYPE_3__* priv_data; int * pb; } ;
 struct TYPE_13__ {int flags; void* metadata_size_pos; double framerate; double datasize; double videosize; double audiosize; unsigned int metadata_totalsize; void* metadata_totalsize_pos; void* keyframes_info_offset; scalar_t__ lastkeyframelocation; void* lastkeyframelocation_offset; scalar_t__ lastkeyframetimestamp; void* lastkeyframetimestamp_offset; scalar_t__ lasttimestamp; void* lasttimestamp_offset; void* audiosize_offset; void* videosize_offset; void* datasize_offset; TYPE_2__* audio_par; TYPE_1__* video_par; scalar_t__ keyframe_index_size; scalar_t__ acurframeindex; void* filesize_offset; scalar_t__ data_par; void* duration_offset; } ;
 struct TYPE_12__ {double bit_rate; double sample_rate; scalar_t__ codec_id; int channels; double codec_tag; } ;
 struct TYPE_11__ {double width; double height; double bit_rate; double codec_tag; } ;
-typedef  TYPE_3__ FLVContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_4__ AVFormatContext ;
-typedef  TYPE_5__ AVDictionaryEntry ;
+typedef TYPE_3__ FLVContext ;
+typedef int AVIOContext ;
+typedef TYPE_4__ AVFormatContext ;
+typedef TYPE_5__ AVDictionaryEntry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AMF_DATA_TYPE_MIXEDARRAY ; 
- int /*<<< orphan*/  AMF_DATA_TYPE_OBJECT ; 
- int /*<<< orphan*/  AMF_DATA_TYPE_STRING ; 
- int /*<<< orphan*/  AMF_END_OF_OBJECT ; 
- scalar_t__ AV_CODEC_ID_PCM_U8 ; 
- int /*<<< orphan*/  AV_DICT_IGNORE_SUFFIX ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- double AV_TIME_BASE ; 
- int FLV_ADD_KEYFRAME_INDEX ; 
- int FLV_NO_DURATION_FILESIZE ; 
- int /*<<< orphan*/  FLV_TAG_TYPE_META ; 
- int /*<<< orphan*/  SEEK_SET ; 
- TYPE_5__* av_dict_get (int /*<<< orphan*/ ,char*,TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ *,int) ; 
- void* avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_w8 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_wb24 (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  avio_wb32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ff_standardize_creation_time (TYPE_4__*) ; 
- int /*<<< orphan*/  put_amf_bool (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  put_amf_byte (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  put_amf_double (int /*<<< orphan*/ *,double) ; 
- int /*<<< orphan*/  put_amf_string (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
+
+ int AMF_DATA_TYPE_MIXEDARRAY ;
+ int AMF_DATA_TYPE_OBJECT ;
+ int AMF_DATA_TYPE_STRING ;
+ int AMF_END_OF_OBJECT ;
+ scalar_t__ AV_CODEC_ID_PCM_U8 ;
+ int AV_DICT_IGNORE_SUFFIX ;
+ int AV_LOG_DEBUG ;
+ double AV_TIME_BASE ;
+ int FLV_ADD_KEYFRAME_INDEX ;
+ int FLV_NO_DURATION_FILESIZE ;
+ int FLV_TAG_TYPE_META ;
+ int SEEK_SET ;
+ TYPE_5__* av_dict_get (int ,char*,TYPE_5__*,int ) ;
+ int av_log (TYPE_4__*,int ,char*,char*) ;
+ int avio_seek (int *,void*,int ) ;
+ int avio_skip (int *,int) ;
+ void* avio_tell (int *) ;
+ int avio_w8 (int *,int ) ;
+ int avio_wb24 (int *,unsigned int) ;
+ int avio_wb32 (int *,int) ;
+ int ff_standardize_creation_time (TYPE_4__*) ;
+ int put_amf_bool (int *,int) ;
+ int put_amf_byte (int *,int ) ;
+ int put_amf_double (int *,double) ;
+ int put_amf_string (int *,char*) ;
+ int strcmp (char*,char*) ;
 
 __attribute__((used)) static void write_metadata(AVFormatContext *s, unsigned int ts)
 {
@@ -61,36 +61,36 @@ __attribute__((used)) static void write_metadata(AVFormatContext *s, unsigned in
     int write_duration_filesize = !(flv->flags & FLV_NO_DURATION_FILESIZE);
     int metadata_count = 0;
     int64_t metadata_count_pos;
-    AVDictionaryEntry *tag = NULL;
+    AVDictionaryEntry *tag = ((void*)0);
 
-    /* write meta_tag */
-    avio_w8(pb, FLV_TAG_TYPE_META);            // tag type META
+
+    avio_w8(pb, FLV_TAG_TYPE_META);
     flv->metadata_size_pos = avio_tell(pb);
-    avio_wb24(pb, 0);           // size of data part (sum of all parts below)
-    avio_wb24(pb, ts);          // timestamp
-    avio_wb32(pb, 0);           // reserved
+    avio_wb24(pb, 0);
+    avio_wb24(pb, ts);
+    avio_wb32(pb, 0);
 
-    /* now data of data_size size */
 
-    /* first event name as a string */
+
+
     avio_w8(pb, AMF_DATA_TYPE_STRING);
-    put_amf_string(pb, "onMetaData"); // 12 bytes
+    put_amf_string(pb, "onMetaData");
 
-    /* mixed array (hash) with size and string/type/data tuples */
+
     avio_w8(pb, AMF_DATA_TYPE_MIXEDARRAY);
     metadata_count_pos = avio_tell(pb);
     metadata_count = 4 * !!flv->video_par +
                      5 * !!flv->audio_par +
                      1 * !!flv->data_par;
     if (write_duration_filesize) {
-        metadata_count += 2; // +2 for duration and file size
+        metadata_count += 2;
     }
     avio_wb32(pb, metadata_count);
 
     if (write_duration_filesize) {
         put_amf_string(pb, "duration");
         flv->duration_offset = avio_tell(pb);
-        // fill in the guessed duration, it'll be corrected later if incorrect
+
         put_amf_double(pb, s->duration / AV_TIME_BASE);
     }
 
@@ -138,7 +138,7 @@ __attribute__((used)) static void write_metadata(AVFormatContext *s, unsigned in
 
     ff_standardize_creation_time(s);
     while ((tag = av_dict_get(s->metadata, "", tag, AV_DICT_IGNORE_SUFFIX))) {
-        if(   !strcmp(tag->key, "width")
+        if( !strcmp(tag->key, "width")
             ||!strcmp(tag->key, "height")
             ||!strcmp(tag->key, "videodatarate")
             ||!strcmp(tag->key, "framerate")
@@ -171,7 +171,7 @@ __attribute__((used)) static void write_metadata(AVFormatContext *s, unsigned in
     if (write_duration_filesize) {
         put_amf_string(pb, "filesize");
         flv->filesize_offset = avio_tell(pb);
-        put_amf_double(pb, 0); // delayed write
+        put_amf_double(pb, 0);
     }
 
     if (flv->flags & FLV_ADD_KEYFRAME_INDEX) {
@@ -244,7 +244,7 @@ __attribute__((used)) static void write_metadata(AVFormatContext *s, unsigned in
     put_amf_string(pb, "");
     avio_w8(pb, AMF_END_OF_OBJECT);
 
-    /* write total size of tag */
+
     flv->metadata_totalsize = avio_tell(pb) - flv->metadata_size_pos - 10;
 
     avio_seek(pb, metadata_count_pos, SEEK_SET);

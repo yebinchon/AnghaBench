@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int nFirstAlloc; int nFirst; int* aFirst; } ;
-typedef  TYPE_1__ Fts5SFinder ;
+typedef TYPE_1__ Fts5SFinder ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- scalar_t__ sqlite3_realloc64 (int*,int) ; 
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ scalar_t__ sqlite3_realloc64 (int*,int) ;
 
 __attribute__((used)) static int fts5SentenceFinderAdd(Fts5SFinder *p, int iAdd){
   if( p->nFirstAlloc==p->nFirst ){

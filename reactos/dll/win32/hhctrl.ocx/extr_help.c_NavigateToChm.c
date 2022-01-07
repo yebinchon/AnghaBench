@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_5__ {int /*<<< orphan*/  web_browser; } ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  TYPE_1__ HHInfo ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AppendFullPathURL (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int INTERNET_MAX_URL_LENGTH ; 
- int /*<<< orphan*/  SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  navigate_url (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_5__ {int web_browser; } ;
+typedef int LPCWSTR ;
+typedef TYPE_1__ HHInfo ;
+typedef int BOOL ;
+
+
+ int AppendFullPathURL (int ,int *,int ) ;
+ int FALSE ;
+ int INTERNET_MAX_URL_LENGTH ;
+ int SUCCEEDED (int ) ;
+ int TRACE (char*,TYPE_1__*,int ,int ) ;
+ int debugstr_w (int ) ;
+ int navigate_url (TYPE_1__*,int *) ;
 
 BOOL NavigateToChm(HHInfo *info, LPCWSTR file, LPCWSTR index)
 {

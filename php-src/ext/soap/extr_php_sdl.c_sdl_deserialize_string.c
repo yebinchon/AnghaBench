@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  WSDL_CACHE_GET_INT (int,char**) ; 
- int /*<<< orphan*/  WSDL_CACHE_GET_N (char*,int,char**) ; 
- int WSDL_NO_STRING_MARKER ; 
- char* emalloc (int) ; 
+ int WSDL_CACHE_GET_INT (int,char**) ;
+ int WSDL_CACHE_GET_N (char*,int,char**) ;
+ int WSDL_NO_STRING_MARKER ;
+ char* emalloc (int) ;
 
 __attribute__((used)) static char* sdl_deserialize_string(char **in)
 {
-	char *s;
-	int len;
+ char *s;
+ int len;
 
-	WSDL_CACHE_GET_INT(len, in);
-	if (len == WSDL_NO_STRING_MARKER) {
-		return NULL;
-	} else {
-		s = emalloc(len+1);
-		WSDL_CACHE_GET_N(s, len, in);
-		s[len] = '\0';
-		return s;
-	}
+ WSDL_CACHE_GET_INT(len, in);
+ if (len == WSDL_NO_STRING_MARKER) {
+  return ((void*)0);
+ } else {
+  s = emalloc(len+1);
+  WSDL_CACHE_GET_N(s, len, in);
+  s[len] = '\0';
+  return s;
+ }
 }

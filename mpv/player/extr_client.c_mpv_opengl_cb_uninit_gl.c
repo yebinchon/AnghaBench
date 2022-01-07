@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* client_api; } ;
-typedef  TYPE_2__ mpv_opengl_cb_context ;
-struct TYPE_4__ {int /*<<< orphan*/ * render_context; } ;
+typedef TYPE_2__ mpv_opengl_cb_context ;
+struct TYPE_4__ {int * render_context; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mpv_render_context_free (int /*<<< orphan*/ *) ; 
+
+ int mpv_render_context_free (int *) ;
 
 int mpv_opengl_cb_uninit_gl(mpv_opengl_cb_context *ctx)
 {
     if (ctx->client_api->render_context)
         mpv_render_context_free(ctx->client_api->render_context);
-    ctx->client_api->render_context = NULL;
+    ctx->client_api->render_context = ((void*)0);
     return 0;
 }

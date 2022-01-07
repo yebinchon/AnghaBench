@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct symt {int dummy; } ;
 struct TYPE_2__ {unsigned int num_defined_types; struct symt** defined_types; } ;
 
-/* Variables and functions */
- int FALSE ; 
- unsigned int FIRST_DEFINABLE_TYPE ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- struct symt** HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- struct symt** HeapReAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct symt**,int) ; 
- int TRUE ; 
- TYPE_1__* cv_current_module ; 
- void* max (int,unsigned int) ; 
+
+ int FALSE ;
+ unsigned int FIRST_DEFINABLE_TYPE ;
+ int FIXME (char*,...) ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ struct symt** HeapAlloc (int ,int ,int) ;
+ struct symt** HeapReAlloc (int ,int ,struct symt**,int) ;
+ int TRUE ;
+ TYPE_1__* cv_current_module ;
+ void* max (int,unsigned int) ;
 
 __attribute__((used)) static int codeview_add_type(unsigned int typeno, struct symt* dt)
 {
@@ -55,7 +55,7 @@ __attribute__((used)) static int codeview_add_type(unsigned int typeno, struct s
                             HEAP_ZERO_MEMORY,
                             cv_current_module->num_defined_types * sizeof(struct symt*));
         }
-        if (cv_current_module->defined_types == NULL) return FALSE;
+        if (cv_current_module->defined_types == ((void*)0)) return FALSE;
     }
     if (cv_current_module->defined_types[typeno - FIRST_DEFINABLE_TYPE])
     {

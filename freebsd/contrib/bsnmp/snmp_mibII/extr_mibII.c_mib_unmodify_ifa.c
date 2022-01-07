@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mibifa {int /*<<< orphan*/  inbcast; int /*<<< orphan*/  inmask; int /*<<< orphan*/  inaddr; int /*<<< orphan*/  ifindex; } ;
-struct mibif {int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- struct mibif* mib_find_if (int /*<<< orphan*/ ) ; 
- int mib_iflist_bad ; 
- scalar_t__ siocaifaddr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct mibifa {int inbcast; int inmask; int inaddr; int ifindex; } ;
+struct mibif {int name; } ;
+
+
+ struct mibif* mib_find_if (int ) ;
+ int mib_iflist_bad ;
+ scalar_t__ siocaifaddr (int ,int ,int ,int ) ;
 
 void
 mib_unmodify_ifa(struct mibifa *ifa)
 {
-	struct mibif *ifp;
+ struct mibif *ifp;
 
-	if ((ifp = mib_find_if(ifa->ifindex)) == NULL) {
-		/* ups. */
-		mib_iflist_bad = 1;
-		return;
-	}
+ if ((ifp = mib_find_if(ifa->ifindex)) == ((void*)0)) {
 
-	if (siocaifaddr(ifp->name, ifa->inaddr, ifa->inmask, ifa->inbcast)) {
-		/* ups. */
-		mib_iflist_bad = 1;
-		return;
-	}
+  mib_iflist_bad = 1;
+  return;
+ }
+
+ if (siocaifaddr(ifp->name, ifa->inaddr, ifa->inmask, ifa->inbcast)) {
+
+  mib_iflist_bad = 1;
+  return;
+ }
 }

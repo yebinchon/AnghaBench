@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  data; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int data; } ;
 struct web_client {TYPE_1__ response; } ;
-struct TYPE_4__ {int /*<<< orphan*/  cloud_base_url; int /*<<< orphan*/  registry_to_announce; } ;
-typedef  int /*<<< orphan*/  RRDHOST ;
+struct TYPE_4__ {int cloud_base_url; int registry_to_announce; } ;
+typedef int RRDHOST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REGISTRY_STATUS_OK ; 
- int /*<<< orphan*/  buffer_sprintf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ netdata_anonymous_statistics_enabled ; 
- TYPE_2__ registry ; 
- int /*<<< orphan*/  registry_json_footer (struct web_client*) ; 
- int /*<<< orphan*/  registry_json_header (int /*<<< orphan*/ *,struct web_client*,char*,int /*<<< orphan*/ ) ; 
+
+ int REGISTRY_STATUS_OK ;
+ int buffer_sprintf (int ,char*,int ,int ,char*) ;
+ scalar_t__ netdata_anonymous_statistics_enabled ;
+ TYPE_2__ registry ;
+ int registry_json_footer (struct web_client*) ;
+ int registry_json_header (int *,struct web_client*,char*,int ) ;
 
 int registry_request_hello_json(RRDHOST *host, struct web_client *w) {
     registry_json_header(host, w, "hello", REGISTRY_STATUS_OK);

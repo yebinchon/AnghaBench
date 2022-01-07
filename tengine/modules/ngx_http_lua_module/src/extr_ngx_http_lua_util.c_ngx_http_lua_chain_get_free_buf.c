@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-typedef  size_t off_t ;
-typedef  int /*<<< orphan*/  ngx_pool_t ;
-typedef  int /*<<< orphan*/  ngx_log_t ;
+
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int u_char ;
+typedef size_t off_t ;
+typedef int ngx_pool_t ;
+typedef int ngx_log_t ;
 struct TYPE_12__ {struct TYPE_12__* next; TYPE_2__* buf; } ;
-typedef  TYPE_1__ ngx_chain_t ;
-typedef  int /*<<< orphan*/  ngx_buf_tag_t ;
-struct TYPE_13__ {int temporary; int /*<<< orphan*/  tag; int /*<<< orphan*/ * start; int /*<<< orphan*/ * last; int /*<<< orphan*/ * pos; int /*<<< orphan*/ * end; } ;
-typedef  TYPE_2__ ngx_buf_t ;
+typedef TYPE_1__ ngx_chain_t ;
+typedef int ngx_buf_tag_t ;
+struct TYPE_13__ {int temporary; int tag; int * start; int * last; int * pos; int * end; } ;
+typedef TYPE_2__ ngx_buf_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  dd (char*,int /*<<< orphan*/ *) ; 
- TYPE_1__* ngx_alloc_chain_link (int /*<<< orphan*/ *) ; 
- scalar_t__ ngx_buf_in_memory (TYPE_2__*) ; 
- TYPE_2__* ngx_calloc_buf (int /*<<< orphan*/ *) ; 
- TYPE_2__* ngx_create_temp_buf (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  ngx_http_lua_module ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,size_t,TYPE_1__*) ; 
- int /*<<< orphan*/  ngx_log_debug4 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,size_t,size_t,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_memzero (TYPE_2__*,int) ; 
- int /*<<< orphan*/ * ngx_palloc (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  ngx_pfree (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int NGX_LOG_DEBUG_HTTP ;
+ int dd (char*,int *) ;
+ TYPE_1__* ngx_alloc_chain_link (int *) ;
+ scalar_t__ ngx_buf_in_memory (TYPE_2__*) ;
+ TYPE_2__* ngx_calloc_buf (int *) ;
+ TYPE_2__* ngx_create_temp_buf (int *,size_t) ;
+ int ngx_http_lua_module ;
+ int ngx_log_debug2 (int ,int *,int ,char*,size_t,TYPE_1__*) ;
+ int ngx_log_debug4 (int ,int *,int ,char*,size_t,size_t,TYPE_1__*,int *) ;
+ int ngx_memzero (TYPE_2__*,int) ;
+ int * ngx_palloc (int *,size_t) ;
+ int ngx_pfree (int *,int *) ;
 
 ngx_chain_t *
 ngx_http_lua_chain_get_free_buf(ngx_log_t *log, ngx_pool_t *p,
     ngx_chain_t **free, size_t len)
 {
-    ngx_buf_t    *b;
-    ngx_chain_t  *cl;
-    u_char       *start, *end;
+    ngx_buf_t *b;
+    ngx_chain_t *cl;
+    u_char *start, *end;
 
-    const ngx_buf_tag_t  tag = (ngx_buf_tag_t) &ngx_http_lua_module;
+    const ngx_buf_tag_t tag = (ngx_buf_tag_t) &ngx_http_lua_module;
 
     if (*free) {
         cl = *free;
         *free = cl->next;
-        cl->next = NULL;
+        cl->next = ((void*)0);
 
         b = cl->buf;
         start = b->start;
@@ -90,8 +90,8 @@ ngx_http_lua_chain_get_free_buf(ngx_log_t *log, ngx_pool_t *p,
         }
 
         b->start = ngx_palloc(p, len);
-        if (b->start == NULL) {
-            return NULL;
+        if (b->start == ((void*)0)) {
+            return ((void*)0);
         }
 
         b->end = b->start + len;
@@ -107,8 +107,8 @@ ngx_http_lua_chain_get_free_buf(ngx_log_t *log, ngx_pool_t *p,
     }
 
     cl = ngx_alloc_chain_link(p);
-    if (cl == NULL) {
-        return NULL;
+    if (cl == ((void*)0)) {
+        return ((void*)0);
     }
 
     ngx_log_debug2(NGX_LOG_DEBUG_HTTP, log, 0,
@@ -116,14 +116,14 @@ ngx_http_lua_chain_get_free_buf(ngx_log_t *log, ngx_pool_t *p,
                    len, cl);
 
     cl->buf = len ? ngx_create_temp_buf(p, len) : ngx_calloc_buf(p);
-    if (cl->buf == NULL) {
-        return NULL;
+    if (cl->buf == ((void*)0)) {
+        return ((void*)0);
     }
 
     dd("buf start: %p", cl->buf->start);
 
     cl->buf->tag = tag;
-    cl->next = NULL;
+    cl->next = ((void*)0);
 
     return cl;
 }

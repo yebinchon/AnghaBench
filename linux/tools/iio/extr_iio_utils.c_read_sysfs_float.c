@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int ENODATA ; 
- int ENOMEM ; 
- int errno ; 
- scalar_t__ fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int fscanf (int /*<<< orphan*/ *,char*,float*) ; 
- char* malloc (scalar_t__) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int sprintf (char*,char*,char const*,char const*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strlen (char const*) ; 
+
+
+
+typedef int FILE ;
+
+
+ int ENODATA ;
+ int ENOMEM ;
+ int errno ;
+ scalar_t__ fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*) ;
+ int free (char*) ;
+ int fscanf (int *,char*,float*) ;
+ char* malloc (scalar_t__) ;
+ int perror (char*) ;
+ int sprintf (char*,char*,char const*,char const*) ;
+ int stderr ;
+ scalar_t__ strlen (char const*) ;
 
 int read_sysfs_float(const char *filename, const char *basedir, float *val)
 {
-	int ret = 0;
-	FILE  *sysfsfp;
-	char *temp = malloc(strlen(basedir) + strlen(filename) + 2);
+ int ret = 0;
+ FILE *sysfsfp;
+ char *temp = malloc(strlen(basedir) + strlen(filename) + 2);
 
-	if (!temp) {
-		fprintf(stderr, "Memory allocation failed");
-		return -ENOMEM;
-	}
+ if (!temp) {
+  fprintf(stderr, "Memory allocation failed");
+  return -ENOMEM;
+ }
 
-	ret = sprintf(temp, "%s/%s", basedir, filename);
-	if (ret < 0)
-		goto error_free;
+ ret = sprintf(temp, "%s/%s", basedir, filename);
+ if (ret < 0)
+  goto error_free;
 
-	sysfsfp = fopen(temp, "r");
-	if (!sysfsfp) {
-		ret = -errno;
-		goto error_free;
-	}
+ sysfsfp = fopen(temp, "r");
+ if (!sysfsfp) {
+  ret = -errno;
+  goto error_free;
+ }
 
-	errno = 0;
-	if (fscanf(sysfsfp, "%f\n", val) != 1) {
-		ret = errno ? -errno : -ENODATA;
-		if (fclose(sysfsfp))
-			perror("read_sysfs_float(): Failed to close dir");
+ errno = 0;
+ if (fscanf(sysfsfp, "%f\n", val) != 1) {
+  ret = errno ? -errno : -ENODATA;
+  if (fclose(sysfsfp))
+   perror("read_sysfs_float(): Failed to close dir");
 
-		goto error_free;
-	}
+  goto error_free;
+ }
 
-	if (fclose(sysfsfp))
-		ret = -errno;
+ if (fclose(sysfsfp))
+  ret = -errno;
 
 error_free:
-	free(temp);
+ free(temp);
 
-	return ret;
+ return ret;
 }

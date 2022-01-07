@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_13__ {scalar_t__ pb; scalar_t__ oformat; TYPE_2__* priv_data; } ;
 struct TYPE_12__ {int nb_rtsp_streams; scalar_t__ lower_transport; scalar_t__ transport; TYPE_1__** rtsp_streams; } ;
-struct TYPE_11__ {int /*<<< orphan*/ * rtp_handle; TYPE_3__* transport_priv; } ;
-typedef  TYPE_1__ RTSPStream ;
-typedef  TYPE_2__ RTSPState ;
-typedef  TYPE_3__ AVFormatContext ;
+struct TYPE_11__ {int * rtp_handle; TYPE_3__* transport_priv; } ;
+typedef TYPE_1__ RTSPStream ;
+typedef TYPE_2__ RTSPState ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- scalar_t__ CONFIG_RTPDEC ; 
- scalar_t__ CONFIG_RTSP_MUXER ; 
- scalar_t__ RTSP_LOWER_TRANSPORT_TCP ; 
- scalar_t__ RTSP_TRANSPORT_RDT ; 
- scalar_t__ RTSP_TRANSPORT_RTP ; 
- int /*<<< orphan*/  av_write_trailer (TYPE_3__*) ; 
- int /*<<< orphan*/  avformat_free_context (TYPE_3__*) ; 
- int /*<<< orphan*/  avio_closep (scalar_t__*) ; 
- int /*<<< orphan*/  ff_rdt_parse_close (TYPE_3__*) ; 
- int /*<<< orphan*/  ff_rtp_parse_close (TYPE_3__*) ; 
- int /*<<< orphan*/  ff_rtsp_tcp_write_packet (TYPE_3__*,TYPE_1__*) ; 
- int /*<<< orphan*/  ffio_free_dyn_buf (scalar_t__*) ; 
- int /*<<< orphan*/  ffurl_close (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ CONFIG_RTPDEC ;
+ scalar_t__ CONFIG_RTSP_MUXER ;
+ scalar_t__ RTSP_LOWER_TRANSPORT_TCP ;
+ scalar_t__ RTSP_TRANSPORT_RDT ;
+ scalar_t__ RTSP_TRANSPORT_RTP ;
+ int av_write_trailer (TYPE_3__*) ;
+ int avformat_free_context (TYPE_3__*) ;
+ int avio_closep (scalar_t__*) ;
+ int ff_rdt_parse_close (TYPE_3__*) ;
+ int ff_rtp_parse_close (TYPE_3__*) ;
+ int ff_rtsp_tcp_write_packet (TYPE_3__*,TYPE_1__*) ;
+ int ffio_free_dyn_buf (scalar_t__*) ;
+ int ffurl_close (int *) ;
 
 void ff_rtsp_undo_setup(AVFormatContext *s, int send_packets)
 {
@@ -61,9 +61,9 @@ void ff_rtsp_undo_setup(AVFormatContext *s, int send_packets)
             else if (CONFIG_RTPDEC && rt->transport == RTSP_TRANSPORT_RTP)
                 ff_rtp_parse_close(rtsp_st->transport_priv);
         }
-        rtsp_st->transport_priv = NULL;
+        rtsp_st->transport_priv = ((void*)0);
         if (rtsp_st->rtp_handle)
             ffurl_close(rtsp_st->rtp_handle);
-        rtsp_st->rtp_handle = NULL;
+        rtsp_st->rtp_handle = ((void*)0);
     }
 }

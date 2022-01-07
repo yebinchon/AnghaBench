@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sk_buff {int /*<<< orphan*/  csum; int /*<<< orphan*/  len; } ;
-typedef  int /*<<< orphan*/  __sum16 ;
-typedef  int /*<<< orphan*/  __be32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPPROTO_DCCP ; 
- int /*<<< orphan*/  csum_tcpudp_magic (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct sk_buff {int csum; int len; } ;
+typedef int __sum16 ;
+typedef int __be32 ;
+
+
+ int IPPROTO_DCCP ;
+ int csum_tcpudp_magic (int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static inline __sum16 dccp_v4_csum_finish(struct sk_buff *skb,
-				      __be32 src, __be32 dst)
+          __be32 src, __be32 dst)
 {
-	return csum_tcpudp_magic(src, dst, skb->len, IPPROTO_DCCP, skb->csum);
+ return csum_tcpudp_magic(src, dst, skb->len, IPPROTO_DCCP, skb->csum);
 }

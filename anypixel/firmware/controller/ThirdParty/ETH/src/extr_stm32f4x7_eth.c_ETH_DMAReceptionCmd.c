@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  DMAOMR; } ;
-typedef  scalar_t__ FunctionalState ;
 
-/* Variables and functions */
- scalar_t__ DISABLE ; 
- TYPE_1__* ETH ; 
- int /*<<< orphan*/  ETH_DMAOMR_SR ; 
- int /*<<< orphan*/  IS_FUNCTIONAL_STATE (scalar_t__) ; 
- int /*<<< orphan*/  assert_param (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int DMAOMR; } ;
+typedef scalar_t__ FunctionalState ;
+
+
+ scalar_t__ DISABLE ;
+ TYPE_1__* ETH ;
+ int ETH_DMAOMR_SR ;
+ int IS_FUNCTIONAL_STATE (scalar_t__) ;
+ int assert_param (int ) ;
 
 void ETH_DMAReceptionCmd(FunctionalState NewState)
 {
-  /* Check the parameters */
+
   assert_param(IS_FUNCTIONAL_STATE(NewState));
 
   if (NewState != DISABLE)
   {
-    /* Enable the DMA reception */
+
     ETH->DMAOMR |= ETH_DMAOMR_SR;
   }
   else
   {
-    /* Disable the DMA reception */
+
     ETH->DMAOMR &= ~ETH_DMAOMR_SR;
   }
 }

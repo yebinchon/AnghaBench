@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct packet_config {int support; int detect; int /*<<< orphan*/  title; int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
-#define  AUTO_BOOLEAN_AUTO 133 
-#define  AUTO_BOOLEAN_FALSE 132 
-#define  AUTO_BOOLEAN_TRUE 131 
-#define  PACKET_DISABLE 130 
-#define  PACKET_ENABLE 129 
-#define  PACKET_SUPPORT_UNKNOWN 128 
- int /*<<< orphan*/  printf_filtered (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+
+
+struct packet_config {int support; int detect; int title; int name; } ;
+ int printf_filtered (char*,int ,int ,char*) ;
 
 __attribute__((used)) static void
 show_packet_config_cmd (struct packet_config *config)
@@ -27,26 +19,26 @@ show_packet_config_cmd (struct packet_config *config)
   char *support = "internal-error";
   switch (config->support)
     {
-    case PACKET_ENABLE:
+    case 129:
       support = "enabled";
       break;
-    case PACKET_DISABLE:
+    case 130:
       support = "disabled";
       break;
-    case PACKET_SUPPORT_UNKNOWN:
+    case 128:
       support = "unknown";
       break;
     }
   switch (config->detect)
     {
-    case AUTO_BOOLEAN_AUTO:
+    case 133:
       printf_filtered ("Support for remote protocol `%s' (%s) packet is auto-detected, currently %s.\n",
-		       config->name, config->title, support);
+         config->name, config->title, support);
       break;
-    case AUTO_BOOLEAN_TRUE:
-    case AUTO_BOOLEAN_FALSE:
+    case 131:
+    case 132:
       printf_filtered ("Support for remote protocol `%s' (%s) packet is currently %s.\n",
-		       config->name, config->title, support);
+         config->name, config->title, support);
       break;
     }
 }

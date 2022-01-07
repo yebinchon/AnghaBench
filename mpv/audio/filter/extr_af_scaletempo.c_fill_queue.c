@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+
+
+typedef int uint8_t ;
 struct priv {int bytes_per_frame; scalar_t__ bytes_to_slide; scalar_t__ bytes_queued; int buf_queue; int bytes_queue; scalar_t__ in; } ;
 
-/* Variables and functions */
- int MPMIN (int,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcpy (int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memmove (int,int,int) ; 
- int /*<<< orphan*/ ** mp_aframe_get_data_ro (scalar_t__) ; 
- int mp_aframe_get_size (scalar_t__) ; 
- int /*<<< orphan*/  mp_aframe_skip_samples (scalar_t__,int) ; 
+
+ int MPMIN (int,int) ;
+ int assert (int) ;
+ int memcpy (int,int *,int) ;
+ int memmove (int,int,int) ;
+ int ** mp_aframe_get_data_ro (scalar_t__) ;
+ int mp_aframe_get_size (scalar_t__) ;
+ int mp_aframe_skip_samples (scalar_t__,int) ;
 
 __attribute__((used)) static bool fill_queue(struct priv *s)
 {

@@ -1,82 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hb_value_t ;
-typedef  int /*<<< orphan*/  hb_dict_t ;
 
-/* Variables and functions */
- int HB_FILTER_CHROMA_SMOOTH ; 
- int HB_FILTER_COMB_DETECT ; 
- int HB_FILTER_DEBLOCK ; 
- int HB_FILTER_DECOMB ; 
- int HB_FILTER_DEINTERLACE ; 
- int HB_FILTER_DETELECINE ; 
- int HB_FILTER_GRAYSCALE ; 
- int HB_FILTER_HQDN3D ; 
- int HB_FILTER_LAPSHARP ; 
- int HB_FILTER_NLMEANS ; 
- int HB_FILTER_PAD ; 
- int HB_FILTER_ROTATE ; 
- int HB_FILTER_UNSHARP ; 
- int HB_FILTER_VFR ; 
- scalar_t__ HB_VALUE_TYPE_STRING ; 
- int /*<<< orphan*/  free (char*) ; 
- int get_video_framerate (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hb_add_filter2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * hb_dict_get (int /*<<< orphan*/  const*,char*) ; 
- int /*<<< orphan*/  hb_dict_get_bool (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * hb_dict_init () ; 
- int /*<<< orphan*/  hb_dict_set (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hb_error (char*,...) ; 
- int /*<<< orphan*/ * hb_generate_filter_settings (int,char const*,char const*,char const*) ; 
- char* hb_strdup_printf (char*,int,int) ; 
- scalar_t__ hb_validate_filter_settings (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * hb_value_array_init () ; 
- int /*<<< orphan*/  hb_value_free (int /*<<< orphan*/ **) ; 
- scalar_t__ hb_value_get_bool (int /*<<< orphan*/ *) ; 
- int hb_value_get_int (int /*<<< orphan*/ *) ; 
- char const* hb_value_get_string (int /*<<< orphan*/ *) ; 
- char* hb_value_get_string_xform (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * hb_value_int (int) ; 
- int /*<<< orphan*/ * hb_value_string (char*) ; 
- scalar_t__ hb_value_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hb_video_framerate_get_limits (int*,int*,int*) ; 
- scalar_t__ strcasecmp (char const*,char*) ; 
+
+
+
+typedef int hb_value_t ;
+typedef int hb_dict_t ;
+
+
+ int HB_FILTER_CHROMA_SMOOTH ;
+ int HB_FILTER_COMB_DETECT ;
+ int HB_FILTER_DEBLOCK ;
+ int HB_FILTER_DECOMB ;
+ int HB_FILTER_DEINTERLACE ;
+ int HB_FILTER_DETELECINE ;
+ int HB_FILTER_GRAYSCALE ;
+ int HB_FILTER_HQDN3D ;
+ int HB_FILTER_LAPSHARP ;
+ int HB_FILTER_NLMEANS ;
+ int HB_FILTER_PAD ;
+ int HB_FILTER_ROTATE ;
+ int HB_FILTER_UNSHARP ;
+ int HB_FILTER_VFR ;
+ scalar_t__ HB_VALUE_TYPE_STRING ;
+ int free (char*) ;
+ int get_video_framerate (int *) ;
+ int hb_add_filter2 (int *,int *) ;
+ int * hb_dict_get (int const*,char*) ;
+ int hb_dict_get_bool (int *,char*) ;
+ int * hb_dict_init () ;
+ int hb_dict_set (int *,char*,int *) ;
+ int hb_error (char*,...) ;
+ int * hb_generate_filter_settings (int,char const*,char const*,char const*) ;
+ char* hb_strdup_printf (char*,int,int) ;
+ scalar_t__ hb_validate_filter_settings (int,int *) ;
+ int * hb_value_array_init () ;
+ int hb_value_free (int **) ;
+ scalar_t__ hb_value_get_bool (int *) ;
+ int hb_value_get_int (int *) ;
+ char const* hb_value_get_string (int *) ;
+ char* hb_value_get_string_xform (int *) ;
+ int * hb_value_int (int) ;
+ int * hb_value_string (char*) ;
+ scalar_t__ hb_value_type (int *) ;
+ int hb_video_framerate_get_limits (int*,int*,int*) ;
+ scalar_t__ strcasecmp (char const*,char*) ;
 
 int hb_preset_apply_filters(const hb_dict_t *preset, hb_dict_t *job_dict)
 {
     hb_value_t * filters_dict, * filter_list, * filter_dict;
-    hb_dict_t  * filter_settings;
+    hb_dict_t * filter_settings;
 
     int clock_min, clock_max, clock;
     hb_video_framerate_get_limits(&clock_min, &clock_max, &clock);
 
-    // Create new filters
+
     filters_dict = hb_dict_init();
     hb_dict_set(job_dict, "Filters", filters_dict);
     filter_list = hb_value_array_init();
     hb_dict_set(filters_dict, "FilterList", filter_list);
 
-    // Detelecine filter
+
     hb_value_t *detel_val = hb_dict_get(preset, "PictureDetelecine");
-    if (detel_val != NULL)
+    if (detel_val != ((void*)0))
     {
         const char *custom;
         custom = hb_value_get_string(hb_dict_get(preset,
                                                 "PictureDetelecineCustom"));
         filter_settings = hb_generate_filter_settings(
-            HB_FILTER_DETELECINE, hb_value_get_string(detel_val), NULL, custom);
+            HB_FILTER_DETELECINE, hb_value_get_string(detel_val), ((void*)0), custom);
 
-        if (filter_settings == NULL)
+        if (filter_settings == ((void*)0))
         {
             char *s = hb_value_get_string_xform(detel_val);
             hb_error("Invalid detelecine filter settings (%s)", s);
@@ -99,14 +99,14 @@ int hb_preset_apply_filters(const hb_dict_t *preset, hb_dict_t *job_dict)
     const char *comb_preset;
     comb_preset = hb_value_get_string(hb_dict_get(preset,
                                       "PictureCombDetectPreset"));
-    if (comb_preset != NULL)
+    if (comb_preset != ((void*)0))
     {
         const char *comb_custom;
         comb_custom = hb_value_get_string(hb_dict_get(preset,
                                           "PictureCombDetectCustom"));
         filter_settings = hb_generate_filter_settings(HB_FILTER_COMB_DETECT,
-                                                comb_preset, NULL, comb_custom);
-        if (filter_settings == NULL)
+                                                comb_preset, ((void*)0), comb_custom);
+        if (filter_settings == ((void*)0))
         {
             hb_error("Invalid comb detect filter preset (%s)", comb_preset);
             return -1;
@@ -124,7 +124,7 @@ int hb_preset_apply_filters(const hb_dict_t *preset, hb_dict_t *job_dict)
         }
     }
 
-    // Decomb or deinterlace filters
+
     const char *deint_filter, *deint_preset, *deint_custom;
     deint_filter = hb_value_get_string(hb_dict_get(preset,
                                                    "PictureDeinterlaceFilter"));
@@ -132,7 +132,7 @@ int hb_preset_apply_filters(const hb_dict_t *preset, hb_dict_t *job_dict)
                                                    "PictureDeinterlacePreset"));
     deint_custom = hb_value_get_string(hb_dict_get(preset,
                                                    "PictureDeinterlaceCustom"));
-    if (deint_filter != NULL && deint_preset != NULL &&
+    if (deint_filter != ((void*)0) && deint_preset != ((void*)0) &&
         strcasecmp(deint_filter, "off"))
     {
         int filter_id;
@@ -150,8 +150,8 @@ int hb_preset_apply_filters(const hb_dict_t *preset, hb_dict_t *job_dict)
             return -1;
         }
         filter_settings = hb_generate_filter_settings(
-                        filter_id, deint_preset, NULL, deint_custom);
-        if (filter_settings == NULL)
+                        filter_id, deint_preset, ((void*)0), deint_custom);
+        if (filter_settings == ((void*)0))
         {
             hb_error("Invalid deinterlace filter preset (%s)", deint_preset);
             return -1;
@@ -169,7 +169,7 @@ int hb_preset_apply_filters(const hb_dict_t *preset, hb_dict_t *job_dict)
         }
     }
 
-    // Denoise filter
+
     int denoise;
     hb_value_t *denoise_value = hb_dict_get(preset, "PictureDenoiseFilter");
     denoise = hb_value_type(denoise_value) == HB_VALUE_TYPE_STRING ? (
@@ -183,16 +183,16 @@ int hb_preset_apply_filters(const hb_dict_t *preset, hb_dict_t *job_dict)
         const char *denoise_preset, *denoise_tune, *denoise_custom;
         denoise_preset = hb_value_get_string(
                             hb_dict_get(preset, "PictureDenoisePreset"));
-        if (denoise_preset != NULL)
+        if (denoise_preset != ((void*)0))
         {
-            denoise_tune   = hb_value_get_string(
+            denoise_tune = hb_value_get_string(
                         hb_dict_get(preset, "PictureDenoiseTune"));
             denoise_custom = hb_value_get_string(
                         hb_dict_get(preset, "PictureDenoiseCustom"));
 
             filter_settings = hb_generate_filter_settings(filter_id,
                                 denoise_preset, denoise_tune, denoise_custom);
-            if (filter_settings == NULL)
+            if (filter_settings == ((void*)0))
             {
                 hb_error("Invalid denoise filter settings (%s%s%s)",
                          denoise_preset,
@@ -214,21 +214,21 @@ int hb_preset_apply_filters(const hb_dict_t *preset, hb_dict_t *job_dict)
         }
     }
 
-    // Chroma Smooth filter
+
     const char *chroma_smooth_preset, *chroma_smooth_tune, *chroma_smooth_custom;
     chroma_smooth_preset = hb_value_get_string(hb_dict_get(preset,
                                                    "PictureChromaSmoothPreset"));
-    chroma_smooth_tune   = hb_value_get_string(hb_dict_get(preset,
+    chroma_smooth_tune = hb_value_get_string(hb_dict_get(preset,
                                                    "PictureChromaSmoothTune"));
     chroma_smooth_custom = hb_value_get_string(hb_dict_get(preset,
                                                    "PictureChromaSmoothCustom"));
-    if (chroma_smooth_preset != NULL &&
+    if (chroma_smooth_preset != ((void*)0) &&
         strcasecmp(chroma_smooth_preset, "off"))
     {
         int filter_id = HB_FILTER_CHROMA_SMOOTH;
         filter_settings = hb_generate_filter_settings(filter_id,
                             chroma_smooth_preset, chroma_smooth_tune, chroma_smooth_custom);
-        if (filter_settings == NULL)
+        if (filter_settings == ((void*)0))
         {
             hb_error("Invalid chroma smooth filter settings (%s%s%s)",
                      chroma_smooth_preset,
@@ -249,17 +249,17 @@ int hb_preset_apply_filters(const hb_dict_t *preset, hb_dict_t *job_dict)
         }
     }
 
-    // Sharpen filter
+
     const char *sharpen_filter, *sharpen_preset, *sharpen_tune, *sharpen_custom;
     sharpen_filter = hb_value_get_string(hb_dict_get(preset,
                                                    "PictureSharpenFilter"));
     sharpen_preset = hb_value_get_string(hb_dict_get(preset,
                                                    "PictureSharpenPreset"));
-    sharpen_tune   = hb_value_get_string(hb_dict_get(preset,
+    sharpen_tune = hb_value_get_string(hb_dict_get(preset,
                                                    "PictureSharpenTune"));
     sharpen_custom = hb_value_get_string(hb_dict_get(preset,
                                                    "PictureSharpenCustom"));
-    if (sharpen_filter != NULL && sharpen_preset != NULL &&
+    if (sharpen_filter != ((void*)0) && sharpen_preset != ((void*)0) &&
         strcasecmp(sharpen_filter, "off"))
     {
         int filter_id;
@@ -278,7 +278,7 @@ int hb_preset_apply_filters(const hb_dict_t *preset, hb_dict_t *job_dict)
         }
         filter_settings = hb_generate_filter_settings(filter_id,
                             sharpen_preset, sharpen_tune, sharpen_custom);
-        if (filter_settings == NULL)
+        if (filter_settings == ((void*)0))
         {
             hb_error("Invalid sharpen filter settings (%s%s%s)",
                      sharpen_preset,
@@ -299,18 +299,18 @@ int hb_preset_apply_filters(const hb_dict_t *preset, hb_dict_t *job_dict)
         }
     }
 
-    // Deblock filter
+
     const char * deblock = hb_value_get_string(
                                 hb_dict_get(preset, "PictureDeblockPreset"));
-    if (deblock != NULL)
+    if (deblock != ((void*)0))
     {
-        const char * deblock_tune   = hb_value_get_string(
+        const char * deblock_tune = hb_value_get_string(
                                 hb_dict_get(preset, "PictureDeblockTune"));
         const char * deblock_custom = hb_value_get_string(
                                 hb_dict_get(preset, "PictureDeblockCustom"));
         filter_settings = hb_generate_filter_settings(HB_FILTER_DEBLOCK,
                                     deblock, deblock_tune, deblock_custom);
-        if (filter_settings == NULL)
+        if (filter_settings == ((void*)0))
         {
             hb_error("Invalid deblock filter settings (%s)", deblock);
             return -1;
@@ -328,14 +328,14 @@ int hb_preset_apply_filters(const hb_dict_t *preset, hb_dict_t *job_dict)
         }
     }
 
-    // Rotate filter
+
     char *rotate = hb_value_get_string_xform(
                         hb_dict_get(preset, "PictureRotate"));
-    if (rotate != NULL)
+    if (rotate != ((void*)0))
     {
         filter_settings = hb_generate_filter_settings(HB_FILTER_ROTATE,
-                                                      NULL, NULL, rotate);
-        if (filter_settings == NULL)
+                                                      ((void*)0), ((void*)0), rotate);
+        if (filter_settings == ((void*)0))
         {
             hb_error("Invalid rotate filter settings (%s)", rotate);
             return -1;
@@ -354,7 +354,7 @@ int hb_preset_apply_filters(const hb_dict_t *preset, hb_dict_t *job_dict)
     }
     free(rotate);
 
-    // Grayscale filter
+
     if (hb_value_get_bool(hb_dict_get(preset, "VideoGrayScale")))
     {
         filter_dict = hb_dict_init();
@@ -362,13 +362,13 @@ int hb_preset_apply_filters(const hb_dict_t *preset, hb_dict_t *job_dict)
         hb_add_filter2(filter_list, filter_dict);
     }
 
-    // Pad filter
+
     char *pad = hb_value_get_string_xform(hb_dict_get(preset, "PicturePad"));
-    if (pad != NULL)
+    if (pad != ((void*)0))
     {
         filter_settings = hb_generate_filter_settings(HB_FILTER_PAD,
-                                                      NULL, NULL, pad);
-        if (filter_settings == NULL)
+                                                      ((void*)0), ((void*)0), pad);
+        if (filter_settings == ((void*)0))
         {
             hb_error("Invalid pad filter settings (%s)", pad);
             return -1;

@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
 
-/* Variables and functions */
-#define  BEACON_QUEUE 135 
-#define  BE_QUEUE 134 
-#define  BK_QUEUE 133 
- int /*<<< orphan*/  COMP_ERR ; 
-#define  HIGH_QUEUE 132 
-#define  MGNT_QUEUE 131 
- int QSLT_BE ; 
- int QSLT_BEACON ; 
- int QSLT_BK ; 
- int QSLT_CMD ; 
- int QSLT_HIGH ; 
- int QSLT_MGNT ; 
- int QSLT_VI ; 
- int QSLT_VO ; 
- int /*<<< orphan*/  RT_TRACE (int /*<<< orphan*/ ,char*,int) ; 
-#define  TXCMD_QUEUE 130 
-#define  VI_QUEUE 129 
-#define  VO_QUEUE 128 
+
+
+
+typedef int u8 ;
+
+
+
+
+
+ int COMP_ERR ;
+
+
+ int QSLT_BE ;
+ int QSLT_BEACON ;
+ int QSLT_BK ;
+ int QSLT_CMD ;
+ int QSLT_HIGH ;
+ int QSLT_MGNT ;
+ int QSLT_VI ;
+ int QSLT_VO ;
+ int RT_TRACE (int ,char*,int) ;
+
+
+
 
 u8 MapHwQueueToFirmwareQueue(u8 QueueID)
 {
-	u8 QueueSelect = 0x0;       //defualt set to
+ u8 QueueSelect = 0x0;
 
-	switch(QueueID) {
-		case BE_QUEUE:
-			QueueSelect = QSLT_BE;  //or QSelect = pTcb->priority;
-			break;
+ switch(QueueID) {
+  case 134:
+   QueueSelect = QSLT_BE;
+   break;
 
-		case BK_QUEUE:
-			QueueSelect = QSLT_BK;  //or QSelect = pTcb->priority;
-			break;
+  case 133:
+   QueueSelect = QSLT_BK;
+   break;
 
-		case VO_QUEUE:
-			QueueSelect = QSLT_VO;  //or QSelect = pTcb->priority;
-			break;
+  case 128:
+   QueueSelect = QSLT_VO;
+   break;
 
-		case VI_QUEUE:
-			QueueSelect = QSLT_VI;  //or QSelect = pTcb->priority;
-			break;
-		case MGNT_QUEUE:
-			QueueSelect = QSLT_MGNT;
-			break;
+  case 129:
+   QueueSelect = QSLT_VI;
+   break;
+  case 131:
+   QueueSelect = QSLT_MGNT;
+   break;
 
-		case BEACON_QUEUE:
-			QueueSelect = QSLT_BEACON;
-			break;
+  case 135:
+   QueueSelect = QSLT_BEACON;
+   break;
 
-			// TODO: 2006.10.30 mark other queue selection until we verify it is OK
-			// TODO: Remove Assertions
-//#if (RTL819X_FPGA_VER & RTL819X_FPGA_GUANGAN_070502)
-		case TXCMD_QUEUE:
-			QueueSelect = QSLT_CMD;
-			break;
-//#endif
-		case HIGH_QUEUE:
-			QueueSelect = QSLT_HIGH;
-			break;
 
-		default:
-			RT_TRACE(COMP_ERR, "TransmitTCB(): Impossible Queue Selection: %d \n", QueueID);
-			break;
-	}
-	return QueueSelect;
+
+
+  case 130:
+   QueueSelect = QSLT_CMD;
+   break;
+
+  case 132:
+   QueueSelect = QSLT_HIGH;
+   break;
+
+  default:
+   RT_TRACE(COMP_ERR, "TransmitTCB(): Impossible Queue Selection: %d \n", QueueID);
+   break;
+ }
+ return QueueSelect;
 }

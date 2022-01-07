@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+
+
+typedef int uint32_t ;
 struct ws_interval {int next; scalar_t__ ts_end; int amp; int type; size_t phi; size_t dphi; size_t ddphi; int channels; scalar_t__ damp; } ;
-struct wavesynth_context {int cur_inter; scalar_t__ pink_pos; int* pink_pool; unsigned int* sin; int /*<<< orphan*/  dither_state; struct ws_interval* inter; } ;
-typedef  scalar_t__ int64_t ;
-typedef  unsigned int int32_t ;
+struct wavesynth_context {int cur_inter; scalar_t__ pink_pos; int* pink_pool; unsigned int* sin; int dither_state; struct ws_interval* inter; } ;
+typedef scalar_t__ int64_t ;
+typedef unsigned int int32_t ;
 
-/* Variables and functions */
- scalar_t__ PINK_UNIT ; 
- int /*<<< orphan*/  SIN_BITS ; 
-#define  WS_NOISE 129 
-#define  WS_SINE 128 
- scalar_t__ lcg_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pink_fill (struct wavesynth_context*) ; 
+
+ scalar_t__ PINK_UNIT ;
+ int SIN_BITS ;
+
+
+ scalar_t__ lcg_next (int *) ;
+ int pink_fill (struct wavesynth_context*) ;
 
 __attribute__((used)) static void wavesynth_synth_sample(struct wavesynth_context *ws, int64_t ts,
                                    int32_t *channels)
@@ -46,14 +46,14 @@ __attribute__((used)) static void wavesynth_synth_sample(struct wavesynth_contex
         }
         last = &in->next;
         amp = in->amp >> 32;
-        in->amp  += in->damp;
+        in->amp += in->damp;
         switch (in->type) {
-            case WS_SINE:
+            case 128:
                 val = amp * ws->sin[in->phi >> (64 - SIN_BITS)];
-                in->phi  += in->dphi;
+                in->phi += in->dphi;
                 in->dphi += in->ddphi;
                 break;
-            case WS_NOISE:
+            case 129:
                 val = amp * (unsigned)pink;
                 break;
             default:

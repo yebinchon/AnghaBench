@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  krb5_principal ;
-typedef  int /*<<< orphan*/  krb5_keyblock ;
-typedef  int krb5_error_code ;
 
-/* Variables and functions */
- int /*<<< orphan*/  context ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int kadm5_randkey_principal (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int*) ; 
- int /*<<< orphan*/  kadm_handle ; 
- int /*<<< orphan*/  krb5_free_keyblock_contents (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int krb5_principal ;
+typedef int krb5_keyblock ;
+typedef int krb5_error_code ;
+
+
+ int context ;
+ int free (int *) ;
+ int kadm5_randkey_principal (int ,int ,int **,int*) ;
+ int kadm_handle ;
+ int krb5_free_keyblock_contents (int ,int *) ;
 
 __attribute__((used)) static int
 set_random_key (krb5_principal principal)
@@ -31,9 +31,9 @@ set_random_key (krb5_principal principal)
 
     ret = kadm5_randkey_principal(kadm_handle, principal, &keys, &num_keys);
     if(ret)
-	return ret;
+ return ret;
     for(i = 0; i < num_keys; i++)
-	krb5_free_keyblock_contents(context, &keys[i]);
+ krb5_free_keyblock_contents(context, &keys[i]);
     free(keys);
     return 0;
 }

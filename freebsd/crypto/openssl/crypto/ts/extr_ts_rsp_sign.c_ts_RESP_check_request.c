@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {scalar_t__ parameter; int /*<<< orphan*/  algorithm; } ;
-typedef  TYPE_1__ X509_ALGOR ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {scalar_t__ parameter; int algorithm; } ;
+typedef TYPE_1__ X509_ALGOR ;
 struct TYPE_14__ {scalar_t__ length; } ;
 struct TYPE_13__ {TYPE_5__* hashed_msg; TYPE_1__* hash_algo; } ;
 struct TYPE_12__ {TYPE_4__* msg_imprint; } ;
-struct TYPE_11__ {int /*<<< orphan*/  mds; TYPE_3__* request; } ;
-typedef  TYPE_2__ TS_RESP_CTX ;
-typedef  TYPE_3__ TS_REQ ;
-typedef  TYPE_4__ TS_MSG_IMPRINT ;
-typedef  int /*<<< orphan*/  EVP_MD ;
-typedef  TYPE_5__ ASN1_OCTET_STRING ;
+struct TYPE_11__ {int mds; TYPE_3__* request; } ;
+typedef TYPE_2__ TS_RESP_CTX ;
+typedef TYPE_3__ TS_REQ ;
+typedef TYPE_4__ TS_MSG_IMPRINT ;
+typedef int EVP_MD ;
+typedef TYPE_5__ ASN1_OCTET_STRING ;
 
-/* Variables and functions */
- scalar_t__ ASN1_TYPE_get (scalar_t__) ; 
- scalar_t__ EVP_MD_size (int /*<<< orphan*/  const*) ; 
- int EVP_MD_type (int /*<<< orphan*/  const*) ; 
- int OBJ_obj2nid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TS_INFO_BAD_ALG ; 
- int /*<<< orphan*/  TS_INFO_BAD_DATA_FORMAT ; 
- int /*<<< orphan*/  TS_INFO_BAD_REQUEST ; 
- int TS_REQ_get_version (TYPE_3__*) ; 
- int /*<<< orphan*/  TS_RESP_CTX_add_failure_info (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TS_RESP_CTX_set_status_info (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TS_STATUS_REJECTION ; 
- scalar_t__ V_ASN1_NULL ; 
- int sk_EVP_MD_num (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * sk_EVP_MD_value (int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ ASN1_TYPE_get (scalar_t__) ;
+ scalar_t__ EVP_MD_size (int const*) ;
+ int EVP_MD_type (int const*) ;
+ int OBJ_obj2nid (int ) ;
+ int TS_INFO_BAD_ALG ;
+ int TS_INFO_BAD_DATA_FORMAT ;
+ int TS_INFO_BAD_REQUEST ;
+ int TS_REQ_get_version (TYPE_3__*) ;
+ int TS_RESP_CTX_add_failure_info (TYPE_2__*,int ) ;
+ int TS_RESP_CTX_set_status_info (TYPE_2__*,int ,char*) ;
+ int TS_STATUS_REJECTION ;
+ scalar_t__ V_ASN1_NULL ;
+ int sk_EVP_MD_num (int ) ;
+ int * sk_EVP_MD_value (int ,int) ;
 
 __attribute__((used)) static int ts_RESP_check_request(TS_RESP_CTX *ctx)
 {
@@ -50,7 +50,7 @@ __attribute__((used)) static int ts_RESP_check_request(TS_RESP_CTX *ctx)
     X509_ALGOR *md_alg;
     int md_alg_id;
     const ASN1_OCTET_STRING *digest;
-    const EVP_MD *md = NULL;
+    const EVP_MD *md = ((void*)0);
     int i;
 
     if (TS_REQ_get_version(request) != 1) {

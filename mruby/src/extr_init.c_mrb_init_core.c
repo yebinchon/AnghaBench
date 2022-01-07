@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DONE ; 
- int /*<<< orphan*/  mrb_init_array (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_init_class (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_init_comparable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_init_enumerable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_init_exception (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_init_gc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_init_hash (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_init_kernel (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_init_mrblib (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_init_numeric (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_init_object (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_init_proc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_init_range (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_init_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_init_symbol (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_init_symtbl (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_init_version (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int mrb_state ;
+
+
+ int DONE ;
+ int mrb_init_array (int *) ;
+ int mrb_init_class (int *) ;
+ int mrb_init_comparable (int *) ;
+ int mrb_init_enumerable (int *) ;
+ int mrb_init_exception (int *) ;
+ int mrb_init_gc (int *) ;
+ int mrb_init_hash (int *) ;
+ int mrb_init_kernel (int *) ;
+ int mrb_init_mrblib (int *) ;
+ int mrb_init_numeric (int *) ;
+ int mrb_init_object (int *) ;
+ int mrb_init_proc (int *) ;
+ int mrb_init_range (int *) ;
+ int mrb_init_string (int *) ;
+ int mrb_init_symbol (int *) ;
+ int mrb_init_symtbl (int *) ;
+ int mrb_init_version (int *) ;
 
 void
 mrb_init_core(mrb_state *mrb)

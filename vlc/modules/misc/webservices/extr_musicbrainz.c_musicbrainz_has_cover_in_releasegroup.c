@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  boolean; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int boolean; } ;
 struct TYPE_8__ {scalar_t__ type; TYPE_1__ u; } ;
-typedef  TYPE_2__ const json_value ;
+typedef TYPE_2__ const json_value ;
 
-/* Variables and functions */
- scalar_t__ json_boolean ; 
- TYPE_2__ const* json_getbyname (TYPE_2__ const*,char*) ; 
- char* jsongetstring (TYPE_2__ const*,char*) ; 
- scalar_t__ strcmp (char const*,char const*) ; 
+
+ scalar_t__ json_boolean ;
+ TYPE_2__ const* json_getbyname (TYPE_2__ const*,char*) ;
+ char* jsongetstring (TYPE_2__ const*,char*) ;
+ scalar_t__ strcmp (char const*,char const*) ;
 
 __attribute__((used)) static bool musicbrainz_has_cover_in_releasegroup(json_value ** const p_nodes,
                                                   size_t i_nodes,
@@ -43,9 +43,9 @@ __attribute__((used)) static bool musicbrainz_has_cover_in_releasegroup(json_val
             if(!node || node->type != json_boolean || !node->u.boolean)
                 continue;
 
-            return true;
+            return 1;
         }
     }
 
-    return false;
+    return 0;
 }

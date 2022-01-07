@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct modsig {int /*<<< orphan*/  raw_pkcs7_len; int /*<<< orphan*/  raw_pkcs7; } ;
 
-/* Variables and functions */
+
+
+
+typedef int u32 ;
+struct modsig {int raw_pkcs7_len; int raw_pkcs7; } ;
+
+
 
 int ima_get_raw_modsig(const struct modsig *modsig, const void **data,
-		       u32 *data_len)
+         u32 *data_len)
 {
-	*data = &modsig->raw_pkcs7;
-	*data_len = modsig->raw_pkcs7_len;
+ *data = &modsig->raw_pkcs7;
+ *data_len = modsig->raw_pkcs7_len;
 
-	return 0;
+ return 0;
 }

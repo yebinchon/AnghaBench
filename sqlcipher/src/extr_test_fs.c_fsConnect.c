@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_2__ {char* zTbl; char* zDb; int /*<<< orphan*/  base; int /*<<< orphan*/ * db; } ;
-typedef  TYPE_1__ fs_vtab ;
 
-/* Variables and functions */
- int SQLITE_ERROR ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- scalar_t__ sqlite3MallocZero (int) ; 
- int /*<<< orphan*/  sqlite3_declare_vtab (int /*<<< orphan*/ *,char*) ; 
- char* sqlite3_mprintf (char*) ; 
- int strlen (char const*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sqlite3_vtab ;
+typedef int sqlite3 ;
+struct TYPE_2__ {char* zTbl; char* zDb; int base; int * db; } ;
+typedef TYPE_1__ fs_vtab ;
+
+
+ int SQLITE_ERROR ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int memcpy (char*,char const*,int) ;
+ scalar_t__ sqlite3MallocZero (int) ;
+ int sqlite3_declare_vtab (int *,char*) ;
+ char* sqlite3_mprintf (char*) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static int fsConnect(
   sqlite3 *db,

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_gl_info {int dummy; } ;
-typedef  char GLuint ;
-typedef  size_t GLint ;
+typedef char GLuint ;
+typedef size_t GLint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,...) ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  GL_ATTACHED_SHADERS ; 
- int /*<<< orphan*/  GL_COMPILE_STATUS ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_SHADER_SOURCE_LENGTH ; 
- int /*<<< orphan*/  GL_SHADER_TYPE ; 
- int /*<<< orphan*/  debug_gl_shader_type (size_t) ; 
- char* get_info_log_line (char const**) ; 
- int /*<<< orphan*/  glGetAttachedShaders (char,size_t,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  glGetProgramiv (char,int /*<<< orphan*/ ,size_t*) ; 
- int /*<<< orphan*/  glGetShaderSource (char,size_t,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  glGetShaderiv (char,int /*<<< orphan*/ ,size_t*) ; 
- char* heap_alloc_zero (size_t) ; 
- char* heap_calloc (size_t,int) ; 
- int /*<<< orphan*/  heap_free (char*) ; 
+
+ int ERR (char*,...) ;
+ int FIXME (char*,...) ;
+ int GL_ATTACHED_SHADERS ;
+ int GL_COMPILE_STATUS ;
+ int GL_EXTCALL (int ) ;
+ int GL_SHADER_SOURCE_LENGTH ;
+ int GL_SHADER_TYPE ;
+ int debug_gl_shader_type (size_t) ;
+ char* get_info_log_line (char const**) ;
+ int glGetAttachedShaders (char,size_t,int *,char*) ;
+ int glGetProgramiv (char,int ,size_t*) ;
+ int glGetShaderSource (char,size_t,int *,char*) ;
+ int glGetShaderiv (char,int ,size_t*) ;
+ char* heap_alloc_zero (size_t) ;
+ char* heap_calloc (size_t,int) ;
+ int heap_free (char*) ;
 
 __attribute__((used)) static void shader_glsl_dump_program_source(const struct wined3d_gl_info *gl_info, GLuint program)
 {
     GLint i, shader_count, source_size = -1;
     GLuint *shaders;
-    char *source = NULL;
+    char *source = ((void*)0);
 
     GL_EXTCALL(glGetProgramiv(program, GL_ATTACHED_SHADERS, &shader_count));
     if (!(shaders = heap_calloc(shader_count, sizeof(*shaders))))
@@ -45,7 +45,7 @@ __attribute__((used)) static void shader_glsl_dump_program_source(const struct w
         return;
     }
 
-    GL_EXTCALL(glGetAttachedShaders(program, shader_count, NULL, shaders));
+    GL_EXTCALL(glGetAttachedShaders(program, shader_count, ((void*)0), shaders));
     for (i = 0; i < shader_count; ++i)
     {
         const char *ptr, *line;
@@ -74,7 +74,7 @@ __attribute__((used)) static void shader_glsl_dump_program_source(const struct w
         FIXME("\n");
 
         ptr = source;
-        GL_EXTCALL(glGetShaderSource(shaders[i], source_size, NULL, source));
+        GL_EXTCALL(glGetShaderSource(shaders[i], source_size, ((void*)0), source));
         while ((line = get_info_log_line(&ptr))) FIXME("    %.*s", (int)(ptr - line), line);
         FIXME("\n");
     }

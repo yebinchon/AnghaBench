@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+
+
+typedef int uint8_t ;
 struct tr_pattern {int dummy; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  size_t mrb_int ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef size_t mrb_int ;
 
-/* Variables and functions */
- size_t RSTRING_LEN (int /*<<< orphan*/ ) ; 
- char* RSTRING_PTR (int /*<<< orphan*/ ) ; 
- struct tr_pattern STATIC_TR_PATTERN ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  mrb_fixnum_value (size_t) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_nil_value () ; 
- scalar_t__ tr_bitmap_detect (int /*<<< orphan*/ *,char) ; 
- int /*<<< orphan*/  tr_compile_pattern (struct tr_pattern*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tr_free_pattern (int /*<<< orphan*/ *,struct tr_pattern*) ; 
- int /*<<< orphan*/  tr_parse_pattern (int /*<<< orphan*/ *,struct tr_pattern*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ size_t RSTRING_LEN (int ) ;
+ char* RSTRING_PTR (int ) ;
+ struct tr_pattern STATIC_TR_PATTERN ;
+ int TRUE ;
+ int mrb_fixnum_value (size_t) ;
+ int mrb_get_args (int *,char*,int *) ;
+ int mrb_nil_value () ;
+ scalar_t__ tr_bitmap_detect (int *,char) ;
+ int tr_compile_pattern (struct tr_pattern*,int ,int *) ;
+ int tr_free_pattern (int *,struct tr_pattern*) ;
+ int tr_parse_pattern (int *,struct tr_pattern*,int ,int ) ;
 
 __attribute__((used)) static mrb_value
 mrb_str_count(mrb_state *mrb, mrb_value str)

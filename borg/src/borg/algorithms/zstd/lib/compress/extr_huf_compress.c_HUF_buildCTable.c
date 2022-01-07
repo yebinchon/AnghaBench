@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nodeTable ;
-typedef  int /*<<< orphan*/  huffNodeTable ;
-typedef  int /*<<< orphan*/  HUF_CElt ;
 
-/* Variables and functions */
- size_t HUF_buildCTable_wksp (int /*<<< orphan*/ *,unsigned int const*,unsigned int,unsigned int,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int nodeTable ;
+typedef int huffNodeTable ;
+typedef int HUF_CElt ;
+
+
+ size_t HUF_buildCTable_wksp (int *,unsigned int const*,unsigned int,unsigned int,int ,int) ;
 
 size_t HUF_buildCTable (HUF_CElt* tree, const unsigned* count, unsigned maxSymbolValue, unsigned maxNbBits)
 {

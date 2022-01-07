@@ -1,105 +1,97 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT32 ;
-struct TYPE_2__ {int /*<<< orphan*/  UseCount; } ;
-typedef  int /*<<< orphan*/  ACPI_UPDATE_STATE ;
-typedef  int /*<<< orphan*/  ACPI_THREAD_STATE ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  int /*<<< orphan*/  ACPI_SCOPE_STATE ;
-typedef  int /*<<< orphan*/  ACPI_RESULT_VALUES ;
-typedef  int /*<<< orphan*/  ACPI_PSCOPE_STATE ;
-typedef  int /*<<< orphan*/  ACPI_PKG_STATE ;
-typedef  int /*<<< orphan*/  ACPI_PARSE_OBJ_NAMED ;
-typedef  int /*<<< orphan*/  ACPI_PARSE_OBJ_COMMON ;
-typedef  int /*<<< orphan*/  ACPI_PARSE_OBJ_ASL ;
-typedef  int /*<<< orphan*/  ACPI_OPERAND_OBJECT ;
-typedef  int /*<<< orphan*/  ACPI_OBJECT_THERMAL_ZONE ;
-typedef  int /*<<< orphan*/  ACPI_OBJECT_STRING ;
-typedef  int /*<<< orphan*/  ACPI_OBJECT_REGION_FIELD ;
-typedef  int /*<<< orphan*/  ACPI_OBJECT_REGION ;
-typedef  int /*<<< orphan*/  ACPI_OBJECT_REFERENCE ;
-typedef  int /*<<< orphan*/  ACPI_OBJECT_PROCESSOR ;
-typedef  int /*<<< orphan*/  ACPI_OBJECT_POWER_RESOURCE ;
-typedef  int /*<<< orphan*/  ACPI_OBJECT_PACKAGE ;
-typedef  int /*<<< orphan*/  ACPI_OBJECT_NOTIFY_HANDLER ;
-typedef  int /*<<< orphan*/  ACPI_OBJECT_MUTEX ;
-typedef  int /*<<< orphan*/  ACPI_OBJECT_METHOD ;
-typedef  int /*<<< orphan*/  ACPI_OBJECT_INTEGER ;
-typedef  int /*<<< orphan*/  ACPI_OBJECT_INDEX_FIELD ;
-typedef  int /*<<< orphan*/  ACPI_OBJECT_EXTRA ;
-typedef  int /*<<< orphan*/  ACPI_OBJECT_EVENT ;
-typedef  int /*<<< orphan*/  ACPI_OBJECT_DEVICE ;
-typedef  int /*<<< orphan*/  ACPI_OBJECT_DATA ;
-typedef  int /*<<< orphan*/  ACPI_OBJECT_COMMON ;
-typedef  int /*<<< orphan*/  ACPI_OBJECT_BUFFER_FIELD ;
-typedef  int /*<<< orphan*/  ACPI_OBJECT_BUFFER ;
-typedef  int /*<<< orphan*/  ACPI_OBJECT_BANK_FIELD ;
-typedef  int /*<<< orphan*/  ACPI_OBJECT_ADDR_HANDLER ;
-typedef  int /*<<< orphan*/  ACPI_OBJECT ;
-typedef  int /*<<< orphan*/  ACPI_NOTIFY_INFO ;
-typedef  int /*<<< orphan*/  ACPI_NAMESPACE_NODE ;
-typedef  int /*<<< orphan*/  ACPI_GENERIC_STATE ;
-typedef  int /*<<< orphan*/  ACPI_CONTROL_STATE ;
-typedef  int /*<<< orphan*/  ACPI_COMMON_STATE ;
 
-/* Variables and functions */
- int ACPI_NUM_MUTEX ; 
- int /*<<< orphan*/  ACPI_PTR_DIFF (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ACPI_TYPE_NOT_FOUND ; 
- int ACPI_TYPE_NS_NODE_MAX ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  AcpiDbCountNamespaceObjects () ; 
- int /*<<< orphan*/  AcpiDbListInfo (int /*<<< orphan*/ ) ; 
- int AcpiDbMatchArgument (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiDbStatTypes ; 
- int /*<<< orphan*/  AcpiGbl_DeepestNesting ; 
- int /*<<< orphan*/  AcpiGbl_EntryStackPointer ; 
- int /*<<< orphan*/  AcpiGbl_GlobalList ; 
- int /*<<< orphan*/  AcpiGbl_LowestStackPointer ; 
- TYPE_1__* AcpiGbl_MutexInfo ; 
- int /*<<< orphan*/ * AcpiGbl_NodeTypeCount ; 
- int /*<<< orphan*/  AcpiGbl_NodeTypeCountMisc ; 
- int /*<<< orphan*/  AcpiGbl_NsLookupCount ; 
- int /*<<< orphan*/  AcpiGbl_NsNodeList ; 
- int /*<<< orphan*/  AcpiGbl_NumNodes ; 
- int /*<<< orphan*/  AcpiGbl_NumObjects ; 
- int /*<<< orphan*/ * AcpiGbl_ObjTypeCount ; 
- int /*<<< orphan*/  AcpiGbl_ObjTypeCountMisc ; 
- int /*<<< orphan*/  AcpiGbl_OperandCache ; 
- int /*<<< orphan*/  AcpiGbl_PsFindCount ; 
- int /*<<< orphan*/  AcpiGbl_PsNodeCache ; 
- int /*<<< orphan*/  AcpiGbl_PsNodeExtCache ; 
- int /*<<< orphan*/  AcpiGbl_StateCache ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*,...) ; 
- int /*<<< orphan*/  AcpiUtDumpAllocationInfo () ; 
- int /*<<< orphan*/  AcpiUtGetMutexName (int) ; 
- int /*<<< orphan*/  AcpiUtGetTypeName (int) ; 
- int /*<<< orphan*/  AcpiUtStrupr (char*) ; 
-#define  CMD_STAT_ALLOCATIONS 134 
-#define  CMD_STAT_MEMORY 133 
-#define  CMD_STAT_MISC 132 
-#define  CMD_STAT_OBJECTS 131 
-#define  CMD_STAT_SIZES 130 
-#define  CMD_STAT_STACK 129 
-#define  CMD_STAT_TABLES 128 
 
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int UINT32 ;
+struct TYPE_2__ {int UseCount; } ;
+typedef int ACPI_UPDATE_STATE ;
+typedef int ACPI_THREAD_STATE ;
+typedef int ACPI_STATUS ;
+typedef int ACPI_SCOPE_STATE ;
+typedef int ACPI_RESULT_VALUES ;
+typedef int ACPI_PSCOPE_STATE ;
+typedef int ACPI_PKG_STATE ;
+typedef int ACPI_PARSE_OBJ_NAMED ;
+typedef int ACPI_PARSE_OBJ_COMMON ;
+typedef int ACPI_PARSE_OBJ_ASL ;
+typedef int ACPI_OPERAND_OBJECT ;
+typedef int ACPI_OBJECT_THERMAL_ZONE ;
+typedef int ACPI_OBJECT_STRING ;
+typedef int ACPI_OBJECT_REGION_FIELD ;
+typedef int ACPI_OBJECT_REGION ;
+typedef int ACPI_OBJECT_REFERENCE ;
+typedef int ACPI_OBJECT_PROCESSOR ;
+typedef int ACPI_OBJECT_POWER_RESOURCE ;
+typedef int ACPI_OBJECT_PACKAGE ;
+typedef int ACPI_OBJECT_NOTIFY_HANDLER ;
+typedef int ACPI_OBJECT_MUTEX ;
+typedef int ACPI_OBJECT_METHOD ;
+typedef int ACPI_OBJECT_INTEGER ;
+typedef int ACPI_OBJECT_INDEX_FIELD ;
+typedef int ACPI_OBJECT_EXTRA ;
+typedef int ACPI_OBJECT_EVENT ;
+typedef int ACPI_OBJECT_DEVICE ;
+typedef int ACPI_OBJECT_DATA ;
+typedef int ACPI_OBJECT_COMMON ;
+typedef int ACPI_OBJECT_BUFFER_FIELD ;
+typedef int ACPI_OBJECT_BUFFER ;
+typedef int ACPI_OBJECT_BANK_FIELD ;
+typedef int ACPI_OBJECT_ADDR_HANDLER ;
+typedef int ACPI_OBJECT ;
+typedef int ACPI_NOTIFY_INFO ;
+typedef int ACPI_NAMESPACE_NODE ;
+typedef int ACPI_GENERIC_STATE ;
+typedef int ACPI_CONTROL_STATE ;
+typedef int ACPI_COMMON_STATE ;
+
+
+ int ACPI_NUM_MUTEX ;
+ int ACPI_PTR_DIFF (int ,int ) ;
+ int ACPI_TYPE_NOT_FOUND ;
+ int ACPI_TYPE_NS_NODE_MAX ;
+ int AE_OK ;
+ int AcpiDbCountNamespaceObjects () ;
+ int AcpiDbListInfo (int ) ;
+ int AcpiDbMatchArgument (char*,int ) ;
+ int AcpiDbStatTypes ;
+ int AcpiGbl_DeepestNesting ;
+ int AcpiGbl_EntryStackPointer ;
+ int AcpiGbl_GlobalList ;
+ int AcpiGbl_LowestStackPointer ;
+ TYPE_1__* AcpiGbl_MutexInfo ;
+ int * AcpiGbl_NodeTypeCount ;
+ int AcpiGbl_NodeTypeCountMisc ;
+ int AcpiGbl_NsLookupCount ;
+ int AcpiGbl_NsNodeList ;
+ int AcpiGbl_NumNodes ;
+ int AcpiGbl_NumObjects ;
+ int * AcpiGbl_ObjTypeCount ;
+ int AcpiGbl_ObjTypeCountMisc ;
+ int AcpiGbl_OperandCache ;
+ int AcpiGbl_PsFindCount ;
+ int AcpiGbl_PsNodeCache ;
+ int AcpiGbl_PsNodeExtCache ;
+ int AcpiGbl_StateCache ;
+ int AcpiOsPrintf (char*,...) ;
+ int AcpiUtDumpAllocationInfo () ;
+ int AcpiUtGetMutexName (int) ;
+ int AcpiUtGetTypeName (int) ;
+ int AcpiUtStrupr (char*) ;
 ACPI_STATUS
 AcpiDbDisplayStatistics (
-    char                    *TypeArg)
+    char *TypeArg)
 {
-    UINT32                  i;
-    UINT32                  Temp;
+    UINT32 i;
+    UINT32 Temp;
 
 
     AcpiUtStrupr (TypeArg);
@@ -113,19 +105,19 @@ AcpiDbDisplayStatistics (
 
     switch (Temp)
     {
-    case CMD_STAT_ALLOCATIONS:
+    case 134:
 
-#ifdef ACPI_DBG_TRACK_ALLOCATIONS
-        AcpiUtDumpAllocationInfo ();
-#endif
+
+
+
         break;
 
-    case CMD_STAT_TABLES:
+    case 128:
 
         AcpiOsPrintf ("ACPI Table Information (not implemented):\n\n");
         break;
 
-    case CMD_STAT_OBJECTS:
+    case 131:
 
         AcpiDbCountNamespaceObjects ();
 
@@ -147,26 +139,10 @@ AcpiDbDisplayStatistics (
             AcpiGbl_NumNodes, AcpiGbl_NumObjects);
         break;
 
-    case CMD_STAT_MEMORY:
-
-#ifdef ACPI_DBG_TRACK_ALLOCATIONS
-        AcpiOsPrintf ("\n----Object Statistics (all in hex)---------\n");
-
-        AcpiDbListInfo (AcpiGbl_GlobalList);
-        AcpiDbListInfo (AcpiGbl_NsNodeList);
-#endif
-
-#ifdef ACPI_USE_LOCAL_CACHE
-        AcpiOsPrintf ("\n----Cache Statistics (all in hex)---------\n");
-        AcpiDbListInfo (AcpiGbl_OperandCache);
-        AcpiDbListInfo (AcpiGbl_PsNodeCache);
-        AcpiDbListInfo (AcpiGbl_PsNodeExtCache);
-        AcpiDbListInfo (AcpiGbl_StateCache);
-#endif
-
+    case 133:
         break;
 
-    case CMD_STAT_MISC:
+    case 132:
 
         AcpiOsPrintf ("\nMiscellaneous Statistics:\n\n");
         AcpiOsPrintf ("%-28s:       %7u\n", "Calls to AcpiPsFind",
@@ -182,7 +158,7 @@ AcpiDbDisplayStatistics (
         }
         break;
 
-    case CMD_STAT_SIZES:
+    case 130:
 
         AcpiOsPrintf ("\nInternal object sizes:\n\n");
 
@@ -232,18 +208,7 @@ AcpiDbDisplayStatistics (
         AcpiOsPrintf ("Notify Info      %3d\n", (UINT32) sizeof (ACPI_NOTIFY_INFO));
         break;
 
-    case CMD_STAT_STACK:
-#if defined(ACPI_DEBUG_OUTPUT)
-
-        Temp = (UINT32) ACPI_PTR_DIFF (
-            AcpiGbl_EntryStackPointer, AcpiGbl_LowestStackPointer);
-
-        AcpiOsPrintf ("\nSubsystem Stack Usage:\n\n");
-        AcpiOsPrintf ("Entry Stack Pointer          %p\n", AcpiGbl_EntryStackPointer);
-        AcpiOsPrintf ("Lowest Stack Pointer         %p\n", AcpiGbl_LowestStackPointer);
-        AcpiOsPrintf ("Stack Use                    %X (%u)\n", Temp, Temp);
-        AcpiOsPrintf ("Deepest Procedure Nesting    %u\n", AcpiGbl_DeepestNesting);
-#endif
+    case 129:
         break;
 
     default:

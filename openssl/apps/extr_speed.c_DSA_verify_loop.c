@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {unsigned char* buf; unsigned char* buf2; unsigned int siglen; int /*<<< orphan*/ ** dsa_key; } ;
-typedef  TYPE_1__ loopargs_t ;
-typedef  int /*<<< orphan*/  DSA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ COND (int /*<<< orphan*/ ) ; 
- int DSA_verify (int /*<<< orphan*/ ,unsigned char*,int,unsigned char*,unsigned int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERR_print_errors (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/ ** dsa_c ; 
- size_t testnum ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {unsigned char* buf; unsigned char* buf2; unsigned int siglen; int ** dsa_key; } ;
+typedef TYPE_1__ loopargs_t ;
+typedef int DSA ;
+
+
+ int BIO_printf (int ,char*) ;
+ scalar_t__ COND (int ) ;
+ int DSA_verify (int ,unsigned char*,int,unsigned char*,unsigned int,int *) ;
+ int ERR_print_errors (int ) ;
+ int bio_err ;
+ int ** dsa_c ;
+ size_t testnum ;
 
 __attribute__((used)) static int DSA_verify_loop(void *args)
 {

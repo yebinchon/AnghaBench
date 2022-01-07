@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVDictionary ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  WHITESPACES ; 
- scalar_t__ av_dict_set (int /*<<< orphan*/ **,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_free (char*) ; 
- char* av_strdup (char const*) ; 
- char* av_strtok (char*,char*,char**) ; 
- scalar_t__ strchr (int /*<<< orphan*/ ,char) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  strspn (char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int AVDictionary ;
+
+
+ int AVERROR (int ) ;
+ int EINVAL ;
+ int WHITESPACES ;
+ scalar_t__ av_dict_set (int **,char*,char*,int ) ;
+ int av_free (char*) ;
+ char* av_strdup (char const*) ;
+ char* av_strtok (char*,char*,char**) ;
+ scalar_t__ strchr (int ,char) ;
+ int strlen (char*) ;
+ int strspn (char*,int ) ;
 
 __attribute__((used)) static int parse_set_cookie(const char *set_cookie, AVDictionary **dict)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static int parse_set_cookie(const char *set_cookie, AVDict
     if (!(cstr = av_strdup(set_cookie)))
         return AVERROR(EINVAL);
 
-    // strip any trailing whitespace
+
     back = &cstr[strlen(cstr)-1];
     while (strchr(WHITESPACES, *back)) {
         *back='\0';

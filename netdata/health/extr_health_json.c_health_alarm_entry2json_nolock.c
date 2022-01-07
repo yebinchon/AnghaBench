@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int flags; char* units; char* info; int /*<<< orphan*/  old_value; int /*<<< orphan*/  new_value; scalar_t__ last_repeat; int /*<<< orphan*/  old_value_string; int /*<<< orphan*/  new_value_string; int /*<<< orphan*/  updates_id; int /*<<< orphan*/  updated_by_id; scalar_t__ delay_up_to_timestamp; int /*<<< orphan*/  delay; int /*<<< orphan*/  old_status; int /*<<< orphan*/  new_status; scalar_t__ non_clear_duration; scalar_t__ duration; scalar_t__ when; int /*<<< orphan*/  source; int /*<<< orphan*/  exec_code; scalar_t__ recipient; scalar_t__ exec; scalar_t__ exec_run_timestamp; int /*<<< orphan*/  family; int /*<<< orphan*/  chart; int /*<<< orphan*/  name; int /*<<< orphan*/  alarm_event_id; int /*<<< orphan*/  alarm_id; int /*<<< orphan*/  unique_id; } ;
-struct TYPE_5__ {scalar_t__ health_default_recipient; scalar_t__ health_default_exec; int /*<<< orphan*/  hostname; } ;
-typedef  TYPE_1__ RRDHOST ;
-typedef  int /*<<< orphan*/  BUFFER ;
-typedef  TYPE_2__ ALARM_ENTRY ;
 
-/* Variables and functions */
- int HEALTH_ENTRY_FLAG_EXEC_FAILED ; 
- int HEALTH_ENTRY_FLAG_NO_CLEAR_NOTIFICATION ; 
- int HEALTH_ENTRY_FLAG_PROCESSED ; 
- int HEALTH_ENTRY_FLAG_SILENCED ; 
- int HEALTH_ENTRY_FLAG_UPDATED ; 
- int /*<<< orphan*/  buffer_rrd_value (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  buffer_sprintf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char*,unsigned long,char*,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,unsigned long,unsigned long,unsigned long,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned long,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned long,char*) ; 
- int /*<<< orphan*/  buffer_strcat (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  health_string2json (int /*<<< orphan*/ *,char*,char*,char*,char*) ; 
- int /*<<< orphan*/  rrdcalc_status2string (int /*<<< orphan*/ ) ; 
- scalar_t__ unlikely (int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int flags; char* units; char* info; int old_value; int new_value; scalar_t__ last_repeat; int old_value_string; int new_value_string; int updates_id; int updated_by_id; scalar_t__ delay_up_to_timestamp; int delay; int old_status; int new_status; scalar_t__ non_clear_duration; scalar_t__ duration; scalar_t__ when; int source; int exec_code; scalar_t__ recipient; scalar_t__ exec; scalar_t__ exec_run_timestamp; int family; int chart; int name; int alarm_event_id; int alarm_id; int unique_id; } ;
+struct TYPE_5__ {scalar_t__ health_default_recipient; scalar_t__ health_default_exec; int hostname; } ;
+typedef TYPE_1__ RRDHOST ;
+typedef int BUFFER ;
+typedef TYPE_2__ ALARM_ENTRY ;
+
+
+ int HEALTH_ENTRY_FLAG_EXEC_FAILED ;
+ int HEALTH_ENTRY_FLAG_NO_CLEAR_NOTIFICATION ;
+ int HEALTH_ENTRY_FLAG_PROCESSED ;
+ int HEALTH_ENTRY_FLAG_SILENCED ;
+ int HEALTH_ENTRY_FLAG_UPDATED ;
+ int buffer_rrd_value (int *,int ) ;
+ int buffer_sprintf (int *,char*,int ,int ,int ,int ,int ,int ,int ,char*,char*,unsigned long,char*,scalar_t__,scalar_t__,int ,int ,char*,unsigned long,unsigned long,unsigned long,int ,int ,int ,unsigned long,int ,int ,int ,int ,unsigned long,char*) ;
+ int buffer_strcat (int *,char*) ;
+ int health_string2json (int *,char*,char*,char*,char*) ;
+ int rrdcalc_status2string (int ) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static inline void health_alarm_entry2json_nolock(BUFFER *wb, ALARM_ENTRY *ae, RRDHOST *host) {
     buffer_sprintf(wb,

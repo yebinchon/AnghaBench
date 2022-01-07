@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- void* atoi (char*) ; 
- int blksize ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- char* optarg ; 
- int /*<<< orphan*/  parse_port_range (char*) ; 
- void* stats_port ; 
- int /*<<< orphan*/  stderr ; 
- int timeout ; 
- int /*<<< orphan*/  usage () ; 
+ int assert (int) ;
+ void* atoi (char*) ;
+ int blksize ;
+ int fprintf (int ,char*,...) ;
+ char* optarg ;
+ int parse_port_range (char*) ;
+ void* stats_port ;
+ int stderr ;
+ int timeout ;
+ int usage () ;
 
 int f_parse_option (int val) {
   switch (val) {

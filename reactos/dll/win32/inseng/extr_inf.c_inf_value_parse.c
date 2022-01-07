@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct inf_value {char* key; char* value; int /*<<< orphan*/  entry; struct inf_section* section; } ;
-struct inf_section {int /*<<< orphan*/  values; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- struct inf_value* heap_alloc_zero (int) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* strchr (char*,char) ; 
- char* trim (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct inf_value {char* key; char* value; int entry; struct inf_section* section; } ;
+struct inf_section {int values; } ;
+typedef int HRESULT ;
+
+
+ int E_OUTOFMEMORY ;
+ int FALSE ;
+ int S_OK ;
+ int TRUE ;
+ struct inf_value* heap_alloc_zero (int) ;
+ int list_add_tail (int *,int *) ;
+ char* strchr (char*,char) ;
+ char* trim (char*,int *,int ) ;
 
 __attribute__((used)) static HRESULT inf_value_parse(struct inf_section *sec, char *line)
 {
@@ -36,8 +36,8 @@ __attribute__((used)) static HRESULT inf_value_parse(struct inf_section *sec, ch
     key = line;
     value = del + 1;
 
-    key = trim(key, NULL, FALSE);
-    value = trim(value, NULL, TRUE);
+    key = trim(key, ((void*)0), FALSE);
+    value = trim(value, ((void*)0), TRUE);
 
     key_val = heap_alloc_zero(sizeof(*key_val));
     if (!key_val) return E_OUTOFMEMORY;

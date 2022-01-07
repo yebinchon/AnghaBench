@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int npy_intp ;
 
-/* Variables and functions */
- double NPY_MAX_INTP ; 
- double NPY_MIN_INTP ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_OverflowError ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- double npy_ceil (double) ; 
- scalar_t__ npy_isnan (double) ; 
+
+
+
+typedef int npy_intp ;
+
+
+ double NPY_MAX_INTP ;
+ double NPY_MIN_INTP ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_OverflowError ;
+ int PyExc_ValueError ;
+ double npy_ceil (double) ;
+ scalar_t__ npy_isnan (double) ;
 
 __attribute__((used)) static npy_intp
 _arange_safe_ceil_to_intp(double value)
@@ -27,7 +27,7 @@ _arange_safe_ceil_to_intp(double value)
     double ivalue;
 
     ivalue = npy_ceil(value);
-    /* condition inverted to handle NaN */
+
     if (npy_isnan(ivalue)) {
         PyErr_SetString(PyExc_ValueError,
             "arange: cannot compute length");

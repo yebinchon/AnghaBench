@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT32 ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UINT32 ;
 struct TYPE_3__ {int NumSegments; char* InternalName; char* NextExternalChar; int NumCarats; scalar_t__ FullyQualified; } ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  size_t ACPI_SIZE ;
-typedef  TYPE_1__ ACPI_NAMESTRING_INFO ;
+typedef int ACPI_STATUS ;
+typedef size_t ACPI_SIZE ;
+typedef TYPE_1__ ACPI_NAMESTRING_INFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_DB_EXEC ; 
- int /*<<< orphan*/  ACPI_DEBUG_PRINT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_FUNCTION_TRACE (int /*<<< orphan*/ ) ; 
- scalar_t__ ACPI_IS_PATH_SEPARATOR (char const) ; 
- int ACPI_NAMESEG_SIZE ; 
- int /*<<< orphan*/  AE_BAD_PATHNAME ; 
- int /*<<< orphan*/  AE_OK ; 
- char AML_DUAL_NAME_PREFIX ; 
- char AML_MULTI_NAME_PREFIX ; 
- char AML_PARENT_PREFIX ; 
- char AML_ROOT_PREFIX ; 
- int /*<<< orphan*/  NsBuildInternalName ; 
- int /*<<< orphan*/  return_ACPI_STATUS (int /*<<< orphan*/ ) ; 
- scalar_t__ toupper (int) ; 
+
+ int ACPI_DB_EXEC ;
+ int ACPI_DEBUG_PRINT (int ) ;
+ int ACPI_FUNCTION_TRACE (int ) ;
+ scalar_t__ ACPI_IS_PATH_SEPARATOR (char const) ;
+ int ACPI_NAMESEG_SIZE ;
+ int AE_BAD_PATHNAME ;
+ int AE_OK ;
+ char AML_DUAL_NAME_PREFIX ;
+ char AML_MULTI_NAME_PREFIX ;
+ char AML_PARENT_PREFIX ;
+ char AML_ROOT_PREFIX ;
+ int NsBuildInternalName ;
+ int return_ACPI_STATUS (int ) ;
+ scalar_t__ toupper (int) ;
 
 ACPI_STATUS
 AcpiNsBuildInternalName (
-    ACPI_NAMESTRING_INFO    *Info)
+    ACPI_NAMESTRING_INFO *Info)
 {
-    UINT32                  NumSegments = Info->NumSegments;
-    char                    *InternalName = Info->InternalName;
-    const char              *ExternalName = Info->NextExternalChar;
-    char                    *Result = NULL;
-    UINT32                  i;
+    UINT32 NumSegments = Info->NumSegments;
+    char *InternalName = Info->InternalName;
+    const char *ExternalName = Info->NextExternalChar;
+    char *Result = ((void*)0);
+    UINT32 i;
 
 
     ACPI_FUNCTION_TRACE (NsBuildInternalName);
 
 
-    /* Setup the correct prefixes, counts, and pointers */
+
 
     if (Info->FullyQualified)
     {
@@ -71,10 +71,10 @@ AcpiNsBuildInternalName (
     }
     else
     {
-        /*
-         * Not fully qualified.
-         * Handle Carats first, then append the name segments
-         */
+
+
+
+
         i = 0;
         if (Info->NumCarats)
         {
@@ -101,7 +101,7 @@ AcpiNsBuildInternalName (
         }
     }
 
-    /* Build the name (minus path separators) */
+
 
     for (; NumSegments; NumSegments--)
     {
@@ -110,20 +110,20 @@ AcpiNsBuildInternalName (
             if (ACPI_IS_PATH_SEPARATOR (*ExternalName) ||
                (*ExternalName == 0))
             {
-                /* Pad the segment with underscore(s) if segment is short */
+
 
                 Result[i] = '_';
             }
             else
             {
-                /* Convert the character to uppercase and save it */
+
 
                 Result[i] = (char) toupper ((int) *ExternalName);
                 ExternalName++;
             }
         }
 
-        /* Now we must have a path separator, or the pathname is bad */
+
 
         if (!ACPI_IS_PATH_SEPARATOR (*ExternalName) &&
             (*ExternalName != 0))
@@ -131,13 +131,13 @@ AcpiNsBuildInternalName (
             return_ACPI_STATUS (AE_BAD_PATHNAME);
         }
 
-        /* Move on the next segment */
+
 
         ExternalName++;
         Result += ACPI_NAMESEG_SIZE;
     }
 
-    /* Terminate the string */
+
 
     *Result = 0;
 

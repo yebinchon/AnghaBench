@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mlx5_cmd {int /*<<< orphan*/  alloc_lock; int /*<<< orphan*/  bitmask; int /*<<< orphan*/ * ent_mode; int /*<<< orphan*/ ** ent_arr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MLX5_CMD_MODE_POLLING ; 
- int /*<<< orphan*/  set_bit (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct mlx5_cmd {int alloc_lock; int bitmask; int * ent_mode; int ** ent_arr; } ;
+
+
+ int MLX5_CMD_MODE_POLLING ;
+ int set_bit (int,int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void free_ent(struct mlx5_cmd *cmd, int idx)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	spin_lock_irqsave(&cmd->alloc_lock, flags);
-	cmd->ent_arr[idx] = NULL;	/* safety clear */
-	cmd->ent_mode[idx] = MLX5_CMD_MODE_POLLING;	/* reset mode */
-	set_bit(idx, &cmd->bitmask);
-	spin_unlock_irqrestore(&cmd->alloc_lock, flags);
+ spin_lock_irqsave(&cmd->alloc_lock, flags);
+ cmd->ent_arr[idx] = ((void*)0);
+ cmd->ent_mode[idx] = MLX5_CMD_MODE_POLLING;
+ set_bit(idx, &cmd->bitmask);
+ spin_unlock_irqrestore(&cmd->alloc_lock, flags);
 }

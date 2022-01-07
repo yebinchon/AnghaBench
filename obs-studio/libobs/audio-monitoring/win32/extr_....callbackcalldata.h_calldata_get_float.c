@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  calldata_t ;
 
-/* Variables and functions */
- int calldata_get_data (int /*<<< orphan*/  const*,char const*,double*,int) ; 
+
+
+
+typedef int calldata_t ;
+
+
+ int calldata_get_data (int const*,char const*,double*,int) ;
 
 __attribute__((used)) static inline bool calldata_get_float(const calldata_t *data, const char *name,
-				      double *val)
+          double *val)
 {
-	return calldata_get_data(data, name, val, sizeof(*val));
+ return calldata_get_data(data, name, val, sizeof(*val));
 }

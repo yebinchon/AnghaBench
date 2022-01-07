@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* npy_intp ;
-struct TYPE_4__ {int /*<<< orphan*/ * clone; int /*<<< orphan*/ * free; } ;
-struct TYPE_5__ {void* dst_itemsize; void* N; int /*<<< orphan*/ * data_finish_src; int /*<<< orphan*/ * stransfer_finish_src; int /*<<< orphan*/ * data; int /*<<< orphan*/ * stransfer; TYPE_1__ base; } ;
-typedef  TYPE_2__ _one_to_n_data ;
-typedef  int /*<<< orphan*/  PyArray_StridedUnaryOp ;
-typedef  int /*<<< orphan*/  NpyAuxData ;
 
-/* Variables and functions */
- int NPY_FAIL ; 
- int NPY_SUCCEED ; 
- TYPE_2__* PyArray_malloc (int) ; 
- int /*<<< orphan*/  PyErr_NoMemory () ; 
- int /*<<< orphan*/  _one_to_n_data_clone ; 
- int /*<<< orphan*/  _one_to_n_data_free ; 
- int /*<<< orphan*/  _strided_to_strided_one_to_n ; 
- int /*<<< orphan*/  _strided_to_strided_one_to_n_with_finish ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef void* npy_intp ;
+struct TYPE_4__ {int * clone; int * free; } ;
+struct TYPE_5__ {void* dst_itemsize; void* N; int * data_finish_src; int * stransfer_finish_src; int * data; int * stransfer; TYPE_1__ base; } ;
+typedef TYPE_2__ _one_to_n_data ;
+typedef int PyArray_StridedUnaryOp ;
+typedef int NpyAuxData ;
+
+
+ int NPY_FAIL ;
+ int NPY_SUCCEED ;
+ TYPE_2__* PyArray_malloc (int) ;
+ int PyErr_NoMemory () ;
+ int _one_to_n_data_clone ;
+ int _one_to_n_data_free ;
+ int _strided_to_strided_one_to_n ;
+ int _strided_to_strided_one_to_n_with_finish ;
 
 __attribute__((used)) static int
 wrap_transfer_function_one_to_n(
@@ -44,7 +44,7 @@ wrap_transfer_function_one_to_n(
 
 
     data = PyArray_malloc(sizeof(_one_to_n_data));
-    if (data == NULL) {
+    if (data == ((void*)0)) {
         PyErr_NoMemory();
         return NPY_FAIL;
     }
@@ -58,7 +58,7 @@ wrap_transfer_function_one_to_n(
     data->N = N;
     data->dst_itemsize = dst_itemsize;
 
-    if (stransfer_finish_src == NULL) {
+    if (stransfer_finish_src == ((void*)0)) {
         *out_stransfer = &_strided_to_strided_one_to_n;
     }
     else {

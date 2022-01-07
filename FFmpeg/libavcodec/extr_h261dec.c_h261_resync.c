@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  gb; int /*<<< orphan*/  last_resync_gb; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int gb; int last_resync_gb; } ;
 struct TYPE_6__ {scalar_t__ gob_start_code_skipped; TYPE_1__ s; } ;
-typedef  TYPE_1__ MpegEncContext ;
-typedef  TYPE_2__ H261Context ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+typedef TYPE_1__ MpegEncContext ;
+typedef TYPE_2__ H261Context ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  align_get_bits (int /*<<< orphan*/ *) ; 
- int get_bits_left (int /*<<< orphan*/ *) ; 
- int h261_decode_gob_header (TYPE_2__*) ; 
- scalar_t__ show_bits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  skip_bits (int /*<<< orphan*/ *,int) ; 
+
+ int align_get_bits (int *) ;
+ int get_bits_left (int *) ;
+ int h261_decode_gob_header (TYPE_2__*) ;
+ scalar_t__ show_bits (int *,int) ;
+ int skip_bits (int *,int) ;
 
 __attribute__((used)) static int h261_resync(H261Context *h)
 {
@@ -40,7 +40,7 @@ __attribute__((used)) static int h261_resync(H261Context *h)
             if (ret >= 0)
                 return 0;
         }
-        // OK, it is not where it is supposed to be ...
+
         s->gb = s->last_resync_gb;
         align_get_bits(&s->gb);
         left = get_bits_left(&s->gb);

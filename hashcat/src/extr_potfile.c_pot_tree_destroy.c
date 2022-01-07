@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pot_tree_entry_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sort_pot_tree_by_hash ; 
- int /*<<< orphan*/  tdelete (int /*<<< orphan*/ *,void**,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int pot_tree_entry_t ;
+
+
+ int sort_pot_tree_by_hash ;
+ int tdelete (int *,void**,int ) ;
 
 void pot_tree_destroy (pot_tree_entry_t *tree)
 {
   pot_tree_entry_t *entry = tree;
 
-  while (tree != NULL)
+  while (tree != ((void*)0))
   {
     entry = *(pot_tree_entry_t **) tree;
 

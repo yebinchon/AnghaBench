@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_7__ {int coded_width; int coded_height; } ;
 struct TYPE_6__ {int* linesize; int** data; } ;
-typedef  TYPE_1__ AVFrame ;
-typedef  TYPE_2__ AVCodecContext ;
+typedef TYPE_1__ AVFrame ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int av_clip_uint8 (int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int av_clip_uint8 (int) ;
 
 __attribute__((used)) static int copyadd_block(AVCodecContext *avctx, AVFrame *dst, AVFrame *src,
                          int plane, int x, int y, int dx, int dy, int size, int bias)
@@ -28,11 +28,11 @@ __attribute__((used)) static int copyadd_block(AVCodecContext *avctx, AVFrame *d
     int shift = plane > 0;
     int sx = x + dx;
     int sy = y + dy;
-    int sstride   = src->linesize[plane];
-    int dstride   = dst->linesize[plane];
-    int soff      = sx + sy * sstride;
+    int sstride = src->linesize[plane];
+    int dstride = dst->linesize[plane];
+    int soff = sx + sy * sstride;
     uint8_t *sbuf = src->data[plane];
-    int doff      = x + y * dstride;
+    int doff = x + y * dstride;
     uint8_t *dbuf = dst->data[plane];
     int i, j;
 

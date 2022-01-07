@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MODE_V2DF ; 
- int /*<<< orphan*/  MODE_V4SF ; 
- int /*<<< orphan*/  gcc_unreachable () ; 
- int /*<<< orphan*/  get_attr_mode (int /*<<< orphan*/ ) ; 
- int standard_sse_constant_p (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rtx ;
+
+
+ int MODE_V2DF ;
+ int MODE_V4SF ;
+ int gcc_unreachable () ;
+ int get_attr_mode (int ) ;
+ int standard_sse_constant_p (int ) ;
 
 const char *
 standard_sse_constant_opcode (rtx insn, rtx x)

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int wHour; int wMinute; int wSecond; int wMilliseconds; } ;
-typedef  TYPE_1__ SYSTEMTIME ;
-typedef  scalar_t__* LPTSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ SYSTEMTIME ;
+typedef scalar_t__* LPTSTR ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetLocalTime (TYPE_1__*) ; 
- int /*<<< orphan*/  SetLocalTime (TYPE_1__*) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ _T (char) ; 
- scalar_t__ _istdigit (scalar_t__) ; 
- scalar_t__ _totupper (scalar_t__) ; 
- scalar_t__ cDecimalSeparator ; 
- scalar_t__ cTimeSeparator ; 
- scalar_t__ nTimeFormat ; 
+
+ int FALSE ;
+ int GetLocalTime (TYPE_1__*) ;
+ int SetLocalTime (TYPE_1__*) ;
+ int TRUE ;
+ scalar_t__ _T (char) ;
+ scalar_t__ _istdigit (scalar_t__) ;
+ scalar_t__ _totupper (scalar_t__) ;
+ scalar_t__ cDecimalSeparator ;
+ scalar_t__ cTimeSeparator ;
+ scalar_t__ nTimeFormat ;
 
 __attribute__((used)) static BOOL ParseTime (LPTSTR s)
 {
@@ -42,7 +42,7 @@ __attribute__((used)) static BOOL ParseTime (LPTSTR s)
     t.wSecond = 0;
     t.wMilliseconds = 0;
 
-    // first get hour
+
     if (_istdigit(*p))
     {
         while (_istdigit(*p))
@@ -54,12 +54,12 @@ __attribute__((used)) static BOOL ParseTime (LPTSTR s)
     else
         return FALSE;
 
-    // get time separator
+
     if (*p != cTimeSeparator)
         return FALSE;
     p++;
 
-    // now get minutes
+
     if (_istdigit(*p))
     {
         while (_istdigit(*p))
@@ -71,12 +71,12 @@ __attribute__((used)) static BOOL ParseTime (LPTSTR s)
     else
         return FALSE;
 
-    // get time separator
+
     if (*p != cTimeSeparator)
         return FALSE;
     p++;
 
-    // now get seconds
+
     if (_istdigit(*p))
     {
         while (_istdigit(*p))
@@ -88,24 +88,24 @@ __attribute__((used)) static BOOL ParseTime (LPTSTR s)
     else
         return FALSE;
 
-    // get decimal separator
+
     if (*p == cDecimalSeparator)
     {
         p++;
 
-        // now get hundreths
+
         if (_istdigit(*p))
         {
             while (_istdigit(*p))
             {
-                // t.wMilliseconds = t.wMilliseconds * 10 + *p - _T('0');
+
                 p++;
             }
-            // t.wMilliseconds *= 10;
+
         }
     }
 
-    /* special case: 12 hour format */
+
     if (nTimeFormat == 0)
     {
         if (_totupper(*s) == _T('P'))

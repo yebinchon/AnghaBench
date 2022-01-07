@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_7__ ;
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {scalar_t__ kdf_type; size_t kdf_outlen; int /*<<< orphan*/  kdf_md; int /*<<< orphan*/  kdf_ukmlen; int /*<<< orphan*/  kdf_ukm; int /*<<< orphan*/  kdf_oid; scalar_t__ pad; } ;
+
+
+typedef struct TYPE_15__ TYPE_7__ ;
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_15__ {scalar_t__ kdf_type; size_t kdf_outlen; int kdf_md; int kdf_ukmlen; int kdf_ukm; int kdf_oid; scalar_t__ pad; } ;
 struct TYPE_14__ {TYPE_5__* peerkey; TYPE_2__* pkey; TYPE_7__* data; } ;
 struct TYPE_12__ {TYPE_3__* dh; } ;
 struct TYPE_13__ {TYPE_4__ pkey; } ;
-struct TYPE_11__ {int /*<<< orphan*/ * pub_key; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * dh; } ;
+struct TYPE_11__ {int * pub_key; } ;
+struct TYPE_9__ {int * dh; } ;
 struct TYPE_10__ {TYPE_1__ pkey; } ;
-typedef  TYPE_6__ EVP_PKEY_CTX ;
-typedef  TYPE_7__ DH_PKEY_CTX ;
-typedef  int /*<<< orphan*/  DH ;
-typedef  int /*<<< orphan*/  BIGNUM ;
+typedef TYPE_6__ EVP_PKEY_CTX ;
+typedef TYPE_7__ DH_PKEY_CTX ;
+typedef int DH ;
+typedef int BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DH_F_PKEY_DH_DERIVE ; 
- int /*<<< orphan*/  DH_KDF_X9_42 (unsigned char*,size_t,unsigned char*,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DH_R_KEYS_NOT_SET ; 
- int DH_compute_key (unsigned char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ DH_compute_key_padded (unsigned char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- size_t DH_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DHerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ EVP_PKEY_DH_KDF_NONE ; 
- scalar_t__ EVP_PKEY_DH_KDF_X9_42 ; 
- int /*<<< orphan*/  OPENSSL_clear_free (unsigned char*,size_t) ; 
- unsigned char* OPENSSL_malloc (size_t) ; 
+
+ int DH_F_PKEY_DH_DERIVE ;
+ int DH_KDF_X9_42 (unsigned char*,size_t,unsigned char*,size_t,int ,int ,int ,int ) ;
+ int DH_R_KEYS_NOT_SET ;
+ int DH_compute_key (unsigned char*,int *,int *) ;
+ scalar_t__ DH_compute_key_padded (unsigned char*,int *,int *) ;
+ size_t DH_size (int *) ;
+ int DHerr (int ,int ) ;
+ scalar_t__ EVP_PKEY_DH_KDF_NONE ;
+ scalar_t__ EVP_PKEY_DH_KDF_X9_42 ;
+ int OPENSSL_clear_free (unsigned char*,size_t) ;
+ unsigned char* OPENSSL_malloc (size_t) ;
 
 __attribute__((used)) static int pkey_dh_derive(EVP_PKEY_CTX *ctx, unsigned char *key,
                           size_t *keylen)
@@ -56,7 +56,7 @@ __attribute__((used)) static int pkey_dh_derive(EVP_PKEY_CTX *ctx, unsigned char
     dh = ctx->pkey->pkey.dh;
     dhpub = ctx->peerkey->pkey.dh->pub_key;
     if (dctx->kdf_type == EVP_PKEY_DH_KDF_NONE) {
-        if (key == NULL) {
+        if (key == ((void*)0)) {
             *keylen = DH_size(dh);
             return 1;
         }
@@ -69,14 +69,14 @@ __attribute__((used)) static int pkey_dh_derive(EVP_PKEY_CTX *ctx, unsigned char
         *keylen = ret;
         return 1;
     }
-#ifndef OPENSSL_NO_CMS
+
     else if (dctx->kdf_type == EVP_PKEY_DH_KDF_X9_42) {
 
-        unsigned char *Z = NULL;
+        unsigned char *Z = ((void*)0);
         size_t Zlen = 0;
         if (!dctx->kdf_outlen || !dctx->kdf_oid)
             return 0;
-        if (key == NULL) {
+        if (key == ((void*)0)) {
             *keylen = dctx->kdf_outlen;
             return 1;
         }
@@ -85,7 +85,7 @@ __attribute__((used)) static int pkey_dh_derive(EVP_PKEY_CTX *ctx, unsigned char
         ret = 0;
         Zlen = DH_size(dh);
         Z = OPENSSL_malloc(Zlen);
-        if (Z == NULL) {
+        if (Z == ((void*)0)) {
             goto err;
         }
         if (DH_compute_key_padded(Z, dhpub, dh) <= 0)
@@ -99,6 +99,6 @@ __attribute__((used)) static int pkey_dh_derive(EVP_PKEY_CTX *ctx, unsigned char
         OPENSSL_clear_free(Z, Zlen);
         return ret;
     }
-#endif
+
     return 0;
 }

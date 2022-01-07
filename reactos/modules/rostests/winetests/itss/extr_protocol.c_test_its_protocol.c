@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ ULONG ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IInternetProtocolInfo ;
-typedef  int /*<<< orphan*/  IInternetProtocol ;
-typedef  int /*<<< orphan*/  IClassFactory ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int BINDF_FROMURLMON ; 
- int BINDF_NEEDFILE ; 
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_ITSProtocol ; 
- scalar_t__ CoGetClassObject (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ E_NOINTERFACE ; 
- scalar_t__ FAILED (scalar_t__) ; 
- scalar_t__ IClassFactory_CreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IClassFactory_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IClassFactory ; 
- int /*<<< orphan*/  IID_IInternetProtocol ; 
- int /*<<< orphan*/  IID_IInternetProtocolInfo ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- scalar_t__ IInternetProtocol_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IInternetProtocol_Start (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ INET_E_USE_DEFAULT_PROTOCOLHANDLER ; 
- int /*<<< orphan*/  ITS_PROTOCOL ; 
- scalar_t__ IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ REGDB_E_CLASSNOTREG ; 
- int /*<<< orphan*/  STG_E_FILENOTFOUND ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  bind_info ; 
- int bindf ; 
- int /*<<< orphan*/  blank_url1 ; 
- int /*<<< orphan*/  blank_url2 ; 
- int /*<<< orphan*/  blank_url3 ; 
- int /*<<< orphan*/  blank_url4 ; 
- int /*<<< orphan*/  blank_url5 ; 
- int /*<<< orphan*/  blank_url6 ; 
- int /*<<< orphan*/  blank_url8 ; 
- int /*<<< orphan*/  blank_url9 ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  protocol_sink ; 
- int /*<<< orphan*/  test_its_protocol_info (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_protocol ; 
- int /*<<< orphan*/  test_protocol_fail (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_protocol_url (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef char WCHAR ;
+typedef scalar_t__ ULONG ;
+typedef int IUnknown ;
+typedef int IInternetProtocolInfo ;
+typedef int IInternetProtocol ;
+typedef int IClassFactory ;
+typedef scalar_t__ HRESULT ;
+
+
+ int BINDF_FROMURLMON ;
+ int BINDF_NEEDFILE ;
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_ITSProtocol ;
+ scalar_t__ CoGetClassObject (int *,int ,int *,int *,void**) ;
+ scalar_t__ E_NOINTERFACE ;
+ scalar_t__ FAILED (scalar_t__) ;
+ scalar_t__ IClassFactory_CreateInstance (int *,int *,int *,void**) ;
+ int IClassFactory_Release (int *) ;
+ int IID_IClassFactory ;
+ int IID_IInternetProtocol ;
+ int IID_IInternetProtocolInfo ;
+ int IID_IUnknown ;
+ scalar_t__ IInternetProtocol_Release (int *) ;
+ scalar_t__ IInternetProtocol_Start (int *,char const*,int *,int *,int ,int ) ;
+ scalar_t__ INET_E_USE_DEFAULT_PROTOCOLHANDLER ;
+ int ITS_PROTOCOL ;
+ scalar_t__ IUnknown_QueryInterface (int *,int *,void**) ;
+ int IUnknown_Release (int *) ;
+ scalar_t__ REGDB_E_CLASSNOTREG ;
+ int STG_E_FILENOTFOUND ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_OK ;
+ int TRUE ;
+ int bind_info ;
+ int bindf ;
+ int blank_url1 ;
+ int blank_url2 ;
+ int blank_url3 ;
+ int blank_url4 ;
+ int blank_url5 ;
+ int blank_url6 ;
+ int blank_url8 ;
+ int blank_url9 ;
+ scalar_t__ broken (int) ;
+ int ok (int,char*,...) ;
+ int protocol_sink ;
+ int test_its_protocol_info (int *) ;
+ int test_protocol ;
+ int test_protocol_fail (int *,char const*,int ) ;
+ int test_protocol_url (int *,int ,int ) ;
 
 __attribute__((used)) static void test_its_protocol(void)
 {
@@ -82,9 +82,9 @@ __attribute__((used)) static void test_its_protocol(void)
 
     test_protocol = ITS_PROTOCOL;
 
-    hres = CoGetClassObject(&CLSID_ITSProtocol, CLSCTX_INPROC_SERVER, NULL, &IID_IUnknown, (void**)&unk);
+    hres = CoGetClassObject(&CLSID_ITSProtocol, CLSCTX_INPROC_SERVER, ((void*)0), &IID_IUnknown, (void**)&unk);
     ok(hres == S_OK ||
-       broken(hres == REGDB_E_CLASSNOTREG), /* Some W95 and NT4 */
+       broken(hres == REGDB_E_CLASSNOTREG),
        "CoGetClassObject failed: %08x\n", hres);
     if(FAILED(hres))
         return;
@@ -97,7 +97,7 @@ __attribute__((used)) static void test_its_protocol(void)
     if(SUCCEEDED(hres)) {
         IInternetProtocol *protocol;
 
-        hres = IClassFactory_CreateInstance(factory, NULL, &IID_IInternetProtocol, (void**)&protocol);
+        hres = IClassFactory_CreateInstance(factory, ((void*)0), &IID_IInternetProtocol, (void**)&protocol);
         ok(hres == S_OK, "Could not get IInternetProtocol: %08x\n", hres);
         if(SUCCEEDED(hres)) {
             test_its_protocol_info(protocol);

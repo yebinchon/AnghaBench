@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ucc_slow_private {TYPE_1__* us_regs; } ;
-struct TYPE_2__ {int /*<<< orphan*/  utodr; } ;
+struct TYPE_2__ {int utodr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UCC_SLOW_TOD ; 
- int /*<<< orphan*/  out_be16 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int UCC_SLOW_TOD ;
+ int out_be16 (int *,int ) ;
 
 void ucc_slow_poll_transmitter_now(struct ucc_slow_private * uccs)
 {
-	out_be16(&uccs->us_regs->utodr, UCC_SLOW_TOD);
+ out_be16(&uccs->us_regs->utodr, UCC_SLOW_TOD);
 }

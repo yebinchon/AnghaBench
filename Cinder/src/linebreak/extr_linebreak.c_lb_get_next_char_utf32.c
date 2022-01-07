@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const utf32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  const EOS ; 
- int /*<<< orphan*/  assert (int) ; 
+
+
+
+typedef int const utf32_t ;
+
+
+ int const EOS ;
+ int assert (int) ;
 
 utf32_t lb_get_next_char_utf32(
-		const utf32_t *s,
-		size_t len,
-		size_t *ip)
+  const utf32_t *s,
+  size_t len,
+  size_t *ip)
 {
-	assert(*ip <= len);
-	if (*ip == len)
-		return EOS;
-	return s[(*ip)++];
+ assert(*ip <= len);
+ if (*ip == len)
+  return EOS;
+ return s[(*ip)++];
 }

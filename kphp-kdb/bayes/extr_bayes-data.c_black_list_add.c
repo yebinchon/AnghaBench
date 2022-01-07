@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct lev_bayes_black_list {scalar_t__ text_len; int type; int /*<<< orphan*/  text; } ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct lev_bayes_black_list {scalar_t__ text_len; int type; int text; } ;
 struct TYPE_5__ {scalar_t__ text_len; void* text; struct TYPE_5__* next; } ;
-typedef  TYPE_1__ black_list ;
+typedef TYPE_1__ black_list ;
 
-/* Variables and functions */
- TYPE_1__* bl_head ; 
- int /*<<< orphan*/  black_list_do_delete (TYPE_1__*) ; 
- int /*<<< orphan*/  black_list_init (TYPE_1__*) ; 
- int /*<<< orphan*/  memcpy (void*,int /*<<< orphan*/ ,int) ; 
- void* qmalloc (int) ; 
- scalar_t__ strcmp (void*,int /*<<< orphan*/ ) ; 
+
+ TYPE_1__* bl_head ;
+ int black_list_do_delete (TYPE_1__*) ;
+ int black_list_init (TYPE_1__*) ;
+ int memcpy (void*,int ,int) ;
+ void* qmalloc (int) ;
+ scalar_t__ strcmp (void*,int ) ;
 
 int black_list_add (struct lev_bayes_black_list *E) {
   black_list *cur = bl_head;
-  while (cur->next != NULL && (cur->next->text_len != E->text_len || strcmp (cur->next->text, E->text))) {
+  while (cur->next != ((void*)0) && (cur->next->text_len != E->text_len || strcmp (cur->next->text, E->text))) {
     cur = cur->next;
   }
 
-  if (cur->next != NULL) {
+  if (cur->next != ((void*)0)) {
     if (E->type & 1) {
       black_list_do_delete (cur);
       return 1;

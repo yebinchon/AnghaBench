@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  test ;
+
+
+
+
+typedef int test ;
 struct Range {int begin; int end; } ;
 
-/* Variables and functions */
- int count_cidr_bits (struct Range) ; 
- scalar_t__ masscan_conf_contains (char*,int,char**) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  trim (char*,int) ; 
+
+ int count_cidr_bits (struct Range) ;
+ scalar_t__ masscan_conf_contains (char*,int,char**) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int trim (char*,int) ;
 
 int
 mainconf_selftest()
@@ -26,7 +26,7 @@ mainconf_selftest()
 
     trim(test, sizeof(test));
     if (strcmp(test, "test 1") != 0)
-        return 1; /* failure */
+        return 1;
 
     {
         struct Range range;
@@ -44,11 +44,11 @@ mainconf_selftest()
 
     }
 
-    /* */
+
     {
         int argc = 6;
         char *argv[] = { "foo", "bar", "-ddd", "--readscan", "xxx", "--something" };
-    
+
         if (masscan_conf_contains("--nothing", argc, argv))
             return 1;
 

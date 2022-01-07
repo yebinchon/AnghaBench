@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct sdshdr8 {size_t len; size_t alloc; char* buf; int /*<<< orphan*/  flags; } ;
-struct TYPE_5__ {int refcount; int lru; struct sdshdr8* ptr; int /*<<< orphan*/  encoding; int /*<<< orphan*/  type; } ;
-typedef  TYPE_1__ robj ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct sdshdr8 {size_t len; size_t alloc; char* buf; int flags; } ;
+struct TYPE_5__ {int refcount; int lru; struct sdshdr8* ptr; int encoding; int type; } ;
+typedef TYPE_1__ robj ;
 struct TYPE_6__ {int maxmemory_policy; } ;
 
-/* Variables and functions */
- int LFUGetTimeInMinutes () ; 
- int LFU_INIT_VAL ; 
- int LRU_CLOCK () ; 
- int MAXMEMORY_FLAG_LFU ; 
- int /*<<< orphan*/  OBJ_ENCODING_EMBSTR ; 
- int /*<<< orphan*/  OBJ_STRING ; 
- char const* SDS_NOINIT ; 
- int /*<<< orphan*/  SDS_TYPE_8 ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,size_t) ; 
- TYPE_3__ server ; 
- TYPE_1__* zmalloc (int) ; 
+
+ int LFUGetTimeInMinutes () ;
+ int LFU_INIT_VAL ;
+ int LRU_CLOCK () ;
+ int MAXMEMORY_FLAG_LFU ;
+ int OBJ_ENCODING_EMBSTR ;
+ int OBJ_STRING ;
+ char const* SDS_NOINIT ;
+ int SDS_TYPE_8 ;
+ int memcpy (char*,char const*,size_t) ;
+ int memset (char*,int ,size_t) ;
+ TYPE_3__ server ;
+ TYPE_1__* zmalloc (int) ;
 
 robj *createEmbeddedStringObject(const char *ptr, size_t len) {
     robj *o = zmalloc(sizeof(robj)+sizeof(struct sdshdr8)+len+1);

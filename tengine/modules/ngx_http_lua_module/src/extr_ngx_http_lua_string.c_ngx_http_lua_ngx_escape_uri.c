@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ESCAPE_URI_COMPONENT ; 
- scalar_t__ luaL_checklstring (int /*<<< orphan*/ *,int,size_t*) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- scalar_t__ lua_isnil (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * lua_newuserdata (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  lua_pushliteral (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_pushlstring (int /*<<< orphan*/ *,char*,size_t) ; 
- int ngx_http_lua_escape_uri (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u_char ;
+typedef int lua_State ;
+
+
+ int NGX_ESCAPE_URI_COMPONENT ;
+ scalar_t__ luaL_checklstring (int *,int,size_t*) ;
+ int luaL_error (int *,char*) ;
+ int lua_gettop (int *) ;
+ scalar_t__ lua_isnil (int *,int) ;
+ int * lua_newuserdata (int *,size_t) ;
+ int lua_pushliteral (int *,char*) ;
+ int lua_pushlstring (int *,char*,size_t) ;
+ int ngx_http_lua_escape_uri (int *,int *,size_t,int ) ;
 
 __attribute__((used)) static int
 ngx_http_lua_ngx_escape_uri(lua_State *L)
 {
-    size_t                   len, dlen;
-    uintptr_t                escape;
-    u_char                  *src, *dst;
+    size_t len, dlen;
+    uintptr_t escape;
+    u_char *src, *dst;
 
     if (lua_gettop(L) != 1) {
         return luaL_error(L, "expecting one argument");
@@ -46,7 +46,7 @@ ngx_http_lua_ngx_escape_uri(lua_State *L)
         return 1;
     }
 
-    escape = 2 * ngx_http_lua_escape_uri(NULL, src, len,
+    escape = 2 * ngx_http_lua_escape_uri(((void*)0), src, len,
                                          NGX_ESCAPE_URI_COMPONENT);
 
     if (escape) {

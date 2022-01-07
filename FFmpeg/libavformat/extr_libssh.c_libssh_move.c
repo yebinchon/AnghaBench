@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  path_src ;
-typedef  int /*<<< orphan*/  path_dst ;
-typedef  int /*<<< orphan*/  hostname_src ;
-typedef  int /*<<< orphan*/  hostname_dst ;
-typedef  int /*<<< orphan*/  credentials_src ;
-typedef  int /*<<< orphan*/  credentials_dst ;
-struct TYPE_7__ {int /*<<< orphan*/  filename; TYPE_2__* priv_data; } ;
-typedef  TYPE_1__ URLContext ;
-struct TYPE_8__ {int /*<<< orphan*/  sftp; } ;
-typedef  TYPE_2__ LIBSSHContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int MAX_URL_SIZE ; 
- int /*<<< orphan*/  av_url_split (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,char*,int,int*,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  libssh_close (TYPE_1__*) ; 
- int libssh_connect (TYPE_1__*,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  sftp_get_error (int /*<<< orphan*/ ) ; 
- scalar_t__ sftp_rename (int /*<<< orphan*/ ,char*,char*) ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int path_src ;
+typedef int path_dst ;
+typedef int hostname_src ;
+typedef int hostname_dst ;
+typedef int credentials_src ;
+typedef int credentials_dst ;
+struct TYPE_7__ {int filename; TYPE_2__* priv_data; } ;
+typedef TYPE_1__ URLContext ;
+struct TYPE_8__ {int sftp; } ;
+typedef TYPE_2__ LIBSSHContext ;
+
+
+ int AVERROR (int ) ;
+ int EINVAL ;
+ int MAX_URL_SIZE ;
+ int av_url_split (int *,int ,char*,int,char*,int,int*,char*,int,int ) ;
+ int libssh_close (TYPE_1__*) ;
+ int libssh_connect (TYPE_1__*,int ,char*,int) ;
+ int sftp_get_error (int ) ;
+ scalar_t__ sftp_rename (int ,char*,char*) ;
+ scalar_t__ strcmp (char*,char*) ;
 
 __attribute__((used)) static int libssh_move(URLContext *h_src, URLContext *h_dst)
 {
@@ -43,14 +43,14 @@ __attribute__((used)) static int libssh_move(URLContext *h_src, URLContext *h_ds
     char credentials_src[1024], credentials_dst[1024];
     int port_src = 22, port_dst = 22;
 
-    av_url_split(NULL, 0,
+    av_url_split(((void*)0), 0,
                  credentials_src, sizeof(credentials_src),
                  hostname_src, sizeof(hostname_src),
                  &port_src,
                  path_src, sizeof(path_src),
                  h_src->filename);
 
-    av_url_split(NULL, 0,
+    av_url_split(((void*)0), 0,
                  credentials_dst, sizeof(credentials_dst),
                  hostname_dst, sizeof(hostname_dst),
                  &port_dst,

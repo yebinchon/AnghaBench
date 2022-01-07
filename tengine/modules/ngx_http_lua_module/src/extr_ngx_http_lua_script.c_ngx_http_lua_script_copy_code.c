@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-struct TYPE_4__ {int /*<<< orphan*/ * pos; int /*<<< orphan*/  log; scalar_t__ ip; int /*<<< orphan*/  skip; } ;
-typedef  TYPE_1__ ngx_http_lua_script_engine_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u_char ;
+struct TYPE_4__ {int * pos; int log; scalar_t__ ip; int skip; } ;
+typedef TYPE_1__ ngx_http_lua_script_engine_t ;
 struct TYPE_5__ {int len; } ;
-typedef  TYPE_2__ ngx_http_lua_script_copy_code_t ;
+typedef TYPE_2__ ngx_http_lua_script_copy_code_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/ * ngx_copy (int /*<<< orphan*/ *,scalar_t__,int) ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *) ; 
+
+ int NGX_LOG_DEBUG_HTTP ;
+ int * ngx_copy (int *,scalar_t__,int) ;
+ int ngx_log_debug2 (int ,int ,int ,char*,int,int *) ;
 
 __attribute__((used)) static void
 ngx_http_lua_script_copy_code(ngx_http_lua_script_engine_t *e)
 {
-    u_char                           *p;
-    ngx_http_lua_script_copy_code_t  *code;
+    u_char *p;
+    ngx_http_lua_script_copy_code_t *code;
 
     code = (ngx_http_lua_script_copy_code_t *) e->ip;
 

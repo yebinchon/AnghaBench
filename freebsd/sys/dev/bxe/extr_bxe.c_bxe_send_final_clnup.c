@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
+
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct bxe_softc {int dummy; } ;
 
-/* Variables and functions */
- int BAR_CSTRORM_INTMEM ; 
- int /*<<< orphan*/  BLOGD (struct bxe_softc*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  BLOGE (struct bxe_softc*,char*) ; 
- int CSTORM_FINAL_CLEANUP_COMPLETE_OFFSET (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DBG_LOAD ; 
- int OP_GEN_AGG_VECT (int /*<<< orphan*/ ) ; 
- int OP_GEN_PARAM (int /*<<< orphan*/ ) ; 
- int OP_GEN_TYPE (int /*<<< orphan*/ ) ; 
- scalar_t__ REG_RD (struct bxe_softc*,int) ; 
- int /*<<< orphan*/  REG_WR (struct bxe_softc*,int,int) ; 
- int SDM_OP_GEN_AGG_VECT_IDX_VALID_SHIFT ; 
- int XSDM_REG_OPERATION_GEN ; 
- int /*<<< orphan*/  XSTORM_AGG_INT_FINAL_CLEANUP_COMP_TYPE ; 
- int /*<<< orphan*/  XSTORM_AGG_INT_FINAL_CLEANUP_INDEX ; 
- int bxe_flr_clnup_reg_poll (struct bxe_softc*,int,int,int) ; 
- int /*<<< orphan*/  bxe_panic (struct bxe_softc*,char*) ; 
+
+ int BAR_CSTRORM_INTMEM ;
+ int BLOGD (struct bxe_softc*,int ,char*,...) ;
+ int BLOGE (struct bxe_softc*,char*) ;
+ int CSTORM_FINAL_CLEANUP_COMPLETE_OFFSET (int ) ;
+ int DBG_LOAD ;
+ int OP_GEN_AGG_VECT (int ) ;
+ int OP_GEN_PARAM (int ) ;
+ int OP_GEN_TYPE (int ) ;
+ scalar_t__ REG_RD (struct bxe_softc*,int) ;
+ int REG_WR (struct bxe_softc*,int,int) ;
+ int SDM_OP_GEN_AGG_VECT_IDX_VALID_SHIFT ;
+ int XSDM_REG_OPERATION_GEN ;
+ int XSTORM_AGG_INT_FINAL_CLEANUP_COMP_TYPE ;
+ int XSTORM_AGG_INT_FINAL_CLEANUP_INDEX ;
+ int bxe_flr_clnup_reg_poll (struct bxe_softc*,int,int,int) ;
+ int bxe_panic (struct bxe_softc*,char*) ;
 
 __attribute__((used)) static int
 bxe_send_final_clnup(struct bxe_softc *sc,
-                     uint8_t          clnup_func,
-                     uint32_t         poll_cnt)
+                     uint8_t clnup_func,
+                     uint32_t poll_cnt)
 {
     uint32_t op_gen_command = 0;
     uint32_t comp_addr = (BAR_CSTRORM_INTMEM +
@@ -63,7 +63,7 @@ bxe_send_final_clnup(struct bxe_softc *sc,
         return (1);
     }
 
-    /* Zero completion for nxt FLR */
+
     REG_WR(sc, comp_addr, 0);
 
     return (ret);

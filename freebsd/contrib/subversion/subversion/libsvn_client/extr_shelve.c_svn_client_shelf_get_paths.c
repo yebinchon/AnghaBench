@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  new_filename; int /*<<< orphan*/  old_filename; } ;
-typedef  TYPE_1__ svn_patch_t ;
-typedef  int /*<<< orphan*/  svn_patch_file_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_pstrdup (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_patch_abspath (char**,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client_get_wc_root (char const**,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_diff_close_patch_file (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_diff_open_patch_file (int /*<<< orphan*/ **,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_diff_parse_next_patch (TYPE_1__**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int new_filename; int old_filename; } ;
+typedef TYPE_1__ svn_patch_t ;
+typedef int svn_patch_file_t ;
+typedef int svn_error_t ;
+typedef int svn_client_ctx_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int * apr_hash_make (int *) ;
+ int apr_pstrdup (int *,int ) ;
+ int get_patch_abspath (char**,char const*,char const*,int *,int *,int *) ;
+ int svn_client_get_wc_root (char const**,char const*,int *,int *,int *) ;
+ int svn_diff_close_patch_file (int *,int *) ;
+ int svn_diff_open_patch_file (int **,char*,int *) ;
+ int svn_diff_parse_next_patch (TYPE_1__**,int *,int ,int ,int *,int *) ;
+ int svn_hash_sets (int *,int ,int ) ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
 
 svn_error_t *
 svn_client_shelf_get_paths(apr_hash_t **affected_paths,
@@ -61,8 +61,8 @@ svn_client_shelf_get_paths(apr_hash_t **affected_paths,
 
       svn_pool_clear(iterpool);
       SVN_ERR(svn_diff_parse_next_patch(&patch, patch_file,
-                                        FALSE /*reverse*/,
-                                        FALSE /*ignore_whitespace*/,
+                                        FALSE ,
+                                        FALSE ,
                                         iterpool, iterpool));
       if (! patch)
         break;

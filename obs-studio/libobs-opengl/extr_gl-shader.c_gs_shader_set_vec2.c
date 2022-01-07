@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct vec2 {int /*<<< orphan*/  ptr; } ;
-struct TYPE_3__ {int /*<<< orphan*/  cur_value; } ;
-typedef  TYPE_1__ gs_sparam_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  da_copy_array (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct vec2 {int ptr; } ;
+struct TYPE_3__ {int cur_value; } ;
+typedef TYPE_1__ gs_sparam_t ;
+
+
+ int da_copy_array (int ,int ,int) ;
 
 void gs_shader_set_vec2(gs_sparam_t *param, const struct vec2 *val)
 {
-	da_copy_array(param->cur_value, val->ptr, sizeof(*val));
+ da_copy_array(param->cur_value, val->ptr, sizeof(*val));
 }

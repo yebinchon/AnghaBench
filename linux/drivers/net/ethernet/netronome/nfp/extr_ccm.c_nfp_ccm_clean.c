@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nfp_ccm {int /*<<< orphan*/  replies; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WARN_ON (int) ; 
- int /*<<< orphan*/  skb_queue_empty (int /*<<< orphan*/ *) ; 
+
+
+
+struct nfp_ccm {int replies; } ;
+
+
+ int WARN_ON (int) ;
+ int skb_queue_empty (int *) ;
 
 void nfp_ccm_clean(struct nfp_ccm *ccm)
 {
-	WARN_ON(!skb_queue_empty(&ccm->replies));
+ WARN_ON(!skb_queue_empty(&ccm->replies));
 }

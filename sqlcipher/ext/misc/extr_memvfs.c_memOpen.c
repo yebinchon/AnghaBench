@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vfs ;
-struct TYPE_5__ {int /*<<< orphan*/ * pMethods; } ;
-typedef  TYPE_1__ sqlite3_file ;
-struct TYPE_6__ {unsigned char* aData; scalar_t__ sz; scalar_t__ szMax; int /*<<< orphan*/  bFreeOnClose; } ;
-typedef  TYPE_2__ MemFile ;
 
-/* Variables and functions */
- int SQLITE_CANTOPEN ; 
- int SQLITE_OK ; 
- int SQLITE_OPEN_MAIN_DB ; 
- int /*<<< orphan*/  mem_io_methods ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3_uri_boolean (char const*,char*,int /*<<< orphan*/ ) ; 
- void* sqlite3_uri_int64 (char const*,char*,scalar_t__) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int sqlite3_vfs ;
+struct TYPE_5__ {int * pMethods; } ;
+typedef TYPE_1__ sqlite3_file ;
+struct TYPE_6__ {unsigned char* aData; scalar_t__ sz; scalar_t__ szMax; int bFreeOnClose; } ;
+typedef TYPE_2__ MemFile ;
+
+
+ int SQLITE_CANTOPEN ;
+ int SQLITE_OK ;
+ int SQLITE_OPEN_MAIN_DB ;
+ int mem_io_methods ;
+ int memset (TYPE_2__*,int ,int) ;
+ int sqlite3_uri_boolean (char const*,char*,int ) ;
+ void* sqlite3_uri_int64 (char const*,char*,scalar_t__) ;
 
 __attribute__((used)) static int memOpen(
   sqlite3_vfs *pVfs,

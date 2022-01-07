@@ -1,98 +1,83 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int cmdID; void* cmdf; } ;
-typedef  TYPE_1__ OLECMD ;
-typedef  int /*<<< orphan*/  HTMLDocument ;
-typedef  int /*<<< orphan*/  HRESULT ;
-
-/* Variables and functions */
-#define  IDM_BOLD 140 
-#define  IDM_DELETE 139 
-#define  IDM_FONTNAME 138 
-#define  IDM_FONTSIZE 137 
-#define  IDM_FORECOLOR 136 
-#define  IDM_HORIZONTALLINE 135 
-#define  IDM_HYPERLINK 134 
-#define  IDM_INDENT 133 
-#define  IDM_ITALIC 132 
-#define  IDM_ORDERLIST 131 
-#define  IDM_OUTDENT 130 
-#define  IDM_UNDERLINE 129 
-#define  IDM_UNORDERLIST 128 
- int /*<<< orphan*/ * NSCMD_BOLD ; 
- int /*<<< orphan*/ * NSCMD_ITALIC ; 
- int /*<<< orphan*/ * NSCMD_OL ; 
- int /*<<< orphan*/ * NSCMD_UL ; 
- int /*<<< orphan*/ * NSCMD_UNDERLINE ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- void* query_ns_edit_status (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+typedef TYPE_1__ OLECMD ;
+typedef int HTMLDocument ;
+typedef int HRESULT ;
+ int * NSCMD_BOLD ;
+ int * NSCMD_ITALIC ;
+ int * NSCMD_OL ;
+ int * NSCMD_UL ;
+ int * NSCMD_UNDERLINE ;
+ int S_OK ;
+ int TRACE (char*) ;
+ void* query_ns_edit_status (int *,int *) ;
 
 __attribute__((used)) static HRESULT query_edit_status(HTMLDocument *This, OLECMD *cmd)
 {
     switch(cmd->cmdID) {
-    case IDM_DELETE:
+    case 139:
         TRACE("CGID_MSHTML: IDM_DELETE\n");
-        cmd->cmdf = query_ns_edit_status(This, NULL);
+        cmd->cmdf = query_ns_edit_status(This, ((void*)0));
         break;
-    case IDM_FONTNAME:
+    case 138:
         TRACE("CGID_MSHTML: IDM_FONTNAME\n");
-        cmd->cmdf = query_ns_edit_status(This, NULL);
+        cmd->cmdf = query_ns_edit_status(This, ((void*)0));
         break;
-    case IDM_FONTSIZE:
+    case 137:
         TRACE("CGID_MSHTML: IDM_FONTSIZE\n");
-        cmd->cmdf = query_ns_edit_status(This, NULL);
+        cmd->cmdf = query_ns_edit_status(This, ((void*)0));
         break;
-    case IDM_BOLD:
+    case 140:
         TRACE("CGID_MSHTML: IDM_BOLD\n");
         cmd->cmdf = query_ns_edit_status(This, NSCMD_BOLD);
         break;
-    case IDM_FORECOLOR:
+    case 136:
         TRACE("CGID_MSHTML: IDM_FORECOLOR\n");
-        cmd->cmdf = query_ns_edit_status(This, NULL);
+        cmd->cmdf = query_ns_edit_status(This, ((void*)0));
         break;
-    case IDM_ITALIC:
+    case 132:
         TRACE("CGID_MSHTML: IDM_ITALIC\n");
         cmd->cmdf = query_ns_edit_status(This, NSCMD_ITALIC);
         break;
-    case IDM_UNDERLINE:
+    case 129:
         TRACE("CGID_MSHTML: IDM_UNDERLINE\n");
         cmd->cmdf = query_ns_edit_status(This, NSCMD_UNDERLINE);
         break;
-    case IDM_HORIZONTALLINE:
+    case 135:
         TRACE("CGID_MSHTML: IDM_HORIZONTALLINE\n");
-        cmd->cmdf = query_ns_edit_status(This, NULL);
+        cmd->cmdf = query_ns_edit_status(This, ((void*)0));
         break;
-    case IDM_ORDERLIST:
+    case 131:
         TRACE("CGID_MSHTML: IDM_ORDERLIST\n");
         cmd->cmdf = query_ns_edit_status(This, NSCMD_OL);
         break;
-    case IDM_UNORDERLIST:
+    case 128:
         TRACE("CGID_MSHTML: IDM_HORIZONTALLINE\n");
         cmd->cmdf = query_ns_edit_status(This, NSCMD_UL);
         break;
-    case IDM_INDENT:
+    case 133:
         TRACE("CGID_MSHTML: IDM_INDENT\n");
-        cmd->cmdf = query_ns_edit_status(This, NULL);
+        cmd->cmdf = query_ns_edit_status(This, ((void*)0));
         break;
-    case IDM_OUTDENT:
+    case 130:
         TRACE("CGID_MSHTML: IDM_OUTDENT\n");
-        cmd->cmdf = query_ns_edit_status(This, NULL);
+        cmd->cmdf = query_ns_edit_status(This, ((void*)0));
         break;
-    case IDM_HYPERLINK:
+    case 134:
         TRACE("CGID_MSHTML: IDM_HYPERLINK\n");
-        cmd->cmdf = query_ns_edit_status(This, NULL);
+        cmd->cmdf = query_ns_edit_status(This, ((void*)0));
         break;
     }
 

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct utsname {char* machine; } ;
-typedef  enum frontend_architecture { ____Placeholder_frontend_architecture } frontend_architecture ;
+typedef enum frontend_architecture { ____Placeholder_frontend_architecture } frontend_architecture ;
 
-/* Variables and functions */
- int FRONTEND_ARCH_ARM ; 
- int FRONTEND_ARCH_ARMV7 ; 
- int FRONTEND_ARCH_ARMV8 ; 
- int FRONTEND_ARCH_MIPS ; 
- int FRONTEND_ARCH_NONE ; 
- int FRONTEND_ARCH_PPC ; 
- int FRONTEND_ARCH_TILE ; 
- int FRONTEND_ARCH_X86 ; 
- int FRONTEND_ARCH_X86_64 ; 
- scalar_t__ string_is_equal (char const*,char*) ; 
- scalar_t__ uname (struct utsname*) ; 
+
+ int FRONTEND_ARCH_ARM ;
+ int FRONTEND_ARCH_ARMV7 ;
+ int FRONTEND_ARCH_ARMV8 ;
+ int FRONTEND_ARCH_MIPS ;
+ int FRONTEND_ARCH_NONE ;
+ int FRONTEND_ARCH_PPC ;
+ int FRONTEND_ARCH_TILE ;
+ int FRONTEND_ARCH_X86 ;
+ int FRONTEND_ARCH_X86_64 ;
+ scalar_t__ string_is_equal (char const*,char*) ;
+ scalar_t__ uname (struct utsname*) ;
 
 __attribute__((used)) static enum frontend_architecture frontend_unix_get_architecture(void)
 {
    struct utsname buffer;
-   const char *val        = NULL;
+   const char *val = ((void*)0);
 
    if (uname(&buffer) != 0)
       return FRONTEND_ARCH_NONE;
 
-   val         = buffer.machine;
+   val = buffer.machine;
 
    if (string_is_equal(val, "aarch64"))
       return FRONTEND_ARCH_ARMV8;

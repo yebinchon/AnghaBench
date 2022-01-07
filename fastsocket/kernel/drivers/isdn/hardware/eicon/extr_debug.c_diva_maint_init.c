@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int dword ;
-typedef  int /*<<< orphan*/  byte ;
-typedef  int /*<<< orphan*/  MSG_QUEUE ;
 
-/* Variables and functions */
- scalar_t__ DBG_MAGIC ; 
- scalar_t__* TraceFilter ; 
- int TraceFilterChannel ; 
- int TraceFilterIdent ; 
- int /*<<< orphan*/  dbg_adapter_lock ; 
- int /*<<< orphan*/ * dbg_base ; 
- int /*<<< orphan*/  dbg_q_lock ; 
- int /*<<< orphan*/ * dbg_queue ; 
- int /*<<< orphan*/  diva_os_destroy_spin_lock (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  diva_os_get_time (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ diva_os_initialize_spin_lock (int /*<<< orphan*/ *,char*) ; 
- int external_dbg_queue ; 
- int /*<<< orphan*/  queueInit (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  start_sec ; 
- int /*<<< orphan*/  start_usec ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int dword ;
+typedef int byte ;
+typedef int MSG_QUEUE ;
+
+
+ scalar_t__ DBG_MAGIC ;
+ scalar_t__* TraceFilter ;
+ int TraceFilterChannel ;
+ int TraceFilterIdent ;
+ int dbg_adapter_lock ;
+ int * dbg_base ;
+ int dbg_q_lock ;
+ int * dbg_queue ;
+ int diva_os_destroy_spin_lock (int *,char*) ;
+ int diva_os_get_time (int *,int *) ;
+ scalar_t__ diva_os_initialize_spin_lock (int *,char*) ;
+ int external_dbg_queue ;
+ int queueInit (int *,int *,unsigned long) ;
+ int start_sec ;
+ int start_usec ;
+ int strcpy (int *,char*) ;
 
 int diva_maint_init (byte* base, unsigned long length, int do_init) {
   if (dbg_queue || (!base) || (length < (4096*4))) {
     return (-1);
   }
 
-  TraceFilter[0]     =  0;
-  TraceFilterIdent   = -1;
+  TraceFilter[0] = 0;
+  TraceFilterIdent = -1;
   TraceFilterChannel = -1;
 
   dbg_base = base;
 
   diva_os_get_time (&start_sec, &start_usec);
 
-  *(dword*)base  = (dword)DBG_MAGIC; /* Store Magic */
-  base   += sizeof(dword);
+  *(dword*)base = (dword)DBG_MAGIC;
+  base += sizeof(dword);
   length -= sizeof(dword);
 
-  *(dword*)base = 2048; /* Extension Field Length */
-  base   += sizeof(dword);
+  *(dword*)base = 2048;
+  base += sizeof(dword);
   length -= sizeof(dword);
 
   strcpy (base, "KERNEL MODE BUFFER\n");
-  base   += 2048;
+  base += 2048;
   length -= 2048;
 
-  *(dword*)base = 0; /* Terminate extension */
-  base   += sizeof(dword);
+  *(dword*)base = 0;
+  base += sizeof(dword);
   length -= sizeof(dword);
 
-  *(void**)base  =  (void*)(base+sizeof(void*)); /* Store Base  */
-  base   += sizeof(void*);
+  *(void**)base = (void*)(base+sizeof(void*));
+  base += sizeof(void*);
   length -= sizeof(void*);
 
   dbg_queue = (MSG_QUEUE*)base;
@@ -70,23 +70,23 @@ int diva_maint_init (byte* base, unsigned long length, int do_init) {
   external_dbg_queue = 0;
 
   if (!do_init) {
-    external_dbg_queue = 1; /* memory was located on the external device */
+    external_dbg_queue = 1;
   }
 
 
-	if (diva_os_initialize_spin_lock (&dbg_q_lock, "dbg_init")) {
-    dbg_queue = NULL;
-    dbg_base = NULL;
+ if (diva_os_initialize_spin_lock (&dbg_q_lock, "dbg_init")) {
+    dbg_queue = ((void*)0);
+    dbg_base = ((void*)0);
     external_dbg_queue = 0;
-		return (-1);
+  return (-1);
   }
 
-	if (diva_os_initialize_spin_lock (&dbg_adapter_lock, "dbg_init")) {
+ if (diva_os_initialize_spin_lock (&dbg_adapter_lock, "dbg_init")) {
     diva_os_destroy_spin_lock(&dbg_q_lock, "dbg_init");
-    dbg_queue = NULL;
-    dbg_base = NULL;
+    dbg_queue = ((void*)0);
+    dbg_base = ((void*)0);
     external_dbg_queue = 0;
-		return (-1);
+  return (-1);
   }
 
   return (0);

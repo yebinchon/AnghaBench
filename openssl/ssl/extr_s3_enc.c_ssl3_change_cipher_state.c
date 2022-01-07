@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  enc_write_state; } ;
-struct TYPE_9__ {unsigned char* key_block; size_t key_block_length; TYPE_1__* new_compression; int /*<<< orphan*/ * new_hash; int /*<<< orphan*/ * new_sym_enc; } ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int enc_write_state; } ;
+struct TYPE_9__ {unsigned char* key_block; size_t key_block_length; TYPE_1__* new_compression; int * new_hash; int * new_sym_enc; } ;
 struct TYPE_10__ {unsigned char* read_mac_secret; unsigned char* write_mac_secret; TYPE_2__ tmp; } ;
-struct TYPE_12__ {TYPE_4__ statem; TYPE_3__ s3; int /*<<< orphan*/  rlayer; int /*<<< orphan*/ * compress; int /*<<< orphan*/  write_hash; int /*<<< orphan*/ * enc_write_ctx; int /*<<< orphan*/ * expand; int /*<<< orphan*/  read_hash; int /*<<< orphan*/ * enc_read_ctx; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * method; } ;
-typedef  TYPE_5__ SSL ;
-typedef  int /*<<< orphan*/  EVP_MD ;
-typedef  int /*<<< orphan*/  EVP_CIPHER_CTX ;
-typedef  int /*<<< orphan*/  EVP_CIPHER ;
-typedef  int /*<<< orphan*/  COMP_METHOD ;
+struct TYPE_12__ {TYPE_4__ statem; TYPE_3__ s3; int rlayer; int * compress; int write_hash; int * enc_write_ctx; int * expand; int read_hash; int * enc_read_ctx; } ;
+struct TYPE_8__ {int * method; } ;
+typedef TYPE_5__ SSL ;
+typedef int EVP_MD ;
+typedef int EVP_CIPHER_CTX ;
+typedef int EVP_CIPHER ;
+typedef int COMP_METHOD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMP_CTX_free (int /*<<< orphan*/ *) ; 
- void* COMP_CTX_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ENC_WRITE_STATE_INVALID ; 
- int /*<<< orphan*/  ENC_WRITE_STATE_VALID ; 
- int /*<<< orphan*/  ERR_R_INTERNAL_ERROR ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- void* EVP_CIPHER_CTX_new () ; 
- int /*<<< orphan*/  EVP_CIPHER_CTX_reset (int /*<<< orphan*/ *) ; 
- size_t EVP_CIPHER_iv_length (int /*<<< orphan*/  const*) ; 
- size_t EVP_CIPHER_key_length (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EVP_CipherInit_ex (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,unsigned char*,unsigned char*,int) ; 
- int EVP_MD_size (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  RECORD_LAYER_reset_read_sequence (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RECORD_LAYER_reset_write_sequence (int /*<<< orphan*/ *) ; 
- int SSL3_CC_READ ; 
- int SSL3_CC_WRITE ; 
- int SSL3_CHANGE_CIPHER_CLIENT_WRITE ; 
- int SSL3_CHANGE_CIPHER_SERVER_READ ; 
- int /*<<< orphan*/  SSL_AD_INTERNAL_ERROR ; 
- int /*<<< orphan*/  SSL_F_SSL3_CHANGE_CIPHER_STATE ; 
- int /*<<< orphan*/  SSL_R_COMPRESSION_LIBRARY_ERROR ; 
- int /*<<< orphan*/  SSLfatal (TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,size_t) ; 
- int /*<<< orphan*/  ossl_assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ssl_replace_hash (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
+
+ int COMP_CTX_free (int *) ;
+ void* COMP_CTX_new (int *) ;
+ int ENC_WRITE_STATE_INVALID ;
+ int ENC_WRITE_STATE_VALID ;
+ int ERR_R_INTERNAL_ERROR ;
+ int ERR_R_MALLOC_FAILURE ;
+ void* EVP_CIPHER_CTX_new () ;
+ int EVP_CIPHER_CTX_reset (int *) ;
+ size_t EVP_CIPHER_iv_length (int const*) ;
+ size_t EVP_CIPHER_key_length (int const*) ;
+ int EVP_CipherInit_ex (int *,int const*,int *,unsigned char*,unsigned char*,int) ;
+ int EVP_MD_size (int const*) ;
+ int RECORD_LAYER_reset_read_sequence (int *) ;
+ int RECORD_LAYER_reset_write_sequence (int *) ;
+ int SSL3_CC_READ ;
+ int SSL3_CC_WRITE ;
+ int SSL3_CHANGE_CIPHER_CLIENT_WRITE ;
+ int SSL3_CHANGE_CIPHER_SERVER_READ ;
+ int SSL_AD_INTERNAL_ERROR ;
+ int SSL_F_SSL3_CHANGE_CIPHER_STATE ;
+ int SSL_R_COMPRESSION_LIBRARY_ERROR ;
+ int SSLfatal (TYPE_5__*,int ,int ,int ) ;
+ int memcpy (unsigned char*,unsigned char*,size_t) ;
+ int ossl_assert (int ) ;
+ int * ssl_replace_hash (int *,int const*) ;
 
 int ssl3_change_cipher_state(SSL *s, int which)
 {
@@ -59,9 +59,9 @@ int ssl3_change_cipher_state(SSL *s, int which)
     unsigned char *ms, *key, *iv;
     EVP_CIPHER_CTX *dd;
     const EVP_CIPHER *c;
-#ifndef OPENSSL_NO_COMP
+
     COMP_METHOD *comp;
-#endif
+
     const EVP_MD *m;
     int mdi;
     size_t n, i, j, k, cl;
@@ -69,89 +69,89 @@ int ssl3_change_cipher_state(SSL *s, int which)
 
     c = s->s3.tmp.new_sym_enc;
     m = s->s3.tmp.new_hash;
-    /* m == NULL will lead to a crash later */
-    if (!ossl_assert(m != NULL)) {
+
+    if (!ossl_assert(m != ((void*)0))) {
         SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_SSL3_CHANGE_CIPHER_STATE,
                  ERR_R_INTERNAL_ERROR);
         goto err;
     }
-#ifndef OPENSSL_NO_COMP
-    if (s->s3.tmp.new_compression == NULL)
-        comp = NULL;
+
+    if (s->s3.tmp.new_compression == ((void*)0))
+        comp = ((void*)0);
     else
         comp = s->s3.tmp.new_compression->method;
-#endif
+
 
     if (which & SSL3_CC_READ) {
-        if (s->enc_read_ctx != NULL) {
+        if (s->enc_read_ctx != ((void*)0)) {
             reuse_dd = 1;
-        } else if ((s->enc_read_ctx = EVP_CIPHER_CTX_new()) == NULL) {
+        } else if ((s->enc_read_ctx = EVP_CIPHER_CTX_new()) == ((void*)0)) {
             SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_SSL3_CHANGE_CIPHER_STATE,
                      ERR_R_MALLOC_FAILURE);
             goto err;
         } else {
-            /*
-             * make sure it's initialised in case we exit later with an error
-             */
+
+
+
             EVP_CIPHER_CTX_reset(s->enc_read_ctx);
         }
         dd = s->enc_read_ctx;
 
-        if (ssl_replace_hash(&s->read_hash, m) == NULL) {
+        if (ssl_replace_hash(&s->read_hash, m) == ((void*)0)) {
             SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_SSL3_CHANGE_CIPHER_STATE,
                      ERR_R_INTERNAL_ERROR);
             goto err;
         }
-#ifndef OPENSSL_NO_COMP
-        /* COMPRESS */
+
+
         COMP_CTX_free(s->expand);
-        s->expand = NULL;
-        if (comp != NULL) {
+        s->expand = ((void*)0);
+        if (comp != ((void*)0)) {
             s->expand = COMP_CTX_new(comp);
-            if (s->expand == NULL) {
+            if (s->expand == ((void*)0)) {
                 SSLfatal(s, SSL_AD_INTERNAL_ERROR,
                          SSL_F_SSL3_CHANGE_CIPHER_STATE,
                          SSL_R_COMPRESSION_LIBRARY_ERROR);
                 goto err;
             }
         }
-#endif
+
         RECORD_LAYER_reset_read_sequence(&s->rlayer);
         mac_secret = &(s->s3.read_mac_secret[0]);
     } else {
         s->statem.enc_write_state = ENC_WRITE_STATE_INVALID;
-        if (s->enc_write_ctx != NULL) {
+        if (s->enc_write_ctx != ((void*)0)) {
             reuse_dd = 1;
-        } else if ((s->enc_write_ctx = EVP_CIPHER_CTX_new()) == NULL) {
+        } else if ((s->enc_write_ctx = EVP_CIPHER_CTX_new()) == ((void*)0)) {
             SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_SSL3_CHANGE_CIPHER_STATE,
                      ERR_R_MALLOC_FAILURE);
             goto err;
         } else {
-            /*
-             * make sure it's initialised in case we exit later with an error
-             */
+
+
+
             EVP_CIPHER_CTX_reset(s->enc_write_ctx);
         }
         dd = s->enc_write_ctx;
-        if (ssl_replace_hash(&s->write_hash, m) == NULL) {
+        if (ssl_replace_hash(&s->write_hash, m) == ((void*)0)) {
             SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_SSL3_CHANGE_CIPHER_STATE,
                      ERR_R_MALLOC_FAILURE);
             goto err;
         }
-#ifndef OPENSSL_NO_COMP
-        /* COMPRESS */
+
+
         COMP_CTX_free(s->compress);
-        s->compress = NULL;
-        if (comp != NULL) {
+        s->compress = ((void*)0);
+        if (comp != ((void*)0)) {
             s->compress = COMP_CTX_new(comp);
-            if (s->compress == NULL) {
+            if (s->compress == ((void*)0)) {
                 SSLfatal(s, SSL_AD_INTERNAL_ERROR,
                          SSL_F_SSL3_CHANGE_CIPHER_STATE,
                          SSL_R_COMPRESSION_LIBRARY_ERROR);
                 goto err;
             }
         }
-#endif
+
         RECORD_LAYER_reset_write_sequence(&s->rlayer);
         mac_secret = &(s->s3.write_mac_secret[0]);
     }
@@ -196,7 +196,7 @@ int ssl3_change_cipher_state(SSL *s, int which)
 
     memcpy(mac_secret, ms, i);
 
-    if (!EVP_CipherInit_ex(dd, c, NULL, key, iv, (which & SSL3_CC_WRITE))) {
+    if (!EVP_CipherInit_ex(dd, c, ((void*)0), key, iv, (which & SSL3_CC_WRITE))) {
         SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_SSL3_CHANGE_CIPHER_STATE,
                  ERR_R_INTERNAL_ERROR);
         goto err;

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct perf_evsel {int /*<<< orphan*/ * id; int /*<<< orphan*/ * sample_id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xyarray__delete (int /*<<< orphan*/ *) ; 
+
+
+
+struct perf_evsel {int * id; int * sample_id; } ;
+
+
+ int free (int *) ;
+ int xyarray__delete (int *) ;
 
 void perf_evsel__free_id(struct perf_evsel *evsel)
 {
-	xyarray__delete(evsel->sample_id);
-	evsel->sample_id = NULL;
-	free(evsel->id);
-	evsel->id = NULL;
+ xyarray__delete(evsel->sample_id);
+ evsel->sample_id = ((void*)0);
+ free(evsel->id);
+ evsel->id = ((void*)0);
 }

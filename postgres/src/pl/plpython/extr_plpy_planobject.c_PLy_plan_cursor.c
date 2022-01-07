@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * PLy_cursor_plan (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArg_ParseTuple (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int PyObject ;
+
+
+ int * PLy_cursor_plan (int *,int *) ;
+ int PyArg_ParseTuple (int *,char*,int **) ;
 
 __attribute__((used)) static PyObject *
 PLy_plan_cursor(PyObject *self, PyObject *args)
 {
-	PyObject   *planargs = NULL;
+ PyObject *planargs = ((void*)0);
 
-	if (!PyArg_ParseTuple(args, "|O", &planargs))
-		return NULL;
+ if (!PyArg_ParseTuple(args, "|O", &planargs))
+  return ((void*)0);
 
-	return PLy_cursor_plan(self, planargs);
+ return PLy_cursor_plan(self, planargs);
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  name ;
-typedef  char* LPCSTR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int FALSE ; 
- int KEY_ENUMERATE_SUB_KEYS ; 
- int KEY_QUERY_VALUE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegEnumKeyExA (int /*<<< orphan*/ ,int,char*,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- scalar_t__ lstrcmpiA (char*,char* const) ; 
- size_t lstrlenA (char* const) ; 
+
+
+
+typedef int name ;
+typedef char* LPCSTR ;
+typedef int LPBYTE ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int KEY_ENUMERATE_SUB_KEYS ;
+ int KEY_QUERY_VALUE ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegEnumKeyExA (int ,int,char*,int*,int *,int *,int *,int *) ;
+ scalar_t__ RegOpenKeyExA (int ,char*,int ,int,int *) ;
+ scalar_t__ RegQueryValueExA (int ,char*,int *,int *,int ,int*) ;
+ scalar_t__ lstrcmpiA (char*,char* const) ;
+ size_t lstrlenA (char* const) ;
 
 __attribute__((used)) static BOOL scan_subkeys(HKEY parent, const LPCSTR *sub_keys)
 {
@@ -36,11 +36,11 @@ __attribute__((used)) static BOOL scan_subkeys(HKEY parent, const LPCSTR *sub_ke
     DWORD name_len = sizeof(name);
     BOOL found_vmware = FALSE;
 
-    if (sub_keys[0] == NULL)
+    if (sub_keys[0] == ((void*)0))
     {
-       /* We're at the deepest level, check "Identifier" value now */
+
        char *test;
-       if (RegQueryValueExA(parent, "Identifier", NULL, NULL, (LPBYTE) name, &name_len) != ERROR_SUCCESS)
+       if (RegQueryValueExA(parent, "Identifier", ((void*)0), ((void*)0), (LPBYTE) name, &name_len) != ERROR_SUCCESS)
            return FALSE;
        for (test = name; test < name + lstrlenA(name) - 6 && ! found_vmware; test++)
        {
@@ -52,7 +52,7 @@ __attribute__((used)) static BOOL scan_subkeys(HKEY parent, const LPCSTR *sub_ke
        return found_vmware;
     }
 
-    while (RegEnumKeyExA(parent, index, name, &name_len, NULL, NULL, NULL, NULL) == ERROR_SUCCESS &&
+    while (RegEnumKeyExA(parent, index, name, &name_len, ((void*)0), ((void*)0), ((void*)0), ((void*)0)) == ERROR_SUCCESS &&
            ! found_vmware) {
         char c = name[lstrlenA(sub_keys[0])];
         name[lstrlenA(sub_keys[0])] = '\0';

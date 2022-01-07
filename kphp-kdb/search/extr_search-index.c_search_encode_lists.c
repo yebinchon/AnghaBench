@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_7__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_7__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct search_index_hapax_legomena {int dummy; } ;
-typedef  scalar_t__ hash_t ;
-struct TYPE_12__ {int words; int hapax_legomena; int /*<<< orphan*/ * compression_bytes; } ;
+typedef scalar_t__ hash_t ;
+struct TYPE_12__ {int words; int hapax_legomena; int * compression_bytes; } ;
 struct TYPE_11__ {unsigned int doc_id_and_priority; scalar_t__ word; } ;
 struct TYPE_10__ {scalar_t__ word; } ;
 struct TYPE_9__ {scalar_t__ word; unsigned int doc_id; } ;
 
-/* Variables and functions */
- TYPE_3__* HL ; 
- TYPE_7__ Header ; 
- TYPE_1__* P ; 
- int PC ; 
- TYPE_2__* W ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  encode_lists_reset () ; 
- int /*<<< orphan*/ * encoded_bytes ; 
- scalar_t__ in_title (TYPE_1__*) ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  search_encode_list (TYPE_1__*,int,TYPE_2__*,int const*,int) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int,int) ; 
+
+ TYPE_3__* HL ;
+ TYPE_7__ Header ;
+ TYPE_1__* P ;
+ int PC ;
+ TYPE_2__* W ;
+ int assert (int) ;
+ int encode_lists_reset () ;
+ int * encoded_bytes ;
+ scalar_t__ in_title (TYPE_1__*) ;
+ int memset (TYPE_3__*,int ,int) ;
+ int search_encode_list (TYPE_1__*,int,TYPE_2__*,int const*,int) ;
+ int vkprintf (int,char*,int,int) ;
 
 __attribute__((used)) static int search_encode_lists (const int methods[2], int quiet) {
   encode_lists_reset ();

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  AcpiGbl_DbCommandComplete ; 
- scalar_t__ AcpiGbl_DebuggerConfiguration ; 
- int /*<<< orphan*/  AcpiOsReleaseMutex (int /*<<< orphan*/ ) ; 
- scalar_t__ DEBUGGER_MULTI_THREADED ; 
+
+
+
+typedef int ACPI_STATUS ;
+
+
+ int AE_OK ;
+ int AcpiGbl_DbCommandComplete ;
+ scalar_t__ AcpiGbl_DebuggerConfiguration ;
+ int AcpiOsReleaseMutex (int ) ;
+ scalar_t__ DEBUGGER_MULTI_THREADED ;
 
 ACPI_STATUS
 AcpiOsNotifyCommandComplete (

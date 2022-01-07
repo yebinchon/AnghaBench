@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  task_header_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int task_header_t ;
 struct TYPE_3__ {scalar_t__ hdr; } ;
-struct TYPE_4__ {int /*<<< orphan*/  find_data; TYPE_1__ hdr; } ;
-typedef  TYPE_2__ find_next_task_t ;
-typedef  int /*<<< orphan*/  WININETFTPFINDNEXTW ;
+struct TYPE_4__ {int find_data; TYPE_1__ hdr; } ;
+typedef TYPE_2__ find_next_task_t ;
+typedef int WININETFTPFINDNEXTW ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FTPFINDNEXT_FindNextFileProc (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int FTPFINDNEXT_FindNextFileProc (int *,int ) ;
 
 __attribute__((used)) static void FTPFINDNEXT_AsyncFindNextFileProc(task_header_t *hdr)
 {

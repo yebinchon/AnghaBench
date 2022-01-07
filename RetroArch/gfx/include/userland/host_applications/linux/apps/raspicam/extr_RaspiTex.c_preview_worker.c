@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  name; } ;
-struct TYPE_11__ {int (* create_native_window ) (TYPE_3__*) ;int (* gl_init ) (TYPE_3__*) ;int /*<<< orphan*/  (* gl_term ) (TYPE_3__*) ;} ;
-struct TYPE_12__ {int preview_stop; TYPE_2__ ops; int /*<<< orphan*/  preview_queue; TYPE_1__* preview_pool; TYPE_4__* preview_port; } ;
-struct TYPE_10__ {int /*<<< orphan*/  queue; } ;
-typedef  TYPE_3__ RASPITEX_STATE ;
-typedef  scalar_t__ MMAL_STATUS_T ;
-typedef  TYPE_4__ MMAL_PORT_T ;
-typedef  int /*<<< orphan*/  MMAL_BUFFER_HEADER_T ;
 
-/* Variables and functions */
- scalar_t__ MMAL_SUCCESS ; 
- int /*<<< orphan*/  VCOS_FUNCTION ; 
- int /*<<< orphan*/  mmal_buffer_header_release (int /*<<< orphan*/ *) ; 
- scalar_t__ mmal_port_send_buffer (TYPE_4__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * mmal_queue_get (int /*<<< orphan*/ ) ; 
- scalar_t__ preview_process_returned_bufs (TYPE_3__*) ; 
- int stub1 (TYPE_3__*) ; 
- int stub2 (TYPE_3__*) ; 
- int /*<<< orphan*/  stub3 (TYPE_3__*) ; 
- int /*<<< orphan*/  vcos_log_error (char*,...) ; 
- int /*<<< orphan*/  vcos_log_trace (char*,...) ; 
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int name; } ;
+struct TYPE_11__ {int (* create_native_window ) (TYPE_3__*) ;int (* gl_init ) (TYPE_3__*) ;int (* gl_term ) (TYPE_3__*) ;} ;
+struct TYPE_12__ {int preview_stop; TYPE_2__ ops; int preview_queue; TYPE_1__* preview_pool; TYPE_4__* preview_port; } ;
+struct TYPE_10__ {int queue; } ;
+typedef TYPE_3__ RASPITEX_STATE ;
+typedef scalar_t__ MMAL_STATUS_T ;
+typedef TYPE_4__ MMAL_PORT_T ;
+typedef int MMAL_BUFFER_HEADER_T ;
+
+
+ scalar_t__ MMAL_SUCCESS ;
+ int VCOS_FUNCTION ;
+ int mmal_buffer_header_release (int *) ;
+ scalar_t__ mmal_port_send_buffer (TYPE_4__*,int *) ;
+ int * mmal_queue_get (int ) ;
+ scalar_t__ preview_process_returned_bufs (TYPE_3__*) ;
+ int stub1 (TYPE_3__*) ;
+ int stub2 (TYPE_3__*) ;
+ int stub3 (TYPE_3__*) ;
+ int vcos_log_error (char*,...) ;
+ int vcos_log_trace (char*,...) ;
 
 __attribute__((used)) static void *preview_worker(void *arg)
 {
@@ -56,8 +56,8 @@ __attribute__((used)) static void *preview_worker(void *arg)
 
    while (state->preview_stop == 0)
    {
-      /* Send empty buffers to camera preview port */
-      while ((buf = mmal_queue_get(state->preview_pool->queue)) != NULL)
+
+      while ((buf = mmal_queue_get(state->preview_pool->queue)) != ((void*)0))
       {
          st = mmal_port_send_buffer(preview_port, buf);
          if (st != MMAL_SUCCESS)
@@ -65,7 +65,7 @@ __attribute__((used)) static void *preview_worker(void *arg)
             vcos_log_error("Failed to send buffer to %s", preview_port->name);
          }
       }
-      /* Process returned buffers */
+
       if (preview_process_returned_bufs(state) != 0)
       {
          vcos_log_error("Preview error. Exiting.");
@@ -74,12 +74,12 @@ __attribute__((used)) static void *preview_worker(void *arg)
    }
 
 end:
-   /* Make sure all buffers are returned on exit */
-   while ((buf = mmal_queue_get(state->preview_queue)) != NULL)
+
+   while ((buf = mmal_queue_get(state->preview_queue)) != ((void*)0))
       mmal_buffer_header_release(buf);
 
-   /* Tear down GL */
+
    state->ops.gl_term(state);
    vcos_log_trace("Exiting preview worker");
-   return NULL;
+   return ((void*)0);
 }

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
-typedef  scalar_t__ UCHAR ;
-struct TYPE_5__ {struct TYPE_5__* Next; int /*<<< orphan*/  Data; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG ;
+typedef scalar_t__ UCHAR ;
+struct TYPE_5__ {struct TYPE_5__* Next; int Data; } ;
 struct TYPE_4__ {scalar_t__ FieldCount; TYPE_2__* FirstField; } ;
-typedef  scalar_t__* PULONG ;
-typedef  scalar_t__* PUCHAR ;
-typedef  int /*<<< orphan*/ * PINFCONTEXT ;
-typedef  TYPE_1__* PINFCACHELINE ;
-typedef  TYPE_2__* PINFCACHEFIELD ;
-typedef  int /*<<< orphan*/  INFSTATUS ;
+typedef scalar_t__* PULONG ;
+typedef scalar_t__* PUCHAR ;
+typedef int * PINFCONTEXT ;
+typedef TYPE_1__* PINFCACHELINE ;
+typedef TYPE_2__* PINFCACHEFIELD ;
+typedef int INFSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*) ; 
- int /*<<< orphan*/  INF_STATUS_BUFFER_OVERFLOW ; 
- int /*<<< orphan*/  INF_STATUS_INVALID_PARAMETER ; 
- int /*<<< orphan*/  INF_STATUS_NOT_FOUND ; 
- int /*<<< orphan*/  INF_STATUS_SUCCESS ; 
- TYPE_1__* InfpGetLineForContext (int /*<<< orphan*/ *) ; 
- scalar_t__ strtoulW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+ int DPRINT (char*) ;
+ int INF_STATUS_BUFFER_OVERFLOW ;
+ int INF_STATUS_INVALID_PARAMETER ;
+ int INF_STATUS_NOT_FOUND ;
+ int INF_STATUS_SUCCESS ;
+ TYPE_1__* InfpGetLineForContext (int *) ;
+ scalar_t__ strtoulW (int ,int *,int) ;
 
 INFSTATUS
 InfpGetBinaryField(PINFCONTEXT Context,
@@ -45,13 +45,13 @@ InfpGetBinaryField(PINFCONTEXT Context,
   ULONG Size;
   PUCHAR Ptr;
 
-  if (Context == NULL || FieldIndex == 0)
+  if (Context == ((void*)0) || FieldIndex == 0)
     {
       DPRINT("Invalid parameter\n");
       return INF_STATUS_INVALID_PARAMETER;
     }
 
-  if (RequiredSize != NULL)
+  if (RequiredSize != ((void*)0))
     *RequiredSize = 0;
 
   CacheLine = InfpGetLineForContext(Context);
@@ -65,19 +65,19 @@ InfpGetBinaryField(PINFCONTEXT Context,
 
   Size = (ULONG)CacheLine->FieldCount - FieldIndex + 1;
 
-  if (RequiredSize != NULL)
+  if (RequiredSize != ((void*)0))
     *RequiredSize = Size;
 
-  if (ReturnBuffer != NULL)
+  if (ReturnBuffer != ((void*)0))
     {
       if (ReturnBufferSize < Size)
         return INF_STATUS_BUFFER_OVERFLOW;
 
-      /* Copy binary data */
+
       Ptr = ReturnBuffer;
-      while (CacheField != NULL)
+      while (CacheField != ((void*)0))
         {
-          *Ptr = (UCHAR)strtoulW(CacheField->Data, NULL, 16);
+          *Ptr = (UCHAR)strtoulW(CacheField->Data, ((void*)0), 16);
 
           Ptr++;
           CacheField = CacheField->Next;

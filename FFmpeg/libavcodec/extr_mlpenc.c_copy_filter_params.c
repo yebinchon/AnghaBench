@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ ** coeff; TYPE_1__* filter_params; } ;
-struct TYPE_5__ {int order; int /*<<< orphan*/  coeff_bits; int /*<<< orphan*/  coeff_shift; int /*<<< orphan*/  shift; } ;
-typedef  TYPE_1__ FilterParams ;
-typedef  TYPE_2__ ChannelParams ;
 
-/* Variables and functions */
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int ** coeff; TYPE_1__* filter_params; } ;
+struct TYPE_5__ {int order; int coeff_bits; int coeff_shift; int shift; } ;
+typedef TYPE_1__ FilterParams ;
+typedef TYPE_2__ ChannelParams ;
+
+
 
 __attribute__((used)) static void copy_filter_params(ChannelParams *dst_cp, ChannelParams *src_cp, int filter)
 {

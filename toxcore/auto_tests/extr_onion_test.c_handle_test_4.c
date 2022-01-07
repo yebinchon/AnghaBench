@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef char uint8_t ;
+typedef int uint16_t ;
 struct TYPE_4__ {TYPE_1__* dht; } ;
-struct TYPE_3__ {int /*<<< orphan*/  self_secret_key; } ;
-typedef  TYPE_2__ Onion ;
-typedef  int /*<<< orphan*/  IP_Port ;
+struct TYPE_3__ {int self_secret_key; } ;
+typedef TYPE_2__ Onion ;
+typedef int IP_Port ;
 
-/* Variables and functions */
- int crypto_box_MACBYTES ; 
- int crypto_box_NONCEBYTES ; 
- int crypto_box_PUBLICKEYBYTES ; 
- int decrypt_data (char const*,int /*<<< orphan*/ ,char const*,char const*,int,char*) ; 
- int handled_test_4 ; 
- scalar_t__ memcmp (char*,char const*,int) ; 
- char* nonce ; 
+
+ int crypto_box_MACBYTES ;
+ int crypto_box_NONCEBYTES ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int decrypt_data (char const*,int ,char const*,char const*,int,char*) ;
+ int handled_test_4 ;
+ scalar_t__ memcmp (char*,char const*,int) ;
+ char* nonce ;
 
 __attribute__((used)) static int handle_test_4(void *object, IP_Port source, const uint8_t *packet, uint16_t length)
 {

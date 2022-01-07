@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int ref; int /*<<< orphan*/ * renderer_device; int /*<<< orphan*/ * capture_device; int /*<<< orphan*/ * lpVtbl; } ;
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/ * LPDIRECTSOUNDFULLDUPLEX ;
-typedef  TYPE_1__ IDirectSoundFullDuplexImpl ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DSERR_INVALIDPARAM ; 
- int /*<<< orphan*/  DSERR_OUTOFMEMORY ; 
- int /*<<< orphan*/  DS_OK ; 
- int /*<<< orphan*/  E_NOINTERFACE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IID_IDirectSoundFullDuplex ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  IsEqualIID (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dsfdvt ; 
- int /*<<< orphan*/  setup_dsound_options () ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int ref; int * renderer_device; int * capture_device; int * lpVtbl; } ;
+typedef int REFIID ;
+typedef int * LPDIRECTSOUNDFULLDUPLEX ;
+typedef TYPE_1__ IDirectSoundFullDuplexImpl ;
+typedef int HRESULT ;
+
+
+ int DSERR_INVALIDPARAM ;
+ int DSERR_OUTOFMEMORY ;
+ int DS_OK ;
+ int E_NOINTERFACE ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_1__* HeapAlloc (int ,int ,int) ;
+ int IID_IDirectSoundFullDuplex ;
+ int IID_IUnknown ;
+ int IsEqualIID (int ,int *) ;
+ int TRACE (char*,int ,int **) ;
+ int WARN (char*) ;
+ int debugstr_guid (int ) ;
+ int dsfdvt ;
+ int setup_dsound_options () ;
 
 HRESULT DSOUND_FullDuplexCreate(
     REFIID riid,
     LPDIRECTSOUNDFULLDUPLEX* ppDSFD)
 {
-    IDirectSoundFullDuplexImpl *This = NULL;
+    IDirectSoundFullDuplexImpl *This = ((void*)0);
     TRACE("(%s, %p)\n", debugstr_guid(riid), ppDSFD);
 
-    if (ppDSFD == NULL) {
+    if (ppDSFD == ((void*)0)) {
         WARN("invalid parameter: ppDSFD == NULL\n");
         return DSERR_INVALIDPARAM;
     }
@@ -52,22 +52,22 @@ HRESULT DSOUND_FullDuplexCreate(
         return E_NOINTERFACE;
     }
 
-    /* Get dsound configuration */
+
     setup_dsound_options();
 
     This = HeapAlloc(GetProcessHeap(),
         HEAP_ZERO_MEMORY, sizeof(IDirectSoundFullDuplexImpl));
 
-    if (This == NULL) {
+    if (This == ((void*)0)) {
         WARN("out of memory\n");
-        *ppDSFD = NULL;
+        *ppDSFD = ((void*)0);
         return DSERR_OUTOFMEMORY;
     }
 
     This->lpVtbl = &dsfdvt;
     This->ref = 1;
-    This->capture_device = NULL;
-    This->renderer_device = NULL;
+    This->capture_device = ((void*)0);
+    This->renderer_device = ((void*)0);
 
     *ppDSFD = (LPDIRECTSOUNDFULLDUPLEX)This;
 

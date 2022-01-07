@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TCP_Connections ;
-typedef  int /*<<< orphan*/  TCP_Connection_to ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * get_connection (int /*<<< orphan*/ *,int) ; 
- unsigned int online_tcp_connection_from_conn (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int TCP_Connections ;
+typedef int TCP_Connection_to ;
+
+
+ int * get_connection (int *,int) ;
+ unsigned int online_tcp_connection_from_conn (int *) ;
 
 unsigned int tcp_connection_to_online_tcp_relays(TCP_Connections *tcp_c, int connections_number)
 {

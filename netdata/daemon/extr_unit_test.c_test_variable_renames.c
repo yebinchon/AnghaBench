@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_11__ {char* id; char* name; } ;
 struct TYPE_10__ {char* id; char* name; } ;
-typedef  TYPE_1__ RRDSET ;
-typedef  TYPE_2__ RRDDIM ;
-typedef  int /*<<< orphan*/  BUFFER ;
+typedef TYPE_1__ RRDSET ;
+typedef TYPE_2__ RRDDIM ;
+typedef int BUFFER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RRDSET_TYPE_LINE ; 
- int /*<<< orphan*/  RRD_ALGORITHM_INCREMENTAL ; 
- int /*<<< orphan*/ * buffer_create (int) ; 
- int /*<<< orphan*/  buffer_free (int /*<<< orphan*/ *) ; 
- char* buffer_tostring (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  health_api_v1_chart_variables2json (TYPE_1__*,int /*<<< orphan*/ *) ; 
- TYPE_2__* rrddim_add (TYPE_1__*,char*,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrddim_set_name (TYPE_1__*,TYPE_2__*,char*) ; 
- TYPE_1__* rrdset_create_localhost (char*,char*,int /*<<< orphan*/ *,char*,char*,char*,char*,char*,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrdset_set_name (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int RRDSET_TYPE_LINE ;
+ int RRD_ALGORITHM_INCREMENTAL ;
+ int * buffer_create (int) ;
+ int buffer_free (int *) ;
+ char* buffer_tostring (int *) ;
+ int fprintf (int ,char*,...) ;
+ int health_api_v1_chart_variables2json (TYPE_1__*,int *) ;
+ TYPE_2__* rrddim_add (TYPE_1__*,char*,int *,int,int,int ) ;
+ int rrddim_set_name (TYPE_1__*,TYPE_2__*,char*) ;
+ TYPE_1__* rrdset_create_localhost (char*,char*,int *,char*,char*,char*,char*,char*,int *,int,int,int ) ;
+ int rrdset_set_name (TYPE_1__*,char*) ;
+ int stderr ;
 
 __attribute__((used)) static int test_variable_renames(void) {
     fprintf(stderr, "Creating chart\n");
-    RRDSET *st = rrdset_create_localhost("chart", "ID", NULL, "family", "context", "Unit Testing", "a value", "unittest", NULL, 1, 1, RRDSET_TYPE_LINE);
+    RRDSET *st = rrdset_create_localhost("chart", "ID", ((void*)0), "family", "context", "Unit Testing", "a value", "unittest", ((void*)0), 1, 1, RRDSET_TYPE_LINE);
     fprintf(stderr, "Created chart with id '%s', name '%s'\n", st->id, st->name);
 
     fprintf(stderr, "Creating dimension DIM1\n");
-    RRDDIM *rd1 = rrddim_add(st, "DIM1", NULL, 1, 1, RRD_ALGORITHM_INCREMENTAL);
+    RRDDIM *rd1 = rrddim_add(st, "DIM1", ((void*)0), 1, 1, RRD_ALGORITHM_INCREMENTAL);
     fprintf(stderr, "Created dimension with id '%s', name '%s'\n", rd1->id, rd1->name);
 
     fprintf(stderr, "Creating dimension DIM2\n");
-    RRDDIM *rd2 = rrddim_add(st, "DIM2", NULL, 1, 1, RRD_ALGORITHM_INCREMENTAL);
+    RRDDIM *rd2 = rrddim_add(st, "DIM2", ((void*)0), 1, 1, RRD_ALGORITHM_INCREMENTAL);
     fprintf(stderr, "Created dimension with id '%s', name '%s'\n", rd2->id, rd2->name);
 
     fprintf(stderr, "Renaming chart to CHARTNAME1\n");

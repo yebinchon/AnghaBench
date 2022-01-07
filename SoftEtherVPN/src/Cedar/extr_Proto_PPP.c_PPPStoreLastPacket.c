@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * LastStoredPacket; } ;
-typedef  TYPE_1__ PPP_SESSION ;
-typedef  int /*<<< orphan*/  PPP_PACKET ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreePPPPacket (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * LastStoredPacket; } ;
+typedef TYPE_1__ PPP_SESSION ;
+typedef int PPP_PACKET ;
+
+
+ int FreePPPPacket (int *) ;
 
 void PPPStoreLastPacket(PPP_SESSION *p, PPP_PACKET *pp)
 {
-	// Validate arguments
-	if (p == NULL)
-	{
-		return;
-	}
 
-	if (p->LastStoredPacket != NULL)
-	{
-		FreePPPPacket(p->LastStoredPacket);
-	}
+ if (p == ((void*)0))
+ {
+  return;
+ }
 
-	p->LastStoredPacket = pp;
+ if (p->LastStoredPacket != ((void*)0))
+ {
+  FreePPPPacket(p->LastStoredPacket);
+ }
+
+ p->LastStoredPacket = pp;
 }

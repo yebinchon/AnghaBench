@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct GPU_FFT_BASE {int mb; unsigned int handle; unsigned int size; unsigned int peri_size; scalar_t__ peri; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mem_free (int,unsigned int) ; 
- int /*<<< orphan*/  mem_unlock (int,unsigned int) ; 
- int /*<<< orphan*/  qpu_enable (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unmapmem (void*,unsigned int) ; 
+
+ int mem_free (int,unsigned int) ;
+ int mem_unlock (int,unsigned int) ;
+ int qpu_enable (int,int ) ;
+ int unmapmem (void*,unsigned int) ;
 
 void gpu_fft_base_release(struct GPU_FFT_BASE *base) {
     int mb = base->mb;

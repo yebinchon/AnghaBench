@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT8 ;
-typedef  int /*<<< orphan*/  UINT16 ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT8 ;
+typedef int UINT16 ;
 struct TYPE_4__ {scalar_t__ offset; scalar_t__ len; } ;
-typedef  TYPE_1__ BT_HDR ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+typedef TYPE_1__ BT_HDR ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ HCIC_PARAM_SIZE_DISCONNECT ; 
- scalar_t__ HCIC_PREAMBLE_SIZE ; 
- int /*<<< orphan*/  HCI_DISCONNECT ; 
- TYPE_1__* HCI_GET_CMD_BUF (scalar_t__) ; 
- int /*<<< orphan*/  LOCAL_BR_EDR_CONTROLLER_ID ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  UINT16_TO_STREAM (scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UINT8_TO_STREAM (scalar_t__*,scalar_t__) ; 
- int /*<<< orphan*/  btu_hcif_send_cmd (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+ int FALSE ;
+ scalar_t__ HCIC_PARAM_SIZE_DISCONNECT ;
+ scalar_t__ HCIC_PREAMBLE_SIZE ;
+ int HCI_DISCONNECT ;
+ TYPE_1__* HCI_GET_CMD_BUF (scalar_t__) ;
+ int LOCAL_BR_EDR_CONTROLLER_ID ;
+ int TRUE ;
+ int UINT16_TO_STREAM (scalar_t__*,int ) ;
+ int UINT8_TO_STREAM (scalar_t__*,scalar_t__) ;
+ int btu_hcif_send_cmd (int ,TYPE_1__*) ;
 
 BOOLEAN btsnd_hcic_disconnect (UINT16 handle, UINT8 reason)
 {
     BT_HDR *p;
     UINT8 *pp;
 
-    if ((p = HCI_GET_CMD_BUF(HCIC_PARAM_SIZE_DISCONNECT)) == NULL) {
+    if ((p = HCI_GET_CMD_BUF(HCIC_PARAM_SIZE_DISCONNECT)) == ((void*)0)) {
         return (FALSE);
     }
 
     pp = (UINT8 *)(p + 1);
 
-    p->len    = HCIC_PREAMBLE_SIZE + HCIC_PARAM_SIZE_DISCONNECT;
+    p->len = HCIC_PREAMBLE_SIZE + HCIC_PARAM_SIZE_DISCONNECT;
     p->offset = 0;
 
     UINT16_TO_STREAM (pp, HCI_DISCONNECT);
-    UINT8_TO_STREAM  (pp, HCIC_PARAM_SIZE_DISCONNECT);
+    UINT8_TO_STREAM (pp, HCIC_PARAM_SIZE_DISCONNECT);
     UINT16_TO_STREAM (pp, handle);
-    UINT8_TO_STREAM  (pp, reason);
+    UINT8_TO_STREAM (pp, reason);
 
     btu_hcif_send_cmd (LOCAL_BR_EDR_CONTROLLER_ID, p);
     return (TRUE);

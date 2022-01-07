@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct index_state {int dummy; } ;
-typedef  int /*<<< orphan*/  options ;
-struct TYPE_7__ {int /*<<< orphan*/  changeset; int /*<<< orphan*/  is_repo_ro; int /*<<< orphan*/ * fset; } ;
-struct TYPE_6__ {int /*<<< orphan*/  worktree; int /*<<< orphan*/  email; int /*<<< orphan*/  version; int /*<<< orphan*/  id; int /*<<< orphan*/  changeset; int /*<<< orphan*/  is_readonly; } ;
-typedef  int /*<<< orphan*/  SeafileCrypt ;
-typedef  TYPE_1__ SeafRepo ;
-typedef  int /*<<< orphan*/  LockedFileSet ;
-typedef  int /*<<< orphan*/  GList ;
-typedef  TYPE_2__ AddOptions ;
+typedef int options ;
+struct TYPE_7__ {int changeset; int is_repo_ro; int * fset; } ;
+struct TYPE_6__ {int worktree; int email; int version; int id; int changeset; int is_readonly; } ;
+typedef int SeafileCrypt ;
+typedef TYPE_1__ SeafRepo ;
+typedef int LockedFileSet ;
+typedef int GList ;
+typedef TYPE_2__ AddOptions ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ add_recursive (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct index_state*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  remove_deleted (struct index_state*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ scalar_t__ add_recursive (int ,int ,int ,struct index_state*,int ,char*,int *,int ,int *,int *,int *,TYPE_2__*) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int remove_deleted (struct index_state*,int ,char*,int *,int *,int ,int ,int ) ;
 
 __attribute__((used)) static int
 scan_worktree_for_changes (struct index_state *istate, SeafRepo *repo,
@@ -44,7 +44,7 @@ scan_worktree_for_changes (struct index_state *istate, SeafRepo *repo,
 
     if (add_recursive (repo->id, repo->version, repo->email,
                        istate, repo->worktree, "", crypt, FALSE, ignore_list,
-                       NULL, NULL, &options) < 0)
+                       ((void*)0), ((void*)0), &options) < 0)
         return -1;
 
     return 0;

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  get_patch_abspath (char**,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client_patch (char*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_error_t ;
+typedef int svn_client_ctx_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int get_patch_abspath (char**,char const*,char const*,int *,int *,int *) ;
+ int svn_client_patch (char*,char const*,int ,int ,int ,int ,int ,int *,int *,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 shelf_apply_patch(const char *name,
@@ -36,10 +36,10 @@ shelf_apply_patch(const char *name,
   SVN_ERR(get_patch_abspath(&patch_abspath, name, wc_root_abspath,
                             ctx, scratch_pool, scratch_pool));
   SVN_ERR(svn_client_patch(patch_abspath, wc_root_abspath,
-                           dry_run, 0 /*strip*/,
+                           dry_run, 0 ,
                            reverse,
-                           FALSE /*ignore_whitespace*/,
-                           TRUE /*remove_tempfiles*/, NULL, NULL,
+                           FALSE ,
+                           TRUE , ((void*)0), ((void*)0),
                            ctx, scratch_pool));
 
   return SVN_NO_ERROR;

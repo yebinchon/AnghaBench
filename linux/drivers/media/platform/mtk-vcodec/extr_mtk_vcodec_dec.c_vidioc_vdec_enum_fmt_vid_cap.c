@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct v4l2_fmtdesc {int dummy; } ;
 struct file {int dummy; } ;
 
-/* Variables and functions */
- int vidioc_enum_fmt (struct v4l2_fmtdesc*,int) ; 
+
+ int vidioc_enum_fmt (struct v4l2_fmtdesc*,int) ;
 
 __attribute__((used)) static int vidioc_vdec_enum_fmt_vid_cap(struct file *file, void *priv,
-					struct v4l2_fmtdesc *f)
+     struct v4l2_fmtdesc *f)
 {
-	return vidioc_enum_fmt(f, false);
+ return vidioc_enum_fmt(f, 0);
 }

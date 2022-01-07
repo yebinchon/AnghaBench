@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct subre {short id; struct subre* right; struct subre* left; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
 
-__attribute__((used)) static int						/* next number */
+ int assert (int ) ;
+
+__attribute__((used)) static int
 numst(struct subre *t,
-	  int start)				/* starting point for subtree numbers */
+   int start)
 {
-	int			i;
+ int i;
 
-	assert(t != NULL);
+ assert(t != ((void*)0));
 
-	i = start;
-	t->id = (short) i++;
-	if (t->left != NULL)
-		i = numst(t->left, i);
-	if (t->right != NULL)
-		i = numst(t->right, i);
-	return i;
+ i = start;
+ t->id = (short) i++;
+ if (t->left != ((void*)0))
+  i = numst(t->left, i);
+ if (t->right != ((void*)0))
+  i = numst(t->right, i);
+ return i;
 }

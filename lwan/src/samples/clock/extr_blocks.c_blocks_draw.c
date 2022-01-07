@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-struct fall {int n_rot; int y_stop; scalar_t__ x_pos; int /*<<< orphan*/  shape; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct fall {int n_rot; int y_stop; scalar_t__ x_pos; int shape; } ;
 struct blocks {size_t* last_digits; struct block_state* states; TYPE_1__* gif; } ;
 struct block_state {size_t num_to_draw; int fall_index; size_t block_index; scalar_t__ x_shift; } ;
-typedef  enum rotation { ____Placeholder_rotation } rotation ;
+typedef enum rotation { ____Placeholder_rotation } rotation ;
 struct TYPE_2__ {unsigned char* frame; int w; int h; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COLOR_BLACK ; 
- int /*<<< orphan*/  COLOR_WHITE ; 
- int ROT_0 ; 
- int ROT_180 ; 
- int ROT_90 ; 
- int ROT_MAX ; 
- int /*<<< orphan*/  SHAPE_SQUARE ; 
- int /*<<< orphan*/  assert (int) ; 
- size_t* block_sizes ; 
- int /*<<< orphan*/  draw_shape (int /*<<< orphan*/ ,scalar_t__,int,int,int,int,unsigned char*) ; 
- int /*<<< orphan*/  draw_shape_full (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int,int,unsigned char*) ; 
- struct fall** fall ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,size_t) ; 
+
+ int COLOR_BLACK ;
+ int COLOR_WHITE ;
+ int ROT_0 ;
+ int ROT_180 ;
+ int ROT_90 ;
+ int ROT_MAX ;
+ int SHAPE_SQUARE ;
+ int assert (int) ;
+ size_t* block_sizes ;
+ int draw_shape (int ,scalar_t__,int,int,int,int,unsigned char*) ;
+ int draw_shape_full (int ,int ,int,int,int,int,int,unsigned char*) ;
+ struct fall** fall ;
+ int memset (unsigned char*,int ,size_t) ;
 
 uint64_t blocks_draw(struct blocks *blocks, bool odd_second)
 {

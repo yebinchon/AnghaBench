@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct userdata {char* text; int counter; } ;
-typedef  int curl_lock_data ;
-typedef  int /*<<< orphan*/  CURL ;
+typedef int curl_lock_data ;
+typedef int CURL ;
 
-/* Variables and functions */
-#define  CURL_LOCK_DATA_COOKIE 130 
-#define  CURL_LOCK_DATA_DNS 129 
-#define  CURL_LOCK_DATA_SHARE 128 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/ * locks ; 
- int /*<<< orphan*/  printf (char*,char const*,...) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+
+ int fprintf (int ,char*,int) ;
+ int * locks ;
+ int printf (char*,char const*,...) ;
+ int stderr ;
 
 __attribute__((used)) static void my_unlock(CURL *handle, curl_lock_data data, void *useptr)
 {
@@ -30,15 +30,15 @@ __attribute__((used)) static void my_unlock(CURL *handle, curl_lock_data data, v
   int locknum;
   (void)handle;
   switch(data) {
-    case CURL_LOCK_DATA_SHARE:
+    case 128:
       what = "share";
       locknum = 0;
       break;
-    case CURL_LOCK_DATA_DNS:
+    case 129:
       what = "dns";
       locknum = 1;
       break;
-    case CURL_LOCK_DATA_COOKIE:
+    case 130:
       what = "cookie";
       locknum = 2;
       break;
@@ -47,7 +47,7 @@ __attribute__((used)) static void my_unlock(CURL *handle, curl_lock_data data, v
       return;
   }
 
-  /* detect unlocking of unlocked locks */
+
   if(!locks[locknum]) {
     printf("unlock: double unlocked %s\n", what);
     return;

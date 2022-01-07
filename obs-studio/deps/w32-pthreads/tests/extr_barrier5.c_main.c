@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pthread_t ;
-typedef  int LONG ;
 
-/* Variables and functions */
- int BARRIERMULTIPLE ; 
- int HEIGHT ; 
- int NUMTHREADS ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  barrier ; 
- int /*<<< orphan*/  func ; 
- int /*<<< orphan*/  mx ; 
- int /*<<< orphan*/  printf (char*,int,int) ; 
- scalar_t__ pthread_barrier_destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_barrier_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ pthread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*) ; 
- scalar_t__ pthread_join (int /*<<< orphan*/ ,void**) ; 
- scalar_t__ pthread_mutex_destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ totalThreadCrossings ; 
+
+
+
+typedef int pthread_t ;
+typedef int LONG ;
+
+
+ int BARRIERMULTIPLE ;
+ int HEIGHT ;
+ int NUMTHREADS ;
+ int assert (int) ;
+ int barrier ;
+ int func ;
+ int mx ;
+ int printf (char*,int,int) ;
+ scalar_t__ pthread_barrier_destroy (int *) ;
+ scalar_t__ pthread_barrier_init (int *,int *,int) ;
+ scalar_t__ pthread_create (int *,int *,int ,void*) ;
+ scalar_t__ pthread_join (int ,void**) ;
+ scalar_t__ pthread_mutex_destroy (int *) ;
+ scalar_t__ totalThreadCrossings ;
 
 int
 main()
@@ -47,11 +47,11 @@ main()
 
       printf("Threads=%d, Barrier height=%d\n", j, height);
 
-      assert(pthread_barrier_init(&barrier, NULL, height) == 0);
+      assert(pthread_barrier_init(&barrier, ((void*)0), height) == 0);
 
       for (i = 1; i <= j; i++)
         {
-          assert(pthread_create(&t[i], NULL, func, (void *)(size_t)Crossings) == 0);
+          assert(pthread_create(&t[i], ((void*)0), func, (void *)(size_t)Crossings) == 0);
         }
 
       serialThreadsTotal = 0;

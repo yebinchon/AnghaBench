@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MLX5_EVENT_TYPE_WQ_CATAS_ERROR ; 
+
+
+
+typedef int u64 ;
+
+
+ int BIT (int ) ;
+ int MLX5_EVENT_TYPE_WQ_CATAS_ERROR ;
 
 __attribute__((used)) static u64 sq_allowed_event_types(void)
 {
-	return BIT(MLX5_EVENT_TYPE_WQ_CATAS_ERROR);
+ return BIT(MLX5_EVENT_TYPE_WQ_CATAS_ERROR);
 }

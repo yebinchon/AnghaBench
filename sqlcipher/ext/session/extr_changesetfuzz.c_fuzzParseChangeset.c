@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char u8 ;
-struct TYPE_6__ {int bPatchset; int nGroup; int /*<<< orphan*/ ** apGroup; } ;
-typedef  int /*<<< orphan*/  FuzzChangesetGroup ;
-typedef  TYPE_1__ FuzzChangeset ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int fuzzParseChanges (char**,char*,TYPE_1__*) ; 
- int fuzzParseHeader (TYPE_1__*,char**,char*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ sqlite3_realloc64 (int /*<<< orphan*/ **,int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef char u8 ;
+struct TYPE_6__ {int bPatchset; int nGroup; int ** apGroup; } ;
+typedef int FuzzChangesetGroup ;
+typedef TYPE_1__ FuzzChangeset ;
+
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int fuzzParseChanges (char**,char*,TYPE_1__*) ;
+ int fuzzParseHeader (TYPE_1__*,char**,char*,int **) ;
+ int memset (TYPE_1__*,int ,int) ;
+ scalar_t__ sqlite3_realloc64 (int **,int) ;
 
 __attribute__((used)) static int fuzzParseChangeset(
-  u8 *pChangeset,                 /* Buffer containing changeset */
-  int nChangeset,                 /* Size of buffer in bytes */
-  FuzzChangeset *pParse           /* OUT: Results of parse */
+  u8 *pChangeset,
+  int nChangeset,
+  FuzzChangeset *pParse
 ){
   u8 *pEnd = &pChangeset[nChangeset];
   u8 *p = pChangeset;
@@ -42,12 +42,12 @@ __attribute__((used)) static int fuzzParseChangeset(
   while( rc==SQLITE_OK && p<pEnd ){
     FuzzChangesetGroup *pGrp = 0;
 
-    /* Read a table-header from the changeset */
+
     rc = fuzzParseHeader(pParse, &p, pEnd, &pGrp);
     assert( (rc==SQLITE_OK)==(pGrp!=0) );
 
-    /* If the table-header was successfully parsed, add the new change-group
-    ** to the array and parse the associated changes. */
+
+
     if( rc==SQLITE_OK ){
       FuzzChangesetGroup **apNew = (FuzzChangesetGroup**)sqlite3_realloc64(
           pParse->apGroup, sizeof(FuzzChangesetGroup*)*(pParse->nGroup+1)

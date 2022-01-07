@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct export {char const* name; char const* internal_name; char const* import_name; int ordinal; int constant; int noname; int private; int data; scalar_t__ forward; struct export* next; } ;
 
-/* Variables and functions */
- struct export* d_exports ; 
- scalar_t__ d_nforwards ; 
- int /*<<< orphan*/  d_nfuncs ; 
- int /*<<< orphan*/ * strchr (char const*,char) ; 
- scalar_t__ xmalloc (int) ; 
+
+ struct export* d_exports ;
+ scalar_t__ d_nforwards ;
+ int d_nfuncs ;
+ int * strchr (char const*,char) ;
+ scalar_t__ xmalloc (int) ;
 
 void
 def_exports (const char *name, const char *internal_name, int ordinal,
-	     int noname, int constant, int data, int private)
+      int noname, int constant, int data, int private)
 {
   struct export *p = (struct export *) xmalloc (sizeof (*p));
 
@@ -37,9 +37,9 @@ def_exports (const char *name, const char *internal_name, int ordinal,
   d_exports = p;
   d_nfuncs++;
 
-  if ((internal_name != NULL)
-      && (strchr (internal_name, '.') != NULL))
+  if ((internal_name != ((void*)0))
+      && (strchr (internal_name, '.') != ((void*)0)))
     p->forward = ++d_nforwards;
   else
-    p->forward = 0; /* no forward */
+    p->forward = 0;
 }

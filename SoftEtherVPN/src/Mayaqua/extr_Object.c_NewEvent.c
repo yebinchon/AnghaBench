@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  ref; } ;
-typedef  TYPE_1__ EVENT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KS_INC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  KS_NEWEVENT_COUNT ; 
- TYPE_1__* Malloc (int) ; 
- int /*<<< orphan*/  NewRef () ; 
- int /*<<< orphan*/  OSInitEvent (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int ref; } ;
+typedef TYPE_1__ EVENT ;
+
+
+ int KS_INC (int ) ;
+ int KS_NEWEVENT_COUNT ;
+ TYPE_1__* Malloc (int) ;
+ int NewRef () ;
+ int OSInitEvent (TYPE_1__*) ;
 
 EVENT *NewEvent()
 {
-	// Memory allocation
-	EVENT *e = Malloc(sizeof(EVENT));
 
-	// Reference counter
-	e->ref = NewRef();
+ EVENT *e = Malloc(sizeof(EVENT));
 
-	// Event initialization
-	OSInitEvent(e);
 
-	// KS
-	KS_INC(KS_NEWEVENT_COUNT);
+ e->ref = NewRef();
 
-	return e;
+
+ OSInitEvent(e);
+
+
+ KS_INC(KS_NEWEVENT_COUNT);
+
+ return e;
 }

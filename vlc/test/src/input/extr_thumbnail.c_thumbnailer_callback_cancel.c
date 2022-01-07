@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct test_ctx {int b_done; int /*<<< orphan*/  cond; int /*<<< orphan*/  lock; } ;
-typedef  int /*<<< orphan*/  picture_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_cond_signal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct test_ctx {int b_done; int cond; int lock; } ;
+typedef int picture_t ;
+
+
+ int assert (int ) ;
+ int vlc_cond_signal (int *) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 __attribute__((used)) static void thumbnailer_callback_cancel( void* data, picture_t* p_thumbnail )
 {
     struct test_ctx* p_ctx = data;
-    assert( p_thumbnail == NULL );
+    assert( p_thumbnail == ((void*)0) );
     vlc_mutex_lock( &p_ctx->lock );
-    p_ctx->b_done = true;
+    p_ctx->b_done = 1;
     vlc_mutex_unlock( &p_ctx->lock );
     vlc_cond_signal( &p_ctx->cond );
 }

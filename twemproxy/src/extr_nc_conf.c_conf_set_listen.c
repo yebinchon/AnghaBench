@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int uint32_t ;
+
+
+
+
+typedef char uint8_t ;
+typedef int uint32_t ;
 struct string {char* data; int len; } ;
-struct conf_listen {int valid; int perm; int /*<<< orphan*/  info; int /*<<< orphan*/  port; int /*<<< orphan*/  name; int /*<<< orphan*/  pname; } ;
-struct conf {int /*<<< orphan*/  arg; } ;
+struct conf_listen {int valid; int perm; int info; int port; int name; int pname; } ;
+struct conf {int arg; } ;
 struct command {int offset; } ;
-typedef  scalar_t__ rstatus_t ;
-typedef  int mode_t ;
+typedef scalar_t__ rstatus_t ;
+typedef int mode_t ;
 
-/* Variables and functions */
- char* CONF_ERROR ; 
- char* CONF_OK ; 
- scalar_t__ NC_OK ; 
- struct string* array_top (int /*<<< orphan*/ *) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  nc_atoi (char*,int) ; 
- scalar_t__ nc_resolve (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- char* nc_strrchr (char*,char*,char) ; 
- int /*<<< orphan*/  nc_valid_port (int /*<<< orphan*/ ) ; 
- scalar_t__ string_copy (int /*<<< orphan*/ *,char*,int) ; 
- scalar_t__ string_duplicate (int /*<<< orphan*/ *,struct string*) ; 
- scalar_t__ strtol (char*,int /*<<< orphan*/ *,int) ; 
+
+ char* CONF_ERROR ;
+ char* CONF_OK ;
+ scalar_t__ NC_OK ;
+ struct string* array_top (int *) ;
+ scalar_t__ errno ;
+ int nc_atoi (char*,int) ;
+ scalar_t__ nc_resolve (int *,int ,int *) ;
+ char* nc_strrchr (char*,char*,char) ;
+ int nc_valid_port (int ) ;
+ scalar_t__ string_copy (int *,char*,int) ;
+ scalar_t__ string_duplicate (int *,struct string*) ;
+ scalar_t__ strtol (char*,int *,int) ;
 
 char *
 conf_set_listen(struct conf *cf, struct command *cmd, void *conf)
@@ -61,12 +61,12 @@ conf_set_listen(struct conf *cf, struct command *cmd, void *conf)
         uint32_t permlen;
 
 
-        /* parse "socket_path permissions" from the end */
+
         p = value->data + value->len -1;
         start = value->data;
         q = nc_strrchr(p, start, ' ');
-        if (q == NULL) {
-            /* no permissions field, so use defaults */
+        if (q == ((void*)0)) {
+
             name = value->data;
             namelen = value->len;
         } else {
@@ -78,7 +78,7 @@ conf_set_listen(struct conf *cf, struct command *cmd, void *conf)
             namelen = (uint32_t)(p - start + 1);
 
             errno = 0;
-            field->perm = (mode_t)strtol((char *)perm, NULL, 8);
+            field->perm = (mode_t)strtol((char *)perm, ((void*)0), 8);
             if (errno || field->perm > 0777) {
                 return "has an invalid file permission in \"socket_path permission\" format string";
             }
@@ -87,11 +87,11 @@ conf_set_listen(struct conf *cf, struct command *cmd, void *conf)
         uint8_t *q, *start, *port;
         uint32_t portlen;
 
-        /* parse "hostname:port" from the end */
+
         p = value->data + value->len - 1;
         start = value->data;
         q = nc_strrchr(p, start, ':');
-        if (q == NULL) {
+        if (q == ((void*)0)) {
             return "has an invalid \"hostname:port\" format string";
         }
 

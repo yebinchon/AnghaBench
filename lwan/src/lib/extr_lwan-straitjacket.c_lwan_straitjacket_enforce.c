@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uid_t ;
+
+
+
+
+typedef int uid_t ;
 struct lwan_straitjacket {scalar_t__ drop_capabilities; scalar_t__* user_name; scalar_t__ chroot_path; } ;
-struct __user_cap_header_struct {int /*<<< orphan*/  version; } ;
+struct __user_cap_header_struct {int version; } ;
 struct __user_cap_data_struct {int dummy; } ;
-typedef  int /*<<< orphan*/  gid_t ;
+typedef int gid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _LINUX_CAPABILITY_VERSION_1 ; 
- int /*<<< orphan*/  abort_on_open_directories () ; 
- scalar_t__ capset (struct __user_cap_header_struct*,struct __user_cap_data_struct*) ; 
- scalar_t__ chdir (char*) ; 
- scalar_t__ chroot (scalar_t__) ; 
- int /*<<< orphan*/  get_user_uid_gid (scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ geteuid () ; 
- int /*<<< orphan*/  lwan_status_critical (char*,...) ; 
- int /*<<< orphan*/  lwan_status_critical_perror (char*,...) ; 
- int /*<<< orphan*/  lwan_status_info (char*,scalar_t__) ; 
- int /*<<< orphan*/  switch_to_user (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
+
+ int _LINUX_CAPABILITY_VERSION_1 ;
+ int abort_on_open_directories () ;
+ scalar_t__ capset (struct __user_cap_header_struct*,struct __user_cap_data_struct*) ;
+ scalar_t__ chdir (char*) ;
+ scalar_t__ chroot (scalar_t__) ;
+ int get_user_uid_gid (scalar_t__*,int *,int *) ;
+ scalar_t__ geteuid () ;
+ int lwan_status_critical (char*,...) ;
+ int lwan_status_critical_perror (char*,...) ;
+ int lwan_status_info (char*,scalar_t__) ;
+ int switch_to_user (int ,int ,scalar_t__*) ;
 
 void lwan_straitjacket_enforce(const struct lwan_straitjacket *sj)
 {
     uid_t uid = 0;
     gid_t gid = 0;
-    bool got_uid_gid = false;
+    bool got_uid_gid = 0;
 
     if (!sj->user_name && !sj->chroot_path)
         goto out;
@@ -44,7 +44,7 @@ void lwan_straitjacket_enforce(const struct lwan_straitjacket *sj)
     if (sj->user_name && *sj->user_name) {
         if (!get_user_uid_gid(sj->user_name, &uid, &gid))
             lwan_status_critical("Unknown user: %s", sj->user_name);
-        got_uid_gid = true;
+        got_uid_gid = 1;
     }
 
     if (sj->chroot_path) {

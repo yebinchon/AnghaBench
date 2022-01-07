@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_9__ ;
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_17__ {unsigned long* iO1iw4; int /*<<< orphan*/  h2LrH3; TYPE_9__* YRHFy; TYPE_4__* oXafA1; TYPE_2__* v6D2d3; TYPE_6__*** hRUi43; TYPE_1__* fV7o35; } ;
-typedef  TYPE_5__ kWMzp1 ;
-struct TYPE_18__ {unsigned char* BC6Zd3; int fVNme; int ELKAp3; int /*<<< orphan*/ * PnawH; } ;
-typedef  TYPE_6__ iOPn3 ;
-struct TYPE_19__ {int /*<<< orphan*/  (* yjdp7 ) (TYPE_9__*,int,unsigned int) ;TYPE_3__* io7IZ3; } ;
+
+
+typedef struct TYPE_19__ TYPE_9__ ;
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_17__ {unsigned long* iO1iw4; int h2LrH3; TYPE_9__* YRHFy; TYPE_4__* oXafA1; TYPE_2__* v6D2d3; TYPE_6__*** hRUi43; TYPE_1__* fV7o35; } ;
+typedef TYPE_5__ kWMzp1 ;
+struct TYPE_18__ {unsigned char* BC6Zd3; int fVNme; int ELKAp3; int * PnawH; } ;
+typedef TYPE_6__ iOPn3 ;
+struct TYPE_19__ {int (* yjdp7 ) (TYPE_9__*,int,unsigned int) ;TYPE_3__* io7IZ3; } ;
 struct TYPE_16__ {unsigned int H4ghS2; } ;
-struct TYPE_15__ {int smyqr; unsigned int QV1Pb3; unsigned int mZSLK1; unsigned int zwLFt3; unsigned int H4ghS2; int /*<<< orphan*/  lpVV64; int /*<<< orphan*/  ounCU4; int /*<<< orphan*/  _xj3V4; } ;
+struct TYPE_15__ {int smyqr; unsigned int QV1Pb3; unsigned int mZSLK1; unsigned int zwLFt3; unsigned int H4ghS2; int lpVV64; int ounCU4; int _xj3V4; } ;
 struct TYPE_14__ {unsigned int jf4g9; unsigned int* FNU7M3; unsigned int Q1iXV3; unsigned int DvwSz1; } ;
 struct TYPE_13__ {unsigned long UyRVB4; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BucKo (unsigned long volatile*,int,unsigned int) ; 
- int /*<<< orphan*/  GLE_s4 (TYPE_5__*,int) ; 
- unsigned int NHDsK3 (unsigned long volatile*,int) ; 
- unsigned int SlE234 (unsigned long volatile*,int) ; 
- unsigned int dMM0e1 (unsigned long volatile*,int) ; 
- unsigned int fFvjz3 (unsigned long volatile*,int) ; 
- int /*<<< orphan*/  h2LrH3 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  s3sCI1 (unsigned long volatile*,int,unsigned int) ; 
- int /*<<< orphan*/  stub1 (TYPE_9__*,int,unsigned int) ; 
- int /*<<< orphan*/  stub2 (TYPE_9__*,int,unsigned int) ; 
- int /*<<< orphan*/  uYS5N2 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vUYb92 (int,int,TYPE_6__*,TYPE_5__*,int) ; 
+
+ int BucKo (unsigned long volatile*,int,unsigned int) ;
+ int GLE_s4 (TYPE_5__*,int) ;
+ unsigned int NHDsK3 (unsigned long volatile*,int) ;
+ unsigned int SlE234 (unsigned long volatile*,int) ;
+ unsigned int dMM0e1 (unsigned long volatile*,int) ;
+ unsigned int fFvjz3 (unsigned long volatile*,int) ;
+ int h2LrH3 (int *) ;
+ int s3sCI1 (unsigned long volatile*,int,unsigned int) ;
+ int stub1 (TYPE_9__*,int,unsigned int) ;
+ int stub2 (TYPE_9__*,int,unsigned int) ;
+ int uYS5N2 (int *) ;
+ int vUYb92 (int,int,TYPE_6__*,TYPE_5__*,int) ;
 
 __attribute__((used)) static void Pp5_4(kWMzp1*J7Iki4){{unsigned kUguy3,H4ghS2=0;{if(!(
 J7Iki4->iO1iw4[0]))goto l5kPU2;{volatile unsigned long*RdZoN;unsigned

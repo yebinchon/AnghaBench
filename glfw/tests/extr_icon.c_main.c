@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GLFWwindow ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- int /*<<< orphan*/  GL_COLOR_BUFFER_BIT ; 
- int /*<<< orphan*/  cur_icon_color ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  glClear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gladLoadGL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * glfwCreateWindow (int,int,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwDestroyWindow (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwGetProcAddress ; 
- int /*<<< orphan*/  glfwInit () ; 
- int /*<<< orphan*/  glfwMakeContextCurrent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwSetKeyCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSwapBuffers (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwTerminate () ; 
- int /*<<< orphan*/  glfwWaitEvents () ; 
- int /*<<< orphan*/  glfwWindowShouldClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  key_callback ; 
- int /*<<< orphan*/  set_icon (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int GLFWwindow ;
+
+
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int GL_COLOR_BUFFER_BIT ;
+ int cur_icon_color ;
+ int exit (int ) ;
+ int fprintf (int ,char*) ;
+ int glClear (int ) ;
+ int gladLoadGL (int ) ;
+ int * glfwCreateWindow (int,int,char*,int *,int *) ;
+ int glfwDestroyWindow (int *) ;
+ int glfwGetProcAddress ;
+ int glfwInit () ;
+ int glfwMakeContextCurrent (int *) ;
+ int glfwSetKeyCallback (int *,int ) ;
+ int glfwSwapBuffers (int *) ;
+ int glfwTerminate () ;
+ int glfwWaitEvents () ;
+ int glfwWindowShouldClose (int *) ;
+ int key_callback ;
+ int set_icon (int *,int ) ;
+ int stderr ;
 
 int main(int argc, char** argv)
 {
@@ -45,7 +45,7 @@ int main(int argc, char** argv)
         exit(EXIT_FAILURE);
     }
 
-    window = glfwCreateWindow(200, 200, "Window Icon", NULL, NULL);
+    window = glfwCreateWindow(200, 200, "Window Icon", ((void*)0), ((void*)0));
     if (!window)
     {
         glfwTerminate();

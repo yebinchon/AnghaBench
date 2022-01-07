@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-struct TYPE_16__ {int /*<<< orphan*/  id3v2_version; TYPE_2__* pict_list; } ;
-struct TYPE_15__ {int /*<<< orphan*/  metadata_header_padding; int /*<<< orphan*/  metadata; int /*<<< orphan*/ * pb; } ;
-struct TYPE_14__ {struct TYPE_14__* next; int /*<<< orphan*/  pkt; } ;
-struct TYPE_13__ {int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ ID3v2EncContext ;
-typedef  TYPE_2__ AVPacketList ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_3__ AVFormatContext ;
-typedef  TYPE_4__ AIFFOutputContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ID3v2_DEFAULT_MAGIC ; 
- int /*<<< orphan*/  MKTAG (char,char,char,char) ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_w8 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_wb32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wl32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_id3v2_finish (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_id3v2_start (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ff_id3v2_write_apic (TYPE_3__*,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_id3v2_write_metadata (TYPE_3__*,TYPE_1__*) ; 
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct TYPE_16__ {int id3v2_version; TYPE_2__* pict_list; } ;
+struct TYPE_15__ {int metadata_header_padding; int metadata; int * pb; } ;
+struct TYPE_14__ {struct TYPE_14__* next; int pkt; } ;
+struct TYPE_13__ {int member_0; } ;
+typedef TYPE_1__ ID3v2EncContext ;
+typedef TYPE_2__ AVPacketList ;
+typedef int AVIOContext ;
+typedef TYPE_3__ AVFormatContext ;
+typedef TYPE_4__ AIFFOutputContext ;
+
+
+ int ID3v2_DEFAULT_MAGIC ;
+ int MKTAG (char,char,char,char) ;
+ int SEEK_SET ;
+ int avio_seek (int *,int,int ) ;
+ int avio_tell (int *) ;
+ int avio_w8 (int *,int ) ;
+ int avio_wb32 (int *,int) ;
+ int avio_wl32 (int *,int ) ;
+ int ff_id3v2_finish (TYPE_1__*,int *,int ) ;
+ int ff_id3v2_start (TYPE_1__*,int *,int ,int ) ;
+ int ff_id3v2_write_apic (TYPE_3__*,TYPE_1__*,int *) ;
+ int ff_id3v2_write_metadata (TYPE_3__*,TYPE_1__*) ;
 
 __attribute__((used)) static int put_id3v2_tags(AVFormatContext *s, AIFFOutputContext *aiff)
 {
@@ -66,7 +66,7 @@ __attribute__((used)) static int put_id3v2_tags(AVFormatContext *s, AIFFOutputCo
     end = avio_tell(pb);
     size = end - pos;
 
-    /* Update chunk size */
+
     avio_seek(pb, pos - 4, SEEK_SET);
     avio_wb32(pb, size);
     avio_seek(pb, end, SEEK_SET);

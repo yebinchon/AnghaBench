@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- void* PyCapsule_GetPointer (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/ * PyImport_ImportModule (char const*) ; 
- int /*<<< orphan*/ * PyObject_GetAttrString (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int PyObject ;
+
+
+ void* PyCapsule_GetPointer (int *,char const*) ;
+ int * PyImport_ImportModule (char const*) ;
+ int * PyObject_GetAttrString (int *,char const*) ;
+ int Py_XDECREF (int *) ;
 
 void* get_ptr_from_mod(const char* module_name, const char* attr_name,
                        const char* capsule_name)
 {
   void* ptr;
-  PyObject* module = NULL;
-  PyObject* capsule = NULL;
+  PyObject* module = ((void*)0);
+  PyObject* capsule = ((void*)0);
 
   module = PyImport_ImportModule(module_name);
   if(!module)
@@ -40,7 +40,7 @@ void* get_ptr_from_mod(const char* module_name, const char* attr_name,
   goto finally;
 
   error:
-  ptr = NULL;
+  ptr = ((void*)0);
 
   finally:
   Py_XDECREF(capsule);

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  curlioerr ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- int CURLIOCMD_RESTARTREAD ; 
- int /*<<< orphan*/  CURLIOE_OK ; 
- int /*<<< orphan*/  CURLIOE_UNKNOWNCMD ; 
- scalar_t__ current_offset ; 
- int /*<<< orphan*/  printf (char*) ; 
+
+
+
+typedef int curlioerr ;
+typedef int CURL ;
+
+
+ int CURLIOCMD_RESTARTREAD ;
+ int CURLIOE_OK ;
+ int CURLIOE_UNKNOWNCMD ;
+ scalar_t__ current_offset ;
+ int printf (char*) ;
 
 __attribute__((used)) static curlioerr ioctl_callback(CURL *handle, int cmd, void *clientp)
 {

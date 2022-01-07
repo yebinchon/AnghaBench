@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * name; } ;
-typedef  TYPE_1__ token_t ;
 
-/* Variables and functions */
- char* strchr (char*,char) ; 
- char* strdup (int /*<<< orphan*/ *) ; 
- int strlen (char*) ; 
- scalar_t__ strncasecmp (int /*<<< orphan*/ *,char*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * name; } ;
+typedef TYPE_1__ token_t ;
+
+
+ char* strchr (char*,char) ;
+ char* strdup (int *) ;
+ int strlen (char*) ;
+ scalar_t__ strncasecmp (int *,char*,int) ;
 
 __attribute__((used)) static char *
 selectFrom(char *str, token_t *list)
 {
-     char	*sep, *sp;
-     token_t	*lp;
-     int	n;
+     char *sep, *sp;
+     token_t *lp;
+     int n;
 
      sp = str;
      do {
-	  sep = strchr(sp, ',');
-	  if(sep != NULL)
-	       n = sep - sp;
-	  else
-	       n = strlen(sp);
-	  
-	  for(lp = list; lp->name != NULL; lp++) {
-	       if(strncasecmp(lp->name, sp, n) == 0)
-		    return strdup(lp->name);
-	  }
-	  sp = sep + 1;
-     } while(sep != NULL);
+   sep = strchr(sp, ',');
+   if(sep != ((void*)0))
+        n = sep - sp;
+   else
+        n = strlen(sp);
 
-     return NULL;
+   for(lp = list; lp->name != ((void*)0); lp++) {
+        if(strncasecmp(lp->name, sp, n) == 0)
+      return strdup(lp->name);
+   }
+   sp = sep + 1;
+     } while(sep != ((void*)0));
+
+     return ((void*)0);
 }

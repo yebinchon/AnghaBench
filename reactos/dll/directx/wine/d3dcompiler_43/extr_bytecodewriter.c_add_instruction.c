@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct instruction {int dummy; } ;
 struct bwriter_shader {int instr_alloc_size; int num_instrs; struct instruction** instr; } ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  FALSE ; 
- int INSTRARRAY_INITIAL_SIZE ; 
- int /*<<< orphan*/  TRUE ; 
- struct instruction** d3dcompiler_alloc (int) ; 
- struct instruction** d3dcompiler_realloc (struct instruction**,int) ; 
+
+ int ERR (char*) ;
+ int FALSE ;
+ int INSTRARRAY_INITIAL_SIZE ;
+ int TRUE ;
+ struct instruction** d3dcompiler_alloc (int) ;
+ struct instruction** d3dcompiler_realloc (struct instruction**,int) ;
 
 BOOL add_instruction(struct bwriter_shader *shader, struct instruction *instr) {
-    struct instruction      **new_instructions;
+    struct instruction **new_instructions;
 
     if(!shader) return FALSE;
 

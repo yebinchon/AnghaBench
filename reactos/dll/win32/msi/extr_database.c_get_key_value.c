@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ UINT ;
-struct TYPE_7__ {int /*<<< orphan*/  hdr; } ;
-typedef  TYPE_1__ MSIRECORD ;
-typedef  int /*<<< orphan*/  MSIQUERY ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  MSICOLINFO_NAMES ; 
- scalar_t__ MSI_RecordGetString (TYPE_1__*,scalar_t__) ; 
- scalar_t__ MSI_RecordGetStringW (TYPE_1__*,scalar_t__,int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ MSI_ViewGetColumnInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__**) ; 
- int /*<<< orphan*/  lstrcpyW (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/ * msi_alloc (scalar_t__) ; 
- int /*<<< orphan*/ * msi_dup_record_field (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
- int strcmpW (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+typedef scalar_t__ UINT ;
+struct TYPE_7__ {int hdr; } ;
+typedef TYPE_1__ MSIRECORD ;
+typedef int MSIQUERY ;
+typedef int * LPWSTR ;
+typedef int LPCWSTR ;
+
+
+ int ERR (char*) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int MSICOLINFO_NAMES ;
+ scalar_t__ MSI_RecordGetString (TYPE_1__*,scalar_t__) ;
+ scalar_t__ MSI_RecordGetStringW (TYPE_1__*,scalar_t__,int *,scalar_t__*) ;
+ scalar_t__ MSI_ViewGetColumnInfo (int *,int ,TYPE_1__**) ;
+ int lstrcpyW (int *,char const*) ;
+ int * msi_alloc (scalar_t__) ;
+ int * msi_dup_record_field (TYPE_1__*,scalar_t__) ;
+ int msi_free (int *) ;
+ int msiobj_release (int *) ;
+ int strcmpW (int ,int *) ;
 
 __attribute__((used)) static LPWSTR get_key_value(MSIQUERY *view, LPCWSTR key, MSIRECORD *rec)
 {
@@ -42,7 +42,7 @@ __attribute__((used)) static LPWSTR get_key_value(MSIQUERY *view, LPCWSTR key, M
 
     r = MSI_ViewGetColumnInfo(view, MSICOLINFO_NAMES, &colnames);
     if (r != ERROR_SUCCESS)
-        return NULL;
+        return ((void*)0);
 
     do
     {
@@ -53,19 +53,19 @@ __attribute__((used)) static LPWSTR get_key_value(MSIQUERY *view, LPCWSTR key, M
 
     msiobj_release(&colnames->hdr);
 
-    r = MSI_RecordGetStringW(rec, i, NULL, &sz);
+    r = MSI_RecordGetStringW(rec, i, ((void*)0), &sz);
     if (r != ERROR_SUCCESS)
-        return NULL;
+        return ((void*)0);
     sz++;
 
-    if (MSI_RecordGetString(rec, i))  /* check record field is a string */
+    if (MSI_RecordGetString(rec, i))
     {
-        /* quote string record fields */
+
         const WCHAR szQuote[] = {'\'', 0};
         sz += 2;
         val = msi_alloc(sz*sizeof(WCHAR));
         if (!val)
-            return NULL;
+            return ((void*)0);
 
         lstrcpyW(val, szQuote);
         r = MSI_RecordGetStringW(rec, i, val+1, &sz);
@@ -73,10 +73,10 @@ __attribute__((used)) static LPWSTR get_key_value(MSIQUERY *view, LPCWSTR key, M
     }
     else
     {
-        /* do not quote integer record fields */
+
         val = msi_alloc(sz*sizeof(WCHAR));
         if (!val)
-            return NULL;
+            return ((void*)0);
 
         r = MSI_RecordGetStringW(rec, i, val, &sz);
     }
@@ -85,7 +85,7 @@ __attribute__((used)) static LPWSTR get_key_value(MSIQUERY *view, LPCWSTR key, M
     {
         ERR("failed to get string!\n");
         msi_free(val);
-        return NULL;
+        return ((void*)0);
     }
 
     return val;

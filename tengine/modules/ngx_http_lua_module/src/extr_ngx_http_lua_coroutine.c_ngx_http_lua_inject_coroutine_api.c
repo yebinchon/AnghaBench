@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ngx_log_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- int luaL_loadbuffer (int /*<<< orphan*/ *,char const*,int,char*) ; 
- int /*<<< orphan*/  lua_createtable (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lua_getfield (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_getglobal (int /*<<< orphan*/ *,char*) ; 
- int lua_pcall (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushcfunction (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_setglobal (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_tostring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ngx_http_lua_coroutine_create ; 
- int /*<<< orphan*/  ngx_http_lua_coroutine_resume ; 
- int /*<<< orphan*/  ngx_http_lua_coroutine_status ; 
- int /*<<< orphan*/  ngx_http_lua_coroutine_yield ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ngx_log_t ;
+typedef int lua_State ;
+typedef int buf ;
+
+
+ int NGX_LOG_ERR ;
+ int luaL_loadbuffer (int *,char const*,int,char*) ;
+ int lua_createtable (int *,int ,int) ;
+ int lua_getfield (int *,int,char*) ;
+ int lua_getglobal (int *,char*) ;
+ int lua_pcall (int *,int ,int ,int ) ;
+ int lua_pop (int *,int) ;
+ int lua_pushcfunction (int *,int ) ;
+ int lua_setfield (int *,int,char*) ;
+ int lua_setglobal (int *,char*) ;
+ int lua_tostring (int *,int) ;
+ int ngx_http_lua_coroutine_create ;
+ int ngx_http_lua_coroutine_resume ;
+ int ngx_http_lua_coroutine_status ;
+ int ngx_http_lua_coroutine_yield ;
+ int ngx_log_error (int ,int *,int ,char*,int,int ) ;
 
 void
 ngx_http_lua_inject_coroutine_api(ngx_log_t *log, lua_State *L)
 {
-    int         rc;
+    int rc;
 
-    /* new coroutine table */
-    lua_createtable(L, 0 /* narr */, 14 /* nrec */);
 
-    /* get old coroutine table */
+    lua_createtable(L, 0 , 14 );
+
+
     lua_getglobal(L, "coroutine");
 
-    /* set running to the old one */
+
     lua_getfield(L, -1, "running");
     lua_setfield(L, -3, "running");
 
@@ -59,7 +59,7 @@ ngx_http_lua_inject_coroutine_api(ngx_log_t *log, lua_State *L)
     lua_getfield(L, -1, "status");
     lua_setfield(L, -3, "_status");
 
-    /* pop the old coroutine */
+
     lua_pop(L, 1);
 
     lua_pushcfunction(L, ngx_http_lua_coroutine_create);
@@ -76,32 +76,32 @@ ngx_http_lua_inject_coroutine_api(ngx_log_t *log, lua_State *L)
 
     lua_setglobal(L, "coroutine");
 
-    /* inject coroutine APIs */
+
     {
         const char buf[] =
             "local keys = {'create', 'yield', 'resume', 'status'}\n"
-#ifdef OPENRESTY_LUAJIT
-            "local get_req = require 'thread.exdata'\n"
-#else
+
+
+
             "local getfenv = getfenv\n"
-#endif
+
             "for _, key in ipairs(keys) do\n"
                "local std = coroutine['_' .. key]\n"
                "local ours = coroutine['__' .. key]\n"
                "local raw_ctx = ngx._phase_ctx\n"
                "coroutine[key] = function (...)\n"
-#ifdef OPENRESTY_LUAJIT
-                    "local r = get_req()\n"
-#else
+
+
+
                     "local r = getfenv(0).__ngx_req\n"
-#endif
+
                     "if r ~= nil then\n"
-#ifdef OPENRESTY_LUAJIT
-                        "local ctx = raw_ctx()\n"
-#else
+
+
+
                         "local ctx = raw_ctx(r)\n"
-#endif
-                        /* ignore header and body filters */
+
+
                         "if ctx ~= 0x020 and ctx ~= 0x040 then\n"
                             "return ours(...)\n"
                         "end\n"
@@ -116,9 +116,9 @@ ngx_http_lua_inject_coroutine_api(ngx_log_t *log, lua_State *L)
             "end\n"
             "package.loaded.coroutine = coroutine";
 
-#if 0
-            "debug.sethook(function () collectgarbage() end, 'rl', 1)"
-#endif
+
+
+
             ;
 
         rc = luaL_loadbuffer(L, buf, sizeof(buf) - 1, "=coroutine.wrap");

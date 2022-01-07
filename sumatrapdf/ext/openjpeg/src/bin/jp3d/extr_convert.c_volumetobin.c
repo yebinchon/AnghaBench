@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* comps; scalar_t__ z0; scalar_t__ y0; scalar_t__ x0; scalar_t__ z1; scalar_t__ y1; scalar_t__ x1; } ;
-typedef  TYPE_2__ opj_volume_t ;
-struct TYPE_4__ {int dx; int w; int dy; int h; int dz; int l; int prec; int x0; int y0; int z0; int* data; scalar_t__ bigendian; int /*<<< orphan*/ * factor; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_2__ opj_volume_t ;
+struct TYPE_4__ {int dx; int w; int dy; int h; int dz; int l; int prec; int x0; int y0; int z0; int* data; scalar_t__ bigendian; int * factor; } ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  fwrite (char*,int,int,int /*<<< orphan*/ *) ; 
- int int_ceildiv (scalar_t__,int) ; 
- void* int_ceildivpow2 (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
- int /*<<< orphan*/  stdout ; 
+
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int *,char*,...) ;
+ int fwrite (char*,int,int,int *) ;
+ int int_ceildiv (scalar_t__,int) ;
+ void* int_ceildivpow2 (int,int ) ;
+ int sprintf (char*,char*,char*) ;
+ int stdout ;
 
 int volumetobin(opj_volume_t * volume, char *outfile)
 {
     int w, wr, wrr, h, hr, hrr, l, lr, lrr, max;
     int i, j, compno, nbytes;
     int offset, sliceno;
-    FILE *fdest = NULL;
-    FILE *fimgdest = NULL;
-    /*  char *imgtemp;*/
+    FILE *fdest = ((void*)0);
+    FILE *fimgdest = ((void*)0);
+
     char name[256];
 
-    for (compno = 0; compno < 1; compno++) { /*Only one component*/
+    for (compno = 0; compno < 1; compno++) {
 
         fdest = fopen(outfile, "wb");
         if (!fdest) {
@@ -80,7 +80,7 @@ int volumetobin(opj_volume_t * volume, char *outfile)
             nbytes = 4;
         }
 
-        /*fprintf(stdout,"w %d wr %d wrr %d h %d hr %d hrr %d l %d lr %d lrr %d max %d nbytes %d\n Factor %d %d %d",w,wr,wrr,h,hr,hrr,l,lr,lrr,max,nbytes,volume->comps[compno].factor[0],volume->comps[compno].factor[1],volume->comps[compno].factor[2]);*/
+
 
         for (sliceno = 0; sliceno < lrr; sliceno++) {
             offset = (sliceno / lrr * l) + (sliceno % lrr);

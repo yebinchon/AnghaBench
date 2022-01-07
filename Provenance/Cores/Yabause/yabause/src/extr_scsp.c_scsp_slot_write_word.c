@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
-typedef  int u16 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
+typedef int u16 ;
 struct TYPE_2__ {int kb; int sbctl; int ssctl; int lpctl; int pcm8b; int sa; int lsa; int lea; int d2r; int d1r; int hold; int ar; int unknown1; int ls; int krs; int dl; int rr; int unknown2; int si; int sd; int tl; int mdl; int mdxsl; int mdysl; int unknown3; int unknown4; int oct; int fns; int re; int lfof; int plfows; int plfos; int alfows; int alfos; int unknown5; int isel; int imxl; int disdl; int dipan; int efsdl; int efpan; } ;
 struct Slot {TYPE_1__ regs; } ;
 struct Scsp {struct Slot* slots; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  keyonex (struct Scsp*) ; 
+
+ int keyonex (struct Scsp*) ;
 
 void scsp_slot_write_word(struct Scsp *s, u32 addr, u16 data)
 {
@@ -29,7 +29,7 @@ void scsp_slot_write_word(struct Scsp *s, u32 addr, u16 data)
    switch (offset >> 1)
    {
    case 0:
-      slot->regs.kb = (data >> 11) & 1;//has to be done before keyonex
+      slot->regs.kb = (data >> 11) & 1;
 
       if (data & (1 << 12))
          keyonex(s);

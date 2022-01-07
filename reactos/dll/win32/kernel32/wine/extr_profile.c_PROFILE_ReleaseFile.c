@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  LastWriteTime; int /*<<< orphan*/  encoding; int /*<<< orphan*/ * filename; int /*<<< orphan*/ * section; int /*<<< orphan*/  changed; } ;
 
-/* Variables and functions */
- TYPE_1__* CurProfile ; 
- int /*<<< orphan*/  ENCODING_ANSI ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PROFILE_FlushFile () ; 
- int /*<<< orphan*/  PROFILE_Free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ZeroMemory (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int LastWriteTime; int encoding; int * filename; int * section; int changed; } ;
+
+
+ TYPE_1__* CurProfile ;
+ int ENCODING_ANSI ;
+ int FALSE ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,int *) ;
+ int PROFILE_FlushFile () ;
+ int PROFILE_Free (int *) ;
+ int ZeroMemory (int *,int) ;
 
 __attribute__((used)) static void PROFILE_ReleaseFile(void)
 {
@@ -29,8 +29,8 @@ __attribute__((used)) static void PROFILE_ReleaseFile(void)
     PROFILE_Free( CurProfile->section );
     HeapFree( GetProcessHeap(), 0, CurProfile->filename );
     CurProfile->changed = FALSE;
-    CurProfile->section = NULL;
-    CurProfile->filename  = NULL;
+    CurProfile->section = ((void*)0);
+    CurProfile->filename = ((void*)0);
     CurProfile->encoding = ENCODING_ANSI;
     ZeroMemory(&CurProfile->LastWriteTime, sizeof(CurProfile->LastWriteTime));
 }

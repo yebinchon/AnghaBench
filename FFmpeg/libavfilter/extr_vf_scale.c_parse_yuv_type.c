@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum AVColorSpace { ____Placeholder_AVColorSpace } AVColorSpace ;
 
-/* Variables and functions */
- int AVCOL_SPC_BT2020_NCL ; 
- int AVCOL_SPC_BT470BG ; 
- int AVCOL_SPC_BT709 ; 
- int AVCOL_SPC_FCC ; 
- int AVCOL_SPC_SMPTE240M ; 
- scalar_t__ strstr (char const*,char*) ; 
- int const* sws_getCoefficients (int) ; 
+
+
+
+typedef enum AVColorSpace { ____Placeholder_AVColorSpace } AVColorSpace ;
+
+
+ int AVCOL_SPC_BT2020_NCL ;
+ int AVCOL_SPC_BT470BG ;
+ int AVCOL_SPC_BT709 ;
+ int AVCOL_SPC_FCC ;
+ int AVCOL_SPC_SMPTE240M ;
+ scalar_t__ strstr (char const*,char*) ;
+ int const* sws_getCoefficients (int) ;
 
 __attribute__((used)) static const int *parse_yuv_type(const char *s, enum AVColorSpace colorspace)
 {

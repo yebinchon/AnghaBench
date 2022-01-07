@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_ERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_FUNCTION_TRACE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_MTX_INTERPRETER ; 
- int /*<<< orphan*/  ACPI_MTX_NAMESPACE ; 
- int /*<<< orphan*/  AE_INFO ; 
- int /*<<< orphan*/  AcpiUtReleaseMutex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExExitInterpreter ; 
- int /*<<< orphan*/  return_VOID ; 
+
+
+
+typedef int ACPI_STATUS ;
+
+
+ int ACPI_ERROR (int ) ;
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int ACPI_FUNCTION_TRACE (int ) ;
+ int ACPI_MTX_INTERPRETER ;
+ int ACPI_MTX_NAMESPACE ;
+ int AE_INFO ;
+ int AcpiUtReleaseMutex (int ) ;
+ int ExExitInterpreter ;
+ int return_VOID ;
 
 void
 AcpiExExitInterpreter (
     void)
 {
-    ACPI_STATUS             Status;
+    ACPI_STATUS Status;
 
 
     ACPI_FUNCTION_TRACE (ExExitInterpreter);

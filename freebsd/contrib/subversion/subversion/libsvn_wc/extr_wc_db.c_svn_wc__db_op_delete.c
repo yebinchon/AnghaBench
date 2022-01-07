@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ svn_wc_notify_func2_t ;
-struct TYPE_8__ {int /*<<< orphan*/  abspath; } ;
-typedef  TYPE_1__ svn_wc__db_wcroot_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_skel_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct op_delete_baton_t {char const* moved_to_relpath; int /*<<< orphan*/  notify; int /*<<< orphan*/  delete_dir_externals; int /*<<< orphan*/ * work_items; int /*<<< orphan*/ * conflict; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  STMT_FINALIZE_DELETE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_UNSUPPORTED_FEATURE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_WC__DB_WITH_TXN (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  VERIFY_USABLE_WCROOT (TYPE_1__*) ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  delete_node (struct op_delete_baton_t*,TYPE_1__*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  do_delete_notify ; 
- int /*<<< orphan*/  flush_entries (TYPE_1__*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  op_delete_txn ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_depth_infinity ; 
- int /*<<< orphan*/  svn_dirent_is_absolute (char const*) ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_wc__db_wcroot_parse_local_abspath (TYPE_1__**,char const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  with_finalization (TYPE_1__*,char const*,int /*<<< orphan*/ ,struct op_delete_baton_t*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*,scalar_t__,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ svn_wc_notify_func2_t ;
+struct TYPE_8__ {int abspath; } ;
+typedef TYPE_1__ svn_wc__db_wcroot_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_skel_t ;
+typedef int svn_error_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_boolean_t ;
+struct op_delete_baton_t {char const* moved_to_relpath; int notify; int delete_dir_externals; int * work_items; int * conflict; } ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int STMT_FINALIZE_DELETE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int SVN_ERR_UNSUPPORTED_FEATURE ;
+ int * SVN_NO_ERROR ;
+ int SVN_WC__DB_WITH_TXN (int ,TYPE_1__*) ;
+ int TRUE ;
+ int VERIFY_USABLE_WCROOT (TYPE_1__*) ;
+ int _ (char*) ;
+ int delete_node (struct op_delete_baton_t*,TYPE_1__*,char const*,int *) ;
+ int do_delete_notify ;
+ int flush_entries (TYPE_1__*,char const*,int ,int *) ;
+ int op_delete_txn ;
+ scalar_t__ strcmp (int ,int ) ;
+ int svn_depth_infinity ;
+ int svn_dirent_is_absolute (char const*) ;
+ int svn_dirent_local_style (char const*,int *) ;
+ int * svn_error_createf (int ,int *,int ,int ,int ) ;
+ int svn_wc__db_wcroot_parse_local_abspath (TYPE_1__**,char const**,int *,char const*,int *,int *) ;
+ int with_finalization (TYPE_1__*,char const*,int ,struct op_delete_baton_t*,int ,int *,int ,void*,scalar_t__,void*,int ,int *) ;
 
 svn_error_t *
 svn_wc__db_op_delete(svn_wc__db_t *db,
@@ -81,7 +81,7 @@ svn_wc__db_op_delete(svn_wc__db_t *db,
       VERIFY_USABLE_WCROOT(moved_to_wcroot);
 
       if (strcmp(wcroot->abspath, moved_to_wcroot->abspath) != 0)
-        return svn_error_createf(SVN_ERR_UNSUPPORTED_FEATURE, NULL,
+        return svn_error_createf(SVN_ERR_UNSUPPORTED_FEATURE, ((void*)0),
                                  _("Cannot move '%s' to '%s' because they "
                                    "are not in the same working copy"),
                                  svn_dirent_local_style(local_abspath,
@@ -90,7 +90,7 @@ svn_wc__db_op_delete(svn_wc__db_t *db,
                                                         scratch_pool));
     }
   else
-    moved_to_relpath = NULL;
+    moved_to_relpath = ((void*)0);
 
   odb.moved_to_relpath = moved_to_relpath;
   odb.conflict = conflict;
@@ -99,12 +99,12 @@ svn_wc__db_op_delete(svn_wc__db_t *db,
 
   if (notify_func)
     {
-      /* Perform the deletion operation (transactionally), perform any
-         notifications necessary, and then clean out our temporary tables.  */
+
+
       odb.notify = TRUE;
       SVN_ERR(with_finalization(wcroot, local_relpath,
                                 op_delete_txn, &odb,
-                                do_delete_notify, NULL,
+                                do_delete_notify, ((void*)0),
                                 cancel_func, cancel_baton,
                                 notify_func, notify_baton,
                                 STMT_FINALIZE_DELETE,
@@ -112,7 +112,7 @@ svn_wc__db_op_delete(svn_wc__db_t *db,
     }
   else
     {
-      /* Avoid the trigger work */
+
       odb.notify = FALSE;
       SVN_WC__DB_WITH_TXN(
                     delete_node(&odb, wcroot, local_relpath, scratch_pool),

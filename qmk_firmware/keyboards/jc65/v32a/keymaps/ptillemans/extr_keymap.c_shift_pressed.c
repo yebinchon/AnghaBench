@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MOD_MASK_SHIFT ; 
- int get_mods () ; 
+ int MOD_MASK_SHIFT ;
+ int get_mods () ;
 
 bool shift_pressed(void) {
   return get_mods() & MOD_MASK_SHIFT;

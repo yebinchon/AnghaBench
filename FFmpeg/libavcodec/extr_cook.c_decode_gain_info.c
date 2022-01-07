@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
- int get_bits (int /*<<< orphan*/ *,int) ; 
- scalar_t__ get_bits1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_bits_left (int /*<<< orphan*/ *) ; 
- int get_unary (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int GetBitContext ;
+
+
+ int get_bits (int *,int) ;
+ scalar_t__ get_bits1 (int *) ;
+ int get_bits_left (int *) ;
+ int get_unary (int *,int ,int ) ;
 
 __attribute__((used)) static void decode_gain_info(GetBitContext *gb, int *gaininfo)
 {
     int i, n;
 
-    n = get_unary(gb, 0, get_bits_left(gb));     // amount of elements*2 to update
+    n = get_unary(gb, 0, get_bits_left(gb));
 
     i = 0;
     while (n--) {

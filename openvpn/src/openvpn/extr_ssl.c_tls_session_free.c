@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tls_session {int /*<<< orphan*/  cert_hash_set; scalar_t__ common_name; int /*<<< orphan*/ * key; int /*<<< orphan*/  tls_wrap; } ;
 
-/* Variables and functions */
- size_t KS_SIZE ; 
- int /*<<< orphan*/  cert_hash_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (scalar_t__) ; 
- int /*<<< orphan*/  key_state_free (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  secure_memzero (struct tls_session*,int) ; 
- int /*<<< orphan*/  tls_wrap_free (int /*<<< orphan*/ *) ; 
+
+
+
+struct tls_session {int cert_hash_set; scalar_t__ common_name; int * key; int tls_wrap; } ;
+
+
+ size_t KS_SIZE ;
+ int cert_hash_free (int ) ;
+ int free (scalar_t__) ;
+ int key_state_free (int *,int) ;
+ int secure_memzero (struct tls_session*,int) ;
+ int tls_wrap_free (int *) ;
 
 __attribute__((used)) static void
 tls_session_free(struct tls_session *session, bool clear)
@@ -27,7 +27,7 @@ tls_session_free(struct tls_session *session, bool clear)
 
     for (size_t i = 0; i < KS_SIZE; ++i)
     {
-        key_state_free(&session->key[i], false);
+        key_state_free(&session->key[i], 0);
     }
 
     if (session->common_name)

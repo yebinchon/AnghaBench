@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int32_t ;
-struct TYPE_3__ {int max_exp; int ordata; int /*<<< orphan*/  shifted_both; int /*<<< orphan*/  shifted_ones; int /*<<< orphan*/  shifted_zeros; int /*<<< orphan*/  neg_zeros; int /*<<< orphan*/  false_zeros; int /*<<< orphan*/  float_flags; } ;
-typedef  TYPE_1__ WavPackEncodeContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FLOAT_EXCEPTIONS ; 
- int get_exponent (int) ; 
- int get_mantissa (int) ; 
- scalar_t__ get_sign (int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int int32_t ;
+struct TYPE_3__ {int max_exp; int ordata; int shifted_both; int shifted_ones; int shifted_zeros; int neg_zeros; int false_zeros; int float_flags; } ;
+typedef TYPE_1__ WavPackEncodeContext ;
+
+
+ int FLOAT_EXCEPTIONS ;
+ int get_exponent (int) ;
+ int get_mantissa (int) ;
+ scalar_t__ get_sign (int) ;
 
 __attribute__((used)) static void process_float(WavPackEncodeContext *s, int32_t *sample)
 {

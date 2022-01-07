@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct deint_mode {char* name; } ;
-typedef  int /*<<< orphan*/  filter_t ;
-typedef  int /*<<< orphan*/  VAProcFilterCapDeinterlacing ;
+typedef int filter_t ;
+typedef int VAProcFilterCapDeinterlacing ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (struct deint_mode*) ; 
- scalar_t__ OpenDeinterlace_IsValidType (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,unsigned int,struct deint_mode*) ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- struct deint_mode* deint_modes ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  msg_Info (int /*<<< orphan*/ *,char*,char const*,char*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
+
+ unsigned int ARRAY_SIZE (struct deint_mode*) ;
+ scalar_t__ OpenDeinterlace_IsValidType (int *,int const*,unsigned int,struct deint_mode*) ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ struct deint_mode* deint_modes ;
+ int msg_Dbg (int *,char*,char*) ;
+ int msg_Err (int *,char*) ;
+ int msg_Info (int *,char*,char const*,char*) ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 __attribute__((used)) static inline int
 OpenDeinterlace_GetMode(filter_t * filter, char const * deint_mode,
@@ -31,7 +31,7 @@ OpenDeinterlace_GetMode(filter_t * filter, char const * deint_mode,
                         VAProcFilterCapDeinterlacing const caps[],
                         unsigned int num_caps)
 {
-    bool fallback = false;
+    bool fallback = 0;
     if (deint_mode && strcmp(deint_mode, "auto"))
     {
         for (unsigned int i = 0; i < ARRAY_SIZE(deint_modes); ++i)
@@ -48,7 +48,7 @@ OpenDeinterlace_GetMode(filter_t * filter, char const * deint_mode,
                 }
             }
         }
-        fallback = true;
+        fallback = 1;
     }
 
     for (unsigned int i = 0; i < ARRAY_SIZE(deint_modes); ++i)
@@ -65,9 +65,9 @@ OpenDeinterlace_GetMode(filter_t * filter, char const * deint_mode,
             return VLC_SUCCESS;
         }
 
-    /* We shouldn't be able to reach this, 'cause if there is no deinterlacing
-       algorithm available, then the driver would have told us before the
-       deinterlace filtering is not supported at all. */
+
+
+
 
     msg_Err(filter, "no algorithm available");
     return VLC_EGENERIC;

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  statement_list_t ;
 
-/* Variables and functions */
- char* PACKAGE_VERSION ; 
- int /*<<< orphan*/  do_idfile ; 
- int /*<<< orphan*/  end_cplusplus_guard (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  error (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fopen (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  idfile ; 
- int /*<<< orphan*/  idfile_name ; 
- char* input_idl_name ; 
- int /*<<< orphan*/  start_cplusplus_guard (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_id_data_stmts (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int statement_list_t ;
+
+
+ char* PACKAGE_VERSION ;
+ int do_idfile ;
+ int end_cplusplus_guard (int ) ;
+ int error (char*,int ) ;
+ int fclose (int ) ;
+ int fopen (int ,char*) ;
+ int fprintf (int ,char*,...) ;
+ int idfile ;
+ int idfile_name ;
+ char* input_idl_name ;
+ int start_cplusplus_guard (int ) ;
+ int write_id_data_stmts (int const*) ;
 
 void write_id_data(const statement_list_t *stmts)
 {

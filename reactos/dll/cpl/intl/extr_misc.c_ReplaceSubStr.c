@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  size_t UINT ;
-typedef  scalar_t__* PWSTR ;
-typedef  scalar_t__* PCWSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- scalar_t__ HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int MAX_SAMPLES_STR_SIZE ; 
- int /*<<< orphan*/  wcscat (scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  wcscpy (scalar_t__*,char*) ; 
- size_t wcslen (scalar_t__*) ; 
+
+
+
+typedef int WCHAR ;
+typedef size_t UINT ;
+typedef scalar_t__* PWSTR ;
+typedef scalar_t__* PCWSTR ;
+
+
+ int GetProcessHeap () ;
+ scalar_t__ HeapAlloc (int ,int ,int) ;
+ int MAX_SAMPLES_STR_SIZE ;
+ int wcscat (scalar_t__*,scalar_t__*) ;
+ int wcscpy (scalar_t__*,char*) ;
+ size_t wcslen (scalar_t__*) ;
 
 PWSTR
 ReplaceSubStr(PCWSTR szSourceStr,
@@ -35,8 +35,8 @@ ReplaceSubStr(PCWSTR szSourceStr,
     UINT nFirstCharCnt;
 
     szDestStr = (PWSTR)HeapAlloc(GetProcessHeap(), 0, MAX_SAMPLES_STR_SIZE * sizeof(WCHAR));
-    if (szDestStr == NULL)
-        return NULL;
+    if (szDestStr == ((void*)0))
+        return ((void*)0);
 
     nDestStrCnt = 0;
     nFirstCharCnt = 0;

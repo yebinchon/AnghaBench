@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {struct TYPE_5__* thumbnail_path_data; int /*<<< orphan*/ * playlist; struct TYPE_5__* dir_thumbnails; struct TYPE_5__* playlist_path; struct TYPE_5__* system; } ;
-typedef  TYPE_1__ pl_thumb_handle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  playlist_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  string_is_empty (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {struct TYPE_5__* thumbnail_path_data; int * playlist; struct TYPE_5__* dir_thumbnails; struct TYPE_5__* playlist_path; struct TYPE_5__* system; } ;
+typedef TYPE_1__ pl_thumb_handle_t ;
+
+
+ int free (TYPE_1__*) ;
+ int playlist_free (int *) ;
+ int string_is_empty (TYPE_1__*) ;
 
 __attribute__((used)) static void free_pl_thumb_handle(pl_thumb_handle_t *pl_thumb, bool free_playlist)
 {
@@ -27,33 +27,33 @@ __attribute__((used)) static void free_pl_thumb_handle(pl_thumb_handle_t *pl_thu
    if (!string_is_empty(pl_thumb->system))
    {
       free(pl_thumb->system);
-      pl_thumb->system = NULL;
+      pl_thumb->system = ((void*)0);
    }
 
    if (!string_is_empty(pl_thumb->playlist_path))
    {
       free(pl_thumb->playlist_path);
-      pl_thumb->playlist_path = NULL;
+      pl_thumb->playlist_path = ((void*)0);
    }
 
    if (!string_is_empty(pl_thumb->dir_thumbnails))
    {
       free(pl_thumb->dir_thumbnails);
-      pl_thumb->dir_thumbnails = NULL;
+      pl_thumb->dir_thumbnails = ((void*)0);
    }
 
    if (pl_thumb->playlist && free_playlist)
    {
       playlist_free(pl_thumb->playlist);
-      pl_thumb->playlist = NULL;
+      pl_thumb->playlist = ((void*)0);
    }
 
    if (pl_thumb->thumbnail_path_data)
    {
       free(pl_thumb->thumbnail_path_data);
-      pl_thumb->thumbnail_path_data = NULL;
+      pl_thumb->thumbnail_path_data = ((void*)0);
    }
 
    free(pl_thumb);
-   pl_thumb = NULL;
+   pl_thumb = ((void*)0);
 }

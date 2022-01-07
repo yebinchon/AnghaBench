@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dictIterator ;
-typedef  int /*<<< orphan*/  dictEntry ;
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int dictIterator ;
+typedef int dictEntry ;
 struct TYPE_8__ {int flags; } ;
-typedef  TYPE_2__ clusterNode ;
+typedef TYPE_2__ clusterNode ;
 struct TYPE_9__ {TYPE_1__* cluster; } ;
-struct TYPE_7__ {scalar_t__ reachable_nodes_count; TYPE_2__** reachable_nodes; int /*<<< orphan*/  nodes; } ;
+struct TYPE_7__ {scalar_t__ reachable_nodes_count; TYPE_2__** reachable_nodes; int nodes; } ;
 
-/* Variables and functions */
- int CLUSTER_NODE_FAIL ; 
- int CLUSTER_NODE_HANDSHAKE ; 
- int CLUSTER_NODE_LEAVING ; 
- int CLUSTER_NODE_MYSELF ; 
- int CLUSTER_NODE_PFAIL ; 
- int /*<<< orphan*/ * dictGetSafeIterator (int /*<<< orphan*/ ) ; 
- TYPE_2__* dictGetVal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * dictNext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dictReleaseIterator (int /*<<< orphan*/ *) ; 
- int dictSize (int /*<<< orphan*/ ) ; 
- TYPE_5__ server ; 
- TYPE_2__** zrealloc (TYPE_2__**,int) ; 
+
+ int CLUSTER_NODE_FAIL ;
+ int CLUSTER_NODE_HANDSHAKE ;
+ int CLUSTER_NODE_LEAVING ;
+ int CLUSTER_NODE_MYSELF ;
+ int CLUSTER_NODE_PFAIL ;
+ int * dictGetSafeIterator (int ) ;
+ TYPE_2__* dictGetVal (int *) ;
+ int * dictNext (int *) ;
+ int dictReleaseIterator (int *) ;
+ int dictSize (int ) ;
+ TYPE_5__ server ;
+ TYPE_2__** zrealloc (TYPE_2__**,int) ;
 
 void clusterUpdateReachableNodes(void) {
     dictIterator *di;
@@ -44,7 +44,7 @@ void clusterUpdateReachableNodes(void) {
     server.cluster->reachable_nodes_count = 0;
 
     di = dictGetSafeIterator(server.cluster->nodes);
-    while((de = dictNext(di)) != NULL) {
+    while((de = dictNext(di)) != ((void*)0)) {
         clusterNode *node = dictGetVal(de);
 
         if (node->flags & (CLUSTER_NODE_MYSELF|

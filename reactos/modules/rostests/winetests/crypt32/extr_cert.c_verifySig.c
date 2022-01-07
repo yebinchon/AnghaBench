@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mySig ;
-typedef  int /*<<< orphan*/  HCRYPTPROV ;
-typedef  int /*<<< orphan*/  HCRYPTHASH ;
-typedef  unsigned int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AT_SIGNATURE ; 
- int /*<<< orphan*/  CALG_SHA1 ; 
- scalar_t__ CryptCreateHash (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CryptDestroyHash (int /*<<< orphan*/ ) ; 
- scalar_t__ CryptHashData (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,size_t,int /*<<< orphan*/ ) ; 
- scalar_t__ CryptSignHashA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,unsigned int*) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,unsigned int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int mySig ;
+typedef int HCRYPTPROV ;
+typedef int HCRYPTHASH ;
+typedef unsigned int DWORD ;
+typedef int BYTE ;
+typedef scalar_t__ BOOL ;
+
+
+ int AT_SIGNATURE ;
+ int CALG_SHA1 ;
+ scalar_t__ CryptCreateHash (int ,int ,int ,int ,int *) ;
+ int CryptDestroyHash (int ) ;
+ scalar_t__ CryptHashData (int ,int const*,size_t,int ) ;
+ scalar_t__ CryptSignHashA (int ,int ,int *,int ,int *,unsigned int*) ;
+ int GetLastError () ;
+ int memcmp (int *,int const*,unsigned int) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void verifySig(HCRYPTPROV csp, const BYTE *toSign, size_t toSignLen,
  const BYTE *sig, unsigned int sigLen)
@@ -42,8 +42,8 @@ __attribute__((used)) static void verifySig(HCRYPTPROV csp, const BYTE *toSign, 
 
         ret = CryptHashData(hash, toSign, toSignLen, 0);
         ok(ret, "CryptHashData failed: %08x\n", GetLastError());
-        /* use the A variant so the test can run on Win9x */
-        ret = CryptSignHashA(hash, AT_SIGNATURE, NULL, 0, mySig, &mySigSize);
+
+        ret = CryptSignHashA(hash, AT_SIGNATURE, ((void*)0), 0, mySig, &mySigSize);
         ok(ret, "CryptSignHash failed: %08x\n", GetLastError());
         if (ret)
         {

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  name; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int name; } ;
 struct intel_plane {int (* get_hw_state ) (struct intel_plane*,int*) ;TYPE_1__ base; } ;
-typedef  enum pipe { ____Placeholder_pipe } pipe ;
+typedef enum pipe { ____Placeholder_pipe } pipe ;
 
-/* Variables and functions */
- int /*<<< orphan*/  I915_STATE_WARN (int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  onoff (int) ; 
- int stub1 (struct intel_plane*,int*) ; 
+
+ int I915_STATE_WARN (int,char*,int ,int ,int ) ;
+ int onoff (int) ;
+ int stub1 (struct intel_plane*,int*) ;
 
 __attribute__((used)) static void assert_plane(struct intel_plane *plane, bool state)
 {
-	enum pipe pipe;
-	bool cur_state;
+ enum pipe pipe;
+ bool cur_state;
 
-	cur_state = plane->get_hw_state(plane, &pipe);
+ cur_state = plane->get_hw_state(plane, &pipe);
 
-	I915_STATE_WARN(cur_state != state,
-			"%s assertion failure (expected %s, current %s)\n",
-			plane->base.name, onoff(state), onoff(cur_state));
+ I915_STATE_WARN(cur_state != state,
+   "%s assertion failure (expected %s, current %s)\n",
+   plane->base.name, onoff(state), onoff(cur_state));
 }

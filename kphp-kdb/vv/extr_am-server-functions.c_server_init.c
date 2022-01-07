@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct sigaction {int /*<<< orphan*/  sa_mask; int /*<<< orphan*/  sa_handler; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct sigaction {int sa_mask; int sa_handler; } ;
 struct TYPE_6__ {scalar_t__ cron; scalar_t__ save_index; scalar_t__ sigusr1; scalar_t__ sighup; } ;
-typedef  TYPE_1__ server_functions_t ;
-typedef  int /*<<< orphan*/  sa ;
-struct TYPE_7__ {scalar_t__ sfd; int /*<<< orphan*/  settings_addr; } ;
-typedef  TYPE_2__ engine_t ;
-typedef  int /*<<< orphan*/  conn_type_t ;
+typedef TYPE_1__ server_functions_t ;
+typedef int sa ;
+struct TYPE_7__ {scalar_t__ sfd; int settings_addr; } ;
+typedef TYPE_2__ engine_t ;
+typedef int conn_type_t ;
 struct TYPE_8__ {scalar_t__ cron; scalar_t__ save_index; scalar_t__ sigusr1; scalar_t__ sighup; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Binlog ; 
- int /*<<< orphan*/  SIGHUP ; 
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  SIGPIPE ; 
- int /*<<< orphan*/  SIGPOLL ; 
- int /*<<< orphan*/  SIGTERM ; 
- int /*<<< orphan*/  SIG_IGN ; 
- int /*<<< orphan*/  add_udp_socket (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ append_to_binlog (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  backlog ; 
- scalar_t__ binlog_disabled ; 
- scalar_t__ binlog_fd ; 
- scalar_t__ binlogname ; 
- scalar_t__ change_user (char*) ; 
- scalar_t__ daemonize ; 
- int /*<<< orphan*/  epoll_pre_event ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  init_epoll () ; 
- int /*<<< orphan*/  init_listening_connection (scalar_t__,int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  init_msg_buffers (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_netbuffers () ; 
- int /*<<< orphan*/  kprintf (char*,char*) ; 
- scalar_t__ log_readto_pos ; 
- int /*<<< orphan*/  memset (struct sigaction*,int /*<<< orphan*/ ,int) ; 
- char* port ; 
- int /*<<< orphan*/  read_new_events ; 
- int /*<<< orphan*/  reopen_logs () ; 
- scalar_t__ server_socket (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setsid () ; 
- TYPE_3__ sf ; 
- int /*<<< orphan*/  sigaction (int /*<<< orphan*/ ,struct sigaction*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sigaddset (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sigemptyset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sighup_handler ; 
- int /*<<< orphan*/  sigint_handler ; 
- int /*<<< orphan*/  sigterm_handler ; 
- scalar_t__ udp_enabled ; 
- char* username ; 
+
+ int Binlog ;
+ int SIGHUP ;
+ int SIGINT ;
+ int SIGPIPE ;
+ int SIGPOLL ;
+ int SIGTERM ;
+ int SIG_IGN ;
+ int add_udp_socket (char*,int ) ;
+ scalar_t__ append_to_binlog (int ) ;
+ int assert (int) ;
+ int backlog ;
+ scalar_t__ binlog_disabled ;
+ scalar_t__ binlog_fd ;
+ scalar_t__ binlogname ;
+ scalar_t__ change_user (char*) ;
+ scalar_t__ daemonize ;
+ int epoll_pre_event ;
+ int exit (int) ;
+ int init_epoll () ;
+ int init_listening_connection (scalar_t__,int *,void*) ;
+ int init_msg_buffers (int ) ;
+ int init_netbuffers () ;
+ int kprintf (char*,char*) ;
+ scalar_t__ log_readto_pos ;
+ int memset (struct sigaction*,int ,int) ;
+ char* port ;
+ int read_new_events ;
+ int reopen_logs () ;
+ scalar_t__ server_socket (char*,int ,int ,int ) ;
+ int setsid () ;
+ TYPE_3__ sf ;
+ int sigaction (int ,struct sigaction*,int *) ;
+ int sigaddset (int *,int ) ;
+ int sigemptyset (int *) ;
+ int sighup_handler ;
+ int sigint_handler ;
+ int sigterm_handler ;
+ scalar_t__ udp_enabled ;
+ char* username ;
 
 void server_init (engine_t *E, server_functions_t *F, conn_type_t *listen_connection_type, void *listen_connection_extra) {
-  if (F != NULL) {
+  if (F != ((void*)0)) {
     if (F->sighup) {
       sf.sighup = F->sighup;
     }
@@ -78,13 +78,13 @@ void server_init (engine_t *E, server_functions_t *F, conn_type_t *listen_connec
       sf.cron = F->cron;
     }
   }
-  
+
   init_epoll ();
   init_netbuffers ();
   if (udp_enabled) {
     init_msg_buffers (0);
   }
-  
+
   if (daemonize) {
     setsid ();
     reopen_logs ();
@@ -112,7 +112,7 @@ void server_init (engine_t *E, server_functions_t *F, conn_type_t *listen_connec
   if (udp_enabled) {
     add_udp_socket (port, 0);
   }
-  
+
   if (binlog_disabled && binlog_fd >= 0) {
     epoll_pre_event = read_new_events;
   }
@@ -121,21 +121,21 @@ void server_init (engine_t *E, server_functions_t *F, conn_type_t *listen_connec
   memset (&sa, 0, sizeof (sa));
   sa.sa_handler = sigint_handler;
   sigemptyset (&sa.sa_mask);
-  sigaddset (&sa.sa_mask, SIGTERM); 
-  sigaction (SIGINT, &sa, NULL);
-  
+  sigaddset (&sa.sa_mask, SIGTERM);
+  sigaction (SIGINT, &sa, ((void*)0));
+
   sa.sa_handler = sigterm_handler;
   sigemptyset (&sa.sa_mask);
   sigaddset (&sa.sa_mask, SIGINT);
-  sigaction (SIGTERM, &sa, NULL);
-  
+  sigaction (SIGTERM, &sa, ((void*)0));
+
   sa.sa_handler = SIG_IGN;
-  sigaction (SIGPIPE, &sa, NULL);
-  sigaction (SIGPOLL, &sa, NULL);
-  
+  sigaction (SIGPIPE, &sa, ((void*)0));
+  sigaction (SIGPOLL, &sa, ((void*)0));
+
   if (daemonize) {
     sa.sa_handler = sighup_handler;
     sigemptyset (&sa.sa_mask);
-    sigaction (SIGHUP, &sa, NULL);
+    sigaction (SIGHUP, &sa, ((void*)0));
   }
 }

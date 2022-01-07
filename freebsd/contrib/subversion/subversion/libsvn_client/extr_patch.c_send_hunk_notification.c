@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {char const* prop_name; int /*<<< orphan*/  hunk_fuzz; int /*<<< orphan*/  hunk_matched_line; int /*<<< orphan*/  hunk_modified_length; int /*<<< orphan*/  hunk_modified_start; int /*<<< orphan*/  hunk_original_length; int /*<<< orphan*/  hunk_original_start; } ;
-typedef  TYPE_1__ svn_wc_notify_t ;
-typedef  int /*<<< orphan*/  svn_wc_notify_action_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_11__ {int /*<<< orphan*/  notify_baton2; int /*<<< orphan*/  (* notify_func2 ) (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_2__ svn_client_ctx_t ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {char const* prop_name; int hunk_fuzz; int hunk_matched_line; int hunk_modified_length; int hunk_modified_start; int hunk_original_length; int hunk_original_start; } ;
+typedef TYPE_1__ svn_wc_notify_t ;
+typedef int svn_wc_notify_action_t ;
+typedef int svn_error_t ;
+struct TYPE_11__ {int notify_baton2; int (* notify_func2 ) (int ,TYPE_1__*,int *) ;} ;
+typedef TYPE_2__ svn_client_ctx_t ;
 struct TYPE_12__ {scalar_t__ local_relpath; scalar_t__ local_abspath; } ;
-typedef  TYPE_3__ patch_target_t ;
-struct TYPE_13__ {int /*<<< orphan*/  report_fuzz; int /*<<< orphan*/  matched_line; int /*<<< orphan*/  hunk; scalar_t__ rejected; scalar_t__ already_applied; } ;
-typedef  TYPE_4__ hunk_info_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_3__ patch_target_t ;
+struct TYPE_13__ {int report_fuzz; int matched_line; int hunk; scalar_t__ rejected; scalar_t__ already_applied; } ;
+typedef TYPE_4__ hunk_info_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_diff_hunk_get_modified_length (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_diff_hunk_get_modified_start (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_diff_hunk_get_original_length (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_diff_hunk_get_original_start (int /*<<< orphan*/ ) ; 
- TYPE_1__* svn_wc_create_notify (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_notify_patch_applied_hunk ; 
- int /*<<< orphan*/  svn_wc_notify_patch_hunk_already_applied ; 
- int /*<<< orphan*/  svn_wc_notify_patch_rejected_hunk ; 
+
+ int * SVN_NO_ERROR ;
+ int stub1 (int ,TYPE_1__*,int *) ;
+ int svn_diff_hunk_get_modified_length (int ) ;
+ int svn_diff_hunk_get_modified_start (int ) ;
+ int svn_diff_hunk_get_original_length (int ) ;
+ int svn_diff_hunk_get_original_start (int ) ;
+ TYPE_1__* svn_wc_create_notify (scalar_t__,int ,int *) ;
+ int svn_wc_notify_patch_applied_hunk ;
+ int svn_wc_notify_patch_hunk_already_applied ;
+ int svn_wc_notify_patch_rejected_hunk ;
 
 __attribute__((used)) static svn_error_t *
 send_hunk_notification(const hunk_info_t *hi,

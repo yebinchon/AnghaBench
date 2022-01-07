@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int RSF_MATCHCASE ; 
- int RSF_WHOLESTRING ; 
- scalar_t__ _wcsicmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * lstrstri (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int s_dwFlags ; 
- scalar_t__ wcscmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * wcsstr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int LPCWSTR ;
+typedef int BOOL ;
+
+
+ int RSF_MATCHCASE ;
+ int RSF_WHOLESTRING ;
+ scalar_t__ _wcsicmp (int ,int ) ;
+ int * lstrstri (int ,int ) ;
+ int s_dwFlags ;
+ scalar_t__ wcscmp (int ,int ) ;
+ int * wcsstr (int ,int ) ;
 
 __attribute__((used)) static BOOL CompareName(LPCWSTR pszName1, LPCWSTR pszName2)
 {
@@ -34,8 +34,8 @@ __attribute__((used)) static BOOL CompareName(LPCWSTR pszName1, LPCWSTR pszName2
     else
     {
         if (s_dwFlags & RSF_MATCHCASE)
-            return wcsstr(pszName1, pszName2) != NULL;
+            return wcsstr(pszName1, pszName2) != ((void*)0);
         else
-            return lstrstri(pszName1, pszName2) != NULL;
+            return lstrstri(pszName1, pszName2) != ((void*)0);
     }
 }

@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void* BlackPointCompensation ; 
- int EOF ; 
- int /*<<< orphan*/  FatalError (char*,...) ; 
- int Intent ; 
- void* NumOfGridPoints ; 
- int PrecalcMode ; 
- void* TRUE ; 
- void* Undecorated ; 
- void* atoi (void*) ; 
- void* cInProf ; 
- void* cOutProf ; 
- int xgetopt (int,char**,char*) ; 
- void* xoptarg ; 
+ void* BlackPointCompensation ;
+ int EOF ;
+ int FatalError (char*,...) ;
+ int Intent ;
+ void* NumOfGridPoints ;
+ int PrecalcMode ;
+ void* TRUE ;
+ void* Undecorated ;
+ void* atoi (void*) ;
+ void* cInProf ;
+ void* cOutProf ;
+ int xgetopt (int,char**,char*) ;
+ void* xoptarg ;
 
 __attribute__((used)) static
 void HandleSwitches(int argc, char *argv[])

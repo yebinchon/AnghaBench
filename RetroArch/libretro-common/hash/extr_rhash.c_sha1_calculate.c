@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int* Message_Digest; } ;
-typedef  TYPE_1__ SHA1Context ;
-typedef  int /*<<< orphan*/  RFILE ;
+typedef TYPE_1__ SHA1Context ;
+typedef int RFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RETRO_VFS_FILE_ACCESS_HINT_NONE ; 
- int /*<<< orphan*/  RETRO_VFS_FILE_ACCESS_READ ; 
- int /*<<< orphan*/  SHA1Input (TYPE_1__*,unsigned char*,int) ; 
- int /*<<< orphan*/  SHA1Reset (TYPE_1__*) ; 
- int /*<<< orphan*/  SHA1Result (TYPE_1__*) ; 
- int /*<<< orphan*/  filestream_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * filestream_open (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ filestream_read (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int,int,int,int,int) ; 
+
+ int RETRO_VFS_FILE_ACCESS_HINT_NONE ;
+ int RETRO_VFS_FILE_ACCESS_READ ;
+ int SHA1Input (TYPE_1__*,unsigned char*,int) ;
+ int SHA1Reset (TYPE_1__*) ;
+ int SHA1Result (TYPE_1__*) ;
+ int filestream_close (int *) ;
+ int * filestream_open (char const*,int ,int ) ;
+ scalar_t__ filestream_read (int *,unsigned char*,int) ;
+ int sprintf (char*,char*,int,int,int,int,int) ;
 
 int sha1_calculate(const char *path, char *result)
 {
    SHA1Context sha;
    unsigned char buff[4096];
-   int rv    = 1;
+   int rv = 1;
    RFILE *fd = filestream_open(path,
          RETRO_VFS_FILE_ACCESS_READ,
          RETRO_VFS_FILE_ACCESS_HINT_NONE);

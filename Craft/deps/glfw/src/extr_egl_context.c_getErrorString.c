@@ -1,67 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int EGLint ;
 
-/* Variables and functions */
-#define  EGL_BAD_ACCESS 142 
-#define  EGL_BAD_ALLOC 141 
-#define  EGL_BAD_ATTRIBUTE 140 
-#define  EGL_BAD_CONFIG 139 
-#define  EGL_BAD_CONTEXT 138 
-#define  EGL_BAD_CURRENT_SURFACE 137 
-#define  EGL_BAD_DISPLAY 136 
-#define  EGL_BAD_MATCH 135 
-#define  EGL_BAD_NATIVE_PIXMAP 134 
-#define  EGL_BAD_NATIVE_WINDOW 133 
-#define  EGL_BAD_PARAMETER 132 
-#define  EGL_BAD_SURFACE 131 
-#define  EGL_CONTEXT_LOST 130 
-#define  EGL_NOT_INITIALIZED 129 
-#define  EGL_SUCCESS 128 
 
+
+
+typedef int EGLint ;
 __attribute__((used)) static const char* getErrorString(EGLint error)
 {
     switch (error)
     {
-        case EGL_SUCCESS:
+        case 128:
             return "Success";
-        case EGL_NOT_INITIALIZED:
+        case 129:
             return "EGL is not or could not be initialized";
-        case EGL_BAD_ACCESS:
+        case 142:
             return "EGL cannot access a requested resource";
-        case EGL_BAD_ALLOC:
+        case 141:
             return "EGL failed to allocate resources for the requested operation";
-        case EGL_BAD_ATTRIBUTE:
+        case 140:
             return "An unrecognized attribute or attribute value was passed in the attribute list";
-        case EGL_BAD_CONTEXT:
+        case 138:
             return "An EGLContext argument does not name a valid EGL rendering context";
-        case EGL_BAD_CONFIG:
+        case 139:
             return "An EGLConfig argument does not name a valid EGL frame buffer configuration";
-        case EGL_BAD_CURRENT_SURFACE:
+        case 137:
             return "The current surface of the calling thread is a window, pixel buffer or pixmap that is no longer valid";
-        case EGL_BAD_DISPLAY:
+        case 136:
             return "An EGLDisplay argument does not name a valid EGL display connection";
-        case EGL_BAD_SURFACE:
+        case 131:
             return "An EGLSurface argument does not name a valid surface configured for GL rendering";
-        case EGL_BAD_MATCH:
+        case 135:
             return "Arguments are inconsistent";
-        case EGL_BAD_PARAMETER:
+        case 132:
             return "One or more argument values are invalid";
-        case EGL_BAD_NATIVE_PIXMAP:
+        case 134:
             return "A NativePixmapType argument does not refer to a valid native pixmap";
-        case EGL_BAD_NATIVE_WINDOW:
+        case 133:
             return "A NativeWindowType argument does not refer to a valid native window";
-        case EGL_CONTEXT_LOST:
+        case 130:
             return "The application must destroy all contexts and reinitialise";
     }
 

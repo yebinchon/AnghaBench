@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char const uint8_t ;
-typedef  int /*<<< orphan*/  AVXTEA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_RB32 (char const*) ; 
- int /*<<< orphan*/  AV_WL32 (char const*,int /*<<< orphan*/ ) ; 
- int XTEA_NUM_TESTS ; 
- int /*<<< orphan*/  av_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * av_xtea_alloc () ; 
- int /*<<< orphan*/  av_xtea_crypt (int /*<<< orphan*/ *,char const*,char const*,int,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_xtea_init (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  av_xtea_le_crypt (int /*<<< orphan*/ *,char const*,char const*,int,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_xtea_le_init (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  memcpy (char const*,char*,int) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  test_xtea (int /*<<< orphan*/ *,char const*,char const*,char const*,int,char const*,int,char*,int /*<<< orphan*/  (*) (int /*<<< orphan*/ *,char const*,char const*,int,char const*,int /*<<< orphan*/ )) ; 
- char const** xtea_test_ct ; 
- char const** xtea_test_key ; 
- char const** xtea_test_pt ; 
+
+
+
+typedef char const uint8_t ;
+typedef int AVXTEA ;
+
+
+ int AV_RB32 (char const*) ;
+ int AV_WL32 (char const*,int ) ;
+ int XTEA_NUM_TESTS ;
+ int av_free (int *) ;
+ int * av_xtea_alloc () ;
+ int av_xtea_crypt (int *,char const*,char const*,int,char const*,int ) ;
+ int av_xtea_init (int *,char const*) ;
+ int av_xtea_le_crypt (int *,char const*,char const*,int,char const*,int ) ;
+ int av_xtea_le_init (int *,char const*) ;
+ int memcpy (char const*,char*,int) ;
+ int printf (char*) ;
+ int test_xtea (int *,char const*,char const*,char const*,int,char const*,int,char*,int (*) (int *,char const*,char const*,int,char const*,int )) ;
+ char const** xtea_test_ct ;
+ char const** xtea_test_key ;
+ char const** xtea_test_pt ;
 
 int main(void)
 {
@@ -44,8 +44,8 @@ int main(void)
     for (i = 0; i < XTEA_NUM_TESTS; i++) {
         av_xtea_init(ctx, xtea_test_key[i]);
 
-        test_xtea(ctx, buf, xtea_test_pt[i], xtea_test_ct[i], 1, NULL, 0, "encryption", av_xtea_crypt);
-        test_xtea(ctx, buf, xtea_test_ct[i], xtea_test_pt[i], 1, NULL, 1, "decryption", av_xtea_crypt);
+        test_xtea(ctx, buf, xtea_test_pt[i], xtea_test_ct[i], 1, ((void*)0), 0, "encryption", av_xtea_crypt);
+        test_xtea(ctx, buf, xtea_test_ct[i], xtea_test_pt[i], 1, ((void*)0), 1, "decryption", av_xtea_crypt);
 
         for (j = 0; j < 4; j++)
             AV_WL32(&buf[4*j], AV_RB32(&xtea_test_key[i][4*j]));
@@ -54,14 +54,14 @@ int main(void)
             AV_WL32(&ct[4*j], AV_RB32(&xtea_test_ct[i][4*j]));
             AV_WL32(&pl[4*j], AV_RB32(&xtea_test_pt[i][4*j]));
         }
-        test_xtea(ctx, buf, pl, ct, 1, NULL, 0, "encryption", av_xtea_le_crypt);
-        test_xtea(ctx, buf, ct, pl, 1, NULL, 1, "decryption", av_xtea_le_crypt);
+        test_xtea(ctx, buf, pl, ct, 1, ((void*)0), 0, "encryption", av_xtea_le_crypt);
+        test_xtea(ctx, buf, ct, pl, 1, ((void*)0), 1, "decryption", av_xtea_le_crypt);
 
-        /* encrypt */
+
         memcpy(iv, "HALLO123", 8);
         av_xtea_crypt(ctx, ct, src, 4, iv, 0);
 
-        /* decrypt into pl */
+
         memcpy(iv, "HALLO123", 8);
         test_xtea(ctx, pl, ct, src, 4, iv, 1, "CBC decryption", av_xtea_crypt);
 

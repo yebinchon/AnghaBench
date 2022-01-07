@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ TEST_STATUS ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  scalar_t__ HGLOBAL ;
 
-/* Variables and functions */
- scalar_t__ FAILED ; 
- int /*<<< orphan*/  GMEM_FIXED ; 
- int GMEM_MODIFY ; 
- int GMEM_MOVEABLE ; 
- scalar_t__ GlobalAlloc (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  GlobalFree (scalar_t__) ; 
- int /*<<< orphan*/  GlobalLock (scalar_t__) ; 
- scalar_t__ GlobalReAlloc (scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  GlobalUnlock (scalar_t__) ; 
- scalar_t__ IsMovable (scalar_t__) ; 
- scalar_t__ MEM_BLOCK_SIZE ; 
- int /*<<< orphan*/  OUTPUT_Handle (scalar_t__) ; 
- int /*<<< orphan*/  OUTPUT_Line (char*) ; 
- int /*<<< orphan*/  OUTPUT_Result (scalar_t__) ; 
- scalar_t__ PASSED ; 
- scalar_t__ SKIPPED ; 
- scalar_t__ TEST_CombineStatus (scalar_t__,scalar_t__) ; 
- scalar_t__ TEST_MemoryRead (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ TEST_MemoryWrite (int /*<<< orphan*/ ,scalar_t__) ; 
+
+
+
+typedef scalar_t__ TEST_STATUS ;
+typedef int LPVOID ;
+typedef scalar_t__ HGLOBAL ;
+
+
+ scalar_t__ FAILED ;
+ int GMEM_FIXED ;
+ int GMEM_MODIFY ;
+ int GMEM_MOVEABLE ;
+ scalar_t__ GlobalAlloc (int ,scalar_t__) ;
+ int GlobalFree (scalar_t__) ;
+ int GlobalLock (scalar_t__) ;
+ scalar_t__ GlobalReAlloc (scalar_t__,scalar_t__,int) ;
+ int GlobalUnlock (scalar_t__) ;
+ scalar_t__ IsMovable (scalar_t__) ;
+ scalar_t__ MEM_BLOCK_SIZE ;
+ int OUTPUT_Handle (scalar_t__) ;
+ int OUTPUT_Line (char*) ;
+ int OUTPUT_Result (scalar_t__) ;
+ scalar_t__ PASSED ;
+ scalar_t__ SKIPPED ;
+ scalar_t__ TEST_CombineStatus (scalar_t__,scalar_t__) ;
+ scalar_t__ TEST_MemoryRead (int ,scalar_t__) ;
+ scalar_t__ TEST_MemoryWrite (int ,scalar_t__) ;
 
 TEST_STATUS TestGlobalReAllocFixed()
 {
-    HGLOBAL     hMem       = 0;
-    HGLOBAL     hReAlloced = 0;
-    LPVOID      pMem       = 0;
-    TEST_STATUS subtest    = SKIPPED;
-    TEST_STATUS result     = SKIPPED;
+    HGLOBAL hMem = 0;
+    HGLOBAL hReAlloced = 0;
+    LPVOID pMem = 0;
+    TEST_STATUS subtest = SKIPPED;
+    TEST_STATUS result = SKIPPED;
 
     OUTPUT_Line("Testing GlobalReAlloc() on memory allocated as GMEM_FIXED");
 
-    /* Case 1: convert a fixed block to a movable block. */
+
     OUTPUT_Line("Allocating buffer");
     hMem = GlobalAlloc(GMEM_FIXED, MEM_BLOCK_SIZE);
     if (0 != hMem)
@@ -99,7 +99,7 @@ TEST_STATUS TestGlobalReAllocFixed()
     result = TEST_CombineStatus(result, subtest);
     subtest = SKIPPED;
 
-    /* case 2 only move a fixed block */
+
     OUTPUT_Line("Allocating buffer");
     hMem = GlobalAlloc(GMEM_FIXED, MEM_BLOCK_SIZE);
     if (0 != hMem)
@@ -142,7 +142,7 @@ TEST_STATUS TestGlobalReAllocFixed()
     result = TEST_CombineStatus(result, subtest);
     subtest = SKIPPED;
 
-    /* Case 3: re-allocate a fixed block in place */
+
     OUTPUT_Line("Allocating buffer");
     hMem = GlobalAlloc(GMEM_FIXED, MEM_BLOCK_SIZE);
     if (0 != hMem)

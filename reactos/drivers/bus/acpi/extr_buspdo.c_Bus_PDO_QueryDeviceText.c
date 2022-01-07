@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  ULONG_PTR ;
+
+
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int ULONG_PTR ;
 struct TYPE_11__ {int DeviceTextType; } ;
 struct TYPE_12__ {TYPE_1__ QueryDeviceText; } ;
 struct TYPE_16__ {TYPE_2__ Parameters; } ;
-struct TYPE_13__ {int /*<<< orphan*/  Information; int /*<<< orphan*/  Status; } ;
+struct TYPE_13__ {int Information; int Status; } ;
 struct TYPE_15__ {TYPE_3__ IoStatus; } ;
-struct TYPE_14__ {int /*<<< orphan*/  AcpiHandle; int /*<<< orphan*/  HardwareIDs; } ;
-typedef  char* PWCHAR ;
-typedef  TYPE_4__* PPDO_DEVICE_DATA ;
-typedef  TYPE_5__* PIRP ;
-typedef  TYPE_6__* PIO_STACK_LOCATION ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
+struct TYPE_14__ {int AcpiHandle; int HardwareIDs; } ;
+typedef char* PWCHAR ;
+typedef TYPE_4__* PPDO_DEVICE_DATA ;
+typedef TYPE_5__* PIRP ;
+typedef TYPE_6__* PIO_STACK_LOCATION ;
+typedef int NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,char*) ; 
-#define  DeviceTextDescription 128 
- char* ExAllocatePoolWithTag (int /*<<< orphan*/ ,int,char) ; 
- TYPE_6__* IoGetCurrentIrpStackLocation (TYPE_5__*) ; 
- int /*<<< orphan*/  PAGED_CODE () ; 
- int /*<<< orphan*/  PagedPool ; 
- char* ProcessorNameString ; 
- int /*<<< orphan*/  RtlCopyMemory (char*,char*,int) ; 
- int /*<<< orphan*/  STATUS_INSUFFICIENT_RESOURCES ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  wcslen (char*) ; 
- int /*<<< orphan*/  wcsstr (int /*<<< orphan*/ ,char*) ; 
+
+ int DPRINT (char*,char*) ;
+
+ char* ExAllocatePoolWithTag (int ,int,char) ;
+ TYPE_6__* IoGetCurrentIrpStackLocation (TYPE_5__*) ;
+ int PAGED_CODE () ;
+ int PagedPool ;
+ char* ProcessorNameString ;
+ int RtlCopyMemory (char*,char*,int) ;
+ int STATUS_INSUFFICIENT_RESOURCES ;
+ int STATUS_SUCCESS ;
+ int wcslen (char*) ;
+ int wcsstr (int ,char*) ;
 
 NTSTATUS
 Bus_PDO_QueryDeviceText(
-     PPDO_DEVICE_DATA     DeviceData,
-      PIRP   Irp )
+     PPDO_DEVICE_DATA DeviceData,
+      PIRP Irp )
 {
-    PWCHAR  Buffer, Temp;
-    PIO_STACK_LOCATION   stack;
-    NTSTATUS    status = Irp->IoStatus.Status;
+    PWCHAR Buffer, Temp;
+    PIO_STACK_LOCATION stack;
+    NTSTATUS status = Irp->IoStatus.Status;
     PAGED_CODE ();
 
     stack = IoGetCurrentIrpStackLocation (Irp);
 
     switch (stack->Parameters.QueryDeviceText.DeviceTextType) {
 
-    case DeviceTextDescription:
+    case 128:
 
         if (!Irp->IoStatus.Information) {
             if (wcsstr (DeviceData->HardwareIDs, L"PNP000") != 0)
@@ -114,7 +114,7 @@ Bus_PDO_QueryDeviceText(
                 Temp = L"ACPI Power Resource";
             else if (wcsstr(DeviceData->HardwareIDs, L"Processor") != 0)
             {
-                if (ProcessorNameString != NULL)
+                if (ProcessorNameString != ((void*)0))
                     Temp = ProcessorNameString;
                 else
                     Temp = L"Processor";
@@ -125,9 +125,9 @@ Bus_PDO_QueryDeviceText(
                 Temp = L"Smart Battery";
             else if (wcsstr(DeviceData->HardwareIDs, L"ACPI0003") != 0)
                 Temp = L"AC Adapter";
-            /* Simply checking if AcpiHandle is NULL eliminates the need to check
-             * for the 4 different names that ACPI knows the fixed feature button as internally
-             */
+
+
+
             else if (!DeviceData->AcpiHandle)
                 Temp = L"ACPI Fixed Feature Button";
             else

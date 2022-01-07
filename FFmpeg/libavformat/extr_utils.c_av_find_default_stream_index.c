@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int nb_streams; TYPE_2__** streams; } ;
 struct TYPE_6__ {int disposition; scalar_t__ discard; scalar_t__ codec_info_nb_frames; TYPE_1__* codecpar; } ;
 struct TYPE_5__ {scalar_t__ codec_type; scalar_t__ sample_rate; scalar_t__ height; scalar_t__ width; } ;
-typedef  TYPE_2__ AVStream ;
-typedef  TYPE_3__ AVFormatContext ;
+typedef TYPE_2__ AVStream ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- scalar_t__ AVDISCARD_ALL ; 
- scalar_t__ AVMEDIA_TYPE_AUDIO ; 
- scalar_t__ AVMEDIA_TYPE_VIDEO ; 
- int AV_DISPOSITION_ATTACHED_PIC ; 
- int INT_MIN ; 
+
+ scalar_t__ AVDISCARD_ALL ;
+ scalar_t__ AVMEDIA_TYPE_AUDIO ;
+ scalar_t__ AVMEDIA_TYPE_VIDEO ;
+ int AV_DISPOSITION_ATTACHED_PIC ;
+ int INT_MIN ;
 
 int av_find_default_stream_index(AVFormatContext *s)
 {

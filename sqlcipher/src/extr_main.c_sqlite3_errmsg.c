@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ pErr; int /*<<< orphan*/  mutex; scalar_t__ errCode; scalar_t__ mallocFailed; } ;
-typedef  TYPE_1__ sqlite3 ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_MISUSE_BKPT ; 
- scalar_t__ SQLITE_NOMEM_BKPT ; 
- int /*<<< orphan*/  assert (int) ; 
- char const* sqlite3ErrStr (scalar_t__) ; 
- int /*<<< orphan*/  sqlite3SafetyCheckSickOrOk (TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3_mutex_enter (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_mutex_leave (int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_value_text (scalar_t__) ; 
- int /*<<< orphan*/  testcase (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ pErr; int mutex; scalar_t__ errCode; scalar_t__ mallocFailed; } ;
+typedef TYPE_1__ sqlite3 ;
+
+
+ scalar_t__ SQLITE_MISUSE_BKPT ;
+ scalar_t__ SQLITE_NOMEM_BKPT ;
+ int assert (int) ;
+ char const* sqlite3ErrStr (scalar_t__) ;
+ int sqlite3SafetyCheckSickOrOk (TYPE_1__*) ;
+ int sqlite3_mutex_enter (int ) ;
+ int sqlite3_mutex_leave (int ) ;
+ scalar_t__ sqlite3_value_text (scalar_t__) ;
+ int testcase (int) ;
 
 const char *sqlite3_errmsg(sqlite3 *db){
   const char *z;

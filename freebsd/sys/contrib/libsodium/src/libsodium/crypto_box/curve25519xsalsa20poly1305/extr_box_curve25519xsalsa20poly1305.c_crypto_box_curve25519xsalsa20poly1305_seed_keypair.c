@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  crypto_hash_sha512 (unsigned char*,unsigned char const*,int) ; 
- int crypto_scalarmult_curve25519_base (unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  sodium_memzero (unsigned char*,int) ; 
+ int crypto_hash_sha512 (unsigned char*,unsigned char const*,int) ;
+ int crypto_scalarmult_curve25519_base (unsigned char*,unsigned char*) ;
+ int memcpy (unsigned char*,unsigned char*,int) ;
+ int sodium_memzero (unsigned char*,int) ;
 
 int
 crypto_box_curve25519xsalsa20poly1305_seed_keypair(unsigned char *pk,

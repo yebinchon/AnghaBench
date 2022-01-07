@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct TYPE_5__ {int nExtra; int iVersionMadeBy; int iVersionExtract; int flags; int iCompression; int mTime; int mDate; int nFile; int nComment; int iDiskStart; int iInternalAttr; int /*<<< orphan*/  zFile; int /*<<< orphan*/  iOffset; int /*<<< orphan*/  iExternalAttr; int /*<<< orphan*/  szUncompressed; int /*<<< orphan*/  szCompressed; int /*<<< orphan*/  crc32; } ;
-struct TYPE_4__ {int /*<<< orphan*/  mUnixTime; int /*<<< orphan*/  aExtra; TYPE_2__ cds; } ;
-typedef  TYPE_1__ ZipfileEntry ;
-typedef  TYPE_2__ ZipfileCDS ;
 
-/* Variables and functions */
- size_t ZIPFILE_CDS_NFILE_OFF ; 
- int ZIPFILE_EXTRA_TIMESTAMP ; 
- int /*<<< orphan*/  ZIPFILE_SIGNATURE_CDS ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  zipfileWrite16 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  zipfileWrite32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct TYPE_5__ {int nExtra; int iVersionMadeBy; int iVersionExtract; int flags; int iCompression; int mTime; int mDate; int nFile; int nComment; int iDiskStart; int iInternalAttr; int zFile; int iOffset; int iExternalAttr; int szUncompressed; int szCompressed; int crc32; } ;
+struct TYPE_4__ {int mUnixTime; int aExtra; TYPE_2__ cds; } ;
+typedef TYPE_1__ ZipfileEntry ;
+typedef TYPE_2__ ZipfileCDS ;
+
+
+ size_t ZIPFILE_CDS_NFILE_OFF ;
+ int ZIPFILE_EXTRA_TIMESTAMP ;
+ int ZIPFILE_SIGNATURE_CDS ;
+ int assert (int) ;
+ int memcpy (int *,int ,int) ;
+ int zipfileWrite16 (int *,int) ;
+ int zipfileWrite32 (int *,int ) ;
 
 __attribute__((used)) static int zipfileSerializeCDS(ZipfileEntry *pEntry, u8 *aBuf){
   u8 *a = aBuf;

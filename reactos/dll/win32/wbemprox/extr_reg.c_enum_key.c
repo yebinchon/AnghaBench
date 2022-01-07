@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int LONG ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int ERROR_NO_MORE_ITEMS ; 
- int ERROR_SUCCESS ; 
- scalar_t__ E_OUTOFMEMORY ; 
- int /*<<< orphan*/  KEY_ENUMERATE_SUB_KEYS ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int RegEnumKeyW (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- int RegOpenKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysAllocString (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VT_UI4 ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  free_bstr_array (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * heap_realloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  set_variant (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ to_bstr_array (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int WCHAR ;
+typedef int VARIANT ;
+typedef int LONG ;
+typedef scalar_t__ HRESULT ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef int BSTR ;
+
+
+ int ARRAY_SIZE (int *) ;
+ int ERROR_NO_MORE_ITEMS ;
+ int ERROR_SUCCESS ;
+ scalar_t__ E_OUTOFMEMORY ;
+ int KEY_ENUMERATE_SUB_KEYS ;
+ int RegCloseKey (int ) ;
+ int RegEnumKeyW (int ,int,int *,int) ;
+ int RegOpenKeyExW (int ,int const*,int ,int ,int *) ;
+ scalar_t__ S_OK ;
+ int SysAllocString (int *) ;
+ int SysFreeString (int ) ;
+ int TRACE (char*,int ,int ) ;
+ int VT_UI4 ;
+ int debugstr_w (int const*) ;
+ int free_bstr_array (int *,int) ;
+ int * heap_alloc (int) ;
+ int heap_free (int *) ;
+ int * heap_realloc (int *,int) ;
+ int set_variant (int ,int,int *,int *) ;
+ scalar_t__ to_bstr_array (int *,int,int *) ;
 
 __attribute__((used)) static HRESULT enum_key( HKEY root, const WCHAR *subkey, VARIANT *names, VARIANT *retval )
 {
@@ -54,7 +54,7 @@ __attribute__((used)) static HRESULT enum_key( HKEY root, const WCHAR *subkey, V
     if (!(strings = heap_alloc( count * sizeof(BSTR) ))) return E_OUTOFMEMORY;
     if ((res = RegOpenKeyExW( root, subkey, 0, KEY_ENUMERATE_SUB_KEYS, &hkey )))
     {
-        set_variant( VT_UI4, res, NULL, retval );
+        set_variant( VT_UI4, res, ((void*)0), retval );
         heap_free( strings );
         return S_OK;
     }
@@ -89,7 +89,7 @@ __attribute__((used)) static HRESULT enum_key( HKEY root, const WCHAR *subkey, V
         hr = to_bstr_array( strings, i, names );
         free_bstr_array( strings, i );
     }
-    set_variant( VT_UI4, res, NULL, retval );
+    set_variant( VT_UI4, res, ((void*)0), retval );
     RegCloseKey( hkey );
     heap_free( strings );
     return hr;

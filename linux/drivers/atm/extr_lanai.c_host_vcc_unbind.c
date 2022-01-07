@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lanai_vcc {size_t vci; int /*<<< orphan*/ * vbase; } ;
-struct lanai_dev {scalar_t__ nbound; int /*<<< orphan*/  conf1; int /*<<< orphan*/ ** vccs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONFIG1_POWERDOWN ; 
- int /*<<< orphan*/  DPRINTK (char*,...) ; 
- int /*<<< orphan*/  conf1_write (struct lanai_dev*) ; 
+
+
+
+struct lanai_vcc {size_t vci; int * vbase; } ;
+struct lanai_dev {scalar_t__ nbound; int conf1; int ** vccs; } ;
+
+
+ int CONFIG1_POWERDOWN ;
+ int DPRINTK (char*,...) ;
+ int conf1_write (struct lanai_dev*) ;
 
 __attribute__((used)) static inline void host_vcc_unbind(struct lanai_dev *lanai,
-	struct lanai_vcc *lvcc)
+ struct lanai_vcc *lvcc)
 {
-	if (lvcc->vbase == NULL)
-		return;	/* This vcc was never bound */
-	DPRINTK("Unbinding vci %d\n", lvcc->vci);
-	lvcc->vbase = NULL;
-	lanai->vccs[lvcc->vci] = NULL;
-#ifdef USE_POWERDOWN
-	if (--lanai->nbound == 0) {
-		DPRINTK("Going into powerdown\n");
-		lanai->conf1 |= CONFIG1_POWERDOWN;
-		conf1_write(lanai);
-	}
-#endif
+ if (lvcc->vbase == ((void*)0))
+  return;
+ DPRINTK("Unbinding vci %d\n", lvcc->vci);
+ lvcc->vbase = ((void*)0);
+ lanai->vccs[lvcc->vci] = ((void*)0);
+
+
+
+
+
+
+
 }

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int datfd; int fd; int /*<<< orphan*/ * posfile; int /*<<< orphan*/ * datfile; int /*<<< orphan*/ * parent; int /*<<< orphan*/ * child; int /*<<< orphan*/ * prev; int /*<<< orphan*/ * next; int /*<<< orphan*/  read_tbl; int /*<<< orphan*/  percent; int /*<<< orphan*/ * inf; int /*<<< orphan*/  pos; } ;
-typedef  TYPE_1__ FILEDESC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  NO_PROB ; 
- int /*<<< orphan*/  POS_UNKNOWN ; 
- TYPE_1__* do_malloc (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int datfd; int fd; int * posfile; int * datfile; int * parent; int * child; int * prev; int * next; int read_tbl; int percent; int * inf; int pos; } ;
+typedef TYPE_1__ FILEDESC ;
+
+
+ int FALSE ;
+ int NO_PROB ;
+ int POS_UNKNOWN ;
+ TYPE_1__* do_malloc (int) ;
 
 __attribute__((used)) static FILEDESC *
 new_fp(void)
 {
-	FILEDESC	*fp;
+ FILEDESC *fp;
 
-	fp = do_malloc(sizeof(*fp));
-	fp->datfd = -1;
-	fp->pos = POS_UNKNOWN;
-	fp->inf = NULL;
-	fp->fd = -1;
-	fp->percent = NO_PROB;
-	fp->read_tbl = FALSE;
-	fp->next = NULL;
-	fp->prev = NULL;
-	fp->child = NULL;
-	fp->parent = NULL;
-	fp->datfile = NULL;
-	fp->posfile = NULL;
+ fp = do_malloc(sizeof(*fp));
+ fp->datfd = -1;
+ fp->pos = POS_UNKNOWN;
+ fp->inf = ((void*)0);
+ fp->fd = -1;
+ fp->percent = NO_PROB;
+ fp->read_tbl = FALSE;
+ fp->next = ((void*)0);
+ fp->prev = ((void*)0);
+ fp->child = ((void*)0);
+ fp->parent = ((void*)0);
+ fp->datfile = ((void*)0);
+ fp->posfile = ((void*)0);
 
-	return (fp);
+ return (fp);
 }

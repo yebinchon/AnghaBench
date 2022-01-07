@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct super_block {int dummy; } ;
 struct inode {int dummy; } ;
 struct op_inode_info {struct inode vfs_inode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- struct op_inode_info* kmem_cache_alloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  op_inode_cachep ; 
+
+ int GFP_KERNEL ;
+ struct op_inode_info* kmem_cache_alloc (int ,int ) ;
+ int op_inode_cachep ;
 
 __attribute__((used)) static struct inode *openprom_alloc_inode(struct super_block *sb)
 {
-	struct op_inode_info *oi;
+ struct op_inode_info *oi;
 
-	oi = kmem_cache_alloc(op_inode_cachep, GFP_KERNEL);
-	if (!oi)
-		return NULL;
+ oi = kmem_cache_alloc(op_inode_cachep, GFP_KERNEL);
+ if (!oi)
+  return ((void*)0);
 
-	return &oi->vfs_inode;
+ return &oi->vfs_inode;
 }

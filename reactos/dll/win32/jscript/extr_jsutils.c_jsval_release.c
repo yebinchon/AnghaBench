@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jsval_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IDispatch_Release (int /*<<< orphan*/ ) ; 
-#define  JSV_OBJECT 130 
-#define  JSV_STRING 129 
-#define  JSV_VARIANT 128 
- int /*<<< orphan*/  VariantClear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_object (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_variant (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsstr_release (int /*<<< orphan*/ ) ; 
- int jsval_type (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int jsval_t ;
+
+
+ int IDispatch_Release (int ) ;
+
+
+
+ int VariantClear (int ) ;
+ int get_object (int ) ;
+ int get_string (int ) ;
+ int get_variant (int ) ;
+ int heap_free (int ) ;
+ int jsstr_release (int ) ;
+ int jsval_type (int ) ;
 
 void jsval_release(jsval_t val)
 {
     switch(jsval_type(val)) {
-    case JSV_OBJECT:
+    case 130:
         if(get_object(val))
             IDispatch_Release(get_object(val));
         break;
-    case JSV_STRING:
+    case 129:
         jsstr_release(get_string(val));
         break;
-    case JSV_VARIANT:
+    case 128:
         VariantClear(get_variant(val));
         heap_free(get_variant(val));
         break;

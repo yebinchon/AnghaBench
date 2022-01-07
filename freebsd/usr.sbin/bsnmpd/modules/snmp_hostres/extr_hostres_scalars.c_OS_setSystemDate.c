@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timeval {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_ERR ; 
- int SNMP_ERR_GENERR ; 
- int SNMP_ERR_NOERROR ; 
- int settimeofday (struct timeval const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  syslog (int /*<<< orphan*/ ,char*) ; 
+
+ int LOG_ERR ;
+ int SNMP_ERR_GENERR ;
+ int SNMP_ERR_NOERROR ;
+ int settimeofday (struct timeval const*,int *) ;
+ int syslog (int ,char*) ;
 
 __attribute__((used)) static int
 OS_setSystemDate(const struct timeval *timeval_to_set)
 {
-	if (settimeofday(timeval_to_set, NULL) == -1) {
-		syslog(LOG_ERR, "settimeofday failed: %m");
-		return (SNMP_ERR_GENERR);
-	}
-	return (SNMP_ERR_NOERROR);
+ if (settimeofday(timeval_to_set, ((void*)0)) == -1) {
+  syslog(LOG_ERR, "settimeofday failed: %m");
+  return (SNMP_ERR_GENERR);
+ }
+ return (SNMP_ERR_NOERROR);
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int usage; struct wined3d_format* format; } ;
-struct wined3d_texture {TYPE_1__ resource; int /*<<< orphan*/  flags; } ;
+struct wined3d_texture {TYPE_1__ resource; int flags; } ;
 struct wined3d_gl_info {int dummy; } ;
-struct wined3d_format {int /*<<< orphan*/  glType; struct wined3d_context* glFormat; int /*<<< orphan*/  id; struct wined3d_texture* glInternal; struct wined3d_texture* rtInternal; struct wined3d_texture* glGammaInternal; scalar_t__ conv_byte_count; } ;
+struct wined3d_format {int glType; struct wined3d_context* glFormat; int id; struct wined3d_texture* glInternal; struct wined3d_texture* rtInternal; struct wined3d_texture* glGammaInternal; scalar_t__ conv_byte_count; } ;
 struct wined3d_context {struct wined3d_gl_info* gl_info; } ;
-struct wined3d_color_key_conversion {int /*<<< orphan*/  dst_format; } ;
-typedef  struct wined3d_texture* GLenum ;
-typedef  scalar_t__ BOOL ;
+struct wined3d_color_key_conversion {int dst_format; } ;
+typedef struct wined3d_texture* GLenum ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,struct wined3d_texture*,...) ; 
- int /*<<< orphan*/  TRUE ; 
- int WINED3DUSAGE_RENDERTARGET ; 
- int /*<<< orphan*/  WINED3D_TEXTURE_CONVERTED ; 
- int /*<<< orphan*/  debug_d3dformat (int /*<<< orphan*/ ) ; 
- struct wined3d_color_key_conversion* wined3d_format_get_color_key_conversion (struct wined3d_texture*,int /*<<< orphan*/ ) ; 
- struct wined3d_format* wined3d_get_format (struct wined3d_gl_info const*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ wined3d_resource_is_offscreen (TYPE_1__*) ; 
- int /*<<< orphan*/  wined3d_texture_allocate_gl_immutable_storage (struct wined3d_texture*,struct wined3d_texture*,struct wined3d_gl_info const*) ; 
- int /*<<< orphan*/  wined3d_texture_allocate_gl_mutable_storage (struct wined3d_texture*,struct wined3d_texture*,struct wined3d_format const*,struct wined3d_gl_info const*) ; 
- int /*<<< orphan*/  wined3d_texture_bind_and_dirtify (struct wined3d_texture*,struct wined3d_context*,scalar_t__) ; 
- scalar_t__ wined3d_texture_use_immutable_storage (struct wined3d_texture*,struct wined3d_gl_info const*) ; 
+
+ int FIXME (char*,int ) ;
+ int TRACE (char*,struct wined3d_texture*,...) ;
+ int TRUE ;
+ int WINED3DUSAGE_RENDERTARGET ;
+ int WINED3D_TEXTURE_CONVERTED ;
+ int debug_d3dformat (int ) ;
+ struct wined3d_color_key_conversion* wined3d_format_get_color_key_conversion (struct wined3d_texture*,int ) ;
+ struct wined3d_format* wined3d_get_format (struct wined3d_gl_info const*,int ,int) ;
+ scalar_t__ wined3d_resource_is_offscreen (TYPE_1__*) ;
+ int wined3d_texture_allocate_gl_immutable_storage (struct wined3d_texture*,struct wined3d_texture*,struct wined3d_gl_info const*) ;
+ int wined3d_texture_allocate_gl_mutable_storage (struct wined3d_texture*,struct wined3d_texture*,struct wined3d_format const*,struct wined3d_gl_info const*) ;
+ int wined3d_texture_bind_and_dirtify (struct wined3d_texture*,struct wined3d_context*,scalar_t__) ;
+ scalar_t__ wined3d_texture_use_immutable_storage (struct wined3d_texture*,struct wined3d_gl_info const*) ;
 
 __attribute__((used)) static void texture2d_prepare_texture(struct wined3d_texture *texture, struct wined3d_context *context, BOOL srgb)
 {

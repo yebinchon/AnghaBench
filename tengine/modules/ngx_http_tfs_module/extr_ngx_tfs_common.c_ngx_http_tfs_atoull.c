@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char u_char ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_OK ; 
- unsigned int ULLONG_MAX ; 
+
+
+
+typedef char u_char ;
+typedef int ngx_int_t ;
+
+
+ int NGX_ERROR ;
+ int NGX_OK ;
+ unsigned int ULLONG_MAX ;
 
 ngx_int_t
 ngx_http_tfs_atoull(u_char *line, size_t n, unsigned long long *value)
@@ -32,9 +32,9 @@ ngx_http_tfs_atoull(u_char *line, size_t n, unsigned long long *value)
 
         val = *line - '0';
 
-        /*
-         * Check for overflow
-         */
+
+
+
 
         if (res & (~0ull << 60)) {
 

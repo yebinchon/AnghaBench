@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hwbus_priv {int /*<<< orphan*/  func; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sdio_release_host (int /*<<< orphan*/ ) ; 
+
+
+
+struct hwbus_priv {int func; } ;
+
+
+ int sdio_release_host (int ) ;
 
 __attribute__((used)) static void cw1200_sdio_unlock(struct hwbus_priv *self)
 {
-	sdio_release_host(self->func);
+ sdio_release_host(self->func);
 }

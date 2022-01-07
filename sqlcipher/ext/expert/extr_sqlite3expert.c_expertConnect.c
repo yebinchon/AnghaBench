@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_1__* pTable; } ;
-typedef  TYPE_2__ sqlite3expert ;
-typedef  int /*<<< orphan*/  sqlite3_vtab ;
-typedef  int /*<<< orphan*/  sqlite3 ;
+typedef TYPE_2__ sqlite3expert ;
+typedef int sqlite3_vtab ;
+typedef int sqlite3 ;
 struct TYPE_7__ {TYPE_1__* pTab; TYPE_2__* pExpert; } ;
-struct TYPE_5__ {int /*<<< orphan*/  zName; } ;
-typedef  TYPE_3__ ExpertVtab ;
+struct TYPE_5__ {int zName; } ;
+typedef TYPE_3__ ExpertVtab ;
 
-/* Variables and functions */
- int SQLITE_ERROR ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- char* expertDequote (char const* const) ; 
- TYPE_3__* idxMalloc (int*,int) ; 
- int sqlite3_declare_vtab (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*) ; 
- scalar_t__ sqlite3_stricmp (int /*<<< orphan*/ ,char const* const) ; 
+
+ int SQLITE_ERROR ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ char* expertDequote (char const* const) ;
+ TYPE_3__* idxMalloc (int*,int) ;
+ int sqlite3_declare_vtab (int *,char*) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*) ;
+ scalar_t__ sqlite3_stricmp (int ,char const* const) ;
 
 __attribute__((used)) static int expertConnect(
   sqlite3 *db,

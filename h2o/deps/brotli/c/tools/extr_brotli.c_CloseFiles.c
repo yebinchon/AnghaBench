@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * fout; int /*<<< orphan*/ * fin; scalar_t__ current_input_path; scalar_t__ junk_source; scalar_t__ current_output_path; scalar_t__ copy_stat; int /*<<< orphan*/  test_integrity; } ;
-typedef  TYPE_1__ Context ;
-typedef  scalar_t__ BROTLI_BOOL ;
 
-/* Variables and functions */
- scalar_t__ BROTLI_FALSE ; 
- scalar_t__ BROTLI_TRUE ; 
- int /*<<< orphan*/  CopyStat (scalar_t__,scalar_t__) ; 
- char* PrintablePath (scalar_t__) ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unlink (scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * fout; int * fin; scalar_t__ current_input_path; scalar_t__ junk_source; scalar_t__ current_output_path; scalar_t__ copy_stat; int test_integrity; } ;
+typedef TYPE_1__ Context ;
+typedef scalar_t__ BROTLI_BOOL ;
+
+
+ scalar_t__ BROTLI_FALSE ;
+ scalar_t__ BROTLI_TRUE ;
+ int CopyStat (scalar_t__,scalar_t__) ;
+ char* PrintablePath (scalar_t__) ;
+ int errno ;
+ scalar_t__ fclose (int *) ;
+ int fprintf (int ,char*,char*,char*) ;
+ int stderr ;
+ char* strerror (int ) ;
+ int unlink (scalar_t__) ;
 
 __attribute__((used)) static BROTLI_BOOL CloseFiles(Context* context, BROTLI_BOOL success) {
   BROTLI_BOOL is_ok = BROTLI_TRUE;
@@ -41,7 +41,7 @@ __attribute__((used)) static BROTLI_BOOL CloseFiles(Context* context, BROTLI_BOO
       is_ok = BROTLI_FALSE;
     }
 
-    /* TOCTOU violation, but otherwise it is impossible to set file times. */
+
     if (success && is_ok && context->copy_stat) {
       CopyStat(context->current_input_path, context->current_output_path);
     }
@@ -60,8 +60,8 @@ __attribute__((used)) static BROTLI_BOOL CloseFiles(Context* context, BROTLI_BOO
     unlink(context->current_input_path);
   }
 
-  context->fin = NULL;
-  context->fout = NULL;
+  context->fin = ((void*)0);
+  context->fout = ((void*)0);
 
   return is_ok;
 }

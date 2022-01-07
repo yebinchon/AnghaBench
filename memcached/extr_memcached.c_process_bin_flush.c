@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_8__ ;
-typedef  struct TYPE_22__   TYPE_7__ ;
-typedef  struct TYPE_21__   TYPE_6__ ;
-typedef  struct TYPE_20__   TYPE_5__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
-typedef  struct TYPE_15__   TYPE_11__ ;
 
-/* Type definitions */
-typedef  scalar_t__ time_t ;
-typedef  void* rel_time_t ;
-struct TYPE_18__ {int /*<<< orphan*/  expiration; } ;
+
+
+typedef struct TYPE_23__ TYPE_8__ ;
+typedef struct TYPE_22__ TYPE_7__ ;
+typedef struct TYPE_21__ TYPE_6__ ;
+typedef struct TYPE_20__ TYPE_5__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+typedef struct TYPE_15__ TYPE_11__ ;
+
+
+typedef scalar_t__ time_t ;
+typedef void* rel_time_t ;
+struct TYPE_18__ {int expiration; } ;
 struct TYPE_19__ {TYPE_3__ body; } ;
 struct TYPE_22__ {TYPE_4__ message; } ;
-typedef  TYPE_7__ protocol_binary_request_flush ;
+typedef TYPE_7__ protocol_binary_request_flush ;
 struct TYPE_16__ {int extlen; } ;
 struct TYPE_17__ {TYPE_1__ request; } ;
 struct TYPE_23__ {TYPE_6__* thread; TYPE_2__ binary_header; } ;
-typedef  TYPE_8__ conn ;
-struct TYPE_20__ {int /*<<< orphan*/  mutex; int /*<<< orphan*/  flush_cmds; } ;
+typedef TYPE_8__ conn ;
+struct TYPE_20__ {int mutex; int flush_cmds; } ;
 struct TYPE_21__ {TYPE_5__ stats; } ;
-struct TYPE_15__ {scalar_t__ oldest_live; int /*<<< orphan*/  oldest_cas; scalar_t__ use_cas; int /*<<< orphan*/  flush_enabled; } ;
+struct TYPE_15__ {scalar_t__ oldest_live; int oldest_cas; scalar_t__ use_cas; int flush_enabled; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PROTOCOL_BINARY_RESPONSE_AUTH_ERROR ; 
- TYPE_7__* binary_get_request (TYPE_8__*) ; 
- scalar_t__ current_time ; 
- int /*<<< orphan*/  get_cas_id () ; 
- scalar_t__ ntohl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- void* realtime (scalar_t__) ; 
- TYPE_11__ settings ; 
- int /*<<< orphan*/  write_bin_error (TYPE_8__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_bin_response (TYPE_8__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int PROTOCOL_BINARY_RESPONSE_AUTH_ERROR ;
+ TYPE_7__* binary_get_request (TYPE_8__*) ;
+ scalar_t__ current_time ;
+ int get_cas_id () ;
+ scalar_t__ ntohl (int ) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ void* realtime (scalar_t__) ;
+ TYPE_11__ settings ;
+ int write_bin_error (TYPE_8__*,int ,int *,int ) ;
+ int write_bin_response (TYPE_8__*,int *,int ,int ,int ) ;
 
 __attribute__((used)) static void process_bin_flush(conn *c) {
     time_t exptime = 0;
@@ -52,8 +52,8 @@ __attribute__((used)) static void process_bin_flush(conn *c) {
     rel_time_t new_oldest = 0;
 
     if (!settings.flush_enabled) {
-      // flush_all is not allowed but we log it on stats
-      write_bin_error(c, PROTOCOL_BINARY_RESPONSE_AUTH_ERROR, NULL, 0);
+
+      write_bin_error(c, PROTOCOL_BINARY_RESPONSE_AUTH_ERROR, ((void*)0), 0);
       return;
     }
 
@@ -78,5 +78,5 @@ __attribute__((used)) static void process_bin_flush(conn *c) {
     c->thread->stats.flush_cmds++;
     pthread_mutex_unlock(&c->thread->stats.mutex);
 
-    write_bin_response(c, NULL, 0, 0, 0);
+    write_bin_response(c, ((void*)0), 0, 0, 0);
 }

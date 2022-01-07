@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int cpufreq_unregister (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hwpstate_goto_pstate (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int device_t ;
+
+
+ int cpufreq_unregister (int ) ;
+ int hwpstate_goto_pstate (int ,int ) ;
 
 __attribute__((used)) static int
 hwpstate_detach(device_t dev)
 {
 
-	hwpstate_goto_pstate(dev, 0);
-	return (cpufreq_unregister(dev));
+ hwpstate_goto_pstate(dev, 0);
+ return (cpufreq_unregister(dev));
 }

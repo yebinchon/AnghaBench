@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int VertexSize; int VertexType; void* VertexPtr; scalar_t__ VertexStride; scalar_t__ VertexStrideB; } ;
 struct TYPE_6__ {TYPE_1__ Array; } ;
-typedef  int /*<<< orphan*/  GLvoid ;
-typedef  scalar_t__ GLsizei ;
-typedef  int /*<<< orphan*/  GLshort ;
-typedef  int GLint ;
-typedef  int /*<<< orphan*/  GLfloat ;
-typedef  int GLenum ;
-typedef  int /*<<< orphan*/  GLdouble ;
-typedef  TYPE_2__ GLcontext ;
+typedef int GLvoid ;
+typedef scalar_t__ GLsizei ;
+typedef int GLshort ;
+typedef int GLint ;
+typedef int GLfloat ;
+typedef int GLenum ;
+typedef int GLdouble ;
+typedef TYPE_2__ GLcontext ;
 
-/* Variables and functions */
-#define  GL_DOUBLE 131 
-#define  GL_FLOAT 130 
-#define  GL_INT 129 
- int /*<<< orphan*/  GL_INVALID_ENUM ; 
- int /*<<< orphan*/  GL_INVALID_VALUE ; 
-#define  GL_SHORT 128 
- int /*<<< orphan*/  gl_error (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
+
+
+
+
+ int GL_INVALID_ENUM ;
+ int GL_INVALID_VALUE ;
+
+ int gl_error (TYPE_2__*,int ,char*) ;
 
 void gl_VertexPointer( GLcontext *ctx,
                        GLint size, GLenum type, GLsizei stride,
@@ -45,16 +45,16 @@ void gl_VertexPointer( GLcontext *ctx,
       return;
    }
    switch (type) {
-      case GL_SHORT:
+      case 128:
          ctx->Array.VertexStrideB = stride ? stride : size*sizeof(GLshort);
          break;
-      case GL_INT:
+      case 129:
          ctx->Array.VertexStrideB = stride ? stride : size*sizeof(GLint);
          break;
-      case GL_FLOAT:
+      case 130:
          ctx->Array.VertexStrideB = stride ? stride : size*sizeof(GLfloat);
          break;
-      case GL_DOUBLE:
+      case 131:
          ctx->Array.VertexStrideB = stride ? stride : size*sizeof(GLdouble);
          break;
       default:

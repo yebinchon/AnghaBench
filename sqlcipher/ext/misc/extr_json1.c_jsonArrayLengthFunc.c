@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t u32 ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  scalar_t__ sqlite3_int64 ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef size_t u32 ;
+typedef int sqlite3_value ;
+typedef scalar_t__ sqlite3_int64 ;
+typedef int sqlite3_context ;
 struct TYPE_8__ {scalar_t__ eType; int jnFlags; size_t n; } ;
 struct TYPE_7__ {int nNode; TYPE_2__* aNode; } ;
-typedef  TYPE_1__ JsonParse ;
-typedef  TYPE_2__ JsonNode ;
+typedef TYPE_1__ JsonParse ;
+typedef TYPE_2__ JsonNode ;
 
-/* Variables and functions */
- int JNODE_APPEND ; 
- scalar_t__ JSON_ARRAY ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_2__* jsonLookup (TYPE_1__*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ jsonNodeSize (TYPE_2__*) ; 
- TYPE_1__* jsonParseCached (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_int64 (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+ int JNODE_APPEND ;
+ scalar_t__ JSON_ARRAY ;
+ int assert (int) ;
+ TYPE_2__* jsonLookup (TYPE_1__*,char const*,int ,int *) ;
+ scalar_t__ jsonNodeSize (TYPE_2__*) ;
+ TYPE_1__* jsonParseCached (int *,int **,int *) ;
+ int sqlite3_result_int64 (int *,scalar_t__) ;
+ scalar_t__ sqlite3_value_text (int *) ;
 
 __attribute__((used)) static void jsonArrayLengthFunc(
   sqlite3_context *ctx,
   int argc,
   sqlite3_value **argv
 ){
-  JsonParse *p;          /* The parse */
+  JsonParse *p;
   sqlite3_int64 n = 0;
   u32 i;
   JsonNode *pNode;

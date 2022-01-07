@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct grub_ext4_extent_idx {int /*<<< orphan*/  leaf; int /*<<< orphan*/  leaf_hi; int /*<<< orphan*/  block; } ;
-struct grub_ext4_extent_header {scalar_t__ depth; int /*<<< orphan*/  entries; int /*<<< orphan*/  magic; } ;
-struct grub_ext2_data {int /*<<< orphan*/  disk; } ;
-typedef  int grub_uint32_t ;
-typedef  int grub_disk_addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXT2_BLOCK_SIZE (struct grub_ext2_data*) ; 
- int EXT4_EXT_MAGIC ; 
- int LOG2_EXT2_BLOCK_SIZE (struct grub_ext2_data*) ; 
- scalar_t__ grub_disk_read (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int grub_le_to_cpu16 (int /*<<< orphan*/ ) ; 
- int grub_le_to_cpu32 (int /*<<< orphan*/ ) ; 
+
+
+
+struct grub_ext4_extent_idx {int leaf; int leaf_hi; int block; } ;
+struct grub_ext4_extent_header {scalar_t__ depth; int entries; int magic; } ;
+struct grub_ext2_data {int disk; } ;
+typedef int grub_uint32_t ;
+typedef int grub_disk_addr_t ;
+
+
+ int EXT2_BLOCK_SIZE (struct grub_ext2_data*) ;
+ int EXT4_EXT_MAGIC ;
+ int LOG2_EXT2_BLOCK_SIZE (struct grub_ext2_data*) ;
+ scalar_t__ grub_disk_read (int ,int,int ,int ,char*) ;
+ int grub_le_to_cpu16 (int ) ;
+ int grub_le_to_cpu32 (int ) ;
 
 __attribute__((used)) static struct grub_ext4_extent_header *
 grub_ext4_find_leaf (struct grub_ext2_data *data, char *buf,

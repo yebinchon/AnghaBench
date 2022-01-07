@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lockfile ;
-typedef  scalar_t__ VCHIQ_INSTANCE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INT_MAX ; 
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  LOG_INFO ; 
- int /*<<< orphan*/  VCFILED_LOCKFILE ; 
- scalar_t__ VCHIQ_SUCCESS ; 
- scalar_t__ daemon (int /*<<< orphan*/ ,int) ; 
- int errno ; 
- int /*<<< orphan*/  foreground ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  global_connection ; 
- scalar_t__ global_initialise_instance ; 
- int /*<<< orphan*/  lock_prefix ; 
- scalar_t__ lock_prefix_set ; 
- scalar_t__ log_stderr ; 
- int /*<<< orphan*/  logmsg (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  parse_args (int,char* const*) ; 
- char const* progname ; 
- int /*<<< orphan*/  single_get_func_table () ; 
- int /*<<< orphan*/  sleep (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- char* strrchr (char const*,char) ; 
- int /*<<< orphan*/  vc_vchi_filesys_init (scalar_t__,int /*<<< orphan*/ *,int) ; 
- int vcfiled_lock (char*,int /*<<< orphan*/  (*) (int /*<<< orphan*/ ,char*,char* const)) ; 
- int /*<<< orphan*/  vchi_connect (int /*<<< orphan*/ *,int,scalar_t__) ; 
- int /*<<< orphan*/  vchi_create_connection (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int vchi_initialise (scalar_t__*) ; 
- int /*<<< orphan*/  vchi_mphi_message_driver_func_table () ; 
- scalar_t__ vchiq_initialise (scalar_t__*) ; 
- int /*<<< orphan*/  vcos_assert (int) ; 
- int /*<<< orphan*/  vcos_deinit () ; 
- int /*<<< orphan*/  vcos_init () ; 
- int /*<<< orphan*/  vcos_safe_sprintf (char*,int,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,...) ; 
+
+
+
+typedef int lockfile ;
+typedef scalar_t__ VCHIQ_INSTANCE_T ;
+
+
+ int INT_MAX ;
+ int LOG_ERR ;
+ int LOG_INFO ;
+ int VCFILED_LOCKFILE ;
+ scalar_t__ VCHIQ_SUCCESS ;
+ scalar_t__ daemon (int ,int) ;
+ int errno ;
+ int foreground ;
+ int fprintf (int ,char*,int) ;
+ int global_connection ;
+ scalar_t__ global_initialise_instance ;
+ int lock_prefix ;
+ scalar_t__ lock_prefix_set ;
+ scalar_t__ log_stderr ;
+ int logmsg (int ,char*,...) ;
+ int parse_args (int,char* const*) ;
+ char const* progname ;
+ int single_get_func_table () ;
+ int sleep (int ) ;
+ int stderr ;
+ char* strrchr (char const*,char) ;
+ int vc_vchi_filesys_init (scalar_t__,int *,int) ;
+ int vcfiled_lock (char*,int (*) (int ,char*,char* const)) ;
+ int vchi_connect (int *,int,scalar_t__) ;
+ int vchi_create_connection (int ,int ) ;
+ int vchi_initialise (scalar_t__*) ;
+ int vchi_mphi_message_driver_func_table () ;
+ scalar_t__ vchiq_initialise (scalar_t__*) ;
+ int vcos_assert (int) ;
+ int vcos_deinit () ;
+ int vcos_init () ;
+ int vcos_safe_sprintf (char*,int,int ,char*,int ,...) ;
 
 int main(int argc, char *const *argv)
 {

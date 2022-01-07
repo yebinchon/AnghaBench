@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_14__ {TYPE_5__* p_chain; } ;
 struct TYPE_13__ {TYPE_5__* p_chain; } ;
 struct TYPE_12__ {TYPE_5__* p_chain; } ;
-struct TYPE_15__ {scalar_t__ sets; TYPE_3__ post; int /*<<< orphan*/  pts; int /*<<< orphan*/  dts; TYPE_2__ frame; TYPE_1__ pre; scalar_t__ b_recovery_point; } ;
-typedef  TYPE_4__ decoder_sys_t ;
-struct TYPE_16__ {int i_buffer; int /*<<< orphan*/  i_flags; int /*<<< orphan*/  i_pts; int /*<<< orphan*/  i_dts; struct TYPE_16__* p_next; int /*<<< orphan*/ * p_buffer; } ;
-typedef  TYPE_5__ block_t ;
+struct TYPE_15__ {scalar_t__ sets; TYPE_3__ post; int pts; int dts; TYPE_2__ frame; TYPE_1__ pre; scalar_t__ b_recovery_point; } ;
+typedef TYPE_4__ decoder_sys_t ;
+struct TYPE_16__ {int i_buffer; int i_flags; int i_pts; int i_dts; struct TYPE_16__* p_next; int * p_buffer; } ;
+typedef TYPE_5__ block_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOCK_FLAG_DROP ; 
- TYPE_5__* GetXPSCopy (TYPE_4__*) ; 
- scalar_t__ HEVC_NAL_AUD ; 
- int /*<<< orphan*/  INITQ (int /*<<< orphan*/ ) ; 
- scalar_t__ SENT ; 
- int /*<<< orphan*/  block_ChainLastAppend (TYPE_5__***,TYPE_5__*) ; 
- int /*<<< orphan*/  date_Get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  frame ; 
- scalar_t__ hevc_getNALType (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  post ; 
- int /*<<< orphan*/  pre ; 
+
+ int BLOCK_FLAG_DROP ;
+ TYPE_5__* GetXPSCopy (TYPE_4__*) ;
+ scalar_t__ HEVC_NAL_AUD ;
+ int INITQ (int ) ;
+ scalar_t__ SENT ;
+ int block_ChainLastAppend (TYPE_5__***,TYPE_5__*) ;
+ int date_Get (int *) ;
+ int frame ;
+ scalar_t__ hevc_getNALType (int *) ;
+ int post ;
+ int pre ;
 
 __attribute__((used)) static block_t * OutputQueues(decoder_sys_t *p_sys, bool b_valid)
 {
-    block_t *p_output = NULL;
+    block_t *p_output = ((void*)0);
     block_t **pp_output_last = &p_output;
-    uint32_t i_flags = 0; /* Because block_ChainGather does not merge flags or times */
+    uint32_t i_flags = 0;
 
     if(p_sys->pre.p_chain)
     {
@@ -53,7 +53,7 @@ __attribute__((used)) static block_t * OutputQueues(decoder_sys_t *p_sys, bool b
             {
                 block_t *p_au = p_sys->pre.p_chain;
                 p_sys->pre.p_chain = p_sys->pre.p_chain->p_next;
-                p_au->p_next = NULL;
+                p_au->p_next = ((void*)0);
                 block_ChainLastAppend(&pp_output_last, p_au);
             }
             block_ChainLastAppend(&pp_output_last, GetXPSCopy(p_sys));

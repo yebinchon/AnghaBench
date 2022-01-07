@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mg_str {char* p; int len; } ;
 struct mbuf {int dummy; } ;
 struct cs_base64_ctx {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cs_base64_finish (struct cs_base64_ctx*) ; 
- int /*<<< orphan*/  cs_base64_init (struct cs_base64_ctx*,int /*<<< orphan*/ ,struct mbuf*) ; 
- int /*<<< orphan*/  cs_base64_update (struct cs_base64_ctx*,char*,int) ; 
- int /*<<< orphan*/  mbuf_append (struct mbuf*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mg_mbuf_append_base64_putc ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+ int cs_base64_finish (struct cs_base64_ctx*) ;
+ int cs_base64_init (struct cs_base64_ctx*,int ,struct mbuf*) ;
+ int cs_base64_update (struct cs_base64_ctx*,char*,int) ;
+ int mbuf_append (struct mbuf*,char const*,int ) ;
+ int mg_mbuf_append_base64_putc ;
+ int strlen (char const*) ;
 
 void mg_basic_auth_header(const struct mg_str user, const struct mg_str pass,
                           struct mbuf *buf) {

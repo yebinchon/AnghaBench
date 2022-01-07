@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * graph; } ;
-struct TYPE_7__ {int /*<<< orphan*/  nframes; int /*<<< orphan*/  frame; int /*<<< orphan*/  list; TYPE_1__ video_filters; } ;
-typedef  TYPE_2__ hb_work_private_t ;
-typedef  int /*<<< orphan*/  hb_buffer_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_frame_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * copy_frame (TYPE_2__*) ; 
- int /*<<< orphan*/  hb_avfilter_add_frame (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int hb_avfilter_get_frame (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_buffer_list_append (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  reinit_video_filters (TYPE_2__*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * graph; } ;
+struct TYPE_7__ {int nframes; int frame; int list; TYPE_1__ video_filters; } ;
+typedef TYPE_2__ hb_work_private_t ;
+typedef int hb_buffer_t ;
+
+
+ int av_frame_unref (int ) ;
+ int * copy_frame (TYPE_2__*) ;
+ int hb_avfilter_add_frame (int *,int ) ;
+ int hb_avfilter_get_frame (int *,int ) ;
+ int hb_buffer_list_append (int *,int *) ;
+ int reinit_video_filters (TYPE_2__*) ;
 
 __attribute__((used)) static void filter_video(hb_work_private_t *pv)
 {
     reinit_video_filters(pv);
-    if (pv->video_filters.graph != NULL)
+    if (pv->video_filters.graph != ((void*)0))
     {
         int result;
 

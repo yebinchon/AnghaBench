@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mp_cmd_ctx {struct MPContext* mpctx; } ;
-struct MPContext {scalar_t__ stop_play; int /*<<< orphan*/  playlist; } ;
+struct MPContext {scalar_t__ stop_play; int playlist; } ;
 
-/* Variables and functions */
- scalar_t__ PT_QUIT ; 
- scalar_t__ PT_STOP ; 
- int /*<<< orphan*/  mp_wakeup_core (struct MPContext*) ; 
- int /*<<< orphan*/  playlist_clear (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ PT_QUIT ;
+ scalar_t__ PT_STOP ;
+ int mp_wakeup_core (struct MPContext*) ;
+ int playlist_clear (int ) ;
 
 __attribute__((used)) static void cmd_stop(void *p)
 {

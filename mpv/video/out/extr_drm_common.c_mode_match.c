@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {unsigned int hdisplay; unsigned int vdisplay; } ;
-typedef  TYPE_1__ drmModeModeInfo ;
+typedef TYPE_1__ drmModeModeInfo ;
 
-/* Variables and functions */
- scalar_t__ isnan (double) ; 
- double mode_get_Hz (TYPE_1__ const*) ; 
- scalar_t__ round (double const) ; 
+
+ scalar_t__ isnan (double) ;
+ double mode_get_Hz (TYPE_1__ const*) ;
+ scalar_t__ round (double const) ;
 
 __attribute__((used)) static bool mode_match(const drmModeModeInfo *mode,
                        unsigned int width,

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int abs (int) ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int abs (int) ;
+ int memcpy (int*,int*,int) ;
 
 __attribute__((used)) static inline void XDeint8x8FieldC( uint8_t *dst, int i_dst,
                                     uint8_t *src, int i_src )
 {
     int y, x;
 
-    /* Interlaced */
+
     for( y = 0; y < 8; y += 2 )
     {
         memcpy( dst, src, 8 );
@@ -30,8 +30,8 @@ __attribute__((used)) static inline void XDeint8x8FieldC( uint8_t *dst, int i_ds
         for( x = 0; x < 8; x++ )
         {
             uint8_t *src2 = &src[2*i_src];
-            /* I use 8 pixels just to match the MMX version, but it's overkill
-             * 5 would be enough (less isn't good) */
+
+
             const int c0 = abs(src[x-4]-src2[x-2]) + abs(src[x-3]-src2[x-1]) +
                            abs(src[x-2]-src2[x+0]) + abs(src[x-1]-src2[x+1]) +
                            abs(src[x+0]-src2[x+2]) + abs(src[x+1]-src2[x+3]) +

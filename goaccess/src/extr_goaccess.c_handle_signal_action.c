@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int stop_processing; int /*<<< orphan*/  output_stdout; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_SUCCESS ; 
-#define  SIGINT 130 
-#define  SIGPIPE 129 
-#define  SIGTERM 128 
- int /*<<< orphan*/  cleanup (int /*<<< orphan*/ ) ; 
- TYPE_1__ conf ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  gwsreader ; 
- int /*<<< orphan*/  gwswriter ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stop_ws_server (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int stop_processing; int output_stdout; } ;
+
+
+ int EXIT_SUCCESS ;
+
+
+
+ int cleanup (int ) ;
+ TYPE_1__ conf ;
+ int exit (int ) ;
+ int fprintf (int ,char*) ;
+ int gwsreader ;
+ int gwswriter ;
+ int stderr ;
+ int stop_ws_server (int ,int ) ;
 
 __attribute__((used)) static void
 handle_signal_action (int sig_number)
 {
   switch (sig_number) {
-  case SIGTERM:
-  case SIGINT:
+  case 128:
+  case 130:
     fprintf (stderr, "\nSIGINT caught!\n");
     fprintf (stderr, "Closing GoAccess...\n");
 
@@ -45,9 +45,9 @@ handle_signal_action (int sig_number)
     }
 
     break;
-  case SIGPIPE:
+  case 129:
     fprintf (stderr, "SIGPIPE caught!\n");
-    /* ignore it */
+
     break;
   }
 }

@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  cl_git_sandbox_init (char*) ; 
- int /*<<< orphan*/  repo ; 
- int /*<<< orphan*/ * tree ; 
+ int cl_git_sandbox_init (char*) ;
+ int repo ;
+ int * tree ;
 
 void test_repo_headtree__initialize(void)
 {
-	repo = cl_git_sandbox_init("testrepo.git");
-	tree = NULL;
+ repo = cl_git_sandbox_init("testrepo.git");
+ tree = ((void*)0);
 }

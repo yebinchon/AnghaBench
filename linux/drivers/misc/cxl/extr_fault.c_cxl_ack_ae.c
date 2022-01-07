@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct cxl_context {int pending_fault; int /*<<< orphan*/  wq; int /*<<< orphan*/  lock; int /*<<< orphan*/  dsisr; int /*<<< orphan*/  fault_dsisr; int /*<<< orphan*/  dar; int /*<<< orphan*/  fault_addr; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* ack_irq ) (struct cxl_context*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CXL_PSL_TFC_An_AE ; 
- TYPE_1__* cxl_ops ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  stub1 (struct cxl_context*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wake_up_all (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct cxl_context {int pending_fault; int wq; int lock; int dsisr; int fault_dsisr; int dar; int fault_addr; } ;
+struct TYPE_2__ {int (* ack_irq ) (struct cxl_context*,int ,int ) ;} ;
+
+
+ int CXL_PSL_TFC_An_AE ;
+ TYPE_1__* cxl_ops ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int stub1 (struct cxl_context*,int ,int ) ;
+ int wake_up_all (int *) ;
 
 __attribute__((used)) static void cxl_ack_ae(struct cxl_context *ctx)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	cxl_ops->ack_irq(ctx, CXL_PSL_TFC_An_AE, 0);
+ cxl_ops->ack_irq(ctx, CXL_PSL_TFC_An_AE, 0);
 
-	spin_lock_irqsave(&ctx->lock, flags);
-	ctx->pending_fault = true;
-	ctx->fault_addr = ctx->dar;
-	ctx->fault_dsisr = ctx->dsisr;
-	spin_unlock_irqrestore(&ctx->lock, flags);
+ spin_lock_irqsave(&ctx->lock, flags);
+ ctx->pending_fault = 1;
+ ctx->fault_addr = ctx->dar;
+ ctx->fault_dsisr = ctx->dsisr;
+ spin_unlock_irqrestore(&ctx->lock, flags);
 
-	wake_up_all(&ctx->wq);
+ wake_up_all(&ctx->wq);
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  install_sec; int /*<<< orphan*/  hinf; } ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  INFCONTEXT ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_1__ ADVInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CheckAdminRights ; 
- int /*<<< orphan*/  E_FAIL ; 
- scalar_t__ IsNTAdmin (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  SetupFindFirstLineW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetupGetIntField (int /*<<< orphan*/ *,int,int*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int install_sec; int hinf; } ;
+typedef int INT ;
+typedef int INFCONTEXT ;
+typedef int HRESULT ;
+typedef TYPE_1__ ADVInfo ;
+
+
+ int CheckAdminRights ;
+ int E_FAIL ;
+ scalar_t__ IsNTAdmin (int ,int *) ;
+ int S_OK ;
+ int SetupFindFirstLineW (int ,int ,int ,int *) ;
+ int SetupGetIntField (int *,int,int*) ;
 
 __attribute__((used)) static HRESULT check_admin_rights(const ADVInfo *info)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static HRESULT check_admin_rights(const ADVInfo *info)
         return S_OK;
 
     if (check == 1)
-        hr = IsNTAdmin(0, NULL) ? S_OK : E_FAIL;
+        hr = IsNTAdmin(0, ((void*)0)) ? S_OK : E_FAIL;
 
     return hr;
 }

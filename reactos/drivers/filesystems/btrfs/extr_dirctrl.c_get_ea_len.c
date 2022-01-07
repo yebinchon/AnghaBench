@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  root ;
-typedef  int /*<<< orphan*/  device_extension ;
-typedef  int ULONG ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint16_t ;
+typedef int root ;
+typedef int device_extension ;
+typedef int ULONG ;
 struct TYPE_3__ {scalar_t__ NextEntryOffset; scalar_t__ EaValueLength; scalar_t__ EaNameLength; } ;
-typedef  int /*<<< orphan*/  PIRP ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  TYPE_1__ FILE_FULL_EA_INFORMATION ;
+typedef int PIRP ;
+typedef int NTSTATUS ;
+typedef TYPE_1__ FILE_FULL_EA_INFORMATION ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EA_EA ; 
- int /*<<< orphan*/  EA_EA_HASH ; 
- int /*<<< orphan*/  ExFreePool (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IoCheckEaBufferValidity (TYPE_1__*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ get_xattr (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int EA_EA ;
+ int EA_EA_HASH ;
+ int ExFreePool (int *) ;
+ int IoCheckEaBufferValidity (TYPE_1__*,int ,int*) ;
+ int NT_SUCCESS (int ) ;
+ int WARN (char*,int ,int) ;
+ scalar_t__ get_xattr (int *,int *,int ,int ,int ,int **,int *,int ) ;
 
 __attribute__((used)) static ULONG get_ea_len(device_extension* Vcb, root* subvol, uint64_t inode, PIRP Irp) {
     uint8_t* eadata;
@@ -58,7 +58,7 @@ __attribute__((used)) static ULONG get_ea_len(device_extension* Vcb, root* subvo
                     break;
 
                 eainfo = (FILE_FULL_EA_INFORMATION*)(((uint8_t*)eainfo) + eainfo->NextEntryOffset);
-            } while (true);
+            } while (1);
 
             ExFreePool(eadata);
 

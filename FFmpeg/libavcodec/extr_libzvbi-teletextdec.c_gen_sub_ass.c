@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_5__ ;
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_23__ TYPE_5__ ;
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
 struct TYPE_19__ {int columns; int pgno; int rows; TYPE_2__* text; } ;
-typedef  TYPE_1__ vbi_page ;
-typedef  int /*<<< orphan*/  vbi_color ;
+typedef TYPE_1__ vbi_page ;
+typedef int vbi_color ;
 struct TYPE_20__ {scalar_t__ opacity; } ;
-typedef  TYPE_2__ vbi_char ;
-struct TYPE_21__ {int* subtitle_map; int last_ass_alignment; int /*<<< orphan*/  readorder; } ;
-typedef  TYPE_3__ TeletextContext ;
-struct TYPE_23__ {int /*<<< orphan*/  str; scalar_t__ len; } ;
-struct TYPE_22__ {int /*<<< orphan*/  type; int /*<<< orphan*/  ass; } ;
-typedef  TYPE_4__ AVSubtitleRect ;
-typedef  TYPE_5__ AVBPrint ;
+typedef TYPE_2__ vbi_char ;
+struct TYPE_21__ {int* subtitle_map; int last_ass_alignment; int readorder; } ;
+typedef TYPE_3__ TeletextContext ;
+struct TYPE_23__ {int str; scalar_t__ len; } ;
+struct TYPE_22__ {int type; int ass; } ;
+typedef TYPE_4__ AVSubtitleRect ;
+typedef TYPE_5__ AVBPrint ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_BPRINT_SIZE_UNLIMITED ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFABS (int) ; 
- int FFMIN (int,int) ; 
- int /*<<< orphan*/  SUBTITLE_ASS ; 
- int /*<<< orphan*/  SUBTITLE_NONE ; 
- int /*<<< orphan*/  VBI_BLACK ; 
- scalar_t__ VBI_TRANSPARENT_SPACE ; 
- int /*<<< orphan*/  VBI_WHITE ; 
- int /*<<< orphan*/  av_bprint_finalize (TYPE_5__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_bprint_init (TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_bprint_is_complete (TYPE_5__*) ; 
- int /*<<< orphan*/  av_bprintf (TYPE_5__*,char*,...) ; 
- int av_clip (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  decode_string (TYPE_1__*,TYPE_2__*,TYPE_5__*,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_ass_get_dialog (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_trim_info (TYPE_1__*,TYPE_2__*,int*,int*,int*) ; 
+
+ int AVERROR (int ) ;
+ int AV_BPRINT_SIZE_UNLIMITED ;
+ int AV_LOG_DEBUG ;
+ int ENOMEM ;
+ int FFABS (int) ;
+ int FFMIN (int,int) ;
+ int SUBTITLE_ASS ;
+ int SUBTITLE_NONE ;
+ int VBI_BLACK ;
+ scalar_t__ VBI_TRANSPARENT_SPACE ;
+ int VBI_WHITE ;
+ int av_bprint_finalize (TYPE_5__*,int *) ;
+ int av_bprint_init (TYPE_5__*,int ,int ) ;
+ int av_bprint_is_complete (TYPE_5__*) ;
+ int av_bprintf (TYPE_5__*,char*,...) ;
+ int av_clip (int,int ,int) ;
+ int av_log (TYPE_3__*,int ,char*,int ) ;
+ int decode_string (TYPE_1__*,TYPE_2__*,TYPE_5__*,int,int,int *,int *) ;
+ int ff_ass_get_dialog (int ,int ,char*,int *,int ) ;
+ int get_trim_info (TYPE_1__*,TYPE_2__*,int*,int*,int*) ;
 
 __attribute__((used)) static int gen_sub_ass(TeletextContext *ctx, AVSubtitleRect *sub_rect, vbi_page *page, int chop_top)
 {
@@ -146,22 +146,22 @@ __attribute__((used)) static int gen_sub_ass(TeletextContext *ctx, AVSubtitleRec
             av_bprintf(&buf, " \\N");
 
     if (!av_bprint_is_complete(&buf)) {
-        av_bprint_finalize(&buf, NULL);
+        av_bprint_finalize(&buf, ((void*)0));
         return AVERROR(ENOMEM);
     }
 
     if (buf.len) {
         sub_rect->type = SUBTITLE_ASS;
-        sub_rect->ass = ff_ass_get_dialog(ctx->readorder++, 0, is_subtitle_page ? "Subtitle" : "Teletext", NULL, buf.str);
+        sub_rect->ass = ff_ass_get_dialog(ctx->readorder++, 0, is_subtitle_page ? "Subtitle" : "Teletext", ((void*)0), buf.str);
 
         if (!sub_rect->ass) {
-            av_bprint_finalize(&buf, NULL);
+            av_bprint_finalize(&buf, ((void*)0));
             return AVERROR(ENOMEM);
         }
         av_log(ctx, AV_LOG_DEBUG, "subtext:%s:txetbus\n", sub_rect->ass);
     } else {
         sub_rect->type = SUBTITLE_NONE;
     }
-    av_bprint_finalize(&buf, NULL);
+    av_bprint_finalize(&buf, ((void*)0));
     return 0;
 }

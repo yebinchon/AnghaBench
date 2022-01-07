@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL ;
-typedef  int /*<<< orphan*/  OCSP_RESPONSE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_dump_indent (void*,char*,int,int) ; 
- int /*<<< orphan*/  BIO_puts (void*,char*) ; 
- int /*<<< orphan*/  OCSP_RESPONSE_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OCSP_RESPONSE_print (void*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int SSL_get_tlsext_status_ocsp_resp (int /*<<< orphan*/ *,unsigned char const**) ; 
- int /*<<< orphan*/ * d2i_OCSP_RESPONSE (int /*<<< orphan*/ *,unsigned char const**,int) ; 
+
+
+
+typedef int SSL ;
+typedef int OCSP_RESPONSE ;
+
+
+ int BIO_dump_indent (void*,char*,int,int) ;
+ int BIO_puts (void*,char*) ;
+ int OCSP_RESPONSE_free (int *) ;
+ int OCSP_RESPONSE_print (void*,int *,int ) ;
+ int SSL_get_tlsext_status_ocsp_resp (int *,unsigned char const**) ;
+ int * d2i_OCSP_RESPONSE (int *,unsigned char const**,int) ;
 
 __attribute__((used)) static int ocsp_resp_cb(SSL *s, void *arg)
 {
@@ -28,12 +28,12 @@ __attribute__((used)) static int ocsp_resp_cb(SSL *s, void *arg)
     OCSP_RESPONSE *rsp;
     len = SSL_get_tlsext_status_ocsp_resp(s, &p);
     BIO_puts(arg, "OCSP response: ");
-    if (p == NULL) {
+    if (p == ((void*)0)) {
         BIO_puts(arg, "no response sent\n");
         return 1;
     }
-    rsp = d2i_OCSP_RESPONSE(NULL, &p, len);
-    if (rsp == NULL) {
+    rsp = d2i_OCSP_RESPONSE(((void*)0), &p, len);
+    if (rsp == ((void*)0)) {
         BIO_puts(arg, "response parse error\n");
         BIO_dump_indent(arg, (char *)p, len, 4);
         return 0;

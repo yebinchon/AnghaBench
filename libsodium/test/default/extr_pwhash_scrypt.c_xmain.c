@@ -1,39 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- unsigned int crypto_pwhash_scryptsalsa208sha256_bytes_max () ; 
- unsigned int crypto_pwhash_scryptsalsa208sha256_bytes_min () ; 
- unsigned int crypto_pwhash_scryptsalsa208sha256_memlimit_interactive () ; 
- unsigned int crypto_pwhash_scryptsalsa208sha256_memlimit_max () ; 
- unsigned int crypto_pwhash_scryptsalsa208sha256_memlimit_min () ; 
- unsigned int crypto_pwhash_scryptsalsa208sha256_memlimit_sensitive () ; 
- unsigned int crypto_pwhash_scryptsalsa208sha256_opslimit_interactive () ; 
- unsigned int crypto_pwhash_scryptsalsa208sha256_opslimit_max () ; 
- unsigned int crypto_pwhash_scryptsalsa208sha256_opslimit_min () ; 
- unsigned int crypto_pwhash_scryptsalsa208sha256_opslimit_sensitive () ; 
- scalar_t__ crypto_pwhash_scryptsalsa208sha256_passwd_max () ; 
- scalar_t__ crypto_pwhash_scryptsalsa208sha256_passwd_min () ; 
- unsigned int crypto_pwhash_scryptsalsa208sha256_saltbytes () ; 
- unsigned int crypto_pwhash_scryptsalsa208sha256_strbytes () ; 
- int /*<<< orphan*/  crypto_pwhash_scryptsalsa208sha256_strprefix () ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  str_tests () ; 
- unsigned int strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tv () ; 
- int /*<<< orphan*/  tv2 () ; 
- int /*<<< orphan*/  tv3 () ; 
+ int assert (int) ;
+ unsigned int crypto_pwhash_scryptsalsa208sha256_bytes_max () ;
+ unsigned int crypto_pwhash_scryptsalsa208sha256_bytes_min () ;
+ unsigned int crypto_pwhash_scryptsalsa208sha256_memlimit_interactive () ;
+ unsigned int crypto_pwhash_scryptsalsa208sha256_memlimit_max () ;
+ unsigned int crypto_pwhash_scryptsalsa208sha256_memlimit_min () ;
+ unsigned int crypto_pwhash_scryptsalsa208sha256_memlimit_sensitive () ;
+ unsigned int crypto_pwhash_scryptsalsa208sha256_opslimit_interactive () ;
+ unsigned int crypto_pwhash_scryptsalsa208sha256_opslimit_max () ;
+ unsigned int crypto_pwhash_scryptsalsa208sha256_opslimit_min () ;
+ unsigned int crypto_pwhash_scryptsalsa208sha256_opslimit_sensitive () ;
+ scalar_t__ crypto_pwhash_scryptsalsa208sha256_passwd_max () ;
+ scalar_t__ crypto_pwhash_scryptsalsa208sha256_passwd_min () ;
+ unsigned int crypto_pwhash_scryptsalsa208sha256_saltbytes () ;
+ unsigned int crypto_pwhash_scryptsalsa208sha256_strbytes () ;
+ int crypto_pwhash_scryptsalsa208sha256_strprefix () ;
+ int printf (char*) ;
+ int str_tests () ;
+ unsigned int strlen (int ) ;
+ int tv () ;
+ int tv2 () ;
+ int tv3 () ;
 
 int
 main(void)

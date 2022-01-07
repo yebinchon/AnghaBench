@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int enable; int /*<<< orphan*/  iface; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int enable; int iface; } ;
 struct TYPE_4__ {TYPE_1__ hw; } ;
-typedef  TYPE_2__ vk_t ;
+typedef TYPE_2__ vk_t ;
 struct retro_hw_render_interface {int dummy; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static bool vulkan_get_hw_render_interface(void *data,
       const struct retro_hw_render_interface **iface)
 {
    vk_t *vk = (vk_t*)data;
-   *iface   = (const struct retro_hw_render_interface*)&vk->hw.iface;
+   *iface = (const struct retro_hw_render_interface*)&vk->hw.iface;
    return vk->hw.enable;
 }

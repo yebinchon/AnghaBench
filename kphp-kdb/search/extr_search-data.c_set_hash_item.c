@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int extra; int mask; unsigned int* rates; int rates_len; } ;
-typedef  TYPE_1__ item_t ;
+typedef TYPE_1__ item_t ;
 
-/* Variables and functions */
- int FLAG_DELETED ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  vkprintf (int,char*,long long) ; 
- void* zzrealloc (unsigned int*,int,int) ; 
+
+ int FLAG_DELETED ;
+ int assert (int) ;
+ int vkprintf (int,char*,long long) ;
+ void* zzrealloc (unsigned int*,int,int) ;
 
 int set_hash_item (item_t *I, long long hc) {
   vkprintf (3, "set_hash_item : %016llx\n", hc);

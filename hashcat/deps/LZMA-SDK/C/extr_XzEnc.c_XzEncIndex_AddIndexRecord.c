@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UInt64 ;
-struct TYPE_4__ {unsigned int allocated; unsigned int size; unsigned int blocks; int /*<<< orphan*/  numBlocks; } ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  int /*<<< orphan*/  ISzAllocPtr ;
-typedef  TYPE_1__ CXzEncIndex ;
-typedef  int /*<<< orphan*/  Byte ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RINOK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SZ_ERROR_MEM ; 
- int /*<<< orphan*/  SZ_OK ; 
- int /*<<< orphan*/  XzEncIndex_ReAlloc (TYPE_1__*,size_t,int /*<<< orphan*/ ) ; 
- unsigned int Xz_WriteVarInt (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (unsigned int,int /*<<< orphan*/ *,unsigned int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UInt64 ;
+struct TYPE_4__ {unsigned int allocated; unsigned int size; unsigned int blocks; int numBlocks; } ;
+typedef int SRes ;
+typedef int ISzAllocPtr ;
+typedef TYPE_1__ CXzEncIndex ;
+typedef int Byte ;
+
+
+ int RINOK (int ) ;
+ int SZ_ERROR_MEM ;
+ int SZ_OK ;
+ int XzEncIndex_ReAlloc (TYPE_1__*,size_t,int ) ;
+ unsigned int Xz_WriteVarInt (int *,int ) ;
+ int memcpy (unsigned int,int *,unsigned int) ;
 
 __attribute__((used)) static SRes XzEncIndex_AddIndexRecord(CXzEncIndex *p, UInt64 unpackSize, UInt64 totalSize, ISzAllocPtr alloc)
 {

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  sqlite3 ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int SQLITE_ROW ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3_column_value (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * sqlite3_context_db_handle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_errmsg (int /*<<< orphan*/ *) ; 
- int sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free ; 
- char* sqlite3_mprintf (char*,int /*<<< orphan*/ ) ; 
- int sqlite3_prepare_v2 (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_error_code (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_value (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int sqlite3_step (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_stmt ;
+typedef int sqlite3_context ;
+typedef int sqlite3 ;
+
+
+ int SQLITE_OK ;
+ int SQLITE_ROW ;
+ int assert (int) ;
+ int sqlite3_column_value (int *,int ) ;
+ int * sqlite3_context_db_handle (int *) ;
+ int sqlite3_errmsg (int *) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_free ;
+ char* sqlite3_mprintf (char*,int ) ;
+ int sqlite3_prepare_v2 (int *,char const*,int,int **,int ) ;
+ int sqlite3_result_error_code (int *,int) ;
+ int sqlite3_result_text (int *,char*,int,int ) ;
+ int sqlite3_result_value (int *,int ) ;
+ int sqlite3_step (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
 
 __attribute__((used)) static void test_eval(
-  sqlite3_context *pCtx, 
+  sqlite3_context *pCtx,
   int nArg,
   sqlite3_value **argv
 ){

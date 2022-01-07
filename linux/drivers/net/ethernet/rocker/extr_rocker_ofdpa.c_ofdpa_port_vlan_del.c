@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
+
+
+
+
+typedef int u16 ;
 struct ofdpa_port {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OFDPA_OP_FLAG_REMOVE ; 
- int /*<<< orphan*/  htons (int /*<<< orphan*/ ) ; 
- int ofdpa_port_router_mac (struct ofdpa_port*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ofdpa_port_vlan (struct ofdpa_port*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int OFDPA_OP_FLAG_REMOVE ;
+ int htons (int ) ;
+ int ofdpa_port_router_mac (struct ofdpa_port*,int ,int ) ;
+ int ofdpa_port_vlan (struct ofdpa_port*,int ,int ) ;
 
 __attribute__((used)) static int ofdpa_port_vlan_del(struct ofdpa_port *ofdpa_port,
-			       u16 vid, u16 flags)
+          u16 vid, u16 flags)
 {
-	int err;
+ int err;
 
-	err = ofdpa_port_router_mac(ofdpa_port, OFDPA_OP_FLAG_REMOVE,
-				    htons(vid));
-	if (err)
-		return err;
+ err = ofdpa_port_router_mac(ofdpa_port, OFDPA_OP_FLAG_REMOVE,
+        htons(vid));
+ if (err)
+  return err;
 
-	return ofdpa_port_vlan(ofdpa_port, OFDPA_OP_FLAG_REMOVE,
-			       vid);
+ return ofdpa_port_vlan(ofdpa_port, OFDPA_OP_FLAG_REMOVE,
+          vid);
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  MSIHANDLE ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileA (int /*<<< orphan*/ ) ; 
- scalar_t__ ERROR_DIRECTORY ; 
- scalar_t__ ERROR_INSTALL_PACKAGE_REJECTED ; 
- scalar_t__ ERROR_INVALID_HANDLE ; 
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  MsiCloseHandle (int /*<<< orphan*/ ) ; 
- scalar_t__ MsiGetTargetPathA (int /*<<< orphan*/ ,char*,char*,scalar_t__*) ; 
- scalar_t__ MsiGetTargetPathW (int /*<<< orphan*/ ,char const*,char*,scalar_t__*) ; 
- int /*<<< orphan*/  create_package_db () ; 
- int /*<<< orphan*/  msifile ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ package_from_db (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef scalar_t__ UINT ;
+typedef int MSIHANDLE ;
+typedef scalar_t__ DWORD ;
+
+
+ int DeleteFileA (int ) ;
+ scalar_t__ ERROR_DIRECTORY ;
+ scalar_t__ ERROR_INSTALL_PACKAGE_REJECTED ;
+ scalar_t__ ERROR_INVALID_HANDLE ;
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ scalar_t__ ERROR_SUCCESS ;
+ int MsiCloseHandle (int ) ;
+ scalar_t__ MsiGetTargetPathA (int ,char*,char*,scalar_t__*) ;
+ scalar_t__ MsiGetTargetPathW (int ,char const*,char*,scalar_t__*) ;
+ int create_package_db () ;
+ int msifile ;
+ int ok (int,char*,...) ;
+ scalar_t__ package_from_db (int ,int *) ;
+ int skip (char*) ;
 
 __attribute__((used)) static void test_gettargetpath_bad(void)
 {
@@ -50,44 +50,44 @@ __attribute__((used)) static void test_gettargetpath_bad(void)
     }
     ok( r == ERROR_SUCCESS, "failed to create package %u\n", r);
 
-    r = MsiGetTargetPathA( 0, NULL, NULL, NULL );
+    r = MsiGetTargetPathA( 0, ((void*)0), ((void*)0), ((void*)0) );
     ok( r == ERROR_INVALID_PARAMETER, "wrong return val\n");
 
-    r = MsiGetTargetPathA( 0, NULL, NULL, &sz );
+    r = MsiGetTargetPathA( 0, ((void*)0), ((void*)0), &sz );
     ok( r == ERROR_INVALID_PARAMETER, "wrong return val\n");
 
-    r = MsiGetTargetPathA( 0, "boo", NULL, NULL );
+    r = MsiGetTargetPathA( 0, "boo", ((void*)0), ((void*)0) );
     ok( r == ERROR_INVALID_HANDLE, "wrong return val\n");
 
-    r = MsiGetTargetPathA( 0, "boo", NULL, NULL );
+    r = MsiGetTargetPathA( 0, "boo", ((void*)0), ((void*)0) );
     ok( r == ERROR_INVALID_HANDLE, "wrong return val\n");
 
-    r = MsiGetTargetPathA( hpkg, "boo", NULL, NULL );
+    r = MsiGetTargetPathA( hpkg, "boo", ((void*)0), ((void*)0) );
     ok( r == ERROR_DIRECTORY, "wrong return val\n");
 
-    r = MsiGetTargetPathA( hpkg, "boo", buffer, NULL );
+    r = MsiGetTargetPathA( hpkg, "boo", buffer, ((void*)0) );
     ok( r == ERROR_DIRECTORY, "wrong return val\n");
 
     sz = 0;
     r = MsiGetTargetPathA( hpkg, "", buffer, &sz );
     ok( r == ERROR_DIRECTORY, "wrong return val\n");
 
-    r = MsiGetTargetPathW( 0, NULL, NULL, NULL );
+    r = MsiGetTargetPathW( 0, ((void*)0), ((void*)0), ((void*)0) );
     ok( r == ERROR_INVALID_PARAMETER, "wrong return val\n");
 
-    r = MsiGetTargetPathW( 0, NULL, NULL, &sz );
+    r = MsiGetTargetPathW( 0, ((void*)0), ((void*)0), &sz );
     ok( r == ERROR_INVALID_PARAMETER, "wrong return val\n");
 
-    r = MsiGetTargetPathW( 0, boo, NULL, NULL );
+    r = MsiGetTargetPathW( 0, boo, ((void*)0), ((void*)0) );
     ok( r == ERROR_INVALID_HANDLE, "wrong return val\n");
 
-    r = MsiGetTargetPathW( 0, boo, NULL, NULL );
+    r = MsiGetTargetPathW( 0, boo, ((void*)0), ((void*)0) );
     ok( r == ERROR_INVALID_HANDLE, "wrong return val\n");
 
-    r = MsiGetTargetPathW( hpkg, boo, NULL, NULL );
+    r = MsiGetTargetPathW( hpkg, boo, ((void*)0), ((void*)0) );
     ok( r == ERROR_DIRECTORY, "wrong return val\n");
 
-    r = MsiGetTargetPathW( hpkg, boo, bufferW, NULL );
+    r = MsiGetTargetPathW( hpkg, boo, bufferW, ((void*)0) );
     ok( r == ERROR_DIRECTORY, "wrong return val\n");
 
     sz = 0;

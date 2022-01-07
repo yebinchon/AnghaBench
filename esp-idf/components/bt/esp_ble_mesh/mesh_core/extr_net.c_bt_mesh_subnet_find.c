@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8_t ;
-typedef  int /*<<< orphan*/  u32_t ;
-struct bt_mesh_subnet {scalar_t__ net_idx; scalar_t__ kr_phase; int /*<<< orphan*/ * keys; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8_t ;
+typedef int u32_t ;
+struct bt_mesh_subnet {scalar_t__ net_idx; scalar_t__ kr_phase; int * keys; } ;
 struct TYPE_2__ {struct bt_mesh_subnet* sub; } ;
 
-/* Variables and functions */
- int ARRAY_SIZE (struct bt_mesh_subnet*) ; 
- scalar_t__ BLE_MESH_KEY_UNUSED ; 
- scalar_t__ BLE_MESH_KR_NORMAL ; 
- scalar_t__ auth_match (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- TYPE_1__ bt_mesh ; 
+
+ int ARRAY_SIZE (struct bt_mesh_subnet*) ;
+ scalar_t__ BLE_MESH_KEY_UNUSED ;
+ scalar_t__ BLE_MESH_KR_NORMAL ;
+ scalar_t__ auth_match (int *,int const*,int ,int ,int const*) ;
+ TYPE_1__ bt_mesh ;
 
 struct bt_mesh_subnet *bt_mesh_subnet_find(const u8_t net_id[8], u8_t flags,
         u32_t iv_index, const u8_t auth[8],
@@ -37,7 +37,7 @@ struct bt_mesh_subnet *bt_mesh_subnet_find(const u8_t net_id[8], u8_t flags,
         }
 
         if (auth_match(&sub->keys[0], net_id, flags, iv_index, auth)) {
-            *new_key = false;
+            *new_key = 0;
             return sub;
         }
 
@@ -46,10 +46,10 @@ struct bt_mesh_subnet *bt_mesh_subnet_find(const u8_t net_id[8], u8_t flags,
         }
 
         if (auth_match(&sub->keys[1], net_id, flags, iv_index, auth)) {
-            *new_key = true;
+            *new_key = 1;
             return sub;
         }
     }
 
-    return NULL;
+    return ((void*)0);
 }

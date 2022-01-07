@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG_PTR ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG_PTR ;
 struct TYPE_5__ {scalar_t__ ValueOffset; } ;
 struct TYPE_6__ {scalar_t__ Type; TYPE_1__ Resident; } ;
-typedef  int /*<<< orphan*/ * PSTANDARD_INFORMATION ;
-typedef  TYPE_2__* PNTFS_ATTR_RECORD ;
-typedef  int /*<<< orphan*/  PFILE_RECORD_HEADER ;
-typedef  int /*<<< orphan*/  PDEVICE_EXTENSION ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  FIND_ATTR_CONTXT ;
+typedef int * PSTANDARD_INFORMATION ;
+typedef TYPE_2__* PNTFS_ATTR_RECORD ;
+typedef int PFILE_RECORD_HEADER ;
+typedef int PDEVICE_EXTENSION ;
+typedef int NTSTATUS ;
+typedef int FIND_ATTR_CONTXT ;
 
-/* Variables and functions */
- scalar_t__ AttributeStandardInformation ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FindCloseAttribute (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FindFirstAttribute (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__**) ; 
- int /*<<< orphan*/  FindNextAttribute (int /*<<< orphan*/ *,TYPE_2__**) ; 
- scalar_t__ NT_SUCCESS (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AttributeStandardInformation ;
+ int FALSE ;
+ int FindCloseAttribute (int *) ;
+ int FindFirstAttribute (int *,int ,int ,int ,TYPE_2__**) ;
+ int FindNextAttribute (int *,TYPE_2__**) ;
+ scalar_t__ NT_SUCCESS (int ) ;
 
 PSTANDARD_INFORMATION
 GetStandardInformationFromRecord(PDEVICE_EXTENSION Vcb,
@@ -53,5 +53,5 @@ GetStandardInformationFromRecord(PDEVICE_EXTENSION Vcb,
     }
 
     FindCloseAttribute(&Context);
-    return NULL;
+    return ((void*)0);
 }

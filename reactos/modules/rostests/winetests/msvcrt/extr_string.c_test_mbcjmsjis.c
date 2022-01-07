@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int ARRAY_SIZE (int*) ; 
- int _MB_CP_SBCS ; 
- int _getmbcp () ; 
- unsigned int _mbcjmstojis (unsigned int) ; 
- int /*<<< orphan*/  _setmbcp (int) ; 
- int /*<<< orphan*/  ok (int,char*,unsigned int,unsigned int,unsigned int,int) ; 
+ unsigned int ARRAY_SIZE (int*) ;
+ int _MB_CP_SBCS ;
+ int _getmbcp () ;
+ unsigned int _mbcjmstojis (unsigned int) ;
+ int _setmbcp (int) ;
+ int ok (int,char*,unsigned int,unsigned int,unsigned int,int) ;
 
 __attribute__((used)) static void test_mbcjmsjis(void)
 {
-    /* List of value-pairs to test. The test assumes the last pair to be {0, ..} */
+
     unsigned int jmsjis[][2] = { {0x80fc, 0}, {0x813f, 0}, {0x8140, 0x2121},
                                  {0x817e, 0x215f}, {0x817f, 0}, {0x8180, 0x2160},
                                  {0x819e, 0x217e}, {0x819f, 0x2221}, {0x81fc, 0x227e},

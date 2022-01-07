@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {size_t size; size_t offset; char* buffer; } ;
 struct TYPE_6__ {TYPE_1__ stats; } ;
-typedef  TYPE_2__ conn ;
-struct TYPE_7__ {int /*<<< orphan*/  malloc_fails; } ;
+typedef TYPE_2__ conn ;
+struct TYPE_7__ {int malloc_fails; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STATS_LOCK () ; 
- int /*<<< orphan*/  STATS_UNLOCK () ; 
- int /*<<< orphan*/  assert (int) ; 
- char* realloc (char*,size_t) ; 
- TYPE_3__ stats ; 
+
+ int STATS_LOCK () ;
+ int STATS_UNLOCK () ;
+ int assert (int) ;
+ char* realloc (char*,size_t) ;
+ TYPE_3__ stats ;
 
 __attribute__((used)) static bool grow_stats_buf(conn *c, size_t needed) {
     size_t nsize = c->stats.size;
     size_t available = nsize - c->stats.offset;
-    bool rv = true;
+    bool rv = 1;
 
-    /* Special case: No buffer -- need to allocate fresh */
-    if (c->stats.buffer == NULL) {
+
+    if (c->stats.buffer == ((void*)0)) {
         nsize = 1024;
         available = c->stats.size = c->stats.offset = 0;
     }
@@ -51,7 +51,7 @@ __attribute__((used)) static bool grow_stats_buf(conn *c, size_t needed) {
             STATS_LOCK();
             stats.malloc_fails++;
             STATS_UNLOCK();
-            rv = false;
+            rv = 0;
         }
     }
 

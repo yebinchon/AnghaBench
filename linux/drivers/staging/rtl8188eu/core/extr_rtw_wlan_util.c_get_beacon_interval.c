@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
-struct wlan_bssid_ex {int /*<<< orphan*/  ies; } ;
-typedef  int /*<<< orphan*/  __le16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  le16_to_cpu (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  rtw_get_beacon_interval_from_ie (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u16 ;
+struct wlan_bssid_ex {int ies; } ;
+typedef int __le16 ;
+
+
+ int le16_to_cpu (int ) ;
+ int memcpy (unsigned char*,int ,int) ;
+ int rtw_get_beacon_interval_from_ie (int ) ;
 
 u16 get_beacon_interval(struct wlan_bssid_ex *bss)
 {
-	__le16 val;
+ __le16 val;
 
-	memcpy((unsigned char *)&val, rtw_get_beacon_interval_from_ie(bss->ies), 2);
+ memcpy((unsigned char *)&val, rtw_get_beacon_interval_from_ie(bss->ies), 2);
 
-	return le16_to_cpu(val);
+ return le16_to_cpu(val);
 }

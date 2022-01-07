@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ years; scalar_t__ months; scalar_t__ weeks; scalar_t__ days; scalar_t__ hours; scalar_t__ minutes; scalar_t__ seconds; } ;
-typedef  TYPE_1__ ldns_duration_type ;
+typedef TYPE_1__ ldns_duration_type ;
 
-/* Variables and functions */
- scalar_t__ calloc (size_t,int) ; 
- size_t digits_in_number (scalar_t__) ; 
- int /*<<< orphan*/  free (void*) ; 
- int /*<<< orphan*/  snprintf (char*,size_t,char*,unsigned int) ; 
- char* strncat (char*,char*,size_t) ; 
+
+ scalar_t__ calloc (size_t,int) ;
+ size_t digits_in_number (scalar_t__) ;
+ int free (void*) ;
+ int snprintf (char*,size_t,char*,unsigned int) ;
+ char* strncat (char*,char*,size_t) ;
 
 char*
 ldns_duration2string(const ldns_duration_type* duration)
 {
-    char* str = NULL, *num = NULL;
+    char* str = ((void*)0), *num = ((void*)0);
     size_t count = 2;
     int T = 0;
 
     if (!duration) {
-        return NULL;
+        return ((void*)0);
     }
 
     if (duration->years > 0) {

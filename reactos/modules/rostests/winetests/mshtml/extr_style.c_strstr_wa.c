@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ WCHAR ;
-typedef  scalar_t__* BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SysFreeString (scalar_t__*) ; 
- scalar_t__* a2bstr (char const*) ; 
+
+
+
+typedef scalar_t__ WCHAR ;
+typedef scalar_t__* BSTR ;
+
+
+ int SysFreeString (scalar_t__*) ;
+ scalar_t__* a2bstr (char const*) ;
 
 __attribute__((used)) static const WCHAR *strstr_wa(const WCHAR *str, const char *suba)
 {
     BSTR sub;
-    const WCHAR *ret = NULL;
+    const WCHAR *ret = ((void*)0);
     sub = a2bstr(suba);
     while (*str)
     {

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  U32 ;
-typedef  int /*<<< orphan*/  SCIC_SDS_PHY_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCIC_SDS_REMOTE_NODE_CONTEXT_INVALID_INDEX ; 
- int /*<<< orphan*/  SCU_SAS_PCFG_GEN_BIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SCU_SAS_PCFG_READ (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SCU_SAS_PCFG_WRITE (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SUSPEND_PROTOCOL_ENGINE ; 
- int /*<<< orphan*/  scic_sds_phy_setup_transport (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int U32 ;
+typedef int SCIC_SDS_PHY_T ;
+
+
+ int SCIC_SDS_REMOTE_NODE_CONTEXT_INVALID_INDEX ;
+ int SCU_SAS_PCFG_GEN_BIT (int ) ;
+ int SCU_SAS_PCFG_READ (int *) ;
+ int SCU_SAS_PCFG_WRITE (int *,int ) ;
+ int SUSPEND_PROTOCOL_ENGINE ;
+ int scic_sds_phy_setup_transport (int *,int ) ;
 
 void scic_sds_phy_suspend(
    SCIC_SDS_PHY_T * this_phy

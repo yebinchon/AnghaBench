@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned long long crypto_sign_ed25519_MESSAGEBYTES_MAX ; 
- scalar_t__ crypto_sign_ed25519_verify_detached (unsigned char const*,unsigned char const*,unsigned long long,unsigned char const*) ; 
- int /*<<< orphan*/  memmove (unsigned char*,unsigned char const*,unsigned long long) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,unsigned long long) ; 
+ unsigned long long crypto_sign_ed25519_MESSAGEBYTES_MAX ;
+ scalar_t__ crypto_sign_ed25519_verify_detached (unsigned char const*,unsigned char const*,unsigned long long,unsigned char const*) ;
+ int memmove (unsigned char*,unsigned char const*,unsigned long long) ;
+ int memset (unsigned char*,int ,unsigned long long) ;
 
 int
 crypto_sign_ed25519_open(unsigned char *m, unsigned long long *mlen_p,
@@ -29,21 +21,21 @@ crypto_sign_ed25519_open(unsigned char *m, unsigned long long *mlen_p,
     }
     mlen = smlen - 64;
     if (crypto_sign_ed25519_verify_detached(sm, sm + 64, mlen, pk) != 0) {
-        if (m != NULL) {
+        if (m != ((void*)0)) {
             memset(m, 0, mlen);
         }
         goto badsig;
     }
-    if (mlen_p != NULL) {
+    if (mlen_p != ((void*)0)) {
         *mlen_p = mlen;
     }
-    if (m != NULL) {
+    if (m != ((void*)0)) {
         memmove(m, sm + 64, mlen);
     }
     return 0;
 
 badsig:
-    if (mlen_p != NULL) {
+    if (mlen_p != ((void*)0)) {
         *mlen_p = 0;
     }
     return -1;

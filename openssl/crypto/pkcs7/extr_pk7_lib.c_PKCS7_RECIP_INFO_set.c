@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509 ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int X509 ;
 struct TYPE_12__ {TYPE_2__* ameth; } ;
-struct TYPE_11__ {int /*<<< orphan*/ * cert; TYPE_1__* issuer_and_serial; int /*<<< orphan*/  version; } ;
-struct TYPE_10__ {int (* pkey_ctrl ) (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ;} ;
-struct TYPE_9__ {int /*<<< orphan*/  serial; int /*<<< orphan*/  issuer; } ;
-typedef  TYPE_3__ PKCS7_RECIP_INFO ;
-typedef  TYPE_4__ EVP_PKEY ;
+struct TYPE_11__ {int * cert; TYPE_1__* issuer_and_serial; int version; } ;
+struct TYPE_10__ {int (* pkey_ctrl ) (TYPE_4__*,int ,int ,TYPE_3__*) ;} ;
+struct TYPE_9__ {int serial; int issuer; } ;
+typedef TYPE_3__ PKCS7_RECIP_INFO ;
+typedef TYPE_4__ EVP_PKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_INTEGER_dup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ASN1_INTEGER_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ASN1_INTEGER_set (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ASN1_PKEY_CTRL_PKCS7_ENCRYPT ; 
- int /*<<< orphan*/  PKCS7_F_PKCS7_RECIP_INFO_SET ; 
- int /*<<< orphan*/  PKCS7_R_ENCRYPTION_CTRL_FAILURE ; 
- int /*<<< orphan*/  PKCS7_R_ENCRYPTION_NOT_SUPPORTED_FOR_THIS_KEY_TYPE ; 
- int /*<<< orphan*/  PKCS7err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_NAME_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_4__* X509_get0_pubkey (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_get_issuer_name (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_get_serialNumber (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_up_ref (int /*<<< orphan*/ *) ; 
- int stub1 (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
+
+ int ASN1_INTEGER_dup (int ) ;
+ int ASN1_INTEGER_free (int ) ;
+ int ASN1_INTEGER_set (int ,int ) ;
+ int ASN1_PKEY_CTRL_PKCS7_ENCRYPT ;
+ int PKCS7_F_PKCS7_RECIP_INFO_SET ;
+ int PKCS7_R_ENCRYPTION_CTRL_FAILURE ;
+ int PKCS7_R_ENCRYPTION_NOT_SUPPORTED_FOR_THIS_KEY_TYPE ;
+ int PKCS7err (int ,int ) ;
+ int X509_NAME_set (int *,int ) ;
+ TYPE_4__* X509_get0_pubkey (int *) ;
+ int X509_get_issuer_name (int *) ;
+ int X509_get_serialNumber (int *) ;
+ int X509_up_ref (int *) ;
+ int stub1 (TYPE_4__*,int ,int ,TYPE_3__*) ;
 
 int PKCS7_RECIP_INFO_set(PKCS7_RECIP_INFO *p7i, X509 *x509)
 {
     int ret;
-    EVP_PKEY *pkey = NULL;
+    EVP_PKEY *pkey = ((void*)0);
     if (!ASN1_INTEGER_set(p7i->version, 0))
         return 0;
     if (!X509_NAME_set(&p7i->issuer_and_serial->issuer,

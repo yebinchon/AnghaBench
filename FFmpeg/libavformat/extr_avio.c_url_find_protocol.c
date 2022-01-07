@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct URLProtocol {int flags; int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  proto_str ;
-typedef  int /*<<< orphan*/  proto_nested ;
-typedef  struct URLProtocol URLProtocol ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int FFMIN (size_t,int) ; 
- int URL_PROTOCOL_FLAG_NESTED_SCHEME ; 
- int /*<<< orphan*/  URL_SCHEME_CHARS ; 
- int /*<<< orphan*/  av_freep (struct URLProtocol const***) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  av_strlcpy (char*,char const*,int) ; 
- scalar_t__ av_strstart (char const*,char*,int /*<<< orphan*/ *) ; 
- struct URLProtocol** ffurl_get_protocols (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ is_dos_path (char const*) ; 
- char* strchr (char const*,char) ; 
- int /*<<< orphan*/  strcmp (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- scalar_t__ strncmp (char const*,char*,int) ; 
- size_t strspn (char const*,int /*<<< orphan*/ ) ; 
+
+
+
+struct URLProtocol {int flags; int name; } ;
+typedef int proto_str ;
+typedef int proto_nested ;
+typedef struct URLProtocol URLProtocol ;
+
+
+ int AV_LOG_WARNING ;
+ int FFMIN (size_t,int) ;
+ int URL_PROTOCOL_FLAG_NESTED_SCHEME ;
+ int URL_SCHEME_CHARS ;
+ int av_freep (struct URLProtocol const***) ;
+ int av_log (int *,int ,char*) ;
+ int av_strlcpy (char*,char const*,int) ;
+ scalar_t__ av_strstart (char const*,char*,int *) ;
+ struct URLProtocol** ffurl_get_protocols (int *,int *) ;
+ scalar_t__ is_dos_path (char const*) ;
+ char* strchr (char const*,char) ;
+ int strcmp (char*,int ) ;
+ int strcpy (char*,char*) ;
+ scalar_t__ strncmp (char const*,char*,int) ;
+ size_t strspn (char const*,int ) ;
 
 __attribute__((used)) static const struct URLProtocol *url_find_protocol(const char *filename)
 {
@@ -51,9 +51,9 @@ __attribute__((used)) static const struct URLProtocol *url_find_protocol(const c
     if ((ptr = strchr(proto_nested, '+')))
         *ptr = '\0';
 
-    protocols = ffurl_get_protocols(NULL, NULL);
+    protocols = ffurl_get_protocols(((void*)0), ((void*)0));
     if (!protocols)
-        return NULL;
+        return ((void*)0);
     for (i = 0; protocols[i]; i++) {
             const URLProtocol *up = protocols[i];
         if (!strcmp(proto_str, up->name)) {
@@ -67,9 +67,9 @@ __attribute__((used)) static const struct URLProtocol *url_find_protocol(const c
         }
     }
     av_freep(&protocols);
-    if (av_strstart(filename, "https:", NULL) || av_strstart(filename, "tls:", NULL))
-        av_log(NULL, AV_LOG_WARNING, "https protocol not found, recompile FFmpeg with "
+    if (av_strstart(filename, "https:", ((void*)0)) || av_strstart(filename, "tls:", ((void*)0)))
+        av_log(((void*)0), AV_LOG_WARNING, "https protocol not found, recompile FFmpeg with "
                                      "openssl, gnutls or securetransport enabled.\n");
 
-    return NULL;
+    return ((void*)0);
 }

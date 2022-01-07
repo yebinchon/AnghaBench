@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct seq_file {int dummy; } ;
-struct seq_buf {int /*<<< orphan*/  buffer; } ;
+struct seq_buf {int buffer; } ;
 
-/* Variables and functions */
- unsigned int seq_buf_used (struct seq_buf*) ; 
- int seq_write (struct seq_file*,int /*<<< orphan*/ ,unsigned int) ; 
+
+ unsigned int seq_buf_used (struct seq_buf*) ;
+ int seq_write (struct seq_file*,int ,unsigned int) ;
 
 int seq_buf_print_seq(struct seq_file *m, struct seq_buf *s)
 {
-	unsigned int len = seq_buf_used(s);
+ unsigned int len = seq_buf_used(s);
 
-	return seq_write(m, s->buffer, len);
+ return seq_write(m, s->buffer, len);
 }

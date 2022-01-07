@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ tree ;
-typedef  int /*<<< orphan*/  location_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NULL_TREE ; 
- int /*<<< orphan*/  SET_EXPR_LOCATION (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SWITCH_EXPR ; 
- scalar_t__ SWITCH_STMT_BODY (scalar_t__) ; 
- int /*<<< orphan*/  SWITCH_STMT_COND (scalar_t__) ; 
- int /*<<< orphan*/  SWITCH_STMT_TYPE (scalar_t__) ; 
- int /*<<< orphan*/  bc_break ; 
- scalar_t__ begin_bc_block (int /*<<< orphan*/ ) ; 
- scalar_t__ build3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ build_empty_stmt () ; 
- scalar_t__ finish_bc_block (int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  gimplify_stmt (scalar_t__*) ; 
- int /*<<< orphan*/  input_location ; 
+
+
+
+typedef scalar_t__ tree ;
+typedef int location_t ;
+
+
+ int NULL_TREE ;
+ int SET_EXPR_LOCATION (scalar_t__,int ) ;
+ int SWITCH_EXPR ;
+ scalar_t__ SWITCH_STMT_BODY (scalar_t__) ;
+ int SWITCH_STMT_COND (scalar_t__) ;
+ int SWITCH_STMT_TYPE (scalar_t__) ;
+ int bc_break ;
+ scalar_t__ begin_bc_block (int ) ;
+ scalar_t__ build3 (int ,int ,int ,scalar_t__,int ) ;
+ scalar_t__ build_empty_stmt () ;
+ scalar_t__ finish_bc_block (int ,scalar_t__,scalar_t__) ;
+ int gimplify_stmt (scalar_t__*) ;
+ int input_location ;
 
 __attribute__((used)) static void
 gimplify_switch_stmt (tree *stmt_p)
@@ -42,7 +42,7 @@ gimplify_switch_stmt (tree *stmt_p)
     body = build_empty_stmt ();
 
   *stmt_p = build3 (SWITCH_EXPR, SWITCH_STMT_TYPE (stmt),
-		    SWITCH_STMT_COND (stmt), body, NULL_TREE);
+      SWITCH_STMT_COND (stmt), body, NULL_TREE);
   SET_EXPR_LOCATION (*stmt_p, stmt_locus);
   gimplify_stmt (stmt_p);
 

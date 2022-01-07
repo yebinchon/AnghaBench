@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CGI_varlist ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CGI_add_var (int /*<<< orphan*/ *,char const*,char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int hex (char const) ; 
- scalar_t__ mymalloc (scalar_t__) ; 
- scalar_t__ strlen (char const*) ; 
+
+
+
+typedef int CGI_varlist ;
+
+
+ int * CGI_add_var (int *,char const*,char const*) ;
+ int free (char*) ;
+ int hex (char const) ;
+ scalar_t__ mymalloc (scalar_t__) ;
+ scalar_t__ strlen (char const*) ;
 
 CGI_varlist *
 CGI_decode_query(CGI_varlist *v, const char *query) {
@@ -35,7 +35,7 @@ CGI_decode_query(CGI_varlist *v, const char *query) {
 
         case '=':
             if (name != 0) {
-                break;  /* treat extraneous '=' as data */
+                break;
             }
             if (name == 0 && k > 0) {
                 name = buf;
@@ -45,7 +45,7 @@ CGI_decode_query(CGI_varlist *v, const char *query) {
             continue;
 
         case 0:
-            done = 1;  /* fall through */
+            done = 1;
 
         case '&':
             buf[k] = 0;
@@ -72,7 +72,7 @@ CGI_decode_query(CGI_varlist *v, const char *query) {
                 i += 2;
                 continue;
             }
-            break;  /* treat extraneous '%' as data */
+            break;
         }
         buf[k++] = query[i];
     }

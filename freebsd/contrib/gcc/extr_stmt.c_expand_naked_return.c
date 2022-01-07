@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ rtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clear_pending_stack_adjust () ; 
- int /*<<< orphan*/  do_pending_stack_adjust () ; 
- int /*<<< orphan*/  emit_jump (scalar_t__) ; 
- scalar_t__ gen_label_rtx () ; 
- scalar_t__ naked_return_label ; 
+
+
+
+typedef scalar_t__ rtx ;
+
+
+ int clear_pending_stack_adjust () ;
+ int do_pending_stack_adjust () ;
+ int emit_jump (scalar_t__) ;
+ scalar_t__ gen_label_rtx () ;
+ scalar_t__ naked_return_label ;
 
 void
 expand_naked_return (void)

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArrayFlagsObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyArrayFlags_Type ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_TypeError ; 
- scalar_t__ PyObject_TypeCheck (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int Py_EQ ; 
- int /*<<< orphan*/ * Py_False ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
- int Py_NE ; 
- int /*<<< orphan*/ * Py_NotImplemented ; 
- int /*<<< orphan*/ * Py_True ; 
- int arrayflags_compare (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int PyObject ;
+typedef int PyArrayFlagsObject ;
+
+
+ int PyArrayFlags_Type ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_TypeError ;
+ scalar_t__ PyObject_TypeCheck (int *,int *) ;
+ int Py_EQ ;
+ int * Py_False ;
+ int Py_INCREF (int *) ;
+ int Py_NE ;
+ int * Py_NotImplemented ;
+ int * Py_True ;
+ int arrayflags_compare (int *,int *) ;
 
 __attribute__((used)) static PyObject*
 arrayflags_richcompare(PyObject *self, PyObject *other, int cmp_op)
@@ -35,7 +35,7 @@ arrayflags_richcompare(PyObject *self, PyObject *other, int cmp_op)
     if (cmp_op != Py_EQ && cmp_op != Py_NE) {
         PyErr_SetString(PyExc_TypeError,
                         "undefined comparison for flag object");
-        return NULL;
+        return ((void*)0);
     }
 
     if (PyObject_TypeCheck(other, &PyArrayFlags_Type)) {

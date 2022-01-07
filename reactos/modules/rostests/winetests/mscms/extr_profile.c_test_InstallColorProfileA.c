@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dest ;
-typedef  scalar_t__ HANDLE ;
-typedef  int DWORD ;
-typedef  char CHAR ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFileA (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ ERROR_ACCESS_DENIED ; 
- scalar_t__ GetLastError () ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MSCMS_basenameA (char*,char*) ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  lstrcatA (char*,char*) ; 
- char* machine ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int pGetColorDirectoryA (int /*<<< orphan*/ *,char*,int*) ; 
- int pInstallColorProfileA (char*,char*) ; 
- int pUninstallColorProfileA (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+
+
+typedef int dest ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+typedef char CHAR ;
+typedef int BOOL ;
+
+
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFileA (char*,int ,int ,int *,int ,int ,int *) ;
+ scalar_t__ ERROR_ACCESS_DENIED ;
+ scalar_t__ GetLastError () ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int MAX_PATH ;
+ int MSCMS_basenameA (char*,char*) ;
+ int OPEN_EXISTING ;
+ int SetLastError (int) ;
+ int TRUE ;
+ int lstrcatA (char*,char*) ;
+ char* machine ;
+ int ok (int,char*,scalar_t__) ;
+ int pGetColorDirectoryA (int *,char*,int*) ;
+ int pInstallColorProfileA (char*,char*) ;
+ int pUninstallColorProfileA (int *,char*,int ) ;
+ int skip (char*) ;
 
 __attribute__((used)) static void test_InstallColorProfileA( char *standardprofile, char *testprofile )
 {
     BOOL ret;
 
-    /* Parameter checks */
 
-    ret = pInstallColorProfileA( NULL, NULL );
+
+    ret = pInstallColorProfileA( ((void*)0), ((void*)0) );
     ok( !ret, "InstallColorProfileA() succeeded (%d)\n", GetLastError() );
 
-    ret = pInstallColorProfileA( machine, NULL );
+    ret = pInstallColorProfileA( machine, ((void*)0) );
     ok( !ret, "InstallColorProfileA() succeeded (%d)\n", GetLastError() );
 
-    ret = pInstallColorProfileA( NULL, machine );
+    ret = pInstallColorProfileA( ((void*)0), machine );
     ok( !ret, "InstallColorProfileA() succeeded (%d)\n", GetLastError() );
 
     if (standardprofile)
     {
-        ret = pInstallColorProfileA( NULL, standardprofile );
+        ret = pInstallColorProfileA( ((void*)0), standardprofile );
         ok( ret, "InstallColorProfileA() failed (%d)\n", GetLastError() );
     }
 
-    /* Functional checks */
+
 
     if (testprofile)
     {
@@ -66,7 +66,7 @@ __attribute__((used)) static void test_InstallColorProfileA( char *standardprofi
         HANDLE handle;
 
         SetLastError(0xdeadbeef);
-        ret = pInstallColorProfileA( NULL, testprofile );
+        ret = pInstallColorProfileA( ((void*)0), testprofile );
         if (!ret && (GetLastError() == ERROR_ACCESS_DENIED))
         {
             skip("Not enough rights for InstallColorProfileA\n");
@@ -74,7 +74,7 @@ __attribute__((used)) static void test_InstallColorProfileA( char *standardprofi
         }
         ok( ret, "InstallColorProfileA() failed (%d)\n", GetLastError() );
 
-        ret = pGetColorDirectoryA( NULL, dest, &size );
+        ret = pGetColorDirectoryA( ((void*)0), dest, &size );
         ok( ret, "GetColorDirectoryA() failed (%d)\n", GetLastError() );
 
         MSCMS_basenameA( testprofile, base );
@@ -82,12 +82,12 @@ __attribute__((used)) static void test_InstallColorProfileA( char *standardprofi
         lstrcatA( dest, slash );
         lstrcatA( dest, base );
 
-        /* Check if the profile is really there */ 
-        handle = CreateFileA( dest, 0 , 0, NULL, OPEN_EXISTING, 0, NULL );
+
+        handle = CreateFileA( dest, 0 , 0, ((void*)0), OPEN_EXISTING, 0, ((void*)0) );
         ok( handle != INVALID_HANDLE_VALUE, "Couldn't find the profile (%d)\n", GetLastError() );
         CloseHandle( handle );
-        
-        ret = pUninstallColorProfileA( NULL, dest, TRUE );
+
+        ret = pUninstallColorProfileA( ((void*)0), dest, TRUE );
         ok( ret, "UninstallColorProfileA() failed (%d)\n", GetLastError() );
     }
 }

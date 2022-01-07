@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VGErrorCode ;
-typedef  int /*<<< orphan*/  CLIENT_THREAD_STATE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CLIENT_GET_THREAD_STATE () ; 
- int /*<<< orphan*/  RPC_CALL0_RES (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RPC_ENUM_RES (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VGGETERROR_ID ; 
- int /*<<< orphan*/  vgGetError_impl ; 
+
+
+
+typedef int VGErrorCode ;
+typedef int CLIENT_THREAD_STATE_T ;
+
+
+ int * CLIENT_GET_THREAD_STATE () ;
+ int RPC_CALL0_RES (int ,int *,int ) ;
+ int RPC_ENUM_RES (int ) ;
+ int VGGETERROR_ID ;
+ int vgGetError_impl ;
 
 __attribute__((used)) static VGErrorCode get_error(void)
 {

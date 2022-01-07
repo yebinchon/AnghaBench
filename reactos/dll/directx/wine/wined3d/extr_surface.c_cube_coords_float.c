@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct float_rect {float l; float t; float r; float b; } ;
-typedef  float UINT ;
+typedef float UINT ;
 struct TYPE_3__ {float left; float top; float right; float bottom; } ;
-typedef  TYPE_1__ RECT ;
+typedef TYPE_1__ RECT ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static inline void cube_coords_float(const RECT *r, UINT w, UINT h, struct float_rect *f)
 {

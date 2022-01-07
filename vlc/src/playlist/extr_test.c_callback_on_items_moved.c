@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_playlist_t ;
-struct items_moved_report {size_t index; size_t count; size_t target; int /*<<< orphan*/  state; } ;
-struct callback_ctx {int /*<<< orphan*/  vec_items_moved; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  playlist_state_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_vector_push (int /*<<< orphan*/ *,struct items_moved_report) ; 
+
+
+
+typedef int vlc_playlist_t ;
+struct items_moved_report {size_t index; size_t count; size_t target; int state; } ;
+struct callback_ctx {int vec_items_moved; } ;
+
+
+ int playlist_state_init (int *,int *) ;
+ int vlc_vector_push (int *,struct items_moved_report) ;
 
 __attribute__((used)) static void
 callback_on_items_moved(vlc_playlist_t *playlist, size_t index, size_t count,

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  atf_fs_path_t ;
-typedef  int /*<<< orphan*/  atf_error_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INV (int) ; 
- int /*<<< orphan*/  S_IRWXU ; 
- int /*<<< orphan*/  atf_fs_stat_dir_type ; 
- scalar_t__ atf_is_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  check_umask (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  copy_contents (int /*<<< orphan*/ *,char**) ; 
- int /*<<< orphan*/  current_umask () ; 
- int /*<<< orphan*/  do_mkdtemp (char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  invalid_umask_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  replace_contents (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int atf_fs_path_t ;
+typedef int atf_error_t ;
+
+
+ int INV (int) ;
+ int S_IRWXU ;
+ int atf_fs_stat_dir_type ;
+ scalar_t__ atf_is_error (int ) ;
+ int check_umask (int ,int ) ;
+ int copy_contents (int *,char**) ;
+ int current_umask () ;
+ int do_mkdtemp (char*) ;
+ int free (char*) ;
+ int invalid_umask_error (int *,int ,int ) ;
+ int replace_contents (int *,char*) ;
 
 atf_error_t
 atf_fs_mkdtemp(atf_fs_path_t *p)

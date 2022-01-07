@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct termios {int dummy; } ;
 
-/* Variables and functions */
- int FD ; 
- int /*<<< orphan*/  TCSAFLUSH ; 
- int /*<<< orphan*/  TIOCCDTR ; 
- int /*<<< orphan*/  TIOCNXCL ; 
- int /*<<< orphan*/  cfsetispeed (struct termios*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cfsetospeed (struct termios*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  ioctl (int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,int) ; 
- int /*<<< orphan*/  sleep (int) ; 
- int /*<<< orphan*/  tcgetattr (int,struct termios*) ; 
- int /*<<< orphan*/  tcsetattr (int,int /*<<< orphan*/ ,struct termios*) ; 
+
+ int FD ;
+ int TCSAFLUSH ;
+ int TIOCCDTR ;
+ int TIOCNXCL ;
+ int cfsetispeed (struct termios*,int ) ;
+ int cfsetospeed (struct termios*,int ) ;
+ int close (int) ;
+ int ioctl (int,int ,int *) ;
+ int printf (char*,int) ;
+ int sleep (int) ;
+ int tcgetattr (int,struct termios*) ;
+ int tcsetattr (int,int ,struct termios*) ;
 
 void
 v831_disconnect(void)
 {
-	struct termios	cntrl;
+ struct termios cntrl;
 
         sleep(2);
-#ifdef DEBUG
-        printf("[disconnect: FD=%d]\n", FD);
-#endif
+
+
+
         if (FD > 0) {
                 ioctl(FD, TIOCCDTR, 0);
-		tcgetattr(FD, &cntrl);
-		cfsetospeed(&cntrl, 0);
-		cfsetispeed(&cntrl, 0);
-		tcsetattr(FD, TCSAFLUSH, &cntrl);
-                ioctl(FD, TIOCNXCL, NULL);
+  tcgetattr(FD, &cntrl);
+  cfsetospeed(&cntrl, 0);
+  cfsetispeed(&cntrl, 0);
+  tcsetattr(FD, TCSAFLUSH, &cntrl);
+                ioctl(FD, TIOCNXCL, ((void*)0));
         }
         close(FD);
 }

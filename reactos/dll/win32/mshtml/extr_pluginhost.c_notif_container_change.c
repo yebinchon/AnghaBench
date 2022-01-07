@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  plugin_unk; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int plugin_unk; } ;
 struct TYPE_4__ {TYPE_2__* plugin_host; } ;
-typedef  int /*<<< orphan*/  IOleControl ;
-typedef  TYPE_1__ HTMLPluginContainer ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DISPID ;
+typedef int IOleControl ;
+typedef TYPE_1__ HTMLPluginContainer ;
+typedef int HRESULT ;
+typedef int DISPID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IID_IOleControl ; 
- int /*<<< orphan*/  IOleControl_OnAmbientPropertyChange (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IOleControl_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  notif_enabled (TYPE_2__*) ; 
+
+ int IID_IOleControl ;
+ int IOleControl_OnAmbientPropertyChange (int *,int ) ;
+ int IOleControl_Release (int *) ;
+ int IUnknown_QueryInterface (int ,int *,void**) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int notif_enabled (TYPE_2__*) ;
 
 void notif_container_change(HTMLPluginContainer *plugin_container, DISPID dispid)
 {

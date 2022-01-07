@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {scalar_t__ nsec; int /*<<< orphan*/  sec; } ;
-struct TYPE_5__ {scalar_t__ nsec; int /*<<< orphan*/  sec; } ;
-struct cache_entry {int /*<<< orphan*/  ce_size; int /*<<< orphan*/  ce_gid; int /*<<< orphan*/  ce_uid; int /*<<< orphan*/  ce_ino; int /*<<< orphan*/  ce_dev; TYPE_2__ ce_mtime; TYPE_1__ ce_ctime; } ;
-struct TYPE_7__ {int /*<<< orphan*/  st_mode; int /*<<< orphan*/  st_size; int /*<<< orphan*/  st_gid; int /*<<< orphan*/  st_uid; int /*<<< orphan*/  st_ino; int /*<<< orphan*/  st_dev; int /*<<< orphan*/  st_mtime; int /*<<< orphan*/  st_ctime; } ;
-typedef  TYPE_3__ SeafStat ;
 
-/* Variables and functions */
- scalar_t__ S_ISREG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ce_mark_uptodate (struct cache_entry*) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {scalar_t__ nsec; int sec; } ;
+struct TYPE_5__ {scalar_t__ nsec; int sec; } ;
+struct cache_entry {int ce_size; int ce_gid; int ce_uid; int ce_ino; int ce_dev; TYPE_2__ ce_mtime; TYPE_1__ ce_ctime; } ;
+struct TYPE_7__ {int st_mode; int st_size; int st_gid; int st_uid; int st_ino; int st_dev; int st_mtime; int st_ctime; } ;
+typedef TYPE_3__ SeafStat ;
+
+
+ scalar_t__ S_ISREG (int ) ;
+ int ce_mark_uptodate (struct cache_entry*) ;
 
 void fill_stat_cache_info(struct cache_entry *ce, SeafStat *st)
 {
@@ -35,8 +35,8 @@ void fill_stat_cache_info(struct cache_entry *ce, SeafStat *st)
     ce->ce_gid = st->st_gid;
     ce->ce_size = st->st_size;
 
-    /* if (assume_unchanged) */
-    /*     ce->ce_flags |= CE_VALID; */
+
+
 
     if (S_ISREG(st->st_mode))
         ce_mark_uptodate(ce);

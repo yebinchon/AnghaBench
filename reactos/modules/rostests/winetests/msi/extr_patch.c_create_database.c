@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct msi_table {int size; int /*<<< orphan*/  filename; int /*<<< orphan*/  data; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  MSIHANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  CURR_DIR ; 
- int /*<<< orphan*/  DeleteFileA (int /*<<< orphan*/ ) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MSIDBOPEN_CREATE ; 
- int /*<<< orphan*/  MsiCloseHandle (int /*<<< orphan*/ ) ; 
- scalar_t__ MsiDatabaseCommit (int /*<<< orphan*/ ) ; 
- scalar_t__ MsiDatabaseImportA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ MsiOpenDatabaseW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  set_suminfo (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_file (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct msi_table {int size; int filename; int data; } ;
+typedef int WCHAR ;
+typedef scalar_t__ UINT ;
+typedef int MSIHANDLE ;
+
+
+ int CP_ACP ;
+ int CURR_DIR ;
+ int DeleteFileA (int ) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int GetProcessHeap () ;
+ int * HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int *) ;
+ int MSIDBOPEN_CREATE ;
+ int MsiCloseHandle (int ) ;
+ scalar_t__ MsiDatabaseCommit (int ) ;
+ scalar_t__ MsiDatabaseImportA (int ,int ,int ) ;
+ scalar_t__ MsiOpenDatabaseW (int *,int ,int *) ;
+ int MultiByteToWideChar (int ,int ,char const*,int,int *,int) ;
+ int ok (int,char*,scalar_t__) ;
+ int set_suminfo (int *) ;
+ int write_file (int ,int ,int) ;
 
 __attribute__((used)) static void create_database( const char *filename, const struct msi_table *tables, UINT num_tables )
 {
@@ -40,14 +40,14 @@ __attribute__((used)) static void create_database( const char *filename, const s
     WCHAR *filenameW;
     int len;
 
-    len = MultiByteToWideChar( CP_ACP, 0, filename, -1, NULL, 0 );
+    len = MultiByteToWideChar( CP_ACP, 0, filename, -1, ((void*)0), 0 );
     if (!(filenameW = HeapAlloc( GetProcessHeap(), 0, len * sizeof(WCHAR) ))) return;
     MultiByteToWideChar( CP_ACP, 0, filename, -1, filenameW, len );
 
     r = MsiOpenDatabaseW( filenameW, MSIDBOPEN_CREATE, &hdb );
     ok(r == ERROR_SUCCESS, "expected ERROR_SUCCESS, got %u\n", r);
 
-    /* import the tables into the database */
+
     for (i = 0; i < num_tables; i++)
     {
         const struct msi_table *table = &tables[i];

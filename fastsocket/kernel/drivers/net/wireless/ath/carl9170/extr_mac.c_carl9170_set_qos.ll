@@ -1,0 +1,226 @@
+; ModuleID = '/home/carl/AnghaBench/fastsocket/kernel/drivers/net/wireless/ath/carl9170/extr_mac.c_carl9170_set_qos.c'
+source_filename = "/home/carl/AnghaBench/fastsocket/kernel/drivers/net/wireless/ath/carl9170/extr_mac.c_carl9170_set_qos.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.ar9170 = type { %struct.TYPE_2__* }
+%struct.TYPE_2__ = type { i32, i32, i32, i32 }
+
+@AR9170_MAC_REG_AC0_CW = common dso_local global i32 0, align 4
+@AR9170_MAC_REG_AC1_CW = common dso_local global i32 0, align 4
+@AR9170_MAC_REG_AC2_CW = common dso_local global i32 0, align 4
+@AR9170_MAC_REG_AC3_CW = common dso_local global i32 0, align 4
+@AR9170_MAC_REG_AC4_CW = common dso_local global i32 0, align 4
+@AR9170_MAC_REG_AC2_AC1_AC0_AIFS = common dso_local global i32 0, align 4
+@AR9170_MAC_REG_AC4_AC3_AC2_AIFS = common dso_local global i32 0, align 4
+@AR9170_MAC_REG_AC1_AC0_TXOP = common dso_local global i32 0, align 4
+@AR9170_MAC_REG_AC3_AC2_TXOP = common dso_local global i32 0, align 4
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local i32 @carl9170_set_qos(%struct.ar9170* %0) #0 {
+  %2 = alloca %struct.ar9170*, align 8
+  store %struct.ar9170* %0, %struct.ar9170** %2, align 8
+  %3 = load %struct.ar9170*, %struct.ar9170** %2, align 8
+  %4 = call i32 @carl9170_regwrite_begin(%struct.ar9170* %3)
+  %5 = load i32, i32* @AR9170_MAC_REG_AC0_CW, align 4
+  %6 = load %struct.ar9170*, %struct.ar9170** %2, align 8
+  %7 = getelementptr inbounds %struct.ar9170, %struct.ar9170* %6, i32 0, i32 0
+  %8 = load %struct.TYPE_2__*, %struct.TYPE_2__** %7, align 8
+  %9 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %8, i64 0
+  %10 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %9, i32 0, i32 0
+  %11 = load i32, i32* %10, align 4
+  %12 = load %struct.ar9170*, %struct.ar9170** %2, align 8
+  %13 = getelementptr inbounds %struct.ar9170, %struct.ar9170* %12, i32 0, i32 0
+  %14 = load %struct.TYPE_2__*, %struct.TYPE_2__** %13, align 8
+  %15 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %14, i64 0
+  %16 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %15, i32 0, i32 1
+  %17 = load i32, i32* %16, align 4
+  %18 = shl i32 %17, 16
+  %19 = or i32 %11, %18
+  %20 = call i32 @carl9170_regwrite(i32 %5, i32 %19)
+  %21 = load i32, i32* @AR9170_MAC_REG_AC1_CW, align 4
+  %22 = load %struct.ar9170*, %struct.ar9170** %2, align 8
+  %23 = getelementptr inbounds %struct.ar9170, %struct.ar9170* %22, i32 0, i32 0
+  %24 = load %struct.TYPE_2__*, %struct.TYPE_2__** %23, align 8
+  %25 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %24, i64 1
+  %26 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %25, i32 0, i32 0
+  %27 = load i32, i32* %26, align 4
+  %28 = load %struct.ar9170*, %struct.ar9170** %2, align 8
+  %29 = getelementptr inbounds %struct.ar9170, %struct.ar9170* %28, i32 0, i32 0
+  %30 = load %struct.TYPE_2__*, %struct.TYPE_2__** %29, align 8
+  %31 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %30, i64 1
+  %32 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %31, i32 0, i32 1
+  %33 = load i32, i32* %32, align 4
+  %34 = shl i32 %33, 16
+  %35 = or i32 %27, %34
+  %36 = call i32 @carl9170_regwrite(i32 %21, i32 %35)
+  %37 = load i32, i32* @AR9170_MAC_REG_AC2_CW, align 4
+  %38 = load %struct.ar9170*, %struct.ar9170** %2, align 8
+  %39 = getelementptr inbounds %struct.ar9170, %struct.ar9170* %38, i32 0, i32 0
+  %40 = load %struct.TYPE_2__*, %struct.TYPE_2__** %39, align 8
+  %41 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %40, i64 2
+  %42 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %41, i32 0, i32 0
+  %43 = load i32, i32* %42, align 4
+  %44 = load %struct.ar9170*, %struct.ar9170** %2, align 8
+  %45 = getelementptr inbounds %struct.ar9170, %struct.ar9170* %44, i32 0, i32 0
+  %46 = load %struct.TYPE_2__*, %struct.TYPE_2__** %45, align 8
+  %47 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %46, i64 2
+  %48 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %47, i32 0, i32 1
+  %49 = load i32, i32* %48, align 4
+  %50 = shl i32 %49, 16
+  %51 = or i32 %43, %50
+  %52 = call i32 @carl9170_regwrite(i32 %37, i32 %51)
+  %53 = load i32, i32* @AR9170_MAC_REG_AC3_CW, align 4
+  %54 = load %struct.ar9170*, %struct.ar9170** %2, align 8
+  %55 = getelementptr inbounds %struct.ar9170, %struct.ar9170* %54, i32 0, i32 0
+  %56 = load %struct.TYPE_2__*, %struct.TYPE_2__** %55, align 8
+  %57 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %56, i64 3
+  %58 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %57, i32 0, i32 0
+  %59 = load i32, i32* %58, align 4
+  %60 = load %struct.ar9170*, %struct.ar9170** %2, align 8
+  %61 = getelementptr inbounds %struct.ar9170, %struct.ar9170* %60, i32 0, i32 0
+  %62 = load %struct.TYPE_2__*, %struct.TYPE_2__** %61, align 8
+  %63 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %62, i64 3
+  %64 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %63, i32 0, i32 1
+  %65 = load i32, i32* %64, align 4
+  %66 = shl i32 %65, 16
+  %67 = or i32 %59, %66
+  %68 = call i32 @carl9170_regwrite(i32 %53, i32 %67)
+  %69 = load i32, i32* @AR9170_MAC_REG_AC4_CW, align 4
+  %70 = load %struct.ar9170*, %struct.ar9170** %2, align 8
+  %71 = getelementptr inbounds %struct.ar9170, %struct.ar9170* %70, i32 0, i32 0
+  %72 = load %struct.TYPE_2__*, %struct.TYPE_2__** %71, align 8
+  %73 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %72, i64 4
+  %74 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %73, i32 0, i32 0
+  %75 = load i32, i32* %74, align 4
+  %76 = load %struct.ar9170*, %struct.ar9170** %2, align 8
+  %77 = getelementptr inbounds %struct.ar9170, %struct.ar9170* %76, i32 0, i32 0
+  %78 = load %struct.TYPE_2__*, %struct.TYPE_2__** %77, align 8
+  %79 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %78, i64 4
+  %80 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %79, i32 0, i32 1
+  %81 = load i32, i32* %80, align 4
+  %82 = shl i32 %81, 16
+  %83 = or i32 %75, %82
+  %84 = call i32 @carl9170_regwrite(i32 %69, i32 %83)
+  %85 = load i32, i32* @AR9170_MAC_REG_AC2_AC1_AC0_AIFS, align 4
+  %86 = load %struct.ar9170*, %struct.ar9170** %2, align 8
+  %87 = getelementptr inbounds %struct.ar9170, %struct.ar9170* %86, i32 0, i32 0
+  %88 = load %struct.TYPE_2__*, %struct.TYPE_2__** %87, align 8
+  %89 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %88, i64 0
+  %90 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %89, i32 0, i32 2
+  %91 = load i32, i32* %90, align 4
+  %92 = mul nsw i32 %91, 9
+  %93 = add nsw i32 %92, 10
+  %94 = load %struct.ar9170*, %struct.ar9170** %2, align 8
+  %95 = getelementptr inbounds %struct.ar9170, %struct.ar9170* %94, i32 0, i32 0
+  %96 = load %struct.TYPE_2__*, %struct.TYPE_2__** %95, align 8
+  %97 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %96, i64 1
+  %98 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %97, i32 0, i32 2
+  %99 = load i32, i32* %98, align 4
+  %100 = mul nsw i32 %99, 9
+  %101 = add nsw i32 %100, 10
+  %102 = shl i32 %101, 12
+  %103 = or i32 %93, %102
+  %104 = load %struct.ar9170*, %struct.ar9170** %2, align 8
+  %105 = getelementptr inbounds %struct.ar9170, %struct.ar9170* %104, i32 0, i32 0
+  %106 = load %struct.TYPE_2__*, %struct.TYPE_2__** %105, align 8
+  %107 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %106, i64 2
+  %108 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %107, i32 0, i32 2
+  %109 = load i32, i32* %108, align 4
+  %110 = mul nsw i32 %109, 9
+  %111 = add nsw i32 %110, 10
+  %112 = shl i32 %111, 24
+  %113 = or i32 %103, %112
+  %114 = call i32 @carl9170_regwrite(i32 %85, i32 %113)
+  %115 = load i32, i32* @AR9170_MAC_REG_AC4_AC3_AC2_AIFS, align 4
+  %116 = load %struct.ar9170*, %struct.ar9170** %2, align 8
+  %117 = getelementptr inbounds %struct.ar9170, %struct.ar9170* %116, i32 0, i32 0
+  %118 = load %struct.TYPE_2__*, %struct.TYPE_2__** %117, align 8
+  %119 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %118, i64 2
+  %120 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %119, i32 0, i32 2
+  %121 = load i32, i32* %120, align 4
+  %122 = mul nsw i32 %121, 9
+  %123 = add nsw i32 %122, 10
+  %124 = ashr i32 %123, 8
+  %125 = load %struct.ar9170*, %struct.ar9170** %2, align 8
+  %126 = getelementptr inbounds %struct.ar9170, %struct.ar9170* %125, i32 0, i32 0
+  %127 = load %struct.TYPE_2__*, %struct.TYPE_2__** %126, align 8
+  %128 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %127, i64 3
+  %129 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %128, i32 0, i32 2
+  %130 = load i32, i32* %129, align 4
+  %131 = mul nsw i32 %130, 9
+  %132 = add nsw i32 %131, 10
+  %133 = shl i32 %132, 4
+  %134 = or i32 %124, %133
+  %135 = load %struct.ar9170*, %struct.ar9170** %2, align 8
+  %136 = getelementptr inbounds %struct.ar9170, %struct.ar9170* %135, i32 0, i32 0
+  %137 = load %struct.TYPE_2__*, %struct.TYPE_2__** %136, align 8
+  %138 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %137, i64 4
+  %139 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %138, i32 0, i32 2
+  %140 = load i32, i32* %139, align 4
+  %141 = mul nsw i32 %140, 9
+  %142 = add nsw i32 %141, 10
+  %143 = shl i32 %142, 16
+  %144 = or i32 %134, %143
+  %145 = call i32 @carl9170_regwrite(i32 %115, i32 %144)
+  %146 = load i32, i32* @AR9170_MAC_REG_AC1_AC0_TXOP, align 4
+  %147 = load %struct.ar9170*, %struct.ar9170** %2, align 8
+  %148 = getelementptr inbounds %struct.ar9170, %struct.ar9170* %147, i32 0, i32 0
+  %149 = load %struct.TYPE_2__*, %struct.TYPE_2__** %148, align 8
+  %150 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %149, i64 0
+  %151 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %150, i32 0, i32 3
+  %152 = load i32, i32* %151, align 4
+  %153 = load %struct.ar9170*, %struct.ar9170** %2, align 8
+  %154 = getelementptr inbounds %struct.ar9170, %struct.ar9170* %153, i32 0, i32 0
+  %155 = load %struct.TYPE_2__*, %struct.TYPE_2__** %154, align 8
+  %156 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %155, i64 1
+  %157 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %156, i32 0, i32 3
+  %158 = load i32, i32* %157, align 4
+  %159 = shl i32 %158, 16
+  %160 = or i32 %152, %159
+  %161 = call i32 @carl9170_regwrite(i32 %146, i32 %160)
+  %162 = load i32, i32* @AR9170_MAC_REG_AC3_AC2_TXOP, align 4
+  %163 = load %struct.ar9170*, %struct.ar9170** %2, align 8
+  %164 = getelementptr inbounds %struct.ar9170, %struct.ar9170* %163, i32 0, i32 0
+  %165 = load %struct.TYPE_2__*, %struct.TYPE_2__** %164, align 8
+  %166 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %165, i64 2
+  %167 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %166, i32 0, i32 3
+  %168 = load i32, i32* %167, align 4
+  %169 = load %struct.ar9170*, %struct.ar9170** %2, align 8
+  %170 = getelementptr inbounds %struct.ar9170, %struct.ar9170* %169, i32 0, i32 0
+  %171 = load %struct.TYPE_2__*, %struct.TYPE_2__** %170, align 8
+  %172 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %171, i64 3
+  %173 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %172, i32 0, i32 3
+  %174 = load i32, i32* %173, align 4
+  %175 = shl i32 %174, 16
+  %176 = or i32 %168, %175
+  %177 = load %struct.ar9170*, %struct.ar9170** %2, align 8
+  %178 = getelementptr inbounds %struct.ar9170, %struct.ar9170* %177, i32 0, i32 0
+  %179 = load %struct.TYPE_2__*, %struct.TYPE_2__** %178, align 8
+  %180 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %179, i64 4
+  %181 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %180, i32 0, i32 3
+  %182 = load i32, i32* %181, align 4
+  %183 = shl i32 %182, 24
+  %184 = or i32 %176, %183
+  %185 = call i32 @carl9170_regwrite(i32 %162, i32 %184)
+  %186 = call i32 (...) @carl9170_regwrite_finish()
+  %187 = call i32 (...) @carl9170_regwrite_result()
+  ret i32 %187
+}
+
+declare dso_local i32 @carl9170_regwrite_begin(%struct.ar9170*) #1
+
+declare dso_local i32 @carl9170_regwrite(i32, i32) #1
+
+declare dso_local i32 @carl9170_regwrite_finish(...) #1
+
+declare dso_local i32 @carl9170_regwrite_result(...) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

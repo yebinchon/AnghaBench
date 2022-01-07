@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {scalar_t__ numpairs; int errors; int /*<<< orphan*/  numtests; int /*<<< orphan*/  fp; } ;
-typedef  TYPE_1__ STANZA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_eof (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_free (TYPE_1__*) ; 
- TYPE_1__* OPENSSL_zalloc (int) ; 
- int /*<<< orphan*/  TEST_ptr (TYPE_1__*) ; 
- int /*<<< orphan*/  file_test_run (TYPE_1__*) ; 
- int /*<<< orphan*/  test_clearstanza (TYPE_1__*) ; 
- int /*<<< orphan*/  test_end_file (TYPE_1__*) ; 
- char* test_get_argument (int) ; 
- scalar_t__ test_readstanza (TYPE_1__*) ; 
- int /*<<< orphan*/  test_start_file (TYPE_1__*,char*) ; 
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {scalar_t__ numpairs; int errors; int numtests; int fp; } ;
+typedef TYPE_1__ STANZA ;
+
+
+ int BIO_eof (int ) ;
+ int OPENSSL_free (TYPE_1__*) ;
+ TYPE_1__* OPENSSL_zalloc (int) ;
+ int TEST_ptr (TYPE_1__*) ;
+ int file_test_run (TYPE_1__*) ;
+ int test_clearstanza (TYPE_1__*) ;
+ int test_end_file (TYPE_1__*) ;
+ char* test_get_argument (int) ;
+ scalar_t__ test_readstanza (TYPE_1__*) ;
+ int test_start_file (TYPE_1__*,char*) ;
 
 __attribute__((used)) static int run_file_tests(int i)
 {
-    STANZA *s = NULL;
+    STANZA *s = ((void*)0);
     char *testfile = test_get_argument(i);
     int c;
 
@@ -39,7 +39,7 @@ __attribute__((used)) static int run_file_tests(int i)
         return 0;
     }
 
-    /* Read test file. */
+
     while (!BIO_eof(s->fp) && test_readstanza(s)) {
         if (s->numpairs == 0)
             continue;

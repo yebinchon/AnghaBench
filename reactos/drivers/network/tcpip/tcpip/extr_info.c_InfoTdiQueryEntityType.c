@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  size_t UINT ;
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int ULONG ;
+typedef size_t UINT ;
 struct TYPE_5__ {scalar_t__ tei_entity; scalar_t__ tei_instance; size_t flags; } ;
 struct TYPE_4__ {scalar_t__ tei_entity; scalar_t__ tei_instance; } ;
-typedef  int /*<<< orphan*/  TDI_STATUS ;
-typedef  TYPE_1__ TDIEntityID ;
-typedef  int /*<<< orphan*/  PUINT ;
-typedef  int /*<<< orphan*/  PNDIS_BUFFER ;
-typedef  int /*<<< orphan*/  PCHAR ;
-typedef  int /*<<< orphan*/  KIRQL ;
+typedef int TDI_STATUS ;
+typedef TYPE_1__ TDIEntityID ;
+typedef int PUINT ;
+typedef int PNDIS_BUFFER ;
+typedef int PCHAR ;
+typedef int KIRQL ;
 
-/* Variables and functions */
- size_t EntityCount ; 
- TYPE_3__* EntityList ; 
- int /*<<< orphan*/  EntityListLock ; 
- int /*<<< orphan*/  InfoCopyOut (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TDI_INVALID_PARAMETER ; 
- int /*<<< orphan*/  TDI_SUCCESS ; 
- int /*<<< orphan*/  TcpipAcquireSpinLock (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TcpipReleaseSpinLock (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ size_t EntityCount ;
+ TYPE_3__* EntityList ;
+ int EntityListLock ;
+ int InfoCopyOut (int ,int,int ,int ) ;
+ int TDI_INVALID_PARAMETER ;
+ int TDI_SUCCESS ;
+ int TcpipAcquireSpinLock (int *,int *) ;
+ int TcpipReleaseSpinLock (int *,int ) ;
 
 TDI_STATUS InfoTdiQueryEntityType(TDIEntityID ID,
                                   PNDIS_BUFFER Buffer,
-				  PUINT BufferSize)
+      PUINT BufferSize)
 {
     KIRQL OldIrql;
     UINT i, Flags = 0;

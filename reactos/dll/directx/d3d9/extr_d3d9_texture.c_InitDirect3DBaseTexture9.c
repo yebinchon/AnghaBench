@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct _Direct3DDevice9_INT {int dummy; } ;
-typedef  enum REF_TYPE { ____Placeholder_REF_TYPE } REF_TYPE ;
-typedef  void* UINT ;
-struct TYPE_3__ {int wPaletteIndex; int Usage; int bIsAutoGenMipMap; int /*<<< orphan*/  FilterType; void* MipMapLevels2; void* MipMapLevels; int /*<<< orphan*/  Format; int /*<<< orphan*/ * lpVtbl; int /*<<< orphan*/  BaseResource; } ;
-typedef  int /*<<< orphan*/  IDirect3DBaseTexture9Vtbl ;
-typedef  TYPE_1__ Direct3DBaseTexture9_INT ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  D3DPOOL ;
-typedef  int /*<<< orphan*/  D3DFORMAT ;
+typedef enum REF_TYPE { ____Placeholder_REF_TYPE } REF_TYPE ;
+typedef void* UINT ;
+struct TYPE_3__ {int wPaletteIndex; int Usage; int bIsAutoGenMipMap; int FilterType; void* MipMapLevels2; void* MipMapLevels; int Format; int * lpVtbl; int BaseResource; } ;
+typedef int IDirect3DBaseTexture9Vtbl ;
+typedef TYPE_1__ Direct3DBaseTexture9_INT ;
+typedef int DWORD ;
+typedef int D3DPOOL ;
+typedef int D3DFORMAT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DTEXF_LINEAR ; 
- int D3DUSAGE_AUTOGENMIPMAP ; 
- int /*<<< orphan*/  InitDirect3DResource9 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct _Direct3DDevice9_INT*,int) ; 
+
+ int D3DTEXF_LINEAR ;
+ int D3DUSAGE_AUTOGENMIPMAP ;
+ int InitDirect3DResource9 (int *,int ,struct _Direct3DDevice9_INT*,int) ;
 
 void InitDirect3DBaseTexture9(Direct3DBaseTexture9_INT* pBaseTexture,
                               IDirect3DBaseTexture9Vtbl* pVtbl,

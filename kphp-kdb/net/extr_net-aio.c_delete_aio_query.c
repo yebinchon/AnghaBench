@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct conn_query {scalar_t__ start_time; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- int /*<<< orphan*/  active_aio_queries ; 
- int /*<<< orphan*/  delete_conn_query (struct conn_query*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,struct conn_query*,double) ; 
- double get_utime (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- double total_aio_time ; 
- int verbosity ; 
- int /*<<< orphan*/  zfree (struct conn_query*,int) ; 
+
+ int CLOCK_MONOTONIC ;
+ int active_aio_queries ;
+ int delete_conn_query (struct conn_query*) ;
+ int fprintf (int ,char*,struct conn_query*,double) ;
+ double get_utime (int ) ;
+ int stderr ;
+ double total_aio_time ;
+ int verbosity ;
+ int zfree (struct conn_query*,int) ;
 
 int delete_aio_query (struct conn_query *q) {
   if (q->start_time > 0) {

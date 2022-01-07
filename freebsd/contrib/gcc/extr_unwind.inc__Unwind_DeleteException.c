@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct _Unwind_Exception {int /*<<< orphan*/  (* exception_cleanup ) (int /*<<< orphan*/ ,struct _Unwind_Exception*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _URC_FOREIGN_EXCEPTION_CAUGHT ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,struct _Unwind_Exception*) ; 
+
+
+
+struct _Unwind_Exception {int (* exception_cleanup ) (int ,struct _Unwind_Exception*) ;} ;
+
+
+ int _URC_FOREIGN_EXCEPTION_CAUGHT ;
+ int stub1 (int ,struct _Unwind_Exception*) ;
 
 void
 _Unwind_DeleteException (struct _Unwind_Exception *exc)

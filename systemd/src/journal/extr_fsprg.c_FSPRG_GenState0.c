@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  gcry_mpi_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RND_GEN_X ; 
- int /*<<< orphan*/  gcry_mpi_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gensquare (int /*<<< orphan*/ ,void const*,size_t,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  initialize_libgcrypt (int) ; 
- int /*<<< orphan*/  memcpy (void*,void const*,int) ; 
- int /*<<< orphan*/  memzero (void*,int) ; 
- int /*<<< orphan*/  mpi_export (void*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpi_import (void const*,int) ; 
- int read_secpar (void const*) ; 
+
+
+
+typedef int uint16_t ;
+typedef int gcry_mpi_t ;
+
+
+ int RND_GEN_X ;
+ int gcry_mpi_release (int ) ;
+ int gensquare (int ,void const*,size_t,int ,int) ;
+ int initialize_libgcrypt (int) ;
+ int memcpy (void*,void const*,int) ;
+ int memzero (void*,int) ;
+ int mpi_export (void*,int,int ) ;
+ int mpi_import (void const*,int) ;
+ int read_secpar (void const*) ;
 
 void FSPRG_GenState0(void *state, const void *mpk, const void *seed, size_t seedlen) {
         gcry_mpi_t n, x;
         uint16_t secpar;
 
-        initialize_libgcrypt(false);
+        initialize_libgcrypt(0);
 
         secpar = read_secpar(mpk + 0);
         n = mpi_import(mpk + 2, secpar / 8);

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  achBody ;
-typedef  int /*<<< orphan*/  LSAPI_Request ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LSAPI_ErrResponse_r (int /*<<< orphan*/ *,int,char const**,char const*,int) ; 
+
+
+
+typedef int achBody ;
+typedef int LSAPI_Request ;
+
+
+ int LSAPI_ErrResponse_r (int *,int,char const**,char const*,int) ;
 
 __attribute__((used)) static int lsapi_lve_error( LSAPI_Request * pReq )
 {
@@ -24,7 +24,7 @@ __attribute__((used)) static int lsapi_lve_error( LSAPI_Request * pReq )
         "Pragma: no-cache",
         "Retry-After: 60",
         "Content-Type: text/html",
-        NULL
+        ((void*)0)
     };
     static const char achBody[] =
         "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n"

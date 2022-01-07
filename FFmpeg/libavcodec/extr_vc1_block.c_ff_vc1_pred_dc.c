@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int16_t ;
-struct TYPE_4__ {int /*<<< orphan*/ * qscale_table; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int int16_t ;
+struct TYPE_4__ {int * qscale_table; } ;
 struct TYPE_5__ {int mb_x; int mb_y; int mb_stride; int* y_dc_scale_table; int* block_wrap; int** dc_val; int* block_index; TYPE_1__ current_picture; } ;
-typedef  TYPE_2__ MpegEncContext ;
+typedef TYPE_2__ MpegEncContext ;
 
-/* Variables and functions */
- int FFABS (int /*<<< orphan*/ ) ; 
- scalar_t__ abs (int) ; 
- unsigned int* ff_vc1_dqscale ; 
+
+ int FFABS (int ) ;
+ scalar_t__ abs (int) ;
+ unsigned int* ff_vc1_dqscale ;
 
 __attribute__((used)) static inline int ff_vc1_pred_dc(MpegEncContext *s, int overlap, int pq, int n,
                               int a_avail, int c_avail,
@@ -32,7 +32,7 @@ __attribute__((used)) static inline int ff_vc1_pred_dc(MpegEncContext *s, int ov
     int q1, q2 = 0;
     int dqscale_index;
 
-    /* scale predictors if needed */
+
     q1 = FFABS(s->current_picture.qscale_table[mb_pos]);
     dqscale_index = s->y_dc_scale_table[q1] - 1;
     if (dqscale_index < 0)
@@ -41,9 +41,9 @@ __attribute__((used)) static inline int ff_vc1_pred_dc(MpegEncContext *s, int ov
     wrap = s->block_wrap[n];
     dc_val = s->dc_val[0] + s->block_index[n];
 
-    /* B A
-     * C X
-     */
+
+
+
     c = dc_val[ - 1];
     b = dc_val[ - 1 - wrap];
     a = dc_val[ - wrap];
@@ -70,17 +70,17 @@ __attribute__((used)) static inline int ff_vc1_pred_dc(MpegEncContext *s, int ov
     }
 
     if (c_avail && (!a_avail || abs(a - b) <= abs(b - c))) {
-        pred     = c;
-        *dir_ptr = 1; // left
+        pred = c;
+        *dir_ptr = 1;
     } else if (a_avail) {
-        pred     = a;
-        *dir_ptr = 0; // top
+        pred = a;
+        *dir_ptr = 0;
     } else {
-        pred     = 0;
-        *dir_ptr = 1; // left
+        pred = 0;
+        *dir_ptr = 1;
     }
 
-    /* update predictor */
+
     *dc_val_ptr = &dc_val[0];
     return pred;
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t Py_ssize_t ;
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- int NPY_MAXARGS ; 
- int /*<<< orphan*/  PyErr_Format (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  PyExc_TypeError ; 
- scalar_t__ PyObject_IsInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- size_t PySequence_Fast_GET_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ ** PySequence_Fast_ITEMS (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
- scalar_t__ Py_TYPE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * get_array_function (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pyobject_array_insert (int /*<<< orphan*/ **,int,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef size_t Py_ssize_t ;
+typedef int PyObject ;
+
+
+ int NPY_MAXARGS ;
+ int PyErr_Format (int ,char*,int) ;
+ int PyExc_TypeError ;
+ scalar_t__ PyObject_IsInstance (int *,int *) ;
+ size_t PySequence_Fast_GET_SIZE (int *) ;
+ int ** PySequence_Fast_ITEMS (int *) ;
+ int Py_DECREF (int *) ;
+ int Py_INCREF (int *) ;
+ scalar_t__ Py_TYPE (int *) ;
+ int * get_array_function (int *) ;
+ int pyobject_array_insert (int **,int,int,int *) ;
 
 __attribute__((used)) static int
 get_implementing_args_and_methods(PyObject *relevant_args,
@@ -42,7 +42,7 @@ get_implementing_args_and_methods(PyObject *relevant_args,
         int new_class = 1;
         PyObject *argument = items[i];
 
-        /* Have we seen this type before? */
+
         for (j = 0; j < num_implementing_args; j++) {
             if (Py_TYPE(argument) == Py_TYPE(implementing_args[j])) {
                 new_class = 0;
@@ -52,20 +52,20 @@ get_implementing_args_and_methods(PyObject *relevant_args,
         if (new_class) {
             PyObject *method = get_array_function(argument);
 
-            if (method != NULL) {
+            if (method != ((void*)0)) {
                 int arg_index;
 
                 if (num_implementing_args >= NPY_MAXARGS) {
                     PyErr_Format(
                         PyExc_TypeError,
-                        "maximum number (%d) of distinct argument types " \
-                        "implementing __array_function__ exceeded",
+                        "maximum number (%d) of distinct argument types " "implementing __array_function__ exceeded",
+
                         NPY_MAXARGS);
                     Py_DECREF(method);
                     goto fail;
                 }
 
-                /* "subclasses before superclasses, otherwise left to right" */
+
                 arg_index = num_implementing_args;
                 for (j = 0; j < num_implementing_args; j++) {
                     PyObject *other_type;

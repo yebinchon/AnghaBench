@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct wined3d_device {TYPE_4__* blitter; } ;
-struct wined3d_cs_clear {unsigned int rt_count; int flags; TYPE_5__* fb; int /*<<< orphan*/  stencil; int /*<<< orphan*/  depth; int /*<<< orphan*/  color; int /*<<< orphan*/  draw_rect; int /*<<< orphan*/  rects; int /*<<< orphan*/  rect_count; } ;
+struct wined3d_cs_clear {unsigned int rt_count; int flags; TYPE_5__* fb; int stencil; int depth; int color; int draw_rect; int rects; int rect_count; } ;
 struct wined3d_cs {struct wined3d_device* device; } ;
 struct TYPE_10__ {TYPE_3__* depth_stencil; TYPE_2__** render_targets; } ;
 struct TYPE_9__ {TYPE_1__* ops; } ;
-struct TYPE_8__ {int /*<<< orphan*/  resource; } ;
-struct TYPE_7__ {int /*<<< orphan*/  resource; } ;
-struct TYPE_6__ {int /*<<< orphan*/  (* blitter_clear ) (TYPE_4__*,struct wined3d_device*,unsigned int,TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
+struct TYPE_8__ {int resource; } ;
+struct TYPE_7__ {int resource; } ;
+struct TYPE_6__ {int (* blitter_clear ) (TYPE_4__*,struct wined3d_device*,unsigned int,TYPE_5__*,int ,int ,int *,int,int *,int ,int ) ;} ;
 
-/* Variables and functions */
- int WINED3DCLEAR_STENCIL ; 
- int WINED3DCLEAR_TARGET ; 
- int WINED3DCLEAR_ZBUFFER ; 
- int /*<<< orphan*/  stub1 (TYPE_4__*,struct wined3d_device*,unsigned int,TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wined3d_resource_release (int /*<<< orphan*/ ) ; 
+
+ int WINED3DCLEAR_STENCIL ;
+ int WINED3DCLEAR_TARGET ;
+ int WINED3DCLEAR_ZBUFFER ;
+ int stub1 (TYPE_4__*,struct wined3d_device*,unsigned int,TYPE_5__*,int ,int ,int *,int,int *,int ,int ) ;
+ int wined3d_resource_release (int ) ;
 
 __attribute__((used)) static void wined3d_cs_exec_clear(struct wined3d_cs *cs, const void *data)
 {

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ renameType; int relationType; } ;
-typedef  TYPE_1__ RenameStmt ;
-typedef  int /*<<< orphan*/  List ;
+typedef TYPE_1__ RenameStmt ;
+typedef int List ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- int /*<<< orphan*/ * NIL ; 
- scalar_t__ OBJECT_ATTRIBUTE ; 
-#define  OBJECT_TYPE 128 
- int /*<<< orphan*/ * PlanRenameTypeAttributeStmt (TYPE_1__*,char const*) ; 
+
+ int Assert (int) ;
+ int * NIL ;
+ scalar_t__ OBJECT_ATTRIBUTE ;
+
+ int * PlanRenameTypeAttributeStmt (TYPE_1__*,char const*) ;
 
 __attribute__((used)) static List *
 PlanRenameAttributeStmt(RenameStmt *stmt, const char *queryString)
 {
-	Assert(stmt->renameType == OBJECT_ATTRIBUTE);
+ Assert(stmt->renameType == OBJECT_ATTRIBUTE);
 
-	switch (stmt->relationType)
-	{
-		case OBJECT_TYPE:
-		{
-			return PlanRenameTypeAttributeStmt(stmt, queryString);
-		}
+ switch (stmt->relationType)
+ {
+  case 128:
+  {
+   return PlanRenameTypeAttributeStmt(stmt, queryString);
+  }
 
-		default:
-		{
-			/* unsupported relation for attribute rename, do nothing */
-			return NIL;
-		}
-	}
+  default:
+  {
+
+   return NIL;
+  }
+ }
 }

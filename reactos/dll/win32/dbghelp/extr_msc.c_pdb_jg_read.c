@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct PDB_JG_HEADER {int block_size; } ;
-typedef  int WORD ;
-typedef  void BYTE ;
+typedef int WORD ;
+typedef void BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memcpy (void*,char const*,int const) ; 
+
+ int GetProcessHeap () ;
+ void* HeapAlloc (int ,int ,int) ;
+ int memcpy (void*,char const*,int const) ;
 
 __attribute__((used)) static void* pdb_jg_read(const struct PDB_JG_HEADER* pdb, const WORD* block_list,
                          int size)
 {
-    int                         i, num_blocks;
-    BYTE*                       buffer;
+    int i, num_blocks;
+    BYTE* buffer;
 
-    if (!size) return NULL;
+    if (!size) return ((void*)0);
 
     num_blocks = (size + pdb->block_size - 1) / pdb->block_size;
     buffer = HeapAlloc(GetProcessHeap(), 0, num_blocks * pdb->block_size);

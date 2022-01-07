@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned long long ULONGLONG ;
-typedef  int /*<<< orphan*/  ULONG ;
-struct TYPE_4__ {int /*<<< orphan*/  pRecord; } ;
-typedef  unsigned long long* PULONGLONG ;
-typedef  TYPE_1__* PNTFS_ATTR_CONTEXT ;
-typedef  int /*<<< orphan*/  PFILE_RECORD_HEADER ;
-typedef  int /*<<< orphan*/  PDEVICE_EXTENSION ;
-typedef  int /*<<< orphan*/  PCWSTR ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
 
-/* Variables and functions */
- unsigned long long AttributeAllocatedLength (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AttributeData ; 
- unsigned long long AttributeDataLength (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FindAttribute (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__**,int /*<<< orphan*/ *) ; 
- scalar_t__ NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseAttributeContext (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef unsigned long long ULONGLONG ;
+typedef int ULONG ;
+struct TYPE_4__ {int pRecord; } ;
+typedef unsigned long long* PULONGLONG ;
+typedef TYPE_1__* PNTFS_ATTR_CONTEXT ;
+typedef int PFILE_RECORD_HEADER ;
+typedef int PDEVICE_EXTENSION ;
+typedef int PCWSTR ;
+typedef int NTSTATUS ;
+
+
+ unsigned long long AttributeAllocatedLength (int ) ;
+ int AttributeData ;
+ unsigned long long AttributeDataLength (int ) ;
+ int FindAttribute (int ,int ,int ,int ,int ,TYPE_1__**,int *) ;
+ scalar_t__ NT_SUCCESS (int ) ;
+ int ReleaseAttributeContext (TYPE_1__*) ;
 
 ULONGLONG
 NtfsGetFileSize(PDEVICE_EXTENSION DeviceExt,
@@ -41,7 +41,7 @@ NtfsGetFileSize(PDEVICE_EXTENSION DeviceExt,
     NTSTATUS Status;
     PNTFS_ATTR_CONTEXT DataContext;
 
-    Status = FindAttribute(DeviceExt, FileRecord, AttributeData, Stream, StreamLength, &DataContext, NULL);
+    Status = FindAttribute(DeviceExt, FileRecord, AttributeData, Stream, StreamLength, &DataContext, ((void*)0));
     if (NT_SUCCESS(Status))
     {
         Size = AttributeDataLength(DataContext->pRecord);
@@ -49,7 +49,7 @@ NtfsGetFileSize(PDEVICE_EXTENSION DeviceExt,
         ReleaseAttributeContext(DataContext);
     }
 
-    if (AllocatedSize != NULL) *AllocatedSize = Allocated;
+    if (AllocatedSize != ((void*)0)) *AllocatedSize = Allocated;
 
     return Size;
 }

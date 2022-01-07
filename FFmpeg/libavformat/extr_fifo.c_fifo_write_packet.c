@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_9__ {TYPE_2__* priv_data; } ;
-struct TYPE_8__ {int overflow_flag; int /*<<< orphan*/  overflow_flag_lock; scalar_t__ drop_pkts_on_overflow; int /*<<< orphan*/  queue; } ;
-struct TYPE_7__ {int /*<<< orphan*/  pkt; int /*<<< orphan*/  type; } ;
-typedef  TYPE_1__ FifoMessage ;
-typedef  TYPE_2__ FifoContext ;
-typedef  int /*<<< orphan*/  AVPacket ;
-typedef  TYPE_3__ AVFormatContext ;
+struct TYPE_8__ {int overflow_flag; int overflow_flag_lock; scalar_t__ drop_pkts_on_overflow; int queue; } ;
+struct TYPE_7__ {int pkt; int type; } ;
+typedef TYPE_1__ FifoMessage ;
+typedef TYPE_2__ FifoContext ;
+typedef int AVPacket ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  AV_THREAD_MESSAGE_NONBLOCK ; 
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/  FIFO_FLUSH_OUTPUT ; 
- int /*<<< orphan*/  FIFO_WRITE_PACKET ; 
- int /*<<< orphan*/  av_init_packet (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*) ; 
- int av_packet_ref (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_packet_unref (int /*<<< orphan*/ *) ; 
- int av_thread_message_queue_send (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_WARNING ;
+ int AV_THREAD_MESSAGE_NONBLOCK ;
+ int EAGAIN ;
+ int FIFO_FLUSH_OUTPUT ;
+ int FIFO_WRITE_PACKET ;
+ int av_init_packet (int *) ;
+ int av_log (TYPE_3__*,int ,char*) ;
+ int av_packet_ref (int *,int *) ;
+ int av_packet_unref (int *) ;
+ int av_thread_message_queue_send (int ,TYPE_1__*,int ) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 __attribute__((used)) static int fifo_write_packet(AVFormatContext *avf, AVPacket *pkt)
 {
@@ -56,9 +56,9 @@ __attribute__((used)) static int fifo_write_packet(AVFormatContext *avf, AVPacke
     if (ret == AVERROR(EAGAIN)) {
         uint8_t overflow_set = 0;
 
-        /* Queue is full, set fifo->overflow_flag to 1
-         * to let consumer thread know the queue should
-         * be flushed. */
+
+
+
         pthread_mutex_lock(&fifo->overflow_flag_lock);
         if (!fifo->overflow_flag)
             fifo->overflow_flag = overflow_set = 1;

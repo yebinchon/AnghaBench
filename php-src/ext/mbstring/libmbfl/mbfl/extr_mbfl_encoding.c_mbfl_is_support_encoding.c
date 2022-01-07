@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbfl_encoding ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * mbfl_name2encoding (char const*) ; 
+
+
+
+typedef int mbfl_encoding ;
+
+
+ int * mbfl_name2encoding (char const*) ;
 
 int
 mbfl_is_support_encoding(const char *name)
 {
-	const mbfl_encoding *encoding;
+ const mbfl_encoding *encoding;
 
-	encoding = mbfl_name2encoding(name);
-	if (encoding == NULL) {
-		return 0;
-	} else {
-		return 1;
-	}
+ encoding = mbfl_name2encoding(name);
+ if (encoding == ((void*)0)) {
+  return 0;
+ } else {
+  return 1;
+ }
 }

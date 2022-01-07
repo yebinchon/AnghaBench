@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CURLM ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLOPT_PRIVATE ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURLOPT_WRITEFUNCTION ; 
- int /*<<< orphan*/ * curl_easy_init () ; 
- int /*<<< orphan*/  curl_easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  curl_multi_add_handle (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * urls ; 
- int /*<<< orphan*/  write_cb ; 
+
+
+
+typedef int CURLM ;
+typedef int CURL ;
+
+
+ int CURLOPT_PRIVATE ;
+ int CURLOPT_URL ;
+ int CURLOPT_WRITEFUNCTION ;
+ int * curl_easy_init () ;
+ int curl_easy_setopt (int *,int ,int ) ;
+ int curl_multi_add_handle (int *,int *) ;
+ int * urls ;
+ int write_cb ;
 
 __attribute__((used)) static void add_transfer(CURLM *cm, int i)
 {

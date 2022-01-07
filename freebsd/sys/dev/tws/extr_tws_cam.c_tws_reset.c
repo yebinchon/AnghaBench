@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tws_softc {int /*<<< orphan*/  sim; int /*<<< orphan*/  gen_lock; int /*<<< orphan*/  tws_dev; } ;
 
-/* Variables and functions */
- scalar_t__ TWS_RESET ; 
- int /*<<< orphan*/  TWS_RESET_COMPLETE ; 
- int /*<<< orphan*/  TWS_RESET_START ; 
- int /*<<< orphan*/  device_printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mtx_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mtx_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tws_assert_soft_reset (struct tws_softc*) ; 
- scalar_t__ tws_get_state (struct tws_softc*) ; 
- int /*<<< orphan*/  tws_reinit (void*) ; 
- int /*<<< orphan*/  tws_reset_cb (void*) ; 
- int /*<<< orphan*/  tws_send_event (struct tws_softc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tws_turn_off_interrupts (struct tws_softc*) ; 
- int /*<<< orphan*/  xpt_freeze_simq (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  xpt_release_simq (int /*<<< orphan*/ ,int) ; 
+
+
+
+struct tws_softc {int sim; int gen_lock; int tws_dev; } ;
+
+
+ scalar_t__ TWS_RESET ;
+ int TWS_RESET_COMPLETE ;
+ int TWS_RESET_START ;
+ int device_printf (int ,char*) ;
+ int mtx_lock (int *) ;
+ int mtx_unlock (int *) ;
+ int tws_assert_soft_reset (struct tws_softc*) ;
+ scalar_t__ tws_get_state (struct tws_softc*) ;
+ int tws_reinit (void*) ;
+ int tws_reset_cb (void*) ;
+ int tws_send_event (struct tws_softc*,int ) ;
+ int tws_turn_off_interrupts (struct tws_softc*) ;
+ int xpt_freeze_simq (int ,int) ;
+ int xpt_release_simq (int ,int) ;
 
 void
 tws_reset(void *arg)
@@ -43,14 +43,14 @@ tws_reset(void *arg)
 
     tws_send_event(sc, TWS_RESET_START);
 
-    device_printf(sc->tws_dev,  "Resetting controller\n");
+    device_printf(sc->tws_dev, "Resetting controller\n");
 
     tws_assert_soft_reset(sc);
     tws_turn_off_interrupts(sc);
     tws_reset_cb( (void*) sc );
     tws_reinit( (void*) sc );
 
-//  device_printf(sc->tws_dev,  "Controller Reset complete!\n");
+
     tws_send_event(sc, TWS_RESET_COMPLETE);
     mtx_unlock(&sc->gen_lock);
 

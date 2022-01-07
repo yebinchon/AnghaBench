@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct session {int /*<<< orphan*/  user; int /*<<< orphan*/  key; } ;
+
+
+
+
+struct session {int user; int key; } ;
 struct plugin {int type; } ;
 struct openvpn_plugin_args_func_return {int dummy; } ;
-struct openvpn_plugin_args_func_in {int /*<<< orphan*/  envp; scalar_t__ per_client_context; scalar_t__ handle; } ;
+struct openvpn_plugin_args_func_in {int envp; scalar_t__ per_client_context; scalar_t__ handle; } ;
 
-/* Variables and functions */
-#define  CLIENT 129 
- int OPENVPN_PLUGIN_FUNC_ERROR ; 
- int OPENVPN_PLUGIN_FUNC_SUCCESS ; 
-#define  SERVER 128 
- int /*<<< orphan*/  client_store (struct openvpn_plugin_args_func_in const*) ; 
- char* get_env (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ovpn_note (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  server_store (struct openvpn_plugin_args_func_in const*) ; 
- int /*<<< orphan*/  snprintf (int /*<<< orphan*/ ,int,char*,char const*) ; 
+
+
+ int OPENVPN_PLUGIN_FUNC_ERROR ;
+ int OPENVPN_PLUGIN_FUNC_SUCCESS ;
+
+ int client_store (struct openvpn_plugin_args_func_in const*) ;
+ char* get_env (char*,int ) ;
+ int ovpn_note (char*,int ) ;
+ int server_store (struct openvpn_plugin_args_func_in const*) ;
+ int snprintf (int ,int,char*,char const*) ;
 
 __attribute__((used)) static int
 tls_final(struct openvpn_plugin_args_func_in const *args,
           struct openvpn_plugin_args_func_return *rv)
 {
-    struct plugin *plugin = (struct plugin  *)args->handle;
-    struct session *sess  = (struct session *)args->per_client_context;
+    struct plugin *plugin = (struct plugin *)args->handle;
+    struct session *sess = (struct session *)args->per_client_context;
 
     const char *key;
     if (!(key = get_env("exported_keying_material", args->envp)))
@@ -44,11 +44,11 @@ tls_final(struct openvpn_plugin_args_func_in const *args,
 
     switch (plugin->type)
     {
-        case SERVER:
+        case 128:
             server_store(args);
             break;
 
-        case CLIENT:
+        case 129:
             client_store(args);
             return OPENVPN_PLUGIN_FUNC_SUCCESS;
     }

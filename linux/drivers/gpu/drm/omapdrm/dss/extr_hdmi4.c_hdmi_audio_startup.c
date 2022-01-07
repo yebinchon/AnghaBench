@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct omap_hdmi {void (* audio_abort_cb ) (struct device*) ;int /*<<< orphan*/  lock; } ;
+
+
+
+
+struct omap_hdmi {void (* audio_abort_cb ) (struct device*) ;int lock; } ;
 struct device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WARN_ON (int /*<<< orphan*/ ) ; 
- struct omap_hdmi* dev_get_drvdata (struct device*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int WARN_ON (int ) ;
+ struct omap_hdmi* dev_get_drvdata (struct device*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 __attribute__((used)) static int hdmi_audio_startup(struct device *dev,
-			      void (*abort_cb)(struct device *dev))
+         void (*abort_cb)(struct device *dev))
 {
-	struct omap_hdmi *hd = dev_get_drvdata(dev);
+ struct omap_hdmi *hd = dev_get_drvdata(dev);
 
-	mutex_lock(&hd->lock);
+ mutex_lock(&hd->lock);
 
-	WARN_ON(hd->audio_abort_cb != NULL);
+ WARN_ON(hd->audio_abort_cb != ((void*)0));
 
-	hd->audio_abort_cb = abort_cb;
+ hd->audio_abort_cb = abort_cb;
 
-	mutex_unlock(&hd->lock);
+ mutex_unlock(&hd->lock);
 
-	return 0;
+ return 0;
 }

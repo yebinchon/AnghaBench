@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lf ;
-typedef  int /*<<< orphan*/  WPARAM ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int lf ;
+typedef int WPARAM ;
 struct TYPE_4__ {int lfHeight; } ;
-typedef  TYPE_1__ LOGFONTA ;
-typedef  int /*<<< orphan*/  HWND ;
+typedef TYPE_1__ LOGFONTA ;
+typedef int HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CreateFontIndirectA (TYPE_1__*) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DestroyWindow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  InvalidateRect (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NUM_MSG_SEQUENCES ; 
- int /*<<< orphan*/  PARENT_CD_SEQ_INDEX ; 
- int /*<<< orphan*/  SPI_GETICONTITLELOGFONT ; 
- int /*<<< orphan*/  SendMessageA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SystemParametersInfoA (int /*<<< orphan*/ ,int,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  TVE_EXPAND ; 
- int /*<<< orphan*/  TVM_EXPAND ; 
- int /*<<< orphan*/  UpdateWindow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_treeview_control (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fill_tree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  flush_sequences (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * g_customdraw_font ; 
- scalar_t__ hRoot ; 
- int /*<<< orphan*/  ok_sequence (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parent_cd_seq ; 
- int /*<<< orphan*/  sequences ; 
+
+ int * CreateFontIndirectA (TYPE_1__*) ;
+ int DeleteObject (int *) ;
+ int DestroyWindow (int ) ;
+ int FALSE ;
+ int InvalidateRect (int ,int *,int ) ;
+ int NUM_MSG_SEQUENCES ;
+ int PARENT_CD_SEQ_INDEX ;
+ int SPI_GETICONTITLELOGFONT ;
+ int SendMessageA (int ,int ,int ,int ) ;
+ int SystemParametersInfoA (int ,int,TYPE_1__*,int ) ;
+ int TRUE ;
+ int TVE_EXPAND ;
+ int TVM_EXPAND ;
+ int UpdateWindow (int ) ;
+ int create_treeview_control (int ) ;
+ int fill_tree (int ) ;
+ int flush_sequences (int ,int ) ;
+ int * g_customdraw_font ;
+ scalar_t__ hRoot ;
+ int ok_sequence (int ,int ,int ,char*,int ) ;
+ int parent_cd_seq ;
+ int sequences ;
 
 __attribute__((used)) static void test_customdraw(void)
 {
@@ -50,16 +50,16 @@ __attribute__((used)) static void test_customdraw(void)
     fill_tree(hwnd);
     SendMessageA(hwnd, TVM_EXPAND, TVE_EXPAND, (WPARAM)hRoot);
 
-    /* create additional font, custom draw handler will select it */
+
     SystemParametersInfoA(SPI_GETICONTITLELOGFONT, sizeof(lf), &lf, 0);
     lf.lfHeight *= 2;
     g_customdraw_font = CreateFontIndirectA(&lf);
     flush_sequences(sequences, NUM_MSG_SEQUENCES);
-    InvalidateRect(hwnd, NULL, TRUE);
+    InvalidateRect(hwnd, ((void*)0), TRUE);
     UpdateWindow(hwnd);
     ok_sequence(sequences, PARENT_CD_SEQ_INDEX, parent_cd_seq, "custom draw notifications", FALSE);
     DeleteObject(g_customdraw_font);
-    g_customdraw_font = NULL;
+    g_customdraw_font = ((void*)0);
 
     DestroyWindow(hwnd);
 }

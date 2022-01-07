@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct continuation_arg {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALL_CLEANUPS ; 
- int /*<<< orphan*/  do_exec_cleanups (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fputs_unfiltered (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gdb_flush (int /*<<< orphan*/ ) ; 
- char* last_async_command ; 
- int /*<<< orphan*/  mi_out_put (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  raw_stdout ; 
- int /*<<< orphan*/  uiout ; 
+
+ int ALL_CLEANUPS ;
+ int do_exec_cleanups (int ) ;
+ int fputs_unfiltered (char*,int ) ;
+ int gdb_flush (int ) ;
+ char* last_async_command ;
+ int mi_out_put (int ,int ) ;
+ int raw_stdout ;
+ int uiout ;
 
 void
 mi_exec_async_cli_cmd_continuation (struct continuation_arg *arg)

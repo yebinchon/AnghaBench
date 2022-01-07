@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {scalar_t__ repl_state; int repl_transfer_fd; int /*<<< orphan*/ * repl_transfer_tmpfile; } ;
 
-/* Variables and functions */
- scalar_t__ REPL_STATE_TRANSFER ; 
- int /*<<< orphan*/  close (int) ; 
- TYPE_1__ server ; 
- int /*<<< orphan*/  serverAssert (int) ; 
- int /*<<< orphan*/  undoConnectWithMaster () ; 
- int /*<<< orphan*/  unlink (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zfree (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {scalar_t__ repl_state; int repl_transfer_fd; int * repl_transfer_tmpfile; } ;
+
+
+ scalar_t__ REPL_STATE_TRANSFER ;
+ int close (int) ;
+ TYPE_1__ server ;
+ int serverAssert (int) ;
+ int undoConnectWithMaster () ;
+ int unlink (int *) ;
+ int zfree (int *) ;
 
 void replicationAbortSyncTransfer(void) {
     serverAssert(server.repl_state == REPL_STATE_TRANSFER);
@@ -29,7 +29,7 @@ void replicationAbortSyncTransfer(void) {
         close(server.repl_transfer_fd);
         unlink(server.repl_transfer_tmpfile);
         zfree(server.repl_transfer_tmpfile);
-        server.repl_transfer_tmpfile = NULL;
+        server.repl_transfer_tmpfile = ((void*)0);
         server.repl_transfer_fd = -1;
     }
 }

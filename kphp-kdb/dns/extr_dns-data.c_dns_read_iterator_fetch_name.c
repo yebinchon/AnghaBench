@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {unsigned short ilen; scalar_t__ start; } ;
-typedef  TYPE_1__ dns_read_iterator_t ;
+typedef TYPE_1__ dns_read_iterator_t ;
 
-/* Variables and functions */
- scalar_t__ dns_read_iterator_fetch_uchar (TYPE_1__*,unsigned char*) ; 
- scalar_t__ dns_read_iterator_fetch_uchars (TYPE_1__*,int,unsigned char*) ; 
- int /*<<< orphan*/  dns_read_iterator_init (TYPE_1__*,scalar_t__,unsigned short) ; 
+
+ scalar_t__ dns_read_iterator_fetch_uchar (TYPE_1__*,unsigned char*) ;
+ scalar_t__ dns_read_iterator_fetch_uchars (TYPE_1__*,int,unsigned char*) ;
+ int dns_read_iterator_init (TYPE_1__*,scalar_t__,unsigned short) ;
 
 __attribute__((used)) static int dns_read_iterator_fetch_name (dns_read_iterator_t *B, char *output, char *wptr, int avail_out) {
   for (;;) {
@@ -29,7 +29,7 @@ __attribute__((used)) static int dns_read_iterator_fetch_name (dns_read_iterator
       break;
     }
     if ((c & 0xc0) == 0xc0) {
-      /* 4.1.4. Message compression */
+
       unsigned char d;
       c &= 63;
       if (dns_read_iterator_fetch_uchar (B, &d) < 0) {

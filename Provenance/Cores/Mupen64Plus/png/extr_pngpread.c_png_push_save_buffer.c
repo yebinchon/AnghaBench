@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* png_structrp ;
-typedef  scalar_t__ png_size_t ;
-typedef  int /*<<< orphan*/ * png_bytep ;
-struct TYPE_6__ {scalar_t__ save_buffer_size; scalar_t__ current_buffer_size; scalar_t__ save_buffer_max; scalar_t__ buffer_size; int /*<<< orphan*/ * save_buffer; int /*<<< orphan*/ * save_buffer_ptr; int /*<<< orphan*/ * current_buffer_ptr; } ;
 
-/* Variables and functions */
- scalar_t__ PNG_SIZE_MAX ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  png_error (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  png_free (TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ png_malloc_warn (TYPE_1__*,scalar_t__) ; 
 
-void /* PRIVATE */
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef TYPE_1__* png_structrp ;
+typedef scalar_t__ png_size_t ;
+typedef int * png_bytep ;
+struct TYPE_6__ {scalar_t__ save_buffer_size; scalar_t__ current_buffer_size; scalar_t__ save_buffer_max; scalar_t__ buffer_size; int * save_buffer; int * save_buffer_ptr; int * current_buffer_ptr; } ;
+
+
+ scalar_t__ PNG_SIZE_MAX ;
+ int memcpy (int *,int *,scalar_t__) ;
+ int png_error (TYPE_1__*,char*) ;
+ int png_free (TYPE_1__*,int *) ;
+ scalar_t__ png_malloc_warn (TYPE_1__*,scalar_t__) ;
+
+void
 png_push_save_buffer(png_structrp png_ptr)
 {
    if (png_ptr->save_buffer_size != 0)
@@ -59,7 +59,7 @@ png_push_save_buffer(png_structrp png_ptr)
       png_ptr->save_buffer = (png_bytep)png_malloc_warn(png_ptr,
           (png_size_t)new_max);
 
-      if (png_ptr->save_buffer == NULL)
+      if (png_ptr->save_buffer == ((void*)0))
       {
          png_free(png_ptr, old_buffer);
          png_error(png_ptr, "Insufficient memory for save_buffer");

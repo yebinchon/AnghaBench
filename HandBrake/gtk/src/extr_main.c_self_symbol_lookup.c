@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * gpointer ;
-typedef  int /*<<< orphan*/  gchar ;
-typedef  int /*<<< orphan*/  GModule ;
-typedef  int /*<<< orphan*/  GCallback ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * g_module_open (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_module_symbol (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int * gpointer ;
+typedef int gchar ;
+typedef int GModule ;
+typedef int GCallback ;
+
+
+ int * g_module_open (int *,int ) ;
+ int g_module_symbol (int *,int const*,int **) ;
 
 __attribute__((used)) static GCallback
 self_symbol_lookup(const gchar * symbol_name)
 {
-    static GModule *module = NULL;
-    gpointer symbol = NULL;
+    static GModule *module = ((void*)0);
+    gpointer symbol = ((void*)0);
 
     if (!module)
-        module = g_module_open(NULL, 0);
+        module = g_module_open(((void*)0), 0);
 
     g_module_symbol(module, symbol_name, &symbol);
     return (GCallback) symbol;

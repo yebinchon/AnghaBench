@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bmi ;
-typedef  int /*<<< orphan*/  bm ;
-struct TYPE_9__ {int bmHeight; int /*<<< orphan*/  bmWidth; } ;
-struct TYPE_7__ {int biSize; int biHeight; int biPlanes; int biBitCount; int /*<<< orphan*/  biCompression; int /*<<< orphan*/  biWidth; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int bmi ;
+typedef int bm ;
+struct TYPE_9__ {int bmHeight; int bmWidth; } ;
+struct TYPE_7__ {int biSize; int biHeight; int biPlanes; int biBitCount; int biCompression; int biWidth; } ;
 struct TYPE_8__ {TYPE_1__ bmiHeader; } ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  HBITMAP ;
-typedef  int DWORD ;
-typedef  TYPE_2__ BITMAPINFO ;
-typedef  TYPE_3__ BITMAP ;
+typedef int HDC ;
+typedef int HBITMAP ;
+typedef int DWORD ;
+typedef TYPE_2__ BITMAPINFO ;
+typedef TYPE_3__ BITMAP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BI_RGB ; 
- int /*<<< orphan*/  DIB_RGB_COLORS ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ *) ; 
- int GetDIBits (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int GetObjectA (int /*<<< orphan*/ ,int,TYPE_3__*) ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  color_match (int,int) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+ int BI_RGB ;
+ int DIB_RGB_COLORS ;
+ int GetDC (int *) ;
+ int GetDIBits (int ,int ,int ,int,int*,TYPE_2__*,int ) ;
+ int GetObjectA (int ,int,TYPE_3__*) ;
+ int ReleaseDC (int *,int ) ;
+ int color_match (int,int) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_LoadImageBitmap(const char * test_desc, HBITMAP hbm)
 {
     BITMAP bm;
     BITMAPINFO bmi;
     DWORD ret, pixel = 0;
-    HDC hdc = GetDC(NULL);
+    HDC hdc = GetDC(((void*)0));
 
     ret = GetObjectA(hbm, sizeof(bm), &bm);
     ok(ret == sizeof(bm), "GetObject returned %d\n", ret);
@@ -57,5 +57,5 @@ __attribute__((used)) static void test_LoadImageBitmap(const char * test_desc, H
 
     ok(color_match(pixel, 0x00ffffff), "%s: Pixel is 0x%08x\n", test_desc, pixel);
 
-    ReleaseDC(NULL, hdc);
+    ReleaseDC(((void*)0), hdc);
 }

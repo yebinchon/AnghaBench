@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct slot {struct slot* name; int /*<<< orphan*/  dn; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct slot*) ; 
- int /*<<< orphan*/  of_node_put (int /*<<< orphan*/ ) ; 
+
+
+
+struct slot {struct slot* name; int dn; } ;
+
+
+ int kfree (struct slot*) ;
+ int of_node_put (int ) ;
 
 void dealloc_slot_struct(struct slot *slot)
 {
-	of_node_put(slot->dn);
-	kfree(slot->name);
-	kfree(slot);
+ of_node_put(slot->dn);
+ kfree(slot->name);
+ kfree(slot);
 }

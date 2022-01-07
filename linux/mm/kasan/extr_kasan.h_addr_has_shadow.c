@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ KASAN_SHADOW_START ; 
- void const* kasan_shadow_to_mem (void*) ; 
+ scalar_t__ KASAN_SHADOW_START ;
+ void const* kasan_shadow_to_mem (void*) ;
 
 __attribute__((used)) static inline bool addr_has_shadow(const void *addr)
 {
-	return (addr >= kasan_shadow_to_mem((void *)KASAN_SHADOW_START));
+ return (addr >= kasan_shadow_to_mem((void *)KASAN_SHADOW_START));
 }

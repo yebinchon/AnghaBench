@@ -1,0 +1,24 @@
+; ModuleID = '/home/carl/AnghaBench/freebsd/contrib/gcclibs/libcpp/extr_makeucnid.c_write_copyright.c'
+source_filename = "/home/carl/AnghaBench/freebsd/contrib/gcclibs/libcpp/extr_makeucnid.c_write_copyright.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+@write_copyright.copyright = internal constant [2847 x i8] c"/* Unicode characters and various properties.\0A   Copyright (C) 2003, 2005 Free Software Foundation, Inc.\0A\0A   This program is free software; you can redistribute it and/or modify it\0A   under the terms of the GNU General Public License as published by the\0A   Free Software Foundation; either version 2, or (at your option) any\0A   later version.\0A\0A   This program is distributed in the hope that it will be useful,\0A   but WITHOUT ANY WARRANTY; without even the implied warranty of\0A   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\0A   GNU General Public License for more details.\0A\0A   You should have received a copy of the GNU General Public License\0A   along with this program; if not, write to the Free Software\0A   Foundation, 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\0A\0A\0A   Copyright (C) 1991-2005 Unicode, Inc.  All rights reserved.\0A   Distributed under the Terms of Use in\0A   http://www.unicode.org/copyright.html.\0A\0A   Permission is hereby granted, free of charge, to any person\0A   obtaining a copy of the Unicode data files and any associated\0A   documentation (the \22Data Files\22) or Unicode software and any\0A   associated documentation (the \22Software\22) to deal in the Data Files\0A   or Software without restriction, including without limitation the\0A   rights to use, copy, modify, merge, publish, distribute, and/or\0A   sell copies of the Data Files or Software, and to permit persons to\0A   whom the Data Files or Software are furnished to do so, provided\0A   that (a) the above copyright notice(s) and this permission notice\0A   appear with all copies of the Data Files or Software, (b) both the\0A   above copyright notice(s) and this permission notice appear in\0A   associated documentation, and (c) there is clear notice in each\0A   modified Data File or in the Software as well as in the\0A   documentation associated with the Data File(s) or Software that the\0A   data or software has been modified.\0A\0A   THE DATA FILES AND SOFTWARE ARE PROVIDED \22AS IS\22, WITHOUT WARRANTY\0A   OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE\0A   WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\0A   NONINFRINGEMENT OF THIRD PARTY RIGHTS. IN NO EVENT SHALL THE\0A   COPYRIGHT HOLDER OR HOLDERS INCLUDED IN THIS NOTICE BE LIABLE FOR\0A   ANY CLAIM, OR ANY SPECIAL INDIRECT OR CONSEQUENTIAL DAMAGES, OR ANY\0A   DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,\0A   WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS\0A   ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE\0A   OF THE DATA FILES OR SOFTWARE.\0A\0A   Except as contained in this notice, the name of a copyright holder\0A   shall not be used in advertising or otherwise to promote the sale,\0A   use or other dealings in these Data Files or Software without prior\0A   written authorization of the copyright holder.  */\0A\00", align 16
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void ()* @write_copyright to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @write_copyright() #0 {
+  %1 = call i32 @puts(i8* getelementptr inbounds ([2847 x i8], [2847 x i8]* @write_copyright.copyright, i64 0, i64 0))
+  ret void
+}
+
+declare dso_local i32 @puts(i8*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

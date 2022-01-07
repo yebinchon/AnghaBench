@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  matrix_row_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  A0 ; 
- int /*<<< orphan*/  A1 ; 
- int /*<<< orphan*/  A10 ; 
- int /*<<< orphan*/  A2 ; 
- int /*<<< orphan*/  A3 ; 
- int /*<<< orphan*/  A4 ; 
- int /*<<< orphan*/  A5 ; 
- int /*<<< orphan*/  A6 ; 
- int /*<<< orphan*/  A7 ; 
- int /*<<< orphan*/  A8 ; 
- int /*<<< orphan*/  A9 ; 
- int /*<<< orphan*/  B11 ; 
- int /*<<< orphan*/  B12 ; 
- int /*<<< orphan*/  B13 ; 
- int /*<<< orphan*/  B14 ; 
- int /*<<< orphan*/  B15 ; 
- int /*<<< orphan*/  B3 ; 
- int /*<<< orphan*/  B4 ; 
- int /*<<< orphan*/  B5 ; 
- int /*<<< orphan*/  B6 ; 
- int /*<<< orphan*/  B7 ; 
- int /*<<< orphan*/  B8 ; 
- int /*<<< orphan*/  B9 ; 
- int /*<<< orphan*/  EXTD1 ; 
- int MATRIX_ROWS ; 
- int /*<<< orphan*/  extStart (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  extcfg ; 
- int /*<<< orphan*/  matrix ; 
- int /*<<< orphan*/  matrix_debouncing ; 
- int /*<<< orphan*/  matrix_init_quantum () ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  setPinInputHigh (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int matrix_row_t ;
+
+
+ int A0 ;
+ int A1 ;
+ int A10 ;
+ int A2 ;
+ int A3 ;
+ int A4 ;
+ int A5 ;
+ int A6 ;
+ int A7 ;
+ int A8 ;
+ int A9 ;
+ int B11 ;
+ int B12 ;
+ int B13 ;
+ int B14 ;
+ int B15 ;
+ int B3 ;
+ int B4 ;
+ int B5 ;
+ int B6 ;
+ int B7 ;
+ int B8 ;
+ int B9 ;
+ int EXTD1 ;
+ int MATRIX_ROWS ;
+ int extStart (int *,int *) ;
+ int extcfg ;
+ int matrix ;
+ int matrix_debouncing ;
+ int matrix_init_quantum () ;
+ int memset (int ,int ,int) ;
+ int setPinInputHigh (int ) ;
 
 void matrix_init(void) {
-    //Set I/O as pull-up inputs to read states
+
     setPinInputHigh(A0);
     setPinInputHigh(A1);
     setPinInputHigh(A2);
@@ -76,6 +76,6 @@ void matrix_init(void) {
     memset(matrix_debouncing, 0, MATRIX_ROWS * sizeof(matrix_row_t));
 
     matrix_init_quantum();
-    //Start interrupt driver
+
     extStart(&EXTD1, &extcfg);
 }

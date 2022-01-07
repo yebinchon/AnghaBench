@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  Error (char*) ; 
- size_t NODESTACKSIZE ; 
- int* nodestack ; 
- int* nodestackptr ; 
- int /*<<< orphan*/  nodestacksize ; 
+ int Error (char*) ;
+ size_t NODESTACKSIZE ;
+ int* nodestack ;
+ int* nodestackptr ;
+ int nodestacksize ;
 
 void Sin_PushNodeStack(int num)
 {
-	*nodestackptr = num;
-	nodestackptr++;
-	nodestacksize++;
-	//
-	if (nodestackptr >= &nodestack[NODESTACKSIZE])
-	{
-		Error("Sin_PushNodeStack: stack overflow\n");
-	} //end if
+ *nodestackptr = num;
+ nodestackptr++;
+ nodestacksize++;
+
+ if (nodestackptr >= &nodestack[NODESTACKSIZE])
+ {
+  Error("Sin_PushNodeStack: stack overflow\n");
+ }
 }

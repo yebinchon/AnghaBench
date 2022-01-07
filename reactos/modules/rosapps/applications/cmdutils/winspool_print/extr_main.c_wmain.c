@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  docInfo ;
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int docInfo ;
+typedef int WCHAR ;
 struct TYPE_3__ {char* pDocName; } ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  scalar_t__ HANDLE ;
-typedef  scalar_t__ DWORD ;
-typedef  TYPE_1__ DOC_INFO_1W ;
-typedef  int /*<<< orphan*/  Buffer ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef int LPBYTE ;
+typedef scalar_t__ HANDLE ;
+typedef scalar_t__ DWORD ;
+typedef TYPE_1__ DOC_INFO_1W ;
+typedef int Buffer ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- int /*<<< orphan*/  ClosePrinter (scalar_t__) ; 
- scalar_t__ CreateFileW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EndDocPrinter (scalar_t__) ; 
- int /*<<< orphan*/  EndPagePrinter (scalar_t__) ; 
- int /*<<< orphan*/  GENERIC_READ ; 
- scalar_t__ GetFileSize (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ INVALID_FILE_SIZE ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- int /*<<< orphan*/  OpenPrinterW (char*,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReadFile (scalar_t__,int /*<<< orphan*/ *,scalar_t__,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  StartDocPrinterW (scalar_t__,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StartPagePrinter (scalar_t__) ; 
- int /*<<< orphan*/  Usage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WritePrinter (scalar_t__,int /*<<< orphan*/ *,scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_1__*,int) ; 
- scalar_t__ min (int,scalar_t__) ; 
- int /*<<< orphan*/  printf (char*,int /*<<< orphan*/ ) ; 
+
+ int CloseHandle (scalar_t__) ;
+ int ClosePrinter (scalar_t__) ;
+ scalar_t__ CreateFileW (int *,int ,int ,int *,int ,int ,int *) ;
+ int EndDocPrinter (scalar_t__) ;
+ int EndPagePrinter (scalar_t__) ;
+ int GENERIC_READ ;
+ scalar_t__ GetFileSize (scalar_t__,int *) ;
+ int GetLastError () ;
+ scalar_t__ INVALID_FILE_SIZE ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int OPEN_EXISTING ;
+ int OpenPrinterW (char*,scalar_t__*,int *) ;
+ int ReadFile (scalar_t__,int *,scalar_t__,scalar_t__*,int *) ;
+ int StartDocPrinterW (scalar_t__,int,int ) ;
+ int StartPagePrinter (scalar_t__) ;
+ int Usage (int *) ;
+ int WritePrinter (scalar_t__,int *,scalar_t__,scalar_t__*) ;
+ int ZeroMemory (TYPE_1__*,int) ;
+ scalar_t__ min (int,scalar_t__) ;
+ int printf (char*,int ) ;
 
 int wmain(int argc, WCHAR* argv[])
 {
@@ -49,7 +49,7 @@ int wmain(int argc, WCHAR* argv[])
     DWORD dwFileSize;
     DWORD dwRead, dwWritten;
     HANDLE hFile = INVALID_HANDLE_VALUE;
-    HANDLE hPrinter = NULL;
+    HANDLE hPrinter = ((void*)0);
     DOC_INFO_1W docInfo;
     BYTE Buffer[4096];
 
@@ -59,27 +59,27 @@ int wmain(int argc, WCHAR* argv[])
         return 0;
     }
 
-    hFile = CreateFileW(argv[1], GENERIC_READ, 0, NULL, OPEN_EXISTING, 0, NULL);
+    hFile = CreateFileW(argv[1], GENERIC_READ, 0, ((void*)0), OPEN_EXISTING, 0, ((void*)0));
     if (hFile == INVALID_HANDLE_VALUE)
     {
         printf("CreateFileW failed, last error is %lu!\n", GetLastError());
         goto Cleanup;
     }
 
-    dwFileSize = GetFileSize(hFile, NULL);
+    dwFileSize = GetFileSize(hFile, ((void*)0));
     if (dwFileSize == INVALID_FILE_SIZE)
     {
         printf("File is too big, or GetFileSize failed; last error is %lu!\n", GetLastError());
         goto Cleanup;
     }
 
-    if (!OpenPrinterW(L"Dummy Printer On LPT1", &hPrinter, NULL))
+    if (!OpenPrinterW(L"Dummy Printer On LPT1", &hPrinter, ((void*)0)))
     {
         printf("OpenPrinterW failed, last error is %lu!\n", GetLastError());
         goto Cleanup;
     }
 
-    /* Print to a printer, with the "RAW" datatype (pDatatype == NULL or "RAW") */
+
     ZeroMemory(&docInfo, sizeof(docInfo));
     docInfo.pDocName = L"winspool_print";
 
@@ -98,7 +98,7 @@ int wmain(int argc, WCHAR* argv[])
     while (dwFileSize > 0)
     {
         dwRead = min(sizeof(Buffer), dwFileSize);
-        if (!ReadFile(hFile, Buffer, dwRead, &dwRead, NULL))
+        if (!ReadFile(hFile, Buffer, dwRead, &dwRead, ((void*)0)))
         {
             printf("ReadFile failed, last error is %lu!\n", GetLastError());
             goto Cleanup;

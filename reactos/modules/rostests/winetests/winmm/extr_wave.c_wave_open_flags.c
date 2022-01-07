@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int CALLBACK_EVENT ; 
- int CALLBACK_FUNCTION ; 
- int CALLBACK_NULL ; 
- int CALLBACK_THREAD ; 
- int CALLBACK_TYPEMASK ; 
- int CALLBACK_WINDOW ; 
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
- int WAVE_ALLOWSYNC ; 
- int WAVE_FORMAT_DIRECT ; 
- int WAVE_FORMAT_QUERY ; 
- int WAVE_MAPPED ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
+
+
+
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ int CALLBACK_EVENT ;
+ int CALLBACK_FUNCTION ;
+ int CALLBACK_NULL ;
+ int CALLBACK_THREAD ;
+ int CALLBACK_TYPEMASK ;
+ int CALLBACK_WINDOW ;
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
+ int WAVE_ALLOWSYNC ;
+ int WAVE_FORMAT_DIRECT ;
+ int WAVE_FORMAT_QUERY ;
+ int WAVE_MAPPED ;
+ int strcat (char*,char*) ;
 
 const char * wave_open_flags(DWORD flags)
 {

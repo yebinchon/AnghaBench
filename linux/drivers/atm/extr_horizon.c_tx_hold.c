@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  flags; int /*<<< orphan*/  tx_queue; } ;
-typedef  TYPE_1__ hrz_dev ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DBG_TX ; 
- int /*<<< orphan*/  PRINTD (int /*<<< orphan*/ ,char*,TYPE_1__*,...) ; 
- int /*<<< orphan*/  current ; 
- scalar_t__ signal_pending (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_and_set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tx_busy ; 
- int /*<<< orphan*/  wait_event_interruptible (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int flags; int tx_queue; } ;
+typedef TYPE_1__ hrz_dev ;
+
+
+ int DBG_TX ;
+ int PRINTD (int ,char*,TYPE_1__*,...) ;
+ int current ;
+ scalar_t__ signal_pending (int ) ;
+ int test_and_set_bit (int ,int *) ;
+ int tx_busy ;
+ int wait_event_interruptible (int ,int) ;
 
 __attribute__((used)) static int tx_hold (hrz_dev * dev) {
   PRINTD (DBG_TX, "sleeping at tx lock %p %lu", dev, dev->flags);

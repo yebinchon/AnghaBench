@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-struct demuxer {int /*<<< orphan*/  stream; int /*<<< orphan*/  log; } ;
-typedef  int /*<<< orphan*/  int64_t ;
 
-/* Variables and functions */
- int EBML_ID_INVALID ; 
-#define  MATROSKA_ID_ATTACHMENTS 134 
-#define  MATROSKA_ID_CHAPTERS 133 
-#define  MATROSKA_ID_CUES 132 
-#define  MATROSKA_ID_INFO 131 
-#define  MATROSKA_ID_SEEKHEAD 130 
-#define  MATROSKA_ID_TAGS 129 
-#define  MATROSKA_ID_TRACKS 128 
- int demux_mkv_read_attachments (struct demuxer*) ; 
- int demux_mkv_read_chapters (struct demuxer*) ; 
- int demux_mkv_read_cues (struct demuxer*) ; 
- int demux_mkv_read_info (struct demuxer*) ; 
- int demux_mkv_read_seekhead (struct demuxer*) ; 
- int demux_mkv_read_tags (struct demuxer*) ; 
- int demux_mkv_read_tracks (struct demuxer*) ; 
- int /*<<< orphan*/  ebml_read_skip (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- scalar_t__ test_header_element (struct demuxer*,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+struct demuxer {int stream; int log; } ;
+typedef int int64_t ;
+
+
+ int EBML_ID_INVALID ;
+
+
+
+
+
+
+
+ int demux_mkv_read_attachments (struct demuxer*) ;
+ int demux_mkv_read_chapters (struct demuxer*) ;
+ int demux_mkv_read_cues (struct demuxer*) ;
+ int demux_mkv_read_info (struct demuxer*) ;
+ int demux_mkv_read_seekhead (struct demuxer*) ;
+ int demux_mkv_read_tags (struct demuxer*) ;
+ int demux_mkv_read_tracks (struct demuxer*) ;
+ int ebml_read_skip (int ,int,int ) ;
+ scalar_t__ test_header_element (struct demuxer*,int,int ) ;
 
 __attribute__((used)) static int read_header_element(struct demuxer *demuxer, uint32_t id,
                                int64_t start_filepos)
@@ -43,19 +43,19 @@ __attribute__((used)) static int read_header_element(struct demuxer *demuxer, ui
         goto skip;
 
     switch(id) {
-    case MATROSKA_ID_INFO:
+    case 131:
         return demux_mkv_read_info(demuxer);
-    case MATROSKA_ID_TRACKS:
+    case 128:
         return demux_mkv_read_tracks(demuxer);
-    case MATROSKA_ID_CUES:
+    case 132:
         return demux_mkv_read_cues(demuxer);
-    case MATROSKA_ID_TAGS:
+    case 129:
         return demux_mkv_read_tags(demuxer);
-    case MATROSKA_ID_SEEKHEAD:
+    case 130:
         return demux_mkv_read_seekhead(demuxer);
-    case MATROSKA_ID_CHAPTERS:
+    case 133:
         return demux_mkv_read_chapters(demuxer);
-    case MATROSKA_ID_ATTACHMENTS:
+    case 134:
         return demux_mkv_read_attachments(demuxer);
     }
 skip:

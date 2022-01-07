@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int REGSAM ;
-typedef  scalar_t__ HKEY ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- scalar_t__ HKEY_CLASSES_ROOT ; 
- int KEY_WOW64_32KEY ; 
- int KEY_WOW64_64KEY ; 
- int MAXIMUM_ALLOWED ; 
- scalar_t__ classes_root_hkey ; 
- scalar_t__ create_classes_key (scalar_t__,char const*,int,scalar_t__*) ; 
- scalar_t__ create_classes_root_hkey (int) ; 
+
+
+
+typedef char WCHAR ;
+typedef int REGSAM ;
+typedef scalar_t__ HKEY ;
+typedef int BOOL ;
+
+
+ scalar_t__ HKEY_CLASSES_ROOT ;
+ int KEY_WOW64_32KEY ;
+ int KEY_WOW64_64KEY ;
+ int MAXIMUM_ALLOWED ;
+ scalar_t__ classes_root_hkey ;
+ scalar_t__ create_classes_key (scalar_t__,char const*,int,scalar_t__*) ;
+ scalar_t__ create_classes_root_hkey (int) ;
 
 __attribute__((used)) static inline HKEY get_classes_root_hkey( HKEY hkey, REGSAM access )
 {

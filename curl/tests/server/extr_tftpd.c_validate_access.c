@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  weare ;
+
+
+
+
+typedef int weare ;
 struct testcase {size_t bufsize; size_t rcount; long testno; scalar_t__ buffer; scalar_t__ rptr; } ;
-typedef  int /*<<< orphan*/  partbuf ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int partbuf ;
+typedef int FILE ;
 
-/* Variables and functions */
- int EACCESS ; 
- int /*<<< orphan*/  ISDIGIT (char) ; 
- int errno ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int getpart (scalar_t__*,size_t*,char*,char*,int /*<<< orphan*/ *) ; 
- scalar_t__ getpid () ; 
- int /*<<< orphan*/  logmsg (char*,...) ; 
- size_t msnprintf (char*,int,char*,long) ; 
- int /*<<< orphan*/  parse_servercmd (struct testcase*) ; 
- scalar_t__ strdup (char*) ; 
- int /*<<< orphan*/  strerror (int) ; 
- int /*<<< orphan*/  strncmp (char*,char const*,int) ; 
- char* strrchr (char const*,char) ; 
- long strtol (char*,char**,int) ; 
- char* test2file (long) ; 
+
+ int EACCESS ;
+ int ISDIGIT (char) ;
+ int errno ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int getpart (scalar_t__*,size_t*,char*,char*,int *) ;
+ scalar_t__ getpid () ;
+ int logmsg (char*,...) ;
+ size_t msnprintf (char*,int,char*,long) ;
+ int parse_servercmd (struct testcase*) ;
+ scalar_t__ strdup (char*) ;
+ int strerror (int) ;
+ int strncmp (char*,char const*,int) ;
+ char* strrchr (char const*,char) ;
+ long strtol (char*,char**,int) ;
+ char* test2file (long) ;
 
 __attribute__((used)) static int validate_access(struct testcase *test,
                            const char *filename, int mode)
@@ -47,13 +47,13 @@ __attribute__((used)) static int validate_access(struct testcase *test,
 
     logmsg("Are-we-friendly question received");
     test->buffer = strdup(weare);
-    test->rptr = test->buffer; /* set read pointer */
-    test->bufsize = count;    /* set total count */
-    test->rcount = count;     /* set data left to read */
-    return 0; /* fine */
+    test->rptr = test->buffer;
+    test->bufsize = count;
+    test->rcount = count;
+    return 0;
   }
 
-  /* find the last slash */
+
   ptr = strrchr(filename, '/');
 
   if(ptr) {
@@ -62,13 +62,13 @@ __attribute__((used)) static int validate_access(struct testcase *test,
     long testno;
     char *file;
 
-    ptr++; /* skip the slash */
+    ptr++;
 
-    /* skip all non-numericals following the slash */
+
     while(*ptr && !ISDIGIT(*ptr))
       ptr++;
 
-    /* get the number */
+
     testno = strtol(ptr, &ptr, 10);
 
     if(testno > 10000) {
@@ -108,9 +108,9 @@ __attribute__((used)) static int validate_access(struct testcase *test,
           return EACCESS;
         }
         if(test->buffer) {
-          test->rptr = test->buffer; /* set read pointer */
-          test->bufsize = count;    /* set total count */
-          test->rcount = count;     /* set data left to read */
+          test->rptr = test->buffer;
+          test->bufsize = count;
+          test->rcount = count;
         }
         else
           return EACCESS;
@@ -122,7 +122,7 @@ __attribute__((used)) static int validate_access(struct testcase *test,
   }
   else {
     logmsg("no slash found in path");
-    return EACCESS; /* failure */
+    return EACCESS;
   }
 
   logmsg("file opened and all is good");

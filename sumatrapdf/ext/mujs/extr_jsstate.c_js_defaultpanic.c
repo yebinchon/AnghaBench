@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  js_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  js_report (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int js_State ;
+
+
+ int js_report (int *,char*) ;
 
 __attribute__((used)) static void js_defaultpanic(js_State *J)
 {
-	js_report(J, "uncaught exception");
-	/* return to javascript to abort */
+ js_report(J, "uncaught exception");
+
 }

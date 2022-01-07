@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ocfs2_xa_loc {TYPE_1__* xl_ops; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* xlo_wipe_namevalue ) (struct ocfs2_xa_loc*) ;} ;
+struct TYPE_2__ {int (* xlo_wipe_namevalue ) (struct ocfs2_xa_loc*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (struct ocfs2_xa_loc*) ; 
+
+ int stub1 (struct ocfs2_xa_loc*) ;
 
 __attribute__((used)) static void ocfs2_xa_wipe_namevalue(struct ocfs2_xa_loc *loc)
 {
-	loc->xl_ops->xlo_wipe_namevalue(loc);
+ loc->xl_ops->xlo_wipe_namevalue(loc);
 }

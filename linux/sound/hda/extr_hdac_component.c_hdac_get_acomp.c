@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct drm_audio_component {int dummy; } ;
 struct device {int dummy; } ;
 
-/* Variables and functions */
- struct drm_audio_component* devres_find (struct device*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hdac_acomp_release ; 
+
+ struct drm_audio_component* devres_find (struct device*,int ,int *,int *) ;
+ int hdac_acomp_release ;
 
 __attribute__((used)) static struct drm_audio_component *hdac_get_acomp(struct device *dev)
 {
-	return devres_find(dev, hdac_acomp_release, NULL, NULL);
+ return devres_find(dev, hdac_acomp_release, ((void*)0), ((void*)0));
 }

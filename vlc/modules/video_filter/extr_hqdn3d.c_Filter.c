@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-struct vf_priv_s {int /*<<< orphan*/ * Frame; int /*<<< orphan*/ * Coefs; int /*<<< orphan*/  Line; } ;
+
+
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+struct vf_priv_s {int * Frame; int * Coefs; int Line; } ;
 struct TYPE_16__ {TYPE_1__* p; } ;
-typedef  TYPE_2__ picture_t ;
+typedef TYPE_2__ picture_t ;
 struct TYPE_17__ {TYPE_4__* p_sys; } ;
-typedef  TYPE_3__ filter_t ;
-struct TYPE_18__ {int b_recalc_coefs; int /*<<< orphan*/ * h; int /*<<< orphan*/ * w; int /*<<< orphan*/  coefs_mutex; int /*<<< orphan*/  chroma_temp; int /*<<< orphan*/  chroma_spat; int /*<<< orphan*/  luma_temp; int /*<<< orphan*/  luma_spat; struct vf_priv_s cfg; } ;
-typedef  TYPE_4__ filter_sys_t ;
-struct TYPE_15__ {int /*<<< orphan*/  i_pitch; int /*<<< orphan*/  p_pixels; } ;
+typedef TYPE_3__ filter_t ;
+struct TYPE_18__ {int b_recalc_coefs; int * h; int * w; int coefs_mutex; int chroma_temp; int chroma_spat; int luma_temp; int luma_spat; struct vf_priv_s cfg; } ;
+typedef TYPE_4__ filter_sys_t ;
+struct TYPE_15__ {int i_pitch; int p_pixels; } ;
 
-/* Variables and functions */
- TYPE_2__* CopyInfoAndRelease (TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  PrecalcCoefs (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  deNoise (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__* filter_NewPicture (TYPE_3__*) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_3__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  picture_Release (TYPE_2__*) ; 
- scalar_t__ unlikely (int) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ TYPE_2__* CopyInfoAndRelease (TYPE_2__*,TYPE_2__*) ;
+ int PrecalcCoefs (int ,int ) ;
+ int deNoise (int ,int ,int ,int *,int ,int ,int ,int ,int ,int ,int ) ;
+ TYPE_2__* filter_NewPicture (TYPE_3__*) ;
+ int msg_Dbg (TYPE_3__*,char*,int ,int ,int ,int ) ;
+ int picture_Release (TYPE_2__*) ;
+ scalar_t__ unlikely (int) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 __attribute__((used)) static picture_t *Filter(filter_t *filter, picture_t *src)
 {
     picture_t *dst;
     filter_sys_t *sys = filter->p_sys;
     struct vf_priv_s *cfg = &sys->cfg;
-    bool recalc = false;
+    bool recalc = 0;
 
-    if (!src) return NULL;
+    if (!src) return ((void*)0);
 
     dst = filter_NewPicture(filter);
     if ( unlikely(!dst) ) {
         picture_Release(src);
-        return NULL;
+        return ((void*)0);
     }
     vlc_mutex_lock( &sys->coefs_mutex );
     recalc = sys->b_recalc_coefs;
-    sys->b_recalc_coefs = false;
+    sys->b_recalc_coefs = 0;
 
     if( unlikely( recalc ) )
     {
@@ -86,7 +86,7 @@ __attribute__((used)) static picture_t *Filter(filter_t *filter, picture_t *src)
     {
         picture_Release( src );
         picture_Release( dst );
-        return NULL;
+        return ((void*)0);
     }
 
     return CopyInfoAndRelease(dst, src);

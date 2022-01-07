@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  esp_http_client_handle_t ;
-struct TYPE_3__ {char* host; char* path; int /*<<< orphan*/  event_handler; int /*<<< orphan*/  transport_type; } ;
-typedef  TYPE_1__ esp_http_client_config_t ;
-typedef  scalar_t__ esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  HTTP_METHOD_DELETE ; 
- int /*<<< orphan*/  HTTP_METHOD_HEAD ; 
- int /*<<< orphan*/  HTTP_METHOD_PATCH ; 
- int /*<<< orphan*/  HTTP_METHOD_POST ; 
- int /*<<< orphan*/  HTTP_METHOD_PUT ; 
- int /*<<< orphan*/  HTTP_TRANSPORT_OVER_TCP ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  _http_event_handler ; 
- int /*<<< orphan*/  esp_err_to_name (scalar_t__) ; 
- int /*<<< orphan*/  esp_http_client_cleanup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_http_client_get_content_length (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_http_client_get_status_code (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_http_client_init (TYPE_1__*) ; 
- scalar_t__ esp_http_client_perform (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_http_client_set_method (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_http_client_set_post_field (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_http_client_set_url (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int esp_http_client_handle_t ;
+struct TYPE_3__ {char* host; char* path; int event_handler; int transport_type; } ;
+typedef TYPE_1__ esp_http_client_config_t ;
+typedef scalar_t__ esp_err_t ;
+
+
+ int ESP_LOGE (int ,char*,int ) ;
+ int ESP_LOGI (int ,char*,int ,int ) ;
+ scalar_t__ ESP_OK ;
+ int HTTP_METHOD_DELETE ;
+ int HTTP_METHOD_HEAD ;
+ int HTTP_METHOD_PATCH ;
+ int HTTP_METHOD_POST ;
+ int HTTP_METHOD_PUT ;
+ int HTTP_TRANSPORT_OVER_TCP ;
+ int TAG ;
+ int _http_event_handler ;
+ int esp_err_to_name (scalar_t__) ;
+ int esp_http_client_cleanup (int ) ;
+ int esp_http_client_get_content_length (int ) ;
+ int esp_http_client_get_status_code (int ) ;
+ int esp_http_client_init (TYPE_1__*) ;
+ scalar_t__ esp_http_client_perform (int ) ;
+ int esp_http_client_set_method (int ,int ) ;
+ int esp_http_client_set_post_field (int ,char const*,int ) ;
+ int esp_http_client_set_url (int ,char*) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static void http_rest_with_hostname_path(void)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static void http_rest_with_hostname_path(void)
     };
     esp_http_client_handle_t client = esp_http_client_init(&config);
 
-    // GET
+
     esp_err_t err = esp_http_client_perform(client);
     if (err == ESP_OK) {
         ESP_LOGI(TAG, "HTTP GET Status = %d, content_length = %d",
@@ -59,7 +59,7 @@ __attribute__((used)) static void http_rest_with_hostname_path(void)
         ESP_LOGE(TAG, "HTTP GET request failed: %s", esp_err_to_name(err));
     }
 
-    // POST
+
     const char *post_data = "field1=value1&field2=value2";
     esp_http_client_set_url(client, "/post");
     esp_http_client_set_method(client, HTTP_METHOD_POST);
@@ -73,7 +73,7 @@ __attribute__((used)) static void http_rest_with_hostname_path(void)
         ESP_LOGE(TAG, "HTTP POST request failed: %s", esp_err_to_name(err));
     }
 
-    //PUT
+
     esp_http_client_set_url(client, "/put");
     esp_http_client_set_method(client, HTTP_METHOD_PUT);
     err = esp_http_client_perform(client);
@@ -85,10 +85,10 @@ __attribute__((used)) static void http_rest_with_hostname_path(void)
         ESP_LOGE(TAG, "HTTP PUT request failed: %s", esp_err_to_name(err));
     }
 
-    //PATCH
+
     esp_http_client_set_url(client, "/patch");
     esp_http_client_set_method(client, HTTP_METHOD_PATCH);
-    esp_http_client_set_post_field(client, NULL, 0);
+    esp_http_client_set_post_field(client, ((void*)0), 0);
     err = esp_http_client_perform(client);
     if (err == ESP_OK) {
         ESP_LOGI(TAG, "HTTP PATCH Status = %d, content_length = %d",
@@ -98,7 +98,7 @@ __attribute__((used)) static void http_rest_with_hostname_path(void)
         ESP_LOGE(TAG, "HTTP PATCH request failed: %s", esp_err_to_name(err));
     }
 
-    //DELETE
+
     esp_http_client_set_url(client, "/delete");
     esp_http_client_set_method(client, HTTP_METHOD_DELETE);
     err = esp_http_client_perform(client);
@@ -110,7 +110,7 @@ __attribute__((used)) static void http_rest_with_hostname_path(void)
         ESP_LOGE(TAG, "HTTP DELETE request failed: %s", esp_err_to_name(err));
     }
 
-    //HEAD
+
     esp_http_client_set_url(client, "/get");
     esp_http_client_set_method(client, HTTP_METHOD_HEAD);
     err = esp_http_client_perform(client);

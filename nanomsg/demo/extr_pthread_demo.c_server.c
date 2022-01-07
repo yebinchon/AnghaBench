@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tids ;
-typedef  int /*<<< orphan*/ * pthread_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_SP_RAW ; 
- int MAXWORKERS ; 
- int /*<<< orphan*/  NN_REP ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int) ; 
- scalar_t__ nn_bind (int,char const*) ; 
- int /*<<< orphan*/  nn_close (int) ; 
- int /*<<< orphan*/  nn_errno () ; 
- int nn_socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* nn_strerror (int /*<<< orphan*/ ) ; 
- int pthread_create (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  pthread_join (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (int) ; 
- int /*<<< orphan*/  worker ; 
+
+
+
+typedef int tids ;
+typedef int * pthread_t ;
+
+
+ int AF_SP_RAW ;
+ int MAXWORKERS ;
+ int NN_REP ;
+ int fprintf (int ,char*,char*) ;
+ int memset (int **,int ,int) ;
+ scalar_t__ nn_bind (int,char const*) ;
+ int nn_close (int) ;
+ int nn_errno () ;
+ int nn_socket (int ,int ) ;
+ char* nn_strerror (int ) ;
+ int pthread_create (int **,int *,int ,void*) ;
+ int pthread_join (int *,int *) ;
+ int stderr ;
+ char* strerror (int) ;
+ int worker ;
 
 int server(const char *url)
 {
-    int fd; 
+    int fd;
     int i;
     pthread_t tids [MAXWORKERS];
     int rc;
 
-    /*  Create the socket. */
+
     fd = nn_socket(AF_SP_RAW, NN_REP);
     if (fd < 0) {
         fprintf (stderr, "nn_socket: %s\n", nn_strerror (nn_errno ()));
         return (-1);
     }
 
-    /*  Bind to the URL.  This will bind to the address and listen
-        synchronously; new clients will be accepted asynchronously
-        without further action from the calling program. */
+
+
+
 
     if (nn_bind (fd, url) < 0) {
         fprintf (stderr, "nn_bind: %s\n", nn_strerror (nn_errno ()));
@@ -56,9 +56,9 @@ int server(const char *url)
 
     memset (tids, 0, sizeof (tids));
 
-    /*  Start up the threads. */
+
     for (i = 0; i < MAXWORKERS; i++) {
-        rc = pthread_create (&tids[i], NULL, worker, (void *)(intptr_t)fd);
+        rc = pthread_create (&tids[i], ((void*)0), worker, (void *)(intptr_t)fd);
         if (rc < 0) {
             fprintf (stderr, "pthread_create: %s\n", strerror (rc));
             nn_close (fd);
@@ -66,10 +66,10 @@ int server(const char *url)
         }
     }
 
-    /*  Now wait on them to finish. */
+
     for (i = 0; i < MAXWORKERS; i++) {
-        if (tids[i] != NULL) {
-            pthread_join (tids[i], NULL);
+        if (tids[i] != ((void*)0)) {
+            pthread_join (tids[i], ((void*)0));
         }
     }
     return (-1);

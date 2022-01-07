@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct s_write {TYPE_1__* data608; } ;
 struct eia608_screen {int dirty; scalar_t__* row_used; scalar_t__** characters; scalar_t__** fonts; scalar_t__** colors; } ;
 struct TYPE_2__ {int mode; int cursor_row; } ;
 
-/* Variables and functions */
- int CC608_SCREEN_WIDTH ; 
- char COL_WHITE ; 
- char FONT_REGULAR ; 
-#define  MODE_ROLLUP_2 130 
-#define  MODE_ROLLUP_3 129 
-#define  MODE_ROLLUP_4 128 
- scalar_t__ debug_608 ; 
- struct eia608_screen* get_current_visible_buffer (struct s_write*) ; 
- int /*<<< orphan*/  hb_log (char*,int,int,...) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,scalar_t__*,int) ; 
- int /*<<< orphan*/  memset (scalar_t__*,char,int) ; 
+
+ int CC608_SCREEN_WIDTH ;
+ char COL_WHITE ;
+ char FONT_REGULAR ;
+
+
+
+ scalar_t__ debug_608 ;
+ struct eia608_screen* get_current_visible_buffer (struct s_write*) ;
+ int hb_log (char*,int,int,...) ;
+ int memcpy (scalar_t__*,scalar_t__*,int) ;
+ int memset (scalar_t__*,char,int) ;
 
 __attribute__((used)) static void roll_up(struct s_write *wb)
 {
@@ -37,22 +37,22 @@ __attribute__((used)) static void roll_up(struct s_write *wb)
     int keep_lines;
     switch (wb->data608->mode)
     {
-        case MODE_ROLLUP_2:
+        case 130:
             keep_lines = 2;
             break;
-        case MODE_ROLLUP_3:
+        case 129:
             keep_lines = 3;
             break;
-        case MODE_ROLLUP_4:
+        case 128:
             keep_lines = 4;
             break;
-        default: // Shouldn't happen
+        default:
             keep_lines = 0;
             break;
     }
     int firstrow = -1, lastrow = -1;
-    // Look for the last line used
-    int rows_now = 0; // Number of rows in use right now
+
+    int rows_now = 0;
     for (i = 0; i < 15; i++)
     {
         if (use_buffer->row_used[i])
@@ -67,7 +67,7 @@ __attribute__((used)) static void roll_up(struct s_write *wb)
     if (debug_608)
         hb_log ("\rIn roll-up: %d lines used, first: %d, last: %d\n", rows_now, firstrow, lastrow);
 
-    if (lastrow==-1) // Empty screen, nothing to rollup
+    if (lastrow==-1)
         return;
 
     for (j = lastrow - keep_lines + 1; j < lastrow; j++)
@@ -95,7 +95,7 @@ __attribute__((used)) static void roll_up(struct s_write *wb)
     use_buffer->characters[lastrow][CC608_SCREEN_WIDTH] = 0;
     use_buffer->row_used[lastrow] = 0;
 
-    // Sanity check
+
     rows_now = 0;
     for (i = 0; i < 15; i++)
         if (use_buffer->row_used[i])

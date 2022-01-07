@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct nested_stream {int /*<<< orphan*/ * id; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct nested_stream {int * id; } ;
 struct demuxer {TYPE_1__* priv; } ;
 struct AVFormatContext {struct demuxer* opaque; } ;
-struct TYPE_3__ {int (* default_io_open ) (struct AVFormatContext*,int /*<<< orphan*/ **,char const*,int,int /*<<< orphan*/ **) ;int /*<<< orphan*/  num_nested; int /*<<< orphan*/  nested; } ;
-typedef  TYPE_1__ lavf_priv_t ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  int /*<<< orphan*/  AVDictionary ;
+struct TYPE_3__ {int (* default_io_open ) (struct AVFormatContext*,int **,char const*,int,int **) ;int num_nested; int nested; } ;
+typedef TYPE_1__ lavf_priv_t ;
+typedef int AVIOContext ;
+typedef int AVDictionary ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_TARRAY_APPEND (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct nested_stream) ; 
- int stub1 (struct AVFormatContext*,int /*<<< orphan*/ **,char const*,int,int /*<<< orphan*/ **) ; 
+
+ int MP_TARRAY_APPEND (TYPE_1__*,int ,int ,struct nested_stream) ;
+ int stub1 (struct AVFormatContext*,int **,char const*,int,int **) ;
 
 __attribute__((used)) static int nested_io_open(struct AVFormatContext *s, AVIOContext **pb,
                           const char *url, int flags, AVDictionary **options)

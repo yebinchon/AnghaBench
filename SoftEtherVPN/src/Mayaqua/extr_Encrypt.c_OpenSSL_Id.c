@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CRYPTO_THREADID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPTO_THREADID_set_numeric (int /*<<< orphan*/ *,unsigned long) ; 
- scalar_t__ ThreadId () ; 
+
+
+
+typedef int CRYPTO_THREADID ;
+
+
+ int CRYPTO_THREADID_set_numeric (int *,unsigned long) ;
+ scalar_t__ ThreadId () ;
 
 __attribute__((used)) static void OpenSSL_Id(CRYPTO_THREADID *id)
 {
-	CRYPTO_THREADID_set_numeric(id, (unsigned long)ThreadId());
+ CRYPTO_THREADID_set_numeric(id, (unsigned long)ThreadId());
 }

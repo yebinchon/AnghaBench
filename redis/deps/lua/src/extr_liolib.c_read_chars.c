@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  luaL_Buffer ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- size_t LUAL_BUFFERSIZE ; 
- size_t fread (char*,int,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_addsize (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  luaL_buffinit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* luaL_prepbuffer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_pushresult (int /*<<< orphan*/ *) ; 
- scalar_t__ lua_objlen (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+typedef int luaL_Buffer ;
+typedef int FILE ;
+
+
+ size_t LUAL_BUFFERSIZE ;
+ size_t fread (char*,int,size_t,int *) ;
+ int luaL_addsize (int *,size_t) ;
+ int luaL_buffinit (int *,int *) ;
+ char* luaL_prepbuffer (int *) ;
+ int luaL_pushresult (int *) ;
+ scalar_t__ lua_objlen (int *,int) ;
 
 __attribute__((used)) static int read_chars (lua_State *L, FILE *f, size_t n) {
-  size_t rlen;  /* how much to read */
-  size_t nr;  /* number of chars actually read */
+  size_t rlen;
+  size_t nr;
   luaL_Buffer b;
   luaL_buffinit(L, &b);
-  rlen = LUAL_BUFFERSIZE;  /* try to read that much each time */
+  rlen = LUAL_BUFFERSIZE;
   do {
     char *p = luaL_prepbuffer(&b);
-    if (rlen > n) rlen = n;  /* cannot read more than asked */
+    if (rlen > n) rlen = n;
     nr = fread(p, sizeof(char), rlen, f);
     luaL_addsize(&b, nr);
-    n -= nr;  /* still have to read `n' chars */
-  } while (n > 0 && nr == rlen);  /* until end of count or eof */
-  luaL_pushresult(&b);  /* close buffer */
+    n -= nr;
+  } while (n > 0 && nr == rlen);
+  luaL_pushresult(&b);
   return (n == 0 || lua_objlen(L, -1) > 0);
 }

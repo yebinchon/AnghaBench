@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_6__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/ *** light_maps; int /*<<< orphan*/ *** block_maps; int /*<<< orphan*/  q; int /*<<< orphan*/  p; scalar_t__ load; } ;
-typedef  TYPE_1__ WorkerItem ;
-struct TYPE_9__ {scalar_t__ state; int /*<<< orphan*/  mtx; TYPE_1__ item; } ;
-typedef  TYPE_2__ Worker ;
+
+
+typedef struct TYPE_11__ TYPE_6__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int *** light_maps; int *** block_maps; int q; int p; scalar_t__ load; } ;
+typedef TYPE_1__ WorkerItem ;
+struct TYPE_9__ {scalar_t__ state; int mtx; TYPE_1__ item; } ;
+typedef TYPE_2__ Worker ;
 struct TYPE_11__ {TYPE_2__* workers; } ;
-struct TYPE_10__ {int /*<<< orphan*/  lights; int /*<<< orphan*/  map; } ;
-typedef  int /*<<< orphan*/  Map ;
-typedef  TYPE_3__ Chunk ;
+struct TYPE_10__ {int lights; int map; } ;
+typedef int Map ;
+typedef TYPE_3__ Chunk ;
 
-/* Variables and functions */
- int WORKERS ; 
- scalar_t__ WORKER_DONE ; 
- scalar_t__ WORKER_IDLE ; 
- TYPE_3__* find_chunk (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- TYPE_6__* g ; 
- int /*<<< orphan*/  generate_chunk (TYPE_3__*,TYPE_1__*) ; 
- int /*<<< orphan*/  map_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  map_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mtx_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mtx_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  request_chunk (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int WORKERS ;
+ scalar_t__ WORKER_DONE ;
+ scalar_t__ WORKER_IDLE ;
+ TYPE_3__* find_chunk (int ,int ) ;
+ int free (int *) ;
+ TYPE_6__* g ;
+ int generate_chunk (TYPE_3__*,TYPE_1__*) ;
+ int map_copy (int *,int *) ;
+ int map_free (int *) ;
+ int mtx_lock (int *) ;
+ int mtx_unlock (int *) ;
+ int request_chunk (int ,int ) ;
 
 void check_workers() {
     for (int i = 0; i < WORKERS; i++) {

@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uchar ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ISDIGIT (scalar_t__) ; 
+
+
+
+typedef scalar_t__ uchar ;
+
+
+ int ISDIGIT (scalar_t__) ;
 
 __attribute__((used)) static int
 strtoul_for_line (const uchar *str, unsigned int len, long unsigned int *nump)
@@ -24,7 +24,7 @@ strtoul_for_line (const uchar *str, unsigned int len, long unsigned int *nump)
     {
       c = *str++;
       if (!ISDIGIT (c))
-	return 1;
+ return 1;
       reg *= 10;
       reg += c - '0';
     }

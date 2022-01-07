@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int txn_flags; int /*<<< orphan*/  fs; } ;
-typedef  TYPE_1__ svn_fs_root_t ;
-typedef  int /*<<< orphan*/  svn_fs_fs__id_part_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_13__ {int /*<<< orphan*/  entry; struct TYPE_13__* parent; scalar_t__ node; } ;
-typedef  TYPE_2__ parent_path_t ;
-typedef  int /*<<< orphan*/  dag_node_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int SVN_FS_TXN_CHECK_LOCKS ; 
- int /*<<< orphan*/ * SVN_FS__ALREADY_EXISTS (TYPE_1__*,char const*) ; 
- int /*<<< orphan*/  SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * add_change (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  check_newline (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dag_node_cache_set (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  make_path_mutable (TYPE_1__*,TYPE_2__*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  open_path (TYPE_2__**,TYPE_1__*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  open_path_last_optional ; 
- int /*<<< orphan*/  parent_path_path (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * root_txn_id (TYPE_1__*) ; 
- char* svn_fs__canonicalize_abspath (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_fs__allow_locked_operation (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_fs__dag_get_id (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_fs__dag_make_file (int /*<<< orphan*/ **,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_path_change_add ; 
- int /*<<< orphan*/  svn_node_file ; 
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int txn_flags; int fs; } ;
+typedef TYPE_1__ svn_fs_root_t ;
+typedef int svn_fs_fs__id_part_t ;
+typedef int svn_error_t ;
+struct TYPE_13__ {int entry; struct TYPE_13__* parent; scalar_t__ node; } ;
+typedef TYPE_2__ parent_path_t ;
+typedef int dag_node_t ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_FS_TXN_CHECK_LOCKS ;
+ int * SVN_FS__ALREADY_EXISTS (TYPE_1__*,char const*) ;
+ int SVN_INVALID_REVNUM ;
+ int TRUE ;
+ int * add_change (int ,int const*,char const*,int ,int ,int ,int ,int ,int ,int ,int *,int *) ;
+ int check_newline (char const*,int *) ;
+ int dag_node_cache_set (TYPE_1__*,int ,int *,int *) ;
+ int make_path_mutable (TYPE_1__*,TYPE_2__*,char const*,int *) ;
+ int open_path (TYPE_2__**,TYPE_1__*,char const*,int ,int ,int *) ;
+ int open_path_last_optional ;
+ int parent_path_path (TYPE_2__*,int *) ;
+ int * root_txn_id (TYPE_1__*) ;
+ char* svn_fs__canonicalize_abspath (char const*,int *) ;
+ int svn_fs_fs__allow_locked_operation (char const*,int ,int ,int ,int *) ;
+ int svn_fs_fs__dag_get_id (int *) ;
+ int svn_fs_fs__dag_make_file (int **,scalar_t__,int ,int ,int const*,int *) ;
+ int svn_fs_path_change_add ;
+ int svn_node_file ;
 
 __attribute__((used)) static svn_error_t *
 fs_make_file(svn_fs_root_t *root,
@@ -58,18 +58,18 @@ fs_make_file(svn_fs_root_t *root,
   SVN_ERR(open_path(&parent_path, root, path, open_path_last_optional,
                     TRUE, pool));
 
-  /* If there's already a file by that name, complain.
-     This also catches the case of trying to make a file named `/'.  */
+
+
   if (parent_path->node)
     return SVN_FS__ALREADY_EXISTS(root, path);
 
-  /* Check (non-recursively) to see if path is locked;  if so, check
-     that we can use it. */
+
+
   if (root->txn_flags & SVN_FS_TXN_CHECK_LOCKS)
     SVN_ERR(svn_fs_fs__allow_locked_operation(path, root->fs, FALSE, FALSE,
                                               pool));
 
-  /* Create the file.  */
+
   SVN_ERR(make_path_mutable(root, parent_path->parent, path, pool));
   SVN_ERR(svn_fs_fs__dag_make_file(&child,
                                    parent_path->parent->node,
@@ -79,12 +79,12 @@ fs_make_file(svn_fs_root_t *root,
                                    txn_id,
                                    pool));
 
-  /* Add this file to the path cache. */
+
   SVN_ERR(dag_node_cache_set(root, parent_path_path(parent_path, pool), child,
                              pool));
 
-  /* Make a record of this modification in the changes table. */
+
   return add_change(root->fs, txn_id, path, svn_fs_fs__dag_get_id(child),
                     svn_fs_path_change_add, TRUE, FALSE, FALSE,
-                    svn_node_file, SVN_INVALID_REVNUM, NULL, pool);
+                    svn_node_file, SVN_INVALID_REVNUM, ((void*)0), pool);
 }

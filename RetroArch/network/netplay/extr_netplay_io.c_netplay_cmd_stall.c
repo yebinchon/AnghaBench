@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+
+
+typedef int uint32_t ;
 struct netplay_connection {int dummy; } ;
-typedef  int /*<<< orphan*/  netplay_t ;
-typedef  int /*<<< orphan*/  frames ;
+typedef int netplay_t ;
+typedef int frames ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NETPLAY_CMD_STALL ; 
- int /*<<< orphan*/  htonl (int /*<<< orphan*/ ) ; 
- int netplay_send_raw_cmd (int /*<<< orphan*/ *,struct netplay_connection*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+ int NETPLAY_CMD_STALL ;
+ int htonl (int ) ;
+ int netplay_send_raw_cmd (int *,struct netplay_connection*,int ,int *,int) ;
 
 bool netplay_cmd_stall(netplay_t *netplay,
    struct netplay_connection *connection,

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_FLG_CONSTTIME ; 
- int /*<<< orphan*/  BN_set_flags (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- size_t OSSL_NELEM (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_CTX_end (int *) ;
+ int * BN_CTX_get (int *) ;
+ int BN_CTX_start (int *) ;
+ int BN_FLG_CONSTTIME ;
+ int BN_set_flags (int *,int ) ;
+ size_t OSSL_NELEM (int **) ;
+ int TEST_ptr (int *) ;
 
 __attribute__((used)) static int test_ctx_set_ct_flag(BN_CTX *c)
 {

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X_SERIAL ;
-typedef  int /*<<< orphan*/  X509 ;
-typedef  int /*<<< orphan*/  X ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  NAME ;
-typedef  int /*<<< orphan*/  K ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * NewX509 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * X509ToX (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int X_SERIAL ;
+typedef int X509 ;
+typedef int X ;
+typedef int UINT ;
+typedef int NAME ;
+typedef int K ;
+
+
+ int * NewX509 (int *,int *,int *,int *,int ,int *) ;
+ int * X509ToX (int *) ;
 
 X *NewX(K *pub, K *priv, X *ca, NAME *name, UINT days, X_SERIAL *serial)
 {
-	X509 *x509;
-	X *x;
-	// Validate arguments
-	if (pub == NULL || priv == NULL || name == NULL || ca == NULL)
-	{
-		return NULL;
-	}
+ X509 *x509;
+ X *x;
 
-	x509 = NewX509(pub, priv, ca, name, days, serial);
-	if (x509 == NULL)
-	{
-		return NULL;
-	}
+ if (pub == ((void*)0) || priv == ((void*)0) || name == ((void*)0) || ca == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	x = X509ToX(x509);
+ x509 = NewX509(pub, priv, ca, name, days, serial);
+ if (x509 == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	if (x == NULL)
-	{
-		return NULL;
-	}
+ x = X509ToX(x509);
 
-	return x;
+ if (x == ((void*)0))
+ {
+  return ((void*)0);
+ }
+
+ return x;
 }

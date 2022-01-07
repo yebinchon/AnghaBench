@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * pmeth_engine; int /*<<< orphan*/  type; } ;
-typedef  TYPE_1__ EVP_PKEY ;
-typedef  int /*<<< orphan*/  ENGINE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENGINE_finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ENGINE_get_pkey_meth (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENGINE_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERR_R_ENGINE_LIB ; 
- int /*<<< orphan*/  EVP_F_EVP_PKEY_SET1_ENGINE ; 
- int /*<<< orphan*/  EVP_R_UNSUPPORTED_ALGORITHM ; 
- int /*<<< orphan*/  EVPerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * pmeth_engine; int type; } ;
+typedef TYPE_1__ EVP_PKEY ;
+typedef int ENGINE ;
+
+
+ int ENGINE_finish (int *) ;
+ int * ENGINE_get_pkey_meth (int *,int ) ;
+ int ENGINE_init (int *) ;
+ int ERR_R_ENGINE_LIB ;
+ int EVP_F_EVP_PKEY_SET1_ENGINE ;
+ int EVP_R_UNSUPPORTED_ALGORITHM ;
+ int EVPerr (int ,int ) ;
 
 int EVP_PKEY_set1_engine(EVP_PKEY *pkey, ENGINE *e)
 {
-    if (e != NULL) {
+    if (e != ((void*)0)) {
         if (!ENGINE_init(e)) {
             EVPerr(EVP_F_EVP_PKEY_SET1_ENGINE, ERR_R_ENGINE_LIB);
             return 0;
         }
-        if (ENGINE_get_pkey_meth(e, pkey->type) == NULL) {
+        if (ENGINE_get_pkey_meth(e, pkey->type) == ((void*)0)) {
             ENGINE_finish(e);
             EVPerr(EVP_F_EVP_PKEY_SET1_ENGINE, EVP_R_UNSUPPORTED_ALGORITHM);
             return 0;

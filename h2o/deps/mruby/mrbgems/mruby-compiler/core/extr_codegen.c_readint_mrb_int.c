@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int mrb_int ;
-typedef  scalar_t__ mrb_bool ;
-typedef  int /*<<< orphan*/  codegen_scope ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int MRB_INT_MAX ; 
- int MRB_INT_MIN ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  codegen_error (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  mrb_assert (int) ; 
- char* mrb_digitmap ; 
- int strlen (char const*) ; 
- char tolower (unsigned char) ; 
+
+
+
+typedef int mrb_int ;
+typedef scalar_t__ mrb_bool ;
+typedef int codegen_scope ;
+
+
+ scalar_t__ FALSE ;
+ int MRB_INT_MAX ;
+ int MRB_INT_MIN ;
+ scalar_t__ TRUE ;
+ int codegen_error (int *,char*) ;
+ int mrb_assert (int) ;
+ char* mrb_digitmap ;
+ int strlen (char const*) ;
+ char tolower (unsigned char) ;
 
 __attribute__((used)) static mrb_int
 readint_mrb_int(codegen_scope *s, const char *p, int base, mrb_bool neg, mrb_bool *overflow)

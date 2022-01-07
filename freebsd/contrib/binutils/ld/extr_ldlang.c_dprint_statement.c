@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_6__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_6__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_2__* next; } ;
 struct TYPE_8__ {TYPE_1__ header; } ;
-typedef  TYPE_2__ lang_statement_union_type ;
-struct TYPE_9__ {int /*<<< orphan*/ * map_file; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_2__ lang_statement_union_type ;
+struct TYPE_9__ {int * map_file; } ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  abs_output_section ; 
- TYPE_6__ config ; 
- int /*<<< orphan*/  print_statement (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_statement_list (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * stderr ; 
+
+ int abs_output_section ;
+ TYPE_6__ config ;
+ int print_statement (TYPE_2__*,int ) ;
+ int print_statement_list (TYPE_2__*,int ) ;
+ int * stderr ;
 
 void
 dprint_statement (lang_statement_union_type *s, int n)
@@ -38,10 +38,10 @@ dprint_statement (lang_statement_union_type *s, int n)
   else
     {
       while (s && --n >= 0)
-	{
-	  print_statement (s, abs_output_section);
-	  s = s->header.next;
-	}
+ {
+   print_statement (s, abs_output_section);
+   s = s->header.next;
+ }
     }
 
   config.map_file = map_save;

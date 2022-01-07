@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-struct TYPE_3__ {scalar_t__ length; int /*<<< orphan*/  dispex; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ DWORD ;
-typedef  TYPE_1__ ArrayInstance ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISP_E_UNKNOWNNAME ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  jsdisp_get_idx (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsdisp_propput_idx (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_release (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int jsval_t ;
+typedef int jsdisp_t ;
+struct TYPE_3__ {scalar_t__ length; int dispex; } ;
+typedef int HRESULT ;
+typedef scalar_t__ DWORD ;
+typedef TYPE_1__ ArrayInstance ;
+
+
+ int DISP_E_UNKNOWNNAME ;
+ scalar_t__ FAILED (int ) ;
+ int S_OK ;
+ int jsdisp_get_idx (int *,scalar_t__,int *) ;
+ int jsdisp_propput_idx (int *,scalar_t__,int ) ;
+ int jsval_release (int ) ;
 
 __attribute__((used)) static HRESULT concat_array(jsdisp_t *array, ArrayInstance *obj, DWORD *len)
 {

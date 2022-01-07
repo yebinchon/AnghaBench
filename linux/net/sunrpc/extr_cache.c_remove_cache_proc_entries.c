@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cache_detail {int /*<<< orphan*/ * procfs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  proc_remove (int /*<<< orphan*/ *) ; 
+
+
+
+struct cache_detail {int * procfs; } ;
+
+
+ int proc_remove (int *) ;
 
 __attribute__((used)) static void remove_cache_proc_entries(struct cache_detail *cd)
 {
-	if (cd->procfs) {
-		proc_remove(cd->procfs);
-		cd->procfs = NULL;
-	}
+ if (cd->procfs) {
+  proc_remove(cd->procfs);
+  cd->procfs = ((void*)0);
+ }
 }

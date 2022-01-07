@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_WC_ENTRY_THIS_DIR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WCPROPS_FNAME_FOR_DIR ; 
- int /*<<< orphan*/  WCPROPS_SUBDIR_FOR_FILES ; 
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- char* apr_hash_this_key (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  read_propfile (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_dirent_join (char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_get_dirents3 (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- char* svn_wc__adm_child (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_hash_index_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int * SVN_NO_ERROR ;
+ int SVN_WC_ENTRY_THIS_DIR ;
+ int TRUE ;
+ int WCPROPS_FNAME_FOR_DIR ;
+ int WCPROPS_SUBDIR_FOR_FILES ;
+ int * apr_hash_first (int *,int *) ;
+ int * apr_hash_make (int *) ;
+ int * apr_hash_next (int *) ;
+ char* apr_hash_this_key (int *) ;
+ int apr_pstrdup (int *,char const*) ;
+ int read_propfile (int **,char const*,int *,int *) ;
+ char* svn_dirent_join (char const*,char const*,int *) ;
+ int svn_hash_sets (int *,int ,int *) ;
+ int svn_io_get_dirents3 (int **,char const*,int ,int *,int *) ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ char* svn_wc__adm_child (char const*,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 read_many_wcprops(apr_hash_t **all_wcprops,
@@ -52,17 +52,17 @@ read_many_wcprops(apr_hash_t **all_wcprops,
 
   *all_wcprops = apr_hash_make(result_pool);
 
-  /* First, look at dir-wcprops. */
+
   propfile_abspath = svn_wc__adm_child(dir_abspath, WCPROPS_FNAME_FOR_DIR,
                                        scratch_pool);
   SVN_ERR(read_propfile(&wcprops, propfile_abspath, result_pool, iterpool));
-  if (wcprops != NULL)
+  if (wcprops != ((void*)0))
     svn_hash_sets(*all_wcprops, SVN_WC_ENTRY_THIS_DIR, wcprops);
 
   props_dir_abspath = svn_wc__adm_child(dir_abspath, WCPROPS_SUBDIR_FOR_FILES,
                                         scratch_pool);
 
-  /* Now walk the wcprops directory. */
+
   SVN_ERR(svn_io_get_dirents3(&dirents, props_dir_abspath, TRUE,
                               scratch_pool, scratch_pool));
 
@@ -78,7 +78,7 @@ read_many_wcprops(apr_hash_t **all_wcprops,
 
       SVN_ERR(read_propfile(&wcprops, propfile_abspath,
                             result_pool, iterpool));
-      SVN_ERR_ASSERT(wcprops != NULL);
+      SVN_ERR_ASSERT(wcprops != ((void*)0));
       svn_hash_sets(*all_wcprops, apr_pstrdup(result_pool, name), wcprops);
     }
 

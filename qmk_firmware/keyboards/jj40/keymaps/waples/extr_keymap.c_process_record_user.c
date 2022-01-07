@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_4__ {int pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
+typedef TYPE_2__ keyrecord_t ;
 
-/* Variables and functions */
-#define  DUAL 132 
-#define  DVORAK 131 
-#define  LEFTY 130 
-#define  QWERTY 129 
-#define  RIGHTY 128 
- int /*<<< orphan*/  _DUAL ; 
- unsigned long _DVORAK ; 
- int /*<<< orphan*/  _LEFTY ; 
- unsigned long _QWERTY ; 
- int /*<<< orphan*/  _RIGHTY ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  persistent_default_layer_set (unsigned long) ; 
- int /*<<< orphan*/  update_tri_layer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+
+
+
+ int _DUAL ;
+ unsigned long _DVORAK ;
+ int _LEFTY ;
+ unsigned long _QWERTY ;
+ int _RIGHTY ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ int persistent_default_layer_set (unsigned long) ;
+ int update_tri_layer (int ,int ,int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case QWERTY:
+    case 129:
       if (record->event.pressed) {
         persistent_default_layer_set(1UL<<_QWERTY);
       }
-      return false;
+      return 0;
       break;
-    case DVORAK:
+    case 131:
       if (record->event.pressed) {
         persistent_default_layer_set(1UL<<_DVORAK);
       }
-      return false;
+      return 0;
       break;
-    case LEFTY:
+    case 130:
       if (record->event.pressed) {
         layer_on(_LEFTY);
         update_tri_layer(_LEFTY, _RIGHTY, _DUAL);
@@ -55,9 +55,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_off(_LEFTY);
         update_tri_layer(_LEFTY, _RIGHTY, _DUAL);
       }
-      return false;
+      return 0;
       break;
-    case RIGHTY:
+    case 128:
       if (record->event.pressed) {
         layer_on(_RIGHTY);
         update_tri_layer(_LEFTY, _RIGHTY, _DUAL);
@@ -65,16 +65,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_off(_RIGHTY);
         update_tri_layer(_LEFTY, _RIGHTY, _DUAL);
       }
-      return false;
+      return 0;
       break;
-    case DUAL:
+    case 132:
       if (record->event.pressed) {
         layer_on(_DUAL);
       } else {
         layer_off(_DUAL);
       }
-      return false;
+      return 0;
       break;
   }
-  return true;
+  return 1;
 }

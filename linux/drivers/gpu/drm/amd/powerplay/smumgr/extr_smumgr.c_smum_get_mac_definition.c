@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct pp_hwmgr {TYPE_1__* smumgr_funcs; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* get_mac_definition ) (int /*<<< orphan*/ ) ;} ;
+struct TYPE_2__ {int (* get_mac_definition ) (int ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
+
+ int stub1 (int ) ;
 
 uint32_t smum_get_mac_definition(struct pp_hwmgr *hwmgr, uint32_t value)
 {
-	if (NULL != hwmgr->smumgr_funcs->get_mac_definition)
-		return hwmgr->smumgr_funcs->get_mac_definition(value);
+ if (((void*)0) != hwmgr->smumgr_funcs->get_mac_definition)
+  return hwmgr->smumgr_funcs->get_mac_definition(value);
 
-	return 0;
+ return 0;
 }

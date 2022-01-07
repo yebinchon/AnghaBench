@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_state {int /*<<< orphan*/ * unordered_access_view; int /*<<< orphan*/ * shader; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct wined3d_state {int * unordered_access_view; int * shader; } ;
 struct TYPE_4__ {scalar_t__ combined_samplers; scalar_t__ graphics_samplers; } ;
 struct wined3d_gl_info {TYPE_2__ limits; } ;
-struct wined3d_device {int /*<<< orphan*/  shader_priv; TYPE_1__* shader_backend; } ;
-struct wined3d_context {unsigned int* dirty_compute_states; unsigned int shader_update_mask; int update_shader_resource_bindings; int update_unordered_access_view_bindings; int /*<<< orphan*/  last_was_blit; scalar_t__ update_compute_unordered_access_view_bindings; scalar_t__ update_compute_shader_resource_bindings; struct wined3d_gl_info* gl_info; struct StateEntry* state_table; } ;
-struct StateEntry {int /*<<< orphan*/  (* apply ) (struct wined3d_context*,struct wined3d_state const*,unsigned int) ;} ;
-struct TYPE_3__ {int /*<<< orphan*/  (* shader_select_compute ) (int /*<<< orphan*/ ,struct wined3d_context*,struct wined3d_state const*) ;} ;
+struct wined3d_device {int shader_priv; TYPE_1__* shader_backend; } ;
+struct wined3d_context {unsigned int* dirty_compute_states; unsigned int shader_update_mask; int update_shader_resource_bindings; int update_unordered_access_view_bindings; int last_was_blit; scalar_t__ update_compute_unordered_access_view_bindings; scalar_t__ update_compute_shader_resource_bindings; struct wined3d_gl_info* gl_info; struct StateEntry* state_table; } ;
+struct StateEntry {int (* apply ) (struct wined3d_context*,struct wined3d_state const*,unsigned int) ;} ;
+struct TYPE_3__ {int (* shader_select_compute ) (int ,struct wined3d_context*,struct wined3d_state const*) ;} ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (unsigned int*) ; 
- int CHAR_BIT ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GL_FRAMEBUFFER ; 
- unsigned int STATE_COMPUTE_OFFSET ; 
- int /*<<< orphan*/  STATE_FRAMEBUFFER ; 
- size_t WINED3D_PIPELINE_COMPUTE ; 
- unsigned int WINED3D_SHADER_TYPE_COMPUTE ; 
- int /*<<< orphan*/  context_bind_fbo (struct wined3d_context*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  context_bind_shader_resources (struct wined3d_context*,struct wined3d_state const*,unsigned int) ; 
- int /*<<< orphan*/  context_bind_unordered_access_views (struct wined3d_context*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  context_invalidate_state (struct wined3d_context*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  context_load_shader_resources (struct wined3d_context*,struct wined3d_state const*,unsigned int) ; 
- int /*<<< orphan*/  context_load_unordered_access_resources (struct wined3d_context*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (unsigned int*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub1 (struct wined3d_context*,struct wined3d_state const*,unsigned int) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,struct wined3d_context*,struct wined3d_state const*) ; 
- unsigned int wined3d_bit_scan (unsigned int*) ; 
+
+ unsigned int ARRAY_SIZE (unsigned int*) ;
+ int CHAR_BIT ;
+ int FALSE ;
+ int GL_FRAMEBUFFER ;
+ unsigned int STATE_COMPUTE_OFFSET ;
+ int STATE_FRAMEBUFFER ;
+ size_t WINED3D_PIPELINE_COMPUTE ;
+ unsigned int WINED3D_SHADER_TYPE_COMPUTE ;
+ int context_bind_fbo (struct wined3d_context*,int ,int ) ;
+ int context_bind_shader_resources (struct wined3d_context*,struct wined3d_state const*,unsigned int) ;
+ int context_bind_unordered_access_views (struct wined3d_context*,int ,int ) ;
+ int context_invalidate_state (struct wined3d_context*,int ) ;
+ int context_load_shader_resources (struct wined3d_context*,struct wined3d_state const*,unsigned int) ;
+ int context_load_unordered_access_resources (struct wined3d_context*,int ,int ) ;
+ int memset (unsigned int*,int ,int) ;
+ int stub1 (struct wined3d_context*,struct wined3d_state const*,unsigned int) ;
+ int stub2 (int ,struct wined3d_context*,struct wined3d_state const*) ;
+ unsigned int wined3d_bit_scan (unsigned int*) ;
 
 __attribute__((used)) static void context_apply_compute_state(struct wined3d_context *context,
         const struct wined3d_device *device, const struct wined3d_state *state)
@@ -85,14 +85,6 @@ __attribute__((used)) static void context_apply_compute_state(struct wined3d_con
         context->update_compute_unordered_access_view_bindings = 0;
         context->update_unordered_access_view_bindings = 1;
     }
-
-    /* Updates to currently bound render targets aren't necessarily coherent
-     * between the graphics and compute pipelines. Unbind any currently bound
-     * FBO here to ensure preceding updates to its attachments by the graphics
-     * pipeline are visible to the compute pipeline.
-     *
-     * Without this, the bloom effect in Nier:Automata is too bright on the
-     * Mesa radeonsi driver, and presumably on other Mesa based drivers. */
     context_bind_fbo(context, GL_FRAMEBUFFER, 0);
     context_invalidate_state(context, STATE_FRAMEBUFFER);
 

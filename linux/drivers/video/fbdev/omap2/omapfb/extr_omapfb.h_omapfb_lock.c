@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct omapfb2_device {int /*<<< orphan*/  mtx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
+
+
+
+struct omapfb2_device {int mtx; } ;
+
+
+ int mutex_lock (int *) ;
 
 __attribute__((used)) static inline void omapfb_lock(struct omapfb2_device *fbdev)
 {
-	mutex_lock(&fbdev->mtx);
+ mutex_lock(&fbdev->mtx);
 }

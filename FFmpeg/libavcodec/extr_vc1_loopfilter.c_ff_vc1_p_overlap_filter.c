@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int16_t ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int int16_t ;
 struct TYPE_9__ {int mb_x; int mb_y; int mb_stride; size_t* block_index; int* block_wrap; int mb_width; scalar_t__ first_slice_line; TYPE_1__* avctx; } ;
-struct TYPE_8__ {size_t topleft_blk_idx; size_t top_blk_idx; size_t left_blk_idx; size_t cur_blk_idx; scalar_t__ fcm; scalar_t__** mb_type; scalar_t__* fieldtx_plane; int /*<<< orphan*/ *** block; TYPE_3__ s; } ;
-typedef  TYPE_2__ VC1Context ;
+struct TYPE_8__ {size_t topleft_blk_idx; size_t top_blk_idx; size_t left_blk_idx; size_t cur_blk_idx; scalar_t__ fcm; scalar_t__** mb_type; scalar_t__* fieldtx_plane; int *** block; TYPE_3__ s; } ;
+typedef TYPE_2__ VC1Context ;
 struct TYPE_7__ {int flags; } ;
-typedef  TYPE_3__ MpegEncContext ;
+typedef TYPE_3__ MpegEncContext ;
 
-/* Variables and functions */
- int AV_CODEC_FLAG_GRAY ; 
- scalar_t__ CONFIG_GRAY ; 
- scalar_t__ ILACE_FRAME ; 
- int /*<<< orphan*/  vc1_h_overlap_filter (TYPE_2__*,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int,int,int) ; 
- int /*<<< orphan*/  vc1_v_overlap_filter (TYPE_2__*,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int) ; 
+
+ int AV_CODEC_FLAG_GRAY ;
+ scalar_t__ CONFIG_GRAY ;
+ scalar_t__ ILACE_FRAME ;
+ int vc1_h_overlap_filter (TYPE_2__*,int **,int **,int,int,int) ;
+ int vc1_v_overlap_filter (TYPE_2__*,int **,int **,int) ;
 
 void ff_vc1_p_overlap_filter(VC1Context *v)
 {

@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EXPANDER_PAUSE ; 
- int /*<<< orphan*/  EXPANDER_REG_IODIRA ; 
- int /*<<< orphan*/  EXPANDER_REG_IODIRB ; 
- int /*<<< orphan*/  EXPANDER_REG_OLATA ; 
- int /*<<< orphan*/  EXPANDER_REG_OLATB ; 
- int /*<<< orphan*/  expander_write (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  wait_us (int /*<<< orphan*/ ) ; 
+ int EXPANDER_PAUSE ;
+ int EXPANDER_REG_IODIRA ;
+ int EXPANDER_REG_IODIRB ;
+ int EXPANDER_REG_OLATA ;
+ int EXPANDER_REG_OLATB ;
+ int expander_write (int ,int) ;
+ int wait_us (int ) ;
 
 void expander_unselect_all() {
     expander_write(EXPANDER_REG_IODIRA, 0xff);

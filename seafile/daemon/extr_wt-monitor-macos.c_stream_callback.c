@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gpointer ;
-struct TYPE_8__ {int /*<<< orphan*/  worktree; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int gpointer ;
+struct TYPE_8__ {int worktree; } ;
 struct TYPE_7__ {TYPE_1__* priv; } ;
-struct TYPE_6__ {int /*<<< orphan*/  info_hash; } ;
-typedef  TYPE_1__ SeafWTMonitorPriv ;
-typedef  TYPE_2__ SeafWTMonitor ;
-typedef  TYPE_3__ RepoWatchInfo ;
-typedef  int /*<<< orphan*/  FSEventStreamEventId ;
-typedef  int /*<<< orphan*/  FSEventStreamEventFlags ;
-typedef  scalar_t__ ConstFSEventStreamRef ;
+struct TYPE_6__ {int info_hash; } ;
+typedef TYPE_1__ SeafWTMonitorPriv ;
+typedef TYPE_2__ SeafWTMonitor ;
+typedef TYPE_3__ RepoWatchInfo ;
+typedef int FSEventStreamEventId ;
+typedef int FSEventStreamEventFlags ;
+typedef scalar_t__ ConstFSEventStreamRef ;
 
-/* Variables and functions */
- scalar_t__ CFRunLoopGetCurrent () ; 
- TYPE_3__* g_hash_table_lookup (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  process_one_event (char*,TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/  const,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  seaf_debug (char*,long,int /*<<< orphan*/  const,char*,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  seaf_warning (char*) ; 
+
+ scalar_t__ CFRunLoopGetCurrent () ;
+ TYPE_3__* g_hash_table_lookup (int ,int ) ;
+ int process_one_event (char*,TYPE_3__*,int ,int const,int const) ;
+ int seaf_debug (char*,long,int const,char*,int const) ;
+ int seaf_warning (char*) ;
 
 __attribute__((used)) static void
 stream_callback (ConstFSEventStreamRef streamRef,

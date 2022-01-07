@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int mrb_int ;
 
-/* Variables and functions */
-#define  MRB_TT_FIXNUM 130 
-#define  MRB_TT_STRING 129 
-#define  MRB_TT_SYMBOL 128 
- int /*<<< orphan*/  match_data_actual_index (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  match_data_to_a (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_ary_entry (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_funcall_argv (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ **,int*) ; 
- int /*<<< orphan*/  mrb_intern_lit (int /*<<< orphan*/ *,char*) ; 
- int mrb_type (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef int mrb_int ;
+
+
+
+
+
+ int match_data_actual_index (int *,int ,int ) ;
+ int match_data_to_a (int *,int ) ;
+ int mrb_ary_entry (int ,int ) ;
+ int mrb_funcall_argv (int *,int ,int ,int,int *) ;
+ int mrb_get_args (int *,char*,int **,int*) ;
+ int mrb_intern_lit (int *,char*) ;
+ int mrb_type (int ) ;
 
 __attribute__((used)) static mrb_value
 match_data_index(mrb_state* mrb, mrb_value self) {
@@ -37,9 +37,9 @@ match_data_index(mrb_state* mrb, mrb_value self) {
 
   if (argc == 1) {
     switch (mrb_type(argv[0])) {
-    case MRB_TT_FIXNUM:
-    case MRB_TT_SYMBOL:
-    case MRB_TT_STRING:
+    case 130:
+    case 128:
+    case 129:
       return mrb_ary_entry(src, match_data_actual_index(mrb, self, argv[0]));
     default: break;
     }

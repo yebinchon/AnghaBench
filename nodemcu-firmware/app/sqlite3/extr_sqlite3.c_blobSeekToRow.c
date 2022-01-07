@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
-typedef  char* sqlite3_int64 ;
-struct TYPE_11__ {int /*<<< orphan*/  pCursor; } ;
+
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int u32 ;
+typedef char* sqlite3_int64 ;
+struct TYPE_11__ {int pCursor; } ;
 struct TYPE_12__ {int nHdrParsed; int* aType; size_t nField; TYPE_3__ uc; } ;
-typedef  TYPE_4__ VdbeCursor ;
+typedef TYPE_4__ VdbeCursor ;
 struct TYPE_13__ {int pc; TYPE_4__** apCsr; TYPE_2__* aMem; } ;
-typedef  TYPE_5__ Vdbe ;
-struct TYPE_14__ {int iCol; int iOffset; int /*<<< orphan*/  db; scalar_t__ pStmt; int /*<<< orphan*/  pCsr; int /*<<< orphan*/  nByte; } ;
+typedef TYPE_5__ Vdbe ;
+struct TYPE_14__ {int iCol; int iOffset; int db; scalar_t__ pStmt; int pCsr; int nByte; } ;
 struct TYPE_9__ {char* i; } ;
-struct TYPE_10__ {TYPE_1__ u; int /*<<< orphan*/  flags; } ;
-typedef  TYPE_6__ Incrblob ;
+struct TYPE_10__ {TYPE_1__ u; int flags; } ;
+typedef TYPE_6__ Incrblob ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MEM_Int ; 
- int SQLITE_DONE ; 
- int SQLITE_ERROR ; 
- int SQLITE_OK ; 
- int SQLITE_ROW ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3BtreeIncrblobCursor (int /*<<< orphan*/ ) ; 
- char* sqlite3MPrintf (int /*<<< orphan*/ ,char*,char*) ; 
- int sqlite3VdbeExec (TYPE_5__*) ; 
- int /*<<< orphan*/  sqlite3VdbeSerialTypeLen (int) ; 
- char* sqlite3_errmsg (int /*<<< orphan*/ ) ; 
- int sqlite3_finalize (scalar_t__) ; 
- int sqlite3_step (scalar_t__) ; 
- int /*<<< orphan*/  testcase (int) ; 
+
+ int MEM_Int ;
+ int SQLITE_DONE ;
+ int SQLITE_ERROR ;
+ int SQLITE_OK ;
+ int SQLITE_ROW ;
+ int assert (int) ;
+ int sqlite3BtreeIncrblobCursor (int ) ;
+ char* sqlite3MPrintf (int ,char*,char*) ;
+ int sqlite3VdbeExec (TYPE_5__*) ;
+ int sqlite3VdbeSerialTypeLen (int) ;
+ char* sqlite3_errmsg (int ) ;
+ int sqlite3_finalize (scalar_t__) ;
+ int sqlite3_step (scalar_t__) ;
+ int testcase (int) ;
 
 __attribute__((used)) static int blobSeekToRow(Incrblob *p, sqlite3_int64 iRow, char **pzErr){
-  int rc;                         /* Error code */
-  char *zErr = 0;                 /* Error message */
+  int rc;
+  char *zErr = 0;
   Vdbe *v = (Vdbe *)p->pStmt;
 
-  /* Set the value of register r[1] in the SQL statement to integer iRow.
-  ** This is done directly as a performance optimization
-  */
+
+
+
   v->aMem[1].flags = MEM_Int;
   v->aMem[1].u.i = iRow;
 
-  /* If the statement has been run before (and is paused at the OP_ResultRow)
-  ** then back it up to the point where it does the OP_SeekRowid.  This could
-  ** have been down with an extra OP_Goto, but simply setting the program
-  ** counter is faster. */
+
+
+
+
   if( v->pc>3 ){
     v->pc = 3;
     rc = sqlite3VdbeExec(v);
@@ -80,7 +80,7 @@ __attribute__((used)) static int blobSeekToRow(Incrblob *p, sqlite3_int64 iRow, 
     }else{
       p->iOffset = pC->aType[p->iCol + pC->nField];
       p->nByte = sqlite3VdbeSerialTypeLen(type);
-      p->pCsr =  pC->uc.pCursor;
+      p->pCsr = pC->uc.pCursor;
       sqlite3BtreeIncrblobCursor(p->pCsr);
     }
   }

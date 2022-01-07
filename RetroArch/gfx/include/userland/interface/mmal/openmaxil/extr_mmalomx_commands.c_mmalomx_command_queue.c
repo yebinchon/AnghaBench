@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  cmd_queue; TYPE_1__* cmd_pool; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int cmd_queue; TYPE_1__* cmd_pool; } ;
 struct TYPE_10__ {void* offset; void* cmd; } ;
-struct TYPE_9__ {int /*<<< orphan*/  queue; } ;
-typedef  void* OMX_U32 ;
-typedef  int /*<<< orphan*/  OMX_ERRORTYPE ;
-typedef  TYPE_2__ MMAL_BUFFER_HEADER_T ;
-typedef  TYPE_3__ MMALOMX_COMPONENT_T ;
+struct TYPE_9__ {int queue; } ;
+typedef void* OMX_U32 ;
+typedef int OMX_ERRORTYPE ;
+typedef TYPE_2__ MMAL_BUFFER_HEADER_T ;
+typedef TYPE_3__ MMALOMX_COMPONENT_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_ERROR (char*) ; 
- int /*<<< orphan*/  OMX_ErrorInsufficientResources ; 
- int /*<<< orphan*/  OMX_ErrorNone ; 
- TYPE_2__* mmal_queue_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mmal_queue_put (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  mmalomx_commands_actions_signal (TYPE_3__*) ; 
- int /*<<< orphan*/  vcos_verify (TYPE_2__*) ; 
+
+ int LOG_ERROR (char*) ;
+ int OMX_ErrorInsufficientResources ;
+ int OMX_ErrorNone ;
+ TYPE_2__* mmal_queue_get (int ) ;
+ int mmal_queue_put (int ,TYPE_2__*) ;
+ int mmalomx_commands_actions_signal (TYPE_3__*) ;
+ int vcos_verify (TYPE_2__*) ;
 
 OMX_ERRORTYPE mmalomx_command_queue(
    MMALOMX_COMPONENT_T *component,

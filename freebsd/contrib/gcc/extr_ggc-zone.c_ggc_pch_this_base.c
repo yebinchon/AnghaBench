@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__* type_totals; } ;
-struct ggc_pch_data {size_t base; size_t orig_base; size_t* type_bases; int /*<<< orphan*/  alloc_size; int /*<<< orphan*/ * alloc_bits; TYPE_1__ d; } ;
+struct ggc_pch_data {size_t base; size_t orig_base; size_t* type_bases; int alloc_size; int * alloc_bits; TYPE_1__ d; } ;
 
-/* Variables and functions */
- int NUM_PCH_BUCKETS ; 
- int /*<<< orphan*/ * xcalloc (int,int /*<<< orphan*/ ) ; 
+
+ int NUM_PCH_BUCKETS ;
+ int * xcalloc (int,int ) ;
 
 void
 ggc_pch_this_base (struct ggc_pch_data *d, void *base_)
@@ -31,6 +31,6 @@ ggc_pch_this_base (struct ggc_pch_data *d, void *base_)
       base += d->d.type_totals[i];
     }
 
-  if (d->alloc_bits == NULL)
+  if (d->alloc_bits == ((void*)0))
     d->alloc_bits = xcalloc (1, d->alloc_size);
 }

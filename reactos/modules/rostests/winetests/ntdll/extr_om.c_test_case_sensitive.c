@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+typedef int UNICODE_STRING ;
 struct TYPE_6__ {scalar_t__ Attributes; } ;
-typedef  TYPE_1__ OBJECT_ATTRIBUTES ;
-typedef  scalar_t__ NTSTATUS ;
-typedef  int /*<<< orphan*/  HANDLE ;
+typedef TYPE_1__ OBJECT_ATTRIBUTES ;
+typedef scalar_t__ NTSTATUS ;
+typedef int HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GENERIC_ALL ; 
- int /*<<< orphan*/  InitializeObjectAttributes (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OBJ_CASE_INSENSITIVE ; 
- scalar_t__ STATUS_OBJECT_NAME_COLLISION ; 
- scalar_t__ STATUS_OBJECT_PATH_NOT_FOUND ; 
- scalar_t__ STATUS_OBJECT_TYPE_MISMATCH ; 
- scalar_t__ STATUS_SUCCESS ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  pNtClose (int /*<<< orphan*/ ) ; 
- scalar_t__ pNtCreateEvent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ pNtCreateMutant (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ pNtOpenMutant (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  pRtlInitUnicodeString (int /*<<< orphan*/ *,char const*) ; 
+
+ int FALSE ;
+ int GENERIC_ALL ;
+ int InitializeObjectAttributes (TYPE_1__*,int *,int ,int ,int *) ;
+ int OBJ_CASE_INSENSITIVE ;
+ scalar_t__ STATUS_OBJECT_NAME_COLLISION ;
+ scalar_t__ STATUS_OBJECT_PATH_NOT_FOUND ;
+ scalar_t__ STATUS_OBJECT_TYPE_MISMATCH ;
+ scalar_t__ STATUS_SUCCESS ;
+ int ok (int,char*,scalar_t__) ;
+ int pNtClose (int ) ;
+ scalar_t__ pNtCreateEvent (int *,int ,TYPE_1__*,int ,int ) ;
+ scalar_t__ pNtCreateMutant (int *,int ,TYPE_1__*,int ) ;
+ scalar_t__ pNtOpenMutant (int *,int ,TYPE_1__*) ;
+ int pRtlInitUnicodeString (int *,char const*) ;
 
 __attribute__((used)) static void test_case_sensitive (void)
 {
@@ -46,7 +46,7 @@ __attribute__((used)) static void test_case_sensitive (void)
     HANDLE Event, Mutant, h;
 
     pRtlInitUnicodeString(&str, buffer1);
-    InitializeObjectAttributes(&attr, &str, 0, 0, NULL);
+    InitializeObjectAttributes(&attr, &str, 0, 0, ((void*)0));
     status = pNtCreateMutant(&Mutant, GENERIC_ALL, &attr, FALSE);
     ok(status == STATUS_SUCCESS, "Failed to create Mutant(%08x)\n", status);
 
@@ -55,12 +55,12 @@ __attribute__((used)) static void test_case_sensitive (void)
         "NtCreateEvent should have failed with STATUS_OBJECT_NAME_COLLISION or STATUS_OBJECT_TYPE_MISMATCH got (%08x)\n", status);
 
     pRtlInitUnicodeString(&str, buffer2);
-    InitializeObjectAttributes(&attr, &str, 0, 0, NULL);
+    InitializeObjectAttributes(&attr, &str, 0, 0, ((void*)0));
     status = pNtCreateEvent(&Event, GENERIC_ALL, &attr, FALSE, FALSE);
     ok(status == STATUS_SUCCESS, "Failed to create Event(%08x)\n", status);
 
     pRtlInitUnicodeString(&str, buffer3);
-    InitializeObjectAttributes(&attr, &str, OBJ_CASE_INSENSITIVE, 0, NULL);
+    InitializeObjectAttributes(&attr, &str, OBJ_CASE_INSENSITIVE, 0, ((void*)0));
     status = pNtOpenMutant(&h, GENERIC_ALL, &attr);
     ok(status == STATUS_OBJECT_TYPE_MISMATCH,
         "NtOpenMutant should have failed with STATUS_OBJECT_TYPE_MISMATCH got(%08x)\n", status);
@@ -68,7 +68,7 @@ __attribute__((used)) static void test_case_sensitive (void)
     pNtClose(Mutant);
 
     pRtlInitUnicodeString(&str, buffer4);
-    InitializeObjectAttributes(&attr, &str, OBJ_CASE_INSENSITIVE, 0, NULL);
+    InitializeObjectAttributes(&attr, &str, OBJ_CASE_INSENSITIVE, 0, ((void*)0));
     status = pNtCreateMutant(&Mutant, GENERIC_ALL, &attr, FALSE);
     ok(status == STATUS_OBJECT_NAME_COLLISION || status == STATUS_OBJECT_TYPE_MISMATCH,
         "NtCreateMutant should have failed with STATUS_OBJECT_NAME_COLLISION or STATUS_OBJECT_TYPE_MISMATCH got (%08x)\n", status);

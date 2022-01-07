@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsUInt32Number ;
-struct TYPE_4__ {int nFunctions; int /*<<< orphan*/  ParameterCount; int /*<<< orphan*/  FunctionTypes; int /*<<< orphan*/  Evaluator; } ;
-typedef  TYPE_1__ cmsPluginParametricCurves ;
-typedef  int /*<<< orphan*/  cmsPluginBase ;
-typedef  int /*<<< orphan*/  cmsContext ;
-typedef  int /*<<< orphan*/  cmsBool ;
-struct TYPE_5__ {int nFunctions; struct TYPE_5__* Next; int /*<<< orphan*/  ParameterCount; int /*<<< orphan*/  FunctionTypes; int /*<<< orphan*/  Evaluator; } ;
-typedef  TYPE_2__ _cmsParametricCurvesCollection ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int cmsUInt32Number ;
+struct TYPE_4__ {int nFunctions; int ParameterCount; int FunctionTypes; int Evaluator; } ;
+typedef TYPE_1__ cmsPluginParametricCurves ;
+typedef int cmsPluginBase ;
+typedef int cmsContext ;
+typedef int cmsBool ;
+struct TYPE_5__ {int nFunctions; struct TYPE_5__* Next; int ParameterCount; int FunctionTypes; int Evaluator; } ;
+typedef TYPE_2__ _cmsParametricCurvesCollection ;
 struct TYPE_6__ {TYPE_2__* ParametricCurves; } ;
-typedef  TYPE_3__ _cmsCurvesPluginChunkType ;
+typedef TYPE_3__ _cmsCurvesPluginChunkType ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CurvesPlugin ; 
- int /*<<< orphan*/  FALSE ; 
- int MAX_TYPES_IN_LCMS_PLUGIN ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ _cmsContextGetClientChunk (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ _cmsPluginMalloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memmove (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int CurvesPlugin ;
+ int FALSE ;
+ int MAX_TYPES_IN_LCMS_PLUGIN ;
+ int TRUE ;
+ scalar_t__ _cmsContextGetClientChunk (int ,int ) ;
+ scalar_t__ _cmsPluginMalloc (int ,int) ;
+ int memmove (int ,int ,int) ;
 
 cmsBool _cmsRegisterParametricCurvesPlugin(cmsContext ContextID, cmsPluginBase* Data)
 {
@@ -39,31 +39,31 @@ cmsBool _cmsRegisterParametricCurvesPlugin(cmsContext ContextID, cmsPluginBase* 
     cmsPluginParametricCurves* Plugin = (cmsPluginParametricCurves*) Data;
     _cmsParametricCurvesCollection* fl;
 
-    if (Data == NULL) {
+    if (Data == ((void*)0)) {
 
-          ctx -> ParametricCurves =  NULL;
+          ctx -> ParametricCurves = ((void*)0);
           return TRUE;
     }
 
     fl = (_cmsParametricCurvesCollection*) _cmsPluginMalloc(ContextID, sizeof(_cmsParametricCurvesCollection));
-    if (fl == NULL) return FALSE;
+    if (fl == ((void*)0)) return FALSE;
 
-    // Copy the parameters
-    fl ->Evaluator  = Plugin ->Evaluator;
+
+    fl ->Evaluator = Plugin ->Evaluator;
     fl ->nFunctions = Plugin ->nFunctions;
 
-    // Make sure no mem overwrites
+
     if (fl ->nFunctions > MAX_TYPES_IN_LCMS_PLUGIN)
         fl ->nFunctions = MAX_TYPES_IN_LCMS_PLUGIN;
 
-    // Copy the data
-    memmove(fl->FunctionTypes,  Plugin ->FunctionTypes,   fl->nFunctions * sizeof(cmsUInt32Number));
-    memmove(fl->ParameterCount, Plugin ->ParameterCount,  fl->nFunctions * sizeof(cmsUInt32Number));
 
-    // Keep linked list
+    memmove(fl->FunctionTypes, Plugin ->FunctionTypes, fl->nFunctions * sizeof(cmsUInt32Number));
+    memmove(fl->ParameterCount, Plugin ->ParameterCount, fl->nFunctions * sizeof(cmsUInt32Number));
+
+
     fl ->Next = ctx->ParametricCurves;
     ctx->ParametricCurves = fl;
 
-    // All is ok
+
     return TRUE;
 }

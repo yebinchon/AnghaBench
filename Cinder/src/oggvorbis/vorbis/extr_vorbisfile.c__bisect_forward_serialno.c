@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vorbis_info ;
-typedef  int /*<<< orphan*/  vorbis_comment ;
-typedef  int /*<<< orphan*/  ogg_page ;
-typedef  scalar_t__ ogg_int64_t ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int vorbis_info ;
+typedef int vorbis_comment ;
+typedef int ogg_page ;
+typedef scalar_t__ ogg_int64_t ;
 struct TYPE_9__ {int serialno; } ;
-struct TYPE_10__ {scalar_t__ offset; long links; long* offsets; long* serialnos; long* dataoffsets; scalar_t__* pcmlengths; int /*<<< orphan*/ * vc; int /*<<< orphan*/ * vi; TYPE_1__ os; } ;
-typedef  TYPE_2__ OggVorbis_File ;
+struct TYPE_10__ {scalar_t__ offset; long links; long* offsets; long* serialnos; long* dataoffsets; scalar_t__* pcmlengths; int * vc; int * vi; TYPE_1__ os; } ;
+typedef TYPE_2__ OggVorbis_File ;
 
-/* Variables and functions */
- scalar_t__ CHUNKSIZE ; 
- scalar_t__ OV_EREAD ; 
- scalar_t__ _fetch_headers (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,long**,int*,int /*<<< orphan*/ *) ; 
- scalar_t__ _get_next_page (TYPE_2__*,int /*<<< orphan*/ *,int) ; 
- void* _get_prev_page_serial (TYPE_2__*,long*,int,int*,scalar_t__*) ; 
- scalar_t__ _initial_pcmoffset (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _lookup_page_serialno (int /*<<< orphan*/ *,long*,int) ; 
- scalar_t__ _lookup_serialno (int,long*,int) ; 
- int /*<<< orphan*/  _ogg_free (long*) ; 
- void* _ogg_malloc (int) ; 
- void* _ogg_realloc (int /*<<< orphan*/ *,int) ; 
- scalar_t__ _seek_helper (TYPE_2__*,scalar_t__) ; 
+
+ scalar_t__ CHUNKSIZE ;
+ scalar_t__ OV_EREAD ;
+ scalar_t__ _fetch_headers (TYPE_2__*,int *,int *,long**,int*,int *) ;
+ scalar_t__ _get_next_page (TYPE_2__*,int *,int) ;
+ void* _get_prev_page_serial (TYPE_2__*,long*,int,int*,scalar_t__*) ;
+ scalar_t__ _initial_pcmoffset (TYPE_2__*,int *) ;
+ int _lookup_page_serialno (int *,long*,int) ;
+ scalar_t__ _lookup_serialno (int,long*,int) ;
+ int _ogg_free (long*) ;
+ void* _ogg_malloc (int) ;
+ void* _ogg_realloc (int *,int) ;
+ scalar_t__ _seek_helper (TYPE_2__*,scalar_t__) ;
 
 __attribute__((used)) static int _bisect_forward_serialno(OggVorbis_File *vf,
                                     ogg_int64_t begin,
@@ -41,7 +41,7 @@ __attribute__((used)) static int _bisect_forward_serialno(OggVorbis_File *vf,
                                     ogg_int64_t endgran,
                                     int endserial,
                                     long *currentno_list,
-                                    int  currentnos,
+                                    int currentnos,
                                     long m){
   ogg_int64_t pcmoffset;
   ogg_int64_t dataoffset=searched;
@@ -51,20 +51,12 @@ __attribute__((used)) static int _bisect_forward_serialno(OggVorbis_File *vf,
   ogg_page og;
   ogg_int64_t ret,last;
   int serialno = vf->os.serialno;
-
-  /* invariants:
-     we have the headers and serialnos for the link beginning at 'begin'
-     we have the offset and granpos of the last page in the file (potentially
-       not a page we care about)
-  */
-
-  /* Is the last page in our list of current serialnumbers? */
   if(_lookup_serialno(endserial,currentno_list,currentnos)){
 
-    /* last page is in the starting serialno list, so we've bisected
-       down to (or just started with) a single link.  Now we need to
-       find the last vorbis page belonging to the first vorbis stream
-       for this link. */
+
+
+
+
 
     while(endserial != serialno){
       endserial = serialno;
@@ -89,13 +81,13 @@ __attribute__((used)) static int _bisect_forward_serialno(OggVorbis_File *vf,
 
   }else{
 
-    long *next_serialno_list=NULL;
+    long *next_serialno_list=((void*)0);
     int next_serialnos=0;
     vorbis_info vi;
     vorbis_comment vc;
 
-    /* the below guards against garbage seperating the last and
-       first pages of two links. */
+
+
     while(searched<endsearched){
       ogg_int64_t bisect;
 
@@ -120,9 +112,9 @@ __attribute__((used)) static int _bisect_forward_serialno(OggVorbis_File *vf,
       }
     }
 
-    /* Bisection point found */
 
-    /* for the time being, fetch end PCM offset the simple way */
+
+
     {
       int testserial = serialno+1;
       vf->offset = next;
@@ -137,13 +129,13 @@ __attribute__((used)) static int _bisect_forward_serialno(OggVorbis_File *vf,
       if(ret)return(ret);
     }
 
-    ret=_fetch_headers(vf,&vi,&vc,&next_serialno_list,&next_serialnos,NULL);
+    ret=_fetch_headers(vf,&vi,&vc,&next_serialno_list,&next_serialnos,((void*)0));
     if(ret)return(ret);
     serialno = vf->os.serialno;
     dataoffset = vf->offset;
 
-    /* this will consume a page, however the next bistection always
-       starts with a raw seek */
+
+
     pcmoffset = _initial_pcmoffset(vf,&vi);
 
     ret=_bisect_forward_serialno(vf,next,vf->offset,end,endgran,endserial,

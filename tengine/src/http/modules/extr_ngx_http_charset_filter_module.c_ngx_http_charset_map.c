@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  void* u_char ;
-typedef  int ngx_uint_t ;
-struct TYPE_11__ {int len; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_3__ ngx_str_t ;
-typedef  int ngx_int_t ;
+
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef void* u_char ;
+typedef int ngx_uint_t ;
+struct TYPE_11__ {int len; int * data; } ;
+typedef TYPE_3__ ngx_str_t ;
+typedef int ngx_int_t ;
 struct TYPE_12__ {void** src2dst; void** dst2src; } ;
-typedef  TYPE_4__ ngx_http_charset_tables_t ;
-struct TYPE_13__ {int /*<<< orphan*/  characters; TYPE_2__* charset; TYPE_4__* table; } ;
-typedef  TYPE_5__ ngx_http_charset_conf_ctx_t ;
-struct TYPE_14__ {int /*<<< orphan*/  pool; TYPE_5__* ctx; TYPE_1__* args; } ;
-typedef  TYPE_6__ ngx_conf_t ;
-typedef  int /*<<< orphan*/  ngx_command_t ;
+typedef TYPE_4__ ngx_http_charset_tables_t ;
+struct TYPE_13__ {int characters; TYPE_2__* charset; TYPE_4__* table; } ;
+typedef TYPE_5__ ngx_http_charset_conf_ctx_t ;
+struct TYPE_14__ {int pool; TYPE_5__* ctx; TYPE_1__* args; } ;
+typedef TYPE_6__ ngx_conf_t ;
+typedef int ngx_command_t ;
 struct TYPE_10__ {int length; scalar_t__ utf8; } ;
 struct TYPE_9__ {int nelts; TYPE_3__* elts; } ;
 
-/* Variables and functions */
- char* NGX_CONF_ERROR ; 
- char* NGX_CONF_OK ; 
- int NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_EMERG ; 
- int NGX_UTF_LEN ; 
- int /*<<< orphan*/  ngx_conf_log_error (int /*<<< orphan*/ ,TYPE_6__*,int /*<<< orphan*/ ,char*,...) ; 
- int ngx_hextoi (int /*<<< orphan*/ *,int) ; 
- void** ngx_pcalloc (int /*<<< orphan*/ ,int) ; 
- int ngx_utf8_decode (void***,int) ; 
+
+ char* NGX_CONF_ERROR ;
+ char* NGX_CONF_OK ;
+ int NGX_ERROR ;
+ int NGX_LOG_EMERG ;
+ int NGX_UTF_LEN ;
+ int ngx_conf_log_error (int ,TYPE_6__*,int ,char*,...) ;
+ int ngx_hextoi (int *,int) ;
+ void** ngx_pcalloc (int ,int) ;
+ int ngx_utf8_decode (void***,int) ;
 
 __attribute__((used)) static char *
 ngx_http_charset_map(ngx_conf_t *cf, ngx_command_t *dummy, void *conf)
 {
-    u_char                       *p, *dst2src, **pp;
-    uint32_t                      n;
-    ngx_int_t                     src, dst;
-    ngx_str_t                    *value;
-    ngx_uint_t                    i;
-    ngx_http_charset_tables_t    *table;
-    ngx_http_charset_conf_ctx_t  *ctx;
+    u_char *p, *dst2src, **pp;
+    uint32_t n;
+    ngx_int_t src, dst;
+    ngx_str_t *value;
+    ngx_uint_t i;
+    ngx_http_charset_tables_t *table;
+    ngx_http_charset_conf_ctx_t *ctx;
 
     if (cf->args->nelts != 2) {
         ngx_conf_log_error(NGX_LOG_EMERG, cf, 0, "invalid parameters number");
@@ -106,9 +106,9 @@ ngx_http_charset_map(ngx_conf_t *cf, ngx_command_t *dummy, void *conf)
 
         dst2src = pp[n >> 8];
 
-        if (dst2src == NULL) {
+        if (dst2src == ((void*)0)) {
             dst2src = ngx_pcalloc(cf->pool, 256);
-            if (dst2src == NULL) {
+            if (dst2src == ((void*)0)) {
                 return NGX_CONF_ERROR;
             }
 

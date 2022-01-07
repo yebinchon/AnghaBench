@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct msr_regs_info {int /*<<< orphan*/  regs; int /*<<< orphan*/  err; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  rdmsr_safe_regs (int /*<<< orphan*/ ) ; 
+
+
+
+struct msr_regs_info {int regs; int err; } ;
+
+
+ int rdmsr_safe_regs (int ) ;
 
 __attribute__((used)) static void __rdmsr_safe_regs_on_cpu(void *info)
 {
-	struct msr_regs_info *rv = info;
+ struct msr_regs_info *rv = info;
 
-	rv->err = rdmsr_safe_regs(rv->regs);
+ rv->err = rdmsr_safe_regs(rv->regs);
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HDC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GM_ADVANCED ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MWT_IDENTITY ; 
- int /*<<< orphan*/  MWT_LEFTMULTIPLY ; 
- int /*<<< orphan*/  MWT_RIGHTMULTIPLY ; 
- int ModifyWorldTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int SetGraphicsMode (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
+
+
+
+typedef int HDC ;
+
+
+ int GM_ADVANCED ;
+ int GetDC (int ) ;
+ int MWT_IDENTITY ;
+ int MWT_LEFTMULTIPLY ;
+ int MWT_RIGHTMULTIPLY ;
+ int ModifyWorldTransform (int ,int *,int ) ;
+ int ReleaseDC (int ,int ) ;
+ int SetGraphicsMode (int ,int ) ;
+ int ok (int,char*,int) ;
 
 __attribute__((used)) static void test_modify_world_transform(void)
 {
@@ -31,13 +31,13 @@ __attribute__((used)) static void test_modify_world_transform(void)
     ret = SetGraphicsMode(hdc, GM_ADVANCED);
     ok(ret, "ret = %d\n", ret);
 
-    ret = ModifyWorldTransform(hdc, NULL, MWT_IDENTITY);
+    ret = ModifyWorldTransform(hdc, ((void*)0), MWT_IDENTITY);
     ok(ret, "ret = %d\n", ret);
 
-    ret = ModifyWorldTransform(hdc, NULL, MWT_LEFTMULTIPLY);
+    ret = ModifyWorldTransform(hdc, ((void*)0), MWT_LEFTMULTIPLY);
     ok(!ret, "ret = %d\n", ret);
 
-    ret = ModifyWorldTransform(hdc, NULL, MWT_RIGHTMULTIPLY);
+    ret = ModifyWorldTransform(hdc, ((void*)0), MWT_RIGHTMULTIPLY);
     ok(!ret, "ret = %d\n", ret);
 
     ReleaseDC(0, hdc);

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_3__ {int largest_acknowledged; scalar_t__ num_gaps; int* ack_block_lengths; int smallest_acknowledged; int* gaps; scalar_t__ ack_delay; } ;
-typedef  TYPE_1__ quicly_ack_frame_t ;
-typedef  int /*<<< orphan*/  pat ;
+typedef TYPE_1__ quicly_ack_frame_t ;
+typedef int pat ;
 
-/* Variables and functions */
- int QUICLY_ACK_MAX_GAPS ; 
- int /*<<< orphan*/  ok (int) ; 
- scalar_t__ quicly_decode_ack_frame (int const**,int const*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int* quicly_encodev (int*,int) ; 
- int /*<<< orphan*/  subtest (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_ack_decode_underflow ; 
+
+ int QUICLY_ACK_MAX_GAPS ;
+ int ok (int) ;
+ scalar_t__ quicly_decode_ack_frame (int const**,int const*,TYPE_1__*,int ) ;
+ int* quicly_encodev (int*,int) ;
+ int subtest (char*,int ) ;
+ int test_ack_decode_underflow ;
 
 __attribute__((used)) static void test_ack_decode(void)
 {
@@ -52,32 +52,32 @@ __attribute__((used)) static void test_ack_decode(void)
         ok(decoded.smallest_acknowledged == 0x34 - 1 - 2 - 3 - 4 - 5 + 1);
     }
 
-    { /* Bogus ACK Frame larger than the internal buffer */
+    {
         uint8_t pat[1024], *end = pat;
         const uint8_t *src = pat;
         int i, range_sum;
         quicly_ack_frame_t decoded;
         end = quicly_encodev(end, 0xFA00);
         end = quicly_encodev(end, 0);
-        end = quicly_encodev(end, QUICLY_ACK_MAX_GAPS + 30); // with excess ranges
+        end = quicly_encodev(end, QUICLY_ACK_MAX_GAPS + 30);
         end = quicly_encodev(end, 8);
         for (i = 0; i < QUICLY_ACK_MAX_GAPS + 30; ++i) {
-            end = quicly_encodev(end, i); // gap
-            end = quicly_encodev(end, i % 10); // ack-range
+            end = quicly_encodev(end, i);
+            end = quicly_encodev(end, i % 10);
         }
 
         ok(quicly_decode_ack_frame(&src, end, &decoded, 0) == 0);
         ok(decoded.largest_acknowledged == 0xFA00);
         ok(decoded.ack_delay == 0);
         ok(decoded.num_gaps == QUICLY_ACK_MAX_GAPS);
-        ok(decoded.ack_block_lengths[0] == 8 + 1); // first ack-range
+        ok(decoded.ack_block_lengths[0] == 8 + 1);
         range_sum = decoded.ack_block_lengths[0];
         for (i = 0; i < decoded.num_gaps; ++i) {
             ok(decoded.gaps[i] == i + 1);
             ok(decoded.ack_block_lengths[i + 1] == (i % 10) + 1);
             range_sum += decoded.gaps[i] + decoded.ack_block_lengths[i + 1];
         }
-        ok(src == end); // decoded the entire frame
+        ok(src == end);
         ok(decoded.smallest_acknowledged == 0xFA00 - range_sum + 1);
     }
 

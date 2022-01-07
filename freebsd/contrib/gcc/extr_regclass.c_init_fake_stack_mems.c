@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MAX_MACHINE_MODE ; 
- int /*<<< orphan*/  gen_rtx_MEM (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stack_pointer_rtx ; 
- int /*<<< orphan*/ * top_of_stack ; 
+ int MAX_MACHINE_MODE ;
+ int gen_rtx_MEM (int,int ) ;
+ int stack_pointer_rtx ;
+ int * top_of_stack ;
 
 void
 init_fake_stack_mems (void)

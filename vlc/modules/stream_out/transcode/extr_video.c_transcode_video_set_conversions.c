@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sout_stream_t ;
-struct TYPE_16__ {int /*<<< orphan*/ * p_conv_static; int /*<<< orphan*/ * p_conv_nonstatic; } ;
-typedef  TYPE_1__ sout_stream_id_sys_t ;
-struct TYPE_17__ {TYPE_1__* sys; int /*<<< orphan*/ * video; } ;
-typedef  TYPE_2__ filter_owner_t ;
-typedef  int /*<<< orphan*/  filter_chain_t ;
+
+
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int sout_stream_t ;
+struct TYPE_16__ {int * p_conv_static; int * p_conv_nonstatic; } ;
+typedef TYPE_1__ sout_stream_id_sys_t ;
+struct TYPE_17__ {TYPE_1__* sys; int * video; } ;
+typedef TYPE_2__ filter_owner_t ;
+typedef int filter_chain_t ;
 struct TYPE_19__ {scalar_t__ i_width; scalar_t__ i_height; scalar_t__ i_chroma; scalar_t__ orientation; } ;
 struct TYPE_18__ {TYPE_4__ video; } ;
-typedef  TYPE_3__ es_format_t ;
+typedef TYPE_3__ es_format_t ;
 
-/* Variables and functions */
- scalar_t__ ORIENT_NORMAL ; 
- int /*<<< orphan*/  VIDEO_ES ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  debug_format (int /*<<< orphan*/ *,TYPE_3__ const*) ; 
- int /*<<< orphan*/  es_format_Init (TYPE_3__*,int /*<<< orphan*/ ,scalar_t__) ; 
- int filter_chain_AppendConverter (int /*<<< orphan*/ *,TYPE_3__ const*) ; 
- TYPE_3__* filter_chain_GetFmtOut (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * filter_chain_NewVideo (int /*<<< orphan*/ *,int,TYPE_2__*) ; 
- int /*<<< orphan*/  filter_chain_Reset (int /*<<< orphan*/ *,TYPE_3__ const*,TYPE_3__ const*) ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,int const,int const,int const) ; 
- int /*<<< orphan*/  transcode_filter_video_cbs ; 
- int /*<<< orphan*/  video_format_ApplyRotation (TYPE_4__*,TYPE_4__*) ; 
+
+ scalar_t__ ORIENT_NORMAL ;
+ int VIDEO_ES ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int debug_format (int *,TYPE_3__ const*) ;
+ int es_format_Init (TYPE_3__*,int ,scalar_t__) ;
+ int filter_chain_AppendConverter (int *,TYPE_3__ const*) ;
+ TYPE_3__* filter_chain_GetFmtOut (int *) ;
+ int * filter_chain_NewVideo (int *,int,TYPE_2__*) ;
+ int filter_chain_Reset (int *,TYPE_3__ const*,TYPE_3__ const*) ;
+ int msg_Dbg (int *,char*,int const,int const,int const) ;
+ int transcode_filter_video_cbs ;
+ int video_format_ApplyRotation (TYPE_4__*,TYPE_4__*) ;
 
 __attribute__((used)) static int transcode_video_set_conversions( sout_stream_t *p_stream,
                                             sout_stream_id_sys_t *id,

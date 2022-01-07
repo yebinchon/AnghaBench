@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int MSIHANDLE ;
-typedef  scalar_t__ MSICONDITION ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileA (int /*<<< orphan*/ ) ; 
- scalar_t__ ERROR_BAD_QUERY_SYNTAX ; 
- scalar_t__ ERROR_FUNCTION_FAILED ; 
- scalar_t__ ERROR_NO_MORE_ITEMS ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  MSICOLINFO_TYPES ; 
- scalar_t__ MSICONDITION_ERROR ; 
- scalar_t__ MSICONDITION_FALSE ; 
- scalar_t__ MSICONDITION_NONE ; 
- scalar_t__ MSICONDITION_TRUE ; 
- int /*<<< orphan*/  MsiCloseHandle (int) ; 
- scalar_t__ MsiDatabaseIsTablePersistentA (int,char*) ; 
- scalar_t__ MsiDatabaseOpenViewA (int,char const*,int*) ; 
- scalar_t__ MsiRecordGetStringA (int,int,char*,int*) ; 
- int /*<<< orphan*/  MsiViewClose (int) ; 
- scalar_t__ MsiViewGetColumnInfo (int,int /*<<< orphan*/ ,int*) ; 
- int create_db () ; 
- scalar_t__ do_query (int,char*,int*) ; 
- int /*<<< orphan*/  msifile ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ run_query (int,int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int MSIHANDLE ;
+typedef scalar_t__ MSICONDITION ;
+typedef int DWORD ;
+
+
+ int DeleteFileA (int ) ;
+ scalar_t__ ERROR_BAD_QUERY_SYNTAX ;
+ scalar_t__ ERROR_FUNCTION_FAILED ;
+ scalar_t__ ERROR_NO_MORE_ITEMS ;
+ scalar_t__ ERROR_SUCCESS ;
+ int MSICOLINFO_TYPES ;
+ scalar_t__ MSICONDITION_ERROR ;
+ scalar_t__ MSICONDITION_FALSE ;
+ scalar_t__ MSICONDITION_NONE ;
+ scalar_t__ MSICONDITION_TRUE ;
+ int MsiCloseHandle (int) ;
+ scalar_t__ MsiDatabaseIsTablePersistentA (int,char*) ;
+ scalar_t__ MsiDatabaseOpenViewA (int,char const*,int*) ;
+ scalar_t__ MsiRecordGetStringA (int,int,char*,int*) ;
+ int MsiViewClose (int) ;
+ scalar_t__ MsiViewGetColumnInfo (int,int ,int*) ;
+ int create_db () ;
+ scalar_t__ do_query (int,char*,int*) ;
+ int msifile ;
+ int ok (int,char*,...) ;
+ scalar_t__ run_query (int,int ,char const*) ;
+ scalar_t__ strcmp (char*,char*) ;
 
 __attribute__((used)) static void test_temporary_table(void)
 {
@@ -48,13 +48,13 @@ __attribute__((used)) static void test_temporary_table(void)
     char buf[0x10];
     DWORD sz;
 
-    cond = MsiDatabaseIsTablePersistentA(0, NULL);
+    cond = MsiDatabaseIsTablePersistentA(0, ((void*)0));
     ok( cond == MSICONDITION_ERROR, "wrong return condition\n");
 
     hdb = create_db();
     ok( hdb, "failed to create db\n");
 
-    cond = MsiDatabaseIsTablePersistentA(hdb, NULL);
+    cond = MsiDatabaseIsTablePersistentA(hdb, ((void*)0));
     ok( cond == MSICONDITION_ERROR, "wrong return condition\n");
 
     cond = MsiDatabaseIsTablePersistentA(hdb, "_Tables");
@@ -140,13 +140,13 @@ __attribute__((used)) static void test_temporary_table(void)
     MsiViewClose( view );
     MsiCloseHandle( view );
 
-    /* query the table data */
+
     rec = 0;
     r = do_query(hdb, "select * from `_Tables` where `Name` = 'T'", &rec);
     ok( r == ERROR_SUCCESS, "temporary table exists in _Tables\n");
     MsiCloseHandle( rec );
 
-    /* query the column data */
+
     rec = 0;
     r = do_query(hdb, "select * from `_Columns` where `Table` = 'T' AND `Name` = 'B'", &rec);
     ok( r == ERROR_NO_MORE_ITEMS, "temporary table exists in _Columns\n");

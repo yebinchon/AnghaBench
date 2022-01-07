@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct gl_texture_object {scalar_t__ MinFilter; scalar_t__ MagFilter; float MinMagThresh; int Dimensions; int /*<<< orphan*/ * SampleFunc; TYPE_1__** Image; int /*<<< orphan*/  WrapT; int /*<<< orphan*/  WrapS; int /*<<< orphan*/  Complete; } ;
-struct TYPE_2__ {int /*<<< orphan*/  Format; int /*<<< orphan*/  Border; } ;
-typedef  int GLboolean ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- scalar_t__ GL_LINEAR ; 
- scalar_t__ GL_LINEAR_MIPMAP_NEAREST ; 
- scalar_t__ GL_NEAREST ; 
- scalar_t__ GL_NEAREST_MIPMAP_NEAREST ; 
- int /*<<< orphan*/  GL_REPEAT ; 
- int /*<<< orphan*/  GL_RGB ; 
- int /*<<< orphan*/  GL_RGBA ; 
- int /*<<< orphan*/  gl_problem (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * opt_sample_rgb_2d ; 
- int /*<<< orphan*/ * opt_sample_rgba_2d ; 
- int /*<<< orphan*/ * sample_lambda_1d ; 
- int /*<<< orphan*/ * sample_lambda_2d ; 
- int /*<<< orphan*/ * sample_linear_1d ; 
- int /*<<< orphan*/ * sample_linear_2d ; 
- int /*<<< orphan*/ * sample_nearest_1d ; 
- int /*<<< orphan*/ * sample_nearest_2d ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct gl_texture_object {scalar_t__ MinFilter; scalar_t__ MagFilter; float MinMagThresh; int Dimensions; int * SampleFunc; TYPE_1__** Image; int WrapT; int WrapS; int Complete; } ;
+struct TYPE_2__ {int Format; int Border; } ;
+typedef int GLboolean ;
+
+
+ int ASSERT (int) ;
+ scalar_t__ GL_LINEAR ;
+ scalar_t__ GL_LINEAR_MIPMAP_NEAREST ;
+ scalar_t__ GL_NEAREST ;
+ scalar_t__ GL_NEAREST_MIPMAP_NEAREST ;
+ int GL_REPEAT ;
+ int GL_RGB ;
+ int GL_RGBA ;
+ int gl_problem (int *,char*) ;
+ int * opt_sample_rgb_2d ;
+ int * opt_sample_rgba_2d ;
+ int * sample_lambda_1d ;
+ int * sample_lambda_2d ;
+ int * sample_linear_1d ;
+ int * sample_linear_2d ;
+ int * sample_nearest_1d ;
+ int * sample_nearest_2d ;
 
 void gl_set_texture_sampler( struct gl_texture_object *t )
 {
    if (!t->Complete) {
-      t->SampleFunc = NULL;
+      t->SampleFunc = ((void*)0);
    }
    else {
       GLboolean needLambda = (t->MinFilter != t->MagFilter);
 
       if (needLambda) {
-         /* Compute min/mag filter threshold */
+
          if (t->MagFilter==GL_LINEAR
              && (t->MinFilter==GL_NEAREST_MIPMAP_NEAREST ||
                  t->MinFilter==GL_LINEAR_MIPMAP_NEAREST)) {
@@ -89,7 +89,7 @@ void gl_set_texture_sampler( struct gl_texture_object *t )
             }
             break;
          default:
-            gl_problem(NULL, "invalid dimensions in gl_set_texture_sampler");
+            gl_problem(((void*)0), "invalid dimensions in gl_set_texture_sampler");
       }
    }
 }

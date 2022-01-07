@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct strsection_header {int count; int size; } ;
-typedef  int /*<<< orphan*/  data2 ;
-typedef  int /*<<< orphan*/  data ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  ULONG_PTR ;
-struct TYPE_4__ {int cbSize; int /*<<< orphan*/  ulSectionTotalLength; scalar_t__ lpSectionBase; } ;
-typedef  scalar_t__ HANDLE ;
-typedef  int BOOL ;
-typedef  TYPE_1__ ACTCTX_SECTION_KEYED_DATA ;
+typedef int data2 ;
+typedef int data ;
+typedef char WCHAR ;
+typedef int ULONG_PTR ;
+struct TYPE_4__ {int cbSize; int ulSectionTotalLength; scalar_t__ lpSectionBase; } ;
+typedef scalar_t__ HANDLE ;
+typedef int BOOL ;
+typedef TYPE_1__ ACTCTX_SECTION_KEYED_DATA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACTIVATION_CONTEXT_SECTION_DLL_REDIRECTION ; 
- int /*<<< orphan*/  DeleteFileA (char*) ; 
- int GetLastError () ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  create_manifest_file (char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  manifest_wndcls1 ; 
- int /*<<< orphan*/  manifest_wndcls2 ; 
- int /*<<< orphan*/  manifest_wndcls_main ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
- int pActivateActCtx (scalar_t__,int /*<<< orphan*/ *) ; 
- int pDeactivateActCtx (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int pFindActCtxSectionStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,TYPE_1__*) ; 
- int /*<<< orphan*/  pReleaseActCtx (scalar_t__) ; 
- scalar_t__ test_create (char*) ; 
+
+ int ACTIVATION_CONTEXT_SECTION_DLL_REDIRECTION ;
+ int DeleteFileA (char*) ;
+ int GetLastError () ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int create_manifest_file (char*,int ,int,int *,int *) ;
+ int manifest_wndcls1 ;
+ int manifest_wndcls2 ;
+ int manifest_wndcls_main ;
+ int memset (TYPE_1__*,int ,int) ;
+ int ok (int,char*,int,...) ;
+ int pActivateActCtx (scalar_t__,int *) ;
+ int pDeactivateActCtx (int ,int ) ;
+ int pFindActCtxSectionStringW (int ,int *,int ,char const*,TYPE_1__*) ;
+ int pReleaseActCtx (scalar_t__) ;
+ scalar_t__ test_create (char*) ;
 
 __attribute__((used)) static void test_dllredirect_section(void)
 {
@@ -48,10 +48,10 @@ __attribute__((used)) static void test_dllredirect_section(void)
     HANDLE handle;
     BOOL ret;
 
-    /* use two dependent manifests, 4 'files' total */
-    create_manifest_file("testdep1.manifest", manifest_wndcls1, -1, NULL, NULL);
-    create_manifest_file("testdep2.manifest", manifest_wndcls2, -1, NULL, NULL);
-    create_manifest_file("main_wndcls.manifest", manifest_wndcls_main, -1, NULL, NULL);
+
+    create_manifest_file("testdep1.manifest", manifest_wndcls1, -1, ((void*)0), ((void*)0));
+    create_manifest_file("testdep2.manifest", manifest_wndcls2, -1, ((void*)0), ((void*)0));
+    create_manifest_file("main_wndcls.manifest", manifest_wndcls_main, -1, ((void*)0), ((void*)0));
 
     handle = test_create("main_wndcls.manifest");
     ok(handle != INVALID_HANDLE_VALUE, "handle == INVALID_HANDLE_VALUE, error %u\n", GetLastError());
@@ -68,12 +68,12 @@ __attribute__((used)) static void test_dllredirect_section(void)
     data.cbSize = sizeof(data);
     data2.cbSize = sizeof(data2);
 
-    /* get data for two files from different assemblies */
-    ret = pFindActCtxSectionStringW(0, NULL,
+
+    ret = pFindActCtxSectionStringW(0, ((void*)0),
                                     ACTIVATION_CONTEXT_SECTION_DLL_REDIRECTION,
                                     testlib1W, &data);
     ok(ret, "got %d\n", ret);
-    ret = pFindActCtxSectionStringW(0, NULL,
+    ret = pFindActCtxSectionStringW(0, ((void*)0),
                                     ACTIVATION_CONTEXT_SECTION_DLL_REDIRECTION,
                                     testlib2W, &data2);
     ok(ret, "got %d\n", ret);
@@ -82,7 +82,7 @@ __attribute__((used)) static void test_dllredirect_section(void)
     ok(section->count == 4, "got %d\n", section->count);
     ok(section->size == sizeof(*section), "got %d\n", section->size);
 
-    /* For both string same section is returned, meaning it's one dll redirect section per context */
+
     ok(data.lpSectionBase == data2.lpSectionBase, "got %p, %p\n", data.lpSectionBase, data2.lpSectionBase);
     ok(data.ulSectionTotalLength == data2.ulSectionTotalLength, "got %u, %u\n", data.ulSectionTotalLength,
         data2.ulSectionTotalLength);

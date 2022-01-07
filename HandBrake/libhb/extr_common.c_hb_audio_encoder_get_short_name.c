@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int codec; char const* short_name; } ;
-typedef  TYPE_1__ hb_encoder_t ;
+typedef TYPE_1__ hb_encoder_t ;
 
-/* Variables and functions */
- int HB_ACODEC_ANY ; 
- TYPE_1__* hb_audio_encoder_get_next (TYPE_1__ const*) ; 
+
+ int HB_ACODEC_ANY ;
+ TYPE_1__* hb_audio_encoder_get_next (TYPE_1__ const*) ;
 
 const char* hb_audio_encoder_get_short_name(int encoder)
 {
     if (!(encoder & HB_ACODEC_ANY))
         goto fail;
 
-    const hb_encoder_t *audio_encoder = NULL;
-    while ((audio_encoder = hb_audio_encoder_get_next(audio_encoder)) != NULL)
+    const hb_encoder_t *audio_encoder = ((void*)0);
+    while ((audio_encoder = hb_audio_encoder_get_next(audio_encoder)) != ((void*)0))
     {
         if (audio_encoder->codec == encoder)
         {
@@ -33,5 +33,5 @@ const char* hb_audio_encoder_get_short_name(int encoder)
     }
 
 fail:
-    return NULL;
+    return ((void*)0);
 }

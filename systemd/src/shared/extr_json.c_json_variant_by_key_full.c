@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {scalar_t__ type; size_t n_elements; int /*<<< orphan*/  reference; scalar_t__ is_reference; } ;
-typedef  TYPE_1__ JsonVariant ;
 
-/* Variables and functions */
- TYPE_1__* JSON_VARIANT_MAGIC_EMPTY_OBJECT ; 
- scalar_t__ JSON_VARIANT_OBJECT ; 
- int /*<<< orphan*/  JSON_VARIANT_STRING ; 
- TYPE_1__* json_variant_by_key (int /*<<< orphan*/ ,char const*) ; 
- TYPE_1__* json_variant_conservative_normalize (TYPE_1__*) ; 
- TYPE_1__* json_variant_dereference (TYPE_1__*) ; 
- int /*<<< orphan*/  json_variant_has_type (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  json_variant_is_regular (TYPE_1__*) ; 
- int /*<<< orphan*/  json_variant_string (TYPE_1__*) ; 
- int /*<<< orphan*/  log_debug (char*) ; 
- scalar_t__ streq (int /*<<< orphan*/ ,char const*) ; 
+
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+struct TYPE_14__ {scalar_t__ type; size_t n_elements; int reference; scalar_t__ is_reference; } ;
+typedef TYPE_1__ JsonVariant ;
+
+
+ TYPE_1__* JSON_VARIANT_MAGIC_EMPTY_OBJECT ;
+ scalar_t__ JSON_VARIANT_OBJECT ;
+ int JSON_VARIANT_STRING ;
+ TYPE_1__* json_variant_by_key (int ,char const*) ;
+ TYPE_1__* json_variant_conservative_normalize (TYPE_1__*) ;
+ TYPE_1__* json_variant_dereference (TYPE_1__*) ;
+ int json_variant_has_type (TYPE_1__*,int ) ;
+ int json_variant_is_regular (TYPE_1__*) ;
+ int json_variant_string (TYPE_1__*) ;
+ int log_debug (char*) ;
+ scalar_t__ streq (int ,char const*) ;
 
 JsonVariant *json_variant_by_key_full(JsonVariant *v, const char *key, JsonVariant **ret_key) {
         size_t i;
@@ -62,14 +62,14 @@ JsonVariant *json_variant_by_key_full(JsonVariant *v, const char *key, JsonVaria
 
 not_found:
         if (ret_key)
-                *ret_key = NULL;
+                *ret_key = ((void*)0);
 
-        return NULL;
+        return ((void*)0);
 
 mismatch:
         log_debug("Element in non-object JSON variant requested by key, returning NULL.");
         if (ret_key)
-                *ret_key = NULL;
+                *ret_key = ((void*)0);
 
-        return NULL;
+        return ((void*)0);
 }

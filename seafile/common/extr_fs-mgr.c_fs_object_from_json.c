@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  json_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int json_t ;
 struct TYPE_3__ {int text; } ;
-typedef  TYPE_1__ json_error_t ;
-typedef  int /*<<< orphan*/  guint8 ;
-typedef  int /*<<< orphan*/  SeafFSObject ;
+typedef TYPE_1__ json_error_t ;
+typedef int guint8 ;
+typedef int SeafFSObject ;
 
-/* Variables and functions */
- int SEAF_METADATA_TYPE_DIR ; 
- int SEAF_METADATA_TYPE_FILE ; 
- int /*<<< orphan*/  g_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_loadb (char const*,int,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int json_object_get_int_member (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ seaf_decompress (int /*<<< orphan*/ *,int,int /*<<< orphan*/ **,int*) ; 
- scalar_t__ seaf_dir_from_json_object (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  seaf_warning (char*,...) ; 
- scalar_t__ seafile_from_json_object (char const*,int /*<<< orphan*/ *) ; 
+
+ int SEAF_METADATA_TYPE_DIR ;
+ int SEAF_METADATA_TYPE_FILE ;
+ int g_free (int *) ;
+ int json_decref (int *) ;
+ int * json_loadb (char const*,int,int ,TYPE_1__*) ;
+ int json_object_get_int_member (int *,char*) ;
+ scalar_t__ seaf_decompress (int *,int,int **,int*) ;
+ scalar_t__ seaf_dir_from_json_object (char const*,int *) ;
+ int seaf_warning (char*,...) ;
+ scalar_t__ seafile_from_json_object (char const*,int *) ;
 
 SeafFSObject *
 fs_object_from_json (const char *obj_id, uint8_t *data, int len)
@@ -42,14 +42,14 @@ fs_object_from_json (const char *obj_id, uint8_t *data, int len)
 
     if (seaf_decompress (data, len, &decompressed, &outlen) < 0) {
         seaf_warning ("Failed to decompress fs object %s.\n", obj_id);
-        return NULL;
+        return ((void*)0);
     }
 
     object = json_loadb ((const char *)decompressed, outlen, 0, &error);
     g_free (decompressed);
     if (!object) {
         seaf_warning ("Failed to load fs json object: %s.\n", error.text);
-        return NULL;
+        return ((void*)0);
     }
 
     type = json_object_get_int_member (object, "type");
@@ -61,7 +61,7 @@ fs_object_from_json (const char *obj_id, uint8_t *data, int len)
     else {
         seaf_warning ("Invalid fs type %d.\n", type);
         json_decref (object);
-        return NULL;
+        return ((void*)0);
     }
 
     json_decref (object);

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct dtoa_context {TYPE_1__** freelist; TYPE_1__* p5s; } ;
 struct TYPE_4__ {struct TYPE_4__* next; } ;
-typedef  TYPE_1__ Bigint ;
+typedef TYPE_1__ Bigint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Bfree (struct dtoa_context*,TYPE_1__*) ; 
- int /*<<< orphan*/  FREE (TYPE_1__*) ; 
+
+ int Bfree (struct dtoa_context*,TYPE_1__*) ;
+ int FREE (TYPE_1__*) ;
 
 void jvp_dtoa_context_free(struct dtoa_context* C) {
   int k;

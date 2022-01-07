@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fz_pool ;
-typedef  int /*<<< orphan*/  fz_html_box ;
-typedef  int /*<<< orphan*/  fz_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FLOW_SHYPHEN ; 
- int /*<<< orphan*/  add_flow (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int fz_pool ;
+typedef int fz_html_box ;
+typedef int fz_context ;
+
+
+ int FLOW_SHYPHEN ;
+ int add_flow (int *,int *,int *,int *,int ,int ) ;
 
 __attribute__((used)) static void add_flow_shyphen(fz_context *ctx, fz_pool *pool, fz_html_box *top, fz_html_box *inline_box)
 {
-	(void)add_flow(ctx, pool, top, inline_box, FLOW_SHYPHEN, 0);
+ (void)add_flow(ctx, pool, top, inline_box, FLOW_SHYPHEN, 0);
 }

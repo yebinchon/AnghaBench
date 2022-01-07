@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {struct TYPE_5__* cdr; } ;
-typedef  TYPE_1__ node ;
-typedef  scalar_t__ mrb_sym ;
+typedef TYPE_1__ node ;
+typedef scalar_t__ mrb_sym ;
 struct TYPE_6__ {TYPE_1__* lv; } ;
-typedef  TYPE_2__ codegen_scope ;
+typedef TYPE_2__ codegen_scope ;
 
-/* Variables and functions */
- scalar_t__ lv_name (TYPE_1__*) ; 
+
+ scalar_t__ lv_name (TYPE_1__*) ;
 
 __attribute__((used)) static int
 lv_idx(codegen_scope *s, mrb_sym id)

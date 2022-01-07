@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_19__ {int num_aac_frames; int /*<<< orphan*/  chan_config; int /*<<< orphan*/  sampling_index; int /*<<< orphan*/  object_type; int /*<<< orphan*/  crc_absent; } ;
+
+
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_19__ {int num_aac_frames; int chan_config; int sampling_index; int object_type; int crc_absent; } ;
 struct TYPE_18__ {int first_frame_done; } ;
 struct TYPE_17__ {TYPE_1__* par_in; TYPE_4__* priv_data; } ;
 struct TYPE_16__ {int size; int data; } ;
 struct TYPE_15__ {scalar_t__ extradata; } ;
-typedef  int /*<<< orphan*/  PutBitContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVBSFContext ;
-typedef  TYPE_4__ AACBSFContext ;
-typedef  TYPE_5__ AACADTSHeaderInfo ;
+typedef int PutBitContext ;
+typedef int GetBitContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVBSFContext ;
+typedef TYPE_4__ AACBSFContext ;
+typedef TYPE_5__ AACADTSHeaderInfo ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int AVERROR_PATCHWELCOME ; 
- int AV_AAC_ADTS_HEADER_SIZE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_PKT_DATA_NEW_EXTRADATA ; 
- int AV_RB16 (int) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int MAX_PCE_SIZE ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * av_packet_new_side_data (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_2__*) ; 
- int /*<<< orphan*/  avpriv_report_missing_feature (TYPE_3__*,char*) ; 
- scalar_t__ ff_adts_header_parse (int /*<<< orphan*/ *,TYPE_5__*) ; 
- int ff_bsf_get_packet_ref (TYPE_3__*,TYPE_2__*) ; 
- int ff_copy_pce_data (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  flush_put_bits (int /*<<< orphan*/ *) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_get_bits (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  init_put_bits (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVERROR_PATCHWELCOME ;
+ int AV_AAC_ADTS_HEADER_SIZE ;
+ int AV_LOG_ERROR ;
+ int AV_PKT_DATA_NEW_EXTRADATA ;
+ int AV_RB16 (int) ;
+ int ENOMEM ;
+ int MAX_PCE_SIZE ;
+ int av_log (TYPE_3__*,int ,char*) ;
+ int * av_packet_new_side_data (TYPE_2__*,int ,int) ;
+ int av_packet_unref (TYPE_2__*) ;
+ int avpriv_report_missing_feature (TYPE_3__*,char*) ;
+ scalar_t__ ff_adts_header_parse (int *,TYPE_5__*) ;
+ int ff_bsf_get_packet_ref (TYPE_3__*,TYPE_2__*) ;
+ int ff_copy_pce_data (int *,int *) ;
+ int flush_put_bits (int *) ;
+ int get_bits (int *,int) ;
+ int get_bits_count (int *) ;
+ int init_get_bits (int *,int,int) ;
+ int init_put_bits (int *,int *,int) ;
+ int memcpy (int *,int *,int) ;
+ int put_bits (int *,int,int ) ;
 
 __attribute__((used)) static int aac_adtstoasc_filter(AVBSFContext *bsfc, AVPacket *pkt)
 {
@@ -93,9 +93,9 @@ __attribute__((used)) static int aac_adtstoasc_filter(AVBSFContext *bsfc, AVPack
     pkt->data += AV_AAC_ADTS_HEADER_SIZE + 2 * !hdr.crc_absent;
 
     if (!ctx->first_frame_done) {
-        int            pce_size = 0;
-        uint8_t        pce_data[MAX_PCE_SIZE];
-        uint8_t       *extradata;
+        int pce_size = 0;
+        uint8_t pce_data[MAX_PCE_SIZE];
+        uint8_t *extradata;
 
         if (!hdr.chan_config) {
             init_get_bits(&gb, pkt->data, pkt->size * 8);
@@ -125,9 +125,9 @@ __attribute__((used)) static int aac_adtstoasc_filter(AVBSFContext *bsfc, AVPack
         put_bits(&pb, 5, hdr.object_type);
         put_bits(&pb, 4, hdr.sampling_index);
         put_bits(&pb, 4, hdr.chan_config);
-        put_bits(&pb, 1, 0); //frame length - 1024 samples
-        put_bits(&pb, 1, 0); //does not depend on core coder
-        put_bits(&pb, 1, 0); //is not extension
+        put_bits(&pb, 1, 0);
+        put_bits(&pb, 1, 0);
+        put_bits(&pb, 1, 0);
         flush_put_bits(&pb);
         if (pce_size) {
             memcpy(extradata + 2, pce_data, pce_size);

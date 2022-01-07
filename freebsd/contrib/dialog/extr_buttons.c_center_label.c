@@ -6,12 +6,12 @@ center_label(char *buffer, int longest, const char *label)
 
     *buffer = 0;
     if (len < longest) {
-	left = (longest - len) / 2;
-	right = (longest - len - left);
-	if (left > 0)
-	    sprintf(buffer, "%*s", left, " ");
+ left = (longest - len) / 2;
+ right = (longest - len - left);
+ if (left > 0)
+     sprintf(buffer, "%*s", left, " ");
     }
     strcat(buffer, label);
     if (right > 0)
-	sprintf(buffer + strlen(buffer), "%*s", right, " ");
+ sprintf(buffer + strlen(buffer), "%*s", right, " ");
 }

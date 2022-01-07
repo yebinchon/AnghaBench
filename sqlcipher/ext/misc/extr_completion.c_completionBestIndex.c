@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct sqlite3_index_constraint {scalar_t__ usable; scalar_t__ op; int iColumn; } ;
-typedef  int /*<<< orphan*/  sqlite3_vtab ;
+typedef int sqlite3_vtab ;
 struct TYPE_5__ {int nConstraint; int idxNum; double estimatedCost; int estimatedRows; TYPE_1__* aConstraintUsage; struct sqlite3_index_constraint* aConstraint; } ;
-typedef  TYPE_2__ sqlite3_index_info ;
+typedef TYPE_2__ sqlite3_index_info ;
 struct TYPE_4__ {int argvIndex; int omit; } ;
 
-/* Variables and functions */
-#define  COMPLETION_COLUMN_PREFIX 129 
-#define  COMPLETION_COLUMN_WHOLELINE 128 
- scalar_t__ SQLITE_INDEX_CONSTRAINT_EQ ; 
- int SQLITE_OK ; 
+
+
+
+ scalar_t__ SQLITE_INDEX_CONSTRAINT_EQ ;
+ int SQLITE_OK ;
 
 __attribute__((used)) static int completionBestIndex(
   sqlite3_vtab *tab,
   sqlite3_index_info *pIdxInfo
 ){
-  int i;                 /* Loop over constraints */
-  int idxNum = 0;        /* The query plan bitmask */
-  int prefixIdx = -1;    /* Index of the start= constraint, or -1 if none */
-  int wholelineIdx = -1; /* Index of the stop= constraint, or -1 if none */
-  int nArg = 0;          /* Number of arguments that completeFilter() expects */
+  int i;
+  int idxNum = 0;
+  int prefixIdx = -1;
+  int wholelineIdx = -1;
+  int nArg = 0;
   const struct sqlite3_index_constraint *pConstraint;
 
-  (void)(tab);    /* Unused parameter */
+  (void)(tab);
   pConstraint = pIdxInfo->aConstraint;
   for(i=0; i<pIdxInfo->nConstraint; i++, pConstraint++){
     if( pConstraint->usable==0 ) continue;
     if( pConstraint->op!=SQLITE_INDEX_CONSTRAINT_EQ ) continue;
     switch( pConstraint->iColumn ){
-      case COMPLETION_COLUMN_PREFIX:
+      case 129:
         prefixIdx = i;
         idxNum |= 1;
         break;
-      case COMPLETION_COLUMN_WHOLELINE:
+      case 128:
         wholelineIdx = i;
         idxNum |= 2;
         break;

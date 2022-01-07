@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EC_POINT ;
-typedef  int /*<<< orphan*/  EC_KEY ;
-typedef  int /*<<< orphan*/  EC_GROUP ;
-typedef  int /*<<< orphan*/  ECDSA_SIG ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  const BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const* BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_new () ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_add (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- scalar_t__ BN_cmp (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/  const*) ; 
- scalar_t__ BN_is_zero (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_mod_add (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mod_mul (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const* BN_new () ; 
- int /*<<< orphan*/  BN_priv_rand_range (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_sub (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  const* BN_value_one () ; 
- int /*<<< orphan*/ * ECDSA_SIG_new () ; 
- int /*<<< orphan*/  ECDSA_SIG_set0 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  const* EC_GROUP_get0_order (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * EC_KEY_get0_group (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  const* EC_KEY_get0_private_key (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EC_POINT_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_get_affine_coordinates (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_mul (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EC_POINT_new (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ERR_R_BN_LIB ; 
- int /*<<< orphan*/  ERR_R_INTERNAL_ERROR ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  SM2_F_SM2_SIG_GEN ; 
- int /*<<< orphan*/  SM2err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ec_group_do_inverse_ord (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int EC_POINT ;
+typedef int EC_KEY ;
+typedef int EC_GROUP ;
+typedef int ECDSA_SIG ;
+typedef int BN_CTX ;
+typedef int const BIGNUM ;
+
+
+ int BN_CTX_free (int *) ;
+ int const* BN_CTX_get (int *) ;
+ int * BN_CTX_new () ;
+ int BN_CTX_start (int *) ;
+ int BN_add (int const*,int const*,int const*) ;
+ scalar_t__ BN_cmp (int const*,int const*) ;
+ int BN_free (int const*) ;
+ scalar_t__ BN_is_zero (int const*) ;
+ int BN_mod_add (int const*,int const*,int const*,int const*,int *) ;
+ int BN_mod_mul (int const*,int const*,int const*,int const*,int *) ;
+ int const* BN_new () ;
+ int BN_priv_rand_range (int const*,int const*) ;
+ int BN_sub (int const*,int const*,int const*) ;
+ int const* BN_value_one () ;
+ int * ECDSA_SIG_new () ;
+ int ECDSA_SIG_set0 (int *,int const*,int const*) ;
+ int const* EC_GROUP_get0_order (int const*) ;
+ int * EC_KEY_get0_group (int const*) ;
+ int const* EC_KEY_get0_private_key (int const*) ;
+ int EC_POINT_free (int *) ;
+ int EC_POINT_get_affine_coordinates (int const*,int *,int const*,int *,int *) ;
+ int EC_POINT_mul (int const*,int *,int const*,int *,int *,int *) ;
+ int * EC_POINT_new (int const*) ;
+ int ERR_R_BN_LIB ;
+ int ERR_R_INTERNAL_ERROR ;
+ int ERR_R_MALLOC_FAILURE ;
+ int SM2_F_SM2_SIG_GEN ;
+ int SM2err (int ,int ) ;
+ int ec_group_do_inverse_ord (int const*,int const*,int const*,int *) ;
 
 __attribute__((used)) static ECDSA_SIG *sm2_sig_gen(const EC_KEY *key, const BIGNUM *e)
 {
     const BIGNUM *dA = EC_KEY_get0_private_key(key);
     const EC_GROUP *group = EC_KEY_get0_group(key);
     const BIGNUM *order = EC_GROUP_get0_order(group);
-    ECDSA_SIG *sig = NULL;
-    EC_POINT *kG = NULL;
-    BN_CTX *ctx = NULL;
-    BIGNUM *k = NULL;
-    BIGNUM *rk = NULL;
-    BIGNUM *r = NULL;
-    BIGNUM *s = NULL;
-    BIGNUM *x1 = NULL;
-    BIGNUM *tmp = NULL;
+    ECDSA_SIG *sig = ((void*)0);
+    EC_POINT *kG = ((void*)0);
+    BN_CTX *ctx = ((void*)0);
+    BIGNUM *k = ((void*)0);
+    BIGNUM *rk = ((void*)0);
+    BIGNUM *r = ((void*)0);
+    BIGNUM *s = ((void*)0);
+    BIGNUM *x1 = ((void*)0);
+    BIGNUM *tmp = ((void*)0);
 
     kG = EC_POINT_new(group);
     ctx = BN_CTX_new();
-    if (kG == NULL || ctx == NULL) {
+    if (kG == ((void*)0) || ctx == ((void*)0)) {
         SM2err(SM2_F_SM2_SIG_GEN, ERR_R_MALLOC_FAILURE);
         goto done;
     }
@@ -75,19 +75,19 @@ __attribute__((used)) static ECDSA_SIG *sm2_sig_gen(const EC_KEY *key, const BIG
     rk = BN_CTX_get(ctx);
     x1 = BN_CTX_get(ctx);
     tmp = BN_CTX_get(ctx);
-    if (tmp == NULL) {
+    if (tmp == ((void*)0)) {
         SM2err(SM2_F_SM2_SIG_GEN, ERR_R_MALLOC_FAILURE);
         goto done;
     }
 
-    /*
-     * These values are returned and so should not be allocated out of the
-     * context
-     */
+
+
+
+
     r = BN_new();
     s = BN_new();
 
-    if (r == NULL || s == NULL) {
+    if (r == ((void*)0) || s == ((void*)0)) {
         SM2err(SM2_F_SM2_SIG_GEN, ERR_R_MALLOC_FAILURE);
         goto done;
     }
@@ -98,15 +98,15 @@ __attribute__((used)) static ECDSA_SIG *sm2_sig_gen(const EC_KEY *key, const BIG
             goto done;
         }
 
-        if (!EC_POINT_mul(group, kG, k, NULL, NULL, ctx)
-                || !EC_POINT_get_affine_coordinates(group, kG, x1, NULL,
+        if (!EC_POINT_mul(group, kG, k, ((void*)0), ((void*)0), ctx)
+                || !EC_POINT_get_affine_coordinates(group, kG, x1, ((void*)0),
                                                     ctx)
                 || !BN_mod_add(r, e, x1, order, ctx)) {
             SM2err(SM2_F_SM2_SIG_GEN, ERR_R_INTERNAL_ERROR);
             goto done;
         }
 
-        /* try again if r == 0 or r+k == n */
+
         if (BN_is_zero(r))
             continue;
 
@@ -128,18 +128,18 @@ __attribute__((used)) static ECDSA_SIG *sm2_sig_gen(const EC_KEY *key, const BIG
         }
 
         sig = ECDSA_SIG_new();
-        if (sig == NULL) {
+        if (sig == ((void*)0)) {
             SM2err(SM2_F_SM2_SIG_GEN, ERR_R_MALLOC_FAILURE);
             goto done;
         }
 
-         /* takes ownership of r and s */
+
         ECDSA_SIG_set0(sig, r, s);
         break;
     }
 
  done:
-    if (sig == NULL) {
+    if (sig == ((void*)0)) {
         BN_free(r);
         BN_free(s);
     }

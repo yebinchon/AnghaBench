@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * reserv_sets_t ;
 
-/* Variables and functions */
- int els_in_cycle_reserv ; 
- int els_in_reservs ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
+
+
+
+typedef int * reserv_sets_t ;
+
+
+ int els_in_cycle_reserv ;
+ int els_in_reservs ;
+ int gcc_assert (int) ;
 
 __attribute__((used)) static void
 reserv_sets_shift (reserv_sets_t result, reserv_sets_t operand)

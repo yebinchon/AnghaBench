@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int m_status; scalar_t__ m_buffer_size; scalar_t__ m_bytes_in_buffer; int /*<<< orphan*/  m_byte_offset; int /*<<< orphan*/  m_stored_data; int /*<<< orphan*/  m_current_data; } ;
-typedef  TYPE_1__ opj_stream_private_t ;
-typedef  int /*<<< orphan*/  opj_event_mgr_t ;
-typedef  scalar_t__ OPJ_SIZE_T ;
-typedef  scalar_t__ OPJ_OFF_T ;
-typedef  int /*<<< orphan*/  OPJ_BYTE ;
 
-/* Variables and functions */
- int OPJ_STREAM_STATUS_ERROR ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,scalar_t__) ; 
- int /*<<< orphan*/  opj_stream_flush (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int m_status; scalar_t__ m_buffer_size; scalar_t__ m_bytes_in_buffer; int m_byte_offset; int m_stored_data; int m_current_data; } ;
+typedef TYPE_1__ opj_stream_private_t ;
+typedef int opj_event_mgr_t ;
+typedef scalar_t__ OPJ_SIZE_T ;
+typedef scalar_t__ OPJ_OFF_T ;
+typedef int OPJ_BYTE ;
+
+
+ int OPJ_STREAM_STATUS_ERROR ;
+ int memcpy (int ,int const*,scalar_t__) ;
+ int opj_stream_flush (TYPE_1__*,int *) ;
 
 OPJ_SIZE_T opj_stream_write_data(opj_stream_private_t * p_stream,
                                  const OPJ_BYTE * p_buffer,
@@ -38,7 +38,7 @@ OPJ_SIZE_T opj_stream_write_data(opj_stream_private_t * p_stream,
     for (;;) {
         l_remaining_bytes = p_stream->m_buffer_size - p_stream->m_bytes_in_buffer;
 
-        /* we have more memory than required */
+
         if (l_remaining_bytes >= p_size) {
             memcpy(p_stream->m_current_data, p_buffer, p_size);
 
@@ -50,7 +50,7 @@ OPJ_SIZE_T opj_stream_write_data(opj_stream_private_t * p_stream,
             return l_write_nb_bytes;
         }
 
-        /* we copy data and then do an actual read on the stream */
+
         if (l_remaining_bytes) {
             l_write_nb_bytes += l_remaining_bytes;
 

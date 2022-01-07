@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char* Buffer; int Length; int MaximumLength; } ;
-typedef  TYPE_1__ STRING ;
+typedef TYPE_1__ STRING ;
 
-/* Variables and functions */
- int _snprintf (char*,int,char*,TYPE_1__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok_int (int,int) ; 
- int /*<<< orphan*/  ok_str (char*,char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,TYPE_1__*) ; 
+
+ int _snprintf (char*,int,char*,TYPE_1__*,int,int ) ;
+ int ok_int (int,int) ;
+ int ok_str (char*,char*) ;
+ int sprintf (char*,char*,TYPE_1__*) ;
 
 void
 test_Z()

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_traversal_info_t ;
-typedef  int /*<<< orphan*/  svn_wc_status_func3_t ;
-typedef  int /*<<< orphan*/  svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_wc_adm_access_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_delta_editor_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct status4_wrapper_baton {char const* anchor_abspath; int /*<<< orphan*/ * anchor_relpath; int /*<<< orphan*/ * wc_ctx; void* old_baton; int /*<<< orphan*/  old_func; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- struct status4_wrapper_baton* apr_palloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  gather_traversal_info (int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  status4_wrapper_func ; 
- int /*<<< orphan*/  svn_depth_unknown ; 
- int /*<<< orphan*/  svn_dirent_is_absolute (void*) ; 
- char* svn_dirent_join (char const*,char const*,int /*<<< orphan*/ *) ; 
- char* svn_wc__adm_access_abspath (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc__adm_get_db (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__context_create_with_db (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- void* svn_wc_adm_access_path (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_get_status_editor5 (int /*<<< orphan*/  const**,void**,void**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,struct status4_wrapper_baton*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_wc_traversal_info_t ;
+typedef int svn_wc_status_func3_t ;
+typedef int svn_wc_context_t ;
+typedef int svn_wc_adm_access_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_revnum_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef int svn_delta_editor_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_boolean_t ;
+struct status4_wrapper_baton {char const* anchor_abspath; int * anchor_relpath; int * wc_ctx; void* old_baton; int old_func; } ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ struct status4_wrapper_baton* apr_palloc (int *,int) ;
+ int gather_traversal_info (int *,char const*,char const*,int ,int *,int ,int ,int *) ;
+ int status4_wrapper_func ;
+ int svn_depth_unknown ;
+ int svn_dirent_is_absolute (void*) ;
+ char* svn_dirent_join (char const*,char const*,int *) ;
+ char* svn_wc__adm_access_abspath (int *) ;
+ int * svn_wc__adm_get_db (int *) ;
+ int svn_wc__context_create_with_db (int **,int *,int *,int *) ;
+ void* svn_wc_adm_access_path (int *) ;
+ int svn_wc_get_status_editor5 (int const**,void**,void**,int *,int *,char const*,char const*,int ,int ,int ,int,int ,int const*,int ,struct status4_wrapper_baton*,int ,void*,int *,int *) ;
 
 svn_error_t *
 svn_wc_get_status_editor4(const svn_delta_editor_t **editor,
@@ -70,7 +70,7 @@ svn_wc_get_status_editor4(const svn_delta_editor_t **editor,
 
   wc_db = svn_wc__adm_get_db(anchor);
 
-  SVN_ERR(svn_wc__context_create_with_db(&wc_ctx, NULL /* config */,
+  SVN_ERR(svn_wc__context_create_with_db(&wc_ctx, ((void*)0) ,
                                          wc_db, pool));
 
   swb->wc_ctx = wc_ctx;
@@ -84,20 +84,20 @@ svn_wc_get_status_editor4(const svn_delta_editor_t **editor,
     }
   else
     {
-      swb->anchor_abspath = NULL;
-      swb->anchor_relpath = NULL;
+      swb->anchor_abspath = ((void*)0);
+      swb->anchor_relpath = ((void*)0);
     }
 
-  /* Before subversion 1.7 status always handled depth as sticky. 1.7 made
-     the output of svn status by default match the result of what would be
-     updated by a similar svn update. (Following the documentation) */
+
+
+
 
   SVN_ERR(svn_wc_get_status_editor5(editor, edit_baton, set_locks_baton,
                                     edit_revision, wc_ctx, anchor_abspath,
                                     target, depth, get_all,
                                     no_ignore,
-                                    (depth != svn_depth_unknown) /*as_sticky*/,
-                                    FALSE /* server_performs_filtering */,
+                                    (depth != svn_depth_unknown) ,
+                                    FALSE ,
                                     ignore_patterns,
                                     status4_wrapper_func, swb,
                                     cancel_func, cancel_baton,
@@ -118,7 +118,7 @@ svn_wc_get_status_editor4(const svn_delta_editor_t **editor,
                                     pool));
     }
 
-  /* We can't destroy wc_ctx here, because the editor needs it while it's
-     driven. */
+
+
   return SVN_NO_ERROR;
 }

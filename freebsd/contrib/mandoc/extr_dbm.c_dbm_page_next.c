@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dbm_res {int member_0; int /*<<< orphan*/  member_1; } ;
 
-/* Variables and functions */
-#define  ITER_ARCH 130 
-#define  ITER_MACRO 129 
-#define  ITER_NONE 128 
- int iteration ; 
- struct dbm_res page_byarch (int /*<<< orphan*/ *) ; 
- struct dbm_res page_bymacro (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- struct dbm_res page_bytitle (int,int /*<<< orphan*/ *) ; 
+
+
+
+struct dbm_res {int member_0; int member_1; } ;
+
+
+
+
+
+ int iteration ;
+ struct dbm_res page_byarch (int *) ;
+ struct dbm_res page_bymacro (int ,int *) ;
+ struct dbm_res page_bytitle (int,int *) ;
 
 struct dbm_res
 dbm_page_next(void)
 {
-	struct dbm_res			 res = {-1, 0};
+ struct dbm_res res = {-1, 0};
 
-	switch(iteration) {
-	case ITER_NONE:
-		return res;
-	case ITER_ARCH:
-		return page_byarch(NULL);
-	case ITER_MACRO:
-		return page_bymacro(0, NULL);
-	default:
-		return page_bytitle(iteration, NULL);
-	}
+ switch(iteration) {
+ case 128:
+  return res;
+ case 130:
+  return page_byarch(((void*)0));
+ case 129:
+  return page_bymacro(0, ((void*)0));
+ default:
+  return page_bytitle(iteration, ((void*)0));
+ }
 }

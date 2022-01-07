@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int png_uint_16 ;
-typedef  int png_byte ;
 
-/* Variables and functions */
- unsigned int PNG_sRGB_FROM_LINEAR (unsigned int) ; 
- int abs (unsigned int) ; 
- int /*<<< orphan*/  exit (int) ; 
- double finvsRGB (unsigned int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- double fsRGB (int) ; 
- int invsRGB (unsigned int) ; 
- unsigned int max_input ; 
- unsigned int nearbyint (int) ; 
- int* png_sRGB_base ; 
- int* png_sRGB_delta ; 
- int* png_sRGB_table ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int sRGB (unsigned int) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+
+
+typedef int png_uint_16 ;
+typedef int png_byte ;
+
+
+ unsigned int PNG_sRGB_FROM_LINEAR (unsigned int) ;
+ int abs (unsigned int) ;
+ int exit (int) ;
+ double finvsRGB (unsigned int) ;
+ int fprintf (int ,char*,...) ;
+ double fsRGB (int) ;
+ int invsRGB (unsigned int) ;
+ unsigned int max_input ;
+ unsigned int nearbyint (int) ;
+ int* png_sRGB_base ;
+ int* png_sRGB_delta ;
+ int* png_sRGB_table ;
+ int printf (char*,...) ;
+ int sRGB (unsigned int) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
 
 int
 main(int argc, char **argv)
@@ -49,15 +49,15 @@ main(int argc, char **argv)
    if (argc > 1)
       test_only = strcmp("--test", argv[1]) == 0;
 
-   /* Initialize the encoding table first. */
+
    for (i=0; i<256; ++i)
    {
       png_sRGB_table[i] = invsRGB(i);
    }
 
-   /* Now work out the decoding tables (this is where the error comes in because
-    * there are 512 set points and 512 straight lines between them.)
-    */
+
+
+
    for (;;)
    {
       if (ec_lo == 0)
@@ -81,7 +81,7 @@ main(int argc, char **argv)
          exit(1);
       }
 
-      /* Calculate the table using the current 'adjust' */
+
       for (i=0; i<=511; ++i)
       {
          double lo = 255 * sRGB(i << 15);
@@ -107,7 +107,7 @@ main(int argc, char **argv)
          png_sRGB_delta[i] = calc;
       }
 
-      /* Check the 16-bit linear values alone: */
+
       error_count16 = 0;
       for (i16=0; i16 <= 65535; ++i16)
       {
@@ -119,7 +119,7 @@ main(int argc, char **argv)
             ++error_count16;
       }
 
-      /* Now try changing the adjustment. */
+
       if (ec_lo == 0)
          ec_lo = error_count16;
 
@@ -165,9 +165,9 @@ main(int argc, char **argv)
       }
    }
 
-   /* For each entry in the table try to adjust it to minimize the error count
-    * in that entry.  Each entry corresponds to 128 input values.
-    */
+
+
+
    for (ibase=0; ibase<65536; ibase+=128)
    {
       png_uint_16 base = png_sRGB_base[ibase >> 7], trybase = base, ob=base;
@@ -179,7 +179,7 @@ main(int argc, char **argv)
          png_sRGB_base[ibase >> 7] = trybase;
          png_sRGB_delta[ibase >> 7] = trydelta;
 
-         /* Check the 16-bit linear values alone: */
+
          error_count16 = 0;
          for (i16=ibase; i16 < ibase+128; ++i16)
          {
@@ -197,7 +197,7 @@ main(int argc, char **argv)
          if (ecbase == 0)
          {
             eco = ecbase = error_count16;
-            ++trybase; /* First test */
+            ++trybase;
          }
 
          else if (error_count16 < ecbase)
@@ -242,7 +242,7 @@ main(int argc, char **argv)
             else if (trydelta > delta)
                trydelta = delta-1;
             else if (trydelta < delta)
-               break; /* end of tests */
+               break;
          }
       }
 
@@ -258,7 +258,7 @@ main(int argc, char **argv)
             ecbase);
    }
 
-   /* Only do the full (slow) test at the end: */
+
    min_error = -.4999;
    max_error = .4999;
    error_count = 0;
@@ -288,9 +288,9 @@ main(int argc, char **argv)
       }
    }
 
-   /* Re-check the 16-bit cases too, including the warning if there is an error
-    * bigger than 1.
-    */
+
+
+
    error_count16 = 0;
    max_error16 = 0;
    min_error16 = 0;
@@ -318,7 +318,7 @@ main(int argc, char **argv)
       }
    }
 
-   /* Check the round trip for each 8-bit sRGB value. */
+
    for (i16=0; i16 <= 255; ++i16)
    {
       unsigned int i = 255 * png_sRGB_table[i16];

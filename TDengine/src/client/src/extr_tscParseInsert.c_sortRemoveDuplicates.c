@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int32_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int int32_t ;
 struct TYPE_5__ {int numOfRows; char* payLoad; } ;
 struct TYPE_4__ {int rowSize; int size; scalar_t__ tsSource; int ordered; scalar_t__ pData; } ;
-typedef  scalar_t__ TSKEY ;
-typedef  TYPE_1__ STableDataBlocks ;
-typedef  TYPE_2__ SShellSubmitBlock ;
+typedef scalar_t__ TSKEY ;
+typedef TYPE_1__ STableDataBlocks ;
+typedef TYPE_2__ SShellSubmitBlock ;
 
-/* Variables and functions */
- scalar_t__ TSDB_USE_SERVER_TS ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memmove (char*,char*,int) ; 
- int /*<<< orphan*/  qsort (char*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rowDataCompar ; 
+
+ scalar_t__ TSDB_USE_SERVER_TS ;
+ int assert (int) ;
+ int memmove (char*,char*,int) ;
+ int qsort (char*,int,int,int ) ;
+ int rowDataCompar ;
 
 void sortRemoveDuplicates(STableDataBlocks *dataBuf) {
   SShellSubmitBlock *pBlocks = (SShellSubmitBlock *)dataBuf->pData;
 
-  // size is less than the total size, since duplicated rows may be removed yet.
+
   assert(pBlocks->numOfRows * dataBuf->rowSize + sizeof(SShellSubmitBlock) == dataBuf->size);
 
-  // if use server time, this block must be ordered
+
   if (dataBuf->tsSource == TSDB_USE_SERVER_TS) {
     assert(dataBuf->ordered);
   }
@@ -61,7 +61,7 @@ void sortRemoveDuplicates(STableDataBlocks *dataBuf) {
       ++j;
     }
 
-    dataBuf->ordered = true;
+    dataBuf->ordered = 1;
 
     pBlocks->numOfRows = i + 1;
     dataBuf->size = sizeof(SShellSubmitBlock) + dataBuf->rowSize * pBlocks->numOfRows;

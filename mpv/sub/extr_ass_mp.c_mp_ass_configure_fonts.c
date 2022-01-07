@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct osd_style_opts {int font_provider; int /*<<< orphan*/  font; } ;
+
+
+
+
+struct osd_style_opts {int font_provider; int font; } ;
 struct mpv_global {int dummy; } ;
 struct mp_log {int dummy; } ;
-typedef  int /*<<< orphan*/  ASS_Renderer ;
+typedef int ASS_Renderer ;
 
-/* Variables and functions */
- int ASS_FONTPROVIDER_AUTODETECT ; 
- int ASS_FONTPROVIDER_FONTCONFIG ; 
- int ASS_FONTPROVIDER_NONE ; 
- int /*<<< orphan*/  ass_set_fonts (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int,char*,int) ; 
- char* mp_find_config_file (void*,struct mpv_global*,char*) ; 
- int /*<<< orphan*/  mp_path_exists (char*) ; 
- int /*<<< orphan*/  mp_verbose (struct mp_log*,char*) ; 
- int /*<<< orphan*/  talloc_free (void*) ; 
- void* talloc_new (int /*<<< orphan*/ *) ; 
+
+ int ASS_FONTPROVIDER_AUTODETECT ;
+ int ASS_FONTPROVIDER_FONTCONFIG ;
+ int ASS_FONTPROVIDER_NONE ;
+ int ass_set_fonts (int *,char*,int ,int,char*,int) ;
+ char* mp_find_config_file (void*,struct mpv_global*,char*) ;
+ int mp_path_exists (char*) ;
+ int mp_verbose (struct mp_log*,char*) ;
+ int talloc_free (void*) ;
+ void* talloc_new (int *) ;
 
 void mp_ass_configure_fonts(ASS_Renderer *priv, struct osd_style_opts *opts,
                             struct mpv_global *global, struct mp_log *log)
 {
-    void *tmp = talloc_new(NULL);
+    void *tmp = talloc_new(((void*)0));
     char *default_font = mp_find_config_file(tmp, global, "subfont.ttf");
-    char *config       = mp_find_config_file(tmp, global, "fonts.conf");
+    char *config = mp_find_config_file(tmp, global, "fonts.conf");
 
     if (default_font && !mp_path_exists(default_font))
-        default_font = NULL;
+        default_font = ((void*)0);
 
     int font_provider = ASS_FONTPROVIDER_AUTODETECT;
     if (opts->font_provider == 1)

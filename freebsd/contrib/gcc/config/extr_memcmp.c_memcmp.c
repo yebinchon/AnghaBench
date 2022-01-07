@@ -1,18 +1,9 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 int
 memcmp (const void *str1, const void *str2, size_t count)
 {
@@ -22,7 +13,7 @@ memcmp (const void *str1, const void *str2, size_t count)
   while (count-- > 0)
     {
       if (*s1++ != *s2++)
-	  return s1[-1] < s2[-1] ? -1 : 1;
+   return s1[-1] < s2[-1] ? -1 : 1;
     }
   return 0;
 }

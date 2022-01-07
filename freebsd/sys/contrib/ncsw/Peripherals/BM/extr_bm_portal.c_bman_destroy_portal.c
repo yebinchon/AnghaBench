@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int flags; int /*<<< orphan*/  p_BmPortalLow; int /*<<< orphan*/  irq; } ;
-typedef  TYPE_1__ t_BmPortal ;
 
-/* Variables and functions */
- int BMAN_PORTAL_FLAG_IRQ ; 
- int /*<<< orphan*/  BM_RCR_RING ; 
- int /*<<< orphan*/  BmUpdate (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XX_DisableIntr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XX_Free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XX_FreeIntr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bm_mc_finish (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bm_rcr_finish (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int flags; int p_BmPortalLow; int irq; } ;
+typedef TYPE_1__ t_BmPortal ;
+
+
+ int BMAN_PORTAL_FLAG_IRQ ;
+ int BM_RCR_RING ;
+ int BmUpdate (TYPE_1__*,int ) ;
+ int XX_DisableIntr (int ) ;
+ int XX_Free (int ) ;
+ int XX_FreeIntr (int ) ;
+ int bm_mc_finish (int ) ;
+ int bm_rcr_finish (int ) ;
 
 __attribute__((used)) static void bman_destroy_portal(t_BmPortal* p_BmPortal)
 {

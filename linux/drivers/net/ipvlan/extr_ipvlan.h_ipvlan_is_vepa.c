@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ipvl_port {int flags; } ;
 
-/* Variables and functions */
- int IPVLAN_F_VEPA ; 
+
+ int IPVLAN_F_VEPA ;
 
 __attribute__((used)) static inline bool ipvlan_is_vepa(const struct ipvl_port *port)
 {
-	return !!(port->flags & IPVLAN_F_VEPA);
+ return !!(port->flags & IPVLAN_F_VEPA);
 }

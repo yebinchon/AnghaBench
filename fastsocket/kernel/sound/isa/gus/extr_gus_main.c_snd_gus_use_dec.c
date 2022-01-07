@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct snd_gus_card {TYPE_1__* card; } ;
-struct TYPE_2__ {int /*<<< orphan*/  module; } ;
+struct TYPE_2__ {int module; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  module_put (int /*<<< orphan*/ ) ; 
+
+ int module_put (int ) ;
 
 void snd_gus_use_dec(struct snd_gus_card * gus)
 {
-	module_put(gus->card->module);
+ module_put(gus->card->module);
 }

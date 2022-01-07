@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hda_codec {int /*<<< orphan*/  patch_ops; struct ad198x_spec* spec; } ;
-struct ad198x_spec {int /*<<< orphan*/  gen; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  ad198x_auto_patch_ops ; 
- struct ad198x_spec* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snd_hda_gen_spec_init (int /*<<< orphan*/ *) ; 
+
+
+
+struct hda_codec {int patch_ops; struct ad198x_spec* spec; } ;
+struct ad198x_spec {int gen; } ;
+
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int ad198x_auto_patch_ops ;
+ struct ad198x_spec* kzalloc (int,int ) ;
+ int snd_hda_gen_spec_init (int *) ;
 
 __attribute__((used)) static int alloc_ad_spec(struct hda_codec *codec)
 {
-	struct ad198x_spec *spec;
+ struct ad198x_spec *spec;
 
-	spec = kzalloc(sizeof(*spec), GFP_KERNEL);
-	if (!spec)
-		return -ENOMEM;
-	codec->spec = spec;
-	snd_hda_gen_spec_init(&spec->gen);
-	codec->patch_ops = ad198x_auto_patch_ops;
-	return 0;
+ spec = kzalloc(sizeof(*spec), GFP_KERNEL);
+ if (!spec)
+  return -ENOMEM;
+ codec->spec = spec;
+ snd_hda_gen_spec_init(&spec->gen);
+ codec->patch_ops = ad198x_auto_patch_ops;
+ return 0;
 }

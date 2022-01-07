@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp_buf ;
 
-/* Variables and functions */
- int MAXPATHLEN ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- char* getawd (char*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- char* transform_dir (char*) ; 
+
+
+
+typedef int tmp_buf ;
+
+
+ int MAXPATHLEN ;
+ int exit (int) ;
+ int fprintf (int ,char*,char*) ;
+ char* getawd (char*,int) ;
+ int stderr ;
+ int stdout ;
+ char* transform_dir (char*) ;
 
 int
 main(int argc, char *argv[])
@@ -28,7 +28,7 @@ main(int argc, char *argv[])
 
   if (argc == 1) {
     wd = getawd(tmp_buf, sizeof(tmp_buf));
-    if (wd == NULL) {
+    if (wd == ((void*)0)) {
       fprintf(stderr, "pawd: %s\n", tmp_buf);
       exit(1);
     } else {

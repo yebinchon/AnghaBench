@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  int /*<<< orphan*/ * PHANDLE ;
-typedef  int /*<<< orphan*/  OBJECT_ATTRIBUTES ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  IO_STATUS_BLOCK ;
-typedef  int ACCESS_MASK ;
 
-/* Variables and functions */
- int FILE_SHARE_READ ; 
- int FILE_SHARE_WRITE ; 
- int /*<<< orphan*/  FILE_SYNCHRONOUS_IO_NONALERT ; 
- int /*<<< orphan*/  INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  InitializeObjectAttributes (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtOpenFile (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OBJ_CASE_INSENSITIVE ; 
- int /*<<< orphan*/  RtlInitUnicodeString (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int SYNCHRONIZE ; 
- int /*<<< orphan*/  TcpFileName ; 
+
+
+
+typedef int UNICODE_STRING ;
+typedef int * PHANDLE ;
+typedef int OBJECT_ATTRIBUTES ;
+typedef int NTSTATUS ;
+typedef int IO_STATUS_BLOCK ;
+typedef int ACCESS_MASK ;
+
+
+ int FILE_SHARE_READ ;
+ int FILE_SHARE_WRITE ;
+ int FILE_SYNCHRONOUS_IO_NONALERT ;
+ int INVALID_HANDLE_VALUE ;
+ int InitializeObjectAttributes (int *,int *,int ,int *,int *) ;
+ int NT_SUCCESS (int ) ;
+ int NtOpenFile (int *,int,int *,int *,int,int ) ;
+ int OBJ_CASE_INSENSITIVE ;
+ int RtlInitUnicodeString (int *,int ) ;
+ int SYNCHRONIZE ;
+ int TcpFileName ;
 
 NTSTATUS openTcpFile(PHANDLE tcpFile, ACCESS_MASK DesiredAccess)
 {
@@ -42,8 +42,8 @@ NTSTATUS openTcpFile(PHANDLE tcpFile, ACCESS_MASK DesiredAccess)
     InitializeObjectAttributes( &objectAttributes,
                                 &fileName,
                                 OBJ_CASE_INSENSITIVE,
-                                NULL,
-                                NULL );
+                                ((void*)0),
+                                ((void*)0) );
 
     status = NtOpenFile( tcpFile,
                          DesiredAccess | SYNCHRONIZE,
@@ -52,8 +52,8 @@ NTSTATUS openTcpFile(PHANDLE tcpFile, ACCESS_MASK DesiredAccess)
                          FILE_SHARE_READ | FILE_SHARE_WRITE,
                          FILE_SYNCHRONOUS_IO_NONALERT);
 
-    /* String does not need to be freed: it points to the constant
-     * string we provided */
+
+
 
     if (!NT_SUCCESS(status))
         *tcpFile = INVALID_HANDLE_VALUE;

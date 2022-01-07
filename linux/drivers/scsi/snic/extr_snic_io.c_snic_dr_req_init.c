@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ulong ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ ulong ;
 struct snic_req_info {struct snic_host_req* dr_req; } ;
 struct TYPE_2__ {scalar_t__ init_ctx; } ;
 struct snic_host_req {TYPE_1__ hdr; } ;
-struct snic {int /*<<< orphan*/  shost; int /*<<< orphan*/ * req_pool; } ;
+struct snic {int shost; int * req_pool; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_ATOMIC ; 
- int /*<<< orphan*/  SNIC_BUG_ON (int) ; 
- int /*<<< orphan*/  SNIC_HOST_ERR (int /*<<< orphan*/ ,char*) ; 
- size_t SNIC_REQ_TM_CACHE ; 
- int /*<<< orphan*/  WARN_ON_ONCE (int) ; 
- struct snic_host_req* mempool_alloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct snic_host_req*,int /*<<< orphan*/ ,int) ; 
+
+ int GFP_ATOMIC ;
+ int SNIC_BUG_ON (int) ;
+ int SNIC_HOST_ERR (int ,char*) ;
+ size_t SNIC_REQ_TM_CACHE ;
+ int WARN_ON_ONCE (int) ;
+ struct snic_host_req* mempool_alloc (int ,int ) ;
+ int memset (struct snic_host_req*,int ,int) ;
 
 struct snic_host_req *
 snic_dr_req_init(struct snic *snic, struct snic_req_info *rqi)
 {
-	struct snic_host_req *req = NULL;
+ struct snic_host_req *req = ((void*)0);
 
-	SNIC_BUG_ON(!rqi);
+ SNIC_BUG_ON(!rqi);
 
-	req = mempool_alloc(snic->req_pool[SNIC_REQ_TM_CACHE], GFP_ATOMIC);
-	if (!req) {
-		SNIC_HOST_ERR(snic->shost, "dr:Failed to alloc tm req.\n");
-		WARN_ON_ONCE(1);
+ req = mempool_alloc(snic->req_pool[SNIC_REQ_TM_CACHE], GFP_ATOMIC);
+ if (!req) {
+  SNIC_HOST_ERR(snic->shost, "dr:Failed to alloc tm req.\n");
+  WARN_ON_ONCE(1);
 
-		return NULL;
-	}
+  return ((void*)0);
+ }
 
-	SNIC_BUG_ON(rqi->dr_req != NULL);
-	rqi->dr_req = req;
-	memset(req, 0, sizeof(struct snic_host_req));
-	/* pre initialization of init_ctx to support req_to_rqi */
-	req->hdr.init_ctx = (ulong) rqi;
+ SNIC_BUG_ON(rqi->dr_req != ((void*)0));
+ rqi->dr_req = req;
+ memset(req, 0, sizeof(struct snic_host_req));
 
-	return req;
+ req->hdr.init_ctx = (ulong) rqi;
+
+ return req;
 }

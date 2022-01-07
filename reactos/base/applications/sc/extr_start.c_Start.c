@@ -1,65 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * SC_HANDLE ;
-typedef  int /*<<< orphan*/ * LPSERVICE_STATUS_PROCESS ;
-typedef  int /*<<< orphan*/  LPCTSTR ;
-typedef  scalar_t__ INT ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseServiceHandle (int /*<<< orphan*/ *) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * OpenSCManager (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * OpenService (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  PrintService (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/ * QueryService (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReportLastError () ; 
- int /*<<< orphan*/  SC_MANAGER_CONNECT ; 
- int SERVICE_QUERY_STATUS ; 
- int SERVICE_START ; 
- int /*<<< orphan*/  StartService (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _tprintf (int /*<<< orphan*/ ,...) ; 
+
+
+
+typedef int * SC_HANDLE ;
+typedef int * LPSERVICE_STATUS_PROCESS ;
+typedef int LPCTSTR ;
+typedef scalar_t__ INT ;
+typedef scalar_t__ BOOL ;
+
+
+ int CloseServiceHandle (int *) ;
+ scalar_t__ FALSE ;
+ int GetLastError () ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,int *) ;
+ int * OpenSCManager (int *,int *,int ) ;
+ int * OpenService (int *,int ,int) ;
+ int PrintService (int ,int *,int *,scalar_t__) ;
+ int * QueryService (int ) ;
+ int ReportLastError () ;
+ int SC_MANAGER_CONNECT ;
+ int SERVICE_QUERY_STATUS ;
+ int SERVICE_START ;
+ int StartService (int *,scalar_t__,int *) ;
+ scalar_t__ TRUE ;
+ int _T (char*) ;
+ int _tprintf (int ,...) ;
 
 BOOL Start(LPCTSTR ServiceName, LPCTSTR *ServiceArgs, INT ArgCount)
 {
-    SC_HANDLE hSCManager = NULL;
-    SC_HANDLE hSc = NULL;
-    LPSERVICE_STATUS_PROCESS pServiceInfo = NULL;
+    SC_HANDLE hSCManager = ((void*)0);
+    SC_HANDLE hSc = ((void*)0);
+    LPSERVICE_STATUS_PROCESS pServiceInfo = ((void*)0);
     BOOL bResult = TRUE;
-
-#ifdef SCDBG
-    LPCTSTR *TmpArgs = ServiceArgs;
-    INT TmpCnt = ArgCount;
-    _tprintf(_T("service to control - %s\n"), ServiceName);
-    _tprintf(_T("Arguments:\n"));
-    while (TmpCnt)
-    {
-        _tprintf(_T("  %s\n"), *TmpArgs);
-        TmpArgs++;
-        TmpCnt--;
-    }
-    _tprintf(_T("\n"));
-#endif /* SCDBG */
-
-    hSCManager = OpenSCManager(NULL,
-                               NULL,
+    hSCManager = OpenSCManager(((void*)0),
+                               ((void*)0),
                                SC_MANAGER_CONNECT);
-    if (hSCManager == NULL)
+    if (hSCManager == ((void*)0))
     {
         _tprintf(_T("[SC] OpenSCManager FAILED %lu:\n\n"), GetLastError());
         bResult = FALSE;
@@ -69,7 +54,7 @@ BOOL Start(LPCTSTR ServiceName, LPCTSTR *ServiceArgs, INT ArgCount)
     hSc = OpenService(hSCManager,
                       ServiceName,
                       SERVICE_START | SERVICE_QUERY_STATUS);
-    if (hSc == NULL)
+    if (hSc == ((void*)0))
     {
         _tprintf(_T("[SC] OpenService FAILED %lu:\n\n"), GetLastError());
         bResult = FALSE;
@@ -78,7 +63,7 @@ BOOL Start(LPCTSTR ServiceName, LPCTSTR *ServiceArgs, INT ArgCount)
 
     if (!ArgCount)
     {
-        ServiceArgs = NULL;
+        ServiceArgs = ((void*)0);
     }
 
     if (!StartService(hSc,
@@ -91,10 +76,10 @@ BOOL Start(LPCTSTR ServiceName, LPCTSTR *ServiceArgs, INT ArgCount)
     }
 
     pServiceInfo = QueryService(ServiceName);
-    if (pServiceInfo != NULL)
+    if (pServiceInfo != ((void*)0))
     {
         PrintService(ServiceName,
-                     NULL,
+                     ((void*)0),
                      pServiceInfo,
                      TRUE);
 

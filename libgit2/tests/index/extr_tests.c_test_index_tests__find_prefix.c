@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  path; } ;
-typedef  TYPE_1__ git_index_entry ;
-typedef  int /*<<< orphan*/  git_index ;
 
-/* Variables and functions */
- scalar_t__ GIT_ENOTFOUND ; 
- int /*<<< orphan*/  TEST_INDEX_PATH ; 
- int /*<<< orphan*/  cl_assert (int) ; 
- int /*<<< orphan*/  cl_git_pass (scalar_t__) ; 
- scalar_t__ git__strcmp (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ git_index_find_prefix (size_t*,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  git_index_free (int /*<<< orphan*/ *) ; 
- TYPE_1__* git_index_get_byindex (int /*<<< orphan*/ *,size_t) ; 
- scalar_t__ git_index_open (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int path; } ;
+typedef TYPE_1__ git_index_entry ;
+typedef int git_index ;
+
+
+ scalar_t__ GIT_ENOTFOUND ;
+ int TEST_INDEX_PATH ;
+ int cl_assert (int) ;
+ int cl_git_pass (scalar_t__) ;
+ scalar_t__ git__strcmp (int ,char*) ;
+ scalar_t__ git_index_find_prefix (size_t*,int *,char*) ;
+ int git_index_free (int *) ;
+ TYPE_1__* git_index_get_byindex (int *,size_t) ;
+ scalar_t__ git_index_open (int **,int ) ;
 
 void test_index_tests__find_prefix(void)
 {
@@ -42,7 +42,7 @@ void test_index_tests__find_prefix(void)
    entry = git_index_get_byindex(index, pos);
    cl_assert(git__strcmp(entry->path, "src/commit.c") == 0);
 
-   cl_assert(GIT_ENOTFOUND == git_index_find_prefix(NULL, index, "blah"));
+   cl_assert(GIT_ENOTFOUND == git_index_find_prefix(((void*)0), index, "blah"));
 
    git_index_free(index);
 }

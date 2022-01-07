@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nstemplate ;
-typedef  int /*<<< orphan*/  nsIPrintSettings ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  SYSTEMTIME ;
-typedef  scalar_t__ PRUnichar ;
-typedef  char* LPCWSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetDateFormatW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,int) ; 
- int /*<<< orphan*/  GetLocalTime (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LOCALE_SYSTEM_DEFAULT ; 
- int /*<<< orphan*/  set_head_text (int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  strlenW (scalar_t__*) ; 
+
+
+
+typedef int nstemplate ;
+typedef int nsIPrintSettings ;
+typedef int WCHAR ;
+typedef int SYSTEMTIME ;
+typedef scalar_t__ PRUnichar ;
+typedef char* LPCWSTR ;
+typedef int BOOL ;
+
+
+ int GetDateFormatW (int ,int ,int *,int *,scalar_t__*,int) ;
+ int GetLocalTime (int *) ;
+ int LOCALE_SYSTEM_DEFAULT ;
+ int set_head_text (int *,scalar_t__*,int ,int) ;
+ int strlenW (scalar_t__*) ;
 
 __attribute__((used)) static void set_print_template(nsIPrintSettings *settings, LPCWSTR template, BOOL head)
 {
-    PRUnichar nstemplate[200]; /* FIXME: Use dynamic allocation */
+    PRUnichar nstemplate[200];
     PRUnichar *p = nstemplate;
     LPCWSTR ptr=template;
     int pos=0;
@@ -44,29 +44,29 @@ __attribute__((used)) static void set_print_template(nsIPrintSettings *settings,
             *p++ = '&';
             ptr++;
             break;
-        case 'b': /* change align */
+        case 'b':
             ptr++;
             *p = 0;
             set_head_text(settings, nstemplate, head, pos);
             p = nstemplate;
             pos++;
             break;
-        case 'd': { /* short date */
+        case 'd': {
             SYSTEMTIME systime;
             GetLocalTime(&systime);
-            GetDateFormatW(LOCALE_SYSTEM_DEFAULT, 0, &systime, NULL, p,
+            GetDateFormatW(LOCALE_SYSTEM_DEFAULT, 0, &systime, ((void*)0), p,
                     sizeof(nstemplate)-(p-nstemplate)*sizeof(WCHAR));
             p += strlenW(p);
             ptr++;
             break;
         }
-        case 'p': /* page number */
+        case 'p':
             *p++ = '&';
             *p++ = 'P';
             ptr++;
             break;
-        case 'P': /* page count */
-            *p++ = '?'; /* FIXME */
+        case 'P':
+            *p++ = '?';
             ptr++;
             break;
         case 'u':
@@ -75,7 +75,7 @@ __attribute__((used)) static void set_print_template(nsIPrintSettings *settings,
             ptr++;
             break;
         case 'w':
-            /* FIXME: set window title */
+
             ptr++;
             break;
         default:

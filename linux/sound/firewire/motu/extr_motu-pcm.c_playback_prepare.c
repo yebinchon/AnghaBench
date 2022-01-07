@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct snd_pcm_substream {struct snd_motu* private_data; } ;
-struct snd_motu {int /*<<< orphan*/  rx_stream; int /*<<< orphan*/  mutex; } ;
+struct snd_motu {int rx_stream; int mutex; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  amdtp_stream_pcm_prepare (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int snd_motu_stream_start_duplex (struct snd_motu*) ; 
+
+ int amdtp_stream_pcm_prepare (int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int snd_motu_stream_start_duplex (struct snd_motu*) ;
 
 __attribute__((used)) static int playback_prepare(struct snd_pcm_substream *substream)
 {
-	struct snd_motu *motu = substream->private_data;
-	int err;
+ struct snd_motu *motu = substream->private_data;
+ int err;
 
-	mutex_lock(&motu->mutex);
-	err = snd_motu_stream_start_duplex(motu);
-	mutex_unlock(&motu->mutex);
-	if (err >= 0)
-		amdtp_stream_pcm_prepare(&motu->rx_stream);
+ mutex_lock(&motu->mutex);
+ err = snd_motu_stream_start_duplex(motu);
+ mutex_unlock(&motu->mutex);
+ if (err >= 0)
+  amdtp_stream_pcm_prepare(&motu->rx_stream);
 
-	return err;
+ return err;
 }

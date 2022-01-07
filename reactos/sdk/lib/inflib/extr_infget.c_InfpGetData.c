@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {TYPE_1__* FirstField; int /*<<< orphan*/ * Key; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * Data; } ;
-typedef  int /*<<< orphan*/ * PWCHAR ;
-typedef  int /*<<< orphan*/ * PINFCONTEXT ;
-typedef  TYPE_2__* PINFCACHELINE ;
-typedef  int /*<<< orphan*/  INFSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*) ; 
- int /*<<< orphan*/  INF_STATUS_INVALID_PARAMETER ; 
- int /*<<< orphan*/  INF_STATUS_SUCCESS ; 
- TYPE_2__* InfpGetLineForContext (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {TYPE_1__* FirstField; int * Key; } ;
+struct TYPE_4__ {int * Data; } ;
+typedef int * PWCHAR ;
+typedef int * PINFCONTEXT ;
+typedef TYPE_2__* PINFCACHELINE ;
+typedef int INFSTATUS ;
+
+
+ int DPRINT (char*) ;
+ int INF_STATUS_INVALID_PARAMETER ;
+ int INF_STATUS_SUCCESS ;
+ TYPE_2__* InfpGetLineForContext (int *) ;
 
 INFSTATUS
 InfpGetData(PINFCONTEXT Context,
@@ -32,21 +32,21 @@ InfpGetData(PINFCONTEXT Context,
 {
   PINFCACHELINE CacheKey;
 
-  if (Context == NULL || Data == NULL)
+  if (Context == ((void*)0) || Data == ((void*)0))
     {
       DPRINT("Invalid parameter\n");
       return INF_STATUS_INVALID_PARAMETER;
     }
 
   CacheKey = InfpGetLineForContext(Context);
-  if (Key != NULL)
+  if (Key != ((void*)0))
     *Key = CacheKey->Key;
 
-  if (Data != NULL)
+  if (Data != ((void*)0))
     {
-      if (CacheKey->FirstField == NULL)
+      if (CacheKey->FirstField == ((void*)0))
         {
-          *Data = NULL;
+          *Data = ((void*)0);
         }
       else
         {

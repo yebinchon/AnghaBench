@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct _reent {int _errno; } ;
-struct TYPE_4__ {TYPE_1__* dev; int /*<<< orphan*/  fd; } ;
-typedef  TYPE_2__ fs_dev_file_state_t ;
-struct TYPE_3__ {int /*<<< orphan*/  pMutex; int /*<<< orphan*/  fsaFd; } ;
+struct TYPE_4__ {TYPE_1__* dev; int fd; } ;
+typedef TYPE_2__ fs_dev_file_state_t ;
+struct TYPE_3__ {int pMutex; int fsaFd; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int ENODEV ; 
- int IOSUHAX_FSA_CloseFile (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OSLockMutex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OSUnlockMutex (int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ int ENODEV ;
+ int IOSUHAX_FSA_CloseFile (int ,int ) ;
+ int OSLockMutex (int ) ;
+ int OSUnlockMutex (int ) ;
 
 __attribute__((used)) static int fs_dev_close_r (struct _reent *r, void *fd)
 {

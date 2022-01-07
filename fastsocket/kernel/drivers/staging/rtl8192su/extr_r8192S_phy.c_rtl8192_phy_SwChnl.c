@@ -1,113 +1,101 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-struct r8192_priv {int SwChnlInProgress; int chan; int /*<<< orphan*/  CurrentChannel; scalar_t__ up; scalar_t__ SwChnlStep; scalar_t__ SwChnlStage; TYPE_1__* ieee80211; scalar_t__ SetBWModeInProgress; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct r8192_priv {int SwChnlInProgress; int chan; int CurrentChannel; scalar_t__ up; scalar_t__ SwChnlStep; scalar_t__ SwChnlStage; TYPE_1__* ieee80211; scalar_t__ SetBWModeInProgress; } ;
 struct net_device {int dummy; } ;
 struct TYPE_2__ {int mode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMP_ERR ; 
- int /*<<< orphan*/  COMP_SCAN ; 
- int /*<<< orphan*/  RT_TRACE (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  SwChnlCallback8192SUsbWorkItem (struct net_device*) ; 
- int TRUE ; 
-#define  WIRELESS_MODE_A 132 
-#define  WIRELESS_MODE_B 131 
-#define  WIRELESS_MODE_G 130 
-#define  WIRELESS_MODE_N_24G 129 
-#define  WIRELESS_MODE_N_5G 128 
- scalar_t__ bResult ; 
- struct r8192_priv* ieee80211_priv (struct net_device*) ; 
- int /*<<< orphan*/  tmpchannel ; 
+
+ int COMP_ERR ;
+ int COMP_SCAN ;
+ int RT_TRACE (int ,char*) ;
+ int SwChnlCallback8192SUsbWorkItem (struct net_device*) ;
+ int TRUE ;
+
+
+
+
+
+ scalar_t__ bResult ;
+ struct r8192_priv* ieee80211_priv (struct net_device*) ;
+ int tmpchannel ;
 
 u8 rtl8192_phy_SwChnl(struct net_device* dev, u8 channel)
 {
-	struct r8192_priv *priv = ieee80211_priv(dev);
-	//u8 			tmpchannel =channel;
-	//bool			bResult = false;
+ struct r8192_priv *priv = ieee80211_priv(dev);
+
+
 
         if(!priv->up)
-		return false;
+  return 0;
 
-	if(priv->SwChnlInProgress)
-		return false;
+ if(priv->SwChnlInProgress)
+  return 0;
 
-	if(priv->SetBWModeInProgress)
-		return false;
+ if(priv->SetBWModeInProgress)
+  return 0;
 
-	//--------------------------------------------
-	switch(priv->ieee80211->mode)
-	{
-	case WIRELESS_MODE_A:
-	case WIRELESS_MODE_N_5G:
-		if (channel<=14){
-			RT_TRACE(COMP_ERR, "WIRELESS_MODE_A but channel<=14");
-			return false;
-		}
-		break;
 
-	case WIRELESS_MODE_B:
-		if (channel>14){
-			RT_TRACE(COMP_ERR, "WIRELESS_MODE_B but channel>14");
-			return false;
-		}
-		break;
+ switch(priv->ieee80211->mode)
+ {
+ case 132:
+ case 128:
+  if (channel<=14){
+   RT_TRACE(COMP_ERR, "WIRELESS_MODE_A but channel<=14");
+   return 0;
+  }
+  break;
 
-	case WIRELESS_MODE_G:
-	case WIRELESS_MODE_N_24G:
-		if (channel>14){
-			RT_TRACE(COMP_ERR, "WIRELESS_MODE_G but channel>14");
-			return false;
-		}
-		break;
+ case 131:
+  if (channel>14){
+   RT_TRACE(COMP_ERR, "WIRELESS_MODE_B but channel>14");
+   return 0;
+  }
+  break;
 
-	default:
-			;//RT_TRACE(COMP_ERR, "Invalid WirelessMode(%#x)!!\n", priv->ieee80211->mode);
-		break;
-	}
-	//--------------------------------------------
+ case 130:
+ case 129:
+  if (channel>14){
+   RT_TRACE(COMP_ERR, "WIRELESS_MODE_G but channel>14");
+   return 0;
+  }
+  break;
 
-	priv->SwChnlInProgress = TRUE;
-	if( channel == 0)
-		channel = 1;
+ default:
+   ;
+  break;
+ }
 
-	priv->chan=channel;
 
-	priv->SwChnlStage=0;
-	priv->SwChnlStep=0;
+ priv->SwChnlInProgress = TRUE;
+ if( channel == 0)
+  channel = 1;
 
-	if((priv->up))// && !(RT_CANNOT_IO(Adapter) && Adapter->bInSetPower))
-	{
-	SwChnlCallback8192SUsbWorkItem(dev);
-#ifdef TO_DO_LIST
-	if(bResult)
-		{
-			RT_TRACE(COMP_SCAN, "PHY_SwChnl8192S SwChnlInProgress TRUE schdule workitem done\n");
-		}
-		else
-		{
-			RT_TRACE(COMP_SCAN, "PHY_SwChnl8192S SwChnlInProgress FALSE schdule workitem error\n");
-			priv->SwChnlInProgress = false;
-			priv->CurrentChannel = tmpchannel;
-		}
-#endif
-	}
-	else
-	{
-		RT_TRACE(COMP_SCAN, "PHY_SwChnl8192S SwChnlInProgress FALSE driver sleep or unload\n");
-		priv->SwChnlInProgress = false;
-		//priv->CurrentChannel = tmpchannel;
-	}
-        return true;
+ priv->chan=channel;
+
+ priv->SwChnlStage=0;
+ priv->SwChnlStep=0;
+
+ if((priv->up))
+ {
+ SwChnlCallback8192SUsbWorkItem(dev);
+ }
+ else
+ {
+  RT_TRACE(COMP_SCAN, "PHY_SwChnl8192S SwChnlInProgress FALSE driver sleep or unload\n");
+  priv->SwChnlInProgress = 0;
+
+ }
+        return 1;
 }

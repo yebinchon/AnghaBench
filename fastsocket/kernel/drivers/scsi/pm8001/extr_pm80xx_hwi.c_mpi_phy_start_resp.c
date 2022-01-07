@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t u32 ;
-struct pm8001_phy {int phy_state; int /*<<< orphan*/  enable_completion; } ;
+
+
+
+
+typedef size_t u32 ;
+struct pm8001_phy {int phy_state; int enable_completion; } ;
 struct pm8001_hba_info {scalar_t__ flags; struct pm8001_phy* phy; } ;
-struct phy_start_resp {int /*<<< orphan*/  phyid; int /*<<< orphan*/  status; } ;
+struct phy_start_resp {int phyid; int status; } ;
 
-/* Variables and functions */
- scalar_t__ PM8001F_RUN_TIME ; 
- int /*<<< orphan*/  PM8001_INIT_DBG (struct pm8001_hba_info*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  complete (int /*<<< orphan*/ ) ; 
- size_t le32_to_cpu (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pm8001_printk (char*,size_t,size_t) ; 
+
+ scalar_t__ PM8001F_RUN_TIME ;
+ int PM8001_INIT_DBG (struct pm8001_hba_info*,int ) ;
+ int complete (int ) ;
+ size_t le32_to_cpu (int ) ;
+ int pm8001_printk (char*,size_t,size_t) ;
 
 __attribute__((used)) static int mpi_phy_start_resp(struct pm8001_hba_info *pm8001_ha, void *piomb)
 {
-	struct phy_start_resp *pPayload =
-		(struct phy_start_resp *)(piomb + 4);
-	u32 status =
-		le32_to_cpu(pPayload->status);
-	u32 phy_id =
-		le32_to_cpu(pPayload->phyid);
-	struct pm8001_phy *phy = &pm8001_ha->phy[phy_id];
+ struct phy_start_resp *pPayload =
+  (struct phy_start_resp *)(piomb + 4);
+ u32 status =
+  le32_to_cpu(pPayload->status);
+ u32 phy_id =
+  le32_to_cpu(pPayload->phyid);
+ struct pm8001_phy *phy = &pm8001_ha->phy[phy_id];
 
-	PM8001_INIT_DBG(pm8001_ha,
-		pm8001_printk("phy start resp status:0x%x, phyid:0x%x\n",
-				status, phy_id));
-	if (status == 0) {
-		phy->phy_state = 1;
-		if (pm8001_ha->flags == PM8001F_RUN_TIME)
-			complete(phy->enable_completion);
-	}
-	return 0;
+ PM8001_INIT_DBG(pm8001_ha,
+  pm8001_printk("phy start resp status:0x%x, phyid:0x%x\n",
+    status, phy_id));
+ if (status == 0) {
+  phy->phy_state = 1;
+  if (pm8001_ha->flags == PM8001F_RUN_TIME)
+   complete(phy->enable_completion);
+ }
+ return 0;
 
 }

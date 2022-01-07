@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DTEntry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DTInitialized ; 
- scalar_t__ DTRootNode ; 
- int find_entry (char const*,char const*,int /*<<< orphan*/ *) ; 
- int kError ; 
- char* startingP ; 
+
+
+
+typedef int DTEntry ;
+
+
+ int DTInitialized ;
+ scalar_t__ DTRootNode ;
+ int find_entry (char const*,char const*,int *) ;
+ int kError ;
+ char* startingP ;
 
 int DTFindEntry(const char *propName, const char *propValue, DTEntry *entryH)
 {
-	if (!DTInitialized) {
-		return kError;
-	}
+ if (!DTInitialized) {
+  return kError;
+ }
 
-	startingP = (char *)DTRootNode;
-	return(find_entry(propName, propValue, entryH));
+ startingP = (char *)DTRootNode;
+ return(find_entry(propName, propValue, entryH));
 }

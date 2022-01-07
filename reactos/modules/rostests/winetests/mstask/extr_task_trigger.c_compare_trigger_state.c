@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ DaysInterval; } ;
 struct TYPE_7__ {TYPE_1__ Daily; } ;
 struct TYPE_8__ {scalar_t__ cbTriggerSize; scalar_t__ Reserved1; scalar_t__ wBeginYear; scalar_t__ wBeginMonth; scalar_t__ wBeginDay; scalar_t__ wEndYear; scalar_t__ wEndMonth; scalar_t__ wEndDay; scalar_t__ wStartHour; scalar_t__ wStartMinute; scalar_t__ MinutesDuration; scalar_t__ MinutesInterval; scalar_t__ rgFlags; scalar_t__ TriggerType; scalar_t__ Reserved2; scalar_t__ wRandomMinutesInterval; TYPE_2__ Type; } ;
-typedef  TYPE_3__ TASK_TRIGGER ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_3__ TASK_TRIGGER ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,scalar_t__) ; 
+
+ int TRUE ;
+ int ok (int,char*,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static BOOL compare_trigger_state(TASK_TRIGGER found_state,
         TASK_TRIGGER expected_state)

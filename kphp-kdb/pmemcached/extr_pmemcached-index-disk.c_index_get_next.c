@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct metafile {scalar_t__ data; TYPE_1__* header; scalar_t__ aio; } ;
-struct index_entry {int /*<<< orphan*/  key_len; int /*<<< orphan*/  data; } ;
-struct TYPE_2__ {int nrecords; int /*<<< orphan*/  key_len; int /*<<< orphan*/  key; } ;
+struct index_entry {int key_len; int data; } ;
+struct TYPE_2__ {int nrecords; int key_len; int key; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  debug_dump_key (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- struct index_entry index_entry_not_found ; 
- int /*<<< orphan*/  load_metafile (int) ; 
- struct index_entry* metafile_get_entry (int,int) ; 
- int metafile_number ; 
- struct metafile* metafiles ; 
- int /*<<< orphan*/  metafiles_cache_miss ; 
- int /*<<< orphan*/  metafiles_cache_ok ; 
- scalar_t__ min (int,int) ; 
- int mystrcmp2 (char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  renew_use (int) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+ int assert (int) ;
+ int debug_dump_key (int ,int ) ;
+ int fprintf (int ,char*,...) ;
+ struct index_entry index_entry_not_found ;
+ int load_metafile (int) ;
+ struct index_entry* metafile_get_entry (int,int) ;
+ int metafile_number ;
+ struct metafile* metafiles ;
+ int metafiles_cache_miss ;
+ int metafiles_cache_ok ;
+ scalar_t__ min (int,int) ;
+ int mystrcmp2 (char const*,int,int ,int ,scalar_t__) ;
+ int renew_use (int) ;
+ int stderr ;
+ int verbosity ;
 
 struct index_entry* index_get_next (const char *key, int key_len) {
   int l = -1;
@@ -68,10 +68,10 @@ struct index_entry* index_get_next (const char *key, int key_len) {
     }
     if (metafiles[ll].data == 0 || metafiles[ll].aio) {
       load_metafile (ll);
-	    if (metafiles[ll].data == 0 || metafiles[ll].aio) {
+     if (metafiles[ll].data == 0 || metafiles[ll].aio) {
         metafiles_cache_miss ++;
-    	  return 0;
-    	}
+       return 0;
+     }
     }
     metafiles_cache_ok ++;
     renew_use (ll);
@@ -84,7 +84,7 @@ struct index_entry* index_get_next (const char *key, int key_len) {
     rc = 1;
     while (r-l > 1) {
       int x = (r+l)>>1;
-      int c = mystrcmp2 (key, key_len, metafile_get_entry (metafile, x)->data, metafile_get_entry (metafile, x)->key_len, min (lc, rc) - 1); 
+      int c = mystrcmp2 (key, key_len, metafile_get_entry (metafile, x)->data, metafile_get_entry (metafile, x)->key_len, min (lc, rc) - 1);
       if (c < 0) {
         r = x;
         rc = -c;
@@ -92,7 +92,7 @@ struct index_entry* index_get_next (const char *key, int key_len) {
         l = x;
         lc = c;
       } else {
-        l = x; 
+        l = x;
         break;
       }
     }
@@ -105,7 +105,7 @@ struct index_entry* index_get_next (const char *key, int key_len) {
       ll ++;
       continue;
     }
-  
+
     struct index_entry *E = metafile_get_entry (metafile, l);
     if (verbosity >= 4) {
       fprintf (stderr, "metafile_get_entry (%d, %d)->key = ", metafile, l);

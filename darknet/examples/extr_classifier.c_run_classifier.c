@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int atoi (char*) ; 
- int /*<<< orphan*/  csv_classifier (char*,char*,char*) ; 
- int /*<<< orphan*/  demo_classifier (char*,char*,char*,int,char*) ; 
- int /*<<< orphan*/  file_output_classifier (char*,char*,char*,char*) ; 
- int find_arg (int,char**,char*) ; 
- char* find_char_arg (int,char**,char*,int /*<<< orphan*/ ) ; 
- int find_int_arg (int,char**,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
- int /*<<< orphan*/  gpu_index ; 
- int /*<<< orphan*/  gun_classifier (char*,char*,char*,int,char*) ; 
- int /*<<< orphan*/  label_classifier (char*,char*,char*) ; 
- int /*<<< orphan*/  predict_classifier (char*,char*,char*,char*,int) ; 
- int* read_intlist (char*,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  test_classifier (char*,char*,char*,int) ; 
- int /*<<< orphan*/  threat_classifier (char*,char*,char*,int,char*) ; 
- int /*<<< orphan*/  train_classifier (char*,char*,char*,int*,int,int) ; 
- int /*<<< orphan*/  try_classifier (char*,char*,char*,char*,int) ; 
- int /*<<< orphan*/  validate_classifier_10 (char*,char*,char*) ; 
- int /*<<< orphan*/  validate_classifier_crop (char*,char*,char*) ; 
- int /*<<< orphan*/  validate_classifier_full (char*,char*,char*) ; 
- int /*<<< orphan*/  validate_classifier_multi (char*,char*,char*) ; 
- int /*<<< orphan*/  validate_classifier_single (char*,char*,char*) ; 
+ int atoi (char*) ;
+ int csv_classifier (char*,char*,char*) ;
+ int demo_classifier (char*,char*,char*,int,char*) ;
+ int file_output_classifier (char*,char*,char*,char*) ;
+ int find_arg (int,char**,char*) ;
+ char* find_char_arg (int,char**,char*,int ) ;
+ int find_int_arg (int,char**,char*,int ) ;
+ int fprintf (int ,char*,char*,char*) ;
+ int gpu_index ;
+ int gun_classifier (char*,char*,char*,int,char*) ;
+ int label_classifier (char*,char*,char*) ;
+ int predict_classifier (char*,char*,char*,char*,int) ;
+ int* read_intlist (char*,int*,int ) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
+ int test_classifier (char*,char*,char*,int) ;
+ int threat_classifier (char*,char*,char*,int,char*) ;
+ int train_classifier (char*,char*,char*,int*,int,int) ;
+ int try_classifier (char*,char*,char*,char*,int) ;
+ int validate_classifier_10 (char*,char*,char*) ;
+ int validate_classifier_crop (char*,char*,char*) ;
+ int validate_classifier_full (char*,char*,char*) ;
+ int validate_classifier_multi (char*,char*,char*) ;
+ int validate_classifier_single (char*,char*,char*) ;
 
 void run_classifier(int argc, char **argv)
 {

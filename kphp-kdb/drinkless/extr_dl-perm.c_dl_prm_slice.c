@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* dl_prm_ptr ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef TYPE_1__* dl_prm_ptr ;
 struct TYPE_4__ {int b; int a; struct TYPE_4__* r; struct TYPE_4__* l; } ;
 
-/* Variables and functions */
- int LEN (TYPE_1__*) ; 
+
+ int LEN (TYPE_1__*) ;
 
 int dl_prm_slice (dl_prm_ptr v, int *a, int n, int offset) {
-  if (n == 0 || v == NULL) {
+  if (n == 0 || v == ((void*)0)) {
     return 0;
   }
-  int ln = LEN (v->l), res  = 0;
+  int ln = LEN (v->l), res = 0;
   if (offset < ln) {
     res = dl_prm_slice (v->l, a, n, offset);
     a += res;

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  i2c_config_t ;
 
-/* Variables and functions */
- int DATA_LENGTH ; 
- int /*<<< orphan*/  I2C_MODE_SLAVE ; 
- int /*<<< orphan*/  I2C_SLAVE_NUM ; 
- int /*<<< orphan*/  I2C_SLAVE_RX_BUF_LEN ; 
- int /*<<< orphan*/  I2C_SLAVE_TX_BUF_LEN ; 
- int RW_TEST_LENGTH ; 
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- int /*<<< orphan*/  TEST_ESP_OK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  disp_buf (int*,int) ; 
- int /*<<< orphan*/  free (int*) ; 
- int /*<<< orphan*/  i2c_driver_delete (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_driver_install (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_param_config (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  i2c_slave_init () ; 
- int i2c_slave_read_buffer (int /*<<< orphan*/ ,int*,int,int) ; 
- int i2c_slave_write_buffer (int /*<<< orphan*/ ,int*,int,int) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- int portTICK_RATE_MS ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  unity_send_signal (char*) ; 
- int /*<<< orphan*/  unity_wait_for_signal (char*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int i2c_config_t ;
+
+
+ int DATA_LENGTH ;
+ int I2C_MODE_SLAVE ;
+ int I2C_SLAVE_NUM ;
+ int I2C_SLAVE_RX_BUF_LEN ;
+ int I2C_SLAVE_TX_BUF_LEN ;
+ int RW_TEST_LENGTH ;
+ int TEST_ASSERT (int) ;
+ int TEST_ESP_OK (int ) ;
+ int disp_buf (int*,int) ;
+ int free (int*) ;
+ int i2c_driver_delete (int ) ;
+ int i2c_driver_install (int ,int ,int ,int ,int ) ;
+ int i2c_param_config (int ,int *) ;
+ int i2c_slave_init () ;
+ int i2c_slave_read_buffer (int ,int*,int,int) ;
+ int i2c_slave_write_buffer (int ,int*,int,int) ;
+ scalar_t__ malloc (int) ;
+ int memset (int*,int ,int) ;
+ int portTICK_RATE_MS ;
+ int printf (char*) ;
+ int unity_send_signal (char*) ;
+ int unity_wait_for_signal (char*) ;
 
 __attribute__((used)) static void i2c_slave_read_write_test(void)
 {

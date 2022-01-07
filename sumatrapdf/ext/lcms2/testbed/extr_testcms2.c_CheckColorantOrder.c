@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsUInt8Number ;
-typedef  int /*<<< orphan*/  cmsTagSignature ;
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/  cmsHPROFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int cmsMAXCHANNELS ; 
- scalar_t__ cmsReadTag (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int cmsWriteTag (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int cmsUInt8Number ;
+typedef int cmsTagSignature ;
+typedef int cmsInt32Number ;
+typedef int cmsHPROFILE ;
+
+
+ int DbgThread () ;
+ int cmsMAXCHANNELS ;
+ scalar_t__ cmsReadTag (int ,int ,int ) ;
+ int cmsWriteTag (int ,int ,int ,int *) ;
 
 __attribute__((used)) static
-cmsInt32Number CheckColorantOrder(cmsInt32Number Pass,  cmsHPROFILE hProfile, cmsTagSignature tag)
+cmsInt32Number CheckColorantOrder(cmsInt32Number Pass, cmsHPROFILE hProfile, cmsTagSignature tag)
 {
     cmsUInt8Number *Pt, c[cmsMAXCHANNELS];
     cmsInt32Number i;
@@ -36,7 +36,7 @@ cmsInt32Number CheckColorantOrder(cmsInt32Number Pass,  cmsHPROFILE hProfile, cm
 
         case 2:
             Pt = (cmsUInt8Number *) cmsReadTag(DbgThread(), hProfile, tag);
-            if (Pt == NULL) return 0;
+            if (Pt == ((void*)0)) return 0;
 
             for (i=0; i < cmsMAXCHANNELS; i++) {
                 if (Pt[i] != ( cmsMAXCHANNELS - i - 1 )) return 0;

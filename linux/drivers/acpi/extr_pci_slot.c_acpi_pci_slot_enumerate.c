@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pci_bus {int /*<<< orphan*/  bridge; } ;
-typedef  scalar_t__ acpi_handle ;
 
-/* Variables and functions */
- scalar_t__ ACPI_HANDLE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_TYPE_DEVICE ; 
- int /*<<< orphan*/  acpi_walk_namespace (int /*<<< orphan*/ ,scalar_t__,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,struct pci_bus*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  register_slot ; 
- int /*<<< orphan*/  slot_list_lock ; 
+
+
+
+struct pci_bus {int bridge; } ;
+typedef scalar_t__ acpi_handle ;
+
+
+ scalar_t__ ACPI_HANDLE (int ) ;
+ int ACPI_TYPE_DEVICE ;
+ int acpi_walk_namespace (int ,scalar_t__,int,int ,int *,struct pci_bus*,int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int register_slot ;
+ int slot_list_lock ;
 
 void acpi_pci_slot_enumerate(struct pci_bus *bus)
 {
-	acpi_handle handle = ACPI_HANDLE(bus->bridge);
+ acpi_handle handle = ACPI_HANDLE(bus->bridge);
 
-	if (handle) {
-		mutex_lock(&slot_list_lock);
-		acpi_walk_namespace(ACPI_TYPE_DEVICE, handle, 1,
-				    register_slot, NULL, bus, NULL);
-		mutex_unlock(&slot_list_lock);
-	}
+ if (handle) {
+  mutex_lock(&slot_list_lock);
+  acpi_walk_namespace(ACPI_TYPE_DEVICE, handle, 1,
+        register_slot, ((void*)0), bus, ((void*)0));
+  mutex_unlock(&slot_list_lock);
+ }
 }

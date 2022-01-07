@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  to_t ;
 
-/* Variables and functions */
- int FALSE ; 
- int TRUE ; 
- int /*<<< orphan*/  m_spi_no ; 
- int platform_spi_send_recv (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  set_timeout (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ timed_out (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint32_t ;
+typedef int to_t ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int m_spi_no ;
+ int platform_spi_send_recv (int ,int,int) ;
+ int set_timeout (int *,int ) ;
+ scalar_t__ timed_out (int *) ;
 
 __attribute__((used)) static int sdcard_wait_not_busy( uint32_t us )
 {

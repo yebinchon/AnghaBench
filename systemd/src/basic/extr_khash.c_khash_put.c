@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ssize_t ;
-struct TYPE_4__ {int digest_valid; int /*<<< orphan*/  fd; } ;
-typedef  TYPE_1__ khash ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSG_MORE ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int errno ; 
- scalar_t__ send (int /*<<< orphan*/ ,void const*,size_t,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ ssize_t ;
+struct TYPE_4__ {int digest_valid; int fd; } ;
+typedef TYPE_1__ khash ;
+
+
+ int MSG_MORE ;
+ int assert (TYPE_1__*) ;
+ int errno ;
+ scalar_t__ send (int ,void const*,size_t,int ) ;
 
 int khash_put(khash *h, const void *buffer, size_t size) {
         ssize_t n;
@@ -34,7 +34,7 @@ int khash_put(khash *h, const void *buffer, size_t size) {
         if (n < 0)
                 return -errno;
 
-        h->digest_valid = false;
+        h->digest_valid = 0;
 
         return 0;
 }

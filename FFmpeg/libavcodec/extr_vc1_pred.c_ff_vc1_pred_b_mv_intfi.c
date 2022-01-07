@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {void**** motion_val; } ;
-struct TYPE_8__ {scalar_t__* mb_type; int /*<<< orphan*/ *** motion_val; } ;
-struct TYPE_10__ {int mb_x; int mb_y; int mb_stride; size_t* block_index; void**** mv; TYPE_1__ current_picture; int /*<<< orphan*/  quarter_sample; TYPE_2__ next_picture; } ;
-struct TYPE_9__ {scalar_t__ bmvtype; int mb_off; size_t blocks_off; int** mv_f_next; int* ref_field_type; int cur_field_type; int** mv_f; int /*<<< orphan*/ * mb_type; int /*<<< orphan*/  range_y; int /*<<< orphan*/  range_x; int /*<<< orphan*/  bfraction; TYPE_4__ s; } ;
-typedef  TYPE_3__ VC1Context ;
-typedef  TYPE_4__ MpegEncContext ;
+struct TYPE_8__ {scalar_t__* mb_type; int *** motion_val; } ;
+struct TYPE_10__ {int mb_x; int mb_y; int mb_stride; size_t* block_index; void**** mv; TYPE_1__ current_picture; int quarter_sample; TYPE_2__ next_picture; } ;
+struct TYPE_9__ {scalar_t__ bmvtype; int mb_off; size_t blocks_off; int** mv_f_next; int* ref_field_type; int cur_field_type; int** mv_f; int * mb_type; int range_y; int range_x; int bfraction; TYPE_4__ s; } ;
+typedef TYPE_3__ VC1Context ;
+typedef TYPE_4__ MpegEncContext ;
 
-/* Variables and functions */
- scalar_t__ BMV_TYPE_BACKWARD ; 
- scalar_t__ BMV_TYPE_DIRECT ; 
- scalar_t__ BMV_TYPE_INTERPOLATED ; 
- scalar_t__ MB_TYPE_INTRA ; 
- int /*<<< orphan*/  ff_vc1_pred_mv (TYPE_3__*,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- void* scale_mv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ BMV_TYPE_BACKWARD ;
+ scalar_t__ BMV_TYPE_DIRECT ;
+ scalar_t__ BMV_TYPE_INTERPOLATED ;
+ scalar_t__ MB_TYPE_INTRA ;
+ int ff_vc1_pred_mv (TYPE_3__*,int,int,int,int,int ,int ,int ,int,int) ;
+ void* scale_mv (int ,int ,int,int ) ;
 
 void ff_vc1_pred_b_mv_intfi(VC1Context *v, int n, int *dmv_x, int *dmv_y,
                             int mv1, int *pred_flag)
@@ -70,19 +70,19 @@ void ff_vc1_pred_b_mv_intfi(VC1Context *v, int n, int *dmv_x, int *dmv_y,
         return;
     }
     if (v->bmvtype == BMV_TYPE_INTERPOLATED) {
-        ff_vc1_pred_mv(v, 0, dmv_x[0], dmv_y[0],   1, v->range_x, v->range_y, v->mb_type[0], pred_flag[0], 0);
-        ff_vc1_pred_mv(v, 0, dmv_x[1], dmv_y[1],   1, v->range_x, v->range_y, v->mb_type[0], pred_flag[1], 1);
+        ff_vc1_pred_mv(v, 0, dmv_x[0], dmv_y[0], 1, v->range_x, v->range_y, v->mb_type[0], pred_flag[0], 0);
+        ff_vc1_pred_mv(v, 0, dmv_x[1], dmv_y[1], 1, v->range_x, v->range_y, v->mb_type[0], pred_flag[1], 1);
         return;
     }
-    if (dir) { // backward
+    if (dir) {
         ff_vc1_pred_mv(v, n, dmv_x[1], dmv_y[1], mv1, v->range_x, v->range_y, v->mb_type[0], pred_flag[1], 1);
         if (n == 3 || mv1) {
-            ff_vc1_pred_mv(v, 0, dmv_x[0], dmv_y[0],   1, v->range_x, v->range_y, v->mb_type[0], 0, 0);
+            ff_vc1_pred_mv(v, 0, dmv_x[0], dmv_y[0], 1, v->range_x, v->range_y, v->mb_type[0], 0, 0);
         }
-    } else { // forward
+    } else {
         ff_vc1_pred_mv(v, n, dmv_x[0], dmv_y[0], mv1, v->range_x, v->range_y, v->mb_type[0], pred_flag[0], 0);
         if (n == 3 || mv1) {
-            ff_vc1_pred_mv(v, 0, dmv_x[1], dmv_y[1],   1, v->range_x, v->range_y, v->mb_type[0], 0, 1);
+            ff_vc1_pred_mv(v, 0, dmv_x[1], dmv_y[1], 1, v->range_x, v->range_y, v->mb_type[0], 0, 1);
         }
     }
 }

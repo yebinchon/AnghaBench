@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct instance {int pidfile; int /*<<< orphan*/  pid_filename; int /*<<< orphan*/  pid; } ;
-typedef  scalar_t__ ssize_t ;
-typedef  int /*<<< orphan*/  rstatus_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NC_ERROR ; 
- int /*<<< orphan*/  NC_OK ; 
- int NC_UINTMAX_MAXLEN ; 
- int O_CREAT ; 
- int O_TRUNC ; 
- int O_WRONLY ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  log_error (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int nc_snprintf (char*,int,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ nc_write (int,char*,int) ; 
- int open (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+
+
+struct instance {int pidfile; int pid_filename; int pid; } ;
+typedef scalar_t__ ssize_t ;
+typedef int rstatus_t ;
+
+
+ int NC_ERROR ;
+ int NC_OK ;
+ int NC_UINTMAX_MAXLEN ;
+ int O_CREAT ;
+ int O_TRUNC ;
+ int O_WRONLY ;
+ int close (int) ;
+ int errno ;
+ int log_error (char*,int ,int ) ;
+ int nc_snprintf (char*,int,char*,int ) ;
+ scalar_t__ nc_write (int,char*,int) ;
+ int open (int ,int,int) ;
+ int strerror (int ) ;
 
 __attribute__((used)) static rstatus_t
 nc_create_pidfile(struct instance *nci)

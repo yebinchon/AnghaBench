@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/ * i32; int /*<<< orphan*/ * u8; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int * i32; int * u8; } ;
 struct TYPE_10__ {TYPE_1__ data; } ;
 struct TYPE_9__ {TYPE_2__* priv_data; } ;
-struct TYPE_8__ {int /*<<< orphan*/  sensor_orientation; int /*<<< orphan*/  lens_facing; int /*<<< orphan*/  camera_metadata; } ;
-typedef  TYPE_2__ AndroidCameraCtx ;
-typedef  TYPE_3__ AVFormatContext ;
-typedef  TYPE_4__ ACameraMetadata_const_entry ;
+struct TYPE_8__ {int sensor_orientation; int lens_facing; int camera_metadata; } ;
+typedef TYPE_2__ AndroidCameraCtx ;
+typedef TYPE_3__ AVFormatContext ;
+typedef TYPE_4__ ACameraMetadata_const_entry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACAMERA_LENS_FACING ; 
- int /*<<< orphan*/  ACAMERA_SENSOR_ORIENTATION ; 
- int /*<<< orphan*/  ACameraMetadata_getConstEntry (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_4__*) ; 
+
+ int ACAMERA_LENS_FACING ;
+ int ACAMERA_SENSOR_ORIENTATION ;
+ int ACameraMetadata_getConstEntry (int ,int ,TYPE_4__*) ;
 
 __attribute__((used)) static void get_sensor_orientation(AVFormatContext *avctx)
 {

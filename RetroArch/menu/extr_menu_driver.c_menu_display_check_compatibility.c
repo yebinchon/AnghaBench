@@ -1,40 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum menu_display_driver_type { ____Placeholder_menu_display_driver_type } menu_display_driver_type ;
 
-/* Variables and functions */
-#define  MENU_VIDEO_DRIVER_CACA 147 
-#define  MENU_VIDEO_DRIVER_CTR 146 
-#define  MENU_VIDEO_DRIVER_DIRECT3D10 145 
-#define  MENU_VIDEO_DRIVER_DIRECT3D11 144 
-#define  MENU_VIDEO_DRIVER_DIRECT3D12 143 
-#define  MENU_VIDEO_DRIVER_DIRECT3D8 142 
-#define  MENU_VIDEO_DRIVER_DIRECT3D9 141 
-#define  MENU_VIDEO_DRIVER_FPGA 140 
-#define  MENU_VIDEO_DRIVER_GDI 139 
-#define  MENU_VIDEO_DRIVER_GENERIC 138 
-#define  MENU_VIDEO_DRIVER_METAL 137 
-#define  MENU_VIDEO_DRIVER_OPENGL 136 
-#define  MENU_VIDEO_DRIVER_OPENGL1 135 
-#define  MENU_VIDEO_DRIVER_OPENGL_CORE 134 
-#define  MENU_VIDEO_DRIVER_SIXEL 133 
-#define  MENU_VIDEO_DRIVER_SWITCH 132 
-#define  MENU_VIDEO_DRIVER_VGA 131 
-#define  MENU_VIDEO_DRIVER_VITA2D 130 
-#define  MENU_VIDEO_DRIVER_VULKAN 129 
-#define  MENU_VIDEO_DRIVER_WIIU 128 
- int /*<<< orphan*/  string_is_equal (char const*,char*) ; 
- char* video_driver_get_ident () ; 
+
+
+
+typedef enum menu_display_driver_type { ____Placeholder_menu_display_driver_type } menu_display_driver_type ;
+ int string_is_equal (char const*,char*) ;
+ char* video_driver_get_ident () ;
 
 __attribute__((used)) static bool menu_display_check_compatibility(
       enum menu_display_driver_type type,
@@ -44,85 +22,85 @@ __attribute__((used)) static bool menu_display_check_compatibility(
 
    switch (type)
    {
-      case MENU_VIDEO_DRIVER_GENERIC:
-         return true;
-      case MENU_VIDEO_DRIVER_OPENGL:
+      case 138:
+         return 1;
+      case 136:
          if (string_is_equal(video_driver, "gl"))
-            return true;
+            return 1;
          break;
-      case MENU_VIDEO_DRIVER_OPENGL1:
+      case 135:
          if (string_is_equal(video_driver, "gl1"))
-            return true;
+            return 1;
          break;
-      case MENU_VIDEO_DRIVER_OPENGL_CORE:
+      case 134:
          if (string_is_equal(video_driver, "glcore"))
-            return true;
+            return 1;
          break;
-      case MENU_VIDEO_DRIVER_VULKAN:
+      case 129:
          if (string_is_equal(video_driver, "vulkan"))
-            return true;
+            return 1;
          break;
-      case MENU_VIDEO_DRIVER_METAL:
+      case 137:
          if (string_is_equal(video_driver, "metal"))
-            return true;
+            return 1;
          break;
-      case MENU_VIDEO_DRIVER_DIRECT3D8:
+      case 142:
          if (string_is_equal(video_driver, "d3d8"))
-            return true;
+            return 1;
          break;
-      case MENU_VIDEO_DRIVER_DIRECT3D9:
+      case 141:
          if (string_is_equal(video_driver, "d3d9"))
-            return true;
+            return 1;
          break;
-      case MENU_VIDEO_DRIVER_DIRECT3D10:
+      case 145:
          if (string_is_equal(video_driver, "d3d10"))
-            return true;
+            return 1;
          break;
-      case MENU_VIDEO_DRIVER_DIRECT3D11:
+      case 144:
          if (string_is_equal(video_driver, "d3d11"))
-            return true;
+            return 1;
          break;
-      case MENU_VIDEO_DRIVER_DIRECT3D12:
+      case 143:
          if (string_is_equal(video_driver, "d3d12"))
-            return true;
+            return 1;
          break;
-      case MENU_VIDEO_DRIVER_VITA2D:
+      case 130:
          if (string_is_equal(video_driver, "vita2d"))
-            return true;
+            return 1;
          break;
-      case MENU_VIDEO_DRIVER_CTR:
+      case 146:
          if (string_is_equal(video_driver, "ctr"))
-            return true;
+            return 1;
          break;
-      case MENU_VIDEO_DRIVER_WIIU:
+      case 128:
          if (string_is_equal(video_driver, "gx2"))
-            return true;
+            return 1;
          break;
-      case MENU_VIDEO_DRIVER_SIXEL:
+      case 133:
          if (string_is_equal(video_driver, "sixel"))
-            return true;
+            return 1;
          break;
-      case MENU_VIDEO_DRIVER_CACA:
+      case 147:
          if (string_is_equal(video_driver, "caca"))
-            return true;
+            return 1;
          break;
-      case MENU_VIDEO_DRIVER_GDI:
+      case 139:
          if (string_is_equal(video_driver, "gdi"))
-            return true;
+            return 1;
          break;
-      case MENU_VIDEO_DRIVER_VGA:
+      case 131:
          if (string_is_equal(video_driver, "vga"))
-            return true;
+            return 1;
          break;
-      case MENU_VIDEO_DRIVER_FPGA:
+      case 140:
          if (string_is_equal(video_driver, "fpga"))
-            return true;
+            return 1;
          break;
-      case MENU_VIDEO_DRIVER_SWITCH:
+      case 132:
          if (string_is_equal(video_driver, "switch"))
-            return true;
+            return 1;
          break;
    }
 
-   return false;
+   return 0;
 }

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int type_type; int ignore; int typelib_idx; int /*<<< orphan*/  loc_info; void* is_alias; void* checked; void* tfswrite; void* user_types_registered; void* written; void* defined; scalar_t__ ptrdesc; scalar_t__ typestring_offset; int /*<<< orphan*/  details; int /*<<< orphan*/ * orig; int /*<<< orphan*/ * c_name; int /*<<< orphan*/ * attrs; int /*<<< orphan*/ * namespace; int /*<<< orphan*/ * name; } ;
-typedef  TYPE_1__ type_t ;
-typedef  enum type_type { ____Placeholder_type_type } type_type ;
 
-/* Variables and functions */
- void* FALSE ; 
- TYPE_1__* alloc_type () ; 
- int /*<<< orphan*/  init_loc_info (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ parse_only ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int type_type; int ignore; int typelib_idx; int loc_info; void* is_alias; void* checked; void* tfswrite; void* user_types_registered; void* written; void* defined; scalar_t__ ptrdesc; scalar_t__ typestring_offset; int details; int * orig; int * c_name; int * attrs; int * namespace; int * name; } ;
+typedef TYPE_1__ type_t ;
+typedef enum type_type { ____Placeholder_type_type } type_type ;
+
+
+ void* FALSE ;
+ TYPE_1__* alloc_type () ;
+ int init_loc_info (int *) ;
+ int memset (int *,int ,int) ;
+ scalar_t__ parse_only ;
 
 type_t *make_type(enum type_type type)
 {
     type_t *t = alloc_type();
-    t->name = NULL;
-    t->namespace = NULL;
+    t->name = ((void*)0);
+    t->namespace = ((void*)0);
     t->type_type = type;
-    t->attrs = NULL;
-    t->c_name = NULL;
-    t->orig = NULL;
+    t->attrs = ((void*)0);
+    t->c_name = ((void*)0);
+    t->orig = ((void*)0);
     memset(&t->details, 0, sizeof(t->details));
     t->typestring_offset = 0;
     t->ptrdesc = 0;

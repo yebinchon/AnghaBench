@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_2__* priv_data; } ;
-typedef  TYPE_1__ URLContext ;
-struct TYPE_9__ {scalar_t__ state; int position; int /*<<< orphan*/  filesize; scalar_t__ conn_data; } ;
-typedef  TYPE_2__ FTPContext ;
+typedef TYPE_1__ URLContext ;
+struct TYPE_9__ {scalar_t__ state; int position; int filesize; scalar_t__ conn_data; } ;
+typedef TYPE_2__ FTPContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- scalar_t__ DISCONNECTED ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  FFMAX (int /*<<< orphan*/ ,int) ; 
- scalar_t__ READY ; 
- scalar_t__ UPLOADING ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ff_dlog (TYPE_1__*,char*,int) ; 
- int ffurl_write (scalar_t__,unsigned char const*,int) ; 
- int ftp_connect_data_connection (TYPE_1__*) ; 
- int ftp_store (TYPE_2__*) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ scalar_t__ DISCONNECTED ;
+ int EIO ;
+ int FFMAX (int ,int) ;
+ scalar_t__ READY ;
+ scalar_t__ UPLOADING ;
+ int av_log (TYPE_1__*,int ,char*) ;
+ int ff_dlog (TYPE_1__*,char*,int) ;
+ int ffurl_write (scalar_t__,unsigned char const*,int) ;
+ int ftp_connect_data_connection (TYPE_1__*) ;
+ int ftp_store (TYPE_2__*) ;
 
 __attribute__((used)) static int ftp_write(URLContext *h, const unsigned char *buf, int size)
 {

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct mesh_data {TYPE_5__* skin_info; int /*<<< orphan*/  nb_bones; int /*<<< orphan*/  fvf; int /*<<< orphan*/  num_vertices; } ;
-typedef  int /*<<< orphan*/  WORD ;
+
+
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct mesh_data {TYPE_5__* skin_info; int nb_bones; int fvf; int num_vertices; } ;
+typedef int WORD ;
 struct TYPE_15__ {TYPE_1__* lpVtbl; } ;
 struct TYPE_14__ {TYPE_2__* lpVtbl; } ;
-struct TYPE_13__ {int /*<<< orphan*/  (* Unlock ) (TYPE_3__*) ;int /*<<< orphan*/  (* Lock ) (TYPE_3__*,int*,void const**) ;} ;
-struct TYPE_12__ {int /*<<< orphan*/  (* SetBoneOffsetMatrix ) (TYPE_5__*,int,int /*<<< orphan*/  const*) ;int /*<<< orphan*/  (* SetBoneInfluence ) (TYPE_5__*,int,int,int const*,int /*<<< orphan*/  const*) ;int /*<<< orphan*/  (* SetBoneName ) (TYPE_5__*,int,char const*) ;} ;
-typedef  int SIZE_T ;
-typedef  TYPE_3__ ID3DXFileData ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  FLOAT ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  D3DMATRIX ;
-typedef  int /*<<< orphan*/  BYTE ;
+struct TYPE_13__ {int (* Unlock ) (TYPE_3__*) ;int (* Lock ) (TYPE_3__*,int*,void const**) ;} ;
+struct TYPE_12__ {int (* SetBoneOffsetMatrix ) (TYPE_5__*,int,int const*) ;int (* SetBoneInfluence ) (TYPE_5__*,int,int,int const*,int const*) ;int (* SetBoneName ) (TYPE_5__*,int,char const*) ;} ;
+typedef int SIZE_T ;
+typedef TYPE_3__ ID3DXFileData ;
+typedef int HRESULT ;
+typedef int FLOAT ;
+typedef int DWORD ;
+typedef int D3DMATRIX ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DXCreateSkinInfoFVF (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_5__**) ; 
- int /*<<< orphan*/  E_FAIL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_3__*,struct mesh_data*,int) ; 
- int /*<<< orphan*/  WARN (char*,int) ; 
- int /*<<< orphan*/  stub1 (TYPE_3__*,int*,void const**) ; 
- int /*<<< orphan*/  stub2 (TYPE_5__*,int,char const*) ; 
- int /*<<< orphan*/  stub3 (TYPE_5__*,int,int,int const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  stub4 (TYPE_5__*,int,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  stub5 (TYPE_3__*) ; 
+
+ int D3DXCreateSkinInfoFVF (int ,int ,int ,TYPE_5__**) ;
+ int E_FAIL ;
+ scalar_t__ FAILED (int ) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int TRACE (char*,TYPE_3__*,struct mesh_data*,int) ;
+ int WARN (char*,int) ;
+ int stub1 (TYPE_3__*,int*,void const**) ;
+ int stub2 (TYPE_5__*,int,char const*) ;
+ int stub3 (TYPE_5__*,int,int,int const*,int const*) ;
+ int stub4 (TYPE_5__*,int,int const*) ;
+ int stub5 (TYPE_3__*) ;
 
 __attribute__((used)) static HRESULT parse_skin_mesh_info(ID3DXFileData *filedata, struct mesh_data *mesh_data, DWORD index)
 {
@@ -59,7 +59,7 @@ __attribute__((used)) static HRESULT parse_skin_mesh_info(ID3DXFileData *filedat
             WARN("truncated data (%ld bytes)\n", data_size);
             goto end;
         }
-        /* Skip nMaxSkinWeightsPerVertex and nMaxSkinWeightsPerFace */
+
         data += 2 * sizeof(WORD);
         mesh_data->nb_bones = *(WORD*)data;
         hr = D3DXCreateSkinInfoFVF(mesh_data->num_vertices, mesh_data->fvf, mesh_data->nb_bones, &mesh_data->skin_info);
@@ -67,7 +67,7 @@ __attribute__((used)) static HRESULT parse_skin_mesh_info(ID3DXFileData *filedat
         const char *name;
         DWORD nb_influences;
 
-        /* FIXME: String must be retrieved directly instead of through a pointer once ID3DXFILE is fixed */
+
         name = *(const char**)data;
         data += sizeof(char*);
 

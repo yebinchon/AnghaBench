@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  resolvbuf ;
-typedef  int /*<<< orphan*/  ipv4_t ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  INET_ADDR (int,int,int,int) ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  TABLE_ATK_NSERV ; 
- int /*<<< orphan*/  TABLE_ATK_RESOLVER ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  inet_addr (char*) ; 
- int open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int rand_next () ; 
- int read (int,char*,int) ; 
- int /*<<< orphan*/  table_lock_val (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  table_retrieve_val (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  table_unlock_val (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  util_memcpy (char*,char*,int) ; 
- int util_stristr (char*,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int resolvbuf ;
+typedef int ipv4_t ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ FALSE ;
+ int INET_ADDR (int,int,int,int) ;
+ int O_RDONLY ;
+ int TABLE_ATK_NSERV ;
+ int TABLE_ATK_RESOLVER ;
+ scalar_t__ TRUE ;
+ int close (int) ;
+ int inet_addr (char*) ;
+ int open (int ,int ) ;
+ int printf (char*,char*) ;
+ int rand_next () ;
+ int read (int,char*,int) ;
+ int table_lock_val (int ) ;
+ int table_retrieve_val (int ,int *) ;
+ int table_unlock_val (int ) ;
+ int util_memcpy (char*,char*,int) ;
+ int util_stristr (char*,int,int ) ;
 
 __attribute__((used)) static ipv4_t get_dns_resolver(void)
 {
     int fd;
 
     table_unlock_val(TABLE_ATK_RESOLVER);
-    fd = open(table_retrieve_val(TABLE_ATK_RESOLVER, NULL), O_RDONLY);
+    fd = open(table_retrieve_val(TABLE_ATK_RESOLVER, ((void*)0)), O_RDONLY);
     table_lock_val(TABLE_ATK_RESOLVER);
     if (fd >= 0)
     {
@@ -48,7 +48,7 @@ __attribute__((used)) static ipv4_t get_dns_resolver(void)
         ret = read(fd, resolvbuf, sizeof (resolvbuf));
         close(fd);
         table_unlock_val(TABLE_ATK_NSERV);
-        nspos = util_stristr(resolvbuf, ret, table_retrieve_val(TABLE_ATK_NSERV, NULL));
+        nspos = util_stristr(resolvbuf, ret, table_retrieve_val(TABLE_ATK_NSERV, ((void*)0)));
         table_lock_val(TABLE_ATK_NSERV);
         if (nspos != -1)
         {
@@ -61,7 +61,7 @@ __attribute__((used)) static ipv4_t get_dns_resolver(void)
             {
                 char c = resolvbuf[i];
 
-                // Skip leading whitespace
+
                 if (!finished_whitespace)
                 {
                     if (c == ' ' || c == '\t')
@@ -70,7 +70,7 @@ __attribute__((used)) static ipv4_t get_dns_resolver(void)
                         finished_whitespace = TRUE;
                 }
 
-                // End if c is not either a dot or a number
+
                 if ((c != '.' && (c < '0' || c > '9')) || (i == (ret - 1)))
                 {
                     util_memcpy(ipbuf, resolvbuf + nspos, i - nspos);
@@ -82,9 +82,9 @@ __attribute__((used)) static ipv4_t get_dns_resolver(void)
 
             if (found)
             {
-#ifdef DEBUG
-                printf("Found local resolver: '%s'\n", ipbuf);
-#endif
+
+
+
                 return inet_addr(ipbuf);
             }
         }

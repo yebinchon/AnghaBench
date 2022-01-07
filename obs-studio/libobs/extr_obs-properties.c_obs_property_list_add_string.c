@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct list_data {scalar_t__ format; } ;
-typedef  int /*<<< orphan*/  obs_property_t ;
+typedef int obs_property_t ;
 
-/* Variables and functions */
- scalar_t__ OBS_COMBO_FORMAT_STRING ; 
- size_t add_item (struct list_data*,char const*,char const*) ; 
- struct list_data* get_list_data (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ OBS_COMBO_FORMAT_STRING ;
+ size_t add_item (struct list_data*,char const*,char const*) ;
+ struct list_data* get_list_data (int *) ;
 
 size_t obs_property_list_add_string(obs_property_t *p, const char *name,
-				    const char *val)
+        const char *val)
 {
-	struct list_data *data = get_list_data(p);
-	if (data && data->format == OBS_COMBO_FORMAT_STRING)
-		return add_item(data, name, val);
-	return 0;
+ struct list_data *data = get_list_data(p);
+ if (data && data->format == OBS_COMBO_FORMAT_STRING)
+  return add_item(data, name, val);
+ return 0;
 }

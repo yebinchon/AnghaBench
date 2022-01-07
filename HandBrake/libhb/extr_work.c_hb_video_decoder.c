@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int codec_param; } ;
-typedef  TYPE_1__ hb_work_object_t ;
-typedef  int /*<<< orphan*/  hb_handle_t ;
+typedef TYPE_1__ hb_work_object_t ;
+typedef int hb_handle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hb_error (char*,int,int) ; 
- TYPE_1__* hb_get_work (int /*<<< orphan*/ *,int) ; 
+
+ int hb_error (char*,int,int) ;
+ TYPE_1__* hb_get_work (int *,int) ;
 
 hb_work_object_t* hb_video_decoder(hb_handle_t *h, int vcodec, int param)
 {
     hb_work_object_t * w;
 
     w = hb_get_work(h, vcodec);
-    if (w == NULL)
+    if (w == ((void*)0))
     {
         hb_error("Invalid video decoder: codec %d, param %d", vcodec, param);
-        return NULL;
+        return ((void*)0);
     }
     w->codec_param = param;
 

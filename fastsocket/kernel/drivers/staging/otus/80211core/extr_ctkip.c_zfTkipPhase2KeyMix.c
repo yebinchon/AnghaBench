@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8_t ;
-typedef  int u16_t ;
-struct zsTkipSeed {int* ppk; int* ttak; int iv16; int iv16tmp; int /*<<< orphan*/ * tk; } ;
 
-/* Variables and functions */
- int ZM_BYTE_TO_WORD (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* zfTkipSbox (int) ; 
- void* zfrotr1 (int) ; 
+
+
+
+typedef int u8_t ;
+typedef int u16_t ;
+struct zsTkipSeed {int* ppk; int* ttak; int iv16; int iv16tmp; int * tk; } ;
+
+
+ int ZM_BYTE_TO_WORD (int ,int ) ;
+ void* zfTkipSbox (int) ;
+ void* zfrotr1 (int) ;
 
 u8_t zfTkipPhase2KeyMix(u16_t iv16, struct zsTkipSeed* pSeed)
 {
@@ -25,7 +25,7 @@ u8_t zfTkipPhase2KeyMix(u16_t iv16, struct zsTkipSeed* pSeed)
 
     tsc2 = iv16;
 
-    /* Phase 2, Step 1 */
+
     pSeed->ppk[0] = pSeed->ttak[0];
     pSeed->ppk[1] = pSeed->ttak[1];
     pSeed->ppk[2] = pSeed->ttak[2];
@@ -33,7 +33,7 @@ u8_t zfTkipPhase2KeyMix(u16_t iv16, struct zsTkipSeed* pSeed)
     pSeed->ppk[4] = pSeed->ttak[4];
     pSeed->ppk[5] = (pSeed->ttak[4] + tsc2) & 0xffff;
 
-    /* Phase2, Step 2 */
+
     pSeed->ppk[0] = pSeed->ppk[0]
                 + zfTkipSbox(pSeed->ppk[5] ^ ZM_BYTE_TO_WORD(pSeed->tk[1],pSeed->tk[0]));
     pSeed->ppk[1] = pSeed->ppk[1]

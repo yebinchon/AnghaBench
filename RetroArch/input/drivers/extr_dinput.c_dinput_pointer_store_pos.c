@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct pointer_status {int /*<<< orphan*/  pointer_y; int /*<<< orphan*/  pointer_x; } ;
-typedef  int /*<<< orphan*/  WPARAM ;
-struct TYPE_3__ {int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
-typedef  TYPE_1__ POINT ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GET_X_LPARAM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GET_Y_LPARAM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ScreenToClient (int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ video_driver_window_get () ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct pointer_status {int pointer_y; int pointer_x; } ;
+typedef int WPARAM ;
+struct TYPE_3__ {int y; int x; } ;
+typedef TYPE_1__ POINT ;
+typedef int HWND ;
+
+
+ int GET_X_LPARAM (int ) ;
+ int GET_Y_LPARAM (int ) ;
+ int ScreenToClient (int ,TYPE_1__*) ;
+ scalar_t__ video_driver_window_get () ;
 
 __attribute__((used)) static void dinput_pointer_store_pos(
       struct pointer_status *pointer, WPARAM lParam)

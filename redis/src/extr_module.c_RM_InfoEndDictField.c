@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* info; scalar_t__ in_dict_field; } ;
-typedef  TYPE_1__ RedisModuleInfoCtx ;
+typedef TYPE_1__ RedisModuleInfoCtx ;
 
-/* Variables and functions */
- int REDISMODULE_ERR ; 
- int REDISMODULE_OK ; 
- int /*<<< orphan*/  sdsIncrLen (char*,int) ; 
- char* sdscat (char*,char*) ; 
- int sdslen (char*) ; 
+
+ int REDISMODULE_ERR ;
+ int REDISMODULE_OK ;
+ int sdsIncrLen (char*,int) ;
+ char* sdscat (char*,char*) ;
+ int sdslen (char*) ;
 
 int RM_InfoEndDictField(RedisModuleInfoCtx *ctx) {
     if (!ctx->in_dict_field)
         return REDISMODULE_ERR;
-    /* trim the last ',' if found. */
+
     if (ctx->info[sdslen(ctx->info)-1]==',')
         sdsIncrLen(ctx->info, -1);
     ctx->info = sdscat(ctx->info, "\r\n");

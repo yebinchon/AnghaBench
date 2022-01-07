@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_9__ {scalar_t__ eCoordType; int nDim2; } ;
 struct TYPE_8__ {TYPE_1__* aCoord; } ;
 struct TYPE_7__ {void* i; void* f; } ;
-typedef  TYPE_2__ RtreeCell ;
-typedef  TYPE_3__ Rtree ;
+typedef TYPE_2__ RtreeCell ;
+typedef TYPE_3__ Rtree ;
 
-/* Variables and functions */
- void* MAX (void*,void*) ; 
- void* MIN (void*,void*) ; 
- scalar_t__ RTREE_COORD_REAL32 ; 
+
+ void* MAX (void*,void*) ;
+ void* MIN (void*,void*) ;
+ scalar_t__ RTREE_COORD_REAL32 ;
 
 __attribute__((used)) static void cellUnion(Rtree *pRtree, RtreeCell *p1, RtreeCell *p2){
   int ii = 0;

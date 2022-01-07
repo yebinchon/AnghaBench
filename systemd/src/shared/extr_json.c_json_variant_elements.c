@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {size_t n_elements; struct TYPE_6__* reference; scalar_t__ is_reference; int /*<<< orphan*/  type; } ;
-typedef  TYPE_1__ JsonVariant ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IN_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JSON_VARIANT_ARRAY ; 
- TYPE_1__* JSON_VARIANT_MAGIC_EMPTY_ARRAY ; 
- TYPE_1__* JSON_VARIANT_MAGIC_EMPTY_OBJECT ; 
- int /*<<< orphan*/  JSON_VARIANT_OBJECT ; 
- int /*<<< orphan*/  json_variant_is_regular (TYPE_1__*) ; 
- int /*<<< orphan*/  log_debug (char*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {size_t n_elements; struct TYPE_6__* reference; scalar_t__ is_reference; int type; } ;
+typedef TYPE_1__ JsonVariant ;
+
+
+ int IN_SET (int ,int ,int ) ;
+ int JSON_VARIANT_ARRAY ;
+ TYPE_1__* JSON_VARIANT_MAGIC_EMPTY_ARRAY ;
+ TYPE_1__* JSON_VARIANT_MAGIC_EMPTY_OBJECT ;
+ int JSON_VARIANT_OBJECT ;
+ int json_variant_is_regular (TYPE_1__*) ;
+ int log_debug (char*) ;
 
 size_t json_variant_elements(JsonVariant *v) {
         if (!v)

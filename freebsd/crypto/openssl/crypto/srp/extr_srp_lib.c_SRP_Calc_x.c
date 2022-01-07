@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dig ;
-typedef  int /*<<< orphan*/  EVP_MD_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BN_bin2bn (unsigned char*,int,int /*<<< orphan*/ *) ; 
- scalar_t__ BN_bn2bin (int /*<<< orphan*/  const*,unsigned char*) ; 
- int BN_num_bytes (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EVP_DigestFinal_ex (int /*<<< orphan*/ *,unsigned char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_DigestInit_ex (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_DigestUpdate (int /*<<< orphan*/ *,...) ; 
- int /*<<< orphan*/  EVP_MD_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_MD_CTX_new () ; 
- int /*<<< orphan*/  EVP_sha1 () ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- unsigned char* OPENSSL_malloc (int) ; 
- int SHA_DIGEST_LENGTH ; 
- int strlen (char const*) ; 
+
+
+
+typedef int dig ;
+typedef int EVP_MD_CTX ;
+typedef int BIGNUM ;
+
+
+ int * BN_bin2bn (unsigned char*,int,int *) ;
+ scalar_t__ BN_bn2bin (int const*,unsigned char*) ;
+ int BN_num_bytes (int const*) ;
+ int EVP_DigestFinal_ex (int *,unsigned char*,int *) ;
+ int EVP_DigestInit_ex (int *,int ,int *) ;
+ int EVP_DigestUpdate (int *,...) ;
+ int EVP_MD_CTX_free (int *) ;
+ int * EVP_MD_CTX_new () ;
+ int EVP_sha1 () ;
+ int OPENSSL_free (unsigned char*) ;
+ unsigned char* OPENSSL_malloc (int) ;
+ int SHA_DIGEST_LENGTH ;
+ int strlen (char const*) ;
 
 BIGNUM *SRP_Calc_x(const BIGNUM *s, const char *user, const char *pass)
 {
     unsigned char dig[SHA_DIGEST_LENGTH];
     EVP_MD_CTX *ctxt;
-    unsigned char *cs = NULL;
-    BIGNUM *res = NULL;
+    unsigned char *cs = ((void*)0);
+    BIGNUM *res = ((void*)0);
 
-    if ((s == NULL) || (user == NULL) || (pass == NULL))
-        return NULL;
+    if ((s == ((void*)0)) || (user == ((void*)0)) || (pass == ((void*)0)))
+        return ((void*)0);
 
     ctxt = EVP_MD_CTX_new();
-    if (ctxt == NULL)
-        return NULL;
-    if ((cs = OPENSSL_malloc(BN_num_bytes(s))) == NULL)
+    if (ctxt == ((void*)0))
+        return ((void*)0);
+    if ((cs = OPENSSL_malloc(BN_num_bytes(s))) == ((void*)0))
         goto err;
 
-    if (!EVP_DigestInit_ex(ctxt, EVP_sha1(), NULL)
+    if (!EVP_DigestInit_ex(ctxt, EVP_sha1(), ((void*)0))
         || !EVP_DigestUpdate(ctxt, user, strlen(user))
         || !EVP_DigestUpdate(ctxt, ":", 1)
         || !EVP_DigestUpdate(ctxt, pass, strlen(pass))
-        || !EVP_DigestFinal_ex(ctxt, dig, NULL)
-        || !EVP_DigestInit_ex(ctxt, EVP_sha1(), NULL))
+        || !EVP_DigestFinal_ex(ctxt, dig, ((void*)0))
+        || !EVP_DigestInit_ex(ctxt, EVP_sha1(), ((void*)0)))
         goto err;
     if (BN_bn2bin(s, cs) < 0)
         goto err;
@@ -58,10 +58,10 @@ BIGNUM *SRP_Calc_x(const BIGNUM *s, const char *user, const char *pass)
         goto err;
 
     if (!EVP_DigestUpdate(ctxt, dig, sizeof(dig))
-        || !EVP_DigestFinal_ex(ctxt, dig, NULL))
+        || !EVP_DigestFinal_ex(ctxt, dig, ((void*)0)))
         goto err;
 
-    res = BN_bin2bn(dig, sizeof(dig), NULL);
+    res = BN_bin2bn(dig, sizeof(dig), ((void*)0));
 
  err:
     OPENSSL_free(cs);

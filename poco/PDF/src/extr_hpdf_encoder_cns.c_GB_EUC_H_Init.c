@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int uid_offset; int* xuid; scalar_t__ suppliment; scalar_t__ ordering; scalar_t__ registry; int /*<<< orphan*/  is_trial_byte_fn; int /*<<< orphan*/  is_lead_byte_fn; } ;
-struct TYPE_11__ {int /*<<< orphan*/  type; TYPE_1__* error; scalar_t__ attr; } ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int uid_offset; int* xuid; scalar_t__ suppliment; scalar_t__ ordering; scalar_t__ registry; int is_trial_byte_fn; int is_lead_byte_fn; } ;
+struct TYPE_11__ {int type; TYPE_1__* error; scalar_t__ attr; } ;
 struct TYPE_10__ {scalar_t__ error_no; } ;
-typedef  scalar_t__ HPDF_STATUS ;
-typedef  TYPE_2__* HPDF_Encoder ;
-typedef  TYPE_3__* HPDF_CMapEncoderAttr ;
+typedef scalar_t__ HPDF_STATUS ;
+typedef TYPE_2__* HPDF_Encoder ;
+typedef TYPE_3__* HPDF_CMapEncoderAttr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CMAP_ARRAY_GB_EUC_H ; 
- int /*<<< orphan*/  EUC_CN_UNICODE_ARRAY ; 
- scalar_t__ GB_EUC_AddCodeSpaceRange (TYPE_2__*) ; 
- int /*<<< orphan*/  GB_EUC_IsLeadByte ; 
- int /*<<< orphan*/  GB_EUC_IsTrialByte ; 
- int /*<<< orphan*/  GB_EUC_NOTDEF_RANGE ; 
- scalar_t__ HPDF_CMapEncoder_AddCMap (TYPE_2__*,int /*<<< orphan*/ ) ; 
- scalar_t__ HPDF_CMapEncoder_AddNotDefRange (TYPE_2__*,int /*<<< orphan*/ ) ; 
- scalar_t__ HPDF_CMapEncoder_InitAttr (TYPE_2__*) ; 
- int /*<<< orphan*/  HPDF_CMapEncoder_SetUnicodeArray (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_ENCODER_TYPE_DOUBLE_BYTE ; 
- scalar_t__ HPDF_LIMIT_MAX_NAME_LEN ; 
- scalar_t__ HPDF_OK ; 
- int /*<<< orphan*/  HPDF_StrCpy (scalar_t__,char*,scalar_t__) ; 
+
+ int CMAP_ARRAY_GB_EUC_H ;
+ int EUC_CN_UNICODE_ARRAY ;
+ scalar_t__ GB_EUC_AddCodeSpaceRange (TYPE_2__*) ;
+ int GB_EUC_IsLeadByte ;
+ int GB_EUC_IsTrialByte ;
+ int GB_EUC_NOTDEF_RANGE ;
+ scalar_t__ HPDF_CMapEncoder_AddCMap (TYPE_2__*,int ) ;
+ scalar_t__ HPDF_CMapEncoder_AddNotDefRange (TYPE_2__*,int ) ;
+ scalar_t__ HPDF_CMapEncoder_InitAttr (TYPE_2__*) ;
+ int HPDF_CMapEncoder_SetUnicodeArray (TYPE_2__*,int ) ;
+ int HPDF_ENCODER_TYPE_DOUBLE_BYTE ;
+ scalar_t__ HPDF_LIMIT_MAX_NAME_LEN ;
+ scalar_t__ HPDF_OK ;
+ int HPDF_StrCpy (scalar_t__,char*,scalar_t__) ;
 
 __attribute__((used)) static HPDF_STATUS
-GB_EUC_H_Init  (HPDF_Encoder  encoder)
+GB_EUC_H_Init (HPDF_Encoder encoder)
 {
     HPDF_CMapEncoderAttr attr;
     HPDF_STATUS ret;

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const uint8_t ;
-typedef  int /*<<< orphan*/  rescaler_t ;
-struct TYPE_9__ {int width; int height; int a_stride; int y_stride; int uv_stride; int argb_stride; scalar_t__ argb; int /*<<< orphan*/  const* v; int /*<<< orphan*/  const* u; int /*<<< orphan*/  const* y; int /*<<< orphan*/  const* a; int /*<<< orphan*/  use_argb; } ;
-typedef  TYPE_1__ WebPPicture ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AlphaMultiplyARGB (TYPE_1__*,int) ; 
- int /*<<< orphan*/  AlphaMultiplyY (TYPE_1__*,int) ; 
- int HALVE (int) ; 
- int /*<<< orphan*/  PictureGrabSpecs (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  RescalePlane (int /*<<< orphan*/  const*,int,int,int,int /*<<< orphan*/  const*,int,int,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  WebPInitAlphaProcessing () ; 
- int /*<<< orphan*/  WebPPictureAlloc (TYPE_1__*) ; 
- int /*<<< orphan*/  WebPPictureFree (TYPE_1__*) ; 
- int /*<<< orphan*/  WebPRescalerGetScaledDimensions (int,int,int*,int*) ; 
- int /*<<< orphan*/  WebPSafeFree (int /*<<< orphan*/ *) ; 
- scalar_t__ WebPSafeMalloc (unsigned long long,int) ; 
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int const uint8_t ;
+typedef int rescaler_t ;
+struct TYPE_9__ {int width; int height; int a_stride; int y_stride; int uv_stride; int argb_stride; scalar_t__ argb; int const* v; int const* u; int const* y; int const* a; int use_argb; } ;
+typedef TYPE_1__ WebPPicture ;
+
+
+ int AlphaMultiplyARGB (TYPE_1__*,int) ;
+ int AlphaMultiplyY (TYPE_1__*,int) ;
+ int HALVE (int) ;
+ int PictureGrabSpecs (TYPE_1__*,TYPE_1__*) ;
+ int RescalePlane (int const*,int,int,int,int const*,int,int,int,int *,int) ;
+ int WebPInitAlphaProcessing () ;
+ int WebPPictureAlloc (TYPE_1__*) ;
+ int WebPPictureFree (TYPE_1__*) ;
+ int WebPRescalerGetScaledDimensions (int,int,int*,int*) ;
+ int WebPSafeFree (int *) ;
+ scalar_t__ WebPSafeMalloc (unsigned long long,int) ;
 
 int WebPPictureRescale(WebPPicture* pic, int width, int height) {
   WebPPicture tmp;
   int prev_width, prev_height;
   rescaler_t* work;
 
-  if (pic == NULL) return 0;
+  if (pic == ((void*)0)) return 0;
   prev_width = pic->width;
   prev_height = pic->height;
   if (!WebPRescalerGetScaledDimensions(
@@ -49,19 +49,19 @@ int WebPPictureRescale(WebPPicture* pic, int width, int height) {
 
   if (!pic->use_argb) {
     work = (rescaler_t*)WebPSafeMalloc(2ULL * width, sizeof(*work));
-    if (work == NULL) {
+    if (work == ((void*)0)) {
       WebPPictureFree(&tmp);
       return 0;
     }
-    // If present, we need to rescale alpha first (for AlphaMultiplyY).
-    if (pic->a != NULL) {
+
+    if (pic->a != ((void*)0)) {
       WebPInitAlphaProcessing();
       RescalePlane(pic->a, prev_width, prev_height, pic->a_stride,
                    tmp.a, width, height, tmp.a_stride, work, 1);
     }
 
-    // We take transparency into account on the luma plane only. That's not
-    // totally exact blending, but still is a good approximation.
+
+
     AlphaMultiplyY(pic, 0);
     RescalePlane(pic->y, prev_width, prev_height, pic->y_stride,
                  tmp.y, width, height, tmp.y_stride, work, 1);
@@ -77,13 +77,13 @@ int WebPPictureRescale(WebPPicture* pic, int width, int height) {
                  HALVE(width), HALVE(height), tmp.uv_stride, work, 1);
   } else {
     work = (rescaler_t*)WebPSafeMalloc(2ULL * width * 4, sizeof(*work));
-    if (work == NULL) {
+    if (work == ((void*)0)) {
       WebPPictureFree(&tmp);
       return 0;
     }
-    // In order to correctly interpolate colors, we need to apply the alpha
-    // weighting first (black-matting), scale the RGB values, and remove
-    // the premultiplication afterward (while preserving the alpha channel).
+
+
+
     WebPInitAlphaProcessing();
     AlphaMultiplyARGB(pic, 0);
     RescalePlane((const uint8_t*)pic->argb, prev_width, prev_height,

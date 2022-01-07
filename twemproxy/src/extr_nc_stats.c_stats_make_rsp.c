@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-struct stats_server {int /*<<< orphan*/  metric; int /*<<< orphan*/  name; } ;
-struct stats_pool {int /*<<< orphan*/  server; int /*<<< orphan*/  metric; int /*<<< orphan*/  name; } ;
-struct stats {int /*<<< orphan*/  sum; } ;
-typedef  scalar_t__ rstatus_t ;
 
-/* Variables and functions */
- scalar_t__ NC_OK ; 
- void* array_get (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ array_n (int /*<<< orphan*/ *) ; 
- scalar_t__ stats_add_footer (struct stats*) ; 
- scalar_t__ stats_add_header (struct stats*) ; 
- scalar_t__ stats_begin_nesting (struct stats*,int /*<<< orphan*/ *) ; 
- scalar_t__ stats_copy_metric (struct stats*,int /*<<< orphan*/ *) ; 
- scalar_t__ stats_end_nesting (struct stats*) ; 
+
+
+
+typedef scalar_t__ uint32_t ;
+struct stats_server {int metric; int name; } ;
+struct stats_pool {int server; int metric; int name; } ;
+struct stats {int sum; } ;
+typedef scalar_t__ rstatus_t ;
+
+
+ scalar_t__ NC_OK ;
+ void* array_get (int *,scalar_t__) ;
+ scalar_t__ array_n (int *) ;
+ scalar_t__ stats_add_footer (struct stats*) ;
+ scalar_t__ stats_add_header (struct stats*) ;
+ scalar_t__ stats_begin_nesting (struct stats*,int *) ;
+ scalar_t__ stats_copy_metric (struct stats*,int *) ;
+ scalar_t__ stats_end_nesting (struct stats*) ;
 
 __attribute__((used)) static rstatus_t
 stats_make_rsp(struct stats *st)
@@ -46,7 +46,7 @@ stats_make_rsp(struct stats *st)
             return status;
         }
 
-        /* copy pool metric from sum(c) to buffer */
+
         status = stats_copy_metric(st, &stp->metric);
         if (status != NC_OK) {
             return status;
@@ -60,7 +60,7 @@ stats_make_rsp(struct stats *st)
                 return status;
             }
 
-            /* copy server metric from sum(c) to buffer */
+
             status = stats_copy_metric(st, &sts->metric);
             if (status != NC_OK) {
                 return status;

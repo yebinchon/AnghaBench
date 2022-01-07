@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct in_ev {int dummy; } ;
 
-/* Variables and functions */
- int TGL_UPDATE_ACCESS_HASH ; 
- int TGL_UPDATE_ADMIN ; 
- int TGL_UPDATE_BLOCKED ; 
- int TGL_UPDATE_CONTACT ; 
- int TGL_UPDATE_FLAGS ; 
- int TGL_UPDATE_MEMBERS ; 
- int TGL_UPDATE_NAME ; 
- int TGL_UPDATE_PHONE ; 
- int TGL_UPDATE_PHOTO ; 
- int TGL_UPDATE_REAL_NAME ; 
- int TGL_UPDATE_REQUESTED ; 
- int TGL_UPDATE_TITLE ; 
- int TGL_UPDATE_USERNAME ; 
- int TGL_UPDATE_WORKING ; 
- int /*<<< orphan*/  mprintf (struct in_ev*,char*) ; 
+
+ int TGL_UPDATE_ACCESS_HASH ;
+ int TGL_UPDATE_ADMIN ;
+ int TGL_UPDATE_BLOCKED ;
+ int TGL_UPDATE_CONTACT ;
+ int TGL_UPDATE_FLAGS ;
+ int TGL_UPDATE_MEMBERS ;
+ int TGL_UPDATE_NAME ;
+ int TGL_UPDATE_PHONE ;
+ int TGL_UPDATE_PHOTO ;
+ int TGL_UPDATE_REAL_NAME ;
+ int TGL_UPDATE_REQUESTED ;
+ int TGL_UPDATE_TITLE ;
+ int TGL_UPDATE_USERNAME ;
+ int TGL_UPDATE_WORKING ;
+ int mprintf (struct in_ev*,char*) ;
 
 void print_peer_updates (struct in_ev *ev, int flags) {
   if (flags & TGL_UPDATE_PHONE) {

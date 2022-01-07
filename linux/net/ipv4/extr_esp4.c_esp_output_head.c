@@ -1,140 +1,140 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
 struct page_frag {int offset; struct page* page; } ;
-struct xfrm_state {int /*<<< orphan*/  lock; struct page_frag xfrag; scalar_t__ encap; } ;
-struct sock {int /*<<< orphan*/  sk_wmem_alloc; } ;
+struct xfrm_state {int lock; struct page_frag xfrag; scalar_t__ encap; } ;
+struct sock {int sk_wmem_alloc; } ;
 struct sk_buff {int len; int data_len; int truesize; struct sock* sk; } ;
 struct page {int dummy; } ;
 struct ip_esp_hdr {int dummy; } ;
-struct esp_info {int tailen; int inplace; int /*<<< orphan*/  proto; int /*<<< orphan*/  plen; int /*<<< orphan*/  tfclen; struct ip_esp_hdr* esph; } ;
+struct esp_info {int tailen; int inplace; int proto; int plen; int tfclen; struct ip_esp_hdr* esph; } ;
 struct TYPE_2__ {int nr_frags; } ;
 
-/* Variables and functions */
- int ALIGN (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GFP_ATOMIC ; 
- int /*<<< orphan*/  L1_CACHE_BYTES ; 
- int MAX_SKB_FRAGS ; 
- int /*<<< orphan*/  __skb_fill_page_desc (struct sk_buff*,int,struct page*,int,int) ; 
- int /*<<< orphan*/  esp_output_fill_trailer (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int esp_output_udp_encap (struct xfrm_state*,struct sk_buff*,struct esp_info*) ; 
- int /*<<< orphan*/  get_page (struct page*) ; 
- int /*<<< orphan*/ * kmap_atomic (struct page*) ; 
- int /*<<< orphan*/  kunmap_atomic (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pskb_put (struct sk_buff*,struct sk_buff*,int) ; 
- int /*<<< orphan*/  refcount_add (int,int /*<<< orphan*/ *) ; 
- scalar_t__ sk_fullsock (struct sock*) ; 
- int /*<<< orphan*/  skb_cloned (struct sk_buff*) ; 
- int skb_cow_data (struct sk_buff*,int,struct sk_buff**) ; 
- int /*<<< orphan*/  skb_has_frag_list (struct sk_buff*) ; 
- int /*<<< orphan*/  skb_page_frag_refill (int,struct page_frag*,int /*<<< orphan*/ ) ; 
- TYPE_1__* skb_shinfo (struct sk_buff*) ; 
- int /*<<< orphan*/ * skb_tail_pointer (struct sk_buff*) ; 
- int skb_tailroom (struct sk_buff*) ; 
- unsigned char* skb_transport_header (struct sk_buff*) ; 
- int /*<<< orphan*/  spin_lock_bh (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_bh (int /*<<< orphan*/ *) ; 
- scalar_t__ unlikely (int) ; 
+
+ int ALIGN (int,int ) ;
+ int GFP_ATOMIC ;
+ int L1_CACHE_BYTES ;
+ int MAX_SKB_FRAGS ;
+ int __skb_fill_page_desc (struct sk_buff*,int,struct page*,int,int) ;
+ int esp_output_fill_trailer (int *,int ,int ,int ) ;
+ int esp_output_udp_encap (struct xfrm_state*,struct sk_buff*,struct esp_info*) ;
+ int get_page (struct page*) ;
+ int * kmap_atomic (struct page*) ;
+ int kunmap_atomic (int *) ;
+ int pskb_put (struct sk_buff*,struct sk_buff*,int) ;
+ int refcount_add (int,int *) ;
+ scalar_t__ sk_fullsock (struct sock*) ;
+ int skb_cloned (struct sk_buff*) ;
+ int skb_cow_data (struct sk_buff*,int,struct sk_buff**) ;
+ int skb_has_frag_list (struct sk_buff*) ;
+ int skb_page_frag_refill (int,struct page_frag*,int ) ;
+ TYPE_1__* skb_shinfo (struct sk_buff*) ;
+ int * skb_tail_pointer (struct sk_buff*) ;
+ int skb_tailroom (struct sk_buff*) ;
+ unsigned char* skb_transport_header (struct sk_buff*) ;
+ int spin_lock_bh (int *) ;
+ int spin_unlock_bh (int *) ;
+ scalar_t__ unlikely (int) ;
 
 int esp_output_head(struct xfrm_state *x, struct sk_buff *skb, struct esp_info *esp)
 {
-	u8 *tail;
-	u8 *vaddr;
-	int nfrags;
-	int esph_offset;
-	struct page *page;
-	struct sk_buff *trailer;
-	int tailen = esp->tailen;
+ u8 *tail;
+ u8 *vaddr;
+ int nfrags;
+ int esph_offset;
+ struct page *page;
+ struct sk_buff *trailer;
+ int tailen = esp->tailen;
 
-	/* this is non-NULL only with UDP Encapsulation */
-	if (x->encap) {
-		int err = esp_output_udp_encap(x, skb, esp);
 
-		if (err < 0)
-			return err;
-	}
+ if (x->encap) {
+  int err = esp_output_udp_encap(x, skb, esp);
 
-	if (!skb_cloned(skb)) {
-		if (tailen <= skb_tailroom(skb)) {
-			nfrags = 1;
-			trailer = skb;
-			tail = skb_tail_pointer(trailer);
+  if (err < 0)
+   return err;
+ }
 
-			goto skip_cow;
-		} else if ((skb_shinfo(skb)->nr_frags < MAX_SKB_FRAGS)
-			   && !skb_has_frag_list(skb)) {
-			int allocsize;
-			struct sock *sk = skb->sk;
-			struct page_frag *pfrag = &x->xfrag;
+ if (!skb_cloned(skb)) {
+  if (tailen <= skb_tailroom(skb)) {
+   nfrags = 1;
+   trailer = skb;
+   tail = skb_tail_pointer(trailer);
 
-			esp->inplace = false;
+   goto skip_cow;
+  } else if ((skb_shinfo(skb)->nr_frags < MAX_SKB_FRAGS)
+      && !skb_has_frag_list(skb)) {
+   int allocsize;
+   struct sock *sk = skb->sk;
+   struct page_frag *pfrag = &x->xfrag;
 
-			allocsize = ALIGN(tailen, L1_CACHE_BYTES);
+   esp->inplace = 0;
 
-			spin_lock_bh(&x->lock);
+   allocsize = ALIGN(tailen, L1_CACHE_BYTES);
 
-			if (unlikely(!skb_page_frag_refill(allocsize, pfrag, GFP_ATOMIC))) {
-				spin_unlock_bh(&x->lock);
-				goto cow;
-			}
+   spin_lock_bh(&x->lock);
 
-			page = pfrag->page;
-			get_page(page);
+   if (unlikely(!skb_page_frag_refill(allocsize, pfrag, GFP_ATOMIC))) {
+    spin_unlock_bh(&x->lock);
+    goto cow;
+   }
 
-			vaddr = kmap_atomic(page);
+   page = pfrag->page;
+   get_page(page);
 
-			tail = vaddr + pfrag->offset;
+   vaddr = kmap_atomic(page);
 
-			esp_output_fill_trailer(tail, esp->tfclen, esp->plen, esp->proto);
+   tail = vaddr + pfrag->offset;
 
-			kunmap_atomic(vaddr);
+   esp_output_fill_trailer(tail, esp->tfclen, esp->plen, esp->proto);
 
-			nfrags = skb_shinfo(skb)->nr_frags;
+   kunmap_atomic(vaddr);
 
-			__skb_fill_page_desc(skb, nfrags, page, pfrag->offset,
-					     tailen);
-			skb_shinfo(skb)->nr_frags = ++nfrags;
+   nfrags = skb_shinfo(skb)->nr_frags;
 
-			pfrag->offset = pfrag->offset + allocsize;
+   __skb_fill_page_desc(skb, nfrags, page, pfrag->offset,
+          tailen);
+   skb_shinfo(skb)->nr_frags = ++nfrags;
 
-			spin_unlock_bh(&x->lock);
+   pfrag->offset = pfrag->offset + allocsize;
 
-			nfrags++;
+   spin_unlock_bh(&x->lock);
 
-			skb->len += tailen;
-			skb->data_len += tailen;
-			skb->truesize += tailen;
-			if (sk && sk_fullsock(sk))
-				refcount_add(tailen, &sk->sk_wmem_alloc);
+   nfrags++;
 
-			goto out;
-		}
-	}
+   skb->len += tailen;
+   skb->data_len += tailen;
+   skb->truesize += tailen;
+   if (sk && sk_fullsock(sk))
+    refcount_add(tailen, &sk->sk_wmem_alloc);
+
+   goto out;
+  }
+ }
 
 cow:
-	esph_offset = (unsigned char *)esp->esph - skb_transport_header(skb);
+ esph_offset = (unsigned char *)esp->esph - skb_transport_header(skb);
 
-	nfrags = skb_cow_data(skb, tailen, &trailer);
-	if (nfrags < 0)
-		goto out;
-	tail = skb_tail_pointer(trailer);
-	esp->esph = (struct ip_esp_hdr *)(skb_transport_header(skb) + esph_offset);
+ nfrags = skb_cow_data(skb, tailen, &trailer);
+ if (nfrags < 0)
+  goto out;
+ tail = skb_tail_pointer(trailer);
+ esp->esph = (struct ip_esp_hdr *)(skb_transport_header(skb) + esph_offset);
 
 skip_cow:
-	esp_output_fill_trailer(tail, esp->tfclen, esp->plen, esp->proto);
-	pskb_put(skb, trailer, tailen);
+ esp_output_fill_trailer(tail, esp->tfclen, esp->plen, esp->proto);
+ pskb_put(skb, trailer, tailen);
 
 out:
-	return nfrags;
+ return nfrags;
 }

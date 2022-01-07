@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  IsAdvancedView; } ;
-typedef  char TCHAR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ComboBox_GetText (int /*<<< orphan*/ ,char*,int) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int /*<<< orphan*/  IDC_COMBO_CHARSET ; 
- int /*<<< orphan*/  IDC_FONTCOMBO ; 
- int /*<<< orphan*/  KEY_SET_VALUE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  REG_DWORD ; 
- int /*<<< orphan*/  REG_OPTION_NON_VOLATILE ; 
- int /*<<< orphan*/  REG_SZ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- scalar_t__ RegCreateKeyEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegSetValueEx (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__ Settings ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  g_szGeneralRegKey ; 
- int /*<<< orphan*/  hCharmapDlg ; 
- int /*<<< orphan*/  hWnd ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int IsAdvancedView; } ;
+typedef char TCHAR ;
+typedef int LPBYTE ;
+typedef int * HKEY ;
+typedef int DWORD ;
+
+
+ int ComboBox_GetText (int ,char*,int) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int GetDlgItem (int ,int ) ;
+ int HKEY_CURRENT_USER ;
+ int IDC_COMBO_CHARSET ;
+ int IDC_FONTCOMBO ;
+ int KEY_SET_VALUE ;
+ int MAX_PATH ;
+ int REG_DWORD ;
+ int REG_OPTION_NON_VOLATILE ;
+ int REG_SZ ;
+ int RegCloseKey (int *) ;
+ scalar_t__ RegCreateKeyEx (int ,int ,int ,int *,int ,int ,int *,int **,int *) ;
+ int RegSetValueEx (int *,int ,int ,int ,int ,int ) ;
+ TYPE_1__ Settings ;
+ int _T (char*) ;
+ int g_szGeneralRegKey ;
+ int hCharmapDlg ;
+ int hWnd ;
 
 extern void SaveSettings(void)
 {
-    HKEY hKey = NULL;
+    HKEY hKey = ((void*)0);
 
-    if (RegCreateKeyEx(HKEY_CURRENT_USER, g_szGeneralRegKey, 0, NULL, REG_OPTION_NON_VOLATILE, KEY_SET_VALUE, NULL, &hKey, NULL) == ERROR_SUCCESS)
+    if (RegCreateKeyEx(HKEY_CURRENT_USER, g_szGeneralRegKey, 0, ((void*)0), REG_OPTION_NON_VOLATILE, KEY_SET_VALUE, ((void*)0), &hKey, ((void*)0)) == ERROR_SUCCESS)
     {
         TCHAR szBuffer[MAX_PATH];
 

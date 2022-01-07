@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  hf_g_filt; int /*<<< orphan*/  hf_gen; int /*<<< orphan*/  autocorrelate; int /*<<< orphan*/  qmf_deint_bfly; int /*<<< orphan*/  qmf_deint_neg; int /*<<< orphan*/  qmf_post_shuffle; int /*<<< orphan*/  qmf_pre_shuffle; int /*<<< orphan*/  neg_odd_64; int /*<<< orphan*/  sum_square; int /*<<< orphan*/  sum64x5; } ;
-typedef  TYPE_1__ SBRDSPContext ;
 
-/* Variables and functions */
- scalar_t__ check_func (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ff_sbrdsp_init (TYPE_1__*) ; 
- int /*<<< orphan*/  report (char*) ; 
- int /*<<< orphan*/  test_autocorrelate () ; 
- int /*<<< orphan*/  test_hf_apply_noise (TYPE_1__*) ; 
- int /*<<< orphan*/  test_hf_g_filt () ; 
- int /*<<< orphan*/  test_hf_gen () ; 
- int /*<<< orphan*/  test_neg_odd_64 () ; 
- int /*<<< orphan*/  test_qmf_deint_bfly () ; 
- int /*<<< orphan*/  test_qmf_deint_neg () ; 
- int /*<<< orphan*/  test_qmf_post_shuffle () ; 
- int /*<<< orphan*/  test_qmf_pre_shuffle () ; 
- int /*<<< orphan*/  test_sum64x5 () ; 
- int /*<<< orphan*/  test_sum_square () ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int hf_g_filt; int hf_gen; int autocorrelate; int qmf_deint_bfly; int qmf_deint_neg; int qmf_post_shuffle; int qmf_pre_shuffle; int neg_odd_64; int sum_square; int sum64x5; } ;
+typedef TYPE_1__ SBRDSPContext ;
+
+
+ scalar_t__ check_func (int ,char*) ;
+ int ff_sbrdsp_init (TYPE_1__*) ;
+ int report (char*) ;
+ int test_autocorrelate () ;
+ int test_hf_apply_noise (TYPE_1__*) ;
+ int test_hf_g_filt () ;
+ int test_hf_gen () ;
+ int test_neg_odd_64 () ;
+ int test_qmf_deint_bfly () ;
+ int test_qmf_deint_neg () ;
+ int test_qmf_post_shuffle () ;
+ int test_qmf_pre_shuffle () ;
+ int test_sum64x5 () ;
+ int test_sum_square () ;
 
 void checkasm_check_sbrdsp(void)
 {

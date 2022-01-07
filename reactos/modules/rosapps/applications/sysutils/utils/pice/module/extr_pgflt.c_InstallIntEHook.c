@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENTER_FUNC () ; 
- int /*<<< orphan*/  LEAVE_FUNC () ; 
- int /*<<< orphan*/  MaskIrqs () ; 
- scalar_t__ OldIntEHandler ; 
- scalar_t__ SetGlobalInt (int,scalar_t__) ; 
- int /*<<< orphan*/  UnmaskIrqs () ; 
+
+
+
+typedef scalar_t__ ULONG ;
+
+
+ int DPRINT (int ) ;
+ int ENTER_FUNC () ;
+ int LEAVE_FUNC () ;
+ int MaskIrqs () ;
+ scalar_t__ OldIntEHandler ;
+ scalar_t__ SetGlobalInt (int,scalar_t__) ;
+ int UnmaskIrqs () ;
 
 void InstallIntEHook(void)
 {
-	ULONG LocalIntEHandler;
+ ULONG LocalIntEHandler;
 
-	ENTER_FUNC();
+ ENTER_FUNC();
 
-	MaskIrqs();
-	if(!OldIntEHandler)
-	{
-		__asm__ __volatile__("mov $NewIntEHandler,%0"
-			:"=r" (LocalIntEHandler)
-			:
-			:"eax");
-		OldIntEHandler=SetGlobalInt(0x0E,(ULONG)LocalIntEHandler);
-	}
-	UnmaskIrqs();
-	DPRINT((0,"OldIntE @ %x\n", OldIntEHandler));
+ MaskIrqs();
+ if(!OldIntEHandler)
+ {
+  __asm__ __volatile__("mov $NewIntEHandler,%0"
+   :"=r" (LocalIntEHandler)
+   :
+   :"eax");
+  OldIntEHandler=SetGlobalInt(0x0E,(ULONG)LocalIntEHandler);
+ }
+ UnmaskIrqs();
+ DPRINT((0,"OldIntE @ %x\n", OldIntEHandler));
     LEAVE_FUNC();
 }

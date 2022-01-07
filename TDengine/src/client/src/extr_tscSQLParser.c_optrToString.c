@@ -1,37 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int nSQLOptr; } ;
-typedef  TYPE_1__ tSQLExpr ;
-typedef  int /*<<< orphan*/  int32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
-
-/* Variables and functions */
-#define  TK_DIVIDE 139 
-#define  TK_EQ 138 
-#define  TK_GE 137 
-#define  TK_GT 136 
-#define  TK_LE 135 
-#define  TK_LIKE 134 
-#define  TK_LT 133 
-#define  TK_MINUS 132 
-#define  TK_NE 131 
-#define  TK_PLUS 130 
-#define  TK_REM 129 
-#define  TK_STAR 128 
- int /*<<< orphan*/  TSDB_CODE_INVALID_SQL ; 
- int /*<<< orphan*/  TSDB_CODE_SUCCESS ; 
- int /*<<< orphan*/  sprintf (char*,char*,char const*) ; 
+typedef TYPE_1__ tSQLExpr ;
+typedef int int32_t ;
+typedef int int16_t ;
+ int TSDB_CODE_INVALID_SQL ;
+ int TSDB_CODE_SUCCESS ;
+ int sprintf (char*,char*,char const*) ;
 
 __attribute__((used)) static int32_t optrToString(tSQLExpr* pExpr, char** exprString) {
   const char* le = "<=";
@@ -40,47 +26,47 @@ __attribute__((used)) static int32_t optrToString(tSQLExpr* pExpr, char** exprSt
   const char* likeOptr = "LIKE";
 
   switch (pExpr->nSQLOptr) {
-    case TK_LE: {
+    case 135: {
       *(int16_t*)(*exprString) = *(int16_t*)le;
       *exprString += 1;
       break;
     }
-    case TK_GE: {
+    case 137: {
       *(int16_t*)(*exprString) = *(int16_t*)ge;
       *exprString += 1;
       break;
     }
-    case TK_NE: {
+    case 131: {
       *(int16_t*)(*exprString) = *(int16_t*)ne;
       *exprString += 1;
       break;
     }
 
-    case TK_LT:
+    case 133:
       *(*exprString) = '<';
       break;
-    case TK_GT:
+    case 136:
       *(*exprString) = '>';
       break;
-    case TK_EQ:
+    case 138:
       *(*exprString) = '=';
       break;
-    case TK_PLUS:
+    case 130:
       *(*exprString) = '+';
       break;
-    case TK_MINUS:
+    case 132:
       *(*exprString) = '-';
       break;
-    case TK_STAR:
+    case 128:
       *(*exprString) = '*';
       break;
-    case TK_DIVIDE:
+    case 139:
       *(*exprString) = '/';
       break;
-    case TK_REM:
+    case 129:
       *(*exprString) = '%';
       break;
-    case TK_LIKE: {
+    case 134: {
       int32_t len = sprintf(*exprString, " %s ", likeOptr);
       *exprString += (len - 1);
       break;

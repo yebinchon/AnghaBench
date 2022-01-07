@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  generated_endpoint ;
-typedef  int ULONG ;
-struct TYPE_9__ {TYPE_1__* protseq; int /*<<< orphan*/  protseq_entry; int /*<<< orphan*/  Endpoint; } ;
-struct TYPE_8__ {int /*<<< orphan*/  listen_pipe; } ;
-struct TYPE_7__ {int /*<<< orphan*/  cs; int /*<<< orphan*/  listeners; int /*<<< orphan*/  Protseq; } ;
-typedef  TYPE_1__ RpcServerProtseq ;
-typedef  TYPE_2__ RpcConnection_np ;
-typedef  TYPE_3__ RpcConnection ;
-typedef  scalar_t__ RPC_STATUS ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int GetCurrentProcessId () ; 
- int InterlockedIncrement (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- scalar_t__ RPCRT4_CreateConnection (TYPE_3__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RPC_S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  list_add_head (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ncalrpc_pipe_name (int /*<<< orphan*/ ) ; 
- scalar_t__ rpcrt4_conn_create_pipe (TYPE_3__*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int,int) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int generated_endpoint ;
+typedef int ULONG ;
+struct TYPE_9__ {TYPE_1__* protseq; int protseq_entry; int Endpoint; } ;
+struct TYPE_8__ {int listen_pipe; } ;
+struct TYPE_7__ {int cs; int listeners; int Protseq; } ;
+typedef TYPE_1__ RpcServerProtseq ;
+typedef TYPE_2__ RpcConnection_np ;
+typedef TYPE_3__ RpcConnection ;
+typedef scalar_t__ RPC_STATUS ;
+typedef int LONG ;
+typedef int DWORD ;
+
+
+ int EnterCriticalSection (int *) ;
+ int GetCurrentProcessId () ;
+ int InterlockedIncrement (int *) ;
+ int LeaveCriticalSection (int *) ;
+ scalar_t__ RPCRT4_CreateConnection (TYPE_3__**,int ,int ,int *,char const*,int *,int *,int *,int *) ;
+ scalar_t__ RPC_S_OK ;
+ int TRUE ;
+ int list_add_head (int *,int *) ;
+ int ncalrpc_pipe_name (int ) ;
+ scalar_t__ rpcrt4_conn_create_pipe (TYPE_3__*) ;
+ int snprintf (char*,int,char*,int,int) ;
 
 __attribute__((used)) static RPC_STATUS rpcrt4_protseq_ncalrpc_open_endpoint(RpcServerProtseq* protseq, const char *endpoint)
 {
@@ -54,8 +54,8 @@ __attribute__((used)) static RPC_STATUS rpcrt4_protseq_ncalrpc_open_endpoint(Rpc
     endpoint = generated_endpoint;
   }
 
-  r = RPCRT4_CreateConnection(&Connection, TRUE, protseq->Protseq, NULL,
-                              endpoint, NULL, NULL, NULL, NULL);
+  r = RPCRT4_CreateConnection(&Connection, TRUE, protseq->Protseq, ((void*)0),
+                              endpoint, ((void*)0), ((void*)0), ((void*)0), ((void*)0));
   if (r != RPC_S_OK)
       return r;
 

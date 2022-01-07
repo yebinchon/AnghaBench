@@ -1,93 +1,93 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  THREAD ;
-typedef  int /*<<< orphan*/  IP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddHostCache (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  Copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int GetHostCache (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetHostNameThread ; 
- int GetNetBiosName (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int IsEmptyStr (char*) ; 
- scalar_t__ IsIP4 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewThread (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseThread (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  StrCpy (char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TIMEOUT_HOSTNAME ; 
- int /*<<< orphan*/  WaitThread (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WaitThreadInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ZeroMalloc (int) ; 
+
+
+
+typedef int UINT ;
+typedef int THREAD ;
+typedef int IP ;
+
+
+ int AddHostCache (int *,char*) ;
+ int Copy (int *,int *,int) ;
+ int GetHostCache (char*,int ,int *) ;
+ int GetHostNameThread ;
+ int GetNetBiosName (char*,int ,int *) ;
+ int IsEmptyStr (char*) ;
+ scalar_t__ IsIP4 (int *) ;
+ int * NewThread (int ,int *) ;
+ int ReleaseThread (int *) ;
+ int StrCpy (char*,int ,char*) ;
+ int TIMEOUT_HOSTNAME ;
+ int WaitThread (int *,int ) ;
+ int WaitThreadInit (int *) ;
+ int * ZeroMalloc (int) ;
 
 bool GetHostName(char *hostname, UINT size, IP *ip)
 {
-	THREAD *t;
-	IP *p_ip;
-	bool ret;
-	// Validate arguments
-	if (hostname == NULL || ip == NULL)
-	{
-		return false;
-	}
+ THREAD *t;
+ IP *p_ip;
+ bool ret;
 
-	if (GetHostCache(hostname, size, ip))
-	{
-		if (IsEmptyStr(hostname) == false)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
+ if (hostname == ((void*)0) || ip == ((void*)0))
+ {
+  return 0;
+ }
 
-	p_ip = ZeroMalloc(sizeof(IP));
-	Copy(p_ip, ip, sizeof(IP));
+ if (GetHostCache(hostname, size, ip))
+ {
+  if (IsEmptyStr(hostname) == 0)
+  {
+   return 1;
+  }
+  else
+  {
+   return 0;
+  }
+ }
 
-	t = NewThread(GetHostNameThread, p_ip);
+ p_ip = ZeroMalloc(sizeof(IP));
+ Copy(p_ip, ip, sizeof(IP));
 
-	WaitThreadInit(t);
+ t = NewThread(GetHostNameThread, p_ip);
 
-	WaitThread(t, TIMEOUT_HOSTNAME);
+ WaitThreadInit(t);
 
-	ReleaseThread(t);
+ WaitThread(t, TIMEOUT_HOSTNAME);
 
-	ret = GetHostCache(hostname, size, ip);
-	if (ret == false)
-	{
-		if (IsIP4(ip))
-		{
-			ret = GetNetBiosName(hostname, size, ip);
-			if (ret)
-			{
-				AddHostCache(ip, hostname);
-			}
-		}
-	}
-	else
-	{
-		if (IsEmptyStr(hostname))
-		{
-			ret = false;
-		}
-	}
-	if (ret == false)
-	{
-		AddHostCache(ip, "");
-		StrCpy(hostname, size, "");
-	}
+ ReleaseThread(t);
 
-	return ret;
+ ret = GetHostCache(hostname, size, ip);
+ if (ret == 0)
+ {
+  if (IsIP4(ip))
+  {
+   ret = GetNetBiosName(hostname, size, ip);
+   if (ret)
+   {
+    AddHostCache(ip, hostname);
+   }
+  }
+ }
+ else
+ {
+  if (IsEmptyStr(hostname))
+  {
+   ret = 0;
+  }
+ }
+ if (ret == 0)
+ {
+  AddHostCache(ip, "");
+  StrCpy(hostname, size, "");
+ }
+
+ return ret;
 }

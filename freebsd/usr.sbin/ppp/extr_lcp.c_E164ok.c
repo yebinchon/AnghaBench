@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct callback {int /*<<< orphan*/  msg; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  strncpy (char*,int /*<<< orphan*/ ,int) ; 
- char* strtok (char*,char*) ; 
+
+
+
+struct callback {int msg; } ;
+
+
+ int memcmp (char*,char*,int) ;
+ int strcmp (int ,char*) ;
+ int strlen (char*) ;
+ int strncpy (char*,int ,int) ;
+ char* strtok (char*,char*) ;
 
 __attribute__((used)) static int
 E164ok(struct callback *cb, char *req, int sz)
@@ -30,7 +30,7 @@ E164ok(struct callback *cb, char *req, int sz)
 
   strncpy(list, cb->msg, sizeof list - 1);
   list[sizeof list - 1] = '\0';
-  for (next = strtok(list, ","); next; next = strtok(NULL, ",")) {
+  for (next = strtok(list, ","); next; next = strtok(((void*)0), ",")) {
     len = strlen(next);
     if (sz == len && !memcmp(list, req, sz))
       return 1;

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  ptrdiff_t ;
-typedef  int /*<<< orphan*/  int16_t ;
-struct TYPE_3__ {int /*<<< orphan*/  scantable; } ;
-typedef  int /*<<< orphan*/  PutBitContext ;
-typedef  TYPE_1__ ProresContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  encode_acs (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  encode_dcs (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  flush_put_bits (int /*<<< orphan*/ *) ; 
- int put_bits_count (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+typedef int ptrdiff_t ;
+typedef int int16_t ;
+struct TYPE_3__ {int scantable; } ;
+typedef int PutBitContext ;
+typedef TYPE_1__ ProresContext ;
+
+
+ int encode_acs (int *,int *,int,int,int ,int const*) ;
+ int encode_dcs (int *,int *,int,int const) ;
+ int flush_put_bits (int *) ;
+ int put_bits_count (int *) ;
 
 __attribute__((used)) static int encode_slice_plane(ProresContext *ctx, PutBitContext *pb,
                               const uint16_t *src, ptrdiff_t linesize,

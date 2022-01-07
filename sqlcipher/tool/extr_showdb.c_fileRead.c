@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ sqlite3_int64 ;
-struct TYPE_6__ {scalar_t__ bRaw; int /*<<< orphan*/  dbfd; TYPE_2__* pFd; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ sqlite3_int64 ;
+struct TYPE_6__ {scalar_t__ bRaw; int dbfd; TYPE_2__* pFd; } ;
 struct TYPE_5__ {TYPE_1__* pMethods; } ;
 struct TYPE_4__ {int (* xRead ) (TYPE_2__*,void*,int,scalar_t__) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- int SQLITE_IOERR_SHORT_READ ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- TYPE_3__ g ; 
- int /*<<< orphan*/  lseek (int /*<<< orphan*/ ,long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  out_of_memory () ; 
- int read (int /*<<< orphan*/ ,unsigned char*,int) ; 
- unsigned char* sqlite3_malloc (int) ; 
- int /*<<< orphan*/  stderr ; 
- int stub1 (TYPE_2__*,void*,int,scalar_t__) ; 
+
+ int SEEK_SET ;
+ int SQLITE_IOERR_SHORT_READ ;
+ int SQLITE_OK ;
+ int exit (int) ;
+ int fprintf (int ,char*,int) ;
+ TYPE_3__ g ;
+ int lseek (int ,long,int ) ;
+ int memset (unsigned char*,int ,int) ;
+ int out_of_memory () ;
+ int read (int ,unsigned char*,int) ;
+ unsigned char* sqlite3_malloc (int) ;
+ int stderr ;
+ int stub1 (TYPE_2__*,void*,int,scalar_t__) ;
 
 __attribute__((used)) static unsigned char *fileRead(sqlite3_int64 ofst, int nByte){
   unsigned char *aData;

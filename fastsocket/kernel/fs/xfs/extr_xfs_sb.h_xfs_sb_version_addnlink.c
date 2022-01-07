@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  sb_versionnum; } ;
-typedef  TYPE_1__ xfs_sb_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XFS_SB_VERSION_2 ; 
- int /*<<< orphan*/  XFS_SB_VERSION_3 ; 
- int /*<<< orphan*/  XFS_SB_VERSION_NLINKBIT ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int sb_versionnum; } ;
+typedef TYPE_1__ xfs_sb_t ;
+
+
+ int XFS_SB_VERSION_2 ;
+ int XFS_SB_VERSION_3 ;
+ int XFS_SB_VERSION_NLINKBIT ;
 
 __attribute__((used)) static inline void xfs_sb_version_addnlink(xfs_sb_t *sbp)
 {
-	if (sbp->sb_versionnum <= XFS_SB_VERSION_2)
-		sbp->sb_versionnum = XFS_SB_VERSION_3;
-	else
-		sbp->sb_versionnum |= XFS_SB_VERSION_NLINKBIT;
+ if (sbp->sb_versionnum <= XFS_SB_VERSION_2)
+  sbp->sb_versionnum = XFS_SB_VERSION_3;
+ else
+  sbp->sb_versionnum |= XFS_SB_VERSION_NLINKBIT;
 }

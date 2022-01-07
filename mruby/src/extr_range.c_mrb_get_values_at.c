@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  size_t mrb_int ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_TYPE_ERROR ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ MRB_RANGE_OK ; 
- int /*<<< orphan*/  mrb_ary_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_ary_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t mrb_fixnum (int /*<<< orphan*/  const) ; 
- scalar_t__ mrb_fixnum_p (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  mrb_nil_value () ; 
- int /*<<< orphan*/  mrb_raisef (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/  const) ; 
- scalar_t__ mrb_range_beg_len (int /*<<< orphan*/ *,int /*<<< orphan*/  const,size_t*,size_t*,size_t,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef size_t mrb_int ;
+
+
+ int E_TYPE_ERROR ;
+ int FALSE ;
+ scalar_t__ MRB_RANGE_OK ;
+ int mrb_ary_new (int *) ;
+ int mrb_ary_push (int *,int ,int ) ;
+ size_t mrb_fixnum (int const) ;
+ scalar_t__ mrb_fixnum_p (int const) ;
+ int mrb_nil_value () ;
+ int mrb_raisef (int *,int ,char*,int const) ;
+ scalar_t__ mrb_range_beg_len (int *,int const,size_t*,size_t*,size_t,int ) ;
 
 mrb_value
 mrb_get_values_at(mrb_state *mrb, mrb_value obj, mrb_int olen, mrb_int argc, const mrb_value *argv, mrb_value (*func)(mrb_state*, mrb_value, mrb_int))

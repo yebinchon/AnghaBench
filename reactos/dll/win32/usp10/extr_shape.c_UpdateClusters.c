@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int USP10_FindGlyphInLogClust (int*,int,int) ; 
+
+
+
+typedef int WORD ;
+
+
+ int ERR (char*) ;
+ int USP10_FindGlyphInLogClust (int*,int,int) ;
 
 __attribute__((used)) static void UpdateClusters(int nextIndex, int changeCount, int write_dir, int chars, WORD* pwLogClust )
 {
@@ -46,7 +46,7 @@ __attribute__((used)) static void UpdateClusters(int nextIndex, int changeCount,
 
         if (changeCount < 0)
         {
-            /* merge glyphs */
+
             for (i = target_index; i < chars && i >= 0; i += cluster_dir)
             {
                 if (pwLogClust[i] == target_glyph)
@@ -66,7 +66,7 @@ __attribute__((used)) static void UpdateClusters(int nextIndex, int changeCount,
                 }
             }
 
-            /* renumber trailing indexes */
+
             for (i = target_index; i < chars && i >= 0; i += cluster_dir)
             {
                 if (pwLogClust[i] != target_glyph)

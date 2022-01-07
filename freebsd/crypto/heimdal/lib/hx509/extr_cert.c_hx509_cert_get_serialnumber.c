@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_3__* hx509_cert ;
-typedef  int /*<<< orphan*/  heim_integer ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef TYPE_3__* hx509_cert ;
+typedef int heim_integer ;
 struct TYPE_7__ {TYPE_2__* data; } ;
-struct TYPE_5__ {int /*<<< orphan*/  serialNumber; } ;
+struct TYPE_5__ {int serialNumber; } ;
 struct TYPE_6__ {TYPE_1__ tbsCertificate; } ;
 
-/* Variables and functions */
- int der_copy_heim_integer (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int der_copy_heim_integer (int *,int *) ;
 
 int
 hx509_cert_get_serialnumber(hx509_cert p, heim_integer *i)

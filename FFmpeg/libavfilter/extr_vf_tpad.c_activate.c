@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_27__   TYPE_4__ ;
-typedef  struct TYPE_26__   TYPE_3__ ;
-typedef  struct TYPE_25__   TYPE_2__ ;
-typedef  struct TYPE_24__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
+
+
+typedef struct TYPE_27__ TYPE_4__ ;
+typedef struct TYPE_26__ TYPE_3__ ;
+typedef struct TYPE_25__ TYPE_2__ ;
+typedef struct TYPE_24__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
 struct TYPE_27__ {TYPE_1__* priv; TYPE_3__** outputs; TYPE_3__** inputs; } ;
-struct TYPE_26__ {int /*<<< orphan*/  time_base; int /*<<< orphan*/  frame_rate; int /*<<< orphan*/  h; int /*<<< orphan*/  w; } ;
-struct TYPE_25__ {scalar_t__ pts; int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  linesize; int /*<<< orphan*/  data; } ;
-struct TYPE_24__ {int start_mode; scalar_t__ pad_start; int eof; int stop_mode; scalar_t__ pad_stop; scalar_t__ pts; TYPE_2__* cache_stop; int /*<<< orphan*/  color; int /*<<< orphan*/  draw; TYPE_2__* cache_start; } ;
-typedef  TYPE_1__ TPadContext ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
+struct TYPE_26__ {int time_base; int frame_rate; int h; int w; } ;
+struct TYPE_25__ {scalar_t__ pts; int height; int width; int linesize; int data; } ;
+struct TYPE_24__ {int start_mode; scalar_t__ pad_start; int eof; int stop_mode; scalar_t__ pad_stop; scalar_t__ pts; TYPE_2__* cache_stop; int color; int draw; TYPE_2__* cache_start; } ;
+typedef TYPE_1__ TPadContext ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFERROR_NOT_READY ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_STATUS_BACK (TYPE_3__*,TYPE_3__*) ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_WANTED (TYPE_3__*,TYPE_3__*) ; 
- void* av_frame_clone (TYPE_2__*) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_2__**) ; 
- int /*<<< orphan*/  av_inv_q (int /*<<< orphan*/ ) ; 
- scalar_t__ av_rescale_q (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_fill_rectangle (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ff_filter_frame (TYPE_3__*,TYPE_2__*) ; 
- TYPE_2__* ff_get_video_buffer (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ff_inlink_acknowledge_status (TYPE_3__*,int*,scalar_t__*) ; 
- int ff_inlink_consume_frame (TYPE_3__*,TYPE_2__**) ; 
- TYPE_2__* ff_inlink_peek_frame (TYPE_3__*,int /*<<< orphan*/ ) ; 
- scalar_t__ ff_inlink_queued_frames (TYPE_3__*) ; 
- scalar_t__ ff_outlink_frame_wanted (TYPE_3__*) ; 
- int /*<<< orphan*/  ff_outlink_set_status (TYPE_3__*,int,scalar_t__) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int ENOMEM ;
+ int FFERROR_NOT_READY ;
+ int FF_FILTER_FORWARD_STATUS_BACK (TYPE_3__*,TYPE_3__*) ;
+ int FF_FILTER_FORWARD_WANTED (TYPE_3__*,TYPE_3__*) ;
+ void* av_frame_clone (TYPE_2__*) ;
+ int av_frame_free (TYPE_2__**) ;
+ int av_inv_q (int ) ;
+ scalar_t__ av_rescale_q (int,int ,int ) ;
+ int ff_fill_rectangle (int *,int *,int ,int ,int ,int ,int ,int ) ;
+ int ff_filter_frame (TYPE_3__*,TYPE_2__*) ;
+ TYPE_2__* ff_get_video_buffer (TYPE_3__*,int ,int ) ;
+ scalar_t__ ff_inlink_acknowledge_status (TYPE_3__*,int*,scalar_t__*) ;
+ int ff_inlink_consume_frame (TYPE_3__*,TYPE_2__**) ;
+ TYPE_2__* ff_inlink_peek_frame (TYPE_3__*,int ) ;
+ scalar_t__ ff_inlink_queued_frames (TYPE_3__*) ;
+ scalar_t__ ff_outlink_frame_wanted (TYPE_3__*) ;
+ int ff_outlink_set_status (TYPE_3__*,int,scalar_t__) ;
 
 __attribute__((used)) static int activate(AVFilterContext *ctx)
 {
     AVFilterLink *inlink = ctx->inputs[0];
     AVFilterLink *outlink = ctx->outputs[0];
     TPadContext *s = ctx->priv;
-    AVFrame *frame = NULL;
+    AVFrame *frame = ((void*)0);
     int ret, status;
     int64_t pts;
 
@@ -82,7 +82,7 @@ __attribute__((used)) static int activate(AVFilterContext *ctx)
         s->pts += av_rescale_q(1, av_inv_q(outlink->frame_rate), outlink->time_base);
         s->pad_start--;
         if (s->pad_start == 0)
-            s->cache_start = NULL;
+            s->cache_start = ((void*)0);
         return ff_filter_frame(outlink, frame);
     }
 

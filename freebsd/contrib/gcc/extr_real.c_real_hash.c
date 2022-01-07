@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int cl; int sign; unsigned long* sig; int /*<<< orphan*/  canonical; int /*<<< orphan*/  signalling; } ;
-typedef  TYPE_1__ REAL_VALUE_TYPE ;
 
-/* Variables and functions */
- int HOST_BITS_PER_LONG ; 
- int REAL_EXP (TYPE_1__ const*) ; 
- size_t SIGSZ ; 
- int /*<<< orphan*/  gcc_unreachable () ; 
-#define  rvc_inf 131 
-#define  rvc_nan 130 
-#define  rvc_normal 129 
-#define  rvc_zero 128 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int cl; int sign; unsigned long* sig; int canonical; int signalling; } ;
+typedef TYPE_1__ REAL_VALUE_TYPE ;
+
+
+ int HOST_BITS_PER_LONG ;
+ int REAL_EXP (TYPE_1__ const*) ;
+ size_t SIGSZ ;
+ int gcc_unreachable () ;
+
+
+
+
 
 unsigned int
 real_hash (const REAL_VALUE_TYPE *r)
@@ -33,19 +33,19 @@ real_hash (const REAL_VALUE_TYPE *r)
   h = r->cl | (r->sign << 2);
   switch (r->cl)
     {
-    case rvc_zero:
-    case rvc_inf:
+    case 128:
+    case 131:
       return h;
 
-    case rvc_normal:
+    case 129:
       h |= REAL_EXP (r) << 3;
       break;
 
-    case rvc_nan:
+    case 130:
       if (r->signalling)
-	h ^= (unsigned int)-1;
+ h ^= (unsigned int)-1;
       if (r->canonical)
-	return h;
+ return h;
       break;
 
     default:
@@ -55,8 +55,8 @@ real_hash (const REAL_VALUE_TYPE *r)
   if (sizeof(unsigned long) > sizeof(unsigned int))
     for (i = 0; i < SIGSZ; ++i)
       {
-	unsigned long s = r->sig[i];
-	h ^= s ^ (s >> (HOST_BITS_PER_LONG / 2));
+ unsigned long s = r->sig[i];
+ h ^= s ^ (s >> (HOST_BITS_PER_LONG / 2));
       }
   else
     for (i = 0; i < SIGSZ; ++i)

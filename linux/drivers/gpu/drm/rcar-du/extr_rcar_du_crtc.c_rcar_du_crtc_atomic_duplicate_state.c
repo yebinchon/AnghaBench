@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct drm_crtc_state {int dummy; } ;
 struct rcar_du_crtc_state {struct drm_crtc_state state; } ;
-struct drm_crtc {int /*<<< orphan*/  state; } ;
+struct drm_crtc {int state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- scalar_t__ WARN_ON (int) ; 
- int /*<<< orphan*/  __drm_atomic_helper_crtc_duplicate_state (struct drm_crtc*,struct drm_crtc_state*) ; 
- struct rcar_du_crtc_state* kmemdup (struct rcar_du_crtc_state*,int,int /*<<< orphan*/ ) ; 
- struct rcar_du_crtc_state* to_rcar_crtc_state (int /*<<< orphan*/ ) ; 
+
+ int GFP_KERNEL ;
+ scalar_t__ WARN_ON (int) ;
+ int __drm_atomic_helper_crtc_duplicate_state (struct drm_crtc*,struct drm_crtc_state*) ;
+ struct rcar_du_crtc_state* kmemdup (struct rcar_du_crtc_state*,int,int ) ;
+ struct rcar_du_crtc_state* to_rcar_crtc_state (int ) ;
 
 __attribute__((used)) static struct drm_crtc_state *
 rcar_du_crtc_atomic_duplicate_state(struct drm_crtc *crtc)
 {
-	struct rcar_du_crtc_state *state;
-	struct rcar_du_crtc_state *copy;
+ struct rcar_du_crtc_state *state;
+ struct rcar_du_crtc_state *copy;
 
-	if (WARN_ON(!crtc->state))
-		return NULL;
+ if (WARN_ON(!crtc->state))
+  return ((void*)0);
 
-	state = to_rcar_crtc_state(crtc->state);
-	copy = kmemdup(state, sizeof(*state), GFP_KERNEL);
-	if (copy == NULL)
-		return NULL;
+ state = to_rcar_crtc_state(crtc->state);
+ copy = kmemdup(state, sizeof(*state), GFP_KERNEL);
+ if (copy == ((void*)0))
+  return ((void*)0);
 
-	__drm_atomic_helper_crtc_duplicate_state(crtc, &copy->state);
+ __drm_atomic_helper_crtc_duplicate_state(crtc, &copy->state);
 
-	return &copy->state;
+ return &copy->state;
 }

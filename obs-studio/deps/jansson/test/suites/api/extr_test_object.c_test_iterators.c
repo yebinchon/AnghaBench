@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fail (char*) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_object () ; 
- int /*<<< orphan*/ * json_object_get (int /*<<< orphan*/ *,char*) ; 
- void* json_object_iter (int /*<<< orphan*/ *) ; 
- void* json_object_iter_at (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  json_object_iter_key (void*) ; 
- int /*<<< orphan*/ * json_object_iter_next (int /*<<< orphan*/ *,void*) ; 
- scalar_t__ json_object_iter_set (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_object_iter_value (void*) ; 
- scalar_t__ json_object_set (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_string (char*) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int json_t ;
+
+
+ int fail (char*) ;
+ int json_decref (int *) ;
+ int * json_object () ;
+ int * json_object_get (int *,char*) ;
+ void* json_object_iter (int *) ;
+ void* json_object_iter_at (int *,char*) ;
+ int json_object_iter_key (void*) ;
+ int * json_object_iter_next (int *,void*) ;
+ scalar_t__ json_object_iter_set (int *,void*,int *) ;
+ int * json_object_iter_value (void*) ;
+ scalar_t__ json_object_set (int *,char*,int *) ;
+ int * json_string (char*) ;
+ scalar_t__ strcmp (int ,char*) ;
 
 __attribute__((used)) static void test_iterators()
 {
     json_t *object, *foo, *bar, *baz;
     void *iter;
 
-    if(json_object_iter(NULL))
+    if(json_object_iter(((void*)0)))
         fail("able to iterate over NULL");
 
-    if(json_object_iter_next(NULL, NULL))
+    if(json_object_iter_next(((void*)0), ((void*)0)))
         fail("able to increment an iterator on a NULL object");
 
     object = json_object();
@@ -45,7 +45,7 @@ __attribute__((used)) static void test_iterators()
     if(!object || !foo || !bar || !baz)
         fail("unable to create values");
 
-    if(json_object_iter_next(object, NULL))
+    if(json_object_iter_next(object, ((void*)0)))
         fail("able to increment a NULL iterator");
 
     if(json_object_set(object, "a", foo) ||
@@ -77,7 +77,7 @@ __attribute__((used)) static void test_iterators()
     if (json_object_iter_value(iter) != baz)
         fail("iterating doesn't yield values in order");
 
-    if(json_object_iter_next(object, iter) != NULL)
+    if(json_object_iter_next(object, iter) != ((void*)0))
         fail("able to iterate over the end");
 
     if(json_object_iter_at(object, "foo"))

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_9__ ;
-typedef  struct TYPE_23__   TYPE_8__ ;
-typedef  struct TYPE_22__   TYPE_7__ ;
-typedef  struct TYPE_21__   TYPE_6__ ;
-typedef  struct TYPE_20__   TYPE_5__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_24__ {int /*<<< orphan*/  Address; int /*<<< orphan*/  SequenceNumber; } ;
-struct TYPE_23__ {TYPE_2__* ConnInfo; int /*<<< orphan*/  Seq; } ;
-struct TYPE_20__ {int /*<<< orphan*/  Status; scalar_t__ Information; } ;
-struct TYPE_16__ {int /*<<< orphan*/  SystemBuffer; } ;
+
+
+typedef struct TYPE_24__ TYPE_9__ ;
+typedef struct TYPE_23__ TYPE_8__ ;
+typedef struct TYPE_22__ TYPE_7__ ;
+typedef struct TYPE_21__ TYPE_6__ ;
+typedef struct TYPE_20__ TYPE_5__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+struct TYPE_24__ {int Address; int SequenceNumber; } ;
+struct TYPE_23__ {TYPE_2__* ConnInfo; int Seq; } ;
+struct TYPE_20__ {int Status; scalar_t__ Information; } ;
+struct TYPE_16__ {int SystemBuffer; } ;
 struct TYPE_22__ {TYPE_5__ IoStatus; scalar_t__ MdlAddress; TYPE_1__ AssociatedIrp; } ;
-struct TYPE_21__ {TYPE_4__* Address; int /*<<< orphan*/  TAAddressCount; } ;
-struct TYPE_19__ {TYPE_3__* Address; int /*<<< orphan*/  AddressLength; int /*<<< orphan*/  AddressType; } ;
-struct TYPE_18__ {int /*<<< orphan*/  in_addr; int /*<<< orphan*/  sin_port; } ;
-struct TYPE_17__ {int /*<<< orphan*/  RemoteAddress; } ;
-typedef  TYPE_6__* PTA_IP_ADDRESS ;
-typedef  TYPE_7__* PIRP ;
-typedef  scalar_t__ PCHAR ;
-typedef  TYPE_8__* PAFD_TDI_OBJECT_QELT ;
-typedef  TYPE_9__* PAFD_RECEIVED_ACCEPT_DATA ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
+struct TYPE_21__ {TYPE_4__* Address; int TAAddressCount; } ;
+struct TYPE_19__ {TYPE_3__* Address; int AddressLength; int AddressType; } ;
+struct TYPE_18__ {int in_addr; int sin_port; } ;
+struct TYPE_17__ {int RemoteAddress; } ;
+typedef TYPE_6__* PTA_IP_ADDRESS ;
+typedef TYPE_7__* PIRP ;
+typedef scalar_t__ PCHAR ;
+typedef TYPE_8__* PAFD_TDI_OBJECT_QELT ;
+typedef TYPE_9__* PAFD_RECEIVED_ACCEPT_DATA ;
+typedef int NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AFD_DbgPrint (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  IO_NETWORK_INCREMENT ; 
- int /*<<< orphan*/  IoCompleteRequest (TYPE_7__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IoGetCurrentIrpStackLocation (TYPE_7__*) ; 
- int /*<<< orphan*/  IoSetCancelRoutine (TYPE_7__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MID_TRACE ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  TaCopyTransportAddressInPlace (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnlockRequest (TYPE_7__*,int /*<<< orphan*/ ) ; 
+
+ int AFD_DbgPrint (int ,char*) ;
+ int IO_NETWORK_INCREMENT ;
+ int IoCompleteRequest (TYPE_7__*,int ) ;
+ int IoGetCurrentIrpStackLocation (TYPE_7__*) ;
+ int IoSetCancelRoutine (TYPE_7__*,int *) ;
+ int MID_TRACE ;
+ int STATUS_SUCCESS ;
+ int TaCopyTransportAddressInPlace (int *,int ) ;
+ int UnlockRequest (TYPE_7__*,int ) ;
 
 __attribute__((used)) static NTSTATUS SatisfyPreAccept( PIRP Irp, PAFD_TDI_OBJECT_QELT Qelt ) {
     PAFD_RECEIVED_ACCEPT_DATA ListenReceive =
@@ -78,7 +78,7 @@ __attribute__((used)) static NTSTATUS SatisfyPreAccept( PIRP Irp, PAFD_TDI_OBJEC
 
     Irp->IoStatus.Information = ((PCHAR)&IPAddr[1]) - ((PCHAR)ListenReceive);
     Irp->IoStatus.Status = STATUS_SUCCESS;
-    (void)IoSetCancelRoutine(Irp, NULL);
+    (void)IoSetCancelRoutine(Irp, ((void*)0));
     IoCompleteRequest( Irp, IO_NETWORK_INCREMENT );
     return STATUS_SUCCESS;
 }

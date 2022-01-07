@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int const*) ; 
- int fd_cloexec (int const,int) ; 
- int fd_nonblock (int const,int) ; 
+ int assert (int const*) ;
+ int fd_cloexec (int const,int) ;
+ int fd_nonblock (int const,int) ;
 
 __attribute__((used)) static int flags_fds(const int fds[], size_t n_socket_fds, size_t n_storage_fds, bool nonblock) {
         size_t i, n_fds;
@@ -26,8 +18,8 @@ __attribute__((used)) static int flags_fds(const int fds[], size_t n_socket_fds,
 
         assert(fds);
 
-        /* Drops/Sets O_NONBLOCK and FD_CLOEXEC from the file flags.
-         * O_NONBLOCK only applies to socket activation though. */
+
+
 
         for (i = 0; i < n_fds; i++) {
 
@@ -37,11 +29,11 @@ __attribute__((used)) static int flags_fds(const int fds[], size_t n_socket_fds,
                                 return r;
                 }
 
-                /* We unconditionally drop FD_CLOEXEC from the fds,
-                 * since after all we want to pass these fds to our
-                 * children */
 
-                r = fd_cloexec(fds[i], false);
+
+
+
+                r = fd_cloexec(fds[i], 0);
                 if (r < 0)
                         return r;
         }

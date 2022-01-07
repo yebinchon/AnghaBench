@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct symtab {int dummy; } ;
 struct symbol {int dummy; } ;
 struct block {int dummy; } ;
-typedef  int /*<<< orphan*/  domain_enum ;
+typedef int domain_enum ;
 
-/* Variables and functions */
- struct block* block_static_block (struct block const*) ; 
- struct symbol* lookup_symbol_aux_block (char const*,char const*,struct block const*,int /*<<< orphan*/  const,struct symtab**) ; 
+
+ struct block* block_static_block (struct block const*) ;
+ struct symbol* lookup_symbol_aux_block (char const*,char const*,struct block const*,int const,struct symtab**) ;
 
 struct symbol *
 lookup_symbol_static (const char *name,
-		      const char *linkage_name,
-		      const struct block *block,
-		      const domain_enum domain,
-		      struct symtab **symtab)
+        const char *linkage_name,
+        const struct block *block,
+        const domain_enum domain,
+        struct symtab **symtab)
 {
   const struct block *static_block = block_static_block (block);
 
-  if (static_block != NULL)
+  if (static_block != ((void*)0))
     return lookup_symbol_aux_block (name, linkage_name, static_block,
-				    domain, symtab);
+        domain, symtab);
   else
-    return NULL;
+    return ((void*)0);
 }

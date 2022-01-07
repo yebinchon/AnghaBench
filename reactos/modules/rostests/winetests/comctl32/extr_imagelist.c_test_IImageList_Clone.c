@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
-typedef  int /*<<< orphan*/  IImageList ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ HIMAGELIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IID_IImageList ; 
- scalar_t__ IImageList_Clone (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ IImageList_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ILC_COLOR16 ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- scalar_t__ pImageList_Create (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef scalar_t__ ULONG ;
+typedef int IImageList ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ HIMAGELIST ;
+
+
+ int IID_IImageList ;
+ scalar_t__ IImageList_Clone (int *,int *,void**) ;
+ scalar_t__ IImageList_Release (int *) ;
+ int ILC_COLOR16 ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,scalar_t__) ;
+ scalar_t__ pImageList_Create (int,int,int ,int ,int) ;
 
 __attribute__((used)) static void test_IImageList_Clone(void)
 {
@@ -36,8 +36,8 @@ __attribute__((used)) static void test_IImageList_Clone(void)
 
 if (0)
 {
-    /* crashes on native */
-    IImageList_Clone(imgl, &IID_IImageList, NULL);
+
+    IImageList_Clone(imgl, &IID_IImageList, ((void*)0));
 }
 
     hr = IImageList_Clone(imgl, &IID_IImageList, (void**)&imgl2);

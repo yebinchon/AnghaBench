@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int verbose; int /*<<< orphan*/  old_cb; int /*<<< orphan*/  out; } ;
-typedef  TYPE_1__ security_debug_ex ;
-typedef  int /*<<< orphan*/  SSL_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SSL_CTX_get_security_callback (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CTX_set0_security_ex_data (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  SSL_CTX_set_security_callback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/  security_callback_debug ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int verbose; int old_cb; int out; } ;
+typedef TYPE_1__ security_debug_ex ;
+typedef int SSL_CTX ;
+
+
+ int SSL_CTX_get_security_callback (int *) ;
+ int SSL_CTX_set0_security_ex_data (int *,TYPE_1__*) ;
+ int SSL_CTX_set_security_callback (int *,int ) ;
+ int bio_err ;
+ int security_callback_debug ;
 
 void ssl_ctx_security_debug(SSL_CTX *ctx, int verbose)
 {

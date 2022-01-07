@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * rcvif; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * rcvif; } ;
 struct mbuf {TYPE_1__ m_pkthdr; } ;
 struct ifqueue {int dummy; } ;
 struct ieee80211_node {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IF_DEQUEUE (struct ifqueue*,struct mbuf*) ; 
- int /*<<< orphan*/  KASSERT (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ieee80211_free_node (struct ieee80211_node*) ; 
- int /*<<< orphan*/  m_freem (struct mbuf*) ; 
+
+ int IF_DEQUEUE (struct ifqueue*,struct mbuf*) ;
+ int KASSERT (int ,char*) ;
+ int ieee80211_free_node (struct ieee80211_node*) ;
+ int m_freem (struct mbuf*) ;
 
 void
 ieee80211_drain_ifq(struct ifqueue *ifq)
 {
-	struct ieee80211_node *ni;
-	struct mbuf *m;
+ struct ieee80211_node *ni;
+ struct mbuf *m;
 
-	for (;;) {
-		IF_DEQUEUE(ifq, m);
-		if (m == NULL)
-			break;
+ for (;;) {
+  IF_DEQUEUE(ifq, m);
+  if (m == ((void*)0))
+   break;
 
-		ni = (struct ieee80211_node *)m->m_pkthdr.rcvif;
-		KASSERT(ni != NULL, ("frame w/o node"));
-		ieee80211_free_node(ni);
-		m->m_pkthdr.rcvif = NULL;
+  ni = (struct ieee80211_node *)m->m_pkthdr.rcvif;
+  KASSERT(ni != ((void*)0), ("frame w/o node"));
+  ieee80211_free_node(ni);
+  m->m_pkthdr.rcvif = ((void*)0);
 
-		m_freem(m);
-	}
+  m_freem(m);
+ }
 }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
 struct TYPE_19__ {TYPE_1__* priv; TYPE_3__** outputs; } ;
 struct TYPE_18__ {TYPE_4__* dst; } ;
-struct TYPE_17__ {int* linesize; scalar_t__* data; int /*<<< orphan*/  pts; int /*<<< orphan*/  repeat_pict; scalar_t__ top_field_first; } ;
-struct TYPE_16__ {int state; int nb_planes; int* planeheight; int /*<<< orphan*/ * linesize; TYPE_2__* frame; } ;
-typedef  TYPE_1__ RepeatFieldsContext ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
+struct TYPE_17__ {int* linesize; scalar_t__* data; int pts; int repeat_pict; scalar_t__ top_field_first; } ;
+struct TYPE_16__ {int state; int nb_planes; int* planeheight; int * linesize; TYPE_2__* frame; } ;
+typedef TYPE_1__ RepeatFieldsContext ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  AV_NOPTS_VALUE ; 
- int /*<<< orphan*/  ENOMEM ; 
- TYPE_2__* av_frame_clone (TYPE_2__*) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_2__**) ; 
- int /*<<< orphan*/  av_frame_make_writable (TYPE_2__*) ; 
- int /*<<< orphan*/  av_image_copy_plane (scalar_t__,int,scalar_t__,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,int,scalar_t__,int /*<<< orphan*/ ) ; 
- int ff_filter_frame (TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  update_pts (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ ,int) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_WARNING ;
+ int AV_NOPTS_VALUE ;
+ int ENOMEM ;
+ TYPE_2__* av_frame_clone (TYPE_2__*) ;
+ int av_frame_free (TYPE_2__**) ;
+ int av_frame_make_writable (TYPE_2__*) ;
+ int av_image_copy_plane (scalar_t__,int,scalar_t__,int,int ,int) ;
+ int av_log (TYPE_4__*,int ,char*,int,scalar_t__,int ) ;
+ int ff_filter_frame (TYPE_3__*,TYPE_2__*) ;
+ int update_pts (TYPE_3__*,TYPE_2__*,int ,int) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in) {
     AVFilterContext *ctx = inlink->dst;
@@ -54,7 +54,7 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
     out = s->frame;
 
     if ((state == 0 && !in->top_field_first) ||
-        (state == 1 &&  in->top_field_first)) {
+        (state == 1 && in->top_field_first)) {
         av_log(ctx, AV_LOG_WARNING, "Unexpected field flags: "
                                     "state=%d top_field_first=%d repeat_first_field=%d\n",
                                     state, in->top_field_first, in->repeat_pict);

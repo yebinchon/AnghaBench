@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_8__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WORD ;
+
+
+typedef struct TYPE_17__ TYPE_8__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int WORD ;
 struct TYPE_14__ {int cotfRecords; TYPE_1__* potfRecords; } ;
 struct TYPE_17__ {TYPE_2__ defaultGPOSTextRange; } ;
 struct TYPE_16__ {size_t eScript; } ;
-struct TYPE_15__ {int /*<<< orphan*/  lf; int /*<<< orphan*/  otm; int /*<<< orphan*/  GPOS_Table; } ;
-struct TYPE_13__ {scalar_t__ lParameter; int /*<<< orphan*/  tagFeature; } ;
-typedef  TYPE_2__ TEXTRANGE_PROPERTIES ;
-typedef  TYPE_3__ ScriptCache ;
-typedef  TYPE_4__ SCRIPT_ANALYSIS ;
-typedef  int /*<<< orphan*/  LoadedFeature ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  GOFFSET ;
+struct TYPE_15__ {int lf; int otm; int GPOS_Table; } ;
+struct TYPE_13__ {scalar_t__ lParameter; int tagFeature; } ;
+typedef TYPE_2__ TEXTRANGE_PROPERTIES ;
+typedef TYPE_3__ ScriptCache ;
+typedef TYPE_4__ SCRIPT_ANALYSIS ;
+typedef int LoadedFeature ;
+typedef int INT ;
+typedef int HDC ;
+typedef int GOFFSET ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FEATURE_GPOS_TABLE ; 
- int /*<<< orphan*/  GPOS_apply_feature (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_4__*,int*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_8__* ShapingData ; 
- int /*<<< orphan*/ * load_OT_feature (int /*<<< orphan*/ ,TYPE_4__*,TYPE_3__*,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  load_ot_tables (int /*<<< orphan*/ ,TYPE_3__*) ; 
+
+ int FEATURE_GPOS_TABLE ;
+ int GPOS_apply_feature (TYPE_3__*,int ,int *,TYPE_4__*,int*,int *,int const*,int ,int *) ;
+ TYPE_8__* ShapingData ;
+ int * load_OT_feature (int ,TYPE_4__*,TYPE_3__*,int ,char const*) ;
+ int load_ot_tables (int ,TYPE_3__*) ;
 
 void SHAPE_ApplyOpenTypePositions(HDC hdc, ScriptCache *psc, SCRIPT_ANALYSIS *psa, const WORD* pwGlyphs, INT cGlyphs, int *piAdvance, GOFFSET *pGoffset )
 {

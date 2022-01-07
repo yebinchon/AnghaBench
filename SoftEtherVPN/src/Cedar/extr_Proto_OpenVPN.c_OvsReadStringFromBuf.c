@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int USHORT ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int Endian16 (int) ; 
- int ReadBuf (int /*<<< orphan*/ *,...) ; 
- int /*<<< orphan*/  StrCpy (char*,int,char*) ; 
+
+
+
+typedef int USHORT ;
+typedef int UINT ;
+typedef int BUF ;
+
+
+ int Endian16 (int) ;
+ int ReadBuf (int *,...) ;
+ int StrCpy (char*,int,char*) ;
 
 bool OvsReadStringFromBuf(BUF *b, char *str, UINT str_size)
 {
-	USHORT us;
-	// Validate arguments
-	if (b == NULL || str == NULL)
-	{
-		return false;
-	}
+ USHORT us;
 
-	if (ReadBuf(b, &us, sizeof(USHORT)) != sizeof(USHORT))
-	{
-		return false;
-	}
+ if (b == ((void*)0) || str == ((void*)0))
+ {
+  return 0;
+ }
 
-	us = Endian16(us);
+ if (ReadBuf(b, &us, sizeof(USHORT)) != sizeof(USHORT))
+ {
+  return 0;
+ }
 
-	if (us == 0)
-	{
-		StrCpy(str, str_size, "");
-		return true;
-	}
+ us = Endian16(us);
 
-	if (us > str_size)
-	{
-		return false;
-	}
+ if (us == 0)
+ {
+  StrCpy(str, str_size, "");
+  return 1;
+ }
 
-	if (ReadBuf(b, str, us) != us)
-	{
-		return false;
-	}
+ if (us > str_size)
+ {
+  return 0;
+ }
 
-	if (str[us - 1] != 0)
-	{
-		return false;
-	}
+ if (ReadBuf(b, str, us) != us)
+ {
+  return 0;
+ }
 
-	return true;
+ if (str[us - 1] != 0)
+ {
+  return 0;
+ }
+
+ return 1;
 }

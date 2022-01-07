@@ -1,87 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ crypto_pwhash_ALG_ARGON2I13 ; 
- scalar_t__ crypto_pwhash_ALG_ARGON2ID13 ; 
- unsigned int crypto_pwhash_BYTES_MAX ; 
- unsigned int crypto_pwhash_BYTES_MIN ; 
- unsigned int crypto_pwhash_MEMLIMIT_INTERACTIVE ; 
- unsigned int crypto_pwhash_MEMLIMIT_MAX ; 
- unsigned int crypto_pwhash_MEMLIMIT_MIN ; 
- unsigned int crypto_pwhash_MEMLIMIT_MODERATE ; 
- unsigned int crypto_pwhash_MEMLIMIT_SENSITIVE ; 
- unsigned int crypto_pwhash_OPSLIMIT_INTERACTIVE ; 
- unsigned int crypto_pwhash_OPSLIMIT_MAX ; 
- unsigned int crypto_pwhash_OPSLIMIT_MIN ; 
- unsigned int crypto_pwhash_OPSLIMIT_MODERATE ; 
- unsigned int crypto_pwhash_OPSLIMIT_SENSITIVE ; 
- scalar_t__ crypto_pwhash_PASSWD_MAX ; 
- scalar_t__ crypto_pwhash_PASSWD_MIN ; 
- unsigned int crypto_pwhash_SALTBYTES ; 
- unsigned int crypto_pwhash_STRBYTES ; 
- scalar_t__ crypto_pwhash_alg_argon2i13 () ; 
- scalar_t__ crypto_pwhash_alg_argon2id13 () ; 
- scalar_t__ crypto_pwhash_alg_default () ; 
- int crypto_pwhash_argon2i (scalar_t__,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int crypto_pwhash_argon2id (scalar_t__,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  crypto_pwhash_argon2id_MEMLIMIT_INTERACTIVE ; 
- int /*<<< orphan*/  crypto_pwhash_argon2id_OPSLIMIT_INTERACTIVE ; 
- scalar_t__ crypto_pwhash_argon2id_alg_argon2id13 () ; 
- unsigned int crypto_pwhash_argon2id_bytes_max () ; 
- unsigned int crypto_pwhash_argon2id_bytes_min () ; 
- unsigned int crypto_pwhash_argon2id_memlimit_interactive () ; 
- unsigned int crypto_pwhash_argon2id_memlimit_max () ; 
- unsigned int crypto_pwhash_argon2id_memlimit_min () ; 
- unsigned int crypto_pwhash_argon2id_memlimit_moderate () ; 
- unsigned int crypto_pwhash_argon2id_memlimit_sensitive () ; 
- unsigned int crypto_pwhash_argon2id_opslimit_interactive () ; 
- unsigned int crypto_pwhash_argon2id_opslimit_max () ; 
- unsigned int crypto_pwhash_argon2id_opslimit_min () ; 
- unsigned int crypto_pwhash_argon2id_opslimit_moderate () ; 
- unsigned int crypto_pwhash_argon2id_opslimit_sensitive () ; 
- scalar_t__ crypto_pwhash_argon2id_passwd_max () ; 
- scalar_t__ crypto_pwhash_argon2id_passwd_min () ; 
- unsigned int crypto_pwhash_argon2id_saltbytes () ; 
- unsigned int crypto_pwhash_argon2id_strbytes () ; 
- int /*<<< orphan*/  crypto_pwhash_argon2id_strprefix () ; 
- unsigned int crypto_pwhash_bytes_max () ; 
- unsigned int crypto_pwhash_bytes_min () ; 
- unsigned int crypto_pwhash_memlimit_interactive () ; 
- unsigned int crypto_pwhash_memlimit_max () ; 
- unsigned int crypto_pwhash_memlimit_min () ; 
- unsigned int crypto_pwhash_memlimit_moderate () ; 
- unsigned int crypto_pwhash_memlimit_sensitive () ; 
- unsigned int crypto_pwhash_opslimit_interactive () ; 
- unsigned int crypto_pwhash_opslimit_max () ; 
- unsigned int crypto_pwhash_opslimit_min () ; 
- unsigned int crypto_pwhash_opslimit_moderate () ; 
- unsigned int crypto_pwhash_opslimit_sensitive () ; 
- scalar_t__ crypto_pwhash_passwd_max () ; 
- scalar_t__ crypto_pwhash_passwd_min () ; 
- int /*<<< orphan*/  crypto_pwhash_primitive () ; 
- unsigned int crypto_pwhash_saltbytes () ; 
- unsigned int crypto_pwhash_strbytes () ; 
- char* crypto_pwhash_strprefix () ; 
- scalar_t__ guard_page ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  str_tests () ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
- unsigned int strlen (char*) ; 
- int /*<<< orphan*/  tv () ; 
- int /*<<< orphan*/  tv2 () ; 
- int /*<<< orphan*/  tv3 () ; 
+ int assert (int) ;
+ scalar_t__ crypto_pwhash_ALG_ARGON2I13 ;
+ scalar_t__ crypto_pwhash_ALG_ARGON2ID13 ;
+ unsigned int crypto_pwhash_BYTES_MAX ;
+ unsigned int crypto_pwhash_BYTES_MIN ;
+ unsigned int crypto_pwhash_MEMLIMIT_INTERACTIVE ;
+ unsigned int crypto_pwhash_MEMLIMIT_MAX ;
+ unsigned int crypto_pwhash_MEMLIMIT_MIN ;
+ unsigned int crypto_pwhash_MEMLIMIT_MODERATE ;
+ unsigned int crypto_pwhash_MEMLIMIT_SENSITIVE ;
+ unsigned int crypto_pwhash_OPSLIMIT_INTERACTIVE ;
+ unsigned int crypto_pwhash_OPSLIMIT_MAX ;
+ unsigned int crypto_pwhash_OPSLIMIT_MIN ;
+ unsigned int crypto_pwhash_OPSLIMIT_MODERATE ;
+ unsigned int crypto_pwhash_OPSLIMIT_SENSITIVE ;
+ scalar_t__ crypto_pwhash_PASSWD_MAX ;
+ scalar_t__ crypto_pwhash_PASSWD_MIN ;
+ unsigned int crypto_pwhash_SALTBYTES ;
+ unsigned int crypto_pwhash_STRBYTES ;
+ scalar_t__ crypto_pwhash_alg_argon2i13 () ;
+ scalar_t__ crypto_pwhash_alg_argon2id13 () ;
+ scalar_t__ crypto_pwhash_alg_default () ;
+ int crypto_pwhash_argon2i (scalar_t__,int ,char const*,int ,scalar_t__,int ,int ,scalar_t__) ;
+ int crypto_pwhash_argon2id (scalar_t__,int ,char const*,int ,scalar_t__,int ,int ,scalar_t__) ;
+ int crypto_pwhash_argon2id_MEMLIMIT_INTERACTIVE ;
+ int crypto_pwhash_argon2id_OPSLIMIT_INTERACTIVE ;
+ scalar_t__ crypto_pwhash_argon2id_alg_argon2id13 () ;
+ unsigned int crypto_pwhash_argon2id_bytes_max () ;
+ unsigned int crypto_pwhash_argon2id_bytes_min () ;
+ unsigned int crypto_pwhash_argon2id_memlimit_interactive () ;
+ unsigned int crypto_pwhash_argon2id_memlimit_max () ;
+ unsigned int crypto_pwhash_argon2id_memlimit_min () ;
+ unsigned int crypto_pwhash_argon2id_memlimit_moderate () ;
+ unsigned int crypto_pwhash_argon2id_memlimit_sensitive () ;
+ unsigned int crypto_pwhash_argon2id_opslimit_interactive () ;
+ unsigned int crypto_pwhash_argon2id_opslimit_max () ;
+ unsigned int crypto_pwhash_argon2id_opslimit_min () ;
+ unsigned int crypto_pwhash_argon2id_opslimit_moderate () ;
+ unsigned int crypto_pwhash_argon2id_opslimit_sensitive () ;
+ scalar_t__ crypto_pwhash_argon2id_passwd_max () ;
+ scalar_t__ crypto_pwhash_argon2id_passwd_min () ;
+ unsigned int crypto_pwhash_argon2id_saltbytes () ;
+ unsigned int crypto_pwhash_argon2id_strbytes () ;
+ int crypto_pwhash_argon2id_strprefix () ;
+ unsigned int crypto_pwhash_bytes_max () ;
+ unsigned int crypto_pwhash_bytes_min () ;
+ unsigned int crypto_pwhash_memlimit_interactive () ;
+ unsigned int crypto_pwhash_memlimit_max () ;
+ unsigned int crypto_pwhash_memlimit_min () ;
+ unsigned int crypto_pwhash_memlimit_moderate () ;
+ unsigned int crypto_pwhash_memlimit_sensitive () ;
+ unsigned int crypto_pwhash_opslimit_interactive () ;
+ unsigned int crypto_pwhash_opslimit_max () ;
+ unsigned int crypto_pwhash_opslimit_min () ;
+ unsigned int crypto_pwhash_opslimit_moderate () ;
+ unsigned int crypto_pwhash_opslimit_sensitive () ;
+ scalar_t__ crypto_pwhash_passwd_max () ;
+ scalar_t__ crypto_pwhash_passwd_min () ;
+ int crypto_pwhash_primitive () ;
+ unsigned int crypto_pwhash_saltbytes () ;
+ unsigned int crypto_pwhash_strbytes () ;
+ char* crypto_pwhash_strprefix () ;
+ scalar_t__ guard_page ;
+ int printf (char*) ;
+ int str_tests () ;
+ scalar_t__ strcmp (int ,char*) ;
+ unsigned int strlen (char*) ;
+ int tv () ;
+ int tv2 () ;
+ int tv3 () ;
 
 int
 main(void)

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32 ;
-typedef  size_t int8 ;
-typedef  int /*<<< orphan*/  float64 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32 ;
+typedef size_t int8 ;
+typedef int float64 ;
 struct TYPE_2__ {scalar_t__ low; int high; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SETFLOAT64 (int /*<<< orphan*/ ,int,scalar_t__) ; 
- size_t float64NumP2 ; 
- size_t float64NumQOut ; 
- TYPE_1__* float64P2 ; 
- int* float64QOut ; 
- size_t randomUint8 () ; 
+
+ int SETFLOAT64 (int ,int,scalar_t__) ;
+ size_t float64NumP2 ;
+ size_t float64NumQOut ;
+ TYPE_1__* float64P2 ;
+ int* float64QOut ;
+ size_t randomUint8 () ;
 
 __attribute__((used)) static float64 float64RandomQOutP3( void )
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static float64 float64RandomQOutP3( void )
     SETFLOAT64(
         z,
           float64QOut[ randomUint8() % float64NumQOut ]
-        | (   (   float64P2[ sigNum1 ].high
+        | ( ( float64P2[ sigNum1 ].high
                 + float64P2[ sigNum2 ].high
                 + ( zLow < sig1Low )
               )

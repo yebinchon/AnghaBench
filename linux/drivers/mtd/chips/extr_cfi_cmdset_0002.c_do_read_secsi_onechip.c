@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
+
+
+
+
+typedef int u_char ;
 struct map_info {int dummy; } ;
-struct flchip {scalar_t__ state; int /*<<< orphan*/  mutex; int /*<<< orphan*/  wq; scalar_t__ start; } ;
-typedef  int /*<<< orphan*/  loff_t ;
+struct flchip {scalar_t__ state; int mutex; int wq; scalar_t__ start; } ;
+typedef int loff_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DECLARE_WAITQUEUE (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ FL_READY ; 
- int /*<<< orphan*/  TASK_UNINTERRUPTIBLE ; 
- int /*<<< orphan*/  add_wait_queue (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  current ; 
- int /*<<< orphan*/  map_copy_from (struct map_info*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  otp_enter (struct map_info*,struct flchip*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  otp_exit (struct map_info*,struct flchip*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  remove_wait_queue (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  schedule () ; 
- int /*<<< orphan*/  set_current_state (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wait ; 
- int /*<<< orphan*/  wake_up (int /*<<< orphan*/ *) ; 
+
+ int DECLARE_WAITQUEUE (int ,int ) ;
+ scalar_t__ FL_READY ;
+ int TASK_UNINTERRUPTIBLE ;
+ int add_wait_queue (int *,int *) ;
+ int current ;
+ int map_copy_from (struct map_info*,int *,int ,size_t) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int otp_enter (struct map_info*,struct flchip*,int ,size_t) ;
+ int otp_exit (struct map_info*,struct flchip*,int ,size_t) ;
+ int remove_wait_queue (int *,int *) ;
+ int schedule () ;
+ int set_current_state (int ) ;
+ int wait ;
+ int wake_up (int *) ;
 
 __attribute__((used)) static inline int do_read_secsi_onechip(struct map_info *map,
-					struct flchip *chip, loff_t adr,
-					size_t len, u_char *buf,
-					size_t grouplen)
+     struct flchip *chip, loff_t adr,
+     size_t len, u_char *buf,
+     size_t grouplen)
 {
-	DECLARE_WAITQUEUE(wait, current);
+ DECLARE_WAITQUEUE(wait, current);
 
  retry:
-	mutex_lock(&chip->mutex);
+ mutex_lock(&chip->mutex);
 
-	if (chip->state != FL_READY){
-		set_current_state(TASK_UNINTERRUPTIBLE);
-		add_wait_queue(&chip->wq, &wait);
+ if (chip->state != FL_READY){
+  set_current_state(TASK_UNINTERRUPTIBLE);
+  add_wait_queue(&chip->wq, &wait);
 
-		mutex_unlock(&chip->mutex);
+  mutex_unlock(&chip->mutex);
 
-		schedule();
-		remove_wait_queue(&chip->wq, &wait);
+  schedule();
+  remove_wait_queue(&chip->wq, &wait);
 
-		goto retry;
-	}
+  goto retry;
+ }
 
-	adr += chip->start;
+ adr += chip->start;
 
-	chip->state = FL_READY;
+ chip->state = FL_READY;
 
-	otp_enter(map, chip, adr, len);
-	map_copy_from(map, buf, adr, len);
-	otp_exit(map, chip, adr, len);
+ otp_enter(map, chip, adr, len);
+ map_copy_from(map, buf, adr, len);
+ otp_exit(map, chip, adr, len);
 
-	wake_up(&chip->wq);
-	mutex_unlock(&chip->mutex);
+ wake_up(&chip->wq);
+ mutex_unlock(&chip->mutex);
 
-	return 0;
+ return 0;
 }

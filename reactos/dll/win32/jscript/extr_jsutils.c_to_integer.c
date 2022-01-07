@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- double floor (double) ; 
- scalar_t__ isnan (double) ; 
- int /*<<< orphan*/  to_number (int /*<<< orphan*/ *,int /*<<< orphan*/ ,double*) ; 
+
+
+
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int HRESULT ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int S_OK ;
+ double floor (double) ;
+ scalar_t__ isnan (double) ;
+ int to_number (int *,int ,double*) ;
 
 HRESULT to_integer(script_ctx_t *ctx, jsval_t v, double *ret)
 {

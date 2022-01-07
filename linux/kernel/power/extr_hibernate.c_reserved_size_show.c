@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct kobject {int dummy; } ;
 struct kobj_attribute {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  reserved_size ; 
- int /*<<< orphan*/  sprintf (char*,char*,int /*<<< orphan*/ ) ; 
+
+ int reserved_size ;
+ int sprintf (char*,char*,int ) ;
 
 __attribute__((used)) static ssize_t reserved_size_show(struct kobject *kobj,
-				  struct kobj_attribute *attr, char *buf)
+      struct kobj_attribute *attr, char *buf)
 {
-	return sprintf(buf, "%lu\n", reserved_size);
+ return sprintf(buf, "%lu\n", reserved_size);
 }

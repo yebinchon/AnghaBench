@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct timeouts {size_t* pending; int /*<<< orphan*/ ** wheel; int /*<<< orphan*/  expired; } ;
-struct timeout {int /*<<< orphan*/ * pending; int /*<<< orphan*/  tqe; } ;
-typedef  size_t ptrdiff_t ;
 
-/* Variables and functions */
- size_t WHEEL_C (int) ; 
- size_t WHEEL_LEN ; 
- int /*<<< orphan*/  list_del_from (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ list_empty (int /*<<< orphan*/ *) ; 
+
+
+
+struct timeouts {size_t* pending; int ** wheel; int expired; } ;
+struct timeout {int * pending; int tqe; } ;
+typedef size_t ptrdiff_t ;
+
+
+ size_t WHEEL_C (int) ;
+ size_t WHEEL_LEN ;
+ int list_del_from (int *,int *) ;
+ scalar_t__ list_empty (int *) ;
 
 void timeouts_del(struct timeouts *T, struct timeout *to)
 {
@@ -33,6 +33,6 @@ void timeouts_del(struct timeouts *T, struct timeout *to)
             T->pending[wheel] &= ~(WHEEL_C(1) << slot);
         }
 
-        to->pending = NULL;
+        to->pending = ((void*)0);
     }
 }

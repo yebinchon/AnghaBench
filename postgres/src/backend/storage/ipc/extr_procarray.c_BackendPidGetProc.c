@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PGPROC ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BackendPidGetProcWithLock (int) ; 
- int /*<<< orphan*/  LWLockAcquire (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LWLockRelease (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LW_SHARED ; 
- int /*<<< orphan*/  ProcArrayLock ; 
+
+
+
+typedef int PGPROC ;
+
+
+ int * BackendPidGetProcWithLock (int) ;
+ int LWLockAcquire (int ,int ) ;
+ int LWLockRelease (int ) ;
+ int LW_SHARED ;
+ int ProcArrayLock ;
 
 PGPROC *
 BackendPidGetProc(int pid)
 {
-	PGPROC	   *result;
+ PGPROC *result;
 
-	if (pid == 0)				/* never match dummy PGPROCs */
-		return NULL;
+ if (pid == 0)
+  return ((void*)0);
 
-	LWLockAcquire(ProcArrayLock, LW_SHARED);
+ LWLockAcquire(ProcArrayLock, LW_SHARED);
 
-	result = BackendPidGetProcWithLock(pid);
+ result = BackendPidGetProcWithLock(pid);
 
-	LWLockRelease(ProcArrayLock);
+ LWLockRelease(ProcArrayLock);
 
-	return result;
+ return result;
 }

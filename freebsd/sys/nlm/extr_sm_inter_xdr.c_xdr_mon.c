@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  priv; int /*<<< orphan*/  mon_id; } ;
-typedef  TYPE_1__ mon ;
-typedef  int /*<<< orphan*/  bool_t ;
-typedef  int /*<<< orphan*/  XDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  xdr_mon_id (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xdr_opaque (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int priv; int mon_id; } ;
+typedef TYPE_1__ mon ;
+typedef int bool_t ;
+typedef int XDR ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int xdr_mon_id (int *,int *) ;
+ int xdr_opaque (int *,int ,int) ;
 
 bool_t
 xdr_mon(XDR *xdrs, mon *objp)
 {
 
-	if (!xdr_mon_id(xdrs, &objp->mon_id))
-		return (FALSE);
-	if (!xdr_opaque(xdrs, objp->priv, 16))
-		return (FALSE);
-	return (TRUE);
+ if (!xdr_mon_id(xdrs, &objp->mon_id))
+  return (FALSE);
+ if (!xdr_opaque(xdrs, objp->priv, 16))
+  return (FALSE);
+ return (TRUE);
 }

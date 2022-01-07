@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_fclose ; 
- int /*<<< orphan*/  ERROR_fwrite ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- scalar_t__ fclose (int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/ * fopen_orDie (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,char*) ; 
- size_t fwrite (void const*,int,size_t,int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  perror (char const*) ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int FILE ;
+
+
+ int ERROR_fclose ;
+ int ERROR_fwrite ;
+ int errno ;
+ int exit (int ) ;
+ scalar_t__ fclose (int * const) ;
+ int * fopen_orDie (char const*,char*) ;
+ int fprintf (int ,char*,char const*,char*) ;
+ size_t fwrite (void const*,int,size_t,int * const) ;
+ int perror (char const*) ;
+ int stderr ;
+ char* strerror (int ) ;
 
 __attribute__((used)) static void saveFile_orDie(const char* fileName, const void* buff, size_t buffSize)
 {

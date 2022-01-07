@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SQLITERK_OK ; 
- int /*<<< orphan*/  print_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  sqliterk_loglevel_info ; 
+ int SQLITERK_OK ;
+ int print_log (int ,int ,char const*) ;
+ int sqliterk_loglevel_info ;
 
 __attribute__((used)) static void inline LOGI(const char *msg)
 {
-	print_log(sqliterk_loglevel_info, SQLITERK_OK, msg);
+ print_log(sqliterk_loglevel_info, SQLITERK_OK, msg);
 }

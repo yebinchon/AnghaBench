@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct server_pool {int /*<<< orphan*/  redis; } ;
-struct conn {int proxy; int /*<<< orphan*/  (* ref ) (struct conn*,void*) ;int /*<<< orphan*/ * dequeue_outq; int /*<<< orphan*/ * enqueue_outq; int /*<<< orphan*/ * dequeue_inq; int /*<<< orphan*/ * enqueue_inq; int /*<<< orphan*/  unref; int /*<<< orphan*/ * active; int /*<<< orphan*/  close; int /*<<< orphan*/ * send_done; int /*<<< orphan*/ * send_next; int /*<<< orphan*/ * send; int /*<<< orphan*/ * recv_done; int /*<<< orphan*/ * recv_next; int /*<<< orphan*/  recv; int /*<<< orphan*/  redis; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_VVERB ; 
- struct conn* _conn_get () ; 
- int /*<<< orphan*/  log_debug (int /*<<< orphan*/ ,char*,struct conn*,int) ; 
- int /*<<< orphan*/  proxy_close ; 
- int /*<<< orphan*/  proxy_recv ; 
- int /*<<< orphan*/  proxy_ref (struct conn*,void*) ; 
- int /*<<< orphan*/  proxy_unref ; 
- int /*<<< orphan*/  stub1 (struct conn*,void*) ; 
+
+
+
+struct server_pool {int redis; } ;
+struct conn {int proxy; int (* ref ) (struct conn*,void*) ;int * dequeue_outq; int * enqueue_outq; int * dequeue_inq; int * enqueue_inq; int unref; int * active; int close; int * send_done; int * send_next; int * send; int * recv_done; int * recv_next; int recv; int redis; } ;
+
+
+ int LOG_VVERB ;
+ struct conn* _conn_get () ;
+ int log_debug (int ,char*,struct conn*,int) ;
+ int proxy_close ;
+ int proxy_recv ;
+ int proxy_ref (struct conn*,void*) ;
+ int proxy_unref ;
+ int stub1 (struct conn*,void*) ;
 
 struct conn *
 conn_get_proxy(void *owner)
@@ -30,8 +30,8 @@ conn_get_proxy(void *owner)
     struct conn *conn;
 
     conn = _conn_get();
-    if (conn == NULL) {
-        return NULL;
+    if (conn == ((void*)0)) {
+        return ((void*)0);
     }
 
     conn->redis = pool->redis;
@@ -39,23 +39,23 @@ conn_get_proxy(void *owner)
     conn->proxy = 1;
 
     conn->recv = proxy_recv;
-    conn->recv_next = NULL;
-    conn->recv_done = NULL;
+    conn->recv_next = ((void*)0);
+    conn->recv_done = ((void*)0);
 
-    conn->send = NULL;
-    conn->send_next = NULL;
-    conn->send_done = NULL;
+    conn->send = ((void*)0);
+    conn->send_next = ((void*)0);
+    conn->send_done = ((void*)0);
 
     conn->close = proxy_close;
-    conn->active = NULL;
+    conn->active = ((void*)0);
 
     conn->ref = proxy_ref;
     conn->unref = proxy_unref;
 
-    conn->enqueue_inq = NULL;
-    conn->dequeue_inq = NULL;
-    conn->enqueue_outq = NULL;
-    conn->dequeue_outq = NULL;
+    conn->enqueue_inq = ((void*)0);
+    conn->dequeue_inq = ((void*)0);
+    conn->enqueue_outq = ((void*)0);
+    conn->dequeue_outq = ((void*)0);
 
     conn->ref(conn, owner);
 

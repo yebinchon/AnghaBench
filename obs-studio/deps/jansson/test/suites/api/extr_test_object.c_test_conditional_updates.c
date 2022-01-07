@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fail (char*) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- int json_integer_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  json_object_get (int /*<<< orphan*/ *,char*) ; 
- int json_object_size (int /*<<< orphan*/ *) ; 
- scalar_t__ json_object_update_existing (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ json_object_update_missing (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_pack (char*,char*,int,char*,int) ; 
+
+
+
+typedef int json_t ;
+
+
+ int fail (char*) ;
+ int json_decref (int *) ;
+ int json_integer_value (int ) ;
+ int json_object_get (int *,char*) ;
+ int json_object_size (int *) ;
+ scalar_t__ json_object_update_existing (int *,int *) ;
+ scalar_t__ json_object_update_missing (int *,int *) ;
+ int * json_pack (char*,char*,int,char*,int) ;
 
 __attribute__((used)) static void test_conditional_updates()
 {

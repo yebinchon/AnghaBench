@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct ra_buf_gl {int /*<<< orphan*/  buffer; int /*<<< orphan*/  target; scalar_t__ data; scalar_t__ fence; struct ra_buf_gl* priv; } ;
-struct ra_buf {int /*<<< orphan*/  buffer; int /*<<< orphan*/  target; scalar_t__ data; scalar_t__ fence; struct ra_buf* priv; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct ra_buf_gl {int buffer; int target; scalar_t__ data; scalar_t__ fence; struct ra_buf_gl* priv; } ;
+struct ra_buf {int buffer; int target; scalar_t__ data; scalar_t__ fence; struct ra_buf* priv; } ;
 struct ra {int dummy; } ;
-struct TYPE_3__ {int /*<<< orphan*/  (* DeleteBuffers ) (int,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* BindBuffer ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* UnmapBuffer ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* DeleteSync ) (scalar_t__) ;} ;
-typedef  TYPE_1__ GL ;
+struct TYPE_3__ {int (* DeleteBuffers ) (int,int *) ;int (* BindBuffer ) (int ,int ) ;int (* UnmapBuffer ) (int ) ;int (* DeleteSync ) (scalar_t__) ;} ;
+typedef TYPE_1__ GL ;
 
-/* Variables and functions */
- TYPE_1__* ra_gl_get (struct ra*) ; 
- int /*<<< orphan*/  stub1 (scalar_t__) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub5 (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  talloc_free (struct ra_buf_gl*) ; 
+
+ TYPE_1__* ra_gl_get (struct ra*) ;
+ int stub1 (scalar_t__) ;
+ int stub2 (int ,int ) ;
+ int stub3 (int ) ;
+ int stub4 (int ,int ) ;
+ int stub5 (int,int *) ;
+ int talloc_free (struct ra_buf_gl*) ;
 
 __attribute__((used)) static void gl_buf_destroy(struct ra *ra, struct ra_buf *buf)
 {

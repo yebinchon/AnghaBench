@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {scalar_t__ rssi; int /*<<< orphan*/  authmode; int /*<<< orphan*/ * bssid; int /*<<< orphan*/  ssid; } ;
-typedef  TYPE_1__ wifi_ap_record_t ;
-typedef  size_t uint8_t ;
-typedef  size_t uint16_t ;
-typedef  scalar_t__ esp_err_t ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {scalar_t__ rssi; int authmode; int * bssid; int ssid; } ;
+typedef TYPE_1__ wifi_ap_record_t ;
+typedef size_t uint8_t ;
+typedef size_t uint16_t ;
+typedef scalar_t__ esp_err_t ;
 struct TYPE_8__ {size_t channel; } ;
 struct TYPE_7__ {int scanning; size_t curr_channel; size_t* ap_list_len; int channels_per_group; TYPE_4__ scan_cfg; TYPE_1__** ap_list; TYPE_1__** ap_list_sorted; } ;
 
-/* Variables and functions */
- scalar_t__ ESP_ERR_INVALID_STATE ; 
- scalar_t__ ESP_FAIL ; 
- int /*<<< orphan*/  ESP_LOGD (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ ESP_OK ; 
- int MAX_SCAN_RESULTS ; 
- int MIN (size_t,int) ; 
- int /*<<< orphan*/  TAG ; 
- scalar_t__ calloc (size_t,int) ; 
- scalar_t__ esp_wifi_scan_get_ap_num (size_t*) ; 
- scalar_t__ esp_wifi_scan_get_ap_records (size_t*,TYPE_1__*) ; 
- scalar_t__ esp_wifi_scan_start (TYPE_4__*,int) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int portTICK_PERIOD_MS ; 
- TYPE_2__* prov_ctx ; 
- int /*<<< orphan*/  vTaskDelay (int) ; 
+
+ scalar_t__ ESP_ERR_INVALID_STATE ;
+ scalar_t__ ESP_FAIL ;
+ int ESP_LOGD (int ,char*,...) ;
+ int ESP_LOGE (int ,char*) ;
+ scalar_t__ ESP_OK ;
+ int MAX_SCAN_RESULTS ;
+ int MIN (size_t,int) ;
+ int TAG ;
+ scalar_t__ calloc (size_t,int) ;
+ scalar_t__ esp_wifi_scan_get_ap_num (size_t*) ;
+ scalar_t__ esp_wifi_scan_get_ap_records (size_t*,TYPE_1__*) ;
+ scalar_t__ esp_wifi_scan_start (TYPE_4__*,int) ;
+ int free (TYPE_1__*) ;
+ int portTICK_PERIOD_MS ;
+ TYPE_2__* prov_ctx ;
+ int vTaskDelay (int) ;
 
 __attribute__((used)) static esp_err_t update_wifi_scan_results(void)
 {
@@ -52,7 +52,7 @@ __attribute__((used)) static esp_err_t update_wifi_scan_results(void)
 
     if (prov_ctx->ap_list[curr_channel]) {
         free(prov_ctx->ap_list[curr_channel]);
-        prov_ctx->ap_list[curr_channel] = NULL;
+        prov_ctx->ap_list[curr_channel] = ((void*)0);
         prov_ctx->ap_list_len[curr_channel] = 0;
     }
 
@@ -97,7 +97,7 @@ __attribute__((used)) static esp_err_t update_wifi_scan_results(void)
                  prov_ctx->ap_list[curr_channel][i].authmode);
     }
 
-    /* Store results in sorted list */
+
     {
         int rc = MIN(count, MAX_SCAN_RESULTS);
         int is = MAX_SCAN_RESULTS - rc - 1;
@@ -122,15 +122,15 @@ __attribute__((used)) static esp_err_t update_wifi_scan_results(void)
     exit:
 
     if (!prov_ctx->channels_per_group) {
-        /* All channel scan was performed
-         * so nothing more to do */
-        prov_ctx->scanning = false;
+
+
+        prov_ctx->scanning = 0;
         goto final;
     }
 
     curr_channel = prov_ctx->curr_channel = (prov_ctx->curr_channel + 1) % 14;
     if (ret != ESP_OK || curr_channel == 0) {
-        prov_ctx->scanning = false;
+        prov_ctx->scanning = 0;
         goto final;
     }
 
@@ -140,10 +140,10 @@ __attribute__((used)) static esp_err_t update_wifi_scan_results(void)
 
     ESP_LOGD(TAG, "Scan starting on channel %u...", curr_channel);
     prov_ctx->scan_cfg.channel = curr_channel;
-    ret = esp_wifi_scan_start(&prov_ctx->scan_cfg, false);
+    ret = esp_wifi_scan_start(&prov_ctx->scan_cfg, 0);
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Failed to start scan");
-        prov_ctx->scanning = false;
+        prov_ctx->scanning = 0;
         goto final;
     }
     ESP_LOGD(TAG, "Scan started");

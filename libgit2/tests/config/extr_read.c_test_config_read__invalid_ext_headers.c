@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_config ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cl_fixture (char*) ; 
- int /*<<< orphan*/  cl_must_fail (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_config_open_ondisk (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int git_config ;
+
+
+ int cl_fixture (char*) ;
+ int cl_must_fail (int ) ;
+ int git_config_open_ondisk (int **,int ) ;
 
 void test_config_read__invalid_ext_headers(void)
 {
-	git_config *cfg;
-	cl_must_fail(git_config_open_ondisk(&cfg, cl_fixture("config/config7")));
+ git_config *cfg;
+ cl_must_fail(git_config_open_ondisk(&cfg, cl_fixture("config/config7")));
 }

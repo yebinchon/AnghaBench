@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509 ;
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  SSL_CONF_CTX ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- scalar_t__ BIO_do_accept (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_free_all (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_new_accept (char*) ; 
- int /*<<< orphan*/ * BIO_new_ssl (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * BIO_pop (int /*<<< orphan*/ *) ; 
- int BIO_read (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  BIO_set_accept_bios (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERR_print_errors_fp (int /*<<< orphan*/ ) ; 
- int EXIT_FAILURE ; 
- int EXIT_SUCCESS ; 
- int /*<<< orphan*/  SSL_CERT_SET_FIRST ; 
- int /*<<< orphan*/  SSL_CERT_SET_NEXT ; 
- int /*<<< orphan*/  SSL_CONF_CTX_finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SSL_CONF_CTX_new () ; 
- int /*<<< orphan*/  SSL_CONF_CTX_set_flags (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_CONF_CTX_set_ssl_ctx (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CONF_FLAG_CERTIFICATE ; 
- int /*<<< orphan*/  SSL_CONF_FLAG_SERVER ; 
- int SSL_CONF_cmd_argv (int /*<<< orphan*/ *,int*,char***) ; 
- int /*<<< orphan*/ * SSL_CTX_get0_certificate (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SSL_CTX_new (int /*<<< orphan*/ ) ; 
- int SSL_CTX_set_current_cert (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TLS_server_method () ; 
- int /*<<< orphan*/  X509_NAME_print_ex_fp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_get_subject_name (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  XN_FLAG_ONELINE ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  fwrite (char*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+
+
+typedef int X509 ;
+typedef int SSL_CTX ;
+typedef int SSL_CONF_CTX ;
+typedef int BIO ;
+
+
+ scalar_t__ BIO_do_accept (int *) ;
+ int BIO_free (int *) ;
+ int BIO_free_all (int *) ;
+ int * BIO_new_accept (char*) ;
+ int * BIO_new_ssl (int *,int ) ;
+ int * BIO_pop (int *) ;
+ int BIO_read (int *,char*,int) ;
+ int BIO_set_accept_bios (int *,int *) ;
+ int ERR_print_errors_fp (int ) ;
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int SSL_CERT_SET_FIRST ;
+ int SSL_CERT_SET_NEXT ;
+ int SSL_CONF_CTX_finish (int *) ;
+ int * SSL_CONF_CTX_new () ;
+ int SSL_CONF_CTX_set_flags (int *,int ) ;
+ int SSL_CONF_CTX_set_ssl_ctx (int *,int *) ;
+ int SSL_CONF_FLAG_CERTIFICATE ;
+ int SSL_CONF_FLAG_SERVER ;
+ int SSL_CONF_cmd_argv (int *,int*,char***) ;
+ int * SSL_CTX_get0_certificate (int *) ;
+ int * SSL_CTX_new (int ) ;
+ int SSL_CTX_set_current_cert (int *,int ) ;
+ int TLS_server_method () ;
+ int X509_NAME_print_ex_fp (int ,int ,int ,int ) ;
+ int X509_get_subject_name (int *) ;
+ int XN_FLAG_ONELINE ;
+ int fflush (int ) ;
+ int fprintf (int ,char*,...) ;
+ int fwrite (char*,int,int,int ) ;
+ int printf (char*) ;
+ int stderr ;
+ int stdout ;
+ scalar_t__ strcmp (char*,char*) ;
 
 int main(int argc, char *argv[])
 {
@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
     SSL_CTX *ctx;
     SSL_CONF_CTX *cctx;
     char buf[512];
-    BIO *in = NULL;
+    BIO *in = ((void*)0);
     int ret = EXIT_FAILURE, i;
     char **args = argv + 1;
     int nargs = argc - 1;
@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
     SSL_CONF_CTX_set_ssl_ctx(cctx, ctx);
     while (*args && **args == '-') {
         int rv;
-        /* Parse standard arguments */
+
         rv = SSL_CONF_cmd_argv(cctx, &nargs, &args);
         if (rv == -3) {
             fprintf(stderr, "Missing argument for %s\n", *args);
@@ -82,13 +82,13 @@ int main(int argc, char *argv[])
             ERR_print_errors_fp(stderr);
             goto err;
         }
-        /* If rv > 0 we processed something so proceed to next arg */
+
         if (rv > 0)
             continue;
-        /* Otherwise application specific argument processing */
+
         if (strcmp(*args, "-port") == 0) {
             port = args[1];
-            if (port == NULL) {
+            if (port == ((void*)0)) {
                 fprintf(stderr, "Missing -port argument\n");
                 goto err;
             }
@@ -106,43 +106,24 @@ int main(int argc, char *argv[])
         ERR_print_errors_fp(stderr);
         goto err;
     }
-#ifdef ITERATE_CERTS
-    /*
-     * Demo of how to iterate over all certificates in an SSL_CTX structure.
-     */
-    {
-        X509 *x;
-        int rv;
-        rv = SSL_CTX_set_current_cert(ctx, SSL_CERT_SET_FIRST);
-        while (rv) {
-            X509 *x = SSL_CTX_get0_certificate(ctx);
-            X509_NAME_print_ex_fp(stdout, X509_get_subject_name(x), 0,
-                                  XN_FLAG_ONELINE);
-            printf("\n");
-            rv = SSL_CTX_set_current_cert(ctx, SSL_CERT_SET_NEXT);
-        }
-        fflush(stdout);
-    }
-#endif
-    /* Setup server side SSL bio */
     ssl_bio = BIO_new_ssl(ctx, 0);
 
-    if ((in = BIO_new_accept(port)) == NULL)
+    if ((in = BIO_new_accept(port)) == ((void*)0))
         goto err;
 
-    /*
-     * This means that when a new connection is accepted on 'in', The ssl_bio
-     * will be 'duplicated' and have the new socket BIO push into it.
-     * Basically it means the SSL BIO will be automatically setup
-     */
+
+
+
+
+
     BIO_set_accept_bios(in, ssl_bio);
 
  again:
-    /*
-     * The first call will setup the accept socket, and the second will get a
-     * socket.  In this loop, the first actual accept will occur in the
-     * BIO_read() function.
-     */
+
+
+
+
+
 
     if (BIO_do_accept(in) <= 0)
         goto err;
@@ -150,11 +131,11 @@ int main(int argc, char *argv[])
     for (;;) {
         i = BIO_read(in, buf, 512);
         if (i == 0) {
-            /*
-             * If we have finished, remove the underlying BIO stack so the
-             * next time we call any function for this BIO, it will attempt
-             * to do an accept
-             */
+
+
+
+
+
             printf("Done\n");
             tmp = BIO_pop(in);
             BIO_free_all(tmp);

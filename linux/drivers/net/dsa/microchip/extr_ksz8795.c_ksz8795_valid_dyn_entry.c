@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
+
+
+
+
+typedef int u8 ;
 struct ksz_device {int dummy; } ;
 
-/* Variables and functions */
- int DYNAMIC_MAC_TABLE_MAC_EMPTY ; 
- int DYNAMIC_MAC_TABLE_NOT_READY ; 
- int EAGAIN ; 
- int ENXIO ; 
- int /*<<< orphan*/  REG_IND_DATA_8 ; 
- int /*<<< orphan*/  REG_IND_DATA_CHECK ; 
- int /*<<< orphan*/  ksz_read8 (struct ksz_device*,int /*<<< orphan*/ ,int*) ; 
+
+ int DYNAMIC_MAC_TABLE_MAC_EMPTY ;
+ int DYNAMIC_MAC_TABLE_NOT_READY ;
+ int EAGAIN ;
+ int ENXIO ;
+ int REG_IND_DATA_8 ;
+ int REG_IND_DATA_CHECK ;
+ int ksz_read8 (struct ksz_device*,int ,int*) ;
 
 __attribute__((used)) static int ksz8795_valid_dyn_entry(struct ksz_device *dev, u8 *data)
 {
-	int timeout = 100;
+ int timeout = 100;
 
-	do {
-		ksz_read8(dev, REG_IND_DATA_CHECK, data);
-		timeout--;
-	} while ((*data & DYNAMIC_MAC_TABLE_NOT_READY) && timeout);
+ do {
+  ksz_read8(dev, REG_IND_DATA_CHECK, data);
+  timeout--;
+ } while ((*data & DYNAMIC_MAC_TABLE_NOT_READY) && timeout);
 
-	/* Entry is not ready for accessing. */
-	if (*data & DYNAMIC_MAC_TABLE_NOT_READY) {
-		return -EAGAIN;
-	/* Entry is ready for accessing. */
-	} else {
-		ksz_read8(dev, REG_IND_DATA_8, data);
 
-		/* There is no valid entry in the table. */
-		if (*data & DYNAMIC_MAC_TABLE_MAC_EMPTY)
-			return -ENXIO;
-	}
-	return 0;
+ if (*data & DYNAMIC_MAC_TABLE_NOT_READY) {
+  return -EAGAIN;
+
+ } else {
+  ksz_read8(dev, REG_IND_DATA_8, data);
+
+
+  if (*data & DYNAMIC_MAC_TABLE_MAC_EMPTY)
+   return -ENXIO;
+ }
+ return 0;
 }

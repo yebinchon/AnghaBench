@@ -1,169 +1,169 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  line ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int line ;
 struct TYPE_6__ {TYPE_3__* sections; } ;
-typedef  TYPE_1__ config_ini_state_t ;
-struct TYPE_7__ {int /*<<< orphan*/ * value; int /*<<< orphan*/ * name; struct TYPE_7__* next; } ;
-typedef  TYPE_2__ config_ini_setting_t ;
-struct TYPE_8__ {TYPE_2__* settings; int /*<<< orphan*/ * name; struct TYPE_8__* next; } ;
-typedef  TYPE_3__ config_ini_section_t ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ config_ini_state_t ;
+struct TYPE_7__ {int * value; int * name; struct TYPE_7__* next; } ;
+typedef TYPE_2__ config_ini_setting_t ;
+struct TYPE_8__ {TYPE_2__* settings; int * name; struct TYPE_8__* next; } ;
+typedef TYPE_3__ config_ini_section_t ;
+typedef int FILE ;
 
-/* Variables and functions */
- int MAX_LINE_LENGTH ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  config_ini_free (TYPE_1__*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- char* fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fputs (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,char const*,size_t) ; 
- int /*<<< orphan*/ * open_config_file (char const*) ; 
- int /*<<< orphan*/  stderr ; 
- char* strchr (char*,char) ; 
- size_t strcspn (char*,char*) ; 
- int strlen (char*) ; 
- int strspn (char*,char*) ; 
+
+ int MAX_LINE_LENGTH ;
+ int _ (char*) ;
+ int config_ini_free (TYPE_1__*) ;
+ int fclose (int *) ;
+ char* fgets (char*,int,int *) ;
+ int fputs (int ,int ) ;
+ void* malloc (size_t) ;
+ int memcpy (int *,char const*,size_t) ;
+ int * open_config_file (char const*) ;
+ int stderr ;
+ char* strchr (char*,char) ;
+ size_t strcspn (char*,char*) ;
+ int strlen (char*) ;
+ int strspn (char*,char*) ;
 
 int
 config_ini_init(config_ini_state_t *state, const char *filepath)
 {
-	config_ini_section_t *section = NULL;
-	state->sections = NULL;
+ config_ini_section_t *section = ((void*)0);
+ state->sections = ((void*)0);
 
-	FILE *f = open_config_file(filepath);
-	if (f == NULL) {
-		/* Only a serious error if a file was explicitly requested. */
-		if (filepath != NULL) return -1;
-		return 0;
-	}
+ FILE *f = open_config_file(filepath);
+ if (f == ((void*)0)) {
 
-	char line[MAX_LINE_LENGTH];
-	char *s;
+  if (filepath != ((void*)0)) return -1;
+  return 0;
+ }
 
-	while (1) {
-		/* Handle the file input linewise. */
-		char *r = fgets(line, sizeof(line), f);
-		if (r == NULL) break;
+ char line[MAX_LINE_LENGTH];
+ char *s;
 
-		/* Strip leading blanks and trailing newline. */
-		s = line + strspn(line, " \t");
-		s[strcspn(s, "\r\n")] = '\0';
+ while (1) {
 
-		/* Skip comments and empty lines. */
-		if (s[0] == ';' || s[0] == '#' || s[0] == '\0') continue;
+  char *r = fgets(line, sizeof(line), f);
+  if (r == ((void*)0)) break;
 
-		if (s[0] == '[') {
-			/* Read name of section. */
-			const char *name = s+1;
-			char *end = strchr(s, ']');
-			if (end == NULL || end[1] != '\0' || end == name) {
-				fputs(_("Malformed section header in config"
-					" file.\n"), stderr);
-				fclose(f);
-				config_ini_free(state);
-				return -1;
-			}
 
-			*end = '\0';
+  s = line + strspn(line, " \t");
+  s[strcspn(s, "\r\n")] = '\0';
 
-			/* Create section. */
-			section = malloc(sizeof(config_ini_section_t));
-			if (section == NULL) {
-				fclose(f);
-				config_ini_free(state);
-				return -1;
-			}
 
-			/* Insert into section list. */
-			section->name = NULL;
-			section->settings = NULL;
-			section->next = state->sections;
-			state->sections = section;
+  if (s[0] == ';' || s[0] == '#' || s[0] == '\0') continue;
 
-			/* Copy section name. */
-			section->name = malloc(end - name + 1);
-			if (section->name == NULL) {
-				fclose(f);
-				config_ini_free(state);
-				return -1;
-			}
+  if (s[0] == '[') {
 
-			memcpy(section->name, name, end - name + 1);
-		} else {
-			/* Split assignment at equals character. */
-			char *end = strchr(s, '=');
-			if (end == NULL || end == s) {
-				fputs(_("Malformed assignment in config"
-					" file.\n"), stderr);
-				fclose(f);
-				config_ini_free(state);
-				return -1;
-			}
+   const char *name = s+1;
+   char *end = strchr(s, ']');
+   if (end == ((void*)0) || end[1] != '\0' || end == name) {
+    fputs(_("Malformed section header in config"
+     " file.\n"), stderr);
+    fclose(f);
+    config_ini_free(state);
+    return -1;
+   }
 
-			*end = '\0';
-			char *value = end + 1;
+   *end = '\0';
 
-			if (section == NULL) {
-				fputs(_("Assignment outside section in config"
-					" file.\n"), stderr);
-				fclose(f);
-				config_ini_free(state);
-				return -1;
-			}
 
-			/* Create section. */
-			config_ini_setting_t *setting =
-				malloc(sizeof(config_ini_setting_t));
-			if (setting == NULL) {
-				fclose(f);
-				config_ini_free(state);
-				return -1;
-			}
+   section = malloc(sizeof(config_ini_section_t));
+   if (section == ((void*)0)) {
+    fclose(f);
+    config_ini_free(state);
+    return -1;
+   }
 
-			/* Insert into section list. */
-			setting->name = NULL;
-			setting->value = NULL;
-			setting->next = section->settings;
-			section->settings = setting;
 
-			/* Copy name of setting. */
-			setting->name = malloc(end - s + 1);
-			if (setting->name == NULL) {
-				fclose(f);
-				config_ini_free(state);
-				return -1;
-			}
+   section->name = ((void*)0);
+   section->settings = ((void*)0);
+   section->next = state->sections;
+   state->sections = section;
 
-			memcpy(setting->name, s, end - s + 1);
 
-			/* Copy setting value. */
-			size_t value_len = strlen(value) + 1;
-			setting->value = malloc(value_len);
-			if (setting->value == NULL) {
-				fclose(f);
-				config_ini_free(state);
-				return -1;
-			}
+   section->name = malloc(end - name + 1);
+   if (section->name == ((void*)0)) {
+    fclose(f);
+    config_ini_free(state);
+    return -1;
+   }
 
-			memcpy(setting->value, value, value_len);
-		}
-	}
+   memcpy(section->name, name, end - name + 1);
+  } else {
 
-	fclose(f);
+   char *end = strchr(s, '=');
+   if (end == ((void*)0) || end == s) {
+    fputs(_("Malformed assignment in config"
+     " file.\n"), stderr);
+    fclose(f);
+    config_ini_free(state);
+    return -1;
+   }
 
-	return 0;
+   *end = '\0';
+   char *value = end + 1;
+
+   if (section == ((void*)0)) {
+    fputs(_("Assignment outside section in config"
+     " file.\n"), stderr);
+    fclose(f);
+    config_ini_free(state);
+    return -1;
+   }
+
+
+   config_ini_setting_t *setting =
+    malloc(sizeof(config_ini_setting_t));
+   if (setting == ((void*)0)) {
+    fclose(f);
+    config_ini_free(state);
+    return -1;
+   }
+
+
+   setting->name = ((void*)0);
+   setting->value = ((void*)0);
+   setting->next = section->settings;
+   section->settings = setting;
+
+
+   setting->name = malloc(end - s + 1);
+   if (setting->name == ((void*)0)) {
+    fclose(f);
+    config_ini_free(state);
+    return -1;
+   }
+
+   memcpy(setting->name, s, end - s + 1);
+
+
+   size_t value_len = strlen(value) + 1;
+   setting->value = malloc(value_len);
+   if (setting->value == ((void*)0)) {
+    fclose(f);
+    config_ini_free(state);
+    return -1;
+   }
+
+   memcpy(setting->value, value, value_len);
+  }
+ }
+
+ fclose(f);
+
+ return 0;
 }

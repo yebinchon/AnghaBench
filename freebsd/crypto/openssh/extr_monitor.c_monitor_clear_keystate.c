@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ssh {int dummy; } ;
 struct monitor {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MODE_IN ; 
- int /*<<< orphan*/  MODE_OUT ; 
- struct ssh* active_state ; 
- int /*<<< orphan*/ * child_state ; 
- int /*<<< orphan*/  ssh_clear_newkeys (struct ssh*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sshbuf_free (int /*<<< orphan*/ *) ; 
+
+ int MODE_IN ;
+ int MODE_OUT ;
+ struct ssh* active_state ;
+ int * child_state ;
+ int ssh_clear_newkeys (struct ssh*,int ) ;
+ int sshbuf_free (int *) ;
 
 void
 monitor_clear_keystate(struct monitor *pmonitor)
 {
-	struct ssh *ssh = active_state;	/* XXX */
+ struct ssh *ssh = active_state;
 
-	ssh_clear_newkeys(ssh, MODE_IN);
-	ssh_clear_newkeys(ssh, MODE_OUT);
-	sshbuf_free(child_state);
-	child_state = NULL;
+ ssh_clear_newkeys(ssh, MODE_IN);
+ ssh_clear_newkeys(ssh, MODE_OUT);
+ sshbuf_free(child_state);
+ child_state = ((void*)0);
 }

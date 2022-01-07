@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_7__ {char* name; struct TYPE_7__* next; int /*<<< orphan*/ * value; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_7__ {char* name; struct TYPE_7__* next; int * value; } ;
 struct TYPE_6__ {char* name; TYPE_2__* key; struct TYPE_6__* next; } ;
-typedef  TYPE_1__ PROFILESECTION ;
-typedef  TYPE_2__ PROFILEKEY ;
-typedef  scalar_t__* LPCWSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ PROFILESECTION ;
+typedef TYPE_2__ PROFILEKEY ;
+typedef scalar_t__* LPCWSTR ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ PROFILE_isspaceW (scalar_t__) ; 
- int /*<<< orphan*/  strcpyW (char*,scalar_t__*) ; 
- int strlenW (scalar_t__*) ; 
- int /*<<< orphan*/  strncmpiW (char*,scalar_t__*,int) ; 
+
+ int GetProcessHeap () ;
+ void* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_1__*) ;
+ scalar_t__ PROFILE_isspaceW (scalar_t__) ;
+ int strcpyW (char*,scalar_t__*) ;
+ int strlenW (scalar_t__*) ;
+ int strncmpiW (char*,scalar_t__*,int) ;
 
 __attribute__((used)) static PROFILEKEY *PROFILE_Find( PROFILESECTION **section, LPCWSTR section_name,
                                  LPCWSTR key_name, BOOL create, BOOL create_always )
@@ -60,11 +60,11 @@ __attribute__((used)) static PROFILEKEY *PROFILE_Find( PROFILESECTION **section,
 
             while (*key)
             {
-                /* If create_always is FALSE then we check if the keyname
-                 * already exists. Otherwise we add it regardless of its
-                 * existence, to allow keys to be added more than once in
-                 * some cases.
-                 */
+
+
+
+
+
                 if(!create_always)
                 {
                     if ( (!(strncmpiW( (*key)->name, key_name, keylen )))
@@ -73,29 +73,29 @@ __attribute__((used)) static PROFILEKEY *PROFILE_Find( PROFILESECTION **section,
                 }
                 key = &(*key)->next;
             }
-            if (!create) return NULL;
+            if (!create) return ((void*)0);
             if (!(*key = HeapAlloc( GetProcessHeap(), 0, sizeof(PROFILEKEY) + strlenW(key_name) * sizeof(WCHAR) )))
-                return NULL;
+                return ((void*)0);
             strcpyW( (*key)->name, key_name );
-            (*key)->value = NULL;
-            (*key)->next  = NULL;
+            (*key)->value = ((void*)0);
+            (*key)->next = ((void*)0);
             return *key;
         }
         section = &(*section)->next;
     }
-    if (!create) return NULL;
+    if (!create) return ((void*)0);
     *section = HeapAlloc( GetProcessHeap(), 0, sizeof(PROFILESECTION) + strlenW(section_name) * sizeof(WCHAR) );
-    if(*section == NULL) return NULL;
+    if(*section == ((void*)0)) return ((void*)0);
     strcpyW( (*section)->name, section_name );
-    (*section)->next = NULL;
-    if (!((*section)->key  = HeapAlloc( GetProcessHeap(), 0,
+    (*section)->next = ((void*)0);
+    if (!((*section)->key = HeapAlloc( GetProcessHeap(), 0,
                                         sizeof(PROFILEKEY) + strlenW(key_name) * sizeof(WCHAR) )))
     {
         HeapFree(GetProcessHeap(), 0, *section);
-        return NULL;
+        return ((void*)0);
     }
     strcpyW( (*section)->key->name, key_name );
-    (*section)->key->value = NULL;
-    (*section)->key->next  = NULL;
+    (*section)->key->value = ((void*)0);
+    (*section)->key->next = ((void*)0);
     return (*section)->key;
 }

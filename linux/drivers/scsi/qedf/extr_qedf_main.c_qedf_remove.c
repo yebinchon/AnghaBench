@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pci_dev {int /*<<< orphan*/  enable_cnt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  QEDF_MODE_NORMAL ; 
- int /*<<< orphan*/  __qedf_remove (struct pci_dev*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atomic_read (int /*<<< orphan*/ *) ; 
+
+
+
+struct pci_dev {int enable_cnt; } ;
+
+
+ int QEDF_MODE_NORMAL ;
+ int __qedf_remove (struct pci_dev*,int ) ;
+ int atomic_read (int *) ;
 
 __attribute__((used)) static void qedf_remove(struct pci_dev *pdev)
 {
-	/* Check to make sure this function wasn't already disabled */
-	if (!atomic_read(&pdev->enable_cnt))
-		return;
 
-	__qedf_remove(pdev, QEDF_MODE_NORMAL);
+ if (!atomic_read(&pdev->enable_cnt))
+  return;
+
+ __qedf_remove(pdev, QEDF_MODE_NORMAL);
 }

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char u_char ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef char u_char ;
 struct TYPE_3__ {char* data; int len; } ;
-typedef  TYPE_1__ ngx_str_t ;
-typedef  scalar_t__ ngx_int_t ;
-typedef  scalar_t__ ngx_fd_t ;
+typedef TYPE_1__ ngx_str_t ;
+typedef scalar_t__ ngx_int_t ;
+typedef scalar_t__ ngx_fd_t ;
 
-/* Variables and functions */
- scalar_t__ NGX_DONE ; 
- scalar_t__ NGX_ERROR ; 
- scalar_t__ NGX_FILE_APPEND ; 
- scalar_t__ NGX_FILE_CREATE_OR_OPEN ; 
- int /*<<< orphan*/  NGX_FILE_DEFAULT_ACCESS ; 
- scalar_t__ NGX_FILE_OPEN ; 
- scalar_t__ NGX_FILE_RDONLY ; 
- scalar_t__ NGX_FILE_TRUNCATE ; 
- scalar_t__ NGX_FILE_WRONLY ; 
- scalar_t__ NGX_INVALID_FILE ; 
- scalar_t__ NGX_OK ; 
- int /*<<< orphan*/  dup2 (scalar_t__,scalar_t__) ; 
- int ngx_atoi (char*,int) ; 
- int /*<<< orphan*/  ngx_close_file (scalar_t__) ; 
- scalar_t__ ngx_open_file (char*,scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ NGX_DONE ;
+ scalar_t__ NGX_ERROR ;
+ scalar_t__ NGX_FILE_APPEND ;
+ scalar_t__ NGX_FILE_CREATE_OR_OPEN ;
+ int NGX_FILE_DEFAULT_ACCESS ;
+ scalar_t__ NGX_FILE_OPEN ;
+ scalar_t__ NGX_FILE_RDONLY ;
+ scalar_t__ NGX_FILE_TRUNCATE ;
+ scalar_t__ NGX_FILE_WRONLY ;
+ scalar_t__ NGX_INVALID_FILE ;
+ scalar_t__ NGX_OK ;
+ int dup2 (scalar_t__,scalar_t__) ;
+ int ngx_atoi (char*,int) ;
+ int ngx_close_file (scalar_t__) ;
+ scalar_t__ ngx_open_file (char*,scalar_t__,scalar_t__,int ) ;
 
 ngx_int_t
 ngx_rtmp_eval_streams(ngx_str_t *in)
 {
-#if !(NGX_WIN32)
-    ngx_int_t   mode, create, v, close_src;
-    ngx_fd_t    dst, src;
-    u_char     *path;
+
+    ngx_int_t mode, create, v, close_src;
+    ngx_fd_t dst, src;
+    u_char *path;
 
     path = in->data;
 
@@ -120,7 +120,7 @@ ngx_rtmp_eval_streams(ngx_str_t *in)
     }
     return NGX_OK;
 
-#else
-    return NGX_DONE;
-#endif
+
+
+
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  cpuset_mems; int /*<<< orphan*/  cpuset_cpus; void* ip_filters_egress; void* ip_filters_ingress; void* ip_address_deny; void* ip_address_allow; scalar_t__ device_allow; scalar_t__ blockio_device_bandwidths; scalar_t__ blockio_device_weights; scalar_t__ io_device_limits; scalar_t__ io_device_latencies; scalar_t__ io_device_weights; } ;
-typedef  TYPE_1__ CGroupContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  cgroup_context_free_blockio_device_bandwidth (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  cgroup_context_free_blockio_device_weight (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  cgroup_context_free_device_allow (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  cgroup_context_free_io_device_latency (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  cgroup_context_free_io_device_limit (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  cgroup_context_free_io_device_weight (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  cpu_set_reset (int /*<<< orphan*/ *) ; 
- void* ip_address_access_free_all (void*) ; 
- void* strv_free (void*) ; 
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int cpuset_mems; int cpuset_cpus; void* ip_filters_egress; void* ip_filters_ingress; void* ip_address_deny; void* ip_address_allow; scalar_t__ device_allow; scalar_t__ blockio_device_bandwidths; scalar_t__ blockio_device_weights; scalar_t__ io_device_limits; scalar_t__ io_device_latencies; scalar_t__ io_device_weights; } ;
+typedef TYPE_1__ CGroupContext ;
+
+
+ int assert (TYPE_1__*) ;
+ int cgroup_context_free_blockio_device_bandwidth (TYPE_1__*,scalar_t__) ;
+ int cgroup_context_free_blockio_device_weight (TYPE_1__*,scalar_t__) ;
+ int cgroup_context_free_device_allow (TYPE_1__*,scalar_t__) ;
+ int cgroup_context_free_io_device_latency (TYPE_1__*,scalar_t__) ;
+ int cgroup_context_free_io_device_limit (TYPE_1__*,scalar_t__) ;
+ int cgroup_context_free_io_device_weight (TYPE_1__*,scalar_t__) ;
+ int cpu_set_reset (int *) ;
+ void* ip_address_access_free_all (void*) ;
+ void* strv_free (void*) ;
 
 void cgroup_context_done(CGroupContext *c) {
         assert(c);

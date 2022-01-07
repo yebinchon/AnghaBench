@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u64 ;
+
+
+
+
+typedef int u64 ;
 struct spu {int dummy; } ;
 
-/* Variables and functions */
- int spu_int_mask_get (struct spu*,int) ; 
- int /*<<< orphan*/  spu_int_mask_set (struct spu*,int,int) ; 
+
+ int spu_int_mask_get (struct spu*,int) ;
+ int spu_int_mask_set (struct spu*,int,int) ;
 
 __attribute__((used)) static void int_mask_and(struct spu *spu, int class, u64 mask)
 {
-	u64 old_mask;
+ u64 old_mask;
 
-	/* are these serialized by caller??? */
-	old_mask = spu_int_mask_get(spu, class);
-	spu_int_mask_set(spu, class, old_mask & mask);
+
+ old_mask = spu_int_mask_get(spu, class);
+ spu_int_mask_set(spu, class, old_mask & mask);
 }

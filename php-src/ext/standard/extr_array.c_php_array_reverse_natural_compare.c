@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int php_array_natural_general_compare (void const*,void const*,int ) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int php_array_natural_general_compare (void const*,void const*,int /*<<< orphan*/ ) ; 
-
-__attribute__((used)) static int php_array_reverse_natural_compare(const void *a, const void *b) /* {{{ */
+__attribute__((used)) static int php_array_reverse_natural_compare(const void *a, const void *b)
 {
-	return php_array_natural_general_compare(b, a, 0);
+ return php_array_natural_general_compare(b, a, 0);
 }

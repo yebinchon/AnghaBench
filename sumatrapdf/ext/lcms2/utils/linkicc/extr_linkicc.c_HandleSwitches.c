@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void* BlackPointCompensation ; 
- void* Copyright ; 
- void* Description ; 
- int EOF ; 
- int /*<<< orphan*/  FatalError (char*,...) ; 
- int /*<<< orphan*/  Help (void*) ; 
- double InkLimit ; 
- void* Intent ; 
- void* KeepLinearization ; 
- void* NumOfGridPoints ; 
- double ObserverAdaptationState ; 
- int PrecalcMode ; 
- void* TRUE ; 
- void* TagResult ; 
- int Verbose ; 
- double Version ; 
- double atof (void*) ; 
- void* atoi (void*) ; 
- void* cOutProf ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- void* lUse8bits ; 
- int /*<<< orphan*/  stderr ; 
- int xgetopt (int,char**,char*) ; 
- void* xoptarg ; 
+ void* BlackPointCompensation ;
+ void* Copyright ;
+ void* Description ;
+ int EOF ;
+ int FatalError (char*,...) ;
+ int Help (void*) ;
+ double InkLimit ;
+ void* Intent ;
+ void* KeepLinearization ;
+ void* NumOfGridPoints ;
+ double ObserverAdaptationState ;
+ int PrecalcMode ;
+ void* TRUE ;
+ void* TagResult ;
+ int Verbose ;
+ double Version ;
+ double atof (void*) ;
+ void* atoi (void*) ;
+ void* cOutProf ;
+ int fprintf (int ,char*) ;
+ void* lUse8bits ;
+ int stderr ;
+ int xgetopt (int,char**,char*) ;
+ void* xoptarg ;
 
 __attribute__((used)) static
 void HandleSwitches(int argc, char *argv[])
@@ -70,8 +62,8 @@ void HandleSwitches(int argc, char *argv[])
 
        case 'd':
        case 'D':
-           // Doing that is correct and safe: Description points to memory allocated in the command line.
-           // same for Copyright and output devicelink.
+
+
            Description = xoptarg;
            break;
 
@@ -117,7 +109,7 @@ void HandleSwitches(int argc, char *argv[])
 
         case 't':
         case 'T':
-            Intent = atoi(xoptarg);  // Will be validated latter on
+            Intent = atoi(xoptarg);
             break;
 
         case 'V':

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {char const* data; } ;
-typedef  TYPE_1__ svn_stringbuf_t ;
+typedef TYPE_1__ svn_stringbuf_t ;
 struct TYPE_6__ {char const* data; } ;
-typedef  TYPE_2__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
+typedef TYPE_2__ svn_string_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_PROP_REVISION_LOG ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/ * mutually_exclusive_logs_error () ; 
- TYPE_2__* svn_hash_gets (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int * SVN_NO_ERROR ;
+ int SVN_PROP_REVISION_LOG ;
+ char* apr_pstrdup (int *,char const*) ;
+ int * mutually_exclusive_logs_error () ;
+ TYPE_2__* svn_hash_gets (int *,int ) ;
+ int svn_hash_sets (int *,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 sanitize_log_sources(const char **final_message,
@@ -38,10 +38,10 @@ sanitize_log_sources(const char **final_message,
 {
   svn_string_t *msg;
 
-  *final_message = NULL;
-  /* If we already have a log message in the revprop hash, then just
-     make sure the user didn't try to also use -m or -F.  Otherwise,
-     we need to consult -m or -F to find a log message, if any. */
+  *final_message = ((void*)0);
+
+
+
   msg = svn_hash_gets(revprops, SVN_PROP_REVISION_LOG);
   if (msg)
     {
@@ -50,8 +50,8 @@ sanitize_log_sources(const char **final_message,
 
       *final_message = apr_pstrdup(result_pool, msg->data);
 
-      /* Will be re-added by libsvn_client */
-      svn_hash_sets(revprops, SVN_PROP_REVISION_LOG, NULL);
+
+      svn_hash_sets(revprops, SVN_PROP_REVISION_LOG, ((void*)0));
     }
   else if (filedata)
     {

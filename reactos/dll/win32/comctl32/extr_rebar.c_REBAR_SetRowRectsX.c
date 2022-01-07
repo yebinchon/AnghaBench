@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int left; scalar_t__ right; } ;
-struct TYPE_5__ {scalar_t__ cxEffective; TYPE_1__ rcBand; int /*<<< orphan*/  fDraw; } ;
-typedef  int /*<<< orphan*/  REBAR_INFO ;
-typedef  TYPE_2__ REBAR_BAND ;
-typedef  int INT ;
+struct TYPE_5__ {scalar_t__ cxEffective; TYPE_1__ rcBand; int fDraw; } ;
+typedef int REBAR_INFO ;
+typedef TYPE_2__ REBAR_BAND ;
+typedef int INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NTF_INVALIDATE ; 
- TYPE_2__* REBAR_GetBand (int /*<<< orphan*/  const*,int) ; 
- scalar_t__ SEP_WIDTH ; 
- int /*<<< orphan*/  TRACE (char*,int,int,scalar_t__) ; 
- int next_visible (int /*<<< orphan*/  const*,int) ; 
+
+ int NTF_INVALIDATE ;
+ TYPE_2__* REBAR_GetBand (int const*,int) ;
+ scalar_t__ SEP_WIDTH ;
+ int TRACE (char*,int,int,scalar_t__) ;
+ int next_visible (int const*,int) ;
 
 __attribute__((used)) static void REBAR_SetRowRectsX(const REBAR_INFO *infoPtr, INT iBeginBand, INT iEndBand)
 {

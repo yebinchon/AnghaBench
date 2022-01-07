@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  value_length; int /*<<< orphan*/  value; int /*<<< orphan*/  key_length; int /*<<< orphan*/  key; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  TYPE_1__ MatchDictEntry ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * PyDict_New () ; 
- int PyDict_SetItem (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyUnicode_FromStringAndSize (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int value_length; int value; int key_length; int key; } ;
+typedef int PyObject ;
+typedef TYPE_1__ MatchDictEntry ;
+
+
+ int * PyDict_New () ;
+ int PyDict_SetItem (int *,int *,int *) ;
+ int * PyUnicode_FromStringAndSize (int ,int ) ;
+ int Py_XDECREF (int *) ;
 
 PyObject*
 MatchDict_entries_to_dict(MatchDictEntry* entries, size_t length)
 {
-  PyObject* match_dict = NULL;
+  PyObject* match_dict = ((void*)0);
   if(!(match_dict = PyDict_New()))
     goto error;
 
   for(MatchDictEntry* entry = entries; entry < entries + length; entry++) {
-    PyObject* key = NULL;
-    PyObject* value = NULL;
+    PyObject* key = ((void*)0);
+    PyObject* value = ((void*)0);
 
     if(!(key = PyUnicode_FromStringAndSize(entry->key, entry->key_length)))
       goto loop_error;
@@ -45,7 +45,7 @@ MatchDict_entries_to_dict(MatchDictEntry* entries, size_t length)
 
     loop_error:
     Py_XDECREF(match_dict);
-    match_dict = NULL;
+    match_dict = ((void*)0);
 
     loop_finally:
     Py_XDECREF(key);
@@ -58,7 +58,7 @@ MatchDict_entries_to_dict(MatchDictEntry* entries, size_t length)
 
   error:
   Py_XDECREF(match_dict);
-  match_dict = NULL;
+  match_dict = ((void*)0);
 
   finally:
   return match_dict;

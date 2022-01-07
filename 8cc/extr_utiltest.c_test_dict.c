@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Dict ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert_int (int,long) ; 
- int /*<<< orphan*/  assert_null (scalar_t__) ; 
- scalar_t__ dict_get (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  dict_keys (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dict_put (int /*<<< orphan*/ *,char*,void*) ; 
- int /*<<< orphan*/ * make_dict () ; 
- long vec_len (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Dict ;
+
+
+ int assert_int (int,long) ;
+ int assert_null (scalar_t__) ;
+ scalar_t__ dict_get (int *,char*) ;
+ int dict_keys (int *) ;
+ int dict_put (int *,char*,void*) ;
+ int * make_dict () ;
+ long vec_len (int ) ;
 
 __attribute__((used)) static void test_dict() {
     Dict *dict = make_dict();

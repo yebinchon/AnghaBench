@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int len; char* name; } ;
 struct dentry {TYPE_1__ d_name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- char* kmalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
+
+ int GFP_KERNEL ;
+ char* kmalloc (int,int ) ;
+ int memcpy (char*,char const*,int) ;
 
 __attribute__((used)) static char *get_dname(struct dentry *dentry)
 {
-	const char *dname;
-	char *name;
-	int len = dentry->d_name.len;
+ const char *dname;
+ char *name;
+ int len = dentry->d_name.len;
 
-	dname = dentry->d_name.name;
-	name = kmalloc(len + 1, GFP_KERNEL);
-	if (!name)
-		return NULL;
-	memcpy(name, dname, len);
-	name[len] = 0;
-	return name;
+ dname = dentry->d_name.name;
+ name = kmalloc(len + 1, GFP_KERNEL);
+ if (!name)
+  return ((void*)0);
+ memcpy(name, dname, len);
+ name[len] = 0;
+ return name;
 }

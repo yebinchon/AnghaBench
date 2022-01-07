@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  size_t UINT ;
-typedef  int /*<<< orphan*/  IWbemServices ;
-typedef  int /*<<< orphan*/  IEnumWbemClassObject ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/ * BSTR ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (char const**) ; 
- int /*<<< orphan*/  IEnumWbemClassObject_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IWbemServices_ExecQuery (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/ * SysAllocString (char const*) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ *) ; 
- scalar_t__ WBEM_E_INVALID_PARAMETER ; 
- scalar_t__ WBEM_E_INVALID_QUERY_TYPE ; 
- scalar_t__ exec_query (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ok (int,char*,size_t,...) ; 
- char const* wqlW ; 
+
+
+
+typedef char WCHAR ;
+typedef size_t UINT ;
+typedef int IWbemServices ;
+typedef int IEnumWbemClassObject ;
+typedef scalar_t__ HRESULT ;
+typedef int * BSTR ;
+
+
+ size_t ARRAY_SIZE (char const**) ;
+ int IEnumWbemClassObject_Release (int *) ;
+ scalar_t__ IWbemServices_ExecQuery (int *,int *,int *,int ,int *,int **) ;
+ scalar_t__ S_OK ;
+ int * SysAllocString (char const*) ;
+ int SysFreeString (int *) ;
+ scalar_t__ WBEM_E_INVALID_PARAMETER ;
+ scalar_t__ WBEM_E_INVALID_QUERY_TYPE ;
+ scalar_t__ exec_query (int *,char const*,int **) ;
+ int ok (int,char*,size_t,...) ;
+ char const* wqlW ;
 
 __attribute__((used)) static void test_select( IWbemServices *services )
 {
@@ -83,24 +83,24 @@ __attribute__((used)) static void test_select( IWbemServices *services )
     BSTR query = SysAllocString( query1 );
     UINT i;
 
-    hr = IWbemServices_ExecQuery( services, NULL, NULL, 0, NULL, &result );
+    hr = IWbemServices_ExecQuery( services, ((void*)0), ((void*)0), 0, ((void*)0), &result );
     ok( hr == WBEM_E_INVALID_PARAMETER, "query failed %08x\n", hr );
 
-    hr = IWbemServices_ExecQuery( services, NULL, query, 0, NULL, &result );
+    hr = IWbemServices_ExecQuery( services, ((void*)0), query, 0, ((void*)0), &result );
     ok( hr == WBEM_E_INVALID_PARAMETER, "query failed %08x\n", hr );
 
-    hr = IWbemServices_ExecQuery( services, wql, NULL, 0, NULL, &result );
+    hr = IWbemServices_ExecQuery( services, wql, ((void*)0), 0, ((void*)0), &result );
     ok( hr == WBEM_E_INVALID_PARAMETER, "query failed %08x\n", hr );
 
-    hr = IWbemServices_ExecQuery( services, sql, query, 0, NULL, &result );
+    hr = IWbemServices_ExecQuery( services, sql, query, 0, ((void*)0), &result );
     ok( hr == WBEM_E_INVALID_QUERY_TYPE, "query failed %08x\n", hr );
 
-    hr = IWbemServices_ExecQuery( services, sql, NULL, 0, NULL, &result );
+    hr = IWbemServices_ExecQuery( services, sql, ((void*)0), 0, ((void*)0), &result );
     ok( hr == WBEM_E_INVALID_PARAMETER, "query failed %08x\n", hr );
 
     SysFreeString( query );
     query = SysAllocString( emptyW );
-    hr = IWbemServices_ExecQuery( services, wql, query, 0, NULL, &result );
+    hr = IWbemServices_ExecQuery( services, wql, query, 0, ((void*)0), &result );
     ok( hr == WBEM_E_INVALID_PARAMETER, "query failed %08x\n", hr );
 
     for (i = 0; i < ARRAY_SIZE( test ); i++)

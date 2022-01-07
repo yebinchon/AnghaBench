@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nn_sipc {int /*<<< orphan*/  fsm; int /*<<< orphan*/  streamhdr; int /*<<< orphan*/  pipebase; int /*<<< orphan*/  inmsg; int /*<<< orphan*/  outmsg; int /*<<< orphan*/  done; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NN_SIPC_STATE_IDLE ; 
- int /*<<< orphan*/  nn_assert_state (struct nn_sipc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nn_fsm_event_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_fsm_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_msg_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_pipebase_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_streamhdr_term (int /*<<< orphan*/ *) ; 
+
+
+
+struct nn_sipc {int fsm; int streamhdr; int pipebase; int inmsg; int outmsg; int done; } ;
+
+
+ int NN_SIPC_STATE_IDLE ;
+ int nn_assert_state (struct nn_sipc*,int ) ;
+ int nn_fsm_event_term (int *) ;
+ int nn_fsm_term (int *) ;
+ int nn_msg_term (int *) ;
+ int nn_pipebase_term (int *) ;
+ int nn_streamhdr_term (int *) ;
 
 void nn_sipc_term (struct nn_sipc *self)
 {

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mbox_chan {int /*<<< orphan*/  con_priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PDC_RINGSET ; 
- int pdc_ring_init (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct mbox_chan {int con_priv; } ;
+
+
+ int PDC_RINGSET ;
+ int pdc_ring_init (int ,int ) ;
 
 __attribute__((used)) static int pdc_startup(struct mbox_chan *chan)
 {
-	return pdc_ring_init(chan->con_priv, PDC_RINGSET);
+ return pdc_ring_init(chan->con_priv, PDC_RINGSET);
 }

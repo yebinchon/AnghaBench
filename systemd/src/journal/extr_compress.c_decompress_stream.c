@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
 
-/* Variables and functions */
- int EPROTONOSUPPORT ; 
- int decompress_stream_lz4 (int,int,int /*<<< orphan*/ ) ; 
- int decompress_stream_xz (int,int,int /*<<< orphan*/ ) ; 
- scalar_t__ endswith (char const*,char*) ; 
+
+
+
+typedef int uint64_t ;
+
+
+ int EPROTONOSUPPORT ;
+ int decompress_stream_lz4 (int,int,int ) ;
+ int decompress_stream_xz (int,int,int ) ;
+ scalar_t__ endswith (char const*,char*) ;
 
 int decompress_stream(const char *filename, int fdf, int fdt, uint64_t max_bytes) {
 

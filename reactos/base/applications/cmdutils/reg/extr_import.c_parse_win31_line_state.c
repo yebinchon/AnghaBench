@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct parser {char* data; int data_size; int /*<<< orphan*/  data_type; int /*<<< orphan*/ * value_name; int /*<<< orphan*/  file; } ;
-typedef  char WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (char*) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  REG_SZ ; 
- int /*<<< orphan*/  SET_VALUE ; 
- int /*<<< orphan*/  STRING_OPEN_KEY_FAILED ; 
- char* get_line (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  isspaceW (char) ; 
- int lstrlenW (char*) ; 
- scalar_t__ open_key (struct parser*,char*) ; 
- int /*<<< orphan*/  output_message (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  set_state (struct parser*,int /*<<< orphan*/ ) ; 
- scalar_t__ strncmpW (char*,char*,int /*<<< orphan*/ ) ; 
+
+
+
+struct parser {char* data; int data_size; int data_type; int * value_name; int file; } ;
+typedef char WCHAR ;
+
+
+ int ARRAY_SIZE (char*) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int REG_SZ ;
+ int SET_VALUE ;
+ int STRING_OPEN_KEY_FAILED ;
+ char* get_line (int ) ;
+ int isspaceW (char) ;
+ int lstrlenW (char*) ;
+ scalar_t__ open_key (struct parser*,char*) ;
+ int output_message (int ,char*) ;
+ int set_state (struct parser*,int ) ;
+ scalar_t__ strncmpW (char*,char*,int ) ;
 
 __attribute__((used)) static WCHAR *parse_win31_line_state(struct parser *parser, WCHAR *pos)
 {
@@ -34,19 +34,19 @@ __attribute__((used)) static WCHAR *parse_win31_line_state(struct parser *parser
     unsigned int key_end = 0;
 
     if (!(line = get_line(parser->file)))
-        return NULL;
+        return ((void*)0);
 
     if (strncmpW(line, hkcr, ARRAY_SIZE(hkcr)))
         return line;
 
-    /* get key name */
+
     while (line[key_end] && !isspaceW(line[key_end])) key_end++;
 
     value = line + key_end;
     while (*value == ' ' || *value == '\t') value++;
 
     if (*value == '=') value++;
-    if (*value == ' ') value++; /* at most one space is skipped */
+    if (*value == ' ') value++;
 
     line[key_end] = 0;
 
@@ -56,7 +56,7 @@ __attribute__((used)) static WCHAR *parse_win31_line_state(struct parser *parser
         return line;
     }
 
-    parser->value_name = NULL;
+    parser->value_name = ((void*)0);
     parser->data_type = REG_SZ;
     parser->data = value;
     parser->data_size = (lstrlenW(value) + 1) * sizeof(WCHAR);

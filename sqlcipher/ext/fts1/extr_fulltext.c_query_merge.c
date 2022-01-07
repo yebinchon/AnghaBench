@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  fulltext_vtab ;
-struct TYPE_9__ {int /*<<< orphan*/  nData; } ;
-typedef  int /*<<< orphan*/  DocListMerge ;
-typedef  TYPE_1__ DocList ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DL_POSITIONS_OFFSETS ; 
- int SQLITE_DONE ; 
- int SQLITE_OK ; 
- int SQLITE_ROW ; 
- int /*<<< orphan*/  docListDestroy (TYPE_1__*) ; 
- int /*<<< orphan*/  docListInit (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mergeBlock (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  mergeInit (int /*<<< orphan*/ *,TYPE_1__*,int,TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3_column_blob (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_column_bytes (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int sqlite3_step (int /*<<< orphan*/ *) ; 
- int term_select_doclist (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ **) ; 
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+typedef int fulltext_vtab ;
+struct TYPE_9__ {int nData; } ;
+typedef int DocListMerge ;
+typedef TYPE_1__ DocList ;
+
+
+ int DL_POSITIONS_OFFSETS ;
+ int SQLITE_DONE ;
+ int SQLITE_OK ;
+ int SQLITE_ROW ;
+ int docListDestroy (TYPE_1__*) ;
+ int docListInit (TYPE_1__*,int ,int ,int ) ;
+ int mergeBlock (int *,TYPE_1__*) ;
+ int mergeInit (int *,TYPE_1__*,int,TYPE_1__*) ;
+ int sqlite3_column_blob (int *,int ) ;
+ int sqlite3_column_bytes (int *,int ) ;
+ int sqlite3_step (int *) ;
+ int term_select_doclist (int *,char const*,int,int **) ;
 
 __attribute__((used)) static int query_merge(fulltext_vtab *v, sqlite3_stmt **pSelect,
                        const char *zTerm,
@@ -37,9 +37,9 @@ __attribute__((used)) static int query_merge(fulltext_vtab *v, sqlite3_stmt **pS
   int rc;
   DocListMerge merge;
 
-  if( pIn!=NULL && !pIn->nData ){
-    /* If [pIn] is already empty, there's no point in reading the
-     * posting list to AND it in; return immediately. */
+  if( pIn!=((void*)0) && !pIn->nData ){
+
+
       return SQLITE_OK;
   }
 
@@ -60,6 +60,6 @@ __attribute__((used)) static int query_merge(fulltext_vtab *v, sqlite3_stmt **pS
       return rc;
     }
   }
-  
+
   return SQLITE_OK;
 }

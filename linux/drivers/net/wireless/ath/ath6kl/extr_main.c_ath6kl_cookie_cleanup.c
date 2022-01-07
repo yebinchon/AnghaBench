@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ath6kl {scalar_t__ cookie_count; int /*<<< orphan*/ * cookie_list; } ;
 
-/* Variables and functions */
+
+
+
+struct ath6kl {scalar_t__ cookie_count; int * cookie_list; } ;
+
+
 
 void ath6kl_cookie_cleanup(struct ath6kl *ar)
 {
-	ar->cookie_list = NULL;
-	ar->cookie_count = 0;
+ ar->cookie_list = ((void*)0);
+ ar->cookie_count = 0;
 }

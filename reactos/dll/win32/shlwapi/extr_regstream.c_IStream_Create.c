@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/ * keyNameA; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_9__ {int ref; int /*<<< orphan*/  bUnicode; TYPE_1__ u; int /*<<< orphan*/  dwMode; scalar_t__ dwPos; int /*<<< orphan*/  dwLength; int /*<<< orphan*/  pbBuffer; int /*<<< orphan*/  hKey; TYPE_2__ IStream_iface; } ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  TYPE_3__ ISHRegStream ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_3__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  STGM_READWRITE ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_3__*) ; 
- int /*<<< orphan*/  rstvt ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int * keyNameA; } ;
+struct TYPE_8__ {int * lpVtbl; } ;
+struct TYPE_9__ {int ref; int bUnicode; TYPE_1__ u; int dwMode; scalar_t__ dwPos; int dwLength; int pbBuffer; int hKey; TYPE_2__ IStream_iface; } ;
+typedef int LPBYTE ;
+typedef TYPE_3__ ISHRegStream ;
+typedef int HKEY ;
+typedef int DWORD ;
+
+
+ int FALSE ;
+ int GetProcessHeap () ;
+ TYPE_3__* HeapAlloc (int ,int ,int) ;
+ int STGM_READWRITE ;
+ int TRACE (char*,TYPE_3__*) ;
+ int rstvt ;
 
 __attribute__((used)) static ISHRegStream *IStream_Create(HKEY hKey, LPBYTE pbBuffer, DWORD dwLength)
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static ISHRegStream *IStream_Create(HKEY hKey, LPBYTE pbBu
    regStream->dwLength = dwLength;
    regStream->dwPos = 0;
    regStream->dwMode = STGM_READWRITE;
-   regStream->u.keyNameA = NULL;
+   regStream->u.keyNameA = ((void*)0);
    regStream->bUnicode = FALSE;
  }
  TRACE ("Returning %p\n", regStream);

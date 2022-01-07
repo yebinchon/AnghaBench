@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mlx5_core_dev {int /*<<< orphan*/  vsc_addr; int /*<<< orphan*/  pdev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PCI_CAP_ID_VNDR ; 
- int /*<<< orphan*/  mlx5_core_is_pf (struct mlx5_core_dev*) ; 
- int /*<<< orphan*/  mlx5_core_warn (struct mlx5_core_dev*,char*) ; 
- int /*<<< orphan*/  pci_find_capability (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct mlx5_core_dev {int vsc_addr; int pdev; } ;
+
+
+ int PCI_CAP_ID_VNDR ;
+ int mlx5_core_is_pf (struct mlx5_core_dev*) ;
+ int mlx5_core_warn (struct mlx5_core_dev*,char*) ;
+ int pci_find_capability (int ,int ) ;
 
 void mlx5_pci_vsc_init(struct mlx5_core_dev *dev)
 {
-	if (!mlx5_core_is_pf(dev))
-		return;
+ if (!mlx5_core_is_pf(dev))
+  return;
 
-	dev->vsc_addr = pci_find_capability(dev->pdev,
-					    PCI_CAP_ID_VNDR);
-	if (!dev->vsc_addr)
-		mlx5_core_warn(dev, "Failed to get valid vendor specific ID\n");
+ dev->vsc_addr = pci_find_capability(dev->pdev,
+         PCI_CAP_ID_VNDR);
+ if (!dev->vsc_addr)
+  mlx5_core_warn(dev, "Failed to get valid vendor specific ID\n");
 }

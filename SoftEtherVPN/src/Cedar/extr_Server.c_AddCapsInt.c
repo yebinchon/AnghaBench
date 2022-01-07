@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  CAPSLIST ;
-typedef  int /*<<< orphan*/  CAPS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddCaps (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewCaps (char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT ;
+typedef int CAPSLIST ;
+typedef int CAPS ;
+
+
+ int AddCaps (int *,int *) ;
+ int * NewCaps (char*,int ) ;
 
 void AddCapsInt(CAPSLIST *caps, char *name, UINT i)
 {
-	CAPS *c;
-	// Validate arguments
-	if (caps == NULL || name == NULL)
-	{
-		return;
-	}
+ CAPS *c;
 
-	c = NewCaps(name, i);
-	AddCaps(caps, c);
+ if (caps == ((void*)0) || name == ((void*)0))
+ {
+  return;
+ }
+
+ c = NewCaps(name, i);
+ AddCaps(caps, c);
 }

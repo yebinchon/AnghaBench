@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
 
-/* Variables and functions */
- int UART_BUFSIZE ; 
- int i_get ; 
- int i_put ; 
- int /*<<< orphan*/  k_sem_give (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  k_yield () ; 
- scalar_t__ mp_interrupt_char ; 
- int /*<<< orphan*/  mp_keyboard_interrupt () ; 
- int /*<<< orphan*/  printk (char*) ; 
- scalar_t__* uart_ringbuf ; 
- int /*<<< orphan*/  uart_sem ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+
+
+ int UART_BUFSIZE ;
+ int i_get ;
+ int i_put ;
+ int k_sem_give (int *) ;
+ int k_yield () ;
+ scalar_t__ mp_interrupt_char ;
+ int mp_keyboard_interrupt () ;
+ int printk (char*) ;
+ scalar_t__* uart_ringbuf ;
+ int uart_sem ;
 
 __attribute__((used)) static int console_irq_input_hook(uint8_t ch)
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static int console_irq_input_hook(uint8_t ch)
         uart_ringbuf[i_put] = ch;
         i_put = i_next;
     }
-    //printk("%x\n", ch);
+
     k_sem_give(&uart_sem);
     k_yield();
     return 1;

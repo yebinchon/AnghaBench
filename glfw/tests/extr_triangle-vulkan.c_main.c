@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct demo {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  demo_cleanup (struct demo*) ; 
- int /*<<< orphan*/  demo_create_window (struct demo*) ; 
- int /*<<< orphan*/  demo_init (struct demo*,int const,char const**) ; 
- int /*<<< orphan*/  demo_init_vk_swapchain (struct demo*) ; 
- int /*<<< orphan*/  demo_prepare (struct demo*) ; 
- int /*<<< orphan*/  demo_run (struct demo*) ; 
- int validation_error ; 
+
+ int demo_cleanup (struct demo*) ;
+ int demo_create_window (struct demo*) ;
+ int demo_init (struct demo*,int const,char const**) ;
+ int demo_init_vk_swapchain (struct demo*) ;
+ int demo_prepare (struct demo*) ;
+ int demo_run (struct demo*) ;
+ int validation_error ;
 
 int main(const int argc, const char *argv[]) {
     struct demo demo;

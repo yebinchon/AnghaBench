@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ RefCount; struct TYPE_4__* Name; int /*<<< orphan*/  MembersKeyHandle; int /*<<< orphan*/  KeyHandle; } ;
-typedef  TYPE_1__* PSAM_DB_OBJECT ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RtlFreeHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  RtlGetProcessHeap () ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  SampRegCloseKey (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ RefCount; struct TYPE_4__* Name; int MembersKeyHandle; int KeyHandle; } ;
+typedef TYPE_1__* PSAM_DB_OBJECT ;
+typedef int NTSTATUS ;
+
+
+ int RtlFreeHeap (int ,int ,TYPE_1__*) ;
+ int RtlGetProcessHeap () ;
+ int STATUS_SUCCESS ;
+ int SampRegCloseKey (int *) ;
 
 NTSTATUS
 SampCloseDbObject(PSAM_DB_OBJECT DbObject)
@@ -34,7 +34,7 @@ SampCloseDbObject(PSAM_DB_OBJECT DbObject)
     SampRegCloseKey(&DbObject->KeyHandle);
     SampRegCloseKey(&DbObject->MembersKeyHandle);
 
-    if (DbObject->Name != NULL)
+    if (DbObject->Name != ((void*)0))
         RtlFreeHeap(RtlGetProcessHeap(), 0, DbObject->Name);
 
     RtlFreeHeap(RtlGetProcessHeap(), 0, DbObject);

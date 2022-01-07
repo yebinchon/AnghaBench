@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {struct TYPE_3__* next; scalar_t__ symbol; } ;
-typedef  TYPE_1__ mc_node ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ mc_node ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- TYPE_1__* mc_nodes ; 
- char* mcset_mc_basename ; 
- scalar_t__ mcset_msg_id_typedef ; 
- int /*<<< orphan*/  unichar_len (scalar_t__) ; 
- int /*<<< orphan*/  unicode_print (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_dbg_define (int /*<<< orphan*/ *,scalar_t__,scalar_t__) ; 
+
+ int fprintf (int *,char*,...) ;
+ TYPE_1__* mc_nodes ;
+ char* mcset_mc_basename ;
+ scalar_t__ mcset_msg_id_typedef ;
+ int unichar_len (scalar_t__) ;
+ int unicode_print (int *,scalar_t__,int ) ;
+ int write_dbg_define (int *,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static void
 write_dbg (FILE *fp)
@@ -48,10 +48,10 @@ write_dbg (FILE *fp)
     "} %sSymbolicNames[] =\n"
     "{\n", mcset_mc_basename);
   h = mc_nodes;
-  while (h != NULL)
+  while (h != ((void*)0))
     {
       if (h->symbol)
-	write_dbg_define (fp, h->symbol, mcset_msg_id_typedef);
+ write_dbg_define (fp, h->symbol, mcset_msg_id_typedef);
       h = h->next;
     }
   fprintf (fp, "  { (");

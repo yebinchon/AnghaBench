@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {struct TYPE_3__** from; struct TYPE_3__* next; struct state* data; struct config* key; } ;
-typedef  TYPE_1__ x3node ;
+typedef TYPE_1__ x3node ;
 struct state {int dummy; } ;
 struct s_x3 {int size; int count; TYPE_1__** ht; TYPE_1__* tbl; } ;
 struct config {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- scalar_t__ statecmp (struct config*,struct config*) ; 
- int statehash (struct config*) ; 
- struct s_x3* x3a ; 
+
+ scalar_t__ calloc (int,int) ;
+ int free (TYPE_1__*) ;
+ scalar_t__ statecmp (struct config*,struct config*) ;
+ int statehash (struct config*) ;
+ struct s_x3* x3a ;
 
 int State_insert(struct state *data, struct config *key)
 {
@@ -36,20 +36,20 @@ int State_insert(struct state *data, struct config *key)
   np = x3a->ht[h];
   while( np ){
     if( statecmp(np->key,key)==0 ){
-      /* An existing entry with the same key is found. */
-      /* Fail because overwrite is not allows. */
+
+
       return 0;
     }
     np = np->next;
   }
   if( x3a->count>=x3a->size ){
-    /* Need to make the hash table bigger */
+
     int i,arrSize;
     struct s_x3 array;
     array.size = arrSize = x3a->size*2;
     array.count = x3a->count;
     array.tbl = (x3node*)calloc(arrSize, sizeof(x3node) + sizeof(x3node*));
-    if( array.tbl==0 ) return 0;  /* Fail due to malloc failure */
+    if( array.tbl==0 ) return 0;
     array.ht = (x3node**)&(array.tbl[arrSize]);
     for(i=0; i<arrSize; i++) array.ht[i] = 0;
     for(i=0; i<x3a->count; i++){
@@ -67,7 +67,7 @@ int State_insert(struct state *data, struct config *key)
     free(x3a->tbl);
     *x3a = array;
   }
-  /* Insert the new data */
+
   h = ph & (x3a->size-1);
   np = &(x3a->tbl[x3a->count++]);
   np->key = key;

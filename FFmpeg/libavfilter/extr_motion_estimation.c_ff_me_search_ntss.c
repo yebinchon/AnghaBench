@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-struct TYPE_4__ {int /*<<< orphan*/  (* get_cost ) (TYPE_1__*,int,int,int,int) ;scalar_t__ search_param; int /*<<< orphan*/  y_max; int /*<<< orphan*/  x_max; int /*<<< orphan*/  y_min; int /*<<< orphan*/  x_min; } ;
-typedef  TYPE_1__ AVMotionEstContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COST_P_MV (int,int) ; 
- int FFABS (int) ; 
- int FFMAX (int /*<<< orphan*/ ,scalar_t__) ; 
- int FFMIN (scalar_t__,int /*<<< orphan*/ ) ; 
- int ROUNDED_DIV (scalar_t__,int) ; 
- int** sqr1 ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,int,int,int,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct TYPE_4__ {int (* get_cost ) (TYPE_1__*,int,int,int,int) ;scalar_t__ search_param; int y_max; int x_max; int y_min; int x_min; } ;
+typedef TYPE_1__ AVMotionEstContext ;
+
+
+ int COST_P_MV (int,int) ;
+ int FFABS (int) ;
+ int FFMAX (int ,scalar_t__) ;
+ int FFMIN (scalar_t__,int ) ;
+ int ROUNDED_DIV (scalar_t__,int) ;
+ int** sqr1 ;
+ int stub1 (TYPE_1__*,int,int,int,int) ;
 
 uint64_t ff_me_search_ntss(AVMotionEstContext *me_ctx, int x_mb, int y_mb, int *mv)
 {
@@ -49,7 +49,7 @@ uint64_t ff_me_search_ntss(AVMotionEstContext *me_ctx, int x_mb, int y_mb, int *
         for (i = 0; i < 8; i++)
             COST_P_MV(x + sqr1[i][0] * step, y + sqr1[i][1] * step);
 
-        /* addition to TSS in NTSS */
+
         if (first_step) {
 
             for (i = 0; i < 8; i++)

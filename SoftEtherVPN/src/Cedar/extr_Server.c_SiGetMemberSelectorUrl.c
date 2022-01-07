@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- char* CfgReadNextLine (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Free (char*) ; 
- int /*<<< orphan*/  FreeBuf (int /*<<< orphan*/ *) ; 
- int IsEmptyStr (char*) ; 
- int /*<<< orphan*/  MEMBER_SELECTOR_TXT_FILENAME ; 
- int /*<<< orphan*/ * ReadDump (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StrCpy (char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  Trim (char*) ; 
+
+
+
+typedef int UINT ;
+typedef int BUF ;
+
+
+ char* CfgReadNextLine (int *) ;
+ int Free (char*) ;
+ int FreeBuf (int *) ;
+ int IsEmptyStr (char*) ;
+ int MEMBER_SELECTOR_TXT_FILENAME ;
+ int * ReadDump (int ) ;
+ int StrCpy (char*,int ,char*) ;
+ int Trim (char*) ;
 
 bool SiGetMemberSelectorUrl(char *url, UINT url_size)
 {
-	BUF *b;
-	bool ret = false;
-	// Validate arguments
-	if (url == NULL)
-	{
-		return false;
-	}
+ BUF *b;
+ bool ret = 0;
 
-	b = ReadDump(MEMBER_SELECTOR_TXT_FILENAME);
-	if (b == NULL)
-	{
-		return false;
-	}
+ if (url == ((void*)0))
+ {
+  return 0;
+ }
 
-	while (true)
-	{
-		char *line = CfgReadNextLine(b);
-		if (line == NULL)
-		{
-			break;
-		}
+ b = ReadDump(MEMBER_SELECTOR_TXT_FILENAME);
+ if (b == ((void*)0))
+ {
+  return 0;
+ }
 
-		Trim(line);
+ while (1)
+ {
+  char *line = CfgReadNextLine(b);
+  if (line == ((void*)0))
+  {
+   break;
+  }
 
-		if (IsEmptyStr(line) == false && ret == false)
-		{
-			StrCpy(url, url_size, line);
-			ret = true;
-		}
+  Trim(line);
 
-		Free(line);
-	}
+  if (IsEmptyStr(line) == 0 && ret == 0)
+  {
+   StrCpy(url, url_size, line);
+   ret = 1;
+  }
 
-	FreeBuf(b);
+  Free(line);
+ }
 
-	return ret;
+ FreeBuf(b);
+
+ return ret;
 }

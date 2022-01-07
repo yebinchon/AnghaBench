@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* data; } ;
-typedef  TYPE_1__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_repos_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
+typedef TYPE_1__ svn_string_t ;
+typedef int svn_repos_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_REPOS__HOOK_PRE_LOCK ; 
- char* check_hook_cmd (char const*,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * hook_symlink_error (char const*) ; 
- int /*<<< orphan*/  run_hook_cmd (TYPE_1__**,int /*<<< orphan*/ ,char const*,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_dirent_local_style (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_repos_path (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_repos_pre_lock_hook (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
 
-svn_error_t  *
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int SVN_REPOS__HOOK_PRE_LOCK ;
+ char* check_hook_cmd (char const*,scalar_t__*,int *) ;
+ int * hook_symlink_error (char const*) ;
+ int run_hook_cmd (TYPE_1__**,int ,char const*,char const**,int *,int *,int *) ;
+ char* svn_dirent_local_style (int ,int *) ;
+ int svn_repos_path (int *,int *) ;
+ char* svn_repos_pre_lock_hook (int *,int *) ;
+
+svn_error_t *
 svn_repos__hooks_pre_lock(svn_repos_t *repos,
                           apr_hash_t *hooks_env,
                           const char **token,
@@ -59,13 +59,13 @@ svn_repos__hooks_pre_lock(svn_repos_t *repos,
       args[3] = username;
       args[4] = comment ? comment : "";
       args[5] = steal_lock ? "1" : "0";
-      args[6] = NULL;
+      args[6] = ((void*)0);
 
       SVN_ERR(run_hook_cmd(&buf, SVN_REPOS__HOOK_PRE_LOCK, hook, args,
-                           hooks_env, NULL, pool));
+                           hooks_env, ((void*)0), pool));
 
       if (token)
-        /* No validation here; the FS will take care of that. */
+
         *token = buf->data;
 
     }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  npyiter_opitflags ;
-typedef  int npy_uint32 ;
-typedef  int npy_int8 ;
-typedef  int /*<<< orphan*/  PyArray_Descr ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
 
-/* Variables and functions */
- int NPY_ITER_ARRAYMASK ; 
- int NPY_ITER_WRITEMASKED ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_XINCREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  npyiter_check_per_op_flags (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  npyiter_prepare_one_operand (int /*<<< orphan*/ **,char**,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int npyiter_opitflags ;
+typedef int npy_uint32 ;
+typedef int npy_int8 ;
+typedef int PyArray_Descr ;
+typedef int PyArrayObject ;
+
+
+ int NPY_ITER_ARRAYMASK ;
+ int NPY_ITER_WRITEMASKED ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_ValueError ;
+ int Py_XDECREF (int *) ;
+ int Py_XINCREF (int *) ;
+ int npyiter_check_per_op_flags (int,int *) ;
+ int npyiter_prepare_one_operand (int **,char**,int *,int **,int,int,int *) ;
 
 __attribute__((used)) static int
 npyiter_prepare_operands(int nop, PyArrayObject **op_in,
@@ -40,20 +40,20 @@ npyiter_prepare_operands(int nop, PyArrayObject **op_in,
     npy_int8 maskop = -1;
     int any_writemasked_ops = 0;
 
-    /*
-     * Here we just prepare the provided operands.
-     */
+
+
+
     for (iop = 0; iop < nop; ++iop) {
         op[iop] = op_in[iop];
         Py_XINCREF(op[iop]);
-        op_dtype[iop] = NULL;
+        op_dtype[iop] = ((void*)0);
 
-        /* Check the readonly/writeonly flags, and fill in op_itflags */
+
         if (!npyiter_check_per_op_flags(op_flags[iop], &op_itflags[iop])) {
             goto fail_iop;
         }
 
-        /* Extract the operand which is for masked iteration */
+
         if ((op_flags[iop] & NPY_ITER_ARRAYMASK) != 0) {
             if (maskop != -1) {
                 PyErr_SetString(PyExc_ValueError,
@@ -70,13 +70,13 @@ npyiter_prepare_operands(int nop, PyArrayObject **op_in,
             any_writemasked_ops = 1;
         }
 
-        /*
-         * Prepare the operand.  This produces an op_dtype[iop] reference
-         * on success.
-         */
+
+
+
+
         if (!npyiter_prepare_one_operand(&op[iop],
                         &op_dataptr[iop],
-                        op_request_dtypes ? op_request_dtypes[iop] : NULL,
+                        op_request_dtypes ? op_request_dtypes[iop] : ((void*)0),
                         &op_dtype[iop],
                         flags,
                         op_flags[iop], &op_itflags[iop])) {
@@ -84,11 +84,11 @@ npyiter_prepare_operands(int nop, PyArrayObject **op_in,
         }
     }
 
-    /* If all the operands were NULL, it's an error */
-    if (op[0] == NULL) {
+
+    if (op[0] == ((void*)0)) {
         int all_null = 1;
         for (iop = 1; iop < nop; ++iop) {
-            if (op[iop] != NULL) {
+            if (op[iop] != ((void*)0)) {
                 all_null = 0;
                 break;
             }

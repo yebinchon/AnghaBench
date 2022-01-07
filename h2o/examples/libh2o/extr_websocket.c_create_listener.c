@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  s_addr; } ;
-struct sockaddr_in {int /*<<< orphan*/  sin_port; TYPE_1__ sin_addr; int /*<<< orphan*/  sin_family; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int s_addr; } ;
+struct sockaddr_in {int sin_port; TYPE_1__ sin_addr; int sin_family; } ;
 struct sockaddr {int dummy; } ;
-typedef  int /*<<< orphan*/  reuseaddr_flag ;
-typedef  int /*<<< orphan*/  h2o_socket_t ;
-typedef  int /*<<< orphan*/  addr ;
-struct TYPE_4__ {int /*<<< orphan*/  loop; } ;
+typedef int reuseaddr_flag ;
+typedef int h2o_socket_t ;
+typedef int addr ;
+struct TYPE_4__ {int loop; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  H2O_SOCKET_FLAG_DONT_READ ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  SOL_SOCKET ; 
- int /*<<< orphan*/  SOMAXCONN ; 
- int /*<<< orphan*/  SO_REUSEADDR ; 
- scalar_t__ bind (int,struct sockaddr*,int) ; 
- TYPE_2__ ctx ; 
- int /*<<< orphan*/ * h2o_evloop_socket_create (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  h2o_socket_read_start (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  htonl (int) ; 
- int /*<<< orphan*/  htons (int) ; 
- scalar_t__ listen (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct sockaddr_in*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  on_accept ; 
- scalar_t__ setsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AF_INET ;
+ int H2O_SOCKET_FLAG_DONT_READ ;
+ int SOCK_STREAM ;
+ int SOL_SOCKET ;
+ int SOMAXCONN ;
+ int SO_REUSEADDR ;
+ scalar_t__ bind (int,struct sockaddr*,int) ;
+ TYPE_2__ ctx ;
+ int * h2o_evloop_socket_create (int ,int,int ) ;
+ int h2o_socket_read_start (int *,int ) ;
+ int htonl (int) ;
+ int htons (int) ;
+ scalar_t__ listen (int,int ) ;
+ int memset (struct sockaddr_in*,int ,int) ;
+ int on_accept ;
+ scalar_t__ setsockopt (int,int ,int ,int*,int) ;
+ int socket (int ,int ,int ) ;
 
 __attribute__((used)) static int create_listener(void)
 {

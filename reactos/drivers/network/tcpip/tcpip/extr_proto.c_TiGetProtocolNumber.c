@@ -1,45 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ WCHAR ;
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  int ULONG ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ WCHAR ;
+typedef int UNICODE_STRING ;
+typedef int ULONG ;
 struct TYPE_3__ {int* Buffer; } ;
-typedef  int* PWSTR ;
-typedef  TYPE_1__* PUNICODE_STRING ;
-typedef  int* PULONG ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
+typedef int* PWSTR ;
+typedef TYPE_1__* PUNICODE_STRING ;
+typedef int* PULONG ;
+typedef int NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX_TRACE ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RtlInitUnicodeString (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  RtlUnicodeStringToInteger (int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  STATUS_UNSUCCESSFUL ; 
- int /*<<< orphan*/  TI_DbgPrint (int /*<<< orphan*/ ,char*) ; 
+
+ int MAX_TRACE ;
+ int NT_SUCCESS (int ) ;
+ int RtlInitUnicodeString (int *,int*) ;
+ int RtlUnicodeStringToInteger (int *,int,int*) ;
+ int STATUS_SUCCESS ;
+ int STATUS_UNSUCCESSFUL ;
+ int TI_DbgPrint (int ,char*) ;
 
 NTSTATUS TiGetProtocolNumber(
   PUNICODE_STRING FileName,
   PULONG Protocol)
-/*
- * FUNCTION: Returns the protocol number from a file name
- * ARGUMENTS:
- *     FileName = Pointer to string with file name
- *     Protocol = Pointer to buffer to put protocol number in
- * RETURNS:
- *     Status of operation
- */
 {
   UNICODE_STRING us;
   NTSTATUS Status;

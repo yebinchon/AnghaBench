@@ -1,101 +1,101 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mac_address ;
-struct TYPE_7__ {char* DhcpDomainName; char* DhcpPushRoutes; int ApplyDhcpPushRoutes; void* SaveLog; int /*<<< orphan*/  DhcpDnsServerAddress2; int /*<<< orphan*/  DhcpDnsServerAddress; int /*<<< orphan*/  DhcpGatewayAddress; void* DhcpExpireTimeSpan; int /*<<< orphan*/  DhcpSubnetMask; int /*<<< orphan*/  DhcpLeaseIPEnd; int /*<<< orphan*/  DhcpLeaseIPStart; void* UseDhcp; void* NatUdpTimeout; void* NatTcpTimeout; void* Mtu; void* UseNat; int /*<<< orphan*/  Mask; int /*<<< orphan*/  Ip; int /*<<< orphan*/  MacAddress; } ;
-typedef  TYPE_1__ VH_OPTION ;
-struct TYPE_8__ {int Size; int /*<<< orphan*/  Buf; } ;
-typedef  int /*<<< orphan*/  FOLDER ;
-typedef  TYPE_2__ BUF ;
 
-/* Variables and functions */
- void* CfgGetBool (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * CfgGetFolder (int /*<<< orphan*/ *,char*) ; 
- void* CfgGetInt (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  CfgGetIp (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- scalar_t__ CfgGetStr (int /*<<< orphan*/ *,char*,char*,int) ; 
- int /*<<< orphan*/  Copy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  FreeBuf (TYPE_2__*) ; 
- int /*<<< orphan*/  GenMacAddress (int /*<<< orphan*/ ) ; 
- int MAX_SIZE ; 
- int /*<<< orphan*/  NormalizeClasslessRouteTableStr (char*,int,char*) ; 
- scalar_t__ StrLen (char*) ; 
- TYPE_2__* StrToBin (char*) ; 
- int /*<<< orphan*/  Trim (char*) ; 
- int /*<<< orphan*/  Zero (TYPE_1__*,int) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int mac_address ;
+struct TYPE_7__ {char* DhcpDomainName; char* DhcpPushRoutes; int ApplyDhcpPushRoutes; void* SaveLog; int DhcpDnsServerAddress2; int DhcpDnsServerAddress; int DhcpGatewayAddress; void* DhcpExpireTimeSpan; int DhcpSubnetMask; int DhcpLeaseIPEnd; int DhcpLeaseIPStart; void* UseDhcp; void* NatUdpTimeout; void* NatTcpTimeout; void* Mtu; void* UseNat; int Mask; int Ip; int MacAddress; } ;
+typedef TYPE_1__ VH_OPTION ;
+struct TYPE_8__ {int Size; int Buf; } ;
+typedef int FOLDER ;
+typedef TYPE_2__ BUF ;
+
+
+ void* CfgGetBool (int *,char*) ;
+ int * CfgGetFolder (int *,char*) ;
+ void* CfgGetInt (int *,char*) ;
+ int CfgGetIp (int *,char*,int *) ;
+ scalar_t__ CfgGetStr (int *,char*,char*,int) ;
+ int Copy (int ,int ,int) ;
+ int FreeBuf (TYPE_2__*) ;
+ int GenMacAddress (int ) ;
+ int MAX_SIZE ;
+ int NormalizeClasslessRouteTableStr (char*,int,char*) ;
+ scalar_t__ StrLen (char*) ;
+ TYPE_2__* StrToBin (char*) ;
+ int Trim (char*) ;
+ int Zero (TYPE_1__*,int) ;
 
 void NiLoadVhOptionEx(VH_OPTION *o, FOLDER *root)
 {
-	FOLDER *host, *nat, *dhcp;
-	char mac_address[MAX_SIZE];
-	// Validate arguments
-	if (o == NULL || root == NULL)
-	{
-		return;
-	}
+ FOLDER *host, *nat, *dhcp;
+ char mac_address[MAX_SIZE];
 
-	host = CfgGetFolder(root, "VirtualHost");
-	nat = CfgGetFolder(root, "VirtualRouter");
-	dhcp = CfgGetFolder(root, "VirtualDhcpServer");
+ if (o == ((void*)0) || root == ((void*)0))
+ {
+  return;
+ }
 
-	Zero(o, sizeof(VH_OPTION));
+ host = CfgGetFolder(root, "VirtualHost");
+ nat = CfgGetFolder(root, "VirtualRouter");
+ dhcp = CfgGetFolder(root, "VirtualDhcpServer");
 
-	GenMacAddress(o->MacAddress);
-	if (CfgGetStr(host, "VirtualHostMacAddress", mac_address, sizeof(mac_address)))
-	{
-		BUF *b = StrToBin(mac_address);
-		if (b != NULL)
-		{
-			if (b->Size == 6)
-			{
-				Copy(o->MacAddress, b->Buf, 6);
-			}
-		}
-		FreeBuf(b);
-	}
-	CfgGetIp(host, "VirtualHostIp", &o->Ip);
-	CfgGetIp(host, "VirtualHostIpSubnetMask", &o->Mask);
+ Zero(o, sizeof(VH_OPTION));
 
-	o->UseNat = CfgGetBool(nat, "NatEnabled");
-	o->Mtu = CfgGetInt(nat, "NatMtu");
-	o->NatTcpTimeout = CfgGetInt(nat, "NatTcpTimeout");
-	o->NatUdpTimeout = CfgGetInt(nat, "NatUdpTimeout");
+ GenMacAddress(o->MacAddress);
+ if (CfgGetStr(host, "VirtualHostMacAddress", mac_address, sizeof(mac_address)))
+ {
+  BUF *b = StrToBin(mac_address);
+  if (b != ((void*)0))
+  {
+   if (b->Size == 6)
+   {
+    Copy(o->MacAddress, b->Buf, 6);
+   }
+  }
+  FreeBuf(b);
+ }
+ CfgGetIp(host, "VirtualHostIp", &o->Ip);
+ CfgGetIp(host, "VirtualHostIpSubnetMask", &o->Mask);
 
-	o->UseDhcp = CfgGetBool(dhcp, "DhcpEnabled");
-	CfgGetIp(dhcp, "DhcpLeaseIPStart", &o->DhcpLeaseIPStart);
-	CfgGetIp(dhcp, "DhcpLeaseIPEnd", &o->DhcpLeaseIPEnd);
-	CfgGetIp(dhcp, "DhcpSubnetMask", &o->DhcpSubnetMask);
-	o->DhcpExpireTimeSpan = CfgGetInt(dhcp, "DhcpExpireTimeSpan");
-	CfgGetIp(dhcp, "DhcpGatewayAddress", &o->DhcpGatewayAddress);
-	CfgGetIp(dhcp, "DhcpDnsServerAddress", &o->DhcpDnsServerAddress);
-	CfgGetIp(dhcp, "DhcpDnsServerAddress2", &o->DhcpDnsServerAddress2);
-	CfgGetStr(dhcp, "DhcpDomainName", o->DhcpDomainName, sizeof(o->DhcpDomainName));
+ o->UseNat = CfgGetBool(nat, "NatEnabled");
+ o->Mtu = CfgGetInt(nat, "NatMtu");
+ o->NatTcpTimeout = CfgGetInt(nat, "NatTcpTimeout");
+ o->NatUdpTimeout = CfgGetInt(nat, "NatUdpTimeout");
 
-	CfgGetStr(dhcp, "DhcpPushRoutes", o->DhcpPushRoutes, sizeof(o->DhcpPushRoutes));
+ o->UseDhcp = CfgGetBool(dhcp, "DhcpEnabled");
+ CfgGetIp(dhcp, "DhcpLeaseIPStart", &o->DhcpLeaseIPStart);
+ CfgGetIp(dhcp, "DhcpLeaseIPEnd", &o->DhcpLeaseIPEnd);
+ CfgGetIp(dhcp, "DhcpSubnetMask", &o->DhcpSubnetMask);
+ o->DhcpExpireTimeSpan = CfgGetInt(dhcp, "DhcpExpireTimeSpan");
+ CfgGetIp(dhcp, "DhcpGatewayAddress", &o->DhcpGatewayAddress);
+ CfgGetIp(dhcp, "DhcpDnsServerAddress", &o->DhcpDnsServerAddress);
+ CfgGetIp(dhcp, "DhcpDnsServerAddress2", &o->DhcpDnsServerAddress2);
+ CfgGetStr(dhcp, "DhcpDomainName", o->DhcpDomainName, sizeof(o->DhcpDomainName));
 
-// Test code
-//	StrCpy(o->DhcpPushRoutes, sizeof(o->DhcpPushRoutes),
-//		"130.158.6.0/24/192.168.9.2 130.158.80.244/255.255.255.255/192.168.9.2");
+ CfgGetStr(dhcp, "DhcpPushRoutes", o->DhcpPushRoutes, sizeof(o->DhcpPushRoutes));
 
-	NormalizeClasslessRouteTableStr(o->DhcpPushRoutes, sizeof(o->DhcpPushRoutes), o->DhcpPushRoutes);
-	o->ApplyDhcpPushRoutes = true;
 
-	Trim(o->DhcpDomainName);
-	if (StrLen(o->DhcpDomainName) == 0)
-	{
-		//GetDomainName(o->DhcpDomainName, sizeof(o->DhcpDomainName));
-	}
 
-	o->SaveLog = CfgGetBool(root, "SaveLog");
+
+
+ NormalizeClasslessRouteTableStr(o->DhcpPushRoutes, sizeof(o->DhcpPushRoutes), o->DhcpPushRoutes);
+ o->ApplyDhcpPushRoutes = 1;
+
+ Trim(o->DhcpDomainName);
+ if (StrLen(o->DhcpDomainName) == 0)
+ {
+
+ }
+
+ o->SaveLog = CfgGetBool(root, "SaveLog");
 }

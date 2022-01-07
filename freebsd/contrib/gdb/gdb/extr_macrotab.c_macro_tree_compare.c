@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct macro_key {int /*<<< orphan*/  start_line; int /*<<< orphan*/  start_file; int /*<<< orphan*/  name; } ;
-typedef  scalar_t__ splay_tree_key ;
 
-/* Variables and functions */
- int key_compare (struct macro_key*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct macro_key {int start_line; int start_file; int name; } ;
+typedef scalar_t__ splay_tree_key ;
+
+
+ int key_compare (struct macro_key*,int ,int ,int ) ;
 
 __attribute__((used)) static int
 macro_tree_compare (splay_tree_key untyped_key1,

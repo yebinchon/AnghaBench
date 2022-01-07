@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int UTF8_CONTINUATION_BYTE ; 
- int /*<<< orphan*/  assert (int) ; 
- int* utf8_coding_length ; 
+ int UTF8_CONTINUATION_BYTE ;
+ int assert (int) ;
+ int* utf8_coding_length ;
 
 const char* jvp_utf8_backtrack(const char* start, const char* min, int *missing_bytes) {
   assert(min <= start);
@@ -28,7 +20,7 @@ const char* jvp_utf8_backtrack(const char* start, const char* min, int *missing_
     seen++;
   }
   if (length == 0 || length == UTF8_CONTINUATION_BYTE || length - seen < 0) {
-    return NULL;
+    return ((void*)0);
   }
   if (missing_bytes) *missing_bytes = length - seen;
   return start;

@@ -1,89 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_4__ {int pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
+typedef TYPE_2__ keyrecord_t ;
+ int PLAY_NOTE_ARRAY (int ,int,int ) ;
 
-/* Variables and functions */
-#define  ABOVE 152 
-#define  ADJUST 151 
-#define  BL_STEP 150 
-#define  BL_TOGG 149 
-#define  COLEMAK 148 
-#define  CONFUSED 147 
-#define  CRY 146 
-#define  DVORAK 145 
-#define  FLIP 144 
-#define  FNGLEFT 143 
-#define  FNGRIGHT 142 
-#define  FROWN 141 
-#define  GRIN 140 
-#define  HEART 139 
-#define  JOY 138 
-#define  LLAP 137 
-#define  LOWER 136 
- int /*<<< orphan*/  PLAY_NOTE_ARRAY (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
-#define  QWERTY 135 
-#define  RAISE 134 
- int /*<<< orphan*/  SEND_STRING (char*) ; 
-#define  SHIT 133 
-#define  SHRUG 132 
-#define  THMBDN 131 
-#define  THMBUP 130 
-#define  TOUNGE 129 
-#define  WINK 128 
- int /*<<< orphan*/  _ADJUST ; 
- int /*<<< orphan*/  _LOWER ; 
- int /*<<< orphan*/  _RAISE ; 
- int /*<<< orphan*/  issi_init () ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print (char*) ; 
- int /*<<< orphan*/  tone_colemak ; 
- int /*<<< orphan*/  tone_dvorak ; 
- int /*<<< orphan*/  tone_qwerty ; 
- int /*<<< orphan*/  update_tri_layer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int SEND_STRING (char*) ;
+
+
+
+
+
+
+ int _ADJUST ;
+ int _LOWER ;
+ int _RAISE ;
+ int issi_init () ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ int print (char*) ;
+ int tone_colemak ;
+ int tone_dvorak ;
+ int tone_qwerty ;
+ int update_tri_layer (int ,int ,int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case QWERTY:
+    case 135:
       if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_NOTE_ARRAY(tone_qwerty, false, 0);
-        #endif
+
+
+
       }
-      return false;
+      return 0;
       break;
-    case COLEMAK:
+    case 148:
       if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_NOTE_ARRAY(tone_colemak, false, 0);
-        #endif
+
+
+
       }
-      return false;
+      return 0;
       break;
-    case DVORAK:
+    case 145:
       if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_NOTE_ARRAY(tone_dvorak, false, 0);
-        #endif
+
+
+
       }
-      return false;
+      return 0;
       break;
-    case LOWER:
+    case 136:
         if (record->event.pressed) {
             layer_on(_LOWER);
             update_tri_layer(_LOWER, _RAISE, _ADJUST);
@@ -91,9 +72,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             layer_off(_LOWER);
             update_tri_layer(_LOWER, _RAISE, _ADJUST);
         }
-        return false;
+        return 0;
         break;
-    case RAISE:
+    case 134:
         if (record->event.pressed) {
             layer_on(_RAISE);
             update_tri_layer(_LOWER, _RAISE, _ADJUST);
@@ -101,136 +82,136 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             layer_off(_RAISE);
             update_tri_layer(_LOWER, _RAISE, _ADJUST);
         }
-        return false;
+        return 0;
         break;
-    case ADJUST:
-        // FIXME add RGB feedback
+    case 151:
+
         if (record->event.pressed) {
             layer_on(_ADJUST);
         } else {
             layer_off(_ADJUST);
         }
-        return false;
+        return 0;
         break;
-    case BL_TOGG:
-#ifdef ISSI_ENABLE
-        if (record->event.pressed) {
-            print("Enabling backlight\n");
-            issi_init();
-        }
-#endif
-        return false;
+    case 149:
+
+
+
+
+
+
+        return 0;
         break;
-    case BL_STEP:
+    case 150:
         if (record->event.pressed) {
             print("Stepping backlight\n");
 
         }
-        return false;
+        return 0;
         break;
-    case FLIP:
+    case 144:
       if (record->event.pressed) {
         SEND_STRING("&fliptable;");
       }
-      return false;
+      return 0;
       break;
-    case CONFUSED:
+    case 147:
       if (record->event.pressed) {
         SEND_STRING(":-\\");
       }
-      // register_codeturn false;
+
       break;
-    case SHIT:
+    case 133:
       if (record->event.pressed) {
         SEND_STRING("&shit; ");
       }
-      return false;
+      return 0;
       break;
-    case CRY:
+    case 146:
       if (record->event.pressed) {
         SEND_STRING(":'-( ");
       }
-      return false;
+      return 0;
       break;
-    case LLAP:
+    case 137:
       if (record->event.pressed) {
         SEND_STRING("&llap; ");
       }
-      return false;
+      return 0;
       break;
-    case GRIN:
+    case 140:
       if (record->event.pressed) {
         SEND_STRING(":-D ");
       }
-      return false;
+      return 0;
       break;
-    case TOUNGE:
+    case 129:
       if (record->event.pressed) {
         SEND_STRING(":-P ");
       }
-      return false;
+      return 0;
       break;
-    case JOY:
+    case 138:
       if (record->event.pressed) {
         SEND_STRING(":-) ");
       }
-      return false;
+      return 0;
       break;
-    case FROWN:
+    case 141:
       if (record->event.pressed) {
         SEND_STRING(":-( ");
       }
-      return false;
+      return 0;
       break;
-    case HEART:
+    case 139:
       if (record->event.pressed) {
         SEND_STRING("<3 ");
       }
-      return false;
+      return 0;
       break;
-    case SHRUG:
+    case 132:
       if (record->event.pressed) {
         SEND_STRING("&shrug; ");
       }
-      return false;
+      return 0;
       break;
-    case THMBUP:
+    case 130:
       if (record->event.pressed) {
         SEND_STRING("&thumbup; ");
       }
-      return false;
+      return 0;
       break;
-    case THMBDN:
+    case 131:
       if (record->event.pressed) {
         SEND_STRING("&thumbdown; ");
       }
-      return false;
+      return 0;
       break;
-    case FNGLEFT:
+    case 143:
       if (record->event.pressed) {
         SEND_STRING("&fingerleft; ");
       }
-      return false;
+      return 0;
       break;
-    case FNGRIGHT:
+    case 142:
       if (record->event.pressed) {
         SEND_STRING("&fingerright; ");
       }
-      return false;
+      return 0;
       break;
-    case WINK:
+    case 128:
       if (record->event.pressed) {
         SEND_STRING(";-) ");
       }
-      return false;
+      return 0;
       break;
-    case ABOVE:
+    case 152:
       if (record->event.pressed) {
         SEND_STRING("&above; ");
       }
-      return false;
+      return 0;
       break;
 
   }
-  return true;
+  return 1;
 }

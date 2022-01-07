@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  phandle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OFW_PARENT (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ofw_def_impl ; 
- int /*<<< orphan*/  ofw_obj ; 
+
+
+
+typedef int phandle_t ;
+
+
+ int OFW_PARENT (int ,int ) ;
+ int * ofw_def_impl ;
+ int ofw_obj ;
 
 phandle_t
 OF_parent(phandle_t node)
 {
 
-	if (ofw_def_impl == NULL)
-		return (0);
+ if (ofw_def_impl == ((void*)0))
+  return (0);
 
-	return (OFW_PARENT(ofw_obj, node));
+ return (OFW_PARENT(ofw_obj, node));
 }

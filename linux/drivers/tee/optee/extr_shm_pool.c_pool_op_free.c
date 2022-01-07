@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tee_shm_pool_mgr {int dummy; } ;
-struct tee_shm {int /*<<< orphan*/ * kaddr; int /*<<< orphan*/  size; } ;
+struct tee_shm {int * kaddr; int size; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free_pages (unsigned long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_order (int /*<<< orphan*/ ) ; 
+
+ int free_pages (unsigned long,int ) ;
+ int get_order (int ) ;
 
 __attribute__((used)) static void pool_op_free(struct tee_shm_pool_mgr *poolm,
-			 struct tee_shm *shm)
+    struct tee_shm *shm)
 {
-	free_pages((unsigned long)shm->kaddr, get_order(shm->size));
-	shm->kaddr = NULL;
+ free_pages((unsigned long)shm->kaddr, get_order(shm->size));
+ shm->kaddr = ((void*)0);
 }

@@ -1,43 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EXM_THROW (int,char*,int /*<<< orphan*/ ) ; 
- char* FIO_createFilename_fromOutDir (char const*,char const*,size_t const) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t const) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- void* strlen (char const*) ; 
+ int EXM_THROW (int,char*,int ) ;
+ char* FIO_createFilename_fromOutDir (char const*,char const*,size_t const) ;
+ int assert (int ) ;
+ int errno ;
+ int free (char*) ;
+ scalar_t__ malloc (size_t) ;
+ int memcpy (char*,char const*,size_t const) ;
+ int strerror (int ) ;
+ void* strlen (char const*) ;
 
 __attribute__((used)) static const char*
 FIO_determineCompressedName(const char* srcFileName, const char* outDirName, const char* suffix)
 {
     static size_t dfnbCapacity = 0;
-    static char* dstFileNameBuffer = NULL;   /* using static allocation : this function cannot be multi-threaded */
-    char* outDirFilename = NULL;
+    static char* dstFileNameBuffer = ((void*)0);
+    char* outDirFilename = ((void*)0);
     size_t sfnSize = strlen(srcFileName);
     size_t const srcSuffixLen = strlen(suffix);
     if (outDirName) {
         outDirFilename = FIO_createFilename_fromOutDir(srcFileName, outDirName, srcSuffixLen);
         sfnSize = strlen(outDirFilename);
-        assert(outDirFilename != NULL);
+        assert(outDirFilename != ((void*)0));
     }
 
     if (dfnbCapacity <= sfnSize+srcSuffixLen+1) {
-        /* resize buffer for dstName */
+
         free(dstFileNameBuffer);
         dfnbCapacity = sfnSize + srcSuffixLen + 30;
         dstFileNameBuffer = (char*)malloc(dfnbCapacity);
@@ -45,7 +37,7 @@ FIO_determineCompressedName(const char* srcFileName, const char* outDirName, con
             EXM_THROW(30, "zstd: %s", strerror(errno));
         }
     }
-    assert(dstFileNameBuffer != NULL);
+    assert(dstFileNameBuffer != ((void*)0));
 
     if (outDirFilename) {
         memcpy(dstFileNameBuffer, outDirFilename, sfnSize);
@@ -53,6 +45,6 @@ FIO_determineCompressedName(const char* srcFileName, const char* outDirName, con
     } else {
         memcpy(dstFileNameBuffer, srcFileName, sfnSize);
     }
-    memcpy(dstFileNameBuffer+sfnSize, suffix, srcSuffixLen+1 /* Include terminating null */);
+    memcpy(dstFileNameBuffer+sfnSize, suffix, srcSuffixLen+1 );
     return dstFileNameBuffer;
 }

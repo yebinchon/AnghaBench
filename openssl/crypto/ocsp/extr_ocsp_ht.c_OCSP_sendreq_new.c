@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  OCSP_REQ_CTX ;
-typedef  int /*<<< orphan*/  OCSP_REQUEST ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OCSP_REQ_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OCSP_REQ_CTX_http (int /*<<< orphan*/ *,char*,char const*) ; 
- int /*<<< orphan*/ * OCSP_REQ_CTX_new (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  OCSP_REQ_CTX_set1_req (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int OCSP_REQ_CTX ;
+typedef int OCSP_REQUEST ;
+typedef int BIO ;
+
+
+ int OCSP_REQ_CTX_free (int *) ;
+ int OCSP_REQ_CTX_http (int *,char*,char const*) ;
+ int * OCSP_REQ_CTX_new (int *,int) ;
+ int OCSP_REQ_CTX_set1_req (int *,int *) ;
 
 OCSP_REQ_CTX *OCSP_sendreq_new(BIO *io, const char *path, OCSP_REQUEST *req,
                                int maxline)
 {
 
-    OCSP_REQ_CTX *rctx = NULL;
+    OCSP_REQ_CTX *rctx = ((void*)0);
     rctx = OCSP_REQ_CTX_new(io, maxline);
-    if (rctx == NULL)
-        return NULL;
+    if (rctx == ((void*)0))
+        return ((void*)0);
 
     if (!OCSP_REQ_CTX_http(rctx, "POST", path))
         goto err;
@@ -39,5 +39,5 @@ OCSP_REQ_CTX *OCSP_sendreq_new(BIO *io, const char *path, OCSP_REQUEST *req,
 
  err:
     OCSP_REQ_CTX_free(rctx);
-    return NULL;
+    return ((void*)0);
 }

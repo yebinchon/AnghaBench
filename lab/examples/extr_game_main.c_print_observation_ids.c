@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  (* observation ) (void*,int const,int /*<<< orphan*/ *) ;} ;
-typedef  int /*<<< orphan*/  EnvCApi_Observation ;
-typedef  TYPE_1__ EnvCApi ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_observation (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,char const*) ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  stub1 (void*,int const,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int (* observation ) (void*,int const,int *) ;} ;
+typedef int EnvCApi_Observation ;
+typedef TYPE_1__ EnvCApi ;
+
+
+ int fputs (char*,int ) ;
+ int print_observation (int *) ;
+ int printf (char*,char const*) ;
+ int stdout ;
+ int stub1 (void*,int const,int *) ;
 
 __attribute__((used)) static void print_observation_ids(EnvCApi* env_c_api, void* context,
                                   const char* observation_names[],

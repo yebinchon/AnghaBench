@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCRIPTITEM_GLOBALMEMBERS ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  a2bstr (char const*) ; 
- int /*<<< orphan*/  parse_script (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int HRESULT ;
+typedef int BSTR ;
+
+
+ int SCRIPTITEM_GLOBALMEMBERS ;
+ int SysFreeString (int ) ;
+ int a2bstr (char const*) ;
+ int parse_script (int ,int ,int *) ;
 
 __attribute__((used)) static HRESULT parse_script_ar(const char *src)
 {
@@ -25,7 +25,7 @@ __attribute__((used)) static HRESULT parse_script_ar(const char *src)
     HRESULT hres;
 
     tmp = a2bstr(src);
-    hres = parse_script(SCRIPTITEM_GLOBALMEMBERS, tmp, NULL);
+    hres = parse_script(SCRIPTITEM_GLOBALMEMBERS, tmp, ((void*)0));
     SysFreeString(tmp);
     return hres;
 }

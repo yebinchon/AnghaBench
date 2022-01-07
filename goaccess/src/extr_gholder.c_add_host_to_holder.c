@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct in_addr {int s_addr; int* s6_addr; } ;
 struct in6_addr {int s_addr; int* s6_addr; } ;
-struct TYPE_7__ {int /*<<< orphan*/  anonymize_ip; } ;
-struct TYPE_6__ {int /*<<< orphan*/  module; } ;
-typedef  int /*<<< orphan*/  GRawDataType ;
-typedef  int /*<<< orphan*/  GRawDataItem ;
-typedef  int /*<<< orphan*/  GPanel ;
-typedef  TYPE_1__ GHolder ;
+struct TYPE_7__ {int anonymize_ip; } ;
+struct TYPE_6__ {int module; } ;
+typedef int GRawDataType ;
+typedef int GRawDataItem ;
+typedef int GPanel ;
+typedef TYPE_1__ GHolder ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  AF_INET6 ; 
- int INET6_ADDRSTRLEN ; 
- int INET_ADDRSTRLEN ; 
- int /*<<< orphan*/  add_data_to_holder (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- TYPE_3__ conf ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/ * inet_ntop (int /*<<< orphan*/ ,struct in_addr*,char*,int) ; 
- int inet_pton (int /*<<< orphan*/ ,char const*,struct in_addr*) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int set_data_hits_keys (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char**,int*) ; 
- int /*<<< orphan*/  set_host (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/  const*,char*,int) ; 
+
+ int AF_INET ;
+ int AF_INET6 ;
+ int INET6_ADDRSTRLEN ;
+ int INET_ADDRSTRLEN ;
+ int add_data_to_holder (int ,TYPE_1__*,int ,int const*) ;
+ TYPE_3__ conf ;
+ int free (char*) ;
+ int * inet_ntop (int ,struct in_addr*,char*,int) ;
+ int inet_pton (int ,char const*,struct in_addr*) ;
+ int memset (char*,int ,int) ;
+ int set_data_hits_keys (int ,int ,int ,char**,int*) ;
+ int set_host (int ,TYPE_1__*,int const*,char*,int) ;
 
 __attribute__((used)) static void
 add_host_to_holder (GRawDataItem item, GHolder * h, GRawDataType type,
@@ -41,7 +41,7 @@ add_host_to_holder (GRawDataItem item, GHolder * h, GRawDataType type,
 {
   char buf4[INET_ADDRSTRLEN];
   char buf6[INET6_ADDRSTRLEN];
-  char *data = NULL;
+  char *data = ((void*)0);
   int hits = 0;
   unsigned i;
 
@@ -65,7 +65,7 @@ add_host_to_holder (GRawDataItem item, GHolder * h, GRawDataType type,
       memset (buf4, 0, sizeof *buf4);
       nwork4.s_addr = addr4.s_addr & mask4.s_addr;
 
-      if (inet_ntop (AF_INET, &nwork4, buf4, INET_ADDRSTRLEN) != NULL) {
+      if (inet_ntop (AF_INET, &nwork4, buf4, INET_ADDRSTRLEN) != ((void*)0)) {
         set_host (item, h, panel, buf4, hits);
         free (data);
       }
@@ -77,7 +77,7 @@ add_host_to_holder (GRawDataItem item, GHolder * h, GRawDataType type,
         nwork6.s6_addr[i] = addr6.s6_addr[i] & mask6.s6_addr[i];
       }
 
-      if (inet_ntop (AF_INET6, &nwork6, buf6, INET6_ADDRSTRLEN) != NULL) {
+      if (inet_ntop (AF_INET6, &nwork6, buf6, INET6_ADDRSTRLEN) != ((void*)0)) {
         set_host (item, h, panel, buf6, hits);
         free (data);
       }

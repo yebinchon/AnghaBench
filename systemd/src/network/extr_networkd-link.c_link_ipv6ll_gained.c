@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct in6_addr {int dummy; } ;
-struct TYPE_8__ {int /*<<< orphan*/  state; struct in6_addr ipv6ll_address; } ;
-typedef  TYPE_1__ Link ;
+struct TYPE_8__ {int state; struct in6_addr ipv6ll_address; } ;
+typedef TYPE_1__ Link ;
 
-/* Variables and functions */
- scalar_t__ IN_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LINK_STATE_CONFIGURED ; 
- int /*<<< orphan*/  LINK_STATE_CONFIGURING ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int link_acquire_ipv6_conf (TYPE_1__*) ; 
- int /*<<< orphan*/  link_check_ready (TYPE_1__*) ; 
- int /*<<< orphan*/  link_enter_failed (TYPE_1__*) ; 
- int /*<<< orphan*/  log_link_info (TYPE_1__*,char*) ; 
+
+ scalar_t__ IN_SET (int ,int ,int ) ;
+ int LINK_STATE_CONFIGURED ;
+ int LINK_STATE_CONFIGURING ;
+ int assert (TYPE_1__*) ;
+ int link_acquire_ipv6_conf (TYPE_1__*) ;
+ int link_check_ready (TYPE_1__*) ;
+ int link_enter_failed (TYPE_1__*) ;
+ int log_link_info (TYPE_1__*,char*) ;
 
 int link_ipv6ll_gained(Link *link, const struct in6_addr *address) {
         int r;

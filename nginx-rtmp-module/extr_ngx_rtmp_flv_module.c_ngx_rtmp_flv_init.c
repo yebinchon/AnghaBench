@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_1__* connection; } ;
-typedef  TYPE_2__ ngx_rtmp_session_t ;
-typedef  int /*<<< orphan*/  ngx_rtmp_flv_ctx_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-typedef  int /*<<< orphan*/  ngx_file_t ;
-struct TYPE_6__ {int /*<<< orphan*/  pool; } ;
+typedef TYPE_2__ ngx_rtmp_session_t ;
+typedef int ngx_rtmp_flv_ctx_t ;
+typedef int ngx_int_t ;
+typedef int ngx_file_t ;
+struct TYPE_6__ {int pool; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/  ngx_memzero (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * ngx_palloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ngx_rtmp_flv_module ; 
- int /*<<< orphan*/ * ngx_rtmp_get_module_ctx (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_rtmp_set_ctx (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int NGX_ERROR ;
+ int NGX_OK ;
+ int ngx_memzero (int *,int) ;
+ int * ngx_palloc (int ,int) ;
+ int ngx_rtmp_flv_module ;
+ int * ngx_rtmp_get_module_ctx (TYPE_2__*,int ) ;
+ int ngx_rtmp_set_ctx (TYPE_2__*,int *,int ) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_rtmp_flv_init(ngx_rtmp_session_t *s, ngx_file_t *f, ngx_int_t aindex,
                   ngx_int_t vindex)
 {
-    ngx_rtmp_flv_ctx_t             *ctx;
+    ngx_rtmp_flv_ctx_t *ctx;
 
     ctx = ngx_rtmp_get_module_ctx(s, ngx_rtmp_flv_module);
 
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         ctx = ngx_palloc(s->connection->pool, sizeof(ngx_rtmp_flv_ctx_t));
 
-        if (ctx == NULL) {
+        if (ctx == ((void*)0)) {
             return NGX_ERROR;
         }
 

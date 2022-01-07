@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  flags; int /*<<< orphan*/ * blinding; } ;
-typedef  TYPE_1__ RSA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_BLINDING_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RSA_FLAG_BLINDING ; 
- int /*<<< orphan*/  RSA_FLAG_NO_BLINDING ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int flags; int * blinding; } ;
+typedef TYPE_1__ RSA ;
+
+
+ int BN_BLINDING_free (int *) ;
+ int RSA_FLAG_BLINDING ;
+ int RSA_FLAG_NO_BLINDING ;
 
 void RSA_blinding_off(RSA *rsa)
 {
     BN_BLINDING_free(rsa->blinding);
-    rsa->blinding = NULL;
+    rsa->blinding = ((void*)0);
     rsa->flags &= ~RSA_FLAG_BLINDING;
     rsa->flags |= RSA_FLAG_NO_BLINDING;
 }

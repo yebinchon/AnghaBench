@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pr_handle {int dummy; } ;
-typedef  enum debug_type_kind { ____Placeholder_debug_type_kind } debug_type_kind ;
-typedef  int /*<<< orphan*/  bfd_boolean ;
+typedef enum debug_type_kind { ____Placeholder_debug_type_kind } debug_type_kind ;
+typedef int bfd_boolean ;
 
-/* Variables and functions */
-#define  DEBUG_KIND_CLASS 132 
-#define  DEBUG_KIND_ENUM 131 
-#define  DEBUG_KIND_STRUCT 130 
-#define  DEBUG_KIND_UNION 129 
-#define  DEBUG_KIND_UNION_CLASS 128 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  append_type (struct pr_handle*,char const*) ; 
- int /*<<< orphan*/  push_type (struct pr_handle*,char const*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,unsigned int) ; 
+
+
+
+
+
+
+ int FALSE ;
+ int TRUE ;
+ int abort () ;
+ int append_type (struct pr_handle*,char const*) ;
+ int push_type (struct pr_handle*,char const*) ;
+ int sprintf (char*,char*,unsigned int) ;
 
 __attribute__((used)) static bfd_boolean
 pr_tag_type (void *p, const char *name, unsigned int id,
-	     enum debug_type_kind kind)
+      enum debug_type_kind kind)
 {
   struct pr_handle *info = (struct pr_handle *) p;
   const char *t, *tag;
@@ -37,19 +37,19 @@ pr_tag_type (void *p, const char *name, unsigned int id,
 
   switch (kind)
     {
-    case DEBUG_KIND_STRUCT:
+    case 130:
       t = "struct ";
       break;
-    case DEBUG_KIND_UNION:
+    case 129:
       t = "union ";
       break;
-    case DEBUG_KIND_ENUM:
+    case 131:
       t = "enum ";
       break;
-    case DEBUG_KIND_CLASS:
+    case 132:
       t = "class ";
       break;
-    case DEBUG_KIND_UNION_CLASS:
+    case 128:
       t = "union class ";
       break;
     default:
@@ -59,7 +59,7 @@ pr_tag_type (void *p, const char *name, unsigned int id,
 
   if (! push_type (info, t))
     return FALSE;
-  if (name != NULL)
+  if (name != ((void*)0))
     tag = name;
   else
     {
@@ -69,11 +69,11 @@ pr_tag_type (void *p, const char *name, unsigned int id,
 
   if (! append_type (info, tag))
     return FALSE;
-  if (name != NULL && kind != DEBUG_KIND_ENUM)
+  if (name != ((void*)0) && kind != 131)
     {
       sprintf (idbuf, " /* id %u */", id);
       if (! append_type (info, idbuf))
-	return FALSE;
+ return FALSE;
     }
 
   return TRUE;

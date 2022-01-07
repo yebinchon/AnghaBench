@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_7__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  zMbcsName; TYPE_2__* pFile; int /*<<< orphan*/  f; } ;
-typedef  TYPE_1__ quota_FILE ;
-typedef  int /*<<< orphan*/  quotaGroup ;
-struct TYPE_9__ {scalar_t__ nRef; int /*<<< orphan*/  zFilename; scalar_t__ deleteOnClose; int /*<<< orphan*/ * pGroup; } ;
-typedef  TYPE_2__ quotaFile ;
+
+
+typedef struct TYPE_11__ TYPE_7__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int zMbcsName; TYPE_2__* pFile; int f; } ;
+typedef TYPE_1__ quota_FILE ;
+typedef int quotaGroup ;
+struct TYPE_9__ {scalar_t__ nRef; int zFilename; scalar_t__ deleteOnClose; int * pGroup; } ;
+typedef TYPE_2__ quotaFile ;
 struct TYPE_11__ {TYPE_3__* pOrigVfs; } ;
-struct TYPE_10__ {int /*<<< orphan*/  (* xDelete ) (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
+struct TYPE_10__ {int (* xDelete ) (TYPE_3__*,int ,int ) ;} ;
 
-/* Variables and functions */
- int fclose (int /*<<< orphan*/ ) ; 
- TYPE_7__ gQuota ; 
- int /*<<< orphan*/  quotaEnter () ; 
- int /*<<< orphan*/  quotaGroupDeref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  quotaLeave () ; 
- int /*<<< orphan*/  quotaRemoveFile (TYPE_2__*) ; 
- int /*<<< orphan*/  quota_mbcs_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_free (TYPE_1__*) ; 
- int /*<<< orphan*/  stub1 (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int fclose (int ) ;
+ TYPE_7__ gQuota ;
+ int quotaEnter () ;
+ int quotaGroupDeref (int *) ;
+ int quotaLeave () ;
+ int quotaRemoveFile (TYPE_2__*) ;
+ int quota_mbcs_free (int ) ;
+ int sqlite3_free (TYPE_1__*) ;
+ int stub1 (TYPE_3__*,int ,int ) ;
 
 int sqlite3_quota_fclose(quota_FILE *p){
   int rc;
@@ -51,9 +51,9 @@ int sqlite3_quota_fclose(quota_FILE *p){
     }
     quotaLeave();
   }
-#if SQLITE_OS_WIN
-  quota_mbcs_free(p->zMbcsName);
-#endif
+
+
+
   sqlite3_free(p);
   return rc;
 }

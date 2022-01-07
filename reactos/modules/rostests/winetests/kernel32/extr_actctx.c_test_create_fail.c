@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_4__ {int cbSize; int /*<<< orphan*/ * lpSource; } ;
-typedef  scalar_t__ HANDLE ;
-typedef  TYPE_1__ ACTCTXW ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- scalar_t__ ERROR_FILE_NOT_FOUND ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GetLastError () ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  manifest1 ; 
- int /*<<< orphan*/  manifest2 ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ pCreateActCtxW (TYPE_1__*) ; 
- int /*<<< orphan*/  test_create_and_fail (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_create_wide_and_fail (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trace (char*) ; 
- int /*<<< orphan*/ * wrong_depmanifest1 ; 
- int /*<<< orphan*/  wrong_manifest1 ; 
- int /*<<< orphan*/  wrong_manifest10 ; 
- int /*<<< orphan*/  wrong_manifest2 ; 
- int /*<<< orphan*/  wrong_manifest3 ; 
- int /*<<< orphan*/  wrong_manifest4 ; 
- int /*<<< orphan*/  wrong_manifest5 ; 
- int /*<<< orphan*/  wrong_manifest6 ; 
- int /*<<< orphan*/  wrong_manifest7 ; 
- int /*<<< orphan*/  wrong_manifest8 ; 
- int /*<<< orphan*/  wrong_manifest9 ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_4__ {int cbSize; int * lpSource; } ;
+typedef scalar_t__ HANDLE ;
+typedef TYPE_1__ ACTCTXW ;
+
+
+ int CP_ACP ;
+ scalar_t__ ERROR_FILE_NOT_FOUND ;
+ int FALSE ;
+ scalar_t__ GetLastError () ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int MAX_PATH ;
+ int MultiByteToWideChar (int ,int ,char*,int,int *,int) ;
+ int TRUE ;
+ int manifest1 ;
+ int manifest2 ;
+ int memset (TYPE_1__*,int ,int) ;
+ int ok (int,char*,...) ;
+ scalar_t__ pCreateActCtxW (TYPE_1__*) ;
+ int test_create_and_fail (int ,int *,int,int ) ;
+ int test_create_wide_and_fail (int ,int ) ;
+ int trace (char*) ;
+ int * wrong_depmanifest1 ;
+ int wrong_manifest1 ;
+ int wrong_manifest10 ;
+ int wrong_manifest2 ;
+ int wrong_manifest3 ;
+ int wrong_manifest4 ;
+ int wrong_manifest5 ;
+ int wrong_manifest6 ;
+ int wrong_manifest7 ;
+ int wrong_manifest8 ;
+ int wrong_manifest9 ;
 
 __attribute__((used)) static void test_create_fail(void)
 {
@@ -61,29 +61,29 @@ __attribute__((used)) static void test_create_fail(void)
     ok(GetLastError() == ERROR_FILE_NOT_FOUND, "GetLastError == %u\n", GetLastError());
 
     trace("wrong_manifest1\n");
-    test_create_and_fail(wrong_manifest1, NULL, 0, FALSE);
+    test_create_and_fail(wrong_manifest1, ((void*)0), 0, FALSE);
     trace("wrong_manifest2\n");
-    test_create_and_fail(wrong_manifest2, NULL, 0, FALSE);
+    test_create_and_fail(wrong_manifest2, ((void*)0), 0, FALSE);
     trace("wrong_manifest3\n");
-    test_create_and_fail(wrong_manifest3, NULL, 1, FALSE);
+    test_create_and_fail(wrong_manifest3, ((void*)0), 1, FALSE);
     trace("wrong_manifest4\n");
-    test_create_and_fail(wrong_manifest4, NULL, 1, FALSE);
+    test_create_and_fail(wrong_manifest4, ((void*)0), 1, FALSE);
     trace("wrong_manifest5\n");
-    test_create_and_fail(wrong_manifest5, NULL, 0, FALSE);
+    test_create_and_fail(wrong_manifest5, ((void*)0), 0, FALSE);
     trace("wrong_manifest6\n");
-    test_create_and_fail(wrong_manifest6, NULL, 0, FALSE);
+    test_create_and_fail(wrong_manifest6, ((void*)0), 0, FALSE);
     trace("wrong_manifest7\n");
-    test_create_and_fail(wrong_manifest7, NULL, 1, FALSE);
+    test_create_and_fail(wrong_manifest7, ((void*)0), 1, FALSE);
     trace("wrong_manifest8\n");
-    test_create_and_fail(wrong_manifest8, NULL, 0, FALSE);
+    test_create_and_fail(wrong_manifest8, ((void*)0), 0, FALSE);
     trace("wrong_manifest9\n");
-    test_create_and_fail(wrong_manifest9, NULL, 0, TRUE /* WinXP */);
+    test_create_and_fail(wrong_manifest9, ((void*)0), 0, TRUE );
     trace("wrong_manifest10\n");
-    test_create_and_fail(wrong_manifest10, NULL, 0, TRUE /* WinXP */);
+    test_create_and_fail(wrong_manifest10, ((void*)0), 0, TRUE );
     trace("UTF-16 manifest1 without BOM\n");
     test_create_wide_and_fail(manifest1, FALSE );
     trace("manifest2\n");
-    test_create_and_fail(manifest2, NULL, 0, FALSE);
+    test_create_and_fail(manifest2, ((void*)0), 0, FALSE);
     trace("manifest2+depmanifest1\n");
     test_create_and_fail(manifest2, wrong_depmanifest1, 0, FALSE);
 }

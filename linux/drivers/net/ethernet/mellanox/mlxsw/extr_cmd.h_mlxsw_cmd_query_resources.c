@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mlxsw_core {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MLXSW_CMD_MBOX_SIZE ; 
- int /*<<< orphan*/  MLXSW_CMD_OPCODE_QUERY_RESOURCES ; 
- int mlxsw_cmd_exec_out (struct mlxsw_core*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,char*,int /*<<< orphan*/ ) ; 
+
+ int MLXSW_CMD_MBOX_SIZE ;
+ int MLXSW_CMD_OPCODE_QUERY_RESOURCES ;
+ int mlxsw_cmd_exec_out (struct mlxsw_core*,int ,int ,int,int,char*,int ) ;
 
 __attribute__((used)) static inline int mlxsw_cmd_query_resources(struct mlxsw_core *mlxsw_core,
-					    char *out_mbox, int index)
+         char *out_mbox, int index)
 {
-	return mlxsw_cmd_exec_out(mlxsw_core, MLXSW_CMD_OPCODE_QUERY_RESOURCES,
-				  0, index, false, out_mbox,
-				  MLXSW_CMD_MBOX_SIZE);
+ return mlxsw_cmd_exec_out(mlxsw_core, MLXSW_CMD_OPCODE_QUERY_RESOURCES,
+      0, index, 0, out_mbox,
+      MLXSW_CMD_MBOX_SIZE);
 }

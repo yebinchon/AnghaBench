@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct grub_fshelp_node {int size; int block; int /*<<< orphan*/  parent; int /*<<< orphan*/  data; } ;
-struct grub_affs_iterate_dir_closure {int /*<<< orphan*/  hashtable; int /*<<< orphan*/  closure; scalar_t__ (* hook ) (char const*,int,struct grub_fshelp_node*,int /*<<< orphan*/ ) ;TYPE_1__* file; int /*<<< orphan*/  data; struct grub_fshelp_node* node; } ;
-struct TYPE_2__ {int /*<<< orphan*/  parent; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  grub_be_to_cpu32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  grub_free (int /*<<< orphan*/ ) ; 
- struct grub_fshelp_node* grub_malloc (int) ; 
- scalar_t__ stub1 (char const*,int,struct grub_fshelp_node*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct grub_fshelp_node {int size; int block; int parent; int data; } ;
+struct grub_affs_iterate_dir_closure {int hashtable; int closure; scalar_t__ (* hook ) (char const*,int,struct grub_fshelp_node*,int ) ;TYPE_1__* file; int data; struct grub_fshelp_node* node; } ;
+struct TYPE_2__ {int parent; } ;
+
+
+ int grub_be_to_cpu32 (int ) ;
+ int grub_free (int ) ;
+ struct grub_fshelp_node* grub_malloc (int) ;
+ scalar_t__ stub1 (char const*,int,struct grub_fshelp_node*,int ) ;
 
 __attribute__((used)) static int
 grub_affs_create_node (const char *name, int block,
-		       int size, int type,
-		       struct grub_affs_iterate_dir_closure *c)
+         int size, int type,
+         struct grub_affs_iterate_dir_closure *c)
 {
   struct grub_fshelp_node *node;
 

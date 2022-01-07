@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_5__ {int connected; TYPE_1__* iface; int /*<<< orphan*/  data; } ;
-typedef  TYPE_2__ joypad_connection_t ;
-struct TYPE_4__ {int /*<<< orphan*/  (* deinit ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* set_rumble ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RETRO_RUMBLE_STRONG ; 
- int /*<<< orphan*/  RETRO_RUMBLE_WEAK ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_5__ {int connected; TYPE_1__* iface; int data; } ;
+typedef TYPE_2__ joypad_connection_t ;
+struct TYPE_4__ {int (* deinit ) (int ) ;int (* set_rumble ) (int ,int ,int ) ;} ;
+
+
+ int RETRO_RUMBLE_STRONG ;
+ int RETRO_RUMBLE_WEAK ;
+ int stub1 (int ,int ,int ) ;
+ int stub2 (int ,int ,int ) ;
+ int stub3 (int ) ;
 
 void pad_connection_pad_deinit(joypad_connection_t *joyconn, uint32_t pad)
 {
@@ -38,6 +38,6 @@ void pad_connection_pad_deinit(joypad_connection_t *joyconn, uint32_t pad)
          joyconn->iface->deinit(joyconn->data);
    }
 
-   joyconn->iface     = NULL;
-   joyconn->connected = false;
+   joyconn->iface = ((void*)0);
+   joyconn->connected = 0;
 }

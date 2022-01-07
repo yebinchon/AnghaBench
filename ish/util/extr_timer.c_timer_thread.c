@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timespec {int dummy; } ;
-struct timer {int running; int /*<<< orphan*/  lock; scalar_t__ dead; struct timespec interval; int /*<<< orphan*/  start; int /*<<< orphan*/  end; int /*<<< orphan*/  data; int /*<<< orphan*/  (* callback ) (int /*<<< orphan*/ ) ;} ;
+struct timer {int running; int lock; scalar_t__ dead; struct timespec interval; int start; int end; int data; int (* callback ) (int ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (struct timer*) ; 
- int /*<<< orphan*/  lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nanosleep (struct timespec*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timespec_add (int /*<<< orphan*/ ,struct timespec) ; 
- int /*<<< orphan*/  timespec_now () ; 
- scalar_t__ timespec_positive (struct timespec) ; 
- struct timespec timespec_subtract (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unlock (int /*<<< orphan*/ *) ; 
+
+ int free (struct timer*) ;
+ int lock (int *) ;
+ int nanosleep (struct timespec*,int *) ;
+ int stub1 (int ) ;
+ int timespec_add (int ,struct timespec) ;
+ int timespec_now () ;
+ scalar_t__ timespec_positive (struct timespec) ;
+ struct timespec timespec_subtract (int ,int ) ;
+ int unlock (int *) ;
 
 __attribute__((used)) static void *timer_thread(void *param) {
     struct timer *timer = param;
     lock(&timer->lock);
-    while (true) {
+    while (1) {
         struct timespec remaining = timespec_subtract(timer->end, timespec_now());
         while (timer->running && timespec_positive(remaining)) {
             unlock(&timer->lock);
-            nanosleep(&remaining, NULL);
+            nanosleep(&remaining, ((void*)0));
             lock(&timer->lock);
             remaining = timespec_subtract(timer->end, timespec_now());
         }
@@ -44,10 +44,10 @@ __attribute__((used)) static void *timer_thread(void *param) {
             break;
         }
     }
-    timer->running = false;
+    timer->running = 0;
     if (timer->dead)
         free(timer);
     else
         unlock(&timer->lock);
-    return NULL;
+    return ((void*)0);
 }

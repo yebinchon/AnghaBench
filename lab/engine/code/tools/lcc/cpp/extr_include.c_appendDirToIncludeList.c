@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uchar ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uchar ;
 struct TYPE_2__ {char* file; int always; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FATAL ; 
- int NINCLUDE ; 
- int /*<<< orphan*/  error (int /*<<< orphan*/ ,char*) ; 
- TYPE_1__* includelist ; 
- scalar_t__ newstring (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
+
+ int FATAL ;
+ int NINCLUDE ;
+ int error (int ,char*) ;
+ TYPE_1__* includelist ;
+ scalar_t__ newstring (int *,int,int ) ;
+ int strcat (char*,char*) ;
+ int strcmp (char*,char*) ;
 
 void appendDirToIncludeList( char *dir )
 {
-	int i;
-	char *fqdir;
+ int i;
+ char *fqdir;
 
-	fqdir = (char *)newstring( (uchar *)includelist[NINCLUDE-1].file, 256, 0 );
-	strcat( fqdir, "/" );
-	strcat( fqdir, dir );
+ fqdir = (char *)newstring( (uchar *)includelist[NINCLUDE-1].file, 256, 0 );
+ strcat( fqdir, "/" );
+ strcat( fqdir, dir );
 
-	//avoid adding it more than once
-	for (i=NINCLUDE-2; i>=0; i--) {
-		if (includelist[i].file &&
-				!strcmp (includelist[i].file, fqdir)) {
-			return;
-		}
-	}
 
-	for (i=NINCLUDE-2; i>=0; i--) {
-		if (includelist[i].file==NULL) {
-			includelist[i].always = 1;
-			includelist[i].file = fqdir;
-			break;
-		}
-	}
-	if (i<0)
-		error(FATAL, "Too many -I directives");
+ for (i=NINCLUDE-2; i>=0; i--) {
+  if (includelist[i].file &&
+    !strcmp (includelist[i].file, fqdir)) {
+   return;
+  }
+ }
+
+ for (i=NINCLUDE-2; i>=0; i--) {
+  if (includelist[i].file==((void*)0)) {
+   includelist[i].always = 1;
+   includelist[i].file = fqdir;
+   break;
+  }
+ }
+ if (i<0)
+  error(FATAL, "Too many -I directives");
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dsl_dataset_t ;
-typedef  int ds_hold_flags_t ;
 
-/* Variables and functions */
- int DS_HOLD_FLAG_DECRYPT ; 
- int /*<<< orphan*/  dsl_dataset_rele (int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  dsl_dataset_remove_key_mapping (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int dsl_dataset_t ;
+typedef int ds_hold_flags_t ;
+
+
+ int DS_HOLD_FLAG_DECRYPT ;
+ int dsl_dataset_rele (int *,void*) ;
+ int dsl_dataset_remove_key_mapping (int *) ;
 
 void
 dsl_dataset_rele_flags(dsl_dataset_t *ds, ds_hold_flags_t flags, void *tag)
 {
-	if (flags & DS_HOLD_FLAG_DECRYPT)
-		dsl_dataset_remove_key_mapping(ds);
+ if (flags & DS_HOLD_FLAG_DECRYPT)
+  dsl_dataset_remove_key_mapping(ds);
 
-	dsl_dataset_rele(ds, tag);
+ dsl_dataset_rele(ds, tag);
 }

@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
-typedef  struct TYPE_13__   TYPE_11__ ;
 
-/* Type definitions */
-struct TYPE_15__ {scalar_t__ length; int /*<<< orphan*/  data; TYPE_4__* delayed_buffer; int /*<<< orphan*/  cmd; scalar_t__ port_num; scalar_t__ port_type; int /*<<< orphan*/ * client_component; } ;
-typedef  TYPE_2__ mmal_worker_event_to_host ;
-typedef  scalar_t__ VCHIQ_STATUS_T ;
-typedef  int /*<<< orphan*/  VCHIQ_SERVICE_HANDLE_T ;
+
+
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+typedef struct TYPE_13__ TYPE_11__ ;
+
+
+struct TYPE_15__ {scalar_t__ length; int data; TYPE_4__* delayed_buffer; int cmd; scalar_t__ port_num; scalar_t__ port_type; int * client_component; } ;
+typedef TYPE_2__ mmal_worker_event_to_host ;
+typedef scalar_t__ VCHIQ_STATUS_T ;
+typedef int VCHIQ_SERVICE_HANDLE_T ;
 struct TYPE_16__ {scalar_t__ data; } ;
-typedef  TYPE_3__ VCHIQ_HEADER_T ;
-struct TYPE_17__ {scalar_t__ alloc_size; int length; int /*<<< orphan*/  data; } ;
-struct TYPE_14__ {scalar_t__ magic; int /*<<< orphan*/  (* callback_event ) (int /*<<< orphan*/ *,TYPE_4__*) ;} ;
+typedef TYPE_3__ VCHIQ_HEADER_T ;
+struct TYPE_17__ {scalar_t__ alloc_size; int length; int data; } ;
+struct TYPE_14__ {scalar_t__ magic; int (* callback_event ) (int *,TYPE_4__*) ;} ;
 struct TYPE_13__ {scalar_t__ magic; TYPE_1__* client_context; } ;
-typedef  scalar_t__ MMAL_STATUS_T ;
-typedef  int /*<<< orphan*/  MMAL_PORT_T ;
-typedef  int /*<<< orphan*/  MMAL_COMPONENT_T ;
-typedef  TYPE_4__ MMAL_BUFFER_HEADER_T ;
+typedef scalar_t__ MMAL_STATUS_T ;
+typedef int MMAL_PORT_T ;
+typedef int MMAL_COMPONENT_T ;
+typedef TYPE_4__ MMAL_BUFFER_HEADER_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_DEBUG (char*,...) ; 
- int /*<<< orphan*/  LOG_ERROR (char*,...) ; 
- int /*<<< orphan*/  LOG_TRACE (char*,int) ; 
- scalar_t__ MMAL_MAGIC ; 
- scalar_t__ MMAL_SUCCESS ; 
- int MMAL_WORKER_EVENT_SPACE ; 
- scalar_t__ VCHIQ_SUCCESS ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- TYPE_11__* mmal_buffer_header_driver_data (TYPE_4__*) ; 
- int /*<<< orphan*/  mmal_buffer_header_release (TYPE_4__*) ; 
- scalar_t__ mmal_port_event_get (int /*<<< orphan*/ *,TYPE_4__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * mmal_vc_port_by_number (int /*<<< orphan*/ *,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,TYPE_4__*) ; 
- scalar_t__ vchiq_queue_bulk_receive (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,TYPE_3__*) ; 
- int /*<<< orphan*/  vchiq_release_message (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  vcos_verify (int) ; 
+
+ int LOG_DEBUG (char*,...) ;
+ int LOG_ERROR (char*,...) ;
+ int LOG_TRACE (char*,int) ;
+ scalar_t__ MMAL_MAGIC ;
+ scalar_t__ MMAL_SUCCESS ;
+ int MMAL_WORKER_EVENT_SPACE ;
+ scalar_t__ VCHIQ_SUCCESS ;
+ int memcpy (int ,int ,int) ;
+ TYPE_11__* mmal_buffer_header_driver_data (TYPE_4__*) ;
+ int mmal_buffer_header_release (TYPE_4__*) ;
+ scalar_t__ mmal_port_event_get (int *,TYPE_4__**,int ) ;
+ int * mmal_vc_port_by_number (int *,scalar_t__,scalar_t__) ;
+ int stub1 (int *,TYPE_4__*) ;
+ scalar_t__ vchiq_queue_bulk_receive (int ,int ,int,TYPE_3__*) ;
+ int vchiq_release_message (int ,TYPE_3__*) ;
+ int vcos_verify (int) ;
 
 __attribute__((used)) static void mmal_vc_handle_event_msg(VCHIQ_HEADER_T *vchiq_header,
                                     VCHIQ_SERVICE_HANDLE_T service,
@@ -83,7 +83,7 @@ __attribute__((used)) static void mmal_vc_handle_event_msg(VCHIQ_HEADER_T *vchiq
    }
    buffer->length = msg->length;
 
-   /* Sanity check that the event buffers have the proper vc client context */
+
    if (!vcos_verify(mmal_buffer_header_driver_data(buffer)->magic == MMAL_MAGIC &&
           mmal_buffer_header_driver_data(buffer)->client_context &&
           mmal_buffer_header_driver_data(buffer)->client_context->magic == MMAL_MAGIC &&
@@ -95,7 +95,7 @@ __attribute__((used)) static void mmal_vc_handle_event_msg(VCHIQ_HEADER_T *vchiq
 
    if (buffer->length > MMAL_WORKER_EVENT_SPACE)
    {
-      /* a buffer full of data for us to process */
+
       int len = buffer->length;
       len = (len+3) & (~3);
       LOG_DEBUG("queue event bulk rx: %p, %d", buffer->data, buffer->length);
@@ -122,7 +122,7 @@ __attribute__((used)) static void mmal_vc_handle_event_msg(VCHIQ_HEADER_T *vchiq
    return;
 
 error:
-   /* FIXME: How to abort bulk receive if necessary? */
-   msg->length = 0; /* FIXME: set a buffer flag to signal error */
+
+   msg->length = 0;
    vchiq_release_message(service, vchiq_header);
 }

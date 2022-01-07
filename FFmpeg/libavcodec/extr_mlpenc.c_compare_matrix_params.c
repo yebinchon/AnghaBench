@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_9__ {unsigned int num_channels; TYPE_1__* cur_restart_header; } ;
 struct TYPE_8__ {unsigned int count; scalar_t__* fbits; scalar_t__* outch; scalar_t__** coeff; } ;
 struct TYPE_7__ {unsigned int min_channel; unsigned int max_channel; } ;
-typedef  TYPE_1__ RestartHeader ;
-typedef  TYPE_2__ MatrixParams ;
-typedef  TYPE_3__ MLPEncodeContext ;
+typedef TYPE_1__ RestartHeader ;
+typedef TYPE_2__ MatrixParams ;
+typedef TYPE_3__ MLPEncodeContext ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static int compare_matrix_params(MLPEncodeContext *ctx, const MatrixParams *prev, const MatrixParams *mp)
 {

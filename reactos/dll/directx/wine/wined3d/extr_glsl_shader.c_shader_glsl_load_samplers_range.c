@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_string_buffer {int /*<<< orphan*/  buffer; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct wined3d_string_buffer {int buffer; } ;
 struct TYPE_2__ {unsigned int combined_samplers; } ;
 struct wined3d_gl_info {TYPE_1__ limits; } ;
-struct shader_glsl_priv {int /*<<< orphan*/  string_buffers; } ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  int GLint ;
-typedef  unsigned int DWORD ;
+struct shader_glsl_priv {int string_buffers; } ;
+typedef int GLuint ;
+typedef int GLint ;
+typedef unsigned int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ,unsigned int) ; 
- int GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,unsigned int) ; 
- unsigned int WINED3D_UNMAPPED_STAGE ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- int /*<<< orphan*/  glGetUniformLocation (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glUniform1i (int,unsigned int) ; 
- struct wined3d_string_buffer* string_buffer_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  string_buffer_release (int /*<<< orphan*/ *,struct wined3d_string_buffer*) ; 
- int /*<<< orphan*/  string_buffer_sprintf (struct wined3d_string_buffer*,char*,char const*,unsigned int) ; 
+
+ int ERR (char*,int ,unsigned int) ;
+ int GL_EXTCALL (int ) ;
+ int TRACE (char*,int ,unsigned int) ;
+ unsigned int WINED3D_UNMAPPED_STAGE ;
+ int checkGLcall (char*) ;
+ int glGetUniformLocation (int ,int ) ;
+ int glUniform1i (int,unsigned int) ;
+ struct wined3d_string_buffer* string_buffer_get (int *) ;
+ int string_buffer_release (int *,struct wined3d_string_buffer*) ;
+ int string_buffer_sprintf (struct wined3d_string_buffer*,char*,char const*,unsigned int) ;
 
 __attribute__((used)) static void shader_glsl_load_samplers_range(const struct wined3d_gl_info *gl_info,
         struct shader_glsl_priv *priv, GLuint program_id, const char *prefix,

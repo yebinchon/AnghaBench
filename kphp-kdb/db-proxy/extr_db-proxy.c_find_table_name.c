@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int strtoul (char*,char**,int) ; 
- int t_getlex (char*,char*) ; 
- char* t_skipspc (char*,char*) ; 
+ int memcmp (char*,char*,int) ;
+ int memcpy (char*,char*,int) ;
+ int strtoul (char*,char**,int) ;
+ int t_getlex (char*,char*) ;
+ char* t_skipspc (char*,char*) ;
 
 char *find_table_name (char *ptr, char *end, int *len, int *timeout) {
   int clen, next = 0;

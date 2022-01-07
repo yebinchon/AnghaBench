@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_10__ {int /*<<< orphan*/  Flink; } ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int VOID ;
+struct TYPE_10__ {int Flink; } ;
 struct TYPE_12__ {TYPE_1__ ListEntry; struct TYPE_12__* BlockData; struct TYPE_12__* LockedInCache; struct TYPE_12__* AccessCount; struct TYPE_12__* BlockNumber; } ;
 struct TYPE_11__ {TYPE_1__ CacheBlockHead; TYPE_3__* BlockSize; TYPE_3__* BytesPerSector; TYPE_3__* DriveNumber; } ;
-typedef  TYPE_2__* PCACHE_DRIVE ;
-typedef  TYPE_3__* PCACHE_BLOCK ;
+typedef TYPE_2__* PCACHE_DRIVE ;
+typedef TYPE_3__* PCACHE_BLOCK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BugCheck (char*) ; 
- int /*<<< orphan*/  CACHE_BLOCK ; 
- TYPE_3__* CONTAINING_RECORD (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_3__* CacheBlockCount ; 
- TYPE_3__* CacheSizeCurrent ; 
- TYPE_3__* CacheSizeLimit ; 
- int /*<<< orphan*/  ListEntry ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_3__*) ; 
+
+ int BugCheck (char*) ;
+ int CACHE_BLOCK ;
+ TYPE_3__* CONTAINING_RECORD (int ,int ,int ) ;
+ TYPE_3__* CacheBlockCount ;
+ TYPE_3__* CacheSizeCurrent ;
+ TYPE_3__* CacheSizeLimit ;
+ int ListEntry ;
+ int TRACE (char*,TYPE_3__*) ;
 
 VOID CacheInternalDumpBlockList(PCACHE_DRIVE CacheDrive)
 {
-    PCACHE_BLOCK    CacheBlock;
+    PCACHE_BLOCK CacheBlock;
 
     TRACE("Dumping block list for BIOS drive 0x%x.\n", CacheDrive->DriveNumber);
     TRACE("BytesPerSector: %d.\n", CacheDrive->BytesPerSector);
@@ -50,7 +50,7 @@ VOID CacheInternalDumpBlockList(PCACHE_DRIVE CacheDrive)
         TRACE("Cache Block: Block Data: 0x%x\n", CacheBlock->BlockData);
         TRACE("Cache Block: Locked In Cache: %d\n", CacheBlock->LockedInCache);
 
-        if (CacheBlock->BlockData == NULL)
+        if (CacheBlock->BlockData == ((void*)0))
         {
             BugCheck("CacheBlock->BlockData == NULL\n");
         }

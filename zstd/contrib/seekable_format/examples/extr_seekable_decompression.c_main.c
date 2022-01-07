@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  off_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atoll (char const*) ; 
- int /*<<< orphan*/  decompressFile_orDie (char const* const,int /*<<< orphan*/  const,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int off_t ;
+
+
+ int atoll (char const*) ;
+ int decompressFile_orDie (char const* const,int const,int const) ;
+ int fprintf (int ,char*,...) ;
+ int stderr ;
 
 int main(int argc, const char** argv)
 {

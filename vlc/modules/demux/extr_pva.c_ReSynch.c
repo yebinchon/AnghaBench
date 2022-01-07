@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint8_t ;
-struct TYPE_3__ {int /*<<< orphan*/  s; } ;
-typedef  TYPE_1__ demux_t ;
 
-/* Variables and functions */
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int vlc_stream_Peek (int /*<<< orphan*/ ,char const**,int) ; 
- int vlc_stream_Read (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef char uint8_t ;
+struct TYPE_3__ {int s; } ;
+typedef TYPE_1__ demux_t ;
+
+
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int vlc_stream_Peek (int ,char const**,int) ;
+ int vlc_stream_Read (int ,int *,int) ;
 
 __attribute__((used)) static int ReSynch( demux_t *p_demux )
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static int ReSynch( demux_t *p_demux )
             if( p_peek[0] == 'A' && p_peek[1] == 'V' && p_peek[4] == 0x55 )
             {
                 if( i_skip > 0
-                 && vlc_stream_Read( p_demux->s, NULL, i_skip ) < i_skip )
+                 && vlc_stream_Read( p_demux->s, ((void*)0), i_skip ) < i_skip )
                     return VLC_EGENERIC;
                 return VLC_SUCCESS;
             }
@@ -45,7 +45,7 @@ __attribute__((used)) static int ReSynch( demux_t *p_demux )
             i_skip++;
         }
 
-        if( vlc_stream_Read( p_demux->s, NULL, i_skip ) < i_skip )
+        if( vlc_stream_Read( p_demux->s, ((void*)0), i_skip ) < i_skip )
             break;
     }
 

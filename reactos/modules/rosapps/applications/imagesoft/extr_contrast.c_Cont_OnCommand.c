@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
-struct TYPE_7__ {TYPE_2__* Info; int /*<<< orphan*/  BlueVal; int /*<<< orphan*/  GreenVal; int /*<<< orphan*/  RedVal; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_7__ {TYPE_2__* Info; int BlueVal; int GreenVal; int RedVal; } ;
 struct TYPE_6__ {TYPE_1__* ImageEditors; } ;
-struct TYPE_5__ {int /*<<< orphan*/  hSelf; int /*<<< orphan*/  hBitmap; } ;
-typedef  TYPE_3__* PIMAGEADJUST ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct TYPE_5__ {int hSelf; int hBitmap; } ;
+typedef TYPE_3__* PIMAGEADJUST ;
+typedef int HWND ;
+typedef int HDC ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AdjustContrast (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EndDialog (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
-#define  IDCANCEL 129 
-#define  IDOK 128 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int AdjustContrast (int ,int ,int ,int ,int ,int ,int ) ;
+ int EndDialog (int ,int) ;
+ int FALSE ;
+ int GetDC (int ) ;
+
+
+ int ReleaseDC (int ,int ) ;
+ int TRUE ;
 
 __attribute__((used)) static BOOL
 Cont_OnCommand(PIMAGEADJUST pImgAdj,
@@ -39,7 +39,7 @@ Cont_OnCommand(PIMAGEADJUST pImgAdj,
 {
     switch (uID)
     {
-        case IDOK:
+        case 128:
         {
             HDC hdcMem;
 
@@ -62,7 +62,7 @@ Cont_OnCommand(PIMAGEADJUST pImgAdj,
             return TRUE;
         }
 
-        case IDCANCEL:
+        case 129:
         {
             EndDialog(hDlg,
                       uID);

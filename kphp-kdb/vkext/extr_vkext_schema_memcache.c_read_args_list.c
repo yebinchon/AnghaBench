@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct arg {int exist_var_num; int flags; int var_num; TYPE_1__* type; void* exist_var_bit; int /*<<< orphan*/  id; } ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct arg {int exist_var_num; int flags; int var_num; TYPE_1__* type; void* exist_var_bit; int id; } ;
 struct TYPE_4__ {int flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD_MALLOC (int) ; 
- int /*<<< orphan*/  ADD_PMALLOC (int) ; 
- int FLAG_NOVAR ; 
- int FLAG_OPT_FIELD ; 
- void* TLS_ARG ; 
- void* TLS_ARG_V2 ; 
- scalar_t__ TL_IS_NAT_VAR (TYPE_1__*) ; 
- TYPE_1__* read_tree (int*) ; 
- TYPE_1__* read_type_expr (int*) ; 
- int schema_version ; 
- int strlen (int /*<<< orphan*/ ) ; 
- void* tl_parse_int () ; 
- scalar_t__ tl_parse_string (int /*<<< orphan*/ *) ; 
- struct arg* zzmalloc0 (int) ; 
+
+ int ADD_MALLOC (int) ;
+ int ADD_PMALLOC (int) ;
+ int FLAG_NOVAR ;
+ int FLAG_OPT_FIELD ;
+ void* TLS_ARG ;
+ void* TLS_ARG_V2 ;
+ scalar_t__ TL_IS_NAT_VAR (TYPE_1__*) ;
+ TYPE_1__* read_tree (int*) ;
+ TYPE_1__* read_type_expr (int*) ;
+ int schema_version ;
+ int strlen (int ) ;
+ void* tl_parse_int () ;
+ scalar_t__ tl_parse_string (int *) ;
+ struct arg* zzmalloc0 (int) ;
 
 int read_args_list (struct arg **args, int args_num, int *var_num) {
   int i;

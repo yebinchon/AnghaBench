@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct env_set {int /*<<< orphan*/  list; int /*<<< orphan*/ * gc; } ;
 
-/* Variables and functions */
- int remove_env_item (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct env_set {int list; int * gc; } ;
+
+
+ int remove_env_item (char const*,int ,int *) ;
 
 __attribute__((used)) static bool
 env_set_del_nolock(struct env_set *es, const char *str)
 {
-    return remove_env_item(str, es->gc == NULL, &es->list);
+    return remove_env_item(str, es->gc == ((void*)0), &es->list);
 }

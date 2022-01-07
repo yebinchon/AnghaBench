@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ WCHAR ;
-typedef  scalar_t__ GpStatus ;
-typedef  int /*<<< orphan*/  GpFontFamily ;
-typedef  int /*<<< orphan*/  GpFont ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FontStyleRegular ; 
- scalar_t__ GdipCreateFont (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ GdipDeleteFont (int /*<<< orphan*/ *) ; 
- scalar_t__ GdipDeleteFontFamily (int /*<<< orphan*/ *) ; 
- scalar_t__ GdipGetFamilyName (int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LANG_NEUTRAL ; 
- scalar_t__ Ok ; 
- int /*<<< orphan*/  UnitPixel ; 
- int /*<<< orphan*/  ok (int,char*,char const*,scalar_t__) ; 
+
+
+
+typedef scalar_t__ WCHAR ;
+typedef scalar_t__ GpStatus ;
+typedef int GpFontFamily ;
+typedef int GpFont ;
+
+
+ int FontStyleRegular ;
+ scalar_t__ GdipCreateFont (int *,int,int ,int ,int **) ;
+ scalar_t__ GdipDeleteFont (int *) ;
+ scalar_t__ GdipDeleteFontFamily (int *) ;
+ scalar_t__ GdipGetFamilyName (int *,scalar_t__*,int ) ;
+ int LANG_NEUTRAL ;
+ scalar_t__ Ok ;
+ int UnitPixel ;
+ int ok (int,char*,char const*,scalar_t__) ;
 
 __attribute__((used)) static void check_family(const char* context, GpFontFamily *family, WCHAR *name)
 {

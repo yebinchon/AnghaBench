@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  optlist ;
-struct TYPE_3__ {char* member_0; int /*<<< orphan*/  const member_1; } ;
-typedef  TYPE_1__ opt_t ;
 
-/* Variables and functions */
-#define  VLC_VAR_INTEGER 129 
-#define  VLC_VAR_STRING 128 
- int /*<<< orphan*/  libvlc_printerr (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int optlist ;
+struct TYPE_3__ {char* member_0; int const member_1; } ;
+typedef TYPE_1__ opt_t ;
+
+
+
+
+ int libvlc_printerr (char*) ;
 
 __attribute__((used)) static const opt_t *
 marq_option_bynumber(unsigned option)
 {
     static const opt_t optlist[] =
     {
-        { "marq",          0 },
-        { "marq-marquee",  VLC_VAR_STRING },
-        { "marq-color",    VLC_VAR_INTEGER },
-        { "marq-opacity",  VLC_VAR_INTEGER },
-        { "marq-position", VLC_VAR_INTEGER },
-        { "marq-refresh",  VLC_VAR_INTEGER },
-        { "marq-size",     VLC_VAR_INTEGER },
-        { "marq-timeout",  VLC_VAR_INTEGER },
-        { "marq-x",        VLC_VAR_INTEGER },
-        { "marq-y",        VLC_VAR_INTEGER },
+        { "marq", 0 },
+        { "marq-marquee", 128 },
+        { "marq-color", 129 },
+        { "marq-opacity", 129 },
+        { "marq-position", 129 },
+        { "marq-refresh", 129 },
+        { "marq-size", 129 },
+        { "marq-timeout", 129 },
+        { "marq-x", 129 },
+        { "marq-y", 129 },
     };
     enum { num_opts = sizeof(optlist) / sizeof(*optlist) };
 
-    const opt_t *r = option < num_opts ? optlist+option : NULL;
+    const opt_t *r = option < num_opts ? optlist+option : ((void*)0);
     if( !r )
         libvlc_printerr( "Unknown marquee option" );
     return r;

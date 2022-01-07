@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
 struct TYPE_7__ {int process_em_data_flag; int process_cc_data_flag; int additional_data_flag; int cc_count; int em_data; TYPE_1__* cc_data; } ;
 struct TYPE_6__ {int country; int provider; int user_identifier; int user_data_type_code; int directv_user_data_length; TYPE_4__ user_data; } ;
-typedef  TYPE_2__ cea708_t ;
-typedef  scalar_t__ cea708_cc_type_t ;
+typedef TYPE_2__ cea708_t ;
+typedef scalar_t__ cea708_cc_type_t ;
 struct TYPE_5__ {int cc_type; int cc_data; scalar_t__ cc_valid; } ;
 
-/* Variables and functions */
- scalar_t__ cc_type_ntsc_cc_field_1 ; 
- int /*<<< orphan*/  cea708_cc_data (TYPE_4__*,int,int*,scalar_t__*) ; 
- int /*<<< orphan*/  eia608_dump (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  stderr ; 
+
+ scalar_t__ cc_type_ntsc_cc_field_1 ;
+ int cea708_cc_data (TYPE_4__*,int,int*,scalar_t__*) ;
+ int eia608_dump (int ) ;
+ int fprintf (int ,char*,int,...) ;
+ int stderr ;
 
 void cea708_dump(cea708_t* cea708)
 {

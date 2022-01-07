@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_ra_svn_conn_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int apr_uint32_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int SVN_DIRENT_CREATED_REV ; 
- int SVN_DIRENT_HAS_PROPS ; 
- int SVN_DIRENT_KIND ; 
- int SVN_DIRENT_LAST_AUTHOR ; 
- int SVN_DIRENT_SIZE ; 
- int SVN_DIRENT_TIME ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_RA_SVN_DIRENT_CREATED_REV ; 
- int /*<<< orphan*/  SVN_RA_SVN_DIRENT_HAS_PROPS ; 
- int /*<<< orphan*/  SVN_RA_SVN_DIRENT_KIND ; 
- int /*<<< orphan*/  SVN_RA_SVN_DIRENT_LAST_AUTHOR ; 
- int /*<<< orphan*/  SVN_RA_SVN_DIRENT_SIZE ; 
- int /*<<< orphan*/  SVN_RA_SVN_DIRENT_TIME ; 
- int /*<<< orphan*/  svn_ra_svn__write_word (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int svn_ra_svn_conn_t ;
+typedef int svn_error_t ;
+typedef int apr_uint32_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_DIRENT_CREATED_REV ;
+ int SVN_DIRENT_HAS_PROPS ;
+ int SVN_DIRENT_KIND ;
+ int SVN_DIRENT_LAST_AUTHOR ;
+ int SVN_DIRENT_SIZE ;
+ int SVN_DIRENT_TIME ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int SVN_RA_SVN_DIRENT_CREATED_REV ;
+ int SVN_RA_SVN_DIRENT_HAS_PROPS ;
+ int SVN_RA_SVN_DIRENT_KIND ;
+ int SVN_RA_SVN_DIRENT_LAST_AUTHOR ;
+ int SVN_RA_SVN_DIRENT_SIZE ;
+ int SVN_RA_SVN_DIRENT_TIME ;
+ int svn_ra_svn__write_word (int *,int *,int ) ;
 
 __attribute__((used)) static svn_error_t *
 send_dirent_fields(svn_ra_svn_conn_t *conn,

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_start {int dummy; } ;
 
-/* Variables and functions */
- int O_CREAT ; 
- int O_EXCL ; 
- int O_WRONLY ; 
- int PATH_MAX ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  cache_id ; 
- struct lev_start* cache_lev_start_alloc (int /*<<< orphan*/ ,int*) ; 
- scalar_t__ close (int) ; 
- scalar_t__ fsync (int) ; 
- int /*<<< orphan*/  kprintf (char*,char*) ; 
- int open (char*,int,int) ; 
- int snprintf (char*,int,char*,char const*) ; 
- int write (int,struct lev_start*,int) ; 
+
+ int O_CREAT ;
+ int O_EXCL ;
+ int O_WRONLY ;
+ int PATH_MAX ;
+ int assert (int) ;
+ int cache_id ;
+ struct lev_start* cache_lev_start_alloc (int ,int*) ;
+ scalar_t__ close (int) ;
+ scalar_t__ fsync (int) ;
+ int kprintf (char*,char*) ;
+ int open (char*,int,int) ;
+ int snprintf (char*,int,char*,char const*) ;
+ int write (int,struct lev_start*,int) ;
 
 void make_empty_binlog (const char *binlog_name) {
   char a[PATH_MAX];

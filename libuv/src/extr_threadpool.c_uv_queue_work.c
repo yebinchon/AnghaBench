@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  work_req; int /*<<< orphan*/  after_work_cb; int /*<<< orphan*/ * work_cb; int /*<<< orphan*/ * loop; } ;
-typedef  TYPE_1__ uv_work_t ;
-typedef  int /*<<< orphan*/ * uv_work_cb ;
-typedef  int /*<<< orphan*/  uv_loop_t ;
-typedef  int /*<<< orphan*/  uv_after_work_cb ;
 
-/* Variables and functions */
- int UV_EINVAL ; 
- int /*<<< orphan*/  UV_WORK ; 
- int /*<<< orphan*/  UV__WORK_CPU ; 
- int /*<<< orphan*/  uv__queue_done ; 
- int /*<<< orphan*/  uv__queue_work ; 
- int /*<<< orphan*/  uv__req_init (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv__work_submit (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int work_req; int after_work_cb; int * work_cb; int * loop; } ;
+typedef TYPE_1__ uv_work_t ;
+typedef int * uv_work_cb ;
+typedef int uv_loop_t ;
+typedef int uv_after_work_cb ;
+
+
+ int UV_EINVAL ;
+ int UV_WORK ;
+ int UV__WORK_CPU ;
+ int uv__queue_done ;
+ int uv__queue_work ;
+ int uv__req_init (int *,TYPE_1__*,int ) ;
+ int uv__work_submit (int *,int *,int ,int ,int ) ;
 
 int uv_queue_work(uv_loop_t* loop,
                   uv_work_t* req,
                   uv_work_cb work_cb,
                   uv_after_work_cb after_work_cb) {
-  if (work_cb == NULL)
+  if (work_cb == ((void*)0))
     return UV_EINVAL;
 
   uv__req_init(loop, req, UV_WORK);

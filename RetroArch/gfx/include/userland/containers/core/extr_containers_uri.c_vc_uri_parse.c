@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_7__ {void* fragment; void* path; void* scheme; } ;
-typedef  TYPE_1__ VC_URI_PARTS_T ;
+typedef TYPE_1__ VC_URI_PARTS_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HOST_PORT_DELIMITERS ; 
- int /*<<< orphan*/  NETWORK_DELIMITERS ; 
- int /*<<< orphan*/  PATH_DELIMITERS ; 
- int /*<<< orphan*/  QUERY_DELIMITERS ; 
- int /*<<< orphan*/  SCHEME_DELIMITERS ; 
- void* create_unescaped_string (char const*,int) ; 
- int duplicate_string (char const*,void**) ; 
- scalar_t__ isalpha (int) ; 
- int /*<<< orphan*/  parse_authority (TYPE_1__*,char const*,int,char const*) ; 
- int /*<<< orphan*/  parse_query (TYPE_1__*,char const*,int) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  to_lower_string (void*) ; 
- int /*<<< orphan*/  vc_uri_clear (TYPE_1__*) ; 
- char* vc_uri_find_delimiter (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vc_uri_set_path_extension (TYPE_1__*) ; 
+
+ int HOST_PORT_DELIMITERS ;
+ int NETWORK_DELIMITERS ;
+ int PATH_DELIMITERS ;
+ int QUERY_DELIMITERS ;
+ int SCHEME_DELIMITERS ;
+ void* create_unescaped_string (char const*,int) ;
+ int duplicate_string (char const*,void**) ;
+ scalar_t__ isalpha (int) ;
+ int parse_authority (TYPE_1__*,char const*,int,char const*) ;
+ int parse_query (TYPE_1__*,char const*,int) ;
+ int strlen (char const*) ;
+ int to_lower_string (void*) ;
+ int vc_uri_clear (TYPE_1__*) ;
+ char* vc_uri_find_delimiter (char const*,int ) ;
+ int vc_uri_set_path_extension (TYPE_1__*) ;
 
 bool vc_uri_parse( VC_URI_PARTS_T *p_uri, const char *uri )
 {
@@ -38,13 +38,13 @@ bool vc_uri_parse( VC_URI_PARTS_T *p_uri, const char *uri )
    uint32_t len;
 
    if (!p_uri || !uri)
-      return false;
+      return 0;
 
    vc_uri_clear(p_uri);
 
-   /* URI = scheme ":" hier_part [ "?" query ] [ "#" fragment ] */
 
-   /* Find end of scheme, or another separator */
+
+
    marker = vc_uri_find_delimiter(uri, SCHEME_DELIMITERS);
 
    if (*marker == ':')
@@ -52,8 +52,8 @@ bool vc_uri_parse( VC_URI_PARTS_T *p_uri, const char *uri )
       len = (marker - uri);
       if (isalpha((int)*uri) && len == 1 && marker[1] == '\\')
       {
-         /* Looks like a bare, absolute DOS/Windows filename with a drive letter */
-         /* coverity[double_free] Pointer freed and set to NULL */
+
+
          bool ret = duplicate_string(uri, &p_uri->path);
          vc_uri_set_path_extension(p_uri);
          return ret;
@@ -63,15 +63,15 @@ bool vc_uri_parse( VC_URI_PARTS_T *p_uri, const char *uri )
       if (!p_uri->scheme)
          goto error;
 
-      to_lower_string(p_uri->scheme);  /* Schemes should be handled case-insensitively */
+      to_lower_string(p_uri->scheme);
       uri = marker + 1;
    }
 
-   if (uri[0] == '/' && uri[1] == '/') /* hier-part includes authority */
+   if (uri[0] == '/' && uri[1] == '/')
    {
-      const char *userinfo_end = NULL;
+      const char *userinfo_end = ((void*)0);
 
-      /* authority = [ userinfo "@" ] host [ ":" port ] */
+
       uri += 2;
 
       marker = vc_uri_find_delimiter(uri, NETWORK_DELIMITERS);
@@ -86,7 +86,7 @@ bool vc_uri_parse( VC_URI_PARTS_T *p_uri, const char *uri )
       uri = marker;
    }
 
-   /* path */
+
    marker = vc_uri_find_delimiter(uri, PATH_DELIMITERS);
    len = marker - uri;
    if (len)
@@ -97,7 +97,7 @@ bool vc_uri_parse( VC_URI_PARTS_T *p_uri, const char *uri )
          goto error;
    }
 
-   /* query */
+
    if (*marker == '?')
    {
       uri = marker + 1;
@@ -106,7 +106,7 @@ bool vc_uri_parse( VC_URI_PARTS_T *p_uri, const char *uri )
          goto error;
    }
 
-   /* fragment */
+
    if (*marker == '#')
    {
       uri = marker + 1;
@@ -115,9 +115,9 @@ bool vc_uri_parse( VC_URI_PARTS_T *p_uri, const char *uri )
          goto error;
    }
 
-   return true;
+   return 1;
 
 error:
    vc_uri_clear(p_uri);
-   return false;
+   return 0;
 }

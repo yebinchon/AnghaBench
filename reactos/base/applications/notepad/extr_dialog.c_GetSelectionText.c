@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPARAM ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  scalar_t__ LPTSTR ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int HRESULT ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EM_GETSEL ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- scalar_t__ GetWindowText (int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- scalar_t__ GetWindowTextLength (int /*<<< orphan*/ ) ; 
- scalar_t__ HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
-#define  STRSAFE_E_INSUFFICIENT_BUFFER 129 
-#define  S_OK 128 
- int /*<<< orphan*/  SendMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int StringCchCopyN (scalar_t__,int,scalar_t__,scalar_t__) ; 
+
+
+
+typedef int WPARAM ;
+typedef int TCHAR ;
+typedef scalar_t__ LPTSTR ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef int HRESULT ;
+typedef scalar_t__ DWORD ;
+
+
+ int EM_GETSEL ;
+ int GetProcessHeap () ;
+ scalar_t__ GetWindowText (int ,scalar_t__,scalar_t__) ;
+ scalar_t__ GetWindowTextLength (int ) ;
+ scalar_t__ HeapAlloc (int ,int ,scalar_t__) ;
+ int HeapFree (int ,int ,scalar_t__) ;
+
+
+ int SendMessage (int ,int ,int ,int ) ;
+ int StringCchCopyN (scalar_t__,int,scalar_t__,scalar_t__) ;
 
 int GetSelectionText(HWND hWnd, LPTSTR lpString, int nMaxCount)
 {
@@ -70,12 +70,12 @@ int GetSelectionText(HWND hWnd, LPTSTR lpString, int nMaxCount)
 
     switch (hResult)
     {
-        case S_OK:
+        case 128:
         {
             return dwEnd - dwStart;
         }
 
-        case STRSAFE_E_INSUFFICIENT_BUFFER:
+        case 129:
         {
             return nMaxCount - 1;
         }

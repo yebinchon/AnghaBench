@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  errmsg ;
 
-/* Variables and functions */
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int,int,char*) ; 
- int luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_isnil (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int,int) ; 
+
+
+
+typedef int lua_State ;
+typedef int errmsg ;
+
+
+ int luaL_argcheck (int *,int,int,char*) ;
+ int luaL_checkinteger (int *,int) ;
+ int lua_isnil (int *,int) ;
+ int lua_pushinteger (int *,int) ;
+ int snprintf (char*,int,char*,int,int) ;
 
 __attribute__((used)) static int json_integer_option(lua_State *l, int optindex, int *setting,
                                int min, int max)

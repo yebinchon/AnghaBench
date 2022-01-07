@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_27__   TYPE_6__ ;
-typedef  struct TYPE_26__   TYPE_5__ ;
-typedef  struct TYPE_25__   TYPE_4__ ;
-typedef  struct TYPE_24__   TYPE_3__ ;
-typedef  struct TYPE_23__   TYPE_2__ ;
-typedef  struct TYPE_22__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_27__ {int w; int h; int /*<<< orphan*/  time_base; int /*<<< orphan*/  frame_count_out; int /*<<< orphan*/  format; TYPE_1__* dst; } ;
+
+
+typedef struct TYPE_27__ TYPE_6__ ;
+typedef struct TYPE_26__ TYPE_5__ ;
+typedef struct TYPE_25__ TYPE_4__ ;
+typedef struct TYPE_24__ TYPE_3__ ;
+typedef struct TYPE_23__ TYPE_2__ ;
+typedef struct TYPE_22__ TYPE_1__ ;
+
+
+struct TYPE_27__ {int w; int h; int time_base; int frame_count_out; int format; TYPE_1__* dst; } ;
 struct TYPE_24__ {int num; int den; } ;
-struct TYPE_26__ {int /*<<< orphan*/ * linesize; int /*<<< orphan*/ * data; TYPE_3__ sample_aspect_ratio; int /*<<< orphan*/  pts; } ;
+struct TYPE_26__ {int * linesize; int * data; TYPE_3__ sample_aspect_ratio; int pts; } ;
 struct TYPE_25__ {int log2_chroma_w; int log2_chroma_h; int nb_components; } ;
-struct TYPE_23__ {int x; int y; int w; int h; int band; int /*<<< orphan*/  show; int /*<<< orphan*/ * var_values; int /*<<< orphan*/  h_pexpr; int /*<<< orphan*/  w_pexpr; int /*<<< orphan*/  y_pexpr; int /*<<< orphan*/  x_pexpr; } ;
+struct TYPE_23__ {int x; int y; int w; int h; int band; int show; int * var_values; int h_pexpr; int w_pexpr; int y_pexpr; int x_pexpr; } ;
 struct TYPE_22__ {TYPE_6__** outputs; TYPE_2__* priv; } ;
-typedef  TYPE_2__ DelogoContext ;
-typedef  TYPE_3__ AVRational ;
-typedef  TYPE_4__ AVPixFmtDescriptor ;
-typedef  TYPE_5__ AVFrame ;
-typedef  TYPE_6__ AVFilterLink ;
+typedef TYPE_2__ DelogoContext ;
+typedef TYPE_3__ AVRational ;
+typedef TYPE_4__ AVPixFmtDescriptor ;
+typedef TYPE_5__ AVFrame ;
+typedef TYPE_6__ AVFilterLink ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_CEIL_RSHIFT (int,int) ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFMIN (int,int) ; 
- int /*<<< orphan*/  TS2T (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t VAR_N ; 
- size_t VAR_T ; 
- int /*<<< orphan*/  apply_delogo (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ; 
- void* av_expr_eval (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  av_frame_copy_props (TYPE_5__*,TYPE_5__*) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_5__**) ; 
- scalar_t__ av_frame_is_writable (TYPE_5__*) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- TYPE_4__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
- int config_input (TYPE_6__*) ; 
- int ff_filter_frame (TYPE_6__*,TYPE_5__*) ; 
- TYPE_5__* ff_get_video_buffer (TYPE_6__*,int,int) ; 
+
+ int AVERROR (int ) ;
+ int AV_CEIL_RSHIFT (int,int) ;
+ int AV_LOG_WARNING ;
+ int ENOMEM ;
+ int FFMIN (int,int) ;
+ int TS2T (int ,int ) ;
+ size_t VAR_N ;
+ size_t VAR_T ;
+ int apply_delogo (int ,int ,int ,int ,int ,int ,TYPE_3__,int,int,int ,int ,int,int ,int) ;
+ void* av_expr_eval (int ,int *,TYPE_2__*) ;
+ int av_frame_copy_props (TYPE_5__*,TYPE_5__*) ;
+ int av_frame_free (TYPE_5__**) ;
+ scalar_t__ av_frame_is_writable (TYPE_5__*) ;
+ int av_log (TYPE_2__*,int ,char*) ;
+ TYPE_4__* av_pix_fmt_desc_get (int ) ;
+ int config_input (TYPE_6__*) ;
+ int ff_filter_frame (TYPE_6__*,TYPE_5__*) ;
+ TYPE_5__* ff_get_video_buffer (TYPE_6__*,int,int) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
 {
@@ -108,7 +108,7 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
     }
 
     sar = in->sample_aspect_ratio;
-    /* Assume square pixels if SAR is unknown */
+
     if (!sar.num)
         sar.num = sar.den = 1;
 
@@ -121,8 +121,8 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
                      AV_CEIL_RSHIFT(inlink->w, hsub),
                      AV_CEIL_RSHIFT(inlink->h, vsub),
                      sar, s->x>>hsub, s->y>>vsub,
-                     /* Up and left borders were rounded down, inject lost bits
-                      * into width and height to avoid error accumulation */
+
+
                      AV_CEIL_RSHIFT(s->w + (s->x & ((1<<hsub)-1)), hsub),
                      AV_CEIL_RSHIFT(s->h + (s->y & ((1<<vsub)-1)), vsub),
                      s->band>>FFMIN(hsub, vsub),

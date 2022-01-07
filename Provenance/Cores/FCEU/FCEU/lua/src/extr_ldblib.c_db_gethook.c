@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/ * lua_Hook ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gethooktable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * getthread (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/ * hookf ; 
- int /*<<< orphan*/ * lua_gethook (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_gethookcount (int /*<<< orphan*/ *) ; 
- int lua_gethookmask (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushlightuserdata (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushliteral (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_rawget (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_remove (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  unmakemask (int,char*) ; 
+
+
+
+typedef int lua_State ;
+typedef int * lua_Hook ;
+
+
+ int gethooktable (int *) ;
+ int * getthread (int *,int*) ;
+ int * hookf ;
+ int * lua_gethook (int *) ;
+ int lua_gethookcount (int *) ;
+ int lua_gethookmask (int *) ;
+ int lua_pushinteger (int *,int ) ;
+ int lua_pushlightuserdata (int *,int *) ;
+ int lua_pushliteral (int *,char*) ;
+ int lua_pushstring (int *,int ) ;
+ int lua_rawget (int *,int) ;
+ int lua_remove (int *,int) ;
+ int unmakemask (int,char*) ;
 
 __attribute__((used)) static int db_gethook (lua_State *L) {
   int arg;
@@ -34,13 +34,13 @@ __attribute__((used)) static int db_gethook (lua_State *L) {
   char buff[5];
   int mask = lua_gethookmask(L1);
   lua_Hook hook = lua_gethook(L1);
-  if (hook != NULL && hook != hookf)  /* external hook? */
+  if (hook != ((void*)0) && hook != hookf)
     lua_pushliteral(L, "external hook");
   else {
     gethooktable(L);
     lua_pushlightuserdata(L, L1);
-    lua_rawget(L, -2);   /* get hook */
-    lua_remove(L, -2);  /* remove hook table */
+    lua_rawget(L, -2);
+    lua_remove(L, -2);
   }
   lua_pushstring(L, unmakemask(mask, buff));
   lua_pushinteger(L, lua_gethookcount(L1));

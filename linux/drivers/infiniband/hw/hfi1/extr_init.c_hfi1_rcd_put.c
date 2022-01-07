@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hfi1_ctxtdata {int /*<<< orphan*/  kref; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hfi1_rcd_free ; 
- int kref_put (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct hfi1_ctxtdata {int kref; } ;
+
+
+ int hfi1_rcd_free ;
+ int kref_put (int *,int ) ;
 
 int hfi1_rcd_put(struct hfi1_ctxtdata *rcd)
 {
-	if (rcd)
-		return kref_put(&rcd->kref, hfi1_rcd_free);
+ if (rcd)
+  return kref_put(&rcd->kref, hfi1_rcd_free);
 
-	return 0;
+ return 0;
 }

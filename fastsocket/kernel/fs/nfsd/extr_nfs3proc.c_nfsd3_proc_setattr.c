@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct svc_rqst {int dummy; } ;
-struct nfsd3_sattrargs {int /*<<< orphan*/  guardtime; int /*<<< orphan*/  check_guard; int /*<<< orphan*/  attrs; int /*<<< orphan*/  fh; } ;
-struct nfsd3_attrstat {int /*<<< orphan*/  fh; } ;
-typedef  int /*<<< orphan*/  __be32 ;
+struct nfsd3_sattrargs {int guardtime; int check_guard; int attrs; int fh; } ;
+struct nfsd3_attrstat {int fh; } ;
+typedef int __be32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RETURN_STATUS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVCFH_fmt (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dprintk (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fh_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nfsd_setattr (struct svc_rqst*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int RETURN_STATUS (int ) ;
+ int SVCFH_fmt (int *) ;
+ int dprintk (char*,int ) ;
+ int fh_copy (int *,int *) ;
+ int nfsd_setattr (struct svc_rqst*,int *,int *,int ,int ) ;
 
 __attribute__((used)) static __be32
 nfsd3_proc_setattr(struct svc_rqst *rqstp, struct nfsd3_sattrargs *argp,
-					   struct nfsd3_attrstat  *resp)
+        struct nfsd3_attrstat *resp)
 {
-	__be32	nfserr;
+ __be32 nfserr;
 
-	dprintk("nfsd: SETATTR(3)  %s\n",
-				SVCFH_fmt(&argp->fh));
+ dprintk("nfsd: SETATTR(3)  %s\n",
+    SVCFH_fmt(&argp->fh));
 
-	fh_copy(&resp->fh, &argp->fh);
-	nfserr = nfsd_setattr(rqstp, &resp->fh, &argp->attrs,
-			      argp->check_guard, argp->guardtime);
-	RETURN_STATUS(nfserr);
+ fh_copy(&resp->fh, &argp->fh);
+ nfserr = nfsd_setattr(rqstp, &resp->fh, &argp->attrs,
+         argp->check_guard, argp->guardtime);
+ RETURN_STATUS(nfserr);
 }

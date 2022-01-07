@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int** tkn_list; size_t tkn_ct; } ;
-typedef  TYPE_1__ token_list_t ;
-typedef  int ch_t ;
+typedef TYPE_1__ token_list_t ;
+typedef int ch_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- scalar_t__ IS_WHITESPACE_CHAR (char const) ; 
-#define  NUL 128 
- char* SPN_WHITESPACE_CHARS (char const*) ; 
- TYPE_1__* alloc_token_list (char const*) ; 
- int /*<<< orphan*/  copy_cooked (int**,char const**) ; 
- int /*<<< orphan*/  copy_raw (int**,char const**) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
+
+ int EINVAL ;
+ scalar_t__ IS_WHITESPACE_CHAR (char const) ;
+
+ char* SPN_WHITESPACE_CHARS (char const*) ;
+ TYPE_1__* alloc_token_list (char const*) ;
+ int copy_cooked (int**,char const**) ;
+ int copy_raw (int**,char const**) ;
+ int errno ;
+ int free (TYPE_1__*) ;
 
 token_list_t *
 ao_string_tokenize(char const * str)
@@ -32,16 +32,16 @@ ao_string_tokenize(char const * str)
     token_list_t * res = alloc_token_list(str);
     ch_t * pzDest;
 
-    /*
-     *  Now copy each token into the output buffer.
-     */
-    if (res == NULL)
+
+
+
+    if (res == ((void*)0))
         return res;
 
     pzDest = (ch_t *)(res->tkn_list[0]);
-    res->tkn_ct  = 0;
+    res->tkn_ct = 0;
 
-    do  {
+    do {
         res->tkn_list[ res->tkn_ct++ ] = pzDest;
         for (;;) {
             int ch = (ch_t)*str;
@@ -54,10 +54,10 @@ ao_string_tokenize(char const * str)
             switch (ch) {
             case '"':
                 copy_cooked(&pzDest, &str);
-                if (str == NULL) {
+                if (str == ((void*)0)) {
                     free(res);
                     errno = EINVAL;
-                    return NULL;
+                    return ((void*)0);
                 }
                 if (IS_WHITESPACE_CHAR(*str))
                     goto found_white_space;
@@ -65,16 +65,16 @@ ao_string_tokenize(char const * str)
 
             case '\'':
                 copy_raw(&pzDest, &str);
-                if (str == NULL) {
+                if (str == ((void*)0)) {
                     free(res);
                     errno = EINVAL;
-                    return NULL;
+                    return ((void*)0);
                 }
                 if (IS_WHITESPACE_CHAR(*str))
                     goto found_white_space;
                 break;
 
-            case NUL:
+            case 128:
                 goto copy_done;
 
             default:
@@ -83,13 +83,13 @@ ao_string_tokenize(char const * str)
             }
         } copy_done:;
 
-        /*
-         * NUL terminate the last token and see if we have any more tokens.
-         */
-        *(pzDest++) = NUL;
-    } while (*str != NUL);
 
-    res->tkn_list[ res->tkn_ct ] = NULL;
+
+
+        *(pzDest++) = 128;
+    } while (*str != 128);
+
+    res->tkn_list[ res->tkn_ct ] = ((void*)0);
 
     return res;
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ENGINE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENGINE_FLAGS_NO_REGISTER_ALL ; 
- int /*<<< orphan*/  ENGINE_set_RAND (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ENGINE_set_flags (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENGINE_set_id (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENGINE_set_init_function (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENGINE_set_name (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  engine_e_rdrand_id ; 
- int /*<<< orphan*/  engine_e_rdrand_name ; 
- int /*<<< orphan*/  rdrand_init ; 
- int /*<<< orphan*/  rdrand_meth ; 
+
+
+
+typedef int ENGINE ;
+
+
+ int ENGINE_FLAGS_NO_REGISTER_ALL ;
+ int ENGINE_set_RAND (int *,int *) ;
+ int ENGINE_set_flags (int *,int ) ;
+ int ENGINE_set_id (int *,int ) ;
+ int ENGINE_set_init_function (int *,int ) ;
+ int ENGINE_set_name (int *,int ) ;
+ int engine_e_rdrand_id ;
+ int engine_e_rdrand_name ;
+ int rdrand_init ;
+ int rdrand_meth ;
 
 __attribute__((used)) static int bind_helper(ENGINE *e)
 {

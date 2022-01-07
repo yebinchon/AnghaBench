@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct dir_baton {int /*<<< orphan*/  ood_changed_date; int /*<<< orphan*/  pool; int /*<<< orphan*/  ood_changed_author; int /*<<< orphan*/  ood_changed_rev; int /*<<< orphan*/  prop_changed; } ;
-typedef  int /*<<< orphan*/  apr_time_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_PROP_ENTRY_COMMITTED_DATE ; 
- int /*<<< orphan*/  SVN_PROP_ENTRY_COMMITTED_REV ; 
- int /*<<< orphan*/  SVN_PROP_ENTRY_LAST_AUTHOR ; 
- int /*<<< orphan*/  SVN_STR_TO_REV (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  apr_pstrdup (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_time_from_cstring (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ svn_wc_is_normal_prop (char const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int data; } ;
+typedef TYPE_1__ svn_string_t ;
+typedef int svn_error_t ;
+struct dir_baton {int ood_changed_date; int pool; int ood_changed_author; int ood_changed_rev; int prop_changed; } ;
+typedef int apr_time_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int SVN_PROP_ENTRY_COMMITTED_DATE ;
+ int SVN_PROP_ENTRY_COMMITTED_REV ;
+ int SVN_PROP_ENTRY_LAST_AUTHOR ;
+ int SVN_STR_TO_REV (int ) ;
+ int TRUE ;
+ int apr_pstrdup (int ,int ) ;
+ scalar_t__ strcmp (char const*,int ) ;
+ int svn_time_from_cstring (int *,int ,int ) ;
+ scalar_t__ svn_wc_is_normal_prop (char const*) ;
 
 __attribute__((used)) static svn_error_t *
 change_dir_prop(void *dir_baton,
@@ -41,8 +41,8 @@ change_dir_prop(void *dir_baton,
   if (svn_wc_is_normal_prop(name))
     db->prop_changed = TRUE;
 
-  /* Note any changes to the repository. */
-  if (value != NULL)
+
+  if (value != ((void*)0))
     {
       if (strcmp(name, SVN_PROP_ENTRY_COMMITTED_REV) == 0)
         db->ood_changed_rev = SVN_STR_TO_REV(value->data);

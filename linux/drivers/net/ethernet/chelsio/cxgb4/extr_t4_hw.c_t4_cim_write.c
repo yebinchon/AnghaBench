@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct adapter {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CIM_HOST_ACC_CTRL_A ; 
- int /*<<< orphan*/  CIM_HOST_ACC_DATA_A ; 
- int EBUSY ; 
- int HOSTBUSY_F ; 
- unsigned int HOSTWRITE_F ; 
- int t4_read_reg (struct adapter*,int /*<<< orphan*/ ) ; 
- int t4_wait_op_done (struct adapter*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  t4_write_reg (struct adapter*,int /*<<< orphan*/ ,unsigned int) ; 
+
+ int CIM_HOST_ACC_CTRL_A ;
+ int CIM_HOST_ACC_DATA_A ;
+ int EBUSY ;
+ int HOSTBUSY_F ;
+ unsigned int HOSTWRITE_F ;
+ int t4_read_reg (struct adapter*,int ) ;
+ int t4_wait_op_done (struct adapter*,int ,int,int ,int,int) ;
+ int t4_write_reg (struct adapter*,int ,unsigned int) ;
 
 int t4_cim_write(struct adapter *adap, unsigned int addr, unsigned int n,
-		 const unsigned int *valp)
+   const unsigned int *valp)
 {
-	int ret = 0;
+ int ret = 0;
 
-	if (t4_read_reg(adap, CIM_HOST_ACC_CTRL_A) & HOSTBUSY_F)
-		return -EBUSY;
+ if (t4_read_reg(adap, CIM_HOST_ACC_CTRL_A) & HOSTBUSY_F)
+  return -EBUSY;
 
-	for ( ; !ret && n--; addr += 4) {
-		t4_write_reg(adap, CIM_HOST_ACC_DATA_A, *valp++);
-		t4_write_reg(adap, CIM_HOST_ACC_CTRL_A, addr | HOSTWRITE_F);
-		ret = t4_wait_op_done(adap, CIM_HOST_ACC_CTRL_A, HOSTBUSY_F,
-				      0, 5, 2);
-	}
-	return ret;
+ for ( ; !ret && n--; addr += 4) {
+  t4_write_reg(adap, CIM_HOST_ACC_DATA_A, *valp++);
+  t4_write_reg(adap, CIM_HOST_ACC_CTRL_A, addr | HOSTWRITE_F);
+  ret = t4_wait_op_done(adap, CIM_HOST_ACC_CTRL_A, HOSTBUSY_F,
+          0, 5, 2);
+ }
+ return ret;
 }

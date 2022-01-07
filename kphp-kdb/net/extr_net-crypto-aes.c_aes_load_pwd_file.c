@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char const* DEFAULT_PWD_FILE ; 
- int MAX_PWD_LEN ; 
- int MIN_PWD_LEN ; 
- int O_NONBLOCK ; 
- int O_RDONLY ; 
- int aes_initialized ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- long lrand48 () ; 
- int open (char const*,int) ; 
- scalar_t__ pwd_buf ; 
- int pwd_len ; 
- scalar_t__ rand_buf ; 
- int read (int,scalar_t__,int) ; 
- int /*<<< orphan*/  srand48 (long) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+ char const* DEFAULT_PWD_FILE ;
+ int MAX_PWD_LEN ;
+ int MIN_PWD_LEN ;
+ int O_NONBLOCK ;
+ int O_RDONLY ;
+ int aes_initialized ;
+ int close (int) ;
+ int fprintf (int ,char*,...) ;
+ long lrand48 () ;
+ int open (char const*,int) ;
+ scalar_t__ pwd_buf ;
+ int pwd_len ;
+ scalar_t__ rand_buf ;
+ int read (int,scalar_t__,int) ;
+ int srand48 (long) ;
+ int stderr ;
+ int verbosity ;
 
 int aes_load_pwd_file (const char *filename) {
   int h = open ("/dev/random", O_RDONLY | O_NONBLOCK);

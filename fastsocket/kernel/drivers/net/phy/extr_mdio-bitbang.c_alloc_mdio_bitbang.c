@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct mii_bus {struct mdiobb_ctrl* priv; int /*<<< orphan*/  write; int /*<<< orphan*/  read; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct mii_bus {struct mdiobb_ctrl* priv; int write; int read; } ;
 struct mdiobb_ctrl {TYPE_1__* ops; } ;
-struct TYPE_2__ {int /*<<< orphan*/  owner; } ;
+struct TYPE_2__ {int owner; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __module_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mdiobb_read ; 
- int /*<<< orphan*/  mdiobb_write ; 
- struct mii_bus* mdiobus_alloc () ; 
+
+ int __module_get (int ) ;
+ int mdiobb_read ;
+ int mdiobb_write ;
+ struct mii_bus* mdiobus_alloc () ;
 
 struct mii_bus *alloc_mdio_bitbang(struct mdiobb_ctrl *ctrl)
 {
-	struct mii_bus *bus;
+ struct mii_bus *bus;
 
-	bus = mdiobus_alloc();
-	if (!bus)
-		return NULL;
+ bus = mdiobus_alloc();
+ if (!bus)
+  return ((void*)0);
 
-	__module_get(ctrl->ops->owner);
+ __module_get(ctrl->ops->owner);
 
-	bus->read = mdiobb_read;
-	bus->write = mdiobb_write;
-	bus->priv = ctrl;
+ bus->read = mdiobb_read;
+ bus->write = mdiobb_write;
+ bus->priv = ctrl;
 
-	return bus;
+ return bus;
 }

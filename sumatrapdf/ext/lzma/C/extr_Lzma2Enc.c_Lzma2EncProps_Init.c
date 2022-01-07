@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int numTotalThreads; int numBlockThreads; scalar_t__ blockSize; int /*<<< orphan*/  lzmaProps; } ;
-typedef  TYPE_1__ CLzma2EncProps ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LzmaEncProps_Init (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int numTotalThreads; int numBlockThreads; scalar_t__ blockSize; int lzmaProps; } ;
+typedef TYPE_1__ CLzma2EncProps ;
+
+
+ int LzmaEncProps_Init (int *) ;
 
 void Lzma2EncProps_Init(CLzma2EncProps *p)
 {

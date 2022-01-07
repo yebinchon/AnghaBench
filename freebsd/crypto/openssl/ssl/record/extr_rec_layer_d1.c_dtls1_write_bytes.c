@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  rwstate; } ;
-typedef  TYPE_1__ SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_INTERNAL_ERROR ; 
- size_t SSL3_RT_MAX_PLAIN_LENGTH ; 
- int /*<<< orphan*/  SSL_AD_INTERNAL_ERROR ; 
- int /*<<< orphan*/  SSL_F_DTLS1_WRITE_BYTES ; 
- int /*<<< orphan*/  SSL_NOTHING ; 
- int /*<<< orphan*/  SSLfatal (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int do_dtls1_write (TYPE_1__*,int,void const*,size_t,int /*<<< orphan*/ ,size_t*) ; 
- int /*<<< orphan*/  ossl_assert (int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int rwstate; } ;
+typedef TYPE_1__ SSL ;
+
+
+ int ERR_R_INTERNAL_ERROR ;
+ size_t SSL3_RT_MAX_PLAIN_LENGTH ;
+ int SSL_AD_INTERNAL_ERROR ;
+ int SSL_F_DTLS1_WRITE_BYTES ;
+ int SSL_NOTHING ;
+ int SSLfatal (TYPE_1__*,int ,int ,int ) ;
+ int do_dtls1_write (TYPE_1__*,int,void const*,size_t,int ,size_t*) ;
+ int ossl_assert (int) ;
 
 int dtls1_write_bytes(SSL *s, int type, const void *buf, size_t len,
                       size_t *written)

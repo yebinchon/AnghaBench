@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  syncFlags; int /*<<< orphan*/  fd; int /*<<< orphan*/  noSync; } ;
-typedef  TYPE_1__ Pager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MEMDB ; 
- int /*<<< orphan*/  SQLITE_FCNTL_SYNC ; 
- int SQLITE_NOTFOUND ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int sqlite3OsFileControl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int sqlite3OsSync (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int syncFlags; int fd; int noSync; } ;
+typedef TYPE_1__ Pager ;
+
+
+ int MEMDB ;
+ int SQLITE_FCNTL_SYNC ;
+ int SQLITE_NOTFOUND ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int sqlite3OsFileControl (int ,int ,void*) ;
+ int sqlite3OsSync (int ,int ) ;
 
 int sqlite3PagerSync(Pager *pPager, const char *zMaster){
   int rc = SQLITE_OK;

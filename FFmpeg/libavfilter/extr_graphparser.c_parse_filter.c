@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVFilterGraph ;
-typedef  int /*<<< orphan*/  AVFilterContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_free (char*) ; 
- char* av_get_token (char const**,char*) ; 
- int create_filter (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int,char*,char*,void*) ; 
+
+
+
+typedef int AVFilterGraph ;
+typedef int AVFilterContext ;
+
+
+ int av_free (char*) ;
+ char* av_get_token (char const**,char*) ;
+ int create_filter (int **,int *,int,char*,char*,void*) ;
 
 __attribute__((used)) static int parse_filter(AVFilterContext **filt_ctx, const char **buf, AVFilterGraph *graph,
                         int index, void *log_ctx)
 {
-    char *opts = NULL;
+    char *opts = ((void*)0);
     char *name = av_get_token(buf, "=,;[");
     int ret;
 

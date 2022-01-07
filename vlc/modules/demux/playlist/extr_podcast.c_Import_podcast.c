@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xml_reader_t ;
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_9__ {int /*<<< orphan*/  pf_control; int /*<<< orphan*/  pf_readdir; int /*<<< orphan*/  s; } ;
-typedef  TYPE_1__ stream_t ;
-typedef  scalar_t__ ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_FILE (TYPE_1__*) ; 
- int /*<<< orphan*/  ReadDir ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int XML_READER_STARTELEM ; 
- int /*<<< orphan*/  access_vaDirectoryControlHelper ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_1__*,char*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- scalar_t__ stream_IsMimeType (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ unlikely (int) ; 
- int /*<<< orphan*/  vlc_stream_Delete (TYPE_1__*) ; 
- TYPE_1__* vlc_stream_MemoryNew (TYPE_1__*,int /*<<< orphan*/ *,scalar_t__,int) ; 
- scalar_t__ vlc_stream_Peek (int /*<<< orphan*/ ,int /*<<< orphan*/  const**,int) ; 
- int /*<<< orphan*/ * xml_ReaderCreate (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  xml_ReaderDelete (int /*<<< orphan*/ *) ; 
- int xml_ReaderNextNode (int /*<<< orphan*/ *,char const**) ; 
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int xml_reader_t ;
+typedef int vlc_object_t ;
+typedef int uint8_t ;
+struct TYPE_9__ {int pf_control; int pf_readdir; int s; } ;
+typedef TYPE_1__ stream_t ;
+typedef scalar_t__ ssize_t ;
+
+
+ int CHECK_FILE (TYPE_1__*) ;
+ int ReadDir ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int XML_READER_STARTELEM ;
+ int access_vaDirectoryControlHelper ;
+ int msg_Dbg (TYPE_1__*,char*) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ scalar_t__ stream_IsMimeType (int ,char*) ;
+ scalar_t__ unlikely (int) ;
+ int vlc_stream_Delete (TYPE_1__*) ;
+ TYPE_1__* vlc_stream_MemoryNew (TYPE_1__*,int *,scalar_t__,int) ;
+ scalar_t__ vlc_stream_Peek (int ,int const**,int) ;
+ int * xml_ReaderCreate (TYPE_1__*,TYPE_1__*) ;
+ int xml_ReaderDelete (int *) ;
+ int xml_ReaderNextNode (int *,char const**) ;
 
 int Import_podcast( vlc_object_t *p_this )
 {
@@ -44,16 +44,16 @@ int Import_podcast( vlc_object_t *p_this )
     if( stream_IsMimeType( p_demux->s, "text/xml" )
      || stream_IsMimeType( p_demux->s, "application/xml" ) )
     {
-        /* XML: check if the root node is "rss". Use a specific peeked
-         * probestream in order to not modify the source state while probing.
-         * */
+
+
+
         const uint8_t *p_peek;
         ssize_t i_peek = vlc_stream_Peek( p_demux->s, &p_peek, 2048 );
         if( unlikely( i_peek <= 0 ) )
             return VLC_EGENERIC;
 
         stream_t *p_probestream =
-            vlc_stream_MemoryNew( p_demux, (uint8_t *)p_peek, i_peek, true );
+            vlc_stream_MemoryNew( p_demux, (uint8_t *)p_peek, i_peek, 1 );
         if( unlikely( !p_probestream ) )
             return VLC_EGENERIC;
 
@@ -76,7 +76,7 @@ int Import_podcast( vlc_object_t *p_this )
 
         xml_ReaderDelete( p_xml_reader );
         vlc_stream_Delete( p_probestream );
-        /* SUCCESS: this text/xml is a rss file */
+
     }
     else if( !stream_IsMimeType( p_demux->s, "application/rss+xml" ) )
         return VLC_EGENERIC;

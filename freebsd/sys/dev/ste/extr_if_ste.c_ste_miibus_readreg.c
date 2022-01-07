@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int mii_bitbang_readreg (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  ste_mii_bitbang_ops ; 
+
+
+
+typedef int device_t ;
+
+
+ int mii_bitbang_readreg (int ,int *,int,int) ;
+ int ste_mii_bitbang_ops ;
 
 __attribute__((used)) static int
 ste_miibus_readreg(device_t dev, int phy, int reg)
 {
 
-	return (mii_bitbang_readreg(dev, &ste_mii_bitbang_ops, phy, reg));
+ return (mii_bitbang_readreg(dev, &ste_mii_bitbang_ops, phy, reg));
 }

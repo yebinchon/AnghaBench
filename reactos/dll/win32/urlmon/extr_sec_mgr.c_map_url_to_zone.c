@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  IUri ;
-typedef  scalar_t__ HRESULT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- scalar_t__ CoInternetGetSecurityUrl (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CoTaskMemAlloc (int) ; 
- int /*<<< orphan*/  CoTaskMemFree (int /*<<< orphan*/ ) ; 
- scalar_t__ CreateUri (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ E_OUTOFMEMORY ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  IUri_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PSU_SECURITY_URL_ONLY ; 
- scalar_t__ S_OK ; 
- int URLZONE_INVALID ; 
- int /*<<< orphan*/  Uri_CREATE_ALLOW_IMPLICIT_FILE_SCHEME ; 
- scalar_t__ map_security_uri_to_zone (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int strlenW (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int WCHAR ;
+typedef int LPWSTR ;
+typedef int LPCWSTR ;
+typedef int IUri ;
+typedef scalar_t__ HRESULT ;
+typedef int DWORD ;
+
+
+ scalar_t__ CoInternetGetSecurityUrl (int ,int *,int ,int ) ;
+ int CoTaskMemAlloc (int) ;
+ int CoTaskMemFree (int ) ;
+ scalar_t__ CreateUri (int ,int ,int ,int **) ;
+ scalar_t__ E_OUTOFMEMORY ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int IUri_Release (int *) ;
+ int PSU_SECURITY_URL_ONLY ;
+ scalar_t__ S_OK ;
+ int URLZONE_INVALID ;
+ int Uri_CREATE_ALLOW_IMPLICIT_FILE_SCHEME ;
+ scalar_t__ map_security_uri_to_zone (int *,int*) ;
+ int memcpy (int ,int ,int) ;
+ int strlenW (int ) ;
 
 __attribute__((used)) static HRESULT map_url_to_zone(LPCWSTR url, DWORD *zone, LPWSTR *ret_url)
 {

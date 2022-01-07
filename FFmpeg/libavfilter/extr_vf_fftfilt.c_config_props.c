@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int w; int h; int /*<<< orphan*/  format; TYPE_1__* dst; } ;
-struct TYPE_13__ {int nb_components; int /*<<< orphan*/  log2_chroma_h; int /*<<< orphan*/  log2_chroma_w; TYPE_2__* comp; } ;
-struct TYPE_12__ {int depth; int* planewidth; int* planeheight; int* rdft_hbits; int* rdft_hlen; int* rdft_vbits; int* rdft_vlen; scalar_t__ eval_mode; int /*<<< orphan*/  irdft_horizontal; int /*<<< orphan*/  rdft_horizontal; void** weight; void** ivrdft; void** vrdft; void** rdft_vdata; void** ihrdft; void** hrdft; void** rdft_hdata; int /*<<< orphan*/  nb_planes; } ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int w; int h; int format; TYPE_1__* dst; } ;
+struct TYPE_13__ {int nb_components; int log2_chroma_h; int log2_chroma_w; TYPE_2__* comp; } ;
+struct TYPE_12__ {int depth; int* planewidth; int* planeheight; int* rdft_hbits; int* rdft_hlen; int* rdft_vbits; int* rdft_vlen; scalar_t__ eval_mode; int irdft_horizontal; int rdft_horizontal; void** weight; void** ivrdft; void** vrdft; void** rdft_vdata; void** ihrdft; void** hrdft; void** rdft_hdata; int nb_planes; } ;
 struct TYPE_11__ {int depth; } ;
 struct TYPE_10__ {TYPE_3__* priv; } ;
-typedef  int /*<<< orphan*/  FFTSample ;
-typedef  TYPE_3__ FFTFILTContext ;
-typedef  TYPE_4__ AVPixFmtDescriptor ;
-typedef  TYPE_5__ AVFilterLink ;
+typedef int FFTSample ;
+typedef TYPE_3__ FFTFILTContext ;
+typedef TYPE_4__ AVPixFmtDescriptor ;
+typedef TYPE_5__ AVFilterLink ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_BUG ; 
- void* AV_CEIL_RSHIFT (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DFT_R2C ; 
- int /*<<< orphan*/  ENOMEM ; 
- scalar_t__ EVAL_MODE_INIT ; 
- int /*<<< orphan*/  IDFT_C2R ; 
- void* av_malloc_array (int,int) ; 
- int /*<<< orphan*/  av_pix_fmt_count_planes (int /*<<< orphan*/ ) ; 
- TYPE_4__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
- void* av_rdft_init (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  do_eval (TYPE_3__*,TYPE_5__*,int) ; 
- int /*<<< orphan*/  irdft_horizontal16 ; 
- int /*<<< orphan*/  irdft_horizontal8 ; 
- int /*<<< orphan*/  rdft_horizontal16 ; 
- int /*<<< orphan*/  rdft_horizontal8 ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_BUG ;
+ void* AV_CEIL_RSHIFT (int,int ) ;
+ int DFT_R2C ;
+ int ENOMEM ;
+ scalar_t__ EVAL_MODE_INIT ;
+ int IDFT_C2R ;
+ void* av_malloc_array (int,int) ;
+ int av_pix_fmt_count_planes (int ) ;
+ TYPE_4__* av_pix_fmt_desc_get (int ) ;
+ void* av_rdft_init (int,int ) ;
+ int do_eval (TYPE_3__*,TYPE_5__*,int) ;
+ int irdft_horizontal16 ;
+ int irdft_horizontal8 ;
+ int rdft_horizontal16 ;
+ int rdft_horizontal8 ;
 
 __attribute__((used)) static int config_props(AVFilterLink *inlink)
 {
@@ -62,7 +62,7 @@ __attribute__((used)) static int config_props(AVFilterLink *inlink)
         int w = s->planewidth[i];
         int h = s->planeheight[i];
 
-        /* RDFT - Array initialization for Horizontal pass*/
+
         for (rdft_hbits = 1; 1 << rdft_hbits < w*10/9; rdft_hbits++);
         s->rdft_hbits[i] = rdft_hbits;
         s->rdft_hlen[i] = 1 << rdft_hbits;
@@ -74,7 +74,7 @@ __attribute__((used)) static int config_props(AVFilterLink *inlink)
         if (!(s->ihrdft[i] = av_rdft_init(s->rdft_hbits[i], IDFT_C2R)))
             return AVERROR(ENOMEM);
 
-        /* RDFT - Array initialization for Vertical pass*/
+
         for (rdft_vbits = 1; 1 << rdft_vbits < h*10/9; rdft_vbits++);
         s->rdft_vbits[i] = rdft_vbits;
         s->rdft_vlen[i] = 1 << rdft_vbits;
@@ -87,7 +87,7 @@ __attribute__((used)) static int config_props(AVFilterLink *inlink)
             return AVERROR(ENOMEM);
     }
 
-    /*Luminance value - Array initialization*/
+
     for (plane = 0; plane < 3; plane++) {
         if(!(s->weight[plane] = av_malloc_array(s->rdft_hlen[plane], s->rdft_vlen[plane] * sizeof(double))))
             return AVERROR(ENOMEM);

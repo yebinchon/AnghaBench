@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vlc_http_resource {char* password; char* username; int /*<<< orphan*/ * response; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- char* strdup (char const*) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_http_msg_destroy (int /*<<< orphan*/ *) ; 
- int vlc_http_msg_get_status (int /*<<< orphan*/ *) ; 
+
+
+
+struct vlc_http_resource {char* password; char* username; int * response; } ;
+
+
+ int free (char*) ;
+ char* strdup (char const*) ;
+ scalar_t__ unlikely (int ) ;
+ int vlc_http_msg_destroy (int *) ;
+ int vlc_http_msg_get_status (int *) ;
 
 int vlc_http_res_set_login(struct vlc_http_resource *res,
                            const char *username, const char *password)
 {
-    char *user = NULL;
-    char *pass = NULL;
+    char *user = ((void*)0);
+    char *pass = ((void*)0);
 
-    if (username != NULL)
+    if (username != ((void*)0))
     {
         user = strdup(username);
-        if (unlikely(user == NULL))
+        if (unlikely(user == ((void*)0)))
             return -1;
 
-        pass = strdup((password != NULL) ? password : "");
-        if (unlikely(pass == NULL))
+        pass = strdup((password != ((void*)0)) ? password : "");
+        if (unlikely(pass == ((void*)0)))
         {
             free(user);
             return -1;
@@ -44,10 +44,10 @@ int vlc_http_res_set_login(struct vlc_http_resource *res,
     res->username = user;
     res->password = pass;
 
-    if (res->response != NULL && vlc_http_msg_get_status(res->response) == 401)
+    if (res->response != ((void*)0) && vlc_http_msg_get_status(res->response) == 401)
     {
         vlc_http_msg_destroy(res->response);
-        res->response = NULL;
+        res->response = ((void*)0);
     }
 
     return 0;

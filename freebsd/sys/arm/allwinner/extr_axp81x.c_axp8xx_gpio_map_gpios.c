@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  phandle_t ;
-typedef  scalar_t__ pcell_t ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  axp8xx_pins ; 
- scalar_t__ nitems (int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ uint32_t ;
+typedef int phandle_t ;
+typedef scalar_t__ pcell_t ;
+typedef int device_t ;
+
+
+ int EINVAL ;
+ int axp8xx_pins ;
+ scalar_t__ nitems (int ) ;
 
 __attribute__((used)) static int
 axp8xx_gpio_map_gpios(device_t bus, phandle_t dev, phandle_t gparent,
     int gcells, pcell_t *gpios, uint32_t *pin, uint32_t *flags)
 {
-	if (gpios[0] >= nitems(axp8xx_pins))
-		return (EINVAL);
+ if (gpios[0] >= nitems(axp8xx_pins))
+  return (EINVAL);
 
-	*pin = gpios[0];
-	*flags = gpios[1];
+ *pin = gpios[0];
+ *flags = gpios[1];
 
-	return (0);
+ return (0);
 }

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ object_type; int chan_config; int channels; int sbr; int ps; scalar_t__ ext_object_type; int ext_chan_config; void* sample_rate; void* ext_sample_rate; int /*<<< orphan*/  ext_sampling_index; int /*<<< orphan*/  sampling_index; } ;
-typedef  TYPE_1__ MPEG4AudioConfig ;
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
- scalar_t__ AOT_AAC_LC ; 
- scalar_t__ AOT_ALS ; 
- scalar_t__ AOT_ER_BSAC ; 
- scalar_t__ AOT_NULL ; 
- scalar_t__ AOT_PS ; 
- scalar_t__ AOT_SBR ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int FF_ARRAY_ELEMS (int*) ; 
- scalar_t__ MKBETAG (char,char,char,char) ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,size_t) ; 
- int* ff_mpeg4audio_channels ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- void* get_bits1 (int /*<<< orphan*/ *) ; 
- int get_bits_count (int /*<<< orphan*/ *) ; 
- int get_bits_left (int /*<<< orphan*/ *) ; 
- void* get_object_type (int /*<<< orphan*/ *) ; 
- void* get_sample_rate (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int parse_config_ALS (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int show_bits (int /*<<< orphan*/ *,int) ; 
- scalar_t__ show_bits_long (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  skip_bits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  skip_bits_long (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ object_type; int chan_config; int channels; int sbr; int ps; scalar_t__ ext_object_type; int ext_chan_config; void* sample_rate; void* ext_sample_rate; int ext_sampling_index; int sampling_index; } ;
+typedef TYPE_1__ MPEG4AudioConfig ;
+typedef int GetBitContext ;
+
+
+ scalar_t__ AOT_AAC_LC ;
+ scalar_t__ AOT_ALS ;
+ scalar_t__ AOT_ER_BSAC ;
+ scalar_t__ AOT_NULL ;
+ scalar_t__ AOT_PS ;
+ scalar_t__ AOT_SBR ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int FF_ARRAY_ELEMS (int*) ;
+ scalar_t__ MKBETAG (char,char,char,char) ;
+ int av_log (void*,int ,char*,size_t) ;
+ int* ff_mpeg4audio_channels ;
+ int get_bits (int *,int) ;
+ void* get_bits1 (int *) ;
+ int get_bits_count (int *) ;
+ int get_bits_left (int *) ;
+ void* get_object_type (int *) ;
+ void* get_sample_rate (int *,int *) ;
+ int parse_config_ALS (int *,TYPE_1__*) ;
+ int show_bits (int *,int) ;
+ scalar_t__ show_bits_long (int *,int) ;
+ int skip_bits (int *,int) ;
+ int skip_bits_long (int *,int) ;
 
 int ff_mpeg4audio_get_config_gb(MPEG4AudioConfig *c, GetBitContext *gb,
                                 int sync_extension, void *logctx)
@@ -55,9 +55,9 @@ int ff_mpeg4audio_get_config_gb(MPEG4AudioConfig *c, GetBitContext *gb,
         return AVERROR_INVALIDDATA;
     }
     c->sbr = -1;
-    c->ps  = -1;
+    c->ps = -1;
     if (c->object_type == AOT_SBR || (c->object_type == AOT_PS &&
-        // check for W6132 Annex YYYY draft MP3onMP4
+
         !(show_bits(gb, 3) & 0x03 && !(show_bits(gb, 9) & 0x3F)))) {
         if (c->object_type == AOT_PS)
             c->ps = 1;
@@ -87,7 +87,7 @@ int ff_mpeg4audio_get_config_gb(MPEG4AudioConfig *c, GetBitContext *gb,
 
     if (c->ext_object_type != AOT_SBR && sync_extension) {
         while (get_bits_left(gb) > 15) {
-            if (show_bits(gb, 11) == 0x2b7) { // sync extension
+            if (show_bits(gb, 11) == 0x2b7) {
                 get_bits(gb, 11);
                 c->ext_object_type = get_object_type(gb);
                 if (c->ext_object_type == AOT_SBR && (c->sbr = get_bits1(gb)) == 1) {
@@ -99,14 +99,14 @@ int ff_mpeg4audio_get_config_gb(MPEG4AudioConfig *c, GetBitContext *gb,
                     c->ps = get_bits1(gb);
                 break;
             } else
-                get_bits1(gb); // skip 1 bit
+                get_bits1(gb);
         }
     }
 
-    //PS requires SBR
+
     if (!c->sbr)
         c->ps = 0;
-    //Limit implicit PS to the HE-AACv2 Profile
+
     if ((c->ps == -1 && c->object_type != AOT_AAC_LC) || c->channels & ~0x01)
         c->ps = 0;
 

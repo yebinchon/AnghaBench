@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WorkerTask ;
-typedef  int /*<<< orphan*/  HTAB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FATAL ; 
- int /*<<< orphan*/  HASH_REMOVE ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*) ; 
- int /*<<< orphan*/ * hash_search (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int WorkerTask ;
+typedef int HTAB ;
+
+
+ int FATAL ;
+ int HASH_REMOVE ;
+ int ereport (int ,int ) ;
+ int errmsg (char*) ;
+ int * hash_search (int *,void*,int ,int *) ;
 
 __attribute__((used)) static void
 RemoveWorkerTask(WorkerTask *workerTask, HTAB *WorkerTasksHash)
 {
-	void *hashKey = (void *) workerTask;
+ void *hashKey = (void *) workerTask;
 
-	WorkerTask *taskRemoved = hash_search(WorkerTasksHash, hashKey, HASH_REMOVE, NULL);
-	if (taskRemoved == NULL)
-	{
-		ereport(FATAL, (errmsg("worker task hash corrupted")));
-	}
+ WorkerTask *taskRemoved = hash_search(WorkerTasksHash, hashKey, HASH_REMOVE, ((void*)0));
+ if (taskRemoved == ((void*)0))
+ {
+  ereport(FATAL, (errmsg("worker task hash corrupted")));
+ }
 }

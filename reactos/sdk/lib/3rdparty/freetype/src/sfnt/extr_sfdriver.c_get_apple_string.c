@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ (* char_type_func ) (void*) ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ (* char_type_func ) (void*) ;
 struct TYPE_6__ {scalar_t__ cursor; } ;
 struct TYPE_5__ {scalar_t__ stringLength; char* string; scalar_t__ stringOffset; } ;
-typedef  TYPE_1__* TT_Name ;
-typedef  scalar_t__ FT_UInt ;
-typedef  char FT_String ;
-typedef  TYPE_2__* FT_Stream ;
-typedef  int /*<<< orphan*/  FT_Memory ;
-typedef  int /*<<< orphan*/  FT_Error ;
-typedef  void* FT_Char ;
-typedef  scalar_t__ FT_Bool ;
+typedef TYPE_1__* TT_Name ;
+typedef scalar_t__ FT_UInt ;
+typedef char FT_String ;
+typedef TYPE_2__* FT_Stream ;
+typedef int FT_Memory ;
+typedef int FT_Error ;
+typedef void* FT_Char ;
+typedef scalar_t__ FT_Bool ;
 
-/* Variables and functions */
- scalar_t__ FT_ALLOC (char*,scalar_t__) ; 
- int /*<<< orphan*/  FT_Err_Ok ; 
- scalar_t__ FT_FRAME_ENTER (scalar_t__) ; 
- int /*<<< orphan*/  FT_FRAME_EXIT () ; 
- int /*<<< orphan*/  FT_FREE (char*) ; 
- scalar_t__ FT_STREAM_SEEK (scalar_t__) ; 
- int /*<<< orphan*/  FT_TRACE0 (char*) ; 
- int /*<<< orphan*/  FT_UNUSED (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ FT_ALLOC (char*,scalar_t__) ;
+ int FT_Err_Ok ;
+ scalar_t__ FT_FRAME_ENTER (scalar_t__) ;
+ int FT_FRAME_EXIT () ;
+ int FT_FREE (char*) ;
+ scalar_t__ FT_STREAM_SEEK (scalar_t__) ;
+ int FT_TRACE0 (char*) ;
+ int FT_UNUSED (int ) ;
 
 __attribute__((used)) static char*
-  get_apple_string( FT_Memory       memory,
-                    FT_Stream       stream,
-                    TT_Name         entry,
-                    char_type_func  char_type,
-                    FT_Bool         report_invalid_characters )
+  get_apple_string( FT_Memory memory,
+                    FT_Stream stream,
+                    TT_Name entry,
+                    char_type_func char_type,
+                    FT_Bool report_invalid_characters )
   {
-    FT_Error  error = FT_Err_Ok;
+    FT_Error error = FT_Err_Ok;
 
-    char*       result = NULL;
-    FT_String*  r;
-    FT_Char*    p;
-    FT_UInt     len;
+    char* result = ((void*)0);
+    FT_String* r;
+    FT_Char* p;
+    FT_UInt len;
 
     FT_UNUSED( error );
 
 
     if ( FT_ALLOC( result, entry->stringLength + 1 ) )
-      return NULL;
+      return ((void*)0);
 
     if ( FT_STREAM_SEEK( entry->stringOffset ) ||
          FT_FRAME_ENTER( entry->stringLength ) )
@@ -62,7 +62,7 @@ __attribute__((used)) static char*
       entry->stringLength = 0;
       FT_FREE( entry->string );
 
-      return NULL;
+      return ((void*)0);
     }
 
     r = (FT_String*)result;
@@ -79,7 +79,7 @@ __attribute__((used)) static char*
           FT_TRACE0(( "get_apple_string:"
                       " Character `%c' (0x%X) invalid in PS name string\n",
                       *p, *p ));
-          /* it's not the job of FreeType to correct PS names... */
+
           *r++ = *p;
         }
       }

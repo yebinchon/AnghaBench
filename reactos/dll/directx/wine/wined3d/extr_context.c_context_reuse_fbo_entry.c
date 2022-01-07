@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wined3d_rendertarget_info {TYPE_1__* resource; } ;
 struct wined3d_gl_info {int dummy; } ;
 struct wined3d_context {struct wined3d_gl_info* gl_info; } ;
-struct fbo_entry {int /*<<< orphan*/  flags; int /*<<< orphan*/  key; int /*<<< orphan*/  id; } ;
+struct fbo_entry {int flags; int key; int id; } ;
 struct TYPE_2__ {int format_flags; } ;
-typedef  int /*<<< orphan*/  GLenum ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef int GLenum ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int WINED3DFMT_FLAG_DEPTH ; 
- int WINED3DFMT_FLAG_STENCIL ; 
- int /*<<< orphan*/  WINED3D_FBO_ENTRY_FLAG_DEPTH ; 
- int /*<<< orphan*/  WINED3D_FBO_ENTRY_FLAG_STENCIL ; 
- int /*<<< orphan*/  context_bind_fbo (struct wined3d_context*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  context_clean_fbo_attachments (struct wined3d_gl_info const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  context_generate_fbo_key (struct wined3d_context*,int /*<<< orphan*/ *,struct wined3d_rendertarget_info const*,struct wined3d_rendertarget_info const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int WINED3DFMT_FLAG_DEPTH ;
+ int WINED3DFMT_FLAG_STENCIL ;
+ int WINED3D_FBO_ENTRY_FLAG_DEPTH ;
+ int WINED3D_FBO_ENTRY_FLAG_STENCIL ;
+ int context_bind_fbo (struct wined3d_context*,int ,int ) ;
+ int context_clean_fbo_attachments (struct wined3d_gl_info const*,int ) ;
+ int context_generate_fbo_key (struct wined3d_context*,int *,struct wined3d_rendertarget_info const*,struct wined3d_rendertarget_info const*,int ,int ) ;
 
 __attribute__((used)) static void context_reuse_fbo_entry(struct wined3d_context *context, GLenum target,
         const struct wined3d_rendertarget_info *render_targets, const struct wined3d_rendertarget_info *depth_stencil,

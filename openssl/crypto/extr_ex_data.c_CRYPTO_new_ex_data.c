@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CRYPTO_EX_DATA ;
 
-/* Variables and functions */
- int crypto_new_ex_data_ex (int /*<<< orphan*/ *,int,void*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int CRYPTO_EX_DATA ;
+
+
+ int crypto_new_ex_data_ex (int *,int,void*,int *) ;
 
 int CRYPTO_new_ex_data(int class_index, void *obj, CRYPTO_EX_DATA *ad)
 {
-    return crypto_new_ex_data_ex(NULL, class_index, obj, ad);
+    return crypto_new_ex_data_ex(((void*)0), class_index, obj, ad);
 }

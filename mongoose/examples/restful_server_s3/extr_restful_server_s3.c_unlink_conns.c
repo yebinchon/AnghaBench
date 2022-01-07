@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mg_connection {int /*<<< orphan*/ * user_data; } ;
 
-/* Variables and functions */
+
+
+
+struct mg_connection {int * user_data; } ;
+
+
 
 __attribute__((used)) static void unlink_conns(struct mg_connection *nc1) {
   struct mg_connection *nc2 = (struct mg_connection *) nc1->user_data;
-  if (nc1->user_data != NULL) {
-    nc1->user_data = NULL;
-    nc2->user_data = NULL;
+  if (nc1->user_data != ((void*)0)) {
+    nc1->user_data = ((void*)0);
+    nc2->user_data = ((void*)0);
   }
 }

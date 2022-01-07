@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct inode {int dummy; } ;
 struct file {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atomic_set (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ima_delete_rules () ; 
- int /*<<< orphan*/ * ima_policy ; 
- int /*<<< orphan*/  ima_update_policy () ; 
- int /*<<< orphan*/  policy_opencount ; 
- int /*<<< orphan*/  securityfs_remove (int /*<<< orphan*/ *) ; 
- int valid_policy ; 
+
+ int atomic_set (int *,int) ;
+ int ima_delete_rules () ;
+ int * ima_policy ;
+ int ima_update_policy () ;
+ int policy_opencount ;
+ int securityfs_remove (int *) ;
+ int valid_policy ;
 
 __attribute__((used)) static int ima_release_policy(struct inode *inode, struct file *file)
 {
-	if (!valid_policy) {
-		ima_delete_rules();
-		valid_policy = 1;
-		atomic_set(&policy_opencount, 1);
-		return 0;
-	}
-	ima_update_policy();
-	securityfs_remove(ima_policy);
-	ima_policy = NULL;
-	return 0;
+ if (!valid_policy) {
+  ima_delete_rules();
+  valid_policy = 1;
+  atomic_set(&policy_opencount, 1);
+  return 0;
+ }
+ ima_update_policy();
+ securityfs_remove(ima_policy);
+ ima_policy = ((void*)0);
+ return 0;
 }

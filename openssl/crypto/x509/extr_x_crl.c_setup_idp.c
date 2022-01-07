@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int idp_reasons; int /*<<< orphan*/  idp_flags; } ;
-typedef  TYPE_2__ X509_CRL ;
-struct TYPE_9__ {scalar_t__ onlyuser; scalar_t__ onlyCA; scalar_t__ onlyattr; scalar_t__ indirectCRL; int /*<<< orphan*/  distpoint; TYPE_1__* onlysomereasons; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int idp_reasons; int idp_flags; } ;
+typedef TYPE_2__ X509_CRL ;
+struct TYPE_9__ {scalar_t__ onlyuser; scalar_t__ onlyCA; scalar_t__ onlyattr; scalar_t__ indirectCRL; int distpoint; TYPE_1__* onlysomereasons; } ;
 struct TYPE_7__ {int length; int* data; } ;
-typedef  TYPE_3__ ISSUING_DIST_POINT ;
+typedef TYPE_3__ ISSUING_DIST_POINT ;
 
-/* Variables and functions */
- int CRLDP_ALL_REASONS ; 
- int /*<<< orphan*/  DIST_POINT_set_dpname (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDP_INDIRECT ; 
- int /*<<< orphan*/  IDP_INVALID ; 
- int /*<<< orphan*/  IDP_ONLYATTR ; 
- int /*<<< orphan*/  IDP_ONLYCA ; 
- int /*<<< orphan*/  IDP_ONLYUSER ; 
- int /*<<< orphan*/  IDP_PRESENT ; 
- int /*<<< orphan*/  IDP_REASONS ; 
- int /*<<< orphan*/  X509_CRL_get_issuer (TYPE_2__*) ; 
+
+ int CRLDP_ALL_REASONS ;
+ int DIST_POINT_set_dpname (int ,int ) ;
+ int IDP_INDIRECT ;
+ int IDP_INVALID ;
+ int IDP_ONLYATTR ;
+ int IDP_ONLYCA ;
+ int IDP_ONLYUSER ;
+ int IDP_PRESENT ;
+ int IDP_REASONS ;
+ int X509_CRL_get_issuer (TYPE_2__*) ;
 
 __attribute__((used)) static void setup_idp(X509_CRL *crl, ISSUING_DIST_POINT *idp)
 {
     int idp_only = 0;
-    /* Set various flags according to IDP */
+
     crl->idp_flags |= IDP_PRESENT;
     if (idp->onlyuser > 0) {
         idp_only++;

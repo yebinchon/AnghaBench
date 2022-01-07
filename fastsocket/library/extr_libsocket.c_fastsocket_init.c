@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cpu_set_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CPU_SET (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CPU_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FSOCKET_ERR (char*) ; 
- int /*<<< orphan*/  INIT_FDSET_NUM ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  calloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int fsocket_channel_fd ; 
- int /*<<< orphan*/  fsocket_fd_num ; 
- int /*<<< orphan*/  fsocket_fd_set ; 
- int get_cpus () ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int sched_setaffinity (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int cpu_set_t ;
+
+
+ int CPU_SET (int,int *) ;
+ int CPU_ZERO (int *) ;
+ int FSOCKET_ERR (char*) ;
+ int INIT_FDSET_NUM ;
+ int O_RDONLY ;
+ int calloc (int ,int) ;
+ int exit (int) ;
+ int fsocket_channel_fd ;
+ int fsocket_fd_num ;
+ int fsocket_fd_set ;
+ int get_cpus () ;
+ int open (char*,int ) ;
+ int sched_setaffinity (int ,int,int *) ;
 
 __attribute__((constructor))
 void fastsocket_init(void)
 {
-	int ret = 0;
-	int i;
-	cpu_set_t cmask;
+ int ret = 0;
+ int i;
+ cpu_set_t cmask;
 
-	ret = open("/dev/fastsocket", O_RDONLY);
-	if (ret < 0) {
-		FSOCKET_ERR("Open fastsocket channel failed, please CHECK\n");
-		/* Just exit for safty*/
-		exit(-1);
-	}
-	fsocket_channel_fd = ret;
+ ret = open("/dev/fastsocket", O_RDONLY);
+ if (ret < 0) {
+  FSOCKET_ERR("Open fastsocket channel failed, please CHECK\n");
 
-	fsocket_fd_set = calloc(INIT_FDSET_NUM, sizeof(int));
-	if (!fsocket_fd_set) {
-		FSOCKET_ERR("Allocate memory for listen fd set failed\n");
-		exit(-1);
-	}
+  exit(-1);
+ }
+ fsocket_channel_fd = ret;
 
-	fsocket_fd_num = INIT_FDSET_NUM;
+ fsocket_fd_set = calloc(INIT_FDSET_NUM, sizeof(int));
+ if (!fsocket_fd_set) {
+  FSOCKET_ERR("Allocate memory for listen fd set failed\n");
+  exit(-1);
+ }
 
-	CPU_ZERO(&cmask);
+ fsocket_fd_num = INIT_FDSET_NUM;
 
-	for (i = 0; i < get_cpus(); i++)
-		CPU_SET(i, &cmask);
+ CPU_ZERO(&cmask);
 
-	ret = sched_setaffinity(0, get_cpus(), &cmask);
-	if (ret < 0) {
-		FSOCKET_ERR("Clear process CPU affinity failed\n");
-		exit(-1);
-	}
+ for (i = 0; i < get_cpus(); i++)
+  CPU_SET(i, &cmask);
 
-	return;
+ ret = sched_setaffinity(0, get_cpus(), &cmask);
+ if (ret < 0) {
+  FSOCKET_ERR("Clear process CPU affinity failed\n");
+  exit(-1);
+ }
+
+ return;
 }

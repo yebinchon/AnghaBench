@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  WebPInfoStatus ;
-typedef  int /*<<< orphan*/  WebPInfo ;
 
-/* Variables and functions */
-#define  COLOR_INDEXING_TRANSFORM 130 
-#define  CROSS_COLOR_TRANSFORM 129 
- int /*<<< orphan*/  LL_GET_BITS (int,int) ; 
-#define  PREDICTOR_TRANSFORM 128 
- int /*<<< orphan*/  WEBP_INFO_OK ; 
- char** kLosslessTransforms ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int WebPInfoStatus ;
+typedef int WebPInfo ;
+
+
+
+
+ int LL_GET_BITS (int,int) ;
+
+ int WEBP_INFO_OK ;
+ char** kLosslessTransforms ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static WebPInfoStatus ParseLosslessTransform(WebPInfo* const webp_info,
                                              const uint8_t* const data,
                                              size_t data_size,
-                                             uint64_t* const  bit_pos) {
+                                             uint64_t* const bit_pos) {
   int use_transform, block_size, n_colors;
   LL_GET_BITS(use_transform, 1);
   printf("  Use transform:    %s\n", use_transform ? "Yes" : "No");
@@ -36,13 +36,13 @@ __attribute__((used)) static WebPInfoStatus ParseLosslessTransform(WebPInfo* con
     LL_GET_BITS(type, 2);
     printf("  1st transform:    %s (%d)\n", kLosslessTransforms[type], type);
     switch (type) {
-      case PREDICTOR_TRANSFORM:
-      case CROSS_COLOR_TRANSFORM:
+      case 128:
+      case 129:
         LL_GET_BITS(block_size, 3);
         block_size = 1 << (block_size + 2);
         printf("  Tran. block size: %d\n", block_size);
         break;
-      case COLOR_INDEXING_TRANSFORM:
+      case 130:
         LL_GET_BITS(n_colors, 8);
         n_colors += 1;
         printf("  No. of colors:    %d\n", n_colors);

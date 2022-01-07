@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ver ;
-typedef  int /*<<< orphan*/  typelibkey ;
-typedef  int /*<<< orphan*/  tlguid ;
-typedef  int /*<<< orphan*/  tlfn ;
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ver ;
+typedef int typelibkey ;
+typedef int tlguid ;
+typedef int tlfn ;
+typedef int WCHAR ;
 struct TYPE_3__ {int Data1; int Data2; int Data3; int* Data4; } ;
-typedef  int REGSAM ;
-typedef  TYPE_1__* REFIID ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  scalar_t__ BOOL ;
+typedef int REGSAM ;
+typedef TYPE_1__* REFIID ;
+typedef int LONG ;
+typedef int HRESULT ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef int BYTE ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  ERR (char*,...) ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  GetCurrentProcess () ; 
- int /*<<< orphan*/  HKEY_CLASSES_ROOT ; 
- scalar_t__ IsWow64Process (int /*<<< orphan*/ ,scalar_t__*) ; 
- int KEY_READ ; 
- int KEY_WOW64_32KEY ; 
- int KEY_WOW64_64KEY ; 
- int /*<<< orphan*/  MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int RegOpenKeyExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueA (int /*<<< orphan*/ ,char*,char*,int*) ; 
- scalar_t__ RegQueryValueExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,char*,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
+
+ int CP_ACP ;
+ int ERR (char*,...) ;
+ int E_FAIL ;
+ int GetCurrentProcess () ;
+ int HKEY_CLASSES_ROOT ;
+ scalar_t__ IsWow64Process (int ,scalar_t__*) ;
+ int KEY_READ ;
+ int KEY_WOW64_32KEY ;
+ int KEY_WOW64_64KEY ;
+ int MultiByteToWideChar (int ,int ,char*,int,int *,int) ;
+ int RegCloseKey (int ) ;
+ int RegOpenKeyExA (int ,char*,int ,int,int *) ;
+ scalar_t__ RegQueryValueA (int ,char*,char*,int*) ;
+ scalar_t__ RegQueryValueExA (int ,char*,int *,int*,int *,int*) ;
+ int S_OK ;
+ int snprintf (char*,int,char*,char*,char*,int) ;
+ int sprintf (char*,char*,...) ;
 
 __attribute__((used)) static HRESULT reg_get_typelib_module(REFIID iid, WCHAR *module, DWORD len)
 {
@@ -72,7 +72,7 @@ __attribute__((used)) static HRESULT reg_get_typelib_module(REFIID iid, WCHAR *m
     }
 
     tlguidlen = sizeof(tlguid);
-    if (RegQueryValueExA(ikey, NULL, NULL, &type, (BYTE *)tlguid, &tlguidlen))
+    if (RegQueryValueExA(ikey, ((void*)0), ((void*)0), &type, (BYTE *)tlguid, &tlguidlen))
     {
         ERR("Getting typelib guid failed.\n");
         RegCloseKey(ikey);
@@ -80,7 +80,7 @@ __attribute__((used)) static HRESULT reg_get_typelib_module(REFIID iid, WCHAR *m
     }
 
     verlen = sizeof(ver);
-    if (RegQueryValueExA(ikey, "Version", NULL, &type, (BYTE *)ver, &verlen))
+    if (RegQueryValueExA(ikey, "Version", ((void*)0), &type, (BYTE *)ver, &verlen))
     {
         ERR("Could not get version value?\n");
         RegCloseKey(ikey);
@@ -89,25 +89,25 @@ __attribute__((used)) static HRESULT reg_get_typelib_module(REFIID iid, WCHAR *m
 
     RegCloseKey(ikey);
 
-#ifndef __REACTOS__
+
     sprintf(typelibkey, "Typelib\\%s\\%s\\0\\win%u", tlguid, ver, sizeof(void *) == 8 ? 64 : 32);
-#else
-    snprintf(typelibkey, sizeof(typelibkey), "Typelib\\%s\\%s\\0\\win%u", tlguid, ver, sizeof(void *) == 8 ? 64 : 32);
-#endif // __REACTOS__
+
+
+
     tlfnlen = sizeof(tlfn);
     if (RegQueryValueA(HKEY_CLASSES_ROOT, typelibkey, tlfn, &tlfnlen))
     {
-#ifdef _WIN64
-        sprintf(typelibkey, "Typelib\\%s\\%s\\0\\win32", tlguid, ver);
-        tlfnlen = sizeof(tlfn);
-        if (RegQueryValueA(HKEY_CLASSES_ROOT, typelibkey, tlfn, &tlfnlen))
-        {
-#endif
+
+
+
+
+
+
             ERR("Could not get typelib fn?\n");
             return E_FAIL;
-#ifdef _WIN64
-        }
-#endif
+
+
+
     }
     MultiByteToWideChar(CP_ACP, 0, tlfn, -1, module, len);
     return S_OK;

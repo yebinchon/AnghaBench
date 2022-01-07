@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct net_device {int dummy; } ;
-struct ag71xx {int /*<<< orphan*/  restart_work; TYPE_1__* dev; } ;
-struct TYPE_2__ {int /*<<< orphan*/  name; } ;
+struct ag71xx {int restart_work; TYPE_1__* dev; } ;
+struct TYPE_2__ {int name; } ;
 
-/* Variables and functions */
- struct ag71xx* netdev_priv (struct net_device*) ; 
- scalar_t__ netif_msg_tx_err (struct ag71xx*) ; 
- int /*<<< orphan*/  pr_info (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  schedule_delayed_work (int /*<<< orphan*/ *,int) ; 
+
+ struct ag71xx* netdev_priv (struct net_device*) ;
+ scalar_t__ netif_msg_tx_err (struct ag71xx*) ;
+ int pr_info (char*,int ) ;
+ int schedule_delayed_work (int *,int) ;
 
 __attribute__((used)) static void ag71xx_tx_timeout(struct net_device *dev)
 {
-	struct ag71xx *ag = netdev_priv(dev);
+ struct ag71xx *ag = netdev_priv(dev);
 
-	if (netif_msg_tx_err(ag))
-		pr_info("%s: tx timeout\n", ag->dev->name);
+ if (netif_msg_tx_err(ag))
+  pr_info("%s: tx timeout\n", ag->dev->name);
 
-	schedule_delayed_work(&ag->restart_work, 1);
+ schedule_delayed_work(&ag->restart_work, 1);
 }

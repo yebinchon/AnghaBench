@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  REFCLSID ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  ClassFactory_Constructor (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CoRegisterClassObject (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  REGCLS_MULTIPLEUSE ; 
- int /*<<< orphan*/  TextService_Constructor ; 
- scalar_t__ cf ; 
- int /*<<< orphan*/  regid ; 
+
+
+
+typedef int REFCLSID ;
+typedef int LPVOID ;
+typedef int IUnknown ;
+typedef int HRESULT ;
+
+
+ int CLSCTX_INPROC_SERVER ;
+ int ClassFactory_Constructor (int ,int *) ;
+ int CoRegisterClassObject (int ,int *,int ,int ,int *) ;
+ int REGCLS_MULTIPLEUSE ;
+ int TextService_Constructor ;
+ scalar_t__ cf ;
+ int regid ;
 
 __attribute__((used)) static HRESULT RegisterTextService(REFCLSID rclsid)
 {

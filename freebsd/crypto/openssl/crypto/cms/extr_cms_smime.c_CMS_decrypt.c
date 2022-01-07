@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509 ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int X509 ;
 struct TYPE_12__ {TYPE_2__* envelopedData; } ;
 struct TYPE_13__ {TYPE_3__ d; } ;
 struct TYPE_11__ {TYPE_1__* encryptedContentInfo; } ;
 struct TYPE_10__ {int debug; int havenocert; } ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
-typedef  TYPE_4__ CMS_ContentInfo ;
-typedef  int /*<<< orphan*/  BIO ;
+typedef int EVP_PKEY ;
+typedef TYPE_4__ CMS_ContentInfo ;
+typedef int BIO ;
 
-/* Variables and functions */
- unsigned int CMS_DEBUG_DECRYPT ; 
- int /*<<< orphan*/  CMS_F_CMS_DECRYPT ; 
- int /*<<< orphan*/  CMS_R_TYPE_NOT_ENVELOPED_DATA ; 
- int /*<<< orphan*/ * CMS_dataInit (TYPE_4__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CMS_decrypt_set1_pkey (TYPE_4__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CMS_get0_type (TYPE_4__*) ; 
- int /*<<< orphan*/  CMSerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ NID_pkcs7_enveloped ; 
- scalar_t__ OBJ_obj2nid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  check_content (TYPE_4__*) ; 
- int cms_copy_content (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  do_free_upto (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ unsigned int CMS_DEBUG_DECRYPT ;
+ int CMS_F_CMS_DECRYPT ;
+ int CMS_R_TYPE_NOT_ENVELOPED_DATA ;
+ int * CMS_dataInit (TYPE_4__*,int *) ;
+ int CMS_decrypt_set1_pkey (TYPE_4__*,int *,int *) ;
+ int CMS_get0_type (TYPE_4__*) ;
+ int CMSerr (int ,int ) ;
+ scalar_t__ NID_pkcs7_enveloped ;
+ scalar_t__ OBJ_obj2nid (int ) ;
+ int check_content (TYPE_4__*) ;
+ int cms_copy_content (int *,int *,unsigned int) ;
+ int do_free_upto (int *,int *) ;
 
 int CMS_decrypt(CMS_ContentInfo *cms, EVP_PKEY *pk, X509 *cert,
                 BIO *dcont, BIO *out, unsigned int flags)

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rpc_clnt {int /*<<< orphan*/  cl_xprt; scalar_t__ cl_autobind; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  xprt_clear_bound (int /*<<< orphan*/ ) ; 
+
+
+
+struct rpc_clnt {int cl_xprt; scalar_t__ cl_autobind; } ;
+
+
+ int xprt_clear_bound (int ) ;
 
 void rpc_force_rebind(struct rpc_clnt *clnt)
 {
-	if (clnt->cl_autobind)
-		xprt_clear_bound(clnt->cl_xprt);
+ if (clnt->cl_autobind)
+  xprt_clear_bound(clnt->cl_xprt);
 }

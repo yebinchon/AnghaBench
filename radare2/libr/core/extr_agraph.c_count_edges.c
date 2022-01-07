@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RANode ;
-typedef  int /*<<< orphan*/  RAGraph ;
 
-/* Variables and functions */
- int get_edge_number (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int RANode ;
+typedef int RAGraph ;
+
+
+ int get_edge_number (int const*,int *,int *,int) ;
 
 __attribute__((used)) static int count_edges (const RAGraph *g, RANode *src, RANode *dst) {
-	return get_edge_number (g, src, dst, true);
+ return get_edge_number (g, src, dst, 1);
 }

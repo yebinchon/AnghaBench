@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct opp_table {int /*<<< orphan*/  kref; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kref_get (int /*<<< orphan*/ *) ; 
+
+
+
+struct opp_table {int kref; } ;
+
+
+ int kref_get (int *) ;
 
 void _get_opp_table_kref(struct opp_table *opp_table)
 {
-	kref_get(&opp_table->kref);
+ kref_get(&opp_table->kref);
 }

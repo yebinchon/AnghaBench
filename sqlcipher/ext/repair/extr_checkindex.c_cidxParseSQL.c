@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {void* zExpr; } ;
 struct TYPE_4__ {void* zWhere; TYPE_2__* aCol; } ;
-typedef  TYPE_1__ CidxIndex ;
-typedef  int /*<<< orphan*/  CidxCursor ;
-typedef  TYPE_2__ CidxColumn ;
+typedef TYPE_1__ CidxIndex ;
+typedef int CidxCursor ;
+typedef TYPE_2__ CidxColumn ;
 
-/* Variables and functions */
- int CIDX_PARSE_CLOSE ; 
- int CIDX_PARSE_COMMA ; 
- int CIDX_PARSE_EOF ; 
- int CIDX_PARSE_OPEN ; 
- int SQLITE_ERROR ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  cidxCursorError (int /*<<< orphan*/ *,char*,char const*) ; 
- int cidxFindNext (char const*,char const**,int*) ; 
- void* cidxMprintf (int*,char*,...) ; 
- scalar_t__ cidx_isident (char const) ; 
- scalar_t__ cidx_isspace (char const) ; 
- scalar_t__ sqlite3_strnicmp (char const*,char*,int) ; 
+
+ int CIDX_PARSE_CLOSE ;
+ int CIDX_PARSE_COMMA ;
+ int CIDX_PARSE_EOF ;
+ int CIDX_PARSE_OPEN ;
+ int SQLITE_ERROR ;
+ int SQLITE_OK ;
+ int cidxCursorError (int *,char*,char const*) ;
+ int cidxFindNext (char const*,char const**,int*) ;
+ void* cidxMprintf (int*,char*,...) ;
+ scalar_t__ cidx_isident (char const) ;
+ scalar_t__ cidx_isspace (char const) ;
+ scalar_t__ sqlite3_strnicmp (char const*,char*,int) ;
 
 __attribute__((used)) static int cidxParseSQL(CidxCursor *pCsr, CidxIndex *pIdx, const char *zSql){
   const char *z = zSql;
@@ -74,7 +74,7 @@ __attribute__((used)) static int cidxParseSQL(CidxCursor *pCsr, CidxIndex *pIdx,
     z++;
   }
 
-  /* Search for a WHERE clause */
+
   cidxFindNext(z, &z, 0);
   if( 0==sqlite3_strnicmp(z, "where", 5) ){
     pIdx->zWhere = cidxMprintf(&rc, "%s\n", &z[5]);

@@ -1,104 +1,104 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* UINT ;
-struct TYPE_11__ {int /*<<< orphan*/  ref; } ;
-struct TYPE_10__ {int EnableMSCHAPv2; int MsChapV2_ErrorCode; int /*<<< orphan*/  FlushList; int /*<<< orphan*/  ClientHostname; int /*<<< orphan*/  ClientSoftwareName; int /*<<< orphan*/  Postfix; TYPE_1__* TubeSend; TYPE_1__* TubeRecv; void* ServerPort; int /*<<< orphan*/  ServerIP; void* ClientPort; int /*<<< orphan*/  ClientIP; int /*<<< orphan*/  CryptName; void* AdjustMss; TYPE_3__* Cedar; int /*<<< orphan*/  AuthProtocol; } ;
-struct TYPE_9__ {int /*<<< orphan*/  Ref; } ;
-typedef  TYPE_1__ TUBE ;
-typedef  int /*<<< orphan*/  THREAD ;
-typedef  TYPE_2__ PPP_SESSION ;
-typedef  int /*<<< orphan*/  IP ;
-typedef  TYPE_3__ CEDAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddRef (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  IPToStr (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- scalar_t__ IsEmptyStr (char*) ; 
- int /*<<< orphan*/ * NewThread (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  NewTubeFlushList () ; 
- int /*<<< orphan*/  PPPThread ; 
- int /*<<< orphan*/  PPP_PROTOCOL_PAP ; 
- int /*<<< orphan*/  StrCpy (int /*<<< orphan*/ ,int,char*) ; 
- TYPE_2__* ZeroMalloc (int) ; 
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef void* UINT ;
+struct TYPE_11__ {int ref; } ;
+struct TYPE_10__ {int EnableMSCHAPv2; int MsChapV2_ErrorCode; int FlushList; int ClientHostname; int ClientSoftwareName; int Postfix; TYPE_1__* TubeSend; TYPE_1__* TubeRecv; void* ServerPort; int ServerIP; void* ClientPort; int ClientIP; int CryptName; void* AdjustMss; TYPE_3__* Cedar; int AuthProtocol; } ;
+struct TYPE_9__ {int Ref; } ;
+typedef TYPE_1__ TUBE ;
+typedef int THREAD ;
+typedef TYPE_2__ PPP_SESSION ;
+typedef int IP ;
+typedef TYPE_3__ CEDAR ;
+
+
+ int AddRef (int ) ;
+ int Copy (int *,int *,int) ;
+ int IPToStr (int ,int,int *) ;
+ scalar_t__ IsEmptyStr (char*) ;
+ int * NewThread (int ,TYPE_2__*) ;
+ int NewTubeFlushList () ;
+ int PPPThread ;
+ int PPP_PROTOCOL_PAP ;
+ int StrCpy (int ,int,char*) ;
+ TYPE_2__* ZeroMalloc (int) ;
 
 THREAD *NewPPPSession(CEDAR *cedar, IP *client_ip, UINT client_port, IP *server_ip, UINT server_port, TUBE *send_tube, TUBE *recv_tube, char *postfix, char *client_software_name, char *client_hostname, char *crypt_name, UINT adjust_mss)
 {
-	PPP_SESSION *p;
-	THREAD *t;
-	// Validate arguments
-	if (cedar == NULL || client_ip == NULL || server_ip == NULL || send_tube == NULL || recv_tube == NULL)
-	{
-		return NULL;
-	}
-	if (IsEmptyStr(postfix))
-	{
-		postfix = "PPP";
-	}
-	if (IsEmptyStr(crypt_name))
-	{
-		crypt_name = "";
-	}
-	if (IsEmptyStr(client_software_name))
-	{
-		client_software_name = "PPP VPN Client";
-	}
+ PPP_SESSION *p;
+ THREAD *t;
 
-	// Data structure initialization
-	p = ZeroMalloc(sizeof(PPP_SESSION));
+ if (cedar == ((void*)0) || client_ip == ((void*)0) || server_ip == ((void*)0) || send_tube == ((void*)0) || recv_tube == ((void*)0))
+ {
+  return ((void*)0);
+ }
+ if (IsEmptyStr(postfix))
+ {
+  postfix = "PPP";
+ }
+ if (IsEmptyStr(crypt_name))
+ {
+  crypt_name = "";
+ }
+ if (IsEmptyStr(client_software_name))
+ {
+  client_software_name = "PPP VPN Client";
+ }
 
-	p->EnableMSCHAPv2 = true;
-	p->AuthProtocol = PPP_PROTOCOL_PAP;
-	p->MsChapV2_ErrorCode = 691;
 
-	p->Cedar = cedar;
-	AddRef(cedar->ref);
+ p = ZeroMalloc(sizeof(PPP_SESSION));
 
-	p->AdjustMss = adjust_mss;
+ p->EnableMSCHAPv2 = 1;
+ p->AuthProtocol = PPP_PROTOCOL_PAP;
+ p->MsChapV2_ErrorCode = 691;
 
-	StrCpy(p->CryptName, sizeof(p->CryptName), crypt_name);
+ p->Cedar = cedar;
+ AddRef(cedar->ref);
 
-	Copy(&p->ClientIP, client_ip, sizeof(IP));
-	p->ClientPort = client_port;
+ p->AdjustMss = adjust_mss;
 
-	Copy(&p->ServerIP, server_ip, sizeof(IP));
-	p->ServerPort = server_port;
+ StrCpy(p->CryptName, sizeof(p->CryptName), crypt_name);
 
-	p->TubeRecv = recv_tube;
-	p->TubeSend = send_tube;
+ Copy(&p->ClientIP, client_ip, sizeof(IP));
+ p->ClientPort = client_port;
 
-	AddRef(p->TubeRecv->Ref);
-	AddRef(p->TubeSend->Ref);
+ Copy(&p->ServerIP, server_ip, sizeof(IP));
+ p->ServerPort = server_port;
 
-	StrCpy(p->Postfix, sizeof(p->Postfix), postfix);
-	StrCpy(p->ClientSoftwareName, sizeof(p->ClientSoftwareName), client_software_name);
+ p->TubeRecv = recv_tube;
+ p->TubeSend = send_tube;
 
-	if (IsEmptyStr(client_hostname))
-	{
-		IPToStr(p->ClientHostname, sizeof(p->ClientHostname), client_ip);
-	}
-	else
-	{
-		StrCpy(p->ClientHostname, sizeof(p->ClientHostname), client_hostname);
-	}
+ AddRef(p->TubeRecv->Ref);
+ AddRef(p->TubeSend->Ref);
 
-	p->FlushList = NewTubeFlushList();
+ StrCpy(p->Postfix, sizeof(p->Postfix), postfix);
+ StrCpy(p->ClientSoftwareName, sizeof(p->ClientSoftwareName), client_software_name);
 
-	// Thread creation
-	t = NewThread(PPPThread, p);
+ if (IsEmptyStr(client_hostname))
+ {
+  IPToStr(p->ClientHostname, sizeof(p->ClientHostname), client_ip);
+ }
+ else
+ {
+  StrCpy(p->ClientHostname, sizeof(p->ClientHostname), client_hostname);
+ }
 
-	return t;
+ p->FlushList = NewTubeFlushList();
+
+
+ t = NewThread(PPPThread, p);
+
+ return t;
 }

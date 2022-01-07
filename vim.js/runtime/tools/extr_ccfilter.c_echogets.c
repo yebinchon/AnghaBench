@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LINELENGTH ; 
- char* fgets (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fputs (char* const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdin ; 
+ int LINELENGTH ;
+ char* fgets (char*,int ,int ) ;
+ int fputs (char* const,int ) ;
+ int stderr ;
+ int stdin ;
 
 char *echogets(char *s, int echo) {
  char * const retval=fgets(s, LINELENGTH, stdin);
- if (echo!=0 && retval!=NULL) {
+ if (echo!=0 && retval!=((void*)0)) {
   fputs(retval, stderr);
  }
  return retval;

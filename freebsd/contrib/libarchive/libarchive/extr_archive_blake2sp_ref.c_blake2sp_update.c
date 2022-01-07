@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {size_t buflen; unsigned char const* buf; int /*<<< orphan*/ * S; } ;
-typedef  TYPE_1__ blake2sp_state ;
 
-/* Variables and functions */
- size_t BLAKE2S_BLOCKBYTES ; 
- size_t PARALLELISM_DEGREE ; 
- int /*<<< orphan*/  blake2s_update (int /*<<< orphan*/ ,unsigned char const*,size_t) ; 
- int /*<<< orphan*/  memcpy (unsigned char const*,unsigned char const*,size_t) ; 
- size_t omp_get_thread_num () ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {size_t buflen; unsigned char const* buf; int * S; } ;
+typedef TYPE_1__ blake2sp_state ;
+
+
+ size_t BLAKE2S_BLOCKBYTES ;
+ size_t PARALLELISM_DEGREE ;
+ int blake2s_update (int ,unsigned char const*,size_t) ;
+ int memcpy (unsigned char const*,unsigned char const*,size_t) ;
+ size_t omp_get_thread_num () ;
 
 int blake2sp_update( blake2sp_state *S, const void *pin, size_t inlen )
 {
@@ -40,15 +40,15 @@ int blake2sp_update( blake2sp_state *S, const void *pin, size_t inlen )
     left = 0;
   }
 
-#if defined(_OPENMP)
-  #pragma omp parallel shared(S), num_threads(PARALLELISM_DEGREE)
-#else
+
+
+
   for( i = 0; i < PARALLELISM_DEGREE; ++i )
-#endif
+
   {
-#if defined(_OPENMP)
-    size_t      i = omp_get_thread_num();
-#endif
+
+
+
     size_t inlen__ = inlen;
     const unsigned char *in__ = ( const unsigned char * )in;
     in__ += i * BLAKE2S_BLOCKBYTES;

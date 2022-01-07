@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
 struct TYPE_4__ {size_t count; TYPE_1__* threads; } ;
 struct lwan {TYPE_2__ thread; } ;
-typedef  int /*<<< orphan*/  set ;
-typedef  int /*<<< orphan*/  cpu_set_t ;
-struct TYPE_3__ {int /*<<< orphan*/  self; } ;
+typedef int set ;
+typedef int cpu_set_t ;
+struct TYPE_3__ {int self; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CPU_SET (size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CPU_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lwan_status_warning (char*,size_t) ; 
- scalar_t__ pthread_setaffinity_np (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
+
+ int CPU_SET (size_t,int *) ;
+ int CPU_ZERO (int *) ;
+ int lwan_status_warning (char*,size_t) ;
+ scalar_t__ pthread_setaffinity_np (int ,int,int *) ;
 
 __attribute__((used)) static void
 adjust_threads_affinity(struct lwan *l, uint32_t *schedtbl, uint32_t mask)

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
-struct enic {int /*<<< orphan*/  devcmd_lock; int /*<<< orphan*/  vdev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSF_DEL ; 
- int /*<<< orphan*/  spin_lock_bh (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_bh (int /*<<< orphan*/ *) ; 
- int vnic_dev_classifier (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int u16 ;
+struct enic {int devcmd_lock; int vdev; } ;
+
+
+ int CLSF_DEL ;
+ int spin_lock_bh (int *) ;
+ int spin_unlock_bh (int *) ;
+ int vnic_dev_classifier (int ,int ,int *,int *) ;
 
 int enic_delfltr(struct enic *enic, u16 filter_id)
 {
-	int ret;
+ int ret;
 
-	spin_lock_bh(&enic->devcmd_lock);
-	ret = vnic_dev_classifier(enic->vdev, CLSF_DEL, &filter_id, NULL);
-	spin_unlock_bh(&enic->devcmd_lock);
+ spin_lock_bh(&enic->devcmd_lock);
+ ret = vnic_dev_classifier(enic->vdev, CLSF_DEL, &filter_id, ((void*)0));
+ spin_unlock_bh(&enic->devcmd_lock);
 
-	return ret;
+ return ret;
 }

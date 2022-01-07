@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* xmlBufferPtr ;
-typedef  TYPE_2__* xmlBufPtr ;
-typedef  int /*<<< orphan*/  xmlBuf ;
-struct TYPE_6__ {int /*<<< orphan*/  contentIO; int /*<<< orphan*/  content; int /*<<< orphan*/  alloc; TYPE_1__* buffer; scalar_t__ error; int /*<<< orphan*/  compat_size; int /*<<< orphan*/  compat_use; int /*<<< orphan*/  size; int /*<<< orphan*/  use; } ;
-struct TYPE_5__ {int /*<<< orphan*/  contentIO; int /*<<< orphan*/  content; int /*<<< orphan*/  alloc; int /*<<< orphan*/  size; int /*<<< orphan*/  use; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  xmlBufMemoryError (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ xmlMalloc (int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef TYPE_1__* xmlBufferPtr ;
+typedef TYPE_2__* xmlBufPtr ;
+typedef int xmlBuf ;
+struct TYPE_6__ {int contentIO; int content; int alloc; TYPE_1__* buffer; scalar_t__ error; int compat_size; int compat_use; int size; int use; } ;
+struct TYPE_5__ {int contentIO; int content; int alloc; int size; int use; } ;
+
+
+ int xmlBufMemoryError (int *,char*) ;
+ scalar_t__ xmlMalloc (int) ;
 
 xmlBufPtr
 xmlBufFromBuffer(xmlBufferPtr buffer) {
     xmlBufPtr ret;
 
-    if (buffer == NULL)
-        return(NULL);
+    if (buffer == ((void*)0))
+        return(((void*)0));
 
     ret = (xmlBufPtr) xmlMalloc(sizeof(xmlBuf));
-    if (ret == NULL) {
-	xmlBufMemoryError(NULL, "creating buffer");
-        return(NULL);
+    if (ret == ((void*)0)) {
+ xmlBufMemoryError(((void*)0), "creating buffer");
+        return(((void*)0));
     }
     ret->use = buffer->use;
     ret->size = buffer->size;

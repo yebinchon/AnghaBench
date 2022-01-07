@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  found_entry; } ;
-typedef  TYPE_1__ svn_wc_entry_callbacks_t ;
-struct TYPE_6__ {int /*<<< orphan*/  handle_error; int /*<<< orphan*/  found_entry; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ svn_wc_entry_callbacks2_t ;
-typedef  int /*<<< orphan*/  svn_wc_adm_access_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  svn_depth_infinity ; 
- int /*<<< orphan*/  svn_wc__walker_default_error_handler ; 
- int /*<<< orphan*/ * svn_wc_walk_entries3 (char const*,int /*<<< orphan*/ *,TYPE_2__*,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int found_entry; } ;
+typedef TYPE_1__ svn_wc_entry_callbacks_t ;
+struct TYPE_6__ {int handle_error; int found_entry; int member_0; } ;
+typedef TYPE_2__ svn_wc_entry_callbacks2_t ;
+typedef int svn_wc_adm_access_t ;
+typedef int svn_error_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int svn_depth_infinity ;
+ int svn_wc__walker_default_error_handler ;
+ int * svn_wc_walk_entries3 (char const*,int *,TYPE_2__*,void*,int ,int ,int ,void*,int *) ;
 
 svn_error_t *
 svn_wc_walk_entries2(const char *path,

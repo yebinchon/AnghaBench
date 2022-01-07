@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_7__ ;
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_17__ TYPE_7__ ;
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_13__ {TYPE_2__* p_demux; } ;
-typedef  TYPE_3__ vlcrdp_context_t ;
-typedef  int /*<<< orphan*/  vlc_fourcc_t ;
+typedef TYPE_3__ vlcrdp_context_t ;
+typedef int vlc_fourcc_t ;
 struct TYPE_14__ {int bytesPerPixel; int width; int height; } ;
-typedef  TYPE_4__ rdpGdi ;
+typedef TYPE_4__ rdpGdi ;
 struct TYPE_15__ {TYPE_4__* gdi; } ;
-typedef  TYPE_5__ rdpContext ;
-struct TYPE_11__ {int i_visible_width; int i_width; int i_visible_height; int i_height; int i_frame_rate_base; int i_frame_rate; int /*<<< orphan*/  i_chroma; } ;
+typedef TYPE_5__ rdpContext ;
+struct TYPE_11__ {int i_visible_width; int i_width; int i_visible_height; int i_height; int i_frame_rate_base; int i_frame_rate; int i_chroma; } ;
 struct TYPE_16__ {TYPE_1__ video; } ;
-typedef  TYPE_6__ es_format_t ;
-struct TYPE_17__ {int f_fps; int i_framebuffersize; int /*<<< orphan*/ * es; scalar_t__ p_block; } ;
-typedef  TYPE_7__ demux_sys_t ;
-struct TYPE_12__ {int /*<<< orphan*/  out; TYPE_7__* p_sys; } ;
+typedef TYPE_6__ es_format_t ;
+struct TYPE_17__ {int f_fps; int i_framebuffersize; int * es; scalar_t__ p_block; } ;
+typedef TYPE_7__ demux_sys_t ;
+struct TYPE_12__ {int out; TYPE_7__* p_sys; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VIDEO_ES ; 
- int /*<<< orphan*/  VLC_CODEC_RGB16 ; 
- int /*<<< orphan*/  VLC_CODEC_RGB24 ; 
- int /*<<< orphan*/  VLC_CODEC_RGB32 ; 
- scalar_t__ block_Alloc (int) ; 
- scalar_t__ block_Realloc (scalar_t__,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  es_format_Init (TYPE_6__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * es_out_Add (int /*<<< orphan*/ ,TYPE_6__*) ; 
- int /*<<< orphan*/  es_out_Del (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int VIDEO_ES ;
+ int VLC_CODEC_RGB16 ;
+ int VLC_CODEC_RGB24 ;
+ int VLC_CODEC_RGB32 ;
+ scalar_t__ block_Alloc (int) ;
+ scalar_t__ block_Realloc (scalar_t__,int ,int) ;
+ int es_format_Init (TYPE_6__*,int ,int ) ;
+ int * es_out_Add (int ,TYPE_6__*) ;
+ int es_out_Del (int ,int *) ;
 
 __attribute__((used)) static void desktopResizeHandler( rdpContext *p_context )
 {
@@ -51,10 +51,10 @@ __attribute__((used)) static void desktopResizeHandler( rdpContext *p_context )
     if ( p_sys->es )
     {
         es_out_Del( p_vlccontext->p_demux->out, p_sys->es );
-        p_sys->es = NULL;
+        p_sys->es = ((void*)0);
     }
 
-    /* Now init and fill es format */
+
     vlc_fourcc_t i_chroma;
     switch( p_gdi->bytesPerPixel )
     {

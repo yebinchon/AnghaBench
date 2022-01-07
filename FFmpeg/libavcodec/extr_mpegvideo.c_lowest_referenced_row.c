@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ picture_structure; int mv_type; int*** mv; int mb_height; scalar_t__ mb_y; scalar_t__ mcsel; int /*<<< orphan*/  quarter_sample; } ;
-typedef  TYPE_1__ MpegEncContext ;
 
-/* Variables and functions */
- int FFMAX (int,int) ; 
- int FFMIN (int,int) ; 
- int INT_MAX ; 
- int INT_MIN ; 
-#define  MV_TYPE_16X16 130 
-#define  MV_TYPE_16X8 129 
-#define  MV_TYPE_8X8 128 
- scalar_t__ PICT_FRAME ; 
- int av_clip (scalar_t__,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ picture_structure; int mv_type; int*** mv; int mb_height; scalar_t__ mb_y; scalar_t__ mcsel; int quarter_sample; } ;
+typedef TYPE_1__ MpegEncContext ;
+
+
+ int FFMAX (int,int) ;
+ int FFMIN (int,int) ;
+ int INT_MAX ;
+ int INT_MIN ;
+
+
+
+ scalar_t__ PICT_FRAME ;
+ int av_clip (scalar_t__,int ,int) ;
 
 __attribute__((used)) static int lowest_referenced_row(MpegEncContext *s, int dir)
 {
@@ -34,13 +34,13 @@ __attribute__((used)) static int lowest_referenced_row(MpegEncContext *s, int di
         goto unhandled;
 
     switch (s->mv_type) {
-        case MV_TYPE_16X16:
+        case 130:
             mvs = 1;
             break;
-        case MV_TYPE_16X8:
+        case 129:
             mvs = 2;
             break;
-        case MV_TYPE_8X8:
+        case 128:
             mvs = 4;
             break;
         default:

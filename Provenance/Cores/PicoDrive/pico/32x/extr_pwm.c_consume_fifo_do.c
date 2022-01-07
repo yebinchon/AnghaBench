@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct Pico32xMem {unsigned short** pwm_fifo; void** pwm_current; void** pwm; } ;
 struct TYPE_2__ {scalar_t__* pwm_p; scalar_t__ pwm_irq_cnt; unsigned int pwm_cycle_p; } ;
-typedef  int /*<<< orphan*/  SH2 ;
+typedef int SH2 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EL_PWM ; 
- int PWM_BUFF_LEN ; 
- TYPE_1__ Pico32x ; 
- struct Pico32xMem* Pico32xMem ; 
- void* convert_sample (unsigned short) ; 
- int /*<<< orphan*/  do_pwm_irq (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  elprintf (int /*<<< orphan*/ ,char*,unsigned int,int,int,scalar_t__,scalar_t__,int) ; 
- int pwm_cycles ; 
- int pwm_doing_fifo ; 
- scalar_t__ pwm_irq_reload ; 
- int pwm_ptr ; 
- scalar_t__ pwm_silent ; 
+
+ int EL_PWM ;
+ int PWM_BUFF_LEN ;
+ TYPE_1__ Pico32x ;
+ struct Pico32xMem* Pico32xMem ;
+ void* convert_sample (unsigned short) ;
+ int do_pwm_irq (int *,unsigned int) ;
+ int elprintf (int ,char*,unsigned int,int,int,scalar_t__,scalar_t__,int) ;
+ int pwm_cycles ;
+ int pwm_doing_fifo ;
+ scalar_t__ pwm_irq_reload ;
+ int pwm_ptr ;
+ scalar_t__ pwm_silent ;
 
 __attribute__((used)) static void consume_fifo_do(SH2 *sh2, unsigned int m68k_cycles,
   int sh2_cycles_diff)
@@ -44,7 +44,7 @@ __attribute__((used)) static void consume_fifo_do(SH2 *sh2, unsigned int m68k_cy
     m68k_cycles, sh2_cycles_diff, sh2_cycles_diff / pwm_cycles,
     Pico32x.pwm_p[0], Pico32x.pwm_p[1], pwm_ptr);
 
-  // this is for recursion from dreq1 writes
+
   pwm_doing_fifo = 1;
 
   for (; sh2_cycles_diff >= pwm_cycles; sh2_cycles_diff -= pwm_cycles)
@@ -66,7 +66,7 @@ __attribute__((used)) static void consume_fifo_do(SH2 *sh2, unsigned int m68k_cy
       sum += mem->pwm_current[1];
     }
 
-    mem->pwm[pwm_ptr * 2    ] = mem->pwm_current[0];
+    mem->pwm[pwm_ptr * 2 ] = mem->pwm_current[0];
     mem->pwm[pwm_ptr * 2 + 1] = mem->pwm_current[1];
     pwm_ptr = (pwm_ptr + 1) & (PWM_BUFF_LEN - 1);
 

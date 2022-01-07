@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct udp_target {int /*<<< orphan*/  PID; } ;
+
+
+
+
+struct udp_target {int PID; } ;
 struct raw_message {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * TL_OUT_PID ; 
- int __tl_store_init (struct raw_message*,struct udp_target*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int,long long) ; 
- int /*<<< orphan*/  rwm_init (struct raw_message*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tl_out_raw_msg_methods ; 
- int /*<<< orphan*/  tl_type_raw_msg ; 
- scalar_t__ zmalloc (int) ; 
+
+ int * TL_OUT_PID ;
+ int __tl_store_init (struct raw_message*,struct udp_target*,int ,int *,int,int,long long) ;
+ int rwm_init (struct raw_message*,int ) ;
+ int tl_out_raw_msg_methods ;
+ int tl_type_raw_msg ;
+ scalar_t__ zmalloc (int) ;
 
 __attribute__((used)) static inline int _tl_store_init_raw_msg (struct udp_target *S, long long qid, int keep_error) {
   if (S) {

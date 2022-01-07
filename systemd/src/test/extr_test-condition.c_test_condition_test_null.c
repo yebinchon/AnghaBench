@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Condition ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONDITION_NULL ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/  condition_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * condition_new (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int) ; 
- scalar_t__ condition_test (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int Condition ;
+
+
+ int CONDITION_NULL ;
+ int assert_se (int) ;
+ int condition_free (int *) ;
+ int * condition_new (int ,int *,int,int) ;
+ scalar_t__ condition_test (int *) ;
 
 __attribute__((used)) static void test_condition_test_null(void) {
         Condition *condition;
 
-        condition = condition_new(CONDITION_NULL, NULL, false, false);
+        condition = condition_new(CONDITION_NULL, ((void*)0), 0, 0);
         assert_se(condition);
         assert_se(condition_test(condition) > 0);
         condition_free(condition);
 
-        condition = condition_new(CONDITION_NULL, NULL, false, true);
+        condition = condition_new(CONDITION_NULL, ((void*)0), 0, 1);
         assert_se(condition);
         assert_se(condition_test(condition) == 0);
         condition_free(condition);

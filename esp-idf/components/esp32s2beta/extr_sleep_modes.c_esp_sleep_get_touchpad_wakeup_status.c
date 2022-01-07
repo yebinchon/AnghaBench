@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  touch_pad_t ;
-typedef  scalar_t__ esp_err_t ;
 
-/* Variables and functions */
- scalar_t__ ESP_OK ; 
- scalar_t__ ESP_SLEEP_WAKEUP_TOUCHPAD ; 
- int /*<<< orphan*/  TOUCH_PAD_MAX ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- scalar_t__ esp_sleep_get_wakeup_cause () ; 
- scalar_t__ touch_pad_get_wakeup_status (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int touch_pad_t ;
+typedef scalar_t__ esp_err_t ;
+
+
+ scalar_t__ ESP_OK ;
+ scalar_t__ ESP_SLEEP_WAKEUP_TOUCHPAD ;
+ int TOUCH_PAD_MAX ;
+ int assert (int ) ;
+ scalar_t__ esp_sleep_get_wakeup_cause () ;
+ scalar_t__ touch_pad_get_wakeup_status (int *) ;
 
 touch_pad_t esp_sleep_get_touchpad_wakeup_status(void)
 {

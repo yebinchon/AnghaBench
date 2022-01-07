@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ stereo; scalar_t__ doublebuffer; scalar_t__ alphaBits; scalar_t__ depthBits; scalar_t__ stencilBits; scalar_t__ auxBuffers; scalar_t__ samples; scalar_t__ transparent; scalar_t__ redBits; scalar_t__ greenBits; scalar_t__ blueBits; scalar_t__ accumRedBits; scalar_t__ accumGreenBits; scalar_t__ accumBlueBits; scalar_t__ accumAlphaBits; scalar_t__ sRGB; } ;
-typedef  TYPE_1__ _GLFWfbconfig ;
+typedef TYPE_1__ _GLFWfbconfig ;
 
-/* Variables and functions */
- scalar_t__ GLFW_DONT_CARE ; 
- unsigned int UINT_MAX ; 
+
+ scalar_t__ GLFW_DONT_CARE ;
+ unsigned int UINT_MAX ;
 
 const _GLFWfbconfig* _glfwChooseFBConfig(const _GLFWfbconfig* desired,
                                          const _GLFWfbconfig* alternatives,
@@ -27,25 +27,25 @@ const _GLFWfbconfig* _glfwChooseFBConfig(const _GLFWfbconfig* desired,
     unsigned int colorDiff, leastColorDiff = UINT_MAX;
     unsigned int extraDiff, leastExtraDiff = UINT_MAX;
     const _GLFWfbconfig* current;
-    const _GLFWfbconfig* closest = NULL;
+    const _GLFWfbconfig* closest = ((void*)0);
 
-    for (i = 0;  i < count;  i++)
+    for (i = 0; i < count; i++)
     {
         current = alternatives + i;
 
         if (desired->stereo > 0 && current->stereo == 0)
         {
-            // Stereo is a hard constraint
+
             continue;
         }
 
         if (desired->doublebuffer != current->doublebuffer)
         {
-            // Double buffering is a hard constraint
+
             continue;
         }
 
-        // Count number of missing buffers
+
         {
             missing = 0;
 
@@ -66,9 +66,9 @@ const _GLFWfbconfig* _glfwChooseFBConfig(const _GLFWfbconfig* desired,
 
             if (desired->samples > 0 && current->samples == 0)
             {
-                // Technically, several multisampling buffers could be
-                // involved, but that's a lower level implementation detail and
-                // not important to us here, so we count them as one
+
+
+
                 missing++;
             }
 
@@ -76,10 +76,10 @@ const _GLFWfbconfig* _glfwChooseFBConfig(const _GLFWfbconfig* desired,
                 missing++;
         }
 
-        // These polynomials make many small channel size differences matter
-        // less than one large channel size difference
 
-        // Calculate color channel size difference value
+
+
+
         {
             colorDiff = 0;
 
@@ -102,7 +102,7 @@ const _GLFWfbconfig* _glfwChooseFBConfig(const _GLFWfbconfig* desired,
             }
         }
 
-        // Calculate non-color channel size difference value
+
         {
             extraDiff = 0;
 
@@ -158,9 +158,9 @@ const _GLFWfbconfig* _glfwChooseFBConfig(const _GLFWfbconfig* desired,
                 extraDiff++;
         }
 
-        // Figure out if the current one is better than the best one found so far
-        // Least number of missing buffers is the most important heuristic,
-        // then color buffer size match and lastly size match for other buffers
+
+
+
 
         if (missing < leastMissing)
             closest = current;

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zero ;
-struct TYPE_4__ {int /*<<< orphan*/  decrypt; int /*<<< orphan*/  encrypt; } ;
-struct TYPE_5__ {int /*<<< orphan*/  keys; } ;
-struct test_tls_crypt_v2_context {int /*<<< orphan*/  unwrapped_metadata; TYPE_1__ server_keys; int /*<<< orphan*/  wkc; TYPE_2__ server_key2; int /*<<< orphan*/  gc; int /*<<< orphan*/  metadata; int /*<<< orphan*/  client_key2; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int zero ;
+struct TYPE_4__ {int decrypt; int encrypt; } ;
+struct TYPE_5__ {int keys; } ;
+struct test_tls_crypt_v2_context {int unwrapped_metadata; TYPE_1__ server_keys; int wkc; TYPE_2__ server_key2; int gc; int metadata; int client_key2; } ;
 struct key_type {int dummy; } ;
-struct key2 {int /*<<< orphan*/  member_0; } ;
+struct key2 {int member_0; } ;
 
-/* Variables and functions */
- scalar_t__ BLEN (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KEY_DIRECTION_BIDIRECTIONAL ; 
- int /*<<< orphan*/  assert_false (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert_true (int) ; 
- int /*<<< orphan*/  free_key_ctx_bi (TYPE_1__*) ; 
- int /*<<< orphan*/  init_key_ctx_bi (TYPE_1__*,TYPE_2__*,int /*<<< orphan*/ ,struct key_type*,char*) ; 
- scalar_t__ memcmp (struct key2*,struct key2 const*,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- struct key_type tls_crypt_kt () ; 
- int /*<<< orphan*/  tls_crypt_v2_unwrap_client_key (struct key2*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int tls_crypt_v2_wrap_client_key (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ BLEN (int *) ;
+ int KEY_DIRECTION_BIDIRECTIONAL ;
+ int assert_false (int ) ;
+ int assert_true (int) ;
+ int free_key_ctx_bi (TYPE_1__*) ;
+ int init_key_ctx_bi (TYPE_1__*,TYPE_2__*,int ,struct key_type*,char*) ;
+ scalar_t__ memcmp (struct key2*,struct key2 const*,int) ;
+ int memset (int *,int ,int) ;
+ struct key_type tls_crypt_kt () ;
+ int tls_crypt_v2_unwrap_client_key (struct key2*,int *,int ,int *) ;
+ int tls_crypt_v2_wrap_client_key (int *,int *,int *,int *,int *) ;
 
 __attribute__((used)) static void
 tls_crypt_v2_wrap_unwrap_wrong_key(void **state) {
@@ -42,7 +42,7 @@ tls_crypt_v2_wrap_unwrap_wrong_key(void **state) {
                                              &ctx->server_keys.encrypt,
                                              &ctx->gc));
 
-    /* Change server key */
+
     struct key_type kt = tls_crypt_kt();
     free_key_ctx_bi(&ctx->server_keys);
     memset(&ctx->server_key2.keys, 0, sizeof(ctx->server_key2.keys));

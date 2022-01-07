@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  stderr ; 
+ int exit (int) ;
+ int fprintf (int ,char*,char const*) ;
+ int stderr ;
 
 __attribute__((used)) static void
 usage(const char *pname)
 {
-	fprintf(stderr, 
-	"usage: %s [-eiou] [-c command] [-l nloops] [-m mask] [-s sleeptime]\n"
-	"       [-U unit] counter\n",
-		pname);
-	exit(1);
+ fprintf(stderr,
+ "usage: %s [-eiou] [-c command] [-l nloops] [-m mask] [-s sleeptime]\n"
+ "       [-U unit] counter\n",
+  pname);
+ exit(1);
 }

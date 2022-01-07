@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t int32_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef size_t int32_t ;
 struct TYPE_6__ {int kernel_size; int input_num; scalar_t__ padding_method; int dilation; int output_num; float* biases; float* kernel; int activation; scalar_t__ has_bias; } ;
-struct TYPE_5__ {int* dims; float* data; int /*<<< orphan*/  length; int /*<<< orphan*/  data_type; } ;
-typedef  TYPE_1__ DnnOperand ;
-typedef  TYPE_2__ ConvolutionalParams ;
+struct TYPE_5__ {int* dims; float* data; int length; int data_type; } ;
+typedef TYPE_1__ DnnOperand ;
+typedef TYPE_2__ ConvolutionalParams ;
 
-/* Variables and functions */
- int CLAMP_TO_EDGE (int,int) ; 
- float FFMAX (float,double) ; 
- double FFMIN (float,double) ; 
-#define  LEAKY_RELU 132 
-#define  NONE 131 
-#define  RELU 130 
- scalar_t__ SAME_CLAMP_TO_EDGE ; 
-#define  SIGMOID 129 
-#define  TANH 128 
- scalar_t__ VALID ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- float* av_realloc (float*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  calculate_operand_data_length (TYPE_1__*) ; 
- int /*<<< orphan*/  exp (float) ; 
+
+ int CLAMP_TO_EDGE (int,int) ;
+ float FFMAX (float,double) ;
+ double FFMIN (float,double) ;
+
+
+
+ scalar_t__ SAME_CLAMP_TO_EDGE ;
+
+
+ scalar_t__ VALID ;
+ int av_assert0 (int) ;
+ float* av_realloc (float*,int ) ;
+ int calculate_operand_data_length (TYPE_1__*) ;
+ int exp (float) ;
 
 int dnn_execute_layer_conv2d(DnnOperand *operands, const int32_t *input_operand_indexes,
                              int32_t output_operand_index, const void *parameters)
@@ -96,18 +96,18 @@ int dnn_execute_layer_conv2d(DnnOperand *operands, const int32_t *input_operand_
                     }
                 }
                 switch (conv_params->activation){
-                case RELU:
+                case 130:
                     output[n_filter] = FFMAX(output[n_filter], 0.0);
                     break;
-                case TANH:
-                    output[n_filter] = 2.0f  / (1.0f + exp(-2.0f * output[n_filter])) - 1.0f;
+                case 128:
+                    output[n_filter] = 2.0f / (1.0f + exp(-2.0f * output[n_filter])) - 1.0f;
                     break;
-                case SIGMOID:
+                case 129:
                     output[n_filter] = 1.0f / (1.0f + exp(-output[n_filter]));
                     break;
-                case NONE:
+                case 131:
                     break;
-                case LEAKY_RELU:
+                case 132:
                     output[n_filter] = FFMAX(output[n_filter], 0.0) + 0.2 * FFMIN(output[n_filter], 0.0);
                 }
             }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct genwqe_dev {int dummy; } ;
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
-typedef  int /*<<< orphan*/  app_name ;
+typedef int ssize_t ;
+typedef int app_name ;
 
-/* Variables and functions */
- struct genwqe_dev* dev_get_drvdata (struct device*) ; 
- int /*<<< orphan*/  genwqe_read_app_id (struct genwqe_dev*,char*,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
+
+ struct genwqe_dev* dev_get_drvdata (struct device*) ;
+ int genwqe_read_app_id (struct genwqe_dev*,char*,int) ;
+ int sprintf (char*,char*,char*) ;
 
 __attribute__((used)) static ssize_t appid_show(struct device *dev, struct device_attribute *attr,
-			  char *buf)
+     char *buf)
 {
-	char app_name[5];
-	struct genwqe_dev *cd = dev_get_drvdata(dev);
+ char app_name[5];
+ struct genwqe_dev *cd = dev_get_drvdata(dev);
 
-	genwqe_read_app_id(cd, app_name, sizeof(app_name));
-	return sprintf(buf, "%s\n", app_name);
+ genwqe_read_app_id(cd, app_name, sizeof(app_name));
+ return sprintf(buf, "%s\n", app_name);
 }

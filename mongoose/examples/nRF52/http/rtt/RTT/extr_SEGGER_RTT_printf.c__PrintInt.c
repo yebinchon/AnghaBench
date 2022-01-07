@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ ReturnValue; } ;
-typedef  TYPE_1__ SEGGER_RTT_PRINTF_DESC ;
+typedef TYPE_1__ SEGGER_RTT_PRINTF_DESC ;
 
-/* Variables and functions */
- unsigned int FORMAT_FLAG_LEFT_JUSTIFY ; 
- unsigned int FORMAT_FLAG_PAD_ZERO ; 
- unsigned int FORMAT_FLAG_PRINT_SIGN ; 
- int /*<<< orphan*/  _PrintUnsigned (TYPE_1__*,int,unsigned int,unsigned int,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  _StoreChar (TYPE_1__*,char) ; 
+
+ unsigned int FORMAT_FLAG_LEFT_JUSTIFY ;
+ unsigned int FORMAT_FLAG_PAD_ZERO ;
+ unsigned int FORMAT_FLAG_PRINT_SIGN ;
+ int _PrintUnsigned (TYPE_1__*,int,unsigned int,unsigned int,unsigned int,unsigned int) ;
+ int _StoreChar (TYPE_1__*,char) ;
 
 __attribute__((used)) static void _PrintInt(SEGGER_RTT_PRINTF_DESC * pBufferDesc, int v, unsigned Base, unsigned NumDigits, unsigned FieldWidth, unsigned FormatFlags) {
   unsigned Width;
@@ -27,9 +27,9 @@ __attribute__((used)) static void _PrintInt(SEGGER_RTT_PRINTF_DESC * pBufferDesc
 
   Number = (v < 0) ? -v : v;
 
-  //
-  // Get actual field width
-  //
+
+
+
   Width = 1;
   while (Number >= Base) {
     Number = (Number / Base);
@@ -42,9 +42,9 @@ __attribute__((used)) static void _PrintInt(SEGGER_RTT_PRINTF_DESC * pBufferDesc
     FieldWidth--;
   }
 
-  //
-  // Print leading spaces if necessary
-  //
+
+
+
   if ((((FormatFlags & FORMAT_FLAG_PAD_ZERO) == 0) || (NumDigits != 0)) && ((FormatFlags & FORMAT_FLAG_LEFT_JUSTIFY) == 0)) {
     if (FieldWidth != 0) {
       while ((FieldWidth != 0) && (Width < FieldWidth--)) {
@@ -55,9 +55,9 @@ __attribute__((used)) static void _PrintInt(SEGGER_RTT_PRINTF_DESC * pBufferDesc
       }
     }
   }
-  //
-  // Print sign if necessary
-  //
+
+
+
   if (v < 0) {
     v = -v;
     _StoreChar(pBufferDesc, '-');
@@ -70,9 +70,9 @@ __attribute__((used)) static void _PrintInt(SEGGER_RTT_PRINTF_DESC * pBufferDesc
       return;
     }
   }
-  //
-  // Print leading zeros if necessary
-  //
+
+
+
   if (((FormatFlags & FORMAT_FLAG_PAD_ZERO) == FORMAT_FLAG_PAD_ZERO) && ((FormatFlags & FORMAT_FLAG_LEFT_JUSTIFY) == 0) && (NumDigits == 0)) {
     if (FieldWidth != 0) {
       while ((FieldWidth != 0) && (Width < FieldWidth--)) {
@@ -84,8 +84,8 @@ __attribute__((used)) static void _PrintInt(SEGGER_RTT_PRINTF_DESC * pBufferDesc
     }
   }
 
-  //
-  // Print number without sign
-  //
+
+
+
   _PrintUnsigned(pBufferDesc, v, Base, NumDigits, FieldWidth, FormatFlags);
 }

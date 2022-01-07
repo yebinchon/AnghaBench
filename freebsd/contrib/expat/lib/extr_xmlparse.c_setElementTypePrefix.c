@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* XML_Parser ;
-typedef  scalar_t__ XML_Char ;
-struct TYPE_11__ {int /*<<< orphan*/  pool; int /*<<< orphan*/  prefixes; } ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef TYPE_1__* XML_Parser ;
+typedef scalar_t__ XML_Char ;
+struct TYPE_11__ {int pool; int prefixes; } ;
 struct TYPE_10__ {scalar_t__* name; TYPE_2__* prefix; } ;
 struct TYPE_9__ {scalar_t__ name; } ;
 struct TYPE_8__ {TYPE_4__* m_dtd; } ;
-typedef  TYPE_2__ PREFIX ;
-typedef  TYPE_3__ ELEMENT_TYPE ;
-typedef  TYPE_4__ DTD ;
+typedef TYPE_2__ PREFIX ;
+typedef TYPE_3__ ELEMENT_TYPE ;
+typedef TYPE_4__ DTD ;
 
-/* Variables and functions */
- char ASCII_COLON ; 
- scalar_t__ const XML_T (char) ; 
- scalar_t__ lookup (TYPE_1__*,int /*<<< orphan*/ *,scalar_t__,int) ; 
- int /*<<< orphan*/  poolAppendChar (int /*<<< orphan*/ *,scalar_t__ const) ; 
- int /*<<< orphan*/  poolDiscard (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  poolFinish (int /*<<< orphan*/ *) ; 
- scalar_t__ poolStart (int /*<<< orphan*/ *) ; 
+
+ char ASCII_COLON ;
+ scalar_t__ const XML_T (char) ;
+ scalar_t__ lookup (TYPE_1__*,int *,scalar_t__,int) ;
+ int poolAppendChar (int *,scalar_t__ const) ;
+ int poolDiscard (int *) ;
+ int poolFinish (int *) ;
+ scalar_t__ poolStart (int *) ;
 
 __attribute__((used)) static int
 setElementTypePrefix(XML_Parser parser, ELEMENT_TYPE *elementType)
 {
-  DTD * const dtd = parser->m_dtd;  /* save one level of indirection */
+  DTD * const dtd = parser->m_dtd;
   const XML_Char *name;
   for (name = elementType->name; *name; name++) {
     if (*name == XML_T(ASCII_COLON)) {

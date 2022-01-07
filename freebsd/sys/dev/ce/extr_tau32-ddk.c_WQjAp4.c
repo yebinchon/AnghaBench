@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_13__ {int SP4ZU; unsigned long* iO1iw4; } ;
-typedef  TYPE_4__ kWMzp1 ;
-struct TYPE_12__ {int G15W41; int /*<<< orphan*/  C6yEr1; } ;
+typedef TYPE_4__ kWMzp1 ;
+struct TYPE_12__ {int G15W41; int C6yEr1; } ;
 struct TYPE_15__ {TYPE_3__ tQcig; } ;
-struct TYPE_10__ {int b9Zs_; unsigned long sxr445; int /*<<< orphan*/  W0jOn2; } ;
+struct TYPE_10__ {int b9Zs_; unsigned long sxr445; int W0jOn2; } ;
 struct TYPE_11__ {TYPE_1__ gMQg82; } ;
 struct TYPE_14__ {unsigned int QvZLK; TYPE_2__ NpyOc1; } ;
-typedef  TYPE_5__ QDNE6 ;
-typedef  TYPE_6__ DCf0T2 ;
+typedef TYPE_5__ QDNE6 ;
+typedef TYPE_6__ DCf0T2 ;
 
-/* Variables and functions */
- int D1OxN4 ; 
- int KZEMj4 ; 
- int KZp71 ; 
- int /*<<< orphan*/  Mrgr62 (unsigned long,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int eKIU_4 ; 
- int p9baI3 ; 
- int qS5lW1 ; 
+
+ int D1OxN4 ;
+ int KZEMj4 ;
+ int KZp71 ;
+ int Mrgr62 (unsigned long,int ,int *) ;
+ int eKIU_4 ;
+ int p9baI3 ;
+ int qS5lW1 ;
 
 __attribute__((used)) static int WQjAp4(
 kWMzp1*J7Iki4,QDNE6*a02Gz4,DCf0T2*esWTk2){{if(!(a02Gz4->QvZLK&64u))goto

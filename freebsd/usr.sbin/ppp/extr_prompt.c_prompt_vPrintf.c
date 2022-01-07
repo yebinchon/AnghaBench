@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
-struct prompt {int nonewline; int /*<<< orphan*/  Term; scalar_t__ TermMode; scalar_t__ active; } ;
 
-/* Variables and functions */
- int LINE_LEN ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- size_t strlen (char const*) ; 
- int /*<<< orphan*/  vfprintf (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int va_list ;
+struct prompt {int nonewline; int Term; scalar_t__ TermMode; scalar_t__ active; } ;
+
+
+ int LINE_LEN ;
+ int fflush (int ) ;
+ int strcpy (char*,char const*) ;
+ size_t strlen (char const*) ;
+ int vfprintf (int ,char const*,int ) ;
 
 void
 prompt_vPrintf(struct prompt *p, const char *fmt, va_list ap)
@@ -28,7 +28,7 @@ prompt_vPrintf(struct prompt *p, const char *fmt, va_list ap)
     const char *pfmt;
 
     if (p->TermMode) {
-      /* Stuff '\r' in front of '\n' 'cos we're in raw mode */
+
       size_t len = strlen(fmt);
 
       if (len && len < sizeof nfmt - 1 && fmt[len-1] == '\n' &&

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ len; scalar_t__ value; int /*<<< orphan*/  error; int /*<<< orphan*/  mmgr; } ;
-typedef  scalar_t__ HPDF_UINT ;
-typedef  TYPE_1__* HPDF_String ;
-typedef  int /*<<< orphan*/  HPDF_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HPDF_Error_GetCode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_FreeMem (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ HPDF_GetMem (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ HPDF_LIMIT_MAX_STRING_LEN ; 
- int /*<<< orphan*/  HPDF_OK ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- int /*<<< orphan*/  HPDF_STRING_OUT_OF_RANGE ; 
- int /*<<< orphan*/  HPDF_SetError (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_StrCpy (char*,char const*,char*) ; 
- scalar_t__ HPDF_StrLen (char const*,scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ len; scalar_t__ value; int error; int mmgr; } ;
+typedef scalar_t__ HPDF_UINT ;
+typedef TYPE_1__* HPDF_String ;
+typedef int HPDF_STATUS ;
+
+
+ int HPDF_Error_GetCode (int ) ;
+ int HPDF_FreeMem (int ,scalar_t__) ;
+ scalar_t__ HPDF_GetMem (int ,scalar_t__) ;
+ scalar_t__ HPDF_LIMIT_MAX_STRING_LEN ;
+ int HPDF_OK ;
+ int HPDF_PTRACE (char*) ;
+ int HPDF_STRING_OUT_OF_RANGE ;
+ int HPDF_SetError (int ,int ,int ) ;
+ int HPDF_StrCpy (char*,char const*,char*) ;
+ scalar_t__ HPDF_StrLen (char const*,scalar_t__) ;
 
 HPDF_STATUS
-HPDF_String_SetValue  (HPDF_String      obj,
-                       const char  *value)
+HPDF_String_SetValue (HPDF_String obj,
+                       const char *value)
 {
     HPDF_UINT len;
     HPDF_STATUS ret = HPDF_OK;

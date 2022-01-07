@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int OtherType ;
-typedef  int /*<<< orphan*/  ChunkType ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cAssigned ; 
- int /*<<< orphan*/  cChar ; 
- int /*<<< orphan*/  cDouble ; 
- int /*<<< orphan*/  cError ; 
- int /*<<< orphan*/  cFloat ; 
- int /*<<< orphan*/  cInt ; 
- int /*<<< orphan*/  cLong ; 
- int /*<<< orphan*/  cPointer ; 
- int /*<<< orphan*/  cShort ; 
- int /*<<< orphan*/  cString ; 
- int /*<<< orphan*/  cUnknown ; 
-#define  oLong 130 
-#define  oShort 129 
-#define  oUnknown 128 
+
+
+
+typedef int OtherType ;
+typedef int ChunkType ;
+
+
+ int cAssigned ;
+ int cChar ;
+ int cDouble ;
+ int cError ;
+ int cFloat ;
+ int cInt ;
+ int cLong ;
+ int cPointer ;
+ int cShort ;
+ int cString ;
+ int cUnknown ;
+
+
+
 
 __attribute__((used)) static ChunkType
 final_ch(int ch, OtherType other)
@@ -36,61 +36,61 @@ final_ch(int ch, OtherType other)
 
     switch (ch) {
     case 'c':
-	if (other == oUnknown)
-	    result = cChar;
-	else
-	    result = cError;
-	break;
+ if (other == 128)
+     result = cChar;
+ else
+     result = cError;
+ break;
     case 'd':
     case 'i':
     case 'X':
     case 'x':
-	switch (other) {
-	case oUnknown:
-	    result = cInt;
-	    break;
-	case oShort:
-	    result = cShort;
-	    break;
-	case oLong:
-	    result = cLong;
-	    break;
-	}
-	break;
+ switch (other) {
+ case 128:
+     result = cInt;
+     break;
+ case 129:
+     result = cShort;
+     break;
+ case 130:
+     result = cLong;
+     break;
+ }
+ break;
     case 'E':
     case 'e':
     case 'f':
     case 'g':
-	switch (other) {
-	case oUnknown:
-	    result = cFloat;
-	    break;
-	case oShort:
-	    result = cError;
-	    break;
-	case oLong:
-	    result = cDouble;
-	    break;
-	}
-	break;
+ switch (other) {
+ case 128:
+     result = cFloat;
+     break;
+ case 129:
+     result = cError;
+     break;
+ case 130:
+     result = cDouble;
+     break;
+ }
+ break;
     case 'n':
-	if (other == oUnknown)
-	    result = cAssigned;
-	else
-	    result = cError;
-	break;
+ if (other == 128)
+     result = cAssigned;
+ else
+     result = cError;
+ break;
     case 'p':
-	if (other == oUnknown)
-	    result = cPointer;
-	else
-	    result = cError;
-	break;
+ if (other == 128)
+     result = cPointer;
+ else
+     result = cError;
+ break;
     case 's':
-	if (other == oUnknown)
-	    result = cString;
-	else
-	    result = cError;
-	break;
+ if (other == 128)
+     result = cString;
+ else
+     result = cError;
+ break;
     }
     return result;
 }

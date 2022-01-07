@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char** client_environment; } ;
-typedef  TYPE_1__ Manager ;
+typedef TYPE_1__ Manager ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- char** sanitize_environment (char**) ; 
- char** strv_env_delete (char**,int,char**) ; 
- char** strv_env_merge (int,char**,char**) ; 
- int /*<<< orphan*/  strv_free (char**) ; 
- scalar_t__ strv_isempty (char**) ; 
+
+ int ENOMEM ;
+ int assert (TYPE_1__*) ;
+ char** sanitize_environment (char**) ;
+ char** strv_env_delete (char**,int,char**) ;
+ char** strv_env_merge (int,char**,char**) ;
+ int strv_free (char**) ;
+ scalar_t__ strv_isempty (char**) ;
 
 int manager_client_environment_modify(
                 Manager *m,
                 char **minus,
                 char **plus) {
 
-        char **a = NULL, **b = NULL, **l;
+        char **a = ((void*)0), **b = ((void*)0), **l;
 
         assert(m);
 

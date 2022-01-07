@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * handle; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * handle; } ;
 struct TYPE_5__ {scalar_t__ client; TYPE_1__ glx; } ;
 struct TYPE_6__ {TYPE_2__ context; } ;
-typedef  TYPE_3__ _GLFWwindow ;
-typedef  int /*<<< orphan*/ * GLXContext ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
+typedef TYPE_3__ _GLFWwindow ;
+typedef int * GLXContext ;
+typedef int GLFWwindow ;
 
-/* Variables and functions */
- scalar_t__ GLFW_NO_API ; 
- int /*<<< orphan*/  GLFW_NO_WINDOW_CONTEXT ; 
- int /*<<< orphan*/  _GLFW_REQUIRE_INIT_OR_RETURN (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ GLFW_NO_API ;
+ int GLFW_NO_WINDOW_CONTEXT ;
+ int _GLFW_REQUIRE_INIT_OR_RETURN (int *) ;
+ int _glfwInputError (int ,int *) ;
 
 GLXContext glfwGetGLXContext(GLFWwindow* handle)
 {
     _GLFWwindow* window = (_GLFWwindow*) handle;
-    _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
+    _GLFW_REQUIRE_INIT_OR_RETURN(((void*)0));
 
     if (window->context.client == GLFW_NO_API)
     {
-        _glfwInputError(GLFW_NO_WINDOW_CONTEXT, NULL);
-        return NULL;
+        _glfwInputError(GLFW_NO_WINDOW_CONTEXT, ((void*)0));
+        return ((void*)0);
     }
 
     return window->context.glx.handle;

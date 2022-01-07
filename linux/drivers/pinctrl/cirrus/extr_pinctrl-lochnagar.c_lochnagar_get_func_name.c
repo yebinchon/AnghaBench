@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct pinctrl_dev {int dummy; } ;
 struct lochnagar_pin_priv {TYPE_1__* funcs; } ;
 struct TYPE_2__ {char const* name; } ;
 
-/* Variables and functions */
- struct lochnagar_pin_priv* pinctrl_dev_get_drvdata (struct pinctrl_dev*) ; 
+
+ struct lochnagar_pin_priv* pinctrl_dev_get_drvdata (struct pinctrl_dev*) ;
 
 __attribute__((used)) static const char *lochnagar_get_func_name(struct pinctrl_dev *pctldev,
-					   unsigned int func_idx)
+        unsigned int func_idx)
 {
-	struct lochnagar_pin_priv *priv = pinctrl_dev_get_drvdata(pctldev);
+ struct lochnagar_pin_priv *priv = pinctrl_dev_get_drvdata(pctldev);
 
-	return priv->funcs[func_idx].name;
+ return priv->funcs[func_idx].name;
 }

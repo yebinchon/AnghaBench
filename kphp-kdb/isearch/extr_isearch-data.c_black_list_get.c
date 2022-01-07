@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  trie_arr_node ;
 
-/* Variables and functions */
- int /*<<< orphan*/  black_list ; 
- scalar_t__ buff ; 
- char* buff2 ; 
- int /*<<< orphan*/  trie_arr_text_save (int /*<<< orphan*/ *,char*,int*) ; 
- int /*<<< orphan*/  trie_encode (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int trie_arr_node ;
+
+
+ int black_list ;
+ scalar_t__ buff ;
+ char* buff2 ;
+ int trie_arr_text_save (int *,char*,int*) ;
+ int trie_encode (int ,scalar_t__,int ) ;
 
 char *black_list_get (void) {
   trie_encode (black_list, buff, 0);

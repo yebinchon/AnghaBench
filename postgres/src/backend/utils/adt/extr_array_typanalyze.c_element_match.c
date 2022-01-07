@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Size ;
 
-/* Variables and functions */
- int element_compare (void const*,void const*) ; 
+
+
+
+typedef int Size ;
+
+
+ int element_compare (void const*,void const*) ;
 
 __attribute__((used)) static int
 element_match(const void *key1, const void *key2, Size keysize)
 {
-	/* The keysize parameter is superfluous here */
-	return element_compare(key1, key2);
+
+ return element_compare(key1, key2);
 }

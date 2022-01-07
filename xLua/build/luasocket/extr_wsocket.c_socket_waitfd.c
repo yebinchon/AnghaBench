@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timeval {int tv_sec; int tv_usec; } ;
-typedef  int /*<<< orphan*/  p_timeout ;
-typedef  int /*<<< orphan*/ * p_socket ;
-typedef  int /*<<< orphan*/  fd_set ;
+typedef int p_timeout ;
+typedef int * p_socket ;
+typedef int fd_set ;
 
-/* Variables and functions */
- scalar_t__ FD_ISSET (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int IO_CLOSED ; 
- int IO_DONE ; 
- int IO_TIMEOUT ; 
- int WAITFD_C ; 
- int WAITFD_R ; 
- int WAITFD_W ; 
- int WSAGetLastError () ; 
- int select (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
- double timeout_get (int /*<<< orphan*/ ) ; 
- scalar_t__ timeout_iszero (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ FD_ISSET (int ,int *) ;
+ int FD_SET (int ,int *) ;
+ int FD_ZERO (int *) ;
+ int IO_CLOSED ;
+ int IO_DONE ;
+ int IO_TIMEOUT ;
+ int WAITFD_C ;
+ int WAITFD_R ;
+ int WAITFD_W ;
+ int WSAGetLastError () ;
+ int select (int ,int *,int *,int *,struct timeval*) ;
+ double timeout_get (int ) ;
+ scalar_t__ timeout_iszero (int ) ;
 
 int socket_waitfd(p_socket ps, int sw, p_timeout tm) {
     int ret;
-    fd_set rfds, wfds, efds, *rp = NULL, *wp = NULL, *ep = NULL;
-    struct timeval tv, *tp = NULL;
+    fd_set rfds, wfds, efds, *rp = ((void*)0), *wp = ((void*)0), *ep = ((void*)0);
+    struct timeval tv, *tp = ((void*)0);
     double t;
-    if (timeout_iszero(tm)) return IO_TIMEOUT;  /* optimize timeout == 0 case */
-    if (sw & WAITFD_R) { 
-        FD_ZERO(&rfds); 
+    if (timeout_iszero(tm)) return IO_TIMEOUT;
+    if (sw & WAITFD_R) {
+        FD_ZERO(&rfds);
         FD_SET(*ps, &rfds);
-        rp = &rfds; 
+        rp = &rfds;
     }
     if (sw & WAITFD_W) { FD_ZERO(&wfds); FD_SET(*ps, &wfds); wp = &wfds; }
     if (sw & WAITFD_C) { FD_ZERO(&efds); FD_SET(*ps, &efds); ep = &efds; }

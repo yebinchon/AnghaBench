@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void* PyUString_InternFromString (char*) ; 
- char* UFUNC_PYVALS_NAME ; 
- void* npy_um_str_array_finalize ; 
- void* npy_um_str_array_prepare ; 
- void* npy_um_str_array_wrap ; 
- void* npy_um_str_axes ; 
- void* npy_um_str_axis ; 
- void* npy_um_str_casting ; 
- void* npy_um_str_dtype ; 
- void* npy_um_str_extobj ; 
- void* npy_um_str_keepdims ; 
- void* npy_um_str_order ; 
- void* npy_um_str_out ; 
- void* npy_um_str_pyvals_name ; 
- void* npy_um_str_sig ; 
- void* npy_um_str_signature ; 
- void* npy_um_str_subok ; 
- void* npy_um_str_ufunc ; 
- void* npy_um_str_where ; 
+ void* PyUString_InternFromString (char*) ;
+ char* UFUNC_PYVALS_NAME ;
+ void* npy_um_str_array_finalize ;
+ void* npy_um_str_array_prepare ;
+ void* npy_um_str_array_wrap ;
+ void* npy_um_str_axes ;
+ void* npy_um_str_axis ;
+ void* npy_um_str_casting ;
+ void* npy_um_str_dtype ;
+ void* npy_um_str_extobj ;
+ void* npy_um_str_keepdims ;
+ void* npy_um_str_order ;
+ void* npy_um_str_out ;
+ void* npy_um_str_pyvals_name ;
+ void* npy_um_str_sig ;
+ void* npy_um_str_signature ;
+ void* npy_um_str_subok ;
+ void* npy_um_str_ufunc ;
+ void* npy_um_str_where ;
 
 __attribute__((used)) static int
 intern_strings(void)

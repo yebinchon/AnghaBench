@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const uint8_t ;
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  int /*<<< orphan*/  header ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int const uint8_t ;
+typedef int int64_t ;
+typedef int header ;
 struct TYPE_3__ {int profile; int level; int tier; int bitdepth; int monochrome; int chroma_subsampling_x; int chroma_subsampling_y; int chroma_sample_position; } ;
-typedef  int /*<<< orphan*/  PutBitContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_1__ AV1SequenceParameters ;
+typedef int PutBitContext ;
+typedef int AVIOContext ;
+typedef TYPE_1__ AV1SequenceParameters ;
 
-/* Variables and functions */
-#define  AV1_OBU_METADATA 129 
-#define  AV1_OBU_SEQUENCE_HEADER 128 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  av_free (int /*<<< orphan*/  const*) ; 
- int avio_close_dyn_buf (int /*<<< orphan*/ *,int /*<<< orphan*/  const**) ; 
- int avio_open_dyn_buf (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  flush_put_bits (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_put_bits (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int parse_obu_header (int /*<<< orphan*/  const*,int,int /*<<< orphan*/ *,int*,int*,int*,int*) ; 
- int parse_sequence_header (TYPE_1__*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int,int) ; 
+
+
+
+ int AVERROR_INVALIDDATA ;
+ int av_free (int const*) ;
+ int avio_close_dyn_buf (int *,int const**) ;
+ int avio_open_dyn_buf (int **) ;
+ int avio_write (int *,int const*,int) ;
+ int flush_put_bits (int *) ;
+ int init_put_bits (int *,int const*,int) ;
+ int parse_obu_header (int const*,int,int *,int*,int*,int*,int*) ;
+ int parse_sequence_header (TYPE_1__*,int const*,int ) ;
+ int put_bits (int *,int,int) ;
 
 int ff_isom_write_av1c(AVIOContext *pb, const uint8_t *buf, int size)
 {
-    AVIOContext *seq_pb = NULL, *meta_pb = NULL;
+    AVIOContext *seq_pb = ((void*)0), *meta_pb = ((void*)0);
     AV1SequenceParameters seq_params;
     PutBitContext pbc;
     uint8_t header[4];
-    uint8_t *seq = NULL, *meta = NULL;
+    uint8_t *seq = ((void*)0), *meta = ((void*)0);
     int64_t obu_size;
     int start_pos, type, temporal_id, spatial_id;
     int ret, nb_seq = 0, seq_size, meta_size;
@@ -63,7 +63,7 @@ int ff_isom_write_av1c(AVIOContext *pb, const uint8_t *buf, int size)
         }
 
         switch (type) {
-        case AV1_OBU_SEQUENCE_HEADER:
+        case 128:
             nb_seq++;
             if (!obu_size || nb_seq > 1) {
                 ret = AVERROR_INVALIDDATA;
@@ -75,7 +75,7 @@ int ff_isom_write_av1c(AVIOContext *pb, const uint8_t *buf, int size)
 
             avio_write(seq_pb, buf, len);
             break;
-        case AV1_OBU_METADATA:
+        case 129:
             if (!obu_size) {
                 ret = AVERROR_INVALIDDATA;
                 goto fail;
@@ -86,10 +86,10 @@ int ff_isom_write_av1c(AVIOContext *pb, const uint8_t *buf, int size)
             break;
         }
         size -= len;
-        buf  += len;
+        buf += len;
     }
 
-    seq_size  = avio_close_dyn_buf(seq_pb, &seq);
+    seq_size = avio_close_dyn_buf(seq_pb, &seq);
     if (!seq_size) {
         ret = AVERROR_INVALIDDATA;
         goto fail;
@@ -97,8 +97,8 @@ int ff_isom_write_av1c(AVIOContext *pb, const uint8_t *buf, int size)
 
     init_put_bits(&pbc, header, sizeof(header));
 
-    put_bits(&pbc, 1, 1); // marker
-    put_bits(&pbc, 7, 1); // version
+    put_bits(&pbc, 1, 1);
+    put_bits(&pbc, 7, 1);
     put_bits(&pbc, 3, seq_params.profile);
     put_bits(&pbc, 5, seq_params.level);
     put_bits(&pbc, 1, seq_params.tier);
@@ -108,7 +108,7 @@ int ff_isom_write_av1c(AVIOContext *pb, const uint8_t *buf, int size)
     put_bits(&pbc, 1, seq_params.chroma_subsampling_x);
     put_bits(&pbc, 1, seq_params.chroma_subsampling_y);
     put_bits(&pbc, 2, seq_params.chroma_sample_position);
-    put_bits(&pbc, 8, 0); // padding
+    put_bits(&pbc, 8, 0);
     flush_put_bits(&pbc);
 
     avio_write(pb, header, sizeof(header));

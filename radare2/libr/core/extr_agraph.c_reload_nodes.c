@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int is_callgraph; } ;
-typedef  int /*<<< orphan*/  RCore ;
-typedef  int /*<<< orphan*/  RAnalFunction ;
-typedef  TYPE_1__ RAGraph ;
+typedef int RCore ;
+typedef int RAnalFunction ;
+typedef TYPE_1__ RAGraph ;
 
-/* Variables and functions */
- int get_bbnodes (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int get_cgnodes (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int get_bbnodes (TYPE_1__*,int *,int *) ;
+ int get_cgnodes (TYPE_1__*,int *,int *) ;
 
 __attribute__((used)) static int reload_nodes(RAGraph *g, RCore *core, RAnalFunction *fcn) {
-	int is_c = g->is_callgraph;
-	return is_c? get_cgnodes (g, core, fcn): get_bbnodes (g, core, fcn);
+ int is_c = g->is_callgraph;
+ return is_c? get_cgnodes (g, core, fcn): get_bbnodes (g, core, fcn);
 }

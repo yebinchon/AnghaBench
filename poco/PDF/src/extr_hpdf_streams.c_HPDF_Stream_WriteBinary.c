@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  mmgr; } ;
-typedef  int HPDF_UINT ;
-typedef  TYPE_1__* HPDF_Stream ;
-typedef  scalar_t__ HPDF_STATUS ;
-typedef  scalar_t__ HPDF_Encrypt ;
-typedef  int HPDF_BYTE ;
-typedef  scalar_t__ HPDF_BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HPDF_Encrypt_CryptBuf (scalar_t__,int const*,int*,int) ; 
- scalar_t__ HPDF_FALSE ; 
- int /*<<< orphan*/  HPDF_FreeMem (int /*<<< orphan*/ ,int*) ; 
- scalar_t__ HPDF_GetMem (int /*<<< orphan*/ ,int) ; 
- scalar_t__ HPDF_OK ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- scalar_t__ HPDF_Stream_Write (TYPE_1__*,int*,int) ; 
- int HPDF_TEXT_DEFAULT_LEN ; 
- scalar_t__ HPDF_TRUE ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int mmgr; } ;
+typedef int HPDF_UINT ;
+typedef TYPE_1__* HPDF_Stream ;
+typedef scalar_t__ HPDF_STATUS ;
+typedef scalar_t__ HPDF_Encrypt ;
+typedef int HPDF_BYTE ;
+typedef scalar_t__ HPDF_BOOL ;
+
+
+ int HPDF_Encrypt_CryptBuf (scalar_t__,int const*,int*,int) ;
+ scalar_t__ HPDF_FALSE ;
+ int HPDF_FreeMem (int ,int*) ;
+ scalar_t__ HPDF_GetMem (int ,int) ;
+ scalar_t__ HPDF_OK ;
+ int HPDF_PTRACE (char*) ;
+ scalar_t__ HPDF_Stream_Write (TYPE_1__*,int*,int) ;
+ int HPDF_TEXT_DEFAULT_LEN ;
+ scalar_t__ HPDF_TRUE ;
 
 HPDF_STATUS
-HPDF_Stream_WriteBinary  (HPDF_Stream      stream,
-                          const HPDF_BYTE  *data,
-                          HPDF_UINT        len,
-                          HPDF_Encrypt     e)
+HPDF_Stream_WriteBinary (HPDF_Stream stream,
+                          const HPDF_BYTE *data,
+                          HPDF_UINT len,
+                          HPDF_Encrypt e)
 {
     char buf[HPDF_TEXT_DEFAULT_LEN];
     HPDF_BYTE ebuf[HPDF_TEXT_DEFAULT_LEN];
-    HPDF_BYTE *pbuf = NULL;
+    HPDF_BYTE *pbuf = ((void*)0);
     HPDF_BOOL flg = HPDF_FALSE;
     HPDF_UINT idx = 0;
     HPDF_UINT i;

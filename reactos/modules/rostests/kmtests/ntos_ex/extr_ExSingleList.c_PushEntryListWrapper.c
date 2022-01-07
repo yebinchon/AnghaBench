@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {struct TYPE_7__* Next; } ;
-typedef  TYPE_1__* PSINGLE_LIST_ENTRY ;
-typedef  int /*<<< orphan*/  PKSPIN_LOCK ;
+typedef TYPE_1__* PSINGLE_LIST_ENTRY ;
+typedef int PKSPIN_LOCK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PushEntryList (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  UNREFERENCED_PARAMETER (int /*<<< orphan*/ ) ; 
+
+ int PushEntryList (TYPE_1__*,TYPE_1__*) ;
+ int UNREFERENCED_PARAMETER (int ) ;
 
 PSINGLE_LIST_ENTRY PushEntryListWrapper(PSINGLE_LIST_ENTRY ListHead, PSINGLE_LIST_ENTRY Entry, PKSPIN_LOCK Lock)
 {

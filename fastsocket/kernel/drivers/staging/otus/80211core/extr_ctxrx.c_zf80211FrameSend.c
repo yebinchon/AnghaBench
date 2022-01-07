@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zdev_t ;
-typedef  int /*<<< orphan*/  zbuf_t ;
-typedef  int /*<<< orphan*/  u8_t ;
-typedef  int u16_t ;
-struct TYPE_5__ {int /*<<< orphan*/  txTraffic; } ;
-struct TYPE_4__ {int /*<<< orphan*/  txMulticastOctets; int /*<<< orphan*/  txMulticastFrm; int /*<<< orphan*/  txBroadcastOctets; int /*<<< orphan*/  txBroadcastFrm; int /*<<< orphan*/  txUnicastOctets; int /*<<< orphan*/  txUnicastFrm; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int zdev_t ;
+typedef int zbuf_t ;
+typedef int u8_t ;
+typedef int u16_t ;
+struct TYPE_5__ {int txTraffic; } ;
+struct TYPE_4__ {int txMulticastOctets; int txMulticastFrm; int txBroadcastOctets; int txBroadcastFrm; int txUnicastOctets; int txUnicastFrm; } ;
 struct TYPE_6__ {TYPE_2__ ledStruct; TYPE_1__ commTally; } ;
 
-/* Variables and functions */
- int ZM_EXTERNAL_ALLOC_BUF ; 
- int ZM_INTERNAL_ALLOC_BUF ; 
- int ZM_SUCCESS ; 
- TYPE_3__* wd ; 
- int zfHpSend (int /*<<< orphan*/ *,int*,int,int*,int,int*,int,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zfwBufFree (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int zfwBufGetSize (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zm_assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zmw_get_wlan_dev (int /*<<< orphan*/ *) ; 
+
+ int ZM_EXTERNAL_ALLOC_BUF ;
+ int ZM_INTERNAL_ALLOC_BUF ;
+ int ZM_SUCCESS ;
+ TYPE_3__* wd ;
+ int zfHpSend (int *,int*,int,int*,int,int*,int,int *,int,int,int ,int ) ;
+ int zfwBufFree (int *,int *,int) ;
+ int zfwBufGetSize (int *,int *) ;
+ int zm_assert (int ) ;
+ int zmw_get_wlan_dev (int *) ;
 
 void zf80211FrameSend(zdev_t* dev, zbuf_t* buf, u16_t* header, u16_t snapLen,
                            u16_t* da, u16_t* sa, u8_t up, u16_t headerLen, u16_t* snap,

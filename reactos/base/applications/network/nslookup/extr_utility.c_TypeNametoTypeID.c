@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  USHORT ;
-typedef  int /*<<< orphan*/  PCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TYPE_A ; 
- int /*<<< orphan*/  TYPE_ANY ; 
- int /*<<< orphan*/  TYPE_CNAME ; 
- int /*<<< orphan*/  TYPE_MX ; 
- int /*<<< orphan*/  TYPE_NS ; 
- int /*<<< orphan*/  TYPE_PTR ; 
- int /*<<< orphan*/  TYPE_SOA ; 
- int /*<<< orphan*/  TYPE_WKS ; 
- int /*<<< orphan*/  TypeA ; 
- int /*<<< orphan*/  TypeAny ; 
- int /*<<< orphan*/  TypeCNAME ; 
- int /*<<< orphan*/  TypeMX ; 
- int /*<<< orphan*/  TypeNS ; 
- int /*<<< orphan*/  TypePTR ; 
- int /*<<< orphan*/  TypeSOA ; 
- int /*<<< orphan*/  TypeSRV ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strncmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int USHORT ;
+typedef int PCHAR ;
+
+
+ int TYPE_A ;
+ int TYPE_ANY ;
+ int TYPE_CNAME ;
+ int TYPE_MX ;
+ int TYPE_NS ;
+ int TYPE_PTR ;
+ int TYPE_SOA ;
+ int TYPE_WKS ;
+ int TypeA ;
+ int TypeAny ;
+ int TypeCNAME ;
+ int TypeMX ;
+ int TypeNS ;
+ int TypePTR ;
+ int TypeSOA ;
+ int TypeSRV ;
+ int strlen (int ) ;
+ int strncmp (int ,int ,int ) ;
 
 USHORT TypeNametoTypeID( PCHAR TypeName )
 {

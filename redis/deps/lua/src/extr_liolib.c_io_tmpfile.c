@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ ** newfile (int /*<<< orphan*/ *) ; 
- int pushresult (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * tmpfile () ; 
+
+
+
+typedef int lua_State ;
+typedef int FILE ;
+
+
+ int ** newfile (int *) ;
+ int pushresult (int *,int ,int *) ;
+ int * tmpfile () ;
 
 __attribute__((used)) static int io_tmpfile (lua_State *L) {
   FILE **pf = newfile(L);
   *pf = tmpfile();
-  return (*pf == NULL) ? pushresult(L, 0, NULL) : 1;
+  return (*pf == ((void*)0)) ? pushresult(L, 0, ((void*)0)) : 1;
 }

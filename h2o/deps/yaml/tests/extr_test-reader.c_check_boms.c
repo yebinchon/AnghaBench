@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_7__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_7__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {char* start; } ;
 struct TYPE_9__ {char* problem; int problem_offset; int unread; TYPE_1__ buffer; } ;
-typedef  TYPE_2__ yaml_parser_t ;
+typedef TYPE_2__ yaml_parser_t ;
 struct TYPE_10__ {char* test; char* title; int result; } ;
 
-/* Variables and functions */
- char* bom_original ; 
- TYPE_7__* boms ; 
- scalar_t__ memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  yaml_parser_delete (TYPE_2__*) ; 
- int /*<<< orphan*/  yaml_parser_initialize (TYPE_2__*) ; 
- int /*<<< orphan*/  yaml_parser_set_input_string (TYPE_2__*,unsigned char*,int) ; 
- int yaml_parser_update_buffer (TYPE_2__*,int) ; 
+
+ char* bom_original ;
+ TYPE_7__* boms ;
+ scalar_t__ memcmp (char*,char*,int) ;
+ int printf (char*,...) ;
+ int yaml_parser_delete (TYPE_2__*) ;
+ int yaml_parser_initialize (TYPE_2__*) ;
+ int yaml_parser_set_input_string (TYPE_2__*,unsigned char*,int) ;
+ int yaml_parser_update_buffer (TYPE_2__*,int) ;
 
 int check_boms(void)
 {

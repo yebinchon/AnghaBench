@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct __wait_queue {int /*<<< orphan*/  event; int /*<<< orphan*/  task_list; void* private; int /*<<< orphan*/  flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- scalar_t__ KeGetCurrentThread () ; 
- int /*<<< orphan*/  KeInitializeEvent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SynchronizationEvent ; 
- int /*<<< orphan*/  WQ_FLAG_AUTO_REMOVAL ; 
- struct __wait_queue* kmalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct __wait_queue*,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct __wait_queue {int event; int task_list; void* private; int flags; } ;
+
+
+ int FALSE ;
+ int GFP_KERNEL ;
+ int INIT_LIST_HEAD (int *) ;
+ scalar_t__ KeGetCurrentThread () ;
+ int KeInitializeEvent (int *,int ,int ) ;
+ int SynchronizationEvent ;
+ int WQ_FLAG_AUTO_REMOVAL ;
+ struct __wait_queue* kmalloc (int,int ) ;
+ int memset (struct __wait_queue*,int ,int) ;
 
 struct __wait_queue *
 wait_queue_create()
 {
-    struct __wait_queue * wait = NULL;
+    struct __wait_queue * wait = ((void*)0);
     wait = kmalloc(sizeof(struct __wait_queue), GFP_KERNEL);
     if (!wait) {
-        return NULL;
+        return ((void*)0);
     }
 
     memset(wait, 0, sizeof(struct __wait_queue));

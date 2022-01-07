@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int int64_t ;
-typedef  scalar_t__ int32_t ;
-typedef  scalar_t__* fe25519 ;
 
-/* Variables and functions */
- int load_3 (unsigned char const*) ; 
- int load_4 (unsigned char const*) ; 
+
+
+
+typedef int uint64_t ;
+typedef int int64_t ;
+typedef scalar_t__ int32_t ;
+typedef scalar_t__* fe25519 ;
+
+
+ int load_3 (unsigned char const*) ;
+ int load_4 (unsigned char const*) ;
 
 void
 fe25519_frombytes(fe25519 h, const unsigned char *s)

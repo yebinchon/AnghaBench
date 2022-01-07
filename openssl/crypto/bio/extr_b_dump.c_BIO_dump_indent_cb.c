@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int BIO_snprintf (char*,int,char*,unsigned char,...) ; 
- int DUMP_WIDTH_LESS_INDENT (int) ; 
- scalar_t__ SPACE (char*,int,int) ; 
- unsigned char* os_toascii ; 
- char* os_toebcdic ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
+
+
+
+typedef int buf ;
+
+
+ int BIO_snprintf (char*,int,char*,unsigned char,...) ;
+ int DUMP_WIDTH_LESS_INDENT (int) ;
+ scalar_t__ SPACE (char*,int,int) ;
+ unsigned char* os_toascii ;
+ char* os_toebcdic ;
+ int strcpy (char*,char*) ;
 
 int BIO_dump_indent_cb(int (*cb) (const void *data, size_t len, void *u),
                        void *u, const void *v, int len, int indent)
@@ -63,13 +63,13 @@ int BIO_dump_indent_cb(int (*cb) (const void *data, size_t len, void *u),
                 break;
             if (SPACE(buf, n, 1)) {
                 ch = *(s + i * dump_width + j) & 0xff;
-#ifndef CHARSET_EBCDIC
+
                 buf[n++] = ((ch >= ' ') && (ch <= '~')) ? ch : '.';
-#else
-                buf[n++] = ((ch >= os_toascii[' ']) && (ch <= os_toascii['~']))
-                           ? os_toebcdic[ch]
-                           : '.';
-#endif
+
+
+
+
+
                 buf[n] = '\0';
             }
         }
@@ -77,10 +77,10 @@ int BIO_dump_indent_cb(int (*cb) (const void *data, size_t len, void *u),
             buf[n++] = '\n';
             buf[n] = '\0';
         }
-        /*
-         * if this is the last call then update the ddt_dump thing so that we
-         * will move the selection point in the debug window
-         */
+
+
+
+
         ret += cb((void *)buf, n, u);
     }
     return ret;

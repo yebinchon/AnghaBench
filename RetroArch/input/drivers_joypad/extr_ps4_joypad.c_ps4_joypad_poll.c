@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int32_t ;
-struct TYPE_5__ {int /*<<< orphan*/  handle; } ;
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int int32_t ;
+struct TYPE_5__ {int handle; } ;
 struct TYPE_4__ {int buttons; } ;
-typedef  TYPE_1__ ScePadData ;
+typedef TYPE_1__ ScePadData ;
 
-/* Variables and functions */
- int ORBISPAD_CIRCLE ; 
- int ORBISPAD_CROSS ; 
- int ORBISPAD_DOWN ; 
- int ORBISPAD_L1 ; 
- int ORBISPAD_L2 ; 
- int ORBISPAD_L3 ; 
- int ORBISPAD_LEFT ; 
- int ORBISPAD_OPTIONS ; 
- int ORBISPAD_R1 ; 
- int ORBISPAD_R2 ; 
- int ORBISPAD_R3 ; 
- int ORBISPAD_RIGHT ; 
- int ORBISPAD_SQUARE ; 
- int ORBISPAD_TOUCH_PAD ; 
- int ORBISPAD_TRIANGLE ; 
- int ORBISPAD_UP ; 
- int RETRO_DEVICE_ID_JOYPAD_A ; 
- int RETRO_DEVICE_ID_JOYPAD_B ; 
- int RETRO_DEVICE_ID_JOYPAD_DOWN ; 
- int RETRO_DEVICE_ID_JOYPAD_L ; 
- int RETRO_DEVICE_ID_JOYPAD_L2 ; 
- int RETRO_DEVICE_ID_JOYPAD_L3 ; 
- int RETRO_DEVICE_ID_JOYPAD_LEFT ; 
- int RETRO_DEVICE_ID_JOYPAD_R ; 
- int RETRO_DEVICE_ID_JOYPAD_R2 ; 
- int RETRO_DEVICE_ID_JOYPAD_R3 ; 
- int RETRO_DEVICE_ID_JOYPAD_RIGHT ; 
- int RETRO_DEVICE_ID_JOYPAD_SELECT ; 
- int RETRO_DEVICE_ID_JOYPAD_START ; 
- int RETRO_DEVICE_ID_JOYPAD_UP ; 
- int RETRO_DEVICE_ID_JOYPAD_X ; 
- int RETRO_DEVICE_ID_JOYPAD_Y ; 
- int UINT64_C (int) ; 
- TYPE_3__* ds_joypad_states ; 
- unsigned int num_players ; 
- int* pad_state ; 
- int scePadReadState (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+ int ORBISPAD_CIRCLE ;
+ int ORBISPAD_CROSS ;
+ int ORBISPAD_DOWN ;
+ int ORBISPAD_L1 ;
+ int ORBISPAD_L2 ;
+ int ORBISPAD_L3 ;
+ int ORBISPAD_LEFT ;
+ int ORBISPAD_OPTIONS ;
+ int ORBISPAD_R1 ;
+ int ORBISPAD_R2 ;
+ int ORBISPAD_R3 ;
+ int ORBISPAD_RIGHT ;
+ int ORBISPAD_SQUARE ;
+ int ORBISPAD_TOUCH_PAD ;
+ int ORBISPAD_TRIANGLE ;
+ int ORBISPAD_UP ;
+ int RETRO_DEVICE_ID_JOYPAD_A ;
+ int RETRO_DEVICE_ID_JOYPAD_B ;
+ int RETRO_DEVICE_ID_JOYPAD_DOWN ;
+ int RETRO_DEVICE_ID_JOYPAD_L ;
+ int RETRO_DEVICE_ID_JOYPAD_L2 ;
+ int RETRO_DEVICE_ID_JOYPAD_L3 ;
+ int RETRO_DEVICE_ID_JOYPAD_LEFT ;
+ int RETRO_DEVICE_ID_JOYPAD_R ;
+ int RETRO_DEVICE_ID_JOYPAD_R2 ;
+ int RETRO_DEVICE_ID_JOYPAD_R3 ;
+ int RETRO_DEVICE_ID_JOYPAD_RIGHT ;
+ int RETRO_DEVICE_ID_JOYPAD_SELECT ;
+ int RETRO_DEVICE_ID_JOYPAD_START ;
+ int RETRO_DEVICE_ID_JOYPAD_UP ;
+ int RETRO_DEVICE_ID_JOYPAD_X ;
+ int RETRO_DEVICE_ID_JOYPAD_Y ;
+ int UINT64_C (int) ;
+ TYPE_3__* ds_joypad_states ;
+ unsigned int num_players ;
+ int* pad_state ;
+ int scePadReadState (int ,TYPE_1__*) ;
 
 __attribute__((used)) static void ps4_joypad_poll(void)
 {
@@ -65,9 +65,9 @@ __attribute__((used)) static void ps4_joypad_poll(void)
    for (player = 0; player < players_count; player++)
    {
       unsigned j, k;
-      unsigned i  = player;
-      unsigned p  = player;
-      int ret     = scePadReadState(ds_joypad_states[player].handle,&buttons);
+      unsigned i = player;
+      unsigned p = player;
+      int ret = scePadReadState(ds_joypad_states[player].handle,&buttons);
 
       if (ret == 0)
       {

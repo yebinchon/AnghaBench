@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct coff_symfile_info {scalar_t__ min_lineno_offset; scalar_t__ max_lineno_offset; } ;
-struct bfd_section {int lineno_count; scalar_t__ line_filepos; int /*<<< orphan*/  name; } ;
+struct bfd_section {int lineno_count; scalar_t__ line_filepos; int name; } ;
 struct bfd {int dummy; } ;
-typedef  scalar_t__ file_ptr ;
+typedef scalar_t__ file_ptr ;
 struct TYPE_2__ {int local_linesz; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEPRECATED_STREQ (int /*<<< orphan*/ ,char*) ; 
- TYPE_1__* coff_data (struct bfd*) ; 
+
+ int DEPRECATED_STREQ (int ,char*) ;
+ TYPE_1__* coff_data (struct bfd*) ;
 
 __attribute__((used)) static void
 find_linenos (struct bfd *abfd, struct bfd_section *asect, void *vpinfo)

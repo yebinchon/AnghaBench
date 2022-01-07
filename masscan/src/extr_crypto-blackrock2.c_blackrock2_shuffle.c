@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-struct BlackRock {scalar_t__ range; int /*<<< orphan*/  seed; int /*<<< orphan*/  b_mask; int /*<<< orphan*/  b_bits; int /*<<< orphan*/  a_mask; int /*<<< orphan*/  a_bits; int /*<<< orphan*/  rounds; } ;
 
-/* Variables and functions */
- scalar_t__ ENCRYPT (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ uint64_t ;
+struct BlackRock {scalar_t__ range; int seed; int b_mask; int b_bits; int a_mask; int a_bits; int rounds; } ;
+
+
+ scalar_t__ ENCRYPT (int ,int ,int ,int ,int ,scalar_t__,int ) ;
 
 uint64_t
 blackrock2_shuffle(const struct BlackRock *br, uint64_t m)

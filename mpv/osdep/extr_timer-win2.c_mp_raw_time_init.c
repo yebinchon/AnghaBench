@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  QueryPerformanceFrequency (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  perf_freq ; 
- int /*<<< orphan*/  timeBeginPeriod (int) ; 
+ int QueryPerformanceFrequency (int *) ;
+ int perf_freq ;
+ int timeBeginPeriod (int) ;
 
 void mp_raw_time_init(void)
 {
     QueryPerformanceFrequency(&perf_freq);
-#if !HAVE_UWP
-    timeBeginPeriod(1); // request 1ms timer resolution
-#endif
+
+    timeBeginPeriod(1);
+
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  avctx; int /*<<< orphan*/  gb; } ;
-typedef  TYPE_1__ VqaContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  CHECK_COPY (int) ; 
- int /*<<< orphan*/  CHECK_COUNT () ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  bytestream2_get_buffer (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int bytestream2_get_le16 (int /*<<< orphan*/ *) ; 
- int bytestream2_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_tlog (int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  memset (unsigned char*,unsigned char,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int avctx; int gb; } ;
+typedef TYPE_1__ VqaContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int CHECK_COPY (int) ;
+ int CHECK_COUNT () ;
+ int av_log (int ,int ,char*,int,...) ;
+ int bytestream2_get_buffer (int *,unsigned char*,int) ;
+ int bytestream2_get_byte (int *) ;
+ int bytestream2_get_bytes_left (int *) ;
+ int bytestream2_get_le16 (int *) ;
+ int bytestream2_tell (int *) ;
+ int ff_tlog (int ,char*,int,...) ;
+ int memset (unsigned char*,unsigned char,int) ;
 
 __attribute__((used)) static int decode_format80(VqaContext *s, int src_size,
     unsigned char *dest, int dest_size, int check_size) {
@@ -48,7 +48,7 @@ __attribute__((used)) static int decode_format80(VqaContext *s, int src_size,
         opcode = bytestream2_get_byte(&s->gb);
         ff_tlog(s->avctx, "opcode %02X: ", opcode);
 
-        /* 0x80 means that frame is finished */
+
         if (opcode == 0x80)
             break;
 
@@ -60,7 +60,7 @@ __attribute__((used)) static int decode_format80(VqaContext *s, int src_size,
 
         if (opcode == 0xFF) {
 
-            count   = bytestream2_get_le16(&s->gb);
+            count = bytestream2_get_le16(&s->gb);
             src_pos = bytestream2_get_le16(&s->gb);
             ff_tlog(s->avctx, "(1) copy %X bytes from absolute pos %X\n", count, src_pos);
             CHECK_COUNT();
@@ -110,10 +110,10 @@ __attribute__((used)) static int decode_format80(VqaContext *s, int src_size,
         }
     }
 
-    /* validate that the entire destination buffer was filled; this is
-     * important for decoding frame maps since each vector needs to have a
-     * codebook entry; it is not important for compressed codebooks because
-     * not every entry needs to be filled */
+
+
+
+
     if (check_size)
         if (dest_index < dest_size) {
             av_log(s->avctx, AV_LOG_ERROR, "decode_format80 problem: decode finished with dest_index (%d) < dest_size (%d)\n",
@@ -121,5 +121,5 @@ __attribute__((used)) static int decode_format80(VqaContext *s, int src_size,
             memset(dest + dest_index, 0, dest_size - dest_index);
         }
 
-    return 0; // let's display what we decoded anyway
+    return 0;
 }

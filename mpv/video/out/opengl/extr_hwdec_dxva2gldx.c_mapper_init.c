@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct ra_tex_params {int dimensions; int d; int render_src; int src_linear; int /*<<< orphan*/  format; int /*<<< orphan*/  h; int /*<<< orphan*/  w; } ;
-struct TYPE_6__ {scalar_t__ hw_subfmt; int /*<<< orphan*/  imgfmt; int /*<<< orphan*/  h; int /*<<< orphan*/  w; } ;
-struct ra_hwdec_mapper {TYPE_2__ dst_params; TYPE_2__ src_params; int /*<<< orphan*/ * tex; int /*<<< orphan*/  ra; struct priv* priv; TYPE_1__* owner; } ;
-struct priv_owner {int /*<<< orphan*/  device_h; int /*<<< orphan*/  device; } ;
-struct priv {int /*<<< orphan*/  texture; int /*<<< orphan*/  rtarget_h; int /*<<< orphan*/  device_h; int /*<<< orphan*/  rtarget; int /*<<< orphan*/  device; } ;
-struct TYPE_7__ {int /*<<< orphan*/  (* DXLockObjectsNV ) (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* DXRegisterObjectNV ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* BindTexture ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* TexParameteri ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* GenTextures ) (int,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* DXSetResourceShareHandleNV ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct ra_tex_params {int dimensions; int d; int render_src; int src_linear; int format; int h; int w; } ;
+struct TYPE_6__ {scalar_t__ hw_subfmt; int imgfmt; int h; int w; } ;
+struct ra_hwdec_mapper {TYPE_2__ dst_params; TYPE_2__ src_params; int * tex; int ra; struct priv* priv; TYPE_1__* owner; } ;
+struct priv_owner {int device_h; int device; } ;
+struct priv {int texture; int rtarget_h; int device_h; int rtarget; int device; } ;
+struct TYPE_7__ {int (* DXLockObjectsNV ) (int ,int,int *) ;int (* DXRegisterObjectNV ) (int ,int ,int ,int ,int ) ;int (* BindTexture ) (int ,int ) ;int (* TexParameteri ) (int ,int ,int ) ;int (* GenTextures ) (int,int *) ;int (* DXSetResourceShareHandleNV ) (int ,int *) ;} ;
 struct TYPE_5__ {struct priv_owner* priv; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/ * HANDLE ;
-typedef  TYPE_3__ GL ;
+typedef int HRESULT ;
+typedef int * HANDLE ;
+typedef TYPE_3__ GL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DMULTISAMPLE_NONE ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GL_CLAMP_TO_EDGE ; 
- int /*<<< orphan*/  GL_LINEAR ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  GL_TEXTURE_MAG_FILTER ; 
- int /*<<< orphan*/  GL_TEXTURE_MIN_FILTER ; 
- int /*<<< orphan*/  GL_TEXTURE_WRAP_S ; 
- int /*<<< orphan*/  GL_TEXTURE_WRAP_T ; 
- int /*<<< orphan*/  IDirect3DDevice9Ex_CreateRenderTarget (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IMGFMT_RGB0 ; 
- int /*<<< orphan*/  MP_ERR (struct ra_hwdec_mapper*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SHARED_SURFACE_D3DFMT ; 
- int /*<<< orphan*/  WGL_ACCESS_READ_ONLY_NV ; 
- int /*<<< orphan*/  mp_HRESULT_to_str (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_LastError_to_str () ; 
- int /*<<< orphan*/  ra_create_wrapped_tex (int /*<<< orphan*/ ,struct ra_tex_params*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ra_find_unorm_format (int /*<<< orphan*/ ,int,int) ; 
- TYPE_3__* ra_gl_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub10 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub5 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub6 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub7 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub8 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub9 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int D3DMULTISAMPLE_NONE ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int GL_CLAMP_TO_EDGE ;
+ int GL_LINEAR ;
+ int GL_TEXTURE_2D ;
+ int GL_TEXTURE_MAG_FILTER ;
+ int GL_TEXTURE_MIN_FILTER ;
+ int GL_TEXTURE_WRAP_S ;
+ int GL_TEXTURE_WRAP_T ;
+ int IDirect3DDevice9Ex_CreateRenderTarget (int ,int ,int ,int ,int ,int ,int ,int *,int **) ;
+ int IMGFMT_RGB0 ;
+ int MP_ERR (struct ra_hwdec_mapper*,char*,int ) ;
+ int SHARED_SURFACE_D3DFMT ;
+ int WGL_ACCESS_READ_ONLY_NV ;
+ int mp_HRESULT_to_str (int ) ;
+ int mp_LastError_to_str () ;
+ int ra_create_wrapped_tex (int ,struct ra_tex_params*,int ) ;
+ int ra_find_unorm_format (int ,int,int) ;
+ TYPE_3__* ra_gl_get (int ) ;
+ int stub1 (int ,int *) ;
+ int stub10 (int ,int,int *) ;
+ int stub2 (int,int *) ;
+ int stub3 (int ,int ) ;
+ int stub4 (int ,int ,int ) ;
+ int stub5 (int ,int ,int ) ;
+ int stub6 (int ,int ,int ) ;
+ int stub7 (int ,int ,int ) ;
+ int stub8 (int ,int ) ;
+ int stub9 (int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static int mapper_init(struct ra_hwdec_mapper *mapper)
 {
@@ -66,7 +66,7 @@ __attribute__((used)) static int mapper_init(struct ra_hwdec_mapper *mapper)
     p->device = p_owner->device;
     p->device_h = p_owner->device_h;
 
-    HANDLE share_handle = NULL;
+    HANDLE share_handle = ((void*)0);
     hr = IDirect3DDevice9Ex_CreateRenderTarget(
         p->device,
         mapper->src_params.w, mapper->src_params.h,
@@ -114,8 +114,8 @@ __attribute__((used)) static int mapper_init(struct ra_hwdec_mapper *mapper)
         .h = mapper->src_params.h,
         .d = 1,
         .format = ra_find_unorm_format(mapper->ra, 1, 4),
-        .render_src = true,
-        .src_linear = true,
+        .render_src = 1,
+        .src_linear = 1,
     };
     if (!params.format)
         return -1;

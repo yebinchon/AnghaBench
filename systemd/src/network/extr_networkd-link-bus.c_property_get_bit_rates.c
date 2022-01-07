@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int /*<<< orphan*/  sd_bus ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
+typedef int sd_bus ;
 struct TYPE_6__ {scalar_t__ tx_bytes; scalar_t__ rx_bytes; } ;
 struct TYPE_5__ {scalar_t__ tx_bytes; scalar_t__ rx_bytes; } ;
-struct TYPE_8__ {TYPE_2__ stats_new; TYPE_1__ stats_old; int /*<<< orphan*/  stats_updated; TYPE_3__* manager; } ;
-struct TYPE_7__ {scalar_t__ speed_meter_usec_old; scalar_t__ speed_meter_usec_new; int /*<<< orphan*/  use_speed_meter; } ;
-typedef  TYPE_3__ Manager ;
-typedef  TYPE_4__ Link ;
+struct TYPE_8__ {TYPE_2__ stats_new; TYPE_1__ stats_old; int stats_updated; TYPE_3__* manager; } ;
+struct TYPE_7__ {scalar_t__ speed_meter_usec_old; scalar_t__ speed_meter_usec_new; int use_speed_meter; } ;
+typedef TYPE_3__ Manager ;
+typedef TYPE_4__ Link ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUS_ERROR_SPEED_METER_INACTIVE ; 
- double UINT64_MAX ; 
- double USEC_PER_SEC ; 
- int /*<<< orphan*/  assert (int) ; 
- int sd_bus_error_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int sd_bus_message_append (int /*<<< orphan*/ *,char*,scalar_t__,scalar_t__) ; 
+
+ int BUS_ERROR_SPEED_METER_INACTIVE ;
+ double UINT64_MAX ;
+ double USEC_PER_SEC ;
+ int assert (int) ;
+ int sd_bus_error_set (int *,int ,char*) ;
+ int sd_bus_message_append (int *,char*,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static int property_get_bit_rates(
                 sd_bus *bus,

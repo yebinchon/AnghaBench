@@ -1,86 +1,86 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WCHAR ;
-typedef  int UINT ;
-typedef  char* PBYTE ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConInitStdStreams () ; 
- int /*<<< orphan*/  ConPuts (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ConResPrintf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  ConResPuts (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int EXIT_FAILURE ; 
- int EXIT_SUCCESS ; 
- scalar_t__ FALSE ; 
- int FileSize (int /*<<< orphan*/ *) ; 
- int GetBuff (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDS_ASCIIDIFF ; 
- int /*<<< orphan*/  IDS_BADSYNTAX ; 
- int /*<<< orphan*/  IDS_COMPARING ; 
- int /*<<< orphan*/  IDS_FILEERROR ; 
- int /*<<< orphan*/  IDS_FILESIZEERROR ; 
- int /*<<< orphan*/  IDS_HELP ; 
- int /*<<< orphan*/  IDS_HEXADECIMALDIFF ; 
- int /*<<< orphan*/  IDS_INVALIDSWITCH ; 
- int /*<<< orphan*/  IDS_MATCH ; 
- int /*<<< orphan*/  IDS_MISMATCHLINE ; 
- int /*<<< orphan*/  IDS_MISMATCHOFFSET ; 
- int /*<<< orphan*/  IDS_READERROR ; 
- int /*<<< orphan*/  IDS_SIZEDIFFERS ; 
- int /*<<< orphan*/  STRBUF ; 
- int /*<<< orphan*/  StdErr ; 
- int /*<<< orphan*/  StdOut ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  _MAX_PATH ; 
- int /*<<< orphan*/ * _wfopen (int*,char*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ ferror (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ malloc (int /*<<< orphan*/ ) ; 
- int towlower (int) ; 
- int /*<<< orphan*/  wcsncpy (int*,int*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int WCHAR ;
+typedef int UINT ;
+typedef char* PBYTE ;
+typedef int INT ;
+typedef int FILE ;
+typedef scalar_t__ BOOL ;
+
+
+ int ConInitStdStreams () ;
+ int ConPuts (int ,char*) ;
+ int ConResPrintf (int ,int ,...) ;
+ int ConResPuts (int ,int ) ;
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ scalar_t__ FALSE ;
+ int FileSize (int *) ;
+ int GetBuff (char*,int *) ;
+ int IDS_ASCIIDIFF ;
+ int IDS_BADSYNTAX ;
+ int IDS_COMPARING ;
+ int IDS_FILEERROR ;
+ int IDS_FILESIZEERROR ;
+ int IDS_HELP ;
+ int IDS_HEXADECIMALDIFF ;
+ int IDS_INVALIDSWITCH ;
+ int IDS_MATCH ;
+ int IDS_MISMATCHLINE ;
+ int IDS_MISMATCHOFFSET ;
+ int IDS_READERROR ;
+ int IDS_SIZEDIFFERS ;
+ int STRBUF ;
+ int StdErr ;
+ int StdOut ;
+ scalar_t__ TRUE ;
+ int _MAX_PATH ;
+ int * _wfopen (int*,char*) ;
+ int assert (int) ;
+ int fclose (int *) ;
+ scalar_t__ ferror (int *) ;
+ int free (char*) ;
+ scalar_t__ malloc (int ) ;
+ int towlower (int) ;
+ int wcsncpy (int*,int*,int ) ;
 
 int wmain(int argc, WCHAR* argv[])
 {
     INT i;
 
-    /* File pointers */
-    FILE *fp1 = NULL;
-    FILE *fp2 = NULL;
+
+    FILE *fp1 = ((void*)0);
+    FILE *fp2 = ((void*)0);
 
     INT BufLen1, BufLen2;
-    PBYTE Buff1 = NULL;
-    PBYTE Buff2 = NULL;
-    WCHAR File1[_MAX_PATH + 1], // File paths
+    PBYTE Buff1 = ((void*)0);
+    PBYTE Buff2 = ((void*)0);
+    WCHAR File1[_MAX_PATH + 1],
           File2[_MAX_PATH + 1];
-    BOOL bAscii = FALSE,        // /A switch
-         bLineNos = FALSE;      // /L switch
+    BOOL bAscii = FALSE,
+         bLineNos = FALSE;
     UINT LineNumber;
     UINT Offset;
-    INT  FileSizeFile1;
-    INT  FileSizeFile2;
-    INT  NumberOfOptions = 0;
-    INT  FilesOK = 1;
-    INT  Status = EXIT_SUCCESS;
+    INT FileSizeFile1;
+    INT FileSizeFile2;
+    INT NumberOfOptions = 0;
+    INT FilesOK = 1;
+    INT Status = EXIT_SUCCESS;
 
-    /* Initialize the Console Standard Streams */
+
     ConInitStdStreams();
 
-    /* Parse command line for options */
+
     for (i = 1; i < argc; i++)
     {
         if (argv[i][0] == L'/')
@@ -121,7 +121,7 @@ int wmain(int argc, WCHAR* argv[])
     }
 
     Buff1 = (PBYTE)malloc(STRBUF);
-    if (Buff1 == NULL)
+    if (Buff1 == ((void*)0))
     {
         ConPuts(StdErr, L"Can't get free memory for Buff1\n");
         Status = EXIT_FAILURE;
@@ -129,20 +129,20 @@ int wmain(int argc, WCHAR* argv[])
     }
 
     Buff2 = (PBYTE)malloc(STRBUF);
-    if (Buff2 == NULL)
+    if (Buff2 == ((void*)0))
     {
         ConPuts(StdErr, L"Can't get free memory for Buff2\n");
         Status = EXIT_FAILURE;
         goto Cleanup;
     }
 
-    if ((fp1 = _wfopen(File1, L"rb")) == NULL)
+    if ((fp1 = _wfopen(File1, L"rb")) == ((void*)0))
     {
         ConResPrintf(StdErr, IDS_FILEERROR, File1);
         Status = EXIT_FAILURE;
         goto Cleanup;
     }
-    if ((fp2 = _wfopen(File2, L"rb")) == NULL)
+    if ((fp2 = _wfopen(File2, L"rb")) == ((void*)0))
     {
         ConResPrintf(StdErr, IDS_FILEERROR, File2);
         Status = EXIT_FAILURE;
@@ -198,7 +198,7 @@ int wmain(int argc, WCHAR* argv[])
             {
                 FilesOK = 0;
 
-                /* Reporting here a mismatch */
+
                 if (bLineNos)
                     ConResPrintf(StdOut, IDS_MISMATCHLINE, LineNumber);
                 else

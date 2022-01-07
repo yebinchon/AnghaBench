@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SIGHUP ; 
- scalar_t__ child ; 
- int /*<<< orphan*/  kill (scalar_t__,int /*<<< orphan*/ ) ; 
+ int SIGHUP ;
+ scalar_t__ child ;
+ int kill (scalar_t__,int ) ;
 
 __attribute__((used)) static void tidyup(void)
 {
-	if (child)
-		kill(child, SIGHUP);
+ if (child)
+  kill(child, SIGHUP);
 }

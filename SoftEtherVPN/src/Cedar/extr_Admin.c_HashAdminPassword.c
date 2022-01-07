@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  Sha0 (void*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StrLen (char*) ; 
+ int Sha0 (void*,char*,int ) ;
+ int StrLen (char*) ;
 
 void HashAdminPassword(void *hash, char *password)
 {
-	// Validate arguments
-	if (hash == NULL || password == NULL)
-	{
-		return;
-	}
 
-	Sha0(hash, password, StrLen(password));
+ if (hash == ((void*)0) || password == ((void*)0))
+ {
+  return;
+ }
+
+ Sha0(hash, password, StrLen(password));
 }

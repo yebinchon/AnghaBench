@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  scalar_t__ uint16_t ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
-struct TYPE_3__ {int extra_chunk_data_len; scalar_t__ extra_chunk_track_num; scalar_t__ extra_chunk_data_offs; int /*<<< orphan*/  extra_chunk_data; } ;
-typedef  TYPE_1__ AVI_TRACK_STREAM_STATE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVI_SYNC_CHUNK (int /*<<< orphan*/ *) ; 
- scalar_t__ AVI_TWOCC (char,char) ; 
- int /*<<< orphan*/  LOG_DEBUG (int /*<<< orphan*/ *,char*,...) ; 
- int READ_BYTES (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  VC_CONTAINER_ERROR_CONTINUE ; 
- int /*<<< orphan*/  VC_CONTAINER_ERROR_FORMAT_INVALID ; 
- int /*<<< orphan*/  VC_CONTAINER_ERROR_FORMAT_NOT_SUPPORTED ; 
- int /*<<< orphan*/  VC_CONTAINER_SUCCESS ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef scalar_t__ uint16_t ;
+typedef int VC_CONTAINER_T ;
+typedef int VC_CONTAINER_STATUS_T ;
+struct TYPE_3__ {int extra_chunk_data_len; scalar_t__ extra_chunk_track_num; scalar_t__ extra_chunk_data_offs; int extra_chunk_data; } ;
+typedef TYPE_1__ AVI_TRACK_STREAM_STATE_T ;
+
+
+ int AVI_SYNC_CHUNK (int *) ;
+ scalar_t__ AVI_TWOCC (char,char) ;
+ int LOG_DEBUG (int *,char*,...) ;
+ int READ_BYTES (int *,int ,int) ;
+ int VC_CONTAINER_ERROR_CONTINUE ;
+ int VC_CONTAINER_ERROR_FORMAT_INVALID ;
+ int VC_CONTAINER_ERROR_FORMAT_NOT_SUPPORTED ;
+ int VC_CONTAINER_SUCCESS ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T avi_read_dd_chunk( VC_CONTAINER_T *p_ctx,
    AVI_TRACK_STREAM_STATE_T *p_state, uint16_t data_type, uint32_t chunk_size,

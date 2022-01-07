@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct repl_handshake {int handshake_id; int binlog_file_size; int binlog_first_file_size; int binlog_tag_len; int binlog_slice_name_len; int /*<<< orphan*/  binlog_slice_end_pos; int /*<<< orphan*/  binlog_slice_start_pos; scalar_t__* binlog_tag; int /*<<< orphan*/  binlog_file_end_hash; int /*<<< orphan*/  binlog_file_start_hash; scalar_t__* binlog_first_file_start_hash; scalar_t__ flags; int /*<<< orphan*/  type; } ;
-struct repl_client_status {int /*<<< orphan*/  conn_generation; struct connection* conn; struct related_binlog* rb; } ;
-struct related_binlog {int first_file_start_size; char first_file_start_hash; TYPE_3__* binlog; TYPE_2__* kfs_binlog; TYPE_1__* kfs_replica; int /*<<< orphan*/  min_binlog_pos; int /*<<< orphan*/  max_binlog_pos; int /*<<< orphan*/  slice_binlog_pos; struct repl_client_status** client; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct repl_handshake {int handshake_id; int binlog_file_size; int binlog_first_file_size; int binlog_tag_len; int binlog_slice_name_len; int binlog_slice_end_pos; int binlog_slice_start_pos; scalar_t__* binlog_tag; int binlog_file_end_hash; int binlog_file_start_hash; scalar_t__* binlog_first_file_start_hash; scalar_t__ flags; int type; } ;
+struct repl_client_status {int conn_generation; struct connection* conn; struct related_binlog* rb; } ;
+struct related_binlog {int first_file_start_size; char first_file_start_hash; TYPE_3__* binlog; TYPE_2__* kfs_binlog; TYPE_1__* kfs_replica; int min_binlog_pos; int max_binlog_pos; int slice_binlog_pos; struct repl_client_status** client; } ;
 struct kfs_file_info {char* filename; int file_size; } ;
-struct connection {int /*<<< orphan*/  remote_port; int /*<<< orphan*/  generation; } ;
-typedef  int /*<<< orphan*/  md5_hash_t ;
+struct connection {int remote_port; int generation; } ;
+typedef int md5_hash_t ;
 struct TYPE_6__ {int binlog_tag_len; char* binlog_tag; } ;
-struct TYPE_5__ {int /*<<< orphan*/  fd; struct kfs_file_info* info; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * binlogs; scalar_t__ binlog_num; } ;
+struct TYPE_5__ {int fd; struct kfs_file_info* info; } ;
+struct TYPE_4__ {int * binlogs; scalar_t__ binlog_num; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  P_REPL_HANDSHAKE ; 
- struct repl_handshake* alloc_packet (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  compute_start_end_hashes (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,struct repl_client_status*,int) ; 
- struct repl_client_status* get_client_by_handshake (int,int) ; 
- int get_orig_file_size (int /*<<< orphan*/ ) ; 
- int last_handshake_id ; 
- scalar_t__ load_binlog_data (struct related_binlog*) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,char*,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  push_packet (struct connection*,int) ; 
- int /*<<< orphan*/  show_remote_ip (struct connection*) ; 
- int /*<<< orphan*/  stderr ; 
- int strlen (char*) ; 
- char* strrchr (char*,char) ; 
- scalar_t__ verbosity ; 
- int /*<<< orphan*/  vkprintf (int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,scalar_t__*,char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int P_REPL_HANDSHAKE ;
+ struct repl_handshake* alloc_packet (int) ;
+ int assert (int) ;
+ int compute_start_end_hashes (int ,int,int ,int ) ;
+ int fprintf (int ,char*,struct repl_client_status*,int) ;
+ struct repl_client_status* get_client_by_handshake (int,int) ;
+ int get_orig_file_size (int ) ;
+ int last_handshake_id ;
+ scalar_t__ load_binlog_data (struct related_binlog*) ;
+ int memcpy (scalar_t__*,char*,int) ;
+ int memset (int ,int ,int) ;
+ int push_packet (struct connection*,int) ;
+ int show_remote_ip (struct connection*) ;
+ int stderr ;
+ int strlen (char*) ;
+ char* strrchr (char*,char) ;
+ scalar_t__ verbosity ;
+ int vkprintf (int,char*,int ,int ,int,scalar_t__*,char*,int,int ,int ) ;
 
 int init_client_session (struct related_binlog *R, struct connection *c, int target_no) {
   assert (!R->client[target_no]);

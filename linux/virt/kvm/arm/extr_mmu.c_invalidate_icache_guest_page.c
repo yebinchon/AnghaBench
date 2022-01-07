@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  kvm_pfn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __invalidate_icache_guest_page (int /*<<< orphan*/ ,unsigned long) ; 
+
+
+
+typedef int kvm_pfn_t ;
+
+
+ int __invalidate_icache_guest_page (int ,unsigned long) ;
 
 __attribute__((used)) static void invalidate_icache_guest_page(kvm_pfn_t pfn, unsigned long size)
 {
-	__invalidate_icache_guest_page(pfn, size);
+ __invalidate_icache_guest_page(pfn, size);
 }

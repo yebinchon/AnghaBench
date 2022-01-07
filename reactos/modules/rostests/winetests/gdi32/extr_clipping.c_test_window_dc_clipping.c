@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RECT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HRGN ;
-typedef  int /*<<< orphan*/  HDC ;
 
-/* Variables and functions */
- int COMPLEXREGION ; 
- int /*<<< orphan*/  CreateRectRgn (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateWindowExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DestroyWindow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EqualRect (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int ExtSelectClipRgn (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int GetClipRgn (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int GetRgnBox (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int GetSystemMetrics (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetWindowDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RGN_COPY ; 
- int /*<<< orphan*/  RGN_DIFF ; 
- int RectVisible (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int SIMPLEREGION ; 
- int /*<<< orphan*/  SM_CMONITORS ; 
- int /*<<< orphan*/  SM_CXSCREEN ; 
- int /*<<< orphan*/  SM_CXVIRTUALSCREEN ; 
- int /*<<< orphan*/  SM_CYSCREEN ; 
- int /*<<< orphan*/  SM_CYVIRTUALSCREEN ; 
- int /*<<< orphan*/  SM_XVIRTUALSCREEN ; 
- int /*<<< orphan*/  SM_YVIRTUALSCREEN ; 
- int /*<<< orphan*/  SetRect (int /*<<< orphan*/ *,int,int,int,int) ; 
- int /*<<< orphan*/  WS_POPUP ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
- int /*<<< orphan*/  trace (char*,int,int) ; 
- int wine_dbgstr_rect (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int RECT ;
+typedef int HWND ;
+typedef int HRGN ;
+typedef int HDC ;
+
+
+ int COMPLEXREGION ;
+ int CreateRectRgn (int ,int ,int ,int ) ;
+ int CreateWindowExA (int ,char*,int *,int ,int,int,int,int,int ,int ,int ,int *) ;
+ int DeleteDC (int ) ;
+ int DeleteObject (int ) ;
+ int DestroyWindow (int ) ;
+ int EqualRect (int *,int *) ;
+ int ExtSelectClipRgn (int ,int ,int ) ;
+ int GetClipRgn (int ,int ) ;
+ int GetRgnBox (int ,int *) ;
+ int GetSystemMetrics (int ) ;
+ int GetWindowDC (int ) ;
+ int RGN_COPY ;
+ int RGN_DIFF ;
+ int RectVisible (int ,int *) ;
+ int SIMPLEREGION ;
+ int SM_CMONITORS ;
+ int SM_CXSCREEN ;
+ int SM_CXVIRTUALSCREEN ;
+ int SM_CYSCREEN ;
+ int SM_CYVIRTUALSCREEN ;
+ int SM_XVIRTUALSCREEN ;
+ int SM_YVIRTUALSCREEN ;
+ int SetRect (int *,int,int,int,int) ;
+ int WS_POPUP ;
+ int ok (int,char*,int,...) ;
+ int trace (char*,int,int) ;
+ int wine_dbgstr_rect (int *) ;
 
 __attribute__((used)) static void test_window_dc_clipping(void)
 {
@@ -53,8 +53,8 @@ __attribute__((used)) static void test_window_dc_clipping(void)
     RECT rc, virtual_rect;
     int ret, screen_width, screen_height;
 
-    /* Windows versions earlier than Win2k do not support the virtual screen metrics,
-     * so we fall back to the primary screen metrics. */
+
+
     screen_width = GetSystemMetrics(SM_CXVIRTUALSCREEN);
     if(!screen_width) screen_width = GetSystemMetrics(SM_CXSCREEN);
     screen_height = GetSystemMetrics(SM_CYVIRTUALSCREEN);
@@ -64,8 +64,8 @@ __attribute__((used)) static void test_window_dc_clipping(void)
 
     trace("screen resolution %d x %d\n", screen_width, screen_height);
 
-    hwnd = CreateWindowExA(0, "static", NULL, WS_POPUP,
-                           -100, -100, screen_width * 2, screen_height * 2, 0, 0, 0, NULL);
+    hwnd = CreateWindowExA(0, "static", ((void*)0), WS_POPUP,
+                           -100, -100, screen_width * 2, screen_height * 2, 0, 0, 0, ((void*)0));
     hdc = GetWindowDC(0);
     hrgn_empty = CreateRectRgn(0, 0, 0, 0);
     hrgn = CreateRectRgn(0, 0, 0, 0);

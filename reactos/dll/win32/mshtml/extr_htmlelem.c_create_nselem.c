@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsIDOMHTMLElement ;
-typedef  int /*<<< orphan*/  nsIDOMElement ;
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_3__ {int /*<<< orphan*/  nsdoc; } ;
-typedef  TYPE_1__ HTMLDocumentNode ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_UNEXPECTED ; 
- int /*<<< orphan*/  IID_nsIDOMHTMLElement ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_InitDepend (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  nsIDOMElement_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  nsIDOMElement_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMHTMLDocument_CreateElement (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int nsresult ;
+typedef int nsIDOMHTMLElement ;
+typedef int nsIDOMElement ;
+typedef int nsAString ;
+typedef int WCHAR ;
+struct TYPE_3__ {int nsdoc; } ;
+typedef TYPE_1__ HTMLDocumentNode ;
+typedef int HRESULT ;
+
+
+ int ERR (char*,int ) ;
+ int E_FAIL ;
+ int E_UNEXPECTED ;
+ int IID_nsIDOMHTMLElement ;
+ scalar_t__ NS_FAILED (int ) ;
+ int S_OK ;
+ int WARN (char*) ;
+ int nsAString_Finish (int *) ;
+ int nsAString_InitDepend (int *,int const*) ;
+ int nsIDOMElement_QueryInterface (int *,int *,void**) ;
+ int nsIDOMElement_Release (int *) ;
+ int nsIDOMHTMLDocument_CreateElement (int ,int *,int **) ;
 
 HRESULT create_nselem(HTMLDocumentNode *doc, const WCHAR *tag, nsIDOMHTMLElement **ret)
 {

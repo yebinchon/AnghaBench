@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int n; int** max_level; int** max_run; scalar_t__** table_vlc; } ;
-typedef  TYPE_1__ RLTable ;
-typedef  int /*<<< orphan*/  MpegEncContext ;
+typedef TYPE_1__ RLTable ;
+typedef int MpegEncContext ;
 
-/* Variables and functions */
- int MAX_LEVEL ; 
- int get_rl_index (TYPE_1__*,int,int,int) ; 
+
+ int MAX_LEVEL ;
+ int get_rl_index (TYPE_1__*,int,int,int) ;
 
 __attribute__((used)) static int get_size_of_code(MpegEncContext * s, RLTable *rl, int last, int run, int level, int intra){
     int size=0;
@@ -44,14 +44,14 @@ __attribute__((used)) static int get_size_of_code(MpegEncContext * s, RLTable *r
             code = get_rl_index(rl, last, run1, level);
             if (code == rl->n) {
             esc3:
-                /* third escape */
+
                 size+=1+1+6+8;
             } else {
-                /* second escape */
+
                 size+= 1+1+ rl->table_vlc[code][1];
             }
         } else {
-            /* first escape */
+
             size+= 1+1+ rl->table_vlc[code][1];
         }
     } else {

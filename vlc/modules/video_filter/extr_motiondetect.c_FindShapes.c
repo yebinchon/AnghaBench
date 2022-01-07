@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK (int) ; 
- int /*<<< orphan*/  GaussianConvolution (int*,int*,int,int,int) ; 
- int NUM_COLORS ; 
- int __MAX (int,int) ; 
- int __MIN (int,int) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int CHECK (int) ;
+ int GaussianConvolution (int*,int*,int,int,int) ;
+ int NUM_COLORS ;
+ int __MAX (int,int) ;
+ int __MIN (int,int) ;
 
 __attribute__((used)) static int FindShapes( uint32_t *p_diff, uint32_t *p_smooth,
                        int i_pitch, int i_visible, int i_lines,
@@ -27,14 +27,14 @@ __attribute__((used)) static int FindShapes( uint32_t *p_diff, uint32_t *p_smoot
 {
     int last = 1;
 
-    /**
-     * Apply some smoothing to remove noise
-     */
+
+
+
     GaussianConvolution( p_diff, p_smooth, i_pitch, i_lines, i_visible );
 
-    /**
-     * Label the shapes and build the labels dependencies list
-     */
+
+
+
     for( int j = 0; j < i_pitch; j++ )
     {
         p_smooth[j] = 0;
@@ -65,19 +65,11 @@ __attribute__((used)) static int FindShapes( uint32_t *p_diff, uint32_t *p_smoot
                         last++;
                     }
                 }
-                #define CHECK( A ) \
-                if( p_smooth[A] && p_smooth[A] != p_smooth[i*i_pitch+j] ) \
-                { \
-                    if( p_smooth[A] < p_smooth[i*i_pitch+j] ) \
-                        colors[p_smooth[i*i_pitch+j]] = p_smooth[A]; \
-                    else \
-                        colors[p_smooth[A]] = p_smooth[i*i_pitch+j]; \
-                }
-                CHECK( i*i_pitch+j-1 );
-                CHECK( (i-1)*i_pitch+j-1 );
-                CHECK( (i-1)*i_pitch+j );
-                CHECK( (i-1)*i_pitch+j+1 );
-                #undef CHECK
+                if( p_smooth[i*i_pitch+j-1] && p_smooth[i*i_pitch+j-1] != p_smooth[i*i_pitch+j] ) { if( p_smooth[i*i_pitch+j-1] < p_smooth[i*i_pitch+j] ) colors[p_smooth[i*i_pitch+j]] = p_smooth[i*i_pitch+j-1]; else colors[p_smooth[i*i_pitch+j-1]] = p_smooth[i*i_pitch+j]; };
+                if( p_smooth[(i-1)*i_pitch+j-1] && p_smooth[(i-1)*i_pitch+j-1] != p_smooth[i*i_pitch+j] ) { if( p_smooth[(i-1)*i_pitch+j-1] < p_smooth[i*i_pitch+j] ) colors[p_smooth[i*i_pitch+j]] = p_smooth[(i-1)*i_pitch+j-1]; else colors[p_smooth[(i-1)*i_pitch+j-1]] = p_smooth[i*i_pitch+j]; };
+                if( p_smooth[(i-1)*i_pitch+j] && p_smooth[(i-1)*i_pitch+j] != p_smooth[i*i_pitch+j] ) { if( p_smooth[(i-1)*i_pitch+j] < p_smooth[i*i_pitch+j] ) colors[p_smooth[i*i_pitch+j]] = p_smooth[(i-1)*i_pitch+j]; else colors[p_smooth[(i-1)*i_pitch+j]] = p_smooth[i*i_pitch+j]; };
+                if( p_smooth[(i-1)*i_pitch+j+1] && p_smooth[(i-1)*i_pitch+j+1] != p_smooth[i*i_pitch+j] ) { if( p_smooth[(i-1)*i_pitch+j+1] < p_smooth[i*i_pitch+j] ) colors[p_smooth[i*i_pitch+j]] = p_smooth[(i-1)*i_pitch+j+1]; else colors[p_smooth[(i-1)*i_pitch+j+1]] = p_smooth[i*i_pitch+j]; };
+
             }
             else
             {
@@ -87,9 +79,9 @@ __attribute__((used)) static int FindShapes( uint32_t *p_diff, uint32_t *p_smoot
         p_smooth[i*i_pitch+j] = 0;
     }
 
-    /**
-     * Initialise empty rectangle list
-     */
+
+
+
     for( int i = 1; i < last; i++ )
     {
         color_x_min[i] = -1;
@@ -98,9 +90,9 @@ __attribute__((used)) static int FindShapes( uint32_t *p_diff, uint32_t *p_smoot
         color_y_max[i] = -1;
     }
 
-    /**
-     * Compute rectangle coordinates
-     */
+
+
+
     for( int i = 0; i < i_pitch * i_lines; i++ )
     {
         if( p_smooth[i] )
@@ -129,9 +121,9 @@ __attribute__((used)) static int FindShapes( uint32_t *p_diff, uint32_t *p_smoot
         }
     }
 
-    /**
-     * Merge overlaping rectangles
-     */
+
+
+
     for( int i = 1; i < last; i++ )
     {
         if( colors[i] != i ) continue;

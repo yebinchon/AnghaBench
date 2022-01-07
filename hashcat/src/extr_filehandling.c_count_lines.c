@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u64 ;
-typedef  int /*<<< orphan*/  HCFILE ;
 
-/* Variables and functions */
- scalar_t__ HCBUFSIZ_LARGE ; 
- int /*<<< orphan*/  hc_feof (int /*<<< orphan*/ *) ; 
- size_t hc_fread (char*,int,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hcfree (char*) ; 
- scalar_t__ hcmalloc (scalar_t__) ; 
+
+
+
+typedef scalar_t__ u64 ;
+typedef int HCFILE ;
+
+
+ scalar_t__ HCBUFSIZ_LARGE ;
+ int hc_feof (int *) ;
+ size_t hc_fread (char*,int,scalar_t__,int *) ;
+ int hcfree (char*) ;
+ scalar_t__ hcmalloc (scalar_t__) ;
 
 u64 count_lines (HCFILE *fp)
 {

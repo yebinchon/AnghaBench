@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TTree ;
-typedef  int /*<<< orphan*/  CompileState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IBackCommit ; 
- int /*<<< orphan*/  IBehind ; 
- int /*<<< orphan*/  IChoice ; 
- int /*<<< orphan*/  IFail ; 
- int MAXBEHIND ; 
- int /*<<< orphan*/  addinstruction (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int addoffsetinst (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  codegen (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int fixedlen (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fullset ; 
- int /*<<< orphan*/  hascaptures (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jumptohere (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int TTree ;
+typedef int CompileState ;
+
+
+ int IBackCommit ;
+ int IBehind ;
+ int IChoice ;
+ int IFail ;
+ int MAXBEHIND ;
+ int addinstruction (int *,int ,int) ;
+ int addoffsetinst (int *,int ) ;
+ int codegen (int *,int *,int ,int,int ) ;
+ int fixedlen (int *) ;
+ int fullset ;
+ int hascaptures (int *) ;
+ int jumptohere (int *,int) ;
 
 __attribute__((used)) static void codeand (CompileState *compst, TTree *tree, int tt) {
   int n = fixedlen(tree);
@@ -34,7 +34,7 @@ __attribute__((used)) static void codeand (CompileState *compst, TTree *tree, in
     if (n > 0)
       addinstruction(compst, IBehind, n);
   }
-  else {  /* default: Choice L1; p1; BackCommit L2; L1: Fail; L2: */
+  else {
     int pcommit;
     int pchoice = addoffsetinst(compst, IChoice);
     codegen(compst, tree, 0, tt, fullset);

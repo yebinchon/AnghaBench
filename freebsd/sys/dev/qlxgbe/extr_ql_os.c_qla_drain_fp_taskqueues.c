@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * fp_taskqueue; } ;
-typedef  TYPE_2__ qla_tx_fp_t ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * fp_taskqueue; } ;
+typedef TYPE_2__ qla_tx_fp_t ;
 struct TYPE_5__ {int num_sds_rings; } ;
 struct TYPE_7__ {TYPE_2__* tx_fp; TYPE_1__ hw; } ;
-typedef  TYPE_3__ qla_host_t ;
+typedef TYPE_3__ qla_host_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  taskqueue_drain_all (int /*<<< orphan*/ *) ; 
+
+ int taskqueue_drain_all (int *) ;
 
 __attribute__((used)) static void
 qla_drain_fp_taskqueues(qla_host_t *ha)
 {
-        int     i;
+        int i;
 
         for (i = 0; i < ha->hw.num_sds_rings; i++) {
                 qla_tx_fp_t *fp = &ha->tx_fp[i];
 
-                if (fp->fp_taskqueue != NULL) {
+                if (fp->fp_taskqueue != ((void*)0)) {
                         taskqueue_drain_all(fp->fp_taskqueue);
                 }
         }

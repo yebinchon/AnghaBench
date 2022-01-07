@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT32 ;
-struct TYPE_3__ {int /*<<< orphan*/  Template; } ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  TYPE_1__ ACPI_DMTABLE_DATA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_CAST_PTR (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* ACPI_COMMON_HEADER (char*,char*) ; 
- scalar_t__ ACPI_COMPARE_NAMESEG (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_RSDP_NAME ; 
- int /*<<< orphan*/  ACPI_SIG_DSDT ; 
- int /*<<< orphan*/  ACPI_SIG_FACS ; 
- int /*<<< orphan*/  ACPI_SIG_OSDT ; 
- int /*<<< orphan*/  ACPI_SIG_SSDT ; 
- int /*<<< orphan*/  ACPI_TABLE_HEADER ; 
- int /*<<< orphan*/  AE_ERROR ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  AcpiDmDumpDataTable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*,...) ; 
- int /*<<< orphan*/  AcpiOsRedirectOutput (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AcpiUtStrlwr (char*) ; 
- scalar_t__ AslGbl_VerboseTemplates ; 
- int DtEmitDefinitionBlock (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  FILE_SUFFIX_ASL_CODE ; 
- char* FlGenerateFilename (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TemplateFacs ; 
- int /*<<< orphan*/  TemplateRsdp ; 
- int /*<<< orphan*/  UtQueryForOverwrite (char*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/ * stdout ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UINT32 ;
+struct TYPE_3__ {int Template; } ;
+typedef int FILE ;
+typedef int ACPI_STATUS ;
+typedef TYPE_1__ ACPI_DMTABLE_DATA ;
+
+
+ int ACPI_CAST_PTR (int ,int ) ;
+ char* ACPI_COMMON_HEADER (char*,char*) ;
+ scalar_t__ ACPI_COMPARE_NAMESEG (char*,int ) ;
+ int ACPI_RSDP_NAME ;
+ int ACPI_SIG_DSDT ;
+ int ACPI_SIG_FACS ;
+ int ACPI_SIG_OSDT ;
+ int ACPI_SIG_SSDT ;
+ int ACPI_TABLE_HEADER ;
+ int AE_ERROR ;
+ int AE_OK ;
+ int AcpiDmDumpDataTable (int ) ;
+ int AcpiOsPrintf (char*,...) ;
+ int AcpiOsRedirectOutput (int *) ;
+ int AcpiUtStrlwr (char*) ;
+ scalar_t__ AslGbl_VerboseTemplates ;
+ int DtEmitDefinitionBlock (int *,char*,int ,int) ;
+ int FILE_SUFFIX_ASL_CODE ;
+ char* FlGenerateFilename (char*,int ) ;
+ int TemplateFacs ;
+ int TemplateRsdp ;
+ int UtQueryForOverwrite (char*) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int stderr ;
+ int * stdout ;
 
 __attribute__((used)) static ACPI_STATUS
 DtCreateOneTemplate (
-    char                    *Signature,
-    UINT32                  TableCount,
-    const ACPI_DMTABLE_DATA  *TableData)
+    char *Signature,
+    UINT32 TableCount,
+    const ACPI_DMTABLE_DATA *TableData)
 {
-    char                    *DisasmFilename;
-    FILE                    *File;
-    ACPI_STATUS             Status = AE_OK;
-    int                     Actual;
-    UINT32                  i;
+    char *DisasmFilename;
+    FILE *File;
+    ACPI_STATUS Status = AE_OK;
+    int Actual;
+    UINT32 i;
 
 
-    /* New file will have a .asl suffix */
+
 
     DisasmFilename = FlGenerateFilename (
         Signature, FILE_SUFFIX_ASL_CODE);
@@ -83,7 +83,7 @@ DtCreateOneTemplate (
         return (AE_ERROR);
     }
 
-    /* Emit the common file header */
+
 
     AcpiOsRedirectOutput (File);
 
@@ -101,11 +101,11 @@ DtCreateOneTemplate (
             Signature, TableCount);
     }
 
-    /* Dump the actual ACPI table */
+
 
     if (TableData)
     {
-        /* Normal case, tables that appear in AcpiDmTableData */
+
 
         AcpiOsPrintf (" (static data table)\n");
 
@@ -125,7 +125,7 @@ DtCreateOneTemplate (
     }
     else
     {
-        /* Special ACPI tables - DSDT, SSDT, OSDT, FACS, RSDP */
+
 
         AcpiOsPrintf (" (AML byte code table)\n");
         AcpiOsPrintf (" */\n");
@@ -140,7 +140,7 @@ DtCreateOneTemplate (
                 goto Cleanup;
             }
 
-            /* Emit any requested SSDTs into the same file */
+
 
             for (i = 1; i <= TableCount; i++)
             {

@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-typedef  int /*<<< orphan*/  svn_sqlite__db_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int svn_boolean_t ;
-struct TYPE_3__ {scalar_t__ presence; char* repos_relpath; scalar_t__ kind; char* changed_author; int /*<<< orphan*/  inherited_props; scalar_t__ file_external; int /*<<< orphan*/  properties; int /*<<< orphan*/  recorded_time; int /*<<< orphan*/  recorded_size; int /*<<< orphan*/  checksum; int /*<<< orphan*/  local_relpath; int /*<<< orphan*/  op_depth; int /*<<< orphan*/  revision; int /*<<< orphan*/  repos_id; int /*<<< orphan*/  changed_date; int /*<<< orphan*/  changed_rev; int /*<<< orphan*/  depth; int /*<<< orphan*/  parent_relpath; int /*<<< orphan*/  wc_id; } ;
-typedef  TYPE_1__ db_node_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STMT_INSERT_NODE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- int /*<<< orphan*/  SVN_ERR_WC_CORRUPT ; 
- int /*<<< orphan*/  SVN_INVALID_FILESIZE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  kind_map ; 
- int /*<<< orphan*/  presence_map ; 
- int /*<<< orphan*/ * svn_depth_to_word (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_dirent_local_style (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ svn_node_dir ; 
- scalar_t__ svn_node_file ; 
- scalar_t__ svn_node_none ; 
- int /*<<< orphan*/  svn_sqlite__bind_checksum (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__bind_int (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  svn_sqlite__bind_int64 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__bind_iprops (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__bind_properties (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__bind_revnum (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__bind_text (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  svn_sqlite__bind_token (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  svn_sqlite__bindf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__get_statement (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__insert (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc__db_status_base_deleted ; 
- scalar_t__ svn_wc__db_status_excluded ; 
- scalar_t__ svn_wc__db_status_incomplete ; 
- scalar_t__ svn_wc__db_status_normal ; 
- scalar_t__ svn_wc__db_status_not_present ; 
- scalar_t__ svn_wc__db_status_server_excluded ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_sqlite__stmt_t ;
+typedef int svn_sqlite__db_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+struct TYPE_3__ {scalar_t__ presence; char* repos_relpath; scalar_t__ kind; char* changed_author; int inherited_props; scalar_t__ file_external; int properties; int recorded_time; int recorded_size; int checksum; int local_relpath; int op_depth; int revision; int repos_id; int changed_date; int changed_rev; int depth; int parent_relpath; int wc_id; } ;
+typedef TYPE_1__ db_node_t ;
+typedef int apr_pool_t ;
+
+
+ int STMT_INSERT_NODE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int) ;
+ int SVN_ERR_WC_CORRUPT ;
+ int SVN_INVALID_FILESIZE ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int kind_map ;
+ int presence_map ;
+ int * svn_depth_to_word (int ) ;
+ int svn_dirent_local_style (int ,int *) ;
+ int * svn_error_createf (int ,int *,int ,int ) ;
+ scalar_t__ svn_node_dir ;
+ scalar_t__ svn_node_file ;
+ scalar_t__ svn_node_none ;
+ int svn_sqlite__bind_checksum (int *,int,int ,int *) ;
+ int svn_sqlite__bind_int (int *,int,int) ;
+ int svn_sqlite__bind_int64 (int *,int,int ) ;
+ int svn_sqlite__bind_iprops (int *,int,int ,int *) ;
+ int svn_sqlite__bind_properties (int *,int,int ,int *) ;
+ int svn_sqlite__bind_revnum (int *,int,int ) ;
+ int svn_sqlite__bind_text (int *,int,char*) ;
+ int svn_sqlite__bind_token (int *,int,int ,scalar_t__) ;
+ int svn_sqlite__bindf (int *,char*,int ,int ,int ,int ,int *) ;
+ int svn_sqlite__get_statement (int **,int *,int ) ;
+ int svn_sqlite__insert (int *,int *) ;
+ scalar_t__ svn_wc__db_status_base_deleted ;
+ scalar_t__ svn_wc__db_status_excluded ;
+ scalar_t__ svn_wc__db_status_incomplete ;
+ scalar_t__ svn_wc__db_status_normal ;
+ scalar_t__ svn_wc__db_status_not_present ;
+ scalar_t__ svn_wc__db_status_server_excluded ;
 
 __attribute__((used)) static svn_error_t *
 insert_node(svn_sqlite__db_t *sdb,
@@ -70,10 +70,10 @@ insert_node(svn_sqlite__db_t *sdb,
                             node->local_relpath,
                             node->op_depth,
                             node->parent_relpath,
-                            /* Setting depth for files? */
+
                             (node->kind == svn_node_dir && present)
                               ? svn_depth_to_word(node->depth)
-                              : NULL));
+                              : ((void*)0)));
 
   if (present && node->repos_relpath)
     {
@@ -106,7 +106,7 @@ insert_node(svn_sqlite__db_t *sdb,
           && node->presence != svn_wc__db_status_not_present
           && node->presence != svn_wc__db_status_excluded
           && node->presence != svn_wc__db_status_server_excluded)
-        return svn_error_createf(SVN_ERR_WC_CORRUPT, NULL,
+        return svn_error_createf(SVN_ERR_WC_CORRUPT, ((void*)0),
                                  _("The file '%s' has no checksum"),
                                  svn_dirent_local_style(node->local_relpath,
                                                         scratch_pool));
@@ -123,7 +123,7 @@ insert_node(svn_sqlite__db_t *sdb,
         }
     }
 
-   /* ### Never set, props done later */
+
   if (node->properties && present && node->repos_relpath)
     SVN_ERR(svn_sqlite__bind_properties(stmt, 15, node->properties,
                                         scratch_pool));
@@ -135,7 +135,7 @@ insert_node(svn_sqlite__db_t *sdb,
     SVN_ERR(svn_sqlite__bind_iprops(stmt, 23, node->inherited_props,
                                     scratch_pool));
 
-  SVN_ERR(svn_sqlite__insert(NULL, stmt));
+  SVN_ERR(svn_sqlite__insert(((void*)0), stmt));
 
   return SVN_NO_ERROR;
 }

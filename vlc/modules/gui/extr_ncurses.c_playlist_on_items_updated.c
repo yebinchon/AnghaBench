@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_playlist_t ;
-typedef  int /*<<< orphan*/  vlc_playlist_item_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int vlc_playlist_t ;
+typedef int vlc_playlist_item_t ;
 struct TYPE_2__ {int need_update; } ;
-typedef  TYPE_1__ intf_sys_t ;
+typedef TYPE_1__ intf_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLC_UNUSED (size_t) ; 
+
+ int VLC_UNUSED (size_t) ;
 
 __attribute__((used)) static void
 playlist_on_items_updated(vlc_playlist_t *playlist,
@@ -28,5 +28,5 @@ playlist_on_items_updated(vlc_playlist_t *playlist,
     VLC_UNUSED(playlist);
     VLC_UNUSED(index); VLC_UNUSED(items); VLC_UNUSED(count);
 
-    ((intf_sys_t *)userdata)->need_update = true;
+    ((intf_sys_t *)userdata)->need_update = 1;
 }

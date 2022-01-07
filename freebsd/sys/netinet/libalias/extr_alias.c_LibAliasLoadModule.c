@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct proto_handler {int dummy; } ;
-struct dll {void* handle; int /*<<< orphan*/  name; } ;
-struct TYPE_2__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ moduledata_t ;
+struct dll {void* handle; int name; } ;
+struct TYPE_2__ {int name; } ;
+typedef TYPE_1__ moduledata_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DLL_LEN ; 
- scalar_t__ EEXIST ; 
- int EINVAL ; 
- int ENOMEM ; 
- int /*<<< orphan*/  LibAliasAttachHandlers (struct proto_handler*) ; 
- int /*<<< orphan*/  RTLD_LAZY ; 
- scalar_t__ attach_dll (struct dll*) ; 
- char* dlerror () ; 
- void* dlopen (char*,int /*<<< orphan*/ ) ; 
- void* dlsym (void*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  free (struct dll*) ; 
- struct dll* malloc (int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strncpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int DLL_LEN ;
+ scalar_t__ EEXIST ;
+ int EINVAL ;
+ int ENOMEM ;
+ int LibAliasAttachHandlers (struct proto_handler*) ;
+ int RTLD_LAZY ;
+ scalar_t__ attach_dll (struct dll*) ;
+ char* dlerror () ;
+ void* dlopen (char*,int ) ;
+ void* dlsym (void*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int free (struct dll*) ;
+ struct dll* malloc (int) ;
+ int stderr ;
+ int strncpy (int ,int ,int ) ;
 
 int
 LibAliasLoadModule(char *path)
 {
-	struct dll *t;
-	void *handle;
-	struct proto_handler *m;
+ struct dll *t;
+ void *handle;
+ struct proto_handler *m;
         const char *error;
-	moduledata_t *p;
+ moduledata_t *p;
 
         handle = dlopen (path, RTLD_LAZY);
         if (!handle) {
-		fprintf(stderr, "%s\n", dlerror());
-		return (EINVAL);
+  fprintf(stderr, "%s\n", dlerror());
+  return (EINVAL);
         }
 
-	p = dlsym(handle, "alias_mod");
-        if ((error = dlerror()) != NULL)  {
-		fprintf(stderr, "%s\n", dlerror());
-		return (EINVAL);
+ p = dlsym(handle, "alias_mod");
+        if ((error = dlerror()) != ((void*)0)) {
+  fprintf(stderr, "%s\n", dlerror());
+  return (EINVAL);
         }
 
-	t = malloc(sizeof(struct dll));
-	if (t == NULL)
-		return (ENOMEM);
-	strncpy(t->name, p->name, DLL_LEN);
-	t->handle = handle;
-	if (attach_dll(t) == EEXIST) {
-		free(t);
-		fprintf(stderr, "dll conflict\n");
-		return (EEXIST);
-	}
+ t = malloc(sizeof(struct dll));
+ if (t == ((void*)0))
+  return (ENOMEM);
+ strncpy(t->name, p->name, DLL_LEN);
+ t->handle = handle;
+ if (attach_dll(t) == EEXIST) {
+  free(t);
+  fprintf(stderr, "dll conflict\n");
+  return (EEXIST);
+ }
 
         m = dlsym(t->handle, "handlers");
-        if ((error = dlerror()) != NULL)  {
-		fprintf(stderr, "%s\n", error);
-		return (EINVAL);
-	}
+        if ((error = dlerror()) != ((void*)0)) {
+  fprintf(stderr, "%s\n", error);
+  return (EINVAL);
+ }
 
-	LibAliasAttachHandlers(m);
-	return (0);
+ LibAliasAttachHandlers(m);
+ return (0);
 }

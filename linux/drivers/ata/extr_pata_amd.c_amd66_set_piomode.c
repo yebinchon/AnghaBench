@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ata_port {int dummy; } ;
-struct ata_device {int /*<<< orphan*/  pio_mode; } ;
+struct ata_device {int pio_mode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  amd_fifo_setup (struct ata_port*) ; 
- int /*<<< orphan*/  timing_setup (struct ata_port*,struct ata_device*,int,int /*<<< orphan*/ ,int) ; 
+
+ int amd_fifo_setup (struct ata_port*) ;
+ int timing_setup (struct ata_port*,struct ata_device*,int,int ,int) ;
 
 __attribute__((used)) static void amd66_set_piomode(struct ata_port *ap, struct ata_device *adev)
 {
-	amd_fifo_setup(ap);
-	timing_setup(ap, adev, 0x40, adev->pio_mode, 2);
+ amd_fifo_setup(ap);
+ timing_setup(ap, adev, 0x40, adev->pio_mode, 2);
 }

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct pmagbafb_par {int dummy; } ;
 struct TYPE_2__ {unsigned int len; } ;
 struct fb_info {TYPE_1__ cmap; struct pmagbafb_par* par; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT459_ADDR_HI ; 
- int /*<<< orphan*/  BT459_ADDR_LO ; 
- int /*<<< orphan*/  BT459_CMAP ; 
- int /*<<< orphan*/  dac_write (struct pmagbafb_par*,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  mb () ; 
- int /*<<< orphan*/  wmb () ; 
+
+ int BT459_ADDR_HI ;
+ int BT459_ADDR_LO ;
+ int BT459_CMAP ;
+ int dac_write (struct pmagbafb_par*,int ,unsigned int) ;
+ int mb () ;
+ int wmb () ;
 
 __attribute__((used)) static int pmagbafb_setcolreg(unsigned int regno, unsigned int red,
-			      unsigned int green, unsigned int blue,
-			      unsigned int transp, struct fb_info *info)
+         unsigned int green, unsigned int blue,
+         unsigned int transp, struct fb_info *info)
 {
-	struct pmagbafb_par *par = info->par;
+ struct pmagbafb_par *par = info->par;
 
-	if (regno >= info->cmap.len)
-		return 1;
+ if (regno >= info->cmap.len)
+  return 1;
 
-	red   >>= 8;	/* The cmap fields are 16 bits    */
-	green >>= 8;	/* wide, but the hardware colormap */
-	blue  >>= 8;	/* registers are only 8 bits wide */
+ red >>= 8;
+ green >>= 8;
+ blue >>= 8;
 
-	mb();
-	dac_write(par, BT459_ADDR_LO, regno);
-	dac_write(par, BT459_ADDR_HI, 0x00);
-	wmb();
-	dac_write(par, BT459_CMAP, red);
-	wmb();
-	dac_write(par, BT459_CMAP, green);
-	wmb();
-	dac_write(par, BT459_CMAP, blue);
+ mb();
+ dac_write(par, BT459_ADDR_LO, regno);
+ dac_write(par, BT459_ADDR_HI, 0x00);
+ wmb();
+ dac_write(par, BT459_CMAP, red);
+ wmb();
+ dac_write(par, BT459_CMAP, green);
+ wmb();
+ dac_write(par, BT459_CMAP, blue);
 
-	return 0;
+ return 0;
 }

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cryptd_ahash {int /*<<< orphan*/  base; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  crypto_free_ahash (int /*<<< orphan*/ *) ; 
+
+
+
+struct cryptd_ahash {int base; } ;
+
+
+ int crypto_free_ahash (int *) ;
 
 void cryptd_free_ahash(struct cryptd_ahash *tfm)
 {
-	crypto_free_ahash(&tfm->base);
+ crypto_free_ahash(&tfm->base);
 }

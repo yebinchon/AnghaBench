@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct socket {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KASSERT (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  soisdisconnected (struct socket*) ; 
- int /*<<< orphan*/ * sotorawcb (struct socket*) ; 
+
+ int KASSERT (int ,char*) ;
+ int soisdisconnected (struct socket*) ;
+ int * sotorawcb (struct socket*) ;
 
 __attribute__((used)) static void
 raw_uclose(struct socket *so)
 {
 
-	KASSERT(sotorawcb(so) != NULL, ("raw_uabort: rp == NULL"));
+ KASSERT(sotorawcb(so) != ((void*)0), ("raw_uabort: rp == NULL"));
 
-	soisdisconnected(so);
+ soisdisconnected(so);
 }

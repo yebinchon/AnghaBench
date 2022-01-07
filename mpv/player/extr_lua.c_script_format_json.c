@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mpv_node {int dummy; } ;
-typedef  int /*<<< orphan*/  lua_State ;
+typedef int lua_State ;
 
-/* Variables and functions */
- scalar_t__ json_write (char**,struct mpv_node*) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  makenode (void*,struct mpv_node*,int /*<<< orphan*/ *,int) ; 
- void* mp_lua_PITA (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  talloc_free_children (void*) ; 
- char* talloc_strdup (void*,char*) ; 
+
+ scalar_t__ json_write (char**,struct mpv_node*) ;
+ int lua_pushnil (int *) ;
+ int lua_pushstring (int *,char*) ;
+ int makenode (void*,struct mpv_node*,int *,int) ;
+ void* mp_lua_PITA (int *) ;
+ int talloc_free_children (void*) ;
+ char* talloc_strdup (void*,char*) ;
 
 __attribute__((used)) static int script_format_json(lua_State *L)
 {

@@ -1,43 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int CHUNKcode ;
 
-/* Variables and functions */
-#define  CHUNKE_BAD_CHUNK 133 
-#define  CHUNKE_BAD_ENCODING 132 
-#define  CHUNKE_ILLEGAL_HEX 131 
-#define  CHUNKE_OUT_OF_MEMORY 130 
-#define  CHUNKE_PASSTHRU_ERROR 129 
-#define  CHUNKE_TOO_LONG_HEX 128 
- int /*<<< orphan*/  DEBUGASSERT (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int CHUNKcode ;
+ int DEBUGASSERT (int ) ;
 
 const char *Curl_chunked_strerror(CHUNKcode code)
 {
   switch(code) {
   default:
     return "OK";
-  case CHUNKE_TOO_LONG_HEX:
+  case 128:
     return "Too long hexadecimal number";
-  case CHUNKE_ILLEGAL_HEX:
+  case 131:
     return "Illegal or missing hexadecimal sequence";
-  case CHUNKE_BAD_CHUNK:
+  case 133:
     return "Malformed encoding found";
-  case CHUNKE_PASSTHRU_ERROR:
-    DEBUGASSERT(0); /* never used */
+  case 129:
+    DEBUGASSERT(0);
     return "";
-  case CHUNKE_BAD_ENCODING:
+  case 132:
     return "Bad content-encoding found";
-  case CHUNKE_OUT_OF_MEMORY:
+  case 130:
     return "Out of memory";
   }
 }

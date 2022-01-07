@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int AHO_MAX_L ; 
- int AHO_MAX_N ; 
- int AHO_MAX_S ; 
- int* C ; 
- int* KA ; 
- int* KB ; 
- int KL ; 
- int KN ; 
- int* KS ; 
- int* L ; 
- int** S ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
- int /*<<< orphan*/  sort_str (int /*<<< orphan*/ ,int) ; 
- int strlen (char*) ; 
+ int AHO_MAX_L ;
+ int AHO_MAX_N ;
+ int AHO_MAX_S ;
+ int* C ;
+ int* KA ;
+ int* KB ;
+ int KL ;
+ int KN ;
+ int* KS ;
+ int* L ;
+ int** S ;
+ int assert (int) ;
+ int memcpy (int*,int*,int) ;
+ int sort_str (int ,int) ;
+ int strlen (char*) ;
 
 int aho_prepare (int cnt, char *s[]) {
   int i, j;
@@ -35,8 +27,8 @@ int aho_prepare (int cnt, char *s[]) {
     return -1;
   }
 
-  int SL = 0; 
-  
+  int SL = 0;
+
   for (i = 0; i < cnt; i++) {
     L[i] = strlen (s[i]);
     if (L[i] <= 0 || L[i] > AHO_MAX_L) {
@@ -122,7 +114,7 @@ int aho_prepare (int cnt, char *s[]) {
   int l;
   for (l = 0; l <= MaxL; l++) {
     int pc = -1, ps = -256, cc = -1, v = -1;
-    
+
     for (i = 0; i < KN; i++) {
       if (L[i] < l) {
         continue;
@@ -152,6 +144,6 @@ int aho_prepare (int cnt, char *s[]) {
       }
       C[i] = cc;
     }
-  } 
+  }
   return KL;
 }

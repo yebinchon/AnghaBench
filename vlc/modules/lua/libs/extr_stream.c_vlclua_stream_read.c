@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  stream_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- scalar_t__ luaL_checkudata (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_pushlstring (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * malloc (int) ; 
- int vlc_stream_Read (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int vlclua_error (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+typedef int stream_t ;
+typedef int lua_State ;
+
+
+ int free (int *) ;
+ int luaL_checkinteger (int *,int) ;
+ scalar_t__ luaL_checkudata (int *,int,char*) ;
+ int lua_pushlstring (int *,char const*,int) ;
+ int lua_pushnil (int *) ;
+ int * malloc (int) ;
+ int vlc_stream_Read (int *,int *,int) ;
+ int vlclua_error (int *) ;
 
 __attribute__((used)) static int vlclua_stream_read( lua_State *L )
 {

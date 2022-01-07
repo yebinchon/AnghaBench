@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  UINT ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int buf ;
+typedef int UINT ;
 struct TYPE_4__ {double X; double Y; double Width; double Height; } ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpRegion ;
-typedef  TYPE_1__ GpRectF ;
-typedef  int /*<<< orphan*/  GpPath ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef int GpStatus ;
+typedef int GpRegion ;
+typedef TYPE_1__ GpRectF ;
+typedef int GpPath ;
+typedef int DWORD ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int CombineModeReplace ; 
- int CombineModeUnion ; 
- int /*<<< orphan*/  FillModeAlternate ; 
- int /*<<< orphan*/  GdipAddPathEllipse (int /*<<< orphan*/ *,double,double,double,double) ; 
- int /*<<< orphan*/  GdipCombineRegionPath (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  GdipCombineRegionRect (int /*<<< orphan*/ *,TYPE_1__*,int) ; 
- int /*<<< orphan*/  GdipCombineRegionRegion (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  GdipCreatePath (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreateRegion (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreateRegionRect (TYPE_1__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeletePath (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeleteRegion (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetRegionData (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetRegionDataSize (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int Ok ; 
- int RGNDATA_INFINITE_RECT ; 
- int RGNDATA_PATH ; 
- int RGNDATA_RECT ; 
- int /*<<< orphan*/  expect (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expect_dword (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  expect_magic (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  trace (char*,int /*<<< orphan*/ ) ; 
+
+ int CombineModeReplace ;
+ int CombineModeUnion ;
+ int FillModeAlternate ;
+ int GdipAddPathEllipse (int *,double,double,double,double) ;
+ int GdipCombineRegionPath (int *,int *,int) ;
+ int GdipCombineRegionRect (int *,TYPE_1__*,int) ;
+ int GdipCombineRegionRegion (int *,int *,int) ;
+ int GdipCreatePath (int ,int **) ;
+ int GdipCreateRegion (int **) ;
+ int GdipCreateRegionRect (TYPE_1__*,int **) ;
+ int GdipDeletePath (int *) ;
+ int GdipDeleteRegion (int *) ;
+ int GdipGetRegionData (int *,int *,int,int *) ;
+ int GdipGetRegionDataSize (int *,int *) ;
+ int Ok ;
+ int RGNDATA_INFINITE_RECT ;
+ int RGNDATA_PATH ;
+ int RGNDATA_RECT ;
+ int expect (int,int ) ;
+ int expect_dword (int *,int) ;
+ int expect_magic (int *) ;
+ int trace (char*,int ) ;
 
 __attribute__((used)) static void test_combinereplace(void)
 {
@@ -60,7 +60,7 @@ __attribute__((used)) static void test_combinereplace(void)
     status = GdipCreateRegionRect(&rectf, &region);
     expect(Ok, status);
 
-    /* replace with the same rectangle */
+
     status = GdipCombineRegionRect(region, &rectf,CombineModeReplace);
     expect(Ok, status);
 
@@ -76,7 +76,7 @@ __attribute__((used)) static void test_combinereplace(void)
     expect_dword(buf + 3, 0);
     expect_dword(buf + 4, RGNDATA_RECT);
 
-    /* replace with path */
+
     status = GdipCreatePath(FillModeAlternate, &path);
     expect(Ok, status);
     status = GdipAddPathEllipse(path, 0.0, 0.0, 100.0, 250.0);
@@ -97,7 +97,7 @@ __attribute__((used)) static void test_combinereplace(void)
     expect_dword(buf + 4, RGNDATA_PATH);
     GdipDeletePath(path);
 
-    /* replace with infinite rect */
+
     status = GdipCreateRegion(&region2);
     expect(Ok, status);
     status = GdipCombineRegionRegion(region, region2, CombineModeReplace);
@@ -116,7 +116,7 @@ __attribute__((used)) static void test_combinereplace(void)
     expect_dword(buf + 4, RGNDATA_INFINITE_RECT);
     GdipDeleteRegion(region2);
 
-    /* more complex case : replace with a combined region */
+
     status = GdipCreateRegionRect(&rectf, &region2);
     expect(Ok, status);
     status = GdipCreatePath(FillModeAlternate, &path);

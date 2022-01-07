@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum dc_link_rate { ____Placeholder_dc_link_rate } dc_link_rate ;
 
-/* Variables and functions */
-#define  LINK_RATE_HIGH 131 
-#define  LINK_RATE_HIGH2 130 
-#define  LINK_RATE_HIGH3 129 
-#define  LINK_RATE_LOW 128 
- int LINK_RATE_UNKNOWN ; 
+
+
+
+typedef enum dc_link_rate { ____Placeholder_dc_link_rate } dc_link_rate ;
+
+
+
+
+
+
+ int LINK_RATE_UNKNOWN ;
 
 __attribute__((used)) static enum dc_link_rate reduce_link_rate(enum dc_link_rate link_rate)
 {
-	switch (link_rate) {
-	case LINK_RATE_HIGH3:
-		return LINK_RATE_HIGH2;
-	case LINK_RATE_HIGH2:
-		return LINK_RATE_HIGH;
-	case LINK_RATE_HIGH:
-		return LINK_RATE_LOW;
-	case LINK_RATE_LOW:
-		return LINK_RATE_UNKNOWN;
-	default:
-		return LINK_RATE_UNKNOWN;
-	}
+ switch (link_rate) {
+ case 129:
+  return 130;
+ case 130:
+  return 131;
+ case 131:
+  return 128;
+ case 128:
+  return LINK_RATE_UNKNOWN;
+ default:
+  return LINK_RATE_UNKNOWN;
+ }
 }

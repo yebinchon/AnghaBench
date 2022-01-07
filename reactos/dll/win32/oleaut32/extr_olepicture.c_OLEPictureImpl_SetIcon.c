@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bm ;
-struct TYPE_15__ {int bmHeight; int /*<<< orphan*/  bmWidth; } ;
+
+
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int bm ;
+struct TYPE_15__ {int bmHeight; int bmWidth; } ;
 struct TYPE_14__ {scalar_t__ hbmColor; scalar_t__ hbmMask; } ;
 struct TYPE_10__ {scalar_t__ hicon; } ;
 struct TYPE_11__ {TYPE_1__ icon; } ;
 struct TYPE_12__ {TYPE_2__ u; } ;
-struct TYPE_13__ {int origHeight; TYPE_3__ desc; int /*<<< orphan*/  himetricHeight; int /*<<< orphan*/  origWidth; int /*<<< orphan*/  himetricWidth; } ;
-typedef  TYPE_4__ OLEPictureImpl ;
-typedef  TYPE_5__ ICONINFO ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  TYPE_6__ BITMAP ;
+struct TYPE_13__ {int origHeight; TYPE_3__ desc; int himetricHeight; int origWidth; int himetricWidth; } ;
+typedef TYPE_4__ OLEPictureImpl ;
+typedef TYPE_5__ ICONINFO ;
+typedef int HDC ;
+typedef TYPE_6__ BITMAP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteObject (scalar_t__) ; 
- int /*<<< orphan*/  ERR (char*,...) ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- scalar_t__ GetIconInfo (scalar_t__,TYPE_5__*) ; 
- int GetObjectW (scalar_t__,int,TYPE_6__*) ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__) ; 
- int /*<<< orphan*/  xpixels_to_himetric (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ypixels_to_himetric (int,int /*<<< orphan*/ ) ; 
+
+ int DeleteObject (scalar_t__) ;
+ int ERR (char*,...) ;
+ int GetDC (int ) ;
+ scalar_t__ GetIconInfo (scalar_t__,TYPE_5__*) ;
+ int GetObjectW (scalar_t__,int,TYPE_6__*) ;
+ int ReleaseDC (int ,int ) ;
+ int TRACE (char*,scalar_t__) ;
+ int xpixels_to_himetric (int ,int ) ;
+ int ypixels_to_himetric (int,int ) ;
 
 __attribute__((used)) static void OLEPictureImpl_SetIcon(OLEPictureImpl * This)
 {
@@ -56,10 +56,10 @@ __attribute__((used)) static void OLEPictureImpl_SetIcon(OLEPictureImpl * This)
 
         This->origWidth = bm.bmWidth;
         This->origHeight = infoIcon.hbmColor ? bm.bmHeight : bm.bmHeight / 2;
-        /* see comment on HIMETRIC on OLEPictureImpl_SetBitmap() */
+
         hdcRef = GetDC(0);
 
-        This->himetricWidth  = xpixels_to_himetric(This->origWidth, hdcRef);
+        This->himetricWidth = xpixels_to_himetric(This->origWidth, hdcRef);
         This->himetricHeight = ypixels_to_himetric(This->origHeight, hdcRef);
 
         ReleaseDC(0, hdcRef);

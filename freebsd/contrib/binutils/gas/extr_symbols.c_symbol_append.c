@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {struct TYPE_7__* sy_previous; struct TYPE_7__* sy_next; } ;
-typedef  TYPE_1__ symbolS ;
+typedef TYPE_1__ symbolS ;
 
-/* Variables and functions */
- scalar_t__ LOCAL_SYMBOL_CHECK (TYPE_1__*) ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  debug_verify_symchain (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  know (int) ; 
- int /*<<< orphan*/  symbol_lastP ; 
- int /*<<< orphan*/  symbol_rootP ; 
+
+ scalar_t__ LOCAL_SYMBOL_CHECK (TYPE_1__*) ;
+ int abort () ;
+ int debug_verify_symchain (int ,int ) ;
+ int know (int) ;
+ int symbol_lastP ;
+ int symbol_rootP ;
 
 void
 symbol_append (symbolS *addme, symbolS *target,
-	       symbolS **rootPP, symbolS **lastPP)
+        symbolS **rootPP, symbolS **lastPP)
 {
   if (LOCAL_SYMBOL_CHECK (addme))
     abort ();
-  if (target != NULL && LOCAL_SYMBOL_CHECK (target))
+  if (target != ((void*)0) && LOCAL_SYMBOL_CHECK (target))
     abort ();
 
-  if (target == NULL)
+  if (target == ((void*)0))
     {
-      know (*rootPP == NULL);
-      know (*lastPP == NULL);
-      addme->sy_next = NULL;
-      addme->sy_previous = NULL;
+      know (*rootPP == ((void*)0));
+      know (*lastPP == ((void*)0));
+      addme->sy_next = ((void*)0);
+      addme->sy_previous = ((void*)0);
       *rootPP = addme;
       *lastPP = addme;
       return;
-    }				/* if the list is empty  */
+    }
 
-  if (target->sy_next != NULL)
+  if (target->sy_next != ((void*)0))
     {
       target->sy_next->sy_previous = addme;
     }
@@ -50,7 +50,7 @@ symbol_append (symbolS *addme, symbolS *target,
     {
       know (*lastPP == target);
       *lastPP = addme;
-    }				/* if we have a next  */
+    }
 
   addme->sy_next = target->sy_next;
   target->sy_next = addme;

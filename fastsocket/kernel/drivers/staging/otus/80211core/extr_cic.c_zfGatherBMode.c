@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zdev_t ;
-typedef  int u8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZM_MAX_SUPP_RATES_IE_SIZE ; 
- int ZM_WLAN_EID_SUPPORT_RATE ; 
- int /*<<< orphan*/  zfMemoryCopy (int*,int*,int) ; 
- int* zg11bRateTbl ; 
+
+
+
+typedef int zdev_t ;
+typedef int u8_t ;
+
+
+ int ZM_MAX_SUPP_RATES_IE_SIZE ;
+ int ZM_WLAN_EID_SUPPORT_RATE ;
+ int zfMemoryCopy (int*,int*,int) ;
+ int* zg11bRateTbl ;
 
 void zfGatherBMode(zdev_t* dev, u8_t* rateArray, u8_t* extrateArray)
 {

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int dir; scalar_t__ y; scalar_t__ x; } ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  HBRUSH ;
+typedef int HDC ;
+typedef int HBRUSH ;
 
-/* Variables and functions */
- int /*<<< orphan*/  draw_solid_square (int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* path ; 
 
-__attribute__((used)) static void enter_square(int n, HDC hDC, HBRUSH hBrush)  /* move into a neighboring square */
+ int draw_solid_square (int,int,int,int ,int ) ;
+ TYPE_1__* path ;
+
+__attribute__((used)) static void enter_square(int n, HDC hDC, HBRUSH hBrush)
 {
     draw_solid_square((int) path[n].x, (int) path[n].y, (int) path[n].dir, hDC, hBrush);
 

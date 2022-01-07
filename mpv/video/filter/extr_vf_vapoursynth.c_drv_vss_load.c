@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct priv {int /*<<< orphan*/  se; int /*<<< orphan*/  out_node; int /*<<< orphan*/  script_path; } ;
-typedef  int /*<<< orphan*/  VSMap ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_FATAL (struct priv*,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ vsscript_evaluateFile (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vsscript_getError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vsscript_getOutput (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vsscript_setVariable (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct priv {int se; int out_node; int script_path; } ;
+typedef int VSMap ;
+
+
+ int MP_FATAL (struct priv*,char*,int ) ;
+ scalar_t__ vsscript_evaluateFile (int *,int ,int ) ;
+ int vsscript_getError (int ) ;
+ int vsscript_getOutput (int ,int ) ;
+ int vsscript_setVariable (int ,int *) ;
 
 __attribute__((used)) static int drv_vss_load(struct priv *p, VSMap *vars)
 {

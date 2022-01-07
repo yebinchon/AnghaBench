@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Unit ;
-typedef  int REAL ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpFontFamily ;
-typedef  int /*<<< orphan*/  GpFont ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FontStyleRegular ; 
- int /*<<< orphan*/  GdipCreateFont (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreateFontFamilyFromName (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteFont (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeleteFontFamily (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetFontHeightGivenDPI (int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/  GdipGetFontUnit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InvalidParameter ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  Tahoma ; 
- int /*<<< orphan*/  UnitDocument ; 
- int /*<<< orphan*/  UnitInch ; 
- int /*<<< orphan*/  UnitMillimeter ; 
- int /*<<< orphan*/  UnitPixel ; 
- int /*<<< orphan*/  UnitPoint ; 
- int /*<<< orphan*/  UnitWorld ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expectf (double,int) ; 
+
+
+
+typedef int Unit ;
+typedef int REAL ;
+typedef int GpStatus ;
+typedef int GpFontFamily ;
+typedef int GpFont ;
+
+
+ int FontStyleRegular ;
+ int GdipCreateFont (int *,int,int ,int ,int **) ;
+ int GdipCreateFontFamilyFromName (int ,int *,int **) ;
+ int GdipDeleteFont (int *) ;
+ int GdipDeleteFontFamily (int *) ;
+ int GdipGetFontHeightGivenDPI (int *,int,int*) ;
+ int GdipGetFontUnit (int *,int *) ;
+ int InvalidParameter ;
+ int Ok ;
+ int Tahoma ;
+ int UnitDocument ;
+ int UnitInch ;
+ int UnitMillimeter ;
+ int UnitPixel ;
+ int UnitPoint ;
+ int UnitWorld ;
+ int expect (int ,int ) ;
+ int expectf (double,int) ;
 
 __attribute__((used)) static void test_heightgivendpi(void)
 {
     GpStatus stat;
-    GpFont* font = NULL;
-    GpFontFamily* fontfamily = NULL;
+    GpFont* font = ((void*)0);
+    GpFontFamily* fontfamily = ((void*)0);
     REAL height;
     Unit unit;
 
-    stat = GdipCreateFontFamilyFromName(Tahoma, NULL, &fontfamily);
+    stat = GdipCreateFontFamilyFromName(Tahoma, ((void*)0), &fontfamily);
     expect(Ok, stat);
 
     stat = GdipCreateFont(fontfamily, 30, FontStyleRegular, UnitPixel, &font);
     expect(Ok, stat);
 
-    stat = GdipGetFontHeightGivenDPI(NULL, 96, &height);
+    stat = GdipGetFontHeightGivenDPI(((void*)0), 96, &height);
     expect(InvalidParameter, stat);
 
-    stat = GdipGetFontHeightGivenDPI(font, 96, NULL);
+    stat = GdipGetFontHeightGivenDPI(font, 96, ((void*)0));
     expect(InvalidParameter, stat);
 
     stat = GdipGetFontHeightGivenDPI(font, 96, &height);

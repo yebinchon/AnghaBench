@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ status; int /*<<< orphan*/  new_name; int /*<<< orphan*/  name; int /*<<< orphan*/  unmerge_state; int /*<<< orphan*/  type; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ status; int new_name; int name; int unmerge_state; int type; } ;
 struct TYPE_4__ {TYPE_2__* data; struct TYPE_4__* next; } ;
-typedef  int /*<<< orphan*/  GString ;
-typedef  TYPE_1__ GList ;
-typedef  TYPE_2__ DiffEntry ;
+typedef int GString ;
+typedef TYPE_1__ GList ;
+typedef TYPE_2__ DiffEntry ;
 
-/* Variables and functions */
- scalar_t__ DIFF_STATUS_RENAMED ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  g_string_append_printf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,...) ; 
- char* g_string_free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * g_string_new (char*) ; 
- scalar_t__ strlen (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ DIFF_STATUS_RENAMED ;
+ int FALSE ;
+ int g_string_append_printf (int *,char*,int ,scalar_t__,int ,int,int ,...) ;
+ char* g_string_free (int *,int ) ;
+ int * g_string_new (char*) ;
+ scalar_t__ strlen (int ) ;
 
 char *
 format_diff_results(GList *results)

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vo {struct priv* priv; } ;
-struct priv {int /*<<< orphan*/  depth; } ;
-struct framebuffer {int /*<<< orphan*/  size; int /*<<< orphan*/  map; int /*<<< orphan*/  handle; int /*<<< orphan*/  fb; int /*<<< orphan*/  stride; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
-struct drm_mode_map_dumb {int /*<<< orphan*/  offset; int /*<<< orphan*/  handle; int /*<<< orphan*/  bpp; int /*<<< orphan*/  size; int /*<<< orphan*/  pitch; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
-struct drm_mode_create_dumb {int /*<<< orphan*/  offset; int /*<<< orphan*/  handle; int /*<<< orphan*/  bpp; int /*<<< orphan*/  size; int /*<<< orphan*/  pitch; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
+struct priv {int depth; } ;
+struct framebuffer {int size; int map; int handle; int fb; int stride; int height; int width; } ;
+struct drm_mode_map_dumb {int offset; int handle; int bpp; int size; int pitch; int height; int width; } ;
+struct drm_mode_create_dumb {int offset; int handle; int bpp; int size; int pitch; int height; int width; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BITS_PER_PIXEL ; 
- int /*<<< orphan*/  DRM_IOCTL_MODE_CREATE_DUMB ; 
- int /*<<< orphan*/  DRM_IOCTL_MODE_MAP_DUMB ; 
- int /*<<< orphan*/  MAP_FAILED ; 
- int /*<<< orphan*/  MAP_SHARED ; 
- int /*<<< orphan*/  MP_ERR (struct vo*,char*,int /*<<< orphan*/ ) ; 
- int PROT_READ ; 
- int PROT_WRITE ; 
- scalar_t__ drmIoctl (int,int /*<<< orphan*/ ,struct drm_mode_map_dumb*) ; 
- scalar_t__ drmModeAddFB (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fb_destroy (int,struct framebuffer*) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mmap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_strerror (int /*<<< orphan*/ ) ; 
+
+ int BITS_PER_PIXEL ;
+ int DRM_IOCTL_MODE_CREATE_DUMB ;
+ int DRM_IOCTL_MODE_MAP_DUMB ;
+ int MAP_FAILED ;
+ int MAP_SHARED ;
+ int MP_ERR (struct vo*,char*,int ) ;
+ int PROT_READ ;
+ int PROT_WRITE ;
+ scalar_t__ drmIoctl (int,int ,struct drm_mode_map_dumb*) ;
+ scalar_t__ drmModeAddFB (int,int ,int ,int ,int ,int ,int ,int *) ;
+ int errno ;
+ int fb_destroy (int,struct framebuffer*) ;
+ int memset (int ,int ,int ) ;
+ int mmap (int ,int ,int,int ,int,int ) ;
+ int mp_strerror (int ) ;
 
 __attribute__((used)) static bool fb_setup_single(struct vo *vo, int fd, struct framebuffer *buf)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static bool fb_setup_single(struct vo *vo, int fd, struct 
 
     buf->handle = 0;
 
-    // create dumb buffer
+
     struct drm_mode_create_dumb creq = {
         .width = buf->width,
         .height = buf->height,
@@ -53,14 +53,14 @@ __attribute__((used)) static bool fb_setup_single(struct vo *vo, int fd, struct 
     buf->size = creq.size;
     buf->handle = creq.handle;
 
-    // create framebuffer object for the dumb-buffer
+
     if (drmModeAddFB(fd, buf->width, buf->height, p->depth, creq.bpp, buf->stride,
                      buf->handle, &buf->fb)) {
         MP_ERR(vo, "Cannot create framebuffer: %s\n", mp_strerror(errno));
         goto err;
     }
 
-    // prepare buffer for memory mapping
+
     struct drm_mode_map_dumb mreq = {
         .handle = buf->handle,
     };
@@ -69,7 +69,7 @@ __attribute__((used)) static bool fb_setup_single(struct vo *vo, int fd, struct 
         goto err;
     }
 
-    // perform actual memory mapping
+
     buf->map = mmap(0, buf->size, PROT_READ | PROT_WRITE, MAP_SHARED,
                     fd, mreq.offset);
     if (buf->map == MAP_FAILED) {
@@ -78,9 +78,9 @@ __attribute__((used)) static bool fb_setup_single(struct vo *vo, int fd, struct 
     }
 
     memset(buf->map, 0, buf->size);
-    return true;
+    return 1;
 
 err:
     fb_destroy(fd, buf);
-    return false;
+    return 0;
 }

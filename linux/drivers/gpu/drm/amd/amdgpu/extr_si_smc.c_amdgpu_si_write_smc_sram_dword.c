@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct amdgpu_device {int /*<<< orphan*/  smc_idx_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SMC_IND_DATA_0 ; 
- int /*<<< orphan*/  WREG32 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int si_set_smc_sram_address (struct amdgpu_device*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+typedef int u32 ;
+struct amdgpu_device {int smc_idx_lock; } ;
+
+
+ int SMC_IND_DATA_0 ;
+ int WREG32 (int ,int ) ;
+ int si_set_smc_sram_address (struct amdgpu_device*,int ,int ) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 int amdgpu_si_write_smc_sram_dword(struct amdgpu_device *adev, u32 smc_address,
-				   u32 value, u32 limit)
+       u32 value, u32 limit)
 {
-	unsigned long flags;
-	int ret;
+ unsigned long flags;
+ int ret;
 
-	spin_lock_irqsave(&adev->smc_idx_lock, flags);
-	ret = si_set_smc_sram_address(adev, smc_address, limit);
-	if (ret == 0)
-		WREG32(SMC_IND_DATA_0, value);
-	spin_unlock_irqrestore(&adev->smc_idx_lock, flags);
+ spin_lock_irqsave(&adev->smc_idx_lock, flags);
+ ret = si_set_smc_sram_address(adev, smc_address, limit);
+ if (ret == 0)
+  WREG32(SMC_IND_DATA_0, value);
+ spin_unlock_irqrestore(&adev->smc_idx_lock, flags);
 
-	return ret;
+ return ret;
 }

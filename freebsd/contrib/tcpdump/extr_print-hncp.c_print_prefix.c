@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_int ;
-typedef  int u_char ;
+
+
+
+
+typedef int u_int ;
+typedef int u_char ;
 struct in_addr {int dummy; } ;
-typedef  int /*<<< orphan*/  netdissect_options ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  addr ;
+typedef int netdissect_options ;
+typedef int buf ;
+typedef int addr ;
 
-/* Variables and functions */
- int IPV4_MAPPED_HEADING_LEN ; 
- int /*<<< orphan*/  ND_PRINT (int /*<<< orphan*/ *) ; 
- int decode_prefix6 (int /*<<< orphan*/ *,int const*,int,char*,int) ; 
- char* ipaddr_string (int /*<<< orphan*/ *,struct in_addr*) ; 
- scalar_t__ is_ipv4_mapped_address (int const*) ; 
- int /*<<< orphan*/  memcpy (struct in_addr*,int const*,int) ; 
- int /*<<< orphan*/  memset (struct in_addr*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,int) ; 
+
+ int IPV4_MAPPED_HEADING_LEN ;
+ int ND_PRINT (int *) ;
+ int decode_prefix6 (int *,int const*,int,char*,int) ;
+ char* ipaddr_string (int *,struct in_addr*) ;
+ scalar_t__ is_ipv4_mapped_address (int const*) ;
+ int memcpy (struct in_addr*,int const*,int) ;
+ int memset (struct in_addr*,int ,int) ;
+ int snprintf (char*,int,char*,char*,int) ;
 
 __attribute__((used)) static int
 print_prefix(netdissect_options *ndo, const u_char *prefix, u_int max_length)
@@ -49,10 +49,10 @@ print_prefix(netdissect_options *ndo, const u_char *prefix, u_int max_length)
             return -3;
         memcpy(&addr, &prefix[1 + IPV4_MAPPED_HEADING_LEN], plenbytes);
         if (plen % 8) {
-		((u_char *)&addr)[plenbytes - 1] &=
-			((0xff00 >> (plen % 8)) & 0xff);
-	}
-	snprintf(buf, sizeof(buf), "%s/%d", ipaddr_string(ndo, &addr), plen);
+  ((u_char *)&addr)[plenbytes - 1] &=
+   ((0xff00 >> (plen % 8)) & 0xff);
+ }
+ snprintf(buf, sizeof(buf), "%s/%d", ipaddr_string(ndo, &addr), plen);
         plenbytes += 1 + IPV4_MAPPED_HEADING_LEN;
     } else {
         plenbytes = decode_prefix6(ndo, prefix, max_length, buf, sizeof(buf));

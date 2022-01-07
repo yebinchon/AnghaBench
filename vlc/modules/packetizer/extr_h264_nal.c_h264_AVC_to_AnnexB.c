@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  unsigned int uint32_t ;
 
-/* Variables and functions */
- unsigned int INT_MAX ; 
+
+
+
+typedef int uint8_t ;
+typedef unsigned int uint32_t ;
+
+
+ unsigned int INT_MAX ;
 
 void h264_AVC_to_AnnexB( uint8_t *p_buf, uint32_t i_len,
                              uint8_t i_nal_length_size )
@@ -25,8 +25,8 @@ void h264_AVC_to_AnnexB( uint8_t *p_buf, uint32_t i_len,
     if( i_nal_length_size != 4 )
         return;
 
-    /* This only works for a NAL length size of 4 */
-    /* TODO: realloc/memmove if i_nal_length_size is 2 or 1 */
+
+
     while( i_len > 0 )
     {
         if( nal_pos < i_nal_length_size ) {

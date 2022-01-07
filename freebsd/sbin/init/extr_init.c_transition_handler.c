@@ -1,77 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  RB_HALT ; 
- int /*<<< orphan*/  RB_POWERCYCLE ; 
- int /*<<< orphan*/  RB_POWEROFF ; 
- int /*<<< orphan*/  Reboot ; 
-#define  SIGEMT 135 
-#define  SIGHUP 134 
-#define  SIGINT 133 
-#define  SIGTERM 132 
-#define  SIGTSTP 131 
-#define  SIGUSR1 130 
-#define  SIGUSR2 129 
-#define  SIGWINCH 128 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  catatonia ; 
- int /*<<< orphan*/  clean_ttys ; 
- int /*<<< orphan*/  current_state ; 
- int /*<<< orphan*/  death ; 
- int /*<<< orphan*/  death_single ; 
- int /*<<< orphan*/  howto ; 
- int /*<<< orphan*/  multi_user ; 
- int /*<<< orphan*/  read_ttys ; 
- int /*<<< orphan*/  requested_transition ; 
- int /*<<< orphan*/  reroot ; 
- int /*<<< orphan*/  runcom ; 
+ int RB_HALT ;
+ int RB_POWERCYCLE ;
+ int RB_POWEROFF ;
+ int Reboot ;
+ int TRUE ;
+ int catatonia ;
+ int clean_ttys ;
+ int current_state ;
+ int death ;
+ int death_single ;
+ int howto ;
+ int multi_user ;
+ int read_ttys ;
+ int requested_transition ;
+ int reroot ;
+ int runcom ;
 
 __attribute__((used)) static void
 transition_handler(int sig)
 {
 
-	switch (sig) {
-	case SIGHUP:
-		if (current_state == read_ttys || current_state == multi_user ||
-		    current_state == clean_ttys || current_state == catatonia)
-			requested_transition = clean_ttys;
-		break;
-	case SIGWINCH:
-	case SIGUSR2:
-		howto = sig == SIGUSR2 ? RB_POWEROFF : RB_POWERCYCLE;
-	case SIGUSR1:
-		howto |= RB_HALT;
-	case SIGINT:
-		Reboot = TRUE;
-	case SIGTERM:
-		if (current_state == read_ttys || current_state == multi_user ||
-		    current_state == clean_ttys || current_state == catatonia)
-			requested_transition = death;
-		else
-			requested_transition = death_single;
-		break;
-	case SIGTSTP:
-		if (current_state == runcom || current_state == read_ttys ||
-		    current_state == clean_ttys ||
-		    current_state == multi_user || current_state == catatonia)
-			requested_transition = catatonia;
-		break;
-	case SIGEMT:
-		requested_transition = reroot;
-		break;
-	default:
-		requested_transition = 0;
-		break;
-	}
+ switch (sig) {
+ case 134:
+  if (current_state == read_ttys || current_state == multi_user ||
+      current_state == clean_ttys || current_state == catatonia)
+   requested_transition = clean_ttys;
+  break;
+ case 128:
+ case 129:
+  howto = sig == 129 ? RB_POWEROFF : RB_POWERCYCLE;
+ case 130:
+  howto |= RB_HALT;
+ case 133:
+  Reboot = TRUE;
+ case 132:
+  if (current_state == read_ttys || current_state == multi_user ||
+      current_state == clean_ttys || current_state == catatonia)
+   requested_transition = death;
+  else
+   requested_transition = death_single;
+  break;
+ case 131:
+  if (current_state == runcom || current_state == read_ttys ||
+      current_state == clean_ttys ||
+      current_state == multi_user || current_state == catatonia)
+   requested_transition = catatonia;
+  break;
+ case 135:
+  requested_transition = reroot;
+  break;
+ default:
+  requested_transition = 0;
+  break;
+ }
 }

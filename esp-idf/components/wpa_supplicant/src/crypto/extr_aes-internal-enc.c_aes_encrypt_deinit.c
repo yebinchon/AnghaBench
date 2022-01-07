@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int AES_PRIV_SIZE ;
+ int os_free (void*) ;
+ int os_memset (void*,int ,int ) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  AES_PRIV_SIZE ; 
- int /*<<< orphan*/  os_free (void*) ; 
- int /*<<< orphan*/  os_memset (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
-
-void  aes_encrypt_deinit(void *ctx)
+void aes_encrypt_deinit(void *ctx)
 {
-	os_memset(ctx, 0, AES_PRIV_SIZE);
-	os_free(ctx);
+ os_memset(ctx, 0, AES_PRIV_SIZE);
+ os_free(ctx);
 }

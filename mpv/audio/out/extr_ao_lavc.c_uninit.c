@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct priv {double expected_next_pts; TYPE_2__* enc; int /*<<< orphan*/  shutdown; } ;
-struct encode_lavc_context {int /*<<< orphan*/  lock; scalar_t__ discontinuity_pts_offset; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct priv {double expected_next_pts; TYPE_2__* enc; int shutdown; } ;
+struct encode_lavc_context {int lock; scalar_t__ discontinuity_pts_offset; } ;
 struct ao {struct encode_lavc_context* encode_lavc_ctx; struct priv* priv; } ;
 struct TYPE_4__ {TYPE_1__* options; } ;
-struct TYPE_3__ {int /*<<< orphan*/  rawts; } ;
+struct TYPE_3__ {int rawts; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  encode (struct ao*,double,int /*<<< orphan*/ *) ; 
- scalar_t__ encoder_get_offset (TYPE_2__*) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int encode (struct ao*,double,int *) ;
+ scalar_t__ encoder_get_offset (TYPE_2__*) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 __attribute__((used)) static void uninit(struct ao *ao)
 {
@@ -38,6 +38,6 @@ __attribute__((used)) static void uninit(struct ao *ao)
         pthread_mutex_unlock(&ectx->lock);
 
         outpts += encoder_get_offset(ac->enc);
-        encode(ao, outpts, NULL);
+        encode(ao, outpts, ((void*)0));
     }
 }

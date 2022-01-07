@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IDispatchEx ;
-typedef  int /*<<< orphan*/ * HRESULT ;
-typedef  int /*<<< orphan*/ * DWORD ;
-typedef  int /*<<< orphan*/  DISPID ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISPID_SAX_XMLREADER_GETFEATURE ; 
- int /*<<< orphan*/ * DISP_E_UNKNOWNNAME ; 
- int /*<<< orphan*/  EXPECT_HR (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_NOTIMPL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * IDispatchEx_DeleteMemberByDispID (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * IDispatchEx_DeleteMemberByName (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * IDispatchEx_GetDispID (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * IDispatchEx_GetMemberName (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * IDispatchEx_GetMemberProperties (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * IDispatchEx_GetNameSpaceParent (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * IDispatchEx_GetNextDispID (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * IDispatchEx_GetTypeInfoCount (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  IDispatchEx_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IDispatchEx ; 
- int /*<<< orphan*/ * IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  SysAllocString (char const*) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fdexEnumDefault ; 
- int /*<<< orphan*/  fdexNameCaseSensitive ; 
- int /*<<< orphan*/  fdexNameEnsure ; 
- int /*<<< orphan*/  grfdexPropCanAll ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
+
+
+
+typedef char WCHAR ;
+typedef int UINT ;
+typedef int IUnknown ;
+typedef int IDispatchEx ;
+typedef int * HRESULT ;
+typedef int * DWORD ;
+typedef int DISPID ;
+typedef int BSTR ;
+
+
+ int DISPID_SAX_XMLREADER_GETFEATURE ;
+ int * DISP_E_UNKNOWNNAME ;
+ int EXPECT_HR (int *,int ) ;
+ int E_NOTIMPL ;
+ scalar_t__ FAILED (int *) ;
+ int * IDispatchEx_DeleteMemberByDispID (int *,int ) ;
+ int * IDispatchEx_DeleteMemberByName (int *,int ,int ) ;
+ int * IDispatchEx_GetDispID (int *,int ,int ,int *) ;
+ int * IDispatchEx_GetMemberName (int *,int ,int *) ;
+ int * IDispatchEx_GetMemberProperties (int *,int ,int ,int **) ;
+ int * IDispatchEx_GetNameSpaceParent (int *,int **) ;
+ int * IDispatchEx_GetNextDispID (int *,int ,int ,int *) ;
+ int * IDispatchEx_GetTypeInfoCount (int *,int*) ;
+ int IDispatchEx_Release (int *) ;
+ int IID_IDispatchEx ;
+ int * IUnknown_QueryInterface (int *,int *,void**) ;
+ scalar_t__ SUCCEEDED (int *) ;
+ int S_OK ;
+ int SysAllocString (char const*) ;
+ int SysFreeString (int ) ;
+ int fdexEnumDefault ;
+ int fdexNameCaseSensitive ;
+ int fdexNameEnsure ;
+ int grfdexPropCanAll ;
+ int ok (int,char*,int) ;
 
 __attribute__((used)) static void test_obj_dispex(IUnknown *obj)
 {

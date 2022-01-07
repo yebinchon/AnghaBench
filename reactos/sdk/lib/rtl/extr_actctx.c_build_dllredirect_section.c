@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct strsection_header {int size; unsigned int count; int index_offset; int /*<<< orphan*/  magic; } ;
-struct string_index {int name_offset; int name_len; int data_offset; int data_len; unsigned int rosterindex; int /*<<< orphan*/  hash; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct strsection_header {int size; unsigned int count; int index_offset; int magic; } ;
+struct string_index {int name_offset; int name_len; int data_offset; int data_len; unsigned int rosterindex; int hash; } ;
 struct dllredirect_data {int size; int unk; struct strsection_header* res; } ;
-struct dll_redirect {int /*<<< orphan*/  name; } ;
+struct dll_redirect {int name; } ;
 struct assembly {unsigned int num_dlls; struct dll_redirect* dlls; } ;
-typedef  scalar_t__ WCHAR ;
-typedef  int USHORT ;
-struct TYPE_5__ {int Length; int MaximumLength; int /*<<< orphan*/  Buffer; } ;
-typedef  TYPE_1__ UNICODE_STRING ;
-typedef  int ULONG ;
+typedef scalar_t__ WCHAR ;
+typedef int USHORT ;
+struct TYPE_5__ {int Length; int MaximumLength; int Buffer; } ;
+typedef TYPE_1__ UNICODE_STRING ;
+typedef int ULONG ;
 struct TYPE_6__ {unsigned int num_assemblies; struct assembly* assemblies; } ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  TYPE_2__ ACTIVATION_CONTEXT ;
+typedef int NTSTATUS ;
+typedef int BYTE ;
+typedef TYPE_2__ ACTIVATION_CONTEXT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,...) ; 
- int /*<<< orphan*/  HASH_STRING_ALGORITHM_X65599 ; 
- struct strsection_header* RtlAllocateHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  RtlGetProcessHeap () ; 
- int /*<<< orphan*/  RtlHashUnicodeString (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  STATUS_NO_MEMORY ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  STRSECTION_MAGIC ; 
- int /*<<< orphan*/  TRUE ; 
- int aligned_string_len (int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (struct strsection_header*,int /*<<< orphan*/ ,int) ; 
- int strlenW (int /*<<< orphan*/ ) ; 
+
+ int DPRINT (char*,...) ;
+ int HASH_STRING_ALGORITHM_X65599 ;
+ struct strsection_header* RtlAllocateHeap (int ,int ,unsigned int) ;
+ int RtlGetProcessHeap () ;
+ int RtlHashUnicodeString (TYPE_1__*,int ,int ,int *) ;
+ int STATUS_NO_MEMORY ;
+ int STATUS_SUCCESS ;
+ int STRSECTION_MAGIC ;
+ int TRUE ;
+ int aligned_string_len (int) ;
+ int memcpy (scalar_t__*,int ,int) ;
+ int memset (struct strsection_header*,int ,int) ;
+ int strlenW (int ) ;
 
 __attribute__((used)) static NTSTATUS build_dllredirect_section(ACTIVATION_CONTEXT* actctx, struct strsection_header **section)
 {
@@ -52,7 +52,7 @@ __attribute__((used)) static NTSTATUS build_dllredirect_section(ACTIVATION_CONTE
 
     DPRINT("actctx %p, num_assemblies %d\n", actctx, actctx->num_assemblies);
 
-    /* compute section length */
+
     for (i = 0; i < actctx->num_assemblies; i++)
     {
         struct assembly *assembly = &actctx->assemblies[i];
@@ -60,7 +60,7 @@ __attribute__((used)) static NTSTATUS build_dllredirect_section(ACTIVATION_CONTE
         {
             struct dll_redirect *dll = &assembly->dlls[j];
 
-            /* each entry needs index, data and string data */
+
             total_len += sizeof(*index);
             total_len += sizeof(*data);
             total_len += aligned_string_len((strlenW(dll->name)+1)*sizeof(WCHAR));
@@ -78,7 +78,7 @@ __attribute__((used)) static NTSTATUS build_dllredirect_section(ACTIVATION_CONTE
 
     memset(header, 0, sizeof(*header));
     header->magic = STRSECTION_MAGIC;
-    header->size  = sizeof(*header);
+    header->size = sizeof(*header);
     header->count = dll_count;
     header->index_offset = sizeof(*header);
     index = (struct string_index*)((BYTE*)header + header->index_offset);
@@ -97,11 +97,11 @@ __attribute__((used)) static NTSTATUS build_dllredirect_section(ACTIVATION_CONTE
             WCHAR *ptrW;
 
             DPRINT("%d: dll name %S\n", j, dll->name);
-            /* setup new index entry */
+
             str.Buffer = dll->name;
             str.Length = (USHORT)strlenW(dll->name)*sizeof(WCHAR);
             str.MaximumLength = str.Length + sizeof(WCHAR);
-            /* hash original class name */
+
             RtlHashUnicodeString(&str, TRUE, HASH_STRING_ALGORITHM_X65599, &index->hash);
 
             index->name_offset = name_offset;
@@ -110,13 +110,13 @@ __attribute__((used)) static NTSTATUS build_dllredirect_section(ACTIVATION_CONTE
             index->data_len = sizeof(*data);
             index->rosterindex = i + 1;
 
-            /* setup data */
+
             data = (struct dllredirect_data*)((BYTE*)header + index->data_offset);
             data->size = sizeof(*data);
-            data->unk = 2; /* FIXME: seems to be constant */
+            data->unk = 2;
             memset(data->res, 0, sizeof(data->res));
 
-            /* dll name */
+
             ptrW = (WCHAR*)((BYTE*)header + index->name_offset);
             memcpy(ptrW, dll->name, index->name_len);
             ptrW[index->name_len/sizeof(WCHAR)] = 0;

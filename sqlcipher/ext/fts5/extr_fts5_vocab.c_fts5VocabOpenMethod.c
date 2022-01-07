@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab_cursor ;
-struct TYPE_10__ {int /*<<< orphan*/  zErrMsg; } ;
-typedef  TYPE_2__ sqlite3_vtab ;
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  i64 ;
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int sqlite3_vtab_cursor ;
+struct TYPE_10__ {int zErrMsg; } ;
+typedef TYPE_2__ sqlite3_vtab ;
+typedef int sqlite3_stmt ;
+typedef int i64 ;
 struct TYPE_13__ {TYPE_1__* pConfig; } ;
-struct TYPE_12__ {int /*<<< orphan*/ * aCnt; int /*<<< orphan*/ * aDoc; int /*<<< orphan*/ * pStmt; TYPE_5__* pFts5; } ;
-struct TYPE_11__ {int /*<<< orphan*/  zFts5Tbl; int /*<<< orphan*/  zFts5Db; int /*<<< orphan*/  pGlobal; int /*<<< orphan*/  db; } ;
+struct TYPE_12__ {int * aCnt; int * aDoc; int * pStmt; TYPE_5__* pFts5; } ;
+struct TYPE_11__ {int zFts5Tbl; int zFts5Db; int pGlobal; int db; } ;
 struct TYPE_9__ {int nCol; } ;
-typedef  TYPE_3__ Fts5VocabTable ;
-typedef  TYPE_4__ Fts5VocabCursor ;
-typedef  TYPE_5__ Fts5Table ;
+typedef TYPE_3__ Fts5VocabTable ;
+typedef TYPE_4__ Fts5VocabCursor ;
+typedef TYPE_5__ Fts5Table ;
 
-/* Variables and functions */
- int SQLITE_ERROR ; 
- int SQLITE_OK ; 
- scalar_t__ SQLITE_ROW ; 
- int /*<<< orphan*/  assert (int) ; 
- int sqlite3Fts5FlushToDisk (TYPE_5__*) ; 
- scalar_t__ sqlite3Fts5MallocZero (int*,int) ; 
- char* sqlite3Fts5Mprintf (int*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_5__* sqlite3Fts5TableFromCsrid (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_column_int64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- int /*<<< orphan*/  sqlite3_mprintf (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int sqlite3_prepare_v2 (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
+
+ int SQLITE_ERROR ;
+ int SQLITE_OK ;
+ scalar_t__ SQLITE_ROW ;
+ int assert (int) ;
+ int sqlite3Fts5FlushToDisk (TYPE_5__*) ;
+ scalar_t__ sqlite3Fts5MallocZero (int*,int) ;
+ char* sqlite3Fts5Mprintf (int*,char*,int ,int ,int ,int ) ;
+ TYPE_5__* sqlite3Fts5TableFromCsrid (int ,int ) ;
+ int sqlite3_column_int64 (int *,int ) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_free (char*) ;
+ int sqlite3_mprintf (char*,int ,int ) ;
+ int sqlite3_prepare_v2 (int ,char*,int,int **,int ) ;
+ scalar_t__ sqlite3_step (int *) ;
 
 __attribute__((used)) static int fts5VocabOpenMethod(
-  sqlite3_vtab *pVTab, 
+  sqlite3_vtab *pVTab,
   sqlite3_vtab_cursor **ppCsr
 ){
   Fts5VocabTable *pTab = (Fts5VocabTable*)pVTab;

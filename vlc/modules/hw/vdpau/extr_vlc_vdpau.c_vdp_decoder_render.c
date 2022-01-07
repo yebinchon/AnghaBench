@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  (* decoder_render ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ;} ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int (* decoder_render ) (int ,int ,int const*,int ,int const*) ;} ;
 struct TYPE_5__ {TYPE_1__ vt; } ;
-typedef  TYPE_2__ vdp_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  VdpVideoSurface ;
-typedef  int /*<<< orphan*/  VdpStatus ;
-typedef  int /*<<< orphan*/  VdpPictureInfo ;
-typedef  int /*<<< orphan*/  VdpDecoder ;
-typedef  int /*<<< orphan*/  VdpBitstreamBuffer ;
+typedef TYPE_2__ vdp_t ;
+typedef int uint32_t ;
+typedef int VdpVideoSurface ;
+typedef int VdpStatus ;
+typedef int VdpPictureInfo ;
+typedef int VdpDecoder ;
+typedef int VdpBitstreamBuffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_FUNC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DECODER_RENDER ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
+
+ int CHECK_FUNC (int ) ;
+ int DECODER_RENDER ;
+ int stub1 (int ,int ,int const*,int ,int const*) ;
 
 VdpStatus vdp_decoder_render(const vdp_t *vdp, VdpDecoder decoder,
     VdpVideoSurface target, const VdpPictureInfo *info,

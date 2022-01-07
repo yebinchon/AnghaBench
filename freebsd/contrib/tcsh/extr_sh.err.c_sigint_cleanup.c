@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sigaction {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  sigaction (int /*<<< orphan*/ ,struct sigaction const*,int /*<<< orphan*/ *) ; 
+
+ int SIGINT ;
+ int sigaction (int ,struct sigaction const*,int *) ;
 
 void
 sigint_cleanup(void *xsa)
@@ -22,5 +22,5 @@ sigint_cleanup(void *xsa)
     const struct sigaction *sa;
 
     sa = xsa;
-    sigaction(SIGINT, sa, NULL);
+    sigaction(SIGINT, sa, ((void*)0));
 }

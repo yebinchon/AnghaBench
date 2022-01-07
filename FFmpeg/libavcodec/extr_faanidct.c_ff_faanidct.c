@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int16_t ;
-typedef  int FLOAT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  emms_c () ; 
- int /*<<< orphan*/  p8idct (int*,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int) ; 
- int* prescale ; 
+
+
+
+typedef int int16_t ;
+typedef int FLOAT ;
+
+
+ int emms_c () ;
+ int p8idct (int*,int*,int *,int ,int,int,int) ;
+ int* prescale ;
 
 void ff_faanidct(int16_t block[64]){
     FLOAT temp[64];
@@ -27,6 +27,6 @@ void ff_faanidct(int16_t block[64]){
     for(i=0; i<64; i++)
         temp[i] = block[i] * prescale[i];
 
-    p8idct(block, temp, NULL, 0, 1, 8, 0);
-    p8idct(block, temp, NULL, 0, 8, 1, 1);
+    p8idct(block, temp, ((void*)0), 0, 1, 8, 0);
+    p8idct(block, temp, ((void*)0), 0, 8, 1, 1);
 }

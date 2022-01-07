@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  npy_intp ;
-struct TYPE_15__ {int /*<<< orphan*/  elsize; } ;
-typedef  int /*<<< orphan*/  PyArray_StridedUnaryOp ;
-typedef  TYPE_1__ PyArray_Descr ;
-typedef  int /*<<< orphan*/  NpyAuxData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NPY_AUXDATA_FREE (int /*<<< orphan*/ *) ; 
- int NPY_FAIL ; 
- int /*<<< orphan*/  NPY_NEEDS_INIT ; 
- int /*<<< orphan*/  NPY_STRING ; 
- scalar_t__ NPY_SUCCEED ; 
- TYPE_1__* PyArray_AdaptFlexibleDType (int /*<<< orphan*/ *,TYPE_1__*,TYPE_1__*) ; 
- TYPE_1__* PyArray_DescrFromType (int /*<<< orphan*/ ) ; 
- scalar_t__ PyArray_GetDTypeCopySwapFn (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- scalar_t__ PyArray_GetDTypeTransferFunction (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int*) ; 
- int /*<<< orphan*/  PyDataType_FLAGCHK (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Py_DECREF (TYPE_1__*) ; 
- scalar_t__ get_nbo_datetime_to_string_transfer_function (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,TYPE_1__*,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- scalar_t__ wrap_aligned_contig_transfer_function (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
+
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef int npy_intp ;
+struct TYPE_15__ {int elsize; } ;
+typedef int PyArray_StridedUnaryOp ;
+typedef TYPE_1__ PyArray_Descr ;
+typedef int NpyAuxData ;
+
+
+ int NPY_AUXDATA_FREE (int *) ;
+ int NPY_FAIL ;
+ int NPY_NEEDS_INIT ;
+ int NPY_STRING ;
+ scalar_t__ NPY_SUCCEED ;
+ TYPE_1__* PyArray_AdaptFlexibleDType (int *,TYPE_1__*,TYPE_1__*) ;
+ TYPE_1__* PyArray_DescrFromType (int ) ;
+ scalar_t__ PyArray_GetDTypeCopySwapFn (int,int ,int ,TYPE_1__*,int **,int **) ;
+ scalar_t__ PyArray_GetDTypeTransferFunction (int,int ,int ,TYPE_1__*,TYPE_1__*,int ,int **,int **,int*) ;
+ int PyDataType_FLAGCHK (TYPE_1__*,int ) ;
+ int Py_DECREF (TYPE_1__*) ;
+ scalar_t__ get_nbo_datetime_to_string_transfer_function (int,int ,int ,TYPE_1__*,TYPE_1__*,int **,int **) ;
+ scalar_t__ wrap_aligned_contig_transfer_function (int ,int ,int *,int *,int *,int *,int *,int *,int ,int **,int **) ;
 
 __attribute__((used)) static int
 get_datetime_to_unicode_transfer_function(int aligned,
@@ -40,18 +40,18 @@ get_datetime_to_unicode_transfer_function(int aligned,
                             NpyAuxData **out_transferdata,
                             int *out_needs_api)
 {
-    NpyAuxData *castdata = NULL, *todata = NULL, *fromdata = NULL;
+    NpyAuxData *castdata = ((void*)0), *todata = ((void*)0), *fromdata = ((void*)0);
     PyArray_StridedUnaryOp *caststransfer, *tobuffer, *frombuffer;
     PyArray_Descr *str_dtype;
 
-    /* Get an ASCII string data type, adapted to match the UNICODE one */
+
     str_dtype = PyArray_DescrFromType(NPY_STRING);
-    str_dtype = PyArray_AdaptFlexibleDType(NULL, dst_dtype, str_dtype);
-    if (str_dtype == NULL) {
+    str_dtype = PyArray_AdaptFlexibleDType(((void*)0), dst_dtype, str_dtype);
+    if (str_dtype == ((void*)0)) {
         return NPY_FAIL;
     }
 
-    /* Get the copy/swap operation to dst */
+
     if (PyArray_GetDTypeCopySwapFn(aligned,
                             src_stride, src_dtype->elsize,
                             src_dtype,
@@ -60,7 +60,7 @@ get_datetime_to_unicode_transfer_function(int aligned,
         return NPY_FAIL;
     }
 
-    /* Get the NBO datetime to string aligned contig function */
+
     if (get_nbo_datetime_to_string_transfer_function(1,
                             src_dtype->elsize, str_dtype->elsize,
                             src_dtype, str_dtype,
@@ -70,7 +70,7 @@ get_datetime_to_unicode_transfer_function(int aligned,
         return NPY_FAIL;
     }
 
-    /* Get the cast operation to dst */
+
     if (PyArray_GetDTypeTransferFunction(aligned,
                             str_dtype->elsize, dst_stride,
                             str_dtype, dst_dtype,
@@ -83,7 +83,7 @@ get_datetime_to_unicode_transfer_function(int aligned,
         return NPY_FAIL;
     }
 
-    /* Wrap it all up in a new transfer function + data */
+
     if (wrap_aligned_contig_transfer_function(
                         src_dtype->elsize, str_dtype->elsize,
                         tobuffer, todata,

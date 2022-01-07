@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {size_t num_idx; int /*<<< orphan*/ * idx; } ;
-typedef  TYPE_1__ bhnd_sprom_opcode_state ;
-typedef  int /*<<< orphan*/  bhnd_sprom_opcode_idx_entry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BHND_NV_ASSERT (int,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {size_t num_idx; int * idx; } ;
+typedef TYPE_1__ bhnd_sprom_opcode_state ;
+typedef int bhnd_sprom_opcode_idx_entry ;
+
+
+ int BHND_NV_ASSERT (int,char*) ;
 
 bhnd_sprom_opcode_idx_entry *
 bhnd_sprom_opcode_index_next(bhnd_sprom_opcode_state *state,
     bhnd_sprom_opcode_idx_entry *prev)
 {
-	size_t idxpos;
+ size_t idxpos;
 
-	/* Get next index position */
-	if (prev == NULL) {
-		idxpos = 0;
-	} else {
-		/* Determine current position */
-		idxpos = (size_t)(prev - state->idx);
-		BHND_NV_ASSERT(idxpos < state->num_idx,
-		    ("invalid index %zu", idxpos));
 
-		/* Advance to next entry */
-		idxpos++;
-	}
+ if (prev == ((void*)0)) {
+  idxpos = 0;
+ } else {
 
-	/* Check for EOF */
-	if (idxpos == state->num_idx)
-		return (NULL);
+  idxpos = (size_t)(prev - state->idx);
+  BHND_NV_ASSERT(idxpos < state->num_idx,
+      ("invalid index %zu", idxpos));
 
-	return (&state->idx[idxpos]);
+
+  idxpos++;
+ }
+
+
+ if (idxpos == state->num_idx)
+  return (((void*)0));
+
+ return (&state->idx[idxpos]);
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EN_CHANGE ; 
- int /*<<< orphan*/  EndDialog (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  GetParent (int /*<<< orphan*/ ) ; 
-#define  IDCANCEL 130 
-#define  IDOK 129 
- int /*<<< orphan*/  PropSheet_Changed (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
-#define  edt1 128 
- int /*<<< orphan*/  s_bNotified ; 
+
+
+
+typedef int UINT ;
+typedef int HWND ;
+
+
+ int EN_CHANGE ;
+ int EndDialog (int ,int) ;
+ int GetParent (int ) ;
+
+
+ int PropSheet_Changed (int ,int ) ;
+ int TRUE ;
+
+ int s_bNotified ;
 
 __attribute__((used)) static void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 {
     switch (id)
     {
-        case IDOK:
-        case IDCANCEL:
+        case 129:
+        case 130:
             EndDialog(hwnd, id);
             break;
-        case edt1:
+        case 128:
             if (codeNotify == EN_CHANGE)
             {
                 s_bNotified = TRUE;

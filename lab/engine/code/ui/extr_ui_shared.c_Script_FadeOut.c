@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  parent; } ;
-typedef  TYPE_1__ itemDef_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Menu_FadeItemByName (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- scalar_t__ String_Parse (char**,char const**) ; 
- int /*<<< orphan*/  qtrue ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int parent; } ;
+typedef TYPE_1__ itemDef_t ;
+
+
+ int Menu_FadeItemByName (int ,char const*,int ) ;
+ scalar_t__ String_Parse (char**,char const**) ;
+ int qtrue ;
 
 void Script_FadeOut(itemDef_t *item, char **args) {
   const char *name;

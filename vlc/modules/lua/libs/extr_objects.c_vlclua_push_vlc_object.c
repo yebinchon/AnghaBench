@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- scalar_t__ luaL_newmetatable (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ lua_newuserdata (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushcfunction (int /*<<< orphan*/ *,int (*) (int /*<<< orphan*/ *)) ; 
- int /*<<< orphan*/  lua_pushliteral (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_setmetatable (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int vlc_object_t ;
+typedef int lua_State ;
+
+
+ scalar_t__ luaL_newmetatable (int *,char*) ;
+ scalar_t__ lua_newuserdata (int *,int) ;
+ int lua_pushcfunction (int *,int (*) (int *)) ;
+ int lua_pushliteral (int *,char*) ;
+ int lua_setfield (int *,int,char*) ;
+ int lua_setmetatable (int *,int) ;
 
 __attribute__((used)) static int vlclua_push_vlc_object(lua_State *L, vlc_object_t *p_obj,
                                   int (*release)(lua_State *))
@@ -31,11 +31,11 @@ __attribute__((used)) static int vlclua_push_vlc_object(lua_State *L, vlc_object
 
     if (luaL_newmetatable(L, "vlc_object"))
     {
-        /* Hide the metatable */
+
         lua_pushliteral(L, "none of your business");
         lua_setfield(L, -2, "__metatable");
-        /* Set the garbage collector if needed */
-        if (release != NULL)
+
+        if (release != ((void*)0))
         {
             lua_pushcfunction(L, release);
             lua_setfield(L, -2, "__gc");

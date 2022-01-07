@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int wq_nthreads; int /*<<< orphan*/ * wq_thread; } ;
-typedef  TYPE_1__ workqueue_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pthread_join (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int wq_nthreads; int * wq_thread; } ;
+typedef TYPE_1__ workqueue_t ;
+
+
+ int pthread_join (int ,int *) ;
 
 __attribute__((used)) static void
 join_threads(workqueue_t *wq)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < wq->wq_nthreads; i++) {
-		pthread_join(wq->wq_thread[i], NULL);
-	}
+ for (i = 0; i < wq->wq_nthreads; i++) {
+  pthread_join(wq->wq_thread[i], ((void*)0));
+ }
 }

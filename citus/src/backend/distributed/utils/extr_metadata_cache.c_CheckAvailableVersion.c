@@ -1,50 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* AvailableExtensionVersion () ; 
- int /*<<< orphan*/  CITUS_EXTENSIONVERSION ; 
- int /*<<< orphan*/  CITUS_MAJORVERSION ; 
- int /*<<< orphan*/  EnableVersionChecks ; 
- int /*<<< orphan*/  MajorVersionsCompatible (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ereport (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errdetail (char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  errhint (char*) ; 
- int /*<<< orphan*/  errmsg (char*) ; 
+ char* AvailableExtensionVersion () ;
+ int CITUS_EXTENSIONVERSION ;
+ int CITUS_MAJORVERSION ;
+ int EnableVersionChecks ;
+ int MajorVersionsCompatible (char*,int ) ;
+ int ereport (int,int ) ;
+ int errdetail (char*,int ,char*) ;
+ int errhint (char*) ;
+ int errmsg (char*) ;
 
 bool
 CheckAvailableVersion(int elevel)
 {
-	char *availableVersion = NULL;
+ char *availableVersion = ((void*)0);
 
-	if (!EnableVersionChecks)
-	{
-		return true;
-	}
+ if (!EnableVersionChecks)
+ {
+  return 1;
+ }
 
-	availableVersion = AvailableExtensionVersion();
+ availableVersion = AvailableExtensionVersion();
 
-	if (!MajorVersionsCompatible(availableVersion, CITUS_EXTENSIONVERSION))
-	{
-		ereport(elevel, (errmsg("loaded Citus library version differs from latest "
-								"available extension version"),
-						 errdetail("Loaded library requires %s, but the latest control "
-								   "file specifies %s.", CITUS_MAJORVERSION,
-								   availableVersion),
-						 errhint("Restart the database to load the latest Citus "
-								 "library.")));
-		return false;
-	}
+ if (!MajorVersionsCompatible(availableVersion, CITUS_EXTENSIONVERSION))
+ {
+  ereport(elevel, (errmsg("loaded Citus library version differs from latest "
+        "available extension version"),
+       errdetail("Loaded library requires %s, but the latest control "
+           "file specifies %s.", CITUS_MAJORVERSION,
+           availableVersion),
+       errhint("Restart the database to load the latest Citus "
+         "library.")));
+  return 0;
+ }
 
-	return true;
+ return 1;
 }

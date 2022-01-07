@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VAAPIEncodeSlice ;
-typedef  int /*<<< orphan*/  VAAPIEncodePicture ;
-struct TYPE_6__ {int /*<<< orphan*/  cbc; int /*<<< orphan*/  raw_slice; scalar_t__ aud_needed; int /*<<< orphan*/  raw_aud; int /*<<< orphan*/  current_access_unit; } ;
-typedef  TYPE_1__ VAAPIEncodeH264Context ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int VAAPIEncodeSlice ;
+typedef int VAAPIEncodePicture ;
+struct TYPE_6__ {int cbc; int raw_slice; scalar_t__ aud_needed; int raw_aud; int current_access_unit; } ;
+typedef TYPE_1__ VAAPIEncodeH264Context ;
 struct TYPE_7__ {TYPE_1__* priv_data; } ;
-typedef  int /*<<< orphan*/  CodedBitstreamFragment ;
-typedef  TYPE_2__ AVCodecContext ;
+typedef int CodedBitstreamFragment ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ff_cbs_fragment_reset (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int vaapi_encode_h264_add_nal (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int vaapi_encode_h264_write_access_unit (TYPE_2__*,char*,size_t*,int /*<<< orphan*/ *) ; 
+
+ int ff_cbs_fragment_reset (int ,int *) ;
+ int vaapi_encode_h264_add_nal (TYPE_2__*,int *,int *) ;
+ int vaapi_encode_h264_write_access_unit (TYPE_2__*,char*,size_t*,int *) ;
 
 __attribute__((used)) static int vaapi_encode_h264_write_slice_header(AVCodecContext *avctx,
                                                 VAAPIEncodePicture *pic,
@@ -31,7 +31,7 @@ __attribute__((used)) static int vaapi_encode_h264_write_slice_header(AVCodecCon
                                                 char *data, size_t *data_len)
 {
     VAAPIEncodeH264Context *priv = avctx->priv_data;
-    CodedBitstreamFragment   *au = &priv->current_access_unit;
+    CodedBitstreamFragment *au = &priv->current_access_unit;
     int err;
 
     if (priv->aud_needed) {

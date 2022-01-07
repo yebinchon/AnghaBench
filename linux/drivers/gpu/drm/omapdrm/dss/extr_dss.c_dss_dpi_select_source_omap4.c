@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dss_device {int dummy; } ;
-typedef  enum omap_channel { ____Placeholder_omap_channel } omap_channel ;
+typedef enum omap_channel { ____Placeholder_omap_channel } omap_channel ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DSS_CONTROL ; 
- int EINVAL ; 
-#define  OMAP_DSS_CHANNEL_DIGIT 129 
-#define  OMAP_DSS_CHANNEL_LCD2 128 
- int /*<<< orphan*/  REG_FLD_MOD (struct dss_device*,int /*<<< orphan*/ ,int,int,int) ; 
+
+ int DSS_CONTROL ;
+ int EINVAL ;
+
+
+ int REG_FLD_MOD (struct dss_device*,int ,int,int,int) ;
 
 __attribute__((used)) static int dss_dpi_select_source_omap4(struct dss_device *dss, int port,
-				       enum omap_channel channel)
+           enum omap_channel channel)
 {
-	int val;
+ int val;
 
-	switch (channel) {
-	case OMAP_DSS_CHANNEL_LCD2:
-		val = 0;
-		break;
-	case OMAP_DSS_CHANNEL_DIGIT:
-		val = 1;
-		break;
-	default:
-		return -EINVAL;
-	}
+ switch (channel) {
+ case 128:
+  val = 0;
+  break;
+ case 129:
+  val = 1;
+  break;
+ default:
+  return -EINVAL;
+ }
 
-	REG_FLD_MOD(dss, DSS_CONTROL, val, 17, 17);
+ REG_FLD_MOD(dss, DSS_CONTROL, val, 17, 17);
 
-	return 0;
+ return 0;
 }

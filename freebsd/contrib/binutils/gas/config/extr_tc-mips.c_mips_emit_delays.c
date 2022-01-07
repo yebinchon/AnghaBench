@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  noreorder; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NOP_INSN ; 
- int /*<<< orphan*/  add_fixed_insn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  history ; 
- int /*<<< orphan*/  mips_move_labels () ; 
- int /*<<< orphan*/  mips_no_prev_insn () ; 
- TYPE_1__ mips_opts ; 
- int nops_for_insn (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int noreorder; } ;
+
+
+ int NOP_INSN ;
+ int add_fixed_insn (int ) ;
+ int history ;
+ int mips_move_labels () ;
+ int mips_no_prev_insn () ;
+ TYPE_1__ mips_opts ;
+ int nops_for_insn (int ,int *) ;
 
 void
 mips_emit_delays (void)
 {
   if (! mips_opts.noreorder)
     {
-      int nops = nops_for_insn (history, NULL);
+      int nops = nops_for_insn (history, ((void*)0));
       if (nops > 0)
-	{
-	  while (nops-- > 0)
-	    add_fixed_insn (NOP_INSN);
-	  mips_move_labels ();
-	}
+ {
+   while (nops-- > 0)
+     add_fixed_insn (NOP_INSN);
+   mips_move_labels ();
+ }
     }
   mips_no_prev_insn ();
 }

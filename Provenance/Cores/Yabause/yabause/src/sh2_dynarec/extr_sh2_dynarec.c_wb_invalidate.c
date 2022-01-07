@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char u64 ;
-typedef  int u32 ;
 
-/* Variables and functions */
- int EXCLUDE_REG ; 
- int HOST_REGS ; 
- char TEMPREG ; 
- int /*<<< orphan*/  emit_loadreg (char,int) ; 
- int /*<<< orphan*/  emit_mov (int,int) ; 
- int /*<<< orphan*/  emit_storereg (char,int) ; 
- scalar_t__ get_reg (char*,char) ; 
+
+
+
+typedef char u64 ;
+typedef int u32 ;
+
+
+ int EXCLUDE_REG ;
+ int HOST_REGS ;
+ char TEMPREG ;
+ int emit_loadreg (char,int) ;
+ int emit_mov (int,int) ;
+ int emit_storereg (char,int) ;
+ scalar_t__ get_reg (char*,char) ;
 
 void wb_invalidate(signed char pre[],signed char entry[],u32 dirty, u64 u)
 {
@@ -35,7 +35,7 @@ void wb_invalidate(signed char pre[],signed char entry[],u32 dirty, u64 u)
               if((nr=get_reg(entry,pre[hr]))<0) {
                 emit_storereg(pre[hr],hr);
               }else{
-                // Register move would overwrite another register, so write back
+
                 if(pre[nr]>=0)
                   if(get_reg(entry,pre[nr])>=0)
                     emit_storereg(pre[hr],hr);
@@ -46,7 +46,7 @@ void wb_invalidate(signed char pre[],signed char entry[],u32 dirty, u64 u)
       }
     }
   }
-  // Move from one register to another (no writeback)
+
   for(hr=0;hr<HOST_REGS;hr++) {
     if(hr!=EXCLUDE_REG) {
       if(pre[hr]!=entry[hr]) {
@@ -61,7 +61,7 @@ void wb_invalidate(signed char pre[],signed char entry[],u32 dirty, u64 u)
       }
     }
   }
-  // Reload registers that couldn't be directly moved
+
   for(hr=0;hr<HOST_REGS;hr++) {
     if(hr!=EXCLUDE_REG) {
       if(pre[hr]!=entry[hr]) {

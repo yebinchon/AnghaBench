@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  user_config_cache ; 
- int /*<<< orphan*/  user_config_cache_entry_dtor ; 
- int /*<<< orphan*/  zend_hash_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+ int user_config_cache ;
+ int user_config_cache_entry_dtor ;
+ int zend_hash_init (int *,int ,int *,int ,int) ;
 
 __attribute__((used)) static void user_config_cache_init()
 {
-    zend_hash_init(&user_config_cache, 0, NULL, user_config_cache_entry_dtor, 1);
+    zend_hash_init(&user_config_cache, 0, ((void*)0), user_config_cache_entry_dtor, 1);
 }

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uivector ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uivector ;
 struct TYPE_4__ {unsigned short* zeros; unsigned short* head; unsigned short* chain; int* val; } ;
-typedef  TYPE_1__ Hash ;
+typedef TYPE_1__ Hash ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_BREAK (int) ; 
- int MAX_SUPPORTED_DEFLATE_LENGTH ; 
- int /*<<< orphan*/  addLengthDistance (int /*<<< orphan*/ *,unsigned int,unsigned int) ; 
- void* countZeros (unsigned char const*,size_t,unsigned int) ; 
- unsigned int getHash (unsigned char const*,size_t,unsigned int) ; 
- int /*<<< orphan*/  uivector_push_back (int /*<<< orphan*/ *,unsigned char const) ; 
- int /*<<< orphan*/  updateHashChain (TYPE_1__*,unsigned int,unsigned int,unsigned int) ; 
+
+ int ERROR_BREAK (int) ;
+ int MAX_SUPPORTED_DEFLATE_LENGTH ;
+ int addLengthDistance (int *,unsigned int,unsigned int) ;
+ void* countZeros (unsigned char const*,size_t,unsigned int) ;
+ unsigned int getHash (unsigned char const*,size_t,unsigned int) ;
+ int uivector_push_back (int *,unsigned char const) ;
+ int updateHashChain (TYPE_1__*,unsigned int,unsigned int,unsigned int) ;
 
 __attribute__((used)) static unsigned encodeLZ77(uivector* out, Hash* hash,
                            const unsigned char* in, size_t inpos, size_t insize, unsigned windowsize,
                            unsigned minmatch, unsigned nicematch, unsigned lazymatching)
 {
   unsigned short numzeros = 0;
-  int usezeros = windowsize >= 8192; /*for small window size, the 'max chain length' optimization does a better job*/
+  int usezeros = windowsize >= 8192;
   unsigned pos, i, error = 0;
-  /*for large window lengths, assume the user wants no compression loss. Otherwise, max hash chain length speedup.*/
+
   unsigned maxchainlength = windowsize >= 8192 ? windowsize : windowsize / 8;
   unsigned maxlazymatch = windowsize >= 8192 ? MAX_SUPPORTED_DEFLATE_LENGTH : 64;
 
   if(!error)
   {
-    unsigned offset; /*the offset represents the distance in LZ77 terminology*/
+    unsigned offset;
     unsigned length;
     unsigned lazy = 0;
     unsigned lazylength = 0, lazyoffset = 0;
@@ -48,7 +48,7 @@ __attribute__((used)) static unsigned encodeLZ77(uivector* out, Hash* hash,
 
     for(pos = inpos; pos < insize; pos++)
     {
-      size_t wpos = pos % windowsize; /*position for in 'circular' hash buffers*/
+      size_t wpos = pos % windowsize;
 
       hashval = getHash(in, insize, pos);
       updateHashChain(hash, pos, hashval, windowsize);
@@ -59,7 +59,7 @@ __attribute__((used)) static unsigned encodeLZ77(uivector* out, Hash* hash,
         hash->zeros[wpos] = numzeros;
       }
 
-      /*the length and offset found for the current position*/
+
       length = 0;
       offset = 0;
 
@@ -68,13 +68,13 @@ __attribute__((used)) static unsigned encodeLZ77(uivector* out, Hash* hash,
 
       lastptr = &in[insize < pos + MAX_SUPPORTED_DEFLATE_LENGTH ? insize : pos + MAX_SUPPORTED_DEFLATE_LENGTH];
 
-      /*search for the longest string*/
+
       if(hash->val[wpos] == (int)hashval)
       {
         unsigned chainlength = 0;
         for(;;)
         {
-          /*stop when went completely around the circular buffer*/
+
           if(prevpos < wpos && hashpos > prevpos && hashpos <= wpos) break;
           if(prevpos > wpos && (hashpos <= wpos || hashpos > prevpos)) break;
           if(chainlength++ >= maxchainlength) break;
@@ -82,12 +82,12 @@ __attribute__((used)) static unsigned encodeLZ77(uivector* out, Hash* hash,
           current_offset = hashpos <= wpos ? wpos - hashpos : wpos - hashpos + windowsize;
           if(current_offset > 0)
           {
-            /*test the next characters*/
+
             foreptr = &in[pos];
             backptr = &in[pos - current_offset];
 
-            /*common case in PNGs is lots of zeros. Quickly skip over them as a speedup*/
-            if(usezeros && hashval == 0 && hash->val[hashpos] == 0 /*hashval[hashpos] may be out of date*/)
+
+            if(usezeros && hashval == 0 && hash->val[hashpos] == 0 )
             {
               unsigned short skip = hash->zeros[hashpos];
               if(skip > numzeros) skip = numzeros;
@@ -95,8 +95,8 @@ __attribute__((used)) static unsigned encodeLZ77(uivector* out, Hash* hash,
               foreptr += skip;
             }
 
-            /* multiple checks at once per array bounds check */
-            while(foreptr != lastptr && *backptr == *foreptr) /*maximum supported length by deflate is max length*/
+
+            while(foreptr != lastptr && *backptr == *foreptr)
             {
               ++backptr;
               ++foreptr;
@@ -105,9 +105,9 @@ __attribute__((used)) static unsigned encodeLZ77(uivector* out, Hash* hash,
 
             if(current_length > length)
             {
-              length = current_length; /*the longest length*/
-              offset = current_offset; /*the offset that is related to this longest length*/
-              /*jump out once a length of max length is found (speed gain)*/
+              length = current_length;
+              offset = current_offset;
+
               if(current_length >= nicematch || current_length == MAX_SUPPORTED_DEFLATE_LENGTH) break;
             }
           }
@@ -126,7 +126,7 @@ __attribute__((used)) static unsigned encodeLZ77(uivector* out, Hash* hash,
           lazy = 1;
           lazylength = length;
           lazyoffset = offset;
-          continue; /*try the next byte*/
+          continue;
         }
         if(lazy)
         {
@@ -134,30 +134,30 @@ __attribute__((used)) static unsigned encodeLZ77(uivector* out, Hash* hash,
           if(pos == 0) ERROR_BREAK(81);
           if(length > lazylength + 1)
           {
-            /*push the previous character as literal*/
-            if(!uivector_push_back(out, in[pos - 1])) ERROR_BREAK(83 /*alloc fail*/);
+
+            if(!uivector_push_back(out, in[pos - 1])) ERROR_BREAK(83 );
           }
           else
           {
             length = lazylength;
             offset = lazyoffset;
-            hash->head[hashval] = -1; /*the same hashchain update will be done, this ensures no wrong alteration*/
+            hash->head[hashval] = -1;
             pos--;
           }
         }
       }
-      if(length >= 3 && offset > windowsize) ERROR_BREAK(86 /*too big (or overflown negative) offset*/);
+      if(length >= 3 && offset > windowsize) ERROR_BREAK(86 );
 
-      /**encode it as length/distance pair or literal value**/
-      if(length < 3) /*only lengths of 3 or higher are supported as length/distance pair*/
+
+      if(length < 3)
       {
-        if(!uivector_push_back(out, in[pos])) ERROR_BREAK(83 /*alloc fail*/);
+        if(!uivector_push_back(out, in[pos])) ERROR_BREAK(83 );
       }
       else if(length < minmatch || (length == 3 && offset > 4096))
       {
-        /*compensate for the fact that longer offsets have more extra bits, a
-        length of only 3 may be not worth it then*/
-        if(!uivector_push_back(out, in[pos])) ERROR_BREAK(83 /*alloc fail*/);
+
+
+        if(!uivector_push_back(out, in[pos])) ERROR_BREAK(83 );
       }
       else
       {
@@ -174,8 +174,8 @@ __attribute__((used)) static unsigned encodeLZ77(uivector* out, Hash* hash,
         }
       }
 
-    } /*end of the loop through each character of input*/
-  } /*end of "if(!error)"*/
+    }
+  }
 
   return error;
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ablkcipher_request {int /*<<< orphan*/  nbytes; } ;
 
-/* Variables and functions */
- int ablkcipher_enqueue (struct ablkcipher_request*,int) ; 
- int /*<<< orphan*/  flow_log (char*,int /*<<< orphan*/ ) ; 
+
+
+
+struct ablkcipher_request {int nbytes; } ;
+
+
+ int ablkcipher_enqueue (struct ablkcipher_request*,int) ;
+ int flow_log (char*,int ) ;
 
 __attribute__((used)) static int ablkcipher_encrypt(struct ablkcipher_request *req)
 {
-	flow_log("ablkcipher_encrypt() nbytes:%u\n", req->nbytes);
+ flow_log("ablkcipher_encrypt() nbytes:%u\n", req->nbytes);
 
-	return ablkcipher_enqueue(req, true);
+ return ablkcipher_enqueue(req, 1);
 }

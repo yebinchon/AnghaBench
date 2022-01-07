@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  MMapFileDescriptor ;
-typedef  int /*<<< orphan*/  MMapCache ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PROT_READ ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int mkostemp_safe (char*) ; 
- int /*<<< orphan*/ * mmap_cache_add_fd (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mmap_cache_free_fd (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int mmap_cache_get (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,unsigned long long,int,int /*<<< orphan*/ *,void**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * mmap_cache_new () ; 
- int /*<<< orphan*/  mmap_cache_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  safe_close (int) ; 
- int /*<<< orphan*/  unlink (char*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int MMapFileDescriptor ;
+typedef int MMapCache ;
+
+
+ int PROT_READ ;
+ int assert_se (int) ;
+ int mkostemp_safe (char*) ;
+ int * mmap_cache_add_fd (int *,int) ;
+ int mmap_cache_free_fd (int *,int *) ;
+ int mmap_cache_get (int *,int *,int ,int,int,unsigned long long,int,int *,void**,int *) ;
+ int * mmap_cache_new () ;
+ int mmap_cache_unref (int *) ;
+ int safe_close (int) ;
+ int unlink (char*) ;
 
 int main(int argc, char *argv[]) {
         MMapFileDescriptor *fx;
@@ -49,23 +49,23 @@ int main(int argc, char *argv[]) {
         assert_se(z >= 0);
         unlink(pz);
 
-        r = mmap_cache_get(m, fx, PROT_READ, 0, false, 1, 2, NULL, &p, NULL);
+        r = mmap_cache_get(m, fx, PROT_READ, 0, 0, 1, 2, ((void*)0), &p, ((void*)0));
         assert_se(r >= 0);
 
-        r = mmap_cache_get(m, fx, PROT_READ, 0, false, 2, 2, NULL, &q, NULL);
+        r = mmap_cache_get(m, fx, PROT_READ, 0, 0, 2, 2, ((void*)0), &q, ((void*)0));
         assert_se(r >= 0);
 
         assert_se((uint8_t*) p + 1 == (uint8_t*) q);
 
-        r = mmap_cache_get(m, fx, PROT_READ, 1, false, 3, 2, NULL, &q, NULL);
+        r = mmap_cache_get(m, fx, PROT_READ, 1, 0, 3, 2, ((void*)0), &q, ((void*)0));
         assert_se(r >= 0);
 
         assert_se((uint8_t*) p + 2 == (uint8_t*) q);
 
-        r = mmap_cache_get(m, fx, PROT_READ, 0, false, 16ULL*1024ULL*1024ULL, 2, NULL, &p, NULL);
+        r = mmap_cache_get(m, fx, PROT_READ, 0, 0, 16ULL*1024ULL*1024ULL, 2, ((void*)0), &p, ((void*)0));
         assert_se(r >= 0);
 
-        r = mmap_cache_get(m, fx, PROT_READ, 1, false, 16ULL*1024ULL*1024ULL+1, 2, NULL, &q, NULL);
+        r = mmap_cache_get(m, fx, PROT_READ, 1, 0, 16ULL*1024ULL*1024ULL+1, 2, ((void*)0), &q, ((void*)0));
         assert_se(r >= 0);
 
         assert_se((uint8_t*) p + 1 == (uint8_t*) q);

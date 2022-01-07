@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_3__ {int cAltEntry; int /*<<< orphan*/ * rgAltEntry; } ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int DWORD ;
-typedef  TYPE_1__ CERT_ALT_NAME_INFO ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int CRYPT_FORMAT_STR_MULTI_LINE ; 
- scalar_t__ CRYPT_FormatAltNameEntry (int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  ERROR_MORE_DATA ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  commaSpace ; 
- int /*<<< orphan*/  crlf ; 
- int /*<<< orphan*/  strcpyW (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int strlenW (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_3__ {int cAltEntry; int * rgAltEntry; } ;
+typedef int * LPWSTR ;
+typedef int LPCWSTR ;
+typedef int DWORD ;
+typedef TYPE_1__ CERT_ALT_NAME_INFO ;
+typedef scalar_t__ BOOL ;
+
+
+ int CRYPT_FORMAT_STR_MULTI_LINE ;
+ scalar_t__ CRYPT_FormatAltNameEntry (int,int,int *,int *,int*) ;
+ int ERROR_MORE_DATA ;
+ scalar_t__ FALSE ;
+ int SetLastError (int ) ;
+ scalar_t__ TRUE ;
+ int commaSpace ;
+ int crlf ;
+ int strcpyW (int *,int ) ;
+ int strlenW (int ) ;
 
 __attribute__((used)) static BOOL CRYPT_FormatAltNameInfo(DWORD dwFormatStrType, DWORD indentLevel,
  const CERT_ALT_NAME_INFO *name, LPWSTR str, DWORD *pcbStr)
@@ -53,7 +53,7 @@ __attribute__((used)) static BOOL CRYPT_FormatAltNameInfo(DWORD dwFormatStrType,
     for (i = 0; ret && i < name->cAltEntry; i++)
     {
         ret = CRYPT_FormatAltNameEntry(dwFormatStrType, indentLevel,
-         &name->rgAltEntry[i], NULL, &size);
+         &name->rgAltEntry[i], ((void*)0), &size);
         if (ret)
         {
             bytesNeeded += size - sizeof(WCHAR);

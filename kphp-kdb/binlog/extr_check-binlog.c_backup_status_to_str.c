@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  out ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int bs_differ ; 
- int bs_io_error ; 
- int bs_larger ; 
- int bs_same_inode ; 
- int /*<<< orphan*/  sprintf (char*,char*) ; 
+
+
+
+typedef int out ;
+
+
+ int assert (int) ;
+ int bs_differ ;
+ int bs_io_error ;
+ int bs_larger ;
+ int bs_same_inode ;
+ int sprintf (char*,char*) ;
 
 char *backup_status_to_str (int status) {
   static char out[64];

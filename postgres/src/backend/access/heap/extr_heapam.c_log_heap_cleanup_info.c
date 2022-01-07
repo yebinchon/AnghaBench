@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  latestRemovedXid; int /*<<< orphan*/  node; } ;
-typedef  TYPE_1__ xl_heap_cleanup_info ;
-typedef  int /*<<< orphan*/  XLogRecPtr ;
-typedef  int /*<<< orphan*/  TransactionId ;
-typedef  int /*<<< orphan*/  RelFileNode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RM_HEAP2_ID ; 
- int /*<<< orphan*/  SizeOfHeapCleanupInfo ; 
- int /*<<< orphan*/  XLOG_HEAP2_CLEANUP_INFO ; 
- int /*<<< orphan*/  XLogBeginInsert () ; 
- int /*<<< orphan*/  XLogInsert (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XLogRegisterData (char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int latestRemovedXid; int node; } ;
+typedef TYPE_1__ xl_heap_cleanup_info ;
+typedef int XLogRecPtr ;
+typedef int TransactionId ;
+typedef int RelFileNode ;
+
+
+ int RM_HEAP2_ID ;
+ int SizeOfHeapCleanupInfo ;
+ int XLOG_HEAP2_CLEANUP_INFO ;
+ int XLogBeginInsert () ;
+ int XLogInsert (int ,int ) ;
+ int XLogRegisterData (char*,int ) ;
 
 XLogRecPtr
 log_heap_cleanup_info(RelFileNode rnode, TransactionId latestRemovedXid)
 {
-	xl_heap_cleanup_info xlrec;
-	XLogRecPtr	recptr;
+ xl_heap_cleanup_info xlrec;
+ XLogRecPtr recptr;
 
-	xlrec.node = rnode;
-	xlrec.latestRemovedXid = latestRemovedXid;
+ xlrec.node = rnode;
+ xlrec.latestRemovedXid = latestRemovedXid;
 
-	XLogBeginInsert();
-	XLogRegisterData((char *) &xlrec, SizeOfHeapCleanupInfo);
+ XLogBeginInsert();
+ XLogRegisterData((char *) &xlrec, SizeOfHeapCleanupInfo);
 
-	recptr = XLogInsert(RM_HEAP2_ID, XLOG_HEAP2_CLEANUP_INFO);
+ recptr = XLogInsert(RM_HEAP2_ID, XLOG_HEAP2_CLEANUP_INFO);
 
-	return recptr;
+ return recptr;
 }

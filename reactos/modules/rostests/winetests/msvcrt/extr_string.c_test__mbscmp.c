@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int INT_MAX ; 
- int _mbscmp (unsigned char const*,unsigned char const*) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int /*<<< orphan*/  p_mbrlen ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+ int INT_MAX ;
+ int _mbscmp (unsigned char const*,unsigned char const*) ;
+ int ok (int,char*,int) ;
+ int p_mbrlen ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test__mbscmp(void)
 {
@@ -29,13 +21,13 @@ __attribute__((used)) static void test__mbscmp(void)
         return;
     }
 
-    ret = _mbscmp(NULL, NULL);
+    ret = _mbscmp(((void*)0), ((void*)0));
     ok(ret == INT_MAX, "got %d\n", ret);
 
-    ret = _mbscmp(a, NULL);
+    ret = _mbscmp(a, ((void*)0));
     ok(ret == INT_MAX, "got %d\n", ret);
 
-    ret = _mbscmp(NULL, a);
+    ret = _mbscmp(((void*)0), a);
     ok(ret == INT_MAX, "got %d\n", ret);
 
     ret = _mbscmp(a, a);

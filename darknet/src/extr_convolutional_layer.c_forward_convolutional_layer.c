@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {float* input; float* workspace; } ;
-typedef  TYPE_1__ network ;
-struct TYPE_9__ {int outputs; int batch; float* output; float* weights; int n; int c; int groups; int size; int h; int w; float* binary_input; int out_w; int out_h; int nweights; scalar_t__ xnor; scalar_t__ binary; int /*<<< orphan*/  activation; int /*<<< orphan*/  biases; scalar_t__ batch_normalize; int /*<<< orphan*/  pad; int /*<<< orphan*/  stride; int /*<<< orphan*/  binary_weights; } ;
-typedef  TYPE_2__ convolutional_layer ;
+typedef TYPE_1__ network ;
+struct TYPE_9__ {int outputs; int batch; float* output; float* weights; int n; int c; int groups; int size; int h; int w; float* binary_input; int out_w; int out_h; int nweights; scalar_t__ xnor; scalar_t__ binary; int activation; int biases; scalar_t__ batch_normalize; int pad; int stride; int binary_weights; } ;
+typedef TYPE_2__ convolutional_layer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  activate_array (float*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  add_bias (float*,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  binarize_cpu (float*,int,float*) ; 
- int /*<<< orphan*/  binarize_weights (float*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fill_cpu (int,int /*<<< orphan*/ ,float*,int) ; 
- int /*<<< orphan*/  forward_batchnorm_layer (TYPE_2__,TYPE_1__) ; 
- int /*<<< orphan*/  gemm (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int,float*,int,float*,int,int,float*,int) ; 
- int /*<<< orphan*/  im2col_cpu (float*,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,float*) ; 
- int /*<<< orphan*/  swap_binary (TYPE_2__*) ; 
+
+ int activate_array (float*,int,int ) ;
+ int add_bias (float*,int ,int,int,int) ;
+ int binarize_cpu (float*,int,float*) ;
+ int binarize_weights (float*,int,int,int ) ;
+ int fill_cpu (int,int ,float*,int) ;
+ int forward_batchnorm_layer (TYPE_2__,TYPE_1__) ;
+ int gemm (int ,int ,int,int,int,int,float*,int,float*,int,int,float*,int) ;
+ int im2col_cpu (float*,int,int,int,int,int ,int ,float*) ;
+ int swap_binary (TYPE_2__*) ;
 
 void forward_convolutional_layer(convolutional_layer l, network net)
 {
@@ -49,7 +49,7 @@ void forward_convolutional_layer(convolutional_layer l, network net)
             float *a = l.weights + j*l.nweights/l.groups;
             float *b = net.workspace;
             float *c = l.output + (i*l.groups + j)*n*m;
-            float *im =  net.input + (i*l.groups + j)*l.c/l.groups*l.h*l.w;
+            float *im = net.input + (i*l.groups + j)*l.c/l.groups*l.h*l.w;
 
             if (l.size == 1) {
                 b = im;

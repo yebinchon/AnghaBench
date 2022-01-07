@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int OPJ_UINT32 ;
-typedef  unsigned int OPJ_SIZE_T ;
-typedef  scalar_t__ OPJ_INT32 ;
-typedef  void* OPJ_BYTE ;
 
-/* Variables and functions */
+
+
+
+typedef int OPJ_UINT32 ;
+typedef unsigned int OPJ_SIZE_T ;
+typedef scalar_t__ OPJ_INT32 ;
+typedef void* OPJ_BYTE ;
+
+
 
 __attribute__((used)) static void tif_32sto14u(const OPJ_INT32* pSrc, OPJ_BYTE* pDst,
                          OPJ_SIZE_T length)

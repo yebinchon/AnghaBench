@@ -1,92 +1,92 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
-typedef  struct TYPE_13__   TYPE_12__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  smallfelem ;
-typedef  int /*<<< orphan*/  felem_bytearray ;
-typedef  int /*<<< orphan*/  felem ;
+
+
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+typedef struct TYPE_13__ TYPE_12__ ;
+
+
+typedef int smallfelem ;
+typedef int felem_bytearray ;
+typedef int felem ;
 struct TYPE_15__ {TYPE_12__* generator; } ;
-struct TYPE_14__ {int /*<<< orphan*/ *** g_pre_comp; } ;
-struct TYPE_13__ {int /*<<< orphan*/  Z; int /*<<< orphan*/  Y; int /*<<< orphan*/  X; } ;
-typedef  TYPE_1__ NISTP256_PRE_COMP ;
-typedef  int /*<<< orphan*/  EC_POINT ;
-typedef  TYPE_2__ EC_GROUP ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
+struct TYPE_14__ {int *** g_pre_comp; } ;
+struct TYPE_13__ {int Z; int Y; int X; } ;
+typedef TYPE_1__ NISTP256_PRE_COMP ;
+typedef int EC_POINT ;
+typedef TYPE_2__ EC_GROUP ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_new () ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_bin2bn (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_to_felem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ EC_POINT_cmp (TYPE_2__*,int /*<<< orphan*/ *,TYPE_12__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EC_POINT_new (TYPE_2__*) ; 
- int /*<<< orphan*/  EC_POINT_set_affine_coordinates (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_nistp256_pre_comp_free (TYPE_1__*) ; 
- int /*<<< orphan*/  EC_pre_comp_free (TYPE_2__*) ; 
- int /*<<< orphan*/  SETPRECOMP (TYPE_2__*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  felem_shrink (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gmul ; 
- int /*<<< orphan*/  make_points_affine (int,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ***,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  nistp256 ; 
- int /*<<< orphan*/ * nistp256_curve_params ; 
- TYPE_1__* nistp256_pre_comp_new () ; 
- int /*<<< orphan*/  point_add_small (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  point_double_small (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int BN_CTX_end (int *) ;
+ int BN_CTX_free (int *) ;
+ int * BN_CTX_get (int *) ;
+ int * BN_CTX_new () ;
+ int BN_CTX_start (int *) ;
+ int BN_bin2bn (int ,int,int *) ;
+ int BN_to_felem (int ,int ) ;
+ scalar_t__ EC_POINT_cmp (TYPE_2__*,int *,TYPE_12__*,int *) ;
+ int EC_POINT_free (int *) ;
+ int * EC_POINT_new (TYPE_2__*) ;
+ int EC_POINT_set_affine_coordinates (TYPE_2__*,int *,int *,int *,int *) ;
+ int EC_nistp256_pre_comp_free (TYPE_1__*) ;
+ int EC_pre_comp_free (TYPE_2__*) ;
+ int SETPRECOMP (TYPE_2__*,int ,TYPE_1__*) ;
+ int felem_shrink (int ,int ) ;
+ int gmul ;
+ int make_points_affine (int,int **,int *) ;
+ int memcpy (int ***,int ,int) ;
+ int memset (int *,int ,int) ;
+ int nistp256 ;
+ int * nistp256_curve_params ;
+ TYPE_1__* nistp256_pre_comp_new () ;
+ int point_add_small (int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int point_double_small (int ,int ,int ,int ,int ,int ) ;
 
 int ec_GFp_nistp256_precompute_mult(EC_GROUP *group, BN_CTX *ctx)
 {
     int ret = 0;
-    NISTP256_PRE_COMP *pre = NULL;
+    NISTP256_PRE_COMP *pre = ((void*)0);
     int i, j;
-    BN_CTX *new_ctx = NULL;
+    BN_CTX *new_ctx = ((void*)0);
     BIGNUM *x, *y;
-    EC_POINT *generator = NULL;
+    EC_POINT *generator = ((void*)0);
     smallfelem tmp_smallfelems[32];
     felem x_tmp, y_tmp, z_tmp;
 
-    /* throw away old precomputation */
+
     EC_pre_comp_free(group);
-    if (ctx == NULL)
-        if ((ctx = new_ctx = BN_CTX_new()) == NULL)
+    if (ctx == ((void*)0))
+        if ((ctx = new_ctx = BN_CTX_new()) == ((void*)0))
             return 0;
     BN_CTX_start(ctx);
     x = BN_CTX_get(ctx);
     y = BN_CTX_get(ctx);
-    if (y == NULL)
+    if (y == ((void*)0))
         goto err;
-    /* get the generator */
-    if (group->generator == NULL)
+
+    if (group->generator == ((void*)0))
         goto err;
     generator = EC_POINT_new(group);
-    if (generator == NULL)
+    if (generator == ((void*)0))
         goto err;
     BN_bin2bn(nistp256_curve_params[3], sizeof(felem_bytearray), x);
     BN_bin2bn(nistp256_curve_params[4], sizeof(felem_bytearray), y);
     if (!EC_POINT_set_affine_coordinates(group, generator, x, y, ctx))
         goto err;
-    if ((pre = nistp256_pre_comp_new()) == NULL)
+    if ((pre = nistp256_pre_comp_new()) == ((void*)0))
         goto err;
-    /*
-     * if the generator is the standard one, use built-in precomputation
-     */
+
+
+
     if (0 == EC_POINT_cmp(group, generator, group->generator, ctx)) {
         memcpy(pre->g_pre_comp, gmul, sizeof(pre->g_pre_comp));
         goto done;
@@ -98,10 +98,10 @@ int ec_GFp_nistp256_precompute_mult(EC_GROUP *group, BN_CTX *ctx)
     felem_shrink(pre->g_pre_comp[0][1][0], x_tmp);
     felem_shrink(pre->g_pre_comp[0][1][1], y_tmp);
     felem_shrink(pre->g_pre_comp[0][1][2], z_tmp);
-    /*
-     * compute 2^64*G, 2^128*G, 2^192*G for the first table, 2^32*G, 2^96*G,
-     * 2^160*G, 2^224*G for the second one
-     */
+
+
+
+
     for (i = 1; i <= 8; i <<= 1) {
         point_double_small(pre->g_pre_comp[1][i][0], pre->g_pre_comp[1][i][1],
                            pre->g_pre_comp[1][i][2], pre->g_pre_comp[0][i][0],
@@ -132,37 +132,37 @@ int ec_GFp_nistp256_precompute_mult(EC_GROUP *group, BN_CTX *ctx)
         }
     }
     for (i = 0; i < 2; i++) {
-        /* g_pre_comp[i][0] is the point at infinity */
+
         memset(pre->g_pre_comp[i][0], 0, sizeof(pre->g_pre_comp[i][0]));
-        /* the remaining multiples */
-        /* 2^64*G + 2^128*G resp. 2^96*G + 2^160*G */
+
+
         point_add_small(pre->g_pre_comp[i][6][0], pre->g_pre_comp[i][6][1],
                         pre->g_pre_comp[i][6][2], pre->g_pre_comp[i][4][0],
                         pre->g_pre_comp[i][4][1], pre->g_pre_comp[i][4][2],
                         pre->g_pre_comp[i][2][0], pre->g_pre_comp[i][2][1],
                         pre->g_pre_comp[i][2][2]);
-        /* 2^64*G + 2^192*G resp. 2^96*G + 2^224*G */
+
         point_add_small(pre->g_pre_comp[i][10][0], pre->g_pre_comp[i][10][1],
                         pre->g_pre_comp[i][10][2], pre->g_pre_comp[i][8][0],
                         pre->g_pre_comp[i][8][1], pre->g_pre_comp[i][8][2],
                         pre->g_pre_comp[i][2][0], pre->g_pre_comp[i][2][1],
                         pre->g_pre_comp[i][2][2]);
-        /* 2^128*G + 2^192*G resp. 2^160*G + 2^224*G */
+
         point_add_small(pre->g_pre_comp[i][12][0], pre->g_pre_comp[i][12][1],
                         pre->g_pre_comp[i][12][2], pre->g_pre_comp[i][8][0],
                         pre->g_pre_comp[i][8][1], pre->g_pre_comp[i][8][2],
                         pre->g_pre_comp[i][4][0], pre->g_pre_comp[i][4][1],
                         pre->g_pre_comp[i][4][2]);
-        /*
-         * 2^64*G + 2^128*G + 2^192*G resp. 2^96*G + 2^160*G + 2^224*G
-         */
+
+
+
         point_add_small(pre->g_pre_comp[i][14][0], pre->g_pre_comp[i][14][1],
                         pre->g_pre_comp[i][14][2], pre->g_pre_comp[i][12][0],
                         pre->g_pre_comp[i][12][1], pre->g_pre_comp[i][12][2],
                         pre->g_pre_comp[i][2][0], pre->g_pre_comp[i][2][1],
                         pre->g_pre_comp[i][2][2]);
         for (j = 1; j < 8; ++j) {
-            /* odd multiples: add G resp. 2^32*G */
+
             point_add_small(pre->g_pre_comp[i][2 * j + 1][0],
                             pre->g_pre_comp[i][2 * j + 1][1],
                             pre->g_pre_comp[i][2 * j + 1][2],
@@ -178,7 +178,7 @@ int ec_GFp_nistp256_precompute_mult(EC_GROUP *group, BN_CTX *ctx)
 
  done:
     SETPRECOMP(group, nistp256, pre);
-    pre = NULL;
+    pre = ((void*)0);
     ret = 1;
 
  err:

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pthread_cond_t ;
 
-/* Variables and functions */
- int cond_signal_common (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int pthread_cond_t ;
+
+
+ int cond_signal_common (int *) ;
 
 int
 _thr_cond_signal(pthread_cond_t * cond)
 {
 
-	return (cond_signal_common(cond));
+ return (cond_signal_common(cond));
 }

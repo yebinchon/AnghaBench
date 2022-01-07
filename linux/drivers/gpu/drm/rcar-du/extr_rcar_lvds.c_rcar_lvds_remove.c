@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rcar_lvds {int /*<<< orphan*/  bridge; } ;
+
+
+
+
+struct rcar_lvds {int bridge; } ;
 struct platform_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  drm_bridge_remove (int /*<<< orphan*/ *) ; 
- struct rcar_lvds* platform_get_drvdata (struct platform_device*) ; 
+
+ int drm_bridge_remove (int *) ;
+ struct rcar_lvds* platform_get_drvdata (struct platform_device*) ;
 
 __attribute__((used)) static int rcar_lvds_remove(struct platform_device *pdev)
 {
-	struct rcar_lvds *lvds = platform_get_drvdata(pdev);
+ struct rcar_lvds *lvds = platform_get_drvdata(pdev);
 
-	drm_bridge_remove(&lvds->bridge);
+ drm_bridge_remove(&lvds->bridge);
 
-	return 0;
+ return 0;
 }

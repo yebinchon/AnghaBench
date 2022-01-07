@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IPersistStreamInit ;
-typedef  int /*<<< orphan*/  IPersistMoniker ;
-typedef  int /*<<< orphan*/  IPersistFile ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ IHTMLDocument2_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IID_IPersistFile ; 
- int /*<<< orphan*/  IID_IPersistMoniker ; 
- int /*<<< orphan*/  IID_IPersistStreamInit ; 
- scalar_t__ IPersistFile_IsDirty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IPersistFile_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IPersistMoniker_IsDirty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IPersistMoniker_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IPersistStreamInit_IsDirty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IPersistStreamInit_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,...) ; 
+
+
+
+typedef int IPersistStreamInit ;
+typedef int IPersistMoniker ;
+typedef int IPersistFile ;
+typedef int IHTMLDocument2 ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ IHTMLDocument2_QueryInterface (int *,int *,void**) ;
+ int IID_IPersistFile ;
+ int IID_IPersistMoniker ;
+ int IID_IPersistStreamInit ;
+ scalar_t__ IPersistFile_IsDirty (int *) ;
+ int IPersistFile_Release (int *) ;
+ scalar_t__ IPersistMoniker_IsDirty (int *) ;
+ int IPersistMoniker_Release (int *) ;
+ scalar_t__ IPersistStreamInit_IsDirty (int *) ;
+ int IPersistStreamInit_Release (int *) ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,scalar_t__,...) ;
 
 __attribute__((used)) static void test_IsDirty(IHTMLDocument2 *doc, HRESULT exhres)
 {

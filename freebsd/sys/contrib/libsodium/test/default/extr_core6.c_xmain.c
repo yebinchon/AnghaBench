@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ c ; 
- int /*<<< orphan*/  crypto_core_salsa20 (scalar_t__,scalar_t__,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ in ; 
- int /*<<< orphan*/  k ; 
- scalar_t__ out ; 
- int /*<<< orphan*/  print (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  printf (char*) ; 
+ scalar_t__ c ;
+ int crypto_core_salsa20 (scalar_t__,scalar_t__,int ,scalar_t__) ;
+ scalar_t__ in ;
+ int k ;
+ scalar_t__ out ;
+ int print (scalar_t__,scalar_t__) ;
+ int printf (char*) ;
 
 int
 main(void)

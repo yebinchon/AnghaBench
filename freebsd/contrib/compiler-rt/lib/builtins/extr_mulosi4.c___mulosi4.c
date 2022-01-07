@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int const si_int ;
 
-/* Variables and functions */
- int CHAR_BIT ; 
+
+
+
+typedef int const si_int ;
+
+
+ int CHAR_BIT ;
 
 si_int __mulosi4(si_int a, si_int b, int *overflow) {
   const int N = (int)(sizeof(si_int) * CHAR_BIT);

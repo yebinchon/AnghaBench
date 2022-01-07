@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef scalar_t__ UINT ;
 struct TYPE_5__ {scalar_t__ action_progress_increment; } ;
-typedef  TYPE_1__ MSIPACKAGE ;
+typedef TYPE_1__ MSIPACKAGE ;
 
-/* Variables and functions */
- scalar_t__ ACTION_HandleCustomAction (TYPE_1__*,int /*<<< orphan*/  const*,scalar_t__) ; 
- scalar_t__ ACTION_HandleStandardAction (TYPE_1__*,int /*<<< orphan*/  const*) ; 
- scalar_t__ ERROR_FUNCTION_NOT_CALLED ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/  const*) ; 
+
+ scalar_t__ ACTION_HandleCustomAction (TYPE_1__*,int const*,scalar_t__) ;
+ scalar_t__ ACTION_HandleStandardAction (TYPE_1__*,int const*) ;
+ scalar_t__ ERROR_FUNCTION_NOT_CALLED ;
+ int TRACE (char*,int ) ;
+ int WARN (char*,int ) ;
+ int debugstr_w (int const*) ;
 
 UINT ACTION_PerformAction(MSIPACKAGE *package, const WCHAR *action, UINT script)
 {

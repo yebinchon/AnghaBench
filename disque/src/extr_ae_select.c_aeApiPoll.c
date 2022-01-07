@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct timeval {int dummy; } ;
-typedef  int /*<<< orphan*/  fd_set ;
+typedef int fd_set ;
 struct TYPE_7__ {int mask; } ;
-typedef  TYPE_2__ aeFileEvent ;
+typedef TYPE_2__ aeFileEvent ;
 struct TYPE_8__ {int maxfd; TYPE_1__* fired; TYPE_2__* events; TYPE_4__* apidata; } ;
-typedef  TYPE_3__ aeEventLoop ;
-struct TYPE_9__ {int /*<<< orphan*/  _wfds; int /*<<< orphan*/  _rfds; int /*<<< orphan*/  wfds; int /*<<< orphan*/  rfds; } ;
-typedef  TYPE_4__ aeApiState ;
+typedef TYPE_3__ aeEventLoop ;
+struct TYPE_9__ {int _wfds; int _rfds; int wfds; int rfds; } ;
+typedef TYPE_4__ aeApiState ;
 struct TYPE_6__ {int fd; int mask; } ;
 
-/* Variables and functions */
- int AE_NONE ; 
- int AE_READABLE ; 
- int AE_WRITABLE ; 
- scalar_t__ FD_ISSET (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int select (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
+
+ int AE_NONE ;
+ int AE_READABLE ;
+ int AE_WRITABLE ;
+ scalar_t__ FD_ISSET (int,int *) ;
+ int memcpy (int *,int *,int) ;
+ int select (int,int *,int *,int *,struct timeval*) ;
 
 __attribute__((used)) static int aeApiPoll(aeEventLoop *eventLoop, struct timeval *tvp) {
     aeApiState *state = eventLoop->apidata;
@@ -40,7 +40,7 @@ __attribute__((used)) static int aeApiPoll(aeEventLoop *eventLoop, struct timeva
     memcpy(&state->_wfds,&state->wfds,sizeof(fd_set));
 
     retval = select(eventLoop->maxfd+1,
-                &state->_rfds,&state->_wfds,NULL,tvp);
+                &state->_rfds,&state->_wfds,((void*)0),tvp);
     if (retval > 0) {
         for (j = 0; j <= eventLoop->maxfd; j++) {
             int mask = 0;

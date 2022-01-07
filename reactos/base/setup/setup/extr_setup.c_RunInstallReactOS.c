@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  (* PINSTALL_REACTOS ) (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/ * HMODULE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*) ; 
- int /*<<< orphan*/  FreeLibrary (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ GetProcAddress (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * LoadLibraryW (char*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int (* PINSTALL_REACTOS ) (int ,int **) ;
+typedef int INT ;
+typedef int * HMODULE ;
+
+
+ int DPRINT (char*) ;
+ int FreeLibrary (int *) ;
+ int GetLastError () ;
+ scalar_t__ GetProcAddress (int *,char*) ;
+ int * LoadLibraryW (char*) ;
 
 __attribute__((used)) static
 INT
@@ -31,16 +31,16 @@ RunInstallReactOS(INT argc, WCHAR* argv[])
     PINSTALL_REACTOS InstallReactOS;
 
     hDll = LoadLibraryW(L"syssetup.dll");
-    if (hDll == NULL)
+    if (hDll == ((void*)0))
     {
         DPRINT("Failed to load 'syssetup.dll'!\n");
         return GetLastError();
     }
     DPRINT("Loaded 'syssetup.dll'!\n");
 
-    /* Call the standard Windows-compatible export */
+
     InstallReactOS = (PINSTALL_REACTOS)GetProcAddress(hDll, "InstallWindowsNt");
-    if (InstallReactOS == NULL)
+    if (InstallReactOS == ((void*)0))
     {
         RetVal = GetLastError();
         DPRINT("Failed to get address for 'InstallWindowsNt()'!\n");

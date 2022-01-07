@@ -1,30 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int XmlNodeType ;
 
-/* Variables and functions */
-#define  XmlNodeType_Attribute 138 
-#define  XmlNodeType_CDATA 137 
-#define  XmlNodeType_Comment 136 
-#define  XmlNodeType_DocumentType 135 
-#define  XmlNodeType_Element 134 
-#define  XmlNodeType_EndElement 133 
-#define  XmlNodeType_None 132 
-#define  XmlNodeType_ProcessingInstruction 131 
-#define  XmlNodeType_Text 130 
-#define  XmlNodeType_Whitespace 129 
-#define  XmlNodeType_XmlDeclaration 128 
 
+
+
+typedef int XmlNodeType ;
 __attribute__((used)) static const char *type_to_str(XmlNodeType type)
 {
     static const char* type_names[] = {
@@ -50,17 +36,17 @@ __attribute__((used)) static const char *type_to_str(XmlNodeType type)
 
     switch (type)
     {
-    case XmlNodeType_None:
-    case XmlNodeType_Element:
-    case XmlNodeType_Attribute:
-    case XmlNodeType_Text:
-    case XmlNodeType_CDATA:
-    case XmlNodeType_ProcessingInstruction:
-    case XmlNodeType_Comment:
-    case XmlNodeType_DocumentType:
-    case XmlNodeType_Whitespace:
-    case XmlNodeType_EndElement:
-    case XmlNodeType_XmlDeclaration:
+    case 132:
+    case 134:
+    case 138:
+    case 130:
+    case 137:
+    case 131:
+    case 136:
+    case 135:
+    case 129:
+    case 133:
+    case 128:
         return type_names[type];
     default:
         return unknown;

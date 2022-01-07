@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct platform_device {int /*<<< orphan*/  dev; } ;
+
+
+
+
+struct platform_device {int dev; } ;
 struct hisi_pmu {int irq; } ;
 
-/* Variables and functions */
- int IRQF_NOBALANCING ; 
- int IRQF_NO_THREAD ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ *,char*,int,int) ; 
- int /*<<< orphan*/  dev_name (int /*<<< orphan*/ *) ; 
- int devm_request_irq (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,struct hisi_pmu*) ; 
- int /*<<< orphan*/  hisi_ddrc_pmu_isr ; 
- int platform_get_irq (struct platform_device*,int /*<<< orphan*/ ) ; 
+
+ int IRQF_NOBALANCING ;
+ int IRQF_NO_THREAD ;
+ int dev_err (int *,char*,int,int) ;
+ int dev_name (int *) ;
+ int devm_request_irq (int *,int,int ,int,int ,struct hisi_pmu*) ;
+ int hisi_ddrc_pmu_isr ;
+ int platform_get_irq (struct platform_device*,int ) ;
 
 __attribute__((used)) static int hisi_ddrc_pmu_init_irq(struct hisi_pmu *ddrc_pmu,
-				  struct platform_device *pdev)
+      struct platform_device *pdev)
 {
-	int irq, ret;
+ int irq, ret;
 
-	/* Read and init IRQ */
-	irq = platform_get_irq(pdev, 0);
-	if (irq < 0)
-		return irq;
 
-	ret = devm_request_irq(&pdev->dev, irq, hisi_ddrc_pmu_isr,
-			       IRQF_NOBALANCING | IRQF_NO_THREAD,
-			       dev_name(&pdev->dev), ddrc_pmu);
-	if (ret < 0) {
-		dev_err(&pdev->dev,
-			"Fail to request IRQ:%d ret:%d\n", irq, ret);
-		return ret;
-	}
+ irq = platform_get_irq(pdev, 0);
+ if (irq < 0)
+  return irq;
 
-	ddrc_pmu->irq = irq;
+ ret = devm_request_irq(&pdev->dev, irq, hisi_ddrc_pmu_isr,
+          IRQF_NOBALANCING | IRQF_NO_THREAD,
+          dev_name(&pdev->dev), ddrc_pmu);
+ if (ret < 0) {
+  dev_err(&pdev->dev,
+   "Fail to request IRQ:%d ret:%d\n", irq, ret);
+  return ret;
+ }
 
-	return 0;
+ ddrc_pmu->irq = irq;
+
+ return 0;
 }

@@ -1,116 +1,98 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int HU_FONTSTART ;
+ int HU_INPUTX ;
+ int HU_INPUTY ;
+ int HU_MSGHEIGHT ;
+ int HU_MSGX ;
+ int HU_MSGY ;
+ int HU_Stop () ;
+ char* HU_TITLE ;
+ char* HU_TITLE2 ;
+ int HU_TITLEX ;
+ int HU_TITLEY ;
+ int HUlib_addCharToTextLine (int *,int ) ;
+ int HUlib_initIText (int *,int ,int ,int ,int ,int*) ;
+ int HUlib_initSText (int *,int ,int ,int ,int ,int ,int*) ;
+ int HUlib_initTextLine (int *,int ,int ,int ,int ) ;
+ int MAXPLAYERS ;
+ int always_off ;
+ int chat_on ;
 
-/* Forward declarations */
+ size_t consoleplayer ;
+ int gamemode ;
+ int headsupactive ;
+ int hu_font ;
+ int message_dontfuckwithme ;
+ int message_nottobefuckedwith ;
+ int message_on ;
+ int * players ;
+ int * plr ;
 
-/* Type definitions */
 
-/* Variables and functions */
- int /*<<< orphan*/  HU_FONTSTART ; 
- int /*<<< orphan*/  HU_INPUTX ; 
- int /*<<< orphan*/  HU_INPUTY ; 
- int /*<<< orphan*/  HU_MSGHEIGHT ; 
- int /*<<< orphan*/  HU_MSGX ; 
- int /*<<< orphan*/  HU_MSGY ; 
- int /*<<< orphan*/  HU_Stop () ; 
- char* HU_TITLE ; 
- char* HU_TITLE2 ; 
- int /*<<< orphan*/  HU_TITLEX ; 
- int /*<<< orphan*/  HU_TITLEY ; 
- int /*<<< orphan*/  HUlib_addCharToTextLine (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HUlib_initIText (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  HUlib_initSText (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  HUlib_initTextLine (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int MAXPLAYERS ; 
- int always_off ; 
- int chat_on ; 
-#define  commercial 131 
- size_t consoleplayer ; 
- int gamemode ; 
- int headsupactive ; 
- int /*<<< orphan*/  hu_font ; 
- int message_dontfuckwithme ; 
- int message_nottobefuckedwith ; 
- int message_on ; 
- int /*<<< orphan*/ * players ; 
- int /*<<< orphan*/ * plr ; 
-#define  registered 130 
-#define  retail 129 
-#define  shareware 128 
- int /*<<< orphan*/  w_chat ; 
- int /*<<< orphan*/ * w_inputbuffer ; 
- int /*<<< orphan*/  w_message ; 
- int /*<<< orphan*/  w_title ; 
+
+ int w_chat ;
+ int * w_inputbuffer ;
+ int w_message ;
+ int w_title ;
 
 void HU_Start(void)
 {
 
-    int		i;
-    char*	s;
+    int i;
+    char* s;
 
     if (headsupactive)
-	HU_Stop();
+ HU_Stop();
 
     plr = &players[consoleplayer];
-    message_on = false;
-    message_dontfuckwithme = false;
-    message_nottobefuckedwith = false;
-    chat_on = false;
+    message_on = 0;
+    message_dontfuckwithme = 0;
+    message_nottobefuckedwith = 0;
+    chat_on = 0;
 
-    // create the message widget
+
     HUlib_initSText(&w_message,
-		    HU_MSGX, HU_MSGY, HU_MSGHEIGHT,
-		    hu_font,
-		    HU_FONTSTART, &message_on);
+      HU_MSGX, HU_MSGY, HU_MSGHEIGHT,
+      hu_font,
+      HU_FONTSTART, &message_on);
 
-    // create the map title widget
+
     HUlib_initTextLine(&w_title,
-		       HU_TITLEX, HU_TITLEY,
-		       hu_font,
-		       HU_FONTSTART);
-    
+         HU_TITLEX, HU_TITLEY,
+         hu_font,
+         HU_FONTSTART);
+
     switch ( gamemode )
     {
-      case shareware:
-      case registered:
-      case retail:
-	s = HU_TITLE;
-	break;
-
-/* FIXME
-      case pack_plut:
-	s = HU_TITLEP;
-	break;
-      case pack_tnt:
-	s = HU_TITLET;
-	break;
-*/
-	
-      case commercial:
+      case 128:
+      case 130:
+      case 129:
+ s = HU_TITLE;
+ break;
+      case 131:
       default:
-	 s = HU_TITLE2;
-	 break;
+  s = HU_TITLE2;
+  break;
     }
-    
+
     while (*s)
-	HUlib_addCharToTextLine(&w_title, *(s++));
+ HUlib_addCharToTextLine(&w_title, *(s++));
 
-    // create the chat widget
+
     HUlib_initIText(&w_chat,
-		    HU_INPUTX, HU_INPUTY,
-		    hu_font,
-		    HU_FONTSTART, &chat_on);
+      HU_INPUTX, HU_INPUTY,
+      hu_font,
+      HU_FONTSTART, &chat_on);
 
-    // create the inputbuffer widgets
+
     for (i=0 ; i<MAXPLAYERS ; i++)
-	HUlib_initIText(&w_inputbuffer[i], 0, 0, 0, 0, &always_off);
+ HUlib_initIText(&w_inputbuffer[i], 0, 0, 0, 0, &always_off);
 
-    headsupactive = true;
+    headsupactive = 1;
 
 }

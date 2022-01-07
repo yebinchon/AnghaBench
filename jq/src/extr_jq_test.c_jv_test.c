@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_39__   TYPE_2__ ;
-typedef  struct TYPE_38__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nasty ;
+
+
+typedef struct TYPE_39__ TYPE_2__ ;
+typedef struct TYPE_38__ TYPE_1__ ;
+
+
+typedef int nasty ;
 struct TYPE_38__ {void* ptr; } ;
 struct TYPE_39__ {TYPE_1__ u; } ;
-typedef  TYPE_2__ jv ;
-typedef  int /*<<< orphan*/  big ;
+typedef TYPE_2__ jv ;
+typedef int big ;
 
-/* Variables and functions */
- scalar_t__ JV_KIND_ARRAY ; 
- scalar_t__ JV_KIND_INVALID ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_2__ jv_array () ; 
- TYPE_2__ jv_array_append (TYPE_2__,TYPE_2__) ; 
- TYPE_2__ jv_array_get (TYPE_2__,int) ; 
- int jv_array_length (TYPE_2__) ; 
- TYPE_2__ jv_array_slice (TYPE_2__,int /*<<< orphan*/ ,int) ; 
- TYPE_2__ jv_copy (TYPE_2__) ; 
- int jv_equal (TYPE_2__,TYPE_2__) ; 
- int /*<<< orphan*/  jv_free (TYPE_2__) ; 
- scalar_t__ jv_get_kind (TYPE_2__) ; 
- int jv_get_refcnt (TYPE_2__) ; 
- TYPE_2__ jv_invalid_get_msg (TYPE_2__) ; 
- TYPE_2__ jv_number (int) ; 
- int jv_number_value (TYPE_2__) ; 
- TYPE_2__ jv_object () ; 
- TYPE_2__ jv_object_get (TYPE_2__,TYPE_2__) ; 
- TYPE_2__ jv_object_set (TYPE_2__,TYPE_2__,TYPE_2__) ; 
- TYPE_2__ jv_parse (char*) ; 
- TYPE_2__ jv_string (char*) ; 
- TYPE_2__ jv_string_fmt (char*,...) ; 
- scalar_t__ jv_string_hash (TYPE_2__) ; 
- int jv_string_length_bytes (TYPE_2__) ; 
- TYPE_2__ jv_string_sized (char*,int) ; 
- char* jv_string_value (TYPE_2__) ; 
- scalar_t__ strcmp (char*,char*) ; 
- scalar_t__ strlen (char*) ; 
+
+ scalar_t__ JV_KIND_ARRAY ;
+ scalar_t__ JV_KIND_INVALID ;
+ int assert (int) ;
+ TYPE_2__ jv_array () ;
+ TYPE_2__ jv_array_append (TYPE_2__,TYPE_2__) ;
+ TYPE_2__ jv_array_get (TYPE_2__,int) ;
+ int jv_array_length (TYPE_2__) ;
+ TYPE_2__ jv_array_slice (TYPE_2__,int ,int) ;
+ TYPE_2__ jv_copy (TYPE_2__) ;
+ int jv_equal (TYPE_2__,TYPE_2__) ;
+ int jv_free (TYPE_2__) ;
+ scalar_t__ jv_get_kind (TYPE_2__) ;
+ int jv_get_refcnt (TYPE_2__) ;
+ TYPE_2__ jv_invalid_get_msg (TYPE_2__) ;
+ TYPE_2__ jv_number (int) ;
+ int jv_number_value (TYPE_2__) ;
+ TYPE_2__ jv_object () ;
+ TYPE_2__ jv_object_get (TYPE_2__,TYPE_2__) ;
+ TYPE_2__ jv_object_set (TYPE_2__,TYPE_2__,TYPE_2__) ;
+ TYPE_2__ jv_parse (char*) ;
+ TYPE_2__ jv_string (char*) ;
+ TYPE_2__ jv_string_fmt (char*,...) ;
+ scalar_t__ jv_string_hash (TYPE_2__) ;
+ int jv_string_length_bytes (TYPE_2__) ;
+ TYPE_2__ jv_string_sized (char*,int) ;
+ char* jv_string_value (TYPE_2__) ;
+ scalar_t__ strcmp (char*,char*) ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static void jv_test() {
-  /// JSON parser regression tests
+
   {
     jv v = jv_parse("{\"a':\"12\"}");
     assert(jv_get_kind(v) == JV_KIND_INVALID);
@@ -57,7 +57,7 @@ __attribute__((used)) static void jv_test() {
     assert(strcmp(jv_string_value(v), "Expected separator between values at line 1, column 9 (while parsing '{\"a':\"12\"}')") == 0);
     jv_free(v);
   }
-  /// Arrays and numbers
+
   {
     jv a = jv_array();
     assert(jv_get_kind(a) == JV_KIND_ARRAY);
@@ -149,12 +149,12 @@ __attribute__((used)) static void jv_test() {
     assert(jv_array_length(jv_array_get(jv_copy(a), 1)) == 1);
 
 
-    //jv_dump(jv_copy(a), 0); printf("\n");
+
     jv_free(a);
   }
 
 
-  /// Strings
+
   {
     assert(jv_equal(jv_string("foo"), jv_string_sized("foo", 3)));
     char nasty[] = "foo\0";
@@ -188,7 +188,7 @@ __attribute__((used)) static void jv_test() {
     jv_free(str);
   }
 
-  /// Objects
+
   {
     jv o1 = jv_object();
     o1 = jv_object_set(o1, jv_string("foo"), jv_number(42));
@@ -204,7 +204,7 @@ __attribute__((used)) static void jv_test() {
     jv_free(o1);
     assert(jv_number_value(jv_object_get(jv_copy(o2), jv_string("bar"))) == 240);
 
-    //jv_dump(jv_copy(o2), 0); printf("\n");
+
     jv_free(o2);
   }
 }

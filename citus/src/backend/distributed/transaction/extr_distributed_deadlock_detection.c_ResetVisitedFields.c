@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int transactionVisited; } ;
-typedef  TYPE_1__ TransactionNode ;
-typedef  int /*<<< orphan*/  HTAB ;
-typedef  int /*<<< orphan*/  HASH_SEQ_STATUS ;
+typedef TYPE_1__ TransactionNode ;
+typedef int HTAB ;
+typedef int HASH_SEQ_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hash_seq_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ hash_seq_search (int /*<<< orphan*/ *) ; 
+
+ int hash_seq_init (int *,int *) ;
+ scalar_t__ hash_seq_search (int *) ;
 
 __attribute__((used)) static void
 ResetVisitedFields(HTAB *adjacencyList)
 {
-	HASH_SEQ_STATUS status;
-	TransactionNode *resetNode = NULL;
+ HASH_SEQ_STATUS status;
+ TransactionNode *resetNode = ((void*)0);
 
-	/* reset all visited fields */
-	hash_seq_init(&status, adjacencyList);
 
-	while ((resetNode = (TransactionNode *) hash_seq_search(&status)) != 0)
-	{
-		resetNode->transactionVisited = false;
-	}
+ hash_seq_init(&status, adjacencyList);
+
+ while ((resetNode = (TransactionNode *) hash_seq_search(&status)) != 0)
+ {
+  resetNode->transactionVisited = 0;
+ }
 }

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ fd; } ;
-typedef  TYPE_1__ gfx_ctx_drm_data_t ;
+typedef TYPE_1__ gfx_ctx_drm_data_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  close (scalar_t__) ; 
- int /*<<< orphan*/  drmDropMaster (int) ; 
- int /*<<< orphan*/  drm_free () ; 
- int /*<<< orphan*/  drm_restore_crtc () ; 
- int g_drm_fd ; 
- int /*<<< orphan*/ * g_gbm_dev ; 
- int /*<<< orphan*/ * g_gbm_surface ; 
- int /*<<< orphan*/  gbm_device_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gbm_surface_destroy (int /*<<< orphan*/ *) ; 
+
+ int close (scalar_t__) ;
+ int drmDropMaster (int) ;
+ int drm_free () ;
+ int drm_restore_crtc () ;
+ int g_drm_fd ;
+ int * g_gbm_dev ;
+ int * g_gbm_surface ;
+ int gbm_device_destroy (int *) ;
+ int gbm_surface_destroy (int *) ;
 
 __attribute__((used)) static void free_drm_resources(gfx_ctx_drm_data_t *drm)
 {
    if (!drm)
       return;
 
-   /* Restore original CRTC. */
+
    drm_restore_crtc();
 
    if (g_gbm_surface)
@@ -50,7 +50,7 @@ __attribute__((used)) static void free_drm_resources(gfx_ctx_drm_data_t *drm)
       }
    }
 
-   g_gbm_surface      = NULL;
-   g_gbm_dev          = NULL;
-   g_drm_fd           = -1;
+   g_gbm_surface = ((void*)0);
+   g_gbm_dev = ((void*)0);
+   g_drm_fd = -1;
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-struct AVFormatContext {TYPE_1__* priv_data; int /*<<< orphan*/ * pb; } ;
-typedef  scalar_t__ int64_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
+struct AVFormatContext {TYPE_1__* priv_data; int * pb; } ;
+typedef scalar_t__ int64_t ;
 struct TYPE_2__ {scalar_t__ continue_pes; } ;
-typedef  TYPE_1__ PVAContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
+typedef TYPE_1__ PVAContext ;
+typedef int AVIOContext ;
 
-/* Variables and functions */
- scalar_t__ AV_NOPTS_VALUE ; 
- scalar_t__ FFMIN (scalar_t__,scalar_t__) ; 
- int PVA_MAX_PAYLOAD_LENGTH ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ avio_tell (int /*<<< orphan*/ *) ; 
- scalar_t__ read_part_of_packet (struct AVFormatContext*,scalar_t__*,int*,int*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AV_NOPTS_VALUE ;
+ scalar_t__ FFMIN (scalar_t__,scalar_t__) ;
+ int PVA_MAX_PAYLOAD_LENGTH ;
+ int SEEK_SET ;
+ int avio_seek (int *,scalar_t__,int ) ;
+ scalar_t__ avio_tell (int *) ;
+ scalar_t__ read_part_of_packet (struct AVFormatContext*,scalar_t__*,int*,int*,int ) ;
 
 __attribute__((used)) static int64_t pva_read_timestamp(struct AVFormatContext *s, int stream_index,
                                           int64_t *pos, int64_t pos_limit) {

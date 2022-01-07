@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct ehci_hcd {int periodic_size; int /*<<< orphan*/ * pshadow; int /*<<< orphan*/ * periodic; int /*<<< orphan*/  periodic_dma; int /*<<< orphan*/ * sitd_pool; int /*<<< orphan*/ * itd_pool; int /*<<< orphan*/ * qh_pool; int /*<<< orphan*/ * qtd_pool; int /*<<< orphan*/ * dummy; int /*<<< orphan*/ * async; } ;
-struct TYPE_3__ {int /*<<< orphan*/  controller; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct ehci_hcd {int periodic_size; int * pshadow; int * periodic; int periodic_dma; int * sitd_pool; int * itd_pool; int * qh_pool; int * qtd_pool; int * dummy; int * async; } ;
+struct TYPE_3__ {int controller; } ;
 struct TYPE_4__ {TYPE_1__ self; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dma_free_coherent (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dma_pool_destroy (int /*<<< orphan*/ *) ; 
- TYPE_2__* ehci_to_hcd (struct ehci_hcd*) ; 
- int /*<<< orphan*/  free_cached_lists (struct ehci_hcd*) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  qh_put (int /*<<< orphan*/ *) ; 
+
+ int dma_free_coherent (int ,int,int *,int ) ;
+ int dma_pool_destroy (int *) ;
+ TYPE_2__* ehci_to_hcd (struct ehci_hcd*) ;
+ int free_cached_lists (struct ehci_hcd*) ;
+ int kfree (int *) ;
+ int qh_put (int *) ;
 
 __attribute__((used)) static void ehci_mem_cleanup (struct ehci_hcd *ehci)
 {
-	free_cached_lists(ehci);
-	if (ehci->async)
-		qh_put (ehci->async);
-	ehci->async = NULL;
+ free_cached_lists(ehci);
+ if (ehci->async)
+  qh_put (ehci->async);
+ ehci->async = ((void*)0);
 
-	if (ehci->dummy)
-		qh_put(ehci->dummy);
-	ehci->dummy = NULL;
+ if (ehci->dummy)
+  qh_put(ehci->dummy);
+ ehci->dummy = ((void*)0);
 
-	/* DMA consistent memory and pools */
-	if (ehci->qtd_pool)
-		dma_pool_destroy (ehci->qtd_pool);
-	ehci->qtd_pool = NULL;
 
-	if (ehci->qh_pool) {
-		dma_pool_destroy (ehci->qh_pool);
-		ehci->qh_pool = NULL;
-	}
+ if (ehci->qtd_pool)
+  dma_pool_destroy (ehci->qtd_pool);
+ ehci->qtd_pool = ((void*)0);
 
-	if (ehci->itd_pool)
-		dma_pool_destroy (ehci->itd_pool);
-	ehci->itd_pool = NULL;
+ if (ehci->qh_pool) {
+  dma_pool_destroy (ehci->qh_pool);
+  ehci->qh_pool = ((void*)0);
+ }
 
-	if (ehci->sitd_pool)
-		dma_pool_destroy (ehci->sitd_pool);
-	ehci->sitd_pool = NULL;
+ if (ehci->itd_pool)
+  dma_pool_destroy (ehci->itd_pool);
+ ehci->itd_pool = ((void*)0);
 
-	if (ehci->periodic)
-		dma_free_coherent (ehci_to_hcd(ehci)->self.controller,
-			ehci->periodic_size * sizeof (u32),
-			ehci->periodic, ehci->periodic_dma);
-	ehci->periodic = NULL;
+ if (ehci->sitd_pool)
+  dma_pool_destroy (ehci->sitd_pool);
+ ehci->sitd_pool = ((void*)0);
 
-	/* shadow periodic table */
-	kfree(ehci->pshadow);
-	ehci->pshadow = NULL;
+ if (ehci->periodic)
+  dma_free_coherent (ehci_to_hcd(ehci)->self.controller,
+   ehci->periodic_size * sizeof (u32),
+   ehci->periodic, ehci->periodic_dma);
+ ehci->periodic = ((void*)0);
+
+
+ kfree(ehci->pshadow);
+ ehci->pshadow = ((void*)0);
 }

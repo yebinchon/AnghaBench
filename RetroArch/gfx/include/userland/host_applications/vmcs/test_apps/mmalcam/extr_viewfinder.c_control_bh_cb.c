@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_13__ {scalar_t__ cmd; int length; scalar_t__ data; } ;
 struct TYPE_9__ {scalar_t__ size; int id; } ;
 struct TYPE_12__ {TYPE_1__ hdr; } ;
-struct TYPE_11__ {int /*<<< orphan*/  status; } ;
-struct TYPE_10__ {int /*<<< orphan*/  value; } ;
-typedef  int /*<<< orphan*/  MMAL_PORT_T ;
-typedef  TYPE_2__ MMAL_PARAMETER_UINT32_T ;
-typedef  TYPE_3__ MMAL_PARAMETER_FOCUS_STATUS_T ;
-typedef  TYPE_4__ MMAL_EVENT_PARAMETER_CHANGED_T ;
-typedef  TYPE_5__ MMAL_BUFFER_HEADER_T ;
+struct TYPE_11__ {int status; } ;
+struct TYPE_10__ {int value; } ;
+typedef int MMAL_PORT_T ;
+typedef TYPE_2__ MMAL_PARAMETER_UINT32_T ;
+typedef TYPE_3__ MMAL_PARAMETER_FOCUS_STATUS_T ;
+typedef TYPE_4__ MMAL_EVENT_PARAMETER_CHANGED_T ;
+typedef TYPE_5__ MMAL_BUFFER_HEADER_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_DEBUG (char*,int /*<<< orphan*/ *,TYPE_5__*,scalar_t__) ; 
- int /*<<< orphan*/  LOG_ERROR (char*,scalar_t__) ; 
- int /*<<< orphan*/  LOG_INFO (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MMAL_CAM_AUTOFOCUS_COMPLETE ; 
- scalar_t__ MMAL_EVENT_PARAMETER_CHANGED ; 
-#define  MMAL_PARAMETER_CAMERA_NUM 129 
-#define  MMAL_PARAMETER_FOCUS_STATUS 128 
- int /*<<< orphan*/  VCOS_OR ; 
- int /*<<< orphan*/  events ; 
- int /*<<< orphan*/  mmal_buffer_header_release (TYPE_5__*) ; 
- int /*<<< orphan*/  vcos_assert (int) ; 
- int /*<<< orphan*/  vcos_event_flags_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int LOG_DEBUG (char*,int *,TYPE_5__*,scalar_t__) ;
+ int LOG_ERROR (char*,scalar_t__) ;
+ int LOG_INFO (char*,int ) ;
+ int MMAL_CAM_AUTOFOCUS_COMPLETE ;
+ scalar_t__ MMAL_EVENT_PARAMETER_CHANGED ;
+
+
+ int VCOS_OR ;
+ int events ;
+ int mmal_buffer_header_release (TYPE_5__*) ;
+ int vcos_assert (int) ;
+ int vcos_event_flags_set (int *,int ,int ) ;
 
 __attribute__((used)) static void control_bh_cb(MMAL_PORT_T *port, MMAL_BUFFER_HEADER_T *buffer)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static void control_bh_cb(MMAL_PORT_T *port, MMAL_BUFFER_H
       vcos_assert(buffer->length == param->hdr.size);
       switch (param->hdr.id)
       {
-         case MMAL_PARAMETER_FOCUS_STATUS:
+         case 128:
             vcos_assert(param->hdr.size == sizeof(MMAL_PARAMETER_FOCUS_STATUS_T));
             {
                MMAL_PARAMETER_FOCUS_STATUS_T *focus_status = (MMAL_PARAMETER_FOCUS_STATUS_T *)param;
@@ -59,7 +59,7 @@ __attribute__((used)) static void control_bh_cb(MMAL_PORT_T *port, MMAL_BUFFER_H
                vcos_event_flags_set(&events, MMAL_CAM_AUTOFOCUS_COMPLETE, VCOS_OR);
             }
             break;
-         case MMAL_PARAMETER_CAMERA_NUM:
+         case 129:
             vcos_assert(param->hdr.size == sizeof(MMAL_PARAMETER_UINT32_T));
             {
                MMAL_PARAMETER_UINT32_T *camera_num = (MMAL_PARAMETER_UINT32_T *)param;

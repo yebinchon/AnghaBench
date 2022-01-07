@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AlternativeSubPlan ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMPARE_NODE_FIELD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  subplans ; 
+
+
+
+typedef int AlternativeSubPlan ;
+
+
+ int COMPARE_NODE_FIELD (int ) ;
+ int subplans ;
 
 __attribute__((used)) static bool
 _equalAlternativeSubPlan(const AlternativeSubPlan *a, const AlternativeSubPlan *b)
 {
-	COMPARE_NODE_FIELD(subplans);
+ COMPARE_NODE_FIELD(subplans);
 
-	return true;
+ return 1;
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  scalar_t__ kbkdf_mode ;
-typedef  int /*<<< orphan*/  EVP_MAC_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * EVP_MAC_CTX_dup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_MAC_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_MAC_final (int /*<<< orphan*/ *,unsigned char*,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  EVP_MAC_update (int /*<<< orphan*/ *,unsigned char const*,int) ; 
- scalar_t__ FEEDBACK ; 
- size_t MIN (size_t,size_t) ; 
- int be32 (int) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,size_t) ; 
+
+
+
+typedef int uint32_t ;
+typedef scalar_t__ kbkdf_mode ;
+typedef int EVP_MAC_CTX ;
+
+
+ int * EVP_MAC_CTX_dup (int *) ;
+ int EVP_MAC_CTX_free (int *) ;
+ int EVP_MAC_final (int *,unsigned char*,int *,size_t) ;
+ int EVP_MAC_update (int *,unsigned char const*,int) ;
+ scalar_t__ FEEDBACK ;
+ size_t MIN (size_t,size_t) ;
+ int be32 (int) ;
+ int memcpy (unsigned char*,unsigned char*,size_t) ;
 
 __attribute__((used)) static int derive(EVP_MAC_CTX *ctx_init, kbkdf_mode mode, unsigned char *iv,
                   size_t iv_len, unsigned char *label, size_t label_len,
@@ -31,12 +31,12 @@ __attribute__((used)) static int derive(EVP_MAC_CTX *ctx_init, kbkdf_mode mode, 
                   size_t ko_len)
 {
     int ret = 0;
-    EVP_MAC_CTX *ctx = NULL;
+    EVP_MAC_CTX *ctx = ((void*)0);
     size_t written = 0, to_write, k_i_len = iv_len;
     const unsigned char zero = 0;
     uint32_t counter, i;
 
-    /* Setup K(0) for feedback mode. */
+
     if (iv_len > 0)
         memcpy(k_i, iv, iv_len);
 
@@ -44,10 +44,10 @@ __attribute__((used)) static int derive(EVP_MAC_CTX *ctx_init, kbkdf_mode mode, 
         i = be32(counter);
 
         ctx = EVP_MAC_CTX_dup(ctx_init);
-        if (ctx == NULL)
+        if (ctx == ((void*)0))
             goto done;
 
-        /* Perform feedback, if appropriate. */
+
         if (mode == FEEDBACK && !EVP_MAC_update(ctx, k_i, k_i_len))
             goto done;
 
@@ -56,7 +56,7 @@ __attribute__((used)) static int derive(EVP_MAC_CTX *ctx_init, kbkdf_mode mode, 
             || !EVP_MAC_update(ctx, &zero, 1)
             || !EVP_MAC_update(ctx, context, context_len)
             || !EVP_MAC_update(ctx, (unsigned char *)&l, 4)
-            || !EVP_MAC_final(ctx, k_i, NULL, h))
+            || !EVP_MAC_final(ctx, k_i, ((void*)0), h))
             goto done;
 
         to_write = ko_len - written;
@@ -65,7 +65,7 @@ __attribute__((used)) static int derive(EVP_MAC_CTX *ctx_init, kbkdf_mode mode, 
 
         k_i_len = h;
         EVP_MAC_CTX_free(ctx);
-        ctx = NULL;
+        ctx = ((void*)0);
     }
 
     ret = 1;

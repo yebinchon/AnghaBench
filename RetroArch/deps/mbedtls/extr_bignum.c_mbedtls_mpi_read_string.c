@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t mbedtls_mpi_uint ;
+
+
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef size_t mbedtls_mpi_uint ;
 struct TYPE_13__ {int s; size_t* p; } ;
-typedef  TYPE_1__ mbedtls_mpi ;
+typedef TYPE_1__ mbedtls_mpi ;
 
-/* Variables and functions */
- size_t BITS_TO_LIMBS (size_t) ; 
- int MBEDTLS_ERR_MPI_BAD_INPUT_DATA ; 
- int /*<<< orphan*/  MBEDTLS_MPI_CHK (int /*<<< orphan*/ ) ; 
- size_t MPI_SIZE_T_MAX ; 
- int ciL ; 
- int /*<<< orphan*/  mbedtls_mpi_add_int (TYPE_1__*,TYPE_1__*,size_t) ; 
- int /*<<< orphan*/  mbedtls_mpi_free (TYPE_1__*) ; 
- int /*<<< orphan*/  mbedtls_mpi_grow (TYPE_1__*,size_t) ; 
- int /*<<< orphan*/  mbedtls_mpi_init (TYPE_1__*) ; 
- int /*<<< orphan*/  mbedtls_mpi_lset (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mbedtls_mpi_mul_int (TYPE_1__*,TYPE_1__*,int) ; 
- int /*<<< orphan*/  mbedtls_mpi_sub_int (TYPE_1__*,TYPE_1__*,size_t) ; 
- int /*<<< orphan*/  mpi_get_digit (size_t*,int,char const) ; 
- size_t strlen (char const*) ; 
+
+ size_t BITS_TO_LIMBS (size_t) ;
+ int MBEDTLS_ERR_MPI_BAD_INPUT_DATA ;
+ int MBEDTLS_MPI_CHK (int ) ;
+ size_t MPI_SIZE_T_MAX ;
+ int ciL ;
+ int mbedtls_mpi_add_int (TYPE_1__*,TYPE_1__*,size_t) ;
+ int mbedtls_mpi_free (TYPE_1__*) ;
+ int mbedtls_mpi_grow (TYPE_1__*,size_t) ;
+ int mbedtls_mpi_init (TYPE_1__*) ;
+ int mbedtls_mpi_lset (TYPE_1__*,int ) ;
+ int mbedtls_mpi_mul_int (TYPE_1__*,TYPE_1__*,int) ;
+ int mbedtls_mpi_sub_int (TYPE_1__*,TYPE_1__*,size_t) ;
+ int mpi_get_digit (size_t*,int,char const) ;
+ size_t strlen (char const*) ;
 
 int mbedtls_mpi_read_string( mbedtls_mpi *X, int radix, const char *s )
 {

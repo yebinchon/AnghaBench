@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_7__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_7__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_15__ {TYPE_1__* manager; } ;
 struct TYPE_14__ {scalar_t__ devnode; } ;
-struct TYPE_13__ {int /*<<< orphan*/ * swaps_by_devnode; } ;
-typedef  TYPE_2__ Swap ;
-typedef  int /*<<< orphan*/  Hashmap ;
+struct TYPE_13__ {int * swaps_by_devnode; } ;
+typedef TYPE_2__ Swap ;
+typedef int Hashmap ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  LIST_PREPEND (int /*<<< orphan*/ ,TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  LIST_REMOVE (int /*<<< orphan*/ ,TYPE_2__*,TYPE_2__*) ; 
- TYPE_7__* UNIT (TYPE_2__*) ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int hashmap_ensure_allocated (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- TYPE_2__* hashmap_get (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  hashmap_remove (int /*<<< orphan*/ *,scalar_t__) ; 
- int hashmap_replace (int /*<<< orphan*/ *,scalar_t__,TYPE_2__*) ; 
- scalar_t__ mfree (scalar_t__) ; 
- int /*<<< orphan*/  path_hash_ops ; 
- int /*<<< orphan*/  same_devnode ; 
- scalar_t__ strdup (char const*) ; 
+
+ int ENOMEM ;
+ int LIST_PREPEND (int ,TYPE_2__*,TYPE_2__*) ;
+ int LIST_REMOVE (int ,TYPE_2__*,TYPE_2__*) ;
+ TYPE_7__* UNIT (TYPE_2__*) ;
+ int assert (TYPE_2__*) ;
+ int hashmap_ensure_allocated (int **,int *) ;
+ TYPE_2__* hashmap_get (int *,scalar_t__) ;
+ int hashmap_remove (int *,scalar_t__) ;
+ int hashmap_replace (int *,scalar_t__,TYPE_2__*) ;
+ scalar_t__ mfree (scalar_t__) ;
+ int path_hash_ops ;
+ int same_devnode ;
+ scalar_t__ strdup (char const*) ;
 
 __attribute__((used)) static int swap_set_devnode(Swap *s, const char *devnode) {
         Hashmap *swaps;

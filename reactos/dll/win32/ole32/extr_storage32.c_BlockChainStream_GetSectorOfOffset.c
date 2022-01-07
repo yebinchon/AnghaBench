@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG ;
 struct TYPE_5__ {scalar_t__ numBlocks; scalar_t__ indexCacheLen; TYPE_1__* indexCache; } ;
 struct TYPE_4__ {scalar_t__ firstOffset; scalar_t__ lastOffset; scalar_t__ firstSector; } ;
-typedef  TYPE_2__ BlockChainStream ;
+typedef TYPE_2__ BlockChainStream ;
 
-/* Variables and functions */
- scalar_t__ BLOCK_END_OF_CHAIN ; 
+
+ scalar_t__ BLOCK_END_OF_CHAIN ;
 
 __attribute__((used)) static ULONG BlockChainStream_GetSectorOfOffset(BlockChainStream *This, ULONG offset)
 {
@@ -42,7 +42,7 @@ __attribute__((used)) static ULONG BlockChainStream_GetSectorOfOffset(BlockChain
       min_run = run_to_check+1;
     }
     else
-      /* Block is in this run. */
+
       min_run = max_run = run_to_check;
   }
 

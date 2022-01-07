@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  maskset ;
-typedef  int /*<<< orphan*/  login_cap_t ;
-typedef  int /*<<< orphan*/  cpusetid_t ;
-typedef  int /*<<< orphan*/  cpuset_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CPU_LEVEL_CPUSET ; 
- int /*<<< orphan*/  CPU_WHICH_PID ; 
- int /*<<< orphan*/  CPU_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  LOG_WARNING ; 
- scalar_t__ cpuset (int /*<<< orphan*/ *) ; 
- scalar_t__ cpuset_setaffinity (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  list2cpuset (char const*,int /*<<< orphan*/ *) ; 
- char* login_getcapstr (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ strcasecmp (char*,char const*) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  syslog (int /*<<< orphan*/ ,char*,char const*,...) ; 
+
+
+
+typedef int maskset ;
+typedef int login_cap_t ;
+typedef int cpusetid_t ;
+typedef int cpuset_t ;
+
+
+ int CPU_LEVEL_CPUSET ;
+ int CPU_WHICH_PID ;
+ int CPU_ZERO (int *) ;
+ int LOG_ERR ;
+ int LOG_WARNING ;
+ scalar_t__ cpuset (int *) ;
+ scalar_t__ cpuset_setaffinity (int ,int ,int,int,int *) ;
+ int errno ;
+ int list2cpuset (char const*,int *) ;
+ char* login_getcapstr (int *,char*,int *,int *) ;
+ scalar_t__ strcasecmp (char*,char const*) ;
+ int strerror (int ) ;
+ int syslog (int ,char*,char const*,...) ;
 
 void
 setclasscpumask(login_cap_t *lc)
 {
-	const char *maskstr;
-	cpuset_t maskset;
-	cpusetid_t setid;
+ const char *maskstr;
+ cpuset_t maskset;
+ cpusetid_t setid;
 
-	maskstr = login_getcapstr(lc, "cpumask", NULL, NULL);
-	CPU_ZERO(&maskset);
-	if (maskstr == NULL)
-		return;
-	if (strcasecmp("default", maskstr) == 0)
-		return;
-	if (!list2cpuset(maskstr, &maskset)) {
-		syslog(LOG_WARNING,
-		    "list2cpuset(%s) invalid mask specification", maskstr);
-		return;
-	}
+ maskstr = login_getcapstr(lc, "cpumask", ((void*)0), ((void*)0));
+ CPU_ZERO(&maskset);
+ if (maskstr == ((void*)0))
+  return;
+ if (strcasecmp("default", maskstr) == 0)
+  return;
+ if (!list2cpuset(maskstr, &maskset)) {
+  syslog(LOG_WARNING,
+      "list2cpuset(%s) invalid mask specification", maskstr);
+  return;
+ }
 
-	if (cpuset(&setid) != 0) {
-		syslog(LOG_ERR, "cpuset(): %s", strerror(errno));
-		return;
-	}
+ if (cpuset(&setid) != 0) {
+  syslog(LOG_ERR, "cpuset(): %s", strerror(errno));
+  return;
+ }
 
-	if (cpuset_setaffinity(CPU_LEVEL_CPUSET, CPU_WHICH_PID, -1,
-	    sizeof(maskset), &maskset) != 0)
-		syslog(LOG_ERR, "cpuset_setaffinity(%s): %s", maskstr,
-		    strerror(errno));
+ if (cpuset_setaffinity(CPU_LEVEL_CPUSET, CPU_WHICH_PID, -1,
+     sizeof(maskset), &maskset) != 0)
+  syslog(LOG_ERR, "cpuset_setaffinity(%s): %s", maskstr,
+      strerror(errno));
 }

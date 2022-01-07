@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  fs; } ;
-typedef  TYPE_1__ svnlook_ctxt_t ;
-struct TYPE_6__ {char* comment; int /*<<< orphan*/  owner; int /*<<< orphan*/  token; scalar_t__ expiration_date; scalar_t__ creation_date; } ;
-typedef  TYPE_2__ svn_lock_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct svnlook_opt_state {int /*<<< orphan*/  arg1; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_getopt_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Q_ (char*,char*,int) ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  check_number_of_args (struct svnlook_opt_state*,int) ; 
- int /*<<< orphan*/  get_ctxt_baton (TYPE_1__**,struct svnlook_opt_state*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_cmdline_printf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- int svn_cstring_count_newlines (char*) ; 
- int /*<<< orphan*/  svn_fs_get_lock (TYPE_2__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- char* svn_time_to_human_cstring (scalar_t__,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int fs; } ;
+typedef TYPE_1__ svnlook_ctxt_t ;
+struct TYPE_6__ {char* comment; int owner; int token; scalar_t__ expiration_date; scalar_t__ creation_date; } ;
+typedef TYPE_2__ svn_lock_t ;
+typedef int svn_error_t ;
+struct svnlook_opt_state {int arg1; } ;
+typedef int apr_pool_t ;
+typedef int apr_getopt_t ;
+
+
+ int Q_ (char*,char*,int) ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int check_number_of_args (struct svnlook_opt_state*,int) ;
+ int get_ctxt_baton (TYPE_1__**,struct svnlook_opt_state*,int *) ;
+ int svn_cmdline_printf (int *,int ,...) ;
+ int svn_cstring_count_newlines (char*) ;
+ int svn_fs_get_lock (TYPE_2__**,int ,int ,int *) ;
+ char* svn_time_to_human_cstring (scalar_t__,int *) ;
 
 __attribute__((used)) static svn_error_t *
 subcommand_lock(apr_getopt_t *os, void *baton, apr_pool_t *pool)

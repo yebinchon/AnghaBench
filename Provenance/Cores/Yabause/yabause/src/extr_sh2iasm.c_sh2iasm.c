@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_11__ {scalar_t__ reg; scalar_t__ type; } ;
-typedef  TYPE_1__ sh_operand_info ;
-typedef  int /*<<< orphan*/  sh_opcode_info ;
+typedef TYPE_1__ sh_operand_info ;
+typedef int sh_opcode_info ;
 
-/* Variables and functions */
- int /*<<< orphan*/  asm_bad (char*,char*) ; 
- int build_bytes (int /*<<< orphan*/ ,TYPE_1__,TYPE_1__,TYPE_1__) ; 
- int /*<<< orphan*/  parse_arg (char*,TYPE_1__*,char*) ; 
- int /*<<< orphan*/  rebuild_args (char*,char*,TYPE_1__*,TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  search_op (char*,TYPE_1__*,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int strip_arg (char*,char*) ; 
- int strip_opname (char*,char*) ; 
- char tolower (char) ; 
+
+ int asm_bad (char*,char*) ;
+ int build_bytes (int ,TYPE_1__,TYPE_1__,TYPE_1__) ;
+ int parse_arg (char*,TYPE_1__*,char*) ;
+ int rebuild_args (char*,char*,TYPE_1__*,TYPE_1__*,TYPE_1__*) ;
+ int search_op (char*,TYPE_1__*,TYPE_1__*,int *) ;
+ int strip_arg (char*,char*) ;
+ int strip_opname (char*,char*) ;
+ char tolower (char) ;
 
 int sh2iasm(char *str, char *err_msg)
 
-// Function to do all the work
+
 
 {
    char name[30];
@@ -43,7 +43,7 @@ int sh2iasm(char *str, char *err_msg)
    arg1info.reg = 0;
    arg2info.type = 0;
    arg2info.reg = 0;
-   //gets(str);
+
    p = str;
    while(*p == ' ')
      p++;

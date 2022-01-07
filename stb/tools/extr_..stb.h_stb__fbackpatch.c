@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  f; } ;
-typedef  TYPE_1__ stbfile ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fwrite (void*,int,unsigned int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int f; } ;
+typedef TYPE_1__ stbfile ;
+
+
+ int SEEK_END ;
+ int SEEK_SET ;
+ int fseek (int ,unsigned int,int ) ;
+ int fwrite (void*,int,unsigned int,int ) ;
 
 __attribute__((used)) static void stb__fbackpatch(stbfile *f, unsigned int where, void *buffer, unsigned int len)
 {

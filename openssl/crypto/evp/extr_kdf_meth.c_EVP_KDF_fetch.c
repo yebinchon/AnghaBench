@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  OPENSSL_CTX ;
-typedef  int /*<<< orphan*/  EVP_KDF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OSSL_OP_KDF ; 
- int /*<<< orphan*/ * evp_generic_fetch (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  evp_kdf_free ; 
- int /*<<< orphan*/  evp_kdf_from_dispatch ; 
- int /*<<< orphan*/  evp_kdf_up_ref ; 
+
+
+
+typedef int OPENSSL_CTX ;
+typedef int EVP_KDF ;
+
+
+ int OSSL_OP_KDF ;
+ int * evp_generic_fetch (int *,int ,char const*,char const*,int ,int ,int ) ;
+ int evp_kdf_free ;
+ int evp_kdf_from_dispatch ;
+ int evp_kdf_up_ref ;
 
 EVP_KDF *EVP_KDF_fetch(OPENSSL_CTX *libctx, const char *algorithm,
                        const char *properties)

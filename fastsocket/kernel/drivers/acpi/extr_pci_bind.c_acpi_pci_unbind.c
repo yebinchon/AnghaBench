@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct pci_dev {int /*<<< orphan*/  subordinate; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * unbind; int /*<<< orphan*/ * bind; } ;
-struct acpi_device {TYPE_1__ ops; int /*<<< orphan*/  handle; } ;
 
-/* Variables and functions */
- struct pci_dev* acpi_get_pci_dev (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  acpi_pci_irq_del_prt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pci_dev_put (struct pci_dev*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct pci_dev {int subordinate; } ;
+struct TYPE_2__ {int * unbind; int * bind; } ;
+struct acpi_device {TYPE_1__ ops; int handle; } ;
+
+
+ struct pci_dev* acpi_get_pci_dev (int ) ;
+ int acpi_pci_irq_del_prt (int ) ;
+ int pci_dev_put (struct pci_dev*) ;
 
 __attribute__((used)) static int acpi_pci_unbind(struct acpi_device *device)
 {
-	struct pci_dev *dev;
+ struct pci_dev *dev;
 
-	dev = acpi_get_pci_dev(device->handle);
-	if (!dev || !dev->subordinate)
-		goto out;
+ dev = acpi_get_pci_dev(device->handle);
+ if (!dev || !dev->subordinate)
+  goto out;
 
-	acpi_pci_irq_del_prt(dev->subordinate);
+ acpi_pci_irq_del_prt(dev->subordinate);
 
-	device->ops.bind = NULL;
-	device->ops.unbind = NULL;
+ device->ops.bind = ((void*)0);
+ device->ops.unbind = ((void*)0);
 
 out:
-	pci_dev_put(dev);
-	return 0;
+ pci_dev_put(dev);
+ return 0;
 }

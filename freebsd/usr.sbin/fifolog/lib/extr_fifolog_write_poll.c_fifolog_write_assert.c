@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct fifolog_writer {scalar_t__ obuf; scalar_t__ obufsize; TYPE_2__* ff; } ;
 struct TYPE_4__ {TYPE_1__* zs; } ;
 struct TYPE_3__ {scalar_t__ next_out; scalar_t__ avail_out; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_OBJ_NOTNULL (struct fifolog_writer const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIFOLOG_WRITER_MAGIC ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ int CHECK_OBJ_NOTNULL (struct fifolog_writer const*,int ) ;
+ int FIFOLOG_WRITER_MAGIC ;
+ int assert (int) ;
 
 __attribute__((used)) static void
 fifolog_write_assert(const struct fifolog_writer *f)
 {
 
-	CHECK_OBJ_NOTNULL(f, FIFOLOG_WRITER_MAGIC);
-	assert(f->ff->zs->next_out + f->ff->zs->avail_out == \
-	    f->obuf + f->obufsize);
+ CHECK_OBJ_NOTNULL(f, FIFOLOG_WRITER_MAGIC);
+ assert(f->ff->zs->next_out + f->ff->zs->avail_out == f->obuf + f->obufsize);
+
 }

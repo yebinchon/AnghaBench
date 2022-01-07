@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fscache_cookie {int /*<<< orphan*/  flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int ERESTARTSYS ; 
- int /*<<< orphan*/  FSCACHE_COOKIE_LOOKING_UP ; 
- int /*<<< orphan*/  TASK_INTERRUPTIBLE ; 
- int /*<<< orphan*/  _enter (char*) ; 
- int /*<<< orphan*/  _leave (char*) ; 
- int /*<<< orphan*/  fscache_hist (int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  fscache_n_retrievals_intr ; 
- int /*<<< orphan*/  fscache_n_retrievals_wait ; 
- int /*<<< orphan*/  fscache_retrieval_delay_histogram ; 
- int /*<<< orphan*/  fscache_stat (int /*<<< orphan*/ *) ; 
- unsigned long jiffies ; 
- int /*<<< orphan*/  smp_rmb () ; 
- int /*<<< orphan*/  test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ wait_on_bit (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct fscache_cookie {int flags; } ;
+
+
+ int ASSERT (int) ;
+ int ERESTARTSYS ;
+ int FSCACHE_COOKIE_LOOKING_UP ;
+ int TASK_INTERRUPTIBLE ;
+ int _enter (char*) ;
+ int _leave (char*) ;
+ int fscache_hist (int ,unsigned long) ;
+ int fscache_n_retrievals_intr ;
+ int fscache_n_retrievals_wait ;
+ int fscache_retrieval_delay_histogram ;
+ int fscache_stat (int *) ;
+ unsigned long jiffies ;
+ int smp_rmb () ;
+ int test_bit (int ,int *) ;
+ scalar_t__ wait_on_bit (int *,int ,int ) ;
 
 int fscache_wait_for_deferred_lookup(struct fscache_cookie *cookie)
 {
-	unsigned long jif;
+ unsigned long jif;
 
-	_enter("");
+ _enter("");
 
-	if (!test_bit(FSCACHE_COOKIE_LOOKING_UP, &cookie->flags)) {
-		_leave(" = 0 [imm]");
-		return 0;
-	}
+ if (!test_bit(FSCACHE_COOKIE_LOOKING_UP, &cookie->flags)) {
+  _leave(" = 0 [imm]");
+  return 0;
+ }
 
-	fscache_stat(&fscache_n_retrievals_wait);
+ fscache_stat(&fscache_n_retrievals_wait);
 
-	jif = jiffies;
-	if (wait_on_bit(&cookie->flags, FSCACHE_COOKIE_LOOKING_UP,
-			TASK_INTERRUPTIBLE) != 0) {
-		fscache_stat(&fscache_n_retrievals_intr);
-		_leave(" = -ERESTARTSYS");
-		return -ERESTARTSYS;
-	}
+ jif = jiffies;
+ if (wait_on_bit(&cookie->flags, FSCACHE_COOKIE_LOOKING_UP,
+   TASK_INTERRUPTIBLE) != 0) {
+  fscache_stat(&fscache_n_retrievals_intr);
+  _leave(" = -ERESTARTSYS");
+  return -ERESTARTSYS;
+ }
 
-	ASSERT(!test_bit(FSCACHE_COOKIE_LOOKING_UP, &cookie->flags));
+ ASSERT(!test_bit(FSCACHE_COOKIE_LOOKING_UP, &cookie->flags));
 
-	smp_rmb();
-	fscache_hist(fscache_retrieval_delay_histogram, jif);
-	_leave(" = 0 [dly]");
-	return 0;
+ smp_rmb();
+ fscache_hist(fscache_retrieval_delay_histogram, jif);
+ _leave(" = 0 [dly]");
+ return 0;
 }

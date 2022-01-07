@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct regsvr_pixelformat {int bitsperpixel; size_t channelcount; int /*<<< orphan*/  const** channelmasks; int /*<<< orphan*/  supportsalpha; int /*<<< orphan*/  numericrepresentation; scalar_t__ version; int /*<<< orphan*/ * vendor; scalar_t__ friendlyname; scalar_t__ author; int /*<<< orphan*/ * clsid; } ;
-typedef  char WCHAR ;
-typedef  size_t UINT ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CATID_WICPixelFormats ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  HKEY_CLASSES_ROOT ; 
- int /*<<< orphan*/  HRESULT_FROM_WIN32 (scalar_t__) ; 
- int KEY_READ ; 
- int KEY_WRITE ; 
- int /*<<< orphan*/  REG_BINARY ; 
- int /*<<< orphan*/  REG_DWORD ; 
- int /*<<< orphan*/  REG_SZ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegCreateKeyExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegSetValueExA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int) ; 
- scalar_t__ RegSetValueExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  StringFromGUID2 (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  author_valuename ; 
- int /*<<< orphan*/  bitsperpixel_valuename ; 
- int /*<<< orphan*/  channelcount_valuename ; 
- char* channelmasks_keyname ; 
- char* clsid_keyname ; 
- char* clsid_valuename ; 
- int /*<<< orphan*/  friendlyname_valuename ; 
- char* instance_keyname ; 
- int /*<<< orphan*/  numericrepresentation_valuename ; 
- int /*<<< orphan*/  sprintfW (char*,char const*,size_t) ; 
- int strlen (scalar_t__) ; 
- int /*<<< orphan*/  supportstransparency_valuename ; 
- char* vendor_valuename ; 
- int /*<<< orphan*/  version_valuename ; 
+
+
+
+struct regsvr_pixelformat {int bitsperpixel; size_t channelcount; int const** channelmasks; int supportsalpha; int numericrepresentation; scalar_t__ version; int * vendor; scalar_t__ friendlyname; scalar_t__ author; int * clsid; } ;
+typedef char WCHAR ;
+typedef size_t UINT ;
+typedef scalar_t__ LONG ;
+typedef int HRESULT ;
+typedef int HKEY ;
+typedef int BYTE ;
+
+
+ int CATID_WICPixelFormats ;
+ scalar_t__ ERROR_SUCCESS ;
+ int HKEY_CLASSES_ROOT ;
+ int HRESULT_FROM_WIN32 (scalar_t__) ;
+ int KEY_READ ;
+ int KEY_WRITE ;
+ int REG_BINARY ;
+ int REG_DWORD ;
+ int REG_SZ ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegCreateKeyExW (int ,char*,int ,int *,int ,int,int *,int *,int *) ;
+ scalar_t__ RegSetValueExA (int ,int ,int ,int ,int const*,int) ;
+ scalar_t__ RegSetValueExW (int ,char*,int ,int ,int const*,size_t) ;
+ int S_OK ;
+ int StringFromGUID2 (int *,char*,int) ;
+ int author_valuename ;
+ int bitsperpixel_valuename ;
+ int channelcount_valuename ;
+ char* channelmasks_keyname ;
+ char* clsid_keyname ;
+ char* clsid_valuename ;
+ int friendlyname_valuename ;
+ char* instance_keyname ;
+ int numericrepresentation_valuename ;
+ int sprintfW (char*,char const*,size_t) ;
+ int strlen (scalar_t__) ;
+ int supportstransparency_valuename ;
+ char* vendor_valuename ;
+ int version_valuename ;
 
 __attribute__((used)) static HRESULT register_pixelformats(struct regsvr_pixelformat const *list)
 {
@@ -57,16 +57,16 @@ __attribute__((used)) static HRESULT register_pixelformats(struct regsvr_pixelfo
     HKEY formats_key;
     HKEY instance_key;
 
-    res = RegCreateKeyExW(HKEY_CLASSES_ROOT, clsid_keyname, 0, NULL, 0,
-                          KEY_READ | KEY_WRITE, NULL, &coclass_key, NULL);
-    if (res == ERROR_SUCCESS)  {
+    res = RegCreateKeyExW(HKEY_CLASSES_ROOT, clsid_keyname, 0, ((void*)0), 0,
+                          KEY_READ | KEY_WRITE, ((void*)0), &coclass_key, ((void*)0));
+    if (res == ERROR_SUCCESS) {
         StringFromGUID2(&CATID_WICPixelFormats, buf, 39);
-        res = RegCreateKeyExW(coclass_key, buf, 0, NULL, 0,
-                              KEY_READ | KEY_WRITE, NULL, &formats_key, NULL);
+        res = RegCreateKeyExW(coclass_key, buf, 0, ((void*)0), 0,
+                              KEY_READ | KEY_WRITE, ((void*)0), &formats_key, ((void*)0));
         if (res == ERROR_SUCCESS)
         {
-            res = RegCreateKeyExW(formats_key, instance_keyname, 0, NULL, 0,
-                              KEY_READ | KEY_WRITE, NULL, &instance_key, NULL);
+            res = RegCreateKeyExW(formats_key, instance_keyname, 0, ((void*)0), 0,
+                              KEY_READ | KEY_WRITE, ((void*)0), &instance_key, ((void*)0));
             if (res != ERROR_SUCCESS) goto error_close_coclass_key;
         }
         if (res != ERROR_SUCCESS)
@@ -79,13 +79,13 @@ __attribute__((used)) static HRESULT register_pixelformats(struct regsvr_pixelfo
         HKEY instance_clsid_key;
 
         StringFromGUID2(list->clsid, buf, 39);
-        res = RegCreateKeyExW(coclass_key, buf, 0, NULL, 0,
-                              KEY_READ | KEY_WRITE, NULL, &clsid_key, NULL);
+        res = RegCreateKeyExW(coclass_key, buf, 0, ((void*)0), 0,
+                              KEY_READ | KEY_WRITE, ((void*)0), &clsid_key, ((void*)0));
         if (res != ERROR_SUCCESS) goto error_close_coclass_key;
 
         StringFromGUID2(list->clsid, buf, 39);
-        res = RegCreateKeyExW(instance_key, buf, 0, NULL, 0,
-                              KEY_READ | KEY_WRITE, NULL, &instance_clsid_key, NULL);
+        res = RegCreateKeyExW(instance_key, buf, 0, ((void*)0), 0,
+                              KEY_READ | KEY_WRITE, ((void*)0), &instance_clsid_key, ((void*)0));
         if (res == ERROR_SUCCESS) {
             res = RegSetValueExW(instance_clsid_key, clsid_valuename, 0, REG_SZ,
                                  (const BYTE*)buf, 78);
@@ -145,8 +145,8 @@ __attribute__((used)) static HRESULT register_pixelformats(struct regsvr_pixelfo
 
             mask_size = (list->bitsperpixel + 7)/8;
 
-            res = RegCreateKeyExW(clsid_key, channelmasks_keyname, 0, NULL, 0,
-                                  KEY_READ | KEY_WRITE, NULL, &masks_key, NULL);
+            res = RegCreateKeyExW(clsid_key, channelmasks_keyname, 0, ((void*)0), 0,
+                                  KEY_READ | KEY_WRITE, ((void*)0), &masks_key, ((void*)0));
             if (res != ERROR_SUCCESS) goto error_close_clsid_key;
             for (i=0; i < list->channelcount; i++)
             {

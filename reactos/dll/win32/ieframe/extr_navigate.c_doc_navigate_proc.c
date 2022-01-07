@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  task_header_t ;
-struct TYPE_6__ {int /*<<< orphan*/  post_data; int /*<<< orphan*/  headers; int /*<<< orphan*/  url; scalar_t__ async_notif; } ;
-typedef  TYPE_1__ task_doc_navigate_t ;
-typedef  scalar_t__ VARIANT_BOOL ;
-struct TYPE_7__ {int /*<<< orphan*/  doc_navigate; } ;
-typedef  int /*<<< orphan*/  IHTMLPrivateWindow ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_2__ DocHost ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  IHTMLPrivateWindow_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IHTMLPrivateWindow ; 
- int /*<<< orphan*/  IUnknown_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- scalar_t__ VARIANT_FALSE ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  html_window_navigate (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  on_before_navigate2 (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int task_header_t ;
+struct TYPE_6__ {int post_data; int headers; int url; scalar_t__ async_notif; } ;
+typedef TYPE_1__ task_doc_navigate_t ;
+typedef scalar_t__ VARIANT_BOOL ;
+struct TYPE_7__ {int doc_navigate; } ;
+typedef int IHTMLPrivateWindow ;
+typedef int HRESULT ;
+typedef TYPE_2__ DocHost ;
+
+
+ int ERR (char*) ;
+ int IHTMLPrivateWindow_Release (int *) ;
+ int IID_IHTMLPrivateWindow ;
+ int IUnknown_QueryInterface (int ,int *,void**) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int TRACE (char*) ;
+ scalar_t__ VARIANT_FALSE ;
+ int WARN (char*,int ) ;
+ int html_window_navigate (TYPE_2__*,int *,int ,int ,int ) ;
+ int on_before_navigate2 (TYPE_2__*,int ,int ,int ,scalar_t__*) ;
 
 __attribute__((used)) static void doc_navigate_proc(DocHost *This, task_header_t *t)
 {

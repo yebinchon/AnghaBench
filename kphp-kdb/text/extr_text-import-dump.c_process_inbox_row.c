@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lev_add_message {int user_id; int legacy_id; int peer_id; int peer_msg_id; int date; int ip; int port; int front; int text_len; char* text; int /*<<< orphan*/  ua_hash; scalar_t__ type; } ;
 
-/* Variables and functions */
- int* I ; 
- int* L ; 
- scalar_t__ LEV_TX_ADD_MESSAGE ; 
- char** S ; 
- int /*<<< orphan*/  TXF_FRIENDS ; 
- int /*<<< orphan*/  TXF_SPAM ; 
- scalar_t__ TXF_UNREAD ; 
- int /*<<< orphan*/  adj_rec ; 
- scalar_t__ conv_uid (int) ; 
- int force_read_threshold ; 
- size_t ib_date ; 
- size_t ib_from_id ; 
- size_t ib_front ; 
- size_t ib_id ; 
- size_t ib_ip ; 
- size_t ib_message ; 
- size_t ib_port ; 
- size_t ib_read_date ; 
- size_t ib_read_state ; 
- size_t ib_title ; 
- size_t ib_to_id ; 
- size_t ib_to_shown ; 
- size_t ib_ua_hash ; 
- scalar_t__ is_friend (int,int) ; 
- int list_id ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int /*<<< orphan*/  strtoull (char*,int /*<<< orphan*/ ,int) ; 
- struct lev_add_message* write_alloc (int) ; 
+
+
+
+struct lev_add_message {int user_id; int legacy_id; int peer_id; int peer_msg_id; int date; int ip; int port; int front; int text_len; char* text; int ua_hash; scalar_t__ type; } ;
+
+
+ int* I ;
+ int* L ;
+ scalar_t__ LEV_TX_ADD_MESSAGE ;
+ char** S ;
+ int TXF_FRIENDS ;
+ int TXF_SPAM ;
+ scalar_t__ TXF_UNREAD ;
+ int adj_rec ;
+ scalar_t__ conv_uid (int) ;
+ int force_read_threshold ;
+ size_t ib_date ;
+ size_t ib_from_id ;
+ size_t ib_front ;
+ size_t ib_id ;
+ size_t ib_ip ;
+ size_t ib_message ;
+ size_t ib_port ;
+ size_t ib_read_date ;
+ size_t ib_read_state ;
+ size_t ib_title ;
+ size_t ib_to_id ;
+ size_t ib_to_shown ;
+ size_t ib_ua_hash ;
+ scalar_t__ is_friend (int,int) ;
+ int list_id ;
+ int strcmp (char*,char*) ;
+ int strcpy (char*,char*) ;
+ int strtoull (char*,int ,int) ;
+ struct lev_add_message* write_alloc (int) ;
 
 void process_inbox_row (void) {
   int user_id = I[ib_from_id];
   int i, len;
   char *ptr, *str;
-  list_id = I[ib_to_id]; 
+  list_id = I[ib_to_id];
   if (conv_uid (list_id) < 0 || list_id <= 0 || user_id <= 0) {
     return;
   }

@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Char ;
 
-/* Variables and functions */
- int Cursor ; 
- int InputBuf ; 
- int /*<<< orphan*/ * LastChar ; 
- int Mark ; 
- int /*<<< orphan*/  TCSHOP_INSERT ; 
- int /*<<< orphan*/  UndoAction ; 
- int /*<<< orphan*/ * UndoBuf ; 
- int UndoPtr ; 
- int UndoSize ; 
- scalar_t__ VImode ; 
+
+
+
+typedef int Char ;
+
+
+ int Cursor ;
+ int InputBuf ;
+ int * LastChar ;
+ int Mark ;
+ int TCSHOP_INSERT ;
+ int UndoAction ;
+ int * UndoBuf ;
+ int UndoPtr ;
+ int UndoSize ;
+ scalar_t__ VImode ;
 
 void
-c_delbefore(int num)		/* delete before dot, with bounds checking */
+c_delbefore(int num)
 {
-    Char *cp, *kp = NULL;
+    Char *cp, *kp = ((void*)0);
 
     if (num > Cursor - InputBuf)
-	num = (int) (Cursor - InputBuf);	/* bounds check */
+ num = (int) (Cursor - InputBuf);
 
-    if (num > 0) {			/* if I can delete anything */
-	if (VImode) {
-	    kp = UndoBuf;		/* Set Up for VI undo command */
-	    UndoAction = TCSHOP_INSERT;
-	    UndoSize = num;
-	    UndoPtr  = Cursor - num;
-	    for (cp = Cursor - num; cp <= LastChar; cp++) {
-		*kp++ = *cp;
-		*cp = cp[num];
-	    }
-	}
-	else
-	    for (cp = Cursor - num; cp + num <= LastChar; cp++)
-		*cp = cp[num];
-	LastChar -= num;
-	Cursor -= num;
-	/* Mark was within the range of the deleted word? */
-	if (Mark && Mark > Cursor && Mark <= Cursor+num)
-		Mark = Cursor;
-	/* Mark after the deleted word? */
-	else if (Mark && Mark > Cursor)
-		Mark -= num;
+    if (num > 0) {
+ if (VImode) {
+     kp = UndoBuf;
+     UndoAction = TCSHOP_INSERT;
+     UndoSize = num;
+     UndoPtr = Cursor - num;
+     for (cp = Cursor - num; cp <= LastChar; cp++) {
+  *kp++ = *cp;
+  *cp = cp[num];
+     }
+ }
+ else
+     for (cp = Cursor - num; cp + num <= LastChar; cp++)
+  *cp = cp[num];
+ LastChar -= num;
+ Cursor -= num;
+
+ if (Mark && Mark > Cursor && Mark <= Cursor+num)
+  Mark = Cursor;
+
+ else if (Mark && Mark > Cursor)
+  Mark -= num;
     }
 }

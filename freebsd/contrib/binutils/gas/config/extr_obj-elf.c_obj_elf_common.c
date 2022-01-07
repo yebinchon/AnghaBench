@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  elf_common_parse ; 
- scalar_t__ flag_mri ; 
- int /*<<< orphan*/  s_comm_internal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  s_mri_common (int /*<<< orphan*/ ) ; 
+ int elf_common_parse ;
+ scalar_t__ flag_mri ;
+ int s_comm_internal (int ,int ) ;
+ int s_mri_common (int ) ;
 
 void
 obj_elf_common (int is_common)

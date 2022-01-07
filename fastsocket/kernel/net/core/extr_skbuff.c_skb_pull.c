@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sk_buff {unsigned int len; } ;
 
-/* Variables and functions */
- unsigned char* __skb_pull (struct sk_buff*,unsigned int) ; 
- scalar_t__ unlikely (int) ; 
+
+ unsigned char* __skb_pull (struct sk_buff*,unsigned int) ;
+ scalar_t__ unlikely (int) ;
 
 unsigned char *skb_pull(struct sk_buff *skb, unsigned int len)
 {
-	return unlikely(len > skb->len) ? NULL : __skb_pull(skb, len);
+ return unlikely(len > skb->len) ? ((void*)0) : __skb_pull(skb, len);
 }

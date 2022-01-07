@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  local_id; } ;
-typedef  TYPE_1__ user ;
-typedef  int /*<<< orphan*/  actual_object ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NOAIO ; 
- size_t PHOTO_TYPE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  check_photo_id (int) ; 
- TYPE_1__* conv_uid_get (int) ; 
- scalar_t__ debug_error ; 
- char* event_to_array (int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ ,int) ; 
- int get_fields (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  index_mode ; 
- int /*<<< orphan*/  load_user_metafile (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  return_fields ; 
- int /*<<< orphan*/ * types ; 
- scalar_t__ user_get_photo (TYPE_1__*,int,int const,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  user_loaded (TYPE_1__*) ; 
- int /*<<< orphan*/  write_only ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int local_id; } ;
+typedef TYPE_1__ user ;
+typedef int actual_object ;
+
+
+ int NOAIO ;
+ size_t PHOTO_TYPE ;
+ int assert (int) ;
+ int check_photo_id (int) ;
+ TYPE_1__* conv_uid_get (int) ;
+ scalar_t__ debug_error ;
+ char* event_to_array (int *,size_t,int ,int) ;
+ int get_fields (int *,char*) ;
+ int index_mode ;
+ int load_user_metafile (TYPE_1__*,int ,int ) ;
+ int return_fields ;
+ int * types ;
+ scalar_t__ user_get_photo (TYPE_1__*,int,int const,int *) ;
+ int user_loaded (TYPE_1__*) ;
+ int write_only ;
 
 int get_photo (int uid, int pid, const int force, char *fields, char **result) {
   assert (!index_mode && !write_only);
@@ -38,7 +38,7 @@ int get_photo (int uid, int pid, const int force, char *fields, char **result) {
   user *u = conv_uid_get (uid);
   int fields_n = get_fields (&types[PHOTO_TYPE], fields);
 
-  if (u == NULL || fields_n < 0 || !check_photo_id (pid)) {
+  if (u == ((void*)0) || fields_n < 0 || !check_photo_id (pid)) {
     return 0;
   }
 

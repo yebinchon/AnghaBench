@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ _gettemp (int,char*,int*,int /*<<< orphan*/ ,int,int) ; 
+ scalar_t__ _gettemp (int,char*,int*,int ,int,int) ;
 
 int
 mkostempsat(int dfd, char *path, int slen, int oflags)
 {
-	int fd;
+ int fd;
 
-	return (_gettemp(dfd, path, &fd, 0, slen, oflags) ? fd : -1);
+ return (_gettemp(dfd, path, &fd, 0, slen, oflags) ? fd : -1);
 }

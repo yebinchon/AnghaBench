@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/ * pb; TYPE_2__* priv_data; } ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int * pb; TYPE_2__* priv_data; } ;
 struct TYPE_11__ {scalar_t__ start_time; TYPE_1__* codecpar; } ;
 struct TYPE_10__ {void* out_size; } ;
-struct TYPE_9__ {long long channels; long long sample_rate; int /*<<< orphan*/  bit_rate; int /*<<< orphan*/  codec_id; int /*<<< orphan*/  codec_type; } ;
-typedef  TYPE_2__ MaxisXADemuxContext ;
-typedef  TYPE_3__ AVStream ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_4__ AVFormatContext ;
+struct TYPE_9__ {long long channels; long long sample_rate; int bit_rate; int codec_id; int codec_type; } ;
+typedef TYPE_2__ MaxisXADemuxContext ;
+typedef TYPE_3__ AVStream ;
+typedef int AVIOContext ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_AUDIO ; 
- int /*<<< orphan*/  AV_CODEC_ID_ADPCM_EA_MAXIS_XA ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  INT_MAX ; 
- int /*<<< orphan*/  av_clip (long long,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_3__* avformat_new_stream (TYPE_4__*,int /*<<< orphan*/ *) ; 
- long long avio_rl16 (int /*<<< orphan*/ *) ; 
- void* avio_rl32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avpriv_set_pts_info (TYPE_3__*,int,int,long long) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVMEDIA_TYPE_AUDIO ;
+ int AV_CODEC_ID_ADPCM_EA_MAXIS_XA ;
+ int ENOMEM ;
+ int INT_MAX ;
+ int av_clip (long long,int ,int ) ;
+ TYPE_3__* avformat_new_stream (TYPE_4__*,int *) ;
+ long long avio_rl16 (int *) ;
+ void* avio_rl32 (int *) ;
+ int avio_skip (int *,int) ;
+ int avpriv_set_pts_info (TYPE_3__*,int,int,long long) ;
 
 __attribute__((used)) static int xa_read_header(AVFormatContext *s)
 {
@@ -43,21 +43,21 @@ __attribute__((used)) static int xa_read_header(AVFormatContext *s)
     AVIOContext *pb = s->pb;
     AVStream *st;
 
-    /*Set up the XA Audio Decoder*/
-    st = avformat_new_stream(s, NULL);
+
+    st = avformat_new_stream(s, ((void*)0));
     if (!st)
         return AVERROR(ENOMEM);
 
-    st->codecpar->codec_type   = AVMEDIA_TYPE_AUDIO;
-    st->codecpar->codec_id     = AV_CODEC_ID_ADPCM_EA_MAXIS_XA;
-    avio_skip(pb, 4);       /* Skip the XA ID */
-    xa->out_size            =  avio_rl32(pb);
-    avio_skip(pb, 2);       /* Skip the tag */
-    st->codecpar->channels     = avio_rl16(pb);
-    st->codecpar->sample_rate  = avio_rl32(pb);
-    avio_skip(pb, 4);       /* Skip average byte rate */
-    avio_skip(pb, 2);       /* Skip block align */
-    avio_skip(pb, 2);       /* Skip bits-per-sample */
+    st->codecpar->codec_type = AVMEDIA_TYPE_AUDIO;
+    st->codecpar->codec_id = AV_CODEC_ID_ADPCM_EA_MAXIS_XA;
+    avio_skip(pb, 4);
+    xa->out_size = avio_rl32(pb);
+    avio_skip(pb, 2);
+    st->codecpar->channels = avio_rl16(pb);
+    st->codecpar->sample_rate = avio_rl32(pb);
+    avio_skip(pb, 4);
+    avio_skip(pb, 2);
+    avio_skip(pb, 2);
 
     if (!st->codecpar->channels || !st->codecpar->sample_rate)
         return AVERROR_INVALIDDATA;

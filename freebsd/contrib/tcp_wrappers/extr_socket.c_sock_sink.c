@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr_storage {int dummy; } ;
 struct sockaddr_in {int dummy; } ;
 struct sockaddr {int dummy; } ;
-typedef  int /*<<< orphan*/  sin ;
-typedef  int /*<<< orphan*/  buf ;
+typedef int sin ;
+typedef int buf ;
 
-/* Variables and functions */
- int BUFSIZ ; 
- int /*<<< orphan*/  recvfrom (int,char*,int,int /*<<< orphan*/ ,struct sockaddr*,int*) ; 
+
+ int BUFSIZ ;
+ int recvfrom (int,char*,int,int ,struct sockaddr*,int*) ;
 
 __attribute__((used)) static void sock_sink(int fd)
 {
-    char    buf[BUFSIZ];
-#ifdef INET6
-    struct sockaddr_storage sin;
-#else
-    struct sockaddr_in sin;
-#endif
-    int     size = sizeof(sin);
+    char buf[BUFSIZ];
 
-    /*
-     * Eat up the not-yet received datagram. Some systems insist on a
-     * non-zero source address argument in the recvfrom() call below.
-     */
+
+
+    struct sockaddr_in sin;
+
+    int size = sizeof(sin);
+
+
+
+
+
 
     (void) recvfrom(fd, buf, sizeof(buf), 0, (struct sockaddr *) & sin, &size);
 }

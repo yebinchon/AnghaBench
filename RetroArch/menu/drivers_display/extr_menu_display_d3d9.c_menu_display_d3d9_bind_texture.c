@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ texture; } ;
-typedef  TYPE_1__ menu_display_ctx_draw_t ;
-struct TYPE_6__ {int /*<<< orphan*/  dev; } ;
-typedef  TYPE_2__ d3d9_video_t ;
-typedef  int /*<<< orphan*/  LPDIRECT3DTEXTURE9 ;
-typedef  int /*<<< orphan*/  LPDIRECT3DDEVICE9 ;
+typedef TYPE_1__ menu_display_ctx_draw_t ;
+struct TYPE_6__ {int dev; } ;
+typedef TYPE_2__ d3d9_video_t ;
+typedef int LPDIRECT3DTEXTURE9 ;
+typedef int LPDIRECT3DDEVICE9 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DTADDRESS_COMM_CLAMP ; 
- int /*<<< orphan*/  D3DTEXF_COMM_LINEAR ; 
- int /*<<< orphan*/  d3d9_set_sampler_address_u (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  d3d9_set_sampler_address_v (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  d3d9_set_sampler_magfilter (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  d3d9_set_sampler_minfilter (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  d3d9_set_sampler_mipfilter (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  d3d9_set_texture (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int D3DTADDRESS_COMM_CLAMP ;
+ int D3DTEXF_COMM_LINEAR ;
+ int d3d9_set_sampler_address_u (int ,int ,int ) ;
+ int d3d9_set_sampler_address_v (int ,int ,int ) ;
+ int d3d9_set_sampler_magfilter (int ,int ,int ) ;
+ int d3d9_set_sampler_minfilter (int ,int ,int ) ;
+ int d3d9_set_sampler_mipfilter (int ,int ,int ) ;
+ int d3d9_set_texture (int ,int ,int ) ;
 
 __attribute__((used)) static void menu_display_d3d9_bind_texture(menu_display_ctx_draw_t *draw,
       d3d9_video_t *d3d)

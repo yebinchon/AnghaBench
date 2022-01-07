@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  unw_word ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UNW_DEC_RESTORE_P (int /*<<< orphan*/ ,unsigned char,int /*<<< orphan*/ ,unsigned char,void*) ; 
- int /*<<< orphan*/  UNW_DEC_SPILL_REG_P (int /*<<< orphan*/ ,unsigned char,int /*<<< orphan*/ ,unsigned char,unsigned char,unsigned char,void*) ; 
- int /*<<< orphan*/  X4 ; 
- int /*<<< orphan*/  unw_decode_uleb128 (unsigned char**) ; 
+
+
+
+typedef int unw_word ;
+
+
+ int UNW_DEC_RESTORE_P (int ,unsigned char,int ,unsigned char,void*) ;
+ int UNW_DEC_SPILL_REG_P (int ,unsigned char,int ,unsigned char,unsigned char,unsigned char,void*) ;
+ int X4 ;
+ int unw_decode_uleb128 (unsigned char**) ;
 
 __attribute__((used)) static unsigned char *
 unw_decode_x4 (unsigned char *dp, unsigned char code, void *arg)

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct fb_baton {int /*<<< orphan*/  cb_baton; int /*<<< orphan*/  (* provide_base_cb ) (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_file_del_on_pool_cleanup ; 
- int /*<<< orphan*/  svn_stream_copy3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_open_unique (int /*<<< orphan*/ **,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_stream_t ;
+typedef int svn_revnum_t ;
+typedef int svn_error_t ;
+struct fb_baton {int cb_baton; int (* provide_base_cb ) (int **,int *,int ,char const*,int *,int *) ;} ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ char* apr_pstrdup (int *,char const*) ;
+ int stub1 (int **,int *,int ,char const*,int *,int *) ;
+ int svn_io_file_del_on_pool_cleanup ;
+ int svn_stream_copy3 (int *,int *,int *,int *,int *) ;
+ int svn_stream_open_unique (int **,char const**,int *,int ,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 fetch_base(const char **filename,
@@ -39,15 +39,15 @@ fetch_base(const char **filename,
   svn_stream_t *file_stream;
   const char *tmp_filename;
 
-  /* Ignored: BASE_REVISION.  */
+
 
   SVN_ERR(fbb->provide_base_cb(&contents, &unused_revision, fbb->cb_baton,
                                repos_relpath, result_pool, scratch_pool));
 
-  SVN_ERR(svn_stream_open_unique(&file_stream, &tmp_filename, NULL,
+  SVN_ERR(svn_stream_open_unique(&file_stream, &tmp_filename, ((void*)0),
                                  svn_io_file_del_on_pool_cleanup,
                                  scratch_pool, scratch_pool));
-  SVN_ERR(svn_stream_copy3(contents, file_stream, NULL, NULL, scratch_pool));
+  SVN_ERR(svn_stream_copy3(contents, file_stream, ((void*)0), ((void*)0), scratch_pool));
 
   *filename = apr_pstrdup(result_pool, tmp_filename);
 

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct dvb_usb_adapter {TYPE_1__* dev; int /*<<< orphan*/  fe; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct dvb_usb_adapter {TYPE_1__* dev; int fe; } ;
 struct dvb_frontend {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  i2c_adap; } ;
+struct TYPE_2__ {int i2c_adap; } ;
 
-/* Variables and functions */
- int EIO ; 
- int /*<<< orphan*/  d680_dmb_tuner ; 
- struct dvb_frontend* dvb_attach (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mxl5005s_attach ; 
+
+ int EIO ;
+ int d680_dmb_tuner ;
+ struct dvb_frontend* dvb_attach (int ,int ,int *,int *) ;
+ int mxl5005s_attach ;
 
 __attribute__((used)) static int cxusb_d680_dmb_tuner_attach(struct dvb_usb_adapter *adap)
 {
-	struct dvb_frontend *fe;
-	fe = dvb_attach(mxl5005s_attach, adap->fe,
-			&adap->dev->i2c_adap, &d680_dmb_tuner);
-	return (fe == NULL) ? -EIO : 0;
+ struct dvb_frontend *fe;
+ fe = dvb_attach(mxl5005s_attach, adap->fe,
+   &adap->dev->i2c_adap, &d680_dmb_tuner);
+ return (fe == ((void*)0)) ? -EIO : 0;
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  layer_state_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clear_keyboard_but_mods () ; 
- int /*<<< orphan*/  clear_keyboard_but_mods_and_keys () ; 
- int /*<<< orphan*/  dprint (char*) ; 
- int /*<<< orphan*/  dprintln () ; 
- int /*<<< orphan*/  layer_debug () ; 
- int /*<<< orphan*/  layer_state ; 
- int /*<<< orphan*/  layer_state_set_kb (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int layer_state_t ;
+
+
+ int clear_keyboard_but_mods () ;
+ int clear_keyboard_but_mods_and_keys () ;
+ int dprint (char*) ;
+ int dprintln () ;
+ int layer_debug () ;
+ int layer_state ;
+ int layer_state_set_kb (int ) ;
 
 void layer_state_set(layer_state_t state) {
     state = layer_state_set_kb(state);
@@ -29,9 +29,9 @@ void layer_state_set(layer_state_t state) {
     layer_state = state;
     layer_debug();
     dprintln();
-#    ifdef STRICT_LAYER_RELEASE
-    clear_keyboard_but_mods();  // To avoid stuck keys
-#    else
-    clear_keyboard_but_mods_and_keys();  // Don't reset held keys
-#    endif
+
+
+
+    clear_keyboard_but_mods_and_keys();
+
 }

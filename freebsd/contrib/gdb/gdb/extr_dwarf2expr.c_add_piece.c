@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dwarf_expr_piece {int in_reg; int /*<<< orphan*/  size; int /*<<< orphan*/  value; } ;
+
+
+
+
+struct dwarf_expr_piece {int in_reg; int size; int value; } ;
 struct dwarf_expr_context {int num_pieces; struct dwarf_expr_piece* pieces; } ;
-typedef  int /*<<< orphan*/  ULONGEST ;
-typedef  int /*<<< orphan*/  CORE_ADDR ;
+typedef int ULONGEST ;
+typedef int CORE_ADDR ;
 
-/* Variables and functions */
- struct dwarf_expr_piece* xmalloc (int) ; 
- struct dwarf_expr_piece* xrealloc (struct dwarf_expr_piece*,int) ; 
+
+ struct dwarf_expr_piece* xmalloc (int) ;
+ struct dwarf_expr_piece* xrealloc (struct dwarf_expr_piece*,int) ;
 
 __attribute__((used)) static void
 add_piece (struct dwarf_expr_context *ctx,

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ UINT ;
 
-/* Variables and functions */
- int MAX_PATH ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,scalar_t__,char const*) ; 
- scalar_t__ pRtlDetermineDosPathNameType_U (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pRtlMultiByteToUnicodeN (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,char const*,scalar_t__) ; 
- scalar_t__ strlen (char const*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int buffer ;
+typedef int WCHAR ;
+typedef scalar_t__ UINT ;
+
+
+ int MAX_PATH ;
+ int ok (int,char*,scalar_t__,scalar_t__,char const*) ;
+ scalar_t__ pRtlDetermineDosPathNameType_U (int *) ;
+ int pRtlMultiByteToUnicodeN (int *,int,int *,char const*,scalar_t__) ;
+ scalar_t__ strlen (char const*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_RtlDetermineDosPathNameType_U(void)
 {
@@ -60,7 +60,7 @@ __attribute__((used)) static void test_RtlDetermineDosPathNameType_U(void)
         { "//.foo", 1 },
         { "\\\\.", 7 },
         { "//.", 7 },
-        { NULL, 0 }
+        { ((void*)0), 0 }
     };
 
     const struct test *test;
@@ -75,7 +75,7 @@ __attribute__((used)) static void test_RtlDetermineDosPathNameType_U(void)
 
     for (test = tests; test->path; test++)
     {
-        pRtlMultiByteToUnicodeN( buffer, sizeof(buffer), NULL, test->path, strlen(test->path)+1 );
+        pRtlMultiByteToUnicodeN( buffer, sizeof(buffer), ((void*)0), test->path, strlen(test->path)+1 );
         ret = pRtlDetermineDosPathNameType_U( buffer );
         ok( ret == test->ret, "Wrong result %d/%d for %s\n", ret, test->ret, test->path );
     }

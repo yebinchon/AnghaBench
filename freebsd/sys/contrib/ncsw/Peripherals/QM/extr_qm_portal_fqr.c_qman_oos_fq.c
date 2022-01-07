@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-struct TYPE_7__ {int /*<<< orphan*/  p_LowQmPortal; } ;
-typedef  TYPE_2__ t_QmPortal ;
-typedef  int /*<<< orphan*/  t_Error ;
-struct qman_fq {scalar_t__ state; int flags; int /*<<< orphan*/  fqid; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+struct TYPE_7__ {int p_LowQmPortal; } ;
+typedef TYPE_2__ t_QmPortal ;
+typedef int t_Error ;
+struct qman_fq {scalar_t__ state; int flags; int fqid; } ;
 struct qm_mc_result {int verb; scalar_t__ result; } ;
-struct TYPE_6__ {int /*<<< orphan*/  fqid; } ;
+struct TYPE_6__ {int fqid; } ;
 struct qm_mc_command {TYPE_1__ alterfq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_COND (int) ; 
- int /*<<< orphan*/  ERROR_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_BUSY ; 
- int /*<<< orphan*/  E_INVALID_STATE ; 
- int /*<<< orphan*/  E_INVALID_VALUE ; 
- int /*<<< orphan*/  E_OK ; 
- int /*<<< orphan*/  FQLOCK (struct qman_fq*) ; 
- int /*<<< orphan*/  FQUNLOCK (struct qman_fq*) ; 
- int /*<<< orphan*/  MINOR ; 
- int /*<<< orphan*/  NCSW_PLOCK (TYPE_2__*) ; 
- int /*<<< orphan*/  PUNLOCK (TYPE_2__*) ; 
- int QMAN_FQ_FLAG_NO_MODIFY ; 
- int QMAN_FQ_STATE_BLOCKOOS ; 
- int /*<<< orphan*/  QM_MCC_VERB_ALTER_OOS ; 
- scalar_t__ QM_MCR_RESULT_OK ; 
- int QM_MCR_VERB_ALTER_OOS ; 
- int QM_MCR_VERB_MASK ; 
- int /*<<< orphan*/  RETURN_ERROR (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mcr_result_str (scalar_t__) ; 
- int /*<<< orphan*/  qm_mc_commit (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct qm_mc_result* qm_mc_result (int /*<<< orphan*/ ) ; 
- struct qm_mc_command* qm_mc_start (int /*<<< orphan*/ ) ; 
- scalar_t__ qman_fq_state_oos ; 
- scalar_t__ qman_fq_state_retired ; 
+
+ int ASSERT_COND (int) ;
+ int ERROR_CODE (int ) ;
+ int E_BUSY ;
+ int E_INVALID_STATE ;
+ int E_INVALID_VALUE ;
+ int E_OK ;
+ int FQLOCK (struct qman_fq*) ;
+ int FQUNLOCK (struct qman_fq*) ;
+ int MINOR ;
+ int NCSW_PLOCK (TYPE_2__*) ;
+ int PUNLOCK (TYPE_2__*) ;
+ int QMAN_FQ_FLAG_NO_MODIFY ;
+ int QMAN_FQ_STATE_BLOCKOOS ;
+ int QM_MCC_VERB_ALTER_OOS ;
+ scalar_t__ QM_MCR_RESULT_OK ;
+ int QM_MCR_VERB_ALTER_OOS ;
+ int QM_MCR_VERB_MASK ;
+ int RETURN_ERROR (int ,int ,char*) ;
+ int mcr_result_str (scalar_t__) ;
+ int qm_mc_commit (int ,int ) ;
+ struct qm_mc_result* qm_mc_result (int ) ;
+ struct qm_mc_command* qm_mc_start (int ) ;
+ scalar_t__ qman_fq_state_oos ;
+ scalar_t__ qman_fq_state_retired ;
 
 __attribute__((used)) static t_Error qman_oos_fq(t_QmPortal *p_QmPortal, struct qman_fq *p_Fq)
 {
-    struct qm_mc_command    *p_Mcc;
-    struct qm_mc_result     *p_Mcr;
-    uint8_t                 res;
+    struct qm_mc_command *p_Mcc;
+    struct qm_mc_result *p_Mcr;
+    uint8_t res;
 
     ASSERT_COND(p_Fq->state == qman_fq_state_retired);
     if (p_Fq->flags & QMAN_FQ_FLAG_NO_MODIFY)

@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * UnlockMutexPtr; int /*<<< orphan*/ * LockMutexPtr; int /*<<< orphan*/ * DestroyMutexPtr; int /*<<< orphan*/ * CreateMutexPtr; } ;
-typedef  TYPE_1__ cmsPluginMutex ;
-typedef  int /*<<< orphan*/  cmsPluginBase ;
-typedef  int /*<<< orphan*/  cmsContext ;
-typedef  int /*<<< orphan*/  cmsBool ;
-struct TYPE_4__ {int /*<<< orphan*/ * UnlockMutexPtr; int /*<<< orphan*/ * LockMutexPtr; int /*<<< orphan*/ * DestroyMutexPtr; int /*<<< orphan*/ * CreateMutexPtr; } ;
-typedef  TYPE_2__ _cmsMutexPluginChunkType ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  MutexPlugin ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ _cmsContextGetClientChunk (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
 
-cmsBool  _cmsRegisterMutexPlugin(cmsContext ContextID, cmsPluginBase* Data)
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * UnlockMutexPtr; int * LockMutexPtr; int * DestroyMutexPtr; int * CreateMutexPtr; } ;
+typedef TYPE_1__ cmsPluginMutex ;
+typedef int cmsPluginBase ;
+typedef int cmsContext ;
+typedef int cmsBool ;
+struct TYPE_4__ {int * UnlockMutexPtr; int * LockMutexPtr; int * DestroyMutexPtr; int * CreateMutexPtr; } ;
+typedef TYPE_2__ _cmsMutexPluginChunkType ;
+
+
+ int FALSE ;
+ int MutexPlugin ;
+ int TRUE ;
+ scalar_t__ _cmsContextGetClientChunk (int ,int ) ;
+
+cmsBool _cmsRegisterMutexPlugin(cmsContext ContextID, cmsPluginBase* Data)
 {
     cmsPluginMutex* Plugin = (cmsPluginMutex*) Data;
     _cmsMutexPluginChunkType* ctx = ( _cmsMutexPluginChunkType*) _cmsContextGetClientChunk(ContextID, MutexPlugin);
 
-    if (Data == NULL) {
+    if (Data == ((void*)0)) {
 
-        // No lock routines
-        ctx->CreateMutexPtr = NULL;
-        ctx->DestroyMutexPtr = NULL;
-        ctx->LockMutexPtr = NULL;
-        ctx ->UnlockMutexPtr = NULL;
+
+        ctx->CreateMutexPtr = ((void*)0);
+        ctx->DestroyMutexPtr = ((void*)0);
+        ctx->LockMutexPtr = ((void*)0);
+        ctx ->UnlockMutexPtr = ((void*)0);
         return TRUE;
     }
 
-    // Factory callback is required
-    if (Plugin ->CreateMutexPtr == NULL || Plugin ->DestroyMutexPtr == NULL ||
-        Plugin ->LockMutexPtr == NULL || Plugin ->UnlockMutexPtr == NULL) return FALSE;
+
+    if (Plugin ->CreateMutexPtr == ((void*)0) || Plugin ->DestroyMutexPtr == ((void*)0) ||
+        Plugin ->LockMutexPtr == ((void*)0) || Plugin ->UnlockMutexPtr == ((void*)0)) return FALSE;
 
 
-    ctx->CreateMutexPtr  = Plugin->CreateMutexPtr;
+    ctx->CreateMutexPtr = Plugin->CreateMutexPtr;
     ctx->DestroyMutexPtr = Plugin ->DestroyMutexPtr;
-    ctx ->LockMutexPtr   = Plugin ->LockMutexPtr;
+    ctx ->LockMutexPtr = Plugin ->LockMutexPtr;
     ctx ->UnlockMutexPtr = Plugin ->UnlockMutexPtr;
 
-    // All is ok
+
     return TRUE;
 }

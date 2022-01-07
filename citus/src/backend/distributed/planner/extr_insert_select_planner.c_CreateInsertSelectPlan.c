@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64 ;
-struct TYPE_5__ {int /*<<< orphan*/ * planningError; } ;
-typedef  int /*<<< orphan*/  Query ;
-typedef  int /*<<< orphan*/  PlannerRestrictionContext ;
-typedef  TYPE_1__ DistributedPlan ;
-typedef  int /*<<< orphan*/  DeferredErrorMessage ;
 
-/* Variables and functions */
- TYPE_1__* CreateCoordinatorInsertSelectPlan (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_1__* CreateDistributedInsertSelectPlan (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DEBUG1 ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/ * ErrorIfOnConflictNotSupported (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RaiseDeferredError (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint64 ;
+struct TYPE_5__ {int * planningError; } ;
+typedef int Query ;
+typedef int PlannerRestrictionContext ;
+typedef TYPE_1__ DistributedPlan ;
+typedef int DeferredErrorMessage ;
+
+
+ TYPE_1__* CreateCoordinatorInsertSelectPlan (int ,int *) ;
+ TYPE_1__* CreateDistributedInsertSelectPlan (int *,int *) ;
+ int DEBUG1 ;
+ int ERROR ;
+ int * ErrorIfOnConflictNotSupported (int *) ;
+ int RaiseDeferredError (int *,int ) ;
 
 DistributedPlan *
 CreateInsertSelectPlan(uint64 planId, Query *originalQuery,
-					   PlannerRestrictionContext *plannerRestrictionContext)
+        PlannerRestrictionContext *plannerRestrictionContext)
 {
-	DistributedPlan *distributedPlan = NULL;
-	DeferredErrorMessage *deferredError = NULL;
+ DistributedPlan *distributedPlan = ((void*)0);
+ DeferredErrorMessage *deferredError = ((void*)0);
 
-	deferredError = ErrorIfOnConflictNotSupported(originalQuery);
-	if (deferredError != NULL)
-	{
-		/* raising the error as there is no possible solution for the unsupported on conflict statements */
-		RaiseDeferredError(deferredError, ERROR);
-	}
+ deferredError = ErrorIfOnConflictNotSupported(originalQuery);
+ if (deferredError != ((void*)0))
+ {
 
-	distributedPlan = CreateDistributedInsertSelectPlan(originalQuery,
-														plannerRestrictionContext);
+  RaiseDeferredError(deferredError, ERROR);
+ }
 
-	if (distributedPlan->planningError != NULL)
-	{
-		RaiseDeferredError(distributedPlan->planningError, DEBUG1);
+ distributedPlan = CreateDistributedInsertSelectPlan(originalQuery,
+              plannerRestrictionContext);
 
-		/* if INSERT..SELECT cannot be distributed, pull to coordinator */
-		distributedPlan = CreateCoordinatorInsertSelectPlan(planId, originalQuery);
-	}
+ if (distributedPlan->planningError != ((void*)0))
+ {
+  RaiseDeferredError(distributedPlan->planningError, DEBUG1);
 
-	return distributedPlan;
+
+  distributedPlan = CreateCoordinatorInsertSelectPlan(planId, originalQuery);
+ }
+
+ return distributedPlan;
 }

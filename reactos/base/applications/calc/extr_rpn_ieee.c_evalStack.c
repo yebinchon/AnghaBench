@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_8__ ;
-typedef  struct TYPE_10__   TYPE_7__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  calc_number_t ;
-struct TYPE_9__ {size_t operation; int /*<<< orphan*/  number; } ;
-typedef  TYPE_1__ calc_node_t ;
-struct TYPE_11__ {size_t prev_operator; scalar_t__ is_nan; int /*<<< orphan*/  prev; } ;
+
+
+typedef struct TYPE_11__ TYPE_8__ ;
+typedef struct TYPE_10__ TYPE_7__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int calc_number_t ;
+struct TYPE_9__ {size_t operation; int number; } ;
+typedef TYPE_1__ calc_node_t ;
+struct TYPE_11__ {size_t prev_operator; scalar_t__ is_nan; int prev; } ;
 struct TYPE_10__ {unsigned int prec; } ;
 
-/* Variables and functions */
- size_t RPN_OPERATOR_EQUAL ; 
- size_t RPN_OPERATOR_PARENT ; 
- size_t RPN_OPERATOR_PERCENT ; 
- TYPE_8__ calc ; 
- int /*<<< orphan*/  flush_postfix () ; 
- int /*<<< orphan*/  is_stack_empty () ; 
- TYPE_7__* operator_list ; 
- TYPE_1__* pop () ; 
- int /*<<< orphan*/  push (TYPE_1__*) ; 
- int /*<<< orphan*/  run_operator (TYPE_1__*,TYPE_1__*,TYPE_1__*,size_t) ; 
+
+ size_t RPN_OPERATOR_EQUAL ;
+ size_t RPN_OPERATOR_PARENT ;
+ size_t RPN_OPERATOR_PERCENT ;
+ TYPE_8__ calc ;
+ int flush_postfix () ;
+ int is_stack_empty () ;
+ TYPE_7__* operator_list ;
+ TYPE_1__* pop () ;
+ int push (TYPE_1__*) ;
+ int run_operator (TYPE_1__*,TYPE_1__*,TYPE_1__*,size_t) ;
 
 __attribute__((used)) static void evalStack(calc_number_t *number)
 {

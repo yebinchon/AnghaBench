@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct frame {int /*<<< orphan*/  head; scalar_t__ flags; int /*<<< orphan*/ * r_skb; int /*<<< orphan*/ * bv; scalar_t__ lba; int /*<<< orphan*/ * buf; struct aoetgt* t; } ;
-struct aoetgt {int /*<<< orphan*/  ffree; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  list_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct frame {int head; scalar_t__ flags; int * r_skb; int * bv; scalar_t__ lba; int * buf; struct aoetgt* t; } ;
+struct aoetgt {int ffree; } ;
+
+
+ int list_add (int *,int *) ;
 
 void
 aoe_freetframe(struct frame *f)
 {
-	struct aoetgt *t;
+ struct aoetgt *t;
 
-	t = f->t;
-	f->buf = NULL;
-	f->lba = 0;
-	f->bv = NULL;
-	f->r_skb = NULL;
-	f->flags = 0;
-	list_add(&f->head, &t->ffree);
+ t = f->t;
+ f->buf = ((void*)0);
+ f->lba = 0;
+ f->bv = ((void*)0);
+ f->r_skb = ((void*)0);
+ f->flags = 0;
+ list_add(&f->head, &t->ffree);
 }

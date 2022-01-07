@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  obs_data_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  S_RESOLUTION ; 
- int /*<<< orphan*/  S_SAMPLING ; 
- int /*<<< orphan*/  S_SAMPLING_BICUBIC ; 
- int /*<<< orphan*/  S_UNDISTORT ; 
- int /*<<< orphan*/  T_NONE ; 
- int /*<<< orphan*/  obs_data_set_default_bool (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  obs_data_set_default_string (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int obs_data_t ;
+
+
+ int S_RESOLUTION ;
+ int S_SAMPLING ;
+ int S_SAMPLING_BICUBIC ;
+ int S_UNDISTORT ;
+ int T_NONE ;
+ int obs_data_set_default_bool (int *,int ,int ) ;
+ int obs_data_set_default_string (int *,int ,int ) ;
 
 __attribute__((used)) static void scale_filter_defaults(obs_data_t *settings)
 {
-	obs_data_set_default_string(settings, S_SAMPLING, S_SAMPLING_BICUBIC);
-	obs_data_set_default_string(settings, S_RESOLUTION, T_NONE);
-	obs_data_set_default_bool(settings, S_UNDISTORT, 0);
+ obs_data_set_default_string(settings, S_SAMPLING, S_SAMPLING_BICUBIC);
+ obs_data_set_default_string(settings, S_RESOLUTION, T_NONE);
+ obs_data_set_default_bool(settings, S_UNDISTORT, 0);
 }

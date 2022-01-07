@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
-typedef  struct TYPE_12__   TYPE_11__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int nb_samples; int channels; int /*<<< orphan*/  allocated_samples; scalar_t__* data; scalar_t__ allow_realloc; int /*<<< orphan*/  read_only; } ;
+
+
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+typedef struct TYPE_12__ TYPE_11__ ;
+
+
+struct TYPE_14__ {int nb_samples; int channels; int allocated_samples; scalar_t__* data; scalar_t__ allow_realloc; int read_only; } ;
 struct TYPE_13__ {scalar_t__ compensation_distance; int filter_length; scalar_t__ phase_shift; int final_padding_samples; int initial_padding_filled; int padding_size; int final_padding_filled; int initial_padding_samples; TYPE_2__* buffer; TYPE_11__* avr; } ;
-struct TYPE_12__ {int /*<<< orphan*/  internal_sample_fmt; } ;
-typedef  TYPE_1__ ResampleContext ;
-typedef  TYPE_2__ AudioData ;
+struct TYPE_12__ {int internal_sample_fmt; } ;
+typedef TYPE_1__ ResampleContext ;
+typedef TYPE_2__ AudioData ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_TRACE ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFMAX (int,int) ; 
- int /*<<< orphan*/  INT_MAX ; 
- int av_get_bytes_per_sample (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_11__*,int /*<<< orphan*/ ,char*,...) ; 
- int ff_audio_data_combine (TYPE_2__*,int,TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ff_audio_data_drain (TYPE_2__*,int) ; 
- int ff_audio_data_realloc (TYPE_2__*,int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  memset (scalar_t__,int /*<<< orphan*/ ,int) ; 
- int resample (TYPE_1__*,void*,void const*,int*,int,int /*<<< orphan*/ ,int,int) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_TRACE ;
+ int EINVAL ;
+ int ENOMEM ;
+ int FFMAX (int,int) ;
+ int INT_MAX ;
+ int av_get_bytes_per_sample (int ) ;
+ int av_log (TYPE_11__*,int ,char*,...) ;
+ int ff_audio_data_combine (TYPE_2__*,int,TYPE_2__*,int ,int) ;
+ int ff_audio_data_drain (TYPE_2__*,int) ;
+ int ff_audio_data_realloc (TYPE_2__*,int) ;
+ int memcpy (scalar_t__,scalar_t__,int) ;
+ int memset (scalar_t__,int ,int) ;
+ int resample (TYPE_1__*,void*,void const*,int*,int,int ,int,int) ;
 
 int ff_audio_resample(ResampleContext *c, AudioData *dst, AudioData *src)
 {
@@ -44,16 +44,16 @@ int ff_audio_resample(ResampleContext *c, AudioData *dst, AudioData *src)
                              c->filter_length == 1 &&
                              c->phase_shift == 0);
 
-    in_samples  = src ? src->nb_samples : 0;
+    in_samples = src ? src->nb_samples : 0;
     in_leftover = c->buffer->nb_samples;
 
-    /* add input samples to the internal buffer */
+
     if (src) {
         ret = ff_audio_data_combine(c->buffer, in_leftover, src, 0, in_samples);
         if (ret < 0)
             return ret;
     } else if (in_leftover <= c->final_padding_samples) {
-        /* no remaining samples to flush */
+
         return 0;
     }
 
@@ -99,16 +99,16 @@ int ff_audio_resample(ResampleContext *c, AudioData *dst, AudioData *src)
                            0, bps);
                 }
             }
-        c->buffer->nb_samples   += c->padding_size;
+        c->buffer->nb_samples += c->padding_size;
         c->final_padding_samples = c->padding_size;
-        c->final_padding_filled  = 1;
+        c->final_padding_filled = 1;
     }
 
 
-    /* calculate output size and reallocate output buffer if needed */
-    /* TODO: try to calculate this without the dummy resample() run */
+
+
     if (!dst->read_only && dst->allow_realloc) {
-        out_samples = resample(c, NULL, NULL, NULL, c->buffer->nb_samples,
+        out_samples = resample(c, ((void*)0), ((void*)0), ((void*)0), c->buffer->nb_samples,
                                INT_MAX, 0, nearest_neighbour);
         ret = ff_audio_data_realloc(dst, out_samples);
         if (ret < 0) {
@@ -117,7 +117,7 @@ int ff_audio_resample(ResampleContext *c, AudioData *dst, AudioData *src)
         }
     }
 
-    /* resample each channel plane */
+
     for (ch = 0; ch < c->buffer->channels; ch++) {
         out_samples = resample(c, (void *)dst->data[ch],
                                (const void *)c->buffer->data[ch], &consumed,
@@ -129,7 +129,7 @@ int ff_audio_resample(ResampleContext *c, AudioData *dst, AudioData *src)
         return out_samples;
     }
 
-    /* drain consumed samples from the internal buffer */
+
     ff_audio_data_drain(c->buffer, consumed);
     c->initial_padding_samples = FFMAX(c->initial_padding_samples - consumed, 0);
 

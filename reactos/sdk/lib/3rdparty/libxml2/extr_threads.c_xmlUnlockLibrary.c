@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  xmlGenericError (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  xmlGenericErrorContext ; 
- int /*<<< orphan*/  xmlLibraryLock ; 
- int /*<<< orphan*/  xmlRMutexUnlock (int /*<<< orphan*/ ) ; 
+ int xmlGenericError (int ,char*) ;
+ int xmlGenericErrorContext ;
+ int xmlLibraryLock ;
+ int xmlRMutexUnlock (int ) ;
 
 void
 xmlUnlockLibrary(void)
 {
-#ifdef DEBUG_THREADS
-    xmlGenericError(xmlGenericErrorContext, "xmlUnlockLibrary()\n");
-#endif
+
+
+
     xmlRMutexUnlock(xmlLibraryLock);
 }

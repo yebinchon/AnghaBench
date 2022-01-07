@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  nChannels; } ;
-typedef  TYPE_1__ WAVEFORMATEX ;
-typedef  int /*<<< orphan*/  UINT32 ;
-typedef  int /*<<< orphan*/  ISimpleAudioVolume ;
-typedef  int /*<<< orphan*/  IChannelAudioVolume ;
-typedef  int /*<<< orphan*/  IAudioStreamVolume ;
-typedef  int /*<<< orphan*/  IAudioClient ;
-typedef  float HRESULT ;
-typedef  int /*<<< orphan*/  GUID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AUDCLNT_SHAREMODE_SHARED ; 
- int /*<<< orphan*/  AUDCLNT_STREAMFLAGS_NOPERSIST ; 
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- float CoCreateGuid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CoTaskMemFree (TYPE_1__*) ; 
- float IAudioClient_GetMixFormat (int /*<<< orphan*/ *,TYPE_1__**) ; 
- float IAudioClient_GetService (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- float IAudioClient_Initialize (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IAudioClient_Release (int /*<<< orphan*/ *) ; 
- float IAudioStreamVolume_GetChannelCount (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- float IAudioStreamVolume_GetChannelVolume (int /*<<< orphan*/ *,int /*<<< orphan*/ ,float*) ; 
- int /*<<< orphan*/  IAudioStreamVolume_Release (int /*<<< orphan*/ *) ; 
- float IAudioStreamVolume_SetChannelVolume (int /*<<< orphan*/ *,int /*<<< orphan*/ ,float) ; 
- float IChannelAudioVolume_GetChannelCount (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- float IChannelAudioVolume_GetChannelVolume (int /*<<< orphan*/ *,int /*<<< orphan*/ ,float*) ; 
- int /*<<< orphan*/  IChannelAudioVolume_Release (int /*<<< orphan*/ *) ; 
- float IChannelAudioVolume_SetChannelVolume (int /*<<< orphan*/ *,int /*<<< orphan*/ ,float,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IAudioClient ; 
- int /*<<< orphan*/  IID_IAudioStreamVolume ; 
- int /*<<< orphan*/  IID_IChannelAudioVolume ; 
- int /*<<< orphan*/  IID_ISimpleAudioVolume ; 
- float IMMDevice_Activate (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- float ISimpleAudioVolume_GetMasterVolume (int /*<<< orphan*/ *,float*) ; 
- int /*<<< orphan*/  ISimpleAudioVolume_Release (int /*<<< orphan*/ *) ; 
- float ISimpleAudioVolume_SetMasterVolume (int /*<<< orphan*/ *,float,int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (float) ; 
- float S_OK ; 
- int /*<<< orphan*/  dev ; 
- float fabsf (float) ; 
- int /*<<< orphan*/  ok (int,char*,float,...) ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int nChannels; } ;
+typedef TYPE_1__ WAVEFORMATEX ;
+typedef int UINT32 ;
+typedef int ISimpleAudioVolume ;
+typedef int IChannelAudioVolume ;
+typedef int IAudioStreamVolume ;
+typedef int IAudioClient ;
+typedef float HRESULT ;
+typedef int GUID ;
+
+
+ int AUDCLNT_SHAREMODE_SHARED ;
+ int AUDCLNT_STREAMFLAGS_NOPERSIST ;
+ int CLSCTX_INPROC_SERVER ;
+ float CoCreateGuid (int *) ;
+ int CoTaskMemFree (TYPE_1__*) ;
+ float IAudioClient_GetMixFormat (int *,TYPE_1__**) ;
+ float IAudioClient_GetService (int *,int *,void**) ;
+ float IAudioClient_Initialize (int *,int ,int ,int,int ,TYPE_1__*,int *) ;
+ int IAudioClient_Release (int *) ;
+ float IAudioStreamVolume_GetChannelCount (int *,int *) ;
+ float IAudioStreamVolume_GetChannelVolume (int *,int ,float*) ;
+ int IAudioStreamVolume_Release (int *) ;
+ float IAudioStreamVolume_SetChannelVolume (int *,int ,float) ;
+ float IChannelAudioVolume_GetChannelCount (int *,int *) ;
+ float IChannelAudioVolume_GetChannelVolume (int *,int ,float*) ;
+ int IChannelAudioVolume_Release (int *) ;
+ float IChannelAudioVolume_SetChannelVolume (int *,int ,float,int *) ;
+ int IID_IAudioClient ;
+ int IID_IAudioStreamVolume ;
+ int IID_IChannelAudioVolume ;
+ int IID_ISimpleAudioVolume ;
+ float IMMDevice_Activate (int ,int *,int ,int *,void**) ;
+ float ISimpleAudioVolume_GetMasterVolume (int *,float*) ;
+ int ISimpleAudioVolume_Release (int *) ;
+ float ISimpleAudioVolume_SetMasterVolume (int *,float,int *) ;
+ scalar_t__ SUCCEEDED (float) ;
+ float S_OK ;
+ int dev ;
+ float fabsf (float) ;
+ int ok (int,char*,float,...) ;
+ int skip (char*) ;
 
 __attribute__((used)) static void test_volume_dependence(void)
 {
@@ -70,7 +70,7 @@ __attribute__((used)) static void test_volume_dependence(void)
     ok(hr == S_OK, "CoCreateGuid failed: %08x\n", hr);
 
     hr = IMMDevice_Activate(dev, &IID_IAudioClient, CLSCTX_INPROC_SERVER,
-            NULL, (void**)&ac);
+            ((void*)0), (void**)&ac);
     ok(hr == S_OK, "Activation failed with %08x\n", hr);
     if(hr != S_OK)
         return;
@@ -96,10 +96,10 @@ __attribute__((used)) static void test_volume_dependence(void)
     hr = IAudioStreamVolume_SetChannelVolume(asv, 0, 0.2f);
     ok(hr == S_OK, "ASV_SetChannelVolume failed: %08x\n", hr);
 
-    hr = IChannelAudioVolume_SetChannelVolume(cav, 0, 0.4f, NULL);
+    hr = IChannelAudioVolume_SetChannelVolume(cav, 0, 0.4f, ((void*)0));
     ok(hr == S_OK, "CAV_SetChannelVolume failed: %08x\n", hr);
 
-    hr = ISimpleAudioVolume_SetMasterVolume(sav, 0.6f, NULL);
+    hr = ISimpleAudioVolume_SetMasterVolume(sav, 0.6f, ((void*)0));
     ok(hr == S_OK, "SAV_SetMasterVolume failed: %08x\n", hr);
 
     hr = IAudioStreamVolume_GetChannelVolume(asv, 0, &vol);
@@ -115,7 +115,7 @@ __attribute__((used)) static void test_volume_dependence(void)
     ok(fabsf(vol - 0.6f) < 0.05f, "SAV_GetMasterVolume gave wrong volume: %f\n", vol);
 
     hr = IMMDevice_Activate(dev, &IID_IAudioClient, CLSCTX_INPROC_SERVER,
-            NULL, (void**)&ac2);
+            ((void*)0), (void**)&ac2);
     if(SUCCEEDED(hr)){
         IChannelAudioVolume *cav2;
         IAudioStreamVolume *asv2;
@@ -152,10 +152,10 @@ __attribute__((used)) static void test_volume_dependence(void)
     }else
         skip("Unable to open the same device twice. Skipping session volume control tests\n");
 
-    hr = IChannelAudioVolume_SetChannelVolume(cav, 0, 1.f, NULL);
+    hr = IChannelAudioVolume_SetChannelVolume(cav, 0, 1.f, ((void*)0));
     ok(hr == S_OK, "CAV_SetChannelVolume failed: %08x\n", hr);
 
-    hr = ISimpleAudioVolume_SetMasterVolume(sav, 1.f, NULL);
+    hr = ISimpleAudioVolume_SetMasterVolume(sav, 1.f, ((void*)0));
     ok(hr == S_OK, "SAV_SetMasterVolume failed: %08x\n", hr);
 
     CoTaskMemFree(fmt);

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  statement_list_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- char* PACKAGE_VERSION ; 
- int /*<<< orphan*/  do_header ; 
- int /*<<< orphan*/  end_cplusplus_guard (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  error (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  for_each_serializable (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  header_name ; 
- char* header_token ; 
- char* input_name ; 
- int /*<<< orphan*/  serializable_exists ; 
- int /*<<< orphan*/  start_cplusplus_guard (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_context_handle_rundowns (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_forward_decls (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  write_generic_handle_routines (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_header_stmts (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_imports (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  write_serialize_function_decl ; 
- int /*<<< orphan*/  write_user_types (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int statement_list_t ;
+typedef int FILE ;
+
+
+ int FALSE ;
+ char* PACKAGE_VERSION ;
+ int do_header ;
+ int end_cplusplus_guard (int *) ;
+ int error (char*,int ) ;
+ int fclose (int *) ;
+ int * fopen (int ,char*) ;
+ int for_each_serializable (int const*,int *,int ) ;
+ int fprintf (int *,char*,...) ;
+ int header_name ;
+ char* header_token ;
+ char* input_name ;
+ int serializable_exists ;
+ int start_cplusplus_guard (int *) ;
+ int write_context_handle_rundowns (int *) ;
+ int write_forward_decls (int *,int const*) ;
+ int write_generic_handle_routines (int *) ;
+ int write_header_stmts (int *,int const*,int *,int ) ;
+ int write_imports (int *,int const*) ;
+ int write_serialize_function_decl ;
+ int write_user_types (int *) ;
 
 void write_header(const statement_list_t *stmts)
 {
@@ -59,7 +59,7 @@ void write_header(const statement_list_t *stmts)
 
   fprintf(header, "#include <rpc.h>\n" );
   fprintf(header, "#include <rpcndr.h>\n" );
-  if (!for_each_serializable(stmts, NULL, serializable_exists))
+  if (!for_each_serializable(stmts, ((void*)0), serializable_exists))
     fprintf(header, "#include <midles.h>\n" );
   fprintf(header, "#endif\n\n");
 
@@ -79,7 +79,7 @@ void write_header(const statement_list_t *stmts)
   fprintf(header, "\n");
   start_cplusplus_guard(header);
 
-  write_header_stmts(header, stmts, NULL, FALSE);
+  write_header_stmts(header, stmts, ((void*)0), FALSE);
 
   fprintf(header, "/* Begin additional prototypes for all interfaces */\n");
   fprintf(header, "\n");

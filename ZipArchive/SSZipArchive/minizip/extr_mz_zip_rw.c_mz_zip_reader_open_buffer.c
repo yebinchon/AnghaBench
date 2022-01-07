@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-struct TYPE_2__ {int /*<<< orphan*/  mem_stream; } ;
-typedef  TYPE_1__ mz_zip_reader ;
-typedef  scalar_t__ int32_t ;
 
-/* Variables and functions */
- scalar_t__ MZ_OK ; 
- int /*<<< orphan*/  MZ_OPEN_MODE_CREATE ; 
- int /*<<< orphan*/  MZ_OPEN_MODE_READ ; 
- int /*<<< orphan*/  MZ_SEEK_SET ; 
- int /*<<< orphan*/  mz_stream_mem_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mz_stream_mem_open (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mz_stream_mem_seek (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mz_stream_mem_set_buffer (int /*<<< orphan*/ ,scalar_t__*,scalar_t__) ; 
- int /*<<< orphan*/  mz_stream_mem_set_grow_size (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  mz_stream_mem_write (int /*<<< orphan*/ ,scalar_t__*,scalar_t__) ; 
- int /*<<< orphan*/  mz_zip_reader_close (void*) ; 
- scalar_t__ mz_zip_reader_open (void*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+struct TYPE_2__ {int mem_stream; } ;
+typedef TYPE_1__ mz_zip_reader ;
+typedef scalar_t__ int32_t ;
+
+
+ scalar_t__ MZ_OK ;
+ int MZ_OPEN_MODE_CREATE ;
+ int MZ_OPEN_MODE_READ ;
+ int MZ_SEEK_SET ;
+ int mz_stream_mem_create (int *) ;
+ int mz_stream_mem_open (int ,int *,int ) ;
+ int mz_stream_mem_seek (int ,int ,int ) ;
+ int mz_stream_mem_set_buffer (int ,scalar_t__*,scalar_t__) ;
+ int mz_stream_mem_set_grow_size (int ,scalar_t__) ;
+ int mz_stream_mem_write (int ,scalar_t__*,scalar_t__) ;
+ int mz_zip_reader_close (void*) ;
+ scalar_t__ mz_zip_reader_open (void*,int ) ;
 
 int32_t mz_zip_reader_open_buffer(void *handle, uint8_t *buf, int32_t len, uint8_t copy)
 {
@@ -42,13 +42,13 @@ int32_t mz_zip_reader_open_buffer(void *handle, uint8_t *buf, int32_t len, uint8
     if (copy)
     {
         mz_stream_mem_set_grow_size(reader->mem_stream, len);
-        mz_stream_mem_open(reader->mem_stream, NULL, MZ_OPEN_MODE_CREATE);
+        mz_stream_mem_open(reader->mem_stream, ((void*)0), MZ_OPEN_MODE_CREATE);
         mz_stream_mem_write(reader->mem_stream, buf, len);
         mz_stream_mem_seek(reader->mem_stream, 0, MZ_SEEK_SET);
     }
     else
     {
-        mz_stream_mem_open(reader->mem_stream, NULL, MZ_OPEN_MODE_READ);
+        mz_stream_mem_open(reader->mem_stream, ((void*)0), MZ_OPEN_MODE_READ);
         mz_stream_mem_set_buffer(reader->mem_stream, buf, len);
     }
 

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ token; } ;
-typedef  TYPE_1__ stb_lexer ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ stb_lexer ;
+typedef int FILE ;
 
-/* Variables and functions */
- scalar_t__ CLEX_parse_error ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ fread (char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  print_token (TYPE_1__*) ; 
- int /*<<< orphan*/  printf (char*) ; 
- scalar_t__ stb_c_lexer_get_token (TYPE_1__*) ; 
- int /*<<< orphan*/  stb_c_lexer_init (TYPE_1__*,char*,char*,char*,int) ; 
- int /*<<< orphan*/  stderr ; 
+
+ scalar_t__ CLEX_parse_error ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*) ;
+ scalar_t__ fread (char*,int,int,int *) ;
+ int free (char*) ;
+ scalar_t__ malloc (int) ;
+ int print_token (TYPE_1__*) ;
+ int printf (char*) ;
+ scalar_t__ stb_c_lexer_get_token (TYPE_1__*) ;
+ int stb_c_lexer_init (TYPE_1__*,char*,char*,char*,int) ;
+ int stderr ;
 
 int main(int argc, char **argv)
 {

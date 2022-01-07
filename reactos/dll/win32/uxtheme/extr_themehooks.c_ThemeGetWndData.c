@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WND_DATA ;
-typedef  int /*<<< orphan*/ * PWND_DATA ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- scalar_t__ GetPropW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ MAKEINTATOM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetPropW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atWndContext ; 
+
+
+
+typedef int WND_DATA ;
+typedef int * PWND_DATA ;
+typedef int LPCWSTR ;
+typedef int HWND ;
+
+
+ int GetProcessHeap () ;
+ scalar_t__ GetPropW (int ,int ) ;
+ int HEAP_ZERO_MEMORY ;
+ int * HeapAlloc (int ,int ,int) ;
+ scalar_t__ MAKEINTATOM (int ) ;
+ int SetPropW (int ,int ,int *) ;
+ int atWndContext ;
 
 PWND_DATA ThemeGetWndData(HWND hWnd)
 {
     PWND_DATA pwndData;
 
     pwndData = (PWND_DATA)GetPropW(hWnd, (LPCWSTR)MAKEINTATOM(atWndContext));
-    if(pwndData == NULL)
+    if(pwndData == ((void*)0))
     {
-        pwndData = HeapAlloc(GetProcessHeap(), 
-                            HEAP_ZERO_MEMORY, 
+        pwndData = HeapAlloc(GetProcessHeap(),
+                            HEAP_ZERO_MEMORY,
                             sizeof(WND_DATA));
-        if(pwndData == NULL)
+        if(pwndData == ((void*)0))
         {
-            return NULL;
+            return ((void*)0);
         }
-        
+
         SetPropW( hWnd, (LPCWSTR)MAKEINTATOM(atWndContext), pwndData);
     }
 

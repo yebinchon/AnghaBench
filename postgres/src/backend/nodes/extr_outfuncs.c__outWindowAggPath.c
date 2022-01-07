@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WindowAggPath ;
-typedef  int /*<<< orphan*/  StringInfo ;
-typedef  int /*<<< orphan*/  Path ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WRITE_NODE_FIELD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WRITE_NODE_TYPE (char*) ; 
- int /*<<< orphan*/  _outPathInfo (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  subpath ; 
- int /*<<< orphan*/  winclause ; 
+
+
+
+typedef int WindowAggPath ;
+typedef int StringInfo ;
+typedef int Path ;
+
+
+ int WRITE_NODE_FIELD (int ) ;
+ int WRITE_NODE_TYPE (char*) ;
+ int _outPathInfo (int ,int const*) ;
+ int subpath ;
+ int winclause ;
 
 __attribute__((used)) static void
 _outWindowAggPath(StringInfo str, const WindowAggPath *node)
 {
-	WRITE_NODE_TYPE("WINDOWAGGPATH");
+ WRITE_NODE_TYPE("WINDOWAGGPATH");
 
-	_outPathInfo(str, (const Path *) node);
+ _outPathInfo(str, (const Path *) node);
 
-	WRITE_NODE_FIELD(subpath);
-	WRITE_NODE_FIELD(winclause);
+ WRITE_NODE_FIELD(subpath);
+ WRITE_NODE_FIELD(winclause);
 }

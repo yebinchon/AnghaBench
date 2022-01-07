@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  CollSeq ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_NULL ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * sqlite3GetFuncCollSeq (int /*<<< orphan*/ *) ; 
- int sqlite3MemCompare (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_value (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_user_data (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  testcase (int) ; 
+
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+typedef int CollSeq ;
+
+
+ scalar_t__ SQLITE_NULL ;
+ int assert (int) ;
+ int * sqlite3GetFuncCollSeq (int *) ;
+ int sqlite3MemCompare (int *,int *,int *) ;
+ int sqlite3_result_value (int *,int *) ;
+ scalar_t__ sqlite3_user_data (int *) ;
+ scalar_t__ sqlite3_value_type (int *) ;
+ int testcase (int) ;
 
 __attribute__((used)) static void minmaxFunc(
   sqlite3_context *context,
@@ -30,7 +30,7 @@ __attribute__((used)) static void minmaxFunc(
   sqlite3_value **argv
 ){
   int i;
-  int mask;    /* 0 for min() or 0xffffffff for max() */
+  int mask;
   int iBest;
   CollSeq *pColl;
 

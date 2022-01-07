@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  partial ;
-typedef  int /*<<< orphan*/  norx32_ctx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DOMAIN_PAYLOAD ; 
- size_t RATE_BYTES ; 
- int /*<<< orphan*/  body_block_encrypt (int /*<<< orphan*/ *,int const*,int*) ; 
- int /*<<< orphan*/  memcpy (int*,int const*,size_t) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  switch_domain (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef int partial ;
+typedef int norx32_ctx ;
+
+
+ int DOMAIN_PAYLOAD ;
+ size_t RATE_BYTES ;
+ int body_block_encrypt (int *,int const*,int*) ;
+ int memcpy (int*,int const*,size_t) ;
+ int memset (int*,int ,int) ;
+ int switch_domain (int *,int ) ;
 
 __attribute__((used)) static void encrypt_body(norx32_ctx *ctx,
                          const uint8_t *plain, uint8_t *cipher, size_t nbytes)
@@ -28,7 +28,7 @@ __attribute__((used)) static void encrypt_body(norx32_ctx *ctx,
   if (nbytes == 0)
     return;
 
-  /* Process full blocks: easy */
+
   while (nbytes >= RATE_BYTES)
   {
     switch_domain(ctx, DOMAIN_PAYLOAD);
@@ -38,7 +38,7 @@ __attribute__((used)) static void encrypt_body(norx32_ctx *ctx,
     nbytes -= RATE_BYTES;
   }
 
-  /* Final padded block. */
+
   uint8_t partial[RATE_BYTES];
   memset(partial, 0, sizeof partial);
   memcpy(partial, plain, nbytes);

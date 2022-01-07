@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-struct TYPE_4__ {int /*<<< orphan*/  port; int /*<<< orphan*/  ip; } ;
-struct TYPE_5__ {int /*<<< orphan*/  hardening; scalar_t__ ret_timestamp; TYPE_1__ ret_ip_port; scalar_t__ last_pinged; scalar_t__ timestamp; TYPE_1__ ip_port; } ;
-typedef  TYPE_1__ IP_Port ;
-typedef  TYPE_2__ IPPTsPng ;
 
-/* Variables and functions */
- char* ip_ntoa (int /*<<< orphan*/ *) ; 
- int ntohs (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_hardening (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+struct TYPE_4__ {int port; int ip; } ;
+struct TYPE_5__ {int hardening; scalar_t__ ret_timestamp; TYPE_1__ ret_ip_port; scalar_t__ last_pinged; scalar_t__ timestamp; TYPE_1__ ip_port; } ;
+typedef TYPE_1__ IP_Port ;
+typedef TYPE_2__ IPPTsPng ;
+
+
+ char* ip_ntoa (int *) ;
+ int ntohs (int ) ;
+ int print_hardening (int *) ;
+ int printf (char*,...) ;
 
 void print_assoc(IPPTsPng *assoc, uint8_t ours)
 {

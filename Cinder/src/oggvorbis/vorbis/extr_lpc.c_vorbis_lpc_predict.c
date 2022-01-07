@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- float* alloca (int) ; 
+ float* alloca (int) ;
 
 void vorbis_lpc_predict(float *coeff,float *prime,int m,
                      float *data,long n){
 
-  /* in: coeff[0...m-1] LPC coefficients
-         prime[0...m-1] initial values (allocated size of n+m-1)
-    out: data[0...n-1] data samples */
+
+
+
 
   long i,j,o,p;
   float y;

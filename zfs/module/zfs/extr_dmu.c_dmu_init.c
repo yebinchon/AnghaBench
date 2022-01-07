@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  abd_init () ; 
- int /*<<< orphan*/  arc_init () ; 
- int /*<<< orphan*/  dbuf_init () ; 
- int /*<<< orphan*/  dmu_objset_init () ; 
- int /*<<< orphan*/  dmu_tx_init () ; 
- int /*<<< orphan*/  dnode_init () ; 
- int /*<<< orphan*/  l2arc_init () ; 
- int /*<<< orphan*/  sa_cache_init () ; 
- int /*<<< orphan*/  xuio_stat_init () ; 
- int /*<<< orphan*/  zfetch_init () ; 
- int /*<<< orphan*/  zfs_dbgmsg_init () ; 
+ int abd_init () ;
+ int arc_init () ;
+ int dbuf_init () ;
+ int dmu_objset_init () ;
+ int dmu_tx_init () ;
+ int dnode_init () ;
+ int l2arc_init () ;
+ int sa_cache_init () ;
+ int xuio_stat_init () ;
+ int zfetch_init () ;
+ int zfs_dbgmsg_init () ;
 
 void
 dmu_init(void)
 {
-	abd_init();
-	zfs_dbgmsg_init();
-	sa_cache_init();
-	xuio_stat_init();
-	dmu_objset_init();
-	dnode_init();
-	zfetch_init();
-	dmu_tx_init();
-	l2arc_init();
-	arc_init();
-	dbuf_init();
+ abd_init();
+ zfs_dbgmsg_init();
+ sa_cache_init();
+ xuio_stat_init();
+ dmu_objset_init();
+ dnode_init();
+ zfetch_init();
+ dmu_tx_init();
+ l2arc_init();
+ arc_init();
+ dbuf_init();
 }

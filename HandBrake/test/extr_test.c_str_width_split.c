@@ -1,43 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char** calloc (int,int) ; 
- char** malloc (int) ; 
- char* my_strndup (char const*,int) ; 
- char* reverse_search_char (char const*,char const*,char) ; 
- int strlen (char const*) ; 
+ char** calloc (int,int) ;
+ char** malloc (int) ;
+ char* my_strndup (char const*,int) ;
+ char* reverse_search_char (char const*,char const*,char) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static char** str_width_split( const char *str, int width )
 {
-    const char *  pos;
-    const char *  end;
+    const char * pos;
+    const char * end;
     char ** ret;
-    int     count, ii;
-    int     len;
-    char    delem = ' ';
+    int count, ii;
+    int len;
+    char delem = ' ';
 
-    if ( str == NULL || str[0] == 0 )
+    if ( str == ((void*)0) || str[0] == 0 )
     {
         ret = malloc( sizeof(char*) );
-        if ( ret == NULL ) return ret;
-        *ret = NULL;
+        if ( ret == ((void*)0) ) return ret;
+        *ret = ((void*)0);
         return ret;
     }
 
     len = strlen(str);
 
-    // Find number of elements in the string
+
     count = 1;
     pos = str;
     end = pos + width;
@@ -46,7 +38,7 @@ __attribute__((used)) static char** str_width_split( const char *str, int width 
         end = reverse_search_char(pos, end, delem);
         if (end == pos)
         {
-            // Shouldn't happen for reasonable input
+
             break;
         }
         count++;
@@ -55,7 +47,7 @@ __attribute__((used)) static char** str_width_split( const char *str, int width 
     }
     count++;
     ret = calloc( ( count + 1 ), sizeof(char*) );
-    if ( ret == NULL ) return ret;
+    if ( ret == ((void*)0) ) return ret;
 
     pos = str;
     end = pos + width;

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct timeval {int /*<<< orphan*/  tv_usec; int /*<<< orphan*/  tv_sec; } ;
-struct fio_timeval {int /*<<< orphan*/  ftv_usec; int /*<<< orphan*/  ftv_sec; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  remote_fileio_to_fio_long (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  remote_fileio_to_fio_time (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct timeval {int tv_usec; int tv_sec; } ;
+struct fio_timeval {int ftv_usec; int ftv_sec; } ;
+
+
+ int remote_fileio_to_fio_long (int ,int ) ;
+ int remote_fileio_to_fio_time (int ,int ) ;
 
 __attribute__((used)) static void
 remote_fileio_to_fio_timeval (struct timeval *tv, struct fio_timeval *ftv)

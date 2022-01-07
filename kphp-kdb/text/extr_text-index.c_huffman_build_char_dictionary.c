@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct char_dictionary {long long* code_len; long long* freq; int* chars; unsigned int* first_codes; int** code_ptr; unsigned int* code; int max_bits; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,char,...) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+ int assert (int) ;
+ int exit (int) ;
+ int fprintf (int ,char*,int,char,...) ;
+ int stderr ;
+ int verbosity ;
 
 long long huffman_build_char_dictionary (struct char_dictionary *Dict, long long *code_len, long long *freq) {
   long long total_bits = 0;
@@ -66,6 +66,6 @@ long long huffman_build_char_dictionary (struct char_dictionary *Dict, long long
       fprintf (stderr, "character %02x ('%c'): %08x:%d\n", i, (i < 32 ? '.' : i), Dict->code[i], Dict->code_len[i]);
     }
   }
-    
+
   return total_bits;
 }

@@ -1,44 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int PREFIX_LENGTH ; 
- int /*<<< orphan*/  kfree (char*) ; 
- char* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
+ int GFP_KERNEL ;
+ int PREFIX_LENGTH ;
+ int kfree (char*) ;
+ char* kzalloc (int,int ) ;
+ int snprintf (char*,int,char*,char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
 
 __attribute__((used)) static void hidpp_prefix_name(char **name, int name_length)
 {
-#define PREFIX_LENGTH 9 /* "Logitech " */
 
-	int new_length;
-	char *new_name;
 
-	if (name_length > PREFIX_LENGTH &&
-	    strncmp(*name, "Logitech ", PREFIX_LENGTH) == 0)
-		/* The prefix has is already in the name */
-		return;
+ int new_length;
+ char *new_name;
 
-	new_length = PREFIX_LENGTH + name_length;
-	new_name = kzalloc(new_length, GFP_KERNEL);
-	if (!new_name)
-		return;
+ if (name_length > 9 &&
+     strncmp(*name, "Logitech ", 9) == 0)
 
-	snprintf(new_name, new_length, "Logitech %s", *name);
+  return;
 
-	kfree(*name);
+ new_length = 9 + name_length;
+ new_name = kzalloc(new_length, GFP_KERNEL);
+ if (!new_name)
+  return;
 
-	*name = new_name;
+ snprintf(new_name, new_length, "Logitech %s", *name);
+
+ kfree(*name);
+
+ *name = new_name;
 }

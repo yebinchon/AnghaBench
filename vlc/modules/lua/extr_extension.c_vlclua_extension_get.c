@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  extension_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushlightuserdata (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_rawget (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ lua_topointer (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vlclua_extension_set ; 
+
+
+
+typedef int lua_State ;
+typedef int extension_t ;
+
+
+ int LUA_REGISTRYINDEX ;
+ int lua_pop (int *,int) ;
+ int lua_pushlightuserdata (int *,int ) ;
+ int lua_rawget (int *,int ) ;
+ scalar_t__ lua_topointer (int *,int) ;
+ int vlclua_extension_set ;
 
 extension_t *vlclua_extension_get( lua_State *L )
 {

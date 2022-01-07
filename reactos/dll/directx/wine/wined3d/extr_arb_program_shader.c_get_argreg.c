@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_string_buffer {int dummy; } ;
-typedef  int DWORD ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int ARG_UNUSED ; 
- int WINED3DTA_ALPHAREPLICATE ; 
- int WINED3DTA_COMPLEMENT ; 
-#define  WINED3DTA_CONSTANT 134 
-#define  WINED3DTA_CURRENT 133 
-#define  WINED3DTA_DIFFUSE 132 
- int WINED3DTA_SELECTMASK ; 
-#define  WINED3DTA_SPECULAR 131 
-#define  WINED3DTA_TEMP 130 
-#define  WINED3DTA_TEXTURE 129 
-#define  WINED3DTA_TFACTOR 128 
- int /*<<< orphan*/  shader_addline (struct wined3d_string_buffer*,char*,int,char const*) ; 
+
+ int ARG_UNUSED ;
+ int WINED3DTA_ALPHAREPLICATE ;
+ int WINED3DTA_COMPLEMENT ;
+
+
+
+ int WINED3DTA_SELECTMASK ;
+
+
+
+
+ int shader_addline (struct wined3d_string_buffer*,char*,int,char const*) ;
 
 __attribute__((used)) static const char *get_argreg(struct wined3d_string_buffer *buffer, DWORD argnum, unsigned int stage, DWORD arg)
 {
     const char *ret;
 
-    if(arg == ARG_UNUSED) return "unused"; /* This is the marker for unused registers */
+    if(arg == ARG_UNUSED) return "unused";
 
     switch(arg & WINED3DTA_SELECTMASK) {
-        case WINED3DTA_DIFFUSE:
+        case 132:
             ret = "fragment.color.primary"; break;
 
-        case WINED3DTA_CURRENT:
+        case 133:
             ret = "ret";
             break;
 
-        case WINED3DTA_TEXTURE:
+        case 129:
             switch(stage) {
                 case 0: ret = "tex0"; break;
                 case 1: ret = "tex1"; break;
@@ -55,16 +55,16 @@ __attribute__((used)) static const char *get_argreg(struct wined3d_string_buffer
             }
             break;
 
-        case WINED3DTA_TFACTOR:
+        case 128:
             ret = "tfactor"; break;
 
-        case WINED3DTA_SPECULAR:
+        case 131:
             ret = "fragment.color.secondary"; break;
 
-        case WINED3DTA_TEMP:
+        case 130:
             ret = "tempreg"; break;
 
-        case WINED3DTA_CONSTANT:
+        case 134:
             switch(stage) {
                 case 0: ret = "const0"; break;
                 case 1: ret = "const1"; break;

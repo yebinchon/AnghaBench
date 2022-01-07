@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct sbg_script {int nb_tseq; int nb_events; TYPE_1__* events; int /*<<< orphan*/  end_ts; scalar_t__ opt_end_at_last; int /*<<< orphan*/ * tseq; } ;
-struct TYPE_2__ {int /*<<< orphan*/  ts; } ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  expand_timestamps (void*,struct sbg_script*) ; 
- int expand_tseq (void*,struct sbg_script*,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct sbg_script {int nb_tseq; int nb_events; TYPE_1__* events; int end_ts; scalar_t__ opt_end_at_last; int * tseq; } ;
+struct TYPE_2__ {int ts; } ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int av_log (void*,int ,char*) ;
+ int expand_timestamps (void*,struct sbg_script*) ;
+ int expand_tseq (void*,struct sbg_script*,int*,int ,int *) ;
 
 __attribute__((used)) static int expand_script(void *log, struct sbg_script *s)
 {

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cache_file ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_9__ {int bindf; int /*<<< orphan*/  flags; int /*<<< orphan*/  request; TYPE_1__* vtbl; } ;
-struct TYPE_8__ {int /*<<< orphan*/  (* start_downloading ) (TYPE_2__*) ;} ;
-typedef  TYPE_2__ Protocol ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int BINDF_NEEDFILE ; 
- int /*<<< orphan*/  BINDSTATUS_CACHEFILENAMEAVAILABLE ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  FLAG_FIRST_CONTINUE_COMPLETE ; 
- int /*<<< orphan*/  INET_E_REDIRECT_FAILED ; 
- int /*<<< orphan*/  INTERNET_OPTION_DATAFILE_NAME ; 
- scalar_t__ InternetQueryOptionW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  protocol_close_connection (TYPE_2__*) ; 
- int /*<<< orphan*/  report_progress (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  report_result (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int cache_file ;
+typedef int WCHAR ;
+struct TYPE_9__ {int bindf; int flags; int request; TYPE_1__* vtbl; } ;
+struct TYPE_8__ {int (* start_downloading ) (TYPE_2__*) ;} ;
+typedef TYPE_2__ Protocol ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int BINDF_NEEDFILE ;
+ int BINDSTATUS_CACHEFILENAMEAVAILABLE ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*) ;
+ int FLAG_FIRST_CONTINUE_COMPLETE ;
+ int INET_E_REDIRECT_FAILED ;
+ int INTERNET_OPTION_DATAFILE_NAME ;
+ scalar_t__ InternetQueryOptionW (int ,int ,int *,int*) ;
+ int MAX_PATH ;
+ int S_OK ;
+ int protocol_close_connection (TYPE_2__*) ;
+ int report_progress (TYPE_2__*,int ,int *) ;
+ int report_result (TYPE_2__*,int ) ;
+ int stub1 (TYPE_2__*) ;
 
 __attribute__((used)) static HRESULT start_downloading(Protocol *protocol)
 {

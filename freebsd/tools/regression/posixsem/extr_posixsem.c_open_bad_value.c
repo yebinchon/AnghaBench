@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  O_CREAT ; 
- int /*<<< orphan*/  TEST_PATH ; 
- int /*<<< orphan*/  UINT_MAX ; 
- int /*<<< orphan*/  ksem_open_should_fail (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ksem_unlink (int /*<<< orphan*/ ) ; 
+ int EINVAL ;
+ int O_CREAT ;
+ int TEST_PATH ;
+ int UINT_MAX ;
+ int ksem_open_should_fail (int ,int ,int,int ,int ) ;
+ int ksem_unlink (int ) ;
 
 __attribute__((used)) static void
 open_bad_value(void)
 {
 
-	(void)ksem_unlink(TEST_PATH);
+ (void)ksem_unlink(TEST_PATH);
 
-	ksem_open_should_fail(TEST_PATH, O_CREAT, 0777, UINT_MAX, EINVAL);
+ ksem_open_should_fail(TEST_PATH, O_CREAT, 0777, UINT_MAX, EINVAL);
 }

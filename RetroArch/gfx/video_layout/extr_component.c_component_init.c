@@ -1,53 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_11__ {int digits; int max_state; void* align; } ;
-struct TYPE_10__ {void* align; int /*<<< orphan*/ * string; } ;
-struct TYPE_9__ {int loaded; int /*<<< orphan*/  alpha_idx; int /*<<< orphan*/  image_idx; int /*<<< orphan*/ * alpha_file; int /*<<< orphan*/ * file; } ;
-struct TYPE_8__ {int /*<<< orphan*/  index; } ;
+struct TYPE_10__ {void* align; int * string; } ;
+struct TYPE_9__ {int loaded; int alpha_idx; int image_idx; int * alpha_file; int * file; } ;
+struct TYPE_8__ {int index; } ;
 struct TYPE_12__ {TYPE_4__ counter; TYPE_3__ text; TYPE_2__ image; TYPE_1__ screen; } ;
-struct TYPE_13__ {int type; int enabled_state; TYPE_5__ attr; int /*<<< orphan*/  color; int /*<<< orphan*/  orientation; int /*<<< orphan*/  render_bounds; int /*<<< orphan*/  bounds; } ;
-typedef  TYPE_6__ component_t ;
-typedef  int comp_type_t ;
-
-/* Variables and functions */
-#define  VIDEO_LAYOUT_C_COUNTER 144 
-#define  VIDEO_LAYOUT_C_DISK 143 
-#define  VIDEO_LAYOUT_C_DOTMATRIX_H5 142 
-#define  VIDEO_LAYOUT_C_DOTMATRIX_H8 141 
-#define  VIDEO_LAYOUT_C_DOTMATRIX_X1 140 
-#define  VIDEO_LAYOUT_C_IMAGE 139 
-#define  VIDEO_LAYOUT_C_LED_14 138 
-#define  VIDEO_LAYOUT_C_LED_14_SC 137 
-#define  VIDEO_LAYOUT_C_LED_16 136 
-#define  VIDEO_LAYOUT_C_LED_16_SC 135 
-#define  VIDEO_LAYOUT_C_LED_7 134 
-#define  VIDEO_LAYOUT_C_LED_8_GTS1 133 
-#define  VIDEO_LAYOUT_C_RECT 132 
-#define  VIDEO_LAYOUT_C_REEL 131 
-#define  VIDEO_LAYOUT_C_SCREEN 130 
-#define  VIDEO_LAYOUT_C_TEXT 129 
-#define  VIDEO_LAYOUT_C_UNKNOWN 128 
- int /*<<< orphan*/  VIDEO_LAYOUT_ROT0 ; 
- void* VIDEO_LAYOUT_TEXT_ALIGN_CENTER ; 
- int /*<<< orphan*/  make_bounds () ; 
- int /*<<< orphan*/  make_bounds_unit () ; 
- int /*<<< orphan*/  make_color_white () ; 
+struct TYPE_13__ {int type; int enabled_state; TYPE_5__ attr; int color; int orientation; int render_bounds; int bounds; } ;
+typedef TYPE_6__ component_t ;
+typedef int comp_type_t ;
+ int VIDEO_LAYOUT_ROT0 ;
+ void* VIDEO_LAYOUT_TEXT_ALIGN_CENTER ;
+ int make_bounds () ;
+ int make_bounds_unit () ;
+ int make_color_white () ;
 
 void component_init(component_t *comp, comp_type_t type)
 {
@@ -60,50 +41,50 @@ void component_init(component_t *comp, comp_type_t type)
 
    switch (comp->type)
    {
-      case VIDEO_LAYOUT_C_UNKNOWN:
+      case 128:
          break;
-      case VIDEO_LAYOUT_C_SCREEN:
+      case 130:
          comp->attr.screen.index = 0;
          break;
-      case VIDEO_LAYOUT_C_RECT:
+      case 132:
          break;
-      case VIDEO_LAYOUT_C_DISK:
+      case 143:
          break;
-      case VIDEO_LAYOUT_C_IMAGE:
-         comp->attr.image.file = NULL;
-         comp->attr.image.alpha_file = NULL;
+      case 139:
+         comp->attr.image.file = ((void*)0);
+         comp->attr.image.alpha_file = ((void*)0);
          comp->attr.image.image_idx = 0;
          comp->attr.image.alpha_idx = 0;
-         comp->attr.image.loaded = false;
+         comp->attr.image.loaded = 0;
          break;
-      case VIDEO_LAYOUT_C_TEXT:
-         comp->attr.text.string = NULL;
+      case 129:
+         comp->attr.text.string = ((void*)0);
          comp->attr.text.align = VIDEO_LAYOUT_TEXT_ALIGN_CENTER;
          break;
-      case VIDEO_LAYOUT_C_COUNTER:
+      case 144:
          comp->attr.counter.digits = 2;
          comp->attr.counter.max_state = 999;
          comp->attr.counter.align = VIDEO_LAYOUT_TEXT_ALIGN_CENTER;
          break;
-      case VIDEO_LAYOUT_C_DOTMATRIX_X1:
+      case 140:
          break;
-      case VIDEO_LAYOUT_C_DOTMATRIX_H5:
+      case 142:
          break;
-      case VIDEO_LAYOUT_C_DOTMATRIX_H8:
+      case 141:
          break;
-      case VIDEO_LAYOUT_C_LED_7:
+      case 134:
          break;
-      case VIDEO_LAYOUT_C_LED_8_GTS1:
+      case 133:
          break;
-      case VIDEO_LAYOUT_C_LED_14:
+      case 138:
          break;
-      case VIDEO_LAYOUT_C_LED_14_SC:
+      case 137:
          break;
-      case VIDEO_LAYOUT_C_LED_16:
+      case 136:
          break;
-      case VIDEO_LAYOUT_C_LED_16_SC:
+      case 135:
          break;
-      case VIDEO_LAYOUT_C_REEL:
+      case 131:
          break;
    }
 }

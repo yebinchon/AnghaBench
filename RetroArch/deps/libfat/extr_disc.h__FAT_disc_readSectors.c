@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sec_t ;
-struct TYPE_3__ {int (* readSectors ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ;} ;
-typedef  TYPE_1__ DISC_INTERFACE ;
 
-/* Variables and functions */
- int stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int sec_t ;
+struct TYPE_3__ {int (* readSectors ) (int ,int ,void*) ;} ;
+typedef TYPE_1__ DISC_INTERFACE ;
+
+
+ int stub1 (int ,int ,void*) ;
 
 __attribute__((used)) static inline bool _FAT_disc_readSectors (const DISC_INTERFACE* disc, sec_t sector, sec_t numSectors, void* buffer)
 {
-	return disc->readSectors (sector, numSectors, buffer);
+ return disc->readSectors (sector, numSectors, buffer);
 }

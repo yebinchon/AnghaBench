@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_4__ {int format; int width; int height; int* linesize; int /*<<< orphan*/ ** data; } ;
-typedef  int /*<<< orphan*/  ColorFloat ;
-typedef  TYPE_1__ AVFrame ;
 
-/* Variables and functions */
- int AV_PIX_FMT_YUV420P ; 
- int AV_PIX_FMT_YUV422P ; 
- int AV_PIX_FMT_YUV444P ; 
- int /*<<< orphan*/  BLEND_CHROMA2 (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  BLEND_CHROMA2x2 (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  BLEND_WITHOUT_CHROMA (int /*<<< orphan*/  const,int) ; 
- int /*<<< orphan*/  BLEND_WITH_CHROMA (int /*<<< orphan*/  const) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_4__ {int format; int width; int height; int* linesize; int ** data; } ;
+typedef int ColorFloat ;
+typedef TYPE_1__ AVFrame ;
+
+
+ int AV_PIX_FMT_YUV420P ;
+ int AV_PIX_FMT_YUV422P ;
+ int AV_PIX_FMT_YUV444P ;
+ int BLEND_CHROMA2 (int const) ;
+ int BLEND_CHROMA2x2 (int const) ;
+ int BLEND_WITHOUT_CHROMA (int const,int) ;
+ int BLEND_WITH_CHROMA (int const) ;
 
 __attribute__((used)) static void draw_axis_yuv(AVFrame *out, AVFrame *axis, const ColorFloat *c, int off)
 {

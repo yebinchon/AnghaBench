@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  config; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * dirs; TYPE_1__ path; } ;
 
-/* Variables and functions */
- size_t DEFAULT_DIR_ASSETS ; 
- size_t DEFAULT_DIR_CORE ; 
- size_t DEFAULT_DIR_CORE_ASSETS ; 
- size_t DEFAULT_DIR_CORE_INFO ; 
- size_t DEFAULT_DIR_CURSOR ; 
- size_t DEFAULT_DIR_DATABASE ; 
- size_t DEFAULT_DIR_LOGS ; 
- size_t DEFAULT_DIR_MENU_CONFIG ; 
- size_t DEFAULT_DIR_PLAYLIST ; 
- size_t DEFAULT_DIR_PORT ; 
- size_t DEFAULT_DIR_REMAP ; 
- size_t DEFAULT_DIR_SAVESTATE ; 
- size_t DEFAULT_DIR_SRAM ; 
- size_t DEFAULT_DIR_SYSTEM ; 
- size_t DEFAULT_DIR_VIDEO_FILTER ; 
- int /*<<< orphan*/  FILE_PATH_MAIN_CONFIG ; 
- int /*<<< orphan*/  RARCH_LOG (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  elf_path_cst ; 
- char* file_path_str (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fill_pathname_basedir (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  fill_pathname_join (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- TYPE_2__ g_defaults ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int config; } ;
+struct TYPE_4__ {int * dirs; TYPE_1__ path; } ;
+
+
+ size_t DEFAULT_DIR_ASSETS ;
+ size_t DEFAULT_DIR_CORE ;
+ size_t DEFAULT_DIR_CORE_ASSETS ;
+ size_t DEFAULT_DIR_CORE_INFO ;
+ size_t DEFAULT_DIR_CURSOR ;
+ size_t DEFAULT_DIR_DATABASE ;
+ size_t DEFAULT_DIR_LOGS ;
+ size_t DEFAULT_DIR_MENU_CONFIG ;
+ size_t DEFAULT_DIR_PLAYLIST ;
+ size_t DEFAULT_DIR_PORT ;
+ size_t DEFAULT_DIR_REMAP ;
+ size_t DEFAULT_DIR_SAVESTATE ;
+ size_t DEFAULT_DIR_SRAM ;
+ size_t DEFAULT_DIR_SYSTEM ;
+ size_t DEFAULT_DIR_VIDEO_FILTER ;
+ int FILE_PATH_MAIN_CONFIG ;
+ int RARCH_LOG (char*,int ) ;
+ int elf_path_cst ;
+ char* file_path_str (int ) ;
+ int fill_pathname_basedir (int ,int ,int) ;
+ int fill_pathname_join (int ,int ,char*,int) ;
+ TYPE_2__ g_defaults ;
 
 __attribute__((used)) static void frontend_ctr_get_environment_settings(int* argc, char* argv[],
       void* args, void* params_data)

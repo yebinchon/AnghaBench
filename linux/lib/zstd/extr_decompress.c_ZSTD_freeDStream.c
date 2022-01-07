@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ZSTD_customMem ;
-struct TYPE_4__ {struct TYPE_4__* outBuff; struct TYPE_4__* inBuff; int /*<<< orphan*/ * ddictLocal; int /*<<< orphan*/ * dctx; int /*<<< orphan*/  customMem; } ;
-typedef  TYPE_1__ ZSTD_DStream ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZSTD_free (TYPE_1__*,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  ZSTD_freeDCtx (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ZSTD_freeDDict (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int ZSTD_customMem ;
+struct TYPE_4__ {struct TYPE_4__* outBuff; struct TYPE_4__* inBuff; int * ddictLocal; int * dctx; int customMem; } ;
+typedef TYPE_1__ ZSTD_DStream ;
+
+
+ int ZSTD_free (TYPE_1__*,int const) ;
+ int ZSTD_freeDCtx (int *) ;
+ int ZSTD_freeDDict (int *) ;
 
 size_t ZSTD_freeDStream(ZSTD_DStream *zds)
 {
-	if (zds == NULL)
-		return 0; /* support free on null */
-	{
-		ZSTD_customMem const cMem = zds->customMem;
-		ZSTD_freeDCtx(zds->dctx);
-		zds->dctx = NULL;
-		ZSTD_freeDDict(zds->ddictLocal);
-		zds->ddictLocal = NULL;
-		ZSTD_free(zds->inBuff, cMem);
-		zds->inBuff = NULL;
-		ZSTD_free(zds->outBuff, cMem);
-		zds->outBuff = NULL;
-		ZSTD_free(zds, cMem);
-		return 0;
-	}
+ if (zds == ((void*)0))
+  return 0;
+ {
+  ZSTD_customMem const cMem = zds->customMem;
+  ZSTD_freeDCtx(zds->dctx);
+  zds->dctx = ((void*)0);
+  ZSTD_freeDDict(zds->ddictLocal);
+  zds->ddictLocal = ((void*)0);
+  ZSTD_free(zds->inBuff, cMem);
+  zds->inBuff = ((void*)0);
+  ZSTD_free(zds->outBuff, cMem);
+  zds->outBuff = ((void*)0);
+  ZSTD_free(zds, cMem);
+  return 0;
+ }
 }

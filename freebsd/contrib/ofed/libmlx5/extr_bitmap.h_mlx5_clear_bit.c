@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ unsigned int BITS_PER_LONG ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int BITS_PER_LONG ; 
-
-__attribute__((used)) static inline void mlx5_clear_bit(unsigned int nr,  unsigned long *addr)
+__attribute__((used)) static inline void mlx5_clear_bit(unsigned int nr, unsigned long *addr)
 {
-	addr[(nr / BITS_PER_LONG)] &= ~(1 << (nr % BITS_PER_LONG));
+ addr[(nr / BITS_PER_LONG)] &= ~(1 << (nr % BITS_PER_LONG));
 }

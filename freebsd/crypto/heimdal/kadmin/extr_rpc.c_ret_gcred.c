@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gcred {int /*<<< orphan*/  handle; int /*<<< orphan*/  service; int /*<<< orphan*/  seq_num; int /*<<< orphan*/  proc; int /*<<< orphan*/  version; } ;
-typedef  int /*<<< orphan*/  krb5_storage ;
-typedef  int /*<<< orphan*/  krb5_data ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INSIST (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  krb5_ret_uint32 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  krb5_storage_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * krb5_storage_from_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (struct gcred*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ret_data_xdr (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct gcred {int handle; int service; int seq_num; int proc; int version; } ;
+typedef int krb5_storage ;
+typedef int krb5_data ;
+
+
+ int CHECK (int ) ;
+ int INSIST (int ) ;
+ int krb5_ret_uint32 (int *,int *) ;
+ int krb5_storage_free (int *) ;
+ int * krb5_storage_from_data (int *) ;
+ int memset (struct gcred*,int ,int) ;
+ int ret_data_xdr (int *,int *) ;
 
 __attribute__((used)) static int
 ret_gcred(krb5_data *data, struct gcred *gcred)
@@ -31,7 +31,7 @@ ret_gcred(krb5_data *data, struct gcred *gcred)
     memset(gcred, 0, sizeof(*gcred));
 
     sp = krb5_storage_from_data(data);
-    INSIST(sp != NULL);
+    INSIST(sp != ((void*)0));
 
     CHECK(krb5_ret_uint32(sp, &gcred->version));
     CHECK(krb5_ret_uint32(sp, &gcred->proc));

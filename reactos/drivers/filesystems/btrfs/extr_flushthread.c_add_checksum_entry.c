@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef scalar_t__ uint32_t ;
+typedef int uint16_t ;
 struct TYPE_20__ {TYPE_2__* item; } ;
-typedef  TYPE_4__ traverse_ptr ;
+typedef TYPE_4__ traverse_ptr ;
 struct TYPE_19__ {int sector_size; } ;
-struct TYPE_21__ {int /*<<< orphan*/  checksum_root; TYPE_3__ superblock; } ;
-typedef  TYPE_5__ device_extension ;
-typedef  scalar_t__ ULONG ;
+struct TYPE_21__ {int checksum_root; TYPE_3__ superblock; } ;
+typedef TYPE_5__ device_extension ;
+typedef scalar_t__ ULONG ;
 struct TYPE_22__ {int offset; void* obj_type; void* obj_id; } ;
 struct TYPE_17__ {int offset; } ;
 struct TYPE_18__ {int size; scalar_t__* data; TYPE_1__ key; } ;
-typedef  int /*<<< orphan*/  RTL_BITMAP ;
-typedef  int /*<<< orphan*/  PIRP ;
-typedef  scalar_t__ NTSTATUS ;
-typedef  TYPE_6__ KEY ;
+typedef int RTL_BITMAP ;
+typedef int PIRP ;
+typedef scalar_t__ NTSTATUS ;
+typedef TYPE_6__ KEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALLOC_TAG ; 
- int /*<<< orphan*/  ERR (char*,...) ; 
- void* EXTENT_CSUM_ID ; 
- scalar_t__* ExAllocatePoolWithTag (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExFreePool (scalar_t__*) ; 
- int MAX_CSUM_SIZE ; 
- int /*<<< orphan*/  NT_SUCCESS (scalar_t__) ; 
- int /*<<< orphan*/  PagedPool ; 
- int /*<<< orphan*/  RtlClearBits (int /*<<< orphan*/ *,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  RtlCopyMemory (scalar_t__*,scalar_t__*,int) ; 
- scalar_t__ RtlFindFirstRunClear (int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ RtlFindNextForwardRunClear (int /*<<< orphan*/ *,scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  RtlInitializeBitMap (int /*<<< orphan*/ *,scalar_t__*,scalar_t__) ; 
- int /*<<< orphan*/  RtlSetAllBits (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RtlSetBits (int /*<<< orphan*/ *,scalar_t__,scalar_t__) ; 
- scalar_t__ STATUS_NOT_FOUND ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- void* TYPE_EXTENT_CSUM ; 
- int UInt32x32To64 (scalar_t__,int) ; 
- scalar_t__ delete_tree_item (TYPE_5__*,TYPE_4__*) ; 
- scalar_t__ find_item (TYPE_5__*,int /*<<< orphan*/ ,TYPE_4__*,TYPE_6__*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ find_next_item (TYPE_5__*,TYPE_4__*,TYPE_4__*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ insert_tree_item (TYPE_5__*,int /*<<< orphan*/ ,void*,void*,int,scalar_t__*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ min (int,int) ; 
+
+ int ALLOC_TAG ;
+ int ERR (char*,...) ;
+ void* EXTENT_CSUM_ID ;
+ scalar_t__* ExAllocatePoolWithTag (int ,int,int ) ;
+ int ExFreePool (scalar_t__*) ;
+ int MAX_CSUM_SIZE ;
+ int NT_SUCCESS (scalar_t__) ;
+ int PagedPool ;
+ int RtlClearBits (int *,scalar_t__,scalar_t__) ;
+ int RtlCopyMemory (scalar_t__*,scalar_t__*,int) ;
+ scalar_t__ RtlFindFirstRunClear (int *,scalar_t__*) ;
+ scalar_t__ RtlFindNextForwardRunClear (int *,scalar_t__,scalar_t__*) ;
+ int RtlInitializeBitMap (int *,scalar_t__*,scalar_t__) ;
+ int RtlSetAllBits (int *) ;
+ int RtlSetBits (int *,scalar_t__,scalar_t__) ;
+ scalar_t__ STATUS_NOT_FOUND ;
+ int TRACE (char*,...) ;
+ void* TYPE_EXTENT_CSUM ;
+ int UInt32x32To64 (scalar_t__,int) ;
+ scalar_t__ delete_tree_item (TYPE_5__*,TYPE_4__*) ;
+ scalar_t__ find_item (TYPE_5__*,int ,TYPE_4__*,TYPE_6__*,int,int ) ;
+ scalar_t__ find_next_item (TYPE_5__*,TYPE_4__*,TYPE_4__*,int,int ) ;
+ scalar_t__ insert_tree_item (TYPE_5__*,int ,void*,void*,int,scalar_t__*,int,int *,int ) ;
+ scalar_t__ min (int,int) ;
 
 void add_checksum_entry(device_extension* Vcb, uint64_t address, ULONG length, uint32_t* csum, PIRP Irp) {
     KEY searchkey;
@@ -76,11 +76,11 @@ void add_checksum_entry(device_extension* Vcb, uint64_t address, ULONG length, u
     searchkey.obj_type = TYPE_EXTENT_CSUM;
     searchkey.offset = address;
 
-    // FIXME - create checksum_root if it doesn't exist at all
 
-    Status = find_item(Vcb, Vcb->checksum_root, &tp, &searchkey, false, Irp);
-    if (Status == STATUS_NOT_FOUND) { // tree is completely empty
-        if (csum) { // not deleted
+
+    Status = find_item(Vcb, Vcb->checksum_root, &tp, &searchkey, 0, Irp);
+    if (Status == STATUS_NOT_FOUND) {
+        if (csum) {
             ULONG length2 = length;
             uint64_t off = address;
             uint32_t* data = csum;
@@ -97,7 +97,7 @@ void add_checksum_entry(device_extension* Vcb, uint64_t address, ULONG length, u
                 RtlCopyMemory(checksums, data, il * sizeof(uint32_t));
 
                 Status = insert_tree_item(Vcb, Vcb->checksum_root, EXTENT_CSUM_ID, TYPE_EXTENT_CSUM, off, checksums,
-                                          il * sizeof(uint32_t), NULL, Irp);
+                                          il * sizeof(uint32_t), ((void*)0), Irp);
                 if (!NT_SUCCESS(Status)) {
                     ERR("insert_tree_item returned %08x\n", Status);
                     ExFreePool(checksums);
@@ -118,7 +118,7 @@ void add_checksum_entry(device_extension* Vcb, uint64_t address, ULONG length, u
     } else {
         uint32_t tplen;
 
-        // FIXME - check entry is TYPE_EXTENT_CSUM?
+
 
         if (tp.item->key.offset < address && tp.item->key.offset + (tp.item->size * Vcb->superblock.sector_size / sizeof(uint32_t)) >= address)
             startaddr = tp.item->key.offset;
@@ -129,7 +129,7 @@ void add_checksum_entry(device_extension* Vcb, uint64_t address, ULONG length, u
         searchkey.obj_type = TYPE_EXTENT_CSUM;
         searchkey.offset = address + (length * Vcb->superblock.sector_size);
 
-        Status = find_item(Vcb, Vcb->checksum_root, &tp, &searchkey, false, Irp);
+        Status = find_item(Vcb, Vcb->checksum_root, &tp, &searchkey, 0, Irp);
         if (!NT_SUCCESS(Status)) {
             ERR("find_item returned %08x\n", Status);
             return;
@@ -168,7 +168,7 @@ void add_checksum_entry(device_extension* Vcb, uint64_t address, ULONG length, u
         searchkey.obj_type = TYPE_EXTENT_CSUM;
         searchkey.offset = address;
 
-        Status = find_item(Vcb, Vcb->checksum_root, &tp, &searchkey, false, Irp);
+        Status = find_item(Vcb, Vcb->checksum_root, &tp, &searchkey, 0, Irp);
         if (!NT_SUCCESS(Status)) {
             ERR("find_item returned %08x\n", Status);
             ExFreePool(checksums);
@@ -176,7 +176,7 @@ void add_checksum_entry(device_extension* Vcb, uint64_t address, ULONG length, u
             return;
         }
 
-        // set bit = free space, cleared bit = allocated sector
+
 
         while (tp.item->key.offset < endaddr) {
             if (tp.item->key.offset >= startaddr) {
@@ -196,13 +196,13 @@ void add_checksum_entry(device_extension* Vcb, uint64_t address, ULONG length, u
                 }
             }
 
-            if (find_next_item(Vcb, &tp, &next_tp, false, Irp)) {
+            if (find_next_item(Vcb, &tp, &next_tp, 0, Irp)) {
                 tp = next_tp;
             } else
                 break;
         }
 
-        if (!csum) { // deleted
+        if (!csum) {
             RtlSetBits(&bmp, (ULONG)((address - startaddr) / Vcb->superblock.sector_size), length);
         } else {
             RtlCopyMemory(&checksums[(address - startaddr) / Vcb->superblock.sector_size], csum, length * sizeof(uint32_t));
@@ -244,7 +244,7 @@ void add_checksum_entry(device_extension* Vcb, uint64_t address, ULONG length, u
 
                 off = startaddr + UInt32x32To64(index, Vcb->superblock.sector_size);
 
-                Status = insert_tree_item(Vcb, Vcb->checksum_root, EXTENT_CSUM_ID, TYPE_EXTENT_CSUM, off, data, sizeof(uint32_t) * rl, NULL, Irp);
+                Status = insert_tree_item(Vcb, Vcb->checksum_root, EXTENT_CSUM_ID, TYPE_EXTENT_CSUM, off, data, sizeof(uint32_t) * rl, ((void*)0), Irp);
                 if (!NT_SUCCESS(Status)) {
                     ERR("insert_tree_item returned %08x\n", Status);
                     ExFreePool(data);

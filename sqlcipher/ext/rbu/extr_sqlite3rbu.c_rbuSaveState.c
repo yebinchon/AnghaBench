@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  zDataTbl; int /*<<< orphan*/  zIdx; int /*<<< orphan*/  zTbl; } ;
-struct TYPE_7__ {int rc; TYPE_1__ objiter; int /*<<< orphan*/  nPhaseOneStep; int /*<<< orphan*/  iOalSz; int /*<<< orphan*/  iWalCksum; int /*<<< orphan*/  nProgress; int /*<<< orphan*/  nStep; int /*<<< orphan*/  zStateDb; int /*<<< orphan*/  zErrmsg; int /*<<< orphan*/  dbRbu; TYPE_3__* pTargetFd; TYPE_3__* pRbuFd; } ;
-typedef  TYPE_2__ sqlite3rbu ;
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int zDataTbl; int zIdx; int zTbl; } ;
+struct TYPE_7__ {int rc; TYPE_1__ objiter; int nPhaseOneStep; int iOalSz; int iWalCksum; int nProgress; int nStep; int zStateDb; int zErrmsg; int dbRbu; TYPE_3__* pTargetFd; TYPE_3__* pRbuFd; } ;
+typedef TYPE_2__ sqlite3rbu ;
+typedef int sqlite3_stmt ;
 struct TYPE_8__ {scalar_t__ iCookie; } ;
-typedef  TYPE_3__ rbu_file ;
-typedef  int /*<<< orphan*/  i64 ;
+typedef TYPE_3__ rbu_file ;
+typedef int i64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RBU_STATE_CKPT ; 
- int /*<<< orphan*/  RBU_STATE_COOKIE ; 
- int /*<<< orphan*/  RBU_STATE_DATATBL ; 
- int /*<<< orphan*/  RBU_STATE_IDX ; 
- int /*<<< orphan*/  RBU_STATE_OALSZ ; 
- int /*<<< orphan*/  RBU_STATE_PHASEONESTEP ; 
- int /*<<< orphan*/  RBU_STATE_PROGRESS ; 
- int /*<<< orphan*/  RBU_STATE_ROW ; 
- int /*<<< orphan*/  RBU_STATE_STAGE ; 
- int /*<<< orphan*/  RBU_STATE_TBL ; 
- scalar_t__ SQLITE_DONE ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int prepareFreeAndCollectError (int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ rbuIsVacuum (TYPE_2__*) ; 
- int sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_mprintf (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_step (int /*<<< orphan*/ *) ; 
+
+ int RBU_STATE_CKPT ;
+ int RBU_STATE_COOKIE ;
+ int RBU_STATE_DATATBL ;
+ int RBU_STATE_IDX ;
+ int RBU_STATE_OALSZ ;
+ int RBU_STATE_PHASEONESTEP ;
+ int RBU_STATE_PROGRESS ;
+ int RBU_STATE_ROW ;
+ int RBU_STATE_STAGE ;
+ int RBU_STATE_TBL ;
+ scalar_t__ SQLITE_DONE ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int prepareFreeAndCollectError (int ,int **,int *,int ) ;
+ scalar_t__ rbuIsVacuum (TYPE_2__*) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_mprintf (char*,int ,int ,int,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int sqlite3_step (int *) ;
 
 __attribute__((used)) static void rbuSaveState(sqlite3rbu *p, int eStage){
   if( p->rc==SQLITE_OK || p->rc==SQLITE_DONE ){
@@ -48,7 +48,7 @@ __attribute__((used)) static void rbuSaveState(sqlite3rbu *p, int eStage){
     int rc;
 
     assert( p->zErrmsg==0 );
-    rc = prepareFreeAndCollectError(p->dbRbu, &pInsert, &p->zErrmsg, 
+    rc = prepareFreeAndCollectError(p->dbRbu, &pInsert, &p->zErrmsg,
         sqlite3_mprintf(
           "INSERT OR REPLACE INTO %s.rbu_state(k, v) VALUES "
           "(%d, %d), "
@@ -63,9 +63,9 @@ __attribute__((used)) static void rbuSaveState(sqlite3rbu *p, int eStage){
           "(%d, %Q)  ",
           p->zStateDb,
           RBU_STATE_STAGE, eStage,
-          RBU_STATE_TBL, p->objiter.zTbl, 
-          RBU_STATE_IDX, p->objiter.zIdx, 
-          RBU_STATE_ROW, p->nStep, 
+          RBU_STATE_TBL, p->objiter.zTbl,
+          RBU_STATE_IDX, p->objiter.zIdx,
+          RBU_STATE_ROW, p->nStep,
           RBU_STATE_PROGRESS, p->nProgress,
           RBU_STATE_CKPT, p->iWalCksum,
           RBU_STATE_COOKIE, (i64)pFd->iCookie,

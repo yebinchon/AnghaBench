@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ptrdiff_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int ptrdiff_t ;
 struct TYPE_5__ {TYPE_1__* L; } ;
-typedef  TYPE_2__ jit_State ;
-struct TYPE_4__ {int /*<<< orphan*/ * base; } ;
-typedef  int /*<<< orphan*/  TValue ;
+typedef TYPE_2__ jit_State ;
+struct TYPE_4__ {int * base; } ;
+typedef int TValue ;
 
-/* Variables and functions */
- scalar_t__ bc_b (int /*<<< orphan*/ ) ; 
- scalar_t__ frame_islua (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * frame_pc (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ bc_b (int ) ;
+ scalar_t__ frame_islua (int *) ;
+ int * frame_pc (int *) ;
 
 __attribute__((used)) static ptrdiff_t results_wanted(jit_State *J)
 {

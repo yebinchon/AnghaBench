@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct use_connection_context {scalar_t__* buffer_size; int /*<<< orphan*/ * accessname; TYPE_1__* resource; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_2__ {int /*<<< orphan*/ * lpRemoteName; } ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_MORE_DATA ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ lstrlenW (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct use_connection_context {scalar_t__* buffer_size; int * accessname; TYPE_1__* resource; } ;
+typedef int WCHAR ;
+struct TYPE_2__ {int * lpRemoteName; } ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ ERROR_MORE_DATA ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ lstrlenW (int *) ;
 
 __attribute__((used)) static DWORD use_connection_pre_set_accessnameW(struct use_connection_context *ctxt, WCHAR *local_name)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static DWORD use_connection_pre_set_accessnameW(struct use
         }
     }
     else
-        ctxt->accessname = NULL;
+        ctxt->accessname = ((void*)0);
 
     return ERROR_SUCCESS;
 }

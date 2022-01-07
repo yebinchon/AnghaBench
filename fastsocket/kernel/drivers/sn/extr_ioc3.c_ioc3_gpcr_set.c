@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct ioc3_driver_data {int /*<<< orphan*/  gpio_lock; TYPE_1__* vma; } ;
-struct TYPE_2__ {int /*<<< orphan*/  gpcr_s; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  writel (unsigned int,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct ioc3_driver_data {int gpio_lock; TYPE_1__* vma; } ;
+struct TYPE_2__ {int gpcr_s; } ;
+
+
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int writel (unsigned int,int *) ;
 
 void ioc3_gpcr_set(struct ioc3_driver_data *idd, unsigned int val)
 {
-	unsigned long flags;
-	spin_lock_irqsave(&idd->gpio_lock, flags);
-	writel(val, &idd->vma->gpcr_s);
-	spin_unlock_irqrestore(&idd->gpio_lock, flags);
+ unsigned long flags;
+ spin_lock_irqsave(&idd->gpio_lock, flags);
+ writel(val, &idd->vma->gpcr_s);
+ spin_unlock_irqrestore(&idd->gpio_lock, flags);
 }

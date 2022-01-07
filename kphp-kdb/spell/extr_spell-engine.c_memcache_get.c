@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct keep_mc_store {int text_id; int* res; } ;
 struct connection {TYPE_1__* Tmp; } ;
 struct TYPE_2__ {scalar_t__ start; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STATS_BUFF_SIZE ; 
- int /*<<< orphan*/  cmd_get ; 
- int /*<<< orphan*/  free_tmp_buffers (struct connection*) ; 
- int get_at_prefix_length (char const*,int) ; 
- int /*<<< orphan*/  get_hits ; 
- int /*<<< orphan*/  get_missed ; 
- int /*<<< orphan*/  memcmp (char const*,char*,int) ; 
- int return_one_key (struct connection*,char const*,scalar_t__,int) ; 
- int spell_get_dicts (scalar_t__,int /*<<< orphan*/ ) ; 
- int spell_prepare_stats (struct connection*) ; 
- int sprintf (scalar_t__,char*,int,int,int) ; 
- int sscanf (char const*,char*,int*) ; 
- scalar_t__ stats_buff ; 
- int strlen (scalar_t__) ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int) ; 
- scalar_t__ test_mode ; 
- scalar_t__ worst_misspell_msg ; 
+
+ int STATS_BUFF_SIZE ;
+ int cmd_get ;
+ int free_tmp_buffers (struct connection*) ;
+ int get_at_prefix_length (char const*,int) ;
+ int get_hits ;
+ int get_missed ;
+ int memcmp (char const*,char*,int) ;
+ int return_one_key (struct connection*,char const*,scalar_t__,int) ;
+ int spell_get_dicts (scalar_t__,int ) ;
+ int spell_prepare_stats (struct connection*) ;
+ int sprintf (scalar_t__,char*,int,int,int) ;
+ int sscanf (char const*,char*,int*) ;
+ scalar_t__ stats_buff ;
+ int strlen (scalar_t__) ;
+ int strncmp (char const*,char*,int) ;
+ scalar_t__ test_mode ;
+ scalar_t__ worst_misspell_msg ;
 
 int memcache_get (struct connection *c, const char *key, int key_len) {
   cmd_get++;

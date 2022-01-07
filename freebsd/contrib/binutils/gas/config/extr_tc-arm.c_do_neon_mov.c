@@ -1,111 +1,111 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct neon_type_el {int size; int /*<<< orphan*/  type; } ;
-typedef  enum neon_shape { ____Placeholder_neon_shape } neon_shape ;
-struct TYPE_4__ {int instruction; TYPE_1__* operands; int /*<<< orphan*/ * error; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct neon_type_el {int size; int type; } ;
+typedef enum neon_shape { ____Placeholder_neon_shape } neon_shape ;
+struct TYPE_4__ {int instruction; TYPE_1__* operands; int * error; } ;
 struct TYPE_3__ {unsigned int reg; int imm; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARM_CPU_HAS_FEATURE (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* BAD_FPU ; 
- int /*<<< orphan*/  FAIL ; 
- int HI1 (unsigned int) ; 
- int LOW4 (unsigned int) ; 
- int NEON_CHECK_ARCH ; 
- int NEON_CHECK_CC ; 
- unsigned int NEON_SCALAR_INDEX (int) ; 
- unsigned int NEON_SCALAR_REG (int) ; 
-#define  NS_DD 141 
-#define  NS_DI 140 
-#define  NS_DRR 139 
-#define  NS_FF 138 
-#define  NS_FFRR 137 
-#define  NS_FI 136 
-#define  NS_FR 135 
- int NS_NULL ; 
-#define  NS_QI 134 
-#define  NS_QQ 133 
-#define  NS_RF 132 
-#define  NS_RRD 131 
-#define  NS_RRFF 130 
-#define  NS_RS 129 
-#define  NS_SR 128 
- int /*<<< orphan*/  NT_float ; 
- int /*<<< orphan*/  NT_invtype ; 
- int /*<<< orphan*/  NT_signed ; 
- int N_16 ; 
- int N_32 ; 
- int N_8 ; 
- int N_EQK ; 
- int N_F64 ; 
- int N_KEY ; 
- int N_S16 ; 
- int N_S8 ; 
- int N_U16 ; 
- int N_U8 ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  constraint (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cpu_variant ; 
- int /*<<< orphan*/  do_vfp_cond_or_thumb () ; 
- int /*<<< orphan*/  do_vfp_nsyn_opcode (char const*) ; 
- int /*<<< orphan*/  first_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fpu_neon_ext_v1 ; 
- int /*<<< orphan*/  fpu_vfp_ext_v1 ; 
- int /*<<< orphan*/  fpu_vfp_ext_v2 ; 
- TYPE_2__ inst ; 
- int /*<<< orphan*/  is_quarter_float (int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,char,int) ; 
- struct neon_type_el neon_check_type (int,int,int,int) ; 
- void* neon_dp_fixup (int) ; 
- void* neon_logbits (int) ; 
- int /*<<< orphan*/  neon_move_immediate () ; 
- int neon_qfloat_bits (int) ; 
- int neon_quad (int) ; 
- int neon_select_shape (int,int,int,int,int,int,int,int,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  vfp_or_neon_is_neon (int) ; 
+
+ int ARM_CPU_HAS_FEATURE (int ,int ) ;
+ char* BAD_FPU ;
+ int FAIL ;
+ int HI1 (unsigned int) ;
+ int LOW4 (unsigned int) ;
+ int NEON_CHECK_ARCH ;
+ int NEON_CHECK_CC ;
+ unsigned int NEON_SCALAR_INDEX (int) ;
+ unsigned int NEON_SCALAR_REG (int) ;
+
+
+
+
+
+
+
+ int NS_NULL ;
+
+
+
+
+
+
+
+ int NT_float ;
+ int NT_invtype ;
+ int NT_signed ;
+ int N_16 ;
+ int N_32 ;
+ int N_8 ;
+ int N_EQK ;
+ int N_F64 ;
+ int N_KEY ;
+ int N_S16 ;
+ int N_S8 ;
+ int N_U16 ;
+ int N_U8 ;
+ int _ (char*) ;
+ int abort () ;
+ int constraint (int,int ) ;
+ int cpu_variant ;
+ int do_vfp_cond_or_thumb () ;
+ int do_vfp_nsyn_opcode (char const*) ;
+ int first_error (int ) ;
+ int fpu_neon_ext_v1 ;
+ int fpu_vfp_ext_v1 ;
+ int fpu_vfp_ext_v2 ;
+ TYPE_2__ inst ;
+ int is_quarter_float (int) ;
+ int memset (TYPE_1__*,char,int) ;
+ struct neon_type_el neon_check_type (int,int,int,int) ;
+ void* neon_dp_fixup (int) ;
+ void* neon_logbits (int) ;
+ int neon_move_immediate () ;
+ int neon_qfloat_bits (int) ;
+ int neon_quad (int) ;
+ int neon_select_shape (int,int,int,int,int,int,int,int,int,int,int,int,int,int,int) ;
+ int vfp_or_neon_is_neon (int) ;
 
 __attribute__((used)) static void
 do_neon_mov (void)
 {
-  enum neon_shape rs = neon_select_shape (NS_RRFF, NS_FFRR, NS_DRR, NS_RRD,
-    NS_QQ, NS_DD, NS_QI, NS_DI, NS_SR, NS_RS, NS_FF, NS_FI, NS_RF, NS_FR,
+  enum neon_shape rs = neon_select_shape (130, 137, 139, 131,
+    133, 141, 134, 140, 128, 129, 138, 136, 132, 135,
     NS_NULL);
   struct neon_type_el et;
   const char *ldconst = 0;
 
   switch (rs)
     {
-    case NS_DD:  /* case 1/9.  */
+    case 141:
       et = neon_check_type (2, rs, N_EQK, N_F64 | N_KEY);
-      /* It is not an error here if no type is given.  */
-      inst.error = NULL;
+
+      inst.error = ((void*)0);
       if (et.type == NT_float && et.size == 64)
         {
           do_vfp_nsyn_opcode ("fcpyd");
           break;
         }
-      /* fall through.  */
 
-    case NS_QQ:  /* case 0/1.  */
+
+    case 133:
       {
         if (vfp_or_neon_is_neon (NEON_CHECK_CC | NEON_CHECK_ARCH) == FAIL)
           return;
-        /* The architecture manual I have doesn't explicitly state which
-           value the U bit should have for register->register moves, but
-           the equivalent VORR instruction has U = 0, so do that.  */
+
+
+
         inst.instruction = 0x0200110;
         inst.instruction |= LOW4 (inst.operands[0].reg) << 12;
         inst.instruction |= HI1 (inst.operands[0].reg) << 22;
@@ -118,27 +118,27 @@ do_neon_mov (void)
         inst.instruction = neon_dp_fixup (inst.instruction);
       }
       break;
-        
-    case NS_DI:  /* case 3/11.  */
+
+    case 140:
       et = neon_check_type (2, rs, N_EQK, N_F64 | N_KEY);
-      inst.error = NULL;
+      inst.error = ((void*)0);
       if (et.type == NT_float && et.size == 64)
         {
-          /* case 11 (fconstd).  */
+
           ldconst = "fconstd";
           goto encode_fconstd;
         }
-      /* fall through.  */
 
-    case NS_QI:  /* case 2/3.  */
+
+    case 134:
       if (vfp_or_neon_is_neon (NEON_CHECK_CC | NEON_CHECK_ARCH) == FAIL)
         return;
       inst.instruction = 0x0800010;
       neon_move_immediate ();
       inst.instruction = neon_dp_fixup (inst.instruction);
       break;
-    
-    case NS_SR:  /* case 4.  */
+
+    case 128:
       {
         unsigned bcdebits = 0;
         struct neon_type_el et = neon_check_type (2, NS_NULL,
@@ -156,7 +156,7 @@ do_neon_mov (void)
 
         switch (et.size)
           {
-          case 8:  bcdebits = 0x8; break;
+          case 8: bcdebits = 0x8; break;
           case 16: bcdebits = 0x1; break;
           case 32: bcdebits = 0x0; break;
           default: ;
@@ -173,8 +173,8 @@ do_neon_mov (void)
         inst.instruction |= (bcdebits >> 2) << 21;
       }
       break;
-    
-    case NS_DRR:  /* case 5 (fmdrr).  */
+
+    case 139:
       constraint (!ARM_CPU_HAS_FEATURE (cpu_variant, fpu_vfp_ext_v2),
                   _(BAD_FPU));
 
@@ -185,8 +185,8 @@ do_neon_mov (void)
       inst.instruction |= inst.operands[1].reg << 12;
       inst.instruction |= inst.operands[2].reg << 16;
       break;
-    
-    case NS_RS:  /* case 6.  */
+
+    case 129:
       {
         struct neon_type_el et = neon_check_type (2, NS_NULL,
           N_EQK, N_S8 | N_S16 | N_U8 | N_U16 | N_32 | N_KEY);
@@ -204,7 +204,7 @@ do_neon_mov (void)
 
         switch (et.size)
           {
-          case 8:  abcdebits = (et.type == NT_signed) ? 0x08 : 0x18; break;
+          case 8: abcdebits = (et.type == NT_signed) ? 0x08 : 0x18; break;
           case 16: abcdebits = (et.type == NT_signed) ? 0x01 : 0x11; break;
           case 32: abcdebits = 0x00; break;
           default: ;
@@ -220,8 +220,8 @@ do_neon_mov (void)
         inst.instruction |= (abcdebits >> 2) << 21;
       }
       break;
-    
-    case NS_RRD:  /* case 7 (fmrrd).  */
+
+    case 131:
       constraint (!ARM_CPU_HAS_FEATURE (cpu_variant, fpu_vfp_ext_v2),
                   _(BAD_FPU));
 
@@ -232,12 +232,12 @@ do_neon_mov (void)
       inst.instruction |= LOW4 (inst.operands[2].reg);
       inst.instruction |= HI1 (inst.operands[2].reg) << 5;
       break;
-    
-    case NS_FF:  /* case 8 (fcpys).  */
+
+    case 138:
       do_vfp_nsyn_opcode ("fcpys");
       break;
-    
-    case NS_FI:  /* case 10 (fconsts).  */
+
+    case 136:
       ldconst = "fconsts";
       encode_fconstd:
       if (is_quarter_float (inst.operands[1].imm))
@@ -248,28 +248,28 @@ do_neon_mov (void)
       else
         first_error (_("immediate out of range"));
       break;
-    
-    case NS_RF:  /* case 12 (fmrs).  */
+
+    case 132:
       do_vfp_nsyn_opcode ("fmrs");
       break;
-    
-    case NS_FR:  /* case 13 (fmsr).  */
+
+    case 135:
       do_vfp_nsyn_opcode ("fmsr");
       break;
-    
-    /* The encoders for the fmrrs and fmsrr instructions expect three operands
-       (one of which is a list), but we have parsed four.  Do some fiddling to
-       make the operands what do_vfp_reg2_from_sp2 and do_vfp_sp2_from_reg2
-       expect.  */
-    case NS_RRFF:  /* case 14 (fmrrs).  */
+
+
+
+
+
+    case 130:
       constraint (inst.operands[3].reg != inst.operands[2].reg + 1,
                   _("VFP registers must be adjacent"));
       inst.operands[2].imm = 2;
       memset (&inst.operands[3], '\0', sizeof (inst.operands[3]));
       do_vfp_nsyn_opcode ("fmrrs");
       break;
-    
-    case NS_FFRR:  /* case 15 (fmsrr).  */
+
+    case 137:
       constraint (inst.operands[1].reg != inst.operands[0].reg + 1,
                   _("VFP registers must be adjacent"));
       inst.operands[1] = inst.operands[2];
@@ -278,7 +278,7 @@ do_neon_mov (void)
       memset (&inst.operands[3], '\0', sizeof (inst.operands[3]));
       do_vfp_nsyn_opcode ("fmsrr");
       break;
-    
+
     default:
       abort ();
     }

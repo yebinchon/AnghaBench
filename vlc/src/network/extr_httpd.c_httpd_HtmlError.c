@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int asprintf (char**,char*,char const*,int,char const*,char*,char*,char*) ; 
- int /*<<< orphan*/  assert (char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* httpd_ReasonFromCode (int) ; 
- char* vlc_xml_encode (char const*) ; 
+ int asprintf (char**,char*,char const*,int,char const*,char*,char*,char*) ;
+ int assert (char const*) ;
+ int free (char*) ;
+ char* httpd_ReasonFromCode (int) ;
+ char* vlc_xml_encode (char const*) ;
 
 __attribute__((used)) static size_t httpd_HtmlError (char **body, int code, const char *url)
 {
@@ -44,7 +36,7 @@ __attribute__((used)) static size_t httpd_HtmlError (char **body, int code, cons
     free (url_Encoded);
 
     if (res == -1) {
-        *body = NULL;
+        *body = ((void*)0);
         return 0;
     }
 

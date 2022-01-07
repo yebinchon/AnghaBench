@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  twop ;
-typedef  int /*<<< orphan*/  pniels_t ;
-typedef  int /*<<< orphan*/  const curve448_point_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPENSSL_cleanse (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  add_pniels_to_pt (int /*<<< orphan*/  const,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  curve448_point_destroy (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  curve448_point_double (int /*<<< orphan*/  const,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  pt_to_pniels (int /*<<< orphan*/ ,int /*<<< orphan*/  const) ; 
+
+
+
+typedef int twop ;
+typedef int pniels_t ;
+typedef int const curve448_point_t ;
+
+
+ int OPENSSL_cleanse (int ,int) ;
+ int add_pniels_to_pt (int const,int ,int ) ;
+ int curve448_point_destroy (int const) ;
+ int curve448_point_double (int const,int const) ;
+ int pt_to_pniels (int ,int const) ;
 
 __attribute__((used)) static void prepare_wnaf_table(pniels_t * output,
                                const curve448_point_t working,

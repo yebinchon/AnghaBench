@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int aux_getn (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  auxsort (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  luaL_checkstack (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  luaL_checktype (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  lua_isnoneornil (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_settop (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int aux_getn (int *,int) ;
+ int auxsort (int *,int,int) ;
+ int luaL_checkstack (int *,int,char*) ;
+ int luaL_checktype (int *,int,int) ;
+ int lua_isnoneornil (int *,int) ;
+ int lua_settop (int *,int) ;
 
 __attribute__((used)) static int sort(lua_State*L){
 int n=aux_getn(L,1);

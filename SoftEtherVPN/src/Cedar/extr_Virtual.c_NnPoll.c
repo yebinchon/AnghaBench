@@ -1,89 +1,89 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int SendStateChanged; int /*<<< orphan*/  Lock; TYPE_1__* HaltTube; int /*<<< orphan*/  RecvQueue; } ;
-struct TYPE_9__ {int /*<<< orphan*/  Ref; } ;
-typedef  TYPE_1__ TUBE ;
-typedef  int /*<<< orphan*/  PKT ;
-typedef  TYPE_2__ NATIVE_NAT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddRef (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FreePacketWithData (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * GetNext (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LockQueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NnDeleteOldSessions (TYPE_2__*) ; 
- int /*<<< orphan*/  NnLayer2 (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NnPollingIpCombine (TYPE_2__*) ; 
- int /*<<< orphan*/  ReleaseTube (TYPE_1__*) ; 
- int /*<<< orphan*/  TubeFlushEx (TYPE_1__*,int) ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnlockQueue (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int SendStateChanged; int Lock; TYPE_1__* HaltTube; int RecvQueue; } ;
+struct TYPE_9__ {int Ref; } ;
+typedef TYPE_1__ TUBE ;
+typedef int PKT ;
+typedef TYPE_2__ NATIVE_NAT ;
+
+
+ int AddRef (int ) ;
+ int FreePacketWithData (int *) ;
+ int * GetNext (int ) ;
+ int Lock (int ) ;
+ int LockQueue (int ) ;
+ int NnDeleteOldSessions (TYPE_2__*) ;
+ int NnLayer2 (TYPE_2__*,int *) ;
+ int NnPollingIpCombine (TYPE_2__*) ;
+ int ReleaseTube (TYPE_1__*) ;
+ int TubeFlushEx (TYPE_1__*,int) ;
+ int Unlock (int ) ;
+ int UnlockQueue (int ) ;
 
 void NnPoll(NATIVE_NAT *t)
 {
-	// Validate arguments
-	if (t == NULL)
-	{
-		return;
-	}
 
-	LockQueue(t->RecvQueue);
-	{
-		while (true)
-		{
-			PKT *pkt = GetNext(t->RecvQueue);
+ if (t == ((void*)0))
+ {
+  return;
+ }
 
-			if (pkt == NULL)
-			{
-				break;
-			}
+ LockQueue(t->RecvQueue);
+ {
+  while (1)
+  {
+   PKT *pkt = GetNext(t->RecvQueue);
 
-			NnLayer2(t, pkt);
+   if (pkt == ((void*)0))
+   {
+    break;
+   }
 
-			FreePacketWithData(pkt);
-		}
-	}
-	UnlockQueue(t->RecvQueue);
+   NnLayer2(t, pkt);
 
-	if (t->SendStateChanged)
-	{
-		TUBE *halt_tube = NULL;
+   FreePacketWithData(pkt);
+  }
+ }
+ UnlockQueue(t->RecvQueue);
 
-		Lock(t->Lock);
-		{
-			if (t->HaltTube != NULL)
-			{
-				halt_tube = t->HaltTube;
+ if (t->SendStateChanged)
+ {
+  TUBE *halt_tube = ((void*)0);
 
-				AddRef(halt_tube->Ref);
-			}
-		}
-		Unlock(t->Lock);
+  Lock(t->Lock);
+  {
+   if (t->HaltTube != ((void*)0))
+   {
+    halt_tube = t->HaltTube;
 
-		if (halt_tube != NULL)
-		{
-			TubeFlushEx(halt_tube, true);
+    AddRef(halt_tube->Ref);
+   }
+  }
+  Unlock(t->Lock);
 
-			t->SendStateChanged = false;
+  if (halt_tube != ((void*)0))
+  {
+   TubeFlushEx(halt_tube, 1);
 
-			ReleaseTube(halt_tube);
-		}
-	}
+   t->SendStateChanged = 0;
 
-	NnPollingIpCombine(t);
+   ReleaseTube(halt_tube);
+  }
+ }
 
-	NnDeleteOldSessions(t);
+ NnPollingIpCombine(t);
+
+ NnDeleteOldSessions(t);
 }

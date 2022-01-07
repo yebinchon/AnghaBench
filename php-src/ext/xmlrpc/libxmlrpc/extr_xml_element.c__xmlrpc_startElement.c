@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {void* val; void* key; } ;
-typedef  TYPE_1__ xml_element_attr ;
-struct TYPE_8__ {char* name; int /*<<< orphan*/  attrs; struct TYPE_8__* parent; } ;
-typedef  TYPE_2__ xml_element ;
+typedef TYPE_1__ xml_element_attr ;
+struct TYPE_8__ {char* name; int attrs; struct TYPE_8__* parent; } ;
+typedef TYPE_2__ xml_element ;
 struct TYPE_9__ {TYPE_2__* current; } ;
-typedef  TYPE_3__ xml_elem_data ;
+typedef TYPE_3__ xml_elem_data ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Q_PushTail (int /*<<< orphan*/ *,TYPE_1__*) ; 
- TYPE_1__* emalloc (int) ; 
- void* estrdup (char const*) ; 
- TYPE_2__* xml_elem_new () ; 
+
+ int Q_PushTail (int *,TYPE_1__*) ;
+ TYPE_1__* emalloc (int) ;
+ void* estrdup (char const*) ;
+ TYPE_2__* xml_elem_new () ;
 
 __attribute__((used)) static void _xmlrpc_startElement(void *userData, const char *name, const char **attrs)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static void _xmlrpc_startElement(void *userData, const cha
       mydata->current->name = (char*)estrdup(name);
       mydata->current->parent = c;
 
-      /* init attrs */
+
       while(p && *p) {
          xml_element_attr* attr = emalloc(sizeof(xml_element_attr));
          if(attr) {

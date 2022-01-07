@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  bfd_arch_s390 ; 
- int /*<<< orphan*/  bfd_mach_s390_31 ; 
- int /*<<< orphan*/  bfd_mach_s390_64 ; 
- int /*<<< orphan*/  bfd_set_arch_mach (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int s390_arch_size ; 
- int /*<<< orphan*/  stdoutput ; 
+ int bfd_arch_s390 ;
+ int bfd_mach_s390_31 ;
+ int bfd_mach_s390_64 ;
+ int bfd_set_arch_mach (int ,int ,int ) ;
+ int s390_arch_size ;
+ int stdoutput ;
 
 void
 s390_md_end ()

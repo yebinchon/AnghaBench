@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct tcpcb {int /*<<< orphan*/  ccv; int /*<<< orphan*/  t_inpcb; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* after_idle ) (int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- TYPE_1__* CC_ALGO (struct tcpcb*) ; 
- int /*<<< orphan*/  INP_WLOCK_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct tcpcb {int ccv; int t_inpcb; } ;
+struct TYPE_2__ {int (* after_idle ) (int ) ;} ;
+
+
+ TYPE_1__* CC_ALGO (struct tcpcb*) ;
+ int INP_WLOCK_ASSERT (int ) ;
+ int stub1 (int ) ;
 
 __attribute__((used)) static void inline
 cc_after_idle(struct tcpcb *tp)
 {
-	INP_WLOCK_ASSERT(tp->t_inpcb);
+ INP_WLOCK_ASSERT(tp->t_inpcb);
 
-	if (CC_ALGO(tp)->after_idle != NULL)
-		CC_ALGO(tp)->after_idle(tp->ccv);
+ if (CC_ALGO(tp)->after_idle != ((void*)0))
+  CC_ALGO(tp)->after_idle(tp->ccv);
 }

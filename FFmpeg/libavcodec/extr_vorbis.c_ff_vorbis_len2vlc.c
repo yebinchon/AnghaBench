@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+
+
+ int AVERROR_INVALIDDATA ;
 
 int ff_vorbis_len2vlc(uint8_t *bits, uint32_t *codes, unsigned num)
 {
@@ -44,21 +44,21 @@ int ff_vorbis_len2vlc(uint8_t *bits, uint32_t *codes, unsigned num)
              return AVERROR_INVALIDDATA;
         if (bits[p] == 0)
              continue;
-        // find corresponding exit(node which the tree can grow further from)
+
         for (i = bits[p]; i > 0; --i)
             if (exit_at_level[i])
                 break;
-        if (!i) // overspecified tree
+        if (!i)
              return AVERROR_INVALIDDATA;
         code = exit_at_level[i];
         exit_at_level[i] = 0;
-        // construct code (append 0s to end) and introduce new exits
+
         for (j = i + 1 ;j <= bits[p]; ++j)
             exit_at_level[j] = code + (1u << (j - 1));
         codes[p] = code;
     }
 
-    //no exits should be left (underspecified tree - ie. unused valid vlcs - not allowed by SPEC)
+
     for (p = 1; p < 33; p++)
         if (exit_at_level[p])
             return AVERROR_INVALIDDATA;

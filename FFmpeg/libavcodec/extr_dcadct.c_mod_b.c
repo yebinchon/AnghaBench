@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int mul23 (int const,int) ; 
+ int mul23 (int const,int) ;
 
 __attribute__((used)) static void mod_b(int *input, int *output)
 {
     static const int cos_mod[8] = {
-        4214598,  4383036,  4755871,  5425934,
-        6611520,  8897610, 14448934, 42791536
+        4214598, 4383036, 4755871, 5425934,
+        6611520, 8897610, 14448934, 42791536
     };
 
     int i, k;

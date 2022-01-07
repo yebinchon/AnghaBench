@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WORD ;
-typedef  int /*<<< orphan*/  PSDevice ;
-typedef  scalar_t__ BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONTROLnsRequestOut (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,scalar_t__*) ; 
- int /*<<< orphan*/  MAC_REG_BI ; 
- int /*<<< orphan*/  MESSAGE_REQUEST_MACREG ; 
- int /*<<< orphan*/  MESSAGE_TYPE_WRITE ; 
+
+
+
+typedef int WORD ;
+typedef int PSDevice ;
+typedef scalar_t__ BYTE ;
+
+
+ int CONTROLnsRequestOut (int ,int ,int ,int ,int,scalar_t__*) ;
+ int MAC_REG_BI ;
+ int MESSAGE_REQUEST_MACREG ;
+ int MESSAGE_TYPE_WRITE ;
 
 void MACvWriteBeaconInterval(PSDevice pDevice, WORD wInterval)
 {
-BYTE            pbyData[2];
+BYTE pbyData[2];
 
     pbyData[0] = (BYTE) (wInterval & 0xff);
     pbyData[1] = (BYTE) (wInterval >> 8);

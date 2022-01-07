@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct iommu_domain {int dummy; } ;
-struct arm_smmu_domain {struct iommu_domain domain; int /*<<< orphan*/  devices_lock; int /*<<< orphan*/  devices; int /*<<< orphan*/  init_mutex; } ;
+struct arm_smmu_domain {struct iommu_domain domain; int devices_lock; int devices; int init_mutex; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- unsigned int IOMMU_DOMAIN_DMA ; 
- unsigned int IOMMU_DOMAIN_IDENTITY ; 
- unsigned int IOMMU_DOMAIN_UNMANAGED ; 
- scalar_t__ iommu_get_dma_cookie (struct iommu_domain*) ; 
- int /*<<< orphan*/  kfree (struct arm_smmu_domain*) ; 
- struct arm_smmu_domain* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
+
+ int GFP_KERNEL ;
+ int INIT_LIST_HEAD (int *) ;
+ unsigned int IOMMU_DOMAIN_DMA ;
+ unsigned int IOMMU_DOMAIN_IDENTITY ;
+ unsigned int IOMMU_DOMAIN_UNMANAGED ;
+ scalar_t__ iommu_get_dma_cookie (struct iommu_domain*) ;
+ int kfree (struct arm_smmu_domain*) ;
+ struct arm_smmu_domain* kzalloc (int,int ) ;
+ int mutex_init (int *) ;
+ int spin_lock_init (int *) ;
 
 __attribute__((used)) static struct iommu_domain *arm_smmu_domain_alloc(unsigned type)
 {
-	struct arm_smmu_domain *smmu_domain;
+ struct arm_smmu_domain *smmu_domain;
 
-	if (type != IOMMU_DOMAIN_UNMANAGED &&
-	    type != IOMMU_DOMAIN_DMA &&
-	    type != IOMMU_DOMAIN_IDENTITY)
-		return NULL;
+ if (type != IOMMU_DOMAIN_UNMANAGED &&
+     type != IOMMU_DOMAIN_DMA &&
+     type != IOMMU_DOMAIN_IDENTITY)
+  return ((void*)0);
 
-	/*
-	 * Allocate the domain and initialise some of its data structures.
-	 * We can't really do anything meaningful until we've added a
-	 * master.
-	 */
-	smmu_domain = kzalloc(sizeof(*smmu_domain), GFP_KERNEL);
-	if (!smmu_domain)
-		return NULL;
 
-	if (type == IOMMU_DOMAIN_DMA &&
-	    iommu_get_dma_cookie(&smmu_domain->domain)) {
-		kfree(smmu_domain);
-		return NULL;
-	}
 
-	mutex_init(&smmu_domain->init_mutex);
-	INIT_LIST_HEAD(&smmu_domain->devices);
-	spin_lock_init(&smmu_domain->devices_lock);
 
-	return &smmu_domain->domain;
+
+
+ smmu_domain = kzalloc(sizeof(*smmu_domain), GFP_KERNEL);
+ if (!smmu_domain)
+  return ((void*)0);
+
+ if (type == IOMMU_DOMAIN_DMA &&
+     iommu_get_dma_cookie(&smmu_domain->domain)) {
+  kfree(smmu_domain);
+  return ((void*)0);
+ }
+
+ mutex_init(&smmu_domain->init_mutex);
+ INIT_LIST_HEAD(&smmu_domain->devices);
+ spin_lock_init(&smmu_domain->devices_lock);
+
+ return &smmu_domain->domain;
 }

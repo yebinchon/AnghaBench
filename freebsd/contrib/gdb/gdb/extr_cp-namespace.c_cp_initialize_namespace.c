@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ processing_has_namespace_info ; 
- int /*<<< orphan*/ * using_list ; 
+ scalar_t__ processing_has_namespace_info ;
+ int * using_list ;
 
 void cp_initialize_namespace ()
 {
   processing_has_namespace_info = 0;
-  using_list = NULL;
+  using_list = ((void*)0);
 }

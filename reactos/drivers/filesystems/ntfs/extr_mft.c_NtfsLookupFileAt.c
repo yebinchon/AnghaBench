@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_12__ {scalar_t__ Length; } ;
-typedef  TYPE_1__ UNICODE_STRING ;
-typedef  int /*<<< orphan*/  ULONGLONG ;
-typedef  int /*<<< orphan*/  ULONG ;
-struct TYPE_13__ {int /*<<< orphan*/  FileRecLookasideList; } ;
-typedef  TYPE_1__* PUNICODE_STRING ;
-typedef  int /*<<< orphan*/ * PULONGLONG ;
-typedef  int /*<<< orphan*/ * PFILE_RECORD_HEADER ;
-typedef  TYPE_3__* PDEVICE_EXTENSION ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  scalar_t__ BOOLEAN ;
+typedef TYPE_1__ UNICODE_STRING ;
+typedef int ULONGLONG ;
+typedef int ULONG ;
+struct TYPE_13__ {int FileRecLookasideList; } ;
+typedef TYPE_1__* PUNICODE_STRING ;
+typedef int * PULONGLONG ;
+typedef int * PFILE_RECORD_HEADER ;
+typedef TYPE_3__* PDEVICE_EXTENSION ;
+typedef int NTSTATUS ;
+typedef scalar_t__ BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,...) ; 
- int /*<<< orphan*/ * ExAllocateFromNPagedLookasideList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ExFreeToNPagedLookasideList (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FsRtlDissectName (TYPE_1__,TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtfsFindMftRecord (TYPE_3__*,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReadFileRecord (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  STATUS_INSUFFICIENT_RESOURCES ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
+
+ int DPRINT (char*,...) ;
+ int * ExAllocateFromNPagedLookasideList (int *) ;
+ int ExFreeToNPagedLookasideList (int *,int *) ;
+ int FALSE ;
+ int FsRtlDissectName (TYPE_1__,TYPE_1__*,TYPE_1__*) ;
+ int NT_SUCCESS (int ) ;
+ int NtfsFindMftRecord (TYPE_3__*,int ,TYPE_1__*,int *,int ,scalar_t__,int *) ;
+ int ReadFileRecord (TYPE_3__*,int ,int *) ;
+ int STATUS_INSUFFICIENT_RESOURCES ;
+ int STATUS_SUCCESS ;
 
 NTSTATUS
 NtfsLookupFileAt(PDEVICE_EXTENSION Vcb,
@@ -75,7 +75,7 @@ NtfsLookupFileAt(PDEVICE_EXTENSION Vcb,
     }
 
     *FileRecord = ExAllocateFromNPagedLookasideList(&Vcb->FileRecLookasideList);
-    if (*FileRecord == NULL)
+    if (*FileRecord == ((void*)0))
     {
         DPRINT("NtfsLookupFileAt: Can't allocate MFT record\n");
         return STATUS_INSUFFICIENT_RESOURCES;

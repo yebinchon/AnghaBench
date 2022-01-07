@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FE_TONEAREST ; 
- double YfromRGB (double,double,double) ; 
- double component (char const*,char const*,int) ; 
- int /*<<< orphan*/  fesetround (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,int) ; 
- double linear_from_sRGB (double) ; 
- double nearbyint (double) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- double sRGB_from_linear (double) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/  usage (char const*) ; 
+ int FE_TONEAREST ;
+ double YfromRGB (double,double,double) ;
+ double component (char const*,char const*,int) ;
+ int fesetround (int ) ;
+ int fprintf (int ,char*,char const*,int) ;
+ double linear_from_sRGB (double) ;
+ double nearbyint (double) ;
+ int printf (char*,...) ;
+ double sRGB_from_linear (double) ;
+ int stderr ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int usage (char const*) ;
 
 int
 main(int argc, const char **argv)
@@ -33,10 +25,10 @@ main(int argc, const char **argv)
    int channels = 0;
    double c[4];
 
-   /* FE_TONEAREST is the IEEE754 round to nearest, preferring even, mode; i.e.
-    * everything rounds to the nearest value except that '.5' rounds to the
-    * nearest even value.
-    */
+
+
+
+
    fesetround(FE_TONEAREST);
 
    c[3] = c[2] = c[1] = c[0] = 0;
@@ -133,7 +125,7 @@ main(int argc, const char **argv)
          usage(prog);
       }
 
-      c[3] = c[1]; /* alpha, if present */
+      c[3] = c[1];
       c[2] = c[1] = c[0];
    }
 
@@ -149,7 +141,7 @@ main(int argc, const char **argv)
       for (i=0; i<channels; ++i) c[i] = nearbyint(c[i] * 65535);
    }
 
-   else /* to sRGB */
+   else
    {
       int i = (channels+1)&~1;
       while (--i >= 0)

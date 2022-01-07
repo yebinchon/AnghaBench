@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  nval; int /*<<< orphan*/  ival; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int nval; int ival; } ;
 struct TYPE_6__ {int k; TYPE_1__ u; } ;
-typedef  TYPE_2__ expdesc ;
-typedef  int /*<<< orphan*/  TValue ;
+typedef TYPE_2__ expdesc ;
+typedef int TValue ;
 
-/* Variables and functions */
-#define  VKFLT 129 
-#define  VKINT 128 
- scalar_t__ hasjumps (TYPE_2__ const*) ; 
- int /*<<< orphan*/  setfltvalue (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setivalue (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+ scalar_t__ hasjumps (TYPE_2__ const*) ;
+ int setfltvalue (int *,int ) ;
+ int setivalue (int *,int ) ;
 
 __attribute__((used)) static int tonumeral(const expdesc *e, TValue *v) {
   if (hasjumps(e))
-    return 0;  /* not a numeral */
+    return 0;
   switch (e->k) {
-    case VKINT:
+    case 128:
       if (v) setivalue(v, e->u.ival);
       return 1;
-    case VKFLT:
+    case 129:
       if (v) setfltvalue(v, e->u.nval);
       return 1;
     default: return 0;

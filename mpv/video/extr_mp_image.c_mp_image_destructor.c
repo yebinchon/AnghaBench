@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int num_ff_side_data; TYPE_2__* ff_side_data; int /*<<< orphan*/  a53_cc; int /*<<< orphan*/  icc_profile; int /*<<< orphan*/  hwctx; int /*<<< orphan*/ * bufs; } ;
-typedef  TYPE_1__ mp_image_t ;
-struct TYPE_4__ {int /*<<< orphan*/  buf; } ;
 
-/* Variables and functions */
- int MP_MAX_PLANES ; 
- int /*<<< orphan*/  av_buffer_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  talloc_free (TYPE_2__*) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int num_ff_side_data; TYPE_2__* ff_side_data; int a53_cc; int icc_profile; int hwctx; int * bufs; } ;
+typedef TYPE_1__ mp_image_t ;
+struct TYPE_4__ {int buf; } ;
+
+
+ int MP_MAX_PLANES ;
+ int av_buffer_unref (int *) ;
+ int talloc_free (TYPE_2__*) ;
 
 __attribute__((used)) static void mp_image_destructor(void *ptr)
 {

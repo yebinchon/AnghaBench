@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT32 ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef size_t UINT32 ;
 struct TYPE_6__ {struct TYPE_6__* Next; TYPE_1__* Files; } ;
-struct TYPE_5__ {int /*<<< orphan*/  Filename; } ;
-typedef  TYPE_2__ ASL_GLOBAL_FILE_NODE ;
+struct TYPE_5__ {int Filename; } ;
+typedef TYPE_2__ ASL_GLOBAL_FILE_NODE ;
 
-/* Variables and functions */
- TYPE_2__* AslGbl_FilesList ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char*) ; 
+
+ TYPE_2__* AslGbl_FilesList ;
+ int strcmp (int ,char*) ;
 
 ASL_GLOBAL_FILE_NODE *
 FlGetFileNode (
-    UINT32                  FileId,
-    char                    *Filename)
+    UINT32 FileId,
+    char *Filename)
 {
-    ASL_GLOBAL_FILE_NODE    *Current = AslGbl_FilesList;
+    ASL_GLOBAL_FILE_NODE *Current = AslGbl_FilesList;
 
 
     if (!Filename)
     {
-        return (NULL);
+        return (((void*)0));
     }
 
     while (Current)
@@ -44,5 +44,5 @@ FlGetFileNode (
         Current = Current->Next;
     }
 
-    return (NULL);
+    return (((void*)0));
 }

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509 ;
-struct TYPE_6__ {int /*<<< orphan*/  alpn_proposed_len; int /*<<< orphan*/ * alpn_proposed; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int X509 ;
+struct TYPE_6__ {int alpn_proposed_len; int * alpn_proposed; } ;
 struct TYPE_7__ {TYPE_1__ s3; } ;
-typedef  TYPE_2__ SSL ;
-typedef  int /*<<< orphan*/  PACKET ;
+typedef TYPE_2__ SSL ;
+typedef int PACKET ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_INTERNAL_ERROR ; 
- int /*<<< orphan*/  OPENSSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PACKET_as_length_prefixed_2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PACKET_get_length_prefixed_1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PACKET_memdup (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int PACKET_remaining (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_AD_DECODE_ERROR ; 
- int /*<<< orphan*/  SSL_AD_INTERNAL_ERROR ; 
- int /*<<< orphan*/  SSL_F_TLS_PARSE_CTOS_ALPN ; 
- int /*<<< orphan*/  SSL_IS_FIRST_HANDSHAKE (TYPE_2__*) ; 
- int /*<<< orphan*/  SSL_R_BAD_EXTENSION ; 
- int /*<<< orphan*/  SSLfatal (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ERR_R_INTERNAL_ERROR ;
+ int OPENSSL_free (int *) ;
+ int PACKET_as_length_prefixed_2 (int *,int *) ;
+ int PACKET_get_length_prefixed_1 (int *,int *) ;
+ int PACKET_memdup (int *,int **,int *) ;
+ int PACKET_remaining (int *) ;
+ int SSL_AD_DECODE_ERROR ;
+ int SSL_AD_INTERNAL_ERROR ;
+ int SSL_F_TLS_PARSE_CTOS_ALPN ;
+ int SSL_IS_FIRST_HANDSHAKE (TYPE_2__*) ;
+ int SSL_R_BAD_EXTENSION ;
+ int SSLfatal (TYPE_2__*,int ,int ,int ) ;
 
 int tls_parse_ctos_alpn(SSL *s, PACKET *pkt, unsigned int context, X509 *x,
                         size_t chainidx)
@@ -49,7 +49,7 @@ int tls_parse_ctos_alpn(SSL *s, PACKET *pkt, unsigned int context, X509 *x,
 
     save_protocol_list = protocol_list;
     do {
-        /* Protocol names can't be empty. */
+
         if (!PACKET_get_length_prefixed_1(&protocol_list, &protocol)
                 || PACKET_remaining(&protocol) == 0) {
             SSLfatal(s, SSL_AD_DECODE_ERROR, SSL_F_TLS_PARSE_CTOS_ALPN,
@@ -59,7 +59,7 @@ int tls_parse_ctos_alpn(SSL *s, PACKET *pkt, unsigned int context, X509 *x,
     } while (PACKET_remaining(&protocol_list) != 0);
 
     OPENSSL_free(s->s3.alpn_proposed);
-    s->s3.alpn_proposed = NULL;
+    s->s3.alpn_proposed = ((void*)0);
     s->s3.alpn_proposed_len = 0;
     if (!PACKET_memdup(&save_protocol_list,
                        &s->s3.alpn_proposed, &s->s3.alpn_proposed_len)) {

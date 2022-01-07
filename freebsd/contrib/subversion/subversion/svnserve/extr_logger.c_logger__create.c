@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pool; int /*<<< orphan*/  stream; int /*<<< orphan*/  mutex; } ;
-typedef  TYPE_1__ logger_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_file_t ;
 
-/* Variables and functions */
- int APR_APPEND ; 
- int APR_CREATE ; 
- int /*<<< orphan*/  APR_OS_DEFAULT ; 
- int APR_WRITE ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- TYPE_1__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  svn_io_file_open (int /*<<< orphan*/ **,char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_mutex__init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_from_aprfile2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+struct TYPE_4__ {int pool; int stream; int mutex; } ;
+typedef TYPE_1__ logger_t ;
+typedef int apr_pool_t ;
+typedef int apr_file_t ;
+
+
+ int APR_APPEND ;
+ int APR_CREATE ;
+ int APR_OS_DEFAULT ;
+ int APR_WRITE ;
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ TYPE_1__* apr_pcalloc (int *,int) ;
+ int svn_io_file_open (int **,char const*,int,int ,int *) ;
+ int svn_mutex__init (int *,int ,int *) ;
+ int svn_pool_create (int *) ;
+ int svn_stream_from_aprfile2 (int *,int ,int *) ;
 
 svn_error_t *
 logger__create(logger_t **logger,
@@ -45,7 +45,7 @@ logger__create(logger_t **logger,
                            APR_OS_DEFAULT, pool));
   SVN_ERR(svn_mutex__init(&result->mutex, TRUE, pool));
 
-  result->stream = svn_stream_from_aprfile2(file, FALSE,  pool);
+  result->stream = svn_stream_from_aprfile2(file, FALSE, pool);
   result->pool = svn_pool_create(pool);
 
   *logger = result;

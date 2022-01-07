@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nk_handle ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SDL_SetClipboardText (char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
+
+
+
+typedef int nk_handle ;
+
+
+ int SDL_SetClipboardText (char*) ;
+ int free (char*) ;
+ scalar_t__ malloc (size_t) ;
+ int memcpy (char*,char const*,size_t) ;
 
 __attribute__((used)) static void
 nk_sdl_clipboard_copy(nk_handle usr, const char *text, int len)

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int32_t ;
+
+
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int int32_t ;
 struct TYPE_15__ {TYPE_1__* priv_data; } ;
-struct TYPE_14__ {int nb_samples; int /*<<< orphan*/ ** data; } ;
-struct TYPE_13__ {int /*<<< orphan*/  duration; int /*<<< orphan*/  pts; scalar_t__ data; } ;
-struct TYPE_12__ {int block_size; int /*<<< orphan*/  afq; } ;
-typedef  TYPE_1__ AptXContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVCodecContext ;
+struct TYPE_14__ {int nb_samples; int ** data; } ;
+struct TYPE_13__ {int duration; int pts; scalar_t__ data; } ;
+struct TYPE_12__ {int block_size; int afq; } ;
+typedef TYPE_1__ AptXContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- scalar_t__ AV_RN32A (int /*<<< orphan*/ *) ; 
- int NB_CHANNELS ; 
- int /*<<< orphan*/  aptx_encode_samples (TYPE_1__*,int**,scalar_t__) ; 
- int ff_af_queue_add (int /*<<< orphan*/ *,TYPE_3__ const*) ; 
- int /*<<< orphan*/  ff_af_queue_remove (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int ff_alloc_packet2 (TYPE_4__*,TYPE_2__*,int,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AV_RN32A (int *) ;
+ int NB_CHANNELS ;
+ int aptx_encode_samples (TYPE_1__*,int**,scalar_t__) ;
+ int ff_af_queue_add (int *,TYPE_3__ const*) ;
+ int ff_af_queue_remove (int *,int,int *,int *) ;
+ int ff_alloc_packet2 (TYPE_4__*,TYPE_2__*,int,int ) ;
 
 __attribute__((used)) static int aptx_encode_frame(AVCodecContext *avctx, AVPacket *avpkt,
                              const AVFrame *frame, int *got_packet_ptr)

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_svn_conn_t ;
-struct TYPE_9__ {int /*<<< orphan*/ * conn; } ;
-typedef  TYPE_1__ svn_ra_svn__session_baton_t ;
-typedef  int /*<<< orphan*/  svn_ra_svn__list_t ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int svn_ra_svn_conn_t ;
+struct TYPE_9__ {int * conn; } ;
+typedef TYPE_1__ svn_ra_svn__session_baton_t ;
+typedef int svn_ra_svn__list_t ;
 struct TYPE_10__ {TYPE_1__* priv; } ;
-typedef  TYPE_2__ svn_ra_session_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_11__ {char const* last_author; int /*<<< orphan*/  time; int /*<<< orphan*/  created_rev; int /*<<< orphan*/  has_props; int /*<<< orphan*/  size; int /*<<< orphan*/  kind; } ;
-typedef  TYPE_3__ svn_dirent_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_uint64_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_2__ svn_ra_session_t ;
+typedef int svn_error_t ;
+struct TYPE_11__ {char const* last_author; int time; int created_rev; int has_props; int size; int kind; } ;
+typedef TYPE_3__ svn_dirent_t ;
+typedef int svn_boolean_t ;
+typedef int apr_uint64_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  N_ (char*) ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  handle_auth_request (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  handle_unsupported_cmd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* reparent_path (TYPE_2__*,char const*,int /*<<< orphan*/ *) ; 
- TYPE_3__* svn_dirent_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_node_kind_from_word (char const*) ; 
- int /*<<< orphan*/  svn_ra_svn__parse_tuple (int /*<<< orphan*/ *,char*,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const**,char const**) ; 
- int /*<<< orphan*/  svn_ra_svn__read_cmd_response (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  svn_ra_svn__write_cmd_stat (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_time_from_cstring (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
+
+ int N_ (char*) ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int handle_auth_request (TYPE_1__*,int *) ;
+ int handle_unsupported_cmd (int ,int ) ;
+ char* reparent_path (TYPE_2__*,char const*,int *) ;
+ TYPE_3__* svn_dirent_create (int *) ;
+ int svn_node_kind_from_word (char const*) ;
+ int svn_ra_svn__parse_tuple (int *,char*,char const**,int *,int *,int *,char const**,char const**) ;
+ int svn_ra_svn__read_cmd_response (int *,int *,char*,int **) ;
+ int svn_ra_svn__write_cmd_stat (int *,int *,char const*,int ) ;
+ int svn_time_from_cstring (int *,char const*,int *) ;
 
 __attribute__((used)) static svn_error_t *ra_svn_stat(svn_ra_session_t *session,
                                 const char *path, svn_revnum_t rev,
@@ -47,7 +47,7 @@ __attribute__((used)) static svn_error_t *ra_svn_stat(svn_ra_session_t *session,
 {
   svn_ra_svn__session_baton_t *sess_baton = session->priv;
   svn_ra_svn_conn_t *conn = sess_baton->conn;
-  svn_ra_svn__list_t *list = NULL;
+  svn_ra_svn__list_t *list = ((void*)0);
   svn_dirent_t *the_dirent;
 
   path = reparent_path(session, path, pool);
@@ -58,7 +58,7 @@ __attribute__((used)) static svn_error_t *ra_svn_stat(svn_ra_session_t *session,
 
   if (! list)
     {
-      *dirent = NULL;
+      *dirent = ((void*)0);
     }
   else
     {
@@ -73,7 +73,7 @@ __attribute__((used)) static svn_error_t *ra_svn_stat(svn_ra_session_t *session,
 
       the_dirent = svn_dirent_create(pool);
       the_dirent->kind = svn_node_kind_from_word(kind);
-      the_dirent->size = size;/* FIXME: svn_filesize_t */
+      the_dirent->size = size;
       the_dirent->has_props = has_props;
       the_dirent->created_rev = crev;
       SVN_ERR(svn_time_from_cstring(&the_dirent->time, cdate, pool));

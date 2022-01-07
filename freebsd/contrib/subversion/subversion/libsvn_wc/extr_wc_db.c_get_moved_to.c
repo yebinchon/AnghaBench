@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc__db_wcroot_t ;
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- scalar_t__ strcmp (char const*,char const*) ; 
- scalar_t__ strlen (char const*) ; 
- char* svn_relpath_join (char const*,char const*,int /*<<< orphan*/ *) ; 
- char* svn_relpath_skip_ancestor (char const*,char const*) ; 
- char* svn_sqlite__column_text (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_wc__db_wcroot_t ;
+typedef int svn_sqlite__stmt_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_ERR_ASSERT (int ) ;
+ int * SVN_NO_ERROR ;
+ char* apr_pstrdup (int *,char const*) ;
+ scalar_t__ strcmp (char const*,char const*) ;
+ scalar_t__ strlen (char const*) ;
+ char* svn_relpath_join (char const*,char const*,int *) ;
+ char* svn_relpath_skip_ancestor (char const*,char const*) ;
+ char* svn_sqlite__column_text (int *,int,int *) ;
 
 __attribute__((used)) static svn_error_t *
 get_moved_to(const char **moved_to_relpath_p,
@@ -38,7 +38,7 @@ get_moved_to(const char **moved_to_relpath_p,
              apr_pool_t *result_pool,
              apr_pool_t *scratch_pool)
 {
-  const char *moved_to_relpath = svn_sqlite__column_text(stmt, 3, NULL);
+  const char *moved_to_relpath = svn_sqlite__column_text(stmt, 3, ((void*)0));
 
   if (moved_to_relpath)
     {
@@ -46,12 +46,12 @@ get_moved_to(const char **moved_to_relpath_p,
 
       if (strcmp(current_relpath, local_relpath))
         {
-          /* LOCAL_RELPATH is a child inside the move op-root. */
+
           const char *moved_child_relpath;
 
-          /* The CURRENT_RELPATH is the op_root of the delete-half of
-           * the move. LOCAL_RELPATH is a child that was moved along.
-           * Compute the child's new location within the move target. */
+
+
+
           moved_child_relpath = svn_relpath_skip_ancestor(current_relpath,
                                                           local_relpath);
           SVN_ERR_ASSERT(moved_child_relpath &&

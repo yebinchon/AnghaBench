@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int32_t ;
+
+
+
+
+typedef int u_int32_t ;
 struct timespec {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FUTEX_LOCK_PI ; 
- int futex (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct timespec*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int FUTEX_LOCK_PI ;
+ int futex (int *,int ,int ,struct timespec*,int *,int ,int) ;
 
 __attribute__((used)) static inline int
 futex_lock_pi(u_int32_t *uaddr, struct timespec *timeout, int opflags)
 {
-	return futex(uaddr, FUTEX_LOCK_PI, 0, timeout, NULL, 0, opflags);
+ return futex(uaddr, FUTEX_LOCK_PI, 0, timeout, ((void*)0), 0, opflags);
 }

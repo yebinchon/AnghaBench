@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct HelloTypeObject {scalar_t__ len; int /*<<< orphan*/ * head; } ;
 
-/* Variables and functions */
- struct HelloTypeObject* RedisModule_Alloc (int) ; 
+
+
+
+struct HelloTypeObject {scalar_t__ len; int * head; } ;
+
+
+ struct HelloTypeObject* RedisModule_Alloc (int) ;
 
 struct HelloTypeObject *createHelloTypeObject(void) {
     struct HelloTypeObject *o;
     o = RedisModule_Alloc(sizeof(*o));
-    o->head = NULL;
+    o->head = ((void*)0);
     o->len = 0;
     return o;
 }

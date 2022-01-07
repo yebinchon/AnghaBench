@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  int int32_t ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+typedef int int32_t ;
 struct TYPE_7__ {TYPE_2__* par; } ;
-struct TYPE_5__ {int /*<<< orphan*/  den; int /*<<< orphan*/  num; } ;
+struct TYPE_5__ {int den; int num; } ;
 struct TYPE_6__ {int width; int height; TYPE_1__ sample_aspect_ratio; } ;
-typedef  TYPE_3__ MOVTrack ;
-typedef  int /*<<< orphan*/  AVIOContext ;
+typedef TYPE_3__ MOVTrack ;
+typedef int AVIOContext ;
 
-/* Variables and functions */
- int av_rescale (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_wb32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ffio_wfourcc (int /*<<< orphan*/ *,char*) ; 
- int update_size (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int av_rescale (int ,int,int ) ;
+ int avio_tell (int *) ;
+ int avio_wb32 (int *,int) ;
+ int ffio_wfourcc (int *,char*) ;
+ int update_size (int *,int ) ;
 
 __attribute__((used)) static int mov_write_tapt_tag(AVIOContext *pb, MOVTrack *track)
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static int mov_write_tapt_tag(AVIOContext *pb, MOVTrack *t
 
     int64_t pos = avio_tell(pb);
 
-    avio_wb32(pb, 0); /* size */
+    avio_wb32(pb, 0);
     ffio_wfourcc(pb, "tapt");
 
     avio_wb32(pb, 20);

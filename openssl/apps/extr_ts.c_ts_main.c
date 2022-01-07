@@ -1,210 +1,179 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_VERIFY_PARAM ;
-typedef  int OPTION_CHOICE ;
-typedef  int /*<<< orphan*/  EVP_MD ;
-typedef  int /*<<< orphan*/  CONF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  EXACTLY_ONE (char*,char*,char*) ; 
- int /*<<< orphan*/  NCONF_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
-#define  OPT_CAFILE 158 
-#define  OPT_CAPATH 157 
-#define  OPT_CASTORE 156 
-#define  OPT_CERT 155 
-#define  OPT_CHAIN 154 
-#define  OPT_CONFIG 153 
-#define  OPT_DATA 152 
-#define  OPT_DIGEST 151 
-#define  OPT_ENGINE 150 
-#define  OPT_EOF 149 
-#define  OPT_ERR 148 
-#define  OPT_HELP 147 
-#define  OPT_IN 146 
-#define  OPT_INKEY 145 
-#define  OPT_MD 144 
-#define  OPT_NO_NONCE 143 
-#define  OPT_OUT 142 
-#define  OPT_PASSIN 141 
-#define  OPT_QUERY 140 
-#define  OPT_QUERYFILE 139 
-#define  OPT_REPLY 138 
-#define  OPT_R_CASES 137 
-#define  OPT_SECTION 136 
-#define  OPT_SIGNER 135 
-#define  OPT_TEXT 134 
-#define  OPT_TOKEN_IN 133 
-#define  OPT_TOKEN_OUT 132 
-#define  OPT_TSPOLICY 131 
-#define  OPT_UNTRUSTED 130 
-#define  OPT_VERIFY 129 
-#define  OPT_V_CASES 128 
- int /*<<< orphan*/  X509_VERIFY_PARAM_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * X509_VERIFY_PARAM_new () ; 
- int /*<<< orphan*/  app_load_modules (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  app_passwd (char*,int /*<<< orphan*/ *,char**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bio_err ; 
- char const* default_config_file ; 
- int /*<<< orphan*/ * load_config_file (char const*) ; 
- void* opt_arg () ; 
- int /*<<< orphan*/  opt_help (int /*<<< orphan*/ ) ; 
- char** opt_helplist ; 
- char* opt_init (int,char**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  opt_md (int /*<<< orphan*/ ,int /*<<< orphan*/  const**) ; 
- int opt_next () ; 
- scalar_t__ opt_num_rest () ; 
- int /*<<< orphan*/  opt_rand (int) ; 
- int /*<<< orphan*/  opt_unknown () ; 
- int /*<<< orphan*/  opt_verify (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  query_command (char*,char*,int /*<<< orphan*/  const*,char*,int,int,char*,char*,int) ; 
- int /*<<< orphan*/  reply_command (int /*<<< orphan*/ *,char const*,char const*,char*,char*,char*,int /*<<< orphan*/  const*,char*,char*,char*,char*,int,char*,int,int) ; 
- int /*<<< orphan*/  ts_options ; 
- int /*<<< orphan*/  verify_command (char*,char*,char*,char*,int,char*,char const*,char*,char const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int X509_VERIFY_PARAM ;
+typedef int OPTION_CHOICE ;
+typedef int EVP_MD ;
+typedef int CONF ;
+
+
+ int BIO_printf (int ,char*,...) ;
+ int EXACTLY_ONE (char*,char*,char*) ;
+ int NCONF_free (int *) ;
+ int OPENSSL_free (char*) ;
+ int X509_VERIFY_PARAM_free (int *) ;
+ int * X509_VERIFY_PARAM_new () ;
+ int app_load_modules (int *) ;
+ int app_passwd (char*,int *,char**,int *) ;
+ int bio_err ;
+ char const* default_config_file ;
+ int * load_config_file (char const*) ;
+ void* opt_arg () ;
+ int opt_help (int ) ;
+ char** opt_helplist ;
+ char* opt_init (int,char**,int ) ;
+ int opt_md (int ,int const**) ;
+ int opt_next () ;
+ scalar_t__ opt_num_rest () ;
+ int opt_rand (int) ;
+ int opt_unknown () ;
+ int opt_verify (int,int *) ;
+ int query_command (char*,char*,int const*,char*,int,int,char*,char*,int) ;
+ int reply_command (int *,char const*,char const*,char*,char*,char*,int const*,char*,char*,char*,char*,int,char*,int,int) ;
+ int ts_options ;
+ int verify_command (char*,char*,char*,char*,int,char*,char const*,char*,char const*,int *) ;
 
 int ts_main(int argc, char **argv)
 {
-    CONF *conf = NULL;
-    const char *CAfile = NULL, *untrusted = NULL, *prog;
-    const char *configfile = default_config_file, *engine = NULL;
-    const char *section = NULL;
+    CONF *conf = ((void*)0);
+    const char *CAfile = ((void*)0), *untrusted = ((void*)0), *prog;
+    const char *configfile = default_config_file, *engine = ((void*)0);
+    const char *section = ((void*)0);
     char **helpp;
-    char *password = NULL;
-    char *data = NULL, *digest = NULL, *policy = NULL;
-    char *in = NULL, *out = NULL, *queryfile = NULL, *passin = NULL;
-    char *inkey = NULL, *signer = NULL, *chain = NULL, *CApath = NULL;
-    char *CAstore = NULL;
-    const EVP_MD *md = NULL;
-    OPTION_CHOICE o, mode = OPT_ERR;
+    char *password = ((void*)0);
+    char *data = ((void*)0), *digest = ((void*)0), *policy = ((void*)0);
+    char *in = ((void*)0), *out = ((void*)0), *queryfile = ((void*)0), *passin = ((void*)0);
+    char *inkey = ((void*)0), *signer = ((void*)0), *chain = ((void*)0), *CApath = ((void*)0);
+    char *CAstore = ((void*)0);
+    const EVP_MD *md = ((void*)0);
+    OPTION_CHOICE o, mode = 148;
     int ret = 1, no_nonce = 0, cert = 0, text = 0;
     int vpmtouched = 0;
-    X509_VERIFY_PARAM *vpm = NULL;
-    /* Input is ContentInfo instead of TimeStampResp. */
+    X509_VERIFY_PARAM *vpm = ((void*)0);
+
     int token_in = 0;
-    /* Output is ContentInfo instead of TimeStampResp. */
+
     int token_out = 0;
 
-    if ((vpm = X509_VERIFY_PARAM_new()) == NULL)
+    if ((vpm = X509_VERIFY_PARAM_new()) == ((void*)0))
         goto end;
 
     prog = opt_init(argc, argv, ts_options);
-    while ((o = opt_next()) != OPT_EOF) {
+    while ((o = opt_next()) != 149) {
         switch (o) {
-        case OPT_EOF:
-        case OPT_ERR:
+        case 149:
+        case 148:
  opthelp:
             BIO_printf(bio_err, "%s: Use -help for summary.\n", prog);
             goto end;
-        case OPT_HELP:
+        case 147:
             opt_help(ts_options);
             for (helpp = opt_helplist; *helpp; ++helpp)
                 BIO_printf(bio_err, "%s\n", *helpp);
             ret = 0;
             goto end;
-        case OPT_CONFIG:
+        case 153:
             configfile = opt_arg();
             break;
-        case OPT_SECTION:
+        case 136:
             section = opt_arg();
             break;
-        case OPT_QUERY:
-        case OPT_REPLY:
-        case OPT_VERIFY:
-            if (mode != OPT_ERR)
+        case 140:
+        case 138:
+        case 129:
+            if (mode != 148)
                 goto opthelp;
             mode = o;
             break;
-        case OPT_DATA:
+        case 152:
             data = opt_arg();
             break;
-        case OPT_DIGEST:
+        case 151:
             digest = opt_arg();
             break;
-        case OPT_R_CASES:
+        case 137:
             if (!opt_rand(o))
                 goto end;
             break;
-        case OPT_TSPOLICY:
+        case 131:
             policy = opt_arg();
             break;
-        case OPT_NO_NONCE:
+        case 143:
             no_nonce = 1;
             break;
-        case OPT_CERT:
+        case 155:
             cert = 1;
             break;
-        case OPT_IN:
+        case 146:
             in = opt_arg();
             break;
-        case OPT_TOKEN_IN:
+        case 133:
             token_in = 1;
             break;
-        case OPT_OUT:
+        case 142:
             out = opt_arg();
             break;
-        case OPT_TOKEN_OUT:
+        case 132:
             token_out = 1;
             break;
-        case OPT_TEXT:
+        case 134:
             text = 1;
             break;
-        case OPT_QUERYFILE:
+        case 139:
             queryfile = opt_arg();
             break;
-        case OPT_PASSIN:
+        case 141:
             passin = opt_arg();
             break;
-        case OPT_INKEY:
+        case 145:
             inkey = opt_arg();
             break;
-        case OPT_SIGNER:
+        case 135:
             signer = opt_arg();
             break;
-        case OPT_CHAIN:
+        case 154:
             chain = opt_arg();
             break;
-        case OPT_CAPATH:
+        case 157:
             CApath = opt_arg();
             break;
-        case OPT_CAFILE:
+        case 158:
             CAfile = opt_arg();
             break;
-        case OPT_CASTORE:
+        case 156:
             CAstore = opt_arg();
             break;
-        case OPT_UNTRUSTED:
+        case 130:
             untrusted = opt_arg();
             break;
-        case OPT_ENGINE:
+        case 150:
             engine = opt_arg();
             break;
-        case OPT_MD:
+        case 144:
             if (!opt_md(opt_unknown(), &md))
                 goto opthelp;
             break;
-        case OPT_V_CASES:
+        case 128:
             if (!opt_verify(o, vpm))
                 goto end;
             vpmtouched++;
             break;
         }
     }
-    if (mode == OPT_ERR || opt_num_rest() != 0)
+    if (mode == 148 || opt_num_rest() != 0)
         goto opthelp;
 
-    if (mode == OPT_REPLY && passin &&
-        !app_passwd(passin, NULL, &password, NULL)) {
+    if (mode == 138 && passin &&
+        !app_passwd(passin, ((void*)0), &password, ((void*)0))) {
         BIO_printf(bio_err, "Error getting password.\n");
         goto end;
     }
@@ -213,33 +182,33 @@ int ts_main(int argc, char **argv)
     if (configfile != default_config_file && !app_load_modules(conf))
         goto end;
 
-    /* Check parameter consistency and execute the appropriate function. */
-    if (mode == OPT_QUERY) {
+
+    if (mode == 140) {
         if (vpmtouched)
             goto opthelp;
-        if ((data != NULL) && (digest != NULL))
+        if ((data != ((void*)0)) && (digest != ((void*)0)))
             goto opthelp;
         ret = !query_command(data, digest, md, policy, no_nonce, cert,
                              in, out, text);
-    } else if (mode == OPT_REPLY) {
+    } else if (mode == 138) {
         if (vpmtouched)
             goto opthelp;
-        if ((in != NULL) && (queryfile != NULL))
+        if ((in != ((void*)0)) && (queryfile != ((void*)0)))
             goto opthelp;
-        if (in == NULL) {
-            if ((conf == NULL) || (token_in != 0))
+        if (in == ((void*)0)) {
+            if ((conf == ((void*)0)) || (token_in != 0))
                 goto opthelp;
         }
         ret = !reply_command(conf, section, engine, queryfile,
                              password, inkey, md, signer, chain, policy,
                              in, token_in, out, token_out, text);
 
-    } else if (mode == OPT_VERIFY) {
-        if ((in == NULL) || !EXACTLY_ONE(queryfile, data, digest))
+    } else if (mode == 129) {
+        if ((in == ((void*)0)) || !EXACTLY_ONE(queryfile, data, digest))
             goto opthelp;
         ret = !verify_command(data, digest, queryfile, in, token_in,
                               CApath, CAfile, CAstore, untrusted,
-                              vpmtouched ? vpm : NULL);
+                              vpmtouched ? vpm : ((void*)0));
     } else {
         goto opthelp;
     }

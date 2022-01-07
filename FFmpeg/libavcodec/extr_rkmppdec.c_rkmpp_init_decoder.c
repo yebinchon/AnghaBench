@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_7__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_14__ {int (* control ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
-struct TYPE_13__ {int /*<<< orphan*/  codec_id; int /*<<< orphan*/  pix_fmt; TYPE_2__* priv_data; } ;
-struct TYPE_12__ {int /*<<< orphan*/  decoder_ref; } ;
-struct TYPE_11__ {int first_packet; int /*<<< orphan*/  device_ref; int /*<<< orphan*/ * frame_group; int /*<<< orphan*/  ctx; TYPE_7__* mpi; } ;
-typedef  int /*<<< orphan*/  RK_S64 ;
-typedef  int /*<<< orphan*/  RK_S32 ;
-typedef  TYPE_1__ RKMPPDecoder ;
-typedef  TYPE_2__ RKMPPDecodeContext ;
-typedef  scalar_t__ MppCodingType ;
-typedef  TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_UNKNOWN ; 
- int /*<<< orphan*/  AV_BUFFER_FLAG_READONLY ; 
- int /*<<< orphan*/  AV_HWDEVICE_TYPE_DRM ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_PIX_FMT_DRM_PRIME ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  FRAMEGROUP_MAX_FRAMES ; 
- int /*<<< orphan*/  MPP_BUFFER_TYPE_ION ; 
- int /*<<< orphan*/  MPP_CTX_DEC ; 
- int /*<<< orphan*/  MPP_DEC_SET_EXT_BUF_GROUP ; 
- int MPP_OK ; 
- int /*<<< orphan*/  MPP_POLL_BLOCK ; 
- int /*<<< orphan*/  MPP_SET_OUTPUT_BLOCK ; 
- int /*<<< orphan*/  MPP_SET_OUTPUT_BLOCK_TIMEOUT ; 
- scalar_t__ MPP_VIDEO_CodingUnused ; 
- int /*<<< orphan*/  RECEIVE_FRAME_TIMEOUT ; 
- int /*<<< orphan*/  av_buffer_create (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_free (TYPE_1__*) ; 
- int /*<<< orphan*/  av_hwdevice_ctx_alloc (int /*<<< orphan*/ ) ; 
- int av_hwdevice_ctx_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,...) ; 
- TYPE_1__* av_mallocz (int) ; 
- int mpp_buffer_group_get_internal (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int mpp_buffer_group_limit_config (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int mpp_check_support_format (int /*<<< orphan*/ ,scalar_t__) ; 
- int mpp_create (int /*<<< orphan*/ *,TYPE_7__**) ; 
- int mpp_init (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  rkmpp_close_decoder (TYPE_3__*) ; 
- scalar_t__ rkmpp_get_codingtype (TYPE_3__*) ; 
- int /*<<< orphan*/  rkmpp_release_decoder ; 
- int stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int stub3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_14__ TYPE_7__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_14__ {int (* control ) (int ,int ,int *) ;} ;
+struct TYPE_13__ {int codec_id; int pix_fmt; TYPE_2__* priv_data; } ;
+struct TYPE_12__ {int decoder_ref; } ;
+struct TYPE_11__ {int first_packet; int device_ref; int * frame_group; int ctx; TYPE_7__* mpi; } ;
+typedef int RK_S64 ;
+typedef int RK_S32 ;
+typedef TYPE_1__ RKMPPDecoder ;
+typedef TYPE_2__ RKMPPDecodeContext ;
+typedef scalar_t__ MppCodingType ;
+typedef TYPE_3__ AVCodecContext ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_UNKNOWN ;
+ int AV_BUFFER_FLAG_READONLY ;
+ int AV_HWDEVICE_TYPE_DRM ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int AV_PIX_FMT_DRM_PRIME ;
+ int ENOMEM ;
+ int FRAMEGROUP_MAX_FRAMES ;
+ int MPP_BUFFER_TYPE_ION ;
+ int MPP_CTX_DEC ;
+ int MPP_DEC_SET_EXT_BUF_GROUP ;
+ int MPP_OK ;
+ int MPP_POLL_BLOCK ;
+ int MPP_SET_OUTPUT_BLOCK ;
+ int MPP_SET_OUTPUT_BLOCK_TIMEOUT ;
+ scalar_t__ MPP_VIDEO_CodingUnused ;
+ int RECEIVE_FRAME_TIMEOUT ;
+ int av_buffer_create (int *,int,int ,int *,int ) ;
+ int av_free (TYPE_1__*) ;
+ int av_hwdevice_ctx_alloc (int ) ;
+ int av_hwdevice_ctx_init (int ) ;
+ int av_log (TYPE_3__*,int ,char*,...) ;
+ TYPE_1__* av_mallocz (int) ;
+ int mpp_buffer_group_get_internal (int **,int ) ;
+ int mpp_buffer_group_limit_config (int *,int ,int ) ;
+ int mpp_check_support_format (int ,scalar_t__) ;
+ int mpp_create (int *,TYPE_7__**) ;
+ int mpp_init (int ,int ,scalar_t__) ;
+ int rkmpp_close_decoder (TYPE_3__*) ;
+ scalar_t__ rkmpp_get_codingtype (TYPE_3__*) ;
+ int rkmpp_release_decoder ;
+ int stub1 (int ,int ,int *) ;
+ int stub2 (int ,int ,int *) ;
+ int stub3 (int ,int ,int *) ;
 
 __attribute__((used)) static int rkmpp_init_decoder(AVCodecContext *avctx)
 {
     RKMPPDecodeContext *rk_context = avctx->priv_data;
-    RKMPPDecoder *decoder = NULL;
+    RKMPPDecoder *decoder = ((void*)0);
     MppCodingType codectype = MPP_VIDEO_CodingUnused;
     int ret;
     RK_S64 paramS64;
@@ -74,7 +74,7 @@ __attribute__((used)) static int rkmpp_init_decoder(AVCodecContext *avctx)
 
     avctx->pix_fmt = AV_PIX_FMT_DRM_PRIME;
 
-    // create a decoder and a ref to it
+
     decoder = av_mallocz(sizeof(RKMPPDecoder));
     if (!decoder) {
         ret = AVERROR(ENOMEM);
@@ -82,7 +82,7 @@ __attribute__((used)) static int rkmpp_init_decoder(AVCodecContext *avctx)
     }
 
     rk_context->decoder_ref = av_buffer_create((uint8_t *)decoder, sizeof(*decoder), rkmpp_release_decoder,
-                                               NULL, AV_BUFFER_FLAG_READONLY);
+                                               ((void*)0), AV_BUFFER_FLAG_READONLY);
     if (!rk_context->decoder_ref) {
         av_free(decoder);
         ret = AVERROR(ENOMEM);
@@ -105,7 +105,7 @@ __attribute__((used)) static int rkmpp_init_decoder(AVCodecContext *avctx)
         goto fail;
     }
 
-    // Create the MPP context
+
     ret = mpp_create(&decoder->ctx, &decoder->mpi);
     if (ret != MPP_OK) {
         av_log(avctx, AV_LOG_ERROR, "Failed to create MPP context (code = %d).\n", ret);
@@ -113,7 +113,7 @@ __attribute__((used)) static int rkmpp_init_decoder(AVCodecContext *avctx)
         goto fail;
     }
 
-    // initialize mpp
+
     ret = mpp_init(decoder->ctx, MPP_CTX_DEC, codectype);
     if (ret != MPP_OK) {
         av_log(avctx, AV_LOG_ERROR, "Failed to initialize MPP context (code = %d).\n", ret);
@@ -121,7 +121,7 @@ __attribute__((used)) static int rkmpp_init_decoder(AVCodecContext *avctx)
         goto fail;
     }
 
-    // make decode calls blocking with a timeout
+
     paramS32 = MPP_POLL_BLOCK;
     ret = decoder->mpi->control(decoder->ctx, MPP_SET_OUTPUT_BLOCK, &paramS32);
     if (ret != MPP_OK) {

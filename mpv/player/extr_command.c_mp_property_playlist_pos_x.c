@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct playlist_entry {int dummy; } ;
-struct playlist {int /*<<< orphan*/  current; int /*<<< orphan*/  first; } ;
+struct playlist {int current; int first; } ;
 struct m_property {int dummy; } ;
-struct m_option {int min; int /*<<< orphan*/  max; int /*<<< orphan*/  flags; int /*<<< orphan*/  type; } ;
+struct m_option {int min; int max; int flags; int type; } ;
 struct TYPE_3__ {struct playlist* playlist; } ;
-typedef  TYPE_1__ MPContext ;
+typedef TYPE_1__ MPContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONF_RANGE ; 
- int /*<<< orphan*/  CONF_TYPE_INT ; 
- int M_PROPERTY_ERROR ; 
-#define  M_PROPERTY_GET 130 
-#define  M_PROPERTY_GET_TYPE 129 
- int M_PROPERTY_NOT_IMPLEMENTED ; 
- int M_PROPERTY_OK ; 
-#define  M_PROPERTY_SET 128 
- int M_PROPERTY_UNAVAILABLE ; 
- int /*<<< orphan*/  mp_set_playlist_entry (TYPE_1__*,struct playlist_entry*) ; 
- int /*<<< orphan*/  playlist_entry_count (struct playlist*) ; 
- struct playlist_entry* playlist_entry_from_index (struct playlist*,int) ; 
- int playlist_entry_to_index (struct playlist*,int /*<<< orphan*/ ) ; 
+
+ int CONF_RANGE ;
+ int CONF_TYPE_INT ;
+ int M_PROPERTY_ERROR ;
+
+
+ int M_PROPERTY_NOT_IMPLEMENTED ;
+ int M_PROPERTY_OK ;
+
+ int M_PROPERTY_UNAVAILABLE ;
+ int mp_set_playlist_entry (TYPE_1__*,struct playlist_entry*) ;
+ int playlist_entry_count (struct playlist*) ;
+ struct playlist_entry* playlist_entry_from_index (struct playlist*,int) ;
+ int playlist_entry_to_index (struct playlist*,int ) ;
 
 __attribute__((used)) static int mp_property_playlist_pos_x(void *ctx, struct m_property *prop,
                                       int action, void *arg, int base)
@@ -42,14 +42,14 @@ __attribute__((used)) static int mp_property_playlist_pos_x(void *ctx, struct m_
         return M_PROPERTY_UNAVAILABLE;
 
     switch (action) {
-    case M_PROPERTY_GET: {
+    case 130: {
         int pos = playlist_entry_to_index(pl, pl->current);
         if (pos < 0)
             return M_PROPERTY_UNAVAILABLE;
         *(int *)arg = pos + base;
         return M_PROPERTY_OK;
     }
-    case M_PROPERTY_SET: {
+    case 128: {
         int pos = *(int *)arg - base;
         struct playlist_entry *e = playlist_entry_from_index(pl, pos);
         if (!e)
@@ -57,7 +57,7 @@ __attribute__((used)) static int mp_property_playlist_pos_x(void *ctx, struct m_
         mp_set_playlist_entry(mpctx, e);
         return M_PROPERTY_OK;
     }
-    case M_PROPERTY_GET_TYPE: {
+    case 129: {
         struct m_option opt = {
             .type = CONF_TYPE_INT,
             .flags = CONF_RANGE,

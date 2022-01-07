@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tl_combinator {int /*<<< orphan*/  result; int /*<<< orphan*/  var_num; } ;
 
-/* Variables and functions */
- scalar_t__ TLS_COMBINATOR_RIGHT ; 
- scalar_t__ TLS_COMBINATOR_RIGHT_V2 ; 
- int /*<<< orphan*/  read_tree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  read_type_expr (int /*<<< orphan*/ *) ; 
- int schema_version ; 
- scalar_t__ tl_parse_error () ; 
- scalar_t__ tl_parse_int () ; 
+
+
+
+struct tl_combinator {int result; int var_num; } ;
+
+
+ scalar_t__ TLS_COMBINATOR_RIGHT ;
+ scalar_t__ TLS_COMBINATOR_RIGHT_V2 ;
+ int read_tree (int *) ;
+ int read_type_expr (int *) ;
+ int schema_version ;
+ scalar_t__ tl_parse_error () ;
+ scalar_t__ tl_parse_int () ;
 
 int read_combinator_right (struct tl_combinator *c) {
   if (schema_version >= 2) {

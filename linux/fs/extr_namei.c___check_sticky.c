@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct inode {int /*<<< orphan*/  i_uid; } ;
-typedef  int /*<<< orphan*/  kuid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CAP_FOWNER ; 
- int /*<<< orphan*/  capable_wrt_inode_uidgid (struct inode*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  current_fsuid () ; 
- scalar_t__ uid_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct inode {int i_uid; } ;
+typedef int kuid_t ;
+
+
+ int CAP_FOWNER ;
+ int capable_wrt_inode_uidgid (struct inode*,int ) ;
+ int current_fsuid () ;
+ scalar_t__ uid_eq (int ,int ) ;
 
 int __check_sticky(struct inode *dir, struct inode *inode)
 {
-	kuid_t fsuid = current_fsuid();
+ kuid_t fsuid = current_fsuid();
 
-	if (uid_eq(inode->i_uid, fsuid))
-		return 0;
-	if (uid_eq(dir->i_uid, fsuid))
-		return 0;
-	return !capable_wrt_inode_uidgid(inode, CAP_FOWNER);
+ if (uid_eq(inode->i_uid, fsuid))
+  return 0;
+ if (uid_eq(dir->i_uid, fsuid))
+  return 0;
+ return !capable_wrt_inode_uidgid(inode, CAP_FOWNER);
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int nDb; scalar_t__ nSchemaLock; TYPE_1__* aDb; int /*<<< orphan*/  mDbFlags; } ;
-typedef  TYPE_2__ sqlite3 ;
-struct TYPE_7__ {int /*<<< orphan*/  pSchema; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DBFLAG_SchemaKnownOk ; 
- int /*<<< orphan*/  DB_ResetWanted ; 
- scalar_t__ DbHasProperty (TYPE_2__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DbSetProperty (TYPE_2__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3SchemaClear (int /*<<< orphan*/ ) ; 
- int sqlite3SchemaMutexHeld (TYPE_2__*,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int nDb; scalar_t__ nSchemaLock; TYPE_1__* aDb; int mDbFlags; } ;
+typedef TYPE_2__ sqlite3 ;
+struct TYPE_7__ {int pSchema; } ;
+
+
+ int DBFLAG_SchemaKnownOk ;
+ int DB_ResetWanted ;
+ scalar_t__ DbHasProperty (TYPE_2__*,int,int ) ;
+ int DbSetProperty (TYPE_2__*,int,int ) ;
+ int assert (int) ;
+ int sqlite3SchemaClear (int ) ;
+ int sqlite3SchemaMutexHeld (TYPE_2__*,int,int ) ;
 
 void sqlite3ResetOneSchema(sqlite3 *db, int iDb){
   int i;

@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int av_clip (int,int,int) ; 
- int /*<<< orphan*/  kaiser_params (float,float,float,float*,int*) ; 
- float* make_lpf (int,float,float,float,float,int /*<<< orphan*/ ) ; 
+ int av_clip (int,int,int) ;
+ int kaiser_params (float,float,float,float*,int*) ;
+ float* make_lpf (int,float,float,float,float,int ) ;
 
 __attribute__((used)) static float *lpf(float Fn, float Fc, float tbw, int *num_taps, float att, float *beta, int round)
 {
@@ -22,7 +14,7 @@ __attribute__((used)) static float *lpf(float Fn, float Fc, float tbw, int *num_
 
     if ((Fc /= Fn) <= 0.f || Fc >= 1.f) {
         *num_taps = 0;
-        return NULL;
+        return ((void*)0);
     }
 
     att = att ? att : 120.f;

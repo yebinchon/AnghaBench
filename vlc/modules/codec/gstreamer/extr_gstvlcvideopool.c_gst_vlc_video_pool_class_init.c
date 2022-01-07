@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  finalize; } ;
-struct TYPE_3__ {int /*<<< orphan*/  release_buffer; int /*<<< orphan*/  acquire_buffer; int /*<<< orphan*/  free_buffer; int /*<<< orphan*/  alloc_buffer; int /*<<< orphan*/  set_config; int /*<<< orphan*/  get_options; int /*<<< orphan*/  start; } ;
-typedef  int /*<<< orphan*/  GstVlcVideoPoolClass ;
-typedef  TYPE_1__ GstBufferPoolClass ;
-typedef  TYPE_2__ GObjectClass ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gst_vlc_video_pool_acquire_buffer ; 
- int /*<<< orphan*/  gst_vlc_video_pool_alloc_buffer ; 
- int /*<<< orphan*/  gst_vlc_video_pool_finalize ; 
- int /*<<< orphan*/  gst_vlc_video_pool_free_buffer ; 
- int /*<<< orphan*/  gst_vlc_video_pool_get_options ; 
- int /*<<< orphan*/  gst_vlc_video_pool_release_buffer ; 
- int /*<<< orphan*/  gst_vlc_video_pool_set_config ; 
- int /*<<< orphan*/  gst_vlc_video_pool_start ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int finalize; } ;
+struct TYPE_3__ {int release_buffer; int acquire_buffer; int free_buffer; int alloc_buffer; int set_config; int get_options; int start; } ;
+typedef int GstVlcVideoPoolClass ;
+typedef TYPE_1__ GstBufferPoolClass ;
+typedef TYPE_2__ GObjectClass ;
+
+
+ int gst_vlc_video_pool_acquire_buffer ;
+ int gst_vlc_video_pool_alloc_buffer ;
+ int gst_vlc_video_pool_finalize ;
+ int gst_vlc_video_pool_free_buffer ;
+ int gst_vlc_video_pool_get_options ;
+ int gst_vlc_video_pool_release_buffer ;
+ int gst_vlc_video_pool_set_config ;
+ int gst_vlc_video_pool_start ;
 
 __attribute__((used)) static void gst_vlc_video_pool_class_init( GstVlcVideoPoolClass *p_klass )
 {

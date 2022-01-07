@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ge25519_precomp ;
-typedef  int /*<<< orphan*/  ge25519_p3 ;
-typedef  int /*<<< orphan*/  ge25519_p2 ;
-typedef  int /*<<< orphan*/  ge25519_p1p1 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ge25519_cmov8_base (int /*<<< orphan*/ *,int,char) ; 
- int /*<<< orphan*/  ge25519_madd (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ge25519_p1p1_to_p2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ge25519_p1p1_to_p3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ge25519_p2_dbl (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ge25519_p3_0 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ge25519_p3_dbl (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int ge25519_precomp ;
+typedef int ge25519_p3 ;
+typedef int ge25519_p2 ;
+typedef int ge25519_p1p1 ;
+
+
+ int ge25519_cmov8_base (int *,int,char) ;
+ int ge25519_madd (int *,int *,int *) ;
+ int ge25519_p1p1_to_p2 (int *,int *) ;
+ int ge25519_p1p1_to_p3 (int *,int *) ;
+ int ge25519_p2_dbl (int *,int *) ;
+ int ge25519_p3_0 (int *) ;
+ int ge25519_p3_dbl (int *,int *) ;
 
 void
 ge25519_scalarmult_base(ge25519_p3 *h, const unsigned char *a)
 {
-    signed char     e[64];
-    signed char     carry;
-    ge25519_p1p1    r;
-    ge25519_p2      s;
+    signed char e[64];
+    signed char carry;
+    ge25519_p1p1 r;
+    ge25519_p2 s;
     ge25519_precomp t;
-    int             i;
+    int i;
 
     for (i = 0; i < 32; ++i) {
         e[2 * i + 0] = (a[i] >> 0) & 15;
         e[2 * i + 1] = (a[i] >> 4) & 15;
     }
-    /* each e[i] is between 0 and 15 */
-    /* e[63] is between 0 and 7 */
+
+
 
     carry = 0;
     for (i = 0; i < 63; ++i) {
@@ -49,7 +49,7 @@ ge25519_scalarmult_base(ge25519_p3 *h, const unsigned char *a)
         e[i] -= carry * ((signed char) 1 << 4);
     }
     e[63] += carry;
-    /* each e[i] is between -8 and 8 */
+
 
     ge25519_p3_0(h);
 

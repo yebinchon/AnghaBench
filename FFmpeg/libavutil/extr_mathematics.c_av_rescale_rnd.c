@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int int64_t ;
-typedef  enum AVRounding { ____Placeholder_AVRounding } AVRounding ;
-typedef  int /*<<< orphan*/  AVInteger ;
 
-/* Variables and functions */
- int AV_ROUND_NEAR_INF ; 
- int AV_ROUND_PASS_MINMAX ; 
- int FFMAX (int,int) ; 
- int INT32_MAX ; 
- int INT64_MAX ; 
- int INT64_MIN ; 
- int INT_MAX ; 
- int /*<<< orphan*/  av_add_i (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_assert2 (int) ; 
- int /*<<< orphan*/  av_div_i (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int av_i2int (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_int2i (int) ; 
- int /*<<< orphan*/  av_mul_i (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint64_t ;
+typedef int int64_t ;
+typedef enum AVRounding { ____Placeholder_AVRounding } AVRounding ;
+typedef int AVInteger ;
+
+
+ int AV_ROUND_NEAR_INF ;
+ int AV_ROUND_PASS_MINMAX ;
+ int FFMAX (int,int) ;
+ int INT32_MAX ;
+ int INT64_MAX ;
+ int INT64_MIN ;
+ int INT_MAX ;
+ int av_add_i (int ,int ) ;
+ int av_assert2 (int) ;
+ int av_div_i (int ,int ) ;
+ int av_i2int (int ) ;
+ int av_int2i (int) ;
+ int av_mul_i (int ,int ) ;
 
 int64_t av_rescale_rnd(int64_t a, int64_t b, int64_t c, enum AVRounding rnd)
 {
@@ -65,17 +65,17 @@ int64_t av_rescale_rnd(int64_t a, int64_t b, int64_t c, enum AVRounding rnd)
             return ad * b + a2;
         }
     } else {
-#if 1
-        uint64_t a0  = a & 0xFFFFFFFF;
-        uint64_t a1  = a >> 32;
-        uint64_t b0  = b & 0xFFFFFFFF;
-        uint64_t b1  = b >> 32;
-        uint64_t t1  = a0 * b1 + a1 * b0;
+
+        uint64_t a0 = a & 0xFFFFFFFF;
+        uint64_t a1 = a >> 32;
+        uint64_t b0 = b & 0xFFFFFFFF;
+        uint64_t b1 = b >> 32;
+        uint64_t t1 = a0 * b1 + a1 * b0;
         uint64_t t1a = t1 << 32;
         int i;
 
-        a0  = a0 * b0 + t1a;
-        a1  = a1 * b1 + (t1 >> 32) + (a0 < t1a);
+        a0 = a0 * b0 + t1a;
+        a1 = a1 * b1 + (t1 >> 32) + (a0 < t1a);
         a0 += r;
         a1 += a0 < r;
 
@@ -90,13 +90,5 @@ int64_t av_rescale_rnd(int64_t a, int64_t b, int64_t c, enum AVRounding rnd)
         if (t1 > INT64_MAX)
             return INT64_MIN;
         return t1;
-#else
-        /* reference code doing (a*b + r) / c, requires libavutil/integer.h */
-        AVInteger ai;
-        ai = av_mul_i(av_int2i(a), av_int2i(b));
-        ai = av_add_i(ai, av_int2i(r));
-
-        return av_i2int(av_div_i(ai, av_int2i(c)));
-#endif
     }
 }

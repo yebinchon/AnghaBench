@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum firewall_op { ____Placeholder_firewall_op } firewall_op ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  INetFwProfile ;
-typedef  int /*<<< orphan*/  INetFwPolicy ;
-typedef  int /*<<< orphan*/  INetFwMgr ;
-typedef  int /*<<< orphan*/  INetFwAuthorizedApplications ;
-typedef  int /*<<< orphan*/  INetFwAuthorizedApplication ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int APP_ADD ; 
- int APP_REMOVE ; 
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_NetFwAuthorizedApplication ; 
- int /*<<< orphan*/  CLSID_NetFwMgr ; 
- int /*<<< orphan*/  COINIT_APARTMENTTHREADED ; 
- scalar_t__ CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ CoInitializeEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CoUninitialize () ; 
- scalar_t__ E_FAIL ; 
- scalar_t__ E_INVALIDARG ; 
- int /*<<< orphan*/  GetModuleFileNameW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  GetSystemDirectoryW (char*,int) ; 
- int /*<<< orphan*/  IID_INetFwAuthorizedApplication ; 
- int /*<<< orphan*/  IID_INetFwMgr ; 
- int /*<<< orphan*/  INetFwAuthorizedApplication_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ INetFwAuthorizedApplication_put_Name (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ INetFwAuthorizedApplication_put_ProcessImageFileName (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ INetFwAuthorizedApplications_Add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INetFwAuthorizedApplications_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ INetFwAuthorizedApplications_Remove (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INetFwMgr_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ INetFwMgr_get_LocalPolicy (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  INetFwPolicy_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ INetFwPolicy_get_CurrentProfile (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  INetFwProfile_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ INetFwProfile_get_AuthorizedApplications (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int MAX_PATH ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysAllocString (char const*) ; 
- int /*<<< orphan*/  SysAllocStringLen (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lstrcatW (char*,char const*) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
+
+
+
+typedef enum firewall_op { ____Placeholder_firewall_op } firewall_op ;
+typedef char WCHAR ;
+typedef int INetFwProfile ;
+typedef int INetFwPolicy ;
+typedef int INetFwMgr ;
+typedef int INetFwAuthorizedApplications ;
+typedef int INetFwAuthorizedApplication ;
+typedef scalar_t__ HRESULT ;
+typedef int BSTR ;
+
+
+ int APP_ADD ;
+ int APP_REMOVE ;
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_NetFwAuthorizedApplication ;
+ int CLSID_NetFwMgr ;
+ int COINIT_APARTMENTTHREADED ;
+ scalar_t__ CoCreateInstance (int *,int *,int ,int *,void**) ;
+ scalar_t__ CoInitializeEx (int ,int ) ;
+ int CoUninitialize () ;
+ scalar_t__ E_FAIL ;
+ scalar_t__ E_INVALIDARG ;
+ int GetModuleFileNameW (int *,int ,int) ;
+ int GetSystemDirectoryW (char*,int) ;
+ int IID_INetFwAuthorizedApplication ;
+ int IID_INetFwMgr ;
+ int INetFwAuthorizedApplication_Release (int *) ;
+ scalar_t__ INetFwAuthorizedApplication_put_Name (int *,int ) ;
+ scalar_t__ INetFwAuthorizedApplication_put_ProcessImageFileName (int *,int ) ;
+ scalar_t__ INetFwAuthorizedApplications_Add (int *,int *) ;
+ int INetFwAuthorizedApplications_Release (int *) ;
+ scalar_t__ INetFwAuthorizedApplications_Remove (int *,int ) ;
+ int INetFwMgr_Release (int *) ;
+ scalar_t__ INetFwMgr_get_LocalPolicy (int *,int **) ;
+ int INetFwPolicy_Release (int *) ;
+ scalar_t__ INetFwPolicy_get_CurrentProfile (int *,int **) ;
+ int INetFwProfile_Release (int *) ;
+ scalar_t__ INetFwProfile_get_AuthorizedApplications (int *,int **) ;
+ int MAX_PATH ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_OK ;
+ int SysAllocString (char const*) ;
+ int SysAllocStringLen (int *,int) ;
+ int SysFreeString (int ) ;
+ int lstrcatW (char*,char const*) ;
+ int ok (int,char*,scalar_t__) ;
 
 __attribute__((used)) static HRESULT set_firewall( enum firewall_op op )
 {
@@ -67,15 +67,15 @@ __attribute__((used)) static HRESULT set_firewall( enum firewall_op op )
     static const WCHAR serverW[] =
         {'d','p','l','a','y','_','s','e','r','v','e','r',0};
     HRESULT hr, init;
-    INetFwMgr *mgr = NULL;
-    INetFwPolicy *policy = NULL;
-    INetFwProfile *profile = NULL;
-    INetFwAuthorizedApplication *app = NULL;
-    INetFwAuthorizedApplications *apps = NULL;
-    BSTR name, image = SysAllocStringLen( NULL, MAX_PATH );
+    INetFwMgr *mgr = ((void*)0);
+    INetFwPolicy *policy = ((void*)0);
+    INetFwProfile *profile = ((void*)0);
+    INetFwAuthorizedApplication *app = ((void*)0);
+    INetFwAuthorizedApplications *apps = ((void*)0);
+    BSTR name, image = SysAllocStringLen( ((void*)0), MAX_PATH );
     WCHAR path[MAX_PATH];
 
-    if (!GetModuleFileNameW( NULL, image, MAX_PATH ))
+    if (!GetModuleFileNameW( ((void*)0), image, MAX_PATH ))
     {
         SysFreeString( image );
         return E_FAIL;
@@ -91,7 +91,7 @@ __attribute__((used)) static HRESULT set_firewall( enum firewall_op op )
 
     init = CoInitializeEx( 0, COINIT_APARTMENTTHREADED );
 
-    hr = CoCreateInstance( &CLSID_NetFwMgr, NULL, CLSCTX_INPROC_SERVER, &IID_INetFwMgr,
+    hr = CoCreateInstance( &CLSID_NetFwMgr, ((void*)0), CLSCTX_INPROC_SERVER, &IID_INetFwMgr,
                            (void **)&mgr );
     ok( hr == S_OK, "got %08x\n", hr );
     if (hr != S_OK) goto done;
@@ -107,7 +107,7 @@ __attribute__((used)) static HRESULT set_firewall( enum firewall_op op )
     ok( hr == S_OK, "got %08x\n", hr );
     if (hr != S_OK) goto done;
 
-    hr = CoCreateInstance( &CLSID_NetFwAuthorizedApplication, NULL, CLSCTX_INPROC_SERVER,
+    hr = CoCreateInstance( &CLSID_NetFwAuthorizedApplication, ((void*)0), CLSCTX_INPROC_SERVER,
                            &IID_INetFwAuthorizedApplication, (void **)&app );
     ok( hr == S_OK, "got %08x\n", hr );
     if (hr != S_OK) goto done;
@@ -130,7 +130,7 @@ __attribute__((used)) static HRESULT set_firewall( enum firewall_op op )
     if (hr != S_OK) goto done;
 
     INetFwAuthorizedApplication_Release( app );
-    hr = CoCreateInstance( &CLSID_NetFwAuthorizedApplication, NULL, CLSCTX_INPROC_SERVER,
+    hr = CoCreateInstance( &CLSID_NetFwAuthorizedApplication, ((void*)0), CLSCTX_INPROC_SERVER,
                            &IID_INetFwAuthorizedApplication, (void **)&app );
     ok( hr == S_OK, "got %08x\n", hr );
     if (hr != S_OK) goto done;

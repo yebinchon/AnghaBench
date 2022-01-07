@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct _fts3ht {TYPE_1__* chain; int /*<<< orphan*/  count; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct _fts3ht {TYPE_1__* chain; int count; } ;
 struct TYPE_6__ {TYPE_1__* first; } ;
 struct TYPE_5__ {struct TYPE_5__* prev; struct TYPE_5__* next; } ;
-typedef  TYPE_1__ Fts3HashElem ;
-typedef  TYPE_2__ Fts3Hash ;
+typedef TYPE_1__ Fts3HashElem ;
+typedef TYPE_2__ Fts3Hash ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void fts3HashInsertElement(
-  Fts3Hash *pH,            /* The complete hash table */
-  struct _fts3ht *pEntry,  /* The entry into which pNew is inserted */
-  Fts3HashElem *pNew       /* The element to be inserted */
+  Fts3Hash *pH,
+  struct _fts3ht *pEntry,
+  Fts3HashElem *pNew
 ){
-  Fts3HashElem *pHead;     /* First element already in pEntry */
+  Fts3HashElem *pHead;
   pHead = pEntry->chain;
   if( pHead ){
     pNew->next = pHead;
     pNew->prev = pHead->prev;
     if( pHead->prev ){ pHead->prev->next = pNew; }
-    else             { pH->first = pNew; }
+    else { pH->first = pNew; }
     pHead->prev = pNew;
   }else{
     pNew->next = pH->first;

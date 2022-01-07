@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  frame_coords; int /*<<< orphan*/  frame; int /*<<< orphan*/  dList; } ;
-struct TYPE_4__ {TYPE_1__ menu; int /*<<< orphan*/  main_dList; } ;
-typedef  TYPE_2__ psp1_video_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GU_ADD ; 
- int /*<<< orphan*/  GU_BLEND ; 
- int /*<<< orphan*/  GU_DIRECT ; 
- int /*<<< orphan*/  GU_FALSE ; 
- int /*<<< orphan*/  GU_FIX ; 
- int /*<<< orphan*/  GU_LINEAR ; 
- int /*<<< orphan*/  GU_ONE_MINUS_SRC_ALPHA ; 
- int /*<<< orphan*/  GU_PSM_4444 ; 
- int /*<<< orphan*/  GU_SEND ; 
- int /*<<< orphan*/  GU_SPRITES ; 
- int /*<<< orphan*/  GU_SRC_ALPHA ; 
- int /*<<< orphan*/  GU_TCC_RGB ; 
- int GU_TEXTURE_32BITF ; 
- int /*<<< orphan*/  GU_TFX_REPLACE ; 
- int GU_TRANSFORM_2D ; 
- int GU_VERTEX_32BITF ; 
- int /*<<< orphan*/  PSP_FRAME_VERTEX_COUNT ; 
- int /*<<< orphan*/  SCEGU_SCR_HEIGHT ; 
- int /*<<< orphan*/  SCEGU_SCR_WIDTH ; 
- int /*<<< orphan*/  next_pow2 (unsigned int) ; 
- int /*<<< orphan*/  psp_set_screen_coords (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  psp_set_tex_coords (int /*<<< orphan*/ ,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  retro_assert (int) ; 
- int /*<<< orphan*/  sceGuBlendFunc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  sceGuCopyImage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,unsigned int,unsigned int,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sceGuDrawArray (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sceGuEnable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sceGuFinish () ; 
- int /*<<< orphan*/  sceGuStart (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sceGuTexFilter (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sceGuTexFunc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sceGuTexImage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sceGuTexMode (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sceKernelDcacheWritebackRange (void const*,unsigned int) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int frame_coords; int frame; int dList; } ;
+struct TYPE_4__ {TYPE_1__ menu; int main_dList; } ;
+typedef TYPE_2__ psp1_video_t ;
+
+
+ int GU_ADD ;
+ int GU_BLEND ;
+ int GU_DIRECT ;
+ int GU_FALSE ;
+ int GU_FIX ;
+ int GU_LINEAR ;
+ int GU_ONE_MINUS_SRC_ALPHA ;
+ int GU_PSM_4444 ;
+ int GU_SEND ;
+ int GU_SPRITES ;
+ int GU_SRC_ALPHA ;
+ int GU_TCC_RGB ;
+ int GU_TEXTURE_32BITF ;
+ int GU_TFX_REPLACE ;
+ int GU_TRANSFORM_2D ;
+ int GU_VERTEX_32BITF ;
+ int PSP_FRAME_VERTEX_COUNT ;
+ int SCEGU_SCR_HEIGHT ;
+ int SCEGU_SCR_WIDTH ;
+ int next_pow2 (unsigned int) ;
+ int psp_set_screen_coords (int ,int ,int ,int ,int ,int ) ;
+ int psp_set_tex_coords (int ,unsigned int,unsigned int) ;
+ int retro_assert (int) ;
+ int sceGuBlendFunc (int ,int ,int ,int,int) ;
+ int sceGuCopyImage (int ,int ,int ,unsigned int,unsigned int,unsigned int,void*,int ,int ,unsigned int,int ) ;
+ int sceGuDrawArray (int ,int,int ,int *,int ) ;
+ int sceGuEnable (int ) ;
+ int sceGuFinish () ;
+ int sceGuStart (int ,int ) ;
+ int sceGuTexFilter (int ,int ) ;
+ int sceGuTexFunc (int ,int ) ;
+ int sceGuTexImage (int ,int ,int ,unsigned int,int ) ;
+ int sceGuTexMode (int ,int ,int ,int ) ;
+ int sceKernelDcacheWritebackRange (void const*,unsigned int) ;
 
 __attribute__((used)) static void psp_set_texture_frame(void *data, const void *frame, bool rgb32,
                                unsigned width, unsigned height, float alpha)
@@ -60,10 +60,10 @@ __attribute__((used)) static void psp_set_texture_frame(void *data, const void *
    (void) rgb32;
    (void) alpha;
 
-#ifdef DEBUG
-   /* psp->menu.frame buffer size is (480 * 272)*2 Bytes */
-   retro_assert((width*height) < (480 * 272));
-#endif
+
+
+
+
 
    psp_set_screen_coords(psp->menu.frame_coords, 0, 0,
          SCEGU_SCR_WIDTH, SCEGU_SCR_HEIGHT, 0);
@@ -83,14 +83,14 @@ __attribute__((used)) static void psp_set_texture_frame(void *data, const void *
    sceGuTexImage(0, next_pow2(width), next_pow2(height), width, psp->menu.frame);
    sceGuEnable(GU_BLEND);
 
-#if 0
-   /* default blending */
-   sceGuBlendFunc(GU_ADD, GU_SRC_ALPHA, GU_ONE_MINUS_SRC_ALPHA, 0, 0);
-#endif
+
+
+
+
    sceGuBlendFunc(GU_ADD, GU_FIX, GU_FIX, 0xF0F0F0F0, 0x0F0F0F0F);
 ;
    sceGuDrawArray(GU_SPRITES, GU_TEXTURE_32BITF | GU_VERTEX_32BITF |
-         GU_TRANSFORM_2D, PSP_FRAME_VERTEX_COUNT, NULL,
+         GU_TRANSFORM_2D, PSP_FRAME_VERTEX_COUNT, ((void*)0),
          psp->menu.frame_coords);
    sceGuFinish();
 

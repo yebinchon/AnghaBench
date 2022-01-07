@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct nda_softc {int /*<<< orphan*/  cam_iosched; int /*<<< orphan*/  deletes; } ;
-struct cam_periph {int flags; int /*<<< orphan*/  path; scalar_t__ softc; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct nda_softc {int cam_iosched; int deletes; } ;
+struct cam_periph {int flags; int path; scalar_t__ softc; } ;
 struct bio {scalar_t__ bio_cmd; TYPE_1__* bio_disk; } ;
 struct TYPE_2__ {scalar_t__ d_drv1; } ;
 
-/* Variables and functions */
- scalar_t__ BIO_DELETE ; 
- int /*<<< orphan*/  CAM_DEBUG (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  CAM_DEBUG_TRACE ; 
- int CAM_PERIPH_INVALID ; 
- int /*<<< orphan*/  ENXIO ; 
- int /*<<< orphan*/  biofinish (struct bio*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cam_iosched_queue_work (int /*<<< orphan*/ ,struct bio*) ; 
- int /*<<< orphan*/  cam_periph_lock (struct cam_periph*) ; 
- int /*<<< orphan*/  cam_periph_unlock (struct cam_periph*) ; 
- int /*<<< orphan*/  ndaschedule (struct cam_periph*) ; 
+
+ scalar_t__ BIO_DELETE ;
+ int CAM_DEBUG (int ,int ,char*) ;
+ int CAM_DEBUG_TRACE ;
+ int CAM_PERIPH_INVALID ;
+ int ENXIO ;
+ int biofinish (struct bio*,int *,int ) ;
+ int cam_iosched_queue_work (int ,struct bio*) ;
+ int cam_periph_lock (struct cam_periph*) ;
+ int cam_periph_unlock (struct cam_periph*) ;
+ int ndaschedule (struct cam_periph*) ;
 
 __attribute__((used)) static void
 ndastrategy(struct bio *bp)
 {
-	struct cam_periph *periph;
-	struct nda_softc *softc;
-	
-	periph = (struct cam_periph *)bp->bio_disk->d_drv1;
-	softc = (struct nda_softc *)periph->softc;
+ struct cam_periph *periph;
+ struct nda_softc *softc;
 
-	cam_periph_lock(periph);
+ periph = (struct cam_periph *)bp->bio_disk->d_drv1;
+ softc = (struct nda_softc *)periph->softc;
 
-	CAM_DEBUG(periph->path, CAM_DEBUG_TRACE, ("ndastrategy(%p)\n", bp));
+ cam_periph_lock(periph);
 
-	/*
-	 * If the device has been made invalid, error out
-	 */
-	if ((periph->flags & CAM_PERIPH_INVALID) != 0) {
-		cam_periph_unlock(periph);
-		biofinish(bp, NULL, ENXIO);
-		return;
-	}
-	
-	if (bp->bio_cmd == BIO_DELETE)
-		softc->deletes++;
+ CAM_DEBUG(periph->path, CAM_DEBUG_TRACE, ("ndastrategy(%p)\n", bp));
 
-	/*
-	 * Place it in the queue of disk activities for this disk
-	 */
-	cam_iosched_queue_work(softc->cam_iosched, bp);
 
-	/*
-	 * Schedule ourselves for performing the work.
-	 */
-	ndaschedule(periph);
-	cam_periph_unlock(periph);
 
-	return;
+
+ if ((periph->flags & CAM_PERIPH_INVALID) != 0) {
+  cam_periph_unlock(periph);
+  biofinish(bp, ((void*)0), ENXIO);
+  return;
+ }
+
+ if (bp->bio_cmd == BIO_DELETE)
+  softc->deletes++;
+
+
+
+
+ cam_iosched_queue_work(softc->cam_iosched, bp);
+
+
+
+
+ ndaschedule(periph);
+ cam_periph_unlock(periph);
+
+ return;
 }

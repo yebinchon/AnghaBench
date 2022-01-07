@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  ip_addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLP_D2 ; 
-#define  IP_LINK_DOWN 129 
-#define  IP_LINK_UP 128 
- int /*<<< orphan*/  LEDWrite (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UARTprintf (char*,...) ; 
- int /*<<< orphan*/  g_mgr ; 
- int /*<<< orphan*/  ipaddr_ntoa (int /*<<< orphan*/  const*) ; 
- int lwIPLocalIPAddrGet () ; 
- int /*<<< orphan*/  mg_mgr_poll (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+typedef int ip_addr_t ;
+
+
+ int CLP_D2 ;
+
+
+ int LEDWrite (int ,int ) ;
+ int UARTprintf (char*,...) ;
+ int g_mgr ;
+ int ipaddr_ntoa (int const*) ;
+ int lwIPLocalIPAddrGet () ;
+ int mg_mgr_poll (int *,int ) ;
 
 void lwIPHostTimerHandler(void) {
-  static uint32_t old_ip = IP_LINK_DOWN;
+  static uint32_t old_ip = 129;
   uint32_t ip = lwIPLocalIPAddrGet();
   if (ip != old_ip) {
     switch (ip) {
-      case IP_LINK_DOWN: {
+      case 129: {
         UARTprintf("Link down.\r\n");
         LEDWrite(CLP_D2, 0);
         break;
       }
-      case IP_LINK_UP: {
+      case 128: {
         UARTprintf("Link up.\r\n");
         LEDWrite(CLP_D2, 0);
         break;

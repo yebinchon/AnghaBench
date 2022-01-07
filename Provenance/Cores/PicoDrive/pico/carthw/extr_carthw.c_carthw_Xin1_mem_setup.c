@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  carthw_Xin1_write8 ; 
- int /*<<< orphan*/  cpu68k_map_set (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  m68k_write8_map ; 
+ int carthw_Xin1_write8 ;
+ int cpu68k_map_set (int ,int,int,int ,int) ;
+ int m68k_write8_map ;
 
 __attribute__((used)) static void carthw_Xin1_mem_setup(void)
 {
-	cpu68k_map_set(m68k_write8_map, 0xa10000, 0xa1ffff, carthw_Xin1_write8, 1);
+ cpu68k_map_set(m68k_write8_map, 0xa10000, 0xa1ffff, carthw_Xin1_write8, 1);
 }

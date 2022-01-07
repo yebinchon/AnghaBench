@@ -1,55 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  add_piece_to_board (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  board ; 
- scalar_t__ clear_lines (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  copy_piece_from_to (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int down_delay ; 
- int /*<<< orphan*/  draw_piece (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  draw_piece_moved (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  empty_piece ; 
- scalar_t__ first_run ; 
- int game_over ; 
- int get_piece_min_y (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_shape_char (int) ; 
- scalar_t__ is_piece_hitting (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int myrandom (int) ; 
- scalar_t__ next_down ; 
- int /*<<< orphan*/  piece ; 
- int r ; 
- int rotation ; 
- int score ; 
- int /*<<< orphan*/  send_goto_xy (int,int) ; 
- int /*<<< orphan*/  set_piece (int /*<<< orphan*/ ,int,int) ; 
- int shape ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  temp_piece ; 
- int tetris_get_keypress () ; 
- int /*<<< orphan*/  tetris_send_down () ; 
- int /*<<< orphan*/  tetris_send_string (char*) ; 
- scalar_t__ time ; 
- int x ; 
- int y ; 
+ int add_piece_to_board (int ,int ,int,int) ;
+ int board ;
+ scalar_t__ clear_lines (int ) ;
+ int copy_piece_from_to (int ,int ) ;
+ int down_delay ;
+ int draw_piece (int ,int,int,int ,int ) ;
+ int draw_piece_moved (int ,int,int,int ,int,int) ;
+ int empty_piece ;
+ scalar_t__ first_run ;
+ int game_over ;
+ int get_piece_min_y (int ) ;
+ int get_shape_char (int) ;
+ scalar_t__ is_piece_hitting (int ,int ,int,int) ;
+ int myrandom (int) ;
+ scalar_t__ next_down ;
+ int piece ;
+ int r ;
+ int rotation ;
+ int score ;
+ int send_goto_xy (int,int) ;
+ int set_piece (int ,int,int) ;
+ int shape ;
+ int sprintf (char*,char*,int) ;
+ int temp_piece ;
+ int tetris_get_keypress () ;
+ int tetris_send_down () ;
+ int tetris_send_string (char*) ;
+ scalar_t__ time ;
+ int x ;
+ int y ;
 
 int tetris_tick(int ms_since_previous_tick) {
   if (game_over) {
     return 0;
   }
-      
+
   time += ms_since_previous_tick;
-  
+
   if (first_run || time > next_down) {
     if (first_run || is_piece_hitting(board, piece, x, y + 1)) {
       first_run = 0;
@@ -61,12 +53,12 @@ int tetris_tick(int ms_since_previous_tick) {
       if (down_delay < 100) {
         down_delay = 100;
       }
-        
+
       rotation = 0;
       shape = r % 7;
       r = myrandom(r);
       set_piece(piece, shape, rotation);
-      
+
       x = 1;
       y = - get_piece_min_y(piece);
       draw_piece_moved(get_shape_char(shape), 1 + x, y, piece, 0, 0);
@@ -88,9 +80,9 @@ int tetris_tick(int ms_since_previous_tick) {
     }
     next_down = time + down_delay;
   } else {
-      
+
     switch (tetris_get_keypress()) {
-    case 1: { // up
+    case 1: {
       int oldrotation = rotation;
       rotation = (rotation + 1) % 4;
       copy_piece_from_to(piece, temp_piece);
@@ -103,13 +95,13 @@ int tetris_tick(int ms_since_previous_tick) {
       }
       break;
     }
-    case 2: // left
+    case 2:
       if (!is_piece_hitting(board, piece, x - 1, y)) {
         x--;
         draw_piece_moved(get_shape_char(shape), 1 + x, y, piece, -1, 0);
       }
       break;
-    case 3: {// down
+    case 3: {
       int starty = y;
       while (!is_piece_hitting(board, piece, x, y + 1)) {
         y++;
@@ -121,7 +113,7 @@ int tetris_tick(int ms_since_previous_tick) {
       next_down = time + down_delay;
       break;
     }
-    case 4: // right
+    case 4:
       if (!is_piece_hitting(board, piece, x + 1, y)) {
         x++;
         draw_piece_moved(get_shape_char(shape), 1 + x, y, piece, 1, 0);

@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  db; } ;
-typedef  int /*<<< orphan*/  PGresult ;
-typedef  int PGTransactionStatusType ;
 
-/* Variables and functions */
-#define  PQTRANS_IDLE 130 
-#define  PQTRANS_INERROR 129 
-#define  PQTRANS_INTRANS 128 
- int /*<<< orphan*/  PQclear (int /*<<< orphan*/ *) ; 
- int PQtransactionStatus (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * PSQLexec (char*) ; 
- int /*<<< orphan*/  pg_log_error (char*,char const*) ; 
- TYPE_1__ pset ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int db; } ;
+typedef int PGresult ;
+typedef int PGTransactionStatusType ;
+
+
+
+
+
+ int PQclear (int *) ;
+ int PQtransactionStatus (int ) ;
+ int * PSQLexec (char*) ;
+ int pg_log_error (char*,char const*) ;
+ TYPE_1__ pset ;
 
 __attribute__((used)) static bool
 start_lo_xact(const char *operation, bool *own_transaction)
 {
-	PGTransactionStatusType tstatus;
-	PGresult   *res;
+ PGTransactionStatusType tstatus;
+ PGresult *res;
 
-	*own_transaction = false;
+ *own_transaction = 0;
 
-	if (!pset.db)
-	{
-		pg_log_error("%s: not connected to a database", operation);
-		return false;
-	}
+ if (!pset.db)
+ {
+  pg_log_error("%s: not connected to a database", operation);
+  return 0;
+ }
 
-	tstatus = PQtransactionStatus(pset.db);
+ tstatus = PQtransactionStatus(pset.db);
 
-	switch (tstatus)
-	{
-		case PQTRANS_IDLE:
-			/* need to start our own xact */
-			if (!(res = PSQLexec("BEGIN")))
-				return false;
-			PQclear(res);
-			*own_transaction = true;
-			break;
-		case PQTRANS_INTRANS:
-			/* use the existing xact */
-			break;
-		case PQTRANS_INERROR:
-			pg_log_error("%s: current transaction is aborted", operation);
-			return false;
-		default:
-			pg_log_error("%s: unknown transaction status", operation);
-			return false;
-	}
+ switch (tstatus)
+ {
+  case 130:
 
-	return true;
+   if (!(res = PSQLexec("BEGIN")))
+    return 0;
+   PQclear(res);
+   *own_transaction = 1;
+   break;
+  case 128:
+
+   break;
+  case 129:
+   pg_log_error("%s: current transaction is aborted", operation);
+   return 0;
+  default:
+   pg_log_error("%s: unknown transaction status", operation);
+   return 0;
+ }
+
+ return 1;
 }

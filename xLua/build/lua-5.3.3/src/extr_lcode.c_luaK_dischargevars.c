@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int const vt; void* idx; void* t; } ;
 struct TYPE_7__ {TYPE_1__ ind; void* info; } ;
 struct TYPE_8__ {int k; TYPE_2__ u; } ;
-typedef  TYPE_3__ expdesc ;
-typedef  int /*<<< orphan*/  OpCode ;
-typedef  int /*<<< orphan*/  FuncState ;
+typedef TYPE_3__ expdesc ;
+typedef int OpCode ;
+typedef int FuncState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OP_GETTABLE ; 
- int /*<<< orphan*/  OP_GETTABUP ; 
- int /*<<< orphan*/  OP_GETUPVAL ; 
-#define  VCALL 132 
-#define  VINDEXED 131 
-#define  VLOCAL 130 
- int VNONRELOC ; 
- void* VRELOCABLE ; 
-#define  VUPVAL 129 
-#define  VVARARG 128 
- int /*<<< orphan*/  freereg (int /*<<< orphan*/ *,void*) ; 
- void* luaK_codeABC (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,void*) ; 
- int /*<<< orphan*/  luaK_setoneret (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  lua_assert (int) ; 
+
+ int OP_GETTABLE ;
+ int OP_GETTABUP ;
+ int OP_GETUPVAL ;
+
+
+
+ int VNONRELOC ;
+ void* VRELOCABLE ;
+
+
+ int freereg (int *,void*) ;
+ void* luaK_codeABC (int *,int ,int ,void*,void*) ;
+ int luaK_setoneret (int *,TYPE_3__*) ;
+ int lua_assert (int) ;
 
 void luaK_dischargevars (FuncState *fs, expdesc *e) {
   switch (e->k) {
-    case VLOCAL: {  /* already in a register */
-      e->k = VNONRELOC;  /* becomes a non-relocatable value */
+    case 130: {
+      e->k = VNONRELOC;
       break;
     }
-    case VUPVAL: {  /* move value to some (pending) register */
+    case 129: {
       e->u.info = luaK_codeABC(fs, OP_GETUPVAL, 0, e->u.info, 0);
       e->k = VRELOCABLE;
       break;
     }
-    case VINDEXED: {
+    case 131: {
       OpCode op;
       freereg(fs, e->u.ind.idx);
-      if (e->u.ind.vt == VLOCAL) {  /* is 't' in a register? */
+      if (e->u.ind.vt == 130) {
         freereg(fs, e->u.ind.t);
         op = OP_GETTABLE;
       }
       else {
-        lua_assert(e->u.ind.vt == VUPVAL);
-        op = OP_GETTABUP;  /* 't' is in an upvalue */
+        lua_assert(e->u.ind.vt == 129);
+        op = OP_GETTABUP;
       }
       e->u.info = luaK_codeABC(fs, op, 0, e->u.ind.t, e->u.ind.idx);
       e->k = VRELOCABLE;
       break;
     }
-    case VVARARG: case VCALL: {
+    case 128: case 132: {
       luaK_setoneret(fs, e);
       break;
     }
-    default: break;  /* there is one value available (somewhere) */
+    default: break;
   }
 }

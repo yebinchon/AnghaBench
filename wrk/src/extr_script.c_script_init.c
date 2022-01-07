@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * L; } ;
-typedef  TYPE_1__ thread ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lua_call (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_getfield (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_getglobal (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_newtable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_rawseti (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  script_push_thread (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * L; } ;
+typedef TYPE_1__ thread ;
+typedef int lua_State ;
+
+
+ int lua_call (int *,int,int ) ;
+ int lua_getfield (int *,int,char*) ;
+ int lua_getglobal (int *,char*) ;
+ int lua_newtable (int *) ;
+ int lua_pop (int *,int) ;
+ int lua_pushstring (int *,char*) ;
+ int lua_rawseti (int *,int,int) ;
+ int lua_setfield (int *,int,char*) ;
+ int script_push_thread (int *,TYPE_1__*) ;
 
 void script_init(lua_State *L, thread *t, int argc, char **argv) {
     lua_getglobal(t->L, "wrk");

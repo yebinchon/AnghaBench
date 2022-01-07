@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint64_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
 struct TYPE_4__ {int state64; int frame_start_found; } ;
 struct TYPE_5__ {int cur_byte; int remaining; int h; int w; TYPE_1__ pc; } ;
-typedef  TYPE_1__ ParseContext ;
-typedef  TYPE_2__ DNXHDParserContext ;
+typedef TYPE_1__ ParseContext ;
+typedef TYPE_2__ DNXHDParserContext ;
 
-/* Variables and functions */
- int END_NOT_FOUND ; 
- int avpriv_dnxhd_get_frame_size (int) ; 
- int avpriv_dnxhd_get_hr_frame_size (int,int,int) ; 
- scalar_t__ ff_dnxhd_check_header_prefix (int) ; 
+
+ int END_NOT_FOUND ;
+ int avpriv_dnxhd_get_frame_size (int) ;
+ int avpriv_dnxhd_get_hr_frame_size (int,int,int) ;
+ scalar_t__ ff_dnxhd_check_header_prefix (int) ;
 
 __attribute__((used)) static int dnxhd_find_frame_end(DNXHDParserContext *dctx,
                                 const uint8_t *buf, int buf_size)
@@ -47,7 +47,7 @@ __attribute__((used)) static int dnxhd_find_frame_end(DNXHDParserContext *dctx,
     }
 
     if (pic_found && !dctx->remaining) {
-        if (!buf_size) /* EOF considered as end of frame */
+        if (!buf_size)
             return 0;
         for (; i < buf_size; i++) {
             dctx->cur_byte++;
@@ -80,7 +80,7 @@ __attribute__((used)) static int dnxhd_find_frame_end(DNXHDParserContext *dctx,
                     return remaining;
                 } else {
                     dctx->remaining -= buf_size;
-                    // Update variables for correctness, they are currently not used beyond here
+
                     state = -1;
                     dctx->cur_byte += buf_size - i;
                     break;

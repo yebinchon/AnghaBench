@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * cmsHTRANSFORM ;
-typedef  int /*<<< orphan*/  cmsHPROFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Create_AboveRGB () ; 
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  INTENT_ABSOLUTE_COLORIMETRIC ; 
- int /*<<< orphan*/  TYPE_GRAY_FLT ; 
- int /*<<< orphan*/  TYPE_RGB_FLT ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsCreateNULLProfile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * cmsCreateProofingTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  cmsCreate_sRGBProfile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDeleteTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int cmsFLAGS_GAMUTCHECK ; 
- int cmsFLAGS_SOFTPROOFING ; 
+
+
+
+typedef int * cmsHTRANSFORM ;
+typedef int cmsHPROFILE ;
+
+
+ int Create_AboveRGB () ;
+ int DbgThread () ;
+ int INTENT_ABSOLUTE_COLORIMETRIC ;
+ int TYPE_GRAY_FLT ;
+ int TYPE_RGB_FLT ;
+ int cmsCloseProfile (int ,int ) ;
+ int cmsCreateNULLProfile (int ) ;
+ int * cmsCreateProofingTransform (int ,int ,int ,int ,int ,int ,int ,int ,int) ;
+ int cmsCreate_sRGBProfile (int ) ;
+ int cmsDeleteTransform (int ,int *) ;
+ int cmsFLAGS_GAMUTCHECK ;
+ int cmsFLAGS_SOFTPROOFING ;
 
 __attribute__((used)) static
 int CheckProofingIntersection(void)
@@ -52,8 +52,8 @@ int CheckProofingIntersection(void)
     cmsCloseProfile(DbgThread(), hnd2);
     cmsCloseProfile(DbgThread(), profile_null);
 
-    // Failed?
-    if (transform == NULL) return 0;
+
+    if (transform == ((void*)0)) return 0;
 
     cmsDeleteTransform(DbgThread(), transform);
     return 1;

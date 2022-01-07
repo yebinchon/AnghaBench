@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-union cpu_time_count {int /*<<< orphan*/  sched; int /*<<< orphan*/  cpu; } ;
+
+
+
+
+union cpu_time_count {int sched; int cpu; } ;
 struct task_struct {int dummy; } ;
-typedef  int /*<<< orphan*/  clockid_t ;
+typedef int clockid_t ;
 
-/* Variables and functions */
-#define  CPUCLOCK_PROF 130 
-#define  CPUCLOCK_SCHED 129 
-#define  CPUCLOCK_VIRT 128 
- int CPUCLOCK_WHICH (int /*<<< orphan*/  const) ; 
- int EINVAL ; 
- int /*<<< orphan*/  prof_ticks (struct task_struct*) ; 
- int /*<<< orphan*/  task_sched_runtime (struct task_struct*) ; 
- int /*<<< orphan*/  virt_ticks (struct task_struct*) ; 
+
+
+
+
+ int CPUCLOCK_WHICH (int const) ;
+ int EINVAL ;
+ int prof_ticks (struct task_struct*) ;
+ int task_sched_runtime (struct task_struct*) ;
+ int virt_ticks (struct task_struct*) ;
 
 __attribute__((used)) static int cpu_clock_sample(const clockid_t which_clock, struct task_struct *p,
-			    union cpu_time_count *cpu)
+       union cpu_time_count *cpu)
 {
-	switch (CPUCLOCK_WHICH(which_clock)) {
-	default:
-		return -EINVAL;
-	case CPUCLOCK_PROF:
-		cpu->cpu = prof_ticks(p);
-		break;
-	case CPUCLOCK_VIRT:
-		cpu->cpu = virt_ticks(p);
-		break;
-	case CPUCLOCK_SCHED:
-		cpu->sched = task_sched_runtime(p);
-		break;
-	}
-	return 0;
+ switch (CPUCLOCK_WHICH(which_clock)) {
+ default:
+  return -EINVAL;
+ case 130:
+  cpu->cpu = prof_ticks(p);
+  break;
+ case 128:
+  cpu->cpu = virt_ticks(p);
+  break;
+ case 129:
+  cpu->sched = task_sched_runtime(p);
+  break;
+ }
+ return 0;
 }

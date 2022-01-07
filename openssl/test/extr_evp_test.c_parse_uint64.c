@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_error (char*,char const*) ; 
- int /*<<< orphan*/  TEST_info (char*) ; 
- int /*<<< orphan*/  TEST_true (char const) ; 
- int UINT64_MAX ; 
- char const isdigit (unsigned char) ; 
+
+
+
+typedef int uint64_t ;
+
+
+ int TEST_error (char*,char const*) ;
+ int TEST_info (char*) ;
+ int TEST_true (char const) ;
+ int UINT64_MAX ;
+ char const isdigit (unsigned char) ;
 
 __attribute__((used)) static int parse_uint64(const char *value, uint64_t *pr)
 {

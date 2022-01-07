@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-struct TYPE_4__ {double member_0; double member_1; double member_2; double member_3; double Width; double Height; int /*<<< orphan*/  Y; int /*<<< orphan*/  X; } ;
-typedef  double REAL ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  scalar_t__ GpUnit ;
-typedef  scalar_t__ GpStatus ;
-typedef  TYPE_1__ GpRectF ;
-typedef  int /*<<< orphan*/  GpMetafile ;
-typedef  int /*<<< orphan*/  GpImage ;
-typedef  int /*<<< orphan*/  GpGraphics ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateCompatibleDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EmfTypeEmfPlusOnly ; 
- scalar_t__ GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- scalar_t__ GdipDisposeImage (int /*<<< orphan*/ *) ; 
- scalar_t__ GdipGetImageBounds (int /*<<< orphan*/ *,TYPE_1__*,scalar_t__*) ; 
- scalar_t__ GdipGetImageGraphicsContext (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ GdipGetImageHorizontalResolution (int /*<<< orphan*/ *,double*) ; 
- scalar_t__ GdipGetImageVerticalResolution (int /*<<< orphan*/ *,double*) ; 
- scalar_t__ GdipRecordMetafile (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__ const*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  MetafileFrameUnitInch ; 
- scalar_t__ Ok ; 
- scalar_t__ UnitPixel ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  expect (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  expectf (double,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expectf_ (double,double,double) ; 
- int /*<<< orphan*/  ok (int,char*,double) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+struct TYPE_4__ {double member_0; double member_1; double member_2; double member_3; double Width; double Height; int Y; int X; } ;
+typedef double REAL ;
+typedef int HDC ;
+typedef scalar_t__ GpUnit ;
+typedef scalar_t__ GpStatus ;
+typedef TYPE_1__ GpRectF ;
+typedef int GpMetafile ;
+typedef int GpImage ;
+typedef int GpGraphics ;
+
+
+ int CreateCompatibleDC (int ) ;
+ int DeleteDC (int ) ;
+ int EmfTypeEmfPlusOnly ;
+ scalar_t__ GdipDeleteGraphics (int *) ;
+ scalar_t__ GdipDisposeImage (int *) ;
+ scalar_t__ GdipGetImageBounds (int *,TYPE_1__*,scalar_t__*) ;
+ scalar_t__ GdipGetImageGraphicsContext (int *,int **) ;
+ scalar_t__ GdipGetImageHorizontalResolution (int *,double*) ;
+ scalar_t__ GdipGetImageVerticalResolution (int *,double*) ;
+ scalar_t__ GdipRecordMetafile (int ,int ,TYPE_1__ const*,int ,char const*,int **) ;
+ int MetafileFrameUnitInch ;
+ scalar_t__ Ok ;
+ scalar_t__ UnitPixel ;
+ scalar_t__ broken (int) ;
+ int expect (scalar_t__,scalar_t__) ;
+ int expectf (double,int ) ;
+ int expectf_ (double,double,double) ;
+ int ok (int,char*,double) ;
 
 __attribute__((used)) static void test_frameunit(void)
 {
@@ -69,9 +69,9 @@ __attribute__((used)) static void test_frameunit(void)
     expect(UnitPixel, unit);
     expectf(0.0, bounds.X);
     expectf(0.0, bounds.Y);
-    ok(bounds.Width == 1.0 || broken(bounds.Width == 0.0) /* xp sp1 */,
+    ok(bounds.Width == 1.0 || broken(bounds.Width == 0.0) ,
         "expected 1.0, got %f\n", bounds.Width);
-    ok(bounds.Height == 1.0 || broken(bounds.Height == 0.0) /* xp sp1 */,
+    ok(bounds.Height == 1.0 || broken(bounds.Height == 0.0) ,
         "expected 1.0, got %f\n", bounds.Height);
 
     stat = GdipGetImageGraphicsContext((GpImage*)metafile, &graphics);
@@ -82,9 +82,9 @@ __attribute__((used)) static void test_frameunit(void)
     expect(UnitPixel, unit);
     expectf(0.0, bounds.X);
     expectf(0.0, bounds.Y);
-    ok(bounds.Width == 1.0 || broken(bounds.Width == 0.0) /* xp sp1 */,
+    ok(bounds.Width == 1.0 || broken(bounds.Width == 0.0) ,
         "expected 1.0, got %f\n", bounds.Width);
-    ok(bounds.Height == 1.0 || broken(bounds.Height == 0.0) /* xp sp1 */,
+    ok(bounds.Height == 1.0 || broken(bounds.Height == 0.0) ,
         "expected 1.0, got %f\n", bounds.Height);
 
     stat = GdipDeleteGraphics(graphics);

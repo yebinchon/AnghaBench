@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  voidp ;
-typedef  int /*<<< orphan*/  res ;
-typedef  int /*<<< orphan*/  amq_mount_stats ;
-typedef  int /*<<< orphan*/  XDRPROC_T_TYPE ;
-typedef  int /*<<< orphan*/  SVC_IN_ARG_TYPE ;
-typedef  int /*<<< orphan*/  CLIENT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AMQPROC_STATS ; 
- scalar_t__ RPC_SUCCESS ; 
- int /*<<< orphan*/  TIMEOUT ; 
- scalar_t__ clnt_call (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ xdr_amq_mount_stats ; 
- scalar_t__ xdr_void ; 
+
+
+
+typedef int voidp ;
+typedef int res ;
+typedef int amq_mount_stats ;
+typedef int XDRPROC_T_TYPE ;
+typedef int SVC_IN_ARG_TYPE ;
+typedef int CLIENT ;
+
+
+ int AMQPROC_STATS ;
+ scalar_t__ RPC_SUCCESS ;
+ int TIMEOUT ;
+ scalar_t__ clnt_call (int *,int ,int ,int ,int ,int ,int ) ;
+ int memset (char*,int ,int) ;
+ scalar_t__ xdr_amq_mount_stats ;
+ scalar_t__ xdr_void ;
 
 amq_mount_stats *
 amqproc_stats_1(voidp argp, CLIENT *clnt)
@@ -33,11 +33,11 @@ amqproc_stats_1(voidp argp, CLIENT *clnt)
 
   memset((char *) &res, 0, sizeof(res));
   if (clnt_call(clnt, AMQPROC_STATS,
-		(XDRPROC_T_TYPE) xdr_void, argp,
-		(XDRPROC_T_TYPE) xdr_amq_mount_stats,
-		(SVC_IN_ARG_TYPE) &res,
-		TIMEOUT) != RPC_SUCCESS) {
-    return (NULL);
+  (XDRPROC_T_TYPE) xdr_void, argp,
+  (XDRPROC_T_TYPE) xdr_amq_mount_stats,
+  (SVC_IN_ARG_TYPE) &res,
+  TIMEOUT) != RPC_SUCCESS) {
+    return (((void*)0));
   }
   return (&res);
 }

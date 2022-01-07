@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_17__ {int pce_size; int /*<<< orphan*/ * pce_data; scalar_t__ write_adts; } ;
-struct TYPE_16__ {int /*<<< orphan*/  extradata; int /*<<< orphan*/  extradata_size; } ;
-struct TYPE_15__ {int /*<<< orphan*/ * pb; TYPE_1__** streams; TYPE_5__* priv_data; } ;
-struct TYPE_14__ {int size; int /*<<< orphan*/ * data; } ;
+
+
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_17__ {int pce_size; int * pce_data; scalar_t__ write_adts; } ;
+struct TYPE_16__ {int extradata; int extradata_size; } ;
+struct TYPE_15__ {int * pb; TYPE_1__** streams; TYPE_5__* priv_data; } ;
+struct TYPE_14__ {int size; int * data; } ;
 struct TYPE_13__ {TYPE_4__* codecpar; } ;
-typedef  TYPE_2__ AVPacket ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_3__ AVFormatContext ;
-typedef  TYPE_4__ AVCodecParameters ;
-typedef  TYPE_5__ ADTSContext ;
+typedef TYPE_2__ AVPacket ;
+typedef int AVIOContext ;
+typedef TYPE_3__ AVFormatContext ;
+typedef TYPE_4__ AVCodecParameters ;
+typedef TYPE_5__ ADTSContext ;
 
-/* Variables and functions */
- int ADTS_HEADER_SIZE ; 
- int /*<<< orphan*/  AV_PKT_DATA_NEW_EXTRADATA ; 
- int adts_decode_extradata (TYPE_3__*,TYPE_5__*,int /*<<< orphan*/ *,int) ; 
- int adts_write_frame_header (TYPE_5__*,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/ * av_packet_get_side_data (TYPE_2__*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int ff_alloc_extradata (TYPE_4__*,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+ int ADTS_HEADER_SIZE ;
+ int AV_PKT_DATA_NEW_EXTRADATA ;
+ int adts_decode_extradata (TYPE_3__*,TYPE_5__*,int *,int) ;
+ int adts_write_frame_header (TYPE_5__*,int *,int,int) ;
+ int * av_packet_get_side_data (TYPE_2__*,int ,int*) ;
+ int avio_write (int *,int *,int) ;
+ int ff_alloc_extradata (TYPE_4__*,int) ;
+ int memcpy (int ,int *,int) ;
 
 __attribute__((used)) static int adts_write_packet(AVFormatContext *s, AVPacket *pkt)
 {

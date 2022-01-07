@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  add_history (char*) ; 
- char* continuePrompt ; 
- char* local_getline (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* mainPrompt ; 
- char* readline (char*) ; 
+
+
+
+typedef int FILE ;
+
+
+ int add_history (char*) ;
+ char* continuePrompt ;
+ char* local_getline (int ,int *,int ) ;
+ char* mainPrompt ;
+ char* readline (char*) ;
 
 __attribute__((used)) static char *one_input_line(const char *zPrior, FILE *in){
   char *zPrompt;
@@ -31,8 +31,8 @@ __attribute__((used)) static char *one_input_line(const char *zPrior, FILE *in){
     zPrompt = mainPrompt;
   }
   zResult = readline(zPrompt);
-#if defined(HAVE_READLINE) && HAVE_READLINE==1
-  if( zResult && *zResult ) add_history(zResult);
-#endif
+
+
+
   return zResult;
 }

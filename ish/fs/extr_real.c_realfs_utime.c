@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timespec {int dummy; } ;
-struct mount {int /*<<< orphan*/  root_fd; } ;
+struct mount {int root_fd; } ;
 
-/* Variables and functions */
- int errno_map () ; 
- int /*<<< orphan*/  fix_path (char const*) ; 
- int utimensat (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct timespec*,int /*<<< orphan*/ ) ; 
+
+ int errno_map () ;
+ int fix_path (char const*) ;
+ int utimensat (int ,int ,struct timespec*,int ) ;
 
 int realfs_utime(struct mount *mount, const char *path, struct timespec atime, struct timespec mtime) {
     struct timespec times[2] = {atime, mtime};

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  svn_client_conflict_t ;
-typedef  int /*<<< orphan*/  svn_client_conflict_option_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  add_resolution_option (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * apr_array_make (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  assert_prop_conflict (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  resolve_postpone ; 
- int /*<<< orphan*/  resolve_prop_conflict ; 
- int /*<<< orphan*/  svn_client_conflict_option_base_text ; 
- int /*<<< orphan*/  svn_client_conflict_option_incoming_text ; 
- int /*<<< orphan*/  svn_client_conflict_option_incoming_text_where_conflicted ; 
- int /*<<< orphan*/  svn_client_conflict_option_merged_text ; 
- int /*<<< orphan*/  svn_client_conflict_option_postpone ; 
- int /*<<< orphan*/  svn_client_conflict_option_working_text ; 
- int /*<<< orphan*/  svn_client_conflict_option_working_text_where_conflicted ; 
+
+
+
+typedef int svn_error_t ;
+typedef int svn_client_ctx_t ;
+typedef int svn_client_conflict_t ;
+typedef int svn_client_conflict_option_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int add_resolution_option (int *,int *,int ,int ,int ,int ) ;
+ int * apr_array_make (int *,int,int) ;
+ int assert_prop_conflict (int *,int *) ;
+ int resolve_postpone ;
+ int resolve_prop_conflict ;
+ int svn_client_conflict_option_base_text ;
+ int svn_client_conflict_option_incoming_text ;
+ int svn_client_conflict_option_incoming_text_where_conflicted ;
+ int svn_client_conflict_option_merged_text ;
+ int svn_client_conflict_option_postpone ;
+ int svn_client_conflict_option_working_text ;
+ int svn_client_conflict_option_working_text_where_conflicted ;
 
 svn_error_t *
 svn_client_conflict_prop_get_resolution_options(apr_array_header_t **options,

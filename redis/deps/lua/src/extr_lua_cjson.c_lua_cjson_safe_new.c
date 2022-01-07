@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  json_protect_conversion ; 
- int /*<<< orphan*/  lua_cjson_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_getfield (int /*<<< orphan*/ *,int,char const*) ; 
- int /*<<< orphan*/  lua_pushcclosure (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lua_pushcfunction (int /*<<< orphan*/ *,int (*) (int /*<<< orphan*/ *)) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,char const*) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int json_protect_conversion ;
+ int lua_cjson_new (int *) ;
+ int lua_getfield (int *,int,char const*) ;
+ int lua_pushcclosure (int *,int ,int) ;
+ int lua_pushcfunction (int *,int (*) (int *)) ;
+ int lua_setfield (int *,int,char const*) ;
 
 __attribute__((used)) static int lua_cjson_safe_new(lua_State *l)
 {
-    const char *func[] = { "decode", "encode", NULL };
+    const char *func[] = { "decode", "encode", ((void*)0) };
     int i;
 
     lua_cjson_new(l);
 
-    /* Fix new() method */
+
     lua_pushcfunction(l, lua_cjson_safe_new);
     lua_setfield(l, -2, "new");
 

@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ApphelpCacheServiceDump ; 
- int /*<<< orphan*/  ApphelpCacheServiceFlush ; 
- int /*<<< orphan*/  ApphelpCacheServiceLookup ; 
- int /*<<< orphan*/  ApphelpCacheServiceRemove ; 
- int /*<<< orphan*/  ApphelpCacheServiceUpdate ; 
- int /*<<< orphan*/  ApphelpDBGReadRegistry ; 
- int /*<<< orphan*/  ApphelpDBGWriteRegistry ; 
- int /*<<< orphan*/  CallApphelp (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DumpRegistryData (int) ; 
- int HandleDumpAttributes (int,char**,int*,char*) ; 
- int HandleImageArg (int,char**,int*,char,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ IsOpt (char*,char*) ; 
- int /*<<< orphan*/  _getch () ; 
- int /*<<< orphan*/  xprintf (char*,...) ; 
+ int ApphelpCacheServiceDump ;
+ int ApphelpCacheServiceFlush ;
+ int ApphelpCacheServiceLookup ;
+ int ApphelpCacheServiceRemove ;
+ int ApphelpCacheServiceUpdate ;
+ int ApphelpDBGReadRegistry ;
+ int ApphelpDBGWriteRegistry ;
+ int CallApphelp (int ,int *) ;
+ int DumpRegistryData (int) ;
+ int HandleDumpAttributes (int,char**,int*,char*) ;
+ int HandleImageArg (int,char**,int*,char,int ,char*) ;
+ scalar_t__ IsOpt (char*,char*) ;
+ int _getch () ;
+ int xprintf (char*,...) ;
 
 int main(int argc, char* argv[])
 {
@@ -37,7 +29,7 @@ int main(int argc, char* argv[])
         if (IsOpt(arg, "d"))
         {
             xprintf("Calling ApphelpCacheServiceDump\n");
-            CallApphelp(ApphelpCacheServiceDump, NULL);
+            CallApphelp(ApphelpCacheServiceDump, ((void*)0));
             unhandled = 0;
         }
         else if (IsOpt(arg, "h"))
@@ -48,19 +40,19 @@ int main(int argc, char* argv[])
         else if (IsOpt(arg, "f"))
         {
             xprintf("Calling ApphelpCacheServiceFlush\n");
-            CallApphelp(ApphelpCacheServiceFlush, NULL);
+            CallApphelp(ApphelpCacheServiceFlush, ((void*)0));
             unhandled = 0;
         }
         else if (IsOpt(arg, "z"))
         {
             xprintf("Calling ApphelpDBGReadRegistry\n");
-            CallApphelp(ApphelpDBGReadRegistry, NULL);
+            CallApphelp(ApphelpDBGReadRegistry, ((void*)0));
             unhandled = 0;
         }
         else if (IsOpt(arg, "x"))
         {
             xprintf("Calling ApphelpDBGWriteRegistry\n");
-            CallApphelp(ApphelpDBGWriteRegistry, NULL);
+            CallApphelp(ApphelpDBGWriteRegistry, ((void*)0));
             unhandled = 0;
         }
         else if (IsOpt(arg, "l"))

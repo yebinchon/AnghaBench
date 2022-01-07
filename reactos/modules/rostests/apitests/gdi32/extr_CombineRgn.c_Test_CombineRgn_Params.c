@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * HRGN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CombineRgn (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * CreateRectRgn (int,int,int,int) ; 
- int /*<<< orphan*/  ERROR ; 
- int ERROR_INVALID_PARAMETER ; 
- int GetLastError () ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int /*<<< orphan*/  ok_long (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int * HRGN ;
+
+
+ int CombineRgn (int *,int *,int *,int) ;
+ int * CreateRectRgn (int,int,int,int) ;
+ int ERROR ;
+ int ERROR_INVALID_PARAMETER ;
+ int GetLastError () ;
+ int SetLastError (int) ;
+ int ok (int,char*,int) ;
+ int ok_long (int ,int ) ;
 
 void Test_CombineRgn_Params()
 {
@@ -31,7 +31,7 @@ void Test_CombineRgn_Params()
     hrgn3 = CreateRectRgn(5, 5, 20, 20);
 
     SetLastError(0xbadbabe);
-    ok_long(CombineRgn(NULL, NULL, NULL, 0), ERROR);
+    ok_long(CombineRgn(((void*)0), ((void*)0), ((void*)0), 0), ERROR);
     ok_long(CombineRgn(hrgn1, hrgn2, hrgn3, 0), ERROR);
     ok_long(CombineRgn(hrgn1, hrgn2, hrgn3, 6), ERROR);
     ok((GetLastError() == 0xbadbabe) || (GetLastError() == ERROR_INVALID_PARAMETER), "wrong error: %ld\n", GetLastError());

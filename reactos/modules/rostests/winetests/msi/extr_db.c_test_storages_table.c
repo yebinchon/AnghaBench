@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  char* UINT ;
-typedef  int /*<<< orphan*/  MSIHANDLE ;
-typedef  char* LPCSTR ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  IStorage ;
-typedef  char* HRESULT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  DeleteFileA (char*) ; 
- char* ERROR_INVALID_DATA ; 
- char* ERROR_NO_MORE_ITEMS ; 
- char* ERROR_SUCCESS ; 
- char* IStorage_OpenStorage (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- char* IStorage_OpenStream (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IStorage_Release (int /*<<< orphan*/ *) ; 
- char* IStream_Read (int /*<<< orphan*/ *,char*,int,int*) ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MSICOLINFO_NAMES ; 
- int /*<<< orphan*/  MSICOLINFO_TYPES ; 
- int /*<<< orphan*/  MSIDBOPEN_TRANSACT ; 
- int /*<<< orphan*/  MsiCloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MsiCreateRecord (int) ; 
- char* MsiDatabaseCommit (int /*<<< orphan*/ ) ; 
- char* MsiDatabaseOpenViewA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- char* MsiOpenDatabaseW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- char* MsiRecordGetStringA (int /*<<< orphan*/ ,int,char*,int*) ; 
- char* MsiRecordReadStream (int /*<<< orphan*/ ,int,char*,int*) ; 
- char* MsiRecordSetStreamA (int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  MsiRecordSetStringA (int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  MsiViewClose (int /*<<< orphan*/ ) ; 
- char* MsiViewExecute (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* MsiViewFetch (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *,int) ; 
- int STGM_DIRECT ; 
- int STGM_READ ; 
- int STGM_SHARE_DENY_WRITE ; 
- int STGM_SHARE_EXCLUSIVE ; 
- char* S_OK ; 
- char* StgOpenStorage (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  check_record (int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  create_db () ; 
- int /*<<< orphan*/  create_storage (char*) ; 
- int /*<<< orphan*/  get_column_info (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lstrcmpA (char*,char*) ; 
- int /*<<< orphan*/  lstrcpyA (char*,char*) ; 
- char* msifile ; 
- int /*<<< orphan*/  msifileW ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int WCHAR ;
+typedef char* UINT ;
+typedef int MSIHANDLE ;
+typedef char* LPCSTR ;
+typedef int IStream ;
+typedef int IStorage ;
+typedef char* HRESULT ;
+typedef int DWORD ;
+
+
+ int CP_ACP ;
+ int DeleteFileA (char*) ;
+ char* ERROR_INVALID_DATA ;
+ char* ERROR_NO_MORE_ITEMS ;
+ char* ERROR_SUCCESS ;
+ char* IStorage_OpenStorage (int *,int *,int *,int,int *,int ,int **) ;
+ char* IStorage_OpenStream (int *,int *,int *,int,int ,int **) ;
+ int IStorage_Release (int *) ;
+ char* IStream_Read (int *,char*,int,int*) ;
+ int IStream_Release (int *) ;
+ int MAX_PATH ;
+ int MSICOLINFO_NAMES ;
+ int MSICOLINFO_TYPES ;
+ int MSIDBOPEN_TRANSACT ;
+ int MsiCloseHandle (int ) ;
+ int MsiCreateRecord (int) ;
+ char* MsiDatabaseCommit (int ) ;
+ char* MsiDatabaseOpenViewA (int ,char*,int *) ;
+ char* MsiOpenDatabaseW (int ,int ,int *) ;
+ char* MsiRecordGetStringA (int ,int,char*,int*) ;
+ char* MsiRecordReadStream (int ,int,char*,int*) ;
+ char* MsiRecordSetStreamA (int ,int,char*) ;
+ int MsiRecordSetStringA (int ,int,char*) ;
+ int MsiViewClose (int ) ;
+ char* MsiViewExecute (int ,int ) ;
+ char* MsiViewFetch (int ,int *) ;
+ int MultiByteToWideChar (int ,int ,char*,int,int *,int) ;
+ int STGM_DIRECT ;
+ int STGM_READ ;
+ int STGM_SHARE_DENY_WRITE ;
+ int STGM_SHARE_EXCLUSIVE ;
+ char* S_OK ;
+ char* StgOpenStorage (int *,int *,int,int *,int ,int **) ;
+ int check_record (int ,int,char*) ;
+ int create_db () ;
+ int create_storage (char*) ;
+ int get_column_info (int ,char*,int ) ;
+ int lstrcmpA (char*,char*) ;
+ int lstrcpyA (char*,char*) ;
+ char* msifile ;
+ int msifileW ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_storages_table(void)
 {
@@ -87,7 +87,7 @@ __attribute__((used)) static void test_storages_table(void)
     r = MsiOpenDatabaseW(msifileW, MSIDBOPEN_TRANSACT, &hdb);
     ok(r == ERROR_SUCCESS , "Failed to open database\n");
 
-    /* check the column types */
+
     hrec = get_column_info(hdb, "SELECT * FROM `_Storages`", MSICOLINFO_TYPES);
     ok(hrec, "failed to get column info hrecord\n");
     ok(check_record(hrec, 1, "s62"), "wrong hrecord type\n");
@@ -95,7 +95,7 @@ __attribute__((used)) static void test_storages_table(void)
 
     MsiCloseHandle(hrec);
 
-    /* now try the names */
+
     hrec = get_column_info(hdb, "SELECT * FROM `_Storages`", MSICOLINFO_NAMES);
     ok(hrec, "failed to get column info hrecord\n");
     ok(check_record(hrec, 1, "Name"), "wrong hrecord type\n");
@@ -158,21 +158,21 @@ __attribute__((used)) static void test_storages_table(void)
     MsiCloseHandle(hdb);
 
     MultiByteToWideChar(CP_ACP, 0, msifile, -1, name, MAX_PATH);
-    hr = StgOpenStorage(name, NULL, STGM_DIRECT | STGM_READ |
-                        STGM_SHARE_DENY_WRITE, NULL, 0, &stg);
+    hr = StgOpenStorage(name, ((void*)0), STGM_DIRECT | STGM_READ |
+                        STGM_SHARE_DENY_WRITE, ((void*)0), 0, &stg);
     ok(hr == S_OK, "Expected S_OK, got %08x\n", hr);
-    ok(stg != NULL, "Expected non-NULL storage\n");
+    ok(stg != ((void*)0), "Expected non-NULL storage\n");
 
     MultiByteToWideChar(CP_ACP, 0, "stgname", -1, name, MAX_PATH);
-    hr = IStorage_OpenStorage(stg, name, NULL, STGM_READ | STGM_SHARE_EXCLUSIVE,
-                              NULL, 0, &inner);
+    hr = IStorage_OpenStorage(stg, name, ((void*)0), STGM_READ | STGM_SHARE_EXCLUSIVE,
+                              ((void*)0), 0, &inner);
     ok(hr == S_OK, "Expected S_OK, got %08x\n", hr);
-    ok(inner != NULL, "Expected non-NULL storage\n");
+    ok(inner != ((void*)0), "Expected non-NULL storage\n");
 
     MultiByteToWideChar(CP_ACP, 0, "storage.bin", -1, name, MAX_PATH);
-    hr = IStorage_OpenStream(inner, name, NULL, STGM_READ | STGM_SHARE_EXCLUSIVE, 0, &stm);
+    hr = IStorage_OpenStream(inner, name, ((void*)0), STGM_READ | STGM_SHARE_EXCLUSIVE, 0, &stm);
     ok(hr == S_OK, "Expected S_OK, got %08x\n", hr);
-    ok(stm != NULL, "Expected non-NULL stream\n");
+    ok(stm != ((void*)0), "Expected non-NULL stream\n");
 
     hr = IStream_Read(stm, buf, MAX_PATH, &size);
     ok(hr == S_OK, "Expected S_OK, got %d\n", hr);

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int flags; int final_used; unsigned char* final; int /*<<< orphan*/  buf_len; TYPE_1__* cipher; scalar_t__ encrypt; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int flags; int final_used; unsigned char* final; int buf_len; TYPE_1__* cipher; scalar_t__ encrypt; } ;
 struct TYPE_7__ {unsigned int block_size; int flags; int (* do_cipher ) (TYPE_2__*,unsigned char*,unsigned char const*,int) ;} ;
-typedef  scalar_t__ PTRDIFF_T ;
-typedef  TYPE_2__ EVP_CIPHER_CTX ;
+typedef scalar_t__ PTRDIFF_T ;
+typedef TYPE_2__ EVP_CIPHER_CTX ;
 
-/* Variables and functions */
- scalar_t__ EVP_CIPHER_CTX_test_flags (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int EVP_CIPH_FLAG_CUSTOM_CIPHER ; 
- int /*<<< orphan*/  EVP_CIPH_FLAG_LENGTH_BITS ; 
- int EVP_CIPH_NO_PADDING ; 
- int /*<<< orphan*/  EVP_F_EVP_DECRYPTUPDATE ; 
- int /*<<< orphan*/  EVP_R_INVALID_OPERATION ; 
- int /*<<< orphan*/  EVP_R_PARTIALLY_OVERLAPPING ; 
- int /*<<< orphan*/  EVPerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_assert (int) ; 
- int evp_EncryptDecryptUpdate (TYPE_2__*,unsigned char*,int*,unsigned char const*,int) ; 
- scalar_t__ is_partially_overlapping (unsigned char*,unsigned char const*,unsigned int) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,unsigned int) ; 
- int stub1 (TYPE_2__*,unsigned char*,unsigned char const*,int) ; 
+
+ scalar_t__ EVP_CIPHER_CTX_test_flags (TYPE_2__*,int ) ;
+ int EVP_CIPH_FLAG_CUSTOM_CIPHER ;
+ int EVP_CIPH_FLAG_LENGTH_BITS ;
+ int EVP_CIPH_NO_PADDING ;
+ int EVP_F_EVP_DECRYPTUPDATE ;
+ int EVP_R_INVALID_OPERATION ;
+ int EVP_R_PARTIALLY_OVERLAPPING ;
+ int EVPerr (int ,int ) ;
+ int OPENSSL_assert (int) ;
+ int evp_EncryptDecryptUpdate (TYPE_2__*,unsigned char*,int*,unsigned char const*,int) ;
+ scalar_t__ is_partially_overlapping (unsigned char*,unsigned char const*,unsigned int) ;
+ int memcpy (unsigned char*,unsigned char*,unsigned int) ;
+ int stub1 (TYPE_2__*,unsigned char*,unsigned char const*,int) ;
 
 int EVP_DecryptUpdate(EVP_CIPHER_CTX *ctx, unsigned char *out, int *outl,
                       const unsigned char *in, int inl)
@@ -38,7 +38,7 @@ int EVP_DecryptUpdate(EVP_CIPHER_CTX *ctx, unsigned char *out, int *outl,
     int fix_len, cmpl = inl;
     unsigned int b;
 
-    /* Prevent accidental use of encryption context when decrypting */
+
     if (ctx->encrypt) {
         EVPerr(EVP_F_EVP_DECRYPTUPDATE, EVP_R_INVALID_OPERATION);
         return 0;
@@ -75,7 +75,7 @@ int EVP_DecryptUpdate(EVP_CIPHER_CTX *ctx, unsigned char *out, int *outl,
     OPENSSL_assert(b <= sizeof(ctx->final));
 
     if (ctx->final_used) {
-        /* see comment about PTRDIFF_T comparison above */
+
         if (((PTRDIFF_T)out == (PTRDIFF_T)in)
             || is_partially_overlapping(out, in, b)) {
             EVPerr(EVP_F_EVP_DECRYPTUPDATE, EVP_R_PARTIALLY_OVERLAPPING);
@@ -90,10 +90,10 @@ int EVP_DecryptUpdate(EVP_CIPHER_CTX *ctx, unsigned char *out, int *outl,
     if (!evp_EncryptDecryptUpdate(ctx, out, outl, in, inl))
         return 0;
 
-    /*
-     * if we have 'decrypted' a multiple of block size, make sure we have a
-     * copy of this last block
-     */
+
+
+
+
     if (b > 1 && !ctx->buf_len) {
         *outl -= b;
         ctx->final_used = 1;

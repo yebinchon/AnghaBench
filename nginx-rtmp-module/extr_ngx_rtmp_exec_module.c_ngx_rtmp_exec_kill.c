@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ active; } ;
 struct TYPE_6__ {scalar_t__ timer_set; } ;
-struct TYPE_5__ {scalar_t__ active; scalar_t__ pid; int /*<<< orphan*/  log; int /*<<< orphan*/ * save_pid; int /*<<< orphan*/  pipefd; TYPE_4__ read_evt; TYPE_3__ respawn_evt; } ;
-typedef  TYPE_1__ ngx_rtmp_exec_t ;
-typedef  scalar_t__ ngx_int_t ;
+struct TYPE_5__ {scalar_t__ active; scalar_t__ pid; int log; int * save_pid; int pipefd; TYPE_4__ read_evt; TYPE_3__ respawn_evt; } ;
+typedef TYPE_1__ ngx_rtmp_exec_t ;
+typedef scalar_t__ ngx_int_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_INVALID_PID ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_RTMP ; 
- int /*<<< orphan*/  NGX_LOG_INFO ; 
- scalar_t__ NGX_OK ; 
- int /*<<< orphan*/  NGX_READ_EVENT ; 
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
- int kill (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ngx_del_event (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_del_timer (TYPE_3__*) ; 
- int /*<<< orphan*/  ngx_errno ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,scalar_t__) ; 
+
+ int NGX_INVALID_PID ;
+ int NGX_LOG_DEBUG_RTMP ;
+ int NGX_LOG_INFO ;
+ scalar_t__ NGX_OK ;
+ int NGX_READ_EVENT ;
+ int close (int ) ;
+ int kill (scalar_t__,scalar_t__) ;
+ int ngx_del_event (TYPE_4__*,int ,int ) ;
+ int ngx_del_timer (TYPE_3__*) ;
+ int ngx_errno ;
+ int ngx_log_debug1 (int ,int ,int ,char*,scalar_t__) ;
+ int ngx_log_error (int ,int ,int ,char*,scalar_t__) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_rtmp_exec_kill(ngx_rtmp_exec_t *e, ngx_int_t kill_signal)

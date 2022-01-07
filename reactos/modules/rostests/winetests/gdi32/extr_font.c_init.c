@@ -1,44 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GetModuleHandleA (char*) ; 
- scalar_t__ GetProcAddress (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  GetSystemDefaultLangID () ; 
- int /*<<< orphan*/  PRIMARYLANGID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hgdi32 ; 
- void* pAddFontMemResourceEx ; 
- void* pAddFontResourceExA ; 
- void* pCreateFontIndirectExA ; 
- void* pGdiGetCharDimensions ; 
- void* pGdiGetCodePage ; 
- void* pGdiRealizationInfo ; 
- void* pGetCharABCWidthsA ; 
- void* pGetCharABCWidthsFloatW ; 
- void* pGetCharABCWidthsI ; 
- void* pGetCharABCWidthsW ; 
- void* pGetCharWidth32A ; 
- void* pGetCharWidth32W ; 
- void* pGetFontFileData ; 
- void* pGetFontFileInfo ; 
- void* pGetFontRealizationInfo ; 
- void* pGetFontUnicodeRanges ; 
- void* pGetGlyphIndicesA ; 
- void* pGetGlyphIndicesW ; 
- void* pGetTextExtentExPointI ; 
- void* pRemoveFontMemResourceEx ; 
- void* pRemoveFontResourceExA ; 
- int /*<<< orphan*/  system_lang_id ; 
+ int GetModuleHandleA (char*) ;
+ scalar_t__ GetProcAddress (int ,char*) ;
+ int GetSystemDefaultLangID () ;
+ int PRIMARYLANGID (int ) ;
+ int hgdi32 ;
+ void* pAddFontMemResourceEx ;
+ void* pAddFontResourceExA ;
+ void* pCreateFontIndirectExA ;
+ void* pGdiGetCharDimensions ;
+ void* pGdiGetCodePage ;
+ void* pGdiRealizationInfo ;
+ void* pGetCharABCWidthsA ;
+ void* pGetCharABCWidthsFloatW ;
+ void* pGetCharABCWidthsI ;
+ void* pGetCharABCWidthsW ;
+ void* pGetCharWidth32A ;
+ void* pGetCharWidth32W ;
+ void* pGetFontFileData ;
+ void* pGetFontFileInfo ;
+ void* pGetFontRealizationInfo ;
+ void* pGetFontUnicodeRanges ;
+ void* pGetGlyphIndicesA ;
+ void* pGetGlyphIndicesW ;
+ void* pGetTextExtentExPointI ;
+ void* pRemoveFontMemResourceEx ;
+ void* pRemoveFontResourceExA ;
+ int system_lang_id ;
 
 __attribute__((used)) static void init(void)
 {

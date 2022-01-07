@@ -1,97 +1,97 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  int /*<<< orphan*/ * PWSTR ;
-typedef  int /*<<< orphan*/ * LPBYTE ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  HKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  GlobalHeap ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KEY_READ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  WSAEINVAL ; 
+
+
+
+typedef int ULONG ;
+typedef int * PWSTR ;
+typedef int * LPBYTE ;
+typedef scalar_t__ LONG ;
+typedef int INT ;
+typedef int HKEY ;
+
+
+ int ERR (char*) ;
+ int GlobalHeap ;
+ int HKEY_LOCAL_MACHINE ;
+ int * HeapAlloc (int ,int ,int ) ;
+ int HeapFree (int ,int ,int *) ;
+ int KEY_READ ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegOpenKeyExW (int ,char*,int ,int ,int *) ;
+ scalar_t__ RegQueryValueExW (int ,char*,int *,int *,int *,int *) ;
+ int TRACE (char*) ;
+ int WSAEINVAL ;
 
 INT
 SockLoadTransportList(
     PWSTR *TransportList)
 {
-    ULONG	TransportListSize;
-    HKEY	KeyHandle;
-    LONG	Status;
+    ULONG TransportListSize;
+    HKEY KeyHandle;
+    LONG Status;
 
     TRACE("Called\n");
 
-    /* Open the Transports Key */
+
     Status = RegOpenKeyExW (HKEY_LOCAL_MACHINE,
                             L"SYSTEM\\CurrentControlSet\\Services\\Winsock\\Parameters",
                             0,
                             KEY_READ,
                             &KeyHandle);
 
-    /* Check for error */
+
     if (Status) {
         ERR("Error reading transport list registry\n");
         return WSAEINVAL;
     }
 
-    /* Get the Transport List Size */
+
     Status = RegQueryValueExW(KeyHandle,
                               L"Transports",
-                              NULL,
-                              NULL,
-                              NULL,
+                              ((void*)0),
+                              ((void*)0),
+                              ((void*)0),
                               &TransportListSize);
 
-    /* Check for error */
+
     if (Status) {
         ERR("Error reading transport list registry\n");
         return WSAEINVAL;
     }
 
-    /* Allocate Memory for the Transport List */
+
     *TransportList = HeapAlloc(GlobalHeap, 0, TransportListSize);
 
-    /* Check for error */
-    if (*TransportList == NULL) {
+
+    if (*TransportList == ((void*)0)) {
         ERR("Buffer allocation failed\n");
         return WSAEINVAL;
     }
 
-    /* Get the Transports */
+
     Status = RegQueryValueExW (KeyHandle,
                                L"Transports",
-                               NULL,
-                               NULL,
+                               ((void*)0),
+                               ((void*)0),
                                (LPBYTE)*TransportList,
                                &TransportListSize);
 
-    /* Check for error */
+
     if (Status) {
         ERR("Error reading transport list registry\n");
         HeapFree(GlobalHeap, 0, *TransportList);
         return WSAEINVAL;
     }
 
-    /* Close key and return */
+
     RegCloseKey(KeyHandle);
     return 0;
 }

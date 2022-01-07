@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  i2c_cmd_handle_t ;
-typedef  scalar_t__ esp_err_t ;
-struct TYPE_6__ {TYPE_2__* size; TYPE_1__* chip_address; int /*<<< orphan*/  end; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int32_t ;
+typedef int i2c_cmd_handle_t ;
+typedef scalar_t__ esp_err_t ;
+struct TYPE_6__ {TYPE_2__* size; TYPE_1__* chip_address; int end; } ;
 struct TYPE_5__ {int* ival; scalar_t__ count; } ;
 struct TYPE_4__ {int* ival; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACK_CHECK_EN ; 
- int /*<<< orphan*/  ACK_VAL ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  I2C_MASTER_RX_BUF_DISABLE ; 
- int /*<<< orphan*/  I2C_MASTER_TX_BUF_DISABLE ; 
- int /*<<< orphan*/  I2C_MODE_MASTER ; 
- int /*<<< orphan*/  NACK_VAL ; 
- int READ_BIT ; 
- int /*<<< orphan*/  TAG ; 
- int WRITE_BIT ; 
- int arg_parse (int,char**,void**) ; 
- int /*<<< orphan*/  arg_print_errors (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_cmd_link_create () ; 
- int /*<<< orphan*/  i2c_cmd_link_delete (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_driver_delete (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_driver_install (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ i2c_master_cmd_begin (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  i2c_master_driver_initialize () ; 
- int /*<<< orphan*/  i2c_master_read (int /*<<< orphan*/ ,int*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_master_read_byte (int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_master_start (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_master_stop (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_master_write_byte (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_port ; 
- TYPE_3__ i2cdump_args ; 
- int portTICK_RATE_MS ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
+
+ int ACK_CHECK_EN ;
+ int ACK_VAL ;
+ int ESP_LOGE (int ,char*) ;
+ scalar_t__ ESP_OK ;
+ int I2C_MASTER_RX_BUF_DISABLE ;
+ int I2C_MASTER_TX_BUF_DISABLE ;
+ int I2C_MODE_MASTER ;
+ int NACK_VAL ;
+ int READ_BIT ;
+ int TAG ;
+ int WRITE_BIT ;
+ int arg_parse (int,char**,void**) ;
+ int arg_print_errors (int ,int ,char*) ;
+ int fflush (int ) ;
+ int i2c_cmd_link_create () ;
+ int i2c_cmd_link_delete (int ) ;
+ int i2c_driver_delete (int ) ;
+ int i2c_driver_install (int ,int ,int ,int ,int ) ;
+ scalar_t__ i2c_master_cmd_begin (int ,int ,int) ;
+ int i2c_master_driver_initialize () ;
+ int i2c_master_read (int ,int*,int,int ) ;
+ int i2c_master_read_byte (int ,int*,int ) ;
+ int i2c_master_start (int ) ;
+ int i2c_master_stop (int ) ;
+ int i2c_master_write_byte (int ,int,int ) ;
+ int i2c_port ;
+ TYPE_3__ i2cdump_args ;
+ int portTICK_RATE_MS ;
+ int printf (char*,...) ;
+ int stderr ;
+ int stdout ;
 
 __attribute__((used)) static int do_i2cdump_cmd(int argc, char **argv)
 {
@@ -62,9 +62,9 @@ __attribute__((used)) static int do_i2cdump_cmd(int argc, char **argv)
         return 0;
     }
 
-    /* Check chip address: "-c" option */
+
     int chip_addr = i2cdump_args.chip_address->ival[0];
-    /* Check read size: "-s" option */
+
     int size = 1;
     if (i2cdump_args.size->count) {
         size = i2cdump_args.size->ival[0];

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct malloc_hdr {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TAILQ_INSERT_TAIL (int /*<<< orphan*/ *,struct malloc_hdr*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  entry ; 
- int /*<<< orphan*/  malloc_head ; 
+
+ int TAILQ_INSERT_TAIL (int *,struct malloc_hdr*,int ) ;
+ int entry ;
+ int malloc_head ;
 
 void
 usb_free(void *arg)
 {
-	struct malloc_hdr *hdr;
+ struct malloc_hdr *hdr;
 
-	if (arg == NULL)
-		return;
+ if (arg == ((void*)0))
+  return;
 
-	hdr = arg;
-	hdr--;
+ hdr = arg;
+ hdr--;
 
-	TAILQ_INSERT_TAIL(&malloc_head, hdr, entry);
+ TAILQ_INSERT_TAIL(&malloc_head, hdr, entry);
 }

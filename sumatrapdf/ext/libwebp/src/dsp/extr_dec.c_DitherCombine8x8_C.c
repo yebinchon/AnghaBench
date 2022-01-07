@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int const VP8_DITHER_AMP_CENTER ; 
- int const VP8_DITHER_DESCALE ; 
- int const VP8_DITHER_DESCALE_ROUNDER ; 
- int clip_8b (int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int const VP8_DITHER_AMP_CENTER ;
+ int const VP8_DITHER_DESCALE ;
+ int const VP8_DITHER_DESCALE_ROUNDER ;
+ int clip_8b (int) ;
 
 __attribute__((used)) static void DitherCombine8x8_C(const uint8_t* dither, uint8_t* dst,
                                int dst_stride) {

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct snd_msnd {int mode; int /*<<< orphan*/  flags; int /*<<< orphan*/  play_period_bytes; } ;
 
-/* Variables and functions */
- int FMODE_WRITE ; 
- int /*<<< orphan*/  F_WRITEFLUSH ; 
- int /*<<< orphan*/  F_WRITING ; 
- int /*<<< orphan*/  clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  current ; 
- int /*<<< orphan*/  get_play_delay_jiffies (struct snd_msnd*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  schedule_timeout_interruptible (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  signal_pending (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct snd_msnd {int mode; int flags; int play_period_bytes; } ;
+
+
+ int FMODE_WRITE ;
+ int F_WRITEFLUSH ;
+ int F_WRITING ;
+ int clear_bit (int ,int *) ;
+ int current ;
+ int get_play_delay_jiffies (struct snd_msnd*,int ) ;
+ int schedule_timeout_interruptible (int ) ;
+ int set_bit (int ,int *) ;
+ int signal_pending (int ) ;
+ int test_bit (int ,int *) ;
 
 __attribute__((used)) static void snd_msnd_dsp_write_flush(struct snd_msnd *chip)
 {
-	if (!(chip->mode & FMODE_WRITE) || !test_bit(F_WRITING, &chip->flags))
-		return;
-	set_bit(F_WRITEFLUSH, &chip->flags);
-/*	interruptible_sleep_on_timeout(
-		&chip->writeflush,
-		get_play_delay_jiffies(&chip, chip->DAPF.len));*/
-	clear_bit(F_WRITEFLUSH, &chip->flags);
-	if (!signal_pending(current))
-		schedule_timeout_interruptible(
-			get_play_delay_jiffies(chip, chip->play_period_bytes));
-	clear_bit(F_WRITING, &chip->flags);
+ if (!(chip->mode & FMODE_WRITE) || !test_bit(F_WRITING, &chip->flags))
+  return;
+ set_bit(F_WRITEFLUSH, &chip->flags);
+
+
+
+ clear_bit(F_WRITEFLUSH, &chip->flags);
+ if (!signal_pending(current))
+  schedule_timeout_interruptible(
+   get_play_delay_jiffies(chip, chip->play_period_bytes));
+ clear_bit(F_WRITING, &chip->flags);
 }

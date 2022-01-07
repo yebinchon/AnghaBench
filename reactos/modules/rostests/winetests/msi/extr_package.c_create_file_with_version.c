@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * szKey; } ;
-typedef  TYPE_1__ VS_VERSIONINFO ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * szKey; } ;
+typedef TYPE_1__ VS_VERSIONINFO ;
 struct TYPE_5__ {void* dwProductVersionLS; void* dwProductVersionMS; void* dwFileVersionLS; void* dwFileVersionMS; } ;
-typedef  TYPE_2__ VS_FIXEDFILEINFO ;
-typedef  int /*<<< orphan*/  LPCSTR ;
-typedef  int /*<<< orphan*/ * LPBYTE ;
-typedef  void* LONG ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  CHAR ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_2__ VS_FIXEDFILEINFO ;
+typedef int LPCSTR ;
+typedef int * LPBYTE ;
+typedef void* LONG ;
+typedef int HANDLE ;
+typedef int DWORD ;
+typedef int CHAR ;
+typedef int BYTE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BeginUpdateResourceA (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CopyFileA (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EndUpdateResourceA (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetFileVersionInfoA (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetFileVersionInfoSizeA (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  GetSystemDirectoryA (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LANG_NEUTRAL ; 
- scalar_t__ MAKEINTRESOURCE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAKELANGID (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int MAX_PATH ; 
- scalar_t__ RT_VERSION ; 
- int /*<<< orphan*/  SUBLANG_NEUTRAL ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  UpdateResourceA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VS_VERSION_INFO ; 
- int /*<<< orphan*/  lstrcatA (int /*<<< orphan*/ *,char*) ; 
- int lstrlenW (int /*<<< orphan*/ *) ; 
- scalar_t__ roundpos (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
+
+ int BeginUpdateResourceA (int const*,int ) ;
+ int CopyFileA (int *,int const*,int ) ;
+ int EndUpdateResourceA (int ,int ) ;
+ int FALSE ;
+ int GetFileVersionInfoA (int *,int ,int ,int *) ;
+ int GetFileVersionInfoSizeA (int *,int *) ;
+ int GetProcessHeap () ;
+ int GetSystemDirectoryA (int *,int) ;
+ int * HeapAlloc (int ,int ,int ) ;
+ int HeapFree (int ,int ,int *) ;
+ int LANG_NEUTRAL ;
+ scalar_t__ MAKEINTRESOURCE (int ) ;
+ int MAKELANGID (int ,int ) ;
+ int MAX_PATH ;
+ scalar_t__ RT_VERSION ;
+ int SUBLANG_NEUTRAL ;
+ int TRUE ;
+ int UpdateResourceA (int ,int ,int ,int ,int *,int ) ;
+ int VS_VERSION_INFO ;
+ int lstrcatA (int *,char*) ;
+ int lstrlenW (int *) ;
+ scalar_t__ roundpos (TYPE_1__*,int *,int) ;
 
 __attribute__((used)) static BOOL create_file_with_version(const CHAR *name, LONG ms, LONG ls)
 {
@@ -60,7 +60,7 @@ __attribute__((used)) static BOOL create_file_with_version(const CHAR *name, LON
     BOOL ret = FALSE;
 
     GetSystemDirectoryA(path, MAX_PATH);
-    /* Some dlls can't be updated on Vista/W2K8 */
+
     lstrcatA(path, "\\version.dll");
 
     CopyFileA(path, name, FALSE);

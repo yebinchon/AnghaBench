@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SOCKET_SERVER ; 
- int /*<<< orphan*/  skynet_now () ; 
- int /*<<< orphan*/  socket_server_updatetime (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int SOCKET_SERVER ;
+ int skynet_now () ;
+ int socket_server_updatetime (int ,int ) ;
 
 void
 skynet_socket_updatetime() {
-	socket_server_updatetime(SOCKET_SERVER, skynet_now());
+ socket_server_updatetime(SOCKET_SERVER, skynet_now());
 }

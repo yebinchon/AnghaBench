@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PACKET ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PACKET_buf_init (int /*<<< orphan*/ *,unsigned char const*,size_t) ; 
- unsigned char* PACKET_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PACKET_get_length_prefixed_2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PACKET_get_net_2 (int /*<<< orphan*/ *,unsigned int*) ; 
- int /*<<< orphan*/  PACKET_get_net_4 (int /*<<< orphan*/ *,unsigned long*) ; 
- size_t PACKET_remaining (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int PACKET ;
+
+
+ int PACKET_buf_init (int *,unsigned char const*,size_t) ;
+ unsigned char* PACKET_data (int *) ;
+ int PACKET_get_length_prefixed_2 (int *,int *) ;
+ int PACKET_get_net_2 (int *,unsigned int*) ;
+ int PACKET_get_net_4 (int *,unsigned long*) ;
+ size_t PACKET_remaining (int *) ;
 
 __attribute__((used)) static int serverinfo_find_extension(const unsigned char *serverinfo,
                                      size_t serverinfo_length,
@@ -28,9 +28,9 @@ __attribute__((used)) static int serverinfo_find_extension(const unsigned char *
 {
     PACKET pkt, data;
 
-    *extension_data = NULL;
+    *extension_data = ((void*)0);
     *extension_length = 0;
-    if (serverinfo == NULL || serverinfo_length == 0)
+    if (serverinfo == ((void*)0) || serverinfo_length == 0)
         return -1;
 
     if (!PACKET_buf_init(&pkt, serverinfo, serverinfo_length))
@@ -40,9 +40,9 @@ __attribute__((used)) static int serverinfo_find_extension(const unsigned char *
         unsigned int type = 0;
         unsigned long context = 0;
 
-        /* end of serverinfo */
+
         if (PACKET_remaining(&pkt) == 0)
-            return 0;           /* Extension not found */
+            return 0;
 
         if (!PACKET_get_net_4(&pkt, &context)
                 || !PACKET_get_net_2(&pkt, &type)
@@ -52,8 +52,8 @@ __attribute__((used)) static int serverinfo_find_extension(const unsigned char *
         if (type == extension_type) {
             *extension_data = PACKET_data(&data);
             *extension_length = PACKET_remaining(&data);;
-            return 1;           /* Success */
+            return 1;
         }
     }
-    /* Unreachable */
+
 }

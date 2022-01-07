@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WINDOW ;
-typedef  int /*<<< orphan*/  DIALOG_FORMITEM ;
 
-/* Variables and functions */
- char menubox_attr ; 
- scalar_t__ print_item (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  wbkgdset (int /*<<< orphan*/ *,char) ; 
- int /*<<< orphan*/  wclrtobot (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wnoutrefresh (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int WINDOW ;
+typedef int DIALOG_FORMITEM ;
+
+
+ char menubox_attr ;
+ scalar_t__ print_item (int *,int *,int,int) ;
+ int wbkgdset (int *,char) ;
+ int wclrtobot (int *) ;
+ int wnoutrefresh (int *) ;
 
 __attribute__((used)) static void
 print_form(WINDOW *win, DIALOG_FORMITEM * item, int total, int scrollamt, int choice)
@@ -27,11 +27,11 @@ print_form(WINDOW *win, DIALOG_FORMITEM * item, int total, int scrollamt, int ch
     int count = 0;
 
     for (n = 0; n < total; ++n) {
-	count += print_item(win, item + n, scrollamt, n == choice);
+ count += print_item(win, item + n, scrollamt, n == choice);
     }
     if (count) {
-	wbkgdset(win, menubox_attr | ' ');
-	wclrtobot(win);
-	(void) wnoutrefresh(win);
+ wbkgdset(win, menubox_attr | ' ');
+ wclrtobot(win);
+ (void) wnoutrefresh(win);
     }
 }

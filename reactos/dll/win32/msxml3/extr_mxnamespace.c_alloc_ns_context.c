@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nscontext {int max_alloc; struct nscontext* ns; void* uri; void* prefix; scalar_t__ count; } ;
 
-/* Variables and functions */
- int DEFAULT_PREFIX_ALLOC_COUNT ; 
- void* SysAllocString (int /*<<< orphan*/ ) ; 
- void* heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (struct nscontext*) ; 
- int /*<<< orphan*/  xmlW ; 
- int /*<<< orphan*/  xmluriW ; 
+
+ int DEFAULT_PREFIX_ALLOC_COUNT ;
+ void* SysAllocString (int ) ;
+ void* heap_alloc (int) ;
+ int heap_free (struct nscontext*) ;
+ int xmlW ;
+ int xmluriW ;
 
 __attribute__((used)) static struct nscontext* alloc_ns_context(void)
 {
     struct nscontext *ctxt;
 
     ctxt = heap_alloc(sizeof(*ctxt));
-    if (!ctxt) return NULL;
+    if (!ctxt) return ((void*)0);
 
     ctxt->count = 0;
     ctxt->max_alloc = DEFAULT_PREFIX_ALLOC_COUNT;
@@ -33,10 +33,10 @@ __attribute__((used)) static struct nscontext* alloc_ns_context(void)
     if (!ctxt->ns)
     {
         heap_free(ctxt);
-        return NULL;
+        return ((void*)0);
     }
 
-    /* first allocated prefix is always 'xml' */
+
     ctxt->ns[0].prefix = SysAllocString(xmlW);
     ctxt->ns[0].uri = SysAllocString(xmluriW);
     ctxt->count++;
@@ -44,7 +44,7 @@ __attribute__((used)) static struct nscontext* alloc_ns_context(void)
     {
         heap_free(ctxt->ns);
         heap_free(ctxt);
-        return NULL;
+        return ((void*)0);
     }
 
     return ctxt;

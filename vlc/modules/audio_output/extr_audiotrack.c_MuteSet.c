@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_3__* sys; } ;
-typedef  TYPE_2__ audio_output_t ;
-struct TYPE_9__ {int mute; float volume; int /*<<< orphan*/ * p_audiotrack; int /*<<< orphan*/  b_error; } ;
-typedef  TYPE_3__ aout_sys_t ;
+typedef TYPE_2__ audio_output_t ;
+struct TYPE_9__ {int mute; float volume; int * p_audiotrack; int b_error; } ;
+typedef TYPE_3__ aout_sys_t ;
 struct TYPE_7__ {scalar_t__ setVolume; } ;
 struct TYPE_10__ {TYPE_1__ AudioTrack; } ;
-typedef  int /*<<< orphan*/  JNIEnv ;
+typedef int JNIEnv ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_AT_EXCEPTION (char*) ; 
- int /*<<< orphan*/ * GET_ENV () ; 
- int /*<<< orphan*/  JNI_AT_CALL_INT (int /*<<< orphan*/ ,float,...) ; 
- int /*<<< orphan*/  aout_MuteReport (TYPE_2__*,int) ; 
- TYPE_4__ jfields ; 
- int /*<<< orphan*/  setStereoVolume ; 
- int /*<<< orphan*/  setVolume ; 
+
+ int CHECK_AT_EXCEPTION (char*) ;
+ int * GET_ENV () ;
+ int JNI_AT_CALL_INT (int ,float,...) ;
+ int aout_MuteReport (TYPE_2__*,int) ;
+ TYPE_4__ jfields ;
+ int setStereoVolume ;
+ int setVolume ;
 
 __attribute__((used)) static int
 MuteSet( audio_output_t *p_aout, bool mute )
@@ -38,7 +38,7 @@ MuteSet( audio_output_t *p_aout, bool mute )
     JNIEnv *env;
     p_sys->mute = mute;
 
-    if( !p_sys->b_error && p_sys->p_audiotrack != NULL && ( env = GET_ENV() ) )
+    if( !p_sys->b_error && p_sys->p_audiotrack != ((void*)0) && ( env = GET_ENV() ) )
     {
         if( jfields.AudioTrack.setVolume )
         {

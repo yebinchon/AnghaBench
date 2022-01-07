@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int U32 ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int U32 ;
 struct TYPE_3__ {int num; int size; } ;
-typedef  TYPE_1__ COVER_epoch_info_t ;
+typedef TYPE_1__ COVER_epoch_info_t ;
 
-/* Variables and functions */
- int MAX (int,int) ; 
- int MIN (int const,int) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ int MAX (int,int) ;
+ int MIN (int const,int) ;
+ int assert (int) ;
 
 COVER_epoch_info_t COVER_computeEpochs(U32 maxDictSize,
                                        U32 nbDmers, U32 k, U32 passes)

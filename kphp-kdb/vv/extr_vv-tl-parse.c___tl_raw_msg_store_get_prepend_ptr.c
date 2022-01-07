@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TL_OUT_RAW_MSG ; 
- void* rwm_prepend_alloc (int /*<<< orphan*/ ,int) ; 
+ int TL_OUT_RAW_MSG ;
+ void* rwm_prepend_alloc (int ,int) ;
 
 __attribute__((used)) static inline void *__tl_raw_msg_store_get_prepend_ptr (int len) {
   return rwm_prepend_alloc (TL_OUT_RAW_MSG, len);

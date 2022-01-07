@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t tilegx_pipeline ;
-typedef  unsigned short tilegx_bundle_bits ;
+
+
+
+
+typedef size_t tilegx_pipeline ;
+typedef unsigned short tilegx_bundle_bits ;
 struct tilegx_opcode {int dummy; } ;
 
-/* Variables and functions */
- unsigned short TILEGX_OPC_NONE ; 
- unsigned short** tilegx_bundle_decoder_fsms ; 
- struct tilegx_opcode const* tilegx_opcodes ; 
+
+ unsigned short TILEGX_OPC_NONE ;
+ unsigned short** tilegx_bundle_decoder_fsms ;
+ struct tilegx_opcode const* tilegx_opcodes ;
 
 const struct tilegx_opcode *
 find_opcode(tilegx_bundle_bits bits, tilegx_pipeline pipe)

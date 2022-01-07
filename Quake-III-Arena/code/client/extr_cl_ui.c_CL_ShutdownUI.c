@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  uiStarted; int /*<<< orphan*/  keyCatchers; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KEYCATCH_UI ; 
- int /*<<< orphan*/  UI_SHUTDOWN ; 
- int /*<<< orphan*/  VM_Call (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VM_Free (int /*<<< orphan*/ *) ; 
- TYPE_1__ cls ; 
- int /*<<< orphan*/  qfalse ; 
- int /*<<< orphan*/ * uivm ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int uiStarted; int keyCatchers; } ;
+
+
+ int KEYCATCH_UI ;
+ int UI_SHUTDOWN ;
+ int VM_Call (int *,int ) ;
+ int VM_Free (int *) ;
+ TYPE_1__ cls ;
+ int qfalse ;
+ int * uivm ;
 
 void CL_ShutdownUI( void ) {
-	cls.keyCatchers &= ~KEYCATCH_UI;
-	cls.uiStarted = qfalse;
-	if ( !uivm ) {
-		return;
-	}
-	VM_Call( uivm, UI_SHUTDOWN );
-	VM_Free( uivm );
-	uivm = NULL;
+ cls.keyCatchers &= ~KEYCATCH_UI;
+ cls.uiStarted = qfalse;
+ if ( !uivm ) {
+  return;
+ }
+ VM_Call( uivm, UI_SHUTDOWN );
+ VM_Free( uivm );
+ uivm = ((void*)0);
 }

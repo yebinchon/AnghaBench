@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int time_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int time_t ;
 struct TYPE_4__ {int flags; int failover_start_time; int failover_timeout; int failover_delay_logged; } ;
-typedef  TYPE_1__ sentinelRedisInstance ;
+typedef TYPE_1__ sentinelRedisInstance ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LL_WARNING ; 
- int SRI_FAILOVER_IN_PROGRESS ; 
- int SRI_O_DOWN ; 
- int /*<<< orphan*/  ctime_r (int*,char*) ; 
- int mstime () ; 
- int /*<<< orphan*/  sentinelStartFailover (TYPE_1__*) ; 
- int /*<<< orphan*/  serverLog (int /*<<< orphan*/ ,char*,char*) ; 
+
+ int LL_WARNING ;
+ int SRI_FAILOVER_IN_PROGRESS ;
+ int SRI_O_DOWN ;
+ int ctime_r (int*,char*) ;
+ int mstime () ;
+ int sentinelStartFailover (TYPE_1__*) ;
+ int serverLog (int ,char*,char*) ;
 
 int sentinelStartFailoverIfNeeded(sentinelRedisInstance *master) {
-    /* We can't failover if the master is not in O_DOWN state. */
+
     if (!(master->flags & SRI_O_DOWN)) return 0;
 
-    /* Failover already in progress? */
+
     if (master->flags & SRI_FAILOVER_IN_PROGRESS) return 0;
 
-    /* Last failover attempt started too little time ago? */
+
     if (mstime() - master->failover_start_time <
         master->failover_timeout*2)
     {
@@ -41,7 +41,7 @@ int sentinelStartFailoverIfNeeded(sentinelRedisInstance *master) {
             char ctimebuf[26];
 
             ctime_r(&clock,ctimebuf);
-            ctimebuf[24] = '\0'; /* Remove newline. */
+            ctimebuf[24] = '\0';
             master->failover_delay_logged = master->failover_start_time;
             serverLog(LL_WARNING,
                 "Next failover delay: I will not start a failover before %s",

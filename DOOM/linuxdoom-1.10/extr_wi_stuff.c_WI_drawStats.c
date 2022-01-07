@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  height; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int height; } ;
 struct TYPE_3__ {int epsd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FB ; 
- int SCREENWIDTH ; 
- int SHORT (int /*<<< orphan*/ ) ; 
- scalar_t__ SP_STATSX ; 
- scalar_t__ SP_STATSY ; 
- scalar_t__ SP_TIMEX ; 
- scalar_t__ SP_TIMEY ; 
- int /*<<< orphan*/  V_DrawPatch (scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WI_drawAnimatedBack () ; 
- int /*<<< orphan*/  WI_drawLF () ; 
- int /*<<< orphan*/  WI_drawPercent (scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WI_drawTime (scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WI_slamBackground () ; 
- int /*<<< orphan*/ * cnt_items ; 
- int /*<<< orphan*/ * cnt_kills ; 
- int /*<<< orphan*/  cnt_par ; 
- int /*<<< orphan*/ * cnt_secret ; 
- int /*<<< orphan*/  cnt_time ; 
- int /*<<< orphan*/  items ; 
- int /*<<< orphan*/  kills ; 
- TYPE_2__** num ; 
- int /*<<< orphan*/  par ; 
- int /*<<< orphan*/  sp_secret ; 
- int /*<<< orphan*/  time ; 
- TYPE_1__* wbs ; 
+
+ int FB ;
+ int SCREENWIDTH ;
+ int SHORT (int ) ;
+ scalar_t__ SP_STATSX ;
+ scalar_t__ SP_STATSY ;
+ scalar_t__ SP_TIMEX ;
+ scalar_t__ SP_TIMEY ;
+ int V_DrawPatch (scalar_t__,scalar_t__,int ,int ) ;
+ int WI_drawAnimatedBack () ;
+ int WI_drawLF () ;
+ int WI_drawPercent (scalar_t__,scalar_t__,int ) ;
+ int WI_drawTime (scalar_t__,scalar_t__,int ) ;
+ int WI_slamBackground () ;
+ int * cnt_items ;
+ int * cnt_kills ;
+ int cnt_par ;
+ int * cnt_secret ;
+ int cnt_time ;
+ int items ;
+ int kills ;
+ TYPE_2__** num ;
+ int par ;
+ int sp_secret ;
+ int time ;
+ TYPE_1__* wbs ;
 
 void WI_drawStats(void)
 {
-    // line height
-    int lh;	
+
+    int lh;
 
     lh = (3*SHORT(num[0]->height))/2;
 
     WI_slamBackground();
 
-    // draw animated background
+
     WI_drawAnimatedBack();
-    
+
     WI_drawLF();
 
     V_DrawPatch(SP_STATSX, SP_STATSY, FB, kills);
@@ -70,8 +70,8 @@ void WI_drawStats(void)
 
     if (wbs->epsd < 3)
     {
-	V_DrawPatch(SCREENWIDTH/2 + SP_TIMEX, SP_TIMEY, FB, par);
-	WI_drawTime(SCREENWIDTH - SP_TIMEX, SP_TIMEY, cnt_par);
+ V_DrawPatch(SCREENWIDTH/2 + SP_TIMEX, SP_TIMEY, FB, par);
+ WI_drawTime(SCREENWIDTH - SP_TIMEX, SP_TIMEY, cnt_par);
     }
 
 }

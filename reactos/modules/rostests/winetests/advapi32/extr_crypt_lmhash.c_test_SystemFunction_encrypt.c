@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int (* descrypt ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned char*) ;
 
-/* Variables and functions */
- int STATUS_SUCCESS ; 
- int STATUS_UNSUCCESSFUL ; 
- int /*<<< orphan*/  des_ciphertext ; 
- int /*<<< orphan*/ * des_key ; 
- int /*<<< orphan*/ * des_plaintext ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ ,unsigned char*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  win_skip (char*,int) ; 
+
+
+
+typedef int (* descrypt ) (int *,int *,unsigned char*) ;
+
+
+ int STATUS_SUCCESS ;
+ int STATUS_UNSUCCESSFUL ;
+ int des_ciphertext ;
+ int * des_key ;
+ int * des_plaintext ;
+ int memcmp (int ,unsigned char*,int) ;
+ int memset (unsigned char*,int ,int) ;
+ int ok (int,char*,...) ;
+ int win_skip (char*,int) ;
 
 __attribute__((used)) static void test_SystemFunction_encrypt(descrypt func, int num)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static void test_SystemFunction_encrypt(descrypt func, int
         return;
     }
 
-    r = func(NULL, NULL, NULL);
+    r = func(((void*)0), ((void*)0), ((void*)0));
     ok( r == STATUS_UNSUCCESSFUL, "wrong error code\n");
 
     memset(output, 0, sizeof output);

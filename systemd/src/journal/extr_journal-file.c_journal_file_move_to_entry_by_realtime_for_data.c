@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  direction_t ;
-struct TYPE_6__ {int /*<<< orphan*/  n_entries; int /*<<< orphan*/  entry_array_offset; int /*<<< orphan*/  entry_offset; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int direction_t ;
+struct TYPE_6__ {int n_entries; int entry_array_offset; int entry_offset; } ;
 struct TYPE_7__ {TYPE_1__ data; } ;
-typedef  TYPE_2__ Object ;
-typedef  int /*<<< orphan*/  JournalFile ;
+typedef TYPE_2__ Object ;
+typedef int JournalFile ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OBJECT_DATA ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int generic_array_bisect_plus_one (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int journal_file_move_to_object (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__**) ; 
- int /*<<< orphan*/  le64toh (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_object_realtime ; 
+
+ int OBJECT_DATA ;
+ int assert (int *) ;
+ int generic_array_bisect_plus_one (int *,int ,int ,int ,int ,int ,int ,TYPE_2__**,int *,int *) ;
+ int journal_file_move_to_object (int *,int ,int ,TYPE_2__**) ;
+ int le64toh (int ) ;
+ int test_object_realtime ;
 
 int journal_file_move_to_entry_by_realtime_for_data(
                 JournalFile *f,
@@ -50,5 +50,5 @@ int journal_file_move_to_entry_by_realtime_for_data(
                                              realtime,
                                              test_object_realtime,
                                              direction,
-                                             ret, offset, NULL);
+                                             ret, offset, ((void*)0));
 }

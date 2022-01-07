@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ current; scalar_t__ ndependencies; size_t k; int /*<<< orphan*/ * dependencies; } ;
-typedef  TYPE_1__* DependencyGenerator ;
-typedef  int /*<<< orphan*/  AttrNumber ;
 
-/* Variables and functions */
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ current; scalar_t__ ndependencies; size_t k; int * dependencies; } ;
+typedef TYPE_1__* DependencyGenerator ;
+typedef int AttrNumber ;
+
+
 
 __attribute__((used)) static AttrNumber *
 DependencyGenerator_next(DependencyGenerator state)
 {
-	if (state->current == state->ndependencies)
-		return NULL;
+ if (state->current == state->ndependencies)
+  return ((void*)0);
 
-	return &state->dependencies[state->k * state->current++];
+ return &state->dependencies[state->k * state->current++];
 }

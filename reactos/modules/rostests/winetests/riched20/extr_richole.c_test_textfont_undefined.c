@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  float LONG ;
-typedef  int /*<<< orphan*/  ITextFont ;
-typedef  float HRESULT ;
 
-/* Variables and functions */
- float ITextFont_GetAllCaps (int /*<<< orphan*/ *,float*) ; 
- float ITextFont_GetAnimation (int /*<<< orphan*/ *,float*) ; 
- float ITextFont_GetBackColor (int /*<<< orphan*/ *,float*) ; 
- float ITextFont_GetBold (int /*<<< orphan*/ *,float*) ; 
- float ITextFont_GetEmboss (int /*<<< orphan*/ *,float*) ; 
- float ITextFont_GetEngrave (int /*<<< orphan*/ *,float*) ; 
- float ITextFont_GetForeColor (int /*<<< orphan*/ *,float*) ; 
- float ITextFont_GetHidden (int /*<<< orphan*/ *,float*) ; 
- float ITextFont_GetItalic (int /*<<< orphan*/ *,float*) ; 
- float ITextFont_GetKerning (int /*<<< orphan*/ *,float*) ; 
- float ITextFont_GetLanguageID (int /*<<< orphan*/ *,float*) ; 
- float ITextFont_GetOutline (int /*<<< orphan*/ *,float*) ; 
- float ITextFont_GetPosition (int /*<<< orphan*/ *,float*) ; 
- float ITextFont_GetProtected (int /*<<< orphan*/ *,float*) ; 
- float ITextFont_GetShadow (int /*<<< orphan*/ *,float*) ; 
- float ITextFont_GetSize (int /*<<< orphan*/ *,float*) ; 
- float ITextFont_GetSmallCaps (int /*<<< orphan*/ *,float*) ; 
- float ITextFont_GetSpacing (int /*<<< orphan*/ *,float*) ; 
- float ITextFont_GetStrikeThrough (int /*<<< orphan*/ *,float*) ; 
- float ITextFont_GetSubscript (int /*<<< orphan*/ *,float*) ; 
- float ITextFont_GetSuperscript (int /*<<< orphan*/ *,float*) ; 
- float ITextFont_GetUnderline (int /*<<< orphan*/ *,float*) ; 
- float ITextFont_GetWeight (int /*<<< orphan*/ *,float*) ; 
- float S_OK ; 
- int /*<<< orphan*/  ok (int,char*,float) ; 
- float tomFalse ; 
- float tomUndefined ; 
+
+
+
+typedef float LONG ;
+typedef int ITextFont ;
+typedef float HRESULT ;
+
+
+ float ITextFont_GetAllCaps (int *,float*) ;
+ float ITextFont_GetAnimation (int *,float*) ;
+ float ITextFont_GetBackColor (int *,float*) ;
+ float ITextFont_GetBold (int *,float*) ;
+ float ITextFont_GetEmboss (int *,float*) ;
+ float ITextFont_GetEngrave (int *,float*) ;
+ float ITextFont_GetForeColor (int *,float*) ;
+ float ITextFont_GetHidden (int *,float*) ;
+ float ITextFont_GetItalic (int *,float*) ;
+ float ITextFont_GetKerning (int *,float*) ;
+ float ITextFont_GetLanguageID (int *,float*) ;
+ float ITextFont_GetOutline (int *,float*) ;
+ float ITextFont_GetPosition (int *,float*) ;
+ float ITextFont_GetProtected (int *,float*) ;
+ float ITextFont_GetShadow (int *,float*) ;
+ float ITextFont_GetSize (int *,float*) ;
+ float ITextFont_GetSmallCaps (int *,float*) ;
+ float ITextFont_GetSpacing (int *,float*) ;
+ float ITextFont_GetStrikeThrough (int *,float*) ;
+ float ITextFont_GetSubscript (int *,float*) ;
+ float ITextFont_GetSuperscript (int *,float*) ;
+ float ITextFont_GetUnderline (int *,float*) ;
+ float ITextFont_GetWeight (int *,float*) ;
+ float S_OK ;
+ int ok (int,char*,float) ;
+ float tomFalse ;
+ float tomUndefined ;
 
 __attribute__((used)) static void test_textfont_undefined(ITextFont *font)
 {

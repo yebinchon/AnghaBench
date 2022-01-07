@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_EXCEPTION (int /*<<< orphan*/ ) ; 
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_FUNCTION_TRACE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AE_INFO ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  AcpiEvFixedEventInitialize () ; 
- int /*<<< orphan*/  AcpiEvGpeInitialize () ; 
- scalar_t__ AcpiGbl_ReducedHardware ; 
- int /*<<< orphan*/  EvInitializeEvents ; 
- int /*<<< orphan*/  return_ACPI_STATUS (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ACPI_STATUS ;
+
+
+ int ACPI_EXCEPTION (int ) ;
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int ACPI_FUNCTION_TRACE (int ) ;
+ int AE_INFO ;
+ int AE_OK ;
+ int AcpiEvFixedEventInitialize () ;
+ int AcpiEvGpeInitialize () ;
+ scalar_t__ AcpiGbl_ReducedHardware ;
+ int EvInitializeEvents ;
+ int return_ACPI_STATUS (int ) ;
 
 ACPI_STATUS
 AcpiEvInitializeEvents (
     void)
 {
-    ACPI_STATUS             Status;
+    ACPI_STATUS Status;
 
 
     ACPI_FUNCTION_TRACE (EvInitializeEvents);
 
 
-    /* If Hardware Reduced flag is set, there are no fixed events */
+
 
     if (AcpiGbl_ReducedHardware)
     {
         return_ACPI_STATUS (AE_OK);
     }
 
-    /*
-     * Initialize the Fixed and General Purpose Events. This is done prior to
-     * enabling SCIs to prevent interrupts from occurring before the handlers
-     * are installed.
-     */
+
+
+
+
+
     Status = AcpiEvFixedEventInitialize ();
     if (ACPI_FAILURE (Status))
     {

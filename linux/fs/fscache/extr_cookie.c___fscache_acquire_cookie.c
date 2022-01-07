@@ -1,144 +1,144 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct fscache_cookie_def {int type; int /*<<< orphan*/ * name; } ;
-struct fscache_cookie {int type; int /*<<< orphan*/  flags; int /*<<< orphan*/  n_children; TYPE_1__* def; } ;
-typedef  int /*<<< orphan*/  loff_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct fscache_cookie_def {int type; int * name; } ;
+struct fscache_cookie {int type; int flags; int n_children; TYPE_1__* def; } ;
+typedef int loff_t ;
 struct TYPE_2__ {scalar_t__ name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int /*<<< orphan*/  FSCACHE_COOKIE_ENABLED ; 
-#define  FSCACHE_COOKIE_TYPE_DATAFILE 129 
-#define  FSCACHE_COOKIE_TYPE_INDEX 128 
- int /*<<< orphan*/  _enter (char*,char*,int /*<<< orphan*/ *,void*,int) ; 
- int /*<<< orphan*/  _leave (char*) ; 
- int /*<<< orphan*/  atomic_dec (int /*<<< orphan*/ *) ; 
- scalar_t__ fscache_acquire_non_index_cookie (struct fscache_cookie*,int /*<<< orphan*/ ) ; 
- struct fscache_cookie* fscache_alloc_cookie (struct fscache_cookie*,struct fscache_cookie_def const*,void const*,size_t,void const*,size_t,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fscache_cookie_discard ; 
- int /*<<< orphan*/  fscache_cookie_put (struct fscache_cookie*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fscache_cookie_put_acquire_nobufs ; 
- int /*<<< orphan*/  fscache_free_cookie (struct fscache_cookie*) ; 
- struct fscache_cookie* fscache_hash_cookie (struct fscache_cookie*) ; 
- int /*<<< orphan*/  fscache_n_acquires ; 
- int /*<<< orphan*/  fscache_n_acquires_nobufs ; 
- int /*<<< orphan*/  fscache_n_acquires_null ; 
- int /*<<< orphan*/  fscache_n_acquires_ok ; 
- int /*<<< orphan*/  fscache_n_acquires_oom ; 
- int /*<<< orphan*/  fscache_n_cookie_data ; 
- int /*<<< orphan*/  fscache_n_cookie_index ; 
- int /*<<< orphan*/  fscache_n_cookie_special ; 
- int /*<<< orphan*/  fscache_stat (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  trace_fscache_acquire (struct fscache_cookie*) ; 
- int /*<<< orphan*/  trace_fscache_cookie (struct fscache_cookie*,int /*<<< orphan*/ ,int) ; 
+
+ int BUG_ON (int) ;
+ int FSCACHE_COOKIE_ENABLED ;
+
+
+ int _enter (char*,char*,int *,void*,int) ;
+ int _leave (char*) ;
+ int atomic_dec (int *) ;
+ scalar_t__ fscache_acquire_non_index_cookie (struct fscache_cookie*,int ) ;
+ struct fscache_cookie* fscache_alloc_cookie (struct fscache_cookie*,struct fscache_cookie_def const*,void const*,size_t,void const*,size_t,void*,int ) ;
+ int fscache_cookie_discard ;
+ int fscache_cookie_put (struct fscache_cookie*,int ) ;
+ int fscache_cookie_put_acquire_nobufs ;
+ int fscache_free_cookie (struct fscache_cookie*) ;
+ struct fscache_cookie* fscache_hash_cookie (struct fscache_cookie*) ;
+ int fscache_n_acquires ;
+ int fscache_n_acquires_nobufs ;
+ int fscache_n_acquires_null ;
+ int fscache_n_acquires_ok ;
+ int fscache_n_acquires_oom ;
+ int fscache_n_cookie_data ;
+ int fscache_n_cookie_index ;
+ int fscache_n_cookie_special ;
+ int fscache_stat (int *) ;
+ int set_bit (int ,int *) ;
+ int trace_fscache_acquire (struct fscache_cookie*) ;
+ int trace_fscache_cookie (struct fscache_cookie*,int ,int) ;
 
 struct fscache_cookie *__fscache_acquire_cookie(
-	struct fscache_cookie *parent,
-	const struct fscache_cookie_def *def,
-	const void *index_key, size_t index_key_len,
-	const void *aux_data, size_t aux_data_len,
-	void *netfs_data,
-	loff_t object_size,
-	bool enable)
+ struct fscache_cookie *parent,
+ const struct fscache_cookie_def *def,
+ const void *index_key, size_t index_key_len,
+ const void *aux_data, size_t aux_data_len,
+ void *netfs_data,
+ loff_t object_size,
+ bool enable)
 {
-	struct fscache_cookie *candidate, *cookie;
+ struct fscache_cookie *candidate, *cookie;
 
-	BUG_ON(!def);
+ BUG_ON(!def);
 
-	_enter("{%s},{%s},%p,%u",
-	       parent ? (char *) parent->def->name : "<no-parent>",
-	       def->name, netfs_data, enable);
+ _enter("{%s},{%s},%p,%u",
+        parent ? (char *) parent->def->name : "<no-parent>",
+        def->name, netfs_data, enable);
 
-	if (!index_key || !index_key_len || index_key_len > 255 || aux_data_len > 255)
-		return NULL;
-	if (!aux_data || !aux_data_len) {
-		aux_data = NULL;
-		aux_data_len = 0;
-	}
+ if (!index_key || !index_key_len || index_key_len > 255 || aux_data_len > 255)
+  return ((void*)0);
+ if (!aux_data || !aux_data_len) {
+  aux_data = ((void*)0);
+  aux_data_len = 0;
+ }
 
-	fscache_stat(&fscache_n_acquires);
+ fscache_stat(&fscache_n_acquires);
 
-	/* if there's no parent cookie, then we don't create one here either */
-	if (!parent) {
-		fscache_stat(&fscache_n_acquires_null);
-		_leave(" [no parent]");
-		return NULL;
-	}
 
-	/* validate the definition */
-	BUG_ON(!def->name[0]);
+ if (!parent) {
+  fscache_stat(&fscache_n_acquires_null);
+  _leave(" [no parent]");
+  return ((void*)0);
+ }
 
-	BUG_ON(def->type == FSCACHE_COOKIE_TYPE_INDEX &&
-	       parent->type != FSCACHE_COOKIE_TYPE_INDEX);
 
-	candidate = fscache_alloc_cookie(parent, def,
-					 index_key, index_key_len,
-					 aux_data, aux_data_len,
-					 netfs_data, object_size);
-	if (!candidate) {
-		fscache_stat(&fscache_n_acquires_oom);
-		_leave(" [ENOMEM]");
-		return NULL;
-	}
+ BUG_ON(!def->name[0]);
 
-	cookie = fscache_hash_cookie(candidate);
-	if (!cookie) {
-		trace_fscache_cookie(candidate, fscache_cookie_discard, 1);
-		goto out;
-	}
+ BUG_ON(def->type == 128 &&
+        parent->type != 128);
 
-	if (cookie == candidate)
-		candidate = NULL;
+ candidate = fscache_alloc_cookie(parent, def,
+      index_key, index_key_len,
+      aux_data, aux_data_len,
+      netfs_data, object_size);
+ if (!candidate) {
+  fscache_stat(&fscache_n_acquires_oom);
+  _leave(" [ENOMEM]");
+  return ((void*)0);
+ }
 
-	switch (cookie->type) {
-	case FSCACHE_COOKIE_TYPE_INDEX:
-		fscache_stat(&fscache_n_cookie_index);
-		break;
-	case FSCACHE_COOKIE_TYPE_DATAFILE:
-		fscache_stat(&fscache_n_cookie_data);
-		break;
-	default:
-		fscache_stat(&fscache_n_cookie_special);
-		break;
-	}
+ cookie = fscache_hash_cookie(candidate);
+ if (!cookie) {
+  trace_fscache_cookie(candidate, fscache_cookie_discard, 1);
+  goto out;
+ }
 
-	trace_fscache_acquire(cookie);
+ if (cookie == candidate)
+  candidate = ((void*)0);
 
-	if (enable) {
-		/* if the object is an index then we need do nothing more here
-		 * - we create indices on disk when we need them as an index
-		 * may exist in multiple caches */
-		if (cookie->type != FSCACHE_COOKIE_TYPE_INDEX) {
-			if (fscache_acquire_non_index_cookie(cookie, object_size) == 0) {
-				set_bit(FSCACHE_COOKIE_ENABLED, &cookie->flags);
-			} else {
-				atomic_dec(&parent->n_children);
-				fscache_cookie_put(cookie,
-						   fscache_cookie_put_acquire_nobufs);
-				fscache_stat(&fscache_n_acquires_nobufs);
-				_leave(" = NULL");
-				return NULL;
-			}
-		} else {
-			set_bit(FSCACHE_COOKIE_ENABLED, &cookie->flags);
-		}
-	}
+ switch (cookie->type) {
+ case 128:
+  fscache_stat(&fscache_n_cookie_index);
+  break;
+ case 129:
+  fscache_stat(&fscache_n_cookie_data);
+  break;
+ default:
+  fscache_stat(&fscache_n_cookie_special);
+  break;
+ }
 
-	fscache_stat(&fscache_n_acquires_ok);
+ trace_fscache_acquire(cookie);
+
+ if (enable) {
+
+
+
+  if (cookie->type != 128) {
+   if (fscache_acquire_non_index_cookie(cookie, object_size) == 0) {
+    set_bit(FSCACHE_COOKIE_ENABLED, &cookie->flags);
+   } else {
+    atomic_dec(&parent->n_children);
+    fscache_cookie_put(cookie,
+         fscache_cookie_put_acquire_nobufs);
+    fscache_stat(&fscache_n_acquires_nobufs);
+    _leave(" = NULL");
+    return ((void*)0);
+   }
+  } else {
+   set_bit(FSCACHE_COOKIE_ENABLED, &cookie->flags);
+  }
+ }
+
+ fscache_stat(&fscache_n_acquires_ok);
 
 out:
-	fscache_free_cookie(candidate);
-	return cookie;
+ fscache_free_cookie(candidate);
+ return cookie;
 }

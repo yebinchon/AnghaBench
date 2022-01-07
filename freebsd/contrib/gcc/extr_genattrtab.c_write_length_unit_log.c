@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct insn_ent {struct insn_ent* next; } ;
-struct attr_value {int /*<<< orphan*/  value; struct insn_ent* first_insn; struct attr_value* next; } ;
+struct attr_value {int value; struct insn_ent* first_insn; struct attr_value* next; } ;
 struct attr_desc {struct attr_value* first_value; TYPE_1__* default_val; } ;
-struct TYPE_2__ {int /*<<< orphan*/  value; } ;
+struct TYPE_2__ {int value; } ;
 
-/* Variables and functions */
- struct attr_desc* find_attr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  length_str ; 
- unsigned int or_attr_value (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  printf (char*,unsigned int) ; 
+
+ struct attr_desc* find_attr (int *,int ) ;
+ int length_str ;
+ unsigned int or_attr_value (int ,int*) ;
+ int printf (char*,unsigned int) ;
 
 __attribute__((used)) static void
 write_length_unit_log (void)
@@ -44,7 +44,7 @@ write_length_unit_log (void)
     {
       length_or = ~length_or;
       for (length_unit_log = 0; length_or & 1; length_or >>= 1)
-	length_unit_log++;
+ length_unit_log++;
     }
   printf ("const int length_unit_log = %u;\n", length_unit_log);
 }

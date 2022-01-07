@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  __unreachable () ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  ub_reset () ; 
+ int __unreachable () ;
+ int printf (char*) ;
+ int ub_reset () ;
 
 __attribute__((used)) static int
 command_reboot(int argc, char *argv[])
 {
 
-	printf("Resetting...\n");
-	ub_reset();
+ printf("Resetting...\n");
+ ub_reset();
 
-	printf("Reset failed!\n");
-	while (1);
-	__unreachable();
+ printf("Reset failed!\n");
+ while (1);
+ __unreachable();
 }

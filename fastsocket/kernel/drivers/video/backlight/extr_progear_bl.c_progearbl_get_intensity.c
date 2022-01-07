@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
+
+
+
+
+typedef int u8 ;
 struct backlight_device {int dummy; } ;
 
-/* Variables and functions */
- int HW_LEVEL_MIN ; 
- int /*<<< orphan*/  PMU_LPCR ; 
- int /*<<< orphan*/  pci_read_config_byte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  pmu_dev ; 
+
+ int HW_LEVEL_MIN ;
+ int PMU_LPCR ;
+ int pci_read_config_byte (int ,int ,int*) ;
+ int pmu_dev ;
 
 __attribute__((used)) static int progearbl_get_intensity(struct backlight_device *bd)
 {
-	u8 intensity;
-	pci_read_config_byte(pmu_dev, PMU_LPCR, &intensity);
+ u8 intensity;
+ pci_read_config_byte(pmu_dev, PMU_LPCR, &intensity);
 
-	return intensity - HW_LEVEL_MIN;
+ return intensity - HW_LEVEL_MIN;
 }

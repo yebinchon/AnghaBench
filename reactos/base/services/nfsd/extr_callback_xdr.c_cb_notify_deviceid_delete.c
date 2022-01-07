@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct notify_deviceid4 {scalar_t__ deviceid; int /*<<< orphan*/  layouttype; } ;
-typedef  scalar_t__ bool_t ;
-typedef  int /*<<< orphan*/  XDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CBX_ERR (char*) ; 
- int /*<<< orphan*/  PNFS_DEVICEID_SIZE ; 
- scalar_t__ xdr_opaque (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ xdr_u_int32_t (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint32_t ;
+struct notify_deviceid4 {scalar_t__ deviceid; int layouttype; } ;
+typedef scalar_t__ bool_t ;
+typedef int XDR ;
+
+
+ int CBX_ERR (char*) ;
+ int PNFS_DEVICEID_SIZE ;
+ scalar_t__ xdr_opaque (int *,char*,int ) ;
+ scalar_t__ xdr_u_int32_t (int *,int *) ;
 
 __attribute__((used)) static bool_t cb_notify_deviceid_delete(XDR *xdr, struct notify_deviceid4 *change)
 {

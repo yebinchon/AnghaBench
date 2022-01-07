@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  type; int /*<<< orphan*/ * srcptr; int /*<<< orphan*/  src; TYPE_1__* fsm; } ;
-struct TYPE_3__ {TYPE_2__ stopped; int /*<<< orphan*/  ctx; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int type; int * srcptr; int src; TYPE_1__* fsm; } ;
+struct TYPE_3__ {TYPE_2__ stopped; int ctx; } ;
 struct nn_ep {TYPE_1__ fsm; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NN_EP_ACTION_STOPPED ; 
- int /*<<< orphan*/  NN_FSM_ACTION ; 
- int /*<<< orphan*/  nn_ctx_raise (int /*<<< orphan*/ ,TYPE_2__*) ; 
+
+ int NN_EP_ACTION_STOPPED ;
+ int NN_FSM_ACTION ;
+ int nn_ctx_raise (int ,TYPE_2__*) ;
 
 void nn_ep_stopped (struct nn_ep *self)
 {
-    /*  TODO: Do the following in a more sane way. */
+
     self->fsm.stopped.fsm = &self->fsm;
     self->fsm.stopped.src = NN_FSM_ACTION;
-    self->fsm.stopped.srcptr = NULL;
+    self->fsm.stopped.srcptr = ((void*)0);
     self->fsm.stopped.type = NN_EP_ACTION_STOPPED;
     nn_ctx_raise (self->fsm.ctx, &self->fsm.stopped);
 }

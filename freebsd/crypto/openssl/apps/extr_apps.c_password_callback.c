@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UI ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UI ;
 struct TYPE_4__ {char* prompt_info; } ;
-typedef  TYPE_1__ PW_CB_DATA ;
+typedef TYPE_1__ PW_CB_DATA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ERR_print_errors (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_cleanse (char*,unsigned int) ; 
- int /*<<< orphan*/  OPENSSL_clear_free (char*,unsigned int) ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
- int /*<<< orphan*/  PW_MIN_LENGTH ; 
- int /*<<< orphan*/  UI_CTRL_IS_REDOABLE ; 
- int /*<<< orphan*/  UI_CTRL_PRINT_ERRORS ; 
- int UI_INPUT_FLAG_DEFAULT_PWD ; 
- int UI_add_input_string (int /*<<< orphan*/ *,char*,int,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  UI_add_user_data (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int UI_add_verify_string (int /*<<< orphan*/ *,char*,int,char*,int /*<<< orphan*/ ,int,char*) ; 
- char* UI_construct_prompt (int /*<<< orphan*/ *,char*,char const*) ; 
- scalar_t__ UI_ctrl (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UI_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * UI_new_method (int /*<<< orphan*/ ) ; 
- int UI_process (int /*<<< orphan*/ *) ; 
- char* app_malloc (int,char*) ; 
- int /*<<< orphan*/  bio_err ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  ui_method ; 
+
+ int BIO_printf (int ,char*) ;
+ int ERR_print_errors (int ) ;
+ int OPENSSL_cleanse (char*,unsigned int) ;
+ int OPENSSL_clear_free (char*,unsigned int) ;
+ int OPENSSL_free (char*) ;
+ int PW_MIN_LENGTH ;
+ int UI_CTRL_IS_REDOABLE ;
+ int UI_CTRL_PRINT_ERRORS ;
+ int UI_INPUT_FLAG_DEFAULT_PWD ;
+ int UI_add_input_string (int *,char*,int,char*,int ,int) ;
+ int UI_add_user_data (int *,TYPE_1__*) ;
+ int UI_add_verify_string (int *,char*,int,char*,int ,int,char*) ;
+ char* UI_construct_prompt (int *,char*,char const*) ;
+ scalar_t__ UI_ctrl (int *,int ,int,int ,int ) ;
+ int UI_free (int *) ;
+ int * UI_new_method (int ) ;
+ int UI_process (int *) ;
+ char* app_malloc (int,char*) ;
+ int bio_err ;
+ int strlen (char*) ;
+ int ui_method ;
 
 int password_callback(char *buf, int bufsiz, int verify, PW_CB_DATA *cb_tmp)
 {
     int res = 0;
-    UI *ui = NULL;
+    UI *ui = ((void*)0);
     PW_CB_DATA *cb_data = (PW_CB_DATA *)cb_tmp;
 
     ui = UI_new_method(ui_method);
     if (ui) {
         int ok = 0;
-        char *buff = NULL;
+        char *buff = ((void*)0);
         int ui_flags = 0;
-        const char *prompt_info = NULL;
+        const char *prompt_info = ((void*)0);
         char *prompt;
 
-        if (cb_data != NULL && cb_data->prompt_info != NULL)
+        if (cb_data != ((void*)0) && cb_data->prompt_info != ((void*)0))
             prompt_info = cb_data->prompt_info;
         prompt = UI_construct_prompt(ui, "pass phrase", prompt_info);
         if (!prompt) {
@@ -64,7 +64,7 @@ int password_callback(char *buf, int bufsiz, int verify, PW_CB_DATA *cb_tmp)
         ui_flags |= UI_INPUT_FLAG_DEFAULT_PWD;
         UI_ctrl(ui, UI_CTRL_PRINT_ERRORS, 1, 0, 0);
 
-        /* We know that there is no previous user data to return to us */
+
         (void)UI_add_user_data(ui, cb_data);
 
         ok = UI_add_input_string(ui, prompt, ui_flags, buf,

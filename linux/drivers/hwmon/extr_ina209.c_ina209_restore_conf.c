@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ina209_data {int /*<<< orphan*/  calibration_orig; int /*<<< orphan*/  config_orig; } ;
+
+
+
+
+struct ina209_data {int calibration_orig; int config_orig; } ;
 struct i2c_client {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INA209_CALIBRATION ; 
- int /*<<< orphan*/  INA209_CONFIGURATION ; 
- int /*<<< orphan*/  i2c_smbus_write_word_swapped (struct i2c_client*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int INA209_CALIBRATION ;
+ int INA209_CONFIGURATION ;
+ int i2c_smbus_write_word_swapped (struct i2c_client*,int ,int ) ;
 
 __attribute__((used)) static void ina209_restore_conf(struct i2c_client *client,
-				struct ina209_data *data)
+    struct ina209_data *data)
 {
-	/* Restore initial configuration */
-	i2c_smbus_write_word_swapped(client, INA209_CONFIGURATION,
-				     data->config_orig);
-	i2c_smbus_write_word_swapped(client, INA209_CALIBRATION,
-				     data->calibration_orig);
+
+ i2c_smbus_write_word_swapped(client, INA209_CONFIGURATION,
+         data->config_orig);
+ i2c_smbus_write_word_swapped(client, INA209_CALIBRATION,
+         data->calibration_orig);
 }

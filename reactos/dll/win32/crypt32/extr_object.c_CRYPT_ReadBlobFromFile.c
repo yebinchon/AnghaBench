@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ cbData; int /*<<< orphan*/  pbData; } ;
-typedef  TYPE_1__* PCERT_BLOB ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  scalar_t__ HANDLE ;
-typedef  scalar_t__ DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFileW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CryptMemAlloc (scalar_t__) ; 
- int /*<<< orphan*/  CryptMemFree (int /*<<< orphan*/ ) ; 
- int FALSE ; 
- int /*<<< orphan*/  FILE_SHARE_READ ; 
- int /*<<< orphan*/  GENERIC_READ ; 
- scalar_t__ GetFileSize (scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- scalar_t__ ReadFile (scalar_t__,int /*<<< orphan*/ ,scalar_t__,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,int) ; 
- int TRUE ; 
- int debugstr_w (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ cbData; int pbData; } ;
+typedef TYPE_1__* PCERT_BLOB ;
+typedef int LPCWSTR ;
+typedef scalar_t__ HANDLE ;
+typedef scalar_t__ DWORD ;
+typedef int BOOL ;
+
+
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFileW (int ,int ,int ,int *,int ,int ,int *) ;
+ int CryptMemAlloc (scalar_t__) ;
+ int CryptMemFree (int ) ;
+ int FALSE ;
+ int FILE_SHARE_READ ;
+ int GENERIC_READ ;
+ scalar_t__ GetFileSize (scalar_t__,int *) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int OPEN_EXISTING ;
+ scalar_t__ ReadFile (scalar_t__,int ,scalar_t__,scalar_t__*,int *) ;
+ int TRACE (char*,int) ;
+ int TRUE ;
+ int debugstr_w (int ) ;
 
 __attribute__((used)) static BOOL CRYPT_ReadBlobFromFile(LPCWSTR fileName, PCERT_BLOB blob)
 {
@@ -41,12 +41,12 @@ __attribute__((used)) static BOOL CRYPT_ReadBlobFromFile(LPCWSTR fileName, PCERT
 
     TRACE("%s\n", debugstr_w(fileName));
 
-    file = CreateFileW(fileName, GENERIC_READ, FILE_SHARE_READ, NULL,
-     OPEN_EXISTING, 0, NULL);
+    file = CreateFileW(fileName, GENERIC_READ, FILE_SHARE_READ, ((void*)0),
+     OPEN_EXISTING, 0, ((void*)0));
     if (file != INVALID_HANDLE_VALUE)
     {
         ret = TRUE;
-        blob->cbData = GetFileSize(file, NULL);
+        blob->cbData = GetFileSize(file, ((void*)0));
         if (blob->cbData)
         {
             blob->pbData = CryptMemAlloc(blob->cbData);
@@ -54,7 +54,7 @@ __attribute__((used)) static BOOL CRYPT_ReadBlobFromFile(LPCWSTR fileName, PCERT
             {
                 DWORD read;
 
-                ret = ReadFile(file, blob->pbData, blob->cbData, &read, NULL) && read == blob->cbData;
+                ret = ReadFile(file, blob->pbData, blob->cbData, &read, ((void*)0)) && read == blob->cbData;
                 if (!ret) CryptMemFree(blob->pbData);
             }
             else

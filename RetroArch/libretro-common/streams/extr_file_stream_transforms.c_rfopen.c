@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RETRO_VFS_FILE_ACCESS_HINT_NONE ; 
- unsigned int RETRO_VFS_FILE_ACCESS_READ ; 
- unsigned int RETRO_VFS_FILE_ACCESS_READ_WRITE ; 
- unsigned int RETRO_VFS_FILE_ACCESS_UPDATE_EXISTING ; 
- unsigned int RETRO_VFS_FILE_ACCESS_WRITE ; 
- int /*<<< orphan*/  RETRO_VFS_SEEK_POSITION_END ; 
- int /*<<< orphan*/ * filestream_open (char const*,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  filestream_seek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ strstr (char const*,char*) ; 
+
+
+
+typedef int RFILE ;
+
+
+ int RETRO_VFS_FILE_ACCESS_HINT_NONE ;
+ unsigned int RETRO_VFS_FILE_ACCESS_READ ;
+ unsigned int RETRO_VFS_FILE_ACCESS_READ_WRITE ;
+ unsigned int RETRO_VFS_FILE_ACCESS_UPDATE_EXISTING ;
+ unsigned int RETRO_VFS_FILE_ACCESS_WRITE ;
+ int RETRO_VFS_SEEK_POSITION_END ;
+ int * filestream_open (char const*,unsigned int,int ) ;
+ int filestream_seek (int *,int ,int ) ;
+ scalar_t__ strstr (char const*,char*) ;
 
 RFILE* rfopen(const char *path, const char *mode)
 {
-   RFILE          *output  = NULL;
+   RFILE *output = ((void*)0);
    unsigned int retro_mode = RETRO_VFS_FILE_ACCESS_READ;
-   bool position_to_end    = false;
+   bool position_to_end = 0;
 
    if (strstr(mode, "r"))
    {
@@ -48,7 +48,7 @@ RFILE* rfopen(const char *path, const char *mode)
    {
       retro_mode = RETRO_VFS_FILE_ACCESS_WRITE |
          RETRO_VFS_FILE_ACCESS_UPDATE_EXISTING;
-      position_to_end = true;
+      position_to_end = 1;
       if (strstr(mode, "+"))
       {
          retro_mode = RETRO_VFS_FILE_ACCESS_READ_WRITE |

@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  F_NULL ; 
- int /*<<< orphan*/  L_NULL ; 
- int /*<<< orphan*/  M_NULL ; 
- int /*<<< orphan*/  f ; 
- int /*<<< orphan*/  l ; 
- int /*<<< orphan*/  m ; 
- scalar_t__ sp ; 
+ int F_NULL ;
+ int L_NULL ;
+ int M_NULL ;
+ int f ;
+ int l ;
+ int m ;
+ scalar_t__ sp ;
 
 void
 hangul_input_clear()

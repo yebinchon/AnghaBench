@@ -1,182 +1,161 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT64 ;
-typedef  int UINT32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_FORMAT_UINT64 (int) ; 
- int /*<<< orphan*/  ASL_DEBUG_OUTPUT ; 
- int /*<<< orphan*/  ASL_ERROR ; 
- int /*<<< orphan*/  ASL_MSG_DIVIDE_BY_ZERO ; 
- int /*<<< orphan*/  ASL_MSG_INVALID_EXPRESSION ; 
- int /*<<< orphan*/  AslGbl_CurrentField ; 
- int /*<<< orphan*/  DbgPrint (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DtError (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DtFatal (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DtGetOpName (int) ; 
-#define  OP_EXP_ADD 147 
-#define  OP_EXP_AND 146 
-#define  OP_EXP_DIVIDE 145 
-#define  OP_EXP_EQUAL 144 
-#define  OP_EXP_GREATER 143 
-#define  OP_EXP_GREATER_EQUAL 142 
-#define  OP_EXP_LESS 141 
-#define  OP_EXP_LESS_EQUAL 140 
-#define  OP_EXP_LOGICAL_AND 139 
-#define  OP_EXP_LOGICAL_NOT 138 
-#define  OP_EXP_LOGICAL_OR 137 
-#define  OP_EXP_MODULO 136 
-#define  OP_EXP_MULTIPLY 135 
-#define  OP_EXP_NOT_EQUAL 134 
-#define  OP_EXP_ONES_COMPLIMENT 133 
-#define  OP_EXP_OR 132 
-#define  OP_EXP_SHIFT_LEFT 131 
-#define  OP_EXP_SHIFT_RIGHT 130 
-#define  OP_EXP_SUBTRACT 129 
-#define  OP_EXP_XOR 128 
 
+
+
+typedef int UINT64 ;
+typedef int UINT32 ;
+
+
+ int ACPI_FORMAT_UINT64 (int) ;
+ int ASL_DEBUG_OUTPUT ;
+ int ASL_ERROR ;
+ int ASL_MSG_DIVIDE_BY_ZERO ;
+ int ASL_MSG_INVALID_EXPRESSION ;
+ int AslGbl_CurrentField ;
+ int DbgPrint (int ,char*,int ,int ,int ,int ) ;
+ int DtError (int ,int ,int ,int *) ;
+ int DtFatal (int ,int ,int *) ;
+ int DtGetOpName (int) ;
 UINT64
 DtDoOperator (
-    UINT64                  LeftValue,
-    UINT32                  Operator,
-    UINT64                  RightValue)
+    UINT64 LeftValue,
+    UINT32 Operator,
+    UINT64 RightValue)
 {
-    UINT64                  Result;
+    UINT64 Result;
 
 
-    /* Perform the requested operation */
+
 
     switch (Operator)
     {
-    case OP_EXP_ONES_COMPLIMENT:
+    case 133:
 
         Result = ~RightValue;
         break;
 
-    case OP_EXP_LOGICAL_NOT:
+    case 138:
 
         Result = !RightValue;
         break;
 
-    case OP_EXP_MULTIPLY:
+    case 135:
 
         Result = LeftValue * RightValue;
         break;
 
-    case OP_EXP_DIVIDE:
+    case 145:
 
         if (!RightValue)
         {
             DtError (ASL_ERROR, ASL_MSG_DIVIDE_BY_ZERO,
-                AslGbl_CurrentField, NULL);
+                AslGbl_CurrentField, ((void*)0));
             return (0);
         }
 
         Result = LeftValue / RightValue;
         break;
 
-    case OP_EXP_MODULO:
+    case 136:
 
         if (!RightValue)
         {
             DtError (ASL_ERROR, ASL_MSG_DIVIDE_BY_ZERO,
-                AslGbl_CurrentField, NULL);
+                AslGbl_CurrentField, ((void*)0));
             return (0);
         }
 
         Result = LeftValue % RightValue;
         break;
 
-    case OP_EXP_ADD:
+    case 147:
         Result = LeftValue + RightValue;
         break;
 
-    case OP_EXP_SUBTRACT:
+    case 129:
 
         Result = LeftValue - RightValue;
         break;
 
-    case OP_EXP_SHIFT_RIGHT:
+    case 130:
 
         Result = LeftValue >> RightValue;
         break;
 
-    case OP_EXP_SHIFT_LEFT:
+    case 131:
 
         Result = LeftValue << RightValue;
         break;
 
-    case OP_EXP_LESS:
+    case 141:
 
         Result = LeftValue < RightValue;
         break;
 
-    case OP_EXP_GREATER:
+    case 143:
 
         Result = LeftValue > RightValue;
         break;
 
-    case OP_EXP_LESS_EQUAL:
+    case 140:
 
         Result = LeftValue <= RightValue;
         break;
 
-    case OP_EXP_GREATER_EQUAL:
+    case 142:
 
         Result = LeftValue >= RightValue;
         break;
 
-    case OP_EXP_EQUAL:
+    case 144:
 
         Result = LeftValue == RightValue;
         break;
 
-    case OP_EXP_NOT_EQUAL:
+    case 134:
 
         Result = LeftValue != RightValue;
         break;
 
-    case OP_EXP_AND:
+    case 146:
 
         Result = LeftValue & RightValue;
         break;
 
-    case OP_EXP_XOR:
+    case 128:
 
         Result = LeftValue ^ RightValue;
         break;
 
-    case OP_EXP_OR:
+    case 132:
 
         Result = LeftValue | RightValue;
         break;
 
-    case OP_EXP_LOGICAL_AND:
+    case 139:
 
         Result = LeftValue && RightValue;
         break;
 
-    case OP_EXP_LOGICAL_OR:
+    case 137:
 
         Result = LeftValue || RightValue;
         break;
 
    default:
 
-        /* Unknown operator */
+
 
         DtFatal (ASL_MSG_INVALID_EXPRESSION,
-            AslGbl_CurrentField, NULL);
+            AslGbl_CurrentField, ((void*)0));
         return (0);
     }
 

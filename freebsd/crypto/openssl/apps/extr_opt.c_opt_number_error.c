@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct strstr_pair_st   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct strstr_pair_st TYPE_1__ ;
+
+
 struct strstr_pair_st {char* prefix; char* name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char const*,...) ; 
- size_t OSSL_NELEM (TYPE_1__*) ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/  prog ; 
- int /*<<< orphan*/  strlen (char*) ; 
- scalar_t__ strncmp (char const*,char*,int /*<<< orphan*/ ) ; 
+
+ int BIO_printf (int ,char*,int ,char const*,...) ;
+ size_t OSSL_NELEM (TYPE_1__*) ;
+ int bio_err ;
+ int prog ;
+ int strlen (char*) ;
+ scalar_t__ strncmp (char const*,char*,int ) ;
 
 __attribute__((used)) static void opt_number_error(const char *v)
 {

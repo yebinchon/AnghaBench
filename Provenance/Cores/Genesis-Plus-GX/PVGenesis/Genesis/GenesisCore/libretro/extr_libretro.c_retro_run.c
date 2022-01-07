@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int x; int y; scalar_t__ h; scalar_t__ w; } ;
-struct TYPE_4__ {int /*<<< orphan*/  pitch; TYPE_1__ viewport; int /*<<< orphan*/  data; } ;
+struct TYPE_4__ {int pitch; TYPE_1__ viewport; int data; } ;
 
-/* Variables and functions */
- int SYSTEM_MCD ; 
- int SYSTEM_MD ; 
- int SYSTEM_PBC ; 
- int /*<<< orphan*/  audio_batch_cb (int /*<<< orphan*/ ,int) ; 
- int audio_update (int /*<<< orphan*/ ) ; 
- TYPE_2__ bitmap ; 
- int /*<<< orphan*/  soundbuffer ; 
- int /*<<< orphan*/  system_frame_gen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  system_frame_scd (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  system_frame_sms (int /*<<< orphan*/ ) ; 
- int system_hw ; 
- int /*<<< orphan*/  video_cb (int /*<<< orphan*/ ,scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
 
-void retro_run(void) 
+ int SYSTEM_MCD ;
+ int SYSTEM_MD ;
+ int SYSTEM_PBC ;
+ int audio_batch_cb (int ,int) ;
+ int audio_update (int ) ;
+ TYPE_2__ bitmap ;
+ int soundbuffer ;
+ int system_frame_gen (int ) ;
+ int system_frame_scd (int ) ;
+ int system_frame_sms (int ) ;
+ int system_hw ;
+ int video_cb (int ,scalar_t__,scalar_t__,int ) ;
+
+void retro_run(void)
 {
    int aud;
 

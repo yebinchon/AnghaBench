@@ -1,43 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  git__isspace (char) ; 
+ int git__isspace (char) ;
 
 __attribute__((used)) static size_t unescape_spaces(char *str)
 {
-	char *scan, *pos = str;
-	bool escaped = false;
+ char *scan, *pos = str;
+ bool escaped = 0;
 
-	if (!str)
-		return 0;
+ if (!str)
+  return 0;
 
-	for (scan = str; *scan; scan++) {
-		if (!escaped && *scan == '\\') {
-			escaped = true;
-			continue;
-		}
+ for (scan = str; *scan; scan++) {
+  if (!escaped && *scan == '\\') {
+   escaped = 1;
+   continue;
+  }
 
-		/* Only insert the escape character for escaped non-spaces */
-		if (escaped && !git__isspace(*scan))
-			*pos++ = '\\';
 
-		*pos++ = *scan;
-		escaped = false;
-	}
+  if (escaped && !git__isspace(*scan))
+   *pos++ = '\\';
 
-	if (pos != scan)
-		*pos = '\0';
+  *pos++ = *scan;
+  escaped = 0;
+ }
 
-	return (pos - str);
+ if (pos != scan)
+  *pos = '\0';
+
+ return (pos - str);
 }

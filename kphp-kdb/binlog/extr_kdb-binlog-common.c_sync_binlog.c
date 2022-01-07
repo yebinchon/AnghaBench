@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct aiocb {int dummy; } ;
 struct TYPE_11__ {int aio_fildes; } ;
-struct TYPE_9__ {int /*<<< orphan*/  sigev_notify; } ;
+struct TYPE_9__ {int sigev_notify; } ;
 struct TYPE_10__ {int aio_fildes; TYPE_1__ aio_sigevent; } ;
 
-/* Variables and functions */
- int EINPROGRESS ; 
- int /*<<< orphan*/  O_DSYNC ; 
- int /*<<< orphan*/  SIGEV_NONE ; 
- int /*<<< orphan*/  aio_cancel (int,TYPE_2__*) ; 
- int aio_error (TYPE_2__*) ; 
- scalar_t__ aio_fsync (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int aio_return (TYPE_2__*) ; 
- scalar_t__ binlog_disabled ; 
- int binlog_fd ; 
- scalar_t__ binlog_sync_active ; 
- TYPE_2__ binlog_sync_aiocb ; 
- scalar_t__ binlog_sync_last ; 
- TYPE_3__ binlog_write_aiocb ; 
- char* binlogname ; 
- int /*<<< orphan*/  close (int) ; 
- int errno ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,scalar_t__,...) ; 
- scalar_t__ fsync (int) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ now ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+ int EINPROGRESS ;
+ int O_DSYNC ;
+ int SIGEV_NONE ;
+ int aio_cancel (int,TYPE_2__*) ;
+ int aio_error (TYPE_2__*) ;
+ scalar_t__ aio_fsync (int ,TYPE_2__*) ;
+ int aio_return (TYPE_2__*) ;
+ scalar_t__ binlog_disabled ;
+ int binlog_fd ;
+ scalar_t__ binlog_sync_active ;
+ TYPE_2__ binlog_sync_aiocb ;
+ scalar_t__ binlog_sync_last ;
+ TYPE_3__ binlog_write_aiocb ;
+ char* binlogname ;
+ int close (int) ;
+ int errno ;
+ int exit (int) ;
+ int fprintf (int ,char*,scalar_t__,...) ;
+ scalar_t__ fsync (int) ;
+ int memset (TYPE_2__*,int ,int) ;
+ scalar_t__ now ;
+ int stderr ;
+ int verbosity ;
 
 void sync_binlog (int mode) {
   int res, err;

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * mesg_box; int /*<<< orphan*/  mesg_tb; int /*<<< orphan*/  sw; } ;
-typedef  TYPE_1__ RofiViewState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WIDGET (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- char* mode_get_message (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  textbox_text (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  widget_disable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  widget_enable (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * mesg_box; int mesg_tb; int sw; } ;
+typedef TYPE_1__ RofiViewState ;
+
+
+ int WIDGET (int *) ;
+ int g_free (char*) ;
+ char* mode_get_message (int ) ;
+ int textbox_text (int ,char*) ;
+ int widget_disable (int ) ;
+ int widget_enable (int ) ;
 
 __attribute__((used)) static void rofi_view_reload_message_bar ( RofiViewState *state )
 {
-    if ( state->mesg_box == NULL ) {
+    if ( state->mesg_box == ((void*)0) ) {
         return;
     }
     char *msg = mode_get_message ( state->sw );

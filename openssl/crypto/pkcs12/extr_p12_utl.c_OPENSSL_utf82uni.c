@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- unsigned char* OPENSSL_asc2uni (char const*,int,unsigned char**,int*) ; 
- unsigned char* OPENSSL_malloc (int) ; 
- int /*<<< orphan*/  PKCS12_F_OPENSSL_UTF82UNI ; 
- int /*<<< orphan*/  PKCS12err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int UTF8_getc (unsigned char const*,int,unsigned long*) ; 
- int strlen (char const*) ; 
+ int ERR_R_MALLOC_FAILURE ;
+ unsigned char* OPENSSL_asc2uni (char const*,int,unsigned char**,int*) ;
+ unsigned char* OPENSSL_malloc (int) ;
+ int PKCS12_F_OPENSSL_UTF82UNI ;
+ int PKCS12err (int ,int ) ;
+ int UTF8_getc (unsigned char const*,int,unsigned long*) ;
+ int strlen (char const*) ;
 
 unsigned char *OPENSSL_utf82uni(const char *asc, int asclen,
                                 unsigned char **uni, int *unilen)
@@ -32,45 +24,28 @@ unsigned char *OPENSSL_utf82uni(const char *asc, int asclen,
 
     for (ulen = 0, i = 0; i < asclen; i += j) {
         j = UTF8_getc((const unsigned char *)asc+i, asclen-i, &utf32chr);
-
-        /*
-         * Following condition is somewhat opportunistic is sense that
-         * decoding failure is used as *indirect* indication that input
-         * string might in fact be extended ASCII/ANSI/ISO-8859-X. The
-         * fallback is taken in hope that it would allow to process
-         * files created with previous OpenSSL version, which used the
-         * naive OPENSSL_asc2uni all along. It might be worth noting
-         * that probability of false positive depends on language. In
-         * cases covered by ISO Latin 1 probability is very low, because
-         * any printable non-ASCII alphabet letter followed by another
-         * or any ASCII character will trigger failure and fallback.
-         * In other cases situation can be intensified by the fact that
-         * English letters are not part of alternative keyboard layout,
-         * but even then there should be plenty of pairs that trigger
-         * decoding failure...
-         */
         if (j < 0)
             return OPENSSL_asc2uni(asc, asclen, uni, unilen);
 
-        if (utf32chr > 0x10FFFF)        /* UTF-16 cap */
-            return NULL;
+        if (utf32chr > 0x10FFFF)
+            return ((void*)0);
 
-        if (utf32chr >= 0x10000)        /* pair of UTF-16 characters */
+        if (utf32chr >= 0x10000)
             ulen += 2*2;
-        else                            /* or just one */
+        else
             ulen += 2;
     }
 
-    ulen += 2;  /* for trailing UTF16 zero */
+    ulen += 2;
 
-    if ((ret = OPENSSL_malloc(ulen)) == NULL) {
+    if ((ret = OPENSSL_malloc(ulen)) == ((void*)0)) {
         PKCS12err(PKCS12_F_OPENSSL_UTF82UNI, ERR_R_MALLOC_FAILURE);
-        return NULL;
+        return ((void*)0);
     }
-    /* re-run the loop writing down UTF-16 characters in big-endian order */
+
     for (unitmp = ret, i = 0; i < asclen; i += j) {
         j = UTF8_getc((const unsigned char *)asc+i, asclen-i, &utf32chr);
-        if (utf32chr >= 0x10000) {      /* pair if UTF-16 characters */
+        if (utf32chr >= 0x10000) {
             unsigned int hi, lo;
 
             utf32chr -= 0x10000;
@@ -80,12 +55,12 @@ unsigned char *OPENSSL_utf82uni(const char *asc, int asclen,
             *unitmp++ = (unsigned char)(hi);
             *unitmp++ = (unsigned char)(lo>>8);
             *unitmp++ = (unsigned char)(lo);
-        } else {                        /* or just one */
+        } else {
             *unitmp++ = (unsigned char)(utf32chr>>8);
             *unitmp++ = (unsigned char)(utf32chr);
         }
     }
-    /* Make result double null terminated */
+
     *unitmp++ = 0;
     *unitmp++ = 0;
     if (unilen)

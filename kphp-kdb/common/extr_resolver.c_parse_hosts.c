@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct resolver_conf {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  getHash (struct resolver_conf*,char*,int,unsigned int) ; 
- char* getword (char**,int*) ; 
- int readbyte (char**) ; 
- char* skipspc (char*) ; 
- char* skiptoeoln (char*) ; 
+
+ int getHash (struct resolver_conf*,char*,int,unsigned int) ;
+ char* getword (char**,int*) ;
+ int readbyte (char**) ;
+ char* skipspc (char*) ;
+ char* skiptoeoln (char*) ;
 
 __attribute__((used)) static int parse_hosts (struct resolver_conf *R, char *data, int mode) {
   char *ptr;
@@ -39,7 +39,7 @@ __attribute__((used)) static int parse_hosts (struct resolver_conf *R, char *dat
       }
     }
 
-//fprintf (stderr, "ip = %08x, i = %d\n", ip, i);
+
 
     if (i < 4 || (*ptr != ' ' && *ptr != '\t') || !ip) {
       continue;
@@ -51,7 +51,7 @@ __attribute__((used)) static int parse_hosts (struct resolver_conf *R, char *dat
     do {
       word = getword (&ptr, &wordlen);
       if (word && wordlen < 128) {
-//fprintf (stderr, "word = %.*s\n", wordlen, word);
+
         if (mode) {
           getHash (R, word, wordlen, ip);
         }

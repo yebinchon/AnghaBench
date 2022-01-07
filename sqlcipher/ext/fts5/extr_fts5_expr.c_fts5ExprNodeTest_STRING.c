@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ i64 ;
+
+
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef scalar_t__ i64 ;
 struct TYPE_19__ {int bDesc; } ;
 struct TYPE_18__ {int nPhrase; TYPE_3__** apPhrase; } ;
 struct TYPE_17__ {int bNomatch; int bEof; scalar_t__ iRowid; TYPE_5__* pNear; } ;
 struct TYPE_16__ {int nTerm; TYPE_2__* aTerm; } ;
 struct TYPE_15__ {TYPE_1__* pIter; scalar_t__ pSynonym; scalar_t__ bFirst; } ;
 struct TYPE_14__ {scalar_t__ bEof; scalar_t__ iRowid; } ;
-typedef  TYPE_1__ Fts5IndexIter ;
-typedef  TYPE_2__ Fts5ExprTerm ;
-typedef  TYPE_3__ Fts5ExprPhrase ;
-typedef  TYPE_4__ Fts5ExprNode ;
-typedef  TYPE_5__ Fts5ExprNearset ;
-typedef  TYPE_6__ Fts5Expr ;
+typedef TYPE_1__ Fts5IndexIter ;
+typedef TYPE_2__ Fts5ExprTerm ;
+typedef TYPE_3__ Fts5ExprPhrase ;
+typedef TYPE_4__ Fts5ExprNode ;
+typedef TYPE_5__ Fts5ExprNearset ;
+typedef TYPE_6__ Fts5Expr ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ fts5ExprAdvanceto (TYPE_1__*,int const,scalar_t__*,int*,int*) ; 
- scalar_t__ fts5ExprNearTest (int*,TYPE_6__*,TYPE_4__*) ; 
- scalar_t__ fts5ExprSynonymAdvanceto (TYPE_2__*,int const,scalar_t__*,int*) ; 
- scalar_t__ fts5ExprSynonymRowid (TYPE_2__*,int const,int /*<<< orphan*/ ) ; 
+
+ int SQLITE_OK ;
+ int assert (int) ;
+ scalar_t__ fts5ExprAdvanceto (TYPE_1__*,int const,scalar_t__*,int*,int*) ;
+ scalar_t__ fts5ExprNearTest (int*,TYPE_6__*,TYPE_4__*) ;
+ scalar_t__ fts5ExprSynonymAdvanceto (TYPE_2__*,int const,scalar_t__*,int*) ;
+ scalar_t__ fts5ExprSynonymRowid (TYPE_2__*,int const,int ) ;
 
 __attribute__((used)) static int fts5ExprNodeTest_STRING(
-  Fts5Expr *pExpr,                /* Expression pPhrase belongs to */
+  Fts5Expr *pExpr,
   Fts5ExprNode *pNode
 ){
   Fts5ExprNearset *pNear = pNode->pNear;
   Fts5ExprPhrase *pLeft = pNear->apPhrase[0];
   int rc = SQLITE_OK;
-  i64 iLast;                      /* Lastest rowid any iterator points to */
-  int i, j;                       /* Phrase and token index, respectively */
-  int bMatch;                     /* True if all terms are at the same rowid */
+  i64 iLast;
+  int i, j;
+  int bMatch;
   const int bDesc = pExpr->bDesc;
 
-  /* Check that this node should not be FTS5_TERM */
-  assert( pNear->nPhrase>1 
-       || pNear->apPhrase[0]->nTerm>1 
+
+  assert( pNear->nPhrase>1
+       || pNear->apPhrase[0]->nTerm>1
        || pNear->apPhrase[0]->aTerm[0].pSynonym
        || pNear->apPhrase[0]->aTerm[0].bFirst
   );
 
-  /* Initialize iLast, the "lastest" rowid any iterator points to. If the
-  ** iterator skips through rowids in the default ascending order, this means
-  ** the maximum rowid. Or, if the iterator is "ORDER BY rowid DESC", then it
-  ** means the minimum rowid.  */
+
+
+
+
   if( pLeft->aTerm[0].pSynonym ){
     iLast = fts5ExprSynonymRowid(&pLeft->aTerm[0], bDesc, 0);
   }else{

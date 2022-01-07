@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cmd_list {int /*<<< orphan*/  list; int /*<<< orphan*/  group; } ;
-struct cmd {int /*<<< orphan*/  group; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TAILQ_INSERT_TAIL (int /*<<< orphan*/ *,struct cmd*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qentry ; 
+
+
+
+struct cmd_list {int list; int group; } ;
+struct cmd {int group; } ;
+
+
+ int TAILQ_INSERT_TAIL (int *,struct cmd*,int ) ;
+ int qentry ;
 
 void
 cmd_list_append(struct cmd_list *cmdlist, struct cmd *cmd)
 {
-	cmd->group = cmdlist->group;
-	TAILQ_INSERT_TAIL(&cmdlist->list, cmd, qentry);
+ cmd->group = cmdlist->group;
+ TAILQ_INSERT_TAIL(&cmdlist->list, cmd, qentry);
 }

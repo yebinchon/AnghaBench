@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct intel_vgpu {int /*<<< orphan*/  vgpu_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  intel_gvt_reset_vgpu_locked (struct intel_vgpu*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct intel_vgpu {int vgpu_lock; } ;
+
+
+ int intel_gvt_reset_vgpu_locked (struct intel_vgpu*,int,int ) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 void intel_gvt_reset_vgpu(struct intel_vgpu *vgpu)
 {
-	mutex_lock(&vgpu->vgpu_lock);
-	intel_gvt_reset_vgpu_locked(vgpu, true, 0);
-	mutex_unlock(&vgpu->vgpu_lock);
+ mutex_lock(&vgpu->vgpu_lock);
+ intel_gvt_reset_vgpu_locked(vgpu, 1, 0);
+ mutex_unlock(&vgpu->vgpu_lock);
 }

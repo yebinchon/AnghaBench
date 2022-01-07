@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lev_money_new_atype {int acc_type_id; scalar_t__ currency; scalar_t__ acc_class; scalar_t__ creator_id; int comm_len; int /*<<< orphan*/  comment; int /*<<< orphan*/  create_code; int /*<<< orphan*/  block_code; int /*<<< orphan*/  withdraw_code; int /*<<< orphan*/  access_code; int /*<<< orphan*/  admin_code; int /*<<< orphan*/  auth_code; int /*<<< orphan*/  ip; } ;
-struct account_type {scalar_t__ currency; int acc_type_id; scalar_t__ acc_class; scalar_t__ creator_id; int comm_len; int /*<<< orphan*/ * comment; int /*<<< orphan*/  create_code; int /*<<< orphan*/  block_code; int /*<<< orphan*/  withdraw_code; int /*<<< orphan*/  access_code; int /*<<< orphan*/  admin_code; int /*<<< orphan*/  auth_code; int /*<<< orphan*/  ip; } ;
 
-/* Variables and functions */
- struct account_type** AccTypes ; 
- int MAX_ACCOUNT_TYPE ; 
- scalar_t__ MAX_CURRENCY_ID ; 
- scalar_t__ MIN_CURRENCY_ID ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  tot_account_types ; 
- int /*<<< orphan*/  zfree (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * zmalloc (int) ; 
- struct account_type* zmalloc0 (int) ; 
+
+
+
+struct lev_money_new_atype {int acc_type_id; scalar_t__ currency; scalar_t__ acc_class; scalar_t__ creator_id; int comm_len; int comment; int create_code; int block_code; int withdraw_code; int access_code; int admin_code; int auth_code; int ip; } ;
+struct account_type {scalar_t__ currency; int acc_type_id; scalar_t__ acc_class; scalar_t__ creator_id; int comm_len; int * comment; int create_code; int block_code; int withdraw_code; int access_code; int admin_code; int auth_code; int ip; } ;
+
+
+ struct account_type** AccTypes ;
+ int MAX_ACCOUNT_TYPE ;
+ scalar_t__ MAX_CURRENCY_ID ;
+ scalar_t__ MIN_CURRENCY_ID ;
+ int assert (int) ;
+ int memcpy (int *,int ,int) ;
+ int tot_account_types ;
+ int zfree (int *,int) ;
+ int * zmalloc (int) ;
+ struct account_type* zmalloc0 (int) ;
 
 __attribute__((used)) static int create_account_type (struct lev_money_new_atype *E) {
   struct account_type *A;

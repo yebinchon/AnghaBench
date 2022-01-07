@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_config ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_CONFIG ; 
- int /*<<< orphan*/  buf ; 
- int /*<<< orphan*/  cl_assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_config_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_config_get_string_buf (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  git_config_open_ondisk (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_path_exists (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int git_config ;
+
+
+ int TEST_CONFIG ;
+ int buf ;
+ int cl_assert (int ) ;
+ int cl_git_pass (int ) ;
+ int git_config_free (int *) ;
+ int git_config_get_string_buf (int *,int *,char*) ;
+ int git_config_open_ondisk (int **,int ) ;
+ int git_path_exists (int ) ;
 
 void test_config_stress__dont_break_on_invalid_input(void)
 {
-	git_config *config;
+ git_config *config;
 
-	cl_assert(git_path_exists(TEST_CONFIG));
-	cl_git_pass(git_config_open_ondisk(&config, TEST_CONFIG));
+ cl_assert(git_path_exists(TEST_CONFIG));
+ cl_git_pass(git_config_open_ondisk(&config, TEST_CONFIG));
 
-	cl_git_pass(git_config_get_string_buf(&buf, config, "color.ui"));
-	cl_git_pass(git_config_get_string_buf(&buf, config, "core.editor"));
+ cl_git_pass(git_config_get_string_buf(&buf, config, "color.ui"));
+ cl_git_pass(git_config_get_string_buf(&buf, config, "core.editor"));
 
-	git_config_free(config);
+ git_config_free(config);
 }

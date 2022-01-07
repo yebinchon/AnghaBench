@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * DhcpPendingLeaseList; int /*<<< orphan*/ * DhcpLeaseList; } ;
-typedef  TYPE_1__ VH ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  DHCP_LEASE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreeDhcpLease (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseList (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * DhcpPendingLeaseList; int * DhcpLeaseList; } ;
+typedef TYPE_1__ VH ;
+typedef scalar_t__ UINT ;
+typedef int DHCP_LEASE ;
+
+
+ int FreeDhcpLease (int *) ;
+ int * LIST_DATA (int *,scalar_t__) ;
+ scalar_t__ LIST_NUM (int *) ;
+ int ReleaseList (int *) ;
 
 void FreeDhcpServer(VH *v)
 {
-	UINT i;
-	// Validate arguments
-	if (v == NULL)
-	{
-		return;
-	}
+ UINT i;
 
-	// Empty the leases lists
-	for (i = 0; i < LIST_NUM(v->DhcpLeaseList); ++i)
-	{
-		DHCP_LEASE *d = LIST_DATA(v->DhcpLeaseList, i);
-		FreeDhcpLease(d);
-	}
+ if (v == ((void*)0))
+ {
+  return;
+ }
 
-	ReleaseList(v->DhcpLeaseList);
-	v->DhcpLeaseList = NULL;
 
-	for (i = 0; i < LIST_NUM(v->DhcpPendingLeaseList); ++i)
-	{
-		DHCP_LEASE *d = LIST_DATA(v->DhcpPendingLeaseList, i);
-		FreeDhcpLease(d);
-	}
+ for (i = 0; i < LIST_NUM(v->DhcpLeaseList); ++i)
+ {
+  DHCP_LEASE *d = LIST_DATA(v->DhcpLeaseList, i);
+  FreeDhcpLease(d);
+ }
 
-	ReleaseList(v->DhcpPendingLeaseList);
-	v->DhcpPendingLeaseList = NULL;
+ ReleaseList(v->DhcpLeaseList);
+ v->DhcpLeaseList = ((void*)0);
+
+ for (i = 0; i < LIST_NUM(v->DhcpPendingLeaseList); ++i)
+ {
+  DHCP_LEASE *d = LIST_DATA(v->DhcpPendingLeaseList, i);
+  FreeDhcpLease(d);
+ }
+
+ ReleaseList(v->DhcpPendingLeaseList);
+ v->DhcpPendingLeaseList = ((void*)0);
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ eState; scalar_t__ eLock; scalar_t__ journalMode; int /*<<< orphan*/  pPCache; int /*<<< orphan*/  zWal; int /*<<< orphan*/  pVfs; int /*<<< orphan*/  tempFile; } ;
-typedef  scalar_t__ Pgno ;
-typedef  TYPE_1__ Pager ;
 
-/* Variables and functions */
- scalar_t__ PAGER_JOURNALMODE_DELETE ; 
- scalar_t__ PAGER_JOURNALMODE_WAL ; 
- scalar_t__ PAGER_OPEN ; 
- scalar_t__ SHARED_LOCK ; 
- int /*<<< orphan*/  SQLITE_ACCESS_EXISTS ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int pagerPagecount (TYPE_1__*,scalar_t__*) ; 
- int sqlite3OsAccess (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int sqlite3OsDelete (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int sqlite3PagerOpenWal (TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3PcachePagecount (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  testcase (int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ eState; scalar_t__ eLock; scalar_t__ journalMode; int pPCache; int zWal; int pVfs; int tempFile; } ;
+typedef scalar_t__ Pgno ;
+typedef TYPE_1__ Pager ;
+
+
+ scalar_t__ PAGER_JOURNALMODE_DELETE ;
+ scalar_t__ PAGER_JOURNALMODE_WAL ;
+ scalar_t__ PAGER_OPEN ;
+ scalar_t__ SHARED_LOCK ;
+ int SQLITE_ACCESS_EXISTS ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int pagerPagecount (TYPE_1__*,scalar_t__*) ;
+ int sqlite3OsAccess (int ,int ,int ,int*) ;
+ int sqlite3OsDelete (int ,int ,int ) ;
+ int sqlite3PagerOpenWal (TYPE_1__*,int ) ;
+ scalar_t__ sqlite3PcachePagecount (int ) ;
+ int testcase (int) ;
 
 __attribute__((used)) static int pagerOpenWalIfPresent(Pager *pPager){
   int rc = SQLITE_OK;
@@ -36,13 +36,13 @@ __attribute__((used)) static int pagerOpenWalIfPresent(Pager *pPager){
   assert( pPager->eLock>=SHARED_LOCK );
 
   if( !pPager->tempFile ){
-    int isWal;                    /* True if WAL file exists */
+    int isWal;
     rc = sqlite3OsAccess(
         pPager->pVfs, pPager->zWal, SQLITE_ACCESS_EXISTS, &isWal
     );
     if( rc==SQLITE_OK ){
       if( isWal ){
-        Pgno nPage;                   /* Size of the database file */
+        Pgno nPage;
 
         rc = pagerPagecount(pPager, &nPage);
         if( rc ) return rc;

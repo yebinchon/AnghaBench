@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct SN_env {int* I; int l; int c; int* p; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  a_0 ; 
- int /*<<< orphan*/  find_among (struct SN_env*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  g_v ; 
- int in_grouping (struct SN_env*,int /*<<< orphan*/ ,int,int,int) ; 
- int out_grouping (struct SN_env*,int /*<<< orphan*/ ,int,int,int) ; 
 
-__attribute__((used)) static int r_mark_regions(struct SN_env * z) { /* forwardmode */
-    z->I[0] = z->l; /* $pV = <integer expression>, line 56 */
-    z->I[1] = z->l; /* $p1 = <integer expression>, line 57 */
-    z->I[2] = z->l; /* $p2 = <integer expression>, line 58 */
-    {   int c1 = z->c; /* do, line 60 */
-        {   int c2 = z->c; /* or, line 62 */
-            if (in_grouping(z, g_v, 97, 251, 0)) goto lab2; /* grouping v, line 61 */
-            if (in_grouping(z, g_v, 97, 251, 0)) goto lab2; /* grouping v, line 61 */
+ int a_0 ;
+ int find_among (struct SN_env*,int ,int) ;
+ int g_v ;
+ int in_grouping (struct SN_env*,int ,int,int,int) ;
+ int out_grouping (struct SN_env*,int ,int,int,int) ;
+
+__attribute__((used)) static int r_mark_regions(struct SN_env * z) {
+    z->I[0] = z->l;
+    z->I[1] = z->l;
+    z->I[2] = z->l;
+    { int c1 = z->c;
+        { int c2 = z->c;
+            if (in_grouping(z, g_v, 97, 251, 0)) goto lab2;
+            if (in_grouping(z, g_v, 97, 251, 0)) goto lab2;
             if (z->c >= z->l) goto lab2;
-            z->c++; /* next, line 61 */
+            z->c++;
             goto lab1;
         lab2:
             z->c = c2;
-            if (z->c + 2 >= z->l || z->p[z->c + 2] >> 5 != 3 || !((331776 >> (z->p[z->c + 2] & 0x1f)) & 1)) goto lab3; /* among, line 63 */
+            if (z->c + 2 >= z->l || z->p[z->c + 2] >> 5 != 3 || !((331776 >> (z->p[z->c + 2] & 0x1f)) & 1)) goto lab3;
             if (!(find_among(z, a_0, 3))) goto lab3;
             goto lab1;
         lab3:
             z->c = c2;
             if (z->c >= z->l) goto lab0;
-            z->c++; /* next, line 70 */
-            {    /* gopast */ /* grouping v, line 70 */
+            z->c++;
+            {
                 int ret = out_grouping(z, g_v, 97, 251, 1);
                 if (ret < 0) goto lab0;
                 z->c += ret;
             }
         }
     lab1:
-        z->I[0] = z->c; /* setmark pV, line 71 */
+        z->I[0] = z->c;
     lab0:
         z->c = c1;
     }
-    {   int c3 = z->c; /* do, line 73 */
-        {    /* gopast */ /* grouping v, line 74 */
+    { int c3 = z->c;
+        {
             int ret = out_grouping(z, g_v, 97, 251, 1);
             if (ret < 0) goto lab4;
             z->c += ret;
         }
-        {    /* gopast */ /* non v, line 74 */
+        {
             int ret = in_grouping(z, g_v, 97, 251, 1);
             if (ret < 0) goto lab4;
             z->c += ret;
         }
-        z->I[1] = z->c; /* setmark p1, line 74 */
-        {    /* gopast */ /* grouping v, line 75 */
+        z->I[1] = z->c;
+        {
             int ret = out_grouping(z, g_v, 97, 251, 1);
             if (ret < 0) goto lab4;
             z->c += ret;
         }
-        {    /* gopast */ /* non v, line 75 */
+        {
             int ret = in_grouping(z, g_v, 97, 251, 1);
             if (ret < 0) goto lab4;
             z->c += ret;
         }
-        z->I[2] = z->c; /* setmark p2, line 75 */
+        z->I[2] = z->c;
     lab4:
         z->c = c3;
     }

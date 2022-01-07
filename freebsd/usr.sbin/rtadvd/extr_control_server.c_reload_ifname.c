@@ -1,17 +1,9 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ char* do_reload_ifname ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* do_reload_ifname ; 
-
-char *reload_ifname(void)	{ return (do_reload_ifname); }
+char *reload_ifname(void) { return (do_reload_ifname); }

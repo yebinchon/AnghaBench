@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ngx_http_request_t ;
-struct TYPE_8__ {TYPE_2__* cur_co_ctx; int /*<<< orphan*/  co_op; int /*<<< orphan*/  uthreads; } ;
-typedef  TYPE_1__ ngx_http_lua_ctx_t ;
-struct TYPE_9__ {int is_uthread; int thread_spawn_yielded; int /*<<< orphan*/  co; struct TYPE_9__* parent_co_ctx; int /*<<< orphan*/  co_status; int /*<<< orphan*/  co_ref; } ;
-typedef  TYPE_2__ ngx_http_lua_co_ctx_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- int /*<<< orphan*/  NGX_HTTP_LUA_CO_RUNNING ; 
- int /*<<< orphan*/  NGX_HTTP_LUA_USER_THREAD_RESUME ; 
- scalar_t__ NGX_OK ; 
- int /*<<< orphan*/  coroutines_key ; 
- int /*<<< orphan*/  dd (char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  luaL_ref (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaL_typename (int /*<<< orphan*/ *,int) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushlightuserdata (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_rawget (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_replace (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_xmove (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int lua_yield (int /*<<< orphan*/ *,int) ; 
- TYPE_1__* ngx_http_get_module_ctx (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_lua_coroutine_create_helper (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,TYPE_2__**) ; 
- int /*<<< orphan*/ * ngx_http_lua_get_req (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_http_lua_lightudata_mask (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_lua_module ; 
- scalar_t__ ngx_http_lua_post_thread (int /*<<< orphan*/ *,TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  ngx_http_lua_probe_user_thread_spawn (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int ngx_http_request_t ;
+struct TYPE_8__ {TYPE_2__* cur_co_ctx; int co_op; int uthreads; } ;
+typedef TYPE_1__ ngx_http_lua_ctx_t ;
+struct TYPE_9__ {int is_uthread; int thread_spawn_yielded; int co; struct TYPE_9__* parent_co_ctx; int co_status; int co_ref; } ;
+typedef TYPE_2__ ngx_http_lua_co_ctx_t ;
+typedef int lua_State ;
+
+
+ int LUA_REGISTRYINDEX ;
+ int NGX_HTTP_LUA_CO_RUNNING ;
+ int NGX_HTTP_LUA_USER_THREAD_RESUME ;
+ scalar_t__ NGX_OK ;
+ int coroutines_key ;
+ int dd (char*,int ,int,int ) ;
+ int luaL_error (int *,char*) ;
+ int luaL_ref (int *,int) ;
+ int luaL_typename (int *,int) ;
+ int lua_gettop (int *) ;
+ int lua_pop (int *,int) ;
+ int lua_pushlightuserdata (int *,int ) ;
+ int lua_pushvalue (int *,int) ;
+ int lua_rawget (int *,int ) ;
+ int lua_replace (int *,int) ;
+ int lua_xmove (int *,int ,int) ;
+ int lua_yield (int *,int) ;
+ TYPE_1__* ngx_http_get_module_ctx (int *,int ) ;
+ int ngx_http_lua_coroutine_create_helper (int *,int *,TYPE_1__*,TYPE_2__**) ;
+ int * ngx_http_lua_get_req (int *) ;
+ int ngx_http_lua_lightudata_mask (int ) ;
+ int ngx_http_lua_module ;
+ scalar_t__ ngx_http_lua_post_thread (int *,TYPE_1__*,TYPE_2__*) ;
+ int ngx_http_lua_probe_user_thread_spawn (int *,int *,int ) ;
 
 __attribute__((used)) static int
 ngx_http_lua_uthread_spawn(lua_State *L)
 {
-    int                           n;
-    ngx_http_request_t           *r;
-    ngx_http_lua_ctx_t           *ctx;
-    ngx_http_lua_co_ctx_t        *coctx = NULL;
+    int n;
+    ngx_http_request_t *r;
+    ngx_http_lua_ctx_t *ctx;
+    ngx_http_lua_co_ctx_t *coctx = ((void*)0);
 
     n = lua_gettop(L);
 
     r = ngx_http_lua_get_req(L);
-    if (r == NULL) {
+    if (r == ((void*)0)) {
         return luaL_error(L, "no request found");
     }
 
     ctx = ngx_http_get_module_ctx(r, ngx_http_lua_module);
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         return luaL_error(L, "no request ctx found");
     }
 
     ngx_http_lua_coroutine_create_helper(L, r, ctx, &coctx);
 
-    /* anchor the newly created coroutine into the Lua registry */
+
 
     lua_pushlightuserdata(L, ngx_http_lua_lightudata_mask(
                           coroutines_key));

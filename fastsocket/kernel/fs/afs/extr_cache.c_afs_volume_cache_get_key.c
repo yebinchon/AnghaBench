@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct afs_volume {int /*<<< orphan*/  type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _enter (char*,int /*<<< orphan*/ ,void*,int) ; 
- int /*<<< orphan*/  _leave (char*,int) ; 
- int /*<<< orphan*/  memcpy (void*,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint16_t ;
+struct afs_volume {int type; } ;
+
+
+ int _enter (char*,int ,void*,int) ;
+ int _leave (char*,int) ;
+ int memcpy (void*,int *,int) ;
 
 __attribute__((used)) static uint16_t afs_volume_cache_get_key(const void *cookie_netfs_data,
-					void *buffer, uint16_t bufmax)
+     void *buffer, uint16_t bufmax)
 {
-	const struct afs_volume *volume = cookie_netfs_data;
-	uint16_t klen;
+ const struct afs_volume *volume = cookie_netfs_data;
+ uint16_t klen;
 
-	_enter("{%u},%p,%u", volume->type, buffer, bufmax);
+ _enter("{%u},%p,%u", volume->type, buffer, bufmax);
 
-	klen = sizeof(volume->type);
-	if (klen > bufmax)
-		return 0;
+ klen = sizeof(volume->type);
+ if (klen > bufmax)
+  return 0;
 
-	memcpy(buffer, &volume->type, sizeof(volume->type));
+ memcpy(buffer, &volume->type, sizeof(volume->type));
 
-	_leave(" = %u", klen);
-	return klen;
+ _leave(" = %u", klen);
+ return klen;
 
 }

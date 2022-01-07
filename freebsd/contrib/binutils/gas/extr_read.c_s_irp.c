@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sb ;
 
-/* Variables and functions */
- int /*<<< orphan*/  as_bad_where (char*,unsigned int,char*,char const*) ; 
- int /*<<< orphan*/  as_where (char**,unsigned int*) ; 
- int /*<<< orphan*/  buffer_limit ; 
- char* expand_irp (int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* find_end_of_line (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_line_sb ; 
- char* input_line_pointer ; 
- int /*<<< orphan*/  input_scrub_include_sb (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  input_scrub_next_buffer (char**) ; 
- int /*<<< orphan*/  sb_add_buffer (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  sb_kill (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sb_new (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sb ;
+
+
+ int as_bad_where (char*,unsigned int,char*,char const*) ;
+ int as_where (char**,unsigned int*) ;
+ int buffer_limit ;
+ char* expand_irp (int,int ,int *,int *,int ) ;
+ char* find_end_of_line (char*,int ) ;
+ int get_line_sb ;
+ char* input_line_pointer ;
+ int input_scrub_include_sb (int *,char*,int) ;
+ int input_scrub_next_buffer (char**) ;
+ int sb_add_buffer (int *,char*,int) ;
+ int sb_kill (int *) ;
+ int sb_new (int *) ;
 
 void
 s_irp (int irpc)
@@ -45,7 +45,7 @@ s_irp (int irpc)
   sb_new (&out);
 
   err = expand_irp (irpc, 0, &s, &out, get_line_sb);
-  if (err != NULL)
+  if (err != ((void*)0))
     as_bad_where (file, line, "%s", err);
 
   sb_kill (&s);

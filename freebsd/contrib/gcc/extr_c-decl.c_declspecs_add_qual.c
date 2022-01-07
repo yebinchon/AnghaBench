@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
+
+
+
+
+typedef int tree ;
 struct c_declspecs {int non_sc_seen_p; int declspecs_seen_p; int const_p; int volatile_p; int restrict_p; } ;
-typedef  enum rid { ____Placeholder_rid } rid ;
+typedef enum rid { ____Placeholder_rid } rid ;
 
-/* Variables and functions */
- scalar_t__ C_IS_RESERVED_WORD (int /*<<< orphan*/ ) ; 
- int C_RID_CODE (int /*<<< orphan*/ ) ; 
- scalar_t__ IDENTIFIER_NODE ; 
-#define  RID_CONST 130 
-#define  RID_RESTRICT 129 
-#define  RID_VOLATILE 128 
- scalar_t__ TREE_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  flag_isoc99 ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- int /*<<< orphan*/  gcc_unreachable () ; 
- scalar_t__ pedantic ; 
- int /*<<< orphan*/  pedwarn (char*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ C_IS_RESERVED_WORD (int ) ;
+ int C_RID_CODE (int ) ;
+ scalar_t__ IDENTIFIER_NODE ;
+
+
+
+ scalar_t__ TREE_CODE (int ) ;
+ int flag_isoc99 ;
+ int gcc_assert (int) ;
+ int gcc_unreachable () ;
+ scalar_t__ pedantic ;
+ int pedwarn (char*,int ) ;
 
 struct c_declspecs *
 declspecs_add_qual (struct c_declspecs *specs, tree qual)
 {
   enum rid i;
-  bool dupe = false;
-  specs->non_sc_seen_p = true;
-  specs->declspecs_seen_p = true;
+  bool dupe = 0;
+  specs->non_sc_seen_p = 1;
+  specs->declspecs_seen_p = 1;
   gcc_assert (TREE_CODE (qual) == IDENTIFIER_NODE
-	      && C_IS_RESERVED_WORD (qual));
+       && C_IS_RESERVED_WORD (qual));
   i = C_RID_CODE (qual);
   switch (i)
     {
-    case RID_CONST:
+    case 130:
       dupe = specs->const_p;
-      specs->const_p = true;
+      specs->const_p = 1;
       break;
-    case RID_VOLATILE:
+    case 128:
       dupe = specs->volatile_p;
-      specs->volatile_p = true;
+      specs->volatile_p = 1;
       break;
-    case RID_RESTRICT:
+    case 129:
       dupe = specs->restrict_p;
-      specs->restrict_p = true;
+      specs->restrict_p = 1;
       break;
     default:
       gcc_unreachable ();

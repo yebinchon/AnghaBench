@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {scalar_t__ mode; scalar_t__ ignore; int /*<<< orphan*/  flags; scalar_t__ nosuid; } ;
-typedef  TYPE_1__ MountEntry ;
-typedef  TYPE_1__ const FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EMPTY_DIR ; 
- int ENOENT ; 
- int /*<<< orphan*/  IN_SET (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned long MS_NOSUID ; 
- unsigned long MS_RDONLY ; 
- scalar_t__ PRIVATE_DEV ; 
- int /*<<< orphan*/  TMPFS ; 
- int /*<<< orphan*/  assert (TYPE_1__ const*) ; 
- int bind_remount_one (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned long,unsigned long) ; 
- int bind_remount_recursive_with_mountinfo (int /*<<< orphan*/ ,unsigned long,unsigned long,char**,TYPE_1__ const*) ; 
- int log_debug_errno (int,char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mount_entry_path (TYPE_1__ const*) ; 
- scalar_t__ mount_entry_read_only (TYPE_1__ const*) ; 
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {scalar_t__ mode; scalar_t__ ignore; int flags; scalar_t__ nosuid; } ;
+typedef TYPE_1__ MountEntry ;
+typedef TYPE_1__ const FILE ;
+
+
+ int EMPTY_DIR ;
+ int ENOENT ;
+ int IN_SET (scalar_t__,int ,int ) ;
+ unsigned long MS_NOSUID ;
+ unsigned long MS_RDONLY ;
+ scalar_t__ PRIVATE_DEV ;
+ int TMPFS ;
+ int assert (TYPE_1__ const*) ;
+ int bind_remount_one (int ,int ,unsigned long,unsigned long) ;
+ int bind_remount_recursive_with_mountinfo (int ,unsigned long,unsigned long,char**,TYPE_1__ const*) ;
+ int log_debug_errno (int,char*,int ,char*) ;
+ int mount_entry_path (TYPE_1__ const*) ;
+ scalar_t__ mount_entry_read_only (TYPE_1__ const*) ;
 
 __attribute__((used)) static int make_read_only(const MountEntry *m, char **blacklist, FILE *proc_self_mountinfo) {
         unsigned long new_flags = 0, flags_mask = 0;
-        bool submounts = false;
+        bool submounts = 0;
         int r = 0;
 
         assert(m);
@@ -48,13 +48,13 @@ __attribute__((used)) static int make_read_only(const MountEntry *m, char **blac
                 flags_mask |= MS_NOSUID;
         }
 
-        if (flags_mask == 0) /* No Change? */
+        if (flags_mask == 0)
                 return 0;
 
-        /* We generally apply these changes recursively, except for /dev, and the cases we know there's
-         * nothing further down.  Set /dev readonly, but not submounts like /dev/shm. Also, we only set the
-         * per-mount read-only flag.  We can't set it on the superblock, if we are inside a user namespace
-         * and running Linux <= 4.17. */
+
+
+
+
         submounts =
                 mount_entry_read_only(m) &&
                 !IN_SET(m->mode, EMPTY_DIR, TMPFS);
@@ -63,9 +63,9 @@ __attribute__((used)) static int make_read_only(const MountEntry *m, char **blac
         else
                 r = bind_remount_one(mount_entry_path(m), m->flags, new_flags, flags_mask);
 
-        /* Not that we only turn on the MS_RDONLY flag here, we never turn it off. Something that was marked
-         * read-only already stays this way. This improves compatibility with container managers, where we
-         * won't attempt to undo read-only mounts already applied. */
+
+
+
 
         if (r == -ENOENT && m->ignore)
                 return 0;

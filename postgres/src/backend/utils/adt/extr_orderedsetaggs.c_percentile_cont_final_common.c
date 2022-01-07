@@ -1,127 +1,127 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  double int64 ;
-struct TYPE_4__ {int number_of_rows; int sort_done; int /*<<< orphan*/  sortstate; TYPE_1__* qstate; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef double int64 ;
+struct TYPE_4__ {int number_of_rows; int sort_done; int sortstate; TYPE_1__* qstate; } ;
 struct TYPE_3__ {scalar_t__ sortColType; } ;
-typedef  scalar_t__ Oid ;
-typedef  TYPE_2__ OSAPerGroupState ;
-typedef  int /*<<< orphan*/  (* LerpFunc ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,double) ;
-typedef  int /*<<< orphan*/  FunctionCallInfo ;
-typedef  int /*<<< orphan*/  Datum ;
+typedef scalar_t__ Oid ;
+typedef TYPE_2__ OSAPerGroupState ;
+typedef int (* LerpFunc ) (int ,int ,double) ;
+typedef int FunctionCallInfo ;
+typedef int Datum ;
 
-/* Variables and functions */
- scalar_t__ AGG_CONTEXT_AGGREGATE ; 
- scalar_t__ AggCheckCallContext (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Assert (int) ; 
- int /*<<< orphan*/  ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE ; 
- int /*<<< orphan*/  ERROR ; 
- scalar_t__ PG_ARGISNULL (int) ; 
- double PG_GETARG_FLOAT8 (int) ; 
- scalar_t__ PG_GETARG_POINTER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PG_RETURN_DATUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PG_RETURN_NULL () ; 
- double ceil (double) ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*,double) ; 
- double floor (double) ; 
- scalar_t__ isnan (double) ; 
- int /*<<< orphan*/  tuplesort_getdatum (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tuplesort_performsort (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tuplesort_rescan (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tuplesort_skiptuples (int /*<<< orphan*/ ,double,int) ; 
+
+ scalar_t__ AGG_CONTEXT_AGGREGATE ;
+ scalar_t__ AggCheckCallContext (int ,int *) ;
+ int Assert (int) ;
+ int ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE ;
+ int ERROR ;
+ scalar_t__ PG_ARGISNULL (int) ;
+ double PG_GETARG_FLOAT8 (int) ;
+ scalar_t__ PG_GETARG_POINTER (int ) ;
+ int PG_RETURN_DATUM (int ) ;
+ int PG_RETURN_NULL () ;
+ double ceil (double) ;
+ int elog (int ,char*) ;
+ int ereport (int ,int ) ;
+ int errcode (int ) ;
+ int errmsg (char*,double) ;
+ double floor (double) ;
+ scalar_t__ isnan (double) ;
+ int tuplesort_getdatum (int ,int,int *,int*,int *) ;
+ int tuplesort_performsort (int ) ;
+ int tuplesort_rescan (int ) ;
+ int tuplesort_skiptuples (int ,double,int) ;
 
 __attribute__((used)) static Datum
 percentile_cont_final_common(FunctionCallInfo fcinfo,
-							 Oid expect_type,
-							 LerpFunc lerpfunc)
+        Oid expect_type,
+        LerpFunc lerpfunc)
 {
-	OSAPerGroupState *osastate;
-	double		percentile;
-	int64		first_row = 0;
-	int64		second_row = 0;
-	Datum		val;
-	Datum		first_val;
-	Datum		second_val;
-	double		proportion;
-	bool		isnull;
+ OSAPerGroupState *osastate;
+ double percentile;
+ int64 first_row = 0;
+ int64 second_row = 0;
+ Datum val;
+ Datum first_val;
+ Datum second_val;
+ double proportion;
+ bool isnull;
 
-	Assert(AggCheckCallContext(fcinfo, NULL) == AGG_CONTEXT_AGGREGATE);
+ Assert(AggCheckCallContext(fcinfo, ((void*)0)) == AGG_CONTEXT_AGGREGATE);
 
-	/* Get and check the percentile argument */
-	if (PG_ARGISNULL(1))
-		PG_RETURN_NULL();
 
-	percentile = PG_GETARG_FLOAT8(1);
+ if (PG_ARGISNULL(1))
+  PG_RETURN_NULL();
 
-	if (percentile < 0 || percentile > 1 || isnan(percentile))
-		ereport(ERROR,
-				(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
-				 errmsg("percentile value %g is not between 0 and 1",
-						percentile)));
+ percentile = PG_GETARG_FLOAT8(1);
 
-	/* If there were no regular rows, the result is NULL */
-	if (PG_ARGISNULL(0))
-		PG_RETURN_NULL();
+ if (percentile < 0 || percentile > 1 || isnan(percentile))
+  ereport(ERROR,
+    (errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
+     errmsg("percentile value %g is not between 0 and 1",
+      percentile)));
 
-	osastate = (OSAPerGroupState *) PG_GETARG_POINTER(0);
 
-	/* number_of_rows could be zero if we only saw NULL input values */
-	if (osastate->number_of_rows == 0)
-		PG_RETURN_NULL();
+ if (PG_ARGISNULL(0))
+  PG_RETURN_NULL();
 
-	Assert(expect_type == osastate->qstate->sortColType);
+ osastate = (OSAPerGroupState *) PG_GETARG_POINTER(0);
 
-	/* Finish the sort, or rescan if we already did */
-	if (!osastate->sort_done)
-	{
-		tuplesort_performsort(osastate->sortstate);
-		osastate->sort_done = true;
-	}
-	else
-		tuplesort_rescan(osastate->sortstate);
 
-	first_row = floor(percentile * (osastate->number_of_rows - 1));
-	second_row = ceil(percentile * (osastate->number_of_rows - 1));
+ if (osastate->number_of_rows == 0)
+  PG_RETURN_NULL();
 
-	Assert(first_row < osastate->number_of_rows);
+ Assert(expect_type == osastate->qstate->sortColType);
 
-	if (!tuplesort_skiptuples(osastate->sortstate, first_row, true))
-		elog(ERROR, "missing row in percentile_cont");
 
-	if (!tuplesort_getdatum(osastate->sortstate, true, &first_val, &isnull, NULL))
-		elog(ERROR, "missing row in percentile_cont");
-	if (isnull)
-		PG_RETURN_NULL();
+ if (!osastate->sort_done)
+ {
+  tuplesort_performsort(osastate->sortstate);
+  osastate->sort_done = 1;
+ }
+ else
+  tuplesort_rescan(osastate->sortstate);
 
-	if (first_row == second_row)
-	{
-		val = first_val;
-	}
-	else
-	{
-		if (!tuplesort_getdatum(osastate->sortstate, true, &second_val, &isnull, NULL))
-			elog(ERROR, "missing row in percentile_cont");
+ first_row = floor(percentile * (osastate->number_of_rows - 1));
+ second_row = ceil(percentile * (osastate->number_of_rows - 1));
 
-		if (isnull)
-			PG_RETURN_NULL();
+ Assert(first_row < osastate->number_of_rows);
 
-		proportion = (percentile * (osastate->number_of_rows - 1)) - first_row;
-		val = lerpfunc(first_val, second_val, proportion);
-	}
+ if (!tuplesort_skiptuples(osastate->sortstate, first_row, 1))
+  elog(ERROR, "missing row in percentile_cont");
 
-	PG_RETURN_DATUM(val);
+ if (!tuplesort_getdatum(osastate->sortstate, 1, &first_val, &isnull, ((void*)0)))
+  elog(ERROR, "missing row in percentile_cont");
+ if (isnull)
+  PG_RETURN_NULL();
+
+ if (first_row == second_row)
+ {
+  val = first_val;
+ }
+ else
+ {
+  if (!tuplesort_getdatum(osastate->sortstate, 1, &second_val, &isnull, ((void*)0)))
+   elog(ERROR, "missing row in percentile_cont");
+
+  if (isnull)
+   PG_RETURN_NULL();
+
+  proportion = (percentile * (osastate->number_of_rows - 1)) - first_row;
+  val = lerpfunc(first_val, second_val, proportion);
+ }
+
+ PG_RETURN_DATUM(val);
 }

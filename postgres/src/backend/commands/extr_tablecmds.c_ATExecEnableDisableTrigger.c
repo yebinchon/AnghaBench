@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  LOCKMODE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EnableDisableTrigger (int /*<<< orphan*/ ,char const*,char,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Relation ;
+typedef int LOCKMODE ;
+
+
+ int EnableDisableTrigger (int ,char const*,char,int,int ) ;
 
 __attribute__((used)) static void
 ATExecEnableDisableTrigger(Relation rel, const char *trigname,
-						   char fires_when, bool skip_system, LOCKMODE lockmode)
+         char fires_when, bool skip_system, LOCKMODE lockmode)
 {
-	EnableDisableTrigger(rel, trigname, fires_when, skip_system, lockmode);
+ EnableDisableTrigger(rel, trigname, fires_when, skip_system, lockmode);
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_7__ ;
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {TYPE_4__* format; int /*<<< orphan*/  draw_binding; } ;
+
+
+typedef struct TYPE_14__ TYPE_7__ ;
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_14__ {TYPE_4__* format; int draw_binding; } ;
 struct wined3d_texture {TYPE_7__ resource; TYPE_2__* sub_resources; } ;
 struct wined3d_surface {int dummy; } ;
 struct wined3d_device {int dummy; } ;
@@ -28,24 +28,24 @@ struct TYPE_12__ {int rt_mask; } ;
 struct TYPE_11__ {scalar_t__ id; } ;
 struct TYPE_8__ {struct wined3d_surface* surface; } ;
 struct TYPE_9__ {TYPE_1__ u; } ;
-typedef  int DWORD ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GL_FRAMEBUFFER ; 
- scalar_t__ ORM_FBO ; 
- int /*<<< orphan*/  STATE_FRAMEBUFFER ; 
- int /*<<< orphan*/  SetupForBlit (struct wined3d_device const*,struct wined3d_context*) ; 
- scalar_t__ WINED3DFMT_NULL ; 
- int /*<<< orphan*/  context_apply_draw_buffers (struct wined3d_context*,int) ; 
- int /*<<< orphan*/  context_apply_fbo_state_blit (struct wined3d_context*,int /*<<< orphan*/ ,struct wined3d_surface*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  context_bind_fbo (struct wined3d_context*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  context_check_fbo_status (struct wined3d_context*,int /*<<< orphan*/ ) ; 
- int context_generate_rt_mask_from_resource (TYPE_7__*) ; 
- int context_generate_rt_mask_no_fbo (struct wined3d_context*,struct wined3d_texture*) ; 
- int /*<<< orphan*/  context_invalidate_state (struct wined3d_context*,int /*<<< orphan*/ ) ; 
- TYPE_6__ wined3d_settings ; 
- int /*<<< orphan*/  wined3d_texture_load (struct wined3d_texture*,struct wined3d_context*,int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ int GL_FRAMEBUFFER ;
+ scalar_t__ ORM_FBO ;
+ int STATE_FRAMEBUFFER ;
+ int SetupForBlit (struct wined3d_device const*,struct wined3d_context*) ;
+ scalar_t__ WINED3DFMT_NULL ;
+ int context_apply_draw_buffers (struct wined3d_context*,int) ;
+ int context_apply_fbo_state_blit (struct wined3d_context*,int ,struct wined3d_surface*,int *,int ) ;
+ int context_bind_fbo (struct wined3d_context*,int ,int ) ;
+ int context_check_fbo_status (struct wined3d_context*,int ) ;
+ int context_generate_rt_mask_from_resource (TYPE_7__*) ;
+ int context_generate_rt_mask_no_fbo (struct wined3d_context*,struct wined3d_texture*) ;
+ int context_invalidate_state (struct wined3d_context*,int ) ;
+ TYPE_6__ wined3d_settings ;
+ int wined3d_texture_load (struct wined3d_texture*,struct wined3d_context*,int ) ;
 
 void context_apply_blit_state(struct wined3d_context *context, const struct wined3d_device *device)
 {
@@ -60,7 +60,7 @@ void context_apply_blit_state(struct wined3d_context *context, const struct wine
             wined3d_texture_load(rt, context, FALSE);
 
             surface = rt->sub_resources[context->current_rt.sub_resource_idx].u.surface;
-            context_apply_fbo_state_blit(context, GL_FRAMEBUFFER, surface, NULL, rt->resource.draw_binding);
+            context_apply_fbo_state_blit(context, GL_FRAMEBUFFER, surface, ((void*)0), rt->resource.draw_binding);
             if (rt->resource.format->id != WINED3DFMT_NULL)
                 rt_mask = 1;
             else
@@ -68,7 +68,7 @@ void context_apply_blit_state(struct wined3d_context *context, const struct wine
         }
         else
         {
-            context->current_fbo = NULL;
+            context->current_fbo = ((void*)0);
             context_bind_fbo(context, GL_FRAMEBUFFER, 0);
             rt_mask = context_generate_rt_mask_from_resource(&rt->resource);
         }

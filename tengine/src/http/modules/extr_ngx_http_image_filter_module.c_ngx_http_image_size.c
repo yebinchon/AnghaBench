@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_char ;
-typedef  scalar_t__ ngx_uint_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int u_char ;
+typedef scalar_t__ ngx_uint_t ;
+typedef int ngx_int_t ;
 struct TYPE_7__ {TYPE_1__* connection; } ;
-typedef  TYPE_2__ ngx_http_request_t ;
+typedef TYPE_2__ ngx_http_request_t ;
 struct TYPE_8__ {int* image; int type; int length; int force; scalar_t__ height; scalar_t__ width; } ;
-typedef  TYPE_3__ ngx_http_image_filter_ctx_t ;
-struct TYPE_6__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_3__ ngx_http_image_filter_ctx_t ;
+struct TYPE_6__ {int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_DECLINED ; 
-#define  NGX_HTTP_IMAGE_GIF 131 
-#define  NGX_HTTP_IMAGE_JPEG 130 
-#define  NGX_HTTP_IMAGE_PNG 129 
-#define  NGX_HTTP_IMAGE_WEBP 128 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,size_t) ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int) ; 
+
+ int NGX_DECLINED ;
+
+
+
+
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_OK ;
+ int ngx_log_debug1 (int ,int ,int ,char*,size_t) ;
+ int ngx_log_debug2 (int ,int ,int ,char*,int,int) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_image_size(ngx_http_request_t *r, ngx_http_image_filter_ctx_t *ctx)
 {
-    u_char      *p, *last;
-    size_t       len, app;
-    ngx_uint_t   width, height;
+    u_char *p, *last;
+    size_t len, app;
+    ngx_uint_t width, height;
 
     p = ctx->image;
 
     switch (ctx->type) {
 
-    case NGX_HTTP_IMAGE_JPEG:
+    case 130:
 
         p += 2;
         last = ctx->image + ctx->length - 10;
@@ -75,7 +75,7 @@ ngx_http_image_size(ngx_http_request_t *r, ngx_http_image_filter_ctx_t *ctx)
                 len = p[1] * 256 + p[2];
 
                 if (*p >= 0xe1 && *p <= 0xef) {
-                    /* application data, e.g., EXIF, Adobe XMP, etc. */
+
                     app += len;
                 }
 
@@ -92,7 +92,7 @@ ngx_http_image_size(ngx_http_request_t *r, ngx_http_image_filter_ctx_t *ctx)
         }
 
         if (ctx->length / 20 < app) {
-            /* force conversion if application data consume more than 5% */
+
             ctx->force = 1;
             ngx_log_debug1(NGX_LOG_DEBUG_HTTP, r->connection->log, 0,
                            "app data size: %uz", app);
@@ -100,7 +100,7 @@ ngx_http_image_size(ngx_http_request_t *r, ngx_http_image_filter_ctx_t *ctx)
 
         break;
 
-    case NGX_HTTP_IMAGE_GIF:
+    case 131:
 
         if (ctx->length < 10) {
             return NGX_DECLINED;
@@ -111,7 +111,7 @@ ngx_http_image_size(ngx_http_request_t *r, ngx_http_image_filter_ctx_t *ctx)
 
         break;
 
-    case NGX_HTTP_IMAGE_PNG:
+    case 129:
 
         if (ctx->length < 24) {
             return NGX_DECLINED;
@@ -122,7 +122,7 @@ ngx_http_image_size(ngx_http_request_t *r, ngx_http_image_filter_ctx_t *ctx)
 
         break;
 
-    case NGX_HTTP_IMAGE_WEBP:
+    case 128:
 
         if (ctx->length < 30) {
             return NGX_DECLINED;
@@ -136,12 +136,12 @@ ngx_http_image_size(ngx_http_request_t *r, ngx_http_image_filter_ctx_t *ctx)
 
         case ' ':
             if (p[20] & 1) {
-                /* not a key frame */
+
                 return NGX_DECLINED;
             }
 
             if (p[23] != 0x9d || p[24] != 0x01 || p[25] != 0x2a) {
-                /* invalid start code */
+
                 return NGX_DECLINED;
             }
 
@@ -152,7 +152,7 @@ ngx_http_image_size(ngx_http_request_t *r, ngx_http_image_filter_ctx_t *ctx)
 
         case 'L':
             if (p[20] != 0x2f) {
-                /* invalid signature */
+
                 return NGX_DECLINED;
             }
 

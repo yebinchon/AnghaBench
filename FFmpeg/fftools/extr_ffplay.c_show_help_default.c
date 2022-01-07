@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  AV_OPT_FLAG_DECODING_PARAM ; 
- int /*<<< orphan*/  AV_OPT_FLAG_ENCODING_PARAM ; 
- int /*<<< orphan*/  AV_OPT_FLAG_FILTERING_PARAM ; 
- int /*<<< orphan*/  OPT_EXPERT ; 
- int /*<<< orphan*/  av_log_set_callback (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avcodec_get_class () ; 
- int /*<<< orphan*/  avfilter_get_class () ; 
- int /*<<< orphan*/  avformat_get_class () ; 
- int /*<<< orphan*/  log_callback_help ; 
- int /*<<< orphan*/  options ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  show_help_children (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  show_help_options (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  show_usage () ; 
- int /*<<< orphan*/  sws_get_class () ; 
+ int AV_OPT_FLAG_DECODING_PARAM ;
+ int AV_OPT_FLAG_ENCODING_PARAM ;
+ int AV_OPT_FLAG_FILTERING_PARAM ;
+ int OPT_EXPERT ;
+ int av_log_set_callback (int ) ;
+ int avcodec_get_class () ;
+ int avfilter_get_class () ;
+ int avformat_get_class () ;
+ int log_callback_help ;
+ int options ;
+ int printf (char*) ;
+ int show_help_children (int ,int ) ;
+ int show_help_options (int ,char*,int ,int ,int ) ;
+ int show_usage () ;
+ int sws_get_class () ;
 
 void show_help_default(const char *opt, const char *arg)
 {
@@ -37,11 +29,11 @@ void show_help_default(const char *opt, const char *arg)
     printf("\n");
     show_help_children(avcodec_get_class(), AV_OPT_FLAG_DECODING_PARAM);
     show_help_children(avformat_get_class(), AV_OPT_FLAG_DECODING_PARAM);
-#if !CONFIG_AVFILTER
+
     show_help_children(sws_get_class(), AV_OPT_FLAG_ENCODING_PARAM);
-#else
-    show_help_children(avfilter_get_class(), AV_OPT_FLAG_FILTERING_PARAM);
-#endif
+
+
+
     printf("\nWhile playing:\n"
            "q, ESC              quit\n"
            "f                   toggle full screen\n"

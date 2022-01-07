@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int NtUserSystemParametersInfo (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SPI_SETFASTTASKSWITCH ; 
- int /*<<< orphan*/  TEST (int) ; 
+ int NtUserSystemParametersInfo (int ,int ,char*,int ) ;
+ int SPI_SETFASTTASKSWITCH ;
+ int TEST (int) ;
 
 void
 Test_SPI_SETFASTTASKSWITCH(void)

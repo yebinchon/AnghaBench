@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_4__ {int /*<<< orphan*/  proxy_info; int /*<<< orphan*/  self_secret_key; int /*<<< orphan*/  self_public_key; } ;
-typedef  int /*<<< orphan*/  TCP_Proxy_Info ;
-typedef  TYPE_1__ TCP_Connections ;
 
-/* Variables and functions */
- TYPE_1__* calloc (int,int) ; 
- int /*<<< orphan*/  crypto_box_SECRETKEYBYTES ; 
- int /*<<< orphan*/  crypto_scalarmult_curve25519_base (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_4__ {int proxy_info; int self_secret_key; int self_public_key; } ;
+typedef int TCP_Proxy_Info ;
+typedef TYPE_1__ TCP_Connections ;
+
+
+ TYPE_1__* calloc (int,int) ;
+ int crypto_box_SECRETKEYBYTES ;
+ int crypto_scalarmult_curve25519_base (int ,int ) ;
+ int memcpy (int ,int const*,int ) ;
 
 TCP_Connections *new_tcp_connections(const uint8_t *secret_key, TCP_Proxy_Info *proxy_info)
 {
-    if (secret_key == NULL)
-        return NULL;
+    if (secret_key == ((void*)0))
+        return ((void*)0);
 
     TCP_Connections *temp = calloc(1, sizeof(TCP_Connections));
 
-    if (temp == NULL)
-        return NULL;
+    if (temp == ((void*)0))
+        return ((void*)0);
 
     memcpy(temp->self_secret_key, secret_key, crypto_box_SECRETKEYBYTES);
     crypto_scalarmult_curve25519_base(temp->self_public_key, temp->self_secret_key);

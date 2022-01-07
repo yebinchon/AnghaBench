@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vm_offset_t ;
-typedef  int /*<<< orphan*/  video_adapter_t ;
-typedef  int /*<<< orphan*/  uint8_t ;
-struct ofwfb_softc {int (* sc_putc ) (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int vm_offset_t ;
+typedef int video_adapter_t ;
+typedef int uint8_t ;
+struct ofwfb_softc {int (* sc_putc ) (int *,int ,int ,int ) ;} ;
+
+
+ int stub1 (int *,int ,int ,int ) ;
 
 __attribute__((used)) static int
 ofwfb_putc(video_adapter_t *adp, vm_offset_t off, uint8_t c, uint8_t a)
 {
-	struct ofwfb_softc *sc;
+ struct ofwfb_softc *sc;
 
-	sc = (struct ofwfb_softc *)adp;
+ sc = (struct ofwfb_softc *)adp;
 
-	return ((*sc->sc_putc)(adp, off, c, a));
+ return ((*sc->sc_putc)(adp, off, c, a));
 }

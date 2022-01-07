@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct d3dx_parameter {int columns; int rows; scalar_t__ type; scalar_t__ class; scalar_t__ data; int /*<<< orphan*/  element_count; } ;
+
+
+
+
+struct d3dx_parameter {int columns; int rows; scalar_t__ type; scalar_t__ class; scalar_t__ data; int element_count; } ;
 struct d3dx9_base_effect {int dummy; } ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  FLOAT ;
-typedef  int /*<<< orphan*/  D3DXHANDLE ;
+typedef int INT ;
+typedef int HRESULT ;
+typedef int FLOAT ;
+typedef int D3DXHANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DERR_INVALIDCALL ; 
- scalar_t__ D3DXPC_MATRIX_ROWS ; 
- scalar_t__ D3DXPC_VECTOR ; 
- scalar_t__ D3DXPT_FLOAT ; 
- int /*<<< orphan*/  D3DXPT_INT ; 
- int /*<<< orphan*/  D3D_OK ; 
- int INT_FLOAT_MULTI ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- struct d3dx_parameter* get_valid_parameter (struct d3dx9_base_effect*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  max (float,int /*<<< orphan*/ ) ; 
- int min (int /*<<< orphan*/ ,float) ; 
- int /*<<< orphan*/  set_number (int*,int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
+
+ int D3DERR_INVALIDCALL ;
+ scalar_t__ D3DXPC_MATRIX_ROWS ;
+ scalar_t__ D3DXPC_VECTOR ;
+ scalar_t__ D3DXPT_FLOAT ;
+ int D3DXPT_INT ;
+ int D3D_OK ;
+ int INT_FLOAT_MULTI ;
+ int TRACE (char*,...) ;
+ int WARN (char*) ;
+ struct d3dx_parameter* get_valid_parameter (struct d3dx9_base_effect*,int ) ;
+ int max (float,int ) ;
+ int min (int ,float) ;
+ int set_number (int*,int ,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static HRESULT d3dx9_base_effect_get_int(struct d3dx9_base_effect *base, D3DXHANDLE parameter, INT *n)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static HRESULT d3dx9_base_effect_get_int(struct d3dx9_base
         {
             TRACE("Vector fixup\n");
 
-            /* all components (3,4) are clamped (0,255) and put in the INT */
+
             *n = (INT)(min(max(0.0f, *((FLOAT *)param->data + 2)), 1.0f) * INT_FLOAT_MULTI);
             *n += ((INT)(min(max(0.0f, *((FLOAT *)param->data + 1)), 1.0f) * INT_FLOAT_MULTI)) << 8;
             *n += ((INT)(min(max(0.0f, *((FLOAT *)param->data + 0)), 1.0f) * INT_FLOAT_MULTI)) << 16;

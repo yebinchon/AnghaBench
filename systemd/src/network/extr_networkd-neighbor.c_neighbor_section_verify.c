@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  line; int /*<<< orphan*/  filename; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int line; int filename; } ;
 struct TYPE_4__ {scalar_t__ family; scalar_t__ lladdr_size; TYPE_2__* section; } ;
-typedef  TYPE_1__ Neighbor ;
+typedef TYPE_1__ Neighbor ;
 
-/* Variables and functions */
- scalar_t__ AF_UNSPEC ; 
- int EINVAL ; 
- int /*<<< orphan*/  SYNTHETIC_ERRNO (int) ; 
- int log_warning_errno (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ section_is_invalid (TYPE_2__*) ; 
+
+ scalar_t__ AF_UNSPEC ;
+ int EINVAL ;
+ int SYNTHETIC_ERRNO (int) ;
+ int log_warning_errno (int ,char*,int ,int ) ;
+ scalar_t__ section_is_invalid (TYPE_2__*) ;
 
 int neighbor_section_verify(Neighbor *neighbor) {
         if (section_is_invalid(neighbor->section))

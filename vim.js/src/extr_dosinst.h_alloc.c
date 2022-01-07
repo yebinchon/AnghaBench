@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  printf (char*) ; 
+ int exit (int) ;
+ char* malloc (int) ;
+ int printf (char*) ;
 
 __attribute__((used)) static void *
 alloc(int len)
@@ -22,10 +14,10 @@ alloc(int len)
     char *s;
 
     s = malloc(len);
-    if (s == NULL)
+    if (s == ((void*)0))
     {
-	printf("ERROR: out of memory\n");
-	exit(1);
+ printf("ERROR: out of memory\n");
+ exit(1);
     }
     return (void *)s;
 }

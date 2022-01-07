@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/ * HRSRC ;
-typedef  int /*<<< orphan*/ * HINSTANCE ;
-typedef  int /*<<< orphan*/ * HGLOBAL ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * FindResourceA (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  FreeLibrary (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeResource (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LOAD_LIBRARY_AS_DATAFILE ; 
- int /*<<< orphan*/ * LoadLibraryExA (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * LoadResource (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ LockResource (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewBuf () ; 
- int /*<<< orphan*/  SeekBuf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SizeofResource (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WriteBuf (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT ;
+typedef int * HRSRC ;
+typedef int * HINSTANCE ;
+typedef int * HGLOBAL ;
+typedef int BUF ;
+
+
+ int * FindResourceA (int *,char*,char*) ;
+ int FreeLibrary (int *) ;
+ int FreeResource (int *) ;
+ int LOAD_LIBRARY_AS_DATAFILE ;
+ int * LoadLibraryExA (char*,int *,int ) ;
+ int * LoadResource (int *,int *) ;
+ scalar_t__ LockResource (int *) ;
+ int * NewBuf () ;
+ int SeekBuf (int *,int ,int ) ;
+ int SizeofResource (int *,int *) ;
+ int WriteBuf (int *,void*,int ) ;
 
 BUF *ViExtractResource(char *exe, char *type, char *name)
 {
-	HINSTANCE h;
-	HRSRC hr;
-	HGLOBAL hg;
-	UINT size;
-	void *data;
-	BUF *buf;
-	// Validate arguments
-	if (exe == NULL || type == NULL || name == NULL)
-	{
-		return NULL;
-	}
+ HINSTANCE h;
+ HRSRC hr;
+ HGLOBAL hg;
+ UINT size;
+ void *data;
+ BUF *buf;
 
-	h = LoadLibraryExA(exe, NULL, LOAD_LIBRARY_AS_DATAFILE);
-	if (h == NULL)
-	{
-		return NULL;
-	}
+ if (exe == ((void*)0) || type == ((void*)0) || name == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	hr = FindResourceA(h, name, type);
-	if (hr == NULL)
-	{
-		FreeLibrary(h);
-		return NULL;
-	}
+ h = LoadLibraryExA(exe, ((void*)0), LOAD_LIBRARY_AS_DATAFILE);
+ if (h == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	hg = LoadResource(h, hr);
-	if (hg == NULL)
-	{
-		FreeLibrary(h);
-		return NULL;
-	}
+ hr = FindResourceA(h, name, type);
+ if (hr == ((void*)0))
+ {
+  FreeLibrary(h);
+  return ((void*)0);
+ }
 
-	size = SizeofResource(h, hr);
-	data = (void *)LockResource(hg);
+ hg = LoadResource(h, hr);
+ if (hg == ((void*)0))
+ {
+  FreeLibrary(h);
+  return ((void*)0);
+ }
 
-	buf = NewBuf();
-	WriteBuf(buf, data, size);
+ size = SizeofResource(h, hr);
+ data = (void *)LockResource(hg);
 
-	FreeResource(hg);
-	FreeLibrary(h);
+ buf = NewBuf();
+ WriteBuf(buf, data, size);
 
-	SeekBuf(buf, 0, 0);
+ FreeResource(hg);
+ FreeLibrary(h);
 
-	return buf;
+ SeekBuf(buf, 0, 0);
+
+ return buf;
 }

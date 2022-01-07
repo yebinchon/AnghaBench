@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int LP_ENCODING_12BIT_STR ; 
- unsigned char LP_ENCODING_32BIT_STR ; 
- int LP_ENCODING_6BIT_STR ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int LP_ENCODING_12BIT_STR ;
+ unsigned char LP_ENCODING_32BIT_STR ;
+ int LP_ENCODING_6BIT_STR ;
+ int memcpy (unsigned char*,unsigned char*,int) ;
 
 void lpEncodeString(unsigned char *buf, unsigned char *s, uint32_t len) {
     if (len < 64) {

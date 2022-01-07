@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct mg_serve_http_opts {int /*<<< orphan*/  extra_headers; } ;
-struct mg_connection {int /*<<< orphan*/  flags; } ;
-struct TYPE_2__ {int /*<<< orphan*/  p; scalar_t__ len; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct mg_serve_http_opts {int extra_headers; } ;
+struct mg_connection {int flags; } ;
+struct TYPE_2__ {int p; scalar_t__ len; } ;
 struct http_message {TYPE_1__ uri; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MG_F_SEND_AND_CLOSE ; 
- int /*<<< orphan*/  mg_print_dir_entry ; 
- int /*<<< orphan*/  mg_printf (struct mg_connection*,char*,char*,char*,char*,char*) ; 
- int /*<<< orphan*/  mg_printf_http_chunk (struct mg_connection*,char*,int,...) ; 
- int /*<<< orphan*/  mg_scan_directory (struct mg_connection*,char const*,struct mg_serve_http_opts*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mg_send_http_chunk (struct mg_connection*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mg_send_response_line (struct mg_connection*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mg_version_header ; 
+
+ int MG_F_SEND_AND_CLOSE ;
+ int mg_print_dir_entry ;
+ int mg_printf (struct mg_connection*,char*,char*,char*,char*,char*) ;
+ int mg_printf_http_chunk (struct mg_connection*,char*,int,...) ;
+ int mg_scan_directory (struct mg_connection*,char const*,struct mg_serve_http_opts*,int ) ;
+ int mg_send_http_chunk (struct mg_connection*,char*,int ) ;
+ int mg_send_response_line (struct mg_connection*,int,int ) ;
+ int mg_version_header ;
 
 __attribute__((used)) static void mg_send_directory_listing(struct mg_connection *nc, const char *dir,
                                       struct http_message *hm,
@@ -79,6 +79,6 @@ __attribute__((used)) static void mg_send_directory_listing(struct mg_connection
                        "</body></html>",
                        mg_version_header);
   mg_send_http_chunk(nc, "", 0);
-  /* TODO(rojer): Remove when cesanta/dev/issues/197 is fixed. */
+
   nc->flags |= MG_F_SEND_AND_CLOSE;
 }

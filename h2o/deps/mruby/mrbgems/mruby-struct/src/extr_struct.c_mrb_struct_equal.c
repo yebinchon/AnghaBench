@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  size_t mrb_int ;
 
-/* Variables and functions */
- scalar_t__ RSTRUCT_LEN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * RSTRUCT_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_bug (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  mrb_equal (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_false_value () ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- scalar_t__ mrb_obj_class (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_obj_equal (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_true_value () ; 
+
+
+
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef size_t mrb_int ;
+
+
+ scalar_t__ RSTRUCT_LEN (int ) ;
+ int * RSTRUCT_PTR (int ) ;
+ int mrb_bug (int *,char*) ;
+ int mrb_equal (int *,int ,int ) ;
+ int mrb_false_value () ;
+ int mrb_get_args (int *,char*,int *) ;
+ scalar_t__ mrb_obj_class (int *,int ) ;
+ scalar_t__ mrb_obj_equal (int *,int ,int ) ;
+ int mrb_true_value () ;
 
 __attribute__((used)) static mrb_value
 mrb_struct_equal(mrb_state *mrb, mrb_value s)
@@ -40,7 +40,7 @@ mrb_struct_equal(mrb_state *mrb, mrb_value s)
     return mrb_false_value();
   }
   if (RSTRUCT_LEN(s) != RSTRUCT_LEN(s2)) {
-    mrb_bug(mrb, "inconsistent struct"); /* should never happen */
+    mrb_bug(mrb, "inconsistent struct");
   }
   ptr = RSTRUCT_PTR(s);
   ptr2 = RSTRUCT_PTR(s2);

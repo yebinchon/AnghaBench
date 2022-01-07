@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct string {int /*<<< orphan*/  data; int /*<<< orphan*/  len; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct string {int data; int len; } ;
 struct conf_server {int dummy; } ;
-struct TYPE_2__ {scalar_t__ valid; int /*<<< orphan*/  info; scalar_t__ port; int /*<<< orphan*/  name; int /*<<< orphan*/  pname; } ;
-struct conf_pool {int /*<<< orphan*/  name; int /*<<< orphan*/  server; scalar_t__ valid; void* server_failure_limit; void* server_retry_timeout; void* server_connections; void* auto_eject_hosts; void* preconnect; void* redis_db; void* tcpkeepalive; void* redis; void* client_connections; void* backlog; void* timeout; int /*<<< orphan*/  distribution; int /*<<< orphan*/  hash_tag; int /*<<< orphan*/  hash; TYPE_1__ listen; int /*<<< orphan*/  redis_auth; } ;
-typedef  scalar_t__ rstatus_t ;
+struct TYPE_2__ {scalar_t__ valid; int info; scalar_t__ port; int name; int pname; } ;
+struct conf_pool {int name; int server; scalar_t__ valid; void* server_failure_limit; void* server_retry_timeout; void* server_connections; void* auto_eject_hosts; void* preconnect; void* redis_db; void* tcpkeepalive; void* redis; void* client_connections; void* backlog; void* timeout; int distribution; int hash_tag; int hash; TYPE_1__ listen; int redis_auth; } ;
+typedef scalar_t__ rstatus_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONF_DEFAULT_SERVERS ; 
- int /*<<< orphan*/  CONF_UNSET_DIST ; 
- int /*<<< orphan*/  CONF_UNSET_HASH ; 
- void* CONF_UNSET_NUM ; 
- int /*<<< orphan*/  LOG_VVERB ; 
- scalar_t__ NC_OK ; 
- scalar_t__ array_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  array_null (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  log_debug (int /*<<< orphan*/ ,char*,struct conf_pool*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  string_deinit (int /*<<< orphan*/ *) ; 
- scalar_t__ string_duplicate (int /*<<< orphan*/ *,struct string*) ; 
- int /*<<< orphan*/  string_init (int /*<<< orphan*/ *) ; 
+
+ int CONF_DEFAULT_SERVERS ;
+ int CONF_UNSET_DIST ;
+ int CONF_UNSET_HASH ;
+ void* CONF_UNSET_NUM ;
+ int LOG_VVERB ;
+ scalar_t__ NC_OK ;
+ scalar_t__ array_init (int *,int ,int) ;
+ int array_null (int *) ;
+ int log_debug (int ,char*,struct conf_pool*,int ,int ) ;
+ int memset (int *,int ,int) ;
+ int string_deinit (int *) ;
+ scalar_t__ string_duplicate (int *,struct string*) ;
+ int string_init (int *) ;
 
 __attribute__((used)) static rstatus_t
 conf_pool_init(struct conf_pool *cp, struct string *name)

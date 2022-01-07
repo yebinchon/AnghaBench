@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  action_group; } ;
-typedef  TYPE_1__ YuiWindow ;
-typedef  int /*<<< orphan*/  GtkWidget ;
-typedef  int /*<<< orphan*/  GtkAction ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GTK_CONTAINER (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GTK_MENU_ITEM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  G_CALLBACK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ToggleFPS ; 
- int /*<<< orphan*/  YuiLoadState ; 
- int /*<<< orphan*/  YuiSaveState ; 
- char* _ (char*) ; 
- int /*<<< orphan*/  g_signal_connect (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  g_signal_connect_swapped (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  gtk_action_connect_proxy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * gtk_action_create_menu_item (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * gtk_action_group_get_action (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * gtk_check_menu_item_new_with_mnemonic (char*) ; 
- int /*<<< orphan*/  gtk_container_add (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * gtk_image_menu_item_new_from_stock (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * gtk_menu_bar_new () ; 
- int /*<<< orphan*/ * gtk_menu_item_new_with_mnemonic (char*) ; 
- int /*<<< orphan*/  gtk_menu_item_set_submenu (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * gtk_menu_new () ; 
- int /*<<< orphan*/ * gtk_separator_menu_item_new () ; 
- int /*<<< orphan*/  openAboutDialog ; 
- int /*<<< orphan*/  yui_conf ; 
- int /*<<< orphan*/  yui_m68k_new ; 
- int /*<<< orphan*/  yui_mem_new ; 
- int /*<<< orphan*/  yui_msh_new ; 
- int /*<<< orphan*/  yui_screenshot_new ; 
- int /*<<< orphan*/  yui_scsp_new ; 
- int /*<<< orphan*/  yui_scudsp_new ; 
- int /*<<< orphan*/  yui_ssh_new ; 
- int /*<<< orphan*/  yui_transfer_new ; 
- int /*<<< orphan*/  yui_vdp1_new ; 
- int /*<<< orphan*/  yui_vdp2_new ; 
- int /*<<< orphan*/  yui_window_show_log ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int action_group; } ;
+typedef TYPE_1__ YuiWindow ;
+typedef int GtkWidget ;
+typedef int GtkAction ;
+
+
+ int GTK_CONTAINER (int *) ;
+ int GTK_MENU_ITEM (int *) ;
+ int G_CALLBACK (int ) ;
+ int ToggleFPS ;
+ int YuiLoadState ;
+ int YuiSaveState ;
+ char* _ (char*) ;
+ int g_signal_connect (int *,char*,int ,TYPE_1__*) ;
+ int g_signal_connect_swapped (int *,char*,int ,TYPE_1__*) ;
+ int gtk_action_connect_proxy (int *,int *) ;
+ int * gtk_action_create_menu_item (int *) ;
+ int * gtk_action_group_get_action (int ,char*) ;
+ int * gtk_check_menu_item_new_with_mnemonic (char*) ;
+ int gtk_container_add (int ,int *) ;
+ int * gtk_image_menu_item_new_from_stock (char*,int *) ;
+ int * gtk_menu_bar_new () ;
+ int * gtk_menu_item_new_with_mnemonic (char*) ;
+ int gtk_menu_item_set_submenu (int ,int *) ;
+ int * gtk_menu_new () ;
+ int * gtk_separator_menu_item_new () ;
+ int openAboutDialog ;
+ int yui_conf ;
+ int yui_m68k_new ;
+ int yui_mem_new ;
+ int yui_msh_new ;
+ int yui_screenshot_new ;
+ int yui_scsp_new ;
+ int yui_scudsp_new ;
+ int yui_ssh_new ;
+ int yui_transfer_new ;
+ int yui_vdp1_new ;
+ int yui_vdp2_new ;
+ int yui_window_show_log ;
 
 GtkWidget* create_menu(YuiWindow * window1) {
   GtkWidget *menubar1;
@@ -87,7 +87,7 @@ GtkWidget* create_menu(YuiWindow * window1) {
   menuitem1_menu = gtk_menu_new ();
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem1), menuitem1_menu);
 
-  new1 = gtk_image_menu_item_new_from_stock("gtk-preferences", NULL);
+  new1 = gtk_image_menu_item_new_from_stock("gtk-preferences", ((void*)0));
   g_signal_connect(new1, "activate", yui_conf, 0);
   gtk_container_add (GTK_CONTAINER (menuitem1_menu), new1);
 
@@ -124,11 +124,11 @@ GtkWidget* create_menu(YuiWindow * window1) {
 
     savestate_save = gtk_menu_item_new_with_mnemonic(_("Save"));
     gtk_container_add(GTK_CONTAINER(savestate_menu), savestate_save);
-    g_signal_connect_swapped(savestate_save, "activate", G_CALLBACK(YuiSaveState), NULL);
+    g_signal_connect_swapped(savestate_save, "activate", G_CALLBACK(YuiSaveState), ((void*)0));
 
     savestate_load = gtk_menu_item_new_with_mnemonic(_("Load"));
     gtk_container_add(GTK_CONTAINER(savestate_menu), savestate_load);
-    g_signal_connect_swapped(savestate_load, "activate", G_CALLBACK(YuiLoadState), NULL);
+    g_signal_connect_swapped(savestate_load, "activate", G_CALLBACK(YuiLoadState), ((void*)0));
   }
 
   gtk_container_add (GTK_CONTAINER (menuitem1_menu), gtk_separator_menu_item_new ());
@@ -142,7 +142,7 @@ GtkWidget* create_menu(YuiWindow * window1) {
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (view1), view1_menu);
 
   fps1 = gtk_check_menu_item_new_with_mnemonic (_("FPS"));
-  g_signal_connect(fps1, "activate", G_CALLBACK(ToggleFPS), NULL);
+  g_signal_connect(fps1, "activate", G_CALLBACK(ToggleFPS), ((void*)0));
   gtk_container_add (GTK_CONTAINER (view1_menu), fps1);
 
   layer1 = gtk_menu_item_new_with_mnemonic (_("Layer"));
@@ -210,7 +210,7 @@ GtkWidget* create_menu(YuiWindow * window1) {
   menuitem4_menu = gtk_menu_new ();
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem4), menuitem4_menu);
 
-  about1 = gtk_image_menu_item_new_from_stock ("gtk-about", NULL);
+  about1 = gtk_image_menu_item_new_from_stock ("gtk-about", ((void*)0));
   gtk_container_add (GTK_CONTAINER (menuitem4_menu), about1);
   g_signal_connect(about1, "activate", G_CALLBACK(openAboutDialog), window1);
 

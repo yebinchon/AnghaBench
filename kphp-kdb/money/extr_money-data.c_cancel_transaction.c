@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ status; int long_lock_heap_pos; scalar_t__ temp_id; scalar_t__ long_locked_until; } ;
-typedef  TYPE_1__ transaction_t ;
+typedef TYPE_1__ transaction_t ;
 struct lev_money_trans_cancel {scalar_t__ temp_id; scalar_t__ transaction_id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  cancelled_long_transactions ; 
- int /*<<< orphan*/  cancelled_transactions ; 
- int /*<<< orphan*/  expired_long_transactions ; 
- TYPE_1__* get_temp_transaction (int) ; 
- TYPE_1__* get_transaction (scalar_t__) ; 
- scalar_t__ now ; 
- int /*<<< orphan*/  remove_from_lock_heap (TYPE_1__*) ; 
- int /*<<< orphan*/  remove_temp_transaction (TYPE_1__*) ; 
- scalar_t__ trs_cancelled ; 
- scalar_t__ trs_declared ; 
- scalar_t__ trs_declared_locked ; 
- scalar_t__ trs_long_locked ; 
- int /*<<< orphan*/  unlock_transaction (TYPE_1__*) ; 
+
+ int assert (int) ;
+ int cancelled_long_transactions ;
+ int cancelled_transactions ;
+ int expired_long_transactions ;
+ TYPE_1__* get_temp_transaction (int) ;
+ TYPE_1__* get_transaction (scalar_t__) ;
+ scalar_t__ now ;
+ int remove_from_lock_heap (TYPE_1__*) ;
+ int remove_temp_transaction (TYPE_1__*) ;
+ scalar_t__ trs_cancelled ;
+ scalar_t__ trs_declared ;
+ scalar_t__ trs_declared_locked ;
+ scalar_t__ trs_long_locked ;
+ int unlock_transaction (TYPE_1__*) ;
 
 __attribute__((used)) static int cancel_transaction (struct lev_money_trans_cancel *E) {
   transaction_t *T = get_transaction (E->transaction_id);

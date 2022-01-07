@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  sustain_reset; } ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int sustain_reset; } ;
 struct TYPE_11__ {TYPE_1__* graph; TYPE_2__* priv; } ;
 struct TYPE_10__ {scalar_t__ format; int sample_rate; int channels; TYPE_4__* dst; } ;
-struct TYPE_9__ {int bits_per_sample; size_t cdt_ms; size_t analyze_mode; scalar_t__ force_pe; scalar_t__ process_stereo; TYPE_5__* state; int /*<<< orphan*/  detect; } ;
+struct TYPE_9__ {int bits_per_sample; size_t cdt_ms; size_t analyze_mode; scalar_t__ force_pe; scalar_t__ process_stereo; TYPE_5__* state; int detect; } ;
 struct TYPE_8__ {scalar_t__ disable_auto_convert; } ;
-typedef  TYPE_2__ HDCDContext ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
+typedef TYPE_2__ HDCDContext ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_VERBOSE ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- scalar_t__ AV_SAMPLE_FMT_S16 ; 
- scalar_t__ AV_SAMPLE_FMT_S16P ; 
- int HDCD_MAX_CHANNELS ; 
- int /*<<< orphan*/ * ana_mode_str ; 
- int /*<<< orphan*/  av_get_sample_fmt_name (scalar_t__) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  hdcd_detect_reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hdcd_reset (TYPE_5__*,int,size_t) ; 
+
+ int AV_LOG_VERBOSE ;
+ int AV_LOG_WARNING ;
+ scalar_t__ AV_SAMPLE_FMT_S16 ;
+ scalar_t__ AV_SAMPLE_FMT_S16P ;
+ int HDCD_MAX_CHANNELS ;
+ int * ana_mode_str ;
+ int av_get_sample_fmt_name (scalar_t__) ;
+ int av_log (TYPE_4__*,int ,char*,...) ;
+ int hdcd_detect_reset (int *) ;
+ int hdcd_reset (TYPE_5__*,int,size_t) ;
 
 __attribute__((used)) static int config_input(AVFilterLink *inlink) {
     AVFilterContext *ctx = inlink->dst;

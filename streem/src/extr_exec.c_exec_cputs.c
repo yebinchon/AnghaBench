@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  strm_value ;
-typedef  int /*<<< orphan*/  strm_string ;
-typedef  int /*<<< orphan*/  strm_stream ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int STRM_OK ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fwrite (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strm_nil_value () ; 
- int /*<<< orphan*/  strm_str_len (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_str_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_string_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_to_str (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int strm_value ;
+typedef int strm_string ;
+typedef int strm_stream ;
+typedef int FILE ;
+
+
+ int STRM_OK ;
+ int fputs (char*,int *) ;
+ int fwrite (int ,int ,int,int *) ;
+ int strm_nil_value () ;
+ int strm_str_len (int ) ;
+ int strm_str_ptr (int ) ;
+ int strm_string_p (int ) ;
+ int strm_to_str (int ) ;
 
 __attribute__((used)) static int
 exec_cputs(strm_stream* strm, FILE* out, int argc, strm_value* args, strm_value* ret)

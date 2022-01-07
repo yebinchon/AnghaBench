@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  szTitleBuf ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_3__ {int /*<<< orphan*/  FileName; } ;
-typedef  TYPE_1__ SHIMGVW_FILENODE ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAYSIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDisposeImage (scalar_t__) ; 
- int /*<<< orphan*/  IDS_APPTITLE ; 
- int /*<<< orphan*/  LoadStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetWindowTextW (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  StringCbPrintfW (int /*<<< orphan*/ *,int,char*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hInstance ; 
- scalar_t__ image ; 
- int /*<<< orphan*/  pLoadImage (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * wcsrchr (int /*<<< orphan*/ ,char) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int szTitleBuf ;
+typedef int WCHAR ;
+typedef int VOID ;
+struct TYPE_3__ {int FileName; } ;
+typedef TYPE_1__ SHIMGVW_FILENODE ;
+typedef int HWND ;
+
+
+ int ARRAYSIZE (int *) ;
+ int GdipDisposeImage (scalar_t__) ;
+ int IDS_APPTITLE ;
+ int LoadStringW (int ,int ,int *,int ) ;
+ int SetWindowTextW (int ,int *) ;
+ int StringCbPrintfW (int *,int,char*,int *,char*,int *) ;
+ int hInstance ;
+ scalar_t__ image ;
+ int pLoadImage (int ) ;
+ int * wcsrchr (int ,char) ;
 
 __attribute__((used)) static VOID
 pLoadImageFromNode(SHIMGVW_FILENODE *node, HWND hwnd)

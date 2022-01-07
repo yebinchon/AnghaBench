@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rtw_dev {int /*<<< orphan*/  flags; } ;
-typedef  enum rtw_flags { ____Placeholder_rtw_flags } rtw_flags ;
 
-/* Variables and functions */
- int /*<<< orphan*/  set_bit (int,int /*<<< orphan*/ ) ; 
+
+
+
+struct rtw_dev {int flags; } ;
+typedef enum rtw_flags { ____Placeholder_rtw_flags } rtw_flags ;
+
+
+ int set_bit (int,int ) ;
 
 __attribute__((used)) static inline void rtw_flag_set(struct rtw_dev *rtwdev, enum rtw_flags flag)
 {
-	set_bit(flag, rtwdev->flags);
+ set_bit(flag, rtwdev->flags);
 }

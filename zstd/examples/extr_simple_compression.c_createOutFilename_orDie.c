@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void* malloc_orDie (size_t const) ; 
- int /*<<< orphan*/  memset (void* const,int /*<<< orphan*/ ,size_t const) ; 
- int /*<<< orphan*/  strcat (void* const,char const*) ; 
- size_t strlen (char const*) ; 
+ void* malloc_orDie (size_t const) ;
+ int memset (void* const,int ,size_t const) ;
+ int strcat (void* const,char const*) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static char* createOutFilename_orDie(const char* filename)
 {

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_fourcc_t ;
-struct fourcc_mapping {char* desc; int /*<<< orphan*/  fourcc; } ;
-struct fourcc_desc {char* desc; int /*<<< orphan*/  fourcc; } ;
 
-/* Variables and functions */
- struct fourcc_mapping* bsearch (int /*<<< orphan*/ *,struct fourcc_mapping const*,size_t,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fourcc_cmp ; 
+
+
+
+typedef int vlc_fourcc_t ;
+struct fourcc_mapping {char* desc; int fourcc; } ;
+struct fourcc_desc {char* desc; int fourcc; } ;
+
+
+ struct fourcc_mapping* bsearch (int *,struct fourcc_mapping const*,size_t,int,int ) ;
+ int fourcc_cmp ;
 
 __attribute__((used)) static vlc_fourcc_t Lookup(vlc_fourcc_t fourcc, const char **restrict dsc,
                            const struct fourcc_mapping *mapv, size_t mapc,
@@ -26,12 +26,12 @@ __attribute__((used)) static vlc_fourcc_t Lookup(vlc_fourcc_t fourcc, const char
     const struct fourcc_desc *desc;
 
     mapping = bsearch(&fourcc, mapv, mapc, sizeof (*mapv), fourcc_cmp);
-    if (mapping != NULL)
+    if (mapping != ((void*)0))
     {
-        if (dsc != NULL)
+        if (dsc != ((void*)0))
         {
             desc = bsearch(&fourcc, dscv, dscc, sizeof (*dscv), fourcc_cmp);
-            if (desc != NULL)
+            if (desc != ((void*)0))
             {
                 *dsc = desc->desc;
                 return mapping->fourcc;
@@ -41,9 +41,9 @@ __attribute__((used)) static vlc_fourcc_t Lookup(vlc_fourcc_t fourcc, const char
     }
 
     desc = bsearch(&fourcc, dscv, dscc, sizeof (*dscv), fourcc_cmp);
-    if (desc == NULL)
-        return 0; /* Unknown FourCC */
-    if (dsc != NULL)
+    if (desc == ((void*)0))
+        return 0;
+    if (dsc != ((void*)0))
         *dsc = desc->desc;
-    return fourcc; /* Known FourCC (has a description) */
+    return fourcc;
 }

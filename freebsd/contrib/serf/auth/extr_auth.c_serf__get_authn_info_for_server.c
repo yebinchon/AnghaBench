@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  pool; int /*<<< orphan*/  server_authn_info; } ;
-typedef  TYPE_1__ serf_context_t ;
-struct TYPE_5__ {int /*<<< orphan*/  host_url; TYPE_1__* ctx; } ;
-typedef  TYPE_2__ serf_connection_t ;
-typedef  int /*<<< orphan*/  serf__authn_info_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_HASH_KEY_STRING ; 
- int /*<<< orphan*/ * apr_hash_get (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  apr_hash_set (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_pcalloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  apr_pstrdup (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int pool; int server_authn_info; } ;
+typedef TYPE_1__ serf_context_t ;
+struct TYPE_5__ {int host_url; TYPE_1__* ctx; } ;
+typedef TYPE_2__ serf_connection_t ;
+typedef int serf__authn_info_t ;
+
+
+ int APR_HASH_KEY_STRING ;
+ int * apr_hash_get (int ,int ,int ) ;
+ int apr_hash_set (int ,int ,int ,int *) ;
+ int * apr_pcalloc (int ,int) ;
+ int apr_pstrdup (int ,int ) ;
 
 serf__authn_info_t *serf__get_authn_info_for_server(serf_connection_t *conn)
 {

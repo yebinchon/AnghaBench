@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IHTMLDOMNode ;
-typedef  int /*<<< orphan*/  IHTMLDOMChildrenCollection ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IDispatch_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLDOMChildrenCollection_item (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/ * _get_node_iface (unsigned int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
+
+
+
+typedef int LONG ;
+typedef int IUnknown ;
+typedef int IHTMLDOMNode ;
+typedef int IHTMLDOMChildrenCollection ;
+typedef int IDispatch ;
+typedef scalar_t__ HRESULT ;
+
+
+ int IDispatch_Release (int *) ;
+ scalar_t__ IHTMLDOMChildrenCollection_item (int *,int ,int **) ;
+ scalar_t__ S_OK ;
+ int * _get_node_iface (unsigned int,int *) ;
+ int ok (int,char*,scalar_t__) ;
 
 __attribute__((used)) static IHTMLDOMNode *_get_child_item(unsigned line, IHTMLDOMChildrenCollection *col, LONG idx)
 {
-    IHTMLDOMNode *node = NULL;
+    IHTMLDOMNode *node = ((void*)0);
     IDispatch *disp;
     HRESULT hres;
 

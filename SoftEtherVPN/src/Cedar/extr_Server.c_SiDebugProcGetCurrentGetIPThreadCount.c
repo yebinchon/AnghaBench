@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  SERVER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_INVALID_PARAMETER ; 
- int /*<<< orphan*/  ERR_NO_ERROR ; 
- int /*<<< orphan*/  Format (char*,int /*<<< orphan*/ ,char*,char*,char*) ; 
- int /*<<< orphan*/  GetCurrentGetIpThreadNum () ; 
- int /*<<< orphan*/  GetGetIpThreadMaxNum () ; 
- int /*<<< orphan*/  ToStr3 (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT ;
+typedef int SERVER ;
+
+
+ int ERR_INVALID_PARAMETER ;
+ int ERR_NO_ERROR ;
+ int Format (char*,int ,char*,char*,char*) ;
+ int GetCurrentGetIpThreadNum () ;
+ int GetGetIpThreadMaxNum () ;
+ int ToStr3 (char*,int ,int ) ;
 
 UINT SiDebugProcGetCurrentGetIPThreadCount(SERVER *s, char *in_str, char *ret_str, UINT ret_str_size)
 {
-	char tmp1[64], tmp2[64];
-	// Validate arguments
-	if (s == NULL || in_str == NULL || ret_str == NULL)
-	{
-		return ERR_INVALID_PARAMETER;
-	}
+ char tmp1[64], tmp2[64];
 
-	ToStr3(tmp1, 0, GetCurrentGetIpThreadNum());
-	ToStr3(tmp2, 0, GetGetIpThreadMaxNum());
+ if (s == ((void*)0) || in_str == ((void*)0) || ret_str == ((void*)0))
+ {
+  return ERR_INVALID_PARAMETER;
+ }
 
-	Format(ret_str, 0, 
-		"Current threads = %s\n"
-		"Quota           = %s\n",
-		tmp1, tmp2);
+ ToStr3(tmp1, 0, GetCurrentGetIpThreadNum());
+ ToStr3(tmp2, 0, GetGetIpThreadMaxNum());
 
-	return ERR_NO_ERROR;
+ Format(ret_str, 0,
+  "Current threads = %s\n"
+  "Quota           = %s\n",
+  tmp1, tmp2);
+
+ return ERR_NO_ERROR;
 }

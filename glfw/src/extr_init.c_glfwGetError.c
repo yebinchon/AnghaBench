@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_4__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_4__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int code; char* description; } ;
-typedef  TYPE_1__ _GLFWerror ;
-struct TYPE_6__ {int /*<<< orphan*/  errorSlot; scalar_t__ initialized; } ;
+typedef TYPE_1__ _GLFWerror ;
+struct TYPE_6__ {int errorSlot; scalar_t__ initialized; } ;
 
-/* Variables and functions */
- void* GLFW_NO_ERROR ; 
- TYPE_4__ _glfw ; 
- TYPE_1__ _glfwMainThreadError ; 
- TYPE_1__* _glfwPlatformGetTls (int /*<<< orphan*/ *) ; 
+
+ void* GLFW_NO_ERROR ;
+ TYPE_4__ _glfw ;
+ TYPE_1__ _glfwMainThreadError ;
+ TYPE_1__* _glfwPlatformGetTls (int *) ;
 
 int glfwGetError(const char** description)
 {
@@ -28,7 +28,7 @@ int glfwGetError(const char** description)
     int code = GLFW_NO_ERROR;
 
     if (description)
-        *description = NULL;
+        *description = ((void*)0);
 
     if (_glfw.initialized)
         error = _glfwPlatformGetTls(&_glfw.errorSlot);

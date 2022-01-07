@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {long fx_pcrel_adjust; long fx_im_disp; int fx_size; int fx_r_type; scalar_t__ fx_subsy; scalar_t__ fx_addsy; scalar_t__ fx_addnumber; scalar_t__ fx_offset; scalar_t__ fx_where; scalar_t__ fx_frag; scalar_t__ fx_done; scalar_t__ fx_tcbit; scalar_t__ fx_pcrel; int /*<<< orphan*/  fx_line; int /*<<< orphan*/  fx_file; } ;
-typedef  TYPE_1__ fixS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TC_FIX_DATA_PRINT (int /*<<< orphan*/ ,TYPE_1__*) ; 
- char* bfd_get_reloc_code_name (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int indent_level ; 
- int /*<<< orphan*/  print_symbol_value_1 (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {long fx_pcrel_adjust; long fx_im_disp; int fx_size; int fx_r_type; scalar_t__ fx_subsy; scalar_t__ fx_addsy; scalar_t__ fx_addnumber; scalar_t__ fx_offset; scalar_t__ fx_where; scalar_t__ fx_frag; scalar_t__ fx_done; scalar_t__ fx_tcbit; scalar_t__ fx_pcrel; int fx_line; int fx_file; } ;
+typedef TYPE_1__ fixS ;
+
+
+ int TC_FIX_DATA_PRINT (int ,TYPE_1__*) ;
+ char* bfd_get_reloc_code_name (int) ;
+ int fprintf (int ,char*,...) ;
+ int indent_level ;
+ int print_symbol_value_1 (int ,scalar_t__) ;
+ int stderr ;
 
 void
 print_fixup (fixS *fixp)
@@ -33,21 +33,21 @@ print_fixup (fixS *fixp)
     fprintf (stderr, " pcrel_adjust=%d", fixp->fx_pcrel_adjust);
   if (fixp->fx_im_disp)
     {
-#ifdef TC_NS32K
-      fprintf (stderr, " im_disp=%d", fixp->fx_im_disp);
-#else
+
+
+
       fprintf (stderr, " im_disp");
-#endif
+
     }
   if (fixp->fx_tcbit)
     fprintf (stderr, " tcbit");
   if (fixp->fx_done)
     fprintf (stderr, " done");
   fprintf (stderr, "\n    size=%d frag=%lx where=%ld offset=%lx addnumber=%lx",
-	   fixp->fx_size, (long) fixp->fx_frag, (long) fixp->fx_where,
-	   (long) fixp->fx_offset, (long) fixp->fx_addnumber);
+    fixp->fx_size, (long) fixp->fx_frag, (long) fixp->fx_where,
+    (long) fixp->fx_offset, (long) fixp->fx_addnumber);
   fprintf (stderr, "\n    %s (%d)", bfd_get_reloc_code_name (fixp->fx_r_type),
-	   fixp->fx_r_type);
+    fixp->fx_r_type);
   if (fixp->fx_addsy)
     {
       fprintf (stderr, "\n   +<");
@@ -61,7 +61,7 @@ print_fixup (fixS *fixp)
       fprintf (stderr, ">");
     }
   fprintf (stderr, "\n");
-#ifdef TC_FIX_DATA_PRINT
-  TC_FIX_DATA_PRINT (stderr, fixp);
-#endif
+
+
+
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  backquote; int /*<<< orphan*/  text; int /*<<< orphan*/ * next; } ;
-union node {TYPE_1__ narg; int /*<<< orphan*/  type; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int backquote; int text; int * next; } ;
+union node {TYPE_1__ narg; int type; } ;
 struct narg {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NARG ; 
- int /*<<< orphan*/  backquotelist ; 
- scalar_t__ stalloc (int) ; 
- int /*<<< orphan*/  wordtext ; 
+
+ int NARG ;
+ int backquotelist ;
+ scalar_t__ stalloc (int) ;
+ int wordtext ;
 
 __attribute__((used)) static union node *
 makename(void)
 {
-	union node *n;
+ union node *n;
 
-	n = (union node *)stalloc(sizeof (struct narg));
-	n->type = NARG;
-	n->narg.next = NULL;
-	n->narg.text = wordtext;
-	n->narg.backquote = backquotelist;
-	return n;
+ n = (union node *)stalloc(sizeof (struct narg));
+ n->type = NARG;
+ n->narg.next = ((void*)0);
+ n->narg.text = wordtext;
+ n->narg.backquote = backquotelist;
+ return n;
 }

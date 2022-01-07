@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqliterk_cipher_conf ;
-struct TYPE_6__ {int /*<<< orphan*/  onParseColumn; int /*<<< orphan*/  onEndParseBtree; int /*<<< orphan*/  onBeginParseBtree; int /*<<< orphan*/  onEndParsePage; int /*<<< orphan*/  onBeginParsePage; } ;
-struct TYPE_7__ {int recursive; TYPE_1__ listen; int /*<<< orphan*/  pager; } ;
-typedef  TYPE_2__ sqliterk ;
 
-/* Variables and functions */
- int SQLITERK_MISUSE ; 
- int SQLITERK_NOMEM ; 
- int SQLITERK_OK ; 
- int /*<<< orphan*/  sqliterkClose (TYPE_2__*) ; 
- int /*<<< orphan*/  sqliterkNotify_onBeginParseBtree ; 
- int /*<<< orphan*/  sqliterkNotify_onBeginParsePage ; 
- int /*<<< orphan*/  sqliterkNotify_onEndParseBtree ; 
- int /*<<< orphan*/  sqliterkNotify_onEndParsePage ; 
- int /*<<< orphan*/  sqliterkNotify_onParseColumn ; 
- int /*<<< orphan*/  sqliterkOSError (int,char*,int) ; 
- int /*<<< orphan*/  sqliterkOSInfo (int,char*,char const*,char*) ; 
- TYPE_2__* sqliterkOSMalloc (int) ; 
- int sqliterkPagerOpen (char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int sqliterk_cipher_conf ;
+struct TYPE_6__ {int onParseColumn; int onEndParseBtree; int onBeginParseBtree; int onEndParsePage; int onBeginParsePage; } ;
+struct TYPE_7__ {int recursive; TYPE_1__ listen; int pager; } ;
+typedef TYPE_2__ sqliterk ;
+
+
+ int SQLITERK_MISUSE ;
+ int SQLITERK_NOMEM ;
+ int SQLITERK_OK ;
+ int sqliterkClose (TYPE_2__*) ;
+ int sqliterkNotify_onBeginParseBtree ;
+ int sqliterkNotify_onBeginParsePage ;
+ int sqliterkNotify_onEndParseBtree ;
+ int sqliterkNotify_onEndParsePage ;
+ int sqliterkNotify_onParseColumn ;
+ int sqliterkOSError (int,char*,int) ;
+ int sqliterkOSInfo (int,char*,char const*,char*) ;
+ TYPE_2__* sqliterkOSMalloc (int) ;
+ int sqliterkPagerOpen (char const*,int const*,int *) ;
 
 int sqliterkOpen(const char *path,
                  const sqliterk_cipher_conf *cipher,
@@ -69,6 +69,6 @@ sqliterkOpen_Failed:
     if (therk) {
         sqliterkClose(therk);
     }
-    *rk = NULL;
+    *rk = ((void*)0);
     return rc;
 }

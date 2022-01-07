@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct Curl_URL {int /*<<< orphan*/  temppath; int /*<<< orphan*/  scratch; int /*<<< orphan*/  fragment; int /*<<< orphan*/  query; int /*<<< orphan*/  path; int /*<<< orphan*/  port; int /*<<< orphan*/  zoneid; int /*<<< orphan*/  host; int /*<<< orphan*/  options; int /*<<< orphan*/  password; int /*<<< orphan*/  user; int /*<<< orphan*/  scheme; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
+
+
+
+struct Curl_URL {int temppath; int scratch; int fragment; int query; int path; int port; int zoneid; int host; int options; int password; int user; int scheme; } ;
+
+
+ int free (int ) ;
 
 __attribute__((used)) static void free_urlhandle(struct Curl_URL *u)
 {

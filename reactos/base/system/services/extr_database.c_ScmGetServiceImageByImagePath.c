@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {struct TYPE_8__* Flink; } ;
-struct TYPE_7__ {int /*<<< orphan*/  pszImagePath; } ;
-typedef  TYPE_1__* PSERVICE_IMAGE ;
-typedef  TYPE_2__* PLIST_ENTRY ;
-typedef  int /*<<< orphan*/  LPWSTR ;
+struct TYPE_7__ {int pszImagePath; } ;
+typedef TYPE_1__* PSERVICE_IMAGE ;
+typedef TYPE_2__* PLIST_ENTRY ;
+typedef int LPWSTR ;
 
-/* Variables and functions */
- TYPE_1__* CONTAINING_RECORD (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPRINT (char*,...) ; 
- int /*<<< orphan*/  ImageListEntry ; 
- TYPE_2__ ImageListHead ; 
- int /*<<< orphan*/  SERVICE_IMAGE ; 
- scalar_t__ _wcsicmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ TYPE_1__* CONTAINING_RECORD (TYPE_2__*,int ,int ) ;
+ int DPRINT (char*,...) ;
+ int ImageListEntry ;
+ TYPE_2__ ImageListHead ;
+ int SERVICE_IMAGE ;
+ scalar_t__ _wcsicmp (int ,int ) ;
 
 __attribute__((used)) static PSERVICE_IMAGE
 ScmGetServiceImageByImagePath(LPWSTR lpImagePath)
@@ -51,6 +51,6 @@ ScmGetServiceImageByImagePath(LPWSTR lpImagePath)
 
     DPRINT("Couldn't find a matching image\n");
 
-    return NULL;
+    return ((void*)0);
 
 }

@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* getenv (char*) ; 
- int /*<<< orphan*/  sort_strdup (char*) ; 
- int /*<<< orphan*/  tmpdir ; 
+ char* getenv (char*) ;
+ int sort_strdup (char*) ;
+ int tmpdir ;
 
 __attribute__((used)) static void
 set_tmpdir(void)
 {
-	char *td;
+ char *td;
 
-	td = getenv("TMPDIR");
-	if (td != NULL)
-		tmpdir = sort_strdup(td);
+ td = getenv("TMPDIR");
+ if (td != ((void*)0))
+  tmpdir = sort_strdup(td);
 }

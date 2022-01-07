@@ -1,73 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int BIG_INFO_KEY ; 
- scalar_t__ BIG_INFO_STRING ; 
- int BIG_INFO_VALUE ; 
- int /*<<< orphan*/  Com_Error (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ERR_DROP ; 
- int /*<<< orphan*/  memmove (char*,char*,scalar_t__) ; 
- scalar_t__ strchr (char const*,char) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- scalar_t__ strlen (char*) ; 
+ int BIG_INFO_KEY ;
+ scalar_t__ BIG_INFO_STRING ;
+ int BIG_INFO_VALUE ;
+ int Com_Error (int ,char*) ;
+ int ERR_DROP ;
+ int memmove (char*,char*,scalar_t__) ;
+ scalar_t__ strchr (char const*,char) ;
+ int strcmp (char const*,char*) ;
+ scalar_t__ strlen (char*) ;
 
 void Info_RemoveKey_Big( char *s, const char *key ) {
-	char	*start;
-	char	pkey[BIG_INFO_KEY];
-	char	value[BIG_INFO_VALUE];
-	char	*o;
+ char *start;
+ char pkey[BIG_INFO_KEY];
+ char value[BIG_INFO_VALUE];
+ char *o;
 
-	if ( strlen( s ) >= BIG_INFO_STRING ) {
-		Com_Error( ERR_DROP, "Info_RemoveKey_Big: oversize infostring" );
-	}
+ if ( strlen( s ) >= BIG_INFO_STRING ) {
+  Com_Error( ERR_DROP, "Info_RemoveKey_Big: oversize infostring" );
+ }
 
-	if (strchr (key, '\\')) {
-		return;
-	}
+ if (strchr (key, '\\')) {
+  return;
+ }
 
-	while (1)
-	{
-		start = s;
-		if (*s == '\\')
-			s++;
-		o = pkey;
-		while (*s != '\\')
-		{
-			if (!*s)
-				return;
-			*o++ = *s++;
-		}
-		*o = 0;
-		s++;
+ while (1)
+ {
+  start = s;
+  if (*s == '\\')
+   s++;
+  o = pkey;
+  while (*s != '\\')
+  {
+   if (!*s)
+    return;
+   *o++ = *s++;
+  }
+  *o = 0;
+  s++;
 
-		o = value;
-		while (*s != '\\' && *s)
-		{
-			if (!*s)
-				return;
-			*o++ = *s++;
-		}
-		*o = 0;
+  o = value;
+  while (*s != '\\' && *s)
+  {
+   if (!*s)
+    return;
+   *o++ = *s++;
+  }
+  *o = 0;
 
-		if (!strcmp (key, pkey) )
-		{
-			memmove(start, s, strlen(s) + 1); // remove this part
-			return;
-		}
+  if (!strcmp (key, pkey) )
+  {
+   memmove(start, s, strlen(s) + 1);
+   return;
+  }
 
-		if (!*s)
-			return;
-	}
+  if (!*s)
+   return;
+ }
 
 }

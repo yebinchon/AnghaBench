@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int COUNTER_1 ;
+ int COUNTER_2 ;
 
-/* Forward declarations */
 
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  COUNTER_1 ; 
- int /*<<< orphan*/  COUNTER_2 ; 
-#define  WD1 129 
-#define  WD2 128 
- int /*<<< orphan*/  zf_writeb (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  zf_writew (int /*<<< orphan*/ ,unsigned short) ; 
+ int zf_writeb (int ,int) ;
+ int zf_writew (int ,unsigned short) ;
 
 __attribute__((used)) static inline void zf_set_timer(unsigned short new, unsigned char n)
 {
-	switch (n) {
-	case WD1:
-		zf_writew(COUNTER_1, new);
-	case WD2:
-		zf_writeb(COUNTER_2, new > 0xff ? 0xff : new);
-	default:
-		return;
-	}
+ switch (n) {
+ case 129:
+  zf_writew(COUNTER_1, new);
+ case 128:
+  zf_writeb(COUNTER_2, new > 0xff ? 0xff : new);
+ default:
+  return;
+ }
 }

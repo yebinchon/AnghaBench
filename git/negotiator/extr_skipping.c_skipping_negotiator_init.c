@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct fetch_negotiator {struct data* data; int /*<<< orphan*/  release; int /*<<< orphan*/  ack; int /*<<< orphan*/  next; int /*<<< orphan*/  add_tip; int /*<<< orphan*/  known_common; } ;
-struct TYPE_2__ {int /*<<< orphan*/  compare; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct fetch_negotiator {struct data* data; int release; int ack; int next; int add_tip; int known_common; } ;
+struct TYPE_2__ {int compare; } ;
 struct data {TYPE_1__ rev_list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ack ; 
- int /*<<< orphan*/  add_tip ; 
- int /*<<< orphan*/  clear_marks ; 
- int /*<<< orphan*/  compare ; 
- int /*<<< orphan*/  for_each_ref (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  known_common ; 
- int marked ; 
- int /*<<< orphan*/  next ; 
- int /*<<< orphan*/  release ; 
- struct data* xcalloc (int,int) ; 
+
+ int ack ;
+ int add_tip ;
+ int clear_marks ;
+ int compare ;
+ int for_each_ref (int ,int *) ;
+ int known_common ;
+ int marked ;
+ int next ;
+ int release ;
+ struct data* xcalloc (int,int) ;
 
 void skipping_negotiator_init(struct fetch_negotiator *negotiator)
 {
-	struct data *data;
-	negotiator->known_common = known_common;
-	negotiator->add_tip = add_tip;
-	negotiator->next = next;
-	negotiator->ack = ack;
-	negotiator->release = release;
-	negotiator->data = data = xcalloc(1, sizeof(*data));
-	data->rev_list.compare = compare;
+ struct data *data;
+ negotiator->known_common = known_common;
+ negotiator->add_tip = add_tip;
+ negotiator->next = next;
+ negotiator->ack = ack;
+ negotiator->release = release;
+ negotiator->data = data = xcalloc(1, sizeof(*data));
+ data->rev_list.compare = compare;
 
-	if (marked)
-		for_each_ref(clear_marks, NULL);
-	marked = 1;
+ if (marked)
+  for_each_ref(clear_marks, ((void*)0));
+ marked = 1;
 }

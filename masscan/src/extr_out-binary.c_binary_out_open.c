@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {size_t bytes_written; } ;
 struct Output {TYPE_1__ rotate; scalar_t__ when_scan_started; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UNUSEDPARM (struct Output*) ; 
- int /*<<< orphan*/  exit (int) ; 
- size_t fwrite (char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  sprintf_s (char*,int,char*,unsigned int) ; 
+
+ int UNUSEDPARM (struct Output*) ;
+ int exit (int) ;
+ size_t fwrite (char*,int,int,int *) ;
+ int memset (char*,int ,int) ;
+ int perror (char*) ;
+ int sprintf_s (char*,int,char*,unsigned int) ;
 
 __attribute__((used)) static void
 binary_out_open(struct Output *out, FILE *fp)
@@ -33,7 +33,7 @@ binary_out_open(struct Output *out, FILE *fp)
 
 
     memset(firstrecord, 0, 2+'a');
-    sprintf_s(firstrecord, 2+'a', "masscan/1.1.02\ns:%u\n", 
+    sprintf_s(firstrecord, 2+'a', "masscan/1.1.02\ns:%u\n",
         (unsigned)out->when_scan_started);
     bytes_written = fwrite(firstrecord, 1, 2+'a', fp);
     if (bytes_written != 2+'a') {

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int /*<<< orphan*/  i64 ;
-typedef  int /*<<< orphan*/  aSz ;
-struct TYPE_5__ {int /*<<< orphan*/  pCompress; } ;
-typedef  int /*<<< orphan*/  Segment ;
-typedef  int /*<<< orphan*/  LsmPgno ;
-typedef  TYPE_1__ FileSystem ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int fsReadData (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*,int) ; 
- int fsSubtractOffset (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int getRecordSize (int*,int*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int i64 ;
+typedef int aSz ;
+struct TYPE_5__ {int pCompress; } ;
+typedef int Segment ;
+typedef int LsmPgno ;
+typedef TYPE_1__ FileSystem ;
+
+
+ int LSM_OK ;
+ int assert (int ) ;
+ int fsReadData (TYPE_1__*,int *,int ,int*,int) ;
+ int fsSubtractOffset (TYPE_1__*,int *,int ,int,int *) ;
+ int getRecordSize (int*,int*) ;
 
 __attribute__((used)) static int fsGetPageBefore(
-  FileSystem *pFS, 
-  Segment *pSeg, 
-  LsmPgno iPg, 
+  FileSystem *pFS,
+  Segment *pSeg,
+  LsmPgno iPg,
   LsmPgno *piPrev
 ){
   u8 aSz[3];

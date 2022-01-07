@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_7__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_opt_revision_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_11__ {int /*<<< orphan*/  file_deleted; int /*<<< orphan*/  file_changed; int /*<<< orphan*/  file_added; int /*<<< orphan*/  dir_deleted; int /*<<< orphan*/  dir_changed; int /*<<< orphan*/  dir_added; } ;
-typedef  TYPE_1__ svn_diff_tree_processor_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-struct TYPE_12__ {int /*<<< orphan*/  wc_ctx; int /*<<< orphan*/  cancel_baton; int /*<<< orphan*/  cancel_func; int /*<<< orphan*/  config; } ;
-typedef  TYPE_2__ svn_client_ctx_t ;
-typedef  void* svn_boolean_t ;
-struct TYPE_14__ {char const* orig_path_1; char const* orig_path_2; int /*<<< orphan*/ * anchor; int /*<<< orphan*/ * session_relpath; } ;
-struct TYPE_13__ {char const* header_encoding; char const* relative_to_dir; TYPE_7__ ddi; int /*<<< orphan*/  wc_ctx; int /*<<< orphan*/  cancel_baton; int /*<<< orphan*/  cancel_func; void* show_copies_as_adds; void* no_diff_deleted; void* no_diff_added; void* use_git_diff_format; void* properties_only; void* ignore_properties; void* force_binary; int /*<<< orphan*/ * errstream; int /*<<< orphan*/ * outstream; int /*<<< orphan*/ * pool; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_3__ diff_writer_info_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- void* FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_INCORRECT_PARAMS ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  create_diff_writer_info (TYPE_3__*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  diff_dir_added ; 
- int /*<<< orphan*/  diff_dir_changed ; 
- int /*<<< orphan*/  diff_dir_deleted ; 
- int /*<<< orphan*/  diff_file_added ; 
- int /*<<< orphan*/  diff_file_changed ; 
- int /*<<< orphan*/  diff_file_deleted ; 
- int /*<<< orphan*/  do_diff (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_7__*,char const*,char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,void*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,TYPE_1__ const*,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_1__* svn_diff__tree_processor_create (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_14__ TYPE_7__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int svn_stream_t ;
+typedef int svn_opt_revision_t ;
+typedef int svn_error_t ;
+struct TYPE_11__ {int file_deleted; int file_changed; int file_added; int dir_deleted; int dir_changed; int dir_added; } ;
+typedef TYPE_1__ svn_diff_tree_processor_t ;
+typedef int svn_depth_t ;
+struct TYPE_12__ {int wc_ctx; int cancel_baton; int cancel_func; int config; } ;
+typedef TYPE_2__ svn_client_ctx_t ;
+typedef void* svn_boolean_t ;
+struct TYPE_14__ {char const* orig_path_1; char const* orig_path_2; int * anchor; int * session_relpath; } ;
+struct TYPE_13__ {char const* header_encoding; char const* relative_to_dir; TYPE_7__ ddi; int wc_ctx; int cancel_baton; int cancel_func; void* show_copies_as_adds; void* no_diff_deleted; void* no_diff_added; void* use_git_diff_format; void* properties_only; void* ignore_properties; void* force_binary; int * errstream; int * outstream; int * pool; int member_0; } ;
+typedef TYPE_3__ diff_writer_info_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+
+
+ void* FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_INCORRECT_PARAMS ;
+ int TRUE ;
+ int _ (char*) ;
+ int create_diff_writer_info (TYPE_3__*,int const*,int ,int *) ;
+ int diff_dir_added ;
+ int diff_dir_changed ;
+ int diff_dir_deleted ;
+ int diff_file_added ;
+ int diff_file_changed ;
+ int diff_file_deleted ;
+ int do_diff (int *,int *,TYPE_7__*,char const*,char const*,int const*,int const*,int const*,void*,int ,void*,int const*,int ,TYPE_1__ const*,TYPE_2__*,int *,int *) ;
+ TYPE_1__* svn_diff__tree_processor_create (TYPE_3__*,int *) ;
+ int * svn_error_create (int ,int *,int ) ;
+ int * svn_error_trace (int ) ;
 
 svn_error_t *
 svn_client_diff_peg6(const apr_array_header_t *options,
@@ -75,11 +75,11 @@ svn_client_diff_peg6(const apr_array_header_t *options,
   svn_diff_tree_processor_t *processor;
 
   if (ignore_properties && properties_only)
-    return svn_error_create(SVN_ERR_INCORRECT_PARAMS, NULL,
+    return svn_error_create(SVN_ERR_INCORRECT_PARAMS, ((void*)0),
                             _("Cannot ignore properties and show only "
                               "properties at the same time"));
 
-  /* setup callback and baton */
+
   dwi.ddi.orig_path_1 = path_or_url;
   dwi.ddi.orig_path_2 = path_or_url;
 
@@ -103,8 +103,8 @@ svn_client_diff_peg6(const apr_array_header_t *options,
   dwi.cancel_baton = ctx->cancel_baton;
 
   dwi.wc_ctx = ctx->wc_ctx;
-  dwi.ddi.session_relpath = NULL;
-  dwi.ddi.anchor = NULL;
+  dwi.ddi.session_relpath = ((void*)0);
+  dwi.ddi.anchor = ((void*)0);
 
   processor = svn_diff__tree_processor_create(&dwi, pool);
 
@@ -118,15 +118,15 @@ svn_client_diff_peg6(const apr_array_header_t *options,
 
   diff_processor = processor;
 
-  /* --show-copies-as-adds and --git imply --notice-ancestry */
+
   if (show_copies_as_adds || use_git_diff_format)
     ignore_ancestry = FALSE;
 
-  return svn_error_trace(do_diff(NULL, NULL, &dwi.ddi,
+  return svn_error_trace(do_diff(((void*)0), ((void*)0), &dwi.ddi,
                                  path_or_url, path_or_url,
                                  start_revision, end_revision,
-                                 peg_revision, FALSE /* no_peg_revision */,
+                                 peg_revision, FALSE ,
                                  depth, ignore_ancestry, changelists,
-                                 TRUE /* text_deltas */,
+                                 TRUE ,
                                  diff_processor, ctx, pool, pool));
 }

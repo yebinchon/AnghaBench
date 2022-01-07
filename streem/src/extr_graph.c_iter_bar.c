@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct bar_data {double* data; scalar_t__ offset; int dlen; double max; scalar_t__ row; } ;
-typedef  int /*<<< orphan*/  strm_value ;
+typedef int strm_value ;
 struct TYPE_5__ {struct bar_data* data; } ;
-typedef  TYPE_1__ strm_stream ;
+typedef TYPE_1__ strm_stream ;
 
-/* Variables and functions */
- void* FALSE ; 
- int /*<<< orphan*/  SIGINT ; 
- int STRM_NG ; 
- int STRM_OK ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  free (double*) ; 
- int init_bar (struct bar_data*) ; 
- void* interrupt ; 
- int /*<<< orphan*/  move_cursor (scalar_t__,int) ; 
- int /*<<< orphan*/  show_cursor () ; 
- int /*<<< orphan*/  show_graph (struct bar_data*) ; 
- int /*<<< orphan*/  sigupdate ; 
- int /*<<< orphan*/  strm_number_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_raise (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  strm_stream_close (TYPE_1__*) ; 
- int /*<<< orphan*/  strm_unsignal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- double strm_value_float (int /*<<< orphan*/ ) ; 
- void* winch ; 
+
+ void* FALSE ;
+ int SIGINT ;
+ int STRM_NG ;
+ int STRM_OK ;
+ int exit (int) ;
+ int free (double*) ;
+ int init_bar (struct bar_data*) ;
+ void* interrupt ;
+ int move_cursor (scalar_t__,int) ;
+ int show_cursor () ;
+ int show_graph (struct bar_data*) ;
+ int sigupdate ;
+ int strm_number_p (int ) ;
+ int strm_raise (TYPE_1__*,char*) ;
+ int strm_stream_close (TYPE_1__*) ;
+ int strm_unsignal (int ,int ) ;
+ double strm_value_float (int ) ;
+ void* winch ;
 
 __attribute__((used)) static int
 iter_bar(strm_stream* strm, strm_value data)

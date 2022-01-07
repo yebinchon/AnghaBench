@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lfa2 ;
-typedef  int /*<<< orphan*/  lfa ;
-typedef  int Unit ;
-typedef  int UINT16 ;
-struct TYPE_5__ {scalar_t__ lfHeight; int lfWidth; int lfEscapement; int lfOrientation; int lfWeight; int lfItalic; int lfUnderline; int lfStrikeOut; scalar_t__ lfCharSet; int lfOutPrecision; int lfClipPrecision; int lfQuality; int lfPitchAndFamily; int /*<<< orphan*/  lfFaceName; } ;
-typedef  int /*<<< orphan*/  REAL ;
-typedef  TYPE_1__ LOGFONTA ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int GpStatus ;
-typedef  int /*<<< orphan*/  GpGraphics ;
-typedef  int /*<<< orphan*/  GpFontFamily ;
-typedef  int /*<<< orphan*/  GpFont ;
 
-/* Variables and functions */
- scalar_t__ ANSI_CHARSET ; 
- int FontStyleItalic ; 
- int /*<<< orphan*/  FontStyleRegular ; 
- int FontStyleStrikeout ; 
- int FontStyleUnderline ; 
- int GdipCreateFontFromLogfontA (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ **) ; 
- int GdipCreateFromHDC (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteFont (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeleteFontFamily (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int GdipGetEmHeight (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int GdipGetFamily (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int GdipGetFontHeight (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int GdipGetFontSize (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int GdipGetFontStyle (int /*<<< orphan*/ *,int*) ; 
- int GdipGetFontUnit (int /*<<< orphan*/ *,int*) ; 
- int GdipGetLineSpacing (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int GdipGetLogFontA (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- scalar_t__ GetTextCharset (int /*<<< orphan*/ ) ; 
- int Ok ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int TRUE ; 
- int UnitWorld ; 
- int /*<<< orphan*/  expect (int,int) ; 
- int /*<<< orphan*/  expectf (double,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lstrcpyA (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int lfa2 ;
+typedef int lfa ;
+typedef int Unit ;
+typedef int UINT16 ;
+struct TYPE_5__ {scalar_t__ lfHeight; int lfWidth; int lfEscapement; int lfOrientation; int lfWeight; int lfItalic; int lfUnderline; int lfStrikeOut; scalar_t__ lfCharSet; int lfOutPrecision; int lfClipPrecision; int lfQuality; int lfPitchAndFamily; int lfFaceName; } ;
+typedef int REAL ;
+typedef TYPE_1__ LOGFONTA ;
+typedef int INT ;
+typedef int HDC ;
+typedef int GpStatus ;
+typedef int GpGraphics ;
+typedef int GpFontFamily ;
+typedef int GpFont ;
+
+
+ scalar_t__ ANSI_CHARSET ;
+ int FontStyleItalic ;
+ int FontStyleRegular ;
+ int FontStyleStrikeout ;
+ int FontStyleUnderline ;
+ int GdipCreateFontFromLogfontA (int ,TYPE_1__*,int **) ;
+ int GdipCreateFromHDC (int ,int **) ;
+ int GdipDeleteFont (int *) ;
+ int GdipDeleteFontFamily (int *) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipGetEmHeight (int *,int ,int*) ;
+ int GdipGetFamily (int *,int **) ;
+ int GdipGetFontHeight (int *,int *,int *) ;
+ int GdipGetFontSize (int *,int *) ;
+ int GdipGetFontStyle (int *,int*) ;
+ int GdipGetFontUnit (int *,int*) ;
+ int GdipGetLineSpacing (int *,int ,int*) ;
+ int GdipGetLogFontA (int *,int *,TYPE_1__*) ;
+ int GetDC (int ) ;
+ scalar_t__ GetTextCharset (int ) ;
+ int Ok ;
+ int ReleaseDC (int ,int ) ;
+ int TRUE ;
+ int UnitWorld ;
+ int expect (int,int) ;
+ int expectf (double,int ) ;
+ int lstrcpyA (int ,char*) ;
+ int memset (TYPE_1__*,int,int) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_logfont(void)
 {

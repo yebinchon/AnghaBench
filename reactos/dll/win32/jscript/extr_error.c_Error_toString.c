@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vdisp_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int vdisp_t ;
 struct TYPE_4__ {int version; } ;
-typedef  TYPE_1__ script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ script_ctx_t ;
+typedef int jsval_t ;
+typedef int jsstr_t ;
+typedef int jsdisp_t ;
+typedef int WORD ;
+typedef char WCHAR ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/ * get_jsdisp (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  is_undefined (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_propget_name (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * jsstr_alloc (char const*) ; 
- int /*<<< orphan*/ * jsstr_alloc_buf (unsigned int,char**) ; 
- int /*<<< orphan*/  jsstr_flush (int /*<<< orphan*/ *,char*) ; 
- unsigned int jsstr_length (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsstr_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  messageW ; 
- int /*<<< orphan*/  nameW ; 
- int /*<<< orphan*/  to_string (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
+
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int TRACE (char*) ;
+ int * get_jsdisp (int *) ;
+ int is_undefined (int ) ;
+ int jsdisp_propget_name (int *,int ,int *) ;
+ int * jsstr_alloc (char const*) ;
+ int * jsstr_alloc_buf (unsigned int,char**) ;
+ int jsstr_flush (int *,char*) ;
+ unsigned int jsstr_length (int *) ;
+ int jsstr_release (int *) ;
+ int jsval_release (int ) ;
+ int jsval_string (int *) ;
+ int messageW ;
+ int nameW ;
+ int to_string (TYPE_1__*,int ,int **) ;
 
 __attribute__((used)) static HRESULT Error_toString(script_ctx_t *ctx, vdisp_t *vthis, WORD flags,
         unsigned argc, jsval_t *argv, jsval_t *r)
 {
     jsdisp_t *jsthis;
-    jsstr_t *name = NULL, *msg = NULL, *ret = NULL;
+    jsstr_t *name = ((void*)0), *msg = ((void*)0), *ret = ((void*)0);
     jsval_t v;
     HRESULT hres;
 
@@ -103,10 +103,10 @@ __attribute__((used)) static HRESULT Error_toString(script_ctx_t *ctx, vdisp_t *
             }
         }else if(name_len) {
             ret = name;
-            name = NULL;
+            name = ((void*)0);
         }else if(msg_len) {
             ret = msg;
-            msg = NULL;
+            msg = ((void*)0);
         }else {
             ret = jsstr_alloc(object_errorW);
         }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  dumping_on ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * freopen (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * fs_file ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ stricmp (char*,char*) ; 
- int /*<<< orphan*/  test_NtGdiDdCanCreateSurface (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_NtGdiDdCreateDirectDrawObject () ; 
- int /*<<< orphan*/  test_NtGdiDdDeleteDirectDrawObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_NtGdiDdGetScanLine (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_NtGdiDdQueryDirectDrawObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_NtGdiDdWaitForVerticalBlank (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int HANDLE ;
+
+
+ int TRUE ;
+ int dumping_on ;
+ int exit (int) ;
+ int fclose (int *) ;
+ int * freopen (char*,char*,int ) ;
+ int * fs_file ;
+ int printf (char*,...) ;
+ int stdout ;
+ scalar_t__ stricmp (char*,char*) ;
+ int test_NtGdiDdCanCreateSurface (int ) ;
+ int test_NtGdiDdCreateDirectDrawObject () ;
+ int test_NtGdiDdDeleteDirectDrawObject (int ) ;
+ int test_NtGdiDdGetScanLine (int ) ;
+ int test_NtGdiDdQueryDirectDrawObject (int ) ;
+ int test_NtGdiDdWaitForVerticalBlank (int ) ;
 
 int main(int argc, char **argv)
 {
@@ -57,8 +57,8 @@ int main(int argc, char **argv)
     {
         if (stricmp(argv[1],"-dumpfile")==0)
         {
-            /* create or over write a file in binary mode, and redirect printf to the file */ 
-            if ( (fs_file = freopen(argv[2], "wb", stdout)) != NULL) 
+
+            if ( (fs_file = freopen(argv[2], "wb", stdout)) != ((void*)0))
             {
                 dumping_on = TRUE;
             }
@@ -77,7 +77,7 @@ int main(int argc, char **argv)
 
     test_NtGdiDdDeleteDirectDrawObject(hDirectDrawLocal);
 
-    if (fs_file != NULL)
+    if (fs_file != ((void*)0))
     {
         fclose(fs_file);
     }

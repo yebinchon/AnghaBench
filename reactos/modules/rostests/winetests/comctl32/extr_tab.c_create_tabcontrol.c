@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int mask; char* pszText; int iImage; } ;
-typedef  TYPE_1__ TCITEMA ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/ * HWND ;
-typedef  int DWORD ;
+typedef TYPE_1__ TCITEMA ;
+typedef int LPARAM ;
+typedef int * HWND ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CreateWindowA (int /*<<< orphan*/ ,char*,int,int,int,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GWL_STYLE ; 
- int /*<<< orphan*/  RDW_UPDATENOW ; 
- int /*<<< orphan*/  RedrawWindow (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SW_SHOW ; 
- int /*<<< orphan*/  SendMessageA (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetWindowLongA (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ShowWindow (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Sleep (int) ; 
- int /*<<< orphan*/  TCM_INSERTITEMA ; 
- int TCS_FOCUSNEVER ; 
- int /*<<< orphan*/  WC_TABCONTROLA ; 
- int /*<<< orphan*/  WM_SETFONT ; 
- int WS_CLIPCHILDREN ; 
- int WS_CLIPSIBLINGS ; 
- scalar_t__ hFont ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ winetest_interactive ; 
+
+ int * CreateWindowA (int ,char*,int,int,int,int,int,int *,int *,int *,int ) ;
+ int GWL_STYLE ;
+ int RDW_UPDATENOW ;
+ int RedrawWindow (int *,int *,int ,int ) ;
+ int SW_SHOW ;
+ int SendMessageA (int *,int ,int,int ) ;
+ int SetWindowLongA (int *,int ,int) ;
+ int ShowWindow (int *,int ) ;
+ int Sleep (int) ;
+ int TCM_INSERTITEMA ;
+ int TCS_FOCUSNEVER ;
+ int WC_TABCONTROLA ;
+ int WM_SETFONT ;
+ int WS_CLIPCHILDREN ;
+ int WS_CLIPSIBLINGS ;
+ scalar_t__ hFont ;
+ int ok (int ,char*) ;
+ scalar_t__ winetest_interactive ;
 
 __attribute__((used)) static HWND
 create_tabcontrol (DWORD style, DWORD mask)
@@ -47,9 +47,9 @@ create_tabcontrol (DWORD style, DWORD mask)
     text3[] = "T 3";
 
     handle = CreateWindowA(WC_TABCONTROLA, "TestTab",
-            WS_CLIPSIBLINGS | WS_CLIPCHILDREN | TCS_FOCUSNEVER | style, 10, 10, 300, 100, NULL,
-            NULL, NULL, 0);
-    ok(handle != NULL, "failed to create tab wnd\n");
+            WS_CLIPSIBLINGS | WS_CLIPCHILDREN | TCS_FOCUSNEVER | style, 10, 10, 300, 100, ((void*)0),
+            ((void*)0), ((void*)0), 0);
+    ok(handle != ((void*)0), "failed to create tab wnd\n");
 
     SetWindowLongA(handle, GWL_STYLE, WS_CLIPSIBLINGS | WS_CLIPCHILDREN | TCS_FOCUSNEVER | style);
     SendMessageA(handle, WM_SETFONT, 0, (LPARAM)hFont);
@@ -68,7 +68,7 @@ create_tabcontrol (DWORD style, DWORD mask)
     if (winetest_interactive)
     {
         ShowWindow (handle, SW_SHOW);
-        RedrawWindow (handle, NULL, 0, RDW_UPDATENOW);
+        RedrawWindow (handle, ((void*)0), 0, RDW_UPDATENOW);
         Sleep (1000);
     }
 

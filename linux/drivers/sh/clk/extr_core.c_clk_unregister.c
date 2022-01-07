@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct clk {int /*<<< orphan*/  node; int /*<<< orphan*/  sibling; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clk_teardown_mapping (struct clk*) ; 
- int /*<<< orphan*/  clock_list_sem ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct clk {int node; int sibling; } ;
+
+
+ int clk_teardown_mapping (struct clk*) ;
+ int clock_list_sem ;
+ int list_del (int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 void clk_unregister(struct clk *clk)
 {
-	mutex_lock(&clock_list_sem);
-	list_del(&clk->sibling);
-	list_del(&clk->node);
-	clk_teardown_mapping(clk);
-	mutex_unlock(&clock_list_sem);
+ mutex_lock(&clock_list_sem);
+ list_del(&clk->sibling);
+ list_del(&clk->node);
+ clk_teardown_mapping(clk);
+ mutex_unlock(&clock_list_sem);
 }

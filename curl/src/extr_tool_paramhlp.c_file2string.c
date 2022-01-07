@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int /*<<< orphan*/  ParameterError ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Curl_safefree (char*) ; 
- int /*<<< orphan*/  PARAM_NO_MEM ; 
- int /*<<< orphan*/  PARAM_OK ; 
- scalar_t__ SIZE_T_MAX ; 
- scalar_t__ fgets (char*,int,int /*<<< orphan*/ *) ; 
- char* malloc (size_t) ; 
- char* realloc (char*,size_t) ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- size_t strlen (char*) ; 
+
+
+
+typedef int buffer ;
+typedef int ParameterError ;
+typedef int FILE ;
+
+
+ int Curl_safefree (char*) ;
+ int PARAM_NO_MEM ;
+ int PARAM_OK ;
+ scalar_t__ SIZE_T_MAX ;
+ scalar_t__ fgets (char*,int,int *) ;
+ char* malloc (size_t) ;
+ char* realloc (char*,size_t) ;
+ char* strchr (char*,char) ;
+ int strcpy (char*,char*) ;
+ size_t strlen (char*) ;
 
 ParameterError file2string(char **bufp, FILE *file)
 {
-  char *string = NULL;
+  char *string = ((void*)0);
   if(file) {
     char *ptr;
     size_t alloc = 512;
@@ -50,14 +50,14 @@ ParameterError file2string(char **bufp, FILE *file)
       buflen = strlen(buffer);
       alloc_needed = stringlen + buflen + 1;
       if(alloc < alloc_needed) {
-#if SIZEOF_SIZE_T < 8
+
         if(alloc >= (size_t)SIZE_T_MAX/2) {
           Curl_safefree(string);
           return PARAM_NO_MEM;
         }
-#endif
-        /* doubling is enough since the string to add is always max 256 bytes
-           and the alloc size start at 512 */
+
+
+
         alloc *= 2;
         ptr = realloc(string, alloc);
         if(!ptr) {

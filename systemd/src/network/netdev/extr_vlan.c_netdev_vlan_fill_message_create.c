@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-struct ifla_vlan_flags {int /*<<< orphan*/  flags; int /*<<< orphan*/  mask; } ;
-struct TYPE_14__ {int gvrp; int mvrp; int reorder_hdr; int loose_binding; int /*<<< orphan*/  id; } ;
-typedef  TYPE_1__ sd_netlink_message ;
-typedef  TYPE_1__ VLan ;
-typedef  TYPE_1__ NetDev ;
-typedef  TYPE_1__ Link ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IFLA_VLAN_FLAGS ; 
- int /*<<< orphan*/  IFLA_VLAN_ID ; 
- int /*<<< orphan*/  SET_FLAG (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- TYPE_1__* VLAN (TYPE_1__*) ; 
- int /*<<< orphan*/  VLAN_FLAG_GVRP ; 
- int /*<<< orphan*/  VLAN_FLAG_LOOSE_BINDING ; 
- int /*<<< orphan*/  VLAN_FLAG_MVRP ; 
- int /*<<< orphan*/  VLAN_FLAG_REORDER_HDR ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int log_netdev_error_errno (TYPE_1__*,int,char*) ; 
- int sd_netlink_message_append_data (TYPE_1__*,int /*<<< orphan*/ ,struct ifla_vlan_flags*,int) ; 
- int sd_netlink_message_append_u16 (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+struct ifla_vlan_flags {int flags; int mask; } ;
+struct TYPE_14__ {int gvrp; int mvrp; int reorder_hdr; int loose_binding; int id; } ;
+typedef TYPE_1__ sd_netlink_message ;
+typedef TYPE_1__ VLan ;
+typedef TYPE_1__ NetDev ;
+typedef TYPE_1__ Link ;
+
+
+ int IFLA_VLAN_FLAGS ;
+ int IFLA_VLAN_ID ;
+ int SET_FLAG (int ,int ,int) ;
+ TYPE_1__* VLAN (TYPE_1__*) ;
+ int VLAN_FLAG_GVRP ;
+ int VLAN_FLAG_LOOSE_BINDING ;
+ int VLAN_FLAG_MVRP ;
+ int VLAN_FLAG_REORDER_HDR ;
+ int assert (TYPE_1__*) ;
+ int log_netdev_error_errno (TYPE_1__*,int,char*) ;
+ int sd_netlink_message_append_data (TYPE_1__*,int ,struct ifla_vlan_flags*,int) ;
+ int sd_netlink_message_append_u16 (TYPE_1__*,int ,int ) ;
 
 __attribute__((used)) static int netdev_vlan_fill_message_create(NetDev *netdev, Link *link, sd_netlink_message *req) {
         struct ifla_vlan_flags flags = {};

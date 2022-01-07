@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct vo_internal {int base_vsync; int vsync_interval; int /*<<< orphan*/  lock; TYPE_1__* current_frame; int /*<<< orphan*/  rendering; int /*<<< orphan*/  frame_queued; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct vo_internal {int base_vsync; int vsync_interval; int lock; TYPE_1__* current_frame; int rendering; int frame_queued; } ;
 struct vo {struct vo_internal* in; } ;
-typedef  int int64_t ;
-struct TYPE_2__ {int num_vsyncs; int /*<<< orphan*/  display_synced; } ;
+typedef int int64_t ;
+struct TYPE_2__ {int num_vsyncs; int display_synced; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int mp_time_us () ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int assert (int) ;
+ int mp_time_us () ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 double vo_get_delay(struct vo *vo)
 {

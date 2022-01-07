@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct v4l2_subdev {int dummy; } ;
 struct TYPE_2__ {int* bytes; } ;
-struct CHIPSTATE {int /*<<< orphan*/  mode; TYPE_1__ shadow; struct v4l2_subdev sd; } ;
+struct CHIPSTATE {int mode; TYPE_1__ shadow; struct v4l2_subdev sd; } ;
 
-/* Variables and functions */
- int TDA9873_INP_MASK ; 
- int TDA9873_INTERNAL ; 
- int TDA9873_SW ; 
- int TDA9873_TR_DUALA ; 
- int TDA9873_TR_DUALB ; 
- int TDA9873_TR_MASK ; 
- int TDA9873_TR_MONO ; 
- int TDA9873_TR_STEREO ; 
-#define  V4L2_TUNER_MODE_LANG1 131 
-#define  V4L2_TUNER_MODE_LANG2 130 
-#define  V4L2_TUNER_MODE_MONO 129 
-#define  V4L2_TUNER_MODE_STEREO 128 
- int /*<<< orphan*/  chip_write (struct CHIPSTATE*,int,int) ; 
- int /*<<< orphan*/  debug ; 
- int /*<<< orphan*/  v4l2_dbg (int,int /*<<< orphan*/ ,struct v4l2_subdev*,char*,...) ; 
+
+ int TDA9873_INP_MASK ;
+ int TDA9873_INTERNAL ;
+ int TDA9873_SW ;
+ int TDA9873_TR_DUALA ;
+ int TDA9873_TR_DUALB ;
+ int TDA9873_TR_MASK ;
+ int TDA9873_TR_MONO ;
+ int TDA9873_TR_STEREO ;
+
+
+
+
+ int chip_write (struct CHIPSTATE*,int,int) ;
+ int debug ;
+ int v4l2_dbg (int,int ,struct v4l2_subdev*,char*,...) ;
 
 __attribute__((used)) static void tda9873_setmode(struct CHIPSTATE *chip, int mode)
 {
-	struct v4l2_subdev *sd = &chip->sd;
-	int sw_data  = chip->shadow.bytes[TDA9873_SW+1] & ~ TDA9873_TR_MASK;
-	/*	int adj_data = chip->shadow.bytes[TDA9873_AD+1] ; */
+ struct v4l2_subdev *sd = &chip->sd;
+ int sw_data = chip->shadow.bytes[TDA9873_SW+1] & ~ TDA9873_TR_MASK;
 
-	if ((sw_data & TDA9873_INP_MASK) != TDA9873_INTERNAL) {
-		v4l2_dbg(1, debug, sd, "tda9873_setmode(): external input\n");
-		return;
-	}
 
-	v4l2_dbg(1, debug, sd, "tda9873_setmode(): chip->shadow.bytes[%d] = %d\n", TDA9873_SW+1, chip->shadow.bytes[TDA9873_SW+1]);
-	v4l2_dbg(1, debug, sd, "tda9873_setmode(): sw_data  = %d\n", sw_data);
+ if ((sw_data & TDA9873_INP_MASK) != TDA9873_INTERNAL) {
+  v4l2_dbg(1, debug, sd, "tda9873_setmode(): external input\n");
+  return;
+ }
 
-	switch (mode) {
-	case V4L2_TUNER_MODE_MONO:
-		sw_data |= TDA9873_TR_MONO;
-		break;
-	case V4L2_TUNER_MODE_STEREO:
-		sw_data |= TDA9873_TR_STEREO;
-		break;
-	case V4L2_TUNER_MODE_LANG1:
-		sw_data |= TDA9873_TR_DUALA;
-		break;
-	case V4L2_TUNER_MODE_LANG2:
-		sw_data |= TDA9873_TR_DUALB;
-		break;
-	default:
-		chip->mode = 0;
-		return;
-	}
+ v4l2_dbg(1, debug, sd, "tda9873_setmode(): chip->shadow.bytes[%d] = %d\n", TDA9873_SW+1, chip->shadow.bytes[TDA9873_SW+1]);
+ v4l2_dbg(1, debug, sd, "tda9873_setmode(): sw_data  = %d\n", sw_data);
 
-	chip_write(chip, TDA9873_SW, sw_data);
-	v4l2_dbg(1, debug, sd, "tda9873_setmode(): req. mode %d; chip_write: %d\n",
-		mode, sw_data);
+ switch (mode) {
+ case 129:
+  sw_data |= TDA9873_TR_MONO;
+  break;
+ case 128:
+  sw_data |= TDA9873_TR_STEREO;
+  break;
+ case 131:
+  sw_data |= TDA9873_TR_DUALA;
+  break;
+ case 130:
+  sw_data |= TDA9873_TR_DUALB;
+  break;
+ default:
+  chip->mode = 0;
+  return;
+ }
+
+ chip_write(chip, TDA9873_SW, sw_data);
+ v4l2_dbg(1, debug, sd, "tda9873_setmode(): req. mode %d; chip_write: %d\n",
+  mode, sw_data);
 }

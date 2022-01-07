@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  trail_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  representation_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/ * make_fulltext_rep (char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ rep_is_mutable (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  svn_checksum_empty_checksum (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_checksum_md5 ; 
- int /*<<< orphan*/  svn_checksum_sha1 ; 
- int /*<<< orphan*/  svn_fs_bdb__read_rep (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_bdb__string_append (int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_fs_bdb__write_new_rep (char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int trail_t ;
+typedef int svn_fs_t ;
+typedef int svn_error_t ;
+typedef int representation_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int * make_fulltext_rep (char const*,char const*,int ,int ,int *) ;
+ scalar_t__ rep_is_mutable (int *,char const*) ;
+ int svn_checksum_empty_checksum (int ,int *) ;
+ int svn_checksum_md5 ;
+ int svn_checksum_sha1 ;
+ int svn_fs_bdb__read_rep (int **,int *,char const*,int *,int *) ;
+ int svn_fs_bdb__string_append (int *,char const**,int ,int *,int *,int *) ;
+ int * svn_fs_bdb__write_new_rep (char const**,int *,int *,int *,int *) ;
 
 svn_error_t *
 svn_fs_base__get_mutable_rep(const char **new_rep_key,
@@ -36,12 +36,12 @@ svn_fs_base__get_mutable_rep(const char **new_rep_key,
                              trail_t *trail,
                              apr_pool_t *pool)
 {
-  representation_t *rep = NULL;
-  const char *new_str = NULL;
+  representation_t *rep = ((void*)0);
+  const char *new_str = ((void*)0);
 
-  /* We were passed an existing REP_KEY, so examine it.  If it is
-     mutable already, then just return REP_KEY as the mutable result
-     key.  */
+
+
+
   if (rep_key && (rep_key[0] != '\0'))
     {
       SVN_ERR(svn_fs_bdb__read_rep(&rep, fs, rep_key, trail, pool));
@@ -52,10 +52,10 @@ svn_fs_base__get_mutable_rep(const char **new_rep_key,
         }
     }
 
-  /* Either we weren't provided a base key to examine, or the base key
-     we were provided was not mutable.  So, let's make a new
-     representation and return its key to the caller. */
-  SVN_ERR(svn_fs_bdb__string_append(fs, &new_str, 0, NULL, trail, pool));
+
+
+
+  SVN_ERR(svn_fs_bdb__string_append(fs, &new_str, 0, ((void*)0), trail, pool));
   rep = make_fulltext_rep(new_str, txn_id,
                           svn_checksum_empty_checksum(svn_checksum_md5,
                                                       pool),

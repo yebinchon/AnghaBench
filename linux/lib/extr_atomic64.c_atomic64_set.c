@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  s64 ;
-typedef  int /*<<< orphan*/  raw_spinlock_t ;
-struct TYPE_4__ {int /*<<< orphan*/  counter; } ;
-typedef  TYPE_1__ atomic64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * lock_addr (TYPE_1__*) ; 
- int /*<<< orphan*/  raw_spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  raw_spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int s64 ;
+typedef int raw_spinlock_t ;
+struct TYPE_4__ {int counter; } ;
+typedef TYPE_1__ atomic64_t ;
+
+
+ int * lock_addr (TYPE_1__*) ;
+ int raw_spin_lock_irqsave (int *,unsigned long) ;
+ int raw_spin_unlock_irqrestore (int *,unsigned long) ;
 
 void atomic64_set(atomic64_t *v, s64 i)
 {
-	unsigned long flags;
-	raw_spinlock_t *lock = lock_addr(v);
+ unsigned long flags;
+ raw_spinlock_t *lock = lock_addr(v);
 
-	raw_spin_lock_irqsave(lock, flags);
-	v->counter = i;
-	raw_spin_unlock_irqrestore(lock, flags);
+ raw_spin_lock_irqsave(lock, flags);
+ v->counter = i;
+ raw_spin_unlock_irqrestore(lock, flags);
 }

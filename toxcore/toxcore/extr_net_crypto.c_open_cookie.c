@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  scalar_t__ uint64_t ;
-typedef  int /*<<< orphan*/  cookie_time ;
-typedef  int /*<<< orphan*/  contents ;
 
-/* Variables and functions */
- int COOKIE_CONTENTS_LENGTH ; 
- int COOKIE_DATA_LENGTH ; 
- int COOKIE_LENGTH ; 
- scalar_t__ COOKIE_TIMEOUT ; 
- int crypto_box_NONCEBYTES ; 
- int decrypt_data_symmetric (scalar_t__ const*,scalar_t__ const*,scalar_t__ const*,int,scalar_t__*) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,scalar_t__*,int) ; 
- scalar_t__ unix_time () ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+typedef scalar_t__ uint64_t ;
+typedef int cookie_time ;
+typedef int contents ;
+
+
+ int COOKIE_CONTENTS_LENGTH ;
+ int COOKIE_DATA_LENGTH ;
+ int COOKIE_LENGTH ;
+ scalar_t__ COOKIE_TIMEOUT ;
+ int crypto_box_NONCEBYTES ;
+ int decrypt_data_symmetric (scalar_t__ const*,scalar_t__ const*,scalar_t__ const*,int,scalar_t__*) ;
+ int memcpy (scalar_t__*,scalar_t__*,int) ;
+ scalar_t__ unix_time () ;
 
 __attribute__((used)) static int open_cookie(uint8_t *bytes, const uint8_t *cookie, const uint8_t *encryption_key)
 {

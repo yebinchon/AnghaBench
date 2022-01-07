@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  int64_t ;
-struct TYPE_12__ {int /*<<< orphan*/  pb; } ;
-struct TYPE_11__ {TYPE_1__* index_entries; int /*<<< orphan*/  nb_index_entries; TYPE_2__* priv_data; } ;
-struct TYPE_10__ {int tmcd_flags; int /*<<< orphan*/  pb; } ;
-struct TYPE_9__ {int /*<<< orphan*/  pos; } ;
-typedef  TYPE_2__ MOVStreamContext ;
-typedef  TYPE_3__ AVStream ;
-typedef  TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int AV_TIMECODE_FLAG_24HOURSMAX ; 
- int AV_TIMECODE_FLAG_ALLOWNEGATIVE ; 
- int AV_TIMECODE_FLAG_DROPFRAME ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  avio_rb32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_tell (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_timecode_in_framenum_format (TYPE_4__*,TYPE_3__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int int64_t ;
+struct TYPE_12__ {int pb; } ;
+struct TYPE_11__ {TYPE_1__* index_entries; int nb_index_entries; TYPE_2__* priv_data; } ;
+struct TYPE_10__ {int tmcd_flags; int pb; } ;
+struct TYPE_9__ {int pos; } ;
+typedef TYPE_2__ MOVStreamContext ;
+typedef TYPE_3__ AVStream ;
+typedef TYPE_4__ AVFormatContext ;
+
+
+ int AV_TIMECODE_FLAG_24HOURSMAX ;
+ int AV_TIMECODE_FLAG_ALLOWNEGATIVE ;
+ int AV_TIMECODE_FLAG_DROPFRAME ;
+ int SEEK_SET ;
+ int avio_rb32 (int ) ;
+ int avio_seek (int ,int ,int ) ;
+ int avio_tell (int ) ;
+ int parse_timecode_in_framenum_format (TYPE_4__*,TYPE_3__*,int ,int) ;
 
 __attribute__((used)) static int mov_read_timecode_track(AVFormatContext *s, AVStream *st)
 {
@@ -51,11 +51,11 @@ __attribute__((used)) static int mov_read_timecode_track(AVFormatContext *s, AVS
     if (sc->tmcd_flags & 0x0002) flags |= AV_TIMECODE_FLAG_24HOURSMAX;
     if (sc->tmcd_flags & 0x0004) flags |= AV_TIMECODE_FLAG_ALLOWNEGATIVE;
 
-    /* Assume Counter flag is set to 1 in tmcd track (even though it is likely
-     * not the case) and thus assume "frame number format" instead of QT one.
-     * No sample with tmcd track can be found with a QT timecode at the moment,
-     * despite what the tmcd track "suggests" (Counter flag set to 0 means QT
-     * format). */
+
+
+
+
+
     parse_timecode_in_framenum_format(s, st, value, flags);
 
     avio_seek(sc->pb, cur_pos, SEEK_SET);

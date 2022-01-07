@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int i_frame_size; unsigned int i_frame_length; } ;
-typedef  TYPE_1__ vlc_dts_header_t ;
-typedef  int /*<<< orphan*/  uint8_t ;
+typedef TYPE_1__ vlc_dts_header_t ;
+typedef int uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLC_DTS_HEADER_SIZE ; 
- int VLC_EGENERIC ; 
- scalar_t__ VLC_SUCCESS ; 
- int /*<<< orphan*/  VLC_UNUSED (unsigned int*) ; 
- scalar_t__ vlc_dts_header_Parse (TYPE_1__*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+ int VLC_DTS_HEADER_SIZE ;
+ int VLC_EGENERIC ;
+ scalar_t__ VLC_SUCCESS ;
+ int VLC_UNUSED (unsigned int*) ;
+ scalar_t__ vlc_dts_header_Parse (TYPE_1__*,int const*,int ) ;
 
 __attribute__((used)) static int DtsCheckSync( const uint8_t *p_peek, unsigned *pi_samples )
 {

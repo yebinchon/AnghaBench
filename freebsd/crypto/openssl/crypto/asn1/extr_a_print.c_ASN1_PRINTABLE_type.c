@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int V_ASN1_IA5STRING ; 
- int V_ASN1_PRINTABLESTRING ; 
- int V_ASN1_T61STRING ; 
- int /*<<< orphan*/  ossl_isascii (int) ; 
- int /*<<< orphan*/  ossl_isasn1print (int) ; 
+ int V_ASN1_IA5STRING ;
+ int V_ASN1_PRINTABLESTRING ;
+ int V_ASN1_T61STRING ;
+ int ossl_isascii (int) ;
+ int ossl_isasn1print (int) ;
 
 int ASN1_PRINTABLE_type(const unsigned char *s, int len)
 {
@@ -26,7 +18,7 @@ int ASN1_PRINTABLE_type(const unsigned char *s, int len)
 
     if (len <= 0)
         len = -1;
-    if (s == NULL)
+    if (s == ((void*)0))
         return V_ASN1_PRINTABLESTRING;
 
     while ((*s) && (len-- != 0)) {

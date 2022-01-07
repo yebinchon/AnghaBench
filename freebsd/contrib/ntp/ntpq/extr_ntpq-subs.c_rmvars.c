@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct parse {TYPE_1__* argval; } ;
-struct TYPE_2__ {int /*<<< orphan*/  string; } ;
-typedef  int /*<<< orphan*/  FILE ;
+struct TYPE_2__ {int string; } ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dormvlist (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_varlist ; 
+
+ int dormvlist (int ,int ) ;
+ int g_varlist ;
 
 __attribute__((used)) static void
 rmvars(
-	struct parse *pcmd,
-	FILE *fp
-	)
+ struct parse *pcmd,
+ FILE *fp
+ )
 {
-	dormvlist(g_varlist, pcmd->argval[0].string);
+ dormvlist(g_varlist, pcmd->argval[0].string);
 }

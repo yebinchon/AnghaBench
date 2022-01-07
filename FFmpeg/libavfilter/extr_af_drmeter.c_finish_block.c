@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int sum; int nb_samples; float peak; int /*<<< orphan*/  blknum; int /*<<< orphan*/ * peaks; int /*<<< orphan*/ * rms; } ;
-typedef  TYPE_1__ ChannelStats ;
 
-/* Variables and functions */
- int av_clip (float,int /*<<< orphan*/ ,int) ; 
- float sqrt (int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int sum; int nb_samples; float peak; int blknum; int * peaks; int * rms; } ;
+typedef TYPE_1__ ChannelStats ;
+
+
+ int av_clip (float,int ,int) ;
+ float sqrt (int) ;
 
 __attribute__((used)) static void finish_block(ChannelStats *p)
 {

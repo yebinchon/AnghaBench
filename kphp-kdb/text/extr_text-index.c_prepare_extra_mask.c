@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int* ES ; 
- int MAX_EXTRA_INTS ; 
- int* SE ; 
- int current_extra_mask ; 
- int extra_ints_num ; 
- int final_extra_mask ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  stderr ; 
- int text_shift ; 
- int unpack_extra_mask (int) ; 
- scalar_t__ verbosity ; 
+ int* ES ;
+ int MAX_EXTRA_INTS ;
+ int* SE ;
+ int current_extra_mask ;
+ int extra_ints_num ;
+ int final_extra_mask ;
+ int fprintf (int ,char*,int,int) ;
+ int stderr ;
+ int text_shift ;
+ int unpack_extra_mask (int) ;
+ scalar_t__ verbosity ;
 
 void prepare_extra_mask (void) {
   int i, unpacked_mask;

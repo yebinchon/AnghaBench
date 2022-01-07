@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_2__* exptext; TYPE_4__* noticeref; } ;
-typedef  TYPE_3__ USERNOTICE ;
-struct TYPE_9__ {int /*<<< orphan*/  noticenos; TYPE_1__* organization; } ;
+typedef TYPE_3__ USERNOTICE ;
+struct TYPE_9__ {int noticenos; TYPE_1__* organization; } ;
 struct TYPE_7__ {char* data; } ;
 struct TYPE_6__ {char* data; } ;
-typedef  TYPE_4__ NOTICEREF ;
-typedef  int /*<<< orphan*/  BIO ;
-typedef  int /*<<< orphan*/  ASN1_INTEGER ;
+typedef TYPE_4__ NOTICEREF ;
+typedef int BIO ;
+typedef int ASN1_INTEGER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ *,char*,int,char*,char*) ; 
- int /*<<< orphan*/  BIO_puts (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
- char* i2s_ASN1_INTEGER (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int sk_ASN1_INTEGER_num (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * sk_ASN1_INTEGER_value (int /*<<< orphan*/ ,int) ; 
+
+ int BIO_printf (int *,char*,int,char*,char*) ;
+ int BIO_puts (int *,char*) ;
+ int OPENSSL_free (char*) ;
+ char* i2s_ASN1_INTEGER (int *,int *) ;
+ int sk_ASN1_INTEGER_num (int ) ;
+ int * sk_ASN1_INTEGER_value (int ,int) ;
 
 __attribute__((used)) static void print_notice(BIO *out, USERNOTICE *notice, int indent)
 {
@@ -47,11 +47,11 @@ __attribute__((used)) static void print_notice(BIO *out, USERNOTICE *notice, int
             num = sk_ASN1_INTEGER_value(ref->noticenos, i);
             if (i)
                 BIO_puts(out, ", ");
-            if (num == NULL)
+            if (num == ((void*)0))
                 BIO_puts(out, "(null)");
             else {
-                tmp = i2s_ASN1_INTEGER(NULL, num);
-                if (tmp == NULL)
+                tmp = i2s_ASN1_INTEGER(((void*)0), num);
+                if (tmp == ((void*)0))
                     return;
                 BIO_puts(out, tmp);
                 OPENSSL_free(tmp);

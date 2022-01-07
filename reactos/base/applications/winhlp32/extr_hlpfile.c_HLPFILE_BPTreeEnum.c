@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  (* HLPFILE_BPTreeCallback ) (int /*<<< orphan*/ *,void**,void*) ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int GET_SHORT (int /*<<< orphan*/ *,int) ; 
- unsigned int GET_USHORT (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  WINE_ERR (char*,unsigned int) ; 
+
+
+
+typedef int (* HLPFILE_BPTreeCallback ) (int *,void**,void*) ;
+typedef int BYTE ;
+
+
+ int GET_SHORT (int *,int) ;
+ unsigned int GET_USHORT (int *,int) ;
+ int WINE_ERR (char*,unsigned int) ;
 
 void HLPFILE_BPTreeEnum(BYTE* buf, HLPFILE_BPTreeCallback cb, void* cookie)
 {
@@ -34,9 +34,9 @@ void HLPFILE_BPTreeEnum(BYTE* buf, HLPFILE_BPTreeCallback cb, void* cookie)
         return;
     }
     page_size = GET_USHORT(buf, 9+4);
-    cur_page  = GET_USHORT(buf, 9+26);
-    level     = GET_USHORT(buf, 9+32);
-    pages     = buf + 9 + 38;
+    cur_page = GET_USHORT(buf, 9+26);
+    level = GET_USHORT(buf, 9+32);
+    pages = buf + 9 + 38;
     while (--level > 0)
     {
         ptr = pages + cur_page*page_size;

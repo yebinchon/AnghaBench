@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ide_drive_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ide_dma_lost_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sgiioc4_resetproc (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int ide_drive_t ;
+
+
+ int ide_dma_lost_irq (int *) ;
+ int sgiioc4_resetproc (int *) ;
 
 __attribute__((used)) static void sgiioc4_dma_lost_irq(ide_drive_t *drive)
 {
-	sgiioc4_resetproc(drive);
+ sgiioc4_resetproc(drive);
 
-	ide_dma_lost_irq(drive);
+ ide_dma_lost_irq(drive);
 }

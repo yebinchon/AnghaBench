@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct parser {int /*<<< orphan*/ * line; } ;
-typedef  int /*<<< orphan*/  VOID ;
 
-/* Variables and functions */
+
+
+
+struct parser {int * line; } ;
+typedef int VOID ;
+
+
 
 __attribute__((used)) static
 VOID
 close_current_line(struct parser *parser)
 {
-    parser->line = NULL;
+    parser->line = ((void*)0);
 }

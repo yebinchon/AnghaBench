@@ -1,106 +1,106 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_char ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u_char ;
 struct proc {int p_flag; } ;
-struct TYPE_5__ {int typecookie; int arglen; int /*<<< orphan*/  cmd; } ;
+struct TYPE_5__ {int typecookie; int arglen; int cmd; } ;
 struct ng_mesg {scalar_t__ data; TYPE_1__ header; } ;
-typedef  TYPE_2__* sc_p ;
-typedef  int /*<<< orphan*/  node_p ;
-typedef  int /*<<< orphan*/  item_p ;
-typedef  int /*<<< orphan*/  hook_p ;
-struct TYPE_6__ {int hotchar; int /*<<< orphan*/ * tp; } ;
+typedef TYPE_2__* sc_p ;
+typedef int node_p ;
+typedef int item_p ;
+typedef int hook_p ;
+struct TYPE_6__ {int hotchar; int * tp; } ;
 
-/* Variables and functions */
- int EBUSY ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  ERROUT (int /*<<< orphan*/ ) ; 
- int ESRCH ; 
- int /*<<< orphan*/  M_NOWAIT ; 
- int /*<<< orphan*/  NGI_GET_MSG (int /*<<< orphan*/ ,struct ng_mesg*) ; 
-#define  NGM_TTY_COOKIE 131 
-#define  NGM_TTY_GET_HOTCHAR 130 
-#define  NGM_TTY_SET_HOTCHAR 129 
-#define  NGM_TTY_SET_TTY 128 
- int /*<<< orphan*/  NG_FREE_MSG (struct ng_mesg*) ; 
- int /*<<< orphan*/  NG_MKRESPONSE (struct ng_mesg*,struct ng_mesg*,int,int /*<<< orphan*/ ) ; 
- TYPE_2__* NG_NODE_PRIVATE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NG_RESPOND_MSG (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct ng_mesg*) ; 
- int /*<<< orphan*/  PRELE (struct proc*) ; 
- int /*<<< orphan*/  PROC_UNLOCK (struct proc*) ; 
- int P_WEXIT ; 
- int /*<<< orphan*/  _PHOLD (struct proc*) ; 
- int /*<<< orphan*/  ngt_hook ; 
- struct proc* pfind (int) ; 
- int ttyhook_register (int /*<<< orphan*/ **,struct proc*,int,int /*<<< orphan*/ *,TYPE_2__* const) ; 
+
+ int EBUSY ;
+ int EINVAL ;
+ int ENOMEM ;
+ int ERROUT (int ) ;
+ int ESRCH ;
+ int M_NOWAIT ;
+ int NGI_GET_MSG (int ,struct ng_mesg*) ;
+
+
+
+
+ int NG_FREE_MSG (struct ng_mesg*) ;
+ int NG_MKRESPONSE (struct ng_mesg*,struct ng_mesg*,int,int ) ;
+ TYPE_2__* NG_NODE_PRIVATE (int ) ;
+ int NG_RESPOND_MSG (int,int ,int ,struct ng_mesg*) ;
+ int PRELE (struct proc*) ;
+ int PROC_UNLOCK (struct proc*) ;
+ int P_WEXIT ;
+ int _PHOLD (struct proc*) ;
+ int ngt_hook ;
+ struct proc* pfind (int) ;
+ int ttyhook_register (int **,struct proc*,int,int *,TYPE_2__* const) ;
 
 __attribute__((used)) static int
 ngt_rcvmsg(node_p node, item_p item, hook_p lasthook)
 {
-	struct proc *p;
-	const sc_p sc = NG_NODE_PRIVATE(node);
-	struct ng_mesg *msg, *resp = NULL;
-	int error = 0;
+ struct proc *p;
+ const sc_p sc = NG_NODE_PRIVATE(node);
+ struct ng_mesg *msg, *resp = ((void*)0);
+ int error = 0;
 
-	NGI_GET_MSG(item, msg);
-	switch (msg->header.typecookie) {
-	case NGM_TTY_COOKIE:
-		switch (msg->header.cmd) {
-		case NGM_TTY_SET_TTY:
-			if (sc->tp != NULL)
-				return (EBUSY);
-			
-			p = pfind(((int *)msg->data)[0]);
-			if (p == NULL || (p->p_flag & P_WEXIT))
-				return (ESRCH);
-			_PHOLD(p);
-			PROC_UNLOCK(p);
-			error = ttyhook_register(&sc->tp, p, ((int *)msg->data)[1],
-			    &ngt_hook, sc);
-			PRELE(p);
-			if (error != 0)
-				return (error);
-			break;
-		case NGM_TTY_SET_HOTCHAR:
-		    {
-			int     hotchar;
+ NGI_GET_MSG(item, msg);
+ switch (msg->header.typecookie) {
+ case 131:
+  switch (msg->header.cmd) {
+  case 128:
+   if (sc->tp != ((void*)0))
+    return (EBUSY);
 
-			if (msg->header.arglen != sizeof(int))
-				ERROUT(EINVAL);
-			hotchar = *((int *) msg->data);
-			if (hotchar != (u_char) hotchar && hotchar != -1)
-				ERROUT(EINVAL);
-			sc->hotchar = hotchar;	/* race condition is OK */
-			break;
-		    }
-		case NGM_TTY_GET_HOTCHAR:
-			NG_MKRESPONSE(resp, msg, sizeof(int), M_NOWAIT);
-			if (!resp)
-				ERROUT(ENOMEM);
-			/* Race condition here is OK */
-			*((int *) resp->data) = sc->hotchar;
-			break;
-		default:
-			ERROUT(EINVAL);
-		}
-		break;
-	default:
-		ERROUT(EINVAL);
-	}
+   p = pfind(((int *)msg->data)[0]);
+   if (p == ((void*)0) || (p->p_flag & P_WEXIT))
+    return (ESRCH);
+   _PHOLD(p);
+   PROC_UNLOCK(p);
+   error = ttyhook_register(&sc->tp, p, ((int *)msg->data)[1],
+       &ngt_hook, sc);
+   PRELE(p);
+   if (error != 0)
+    return (error);
+   break;
+  case 129:
+      {
+   int hotchar;
+
+   if (msg->header.arglen != sizeof(int))
+    ERROUT(EINVAL);
+   hotchar = *((int *) msg->data);
+   if (hotchar != (u_char) hotchar && hotchar != -1)
+    ERROUT(EINVAL);
+   sc->hotchar = hotchar;
+   break;
+      }
+  case 130:
+   NG_MKRESPONSE(resp, msg, sizeof(int), M_NOWAIT);
+   if (!resp)
+    ERROUT(ENOMEM);
+
+   *((int *) resp->data) = sc->hotchar;
+   break;
+  default:
+   ERROUT(EINVAL);
+  }
+  break;
+ default:
+  ERROUT(EINVAL);
+ }
 done:
-	NG_RESPOND_MSG(error, node, item, resp);
-	NG_FREE_MSG(msg);
-	return (error);
+ NG_RESPOND_MSG(error, node, item, resp);
+ NG_FREE_MSG(msg);
+ return (error);
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TupleTableSlotOps ;
-typedef  int /*<<< orphan*/  TupleTableSlot ;
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  List ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * MakeSingleTupleTableSlot (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  RelationGetDescr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * lappend (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * table_slot_callbacks (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int TupleTableSlotOps ;
+typedef int TupleTableSlot ;
+typedef int Relation ;
+typedef int List ;
+
+
+ int * MakeSingleTupleTableSlot (int ,int const*) ;
+ int RelationGetDescr (int ) ;
+ int * lappend (int *,int *) ;
+ int * table_slot_callbacks (int ) ;
 
 TupleTableSlot *
 table_slot_create(Relation relation, List **reglist)
 {
-	const TupleTableSlotOps *tts_cb;
-	TupleTableSlot *slot;
+ const TupleTableSlotOps *tts_cb;
+ TupleTableSlot *slot;
 
-	tts_cb = table_slot_callbacks(relation);
-	slot = MakeSingleTupleTableSlot(RelationGetDescr(relation), tts_cb);
+ tts_cb = table_slot_callbacks(relation);
+ slot = MakeSingleTupleTableSlot(RelationGetDescr(relation), tts_cb);
 
-	if (reglist)
-		*reglist = lappend(*reglist, slot);
+ if (reglist)
+  *reglist = lappend(*reglist, slot);
 
-	return slot;
+ return slot;
 }

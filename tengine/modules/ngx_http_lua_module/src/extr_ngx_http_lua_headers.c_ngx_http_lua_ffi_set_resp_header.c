@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char u_char ;
-typedef  size_t ngx_uint_t ;
+
+
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+typedef char u_char ;
+typedef size_t ngx_uint_t ;
 struct TYPE_18__ {char* data; size_t len; } ;
-typedef  TYPE_2__ ngx_str_t ;
-typedef  scalar_t__ ngx_socket_t ;
-typedef  scalar_t__ ngx_int_t ;
-struct TYPE_19__ {int /*<<< orphan*/  pool; TYPE_1__* connection; scalar_t__ header_sent; } ;
-typedef  TYPE_3__ ngx_http_request_t ;
+typedef TYPE_2__ ngx_str_t ;
+typedef scalar_t__ ngx_socket_t ;
+typedef scalar_t__ ngx_int_t ;
+struct TYPE_19__ {int pool; TYPE_1__* connection; scalar_t__ header_sent; } ;
+typedef TYPE_3__ ngx_http_request_t ;
 struct TYPE_20__ {scalar_t__ transform_underscores_in_resp_headers; } ;
-typedef  TYPE_4__ ngx_http_lua_loc_conf_t ;
+typedef TYPE_4__ ngx_http_lua_loc_conf_t ;
 struct TYPE_21__ {char* data; size_t len; } ;
-typedef  TYPE_5__ ngx_http_lua_ffi_str_t ;
+typedef TYPE_5__ ngx_http_lua_ffi_str_t ;
 struct TYPE_22__ {int headers_set; scalar_t__ header_sent; } ;
-typedef  TYPE_6__ ngx_http_lua_ctx_t ;
-struct TYPE_17__ {scalar_t__ fd; int /*<<< orphan*/  log; } ;
+typedef TYPE_6__ ngx_http_lua_ctx_t ;
+struct TYPE_17__ {scalar_t__ fd; int log; } ;
 
-/* Variables and functions */
- int NGX_DECLINED ; 
- scalar_t__ NGX_ERROR ; 
- int NGX_HTTP_LUA_FFI_BAD_CONTEXT ; 
- int NGX_HTTP_LUA_FFI_NO_REQ_CTX ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- int NGX_OK ; 
- int /*<<< orphan*/  dd (char*,int,...) ; 
- TYPE_6__* ngx_http_get_module_ctx (TYPE_3__*,int /*<<< orphan*/ ) ; 
- TYPE_4__* ngx_http_get_module_loc_conf (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_lua_module ; 
- scalar_t__ ngx_http_lua_set_output_header (TYPE_3__*,TYPE_6__*,TYPE_2__,TYPE_2__,int) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_memcpy (char*,char const*,size_t) ; 
- void* ngx_palloc (int /*<<< orphan*/ ,size_t) ; 
+
+ int NGX_DECLINED ;
+ scalar_t__ NGX_ERROR ;
+ int NGX_HTTP_LUA_FFI_BAD_CONTEXT ;
+ int NGX_HTTP_LUA_FFI_NO_REQ_CTX ;
+ int NGX_LOG_ERR ;
+ int NGX_OK ;
+ int dd (char*,int,...) ;
+ TYPE_6__* ngx_http_get_module_ctx (TYPE_3__*,int ) ;
+ TYPE_4__* ngx_http_get_module_loc_conf (TYPE_3__*,int ) ;
+ int ngx_http_lua_module ;
+ scalar_t__ ngx_http_lua_set_output_header (TYPE_3__*,TYPE_6__*,TYPE_2__,TYPE_2__,int) ;
+ int ngx_log_error (int ,int ,int ,char*) ;
+ int ngx_memcpy (char*,char const*,size_t) ;
+ void* ngx_palloc (int ,size_t) ;
 
 int
 ngx_http_lua_ffi_set_resp_header(ngx_http_request_t *r, const u_char *key_data,
@@ -54,16 +54,16 @@ ngx_http_lua_ffi_set_resp_header(ngx_http_request_t *r, const u_char *key_data,
     ngx_http_lua_ffi_str_t *mvals, size_t mvals_len, int override,
     char **errmsg)
 {
-    u_char                      *p;
-    ngx_str_t                    value, key;
-    ngx_uint_t                   i;
-    size_t                       len;
-    ngx_http_lua_ctx_t          *ctx;
-    ngx_int_t                    rc;
-    ngx_http_lua_loc_conf_t     *llcf;
+    u_char *p;
+    ngx_str_t value, key;
+    ngx_uint_t i;
+    size_t len;
+    ngx_http_lua_ctx_t *ctx;
+    ngx_int_t rc;
+    ngx_http_lua_loc_conf_t *llcf;
 
     ctx = ngx_http_get_module_ctx(r, ngx_http_lua_module);
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         return NGX_HTTP_LUA_FFI_NO_REQ_CTX;
     }
 
@@ -79,7 +79,7 @@ ngx_http_lua_ffi_set_resp_header(ngx_http_request_t *r, const u_char *key_data,
     }
 
     key.data = ngx_palloc(r->pool, key_len + 1);
-    if (key.data == NULL) {
+    if (key.data == ((void*)0)) {
         goto nomem;
     }
 
@@ -90,7 +90,7 @@ ngx_http_lua_ffi_set_resp_header(ngx_http_request_t *r, const u_char *key_data,
     llcf = ngx_http_get_module_loc_conf(r, ngx_http_lua_module);
 
     if (llcf->transform_underscores_in_resp_headers) {
-        /* replace "_" with "-" */
+
         p = key.data;
         for (i = 0; i < key_len; i++) {
             if (p[i] == '_') {
@@ -102,13 +102,13 @@ ngx_http_lua_ffi_set_resp_header(ngx_http_request_t *r, const u_char *key_data,
     ctx->headers_set = 1;
 
     if (is_nil) {
-        value.data = NULL;
+        value.data = ((void*)0);
         value.len = 0;
 
     } else if (mvals) {
 
         if (mvals_len == 0) {
-            value.data = NULL;
+            value.data = ((void*)0);
             value.len = 0;
 
         } else {
@@ -119,7 +119,7 @@ ngx_http_lua_ffi_set_resp_header(ngx_http_request_t *r, const u_char *key_data,
                 len = mvals[i].len;
 
                 value.data = ngx_palloc(r->pool, len);
-                if (value.data == NULL) {
+                if (value.data == ((void*)0)) {
                     goto nomem;
                 }
 
@@ -141,7 +141,7 @@ ngx_http_lua_ffi_set_resp_header(ngx_http_request_t *r, const u_char *key_data,
     } else {
         p = (u_char *) sval;
         value.data = ngx_palloc(r->pool, sval_len);
-        if (value.data == NULL) {
+        if (value.data == ((void*)0)) {
             goto nomem;
         }
 

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ldns_rdf ;
 
-/* Variables and functions */
- int LDNS_IP4ADDRLEN ; 
- char* alloca (int) ; 
- int /*<<< orphan*/ * ldns_dname_new_frm_str (char*) ; 
- scalar_t__* ldns_rdf_data (int /*<<< orphan*/ *) ; 
- scalar_t__ sprintf (char*,char*,...) ; 
- int strlen (char const*) ; 
+
+
+
+typedef int ldns_rdf ;
+
+
+ int LDNS_IP4ADDRLEN ;
+ char* alloca (int) ;
+ int * ldns_dname_new_frm_str (char*) ;
+ scalar_t__* ldns_rdf_data (int *) ;
+ scalar_t__ sprintf (char*,char*,...) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static ldns_rdf *
 ldns_rdf_reverse_a(ldns_rdf *addr, const char *base) {

@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_7__ ;
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+
+
+typedef struct TYPE_17__ TYPE_7__ ;
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
 struct TYPE_14__ {int filter; } ;
-typedef  TYPE_4__ WaveformContext ;
+typedef TYPE_4__ WaveformContext ;
 struct TYPE_17__ {TYPE_3__** outputs; TYPE_1__** inputs; TYPE_4__* priv; } ;
-struct TYPE_16__ {int nb_formats; int /*<<< orphan*/ * formats; } ;
+struct TYPE_16__ {int nb_formats; int * formats; } ;
 struct TYPE_15__ {int nb_components; int flags; TYPE_2__* comp; } ;
 struct TYPE_13__ {TYPE_6__* in_formats; } ;
 struct TYPE_12__ {int depth; } ;
 struct TYPE_11__ {TYPE_6__* out_formats; TYPE_6__* in_formats; } ;
-typedef  TYPE_5__ AVPixFmtDescriptor ;
-typedef  TYPE_6__ AVFilterFormats ;
-typedef  TYPE_7__ AVFilterContext ;
+typedef TYPE_5__ AVPixFmtDescriptor ;
+typedef TYPE_6__ AVFilterFormats ;
+typedef TYPE_7__ AVFilterContext ;
 
-/* Variables and functions */
-#define  ACOLOR 135 
-#define  AFLAT 134 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_BUG ; 
- int AV_PIX_FMT_FLAG_RGB ; 
-#define  CHROMA 133 
-#define  COLOR 132 
- int /*<<< orphan*/  EAGAIN ; 
-#define  FLAT 131 
-#define  LOWPASS 130 
-#define  XFLAT 129 
-#define  YFLAT 128 
- TYPE_5__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
- int ff_formats_ref (int /*<<< orphan*/ ,TYPE_6__**) ; 
- int /*<<< orphan*/  ff_make_format_list (int const*) ; 
- int* in_color_pix_fmts ; 
- int* in_flat_pix_fmts ; 
- int* in_lowpass_pix_fmts ; 
- int* out_gray10_lowpass_pix_fmts ; 
- int* out_gray12_lowpass_pix_fmts ; 
- int* out_gray8_lowpass_pix_fmts ; 
- int* out_gray9_lowpass_pix_fmts ; 
- int* out_rgb10_lowpass_pix_fmts ; 
- int* out_rgb12_lowpass_pix_fmts ; 
- int* out_rgb8_lowpass_pix_fmts ; 
- int* out_rgb9_lowpass_pix_fmts ; 
- int* out_yuv10_lowpass_pix_fmts ; 
- int* out_yuv12_lowpass_pix_fmts ; 
- int* out_yuv8_lowpass_pix_fmts ; 
- int* out_yuv9_lowpass_pix_fmts ; 
+
+
+
+ int AVERROR (int ) ;
+ int AVERROR_BUG ;
+ int AV_PIX_FMT_FLAG_RGB ;
+
+
+ int EAGAIN ;
+
+
+
+
+ TYPE_5__* av_pix_fmt_desc_get (int ) ;
+ int ff_formats_ref (int ,TYPE_6__**) ;
+ int ff_make_format_list (int const*) ;
+ int* in_color_pix_fmts ;
+ int* in_flat_pix_fmts ;
+ int* in_lowpass_pix_fmts ;
+ int* out_gray10_lowpass_pix_fmts ;
+ int* out_gray12_lowpass_pix_fmts ;
+ int* out_gray8_lowpass_pix_fmts ;
+ int* out_gray9_lowpass_pix_fmts ;
+ int* out_rgb10_lowpass_pix_fmts ;
+ int* out_rgb12_lowpass_pix_fmts ;
+ int* out_rgb8_lowpass_pix_fmts ;
+ int* out_rgb9_lowpass_pix_fmts ;
+ int* out_yuv10_lowpass_pix_fmts ;
+ int* out_yuv12_lowpass_pix_fmts ;
+ int* out_yuv8_lowpass_pix_fmts ;
+ int* out_yuv9_lowpass_pix_fmts ;
 
 __attribute__((used)) static int query_formats(AVFilterContext *ctx)
 {
@@ -77,14 +77,14 @@ __attribute__((used)) static int query_formats(AVFilterContext *ctx)
     }
 
     switch (s->filter) {
-    case LOWPASS: in_pix_fmts = in_lowpass_pix_fmts; break;
-    case CHROMA:
-    case XFLAT:
-    case YFLAT:
-    case AFLAT:
-    case FLAT:    in_pix_fmts = in_flat_pix_fmts;    break;
-    case ACOLOR:
-    case COLOR:   in_pix_fmts = in_color_pix_fmts;   break;
+    case 130: in_pix_fmts = in_lowpass_pix_fmts; break;
+    case 133:
+    case 129:
+    case 128:
+    case 134:
+    case 131: in_pix_fmts = in_flat_pix_fmts; break;
+    case 135:
+    case 132: in_pix_fmts = in_color_pix_fmts; break;
     default: return AVERROR_BUG;
     }
 
@@ -111,13 +111,13 @@ __attribute__((used)) static int query_formats(AVFilterContext *ctx)
             return AVERROR(EAGAIN);
     }
 
-    if (s->filter == LOWPASS && ncomp == 1 && depth == 8)
+    if (s->filter == 130 && ncomp == 1 && depth == 8)
         out_pix_fmts = out_gray8_lowpass_pix_fmts;
-    else if (s->filter == LOWPASS && ncomp == 1 && depth == 9)
+    else if (s->filter == 130 && ncomp == 1 && depth == 9)
         out_pix_fmts = out_gray9_lowpass_pix_fmts;
-    else if (s->filter == LOWPASS && ncomp == 1 && depth == 10)
+    else if (s->filter == 130 && ncomp == 1 && depth == 10)
         out_pix_fmts = out_gray10_lowpass_pix_fmts;
-    else if (s->filter == LOWPASS && ncomp == 1 && depth == 12)
+    else if (s->filter == 130 && ncomp == 1 && depth == 12)
         out_pix_fmts = out_gray12_lowpass_pix_fmts;
     else if (rgb && depth == 8 && ncomp > 2)
         out_pix_fmts = out_rgb8_lowpass_pix_fmts;

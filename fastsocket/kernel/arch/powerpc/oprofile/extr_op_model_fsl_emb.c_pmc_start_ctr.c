@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PMLCA_CE ; 
- int /*<<< orphan*/  PMLCA_FC ; 
- int /*<<< orphan*/  get_pmlca (int) ; 
- int /*<<< orphan*/  set_pmlca (int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u32 ;
+
+
+ int PMLCA_CE ;
+ int PMLCA_FC ;
+ int get_pmlca (int) ;
+ int set_pmlca (int,int ) ;
 
 __attribute__((used)) static void pmc_start_ctr(int ctr, int enable)
 {
-	u32 pmlca = get_pmlca(ctr);
+ u32 pmlca = get_pmlca(ctr);
 
-	pmlca &= ~PMLCA_FC;
+ pmlca &= ~PMLCA_FC;
 
-	if (enable)
-		pmlca |= PMLCA_CE;
-	else
-		pmlca &= ~PMLCA_CE;
+ if (enable)
+  pmlca |= PMLCA_CE;
+ else
+  pmlca &= ~PMLCA_CE;
 
-	set_pmlca(ctr, pmlca);
+ set_pmlca(ctr, pmlca);
 }

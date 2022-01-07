@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum GlyphEdge { ____Placeholder_GlyphEdge } GlyphEdge ;
-typedef  enum GlyphDir { ____Placeholder_GlyphDir } GlyphDir ;
 
-/* Variables and functions */
- int BOTTOM_EDGE ; 
- int DIR_DOWN ; 
- int DIR_LEFT ; 
- int DIR_RIGHT ; 
- int DIR_UP ; 
- int LEFT_EDGE ; 
- int NO_DIR ; 
- int RIGHT_EDGE ; 
- int TOP_EDGE ; 
+
+
+
+typedef enum GlyphEdge { ____Placeholder_GlyphEdge } GlyphEdge ;
+typedef enum GlyphDir { ____Placeholder_GlyphDir } GlyphDir ;
+
+
+ int BOTTOM_EDGE ;
+ int DIR_DOWN ;
+ int DIR_LEFT ;
+ int DIR_RIGHT ;
+ int DIR_UP ;
+ int LEFT_EDGE ;
+ int NO_DIR ;
+ int RIGHT_EDGE ;
+ int TOP_EDGE ;
 
 __attribute__((used)) static enum GlyphDir which_direction(enum GlyphEdge edge0, enum GlyphEdge edge1)
 {

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct DbgHelpStringTab {unsigned int Length; char*** Table; int /*<<< orphan*/  Bytes; } ;
 
-/* Variables and functions */
- unsigned int ComputeDJBHash (char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- char** realloc (char**,int) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
- scalar_t__ strlen (char*) ; 
+
+
+
+struct DbgHelpStringTab {unsigned int Length; char*** Table; int Bytes; } ;
+
+
+ unsigned int ComputeDJBHash (char*) ;
+ int fprintf (int ,char*) ;
+ int free (char*) ;
+ char** realloc (char**,int) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static int
 DbgHelpAddStringToTable(struct DbgHelpStringTab *tab, char *name)
@@ -41,7 +41,7 @@ DbgHelpAddStringToTable(struct DbgHelpStringTab *tab, char *name)
     else
         i = 0;
 
-    /* At this point, we need to insert */
+
     tab->Bytes += strlen(name) + 1;
 
     newBucket = realloc(tab->Table[bucket], (i+2) * sizeof(char *));

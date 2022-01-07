@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pm8xxx_gpio {int /*<<< orphan*/  domain; int /*<<< orphan*/  chip; } ;
+
+
+
+
+struct pm8xxx_gpio {int domain; int chip; } ;
 struct platform_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gpiochip_remove (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  irq_domain_remove (int /*<<< orphan*/ ) ; 
- struct pm8xxx_gpio* platform_get_drvdata (struct platform_device*) ; 
+
+ int gpiochip_remove (int *) ;
+ int irq_domain_remove (int ) ;
+ struct pm8xxx_gpio* platform_get_drvdata (struct platform_device*) ;
 
 __attribute__((used)) static int pm8xxx_gpio_remove(struct platform_device *pdev)
 {
-	struct pm8xxx_gpio *pctrl = platform_get_drvdata(pdev);
+ struct pm8xxx_gpio *pctrl = platform_get_drvdata(pdev);
 
-	gpiochip_remove(&pctrl->chip);
-	irq_domain_remove(pctrl->domain);
+ gpiochip_remove(&pctrl->chip);
+ irq_domain_remove(pctrl->domain);
 
-	return 0;
+ return 0;
 }

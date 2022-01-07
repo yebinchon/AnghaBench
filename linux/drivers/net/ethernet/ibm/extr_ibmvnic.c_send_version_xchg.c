@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  version; int /*<<< orphan*/  cmd; int /*<<< orphan*/  first; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int version; int cmd; int first; } ;
 union ibmvnic_crq {TYPE_1__ version_exchange; } ;
 struct ibmvnic_adapter {int dummy; } ;
-typedef  int /*<<< orphan*/  crq ;
+typedef int crq ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IBMVNIC_CRQ_CMD ; 
- int /*<<< orphan*/  VERSION_EXCHANGE ; 
- int /*<<< orphan*/  cpu_to_be16 (int /*<<< orphan*/ ) ; 
- int ibmvnic_send_crq (struct ibmvnic_adapter*,union ibmvnic_crq*) ; 
- int /*<<< orphan*/  ibmvnic_version ; 
- int /*<<< orphan*/  memset (union ibmvnic_crq*,int /*<<< orphan*/ ,int) ; 
+
+ int IBMVNIC_CRQ_CMD ;
+ int VERSION_EXCHANGE ;
+ int cpu_to_be16 (int ) ;
+ int ibmvnic_send_crq (struct ibmvnic_adapter*,union ibmvnic_crq*) ;
+ int ibmvnic_version ;
+ int memset (union ibmvnic_crq*,int ,int) ;
 
 __attribute__((used)) static int send_version_xchg(struct ibmvnic_adapter *adapter)
 {
-	union ibmvnic_crq crq;
+ union ibmvnic_crq crq;
 
-	memset(&crq, 0, sizeof(crq));
-	crq.version_exchange.first = IBMVNIC_CRQ_CMD;
-	crq.version_exchange.cmd = VERSION_EXCHANGE;
-	crq.version_exchange.version = cpu_to_be16(ibmvnic_version);
+ memset(&crq, 0, sizeof(crq));
+ crq.version_exchange.first = IBMVNIC_CRQ_CMD;
+ crq.version_exchange.cmd = VERSION_EXCHANGE;
+ crq.version_exchange.version = cpu_to_be16(ibmvnic_version);
 
-	return ibmvnic_send_crq(adapter, &crq);
+ return ibmvnic_send_crq(adapter, &crq);
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_8__ {int* write; int** delay; float** ir; int* n_clippings; float** ringbuffer; float** temp_src; TYPE_4__* out; TYPE_4__* in; } ;
-typedef  TYPE_2__ ThreadData ;
+typedef TYPE_2__ ThreadData ;
 struct TYPE_11__ {TYPE_3__* priv; } ;
 struct TYPE_10__ {int channels; int nb_samples; scalar_t__* data; } ;
 struct TYPE_9__ {int ir_len; int air_len; int buffer_length; int lfe_channel; float gain_lfe; TYPE_1__* fdsp; } ;
-struct TYPE_7__ {scalar_t__ (* scalarproduct_float ) (float const*,float*,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_3__ HeadphoneContext ;
-typedef  TYPE_4__ AVFrame ;
-typedef  TYPE_5__ AVFilterContext ;
+struct TYPE_7__ {scalar_t__ (* scalarproduct_float ) (float const*,float*,int ) ;} ;
+typedef TYPE_3__ HeadphoneContext ;
+typedef TYPE_4__ AVFrame ;
+typedef TYPE_5__ AVFilterContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FFALIGN (int const,int) ; 
- int FFMIN (int const,int const) ; 
- int fabsf (float) ; 
- int /*<<< orphan*/  memcpy (float*,float const* const,int const) ; 
- scalar_t__ stub1 (float const*,float*,int /*<<< orphan*/ ) ; 
+
+ int FFALIGN (int const,int) ;
+ int FFMIN (int const,int const) ;
+ int fabsf (float) ;
+ int memcpy (float*,float const* const,int const) ;
+ scalar_t__ stub1 (float const*,float*,int ) ;
 
 __attribute__((used)) static int headphone_convolute(AVFilterContext *ctx, void *arg, int jobnr, int nb_jobs)
 {
@@ -99,7 +99,7 @@ __attribute__((used)) static int headphone_convolute(AVFilterContext *ctx, void 
 
         dst += 2;
         src += in_channels;
-        wr   = (wr + 1) & modulo;
+        wr = (wr + 1) & modulo;
     }
 
     *write = wr;

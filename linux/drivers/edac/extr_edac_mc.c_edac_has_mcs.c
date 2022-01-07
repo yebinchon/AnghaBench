@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int list_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mc_devices ; 
- int /*<<< orphan*/  mem_ctls_mutex ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+ int list_empty (int *) ;
+ int mc_devices ;
+ int mem_ctls_mutex ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 bool edac_has_mcs(void)
 {
-	bool ret;
+ bool ret;
 
-	mutex_lock(&mem_ctls_mutex);
+ mutex_lock(&mem_ctls_mutex);
 
-	ret = list_empty(&mc_devices);
+ ret = list_empty(&mc_devices);
 
-	mutex_unlock(&mem_ctls_mutex);
+ mutex_unlock(&mem_ctls_mutex);
 
-	return !ret;
+ return !ret;
 }

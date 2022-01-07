@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int x; int y; } ;
-typedef  TYPE_2__ XPoint ;
-struct TYPE_7__ {int /*<<< orphan*/  gc; } ;
-struct TYPE_9__ {TYPE_1__ xwin; int /*<<< orphan*/  display; } ;
-typedef  TYPE_3__ RDPCLIENT ;
-typedef  int /*<<< orphan*/  Drawable ;
+typedef TYPE_2__ XPoint ;
+struct TYPE_7__ {int gc; } ;
+struct TYPE_9__ {TYPE_1__ xwin; int display; } ;
+typedef TYPE_3__ RDPCLIENT ;
+typedef int Drawable ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CoordModePrevious ; 
- int /*<<< orphan*/  XDrawLines (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,int,int /*<<< orphan*/ ) ; 
+
+ int CoordModePrevious ;
+ int XDrawLines (int ,int ,int ,TYPE_2__*,int,int ) ;
 
 __attribute__((used)) static void
 seamless_XDrawLines(RDPCLIENT * This, Drawable d, XPoint * points, int npoints, int xoffset, int yoffset)
 {
-	points[0].x -= xoffset;
-	points[0].y -= yoffset;
-	XDrawLines(This->display, d, This->xwin.gc, points, npoints, CoordModePrevious);
-	points[0].x += xoffset;
-	points[0].y += yoffset;
+ points[0].x -= xoffset;
+ points[0].y -= yoffset;
+ XDrawLines(This->display, d, This->xwin.gc, points, npoints, CoordModePrevious);
+ points[0].x += xoffset;
+ points[0].y += yoffset;
 }

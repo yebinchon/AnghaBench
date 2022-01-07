@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LOCK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KS_CURRENT_LOCK_COUNT ; 
- int /*<<< orphan*/  KS_INC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  KS_NEWLOCK_COUNT ; 
- int /*<<< orphan*/ * NewLockMain () ; 
+
+
+
+typedef int LOCK ;
+
+
+ int KS_CURRENT_LOCK_COUNT ;
+ int KS_INC (int ) ;
+ int KS_NEWLOCK_COUNT ;
+ int * NewLockMain () ;
 
 LOCK *NewLock()
 {
-	LOCK *lock = NewLockMain();
+ LOCK *lock = NewLockMain();
 
-	// KS
-	KS_INC(KS_NEWLOCK_COUNT);
-	KS_INC(KS_CURRENT_LOCK_COUNT);
 
-	return lock;
+ KS_INC(KS_NEWLOCK_COUNT);
+ KS_INC(KS_CURRENT_LOCK_COUNT);
+
+ return lock;
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int allowComments; int checkUTF8; } ;
-typedef  TYPE_1__ yajl_parser_config ;
-typedef  int /*<<< orphan*/  yajl_handle ;
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_5__ {int /*<<< orphan*/  objectLevel; int /*<<< orphan*/  arrayLevel; } ;
-typedef  TYPE_2__ context ;
+typedef TYPE_1__ yajl_parser_config ;
+typedef int yajl_handle ;
+typedef int uint8_t ;
+struct TYPE_5__ {int objectLevel; int arrayLevel; } ;
+typedef TYPE_2__ context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  callbacks ; 
- int /*<<< orphan*/  yajl_alloc (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  yajl_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  yajl_parse (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,size_t) ; 
+
+ int callbacks ;
+ int yajl_alloc (int *,TYPE_1__*,int *,void*) ;
+ int yajl_free (int ) ;
+ int yajl_parse (int ,int const*,size_t) ;
 
 int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
     context ctx = {
@@ -34,7 +34,7 @@ int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
         .allowComments = 1,
         .checkUTF8 = 1,
     };
-    yajl_handle parser = yajl_alloc(&callbacks, &cfg, NULL, (void*)&ctx);
+    yajl_handle parser = yajl_alloc(&callbacks, &cfg, ((void*)0), (void*)&ctx);
 
     (void)yajl_parse(parser, data, size);
     yajl_free(parser);

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IWICBitmapFrameDecode ;
-typedef  int /*<<< orphan*/  IWICBitmapDecoder ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ GpStatus ;
-typedef  int /*<<< orphan*/  GpImage ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GUID_ContainerFormatPng ; 
- int /*<<< orphan*/  GUID_WICPixelFormat1bppIndexed ; 
- int /*<<< orphan*/  GUID_WICPixelFormat24bppBGR ; 
- int /*<<< orphan*/  GUID_WICPixelFormat2bppIndexed ; 
- int /*<<< orphan*/  GUID_WICPixelFormat4bppIndexed ; 
- int /*<<< orphan*/  GUID_WICPixelFormat8bppGray ; 
- int /*<<< orphan*/  GUID_WICPixelFormat8bppIndexed ; 
- scalar_t__ IWICBitmapDecoder_GetFrame (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IWICBitmapDecoder_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IWICBitmapFrameDecode_GetPixelFormat (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWICBitmapFrameDecode_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ Ok ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ decode_frame_wic (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ has_png_transparency_chunk (int /*<<< orphan*/ *) ; 
- scalar_t__ hresult_to_status (scalar_t__) ; 
- scalar_t__ initialize_decoder_wic (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  png_metadata_reader ; 
+
+
+
+typedef int IWICBitmapFrameDecode ;
+typedef int IWICBitmapDecoder ;
+typedef int IStream ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ GpStatus ;
+typedef int GpImage ;
+typedef int GUID ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int GUID_ContainerFormatPng ;
+ int GUID_WICPixelFormat1bppIndexed ;
+ int GUID_WICPixelFormat24bppBGR ;
+ int GUID_WICPixelFormat2bppIndexed ;
+ int GUID_WICPixelFormat4bppIndexed ;
+ int GUID_WICPixelFormat8bppGray ;
+ int GUID_WICPixelFormat8bppIndexed ;
+ scalar_t__ IWICBitmapDecoder_GetFrame (int *,int ,int **) ;
+ int IWICBitmapDecoder_Release (int *) ;
+ scalar_t__ IWICBitmapFrameDecode_GetPixelFormat (int *,int *) ;
+ int IWICBitmapFrameDecode_Release (int *) ;
+ scalar_t__ IsEqualGUID (int *,int *) ;
+ scalar_t__ Ok ;
+ scalar_t__ S_OK ;
+ int TRUE ;
+ scalar_t__ decode_frame_wic (int *,int ,int ,int ,int **) ;
+ scalar_t__ has_png_transparency_chunk (int *) ;
+ scalar_t__ hresult_to_status (scalar_t__) ;
+ scalar_t__ initialize_decoder_wic (int *,int *,int **) ;
+ int png_metadata_reader ;
 
 __attribute__((used)) static GpStatus decode_image_png(IStream* stream, GpImage **image)
 {

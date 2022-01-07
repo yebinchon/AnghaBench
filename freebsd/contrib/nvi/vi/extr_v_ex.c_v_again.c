@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  lno; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int lno; } ;
 struct TYPE_6__ {TYPE_1__ m_start; } ;
-typedef  TYPE_2__ VICMD ;
-typedef  int /*<<< orphan*/  SCR ;
-typedef  int /*<<< orphan*/  EXCMD ;
+typedef TYPE_2__ VICMD ;
+typedef int SCR ;
+typedef int EXCMD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  C_SUBAGAIN ; 
- int /*<<< orphan*/  L (char*) ; 
- int /*<<< orphan*/  argv_exp0 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ex_cinit (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int v_exec_ex (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+ int C_SUBAGAIN ;
+ int L (char*) ;
+ int argv_exp0 (int *,int *,int ,int) ;
+ int ex_cinit (int *,int *,int ,int,int ,int ,int) ;
+ int v_exec_ex (int *,TYPE_2__*,int *) ;
 
 int
 v_again(SCR *sp, VICMD *vp)
 {
-	EXCMD cmd;
+ EXCMD cmd;
 
-	ex_cinit(sp, &cmd, C_SUBAGAIN, 2, vp->m_start.lno, vp->m_start.lno, 1);
-	argv_exp0(sp, &cmd, L(""), 1);
-	return (v_exec_ex(sp, vp, &cmd));
+ ex_cinit(sp, &cmd, C_SUBAGAIN, 2, vp->m_start.lno, vp->m_start.lno, 1);
+ argv_exp0(sp, &cmd, L(""), 1);
+ return (v_exec_ex(sp, vp, &cmd));
 }

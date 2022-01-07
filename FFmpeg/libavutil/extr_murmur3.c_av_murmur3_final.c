@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint64_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
 struct TYPE_3__ {int h1; int h2; int len; scalar_t__ state; scalar_t__ state_pos; } ;
-typedef  TYPE_1__ AVMurMur3 ;
+typedef TYPE_1__ AVMurMur3 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_WL64 (int /*<<< orphan*/ *,int) ; 
- int fmix (int) ; 
- int get_k1 (scalar_t__) ; 
- int get_k2 (scalar_t__) ; 
- int /*<<< orphan*/  memset (scalar_t__,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int AV_WL64 (int *,int) ;
+ int fmix (int) ;
+ int get_k1 (scalar_t__) ;
+ int get_k2 (scalar_t__) ;
+ int memset (scalar_t__,int ,scalar_t__) ;
 
 void av_murmur3_final(AVMurMur3 *c, uint8_t dst[16])
 {

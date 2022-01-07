@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ time_t ;
+
+
+
+
+typedef scalar_t__ time_t ;
 struct Output {int dummy; } ;
-typedef  int /*<<< orphan*/  reason_buffer ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int reason_buffer ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UNUSEDPARM (struct Output*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- char* name_from_ip_proto (unsigned int) ; 
- char* reason_string (unsigned int,char*,int) ; 
- char* status_string (int) ; 
+
+ int UNUSEDPARM (struct Output*) ;
+ int fprintf (int *,char*,...) ;
+ char* name_from_ip_proto (unsigned int) ;
+ char* reason_string (unsigned int,char*,int) ;
+ char* status_string (int) ;
 
 __attribute__((used)) static void
 ndjson_out_status(struct Output *out, FILE *fp, time_t timestamp, int status,
@@ -28,7 +28,7 @@ ndjson_out_status(struct Output *out, FILE *fp, time_t timestamp, int status,
 {
     char reason_buffer[128];
     UNUSEDPARM(out);
-    //UNUSEDPARM(timestamp);
+
 
     fprintf(fp, "{");
     fprintf(fp, "\"ip\":\"%u.%u.%u.%u\",",

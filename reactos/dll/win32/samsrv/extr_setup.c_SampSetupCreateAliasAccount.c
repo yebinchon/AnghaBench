@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  char* ULONG ;
-typedef  int /*<<< orphan*/ * PSECURITY_DESCRIPTOR ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  char* LPCWSTR ;
-typedef  int /*<<< orphan*/ * HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KEY_ALL_ACCESS ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REG_BINARY ; 
- int /*<<< orphan*/  REG_DWORD ; 
- int /*<<< orphan*/  REG_SZ ; 
- int /*<<< orphan*/  RtlFreeHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RtlGetProcessHeap () ; 
- int /*<<< orphan*/  SampCreateAliasSD (int /*<<< orphan*/ **,char**) ; 
- int /*<<< orphan*/  SampRegCloseKey (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  SampRegCreateKey (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  SampRegDeleteKey (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SampRegOpenKey (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  SampRegSetValue (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  swprintf (int /*<<< orphan*/ *,char*,char*) ; 
- int wcslen (char*) ; 
+
+
+
+typedef int WCHAR ;
+typedef char* ULONG ;
+typedef int * PSECURITY_DESCRIPTOR ;
+typedef int NTSTATUS ;
+typedef int LPVOID ;
+typedef char* LPCWSTR ;
+typedef int * HANDLE ;
+
+
+ int KEY_ALL_ACCESS ;
+ int NT_SUCCESS (int ) ;
+ int REG_BINARY ;
+ int REG_DWORD ;
+ int REG_SZ ;
+ int RtlFreeHeap (int ,int ,int *) ;
+ int RtlGetProcessHeap () ;
+ int SampCreateAliasSD (int **,char**) ;
+ int SampRegCloseKey (int **) ;
+ int SampRegCreateKey (int *,int *,int ,int **) ;
+ int SampRegDeleteKey (int *,int *) ;
+ int SampRegOpenKey (int *,char*,int ,int **) ;
+ int SampRegSetValue (int *,char*,int ,int ,...) ;
+ int swprintf (int *,char*,char*) ;
+ int wcslen (char*) ;
 
 __attribute__((used)) static
 NTSTATUS
@@ -43,9 +43,9 @@ SampSetupCreateAliasAccount(HANDLE hDomainKey,
                             ULONG ulRelativeId)
 {
     WCHAR szAccountKeyName[32];
-    HANDLE hAccountKey = NULL;
-    HANDLE hNamesKey = NULL;
-    PSECURITY_DESCRIPTOR Sd = NULL;
+    HANDLE hAccountKey = ((void*)0);
+    HANDLE hNamesKey = ((void*)0);
+    PSECURITY_DESCRIPTOR Sd = ((void*)0);
     ULONG SdSize = 0;
     NTSTATUS Status;
 
@@ -74,13 +74,13 @@ SampSetupCreateAliasAccount(HANDLE hDomainKey,
     if (!NT_SUCCESS(Status))
         goto done;
 
-    /* Create the server SD */
+
     Status = SampCreateAliasSD(&Sd,
                                &SdSize);
     if (!NT_SUCCESS(Status))
         goto done;
 
-    /* Set SecDesc attribute*/
+
     Status = SampRegSetValue(hAccountKey,
                              L"SecDesc",
                              REG_BINARY,
@@ -105,10 +105,10 @@ SampSetupCreateAliasAccount(HANDLE hDomainKey,
 done:
     SampRegCloseKey(&hNamesKey);
 
-    if (Sd != NULL)
+    if (Sd != ((void*)0))
         RtlFreeHeap(RtlGetProcessHeap(), 0, Sd);
 
-    if (hAccountKey != NULL)
+    if (hAccountKey != ((void*)0))
     {
         SampRegCloseKey(&hAccountKey);
 

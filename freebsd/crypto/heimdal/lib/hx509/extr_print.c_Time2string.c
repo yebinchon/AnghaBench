@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
+
+
+
+
+typedef int time_t ;
 struct tm {int dummy; } ;
-typedef  int /*<<< orphan*/  Time ;
+typedef int Time ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  _hx509_Time2time_t (int /*<<< orphan*/  const*) ; 
- struct tm* gmtime (int /*<<< orphan*/ *) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  strftime (char*,int,char*,struct tm*) ; 
+
+ int ENOMEM ;
+ int _hx509_Time2time_t (int const*) ;
+ struct tm* gmtime (int *) ;
+ char* malloc (int) ;
+ int strftime (char*,int,char*,struct tm*) ;
 
 __attribute__((used)) static int
 Time2string(const Time *T, char **str)
@@ -28,12 +28,12 @@ Time2string(const Time *T, char **str)
     char *s;
     struct tm *tm;
 
-    *str = NULL;
+    *str = ((void*)0);
     t = _hx509_Time2time_t(T);
     tm = gmtime (&t);
     s = malloc(30);
-    if (s == NULL)
-	return ENOMEM;
+    if (s == ((void*)0))
+ return ENOMEM;
     strftime(s, 30, "%Y-%m-%d %H:%M:%S", tm);
     *str = s;
     return 0;

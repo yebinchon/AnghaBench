@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  esp_hf_roaming_status_t ;
-typedef  int /*<<< orphan*/  esp_hf_network_state_t ;
-typedef  int /*<<< orphan*/  esp_hf_call_status_t ;
-typedef  int /*<<< orphan*/  esp_hf_call_setup_status_t ;
-typedef  int /*<<< orphan*/  esp_hf_call_held_status_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
-typedef  int /*<<< orphan*/  esp_bd_addr_t ;
-struct TYPE_8__ {int /*<<< orphan*/  act; int /*<<< orphan*/  pid; int /*<<< orphan*/  sig; } ;
-typedef  TYPE_2__ btc_msg_t ;
-struct TYPE_7__ {int signal; int batt_lev; int /*<<< orphan*/  call_held_state; int /*<<< orphan*/  roam; int /*<<< orphan*/  ntk_state; int /*<<< orphan*/  call_setup_state; int /*<<< orphan*/  call_state; int /*<<< orphan*/  remote_addr; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int esp_hf_roaming_status_t ;
+typedef int esp_hf_network_state_t ;
+typedef int esp_hf_call_status_t ;
+typedef int esp_hf_call_setup_status_t ;
+typedef int esp_hf_call_held_status_t ;
+typedef int esp_err_t ;
+typedef int esp_bd_addr_t ;
+struct TYPE_8__ {int act; int pid; int sig; } ;
+typedef TYPE_2__ btc_msg_t ;
+struct TYPE_7__ {int signal; int batt_lev; int call_held_state; int roam; int ntk_state; int call_setup_state; int call_state; int remote_addr; } ;
 struct TYPE_9__ {TYPE_1__ cind_rep; } ;
-typedef  TYPE_3__ btc_hf_args_t ;
-typedef  scalar_t__ bt_status_t ;
+typedef TYPE_3__ btc_hf_args_t ;
+typedef scalar_t__ bt_status_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BTC_HF_CIND_RESPONSE_EVT ; 
- int /*<<< orphan*/  BTC_PID_HF ; 
- int /*<<< orphan*/  BTC_SIG_API_CALL ; 
- scalar_t__ BT_STATUS_SUCCESS ; 
- scalar_t__ ESP_BLUEDROID_STATUS_ENABLED ; 
- int /*<<< orphan*/  ESP_ERR_INVALID_STATE ; 
- int /*<<< orphan*/  ESP_FAIL ; 
- int /*<<< orphan*/  ESP_OK ; 
- scalar_t__ btc_transfer_context (TYPE_2__*,TYPE_3__*,int,int /*<<< orphan*/ *) ; 
- scalar_t__ esp_bluedroid_get_status () ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
+
+ int BTC_HF_CIND_RESPONSE_EVT ;
+ int BTC_PID_HF ;
+ int BTC_SIG_API_CALL ;
+ scalar_t__ BT_STATUS_SUCCESS ;
+ scalar_t__ ESP_BLUEDROID_STATUS_ENABLED ;
+ int ESP_ERR_INVALID_STATE ;
+ int ESP_FAIL ;
+ int ESP_OK ;
+ scalar_t__ btc_transfer_context (TYPE_2__*,TYPE_3__*,int,int *) ;
+ scalar_t__ esp_bluedroid_get_status () ;
+ int memcpy (int *,int ,int) ;
+ int memset (TYPE_3__*,int ,int) ;
 
 esp_err_t esp_bt_hf_cind_response(esp_bd_addr_t remote_addr,
                                 esp_hf_call_status_t call_state,
@@ -54,7 +54,7 @@ esp_err_t esp_bt_hf_cind_response(esp_bd_addr_t remote_addr,
     msg.sig = BTC_SIG_API_CALL;
     msg.pid = BTC_PID_HF;
     msg.act = BTC_HF_CIND_RESPONSE_EVT;
-    
+
     btc_hf_args_t arg;
     memset(&arg, 0, sizeof(btc_hf_args_t));
     memcpy(&(arg.cind_rep.remote_addr), remote_addr, sizeof(esp_bd_addr_t));
@@ -66,7 +66,7 @@ esp_err_t esp_bt_hf_cind_response(esp_bd_addr_t remote_addr,
     arg.cind_rep.batt_lev = batt_lev;
     arg.cind_rep.call_held_state = call_held_status;
 
-    /* Switch to BTC context */
-    bt_status_t stat = btc_transfer_context(&msg, &arg, sizeof(btc_hf_args_t), NULL);
+
+    bt_status_t stat = btc_transfer_context(&msg, &arg, sizeof(btc_hf_args_t), ((void*)0));
     return (stat == BT_STATUS_SUCCESS) ? ESP_OK : ESP_FAIL;
 }

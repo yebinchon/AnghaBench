@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  result; int /*<<< orphan*/  params; } ;
-typedef  TYPE_1__ winnerInfo_t ;
-typedef  int /*<<< orphan*/  paramValues_t ;
-typedef  int U64 ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  BMK_benchResult_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BMK_displayOneResult (int /*<<< orphan*/ *,TYPE_1__,size_t const) ; 
- int const CUSTOM_LEVEL ; 
- scalar_t__ TIMED ; 
- unsigned long long TIMELOOP_NANOSEC ; 
- int UTIL_clockSpanNano (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  g_time ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int const) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int result; int params; } ;
+typedef TYPE_1__ winnerInfo_t ;
+typedef int paramValues_t ;
+typedef int U64 ;
+typedef int FILE ;
+typedef int BMK_benchResult_t ;
+
+
+ int BMK_displayOneResult (int *,TYPE_1__,size_t const) ;
+ int const CUSTOM_LEVEL ;
+ scalar_t__ TIMED ;
+ unsigned long long TIMELOOP_NANOSEC ;
+ int UTIL_clockSpanNano (int ) ;
+ int fprintf (int *,char*,...) ;
+ int g_time ;
+ int snprintf (char*,int,char*,int const) ;
 
 __attribute__((used)) static void
 BMK_printWinner(FILE* f, const int cLevel, const BMK_benchResult_t result, const paramValues_t params, const size_t srcSize)

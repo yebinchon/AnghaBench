@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ strcmp (char const*,char const* const) ; 
+ scalar_t__ strcmp (char const*,char const* const) ;
 
 __attribute__((used)) static int
 nexus_inlist(const char *name, const char *const *list)
 {
-	int i;
+ int i;
 
-	if (name == NULL)
-		return (0);
-	for (i = 0; list[i] != NULL; i++)
-		if (strcmp(name, list[i]) == 0)
-			return (1);
-	return (0);
+ if (name == ((void*)0))
+  return (0);
+ for (i = 0; list[i] != ((void*)0); i++)
+  if (strcmp(name, list[i]) == 0)
+   return (1);
+ return (0);
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  scalar_t__ UINT ;
-struct TYPE_3__ {scalar_t__ charset; int /*<<< orphan*/  nsdoc; } ;
-typedef  scalar_t__ PRUnichar ;
-typedef  TYPE_1__ HTMLDocumentNode ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- scalar_t__ CP_UTF8 ; 
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ NS_SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SysAllocString (scalar_t__ const*) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- scalar_t__ cp_from_charset_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_GetData (int /*<<< orphan*/ *,scalar_t__ const**) ; 
- int /*<<< orphan*/  nsAString_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMHTMLDocument_GetCharacterSet (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int nsresult ;
+typedef int nsAString ;
+typedef scalar_t__ UINT ;
+struct TYPE_3__ {scalar_t__ charset; int nsdoc; } ;
+typedef scalar_t__ PRUnichar ;
+typedef TYPE_1__ HTMLDocumentNode ;
+typedef int BSTR ;
+
+
+ scalar_t__ CP_UTF8 ;
+ int ERR (char*,int ) ;
+ scalar_t__ NS_SUCCEEDED (int ) ;
+ int SysAllocString (scalar_t__ const*) ;
+ int SysFreeString (int ) ;
+ scalar_t__ cp_from_charset_string (int ) ;
+ int nsAString_Finish (int *) ;
+ int nsAString_GetData (int *,scalar_t__ const**) ;
+ int nsAString_Init (int *,int *) ;
+ int nsIDOMHTMLDocument_GetCharacterSet (int ,int *) ;
 
 UINT get_document_charset(HTMLDocumentNode *doc)
 {
@@ -40,7 +40,7 @@ UINT get_document_charset(HTMLDocumentNode *doc)
     if(doc->charset)
         return doc->charset;
 
-    nsAString_Init(&charset_str, NULL);
+    nsAString_Init(&charset_str, ((void*)0));
     nsres = nsIDOMHTMLDocument_GetCharacterSet(doc->nsdoc, &charset_str);
     if(NS_SUCCEEDED(nsres)) {
         const PRUnichar *charset;

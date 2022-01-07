@@ -1,0 +1,249 @@
+; ModuleID = '/home/carl/AnghaBench/freebsd/contrib/ncurses/ncurses/tinfo/extr_tinfo_driver.c_drv_CanHandle.c'
+source_filename = "/home/carl/AnghaBench/freebsd/contrib/ncurses/ncurses/tinfo/extr_tinfo_driver.c_drv_CanHandle.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.TYPE_9__ = type { i32, i32* }
+%struct.TYPE_10__ = type { %struct.TYPE_8__ }
+%struct.TYPE_8__ = type { i32 }
+
+@FALSE = common dso_local global i32 0, align 4
+@TCBMAGIC = common dso_local global i32 0, align 4
+@TGETENT_NO = common dso_local global i32 0, align 4
+@TGETENT_YES = common dso_local global i32 0, align 4
+@TGETENT_ERR = common dso_local global i32 0, align 4
+@.str = private unnamed_addr constant [36 x i8] c"terminals database is inaccessible\0A\00", align 1
+@.str.1 = private unnamed_addr constant [24 x i8] c"unknown terminal type.\0A\00", align 1
+@TRUE = common dso_local global i32 0, align 4
+@ttytype = common dso_local global i8* null, align 8
+@NAMESIZE = common dso_local global i32 0, align 4
+@command_character = common dso_local global i32* null, align 8
+@generic_type = common dso_local global i64 0, align 8
+@cursor_address = common dso_local global i32 0, align 4
+@cursor_down = common dso_local global i32 0, align 4
+@cursor_home = common dso_local global i32 0, align 4
+@clear_screen = common dso_local global i32 0, align 4
+@.str.2 = private unnamed_addr constant [33 x i8] c"terminal is not really generic.\0A\00", align 1
+@.str.3 = private unnamed_addr constant [33 x i8] c"I need something more specific.\0A\00", align 1
+@hard_copy = common dso_local global i64 0, align 8
+@.str.4 = private unnamed_addr constant [36 x i8] c"I can't handle hardcopy terminals.\0A\00", align 1
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.TYPE_9__*, i8*, i32*)* @drv_CanHandle to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @drv_CanHandle(%struct.TYPE_9__* %0, i8* %1, i32* %2) #0 {
+  %4 = alloca %struct.TYPE_9__*, align 8
+  %5 = alloca i8*, align 8
+  %6 = alloca i32*, align 8
+  %7 = alloca i32, align 4
+  %8 = alloca i32, align 4
+  %9 = alloca %struct.TYPE_10__*, align 8
+  %10 = alloca i32*, align 8
+  %11 = alloca %struct.TYPE_8__*, align 8
+  store %struct.TYPE_9__* %0, %struct.TYPE_9__** %4, align 8
+  store i8* %1, i8** %5, align 8
+  store i32* %2, i32** %6, align 8
+  %12 = load i32, i32* @FALSE, align 4
+  store i32 %12, i32* %7, align 4
+  %13 = load %struct.TYPE_9__*, %struct.TYPE_9__** %4, align 8
+  %14 = icmp ne %struct.TYPE_9__* %13, null
+  br i1 %14, label %15, label %18
+
+15:                                               ; preds = %3
+  %16 = load i8*, i8** %5, align 8
+  %17 = icmp ne i8* %16, null
+  br label %18
+
+18:                                               ; preds = %15, %3
+  %19 = phi i1 [ false, %3 ], [ %17, %15 ]
+  %20 = zext i1 %19 to i32
+  %21 = call i32 @assert(i32 %20)
+  %22 = load %struct.TYPE_9__*, %struct.TYPE_9__** %4, align 8
+  %23 = bitcast %struct.TYPE_9__* %22 to %struct.TYPE_10__*
+  store %struct.TYPE_10__* %23, %struct.TYPE_10__** %9, align 8
+  %24 = load %struct.TYPE_9__*, %struct.TYPE_9__** %4, align 8
+  %25 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %24, i32 0, i32 1
+  %26 = load i32*, i32** %25, align 8
+  store i32* %26, i32** %10, align 8
+  %27 = load i32, i32* @TCBMAGIC, align 4
+  %28 = load %struct.TYPE_9__*, %struct.TYPE_9__** %4, align 8
+  %29 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %28, i32 0, i32 0
+  store i32 %27, i32* %29, align 8
+  %30 = load i32, i32* @TGETENT_NO, align 4
+  store i32 %30, i32* %8, align 4
+  %31 = load i32, i32* %8, align 4
+  %32 = load i32, i32* @TGETENT_YES, align 4
+  %33 = icmp ne i32 %31, %32
+  br i1 %33, label %34, label %47
+
+34:                                               ; preds = %18
+  %35 = load i8*, i8** %5, align 8
+  %36 = call %struct.TYPE_8__* @_nc_fallback(i8* %35)
+  store %struct.TYPE_8__* %36, %struct.TYPE_8__** %11, align 8
+  %37 = load %struct.TYPE_8__*, %struct.TYPE_8__** %11, align 8
+  %38 = icmp ne %struct.TYPE_8__* %37, null
+  br i1 %38, label %39, label %46
+
+39:                                               ; preds = %34
+  %40 = load %struct.TYPE_10__*, %struct.TYPE_10__** %9, align 8
+  %41 = getelementptr inbounds %struct.TYPE_10__, %struct.TYPE_10__* %40, i32 0, i32 0
+  %42 = load %struct.TYPE_8__*, %struct.TYPE_8__** %11, align 8
+  %43 = bitcast %struct.TYPE_8__* %41 to i8*
+  %44 = bitcast %struct.TYPE_8__* %42 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 4 %43, i8* align 4 %44, i64 4, i1 false)
+  %45 = load i32, i32* @TGETENT_YES, align 4
+  store i32 %45, i32* %8, align 4
+  br label %46
+
+46:                                               ; preds = %39, %34
+  br label %47
+
+47:                                               ; preds = %46, %18
+  %48 = load i32, i32* %8, align 4
+  %49 = load i32, i32* @TGETENT_YES, align 4
+  %50 = icmp ne i32 %48, %49
+  br i1 %50, label %51, label %68
+
+51:                                               ; preds = %47
+  %52 = load i32, i32* %8, align 4
+  %53 = load i32, i32* @TGETENT_ERR, align 4
+  %54 = icmp eq i32 %52, %53
+  br i1 %54, label %55, label %58
+
+55:                                               ; preds = %51
+  %56 = load i32, i32* %8, align 4
+  %57 = call i32 @ret_error0(i32 %56, i8* getelementptr inbounds ([36 x i8], [36 x i8]* @.str, i64 0, i64 0))
+  br label %67
+
+58:                                               ; preds = %51
+  %59 = load i32, i32* %8, align 4
+  %60 = load i32, i32* @TGETENT_NO, align 4
+  %61 = icmp eq i32 %59, %60
+  br i1 %61, label %62, label %66
+
+62:                                               ; preds = %58
+  %63 = load i32, i32* %8, align 4
+  %64 = load i8*, i8** %5, align 8
+  %65 = call i32 @ret_error1(i32 %63, i8* getelementptr inbounds ([24 x i8], [24 x i8]* @.str.1, i64 0, i64 0), i8* %64)
+  br label %66
+
+66:                                               ; preds = %62, %58
+  br label %67
+
+67:                                               ; preds = %66, %55
+  br label %68
+
+68:                                               ; preds = %67, %47
+  %69 = load i32, i32* @TRUE, align 4
+  store i32 %69, i32* %7, align 4
+  %70 = load i8*, i8** @ttytype, align 8
+  %71 = load %struct.TYPE_10__*, %struct.TYPE_10__** %9, align 8
+  %72 = getelementptr inbounds %struct.TYPE_10__, %struct.TYPE_10__* %71, i32 0, i32 0
+  %73 = getelementptr inbounds %struct.TYPE_8__, %struct.TYPE_8__* %72, i32 0, i32 0
+  %74 = load i32, i32* %73, align 4
+  %75 = load i32, i32* @NAMESIZE, align 4
+  %76 = sext i32 %75 to i64
+  %77 = sub i64 %76, 1
+  %78 = call i32 @strncpy(i8* %70, i32 %74, i64 %77)
+  %79 = load i8*, i8** @ttytype, align 8
+  %80 = load i32, i32* @NAMESIZE, align 4
+  %81 = sub nsw i32 %80, 1
+  %82 = sext i32 %81 to i64
+  %83 = getelementptr inbounds i8, i8* %79, i64 %82
+  store i8 0, i8* %83, align 1
+  %84 = load i32*, i32** @command_character, align 8
+  %85 = icmp ne i32* %84, null
+  br i1 %85, label %86, label %91
+
+86:                                               ; preds = %68
+  %87 = load %struct.TYPE_10__*, %struct.TYPE_10__** %9, align 8
+  %88 = load i32*, i32** @command_character, align 8
+  %89 = load i32, i32* %88, align 4
+  %90 = call i32 @_nc_tinfo_cmdch(%struct.TYPE_10__* %87, i32 %89)
+  br label %91
+
+91:                                               ; preds = %86, %68
+  %92 = load i64, i64* @generic_type, align 8
+  %93 = icmp ne i64 %92, 0
+  br i1 %93, label %94, label %119
+
+94:                                               ; preds = %91
+  %95 = load i32, i32* @cursor_address, align 4
+  %96 = call i64 @VALID_STRING(i32 %95)
+  %97 = icmp ne i64 %96, 0
+  br i1 %97, label %106, label %98
+
+98:                                               ; preds = %94
+  %99 = load i32, i32* @cursor_down, align 4
+  %100 = call i64 @VALID_STRING(i32 %99)
+  %101 = icmp ne i64 %100, 0
+  br i1 %101, label %102, label %114
+
+102:                                              ; preds = %98
+  %103 = load i32, i32* @cursor_home, align 4
+  %104 = call i64 @VALID_STRING(i32 %103)
+  %105 = icmp ne i64 %104, 0
+  br i1 %105, label %106, label %114
+
+106:                                              ; preds = %102, %94
+  %107 = load i32, i32* @clear_screen, align 4
+  %108 = call i64 @VALID_STRING(i32 %107)
+  %109 = icmp ne i64 %108, 0
+  br i1 %109, label %110, label %114
+
+110:                                              ; preds = %106
+  %111 = load i32, i32* @TGETENT_YES, align 4
+  %112 = load i8*, i8** %5, align 8
+  %113 = call i32 @ret_error1(i32 %111, i8* getelementptr inbounds ([33 x i8], [33 x i8]* @.str.2, i64 0, i64 0), i8* %112)
+  br label %118
+
+114:                                              ; preds = %106, %102, %98
+  %115 = load i32, i32* @TGETENT_NO, align 4
+  %116 = load i8*, i8** %5, align 8
+  %117 = call i32 @ret_error1(i32 %115, i8* getelementptr inbounds ([33 x i8], [33 x i8]* @.str.3, i64 0, i64 0), i8* %116)
+  br label %118
+
+118:                                              ; preds = %114, %110
+  br label %119
+
+119:                                              ; preds = %118, %91
+  %120 = load i64, i64* @hard_copy, align 8
+  %121 = icmp ne i64 %120, 0
+  br i1 %121, label %122, label %126
+
+122:                                              ; preds = %119
+  %123 = load i32, i32* @TGETENT_YES, align 4
+  %124 = load i8*, i8** %5, align 8
+  %125 = call i32 @ret_error1(i32 %123, i8* getelementptr inbounds ([36 x i8], [36 x i8]* @.str.4, i64 0, i64 0), i8* %124)
+  br label %126
+
+126:                                              ; preds = %122, %119
+  %127 = load i32, i32* %7, align 4
+  ret i32 %127
+}
+
+declare dso_local i32 @assert(i32) #1
+
+declare dso_local %struct.TYPE_8__* @_nc_fallback(i8*) #1
+
+; Function Attrs: argmemonly nounwind willreturn
+declare void @llvm.memcpy.p0i8.p0i8.i64(i8* noalias nocapture writeonly, i8* noalias nocapture readonly, i64, i1 immarg) #2
+
+declare dso_local i32 @ret_error0(i32, i8*) #1
+
+declare dso_local i32 @ret_error1(i32, i8*, i8*) #1
+
+declare dso_local i32 @strncpy(i8*, i32, i64) #1
+
+declare dso_local i32 @_nc_tinfo_cmdch(%struct.TYPE_10__*, i32) #1
+
+declare dso_local i64 @VALID_STRING(i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #2 = { argmemonly nounwind willreturn }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

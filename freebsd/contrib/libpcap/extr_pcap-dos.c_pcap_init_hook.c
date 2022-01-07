@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ _w32__bootp_on ; 
- scalar_t__ _w32__dhcp_on ; 
- scalar_t__ _w32__do_mask_req ; 
- scalar_t__ _w32__rarp_on ; 
- scalar_t__ _w32_dynamic_host ; 
- int /*<<< orphan*/  prev_post_hook () ; 
- int /*<<< orphan*/  stub1 () ; 
+ scalar_t__ _w32__bootp_on ;
+ scalar_t__ _w32__dhcp_on ;
+ scalar_t__ _w32__do_mask_req ;
+ scalar_t__ _w32__rarp_on ;
+ scalar_t__ _w32_dynamic_host ;
+ int prev_post_hook () ;
+ int stub1 () ;
 
 __attribute__((used)) static void pcap_init_hook (void)
 {

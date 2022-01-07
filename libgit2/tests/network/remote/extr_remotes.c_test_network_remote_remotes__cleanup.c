@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * _remote ; 
- int /*<<< orphan*/  cl_git_sandbox_cleanup () ; 
- int /*<<< orphan*/  git_remote_free (int /*<<< orphan*/ *) ; 
+ int * _remote ;
+ int cl_git_sandbox_cleanup () ;
+ int git_remote_free (int *) ;
 
 void test_network_remote_remotes__cleanup(void)
 {
-	git_remote_free(_remote);
-	_remote = NULL;
+ git_remote_free(_remote);
+ _remote = ((void*)0);
 
-	cl_git_sandbox_cleanup();
+ cl_git_sandbox_cleanup();
 }

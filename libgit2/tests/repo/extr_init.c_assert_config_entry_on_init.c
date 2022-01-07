@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  _repo ; 
- int /*<<< orphan*/  assert_config_entry_on_init_bytype (char const*,int,int) ; 
- int /*<<< orphan*/  git_repository_free (int /*<<< orphan*/ ) ; 
+ int _repo ;
+ int assert_config_entry_on_init_bytype (char const*,int,int) ;
+ int git_repository_free (int ) ;
 
 __attribute__((used)) static void assert_config_entry_on_init(
-	const char *config_key, int expected_value)
+ const char *config_key, int expected_value)
 {
-	assert_config_entry_on_init_bytype(config_key, expected_value, true);
-	git_repository_free(_repo);
+ assert_config_entry_on_init_bytype(config_key, expected_value, 1);
+ git_repository_free(_repo);
 
-	assert_config_entry_on_init_bytype(config_key, expected_value, false);
+ assert_config_entry_on_init_bytype(config_key, expected_value, 0);
 }

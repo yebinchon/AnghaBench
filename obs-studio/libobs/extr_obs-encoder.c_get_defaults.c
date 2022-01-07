@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct obs_encoder_info {int /*<<< orphan*/  type_data; int /*<<< orphan*/  (* get_defaults2 ) (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* get_defaults ) (int /*<<< orphan*/ *) ;} ;
-typedef  int /*<<< orphan*/  obs_data_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * obs_data_create () ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct obs_encoder_info {int type_data; int (* get_defaults2 ) (int *,int ) ;int (* get_defaults ) (int *) ;} ;
+typedef int obs_data_t ;
+
+
+ int * obs_data_create () ;
+ int stub1 (int *) ;
+ int stub2 (int *,int ) ;
 
 __attribute__((used)) static inline obs_data_t *get_defaults(const struct obs_encoder_info *info)
 {
-	obs_data_t *settings = obs_data_create();
-	if (info->get_defaults) {
-		info->get_defaults(settings);
-	}
-	if (info->get_defaults2) {
-		info->get_defaults2(settings, info->type_data);
-	}
-	return settings;
+ obs_data_t *settings = obs_data_create();
+ if (info->get_defaults) {
+  info->get_defaults(settings);
+ }
+ if (info->get_defaults2) {
+  info->get_defaults2(settings, info->type_data);
+ }
+ return settings;
 }

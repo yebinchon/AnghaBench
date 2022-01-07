@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef int uint16_t ;
 struct TYPE_5__ {TYPE_1__* priv_data; } ;
 struct TYPE_4__ {int version; int* palette; } ;
-typedef  TYPE_1__ Hnm4VideoContext ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  TYPE_2__ AVCodecContext ;
+typedef TYPE_1__ Hnm4VideoContext ;
+typedef int GetByteContext ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- int bytestream2_get_be24 (int /*<<< orphan*/ *) ; 
- int bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,int*,scalar_t__) ; 
- scalar_t__ bytestream2_tell (int /*<<< orphan*/ *) ; 
+
+ int bytestream2_get_be24 (int *) ;
+ int bytestream2_get_byte (int *) ;
+ int bytestream2_init (int *,int*,scalar_t__) ;
+ scalar_t__ bytestream2_tell (int *) ;
 
 __attribute__((used)) static void hnm_update_palette(AVCodecContext *avctx, uint8_t *src,
                                uint32_t size)
@@ -38,7 +38,7 @@ __attribute__((used)) static void hnm_update_palette(AVCodecContext *avctx, uint
 
     eight_bit_colors = src[7] & 0x80 && hnm->version == 0x4a;
 
-    // skip first 8 bytes
+
     bytestream2_init(&gb, src + 8, size - 8);
 
     while (bytestream2_tell(&gb) < size - 8) {

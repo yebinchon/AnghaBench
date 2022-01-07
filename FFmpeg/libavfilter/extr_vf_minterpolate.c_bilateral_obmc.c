@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
 struct TYPE_10__ {int** mvs; int sbad; } ;
-struct TYPE_9__ {scalar_t__ mc_mode; int b_height; int b_width; int log2_mb_size; int mb_size; TYPE_4__* int_blocks; int /*<<< orphan*/ * pixel_refs; int /*<<< orphan*/ * pixel_weights; int /*<<< orphan*/ * pixel_mvs; int /*<<< orphan*/  me_ctx; TYPE_2__* frames; } ;
+struct TYPE_9__ {scalar_t__ mc_mode; int b_height; int b_width; int log2_mb_size; int mb_size; TYPE_4__* int_blocks; int * pixel_refs; int * pixel_weights; int * pixel_mvs; int me_ctx; TYPE_2__* frames; } ;
 struct TYPE_8__ {TYPE_1__* avf; } ;
 struct TYPE_7__ {int width; int height; } ;
-typedef  int /*<<< orphan*/  PixelWeights ;
-typedef  int /*<<< orphan*/  PixelRefs ;
-typedef  int /*<<< orphan*/  PixelMVS ;
-typedef  TYPE_3__ MIContext ;
-typedef  TYPE_4__ Block ;
+typedef int PixelWeights ;
+typedef int PixelRefs ;
+typedef int PixelMVS ;
+typedef TYPE_3__ MIContext ;
+typedef TYPE_4__ Block ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD_PIXELS (int,int,int) ; 
- int ALPHA_MAX ; 
- int FFMAX (int /*<<< orphan*/ ,int) ; 
- int FFMIN (int,int) ; 
- scalar_t__ MC_MODE_AOBMC ; 
- int UINT64_MAX ; 
- int av_clip (int,int /*<<< orphan*/ ,int) ; 
- int get_sbad (int /*<<< orphan*/ *,int,int,int,int) ; 
- int** obmc_tab_linear ; 
+
+ int ADD_PIXELS (int,int,int) ;
+ int ALPHA_MAX ;
+ int FFMAX (int ,int) ;
+ int FFMIN (int,int) ;
+ scalar_t__ MC_MODE_AOBMC ;
+ int UINT64_MAX ;
+ int av_clip (int,int ,int) ;
+ int get_sbad (int *,int,int,int,int) ;
+ int** obmc_tab_linear ;
 
 __attribute__((used)) static void bilateral_obmc(MIContext *mi_ctx, Block *block, int mb_x, int mb_y, int alpha)
 {

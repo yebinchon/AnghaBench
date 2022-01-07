@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zLine ;
-typedef  int /*<<< orphan*/  lsm_file ;
-struct TYPE_4__ {int (* xOpen ) (TYPE_1__*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ;int (* xSync ) (int /*<<< orphan*/ *) ;int (* xWrite ) (int /*<<< orphan*/ *,int,char*,int) ;int /*<<< orphan*/  (* xClose ) (int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_1__ lsm_env ;
-typedef  int /*<<< orphan*/  aBuf ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ feof (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- scalar_t__ memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  memset (char*,int,int) ; 
- int sscanf (char*,char*,int*,int*) ; 
- int /*<<< orphan*/ * stdin ; 
- scalar_t__ strcmp (char*,char*) ; 
- int stub1 (TYPE_1__*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int stub2 (int /*<<< orphan*/ *) ; 
- int stub3 (int /*<<< orphan*/ *,int,char*,int) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ *) ; 
- TYPE_1__* tdb_lsm_env () ; 
- int /*<<< orphan*/  testPrintError (char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int zLine ;
+typedef int lsm_file ;
+struct TYPE_4__ {int (* xOpen ) (TYPE_1__*,char const*,int ,int **) ;int (* xSync ) (int *) ;int (* xWrite ) (int *,int,char*,int) ;int (* xClose ) (int *) ;} ;
+typedef TYPE_1__ lsm_env ;
+typedef int aBuf ;
+typedef int FILE ;
+
+
+ int LSM_OK ;
+ int fclose (int *) ;
+ scalar_t__ feof (int *) ;
+ int fgets (char*,int,int *) ;
+ int * fopen (char*,char*) ;
+ scalar_t__ memcmp (char*,char*,int) ;
+ int memset (char*,int,int) ;
+ int sscanf (char*,char*,int*,int*) ;
+ int * stdin ;
+ scalar_t__ strcmp (char*,char*) ;
+ int stub1 (TYPE_1__*,char const*,int ,int **) ;
+ int stub2 (int *) ;
+ int stub3 (int *,int,char*,int) ;
+ int stub4 (int *) ;
+ TYPE_1__* tdb_lsm_env () ;
+ int testPrintError (char*) ;
 
 __attribute__((used)) static int do_replay(int nArg, char **azArg){
   char aBuf[4096];

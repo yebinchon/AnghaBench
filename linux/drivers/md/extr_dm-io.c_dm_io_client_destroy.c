@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dm_io_client {int /*<<< orphan*/  bios; int /*<<< orphan*/  pool; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bioset_exit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (struct dm_io_client*) ; 
- int /*<<< orphan*/  mempool_exit (int /*<<< orphan*/ *) ; 
+
+
+
+struct dm_io_client {int bios; int pool; } ;
+
+
+ int bioset_exit (int *) ;
+ int kfree (struct dm_io_client*) ;
+ int mempool_exit (int *) ;
 
 void dm_io_client_destroy(struct dm_io_client *client)
 {
-	mempool_exit(&client->pool);
-	bioset_exit(&client->bios);
-	kfree(client);
+ mempool_exit(&client->pool);
+ bioset_exit(&client->bios);
+ kfree(client);
 }

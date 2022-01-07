@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct nand_chip {int /*<<< orphan*/  oob_poi; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  nand_read_page_op (struct nand_chip*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  raw_read (struct nand_chip*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u8 ;
+struct nand_chip {int oob_poi; } ;
+
+
+ int nand_read_page_op (struct nand_chip*,int,int ,int *,int ) ;
+ int raw_read (struct nand_chip*,int *,int ) ;
 
 __attribute__((used)) static int tango_read_page_raw(struct nand_chip *chip, u8 *buf,
-			       int oob_required, int page)
+          int oob_required, int page)
 {
-	nand_read_page_op(chip, page, 0, NULL, 0);
-	raw_read(chip, buf, chip->oob_poi);
-	return 0;
+ nand_read_page_op(chip, page, 0, ((void*)0), 0);
+ raw_read(chip, buf, chip->oob_poi);
+ return 0;
 }

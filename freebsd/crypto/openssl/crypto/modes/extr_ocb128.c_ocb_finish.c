@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  c; } ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int c; } ;
 struct TYPE_10__ {TYPE_2__ sum; TYPE_2__ offset; TYPE_2__ checksum; } ;
-struct TYPE_12__ {TYPE_1__ sess; int /*<<< orphan*/  keyenc; int /*<<< orphan*/  (* encrypt ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;TYPE_2__ l_dollar; } ;
-typedef  TYPE_2__ OCB_BLOCK ;
-typedef  TYPE_3__ OCB128_CONTEXT ;
+struct TYPE_12__ {TYPE_1__ sess; int keyenc; int (* encrypt ) (int ,int ,int ) ;TYPE_2__ l_dollar; } ;
+typedef TYPE_2__ OCB_BLOCK ;
+typedef TYPE_3__ OCB128_CONTEXT ;
 
-/* Variables and functions */
- int CRYPTO_memcmp (TYPE_2__*,unsigned char*,size_t) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,TYPE_2__*,size_t) ; 
- int /*<<< orphan*/  ocb_block16_xor (TYPE_2__*,TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CRYPTO_memcmp (TYPE_2__*,unsigned char*,size_t) ;
+ int memcpy (unsigned char*,TYPE_2__*,size_t) ;
+ int ocb_block16_xor (TYPE_2__*,TYPE_2__*,TYPE_2__*) ;
+ int stub1 (int ,int ,int ) ;
 
 __attribute__((used)) static int ocb_finish(OCB128_CONTEXT *ctx, unsigned char *tag, size_t len,
                       int write)
@@ -34,9 +34,9 @@ __attribute__((used)) static int ocb_finish(OCB128_CONTEXT *ctx, unsigned char *
         return -1;
     }
 
-    /*
-     * Tag = ENCIPHER(K, Checksum_* xor Offset_* xor L_$) xor HASH(K,A)
-     */
+
+
+
     ocb_block16_xor(&ctx->sess.checksum, &ctx->sess.offset, &tmp);
     ocb_block16_xor(&ctx->l_dollar, &tmp, &tmp);
     ctx->encrypt(tmp.c, tmp.c, ctx->keyenc);

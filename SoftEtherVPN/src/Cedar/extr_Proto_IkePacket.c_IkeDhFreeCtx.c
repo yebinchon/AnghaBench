@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DH_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DhFree (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int DH_CTX ;
+
+
+ int DhFree (int *) ;
 
 void IkeDhFreeCtx(DH_CTX *dh)
 {
-	// Validate arguments
-	if (dh == NULL)
-	{
-		return;
-	}
 
-	DhFree(dh);
+ if (dh == ((void*)0))
+ {
+  return;
+ }
+
+ DhFree(dh);
 }

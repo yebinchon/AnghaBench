@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u32 ;
-struct TYPE_5__ {int /*<<< orphan*/  hanum; } ;
-typedef  TYPE_1__ gdth_ha_str ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int TRUE ; 
- int /*<<< orphan*/  __gdth_interrupt (TYPE_1__*,int,int*) ; 
- int /*<<< orphan*/  gdth_delay (int) ; 
- scalar_t__ gdth_test_busy (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ u32 ;
+struct TYPE_5__ {int hanum; } ;
+typedef TYPE_1__ gdth_ha_str ;
+
+
+ int FALSE ;
+ int TRACE (char*) ;
+ int TRUE ;
+ int __gdth_interrupt (TYPE_1__*,int,int*) ;
+ int gdth_delay (int) ;
+ scalar_t__ gdth_test_busy (TYPE_1__*) ;
 
 __attribute__((used)) static int gdth_wait(gdth_ha_str *ha, int index, u32 time)
 {
@@ -31,10 +31,10 @@ __attribute__((used)) static int gdth_wait(gdth_ha_str *ha, int index, u32 time)
     TRACE(("gdth_wait() hanum %d index %d time %d\n", ha->hanum, index, time));
 
     if (index == 0)
-        return 1;                               /* no wait required */
+        return 1;
 
     do {
-	__gdth_interrupt(ha, true, &wait_index);
+ __gdth_interrupt(ha, 1, &wait_index);
         if (wait_index == index) {
             answer_found = TRUE;
             break;

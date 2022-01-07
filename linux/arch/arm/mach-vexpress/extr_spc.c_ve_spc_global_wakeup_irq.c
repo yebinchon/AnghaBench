@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct TYPE_2__ {scalar_t__ baseaddr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GBL_WAKEUP_INT_MSK ; 
- scalar_t__ WAKE_INT_MASK ; 
- TYPE_1__* info ; 
- int /*<<< orphan*/  readl_relaxed (scalar_t__) ; 
- int /*<<< orphan*/  writel_relaxed (int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int GBL_WAKEUP_INT_MSK ;
+ scalar_t__ WAKE_INT_MASK ;
+ TYPE_1__* info ;
+ int readl_relaxed (scalar_t__) ;
+ int writel_relaxed (int ,scalar_t__) ;
 
 void ve_spc_global_wakeup_irq(bool set)
 {
-	u32 reg;
+ u32 reg;
 
-	reg = readl_relaxed(info->baseaddr + WAKE_INT_MASK);
+ reg = readl_relaxed(info->baseaddr + WAKE_INT_MASK);
 
-	if (set)
-		reg |= GBL_WAKEUP_INT_MSK;
-	else
-		reg &= ~GBL_WAKEUP_INT_MSK;
+ if (set)
+  reg |= GBL_WAKEUP_INT_MSK;
+ else
+  reg &= ~GBL_WAKEUP_INT_MSK;
 
-	writel_relaxed(reg, info->baseaddr + WAKE_INT_MASK);
+ writel_relaxed(reg, info->baseaddr + WAKE_INT_MASK);
 }

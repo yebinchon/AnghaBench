@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ rtx ;
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AND ; 
- scalar_t__ GET_MODE (scalar_t__) ; 
- int /*<<< orphan*/  OPTAB_LIB_WIDEN ; 
- scalar_t__ VOIDmode ; 
- int /*<<< orphan*/  and_optab ; 
- int /*<<< orphan*/  emit_move_insn (scalar_t__,scalar_t__) ; 
- scalar_t__ expand_binop (int,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ simplify_binary_operation (int /*<<< orphan*/ ,int,scalar_t__,scalar_t__) ; 
+
+
+
+typedef scalar_t__ rtx ;
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+
+
+ int AND ;
+ scalar_t__ GET_MODE (scalar_t__) ;
+ int OPTAB_LIB_WIDEN ;
+ scalar_t__ VOIDmode ;
+ int and_optab ;
+ int emit_move_insn (scalar_t__,scalar_t__) ;
+ scalar_t__ expand_binop (int,int ,scalar_t__,scalar_t__,scalar_t__,int ,int ) ;
+ scalar_t__ simplify_binary_operation (int ,int,scalar_t__,scalar_t__) ;
 
 rtx
 expand_and (enum machine_mode mode, rtx op0, rtx op1, rtx target)

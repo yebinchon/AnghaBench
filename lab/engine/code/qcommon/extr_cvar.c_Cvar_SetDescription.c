@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * description; } ;
-typedef  TYPE_1__ cvar_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CopyString (char const*) ; 
- int /*<<< orphan*/  Z_Free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * description; } ;
+typedef TYPE_1__ cvar_t ;
+
+
+ int * CopyString (char const*) ;
+ int Z_Free (int *) ;
 
 void Cvar_SetDescription( cvar_t *var, const char *var_description )
 {
-	if( var_description && var_description[0] != '\0' )
-	{
-		if( var->description != NULL )
-		{
-			Z_Free( var->description );
-		}
-		var->description = CopyString( var_description );
-	}
+ if( var_description && var_description[0] != '\0' )
+ {
+  if( var->description != ((void*)0) )
+  {
+   Z_Free( var->description );
+  }
+  var->description = CopyString( var_description );
+ }
 }

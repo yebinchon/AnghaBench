@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  periph_module_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPORT_CLEAR_PERI_REG_MASK (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPORT_SET_PERI_REG_MASK (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_rst_en_mask (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  get_rst_en_reg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  periph_spinlock ; 
- int /*<<< orphan*/  portENTER_CRITICAL_SAFE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  portEXIT_CRITICAL_SAFE (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int periph_module_t ;
+
+
+ int DPORT_CLEAR_PERI_REG_MASK (int ,int ) ;
+ int DPORT_SET_PERI_REG_MASK (int ,int ) ;
+ int get_rst_en_mask (int ,int) ;
+ int get_rst_en_reg (int ) ;
+ int periph_spinlock ;
+ int portENTER_CRITICAL_SAFE (int *) ;
+ int portEXIT_CRITICAL_SAFE (int *) ;
 
 void periph_module_reset(periph_module_t periph)
 {
     portENTER_CRITICAL_SAFE(&periph_spinlock);
-    DPORT_SET_PERI_REG_MASK(get_rst_en_reg(periph), get_rst_en_mask(periph, false));
-    DPORT_CLEAR_PERI_REG_MASK(get_rst_en_reg(periph), get_rst_en_mask(periph, false));
+    DPORT_SET_PERI_REG_MASK(get_rst_en_reg(periph), get_rst_en_mask(periph, 0));
+    DPORT_CLEAR_PERI_REG_MASK(get_rst_en_reg(periph), get_rst_en_mask(periph, 0));
     portEXIT_CRITICAL_SAFE(&periph_spinlock);
 }

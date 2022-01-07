@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void** hexlate ; 
- int /*<<< orphan*/  longlongendswap (unsigned char*) ; 
+ void** hexlate ;
+ int longlongendswap (unsigned char*) ;
 
 __attribute__((used)) static char *
 longlong_hexchars (unsigned long long value,
-		   char *outbuff)
+     char *outbuff)
 {
   if (value == 0)
     {
@@ -26,33 +18,33 @@ longlong_hexchars (unsigned long long value,
     }
   else
     {
-      static unsigned char disbuf[8];	/* disassembly buffer */
-      unsigned char *scan, *limit;	/* loop controls */
+      static unsigned char disbuf[8];
+      unsigned char *scan, *limit;
       unsigned char c, nib;
       int leadzero = 1;
       scan = disbuf;
       limit = scan + 8;
       {
-	unsigned long long *dp;
-	dp = (unsigned long long *) scan;
-	*dp = value;
+ unsigned long long *dp;
+ dp = (unsigned long long *) scan;
+ *dp = value;
       }
-      longlongendswap (disbuf);	/* FIXME: ONly on big endian hosts */
+      longlongendswap (disbuf);
       while (scan < limit)
-	{
-	  c = *scan++;		/* a byte of our long long value */
-	  if (leadzero)
-	    {
-	      if (c == 0)
-		continue;
-	      else
-		leadzero = 0;	/* henceforth we print even zeroes */
-	    }
-	  nib = c >> 4;		/* high nibble bits */
-	  *outbuff++ = hexlate[nib];
-	  nib = c & 0x0f;	/* low nibble bits */
-	  *outbuff++ = hexlate[nib];
-	}
+ {
+   c = *scan++;
+   if (leadzero)
+     {
+       if (c == 0)
+  continue;
+       else
+  leadzero = 0;
+     }
+   nib = c >> 4;
+   *outbuff++ = hexlate[nib];
+   nib = c & 0x0f;
+   *outbuff++ = hexlate[nib];
+ }
       return outbuff;
     }
 }

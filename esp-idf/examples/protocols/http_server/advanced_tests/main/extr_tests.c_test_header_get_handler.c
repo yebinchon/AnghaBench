@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  httpd_req_t ;
-typedef  scalar_t__ esp_err_t ;
 
-/* Variables and functions */
- scalar_t__ ESP_ERR_INVALID_ARG ; 
- scalar_t__ ESP_ERR_NOT_FOUND ; 
- scalar_t__ ESP_ERR_NO_MEM ; 
- scalar_t__ ESP_FAIL ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  HTTPD_400_BAD_REQUEST ; 
- int /*<<< orphan*/  HTTPD_500_INTERNAL_SERVER_ERROR ; 
- int /*<<< orphan*/  HTTPD_TYPE_TEXT ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  free (char*) ; 
- int httpd_req_get_hdr_value_len (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ httpd_req_get_hdr_value_str (int /*<<< orphan*/ *,char*,char*,int) ; 
- int /*<<< orphan*/  httpd_resp_send (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  httpd_resp_send_err (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  httpd_resp_set_type (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* malloc (int) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+
+
+typedef int httpd_req_t ;
+typedef scalar_t__ esp_err_t ;
+
+
+ scalar_t__ ESP_ERR_INVALID_ARG ;
+ scalar_t__ ESP_ERR_NOT_FOUND ;
+ scalar_t__ ESP_ERR_NO_MEM ;
+ scalar_t__ ESP_FAIL ;
+ int ESP_LOGE (int ,char*,...) ;
+ int ESP_LOGI (int ,char*,...) ;
+ scalar_t__ ESP_OK ;
+ int HTTPD_400_BAD_REQUEST ;
+ int HTTPD_500_INTERNAL_SERVER_ERROR ;
+ int HTTPD_TYPE_TEXT ;
+ int TAG ;
+ int free (char*) ;
+ int httpd_req_get_hdr_value_len (int *,char*) ;
+ scalar_t__ httpd_req_get_hdr_value_str (int *,char*,char*,int) ;
+ int httpd_resp_send (int *,char*,int ) ;
+ int httpd_resp_send_err (int *,int ,char*) ;
+ int httpd_resp_set_type (int *,int ) ;
+ char* malloc (int) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static esp_err_t test_header_get_handler(httpd_req_t *req)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static esp_err_t test_header_get_handler(httpd_req_t *req)
             httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Memory allocation failed");
             return ESP_ERR_NO_MEM;
         }
-        /* Copy null terminated value string into buffer */
+
         if (httpd_req_get_hdr_value_str(req, "Header1", buf, buf_len) == ESP_OK) {
             ESP_LOGI(TAG, "Header1 content: %s", buf);
             if (strcmp("Value1", buf) != 0) {
@@ -80,7 +80,7 @@ __attribute__((used)) static esp_err_t test_header_get_handler(httpd_req_t *req)
             httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Memory allocation failed");
             return ESP_ERR_NO_MEM;
         }
-        /* Copy null terminated value string into buffer */
+
         if (httpd_req_get_hdr_value_str(req, "Header3", buf, buf_len) == ESP_OK) {
             ESP_LOGI(TAG, "Header3 content: %s", buf);
             if (strcmp("Value3", buf) != 0) {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  seconds; int /*<<< orphan*/  minutes; int /*<<< orphan*/  hours; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int seconds; int minutes; int hours; } ;
 struct TYPE_5__ {TYPE_1__ runtime; } ;
-typedef  TYPE_2__ runtime_log_t ;
-typedef  int /*<<< orphan*/  retro_time_t ;
+typedef TYPE_2__ runtime_log_t ;
+typedef int retro_time_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  runtime_log_convert_hms2usec (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int runtime_log_convert_hms2usec (int ,int ,int ,int *) ;
 
 void runtime_log_get_runtime_usec(
       runtime_log_t *runtime_log, retro_time_t *usec)

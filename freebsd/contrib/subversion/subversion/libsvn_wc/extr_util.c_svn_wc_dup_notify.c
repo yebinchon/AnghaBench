@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ rev_props; void* prop_name; void* path_prefix; void* url; scalar_t__ merge_range; void* changelist_name; scalar_t__ err; scalar_t__ lock; void* mime_type; void* path; } ;
-typedef  TYPE_1__ svn_wc_notify_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_wc_notify_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- TYPE_1__* apr_palloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  apr_pool_cleanup_null ; 
- int /*<<< orphan*/  apr_pool_cleanup_register (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* apr_pstrdup (int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  err_cleanup ; 
- scalar_t__ svn_error_dup (scalar_t__) ; 
- scalar_t__ svn_lock_dup (scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_merge_range_dup (scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_prop_hash_dup (scalar_t__,int /*<<< orphan*/ *) ; 
+
+ TYPE_1__* apr_palloc (int *,int) ;
+ int apr_pool_cleanup_null ;
+ int apr_pool_cleanup_register (int *,scalar_t__,int ,int ) ;
+ void* apr_pstrdup (int *,void*) ;
+ int err_cleanup ;
+ scalar_t__ svn_error_dup (scalar_t__) ;
+ scalar_t__ svn_lock_dup (scalar_t__,int *) ;
+ scalar_t__ svn_merge_range_dup (scalar_t__,int *) ;
+ scalar_t__ svn_prop_hash_dup (scalar_t__,int *) ;
 
 svn_wc_notify_t *
 svn_wc_dup_notify(const svn_wc_notify_t *notify,

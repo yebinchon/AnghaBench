@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct tls_multi {struct key_state* save_ks; struct key_state** key_scan; } ;
 struct TYPE_2__ {scalar_t__ initialized; } ;
 struct crypto_options {TYPE_1__ key_ctx_bi; } ;
-struct key_state {scalar_t__ state; scalar_t__ auth_deferred_expire; int /*<<< orphan*/  key_id; struct crypto_options crypto_options; int /*<<< orphan*/  auth_deferred; scalar_t__ authenticated; } ;
+struct key_state {scalar_t__ state; scalar_t__ auth_deferred_expire; int key_id; struct crypto_options crypto_options; int auth_deferred; scalar_t__ authenticated; } ;
 struct gc_arena {int dummy; } ;
 struct buffer {scalar_t__ len; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_TLS_KEYSELECT ; 
- int KEY_SCAN_SIZE ; 
- scalar_t__ S_ACTIVE ; 
- int /*<<< orphan*/  dmsg (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gc_free (struct gc_arena*) ; 
- struct gc_arena gc_new () ; 
- scalar_t__ now ; 
- int /*<<< orphan*/  print_key_id (struct tls_multi*,struct gc_arena*) ; 
+
+ int D_TLS_KEYSELECT ;
+ int KEY_SCAN_SIZE ;
+ scalar_t__ S_ACTIVE ;
+ int dmsg (int ,char*,int ) ;
+ int gc_free (struct gc_arena*) ;
+ struct gc_arena gc_new () ;
+ scalar_t__ now ;
+ int print_key_id (struct tls_multi*,struct gc_arena*) ;
 
 void
 tls_pre_encrypt(struct tls_multi *multi,
                 struct buffer *buf, struct crypto_options **opt)
 {
-    multi->save_ks = NULL;
+    multi->save_ks = ((void*)0);
     if (buf->len > 0)
     {
         int i;
-        struct key_state *ks_select = NULL;
+        struct key_state *ks_select = ((void*)0);
         for (i = 0; i < KEY_SCAN_SIZE; ++i)
         {
             struct key_state *ks = multi->key_scan[i];
             if (ks->state >= S_ACTIVE
                 && ks->authenticated
                 && ks->crypto_options.key_ctx_bi.initialized
-#ifdef ENABLE_DEF_AUTH
-                && !ks->auth_deferred
-#endif
+
+
+
                 )
             {
                 if (!ks_select)
@@ -77,5 +77,5 @@ tls_pre_encrypt(struct tls_multi *multi,
     }
 
     buf->len = 0;
-    *opt = NULL;
+    *opt = ((void*)0);
 }

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_2__* sys; } ;
-typedef  TYPE_1__ vout_window_t ;
-struct TYPE_9__ {int /*<<< orphan*/  hwnd; } ;
-typedef  TYPE_2__ vout_window_sys_t ;
+typedef TYPE_1__ vout_window_t ;
+struct TYPE_9__ {int hwnd; } ;
+typedef TYPE_2__ vout_window_sys_t ;
 struct TYPE_10__ {unsigned int right; unsigned int bottom; } ;
-typedef  TYPE_3__ RECT ;
-typedef  int /*<<< orphan*/  LONG ;
+typedef TYPE_3__ RECT ;
+typedef int LONG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AdjustWindowRect (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GWL_STYLE ; 
- int /*<<< orphan*/  GetWindowLong (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RECTHeight (TYPE_3__) ; 
- int /*<<< orphan*/  RECTWidth (TYPE_3__) ; 
- int SWP_NOMOVE ; 
- int SWP_NOZORDER ; 
- int /*<<< orphan*/  SetWindowPos (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int AdjustWindowRect (TYPE_3__*,int ,int ) ;
+ int GWL_STYLE ;
+ int GetWindowLong (int ,int ) ;
+ int RECTHeight (TYPE_3__) ;
+ int RECTWidth (TYPE_3__) ;
+ int SWP_NOMOVE ;
+ int SWP_NOZORDER ;
+ int SetWindowPos (int ,int ,int ,int ,int ,int ,int) ;
 
 __attribute__((used)) static void Resize(vout_window_t *wnd, unsigned width, unsigned height)
 {
     vout_window_sys_t *sys = wnd->sys;
 
-    /* When you create a window you give the dimensions you wish it to
-     * have. Unfortunatly these dimensions will include the borders and
-     * titlebar. We use the following function to find out the size of
-     * the window corresponding to the useable surface we want */
+
+
+
+
     RECT decorated_window = {
         .right = width,
         .bottom = height,

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct sighand {int /*<<< orphan*/  lock; } ;
-struct TYPE_3__ {int /*<<< orphan*/  blocked; struct sighand* sighand; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SIGINFO_NIL ; 
- scalar_t__ SIGNAL_IGNORE ; 
- int SIGTTIN_ ; 
- int SIGTTOU_ ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_1__* current ; 
- int /*<<< orphan*/  deliver_signal_unlocked (TYPE_1__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lock (int /*<<< orphan*/ *) ; 
- scalar_t__ signal_action (struct sighand*,int) ; 
- int /*<<< orphan*/  sigset_has (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct sighand {int lock; } ;
+struct TYPE_3__ {int blocked; struct sighand* sighand; } ;
+
+
+ int SIGINFO_NIL ;
+ scalar_t__ SIGNAL_IGNORE ;
+ int SIGTTIN_ ;
+ int SIGTTOU_ ;
+ int assert (int) ;
+ TYPE_1__* current ;
+ int deliver_signal_unlocked (TYPE_1__*,int,int ) ;
+ int lock (int *) ;
+ scalar_t__ signal_action (struct sighand*,int) ;
+ int sigset_has (int ,int) ;
+ int unlock (int *) ;
 
 bool try_self_signal(int sig) {
     assert(sig == SIGTTIN_ || sig == SIGTTOU_);

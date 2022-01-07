@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WebVTTContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  webvtt_print (int /*<<< orphan*/ *,char*,char) ; 
+
+
+
+typedef int WebVTTContext ;
+
+
+ int webvtt_print (int *,char*,char) ;
 
 __attribute__((used)) static void webvtt_close_tag(WebVTTContext *s, char tag)
 {

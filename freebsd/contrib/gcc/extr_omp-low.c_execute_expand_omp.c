@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CDI_DOMINATORS ; 
- int /*<<< orphan*/  CDI_POST_DOMINATORS ; 
- int /*<<< orphan*/  build_omp_regions () ; 
- int /*<<< orphan*/  cleanup_tree_cfg () ; 
- scalar_t__ dump_file ; 
- int /*<<< orphan*/  dump_omp_region (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expand_omp (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (scalar_t__,char*) ; 
- int /*<<< orphan*/  free_dominance_info (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_omp_regions () ; 
- int /*<<< orphan*/  remove_exit_barriers (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  root_omp_region ; 
+ int CDI_DOMINATORS ;
+ int CDI_POST_DOMINATORS ;
+ int build_omp_regions () ;
+ int cleanup_tree_cfg () ;
+ scalar_t__ dump_file ;
+ int dump_omp_region (scalar_t__,int ,int ) ;
+ int expand_omp (int ) ;
+ int fprintf (scalar_t__,char*) ;
+ int free_dominance_info (int ) ;
+ int free_omp_regions () ;
+ int remove_exit_barriers (int ) ;
+ int root_omp_region ;
 
 __attribute__((used)) static unsigned int
 execute_expand_omp (void)

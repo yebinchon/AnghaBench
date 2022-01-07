@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  blksz ; 
- scalar_t__ buf ; 
- int /*<<< orphan*/  buf_flush (int /*<<< orphan*/ ) ; 
- scalar_t__ bufend ; 
- scalar_t__ bufpt ; 
- int /*<<< orphan*/  memset (scalar_t__,int /*<<< orphan*/ ,scalar_t__) ; 
+ int blksz ;
+ scalar_t__ buf ;
+ int buf_flush (int ) ;
+ scalar_t__ bufend ;
+ scalar_t__ bufpt ;
+ int memset (scalar_t__,int ,scalar_t__) ;
 
 void
 wr_fin(void)
 {
-	if (bufpt > buf) {
-		memset(bufpt, 0, bufend - bufpt);
-		bufpt = bufend;
-		(void)buf_flush(blksz);
-	}
+ if (bufpt > buf) {
+  memset(bufpt, 0, bufend - bufpt);
+  bufpt = bufend;
+  (void)buf_flush(blksz);
+ }
 }

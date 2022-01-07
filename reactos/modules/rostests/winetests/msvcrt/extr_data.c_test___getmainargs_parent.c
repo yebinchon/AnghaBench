@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  startup ;
-struct TYPE_7__ {int /*<<< orphan*/  hProcess; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int startup ;
+struct TYPE_7__ {int hProcess; } ;
 struct TYPE_6__ {int cb; } ;
-typedef  TYPE_1__ STARTUPINFOA ;
-typedef  TYPE_2__ PROCESS_INFORMATION ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ STARTUPINFOA ;
+typedef TYPE_2__ PROCESS_INFORMATION ;
+typedef int FILE ;
 
-/* Variables and functions */
- int CREATE_DEFAULT_ERROR_MODE ; 
- int /*<<< orphan*/  CreateProcessA (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,TYPE_2__*) ; 
- scalar_t__ GetTempPathA (int,char*) ; 
- int MAX_PATH ; 
- int NORMAL_PRIORITY_CLASS ; 
- int /*<<< orphan*/  TRUE ; 
- int _mkdir (char*) ; 
- int /*<<< orphan*/  _rmdir (char*) ; 
- int /*<<< orphan*/  _unlink (char*) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,...) ; 
- int /*<<< orphan*/  winetest_wait_child_process (int /*<<< orphan*/ ) ; 
+
+ int CREATE_DEFAULT_ERROR_MODE ;
+ int CreateProcessA (int *,char*,int *,int *,int ,int,int *,int *,TYPE_1__*,TYPE_2__*) ;
+ scalar_t__ GetTempPathA (int,char*) ;
+ int MAX_PATH ;
+ int NORMAL_PRIORITY_CLASS ;
+ int TRUE ;
+ int _mkdir (char*) ;
+ int _rmdir (char*) ;
+ int _unlink (char*) ;
+ int errno ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int ok (int,char*,...) ;
+ int sprintf (char*,char*,char*,...) ;
+ int winetest_wait_child_process (int ) ;
 
 __attribute__((used)) static void test___getmainargs_parent(char *name)
 {
@@ -54,16 +54,16 @@ __attribute__((used)) static void test___getmainargs_parent(char *name)
     ok(!ret, "_mkdir failed: %d\n", errno);
     sprintf(filepath, "%swine_test\\a", tmppath);
     f = fopen(filepath, "w");
-    ok(f != NULL, "fopen(%s) failed: %d\n", filepath, errno);
+    ok(f != ((void*)0), "fopen(%s) failed: %d\n", filepath, errno);
     fclose(f);
     sprintf(filepath, "%swine_test\\test", tmppath);
     f = fopen(filepath, "w");
-    ok(f != NULL, "fopen(%s) failed: %d\n", filepath, errno);
+    ok(f != ((void*)0), "fopen(%s) failed: %d\n", filepath, errno);
     fclose(f);
 
     memset(&startup, 0, sizeof(startup));
     startup.cb = sizeof(startup);
-    CreateProcessA(NULL, cmdline, NULL, NULL, TRUE, CREATE_DEFAULT_ERROR_MODE|NORMAL_PRIORITY_CLASS, NULL, NULL, &startup, &proc);
+    CreateProcessA(((void*)0), cmdline, ((void*)0), ((void*)0), TRUE, CREATE_DEFAULT_ERROR_MODE|NORMAL_PRIORITY_CLASS, ((void*)0), ((void*)0), &startup, &proc);
     winetest_wait_child_process(proc.hProcess);
 
     _unlink(filepath);

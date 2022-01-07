@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_8__ ;
-typedef  struct TYPE_21__   TYPE_7__ ;
-typedef  struct TYPE_20__   TYPE_6__ ;
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_22__ {scalar_t__ buffer_width; scalar_t__ width; scalar_t__ buffer_height; scalar_t__ height; int /*<<< orphan*/  quality; scalar_t__ input_handle; int /*<<< orphan*/  pixel_format; } ;
+
+
+typedef struct TYPE_22__ TYPE_8__ ;
+typedef struct TYPE_21__ TYPE_7__ ;
+typedef struct TYPE_20__ TYPE_6__ ;
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+struct TYPE_22__ {scalar_t__ buffer_width; scalar_t__ width; scalar_t__ buffer_height; scalar_t__ height; int quality; scalar_t__ input_handle; int pixel_format; } ;
 struct TYPE_21__ {int slice_height; TYPE_1__* mmal; } ;
-struct TYPE_20__ {int buffer_num; TYPE_5__* format; scalar_t__ is_enabled; int /*<<< orphan*/  buffer_size_min; int /*<<< orphan*/  buffer_size; } ;
+struct TYPE_20__ {int buffer_num; TYPE_5__* format; scalar_t__ is_enabled; int buffer_size_min; int buffer_size; } ;
 struct TYPE_19__ {scalar_t__ encoding; TYPE_4__* es; } ;
 struct TYPE_16__ {scalar_t__ width; scalar_t__ height; } ;
 struct TYPE_17__ {scalar_t__ width; scalar_t__ height; TYPE_2__ crop; } ;
 struct TYPE_18__ {TYPE_3__ video; } ;
 struct TYPE_15__ {TYPE_6__** output; TYPE_6__** input; void* status; } ;
-typedef  void* MMAL_STATUS_T ;
-typedef  TYPE_6__ MMAL_PORT_T ;
-typedef  scalar_t__ MMAL_FOURCC_T ;
-typedef  scalar_t__ MMAL_BOOL_T ;
-typedef  TYPE_7__ BRCMJPEG_T ;
-typedef  int /*<<< orphan*/  BRCMJPEG_STATUS_T ;
-typedef  TYPE_8__ BRCMJPEG_REQUEST_T ;
+typedef void* MMAL_STATUS_T ;
+typedef TYPE_6__ MMAL_PORT_T ;
+typedef scalar_t__ MMAL_FOURCC_T ;
+typedef scalar_t__ MMAL_BOOL_T ;
+typedef TYPE_7__ BRCMJPEG_T ;
+typedef int BRCMJPEG_STATUS_T ;
+typedef TYPE_8__ BRCMJPEG_REQUEST_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BRCMJPEG_SUCCESS ; 
- int /*<<< orphan*/  CHECK_MMAL_STATUS (void*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  EXECUTE ; 
- int /*<<< orphan*/  INPUT_FORMAT ; 
- int /*<<< orphan*/  LOG_DEBUG (char*,char*,scalar_t__,scalar_t__,scalar_t__,int,int) ; 
- void* MMAL_EINVAL ; 
- scalar_t__ MMAL_ENCODING_I420 ; 
- scalar_t__ MMAL_ENCODING_I420_SLICE ; 
- scalar_t__ MMAL_ENCODING_I422 ; 
- scalar_t__ MMAL_ENCODING_I422_SLICE ; 
- scalar_t__ MMAL_ENCODING_UNKNOWN ; 
- scalar_t__ MMAL_FALSE ; 
- int /*<<< orphan*/  MMAL_PARAMETER_JPEG_Q_FACTOR ; 
- void* MMAL_SUCCESS ; 
- scalar_t__ MMAL_TRUE ; 
- int /*<<< orphan*/  MMAL_WRAPPER_FLAG_PAYLOAD_ALLOCATE ; 
- int /*<<< orphan*/  MMAL_WRAPPER_FLAG_PAYLOAD_USE_SHARED_MEMORY ; 
- scalar_t__ brcmjpeg_pixfmt_to_encoding (int /*<<< orphan*/ ) ; 
- void* mmal_port_format_commit (TYPE_6__*) ; 
- int /*<<< orphan*/  mmal_port_parameter_set_uint32 (TYPE_6__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* mmal_wrapper_port_disable (TYPE_6__*) ; 
- void* mmal_wrapper_port_enable (TYPE_6__*,int /*<<< orphan*/ ) ; 
+
+ int BRCMJPEG_SUCCESS ;
+ int CHECK_MMAL_STATUS (void*,int ,char*,...) ;
+ int EXECUTE ;
+ int INPUT_FORMAT ;
+ int LOG_DEBUG (char*,char*,scalar_t__,scalar_t__,scalar_t__,int,int) ;
+ void* MMAL_EINVAL ;
+ scalar_t__ MMAL_ENCODING_I420 ;
+ scalar_t__ MMAL_ENCODING_I420_SLICE ;
+ scalar_t__ MMAL_ENCODING_I422 ;
+ scalar_t__ MMAL_ENCODING_I422_SLICE ;
+ scalar_t__ MMAL_ENCODING_UNKNOWN ;
+ scalar_t__ MMAL_FALSE ;
+ int MMAL_PARAMETER_JPEG_Q_FACTOR ;
+ void* MMAL_SUCCESS ;
+ scalar_t__ MMAL_TRUE ;
+ int MMAL_WRAPPER_FLAG_PAYLOAD_ALLOCATE ;
+ int MMAL_WRAPPER_FLAG_PAYLOAD_USE_SHARED_MEMORY ;
+ scalar_t__ brcmjpeg_pixfmt_to_encoding (int ) ;
+ void* mmal_port_format_commit (TYPE_6__*) ;
+ int mmal_port_parameter_set_uint32 (TYPE_6__*,int ,int ) ;
+ void* mmal_wrapper_port_disable (TYPE_6__*) ;
+ void* mmal_wrapper_port_enable (TYPE_6__*,int ) ;
 
 __attribute__((used)) static BRCMJPEG_STATUS_T brcmjpeg_configure_encoder(BRCMJPEG_T *ctx,
    BRCMJPEG_REQUEST_T *req)
@@ -86,8 +86,8 @@ __attribute__((used)) static BRCMJPEG_STATUS_T brcmjpeg_configure_encoder(BRCMJP
    ctx->mmal->status = MMAL_SUCCESS;
    port_in = ctx->mmal->input[0];
 
-   /* The input port needs to be re-configured to take into account
-    * the properties of the new frame to encode */
+
+
    if (port_in->is_enabled)
    {
       status = mmal_wrapper_port_disable(port_in);

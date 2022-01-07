@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsUInt8Number ;
-typedef  int cmsUInt32Number ;
-typedef  scalar_t__ cmsUInt16Number ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int cmsUInt8Number ;
+typedef int cmsUInt32Number ;
+typedef scalar_t__ cmsUInt16Number ;
 struct TYPE_9__ {scalar_t__* Table16; } ;
-typedef  TYPE_1__ cmsToneCurve ;
-typedef  int /*<<< orphan*/  cmsPipeline ;
-struct TYPE_10__ {int (* Read ) (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *,int,int) ;} ;
-typedef  TYPE_2__ cmsIOHANDLER ;
-typedef  int /*<<< orphan*/  cmsContext ;
-typedef  int /*<<< orphan*/  cmsBool ;
-typedef  int /*<<< orphan*/  Tables ;
+typedef TYPE_1__ cmsToneCurve ;
+typedef int cmsPipeline ;
+struct TYPE_10__ {int (* Read ) (int ,TYPE_2__*,int *,int,int) ;} ;
+typedef TYPE_2__ cmsIOHANDLER ;
+typedef int cmsContext ;
+typedef int cmsBool ;
+typedef int Tables ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ FROM_8_TO_16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _cmsFree (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ _cmsMalloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  cmsAT_END ; 
- TYPE_1__* cmsBuildTabulatedToneCurve16 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsFreeToneCurve (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int cmsMAXCHANNELS ; 
- int /*<<< orphan*/  cmsPipelineInsertStage (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsStageAllocToneCurves (int /*<<< orphan*/ ,int,TYPE_1__**) ; 
- int /*<<< orphan*/  memset (TYPE_1__**,int /*<<< orphan*/ ,int) ; 
- int stub1 (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *,int,int) ; 
+
+ int FALSE ;
+ scalar_t__ FROM_8_TO_16 (int ) ;
+ int TRUE ;
+ int _cmsFree (int ,int *) ;
+ scalar_t__ _cmsMalloc (int ,int) ;
+ int cmsAT_END ;
+ TYPE_1__* cmsBuildTabulatedToneCurve16 (int ,int,int *) ;
+ int cmsFreeToneCurve (int ,TYPE_1__*) ;
+ int cmsMAXCHANNELS ;
+ int cmsPipelineInsertStage (int ,int *,int ,int ) ;
+ int cmsStageAllocToneCurves (int ,int,TYPE_1__**) ;
+ int memset (TYPE_1__**,int ,int) ;
+ int stub1 (int ,TYPE_2__*,int *,int,int) ;
 
 __attribute__((used)) static
-cmsBool  Read8bitTables(cmsContext ContextID, cmsIOHANDLER* io, cmsPipeline* lut, cmsUInt32Number nChannels)
+cmsBool Read8bitTables(cmsContext ContextID, cmsIOHANDLER* io, cmsPipeline* lut, cmsUInt32Number nChannels)
 {
-    cmsUInt8Number* Temp = NULL;
+    cmsUInt8Number* Temp = ((void*)0);
     cmsUInt32Number i, j;
     cmsToneCurve* Tables[cmsMAXCHANNELS];
 
@@ -52,11 +52,11 @@ cmsBool  Read8bitTables(cmsContext ContextID, cmsIOHANDLER* io, cmsPipeline* lut
     memset(Tables, 0, sizeof(Tables));
 
     Temp = (cmsUInt8Number*) _cmsMalloc(ContextID, 256);
-    if (Temp == NULL) return FALSE;
+    if (Temp == ((void*)0)) return FALSE;
 
     for (i=0; i < nChannels; i++) {
-        Tables[i] = cmsBuildTabulatedToneCurve16(ContextID, 256, NULL);
-        if (Tables[i] == NULL) goto Error;
+        Tables[i] = cmsBuildTabulatedToneCurve16(ContextID, 256, ((void*)0));
+        if (Tables[i] == ((void*)0)) goto Error;
     }
 
     for (i=0; i < nChannels; i++) {
@@ -68,7 +68,7 @@ cmsBool  Read8bitTables(cmsContext ContextID, cmsIOHANDLER* io, cmsPipeline* lut
     }
 
     _cmsFree(ContextID, Temp);
-    Temp = NULL;
+    Temp = ((void*)0);
 
     if (!cmsPipelineInsertStage(ContextID, lut, cmsAT_END, cmsStageAllocToneCurves(ContextID, nChannels, Tables)))
         goto Error;

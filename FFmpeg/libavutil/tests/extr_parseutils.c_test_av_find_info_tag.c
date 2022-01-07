@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buff ;
 
-/* Variables and functions */
- int FF_ARRAY_ELEMS (char const**) ; 
- scalar_t__ av_find_info_tag (char*,int,char const*,char const*) ; 
- int /*<<< orphan*/  printf (char*,int,char const*,...) ; 
+
+
+
+typedef int buff ;
+
+
+ int FF_ARRAY_ELEMS (char const**) ;
+ scalar_t__ av_find_info_tag (char*,int,char const*,char const*) ;
+ int printf (char*,int,char const*,...) ;
 
 __attribute__((used)) static void test_av_find_info_tag(void)
 {

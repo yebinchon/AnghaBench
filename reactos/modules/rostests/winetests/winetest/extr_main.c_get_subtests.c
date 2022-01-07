@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wine_test {int subtest_count; char* name; int /*<<< orphan*/ * subtests; int /*<<< orphan*/  exename; } ;
-typedef  int /*<<< orphan*/  LPTSTR ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  R_ERROR ; 
- int /*<<< orphan*/  R_FATAL ; 
- int /*<<< orphan*/  R_WARNING ; 
- int errno ; 
- int /*<<< orphan*/  extract_test (struct wine_test*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- size_t fread (char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ remove (char*) ; 
- int /*<<< orphan*/  report (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  run_ex (char*,char*,char const*,int) ; 
- int /*<<< orphan*/  strdup (char*) ; 
- char* strmake (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- char* strstr (char*,char const*) ; 
- char* strtok (char*,int /*<<< orphan*/ ) ; 
- char* tempnam (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  whitespace ; 
- int /*<<< orphan*/ * xmalloc (int) ; 
- void* xrealloc (int /*<<< orphan*/ *,int) ; 
+
+
+
+struct wine_test {int subtest_count; char* name; int * subtests; int exename; } ;
+typedef int LPTSTR ;
+typedef int FILE ;
+
+
+ int R_ERROR ;
+ int R_FATAL ;
+ int R_WARNING ;
+ int errno ;
+ int extract_test (struct wine_test*,char const*,int ) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ size_t fread (char*,int,int,int *) ;
+ int free (char*) ;
+ scalar_t__ remove (char*) ;
+ int report (int ,char*,...) ;
+ int run_ex (char*,char*,char const*,int) ;
+ int strdup (char*) ;
+ char* strmake (int *,char*,int ) ;
+ char* strstr (char*,char const*) ;
+ char* strtok (char*,int ) ;
+ char* tempnam (int ,char*) ;
+ int whitespace ;
+ int * xmalloc (int) ;
+ void* xrealloc (int *,int) ;
 
 __attribute__((used)) static void
 get_subtests (const char *tempdir, struct wine_test *test, LPTSTR res_name)
@@ -52,7 +52,7 @@ get_subtests (const char *tempdir, struct wine_test *test, LPTSTR res_name)
     if (!subname) report (R_FATAL, "Can't name subtests file.");
 
     extract_test (test, tempdir, res_name);
-    cmd = strmake (NULL, "%s --list", test->exename);
+    cmd = strmake (((void*)0), "%s --list", test->exename);
     run_ex (cmd, subname, tempdir, 5000);
     free (cmd);
 
@@ -89,7 +89,7 @@ get_subtests (const char *tempdir, struct wine_test *test, LPTSTR res_name)
                                        allocated * sizeof(char*));
         }
         test->subtests[test->subtest_count++] = strdup (index);
-        index = strtok (NULL, whitespace);
+        index = strtok (((void*)0), whitespace);
     }
     test->subtests = xrealloc (test->subtests,
                                test->subtest_count * sizeof(char*));

@@ -1,113 +1,113 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sctp_endpoint {int dummy; } ;
 struct sctp_chunk {int dummy; } ;
-struct sctp_association {scalar_t__ overall_error_count; scalar_t__ max_retrans; int state; scalar_t__ shutdown_last_sent_to; int /*<<< orphan*/  shutdown_retries; } ;
-typedef  int /*<<< orphan*/  sctp_subtype_t ;
-typedef  int /*<<< orphan*/  sctp_disposition_t ;
-typedef  int /*<<< orphan*/  sctp_cmd_seq_t ;
+struct sctp_association {scalar_t__ overall_error_count; scalar_t__ max_retrans; int state; scalar_t__ shutdown_last_sent_to; int shutdown_retries; } ;
+typedef int sctp_subtype_t ;
+typedef int sctp_disposition_t ;
+typedef int sctp_cmd_seq_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG () ; 
- int /*<<< orphan*/  ETIMEDOUT ; 
- int /*<<< orphan*/  SCTP_CHUNK (struct sctp_chunk*) ; 
- int /*<<< orphan*/  SCTP_CMD_ASSOC_FAILED ; 
- int /*<<< orphan*/  SCTP_CMD_REPLY ; 
- int /*<<< orphan*/  SCTP_CMD_SETUP_T2 ; 
- int /*<<< orphan*/  SCTP_CMD_SET_SK_ERR ; 
- int /*<<< orphan*/  SCTP_CMD_STRIKE ; 
- int /*<<< orphan*/  SCTP_CMD_TIMER_RESTART ; 
- int /*<<< orphan*/  SCTP_DEBUG_PRINTK (char*) ; 
- int /*<<< orphan*/  SCTP_DEC_STATS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SCTP_DISPOSITION_CONSUME ; 
- int /*<<< orphan*/  SCTP_DISPOSITION_DELETE_TCB ; 
- int /*<<< orphan*/  SCTP_DISPOSITION_NOMEM ; 
- int /*<<< orphan*/  SCTP_ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SCTP_ERROR_NO_ERROR ; 
- int /*<<< orphan*/  SCTP_EVENT_TIMEOUT_T2_SHUTDOWN ; 
- int /*<<< orphan*/  SCTP_INC_STATS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SCTP_MIB_ABORTEDS ; 
- int /*<<< orphan*/  SCTP_MIB_CURRESTAB ; 
- int /*<<< orphan*/  SCTP_MIB_T2_SHUTDOWN_EXPIREDS ; 
- int /*<<< orphan*/  SCTP_PERR (int /*<<< orphan*/ ) ; 
-#define  SCTP_STATE_SHUTDOWN_ACK_SENT 129 
-#define  SCTP_STATE_SHUTDOWN_SENT 128 
- int /*<<< orphan*/  SCTP_TO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SCTP_TRANSPORT (scalar_t__) ; 
- int /*<<< orphan*/  sctp_add_cmd_sf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct sctp_chunk* sctp_make_shutdown (struct sctp_association const*,int /*<<< orphan*/ *) ; 
- struct sctp_chunk* sctp_make_shutdown_ack (struct sctp_association const*,int /*<<< orphan*/ *) ; 
+
+ int BUG () ;
+ int ETIMEDOUT ;
+ int SCTP_CHUNK (struct sctp_chunk*) ;
+ int SCTP_CMD_ASSOC_FAILED ;
+ int SCTP_CMD_REPLY ;
+ int SCTP_CMD_SETUP_T2 ;
+ int SCTP_CMD_SET_SK_ERR ;
+ int SCTP_CMD_STRIKE ;
+ int SCTP_CMD_TIMER_RESTART ;
+ int SCTP_DEBUG_PRINTK (char*) ;
+ int SCTP_DEC_STATS (int ) ;
+ int SCTP_DISPOSITION_CONSUME ;
+ int SCTP_DISPOSITION_DELETE_TCB ;
+ int SCTP_DISPOSITION_NOMEM ;
+ int SCTP_ERROR (int ) ;
+ int SCTP_ERROR_NO_ERROR ;
+ int SCTP_EVENT_TIMEOUT_T2_SHUTDOWN ;
+ int SCTP_INC_STATS (int ) ;
+ int SCTP_MIB_ABORTEDS ;
+ int SCTP_MIB_CURRESTAB ;
+ int SCTP_MIB_T2_SHUTDOWN_EXPIREDS ;
+ int SCTP_PERR (int ) ;
+
+
+ int SCTP_TO (int ) ;
+ int SCTP_TRANSPORT (scalar_t__) ;
+ int sctp_add_cmd_sf (int *,int ,int ) ;
+ struct sctp_chunk* sctp_make_shutdown (struct sctp_association const*,int *) ;
+ struct sctp_chunk* sctp_make_shutdown_ack (struct sctp_association const*,int *) ;
 
 sctp_disposition_t sctp_sf_t2_timer_expire(const struct sctp_endpoint *ep,
-					   const struct sctp_association *asoc,
-					   const sctp_subtype_t type,
-					   void *arg,
-					   sctp_cmd_seq_t *commands)
+        const struct sctp_association *asoc,
+        const sctp_subtype_t type,
+        void *arg,
+        sctp_cmd_seq_t *commands)
 {
-	struct sctp_chunk *reply = NULL;
+ struct sctp_chunk *reply = ((void*)0);
 
-	SCTP_DEBUG_PRINTK("Timer T2 expired.\n");
-	SCTP_INC_STATS(SCTP_MIB_T2_SHUTDOWN_EXPIREDS);
+ SCTP_DEBUG_PRINTK("Timer T2 expired.\n");
+ SCTP_INC_STATS(SCTP_MIB_T2_SHUTDOWN_EXPIREDS);
 
-	((struct sctp_association *)asoc)->shutdown_retries++;
+ ((struct sctp_association *)asoc)->shutdown_retries++;
 
-	if (asoc->overall_error_count >= asoc->max_retrans) {
-		sctp_add_cmd_sf(commands, SCTP_CMD_SET_SK_ERR,
-				SCTP_ERROR(ETIMEDOUT));
-		/* Note:  CMD_ASSOC_FAILED calls CMD_DELETE_TCB. */
-		sctp_add_cmd_sf(commands, SCTP_CMD_ASSOC_FAILED,
-				SCTP_PERR(SCTP_ERROR_NO_ERROR));
-		SCTP_INC_STATS(SCTP_MIB_ABORTEDS);
-		SCTP_DEC_STATS(SCTP_MIB_CURRESTAB);
-		return SCTP_DISPOSITION_DELETE_TCB;
-	}
+ if (asoc->overall_error_count >= asoc->max_retrans) {
+  sctp_add_cmd_sf(commands, SCTP_CMD_SET_SK_ERR,
+    SCTP_ERROR(ETIMEDOUT));
 
-	switch (asoc->state) {
-	case SCTP_STATE_SHUTDOWN_SENT:
-		reply = sctp_make_shutdown(asoc, NULL);
-		break;
+  sctp_add_cmd_sf(commands, SCTP_CMD_ASSOC_FAILED,
+    SCTP_PERR(SCTP_ERROR_NO_ERROR));
+  SCTP_INC_STATS(SCTP_MIB_ABORTEDS);
+  SCTP_DEC_STATS(SCTP_MIB_CURRESTAB);
+  return SCTP_DISPOSITION_DELETE_TCB;
+ }
 
-	case SCTP_STATE_SHUTDOWN_ACK_SENT:
-		reply = sctp_make_shutdown_ack(asoc, NULL);
-		break;
+ switch (asoc->state) {
+ case 128:
+  reply = sctp_make_shutdown(asoc, ((void*)0));
+  break;
 
-	default:
-		BUG();
-		break;
-	}
+ case 129:
+  reply = sctp_make_shutdown_ack(asoc, ((void*)0));
+  break;
 
-	if (!reply)
-		goto nomem;
+ default:
+  BUG();
+  break;
+ }
 
-	/* Do some failure management (Section 8.2).
-	 * If we remove the transport an SHUTDOWN was last sent to, don't
-	 * do failure management.
-	 */
-	if (asoc->shutdown_last_sent_to)
-		sctp_add_cmd_sf(commands, SCTP_CMD_STRIKE,
-				SCTP_TRANSPORT(asoc->shutdown_last_sent_to));
+ if (!reply)
+  goto nomem;
 
-	/* Set the transport for the SHUTDOWN/ACK chunk and the timeout for
-	 * the T2-shutdown timer.
-	 */
-	sctp_add_cmd_sf(commands, SCTP_CMD_SETUP_T2, SCTP_CHUNK(reply));
 
-	/* Restart the T2-shutdown timer.  */
-	sctp_add_cmd_sf(commands, SCTP_CMD_TIMER_RESTART,
-			SCTP_TO(SCTP_EVENT_TIMEOUT_T2_SHUTDOWN));
-	sctp_add_cmd_sf(commands, SCTP_CMD_REPLY, SCTP_CHUNK(reply));
-	return SCTP_DISPOSITION_CONSUME;
+
+
+
+ if (asoc->shutdown_last_sent_to)
+  sctp_add_cmd_sf(commands, SCTP_CMD_STRIKE,
+    SCTP_TRANSPORT(asoc->shutdown_last_sent_to));
+
+
+
+
+ sctp_add_cmd_sf(commands, SCTP_CMD_SETUP_T2, SCTP_CHUNK(reply));
+
+
+ sctp_add_cmd_sf(commands, SCTP_CMD_TIMER_RESTART,
+   SCTP_TO(SCTP_EVENT_TIMEOUT_T2_SHUTDOWN));
+ sctp_add_cmd_sf(commands, SCTP_CMD_REPLY, SCTP_CHUNK(reply));
+ return SCTP_DISPOSITION_CONSUME;
 
 nomem:
-	return SCTP_DISPOSITION_NOMEM;
+ return SCTP_DISPOSITION_NOMEM;
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_repository ;
-typedef  int /*<<< orphan*/  git_attr_file ;
 
-/* Variables and functions */
- int get_internal_ignores (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_attr_file__free (int /*<<< orphan*/ *) ; 
- int parse_ignore_file (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int) ; 
+
+
+
+typedef int git_repository ;
+typedef int git_attr_file ;
+
+
+ int get_internal_ignores (int **,int *) ;
+ int git_attr_file__free (int *) ;
+ int parse_ignore_file (int *,int *,char const*,int) ;
 
 int git_ignore_add_rule(git_repository *repo, const char *rules)
 {
-	int error;
-	git_attr_file *ign_internal = NULL;
+ int error;
+ git_attr_file *ign_internal = ((void*)0);
 
-	if ((error = get_internal_ignores(&ign_internal, repo)) < 0)
-		return error;
+ if ((error = get_internal_ignores(&ign_internal, repo)) < 0)
+  return error;
 
-	error = parse_ignore_file(repo, ign_internal, rules, false);
-	git_attr_file__free(ign_internal);
+ error = parse_ignore_file(repo, ign_internal, rules, 0);
+ git_attr_file__free(ign_internal);
 
-	return error;
+ return error;
 }

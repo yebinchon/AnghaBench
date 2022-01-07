@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BN_GENCB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPENSSL_free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int BN_GENCB ;
+
+
+ int OPENSSL_free (int *) ;
 
 void BN_GENCB_free(BN_GENCB *cb)
 {
-    if (cb == NULL)
+    if (cb == ((void*)0))
         return;
     OPENSSL_free(cb);
 }

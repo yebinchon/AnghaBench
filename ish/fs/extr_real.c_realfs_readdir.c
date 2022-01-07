@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fd {int /*<<< orphan*/  dir; } ;
-struct dirent {int /*<<< orphan*/  d_name; int /*<<< orphan*/  d_ino; } ;
-struct dir_entry {int /*<<< orphan*/  name; int /*<<< orphan*/  inode; } ;
 
-/* Variables and functions */
- scalar_t__ errno ; 
- int errno_map () ; 
- struct dirent* readdir (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  realfs_opendir (struct fd*) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct fd {int dir; } ;
+struct dirent {int d_name; int d_ino; } ;
+struct dir_entry {int name; int inode; } ;
+
+
+ scalar_t__ errno ;
+ int errno_map () ;
+ struct dirent* readdir (int ) ;
+ int realfs_opendir (struct fd*) ;
+ int strcpy (int ,int ) ;
 
 int realfs_readdir(struct fd *fd, struct dir_entry *entry) {
     realfs_opendir(fd);
     errno = 0;
     struct dirent *dirent = readdir(fd->dir);
-    if (dirent == NULL) {
+    if (dirent == ((void*)0)) {
         if (errno != 0)
             return errno_map();
         else

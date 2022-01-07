@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char const* psz_longname; char const* psz_shortname; } ;
-typedef  TYPE_1__ module_t ;
+typedef TYPE_1__ module_t ;
 
-/* Variables and functions */
- char const* module_get_object (TYPE_1__ const*) ; 
+
+ char const* module_get_object (TYPE_1__ const*) ;
 
 const char *module_get_name( const module_t *m, bool long_name )
 {
-    if( long_name && ( m->psz_longname != NULL) )
+    if( long_name && ( m->psz_longname != ((void*)0)) )
         return m->psz_longname;
 
-    if (m->psz_shortname != NULL)
+    if (m->psz_shortname != ((void*)0))
         return m->psz_shortname;
     return module_get_object (m);
 }

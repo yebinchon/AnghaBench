@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bstr {scalar_t__ len; char* start; } ;
 
-/* Variables and functions */
- struct bstr bstr_lstrip (struct bstr) ; 
- scalar_t__ bstrtoll (struct bstr,struct bstr*,int) ; 
+
+ struct bstr bstr_lstrip (struct bstr) ;
+ scalar_t__ bstrtoll (struct bstr,struct bstr*,int) ;
 
 __attribute__((used)) static int read_int(struct bstr *data, bool two_digit)
 {

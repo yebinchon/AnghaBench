@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HIMAGELIST ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ILCF_MOVE ; 
- int /*<<< orphan*/  ILC_COLOR ; 
- int /*<<< orphan*/  createImageList (int,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  pImageList_Copy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pImageList_Create (int,int,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  pImageList_Destroy (int /*<<< orphan*/ ) ; 
- int pImageList_GetImageCount (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int HIMAGELIST ;
+typedef int BOOL ;
+
+
+ int ILCF_MOVE ;
+ int ILC_COLOR ;
+ int createImageList (int,int) ;
+ int ok (int,char*,...) ;
+ int pImageList_Copy (int ,int ,int ,int,int ) ;
+ int pImageList_Create (int,int,int ,int,int) ;
+ int pImageList_Destroy (int ) ;
+ int pImageList_GetImageCount (int ) ;
 
 __attribute__((used)) static void test_copy(void)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static void test_copy(void)
     count = pImageList_GetImageCount(src);
     ok(count > 2, "Tests need an ImageList with more than 2 images\n");
 
-    /* ImageList_Copy() cannot copy between two ImageLists */
+
     ret = pImageList_Copy(dst, 0, src, 2, ILCF_MOVE);
     ok(!ret, "ImageList_Copy() should have returned FALSE\n");
     count = pImageList_GetImageCount(dst);

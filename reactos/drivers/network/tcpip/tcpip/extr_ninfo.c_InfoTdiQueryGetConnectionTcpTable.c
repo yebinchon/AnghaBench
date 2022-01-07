@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_9__ ;
-typedef  struct TYPE_19__   TYPE_8__ ;
-typedef  struct TYPE_18__   TYPE_7__ ;
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG_PTR ;
-struct TYPE_20__ {int /*<<< orphan*/ * SocketContext; } ;
-struct TYPE_19__ {scalar_t__* OwningModuleInfo; int /*<<< orphan*/  dwState; void* dwRemotePort; int /*<<< orphan*/  dwRemoteAddr; void* dwLocalPort; int /*<<< orphan*/  dwLocalAddr; int /*<<< orphan*/  liCreateTimestamp; int /*<<< orphan*/  dwOwningPid; } ;
-struct TYPE_13__ {int /*<<< orphan*/  IPv4Address; } ;
+
+
+typedef struct TYPE_20__ TYPE_9__ ;
+typedef struct TYPE_19__ TYPE_8__ ;
+typedef struct TYPE_18__ TYPE_7__ ;
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG_PTR ;
+struct TYPE_20__ {int * SocketContext; } ;
+struct TYPE_19__ {scalar_t__* OwningModuleInfo; int dwState; void* dwRemotePort; int dwRemoteAddr; void* dwLocalPort; int dwLocalAddr; int liCreateTimestamp; int dwOwningPid; } ;
+struct TYPE_13__ {int IPv4Address; } ;
 struct TYPE_14__ {TYPE_2__ Address; } ;
-struct TYPE_18__ {scalar_t__ SubProcessTag; TYPE_9__* Connection; void* Port; TYPE_3__ Address; TYPE_1__* Listener; int /*<<< orphan*/  CreationTime; int /*<<< orphan*/  ProcessId; } ;
+struct TYPE_18__ {scalar_t__ SubProcessTag; TYPE_9__* Connection; void* Port; TYPE_3__ Address; TYPE_1__* Listener; int CreationTime; int ProcessId; } ;
 struct TYPE_17__ {int TAAddressCount; TYPE_5__* Address; } ;
 struct TYPE_16__ {scalar_t__ AddressLength; TYPE_4__* Address; } ;
-struct TYPE_15__ {int /*<<< orphan*/  sin_port; int /*<<< orphan*/  in_addr; } ;
+struct TYPE_15__ {int sin_port; int in_addr; } ;
 struct TYPE_12__ {TYPE_7__* AddressFile; } ;
-typedef  scalar_t__ TDI_TCPUDP_CLASS_INFO ;
-typedef  int /*<<< orphan*/  TDI_STATUS ;
-typedef  TYPE_6__ TA_IP_ADDRESS ;
-typedef  int SIZE_T ;
-typedef  int /*<<< orphan*/  PUINT ;
-typedef  int /*<<< orphan*/  PTRANSPORT_ADDRESS ;
-typedef  int /*<<< orphan*/  PNDIS_BUFFER ;
-typedef  int /*<<< orphan*/  PCHAR ;
-typedef  TYPE_7__* PADDRESS_FILE ;
-typedef  int /*<<< orphan*/  MIB_TCPROW_OWNER_PID ;
-typedef  TYPE_8__ MIB_TCPROW_OWNER_MODULE ;
-typedef  int /*<<< orphan*/  MIB_TCPROW ;
+typedef scalar_t__ TDI_TCPUDP_CLASS_INFO ;
+typedef int TDI_STATUS ;
+typedef TYPE_6__ TA_IP_ADDRESS ;
+typedef int SIZE_T ;
+typedef int PUINT ;
+typedef int PTRANSPORT_ADDRESS ;
+typedef int PNDIS_BUFFER ;
+typedef int PCHAR ;
+typedef TYPE_7__* PADDRESS_FILE ;
+typedef int MIB_TCPROW_OWNER_PID ;
+typedef TYPE_8__ MIB_TCPROW_OWNER_MODULE ;
+typedef int MIB_TCPROW ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  DEBUG_INFO ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  HandleToUlong (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InfoCopyOut (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MIB_TCP_STATE_LISTEN ; 
- int NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RtlZeroMemory (scalar_t__*,int) ; 
- int /*<<< orphan*/  TCPGetSockAddress (TYPE_9__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TCPGetSocketStatus (TYPE_9__*,int /*<<< orphan*/ *) ; 
- scalar_t__ TDI_ADDRESS_LENGTH_IP ; 
- int /*<<< orphan*/  TDI_INVALID_REQUEST ; 
- int /*<<< orphan*/  TDI_SUCCESS ; 
- int /*<<< orphan*/  TI_DbgPrint (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ TcpUdpClassOwner ; 
- scalar_t__ TcpUdpClassOwnerPid ; 
- void* ntohs (int /*<<< orphan*/ ) ; 
+
+ int ASSERT (int) ;
+ int DEBUG_INFO ;
+ int FALSE ;
+ int HandleToUlong (int ) ;
+ int InfoCopyOut (int ,int,int ,int ) ;
+ int MIB_TCP_STATE_LISTEN ;
+ int NT_SUCCESS (int ) ;
+ int RtlZeroMemory (scalar_t__*,int) ;
+ int TCPGetSockAddress (TYPE_9__*,int ,int ) ;
+ int TCPGetSocketStatus (TYPE_9__*,int *) ;
+ scalar_t__ TDI_ADDRESS_LENGTH_IP ;
+ int TDI_INVALID_REQUEST ;
+ int TDI_SUCCESS ;
+ int TI_DbgPrint (int ,char*) ;
+ int TRUE ;
+ scalar_t__ TcpUdpClassOwner ;
+ scalar_t__ TcpUdpClassOwnerPid ;
+ void* ntohs (int ) ;
 
 TDI_STATUS InfoTdiQueryGetConnectionTcpTable(PADDRESS_FILE AddrFile,
-				    PNDIS_BUFFER Buffer,
-				    PUINT BufferSize,
+        PNDIS_BUFFER Buffer,
+        PUINT BufferSize,
                     TDI_TCPUDP_CLASS_INFO Class)
 {
     SIZE_T Size;
@@ -89,7 +89,7 @@ TDI_STATUS InfoTdiQueryGetConnectionTcpTable(PADDRESS_FILE AddrFile,
     TcpRow.dwOwningPid = HandleToUlong(AddrFile->ProcessId);
     TcpRow.liCreateTimestamp = AddrFile->CreationTime;
 
-    if (AddrFile->Listener != NULL)
+    if (AddrFile->Listener != ((void*)0))
     {
         PADDRESS_FILE EndPoint;
 
@@ -103,8 +103,8 @@ TDI_STATUS InfoTdiQueryGetConnectionTcpTable(PADDRESS_FILE AddrFile,
 
         Status = TDI_SUCCESS;
     }
-    else if (AddrFile->Connection != NULL &&
-             AddrFile->Connection->SocketContext != NULL)
+    else if (AddrFile->Connection != ((void*)0) &&
+             AddrFile->Connection->SocketContext != ((void*)0))
     {
         TA_IP_ADDRESS EndPoint;
 

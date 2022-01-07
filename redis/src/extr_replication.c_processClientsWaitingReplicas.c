@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {TYPE_3__* value; } ;
-typedef  TYPE_2__ listNode ;
-typedef  int /*<<< orphan*/  listIter ;
+typedef TYPE_2__ listNode ;
+typedef int listIter ;
 struct TYPE_8__ {long long reploffset; int numreplicas; } ;
 struct TYPE_10__ {TYPE_1__ bpop; } ;
-typedef  TYPE_3__ client ;
-struct TYPE_11__ {int /*<<< orphan*/  clients_waiting_acks; } ;
+typedef TYPE_3__ client ;
+struct TYPE_11__ {int clients_waiting_acks; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  addReplyLongLong (TYPE_3__*,int) ; 
- TYPE_2__* listNext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  listRewind (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int replicationCountAcksByOffset (long long) ; 
- TYPE_5__ server ; 
- int /*<<< orphan*/  unblockClient (TYPE_3__*) ; 
+
+ int addReplyLongLong (TYPE_3__*,int) ;
+ TYPE_2__* listNext (int *) ;
+ int listRewind (int ,int *) ;
+ int replicationCountAcksByOffset (long long) ;
+ TYPE_5__ server ;
+ int unblockClient (TYPE_3__*) ;
 
 void processClientsWaitingReplicas(void) {
     long long last_offset = 0;
@@ -41,10 +41,10 @@ void processClientsWaitingReplicas(void) {
     while((ln = listNext(&li))) {
         client *c = ln->value;
 
-        /* Every time we find a client that is satisfied for a given
-         * offset and number of replicas, we remember it so the next client
-         * may be unblocked without calling replicationCountAcksByOffset()
-         * if the requested offset / replicas were equal or less. */
+
+
+
+
         if (last_offset && last_offset > c->bpop.reploffset &&
                            last_numreplicas > c->bpop.numreplicas)
         {

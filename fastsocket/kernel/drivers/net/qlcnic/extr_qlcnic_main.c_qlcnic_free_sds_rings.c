@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct qlcnic_recv_context {int /*<<< orphan*/ * sds_rings; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
+
+
+
+struct qlcnic_recv_context {int * sds_rings; } ;
+
+
+ int kfree (int *) ;
 
 void qlcnic_free_sds_rings(struct qlcnic_recv_context *recv_ctx)
 {
-	if (recv_ctx->sds_rings != NULL)
-		kfree(recv_ctx->sds_rings);
+ if (recv_ctx->sds_rings != ((void*)0))
+  kfree(recv_ctx->sds_rings);
 
-	recv_ctx->sds_rings = NULL;
+ recv_ctx->sds_rings = ((void*)0);
 }

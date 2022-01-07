@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pthread_t ;
-typedef  int /*<<< orphan*/  pthread_attr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PTHREAD_CREATE_DETACHED ; 
- int /*<<< orphan*/  pthread_attr_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_attr_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_attr_setdetachstate (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pthread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int taosNoteFd ; 
- scalar_t__ taosNoteLines ; 
- scalar_t__ taosNoteMaxLines ; 
- int /*<<< orphan*/  taosNoteMutex ; 
- int taosNoteOpenInProgress ; 
- int /*<<< orphan*/  taosNotePrint (char*) ; 
- int /*<<< orphan*/  taosThreadToOpenNewNote ; 
+
+
+
+typedef int pthread_t ;
+typedef int pthread_attr_t ;
+
+
+ int PTHREAD_CREATE_DETACHED ;
+ int pthread_attr_destroy (int *) ;
+ int pthread_attr_init (int *) ;
+ int pthread_attr_setdetachstate (int *,int ) ;
+ int pthread_create (int *,int *,int ,int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int taosNoteFd ;
+ scalar_t__ taosNoteLines ;
+ scalar_t__ taosNoteMaxLines ;
+ int taosNoteMutex ;
+ int taosNoteOpenInProgress ;
+ int taosNotePrint (char*) ;
+ int taosThreadToOpenNewNote ;
 
 int taosOpenNewNote()
 {
@@ -42,7 +42,7 @@ int taosOpenNewNote()
         pthread_attr_init(&attr);
         pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
 
-        pthread_create(&pattern, &attr, taosThreadToOpenNewNote, NULL);
+        pthread_create(&pattern, &attr, taosThreadToOpenNewNote, ((void*)0));
         pthread_attr_destroy(&attr);
     }
 

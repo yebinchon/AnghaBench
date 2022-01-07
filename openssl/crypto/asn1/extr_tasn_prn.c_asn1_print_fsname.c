@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  spaces ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int spaces ;
 struct TYPE_3__ {int flags; } ;
-typedef  int /*<<< orphan*/  BIO ;
-typedef  TYPE_1__ ASN1_PCTX ;
+typedef int BIO ;
+typedef TYPE_1__ ASN1_PCTX ;
 
-/* Variables and functions */
- int ASN1_PCTX_FLAGS_NO_FIELD_NAME ; 
- int ASN1_PCTX_FLAGS_NO_STRUCT_NAME ; 
- scalar_t__ BIO_printf (int /*<<< orphan*/ *,char*,char const*) ; 
- scalar_t__ BIO_puts (int /*<<< orphan*/ *,char const*) ; 
- int BIO_write (int /*<<< orphan*/ *,char const*,int const) ; 
+
+ int ASN1_PCTX_FLAGS_NO_FIELD_NAME ;
+ int ASN1_PCTX_FLAGS_NO_STRUCT_NAME ;
+ scalar_t__ BIO_printf (int *,char*,char const*) ;
+ scalar_t__ BIO_puts (int *,char const*) ;
+ int BIO_write (int *,char const*,int const) ;
 
 __attribute__((used)) static int asn1_print_fsname(BIO *out, int indent,
                              const char *fname, const char *sname,
@@ -38,9 +38,9 @@ __attribute__((used)) static int asn1_print_fsname(BIO *out, int indent,
     if (BIO_write(out, spaces, indent) != indent)
         return 0;
     if (pctx->flags & ASN1_PCTX_FLAGS_NO_STRUCT_NAME)
-        sname = NULL;
+        sname = ((void*)0);
     if (pctx->flags & ASN1_PCTX_FLAGS_NO_FIELD_NAME)
-        fname = NULL;
+        fname = ((void*)0);
     if (!sname && !fname)
         return 1;
     if (fname) {

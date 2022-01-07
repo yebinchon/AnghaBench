@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lexical_function ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int lexical_function ;
+typedef int WORD ;
+typedef int WCHAR ;
 struct TYPE_5__ {size_t ralf; size_t end; size_t base; scalar_t__ start; } ;
-typedef  int /*<<< orphan*/  ScriptCache ;
-typedef  int /*<<< orphan*/  SCRIPT_ANALYSIS ;
-typedef  TYPE_1__ IndicSyllable ;
-typedef  size_t INT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int ScriptCache ;
+typedef int SCRIPT_ANALYSIS ;
+typedef TYPE_1__ IndicSyllable ;
+typedef size_t INT ;
+typedef int HDC ;
+typedef int BOOL ;
 
-/* Variables and functions */
- size_t GSUB_E_NOGLYPH ; 
- int /*<<< orphan*/  UpdateClusters (size_t,size_t,int,size_t,int /*<<< orphan*/ *) ; 
- size_t apply_GSUB_feature_to_glyph (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t,int,size_t*,char const*) ; 
- size_t find_halant_consonant (int /*<<< orphan*/ *,size_t,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shift_syllable_glyph_indexs (TYPE_1__*,scalar_t__,size_t) ; 
+
+ size_t GSUB_E_NOGLYPH ;
+ int UpdateClusters (size_t,size_t,int,size_t,int *) ;
+ size_t apply_GSUB_feature_to_glyph (int ,int *,int *,int *,size_t,int,size_t*,char const*) ;
+ size_t find_halant_consonant (int *,size_t,size_t,int ) ;
+ int shift_syllable_glyph_indexs (TYPE_1__*,scalar_t__,size_t) ;
 
 __attribute__((used)) static void Apply_Indic_PostBase(HDC hdc, ScriptCache *psc, SCRIPT_ANALYSIS *psa, WCHAR* pwChars, INT cChars, IndicSyllable *syllable, WORD *pwOutGlyphs, INT* pcGlyphs, WORD *pwLogClust, lexical_function lexical, IndicSyllable *glyph_index, BOOL modern, const char* feat)
 {

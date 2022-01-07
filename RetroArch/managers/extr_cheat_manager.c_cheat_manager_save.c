@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
-typedef  struct TYPE_12__   TYPE_11__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  key ;
-typedef  int /*<<< orphan*/  endian_key ;
-typedef  int /*<<< orphan*/  enable_key ;
-typedef  int /*<<< orphan*/  desc_key ;
+
+
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+typedef struct TYPE_12__ TYPE_11__ ;
+
+
+typedef int key ;
+typedef int endian_key ;
+typedef int enable_key ;
+typedef int desc_key ;
 struct TYPE_14__ {int guaranteed_no_duplicates; } ;
-typedef  TYPE_2__ config_file_t ;
-typedef  int /*<<< orphan*/  code_key ;
-typedef  int /*<<< orphan*/  cheats_file ;
-typedef  int /*<<< orphan*/  buf ;
-struct TYPE_13__ {unsigned int handler; unsigned int memory_search_size; unsigned int cheat_type; unsigned int value; unsigned int address; unsigned int address_mask; unsigned int rumble_type; unsigned int rumble_value; unsigned int rumble_port; unsigned int rumble_primary_strength; unsigned int rumble_primary_duration; unsigned int rumble_secondary_strength; unsigned int rumble_secondary_duration; unsigned int repeat_count; unsigned int repeat_add_to_value; unsigned int repeat_add_to_address; int /*<<< orphan*/  big_endian; int /*<<< orphan*/  state; int /*<<< orphan*/  code; int /*<<< orphan*/  desc; } ;
+typedef TYPE_2__ config_file_t ;
+typedef int code_key ;
+typedef int cheats_file ;
+typedef int buf ;
+struct TYPE_13__ {unsigned int handler; unsigned int memory_search_size; unsigned int cheat_type; unsigned int value; unsigned int address; unsigned int address_mask; unsigned int rumble_type; unsigned int rumble_value; unsigned int rumble_port; unsigned int rumble_primary_strength; unsigned int rumble_primary_duration; unsigned int rumble_secondary_strength; unsigned int rumble_secondary_duration; unsigned int repeat_count; unsigned int repeat_add_to_value; unsigned int repeat_add_to_address; int big_endian; int state; int code; int desc; } ;
 struct TYPE_12__ {unsigned int size; TYPE_1__* cheats; } ;
 
-/* Variables and functions */
- int PATH_MAX_LENGTH ; 
- TYPE_11__ cheat_manager_state ; 
- int /*<<< orphan*/  config_file_free (TYPE_2__*) ; 
- TYPE_2__* config_file_new_alloc () ; 
- TYPE_2__* config_file_new_from_path_to_string (char*) ; 
- int config_file_write (TYPE_2__*,char*,int) ; 
- int /*<<< orphan*/  config_set_bool (TYPE_2__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  config_set_int (TYPE_2__*,char*,unsigned int) ; 
- int /*<<< orphan*/  config_set_string (TYPE_2__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  config_set_uint (TYPE_2__*,char*,unsigned int) ; 
- int /*<<< orphan*/  fill_pathname_join (char*,char const*,char const*,int) ; 
- int /*<<< orphan*/  fill_pathname_noext (char*,char*,char*,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,unsigned int) ; 
- int /*<<< orphan*/  string_is_empty (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlcpy (char*,char const*,int) ; 
+
+ int PATH_MAX_LENGTH ;
+ TYPE_11__ cheat_manager_state ;
+ int config_file_free (TYPE_2__*) ;
+ TYPE_2__* config_file_new_alloc () ;
+ TYPE_2__* config_file_new_from_path_to_string (char*) ;
+ int config_file_write (TYPE_2__*,char*,int) ;
+ int config_set_bool (TYPE_2__*,char*,int ) ;
+ int config_set_int (TYPE_2__*,char*,unsigned int) ;
+ int config_set_string (TYPE_2__*,char*,int ) ;
+ int config_set_uint (TYPE_2__*,char*,unsigned int) ;
+ int fill_pathname_join (char*,char const*,char const*,int) ;
+ int fill_pathname_noext (char*,char*,char*,int) ;
+ int snprintf (char*,int,char*,unsigned int) ;
+ int string_is_empty (int ) ;
+ int strlcpy (char*,char const*,int) ;
 
 bool cheat_manager_save(const char *path, const char *cheat_database, bool overwrite)
 {
@@ -48,8 +48,8 @@ bool cheat_manager_save(const char *path, const char *cheat_database, bool overw
    unsigned i;
    char buf[PATH_MAX_LENGTH];
    char cheats_file[PATH_MAX_LENGTH];
-   config_file_t *conf = NULL;
-   unsigned int* data_ptrs[16] = { NULL};
+   config_file_t *conf = ((void*)0);
+   unsigned int* data_ptrs[16] = { ((void*)0)};
    char* keys[16] = {
       (char*)"cheat%u_handler",
       (char*)"cheat%u_memory_search_size",
@@ -72,7 +72,7 @@ bool cheat_manager_save(const char *path, const char *cheat_database, bool overw
    buf[0] = cheats_file[0] = '\0';
 
    if ((!cheat_manager_state.cheats) || cheat_manager_state.size == 0)
-      return false;
+      return 0;
 
    if (!cheat_database)
       strlcpy(cheats_file, path, sizeof(cheats_file));
@@ -88,9 +88,9 @@ bool cheat_manager_save(const char *path, const char *cheat_database, bool overw
 
    if (!conf)
       if (!(conf = config_file_new_alloc()))
-         return false;
+         return 0;
 
-   conf->guaranteed_no_duplicates = true;
+   conf->guaranteed_no_duplicates = 1;
 
    config_set_int(conf, "cheats", cheat_manager_state.size);
 
@@ -145,7 +145,7 @@ bool cheat_manager_save(const char *path, const char *cheat_database, bool overw
 
    }
 
-   ret = config_file_write(conf, cheats_file, true);
+   ret = config_file_write(conf, cheats_file, 1);
    config_file_free(conf);
 
    return ret;

@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  UINT_MAX ; 
- int /*<<< orphan*/  ksem_init_should_fail (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int EINVAL ;
+ int UINT_MAX ;
+ int ksem_init_should_fail (int ,int ) ;
 
 __attribute__((used)) static void
 init_bad_value(void)
 {
 
-	ksem_init_should_fail(UINT_MAX, EINVAL);
+ ksem_init_should_fail(UINT_MAX, EINVAL);
 }

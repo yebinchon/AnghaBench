@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-typedef  void* int8_t ;
-typedef  void* int16_t ;
-struct TYPE_14__ {void* y; void* x; int /*<<< orphan*/  member_0; } ;
+
+
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+typedef void* int8_t ;
+typedef void* int16_t ;
+struct TYPE_14__ {void* y; void* x; int member_0; } ;
 struct TYPE_13__ {int flags; struct TYPE_13__** child; void* bias; TYPE_5__ mv; } ;
-typedef  TYPE_4__ TileInfo ;
-struct TYPE_12__ {int /*<<< orphan*/  bits; scalar_t__ table; } ;
-struct TYPE_11__ {int /*<<< orphan*/  bits; scalar_t__ table; } ;
-struct TYPE_10__ {int /*<<< orphan*/  bits; scalar_t__ table; } ;
+typedef TYPE_4__ TileInfo ;
+struct TYPE_12__ {int bits; scalar_t__ table; } ;
+struct TYPE_11__ {int bits; scalar_t__ table; } ;
+struct TYPE_10__ {int bits; scalar_t__ table; } ;
 struct TYPE_15__ {int mv_esc; int bias_esc; TYPE_3__ bias_cb; TYPE_2__ mv_cb; TYPE_1__ flags_cb; } ;
-typedef  TYPE_5__ MV ;
-typedef  TYPE_6__ LevelCodes ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+typedef TYPE_5__ MV ;
+typedef TYPE_6__ LevelCodes ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- TYPE_4__* av_calloc (int,int) ; 
- void* get_sbits (int /*<<< orphan*/ *,int) ; 
- int get_vlc2 (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ,int) ; 
+
+ TYPE_4__* av_calloc (int,int) ;
+ void* get_sbits (int *,int) ;
+ int get_vlc2 (int *,scalar_t__,int ,int) ;
 
 __attribute__((used)) static TileInfo* decode_tile_info(GetBitContext *gb, LevelCodes *lc, int level)
 {
@@ -70,7 +70,7 @@ __attribute__((used)) static TileInfo* decode_tile_info(GetBitContext *gb, Level
 
     ti = av_calloc(1, sizeof(*ti));
     if (!ti)
-        return NULL;
+        return ((void*)0);
 
     ti->flags = flags;
     ti->mv = mv;

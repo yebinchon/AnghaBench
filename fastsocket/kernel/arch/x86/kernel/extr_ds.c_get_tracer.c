@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct task_struct {int dummy; } ;
 
-/* Variables and functions */
- int EPERM ; 
- int /*<<< orphan*/  atomic_dec (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atomic_inc (int /*<<< orphan*/ *) ; 
- scalar_t__ atomic_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ds_lock ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tracers ; 
+
+ int EPERM ;
+ int atomic_dec (int *) ;
+ int atomic_inc (int *) ;
+ scalar_t__ atomic_read (int *) ;
+ int ds_lock ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
+ int tracers ;
 
 __attribute__((used)) static inline int get_tracer(struct task_struct *task)
 {
-	int error;
+ int error;
 
-	spin_lock_irq(&ds_lock);
+ spin_lock_irq(&ds_lock);
 
-	if (task) {
-		error = -EPERM;
-		if (atomic_read(&tracers) < 0)
-			goto out;
-		atomic_inc(&tracers);
-	} else {
-		error = -EPERM;
-		if (atomic_read(&tracers) > 0)
-			goto out;
-		atomic_dec(&tracers);
-	}
+ if (task) {
+  error = -EPERM;
+  if (atomic_read(&tracers) < 0)
+   goto out;
+  atomic_inc(&tracers);
+ } else {
+  error = -EPERM;
+  if (atomic_read(&tracers) > 0)
+   goto out;
+  atomic_dec(&tracers);
+ }
 
-	error = 0;
+ error = 0;
 out:
-	spin_unlock_irq(&ds_lock);
-	return error;
+ spin_unlock_irq(&ds_lock);
+ return error;
 }

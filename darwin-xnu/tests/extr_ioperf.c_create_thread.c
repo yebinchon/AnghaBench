@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
 struct sched_param {int sched_priority; } ;
-typedef  int /*<<< orphan*/  pthread_t ;
-typedef  int /*<<< orphan*/  pthread_attr_t ;
-struct TYPE_2__ {int /*<<< orphan*/  thread; } ;
+typedef int pthread_t ;
+typedef int pthread_attr_t ;
+struct TYPE_2__ {int thread; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCHED_RR ; 
- int /*<<< orphan*/  T_ASSERT_POSIX_ZERO (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  pthread_attr_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_attr_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_attr_setschedparam (int /*<<< orphan*/ *,struct sched_param*) ; 
- int /*<<< orphan*/  pthread_attr_setschedpolicy (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pthread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void* (*) (void*),void*) ; 
- TYPE_1__* threads ; 
+
+ int SCHED_RR ;
+ int T_ASSERT_POSIX_ZERO (int ,char*) ;
+ int pthread_attr_destroy (int *) ;
+ int pthread_attr_init (int *) ;
+ int pthread_attr_setschedparam (int *,struct sched_param*) ;
+ int pthread_attr_setschedpolicy (int *,int ) ;
+ int pthread_create (int *,int *,void* (*) (void*),void*) ;
+ TYPE_1__* threads ;
 
 __attribute__((used)) static pthread_t
-create_thread(uint32_t thread_id, uint32_t priority, bool fixpri, 
+create_thread(uint32_t thread_id, uint32_t priority, bool fixpri,
         void *(*start_routine)(void *))
 {
     int rv;

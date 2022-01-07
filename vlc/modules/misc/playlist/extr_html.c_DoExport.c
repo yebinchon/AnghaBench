@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_tick_t ;
-typedef  int /*<<< orphan*/  vlc_playlist_item_t ;
-struct vlc_playlist_export {int /*<<< orphan*/  file; int /*<<< orphan*/  playlist_view; } ;
-typedef  int /*<<< orphan*/  input_item_t ;
 
-/* Variables and functions */
- int SEC_FROM_VLC_TICK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,...) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* input_item_GetArtist (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  input_item_GetDuration (int /*<<< orphan*/ *) ; 
- char* input_item_GetName (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vlc_playlist_item_GetMedia (int /*<<< orphan*/ *) ; 
- size_t vlc_playlist_view_Count (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * vlc_playlist_view_Get (int /*<<< orphan*/ ,size_t) ; 
- char* vlc_xml_encode (char*) ; 
+
+
+
+typedef int vlc_tick_t ;
+typedef int vlc_playlist_item_t ;
+struct vlc_playlist_export {int file; int playlist_view; } ;
+typedef int input_item_t ;
+
+
+ int SEC_FROM_VLC_TICK (int ) ;
+ int fprintf (int ,char*,char*,...) ;
+ int free (char*) ;
+ char* input_item_GetArtist (int *) ;
+ int input_item_GetDuration (int *) ;
+ char* input_item_GetName (int *) ;
+ int * vlc_playlist_item_GetMedia (int *) ;
+ size_t vlc_playlist_view_Count (int ) ;
+ int * vlc_playlist_view_Get (int ,size_t) ;
+ char* vlc_xml_encode (char*) ;
 
 __attribute__((used)) static void DoExport( struct vlc_playlist_export *p_export )
 {
-    /* Go through the playlist and add items */
+
     size_t count = vlc_playlist_view_Count(p_export->playlist_view);
     for( size_t i = 0; i < count; ++i )
     {
@@ -38,7 +38,7 @@ __attribute__((used)) static void DoExport( struct vlc_playlist_export *p_export
 
         input_item_t *media = vlc_playlist_item_GetMedia(item);
 
-        char* psz_name = NULL;
+        char* psz_name = ((void*)0);
         char *psz_tmp = input_item_GetName(media);
         if( psz_tmp )
             psz_name = vlc_xml_encode( psz_tmp );
@@ -46,7 +46,7 @@ __attribute__((used)) static void DoExport( struct vlc_playlist_export *p_export
 
         if( psz_name )
         {
-            char* psz_artist = NULL;
+            char* psz_artist = ((void*)0);
             psz_tmp = input_item_GetArtist(media);
             if( psz_tmp )
                 psz_artist = vlc_xml_encode( psz_tmp );
@@ -56,7 +56,7 @@ __attribute__((used)) static void DoExport( struct vlc_playlist_export *p_export
             int min = SEC_FROM_VLC_TICK( i_duration ) / 60;
             int sec = SEC_FROM_VLC_TICK( i_duration ) - min * 60;
 
-            // Print the artist if we have one
+
             if( psz_artist && *psz_artist )
                 fprintf( p_export->file, "    <li>%s - %s (%02d:%02d)</li>\n", psz_artist, psz_name, min, sec );
             else

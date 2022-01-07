@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct xenbus_device {int /*<<< orphan*/  dev; int /*<<< orphan*/  otherend; } ;
+
+
+
+
+struct xenbus_device {int dev; int otherend; } ;
 struct backend_info {int frontend_state; } ;
-typedef  enum xenbus_state { ____Placeholder_xenbus_state } xenbus_state ;
+typedef enum xenbus_state { ____Placeholder_xenbus_state } xenbus_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
-#define  XenbusStateClosed 133 
-#define  XenbusStateClosing 132 
-#define  XenbusStateConnected 131 
- int const XenbusStateInitWait ; 
-#define  XenbusStateInitialised 130 
-#define  XenbusStateInitialising 129 
-#define  XenbusStateUnknown 128 
- struct backend_info* dev_get_drvdata (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  device_unregister (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pr_debug (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_backend_state (struct backend_info*,int const) ; 
- int /*<<< orphan*/  xenbus_dev_fatal (struct xenbus_device*,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  xenbus_dev_is_online (struct xenbus_device*) ; 
- int /*<<< orphan*/  xenbus_strstate (int) ; 
+
+ int EINVAL ;
+
+
+
+ int const XenbusStateInitWait ;
+
+
+
+ struct backend_info* dev_get_drvdata (int *) ;
+ int device_unregister (int *) ;
+ int pr_debug (char*,int ,int ) ;
+ int set_backend_state (struct backend_info*,int const) ;
+ int xenbus_dev_fatal (struct xenbus_device*,int ,char*,int) ;
+ int xenbus_dev_is_online (struct xenbus_device*) ;
+ int xenbus_strstate (int) ;
 
 __attribute__((used)) static void frontend_changed(struct xenbus_device *dev,
-			     enum xenbus_state frontend_state)
+        enum xenbus_state frontend_state)
 {
-	struct backend_info *be = dev_get_drvdata(&dev->dev);
+ struct backend_info *be = dev_get_drvdata(&dev->dev);
 
-	pr_debug("%s -> %s\n", dev->otherend, xenbus_strstate(frontend_state));
+ pr_debug("%s -> %s\n", dev->otherend, xenbus_strstate(frontend_state));
 
-	be->frontend_state = frontend_state;
+ be->frontend_state = frontend_state;
 
-	switch (frontend_state) {
-	case XenbusStateInitialising:
-		set_backend_state(be, XenbusStateInitWait);
-		break;
+ switch (frontend_state) {
+ case 129:
+  set_backend_state(be, XenbusStateInitWait);
+  break;
 
-	case XenbusStateInitialised:
-		break;
+ case 130:
+  break;
 
-	case XenbusStateConnected:
-		set_backend_state(be, XenbusStateConnected);
-		break;
+ case 131:
+  set_backend_state(be, 131);
+  break;
 
-	case XenbusStateClosing:
-		set_backend_state(be, XenbusStateClosing);
-		break;
+ case 132:
+  set_backend_state(be, 132);
+  break;
 
-	case XenbusStateClosed:
-		set_backend_state(be, XenbusStateClosed);
-		if (xenbus_dev_is_online(dev))
-			break;
-		/* fall through - if not online */
-	case XenbusStateUnknown:
-		set_backend_state(be, XenbusStateClosed);
-		device_unregister(&dev->dev);
-		break;
+ case 133:
+  set_backend_state(be, 133);
+  if (xenbus_dev_is_online(dev))
+   break;
 
-	default:
-		xenbus_dev_fatal(dev, -EINVAL, "saw state %d at frontend",
-				 frontend_state);
-		break;
-	}
+ case 128:
+  set_backend_state(be, 133);
+  device_unregister(&dev->dev);
+  break;
+
+ default:
+  xenbus_dev_fatal(dev, -EINVAL, "saw state %d at frontend",
+     frontend_state);
+  break;
+ }
 }

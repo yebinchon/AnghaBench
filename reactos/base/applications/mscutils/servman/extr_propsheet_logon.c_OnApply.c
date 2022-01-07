@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
 struct TYPE_7__ {scalar_t__ bAccountChanged; TYPE_2__* pService; TYPE_1__* pServiceConfig; } ;
-struct TYPE_6__ {int /*<<< orphan*/  lpServiceName; } ;
-struct TYPE_5__ {int /*<<< orphan*/  dwServiceType; } ;
-typedef  TYPE_3__* PLOGONDATA ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  scalar_t__ BOOL ;
+struct TYPE_6__ {int lpServiceName; } ;
+struct TYPE_5__ {int dwServiceType; } ;
+typedef TYPE_3__* PLOGONDATA ;
+typedef int HWND ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BM_GETCHECK ; 
- scalar_t__ BST_CHECKED ; 
- int /*<<< orphan*/ * DEFAULT_PASSWORD ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetDlgItemText (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  GetModuleHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDC_LOGON_ACCOUNTNAME ; 
- int /*<<< orphan*/  IDC_LOGON_INTERACTIVE ; 
- int /*<<< orphan*/  IDC_LOGON_PASSWORD1 ; 
- int /*<<< orphan*/  IDC_LOGON_PASSWORD2 ; 
- int /*<<< orphan*/  IDC_LOGON_SYSTEMACCOUNT ; 
- int /*<<< orphan*/  IDS_APPNAME ; 
- int /*<<< orphan*/  IDS_INVALID_PASSWORD ; 
- int /*<<< orphan*/  IDS_NOT_SAME_PASSWORD ; 
- int MB_ICONWARNING ; 
- int MB_OK ; 
- int /*<<< orphan*/  ResourceMessageBox (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SERVICE_INTERACTIVE_PROCESS ; 
- int /*<<< orphan*/  SERVICE_NO_CHANGE ; 
- scalar_t__ SendDlgItemMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ SetServiceAccount (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ TRUE ; 
- scalar_t__ wcscmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wcscpy (int /*<<< orphan*/ *,char*) ; 
+
+ int BM_GETCHECK ;
+ scalar_t__ BST_CHECKED ;
+ int * DEFAULT_PASSWORD ;
+ scalar_t__ FALSE ;
+ int GetDlgItemText (int ,int ,int *,int) ;
+ int GetModuleHandle (int *) ;
+ int IDC_LOGON_ACCOUNTNAME ;
+ int IDC_LOGON_INTERACTIVE ;
+ int IDC_LOGON_PASSWORD1 ;
+ int IDC_LOGON_PASSWORD2 ;
+ int IDC_LOGON_SYSTEMACCOUNT ;
+ int IDS_APPNAME ;
+ int IDS_INVALID_PASSWORD ;
+ int IDS_NOT_SAME_PASSWORD ;
+ int MB_ICONWARNING ;
+ int MB_OK ;
+ int ResourceMessageBox (int ,int ,int,int ,int ) ;
+ int SERVICE_INTERACTIVE_PROCESS ;
+ int SERVICE_NO_CHANGE ;
+ scalar_t__ SendDlgItemMessageW (int ,int ,int ,int ,int ) ;
+ scalar_t__ SetServiceAccount (int ,int ,int *,int *) ;
+ scalar_t__ TRUE ;
+ scalar_t__ wcscmp (int *,int *) ;
+ int wcscpy (int *,char*) ;
 
 __attribute__((used)) static
 BOOL
@@ -65,12 +65,12 @@ OnApply(
 
     if (SendDlgItemMessageW(hwndDlg, IDC_LOGON_SYSTEMACCOUNT, BM_GETCHECK, 0, 0) == BST_CHECKED)
     {
-        /* System account selected */
+
         wcscpy(szAccountName, L"LocalSystem");
         wcscpy(szPassword1, L"");
         wcscpy(szPassword2, L"");
 
-        /* Handle the interactive flag */
+
         dwServiceType = pLogonData->pServiceConfig->dwServiceType;
         if (SendDlgItemMessageW(hwndDlg, IDC_LOGON_INTERACTIVE, BM_GETCHECK, 0, 0) == BST_CHECKED)
             dwServiceType |= SERVICE_INTERACTIVE_PROCESS;
@@ -79,20 +79,20 @@ OnApply(
     }
     else
     {
-        /* Other account selected */
+
         GetDlgItemText(hwndDlg, IDC_LOGON_ACCOUNTNAME, szAccountName, 64);
         GetDlgItemText(hwndDlg, IDC_LOGON_PASSWORD1, szPassword1, 64);
         GetDlgItemText(hwndDlg, IDC_LOGON_PASSWORD2, szPassword2, 64);
 
         if (wcscmp(szPassword1, szPassword2))
         {
-            ResourceMessageBox(GetModuleHandle(NULL), hwndDlg, MB_OK | MB_ICONWARNING, IDS_APPNAME, IDS_NOT_SAME_PASSWORD);
+            ResourceMessageBox(GetModuleHandle(((void*)0)), hwndDlg, MB_OK | MB_ICONWARNING, IDS_APPNAME, IDS_NOT_SAME_PASSWORD);
             return FALSE;
         }
 
         if (!wcscmp(szPassword1, DEFAULT_PASSWORD))
         {
-            ResourceMessageBox(GetModuleHandle(NULL), hwndDlg, MB_OK | MB_ICONWARNING, IDS_APPNAME, IDS_INVALID_PASSWORD);
+            ResourceMessageBox(GetModuleHandle(((void*)0)), hwndDlg, MB_OK | MB_ICONWARNING, IDS_APPNAME, IDS_INVALID_PASSWORD);
             return FALSE;
         }
     }

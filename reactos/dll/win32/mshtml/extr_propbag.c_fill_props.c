@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsIDOMNode ;
-typedef  int /*<<< orphan*/  nsIDOMHTMLElement ;
-typedef  int /*<<< orphan*/  nsIDOMHTMLCollection ;
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  scalar_t__ UINT32 ;
-typedef  int /*<<< orphan*/  PropertyBag ;
-typedef  char PRUnichar ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_FAIL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_nsIDOMHTMLElement ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ NS_SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  add_prop (int /*<<< orphan*/ *,char const*,char const*) ; 
- int /*<<< orphan*/  get_elem_attr_value (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,char const**) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_InitDepend (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  nsIDOMHTMLCollection_GetLength (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  nsIDOMHTMLCollection_Item (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  nsIDOMHTMLCollection_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMHTMLElement_GetElementsByTagName (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  nsIDOMHTMLElement_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMNode_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  nsIDOMNode_Release (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int nsresult ;
+typedef int nsIDOMNode ;
+typedef int nsIDOMHTMLElement ;
+typedef int nsIDOMHTMLCollection ;
+typedef int nsAString ;
+typedef scalar_t__ UINT32 ;
+typedef int PropertyBag ;
+typedef char PRUnichar ;
+typedef int HRESULT ;
+
+
+ int E_FAIL ;
+ scalar_t__ FAILED (int ) ;
+ int IID_nsIDOMHTMLElement ;
+ scalar_t__ NS_FAILED (int ) ;
+ scalar_t__ NS_SUCCEEDED (int ) ;
+ int S_OK ;
+ int add_prop (int *,char const*,char const*) ;
+ int get_elem_attr_value (int *,char const*,int *,char const**) ;
+ int nsAString_Finish (int *) ;
+ int nsAString_InitDepend (int *,char const*) ;
+ int nsIDOMHTMLCollection_GetLength (int *,scalar_t__*) ;
+ int nsIDOMHTMLCollection_Item (int *,scalar_t__,int **) ;
+ int nsIDOMHTMLCollection_Release (int *) ;
+ int nsIDOMHTMLElement_GetElementsByTagName (int *,int *,int **) ;
+ int nsIDOMHTMLElement_Release (int *) ;
+ int nsIDOMNode_QueryInterface (int *,int *,void**) ;
+ int nsIDOMNode_Release (int *) ;
 
 __attribute__((used)) static HRESULT fill_props(nsIDOMHTMLElement *nselem, PropertyBag *prop_bag)
 {

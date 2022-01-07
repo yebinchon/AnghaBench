@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint16_t ;
-typedef  int /*<<< orphan*/  plain ;
-struct TYPE_3__ {int /*<<< orphan*/  self_secret_key; int /*<<< orphan*/  secret_symmetric_key; } ;
-typedef  TYPE_1__ Net_Crypto ;
 
-/* Variables and functions */
- int COOKIE_DATA_LENGTH ; 
- int COOKIE_LENGTH ; 
- scalar_t__ HANDSHAKE_PACKET_LENGTH ; 
- int crypto_box_NONCEBYTES ; 
- int crypto_box_PUBLICKEYBYTES ; 
- int /*<<< orphan*/  crypto_hash_sha512 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int crypto_hash_sha512_BYTES ; 
- int decrypt_data (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ open_cookie (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- scalar_t__ public_key_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- scalar_t__ sodium_memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint16_t ;
+typedef int plain ;
+struct TYPE_3__ {int self_secret_key; int secret_symmetric_key; } ;
+typedef TYPE_1__ Net_Crypto ;
+
+
+ int COOKIE_DATA_LENGTH ;
+ int COOKIE_LENGTH ;
+ scalar_t__ HANDSHAKE_PACKET_LENGTH ;
+ int crypto_box_NONCEBYTES ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int crypto_hash_sha512 (int *,int const*,int) ;
+ int crypto_hash_sha512_BYTES ;
+ int decrypt_data (int *,int ,int const*,int const*,scalar_t__,int *) ;
+ int memcpy (int *,int *,int) ;
+ scalar_t__ open_cookie (int *,int const*,int ) ;
+ scalar_t__ public_key_cmp (int *,int const*) ;
+ scalar_t__ sodium_memcmp (int *,int *,int) ;
 
 __attribute__((used)) static int handle_crypto_handshake(const Net_Crypto *c, uint8_t *nonce, uint8_t *session_pk, uint8_t *peer_real_pk,
                                    uint8_t *dht_public_key, uint8_t *cookie, const uint8_t *packet, uint16_t length, const uint8_t *expected_real_pk)

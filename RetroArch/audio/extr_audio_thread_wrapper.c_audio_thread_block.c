@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int stopped; int stopped_ack; int /*<<< orphan*/  lock; int /*<<< orphan*/  cond; } ;
-typedef  TYPE_1__ audio_thread_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  scond_signal (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scond_wait (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slock_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slock_unlock (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int stopped; int stopped_ack; int lock; int cond; } ;
+typedef TYPE_1__ audio_thread_t ;
+
+
+ int scond_signal (int ) ;
+ int scond_wait (int ,int ) ;
+ int slock_lock (int ) ;
+ int slock_unlock (int ) ;
 
 __attribute__((used)) static void audio_thread_block(audio_thread_t *thr)
 {
@@ -29,11 +29,11 @@ __attribute__((used)) static void audio_thread_block(audio_thread_t *thr)
       return;
 
    slock_lock(thr->lock);
-   thr->stopped_ack = false;
-   thr->stopped = true;
+   thr->stopped_ack = 0;
+   thr->stopped = 1;
    scond_signal(thr->cond);
 
-   /* Wait until audio driver actually goes to sleep. */
+
    while (!thr->stopped_ack)
       scond_wait(thr->cond, thr->lock);
 

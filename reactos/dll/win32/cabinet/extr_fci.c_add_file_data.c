@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct file {int size; int /*<<< orphan*/  attribs; int /*<<< orphan*/  time; int /*<<< orphan*/  date; } ;
-struct TYPE_7__ {int (* read ) (int,scalar_t__,scalar_t__,int*,int /*<<< orphan*/ ) ;scalar_t__ data_in; scalar_t__ cdata_in; int /*<<< orphan*/  pv; int /*<<< orphan*/  (* close ) (int,int*,int /*<<< orphan*/ ) ;} ;
-typedef  int /*<<< orphan*/  PFNFCISTATUS ;
-typedef  int (* PFNFCIGETOPENINFO ) (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ) ;
-typedef  int INT_PTR ;
-typedef  TYPE_1__ FCI_Int ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ CAB_BLOCKMAX ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FCIERR_OPEN_SRC ; 
- int /*<<< orphan*/  FCIERR_READ_SRC ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  _A_EXEC ; 
- int /*<<< orphan*/  add_data_block (TYPE_1__*,int /*<<< orphan*/ ) ; 
- struct file* add_file (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  free_file (TYPE_1__*,struct file*) ; 
- int /*<<< orphan*/  set_error (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int stub1 (int,scalar_t__,scalar_t__,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int,int*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct file {int size; int attribs; int time; int date; } ;
+struct TYPE_7__ {int (* read ) (int,scalar_t__,scalar_t__,int*,int ) ;scalar_t__ data_in; scalar_t__ cdata_in; int pv; int (* close ) (int,int*,int ) ;} ;
+typedef int PFNFCISTATUS ;
+typedef int (* PFNFCIGETOPENINFO ) (char*,int *,int *,int *,int*,int ) ;
+typedef int INT_PTR ;
+typedef TYPE_1__ FCI_Int ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ CAB_BLOCKMAX ;
+ scalar_t__ FALSE ;
+ int FCIERR_OPEN_SRC ;
+ int FCIERR_READ_SRC ;
+ scalar_t__ TRUE ;
+ int _A_EXEC ;
+ int add_data_block (TYPE_1__*,int ) ;
+ struct file* add_file (TYPE_1__*,char*) ;
+ int free_file (TYPE_1__*,struct file*) ;
+ int set_error (TYPE_1__*,int ,int) ;
+ int stub1 (int,scalar_t__,scalar_t__,int*,int ) ;
+ int stub2 (int,int*,int ) ;
 
 __attribute__((used)) static BOOL add_file_data( FCI_Int *fci, char *sourcefile, char *filename, BOOL execute,
                            PFNFCIGETOPENINFO get_open_info, PFNFCISTATUS status_callback )

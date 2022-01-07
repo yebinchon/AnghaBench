@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ type; int flags; scalar_t__ length; scalar_t__ data; } ;
-typedef  int /*<<< orphan*/  BIO ;
-typedef  TYPE_1__ ASN1_STRING ;
+typedef int BIO ;
+typedef TYPE_1__ ASN1_STRING ;
 
-/* Variables and functions */
- scalar_t__ BIO_dump_indent (int /*<<< orphan*/ *,char const*,scalar_t__,int) ; 
- scalar_t__ BIO_printf (int /*<<< orphan*/ *,char*,int) ; 
- scalar_t__ BIO_puts (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ V_ASN1_BIT_STRING ; 
+
+ scalar_t__ BIO_dump_indent (int *,char const*,scalar_t__,int) ;
+ scalar_t__ BIO_printf (int *,char*,int) ;
+ scalar_t__ BIO_puts (int *,char*) ;
+ scalar_t__ V_ASN1_BIT_STRING ;
 
 __attribute__((used)) static int asn1_print_obstring(BIO *out, const ASN1_STRING *str, int indent)
 {

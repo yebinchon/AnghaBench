@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct xt_tgchk_param {int /*<<< orphan*/  family; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NF_LOG_TYPE_LOG ; 
- int nf_logger_find_get (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct xt_tgchk_param {int family; } ;
+
+
+ int NF_LOG_TYPE_LOG ;
+ int nf_logger_find_get (int ,int ) ;
 
 __attribute__((used)) static int trace_tg_check(const struct xt_tgchk_param *par)
 {
-	return nf_logger_find_get(par->family, NF_LOG_TYPE_LOG);
+ return nf_logger_find_get(par->family, NF_LOG_TYPE_LOG);
 }

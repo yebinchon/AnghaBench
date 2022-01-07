@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_4__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  vlc; } ;
-struct TYPE_5__ {scalar_t__ role; int nb_huffman_groups; TYPE_4__* huffman_groups; int /*<<< orphan*/  frame; int /*<<< orphan*/  is_alpha_primary; TYPE_4__* color_cache; } ;
-typedef  TYPE_1__ ImageContext ;
 
-/* Variables and functions */
- int HUFFMAN_CODES_PER_META_CODE ; 
- scalar_t__ IMAGE_ROLE_ARGB ; 
- int /*<<< orphan*/  av_frame_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_free (TYPE_4__*) ; 
- int /*<<< orphan*/  ff_free_vlc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_6__ TYPE_4__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int vlc; } ;
+struct TYPE_5__ {scalar_t__ role; int nb_huffman_groups; TYPE_4__* huffman_groups; int frame; int is_alpha_primary; TYPE_4__* color_cache; } ;
+typedef TYPE_1__ ImageContext ;
+
+
+ int HUFFMAN_CODES_PER_META_CODE ;
+ scalar_t__ IMAGE_ROLE_ARGB ;
+ int av_frame_free (int *) ;
+ int av_free (TYPE_4__*) ;
+ int ff_free_vlc (int *) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static void image_ctx_free(ImageContext *img)
 {

@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int MAX_AUX_USERS ; 
- int /*<<< orphan*/ * User ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  aux_sort (int /*<<< orphan*/ ,long) ; 
- int* aux_userlist ; 
- int aux_userlist_size ; 
- int /*<<< orphan*/  aux_userlist_tag ; 
- int log_split_min ; 
- int log_split_mod ; 
- int max_uid ; 
- int /*<<< orphan*/  vkprintf (int,char*,long,int /*<<< orphan*/ ,int,int,int) ; 
+ unsigned int MAX_AUX_USERS ;
+ int * User ;
+ int assert (int) ;
+ int aux_sort (int ,long) ;
+ int* aux_userlist ;
+ int aux_userlist_size ;
+ int aux_userlist_tag ;
+ int log_split_min ;
+ int log_split_mod ;
+ int max_uid ;
+ int vkprintf (int,char*,long,int ,int,int,int) ;
 
 int preprocess_aux_userlist (void) {
   long i, j;

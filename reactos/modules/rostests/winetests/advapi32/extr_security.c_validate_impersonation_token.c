@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  type ;
-typedef  int /*<<< orphan*/  sil ;
-typedef  int TOKEN_TYPE ;
-typedef  int /*<<< orphan*/  TOKEN_PRIMARY_GROUP ;
-typedef  int /*<<< orphan*/  TOKEN_OWNER ;
-typedef  int /*<<< orphan*/  TOKEN_DEFAULT_DACL ;
-typedef  int SECURITY_IMPERSONATION_LEVEL ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_INSUFFICIENT_BUFFER ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int GetTokenInformation (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int,int*) ; 
- int SecurityImpersonation ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  TokenDefaultDacl ; 
- int TokenImpersonation ; 
- int /*<<< orphan*/  TokenImpersonationLevel ; 
- int /*<<< orphan*/  TokenOwner ; 
- int TokenPrimary ; 
- int /*<<< orphan*/  TokenPrimaryGroup ; 
- int /*<<< orphan*/  TokenType ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int type ;
+typedef int sil ;
+typedef int TOKEN_TYPE ;
+typedef int TOKEN_PRIMARY_GROUP ;
+typedef int TOKEN_OWNER ;
+typedef int TOKEN_DEFAULT_DACL ;
+typedef int SECURITY_IMPERSONATION_LEVEL ;
+typedef int HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int ERROR_INSUFFICIENT_BUFFER ;
+ int FALSE ;
+ int GetLastError () ;
+ int GetTokenInformation (int ,int ,int*,int,int*) ;
+ int SecurityImpersonation ;
+ int SetLastError (int) ;
+ int TRUE ;
+ int TokenDefaultDacl ;
+ int TokenImpersonation ;
+ int TokenImpersonationLevel ;
+ int TokenOwner ;
+ int TokenPrimary ;
+ int TokenPrimaryGroup ;
+ int TokenType ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static BOOL validate_impersonation_token(HANDLE token, DWORD *token_type)
 {
@@ -64,7 +64,7 @@ __attribute__((used)) static BOOL validate_impersonation_token(HANDLE token, DWO
 
     needed = 0xdeadbeef;
     SetLastError(0xdeadbeef);
-    ret = GetTokenInformation(token, TokenDefaultDacl, NULL, 0, &needed);
+    ret = GetTokenInformation(token, TokenDefaultDacl, ((void*)0), 0, &needed);
     ok(!ret, "GetTokenInformation should fail\n");
     ok(GetLastError() == ERROR_INSUFFICIENT_BUFFER, "expected ERROR_INSUFFICIENT_BUFFER, got %d\n", GetLastError());
     ok(needed != 0xdeadbeef, "GetTokenInformation should return required buffer length\n");
@@ -72,7 +72,7 @@ __attribute__((used)) static BOOL validate_impersonation_token(HANDLE token, DWO
 
     needed = 0xdeadbeef;
     SetLastError(0xdeadbeef);
-    ret = GetTokenInformation(token, TokenOwner, NULL, 0, &needed);
+    ret = GetTokenInformation(token, TokenOwner, ((void*)0), 0, &needed);
     ok(!ret, "GetTokenInformation should fail\n");
     ok(GetLastError() == ERROR_INSUFFICIENT_BUFFER, "expected ERROR_INSUFFICIENT_BUFFER, got %d\n", GetLastError());
     ok(needed != 0xdeadbeef, "GetTokenInformation should return required buffer length\n");
@@ -80,7 +80,7 @@ __attribute__((used)) static BOOL validate_impersonation_token(HANDLE token, DWO
 
     needed = 0xdeadbeef;
     SetLastError(0xdeadbeef);
-    ret = GetTokenInformation(token, TokenPrimaryGroup, NULL, 0, &needed);
+    ret = GetTokenInformation(token, TokenPrimaryGroup, ((void*)0), 0, &needed);
     ok(!ret, "GetTokenInformation should fail\n");
     ok(GetLastError() == ERROR_INSUFFICIENT_BUFFER, "expected ERROR_INSUFFICIENT_BUFFER, got %d\n", GetLastError());
     ok(needed != 0xdeadbeef, "GetTokenInformation should return required buffer length\n");

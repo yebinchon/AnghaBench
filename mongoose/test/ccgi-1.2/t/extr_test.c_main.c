@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CGI_varlist ;
-typedef  int /*<<< orphan*/  CGI_value ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CGI_add_var (int /*<<< orphan*/ *,char*,char*) ; 
- scalar_t__ CGI_decode_base64 (char*,int*) ; 
- scalar_t__ CGI_decode_hex (char*,int*) ; 
- int /*<<< orphan*/ * CGI_decode_query (int /*<<< orphan*/ ,char*) ; 
- char* CGI_decode_url (char*) ; 
- char* CGI_decrypt (char*,int*,char const*) ; 
- char* CGI_encode_base64 (char*,int) ; 
- char* CGI_encode_entity (char*) ; 
- char* CGI_encode_hex (char*,int) ; 
- char* CGI_encode_query (char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*) ; 
- char* CGI_encode_url (char*,char*) ; 
- char* CGI_encode_varlist (int /*<<< orphan*/ *,char*) ; 
- char* CGI_encrypt (char*,int,char const*) ; 
- int /*<<< orphan*/ * CGI_get_cookie (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * CGI_get_post (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * CGI_get_query (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * CGI_lookup_all (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  dumplist (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fputc (char,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fwrite (char*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,int,...) ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ strcmp (char*,char*) ; 
- int strlen (char*) ; 
+
+
+
+typedef int CGI_varlist ;
+typedef int CGI_value ;
+
+
+ int * CGI_add_var (int *,char*,char*) ;
+ scalar_t__ CGI_decode_base64 (char*,int*) ;
+ scalar_t__ CGI_decode_hex (char*,int*) ;
+ int * CGI_decode_query (int ,char*) ;
+ char* CGI_decode_url (char*) ;
+ char* CGI_decrypt (char*,int*,char const*) ;
+ char* CGI_encode_base64 (char*,int) ;
+ char* CGI_encode_entity (char*) ;
+ char* CGI_encode_hex (char*,int) ;
+ char* CGI_encode_query (char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*) ;
+ char* CGI_encode_url (char*,char*) ;
+ char* CGI_encode_varlist (int *,char*) ;
+ char* CGI_encrypt (char*,int,char const*) ;
+ int * CGI_get_cookie (int ) ;
+ int * CGI_get_post (int ,char*) ;
+ int * CGI_get_query (int ) ;
+ int * CGI_lookup_all (int *,char*) ;
+ int dumplist (int *) ;
+ int fputc (char,int ) ;
+ int fputs (char*,int ) ;
+ int fwrite (char*,int,int,int ) ;
+ int printf (char*,int,...) ;
+ int stdout ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strlen (char*) ;
 
 int
 main(int argc, char **argv) {
@@ -154,9 +154,9 @@ main(int argc, char **argv) {
         const char *pw = "This is my C CGI test password";
         p = argv[2];
         p = CGI_encrypt(p, strlen(p), pw);
-		printf("enc len = %d\n", strlen(p));
+  printf("enc len = %d\n", strlen(p));
         p = CGI_decrypt(p , &i, pw);
-		printf("dec len = %d %s\n", i, p);
+  printf("dec len = %d %s\n", i, p);
         return 0;
     }
     return 0;

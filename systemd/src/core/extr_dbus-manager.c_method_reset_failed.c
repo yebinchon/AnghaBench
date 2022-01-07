@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int /*<<< orphan*/  Manager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int bus_verify_manage_units_async (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int mac_selinux_access_check (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  manager_reset_failed (int /*<<< orphan*/ *) ; 
- int sd_bus_reply_method_return (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
+typedef int Manager ;
+
+
+ int assert (int *) ;
+ int bus_verify_manage_units_async (int *,int *,int *) ;
+ int mac_selinux_access_check (int *,char*,int *) ;
+ int manager_reset_failed (int *) ;
+ int sd_bus_reply_method_return (int *,int *) ;
 
 __attribute__((used)) static int method_reset_failed(sd_bus_message *message, void *userdata, sd_bus_error *error) {
         Manager *m = userdata;
@@ -36,9 +36,9 @@ __attribute__((used)) static int method_reset_failed(sd_bus_message *message, vo
         if (r < 0)
                 return r;
         if (r == 0)
-                return 1; /* No authorization for now, but the async polkit stuff will call us again when it has it */
+                return 1;
 
         manager_reset_failed(m);
 
-        return sd_bus_reply_method_return(message, NULL);
+        return sd_bus_reply_method_return(message, ((void*)0));
 }

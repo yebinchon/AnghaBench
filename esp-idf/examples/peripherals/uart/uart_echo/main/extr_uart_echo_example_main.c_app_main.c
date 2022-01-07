@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  echo_task ; 
- int /*<<< orphan*/  xTaskCreate (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
+ int echo_task ;
+ int xTaskCreate (int ,char*,int,int *,int,int *) ;
 
 void app_main(void)
 {
-    xTaskCreate(echo_task, "uart_echo_task", 1024, NULL, 10, NULL);
+    xTaskCreate(echo_task, "uart_echo_task", 1024, ((void*)0), 10, ((void*)0));
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * chrV; int /*<<< orphan*/ * chrH; int /*<<< orphan*/ * lumV; int /*<<< orphan*/ * lumH; } ;
-typedef  int /*<<< orphan*/  SwsVector ;
-typedef  TYPE_1__ SwsFilter ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  av_freep (TYPE_1__**) ; 
- TYPE_1__* av_malloc (int) ; 
- scalar_t__ isnan_vec (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sws_addVec (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sws_freeVec (int /*<<< orphan*/ *) ; 
- void* sws_getGaussianVec (float,double) ; 
- void* sws_getIdentityVec () ; 
- int /*<<< orphan*/  sws_normalizeVec (int /*<<< orphan*/ *,double) ; 
- int /*<<< orphan*/  sws_printVec2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sws_scaleVec (int /*<<< orphan*/ *,float) ; 
- int /*<<< orphan*/  sws_shiftVec (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * chrV; int * chrH; int * lumV; int * lumH; } ;
+typedef int SwsVector ;
+typedef TYPE_1__ SwsFilter ;
+
+
+ int AV_LOG_DEBUG ;
+ int av_freep (TYPE_1__**) ;
+ TYPE_1__* av_malloc (int) ;
+ scalar_t__ isnan_vec (int *) ;
+ int sws_addVec (int *,int *) ;
+ int sws_freeVec (int *) ;
+ void* sws_getGaussianVec (float,double) ;
+ void* sws_getIdentityVec () ;
+ int sws_normalizeVec (int *,double) ;
+ int sws_printVec2 (int *,int *,int ) ;
+ int sws_scaleVec (int *,float) ;
+ int sws_shiftVec (int *,int) ;
 
 SwsFilter *sws_getDefaultFilter(float lumaGBlur, float chromaGBlur,
                                 float lumaSharpen, float chromaSharpen,
@@ -36,7 +36,7 @@ SwsFilter *sws_getDefaultFilter(float lumaGBlur, float chromaGBlur,
 {
     SwsFilter *filter = av_malloc(sizeof(SwsFilter));
     if (!filter)
-        return NULL;
+        return ((void*)0);
 
     if (lumaGBlur != 0.0) {
         filter->lumH = sws_getGaussianVec(lumaGBlur, 3.0);
@@ -97,9 +97,9 @@ SwsFilter *sws_getDefaultFilter(float lumaGBlur, float chromaGBlur,
         goto fail;
 
     if (verbose)
-        sws_printVec2(filter->chrH, NULL, AV_LOG_DEBUG);
+        sws_printVec2(filter->chrH, ((void*)0), AV_LOG_DEBUG);
     if (verbose)
-        sws_printVec2(filter->lumH, NULL, AV_LOG_DEBUG);
+        sws_printVec2(filter->lumH, ((void*)0), AV_LOG_DEBUG);
 
     return filter;
 
@@ -109,5 +109,5 @@ fail:
     sws_freeVec(filter->chrH);
     sws_freeVec(filter->chrV);
     av_freep(&filter);
-    return NULL;
+    return ((void*)0);
 }

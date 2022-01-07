@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  qboolean ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXEC_APPEND ; 
- int /*<<< orphan*/  trap_Cmd_ExecuteText (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int qboolean ;
+
+
+ int EXEC_APPEND ;
+ int trap_Cmd_ExecuteText (int ,char*) ;
 
 __attribute__((used)) static void Setup_ResetDefaults_Action( qboolean result ) {
-	if( !result ) {
-		return;
-	}
-	trap_Cmd_ExecuteText( EXEC_APPEND, "exec default.cfg\n");
-	trap_Cmd_ExecuteText( EXEC_APPEND, "cvar_restart\n");
-	trap_Cmd_ExecuteText( EXEC_APPEND, "vid_restart\n" );
+ if( !result ) {
+  return;
+ }
+ trap_Cmd_ExecuteText( EXEC_APPEND, "exec default.cfg\n");
+ trap_Cmd_ExecuteText( EXEC_APPEND, "cvar_restart\n");
+ trap_Cmd_ExecuteText( EXEC_APPEND, "vid_restart\n" );
 }

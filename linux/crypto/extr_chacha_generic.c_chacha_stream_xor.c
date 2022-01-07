@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u32 ;
-struct TYPE_7__ {int /*<<< orphan*/  addr; } ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u32 ;
+struct TYPE_7__ {int addr; } ;
 struct TYPE_8__ {TYPE_3__ virt; } ;
-struct TYPE_5__ {int /*<<< orphan*/  addr; } ;
+struct TYPE_5__ {int addr; } ;
 struct TYPE_6__ {TYPE_1__ virt; } ;
 struct skcipher_walk {unsigned int nbytes; unsigned int total; TYPE_4__ src; TYPE_2__ dst; } ;
 struct skcipher_request {int dummy; } ;
-struct chacha_ctx {int /*<<< orphan*/  nrounds; } ;
+struct chacha_ctx {int nrounds; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHACHA_BLOCK_SIZE ; 
- int /*<<< orphan*/  chacha_docrypt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  crypto_chacha_init (int /*<<< orphan*/ *,struct chacha_ctx const*,int /*<<< orphan*/  const*) ; 
- unsigned int round_down (unsigned int,int /*<<< orphan*/ ) ; 
- int skcipher_walk_done (struct skcipher_walk*,unsigned int) ; 
- int skcipher_walk_virt (struct skcipher_walk*,struct skcipher_request*,int) ; 
+
+ int CHACHA_BLOCK_SIZE ;
+ int chacha_docrypt (int *,int ,int ,unsigned int,int ) ;
+ int crypto_chacha_init (int *,struct chacha_ctx const*,int const*) ;
+ unsigned int round_down (unsigned int,int ) ;
+ int skcipher_walk_done (struct skcipher_walk*,unsigned int) ;
+ int skcipher_walk_virt (struct skcipher_walk*,struct skcipher_request*,int) ;
 
 __attribute__((used)) static int chacha_stream_xor(struct skcipher_request *req,
-			     const struct chacha_ctx *ctx, const u8 *iv)
+        const struct chacha_ctx *ctx, const u8 *iv)
 {
-	struct skcipher_walk walk;
-	u32 state[16];
-	int err;
+ struct skcipher_walk walk;
+ u32 state[16];
+ int err;
 
-	err = skcipher_walk_virt(&walk, req, false);
+ err = skcipher_walk_virt(&walk, req, 0);
 
-	crypto_chacha_init(state, ctx, iv);
+ crypto_chacha_init(state, ctx, iv);
 
-	while (walk.nbytes > 0) {
-		unsigned int nbytes = walk.nbytes;
+ while (walk.nbytes > 0) {
+  unsigned int nbytes = walk.nbytes;
 
-		if (nbytes < walk.total)
-			nbytes = round_down(nbytes, CHACHA_BLOCK_SIZE);
+  if (nbytes < walk.total)
+   nbytes = round_down(nbytes, CHACHA_BLOCK_SIZE);
 
-		chacha_docrypt(state, walk.dst.virt.addr, walk.src.virt.addr,
-			       nbytes, ctx->nrounds);
-		err = skcipher_walk_done(&walk, walk.nbytes - nbytes);
-	}
+  chacha_docrypt(state, walk.dst.virt.addr, walk.src.virt.addr,
+          nbytes, ctx->nrounds);
+  err = skcipher_walk_done(&walk, walk.nbytes - nbytes);
+ }
 
-	return err;
+ return err;
 }

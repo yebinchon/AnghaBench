@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct kvm_vcpu {TYPE_3__* kvm; } ;
 struct kvm_sregs {int dummy; } ;
 struct TYPE_5__ {TYPE_1__* kvm_ops; } ;
 struct TYPE_6__ {TYPE_2__ arch; } ;
 struct TYPE_4__ {int (* get_sregs ) (struct kvm_vcpu*,struct kvm_sregs*) ;} ;
 
-/* Variables and functions */
- int stub1 (struct kvm_vcpu*,struct kvm_sregs*) ; 
- int /*<<< orphan*/  vcpu_load (struct kvm_vcpu*) ; 
- int /*<<< orphan*/  vcpu_put (struct kvm_vcpu*) ; 
+
+ int stub1 (struct kvm_vcpu*,struct kvm_sregs*) ;
+ int vcpu_load (struct kvm_vcpu*) ;
+ int vcpu_put (struct kvm_vcpu*) ;
 
 int kvm_arch_vcpu_ioctl_get_sregs(struct kvm_vcpu *vcpu,
-				  struct kvm_sregs *sregs)
+      struct kvm_sregs *sregs)
 {
-	int ret;
+ int ret;
 
-	vcpu_load(vcpu);
-	ret = vcpu->kvm->arch.kvm_ops->get_sregs(vcpu, sregs);
-	vcpu_put(vcpu);
+ vcpu_load(vcpu);
+ ret = vcpu->kvm->arch.kvm_ops->get_sregs(vcpu, sregs);
+ vcpu_put(vcpu);
 
-	return ret;
+ return ret;
 }

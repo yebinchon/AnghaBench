@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  md; int /*<<< orphan*/  key_length; int /*<<< orphan*/  key; int /*<<< orphan*/  md_ctx; int /*<<< orphan*/  o_ctx; int /*<<< orphan*/  i_ctx; } ;
-typedef  TYPE_1__ HMAC_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_MD_CTX_copy_ex (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HMAC_MAX_MD_CBLOCK_SIZE ; 
- int /*<<< orphan*/  hmac_ctx_alloc_mds (TYPE_1__*) ; 
- int /*<<< orphan*/  hmac_ctx_cleanup (TYPE_1__*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int md; int key_length; int key; int md_ctx; int o_ctx; int i_ctx; } ;
+typedef TYPE_1__ HMAC_CTX ;
+
+
+ int EVP_MD_CTX_copy_ex (int ,int ) ;
+ int HMAC_MAX_MD_CBLOCK_SIZE ;
+ int hmac_ctx_alloc_mds (TYPE_1__*) ;
+ int hmac_ctx_cleanup (TYPE_1__*) ;
+ int memcpy (int ,int ,int ) ;
 
 int HMAC_CTX_copy(HMAC_CTX *dctx, HMAC_CTX *sctx)
 {

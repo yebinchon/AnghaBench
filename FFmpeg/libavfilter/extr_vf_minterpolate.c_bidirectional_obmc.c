@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int b_height; int b_width; int log2_mb_size; int mb_size; TYPE_4__* pixel_refs; int /*<<< orphan*/ * pixel_weights; int /*<<< orphan*/ * pixel_mvs; TYPE_3__* frames; } ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int b_height; int b_width; int log2_mb_size; int mb_size; TYPE_4__* pixel_refs; int * pixel_weights; int * pixel_mvs; TYPE_3__* frames; } ;
 struct TYPE_10__ {scalar_t__ nb; } ;
 struct TYPE_9__ {TYPE_2__* blocks; TYPE_1__* avf; } ;
 struct TYPE_8__ {int** mvs; } ;
 struct TYPE_7__ {int width; int height; } ;
-typedef  int /*<<< orphan*/  PixelWeights ;
-typedef  TYPE_4__ PixelRefs ;
-typedef  int /*<<< orphan*/  PixelMVS ;
-typedef  TYPE_5__ MIContext ;
+typedef int PixelWeights ;
+typedef TYPE_4__ PixelRefs ;
+typedef int PixelMVS ;
+typedef TYPE_5__ MIContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD_PIXELS (int,int,int) ; 
- int ALPHA_MAX ; 
- int av_clip (int,int /*<<< orphan*/ ,int) ; 
- int** obmc_tab_linear ; 
+
+ int ADD_PIXELS (int,int,int) ;
+ int ALPHA_MAX ;
+ int av_clip (int,int ,int) ;
+ int** obmc_tab_linear ;
 
 __attribute__((used)) static void bidirectional_obmc(MIContext *mi_ctx, int alpha)
 {

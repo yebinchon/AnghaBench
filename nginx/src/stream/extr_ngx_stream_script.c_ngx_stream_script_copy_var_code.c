@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_7__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-struct TYPE_11__ {int /*<<< orphan*/  len; int /*<<< orphan*/  data; int /*<<< orphan*/  not_found; } ;
-typedef  TYPE_2__ ngx_stream_variable_value_t ;
-struct TYPE_12__ {int /*<<< orphan*/  index; } ;
-typedef  TYPE_3__ ngx_stream_script_var_code_t ;
-struct TYPE_13__ {int /*<<< orphan*/ * pos; TYPE_7__* session; scalar_t__ flushed; int /*<<< orphan*/  skip; scalar_t__ ip; } ;
-typedef  TYPE_4__ ngx_stream_script_engine_t ;
+
+
+typedef struct TYPE_14__ TYPE_7__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int u_char ;
+struct TYPE_11__ {int len; int data; int not_found; } ;
+typedef TYPE_2__ ngx_stream_variable_value_t ;
+struct TYPE_12__ {int index; } ;
+typedef TYPE_3__ ngx_stream_script_var_code_t ;
+struct TYPE_13__ {int * pos; TYPE_7__* session; scalar_t__ flushed; int skip; scalar_t__ ip; } ;
+typedef TYPE_4__ ngx_stream_script_engine_t ;
 struct TYPE_14__ {TYPE_1__* connection; } ;
-struct TYPE_10__ {int /*<<< orphan*/  log; } ;
+struct TYPE_10__ {int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_LOG_DEBUG_STREAM ; 
- int /*<<< orphan*/ * ngx_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *) ; 
- TYPE_2__* ngx_stream_get_flushed_variable (TYPE_7__*,int /*<<< orphan*/ ) ; 
- TYPE_2__* ngx_stream_get_indexed_variable (TYPE_7__*,int /*<<< orphan*/ ) ; 
+
+ int NGX_LOG_DEBUG_STREAM ;
+ int * ngx_copy (int *,int ,int ) ;
+ int ngx_log_debug2 (int ,int ,int ,char*,int,int *) ;
+ TYPE_2__* ngx_stream_get_flushed_variable (TYPE_7__*,int ) ;
+ TYPE_2__* ngx_stream_get_indexed_variable (TYPE_7__*,int ) ;
 
 void
 ngx_stream_script_copy_var_code(ngx_stream_script_engine_t *e)
 {
-    u_char                        *p;
-    ngx_stream_variable_value_t   *value;
-    ngx_stream_script_var_code_t  *code;
+    u_char *p;
+    ngx_stream_variable_value_t *value;
+    ngx_stream_script_var_code_t *code;
 
     code = (ngx_stream_script_var_code_t *) e->ip;
 

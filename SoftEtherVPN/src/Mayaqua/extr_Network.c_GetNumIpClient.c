@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_3__ {int /*<<< orphan*/  NumConnections; } ;
-typedef  TYPE_1__ IP_CLIENT ;
-typedef  int /*<<< orphan*/  IP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ ) ; 
- TYPE_1__* SearchIpClient (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ip_clients ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_3__ {int NumConnections; } ;
+typedef TYPE_1__ IP_CLIENT ;
+typedef int IP ;
+
+
+ int LockList (int ) ;
+ TYPE_1__* SearchIpClient (int *) ;
+ int UnlockList (int ) ;
+ int ip_clients ;
 
 UINT GetNumIpClient(IP *ip)
 {
-	IP_CLIENT *c;
-	UINT ret = 0;
-	// Validate arguments
-	if (ip == NULL)
-	{
-		return 0;
-	}
+ IP_CLIENT *c;
+ UINT ret = 0;
 
-	LockList(ip_clients);
-	{
-		c = SearchIpClient(ip);
+ if (ip == ((void*)0))
+ {
+  return 0;
+ }
 
-		if (c != NULL)
-		{
-			ret = c->NumConnections;
-		}
-	}
-	UnlockList(ip_clients);
+ LockList(ip_clients);
+ {
+  c = SearchIpClient(ip);
 
-	return ret;
+  if (c != ((void*)0))
+  {
+   ret = c->NumConnections;
+  }
+ }
+ UnlockList(ip_clients);
+
+ return ret;
 }

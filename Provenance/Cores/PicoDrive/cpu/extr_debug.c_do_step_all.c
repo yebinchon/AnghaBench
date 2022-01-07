@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
+
+
+
+
+typedef int tmp ;
 struct pdb_cpu {int dummy; } ;
 
-/* Variables and functions */
- int CMDRET_CONT_DO_NEXT ; 
- int CMDRET_DONE ; 
- int /*<<< orphan*/  atoi (char*) ; 
- int /*<<< orphan*/  get_arg (char*,int,char const*) ; 
- int /*<<< orphan*/  pdb_global_icount ; 
- int /*<<< orphan*/  printf (char*) ; 
+
+ int CMDRET_CONT_DO_NEXT ;
+ int CMDRET_DONE ;
+ int atoi (char*) ;
+ int get_arg (char*,int,char const*) ;
+ int pdb_global_icount ;
+ int printf (char*) ;
 
 __attribute__((used)) static int do_step_all(struct pdb_cpu *cpu, const char *args)
 {

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RPC ;
-typedef  int /*<<< orphan*/  PACK ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * NewPack () ; 
- int /*<<< orphan*/ * RpcCall (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int RPC ;
+typedef int PACK ;
+
+
+ int * NewPack () ;
+ int * RpcCall (int *,char*,int *) ;
 
 PACK *AdminCall(RPC *rpc, char *function_name, PACK *p)
 {
-	// Validate arguments
-	if (rpc == NULL || function_name == NULL)
-	{
-		return NULL;
-	}
-	if (p == NULL)
-	{
-		p = NewPack();
-	}
 
-//	Debug("Admin RPC Call: %s\n", function_name);
+ if (rpc == ((void*)0) || function_name == ((void*)0))
+ {
+  return ((void*)0);
+ }
+ if (p == ((void*)0))
+ {
+  p = NewPack();
+ }
 
-	return RpcCall(rpc, function_name, p);
+
+
+ return RpcCall(rpc, function_name, p);
 }

@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-typedef  long long uint32_t ;
-typedef  scalar_t__ int64_t ;
-struct TYPE_14__ {int /*<<< orphan*/ * pb; TYPE_2__* priv_data; } ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
+typedef long long uint32_t ;
+typedef scalar_t__ int64_t ;
+struct TYPE_14__ {int * pb; TYPE_2__* priv_data; } ;
 struct TYPE_13__ {long long nb_frames; long long duration; TYPE_1__* codecpar; } ;
 struct TYPE_12__ {int num_streams; } ;
-struct TYPE_11__ {int codec_id; int width; int height; int channels; int sample_rate; int /*<<< orphan*/  codec_type; } ;
-typedef  TYPE_2__ PMPContext ;
-typedef  TYPE_3__ AVStream ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_4__ AVFormatContext ;
+struct TYPE_11__ {int codec_id; int width; int height; int channels; int sample_rate; int codec_type; } ;
+typedef TYPE_2__ PMPContext ;
+typedef TYPE_3__ AVStream ;
+typedef int AVIOContext ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int AVINDEX_KEYFRAME ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_AUDIO ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_VIDEO ; 
- int AV_CODEC_ID_AAC ; 
- int AV_CODEC_ID_H264 ; 
- int AV_CODEC_ID_MP3 ; 
- int AV_CODEC_ID_MPEG4 ; 
- int AV_CODEC_ID_NONE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_FATAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_add_index_entry (TYPE_3__*,scalar_t__,unsigned int,long long,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*) ; 
- TYPE_3__* avformat_new_stream (TYPE_4__*,int /*<<< orphan*/ *) ; 
- scalar_t__ avio_feof (int /*<<< orphan*/ *) ; 
- int avio_rl16 (int /*<<< orphan*/ *) ; 
- int avio_rl32 (int /*<<< orphan*/ *) ; 
- scalar_t__ avio_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ *,int) ; 
- scalar_t__ avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avpriv_set_pts_info (TYPE_3__*,int,int,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVINDEX_KEYFRAME ;
+ int AVMEDIA_TYPE_AUDIO ;
+ int AVMEDIA_TYPE_VIDEO ;
+ int AV_CODEC_ID_AAC ;
+ int AV_CODEC_ID_H264 ;
+ int AV_CODEC_ID_MP3 ;
+ int AV_CODEC_ID_MPEG4 ;
+ int AV_CODEC_ID_NONE ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_FATAL ;
+ int ENOMEM ;
+ int av_add_index_entry (TYPE_3__*,scalar_t__,unsigned int,long long,int ,int) ;
+ int av_log (TYPE_4__*,int ,char*) ;
+ TYPE_3__* avformat_new_stream (TYPE_4__*,int *) ;
+ scalar_t__ avio_feof (int *) ;
+ int avio_rl16 (int *) ;
+ int avio_rl32 (int *) ;
+ scalar_t__ avio_size (int *) ;
+ int avio_skip (int *,int) ;
+ scalar_t__ avio_tell (int *) ;
+ int avpriv_set_pts_info (TYPE_3__*,int,int,int) ;
 
 __attribute__((used)) static int pmp_header(AVFormatContext *s)
 {
@@ -63,7 +63,7 @@ __attribute__((used)) static int pmp_header(AVFormatContext *s)
     uint64_t pos;
     int64_t fsize = avio_size(pb);
 
-    AVStream *vst = avformat_new_stream(s, NULL);
+    AVStream *vst = avformat_new_stream(s, ((void*)0));
     if (!vst)
         return AVERROR(ENOMEM);
     vst->codecpar->codec_type = AVMEDIA_TYPE_VIDEO;
@@ -79,8 +79,8 @@ __attribute__((used)) static int pmp_header(AVFormatContext *s)
         av_log(s, AV_LOG_ERROR, "Unsupported video format\n");
         break;
     }
-    index_cnt          = avio_rl32(pb);
-    vst->codecpar->width  = avio_rl32(pb);
+    index_cnt = avio_rl32(pb);
+    vst->codecpar->width = avio_rl32(pb);
     vst->codecpar->height = avio_rl32(pb);
 
     tb_num = avio_rl32(pb);
@@ -126,12 +126,12 @@ __attribute__((used)) static int pmp_header(AVFormatContext *s)
         }
     }
     for (i = 1; i < pmp->num_streams; i++) {
-        AVStream *ast = avformat_new_stream(s, NULL);
+        AVStream *ast = avformat_new_stream(s, ((void*)0));
         if (!ast)
             return AVERROR(ENOMEM);
-        ast->codecpar->codec_type  = AVMEDIA_TYPE_AUDIO;
-        ast->codecpar->codec_id    = audio_codec_id;
-        ast->codecpar->channels    = channels;
+        ast->codecpar->codec_type = AVMEDIA_TYPE_AUDIO;
+        ast->codecpar->codec_id = audio_codec_id;
+        ast->codecpar->channels = channels;
         ast->codecpar->sample_rate = srate;
         avpriv_set_pts_info(ast, 32, 1, srate);
     }

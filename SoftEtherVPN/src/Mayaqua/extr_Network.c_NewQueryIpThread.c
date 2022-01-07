@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* UINT ;
-struct TYPE_5__ {int /*<<< orphan*/  Thread; void* IntervalLastNg; void* IntervalLastOk; int /*<<< orphan*/  Hostname; int /*<<< orphan*/  Lock; int /*<<< orphan*/  HaltEvent; } ;
-typedef  TYPE_1__ QUERYIPTHREAD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NewEvent () ; 
- int /*<<< orphan*/  NewLock () ; 
- int /*<<< orphan*/  NewThread (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  QueryIpThreadMain ; 
- int /*<<< orphan*/  StrCpy (int /*<<< orphan*/ ,int,char*) ; 
- TYPE_1__* ZeroMalloc (int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef void* UINT ;
+struct TYPE_5__ {int Thread; void* IntervalLastNg; void* IntervalLastOk; int Hostname; int Lock; int HaltEvent; } ;
+typedef TYPE_1__ QUERYIPTHREAD ;
+
+
+ int NewEvent () ;
+ int NewLock () ;
+ int NewThread (int ,TYPE_1__*) ;
+ int QueryIpThreadMain ;
+ int StrCpy (int ,int,char*) ;
+ TYPE_1__* ZeroMalloc (int) ;
 
 QUERYIPTHREAD *NewQueryIpThread(char *hostname, UINT interval_last_ok, UINT interval_last_ng)
 {
-	QUERYIPTHREAD *t;
+ QUERYIPTHREAD *t;
 
-	t = ZeroMalloc(sizeof(QUERYIPTHREAD));
+ t = ZeroMalloc(sizeof(QUERYIPTHREAD));
 
-	t->HaltEvent = NewEvent();
-	t->Lock = NewLock();
-	StrCpy(t->Hostname, sizeof(t->Hostname), hostname);
-	t->IntervalLastOk = interval_last_ok;
-	t->IntervalLastNg = interval_last_ng;
+ t->HaltEvent = NewEvent();
+ t->Lock = NewLock();
+ StrCpy(t->Hostname, sizeof(t->Hostname), hostname);
+ t->IntervalLastOk = interval_last_ok;
+ t->IntervalLastNg = interval_last_ng;
 
-	t->Thread = NewThread(QueryIpThreadMain, t);
+ t->Thread = NewThread(QueryIpThreadMain, t);
 
-	return t;
+ return t;
 }

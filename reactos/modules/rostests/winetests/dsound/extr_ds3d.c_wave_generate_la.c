@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {double nSamplesPerSec; int nBlockAlign; int wBitsPerSample; int nChannels; } ;
-typedef  TYPE_1__ WAVEFORMATEX ;
-typedef  int DWORD ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_1__ WAVEFORMATEX ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- double PI ; 
- double sin (double) ; 
+
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,int) ;
+ double PI ;
+ double sin (double) ;
 
 char* wave_generate_la(WAVEFORMATEX* wfx, double duration, DWORD* size, BOOL ieee)
 {

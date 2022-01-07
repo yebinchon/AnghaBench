@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int sk_flags; int /*<<< orphan*/  sk_func; int /*<<< orphan*/  sk_argument; void* sk_collation; void* sk_subtype; int /*<<< orphan*/  sk_strategy; int /*<<< orphan*/  sk_attno; } ;
-typedef  int /*<<< orphan*/  StrategyNumber ;
-typedef  TYPE_1__* ScanKey ;
-typedef  void* Oid ;
-typedef  int /*<<< orphan*/  FmgrInfo ;
-typedef  int /*<<< orphan*/  Datum ;
-typedef  int /*<<< orphan*/  AttrNumber ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CurrentMemoryContext ; 
- int /*<<< orphan*/  fmgr_info_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int sk_flags; int sk_func; int sk_argument; void* sk_collation; void* sk_subtype; int sk_strategy; int sk_attno; } ;
+typedef int StrategyNumber ;
+typedef TYPE_1__* ScanKey ;
+typedef void* Oid ;
+typedef int FmgrInfo ;
+typedef int Datum ;
+typedef int AttrNumber ;
+
+
+ int CurrentMemoryContext ;
+ int fmgr_info_copy (int *,int *,int ) ;
 
 void
 ScanKeyEntryInitializeWithInfo(ScanKey entry,
-							   int flags,
-							   AttrNumber attributeNumber,
-							   StrategyNumber strategy,
-							   Oid subtype,
-							   Oid collation,
-							   FmgrInfo *finfo,
-							   Datum argument)
+          int flags,
+          AttrNumber attributeNumber,
+          StrategyNumber strategy,
+          Oid subtype,
+          Oid collation,
+          FmgrInfo *finfo,
+          Datum argument)
 {
-	entry->sk_flags = flags;
-	entry->sk_attno = attributeNumber;
-	entry->sk_strategy = strategy;
-	entry->sk_subtype = subtype;
-	entry->sk_collation = collation;
-	entry->sk_argument = argument;
-	fmgr_info_copy(&entry->sk_func, finfo, CurrentMemoryContext);
+ entry->sk_flags = flags;
+ entry->sk_attno = attributeNumber;
+ entry->sk_strategy = strategy;
+ entry->sk_subtype = subtype;
+ entry->sk_collation = collation;
+ entry->sk_argument = argument;
+ fmgr_info_copy(&entry->sk_func, finfo, CurrentMemoryContext);
 }

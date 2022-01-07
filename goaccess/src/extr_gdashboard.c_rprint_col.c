@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WINDOW ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WINDOW ;
 struct TYPE_5__ {int attr; TYPE_1__* pair; } ;
-struct TYPE_4__ {int /*<<< orphan*/  idx; } ;
-typedef  TYPE_2__ GColors ;
+struct TYPE_4__ {int idx; } ;
+typedef TYPE_2__ GColors ;
 
-/* Variables and functions */
- int COLOR_PAIR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  COLOR_PANEL_COLS ; 
- scalar_t__ DASH_SPACE ; 
- TYPE_2__* get_color (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mvwprintw (int /*<<< orphan*/ *,int,int,char const*,int,char const*) ; 
- int /*<<< orphan*/  print_horizontal_dash (int /*<<< orphan*/ *,int,int,int) ; 
- int /*<<< orphan*/  wattroff (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  wattron (int /*<<< orphan*/ *,int) ; 
+
+ int COLOR_PAIR (int ) ;
+ int COLOR_PANEL_COLS ;
+ scalar_t__ DASH_SPACE ;
+ TYPE_2__* get_color (int ) ;
+ int mvwprintw (int *,int,int,char const*,int,char const*) ;
+ int print_horizontal_dash (int *,int,int,int) ;
+ int wattroff (int *,int) ;
+ int wattron (int *,int) ;
 
 __attribute__((used)) static void
 rprint_col (WINDOW * win, int y, int *x, int len, const char *fmt,

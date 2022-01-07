@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct dpaa2_eth_priv {int num_channels; TYPE_1__** channel; } ;
-struct TYPE_2__ {int /*<<< orphan*/  store; } ;
+struct TYPE_2__ {int store; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dpaa2_io_store_destroy (int /*<<< orphan*/ ) ; 
+
+ int dpaa2_io_store_destroy (int ) ;
 
 __attribute__((used)) static void free_rings(struct dpaa2_eth_priv *priv)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < priv->num_channels; i++)
-		dpaa2_io_store_destroy(priv->channel[i]->store);
+ for (i = 0; i < priv->num_channels; i++)
+  dpaa2_io_store_destroy(priv->channel[i]->store);
 }

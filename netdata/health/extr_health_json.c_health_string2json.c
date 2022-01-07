@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BUFFER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  buffer_sprintf (int /*<<< orphan*/ *,char*,char const*,char const*,...) ; 
- int /*<<< orphan*/  buffer_strcat (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  buffer_strcat_htmlescape (int /*<<< orphan*/ *,char const*) ; 
+
+
+
+typedef int BUFFER ;
+
+
+ int buffer_sprintf (int *,char*,char const*,char const*,...) ;
+ int buffer_strcat (int *,char const*) ;
+ int buffer_strcat_htmlescape (int *,char const*) ;
 
 __attribute__((used)) static inline void health_string2json(BUFFER *wb, const char *prefix, const char *label, const char *value, const char *suffix) {
     if(value && *value) {

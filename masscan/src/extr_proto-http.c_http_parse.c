@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ProtocolState {unsigned int state; } ;
-typedef  void InteractiveData ;
+typedef void InteractiveData ;
 struct BannerOutput {int dummy; } ;
-struct Banner1 {int /*<<< orphan*/  is_capture_html; int /*<<< orphan*/  html_fields; int /*<<< orphan*/  http_fields; } ;
+struct Banner1 {int is_capture_html; int html_fields; int http_fields; } ;
 
-/* Variables and functions */
-#define  HTTPFIELD_CONTENT_LENGTH 131 
-#define  HTTPFIELD_LOCATION 130 
- size_t HTTPFIELD_NEWLINE ; 
-#define  HTTPFIELD_SERVER 129 
- size_t HTTPFIELD_UNKNOWN ; 
-#define  HTTPFIELD_VIA 128 
- int /*<<< orphan*/  PROTO_HTML_FULL ; 
- int /*<<< orphan*/  PROTO_HTML_TITLE ; 
- int /*<<< orphan*/  PROTO_HTTP ; 
- size_t SMACK_NOT_FOUND ; 
- int /*<<< orphan*/  UNUSEDPARM (void*) ; 
- int /*<<< orphan*/  banout_append (struct BannerOutput*,int /*<<< orphan*/ ,unsigned char const*,unsigned int) ; 
- int /*<<< orphan*/  banout_append_char (struct BannerOutput*,int /*<<< orphan*/ ,unsigned char const) ; 
- int /*<<< orphan*/  isdigit (unsigned char const) ; 
- int /*<<< orphan*/  isspace (unsigned char const) ; 
- size_t smack_next_match (int /*<<< orphan*/ ,unsigned int*) ; 
- size_t smack_search_next (int /*<<< orphan*/ ,unsigned int*,unsigned char const*,unsigned int*,unsigned int) ; 
- int /*<<< orphan*/  tcp_close (void*) ; 
- char toupper (unsigned char const) ; 
+
+
+
+ size_t HTTPFIELD_NEWLINE ;
+
+ size_t HTTPFIELD_UNKNOWN ;
+
+ int PROTO_HTML_FULL ;
+ int PROTO_HTML_TITLE ;
+ int PROTO_HTTP ;
+ size_t SMACK_NOT_FOUND ;
+ int UNUSEDPARM (void*) ;
+ int banout_append (struct BannerOutput*,int ,unsigned char const*,unsigned int) ;
+ int banout_append_char (struct BannerOutput*,int ,unsigned char const) ;
+ int isdigit (unsigned char const) ;
+ int isspace (unsigned char const) ;
+ size_t smack_next_match (int ,unsigned int*) ;
+ size_t smack_search_next (int ,unsigned int*,unsigned char const*,unsigned int*,unsigned int) ;
+ int tcp_close (void*) ;
+ char toupper (unsigned char const) ;
 
 __attribute__((used)) static void
 http_parse(
@@ -59,7 +59,7 @@ http_parse(
         CONTENT,
         CONTENT_TAG,
         CONTENT_FIELD,
-        
+
         DONE_PARSING
     };
 
@@ -96,7 +96,7 @@ http_parse(
         }
         break;
     case 7:
-        /* TODO: look for 1xx response code */
+
         if (px[i] == '\n')
             state = FIELD_START;
         break;
@@ -113,7 +113,7 @@ http_parse(
         } else {
             state2 = 0;
             state = FIELD_NAME;
-            /* drop down */
+
         }
 
     case FIELD_NAME:
@@ -128,11 +128,11 @@ http_parse(
             state2 = 0;
             state = FIELD_START;
         } else if (id == SMACK_NOT_FOUND)
-            ; /* continue here */
+            ;
         else if (id == HTTPFIELD_UNKNOWN) {
-            /* Oops, at this point, both ":" and "Server:" will match.
-             * Therefore, we need to make sure ":" was found, and not
-             * a known field like "Server:" */
+
+
+
             size_t id2;
 
             id2 = smack_next_match(banner1->http_fields, &state2);
@@ -150,9 +150,9 @@ http_parse(
         } else if (isspace(px[i])) {
             break;
         } else {
-            //field_name(banout, id, http_fields);
+
             state = FIELD_VALUE;
-            /* drop down */
+
         }
 
     case FIELD_VALUE:
@@ -163,14 +163,14 @@ http_parse(
             break;
         }
         switch (id) {
-        case HTTPFIELD_SERVER:
-        case HTTPFIELD_LOCATION:
-        case HTTPFIELD_VIA:
-            //banner_append(&px[i], 1, banout);
+        case 129:
+        case 130:
+        case 128:
+
             break;
-        case HTTPFIELD_CONTENT_LENGTH:
+        case 131:
                 if (isdigit(px[i]&0xFF)) {
-                    ; /*todo: add content length parsing */
+                    ;
                 } else {
                     id = 0;
                 }

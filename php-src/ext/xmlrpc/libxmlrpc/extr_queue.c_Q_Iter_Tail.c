@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ tail; } ;
-typedef  TYPE_1__ queue ;
-typedef  int /*<<< orphan*/ * q_iter ;
+typedef TYPE_1__ queue ;
+typedef int * q_iter ;
 
-/* Variables and functions */
+
 
 q_iter Q_Iter_Tail(queue *q) {
-   return q ? (q_iter)q->tail : NULL;
+   return q ? (q_iter)q->tail : ((void*)0);
 }

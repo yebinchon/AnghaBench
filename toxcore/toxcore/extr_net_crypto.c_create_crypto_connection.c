@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-struct TYPE_6__ {scalar_t__ status; int /*<<< orphan*/  mutex; } ;
-struct TYPE_5__ {size_t crypto_connections_length; int /*<<< orphan*/  connections_mutex; TYPE_3__* crypto_connections; int /*<<< orphan*/  connection_use_counter; } ;
-typedef  TYPE_1__ Net_Crypto ;
-typedef  int /*<<< orphan*/  Crypto_Connection ;
 
-/* Variables and functions */
- scalar_t__ CRYPTO_CONN_NO_CONNECTION ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ pthread_mutex_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ realloc_cryptoconnection (TYPE_1__*,int) ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
+struct TYPE_6__ {scalar_t__ status; int mutex; } ;
+struct TYPE_5__ {size_t crypto_connections_length; int connections_mutex; TYPE_3__* crypto_connections; int connection_use_counter; } ;
+typedef TYPE_1__ Net_Crypto ;
+typedef int Crypto_Connection ;
+
+
+ scalar_t__ CRYPTO_CONN_NO_CONNECTION ;
+ int memset (TYPE_3__*,int ,int) ;
+ scalar_t__ pthread_mutex_init (int *,int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ scalar_t__ realloc_cryptoconnection (TYPE_1__*,int) ;
 
 __attribute__((used)) static int create_crypto_connection(Net_Crypto *c)
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static int create_crypto_connection(Net_Crypto *c)
             return i;
     }
 
-    while (1) { /* TODO: is this really the best way to do this? */
+    while (1) {
         pthread_mutex_lock(&c->connections_mutex);
 
         if (!c->connection_use_counter) {
@@ -52,7 +52,7 @@ __attribute__((used)) static int create_crypto_connection(Net_Crypto *c)
         ++c->crypto_connections_length;
         memset(&(c->crypto_connections[id]), 0, sizeof(Crypto_Connection));
 
-        if (pthread_mutex_init(&c->crypto_connections[id].mutex, NULL) != 0) {
+        if (pthread_mutex_init(&c->crypto_connections[id].mutex, ((void*)0)) != 0) {
             pthread_mutex_unlock(&c->connections_mutex);
             return -1;
         }

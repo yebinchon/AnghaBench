@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mcs_data {scalar_t__ query_type; } ;
-struct connection {int /*<<< orphan*/  Out; } ;
+struct connection {int Out; } ;
 
-/* Variables and functions */
- struct mcs_data* MCS_DATA (struct connection*) ; 
- scalar_t__ mct_get ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ *,char*,int) ; 
+
+ struct mcs_data* MCS_DATA (struct connection*) ;
+ scalar_t__ mct_get ;
+ int write_out (int *,char*,int) ;
 
 int mcs_do_wakeup (struct connection *c) {
   struct mcs_data *D = MCS_DATA(c);

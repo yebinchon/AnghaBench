@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_texture_sub_resource {int /*<<< orphan*/  offset; TYPE_1__* buffer; int /*<<< orphan*/  buffer_object; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * heap_memory; } ;
-struct wined3d_texture {TYPE_2__ resource; int /*<<< orphan*/ * user_memory; struct wined3d_texture_sub_resource* sub_resources; } ;
-struct wined3d_bo_address {int /*<<< orphan*/  buffer_object; int /*<<< orphan*/ * addr; } ;
-struct TYPE_3__ {int /*<<< orphan*/  name; } ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,struct wined3d_texture*,unsigned int,struct wined3d_bo_address*,int /*<<< orphan*/ ) ; 
- int WINED3D_LOCATION_BUFFER ; 
- int WINED3D_LOCATION_SYSMEM ; 
- int WINED3D_LOCATION_USER_MEMORY ; 
- int /*<<< orphan*/  wined3d_debug_location (int) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct wined3d_texture_sub_resource {int offset; TYPE_1__* buffer; int buffer_object; } ;
+struct TYPE_4__ {int * heap_memory; } ;
+struct wined3d_texture {TYPE_2__ resource; int * user_memory; struct wined3d_texture_sub_resource* sub_resources; } ;
+struct wined3d_bo_address {int buffer_object; int * addr; } ;
+struct TYPE_3__ {int name; } ;
+typedef int DWORD ;
+
+
+ int ERR (char*,int ) ;
+ int TRACE (char*,struct wined3d_texture*,unsigned int,struct wined3d_bo_address*,int ) ;
+ int WINED3D_LOCATION_BUFFER ;
+ int WINED3D_LOCATION_SYSMEM ;
+ int WINED3D_LOCATION_USER_MEMORY ;
+ int wined3d_debug_location (int) ;
 
 void wined3d_texture_get_memory(struct wined3d_texture *texture, unsigned int sub_resource_idx,
         struct wined3d_bo_address *data, DWORD locations)
@@ -38,12 +38,12 @@ void wined3d_texture_get_memory(struct wined3d_texture *texture, unsigned int su
     sub_resource = &texture->sub_resources[sub_resource_idx];
     if (locations & WINED3D_LOCATION_BUFFER)
     {
-        data->addr = NULL;
-#if !defined(STAGING_CSMT)
+        data->addr = ((void*)0);
+
         data->buffer_object = sub_resource->buffer_object;
-#else  /* STAGING_CSMT */
-        data->buffer_object = sub_resource->buffer->name;
-#endif /* STAGING_CSMT */
+
+
+
         return;
     }
     if (locations & WINED3D_LOCATION_USER_MEMORY)
@@ -61,6 +61,6 @@ void wined3d_texture_get_memory(struct wined3d_texture *texture, unsigned int su
     }
 
     ERR("Unexpected locations %s.\n", wined3d_debug_location(locations));
-    data->addr = NULL;
+    data->addr = ((void*)0);
     data->buffer_object = 0;
 }

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct gspca_dev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_USBO ; 
- int /*<<< orphan*/  OV534_OP_WRITE_3 ; 
- int /*<<< orphan*/  OV534_REG_OPERATION ; 
- int /*<<< orphan*/  OV534_REG_SUBADDR ; 
- int /*<<< orphan*/  OV534_REG_WRITE ; 
- int /*<<< orphan*/  gspca_dbg (struct gspca_dev*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pr_err (char*) ; 
- int /*<<< orphan*/  reg_w_i (struct gspca_dev*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sccb_check_status (struct gspca_dev*) ; 
+
+ int D_USBO ;
+ int OV534_OP_WRITE_3 ;
+ int OV534_REG_OPERATION ;
+ int OV534_REG_SUBADDR ;
+ int OV534_REG_WRITE ;
+ int gspca_dbg (struct gspca_dev*,int ,char*,int ,int ) ;
+ int pr_err (char*) ;
+ int reg_w_i (struct gspca_dev*,int ,int ) ;
+ int sccb_check_status (struct gspca_dev*) ;
 
 __attribute__((used)) static void sccb_write(struct gspca_dev *gspca_dev, u8 reg, u8 val)
 {
-	gspca_dbg(gspca_dev, D_USBO, "sccb_write [%02x] = %02x\n", reg, val);
-	reg_w_i(gspca_dev, OV534_REG_SUBADDR, reg);
-	reg_w_i(gspca_dev, OV534_REG_WRITE, val);
-	reg_w_i(gspca_dev, OV534_REG_OPERATION, OV534_OP_WRITE_3);
+ gspca_dbg(gspca_dev, D_USBO, "sccb_write [%02x] = %02x\n", reg, val);
+ reg_w_i(gspca_dev, OV534_REG_SUBADDR, reg);
+ reg_w_i(gspca_dev, OV534_REG_WRITE, val);
+ reg_w_i(gspca_dev, OV534_REG_OPERATION, OV534_OP_WRITE_3);
 
-	if (!sccb_check_status(gspca_dev))
-		pr_err("sccb_write failed\n");
+ if (!sccb_check_status(gspca_dev))
+  pr_err("sccb_write failed\n");
 }

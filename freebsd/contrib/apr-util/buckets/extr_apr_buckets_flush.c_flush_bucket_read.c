@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  apr_status_t ;
-typedef  scalar_t__ apr_size_t ;
-typedef  int /*<<< orphan*/  apr_read_type_e ;
-typedef  int /*<<< orphan*/  apr_bucket ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_SUCCESS ; 
 
-__attribute__((used)) static apr_status_t flush_bucket_read(apr_bucket *b, const char **str, 
+
+
+typedef int apr_status_t ;
+typedef scalar_t__ apr_size_t ;
+typedef int apr_read_type_e ;
+typedef int apr_bucket ;
+
+
+ int APR_SUCCESS ;
+
+__attribute__((used)) static apr_status_t flush_bucket_read(apr_bucket *b, const char **str,
                                       apr_size_t *len, apr_read_type_e block)
 {
-    *str = NULL;
+    *str = ((void*)0);
     *len = 0;
     return APR_SUCCESS;
 }

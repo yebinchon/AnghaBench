@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_SIG ;
-typedef  int /*<<< orphan*/  X509_ALGOR ;
-struct TYPE_5__ {int /*<<< orphan*/ * shkeybag; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int X509_SIG ;
+typedef int X509_ALGOR ;
+struct TYPE_5__ {int * shkeybag; } ;
 struct TYPE_6__ {TYPE_1__ value; } ;
-typedef  int /*<<< orphan*/  PKCS8_PRIV_KEY_INFO ;
-typedef  TYPE_2__ PKCS12_SAFEBAG ;
+typedef int PKCS8_PRIV_KEY_INFO ;
+typedef TYPE_2__ PKCS12_SAFEBAG ;
 
-/* Variables and functions */
- scalar_t__ NID_pkcs8ShroudedKeyBag ; 
- scalar_t__ PKCS12_SAFEBAG_get_nid (TYPE_2__*) ; 
- int /*<<< orphan*/  PKCS8_PRIV_KEY_INFO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PKCS8_decrypt (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/ * PKCS8_encrypt (int,int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_SIG_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_SIG_get0 (int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  alg_get (int /*<<< orphan*/  const*,int*,int*,int*) ; 
+
+ scalar_t__ NID_pkcs8ShroudedKeyBag ;
+ scalar_t__ PKCS12_SAFEBAG_get_nid (TYPE_2__*) ;
+ int PKCS8_PRIV_KEY_INFO_free (int *) ;
+ int * PKCS8_decrypt (int *,char const*,int) ;
+ int * PKCS8_encrypt (int,int *,char const*,int,int *,int,int,int *) ;
+ int X509_SIG_free (int *) ;
+ int X509_SIG_get0 (int *,int const**,int *) ;
+ int alg_get (int const*,int*,int*,int*) ;
 
 __attribute__((used)) static int newpass_bag(PKCS12_SAFEBAG *bag, const char *oldpass,
                        const char *newpass)
@@ -40,15 +40,15 @@ __attribute__((used)) static int newpass_bag(PKCS12_SAFEBAG *bag, const char *ol
     if (PKCS12_SAFEBAG_get_nid(bag) != NID_pkcs8ShroudedKeyBag)
         return 1;
 
-    if ((p8 = PKCS8_decrypt(bag->value.shkeybag, oldpass, -1)) == NULL)
+    if ((p8 = PKCS8_decrypt(bag->value.shkeybag, oldpass, -1)) == ((void*)0))
         return 0;
-    X509_SIG_get0(bag->value.shkeybag, &shalg, NULL);
+    X509_SIG_get0(bag->value.shkeybag, &shalg, ((void*)0));
     if (!alg_get(shalg, &p8_nid, &p8_iter, &p8_saltlen))
         return 0;
-    p8new = PKCS8_encrypt(p8_nid, NULL, newpass, -1, NULL, p8_saltlen,
+    p8new = PKCS8_encrypt(p8_nid, ((void*)0), newpass, -1, ((void*)0), p8_saltlen,
                           p8_iter, p8);
     PKCS8_PRIV_KEY_INFO_free(p8);
-    if (p8new == NULL)
+    if (p8new == ((void*)0))
         return 0;
     X509_SIG_free(bag->value.shkeybag);
     bag->value.shkeybag = p8new;

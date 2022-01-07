@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  pExprs; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * tsBuf; TYPE_3__ colList; TYPE_3__ exprsInfo; int /*<<< orphan*/  fieldsInfo; int /*<<< orphan*/  tagCond; int /*<<< orphan*/  pDataBlocks; } ;
-typedef  TYPE_1__ SSqlCmd ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  tfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tsBufDestory (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tscClearFieldInfo (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tscColumnBaseInfoDestroy (TYPE_3__*) ; 
- int /*<<< orphan*/  tscDestroyBlockArrayList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tscTagCondRelease (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int pExprs; } ;
+struct TYPE_5__ {int * tsBuf; TYPE_3__ colList; TYPE_3__ exprsInfo; int fieldsInfo; int tagCond; int pDataBlocks; } ;
+typedef TYPE_1__ SSqlCmd ;
+
+
+ int memset (TYPE_3__*,int ,int) ;
+ int tfree (int ) ;
+ int tsBufDestory (int *) ;
+ int tscClearFieldInfo (int *) ;
+ int tscColumnBaseInfoDestroy (TYPE_3__*) ;
+ int tscDestroyBlockArrayList (int ) ;
+ int tscTagCondRelease (int *) ;
 
 void tscFreeSqlCmdData(SSqlCmd* pCmd) {
   pCmd->pDataBlocks = tscDestroyBlockArrayList(pCmd->pDataBlocks);
@@ -37,8 +37,8 @@ void tscFreeSqlCmdData(SSqlCmd* pCmd) {
   tscColumnBaseInfoDestroy(&pCmd->colList);
   memset(&pCmd->colList, 0, sizeof(pCmd->colList));
 
-  if (pCmd->tsBuf != NULL) {
+  if (pCmd->tsBuf != ((void*)0)) {
     tsBufDestory(pCmd->tsBuf);
-    pCmd->tsBuf = NULL;
+    pCmd->tsBuf = ((void*)0);
   }
 }

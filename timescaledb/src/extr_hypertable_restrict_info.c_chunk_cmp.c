@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Chunk ;
 
-/* Variables and functions */
- int chunk_cmp_impl (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int Chunk ;
+
+
+ int chunk_cmp_impl (int const*,int const*) ;
 
 __attribute__((used)) static int
 chunk_cmp(const void *c1, const void *c2)
 {
-	return chunk_cmp_impl(*((const Chunk **) c1), *((const Chunk **) c2));
+ return chunk_cmp_impl(*((const Chunk **) c1), *((const Chunk **) c2));
 }

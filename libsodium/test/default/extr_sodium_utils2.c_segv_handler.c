@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SIGABRT ; 
- int /*<<< orphan*/  SIGBUS ; 
- int /*<<< orphan*/  SIGSEGV ; 
- int /*<<< orphan*/  SIG_DFL ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int SIGABRT ;
+ int SIGBUS ;
+ int SIGSEGV ;
+ int SIG_DFL ;
+ int exit (int ) ;
+ int printf (char*) ;
+ int signal (int ,int ) ;
 
 __attribute__((used)) __attribute__((noreturn)) static void
 segv_handler(int sig)
@@ -27,16 +19,5 @@ segv_handler(int sig)
 
     printf("Intentional segfault / bus error caught\n");
     printf("OK\n");
-#ifdef SIG_DFL
-# ifdef SIGSEGV
-    signal(SIGSEGV, SIG_DFL);
-# endif
-# ifdef SIGBUS
-    signal(SIGBUS, SIG_DFL);
-# endif
-# ifdef SIGABRT
-    signal(SIGABRT, SIG_DFL);
-# endif
-#endif
     exit(0);
 }

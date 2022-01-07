@@ -1,59 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  argv_free (char**) ; 
- char** calloc (int,int) ; 
- int count_argc (char const*) ; 
- char* skip_arg (char const*) ; 
- char* skip_spaces (char const*) ; 
- char* strndup (char const*,int) ; 
+ int argv_free (char**) ;
+ char** calloc (int,int) ;
+ int count_argc (char const*) ;
+ char* skip_arg (char const*) ;
+ char* skip_spaces (char const*) ;
+ char* strndup (char const*,int) ;
 
 char **argv_split(const char *str, int *argcp)
 {
-	int argc = count_argc(str);
-	char **argv = calloc(argc + 1, sizeof(*argv));
-	char **argvp;
+ int argc = count_argc(str);
+ char **argv = calloc(argc + 1, sizeof(*argv));
+ char **argvp;
 
-	if (argv == NULL)
-		goto out;
+ if (argv == ((void*)0))
+  goto out;
 
-	if (argcp)
-		*argcp = argc;
+ if (argcp)
+  *argcp = argc;
 
-	argvp = argv;
+ argvp = argv;
 
-	while (*str) {
-		str = skip_spaces(str);
+ while (*str) {
+  str = skip_spaces(str);
 
-		if (*str) {
-			const char *p = str;
-			char *t;
+  if (*str) {
+   const char *p = str;
+   char *t;
 
-			str = skip_arg(str);
+   str = skip_arg(str);
 
-			t = strndup(p, str-p);
-			if (t == NULL)
-				goto fail;
-			*argvp++ = t;
-		}
-	}
-	*argvp = NULL;
+   t = strndup(p, str-p);
+   if (t == ((void*)0))
+    goto fail;
+   *argvp++ = t;
+  }
+ }
+ *argvp = ((void*)0);
 
 out:
-	return argv;
+ return argv;
 
 fail:
-	argv_free(argv);
-	return NULL;
+ argv_free(argv);
+ return ((void*)0);
 }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum content { ____Placeholder_content } content ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/ * LPCOLESTR ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  CLSID ;
 
-/* Variables and functions */
- scalar_t__ CLSIDFromProgID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ CLSIDFromString (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CLSID_WebBrowser ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int IsEmpty ; 
- int IsGUID ; 
- int IsHTML ; 
- int IsURL ; 
- int IsUnknown ; 
- int MAX_PATH ; 
- scalar_t__ PathIsURLW (int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int URL_APPLY_GUESSFILE ; 
- int URL_APPLY_GUESSSCHEME ; 
- scalar_t__ UrlApplySchemeW (int /*<<< orphan*/ *,char*,int*,int) ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _wcsnicmp (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  wine_dbgstr_w (int /*<<< orphan*/ *) ; 
+
+
+
+typedef enum content { ____Placeholder_content } content ;
+typedef char WCHAR ;
+typedef int * LPCOLESTR ;
+typedef int DWORD ;
+typedef int CLSID ;
+
+
+ scalar_t__ CLSIDFromProgID (int *,int *) ;
+ scalar_t__ CLSIDFromString (int *,int *) ;
+ int CLSID_WebBrowser ;
+ int FIXME (char*) ;
+ int IsEmpty ;
+ int IsGUID ;
+ int IsHTML ;
+ int IsURL ;
+ int IsUnknown ;
+ int MAX_PATH ;
+ scalar_t__ PathIsURLW (int *) ;
+ scalar_t__ S_OK ;
+ int URL_APPLY_GUESSFILE ;
+ int URL_APPLY_GUESSSCHEME ;
+ scalar_t__ UrlApplySchemeW (int *,char*,int*,int) ;
+ int WARN (char*,int ) ;
+ int _wcsnicmp (int *,char const*,int) ;
+ int wine_dbgstr_w (int *) ;
 
 __attribute__((used)) static enum content get_content_type(LPCOLESTR name, CLSID *control_id)
 {

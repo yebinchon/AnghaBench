@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u_int ;
+
+
+
+
+typedef scalar_t__ u_int ;
 struct mISDNdevice {scalar_t__ const id; } ;
 struct device {int dummy; } ;
 
-/* Variables and functions */
- struct mISDNdevice* dev_to_mISDN (struct device*) ; 
+
+ struct mISDNdevice* dev_to_mISDN (struct device*) ;
 
 __attribute__((used)) static int
 _get_mdevice(struct device *dev, const void *id)
 {
-	struct mISDNdevice *mdev = dev_to_mISDN(dev);
+ struct mISDNdevice *mdev = dev_to_mISDN(dev);
 
-	if (!mdev)
-		return 0;
-	if (mdev->id != *(const u_int *)id)
-		return 0;
-	return 1;
+ if (!mdev)
+  return 0;
+ if (mdev->id != *(const u_int *)id)
+  return 0;
+ return 1;
 }

@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  tError (char*) ; 
- char* taosBuildRspMsgWithSize (void*,char,int) ; 
- int /*<<< orphan*/  taosSendMsgToPeer (void*,char*,int) ; 
+ int tError (char*) ;
+ char* taosBuildRspMsgWithSize (void*,char,int) ;
+ int taosSendMsgToPeer (void*,char*,int) ;
 
 int taosSendSimpleRsp(void *thandle, char rsptype, char code) {
   char *pMsg, *pStart;
-  int   msgLen;
+  int msgLen;
 
-  if (thandle == NULL) {
+  if (thandle == ((void*)0)) {
     tError("connection is gone, response could not be sent");
     return -1;
   }

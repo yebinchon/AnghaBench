@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- float INTERPOLATE (float,float,int) ; 
- int /*<<< orphan*/  get_channel_weights (int,int,float*) ; 
+ float INTERPOLATE (float,float,int) ;
+ int get_channel_weights (int,int,float*) ;
 
 __attribute__((used)) static void channel_weighting(float *su1, float *su2, int *p3)
 {
     int band, nsample;
-    /* w[x][y] y=0 is left y=1 is right */
+
     float w[2][2];
 
     if (p3[1] != 7 || p3[3] != 7) {

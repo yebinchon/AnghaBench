@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct sighand {int /*<<< orphan*/  lock; } ;
-typedef  scalar_t__ sigset_t_ ;
-typedef  int dword_t ;
-typedef  scalar_t__ addr_t ;
-struct TYPE_2__ {struct sighand* sighand; int /*<<< orphan*/  blocked; } ;
 
-/* Variables and functions */
- int SIG_BLOCK_ ; 
- int SIG_SETMASK_ ; 
- int SIG_UNBLOCK_ ; 
- int /*<<< orphan*/  STRACE (char*,char*,long long,scalar_t__,int) ; 
- int _EFAULT ; 
- int _EINVAL ; 
- TYPE_1__* current ; 
- int do_sigprocmask (int,scalar_t__) ; 
- int /*<<< orphan*/  lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ user_get (scalar_t__,scalar_t__) ; 
- scalar_t__ user_put (scalar_t__,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct sighand {int lock; } ;
+typedef scalar_t__ sigset_t_ ;
+typedef int dword_t ;
+typedef scalar_t__ addr_t ;
+struct TYPE_2__ {struct sighand* sighand; int blocked; } ;
+
+
+ int SIG_BLOCK_ ;
+ int SIG_SETMASK_ ;
+ int SIG_UNBLOCK_ ;
+ int STRACE (char*,char*,long long,scalar_t__,int) ;
+ int _EFAULT ;
+ int _EINVAL ;
+ TYPE_1__* current ;
+ int do_sigprocmask (int,scalar_t__) ;
+ int lock (int *) ;
+ int unlock (int *) ;
+ scalar_t__ user_get (scalar_t__,scalar_t__) ;
+ scalar_t__ user_put (scalar_t__,int ) ;
 
 dword_t sys_rt_sigprocmask(dword_t how, addr_t set_addr, addr_t oldset_addr, dword_t size) {
     if (size != sizeof(sigset_t_))

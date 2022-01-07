@@ -1,101 +1,101 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint64_t ;
-typedef  int /*<<< orphan*/  type_str ;
-typedef  int /*<<< orphan*/  str_value ;
-typedef  int /*<<< orphan*/  name ;
-typedef  size_t int64_t ;
-struct TYPE_16__ {int /*<<< orphan*/ * metadata; } ;
-struct TYPE_15__ {size_t nb_streams; int event_flags; int /*<<< orphan*/ * metadata; TYPE_3__** streams; int /*<<< orphan*/ * pb; } ;
+
+
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef size_t uint64_t ;
+typedef int type_str ;
+typedef int str_value ;
+typedef int name ;
+typedef size_t int64_t ;
+struct TYPE_16__ {int * metadata; } ;
+struct TYPE_15__ {size_t nb_streams; int event_flags; int * metadata; TYPE_3__** streams; int * pb; } ;
 struct TYPE_12__ {long long num; long long den; } ;
-struct TYPE_14__ {int event_flags; TYPE_1__ r_frame_rate; int /*<<< orphan*/ * metadata; } ;
-struct TYPE_13__ {size_t time_base_count; int /*<<< orphan*/ * time_base; TYPE_4__* avf; } ;
-typedef  TYPE_2__ NUTContext ;
-typedef  TYPE_3__ AVStream ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_4__ AVFormatContext ;
-typedef  int /*<<< orphan*/  AVDictionary ;
-typedef  TYPE_5__ AVChapter ;
+struct TYPE_14__ {int event_flags; TYPE_1__ r_frame_rate; int * metadata; } ;
+struct TYPE_13__ {size_t time_base_count; int * time_base; TYPE_4__* avf; } ;
+typedef TYPE_2__ NUTContext ;
+typedef TYPE_3__ AVStream ;
+typedef int AVIOContext ;
+typedef TYPE_4__ AVFormatContext ;
+typedef int AVDictionary ;
+typedef TYPE_5__ AVChapter ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int AVFMT_EVENT_FLAG_METADATA_UPDATED ; 
- int AVSTREAM_EVENT_FLAG_METADATA_UPDATED ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFMIN (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GET_V (unsigned int,int) ; 
- int /*<<< orphan*/  INFO_STARTCODE ; 
- int /*<<< orphan*/  av_dict_set (int /*<<< orphan*/ **,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ av_strcasecmp (char*,char*) ; 
- scalar_t__ avio_tell (int /*<<< orphan*/ *) ; 
- TYPE_5__* avpriv_new_chapter (TYPE_4__*,int,int /*<<< orphan*/ ,size_t,size_t,int /*<<< orphan*/ *) ; 
- scalar_t__ ffio_get_checksum (int /*<<< orphan*/ *) ; 
- void* ffio_read_varlen (int /*<<< orphan*/ *) ; 
- size_t get_packetheader (TYPE_2__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- void* get_s (int /*<<< orphan*/ *) ; 
- int get_str (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  set_disposition_bits (TYPE_4__*,char*,unsigned int) ; 
- scalar_t__ skip_reserved (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  sscanf (char*,char*,long long*,long long*) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVFMT_EVENT_FLAG_METADATA_UPDATED ;
+ int AVSTREAM_EVENT_FLAG_METADATA_UPDATED ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ int ENOMEM ;
+ int FFMIN (int,int ) ;
+ int GET_V (unsigned int,int) ;
+ int INFO_STARTCODE ;
+ int av_dict_set (int **,char*,char*,int ) ;
+ int av_log (TYPE_4__*,int ,char*,...) ;
+ scalar_t__ av_strcasecmp (char*,char*) ;
+ scalar_t__ avio_tell (int *) ;
+ TYPE_5__* avpriv_new_chapter (TYPE_4__*,int,int ,size_t,size_t,int *) ;
+ scalar_t__ ffio_get_checksum (int *) ;
+ void* ffio_read_varlen (int *) ;
+ size_t get_packetheader (TYPE_2__*,int *,int,int ) ;
+ void* get_s (int *) ;
+ int get_str (int *,char*,int) ;
+ int set_disposition_bits (TYPE_4__*,char*,unsigned int) ;
+ scalar_t__ skip_reserved (int *,size_t) ;
+ int sscanf (char*,char*,long long*,long long*) ;
+ int strcmp (char const*,char*) ;
 
 __attribute__((used)) static int decode_info_header(NUTContext *nut)
 {
     AVFormatContext *s = nut->avf;
-    AVIOContext *bc    = s->pb;
+    AVIOContext *bc = s->pb;
     uint64_t tmp, chapter_start, chapter_len;
     unsigned int stream_id_plus1, count;
     int chapter_id, i, ret = 0;
     int64_t value, end;
     char name[256], str_value[1024], type_str[256];
     const char *type;
-    int *event_flags        = NULL;
-    AVChapter *chapter      = NULL;
-    AVStream *st            = NULL;
-    AVDictionary **metadata = NULL;
-    int metadata_flag       = 0;
+    int *event_flags = ((void*)0);
+    AVChapter *chapter = ((void*)0);
+    AVStream *st = ((void*)0);
+    AVDictionary **metadata = ((void*)0);
+    int metadata_flag = 0;
 
-    end  = get_packetheader(nut, bc, 1, INFO_STARTCODE);
+    end = get_packetheader(nut, bc, 1, INFO_STARTCODE);
     end += avio_tell(bc);
 
     GET_V(stream_id_plus1, tmp <= s->nb_streams);
-    chapter_id    = get_s(bc);
+    chapter_id = get_s(bc);
     chapter_start = ffio_read_varlen(bc);
-    chapter_len   = ffio_read_varlen(bc);
-    count         = ffio_read_varlen(bc);
+    chapter_len = ffio_read_varlen(bc);
+    count = ffio_read_varlen(bc);
 
     if (chapter_id && !stream_id_plus1) {
         int64_t start = chapter_start / nut->time_base_count;
         chapter = avpriv_new_chapter(s, chapter_id,
                                      nut->time_base[chapter_start %
                                                     nut->time_base_count],
-                                     start, start + chapter_len, NULL);
+                                     start, start + chapter_len, ((void*)0));
         if (!chapter) {
             av_log(s, AV_LOG_ERROR, "Could not create chapter.\n");
             return AVERROR(ENOMEM);
         }
         metadata = &chapter->metadata;
     } else if (stream_id_plus1) {
-        st       = s->streams[stream_id_plus1 - 1];
+        st = s->streams[stream_id_plus1 - 1];
         metadata = &st->metadata;
         event_flags = &st->event_flags;
         metadata_flag = AVSTREAM_EVENT_FLAG_METADATA_UPDATED;
@@ -126,10 +126,10 @@ __attribute__((used)) static int decode_info_header(NUTContext *nut)
             type = type_str;
             ret = get_str(bc, str_value, sizeof(str_value));
         } else if (value == -3) {
-            type  = "s";
+            type = "s";
             value = get_s(bc);
         } else if (value == -4) {
-            type  = "t";
+            type = "t";
             value = ffio_read_varlen(bc);
         } else if (value < -4) {
             type = "r";

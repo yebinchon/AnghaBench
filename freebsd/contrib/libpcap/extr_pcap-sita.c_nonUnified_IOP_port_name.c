@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  geoslot; int /*<<< orphan*/  chassis; } ;
-typedef  TYPE_1__ unit_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pcap_snprintf (char*,size_t,char*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int geoslot; int chassis; } ;
+typedef TYPE_1__ unit_t ;
+
+
+ int pcap_snprintf (char*,size_t,char*,char const*,int ,int ) ;
 
 __attribute__((used)) static void nonUnified_IOP_port_name(char *buf, size_t bufsize, const char *proto, unit_t *u) {
 
-	pcap_snprintf(buf, bufsize, "%s_%d_%d", proto, u->chassis, u->geoslot);
+ pcap_snprintf(buf, bufsize, "%s_%d_%d", proto, u->chassis, u->geoslot);
 }

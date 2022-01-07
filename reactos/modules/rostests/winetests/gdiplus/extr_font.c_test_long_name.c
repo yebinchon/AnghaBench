@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int INT ;
-typedef  int GpStatus ;
-typedef  int /*<<< orphan*/  GpFontFamily ;
-typedef  int /*<<< orphan*/  GpFontCollection ;
-typedef  int /*<<< orphan*/  GpFont ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DELETE_FONTFILE (char*) ; 
- int /*<<< orphan*/  FontStyleRegular ; 
- int GdipCreateFont (int /*<<< orphan*/ *,double,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int GdipDeleteFont (int /*<<< orphan*/ *) ; 
- int GdipDeletePrivateFontCollection (int /*<<< orphan*/ **) ; 
- int GdipGetFamilyName (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int GdipGetFontCollectionFamilyCount (int /*<<< orphan*/ *,int*) ; 
- int GdipGetFontCollectionFamilyList (int /*<<< orphan*/ *,int,int /*<<< orphan*/ **,int*) ; 
- int GdipNewPrivateFontCollection (int /*<<< orphan*/ **) ; 
- int GdipPrivateAddFontFile (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  LANG_NEUTRAL ; 
- int LF_FACESIZE ; 
- int MAX_PATH ; 
- int Ok ; 
- int /*<<< orphan*/  UnitPixel ; 
- int /*<<< orphan*/  create_testfontfile (char const*,int,char*) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
+
+
+
+typedef char WCHAR ;
+typedef int INT ;
+typedef int GpStatus ;
+typedef int GpFontFamily ;
+typedef int GpFontCollection ;
+typedef int GpFont ;
+
+
+ int DELETE_FONTFILE (char*) ;
+ int FontStyleRegular ;
+ int GdipCreateFont (int *,double,int ,int ,int **) ;
+ int GdipDeleteFont (int *) ;
+ int GdipDeletePrivateFontCollection (int **) ;
+ int GdipGetFamilyName (int *,char*,int ) ;
+ int GdipGetFontCollectionFamilyCount (int *,int*) ;
+ int GdipGetFontCollectionFamilyList (int *,int,int **,int*) ;
+ int GdipNewPrivateFontCollection (int **) ;
+ int GdipPrivateAddFontFile (int *,char*) ;
+ int LANG_NEUTRAL ;
+ int LF_FACESIZE ;
+ int MAX_PATH ;
+ int Ok ;
+ int UnitPixel ;
+ int create_testfontfile (char const*,int,char*) ;
+ int ok (int,char*,int) ;
 
 __attribute__((used)) static void test_long_name(void)
 {
@@ -69,7 +69,7 @@ __attribute__((used)) static void test_long_name(void)
     stat = GdipCreateFont(family, 256.0, FontStyleRegular, UnitPixel, &font);
     ok(stat == Ok, "GdipCreateFont failed: %d\n", stat);
 
-    /* Cleanup */
+
 
     stat = GdipDeleteFont(font);
     ok(stat == Ok, "GdipDeleteFont failed: %d\n", stat);

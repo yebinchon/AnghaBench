@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPDIRECT3DDEVICE9 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  d3d9_set_vertex_shader_constantf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,float const*,int) ; 
+
+
+
+typedef int LPDIRECT3DDEVICE9 ;
+
+
+ int d3d9_set_vertex_shader_constantf (int ,int ,float const*,int) ;
 
 void d3d9_set_mvp(void *data, const void *mat_data)
 {

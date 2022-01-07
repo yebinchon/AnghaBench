@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  buf; } ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (TYPE_1__*) ; 
- int /*<<< orphan*/  git_buf_dispose (int /*<<< orphan*/ *) ; 
- TYPE_1__* git_sysdir__dirs ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int buf; } ;
+
+
+ size_t ARRAY_SIZE (TYPE_1__*) ;
+ int git_buf_dispose (int *) ;
+ TYPE_1__* git_sysdir__dirs ;
 
 __attribute__((used)) static void git_sysdir_global_shutdown(void)
 {
-	size_t i;
+ size_t i;
 
-	for (i = 0; i < ARRAY_SIZE(git_sysdir__dirs); ++i)
-		git_buf_dispose(&git_sysdir__dirs[i].buf);
+ for (i = 0; i < ARRAY_SIZE(git_sysdir__dirs); ++i)
+  git_buf_dispose(&git_sysdir__dirs[i].buf);
 }

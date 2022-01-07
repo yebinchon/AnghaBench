@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  olist_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * OHead ; 
- int OLIST_COUNT ; 
- int ocur_now ; 
- int online_convert_time (int) ; 
- int /*<<< orphan*/  online_list_unpack (int*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int olist_t ;
+
+
+ int * OHead ;
+ int OLIST_COUNT ;
+ int ocur_now ;
+ int online_convert_time (int) ;
+ int online_list_unpack (int*,int *) ;
 
 int online_interval_unpack (int *A, int bt, int et) {
   if (bt > et || bt > ocur_now) {

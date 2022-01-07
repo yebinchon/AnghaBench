@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wine_trailerW ;
-struct TYPE_5__ {scalar_t__ build; scalar_t__ revision; int /*<<< orphan*/  minor; int /*<<< orphan*/  major; } ;
-struct assembly_identity {char* language; TYPE_1__ version; int /*<<< orphan*/  public_key; int /*<<< orphan*/  name; int /*<<< orphan*/  arch; } ;
-typedef  int /*<<< orphan*/  lookup_fmtW ;
-typedef  int /*<<< orphan*/  buffer ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  scalar_t__ ULONG ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int wine_trailerW ;
+struct TYPE_5__ {scalar_t__ build; scalar_t__ revision; int minor; int major; } ;
+struct assembly_identity {char* language; TYPE_1__ version; int public_key; int name; int arch; } ;
+typedef int lookup_fmtW ;
+typedef int buffer ;
+typedef char WCHAR ;
+typedef int UNICODE_STRING ;
+typedef scalar_t__ ULONG ;
 struct TYPE_7__ {char* FileName; int FileNameLength; scalar_t__ NextEntryOffset; } ;
 struct TYPE_6__ {scalar_t__ Information; } ;
-typedef  TYPE_2__ IO_STATUS_BLOCK ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  TYPE_3__ FILE_BOTH_DIR_INFORMATION ;
+typedef TYPE_2__ IO_STATUS_BLOCK ;
+typedef int HANDLE ;
+typedef TYPE_3__ FILE_BOTH_DIR_INFORMATION ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT1 (char*,char*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FileBothDirectoryInformation ; 
- scalar_t__ NtQueryDirectoryFile (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*,char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* RtlAllocateHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  RtlFreeHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  RtlGetProcessHeap () ; 
- int /*<<< orphan*/  RtlInitUnicodeString (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ atoiW (char*) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  memicmpW (char*,char const*,int) ; 
- int /*<<< orphan*/  neutralW ; 
- int /*<<< orphan*/  sprintfW (char*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
- char* strchrW (char*,char) ; 
- int /*<<< orphan*/  strcmpiW (char const*,int /*<<< orphan*/ ) ; 
- int strlenW (int /*<<< orphan*/ ) ; 
- char* wildcardW ; 
+
+ int DPRINT1 (char*,char*) ;
+ int FALSE ;
+ int FileBothDirectoryInformation ;
+ scalar_t__ NtQueryDirectoryFile (int ,int ,int *,int *,TYPE_2__*,char*,int,int ,int ,int *,int ) ;
+ char* RtlAllocateHeap (int ,int ,int) ;
+ int RtlFreeHeap (int ,int ,char*) ;
+ int RtlGetProcessHeap () ;
+ int RtlInitUnicodeString (int *,char*) ;
+ int TRUE ;
+ scalar_t__ atoiW (char*) ;
+ int memcpy (char*,char*,int) ;
+ int memicmpW (char*,char const*,int) ;
+ int neutralW ;
+ int sprintfW (char*,char const*,int ,int ,int ,int ,int ,char const*) ;
+ char* strchrW (char*,char) ;
+ int strcmpiW (char const*,int ) ;
+ int strlenW (int ) ;
+ char* wildcardW ;
 
 __attribute__((used)) static WCHAR *lookup_manifest_file( HANDLE dir, struct assembly_identity *ai )
 {
@@ -54,7 +54,7 @@ __attribute__((used)) static WCHAR *lookup_manifest_file( HANDLE dir, struct ass
          '%','s','_','*','.','m','a','n','i','f','e','s','t',0};
     static const WCHAR wine_trailerW[] = {'d','e','a','d','b','e','e','f','.','m','a','n','i','f','e','s','t'};
 
-    WCHAR *lookup, *ret = NULL;
+    WCHAR *lookup, *ret = ((void*)0);
     UNICODE_STRING lookup_us;
     IO_STATUS_BLOCK io;
     const WCHAR *lang = ai->language;
@@ -65,14 +65,14 @@ __attribute__((used)) static WCHAR *lookup_manifest_file( HANDLE dir, struct ass
                                     (strlenW(ai->arch) + strlenW(ai->name)
                                      + strlenW(ai->public_key) + 20) * sizeof(WCHAR)
                                     + sizeof(lookup_fmtW) )))
-        return NULL;
+        return ((void*)0);
 
     if (!lang || !strcmpiW( lang, neutralW )) lang = wildcardW;
     sprintfW( lookup, lookup_fmtW, ai->arch, ai->name, ai->public_key,
               ai->version.major, ai->version.minor, lang );
     RtlInitUnicodeString( &lookup_us, lookup );
 
-    if (!NtQueryDirectoryFile( dir, 0, NULL, NULL, &io, buffer, sizeof(buffer),
+    if (!NtQueryDirectoryFile( dir, 0, ((void*)0), ((void*)0), &io, buffer, sizeof(buffer),
                                FileBothDirectoryInformation, FALSE, &lookup_us, TRUE ))
     {
         ULONG min_build = ai->version.build, min_revision = ai->version.revision;
@@ -86,7 +86,7 @@ __attribute__((used)) static WCHAR *lookup_manifest_file( HANDLE dir, struct ass
         {
             if (data_pos >= data_len)
             {
-                if (NtQueryDirectoryFile( dir, 0, NULL, NULL, &io, buffer, sizeof(buffer),
+                if (NtQueryDirectoryFile( dir, 0, ((void*)0), ((void*)0), &io, buffer, sizeof(buffer),
                                           FileBothDirectoryInformation, FALSE, &lookup_us, FALSE ))
                     break;
                 data_len = (ULONG)io.Information;
@@ -108,8 +108,8 @@ __attribute__((used)) static WCHAR *lookup_manifest_file( HANDLE dir, struct ass
             if (dir_info->FileNameLength - (tmp - dir_info->FileName) * sizeof(WCHAR) == sizeof(wine_trailerW) &&
                 !memicmpW( tmp, wine_trailerW, sizeof(wine_trailerW) / sizeof(WCHAR) ))
             {
-                /* prefer a non-Wine manifest if we already have one */
-                /* we'll still load the builtin dll if specified through DllOverrides */
+
+
                 if (ret) continue;
             }
             else

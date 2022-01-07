@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct yytbl_writer {size_t total_written; int /*<<< orphan*/  out; } ;
-typedef  int /*<<< orphan*/  flex_uint8_t ;
 
-/* Variables and functions */
- size_t fwrite (int /*<<< orphan*/ *,size_t,int,int /*<<< orphan*/ ) ; 
+
+
+
+struct yytbl_writer {size_t total_written; int out; } ;
+typedef int flex_uint8_t ;
+
+
+ size_t fwrite (int *,size_t,int,int ) ;
 
 int yytbl_write8 (struct yytbl_writer *wr, flex_uint8_t v)
 {
-	size_t  bytes, rv;
+ size_t bytes, rv;
 
-	bytes = sizeof (flex_uint8_t);
-	rv = fwrite (&v, bytes, 1, wr->out);
-	if (rv != 1)
-		return -1;
-	wr->total_written += bytes;
-	return bytes;
+ bytes = sizeof (flex_uint8_t);
+ rv = fwrite (&v, bytes, 1, wr->out);
+ if (rv != 1)
+  return -1;
+ wr->total_written += bytes;
+ return bytes;
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ip_vs_conn {int flags; int /*<<< orphan*/  lock; int /*<<< orphan*/  cport; } ;
-typedef  int /*<<< orphan*/  __be16 ;
 
-/* Variables and functions */
- int IP_VS_CONN_F_NO_CPORT ; 
- int /*<<< orphan*/  atomic_dec (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ip_vs_conn_hash (struct ip_vs_conn*) ; 
- int /*<<< orphan*/  ip_vs_conn_no_cport_cnt ; 
- scalar_t__ ip_vs_conn_unhash (struct ip_vs_conn*) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct ip_vs_conn {int flags; int lock; int cport; } ;
+typedef int __be16 ;
+
+
+ int IP_VS_CONN_F_NO_CPORT ;
+ int atomic_dec (int *) ;
+ int ip_vs_conn_hash (struct ip_vs_conn*) ;
+ int ip_vs_conn_no_cport_cnt ;
+ scalar_t__ ip_vs_conn_unhash (struct ip_vs_conn*) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 void ip_vs_conn_fill_cport(struct ip_vs_conn *cp, __be16 cport)
 {
-	if (ip_vs_conn_unhash(cp)) {
-		spin_lock(&cp->lock);
-		if (cp->flags & IP_VS_CONN_F_NO_CPORT) {
-			atomic_dec(&ip_vs_conn_no_cport_cnt);
-			cp->flags &= ~IP_VS_CONN_F_NO_CPORT;
-			cp->cport = cport;
-		}
-		spin_unlock(&cp->lock);
+ if (ip_vs_conn_unhash(cp)) {
+  spin_lock(&cp->lock);
+  if (cp->flags & IP_VS_CONN_F_NO_CPORT) {
+   atomic_dec(&ip_vs_conn_no_cport_cnt);
+   cp->flags &= ~IP_VS_CONN_F_NO_CPORT;
+   cp->cport = cport;
+  }
+  spin_unlock(&cp->lock);
 
-		/* hash on new dport */
-		ip_vs_conn_hash(cp);
-	}
+
+  ip_vs_conn_hash(cp);
+ }
 }

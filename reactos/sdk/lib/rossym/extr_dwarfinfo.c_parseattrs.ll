@@ -1,0 +1,423 @@
+; ModuleID = '/home/carl/AnghaBench/reactos/sdk/lib/rossym/extr_dwarfinfo.c_parseattrs.c'
+source_filename = "/home/carl/AnghaBench/reactos/sdk/lib/rossym/extr_dwarfinfo.c_parseattrs.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.TYPE_21__ = type { i64, i32, i32, i32 }
+%struct.TYPE_18__ = type { i32 }
+%struct.TYPE_20__ = type { i32, %struct.TYPE_17__*, i32, i32 }
+%struct.TYPE_17__ = type { i32, i32 }
+%struct.TYPE_19__ = type { i32, i32 }
+
+@parseattrs.nbad = internal global i32 0, align 4
+@ptab = common dso_local global %struct.TYPE_21__* null, align 8
+@DwarfAttrName = common dso_local global i64 0, align 8
+@plist = common dso_local global %struct.TYPE_21__* null, align 8
+@DwarfAttrMax = common dso_local global i32 0, align 4
+@.str = private unnamed_addr constant [50 x i8] c"dwarf parse attrs: unexpected attribute name 0x%x\00", align 1
+@FormIndirect = common dso_local global i32 0, align 4
+@TConstant = common dso_local global i32 0, align 4
+@TReference = common dso_local global i32 0, align 4
+@TAddress = common dso_local global i32 0, align 4
+@TFlag = common dso_local global i32 0, align 4
+@TString = common dso_local global i32 0, align 4
+@TBlock = common dso_local global i32 0, align 4
+@.str.1 = private unnamed_addr constant [39 x i8] c"dwarf parse attrs: cannot skip form %d\00", align 1
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.TYPE_18__*, i32, %struct.TYPE_20__*, %struct.TYPE_19__*)* @parseattrs to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @parseattrs(%struct.TYPE_18__* %0, i32 %1, %struct.TYPE_20__* %2, %struct.TYPE_19__* %3) #0 {
+  %5 = alloca i32, align 4
+  %6 = alloca %struct.TYPE_18__*, align 8
+  %7 = alloca i32, align 4
+  %8 = alloca %struct.TYPE_20__*, align 8
+  %9 = alloca %struct.TYPE_19__*, align 8
+  %10 = alloca i32, align 4
+  %11 = alloca i32, align 4
+  %12 = alloca i32, align 4
+  %13 = alloca i32, align 4
+  %14 = alloca i8*, align 8
+  store %struct.TYPE_18__* %0, %struct.TYPE_18__** %6, align 8
+  store i32 %1, i32* %7, align 4
+  store %struct.TYPE_20__* %2, %struct.TYPE_20__** %8, align 8
+  store %struct.TYPE_19__* %3, %struct.TYPE_19__** %9, align 8
+  %15 = load %struct.TYPE_21__*, %struct.TYPE_21__** @ptab, align 8
+  %16 = load i64, i64* @DwarfAttrName, align 8
+  %17 = getelementptr inbounds %struct.TYPE_21__, %struct.TYPE_21__* %15, i64 %16
+  %18 = getelementptr inbounds %struct.TYPE_21__, %struct.TYPE_21__* %17, i32 0, i32 0
+  %19 = load i64, i64* %18, align 8
+  %20 = load i64, i64* @DwarfAttrName, align 8
+  %21 = icmp ne i64 %19, %20
+  br i1 %21, label %22, label %50
+
+22:                                               ; preds = %4
+  store i32 0, i32* %10, align 4
+  br label %23
+
+23:                                               ; preds = %46, %22
+  %24 = load %struct.TYPE_21__*, %struct.TYPE_21__** @plist, align 8
+  %25 = load i32, i32* %10, align 4
+  %26 = sext i32 %25 to i64
+  %27 = getelementptr inbounds %struct.TYPE_21__, %struct.TYPE_21__* %24, i64 %26
+  %28 = getelementptr inbounds %struct.TYPE_21__, %struct.TYPE_21__* %27, i32 0, i32 0
+  %29 = load i64, i64* %28, align 8
+  %30 = icmp ne i64 %29, 0
+  br i1 %30, label %31, label %49
+
+31:                                               ; preds = %23
+  %32 = load %struct.TYPE_21__*, %struct.TYPE_21__** @ptab, align 8
+  %33 = load %struct.TYPE_21__*, %struct.TYPE_21__** @plist, align 8
+  %34 = load i32, i32* %10, align 4
+  %35 = sext i32 %34 to i64
+  %36 = getelementptr inbounds %struct.TYPE_21__, %struct.TYPE_21__* %33, i64 %35
+  %37 = getelementptr inbounds %struct.TYPE_21__, %struct.TYPE_21__* %36, i32 0, i32 0
+  %38 = load i64, i64* %37, align 8
+  %39 = getelementptr inbounds %struct.TYPE_21__, %struct.TYPE_21__* %32, i64 %38
+  %40 = load %struct.TYPE_21__*, %struct.TYPE_21__** @plist, align 8
+  %41 = load i32, i32* %10, align 4
+  %42 = sext i32 %41 to i64
+  %43 = getelementptr inbounds %struct.TYPE_21__, %struct.TYPE_21__* %40, i64 %42
+  %44 = bitcast %struct.TYPE_21__* %39 to i8*
+  %45 = bitcast %struct.TYPE_21__* %43 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 8 %44, i8* align 8 %45, i64 24, i1 false)
+  br label %46
+
+46:                                               ; preds = %31
+  %47 = load i32, i32* %10, align 4
+  %48 = add nsw i32 %47, 1
+  store i32 %48, i32* %10, align 4
+  br label %23
+
+49:                                               ; preds = %23
+  br label %50
+
+50:                                               ; preds = %49, %4
+  %51 = load %struct.TYPE_19__*, %struct.TYPE_19__** %9, align 8
+  %52 = call i32 @memset(%struct.TYPE_19__* %51, i32 0, i32 8)
+  %53 = load %struct.TYPE_20__*, %struct.TYPE_20__** %8, align 8
+  %54 = getelementptr inbounds %struct.TYPE_20__, %struct.TYPE_20__* %53, i32 0, i32 3
+  %55 = load i32, i32* %54, align 4
+  %56 = load %struct.TYPE_19__*, %struct.TYPE_19__** %9, align 8
+  %57 = getelementptr inbounds %struct.TYPE_19__, %struct.TYPE_19__* %56, i32 0, i32 1
+  store i32 %55, i32* %57, align 4
+  %58 = load %struct.TYPE_20__*, %struct.TYPE_20__** %8, align 8
+  %59 = getelementptr inbounds %struct.TYPE_20__, %struct.TYPE_20__* %58, i32 0, i32 2
+  %60 = load i32, i32* %59, align 8
+  %61 = load %struct.TYPE_19__*, %struct.TYPE_19__** %9, align 8
+  %62 = getelementptr inbounds %struct.TYPE_19__, %struct.TYPE_19__* %61, i32 0, i32 0
+  store i32 %60, i32* %62, align 4
+  store i32 0, i32* %10, align 4
+  br label %63
+
+63:                                               ; preds = %251, %50
+  %64 = load i32, i32* %10, align 4
+  %65 = load %struct.TYPE_20__*, %struct.TYPE_20__** %8, align 8
+  %66 = getelementptr inbounds %struct.TYPE_20__, %struct.TYPE_20__* %65, i32 0, i32 0
+  %67 = load i32, i32* %66, align 8
+  %68 = icmp slt i32 %64, %67
+  br i1 %68, label %69, label %254
+
+69:                                               ; preds = %63
+  %70 = load %struct.TYPE_20__*, %struct.TYPE_20__** %8, align 8
+  %71 = getelementptr inbounds %struct.TYPE_20__, %struct.TYPE_20__* %70, i32 0, i32 1
+  %72 = load %struct.TYPE_17__*, %struct.TYPE_17__** %71, align 8
+  %73 = load i32, i32* %10, align 4
+  %74 = sext i32 %73 to i64
+  %75 = getelementptr inbounds %struct.TYPE_17__, %struct.TYPE_17__* %72, i64 %74
+  %76 = getelementptr inbounds %struct.TYPE_17__, %struct.TYPE_17__* %75, i32 0, i32 0
+  %77 = load i32, i32* %76, align 4
+  store i32 %77, i32* %12, align 4
+  %78 = load %struct.TYPE_20__*, %struct.TYPE_20__** %8, align 8
+  %79 = getelementptr inbounds %struct.TYPE_20__, %struct.TYPE_20__* %78, i32 0, i32 1
+  %80 = load %struct.TYPE_17__*, %struct.TYPE_17__** %79, align 8
+  %81 = load i32, i32* %10, align 4
+  %82 = sext i32 %81 to i64
+  %83 = getelementptr inbounds %struct.TYPE_17__, %struct.TYPE_17__* %80, i64 %82
+  %84 = getelementptr inbounds %struct.TYPE_17__, %struct.TYPE_17__* %83, i32 0, i32 1
+  %85 = load i32, i32* %84, align 4
+  store i32 %85, i32* %11, align 4
+  %86 = load i32, i32* %12, align 4
+  %87 = icmp slt i32 %86, 0
+  br i1 %87, label %100, label %88
+
+88:                                               ; preds = %69
+  %89 = load i32, i32* %12, align 4
+  %90 = load i32, i32* @DwarfAttrMax, align 4
+  %91 = icmp sge i32 %89, %90
+  br i1 %91, label %100, label %92
+
+92:                                               ; preds = %88
+  %93 = load %struct.TYPE_21__*, %struct.TYPE_21__** @ptab, align 8
+  %94 = load i32, i32* %12, align 4
+  %95 = sext i32 %94 to i64
+  %96 = getelementptr inbounds %struct.TYPE_21__, %struct.TYPE_21__* %93, i64 %95
+  %97 = getelementptr inbounds %struct.TYPE_21__, %struct.TYPE_21__* %96, i32 0, i32 0
+  %98 = load i64, i64* %97, align 8
+  %99 = icmp eq i64 %98, 0
+  br i1 %99, label %100, label %108
+
+100:                                              ; preds = %92, %88, %69
+  %101 = load i32, i32* @parseattrs.nbad, align 4
+  %102 = add nsw i32 %101, 1
+  store i32 %102, i32* @parseattrs.nbad, align 4
+  %103 = icmp eq i32 %102, 1
+  br i1 %103, label %104, label %107
+
+104:                                              ; preds = %100
+  %105 = load i32, i32* %12, align 4
+  %106 = call i32 @werrstr(i8* getelementptr inbounds ([50 x i8], [50 x i8]* @.str, i64 0, i64 0), i32 %105)
+  br label %107
+
+107:                                              ; preds = %104, %100
+  br label %251
+
+108:                                              ; preds = %92
+  %109 = load %struct.TYPE_19__*, %struct.TYPE_19__** %9, align 8
+  %110 = bitcast %struct.TYPE_19__* %109 to i8*
+  %111 = load %struct.TYPE_21__*, %struct.TYPE_21__** @ptab, align 8
+  %112 = load i32, i32* %12, align 4
+  %113 = sext i32 %112 to i64
+  %114 = getelementptr inbounds %struct.TYPE_21__, %struct.TYPE_21__* %111, i64 %113
+  %115 = getelementptr inbounds %struct.TYPE_21__, %struct.TYPE_21__* %114, i32 0, i32 1
+  %116 = load i32, i32* %115, align 8
+  %117 = sext i32 %116 to i64
+  %118 = getelementptr inbounds i8, i8* %110, i64 %117
+  store i8* %118, i8** %14, align 8
+  store i32 0, i32* %13, align 4
+  %119 = load i32, i32* %11, align 4
+  %120 = load i32, i32* @FormIndirect, align 4
+  %121 = icmp eq i32 %119, %120
+  br i1 %121, label %122, label %125
+
+122:                                              ; preds = %108
+  %123 = load %struct.TYPE_18__*, %struct.TYPE_18__** %6, align 8
+  %124 = call i32 @dwarfget128(%struct.TYPE_18__* %123)
+  store i32 %124, i32* %11, align 4
+  br label %125
+
+125:                                              ; preds = %122, %108
+  %126 = load %struct.TYPE_21__*, %struct.TYPE_21__** @ptab, align 8
+  %127 = load i32, i32* %12, align 4
+  %128 = sext i32 %127 to i64
+  %129 = getelementptr inbounds %struct.TYPE_21__, %struct.TYPE_21__* %126, i64 %128
+  %130 = getelementptr inbounds %struct.TYPE_21__, %struct.TYPE_21__* %129, i32 0, i32 2
+  %131 = load i32, i32* %130, align 4
+  %132 = load i32, i32* @TConstant, align 4
+  %133 = load i32, i32* @TReference, align 4
+  %134 = or i32 %132, %133
+  %135 = load i32, i32* @TAddress, align 4
+  %136 = or i32 %134, %135
+  %137 = and i32 %131, %136
+  %138 = icmp ne i32 %137, 0
+  br i1 %138, label %139, label %147
+
+139:                                              ; preds = %125
+  %140 = load %struct.TYPE_18__*, %struct.TYPE_18__** %6, align 8
+  %141 = load i32, i32* %11, align 4
+  %142 = load i32, i32* %7, align 4
+  %143 = load i8*, i8** %14, align 8
+  %144 = call i64 @getulong(%struct.TYPE_18__* %140, i32 %141, i32 %142, i8* %143, i32* %13)
+  %145 = icmp sge i64 %144, 0
+  br i1 %145, label %146, label %147
+
+146:                                              ; preds = %139
+  br label %218
+
+147:                                              ; preds = %139, %125
+  %148 = load %struct.TYPE_21__*, %struct.TYPE_21__** @ptab, align 8
+  %149 = load i32, i32* %12, align 4
+  %150 = sext i32 %149 to i64
+  %151 = getelementptr inbounds %struct.TYPE_21__, %struct.TYPE_21__* %148, i64 %150
+  %152 = getelementptr inbounds %struct.TYPE_21__, %struct.TYPE_21__* %151, i32 0, i32 2
+  %153 = load i32, i32* %152, align 4
+  %154 = load i32, i32* @TFlag, align 4
+  %155 = and i32 %153, %154
+  %156 = icmp ne i32 %155, 0
+  br i1 %156, label %157, label %165
+
+157:                                              ; preds = %147
+  %158 = load %struct.TYPE_18__*, %struct.TYPE_18__** %6, align 8
+  %159 = load i32, i32* %11, align 4
+  %160 = load i8*, i8** %14, align 8
+  %161 = call i64 @getuchar(%struct.TYPE_18__* %158, i32 %159, i8* %160)
+  %162 = icmp sge i64 %161, 0
+  br i1 %162, label %163, label %165
+
+163:                                              ; preds = %157
+  %164 = load i32, i32* @TFlag, align 4
+  store i32 %164, i32* %13, align 4
+  br label %217
+
+165:                                              ; preds = %157, %147
+  %166 = load %struct.TYPE_21__*, %struct.TYPE_21__** @ptab, align 8
+  %167 = load i32, i32* %12, align 4
+  %168 = sext i32 %167 to i64
+  %169 = getelementptr inbounds %struct.TYPE_21__, %struct.TYPE_21__* %166, i64 %168
+  %170 = getelementptr inbounds %struct.TYPE_21__, %struct.TYPE_21__* %169, i32 0, i32 2
+  %171 = load i32, i32* %170, align 4
+  %172 = load i32, i32* @TString, align 4
+  %173 = and i32 %171, %172
+  %174 = icmp ne i32 %173, 0
+  br i1 %174, label %175, label %183
+
+175:                                              ; preds = %165
+  %176 = load %struct.TYPE_18__*, %struct.TYPE_18__** %6, align 8
+  %177 = load i32, i32* %11, align 4
+  %178 = load i8*, i8** %14, align 8
+  %179 = call i64 @getstring(%struct.TYPE_18__* %176, i32 %177, i8* %178)
+  %180 = icmp sge i64 %179, 0
+  br i1 %180, label %181, label %183
+
+181:                                              ; preds = %175
+  %182 = load i32, i32* @TString, align 4
+  store i32 %182, i32* %13, align 4
+  br label %216
+
+183:                                              ; preds = %175, %165
+  %184 = load %struct.TYPE_21__*, %struct.TYPE_21__** @ptab, align 8
+  %185 = load i32, i32* %12, align 4
+  %186 = sext i32 %185 to i64
+  %187 = getelementptr inbounds %struct.TYPE_21__, %struct.TYPE_21__* %184, i64 %186
+  %188 = getelementptr inbounds %struct.TYPE_21__, %struct.TYPE_21__* %187, i32 0, i32 2
+  %189 = load i32, i32* %188, align 4
+  %190 = load i32, i32* @TBlock, align 4
+  %191 = and i32 %189, %190
+  %192 = icmp ne i32 %191, 0
+  br i1 %192, label %193, label %201
+
+193:                                              ; preds = %183
+  %194 = load %struct.TYPE_18__*, %struct.TYPE_18__** %6, align 8
+  %195 = load i32, i32* %11, align 4
+  %196 = load i8*, i8** %14, align 8
+  %197 = call i64 @getblock(%struct.TYPE_18__* %194, i32 %195, i8* %196)
+  %198 = icmp sge i64 %197, 0
+  br i1 %198, label %199, label %201
+
+199:                                              ; preds = %193
+  %200 = load i32, i32* @TBlock, align 4
+  store i32 %200, i32* %13, align 4
+  br label %215
+
+201:                                              ; preds = %193, %183
+  %202 = load %struct.TYPE_18__*, %struct.TYPE_18__** %6, align 8
+  %203 = load i32, i32* %11, align 4
+  %204 = call i64 @skipform(%struct.TYPE_18__* %202, i32 %203)
+  %205 = icmp slt i64 %204, 0
+  br i1 %205, label %206, label %214
+
+206:                                              ; preds = %201
+  %207 = load i32, i32* @parseattrs.nbad, align 4
+  %208 = add nsw i32 %207, 1
+  store i32 %208, i32* @parseattrs.nbad, align 4
+  %209 = icmp eq i32 %208, 1
+  br i1 %209, label %210, label %213
+
+210:                                              ; preds = %206
+  %211 = load i32, i32* %11, align 4
+  %212 = call i32 @werrstr(i8* getelementptr inbounds ([39 x i8], [39 x i8]* @.str.1, i64 0, i64 0), i32 %211)
+  br label %213
+
+213:                                              ; preds = %210, %206
+  store i32 -1, i32* %5, align 4
+  br label %255
+
+214:                                              ; preds = %201
+  br label %215
+
+215:                                              ; preds = %214, %199
+  br label %216
+
+216:                                              ; preds = %215, %181
+  br label %217
+
+217:                                              ; preds = %216, %163
+  br label %218
+
+218:                                              ; preds = %217, %146
+  %219 = load i32, i32* %13, align 4
+  %220 = load i32, i32* @TBlock, align 4
+  %221 = icmp eq i32 %219, %220
+  br i1 %221, label %222, label %239
+
+222:                                              ; preds = %218
+  %223 = load %struct.TYPE_21__*, %struct.TYPE_21__** @ptab, align 8
+  %224 = load i32, i32* %12, align 4
+  %225 = sext i32 %224 to i64
+  %226 = getelementptr inbounds %struct.TYPE_21__, %struct.TYPE_21__* %223, i64 %225
+  %227 = getelementptr inbounds %struct.TYPE_21__, %struct.TYPE_21__* %226, i32 0, i32 2
+  %228 = load i32, i32* %227, align 4
+  %229 = load i32, i32* @TConstant, align 4
+  %230 = and i32 %228, %229
+  %231 = icmp ne i32 %230, 0
+  br i1 %231, label %232, label %239
+
+232:                                              ; preds = %222
+  %233 = load %struct.TYPE_18__*, %struct.TYPE_18__** %6, align 8
+  %234 = getelementptr inbounds %struct.TYPE_18__, %struct.TYPE_18__* %233, i32 0, i32 0
+  %235 = load i32, i32* %234, align 4
+  %236 = load i8*, i8** %14, align 8
+  %237 = load i8*, i8** %14, align 8
+  %238 = call i32 @constblock(i32 %235, i8* %236, i8* %237)
+  store i32 %238, i32* %13, align 4
+  br label %239
+
+239:                                              ; preds = %232, %222, %218
+  %240 = load i32, i32* %13, align 4
+  %241 = load %struct.TYPE_19__*, %struct.TYPE_19__** %9, align 8
+  %242 = bitcast %struct.TYPE_19__* %241 to i32*
+  %243 = load %struct.TYPE_21__*, %struct.TYPE_21__** @ptab, align 8
+  %244 = load i32, i32* %12, align 4
+  %245 = sext i32 %244 to i64
+  %246 = getelementptr inbounds %struct.TYPE_21__, %struct.TYPE_21__* %243, i64 %245
+  %247 = getelementptr inbounds %struct.TYPE_21__, %struct.TYPE_21__* %246, i32 0, i32 3
+  %248 = load i32, i32* %247, align 8
+  %249 = sext i32 %248 to i64
+  %250 = getelementptr inbounds i32, i32* %242, i64 %249
+  store i32 %240, i32* %250, align 4
+  br label %251
+
+251:                                              ; preds = %239, %107
+  %252 = load i32, i32* %10, align 4
+  %253 = add nsw i32 %252, 1
+  store i32 %253, i32* %10, align 4
+  br label %63
+
+254:                                              ; preds = %63
+  store i32 0, i32* %5, align 4
+  br label %255
+
+255:                                              ; preds = %254, %213
+  %256 = load i32, i32* %5, align 4
+  ret i32 %256
+}
+
+; Function Attrs: argmemonly nounwind willreturn
+declare void @llvm.memcpy.p0i8.p0i8.i64(i8* noalias nocapture writeonly, i8* noalias nocapture readonly, i64, i1 immarg) #1
+
+declare dso_local i32 @memset(%struct.TYPE_19__*, i32, i32) #2
+
+declare dso_local i32 @werrstr(i8*, i32) #2
+
+declare dso_local i32 @dwarfget128(%struct.TYPE_18__*) #2
+
+declare dso_local i64 @getulong(%struct.TYPE_18__*, i32, i32, i8*, i32*) #2
+
+declare dso_local i64 @getuchar(%struct.TYPE_18__*, i32, i8*) #2
+
+declare dso_local i64 @getstring(%struct.TYPE_18__*, i32, i8*) #2
+
+declare dso_local i64 @getblock(%struct.TYPE_18__*, i32, i8*) #2
+
+declare dso_local i64 @skipform(%struct.TYPE_18__*, i32) #2
+
+declare dso_local i32 @constblock(i32, i8*, i8*) #2
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { argmemonly nounwind willreturn }
+attributes #2 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

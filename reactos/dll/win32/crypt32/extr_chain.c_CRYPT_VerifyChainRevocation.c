@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_9__ ;
-typedef  struct TYPE_23__   TYPE_8__ ;
-typedef  struct TYPE_22__   TYPE_7__ ;
-typedef  struct TYPE_21__   TYPE_6__ ;
-typedef  struct TYPE_20__   TYPE_5__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  revocationStatus ;
-typedef  int /*<<< orphan*/  revocationPara ;
-struct TYPE_24__ {int cbSize; int /*<<< orphan*/  dwRevocationFreshnessTime; int /*<<< orphan*/  fCheckRevocationFreshnessTime; int /*<<< orphan*/  dwUrlRetrievalTimeout; } ;
-struct TYPE_23__ {int member_0; int cCertStore; int /*<<< orphan*/ * pIssuerCert; int /*<<< orphan*/  dwFreshnessTime; int /*<<< orphan*/  fCheckFreshnessTime; int /*<<< orphan*/  dwUrlRetrievalTimeout; scalar_t__ hCrlStore; scalar_t__* rgCertStore; int /*<<< orphan*/  pftTimeToUse; int /*<<< orphan*/  member_1; } ;
-struct TYPE_22__ {int member_0; int dwError; int /*<<< orphan*/  member_1; } ;
+
+
+typedef struct TYPE_24__ TYPE_9__ ;
+typedef struct TYPE_23__ TYPE_8__ ;
+typedef struct TYPE_22__ TYPE_7__ ;
+typedef struct TYPE_21__ TYPE_6__ ;
+typedef struct TYPE_20__ TYPE_5__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int revocationStatus ;
+typedef int revocationPara ;
+struct TYPE_24__ {int cbSize; int dwRevocationFreshnessTime; int fCheckRevocationFreshnessTime; int dwUrlRetrievalTimeout; } ;
+struct TYPE_23__ {int member_0; int cCertStore; int * pIssuerCert; int dwFreshnessTime; int fCheckFreshnessTime; int dwUrlRetrievalTimeout; scalar_t__ hCrlStore; scalar_t__* rgCertStore; int pftTimeToUse; int member_1; } ;
+struct TYPE_22__ {int member_0; int dwError; int member_1; } ;
 struct TYPE_19__ {int dwErrorStatus; } ;
 struct TYPE_21__ {int cChain; TYPE_4__ TrustStatus; TYPE_2__** rgpChain; } ;
 struct TYPE_18__ {int dwErrorStatus; } ;
 struct TYPE_20__ {TYPE_3__ TrustStatus; } ;
 struct TYPE_17__ {int cElement; TYPE_1__** rgpElement; } ;
-struct TYPE_16__ {int /*<<< orphan*/ * pCertContext; } ;
-typedef  TYPE_5__* PCERT_CHAIN_ELEMENT ;
-typedef  TYPE_6__* PCERT_CHAIN_CONTEXT ;
-typedef  int /*<<< orphan*/ * PCCERT_CONTEXT ;
-typedef  int /*<<< orphan*/  LPFILETIME ;
-typedef  scalar_t__ HCERTSTORE ;
-typedef  int DWORD ;
-typedef  TYPE_7__ CERT_REVOCATION_STATUS ;
-typedef  TYPE_8__ CERT_REVOCATION_PARA ;
-typedef  TYPE_9__ CERT_CHAIN_PARA ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct TYPE_16__ {int * pCertContext; } ;
+typedef TYPE_5__* PCERT_CHAIN_ELEMENT ;
+typedef TYPE_6__* PCERT_CHAIN_CONTEXT ;
+typedef int * PCCERT_CONTEXT ;
+typedef int LPFILETIME ;
+typedef scalar_t__ HCERTSTORE ;
+typedef int DWORD ;
+typedef TYPE_7__ CERT_REVOCATION_STATUS ;
+typedef TYPE_8__ CERT_REVOCATION_PARA ;
+typedef TYPE_9__ CERT_CHAIN_PARA ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int CERT_CHAIN_REVOCATION_ACCUMULATIVE_TIMEOUT ; 
- int CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY ; 
- int CERT_CHAIN_REVOCATION_CHECK_CHAIN ; 
- int CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT ; 
- int CERT_CHAIN_REVOCATION_CHECK_END_CERT ; 
- int /*<<< orphan*/  CERT_CONTEXT_REVOCATION_TYPE ; 
- int CERT_TRUST_IS_OFFLINE_REVOCATION ; 
- int CERT_TRUST_IS_REVOKED ; 
- int CERT_TRUST_REVOCATION_STATUS_UNKNOWN ; 
- int CERT_VERIFY_CACHE_ONLY_BASED_REVOCATION ; 
- int CERT_VERIFY_REV_ACCUMULATIVE_TIMEOUT_FLAG ; 
- int CERT_VERIFY_REV_CHAIN_FLAG ; 
-#define  CRYPT_E_NOT_IN_REVOCATION_DATABASE 132 
-#define  CRYPT_E_NO_REVOCATION_CHECK 131 
-#define  CRYPT_E_NO_REVOCATION_DLL 130 
-#define  CRYPT_E_REVOCATION_OFFLINE 129 
-#define  CRYPT_E_REVOKED 128 
- TYPE_5__* CRYPT_FindIthElementInChain (TYPE_6__*,int) ; 
- int /*<<< orphan*/  CertVerifyRevocation (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,void**,int,TYPE_8__*,TYPE_7__*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WARN (char*,int) ; 
- int /*<<< orphan*/  X509_ASN_ENCODING ; 
+
+ int CERT_CHAIN_REVOCATION_ACCUMULATIVE_TIMEOUT ;
+ int CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY ;
+ int CERT_CHAIN_REVOCATION_CHECK_CHAIN ;
+ int CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT ;
+ int CERT_CHAIN_REVOCATION_CHECK_END_CERT ;
+ int CERT_CONTEXT_REVOCATION_TYPE ;
+ int CERT_TRUST_IS_OFFLINE_REVOCATION ;
+ int CERT_TRUST_IS_REVOKED ;
+ int CERT_TRUST_REVOCATION_STATUS_UNKNOWN ;
+ int CERT_VERIFY_CACHE_ONLY_BASED_REVOCATION ;
+ int CERT_VERIFY_REV_ACCUMULATIVE_TIMEOUT_FLAG ;
+ int CERT_VERIFY_REV_CHAIN_FLAG ;
+
+
+
+
+
+ TYPE_5__* CRYPT_FindIthElementInChain (TYPE_6__*,int) ;
+ int CertVerifyRevocation (int ,int ,int,void**,int,TYPE_8__*,TYPE_7__*) ;
+ int TRUE ;
+ int WARN (char*,int) ;
+ int X509_ASN_ENCODING ;
 
 __attribute__((used)) static void CRYPT_VerifyChainRevocation(PCERT_CHAIN_CONTEXT chain,
  LPFILETIME pTime, HCERTSTORE hAdditionalStore,
@@ -130,13 +130,13 @@ __attribute__((used)) static void CRYPT_VerifyChainRevocation(PCERT_CHAIN_CONTEX
                     revocationPara.pIssuerCert =
                      chain->rgpChain[i]->rgpElement[j + 1]->pCertContext;
                 else
-                    revocationPara.pIssuerCert = NULL;
+                    revocationPara.pIssuerCert = ((void*)0);
                 ret = CertVerifyRevocation(X509_ASN_ENCODING,
                  CERT_CONTEXT_REVOCATION_TYPE, 1, (void **)&certToCheck,
                  revocationFlags, &revocationPara, &revocationStatus);
 
                 if (!ret && chainFlags & CERT_CHAIN_REVOCATION_CHECK_CHAIN
-                    && revocationStatus.dwError == CRYPT_E_NO_REVOCATION_CHECK && revocationPara.pIssuerCert == NULL)
+                    && revocationStatus.dwError == 131 && revocationPara.pIssuerCert == ((void*)0))
                     ret = TRUE;
 
                 if (!ret)
@@ -147,19 +147,19 @@ __attribute__((used)) static void CRYPT_VerifyChainRevocation(PCERT_CHAIN_CONTEX
 
                     switch (revocationStatus.dwError)
                     {
-                    case CRYPT_E_NO_REVOCATION_CHECK:
-                    case CRYPT_E_NO_REVOCATION_DLL:
-                    case CRYPT_E_NOT_IN_REVOCATION_DATABASE:
-                        /* If the revocation status is unknown, it's assumed
-                         * to be offline too.
-                         */
+                    case 131:
+                    case 130:
+                    case 132:
+
+
+
                         error = CERT_TRUST_REVOCATION_STATUS_UNKNOWN |
                          CERT_TRUST_IS_OFFLINE_REVOCATION;
                         break;
-                    case CRYPT_E_REVOCATION_OFFLINE:
+                    case 129:
                         error = CERT_TRUST_IS_OFFLINE_REVOCATION;
                         break;
-                    case CRYPT_E_REVOKED:
+                    case 128:
                         error = CERT_TRUST_IS_REVOKED;
                         break;
                     default:
@@ -168,7 +168,7 @@ __attribute__((used)) static void CRYPT_VerifyChainRevocation(PCERT_CHAIN_CONTEX
                     }
                     if (element)
                     {
-                        /* FIXME: set element's pRevocationInfo member */
+
                         element->TrustStatus.dwErrorStatus |= error;
                     }
                     chain->TrustStatus.dwErrorStatus |= error;

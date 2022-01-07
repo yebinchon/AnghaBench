@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  AVIOContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  avio_wb32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/ * ff_avc_find_startcode (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int AVIOContext ;
+
+
+ int avio_wb32 (int *,int) ;
+ int avio_write (int *,int const*,int) ;
+ int * ff_avc_find_startcode (int const*,int const*) ;
 
 int ff_avc_parse_nal_units(AVIOContext *pb, const uint8_t *buf_in, int size)
 {

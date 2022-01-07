@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct cx23885_dev {TYPE_1__* kernel_ir; } ;
-struct TYPE_2__ {struct TYPE_2__* name; struct TYPE_2__* phys; int /*<<< orphan*/  rc; } ;
+struct TYPE_2__ {struct TYPE_2__* name; struct TYPE_2__* phys; int rc; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cx23885_input_ir_stop (struct cx23885_dev*) ; 
- int /*<<< orphan*/  kfree (TYPE_1__*) ; 
- int /*<<< orphan*/  rc_unregister_device (int /*<<< orphan*/ ) ; 
+
+ int cx23885_input_ir_stop (struct cx23885_dev*) ;
+ int kfree (TYPE_1__*) ;
+ int rc_unregister_device (int ) ;
 
 void cx23885_input_fini(struct cx23885_dev *dev)
 {
-	/* Always stop the IR hardware from generating interrupts */
-	cx23885_input_ir_stop(dev);
 
-	if (dev->kernel_ir == NULL)
-		return;
-	rc_unregister_device(dev->kernel_ir->rc);
-	kfree(dev->kernel_ir->phys);
-	kfree(dev->kernel_ir->name);
-	kfree(dev->kernel_ir);
-	dev->kernel_ir = NULL;
+ cx23885_input_ir_stop(dev);
+
+ if (dev->kernel_ir == ((void*)0))
+  return;
+ rc_unregister_device(dev->kernel_ir->rc);
+ kfree(dev->kernel_ir->phys);
+ kfree(dev->kernel_ir->name);
+ kfree(dev->kernel_ir);
+ dev->kernel_ir = ((void*)0);
 }

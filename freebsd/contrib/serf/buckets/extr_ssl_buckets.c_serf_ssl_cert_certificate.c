@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  ssl_cert; } ;
-typedef  TYPE_1__ serf_ssl_certificate_t ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
-typedef  int /*<<< orphan*/  BIO ;
-typedef  int /*<<< orphan*/  ASN1_TIME ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_HASH_KEY_STRING ; 
- scalar_t__ ASN1_TIME_print (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_read (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  BIO_s_mem () ; 
- int EVP_MAX_MD_SIZE ; 
- int /*<<< orphan*/  EVP_sha1 () ; 
- int /*<<< orphan*/  EscapeNulAndCopy ; 
- scalar_t__ X509_digest (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*,unsigned int*) ; 
- int /*<<< orphan*/ * X509_get_notAfter (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * X509_get_notBefore (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_hash_set (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_pstrdup (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  get_subject_alt_names (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int ssl_cert; } ;
+typedef TYPE_1__ serf_ssl_certificate_t ;
+typedef int buf ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_array_header_t ;
+typedef int BIO ;
+typedef int ASN1_TIME ;
+
+
+ int APR_HASH_KEY_STRING ;
+ scalar_t__ ASN1_TIME_print (int *,int *) ;
+ int BIO_free (int *) ;
+ int * BIO_new (int ) ;
+ int BIO_read (int *,char*,int) ;
+ int BIO_s_mem () ;
+ int EVP_MAX_MD_SIZE ;
+ int EVP_sha1 () ;
+ int EscapeNulAndCopy ;
+ scalar_t__ X509_digest (int ,int ,unsigned char*,unsigned int*) ;
+ int * X509_get_notAfter (int ) ;
+ int * X509_get_notBefore (int ) ;
+ int * apr_hash_make (int *) ;
+ int apr_hash_set (int *,char*,int ,int *) ;
+ int * apr_pstrdup (int *,char*) ;
+ int get_subject_alt_names (int **,int ,int ,int *) ;
+ int memset (char*,int ,int) ;
 
 apr_hash_t *serf_ssl_cert_certificate(
     const serf_ssl_certificate_t *cert,
@@ -49,7 +49,7 @@ apr_hash_t *serf_ssl_cert_certificate(
     BIO *bio;
     apr_array_header_t *san_arr;
 
-    /* sha1 fingerprint */
+
     if (X509_digest(cert->ssl_cert, EVP_sha1(), md, &md_size)) {
         const char hex[] = "0123456789ABCDEF";
         char fingerprint[EVP_MAX_MD_SIZE * 3];
@@ -68,7 +68,7 @@ apr_hash_t *serf_ssl_cert_certificate(
                      apr_pstrdup(pool, fingerprint));
     }
 
-    /* set expiry dates */
+
     bio = BIO_new(BIO_s_mem());
     if (bio) {
         ASN1_TIME *notBefore, *notAfter;
@@ -91,7 +91,7 @@ apr_hash_t *serf_ssl_cert_certificate(
     }
     BIO_free(bio);
 
-    /* Get subjectAltNames */
+
     if (!get_subject_alt_names(&san_arr, cert->ssl_cert, EscapeNulAndCopy, pool))
         apr_hash_set(tgt, "subjectAltName", APR_HASH_KEY_STRING, san_arr);
 

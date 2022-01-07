@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_checksum_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- char* svn_checksum_serialize (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__bind_text (int /*<<< orphan*/ *,int,char const*) ; 
+
+
+
+typedef int svn_sqlite__stmt_t ;
+typedef int svn_error_t ;
+typedef int svn_checksum_t ;
+typedef int apr_pool_t ;
+
+
+ char* svn_checksum_serialize (int const*,int *,int *) ;
+ int * svn_error_trace (int ) ;
+ int svn_sqlite__bind_text (int *,int,char const*) ;
 
 svn_error_t *
 svn_sqlite__bind_checksum(svn_sqlite__stmt_t *stmt,
@@ -28,8 +28,8 @@ svn_sqlite__bind_checksum(svn_sqlite__stmt_t *stmt,
 {
   const char *csum_str;
 
-  if (checksum == NULL)
-    csum_str = NULL;
+  if (checksum == ((void*)0))
+    csum_str = ((void*)0);
   else
     csum_str = svn_checksum_serialize(checksum, scratch_pool, scratch_pool);
 

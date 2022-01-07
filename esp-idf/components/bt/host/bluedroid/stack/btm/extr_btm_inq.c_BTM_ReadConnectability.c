@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT16 ;
-struct TYPE_3__ {int /*<<< orphan*/  connectable_mode; int /*<<< orphan*/  page_scan_period; int /*<<< orphan*/  page_scan_window; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UINT16 ;
+struct TYPE_3__ {int connectable_mode; int page_scan_period; int page_scan_window; } ;
 struct TYPE_4__ {TYPE_1__ btm_inq_vars; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BTM_TRACE_API (char*) ; 
- TYPE_2__ btm_cb ; 
+
+ int BTM_TRACE_API (char*) ;
+ TYPE_2__ btm_cb ;
 
 UINT16 BTM_ReadConnectability (UINT16 *p_window, UINT16 *p_interval)
 {

@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char u8 ;
-struct TYPE_13__ {int /*<<< orphan*/  pFS; int /*<<< orphan*/  pEnv; } ;
-typedef  TYPE_1__ lsm_db ;
-struct TYPE_15__ {int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-struct TYPE_14__ {int /*<<< orphan*/  z; } ;
-typedef  int /*<<< orphan*/  Segment ;
-typedef  int /*<<< orphan*/  Page ;
-typedef  TYPE_2__ LsmString ;
-typedef  int /*<<< orphan*/  LsmPgno ;
-typedef  TYPE_3__ LsmBlob ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LSM_OK ; 
- int SEGMENT_BTREE_FLAG ; 
- int /*<<< orphan*/  assert (int) ; 
- char* fsPageData (int /*<<< orphan*/ *,int*) ; 
- scalar_t__ isalnum (char) ; 
- int /*<<< orphan*/  lsmFsDbPageGet (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  lsmFsPageNumber (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lsmFsPageRelease (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lsmLogMessage (TYPE_1__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lsmStringAppend (TYPE_2__*,char*,int) ; 
- int /*<<< orphan*/  lsmStringAppendf (TYPE_2__*,char*,...) ; 
- int /*<<< orphan*/  lsmStringClear (TYPE_2__*) ; 
- int /*<<< orphan*/  lsmStringInit (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lsmVarintGet32 (char*,int*) ; 
- int /*<<< orphan*/  lsmVarintGet64 (char*,int /*<<< orphan*/ *) ; 
- char* pageGetCell (char*,int,int) ; 
- int pageGetFlags (char*,int) ; 
- char* pageGetKey (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*,int*,TYPE_3__*) ; 
- int pageGetNRec (char*,int) ; 
- scalar_t__ pageGetPtr (char*,int) ; 
- scalar_t__ rtIsWrite (int) ; 
- int /*<<< orphan*/  sortedBlobFree (TYPE_3__*) ; 
- int /*<<< orphan*/  sortedReadData (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int,void**,TYPE_3__*) ; 
+
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef char u8 ;
+struct TYPE_13__ {int pFS; int pEnv; } ;
+typedef TYPE_1__ lsm_db ;
+struct TYPE_15__ {int member_2; int member_1; int member_0; } ;
+struct TYPE_14__ {int z; } ;
+typedef int Segment ;
+typedef int Page ;
+typedef TYPE_2__ LsmString ;
+typedef int LsmPgno ;
+typedef TYPE_3__ LsmBlob ;
+
+
+ int LSM_OK ;
+ int SEGMENT_BTREE_FLAG ;
+ int assert (int) ;
+ char* fsPageData (int *,int*) ;
+ scalar_t__ isalnum (char) ;
+ int lsmFsDbPageGet (int ,int *,int ,int **) ;
+ int lsmFsPageNumber (int *) ;
+ int lsmFsPageRelease (int *) ;
+ int lsmLogMessage (TYPE_1__*,int ,char*,int ,int ) ;
+ int lsmStringAppend (TYPE_2__*,char*,int) ;
+ int lsmStringAppendf (TYPE_2__*,char*,...) ;
+ int lsmStringClear (TYPE_2__*) ;
+ int lsmStringInit (TYPE_2__*,int ) ;
+ int lsmVarintGet32 (char*,int*) ;
+ int lsmVarintGet64 (char*,int *) ;
+ char* pageGetCell (char*,int,int) ;
+ int pageGetFlags (char*,int) ;
+ char* pageGetKey (int *,int *,int ,int*,int*,TYPE_3__*) ;
+ int pageGetNRec (char*,int) ;
+ scalar_t__ pageGetPtr (char*,int) ;
+ scalar_t__ rtIsWrite (int) ;
+ int sortedBlobFree (TYPE_3__*) ;
+ int sortedReadData (int ,int *,int,int,void**,TYPE_3__*) ;
 
 void sortedDumpPage(lsm_db *pDb, Segment *pRun, Page *pPg, int bVals){
-  LsmBlob blob = {0, 0, 0};       /* LsmBlob used for keys */
+  LsmBlob blob = {0, 0, 0};
   LsmString s;
   int i;
 
@@ -71,10 +71,10 @@ void sortedDumpPage(lsm_db *pDb, Segment *pRun, Page *pPg, int bVals){
   if( flags&SEGMENT_BTREE_FLAG ) iPtr = 0;
 
   for(i=0; i<nRec; i++){
-    Page *pRef = 0;               /* Pointer to page iRef */
+    Page *pRef = 0;
     int iChar;
-    u8 *aKey; int nKey = 0;       /* Key */
-    u8 *aVal = 0; int nVal = 0;   /* Value */
+    u8 *aKey; int nKey = 0;
+    u8 *aVal = 0; int nVal = 0;
     int iTopic;
     u8 *aCell;
     int iPgPtr;
@@ -86,7 +86,7 @@ void sortedDumpPage(lsm_db *pDb, Segment *pRun, Page *pPg, int bVals){
     aCell += lsmVarintGet32(aCell, &iPgPtr);
 
     if( eType==0 ){
-      LsmPgno iRef;               /* Page number of referenced page */
+      LsmPgno iRef;
       aCell += lsmVarintGet64(aCell, &iRef);
       lsmFsDbPageGet(pDb->pFS, pRun, iRef, &pRef);
       aKey = pageGetKey(pRun, pRef, 0, &iTopic, &nKey, &blob);

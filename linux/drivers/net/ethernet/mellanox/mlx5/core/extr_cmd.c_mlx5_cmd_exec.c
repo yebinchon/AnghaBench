@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mlx5_core_dev {int dummy; } ;
 
-/* Variables and functions */
- int cmd_exec (struct mlx5_core_dev*,void*,int,void*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int mlx5_cmd_check (struct mlx5_core_dev*,void*,void*) ; 
+
+ int cmd_exec (struct mlx5_core_dev*,void*,int,void*,int,int *,int *,int) ;
+ int mlx5_cmd_check (struct mlx5_core_dev*,void*,void*) ;
 
 int mlx5_cmd_exec(struct mlx5_core_dev *dev, void *in, int in_size, void *out,
-		  int out_size)
+    int out_size)
 {
-	int err;
+ int err;
 
-	err = cmd_exec(dev, in, in_size, out, out_size, NULL, NULL, false);
-	return err ? : mlx5_cmd_check(dev, in, out);
+ err = cmd_exec(dev, in, in_size, out, out_size, ((void*)0), ((void*)0), 0);
+ return err ? : mlx5_cmd_check(dev, in, out);
 }

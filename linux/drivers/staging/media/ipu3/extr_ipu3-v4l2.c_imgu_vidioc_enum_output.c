@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct v4l2_output {scalar_t__ index; int /*<<< orphan*/  type; int /*<<< orphan*/  name; } ;
+
+
+
+
+struct v4l2_output {scalar_t__ index; int type; int name; } ;
 struct file {int dummy; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  V4L2_INPUT_TYPE_CAMERA ; 
- int /*<<< orphan*/  strscpy (int /*<<< orphan*/ ,char*,int) ; 
+
+ int EINVAL ;
+ int V4L2_INPUT_TYPE_CAMERA ;
+ int strscpy (int ,char*,int) ;
 
 __attribute__((used)) static int imgu_vidioc_enum_output(struct file *file, void *fh,
-				   struct v4l2_output *output)
+       struct v4l2_output *output)
 {
-	if (output->index > 0)
-		return -EINVAL;
-	strscpy(output->name, "camera", sizeof(output->name));
-	output->type = V4L2_INPUT_TYPE_CAMERA;
+ if (output->index > 0)
+  return -EINVAL;
+ strscpy(output->name, "camera", sizeof(output->name));
+ output->type = V4L2_INPUT_TYPE_CAMERA;
 
-	return 0;
+ return 0;
 }

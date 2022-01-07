@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  jsstr_as_rope (int /*<<< orphan*/ *) ; 
- int jsstr_cmp_str (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- unsigned int jsstr_length (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * jsstr_try_flat (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  min (unsigned int,unsigned int) ; 
- int ropes_cmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int jsstr_t ;
+typedef int WCHAR ;
+
+
+ int jsstr_as_rope (int *) ;
+ int jsstr_cmp_str (int *,int const*,int ) ;
+ unsigned int jsstr_length (int *) ;
+ int * jsstr_try_flat (int *) ;
+ int min (unsigned int,unsigned int) ;
+ int ropes_cmp (int ,int ) ;
 
 int jsstr_cmp(jsstr_t *str1, jsstr_t *str2)
 {

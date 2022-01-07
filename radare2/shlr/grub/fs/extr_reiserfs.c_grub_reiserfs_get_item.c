@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  struct grub_reiserfs_key {scalar_t__ directory_id; scalar_t__ object_id; } const grub_reiserfs_key ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef struct grub_reiserfs_key {scalar_t__ directory_id; scalar_t__ object_id; } const grub_reiserfs_key ;
 struct grub_reiserfs_item_header {struct grub_reiserfs_key const key; } ;
-struct grub_reiserfs_disk_child {int /*<<< orphan*/  block_number; } ;
-struct TYPE_2__ {int /*<<< orphan*/  root_block; int /*<<< orphan*/  block_size; } ;
-struct grub_reiserfs_data {int /*<<< orphan*/  disk; TYPE_1__ superblock; } ;
-struct grub_reiserfs_block_header {int /*<<< orphan*/  item_count; int /*<<< orphan*/  level; } ;
-struct grub_fshelp_node {int block_number; int block_position; int /*<<< orphan*/  header; int /*<<< orphan*/  type; struct grub_reiserfs_data* data; scalar_t__ next_offset; } ;
-typedef  int grub_uint32_t ;
-typedef  int grub_uint16_t ;
-typedef  int grub_off_t ;
-typedef  scalar_t__ grub_err_t ;
+struct grub_reiserfs_disk_child {int block_number; } ;
+struct TYPE_2__ {int root_block; int block_size; } ;
+struct grub_reiserfs_data {int disk; TYPE_1__ superblock; } ;
+struct grub_reiserfs_block_header {int item_count; int level; } ;
+struct grub_fshelp_node {int block_number; int block_position; int header; int type; struct grub_reiserfs_data* data; scalar_t__ next_offset; } ;
+typedef int grub_uint32_t ;
+typedef int grub_uint16_t ;
+typedef int grub_off_t ;
+typedef scalar_t__ grub_err_t ;
 
-/* Variables and functions */
- int GRUB_DISK_SECTOR_BITS ; 
- int GRUB_DISK_SECTOR_SIZE ; 
- int /*<<< orphan*/  GRUB_ERR_FILE_READ_ERROR ; 
- scalar_t__ GRUB_ERR_NONE ; 
- int /*<<< orphan*/  GRUB_ERR_TEST_FAILURE ; 
- int /*<<< orphan*/  GRUB_REISERFS_UNKNOWN ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  grub_disk_read (int /*<<< orphan*/ ,int,int,int,struct grub_reiserfs_block_header*) ; 
- int /*<<< orphan*/  grub_dprintf (char*,char*,...) ; 
- scalar_t__ grub_errno ; 
- int /*<<< orphan*/  grub_error (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  grub_free (struct grub_reiserfs_block_header*) ; 
- int grub_le_to_cpu16 (int /*<<< orphan*/ ) ; 
- int grub_le_to_cpu32 (int /*<<< orphan*/ ) ; 
- struct grub_reiserfs_block_header* grub_malloc (int) ; 
- int /*<<< orphan*/  grub_memcpy (int /*<<< orphan*/ *,struct grub_reiserfs_item_header*,int) ; 
- int /*<<< orphan*/  grub_printf (char*,...) ; 
- scalar_t__ grub_reiserfs_compare_keys (struct grub_reiserfs_key const*,struct grub_reiserfs_key const*) ; 
- scalar_t__ grub_reiserfs_get_key_offset (struct grub_reiserfs_key const*) ; 
- int /*<<< orphan*/  grub_reiserfs_get_key_type (struct grub_reiserfs_key const*) ; 
- int /*<<< orphan*/  grub_reiserfs_print_key (struct grub_reiserfs_key const*) ; 
+
+ int GRUB_DISK_SECTOR_BITS ;
+ int GRUB_DISK_SECTOR_SIZE ;
+ int GRUB_ERR_FILE_READ_ERROR ;
+ scalar_t__ GRUB_ERR_NONE ;
+ int GRUB_ERR_TEST_FAILURE ;
+ int GRUB_REISERFS_UNKNOWN ;
+ int assert (int) ;
+ int grub_disk_read (int ,int,int,int,struct grub_reiserfs_block_header*) ;
+ int grub_dprintf (char*,char*,...) ;
+ scalar_t__ grub_errno ;
+ int grub_error (int ,char*) ;
+ int grub_free (struct grub_reiserfs_block_header*) ;
+ int grub_le_to_cpu16 (int ) ;
+ int grub_le_to_cpu32 (int ) ;
+ struct grub_reiserfs_block_header* grub_malloc (int) ;
+ int grub_memcpy (int *,struct grub_reiserfs_item_header*,int) ;
+ int grub_printf (char*,...) ;
+ scalar_t__ grub_reiserfs_compare_keys (struct grub_reiserfs_key const*,struct grub_reiserfs_key const*) ;
+ scalar_t__ grub_reiserfs_get_key_offset (struct grub_reiserfs_key const*) ;
+ int grub_reiserfs_get_key_type (struct grub_reiserfs_key const*) ;
+ int grub_reiserfs_print_key (struct grub_reiserfs_key const*) ;
 
 __attribute__((used)) static grub_err_t
 grub_reiserfs_get_item (struct grub_reiserfs_data *data,
@@ -79,10 +79,10 @@ grub_reiserfs_get_item (struct grub_reiserfs_data *data,
 
   block_size = grub_le_to_cpu16 (data->superblock.block_size);
   block_number = grub_le_to_cpu32 (data->superblock.root_block);
-#ifdef GRUB_REISERFS_DEBUG
-  grub_printf("Searching for ");
-  grub_reiserfs_print_key (key);
-#endif
+
+
+
+
   block_header = grub_malloc (block_size);
   if (! block_header)
     goto fail;
@@ -111,8 +111,8 @@ grub_reiserfs_get_item (struct grub_reiserfs_data *data,
                     item_count);
       if (current_level > 1)
         {
-          /* Internal node. Navigate to the child that should contain
-             the searched key.  */
+
+
           struct grub_reiserfs_key *keys
             = (struct grub_reiserfs_key *) (block_header + 1);
           struct grub_reiserfs_disk_child *children
@@ -124,39 +124,19 @@ grub_reiserfs_get_item (struct grub_reiserfs_data *data,
                  && grub_reiserfs_compare_keys (key, &(keys[i])) >= 0;
                i++)
             {
-#ifdef GRUB_REISERFS_DEBUG
-              grub_printf("i %03d/%03d ", i + 1, item_count + 1);
-              grub_reiserfs_print_key (&(keys[i]));
-#endif
+
+
+
+
             }
           block_number = grub_le_to_cpu32 (children[i].block_number);
-	  if ((i < item_count) && (key->directory_id == keys[i].directory_id)
-	       && (key->object_id == keys[i].object_id))
-	    item->next_offset = grub_reiserfs_get_key_offset(&(keys[i]));
-#ifdef GRUB_REISERFS_DEBUG
-          if (i == item_count
-              || grub_reiserfs_compare_keys (key, &(keys[i])) == 0)
-            grub_printf(">");
-          else
-            grub_printf("<");
-          if (i < item_count)
-            {
-              grub_printf (" %03d/%03d ", i + 1, item_count + 1);
-              grub_reiserfs_print_key (&(keys[i]));
-              if (i + 1 < item_count)
-                {
-                  grub_printf ("+ %03d/%03d ", i + 2, item_count);
-                  grub_reiserfs_print_key (&(keys[i + 1]));
-                }
-            }
-          else
-            grub_printf ("Accessing rightmost child at block %d.\n",
-                         block_number);
-#endif
+   if ((i < item_count) && (key->directory_id == keys[i].directory_id)
+        && (key->object_id == keys[i].object_id))
+     item->next_offset = grub_reiserfs_get_key_offset(&(keys[i]));
         }
       else
         {
-          /* Leaf node.  Check that the key is actually present.  */
+
           item_headers
             = (struct grub_reiserfs_item_header *) (block_header + 1);
           for (i = 0;
@@ -165,15 +145,6 @@ grub_reiserfs_get_item (struct grub_reiserfs_data *data,
                      != 0);
                i++)
             {
-#ifdef GRUB_REISERFS_DEBUG
-              if (key->directory_id == item_headers[i].key.directory_id && \
-                  key->object_id == item_headers[i].key.object_id)
-                grub_printf("C");
-              else
-                grub_printf(" ");
-              grub_printf(" %03d/%03d ", i + 1, item_count);
-              grub_reiserfs_print_key (&(item_headers[i].key));
-#endif
             }
           if (i < item_count)
             block_key = &(item_headers[i].key);
@@ -188,9 +159,9 @@ grub_reiserfs_get_item (struct grub_reiserfs_data *data,
       item->block_number = 0;
       item->block_position = 0;
       item->type = GRUB_REISERFS_UNKNOWN;
-#ifdef GRUB_REISERFS_DEBUG
-      grub_printf("Not found.\n");
-#endif
+
+
+
     }
   else
     {
@@ -199,10 +170,10 @@ grub_reiserfs_get_item (struct grub_reiserfs_data *data,
       item->type = grub_reiserfs_get_key_type (block_key);
       grub_memcpy (&(item->header), &(item_headers[i]),
                    sizeof (struct grub_reiserfs_item_header));
-#ifdef GRUB_REISERFS_DEBUG
-      grub_printf ("F %03d/%03d ", i + 1, item_count);
-      grub_reiserfs_print_key (block_key);
-#endif
+
+
+
+
     }
 
   assert (grub_errno == GRUB_ERR_NONE);

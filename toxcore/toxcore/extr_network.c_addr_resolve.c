@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct sockaddr_in6 {int /*<<< orphan*/  sin6_addr; } ;
-struct sockaddr_in {int /*<<< orphan*/  sin_addr; } ;
-struct addrinfo {int ai_family; int ai_addrlen; scalar_t__ ai_addr; struct addrinfo* ai_next; int /*<<< orphan*/  ai_socktype; } ;
-typedef  scalar_t__ sa_family_t ;
-typedef  int /*<<< orphan*/  hints ;
-struct TYPE_10__ {int /*<<< orphan*/  in6_addr; } ;
-struct TYPE_9__ {int /*<<< orphan*/  in_addr; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct sockaddr_in6 {int sin6_addr; } ;
+struct sockaddr_in {int sin_addr; } ;
+struct addrinfo {int ai_family; int ai_addrlen; scalar_t__ ai_addr; struct addrinfo* ai_next; int ai_socktype; } ;
+typedef scalar_t__ sa_family_t ;
+typedef int hints ;
+struct TYPE_10__ {int in6_addr; } ;
+struct TYPE_9__ {int in_addr; } ;
 struct TYPE_11__ {scalar_t__ family; TYPE_2__ ip6; TYPE_1__ ip4; } ;
-typedef  TYPE_3__ IP ;
+typedef TYPE_3__ IP ;
 
-/* Variables and functions */
-#define  AF_INET 129 
-#define  AF_INET6 128 
- scalar_t__ AF_UNSPEC ; 
- int /*<<< orphan*/  SOCK_DGRAM ; 
- int TOX_ADDR_RESOLVE_INET ; 
- int TOX_ADDR_RESOLVE_INET6 ; 
- int /*<<< orphan*/  freeaddrinfo (struct addrinfo*) ; 
- int getaddrinfo (char const*,int /*<<< orphan*/ *,struct addrinfo*,struct addrinfo**) ; 
- int /*<<< orphan*/  ip_copy (TYPE_3__*,TYPE_3__*) ; 
- int /*<<< orphan*/  ip_init (TYPE_3__*,int) ; 
- int /*<<< orphan*/  memset (struct addrinfo*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ networking_at_startup () ; 
+
+
+
+ scalar_t__ AF_UNSPEC ;
+ int SOCK_DGRAM ;
+ int TOX_ADDR_RESOLVE_INET ;
+ int TOX_ADDR_RESOLVE_INET6 ;
+ int freeaddrinfo (struct addrinfo*) ;
+ int getaddrinfo (char const*,int *,struct addrinfo*,struct addrinfo**) ;
+ int ip_copy (TYPE_3__*,TYPE_3__*) ;
+ int ip_init (TYPE_3__*,int) ;
+ int memset (struct addrinfo*,int ,int) ;
+ scalar_t__ networking_at_startup () ;
 
 int addr_resolve(const char *address, IP *to, IP *extra)
 {
@@ -44,57 +44,57 @@ int addr_resolve(const char *address, IP *to, IP *extra)
 
     sa_family_t family = to->family;
 
-    struct addrinfo *server = NULL;
-    struct addrinfo *walker = NULL;
-    struct addrinfo  hints;
+    struct addrinfo *server = ((void*)0);
+    struct addrinfo *walker = ((void*)0);
+    struct addrinfo hints;
     int rc;
     int result = 0;
     int done = 0;
 
     memset(&hints, 0, sizeof(hints));
-    hints.ai_family   = family;
-    hints.ai_socktype = SOCK_DGRAM; // type of socket Tox uses.
+    hints.ai_family = family;
+    hints.ai_socktype = SOCK_DGRAM;
 
     if (networking_at_startup() != 0)
         return 0;
 
-    rc = getaddrinfo(address, NULL, &hints, &server);
+    rc = getaddrinfo(address, ((void*)0), &hints, &server);
 
-    // Lookup failed.
+
     if (rc != 0) {
         return 0;
     }
 
     IP ip4;
-    ip_init(&ip4, 0); // ipv6enabled = 0
+    ip_init(&ip4, 0);
     IP ip6;
-    ip_init(&ip6, 1); // ipv6enabled = 1
+    ip_init(&ip6, 1);
 
-    for (walker = server; (walker != NULL) && !done; walker = walker->ai_next) {
+    for (walker = server; (walker != ((void*)0)) && !done; walker = walker->ai_next) {
         switch (walker->ai_family) {
-            case AF_INET:
-                if (walker->ai_family == family) { /* AF_INET requested, done */
+            case 129:
+                if (walker->ai_family == family) {
                     struct sockaddr_in *addr = (struct sockaddr_in *)walker->ai_addr;
                     to->ip4.in_addr = addr->sin_addr;
                     result = TOX_ADDR_RESOLVE_INET;
                     done = 1;
-                } else if (!(result & TOX_ADDR_RESOLVE_INET)) { /* AF_UNSPEC requested, store away */
+                } else if (!(result & TOX_ADDR_RESOLVE_INET)) {
                     struct sockaddr_in *addr = (struct sockaddr_in *)walker->ai_addr;
                     ip4.ip4.in_addr = addr->sin_addr;
                     result |= TOX_ADDR_RESOLVE_INET;
                 }
 
-                break; /* switch */
+                break;
 
-            case AF_INET6:
-                if (walker->ai_family == family) { /* AF_INET6 requested, done */
+            case 128:
+                if (walker->ai_family == family) {
                     if (walker->ai_addrlen == sizeof(struct sockaddr_in6)) {
                         struct sockaddr_in6 *addr = (struct sockaddr_in6 *)walker->ai_addr;
                         to->ip6.in6_addr = addr->sin6_addr;
                         result = TOX_ADDR_RESOLVE_INET6;
                         done = 1;
                     }
-                } else if (!(result & TOX_ADDR_RESOLVE_INET6)) { /* AF_UNSPEC requested, store away */
+                } else if (!(result & TOX_ADDR_RESOLVE_INET6)) {
                     if (walker->ai_addrlen == sizeof(struct sockaddr_in6)) {
                         struct sockaddr_in6 *addr = (struct sockaddr_in6 *)walker->ai_addr;
                         ip6.ip6.in6_addr = addr->sin6_addr;
@@ -102,7 +102,7 @@ int addr_resolve(const char *address, IP *to, IP *extra)
                     }
                 }
 
-                break; /* switch */
+                break;
         }
     }
 
@@ -110,7 +110,7 @@ int addr_resolve(const char *address, IP *to, IP *extra)
         if (result & TOX_ADDR_RESOLVE_INET6) {
             ip_copy(to, &ip6);
 
-            if ((result & TOX_ADDR_RESOLVE_INET) && (extra != NULL)) {
+            if ((result & TOX_ADDR_RESOLVE_INET) && (extra != ((void*)0))) {
                 ip_copy(extra, &ip4);
             }
         } else if (result & TOX_ADDR_RESOLVE_INET) {

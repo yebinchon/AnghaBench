@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BACKGROUND ; 
- int SelectItem (char*,int*,int /*<<< orphan*/ ,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,int /*<<< orphan*/ *) ; 
- int choosekey (char*,int) ; 
- char** keynames ; 
- int** keysets ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
+ int BACKGROUND ;
+ int SelectItem (char*,int*,int ,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,int *) ;
+ int choosekey (char*,int) ;
+ char** keynames ;
+ int** keysets ;
+ int sprintf (char*,char*,char*) ;
 
 void setupkeyset(int no)
 {
@@ -41,7 +33,7 @@ void setupkeyset(int no)
     key=SelectItem("Change settings:",&select,BACKGROUND,
         tUL,tU,tUR,tL,tR,tDL,tD,tDR,tF,"-","Clear all","-",
         "Accept changes",
-        "Discard changes",NULL);
+        "Discard changes",((void*)0));
     if (key==13)
       switch(select)
       {

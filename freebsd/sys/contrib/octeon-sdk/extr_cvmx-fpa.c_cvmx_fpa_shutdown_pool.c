@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint64_t ;
-struct TYPE_2__ {int starting_element_count; void* base; int size; int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cvmx_dprintf (char*,unsigned long long,int,unsigned long long,...) ; 
- void* cvmx_fpa_alloc (size_t) ; 
- TYPE_1__* cvmx_fpa_pool_info ; 
- size_t cvmx_ptr_to_phys (void*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef size_t uint64_t ;
+struct TYPE_2__ {int starting_element_count; void* base; int size; int name; } ;
+
+
+ int cvmx_dprintf (char*,unsigned long long,int,unsigned long long,...) ;
+ void* cvmx_fpa_alloc (size_t) ;
+ TYPE_1__* cvmx_fpa_pool_info ;
+ size_t cvmx_ptr_to_phys (void*) ;
 
 uint64_t cvmx_fpa_shutdown_pool(uint64_t pool)
 {
     int errors = 0;
-    int count  = 0;
+    int count = 0;
     int expected_count = cvmx_fpa_pool_info[pool].starting_element_count;
-    uint64_t base   = cvmx_ptr_to_phys(cvmx_fpa_pool_info[pool].base);
+    uint64_t base = cvmx_ptr_to_phys(cvmx_fpa_pool_info[pool].base);
     uint64_t finish = base + cvmx_fpa_pool_info[pool].size * expected_count;
 
     count = 0;

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  preread_timeout; int /*<<< orphan*/  preread_buffer_size; int /*<<< orphan*/  tcp_nodelay; int /*<<< orphan*/  proxy_protocol_timeout; int /*<<< orphan*/ * error_log; int /*<<< orphan*/  line; int /*<<< orphan*/  file_name; int /*<<< orphan*/ * handler; int /*<<< orphan*/ * resolver; int /*<<< orphan*/  resolver_timeout; } ;
-typedef  TYPE_2__ ngx_stream_core_srv_conf_t ;
-struct TYPE_8__ {TYPE_1__* cycle; int /*<<< orphan*/  log; } ;
-typedef  TYPE_3__ ngx_conf_t ;
-struct TYPE_6__ {int /*<<< orphan*/  new_log; } ;
 
-/* Variables and functions */
- char* NGX_CONF_ERROR ; 
- char* NGX_CONF_OK ; 
- int /*<<< orphan*/  NGX_LOG_EMERG ; 
- int /*<<< orphan*/  ngx_conf_merge_msec_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ngx_conf_merge_size_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ngx_conf_merge_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ngx_resolver_create (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int preread_timeout; int preread_buffer_size; int tcp_nodelay; int proxy_protocol_timeout; int * error_log; int line; int file_name; int * handler; int * resolver; int resolver_timeout; } ;
+typedef TYPE_2__ ngx_stream_core_srv_conf_t ;
+struct TYPE_8__ {TYPE_1__* cycle; int log; } ;
+typedef TYPE_3__ ngx_conf_t ;
+struct TYPE_6__ {int new_log; } ;
+
+
+ char* NGX_CONF_ERROR ;
+ char* NGX_CONF_OK ;
+ int NGX_LOG_EMERG ;
+ int ngx_conf_merge_msec_value (int ,int ,int) ;
+ int ngx_conf_merge_size_value (int ,int ,int) ;
+ int ngx_conf_merge_value (int ,int ,int) ;
+ int ngx_log_error (int ,int ,int ,char*,int ,int ) ;
+ int * ngx_resolver_create (TYPE_3__*,int *,int ) ;
 
 __attribute__((used)) static char *
 ngx_stream_core_merge_srv_conf(ngx_conf_t *cf, void *parent, void *child)
@@ -38,17 +38,17 @@ ngx_stream_core_merge_srv_conf(ngx_conf_t *cf, void *parent, void *child)
     ngx_conf_merge_msec_value(conf->resolver_timeout,
                               prev->resolver_timeout, 30000);
 
-    if (conf->resolver == NULL) {
+    if (conf->resolver == ((void*)0)) {
 
-        if (prev->resolver == NULL) {
+        if (prev->resolver == ((void*)0)) {
 
-            /*
-             * create dummy resolver in stream {} context
-             * to inherit it in all servers
-             */
 
-            prev->resolver = ngx_resolver_create(cf, NULL, 0);
-            if (prev->resolver == NULL) {
+
+
+
+
+            prev->resolver = ngx_resolver_create(cf, ((void*)0), 0);
+            if (prev->resolver == ((void*)0)) {
                 return NGX_CONF_ERROR;
             }
         }
@@ -56,14 +56,14 @@ ngx_stream_core_merge_srv_conf(ngx_conf_t *cf, void *parent, void *child)
         conf->resolver = prev->resolver;
     }
 
-    if (conf->handler == NULL) {
+    if (conf->handler == ((void*)0)) {
         ngx_log_error(NGX_LOG_EMERG, cf->log, 0,
                       "no handler for server in %s:%ui",
                       conf->file_name, conf->line);
         return NGX_CONF_ERROR;
     }
 
-    if (conf->error_log == NULL) {
+    if (conf->error_log == ((void*)0)) {
         if (prev->error_log) {
             conf->error_log = prev->error_log;
         } else {

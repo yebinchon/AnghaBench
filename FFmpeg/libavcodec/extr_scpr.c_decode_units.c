@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int const uint32_t ;
-struct TYPE_4__ {int cxshift; int /*<<< orphan*/ ** pixel_model; } ;
-typedef  TYPE_1__ SCPRContext ;
 
-/* Variables and functions */
- int decode_unit (TYPE_1__*,int /*<<< orphan*/ *,int,int const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int const uint32_t ;
+struct TYPE_4__ {int cxshift; int ** pixel_model; } ;
+typedef TYPE_1__ SCPRContext ;
+
+
+ int decode_unit (TYPE_1__*,int *,int,int const*) ;
 
 __attribute__((used)) static int decode_units(SCPRContext *s, uint32_t *r, uint32_t *g, uint32_t *b,
                         int *cx, int *cx1)

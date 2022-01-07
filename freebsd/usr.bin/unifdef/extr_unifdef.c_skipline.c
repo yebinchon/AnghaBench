@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LS_DIRTY ; 
- int /*<<< orphan*/  linestate ; 
- char* skipcomment (char const*) ; 
+ int LS_DIRTY ;
+ int linestate ;
+ char* skipcomment (char const*) ;
 
 __attribute__((used)) static const char *
 skipline(const char *cp)
 {
-	const char *pcp;
-	if (*cp != '\0')
-		linestate = LS_DIRTY;
-	while (*cp != '\0') {
-		cp = skipcomment(pcp = cp);
-		if (pcp == cp)
-			cp++;
-	}
-	return (cp);
+ const char *pcp;
+ if (*cp != '\0')
+  linestate = LS_DIRTY;
+ while (*cp != '\0') {
+  cp = skipcomment(pcp = cp);
+  if (pcp == cp)
+   cp++;
+ }
+ return (cp);
 }

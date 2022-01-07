@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {void* data; } ;
 struct TYPE_5__ {scalar_t__ n_items; TYPE_3__* items; } ;
-typedef  TYPE_1__ Prioq ;
+typedef TYPE_1__ Prioq ;
 
-/* Variables and functions */
- int /*<<< orphan*/  remove_item (TYPE_1__*,TYPE_3__*) ; 
+
+ int remove_item (TYPE_1__*,TYPE_3__*) ;
 
 void *prioq_pop(Prioq *q) {
         void *data;
 
         if (!q)
-                return NULL;
+                return ((void*)0);
 
         if (q->n_items <= 0)
-                return NULL;
+                return ((void*)0);
 
         data = q->items[0].data;
         remove_item(q, q->items);

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {TYPE_1__* methods; int /*<<< orphan*/ * firstchild; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {TYPE_1__* methods; int * firstchild; } ;
 struct TYPE_6__ {int (* is_empty ) (TYPE_2__*) ;} ;
-typedef  TYPE_2__* MemoryContext ;
+typedef TYPE_2__* MemoryContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AssertArg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MemoryContextIsValid (TYPE_2__*) ; 
- int stub1 (TYPE_2__*) ; 
+
+ int AssertArg (int ) ;
+ int MemoryContextIsValid (TYPE_2__*) ;
+ int stub1 (TYPE_2__*) ;
 
 bool
 MemoryContextIsEmpty(MemoryContext context)
 {
-	AssertArg(MemoryContextIsValid(context));
+ AssertArg(MemoryContextIsValid(context));
 
-	/*
-	 * For now, we consider a memory context nonempty if it has any children;
-	 * perhaps this should be changed later.
-	 */
-	if (context->firstchild != NULL)
-		return false;
-	/* Otherwise use the type-specific inquiry */
-	return context->methods->is_empty(context);
+
+
+
+
+ if (context->firstchild != ((void*)0))
+  return 0;
+
+ return context->methods->is_empty(context);
 }

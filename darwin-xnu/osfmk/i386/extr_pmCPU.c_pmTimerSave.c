@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  (* pmTimerStateSave ) () ;} ;
 
-/* Variables and functions */
- TYPE_1__* pmDispatch ; 
- int /*<<< orphan*/  stub1 () ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int (* pmTimerStateSave ) () ;} ;
+
+
+ TYPE_1__* pmDispatch ;
+ int stub1 () ;
 
 void
 pmTimerSave(void)
 {
-    if (pmDispatch != NULL
-	&& pmDispatch->pmTimerStateSave != NULL)
-	(*pmDispatch->pmTimerStateSave)();
+    if (pmDispatch != ((void*)0)
+ && pmDispatch->pmTimerStateSave != ((void*)0))
+ (*pmDispatch->pmTimerStateSave)();
 }

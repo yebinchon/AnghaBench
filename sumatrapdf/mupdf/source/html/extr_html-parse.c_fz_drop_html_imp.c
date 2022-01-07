@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fz_storable ;
-struct TYPE_2__ {int /*<<< orphan*/  pool; int /*<<< orphan*/  root; } ;
-typedef  TYPE_1__ fz_html ;
-typedef  int /*<<< orphan*/  fz_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fz_drop_html_box (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fz_drop_pool (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int fz_storable ;
+struct TYPE_2__ {int pool; int root; } ;
+typedef TYPE_1__ fz_html ;
+typedef int fz_context ;
+
+
+ int fz_drop_html_box (int *,int ) ;
+ int fz_drop_pool (int *,int ) ;
 
 __attribute__((used)) static void fz_drop_html_imp(fz_context *ctx, fz_storable *stor)
 {
-	fz_html *html = (fz_html *)stor;
-	fz_drop_html_box(ctx, html->root);
-	fz_drop_pool(ctx, html->pool);
+ fz_html *html = (fz_html *)stor;
+ fz_drop_html_box(ctx, html->root);
+ fz_drop_pool(ctx, html->pool);
 }

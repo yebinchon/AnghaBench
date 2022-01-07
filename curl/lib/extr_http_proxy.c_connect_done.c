@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct http_connect_state {int /*<<< orphan*/  tunnel_state; } ;
-struct connectdata {int /*<<< orphan*/  data; struct http_connect_state* connect_state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TUNNEL_COMPLETE ; 
- int /*<<< orphan*/  infof (int /*<<< orphan*/ ,char*) ; 
+
+
+
+struct http_connect_state {int tunnel_state; } ;
+struct connectdata {int data; struct http_connect_state* connect_state; } ;
+
+
+ int TUNNEL_COMPLETE ;
+ int infof (int ,char*) ;
 
 __attribute__((used)) static void connect_done(struct connectdata *conn)
 {

@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EDOM ; 
- int ENOMEM ; 
- int /*<<< orphan*/  HOST_NAME_MAX ; 
- int /*<<< orphan*/  assert (char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ hostname_is_valid (char*,int) ; 
- char* strchr (char*,char) ; 
- char* strdup (char const*) ; 
- int /*<<< orphan*/  strshorten (char*,int /*<<< orphan*/ ) ; 
+ int EDOM ;
+ int ENOMEM ;
+ int HOST_NAME_MAX ;
+ int assert (char const*) ;
+ int free (char*) ;
+ scalar_t__ hostname_is_valid (char*,int) ;
+ char* strchr (char*,char) ;
+ char* strdup (char const*) ;
+ int strshorten (char*,int ) ;
 
 int shorten_overlong(const char *s, char **ret) {
         char *h, *p;
 
-        /* Shorten an overlong name to HOST_NAME_MAX or to the first dot,
-         * whatever comes earlier. */
+
+
 
         assert(s);
 
@@ -34,7 +26,7 @@ int shorten_overlong(const char *s, char **ret) {
         if (!h)
                 return -ENOMEM;
 
-        if (hostname_is_valid(h, false)) {
+        if (hostname_is_valid(h, 0)) {
                 *ret = h;
                 return 0;
         }
@@ -45,7 +37,7 @@ int shorten_overlong(const char *s, char **ret) {
 
         strshorten(h, HOST_NAME_MAX);
 
-        if (!hostname_is_valid(h, false)) {
+        if (!hostname_is_valid(h, 0)) {
                 free(h);
                 return -EDOM;
         }

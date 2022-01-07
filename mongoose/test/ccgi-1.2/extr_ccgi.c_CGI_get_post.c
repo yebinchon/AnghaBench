@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CGI_varlist ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CGI_decode_query (int /*<<< orphan*/ *,char*) ; 
- int atoi (char const*) ; 
- int fread (char*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* getenv (char*) ; 
- scalar_t__ mymalloc (int) ; 
- int /*<<< orphan*/ * read_multipart (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  stdin ; 
- scalar_t__ strncasecmp (char const*,char*,int) ; 
+
+
+
+typedef int CGI_varlist ;
+
+
+ int * CGI_decode_query (int *,char*) ;
+ int atoi (char const*) ;
+ int fread (char*,int,int,int ) ;
+ int free (char*) ;
+ char* getenv (char*) ;
+ scalar_t__ mymalloc (int) ;
+ int * read_multipart (int *,char const*) ;
+ int stdin ;
+ scalar_t__ strncasecmp (char const*,char*,int) ;
 
 CGI_varlist *
 CGI_get_post(CGI_varlist *v, const char *template) {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  OPJ_OFF_T ;
-typedef  int /*<<< orphan*/  OPJ_BOOL ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPJ_FALSE ; 
- scalar_t__ OPJ_FSEEK (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPJ_TRUE ; 
- int /*<<< orphan*/  SEEK_SET ; 
+
+
+
+typedef int OPJ_OFF_T ;
+typedef int OPJ_BOOL ;
+typedef int FILE ;
+
+
+ int OPJ_FALSE ;
+ scalar_t__ OPJ_FSEEK (int *,int ,int ) ;
+ int OPJ_TRUE ;
+ int SEEK_SET ;
 
 __attribute__((used)) static OPJ_BOOL opj_seek_from_file(OPJ_OFF_T p_nb_bytes, FILE * p_user_data)
 {

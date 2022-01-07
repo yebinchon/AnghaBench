@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mlx5_core_dev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mlx5_core_is_ecpf (struct mlx5_core_dev*) ; 
- int /*<<< orphan*/  mlx5_peer_pf_cleanup (struct mlx5_core_dev*) ; 
+
+ int mlx5_core_is_ecpf (struct mlx5_core_dev*) ;
+ int mlx5_peer_pf_cleanup (struct mlx5_core_dev*) ;
 
 void mlx5_ec_cleanup(struct mlx5_core_dev *dev)
 {
-	if (!mlx5_core_is_ecpf(dev))
-		return;
+ if (!mlx5_core_is_ecpf(dev))
+  return;
 
-	mlx5_peer_pf_cleanup(dev);
+ mlx5_peer_pf_cleanup(dev);
 }

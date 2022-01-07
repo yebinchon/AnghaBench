@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct test_data {int m_type; int /*<<< orphan*/  m_cond; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- int /*<<< orphan*/  INV (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  POST (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PRE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UNREACHABLE ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
-#define  inv 131 
-#define  post 130 
-#define  pre 129 
-#define  unreachable 128 
+
+
+
+struct test_data {int m_type; int m_cond; } ;
+
+
+ int EXIT_SUCCESS ;
+ int INV (int ) ;
+ int POST (int ) ;
+ int PRE (int ) ;
+ int UNREACHABLE ;
+ int exit (int ) ;
+
+
+
+
 
 __attribute__((used)) static
 void
@@ -31,19 +31,19 @@ do_test_child(void *v)
     struct test_data *td = v;
 
     switch (td->m_type) {
-    case inv:
+    case 131:
         INV(td->m_cond);
         break;
 
-    case pre:
+    case 129:
         PRE(td->m_cond);
         break;
 
-    case post:
+    case 130:
         POST(td->m_cond);
         break;
 
-    case unreachable:
+    case 128:
         if (!td->m_cond)
             UNREACHABLE;
         break;

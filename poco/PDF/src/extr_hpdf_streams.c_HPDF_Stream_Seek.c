@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  (* seek_fn ) (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  error; } ;
-typedef  int /*<<< orphan*/  HPDF_WhenceMode ;
-typedef  TYPE_1__* HPDF_Stream ;
-typedef  int /*<<< orphan*/  HPDF_STATUS ;
-typedef  int /*<<< orphan*/  HPDF_INT ;
 
-/* Variables and functions */
- scalar_t__ HPDF_Error_GetCode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_INVALID_OPERATION ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- int /*<<< orphan*/  HPDF_SetError (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_THIS_FUNC_WAS_SKIPPED ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int (* seek_fn ) (TYPE_1__*,int ,int ) ;int error; } ;
+typedef int HPDF_WhenceMode ;
+typedef TYPE_1__* HPDF_Stream ;
+typedef int HPDF_STATUS ;
+typedef int HPDF_INT ;
+
+
+ scalar_t__ HPDF_Error_GetCode (int ) ;
+ int HPDF_INVALID_OPERATION ;
+ int HPDF_PTRACE (char*) ;
+ int HPDF_SetError (int ,int ,int ) ;
+ int HPDF_THIS_FUNC_WAS_SKIPPED ;
+ int stub1 (TYPE_1__*,int ,int ) ;
 
 HPDF_STATUS
-HPDF_Stream_Seek  (HPDF_Stream      stream,
-                   HPDF_INT         pos,
-                   HPDF_WhenceMode  mode)
+HPDF_Stream_Seek (HPDF_Stream stream,
+                   HPDF_INT pos,
+                   HPDF_WhenceMode mode)
 {
     HPDF_PTRACE((" HPDF_Stream_Seek\n"));
 

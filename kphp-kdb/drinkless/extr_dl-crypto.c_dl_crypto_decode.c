@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int val_n; int rand_n; unsigned int hash_st; unsigned int hash_mul; int /*<<< orphan*/  perm_first; int /*<<< orphan*/  perm_middle; int /*<<< orphan*/  perm_last; } ;
-typedef  TYPE_1__ dl_crypto ;
 
-/* Variables and functions */
- char N ; 
- int /*<<< orphan*/  apply_perm_rev (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  decode_str (char*,int) ; 
- int /*<<< orphan*/  encode_str (char*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int val_n; int rand_n; unsigned int hash_st; unsigned int hash_mul; int perm_first; int perm_middle; int perm_last; } ;
+typedef TYPE_1__ dl_crypto ;
+
+
+ char N ;
+ int apply_perm_rev (char*,int ,int) ;
+ int decode_str (char*,int) ;
+ int encode_str (char*,int) ;
 
 void dl_crypto_decode (dl_crypto *cr, char *s, char *t) {
   int n = cr->val_n + cr->rand_n;

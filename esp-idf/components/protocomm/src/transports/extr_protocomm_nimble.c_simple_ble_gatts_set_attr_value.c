@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct data_mbuf {int /*<<< orphan*/  outlen; int /*<<< orphan*/ * outbuf; int /*<<< orphan*/  attr_handle; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
 
-/* Variables and functions */
- int ESP_ERR_NO_MEM ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*) ; 
- int ESP_OK ; 
- int /*<<< orphan*/  SLIST_INSERT_HEAD (int /*<<< orphan*/ *,struct data_mbuf*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TAG ; 
- struct data_mbuf* calloc (int,int) ; 
- int /*<<< orphan*/  data_mbuf_list ; 
- struct data_mbuf* find_attr_with_handle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  node ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+struct data_mbuf {int outlen; int * outbuf; int attr_handle; } ;
+typedef int ssize_t ;
+
+
+ int ESP_ERR_NO_MEM ;
+ int ESP_LOGE (int ,char*) ;
+ int ESP_OK ;
+ int SLIST_INSERT_HEAD (int *,struct data_mbuf*,int ) ;
+ int TAG ;
+ struct data_mbuf* calloc (int,int) ;
+ int data_mbuf_list ;
+ struct data_mbuf* find_attr_with_handle (int ) ;
+ int free (int *) ;
+ int node ;
 
 __attribute__((used)) static int simple_ble_gatts_set_attr_value(uint16_t attr_handle, ssize_t outlen,
         uint8_t *outbuf)

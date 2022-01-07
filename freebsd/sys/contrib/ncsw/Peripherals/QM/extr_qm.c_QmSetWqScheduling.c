@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct TYPE_6__ {TYPE_1__* p_QmRegs; } ;
-typedef  TYPE_2__ t_Qm ;
-typedef  size_t e_QmWqClass ;
-struct TYPE_5__ {int /*<<< orphan*/ * wq_cs_cfg; } ;
+typedef TYPE_2__ t_Qm ;
+typedef size_t e_QmWqClass ;
+struct TYPE_5__ {int * wq_cs_cfg; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_COND (TYPE_2__*) ; 
- int /*<<< orphan*/  WRITE_UINT32 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ASSERT_COND (TYPE_2__*) ;
+ int WRITE_UINT32 (int ,int ) ;
 
 __attribute__((used)) static __inline__ void QmSetWqScheduling(t_Qm *p_Qm,
                                          e_QmWqClass wqClass,

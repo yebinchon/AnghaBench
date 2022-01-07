@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct st_quicly_handle_payload_state_t {scalar_t__ frame_type; int /*<<< orphan*/  end; int /*<<< orphan*/  src; } ;
-struct TYPE_11__ {int /*<<< orphan*/  count; } ;
-typedef  TYPE_3__ quicly_max_streams_frame_t ;
-struct TYPE_9__ {int /*<<< orphan*/  bidi; int /*<<< orphan*/  uni; } ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct st_quicly_handle_payload_state_t {scalar_t__ frame_type; int end; int src; } ;
+struct TYPE_11__ {int count; } ;
+typedef TYPE_3__ quicly_max_streams_frame_t ;
+struct TYPE_9__ {int bidi; int uni; } ;
 struct TYPE_10__ {TYPE_1__ max_streams; } ;
 struct TYPE_12__ {TYPE_2__ egress; } ;
-typedef  TYPE_4__ quicly_conn_t ;
+typedef TYPE_4__ quicly_conn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX_STREAMS_RECEIVE ; 
- scalar_t__ QUICLY_FRAME_TYPE_MAX_STREAMS_UNI ; 
- int /*<<< orphan*/  QUICLY_PROBE (int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  open_blocked_streams (TYPE_4__*,int) ; 
- int /*<<< orphan*/  probe_now () ; 
- int quicly_decode_max_streams_frame (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int update_max_streams (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int MAX_STREAMS_RECEIVE ;
+ scalar_t__ QUICLY_FRAME_TYPE_MAX_STREAMS_UNI ;
+ int QUICLY_PROBE (int ,TYPE_4__*,int ,int ,int) ;
+ int open_blocked_streams (TYPE_4__*,int) ;
+ int probe_now () ;
+ int quicly_decode_max_streams_frame (int *,int ,TYPE_3__*) ;
+ int update_max_streams (int *,int ) ;
 
 __attribute__((used)) static int handle_max_streams_frame(quicly_conn_t *conn, struct st_quicly_handle_payload_state_t *state)
 {

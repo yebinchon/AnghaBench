@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* XML_Parser ;
-typedef  scalar_t__ XML_Char ;
-typedef  int /*<<< orphan*/  XML_Bool ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef TYPE_1__* XML_Parser ;
+typedef scalar_t__ XML_Char ;
+typedef int XML_Bool ;
 struct TYPE_10__ {scalar_t__ name; } ;
-struct TYPE_12__ {int /*<<< orphan*/  pool; int /*<<< orphan*/  prefixes; TYPE_2__ defaultPrefix; int /*<<< orphan*/  generalEntities; } ;
-struct TYPE_11__ {int /*<<< orphan*/  open; } ;
-struct TYPE_9__ {int /*<<< orphan*/  m_tempPool; int /*<<< orphan*/  m_inheritedBindings; TYPE_4__* m_dtd; } ;
-typedef  TYPE_2__ PREFIX ;
-typedef  TYPE_3__ ENTITY ;
-typedef  TYPE_4__ DTD ;
+struct TYPE_12__ {int pool; int prefixes; TYPE_2__ defaultPrefix; int generalEntities; } ;
+struct TYPE_11__ {int open; } ;
+struct TYPE_9__ {int m_tempPool; int m_inheritedBindings; TYPE_4__* m_dtd; } ;
+typedef TYPE_2__ PREFIX ;
+typedef TYPE_3__ ENTITY ;
+typedef TYPE_4__ DTD ;
 
-/* Variables and functions */
- char ASCII_EQUALS ; 
- scalar_t__ const CONTEXT_SEP ; 
- scalar_t__ XML_ERROR_NONE ; 
- int /*<<< orphan*/  XML_FALSE ; 
- scalar_t__ const XML_T (char) ; 
- int /*<<< orphan*/  XML_TRUE ; 
- scalar_t__ addBinding (TYPE_1__*,TYPE_2__*,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ lookup (TYPE_1__*,int /*<<< orphan*/ *,scalar_t__,int) ; 
- int /*<<< orphan*/  poolAppendChar (int /*<<< orphan*/ *,scalar_t__ const) ; 
- scalar_t__ poolCopyString (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  poolDiscard (int /*<<< orphan*/ *) ; 
- scalar_t__ poolLength (int /*<<< orphan*/ *) ; 
- scalar_t__ poolStart (int /*<<< orphan*/ *) ; 
+
+ char ASCII_EQUALS ;
+ scalar_t__ const CONTEXT_SEP ;
+ scalar_t__ XML_ERROR_NONE ;
+ int XML_FALSE ;
+ scalar_t__ const XML_T (char) ;
+ int XML_TRUE ;
+ scalar_t__ addBinding (TYPE_1__*,TYPE_2__*,int *,scalar_t__,int *) ;
+ scalar_t__ lookup (TYPE_1__*,int *,scalar_t__,int) ;
+ int poolAppendChar (int *,scalar_t__ const) ;
+ scalar_t__ poolCopyString (int *,scalar_t__) ;
+ int poolDiscard (int *) ;
+ scalar_t__ poolLength (int *) ;
+ scalar_t__ poolStart (int *) ;
 
 __attribute__((used)) static XML_Bool
 setContext(XML_Parser parser, const XML_Char *context)
 {
-  DTD * const dtd = parser->m_dtd;  /* save one level of indirection */
+  DTD * const dtd = parser->m_dtd;
   const XML_Char *s = context;
 
   while (*context != XML_T('\0')) {
@@ -84,7 +84,7 @@ setContext(XML_Parser parser, const XML_Char *context)
           return XML_FALSE;
       if (!poolAppendChar(&parser->m_tempPool, XML_T('\0')))
         return XML_FALSE;
-      if (addBinding(parser, prefix, NULL, poolStart(&parser->m_tempPool),
+      if (addBinding(parser, prefix, ((void*)0), poolStart(&parser->m_tempPool),
                      &parser->m_inheritedBindings) != XML_ERROR_NONE)
         return XML_FALSE;
       poolDiscard(&parser->m_tempPool);

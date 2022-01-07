@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int VOID ;
 struct TYPE_5__ {int dwFlags; scalar_t__ GetDriverInfo; } ;
-struct TYPE_6__ {int /*<<< orphan*/  dwCallbackFlags; int /*<<< orphan*/  ddMotionCompCallbacks; int /*<<< orphan*/  ddNtPrivateDriverCaps; int /*<<< orphan*/  ddMoreCaps; int /*<<< orphan*/  ddNtCallbacks; int /*<<< orphan*/  ddMiscellanous2Callbacks; int /*<<< orphan*/  ddMiscellanousCallbacks; int /*<<< orphan*/  ddColorControlCallbacks; int /*<<< orphan*/  d3dNtHalCallbacks3; int /*<<< orphan*/  ddKernelCallbacks; int /*<<< orphan*/  ddKernelCaps; TYPE_1__ ddHalInfo; } ;
-typedef  TYPE_2__* PEDD_DIRECTDRAW_GLOBAL ;
+struct TYPE_6__ {int dwCallbackFlags; int ddMotionCompCallbacks; int ddNtPrivateDriverCaps; int ddMoreCaps; int ddNtCallbacks; int ddMiscellanous2Callbacks; int ddMiscellanousCallbacks; int ddColorControlCallbacks; int d3dNtHalCallbacks3; int ddKernelCallbacks; int ddKernelCaps; TYPE_1__ ddHalInfo; } ;
+typedef TYPE_2__* PEDD_DIRECTDRAW_GLOBAL ;
 
-/* Variables and functions */
- int DDHALINFO_GETDRIVERINFOSET ; 
- int /*<<< orphan*/  EDDDGBL_COLORCONTROLCALLBACKS ; 
- int /*<<< orphan*/  EDDDGBL_D3DCALLBACKS3 ; 
- int /*<<< orphan*/  EDDDGBL_DDMORECAPS ; 
- int /*<<< orphan*/  EDDDGBL_MISC2CALLBACKS ; 
- int /*<<< orphan*/  EDDDGBL_MISCCALLBACKS ; 
- int /*<<< orphan*/  EDDDGBL_MOTIONCOMPCALLBACKS ; 
- int /*<<< orphan*/  EDDDGBL_NTCALLBACKS ; 
- int /*<<< orphan*/  EDDDGBL_PRIVATEDRIVERCAPS ; 
- int /*<<< orphan*/  GUID_ColorControlCallbacks ; 
- int /*<<< orphan*/  GUID_D3DCallbacks3 ; 
- int /*<<< orphan*/  GUID_DDMoreCaps ; 
- int /*<<< orphan*/  GUID_KernelCallbacks ; 
- int /*<<< orphan*/  GUID_KernelCaps ; 
- int /*<<< orphan*/  GUID_Miscellaneous2Callbacks ; 
- int /*<<< orphan*/  GUID_MiscellaneousCallbacks ; 
- int /*<<< orphan*/  GUID_MotionCompCallbacks ; 
- int /*<<< orphan*/  GUID_NTCallbacks ; 
- int /*<<< orphan*/  GUID_NTPrivateDriverCaps ; 
- scalar_t__ intDdGetDriverInfo (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+ int DDHALINFO_GETDRIVERINFOSET ;
+ int EDDDGBL_COLORCONTROLCALLBACKS ;
+ int EDDDGBL_D3DCALLBACKS3 ;
+ int EDDDGBL_DDMORECAPS ;
+ int EDDDGBL_MISC2CALLBACKS ;
+ int EDDDGBL_MISCCALLBACKS ;
+ int EDDDGBL_MOTIONCOMPCALLBACKS ;
+ int EDDDGBL_NTCALLBACKS ;
+ int EDDDGBL_PRIVATEDRIVERCAPS ;
+ int GUID_ColorControlCallbacks ;
+ int GUID_D3DCallbacks3 ;
+ int GUID_DDMoreCaps ;
+ int GUID_KernelCallbacks ;
+ int GUID_KernelCaps ;
+ int GUID_Miscellaneous2Callbacks ;
+ int GUID_MiscellaneousCallbacks ;
+ int GUID_MotionCompCallbacks ;
+ int GUID_NTCallbacks ;
+ int GUID_NTPrivateDriverCaps ;
+ scalar_t__ intDdGetDriverInfo (TYPE_2__*,int ,int *,int,int ) ;
 
 VOID intDdGetAllDriverInfo(PEDD_DIRECTDRAW_GLOBAL peDdGl)
 {

@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EOF ; 
- int IT_tr_CODE ; 
- int /*<<< orphan*/  file ; 
- int getc (int /*<<< orphan*/ ) ; 
- scalar_t__ getone (int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  tab (int,char*) ; 
- int /*<<< orphan*/  ungetc (int,int /*<<< orphan*/ ) ; 
+ int EOF ;
+ int IT_tr_CODE ;
+ int file ;
+ int getc (int ) ;
+ scalar_t__ getone (int) ;
+ int printf (char*,...) ;
+ int tab (int,char*) ;
+ int ungetc (int,int ) ;
 
 __attribute__((used)) static void
 module (void)
@@ -46,10 +38,10 @@ module (void)
       printf ("%02x ", c);
       l++;
       if (l == 32)
-	{
-	  printf ("\n");
-	  l = 0;
-	}
+ {
+   printf ("\n");
+   l = 0;
+ }
       c = getc (file);
     }
 }

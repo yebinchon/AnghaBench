@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_6__ {int cdc_average_block_size; } ;
 struct TYPE_5__ {scalar_t__ st_size; } ;
-typedef  int /*<<< orphan*/  SeafileCrypt ;
-typedef  TYPE_1__ SeafStat ;
+typedef int SeafileCrypt ;
+typedef TYPE_1__ SeafStat ;
 
-/* Variables and functions */
- int CDC_AVERAGE_BLOCK_SIZE ; 
- int CDC_MAX_BLOCK_SIZE ; 
- int CDC_MIN_BLOCK_SIZE ; 
- int calculate_chunk_size (scalar_t__) ; 
- scalar_t__ compute_file_id_with_cdc (char const*,TYPE_1__*,int /*<<< orphan*/ *,int,int,int,int,unsigned char*) ; 
- int hashcmp (unsigned char*,unsigned char const*) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- TYPE_2__* seaf ; 
+
+ int CDC_AVERAGE_BLOCK_SIZE ;
+ int CDC_MAX_BLOCK_SIZE ;
+ int CDC_MIN_BLOCK_SIZE ;
+ int calculate_chunk_size (scalar_t__) ;
+ scalar_t__ compute_file_id_with_cdc (char const*,TYPE_1__*,int *,int,int,int,int,unsigned char*) ;
+ int hashcmp (unsigned char*,unsigned char const*) ;
+ int memset (unsigned char*,int ,int) ;
+ TYPE_2__* seaf ;
 
 int
 compare_file_content (const char *path, SeafStat *st, const unsigned char *ce_sha1,
@@ -53,12 +53,12 @@ compare_file_content (const char *path, SeafStat *st, const unsigned char *ce_sh
                                           seaf->cdc_average_block_size << 1,
                                           sha1) < 0) {
                 return -1;
-            }            
+            }
         }
         if (hashcmp (sha1, ce_sha1) == 0)
             return 0;
 
-        /* Compare with old cdc block size. */
+
         uint32_t block_size = calculate_chunk_size (st->st_size);
         if (compute_file_id_with_cdc (path, st, crypt, repo_version,
                                       block_size,

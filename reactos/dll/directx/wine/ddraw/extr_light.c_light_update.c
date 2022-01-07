@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct d3d_light {int /*<<< orphan*/  light7; int /*<<< orphan*/  dwLightIndex; TYPE_1__* active_viewport; } ;
-struct d3d_device {int /*<<< orphan*/  IDirect3DDevice7_iface; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct d3d_light {int light7; int dwLightIndex; TYPE_1__* active_viewport; } ;
+struct d3d_device {int IDirect3DDevice7_iface; } ;
 struct TYPE_2__ {struct d3d_device* active_device; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IDirect3DDevice7_SetLight (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,struct d3d_light*) ; 
+
+ int IDirect3DDevice7_SetLight (int *,int ,int *) ;
+ int TRACE (char*,struct d3d_light*) ;
 
 __attribute__((used)) static void light_update(struct d3d_light *light)
 {

@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  MADV_REMOVE ; 
- int errno ; 
- int madvise (void*,int,int /*<<< orphan*/ ) ; 
+ int MADV_REMOVE ;
+ int errno ;
+ int madvise (void*,int,int ) ;
 
 int os_drop_memory(void *addr, int length)
 {
-	int err;
+ int err;
 
-	err = madvise(addr, length, MADV_REMOVE);
-	if (err < 0)
-		err = -errno;
-	return err;
+ err = madvise(addr, length, MADV_REMOVE);
+ if (err < 0)
+  err = -errno;
+ return err;
 }

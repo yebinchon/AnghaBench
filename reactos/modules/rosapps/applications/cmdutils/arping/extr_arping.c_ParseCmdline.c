@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int* LPWSTR ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FormatOutput (int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  IDS_BAD_OPTION ; 
- int /*<<< orphan*/  IDS_BAD_OPTION_FORMAT ; 
- int /*<<< orphan*/  IDS_BAD_PARAMETER ; 
- int /*<<< orphan*/  IDS_BAD_VALUE_OPTION_N ; 
- int /*<<< orphan*/  IDS_DEST_MUST_BE_SPECIFIED ; 
- int /*<<< orphan*/  IDS_SRC_MUST_BE_SPECIFIED ; 
- int /*<<< orphan*/  NeverStop ; 
- int /*<<< orphan*/  PingCount ; 
- scalar_t__* SourceName ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__* TargetName ; 
- int /*<<< orphan*/  UINT_MAX ; 
- int /*<<< orphan*/  Usage () ; 
- int /*<<< orphan*/  wcscpy (scalar_t__*,int*) ; 
- int /*<<< orphan*/  wcstoul (int*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int* LPWSTR ;
+typedef int INT ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int FormatOutput (int ,...) ;
+ int IDS_BAD_OPTION ;
+ int IDS_BAD_OPTION_FORMAT ;
+ int IDS_BAD_PARAMETER ;
+ int IDS_BAD_VALUE_OPTION_N ;
+ int IDS_DEST_MUST_BE_SPECIFIED ;
+ int IDS_SRC_MUST_BE_SPECIFIED ;
+ int NeverStop ;
+ int PingCount ;
+ scalar_t__* SourceName ;
+ int TRUE ;
+ scalar_t__* TargetName ;
+ int UINT_MAX ;
+ int Usage () ;
+ int wcscpy (scalar_t__*,int*) ;
+ int wcstoul (int*,int *,int ) ;
 
 __attribute__((used)) static BOOL ParseCmdline(int argc, LPWSTR argv[])
 {
@@ -53,7 +53,7 @@ __attribute__((used)) static BOOL ParseCmdline(int argc, LPWSTR argv[])
                 case L'n':
                     if (i + 1 < argc)
                     {
-                        PingCount = wcstoul(argv[++i], NULL, 0);
+                        PingCount = wcstoul(argv[++i], ((void*)0), 0);
 
                         if (PingCount == 0)
                         {

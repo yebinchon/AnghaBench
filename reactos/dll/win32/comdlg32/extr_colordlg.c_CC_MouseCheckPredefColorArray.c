@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_16__ {TYPE_1__* lpcc; int /*<<< orphan*/  hwndSelf; } ;
+
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_16__ {TYPE_1__* lpcc; int hwndSelf; } ;
 struct TYPE_15__ {int x; int y; } ;
 struct TYPE_14__ {int right; int left; int bottom; int top; } ;
-struct TYPE_13__ {int /*<<< orphan*/  rgbResult; } ;
-typedef  TYPE_2__ RECT ;
-typedef  TYPE_3__ POINT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  TYPE_4__ CCPRIV ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct TYPE_13__ {int rgbResult; } ;
+typedef TYPE_2__ RECT ;
+typedef TYPE_3__ POINT ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef TYPE_4__ CCPRIV ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CC_DrawFocusRect (TYPE_4__*,int /*<<< orphan*/ ,int,int,int,int) ; 
- int /*<<< orphan*/  CONV_LPARAMTOPOINT (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  ClientToScreen (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int DISTANCE ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetWindowRect (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  IDC_COLOR_PREDEF ; 
- scalar_t__ PtInRect (TYPE_2__*,TYPE_3__) ; 
- int /*<<< orphan*/  ScreenToClient (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ ** predefcolors ; 
+
+ int CC_DrawFocusRect (TYPE_4__*,int ,int,int,int,int) ;
+ int CONV_LPARAMTOPOINT (int ,TYPE_3__*) ;
+ int ClientToScreen (int ,TYPE_3__*) ;
+ int DISTANCE ;
+ int FALSE ;
+ int GetDlgItem (int ,int ) ;
+ int GetWindowRect (int ,TYPE_2__*) ;
+ int IDC_COLOR_PREDEF ;
+ scalar_t__ PtInRect (TYPE_2__*,TYPE_3__) ;
+ int ScreenToClient (int ,TYPE_3__*) ;
+ int TRUE ;
+ int ** predefcolors ;
 
 __attribute__((used)) static BOOL CC_MouseCheckPredefColorArray(CCPRIV *lpp, int rows, int cols, LPARAM lParam)
 {

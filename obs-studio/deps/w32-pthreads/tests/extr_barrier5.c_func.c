@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPLONG ;
-typedef  scalar_t__ LONG ;
 
-/* Variables and functions */
- scalar_t__ InterlockedIncrement (int /*<<< orphan*/ ) ; 
- int PTHREAD_BARRIER_SERIAL_THREAD ; 
- int /*<<< orphan*/  barrier ; 
- char** error_string ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int pthread_barrier_wait (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  totalThreadCrossings ; 
+
+
+
+typedef int LPLONG ;
+typedef scalar_t__ LONG ;
+
+
+ scalar_t__ InterlockedIncrement (int ) ;
+ int PTHREAD_BARRIER_SERIAL_THREAD ;
+ int barrier ;
+ char** error_string ;
+ int fflush (int ) ;
+ int printf (char*,char*) ;
+ int pthread_barrier_wait (int *) ;
+ int stdout ;
+ int totalThreadCrossings ;
 
 void *
 func(void * crossings)
@@ -42,7 +42,7 @@ func(void * crossings)
         {
           printf("Barrier failed: result = %s\n", error_string[result]);
           fflush(stdout);
-          return NULL;
+          return ((void*)0);
         }
     }
 

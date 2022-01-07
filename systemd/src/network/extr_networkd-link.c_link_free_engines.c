@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  radv; int /*<<< orphan*/  ndisc; int /*<<< orphan*/  dhcp6_client; int /*<<< orphan*/  ipv4ll; int /*<<< orphan*/  lldp; int /*<<< orphan*/  dhcp_routes; int /*<<< orphan*/  dhcp_lease; int /*<<< orphan*/  dhcp_client; int /*<<< orphan*/  dhcp_server; } ;
-typedef  TYPE_1__ Link ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ndisc_flush (TYPE_1__*) ; 
- int /*<<< orphan*/  sd_dhcp6_client_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_dhcp_client_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_dhcp_lease_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_dhcp_server_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_ipv4ll_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_lldp_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_ndisc_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_radv_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int radv; int ndisc; int dhcp6_client; int ipv4ll; int lldp; int dhcp_routes; int dhcp_lease; int dhcp_client; int dhcp_server; } ;
+typedef TYPE_1__ Link ;
+
+
+ int ndisc_flush (TYPE_1__*) ;
+ int sd_dhcp6_client_unref (int ) ;
+ int sd_dhcp_client_unref (int ) ;
+ int sd_dhcp_lease_unref (int ) ;
+ int sd_dhcp_server_unref (int ) ;
+ int sd_ipv4ll_unref (int ) ;
+ int sd_lldp_unref (int ) ;
+ int sd_ndisc_unref (int ) ;
+ int sd_radv_unref (int ) ;
+ int set_free (int ) ;
 
 __attribute__((used)) static void link_free_engines(Link *link) {
         if (!link)

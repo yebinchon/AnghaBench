@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_2__* value; } ;
-typedef  TYPE_1__ listNode ;
-typedef  int /*<<< orphan*/  listIter ;
-struct TYPE_7__ {int /*<<< orphan*/ * module; } ;
-typedef  TYPE_2__ RedisModuleKeyspaceSubscriber ;
-typedef  int /*<<< orphan*/  RedisModule ;
+typedef TYPE_1__ listNode ;
+typedef int listIter ;
+struct TYPE_7__ {int * module; } ;
+typedef TYPE_2__ RedisModuleKeyspaceSubscriber ;
+typedef int RedisModule ;
 
-/* Variables and functions */
- int /*<<< orphan*/  listDelNode (int /*<<< orphan*/ ,TYPE_1__*) ; 
- TYPE_1__* listNext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  listRewind (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  moduleKeyspaceSubscribers ; 
- int /*<<< orphan*/  zfree (TYPE_2__*) ; 
+
+ int listDelNode (int ,TYPE_1__*) ;
+ TYPE_1__* listNext (int *) ;
+ int listRewind (int ,int *) ;
+ int moduleKeyspaceSubscribers ;
+ int zfree (TYPE_2__*) ;
 
 void moduleUnsubscribeNotifications(RedisModule *module) {
     listIter li;

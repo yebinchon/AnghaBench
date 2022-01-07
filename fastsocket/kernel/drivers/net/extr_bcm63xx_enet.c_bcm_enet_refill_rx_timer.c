@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {int dummy; } ;
-struct bcm_enet_priv {int /*<<< orphan*/  rx_lock; } ;
+struct bcm_enet_priv {int rx_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bcm_enet_refill_rx (struct net_device*) ; 
- struct bcm_enet_priv* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+ int bcm_enet_refill_rx (struct net_device*) ;
+ struct bcm_enet_priv* netdev_priv (struct net_device*) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 __attribute__((used)) static void bcm_enet_refill_rx_timer(unsigned long data)
 {
-	struct net_device *dev;
-	struct bcm_enet_priv *priv;
+ struct net_device *dev;
+ struct bcm_enet_priv *priv;
 
-	dev = (struct net_device *)data;
-	priv = netdev_priv(dev);
+ dev = (struct net_device *)data;
+ priv = netdev_priv(dev);
 
-	spin_lock(&priv->rx_lock);
-	bcm_enet_refill_rx((struct net_device *)data);
-	spin_unlock(&priv->rx_lock);
+ spin_lock(&priv->rx_lock);
+ bcm_enet_refill_rx((struct net_device *)data);
+ spin_unlock(&priv->rx_lock);
 }

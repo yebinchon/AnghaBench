@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hid_device {int status; scalar_t__ dev_rsize; int /*<<< orphan*/ * dev_rdesc; int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int HID_STAT_ADDED ; 
- int /*<<< orphan*/  device_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hid_debug_unregister (struct hid_device*) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
+
+
+
+struct hid_device {int status; scalar_t__ dev_rsize; int * dev_rdesc; int dev; } ;
+
+
+ int HID_STAT_ADDED ;
+ int device_del (int *) ;
+ int hid_debug_unregister (struct hid_device*) ;
+ int kfree (int *) ;
 
 __attribute__((used)) static void hid_remove_device(struct hid_device *hdev)
 {
-	if (hdev->status & HID_STAT_ADDED) {
-		device_del(&hdev->dev);
-		hid_debug_unregister(hdev);
-		hdev->status &= ~HID_STAT_ADDED;
-	}
-	kfree(hdev->dev_rdesc);
-	hdev->dev_rdesc = NULL;
-	hdev->dev_rsize = 0;
+ if (hdev->status & HID_STAT_ADDED) {
+  device_del(&hdev->dev);
+  hid_debug_unregister(hdev);
+  hdev->status &= ~HID_STAT_ADDED;
+ }
+ kfree(hdev->dev_rdesc);
+ hdev->dev_rdesc = ((void*)0);
+ hdev->dev_rsize = 0;
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fb_info {int /*<<< orphan*/  screen_base; struct e3d_info* par; } ;
+
+
+
+
+struct fb_info {int screen_base; struct e3d_info* par; } ;
 struct fb_image {int dummy; } ;
-struct e3d_info {int /*<<< orphan*/  lock; scalar_t__ fb8_buf_diff; } ;
+struct e3d_info {int lock; scalar_t__ fb8_buf_diff; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cfb_imageblit (struct fb_info*,struct fb_image const*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int cfb_imageblit (struct fb_info*,struct fb_image const*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void e3d_imageblit(struct fb_info *info, const struct fb_image *image)
 {
-	struct e3d_info *ep = info->par;
-	unsigned long flags;
+ struct e3d_info *ep = info->par;
+ unsigned long flags;
 
-	spin_lock_irqsave(&ep->lock, flags);
-	cfb_imageblit(info, image);
-	info->screen_base += ep->fb8_buf_diff;
-	cfb_imageblit(info, image);
-	info->screen_base -= ep->fb8_buf_diff;
-	spin_unlock_irqrestore(&ep->lock, flags);
+ spin_lock_irqsave(&ep->lock, flags);
+ cfb_imageblit(info, image);
+ info->screen_base += ep->fb8_buf_diff;
+ cfb_imageblit(info, image);
+ info->screen_base -= ep->fb8_buf_diff;
+ spin_unlock_irqrestore(&ep->lock, flags);
 }

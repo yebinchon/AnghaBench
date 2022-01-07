@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct MPContext {int dummy; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*) ; 
- char* mp_get_playback_resume_config_filename (struct MPContext*,char*) ; 
- int /*<<< orphan*/  talloc_free (char*) ; 
- int /*<<< orphan*/  write_filename (struct MPContext*,int /*<<< orphan*/ *,char*) ; 
+
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int *,char*) ;
+ char* mp_get_playback_resume_config_filename (struct MPContext*,char*) ;
+ int talloc_free (char*) ;
+ int write_filename (struct MPContext*,int *,char*) ;
 
 __attribute__((used)) static void write_redirect(struct MPContext *mpctx, char *path)
 {

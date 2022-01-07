@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char* ds_ident; int /*<<< orphan*/ * ds_decl; } ;
-typedef  TYPE_1__ dt_scope_t ;
-typedef  int /*<<< orphan*/  dt_decl_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char* ds_ident; int * ds_decl; } ;
+typedef TYPE_1__ dt_scope_t ;
+typedef int dt_decl_t ;
 struct TYPE_4__ {TYPE_1__ pcb_dstack; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CTF_K_UNKNOWN ; 
- int /*<<< orphan*/  D_DECL_IDENT ; 
- int /*<<< orphan*/  dt_decl_alloc (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * dt_decl_push (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  xyerror (int /*<<< orphan*/ ,char*) ; 
- TYPE_2__* yypcb ; 
+
+ int CTF_K_UNKNOWN ;
+ int D_DECL_IDENT ;
+ int dt_decl_alloc (int ,int *) ;
+ int * dt_decl_push (int ) ;
+ int free (char*) ;
+ int xyerror (int ,char*) ;
+ TYPE_2__* yypcb ;
 
 dt_decl_t *
 dt_decl_ident(char *name)
 {
-	dt_scope_t *dsp = &yypcb->pcb_dstack;
-	dt_decl_t *ddp = dsp->ds_decl;
+ dt_scope_t *dsp = &yypcb->pcb_dstack;
+ dt_decl_t *ddp = dsp->ds_decl;
 
-	if (dsp->ds_ident != NULL) {
-		free(name);
-		xyerror(D_DECL_IDENT, "old-style declaration or "
-		    "incorrect type specified\n");
-	}
+ if (dsp->ds_ident != ((void*)0)) {
+  free(name);
+  xyerror(D_DECL_IDENT, "old-style declaration or "
+      "incorrect type specified\n");
+ }
 
-	dsp->ds_ident = name;
+ dsp->ds_ident = name;
 
-	if (ddp == NULL)
-		ddp = dt_decl_push(dt_decl_alloc(CTF_K_UNKNOWN, NULL));
+ if (ddp == ((void*)0))
+  ddp = dt_decl_push(dt_decl_alloc(CTF_K_UNKNOWN, ((void*)0)));
 
-	return (ddp);
+ return (ddp);
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int HOST_WIDE_INT ;
 
-/* Variables and functions */
- int MOVE_MAX_PIECES ; 
- int MOVE_RATIO ; 
- int int_size_in_bytes (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+typedef int HOST_WIDE_INT ;
+
+
+ int MOVE_MAX_PIECES ;
+ int MOVE_RATIO ;
+ int int_size_in_bytes (int ) ;
 
 int
 estimate_move_cost (tree type)
@@ -26,7 +26,7 @@ estimate_move_cost (tree type)
   size = int_size_in_bytes (type);
 
   if (size < 0 || size > MOVE_MAX_PIECES * MOVE_RATIO)
-    /* Cost of a memcpy call, 3 arguments and the call.  */
+
     return 4;
   else
     return ((size + MOVE_MAX_PIECES - 1) / MOVE_MAX_PIECES);

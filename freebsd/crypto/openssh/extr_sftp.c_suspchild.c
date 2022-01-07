@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ EINTR ; 
- int SIGSTOP ; 
- int /*<<< orphan*/  WUNTRACED ; 
- scalar_t__ errno ; 
- int getpid () ; 
- int /*<<< orphan*/  kill (int,int) ; 
- int sshpid ; 
- int waitpid (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ scalar_t__ EINTR ;
+ int SIGSTOP ;
+ int WUNTRACED ;
+ scalar_t__ errno ;
+ int getpid () ;
+ int kill (int,int) ;
+ int sshpid ;
+ int waitpid (int,int *,int ) ;
 
 __attribute__((used)) static void
 suspchild(int signo)
 {
-	if (sshpid > 1) {
-		kill(sshpid, signo);
-		while (waitpid(sshpid, NULL, WUNTRACED) == -1 && errno == EINTR)
-			continue;
-	}
-	kill(getpid(), SIGSTOP);
+ if (sshpid > 1) {
+  kill(sshpid, signo);
+  while (waitpid(sshpid, ((void*)0), WUNTRACED) == -1 && errno == EINTR)
+   continue;
+ }
+ kill(getpid(), SIGSTOP);
 }

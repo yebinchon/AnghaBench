@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  Seek; int /*<<< orphan*/  Read; int /*<<< orphan*/  Skip; int /*<<< orphan*/  Look; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int Seek; int Read; int Skip; int Look; } ;
 struct TYPE_5__ {TYPE_1__ s; } ;
-typedef  TYPE_2__ CLookToRead ;
+typedef TYPE_2__ CLookToRead ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LookToRead_Look_Exact ; 
- int /*<<< orphan*/  LookToRead_Look_Lookahead ; 
- int /*<<< orphan*/  LookToRead_Read ; 
- int /*<<< orphan*/  LookToRead_Seek ; 
- int /*<<< orphan*/  LookToRead_Skip ; 
+
+ int LookToRead_Look_Exact ;
+ int LookToRead_Look_Lookahead ;
+ int LookToRead_Read ;
+ int LookToRead_Seek ;
+ int LookToRead_Skip ;
 
 void LookToRead_CreateVTable(CLookToRead *p, int lookahead)
 {

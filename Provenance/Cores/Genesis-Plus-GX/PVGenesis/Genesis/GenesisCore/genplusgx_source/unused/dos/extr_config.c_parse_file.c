@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  feof (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fscanf (int /*<<< orphan*/ *,char*,char*) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int strlen (char*) ; 
+
+
+
+typedef int FILE ;
+
+
+ int fclose (int *) ;
+ int feof (int *) ;
+ int * fopen (char*,char*) ;
+ int fscanf (int *,char*,char*) ;
+ char* malloc (int) ;
+ int strcpy (char*,char*) ;
+ int strlen (char*) ;
 
 int parse_file(char *filename, int *argc, char **argv)
 {
     char token[0x100];
-    FILE *handle = NULL;
+    FILE *handle = ((void*)0);
 
     *argc = 0;
     handle = fopen(filename, "r");

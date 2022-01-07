@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  primes ;
 
-/* Variables and functions */
+
+
+
+typedef int primes ;
+
+
 
 __attribute__((used)) static unsigned long
 higher_prime_number (unsigned long n)
 {
-  /* These are primes that are near, but slightly smaller than, a
-     power of two.  */
+
+
   static const unsigned long primes[] = {
     (unsigned long) 127,
     (unsigned long) 2039,
@@ -39,7 +39,7 @@ higher_prime_number (unsigned long n)
     (unsigned long) 536870909,
     (unsigned long) 1073741789,
     (unsigned long) 2147483647,
-					/* 4294967291L */
+
     ((unsigned long) 2147483647) + ((unsigned long) 2147483644),
   };
 
@@ -50,9 +50,9 @@ higher_prime_number (unsigned long n)
     {
       const unsigned long *mid = low + (high - low) / 2;
       if (n >= *mid)
-	low = mid + 1;
+ low = mid + 1;
       else
-	high = mid;
+ high = mid;
     }
 
   if (n >= *low)

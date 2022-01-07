@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct grub_udf_data {int /*<<< orphan*/  root_icb; } ;
-struct TYPE_3__ {int /*<<< orphan*/  file_size; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct grub_udf_data {int root_icb; } ;
+struct TYPE_3__ {int file_size; } ;
 struct grub_fshelp_node {TYPE_1__ fe; } ;
-struct grub_file {int /*<<< orphan*/  size; scalar_t__ offset; struct grub_fshelp_node* data; TYPE_2__* device; } ;
-typedef  int /*<<< orphan*/  grub_err_t ;
-struct TYPE_4__ {int /*<<< orphan*/  disk; } ;
+struct grub_file {int size; scalar_t__ offset; struct grub_fshelp_node* data; TYPE_2__* device; } ;
+typedef int grub_err_t ;
+struct TYPE_4__ {int disk; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GRUB_FSHELP_REG ; 
- int /*<<< orphan*/  U64 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  grub_dl_ref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  grub_dl_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  grub_errno ; 
- int /*<<< orphan*/  grub_free (struct grub_udf_data*) ; 
- scalar_t__ grub_fshelp_find_file (char const*,struct grub_fshelp_node*,struct grub_fshelp_node**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  grub_udf_iterate_dir ; 
- struct grub_udf_data* grub_udf_mount (int /*<<< orphan*/ ) ; 
- scalar_t__ grub_udf_read_icb (struct grub_udf_data*,int /*<<< orphan*/ *,struct grub_fshelp_node*) ; 
- int /*<<< orphan*/  my_mod ; 
+
+ int GRUB_FSHELP_REG ;
+ int U64 (int ) ;
+ int grub_dl_ref (int ) ;
+ int grub_dl_unref (int ) ;
+ int grub_errno ;
+ int grub_free (struct grub_udf_data*) ;
+ scalar_t__ grub_fshelp_find_file (char const*,struct grub_fshelp_node*,struct grub_fshelp_node**,int ,int ,int ,int ) ;
+ int grub_udf_iterate_dir ;
+ struct grub_udf_data* grub_udf_mount (int ) ;
+ scalar_t__ grub_udf_read_icb (struct grub_udf_data*,int *,struct grub_fshelp_node*) ;
+ int my_mod ;
 
 __attribute__((used)) static grub_err_t
 grub_udf_open (struct grub_file *file, const char *name)
@@ -49,8 +49,8 @@ grub_udf_open (struct grub_file *file, const char *name)
     goto fail;
 
   if (grub_fshelp_find_file (name, &rootnode,
-			     &foundnode,
-			     grub_udf_iterate_dir, 0, 0, GRUB_FSHELP_REG))
+        &foundnode,
+        grub_udf_iterate_dir, 0, 0, GRUB_FSHELP_REG))
     goto fail;
 
   file->data = foundnode;

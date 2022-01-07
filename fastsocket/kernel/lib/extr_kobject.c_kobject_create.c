@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct kobject {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  dynamic_kobj_ktype ; 
- int /*<<< orphan*/  kobject_init (struct kobject*,int /*<<< orphan*/ *) ; 
- struct kobject* kzalloc (int,int /*<<< orphan*/ ) ; 
+
+ int GFP_KERNEL ;
+ int dynamic_kobj_ktype ;
+ int kobject_init (struct kobject*,int *) ;
+ struct kobject* kzalloc (int,int ) ;
 
 struct kobject *kobject_create(void)
 {
-	struct kobject *kobj;
+ struct kobject *kobj;
 
-	kobj = kzalloc(sizeof(*kobj), GFP_KERNEL);
-	if (!kobj)
-		return NULL;
+ kobj = kzalloc(sizeof(*kobj), GFP_KERNEL);
+ if (!kobj)
+  return ((void*)0);
 
-	kobject_init(kobj, &dynamic_kobj_ktype);
-	return kobj;
+ kobject_init(kobj, &dynamic_kobj_ktype);
+ return kobj;
 }

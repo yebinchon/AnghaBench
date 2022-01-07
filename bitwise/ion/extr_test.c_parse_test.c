@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  decls ;
 
-/* Variables and functions */
- int /*<<< orphan*/  init_stream (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  printf (char*) ; 
+
+
+
+typedef int decls ;
+
+
+ int init_stream (int *,char const*) ;
+ int printf (char*) ;
 
 void parse_test(void) {
     const char *decls[] = {
@@ -39,8 +39,8 @@ void parse_test(void) {
         "func f() { if (1) { return 1; } else if (2) { return 2; } else { return 3; } }",
 };
     for (const char **it = decls; it != decls + sizeof(decls)/sizeof(*decls); it++) {
-        init_stream(NULL, *it);
-//        Decl *decl = parse_decl();
+        init_stream(((void*)0), *it);
+
         printf("\n");
     }
 }

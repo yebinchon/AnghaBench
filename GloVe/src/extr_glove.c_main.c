@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  real ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int EOF ; 
- int MAX_STRING_LENGTH ; 
- void* alpha ; 
- void* atof (char*) ; 
- void* atoi (char*) ; 
- void* checkpoint_every ; 
- char* cost ; 
- void* eta ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int find_arg (char*,int,char**) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int getc (int /*<<< orphan*/ *) ; 
- char* input_file ; 
- char* malloc (int) ; 
- int model ; 
- void* num_iter ; 
- int num_threads ; 
- int /*<<< orphan*/  printf (char*) ; 
- char* save_W_file ; 
- int save_gradsq ; 
- char* save_gradsq_file ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int train_glove () ; 
- void* use_binary ; 
- void* vector_size ; 
- void* verbose ; 
- char* vocab_file ; 
- scalar_t__ vocab_size ; 
- void* write_header ; 
- void* x_max ; 
+
+
+
+typedef int real ;
+typedef int FILE ;
+
+
+ int EOF ;
+ int MAX_STRING_LENGTH ;
+ void* alpha ;
+ void* atof (char*) ;
+ void* atoi (char*) ;
+ void* checkpoint_every ;
+ char* cost ;
+ void* eta ;
+ int fclose (int *) ;
+ int find_arg (char*,int,char**) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,char*) ;
+ int free (char*) ;
+ int getc (int *) ;
+ char* input_file ;
+ char* malloc (int) ;
+ int model ;
+ void* num_iter ;
+ int num_threads ;
+ int printf (char*) ;
+ char* save_W_file ;
+ int save_gradsq ;
+ char* save_gradsq_file ;
+ int stderr ;
+ int strcpy (char*,char*) ;
+ int train_glove () ;
+ void* use_binary ;
+ void* vector_size ;
+ void* verbose ;
+ char* vocab_file ;
+ scalar_t__ vocab_size ;
+ void* write_header ;
+ void* x_max ;
 
 int main(int argc, char **argv) {
     int i;
@@ -56,7 +56,7 @@ int main(int argc, char **argv) {
     save_W_file = malloc(sizeof(char) * MAX_STRING_LENGTH);
     save_gradsq_file = malloc(sizeof(char) * MAX_STRING_LENGTH);
     int result = 0;
-    
+
     if (argc == 1) {
         printf("GloVe: Global Vectors for Word Representation, v0.2\n");
         printf("Author: Jeffrey Pennington (jpennin@stanford.edu)\n\n");
@@ -125,11 +125,11 @@ int main(int argc, char **argv) {
         if ((i = find_arg((char *)"-input-file", argc, argv)) > 0) strcpy(input_file, argv[i + 1]);
         else strcpy(input_file, (char *)"cooccurrence.shuf.bin");
         if ((i = find_arg((char *)"-checkpoint-every", argc, argv)) > 0) checkpoint_every = atoi(argv[i + 1]);
-        
+
         vocab_size = 0;
         fid = fopen(vocab_file, "r");
-        if (fid == NULL) {fprintf(stderr, "Unable to open vocab file %s.\n",vocab_file); return 1;}
-        while ((i = getc(fid)) != EOF) if (i == '\n') vocab_size++; // Count number of entries in vocab_file
+        if (fid == ((void*)0)) {fprintf(stderr, "Unable to open vocab file %s.\n",vocab_file); return 1;}
+        while ((i = getc(fid)) != EOF) if (i == '\n') vocab_size++;
         fclose(fid);
         if (vocab_size == 0) {fprintf(stderr, "Unable to find any vocab entries in vocab file %s.\n", vocab_file); return 1;}
         result = train_glove();

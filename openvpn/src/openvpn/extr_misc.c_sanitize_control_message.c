@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gc_arena {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_SHOW_KEYS ; 
- int /*<<< orphan*/  check_debug_level (int /*<<< orphan*/ ) ; 
- char* gc_malloc (scalar_t__,int,struct gc_arena*) ; 
- scalar_t__ strlen (char const*) ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int) ; 
+
+ int D_SHOW_KEYS ;
+ int check_debug_level (int ) ;
+ char* gc_malloc (scalar_t__,int,struct gc_arena*) ;
+ scalar_t__ strlen (char const*) ;
+ int strncmp (char const*,char*,int) ;
 
 const char *
 sanitize_control_message(const char *src, struct gc_arena *gc)
 {
-    char *ret = gc_malloc(strlen(src)+1, false, gc);
+    char *ret = gc_malloc(strlen(src)+1, 0, gc);
     char *dest = ret;
-    bool redact = false;
+    bool redact = 0;
     int skip = 0;
 
     for (;; )
@@ -37,27 +37,27 @@ sanitize_control_message(const char *src, struct gc_arena *gc)
         if (c == 'S' && !strncmp(src, "SESS_ID_", 8))
         {
             skip = 7;
-            redact = true;
+            redact = 1;
         }
         else if (c == 'e' && !strncmp(src, "echo ", 5))
         {
             skip = 4;
-            redact = true;
+            redact = 1;
         }
         else if (!check_debug_level(D_SHOW_KEYS)
                  && (c == 'a' && !strncmp(src, "auth-token ", 11)))
         {
-            /* Unless --verb is 7 or higher (D_SHOW_KEYS), hide
-             * the auth-token value coming in the src string
-             */
+
+
+
             skip = 10;
-            redact = true;
+            redact = 1;
         }
 
-        if (c == ',') /* end of redacted item? */
+        if (c == ',')
         {
             skip = 0;
-            redact = false;
+            redact = 0;
         }
 
         if (redact)

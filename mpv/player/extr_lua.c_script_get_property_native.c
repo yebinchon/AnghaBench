@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct script_ctx {int /*<<< orphan*/  client; } ;
-typedef  int /*<<< orphan*/  mpv_node ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MPV_FORMAT_NODE ; 
- int /*<<< orphan*/  auto_free_node (void*,int /*<<< orphan*/ *) ; 
- struct script_ctx* get_ctx (int /*<<< orphan*/ *) ; 
- char* luaL_checkstring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- void* mp_lua_PITA (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_lua_optarg (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mpv_error_string (int) ; 
- int mpv_get_property (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pushnode (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  talloc_free_children (void*) ; 
+
+
+
+struct script_ctx {int client; } ;
+typedef int mpv_node ;
+typedef int lua_State ;
+
+
+ int MPV_FORMAT_NODE ;
+ int auto_free_node (void*,int *) ;
+ struct script_ctx* get_ctx (int *) ;
+ char* luaL_checkstring (int *,int) ;
+ int lua_pushstring (int *,int ) ;
+ int lua_pushvalue (int *,int) ;
+ void* mp_lua_PITA (int *) ;
+ int mp_lua_optarg (int *,int) ;
+ int mpv_error_string (int) ;
+ int mpv_get_property (int ,char const*,int ,int *) ;
+ int pushnode (int *,int *) ;
+ int talloc_free_children (void*) ;
 
 __attribute__((used)) static int script_get_property_native(lua_State *L)
 {

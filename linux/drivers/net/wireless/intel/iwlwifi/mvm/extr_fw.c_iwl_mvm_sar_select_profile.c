@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct iwl_mvm {int dummy; } ;
 
-/* Variables and functions */
- int ENOENT ; 
+
+ int ENOENT ;
 
 int iwl_mvm_sar_select_profile(struct iwl_mvm *mvm, int prof_a,
-			       int prof_b)
+          int prof_b)
 {
-	return -ENOENT;
+ return -ENOENT;
 }

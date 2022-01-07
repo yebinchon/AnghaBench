@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * Name; int /*<<< orphan*/ * Serial; } ;
-typedef  TYPE_1__ CRL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Free (TYPE_1__*) ; 
- int /*<<< orphan*/  FreeName (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeXSerial (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * Name; int * Serial; } ;
+typedef TYPE_1__ CRL ;
+
+
+ int Free (TYPE_1__*) ;
+ int FreeName (int *) ;
+ int FreeXSerial (int *) ;
 
 void FreeCrl(CRL *crl)
 {
-	// Validate arguments
-	if (crl == NULL)
-	{
-		return;
-	}
 
-	if (crl->Serial != NULL)
-	{
-		FreeXSerial(crl->Serial);
-	}
+ if (crl == ((void*)0))
+ {
+  return;
+ }
 
-	if (crl->Name != NULL)
-	{
-		FreeName(crl->Name);
-	}
+ if (crl->Serial != ((void*)0))
+ {
+  FreeXSerial(crl->Serial);
+ }
 
-	Free(crl);
+ if (crl->Name != ((void*)0))
+ {
+  FreeName(crl->Name);
+ }
+
+ Free(crl);
 }

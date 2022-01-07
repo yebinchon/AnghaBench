@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int UINT ;
 struct TYPE_14__ {int max_storages; TYPE_2__** storages; TYPE_1__* db; } ;
-struct TYPE_13__ {scalar_t__ type; int /*<<< orphan*/  pwcsName; } ;
-struct TYPE_12__ {int /*<<< orphan*/  storage; } ;
-struct TYPE_11__ {int /*<<< orphan*/  storage; } ;
-typedef  TYPE_2__ STORAGE ;
-typedef  TYPE_3__ STATSTG ;
-typedef  TYPE_4__ MSISTORAGESVIEW ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  IEnumSTATSTG ;
-typedef  int /*<<< orphan*/  HRESULT ;
+struct TYPE_13__ {scalar_t__ type; int pwcsName; } ;
+struct TYPE_12__ {int storage; } ;
+struct TYPE_11__ {int storage; } ;
+typedef TYPE_2__ STORAGE ;
+typedef TYPE_3__ STATSTG ;
+typedef TYPE_4__ MSISTORAGESVIEW ;
+typedef int INT ;
+typedef int IEnumSTATSTG ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CoTaskMemFree (int /*<<< orphan*/ ) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IEnumSTATSTG_Next (int /*<<< orphan*/ *,int,TYPE_3__*,int*) ; 
- int /*<<< orphan*/  IEnumSTATSTG_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStorage_EnumElements (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IStorage_OpenStorage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int STGM_READ ; 
- int STGM_SHARE_EXCLUSIVE ; 
- scalar_t__ STGTY_STORAGE ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ TRUE ; 
- TYPE_2__* create_storage (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- TYPE_2__** msi_alloc (int) ; 
- int /*<<< orphan*/  storages_set_table_size (TYPE_4__*,int) ; 
+
+ int CoTaskMemFree (int ) ;
+ scalar_t__ FAILED (int ) ;
+ int IEnumSTATSTG_Next (int *,int,TYPE_3__*,int*) ;
+ int IEnumSTATSTG_Release (int *) ;
+ int IStorage_EnumElements (int ,int ,int *,int ,int **) ;
+ int IStorage_OpenStorage (int ,int ,int *,int,int *,int ,int *) ;
+ int STGM_READ ;
+ int STGM_SHARE_EXCLUSIVE ;
+ scalar_t__ STGTY_STORAGE ;
+ int TRACE (char*,int ) ;
+ scalar_t__ TRUE ;
+ TYPE_2__* create_storage (TYPE_4__*,int ,int *) ;
+ int debugstr_w (int ) ;
+ TYPE_2__** msi_alloc (int) ;
+ int storages_set_table_size (TYPE_4__*,int) ;
 
 __attribute__((used)) static INT add_storages_to_table(MSISTORAGESVIEW *sv)
 {
-    STORAGE *storage = NULL;
-    IEnumSTATSTG *stgenum = NULL;
+    STORAGE *storage = ((void*)0);
+    IEnumSTATSTG *stgenum = ((void*)0);
     STATSTG stat;
     HRESULT hr;
     UINT count = 0, size;
 
-    hr = IStorage_EnumElements(sv->db->storage, 0, NULL, 0, &stgenum);
+    hr = IStorage_EnumElements(sv->db->storage, 0, ((void*)0), 0, &stgenum);
     if (FAILED(hr))
         return -1;
 
@@ -75,7 +75,7 @@ __attribute__((used)) static INT add_storages_to_table(MSISTORAGESVIEW *sv)
 
         TRACE("enumerated storage %s\n", debugstr_w(stat.pwcsName));
 
-        storage = create_storage(sv, stat.pwcsName, NULL);
+        storage = create_storage(sv, stat.pwcsName, ((void*)0));
         if (!storage)
         {
             count = -1;
@@ -83,8 +83,8 @@ __attribute__((used)) static INT add_storages_to_table(MSISTORAGESVIEW *sv)
             break;
         }
 
-        IStorage_OpenStorage(sv->db->storage, stat.pwcsName, NULL,
-                             STGM_READ | STGM_SHARE_EXCLUSIVE, NULL, 0,
+        IStorage_OpenStorage(sv->db->storage, stat.pwcsName, ((void*)0),
+                             STGM_READ | STGM_SHARE_EXCLUSIVE, ((void*)0), 0,
                              &storage->storage);
         CoTaskMemFree(stat.pwcsName);
 

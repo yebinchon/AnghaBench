@@ -1,0 +1,31 @@
+; ModuleID = '/home/carl/AnghaBench/fastsocket/kernel/drivers/usb/host/whci/extr_....wusbcorewusbhc.h_wusb_port_by_idx.c'
+source_filename = "/home/carl/AnghaBench/fastsocket/kernel/drivers/usb/host/whci/extr_....wusbcorewusbhc.h_wusb_port_by_idx.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.wusb_port = type { i32 }
+%struct.wusbhc = type { %struct.wusb_port* }
+
+@llvm.used = appending global [1 x i8*] [i8* bitcast (%struct.wusb_port* (%struct.wusbhc*, i64)* @wusb_port_by_idx to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal %struct.wusb_port* @wusb_port_by_idx(%struct.wusbhc* %0, i64 %1) #0 {
+  %3 = alloca %struct.wusbhc*, align 8
+  %4 = alloca i64, align 8
+  store %struct.wusbhc* %0, %struct.wusbhc** %3, align 8
+  store i64 %1, i64* %4, align 8
+  %5 = load %struct.wusbhc*, %struct.wusbhc** %3, align 8
+  %6 = getelementptr inbounds %struct.wusbhc, %struct.wusbhc* %5, i32 0, i32 0
+  %7 = load %struct.wusb_port*, %struct.wusb_port** %6, align 8
+  %8 = load i64, i64* %4, align 8
+  %9 = getelementptr inbounds %struct.wusb_port, %struct.wusb_port* %7, i64 %8
+  ret %struct.wusb_port* %9
+}
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

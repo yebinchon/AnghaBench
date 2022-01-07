@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PpcOfwPutChar (char) ; 
- int ofw_child (int) ; 
- int ofw_getprop (int,char*,char*,int) ; 
- int ofw_peer (int) ; 
- int /*<<< orphan*/  printf (char*,int,...) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int /*<<< orphan*/ ) ; 
+ int PpcOfwPutChar (char) ;
+ int ofw_child (int) ;
+ int ofw_getprop (int,char*,char*,int) ;
+ int ofw_peer (int) ;
+ int printf (char*,int,...) ;
+ int strlen (char*) ;
+ int strncmp (char*,char*,int ) ;
 
 int PpcFindDevice( int depth, int parent, char *devname, int *nth ) {
     static char buf[256];
@@ -29,11 +21,11 @@ int PpcFindDevice( int depth, int parent, char *devname, int *nth ) {
 
     next = ofw_child( parent );
 
-    //printf( "next = %x\n", next );
+
 
     gotname = ofw_getprop(parent, "name", buf, 256);
 
-    //printf( "gotname = %d\n", gotname );
+
 
     match = !strncmp(buf, devname, strlen(devname));
 

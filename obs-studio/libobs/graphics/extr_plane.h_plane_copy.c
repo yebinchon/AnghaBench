@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct plane {int /*<<< orphan*/  dist; int /*<<< orphan*/  dir; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  vec3_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct plane {int dist; int dir; } ;
+
+
+ int vec3_copy (int *,int *) ;
 
 __attribute__((used)) static inline void plane_copy(struct plane *dst, const struct plane *p)
 {
-	vec3_copy(&dst->dir, &p->dir);
-	dst->dist = p->dist;
+ vec3_copy(&dst->dir, &p->dir);
+ dst->dist = p->dist;
 }

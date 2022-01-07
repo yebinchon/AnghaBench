@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  audio_output_t ;
 
-/* Variables and functions */
- int NB_PRESETS ; 
- int /*<<< orphan*/  aout_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- int luaL_checknumber (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * preset_list ; 
- int /*<<< orphan*/ * strstr (char*,char*) ; 
- char* var_InheritString (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  var_SetString (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * vlclua_get_aout_internal (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int lua_State ;
+typedef int audio_output_t ;
+
+
+ int NB_PRESETS ;
+ int aout_Release (int *) ;
+ int free (char*) ;
+ int luaL_checknumber (int *,int) ;
+ int * preset_list ;
+ int * strstr (char*,char*) ;
+ char* var_InheritString (int *,char*) ;
+ int var_SetString (int *,char*,int ) ;
+ int * vlclua_get_aout_internal (int *) ;
 
 __attribute__((used)) static int vlclua_equalizer_setpreset( lua_State *L )
 {
@@ -31,12 +31,12 @@ __attribute__((used)) static int vlclua_equalizer_setpreset( lua_State *L )
         return 0;
 
     audio_output_t *p_aout = vlclua_get_aout_internal(L);
-    if( p_aout == NULL )
+    if( p_aout == ((void*)0) )
         return 0;
 
     int ret = 0;
     char *psz_af = var_InheritString( p_aout, "audio-filter" );
-    if( psz_af != NULL && strstr ( psz_af, "equalizer" ) != NULL )
+    if( psz_af != ((void*)0) && strstr ( psz_af, "equalizer" ) != ((void*)0) )
     {
         var_SetString( p_aout , "equalizer-preset" , preset_list[presetid] );
         ret = 1;

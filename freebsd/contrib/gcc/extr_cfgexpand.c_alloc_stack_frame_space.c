@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  decl; } ;
-typedef  int HOST_WIDE_INT ;
 
-/* Variables and functions */
- scalar_t__ FRAME_GROWS_DOWNWARD ; 
- TYPE_1__* cfun ; 
- int frame_offset ; 
- scalar_t__ frame_offset_overflow (int,int /*<<< orphan*/ ) ; 
- int frame_phase ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int decl; } ;
+typedef int HOST_WIDE_INT ;
+
+
+ scalar_t__ FRAME_GROWS_DOWNWARD ;
+ TYPE_1__* cfun ;
+ int frame_offset ;
+ scalar_t__ frame_offset_overflow (int,int ) ;
+ int frame_phase ;
 
 __attribute__((used)) static HOST_WIDE_INT
 alloc_stack_frame_space (HOST_WIDE_INT size, HOST_WIDE_INT align)

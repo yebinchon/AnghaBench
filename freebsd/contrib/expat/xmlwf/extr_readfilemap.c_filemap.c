@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tchar ;
-struct stat {size_t st_size; int /*<<< orphan*/  st_mode; } ;
-typedef  int /*<<< orphan*/  _EXPAT_read_req_t ;
-typedef  scalar_t__ _EXPAT_read_count_t ;
 
-/* Variables and functions */
- int O_BINARY ; 
- int O_RDONLY ; 
- int /*<<< orphan*/  S_ISREG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  T (char*) ; 
- size_t XML_MAX_CHUNK_LEN ; 
- scalar_t__ _EXPAT_read (int,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  free (void*) ; 
- scalar_t__ fstat (int,struct stat*) ; 
- int /*<<< orphan*/  ftprintf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- void* malloc (size_t) ; 
- int /*<<< orphan*/  stderr ; 
- int topen (int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  tperror (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int tchar ;
+struct stat {size_t st_size; int st_mode; } ;
+typedef int _EXPAT_read_req_t ;
+typedef scalar_t__ _EXPAT_read_count_t ;
+
+
+ int O_BINARY ;
+ int O_RDONLY ;
+ int S_ISREG (int ) ;
+ int T (char*) ;
+ size_t XML_MAX_CHUNK_LEN ;
+ scalar_t__ _EXPAT_read (int,void*,int ) ;
+ int close (int) ;
+ int free (void*) ;
+ scalar_t__ fstat (int,struct stat*) ;
+ int ftprintf (int ,int ,int const*) ;
+ void* malloc (size_t) ;
+ int stderr ;
+ int topen (int const*,int) ;
+ int tperror (int const*) ;
 
 int
 filemap(const tchar *name,
@@ -59,11 +59,11 @@ filemap(const tchar *name,
   }
   if (sb.st_size > XML_MAX_CHUNK_LEN) {
     close(fd);
-    return 2;  /* Cannot be passed to XML_Parse in one go */
+    return 2;
   }
 
   nbytes = sb.st_size;
-  /* malloc will return NULL with nbytes == 0, handle files with size 0 */
+
   if (nbytes == 0) {
     static const char c = '\0';
     processor(&c, 0, name, arg);

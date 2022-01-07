@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct Screen {char** characters; char** charsets; char** fonts; scalar_t__ row_used; } ;
-typedef  enum cc_font { ____Placeholder_cc_font } cc_font ;
+typedef enum cc_font { ____Placeholder_cc_font } cc_font ;
 struct TYPE_7__ {int len; scalar_t__* str; } ;
 struct TYPE_6__ {int active_screen; int buffer_changed; TYPE_3__ buffer; struct Screen* screen; } ;
-typedef  TYPE_1__ CCaptionSubContext ;
+typedef TYPE_1__ CCaptionSubContext ;
 
-/* Variables and functions */
- double ASS_DEFAULT_PLAYRESX ; 
- double ASS_DEFAULT_PLAYRESY ; 
- int AVERROR (int /*<<< orphan*/ ) ; 
-#define  CCFONT_ITALICS 130 
- int CCFONT_REGULAR ; 
-#define  CCFONT_UNDERLINED 129 
-#define  CCFONT_UNDERLINED_ITALICS 128 
- char const CCSET_BASIC_AMERICAN ; 
- scalar_t__ CHECK_FLAG (scalar_t__,int) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int SCREEN_COLUMNS ; 
- int SCREEN_ROWS ; 
- int /*<<< orphan*/  av_bprint_clear (TYPE_3__*) ; 
- int /*<<< orphan*/  av_bprint_is_complete (TYPE_3__*) ; 
- int /*<<< orphan*/  av_bprintf (TYPE_3__*,char*,...) ; 
- char*** charset_overrides ; 
+
+ double ASS_DEFAULT_PLAYRESX ;
+ double ASS_DEFAULT_PLAYRESY ;
+ int AVERROR (int ) ;
+
+ int CCFONT_REGULAR ;
+
+
+ char const CCSET_BASIC_AMERICAN ;
+ scalar_t__ CHECK_FLAG (scalar_t__,int) ;
+ int ENOMEM ;
+ int SCREEN_COLUMNS ;
+ int SCREEN_ROWS ;
+ int av_bprint_clear (TYPE_3__*) ;
+ int av_bprint_is_complete (TYPE_3__*) ;
+ int av_bprintf (TYPE_3__*,char*,...) ;
+ char*** charset_overrides ;
 
 __attribute__((used)) static int capture_screen(CCaptionSubContext *ctx)
 {
@@ -66,7 +66,7 @@ __attribute__((used)) static int capture_screen(CCaptionSubContext *ctx)
             int x, y, seen_char = 0;
             j = 0;
 
-            /* skip leading space */
+
             while (row[j] == ' ' && charset[j] == CCSET_BASIC_AMERICAN && j < tab)
                 j++;
 
@@ -82,24 +82,24 @@ __attribute__((used)) static int capture_screen(CCaptionSubContext *ctx)
 
                 if (prev_font != font[j]) {
                     switch (prev_font) {
-                    case CCFONT_ITALICS:
+                    case 130:
                         e_tag = "{\\i0}";
                         break;
-                    case CCFONT_UNDERLINED:
+                    case 129:
                         e_tag = "{\\u0}";
                         break;
-                    case CCFONT_UNDERLINED_ITALICS:
+                    case 128:
                         e_tag = "{\\u0}{\\i0}";
                         break;
                     }
                     switch (font[j]) {
-                    case CCFONT_ITALICS:
+                    case 130:
                         s_tag = "{\\i1}";
                         break;
-                    case CCFONT_UNDERLINED:
+                    case 129:
                         s_tag = "{\\u1}";
                         break;
-                    case CCFONT_UNDERLINED_ITALICS:
+                    case 128:
                         s_tag = "{\\u1}{\\i1}";
                         break;
                     }

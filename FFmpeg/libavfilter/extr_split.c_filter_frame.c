@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int nb_outputs; int /*<<< orphan*/ * outputs; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int nb_outputs; int * outputs; } ;
 struct TYPE_4__ {TYPE_2__* dst; } ;
-typedef  int /*<<< orphan*/  AVFrame ;
-typedef  TYPE_1__ AVFilterLink ;
-typedef  TYPE_2__ AVFilterContext ;
+typedef int AVFrame ;
+typedef TYPE_1__ AVFilterLink ;
+typedef TYPE_2__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/ * av_frame_clone (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_frame_free (int /*<<< orphan*/ **) ; 
- int ff_filter_frame (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ ff_outlink_get_status (int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int ENOMEM ;
+ int * av_frame_clone (int *) ;
+ int av_frame_free (int **) ;
+ int ff_filter_frame (int ,int *) ;
+ scalar_t__ ff_outlink_get_status (int ) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *frame)
 {

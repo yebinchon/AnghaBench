@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ wchar_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ wchar_t ;
 struct TYPE_7__ {scalar_t__ nType; char* pz; size_t nLen; scalar_t__* wpz; } ;
 struct TYPE_6__ {int nLevel; TYPE_2__ key; struct TYPE_6__** pBackward; void* pData; struct TYPE_6__** pForward; } ;
-typedef  TYPE_1__ tSkipListNode ;
-typedef  TYPE_2__ tSkipListKey ;
-typedef  int int32_t ;
+typedef TYPE_1__ tSkipListNode ;
+typedef TYPE_2__ tSkipListKey ;
+typedef int int32_t ;
 
-/* Variables and functions */
- scalar_t__ TSDB_DATA_TYPE_BINARY ; 
- scalar_t__ TSDB_DATA_TYPE_NCHAR ; 
- scalar_t__ calloc (int,size_t) ; 
- size_t getOneNodeSize (TYPE_2__ const*,int) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int /*<<< orphan*/  wcsncpy (scalar_t__*,scalar_t__*,size_t) ; 
+
+ scalar_t__ TSDB_DATA_TYPE_BINARY ;
+ scalar_t__ TSDB_DATA_TYPE_NCHAR ;
+ scalar_t__ calloc (int,size_t) ;
+ size_t getOneNodeSize (TYPE_2__ const*,int) ;
+ int strcpy (char*,char*) ;
+ int wcsncpy (scalar_t__*,scalar_t__*,size_t) ;
 
 __attribute__((used)) static tSkipListNode *tSkipListCreateNode(void *pData, const tSkipListKey *pKey, int32_t nLevel) {
-  size_t         nodeSize = getOneNodeSize(pKey, nLevel);
+  size_t nodeSize = getOneNodeSize(pKey, nLevel);
   tSkipListNode *pNode = (tSkipListNode *)calloc(1, nodeSize);
 
   pNode->pForward = (tSkipListNode **)(&pNode[1]);

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/ * pctx; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int * pctx; } ;
 struct TYPE_5__ {TYPE_3__* kari; } ;
 struct TYPE_6__ {TYPE_1__ d; } ;
-typedef  int /*<<< orphan*/  EVP_PKEY_CTX ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
-typedef  TYPE_2__ CMS_RecipientInfo ;
-typedef  TYPE_3__ CMS_KeyAgreeRecipientInfo ;
+typedef int EVP_PKEY_CTX ;
+typedef int EVP_PKEY ;
+typedef TYPE_2__ CMS_RecipientInfo ;
+typedef TYPE_3__ CMS_KeyAgreeRecipientInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_PKEY_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_PKEY_CTX_new (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_PKEY_derive_init (int /*<<< orphan*/ *) ; 
+
+ int EVP_PKEY_CTX_free (int *) ;
+ int * EVP_PKEY_CTX_new (int *,int *) ;
+ int EVP_PKEY_derive_init (int *) ;
 
 int CMS_RecipientInfo_kari_set0_pkey(CMS_RecipientInfo *ri, EVP_PKEY *pk)
 {
@@ -32,10 +32,10 @@ int CMS_RecipientInfo_kari_set0_pkey(CMS_RecipientInfo *ri, EVP_PKEY *pk)
     CMS_KeyAgreeRecipientInfo *kari = ri->d.kari;
 
     EVP_PKEY_CTX_free(kari->pctx);
-    kari->pctx = NULL;
+    kari->pctx = ((void*)0);
     if (!pk)
         return 1;
-    pctx = EVP_PKEY_CTX_new(pk, NULL);
+    pctx = EVP_PKEY_CTX_new(pk, ((void*)0));
     if (!pctx || !EVP_PKEY_derive_init(pctx))
         goto err;
     kari->pctx = pctx;

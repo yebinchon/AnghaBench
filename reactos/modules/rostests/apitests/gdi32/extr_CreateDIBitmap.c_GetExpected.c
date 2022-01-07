@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {scalar_t__ biSize; } ;
 struct TYPE_10__ {scalar_t__ biSize; TYPE_1__ bmiHeader; } ;
-typedef  TYPE_2__ VOID ;
-typedef  int UINT ;
-typedef  scalar_t__ HDC ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
-typedef  TYPE_2__ BITMAPINFOHEADER ;
-typedef  TYPE_2__ BITMAPINFO ;
+typedef TYPE_2__ VOID ;
+typedef int UINT ;
+typedef scalar_t__ HDC ;
+typedef int DWORD ;
+typedef int BOOL ;
+typedef TYPE_2__ BITMAPINFOHEADER ;
+typedef TYPE_2__ BITMAPINFO ;
 
-/* Variables and functions */
- int CBM_CREATDIB ; 
- int CBM_INIT ; 
- int DIB_PAL_COLORS ; 
- int DIB_RGB_COLORS ; 
- int ERROR_INVALID_PARAMETER ; 
- int /*<<< orphan*/  FALSE ; 
- TYPE_2__ const* INVALID_POINTER ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int CBM_CREATDIB ;
+ int CBM_INIT ;
+ int DIB_PAL_COLORS ;
+ int DIB_RGB_COLORS ;
+ int ERROR_INVALID_PARAMETER ;
+ int FALSE ;
+ TYPE_2__ const* INVALID_POINTER ;
+ int TRUE ;
 
 BOOL
 GetExpected(
@@ -96,7 +96,7 @@ GetExpected(
     else
     {
 
-        if ((lpbmih == NULL) ||
+        if ((lpbmih == ((void*)0)) ||
             (lpbmih == INVALID_POINTER) ||
             (lpbmih->biSize == 0))
         {

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sock_db {scalar_t__ lru_counter; int fd; scalar_t__ handle; } ;
 struct httpd_data {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGD (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  httpd_sess_delete (struct httpd_data*,int) ; 
+
+ int ESP_LOGD (int ,char*,int) ;
+ int TAG ;
+ int close (int) ;
+ int httpd_sess_delete (struct httpd_data*,int) ;
 
 __attribute__((used)) static void httpd_sess_close(void *arg)
 {

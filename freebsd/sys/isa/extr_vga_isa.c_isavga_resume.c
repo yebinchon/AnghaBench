@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int bus_generic_resume (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vga_resume (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int device_t ;
+
+
+ int bus_generic_resume (int ) ;
+ int vga_resume (int ) ;
 
 __attribute__((used)) static int
 isavga_resume(device_t dev)
 {
 
-	vga_resume(dev);
+ vga_resume(dev);
 
-	return (bus_generic_resume(dev));
+ return (bus_generic_resume(dev));
 }

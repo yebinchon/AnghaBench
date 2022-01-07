@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rpc_xprt {int /*<<< orphan*/  kref; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kref_put (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xprt_destroy_kref ; 
+
+
+
+struct rpc_xprt {int kref; } ;
+
+
+ int kref_put (int *,int ) ;
+ int xprt_destroy_kref ;
 
 void xprt_put(struct rpc_xprt *xprt)
 {
-	if (xprt != NULL)
-		kref_put(&xprt->kref, xprt_destroy_kref);
+ if (xprt != ((void*)0))
+  kref_put(&xprt->kref, xprt_destroy_kref);
 }

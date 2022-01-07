@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int nb_outputs; int /*<<< orphan*/ * outputs; TYPE_1__* priv; } ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int nb_outputs; int * outputs; TYPE_1__* priv; } ;
 struct TYPE_13__ {TYPE_4__* dst; } ;
-struct TYPE_12__ {int channels; int /*<<< orphan*/  channel_layout; int /*<<< orphan*/ * extended_data; int /*<<< orphan*/ * data; } ;
+struct TYPE_12__ {int channels; int channel_layout; int * extended_data; int * data; } ;
 struct TYPE_11__ {size_t* map; } ;
-typedef  TYPE_1__ ChannelSplitContext ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
+typedef TYPE_1__ ChannelSplitContext ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_channel_layout_extract_channel (int /*<<< orphan*/ ,size_t) ; 
- TYPE_2__* av_frame_clone (TYPE_2__*) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_2__**) ; 
- int ff_filter_frame (int /*<<< orphan*/ ,TYPE_2__*) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int av_channel_layout_extract_channel (int ,size_t) ;
+ TYPE_2__* av_frame_clone (TYPE_2__*) ;
+ int av_frame_free (TYPE_2__**) ;
+ int ff_filter_frame (int ,TYPE_2__*) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *buf)
 {

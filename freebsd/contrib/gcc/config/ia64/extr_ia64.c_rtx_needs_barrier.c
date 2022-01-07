@@ -1,161 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct reg_flags {int is_write; int /*<<< orphan*/  is_sibcall; } ;
-typedef  int /*<<< orphan*/  rtx ;
-struct TYPE_2__ {int /*<<< orphan*/  write_count; } ;
-typedef  int HOST_WIDE_INT ;
 
-/* Variables and functions */
-#define  ABS 232 
-#define  AND 231 
- size_t AR_EC_REGNUM ; 
- size_t AR_PFS_REGNUM ; 
- int AR_UNAT_BIT_0 ; 
- int AR_UNAT_REGNUM ; 
-#define  ASHIFT 230 
-#define  ASHIFTRT 229 
-#define  ASM_INPUT 228 
-#define  ASM_OPERANDS 227 
- int /*<<< orphan*/  ASM_OPERANDS_INPUT (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ASM_OPERANDS_INPUT_LENGTH (int /*<<< orphan*/ ) ; 
-#define  CALL 226 
-#define  CLOBBER 225 
-#define  COMPARE 224 
-#define  COND_EXEC 223 
- int /*<<< orphan*/  COND_EXEC_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  COND_EXEC_TEST (int /*<<< orphan*/ ) ; 
-#define  CONST 222 
-#define  CONST_DOUBLE 221 
-#define  CONST_INT 220 
-#define  CONST_VECTOR 219 
-#define  DIV 218 
-#define  EQ 217 
-#define  FFS 216 
-#define  FIX 215 
-#define  FLOAT 214 
-#define  FLOAT_EXTEND 213 
-#define  FLOAT_TRUNCATE 212 
-#define  GE 211 
- int const GET_CODE (int /*<<< orphan*/ ) ; 
- char* GET_RTX_FORMAT (int const) ; 
- int /*<<< orphan*/  GET_RTX_LENGTH (int const) ; 
-#define  GEU 210 
-#define  GT 209 
-#define  GTU 208 
- int INTVAL (int /*<<< orphan*/ ) ; 
-#define  IOR 207 
-#define  LABEL_REF 206 
-#define  LE 205 
-#define  LEU 204 
-#define  LSHIFTRT 203 
-#define  LT 202 
-#define  LTU 201 
-#define  MEM 200 
- int /*<<< orphan*/  MEM_VOLATILE_P (int /*<<< orphan*/ ) ; 
-#define  MINUS 199 
-#define  MOD 198 
-#define  MULT 197 
-#define  NE 196 
-#define  NEG 195 
-#define  NOT 194 
-#define  PARALLEL 193 
-#define  PLUS 192 
-#define  POPCOUNT 191 
-#define  POST_DEC 190 
-#define  POST_INC 189 
-#define  POST_MODIFY 188 
- int /*<<< orphan*/  PR_REGS ; 
-#define  REG 187 
- int REGNO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REGNO_REG_CLASS (int) ; 
- size_t REG_AR_CFM ; 
- size_t REG_RP ; 
- size_t REG_VOLATILE ; 
-#define  RETURN 186 
-#define  ROTATE 185 
-#define  ROTATERT 184 
-#define  SET 183 
- int /*<<< orphan*/  SET_DEST (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SET_SRC (int /*<<< orphan*/ ) ; 
-#define  SIGN_EXTEND 182 
-#define  SMAX 181 
-#define  SMIN 180 
-#define  SQRT 179 
-#define  SUBREG 178 
- int /*<<< orphan*/  SUBREG_REG (int /*<<< orphan*/ ) ; 
-#define  SYMBOL_REF 177 
- int /*<<< orphan*/  TARGET_VOL_ASM_STOP ; 
-#define  TRUNCATE 176 
-#define  UDIV 175 
-#define  UMAX 174 
-#define  UMIN 173 
-#define  UMOD 172 
-#define  UNSIGNED_FIX 171 
-#define  UNSIGNED_FLOAT 170 
-#define  UNSPEC 169 
-#define  UNSPECV_ALLOC 168 
-#define  UNSPECV_BLOCKAGE 167 
-#define  UNSPECV_BREAK 166 
-#define  UNSPECV_INSN_GROUP_BARRIER 165 
-#define  UNSPECV_PSAC_ALL 164 
-#define  UNSPECV_PSAC_NORMAL 163 
-#define  UNSPECV_SET_BSP 162 
-#define  UNSPEC_ADDP4 161 
-#define  UNSPEC_BSP_VALUE 160 
-#define  UNSPEC_BUNDLE_SELECTOR 159 
-#define  UNSPEC_CHKACLR 158 
-#define  UNSPEC_CHKS 157 
-#define  UNSPEC_CMPXCHG_ACQ 156 
-#define  UNSPEC_COPYSIGN 155 
-#define  UNSPEC_DTPREL 154 
-#define  UNSPEC_FETCHADD_ACQ 153 
-#define  UNSPEC_FLUSHRS 152 
-#define  UNSPEC_FR_RECIP_APPROX 151 
-#define  UNSPEC_FR_RESTORE 150 
-#define  UNSPEC_FR_SPILL 149 
-#define  UNSPEC_FR_SQRT_RECIP_APPROX 148 
-#define  UNSPEC_GETF_EXP 147 
-#define  UNSPEC_GR_RESTORE 146 
-#define  UNSPEC_GR_SPILL 145 
-#define  UNSPEC_LDA 144 
-#define  UNSPEC_LDS 143 
-#define  UNSPEC_LDSA 142 
-#define  UNSPEC_LTOFF_DTPMOD 141 
-#define  UNSPEC_LTOFF_DTPREL 140 
-#define  UNSPEC_LTOFF_TPREL 139 
-#define  UNSPEC_MF 138 
-#define  UNSPEC_PIC_CALL 137 
-#define  UNSPEC_PRED_REL_MUTEX 136 
-#define  UNSPEC_SETF_EXP 135 
-#define  UNSPEC_SHRP 134 
-#define  UNSPEC_TPREL 133 
-#define  UNSPEC_VOLATILE 132 
-#define  USE 131 
-#define  VEC_SELECT 130 
- int /*<<< orphan*/  XEXP (int /*<<< orphan*/ ,int) ; 
- int const XINT (int /*<<< orphan*/ ,int) ; 
-#define  XOR 129 
- int /*<<< orphan*/  XVECEXP (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  XVECLEN (int /*<<< orphan*/ ,int) ; 
-#define  ZERO_EXTEND 128 
- int /*<<< orphan*/  gcc_assert (int) ; 
- int /*<<< orphan*/  gcc_unreachable () ; 
- int rws_access_reg (int /*<<< orphan*/ ,struct reg_flags,int) ; 
- int rws_access_regno (size_t,struct reg_flags,int) ; 
- TYPE_1__* rws_insn ; 
- int set_src_needs_barrier (int /*<<< orphan*/ ,struct reg_flags,int) ; 
- int /*<<< orphan*/  update_set_flags (int /*<<< orphan*/ ,struct reg_flags*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct reg_flags {int is_write; int is_sibcall; } ;
+typedef int rtx ;
+struct TYPE_2__ {int write_count; } ;
+typedef int HOST_WIDE_INT ;
+
+
+
+
+ size_t AR_EC_REGNUM ;
+ size_t AR_PFS_REGNUM ;
+ int AR_UNAT_BIT_0 ;
+ int AR_UNAT_REGNUM ;
+
+
+
+
+ int ASM_OPERANDS_INPUT (int ,int) ;
+ int ASM_OPERANDS_INPUT_LENGTH (int ) ;
+
+
+
+
+ int COND_EXEC_CODE (int ) ;
+ int COND_EXEC_TEST (int ) ;
+ int const GET_CODE (int ) ;
+ char* GET_RTX_FORMAT (int const) ;
+ int GET_RTX_LENGTH (int const) ;
+
+
+
+ int INTVAL (int ) ;
+ int MEM_VOLATILE_P (int ) ;
+ int PR_REGS ;
+
+ int REGNO (int ) ;
+ int REGNO_REG_CLASS (int) ;
+ size_t REG_AR_CFM ;
+ size_t REG_RP ;
+ size_t REG_VOLATILE ;
+
+
+
+
+ int SET_DEST (int ) ;
+ int SET_SRC (int ) ;
+
+
+
+
+
+ int SUBREG_REG (int ) ;
+
+ int TARGET_VOL_ASM_STOP ;
+ int XEXP (int ,int) ;
+ int const XINT (int ,int) ;
+
+ int XVECEXP (int ,int,int) ;
+ int XVECLEN (int ,int) ;
+
+ int gcc_assert (int) ;
+ int gcc_unreachable () ;
+ int rws_access_reg (int ,struct reg_flags,int) ;
+ int rws_access_regno (size_t,struct reg_flags,int) ;
+ TYPE_1__* rws_insn ;
+ int set_src_needs_barrier (int ,struct reg_flags,int) ;
+ int update_set_flags (int ,struct reg_flags*) ;
 
 __attribute__((used)) static int
 rtx_needs_barrier (rtx x, struct reg_flags flags, int pred)
@@ -174,290 +95,290 @@ rtx_needs_barrier (rtx x, struct reg_flags flags, int pred)
 
   switch (GET_CODE (x))
     {
-    case SET:
+    case 183:
       update_set_flags (x, &new_flags);
       need_barrier = set_src_needs_barrier (x, new_flags, pred);
-      if (GET_CODE (SET_SRC (x)) != CALL)
-	{
-	  new_flags.is_write = 1;
-	  need_barrier |= rtx_needs_barrier (SET_DEST (x), new_flags, pred);
-	}
+      if (GET_CODE (SET_SRC (x)) != 226)
+ {
+   new_flags.is_write = 1;
+   need_barrier |= rtx_needs_barrier (SET_DEST (x), new_flags, pred);
+ }
       break;
 
-    case CALL:
+    case 226:
       new_flags.is_write = 0;
       need_barrier |= rws_access_regno (AR_EC_REGNUM, new_flags, pred);
 
-      /* Avoid multiple register writes, in case this is a pattern with
-	 multiple CALL rtx.  This avoids a failure in rws_access_reg.  */
+
+
       if (! flags.is_sibcall && ! rws_insn[REG_AR_CFM].write_count)
-	{
-	  new_flags.is_write = 1;
-	  need_barrier |= rws_access_regno (REG_RP, new_flags, pred);
-	  need_barrier |= rws_access_regno (AR_PFS_REGNUM, new_flags, pred);
-	  need_barrier |= rws_access_regno (REG_AR_CFM, new_flags, pred);
-	}
+ {
+   new_flags.is_write = 1;
+   need_barrier |= rws_access_regno (REG_RP, new_flags, pred);
+   need_barrier |= rws_access_regno (AR_PFS_REGNUM, new_flags, pred);
+   need_barrier |= rws_access_regno (REG_AR_CFM, new_flags, pred);
+ }
       break;
 
-    case COND_EXEC:
-      /* X is a predicated instruction.  */
+    case 223:
+
 
       cond = COND_EXEC_TEST (x);
       gcc_assert (!pred);
       need_barrier = rtx_needs_barrier (cond, flags, 0);
 
-      if (GET_CODE (cond) == EQ)
-	is_complemented = 1;
+      if (GET_CODE (cond) == 217)
+ is_complemented = 1;
       cond = XEXP (cond, 0);
-      gcc_assert (GET_CODE (cond) == REG
-		  && REGNO_REG_CLASS (REGNO (cond)) == PR_REGS);
+      gcc_assert (GET_CODE (cond) == 187
+    && REGNO_REG_CLASS (REGNO (cond)) == PR_REGS);
       pred = REGNO (cond);
       if (is_complemented)
-	++pred;
+ ++pred;
 
       need_barrier |= rtx_needs_barrier (COND_EXEC_CODE (x), flags, pred);
       return need_barrier;
 
-    case CLOBBER:
-    case USE:
-      /* Clobber & use are for earlier compiler-phases only.  */
+    case 225:
+    case 131:
+
       break;
 
-    case ASM_OPERANDS:
-    case ASM_INPUT:
-      /* We always emit stop bits for traditional asms.  We emit stop bits
-	 for volatile extended asms if TARGET_VOL_ASM_STOP is true.  */
-      if (GET_CODE (x) != ASM_OPERANDS
-	  || (MEM_VOLATILE_P (x) && TARGET_VOL_ASM_STOP))
-	{
-	  /* Avoid writing the register multiple times if we have multiple
-	     asm outputs.  This avoids a failure in rws_access_reg.  */
-	  if (! rws_insn[REG_VOLATILE].write_count)
-	    {
-	      new_flags.is_write = 1;
-	      rws_access_regno (REG_VOLATILE, new_flags, pred);
-	    }
-	  return 1;
-	}
+    case 227:
+    case 228:
 
-      /* For all ASM_OPERANDS, we must traverse the vector of input operands.
-	 We cannot just fall through here since then we would be confused
-	 by the ASM_INPUT rtx inside ASM_OPERANDS, which do not indicate
-	 traditional asms unlike their normal usage.  */
+
+      if (GET_CODE (x) != 227
+   || (MEM_VOLATILE_P (x) && TARGET_VOL_ASM_STOP))
+ {
+
+
+   if (! rws_insn[REG_VOLATILE].write_count)
+     {
+       new_flags.is_write = 1;
+       rws_access_regno (REG_VOLATILE, new_flags, pred);
+     }
+   return 1;
+ }
+
+
+
+
+
 
       for (i = ASM_OPERANDS_INPUT_LENGTH (x) - 1; i >= 0; --i)
-	if (rtx_needs_barrier (ASM_OPERANDS_INPUT (x, i), flags, pred))
-	  need_barrier = 1;
+ if (rtx_needs_barrier (ASM_OPERANDS_INPUT (x, i), flags, pred))
+   need_barrier = 1;
       break;
 
-    case PARALLEL:
+    case 193:
       for (i = XVECLEN (x, 0) - 1; i >= 0; --i)
-	{
-	  rtx pat = XVECEXP (x, 0, i);
-	  switch (GET_CODE (pat))
-	    {
-	    case SET:
-	      update_set_flags (pat, &new_flags);
-	      need_barrier |= set_src_needs_barrier (pat, new_flags, pred);
-	      break;
+ {
+   rtx pat = XVECEXP (x, 0, i);
+   switch (GET_CODE (pat))
+     {
+     case 183:
+       update_set_flags (pat, &new_flags);
+       need_barrier |= set_src_needs_barrier (pat, new_flags, pred);
+       break;
 
-	    case USE:
-	    case CALL:
-	    case ASM_OPERANDS:
-	      need_barrier |= rtx_needs_barrier (pat, flags, pred);
-	      break;
+     case 131:
+     case 226:
+     case 227:
+       need_barrier |= rtx_needs_barrier (pat, flags, pred);
+       break;
 
-	    case CLOBBER:
-	    case RETURN:
-	      break;
+     case 225:
+     case 186:
+       break;
 
-	    default:
-	      gcc_unreachable ();
-	    }
-	}
+     default:
+       gcc_unreachable ();
+     }
+ }
       for (i = XVECLEN (x, 0) - 1; i >= 0; --i)
-	{
-	  rtx pat = XVECEXP (x, 0, i);
-	  if (GET_CODE (pat) == SET)
-	    {
-	      if (GET_CODE (SET_SRC (pat)) != CALL)
-		{
-		  new_flags.is_write = 1;
-		  need_barrier |= rtx_needs_barrier (SET_DEST (pat), new_flags,
-						     pred);
-		}
-	    }
-	  else if (GET_CODE (pat) == CLOBBER || GET_CODE (pat) == RETURN)
-	    need_barrier |= rtx_needs_barrier (pat, flags, pred);
-	}
+ {
+   rtx pat = XVECEXP (x, 0, i);
+   if (GET_CODE (pat) == 183)
+     {
+       if (GET_CODE (SET_SRC (pat)) != 226)
+  {
+    new_flags.is_write = 1;
+    need_barrier |= rtx_needs_barrier (SET_DEST (pat), new_flags,
+           pred);
+  }
+     }
+   else if (GET_CODE (pat) == 225 || GET_CODE (pat) == 186)
+     need_barrier |= rtx_needs_barrier (pat, flags, pred);
+ }
       break;
 
-    case SUBREG:
+    case 178:
       need_barrier |= rtx_needs_barrier (SUBREG_REG (x), flags, pred);
       break;
-    case REG:
+    case 187:
       if (REGNO (x) == AR_UNAT_REGNUM)
-	{
-	  for (i = 0; i < 64; ++i)
-	    need_barrier |= rws_access_regno (AR_UNAT_BIT_0 + i, flags, pred);
-	}
+ {
+   for (i = 0; i < 64; ++i)
+     need_barrier |= rws_access_regno (AR_UNAT_BIT_0 + i, flags, pred);
+ }
       else
-	need_barrier = rws_access_reg (x, flags, pred);
+ need_barrier = rws_access_reg (x, flags, pred);
       break;
 
-    case MEM:
-      /* Find the regs used in memory address computation.  */
+    case 200:
+
       new_flags.is_write = 0;
       need_barrier = rtx_needs_barrier (XEXP (x, 0), new_flags, pred);
       break;
 
-    case CONST_INT:   case CONST_DOUBLE:  case CONST_VECTOR:
-    case SYMBOL_REF:  case LABEL_REF:     case CONST:
+    case 220: case 221: case 219:
+    case 177: case 206: case 222:
       break;
 
-      /* Operators with side-effects.  */
-    case POST_INC:    case POST_DEC:
-      gcc_assert (GET_CODE (XEXP (x, 0)) == REG);
+
+    case 189: case 190:
+      gcc_assert (GET_CODE (XEXP (x, 0)) == 187);
 
       new_flags.is_write = 0;
-      need_barrier  = rws_access_reg (XEXP (x, 0), new_flags, pred);
+      need_barrier = rws_access_reg (XEXP (x, 0), new_flags, pred);
       new_flags.is_write = 1;
       need_barrier |= rws_access_reg (XEXP (x, 0), new_flags, pred);
       break;
 
-    case POST_MODIFY:
-      gcc_assert (GET_CODE (XEXP (x, 0)) == REG);
+    case 188:
+      gcc_assert (GET_CODE (XEXP (x, 0)) == 187);
 
       new_flags.is_write = 0;
-      need_barrier  = rws_access_reg (XEXP (x, 0), new_flags, pred);
+      need_barrier = rws_access_reg (XEXP (x, 0), new_flags, pred);
       need_barrier |= rtx_needs_barrier (XEXP (x, 1), new_flags, pred);
       new_flags.is_write = 1;
       need_barrier |= rws_access_reg (XEXP (x, 0), new_flags, pred);
       break;
 
-      /* Handle common unary and binary ops for efficiency.  */
-    case COMPARE:  case PLUS:    case MINUS:   case MULT:      case DIV:
-    case MOD:      case UDIV:    case UMOD:    case AND:       case IOR:
-    case XOR:      case ASHIFT:  case ROTATE:  case ASHIFTRT:  case LSHIFTRT:
-    case ROTATERT: case SMIN:    case SMAX:    case UMIN:      case UMAX:
-    case NE:       case EQ:      case GE:      case GT:        case LE:
-    case LT:       case GEU:     case GTU:     case LEU:       case LTU:
+
+    case 224: case 192: case 199: case 197: case 218:
+    case 198: case 175: case 172: case 231: case 207:
+    case 129: case 230: case 185: case 229: case 203:
+    case 184: case 180: case 181: case 173: case 174:
+    case 196: case 217: case 211: case 209: case 205:
+    case 202: case 210: case 208: case 204: case 201:
       need_barrier = rtx_needs_barrier (XEXP (x, 0), new_flags, pred);
       need_barrier |= rtx_needs_barrier (XEXP (x, 1), new_flags, pred);
       break;
 
-    case NEG:      case NOT:	        case SIGN_EXTEND:     case ZERO_EXTEND:
-    case TRUNCATE: case FLOAT_EXTEND:   case FLOAT_TRUNCATE:  case FLOAT:
-    case FIX:      case UNSIGNED_FLOAT: case UNSIGNED_FIX:    case ABS:
-    case SQRT:     case FFS:		case POPCOUNT:
+    case 195: case 194: case 182: case 128:
+    case 176: case 213: case 212: case 214:
+    case 215: case 170: case 171: case 232:
+    case 179: case 216: case 191:
       need_barrier = rtx_needs_barrier (XEXP (x, 0), flags, pred);
       break;
 
-    case VEC_SELECT:
-      /* VEC_SELECT's second argument is a PARALLEL with integers that
-	 describe the elements selected.  On ia64, those integers are
-	 always constants.  Avoid walking the PARALLEL so that we don't
-	 get confused with "normal" parallels and then die.  */
+    case 130:
+
+
+
+
       need_barrier = rtx_needs_barrier (XEXP (x, 0), flags, pred);
       break;
 
-    case UNSPEC:
+    case 169:
       switch (XINT (x, 1))
-	{
-	case UNSPEC_LTOFF_DTPMOD:
-	case UNSPEC_LTOFF_DTPREL:
-	case UNSPEC_DTPREL:
-	case UNSPEC_LTOFF_TPREL:
-	case UNSPEC_TPREL:
-	case UNSPEC_PRED_REL_MUTEX:
-	case UNSPEC_PIC_CALL:
-        case UNSPEC_MF:
-        case UNSPEC_FETCHADD_ACQ:
-	case UNSPEC_BSP_VALUE:
-	case UNSPEC_FLUSHRS:
-	case UNSPEC_BUNDLE_SELECTOR:
+ {
+ case 141:
+ case 140:
+ case 154:
+ case 139:
+ case 133:
+ case 136:
+ case 137:
+        case 138:
+        case 153:
+ case 160:
+ case 152:
+ case 159:
           break;
 
-	case UNSPEC_GR_SPILL:
-	case UNSPEC_GR_RESTORE:
-	  {
-	    HOST_WIDE_INT offset = INTVAL (XVECEXP (x, 0, 1));
-	    HOST_WIDE_INT bit = (offset >> 3) & 63;
+ case 145:
+ case 146:
+   {
+     HOST_WIDE_INT offset = INTVAL (XVECEXP (x, 0, 1));
+     HOST_WIDE_INT bit = (offset >> 3) & 63;
 
-	    need_barrier = rtx_needs_barrier (XVECEXP (x, 0, 0), flags, pred);
-	    new_flags.is_write = (XINT (x, 1) == UNSPEC_GR_SPILL);
-	    need_barrier |= rws_access_regno (AR_UNAT_BIT_0 + bit,
-					      new_flags, pred);
-	    break;
-	  }
+     need_barrier = rtx_needs_barrier (XVECEXP (x, 0, 0), flags, pred);
+     new_flags.is_write = (XINT (x, 1) == 145);
+     need_barrier |= rws_access_regno (AR_UNAT_BIT_0 + bit,
+           new_flags, pred);
+     break;
+   }
 
-	case UNSPEC_FR_SPILL:
-	case UNSPEC_FR_RESTORE:
-	case UNSPEC_GETF_EXP:
-	case UNSPEC_SETF_EXP:
-        case UNSPEC_ADDP4:
-	case UNSPEC_FR_SQRT_RECIP_APPROX:
-	case UNSPEC_LDA:
-	case UNSPEC_LDS:
-	case UNSPEC_LDSA:
-	case UNSPEC_CHKACLR:
-        case UNSPEC_CHKS:
-	  need_barrier = rtx_needs_barrier (XVECEXP (x, 0, 0), flags, pred);
-	  break;
+ case 149:
+ case 150:
+ case 147:
+ case 135:
+        case 161:
+ case 148:
+ case 144:
+ case 143:
+ case 142:
+ case 158:
+        case 157:
+   need_barrier = rtx_needs_barrier (XVECEXP (x, 0, 0), flags, pred);
+   break;
 
-	case UNSPEC_FR_RECIP_APPROX:
-	case UNSPEC_SHRP:
-	case UNSPEC_COPYSIGN:
-	  need_barrier = rtx_needs_barrier (XVECEXP (x, 0, 0), flags, pred);
-	  need_barrier |= rtx_needs_barrier (XVECEXP (x, 0, 1), flags, pred);
-	  break;
+ case 151:
+ case 134:
+ case 155:
+   need_barrier = rtx_needs_barrier (XVECEXP (x, 0, 0), flags, pred);
+   need_barrier |= rtx_needs_barrier (XVECEXP (x, 0, 1), flags, pred);
+   break;
 
-        case UNSPEC_CMPXCHG_ACQ:
-	  need_barrier = rtx_needs_barrier (XVECEXP (x, 0, 1), flags, pred);
-	  need_barrier |= rtx_needs_barrier (XVECEXP (x, 0, 2), flags, pred);
-	  break;
+        case 156:
+   need_barrier = rtx_needs_barrier (XVECEXP (x, 0, 1), flags, pred);
+   need_barrier |= rtx_needs_barrier (XVECEXP (x, 0, 2), flags, pred);
+   break;
 
-	default:
-	  gcc_unreachable ();
-	}
+ default:
+   gcc_unreachable ();
+ }
       break;
 
-    case UNSPEC_VOLATILE:
+    case 132:
       switch (XINT (x, 1))
-	{
-	case UNSPECV_ALLOC:
-	  /* Alloc must always be the first instruction of a group.
-	     We force this by always returning true.  */
-	  /* ??? We might get better scheduling if we explicitly check for
-	     input/local/output register dependencies, and modify the
-	     scheduler so that alloc is always reordered to the start of
-	     the current group.  We could then eliminate all of the
-	     first_instruction code.  */
-	  rws_access_regno (AR_PFS_REGNUM, flags, pred);
+ {
+ case 168:
 
-	  new_flags.is_write = 1;
-	  rws_access_regno (REG_AR_CFM, new_flags, pred);
-	  return 1;
 
-	case UNSPECV_SET_BSP:
-	  need_barrier = 1;
+
+
+
+
+
+   rws_access_regno (AR_PFS_REGNUM, flags, pred);
+
+   new_flags.is_write = 1;
+   rws_access_regno (REG_AR_CFM, new_flags, pred);
+   return 1;
+
+ case 162:
+   need_barrier = 1;
           break;
 
-	case UNSPECV_BLOCKAGE:
-	case UNSPECV_INSN_GROUP_BARRIER:
-	case UNSPECV_BREAK:
-	case UNSPECV_PSAC_ALL:
-	case UNSPECV_PSAC_NORMAL:
-	  return 0;
+ case 167:
+ case 165:
+ case 166:
+ case 164:
+ case 163:
+   return 0;
 
-	default:
-	  gcc_unreachable ();
-	}
+ default:
+   gcc_unreachable ();
+ }
       break;
 
-    case RETURN:
+    case 186:
       new_flags.is_write = 0;
-      need_barrier  = rws_access_regno (REG_RP, flags, pred);
+      need_barrier = rws_access_regno (REG_RP, flags, pred);
       need_barrier |= rws_access_regno (AR_PFS_REGNUM, flags, pred);
 
       new_flags.is_write = 1;
@@ -468,30 +389,30 @@ rtx_needs_barrier (rtx x, struct reg_flags flags, int pred)
     default:
       format_ptr = GET_RTX_FORMAT (GET_CODE (x));
       for (i = GET_RTX_LENGTH (GET_CODE (x)) - 1; i >= 0; i--)
-	switch (format_ptr[i])
-	  {
-	  case '0':	/* unused field */
-	  case 'i':	/* integer */
-	  case 'n':	/* note */
-	  case 'w':	/* wide integer */
-	  case 's':	/* pointer to string */
-	  case 'S':	/* optional pointer to string */
-	    break;
+ switch (format_ptr[i])
+   {
+   case '0':
+   case 'i':
+   case 'n':
+   case 'w':
+   case 's':
+   case 'S':
+     break;
 
-	  case 'e':
-	    if (rtx_needs_barrier (XEXP (x, i), flags, pred))
-	      need_barrier = 1;
-	    break;
+   case 'e':
+     if (rtx_needs_barrier (XEXP (x, i), flags, pred))
+       need_barrier = 1;
+     break;
 
-	  case 'E':
-	    for (j = XVECLEN (x, i) - 1; j >= 0; --j)
-	      if (rtx_needs_barrier (XVECEXP (x, i, j), flags, pred))
-		need_barrier = 1;
-	    break;
+   case 'E':
+     for (j = XVECLEN (x, i) - 1; j >= 0; --j)
+       if (rtx_needs_barrier (XVECEXP (x, i, j), flags, pred))
+  need_barrier = 1;
+     break;
 
-	  default:
-	    gcc_unreachable ();
-	  }
+   default:
+     gcc_unreachable ();
+   }
       break;
     }
   return need_barrier;

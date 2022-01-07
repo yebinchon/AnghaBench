@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct VERTEX {int dummy; } ;
-struct TYPE_3__ {int /*<<< orphan*/  d3d9_dev; int /*<<< orphan*/  d3d9_vertex; } ;
-typedef  TYPE_1__ VMR9DefaultAllocatorPresenterImpl ;
-typedef  int /*<<< orphan*/  IDirect3DTexture9 ;
-typedef  int /*<<< orphan*/  IDirect3DSurface9 ;
-typedef  int /*<<< orphan*/  IDirect3DBaseTexture9 ;
-typedef  int /*<<< orphan*/  HRESULT ;
+struct TYPE_3__ {int d3d9_dev; int d3d9_vertex; } ;
+typedef TYPE_1__ VMR9DefaultAllocatorPresenterImpl ;
+typedef int IDirect3DTexture9 ;
+typedef int IDirect3DSurface9 ;
+typedef int IDirect3DBaseTexture9 ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DPT_TRIANGLESTRIP ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  IDirect3DDevice9_DrawPrimitive (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IDirect3DDevice9_SetFVF (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDirect3DDevice9_SetStreamSource (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IDirect3DDevice9_SetTexture (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirect3DSurface9_GetContainer (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IDirect3DTexture9_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IDirect3DTexture9 ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  USED_FVF ; 
+
+ int D3DPT_TRIANGLESTRIP ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,...) ;
+ int IDirect3DDevice9_DrawPrimitive (int ,int ,int ,int) ;
+ int IDirect3DDevice9_SetFVF (int ,int ) ;
+ int IDirect3DDevice9_SetStreamSource (int ,int ,int ,int ,int) ;
+ int IDirect3DDevice9_SetTexture (int ,int ,int *) ;
+ int IDirect3DSurface9_GetContainer (int *,int *,void**) ;
+ int IDirect3DTexture9_Release (int *) ;
+ int IID_IDirect3DTexture9 ;
+ int S_OK ;
+ int USED_FVF ;
 
 __attribute__((used)) static HRESULT VMR9_ImagePresenter_PresentTexture(VMR9DefaultAllocatorPresenterImpl *This, IDirect3DSurface9 *surface)
 {
-    IDirect3DTexture9 *texture = NULL;
+    IDirect3DTexture9 *texture = ((void*)0);
     HRESULT hr;
 
     hr = IDirect3DDevice9_SetFVF(This->d3d9_dev, USED_FVF);

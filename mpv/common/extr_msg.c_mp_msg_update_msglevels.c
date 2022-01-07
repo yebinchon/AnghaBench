@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct mpv_global {TYPE_1__* log; } ;
-struct mp_log_root {int color; int /*<<< orphan*/  stats_file; int /*<<< orphan*/  stats_path; int /*<<< orphan*/  log_file; int /*<<< orphan*/  log_path; int /*<<< orphan*/  reload_counter; int /*<<< orphan*/  msg_levels; scalar_t__ use_terminal; int /*<<< orphan*/  show_time; int /*<<< orphan*/  module; int /*<<< orphan*/  really_quiet; int /*<<< orphan*/  verbose; } ;
-struct MPOpts {int /*<<< orphan*/  dump_stats; int /*<<< orphan*/  log_file; int /*<<< orphan*/  msg_levels; scalar_t__ msg_color; int /*<<< orphan*/  msg_time; scalar_t__ use_terminal; int /*<<< orphan*/  msg_module; int /*<<< orphan*/  msg_really_quiet; int /*<<< orphan*/  verbose; } ;
-struct TYPE_4__ {int /*<<< orphan*/  (* copy ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* free ) (int /*<<< orphan*/ *) ;} ;
+struct mp_log_root {int color; int stats_file; int stats_path; int log_file; int log_path; int reload_counter; int msg_levels; scalar_t__ use_terminal; int show_time; int module; int really_quiet; int verbose; } ;
+struct MPOpts {int dump_stats; int log_file; int msg_levels; scalar_t__ msg_color; int msg_time; scalar_t__ use_terminal; int msg_module; int msg_really_quiet; int verbose; } ;
+struct TYPE_4__ {int (* copy ) (int *,int *,int *) ;int (* free ) (int *) ;} ;
 struct TYPE_3__ {struct mp_log_root* root; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STDOUT_FILENO ; 
- int /*<<< orphan*/  atomic_fetch_add (int /*<<< orphan*/ *,int) ; 
- scalar_t__ isatty (int /*<<< orphan*/ ) ; 
- TYPE_2__ m_option_type_msglevels ; 
- int /*<<< orphan*/  mp_msg_lock ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  reopen_file (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,struct mpv_global*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int STDOUT_FILENO ;
+ int atomic_fetch_add (int *,int) ;
+ scalar_t__ isatty (int ) ;
+ TYPE_2__ m_option_type_msglevels ;
+ int mp_msg_lock ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int reopen_file (int ,int *,int *,char*,struct mpv_global*) ;
+ int stub1 (int *) ;
+ int stub2 (int *,int *,int *) ;
 
 void mp_msg_update_msglevels(struct mpv_global *global, struct MPOpts *opts)
 {
@@ -45,7 +45,7 @@ void mp_msg_update_msglevels(struct mpv_global *global, struct MPOpts *opts)
         root->color = opts->msg_color && isatty(STDOUT_FILENO);
 
     m_option_type_msglevels.free(&root->msg_levels);
-    m_option_type_msglevels.copy(NULL, &root->msg_levels, &opts->msg_levels);
+    m_option_type_msglevels.copy(((void*)0), &root->msg_levels, &opts->msg_levels);
 
     atomic_fetch_add(&root->reload_counter, 1);
     pthread_mutex_unlock(&mp_msg_lock);

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum PredictionMode { ____Placeholder_PredictionMode } PredictionMode ;
-struct TYPE_6__ {int /*<<< orphan*/  avctx; TYPE_2__* image; } ;
-typedef  TYPE_1__ WebPContext ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef enum PredictionMode { ____Placeholder_PredictionMode } PredictionMode ;
+struct TYPE_6__ {int avctx; TYPE_2__* image; } ;
+typedef TYPE_1__ WebPContext ;
 struct TYPE_8__ {int height; int width; } ;
 struct TYPE_7__ {int size_reduction; TYPE_3__* frame; } ;
-typedef  TYPE_2__ ImageContext ;
+typedef TYPE_2__ ImageContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int GET_PIXEL_COMP (TYPE_3__*,int,int,int) ; 
- size_t IMAGE_ROLE_ARGB ; 
- size_t IMAGE_ROLE_PREDICTOR ; 
- int PRED_MODE_BLACK ; 
- int PRED_MODE_L ; 
- int PRED_MODE_T ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  inverse_prediction (TYPE_3__*,int,int,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int GET_PIXEL_COMP (TYPE_3__*,int,int,int) ;
+ size_t IMAGE_ROLE_ARGB ;
+ size_t IMAGE_ROLE_PREDICTOR ;
+ int PRED_MODE_BLACK ;
+ int PRED_MODE_L ;
+ int PRED_MODE_T ;
+ int av_log (int ,int ,char*,int) ;
+ int inverse_prediction (TYPE_3__*,int,int,int) ;
 
 __attribute__((used)) static int apply_predictor_transform(WebPContext *s)
 {
-    ImageContext *img  = &s->image[IMAGE_ROLE_ARGB];
+    ImageContext *img = &s->image[IMAGE_ROLE_ARGB];
     ImageContext *pimg = &s->image[IMAGE_ROLE_PREDICTOR];
     int x, y;
 

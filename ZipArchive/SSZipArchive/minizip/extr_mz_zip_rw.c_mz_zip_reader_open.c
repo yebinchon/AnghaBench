@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  zip_handle; scalar_t__ cd_zipped; scalar_t__ cd_verified; } ;
-typedef  TYPE_1__ mz_zip_reader ;
-typedef  scalar_t__ int32_t ;
 
-/* Variables and functions */
- scalar_t__ MZ_OK ; 
- int /*<<< orphan*/  MZ_OPEN_MODE_READ ; 
- int /*<<< orphan*/  mz_zip_create (int /*<<< orphan*/ *) ; 
- scalar_t__ mz_zip_open (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mz_zip_reader_close (void*) ; 
- int /*<<< orphan*/  mz_zip_reader_unzip_cd (TYPE_1__*) ; 
- int /*<<< orphan*/  mz_zip_set_recover (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int zip_handle; scalar_t__ cd_zipped; scalar_t__ cd_verified; } ;
+typedef TYPE_1__ mz_zip_reader ;
+typedef scalar_t__ int32_t ;
+
+
+ scalar_t__ MZ_OK ;
+ int MZ_OPEN_MODE_READ ;
+ int mz_zip_create (int *) ;
+ scalar_t__ mz_zip_open (int ,void*,int ) ;
+ int mz_zip_reader_close (void*) ;
+ int mz_zip_reader_unzip_cd (TYPE_1__*) ;
+ int mz_zip_set_recover (int ,int) ;
 
 int32_t mz_zip_reader_open(void *handle, void *stream)
 {

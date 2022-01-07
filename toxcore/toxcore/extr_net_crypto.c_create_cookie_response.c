@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  plain ;
-struct TYPE_3__ {int /*<<< orphan*/  secret_symmetric_key; } ;
-typedef  TYPE_1__ Net_Crypto ;
 
-/* Variables and functions */
- int COOKIE_DATA_LENGTH ; 
- int COOKIE_LENGTH ; 
- int COOKIE_RESPONSE_LENGTH ; 
- int /*<<< orphan*/  NET_PACKET_COOKIE_RESPONSE ; 
- scalar_t__ create_cookie (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int crypto_box_NONCEBYTES ; 
- int crypto_box_PUBLICKEYBYTES ; 
- int encrypt_data_symmetric (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  new_nonce (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int plain ;
+struct TYPE_3__ {int secret_symmetric_key; } ;
+typedef TYPE_1__ Net_Crypto ;
+
+
+ int COOKIE_DATA_LENGTH ;
+ int COOKIE_LENGTH ;
+ int COOKIE_RESPONSE_LENGTH ;
+ int NET_PACKET_COOKIE_RESPONSE ;
+ scalar_t__ create_cookie (int *,int *,int ) ;
+ int crypto_box_NONCEBYTES ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int encrypt_data_symmetric (int const*,int *,int *,int,int *) ;
+ int memcpy (int *,int const*,int) ;
+ int new_nonce (int *) ;
 
 __attribute__((used)) static int create_cookie_response(const Net_Crypto *c, uint8_t *packet, const uint8_t *request_plain,
                                   const uint8_t *shared_key, const uint8_t *dht_public_key)

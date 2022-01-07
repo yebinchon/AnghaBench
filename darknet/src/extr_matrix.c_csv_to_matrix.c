@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int cols; int rows; int /*<<< orphan*/ * vals; } ;
-typedef  TYPE_1__ matrix ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * calloc (int,int) ; 
- int count_fields (char*) ; 
- char* fgetl (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  file_error (char*) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  parse_fields (char*,int) ; 
- void* realloc (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int cols; int rows; int * vals; } ;
+typedef TYPE_1__ matrix ;
+typedef int FILE ;
+
+
+ int * calloc (int,int) ;
+ int count_fields (char*) ;
+ char* fgetl (int *) ;
+ int file_error (char*) ;
+ int * fopen (char*,char*) ;
+ int free (char*) ;
+ int parse_fields (char*,int) ;
+ void* realloc (int *,int) ;
 
 matrix csv_to_matrix(char *filename)
 {

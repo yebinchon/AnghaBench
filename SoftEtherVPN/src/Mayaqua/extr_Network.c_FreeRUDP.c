@@ -1,131 +1,131 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  UDPPACKET ;
-struct TYPE_5__ {int Halt; int NoNatTRegister; size_t RandPortId; int /*<<< orphan*/  Lock; int /*<<< orphan*/ * TargetConnectedSock; int /*<<< orphan*/  NewSockConnectEvent; int /*<<< orphan*/  TargetConnectedEvent; int /*<<< orphan*/  HaltEvent; int /*<<< orphan*/  SockEvent; int /*<<< orphan*/ * UdpSock; int /*<<< orphan*/  Interrupt; int /*<<< orphan*/  SendPacketList; int /*<<< orphan*/  NewSockQueue; int /*<<< orphan*/  NatT_SourceIpList; int /*<<< orphan*/  SessionList; int /*<<< orphan*/ * Thread; int /*<<< orphan*/ * IpQueryThread; scalar_t__ ServerMode; } ;
-typedef  int /*<<< orphan*/  SOCK ;
-typedef  TYPE_1__ RUDP_STACK ;
-typedef  TYPE_1__ RUDP_SOURCE_IP ;
-typedef  int /*<<< orphan*/  RUDP_SESSION ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteLock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Disconnect (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Free (TYPE_1__*) ; 
- int /*<<< orphan*/  FreeInterruptManager (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FreeUdpPacket (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * GetNext (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INFINITE ; 
- void* LIST_DATA (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RUDPFreeSession (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseQueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseSock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseSockEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseThread (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Set (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetSockEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WaitThread (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__* rand_port_numbers ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+typedef int UDPPACKET ;
+struct TYPE_5__ {int Halt; int NoNatTRegister; size_t RandPortId; int Lock; int * TargetConnectedSock; int NewSockConnectEvent; int TargetConnectedEvent; int HaltEvent; int SockEvent; int * UdpSock; int Interrupt; int SendPacketList; int NewSockQueue; int NatT_SourceIpList; int SessionList; int * Thread; int * IpQueryThread; scalar_t__ ServerMode; } ;
+typedef int SOCK ;
+typedef TYPE_1__ RUDP_STACK ;
+typedef TYPE_1__ RUDP_SOURCE_IP ;
+typedef int RUDP_SESSION ;
+
+
+ int DeleteLock (int ) ;
+ int Disconnect (int *) ;
+ int Free (TYPE_1__*) ;
+ int FreeInterruptManager (int ) ;
+ int FreeUdpPacket (int *) ;
+ int * GetNext (int ) ;
+ int INFINITE ;
+ void* LIST_DATA (int ,scalar_t__) ;
+ scalar_t__ LIST_NUM (int ) ;
+ int RUDPFreeSession (int *) ;
+ int ReleaseEvent (int ) ;
+ int ReleaseList (int ) ;
+ int ReleaseQueue (int ) ;
+ int ReleaseSock (int *) ;
+ int ReleaseSockEvent (int ) ;
+ int ReleaseThread (int *) ;
+ int Set (int ) ;
+ int SetSockEvent (int ) ;
+ int WaitThread (int *,int ) ;
+ scalar_t__* rand_port_numbers ;
 
 void FreeRUDP(RUDP_STACK *r)
 {
-	UINT i;
-	// Validate arguments
-	if (r == NULL)
-	{
-		return;
-	}
+ UINT i;
 
-	r->Halt = true;
-	Set(r->HaltEvent);
-	SetSockEvent(r->SockEvent);
+ if (r == ((void*)0))
+ {
+  return;
+ }
 
-	if (r->ServerMode && r->NoNatTRegister == false)
-	{
-		if (r->IpQueryThread != NULL)
-		{
-			WaitThread(r->IpQueryThread, INFINITE);
-			ReleaseThread(r->IpQueryThread);
-		}
-	}
+ r->Halt = 1;
+ Set(r->HaltEvent);
+ SetSockEvent(r->SockEvent);
 
-	WaitThread(r->Thread, INFINITE);
-	ReleaseThread(r->Thread);
+ if (r->ServerMode && r->NoNatTRegister == 0)
+ {
+  if (r->IpQueryThread != ((void*)0))
+  {
+   WaitThread(r->IpQueryThread, INFINITE);
+   ReleaseThread(r->IpQueryThread);
+  }
+ }
 
-	for (i = 0;i < LIST_NUM(r->SessionList);i++)
-	{
-		RUDP_SESSION *se = LIST_DATA(r->SessionList, i);
+ WaitThread(r->Thread, INFINITE);
+ ReleaseThread(r->Thread);
 
-		RUDPFreeSession(se);
-	}
+ for (i = 0;i < LIST_NUM(r->SessionList);i++)
+ {
+  RUDP_SESSION *se = LIST_DATA(r->SessionList, i);
 
-	ReleaseList(r->SessionList);
+  RUDPFreeSession(se);
+ }
 
-	for (i = 0;i < LIST_NUM(r->SendPacketList);i++)
-	{
-		UDPPACKET *p = LIST_DATA(r->SendPacketList, i);
+ ReleaseList(r->SessionList);
 
-		FreeUdpPacket(p);
-	}
+ for (i = 0;i < LIST_NUM(r->SendPacketList);i++)
+ {
+  UDPPACKET *p = LIST_DATA(r->SendPacketList, i);
 
-	while (true)
-	{
-		SOCK *s = GetNext(r->NewSockQueue);
-		if (s == NULL)
-		{
-			break;
-		}
+  FreeUdpPacket(p);
+ }
 
-		Disconnect(s);
-		ReleaseSock(s);
-	}
+ while (1)
+ {
+  SOCK *s = GetNext(r->NewSockQueue);
+  if (s == ((void*)0))
+  {
+   break;
+  }
 
-	for (i = 0;i < LIST_NUM(r->NatT_SourceIpList);i++)
-	{
-		RUDP_SOURCE_IP *sip = (RUDP_SOURCE_IP *)LIST_DATA(r->NatT_SourceIpList, i);
+  Disconnect(s);
+  ReleaseSock(s);
+ }
 
-		Free(sip);
-	}
+ for (i = 0;i < LIST_NUM(r->NatT_SourceIpList);i++)
+ {
+  RUDP_SOURCE_IP *sip = (RUDP_SOURCE_IP *)LIST_DATA(r->NatT_SourceIpList, i);
 
-	ReleaseList(r->NatT_SourceIpList);
+  Free(sip);
+ }
 
-	ReleaseQueue(r->NewSockQueue);
+ ReleaseList(r->NatT_SourceIpList);
 
-	ReleaseList(r->SendPacketList);
+ ReleaseQueue(r->NewSockQueue);
 
-	FreeInterruptManager(r->Interrupt);
+ ReleaseList(r->SendPacketList);
 
-	Disconnect(r->UdpSock);
-	ReleaseSock(r->UdpSock);
-	ReleaseSockEvent(r->SockEvent);
-	ReleaseEvent(r->HaltEvent);
-	ReleaseEvent(r->TargetConnectedEvent);
+ FreeInterruptManager(r->Interrupt);
 
-	ReleaseEvent(r->NewSockConnectEvent);
+ Disconnect(r->UdpSock);
+ ReleaseSock(r->UdpSock);
+ ReleaseSockEvent(r->SockEvent);
+ ReleaseEvent(r->HaltEvent);
+ ReleaseEvent(r->TargetConnectedEvent);
 
-	Disconnect(r->TargetConnectedSock);
-	ReleaseSock(r->TargetConnectedSock);
+ ReleaseEvent(r->NewSockConnectEvent);
 
-	DeleteLock(r->Lock);
+ Disconnect(r->TargetConnectedSock);
+ ReleaseSock(r->TargetConnectedSock);
 
-	if (r->RandPortId != 0)
-	{
-		rand_port_numbers[r->RandPortId] = 0;
-	}
+ DeleteLock(r->Lock);
 
-	Free(r);
+ if (r->RandPortId != 0)
+ {
+  rand_port_numbers[r->RandPortId] = 0;
+ }
+
+ Free(r);
 }

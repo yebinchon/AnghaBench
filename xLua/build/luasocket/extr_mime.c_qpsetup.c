@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UC ;
 
-/* Variables and functions */
- int QP_CR ; 
- int QP_IF_LAST ; 
- int QP_PLAIN ; 
- int QP_QUOTED ; 
+
+
+
+typedef int UC ;
+
+
+ int QP_CR ;
+ int QP_IF_LAST ;
+ int QP_PLAIN ;
+ int QP_QUOTED ;
 
 __attribute__((used)) static void qpsetup(UC *cl, UC *unbase)
 {
@@ -24,7 +24,7 @@ __attribute__((used)) static void qpsetup(UC *cl, UC *unbase)
     for (i = 0; i < 256; i++) cl[i] = QP_QUOTED;
     for (i = 33; i <= 60; i++) cl[i] = QP_PLAIN;
     for (i = 62; i <= 126; i++) cl[i] = QP_PLAIN;
-    cl['\t'] = QP_IF_LAST; 
+    cl['\t'] = QP_IF_LAST;
     cl[' '] = QP_IF_LAST;
     cl['\r'] = QP_CR;
     for (i = 0; i < 256; i++) unbase[i] = 255;

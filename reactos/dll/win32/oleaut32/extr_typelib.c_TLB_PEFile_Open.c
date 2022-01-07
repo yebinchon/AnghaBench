@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-struct TYPE_7__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_6__ {int refs; TYPE_2__ IUnknown_iface; int /*<<< orphan*/ * typelib_base; int /*<<< orphan*/ * typelib_resource; int /*<<< orphan*/ * dll; int /*<<< orphan*/ * typelib_global; } ;
-typedef  TYPE_1__ TLB_PEFile ;
-typedef  int /*<<< orphan*/ * LPVOID ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  TYPE_2__ IUnknown ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int DONT_RESOLVE_DLL_REFERENCES ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/ * FindResourceW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
- int LOAD_LIBRARY_AS_DATAFILE ; 
- int LOAD_WITH_ALTERED_SEARCH_PATH ; 
- int /*<<< orphan*/ * LoadLibraryExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * LoadResource (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * LockResource (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MAKEINTRESOURCEW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  SizeofResource (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TLB_PEFile_Release (TYPE_2__*) ; 
- int /*<<< orphan*/  TLB_PEFile_Vtable ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  TYPE_E_CANTLOADLIBRARY ; 
- TYPE_1__* heap_alloc (int) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+struct TYPE_7__ {int * lpVtbl; } ;
+struct TYPE_6__ {int refs; TYPE_2__ IUnknown_iface; int * typelib_base; int * typelib_resource; int * dll; int * typelib_global; } ;
+typedef TYPE_1__ TLB_PEFile ;
+typedef int * LPVOID ;
+typedef int LPCWSTR ;
+typedef TYPE_2__ IUnknown ;
+typedef int INT ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int DONT_RESOLVE_DLL_REFERENCES ;
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ int * FindResourceW (int *,int ,char const*) ;
+ int LOAD_LIBRARY_AS_DATAFILE ;
+ int LOAD_WITH_ALTERED_SEARCH_PATH ;
+ int * LoadLibraryExW (int ,int ,int) ;
+ int * LoadResource (int *,int *) ;
+ int * LockResource (int *) ;
+ int MAKEINTRESOURCEW (int ) ;
+ int S_OK ;
+ int SizeofResource (int *,int *) ;
+ int TLB_PEFile_Release (TYPE_2__*) ;
+ int TLB_PEFile_Vtable ;
+ int TRACE (char*) ;
+ int TYPE_E_CANTLOADLIBRARY ;
+ TYPE_1__* heap_alloc (int) ;
 
 __attribute__((used)) static HRESULT TLB_PEFile_Open(LPCWSTR path, INT index, LPVOID *ppBase, DWORD *pdwTLBLength, IUnknown **ppFile)
 {
@@ -53,10 +53,10 @@ __attribute__((used)) static HRESULT TLB_PEFile_Open(LPCWSTR path, INT index, LP
 
     This->IUnknown_iface.lpVtbl = &TLB_PEFile_Vtable;
     This->refs = 1;
-    This->dll = NULL;
-    This->typelib_resource = NULL;
-    This->typelib_global = NULL;
-    This->typelib_base = NULL;
+    This->dll = ((void*)0);
+    This->typelib_resource = ((void*)0);
+    This->typelib_global = ((void*)0);
+    This->typelib_base = ((void*)0);
 
     This->dll = LoadLibraryExW(path, 0, DONT_RESOLVE_DLL_REFERENCES |
                     LOAD_LIBRARY_AS_DATAFILE | LOAD_WITH_ALTERED_SEARCH_PATH);

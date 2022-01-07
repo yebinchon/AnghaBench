@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int numOfVnodes; int numOfFreeVnodes; int /*<<< orphan*/  privateIp; TYPE_1__* vload; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int numOfVnodes; int numOfFreeVnodes; int privateIp; TYPE_1__* vload; } ;
 struct TYPE_4__ {scalar_t__ vgId; size_t status; size_t dropStatus; size_t syncStatus; } ;
-typedef  TYPE_1__ SVnodeLoad ;
-typedef  TYPE_2__ SDnodeObj ;
+typedef TYPE_1__ SVnodeLoad ;
+typedef TYPE_2__ SDnodeObj ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mTrace (char*,int /*<<< orphan*/ ,int,int,int,...) ; 
- int /*<<< orphan*/ * sdbDnodeStatusStr ; 
- int /*<<< orphan*/ * sdbVnodeDropStateStr ; 
- int /*<<< orphan*/ * sdbVnodeSyncStatusStr ; 
- int /*<<< orphan*/  taosIpStr (int /*<<< orphan*/ ) ; 
+
+ int mTrace (char*,int ,int,int,int,...) ;
+ int * sdbDnodeStatusStr ;
+ int * sdbVnodeDropStateStr ;
+ int * sdbVnodeSyncStatusStr ;
+ int taosIpStr (int ) ;
 
 void mgmtCalcNumOfFreeVnodes(SDnodeObj *pDnode) {
   int totalVnodes = 0;

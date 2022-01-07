@@ -1,105 +1,105 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int32 ;
-typedef  int /*<<< orphan*/  WORKSTATE ;
 
-/* Variables and functions */
-#define  CLOSE 132 
- int END ; 
-#define  ERR 131 
- int /*<<< orphan*/  ERRCODE_STATEMENT_TOO_COMPLEX ; 
- int /*<<< orphan*/  ERRCODE_SYNTAX_ERROR ; 
- int /*<<< orphan*/  ERROR ; 
-#define  OPEN 130 
-#define  OPR 129 
- int STACKDEPTH ; 
-#define  VAL 128 
- int /*<<< orphan*/  check_stack_depth () ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*) ; 
- int gettoken (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  pushquery (int /*<<< orphan*/ *,int const,int) ; 
+
+
+
+typedef int int32 ;
+typedef int WORKSTATE ;
+
+
+
+ int END ;
+
+ int ERRCODE_STATEMENT_TOO_COMPLEX ;
+ int ERRCODE_SYNTAX_ERROR ;
+ int ERROR ;
+
+
+ int STACKDEPTH ;
+
+ int check_stack_depth () ;
+ int ereport (int ,int ) ;
+ int errcode (int ) ;
+ int errmsg (char*) ;
+ int gettoken (int *,int*) ;
+ int pushquery (int *,int const,int) ;
 
 __attribute__((used)) static int32
 makepol(WORKSTATE *state)
 {
-	int32		val,
-				type;
-	int32		stack[STACKDEPTH];
-	int32		lenstack = 0;
+ int32 val,
+    type;
+ int32 stack[STACKDEPTH];
+ int32 lenstack = 0;
 
-	/* since this function recurses, it could be driven to stack overflow */
-	check_stack_depth();
 
-	while ((type = gettoken(state, &val)) != END)
-	{
-		switch (type)
-		{
-			case VAL:
-				pushquery(state, type, val);
-				while (lenstack && (stack[lenstack - 1] == (int32) '&' ||
-									stack[lenstack - 1] == (int32) '!'))
-				{
-					lenstack--;
-					pushquery(state, OPR, stack[lenstack]);
-				}
-				break;
-			case OPR:
-				if (lenstack && val == (int32) '|')
-					pushquery(state, OPR, val);
-				else
-				{
-					if (lenstack == STACKDEPTH)
-						ereport(ERROR,
-								(errcode(ERRCODE_STATEMENT_TOO_COMPLEX),
-								 errmsg("statement too complex")));
-					stack[lenstack] = val;
-					lenstack++;
-				}
-				break;
-			case OPEN:
-				if (makepol(state) == ERR)
-					return ERR;
-				while (lenstack && (stack[lenstack - 1] == (int32) '&' ||
-									stack[lenstack - 1] == (int32) '!'))
-				{
-					lenstack--;
-					pushquery(state, OPR, stack[lenstack]);
-				}
-				break;
-			case CLOSE:
-				while (lenstack)
-				{
-					lenstack--;
-					pushquery(state, OPR, stack[lenstack]);
-				};
-				return END;
-				break;
-			case ERR:
-			default:
-				ereport(ERROR,
-						(errcode(ERRCODE_SYNTAX_ERROR),
-						 errmsg("syntax error")));
-				return ERR;
+ check_stack_depth();
 
-		}
-	}
+ while ((type = gettoken(state, &val)) != END)
+ {
+  switch (type)
+  {
+   case 128:
+    pushquery(state, type, val);
+    while (lenstack && (stack[lenstack - 1] == (int32) '&' ||
+         stack[lenstack - 1] == (int32) '!'))
+    {
+     lenstack--;
+     pushquery(state, 129, stack[lenstack]);
+    }
+    break;
+   case 129:
+    if (lenstack && val == (int32) '|')
+     pushquery(state, 129, val);
+    else
+    {
+     if (lenstack == STACKDEPTH)
+      ereport(ERROR,
+        (errcode(ERRCODE_STATEMENT_TOO_COMPLEX),
+         errmsg("statement too complex")));
+     stack[lenstack] = val;
+     lenstack++;
+    }
+    break;
+   case 130:
+    if (makepol(state) == 131)
+     return 131;
+    while (lenstack && (stack[lenstack - 1] == (int32) '&' ||
+         stack[lenstack - 1] == (int32) '!'))
+    {
+     lenstack--;
+     pushquery(state, 129, stack[lenstack]);
+    }
+    break;
+   case 132:
+    while (lenstack)
+    {
+     lenstack--;
+     pushquery(state, 129, stack[lenstack]);
+    };
+    return END;
+    break;
+   case 131:
+   default:
+    ereport(ERROR,
+      (errcode(ERRCODE_SYNTAX_ERROR),
+       errmsg("syntax error")));
+    return 131;
 
-	while (lenstack)
-	{
-		lenstack--;
-		pushquery(state, OPR, stack[lenstack]);
-	};
-	return END;
+  }
+ }
+
+ while (lenstack)
+ {
+  lenstack--;
+  pushquery(state, 129, stack[lenstack]);
+ };
+ return END;
 }

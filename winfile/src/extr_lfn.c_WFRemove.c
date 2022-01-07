@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPTSTR ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ChangeFileSystem (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FSC_DELETE ; 
- int /*<<< orphan*/  FileRemove (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int LPTSTR ;
+typedef int DWORD ;
+
+
+ int ChangeFileSystem (int ,int ,int *) ;
+ int FSC_DELETE ;
+ int FileRemove (int ) ;
 
 DWORD
 WFRemove(LPTSTR pszFile)
@@ -25,7 +25,7 @@ WFRemove(LPTSTR pszFile)
 
    dwRet = FileRemove(pszFile);
    if (!dwRet)
-      ChangeFileSystem(FSC_DELETE,pszFile,NULL);
+      ChangeFileSystem(FSC_DELETE,pszFile,((void*)0));
 
    return dwRet;
 }

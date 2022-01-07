@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_1__* pFirst; TYPE_1__** aHash; } ;
 struct TYPE_5__ {char const* zKey; char* zVal; struct TYPE_5__* pNext; struct TYPE_5__* pHashNext; } ;
-typedef  TYPE_1__ IdxHashEntry ;
-typedef  TYPE_2__ IdxHash ;
+typedef TYPE_1__ IdxHashEntry ;
+typedef TYPE_2__ IdxHash ;
 
-/* Variables and functions */
- int STRLEN (char const*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int idxHashString (char const*,int) ; 
- TYPE_1__* idxMalloc (int*,int) ; 
- scalar_t__ memcmp (char const*,char const*,int) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
+
+ int STRLEN (char const*) ;
+ int assert (int) ;
+ int idxHashString (char const*,int) ;
+ TYPE_1__* idxMalloc (int*,int) ;
+ scalar_t__ memcmp (char const*,char const*,int) ;
+ int memcpy (char*,char const*,int) ;
 
 __attribute__((used)) static int idxHashAdd(
-  int *pRc, 
-  IdxHash *pHash, 
+  int *pRc,
+  IdxHash *pHash,
   const char *zKey,
   const char *zVal
 ){

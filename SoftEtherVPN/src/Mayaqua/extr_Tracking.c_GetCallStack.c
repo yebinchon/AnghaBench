@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CALLSTACK_DATA ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * OSGetCallStack () ; 
- int /*<<< orphan*/  OSLock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OSUnlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * WalkDownCallStack (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  cs_lock ; 
- scalar_t__ do_not_get_callstack ; 
+
+
+
+typedef int CALLSTACK_DATA ;
+
+
+ int * OSGetCallStack () ;
+ int OSLock (int ) ;
+ int OSUnlock (int ) ;
+ int * WalkDownCallStack (int *,int) ;
+ int cs_lock ;
+ scalar_t__ do_not_get_callstack ;
 
 CALLSTACK_DATA *GetCallStack()
 {
-	CALLSTACK_DATA *s;
-	if (do_not_get_callstack)
-	{
-		// Not to get the call stack
-		return NULL;
-	}
+ CALLSTACK_DATA *s;
+ if (do_not_get_callstack)
+ {
 
-	OSLock(cs_lock);
-	{
-		// Get the call stack
-		s = OSGetCallStack();
-	}
-	OSUnlock(cs_lock);
-	if (s == NULL)
-	{
-		return NULL;
-	}
+  return ((void*)0);
+ }
 
-	// Descend in the call stack for 3 steps
-	s = WalkDownCallStack(s, 3);
+ OSLock(cs_lock);
+ {
 
-	return s;
+  s = OSGetCallStack();
+ }
+ OSUnlock(cs_lock);
+ if (s == ((void*)0))
+ {
+  return ((void*)0);
+ }
+
+
+ s = WalkDownCallStack(s, 3);
+
+ return s;
 }

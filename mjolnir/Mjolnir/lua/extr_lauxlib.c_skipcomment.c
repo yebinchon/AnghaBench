@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  f; } ;
-typedef  TYPE_1__ LoadF ;
 
-/* Variables and functions */
- int EOF ; 
- int getc (int /*<<< orphan*/ ) ; 
- int skipBOM (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int f; } ;
+typedef TYPE_1__ LoadF ;
+
+
+ int EOF ;
+ int getc (int ) ;
+ int skipBOM (TYPE_1__*) ;
 
 __attribute__((used)) static int skipcomment (LoadF *lf, int *cp) {
   int c = *cp = skipBOM(lf);
-  if (c == '#') {  /* first line is a comment (Unix exec. file)? */
-    do {  /* skip first line */
+  if (c == '#') {
+    do {
       c = getc(lf->f);
     } while (c != EOF && c != '\n');
-    *cp = getc(lf->f);  /* skip end-of-line, if present */
-    return 1;  /* there was a comment */
+    *cp = getc(lf->f);
+    return 1;
   }
-  else return 0;  /* no comment */
+  else return 0;
 }

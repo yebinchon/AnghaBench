@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct focus_mapping {long long old_id; } ;
 struct TYPE_8__ {long long id; long long dock; long long insert_where; } ;
 struct TYPE_5__ {long long inner; long long top; long long right; long long bottom; long long left; } ;
 struct TYPE_6__ {long long x; long long y; long long width; long long height; } ;
 struct TYPE_7__ {long long type; long long fullscreen_mode; long long num; long long current_border_width; long long depth; long long old_id; TYPE_1__ gaps; TYPE_2__ geometry; TYPE_2__ window_rect; TYPE_2__ rect; } ;
-typedef  TYPE_2__ Rect ;
+typedef TYPE_2__ Rect ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DLOG (char*,long long,long long,long long,long long) ; 
- int /*<<< orphan*/  ELOG (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOG (char*,long long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TAILQ_INSERT_TAIL (int /*<<< orphan*/ *,struct focus_mapping*,int /*<<< orphan*/ ) ; 
- TYPE_4__* current_swallow ; 
- int /*<<< orphan*/  focus_mappings ; 
- TYPE_3__* json_node ; 
- int /*<<< orphan*/  last_key ; 
- scalar_t__ parsing_focus ; 
- scalar_t__ parsing_gaps ; 
- scalar_t__ parsing_geometry ; 
- scalar_t__ parsing_rect ; 
- scalar_t__ parsing_swallows ; 
- scalar_t__ parsing_window_rect ; 
- struct focus_mapping* scalloc (int,int) ; 
- scalar_t__ strcasecmp (int /*<<< orphan*/ ,char*) ; 
- int swallow_is_empty ; 
+
+ int DLOG (char*,long long,long long,long long,long long) ;
+ int ELOG (char*,int ) ;
+ int LOG (char*,long long,int ) ;
+ int TAILQ_INSERT_TAIL (int *,struct focus_mapping*,int ) ;
+ TYPE_4__* current_swallow ;
+ int focus_mappings ;
+ TYPE_3__* json_node ;
+ int last_key ;
+ scalar_t__ parsing_focus ;
+ scalar_t__ parsing_gaps ;
+ scalar_t__ parsing_geometry ;
+ scalar_t__ parsing_rect ;
+ scalar_t__ parsing_swallows ;
+ scalar_t__ parsing_window_rect ;
+ struct focus_mapping* scalloc (int,int) ;
+ scalar_t__ strcasecmp (int ,char*) ;
+ int swallow_is_empty ;
 
 __attribute__((used)) static int json_int(void *ctx, long long val) {
     LOG("int %lld for key %s\n", val, last_key);
-    /* For backwards compatibility with i3 < 4.8 */
+
     if (strcasecmp(last_key, "type") == 0)
         json_node->type = val;
 
@@ -91,15 +91,15 @@ __attribute__((used)) static int json_int(void *ctx, long long val) {
     if (parsing_swallows) {
         if (strcasecmp(last_key, "id") == 0) {
             current_swallow->id = val;
-            swallow_is_empty = false;
+            swallow_is_empty = 0;
         }
         if (strcasecmp(last_key, "dock") == 0) {
             current_swallow->dock = val;
-            swallow_is_empty = false;
+            swallow_is_empty = 0;
         }
         if (strcasecmp(last_key, "insert_where") == 0) {
             current_swallow->insert_where = val;
-            swallow_is_empty = false;
+            swallow_is_empty = 0;
         }
     }
     if (parsing_gaps) {

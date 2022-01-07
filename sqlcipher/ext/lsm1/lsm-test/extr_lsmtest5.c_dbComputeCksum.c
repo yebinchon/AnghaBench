@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u32 ;
-typedef  int /*<<< orphan*/  TestDb ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ u32 ;
+typedef int TestDb ;
 struct TYPE_4__ {int nFanout; } ;
-typedef  TYPE_1__ DbParameters ;
+typedef TYPE_1__ DbParameters ;
 
-/* Variables and functions */
- int DB_KEY_BYTES ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  dbCksum ; 
- int /*<<< orphan*/  dbFormatKey (TYPE_1__*,int,int,char*) ; 
- int strlen (char*) ; 
- int tdb_scan (int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ ,char*,int,char*,int,int /*<<< orphan*/ ) ; 
+
+ int DB_KEY_BYTES ;
+ int assert (int) ;
+ int dbCksum ;
+ int dbFormatKey (TYPE_1__*,int,int,char*) ;
+ int strlen (char*) ;
+ int tdb_scan (int *,scalar_t__*,int ,char*,int,char*,int,int ) ;
 
 __attribute__((used)) static u32 dbComputeCksum(
-  DbParameters *pParam,           /* Database parameters */
-  TestDb *pDb,                    /* Database connection handle */
-  int iLevel,                     /* Level of checksum to compute */
-  int iKey,                       /* Compute checksum for this key */
-  int *pRc                        /* IN/OUT: Error code */
+  DbParameters *pParam,
+  TestDb *pDb,
+  int iLevel,
+  int iKey,
+  int *pRc
 ){
   u32 cksum = 0;
   if( *pRc==0 ){

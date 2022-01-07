@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ TfClientId ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  ITfClientId ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  GUID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSID_FakeService ; 
- int /*<<< orphan*/  CoCreateGuid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GUID_NULL ; 
- int /*<<< orphan*/  IID_ITfClientId ; 
- int /*<<< orphan*/  ITfClientId_GetClientId (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  ITfClientId_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITfThreadMgr_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int SUCCEEDED (int /*<<< orphan*/ ) ; 
- scalar_t__ cid ; 
- int /*<<< orphan*/  g_tm ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- scalar_t__ tid ; 
+
+
+
+typedef scalar_t__ TfClientId ;
+typedef int LPVOID ;
+typedef int ITfClientId ;
+typedef int HRESULT ;
+typedef int GUID ;
+
+
+ int CLSID_FakeService ;
+ int CoCreateGuid (int *) ;
+ int GUID_NULL ;
+ int IID_ITfClientId ;
+ int ITfClientId_GetClientId (int *,int *,scalar_t__*) ;
+ int ITfClientId_Release (int *) ;
+ int ITfThreadMgr_QueryInterface (int ,int *,int *) ;
+ int SUCCEEDED (int ) ;
+ scalar_t__ cid ;
+ int g_tm ;
+ int ok (int,char*) ;
+ scalar_t__ tid ;
 
 __attribute__((used)) static void test_ClientId(void)
 {

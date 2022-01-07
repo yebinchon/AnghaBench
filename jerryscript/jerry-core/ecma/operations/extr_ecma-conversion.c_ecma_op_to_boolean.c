@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ecma_value_t ;
-typedef  int /*<<< orphan*/  ecma_string_t ;
-typedef  int /*<<< orphan*/  ecma_number_t ;
 
-/* Variables and functions */
- scalar_t__ ECMA_ASSERT_VALUE_IS_SYMBOL (scalar_t__) ; 
- int /*<<< orphan*/  JERRY_ASSERT (int) ; 
- int /*<<< orphan*/  ecma_check_value_type_is_spec_defined (scalar_t__) ; 
- int /*<<< orphan*/  ecma_get_float_from_value (scalar_t__) ; 
- int /*<<< orphan*/ * ecma_get_string_from_value (scalar_t__) ; 
- scalar_t__ ecma_is_value_boolean (scalar_t__) ; 
- scalar_t__ ecma_is_value_float_number (scalar_t__) ; 
- scalar_t__ ecma_is_value_integer_number (scalar_t__) ; 
- scalar_t__ ecma_is_value_null (scalar_t__) ; 
- scalar_t__ ecma_is_value_object (scalar_t__) ; 
- scalar_t__ ecma_is_value_simple (scalar_t__) ; 
- scalar_t__ ecma_is_value_string (scalar_t__) ; 
- int ecma_is_value_true (scalar_t__) ; 
- scalar_t__ ecma_is_value_undefined (scalar_t__) ; 
- scalar_t__ ecma_make_integer_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ecma_number_is_nan (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ecma_number_is_zero (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ecma_string_is_empty (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ ecma_value_t ;
+typedef int ecma_string_t ;
+typedef int ecma_number_t ;
+
+
+ scalar_t__ ECMA_ASSERT_VALUE_IS_SYMBOL (scalar_t__) ;
+ int JERRY_ASSERT (int) ;
+ int ecma_check_value_type_is_spec_defined (scalar_t__) ;
+ int ecma_get_float_from_value (scalar_t__) ;
+ int * ecma_get_string_from_value (scalar_t__) ;
+ scalar_t__ ecma_is_value_boolean (scalar_t__) ;
+ scalar_t__ ecma_is_value_float_number (scalar_t__) ;
+ scalar_t__ ecma_is_value_integer_number (scalar_t__) ;
+ scalar_t__ ecma_is_value_null (scalar_t__) ;
+ scalar_t__ ecma_is_value_object (scalar_t__) ;
+ scalar_t__ ecma_is_value_simple (scalar_t__) ;
+ scalar_t__ ecma_is_value_string (scalar_t__) ;
+ int ecma_is_value_true (scalar_t__) ;
+ scalar_t__ ecma_is_value_undefined (scalar_t__) ;
+ scalar_t__ ecma_make_integer_value (int ) ;
+ int ecma_number_is_nan (int ) ;
+ int ecma_number_is_zero (int ) ;
+ int ecma_string_is_empty (int *) ;
 
 bool
-ecma_op_to_boolean (ecma_value_t value) /**< ecma value */
+ecma_op_to_boolean (ecma_value_t value)
 {
   ecma_check_value_type_is_spec_defined (value);
 
@@ -69,5 +69,5 @@ ecma_op_to_boolean (ecma_value_t value) /**< ecma value */
 
   JERRY_ASSERT (ecma_is_value_object (value) || ECMA_ASSERT_VALUE_IS_SYMBOL (value));
 
-  return true;
+  return 1;
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UInt32 ;
-struct TYPE_4__ {int numProbs; int /*<<< orphan*/ * probs; int /*<<< orphan*/ * probs_1664; } ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  int /*<<< orphan*/  ISzAllocPtr ;
-typedef  int /*<<< orphan*/  CLzmaProps ;
-typedef  int /*<<< orphan*/  CLzmaProb ;
-typedef  TYPE_1__ CLzmaDec ;
 
-/* Variables and functions */
- scalar_t__ ISzAlloc_Alloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  LzmaDec_FreeProbs (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int LzmaProps_GetNumProbs (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  SZ_ERROR_MEM ; 
- int /*<<< orphan*/  SZ_OK ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UInt32 ;
+struct TYPE_4__ {int numProbs; int * probs; int * probs_1664; } ;
+typedef int SRes ;
+typedef int ISzAllocPtr ;
+typedef int CLzmaProps ;
+typedef int CLzmaProb ;
+typedef TYPE_1__ CLzmaDec ;
+
+
+ scalar_t__ ISzAlloc_Alloc (int ,int) ;
+ int LzmaDec_FreeProbs (TYPE_1__*,int ) ;
+ int LzmaProps_GetNumProbs (int const*) ;
+ int SZ_ERROR_MEM ;
+ int SZ_OK ;
 
 __attribute__((used)) static SRes LzmaDec_AllocateProbs2(CLzmaDec *p, const CLzmaProps *propNew, ISzAllocPtr alloc)
 {

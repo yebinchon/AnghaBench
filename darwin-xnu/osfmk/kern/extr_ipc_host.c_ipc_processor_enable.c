@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* processor_t ;
-typedef  int /*<<< orphan*/  ipc_port_t ;
-typedef  int /*<<< orphan*/  ipc_kobject_t ;
-struct TYPE_3__ {int /*<<< orphan*/  processor_self; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IKOT_PROCESSOR ; 
- int /*<<< orphan*/  ipc_kobject_set (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* processor_t ;
+typedef int ipc_port_t ;
+typedef int ipc_kobject_t ;
+struct TYPE_3__ {int processor_self; } ;
+
+
+ int IKOT_PROCESSOR ;
+ int ipc_kobject_set (int ,int ,int ) ;
 
 void
 ipc_processor_enable(
-	processor_t	processor)
+ processor_t processor)
 {
-	ipc_port_t	myport;
+ ipc_port_t myport;
 
-	myport = processor->processor_self;
-	ipc_kobject_set(myport, (ipc_kobject_t) processor, IKOT_PROCESSOR);
+ myport = processor->processor_self;
+ ipc_kobject_set(myport, (ipc_kobject_t) processor, IKOT_PROCESSOR);
 }

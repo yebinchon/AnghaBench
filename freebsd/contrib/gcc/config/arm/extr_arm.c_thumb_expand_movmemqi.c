@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
-typedef  int HOST_WIDE_INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HImode ; 
- int INTVAL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  QImode ; 
- int /*<<< orphan*/  SImode ; 
- int /*<<< orphan*/  XEXP (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  copy_to_mode_reg (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_insn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_movhi (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_movmem12b (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_movmem8b (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_movqi (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_movsi (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_reg_rtx (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_MEM (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  plus_constant (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int rtx ;
+typedef int HOST_WIDE_INT ;
+
+
+ int HImode ;
+ int INTVAL (int ) ;
+ int QImode ;
+ int SImode ;
+ int XEXP (int ,int ) ;
+ int copy_to_mode_reg (int ,int ) ;
+ int emit_insn (int ) ;
+ int gen_movhi (int ,int ) ;
+ int gen_movmem12b (int ,int ,int ,int ) ;
+ int gen_movmem8b (int ,int ,int ,int ) ;
+ int gen_movqi (int ,int ) ;
+ int gen_movsi (int ,int ) ;
+ int gen_reg_rtx (int ) ;
+ int gen_rtx_MEM (int ,int ) ;
+ int plus_constant (int ,int) ;
 
 void
 thumb_expand_movmemqi (rtx *operands)
 {
   rtx out = copy_to_mode_reg (SImode, XEXP (operands[0], 0));
-  rtx in  = copy_to_mode_reg (SImode, XEXP (operands[1], 0));
+  rtx in = copy_to_mode_reg (SImode, XEXP (operands[1], 0));
   HOST_WIDE_INT len = INTVAL (operands[2]);
   HOST_WIDE_INT offset = 0;
 
@@ -63,9 +63,9 @@ thumb_expand_movmemqi (rtx *operands)
     {
       rtx reg = gen_reg_rtx (HImode);
       emit_insn (gen_movhi (reg, gen_rtx_MEM (HImode,
-					      plus_constant (in, offset))));
+           plus_constant (in, offset))));
       emit_insn (gen_movhi (gen_rtx_MEM (HImode, plus_constant (out, offset)),
-			    reg));
+       reg));
       len -= 2;
       offset += 2;
     }
@@ -74,8 +74,8 @@ thumb_expand_movmemqi (rtx *operands)
     {
       rtx reg = gen_reg_rtx (QImode);
       emit_insn (gen_movqi (reg, gen_rtx_MEM (QImode,
-					      plus_constant (in, offset))));
+           plus_constant (in, offset))));
       emit_insn (gen_movqi (gen_rtx_MEM (QImode, plus_constant (out, offset)),
-			    reg));
+       reg));
     }
 }

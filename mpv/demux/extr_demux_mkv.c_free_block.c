@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct block_info {int num_laces; int /*<<< orphan*/  additions; int /*<<< orphan*/ * laces; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TA_FREEP (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_buffer_unref (int /*<<< orphan*/ *) ; 
+
+
+
+struct block_info {int num_laces; int additions; int * laces; } ;
+
+
+ int TA_FREEP (int *) ;
+ int av_buffer_unref (int *) ;
 
 __attribute__((used)) static void free_block(struct block_info *block)
 {

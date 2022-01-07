@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct advert {int* user_list; int users; int /*<<< orphan*/  prev_user_creations; int /*<<< orphan*/  userlist_computed_at; int /*<<< orphan*/  flags; int /*<<< orphan*/  ad_id; int /*<<< orphan*/  query; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADF_PERIODIC ; 
- int /*<<< orphan*/  MAX_USERS ; 
- int /*<<< orphan*/  Q_limit ; 
- scalar_t__ Q_order ; 
- int /*<<< orphan*/  R ; 
- int R_cnt ; 
- int R_position ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ aux_userlist_tag ; 
- int /*<<< orphan*/  compile_query (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int*) ; 
- scalar_t__ global_birthday_in_query ; 
- int* malloc (int) ; 
- int /*<<< orphan*/  memcpy (int*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  now ; 
- int perform_query (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  process_lru_ads () ; 
- int /*<<< orphan*/  tot_userlists ; 
- int tot_userlists_size ; 
- int /*<<< orphan*/  user_creations ; 
+
+
+
+struct advert {int* user_list; int users; int prev_user_creations; int userlist_computed_at; int flags; int ad_id; int query; } ;
+
+
+ int ADF_PERIODIC ;
+ int MAX_USERS ;
+ int Q_limit ;
+ scalar_t__ Q_order ;
+ int R ;
+ int R_cnt ;
+ int R_position ;
+ int assert (int) ;
+ scalar_t__ aux_userlist_tag ;
+ int compile_query (int ) ;
+ int free (int*) ;
+ scalar_t__ global_birthday_in_query ;
+ int* malloc (int) ;
+ int memcpy (int*,int ,int) ;
+ int now ;
+ int perform_query (int ) ;
+ int process_lru_ads () ;
+ int tot_userlists ;
+ int tot_userlists_size ;
+ int user_creations ;
 
 __attribute__((used)) static int compute_ad_user_list (struct advert *A) {
   if (A->user_list) {
     tot_userlists--;
-    tot_userlists_size -= A->users; 
+    tot_userlists_size -= A->users;
     free (A->user_list);
     A->user_list = 0;
     A->users = 0;
@@ -65,7 +65,7 @@ __attribute__((used)) static int compute_ad_user_list (struct advert *A) {
   assert (res >= 0 && res == R_cnt);
 
   A->users = res;
-  
+
   A->user_list = malloc (res * 4 + 4);
   memcpy (A->user_list, R, res * 4);
   A->user_list[res] = 0x7fffffff;
@@ -73,7 +73,7 @@ __attribute__((used)) static int compute_ad_user_list (struct advert *A) {
   A->prev_user_creations = user_creations;
 
   tot_userlists++;
-  tot_userlists_size += res; 
+  tot_userlists_size += res;
 
   return res;
 }

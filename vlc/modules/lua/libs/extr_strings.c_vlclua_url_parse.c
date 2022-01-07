@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  psz_option; int /*<<< orphan*/  psz_path; int /*<<< orphan*/  i_port; int /*<<< orphan*/  psz_host; int /*<<< orphan*/  psz_password; int /*<<< orphan*/  psz_username; int /*<<< orphan*/  psz_protocol; } ;
-typedef  TYPE_1__ vlc_url_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- char* luaL_checkstring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_newtable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  vlc_UrlClean (TYPE_1__*) ; 
- int /*<<< orphan*/  vlc_UrlParse (TYPE_1__*,char const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int psz_option; int psz_path; int i_port; int psz_host; int psz_password; int psz_username; int psz_protocol; } ;
+typedef TYPE_1__ vlc_url_t ;
+typedef int lua_State ;
+
+
+ char* luaL_checkstring (int *,int) ;
+ int lua_newtable (int *) ;
+ int lua_pushinteger (int *,int ) ;
+ int lua_pushstring (int *,int ) ;
+ int lua_setfield (int *,int,char*) ;
+ int vlc_UrlClean (TYPE_1__*) ;
+ int vlc_UrlParse (TYPE_1__*,char const*) ;
 
 int vlclua_url_parse( lua_State *L )
 {

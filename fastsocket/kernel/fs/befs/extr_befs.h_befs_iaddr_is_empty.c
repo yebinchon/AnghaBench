@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  len; int /*<<< orphan*/  start; int /*<<< orphan*/  allocation_group; } ;
-typedef  TYPE_1__ befs_inode_addr ;
 
-/* Variables and functions */
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int len; int start; int allocation_group; } ;
+typedef TYPE_1__ befs_inode_addr ;
+
+
 
 __attribute__((used)) static inline int
 befs_iaddr_is_empty(befs_inode_addr * iaddr)
 {
-	return (!iaddr->allocation_group) && (!iaddr->start) && (!iaddr->len);
+ return (!iaddr->allocation_group) && (!iaddr->start) && (!iaddr->len);
 }

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  In; } ;
-typedef  int /*<<< orphan*/  privacy_key_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX_RES ; 
- int /*<<< orphan*/  R ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  atol (scalar_t__*) ; 
- int binlog_disabled ; 
- int do_add_friend (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ do_add_friend_request (int,int,int /*<<< orphan*/ ,int) ; 
- int do_set_category_friend_list (int,int,int /*<<< orphan*/ ,int) ; 
- int do_set_privacy (int,int /*<<< orphan*/ ,scalar_t__*,int,int) ; 
- int exec_store_userlist (struct connection*,char const*,int,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,...) ; 
- int mct_add ; 
- int mct_set ; 
- int parse_list (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- scalar_t__ parse_privacy_key (char const*,int /*<<< orphan*/ *,int) ; 
- int read_in (int /*<<< orphan*/ *,scalar_t__*,int) ; 
- scalar_t__ reverse_friends_mode ; 
- int sscanf (char const*,char*,int*,int*) ; 
- scalar_t__* stats_buff ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int) ; 
- scalar_t__ verbosity ; 
+
+
+
+struct connection {int In; } ;
+typedef int privacy_key_t ;
+
+
+ int MAX_RES ;
+ int R ;
+ int assert (int) ;
+ int atol (scalar_t__*) ;
+ int binlog_disabled ;
+ int do_add_friend (int,int,int ,int ,int) ;
+ scalar_t__ do_add_friend_request (int,int,int ,int) ;
+ int do_set_category_friend_list (int,int,int ,int) ;
+ int do_set_privacy (int,int ,scalar_t__*,int,int) ;
+ int exec_store_userlist (struct connection*,char const*,int,int) ;
+ int fprintf (int ,char*,int,...) ;
+ int mct_add ;
+ int mct_set ;
+ int parse_list (int ,int ,int *,int) ;
+ scalar_t__ parse_privacy_key (char const*,int *,int) ;
+ int read_in (int *,scalar_t__*,int) ;
+ scalar_t__ reverse_friends_mode ;
+ int sscanf (char const*,char*,int*,int*) ;
+ scalar_t__* stats_buff ;
+ int stderr ;
+ int strncmp (char const*,char*,int) ;
+ scalar_t__ verbosity ;
 
 int memcache_store (struct connection *c, int op, const char *key, int key_len, int flags, int delay, int size) {
   int user_id, cat = 0, friend_id = 0, i;

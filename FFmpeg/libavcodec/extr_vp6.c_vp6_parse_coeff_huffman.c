@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-struct TYPE_8__ {int* coeff_index_to_pos; int /*<<< orphan*/ * coeff_index_to_idct_selector; } ;
-typedef  TYPE_2__ VP56Model ;
-struct TYPE_9__ {size_t* idct_scantable; int dequant_ac; int** block_coeff; int /*<<< orphan*/ * idct_selector; TYPE_4__*** ract_vlc; int /*<<< orphan*/  gb; void*** nb_null; TYPE_1__* runv_vlc; TYPE_4__* dccv_vlc; TYPE_2__* modelp; } ;
-typedef  TYPE_3__ VP56Context ;
-struct TYPE_10__ {int /*<<< orphan*/  table; } ;
-typedef  TYPE_4__ VLC ;
-struct TYPE_7__ {int /*<<< orphan*/  table; } ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- size_t FFMIN (int,int) ; 
- int /*<<< orphan*/  FF_HUFFMAN_BITS ; 
- int* ff_vp56_coeff_bias ; 
- scalar_t__ get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits1 (int /*<<< orphan*/ *) ; 
- scalar_t__ get_bits_left (int /*<<< orphan*/ *) ; 
- int get_vlc2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int* vp6_coeff_groups ; 
- void* vp6_get_nb_null (TYPE_3__*) ; 
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
+struct TYPE_8__ {int* coeff_index_to_pos; int * coeff_index_to_idct_selector; } ;
+typedef TYPE_2__ VP56Model ;
+struct TYPE_9__ {size_t* idct_scantable; int dequant_ac; int** block_coeff; int * idct_selector; TYPE_4__*** ract_vlc; int gb; void*** nb_null; TYPE_1__* runv_vlc; TYPE_4__* dccv_vlc; TYPE_2__* modelp; } ;
+typedef TYPE_3__ VP56Context ;
+struct TYPE_10__ {int table; } ;
+typedef TYPE_4__ VLC ;
+struct TYPE_7__ {int table; } ;
+
+
+ int AVERROR_INVALIDDATA ;
+ size_t FFMIN (int,int) ;
+ int FF_HUFFMAN_BITS ;
+ int* ff_vp56_coeff_bias ;
+ scalar_t__ get_bits (int *,int) ;
+ int get_bits1 (int *) ;
+ scalar_t__ get_bits_left (int *) ;
+ int get_vlc2 (int *,int ,int ,int) ;
+ int* vp6_coeff_groups ;
+ void* vp6_get_nb_null (TYPE_3__*) ;
 
 __attribute__((used)) static int vp6_parse_coeff_huffman(VP56Context *s)
 {
@@ -42,10 +42,10 @@ __attribute__((used)) static int vp6_parse_coeff_huffman(VP56Context *s)
     VLC *vlc_coeff;
     int coeff, sign, coeff_idx;
     int b, cg, idx;
-    int pt = 0;    /* plane type (0 for Y, 1 for U or V) */
+    int pt = 0;
 
     for (b=0; b<6; b++) {
-        int ct = 0;    /* code type */
+        int ct = 0;
         if (b > 3) pt = 1;
         vlc_coeff = &s->dccv_vlc[pt];
 
@@ -68,8 +68,8 @@ __attribute__((used)) static int vp6_parse_coeff_huffman(VP56Context *s)
                     } else
                         s->nb_null[0][pt] = vp6_get_nb_null(s);
                     ct = 0;
-                } else if (coeff == 11) {  /* end of block */
-                    if (coeff_idx == 1)    /* first AC coeff ? */
+                } else if (coeff == 11) {
+                    if (coeff_idx == 1)
                         s->nb_null[1][pt] = vp6_get_nb_null(s);
                     break;
                 } else {

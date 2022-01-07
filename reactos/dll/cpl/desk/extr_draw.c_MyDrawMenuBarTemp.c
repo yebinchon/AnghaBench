@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int UINT ;
-struct TYPE_12__ {int /*<<< orphan*/ * crColor; scalar_t__ bFlatMenus; } ;
-struct TYPE_11__ {int left; int right; scalar_t__ bottom; int /*<<< orphan*/  top; } ;
-typedef  TYPE_1__ RECT ;
-typedef  TYPE_1__* LPRECT ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HPEN ;
-typedef  int /*<<< orphan*/  HMENU ;
-typedef  int /*<<< orphan*/  HGDIOBJ ;
-typedef  int /*<<< orphan*/  HFONT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  HBRUSH ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  TYPE_3__ COLOR_SCHEME ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BDR_SUNKENOUTER ; 
- int /*<<< orphan*/  BF_RECT ; 
- size_t COLOR_3DFACE ; 
- size_t COLOR_BTNHIGHLIGHT ; 
- size_t COLOR_BTNSHADOW ; 
- size_t COLOR_GRAYTEXT ; 
- size_t COLOR_HIGHLIGHT ; 
- size_t COLOR_HIGHLIGHTTEXT ; 
- size_t COLOR_MENU ; 
- size_t COLOR_MENUBAR ; 
- size_t COLOR_MENUHILIGHT ; 
- size_t COLOR_MENUTEXT ; 
- int /*<<< orphan*/  CreatePen (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateSolidBrush (int /*<<< orphan*/ ) ; 
- int DT_CALCRECT ; 
- int DT_CENTER ; 
- int DT_SINGLELINE ; 
- int DT_VCENTER ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DrawEdge (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DrawTextW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,TYPE_1__*,int) ; 
- int /*<<< orphan*/  FillRect (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FrameRect (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetMenuStringW (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InflateRect (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  LineTo (int /*<<< orphan*/ ,int,scalar_t__) ; 
- int MENU_BAR_ITEMS_SPACE ; 
- int /*<<< orphan*/  MF_BYPOSITION ; 
- int /*<<< orphan*/  MoveToEx (int /*<<< orphan*/ ,int,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PS_SOLID ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetBkColor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetBkMode (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetTextColor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRANSPARENT ; 
- int /*<<< orphan*/  TRUE ; 
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int UINT ;
+struct TYPE_12__ {int * crColor; scalar_t__ bFlatMenus; } ;
+struct TYPE_11__ {int left; int right; scalar_t__ bottom; int top; } ;
+typedef TYPE_1__ RECT ;
+typedef TYPE_1__* LPRECT ;
+typedef int INT ;
+typedef int HWND ;
+typedef int HPEN ;
+typedef int HMENU ;
+typedef int HGDIOBJ ;
+typedef int HFONT ;
+typedef int HDC ;
+typedef int HBRUSH ;
+typedef int DWORD ;
+typedef TYPE_3__ COLOR_SCHEME ;
+typedef scalar_t__ BOOL ;
+
+
+ int BDR_SUNKENOUTER ;
+ int BF_RECT ;
+ size_t COLOR_3DFACE ;
+ size_t COLOR_BTNHIGHLIGHT ;
+ size_t COLOR_BTNSHADOW ;
+ size_t COLOR_GRAYTEXT ;
+ size_t COLOR_HIGHLIGHT ;
+ size_t COLOR_HIGHLIGHTTEXT ;
+ size_t COLOR_MENU ;
+ size_t COLOR_MENUBAR ;
+ size_t COLOR_MENUHILIGHT ;
+ size_t COLOR_MENUTEXT ;
+ int CreatePen (int ,int ,int ) ;
+ int CreateSolidBrush (int ) ;
+ int DT_CALCRECT ;
+ int DT_CENTER ;
+ int DT_SINGLELINE ;
+ int DT_VCENTER ;
+ int DeleteObject (int ) ;
+ int DrawEdge (int ,TYPE_1__*,int ,int ) ;
+ int DrawTextW (int ,int *,int,TYPE_1__*,int) ;
+ int FillRect (int ,TYPE_1__*,int ) ;
+ int FrameRect (int ,TYPE_1__*,int ) ;
+ int GetMenuStringW (int ,int,int *,int,int ) ;
+ int InflateRect (TYPE_1__*,int,int) ;
+ int LineTo (int ,int,scalar_t__) ;
+ int MENU_BAR_ITEMS_SPACE ;
+ int MF_BYPOSITION ;
+ int MoveToEx (int ,int,scalar_t__,int *) ;
+ int PS_SOLID ;
+ int SelectObject (int ,int ) ;
+ int SetBkColor (int ,int ) ;
+ int SetBkMode (int ,int ) ;
+ int SetTextColor (int ,int ) ;
+ int TRANSPARENT ;
+ int TRUE ;
 
 DWORD
 MyDrawMenuBarTemp(HWND Wnd, HDC DC, LPRECT Rect, HMENU Menu, HFONT Font, COLOR_SCHEME *scheme)
@@ -91,7 +91,7 @@ MyDrawMenuBarTemp(HWND Wnd, HDC DC, LPRECT Rect, HMENU Menu, HFONT Font, COLOR_S
 
     hPen = CreatePen(PS_SOLID, 0, scheme->crColor[COLOR_3DFACE]);
     hPenOld = SelectObject(DC, hPen);
-    MoveToEx(DC, Rect->left, Rect->bottom - 1, NULL);
+    MoveToEx(DC, Rect->left, Rect->bottom - 1, ((void*)0));
     LineTo(DC, Rect->right, Rect->bottom - 1);
     SelectObject(DC, hPenOld);
     DeleteObject(hPen);

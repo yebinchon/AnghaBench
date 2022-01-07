@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_8__ ;
-typedef  struct TYPE_18__   TYPE_7__ ;
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_19__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_17__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_16__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_15__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_14__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_13__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_12__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_18__ {int ref; TYPE_8__ nsIWebBrowserChrome_iface; int /*<<< orphan*/ * doc; TYPE_6__ nsISupportsWeakReference_iface; TYPE_5__ nsIInterfaceRequestor_iface; TYPE_4__ nsITooltipListener_iface; TYPE_3__ nsIEmbeddingSiteWindow_iface; TYPE_2__ nsIURIContentListener_iface; TYPE_1__ nsIContextMenuListener_iface; } ;
-typedef  TYPE_7__ NSContainer ;
-typedef  int /*<<< orphan*/  HTMLDocumentObj ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLASS_E_CLASSNOTAVAILABLE ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- TYPE_7__* heap_alloc_zero (int) ; 
- int /*<<< orphan*/  init_nscontainer (TYPE_7__*) ; 
- int /*<<< orphan*/  load_gecko () ; 
- int /*<<< orphan*/  nsContextMenuListenerVtbl ; 
- int /*<<< orphan*/  nsEmbeddingSiteWindowVtbl ; 
- int /*<<< orphan*/  nsIWebBrowserChrome_Release (TYPE_8__*) ; 
- int /*<<< orphan*/  nsInterfaceRequestorVtbl ; 
- int /*<<< orphan*/  nsSupportsWeakReferenceVtbl ; 
- int /*<<< orphan*/  nsTooltipListenerVtbl ; 
- int /*<<< orphan*/  nsURIContentListenerVtbl ; 
- int /*<<< orphan*/  nsWebBrowserChromeVtbl ; 
+
+typedef struct TYPE_19__ TYPE_8__ ;
+typedef struct TYPE_18__ TYPE_7__ ;
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_19__ {int * lpVtbl; } ;
+struct TYPE_17__ {int * lpVtbl; } ;
+struct TYPE_16__ {int * lpVtbl; } ;
+struct TYPE_15__ {int * lpVtbl; } ;
+struct TYPE_14__ {int * lpVtbl; } ;
+struct TYPE_13__ {int * lpVtbl; } ;
+struct TYPE_12__ {int * lpVtbl; } ;
+struct TYPE_18__ {int ref; TYPE_8__ nsIWebBrowserChrome_iface; int * doc; TYPE_6__ nsISupportsWeakReference_iface; TYPE_5__ nsIInterfaceRequestor_iface; TYPE_4__ nsITooltipListener_iface; TYPE_3__ nsIEmbeddingSiteWindow_iface; TYPE_2__ nsIURIContentListener_iface; TYPE_1__ nsIContextMenuListener_iface; } ;
+typedef TYPE_7__ NSContainer ;
+typedef int HTMLDocumentObj ;
+typedef int HRESULT ;
+
+
+ int CLASS_E_CLASSNOTAVAILABLE ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ SUCCEEDED (int ) ;
+ TYPE_7__* heap_alloc_zero (int) ;
+ int init_nscontainer (TYPE_7__*) ;
+ int load_gecko () ;
+ int nsContextMenuListenerVtbl ;
+ int nsEmbeddingSiteWindowVtbl ;
+ int nsIWebBrowserChrome_Release (TYPE_8__*) ;
+ int nsInterfaceRequestorVtbl ;
+ int nsSupportsWeakReferenceVtbl ;
+ int nsTooltipListenerVtbl ;
+ int nsURIContentListenerVtbl ;
+ int nsWebBrowserChromeVtbl ;
 
 HRESULT create_nscontainer(HTMLDocumentObj *doc, NSContainer **_ret)
 {

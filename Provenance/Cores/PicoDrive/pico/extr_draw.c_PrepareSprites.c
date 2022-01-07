@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct PicoVideo {int* reg; } ;
 struct TYPE_2__ {scalar_t__ vram; struct PicoVideo video; } ;
 
-/* Variables and functions */
- int DrawScanline ; 
- int** HighLnSpr ; 
- int* HighPreSpr ; 
- int MAX_LINE_SPRITES ; 
- int POPT_DIS_SPRITE_LIM ; 
- TYPE_1__ Pico ; 
- int PicoOpt ; 
- int SPRL_HAVE_HI ; 
- int SPRL_HAVE_LO ; 
- unsigned char SPRL_LO_ABOVE_HI ; 
- int SPRL_MAY_HAVE_OP ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+ int DrawScanline ;
+ int** HighLnSpr ;
+ int* HighPreSpr ;
+ int MAX_LINE_SPRITES ;
+ int POPT_DIS_SPRITE_LIM ;
+ TYPE_1__ Pico ;
+ int PicoOpt ;
+ int SPRL_HAVE_HI ;
+ int SPRL_HAVE_LO ;
+ unsigned char SPRL_LO_ABOVE_HI ;
+ int SPRL_MAY_HAVE_OP ;
+ int printf (char*,...) ;
 
 void PrepareSprites(int full)
 {
@@ -35,7 +35,7 @@ void PrepareSprites(int full)
   int table=0;
   int *pd = HighPreSpr;
   int max_lines = 224, max_sprites = 80, max_width = 328;
-  int max_line_sprites = 20; // 20 sprites, 40 tiles
+  int max_line_sprites = 20;
 
   if (!(Pico.video.reg[12]&1))
     max_sprites = 64, max_line_sprites = 16, max_width = 264;
@@ -43,32 +43,32 @@ void PrepareSprites(int full)
     max_line_sprites = MAX_LINE_SPRITES;
 
   if (pvid->reg[1]&8) max_lines = 240;
-  sh = Pico.video.reg[0xC]&8; // shadow/hilight?
+  sh = Pico.video.reg[0xC]&8;
 
   table=pvid->reg[5]&0x7f;
-  if (pvid->reg[12]&1) table&=0x7e; // Lowest bit 0 in 40-cell mode
-  table<<=8; // Get sprite table address/2
+  if (pvid->reg[12]&1) table&=0x7e;
+  table<<=8;
 
   if (!full)
   {
     int pack;
-    // updates: tilecode, sx
+
     for (u=0; u < max_sprites && (pack = *pd); u++, pd+=2)
     {
       unsigned int *sprite;
       int code2, sx, sy, height;
 
-      sprite=(unsigned int *)(Pico.vram+((table+(link<<2))&0x7ffc)); // Find sprite
+      sprite=(unsigned int *)(Pico.vram+((table+(link<<2))&0x7ffc));
 
-      // parse sprite info
+
       code2 = sprite[1];
       sx = (code2>>16)&0x1ff;
-      sx -= 0x78; // Get X coordinate + 8
+      sx -= 0x78;
       sy = (pack << 16) >> 16;
       height = (pack >> 24) & 0xf;
 
-      if (sy < max_lines && sy + (height<<3) > DrawScanline && // sprite onscreen (y)?
-          (sx > -24 || sx < max_width))                   // onscreen x
+      if (sy < max_lines && sy + (height<<3) > DrawScanline &&
+          (sx > -24 || sx < max_width))
       {
         int y = (sy >= DrawScanline) ? sy : DrawScanline;
         int entry = ((pd - HighPreSpr) / 2) | ((code2>>8)&0x80);
@@ -76,12 +76,12 @@ void PrepareSprites(int full)
         {
           int i, cnt;
           cnt = HighLnSpr[y][0] & 0x7f;
-          if (cnt >= max_line_sprites) continue;              // sprite limit?
+          if (cnt >= max_line_sprites) continue;
 
           for (i = 0; i < cnt; i++)
             if (((HighLnSpr[y][3+i] ^ entry) & 0x7f) == 0) goto found;
 
-          // this sprite was previously missing
+
           HighLnSpr[y][3+cnt] = entry;
           HighLnSpr[y][0] = cnt + 1;
 found:;
@@ -92,12 +92,12 @@ found:;
       }
 
       code2 &= ~0xfe000000;
-      code2 -=  0x00780000; // Get X coordinate + 8 in upper 16 bits
+      code2 -= 0x00780000;
       pd[1] = code2;
 
-      // Find next sprite
+
       link=(sprite[0]>>16)&0x7f;
-      if (!link) break; // End of sprites
+      if (!link) break;
     }
   }
   else
@@ -110,20 +110,20 @@ found:;
       unsigned int *sprite;
       int code, code2, sx, sy, hv, height, width;
 
-      sprite=(unsigned int *)(Pico.vram+((table+(link<<2))&0x7ffc)); // Find sprite
+      sprite=(unsigned int *)(Pico.vram+((table+(link<<2))&0x7ffc));
 
-      // parse sprite info
+
       code = sprite[0];
       sy = (code&0x1ff)-0x80;
       hv = (code>>24)&0xf;
       height = (hv&3)+1;
 
-      width  = (hv>>2)+1;
+      width = (hv>>2)+1;
       code2 = sprite[1];
       sx = (code2>>16)&0x1ff;
-      sx -= 0x78; // Get X coordinate + 8
+      sx -= 0x78;
 
-      if (sy < max_lines && sy + (height<<3) > DrawScanline) // sprite onscreen (y)?
+      if (sy < max_lines && sy + (height<<3) > DrawScanline)
       {
         int entry, y, sx_min, onscr_x, maybe_op = 0;
 
@@ -136,11 +136,11 @@ found:;
         y = (sy >= DrawScanline) ? sy : DrawScanline;
         for (; y < sy + (height<<3) && y < max_lines; y++)
         {
-	  unsigned char *p = &HighLnSpr[y][0];
+   unsigned char *p = &HighLnSpr[y][0];
           int cnt = p[0];
-          if (cnt >= max_line_sprites) continue;              // sprite limit?
+          if (cnt >= max_line_sprites) continue;
 
-          if (p[2] >= max_line_sprites*2) {        // tile limit?
+          if (p[2] >= max_line_sprites*2) {
             p[0] |= 0x80;
             continue;
           }
@@ -148,16 +148,16 @@ found:;
 
           if (sx == -0x78) {
             if (cnt > 0)
-              p[0] |= 0x80; // masked, no more sprites for this line
+              p[0] |= 0x80;
             continue;
           }
-          // must keep the first sprite even if it's offscreen, for masking
-          if (cnt > 0 && !onscr_x) continue; // offscreen x
+
+          if (cnt > 0 && !onscr_x) continue;
 
           p[3+cnt] = entry;
           p[0] = cnt + 1;
           p[1] |= (entry & 0x80) ? SPRL_HAVE_HI : SPRL_HAVE_LO;
-          p[1] |= maybe_op; // there might be op sprites on this line
+          p[1] |= maybe_op;
           if (cnt > 0 && (code2 & 0x8000) && !(p[3+cnt-1]&0x80))
             p[1] |= SPRL_LO_ABOVE_HI;
         }
@@ -166,21 +166,10 @@ found:;
       *pd++ = (width<<28)|(height<<24)|(hv<<16)|((unsigned short)sy);
       *pd++ = (sx<<16)|((unsigned short)code2);
 
-      // Find next sprite
+
       link=(code>>16)&0x7f;
-      if (!link) break; // End of sprites
+      if (!link) break;
     }
     *pd = 0;
-
-#if 0
-    for (u = 0; u < max_lines; u++)
-    {
-      int y;
-      printf("c%03i: %2i, %2i: ", u, HighLnSpr[u][0] & 0x7f, HighLnSpr[u][2]);
-      for (y = 0; y < HighLnSpr[u][0] & 0x7f; y++)
-        printf(" %i", HighLnSpr[u][y+3]);
-      printf("\n");
-    }
-#endif
   }
 }

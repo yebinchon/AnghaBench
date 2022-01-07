@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ge25519_p3 ;
-typedef  int /*<<< orphan*/  crypto_hash_sha512_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  crypto_hash_sha512_final (int /*<<< orphan*/ *,unsigned char*) ; 
- int /*<<< orphan*/  crypto_hash_sha512_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  crypto_hash_sha512_update (int /*<<< orphan*/ *,unsigned char const*,unsigned long long) ; 
- int /*<<< orphan*/  ge25519_p3_tobytes (unsigned char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ge25519_scalarmult_base (int /*<<< orphan*/ *,unsigned char const*) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  memmove (unsigned char*,unsigned char const*,size_t) ; 
- int /*<<< orphan*/  sc25519_muladd (unsigned char*,unsigned char*,unsigned char*,unsigned char const*) ; 
- int /*<<< orphan*/  sc25519_reduce (unsigned char*) ; 
- int /*<<< orphan*/  sodium_memzero (unsigned char*,int) ; 
+
+
+
+typedef int ge25519_p3 ;
+typedef int crypto_hash_sha512_state ;
+
+
+ int crypto_hash_sha512_final (int *,unsigned char*) ;
+ int crypto_hash_sha512_init (int *) ;
+ int crypto_hash_sha512_update (int *,unsigned char const*,unsigned long long) ;
+ int ge25519_p3_tobytes (unsigned char*,int *) ;
+ int ge25519_scalarmult_base (int *,unsigned char const*) ;
+ int memcpy (unsigned char*,unsigned char*,int) ;
+ int memmove (unsigned char*,unsigned char const*,size_t) ;
+ int sc25519_muladd (unsigned char*,unsigned char*,unsigned char*,unsigned char const*) ;
+ int sc25519_reduce (unsigned char*) ;
+ int sodium_memzero (unsigned char*,int) ;
 
 int
-crypto_sign_edwards25519sha512batch(unsigned char       *sm,
-                                    unsigned long long  *smlen_p,
+crypto_sign_edwards25519sha512batch(unsigned char *sm,
+                                    unsigned long long *smlen_p,
                                     const unsigned char *m,
-                                    unsigned long long   mlen,
+                                    unsigned long long mlen,
                                     const unsigned char *sk)
 {
     crypto_hash_sha512_state hs;
-    unsigned char            nonce[64];
-    unsigned char            hram[64];
-    unsigned char            sig[64];
-    ge25519_p3               A;
-    ge25519_p3               R;
+    unsigned char nonce[64];
+    unsigned char hram[64];
+    unsigned char sig[64];
+    ge25519_p3 A;
+    ge25519_p3 R;
 
     crypto_hash_sha512_init(&hs);
     crypto_hash_sha512_update(&hs, sk + 32, 32);

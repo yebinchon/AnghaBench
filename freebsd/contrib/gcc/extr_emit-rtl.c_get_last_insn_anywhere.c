@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sequence_stack {scalar_t__ last; struct sequence_stack* next; } ;
-typedef  scalar_t__ rtx ;
+typedef scalar_t__ rtx ;
 
-/* Variables and functions */
- scalar_t__ last_insn ; 
- struct sequence_stack* seq_stack ; 
+
+ scalar_t__ last_insn ;
+ struct sequence_stack* seq_stack ;
 
 rtx
 get_last_insn_anywhere (void)

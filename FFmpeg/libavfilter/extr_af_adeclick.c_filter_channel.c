@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_9__ ;
-typedef  struct TYPE_21__   TYPE_8__ ;
-typedef  struct TYPE_20__   TYPE_7__ ;
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_22__ TYPE_9__ ;
+typedef struct TYPE_21__ TYPE_8__ ;
+typedef struct TYPE_20__ TYPE_7__ ;
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
 struct TYPE_18__ {TYPE_8__* out; } ;
-typedef  TYPE_5__ ThreadData ;
+typedef TYPE_5__ ThreadData ;
 struct TYPE_22__ {TYPE_7__* priv; } ;
 struct TYPE_21__ {scalar_t__* extended_data; } ;
-struct TYPE_20__ {double* window_func_lut; int window_size; int (* detector ) (TYPE_7__*,TYPE_6__*,double,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,double const*,double*) ;scalar_t__ method; int overlap_skip; int hop_size; scalar_t__ ar_order; TYPE_6__* chan; TYPE_4__* buffer; TYPE_3__* out; TYPE_2__* is; TYPE_1__* in; } ;
-struct TYPE_19__ {double* interpolated; int* index; int /*<<< orphan*/  auxiliary; int /*<<< orphan*/  acoefficients; int /*<<< orphan*/  click; int /*<<< orphan*/  detection; int /*<<< orphan*/  tmp; int /*<<< orphan*/  acorrelation; } ;
+struct TYPE_20__ {double* window_func_lut; int window_size; int (* detector ) (TYPE_7__*,TYPE_6__*,double,int ,int ,int ,int*,double const*,double*) ;scalar_t__ method; int overlap_skip; int hop_size; scalar_t__ ar_order; TYPE_6__* chan; TYPE_4__* buffer; TYPE_3__* out; TYPE_2__* is; TYPE_1__* in; } ;
+struct TYPE_19__ {double* interpolated; int* index; int auxiliary; int acoefficients; int click; int detection; int tmp; int acorrelation; } ;
 struct TYPE_17__ {scalar_t__* extended_data; } ;
 struct TYPE_16__ {scalar_t__* extended_data; } ;
 struct TYPE_15__ {scalar_t__* extended_data; } ;
 struct TYPE_14__ {scalar_t__* extended_data; } ;
-typedef  TYPE_6__ DeclickChannel ;
-typedef  TYPE_7__ AudioDeclickContext ;
-typedef  TYPE_8__ AVFrame ;
-typedef  TYPE_9__ AVFilterContext ;
+typedef TYPE_6__ DeclickChannel ;
+typedef TYPE_7__ AudioDeclickContext ;
+typedef TYPE_8__ AVFrame ;
+typedef TYPE_9__ AVFilterContext ;
 
-/* Variables and functions */
- double autoregression (double const*,scalar_t__,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int interpolation (TYPE_6__*,double const*,scalar_t__,int /*<<< orphan*/ ,int*,int,int /*<<< orphan*/ ,double*) ; 
- scalar_t__ isfinite_array (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  memcpy (double*,double const*,int) ; 
- int /*<<< orphan*/  memmove (double*,double*,int) ; 
- int /*<<< orphan*/  memset (double*,int /*<<< orphan*/ ,int) ; 
- int stub1 (TYPE_7__*,TYPE_6__*,double,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,double const*,double*) ; 
+
+ double autoregression (double const*,scalar_t__,int,int ,int ,int ) ;
+ int interpolation (TYPE_6__*,double const*,scalar_t__,int ,int*,int,int ,double*) ;
+ scalar_t__ isfinite_array (int ,scalar_t__) ;
+ int memcpy (double*,double const*,int) ;
+ int memmove (double*,double*,int) ;
+ int memset (double*,int ,int) ;
+ int stub1 (TYPE_7__*,TYPE_6__*,double,int ,int ,int ,int*,double const*,double*) ;
 
 __attribute__((used)) static int filter_channel(AVFilterContext *ctx, void *arg, int ch, int nb_jobs)
 {

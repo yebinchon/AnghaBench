@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t WORD ;
-struct TYPE_4__ {size_t numAddresses; int /*<<< orphan*/ * addresses; } ;
-struct TYPE_3__ {TYPE_2__* cacheEntry; int /*<<< orphan*/  ret; } ;
-typedef  scalar_t__ PUCHAR ;
-typedef  TYPE_1__ NetBTNameQueryData ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  FIELD_OFFSET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_2__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NBNameCacheEntry ; 
- int /*<<< orphan*/  NRC_OSRESNOTAV ; 
- int /*<<< orphan*/ * addresses ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t WORD ;
+struct TYPE_4__ {size_t numAddresses; int * addresses; } ;
+struct TYPE_3__ {TYPE_2__* cacheEntry; int ret; } ;
+typedef scalar_t__ PUCHAR ;
+typedef TYPE_1__ NetBTNameQueryData ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int FIELD_OFFSET (int ,int ) ;
+ int GetProcessHeap () ;
+ TYPE_2__* HeapAlloc (int ,int ,int ) ;
+ int NBNameCacheEntry ;
+ int NRC_OSRESNOTAV ;
+ int * addresses ;
 
 __attribute__((used)) static BOOL NetBTFindNameAnswerCallback(void *pVoid, WORD answerCount,
  WORD answerIndex, PUCHAR rData, WORD rLen)
@@ -37,7 +37,7 @@ __attribute__((used)) static BOOL NetBTFindNameAnswerCallback(void *pVoid, WORD 
 
     if (queryData)
     {
-        if (queryData->cacheEntry == NULL)
+        if (queryData->cacheEntry == ((void*)0))
         {
             queryData->cacheEntry = HeapAlloc(GetProcessHeap(), 0,
              FIELD_OFFSET(NBNameCacheEntry, addresses[answerCount]));

@@ -1,48 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab_cursor ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int sqlite3_vtab_cursor ;
+typedef int sqlite3_context ;
 struct TYPE_4__ {size_t iRow; int iLang; char* zPattern; int iTop; int iScope; int nSearch; TYPE_1__* a; scalar_t__ pFullScan; } ;
-typedef  TYPE_2__ spellfix1_cursor ;
+typedef TYPE_2__ spellfix1_cursor ;
 struct TYPE_3__ {char* zWord; int iRank; int iDistance; int iScore; int iMatchlen; char* zHash; } ;
-
-/* Variables and functions */
-#define  SPELLFIX_COL_DISTANCE 137 
-#define  SPELLFIX_COL_LANGID 136 
-#define  SPELLFIX_COL_MATCHLEN 135 
-#define  SPELLFIX_COL_PHONEHASH 134 
-#define  SPELLFIX_COL_RANK 133 
-#define  SPELLFIX_COL_SCOPE 132 
-#define  SPELLFIX_COL_SCORE 131 
-#define  SPELLFIX_COL_SRCHCNT 130 
-#define  SPELLFIX_COL_TOP 129 
-#define  SPELLFIX_COL_WORD 128 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  SQLITE_STATIC ; 
- int editdist1 (char*,char*,int*) ; 
- int /*<<< orphan*/  sqlite3_column_value (scalar_t__,int) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- int /*<<< orphan*/  sqlite3_result_int (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_result_null (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_value (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ strlen (char*) ; 
- int translen_to_charlen (char*,int,int) ; 
- scalar_t__ transliterate (unsigned char*,int) ; 
- int utf8Charlen (char*,int) ; 
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int SQLITE_STATIC ;
+ int editdist1 (char*,char*,int*) ;
+ int sqlite3_column_value (scalar_t__,int) ;
+ int sqlite3_free (char*) ;
+ int sqlite3_result_int (int *,int) ;
+ int sqlite3_result_null (int *) ;
+ int sqlite3_result_text (int *,char*,int,int ) ;
+ int sqlite3_result_value (int *,int ) ;
+ scalar_t__ strlen (char*) ;
+ int translen_to_charlen (char*,int,int) ;
+ scalar_t__ transliterate (unsigned char*,int) ;
+ int utf8Charlen (char*,int) ;
 
 __attribute__((used)) static int spellfix1Column(
   sqlite3_vtab_cursor *cur,
@@ -51,7 +39,7 @@ __attribute__((used)) static int spellfix1Column(
 ){
   spellfix1_cursor *pCur = (spellfix1_cursor*)cur;
   if( pCur->pFullScan ){
-    if( i<=SPELLFIX_COL_LANGID ){
+    if( i<=136 ){
       sqlite3_result_value(ctx, sqlite3_column_value(pCur->pFullScan, i));
     }else{
       sqlite3_result_null(ctx);
@@ -59,27 +47,27 @@ __attribute__((used)) static int spellfix1Column(
     return SQLITE_OK;
   }
   switch( i ){
-    case SPELLFIX_COL_WORD: {
+    case 128: {
       sqlite3_result_text(ctx, pCur->a[pCur->iRow].zWord, -1, SQLITE_STATIC);
       break;
     }
-    case SPELLFIX_COL_RANK: {
+    case 133: {
       sqlite3_result_int(ctx, pCur->a[pCur->iRow].iRank);
       break;
     }
-    case SPELLFIX_COL_DISTANCE: {
+    case 137: {
       sqlite3_result_int(ctx, pCur->a[pCur->iRow].iDistance);
       break;
     }
-    case SPELLFIX_COL_LANGID: {
+    case 136: {
       sqlite3_result_int(ctx, pCur->iLang);
       break;
     }
-    case SPELLFIX_COL_SCORE: {
+    case 131: {
       sqlite3_result_int(ctx, pCur->a[pCur->iRow].iScore);
       break;
     }
-    case SPELLFIX_COL_MATCHLEN: {
+    case 135: {
       int iMatchlen = pCur->a[pCur->iRow].iMatchlen;
       if( iMatchlen<0 ){
         int nPattern = (int)strlen(pCur->zPattern);
@@ -103,19 +91,19 @@ __attribute__((used)) static int spellfix1Column(
       sqlite3_result_int(ctx, iMatchlen);
       break;
     }
-    case SPELLFIX_COL_PHONEHASH: {
+    case 134: {
       sqlite3_result_text(ctx, pCur->a[pCur->iRow].zHash, -1, SQLITE_STATIC);
       break;
     }
-    case SPELLFIX_COL_TOP: {
+    case 129: {
       sqlite3_result_int(ctx, pCur->iTop);
       break;
     }
-    case SPELLFIX_COL_SCOPE: {
+    case 132: {
       sqlite3_result_int(ctx, pCur->iScope);
       break;
     }
-    case SPELLFIX_COL_SRCHCNT: {
+    case 130: {
       sqlite3_result_int(ctx, pCur->nSearch);
       break;
     }

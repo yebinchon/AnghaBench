@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  md_info; } ;
-typedef  TYPE_1__ mbedtls_md_context_t ;
-typedef  int /*<<< orphan*/  mask ;
 
-/* Variables and functions */
- int MBEDTLS_MD_MAX_SIZE ; 
- int /*<<< orphan*/  mbedtls_md_finish (TYPE_1__*,unsigned char*) ; 
- unsigned int mbedtls_md_get_size (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mbedtls_md_starts (TYPE_1__*) ; 
- int /*<<< orphan*/  mbedtls_md_update (TYPE_1__*,unsigned char*,int) ; 
- int /*<<< orphan*/  mbedtls_zeroize (unsigned char*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int md_info; } ;
+typedef TYPE_1__ mbedtls_md_context_t ;
+typedef int mask ;
+
+
+ int MBEDTLS_MD_MAX_SIZE ;
+ int mbedtls_md_finish (TYPE_1__*,unsigned char*) ;
+ unsigned int mbedtls_md_get_size (int ) ;
+ int mbedtls_md_starts (TYPE_1__*) ;
+ int mbedtls_md_update (TYPE_1__*,unsigned char*,int) ;
+ int mbedtls_zeroize (unsigned char*,int) ;
+ int memset (unsigned char*,int ,int) ;
 
 __attribute__((used)) static void mgf_mask( unsigned char *dst, size_t dlen, unsigned char *src,
                       size_t slen, mbedtls_md_context_t *md_ctx )
@@ -38,7 +38,7 @@ __attribute__((used)) static void mgf_mask( unsigned char *dst, size_t dlen, uns
 
     hlen = mbedtls_md_get_size( md_ctx->md_info );
 
-    /* Generate and apply dbMask */
+
     p = dst;
 
     while( dlen > 0 )

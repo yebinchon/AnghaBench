@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int EOF ; 
- char* _tempnam (char*,char*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int fputc (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  ok (int,char*,int,int) ; 
- int /*<<< orphan*/  unlink (char*) ; 
+
+
+
+typedef int FILE ;
+
+
+ int EOF ;
+ char* _tempnam (char*,char*) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fputc (int,int *) ;
+ int free (char*) ;
+ int ok (int,char*,int,int) ;
+ int unlink (char*) ;
 
 __attribute__((used)) static void test_fputc( void )
 {
   char* tempf;
   FILE *tempfh;
-  int  ret;
+  int ret;
 
   tempf=_tempnam(".","wne");
   tempfh = fopen(tempf,"wb");

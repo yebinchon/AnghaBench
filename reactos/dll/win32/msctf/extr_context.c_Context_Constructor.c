@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_9__ ;
-typedef  struct TYPE_20__   TYPE_8__ ;
-typedef  struct TYPE_19__   TYPE_7__ ;
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TfEditCookie ;
-typedef  int /*<<< orphan*/  TfClientId ;
-struct TYPE_19__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_18__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_17__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_16__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_15__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_14__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_13__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_21__ {int refCount; TYPE_7__ ITfContext_iface; int /*<<< orphan*/  pTextLayoutSink; int /*<<< orphan*/  pTextEditSink; int /*<<< orphan*/  pStatusSink; int /*<<< orphan*/  pEditTransactionSink; int /*<<< orphan*/  pContextKeyEventSink; int /*<<< orphan*/  defaultCookie; int /*<<< orphan*/  pITfContextOwnerCompositionSink; int /*<<< orphan*/  pITextStoreACP; int /*<<< orphan*/  CompartmentMgr; int /*<<< orphan*/ * manager; int /*<<< orphan*/  connected; int /*<<< orphan*/  tidOwner; TYPE_6__ ITextStoreACPServices_iface; TYPE_5__ ITextStoreACPSink_iface; TYPE_4__ ITfSourceSingle_iface; TYPE_3__ ITfInsertAtSelection_iface; TYPE_2__ ITfContextOwnerCompositionServices_iface; TYPE_1__ ITfSource_iface; } ;
-struct TYPE_20__ {TYPE_9__* pOwningContext; int /*<<< orphan*/  lockType; } ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  ITfDocumentMgr ;
-typedef  TYPE_7__ ITfContext ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_8__ EditCookie ;
-typedef  TYPE_9__ Context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COOKIE_MAGIC_EDITCOOKIE ; 
- int /*<<< orphan*/  CompartmentMgr_Constructor (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ContextOwnerCompositionServicesVtbl ; 
- int /*<<< orphan*/  ContextSourceSingleVtbl ; 
- int /*<<< orphan*/  ContextSourceVtbl ; 
- int /*<<< orphan*/  ContextVtbl ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_9__*) ; 
- int /*<<< orphan*/  IID_ITextStoreACP ; 
- int /*<<< orphan*/  IID_ITfContextOwnerCompositionSink ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InsertAtSelectionVtbl ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TF_ES_READ ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  TextStoreACPServicesVtbl ; 
- int /*<<< orphan*/  TextStoreACPSinkVtbl ; 
- int /*<<< orphan*/  generate_Cookie (int /*<<< orphan*/ ,TYPE_8__*) ; 
- int /*<<< orphan*/  list_init (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_21__ TYPE_9__ ;
+typedef struct TYPE_20__ TYPE_8__ ;
+typedef struct TYPE_19__ TYPE_7__ ;
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int TfEditCookie ;
+typedef int TfClientId ;
+struct TYPE_19__ {int * lpVtbl; } ;
+struct TYPE_18__ {int * lpVtbl; } ;
+struct TYPE_17__ {int * lpVtbl; } ;
+struct TYPE_16__ {int * lpVtbl; } ;
+struct TYPE_15__ {int * lpVtbl; } ;
+struct TYPE_14__ {int * lpVtbl; } ;
+struct TYPE_13__ {int * lpVtbl; } ;
+struct TYPE_21__ {int refCount; TYPE_7__ ITfContext_iface; int pTextLayoutSink; int pTextEditSink; int pStatusSink; int pEditTransactionSink; int pContextKeyEventSink; int defaultCookie; int pITfContextOwnerCompositionSink; int pITextStoreACP; int CompartmentMgr; int * manager; int connected; int tidOwner; TYPE_6__ ITextStoreACPServices_iface; TYPE_5__ ITextStoreACPSink_iface; TYPE_4__ ITfSourceSingle_iface; TYPE_3__ ITfInsertAtSelection_iface; TYPE_2__ ITfContextOwnerCompositionServices_iface; TYPE_1__ ITfSource_iface; } ;
+struct TYPE_20__ {TYPE_9__* pOwningContext; int lockType; } ;
+typedef int LPVOID ;
+typedef int IUnknown ;
+typedef int ITfDocumentMgr ;
+typedef TYPE_7__ ITfContext ;
+typedef int HRESULT ;
+typedef TYPE_8__ EditCookie ;
+typedef TYPE_9__ Context ;
+
+
+ int COOKIE_MAGIC_EDITCOOKIE ;
+ int CompartmentMgr_Constructor (int *,int *,int **) ;
+ int ContextOwnerCompositionServicesVtbl ;
+ int ContextSourceSingleVtbl ;
+ int ContextSourceVtbl ;
+ int ContextVtbl ;
+ int E_OUTOFMEMORY ;
+ int FALSE ;
+ int FIXME (char*) ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ void* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_9__*) ;
+ int IID_ITextStoreACP ;
+ int IID_ITfContextOwnerCompositionSink ;
+ int IID_IUnknown ;
+ int IUnknown_QueryInterface (int *,int *,int *) ;
+ int InsertAtSelectionVtbl ;
+ int S_OK ;
+ int TF_ES_READ ;
+ int TRACE (char*,...) ;
+ int TextStoreACPServicesVtbl ;
+ int TextStoreACPSinkVtbl ;
+ int generate_Cookie (int ,TYPE_8__*) ;
+ int list_init (int *) ;
 
 HRESULT Context_Constructor(TfClientId tidOwner, IUnknown *punk, ITfDocumentMgr *mgr, ITfContext **ppOut, TfEditCookie *pecTextStore)
 {
@@ -71,11 +71,11 @@ HRESULT Context_Constructor(TfClientId tidOwner, IUnknown *punk, ITfDocumentMgr 
     EditCookie *cookie;
 
     This = HeapAlloc(GetProcessHeap(),HEAP_ZERO_MEMORY,sizeof(Context));
-    if (This == NULL)
+    if (This == ((void*)0))
         return E_OUTOFMEMORY;
 
     cookie = HeapAlloc(GetProcessHeap(),0,sizeof(EditCookie));
-    if (cookie == NULL)
+    if (cookie == ((void*)0))
     {
         HeapFree(GetProcessHeap(),0,This);
         return E_OUTOFMEMORY;

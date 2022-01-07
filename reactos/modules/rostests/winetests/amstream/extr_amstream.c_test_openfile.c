@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IGraphBuilder ;
-typedef  int /*<<< orphan*/  IAMMultiMediaStream ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ IAMMultiMediaStream_GetFilterGraph (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IAMMultiMediaStream_OpenFile (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IAMMultiMediaStream_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IGraphBuilder_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/ * create_ammultimediastream () ; 
- int /*<<< orphan*/  filenameW ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int IGraphBuilder ;
+typedef int IAMMultiMediaStream ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ IAMMultiMediaStream_GetFilterGraph (int *,int **) ;
+ scalar_t__ IAMMultiMediaStream_OpenFile (int *,int ,int ) ;
+ int IAMMultiMediaStream_Release (int *) ;
+ int IGraphBuilder_Release (int *) ;
+ scalar_t__ S_OK ;
+ int * create_ammultimediastream () ;
+ int filenameW ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_openfile(void)
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static void test_openfile(void)
 
     hr = IAMMultiMediaStream_GetFilterGraph(pams, &pgraph);
     ok(hr==S_OK, "IAMMultiMediaStream_GetFilterGraph returned: %x\n", hr);
-    ok(pgraph==NULL, "Filtergraph should not be created yet\n");
+    ok(pgraph==((void*)0), "Filtergraph should not be created yet\n");
 
     if (pgraph)
         IGraphBuilder_Release(pgraph);
@@ -45,7 +45,7 @@ __attribute__((used)) static void test_openfile(void)
 
     hr = IAMMultiMediaStream_GetFilterGraph(pams, &pgraph);
     ok(hr==S_OK, "IAMMultiMediaStream_GetFilterGraph returned: %x\n", hr);
-    ok(pgraph!=NULL, "Filtergraph should be created\n");
+    ok(pgraph!=((void*)0), "Filtergraph should be created\n");
 
     if (pgraph)
         IGraphBuilder_Release(pgraph);

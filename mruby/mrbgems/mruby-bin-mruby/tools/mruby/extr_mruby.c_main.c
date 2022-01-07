@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_29__   TYPE_2__ ;
-typedef  struct TYPE_28__   TYPE_1__ ;
 
-/* Type definitions */
-struct _args {char* cmdline; int argc; char** argv; int libc; char** libv; scalar_t__ check_syntax; int /*<<< orphan*/ * rfp; scalar_t__ mrbfile; scalar_t__ verbose; int /*<<< orphan*/  debug; } ;
+
+
+typedef struct TYPE_29__ TYPE_2__ ;
+typedef struct TYPE_28__ TYPE_1__ ;
+
+
+struct _args {char* cmdline; int argc; char** argv; int libc; char** libv; scalar_t__ check_syntax; int * rfp; scalar_t__ mrbfile; scalar_t__ verbose; int debug; } ;
 struct TYPE_28__ {void* no_exec; void* dump_result; } ;
-typedef  TYPE_1__ mrbc_context ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_sym ;
+typedef TYPE_1__ mrbc_context ;
+typedef int mrb_value ;
+typedef int mrb_sym ;
 struct TYPE_29__ {scalar_t__ exc; } ;
-typedef  TYPE_2__ mrb_state ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_2__ mrb_state ;
+typedef int FILE ;
 
-/* Variables and functions */
- int EXIT_FAILURE ; 
- void* TRUE ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  cleanup (TYPE_2__*,struct _args*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,...) ; 
- int /*<<< orphan*/  mrb_ary_new_capa (TYPE_2__*,int) ; 
- int /*<<< orphan*/  mrb_ary_push (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_bool_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_define_global_const (TYPE_2__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_gc_arena_restore (TYPE_2__*,int) ; 
- int mrb_gc_arena_save (TYPE_2__*) ; 
- int /*<<< orphan*/  mrb_gv_set (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_intern_lit (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  mrb_load_file_cxt (TYPE_2__*,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  mrb_load_irep_file_cxt (TYPE_2__*,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  mrb_load_string_cxt (TYPE_2__*,char*,TYPE_1__*) ; 
- TYPE_2__* mrb_open () ; 
- int /*<<< orphan*/  mrb_print_error (TYPE_2__*) ; 
- int /*<<< orphan*/  mrb_str_new_cstr (TYPE_2__*,char const*) ; 
- int /*<<< orphan*/  mrb_str_new_lit (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  mrb_undef_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_utf8_free (char*) ; 
- char* mrb_utf8_from_locale (char*,int) ; 
- int /*<<< orphan*/  mrbc_context_free (TYPE_2__*,TYPE_1__*) ; 
- TYPE_1__* mrbc_context_new (TYPE_2__*) ; 
- int /*<<< orphan*/  mrbc_filename (TYPE_2__*,TYPE_1__*,char const*) ; 
- int parse_args (TYPE_2__*,int,char**,struct _args*) ; 
- int /*<<< orphan*/  puts (char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int EXIT_FAILURE ;
+ void* TRUE ;
+ int abort () ;
+ int cleanup (TYPE_2__*,struct _args*) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,char*,...) ;
+ int mrb_ary_new_capa (TYPE_2__*,int) ;
+ int mrb_ary_push (TYPE_2__*,int ,int ) ;
+ int mrb_bool_value (int ) ;
+ int mrb_define_global_const (TYPE_2__*,char*,int ) ;
+ int mrb_gc_arena_restore (TYPE_2__*,int) ;
+ int mrb_gc_arena_save (TYPE_2__*) ;
+ int mrb_gv_set (TYPE_2__*,int ,int ) ;
+ int mrb_intern_lit (TYPE_2__*,char*) ;
+ int mrb_load_file_cxt (TYPE_2__*,int *,TYPE_1__*) ;
+ int mrb_load_irep_file_cxt (TYPE_2__*,int *,TYPE_1__*) ;
+ int mrb_load_string_cxt (TYPE_2__*,char*,TYPE_1__*) ;
+ TYPE_2__* mrb_open () ;
+ int mrb_print_error (TYPE_2__*) ;
+ int mrb_str_new_cstr (TYPE_2__*,char const*) ;
+ int mrb_str_new_lit (TYPE_2__*,char*) ;
+ int mrb_undef_p (int ) ;
+ int mrb_utf8_free (char*) ;
+ char* mrb_utf8_from_locale (char*,int) ;
+ int mrbc_context_free (TYPE_2__*,TYPE_1__*) ;
+ TYPE_1__* mrbc_context_new (TYPE_2__*) ;
+ int mrbc_filename (TYPE_2__*,TYPE_1__*,char const*) ;
+ int parse_args (TYPE_2__*,int,char**,struct _args*) ;
+ int puts (char*) ;
+ int stderr ;
 
 int
 main(int argc, char **argv)
@@ -66,13 +66,13 @@ main(int argc, char **argv)
   mrb_value v;
   mrb_sym zero_sym;
 
-  if (mrb == NULL) {
+  if (mrb == ((void*)0)) {
     fprintf(stderr, "%s: Invalid mrb_state, exiting mruby\n", *argv);
     return EXIT_FAILURE;
   }
 
   n = parse_args(mrb, argc, argv, &args);
-  if (n == EXIT_FAILURE || (args.cmdline == NULL && args.rfp == NULL)) {
+  if (n == EXIT_FAILURE || (args.cmdline == ((void*)0) && args.rfp == ((void*)0))) {
     cleanup(mrb, &args);
     return n;
   }
@@ -95,7 +95,7 @@ main(int argc, char **argv)
     if (args.check_syntax)
       c->no_exec = TRUE;
 
-    /* Set $0 */
+
     zero_sym = mrb_intern_lit(mrb, "$0");
     if (args.rfp) {
       const char *cmdline;
@@ -108,10 +108,10 @@ main(int argc, char **argv)
       mrb_gv_set(mrb, zero_sym, mrb_str_new_lit(mrb, "-e"));
     }
 
-    /* Load libraries */
+
     for (i = 0; i < args.libc; i++) {
       FILE *lfp = fopen(args.libv[i], args.mrbfile ? "rb" : "r");
-      if (lfp == NULL) {
+      if (lfp == ((void*)0)) {
         fprintf(stderr, "%s: Cannot open library file: %s\n", *argv, args.libv[i]);
         mrbc_context_free(mrb, c);
         cleanup(mrb, &args);
@@ -126,7 +126,7 @@ main(int argc, char **argv)
       fclose(lfp);
     }
 
-    /* Load program */
+
     if (args.mrbfile) {
       v = mrb_load_irep_file_cxt(mrb, args.rfp, c);
     }

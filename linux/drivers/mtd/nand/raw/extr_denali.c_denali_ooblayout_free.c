@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ total; } ;
 struct nand_chip {TYPE_1__ ecc; } ;
 struct mtd_oob_region {scalar_t__ offset; scalar_t__ length; } ;
 struct mtd_info {scalar_t__ oobsize; } ;
 struct denali_controller {scalar_t__ oob_skip_bytes; } ;
 
-/* Variables and functions */
- int ERANGE ; 
- struct nand_chip* mtd_to_nand (struct mtd_info*) ; 
- struct denali_controller* to_denali_controller (struct nand_chip*) ; 
+
+ int ERANGE ;
+ struct nand_chip* mtd_to_nand (struct mtd_info*) ;
+ struct denali_controller* to_denali_controller (struct nand_chip*) ;
 
 __attribute__((used)) static int denali_ooblayout_free(struct mtd_info *mtd, int section,
-				 struct mtd_oob_region *oobregion)
+     struct mtd_oob_region *oobregion)
 {
-	struct nand_chip *chip = mtd_to_nand(mtd);
-	struct denali_controller *denali = to_denali_controller(chip);
+ struct nand_chip *chip = mtd_to_nand(mtd);
+ struct denali_controller *denali = to_denali_controller(chip);
 
-	if (section > 0)
-		return -ERANGE;
+ if (section > 0)
+  return -ERANGE;
 
-	oobregion->offset = chip->ecc.total + denali->oob_skip_bytes;
-	oobregion->length = mtd->oobsize - oobregion->offset;
+ oobregion->offset = chip->ecc.total + denali->oob_skip_bytes;
+ oobregion->length = mtd->oobsize - oobregion->offset;
 
-	return 0;
+ return 0;
 }

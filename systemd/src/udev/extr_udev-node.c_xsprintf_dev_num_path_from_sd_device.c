@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_device ;
-typedef  int /*<<< orphan*/  dev_t ;
 
-/* Variables and functions */
- int DEV_NUM_PATH_MAX ; 
- int ENOMEM ; 
- int /*<<< orphan*/  assert (char**) ; 
- int sd_device_get_devnum (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int sd_device_get_subsystem (int /*<<< orphan*/ *,char const**) ; 
- char* strdup (char*) ; 
- scalar_t__ streq (char const*,char*) ; 
- int /*<<< orphan*/  xsprintf_dev_num_path (char*,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int sd_device ;
+typedef int dev_t ;
+
+
+ int DEV_NUM_PATH_MAX ;
+ int ENOMEM ;
+ int assert (char**) ;
+ int sd_device_get_devnum (int *,int *) ;
+ int sd_device_get_subsystem (int *,char const**) ;
+ char* strdup (char*) ;
+ scalar_t__ streq (char const*,char*) ;
+ int xsprintf_dev_num_path (char*,char*,int ) ;
 
 __attribute__((used)) static int xsprintf_dev_num_path_from_sd_device(sd_device *dev, char **ret) {
         char filename[DEV_NUM_PATH_MAX], *s;

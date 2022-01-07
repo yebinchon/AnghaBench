@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct dir_entry_t {int /*<<< orphan*/ * path; int /*<<< orphan*/  file; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct dir_entry_t {int * path; int file; } ;
 struct TYPE_7__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ intf_thread_t ;
-struct TYPE_8__ {scalar_t__ n_dir_entries; int /*<<< orphan*/  dir_entries; int /*<<< orphan*/ * current_dir; int /*<<< orphan*/  show_hidden_files; } ;
-typedef  TYPE_2__ intf_sys_t ;
-typedef  int /*<<< orphan*/  DIR ;
+typedef TYPE_1__ intf_thread_t ;
+struct TYPE_8__ {scalar_t__ n_dir_entries; int dir_entries; int * current_dir; int show_hidden_files; } ;
+typedef TYPE_2__ intf_sys_t ;
+typedef int DIR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DirsDestroy (TYPE_2__*) ; 
- int /*<<< orphan*/  IsFile (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  TAB_APPEND (scalar_t__,int /*<<< orphan*/ ,struct dir_entry_t*) ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  comdir_entries ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  free (struct dir_entry_t*) ; 
- struct dir_entry_t* malloc (int) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_1__*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qsort (int /*<<< orphan*/ ,scalar_t__,int,int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/ * strdup (char const*) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * vlc_opendir (int /*<<< orphan*/ *) ; 
- char* vlc_readdir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_strerror_c (int /*<<< orphan*/ ) ; 
+
+ int DirsDestroy (TYPE_2__*) ;
+ int IsFile (int *,char const*) ;
+ int TAB_APPEND (scalar_t__,int ,struct dir_entry_t*) ;
+ int closedir (int *) ;
+ int comdir_entries ;
+ int errno ;
+ int free (struct dir_entry_t*) ;
+ struct dir_entry_t* malloc (int) ;
+ int msg_Dbg (TYPE_1__*,char*) ;
+ int msg_Warn (TYPE_1__*,char*,int *,int ) ;
+ int qsort (int ,scalar_t__,int,int *) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int * strdup (char const*) ;
+ scalar_t__ unlikely (int ) ;
+ int * vlc_opendir (int *) ;
+ char* vlc_readdir (int *) ;
+ int vlc_strerror_c (int ) ;
 
 __attribute__((used)) static void ReadDir(intf_thread_t *intf)
 {
@@ -62,12 +62,12 @@ __attribute__((used)) static void ReadDir(intf_thread_t *intf)
             continue;
 
         struct dir_entry_t *dir_entry = malloc(sizeof *dir_entry);
-        if (unlikely(dir_entry == NULL))
+        if (unlikely(dir_entry == ((void*)0)))
             continue;
 
         dir_entry->file = IsFile(sys->current_dir, entry);
         dir_entry->path = strdup(entry);
-        if (unlikely(dir_entry->path == NULL))
+        if (unlikely(dir_entry->path == ((void*)0)))
         {
             free(dir_entry);
             continue;

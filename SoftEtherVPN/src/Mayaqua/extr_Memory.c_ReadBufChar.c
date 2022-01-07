@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UCHAR ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int ReadBuf (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int UCHAR ;
+typedef int BUF ;
+
+
+ int ReadBuf (int *,int *,int) ;
 
 UCHAR ReadBufChar(BUF *b)
 {
-	UCHAR uc;
-	// Validate arguments
-	if (b == NULL)
-	{
-		return 0;
-	}
+ UCHAR uc;
 
-	if (ReadBuf(b, &uc, 1) != 1)
-	{
-		return 0;
-	}
+ if (b == ((void*)0))
+ {
+  return 0;
+ }
 
-	return uc;
+ if (ReadBuf(b, &uc, 1) != 1)
+ {
+  return 0;
+ }
+
+ return uc;
 }

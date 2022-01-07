@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int va_list ;
 struct TYPE_7__ {int flags; } ;
-typedef  TYPE_1__ scanner_t ;
-typedef  int /*<<< orphan*/  json_t ;
+typedef TYPE_1__ scanner_t ;
+typedef int json_t ;
 
-/* Variables and functions */
- int JSON_STRICT ; 
- int /*<<< orphan*/ * json_array_get (int /*<<< orphan*/ *,size_t) ; 
- size_t json_array_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  json_is_array (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  next_token (TYPE_1__*) ; 
- int /*<<< orphan*/  set_error (TYPE_1__*,char*,char*,...) ; 
- int /*<<< orphan*/  strchr (int /*<<< orphan*/ ,long) ; 
- long token (TYPE_1__*) ; 
- long type_name (int /*<<< orphan*/ *) ; 
- scalar_t__ unpack (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  unpack_value_starters ; 
+
+ int JSON_STRICT ;
+ int * json_array_get (int *,size_t) ;
+ size_t json_array_size (int *) ;
+ int json_is_array (int *) ;
+ int next_token (TYPE_1__*) ;
+ int set_error (TYPE_1__*,char*,char*,...) ;
+ int strchr (int ,long) ;
+ long token (TYPE_1__*) ;
+ long type_name (int *) ;
+ scalar_t__ unpack (TYPE_1__*,int *,int *) ;
+ int unpack_value_starters ;
 
 __attribute__((used)) static int unpack_array(scanner_t *s, json_t *root, va_list *ap)
 {
@@ -68,8 +68,8 @@ __attribute__((used)) static int unpack_array(scanner_t *s, json_t *root, va_lis
         }
 
         if(!root) {
-            /* skipping */
-            value = NULL;
+
+            value = ((void*)0);
         }
         else {
             value = json_array_get(root, i);

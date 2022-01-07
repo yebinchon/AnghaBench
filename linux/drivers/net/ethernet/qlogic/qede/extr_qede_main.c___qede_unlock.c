@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct qede_dev {int /*<<< orphan*/  qede_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct qede_dev {int qede_lock; } ;
+
+
+ int mutex_unlock (int *) ;
 
 void __qede_unlock(struct qede_dev *edev)
 {
-	mutex_unlock(&edev->qede_lock);
+ mutex_unlock(&edev->qede_lock);
 }

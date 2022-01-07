@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * css; int /*<<< orphan*/ * js; int /*<<< orphan*/ * trim; int /*<<< orphan*/  types; int /*<<< orphan*/  types_keys; } ;
-typedef  TYPE_1__ ngx_http_trim_loc_conf_t ;
-typedef  int /*<<< orphan*/  ngx_conf_t ;
 
-/* Variables and functions */
- char* NGX_CONF_ERROR ; 
- char* NGX_CONF_OK ; 
- scalar_t__ NGX_OK ; 
- int /*<<< orphan*/  ngx_http_html_default_types ; 
- scalar_t__ ngx_http_merge_types (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * css; int * js; int * trim; int types; int types_keys; } ;
+typedef TYPE_1__ ngx_http_trim_loc_conf_t ;
+typedef int ngx_conf_t ;
+
+
+ char* NGX_CONF_ERROR ;
+ char* NGX_CONF_OK ;
+ scalar_t__ NGX_OK ;
+ int ngx_http_html_default_types ;
+ scalar_t__ ngx_http_merge_types (int *,int *,int *,int *,int *,int ) ;
 
 __attribute__((used)) static char *
 ngx_http_trim_merge_loc_conf(ngx_conf_t *cf, void *parent, void *child)
@@ -36,15 +36,15 @@ ngx_http_trim_merge_loc_conf(ngx_conf_t *cf, void *parent, void *child)
         return NGX_CONF_ERROR;
     }
 
-    if (conf->trim == NULL) {
+    if (conf->trim == ((void*)0)) {
         conf->trim = prev->trim;
     }
 
-    if (conf->js == NULL) {
+    if (conf->js == ((void*)0)) {
         conf->js = prev->js;
     }
 
-    if (conf->css == NULL) {
+    if (conf->css == ((void*)0)) {
         conf->css = prev->css;
     }
 

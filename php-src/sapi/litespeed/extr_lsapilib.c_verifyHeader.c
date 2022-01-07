@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char* m_bytes; int m_iLen; } ;
 struct lsapi_packet_header {scalar_t__ m_versionB0; scalar_t__ m_versionB1; char m_type; int m_flag; TYPE_1__ m_packetLen; } ;
 
-/* Variables and functions */
- int LSAPI_ENDIAN ; 
- int LSAPI_ENDIAN_BIT ; 
- scalar_t__ LSAPI_VERSION_B0 ; 
- scalar_t__ LSAPI_VERSION_B1 ; 
+
+ int LSAPI_ENDIAN ;
+ int LSAPI_ENDIAN_BIT ;
+ scalar_t__ LSAPI_VERSION_B0 ;
+ scalar_t__ LSAPI_VERSION_B1 ;
 
 __attribute__((used)) static inline int verifyHeader( struct lsapi_packet_header * pHeader, char pktType )
 {

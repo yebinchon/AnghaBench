@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  dbMain; } ;
-typedef  TYPE_1__ sqlite3rbu ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- scalar_t__ SQLITE_ROW ; 
- int /*<<< orphan*/  assert (int) ; 
- int prepareFreeAndCollectError (int /*<<< orphan*/ ,int /*<<< orphan*/ **,char**,int /*<<< orphan*/ ) ; 
- int sqlite3_column_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* sqlite3_errmsg (int /*<<< orphan*/ ) ; 
- int sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- int /*<<< orphan*/  sqlite3_mprintf (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_error (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  sqlite3_result_int (int /*<<< orphan*/ *,int) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_user_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int dbMain; } ;
+typedef TYPE_1__ sqlite3rbu ;
+typedef int sqlite3_value ;
+typedef int sqlite3_stmt ;
+typedef int sqlite3_context ;
+
+
+ int SQLITE_OK ;
+ scalar_t__ SQLITE_ROW ;
+ int assert (int) ;
+ int prepareFreeAndCollectError (int ,int **,char**,int ) ;
+ int sqlite3_column_int (int *,int ) ;
+ char* sqlite3_errmsg (int ) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_free (char*) ;
+ int sqlite3_mprintf (char*,int ) ;
+ int sqlite3_result_error (int *,char*,int) ;
+ int sqlite3_result_int (int *,int) ;
+ scalar_t__ sqlite3_step (int *) ;
+ scalar_t__ sqlite3_user_data (int *) ;
+ int sqlite3_value_text (int *) ;
 
 __attribute__((used)) static void rbuIndexCntFunc(
-  sqlite3_context *pCtx, 
+  sqlite3_context *pCtx,
   int nVal,
   sqlite3_value **apVal
 ){
@@ -44,8 +44,8 @@ __attribute__((used)) static void rbuIndexCntFunc(
   int rc;
 
   assert( nVal==1 );
-  
-  rc = prepareFreeAndCollectError(p->dbMain, &pStmt, &zErrmsg, 
+
+  rc = prepareFreeAndCollectError(p->dbMain, &pStmt, &zErrmsg,
       sqlite3_mprintf("SELECT count(*) FROM sqlite_master "
         "WHERE type='index' AND tbl_name = %Q", sqlite3_value_text(apVal[0]))
   );

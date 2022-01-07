@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct multipath_bh {TYPE_1__* mddev; struct bio* master_bio; } ;
-struct mpconf {int /*<<< orphan*/  pool; } ;
-struct bio {int /*<<< orphan*/  bi_status; } ;
-typedef  int /*<<< orphan*/  blk_status_t ;
+struct mpconf {int pool; } ;
+struct bio {int bi_status; } ;
+typedef int blk_status_t ;
 struct TYPE_2__ {struct mpconf* private; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bio_endio (struct bio*) ; 
- int /*<<< orphan*/  mempool_free (struct multipath_bh*,int /*<<< orphan*/ *) ; 
+
+ int bio_endio (struct bio*) ;
+ int mempool_free (struct multipath_bh*,int *) ;
 
 __attribute__((used)) static void multipath_end_bh_io(struct multipath_bh *mp_bh, blk_status_t status)
 {
-	struct bio *bio = mp_bh->master_bio;
-	struct mpconf *conf = mp_bh->mddev->private;
+ struct bio *bio = mp_bh->master_bio;
+ struct mpconf *conf = mp_bh->mddev->private;
 
-	bio->bi_status = status;
-	bio_endio(bio);
-	mempool_free(mp_bh, &conf->pool);
+ bio->bi_status = status;
+ bio_endio(bio);
+ mempool_free(mp_bh, &conf->pool);
 }

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int length; scalar_t__ sos; TYPE_1__* item; } ;
 struct TYPE_6__ {scalar_t__* pcls; } ;
-typedef  TYPE_2__ IsolatedRun ;
+typedef TYPE_2__ IsolatedRun ;
 
-/* Variables and functions */
- scalar_t__ AL ; 
- scalar_t__ AN ; 
- scalar_t__ BN ; 
- scalar_t__ CS ; 
- scalar_t__ EN ; 
- scalar_t__ ES ; 
- scalar_t__ ET ; 
- scalar_t__ L ; 
- scalar_t__ LRI ; 
- scalar_t__ NSM ; 
- scalar_t__ ON ; 
- scalar_t__ R ; 
- int iso_nextValidChar (TYPE_2__*,int) ; 
- int iso_previousValidChar (TYPE_2__*,int) ; 
+
+ scalar_t__ AL ;
+ scalar_t__ AN ;
+ scalar_t__ BN ;
+ scalar_t__ CS ;
+ scalar_t__ EN ;
+ scalar_t__ ES ;
+ scalar_t__ ET ;
+ scalar_t__ L ;
+ scalar_t__ LRI ;
+ scalar_t__ NSM ;
+ scalar_t__ ON ;
+ scalar_t__ R ;
+ int iso_nextValidChar (TYPE_2__*,int) ;
+ int iso_previousValidChar (TYPE_2__*,int) ;
 
 __attribute__((used)) static void resolveWeak(IsolatedRun * iso_run)
 {
     int i;
 
-    /* W1 */
+
     for (i=0; i < iso_run->length; i++)
     {
         if (*iso_run->item[i].pcls == NSM)
@@ -51,7 +51,7 @@ __attribute__((used)) static void resolveWeak(IsolatedRun * iso_run)
         }
     }
 
-    /* W2 */
+
     for (i = 0; i < iso_run->length; i++)
     {
         if (*iso_run->item[i].pcls == EN)
@@ -70,14 +70,14 @@ __attribute__((used)) static void resolveWeak(IsolatedRun * iso_run)
         }
     }
 
-    /* W3 */
+
     for (i = 0; i < iso_run->length; i++)
     {
         if (*iso_run->item[i].pcls == AL)
             *iso_run->item[i].pcls = R;
     }
 
-    /* W4 */
+
     for (i = 0; i < iso_run->length; i++)
     {
         if (*iso_run->item[i].pcls == ES)
@@ -100,7 +100,7 @@ __attribute__((used)) static void resolveWeak(IsolatedRun * iso_run)
         }
     }
 
-    /* W5 */
+
     for (i = 0; i < iso_run->length; i++)
     {
         if (*iso_run->item[i].pcls == ET)
@@ -126,7 +126,7 @@ __attribute__((used)) static void resolveWeak(IsolatedRun * iso_run)
         }
     }
 
-    /* W6 */
+
     for (i = 0; i < iso_run->length; i++)
     {
         if (*iso_run->item[i].pcls == ET || *iso_run->item[i].pcls == ES || *iso_run->item[i].pcls == CS || *iso_run->item[i].pcls == ON)
@@ -142,7 +142,7 @@ __attribute__((used)) static void resolveWeak(IsolatedRun * iso_run)
         }
     }
 
-    /* W7 */
+
     for (i = 0; i < iso_run->length; i++)
     {
         if (*iso_run->item[i].pcls == EN)
@@ -155,7 +155,7 @@ __attribute__((used)) static void resolveWeak(IsolatedRun * iso_run)
                         *iso_run->item[i].pcls = L;
                     break;
                 }
-            if (iso_run->sos == L &&  j == -1)
+            if (iso_run->sos == L && j == -1)
                 *iso_run->item[i].pcls = L;
         }
     }

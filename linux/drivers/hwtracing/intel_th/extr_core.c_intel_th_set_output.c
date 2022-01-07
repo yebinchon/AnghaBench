@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct intel_th_driver {int (* set_output ) (struct intel_th_device*,unsigned int) ;} ;
-struct TYPE_2__ {int /*<<< orphan*/  driver; } ;
+struct TYPE_2__ {int driver; } ;
 struct intel_th_device {scalar_t__ host_mode; TYPE_1__ dev; } ;
 
-/* Variables and functions */
- int ENOTSUPP ; 
- int stub1 (struct intel_th_device*,unsigned int) ; 
- struct intel_th_driver* to_intel_th_driver (int /*<<< orphan*/ ) ; 
- struct intel_th_device* to_intel_th_hub (struct intel_th_device*) ; 
+
+ int ENOTSUPP ;
+ int stub1 (struct intel_th_device*,unsigned int) ;
+ struct intel_th_driver* to_intel_th_driver (int ) ;
+ struct intel_th_device* to_intel_th_hub (struct intel_th_device*) ;
 
 int intel_th_set_output(struct intel_th_device *thdev,
-			unsigned int master)
+   unsigned int master)
 {
-	struct intel_th_device *hub = to_intel_th_hub(thdev);
-	struct intel_th_driver *hubdrv = to_intel_th_driver(hub->dev.driver);
+ struct intel_th_device *hub = to_intel_th_hub(thdev);
+ struct intel_th_driver *hubdrv = to_intel_th_driver(hub->dev.driver);
 
-	/* In host mode, this is up to the external debugger, do nothing. */
-	if (hub->host_mode)
-		return 0;
 
-	if (!hubdrv->set_output)
-		return -ENOTSUPP;
+ if (hub->host_mode)
+  return 0;
 
-	return hubdrv->set_output(hub, master);
+ if (!hubdrv->set_output)
+  return -ENOTSUPP;
+
+ return hubdrv->set_output(hub, master);
 }

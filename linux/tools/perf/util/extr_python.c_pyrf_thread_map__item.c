@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct pyrf_thread_map {TYPE_1__* threads; } ;
-struct TYPE_2__ {size_t nr; int /*<<< orphan*/ * map; } ;
-typedef  size_t Py_ssize_t ;
-typedef  int /*<<< orphan*/  PyObject ;
+struct TYPE_2__ {size_t nr; int * map; } ;
+typedef size_t Py_ssize_t ;
+typedef int PyObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * Py_BuildValue (char*,int /*<<< orphan*/ ) ; 
+
+ int * Py_BuildValue (char*,int ) ;
 
 __attribute__((used)) static PyObject *pyrf_thread_map__item(PyObject *obj, Py_ssize_t i)
 {
-	struct pyrf_thread_map *pthreads = (void *)obj;
+ struct pyrf_thread_map *pthreads = (void *)obj;
 
-	if (i >= pthreads->threads->nr)
-		return NULL;
+ if (i >= pthreads->threads->nr)
+  return ((void*)0);
 
-	return Py_BuildValue("i", pthreads->threads->map[i]);
+ return Py_BuildValue("i", pthreads->threads->map[i]);
 }

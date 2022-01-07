@@ -1,92 +1,92 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int* PSTR ;
-typedef  char* LPSTR ;
-typedef  int /*<<< orphan*/ * LPBYTE ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  LMEM_ZEROINIT ; 
- char* LocalAlloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  LocalFree (char*) ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegEnumKeyExA (int /*<<< orphan*/ ,int,char*,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryInfoKeyA (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegQueryValueExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  TRUE ; 
- int strlen (char*) ; 
+
+
+
+typedef int* PSTR ;
+typedef char* LPSTR ;
+typedef int * LPBYTE ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int HKEY_LOCAL_MACHINE ;
+ int LMEM_ZEROINIT ;
+ char* LocalAlloc (int ,int) ;
+ int LocalFree (char*) ;
+ int RegCloseKey (int ) ;
+ int RegEnumKeyExA (int ,int,char*,int*,int *,int *,int *,int *) ;
+ scalar_t__ RegOpenKeyA (int ,char*,int *) ;
+ scalar_t__ RegQueryInfoKeyA (int ,int *,int *,int *,int*,int*,int *,int *,int *,int *,int *,int *) ;
+ int RegQueryValueExA (int ,char*,int *,int *,int *,int*) ;
+ int TRUE ;
+ int strlen (char*) ;
 
 __attribute__((used)) static BOOL FindProvTypesRegVals(DWORD *pdwIndex, DWORD *pdwProvType, LPSTR *pszTypeName,
-				 DWORD *pcbTypeName, DWORD *pdwTypeCount)
+     DWORD *pcbTypeName, DWORD *pdwTypeCount)
 {
-	HKEY hKey;
-	HKEY hSubKey;
-	PSTR ch;
-	LPSTR szName;
-	DWORD cbName;
-	BOOL ret = FALSE;
+ HKEY hKey;
+ HKEY hSubKey;
+ PSTR ch;
+ LPSTR szName;
+ DWORD cbName;
+ BOOL ret = FALSE;
 
-	if (RegOpenKeyA(HKEY_LOCAL_MACHINE, "Software\\Microsoft\\Cryptography\\Defaults\\Provider Types", &hKey))
-		return FALSE;
+ if (RegOpenKeyA(HKEY_LOCAL_MACHINE, "Software\\Microsoft\\Cryptography\\Defaults\\Provider Types", &hKey))
+  return FALSE;
 
-	if (RegQueryInfoKeyA(hKey, NULL, NULL, NULL, pdwTypeCount, &cbName, NULL,
-			NULL, NULL, NULL, NULL, NULL))
-		goto cleanup;
-	cbName++;
+ if (RegQueryInfoKeyA(hKey, ((void*)0), ((void*)0), ((void*)0), pdwTypeCount, &cbName, ((void*)0),
+   ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0)))
+  goto cleanup;
+ cbName++;
 
-	if (!(szName = LocalAlloc(LMEM_ZEROINIT, cbName)))
-		goto cleanup;
+ if (!(szName = LocalAlloc(LMEM_ZEROINIT, cbName)))
+  goto cleanup;
 
-	while (!RegEnumKeyExA(hKey, *pdwIndex, szName, &cbName, NULL, NULL, NULL, NULL))
-	{
-		cbName++;
-		ch = szName + strlen(szName);
-		/* Convert "Type 000" to 0, etc/ */
-		*pdwProvType = *(--ch) - '0';
-		*pdwProvType += (*(--ch) - '0') * 10;
-		*pdwProvType += (*(--ch) - '0') * 100;
+ while (!RegEnumKeyExA(hKey, *pdwIndex, szName, &cbName, ((void*)0), ((void*)0), ((void*)0), ((void*)0)))
+ {
+  cbName++;
+  ch = szName + strlen(szName);
 
-		if (RegOpenKeyA(hKey, szName, &hSubKey))
-			break;
+  *pdwProvType = *(--ch) - '0';
+  *pdwProvType += (*(--ch) - '0') * 10;
+  *pdwProvType += (*(--ch) - '0') * 100;
 
-		if (!RegQueryValueExA(hSubKey, "TypeName", NULL, NULL, NULL, pcbTypeName))
-		{
-			if (!(*pszTypeName = LocalAlloc(LMEM_ZEROINIT, *pcbTypeName)))
-				break;
+  if (RegOpenKeyA(hKey, szName, &hSubKey))
+   break;
 
-			if (!RegQueryValueExA(hSubKey, "TypeName", NULL, NULL, (LPBYTE)*pszTypeName, pcbTypeName))
-			{
-				ret = TRUE;
-				break;
-			}
+  if (!RegQueryValueExA(hSubKey, "TypeName", ((void*)0), ((void*)0), ((void*)0), pcbTypeName))
+  {
+   if (!(*pszTypeName = LocalAlloc(LMEM_ZEROINIT, *pcbTypeName)))
+    break;
 
-			LocalFree(*pszTypeName);
-		}
+   if (!RegQueryValueExA(hSubKey, "TypeName", ((void*)0), ((void*)0), (LPBYTE)*pszTypeName, pcbTypeName))
+   {
+    ret = TRUE;
+    break;
+   }
 
-		RegCloseKey(hSubKey);
+   LocalFree(*pszTypeName);
+  }
 
-		(*pdwIndex)++;
-	}
-	RegCloseKey(hSubKey);
-	LocalFree(szName);
+  RegCloseKey(hSubKey);
+
+  (*pdwIndex)++;
+ }
+ RegCloseKey(hSubKey);
+ LocalFree(szName);
 
 cleanup:
-	RegCloseKey(hKey);
+ RegCloseKey(hKey);
 
-	return ret;
+ return ret;
 }

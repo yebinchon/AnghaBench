@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {void* base_virt; int /*<<< orphan*/  lock; int /*<<< orphan*/  rh; } ;
 
-/* Variables and functions */
- TYPE_1__* bcom_sram ; 
- int /*<<< orphan*/  rh_free (int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {void* base_virt; int lock; int rh; } ;
+
+
+ TYPE_1__* bcom_sram ;
+ int rh_free (int ,unsigned long) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 void bcom_sram_free(void *ptr)
 {
-	unsigned long offset;
+ unsigned long offset;
 
-	if (!ptr)
-		return;
+ if (!ptr)
+  return;
 
-	offset = ptr - bcom_sram->base_virt;
+ offset = ptr - bcom_sram->base_virt;
 
-	spin_lock(&bcom_sram->lock);
-	rh_free(bcom_sram->rh, offset);
-	spin_unlock(&bcom_sram->lock);
+ spin_lock(&bcom_sram->lock);
+ rh_free(bcom_sram->rh, offset);
+ spin_unlock(&bcom_sram->lock);
 }

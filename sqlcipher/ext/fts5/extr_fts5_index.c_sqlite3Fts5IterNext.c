@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ rc; } ;
 struct TYPE_5__ {TYPE_2__* pIndex; } ;
-typedef  TYPE_1__ Fts5Iter ;
-typedef  int /*<<< orphan*/  Fts5IndexIter ;
+typedef TYPE_1__ Fts5Iter ;
+typedef int Fts5IndexIter ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int fts5IndexReturn (TYPE_2__*) ; 
- int /*<<< orphan*/  fts5MultiIterNext (TYPE_2__*,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ SQLITE_OK ;
+ int assert (int) ;
+ int fts5IndexReturn (TYPE_2__*) ;
+ int fts5MultiIterNext (TYPE_2__*,TYPE_1__*,int ,int ) ;
 
 int sqlite3Fts5IterNext(Fts5IndexIter *pIndexIter){
   Fts5Iter *pIter = (Fts5Iter*)pIndexIter;

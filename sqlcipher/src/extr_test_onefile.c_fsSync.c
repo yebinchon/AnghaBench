@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {TYPE_1__* pMethods; } ;
-typedef  TYPE_2__ sqlite3_file ;
+typedef TYPE_2__ sqlite3_file ;
 struct TYPE_10__ {int nDatabase; TYPE_2__* pFile; } ;
-typedef  TYPE_3__ fs_real_file ;
+typedef TYPE_3__ fs_real_file ;
 struct TYPE_11__ {scalar_t__ eType; TYPE_3__* pReal; } ;
-typedef  TYPE_4__ fs_file ;
-struct TYPE_8__ {int (* xWrite ) (TYPE_2__*,unsigned char*,int,int /*<<< orphan*/ ) ;int (* xSync ) (TYPE_2__*,int) ;} ;
+typedef TYPE_4__ fs_file ;
+struct TYPE_8__ {int (* xWrite ) (TYPE_2__*,unsigned char*,int,int ) ;int (* xSync ) (TYPE_2__*,int) ;} ;
 
-/* Variables and functions */
- scalar_t__ DATABASE_FILE ; 
- int SQLITE_OK ; 
- int SQLITE_SYNC_DATAONLY ; 
- int stub1 (TYPE_2__*,unsigned char*,int,int /*<<< orphan*/ ) ; 
- int stub2 (TYPE_2__*,int) ; 
+
+ scalar_t__ DATABASE_FILE ;
+ int SQLITE_OK ;
+ int SQLITE_SYNC_DATAONLY ;
+ int stub1 (TYPE_2__*,unsigned char*,int,int ) ;
+ int stub2 (TYPE_2__*,int) ;
 
 __attribute__((used)) static int fsSync(sqlite3_file *pFile, int flags){
   fs_file *p = (fs_file *)pFile;

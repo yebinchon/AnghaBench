@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct a10codec_info {int /*<<< orphan*/  lock; } ;
+
+
+
+
+struct a10codec_info {int lock; } ;
 struct a10codec_chinfo {int run; struct a10codec_info* parent; } ;
-typedef  int /*<<< orphan*/  kobj_t ;
+typedef int kobj_t ;
 
-/* Variables and functions */
-#define  PCMTRIG_ABORT 130 
- int /*<<< orphan*/  PCMTRIG_COMMON (int) ; 
-#define  PCMTRIG_START 129 
-#define  PCMTRIG_STOP 128 
- int /*<<< orphan*/  a10codec_start (struct a10codec_chinfo*) ; 
- int /*<<< orphan*/  a10codec_stop (struct a10codec_chinfo*) ; 
- int /*<<< orphan*/  snd_mtxlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snd_mtxunlock (int /*<<< orphan*/ ) ; 
+
+
+ int PCMTRIG_COMMON (int) ;
+
+
+ int a10codec_start (struct a10codec_chinfo*) ;
+ int a10codec_stop (struct a10codec_chinfo*) ;
+ int snd_mtxlock (int ) ;
+ int snd_mtxunlock (int ) ;
 
 __attribute__((used)) static int
 a10codec_chan_trigger(kobj_t obj, void *data, int go)
 {
-	struct a10codec_chinfo *ch = data;
-	struct a10codec_info *sc = ch->parent;
+ struct a10codec_chinfo *ch = data;
+ struct a10codec_info *sc = ch->parent;
 
-	if (!PCMTRIG_COMMON(go))
-		return (0);
+ if (!PCMTRIG_COMMON(go))
+  return (0);
 
-	snd_mtxlock(sc->lock);
-	switch (go) {
-	case PCMTRIG_START:
-		ch->run = 1;
-		a10codec_stop(ch);
-		a10codec_start(ch);
-		break;
-	case PCMTRIG_STOP:
-	case PCMTRIG_ABORT:
-		ch->run = 0;
-		a10codec_stop(ch);
-		break;
-	default:
-		break;
-	}
-	snd_mtxunlock(sc->lock);
+ snd_mtxlock(sc->lock);
+ switch (go) {
+ case 129:
+  ch->run = 1;
+  a10codec_stop(ch);
+  a10codec_start(ch);
+  break;
+ case 128:
+ case 130:
+  ch->run = 0;
+  a10codec_stop(ch);
+  break;
+ default:
+  break;
+ }
+ snd_mtxunlock(sc->lock);
 
-	return (0);
+ return (0);
 }

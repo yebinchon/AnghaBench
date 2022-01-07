@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int (* handshake_func ) (TYPE_1__*) ;} ;
-typedef  TYPE_1__ SSL ;
+typedef TYPE_1__ SSL ;
 
-/* Variables and functions */
- size_t SSL3_RT_MAX_PLAIN_LENGTH ; 
- int /*<<< orphan*/  SSL_F_DTLS1_WRITE_APP_DATA_BYTES ; 
- int /*<<< orphan*/  SSL_R_DTLS_MESSAGE_TOO_BIG ; 
- int /*<<< orphan*/  SSL_R_SSL_HANDSHAKE_FAILURE ; 
- scalar_t__ SSL_in_init (TYPE_1__*) ; 
- int /*<<< orphan*/  SSLerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int dtls1_write_bytes (TYPE_1__*,int,void const*,size_t,size_t*) ; 
- int /*<<< orphan*/  ossl_statem_get_in_handshake (TYPE_1__*) ; 
- int stub1 (TYPE_1__*) ; 
+
+ size_t SSL3_RT_MAX_PLAIN_LENGTH ;
+ int SSL_F_DTLS1_WRITE_APP_DATA_BYTES ;
+ int SSL_R_DTLS_MESSAGE_TOO_BIG ;
+ int SSL_R_SSL_HANDSHAKE_FAILURE ;
+ scalar_t__ SSL_in_init (TYPE_1__*) ;
+ int SSLerr (int ,int ) ;
+ int dtls1_write_bytes (TYPE_1__*,int,void const*,size_t,size_t*) ;
+ int ossl_statem_get_in_handshake (TYPE_1__*) ;
+ int stub1 (TYPE_1__*) ;
 
 int dtls1_write_app_data_bytes(SSL *s, int type, const void *buf_, size_t len,
                                size_t *written)

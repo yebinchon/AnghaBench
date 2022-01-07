@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  UI_OpenSSL () ; 
- int /*<<< orphan*/  UI_create_method (char*) ; 
- int /*<<< orphan*/  UI_method_set_closer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UI_method_set_opener (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UI_method_set_reader (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UI_method_set_writer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UI_null () ; 
- int /*<<< orphan*/  ui_close ; 
- int /*<<< orphan*/  ui_fallback_method ; 
- int /*<<< orphan*/  ui_method ; 
- int /*<<< orphan*/  ui_open ; 
- int /*<<< orphan*/  ui_read ; 
- int /*<<< orphan*/  ui_write ; 
+ int UI_OpenSSL () ;
+ int UI_create_method (char*) ;
+ int UI_method_set_closer (int ,int ) ;
+ int UI_method_set_opener (int ,int ) ;
+ int UI_method_set_reader (int ,int ) ;
+ int UI_method_set_writer (int ,int ) ;
+ int UI_null () ;
+ int ui_close ;
+ int ui_fallback_method ;
+ int ui_method ;
+ int ui_open ;
+ int ui_read ;
+ int ui_write ;
 
 int setup_ui_method(void)
 {
     ui_fallback_method = UI_null();
-#ifndef OPENSSL_NO_UI_CONSOLE
+
     ui_fallback_method = UI_OpenSSL();
-#endif
+
     ui_method = UI_create_method("OpenSSL application user interface");
     UI_method_set_opener(ui_method, ui_open);
     UI_method_set_reader(ui_method, ui_read);

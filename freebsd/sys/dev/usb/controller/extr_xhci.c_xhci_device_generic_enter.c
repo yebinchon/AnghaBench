@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct usb_xfer {int /*<<< orphan*/  stream_id; int /*<<< orphan*/  endpoint; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINTF (char*) ; 
- int /*<<< orphan*/  xhci_device_generic_multi_enter (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct usb_xfer*) ; 
- int /*<<< orphan*/  xhci_setup_generic_chain (struct usb_xfer*) ; 
+
+
+
+struct usb_xfer {int stream_id; int endpoint; } ;
+
+
+ int DPRINTF (char*) ;
+ int xhci_device_generic_multi_enter (int ,int ,struct usb_xfer*) ;
+ int xhci_setup_generic_chain (struct usb_xfer*) ;
 
 __attribute__((used)) static void
 xhci_device_generic_enter(struct usb_xfer *xfer)
 {
-	DPRINTF("\n");
+ DPRINTF("\n");
 
-	/* set up TD's and QH */
-	xhci_setup_generic_chain(xfer);
 
-	xhci_device_generic_multi_enter(xfer->endpoint,
-	    xfer->stream_id, xfer);
+ xhci_setup_generic_chain(xfer);
+
+ xhci_device_generic_multi_enter(xfer->endpoint,
+     xfer->stream_id, xfer);
 }

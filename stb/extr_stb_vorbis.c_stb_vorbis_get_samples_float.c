@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int channels; int channel_buffer_end; int channel_buffer_start; int* channel_buffers; } ;
-typedef  TYPE_1__ stb_vorbis ;
+typedef TYPE_1__ stb_vorbis ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (float*,int,int) ; 
- int /*<<< orphan*/  memset (float*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stb_vorbis_get_frame_float (TYPE_1__*,int /*<<< orphan*/ *,float***) ; 
+
+ int memcpy (float*,int,int) ;
+ int memset (float*,int ,int) ;
+ int stb_vorbis_get_frame_float (TYPE_1__*,int *,float***) ;
 
 int stb_vorbis_get_samples_float(stb_vorbis *f, int channels, float **buffer, int num_samples)
 {
@@ -32,14 +32,14 @@ int stb_vorbis_get_samples_float(stb_vorbis *f, int channels, float **buffer, in
       if (k) {
          for (i=0; i < z; ++i)
             memcpy(buffer[i]+n, f->channel_buffers[i]+f->channel_buffer_start, sizeof(float)*k);
-         for (   ; i < channels; ++i)
+         for ( ; i < channels; ++i)
             memset(buffer[i]+n, 0, sizeof(float) * k);
       }
       n += k;
       f->channel_buffer_start += k;
       if (n == num_samples)
          break;
-      if (!stb_vorbis_get_frame_float(f, NULL, &outputs))
+      if (!stb_vorbis_get_frame_float(f, ((void*)0), &outputs))
          break;
    }
    return n;

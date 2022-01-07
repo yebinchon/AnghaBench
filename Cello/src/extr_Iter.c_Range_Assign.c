@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  struct Range* var ;
-struct Range {int /*<<< orphan*/  step; int /*<<< orphan*/  stop; int /*<<< orphan*/  start; int /*<<< orphan*/  value; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Range ; 
- int /*<<< orphan*/  assign (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct Range* cast (struct Range*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef struct Range* var ;
+struct Range {int step; int stop; int start; int value; } ;
+
+
+ int Range ;
+ int assign (int ,int ) ;
+ struct Range* cast (struct Range*,int ) ;
 
 __attribute__((used)) static void Range_Assign(var self, var obj) {
   struct Range* r = self;

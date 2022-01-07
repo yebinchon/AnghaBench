@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vk_buffer_chain {int /*<<< orphan*/ * current; int /*<<< orphan*/ * head; int /*<<< orphan*/  usage; scalar_t__ offset; void* alignment; void* block_size; } ;
-typedef  void* VkDeviceSize ;
-typedef  int /*<<< orphan*/  VkBufferUsageFlags ;
 
-/* Variables and functions */
+
+
+
+struct vk_buffer_chain {int * current; int * head; int usage; scalar_t__ offset; void* alignment; void* block_size; } ;
+typedef void* VkDeviceSize ;
+typedef int VkBufferUsageFlags ;
+
+
 
 struct vk_buffer_chain vulkan_buffer_chain_init(
       VkDeviceSize block_size,
@@ -24,11 +24,11 @@ struct vk_buffer_chain vulkan_buffer_chain_init(
    struct vk_buffer_chain chain;
 
    chain.block_size = block_size;
-   chain.alignment  = alignment;
-   chain.offset     = 0;
-   chain.usage      = usage;
-   chain.head       = NULL;
-   chain.current    = NULL;
+   chain.alignment = alignment;
+   chain.offset = 0;
+   chain.usage = usage;
+   chain.head = ((void*)0);
+   chain.current = ((void*)0);
 
    return chain;
 }

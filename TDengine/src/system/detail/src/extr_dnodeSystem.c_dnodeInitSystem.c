@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct stat {int dummy; } ;
 struct TYPE_2__ {scalar_t__ num; scalar_t__ (* initFp ) () ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SIGPIPE ; 
- int /*<<< orphan*/  SIG_IGN ; 
- int TSDB_MOD_MAX ; 
- int /*<<< orphan*/  dError (char*) ; 
- int /*<<< orphan*/  dPrint (char*,...) ; 
- int /*<<< orphan*/  dmutex ; 
- int /*<<< orphan*/  dnodeCountRequest ; 
- int /*<<< orphan*/  dnodeInitModules () ; 
- scalar_t__ dnodeInitSystemSpec () ; 
- int /*<<< orphan*/  dnodeStartModuleSpec () ; 
- char* logDir ; 
- int /*<<< orphan*/  mkdir (char*,int) ; 
- int /*<<< orphan*/  monitorCountReqFp ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  pthread_mutex_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
- scalar_t__ stat (char*,struct stat*) ; 
- scalar_t__ stub1 () ; 
- scalar_t__ taosCreateTierDirectory () ; 
- int /*<<< orphan*/  taosGetTimestampSec () ; 
- scalar_t__ taosInitLog (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  taosResolveCRC () ; 
- int /*<<< orphan*/  tsInternalIp ; 
- TYPE_1__* tsModule ; 
- int /*<<< orphan*/  tsNumOfLogLines ; 
- int /*<<< orphan*/  tsPrintGlobalConfig () ; 
- int /*<<< orphan*/  tsReadGlobalConfig () ; 
- int /*<<< orphan*/  tsReadGlobalLogConfig () ; 
- int /*<<< orphan*/  tsRebootTime ; 
- int tscEmbedded ; 
- int /*<<< orphan*/  vnodeInitQHandle () ; 
- scalar_t__ vnodeInitSystem () ; 
+
+ int SIGPIPE ;
+ int SIG_IGN ;
+ int TSDB_MOD_MAX ;
+ int dError (char*) ;
+ int dPrint (char*,...) ;
+ int dmutex ;
+ int dnodeCountRequest ;
+ int dnodeInitModules () ;
+ scalar_t__ dnodeInitSystemSpec () ;
+ int dnodeStartModuleSpec () ;
+ char* logDir ;
+ int mkdir (char*,int) ;
+ int monitorCountReqFp ;
+ int printf (char*) ;
+ int pthread_mutex_init (int *,int *) ;
+ int signal (int ,int ) ;
+ int sprintf (char*,char*,char*) ;
+ scalar_t__ stat (char*,struct stat*) ;
+ scalar_t__ stub1 () ;
+ scalar_t__ taosCreateTierDirectory () ;
+ int taosGetTimestampSec () ;
+ scalar_t__ taosInitLog (char*,int ,int) ;
+ int taosResolveCRC () ;
+ int tsInternalIp ;
+ TYPE_1__* tsModule ;
+ int tsNumOfLogLines ;
+ int tsPrintGlobalConfig () ;
+ int tsReadGlobalConfig () ;
+ int tsReadGlobalLogConfig () ;
+ int tsRebootTime ;
+ int tscEmbedded ;
+ int vnodeInitQHandle () ;
+ scalar_t__ vnodeInitSystem () ;
 
 int dnodeInitSystem() {
-  char        temp[128];
+  char temp[128];
   struct stat dirstat;
 
   taosResolveCRC();
@@ -58,7 +58,7 @@ int dnodeInitSystem() {
   tsRebootTime = taosGetTimestampSec();
   tscEmbedded = 1;
 
-  // Read global configuration.
+
   tsReadGlobalLogConfig();
 
   if (stat(logDir, &dirstat) < 0) mkdir(logDir, 0755);
@@ -66,7 +66,7 @@ int dnodeInitSystem() {
   sprintf(temp, "%s/taosdlog", logDir);
   if (taosInitLog(temp, tsNumOfLogLines, 1) < 0) printf("failed to init log file\n");
 
-  if (!tsReadGlobalConfig()) {  // TODO : Change this function
+  if (!tsReadGlobalConfig()) {
     tsPrintGlobalConfig();
     dError("TDengine read global config failed");
     return -1;
@@ -83,7 +83,7 @@ int dnodeInitSystem() {
   signal(SIGPIPE, SIG_IGN);
 
   dnodeInitModules();
-  pthread_mutex_init(&dmutex, NULL);
+  pthread_mutex_init(&dmutex, ((void*)0));
 
   dPrint("starting to initialize TDengine ...");
 
@@ -91,7 +91,7 @@ int dnodeInitSystem() {
   if (dnodeInitSystemSpec() < 0) {
     return -1;
   }
-  
+
   for (int mod = 0; mod < TSDB_MOD_MAX; ++mod) {
     if (tsModule[mod].num != 0 && tsModule[mod].initFp) {
       if ((*tsModule[mod].initFp)() != 0) {

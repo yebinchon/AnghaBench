@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t __u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONFIG_XFRM ; 
- size_t F_FLOW_SEQ ; 
- size_t IPSEC_SHIFT ; 
- size_t IPV6_SHIFT ; 
- int /*<<< orphan*/  IS_ENABLED (int /*<<< orphan*/ ) ; 
- size_t NR_PKT_FLAGS ; 
- char** pkt_flag_names ; 
- scalar_t__ strcmp (char const*,char*) ; 
+
+
+
+typedef size_t __u32 ;
+
+
+ int CONFIG_XFRM ;
+ size_t F_FLOW_SEQ ;
+ size_t IPSEC_SHIFT ;
+ size_t IPV6_SHIFT ;
+ int IS_ENABLED (int ) ;
+ size_t NR_PKT_FLAGS ;
+ char** pkt_flag_names ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 __attribute__((used)) static __u32 pktgen_read_flag(const char *f, bool *disable)
 {
-	__u32 i;
+ __u32 i;
 
-	if (f[0] == '!') {
-		*disable = true;
-		f++;
-	}
+ if (f[0] == '!') {
+  *disable = 1;
+  f++;
+ }
 
-	for (i = 0; i < NR_PKT_FLAGS; i++) {
-		if (!IS_ENABLED(CONFIG_XFRM) && i == IPSEC_SHIFT)
-			continue;
+ for (i = 0; i < NR_PKT_FLAGS; i++) {
+  if (!IS_ENABLED(CONFIG_XFRM) && i == IPSEC_SHIFT)
+   continue;
 
-		/* allow only disabling ipv6 flag */
-		if (!*disable && i == IPV6_SHIFT)
-			continue;
 
-		if (strcmp(f, pkt_flag_names[i]) == 0)
-			return 1 << i;
-	}
+  if (!*disable && i == IPV6_SHIFT)
+   continue;
 
-	if (strcmp(f, "FLOW_RND") == 0) {
-		*disable = !*disable;
-		return F_FLOW_SEQ;
-	}
+  if (strcmp(f, pkt_flag_names[i]) == 0)
+   return 1 << i;
+ }
 
-	return 0;
+ if (strcmp(f, "FLOW_RND") == 0) {
+  *disable = !*disable;
+  return F_FLOW_SEQ;
+ }
+
+ return 0;
 }

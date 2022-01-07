@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  ide_hwif_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATA_CBL_PATA40 ; 
- int /*<<< orphan*/  ATA_CBL_PATA80 ; 
- int get_indexed_reg (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int u8 ;
+typedef int ide_hwif_t ;
+
+
+ int ATA_CBL_PATA40 ;
+ int ATA_CBL_PATA80 ;
+ int get_indexed_reg (int *,int) ;
 
 __attribute__((used)) static u8 pdcnew_cable_detect(ide_hwif_t *hwif)
 {
-	if (get_indexed_reg(hwif, 0x0b) & 0x04)
-		return ATA_CBL_PATA40;
-	else
-		return ATA_CBL_PATA80;
+ if (get_indexed_reg(hwif, 0x0b) & 0x04)
+  return ATA_CBL_PATA40;
+ else
+  return ATA_CBL_PATA80;
 }

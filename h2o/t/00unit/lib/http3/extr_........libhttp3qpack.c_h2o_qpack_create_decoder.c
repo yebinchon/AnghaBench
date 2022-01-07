@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_4__ {int header_table_size; int max_entries; int /*<<< orphan*/  blocked_streams; int /*<<< orphan*/  table; int /*<<< orphan*/  max_blocked; scalar_t__ total_inserts; scalar_t__ insert_count; } ;
-typedef  TYPE_1__ h2o_qpack_decoder_t ;
 
-/* Variables and functions */
- TYPE_1__* h2o_mem_alloc (int) ; 
- int /*<<< orphan*/  header_table_init (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int uint16_t ;
+struct TYPE_4__ {int header_table_size; int max_entries; int blocked_streams; int table; int max_blocked; scalar_t__ total_inserts; scalar_t__ insert_count; } ;
+typedef TYPE_1__ h2o_qpack_decoder_t ;
+
+
+ TYPE_1__* h2o_mem_alloc (int) ;
+ int header_table_init (int *,int) ;
+ int memset (int *,int ,int) ;
 
 h2o_qpack_decoder_t *h2o_qpack_create_decoder(uint32_t header_table_size, uint16_t max_blocked)
 {

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {scalar_t__ hfile; int /*<<< orphan*/  data; int /*<<< orphan*/  hmap; int /*<<< orphan*/  path; } ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_1__ ASSEMBLY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateFileMappingW (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ CreateFileW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_NORMAL ; 
- int /*<<< orphan*/  FILE_MAP_READ ; 
- int /*<<< orphan*/  FILE_SHARE_READ ; 
- int /*<<< orphan*/  GENERIC_READ ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  HRESULT_FROM_WIN32 (int /*<<< orphan*/ ) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  MapViewOfFile (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- int /*<<< orphan*/  PAGE_READONLY ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  assembly_release (TYPE_1__*) ; 
- TYPE_1__* heap_alloc_zero (int) ; 
- int /*<<< orphan*/  parse_clr_metadata (TYPE_1__*) ; 
- int /*<<< orphan*/  parse_pe_header (TYPE_1__*) ; 
- int /*<<< orphan*/  strdupW (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {scalar_t__ hfile; int data; int hmap; int path; } ;
+typedef int LPCWSTR ;
+typedef int HRESULT ;
+typedef TYPE_1__ ASSEMBLY ;
+
+
+ int CreateFileMappingW (scalar_t__,int *,int ,int ,int ,int *) ;
+ scalar_t__ CreateFileW (int ,int ,int ,int *,int ,int ,int *) ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int FILE_ATTRIBUTE_NORMAL ;
+ int FILE_MAP_READ ;
+ int FILE_SHARE_READ ;
+ int GENERIC_READ ;
+ int GetLastError () ;
+ int HRESULT_FROM_WIN32 (int ) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int MapViewOfFile (int ,int ,int ,int ,int ) ;
+ int OPEN_EXISTING ;
+ int PAGE_READONLY ;
+ int S_OK ;
+ int assembly_release (TYPE_1__*) ;
+ TYPE_1__* heap_alloc_zero (int) ;
+ int parse_clr_metadata (TYPE_1__*) ;
+ int parse_pe_header (TYPE_1__*) ;
+ int strdupW (int ) ;
 
 HRESULT assembly_create(ASSEMBLY **out, LPCWSTR file)
 {
     ASSEMBLY *assembly;
     HRESULT hr;
 
-    *out = NULL;
+    *out = ((void*)0);
 
     if (!(assembly = heap_alloc_zero(sizeof(*assembly)))) return E_OUTOFMEMORY;
 
@@ -55,15 +55,15 @@ HRESULT assembly_create(ASSEMBLY **out, LPCWSTR file)
     }
 
     assembly->hfile = CreateFileW(file, GENERIC_READ, FILE_SHARE_READ,
-                                  NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+                                  ((void*)0), OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, ((void*)0));
     if (assembly->hfile == INVALID_HANDLE_VALUE)
     {
         hr = HRESULT_FROM_WIN32(GetLastError());
         goto failed;
     }
 
-    assembly->hmap = CreateFileMappingW(assembly->hfile, NULL, PAGE_READONLY,
-                                        0, 0, NULL);
+    assembly->hmap = CreateFileMappingW(assembly->hfile, ((void*)0), PAGE_READONLY,
+                                        0, 0, ((void*)0));
     if (!assembly->hmap)
     {
         hr = HRESULT_FROM_WIN32(GetLastError());

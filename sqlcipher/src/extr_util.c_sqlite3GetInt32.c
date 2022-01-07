@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
-typedef  int sqlite_int64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
- int sqlite3HexToInt (char const) ; 
- int /*<<< orphan*/  sqlite3Isdigit (char const) ; 
- scalar_t__ sqlite3Isxdigit (char const) ; 
- int /*<<< orphan*/  testcase (int) ; 
+
+
+
+typedef int u32 ;
+typedef int sqlite_int64 ;
+
+
+ int memcpy (int*,int*,int) ;
+ int sqlite3HexToInt (char const) ;
+ int sqlite3Isdigit (char const) ;
+ scalar_t__ sqlite3Isxdigit (char const) ;
+ int testcase (int) ;
 
 int sqlite3GetInt32(const char *zNum, int *pValue){
   sqlite_int64 v = 0;
@@ -30,7 +30,7 @@ int sqlite3GetInt32(const char *zNum, int *pValue){
   }else if( zNum[0]=='+' ){
     zNum++;
   }
-#ifndef SQLITE_OMIT_HEX_INTEGER
+
   else if( zNum[0]=='0'
         && (zNum[1]=='x' || zNum[1]=='X')
         && sqlite3Isxdigit(zNum[2])
@@ -48,18 +48,18 @@ int sqlite3GetInt32(const char *zNum, int *pValue){
       return 0;
     }
   }
-#endif
+
   if( !sqlite3Isdigit(zNum[0]) ) return 0;
   while( zNum[0]=='0' ) zNum++;
   for(i=0; i<11 && (c = zNum[i] - '0')>=0 && c<=9; i++){
     v = v*10 + c;
   }
 
-  /* The longest decimal representation of a 32 bit integer is 10 digits:
-  **
-  **             1234567890
-  **     2^31 -> 2147483648
-  */
+
+
+
+
+
   testcase( i==10 );
   if( i>10 ){
     return 0;

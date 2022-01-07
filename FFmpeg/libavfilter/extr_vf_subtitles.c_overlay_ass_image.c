@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_9__ {int /*<<< orphan*/  dst_y; int /*<<< orphan*/  dst_x; int /*<<< orphan*/  h; int /*<<< orphan*/  w; int /*<<< orphan*/  stride; int /*<<< orphan*/  bitmap; int /*<<< orphan*/  color; struct TYPE_9__* next; } ;
-struct TYPE_8__ {int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  linesize; int /*<<< orphan*/  data; } ;
-struct TYPE_7__ {int /*<<< orphan*/  draw; } ;
-typedef  int /*<<< orphan*/  FFDrawColor ;
-typedef  TYPE_1__ AssContext ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ ASS_Image ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AA (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AB (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_blend_mask (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_draw_color (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_9__ {int dst_y; int dst_x; int h; int w; int stride; int bitmap; int color; struct TYPE_9__* next; } ;
+struct TYPE_8__ {int height; int width; int linesize; int data; } ;
+struct TYPE_7__ {int draw; } ;
+typedef int FFDrawColor ;
+typedef TYPE_1__ AssContext ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ ASS_Image ;
+
+
+ int AA (int ) ;
+ int AB (int ) ;
+ int AG (int ) ;
+ int AR (int ) ;
+ int ff_blend_mask (int *,int *,int ,int ,int ,int ,int ,int ,int ,int ,int,int ,int ,int ) ;
+ int ff_draw_color (int *,int *,int *) ;
 
 __attribute__((used)) static void overlay_ass_image(AssContext *ass, AVFrame *picref,
                               const ASS_Image *image)

@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  scalar_t__ uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  scalar_t__ uint16_t ;
-typedef  int /*<<< orphan*/  no_replay ;
+
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef scalar_t__ uint64_t ;
+typedef int uint32_t ;
+typedef scalar_t__ uint16_t ;
+typedef int no_replay ;
 struct TYPE_10__ {scalar_t__ family; } ;
 struct TYPE_14__ {TYPE_1__ ip; } ;
-struct TYPE_13__ {int /*<<< orphan*/  public_key; TYPE_6__ ip_port; } ;
-struct TYPE_12__ {TYPE_2__* friends_list; int /*<<< orphan*/  dht; } ;
-struct TYPE_11__ {scalar_t__ last_noreplay; int /*<<< orphan*/  (* tcp_relay_node_callback ) (void*,int /*<<< orphan*/ ,TYPE_6__,int /*<<< orphan*/ ) ;int /*<<< orphan*/  tcp_relay_node_callback_number; void* tcp_relay_node_callback_object; int /*<<< orphan*/  dht_public_key; int /*<<< orphan*/  last_seen; int /*<<< orphan*/  dht_pk_callback_number; int /*<<< orphan*/  dht_pk_callback_object; int /*<<< orphan*/  (* dht_pk_callback ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__ const*) ;} ;
-typedef  TYPE_3__ Onion_Client ;
-typedef  TYPE_4__ Node_format ;
+struct TYPE_13__ {int public_key; TYPE_6__ ip_port; } ;
+struct TYPE_12__ {TYPE_2__* friends_list; int dht; } ;
+struct TYPE_11__ {scalar_t__ last_noreplay; int (* tcp_relay_node_callback ) (void*,int ,TYPE_6__,int ) ;int tcp_relay_node_callback_number; void* tcp_relay_node_callback_object; int dht_public_key; int last_seen; int dht_pk_callback_number; int dht_pk_callback_object; int (* dht_pk_callback ) (int ,int ,scalar_t__ const*) ;} ;
+typedef TYPE_3__ Onion_Client ;
+typedef TYPE_4__ Node_format ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- scalar_t__ AF_INET6 ; 
- scalar_t__ DHTPK_DATA_MAX_LENGTH ; 
- scalar_t__ DHTPK_DATA_MIN_LENGTH ; 
- int /*<<< orphan*/  DHT_getnodes (int /*<<< orphan*/ ,TYPE_6__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int MAX_SENT_NODES ; 
- scalar_t__ TCP_INET ; 
- scalar_t__ TCP_INET6 ; 
- int crypto_box_PUBLICKEYBYTES ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,scalar_t__ const*,int) ; 
- int /*<<< orphan*/  net_to_host (scalar_t__*,int) ; 
- int onion_friend_num (TYPE_3__*,scalar_t__ const*) ; 
- int /*<<< orphan*/  onion_set_friend_DHT_pubkey (TYPE_3__*,int,scalar_t__ const*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__ const*) ; 
- int /*<<< orphan*/  stub2 (void*,int /*<<< orphan*/ ,TYPE_6__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unix_time () ; 
- int unpack_nodes (TYPE_4__*,int,int /*<<< orphan*/ ,scalar_t__ const*,scalar_t__,int) ; 
+
+ scalar_t__ AF_INET ;
+ scalar_t__ AF_INET6 ;
+ scalar_t__ DHTPK_DATA_MAX_LENGTH ;
+ scalar_t__ DHTPK_DATA_MIN_LENGTH ;
+ int DHT_getnodes (int ,TYPE_6__*,int ,int ) ;
+ int MAX_SENT_NODES ;
+ scalar_t__ TCP_INET ;
+ scalar_t__ TCP_INET6 ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int memcpy (scalar_t__*,scalar_t__ const*,int) ;
+ int net_to_host (scalar_t__*,int) ;
+ int onion_friend_num (TYPE_3__*,scalar_t__ const*) ;
+ int onion_set_friend_DHT_pubkey (TYPE_3__*,int,scalar_t__ const*) ;
+ int stub1 (int ,int ,scalar_t__ const*) ;
+ int stub2 (void*,int ,TYPE_6__,int ) ;
+ int unix_time () ;
+ int unpack_nodes (TYPE_4__*,int,int ,scalar_t__ const*,scalar_t__,int) ;
 
 __attribute__((used)) static int handle_dhtpk_announce(void *object, const uint8_t *source_pubkey, const uint8_t *data, uint16_t length)
 {

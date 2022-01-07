@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct ra_tex_params {int dimensions; int d; int render_src; int src_linear; int /*<<< orphan*/  format; int /*<<< orphan*/  h; int /*<<< orphan*/  w; } ;
-struct TYPE_6__ {scalar_t__ hw_subfmt; int /*<<< orphan*/  imgfmt; int /*<<< orphan*/  h; int /*<<< orphan*/  w; } ;
-struct ra_hwdec_mapper {TYPE_2__ dst_params; TYPE_2__ src_params; int /*<<< orphan*/ * tex; int /*<<< orphan*/  ra; struct priv* priv; TYPE_1__* owner; } ;
-struct priv_owner {scalar_t__ alpha; int /*<<< orphan*/  egl_config; int /*<<< orphan*/  egl_display; int /*<<< orphan*/  device9ex; } ;
-struct priv {scalar_t__ egl_surface; int /*<<< orphan*/  gl_texture; int /*<<< orphan*/  egl_display; int /*<<< orphan*/  surface9; int /*<<< orphan*/  texture9; int /*<<< orphan*/  device9ex; int /*<<< orphan*/  query9; } ;
-struct TYPE_7__ {int /*<<< orphan*/  (* BindTexture ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* TexParameteri ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* GenTextures ) (int,int /*<<< orphan*/ *) ;} ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct ra_tex_params {int dimensions; int d; int render_src; int src_linear; int format; int h; int w; } ;
+struct TYPE_6__ {scalar_t__ hw_subfmt; int imgfmt; int h; int w; } ;
+struct ra_hwdec_mapper {TYPE_2__ dst_params; TYPE_2__ src_params; int * tex; int ra; struct priv* priv; TYPE_1__* owner; } ;
+struct priv_owner {scalar_t__ alpha; int egl_config; int egl_display; int device9ex; } ;
+struct priv {scalar_t__ egl_surface; int gl_texture; int egl_display; int surface9; int texture9; int device9ex; int query9; } ;
+struct TYPE_7__ {int (* BindTexture ) (int ,int ) ;int (* TexParameteri ) (int ,int ,int ) ;int (* GenTextures ) (int,int *) ;} ;
 struct TYPE_5__ {struct priv_owner* priv; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/ * HANDLE ;
-typedef  TYPE_3__ GL ;
-typedef  int /*<<< orphan*/  EGLint ;
+typedef int HRESULT ;
+typedef int * HANDLE ;
+typedef TYPE_3__ GL ;
+typedef int EGLint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DFMT_A8R8G8B8 ; 
- int /*<<< orphan*/  D3DFMT_X8R8G8B8 ; 
- int /*<<< orphan*/  D3DISSUE_END ; 
- int /*<<< orphan*/  D3DPOOL_DEFAULT ; 
- int /*<<< orphan*/  D3DQUERYTYPE_EVENT ; 
- int /*<<< orphan*/  D3DUSAGE_RENDERTARGET ; 
- int /*<<< orphan*/  EGL_D3D_TEXTURE_2D_SHARE_HANDLE_ANGLE ; 
- int /*<<< orphan*/  EGL_HEIGHT ; 
- int /*<<< orphan*/  EGL_NONE ; 
- scalar_t__ EGL_NO_SURFACE ; 
- int /*<<< orphan*/  EGL_TEXTURE_2D ; 
- int /*<<< orphan*/  EGL_TEXTURE_FORMAT ; 
- int /*<<< orphan*/  EGL_TEXTURE_RGB ; 
- int /*<<< orphan*/  EGL_TEXTURE_RGBA ; 
- int /*<<< orphan*/  EGL_TEXTURE_TARGET ; 
- int /*<<< orphan*/  EGL_WIDTH ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_CLAMP_TO_EDGE ; 
- int /*<<< orphan*/  GL_LINEAR ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  GL_TEXTURE_MAG_FILTER ; 
- int /*<<< orphan*/  GL_TEXTURE_MIN_FILTER ; 
- int /*<<< orphan*/  GL_TEXTURE_WRAP_S ; 
- int /*<<< orphan*/  GL_TEXTURE_WRAP_T ; 
- int /*<<< orphan*/  IDirect3DDevice9Ex_CreateTexture (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IDirect3DDevice9_CreateQuery (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirect3DQuery9_Issue (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDirect3DTexture9_GetSurfaceLevel (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMGFMT_RGB0 ; 
- int /*<<< orphan*/  MP_ERR (struct ra_hwdec_mapper*,char*,...) ; 
- int /*<<< orphan*/  MP_FATAL (struct ra_hwdec_mapper*,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ eglCreatePbufferFromClientBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_HRESULT_to_str (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ra_create_wrapped_tex (int /*<<< orphan*/ ,struct ra_tex_params*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ra_find_unorm_format (int /*<<< orphan*/ ,int,int) ; 
- TYPE_3__* ra_gl_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub5 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub6 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub7 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int D3DFMT_A8R8G8B8 ;
+ int D3DFMT_X8R8G8B8 ;
+ int D3DISSUE_END ;
+ int D3DPOOL_DEFAULT ;
+ int D3DQUERYTYPE_EVENT ;
+ int D3DUSAGE_RENDERTARGET ;
+ int EGL_D3D_TEXTURE_2D_SHARE_HANDLE_ANGLE ;
+ int EGL_HEIGHT ;
+ int EGL_NONE ;
+ scalar_t__ EGL_NO_SURFACE ;
+ int EGL_TEXTURE_2D ;
+ int EGL_TEXTURE_FORMAT ;
+ int EGL_TEXTURE_RGB ;
+ int EGL_TEXTURE_RGBA ;
+ int EGL_TEXTURE_TARGET ;
+ int EGL_WIDTH ;
+ scalar_t__ FAILED (int ) ;
+ int GL_CLAMP_TO_EDGE ;
+ int GL_LINEAR ;
+ int GL_TEXTURE_2D ;
+ int GL_TEXTURE_MAG_FILTER ;
+ int GL_TEXTURE_MIN_FILTER ;
+ int GL_TEXTURE_WRAP_S ;
+ int GL_TEXTURE_WRAP_T ;
+ int IDirect3DDevice9Ex_CreateTexture (int ,int ,int ,int,int ,int ,int ,int *,int **) ;
+ int IDirect3DDevice9_CreateQuery (int ,int ,int *) ;
+ int IDirect3DQuery9_Issue (int ,int ) ;
+ int IDirect3DTexture9_GetSurfaceLevel (int ,int ,int *) ;
+ int IMGFMT_RGB0 ;
+ int MP_ERR (struct ra_hwdec_mapper*,char*,...) ;
+ int MP_FATAL (struct ra_hwdec_mapper*,char*,int ) ;
+ scalar_t__ eglCreatePbufferFromClientBuffer (int ,int ,int *,int ,int *) ;
+ int mp_HRESULT_to_str (int ) ;
+ int ra_create_wrapped_tex (int ,struct ra_tex_params*,int ) ;
+ int ra_find_unorm_format (int ,int,int) ;
+ TYPE_3__* ra_gl_get (int ) ;
+ int stub1 (int,int *) ;
+ int stub2 (int ,int ) ;
+ int stub3 (int ,int ,int ) ;
+ int stub4 (int ,int ,int ) ;
+ int stub5 (int ,int ,int ) ;
+ int stub6 (int ,int ,int ) ;
+ int stub7 (int ,int ) ;
 
 __attribute__((used)) static int mapper_init(struct ra_hwdec_mapper *mapper)
 {
@@ -88,7 +88,7 @@ __attribute__((used)) static int mapper_init(struct ra_hwdec_mapper *mapper)
         goto fail;
     }
 
-    // Test the query API
+
     hr = IDirect3DQuery9_Issue(p->query9, D3DISSUE_END);
     if (FAILED(hr)) {
         MP_FATAL(mapper, "Failed to issue Direct3D END test query: %s\n",
@@ -96,7 +96,7 @@ __attribute__((used)) static int mapper_init(struct ra_hwdec_mapper *mapper)
         goto fail;
     }
 
-    HANDLE share_handle = NULL;
+    HANDLE share_handle = ((void*)0);
     hr = IDirect3DDevice9Ex_CreateTexture(p->device9ex,
                                           mapper->src_params.w,
                                           mapper->src_params.h,
@@ -148,8 +148,8 @@ __attribute__((used)) static int mapper_init(struct ra_hwdec_mapper *mapper)
         .h = mapper->src_params.h,
         .d = 1,
         .format = ra_find_unorm_format(mapper->ra, 1, p_owner->alpha ? 4 : 3),
-        .render_src = true,
-        .src_linear = true,
+        .render_src = 1,
+        .src_linear = 1,
     };
     if (!params.format)
         goto fail;

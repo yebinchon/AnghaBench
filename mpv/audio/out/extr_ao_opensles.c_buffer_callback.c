@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct priv {double frames_per_enqueue; int /*<<< orphan*/  buffer_lock; int /*<<< orphan*/  bytes_per_enqueue; int /*<<< orphan*/  buf; scalar_t__ audio_latency; } ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct priv {double frames_per_enqueue; int buffer_lock; int bytes_per_enqueue; int buf; scalar_t__ audio_latency; } ;
 struct ao {scalar_t__ samplerate; struct priv* priv; } ;
-struct TYPE_4__ {scalar_t__ (* Enqueue ) (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
-typedef  scalar_t__ SLresult ;
-typedef  TYPE_1__** SLBufferQueueItf ;
+struct TYPE_4__ {scalar_t__ (* Enqueue ) (TYPE_1__**,int ,int ) ;} ;
+typedef scalar_t__ SLresult ;
+typedef TYPE_1__** SLBufferQueueItf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_ERR (struct ao*,char*,scalar_t__) ; 
- scalar_t__ SL_RESULT_SUCCESS ; 
- int /*<<< orphan*/  ao_read_data (struct ao*,int /*<<< orphan*/ *,double,scalar_t__) ; 
- scalar_t__ mp_time_us () ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ stub1 (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int MP_ERR (struct ao*,char*,scalar_t__) ;
+ scalar_t__ SL_RESULT_SUCCESS ;
+ int ao_read_data (struct ao*,int *,double,scalar_t__) ;
+ scalar_t__ mp_time_us () ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ scalar_t__ stub1 (TYPE_1__**,int ,int ) ;
 
 __attribute__((used)) static void buffer_callback(SLBufferQueueItf buffer_queue, void *context)
 {

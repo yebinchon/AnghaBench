@@ -1,0 +1,162 @@
+; ModuleID = '/home/carl/AnghaBench/freebsd/sys/dev/bge/extr_if_bge.c_bge_stats_clear_regs.c'
+source_filename = "/home/carl/AnghaBench/freebsd/sys/dev/bge/extr_if_bge.c_bge_stats_clear_regs.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.bge_softc = type { i32 }
+
+@BGE_TX_MAC_STATS_OCTETS = common dso_local global i32 0, align 4
+@BGE_TX_MAC_STATS_COLLS = common dso_local global i32 0, align 4
+@BGE_TX_MAC_STATS_XON_SENT = common dso_local global i32 0, align 4
+@BGE_TX_MAC_STATS_XOFF_SENT = common dso_local global i32 0, align 4
+@BGE_TX_MAC_STATS_ERRORS = common dso_local global i32 0, align 4
+@BGE_TX_MAC_STATS_SINGLE_COLL = common dso_local global i32 0, align 4
+@BGE_TX_MAC_STATS_MULTI_COLL = common dso_local global i32 0, align 4
+@BGE_TX_MAC_STATS_DEFERRED = common dso_local global i32 0, align 4
+@BGE_TX_MAC_STATS_EXCESS_COLL = common dso_local global i32 0, align 4
+@BGE_TX_MAC_STATS_LATE_COLL = common dso_local global i32 0, align 4
+@BGE_TX_MAC_STATS_UCAST = common dso_local global i32 0, align 4
+@BGE_TX_MAC_STATS_MCAST = common dso_local global i32 0, align 4
+@BGE_TX_MAC_STATS_BCAST = common dso_local global i32 0, align 4
+@BGE_RX_MAC_STATS_OCTESTS = common dso_local global i32 0, align 4
+@BGE_RX_MAC_STATS_FRAGMENTS = common dso_local global i32 0, align 4
+@BGE_RX_MAC_STATS_UCAST = common dso_local global i32 0, align 4
+@BGE_RX_MAC_STATS_MCAST = common dso_local global i32 0, align 4
+@BGE_RX_MAC_STATS_BCAST = common dso_local global i32 0, align 4
+@BGE_RX_MAC_STATS_FCS_ERRORS = common dso_local global i32 0, align 4
+@BGE_RX_MAC_STATS_ALGIN_ERRORS = common dso_local global i32 0, align 4
+@BGE_RX_MAC_STATS_XON_RCVD = common dso_local global i32 0, align 4
+@BGE_RX_MAC_STATS_XOFF_RCVD = common dso_local global i32 0, align 4
+@BGE_RX_MAC_STATS_CTRL_RCVD = common dso_local global i32 0, align 4
+@BGE_RX_MAC_STATS_XOFF_ENTERED = common dso_local global i32 0, align 4
+@BGE_RX_MAC_STATS_FRAME_TOO_LONG = common dso_local global i32 0, align 4
+@BGE_RX_MAC_STATS_JABBERS = common dso_local global i32 0, align 4
+@BGE_RX_MAC_STATS_UNDERSIZE = common dso_local global i32 0, align 4
+@BGE_RXLP_LOCSTAT_FILTDROP = common dso_local global i32 0, align 4
+@BGE_RXLP_LOCSTAT_DMA_WRQ_FULL = common dso_local global i32 0, align 4
+@BGE_RXLP_LOCSTAT_DMA_HPWRQ_FULL = common dso_local global i32 0, align 4
+@BGE_RXLP_LOCSTAT_OUT_OF_BDS = common dso_local global i32 0, align 4
+@BGE_RXLP_LOCSTAT_IFIN_DROPS = common dso_local global i32 0, align 4
+@BGE_RXLP_LOCSTAT_IFIN_ERRORS = common dso_local global i32 0, align 4
+@BGE_RXLP_LOCSTAT_RXTHRESH_HIT = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void (%struct.bge_softc*)* @bge_stats_clear_regs to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @bge_stats_clear_regs(%struct.bge_softc* %0) #0 {
+  %2 = alloca %struct.bge_softc*, align 8
+  store %struct.bge_softc* %0, %struct.bge_softc** %2, align 8
+  %3 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %4 = load i32, i32* @BGE_TX_MAC_STATS_OCTETS, align 4
+  %5 = call i32 @CSR_READ_4(%struct.bge_softc* %3, i32 %4)
+  %6 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %7 = load i32, i32* @BGE_TX_MAC_STATS_COLLS, align 4
+  %8 = call i32 @CSR_READ_4(%struct.bge_softc* %6, i32 %7)
+  %9 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %10 = load i32, i32* @BGE_TX_MAC_STATS_XON_SENT, align 4
+  %11 = call i32 @CSR_READ_4(%struct.bge_softc* %9, i32 %10)
+  %12 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %13 = load i32, i32* @BGE_TX_MAC_STATS_XOFF_SENT, align 4
+  %14 = call i32 @CSR_READ_4(%struct.bge_softc* %12, i32 %13)
+  %15 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %16 = load i32, i32* @BGE_TX_MAC_STATS_ERRORS, align 4
+  %17 = call i32 @CSR_READ_4(%struct.bge_softc* %15, i32 %16)
+  %18 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %19 = load i32, i32* @BGE_TX_MAC_STATS_SINGLE_COLL, align 4
+  %20 = call i32 @CSR_READ_4(%struct.bge_softc* %18, i32 %19)
+  %21 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %22 = load i32, i32* @BGE_TX_MAC_STATS_MULTI_COLL, align 4
+  %23 = call i32 @CSR_READ_4(%struct.bge_softc* %21, i32 %22)
+  %24 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %25 = load i32, i32* @BGE_TX_MAC_STATS_DEFERRED, align 4
+  %26 = call i32 @CSR_READ_4(%struct.bge_softc* %24, i32 %25)
+  %27 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %28 = load i32, i32* @BGE_TX_MAC_STATS_EXCESS_COLL, align 4
+  %29 = call i32 @CSR_READ_4(%struct.bge_softc* %27, i32 %28)
+  %30 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %31 = load i32, i32* @BGE_TX_MAC_STATS_LATE_COLL, align 4
+  %32 = call i32 @CSR_READ_4(%struct.bge_softc* %30, i32 %31)
+  %33 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %34 = load i32, i32* @BGE_TX_MAC_STATS_UCAST, align 4
+  %35 = call i32 @CSR_READ_4(%struct.bge_softc* %33, i32 %34)
+  %36 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %37 = load i32, i32* @BGE_TX_MAC_STATS_MCAST, align 4
+  %38 = call i32 @CSR_READ_4(%struct.bge_softc* %36, i32 %37)
+  %39 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %40 = load i32, i32* @BGE_TX_MAC_STATS_BCAST, align 4
+  %41 = call i32 @CSR_READ_4(%struct.bge_softc* %39, i32 %40)
+  %42 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %43 = load i32, i32* @BGE_RX_MAC_STATS_OCTESTS, align 4
+  %44 = call i32 @CSR_READ_4(%struct.bge_softc* %42, i32 %43)
+  %45 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %46 = load i32, i32* @BGE_RX_MAC_STATS_FRAGMENTS, align 4
+  %47 = call i32 @CSR_READ_4(%struct.bge_softc* %45, i32 %46)
+  %48 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %49 = load i32, i32* @BGE_RX_MAC_STATS_UCAST, align 4
+  %50 = call i32 @CSR_READ_4(%struct.bge_softc* %48, i32 %49)
+  %51 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %52 = load i32, i32* @BGE_RX_MAC_STATS_MCAST, align 4
+  %53 = call i32 @CSR_READ_4(%struct.bge_softc* %51, i32 %52)
+  %54 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %55 = load i32, i32* @BGE_RX_MAC_STATS_BCAST, align 4
+  %56 = call i32 @CSR_READ_4(%struct.bge_softc* %54, i32 %55)
+  %57 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %58 = load i32, i32* @BGE_RX_MAC_STATS_FCS_ERRORS, align 4
+  %59 = call i32 @CSR_READ_4(%struct.bge_softc* %57, i32 %58)
+  %60 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %61 = load i32, i32* @BGE_RX_MAC_STATS_ALGIN_ERRORS, align 4
+  %62 = call i32 @CSR_READ_4(%struct.bge_softc* %60, i32 %61)
+  %63 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %64 = load i32, i32* @BGE_RX_MAC_STATS_XON_RCVD, align 4
+  %65 = call i32 @CSR_READ_4(%struct.bge_softc* %63, i32 %64)
+  %66 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %67 = load i32, i32* @BGE_RX_MAC_STATS_XOFF_RCVD, align 4
+  %68 = call i32 @CSR_READ_4(%struct.bge_softc* %66, i32 %67)
+  %69 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %70 = load i32, i32* @BGE_RX_MAC_STATS_CTRL_RCVD, align 4
+  %71 = call i32 @CSR_READ_4(%struct.bge_softc* %69, i32 %70)
+  %72 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %73 = load i32, i32* @BGE_RX_MAC_STATS_XOFF_ENTERED, align 4
+  %74 = call i32 @CSR_READ_4(%struct.bge_softc* %72, i32 %73)
+  %75 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %76 = load i32, i32* @BGE_RX_MAC_STATS_FRAME_TOO_LONG, align 4
+  %77 = call i32 @CSR_READ_4(%struct.bge_softc* %75, i32 %76)
+  %78 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %79 = load i32, i32* @BGE_RX_MAC_STATS_JABBERS, align 4
+  %80 = call i32 @CSR_READ_4(%struct.bge_softc* %78, i32 %79)
+  %81 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %82 = load i32, i32* @BGE_RX_MAC_STATS_UNDERSIZE, align 4
+  %83 = call i32 @CSR_READ_4(%struct.bge_softc* %81, i32 %82)
+  %84 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %85 = load i32, i32* @BGE_RXLP_LOCSTAT_FILTDROP, align 4
+  %86 = call i32 @CSR_READ_4(%struct.bge_softc* %84, i32 %85)
+  %87 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %88 = load i32, i32* @BGE_RXLP_LOCSTAT_DMA_WRQ_FULL, align 4
+  %89 = call i32 @CSR_READ_4(%struct.bge_softc* %87, i32 %88)
+  %90 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %91 = load i32, i32* @BGE_RXLP_LOCSTAT_DMA_HPWRQ_FULL, align 4
+  %92 = call i32 @CSR_READ_4(%struct.bge_softc* %90, i32 %91)
+  %93 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %94 = load i32, i32* @BGE_RXLP_LOCSTAT_OUT_OF_BDS, align 4
+  %95 = call i32 @CSR_READ_4(%struct.bge_softc* %93, i32 %94)
+  %96 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %97 = load i32, i32* @BGE_RXLP_LOCSTAT_IFIN_DROPS, align 4
+  %98 = call i32 @CSR_READ_4(%struct.bge_softc* %96, i32 %97)
+  %99 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %100 = load i32, i32* @BGE_RXLP_LOCSTAT_IFIN_ERRORS, align 4
+  %101 = call i32 @CSR_READ_4(%struct.bge_softc* %99, i32 %100)
+  %102 = load %struct.bge_softc*, %struct.bge_softc** %2, align 8
+  %103 = load i32, i32* @BGE_RXLP_LOCSTAT_RXTHRESH_HIT, align 4
+  %104 = call i32 @CSR_READ_4(%struct.bge_softc* %102, i32 %103)
+  ret void
+}
+
+declare dso_local i32 @CSR_READ_4(%struct.bge_softc*, i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

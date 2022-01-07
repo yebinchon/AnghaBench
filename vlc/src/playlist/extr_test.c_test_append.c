@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_playlist_t ;
-typedef  int /*<<< orphan*/  input_item_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateDummyMediaArray (int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  DestroyMediaArray (int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  EXPECT_AT (int,int) ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  assert (int) ; 
- int vlc_playlist_Append (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int) ; 
- int vlc_playlist_AppendOne (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int vlc_playlist_Count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_playlist_Delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vlc_playlist_New (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vlc_playlist_t ;
+typedef int input_item_t ;
+
+
+ int CreateDummyMediaArray (int **,int) ;
+ int DestroyMediaArray (int **,int) ;
+ int EXPECT_AT (int,int) ;
+ int VLC_SUCCESS ;
+ int assert (int) ;
+ int vlc_playlist_Append (int *,int **,int) ;
+ int vlc_playlist_AppendOne (int *,int *) ;
+ int vlc_playlist_Count (int *) ;
+ int vlc_playlist_Delete (int *) ;
+ int * vlc_playlist_New (int *) ;
 
 __attribute__((used)) static void
 test_append(void)
 {
-    vlc_playlist_t *playlist = vlc_playlist_New(NULL);
+    vlc_playlist_t *playlist = vlc_playlist_New(((void*)0));
     assert(playlist);
 
     input_item_t *media[10];
     CreateDummyMediaArray(media, 10);
 
-    /* append one by one */
+
     for (int i = 0; i < 5; ++i)
     {
         int ret = vlc_playlist_AppendOne(playlist, media[i]);
         assert(ret == VLC_SUCCESS);
     }
 
-    /* append several at once */
+
     int ret = vlc_playlist_Append(playlist, &media[5], 5);
     assert(ret == VLC_SUCCESS);
 

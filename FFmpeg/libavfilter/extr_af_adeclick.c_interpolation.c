@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {double* matrix; double* vector; int /*<<< orphan*/  vector_size; int /*<<< orphan*/  matrix_size; } ;
-typedef  TYPE_1__ DeclickChannel ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- size_t abs (int) ; 
- int /*<<< orphan*/  autocorrelation (double*,int,int,double*,int) ; 
- int /*<<< orphan*/  av_fast_malloc (double**,int /*<<< orphan*/ *,int) ; 
- int do_interpolation (TYPE_1__*,double*,double*,int,double*) ; 
- scalar_t__ find_index (int*,int,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {double* matrix; double* vector; int vector_size; int matrix_size; } ;
+typedef TYPE_1__ DeclickChannel ;
+
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ size_t abs (int) ;
+ int autocorrelation (double*,int,int,double*,int) ;
+ int av_fast_malloc (double**,int *,int) ;
+ int do_interpolation (TYPE_1__*,double*,double*,int,double*) ;
+ scalar_t__ find_index (int*,int,int) ;
 
 __attribute__((used)) static int interpolation(DeclickChannel *c, const double *src, int ar_order,
                          double *acoefficients, int *index, int nb_errors,

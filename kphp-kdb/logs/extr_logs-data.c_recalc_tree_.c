@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ type; int v_int; } ;
 struct TYPE_7__ {int vn; struct TYPE_7__** v; TYPE_1__ tok; } ;
-typedef  TYPE_2__ node ;
+typedef TYPE_2__ node ;
 
-/* Variables and functions */
- scalar_t__ op_and ; 
- scalar_t__ op_or ; 
- int recalc_node (TYPE_2__*) ; 
- int to_bool (TYPE_2__*) ; 
+
+ scalar_t__ op_and ;
+ scalar_t__ op_or ;
+ int recalc_node (TYPE_2__*) ;
+ int to_bool (TYPE_2__*) ;
 
 inline int recalc_tree_ (node *v) {
   int i;

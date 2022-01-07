@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u64 ;
 struct inode {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  nodeid; } ;
+struct TYPE_2__ {int nodeid; } ;
 
-/* Variables and functions */
- TYPE_1__* get_fuse_inode (struct inode*) ; 
+
+ TYPE_1__* get_fuse_inode (struct inode*) ;
 
 __attribute__((used)) static int fuse_inode_set(struct inode *inode, void *_nodeidp)
 {
-	u64 nodeid = *(u64 *) _nodeidp;
-	get_fuse_inode(inode)->nodeid = nodeid;
-	return 0;
+ u64 nodeid = *(u64 *) _nodeidp;
+ get_fuse_inode(inode)->nodeid = nodeid;
+ return 0;
 }

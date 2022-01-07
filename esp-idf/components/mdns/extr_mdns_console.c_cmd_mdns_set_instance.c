@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {TYPE_1__* instance; int /*<<< orphan*/  end; } ;
-struct TYPE_3__ {int /*<<< orphan*/ ** sval; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERROR_CHECK (int /*<<< orphan*/ ) ; 
- int arg_parse (int,char**,void**) ; 
- int /*<<< orphan*/  arg_print_errors (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mdns_instance_name_set (int /*<<< orphan*/ *) ; 
- TYPE_2__ mdns_set_instance_args ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {TYPE_1__* instance; int end; } ;
+struct TYPE_3__ {int ** sval; } ;
+
+
+ int ESP_ERROR_CHECK (int ) ;
+ int arg_parse (int,char**,void**) ;
+ int arg_print_errors (int ,int ,char*) ;
+ int mdns_instance_name_set (int *) ;
+ TYPE_2__ mdns_set_instance_args ;
+ int printf (char*) ;
+ int stderr ;
 
 __attribute__((used)) static int cmd_mdns_set_instance(int argc, char** argv)
 {
@@ -32,7 +32,7 @@ __attribute__((used)) static int cmd_mdns_set_instance(int argc, char** argv)
         return 1;
     }
 
-    if (mdns_set_instance_args.instance->sval[0] == NULL) {
+    if (mdns_set_instance_args.instance->sval[0] == ((void*)0)) {
         printf("ERROR: Bad arguments!\n");
         return 1;
     }

@@ -1,170 +1,117 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  EACCES 172 
-#define  EADDRINUSE 171 
-#define  EADDRNOTAVAIL 170 
-#define  EAFNOSUPPORT 169 
-#define  EALREADY 168 
-#define  EBADF 167 
-#define  ECONNABORTED 166 
-#define  ECONNREFUSED 165 
-#define  ECONNRESET 164 
-#define  EDESTADDRREQ 163 
-#define  EDQUOT 162 
-#define  EFAULT 161 
-#define  EHOSTDOWN 160 
-#define  EHOSTUNREACH 159 
-#define  EINPROGRESS 158 
-#define  EINTR 157 
-#define  EINVAL 156 
-#define  EISCONN 155 
-#define  ELOOP 154 
-#define  EMFILE 153 
-#define  EMSGSIZE 152 
-#define  ENAMETOOLONG 151 
-#define  ENETDOWN 150 
-#define  ENETRESET 149 
-#define  ENETUNREACH 148 
-#define  ENOBUFS 147 
-#define  ENOPROTOOPT 146 
-#define  ENOTCONN 145 
-#define  ENOTEMPTY 144 
-#define  ENOTSOCK 143 
-#define  EOPNOTSUPP 142 
-#define  EPERM 141 
-#define  EPFNOSUPPORT 140 
-#define  EPIPE 139 
-#define  EPROCLIM 138 
-#define  EPROTONOSUPPORT 137 
-#define  EPROTOTYPE 136 
-#define  EREMOTE 135 
-#define  ESHUTDOWN 134 
-#define  ESOCKTNOSUPPORT 133 
-#define  ESTALE 132 
-#define  ETIMEDOUT 131 
-#define  ETOOMANYREFS 130 
-#define  EUSERS 129 
-#define  EWOULDBLOCK 128 
- int WSAEACCES ; 
- int WSAEADDRINUSE ; 
- int WSAEADDRNOTAVAIL ; 
- int WSAEAFNOSUPPORT ; 
- int WSAEALREADY ; 
- int WSAEBADF ; 
- int WSAECONNABORTED ; 
- int WSAECONNREFUSED ; 
- int WSAECONNRESET ; 
- int WSAEDESTADDRREQ ; 
- int WSAEDQUOT ; 
- int WSAEFAULT ; 
- int WSAEHOSTDOWN ; 
- int WSAEHOSTUNREACH ; 
- int WSAEINPROGRESS ; 
- int WSAEINTR ; 
- int WSAEINVAL ; 
- int WSAEISCONN ; 
- int WSAELOOP ; 
- int WSAEMFILE ; 
- int WSAEMSGSIZE ; 
- int WSAENAMETOOLONG ; 
- int WSAENETDOWN ; 
- int WSAENETRESET ; 
- int WSAENETUNREACH ; 
- int WSAENOBUFS ; 
- int WSAENOPROTOOPT ; 
- int WSAENOTCONN ; 
- int WSAENOTEMPTY ; 
- int WSAENOTSOCK ; 
- int WSAEOPNOTSUPP ; 
- int WSAEPFNOSUPPORT ; 
- int WSAEPROCLIM ; 
- int WSAEPROTONOSUPPORT ; 
- int WSAEPROTOTYPE ; 
- int WSAEREMOTE ; 
- int WSAESHUTDOWN ; 
- int WSAESOCKTNOSUPPORT ; 
- int WSAESTALE ; 
- int WSAETIMEDOUT ; 
- int WSAETOOMANYREFS ; 
- int WSAEUSERS ; 
- int WSAEWOULDBLOCK ; 
- int errno ; 
- int /*<<< orphan*/  perror (char*) ; 
+ int WSAEACCES ;
+ int WSAEADDRINUSE ;
+ int WSAEADDRNOTAVAIL ;
+ int WSAEAFNOSUPPORT ;
+ int WSAEALREADY ;
+ int WSAEBADF ;
+ int WSAECONNABORTED ;
+ int WSAECONNREFUSED ;
+ int WSAECONNRESET ;
+ int WSAEDESTADDRREQ ;
+ int WSAEDQUOT ;
+ int WSAEFAULT ;
+ int WSAEHOSTDOWN ;
+ int WSAEHOSTUNREACH ;
+ int WSAEINPROGRESS ;
+ int WSAEINTR ;
+ int WSAEINVAL ;
+ int WSAEISCONN ;
+ int WSAELOOP ;
+ int WSAEMFILE ;
+ int WSAEMSGSIZE ;
+ int WSAENAMETOOLONG ;
+ int WSAENETDOWN ;
+ int WSAENETRESET ;
+ int WSAENETUNREACH ;
+ int WSAENOBUFS ;
+ int WSAENOPROTOOPT ;
+ int WSAENOTCONN ;
+ int WSAENOTEMPTY ;
+ int WSAENOTSOCK ;
+ int WSAEOPNOTSUPP ;
+ int WSAEPFNOSUPPORT ;
+ int WSAEPROCLIM ;
+ int WSAEPROTONOSUPPORT ;
+ int WSAEPROTOTYPE ;
+ int WSAEREMOTE ;
+ int WSAESHUTDOWN ;
+ int WSAESOCKTNOSUPPORT ;
+ int WSAESTALE ;
+ int WSAETIMEDOUT ;
+ int WSAETOOMANYREFS ;
+ int WSAEUSERS ;
+ int WSAEWOULDBLOCK ;
+ int errno ;
+ int perror (char*) ;
 
 __attribute__((used)) static int sock_get_error( int err )
 {
-#if !defined(__MINGW32__) && !defined (_MSC_VER)
+
     switch (err)
     {
-        case EINTR:             return WSAEINTR;
-        case EBADF:             return WSAEBADF;
-        case EPERM:
-        case EACCES:            return WSAEACCES;
-        case EFAULT:            return WSAEFAULT;
-        case EINVAL:            return WSAEINVAL;
-        case EMFILE:            return WSAEMFILE;
-        case EWOULDBLOCK:       return WSAEWOULDBLOCK;
-        case EINPROGRESS:       return WSAEINPROGRESS;
-        case EALREADY:          return WSAEALREADY;
-        case ENOTSOCK:          return WSAENOTSOCK;
-        case EDESTADDRREQ:      return WSAEDESTADDRREQ;
-        case EMSGSIZE:          return WSAEMSGSIZE;
-        case EPROTOTYPE:        return WSAEPROTOTYPE;
-        case ENOPROTOOPT:       return WSAENOPROTOOPT;
-        case EPROTONOSUPPORT:   return WSAEPROTONOSUPPORT;
-        case ESOCKTNOSUPPORT:   return WSAESOCKTNOSUPPORT;
-        case EOPNOTSUPP:        return WSAEOPNOTSUPP;
-        case EPFNOSUPPORT:      return WSAEPFNOSUPPORT;
-        case EAFNOSUPPORT:      return WSAEAFNOSUPPORT;
-        case EADDRINUSE:        return WSAEADDRINUSE;
-        case EADDRNOTAVAIL:     return WSAEADDRNOTAVAIL;
-        case ENETDOWN:          return WSAENETDOWN;
-        case ENETUNREACH:       return WSAENETUNREACH;
-        case ENETRESET:         return WSAENETRESET;
-        case ECONNABORTED:      return WSAECONNABORTED;
-        case EPIPE:
-        case ECONNRESET:        return WSAECONNRESET;
-        case ENOBUFS:           return WSAENOBUFS;
-        case EISCONN:           return WSAEISCONN;
-        case ENOTCONN:          return WSAENOTCONN;
-        case ESHUTDOWN:         return WSAESHUTDOWN;
-        case ETOOMANYREFS:      return WSAETOOMANYREFS;
-        case ETIMEDOUT:         return WSAETIMEDOUT;
-        case ECONNREFUSED:      return WSAECONNREFUSED;
-        case ELOOP:             return WSAELOOP;
-        case ENAMETOOLONG:      return WSAENAMETOOLONG;
-        case EHOSTDOWN:         return WSAEHOSTDOWN;
-        case EHOSTUNREACH:      return WSAEHOSTUNREACH;
-        case ENOTEMPTY:         return WSAENOTEMPTY;
-#ifdef EPROCLIM
-        case EPROCLIM:          return WSAEPROCLIM;
-#endif
-#ifdef EUSERS
-        case EUSERS:            return WSAEUSERS;
-#endif
-#ifdef EDQUOT
-        case EDQUOT:            return WSAEDQUOT;
-#endif
-#ifdef ESTALE
-        case ESTALE:            return WSAESTALE;
-#endif
-#ifdef EREMOTE
-        case EREMOTE:           return WSAEREMOTE;
-#endif
+        case 157: return WSAEINTR;
+        case 167: return WSAEBADF;
+        case 141:
+        case 172: return WSAEACCES;
+        case 161: return WSAEFAULT;
+        case 156: return WSAEINVAL;
+        case 153: return WSAEMFILE;
+        case 128: return WSAEWOULDBLOCK;
+        case 158: return WSAEINPROGRESS;
+        case 168: return WSAEALREADY;
+        case 143: return WSAENOTSOCK;
+        case 163: return WSAEDESTADDRREQ;
+        case 152: return WSAEMSGSIZE;
+        case 136: return WSAEPROTOTYPE;
+        case 146: return WSAENOPROTOOPT;
+        case 137: return WSAEPROTONOSUPPORT;
+        case 133: return WSAESOCKTNOSUPPORT;
+        case 142: return WSAEOPNOTSUPP;
+        case 140: return WSAEPFNOSUPPORT;
+        case 169: return WSAEAFNOSUPPORT;
+        case 171: return WSAEADDRINUSE;
+        case 170: return WSAEADDRNOTAVAIL;
+        case 150: return WSAENETDOWN;
+        case 148: return WSAENETUNREACH;
+        case 149: return WSAENETRESET;
+        case 166: return WSAECONNABORTED;
+        case 139:
+        case 164: return WSAECONNRESET;
+        case 147: return WSAENOBUFS;
+        case 155: return WSAEISCONN;
+        case 145: return WSAENOTCONN;
+        case 134: return WSAESHUTDOWN;
+        case 130: return WSAETOOMANYREFS;
+        case 131: return WSAETIMEDOUT;
+        case 165: return WSAECONNREFUSED;
+        case 154: return WSAELOOP;
+        case 151: return WSAENAMETOOLONG;
+        case 160: return WSAEHOSTDOWN;
+        case 159: return WSAEHOSTUNREACH;
+        case 144: return WSAENOTEMPTY;
+
+        case 138: return WSAEPROCLIM;
+
+
+        case 129: return WSAEUSERS;
+
+
+        case 162: return WSAEDQUOT;
+
+
+        case 132: return WSAESTALE;
+
+
+        case 135: return WSAEREMOTE;
+
     default: errno = err; perror( "sock_set_error" ); return WSAEFAULT;
     }
-#endif
+
     return err;
 }

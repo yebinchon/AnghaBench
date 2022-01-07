@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONGLONG ;
-typedef  int ULONG64 ;
-typedef  int UCHAR ;
-typedef  int* PUCHAR ;
-typedef  int LONGLONG ;
-typedef  int LONG64 ;
-typedef  int CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,int) ; 
+
+
+
+typedef int ULONGLONG ;
+typedef int ULONG64 ;
+typedef int UCHAR ;
+typedef int* PUCHAR ;
+typedef int LONGLONG ;
+typedef int LONG64 ;
+typedef int CHAR ;
+
+
+ int DPRINT (char*,int) ;
 
 PUCHAR
 DecodeRun(PUCHAR DataRun,
@@ -41,7 +41,7 @@ DecodeRun(PUCHAR DataRun,
         DataRun++;
     }
 
-    /* NTFS 3+ sparse files */
+
     if (DataRunOffsetSize == 0)
     {
         *DataRunOffset = -1;
@@ -53,7 +53,7 @@ DecodeRun(PUCHAR DataRun,
             *DataRunOffset += ((ULONG64)*DataRun) << (i * 8);
             DataRun++;
         }
-        /* The last byte contains sign so we must process it different way. */
+
         *DataRunOffset = ((LONG64)(CHAR)(*(DataRun++)) << (i * 8)) + *DataRunOffset;
     }
 

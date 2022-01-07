@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ sqlite3_int64 ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- char* fts5ConfigSkipBareword (char const*) ; 
- int fts5Dequote (char*) ; 
- scalar_t__ fts5_isopenquote (char) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_malloc64 (scalar_t__) ; 
- scalar_t__ strlen (char const*) ; 
+
+
+
+typedef scalar_t__ sqlite3_int64 ;
+
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ char* fts5ConfigSkipBareword (char const*) ;
+ int fts5Dequote (char*) ;
+ scalar_t__ fts5_isopenquote (char) ;
+ int memcpy (char*,char const*,size_t) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_malloc64 (scalar_t__) ;
+ scalar_t__ strlen (char const*) ;
 
 __attribute__((used)) static const char *fts5ConfigGobbleWord(
-  int *pRc,                       /* IN/OUT: Error code */
-  const char *zIn,                /* Buffer to gobble string/bareword from */
-  char **pzOut,                   /* OUT: malloc'd buffer containing str/bw */
-  int *pbQuoted                   /* OUT: Set to true if dequoting required */
+  int *pRc,
+  const char *zIn,
+  char **pzOut,
+  int *pbQuoted
 ){
   const char *zRet = 0;
 

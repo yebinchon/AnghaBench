@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * handshake_dgst; int /*<<< orphan*/  handshake_buffer; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * handshake_dgst; int handshake_buffer; } ;
 struct TYPE_6__ {TYPE_1__ s3; } ;
-typedef  TYPE_2__ SSL ;
+typedef TYPE_2__ SSL ;
 
-/* Variables and functions */
- int BIO_write (int /*<<< orphan*/ ,void*,int) ; 
- int /*<<< orphan*/  ERR_R_INTERNAL_ERROR ; 
- int EVP_DigestUpdate (int /*<<< orphan*/ *,unsigned char const*,size_t) ; 
- size_t INT_MAX ; 
- int /*<<< orphan*/  SSL_AD_INTERNAL_ERROR ; 
- int /*<<< orphan*/  SSL_F_SSL3_FINISH_MAC ; 
- int /*<<< orphan*/  SSL_R_OVERFLOW_ERROR ; 
- int /*<<< orphan*/  SSLfatal (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int BIO_write (int ,void*,int) ;
+ int ERR_R_INTERNAL_ERROR ;
+ int EVP_DigestUpdate (int *,unsigned char const*,size_t) ;
+ size_t INT_MAX ;
+ int SSL_AD_INTERNAL_ERROR ;
+ int SSL_F_SSL3_FINISH_MAC ;
+ int SSL_R_OVERFLOW_ERROR ;
+ int SSLfatal (TYPE_2__*,int ,int ,int ) ;
 
 int ssl3_finish_mac(SSL *s, const unsigned char *buf, size_t len)
 {
     int ret;
 
-    if (s->s3.handshake_dgst == NULL) {
-        /* Note: this writes to a memory BIO so a failure is a fatal error */
+    if (s->s3.handshake_dgst == ((void*)0)) {
+
         if (len > INT_MAX) {
             SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_SSL3_FINISH_MAC,
                      SSL_R_OVERFLOW_ERROR);

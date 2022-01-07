@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ptrdiff_t ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int ptrdiff_t ;
 struct TYPE_12__ {TYPE_2__* priv; } ;
-struct TYPE_11__ {int h; int /*<<< orphan*/  w; int /*<<< orphan*/  format; TYPE_5__* dst; } ;
+struct TYPE_11__ {int h; int w; int format; TYPE_5__* dst; } ;
 struct TYPE_10__ {int log2_chroma_h; TYPE_1__* comp; } ;
-struct TYPE_9__ {int bitdepth; int* width; int* height; int /*<<< orphan*/  sad; } ;
+struct TYPE_9__ {int bitdepth; int* width; int* height; int sad; } ;
 struct TYPE_8__ {int depth; } ;
-typedef  TYPE_2__ FreezeDetectContext ;
-typedef  TYPE_3__ AVPixFmtDescriptor ;
-typedef  TYPE_4__ AVFilterLink ;
-typedef  TYPE_5__ AVFilterContext ;
+typedef TYPE_2__ FreezeDetectContext ;
+typedef TYPE_3__ AVPixFmtDescriptor ;
+typedef TYPE_4__ AVFilterLink ;
+typedef TYPE_5__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int av_image_get_linesize (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- TYPE_3__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_scene_sad_get_fn (int) ; 
+
+ int AVERROR (int ) ;
+ int EINVAL ;
+ int av_image_get_linesize (int ,int ,int) ;
+ TYPE_3__* av_pix_fmt_desc_get (int ) ;
+ int ff_scene_sad_get_fn (int) ;
 
 __attribute__((used)) static int config_input(AVFilterLink *inlink)
 {

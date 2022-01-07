@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned int vlc_tick_t ;
-typedef  int /*<<< orphan*/  sout_stream_id_sys_t ;
-struct TYPE_7__ {unsigned int i_buffer; unsigned int i_length; int i_flags; unsigned int p_buffer; int /*<<< orphan*/  i_pts; } ;
-typedef  TYPE_1__ block_t ;
 
-/* Variables and functions */
- int BLOCK_FLAG_DISCONTINUITY ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- TYPE_1__* block_Alloc (int) ; 
- int /*<<< orphan*/  block_Release (TYPE_1__*) ; 
- unsigned int rtp_mtu (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rtp_packetize_common (int /*<<< orphan*/ *,TYPE_1__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rtp_packetize_send (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  swab (unsigned int,unsigned int,unsigned int) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef unsigned int vlc_tick_t ;
+typedef int sout_stream_id_sys_t ;
+struct TYPE_7__ {unsigned int i_buffer; unsigned int i_length; int i_flags; unsigned int p_buffer; int i_pts; } ;
+typedef TYPE_1__ block_t ;
+
+
+ int BLOCK_FLAG_DISCONTINUITY ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ TYPE_1__* block_Alloc (int) ;
+ int block_Release (TYPE_1__*) ;
+ unsigned int rtp_mtu (int *) ;
+ int rtp_packetize_common (int *,TYPE_1__*,int,int ) ;
+ int rtp_packetize_send (int *,TYPE_1__*) ;
+ int swab (unsigned int,unsigned int,unsigned int) ;
+ scalar_t__ unlikely (int ) ;
 
 __attribute__((used)) static int rtp_packetize_swab(sout_stream_id_sys_t *id, block_t *in)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static int rtp_packetize_swab(sout_stream_id_sys_t *id, bl
         bool marker = (in->i_flags & BLOCK_FLAG_DISCONTINUITY) != 0;
 
         block_t *out = block_Alloc(12 + payload);
-        if (unlikely(out == NULL))
+        if (unlikely(out == ((void*)0)))
         {
             block_Release(in);
             return VLC_ENOMEM;

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
+
+
+
+
+typedef int time_t ;
 struct tm {int dummy; } ;
-typedef  int /*<<< orphan*/  AVFilterContext ;
-typedef  int /*<<< orphan*/  AVBPrint ;
+typedef int AVFilterContext ;
+typedef int AVBPrint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_bprint_strftime (int /*<<< orphan*/ *,char const*,struct tm*) ; 
- struct tm* gmtime_r (int /*<<< orphan*/ *,struct tm*) ; 
- int /*<<< orphan*/  localtime_r (int /*<<< orphan*/ *,struct tm*) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
+
+ int av_bprint_strftime (int *,char const*,struct tm*) ;
+ struct tm* gmtime_r (int *,struct tm*) ;
+ int localtime_r (int *,struct tm*) ;
+ int time (int *) ;
 
 __attribute__((used)) static int func_strftime(AVFilterContext *ctx, AVBPrint *bp,
                          char *fct, unsigned argc, char **argv, int tag)

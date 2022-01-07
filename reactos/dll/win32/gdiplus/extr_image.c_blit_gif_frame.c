@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UINT ;
 struct TYPE_3__ {int height; int width; int stride; scalar_t__ bits; } ;
-typedef  int /*<<< orphan*/  IWICBitmapSource ;
-typedef  int /*<<< orphan*/  IWICBitmapFrameDecode ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_1__ GpBitmap ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  scalar_t__ BOOL ;
+typedef int IWICBitmapSource ;
+typedef int IWICBitmapFrameDecode ;
+typedef int HRESULT ;
+typedef TYPE_1__ GpBitmap ;
+typedef int DWORD ;
+typedef int BYTE ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GUID_WICPixelFormat32bppBGRA ; 
- int /*<<< orphan*/  IWICBitmapSource_CopyPixels (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWICBitmapSource_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WICConvertBitmapSource (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  get_gif_frame_rect (int /*<<< orphan*/ *,int*,int*,int*,int*) ; 
- int /*<<< orphan*/ * heap_alloc_zero (int) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
+
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int GUID_WICPixelFormat32bppBGRA ;
+ int IWICBitmapSource_CopyPixels (int *,int *,int,int,int *) ;
+ int IWICBitmapSource_Release (int *) ;
+ int WICConvertBitmapSource (int *,int *,int **) ;
+ int get_gif_frame_rect (int *,int*,int*,int*,int*) ;
+ int * heap_alloc_zero (int) ;
+ int heap_free (int *) ;
 
 __attribute__((used)) static HRESULT blit_gif_frame(GpBitmap *bitmap, IWICBitmapFrameDecode *frame, BOOL first_frame)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static HRESULT blit_gif_frame(GpBitmap *bitmap, IWICBitmap
     if(!new_bits)
         return E_OUTOFMEMORY;
 
-    hr = IWICBitmapSource_CopyPixels(source, NULL, width*4, width*height*4, new_bits);
+    hr = IWICBitmapSource_CopyPixels(source, ((void*)0), width*4, width*height*4, new_bits);
     IWICBitmapSource_Release(source);
     if(FAILED(hr)) {
         heap_free(new_bits);

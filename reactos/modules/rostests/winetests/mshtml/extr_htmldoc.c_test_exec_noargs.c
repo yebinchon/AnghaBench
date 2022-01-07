@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IOleCommandTarget ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CGID_MSHTML ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  IID_IOleCommandTarget ; 
- scalar_t__ IOleCommandTarget_Exec (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IOleCommandTarget_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  OLECMDEXECOPT_DODEFAULT ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
+
+
+
+typedef int IUnknown ;
+typedef int IOleCommandTarget ;
+typedef scalar_t__ HRESULT ;
+typedef int DWORD ;
+
+
+ int CGID_MSHTML ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int IID_IOleCommandTarget ;
+ scalar_t__ IOleCommandTarget_Exec (int *,int *,int ,int ,int *,int *) ;
+ int IOleCommandTarget_Release (int *) ;
+ scalar_t__ IUnknown_QueryInterface (int *,int *,void**) ;
+ int OLECMDEXECOPT_DODEFAULT ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,scalar_t__) ;
 
 __attribute__((used)) static void test_exec_noargs(IUnknown *unk, DWORD cmdid)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static void test_exec_noargs(IUnknown *unk, DWORD cmdid)
         return;
 
     hres = IOleCommandTarget_Exec(cmdtrg, &CGID_MSHTML, cmdid,
-            OLECMDEXECOPT_DODEFAULT, NULL, NULL);
+            OLECMDEXECOPT_DODEFAULT, ((void*)0), ((void*)0));
     ok(hres == S_OK, "Exec failed: %08x\n", hres);
 
     IOleCommandTarget_Release(cmdtrg);

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bt_status_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BTC_BLE_STORAGE_LE_LOCAL_KEY_DHK_STR ; 
- int /*<<< orphan*/  BTC_BLE_STORAGE_LE_LOCAL_KEY_ER_STR ; 
- int /*<<< orphan*/  BTC_BLE_STORAGE_LE_LOCAL_KEY_IRK_STR ; 
- int /*<<< orphan*/  BTC_BLE_STORAGE_LE_LOCAL_KEY_IR_STR ; 
- int /*<<< orphan*/  BTC_BLE_STORAGE_LOCAL_ADAPTER_STR ; 
- int /*<<< orphan*/  BT_STATUS_FAIL ; 
- int /*<<< orphan*/  BT_STATUS_SUCCESS ; 
- int /*<<< orphan*/  _btc_storage_save () ; 
- scalar_t__ btc_config_exist (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int btc_config_remove (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int bt_status_t ;
+
+
+ int BTC_BLE_STORAGE_LE_LOCAL_KEY_DHK_STR ;
+ int BTC_BLE_STORAGE_LE_LOCAL_KEY_ER_STR ;
+ int BTC_BLE_STORAGE_LE_LOCAL_KEY_IRK_STR ;
+ int BTC_BLE_STORAGE_LE_LOCAL_KEY_IR_STR ;
+ int BTC_BLE_STORAGE_LOCAL_ADAPTER_STR ;
+ int BT_STATUS_FAIL ;
+ int BT_STATUS_SUCCESS ;
+ int _btc_storage_save () ;
+ scalar_t__ btc_config_exist (int ,int ) ;
+ int btc_config_remove (int ,int ) ;
 
 __attribute__((used)) static bt_status_t _btc_storage_remove_ble_local_keys(void)
 {

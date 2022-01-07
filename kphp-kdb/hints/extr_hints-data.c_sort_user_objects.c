@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  user ;
 
-/* Variables and functions */
- int MAX_CNT ; 
- int /*<<< orphan*/  NOAIO ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  bad_requests ; 
- int /*<<< orphan*/  check_rating_num (int) ; 
- int /*<<< orphan*/  check_user_id (int) ; 
- int /*<<< orphan*/ * conv_user_id (int) ; 
- int /*<<< orphan*/  fix_down (int /*<<< orphan*/ *,int*,int,int) ; 
- int get_local_user_id (int) ; 
- int get_random (int,int,int*,int /*<<< orphan*/ *,int*) ; 
- int* heap ; 
- int /*<<< orphan*/ * load_user_metafile (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- scalar_t__ object_cmp (int /*<<< orphan*/ *,int,int,int) ; 
- int* objects_to_sort ; 
- int user_get_object_local_id_type_id (int /*<<< orphan*/ *,long long) ; 
- long long user_get_object_type_id (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  user_get_object_weight (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/ * weight ; 
+
+
+
+typedef int user ;
+
+
+ int MAX_CNT ;
+ int NOAIO ;
+ int assert (int) ;
+ int bad_requests ;
+ int check_rating_num (int) ;
+ int check_user_id (int) ;
+ int * conv_user_id (int) ;
+ int fix_down (int *,int*,int,int) ;
+ int get_local_user_id (int) ;
+ int get_random (int,int,int*,int *,int*) ;
+ int* heap ;
+ int * load_user_metafile (int *,int,int ) ;
+ scalar_t__ object_cmp (int *,int,int,int) ;
+ int* objects_to_sort ;
+ int user_get_object_local_id_type_id (int *,long long) ;
+ long long user_get_object_type_id (int *,int) ;
+ int user_get_object_weight (int *,int,int) ;
+ int * weight ;
 
 int sort_user_objects (int user_id, int object_cnt, long long *obj, int max_cnt, int num, int need_rand) {
   if (!check_user_id (user_id) || !check_rating_num (num)) {
@@ -45,13 +45,13 @@ int sort_user_objects (int user_id, int object_cnt, long long *obj, int max_cnt,
   assert (local_user_id > 0);
 
   user *u = conv_user_id (user_id);
-  assert (u != NULL);
+  assert (u != ((void*)0));
 
-  if (load_user_metafile (u, local_user_id, NOAIO) == NULL) {
+  if (load_user_metafile (u, local_user_id, NOAIO) == ((void*)0)) {
     return -2;
   }
 
-  assert (obj != NULL);
+  assert (obj != ((void*)0));
 
   int i, j, k, t;
 

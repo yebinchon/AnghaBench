@@ -1,24 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 void
 mda_get_prod(int n, const int *range, int *prod)
 {
-	int			i;
+ int i;
 
-	prod[n - 1] = 1;
-	for (i = n - 2; i >= 0; i--)
-		prod[i] = prod[i + 1] * range[i + 1];
+ prod[n - 1] = 1;
+ for (i = n - 2; i >= 0; i--)
+  prod[i] = prod[i + 1] * range[i + 1];
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_4__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_4__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct sk_buff {int dummy; } ;
-struct atm_vcc {int /*<<< orphan*/  vci; int /*<<< orphan*/  flags; } ;
+struct atm_vcc {int vci; int flags; } ;
 struct TYPE_6__ {struct atm_vcc* vcc; } ;
-struct TYPE_5__ {int /*<<< orphan*/  tx_backlog; } ;
-typedef  TYPE_1__ IADEV ;
+struct TYPE_5__ {int tx_backlog; } ;
+typedef TYPE_1__ IADEV ;
 
-/* Variables and functions */
- TYPE_4__* ATM_SKB (struct sk_buff*) ; 
- int /*<<< orphan*/  ATM_VF_READY ; 
- int /*<<< orphan*/  dev_kfree_skb_any (struct sk_buff*) ; 
- int ia_avail_descs (TYPE_1__*) ; 
- scalar_t__ ia_pkt_tx (struct atm_vcc*,struct sk_buff*) ; 
- int /*<<< orphan*/  printk (char*,...) ; 
- struct sk_buff* skb_dequeue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skb_queue_head (int /*<<< orphan*/ *,struct sk_buff*) ; 
- int /*<<< orphan*/  test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
 
-__attribute__((used)) static int ia_que_tx (IADEV *iadev) { 
+ TYPE_4__* ATM_SKB (struct sk_buff*) ;
+ int ATM_VF_READY ;
+ int dev_kfree_skb_any (struct sk_buff*) ;
+ int ia_avail_descs (TYPE_1__*) ;
+ scalar_t__ ia_pkt_tx (struct atm_vcc*,struct sk_buff*) ;
+ int printk (char*,...) ;
+ struct sk_buff* skb_dequeue (int *) ;
+ int skb_queue_head (int *,struct sk_buff*) ;
+ int test_bit (int ,int *) ;
+
+__attribute__((used)) static int ia_que_tx (IADEV *iadev) {
    struct sk_buff *skb;
    int num_desc;
    struct atm_vcc *vcc;

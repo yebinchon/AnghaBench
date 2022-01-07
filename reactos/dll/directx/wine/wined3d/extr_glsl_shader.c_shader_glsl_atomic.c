@@ -1,81 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_string_buffer {int /*<<< orphan*/  buffer; } ;
-struct wined3d_shader_version {int /*<<< orphan*/  type; } ;
+
+
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct wined3d_string_buffer {int buffer; } ;
+struct wined3d_shader_version {int type; } ;
 struct wined3d_shader_reg_maps {unsigned int tgsm_count; TYPE_6__* uav_resource_info; TYPE_3__* tgsm; struct wined3d_shader_version shader_version; } ;
-struct wined3d_shader_instruction {int handler_idx; int src_count; int /*<<< orphan*/ * src; TYPE_5__* dst; TYPE_4__* ctx; } ;
-struct shader_glsl_ctx_priv {int /*<<< orphan*/  string_buffers; } ;
-struct glsl_src_param {int /*<<< orphan*/  param_str; } ;
-typedef  enum wined3d_shader_resource_type { ____Placeholder_wined3d_shader_resource_type } wined3d_shader_resource_type ;
-typedef  enum wined3d_data_type { ____Placeholder_wined3d_data_type } wined3d_data_type ;
+struct wined3d_shader_instruction {int handler_idx; int src_count; int * src; TYPE_5__* dst; TYPE_4__* ctx; } ;
+struct shader_glsl_ctx_priv {int string_buffers; } ;
+struct glsl_src_param {int param_str; } ;
+typedef enum wined3d_shader_resource_type { ____Placeholder_wined3d_shader_resource_type } wined3d_shader_resource_type ;
+typedef enum wined3d_data_type { ____Placeholder_wined3d_data_type } wined3d_data_type ;
 struct TYPE_13__ {int type; int data_type; unsigned int coord_size; unsigned int stride; int flags; } ;
 struct TYPE_9__ {scalar_t__ type; TYPE_1__* idx; } ;
 struct TYPE_12__ {TYPE_2__ reg; } ;
 struct TYPE_11__ {struct wined3d_string_buffer* buffer; struct shader_glsl_ctx_priv* backend_data; struct wined3d_shader_reg_maps* reg_maps; } ;
 struct TYPE_10__ {unsigned int stride; } ;
 struct TYPE_8__ {unsigned int offset; } ;
-typedef  int DWORD ;
-typedef  size_t BOOL ;
+typedef int DWORD ;
+typedef size_t BOOL ;
 
-/* Variables and functions */
- int ARRAY_SIZE (TYPE_6__*) ; 
- int /*<<< orphan*/  ERR (char*,int) ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
-#define  WINED3DSIH_ATOMIC_AND 146 
-#define  WINED3DSIH_ATOMIC_CMP_STORE 145 
-#define  WINED3DSIH_ATOMIC_IADD 144 
-#define  WINED3DSIH_ATOMIC_IMAX 143 
-#define  WINED3DSIH_ATOMIC_IMIN 142 
-#define  WINED3DSIH_ATOMIC_OR 141 
-#define  WINED3DSIH_ATOMIC_UMAX 140 
-#define  WINED3DSIH_ATOMIC_UMIN 139 
-#define  WINED3DSIH_ATOMIC_XOR 138 
-#define  WINED3DSIH_IMM_ATOMIC_AND 137 
-#define  WINED3DSIH_IMM_ATOMIC_CMP_EXCH 136 
-#define  WINED3DSIH_IMM_ATOMIC_EXCH 135 
-#define  WINED3DSIH_IMM_ATOMIC_IADD 134 
-#define  WINED3DSIH_IMM_ATOMIC_IMAX 133 
-#define  WINED3DSIH_IMM_ATOMIC_IMIN 132 
-#define  WINED3DSIH_IMM_ATOMIC_OR 131 
-#define  WINED3DSIH_IMM_ATOMIC_UMAX 130 
-#define  WINED3DSIH_IMM_ATOMIC_UMIN 129 
-#define  WINED3DSIH_IMM_ATOMIC_XOR 128 
- scalar_t__ WINED3DSPR_GROUPSHAREDMEM ; 
- int WINED3DSP_WRITEMASK_0 ; 
- int WINED3DSP_WRITEMASK_1 ; 
- int WINED3D_DATA_INT ; 
- int WINED3D_DATA_UINT ; 
- int WINED3D_VIEW_BUFFER_RAW ; 
- TYPE_6__* resource_type_info ; 
- int /*<<< orphan*/  shader_addline (struct wined3d_string_buffer*,char*,...) ; 
- int /*<<< orphan*/  shader_glsl_add_src_param (struct wined3d_shader_instruction const*,int /*<<< orphan*/ *,int,struct glsl_src_param*) ; 
- int /*<<< orphan*/  shader_glsl_add_src_param_ext (struct wined3d_shader_instruction const*,int /*<<< orphan*/ *,int,struct glsl_src_param*,int) ; 
- int /*<<< orphan*/  shader_glsl_append_dst_ext (struct wined3d_string_buffer*,struct wined3d_shader_instruction const*,TYPE_5__*,int) ; 
- int /*<<< orphan*/  shader_glsl_get_prefix (int /*<<< orphan*/ ) ; 
- struct wined3d_string_buffer* string_buffer_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  string_buffer_release (int /*<<< orphan*/ ,struct wined3d_string_buffer*) ; 
- int /*<<< orphan*/  string_buffer_sprintf (struct wined3d_string_buffer*,char*,int /*<<< orphan*/ ,...) ; 
+
+ int ARRAY_SIZE (TYPE_6__*) ;
+ int ERR (char*,int) ;
+ int FIXME (char*,int) ;
+ scalar_t__ WINED3DSPR_GROUPSHAREDMEM ;
+ int WINED3DSP_WRITEMASK_0 ;
+ int WINED3DSP_WRITEMASK_1 ;
+ int WINED3D_DATA_INT ;
+ int WINED3D_DATA_UINT ;
+ int WINED3D_VIEW_BUFFER_RAW ;
+ TYPE_6__* resource_type_info ;
+ int shader_addline (struct wined3d_string_buffer*,char*,...) ;
+ int shader_glsl_add_src_param (struct wined3d_shader_instruction const*,int *,int,struct glsl_src_param*) ;
+ int shader_glsl_add_src_param_ext (struct wined3d_shader_instruction const*,int *,int,struct glsl_src_param*,int) ;
+ int shader_glsl_append_dst_ext (struct wined3d_string_buffer*,struct wined3d_shader_instruction const*,TYPE_5__*,int) ;
+ int shader_glsl_get_prefix (int ) ;
+ struct wined3d_string_buffer* string_buffer_get (int ) ;
+ int string_buffer_release (int ,struct wined3d_string_buffer*) ;
+ int string_buffer_sprintf (struct wined3d_string_buffer*,char*,int ,...) ;
 
 __attribute__((used)) static void shader_glsl_atomic(const struct wined3d_shader_instruction *ins)
 {
-    const BOOL is_imm_instruction = WINED3DSIH_IMM_ATOMIC_AND <= ins->handler_idx
-            && ins->handler_idx <= WINED3DSIH_IMM_ATOMIC_XOR;
+    const BOOL is_imm_instruction = 137 <= ins->handler_idx
+            && ins->handler_idx <= 128;
     const struct wined3d_shader_reg_maps *reg_maps = ins->ctx->reg_maps;
     const struct wined3d_shader_version *version = &reg_maps->shader_version;
     struct shader_glsl_ctx_priv *priv = ins->ctx->backend_data;
@@ -124,29 +105,29 @@ __attribute__((used)) static void shader_glsl_atomic(const struct wined3d_shader
 
     switch (ins->handler_idx)
     {
-        case WINED3DSIH_ATOMIC_AND:
-        case WINED3DSIH_IMM_ATOMIC_AND:
+        case 146:
+        case 137:
             if (is_tgsm)
                 op = "atomicAnd";
             else
                 op = "imageAtomicAnd";
             break;
-        case WINED3DSIH_ATOMIC_CMP_STORE:
-        case WINED3DSIH_IMM_ATOMIC_CMP_EXCH:
+        case 145:
+        case 136:
             if (is_tgsm)
                 op = "atomicCompSwap";
             else
                 op = "imageAtomicCompSwap";
             break;
-        case WINED3DSIH_ATOMIC_IADD:
-        case WINED3DSIH_IMM_ATOMIC_IADD:
+        case 144:
+        case 134:
             if (is_tgsm)
                 op = "atomicAdd";
             else
                 op = "imageAtomicAdd";
             break;
-        case WINED3DSIH_ATOMIC_IMAX:
-        case WINED3DSIH_IMM_ATOMIC_IMAX:
+        case 143:
+        case 133:
             if (is_tgsm)
                 op = "atomicMax";
             else
@@ -157,8 +138,8 @@ __attribute__((used)) static void shader_glsl_atomic(const struct wined3d_shader
                 return;
             }
             break;
-        case WINED3DSIH_ATOMIC_IMIN:
-        case WINED3DSIH_IMM_ATOMIC_IMIN:
+        case 142:
+        case 132:
             if (is_tgsm)
                 op = "atomicMin";
             else
@@ -169,15 +150,15 @@ __attribute__((used)) static void shader_glsl_atomic(const struct wined3d_shader
                 return;
             }
             break;
-        case WINED3DSIH_ATOMIC_OR:
-        case WINED3DSIH_IMM_ATOMIC_OR:
+        case 141:
+        case 131:
             if (is_tgsm)
                 op = "atomicOr";
             else
                 op = "imageAtomicOr";
             break;
-        case WINED3DSIH_ATOMIC_UMAX:
-        case WINED3DSIH_IMM_ATOMIC_UMAX:
+        case 140:
+        case 130:
             if (is_tgsm)
                 op = "atomicMax";
             else
@@ -188,8 +169,8 @@ __attribute__((used)) static void shader_glsl_atomic(const struct wined3d_shader
                 return;
             }
             break;
-        case WINED3DSIH_ATOMIC_UMIN:
-        case WINED3DSIH_IMM_ATOMIC_UMIN:
+        case 139:
+        case 129:
             if (is_tgsm)
                 op = "atomicMin";
             else
@@ -200,14 +181,14 @@ __attribute__((used)) static void shader_glsl_atomic(const struct wined3d_shader
                 return;
             }
             break;
-        case WINED3DSIH_ATOMIC_XOR:
-        case WINED3DSIH_IMM_ATOMIC_XOR:
+        case 138:
+        case 128:
             if (is_tgsm)
                 op = "atomicXor";
             else
                 op = "imageAtomicXor";
             break;
-        case WINED3DSIH_IMM_ATOMIC_EXCH:
+        case 135:
             if (is_tgsm)
                 op = "atomicExchange";
             else

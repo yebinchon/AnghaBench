@@ -1,0 +1,300 @@
+; ModuleID = '/home/carl/AnghaBench/linux/fs/ocfs2/extr_aops.c_ocfs2_get_block.c'
+source_filename = "/home/carl/AnghaBench/linux/fs/ocfs2/extr_aops.c_ocfs2_get_block.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.inode = type { i64, i32, i32, i32 }
+%struct.buffer_head = type { i64 }
+%struct.ocfs2_super = type { i32 }
+%struct.TYPE_2__ = type { i32, i64, i32 }
+
+@OCFS2_INODE_SYSTEM_FILE = common dso_local global i32 0, align 4
+@ML_NOTICE = common dso_local global i32 0, align 4
+@.str = private unnamed_addr constant [38 x i8] c"get_block on system inode 0x%p (%lu)\0A\00", align 1
+@ML_ERROR = common dso_local global i32 0, align 4
+@.str.1 = private unnamed_addr constant [53 x i8] c"Error %d from get_blocks(0x%p, %llu, 1, %llu, NULL)\0A\00", align 1
+@OCFS2_EXT_UNWRITTEN = common dso_local global i32 0, align 4
+@EIO = common dso_local global i32 0, align 4
+@.str.2 = private unnamed_addr constant [43 x i8] c"iblock = %llu p_blkno = %llu blkno=(%llu)\0A\00", align 1
+@.str.3 = private unnamed_addr constant [24 x i8] c"Size %llu, clusters %u\0A\00", align 1
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local i32 @ocfs2_get_block(%struct.inode* %0, i64 %1, %struct.buffer_head* %2, i32 %3) #0 {
+  %5 = alloca %struct.inode*, align 8
+  %6 = alloca i64, align 8
+  %7 = alloca %struct.buffer_head*, align 8
+  %8 = alloca i32, align 4
+  %9 = alloca i32, align 4
+  %10 = alloca i32, align 4
+  %11 = alloca i64, align 8
+  %12 = alloca i64, align 8
+  %13 = alloca i64, align 8
+  %14 = alloca i64, align 8
+  %15 = alloca %struct.ocfs2_super*, align 8
+  store %struct.inode* %0, %struct.inode** %5, align 8
+  store i64 %1, i64* %6, align 8
+  store %struct.buffer_head* %2, %struct.buffer_head** %7, align 8
+  store i32 %3, i32* %8, align 4
+  store i32 0, i32* %9, align 4
+  %16 = load %struct.buffer_head*, %struct.buffer_head** %7, align 8
+  %17 = getelementptr inbounds %struct.buffer_head, %struct.buffer_head* %16, i32 0, i32 0
+  %18 = load i64, i64* %17, align 8
+  %19 = load %struct.inode*, %struct.inode** %5, align 8
+  %20 = getelementptr inbounds %struct.inode, %struct.inode* %19, i32 0, i32 0
+  %21 = load i64, i64* %20, align 8
+  %22 = ashr i64 %18, %21
+  store i64 %22, i64* %11, align 8
+  %23 = load %struct.inode*, %struct.inode** %5, align 8
+  %24 = getelementptr inbounds %struct.inode, %struct.inode* %23, i32 0, i32 1
+  %25 = load i32, i32* %24, align 8
+  %26 = call %struct.ocfs2_super* @OCFS2_SB(i32 %25)
+  store %struct.ocfs2_super* %26, %struct.ocfs2_super** %15, align 8
+  %27 = load %struct.inode*, %struct.inode** %5, align 8
+  %28 = call %struct.TYPE_2__* @OCFS2_I(%struct.inode* %27)
+  %29 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %28, i32 0, i32 1
+  %30 = load i64, i64* %29, align 8
+  %31 = load i64, i64* %6, align 8
+  %32 = load %struct.buffer_head*, %struct.buffer_head** %7, align 8
+  %33 = load i32, i32* %8, align 4
+  %34 = call i32 @trace_ocfs2_get_block(i64 %30, i64 %31, %struct.buffer_head* %32, i32 %33)
+  %35 = load %struct.inode*, %struct.inode** %5, align 8
+  %36 = call %struct.TYPE_2__* @OCFS2_I(%struct.inode* %35)
+  %37 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %36, i32 0, i32 0
+  %38 = load i32, i32* %37, align 8
+  %39 = load i32, i32* @OCFS2_INODE_SYSTEM_FILE, align 4
+  %40 = and i32 %38, %39
+  %41 = icmp ne i32 %40, 0
+  br i1 %41, label %42, label %49
+
+42:                                               ; preds = %4
+  %43 = load i32, i32* @ML_NOTICE, align 4
+  %44 = load %struct.inode*, %struct.inode** %5, align 8
+  %45 = load %struct.inode*, %struct.inode** %5, align 8
+  %46 = getelementptr inbounds %struct.inode, %struct.inode* %45, i32 0, i32 3
+  %47 = load i32, i32* %46, align 8
+  %48 = call i32 (i32, i8*, ...) @mlog(i32 %43, i8* getelementptr inbounds ([38 x i8], [38 x i8]* @.str, i64 0, i64 0), %struct.inode* %44, i32 %47)
+  br label %49
+
+49:                                               ; preds = %42, %4
+  %50 = load %struct.inode*, %struct.inode** %5, align 8
+  %51 = getelementptr inbounds %struct.inode, %struct.inode* %50, i32 0, i32 2
+  %52 = load i32, i32* %51, align 4
+  %53 = call i64 @S_ISLNK(i32 %52)
+  %54 = icmp ne i64 %53, 0
+  br i1 %54, label %55, label %61
+
+55:                                               ; preds = %49
+  %56 = load %struct.inode*, %struct.inode** %5, align 8
+  %57 = load i64, i64* %6, align 8
+  %58 = load %struct.buffer_head*, %struct.buffer_head** %7, align 8
+  %59 = load i32, i32* %8, align 4
+  %60 = call i32 @ocfs2_symlink_get_block(%struct.inode* %56, i64 %57, %struct.buffer_head* %58, i32 %59)
+  store i32 %60, i32* %9, align 4
+  br label %168
+
+61:                                               ; preds = %49
+  %62 = load %struct.inode*, %struct.inode** %5, align 8
+  %63 = load i64, i64* %6, align 8
+  %64 = call i32 @ocfs2_extent_map_get_blocks(%struct.inode* %62, i64 %63, i64* %12, i64* %13, i32* %10)
+  store i32 %64, i32* %9, align 4
+  %65 = load i32, i32* %9, align 4
+  %66 = icmp ne i32 %65, 0
+  br i1 %66, label %67, label %74
+
+67:                                               ; preds = %61
+  %68 = load i32, i32* @ML_ERROR, align 4
+  %69 = load i32, i32* %9, align 4
+  %70 = load %struct.inode*, %struct.inode** %5, align 8
+  %71 = load i64, i64* %6, align 8
+  %72 = load i64, i64* %12, align 8
+  %73 = call i32 (i32, i8*, ...) @mlog(i32 %68, i8* getelementptr inbounds ([53 x i8], [53 x i8]* @.str.1, i64 0, i64 0), i32 %69, %struct.inode* %70, i64 %71, i64 %72)
+  br label %168
+
+74:                                               ; preds = %61
+  %75 = load i64, i64* %11, align 8
+  %76 = load i64, i64* %13, align 8
+  %77 = icmp slt i64 %75, %76
+  br i1 %77, label %78, label %80
+
+78:                                               ; preds = %74
+  %79 = load i64, i64* %11, align 8
+  store i64 %79, i64* %13, align 8
+  br label %80
+
+80:                                               ; preds = %78, %74
+  %81 = load i32, i32* %8, align 4
+  %82 = icmp ne i32 %81, 0
+  br i1 %82, label %83, label %95
+
+83:                                               ; preds = %80
+  %84 = load i64, i64* %12, align 8
+  %85 = icmp eq i64 %84, 0
+  br i1 %85, label %86, label %95
+
+86:                                               ; preds = %83
+  %87 = load %struct.ocfs2_super*, %struct.ocfs2_super** %15, align 8
+  %88 = call i64 @ocfs2_sparse_alloc(%struct.ocfs2_super* %87)
+  %89 = icmp ne i64 %88, 0
+  br i1 %89, label %90, label %95
+
+90:                                               ; preds = %86
+  %91 = load %struct.buffer_head*, %struct.buffer_head** %7, align 8
+  %92 = call i32 @clear_buffer_dirty(%struct.buffer_head* %91)
+  %93 = load %struct.buffer_head*, %struct.buffer_head** %7, align 8
+  %94 = call i32 @clear_buffer_uptodate(%struct.buffer_head* %93)
+  br label %168
+
+95:                                               ; preds = %86, %83, %80
+  %96 = load i64, i64* %12, align 8
+  %97 = icmp ne i64 %96, 0
+  br i1 %97, label %98, label %110
+
+98:                                               ; preds = %95
+  %99 = load i32, i32* %10, align 4
+  %100 = load i32, i32* @OCFS2_EXT_UNWRITTEN, align 4
+  %101 = and i32 %99, %100
+  %102 = icmp ne i32 %101, 0
+  br i1 %102, label %110, label %103
+
+103:                                              ; preds = %98
+  %104 = load %struct.buffer_head*, %struct.buffer_head** %7, align 8
+  %105 = load %struct.inode*, %struct.inode** %5, align 8
+  %106 = getelementptr inbounds %struct.inode, %struct.inode* %105, i32 0, i32 1
+  %107 = load i32, i32* %106, align 8
+  %108 = load i64, i64* %12, align 8
+  %109 = call i32 @map_bh(%struct.buffer_head* %104, i32 %107, i64 %108)
+  br label %110
+
+110:                                              ; preds = %103, %98, %95
+  %111 = load i64, i64* %13, align 8
+  %112 = load %struct.inode*, %struct.inode** %5, align 8
+  %113 = getelementptr inbounds %struct.inode, %struct.inode* %112, i32 0, i32 0
+  %114 = load i64, i64* %113, align 8
+  %115 = shl i64 %111, %114
+  %116 = load %struct.buffer_head*, %struct.buffer_head** %7, align 8
+  %117 = getelementptr inbounds %struct.buffer_head, %struct.buffer_head* %116, i32 0, i32 0
+  store i64 %115, i64* %117, align 8
+  %118 = load %struct.ocfs2_super*, %struct.ocfs2_super** %15, align 8
+  %119 = call i64 @ocfs2_sparse_alloc(%struct.ocfs2_super* %118)
+  %120 = icmp ne i64 %119, 0
+  br i1 %120, label %145, label %121
+
+121:                                              ; preds = %110
+  %122 = load i64, i64* %12, align 8
+  %123 = icmp eq i64 %122, 0
+  br i1 %123, label %124, label %144
+
+124:                                              ; preds = %121
+  %125 = load i32, i32* @EIO, align 4
+  %126 = sub nsw i32 0, %125
+  store i32 %126, i32* %9, align 4
+  %127 = load i32, i32* @ML_ERROR, align 4
+  %128 = load i64, i64* %6, align 8
+  %129 = load i64, i64* %12, align 8
+  %130 = load %struct.inode*, %struct.inode** %5, align 8
+  %131 = call %struct.TYPE_2__* @OCFS2_I(%struct.inode* %130)
+  %132 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %131, i32 0, i32 1
+  %133 = load i64, i64* %132, align 8
+  %134 = call i32 (i32, i8*, ...) @mlog(i32 %127, i8* getelementptr inbounds ([43 x i8], [43 x i8]* @.str.2, i64 0, i64 0), i64 %128, i64 %129, i64 %133)
+  %135 = load i32, i32* @ML_ERROR, align 4
+  %136 = load %struct.inode*, %struct.inode** %5, align 8
+  %137 = call i64 @i_size_read(%struct.inode* %136)
+  %138 = load %struct.inode*, %struct.inode** %5, align 8
+  %139 = call %struct.TYPE_2__* @OCFS2_I(%struct.inode* %138)
+  %140 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %139, i32 0, i32 2
+  %141 = load i32, i32* %140, align 8
+  %142 = call i32 (i32, i8*, ...) @mlog(i32 %135, i8* getelementptr inbounds ([24 x i8], [24 x i8]* @.str.3, i64 0, i64 0), i64 %137, i32 %141)
+  %143 = call i32 (...) @dump_stack()
+  br label %168
+
+144:                                              ; preds = %121
+  br label %145
+
+145:                                              ; preds = %144, %110
+  %146 = load %struct.inode*, %struct.inode** %5, align 8
+  %147 = getelementptr inbounds %struct.inode, %struct.inode* %146, i32 0, i32 1
+  %148 = load i32, i32* %147, align 8
+  %149 = load %struct.inode*, %struct.inode** %5, align 8
+  %150 = call i64 @i_size_read(%struct.inode* %149)
+  %151 = call i64 @ocfs2_blocks_for_bytes(i32 %148, i64 %150)
+  store i64 %151, i64* %14, align 8
+  %152 = load %struct.inode*, %struct.inode** %5, align 8
+  %153 = call %struct.TYPE_2__* @OCFS2_I(%struct.inode* %152)
+  %154 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %153, i32 0, i32 1
+  %155 = load i64, i64* %154, align 8
+  %156 = load i64, i64* %14, align 8
+  %157 = call i32 @trace_ocfs2_get_block_end(i64 %155, i64 %156)
+  %158 = load i32, i32* %8, align 4
+  %159 = icmp ne i32 %158, 0
+  br i1 %159, label %160, label %167
+
+160:                                              ; preds = %145
+  %161 = load i64, i64* %6, align 8
+  %162 = load i64, i64* %14, align 8
+  %163 = icmp sge i64 %161, %162
+  br i1 %163, label %164, label %167
+
+164:                                              ; preds = %160
+  %165 = load %struct.buffer_head*, %struct.buffer_head** %7, align 8
+  %166 = call i32 @set_buffer_new(%struct.buffer_head* %165)
+  br label %167
+
+167:                                              ; preds = %164, %160, %145
+  br label %168
+
+168:                                              ; preds = %167, %124, %90, %67, %55
+  %169 = load i32, i32* %9, align 4
+  %170 = icmp slt i32 %169, 0
+  br i1 %170, label %171, label %174
+
+171:                                              ; preds = %168
+  %172 = load i32, i32* @EIO, align 4
+  %173 = sub nsw i32 0, %172
+  store i32 %173, i32* %9, align 4
+  br label %174
+
+174:                                              ; preds = %171, %168
+  %175 = load i32, i32* %9, align 4
+  ret i32 %175
+}
+
+declare dso_local %struct.ocfs2_super* @OCFS2_SB(i32) #1
+
+declare dso_local i32 @trace_ocfs2_get_block(i64, i64, %struct.buffer_head*, i32) #1
+
+declare dso_local %struct.TYPE_2__* @OCFS2_I(%struct.inode*) #1
+
+declare dso_local i32 @mlog(i32, i8*, ...) #1
+
+declare dso_local i64 @S_ISLNK(i32) #1
+
+declare dso_local i32 @ocfs2_symlink_get_block(%struct.inode*, i64, %struct.buffer_head*, i32) #1
+
+declare dso_local i32 @ocfs2_extent_map_get_blocks(%struct.inode*, i64, i64*, i64*, i32*) #1
+
+declare dso_local i64 @ocfs2_sparse_alloc(%struct.ocfs2_super*) #1
+
+declare dso_local i32 @clear_buffer_dirty(%struct.buffer_head*) #1
+
+declare dso_local i32 @clear_buffer_uptodate(%struct.buffer_head*) #1
+
+declare dso_local i32 @map_bh(%struct.buffer_head*, i32, i64) #1
+
+declare dso_local i64 @i_size_read(%struct.inode*) #1
+
+declare dso_local i32 @dump_stack(...) #1
+
+declare dso_local i64 @ocfs2_blocks_for_bytes(i32, i64) #1
+
+declare dso_local i32 @trace_ocfs2_get_block_end(i64, i64) #1
+
+declare dso_local i32 @set_buffer_new(%struct.buffer_head*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

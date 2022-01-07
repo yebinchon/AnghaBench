@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ file_bigendian ; 
+ scalar_t__ file_bigendian ;
 
 __attribute__((used)) static unsigned int ts4host(unsigned int type_len_ts)
 {
-	if (file_bigendian)
-		return type_len_ts & ((1 << 27) - 1);
-	else
-		return type_len_ts >> 5;
+ if (file_bigendian)
+  return type_len_ts & ((1 << 27) - 1);
+ else
+  return type_len_ts >> 5;
 }

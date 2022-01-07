@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ WPARAM ;
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ WPARAM ;
+typedef scalar_t__ UINT ;
 struct TYPE_3__ {short x; short y; } ;
-struct TYPE_4__ {scalar_t__ hwnd; scalar_t__ message; scalar_t__ wParam; scalar_t__ time; TYPE_1__ pt; int /*<<< orphan*/  lParam; } ;
-typedef  TYPE_2__ MSG ;
-typedef  int /*<<< orphan*/  ME_TextEditor ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  scalar_t__ HWND ;
+struct TYPE_4__ {scalar_t__ hwnd; scalar_t__ message; scalar_t__ wParam; scalar_t__ time; TYPE_1__ pt; int lParam; } ;
+typedef TYPE_2__ MSG ;
+typedef int ME_TextEditor ;
+typedef int LPARAM ;
+typedef scalar_t__ HWND ;
 
-/* Variables and functions */
- scalar_t__ GetDoubleClickTime () ; 
- scalar_t__ GetMessageTime () ; 
- int GetSystemMetrics (int /*<<< orphan*/ ) ; 
- scalar_t__ HIWORD (int /*<<< orphan*/ ) ; 
- scalar_t__ LOWORD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SM_CXDOUBLECLK ; 
- int /*<<< orphan*/  SM_CYDOUBLECLK ; 
- scalar_t__ WM_LBUTTONDBLCLK ; 
- scalar_t__ WM_LBUTTONDOWN ; 
- scalar_t__ WM_MBUTTONDBLCLK ; 
- scalar_t__ WM_MBUTTONDOWN ; 
- scalar_t__ WM_MOUSEFIRST ; 
- scalar_t__ WM_MOUSELAST ; 
- scalar_t__ WM_RBUTTONDBLCLK ; 
- scalar_t__ WM_RBUTTONDOWN ; 
- scalar_t__ WM_XBUTTONDBLCLK ; 
- scalar_t__ WM_XBUTTONDOWN ; 
- int abs (short) ; 
+
+ scalar_t__ GetDoubleClickTime () ;
+ scalar_t__ GetMessageTime () ;
+ int GetSystemMetrics (int ) ;
+ scalar_t__ HIWORD (int ) ;
+ scalar_t__ LOWORD (int ) ;
+ int SM_CXDOUBLECLK ;
+ int SM_CYDOUBLECLK ;
+ scalar_t__ WM_LBUTTONDBLCLK ;
+ scalar_t__ WM_LBUTTONDOWN ;
+ scalar_t__ WM_MBUTTONDBLCLK ;
+ scalar_t__ WM_MBUTTONDOWN ;
+ scalar_t__ WM_MOUSEFIRST ;
+ scalar_t__ WM_MOUSELAST ;
+ scalar_t__ WM_RBUTTONDBLCLK ;
+ scalar_t__ WM_RBUTTONDOWN ;
+ scalar_t__ WM_XBUTTONDBLCLK ;
+ scalar_t__ WM_XBUTTONDOWN ;
+ int abs (short) ;
 
 __attribute__((used)) static int ME_CalculateClickCount(ME_TextEditor *editor, UINT msg, WPARAM wParam,
                                   LPARAM lParam)
@@ -63,8 +63,8 @@ __attribute__((used)) static int ME_CalculateClickCount(ME_TextEditor *editor, U
     {
         static MSG prevClickMsg;
         MSG clickMsg;
-        /* Compare the editor instead of the hwnd so that the this
-         * can still be done for windowless richedit controls. */
+
+
         clickMsg.hwnd = (HWND)editor;
         clickMsg.message = msg;
         clickMsg.wParam = wParam;

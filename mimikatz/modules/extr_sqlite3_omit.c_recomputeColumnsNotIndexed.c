@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int nColumn; int* aiColumn; int colNotIdxed; } ;
-typedef  TYPE_1__ Index ;
-typedef  int Bitmask ;
+typedef TYPE_1__ Index ;
+typedef int Bitmask ;
 
-/* Variables and functions */
- int BMS ; 
- int MASKBIT (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  testcase (int) ; 
+
+ int BMS ;
+ int MASKBIT (int) ;
+ int assert (int) ;
+ int testcase (int) ;
 
 __attribute__((used)) static void recomputeColumnsNotIndexed(Index *pIdx){
   Bitmask m = 0;

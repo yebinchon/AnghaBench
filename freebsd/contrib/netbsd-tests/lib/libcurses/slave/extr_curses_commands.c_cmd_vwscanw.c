@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  cmd_vw_scanw (int,char**) ; 
+ int cmd_vw_scanw (int,char**) ;
 
 void
 cmd_vwscanw(int nargs, char **args)
 {
-	cmd_vw_scanw(nargs, args);
+ cmd_vw_scanw(nargs, args);
 }

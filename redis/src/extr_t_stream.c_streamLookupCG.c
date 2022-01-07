@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  streamCG ;
-struct TYPE_3__ {int /*<<< orphan*/ * cgroups; } ;
-typedef  TYPE_1__ stream ;
-typedef  scalar_t__ sds ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * raxFind (int /*<<< orphan*/ *,unsigned char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * raxNotFound ; 
- int /*<<< orphan*/  sdslen (scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int streamCG ;
+struct TYPE_3__ {int * cgroups; } ;
+typedef TYPE_1__ stream ;
+typedef scalar_t__ sds ;
+
+
+ int * raxFind (int *,unsigned char*,int ) ;
+ int * raxNotFound ;
+ int sdslen (scalar_t__) ;
 
 streamCG *streamLookupCG(stream *s, sds groupname) {
-    if (s->cgroups == NULL) return NULL;
+    if (s->cgroups == ((void*)0)) return ((void*)0);
     streamCG *cg = raxFind(s->cgroups,(unsigned char*)groupname,
                            sdslen(groupname));
-    return (cg == raxNotFound) ? NULL : cg;
+    return (cg == raxNotFound) ? ((void*)0) : cg;
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PKCS8_PRIV_KEY_INFO ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * EVP_PKEY2PKCS8 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PKCS8_PRIV_KEY_INFO_free (int /*<<< orphan*/ *) ; 
- int i2d_PKCS8_PRIV_KEY_INFO_fp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int PKCS8_PRIV_KEY_INFO ;
+typedef int FILE ;
+typedef int EVP_PKEY ;
+
+
+ int * EVP_PKEY2PKCS8 (int *) ;
+ int PKCS8_PRIV_KEY_INFO_free (int *) ;
+ int i2d_PKCS8_PRIV_KEY_INFO_fp (int *,int *) ;
 
 int i2d_PKCS8PrivateKeyInfo_fp(FILE *fp, EVP_PKEY *key)
 {

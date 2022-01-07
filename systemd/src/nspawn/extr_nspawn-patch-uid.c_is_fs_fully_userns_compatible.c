@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct statfs {int /*<<< orphan*/  f_type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BINFMTFS_MAGIC ; 
- int /*<<< orphan*/  BPF_FS_MAGIC ; 
- int /*<<< orphan*/  CGROUP2_SUPER_MAGIC ; 
- int /*<<< orphan*/  CGROUP_SUPER_MAGIC ; 
- int /*<<< orphan*/  DEBUGFS_MAGIC ; 
- int /*<<< orphan*/  DEVPTS_SUPER_MAGIC ; 
- int /*<<< orphan*/  EFIVARFS_MAGIC ; 
- scalar_t__ F_TYPE_EQUAL (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HUGETLBFS_MAGIC ; 
- int /*<<< orphan*/  MQUEUE_MAGIC ; 
- int /*<<< orphan*/  PROC_SUPER_MAGIC ; 
- int /*<<< orphan*/  PSTOREFS_MAGIC ; 
- int /*<<< orphan*/  SECURITYFS_MAGIC ; 
- int /*<<< orphan*/  SELINUX_MAGIC ; 
- int /*<<< orphan*/  SMACK_MAGIC ; 
- int /*<<< orphan*/  SYSFS_MAGIC ; 
- int /*<<< orphan*/  TRACEFS_MAGIC ; 
- int /*<<< orphan*/  assert (struct statfs const*) ; 
+
+
+
+struct statfs {int f_type; } ;
+
+
+ int BINFMTFS_MAGIC ;
+ int BPF_FS_MAGIC ;
+ int CGROUP2_SUPER_MAGIC ;
+ int CGROUP_SUPER_MAGIC ;
+ int DEBUGFS_MAGIC ;
+ int DEVPTS_SUPER_MAGIC ;
+ int EFIVARFS_MAGIC ;
+ scalar_t__ F_TYPE_EQUAL (int ,int ) ;
+ int HUGETLBFS_MAGIC ;
+ int MQUEUE_MAGIC ;
+ int PROC_SUPER_MAGIC ;
+ int PSTOREFS_MAGIC ;
+ int SECURITYFS_MAGIC ;
+ int SELINUX_MAGIC ;
+ int SMACK_MAGIC ;
+ int SYSFS_MAGIC ;
+ int TRACEFS_MAGIC ;
+ int assert (struct statfs const*) ;
 
 __attribute__((used)) static int is_fs_fully_userns_compatible(const struct statfs *sfs) {
 

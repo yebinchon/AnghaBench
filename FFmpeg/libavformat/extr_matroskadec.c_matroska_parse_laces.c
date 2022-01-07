@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint64_t ;
-typedef  int uint32_t ;
-typedef  int int64_t ;
-struct TYPE_5__ {int /*<<< orphan*/  ctx; } ;
-typedef  TYPE_1__ MatroskaDemuxContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_INFO ; 
- int /*<<< orphan*/  ENOMEM ; 
- int INT_MAX ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int* av_malloc (int) ; 
- int* av_malloc_array (int,int) ; 
- int matroska_ebmlnum_sint (TYPE_1__*,int*,int,int*) ; 
- int matroska_ebmlnum_uint (TYPE_1__*,int*,int,int*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int int64_t ;
+struct TYPE_5__ {int ctx; } ;
+typedef TYPE_1__ MatroskaDemuxContext ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_INFO ;
+ int ENOMEM ;
+ int INT_MAX ;
+ int av_assert0 (int) ;
+ int av_log (int ,int ,char*) ;
+ int* av_malloc (int) ;
+ int* av_malloc_array (int,int) ;
+ int matroska_ebmlnum_sint (TYPE_1__*,int*,int,int*) ;
+ int matroska_ebmlnum_uint (TYPE_1__*,int*,int,int*) ;
 
 __attribute__((used)) static int matroska_parse_laces(MatroskaDemuxContext *matroska, uint8_t **buf,
                                 int *buf_size, int type,
@@ -40,7 +40,7 @@ __attribute__((used)) static int matroska_parse_laces(MatroskaDemuxContext *matr
     uint32_t *lace_size;
 
     if (!type) {
-        *laces    = 1;
+        *laces = 1;
         *lace_buf = av_malloc(sizeof(**lace_buf));
         if (!*lace_buf)
             return AVERROR(ENOMEM);
@@ -50,15 +50,15 @@ __attribute__((used)) static int matroska_parse_laces(MatroskaDemuxContext *matr
     }
 
     av_assert0(size > 0);
-    *laces    = *data + 1;
-    data     += 1;
-    size     -= 1;
+    *laces = *data + 1;
+    data += 1;
+    size -= 1;
     lace_size = av_malloc_array(*laces, sizeof(*lace_size));
     if (!lace_size)
         return AVERROR(ENOMEM);
 
     switch (type) {
-    case 0x1: /* Xiph lacing */
+    case 0x1:
     {
         uint8_t temp;
         uint32_t total = 0;
@@ -70,11 +70,11 @@ __attribute__((used)) static int matroska_parse_laces(MatroskaDemuxContext *matr
                     res = AVERROR_INVALIDDATA;
                     break;
                 }
-                temp          = *data;
-                total        += temp;
+                temp = *data;
+                total += temp;
                 lace_size[n] += temp;
-                data         += 1;
-                size         -= 1;
+                data += 1;
+                size -= 1;
                 if (temp != 0xff)
                     break;
             }
@@ -88,7 +88,7 @@ __attribute__((used)) static int matroska_parse_laces(MatroskaDemuxContext *matr
         break;
     }
 
-    case 0x2: /* fixed-size lacing */
+    case 0x2:
         if (size % (*laces)) {
             res = AVERROR_INVALIDDATA;
             break;
@@ -97,7 +97,7 @@ __attribute__((used)) static int matroska_parse_laces(MatroskaDemuxContext *matr
             lace_size[n] = size / *laces;
         break;
 
-    case 0x3: /* EBML lacing */
+    case 0x3:
     {
         uint64_t num;
         uint64_t total;
@@ -121,10 +121,10 @@ __attribute__((used)) static int matroska_parse_laces(MatroskaDemuxContext *matr
                 res = r<0 ? r : AVERROR_INVALIDDATA;
                 break;
             }
-            data        += r;
-            size        -= r;
+            data += r;
+            size -= r;
             lace_size[n] = lace_size[n - 1] + snum;
-            total       += lace_size[n];
+            total += lace_size[n];
         }
         if (size <= total) {
             res = AVERROR_INVALIDDATA;
@@ -135,7 +135,7 @@ __attribute__((used)) static int matroska_parse_laces(MatroskaDemuxContext *matr
     }
     }
 
-    *buf      = data;
+    *buf = data;
     *lace_buf = lace_size;
     *buf_size = size;
 

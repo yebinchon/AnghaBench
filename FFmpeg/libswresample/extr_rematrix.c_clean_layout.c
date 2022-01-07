@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int64_t ;
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int AV_CH_FRONT_CENTER ; 
- int /*<<< orphan*/  AV_LOG_VERBOSE ; 
- int /*<<< orphan*/  av_get_channel_layout_string (char*,int,int,int) ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,char*) ; 
+
+
+
+typedef int int64_t ;
+typedef int buf ;
+
+
+ int AV_CH_FRONT_CENTER ;
+ int AV_LOG_VERBOSE ;
+ int av_get_channel_layout_string (char*,int,int,int) ;
+ int av_log (void*,int ,char*,char*) ;
 
 __attribute__((used)) static int clean_layout(void *s, int64_t layout){
     if(layout && layout != AV_CH_FRONT_CENTER && !(layout&(layout-1))) {

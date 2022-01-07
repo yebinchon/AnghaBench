@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  sdb; int /*<<< orphan*/  wc_id; int /*<<< orphan*/  abspath; } ;
-typedef  TYPE_1__ svn_wc__db_wcroot_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  scalar_t__ svn_wc__db_status_t ;
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-typedef  int /*<<< orphan*/  const svn_skel_t ;
-typedef  scalar_t__ svn_node_kind_t ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int sdb; int wc_id; int abspath; } ;
+typedef TYPE_1__ svn_wc__db_wcroot_t ;
+typedef int svn_wc__db_t ;
+typedef scalar_t__ svn_wc__db_status_t ;
+typedef int svn_sqlite__stmt_t ;
+typedef int const svn_skel_t ;
+typedef scalar_t__ svn_node_kind_t ;
 struct TYPE_8__ {scalar_t__ kind; scalar_t__ filesize; scalar_t__ mtime; } ;
-typedef  TYPE_2__ svn_io_dirent2_t ;
-typedef  scalar_t__ svn_filesize_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/ * (* svn_cancel_func_t ) (void*) ;
-typedef  int svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  scalar_t__ apr_int64_t ;
+typedef TYPE_2__ svn_io_dirent2_t ;
+typedef scalar_t__ svn_filesize_t ;
+typedef int svn_error_t ;
+typedef int * (* svn_cancel_func_t ) (void*) ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef scalar_t__ apr_int64_t ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  STMT_DELETE_ACTUAL_NODE_RECURSIVE ; 
- int /*<<< orphan*/  STMT_DELETE_NODE_ALL_LAYERS ; 
- int /*<<< orphan*/  STMT_DELETE_NODE_RECURSIVE ; 
- int /*<<< orphan*/  STMT_SELECT_WORKING_PRESENT ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int TRUE ; 
- int /*<<< orphan*/ * add_work_items (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- scalar_t__ get_recorded_size (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  kind_map ; 
- int /*<<< orphan*/ * read_info (scalar_t__*,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_dirent_join (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_compose_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_io_stat_dirent2 (TYPE_2__ const**,char const*,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_dir ; 
- scalar_t__ svn_node_file ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_sqlite__bindf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ svn_sqlite__column_int64 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  svn_sqlite__column_is_null (int /*<<< orphan*/ *,int) ; 
- char* svn_sqlite__column_text (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_sqlite__column_token (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_sqlite__get_statement (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_sqlite__step (int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_sqlite__step_done (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc__db_mark_conflict_internal (TYPE_1__*,char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc__db_status_added ; 
- scalar_t__ svn_wc__db_status_incomplete ; 
- scalar_t__ svn_wc__db_status_normal ; 
- int /*<<< orphan*/ * svn_wc__internal_file_modified_p (int*,int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc__wq_build_dir_remove (int /*<<< orphan*/  const**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc__wq_build_file_remove (int /*<<< orphan*/  const**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int STMT_DELETE_ACTUAL_NODE_RECURSIVE ;
+ int STMT_DELETE_NODE_ALL_LAYERS ;
+ int STMT_DELETE_NODE_RECURSIVE ;
+ int STMT_SELECT_WORKING_PRESENT ;
+ int SVN_ERR (int *) ;
+ int SVN_ERR_ASSERT (int) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int * add_work_items (int ,int const*,int *) ;
+ scalar_t__ get_recorded_size (int *,int) ;
+ int kind_map ;
+ int * read_info (scalar_t__*,scalar_t__*,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,TYPE_1__*,char const*,int *,int *) ;
+ char* svn_dirent_join (int ,char const*,int *) ;
+ int * svn_error_compose_create (int *,int ) ;
+ int * svn_io_stat_dirent2 (TYPE_2__ const**,char const*,int,int,int *,int *) ;
+ scalar_t__ svn_node_dir ;
+ scalar_t__ svn_node_file ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ int * svn_sqlite__bindf (int *,char*,int ,char const*) ;
+ scalar_t__ svn_sqlite__column_int64 (int *,int) ;
+ int svn_sqlite__column_is_null (int *,int) ;
+ char* svn_sqlite__column_text (int *,int ,int *) ;
+ scalar_t__ svn_sqlite__column_token (int *,int,int ) ;
+ int * svn_sqlite__get_statement (int **,int ,int ) ;
+ int svn_sqlite__reset (int *) ;
+ int * svn_sqlite__step (int*,int *) ;
+ int * svn_sqlite__step_done (int *) ;
+ int * svn_wc__db_mark_conflict_internal (TYPE_1__*,char const*,int const*,int *) ;
+ scalar_t__ svn_wc__db_status_added ;
+ scalar_t__ svn_wc__db_status_incomplete ;
+ scalar_t__ svn_wc__db_status_normal ;
+ int * svn_wc__internal_file_modified_p (int*,int *,char const*,int,int *) ;
+ int * svn_wc__wq_build_dir_remove (int const**,int *,int ,char const*,int,int *,int *) ;
+ int * svn_wc__wq_build_file_remove (int const**,int *,int ,char const*,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 remove_node_txn(svn_boolean_t *left_changes,
@@ -82,11 +82,11 @@ remove_node_txn(svn_boolean_t *left_changes,
 {
   svn_sqlite__stmt_t *stmt;
 
-  /* Note that unlike many similar functions it is a valid scenario for this
-     function to be called on a wcroot! */
 
-   /* db set when destroying wc */
-  SVN_ERR_ASSERT(!destroy_wc || db != NULL);
+
+
+
+  SVN_ERR_ASSERT(!destroy_wc || db != ((void*)0));
 
   if (left_changes)
     *left_changes = FALSE;
@@ -96,9 +96,9 @@ remove_node_txn(svn_boolean_t *left_changes,
     {
       svn_boolean_t have_row;
       apr_pool_t *iterpool;
-      svn_error_t *err = NULL;
+      svn_error_t *err = ((void*)0);
 
-      /* Install WQ items for deleting the unmodified files and all dirs */
+
       SVN_ERR(svn_sqlite__get_statement(&stmt, wcroot->sdb,
                                         STMT_SELECT_WORKING_PRESENT));
       SVN_ERR(svn_sqlite__bindf(stmt, "is",
@@ -118,11 +118,11 @@ remove_node_txn(svn_boolean_t *left_changes,
           apr_int64_t recorded_time;
           const svn_io_dirent2_t *dirent;
           svn_boolean_t modified_p = TRUE;
-          svn_skel_t *work_item = NULL;
+          svn_skel_t *work_item = ((void*)0);
 
           svn_pool_clear(iterpool);
 
-          child_relpath = svn_sqlite__column_text(stmt, 0, NULL);
+          child_relpath = svn_sqlite__column_text(stmt, 0, ((void*)0));
           child_kind = svn_sqlite__column_token(stmt, 1, kind_map);
 
           child_abspath = svn_dirent_join(wcroot->abspath, child_relpath,
@@ -151,7 +151,7 @@ remove_node_txn(svn_boolean_t *left_changes,
               || dirent->kind != svn_node_file
               || child_kind != svn_node_file)
             {
-              /* Not interested in keeping changes */
+
               modified_p = FALSE;
             }
           else if (child_kind == svn_node_file
@@ -159,7 +159,7 @@ remove_node_txn(svn_boolean_t *left_changes,
                    && dirent->filesize == recorded_size
                    && dirent->mtime == recorded_time)
             {
-              modified_p = FALSE; /* File matches recorded state */
+              modified_p = FALSE;
             }
           else if (have_checksum)
             err = svn_wc__internal_file_modified_p(&modified_p,
@@ -181,7 +181,7 @@ remove_node_txn(svn_boolean_t *left_changes,
                                                 child_abspath, FALSE,
                                                 iterpool, iterpool);
             }
-          else /* svn_node_file || svn_node_symlink */
+          else
             {
               err = svn_wc__wq_build_file_remove(&work_item,
                                                  db, wcroot->abspath,
@@ -208,12 +208,12 @@ remove_node_txn(svn_boolean_t *left_changes,
 
   if (destroy_wc && *local_relpath != '\0')
     {
-      /* Create work item for destroying the root */
+
       svn_wc__db_status_t status;
       svn_node_kind_t kind;
-      SVN_ERR(read_info(&status, &kind, NULL, NULL, NULL, NULL, NULL, NULL,
-                        NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-                        NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+      SVN_ERR(read_info(&status, &kind, ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                        ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                        ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
                         wcroot, local_relpath,
                         scratch_pool, scratch_pool));
 
@@ -221,7 +221,7 @@ remove_node_txn(svn_boolean_t *left_changes,
           || status == svn_wc__db_status_added
           || status == svn_wc__db_status_incomplete)
         {
-          svn_skel_t *work_item = NULL;
+          svn_skel_t *work_item = ((void*)0);
           const char *local_abspath = svn_dirent_join(wcroot->abspath,
                                                           local_relpath,
                                                           scratch_pool);
@@ -232,7 +232,7 @@ remove_node_txn(svn_boolean_t *left_changes,
                                                   db, wcroot->abspath,
                                                   local_abspath,
                                                   destroy_changes
-                                                      /* recursive */,
+                                                                     ,
                                                   scratch_pool, scratch_pool));
             }
           else
@@ -264,13 +264,13 @@ remove_node_txn(svn_boolean_t *left_changes,
         }
     }
 
-  /* Remove all nodes below local_relpath */
+
   SVN_ERR(svn_sqlite__get_statement(&stmt, wcroot->sdb,
                                     STMT_DELETE_NODE_RECURSIVE));
   SVN_ERR(svn_sqlite__bindf(stmt, "is", wcroot->wc_id, local_relpath));
   SVN_ERR(svn_sqlite__step_done(stmt));
 
-  /* Delete the root NODE when this is not the working copy root */
+
   if (local_relpath[0] != '\0')
     {
       SVN_ERR(svn_sqlite__get_statement(&stmt, wcroot->sdb,
@@ -282,7 +282,7 @@ remove_node_txn(svn_boolean_t *left_changes,
   SVN_ERR(svn_sqlite__get_statement(&stmt, wcroot->sdb,
                                     STMT_DELETE_ACTUAL_NODE_RECURSIVE));
 
-  /* Delete all actual nodes at or below local_relpath */
+
   SVN_ERR(svn_sqlite__bindf(stmt, "is", wcroot->wc_id,
                                          local_relpath));
   SVN_ERR(svn_sqlite__step_done(stmt));

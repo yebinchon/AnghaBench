@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int x; int y; } ;
-typedef  TYPE_1__ POINT ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ POINT ;
+typedef int INT ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ BEZIERPIXEL ; 
- int BEZIERSHIFTDOWN (int) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ abs (int) ; 
+
+ scalar_t__ BEZIERPIXEL ;
+ int BEZIERSHIFTDOWN (int) ;
+ int FALSE ;
+ int TRUE ;
+ scalar_t__ abs (int) ;
 
 __attribute__((used)) static BOOL BezierCheck( int level, POINT *Points)
 {
     INT dx, dy;
     dx=Points[3].x-Points[0].x;
     dy=Points[3].y-Points[0].y;
-    if(abs(dy)<=abs(dx)){/* shallow line */
-        /* check that control points are between begin and end */
+    if(abs(dy)<=abs(dx)){
+
         if(Points[1].x < Points[0].x){
             if(Points[1].x < Points[3].x)
                 return FALSE;
@@ -51,8 +51,8 @@ __attribute__((used)) static BOOL BezierCheck( int level, POINT *Points)
             return FALSE;
         else
             return TRUE;
-    }else{ /* steep line */
-        /* check that control points are between begin and end */
+    }else{
+
         if(Points[1].y < Points[0].y){
             if(Points[1].y < Points[3].y)
                 return FALSE;

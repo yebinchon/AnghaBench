@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  Q68State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACCESS_READ ; 
- scalar_t__ EA_ADDRESS_REG ; 
- scalar_t__ EA_DATA_REG ; 
- scalar_t__ EA_MISC ; 
- scalar_t__ EA_MISC_IMMEDIATE ; 
- scalar_t__ EA_MODE (int /*<<< orphan*/ ) ; 
- scalar_t__ EA_POSTINCREMENT ; 
- scalar_t__ EA_PREDECREMENT ; 
- scalar_t__ EA_REG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INSN_GET_REG ; 
- int /*<<< orphan*/  JIT_EMIT_ADD_CYCLES (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  JIT_EMIT_LEA (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SIZE_W ; 
- int /*<<< orphan*/  current_entry ; 
- int ea_resolve (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int op_ill (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int reg ; 
+
+
+
+typedef int uint32_t ;
+typedef int Q68State ;
+
+
+ int ACCESS_READ ;
+ scalar_t__ EA_ADDRESS_REG ;
+ scalar_t__ EA_DATA_REG ;
+ scalar_t__ EA_MISC ;
+ scalar_t__ EA_MISC_IMMEDIATE ;
+ scalar_t__ EA_MODE (int ) ;
+ scalar_t__ EA_POSTINCREMENT ;
+ scalar_t__ EA_PREDECREMENT ;
+ scalar_t__ EA_REG (int ) ;
+ int INSN_GET_REG ;
+ int JIT_EMIT_ADD_CYCLES (int ,int) ;
+ int JIT_EMIT_LEA (int ,int) ;
+ int SIZE_W ;
+ int current_entry ;
+ int ea_resolve (int *,int ,int ,int ) ;
+ int op_ill (int *,int ) ;
+ int reg ;
 
 __attribute__((used)) static int op_LEA(Q68State *state, uint32_t opcode)
 {
     INSN_GET_REG;
 
-    /* Register, predecrement, postincrement, immediate modes are illegal */
+
     if (EA_MODE(opcode) == EA_DATA_REG
      || EA_MODE(opcode) == EA_ADDRESS_REG
      || EA_MODE(opcode) == EA_POSTINCREMENT
@@ -50,7 +50,7 @@ __attribute__((used)) static int op_LEA(Q68State *state, uint32_t opcode)
     if (cycles < 0) {
         return op_ill(state, opcode);
     }
-    if (cycles % 4 == 2) {  // d(An,ix) and d(PC,ix) take 2 extra cycles
+    if (cycles % 4 == 2) {
         cycles += 2;
     }
 

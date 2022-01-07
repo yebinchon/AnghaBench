@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct property_test {char const* member_0; int /*<<< orphan*/  const member_1; } ;
-typedef  int /*<<< orphan*/  property_tests ;
-typedef  int /*<<< orphan*/  child_container ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  IDxDiagContainer ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- char const* DxDiag_SoundDevices ; 
- scalar_t__ IDxDiagContainer_EnumChildContainerNames (int /*<<< orphan*/ *,scalar_t__,char*,int) ; 
- scalar_t__ IDxDiagContainer_GetChildContainer (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ **) ; 
- scalar_t__ IDxDiagContainer_GetNumberOfChildContainers (int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ IDxDiagContainer_GetNumberOfProps (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  IDxDiagContainer_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDxDiagProvider_Release (int /*<<< orphan*/ ) ; 
- scalar_t__ S_OK ; 
-#define  VT_BSTR 128 
- int /*<<< orphan*/  create_root_IDxDiagContainer () ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/ * pddc ; 
- int /*<<< orphan*/  pddp ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  test_container_properties (int /*<<< orphan*/ *,struct property_test const*,int) ; 
- int /*<<< orphan*/  trace (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wine_dbgstr_w (char*) ; 
+
+
+
+struct property_test {char const* member_0; int const member_1; } ;
+typedef int property_tests ;
+typedef int child_container ;
+typedef char WCHAR ;
+typedef int IDxDiagContainer ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ DWORD ;
+
+
+ char const* DxDiag_SoundDevices ;
+ scalar_t__ IDxDiagContainer_EnumChildContainerNames (int *,scalar_t__,char*,int) ;
+ scalar_t__ IDxDiagContainer_GetChildContainer (int *,char const*,int **) ;
+ scalar_t__ IDxDiagContainer_GetNumberOfChildContainers (int *,scalar_t__*) ;
+ scalar_t__ IDxDiagContainer_GetNumberOfProps (int *,scalar_t__*) ;
+ int IDxDiagContainer_Release (int *) ;
+ int IDxDiagProvider_Release (int ) ;
+ scalar_t__ S_OK ;
+
+ int create_root_IDxDiagContainer () ;
+ int ok (int,char*,...) ;
+ int * pddc ;
+ int pddp ;
+ int skip (char*) ;
+ int test_container_properties (int *,struct property_test const*,int) ;
+ int trace (char*,int ) ;
+ int wine_dbgstr_w (char*) ;
 
 __attribute__((used)) static void test_DxDiag_SoundDevices(void)
 {
@@ -47,13 +47,13 @@ __attribute__((used)) static void test_DxDiag_SoundDevices(void)
 
     static const struct property_test property_tests[] =
     {
-        {szDescription, VT_BSTR},
-        {szGuidDeviceID, VT_BSTR},
-        {szDriverName, VT_BSTR},
-        {szDriverPath, VT_BSTR},
+        {szDescription, 128},
+        {szGuidDeviceID, 128},
+        {szDriverName, 128},
+        {szDriverPath, 128},
     };
 
-    IDxDiagContainer *sound_cont = NULL;
+    IDxDiagContainer *sound_cont = ((void*)0);
     DWORD count, i;
     HRESULT hr;
 
@@ -97,10 +97,10 @@ __attribute__((used)) static void test_DxDiag_SoundDevices(void)
             test_container_properties(child, property_tests, sizeof(property_tests)/sizeof(property_tests[0]));
         }
 
-        child2 = NULL;
+        child2 = ((void*)0);
         hr = IDxDiagContainer_GetChildContainer(child, empty, &child2);
         ok(hr == S_OK, "Expected IDxDiagContainer::GetChildContainer to return S_OK, got 0x%08x\n", hr);
-        ok(child2 != NULL, "Expected child2 != NULL\n");
+        ok(child2 != ((void*)0), "Expected child2 != NULL\n");
         ok(child2 != child, "Expected child != child2\n");
         if (hr == S_OK) IDxDiagContainer_Release(child2);
 

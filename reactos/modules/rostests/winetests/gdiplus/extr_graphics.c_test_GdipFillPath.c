@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * HDC ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpSolidFill ;
-typedef  int /*<<< orphan*/  GpPath ;
-typedef  int /*<<< orphan*/  GpGraphics ;
-typedef  int /*<<< orphan*/  GpBrush ;
-typedef  int /*<<< orphan*/  ARGB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FillModeAlternate ; 
- int /*<<< orphan*/  GdipAddPathLineI (int /*<<< orphan*/ *,int,int,int,int) ; 
- int /*<<< orphan*/  GdipAddPathRectangle (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  GdipCreateFromHDC (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreatePath (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreateSolidFill (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteBrush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeletePath (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipFillPath (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipResetPath (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * GetDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hwnd ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int * HDC ;
+typedef int GpStatus ;
+typedef int GpSolidFill ;
+typedef int GpPath ;
+typedef int GpGraphics ;
+typedef int GpBrush ;
+typedef int ARGB ;
+
+
+ int FillModeAlternate ;
+ int GdipAddPathLineI (int *,int,int,int,int) ;
+ int GdipAddPathRectangle (int *,int ,int ,int,int) ;
+ int GdipCreateFromHDC (int *,int **) ;
+ int GdipCreatePath (int ,int **) ;
+ int GdipCreateSolidFill (int ,int **) ;
+ int GdipDeleteBrush (int *) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipDeletePath (int *) ;
+ int GdipFillPath (int *,int *,int *) ;
+ int GdipResetPath (int *) ;
+ int * GetDC (int ) ;
+ int Ok ;
+ int ReleaseDC (int ,int *) ;
+ int expect (int ,int ) ;
+ int hwnd ;
+ int ok (int ,char*) ;
 
 __attribute__((used)) static void test_GdipFillPath(void)
 {
@@ -45,23 +45,23 @@ __attribute__((used)) static void test_GdipFillPath(void)
     GpPath *path;
     HDC hdc = GetDC(hwnd);
 
-    ok(hdc != NULL, "Expected HDC to be initialized\n");
+    ok(hdc != ((void*)0), "Expected HDC to be initialized\n");
     status = GdipCreateFromHDC(hdc, &graphics);
     expect(Ok, status);
-    ok(graphics != NULL, "Expected graphics to be initialized\n");
+    ok(graphics != ((void*)0), "Expected graphics to be initialized\n");
     status = GdipCreateSolidFill((ARGB)0xffffffff, &brush);
     expect(Ok, status);
-    ok(brush != NULL, "Expected brush to be initialized\n");
+    ok(brush != ((void*)0), "Expected brush to be initialized\n");
     status = GdipCreatePath(FillModeAlternate, &path);
     expect(Ok, status);
-    ok(path != NULL, "Expected path to be initialized\n");
+    ok(path != ((void*)0), "Expected path to be initialized\n");
 
-    /* Empty path */
+
     GdipResetPath(path);
     status = GdipFillPath(graphics, (GpBrush *)brush, path);
     expect(Ok, status);
 
-    /* Not closed path */
+
     GdipResetPath(path);
     status = GdipAddPathLineI(path, 0, 0, 2, 2);
     expect(Ok, status);
@@ -70,7 +70,7 @@ __attribute__((used)) static void test_GdipFillPath(void)
     status = GdipFillPath(graphics, (GpBrush *)brush, path);
     expect(Ok, status);
 
-    /* Closed path */
+
     GdipResetPath(path);
     status = GdipAddPathRectangle(path, 0, 0, 4, 4);
     expect(Ok, status);

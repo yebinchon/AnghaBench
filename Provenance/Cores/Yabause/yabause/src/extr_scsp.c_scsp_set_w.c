@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
-typedef  int u16 ;
-typedef  int /*<<< orphan*/  pointer ;
-struct TYPE_4__ {int /*<<< orphan*/  (* SetFetch ) (int,int,int /*<<< orphan*/ ) ;} ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u32 ;
+typedef int u16 ;
+typedef int pointer ;
+struct TYPE_4__ {int (* SetFetch ) (int,int,int ) ;} ;
 struct TYPE_3__ {int mem4b; int mvol; int rbl; int rbp; int mslc; int dmea; int drga; int dmlen; int dmfl; int timasd; int timacnt; int timbsd; int timbcnt; int timcsd; int timccnt; int scieb; int scipd; int scilv0; int scilv1; int scilv2; int mcieb; int mcipd; } ;
 
-/* Variables and functions */
- TYPE_2__* M68K ; 
- int /*<<< orphan*/  SCSPLOG (char*,int,int) ; 
- int /*<<< orphan*/  SoundRam ; 
- TYPE_1__ scsp ; 
- int /*<<< orphan*/ * scsp_ccr ; 
- int /*<<< orphan*/  scsp_dma () ; 
- int /*<<< orphan*/  scsp_main_interrupt (int) ; 
- int /*<<< orphan*/  scsp_midi_out_send (int) ; 
- int /*<<< orphan*/  scsp_sound_interrupt (int) ; 
- int /*<<< orphan*/  scsp_trigger_main_interrupt (int) ; 
- int /*<<< orphan*/  scsp_trigger_sound_interrupt (int) ; 
- int /*<<< orphan*/  scsp_update_monitor () ; 
- int /*<<< orphan*/  stub1 (int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub5 (int,int,int /*<<< orphan*/ ) ; 
+
+ TYPE_2__* M68K ;
+ int SCSPLOG (char*,int,int) ;
+ int SoundRam ;
+ TYPE_1__ scsp ;
+ int * scsp_ccr ;
+ int scsp_dma () ;
+ int scsp_main_interrupt (int) ;
+ int scsp_midi_out_send (int) ;
+ int scsp_sound_interrupt (int) ;
+ int scsp_trigger_main_interrupt (int) ;
+ int scsp_trigger_sound_interrupt (int) ;
+ int scsp_update_monitor () ;
+ int stub1 (int,int,int ) ;
+ int stub2 (int,int,int ) ;
+ int stub3 (int,int,int ) ;
+ int stub4 (int,int,int ) ;
+ int stub5 (int,int,int ) ;
 
 __attribute__((used)) static void
 scsp_set_w (u32 a, u16 d)
@@ -49,7 +49,7 @@ scsp_set_w (u32 a, u16 d)
 
   switch (a & 0x3E)
     {
-    case 0x00: // MEM4MB/DAC18B/VER/MVOL
+    case 0x00:
       scsp.mem4b = (d >> 9) & 0x1;
       scsp.mvol = d & 0xF;
       if (scsp.mem4b)
@@ -65,54 +65,54 @@ scsp_set_w (u32 a, u16 d)
         }
       return;
 
-    case 0x02: // RBL/RBP
+    case 0x02:
       scsp.rbl = (d >> 7) & 3;
-#ifdef USE_NEW_SCSP
-      scsp.rbp = (d & 0x7F);
-#else
+
+
+
       scsp.rbp = (d & 0x7F) * (4 * 1024 * 2);
-#endif
+
       return;
 
-    case 0x06: // MOBUF
+    case 0x06:
       scsp_midi_out_send(d & 0xFF);
       return;
 
-    case 0x08: // MSLC
+    case 0x08:
       scsp.mslc = (d >> 11) & 0x1F;
       scsp_update_monitor();
       return;
 
-    case 0x12: // DMEAL
+    case 0x12:
       scsp.dmea = (scsp.dmea & 0x70000) + (d & 0xFFFE);
       return;
 
-    case 0x14: // DMEAH/DRGA
+    case 0x14:
       scsp.dmea = (scsp.dmea & 0xFFFE) + ((d & 0x7000) << 4);
       scsp.drga = d & 0xFFE;
       return;
 
-    case 0x16: // DGATE/DDIR/DEXE/DTLG
+    case 0x16:
       scsp.dmlen = d & 0xFFE;
       if ((scsp.dmfl = ((d >> 8) & 0xF0)) & 0x10) scsp_dma ();
       return;
 
-    case 0x18: // TACTL/TIMA
+    case 0x18:
       scsp.timasd = (d >> 8) & 7;
       scsp.timacnt = (d & 0xFF) << 8;
       return;
 
-    case 0x1A: // TBCTL/TIMB
+    case 0x1A:
       scsp.timbsd = (d >> 8) & 7;
       scsp.timbcnt = (d & 0xFF) << 8;
       return;
 
-    case 0x1C: // TCCTL/TIMC
+    case 0x1C:
       scsp.timcsd = (d >> 8) & 7;
       scsp.timccnt = (d & 0xFF) << 8;
       return;
 
-    case 0x1E: // SCIEB
+    case 0x1E:
     {
       int i;
       scsp.scieb = d;
@@ -123,27 +123,27 @@ scsp_set_w (u32 a, u16 d)
         }
       return;
     }
-    case 0x20: // SCIPD
+    case 0x20:
       if (d & 0x20) scsp_sound_interrupt (0x20);
       return;
 
-    case 0x22: // SCIRE
+    case 0x22:
       scsp.scipd &= ~d;
       return;
 
-    case 0x24: // SCILV0
+    case 0x24:
       scsp.scilv0 = d;
       return;
 
-    case 0x26: // SCILV1
+    case 0x26:
       scsp.scilv1 = d;
       return;
 
-    case 0x28: // SCILV2
+    case 0x28:
       scsp.scilv2 = d;
       return;
 
-    case 0x2A: // MCIEB
+    case 0x2A:
     {
       int i;
       scsp.mcieb = d;
@@ -155,11 +155,11 @@ scsp_set_w (u32 a, u16 d)
       return;
     }
 
-    case 0x2C: // MCIPD
+    case 0x2C:
       if (d & 0x20) scsp_main_interrupt (0x20);
       return;
 
-    case 0x2E: // MCIRE
+    case 0x2E:
       scsp.mcipd &= ~d;
       return;
     }

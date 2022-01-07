@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int loff_t ;
 
-/* Variables and functions */
- int BLOCK_SIZE ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  dev ; 
- int /*<<< orphan*/  die (char*) ; 
- int llseek (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*) ; 
- long read (int /*<<< orphan*/ ,char*,int) ; 
+
+
+
+typedef int loff_t ;
+
+
+ int BLOCK_SIZE ;
+ int SEEK_SET ;
+ int dev ;
+ int die (char*) ;
+ int llseek (int ,int,int ) ;
+ int printf (char*) ;
+ long read (int ,char*,int) ;
 
 __attribute__((used)) static long
 do_check (char *buffer, int try, unsigned int current_block)
 {
   long got;
 
-  if (llseek (dev, (loff_t)current_block * BLOCK_SIZE, SEEK_SET) /* Seek to the correct location */
+  if (llseek (dev, (loff_t)current_block * BLOCK_SIZE, SEEK_SET)
       != (loff_t)current_block * BLOCK_SIZE)
     die ("seek failed during testing for blocks");
 
-  got = read (dev, buffer, try * BLOCK_SIZE);	/* Try reading! */
+  got = read (dev, buffer, try * BLOCK_SIZE);
   if (got < 0)
     got = 0;
 

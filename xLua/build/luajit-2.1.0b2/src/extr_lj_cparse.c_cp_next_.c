@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int c; int /*<<< orphan*/  sb; } ;
-typedef  char CPToken ;
-typedef  TYPE_1__ CPState ;
 
-/* Variables and functions */
- char CTOK_ANDAND ; 
- char CTOK_DEREF ; 
- char CTOK_EOF ; 
- char CTOK_EQ ; 
- char CTOK_GE ; 
- char CTOK_LE ; 
- char CTOK_NE ; 
- char CTOK_OROR ; 
- char CTOK_SHL ; 
- char CTOK_SHR ; 
- int /*<<< orphan*/  cp_comment_c (TYPE_1__*) ; 
- int /*<<< orphan*/  cp_comment_cpp (TYPE_1__*) ; 
- char cp_get (TYPE_1__*) ; 
- char cp_ident (TYPE_1__*) ; 
- int /*<<< orphan*/  cp_newline (TYPE_1__*) ; 
- char cp_number (TYPE_1__*) ; 
- char cp_param (TYPE_1__*) ; 
- char cp_string (TYPE_1__*) ; 
- int /*<<< orphan*/  lj_buf_reset (int /*<<< orphan*/ *) ; 
- scalar_t__ lj_char_isdigit (int) ; 
- scalar_t__ lj_char_isident (int) ; 
+
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int c; int sb; } ;
+typedef char CPToken ;
+typedef TYPE_1__ CPState ;
+
+
+ char CTOK_ANDAND ;
+ char CTOK_DEREF ;
+ char CTOK_EOF ;
+ char CTOK_EQ ;
+ char CTOK_GE ;
+ char CTOK_LE ;
+ char CTOK_NE ;
+ char CTOK_OROR ;
+ char CTOK_SHL ;
+ char CTOK_SHR ;
+ int cp_comment_c (TYPE_1__*) ;
+ int cp_comment_cpp (TYPE_1__*) ;
+ char cp_get (TYPE_1__*) ;
+ char cp_ident (TYPE_1__*) ;
+ int cp_newline (TYPE_1__*) ;
+ char cp_number (TYPE_1__*) ;
+ char cp_param (TYPE_1__*) ;
+ char cp_string (TYPE_1__*) ;
+ int lj_buf_reset (int *) ;
+ scalar_t__ lj_char_isdigit (int) ;
+ scalar_t__ lj_char_isident (int) ;
 
 __attribute__((used)) static CPToken cp_next_(CPState *cp)
 {
@@ -45,7 +45,7 @@ __attribute__((used)) static CPToken cp_next_(CPState *cp)
     if (lj_char_isident(cp->c))
       return lj_char_isdigit(cp->c) ? cp_number(cp) : cp_ident(cp);
     switch (cp->c) {
-    case '\n': case '\r': cp_newline(cp);  /* fallthrough. */
+    case '\n': case '\r': cp_newline(cp);
     case ' ': case '\t': case '\v': case '\f': cp_get(cp); break;
     case '"': case '\'': return cp_string(cp);
     case '/':

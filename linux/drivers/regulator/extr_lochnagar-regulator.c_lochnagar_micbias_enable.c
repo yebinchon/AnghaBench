@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct regulator_dev {int dummy; } ;
-struct lochnagar {int /*<<< orphan*/  analogue_config_lock; } ;
+struct lochnagar {int analogue_config_lock; } ;
 
-/* Variables and functions */
- int lochnagar_update_config (struct lochnagar*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- struct lochnagar* rdev_get_drvdata (struct regulator_dev*) ; 
- int regulator_enable_regmap (struct regulator_dev*) ; 
+
+ int lochnagar_update_config (struct lochnagar*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ struct lochnagar* rdev_get_drvdata (struct regulator_dev*) ;
+ int regulator_enable_regmap (struct regulator_dev*) ;
 
 __attribute__((used)) static int lochnagar_micbias_enable(struct regulator_dev *rdev)
 {
-	struct lochnagar *lochnagar = rdev_get_drvdata(rdev);
-	int ret;
+ struct lochnagar *lochnagar = rdev_get_drvdata(rdev);
+ int ret;
 
-	mutex_lock(&lochnagar->analogue_config_lock);
+ mutex_lock(&lochnagar->analogue_config_lock);
 
-	ret = regulator_enable_regmap(rdev);
-	if (ret < 0)
-		goto err;
+ ret = regulator_enable_regmap(rdev);
+ if (ret < 0)
+  goto err;
 
-	ret = lochnagar_update_config(lochnagar);
+ ret = lochnagar_update_config(lochnagar);
 
 err:
-	mutex_unlock(&lochnagar->analogue_config_lock);
+ mutex_unlock(&lochnagar->analogue_config_lock);
 
-	return ret;
+ return ret;
 }

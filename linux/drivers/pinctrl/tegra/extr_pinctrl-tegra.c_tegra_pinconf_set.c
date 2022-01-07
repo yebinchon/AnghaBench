@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pinctrl_dev {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int ENOTSUPP ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ ,char*) ; 
+
+
+
+struct pinctrl_dev {int dev; } ;
+
+
+ int ENOTSUPP ;
+ int dev_err (int ,char*) ;
 
 __attribute__((used)) static int tegra_pinconf_set(struct pinctrl_dev *pctldev,
-			     unsigned pin, unsigned long *configs,
-			     unsigned num_configs)
+        unsigned pin, unsigned long *configs,
+        unsigned num_configs)
 {
-	dev_err(pctldev->dev, "pin_config_set op not supported\n");
-	return -ENOTSUPP;
+ dev_err(pctldev->dev, "pin_config_set op not supported\n");
+ return -ENOTSUPP;
 }

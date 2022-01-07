@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite_int64 ;
-typedef  int /*<<< orphan*/  Tcl_Obj ;
-struct TYPE_2__ {int pUpdateHook; int /*<<< orphan*/  interp; } ;
-typedef  TYPE_1__ SqliteDb ;
 
-/* Variables and functions */
- int SQLITE_DELETE ; 
- int SQLITE_INSERT ; 
- int SQLITE_UPDATE ; 
- int /*<<< orphan*/  TCL_EVAL_DIRECT ; 
- int /*<<< orphan*/  Tcl_DecrRefCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Tcl_DuplicateObj (int) ; 
- int /*<<< orphan*/  Tcl_EvalObjEx (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Tcl_IncrRefCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Tcl_ListObjAppendElement (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Tcl_NewStringObj (char const*,int) ; 
- int /*<<< orphan*/  Tcl_NewWideIntObj (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sqlite_int64 ;
+typedef int Tcl_Obj ;
+struct TYPE_2__ {int pUpdateHook; int interp; } ;
+typedef TYPE_1__ SqliteDb ;
+
+
+ int SQLITE_DELETE ;
+ int SQLITE_INSERT ;
+ int SQLITE_UPDATE ;
+ int TCL_EVAL_DIRECT ;
+ int Tcl_DecrRefCount (int *) ;
+ int * Tcl_DuplicateObj (int) ;
+ int Tcl_EvalObjEx (int ,int *,int ) ;
+ int Tcl_IncrRefCount (int *) ;
+ int Tcl_ListObjAppendElement (int ,int *,int ) ;
+ int Tcl_NewStringObj (char const*,int) ;
+ int Tcl_NewWideIntObj (int ) ;
+ int assert (int) ;
 
 __attribute__((used)) static void DbUpdateHandler(
   void *p,

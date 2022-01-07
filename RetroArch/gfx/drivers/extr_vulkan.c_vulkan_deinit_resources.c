@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vk_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  vulkan_deinit_buffers (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vulkan_deinit_command_buffers (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vulkan_deinit_descriptor_pool (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vulkan_deinit_framebuffers (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vulkan_deinit_pipelines (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vulkan_deinit_textures (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vk_t ;
+
+
+ int vulkan_deinit_buffers (int *) ;
+ int vulkan_deinit_command_buffers (int *) ;
+ int vulkan_deinit_descriptor_pool (int *) ;
+ int vulkan_deinit_framebuffers (int *) ;
+ int vulkan_deinit_pipelines (int *) ;
+ int vulkan_deinit_textures (int *) ;
 
 __attribute__((used)) static void vulkan_deinit_resources(vk_t *vk)
 {

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BOOLEAN ;
-typedef  scalar_t__ ACPI_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_ROOT_OBJECT ; 
- int /*<<< orphan*/  ACPI_TYPE_ANY ; 
- int /*<<< orphan*/  ACPI_UINT32_MAX ; 
- scalar_t__ AE_CTRL_TRUE ; 
- scalar_t__ AcpiNsWalkNamespace (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  XfCompareOneNamespaceObject ; 
+
+
+
+typedef int BOOLEAN ;
+typedef scalar_t__ ACPI_STATUS ;
+
+
+ int ACPI_ROOT_OBJECT ;
+ int ACPI_TYPE_ANY ;
+ int ACPI_UINT32_MAX ;
+ scalar_t__ AE_CTRL_TRUE ;
+ scalar_t__ AcpiNsWalkNamespace (int ,int ,int ,int ,int ,int *,char*,int *) ;
+ int FALSE ;
+ int TRUE ;
+ int XfCompareOneNamespaceObject ;
 
 __attribute__((used)) static BOOLEAN
 XfObjectExists (
-    char                    *Name)
+    char *Name)
 {
-    ACPI_STATUS             Status;
+    ACPI_STATUS Status;
 
 
-    /* Walk entire namespace from the supplied root */
+
 
     Status = AcpiNsWalkNamespace (ACPI_TYPE_ANY, ACPI_ROOT_OBJECT,
-        ACPI_UINT32_MAX, FALSE, XfCompareOneNamespaceObject, NULL,
-        Name, NULL);
+        ACPI_UINT32_MAX, FALSE, XfCompareOneNamespaceObject, ((void*)0),
+        Name, ((void*)0));
     if (Status == AE_CTRL_TRUE)
     {
-        /* At least one instance of the name was found */
+
 
         return (TRUE);
     }

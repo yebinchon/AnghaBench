@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_int ;
 
-/* Variables and functions */
+
+
+
+typedef int u_int ;
+
+
 
 __attribute__((used)) static u_int
 cache_roundup_2(u_int val)
 {
-	u_int res;
+ u_int res;
 
-	for (res = 1; res <= val; res <<= 1)
-		continue;
+ for (res = 1; res <= val; res <<= 1)
+  continue;
 
-	return (res);
+ return (res);
 }

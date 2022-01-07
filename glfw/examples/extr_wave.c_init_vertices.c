@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {float x; float y; double r; float g; float b; scalar_t__ z; } ;
-typedef  float GLfloat ;
+typedef float GLfloat ;
 
-/* Variables and functions */
- int GRIDH ; 
- int GRIDW ; 
- int QUADH ; 
- int QUADW ; 
- int* quad ; 
- TYPE_1__* vertex ; 
+
+ int GRIDH ;
+ int GRIDW ;
+ int QUADH ;
+ int QUADW ;
+ int* quad ;
+ TYPE_1__* vertex ;
 
 void init_vertices(void)
 {
     int x, y, p;
 
-    // Place the vertices in a grid
-    for (y = 0;  y < GRIDH;  y++)
+
+    for (y = 0; y < GRIDH; y++)
     {
-        for (x = 0;  x < GRIDW;  x++)
+        for (x = 0; x < GRIDW; x++)
         {
             p = y * GRIDW + x;
 
@@ -47,16 +47,16 @@ void init_vertices(void)
         }
     }
 
-    for (y = 0;  y < QUADH;  y++)
+    for (y = 0; y < QUADH; y++)
     {
-        for (x = 0;  x < QUADW;  x++)
+        for (x = 0; x < QUADW; x++)
         {
             p = 4 * (y * QUADW + x);
 
-            quad[p + 0] = y       * GRIDW + x;     // Some point
-            quad[p + 1] = y       * GRIDW + x + 1; // Neighbor at the right side
-            quad[p + 2] = (y + 1) * GRIDW + x + 1; // Upper right neighbor
-            quad[p + 3] = (y + 1) * GRIDW + x;     // Upper neighbor
+            quad[p + 0] = y * GRIDW + x;
+            quad[p + 1] = y * GRIDW + x + 1;
+            quad[p + 2] = (y + 1) * GRIDW + x + 1;
+            quad[p + 3] = (y + 1) * GRIDW + x;
         }
     }
 }

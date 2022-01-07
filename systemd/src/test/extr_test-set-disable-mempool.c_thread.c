@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Set ;
 
-/* Variables and functions */
- scalar_t__ NUM ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/  is_main_thread () ; 
- int /*<<< orphan*/ * set_free (int /*<<< orphan*/ *) ; 
- scalar_t__ set_size (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int Set ;
+
+
+ scalar_t__ NUM ;
+ int assert_se (int) ;
+ int is_main_thread () ;
+ int * set_free (int *) ;
+ scalar_t__ set_size (int *) ;
 
 __attribute__((used)) static void* thread(void *p) {
         Set **s = p;
@@ -29,5 +29,5 @@ __attribute__((used)) static void* thread(void *p) {
         assert_se(set_size(*s) == NUM);
         *s = set_free(*s);
 
-        return NULL;
+        return ((void*)0);
 }

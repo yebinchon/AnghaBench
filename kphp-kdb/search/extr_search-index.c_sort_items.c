@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct item {int extra; char* str; int item_id; int /*<<< orphan*/  rates; } ;
-typedef  int /*<<< orphan*/  J ;
 
-/* Variables and functions */
- int FLAG_DELETED ; 
- int INT_MIN ; 
- int ITEMS_HASH_PRIME ; 
- struct item** Items ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  cmp_item_hash ; 
- int del_items ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,double,...) ; 
- long long const get_hash_item (struct item*) ; 
- scalar_t__ hash_stats ; 
- int /*<<< orphan*/  qsort (struct item**,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qsort_i (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stderr ; 
- int tot_items ; 
- int verbosity ; 
- int /*<<< orphan*/  zzfree (struct item**,int) ; 
- struct item** zzmalloc (int) ; 
+
+
+
+struct item {int extra; char* str; int item_id; int rates; } ;
+typedef int J ;
+
+
+ int FLAG_DELETED ;
+ int INT_MIN ;
+ int ITEMS_HASH_PRIME ;
+ struct item** Items ;
+ int assert (int) ;
+ int cmp_item_hash ;
+ int del_items ;
+ int fprintf (int ,char*,int,double,...) ;
+ long long const get_hash_item (struct item*) ;
+ scalar_t__ hash_stats ;
+ int qsort (struct item**,int,int,int ) ;
+ int qsort_i (int ,int) ;
+ int stderr ;
+ int tot_items ;
+ int verbosity ;
+ int zzfree (struct item**,int) ;
+ struct item** zzmalloc (int) ;
 
 void sort_items (void) {
   int i, j = 0;

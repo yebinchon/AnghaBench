@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  unsigned long uint64_t ;
 
-/* Variables and functions */
- int BITS_PER_BYTE ; 
- int BUILDIN_CLZL (unsigned long) ; 
- int BUILDIN_CTZL (unsigned long) ; 
- int const DOUBLE_BYTES ; 
- int INT8MASK (int) ; 
- int LONG_BYTES ; 
- int /*<<< orphan*/  encodeDoubleValue (unsigned long,int,char* const,int*) ; 
- int /*<<< orphan*/  memcpy (char* const,char const* const,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef unsigned long uint64_t ;
+
+
+ int BITS_PER_BYTE ;
+ int BUILDIN_CLZL (unsigned long) ;
+ int BUILDIN_CTZL (unsigned long) ;
+ int const DOUBLE_BYTES ;
+ int INT8MASK (int) ;
+ int LONG_BYTES ;
+ int encodeDoubleValue (unsigned long,int,char* const,int*) ;
+ int memcpy (char* const,char const* const,int) ;
 
 int tsCompressDoubleImp(const char *const input, const int nelements, char *const output) {
   int byte_limit = nelements * DOUBLE_BYTES + 1;
@@ -29,20 +29,20 @@ int tsCompressDoubleImp(const char *const input, const int nelements, char *cons
 
   uint64_t prev_value = 0;
   uint64_t prev_diff = 0;
-  uint8_t  prev_flag = 0;
+  uint8_t prev_flag = 0;
 
   double *istream = (double *)input;
 
-  // Main loop
+
   for (int i = 0; i < nelements; i++) {
     union {
-      double   real;
+      double real;
       uint64_t bits;
     } curr;
 
     curr.real = istream[i];
 
-    // Here we assume the next value is the same as previous one.
+
     uint64_t predicted = prev_value;
     uint64_t diff = curr.bits ^ predicted;
 

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct vo_wayland_state {int timeout_count; int hidden; TYPE_1__* current_output; scalar_t__ frame_wait; int /*<<< orphan*/  display; int /*<<< orphan*/  display_fd; } ;
-struct pollfd {int /*<<< orphan*/  events; int /*<<< orphan*/  fd; } ;
-typedef  scalar_t__ int64_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct vo_wayland_state {int timeout_count; int hidden; TYPE_1__* current_output; scalar_t__ frame_wait; int display; int display_fd; } ;
+struct pollfd {int events; int fd; } ;
+typedef scalar_t__ int64_t ;
 struct TYPE_2__ {int refresh_rate; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  POLLIN ; 
- scalar_t__ mp_time_us () ; 
- int /*<<< orphan*/  poll (struct pollfd*,int,int) ; 
- int /*<<< orphan*/  wl_display_dispatch_pending (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wl_display_flush (int /*<<< orphan*/ ) ; 
- scalar_t__ wl_display_prepare_read (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wl_display_read_events (int /*<<< orphan*/ ) ; 
+
+ int POLLIN ;
+ scalar_t__ mp_time_us () ;
+ int poll (struct pollfd*,int,int) ;
+ int wl_display_dispatch_pending (int ) ;
+ int wl_display_flush (int ) ;
+ scalar_t__ wl_display_prepare_read (int ) ;
+ int wl_display_read_events (int ) ;
 
 void vo_wayland_wait_frame(struct vo_wayland_state *wl, int frame_offset)
 {
     struct pollfd fds[1] = {
-        {.fd = wl->display_fd,     .events = POLLIN },
+        {.fd = wl->display_fd, .events = POLLIN },
     };
 
     double vblank_time = 1e6 / wl->current_output->refresh_rate;
@@ -55,9 +55,9 @@ void vo_wayland_wait_frame(struct vo_wayland_state *wl, int frame_offset)
         wl->timeout_count += 1;
     } else {
         wl->timeout_count = 0;
-        wl->hidden = false;
+        wl->hidden = 0;
     }
-    
+
     if (wl->timeout_count > wl->current_output->refresh_rate)
-        wl->hidden = true;
+        wl->hidden = 1;
 }

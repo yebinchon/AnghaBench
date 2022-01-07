@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct socket {struct sock* sk; } ;
-struct sock {int /*<<< orphan*/  sk_callback_lock; int /*<<< orphan*/ * sk_user_data; int /*<<< orphan*/ * sk_data_ready; } ;
+struct sock {int sk_callback_lock; int * sk_user_data; int * sk_data_ready; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  flush_workqueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lock_sock (struct sock*) ; 
- struct socket* rds_tcp_listen_sock ; 
- int /*<<< orphan*/  rds_wq ; 
- int /*<<< orphan*/  release_sock (struct sock*) ; 
- int /*<<< orphan*/  sock_release (struct socket*) ; 
- int /*<<< orphan*/  write_lock_bh (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_unlock_bh (int /*<<< orphan*/ *) ; 
+
+ int flush_workqueue (int ) ;
+ int lock_sock (struct sock*) ;
+ struct socket* rds_tcp_listen_sock ;
+ int rds_wq ;
+ int release_sock (struct sock*) ;
+ int sock_release (struct socket*) ;
+ int write_lock_bh (int *) ;
+ int write_unlock_bh (int *) ;
 
 void rds_tcp_listen_stop(void)
 {
-	struct socket *sock = rds_tcp_listen_sock;
-	struct sock *sk;
+ struct socket *sock = rds_tcp_listen_sock;
+ struct sock *sk;
 
-	if (!sock)
-		return;
+ if (!sock)
+  return;
 
-	sk = sock->sk;
+ sk = sock->sk;
 
-	/* serialize with and prevent further callbacks */
-	lock_sock(sk);
-	write_lock_bh(&sk->sk_callback_lock);
-	if (sk->sk_user_data) {
-		sk->sk_data_ready = sk->sk_user_data;
-		sk->sk_user_data = NULL;
-	}
-	write_unlock_bh(&sk->sk_callback_lock);
-	release_sock(sk);
 
-	/* wait for accepts to stop and close the socket */
-	flush_workqueue(rds_wq);
-	sock_release(sock);
-	rds_tcp_listen_sock = NULL;
+ lock_sock(sk);
+ write_lock_bh(&sk->sk_callback_lock);
+ if (sk->sk_user_data) {
+  sk->sk_data_ready = sk->sk_user_data;
+  sk->sk_user_data = ((void*)0);
+ }
+ write_unlock_bh(&sk->sk_callback_lock);
+ release_sock(sk);
+
+
+ flush_workqueue(rds_wq);
+ sock_release(sock);
+ rds_tcp_listen_sock = ((void*)0);
 }

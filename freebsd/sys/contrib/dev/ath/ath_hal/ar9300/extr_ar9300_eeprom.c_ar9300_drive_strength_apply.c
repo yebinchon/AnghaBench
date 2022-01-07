@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ath_hal_9300 {int dummy; } ;
 struct ath_hal {int dummy; } ;
-typedef  int /*<<< orphan*/  HAL_BOOL ;
+typedef int HAL_BOOL ;
 
-/* Variables and functions */
- struct ath_hal_9300* AH9300 (struct ath_hal*) ; 
- int /*<<< orphan*/  AR_PHY_65NM_CH0_BIAS1 ; 
- int /*<<< orphan*/  AR_PHY_65NM_CH0_BIAS2 ; 
- int /*<<< orphan*/  AR_PHY_65NM_CH0_BIAS4 ; 
- int /*<<< orphan*/  EEP_DRIVE_STRENGTH ; 
- unsigned long OS_REG_READ (struct ath_hal*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OS_REG_WRITE (struct ath_hal*,int /*<<< orphan*/ ,unsigned long) ; 
- int ar9300_eeprom_get (struct ath_hal_9300*,int /*<<< orphan*/ ) ; 
+
+ struct ath_hal_9300* AH9300 (struct ath_hal*) ;
+ int AR_PHY_65NM_CH0_BIAS1 ;
+ int AR_PHY_65NM_CH0_BIAS2 ;
+ int AR_PHY_65NM_CH0_BIAS4 ;
+ int EEP_DRIVE_STRENGTH ;
+ unsigned long OS_REG_READ (struct ath_hal*,int ) ;
+ int OS_REG_WRITE (struct ath_hal*,int ,unsigned long) ;
+ int ar9300_eeprom_get (struct ath_hal_9300*,int ) ;
 
 HAL_BOOL ar9300_drive_strength_apply(struct ath_hal *ah)
 {

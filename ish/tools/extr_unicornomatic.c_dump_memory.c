@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uc_engine ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  addr_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fwrite (char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uc_mem_read (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,size_t) ; 
- int /*<<< orphan*/  uc_trycall (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int uc_engine ;
+typedef int buf ;
+typedef int addr_t ;
+typedef int FILE ;
+
+
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fwrite (char*,int,int,int *) ;
+ int uc_mem_read (int *,int ,char*,size_t) ;
+ int uc_trycall (int ,char*) ;
 
 void dump_memory(uc_engine *uc, const char *file, addr_t start, size_t size) {
     char buf[size];

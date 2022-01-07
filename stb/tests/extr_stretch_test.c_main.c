@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sb_add (int*,int) ; 
- int sb_count (int*) ; 
- int /*<<< orphan*/  sb_free (int*) ; 
- int /*<<< orphan*/  sb_push (int*,int) ; 
+ int assert (int) ;
+ int sb_add (int*,int) ;
+ int sb_count (int*) ;
+ int sb_free (int*) ;
+ int sb_push (int*,int) ;
 
 int main(int arg, char **argv)
 {
    int i;
-   int *arr = NULL;
+   int *arr = ((void*)0);
 
    for (i=0; i < 1000000; ++i)
       sb_push(arr, i);
@@ -31,7 +23,7 @@ int main(int arg, char **argv)
       assert(arr[i] == i);
 
    sb_free(arr);
-   arr = NULL;
+   arr = ((void*)0);
 
    for (i=0; i < 1000; ++i)
       sb_add(arr, 1000);

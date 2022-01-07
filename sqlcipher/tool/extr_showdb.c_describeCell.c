@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t i64 ;
 
-/* Variables and functions */
- int decodeVarint (unsigned char*,size_t*) ; 
- scalar_t__ describeContent (unsigned char*,size_t,char*) ; 
- size_t localPayload (size_t,unsigned char) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- size_t strlen (char*) ; 
+
+
+
+typedef size_t i64 ;
+
+
+ int decodeVarint (unsigned char*,size_t*) ;
+ scalar_t__ describeContent (unsigned char*,size_t,char*) ;
+ size_t localPayload (size_t,unsigned char) ;
+ int sprintf (char*,char*,int) ;
+ size_t strlen (char*) ;
 
 __attribute__((used)) static i64 describeCell(
-  unsigned char cType,    /* Page type */
-  unsigned char *a,       /* Cell content */
-  int showCellContent,    /* Show cell content if true */
-  char **pzDesc           /* Store description here */
+  unsigned char cType,
+  unsigned char *a,
+  int showCellContent,
+  char **pzDesc
 ){
   int i;
   i64 nDesc = 0;

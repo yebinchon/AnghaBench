@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int UINT ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+typedef int UINT ;
 struct TYPE_6__ {int bottom; int top; } ;
-struct TYPE_5__ {int cy; int /*<<< orphan*/  cx; } ;
-typedef  TYPE_1__ SIZE ;
-typedef  TYPE_2__ RECT ;
-typedef  char* LPWSTR ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  scalar_t__ HFONT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  scalar_t__ BOOL ;
+struct TYPE_5__ {int cy; int cx; } ;
+typedef TYPE_1__ SIZE ;
+typedef TYPE_2__ RECT ;
+typedef char* LPWSTR ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef scalar_t__ HFONT ;
+typedef int HDC ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  GetTextExtentPoint32W (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  GetWindowRect (int /*<<< orphan*/ ,TYPE_2__*) ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int SWP_NOACTIVATE ; 
- int SWP_NOMOVE ; 
- int SWP_NOZORDER ; 
- scalar_t__ SelectObject (int /*<<< orphan*/ ,scalar_t__) ; 
- int SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetWindowPos (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  WM_GETFONT ; 
- int /*<<< orphan*/  WM_GETTEXT ; 
- int /*<<< orphan*/  WM_GETTEXTLENGTH ; 
- int /*<<< orphan*/  lstrlenW (char*) ; 
- scalar_t__ max (int /*<<< orphan*/ ,int) ; 
- int min (scalar_t__,int) ; 
+
+ int GetDC (int ) ;
+ int GetProcessHeap () ;
+ int GetTextExtentPoint32W (int ,char*,int ,TYPE_1__*) ;
+ int GetWindowRect (int ,TYPE_2__*) ;
+ char* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,char*) ;
+ int ReleaseDC (int ,int ) ;
+ int SWP_NOACTIVATE ;
+ int SWP_NOMOVE ;
+ int SWP_NOZORDER ;
+ scalar_t__ SelectObject (int ,scalar_t__) ;
+ int SendMessageW (int ,int ,int,int ) ;
+ int SetWindowPos (int ,int *,int ,int ,int,int,int) ;
+ int TRACE (char*) ;
+ int WM_GETFONT ;
+ int WM_GETTEXT ;
+ int WM_GETTEXTLENGTH ;
+ int lstrlenW (char*) ;
+ scalar_t__ max (int ,int) ;
+ int min (scalar_t__,int) ;
 
 __attribute__((used)) static void ctrl_resize(HWND hctrl, UINT min_width, UINT max_width, BOOL multiline)
 {
@@ -74,7 +74,7 @@ __attribute__((used)) static void ctrl_resize(HWND hctrl, UINT min_width, UINT m
 
     if(len && multiline)
     {
-        /* FIXME: line-wrap */
+
         for(lines = 1, c = text; *c != '\0'; c++)
             if(*c == '\n') lines++;
 
@@ -87,7 +87,7 @@ __attribute__((used)) static void ctrl_resize(HWND hctrl, UINT min_width, UINT m
     }
 
     final_width = min(max(size.cx, min_width) + 4, max_width);
-    SetWindowPos(hctrl, NULL, 0, 0, final_width, final_height,
+    SetWindowPos(hctrl, ((void*)0), 0, 0, final_width, final_height,
                  SWP_NOZORDER | SWP_NOMOVE | SWP_NOACTIVATE);
 
     HeapFree(GetProcessHeap(), 0, text);

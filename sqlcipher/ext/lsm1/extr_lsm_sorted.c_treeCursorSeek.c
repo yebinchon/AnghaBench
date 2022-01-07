@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lsm_env ;
-typedef  int /*<<< orphan*/  TreeCursor ;
-struct TYPE_5__ {int /*<<< orphan*/  val; int /*<<< orphan*/  key; int /*<<< orphan*/  eType; int /*<<< orphan*/  flags; TYPE_1__* pDb; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * pEnv; } ;
-typedef  TYPE_2__ MultiCursor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURSOR_SEEK_EQ ; 
- int LSM_END_DELETE ; 
- int LSM_INSERT ; 
- int LSM_OK ; 
- int LSM_POINT_DELETE ; 
-#define  LSM_SEEK_EQ 129 
-#define  LSM_SEEK_GE 128 
- int LSM_START_DELETE ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int lsmTreeCursorFlags (int /*<<< orphan*/ *) ; 
- int lsmTreeCursorKey (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**,int*) ; 
- int /*<<< orphan*/  lsmTreeCursorNext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lsmTreeCursorPrev (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lsmTreeCursorReset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lsmTreeCursorSeek (int /*<<< orphan*/ *,void*,int,int*) ; 
- int /*<<< orphan*/  lsmTreeCursorValid (int /*<<< orphan*/ *) ; 
- int lsmTreeCursorValue (int /*<<< orphan*/ *,void**,int*) ; 
- int sortedBlobSet (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void*,int) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int lsm_env ;
+typedef int TreeCursor ;
+struct TYPE_5__ {int val; int key; int eType; int flags; TYPE_1__* pDb; } ;
+struct TYPE_4__ {int * pEnv; } ;
+typedef TYPE_2__ MultiCursor ;
+
+
+ int CURSOR_SEEK_EQ ;
+ int LSM_END_DELETE ;
+ int LSM_INSERT ;
+ int LSM_OK ;
+ int LSM_POINT_DELETE ;
+
+
+ int LSM_START_DELETE ;
+ int assert (int ) ;
+ int lsmTreeCursorFlags (int *) ;
+ int lsmTreeCursorKey (int *,int *,void**,int*) ;
+ int lsmTreeCursorNext (int *) ;
+ int lsmTreeCursorPrev (int *) ;
+ int lsmTreeCursorReset (int *) ;
+ int lsmTreeCursorSeek (int *,void*,int,int*) ;
+ int lsmTreeCursorValid (int *) ;
+ int lsmTreeCursorValue (int *,void**,int*) ;
+ int sortedBlobSet (int *,int *,void*,int) ;
 
 __attribute__((used)) static int treeCursorSeek(
   MultiCursor *pCsr,
-  TreeCursor *pTreeCsr, 
-  void *pKey, int nKey, 
+  TreeCursor *pTreeCsr,
+  void *pKey, int nKey,
   int eSeek,
   int *pbStop
 ){
@@ -50,7 +50,7 @@ __attribute__((used)) static int treeCursorSeek(
     int res = 0;
     lsmTreeCursorSeek(pTreeCsr, pKey, nKey, &res);
     switch( eSeek ){
-      case LSM_SEEK_EQ: {
+      case 129: {
         int eType = lsmTreeCursorFlags(pTreeCsr);
         if( (res<0 && (eType & LSM_START_DELETE))
          || (res>0 && (eType & LSM_END_DELETE))
@@ -59,7 +59,7 @@ __attribute__((used)) static int treeCursorSeek(
           *pbStop = 1;
         }else if( res==0 && (eType & LSM_INSERT) ){
           lsm_env *pEnv = pCsr->pDb->pEnv;
-          void *p; int n;         /* Key/value from tree-cursor */
+          void *p; int n;
           *pbStop = 1;
           pCsr->flags |= CURSOR_SEEK_EQ;
           rc = lsmTreeCursorKey(pTreeCsr, &pCsr->eType, &p, &n);
@@ -70,7 +70,7 @@ __attribute__((used)) static int treeCursorSeek(
         lsmTreeCursorReset(pTreeCsr);
         break;
       }
-      case LSM_SEEK_GE:
+      case 128:
         if( res<0 && lsmTreeCursorValid(pTreeCsr) ){
           lsmTreeCursorNext(pTreeCsr);
         }

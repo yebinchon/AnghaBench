@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- scalar_t__ EOF ; 
- int /*<<< orphan*/  TEST_ASSERT_EQUAL (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ASSERT_NOT_NULL (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_ASSERT_TRUE (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- scalar_t__ fputs (char const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int FILE ;
+
+
+ scalar_t__ EOF ;
+ int TEST_ASSERT_EQUAL (int ,int ) ;
+ int TEST_ASSERT_NOT_NULL (int *) ;
+ int TEST_ASSERT_TRUE (int) ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ scalar_t__ fputs (char const*,int *) ;
 
 void test_fatfs_create_file_with_text(const char* name, const char* text)
 {

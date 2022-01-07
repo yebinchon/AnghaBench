@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct search_extra {int sent_limit; double limit; } ;
 struct gather {int tot_num; TYPE_1__* List; struct search_extra* extra; } ;
 struct TYPE_2__ {int bytes; int* data; } ;
 
-/* Variables and functions */
- int TL_SEARCH_RESULT ; 
- scalar_t__ resend_one (struct gather*,int) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int,...) ; 
+
+ int TL_SEARCH_RESULT ;
+ scalar_t__ resend_one (struct gather*,int) ;
+ int vkprintf (int,char*,int,...) ;
 
 int check_resend (struct gather *G) {
   int i;

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ncprange {int dummy; } ;
 struct ncpaddr {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ncprange_sethost (struct ncprange*,struct ncpaddr const*) ; 
- int /*<<< orphan*/  ncprange_setwidth (struct ncprange*,int) ; 
+
+ int ncprange_sethost (struct ncprange*,struct ncpaddr const*) ;
+ int ncprange_setwidth (struct ncprange*,int) ;
 
 void
 ncprange_set(struct ncprange *range, const struct ncpaddr *addr, int width)

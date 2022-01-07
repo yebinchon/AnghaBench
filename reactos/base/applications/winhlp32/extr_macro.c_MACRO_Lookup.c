@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct lexret {char const* string; void* integer; } ;
 struct TYPE_7__ {scalar_t__ hMainWnd; TYPE_1__* info; struct TYPE_7__* next; } ;
-typedef  TYPE_3__ WINHELP_WINDOW ;
+typedef TYPE_3__ WINHELP_WINDOW ;
 struct TYPE_8__ {TYPE_2__* active_win; TYPE_3__* win_list; } ;
 struct TYPE_6__ {scalar_t__ hMainWnd; } ;
 struct TYPE_5__ {char const* name; } ;
-typedef  void* LONG_PTR ;
+typedef void* LONG_PTR ;
 
-/* Variables and functions */
- int EMPTY ; 
- TYPE_4__ Globals ; 
- int IDENTIFIER ; 
- int INTEGER ; 
- scalar_t__ MACRO_Builtins ; 
- int MACRO_DoLookUp (scalar_t__,char const*,struct lexret*,int) ; 
- scalar_t__ MACRO_Loaded ; 
- int MACRO_NumLoaded ; 
- int /*<<< orphan*/  WINE_FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_a (char const*) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
+
+ int EMPTY ;
+ TYPE_4__ Globals ;
+ int IDENTIFIER ;
+ int INTEGER ;
+ scalar_t__ MACRO_Builtins ;
+ int MACRO_DoLookUp (scalar_t__,char const*,struct lexret*,int) ;
+ scalar_t__ MACRO_Loaded ;
+ int MACRO_NumLoaded ;
+ int WINE_FIXME (char*,int ) ;
+ int debugstr_a (char const*) ;
+ int strcmp (char const*,char*) ;
 
 int MACRO_Lookup(const char* name, struct lexret* lr)
 {

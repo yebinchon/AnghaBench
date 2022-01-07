@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  fs; } ;
-typedef  TYPE_1__ NVGcontext ;
 
-/* Variables and functions */
- int fonsAddFallbackFont (int /*<<< orphan*/ ,int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int fs; } ;
+typedef TYPE_1__ NVGcontext ;
+
+
+ int fonsAddFallbackFont (int ,int,int) ;
 
 int nvgAddFallbackFontId(NVGcontext* ctx, int baseFont, int fallbackFont)
 {
-	if(baseFont == -1 || fallbackFont == -1) return 0;
-	return fonsAddFallbackFont(ctx->fs, baseFont, fallbackFont);
+ if(baseFont == -1 || fallbackFont == -1) return 0;
+ return fonsAddFallbackFont(ctx->fs, baseFont, fallbackFont);
 }

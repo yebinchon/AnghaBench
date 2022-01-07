@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buff ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  safe_div (long long,long long) ; 
- int snprintf (char*,int,char*,long long,...) ; 
+
+
+
+typedef int buff ;
+
+
+ int assert (int) ;
+ int safe_div (long long,long long) ;
+ int snprintf (char*,int,char*,long long,...) ;
 
 __attribute__((used)) static char *human_readable_size (long long size) {
   int i;

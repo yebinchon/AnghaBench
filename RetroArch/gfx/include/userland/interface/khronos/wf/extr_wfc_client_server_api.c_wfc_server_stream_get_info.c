@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_6__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  reply ;
+
+
+typedef struct TYPE_9__ TYPE_6__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int reply ;
 struct TYPE_7__ {int size; } ;
-typedef  TYPE_1__ WFC_STREAM_INFO_T ;
-struct TYPE_9__ {int /*<<< orphan*/  size; } ;
+typedef TYPE_1__ WFC_STREAM_INFO_T ;
+struct TYPE_9__ {int size; } ;
 struct TYPE_8__ {int result; TYPE_6__ info; } ;
-typedef  TYPE_2__ WFC_IPC_MSG_SS_GET_INFO_T ;
-typedef  int /*<<< orphan*/  WFC_IPC_MSG_HEADER_T ;
-typedef  int WFCNativeStreamType ;
-typedef  int VCOS_STATUS_T ;
+typedef TYPE_2__ WFC_IPC_MSG_SS_GET_INFO_T ;
+typedef int WFC_IPC_MSG_HEADER_T ;
+typedef int WFCNativeStreamType ;
+typedef int VCOS_STATUS_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VCOS_FUNCTION ; 
- int VCOS_SUCCESS ; 
- int WFC_INVALID_HANDLE ; 
- int /*<<< orphan*/  WFC_IPC_MSG_SS_GET_INFO ; 
- int /*<<< orphan*/  memcpy (TYPE_1__*,TYPE_6__*,int) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  vcos_log_error (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  vcos_log_trace (char*,int /*<<< orphan*/ ,int) ; 
- int vcos_min (int,int /*<<< orphan*/ ) ; 
- int wfc_client_server_api_sendwait_stream (int /*<<< orphan*/ ,int,int*,size_t*) ; 
+
+ int VCOS_FUNCTION ;
+ int VCOS_SUCCESS ;
+ int WFC_INVALID_HANDLE ;
+ int WFC_IPC_MSG_SS_GET_INFO ;
+ int memcpy (TYPE_1__*,TYPE_6__*,int) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int vcos_log_error (char*,int ,...) ;
+ int vcos_log_trace (char*,int ,int) ;
+ int vcos_min (int,int ) ;
+ int wfc_client_server_api_sendwait_stream (int ,int,int*,size_t*) ;
 
 uint32_t wfc_server_stream_get_info(WFCNativeStreamType stream, WFC_STREAM_INFO_T *info)
 {

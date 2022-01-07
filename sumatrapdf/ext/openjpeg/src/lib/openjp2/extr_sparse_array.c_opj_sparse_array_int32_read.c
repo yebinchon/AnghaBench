@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  opj_sparse_array_int32_t ;
-typedef  int /*<<< orphan*/  OPJ_UINT32 ;
-typedef  int /*<<< orphan*/  OPJ_INT32 ;
-typedef  int /*<<< orphan*/  OPJ_BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPJ_TRUE ; 
- int /*<<< orphan*/  opj_sparse_array_int32_read_or_write (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int opj_sparse_array_int32_t ;
+typedef int OPJ_UINT32 ;
+typedef int OPJ_INT32 ;
+typedef int OPJ_BOOL ;
+
+
+ int OPJ_TRUE ;
+ int opj_sparse_array_int32_read_or_write (int *,int ,int ,int ,int ,int *,int ,int ,int ,int ) ;
 
 OPJ_BOOL opj_sparse_array_int32_read(const opj_sparse_array_int32_t* sa,
                                      OPJ_UINT32 x0,

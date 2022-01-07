@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  __MF_TYPE_HEAP ; 
- int /*<<< orphan*/  __MF_TYPE_HEAP_I ; 
- int /*<<< orphan*/  __mf_object_tree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __mf_report_leaks_fn ; 
- int /*<<< orphan*/  mfsplay_tree_foreach (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int*) ; 
+ int __MF_TYPE_HEAP ;
+ int __MF_TYPE_HEAP_I ;
+ int __mf_object_tree (int ) ;
+ int __mf_report_leaks_fn ;
+ int mfsplay_tree_foreach (int ,int ,unsigned int*) ;
 
 __attribute__((used)) static unsigned
 __mf_report_leaks ()

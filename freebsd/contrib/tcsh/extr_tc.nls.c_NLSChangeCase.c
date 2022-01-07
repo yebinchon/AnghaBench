@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Char ;
 
-/* Variables and functions */
- scalar_t__ Islower (int /*<<< orphan*/ ) ; 
- scalar_t__ Isupper (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * Strsave (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  Tolower (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Toupper (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Char ;
+
+
+ scalar_t__ Islower (int ) ;
+ scalar_t__ Isupper (int ) ;
+ int * Strsave (int const*) ;
+ int Tolower (int ) ;
+ int Toupper (int ) ;
 
 Char *
 NLSChangeCase(const Char *p, int mode)
@@ -27,15 +27,15 @@ NLSChangeCase(const Char *p, int mode)
 
     for (; (c = *p) != 0; p++) {
         if (mode == 0 && Islower(c)) {
-	    c2 = Toupper(c);
-	    break;
+     c2 = Toupper(c);
+     break;
         } else if (mode && Isupper(c)) {
-	    c2 = Tolower(c);
-	    break;
-	}
+     c2 = Tolower(c);
+     break;
+ }
     }
     if (!*p)
-	return 0;
+ return 0;
     n = Strsave(op);
     n[p - op] = c2;
     return n;

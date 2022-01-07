@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct bstr {scalar_t__ len; int /*<<< orphan*/ * start; } ;
-typedef  enum cue_command { ____Placeholder_cue_command } cue_command ;
-struct TYPE_2__ {int command; int /*<<< orphan*/  text; } ;
 
-/* Variables and functions */
- int CUE_EMPTY ; 
- int CUE_ERROR ; 
- int /*<<< orphan*/  WHITESPACE ; 
- struct bstr bstr0 (int /*<<< orphan*/ ) ; 
- scalar_t__ bstr_case_startswith (struct bstr,struct bstr) ; 
- struct bstr bstr_cut (struct bstr,scalar_t__) ; 
- int /*<<< orphan*/  bstr_getline (struct bstr,struct bstr*) ; 
- struct bstr bstr_lstrip (struct bstr) ; 
- struct bstr bstr_strip_linebreaks (int /*<<< orphan*/ ) ; 
- TYPE_1__* cue_command_strings ; 
- int /*<<< orphan*/  strchr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct bstr {scalar_t__ len; int * start; } ;
+typedef enum cue_command { ____Placeholder_cue_command } cue_command ;
+struct TYPE_2__ {int command; int text; } ;
+
+
+ int CUE_EMPTY ;
+ int CUE_ERROR ;
+ int WHITESPACE ;
+ struct bstr bstr0 (int ) ;
+ scalar_t__ bstr_case_startswith (struct bstr,struct bstr) ;
+ struct bstr bstr_cut (struct bstr,scalar_t__) ;
+ int bstr_getline (struct bstr,struct bstr*) ;
+ struct bstr bstr_lstrip (struct bstr) ;
+ struct bstr bstr_strip_linebreaks (int ) ;
+ TYPE_1__* cue_command_strings ;
+ int strchr (int ,int ) ;
 
 __attribute__((used)) static enum cue_command read_cmd(struct bstr *data, struct bstr *out_params)
 {

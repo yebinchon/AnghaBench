@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_9__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_17__ TYPE_9__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_17__ {scalar_t__ extradata; } ;
-struct TYPE_16__ {int /*<<< orphan*/  par_out; TYPE_9__* par_in; TYPE_2__* priv_data; } ;
+struct TYPE_16__ {int par_out; TYPE_9__* par_in; TYPE_2__* priv_data; } ;
 struct TYPE_15__ {int nb_units; TYPE_1__* units; } ;
-struct TYPE_14__ {int global_pic_init_qp; int /*<<< orphan*/  output; int /*<<< orphan*/  current_pic_init_qp; int /*<<< orphan*/  extradata_pic_init_qp; int /*<<< orphan*/  input; TYPE_3__ access_unit; } ;
-struct TYPE_13__ {scalar_t__ type; int /*<<< orphan*/  content; } ;
-typedef  TYPE_2__ H264RedundantPPSContext ;
-typedef  TYPE_3__ CodedBitstreamFragment ;
-typedef  TYPE_4__ AVBSFContext ;
+struct TYPE_14__ {int global_pic_init_qp; int output; int current_pic_init_qp; int extradata_pic_init_qp; int input; TYPE_3__ access_unit; } ;
+struct TYPE_13__ {scalar_t__ type; int content; } ;
+typedef TYPE_2__ H264RedundantPPSContext ;
+typedef TYPE_3__ CodedBitstreamFragment ;
+typedef TYPE_4__ AVBSFContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_CODEC_ID_H264 ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- scalar_t__ H264_NAL_PPS ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ff_cbs_fragment_reset (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int ff_cbs_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_4__*) ; 
- int ff_cbs_read_extradata (int /*<<< orphan*/ ,TYPE_3__*,TYPE_9__*) ; 
- int ff_cbs_write_extradata (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int h264_redundant_pps_fixup_pps (TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+ int AV_CODEC_ID_H264 ;
+ int AV_LOG_ERROR ;
+ scalar_t__ H264_NAL_PPS ;
+ int av_log (TYPE_4__*,int ,char*) ;
+ int ff_cbs_fragment_reset (int ,TYPE_3__*) ;
+ int ff_cbs_init (int *,int ,TYPE_4__*) ;
+ int ff_cbs_read_extradata (int ,TYPE_3__*,TYPE_9__*) ;
+ int ff_cbs_write_extradata (int ,int ,TYPE_3__*) ;
+ int h264_redundant_pps_fixup_pps (TYPE_2__*,int ) ;
 
 __attribute__((used)) static int h264_redundant_pps_init(AVBSFContext *bsf)
 {

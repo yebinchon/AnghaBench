@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_2__* desc; } ;
-typedef  TYPE_3__ vbdisp_t ;
-typedef  int /*<<< orphan*/  vbdisp_invoke_type_t ;
+typedef TYPE_3__ vbdisp_t ;
+typedef int vbdisp_invoke_type_t ;
 struct TYPE_7__ {unsigned int prop_cnt; int func_cnt; scalar_t__ typeinfo; TYPE_1__* props; } ;
-struct TYPE_6__ {int /*<<< orphan*/  name; int /*<<< orphan*/  is_public; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DISPID ;
-typedef  int /*<<< orphan*/  BSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct TYPE_6__ {int name; int is_public; } ;
+typedef int HRESULT ;
+typedef int DISPID ;
+typedef int BSTR ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISP_E_UNKNOWNNAME ; 
- int /*<<< orphan*/  ITypeInfo_GetIDsOfNames (scalar_t__,int /*<<< orphan*/ *,int,int*) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- scalar_t__ get_func_id (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  strcmpiW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int DISP_E_UNKNOWNNAME ;
+ int ITypeInfo_GetIDsOfNames (scalar_t__,int *,int,int*) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ scalar_t__ get_func_id (TYPE_3__*,int ,int ,int ,int*) ;
+ int strcmpiW (int ,int ) ;
 
 HRESULT vbdisp_get_id(vbdisp_t *This, BSTR name, vbdisp_invoke_type_t invoke_type, BOOL search_private, DISPID *id)
 {

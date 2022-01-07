@@ -1,120 +1,120 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * mbx_cq; int /*<<< orphan*/ * els_cq; int /*<<< orphan*/ * dat_rq; int /*<<< orphan*/ * hdr_rq; int /*<<< orphan*/ * els_wq; int /*<<< orphan*/ * mbx_wq; int /*<<< orphan*/ ** fcp_cq_map; int /*<<< orphan*/ ** fcp_wq; int /*<<< orphan*/ ** fcp_cq; int /*<<< orphan*/ ** hba_eq; } ;
-struct lpfc_hba {int cfg_fcp_io_channel; TYPE_1__ sli4_hba; int /*<<< orphan*/ * pci_bar4_memmap_p; int /*<<< orphan*/ * pci_bar2_memmap_p; int /*<<< orphan*/ * pci_bar0_memmap_p; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  iounmap (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  lpfc_sli4_queue_free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * mbx_cq; int * els_cq; int * dat_rq; int * hdr_rq; int * els_wq; int * mbx_wq; int ** fcp_cq_map; int ** fcp_wq; int ** fcp_cq; int ** hba_eq; } ;
+struct lpfc_hba {int cfg_fcp_io_channel; TYPE_1__ sli4_hba; int * pci_bar4_memmap_p; int * pci_bar2_memmap_p; int * pci_bar0_memmap_p; } ;
+
+
+ int iounmap (int *) ;
+ int kfree (int **) ;
+ int lpfc_sli4_queue_free (int *) ;
 
 void
 lpfc_sli4_queue_destroy(struct lpfc_hba *phba)
 {
-	int idx;
+ int idx;
 
-	if (phba->sli4_hba.hba_eq != NULL) {
-		/* Release HBA event queue */
-		for (idx = 0; idx < phba->cfg_fcp_io_channel; idx++) {
-			if (phba->sli4_hba.hba_eq[idx] != NULL) {
-				lpfc_sli4_queue_free(
-					phba->sli4_hba.hba_eq[idx]);
-				phba->sli4_hba.hba_eq[idx] = NULL;
-			}
-		}
-		kfree(phba->sli4_hba.hba_eq);
-		phba->sli4_hba.hba_eq = NULL;
-	}
+ if (phba->sli4_hba.hba_eq != ((void*)0)) {
 
-	if (phba->sli4_hba.fcp_cq != NULL) {
-		/* Release FCP completion queue */
-		for (idx = 0; idx < phba->cfg_fcp_io_channel; idx++) {
-			if (phba->sli4_hba.fcp_cq[idx] != NULL) {
-				lpfc_sli4_queue_free(
-					phba->sli4_hba.fcp_cq[idx]);
-				phba->sli4_hba.fcp_cq[idx] = NULL;
-			}
-		}
-		kfree(phba->sli4_hba.fcp_cq);
-		phba->sli4_hba.fcp_cq = NULL;
-	}
+  for (idx = 0; idx < phba->cfg_fcp_io_channel; idx++) {
+   if (phba->sli4_hba.hba_eq[idx] != ((void*)0)) {
+    lpfc_sli4_queue_free(
+     phba->sli4_hba.hba_eq[idx]);
+    phba->sli4_hba.hba_eq[idx] = ((void*)0);
+   }
+  }
+  kfree(phba->sli4_hba.hba_eq);
+  phba->sli4_hba.hba_eq = ((void*)0);
+ }
 
-	if (phba->sli4_hba.fcp_wq != NULL) {
-		/* Release FCP work queue */
-		for (idx = 0; idx < phba->cfg_fcp_io_channel; idx++) {
-			if (phba->sli4_hba.fcp_wq[idx] != NULL) {
-				lpfc_sli4_queue_free(
-					phba->sli4_hba.fcp_wq[idx]);
-				phba->sli4_hba.fcp_wq[idx] = NULL;
-			}
-		}
-		kfree(phba->sli4_hba.fcp_wq);
-		phba->sli4_hba.fcp_wq = NULL;
-	}
+ if (phba->sli4_hba.fcp_cq != ((void*)0)) {
 
-	if (phba->pci_bar0_memmap_p) {
-		iounmap(phba->pci_bar0_memmap_p);
-		phba->pci_bar0_memmap_p = NULL;
-	}
-	if (phba->pci_bar2_memmap_p) {
-		iounmap(phba->pci_bar2_memmap_p);
-		phba->pci_bar2_memmap_p = NULL;
-	}
-	if (phba->pci_bar4_memmap_p) {
-		iounmap(phba->pci_bar4_memmap_p);
-		phba->pci_bar4_memmap_p = NULL;
-	}
+  for (idx = 0; idx < phba->cfg_fcp_io_channel; idx++) {
+   if (phba->sli4_hba.fcp_cq[idx] != ((void*)0)) {
+    lpfc_sli4_queue_free(
+     phba->sli4_hba.fcp_cq[idx]);
+    phba->sli4_hba.fcp_cq[idx] = ((void*)0);
+   }
+  }
+  kfree(phba->sli4_hba.fcp_cq);
+  phba->sli4_hba.fcp_cq = ((void*)0);
+ }
 
-	/* Release FCP CQ mapping array */
-	if (phba->sli4_hba.fcp_cq_map != NULL) {
-		kfree(phba->sli4_hba.fcp_cq_map);
-		phba->sli4_hba.fcp_cq_map = NULL;
-	}
+ if (phba->sli4_hba.fcp_wq != ((void*)0)) {
 
-	/* Release mailbox command work queue */
-	if (phba->sli4_hba.mbx_wq != NULL) {
-		lpfc_sli4_queue_free(phba->sli4_hba.mbx_wq);
-		phba->sli4_hba.mbx_wq = NULL;
-	}
+  for (idx = 0; idx < phba->cfg_fcp_io_channel; idx++) {
+   if (phba->sli4_hba.fcp_wq[idx] != ((void*)0)) {
+    lpfc_sli4_queue_free(
+     phba->sli4_hba.fcp_wq[idx]);
+    phba->sli4_hba.fcp_wq[idx] = ((void*)0);
+   }
+  }
+  kfree(phba->sli4_hba.fcp_wq);
+  phba->sli4_hba.fcp_wq = ((void*)0);
+ }
 
-	/* Release ELS work queue */
-	if (phba->sli4_hba.els_wq != NULL) {
-		lpfc_sli4_queue_free(phba->sli4_hba.els_wq);
-		phba->sli4_hba.els_wq = NULL;
-	}
+ if (phba->pci_bar0_memmap_p) {
+  iounmap(phba->pci_bar0_memmap_p);
+  phba->pci_bar0_memmap_p = ((void*)0);
+ }
+ if (phba->pci_bar2_memmap_p) {
+  iounmap(phba->pci_bar2_memmap_p);
+  phba->pci_bar2_memmap_p = ((void*)0);
+ }
+ if (phba->pci_bar4_memmap_p) {
+  iounmap(phba->pci_bar4_memmap_p);
+  phba->pci_bar4_memmap_p = ((void*)0);
+ }
 
-	/* Release unsolicited receive queue */
-	if (phba->sli4_hba.hdr_rq != NULL) {
-		lpfc_sli4_queue_free(phba->sli4_hba.hdr_rq);
-		phba->sli4_hba.hdr_rq = NULL;
-	}
-	if (phba->sli4_hba.dat_rq != NULL) {
-		lpfc_sli4_queue_free(phba->sli4_hba.dat_rq);
-		phba->sli4_hba.dat_rq = NULL;
-	}
 
-	/* Release ELS complete queue */
-	if (phba->sli4_hba.els_cq != NULL) {
-		lpfc_sli4_queue_free(phba->sli4_hba.els_cq);
-		phba->sli4_hba.els_cq = NULL;
-	}
+ if (phba->sli4_hba.fcp_cq_map != ((void*)0)) {
+  kfree(phba->sli4_hba.fcp_cq_map);
+  phba->sli4_hba.fcp_cq_map = ((void*)0);
+ }
 
-	/* Release mailbox command complete queue */
-	if (phba->sli4_hba.mbx_cq != NULL) {
-		lpfc_sli4_queue_free(phba->sli4_hba.mbx_cq);
-		phba->sli4_hba.mbx_cq = NULL;
-	}
 
-	return;
+ if (phba->sli4_hba.mbx_wq != ((void*)0)) {
+  lpfc_sli4_queue_free(phba->sli4_hba.mbx_wq);
+  phba->sli4_hba.mbx_wq = ((void*)0);
+ }
+
+
+ if (phba->sli4_hba.els_wq != ((void*)0)) {
+  lpfc_sli4_queue_free(phba->sli4_hba.els_wq);
+  phba->sli4_hba.els_wq = ((void*)0);
+ }
+
+
+ if (phba->sli4_hba.hdr_rq != ((void*)0)) {
+  lpfc_sli4_queue_free(phba->sli4_hba.hdr_rq);
+  phba->sli4_hba.hdr_rq = ((void*)0);
+ }
+ if (phba->sli4_hba.dat_rq != ((void*)0)) {
+  lpfc_sli4_queue_free(phba->sli4_hba.dat_rq);
+  phba->sli4_hba.dat_rq = ((void*)0);
+ }
+
+
+ if (phba->sli4_hba.els_cq != ((void*)0)) {
+  lpfc_sli4_queue_free(phba->sli4_hba.els_cq);
+  phba->sli4_hba.els_cq = ((void*)0);
+ }
+
+
+ if (phba->sli4_hba.mbx_cq != ((void*)0)) {
+  lpfc_sli4_queue_free(phba->sli4_hba.mbx_cq);
+  phba->sli4_hba.mbx_cq = ((void*)0);
+ }
+
+ return;
 }

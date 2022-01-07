@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cpp_reader ;
 
-/* Variables and functions */
- scalar_t__ CLK_ASM ; 
- scalar_t__ CLK_STDC94 ; 
- scalar_t__ CPP_OPTION (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _cpp_define_builtin (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  c99 ; 
- int /*<<< orphan*/  cplusplus ; 
- int /*<<< orphan*/  cpp_init_special_builtins (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lang ; 
- int /*<<< orphan*/  objc ; 
- int /*<<< orphan*/  std ; 
- int /*<<< orphan*/  stdc_0_in_system_headers ; 
- int /*<<< orphan*/  traditional ; 
+
+
+
+typedef int cpp_reader ;
+
+
+ scalar_t__ CLK_ASM ;
+ scalar_t__ CLK_STDC94 ;
+ scalar_t__ CPP_OPTION (int *,int ) ;
+ int _cpp_define_builtin (int *,char*) ;
+ int c99 ;
+ int cplusplus ;
+ int cpp_init_special_builtins (int *) ;
+ int lang ;
+ int objc ;
+ int std ;
+ int stdc_0_in_system_headers ;
+ int traditional ;
 
 void
 cpp_init_builtins (cpp_reader *pfile, int hosted)
@@ -33,7 +33,7 @@ cpp_init_builtins (cpp_reader *pfile, int hosted)
 
   if (!CPP_OPTION (pfile, traditional)
       && (! CPP_OPTION (pfile, stdc_0_in_system_headers)
-	  || CPP_OPTION (pfile, std)))
+   || CPP_OPTION (pfile, std)))
     _cpp_define_builtin (pfile, "__STDC__ 1");
 
   if (CPP_OPTION (pfile, cplusplus))

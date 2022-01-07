@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  response ;
 
-/* Variables and functions */
- int /*<<< orphan*/  release_gencmd_service () ; 
- scalar_t__ strncmp (char*,char*,size_t) ; 
- scalar_t__ strstr (char*,char const*) ; 
- int /*<<< orphan*/  use_gencmd_service () ; 
- int /*<<< orphan*/  vc_gencmd (char*,int,char*) ; 
- scalar_t__ vc_gencmd_string_property (char*,char const*,char**,int*) ; 
- int /*<<< orphan*/  vcos_sleep (int) ; 
 
-int vc_gencmd_until( char        *cmd,
-                     const char  *property,
-                     char        *value,
-                     const char  *error_string,
-                     int         timeout) {
+
+
+typedef int response ;
+
+
+ int release_gencmd_service () ;
+ scalar_t__ strncmp (char*,char*,size_t) ;
+ scalar_t__ strstr (char*,char const*) ;
+ int use_gencmd_service () ;
+ int vc_gencmd (char*,int,char*) ;
+ scalar_t__ vc_gencmd_string_property (char*,char const*,char**,int*) ;
+ int vcos_sleep (int) ;
+
+int vc_gencmd_until( char *cmd,
+                     const char *property,
+                     char *value,
+                     const char *error_string,
+                     int timeout) {
    char response[128];
    int length;
    char *ret_value;

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dirent {scalar_t__ d_type; char* d_name; } ;
-typedef  int /*<<< orphan*/  DIR ;
+typedef int DIR ;
 
-/* Variables and functions */
- scalar_t__ DT_DIR ; 
- int /*<<< orphan*/  FILENAME_MAX ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  error (char*,char const*,...) ; 
- int /*<<< orphan*/  info (char*,char const*,...) ; 
- int /*<<< orphan*/ * opendir (char const*) ; 
- struct dirent* readdir (int /*<<< orphan*/ *) ; 
- int rmdir (char const*) ; 
- int /*<<< orphan*/  snprintfz (char*,int /*<<< orphan*/ ,char*,char const*,char*) ; 
- scalar_t__ unlikely (int) ; 
- int unlink (char*) ; 
+
+ scalar_t__ DT_DIR ;
+ int FILENAME_MAX ;
+ int closedir (int *) ;
+ int error (char*,char const*,...) ;
+ int info (char*,char const*,...) ;
+ int * opendir (char const*) ;
+ struct dirent* readdir (int *) ;
+ int rmdir (char const*) ;
+ int snprintfz (char*,int ,char*,char const*,char*) ;
+ scalar_t__ unlikely (int) ;
+ int unlink (char*) ;
 
 int recursively_delete_dir(const char *path, const char *reason) {
     DIR *dir = opendir(path);
@@ -34,7 +34,7 @@ int recursively_delete_dir(const char *path, const char *reason) {
     }
 
     int ret = 0;
-    struct dirent *de = NULL;
+    struct dirent *de = ((void*)0);
     while((de = readdir(dir))) {
         if(de->d_type == DT_DIR
            && (

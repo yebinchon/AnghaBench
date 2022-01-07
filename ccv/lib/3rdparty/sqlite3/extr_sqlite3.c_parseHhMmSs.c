@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int validHMS; int h; int m; int s; int validTZ; scalar_t__ tz; scalar_t__ rawS; scalar_t__ validJD; } ;
-typedef  TYPE_1__ DateTime ;
+typedef TYPE_1__ DateTime ;
 
-/* Variables and functions */
- int getDigits (char const*,char*,int*,...) ; 
- scalar_t__ parseTimezone (char const*,TYPE_1__*) ; 
- scalar_t__ sqlite3Isdigit (char const) ; 
+
+ int getDigits (char const*,char*,int*,...) ;
+ scalar_t__ parseTimezone (char const*,TYPE_1__*) ;
+ scalar_t__ sqlite3Isdigit (char const) ;
 
 __attribute__((used)) static int parseHhMmSs(const char *zDate, DateTime *p){
   int h, m, s;

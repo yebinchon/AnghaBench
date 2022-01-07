@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {struct TYPE_6__* archive_next; } ;
-typedef  TYPE_1__ bfd ;
+typedef TYPE_1__ bfd ;
 struct TYPE_7__ {TYPE_1__* archive_head; } ;
 
-/* Variables and functions */
- char* _ (char*) ; 
- int /*<<< orphan*/  ar_directory_doer (TYPE_1__*,TYPE_1__*) ; 
- char* bfd_get_filename (TYPE_2__*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  maybequit () ; 
- TYPE_2__* obfd ; 
- int /*<<< orphan*/  outfile ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- char* program_name ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- int verbose ; 
+
+ char* _ (char*) ;
+ int ar_directory_doer (TYPE_1__*,TYPE_1__*) ;
+ char* bfd_get_filename (TYPE_2__*) ;
+ int fprintf (int ,char*,char*) ;
+ int maybequit () ;
+ TYPE_2__* obfd ;
+ int outfile ;
+ int printf (char*,char*) ;
+ char* program_name ;
+ int stderr ;
+ int stdout ;
+ int verbose ;
 
 void
 ar_list (void)
@@ -47,8 +47,8 @@ ar_list (void)
       printf (_("Current open archive is %s\n"), bfd_get_filename (obfd));
 
       for (abfd = obfd->archive_head;
-	   abfd != (bfd *)NULL;
-	   abfd = abfd->archive_next)
-	ar_directory_doer (abfd, (bfd *) NULL);
+    abfd != (bfd *)((void*)0);
+    abfd = abfd->archive_next)
+ ar_directory_doer (abfd, (bfd *) ((void*)0));
     }
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vout_thread_t ;
-struct TYPE_8__ {int /*<<< orphan*/ * fmt; int /*<<< orphan*/  clock; int /*<<< orphan*/ * vout; } ;
-typedef  TYPE_2__ vout_configuration_t ;
-typedef  int /*<<< orphan*/  video_format_t ;
-struct TYPE_7__ {int /*<<< orphan*/  sys; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int vout_thread_t ;
+struct TYPE_8__ {int * fmt; int clock; int * vout; } ;
+typedef TYPE_2__ vout_configuration_t ;
+typedef int video_format_t ;
+struct TYPE_7__ {int sys; } ;
 struct TYPE_9__ {TYPE_1__ owner; } ;
-typedef  TYPE_3__ filter_t ;
+typedef TYPE_3__ filter_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLC_OBJECT (TYPE_3__*) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  video_format_AdjustColorSpace (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vout_Close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vout_Create (int /*<<< orphan*/ ) ; 
- scalar_t__ vout_Request (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int VLC_OBJECT (TYPE_3__*) ;
+ scalar_t__ unlikely (int ) ;
+ int video_format_AdjustColorSpace (int *) ;
+ int vout_Close (int *) ;
+ int * vout_Create (int ) ;
+ scalar_t__ vout_Request (TYPE_2__*,int *,int *) ;
 
 vout_thread_t *aout_filter_GetVout(filter_t *filter, const video_format_t *fmt)
 {
     vout_thread_t *vout = vout_Create(VLC_OBJECT(filter));
-    if (unlikely(vout == NULL))
-        return NULL;
+    if (unlikely(vout == ((void*)0)))
+        return ((void*)0);
 
     video_format_t adj_fmt = *fmt;
     vout_configuration_t cfg = {
@@ -42,9 +42,9 @@ vout_thread_t *aout_filter_GetVout(filter_t *filter, const video_format_t *fmt)
 
     video_format_AdjustColorSpace(&adj_fmt);
 
-    if (vout_Request(&cfg, NULL, NULL)) {
+    if (vout_Request(&cfg, ((void*)0), ((void*)0))) {
         vout_Close(vout);
-        vout = NULL;
+        vout = ((void*)0);
     }
     return vout;
 }

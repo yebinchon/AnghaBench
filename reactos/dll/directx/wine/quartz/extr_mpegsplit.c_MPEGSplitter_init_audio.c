@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_8__ ;
-typedef  struct TYPE_23__   TYPE_7__ ;
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
-typedef  struct TYPE_16__   TYPE_14__ ;
 
-/* Type definitions */
-struct TYPE_19__ {int nChannels; int nSamplesPerSec; int nAvgBytesPerSec; int nBlockAlign; int cbSize; int /*<<< orphan*/  wFormatTag; scalar_t__ wBitsPerSample; } ;
-typedef  TYPE_3__ WAVEFORMATEX ;
-struct TYPE_16__ {int /*<<< orphan*/  Data1; } ;
-struct TYPE_24__ {int cbFormat; TYPE_14__ subtype; struct TYPE_24__* pbFormat; scalar_t__ bTemporalCompression; int /*<<< orphan*/  bFixedSizeSamples; scalar_t__ lSampleSize; int /*<<< orphan*/  majortype; int /*<<< orphan*/  formattype; } ;
-struct TYPE_23__ {int dwHeadBitrate; int fwHeadModeExt; int wHeadEmphasis; int /*<<< orphan*/  fwHeadFlags; int /*<<< orphan*/  fwHeadMode; int /*<<< orphan*/  fwHeadLayer; } ;
-struct TYPE_22__ {int nBlockSize; int nFramesPerBlock; int nCodecDelay; int /*<<< orphan*/  fdwFlags; int /*<<< orphan*/  wID; } ;
-struct TYPE_17__ {int /*<<< orphan*/  IBaseFilter_iface; } ;
+
+
+typedef struct TYPE_24__ TYPE_8__ ;
+typedef struct TYPE_23__ TYPE_7__ ;
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+typedef struct TYPE_16__ TYPE_14__ ;
+
+
+struct TYPE_19__ {int nChannels; int nSamplesPerSec; int nAvgBytesPerSec; int nBlockAlign; int cbSize; int wFormatTag; scalar_t__ wBitsPerSample; } ;
+typedef TYPE_3__ WAVEFORMATEX ;
+struct TYPE_16__ {int Data1; } ;
+struct TYPE_24__ {int cbFormat; TYPE_14__ subtype; struct TYPE_24__* pbFormat; scalar_t__ bTemporalCompression; int bFixedSizeSamples; scalar_t__ lSampleSize; int majortype; int formattype; } ;
+struct TYPE_23__ {int dwHeadBitrate; int fwHeadModeExt; int wHeadEmphasis; int fwHeadFlags; int fwHeadMode; int fwHeadLayer; } ;
+struct TYPE_22__ {int nBlockSize; int nFramesPerBlock; int nCodecDelay; int fdwFlags; int wID; } ;
+struct TYPE_17__ {int IBaseFilter_iface; } ;
 struct TYPE_18__ {TYPE_1__ filter; } ;
 struct TYPE_21__ {TYPE_2__ Parser; } ;
-struct TYPE_20__ {int /*<<< orphan*/  achName; int /*<<< orphan*/ * pFilter; int /*<<< orphan*/  dir; } ;
-typedef  TYPE_4__ PIN_INFO ;
-typedef  TYPE_5__ MPEGSplitterImpl ;
-typedef  TYPE_6__ MPEGLAYER3WAVEFORMAT ;
-typedef  TYPE_7__ MPEG1WAVEFORMAT ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int BYTE ;
-typedef  TYPE_8__ AM_MEDIA_TYPE ;
+struct TYPE_20__ {int achName; int * pFilter; int dir; } ;
+typedef TYPE_4__ PIN_INFO ;
+typedef TYPE_5__ MPEGSplitterImpl ;
+typedef TYPE_6__ MPEGLAYER3WAVEFORMAT ;
+typedef TYPE_7__ MPEG1WAVEFORMAT ;
+typedef int HRESULT ;
+typedef int BYTE ;
+typedef TYPE_8__ AM_MEDIA_TYPE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACM_MPEG_DUALCHANNEL ; 
- int /*<<< orphan*/  ACM_MPEG_ID_MPEG1 ; 
- int /*<<< orphan*/  ACM_MPEG_JOINTSTEREO ; 
- int /*<<< orphan*/  ACM_MPEG_LAYER1 ; 
- int /*<<< orphan*/  ACM_MPEG_LAYER2 ; 
- int /*<<< orphan*/  ACM_MPEG_LAYER3 ; 
- int /*<<< orphan*/  ACM_MPEG_SINGLECHANNEL ; 
- int /*<<< orphan*/  ACM_MPEG_STEREO ; 
- TYPE_8__* CoTaskMemAlloc (int) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  FORMAT_WaveFormatEx ; 
- TYPE_14__ MEDIASUBTYPE_MPEG1AudioPayload ; 
- int /*<<< orphan*/  MEDIATYPE_Audio ; 
- int /*<<< orphan*/  MPEGLAYER3_FLAG_PADDING_ON ; 
- int /*<<< orphan*/  MPEGLAYER3_ID_MPEG ; 
- int MPEGLAYER3_WFX_EXTRA_BYTES ; 
- int /*<<< orphan*/  PINDIR_OUTPUT ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int,int /*<<< orphan*/ ,int,int,int,int) ; 
- int /*<<< orphan*/  WAVE_FORMAT_MPEG ; 
- int /*<<< orphan*/  WAVE_FORMAT_MPEGLAYER3 ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_8__*,int) ; 
- int /*<<< orphan*/  dump_AM_MEDIA_TYPE (TYPE_8__*) ; 
- int* freqs ; 
- int*** tabsel_123 ; 
- int /*<<< orphan*/  wsprintfW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wszAudioStream ; 
+
+ int ACM_MPEG_DUALCHANNEL ;
+ int ACM_MPEG_ID_MPEG1 ;
+ int ACM_MPEG_JOINTSTEREO ;
+ int ACM_MPEG_LAYER1 ;
+ int ACM_MPEG_LAYER2 ;
+ int ACM_MPEG_LAYER3 ;
+ int ACM_MPEG_SINGLECHANNEL ;
+ int ACM_MPEG_STEREO ;
+ TYPE_8__* CoTaskMemAlloc (int) ;
+ int E_OUTOFMEMORY ;
+ int FALSE ;
+ int FIXME (char*) ;
+ int FORMAT_WaveFormatEx ;
+ TYPE_14__ MEDIASUBTYPE_MPEG1AudioPayload ;
+ int MEDIATYPE_Audio ;
+ int MPEGLAYER3_FLAG_PADDING_ON ;
+ int MPEGLAYER3_ID_MPEG ;
+ int MPEGLAYER3_WFX_EXTRA_BYTES ;
+ int PINDIR_OUTPUT ;
+ int S_OK ;
+ int TRACE (char*,int,int ,int,int,int,int) ;
+ int WAVE_FORMAT_MPEG ;
+ int WAVE_FORMAT_MPEGLAYER3 ;
+ int ZeroMemory (TYPE_8__*,int) ;
+ int dump_AM_MEDIA_TYPE (TYPE_8__*) ;
+ int* freqs ;
+ int*** tabsel_123 ;
+ int wsprintfW (int ,int ) ;
+ int wszAudioStream ;
 
 __attribute__((used)) static HRESULT MPEGSplitter_init_audio(MPEGSplitterImpl *This, const BYTE *header, PIN_INFO *ppiOutput, AM_MEDIA_TYPE *pamt)
 {
@@ -98,17 +98,17 @@ __attribute__((used)) static HRESULT MPEGSplitter_init_audio(MPEGSplitterImpl *T
     if (mpeg1)
         lsf = ((header[1]>>3)&0x1)^1;
 
-    layer         = 4-((header[1]>>1)&0x3);
-    bitrate_index =   ((header[2]>>4)&0xf);
-    padding       =   ((header[2]>>1)&0x1);
-    freq_index    =   ((header[2]>>2)&0x3) + (mpeg1?(lsf*3):6);
-    mode          =   ((header[3]>>6)&0x3);
-    mode_ext      =   ((header[3]>>4)&0x3);
-    emphasis      =   ((header[3]>>0)&0x3);
+    layer = 4-((header[1]>>1)&0x3);
+    bitrate_index = ((header[2]>>4)&0xf);
+    padding = ((header[2]>>1)&0x1);
+    freq_index = ((header[2]>>2)&0x3) + (mpeg1?(lsf*3):6);
+    mode = ((header[3]>>6)&0x3);
+    mode_ext = ((header[3]>>4)&0x3);
+    emphasis = ((header[3]>>0)&0x3);
 
     if (!bitrate_index)
     {
-        /* Set to highest bitrate so samples will fit in for sure */
+
         FIXME("Variable-bitrate audio not fully supported.\n");
         bitrate_index = 15;
     }
@@ -121,10 +121,10 @@ __attribute__((used)) static HRESULT MPEGSplitter_init_audio(MPEGSplitterImpl *T
     ZeroMemory(pamt->pbFormat, pamt->cbFormat);
     format = (WAVEFORMATEX*)pamt->pbFormat;
 
-    format->wFormatTag      = ((layer == 3) ? WAVE_FORMAT_MPEGLAYER3 :
+    format->wFormatTag = ((layer == 3) ? WAVE_FORMAT_MPEGLAYER3 :
                                               WAVE_FORMAT_MPEG);
-    format->nChannels       = ((mode == 3) ? 1 : 2);
-    format->nSamplesPerSec  = freqs[freq_index];
+    format->nChannels = ((mode == 3) ? 1 : 2);
+    format->nSamplesPerSec = freqs[freq_index];
     format->nAvgBytesPerSec = tabsel_123[lsf][layer-1][bitrate_index] * 1000 / 8;
 
     if (layer == 3)
@@ -149,11 +149,11 @@ __attribute__((used)) static HRESULT MPEGSplitter_init_audio(MPEGSplitterImpl *T
         mp3format->nBlockSize = format->nBlockAlign;
         mp3format->nFramesPerBlock = 1;
 
-        /* Beware the evil magic numbers. This struct is apparently horribly
-         * under-documented, and the only references I could find had it being
-         * set to this with no real explanation. It works fine though, so I'm
-         * not complaining (yet).
-         */
+
+
+
+
+
         mp3format->nCodecDelay = 1393;
     }
     else
@@ -162,17 +162,17 @@ __attribute__((used)) static HRESULT MPEGSplitter_init_audio(MPEGSplitterImpl *T
 
         format->cbSize = 22;
 
-        mpgformat->fwHeadLayer   = ((layer == 1) ? ACM_MPEG_LAYER1 :
+        mpgformat->fwHeadLayer = ((layer == 1) ? ACM_MPEG_LAYER1 :
                                     ((layer == 2) ? ACM_MPEG_LAYER2 :
                                      ACM_MPEG_LAYER3));
         mpgformat->dwHeadBitrate = format->nAvgBytesPerSec * 8;
-        mpgformat->fwHeadMode    = ((mode == 3) ? ACM_MPEG_SINGLECHANNEL :
+        mpgformat->fwHeadMode = ((mode == 3) ? ACM_MPEG_SINGLECHANNEL :
                                     ((mode == 2) ? ACM_MPEG_DUALCHANNEL :
                                      ((mode == 1) ? ACM_MPEG_JOINTSTEREO :
                                       ACM_MPEG_STEREO)));
         mpgformat->fwHeadModeExt = ((mode == 1) ? 0x0F : (1<<mode_ext));
         mpgformat->wHeadEmphasis = emphasis + 1;
-        mpgformat->fwHeadFlags   = ACM_MPEG_ID_MPEG1;
+        mpgformat->fwHeadFlags = ACM_MPEG_ID_MPEG1;
     }
     pamt->subtype.Data1 = format->wFormatTag;
 

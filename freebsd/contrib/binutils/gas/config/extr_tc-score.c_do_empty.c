@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int instruction; int relax_inst; scalar_t__ type; int relax_size; int /*<<< orphan*/  error; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_FOR_SCORE5U_MMU ; 
- scalar_t__ FAIL ; 
- scalar_t__ NO_OPD ; 
- int end_of_line (char*) ; 
- TYPE_1__ inst ; 
- int university_version ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int instruction; int relax_inst; scalar_t__ type; int relax_size; int error; } ;
+
+
+ int ERR_FOR_SCORE5U_MMU ;
+ scalar_t__ FAIL ;
+ scalar_t__ NO_OPD ;
+ int end_of_line (char*) ;
+ TYPE_1__ inst ;
+ int university_version ;
 
 __attribute__((used)) static void
 do_empty (char *str)

@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int EVTCHN_ROW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  clear_evtchn_to_irq_row (unsigned int) ; 
- int /*<<< orphan*/ ** evtchn_to_irq ; 
- int /*<<< orphan*/  xen_evtchn_max_channels () ; 
+ unsigned int EVTCHN_ROW (int ) ;
+ int clear_evtchn_to_irq_row (unsigned int) ;
+ int ** evtchn_to_irq ;
+ int xen_evtchn_max_channels () ;
 
 __attribute__((used)) static void clear_evtchn_to_irq_all(void)
 {
-	unsigned row;
+ unsigned row;
 
-	for (row = 0; row < EVTCHN_ROW(xen_evtchn_max_channels()); row++) {
-		if (evtchn_to_irq[row] == NULL)
-			continue;
-		clear_evtchn_to_irq_row(row);
-	}
+ for (row = 0; row < EVTCHN_ROW(xen_evtchn_max_channels()); row++) {
+  if (evtchn_to_irq[row] == ((void*)0))
+   continue;
+  clear_evtchn_to_irq_row(row);
+ }
 }

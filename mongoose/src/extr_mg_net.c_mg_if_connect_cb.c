@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  sin_port; int /*<<< orphan*/  sin_addr; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int sin_port; int sin_addr; } ;
 struct TYPE_4__ {TYPE_1__ sin; } ;
-struct mg_connection {int flags; int /*<<< orphan*/  user_data; TYPE_2__ sa; } ;
+struct mg_connection {int flags; int user_data; TYPE_2__ sa; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LL_DEBUG ; 
- int /*<<< orphan*/  LOG (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  MG_EV_CONNECT ; 
- int MG_F_CLOSE_IMMEDIATELY ; 
- int MG_F_CONNECTING ; 
- int MG_F_SSL ; 
- int MG_F_UDP ; 
- int /*<<< orphan*/  inet_ntoa (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mg_call (struct mg_connection*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  mg_ssl_handshake (struct mg_connection*) ; 
- int /*<<< orphan*/  ntohs (int /*<<< orphan*/ ) ; 
+
+ int LL_DEBUG ;
+ int LOG (int ,char*) ;
+ int MG_EV_CONNECT ;
+ int MG_F_CLOSE_IMMEDIATELY ;
+ int MG_F_CONNECTING ;
+ int MG_F_SSL ;
+ int MG_F_UDP ;
+ int inet_ntoa (int ) ;
+ int mg_call (struct mg_connection*,int *,int ,int ,int*) ;
+ int mg_ssl_handshake (struct mg_connection*) ;
+ int ntohs (int ) ;
 
 void mg_if_connect_cb(struct mg_connection *nc, int err) {
   LOG(LL_DEBUG,
@@ -37,12 +37,12 @@ void mg_if_connect_cb(struct mg_connection *nc, int err) {
   if (err != 0) {
     nc->flags |= MG_F_CLOSE_IMMEDIATELY;
   }
-#if MG_ENABLE_SSL
-  if (err == 0 && (nc->flags & MG_F_SSL)) {
-    mg_ssl_handshake(nc);
-  } else
-#endif
+
+
+
+
+
   {
-    mg_call(nc, NULL, nc->user_data, MG_EV_CONNECT, &err);
+    mg_call(nc, ((void*)0), nc->user_data, MG_EV_CONNECT, &err);
   }
 }

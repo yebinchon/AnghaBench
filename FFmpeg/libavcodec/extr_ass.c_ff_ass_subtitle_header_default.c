@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASS_DEFAULT_ALIGNMENT ; 
- int /*<<< orphan*/  ASS_DEFAULT_BACK_COLOR ; 
- int /*<<< orphan*/  ASS_DEFAULT_BOLD ; 
- int /*<<< orphan*/  ASS_DEFAULT_BORDERSTYLE ; 
- int /*<<< orphan*/  ASS_DEFAULT_COLOR ; 
- int /*<<< orphan*/  ASS_DEFAULT_FONT ; 
- int /*<<< orphan*/  ASS_DEFAULT_FONT_SIZE ; 
- int /*<<< orphan*/  ASS_DEFAULT_ITALIC ; 
- int /*<<< orphan*/  ASS_DEFAULT_UNDERLINE ; 
- int ff_ass_subtitle_header (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int AVCodecContext ;
+
+
+ int ASS_DEFAULT_ALIGNMENT ;
+ int ASS_DEFAULT_BACK_COLOR ;
+ int ASS_DEFAULT_BOLD ;
+ int ASS_DEFAULT_BORDERSTYLE ;
+ int ASS_DEFAULT_COLOR ;
+ int ASS_DEFAULT_FONT ;
+ int ASS_DEFAULT_FONT_SIZE ;
+ int ASS_DEFAULT_ITALIC ;
+ int ASS_DEFAULT_UNDERLINE ;
+ int ff_ass_subtitle_header (int *,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
 
 int ff_ass_subtitle_header_default(AVCodecContext *avctx)
 {

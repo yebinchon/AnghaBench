@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ldns_rr_list ;
-typedef  int /*<<< orphan*/  ldns_rdf ;
-typedef  int /*<<< orphan*/  ldns_pkt_type ;
-typedef  int /*<<< orphan*/  ldns_pkt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LDNS_RR_TYPE_DNSKEY ; 
- int /*<<< orphan*/  get_dnssec_rr (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int ldns_rr_list ;
+typedef int ldns_rdf ;
+typedef int ldns_pkt_type ;
+typedef int ldns_pkt ;
+
+
+ int LDNS_RR_TYPE_DNSKEY ;
+ int get_dnssec_rr (int *,int *,int ,int **,int **) ;
 
 __attribute__((used)) static ldns_pkt_type
 get_key(ldns_pkt *p, ldns_rdf *apexname, ldns_rr_list **rrlist, ldns_rr_list **opt_sig)
 {
-	return get_dnssec_rr(p, apexname, LDNS_RR_TYPE_DNSKEY, rrlist, opt_sig);
+ return get_dnssec_rr(p, apexname, LDNS_RR_TYPE_DNSKEY, rrlist, opt_sig);
 }

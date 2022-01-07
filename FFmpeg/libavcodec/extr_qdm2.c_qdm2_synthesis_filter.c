@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int sub_sampling; int channels; int nb_channels; float* samples; int frame_size; int* output_buffer; scalar_t__*** sb_samples; int /*<<< orphan*/ * synth_buf_offset; int /*<<< orphan*/ * synth_buf; int /*<<< orphan*/  mpadsp; } ;
-typedef  TYPE_1__ QDM2Context ;
 
-/* Variables and functions */
- int QDM2_SB_USED (int) ; 
- int SBLIMIT ; 
- int /*<<< orphan*/  ff_mpa_synth_filter_float (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*,float*,int,scalar_t__*) ; 
- int /*<<< orphan*/  ff_mpa_synth_window_float ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int sub_sampling; int channels; int nb_channels; float* samples; int frame_size; int* output_buffer; scalar_t__*** sb_samples; int * synth_buf_offset; int * synth_buf; int mpadsp; } ;
+typedef TYPE_1__ QDM2Context ;
+
+
+ int QDM2_SB_USED (int) ;
+ int SBLIMIT ;
+ int ff_mpa_synth_filter_float (int *,int ,int *,int ,int*,float*,int,scalar_t__*) ;
+ int ff_mpa_synth_window_float ;
 
 __attribute__((used)) static void qdm2_synthesis_filter(QDM2Context *q, int index)
 {
     int i, k, ch, sb_used, sub_sampling, dither_state = 0;
 
-    /* copy sb_samples */
+
     sb_used = QDM2_SB_USED(q->sub_sampling);
 
     for (ch = 0; ch < q->channels; ch++)
@@ -45,7 +45,7 @@ __attribute__((used)) static void qdm2_synthesis_filter(QDM2Context *q, int inde
         }
     }
 
-    /* add samples to output buffer */
+
     sub_sampling = (4 >> q->sub_sampling);
 
     for (ch = 0; ch < q->channels; ch++)

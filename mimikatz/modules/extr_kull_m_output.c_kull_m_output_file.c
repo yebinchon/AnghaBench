@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ PCWCHAR ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/ * _wfopen (scalar_t__,char*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * logfile ; 
+
+
+
+typedef scalar_t__ PCWCHAR ;
+typedef int FILE ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int * _wfopen (scalar_t__,char*) ;
+ int fclose (int *) ;
+ int * logfile ;
 
 BOOL kull_m_output_file(PCWCHAR file)
 {
-	BOOL status = FALSE;
-	FILE * newlog = NULL;
+ BOOL status = FALSE;
+ FILE * newlog = ((void*)0);
 
-	if(file)
+ if(file)
 #pragma warning(push)
 #pragma warning(disable:4996)
-		newlog = _wfopen(file, L"a"); // XP does not like _wfopen_s
+ newlog = _wfopen(file, L"a");
 #pragma warning(pop)
-	if(newlog || !file)
-	{
-		if(logfile)
-			fclose(logfile);
-		logfile = newlog;
-	}
-	return (!file || (file && logfile));
+ if(newlog || !file)
+ {
+  if(logfile)
+   fclose(logfile);
+  logfile = newlog;
+ }
+ return (!file || (file && logfile));
 }

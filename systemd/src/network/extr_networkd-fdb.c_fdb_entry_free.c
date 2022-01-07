@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ section; TYPE_1__* network; } ;
-struct TYPE_6__ {scalar_t__ n_static_fdb_entries; int /*<<< orphan*/  fdb_entries_by_section; int /*<<< orphan*/  static_fdb_entries; } ;
-typedef  TYPE_2__ FdbEntry ;
+struct TYPE_6__ {scalar_t__ n_static_fdb_entries; int fdb_entries_by_section; int static_fdb_entries; } ;
+typedef TYPE_2__ FdbEntry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIST_REMOVE (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  hashmap_remove (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  network_config_section_free (scalar_t__) ; 
- int /*<<< orphan*/  static_fdb_entries ; 
+
+ int LIST_REMOVE (int ,int ,TYPE_2__*) ;
+ int assert (int) ;
+ int free (TYPE_2__*) ;
+ int hashmap_remove (int ,scalar_t__) ;
+ int network_config_section_free (scalar_t__) ;
+ int static_fdb_entries ;
 
 void fdb_entry_free(FdbEntry *fdb_entry) {
         if (!fdb_entry)

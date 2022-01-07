@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int M_PI ; 
- float cos (float) ; 
- float fromdB (float) ; 
- float sqrt (float) ; 
+ int M_PI ;
+ float cos (float) ;
+ float fromdB (float) ;
+ float sqrt (float) ;
 
 void vorbis_lsp_to_curve(float *curve,int *map,int n,int ln,float *lsp,int m,
                             float amp,float ampoffset){
@@ -34,13 +26,13 @@ void vorbis_lsp_to_curve(float *curve,int *map,int n,int ln,float *lsp,int m,
       p *= w-lsp[j];
     }
     if(j==m){
-      /* odd order filter; slightly assymetric */
-      /* the last coefficient */
+
+
       q*=w-lsp[j-1];
       p*=p*(4.f-w*w);
       q*=q;
     }else{
-      /* even order filter; still symmetric */
+
       p*=p*(2.f-w);
       q*=q*(2.f+w);
     }

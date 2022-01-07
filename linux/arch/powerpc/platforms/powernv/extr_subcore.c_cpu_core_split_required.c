@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  cpu_do_split (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  new_split_mode ; 
- int /*<<< orphan*/  smp_rmb () ; 
+ int cpu_do_split (int ) ;
+ int new_split_mode ;
+ int smp_rmb () ;
 
 bool cpu_core_split_required(void)
 {
-	smp_rmb();
+ smp_rmb();
 
-	if (!new_split_mode)
-		return false;
+ if (!new_split_mode)
+  return 0;
 
-	cpu_do_split(new_split_mode);
+ cpu_do_split(new_split_mode);
 
-	return true;
+ return 1;
 }

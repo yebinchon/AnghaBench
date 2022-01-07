@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pthread_t ;
 
-/* Variables and functions */
- int NUM_CV ; 
- int NUM_LOOPS ; 
- int RAND_MAX ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ ** cv ; 
- scalar_t__ pthread_cond_destroy (int /*<<< orphan*/ **) ; 
- scalar_t__ pthread_cond_init (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_join (int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  pthread_timechange_handler_np ; 
- int rand () ; 
- int /*<<< orphan*/  srand (unsigned int) ; 
- scalar_t__ time (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int pthread_t ;
+
+
+ int NUM_CV ;
+ int NUM_LOOPS ;
+ int RAND_MAX ;
+ int assert (int) ;
+ int ** cv ;
+ scalar_t__ pthread_cond_destroy (int **) ;
+ scalar_t__ pthread_cond_init (int **,int *) ;
+ scalar_t__ pthread_create (int *,int *,int ,int *) ;
+ scalar_t__ pthread_join (int ,void**) ;
+ int pthread_timechange_handler_np ;
+ int rand () ;
+ int srand (unsigned int) ;
+ scalar_t__ time (int *) ;
 
 int
 main()
@@ -38,19 +38,19 @@ main()
     {
       for (i = 0; i < NUM_CV; i++)
         {
-          assert(pthread_cond_init(&cv[i], NULL) == 0);
+          assert(pthread_cond_init(&cv[i], ((void*)0)) == 0);
         }
 
       j = NUM_CV;
-      (void) srand((unsigned)time(NULL));
+      (void) srand((unsigned)time(((void*)0)));
 
-      /* Traverse the list asynchronously. */
-      assert(pthread_create(&t, NULL, pthread_timechange_handler_np, NULL) == 0);
+
+      assert(pthread_create(&t, ((void*)0), pthread_timechange_handler_np, ((void*)0)) == 0);
 
       do
         {
           i = (NUM_CV - 1) * rand() / RAND_MAX;
-          if (cv[i] != NULL)
+          if (cv[i] != ((void*)0))
             {
               j--;
               assert(pthread_cond_destroy(&cv[i]) == 0);

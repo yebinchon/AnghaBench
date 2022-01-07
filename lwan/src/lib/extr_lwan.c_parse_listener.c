@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct lwan_module {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  listener; } ;
+struct TYPE_2__ {int listener; } ;
 struct lwan {TYPE_1__ config; } ;
-struct config_line {int type; char* key; int /*<<< orphan*/  value; } ;
+struct config_line {int type; char* key; int value; } ;
 struct config {int dummy; } ;
 
-/* Variables and functions */
-#define  CONFIG_LINE_TYPE_LINE 130 
-#define  CONFIG_LINE_TYPE_SECTION 129 
-#define  CONFIG_LINE_TYPE_SECTION_END 128 
- int /*<<< orphan*/  config_error (struct config*,char*,...) ; 
- struct config_line* config_read_line (struct config*) ; 
- void* find_handler (int /*<<< orphan*/ ) ; 
- struct lwan_module* find_module (char*) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_listener_prefix (struct config*,struct config_line const*,struct lwan*,struct lwan_module const*,void*) ; 
- int /*<<< orphan*/  strdup (int /*<<< orphan*/ ) ; 
+
+
+
+
+ int config_error (struct config*,char*,...) ;
+ struct config_line* config_read_line (struct config*) ;
+ void* find_handler (int ) ;
+ struct lwan_module* find_module (char*) ;
+ int free (int ) ;
+ int parse_listener_prefix (struct config*,struct config_line const*,struct lwan*,struct lwan_module const*,void*) ;
+ int strdup (int ) ;
 
 __attribute__((used)) static void parse_listener(struct config *c,
                            const struct config_line *l,
@@ -38,14 +38,14 @@ __attribute__((used)) static void parse_listener(struct config *c,
 
     while ((l = config_read_line(c))) {
         switch (l->type) {
-        case CONFIG_LINE_TYPE_LINE:
+        case 130:
             config_error(c, "Expecting prefix section");
             return;
-        case CONFIG_LINE_TYPE_SECTION:
+        case 129:
             if (l->key[0] == '&') {
                 void *handler = find_handler(l->key + 1);
                 if (handler) {
-                    parse_listener_prefix(c, l, lwan, NULL, handler);
+                    parse_listener_prefix(c, l, lwan, ((void*)0), handler);
                     continue;
                 }
 
@@ -55,13 +55,13 @@ __attribute__((used)) static void parse_listener(struct config *c,
 
             const struct lwan_module *module = find_module(l->key);
             if (module) {
-                parse_listener_prefix(c, l, lwan, module, NULL);
+                parse_listener_prefix(c, l, lwan, module, ((void*)0));
                 continue;
             }
 
             config_error(c, "Invalid section or module not found: %s", l->key);
             return;
-        case CONFIG_LINE_TYPE_SECTION_END:
+        case 128:
             return;
         }
     }

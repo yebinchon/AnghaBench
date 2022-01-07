@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ngx_uint_t ;
-typedef  int ngx_int_t ;
-struct TYPE_17__ {TYPE_1__* connection; int /*<<< orphan*/  pool; } ;
-typedef  TYPE_2__ ngx_http_request_t ;
-struct TYPE_18__ {int done; scalar_t__ nomem; int /*<<< orphan*/ * out; int /*<<< orphan*/ ** last_out; scalar_t__ busy; int /*<<< orphan*/  free; int /*<<< orphan*/  in; int /*<<< orphan*/  started; } ;
-typedef  TYPE_3__ ngx_http_gunzip_ctx_t ;
-typedef  int /*<<< orphan*/  ngx_chain_t ;
-typedef  int /*<<< orphan*/  ngx_buf_tag_t ;
-struct TYPE_16__ {int /*<<< orphan*/  log; } ;
 
-/* Variables and functions */
- int NGX_AGAIN ; 
- int NGX_DECLINED ; 
- int NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int NGX_OK ; 
- int ngx_chain_add_copy (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_chain_update_chains (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- TYPE_3__* ngx_http_get_module_ctx (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int ngx_http_gunzip_filter_add_data (TYPE_2__*,TYPE_3__*) ; 
- int ngx_http_gunzip_filter_get_buf (TYPE_2__*,TYPE_3__*) ; 
- int ngx_http_gunzip_filter_inflate (TYPE_2__*,TYPE_3__*) ; 
- int ngx_http_gunzip_filter_inflate_start (TYPE_2__*,TYPE_3__*) ; 
- int /*<<< orphan*/  ngx_http_gunzip_filter_module ; 
- int ngx_http_next_body_filter (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int ngx_uint_t ;
+typedef int ngx_int_t ;
+struct TYPE_17__ {TYPE_1__* connection; int pool; } ;
+typedef TYPE_2__ ngx_http_request_t ;
+struct TYPE_18__ {int done; scalar_t__ nomem; int * out; int ** last_out; scalar_t__ busy; int free; int in; int started; } ;
+typedef TYPE_3__ ngx_http_gunzip_ctx_t ;
+typedef int ngx_chain_t ;
+typedef int ngx_buf_tag_t ;
+struct TYPE_16__ {int log; } ;
+
+
+ int NGX_AGAIN ;
+ int NGX_DECLINED ;
+ int NGX_ERROR ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_OK ;
+ int ngx_chain_add_copy (int ,int *,int *) ;
+ int ngx_chain_update_chains (int ,int *,scalar_t__*,int **,int ) ;
+ TYPE_3__* ngx_http_get_module_ctx (TYPE_2__*,int ) ;
+ int ngx_http_gunzip_filter_add_data (TYPE_2__*,TYPE_3__*) ;
+ int ngx_http_gunzip_filter_get_buf (TYPE_2__*,TYPE_3__*) ;
+ int ngx_http_gunzip_filter_inflate (TYPE_2__*,TYPE_3__*) ;
+ int ngx_http_gunzip_filter_inflate_start (TYPE_2__*,TYPE_3__*) ;
+ int ngx_http_gunzip_filter_module ;
+ int ngx_http_next_body_filter (TYPE_2__*,int *) ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int ngx_log_debug1 (int ,int ,int ,char*,int *) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_gunzip_body_filter(ngx_http_request_t *r, ngx_chain_t *in)
 {
-    int                     rc;
-    ngx_uint_t              flush;
-    ngx_chain_t            *cl;
-    ngx_http_gunzip_ctx_t  *ctx;
+    int rc;
+    ngx_uint_t flush;
+    ngx_chain_t *cl;
+    ngx_http_gunzip_ctx_t *ctx;
 
     ctx = ngx_http_get_module_ctx(r, ngx_http_gunzip_filter_module);
 
-    if (ctx == NULL || ctx->done) {
+    if (ctx == ((void*)0) || ctx->done) {
         return ngx_http_next_body_filter(r, in);
     }
 
@@ -72,13 +72,13 @@ ngx_http_gunzip_body_filter(ngx_http_request_t *r, ngx_chain_t *in)
 
     if (ctx->nomem) {
 
-        /* flush busy buffers */
 
-        if (ngx_http_next_body_filter(r, NULL) == NGX_ERROR) {
+
+        if (ngx_http_next_body_filter(r, ((void*)0)) == NGX_ERROR) {
             goto failed;
         }
 
-        cl = NULL;
+        cl = ((void*)0);
 
         ngx_chain_update_chains(r->pool, &ctx->free, &ctx->busy, &cl,
                                 (ngx_buf_tag_t) &ngx_http_gunzip_filter_module);
@@ -91,11 +91,11 @@ ngx_http_gunzip_body_filter(ngx_http_request_t *r, ngx_chain_t *in)
 
     for ( ;; ) {
 
-        /* cycle while we can write to a client */
+
 
         for ( ;; ) {
 
-            /* cycle while there is data to feed zlib and ... */
+
 
             rc = ngx_http_gunzip_filter_add_data(r, ctx);
 
@@ -108,7 +108,7 @@ ngx_http_gunzip_body_filter(ngx_http_request_t *r, ngx_chain_t *in)
             }
 
 
-            /* ... there are buffers to write zlib output */
+
 
             rc = ngx_http_gunzip_filter_get_buf(r, ctx);
 
@@ -130,10 +130,10 @@ ngx_http_gunzip_body_filter(ngx_http_request_t *r, ngx_chain_t *in)
                 goto failed;
             }
 
-            /* rc == NGX_AGAIN */
+
         }
 
-        if (ctx->out == NULL && !flush) {
+        if (ctx->out == ((void*)0) && !flush) {
             return ctx->busy ? NGX_AGAIN : NGX_OK;
         }
 
@@ -158,7 +158,7 @@ ngx_http_gunzip_body_filter(ngx_http_request_t *r, ngx_chain_t *in)
         }
     }
 
-    /* unreachable */
+
 
 failed:
 

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wined3d_string_buffer_list {int dummy; } ;
 struct wined3d_string_buffer {int dummy; } ;
 struct wined3d_shader {struct glsl_shader_private* backend_data; } ;
 struct wined3d_context {int dummy; } ;
 struct ps_np2fixup_info {int dummy; } ;
-struct ps_compile_args {int /*<<< orphan*/  tex_types; scalar_t__ np2_fixup; } ;
+struct ps_compile_args {int tex_types; scalar_t__ np2_fixup; } ;
 struct TYPE_2__ {struct glsl_ps_compiled_shader* ps; } ;
 struct glsl_shader_private {size_t num_gl_shaders; size_t shader_array_size; TYPE_1__ gl_shaders; } ;
-struct glsl_ps_compiled_shader {int /*<<< orphan*/  id; struct ps_np2fixup_info np2fixup; struct ps_compile_args args; } ;
-typedef  size_t UINT ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  int DWORD ;
+struct glsl_ps_compiled_shader {int id; struct ps_np2fixup_info np2fixup; struct ps_compile_args args; } ;
+typedef size_t UINT ;
+typedef int GLuint ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  TRACE (char*,struct wined3d_shader*) ; 
- struct glsl_ps_compiled_shader* heap_alloc (int) ; 
- struct glsl_shader_private* heap_alloc_zero (int) ; 
- struct glsl_ps_compiled_shader* heap_realloc (struct glsl_ps_compiled_shader*,int) ; 
- int max (int,int) ; 
- int /*<<< orphan*/  memcmp (struct ps_compile_args*,struct ps_compile_args const*,int) ; 
- int /*<<< orphan*/  memset (struct ps_np2fixup_info*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pixelshader_update_resource_types (struct wined3d_shader*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shader_glsl_generate_pshader (struct wined3d_context const*,struct wined3d_string_buffer*,struct wined3d_string_buffer_list*,struct wined3d_shader*,struct ps_compile_args const*,struct ps_np2fixup_info*) ; 
- int /*<<< orphan*/  string_buffer_clear (struct wined3d_string_buffer*) ; 
+
+ int ERR (char*) ;
+ int TRACE (char*,struct wined3d_shader*) ;
+ struct glsl_ps_compiled_shader* heap_alloc (int) ;
+ struct glsl_shader_private* heap_alloc_zero (int) ;
+ struct glsl_ps_compiled_shader* heap_realloc (struct glsl_ps_compiled_shader*,int) ;
+ int max (int,int) ;
+ int memcmp (struct ps_compile_args*,struct ps_compile_args const*,int) ;
+ int memset (struct ps_np2fixup_info*,int ,int) ;
+ int pixelshader_update_resource_types (struct wined3d_shader*,int ) ;
+ int shader_glsl_generate_pshader (struct wined3d_context const*,struct wined3d_string_buffer*,struct wined3d_string_buffer_list*,struct wined3d_shader*,struct ps_compile_args const*,struct ps_np2fixup_info*) ;
+ int string_buffer_clear (struct wined3d_string_buffer*) ;
 
 __attribute__((used)) static GLuint find_glsl_pshader(const struct wined3d_context *context,
         struct wined3d_string_buffer *buffer, struct wined3d_string_buffer_list *string_buffers,
@@ -60,10 +60,10 @@ __attribute__((used)) static GLuint find_glsl_pshader(const struct wined3d_conte
     shader_data = shader->backend_data;
     gl_shaders = shader_data->gl_shaders.ps;
 
-    /* Usually we have very few GL shaders for each d3d shader(just 1 or maybe 2),
-     * so a linear search is more performant than a hashmap or a binary search
-     * (cache coherency etc)
-     */
+
+
+
+
     for (i = 0; i < shader_data->num_gl_shaders; ++i)
     {
         if (!memcmp(&gl_shaders[i].args, args, sizeof(*args)))
@@ -101,7 +101,7 @@ __attribute__((used)) static GLuint find_glsl_pshader(const struct wined3d_conte
 
     np2fixup = &gl_shaders[shader_data->num_gl_shaders].np2fixup;
     memset(np2fixup, 0, sizeof(*np2fixup));
-    *np2fixup_info = args->np2_fixup ? np2fixup : NULL;
+    *np2fixup_info = args->np2_fixup ? np2fixup : ((void*)0);
 
     pixelshader_update_resource_types(shader, args->tex_types);
 

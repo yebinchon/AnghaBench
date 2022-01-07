@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  cmsMLU ;
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/  cmsHPROFILE ;
-typedef  int /*<<< orphan*/ * cmsHANDLE ;
-struct TYPE_5__ {int /*<<< orphan*/  DisplayName; int /*<<< orphan*/  Value; int /*<<< orphan*/  Name; } ;
-typedef  TYPE_1__ cmsDICTentry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  Fail (char*,char*) ; 
- int /*<<< orphan*/  cmsDictAddEntry (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cmsDictAlloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDictFree (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_1__* cmsDictGetEntryList (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_1__* cmsDictNextEntry (int /*<<< orphan*/ ,TYPE_1__ const*) ; 
- int /*<<< orphan*/ * cmsMLUalloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsMLUfree (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsMLUgetASCII (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char*,char*,int) ; 
- int /*<<< orphan*/  cmsMLUsetWide (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,char*,char*) ; 
- int /*<<< orphan*/ * cmsReadTag (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsSigMetaTag ; 
- int /*<<< orphan*/  cmsWriteTag (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef int cmsMLU ;
+typedef int cmsInt32Number ;
+typedef int cmsHPROFILE ;
+typedef int * cmsHANDLE ;
+struct TYPE_5__ {int DisplayName; int Value; int Name; } ;
+typedef TYPE_1__ cmsDICTentry ;
+
+
+ int DbgThread () ;
+ int Fail (char*,char*) ;
+ int cmsDictAddEntry (int ,int *,char*,char*,int *,int *) ;
+ int * cmsDictAlloc (int ) ;
+ int cmsDictFree (int ,int *) ;
+ TYPE_1__* cmsDictGetEntryList (int ,int *) ;
+ TYPE_1__* cmsDictNextEntry (int ,TYPE_1__ const*) ;
+ int * cmsMLUalloc (int ,int ) ;
+ int cmsMLUfree (int ,int *) ;
+ int cmsMLUgetASCII (int ,int ,char*,char*,char*,int) ;
+ int cmsMLUsetWide (int ,int *,char*,char*,char*) ;
+ int * cmsReadTag (int ,int ,int ) ;
+ int cmsSigMetaTag ;
+ int cmsWriteTag (int ,int ,int ,int *) ;
+ int memcmp (int ,char*,int) ;
+ int strcmp (char*,char*) ;
 
 __attribute__((used)) static
-cmsInt32Number CheckDictionary24(cmsInt32Number Pass,  cmsHPROFILE hProfile)
+cmsInt32Number CheckDictionary24(cmsInt32Number Pass, cmsHPROFILE hProfile)
 {
     cmsHANDLE hDict;
     const cmsDICTentry* e;
@@ -58,10 +58,10 @@ cmsInt32Number CheckDictionary24(cmsInt32Number Pass,  cmsHPROFILE hProfile)
         cmsMLUsetWide(DbgThread(), DisplayName, "fr", "FR", L"Bonjour, le monde");
         cmsMLUsetWide(DbgThread(), DisplayName, "ca", "CA", L"Hola, mon");
 
-        cmsDictAddEntry(DbgThread(), hDict, L"Name",  L"String", DisplayName, NULL);
+        cmsDictAddEntry(DbgThread(), hDict, L"Name", L"String", DisplayName, ((void*)0));
         cmsMLUfree(DbgThread(), DisplayName);
 
-        cmsDictAddEntry(DbgThread(), hDict, L"Name2", L"12",    NULL, NULL);
+        cmsDictAddEntry(DbgThread(), hDict, L"Name2", L"12", ((void*)0), ((void*)0));
         if (!cmsWriteTag(DbgThread(), hProfile, cmsSigMetaTag, hDict)) return 0;
         cmsDictFree(DbgThread(), hDict);
 
@@ -71,14 +71,14 @@ cmsInt32Number CheckDictionary24(cmsInt32Number Pass,  cmsHPROFILE hProfile)
     case 2:
 
         hDict = cmsReadTag(DbgThread(), hProfile, cmsSigMetaTag);
-        if (hDict == NULL) return 0;
+        if (hDict == ((void*)0)) return 0;
 
         e = cmsDictGetEntryList(DbgThread(), hDict);
         if (memcmp(e ->Name, L"Name2", sizeof(wchar_t) * 5) != 0) return 0;
-        if (memcmp(e ->Value, L"12",  sizeof(wchar_t) * 2) != 0) return 0;
+        if (memcmp(e ->Value, L"12", sizeof(wchar_t) * 2) != 0) return 0;
         e = cmsDictNextEntry(DbgThread(), e);
         if (memcmp(e ->Name, L"Name", sizeof(wchar_t) * 4) != 0) return 0;
-        if (memcmp(e ->Value, L"String",  sizeof(wchar_t) * 5) != 0) return 0;
+        if (memcmp(e ->Value, L"String", sizeof(wchar_t) * 5) != 0) return 0;
 
         cmsMLUgetASCII(DbgThread(), e->DisplayName, "en", "US", Buffer, 256);
         if (strcmp(Buffer, "Hello, world") != 0) rc = 0;

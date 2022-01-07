@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- size_t fread (int /*<<< orphan*/ *,int,size_t const,int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ * const,long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ftell (int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/ * malloc (size_t const) ; 
- int /*<<< orphan*/  rewind (int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int u8 ;
+typedef int FILE ;
+
+
+ int SEEK_END ;
+ int exit (int) ;
+ int fclose (int * const) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int ,char*,char const*) ;
+ size_t fread (int *,int,size_t const,int * const) ;
+ int fseek (int * const,long,int ) ;
+ int ftell (int * const) ;
+ int * malloc (size_t const) ;
+ int rewind (int * const) ;
+ int stderr ;
 
 __attribute__((used)) static size_t read_file(const char *path, u8 **ptr)
 {
@@ -45,7 +45,7 @@ __attribute__((used)) static size_t read_file(const char *path, u8 **ptr)
     }
 
     size_t const read = fread(*ptr, 1, size, f);
-    if (read != size) {  /* must read everything in one pass */
+    if (read != size) {
         fprintf(stderr, "error while reading file %s \n", path);
         exit(1);
     }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  services_discovery_t ;
-typedef  int /*<<< orphan*/  LIBMTP_raw_device_t ;
 
-/* Variables and functions */
- scalar_t__ AddDevice (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CloseDevice (int /*<<< orphan*/ *) ; 
- int LIBMTP_Detect_Raw_Devices (int /*<<< orphan*/ **,int*) ; 
- scalar_t__ VLC_SUCCESS ; 
- int /*<<< orphan*/  VLC_TICK_FROM_MS (int) ; 
- int /*<<< orphan*/  VLC_TICK_FROM_SEC (int) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  msg_Info (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  vlc_restorecancel (int) ; 
- int vlc_savecancel () ; 
- int /*<<< orphan*/  vlc_tick_sleep (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int services_discovery_t ;
+typedef int LIBMTP_raw_device_t ;
+
+
+ scalar_t__ AddDevice (int *,int *) ;
+ int CloseDevice (int *) ;
+ int LIBMTP_Detect_Raw_Devices (int **,int*) ;
+ scalar_t__ VLC_SUCCESS ;
+ int VLC_TICK_FROM_MS (int) ;
+ int VLC_TICK_FROM_SEC (int) ;
+ int free (int *) ;
+ int msg_Dbg (int *,char*) ;
+ int msg_Info (int *,char*) ;
+ int vlc_restorecancel (int) ;
+ int vlc_savecancel () ;
+ int vlc_tick_sleep (int ) ;
 
 __attribute__((used)) static void *Run( void *data )
 {
@@ -39,10 +39,10 @@ __attribute__((used)) static void *Run( void *data )
     {
         int canc = vlc_savecancel();
         i_ret = LIBMTP_Detect_Raw_Devices( &p_rawdevices, &i_numrawdevices );
-        if ( i_ret == 0 && i_numrawdevices > 0 && p_rawdevices != NULL &&
+        if ( i_ret == 0 && i_numrawdevices > 0 && p_rawdevices != ((void*)0) &&
              i_status == 0 )
         {
-            /* Found a new device, add it */
+
             msg_Dbg( p_sd, "New device found" );
             if( AddDevice( p_sd, &p_rawdevices[0] ) == VLC_SUCCESS )
                 i_status = 1;
@@ -51,10 +51,10 @@ __attribute__((used)) static void *Run( void *data )
         }
         else
         {
-            if ( ( i_ret != 0 || i_numrawdevices == 0 || p_rawdevices == NULL )
+            if ( ( i_ret != 0 || i_numrawdevices == 0 || p_rawdevices == ((void*)0) )
                  && i_status == 1)
             {
-                /* The device is not connected anymore, delete it */
+
                 msg_Info( p_sd, "Device disconnected" );
                 CloseDevice( p_sd );
                 i_status = 0;
@@ -70,5 +70,5 @@ __attribute__((used)) static void *Run( void *data )
         else
             vlc_tick_sleep( VLC_TICK_FROM_MS(500) );
     }
-    return NULL;
+    return ((void*)0);
 }

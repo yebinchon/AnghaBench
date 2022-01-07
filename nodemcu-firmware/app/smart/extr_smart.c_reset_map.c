@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int cur_base_seq; void** flag; int /*<<< orphan*/  addr; scalar_t__ pwd_len; scalar_t__ ssid_len; scalar_t__ base_seq_valid; int /*<<< orphan*/  base_len; int /*<<< orphan*/  addr_len; scalar_t__ flag_match_num; } ;
-typedef  TYPE_1__ smart_addr_map ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADDR_MATCH_LENGTH ; 
- int /*<<< orphan*/  BASE_LENGTH ; 
- void* SEP_1 ; 
- int SEP_1_INDEX ; 
- void* SEP_2 ; 
- void* SSID_FLAG ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int cur_base_seq; void** flag; int addr; scalar_t__ pwd_len; scalar_t__ ssid_len; scalar_t__ base_seq_valid; int base_len; int addr_len; scalar_t__ flag_match_num; } ;
+typedef TYPE_1__ smart_addr_map ;
+
+
+ int ADDR_MATCH_LENGTH ;
+ int BASE_LENGTH ;
+ void* SEP_1 ;
+ int SEP_1_INDEX ;
+ void* SEP_2 ;
+ void* SSID_FLAG ;
+ int memset (int ,int ,int ) ;
 
 void reset_map(smart_addr_map **am, size_t num){
   int i;
@@ -42,7 +42,7 @@ void reset_map(smart_addr_map **am, size_t num){
     }
     if(SEP_1_INDEX==2){
       am[i]->flag[0] = SSID_FLAG;
-      am[i]->flag[1] = 0; // skip this flag
+      am[i]->flag[1] = 0;
       am[i]->flag[2] = SEP_1;
       am[i]->flag[3] = SEP_2;
     }

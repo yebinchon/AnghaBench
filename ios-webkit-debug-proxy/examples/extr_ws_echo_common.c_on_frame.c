@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* ws_t ;
-typedef  int /*<<< orphan*/  ws_status ;
-typedef  int uint8_t ;
-struct TYPE_7__ {int /*<<< orphan*/  (* send_frame ) (TYPE_1__*,int,int,int,char const*,size_t) ;int /*<<< orphan*/  (* send_close ) (TYPE_1__*,int /*<<< orphan*/ ,char*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOSE_NORMAL ; 
- int /*<<< orphan*/  CLOSE_PROTOCOL_ERROR ; 
-#define  OPCODE_BINARY 132 
-#define  OPCODE_CLOSE 131 
-#define  OPCODE_PING 130 
-#define  OPCODE_PONG 129 
-#define  OPCODE_TEXT 128 
- int /*<<< orphan*/  WS_ERROR ; 
- int /*<<< orphan*/  WS_SUCCESS ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stub2 (TYPE_1__*,int,int,int,char const*,size_t) ; 
- int /*<<< orphan*/  stub3 (TYPE_1__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stub4 (TYPE_1__*,int,int,int,char const*,size_t) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef TYPE_1__* ws_t ;
+typedef int ws_status ;
+typedef int uint8_t ;
+struct TYPE_7__ {int (* send_frame ) (TYPE_1__*,int,int,int,char const*,size_t) ;int (* send_close ) (TYPE_1__*,int ,char*) ;} ;
+
+
+ int CLOSE_NORMAL ;
+ int CLOSE_PROTOCOL_ERROR ;
+
+
+
+
+
+ int WS_ERROR ;
+ int WS_SUCCESS ;
+ int stub1 (TYPE_1__*,int ,char*) ;
+ int stub2 (TYPE_1__*,int,int,int,char const*,size_t) ;
+ int stub3 (TYPE_1__*,int ,char*) ;
+ int stub4 (TYPE_1__*,int,int,int,char const*,size_t) ;
 
 ws_status on_frame(ws_t ws,
     bool is_fin, uint8_t opcode, bool is_masking,
     const char *payload_data, size_t payload_length,
     bool *to_keep) {
   switch (opcode) {
-    case OPCODE_TEXT:
-    case OPCODE_BINARY:
+    case 128:
+    case 132:
       if (!is_fin) {
-        // wait for full data
-        *to_keep = true;
+
+        *to_keep = 1;
         return WS_SUCCESS;
       }
       if (!is_masking) {
         return ws->send_close(ws, CLOSE_PROTOCOL_ERROR,
             "Clients must mask");
       }
-      // echo
+
       return ws->send_frame(ws,
-          true, opcode, false,
+          1, opcode, 0,
           payload_data, payload_length);
 
-    case OPCODE_CLOSE:
-      // ack close
-      return ws->send_close(ws, CLOSE_NORMAL, NULL);
+    case 131:
 
-    case OPCODE_PING:
-      // ack ping
+      return ws->send_close(ws, CLOSE_NORMAL, ((void*)0));
+
+    case 130:
+
       return ws->send_frame(ws,
-          true, OPCODE_PONG, false,
+          1, 129, 0,
           payload_data, payload_length);
 
-    case OPCODE_PONG:
+    case 129:
       return WS_SUCCESS;
 
     default:

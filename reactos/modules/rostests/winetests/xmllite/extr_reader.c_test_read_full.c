@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct nodes_test {TYPE_1__* nodes; int /*<<< orphan*/  xml; } ;
-struct TYPE_2__ {scalar_t__ type; int /*<<< orphan*/  value; } ;
-typedef  int /*<<< orphan*/  IXmlReader ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ CreateXmlReader (int /*<<< orphan*/ *,void**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IXmlReader ; 
- int /*<<< orphan*/  IXmlReader_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- scalar_t__ XmlNodeType_None ; 
- struct nodes_test misc_test ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  read_node (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  reader_value (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_input_string (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct nodes_test {TYPE_1__* nodes; int xml; } ;
+struct TYPE_2__ {scalar_t__ type; int value; } ;
+typedef int IXmlReader ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ CreateXmlReader (int *,void**,int *) ;
+ int IID_IXmlReader ;
+ int IXmlReader_Release (int *) ;
+ scalar_t__ S_OK ;
+ scalar_t__ XmlNodeType_None ;
+ struct nodes_test misc_test ;
+ int ok (int,char*,scalar_t__) ;
+ int read_node (int *,scalar_t__) ;
+ int reader_value (int *,int ) ;
+ int set_input_string (int *,int ) ;
 
 __attribute__((used)) static void test_read_full(void)
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static void test_read_full(void)
     HRESULT hr;
     int i;
 
-    hr = CreateXmlReader(&IID_IXmlReader, (void**)&reader, NULL);
+    hr = CreateXmlReader(&IID_IXmlReader, (void**)&reader, ((void*)0));
     ok(hr == S_OK, "S_OK, got %08x\n", hr);
 
     set_input_string(reader, test->xml);

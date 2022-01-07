@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct objdump_disasm_info {int /*<<< orphan*/  sec; int /*<<< orphan*/  abfd; TYPE_1__* reloc; } ;
-struct disassemble_info {scalar_t__ application_data; int /*<<< orphan*/  stream; int /*<<< orphan*/  (* fprintf_func ) (int /*<<< orphan*/ ,char*) ;} ;
-typedef  int /*<<< orphan*/  bfd_vma ;
-typedef  int /*<<< orphan*/  bfd_boolean ;
-typedef  int /*<<< orphan*/  asymbol ;
-struct TYPE_2__ {int /*<<< orphan*/ ** sym_ptr_ptr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ bfd_asymbol_value (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bfd_get_section (int /*<<< orphan*/ *) ; 
- scalar_t__ bfd_is_und_section (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * find_symbol_for_address (int /*<<< orphan*/ ,struct disassemble_info*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  objdump_print_addr_with_sym (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct disassemble_info*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  objdump_print_value (int /*<<< orphan*/ ,struct disassemble_info*,int /*<<< orphan*/ ) ; 
- int sorted_symcount ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct objdump_disasm_info {int sec; int abfd; TYPE_1__* reloc; } ;
+struct disassemble_info {scalar_t__ application_data; int stream; int (* fprintf_func ) (int ,char*) ;} ;
+typedef int bfd_vma ;
+typedef int bfd_boolean ;
+typedef int asymbol ;
+struct TYPE_2__ {int ** sym_ptr_ptr; } ;
+
+
+ int FALSE ;
+ int TRUE ;
+ scalar_t__ bfd_asymbol_value (int *) ;
+ int bfd_get_section (int *) ;
+ scalar_t__ bfd_is_und_section (int ) ;
+ int * find_symbol_for_address (int ,struct disassemble_info*,int *) ;
+ int objdump_print_addr_with_sym (int ,int ,int *,int ,struct disassemble_info*,int ) ;
+ int objdump_print_value (int ,struct disassemble_info*,int ) ;
+ int sorted_symcount ;
+ int stub1 (int ,char*) ;
 
 __attribute__((used)) static void
 objdump_print_addr (bfd_vma vma,
-		    struct disassemble_info *info,
-		    bfd_boolean skip_zeroes)
+      struct disassemble_info *info,
+      bfd_boolean skip_zeroes)
 {
   struct objdump_disasm_info *aux;
-  asymbol *sym = NULL; /* Initialize to avoid compiler warning.  */
+  asymbol *sym = ((void*)0);
   bfd_boolean skip_find = FALSE;
 
   if (sorted_symcount < 1)
@@ -48,22 +48,22 @@ objdump_print_addr (bfd_vma vma,
 
   aux = (struct objdump_disasm_info *) info->application_data;
 
-  if (aux->reloc != NULL
-      && aux->reloc->sym_ptr_ptr != NULL
-      && * aux->reloc->sym_ptr_ptr != NULL)
+  if (aux->reloc != ((void*)0)
+      && aux->reloc->sym_ptr_ptr != ((void*)0)
+      && * aux->reloc->sym_ptr_ptr != ((void*)0))
     {
       sym = * aux->reloc->sym_ptr_ptr;
 
-      /* Adjust the vma to the reloc.  */
+
       vma += bfd_asymbol_value (sym);
 
       if (bfd_is_und_section (bfd_get_section (sym)))
-	skip_find = TRUE;
+ skip_find = TRUE;
     }
 
   if (!skip_find)
-    sym = find_symbol_for_address (vma, info, NULL);
+    sym = find_symbol_for_address (vma, info, ((void*)0));
 
   objdump_print_addr_with_sym (aux->abfd, aux->sec, sym, vma, info,
-			       skip_zeroes);
+          skip_zeroes);
 }

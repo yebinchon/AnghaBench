@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_5__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_20__ TYPE_5__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
 struct TYPE_20__ {scalar_t__ data; } ;
-struct TYPE_19__ {void* hw_frames_ctx; int /*<<< orphan*/  format; } ;
-struct TYPE_18__ {TYPE_2__* internal; int /*<<< orphan*/  pool; int /*<<< orphan*/  format; } ;
-struct TYPE_17__ {TYPE_1__* hw_type; int /*<<< orphan*/  source_allocation_map_flags; TYPE_5__* source_frames; } ;
+struct TYPE_19__ {void* hw_frames_ctx; int format; } ;
+struct TYPE_18__ {TYPE_2__* internal; int pool; int format; } ;
+struct TYPE_17__ {TYPE_1__* hw_type; int source_allocation_map_flags; TYPE_5__* source_frames; } ;
 struct TYPE_16__ {int (* frames_get_buffer ) (TYPE_3__*,TYPE_4__*) ;} ;
-typedef  TYPE_3__ AVHWFramesContext ;
-typedef  TYPE_4__ AVFrame ;
-typedef  TYPE_5__ AVBufferRef ;
+typedef TYPE_3__ AVHWFramesContext ;
+typedef TYPE_4__ AVFrame ;
+typedef TYPE_5__ AVBufferRef ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  ENOSYS ; 
- void* av_buffer_ref (TYPE_5__*) ; 
- int /*<<< orphan*/  av_buffer_unref (void**) ; 
- TYPE_4__* av_frame_alloc () ; 
- int /*<<< orphan*/  av_frame_free (TYPE_4__**) ; 
- int av_hwframe_map (TYPE_4__*,TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,int) ; 
- int stub1 (TYPE_3__*,TYPE_4__*) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int ENOMEM ;
+ int ENOSYS ;
+ void* av_buffer_ref (TYPE_5__*) ;
+ int av_buffer_unref (void**) ;
+ TYPE_4__* av_frame_alloc () ;
+ int av_frame_free (TYPE_4__**) ;
+ int av_hwframe_map (TYPE_4__*,TYPE_4__*,int ) ;
+ int av_log (TYPE_3__*,int ,char*,int) ;
+ int stub1 (TYPE_3__*,TYPE_4__*) ;
 
 int av_hwframe_get_buffer(AVBufferRef *hwframe_ref, AVFrame *frame, int flags)
 {
@@ -44,8 +44,8 @@ int av_hwframe_get_buffer(AVBufferRef *hwframe_ref, AVFrame *frame, int flags)
     int ret;
 
     if (ctx->internal->source_frames) {
-        // This is a derived frame context, so we allocate in the source
-        // and map the frame immediately.
+
+
         AVFrame *src_frame;
 
         frame->format = ctx->format;
@@ -73,8 +73,8 @@ int av_hwframe_get_buffer(AVBufferRef *hwframe_ref, AVFrame *frame, int flags)
             return ret;
         }
 
-        // Free the source frame immediately - the mapped frame still
-        // contains a reference to it.
+
+
         av_frame_free(&src_frame);
 
         return 0;

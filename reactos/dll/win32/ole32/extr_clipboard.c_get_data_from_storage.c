@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  med ;
-struct TYPE_13__ {int /*<<< orphan*/  tymed; } ;
-struct TYPE_11__ {int /*<<< orphan*/ * pstg; } ;
-struct TYPE_12__ {TYPE_1__ u; int /*<<< orphan*/ * pUnkForRelease; int /*<<< orphan*/  tymed; } ;
-typedef  TYPE_2__ STGMEDIUM ;
-typedef  int /*<<< orphan*/  IStorage ;
-typedef  int /*<<< orphan*/  ILockBytes ;
-typedef  int /*<<< orphan*/  IDataObject ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/ * HGLOBAL ;
-typedef  TYPE_3__ FORMATETC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateILockBytesOnHGlobal (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int GMEM_DDESHARE ; 
- int GMEM_MOVEABLE ; 
- int /*<<< orphan*/ * GlobalAlloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GlobalFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDataObject_GetData (int /*<<< orphan*/ *,TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  IDataObject_GetDataHere (int /*<<< orphan*/ *,TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  ILockBytes_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStorage_CopyTo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStorage_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseStgMedium (TYPE_2__*) ; 
- int STGM_CREATE ; 
- int STGM_READWRITE ; 
- int STGM_SHARE_EXCLUSIVE ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StgCreateDocfileOnILockBytes (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  TYMED_ISTORAGE ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int med ;
+struct TYPE_13__ {int tymed; } ;
+struct TYPE_11__ {int * pstg; } ;
+struct TYPE_12__ {TYPE_1__ u; int * pUnkForRelease; int tymed; } ;
+typedef TYPE_2__ STGMEDIUM ;
+typedef int IStorage ;
+typedef int ILockBytes ;
+typedef int IDataObject ;
+typedef int HRESULT ;
+typedef int * HGLOBAL ;
+typedef TYPE_3__ FORMATETC ;
+
+
+ int CreateILockBytesOnHGlobal (int *,int ,int **) ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int GMEM_DDESHARE ;
+ int GMEM_MOVEABLE ;
+ int * GlobalAlloc (int,int ) ;
+ int GlobalFree (int *) ;
+ int IDataObject_GetData (int *,TYPE_3__*,TYPE_2__*) ;
+ int IDataObject_GetDataHere (int *,TYPE_3__*,TYPE_2__*) ;
+ int ILockBytes_Release (int *) ;
+ int IStorage_CopyTo (int *,int ,int *,int *,int *) ;
+ int IStorage_Release (int *) ;
+ int ReleaseStgMedium (TYPE_2__*) ;
+ int STGM_CREATE ;
+ int STGM_READWRITE ;
+ int STGM_SHARE_EXCLUSIVE ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int StgCreateDocfileOnILockBytes (int *,int,int ,int **) ;
+ int TYMED_ISTORAGE ;
+ int memset (TYPE_2__*,int ,int) ;
 
 __attribute__((used)) static HRESULT get_data_from_storage(IDataObject *data, FORMATETC *fmt, HGLOBAL *mem)
 {
@@ -57,7 +57,7 @@ __attribute__((used)) static HRESULT get_data_from_storage(IDataObject *data, FO
     STGMEDIUM med;
     ILockBytes *lbs;
 
-    *mem = NULL;
+    *mem = ((void*)0);
 
     h = GlobalAlloc( GMEM_DDESHARE|GMEM_MOVEABLE, 0 );
     if(!h) return E_OUTOFMEMORY;
@@ -77,7 +77,7 @@ __attribute__((used)) static HRESULT get_data_from_storage(IDataObject *data, FO
     stg_fmt = *fmt;
     med.tymed = stg_fmt.tymed = TYMED_ISTORAGE;
     med.u.pstg = stg;
-    med.pUnkForRelease = NULL;
+    med.pUnkForRelease = ((void*)0);
 
     hr = IDataObject_GetDataHere(data, &stg_fmt, &med);
     if(FAILED(hr))
@@ -86,7 +86,7 @@ __attribute__((used)) static HRESULT get_data_from_storage(IDataObject *data, FO
         hr = IDataObject_GetData(data, &stg_fmt, &med);
         if(FAILED(hr)) goto end;
 
-        hr = IStorage_CopyTo(med.u.pstg, 0, NULL, NULL, stg);
+        hr = IStorage_CopyTo(med.u.pstg, 0, ((void*)0), ((void*)0), stg);
         ReleaseStgMedium(&med);
         if(FAILED(hr)) goto end;
     }

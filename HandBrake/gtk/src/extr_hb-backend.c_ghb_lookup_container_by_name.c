@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int format; } ;
-typedef  TYPE_1__ hb_container_t ;
-typedef  int /*<<< orphan*/  gchar ;
+typedef TYPE_1__ hb_container_t ;
+typedef int gchar ;
 
-/* Variables and functions */
- int hb_container_get_from_name (int /*<<< orphan*/  const*) ; 
- TYPE_1__* hb_container_get_next (TYPE_1__ const*) ; 
+
+ int hb_container_get_from_name (int const*) ;
+ TYPE_1__* hb_container_get_next (TYPE_1__ const*) ;
 
 const hb_container_t*
 ghb_lookup_container_by_name(const gchar *name)
 {
-    // First find an enabled muxer
+
     int format = hb_container_get_from_name(name);
 
-    // Now find the matching muxer info
+
     const hb_container_t *mux, *first;
-    for (first = mux = hb_container_get_next(NULL); mux != NULL;
+    for (first = mux = hb_container_get_next(((void*)0)); mux != ((void*)0);
          mux = hb_container_get_next(mux))
     {
         if (format == mux->format)
@@ -35,6 +35,6 @@ ghb_lookup_container_by_name(const gchar *name)
             return mux;
         }
     }
-    // Return a default container if nothing matches
+
     return first;
 }

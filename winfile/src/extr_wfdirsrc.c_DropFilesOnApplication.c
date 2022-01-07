@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPARAM ;
-typedef  int WORD ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  int /*<<< orphan*/  POINT ;
-typedef  int /*<<< orphan*/  LPTSTR ;
-typedef  int /*<<< orphan*/ * HWND ;
-typedef  scalar_t__ HANDLE ;
 
-/* Variables and functions */
- scalar_t__ CreateDropFiles (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetClientRect (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetCursorPos (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PostMessage (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,long) ; 
- int /*<<< orphan*/  PtInRect (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ScreenToClient (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WM_DROPFILES ; 
- int /*<<< orphan*/ * hwndGlobalSink ; 
+
+
+
+typedef int WPARAM ;
+typedef int WORD ;
+typedef int RECT ;
+typedef int POINT ;
+typedef int LPTSTR ;
+typedef int * HWND ;
+typedef scalar_t__ HANDLE ;
+
+
+ scalar_t__ CreateDropFiles (int ,int,int ) ;
+ int GetClientRect (int *,int *) ;
+ int GetCursorPos (int *) ;
+ int PostMessage (int *,int ,int ,long) ;
+ int PtInRect (int *,int ) ;
+ int ScreenToClient (int *,int *) ;
+ int WM_DROPFILES ;
+ int * hwndGlobalSink ;
 
 WORD
 DropFilesOnApplication(LPTSTR pszFiles)
@@ -39,14 +39,14 @@ DropFilesOnApplication(LPTSTR pszFiles)
     if (!(hwnd = hwndGlobalSink))
         return 0;
 
-    hwndGlobalSink = NULL;
+    hwndGlobalSink = ((void*)0);
 
     GetCursorPos(&pt);
     GetClientRect(hwnd,&rc);
     ScreenToClient(hwnd,&pt);
 
     hDrop = CreateDropFiles(pt, !PtInRect(&rc,pt), pszFiles);
-        
+
     if (!hDrop)
         return 0;
 

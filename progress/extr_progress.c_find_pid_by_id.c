@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ssize_t ;
-struct TYPE_3__ {int pid; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ pidinfo_t ;
-typedef  int pid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAXPATHLEN ; 
- char* PROC_PATH ; 
- int /*<<< orphan*/  basename (char*) ; 
- int readlink (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (char*,int /*<<< orphan*/ ,char*,char*,int) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ssize_t ;
+struct TYPE_3__ {int pid; int name; } ;
+typedef TYPE_1__ pidinfo_t ;
+typedef int pid_t ;
+
+
+ int MAXPATHLEN ;
+ char* PROC_PATH ;
+ int basename (char*) ;
+ int readlink (char*,char*,int ) ;
+ int snprintf (char*,int ,char*,char*,int) ;
+ int strcpy (int ,int ) ;
 
 int find_pid_by_id(pid_t pid, pidinfo_t *pid_list)
 {

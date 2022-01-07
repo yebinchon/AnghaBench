@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct net_device {int /*<<< orphan*/  base_addr; } ;
-struct ethtool_drvinfo {int /*<<< orphan*/  bus_info; int /*<<< orphan*/  version; int /*<<< orphan*/  driver; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DRV_NAME ; 
- int /*<<< orphan*/  DRV_VERSION ; 
- int /*<<< orphan*/  sprintf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct net_device {int base_addr; } ;
+struct ethtool_drvinfo {int bus_info; int version; int driver; } ;
+
+
+ int DRV_NAME ;
+ int DRV_VERSION ;
+ int sprintf (int ,char*,int ) ;
+ int strcpy (int ,int ) ;
 
 __attribute__((used)) static void eepro_ethtool_get_drvinfo(struct net_device *dev,
-					struct ethtool_drvinfo *drvinfo)
+     struct ethtool_drvinfo *drvinfo)
 {
-	strcpy(drvinfo->driver, DRV_NAME);
-	strcpy(drvinfo->version, DRV_VERSION);
-	sprintf(drvinfo->bus_info, "ISA 0x%lx", dev->base_addr);
+ strcpy(drvinfo->driver, DRV_NAME);
+ strcpy(drvinfo->version, DRV_VERSION);
+ sprintf(drvinfo->bus_info, "ISA 0x%lx", dev->base_addr);
 }

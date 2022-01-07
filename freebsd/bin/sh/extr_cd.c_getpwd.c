@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* curdir ; 
- char* getpwd2 () ; 
- char* savestr (char*) ; 
+ char* curdir ;
+ char* getpwd2 () ;
+ char* savestr (char*) ;
 
 __attribute__((used)) static char *
 getpwd(void)
 {
-	char *p;
+ char *p;
 
-	if (curdir)
-		return curdir;
+ if (curdir)
+  return curdir;
 
-	p = getpwd2();
-	if (p != NULL)
-		curdir = savestr(p);
+ p = getpwd2();
+ if (p != ((void*)0))
+  curdir = savestr(p);
 
-	return curdir;
+ return curdir;
 }

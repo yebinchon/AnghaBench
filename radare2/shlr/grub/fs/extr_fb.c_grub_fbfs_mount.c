@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct grub_fb_data {char* fb_list; int ofs; int pri_size; } ;
 struct fb_mbr {scalar_t__ fb_magic; int end_magic; int lba; int boot_base; } ;
 struct fb_data {int boot_size; int pri_size; scalar_t__ ver_major; scalar_t__ ver_minor; int list_used; } ;
-typedef  scalar_t__ grub_uint32_t ;
-typedef  int /*<<< orphan*/  grub_disk_t ;
-typedef  int /*<<< orphan*/  buf ;
+typedef scalar_t__ grub_uint32_t ;
+typedef int grub_disk_t ;
+typedef int buf ;
 
-/* Variables and functions */
- scalar_t__ FB_AR_MAGIC_LONG ; 
- scalar_t__ FB_MAGIC_LONG ; 
- scalar_t__ FB_VER_MAJOR ; 
- scalar_t__ FB_VER_MINOR ; 
- int /*<<< orphan*/  GRUB_ERR_BAD_FS ; 
- scalar_t__ grub_disk_read (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  grub_error (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  grub_free (struct grub_fb_data*) ; 
- struct grub_fb_data* grub_malloc (int) ; 
- int /*<<< orphan*/  grub_memcpy (char*,char*,int) ; 
+
+ scalar_t__ FB_AR_MAGIC_LONG ;
+ scalar_t__ FB_MAGIC_LONG ;
+ scalar_t__ FB_VER_MAJOR ;
+ scalar_t__ FB_VER_MINOR ;
+ int GRUB_ERR_BAD_FS ;
+ scalar_t__ grub_disk_read (int ,int,int ,int,char*) ;
+ int grub_error (int ,char*) ;
+ int grub_free (struct grub_fb_data*) ;
+ struct grub_fb_data* grub_malloc (int) ;
+ int grub_memcpy (char*,char*,int) ;
 
 __attribute__((used)) static struct grub_fb_data *
 grub_fbfs_mount (grub_disk_t disk)
@@ -56,13 +56,13 @@ grub_fbfs_mount (grub_disk_t disk)
   else
     {
       if ((m->fb_magic != FB_MAGIC_LONG) || (m->end_magic != 0xaa55))
-	goto fail;
+ goto fail;
 
       ofs = m->lba;
       boot_base = m->boot_base;
 
       if (grub_disk_read (disk, boot_base + 1 - ofs, 0, sizeof (buf), buf))
-	goto fail;
+ goto fail;
 
       boot_size = d->boot_size;
       pri_size = d->pri_size;
@@ -78,7 +78,7 @@ grub_fbfs_mount (grub_disk_t disk)
 
   fb_list = data->fb_list;
   if (grub_disk_read (disk, boot_base + 1 + boot_size - ofs, 0,
-		      (list_used << 9), fb_list))
+        (list_used << 9), fb_list))
     {
       grub_free (data);
       goto fail;

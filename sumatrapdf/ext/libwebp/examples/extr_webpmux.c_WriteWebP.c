@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ WebPMuxError ;
-typedef  int /*<<< orphan*/  WebPMux ;
-typedef  int /*<<< orphan*/  WebPData ;
 
-/* Variables and functions */
- char* ErrorString (scalar_t__ const) ; 
- scalar_t__ const WEBP_MUX_OK ; 
- int /*<<< orphan*/  WebPDataClear (int /*<<< orphan*/ *) ; 
- scalar_t__ WebPMuxAssemble (int /*<<< orphan*/ * const,int /*<<< orphan*/ *) ; 
- int WriteData (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef scalar_t__ WebPMuxError ;
+typedef int WebPMux ;
+typedef int WebPData ;
+
+
+ char* ErrorString (scalar_t__ const) ;
+ scalar_t__ const WEBP_MUX_OK ;
+ int WebPDataClear (int *) ;
+ scalar_t__ WebPMuxAssemble (int * const,int *) ;
+ int WriteData (char const*,int *) ;
+ int fprintf (int ,char*,char*) ;
+ int stderr ;
 
 __attribute__((used)) static int WriteWebP(WebPMux* const mux, const char* filename) {
   int ok;

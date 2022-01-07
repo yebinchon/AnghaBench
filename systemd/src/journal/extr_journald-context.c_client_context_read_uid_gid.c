@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct ucred {int /*<<< orphan*/  gid; int /*<<< orphan*/  uid; } ;
-struct TYPE_5__ {int /*<<< orphan*/  gid; int /*<<< orphan*/  pid; int /*<<< orphan*/  uid; } ;
-typedef  TYPE_1__ ClientContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  get_process_gid (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_process_uid (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ gid_is_valid (int /*<<< orphan*/ ) ; 
- TYPE_1__* pid_is_valid (int /*<<< orphan*/ ) ; 
- scalar_t__ uid_is_valid (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct ucred {int gid; int uid; } ;
+struct TYPE_5__ {int gid; int pid; int uid; } ;
+typedef TYPE_1__ ClientContext ;
+
+
+ int assert (TYPE_1__*) ;
+ int get_process_gid (int ,int *) ;
+ int get_process_uid (int ,int *) ;
+ scalar_t__ gid_is_valid (int ) ;
+ TYPE_1__* pid_is_valid (int ) ;
+ scalar_t__ uid_is_valid (int ) ;
 
 __attribute__((used)) static void client_context_read_uid_gid(ClientContext *c, const struct ucred *ucred) {
         assert(c);
         assert(pid_is_valid(c->pid));
 
-        /* The ucred data passed in is always the most current and accurate, if we have any. Use it. */
+
         if (ucred && uid_is_valid(ucred->uid))
                 c->uid = ucred->uid;
         else

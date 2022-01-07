@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct timeval {int /*<<< orphan*/  tv_usec; scalar_t__ tv_sec; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct timeval {int tv_usec; scalar_t__ tv_sec; } ;
 struct TYPE_2__ {int fd; } ;
 struct radius {TYPE_1__ cx; } ;
-typedef  int /*<<< orphan*/  fd_set ;
+typedef int fd_set ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FD_SET (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TICKUNIT ; 
- int /*<<< orphan*/  radius_Continue (struct radius*,int) ; 
- int /*<<< orphan*/  select (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
+
+ int FD_SET (int,int *) ;
+ int FD_ZERO (int *) ;
+ int TICKUNIT ;
+ int radius_Continue (struct radius*,int) ;
+ int select (int,int *,int *,int *,struct timeval*) ;
 
 void
 radius_Flush(struct radius *r)
@@ -34,7 +34,7 @@ radius_Flush(struct radius *r)
     FD_SET(r->cx.fd, &s);
     tv.tv_sec = 0;
     tv.tv_usec = TICKUNIT;
-    select(r->cx.fd + 1, &s, NULL, NULL, &tv);
+    select(r->cx.fd + 1, &s, ((void*)0), ((void*)0), &tv);
     radius_Continue(r, 1);
   }
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  symbolS ;
-struct TYPE_3__ {scalar_t__ X_add_number; int /*<<< orphan*/ * X_op_symbol; int /*<<< orphan*/ * X_add_symbol; void* X_op; } ;
-typedef  TYPE_1__ expressionS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DW_LNE_end_sequence ; 
- int /*<<< orphan*/  DW_LNS_advance_line ; 
- int /*<<< orphan*/  DW_LNS_copy ; 
- int /*<<< orphan*/  DW_LNS_extended_op ; 
- int /*<<< orphan*/  DW_LNS_fixed_advance_pc ; 
- int INT_MAX ; 
- void* O_subtract ; 
- int /*<<< orphan*/  emit_expr (TYPE_1__*,int) ; 
- int /*<<< orphan*/  out_byte (int) ; 
- int /*<<< orphan*/  out_opcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  out_sleb128 (int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int symbolS ;
+struct TYPE_3__ {scalar_t__ X_add_number; int * X_op_symbol; int * X_add_symbol; void* X_op; } ;
+typedef TYPE_1__ expressionS ;
+
+
+ int DW_LNE_end_sequence ;
+ int DW_LNS_advance_line ;
+ int DW_LNS_copy ;
+ int DW_LNS_extended_op ;
+ int DW_LNS_fixed_advance_pc ;
+ int INT_MAX ;
+ void* O_subtract ;
+ int emit_expr (TYPE_1__*,int) ;
+ int out_byte (int) ;
+ int out_opcode (int ) ;
+ int out_sleb128 (int) ;
 
 __attribute__((used)) static void
 out_fixed_inc_line_addr (int line_delta, symbolS *to_sym, symbolS *from_sym)
 {
   expressionS expr;
 
-  /* INT_MAX is a signal that this is actually a DW_LNE_end_sequence.  */
+
   if (line_delta == INT_MAX)
     {
       out_opcode (DW_LNS_fixed_advance_pc);

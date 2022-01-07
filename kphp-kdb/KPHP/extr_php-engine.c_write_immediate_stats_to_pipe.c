@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  php_immediate_stats_t ;
 
-/* Variables and functions */
- int QSIZE ; 
- int RPC_PHP_IMMEDIATE_STATS ; 
- int /*<<< orphan*/  dl_passert (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dl_pstr (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  immediate_stats ; 
- int master_pipe_fast_write ; 
- int /*<<< orphan*/  memcpy (int*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  pipe_fast_packet_id ; 
- int /*<<< orphan*/  prepare_rpc_query_raw (int /*<<< orphan*/ ,int*,int) ; 
- scalar_t__ write (int,int*,size_t) ; 
+
+
+
+typedef int php_immediate_stats_t ;
+
+
+ int QSIZE ;
+ int RPC_PHP_IMMEDIATE_STATS ;
+ int dl_passert (int,int ) ;
+ int dl_pstr (char*,int ) ;
+ int errno ;
+ int immediate_stats ;
+ int master_pipe_fast_write ;
+ int memcpy (int*,int *,int) ;
+ int memset (int*,int ,size_t) ;
+ int pipe_fast_packet_id ;
+ int prepare_rpc_query_raw (int ,int*,int) ;
+ scalar_t__ write (int,int*,size_t) ;
 
 void write_immediate_stats_to_pipe() {
   if (master_pipe_fast_write != -1) {
-#define QSIZE (sizeof (php_immediate_stats_t) + 1 + sizeof (int) * 5 + 3) & -4
-    int q[QSIZE];
-    int qsize = QSIZE;
-#undef QSIZE
+
+    int q[(sizeof (php_immediate_stats_t) + 1 + sizeof (int) * 5 + 3) & -4];
+    int qsize = (sizeof (php_immediate_stats_t) + 1 + sizeof (int) * 5 + 3) & -4;
+
     memset (q, 0, (size_t)qsize);
 
     q[2] = RPC_PHP_IMMEDIATE_STATS;

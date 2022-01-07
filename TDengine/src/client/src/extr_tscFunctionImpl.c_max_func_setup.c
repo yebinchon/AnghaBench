@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int8_t ;
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  int /*<<< orphan*/  int32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
-struct TYPE_4__ {int /*<<< orphan*/  inputType; scalar_t__ aOutputBuf; } ;
-typedef  TYPE_1__ SQLFunctionCtx ;
 
-/* Variables and functions */
- double DBL_MIN ; 
- float FLT_MIN ; 
- int /*<<< orphan*/  GET_TRUE_DATA_TYPE () ; 
- int /*<<< orphan*/  INT16_MIN ; 
- int /*<<< orphan*/  INT32_MIN ; 
- int /*<<< orphan*/  INT64_MIN ; 
- int /*<<< orphan*/  INT8_MIN ; 
-#define  TSDB_DATA_TYPE_BIGINT 133 
-#define  TSDB_DATA_TYPE_DOUBLE 132 
-#define  TSDB_DATA_TYPE_FLOAT 131 
-#define  TSDB_DATA_TYPE_INT 130 
-#define  TSDB_DATA_TYPE_SMALLINT 129 
-#define  TSDB_DATA_TYPE_TINYINT 128 
- int /*<<< orphan*/  function_setup (TYPE_1__*) ; 
- int /*<<< orphan*/  pError (char*,int /*<<< orphan*/ ) ; 
- int type ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int int8_t ;
+typedef int int64_t ;
+typedef int int32_t ;
+typedef int int16_t ;
+struct TYPE_4__ {int inputType; scalar_t__ aOutputBuf; } ;
+typedef TYPE_1__ SQLFunctionCtx ;
+
+
+ double DBL_MIN ;
+ float FLT_MIN ;
+ int GET_TRUE_DATA_TYPE () ;
+ int INT16_MIN ;
+ int INT32_MIN ;
+ int INT64_MIN ;
+ int INT8_MIN ;
+
+
+
+
+
+
+ int function_setup (TYPE_1__*) ;
+ int pError (char*,int ) ;
+ int type ;
 
 __attribute__((used)) static bool max_func_setup(SQLFunctionCtx *pCtx) {
   if (!function_setup(pCtx)) {
-    return false;  // not initialized since it has been initialized
+    return 0;
   }
 
   GET_TRUE_DATA_TYPE();
 
   switch (type) {
-    case TSDB_DATA_TYPE_INT:
+    case 130:
       *((int32_t *)pCtx->aOutputBuf) = INT32_MIN;
       break;
-    case TSDB_DATA_TYPE_FLOAT:
+    case 131:
       *((float *)pCtx->aOutputBuf) = -FLT_MIN;
       break;
-    case TSDB_DATA_TYPE_DOUBLE:
+    case 132:
       *((double *)pCtx->aOutputBuf) = -DBL_MIN;
       break;
-    case TSDB_DATA_TYPE_BIGINT:
+    case 133:
       *((int64_t *)pCtx->aOutputBuf) = INT64_MIN;
       break;
-    case TSDB_DATA_TYPE_SMALLINT:
+    case 129:
       *((int16_t *)pCtx->aOutputBuf) = INT16_MIN;
       break;
-    case TSDB_DATA_TYPE_TINYINT:
+    case 128:
       *((int8_t *)pCtx->aOutputBuf) = INT8_MIN;
       break;
     default:
       pError("illegal data type:%d in min/max query", pCtx->inputType);
   }
 
-  return true;
+  return 1;
 }

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  i64 ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int i64 ;
 struct TYPE_14__ {scalar_t__ zContent; int nCol; scalar_t__* abUnindexed; scalar_t__ bColumnsize; } ;
 struct TYPE_10__ {scalar_t__ pVtab; } ;
 struct TYPE_13__ {int* aColumnSize; TYPE_1__ base; } ;
 struct TYPE_11__ {TYPE_5__* pConfig; } ;
-struct TYPE_12__ {int /*<<< orphan*/  pStorage; TYPE_2__ p; } ;
-typedef  TYPE_3__ Fts5FullTable ;
-typedef  TYPE_4__ Fts5Cursor ;
-typedef  int /*<<< orphan*/  Fts5Context ;
-typedef  TYPE_5__ Fts5Config ;
+struct TYPE_12__ {int pStorage; TYPE_2__ p; } ;
+typedef TYPE_3__ Fts5FullTable ;
+typedef TYPE_4__ Fts5Cursor ;
+typedef int Fts5Context ;
+typedef TYPE_5__ Fts5Config ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CsrFlagClear (TYPE_4__*,int /*<<< orphan*/ ) ; 
- scalar_t__ CsrFlagTest (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FTS5CSR_REQUIRE_DOCSIZE ; 
- int /*<<< orphan*/  FTS5_TOKENIZE_AUX ; 
- int SQLITE_OK ; 
- int SQLITE_RANGE ; 
- int fts5ApiColumnText (int /*<<< orphan*/ *,int,char const**,int*) ; 
- int /*<<< orphan*/  fts5ColumnSizeCb ; 
- int /*<<< orphan*/  fts5CursorRowid (TYPE_4__*) ; 
- int sqlite3Fts5StorageDocsize (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int sqlite3Fts5Tokenize (TYPE_5__*,int /*<<< orphan*/ ,char const*,int,void*,int /*<<< orphan*/ ) ; 
+
+ int CsrFlagClear (TYPE_4__*,int ) ;
+ scalar_t__ CsrFlagTest (TYPE_4__*,int ) ;
+ int FTS5CSR_REQUIRE_DOCSIZE ;
+ int FTS5_TOKENIZE_AUX ;
+ int SQLITE_OK ;
+ int SQLITE_RANGE ;
+ int fts5ApiColumnText (int *,int,char const**,int*) ;
+ int fts5ColumnSizeCb ;
+ int fts5CursorRowid (TYPE_4__*) ;
+ int sqlite3Fts5StorageDocsize (int ,int ,int*) ;
+ int sqlite3Fts5Tokenize (TYPE_5__*,int ,char const*,int,void*,int ) ;
 
 __attribute__((used)) static int fts5ApiColumnSize(Fts5Context *pCtx, int iCol, int *pnToken){
   Fts5Cursor *pCsr = (Fts5Cursor*)pCtx;

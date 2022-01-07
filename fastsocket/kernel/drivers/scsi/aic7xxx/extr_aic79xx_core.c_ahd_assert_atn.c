@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ahd_softc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATNO ; 
- int /*<<< orphan*/  SCSISIGO ; 
- int /*<<< orphan*/  ahd_outb (struct ahd_softc*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ATNO ;
+ int SCSISIGO ;
+ int ahd_outb (struct ahd_softc*,int ,int ) ;
 
 __attribute__((used)) static inline void
 ahd_assert_atn(struct ahd_softc *ahd)
 {
-	ahd_outb(ahd, SCSISIGO, ATNO);
+ ahd_outb(ahd, SCSISIGO, ATNO);
 }

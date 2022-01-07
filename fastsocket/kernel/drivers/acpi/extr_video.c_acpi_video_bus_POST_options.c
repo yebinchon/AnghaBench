@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct acpi_video_bus {TYPE_1__* device; } ;
-struct TYPE_2__ {int /*<<< orphan*/  handle; } ;
+struct TYPE_2__ {int handle; } ;
 
-/* Variables and functions */
- int acpi_evaluate_integer (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,unsigned long long*) ; 
+
+ int acpi_evaluate_integer (int ,char*,int *,unsigned long long*) ;
 
 __attribute__((used)) static int
 acpi_video_bus_POST_options(struct acpi_video_bus *video,
-			    unsigned long long *options)
+       unsigned long long *options)
 {
-	int status;
+ int status;
 
-	status = acpi_evaluate_integer(video->device->handle, "_VPO", NULL, options);
-	*options &= 3;
+ status = acpi_evaluate_integer(video->device->handle, "_VPO", ((void*)0), options);
+ *options &= 3;
 
-	return status;
+ return status;
 }

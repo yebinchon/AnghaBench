@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char* FileStart; char* FileEnd; struct TYPE_4__* Next; } ;
-typedef  TYPE_1__ ACPI_FILE_NODE ;
+typedef TYPE_1__ ACPI_FILE_NODE ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static ACPI_FILE_NODE *
 CvFileAddressLookup(
-    char                    *Address,
-    ACPI_FILE_NODE          *Head)
+    char *Address,
+    ACPI_FILE_NODE *Head)
 {
-    ACPI_FILE_NODE          *Current = Head;
+    ACPI_FILE_NODE *Current = Head;
 
 
     while (Current)
@@ -36,5 +36,5 @@ CvFileAddressLookup(
         Current = Current->Next;
     }
 
-    return (NULL);
+    return (((void*)0));
 }

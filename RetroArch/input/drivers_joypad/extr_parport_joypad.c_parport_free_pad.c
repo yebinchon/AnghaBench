@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct parport_joypad {char saved_data; int fd; char saved_control; int /*<<< orphan*/  ident; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PPRELEASE ; 
- int /*<<< orphan*/  PPWDATA ; 
- int /*<<< orphan*/  RARCH_ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ ioctl (int,int /*<<< orphan*/ ,...) ; 
+
+
+
+struct parport_joypad {char saved_data; int fd; char saved_control; int ident; } ;
+
+
+ int PPRELEASE ;
+ int PPWDATA ;
+ int RARCH_ERR (char*,int ) ;
+ int close (int) ;
+ scalar_t__ ioctl (int,int ,...) ;
 
 __attribute__((used)) static void parport_free_pad(struct parport_joypad *pad)
 {

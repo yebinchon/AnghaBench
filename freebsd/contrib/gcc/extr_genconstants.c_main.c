@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FATAL_EXIT_CODE ; 
- scalar_t__ SUCCESS_EXIT_CODE ; 
- scalar_t__ fclose (int /*<<< orphan*/ ) ; 
- scalar_t__ ferror (int /*<<< orphan*/ ) ; 
- scalar_t__ fflush (int /*<<< orphan*/ ) ; 
- scalar_t__ init_md_reader_args (int,char**) ; 
- int /*<<< orphan*/  print_md_constant ; 
- char* progname ; 
- int /*<<< orphan*/  puts (char*) ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  traverse_md_constants (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int FATAL_EXIT_CODE ;
+ scalar_t__ SUCCESS_EXIT_CODE ;
+ scalar_t__ fclose (int ) ;
+ scalar_t__ ferror (int ) ;
+ scalar_t__ fflush (int ) ;
+ scalar_t__ init_md_reader_args (int,char**) ;
+ int print_md_constant ;
+ char* progname ;
+ int puts (char*) ;
+ int stdout ;
+ int traverse_md_constants (int ,int ) ;
 
 int
 main (int argc, char **argv)
@@ -32,8 +24,8 @@ main (int argc, char **argv)
   if (init_md_reader_args (argc, argv) != SUCCESS_EXIT_CODE)
     return (FATAL_EXIT_CODE);
 
-  /* Initializing the MD reader has the side effect of loading up
-     the constants table that we wish to scan.  */
+
+
 
   puts ("/* Generated automatically by the program `genconstants'");
   puts ("   from the machine description file `md'.  */\n");

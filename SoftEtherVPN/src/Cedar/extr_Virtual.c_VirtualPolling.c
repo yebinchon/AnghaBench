@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VH ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PollingArpTable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PollingArpWaitTable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PollingBeacon (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PollingDhcpServer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PollingIpCombine (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PollingIpWaitTable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PoolingNat (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int VH ;
+
+
+ int PollingArpTable (int *) ;
+ int PollingArpWaitTable (int *) ;
+ int PollingBeacon (int *) ;
+ int PollingDhcpServer (int *) ;
+ int PollingIpCombine (int *) ;
+ int PollingIpWaitTable (int *) ;
+ int PoolingNat (int *) ;
 
 void VirtualPolling(VH *v)
 {
-	// Validate arguments
-	if (v == NULL)
-	{
-		return;
-	}
 
-	// DHCP polling
-	PollingDhcpServer(v);
+ if (v == ((void*)0))
+ {
+  return;
+ }
 
-	// NAT polling
-	PoolingNat(v);
 
-	// Clear the old ARP table entries
-	PollingArpTable(v);
+ PollingDhcpServer(v);
 
-	// Poll the ARP waiting list
-	PollingArpWaitTable(v);
 
-	// Poll the IP waiting list
-	PollingIpWaitTable(v);
+ PoolingNat(v);
 
-	// Poll the IP combining list
-	PollingIpCombine(v);
 
-	// Beacon transmission procedure
-	PollingBeacon(v);
+ PollingArpTable(v);
+
+
+ PollingArpWaitTable(v);
+
+
+ PollingIpWaitTable(v);
+
+
+ PollingIpCombine(v);
+
+
+ PollingBeacon(v);
 }

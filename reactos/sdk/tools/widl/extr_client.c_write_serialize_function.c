@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int typestring_offset; char* name; } ;
-typedef  TYPE_1__ type_t ;
-typedef  enum stub_mode { ____Placeholder_stub_mode } stub_mode ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ type_t ;
+typedef enum stub_mode { ____Placeholder_stub_mode } stub_mode ;
+typedef int FILE ;
 
-/* Variables and functions */
- int MODE_Os ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int get_stub_mode () ; 
- int /*<<< orphan*/  warning (char*,char*) ; 
+
+ int MODE_Os ;
+ int fprintf (int *,char*,...) ;
+ int get_stub_mode () ;
+ int warning (char*,char*) ;
 
 __attribute__((used)) static void write_serialize_function(FILE *file, const type_t *type, const type_t *iface,
                                      const char *func_name, const char *ret_type)
@@ -30,8 +30,8 @@ __attribute__((used)) static void write_serialize_function(FILE *file, const typ
 
     if (iface && !type->typestring_offset)
     {
-        /* FIXME: Those are mostly basic types. They should be implemented
-         * using NdrMesSimpleType* functions */
+
+
         if (ret_type) warning("Serialization of type %s is not supported\n", type->name);
         return;
     }
@@ -50,11 +50,11 @@ __attribute__((used)) static void write_serialize_function(FILE *file, const typ
         emited_pickling_info = 1;
     }
 
-    /* FIXME: Assuming explicit handle */
+
 
     fprintf(file, "%s __cdecl %s_%s(handle_t IDL_handle, %s *IDL_type)%s\n",
             ret_type ? ret_type : "void", type->name, func_name, type->name, iface ? "" : ";");
-    if (!iface) return; /* declaration only */
+    if (!iface) return;
 
     fprintf(file, "{\n");
     fprintf(file, "    %sNdrMesType%s%s(\n", ret_type ? "return " : "", func_name,

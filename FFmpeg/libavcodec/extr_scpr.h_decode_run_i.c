@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct TYPE_3__ {int height; int width; int bits_per_coded_sample; } ;
-typedef  TYPE_1__ AVCodecContext ;
+typedef TYPE_1__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
+
+ int AVERROR_INVALIDDATA ;
 
 __attribute__((used)) static int decode_run_i(AVCodecContext *avctx, uint32_t ptype, int run,
                         int *px, int *py, uint32_t clr, uint32_t *dst,
@@ -102,10 +102,10 @@ __attribute__((used)) static int decode_run_i(AVCodecContext *avctx, uint32_t pt
                 odst[off2 - z ];
             g = odst[off1 + 1] +
                 odst[off2 + 5] -
-                odst[off2 - z  + 1];
+                odst[off2 - z + 1];
             b = odst[off1 + 2] +
                 odst[off2 + 6] -
-                odst[off2 - z  + 2];
+                odst[off2 - z + 2];
             clr = ((b & 0xFF) << 16) + ((g & 0xFF) << 8) + (r & 0xFF);
             dst[y * linesize + x] = clr;
             lx = x;

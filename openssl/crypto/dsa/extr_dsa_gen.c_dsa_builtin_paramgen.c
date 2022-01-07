@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * g; int /*<<< orphan*/ * q; int /*<<< orphan*/ * p; int /*<<< orphan*/  dirty_cnt; } ;
-typedef  int /*<<< orphan*/  EVP_MD ;
-typedef  TYPE_1__ DSA ;
-typedef  int /*<<< orphan*/  BN_MONT_CTX ;
-typedef  int /*<<< orphan*/  BN_GENCB ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_new () ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_GENCB_call (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  BN_MONT_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_MONT_CTX_new () ; 
- int /*<<< orphan*/  BN_MONT_CTX_set (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_bin2bn (unsigned char*,int,int /*<<< orphan*/ *) ; 
- int BN_check_prime (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ BN_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_div (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- void* BN_dup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_is_one (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_lshift (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  BN_lshift1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mask_bits (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  BN_mod (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mod_exp_mont (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_set_word (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  BN_sub (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_value_one () ; 
- int /*<<< orphan*/  BN_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DSA_F_DSA_BUILTIN_PARAMGEN ; 
- int /*<<< orphan*/  DSA_R_SEED_LEN_SMALL ; 
- int /*<<< orphan*/  DSAerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_Digest (unsigned char*,int,unsigned char*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int EVP_MD_size (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * EVP_sha1 () ; 
- int /*<<< orphan*/ * EVP_sha224 () ; 
- int /*<<< orphan*/ * EVP_sha256 () ; 
- scalar_t__ RAND_bytes (unsigned char*,int) ; 
- int SHA224_DIGEST_LENGTH ; 
- int SHA256_DIGEST_LENGTH ; 
- int SHA_DIGEST_LENGTH ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * g; int * q; int * p; int dirty_cnt; } ;
+typedef int EVP_MD ;
+typedef TYPE_1__ DSA ;
+typedef int BN_MONT_CTX ;
+typedef int BN_GENCB ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_CTX_end (int *) ;
+ int BN_CTX_free (int *) ;
+ int * BN_CTX_get (int *) ;
+ int * BN_CTX_new () ;
+ int BN_CTX_start (int *) ;
+ int BN_GENCB_call (int *,int,int) ;
+ int BN_MONT_CTX_free (int *) ;
+ int * BN_MONT_CTX_new () ;
+ int BN_MONT_CTX_set (int *,int *,int *) ;
+ int BN_add (int *,int *,int *) ;
+ int BN_bin2bn (unsigned char*,int,int *) ;
+ int BN_check_prime (int *,int *,int *) ;
+ scalar_t__ BN_cmp (int *,int *) ;
+ int BN_copy (int *,int *) ;
+ int BN_div (int *,int *,int *,int *,int *) ;
+ void* BN_dup (int *) ;
+ int BN_free (int *) ;
+ int BN_is_one (int *) ;
+ int BN_lshift (int *,int *,int) ;
+ int BN_lshift1 (int *,int *) ;
+ int BN_mask_bits (int *,size_t) ;
+ int BN_mod (int *,int *,int *,int *) ;
+ int BN_mod_exp_mont (int *,int *,int *,int *,int *,int *) ;
+ int BN_set_word (int *,unsigned int) ;
+ int BN_sub (int *,int *,int *) ;
+ int * BN_value_one () ;
+ int BN_zero (int *) ;
+ int DSA_F_DSA_BUILTIN_PARAMGEN ;
+ int DSA_R_SEED_LEN_SMALL ;
+ int DSAerr (int ,int ) ;
+ int EVP_Digest (unsigned char*,int,unsigned char*,int *,int const*,int *) ;
+ int EVP_MD_size (int const*) ;
+ int * EVP_sha1 () ;
+ int * EVP_sha224 () ;
+ int * EVP_sha256 () ;
+ scalar_t__ RAND_bytes (unsigned char*,int) ;
+ int SHA224_DIGEST_LENGTH ;
+ int SHA256_DIGEST_LENGTH ;
+ int SHA_DIGEST_LENGTH ;
+ int memcpy (unsigned char*,unsigned char const*,int) ;
 
 int dsa_builtin_paramgen(DSA *ret, size_t bits, size_t qbits,
                          const EVP_MD *evpmd, const unsigned char *seed_in,
@@ -71,20 +71,20 @@ int dsa_builtin_paramgen(DSA *ret, size_t bits, size_t qbits,
     unsigned char md[SHA256_DIGEST_LENGTH];
     unsigned char buf[SHA256_DIGEST_LENGTH], buf2[SHA256_DIGEST_LENGTH];
     BIGNUM *r0, *W, *X, *c, *test;
-    BIGNUM *g = NULL, *q = NULL, *p = NULL;
-    BN_MONT_CTX *mont = NULL;
+    BIGNUM *g = ((void*)0), *q = ((void*)0), *p = ((void*)0);
+    BN_MONT_CTX *mont = ((void*)0);
     int i, k, n = 0, m = 0, qsize = qbits >> 3;
     int counter = 0;
     int r = 0;
-    BN_CTX *ctx = NULL;
+    BN_CTX *ctx = ((void*)0);
     unsigned int h = 2;
 
     if (qsize != SHA_DIGEST_LENGTH && qsize != SHA224_DIGEST_LENGTH &&
         qsize != SHA256_DIGEST_LENGTH)
-        /* invalid q size */
+
         return 0;
 
-    if (evpmd == NULL) {
+    if (evpmd == ((void*)0)) {
         if (qsize == SHA_DIGEST_LENGTH)
             evpmd = EVP_sha1();
         else if (qsize == SHA224_DIGEST_LENGTH)
@@ -100,22 +100,22 @@ int dsa_builtin_paramgen(DSA *ret, size_t bits, size_t qbits,
 
     bits = (bits + 63) / 64 * 64;
 
-    if (seed_in != NULL) {
+    if (seed_in != ((void*)0)) {
         if (seed_len < (size_t)qsize) {
             DSAerr(DSA_F_DSA_BUILTIN_PARAMGEN, DSA_R_SEED_LEN_SMALL);
             return 0;
         }
         if (seed_len > (size_t)qsize) {
-            /* Only consume as much seed as is expected. */
+
             seed_len = qsize;
         }
         memcpy(seed, seed_in, seed_len);
     }
 
-    if ((mont = BN_MONT_CTX_new()) == NULL)
+    if ((mont = BN_MONT_CTX_new()) == ((void*)0))
         goto err;
 
-    if ((ctx = BN_CTX_new()) == NULL)
+    if ((ctx = BN_CTX_new()) == ((void*)0))
         goto err;
 
     BN_CTX_start(ctx);
@@ -129,17 +129,17 @@ int dsa_builtin_paramgen(DSA *ret, size_t bits, size_t qbits,
     p = BN_CTX_get(ctx);
     test = BN_CTX_get(ctx);
 
-    if (test == NULL)
+    if (test == ((void*)0))
         goto err;
 
     if (!BN_lshift(test, BN_value_one(), bits - 1))
         goto err;
 
     for (;;) {
-        for (;;) {              /* find q */
-            int use_random_seed = (seed_in == NULL);
+        for (;;) {
+            int use_random_seed = (seed_in == ((void*)0));
 
-            /* step 1 */
+
             if (!BN_GENCB_call(cb, 0, m++))
                 goto err;
 
@@ -147,41 +147,41 @@ int dsa_builtin_paramgen(DSA *ret, size_t bits, size_t qbits,
                 if (RAND_bytes(seed, qsize) <= 0)
                     goto err;
             } else {
-                /* If we come back through, use random seed next time. */
-                seed_in = NULL;
+
+                seed_in = ((void*)0);
             }
             memcpy(buf, seed, qsize);
             memcpy(buf2, seed, qsize);
-            /* precompute "SEED + 1" for step 7: */
+
             for (i = qsize - 1; i >= 0; i--) {
                 buf[i]++;
                 if (buf[i] != 0)
                     break;
             }
 
-            /* step 2 */
-            if (!EVP_Digest(seed, qsize, md, NULL, evpmd, NULL))
+
+            if (!EVP_Digest(seed, qsize, md, ((void*)0), evpmd, ((void*)0)))
                 goto err;
-            if (!EVP_Digest(buf, qsize, buf2, NULL, evpmd, NULL))
+            if (!EVP_Digest(buf, qsize, buf2, ((void*)0), evpmd, ((void*)0)))
                 goto err;
             for (i = 0; i < qsize; i++)
                 md[i] ^= buf2[i];
 
-            /* step 3 */
+
             md[0] |= 0x80;
             md[qsize - 1] |= 0x01;
             if (!BN_bin2bn(md, qsize, q))
                 goto err;
 
-            /* step 4 */
+
             r = BN_check_prime(q, ctx, cb);
             if (r > 0)
                 break;
             if (r != 0)
                 goto err;
 
-            /* do a callback call */
-            /* step 5 */
+
+
         }
 
         if (!BN_GENCB_call(cb, 2, 0))
@@ -189,9 +189,9 @@ int dsa_builtin_paramgen(DSA *ret, size_t bits, size_t qbits,
         if (!BN_GENCB_call(cb, 3, 0))
             goto err;
 
-        /* step 6 */
+
         counter = 0;
-        /* "offset = 2" */
+
 
         n = (bits - 1) / 160;
 
@@ -199,23 +199,23 @@ int dsa_builtin_paramgen(DSA *ret, size_t bits, size_t qbits,
             if ((counter != 0) && !BN_GENCB_call(cb, 0, counter))
                 goto err;
 
-            /* step 7 */
+
             BN_zero(W);
-            /* now 'buf' contains "SEED + offset - 1" */
+
             for (k = 0; k <= n; k++) {
-                /*
-                 * obtain "SEED + offset + k" by incrementing:
-                 */
+
+
+
                 for (i = qsize - 1; i >= 0; i--) {
                     buf[i]++;
                     if (buf[i] != 0)
                         break;
                 }
 
-                if (!EVP_Digest(buf, qsize, md, NULL, evpmd, NULL))
+                if (!EVP_Digest(buf, qsize, md, ((void*)0), evpmd, ((void*)0)))
                     goto err;
 
-                /* step 8 */
+
                 if (!BN_bin2bn(md, qsize, r0))
                     goto err;
                 if (!BN_lshift(r0, r0, (qsize << 3) * k))
@@ -224,7 +224,7 @@ int dsa_builtin_paramgen(DSA *ret, size_t bits, size_t qbits,
                     goto err;
             }
 
-            /* more of step 8 */
+
             if (!BN_mask_bits(W, bits - 1))
                 goto err;
             if (!BN_copy(X, W))
@@ -232,7 +232,7 @@ int dsa_builtin_paramgen(DSA *ret, size_t bits, size_t qbits,
             if (!BN_add(X, X, test))
                 goto err;
 
-            /* step 9 */
+
             if (!BN_lshift1(r0, q))
                 goto err;
             if (!BN_mod(c, X, r0, ctx))
@@ -242,21 +242,21 @@ int dsa_builtin_paramgen(DSA *ret, size_t bits, size_t qbits,
             if (!BN_sub(p, X, r0))
                 goto err;
 
-            /* step 10 */
+
             if (BN_cmp(p, test) >= 0) {
-                /* step 11 */
+
                 r = BN_check_prime(p, ctx, cb);
                 if (r > 0)
-                    goto end;   /* found it */
+                    goto end;
                 if (r != 0)
                     goto err;
             }
 
-            /* step 13 */
-            counter++;
-            /* "offset = offset + n + 1" */
 
-            /* step 14 */
+            counter++;
+
+
+
             if (counter >= 4096)
                 break;
         }
@@ -265,11 +265,11 @@ int dsa_builtin_paramgen(DSA *ret, size_t bits, size_t qbits,
     if (!BN_GENCB_call(cb, 2, 1))
         goto err;
 
-    /* We now need to generate g */
-    /* Set r0=(p-1)/q */
+
+
     if (!BN_sub(test, p, BN_value_one()))
         goto err;
-    if (!BN_div(r0, NULL, test, q, ctx))
+    if (!BN_div(r0, ((void*)0), test, q, ctx))
         goto err;
 
     if (!BN_set_word(test, h))
@@ -278,7 +278,7 @@ int dsa_builtin_paramgen(DSA *ret, size_t bits, size_t qbits,
         goto err;
 
     for (;;) {
-        /* g=test^r0%p */
+
         if (!BN_mod_exp_mont(g, test, r0, p, ctx, mont))
             goto err;
         if (!BN_is_one(g))
@@ -301,13 +301,13 @@ int dsa_builtin_paramgen(DSA *ret, size_t bits, size_t qbits,
         ret->q = BN_dup(q);
         ret->g = BN_dup(g);
         ret->dirty_cnt++;
-        if (ret->p == NULL || ret->q == NULL || ret->g == NULL) {
+        if (ret->p == ((void*)0) || ret->q == ((void*)0) || ret->g == ((void*)0)) {
             ok = 0;
             goto err;
         }
-        if (counter_ret != NULL)
+        if (counter_ret != ((void*)0))
             *counter_ret = counter;
-        if (h_ret != NULL)
+        if (h_ret != ((void*)0))
             *h_ret = h;
         if (seed_out)
             memcpy(seed_out, seed, qsize);

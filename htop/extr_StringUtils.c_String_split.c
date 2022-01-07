@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* strchr (char const*,char) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  strncpy (char*,char const*,int) ; 
- char** xCalloc (int const,int) ; 
- char* xMalloc (int) ; 
- char** xRealloc (char**,int) ; 
+ char* strchr (char const*,char) ;
+ int strlen (char const*) ;
+ int strncpy (char*,char const*,int) ;
+ char** xCalloc (int const,int) ;
+ char* xMalloc (int) ;
+ char** xRealloc (char**,int) ;
 
 char** String_split(const char* s, char sep, int* n) {
    *n = 0;
@@ -26,7 +18,7 @@ char** String_split(const char* s, char sep, int* n) {
    int ctr = 0;
    int blocks = rate;
    char* where;
-   while ((where = strchr(s, sep)) != NULL) {
+   while ((where = strchr(s, sep)) != ((void*)0)) {
       int size = where - s;
       char* token = xMalloc(size + 1);
       strncpy(token, s, size);
@@ -47,7 +39,7 @@ char** String_split(const char* s, char sep, int* n) {
       ctr++;
    }
    out = xRealloc(out, sizeof(char*) * (ctr + 1));
-   out[ctr] = NULL;
+   out[ctr] = ((void*)0);
    *n = ctr;
    return out;
 }

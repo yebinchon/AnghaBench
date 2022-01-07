@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_buf ;
 
-/* Variables and functions */
- int GIT_ENOTFOUND ; 
- char* getenv (char const*) ; 
- int /*<<< orphan*/  git_buf_clear (int /*<<< orphan*/ *) ; 
- int git_buf_puts (int /*<<< orphan*/ *,char const*) ; 
+
+
+
+typedef int git_buf ;
+
+
+ int GIT_ENOTFOUND ;
+ char* getenv (char const*) ;
+ int git_buf_clear (int *) ;
+ int git_buf_puts (int *,char const*) ;
 
 int git__getenv(git_buf *out, const char *name)
 {
-	const char *val = getenv(name);
+ const char *val = getenv(name);
 
-	git_buf_clear(out);
+ git_buf_clear(out);
 
-	if (!val)
-		return GIT_ENOTFOUND;
+ if (!val)
+  return GIT_ENOTFOUND;
 
-	return git_buf_puts(out, val);
+ return git_buf_puts(out, val);
 }

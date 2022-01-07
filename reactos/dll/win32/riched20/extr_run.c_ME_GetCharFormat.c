@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
-struct TYPE_16__ {int cbSize; int dwMask; scalar_t__ yHeight; scalar_t__ bPitchAndFamily; scalar_t__ bUnderlineType; int dwEffects; scalar_t__ crTextColor; int /*<<< orphan*/  szFaceName; } ;
+
+
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int tmp ;
+struct TYPE_16__ {int cbSize; int dwMask; scalar_t__ yHeight; scalar_t__ bPitchAndFamily; scalar_t__ bUnderlineType; int dwEffects; scalar_t__ crTextColor; int szFaceName; } ;
 struct TYPE_15__ {scalar_t__ nOffset; TYPE_1__* pRun; } ;
 struct TYPE_14__ {scalar_t__ type; } ;
-typedef  int /*<<< orphan*/  ME_TextEditor ;
-typedef  TYPE_1__ ME_DisplayItem ;
-typedef  TYPE_2__ ME_Cursor ;
-typedef  int DWORD ;
-typedef  TYPE_3__ CHARFORMAT2W ;
+typedef int ME_TextEditor ;
+typedef TYPE_1__ ME_DisplayItem ;
+typedef TYPE_2__ ME_Cursor ;
+typedef int DWORD ;
+typedef TYPE_3__ CHARFORMAT2W ;
 
-/* Variables and functions */
- int CFE_AUTOCOLOR ; 
- int CFM_BOLD ; 
- int CFM_COLOR ; 
- int CFM_FACE ; 
- int CFM_ITALIC ; 
- int CFM_LINK ; 
- int CFM_PROTECTED ; 
- int CFM_SIZE ; 
- int CFM_STRIKEOUT ; 
- int CFM_SUPERSCRIPT ; 
- int CFM_UNDERLINE ; 
- int CFM_UNDERLINETYPE ; 
- TYPE_1__* ME_FindItemBack (TYPE_1__*,scalar_t__) ; 
- TYPE_1__* ME_FindItemFwd (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  ME_GetRunCharFormat (int /*<<< orphan*/ *,TYPE_1__*,TYPE_3__*) ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_3__*,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ diRun ; 
- scalar_t__ diRunOrParagraph ; 
- scalar_t__ lstrcmpW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CFE_AUTOCOLOR ;
+ int CFM_BOLD ;
+ int CFM_COLOR ;
+ int CFM_FACE ;
+ int CFM_ITALIC ;
+ int CFM_LINK ;
+ int CFM_PROTECTED ;
+ int CFM_SIZE ;
+ int CFM_STRIKEOUT ;
+ int CFM_SUPERSCRIPT ;
+ int CFM_UNDERLINE ;
+ int CFM_UNDERLINETYPE ;
+ TYPE_1__* ME_FindItemBack (TYPE_1__*,scalar_t__) ;
+ TYPE_1__* ME_FindItemFwd (TYPE_1__*,scalar_t__) ;
+ int ME_GetRunCharFormat (int *,TYPE_1__*,TYPE_3__*) ;
+ int ZeroMemory (TYPE_3__*,int) ;
+ int assert (int) ;
+ scalar_t__ diRun ;
+ scalar_t__ diRunOrParagraph ;
+ scalar_t__ lstrcmpW (int ,int ) ;
 
 void ME_GetCharFormat(ME_TextEditor *editor, const ME_Cursor *from,
                       const ME_Cursor *to, CHARFORMAT2W *pFmt)
@@ -52,7 +52,7 @@ void ME_GetCharFormat(ME_TextEditor *editor, const ME_Cursor *from,
   CHARFORMAT2W tmp;
 
   run = from->pRun;
-  /* special case - if selection is empty, take previous char's formatting */
+
   if (from->pRun == to->pRun && from->nOffset == to->nOffset)
   {
     if (!from->nOffset)
@@ -76,7 +76,7 @@ void ME_GetCharFormat(ME_TextEditor *editor, const ME_Cursor *from,
   if (run == run_end) return;
 
   do {
-    /* FIXME add more style feature comparisons */
+
     DWORD dwAttribs = CFM_SIZE | CFM_FACE | CFM_COLOR | CFM_UNDERLINETYPE;
     DWORD dwEffects = CFM_BOLD | CFM_ITALIC | CFM_UNDERLINE | CFM_STRIKEOUT | CFM_PROTECTED | CFM_LINK | CFM_SUPERSCRIPT;
 
@@ -87,7 +87,7 @@ void ME_GetCharFormat(ME_TextEditor *editor, const ME_Cursor *from,
     ME_GetRunCharFormat(editor, run, &tmp);
 
     assert((tmp.dwMask & dwAttribs) == dwAttribs);
-    /* reset flags that differ */
+
 
     if (pFmt->yHeight != tmp.yHeight)
       pFmt->dwMask &= ~CFM_SIZE;

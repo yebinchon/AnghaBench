@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
-struct TYPE_5__ {int /*<<< orphan*/  text; } ;
-typedef  TYPE_1__ json_error_t ;
-struct TYPE_6__ {int /*<<< orphan*/  head_commit; int /*<<< orphan*/  repo_id; int /*<<< orphan*/  is_corrupt; } ;
-typedef  TYPE_2__ CheckHeadData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_loadb (char const*,int,int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ json_object_get_int_member (int /*<<< orphan*/ *,char*) ; 
- char* json_object_get_string_member (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ json_object_has_member (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  seaf_warning (char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int json_t ;
+struct TYPE_5__ {int text; } ;
+typedef TYPE_1__ json_error_t ;
+struct TYPE_6__ {int head_commit; int repo_id; int is_corrupt; } ;
+typedef TYPE_2__ CheckHeadData ;
+
+
+ int TRUE ;
+ int json_decref (int *) ;
+ int * json_loadb (char const*,int,int ,TYPE_1__*) ;
+ scalar_t__ json_object_get_int_member (int *,char*) ;
+ char* json_object_get_string_member (int *,char*) ;
+ scalar_t__ json_object_has_member (int *,char*) ;
+ int memcpy (int ,char const*,int) ;
+ int seaf_warning (char*,int ) ;
 
 __attribute__((used)) static int
 parse_head_commit_info (const char *rsp_content, int rsp_size, CheckHeadData *data)
 {
-    json_t *object = NULL;
+    json_t *object = ((void*)0);
     json_error_t jerror;
     const char *head_commit;
 

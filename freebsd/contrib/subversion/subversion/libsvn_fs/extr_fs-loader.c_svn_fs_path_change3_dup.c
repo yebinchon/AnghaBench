@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  len; int /*<<< orphan*/  data; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int len; int data; } ;
 struct TYPE_8__ {scalar_t__ copyfrom_path; TYPE_1__ path; } ;
-typedef  TYPE_2__ svn_fs_path_change3_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_2__ svn_fs_path_change3_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- TYPE_2__* apr_pmemdup (int /*<<< orphan*/ *,TYPE_2__*,int) ; 
- scalar_t__ apr_pstrdup (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  apr_pstrmemdup (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ TYPE_2__* apr_pmemdup (int *,TYPE_2__*,int) ;
+ scalar_t__ apr_pstrdup (int *,scalar_t__) ;
+ int apr_pstrmemdup (int *,int ,int ) ;
 
 svn_fs_path_change3_t *
 svn_fs_path_change3_dup(svn_fs_path_change3_t *change,

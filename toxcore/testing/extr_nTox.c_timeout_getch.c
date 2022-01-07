@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timeval {int tv_usec; scalar_t__ tv_sec; } ;
-typedef  int /*<<< orphan*/  fd_set ;
-typedef  int /*<<< orphan*/  Tox ;
+typedef int fd_set ;
+typedef int Tox ;
 
-/* Variables and functions */
- char ERR ; 
- int /*<<< orphan*/  FD_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- char getch () ; 
- int /*<<< orphan*/  new_lines (char*) ; 
- int select (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
- int tox_iteration_interval (int /*<<< orphan*/ *) ; 
+
+ char ERR ;
+ int FD_SET (int ,int *) ;
+ int FD_ZERO (int *) ;
+ char getch () ;
+ int new_lines (char*) ;
+ int select (int,int *,int *,int *,struct timeval*) ;
+ int tox_iteration_interval (int *) ;
 
 char timeout_getch(Tox *m)
 {
@@ -36,7 +36,7 @@ char timeout_getch(Tox *m)
     tv.tv_usec = slpval * 1000;
 
     c = ERR;
-    int n = select(1, &fds, NULL, NULL, &tv);
+    int n = select(1, &fds, ((void*)0), ((void*)0), &tv);
 
     if (n < 0) {
         new_lines("select error: maybe interupted");

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  bs_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bs_align (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bs_eof (int /*<<< orphan*/ *) ; 
- int bs_read (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (int*,int,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int bs_t ;
+
+
+ int bs_align (int *) ;
+ int bs_eof (int *) ;
+ int bs_read (int *,int) ;
+ int memset (int*,int,int) ;
 
 __attribute__((used)) static void dvbsub_pdata2bpp( bs_t *s, uint8_t *p, int i_width, int *pi_off )
 {
-    bool b_stop = false;
+    bool b_stop = 0;
 
     while( !b_stop && !bs_eof( s ) )
     {
@@ -34,29 +34,29 @@ __attribute__((used)) static void dvbsub_pdata2bpp( bs_t *s, uint8_t *p, int i_w
         }
         else
         {
-            if( bs_read( s, 1 ) == 0x01 )         // Switch1
+            if( bs_read( s, 1 ) == 0x01 )
             {
                 i_count = 3 + bs_read( s, 3 );
                 i_color = bs_read( s, 2 );
             }
             else
             {
-                if( bs_read( s, 1 ) == 0x00 )     //Switch2
+                if( bs_read( s, 1 ) == 0x00 )
                 {
-                    switch( bs_read( s, 2 ) )     //Switch3
+                    switch( bs_read( s, 2 ) )
                     {
                     case 0x00:
-                        b_stop = true;
+                        b_stop = 1;
                         break;
                     case 0x01:
                         i_count = 2;
                         break;
                     case 0x02:
-                        i_count =  12 + bs_read( s, 4 );
+                        i_count = 12 + bs_read( s, 4 );
                         i_color = bs_read( s, 2 );
                         break;
                     case 0x03:
-                        i_count =  29 + bs_read( s, 8 );
+                        i_count = 29 + bs_read( s, 8 );
                         i_color = bs_read( s, 2 );
                         break;
                     default:
@@ -65,7 +65,7 @@ __attribute__((used)) static void dvbsub_pdata2bpp( bs_t *s, uint8_t *p, int i_w
                 }
                 else
                 {
-                    /* 1 pixel color 0 */
+
                     i_count = 1;
                 }
             }
@@ -73,7 +73,7 @@ __attribute__((used)) static void dvbsub_pdata2bpp( bs_t *s, uint8_t *p, int i_w
 
         if( !i_count ) continue;
 
-        /* Sanity check */
+
         if( ( i_count + *pi_off ) > i_width ) break;
 
         if( i_count == 1 ) p[*pi_off] = i_color;

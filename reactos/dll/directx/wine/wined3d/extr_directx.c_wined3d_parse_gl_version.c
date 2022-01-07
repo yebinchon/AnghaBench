@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int) ; 
- int /*<<< orphan*/  MAKEDWORD_VERSION (int,int) ; 
- int /*<<< orphan*/  TRACE (char*,int,int) ; 
- int atoi (char const*) ; 
- int debugstr_a (char const*) ; 
- scalar_t__ isdigit (char const) ; 
+
+
+
+typedef int DWORD ;
+
+
+ int ERR (char*,int) ;
+ int MAKEDWORD_VERSION (int,int) ;
+ int TRACE (char*,int,int) ;
+ int atoi (char const*) ;
+ int debugstr_a (char const*) ;
+ scalar_t__ isdigit (char const) ;
 
 __attribute__((used)) static DWORD wined3d_parse_gl_version(const char *gl_version)
 {

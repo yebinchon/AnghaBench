@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  js_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  js_newobject (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  js_pushnumber (int /*<<< orphan*/ *,double const) ; 
- int /*<<< orphan*/  js_setproperty (int /*<<< orphan*/ *,int,char const* const) ; 
+
+
+
+typedef int js_State ;
+
+
+ int js_newobject (int *) ;
+ int js_pushnumber (int *,double const) ;
+ int js_setproperty (int *,int,char const* const) ;
 
 __attribute__((used)) static void push_nums_obj(js_State *J, const char * const names[],
                           const double vals[])

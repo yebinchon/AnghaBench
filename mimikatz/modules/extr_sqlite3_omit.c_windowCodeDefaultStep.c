@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_7__ ;
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_23__ TYPE_7__ ;
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
 struct TYPE_20__ {scalar_t__ eType; scalar_t__ eStart; scalar_t__ eEnd; int nBufferCol; int regPart; int iEphCsr; TYPE_7__* pOrderBy; TYPE_7__* pPartition; } ;
-typedef  TYPE_4__ Window ;
-typedef  int /*<<< orphan*/  WhereInfo ;
-typedef  int /*<<< orphan*/  Vdbe ;
+typedef TYPE_4__ Window ;
+typedef int WhereInfo ;
+typedef int Vdbe ;
 struct TYPE_23__ {int nExpr; } ;
 struct TYPE_22__ {int nMem; } ;
 struct TYPE_21__ {TYPE_3__* pSrc; TYPE_4__* pWin; } ;
 struct TYPE_19__ {TYPE_2__* a; } ;
 struct TYPE_18__ {int iCursor; TYPE_1__* pTab; } ;
 struct TYPE_17__ {int nCol; } ;
-typedef  TYPE_5__ Select ;
-typedef  TYPE_6__ Parse ;
-typedef  int /*<<< orphan*/  KeyInfo ;
-typedef  TYPE_7__ ExprList ;
+typedef TYPE_5__ Select ;
+typedef TYPE_6__ Parse ;
+typedef int KeyInfo ;
+typedef TYPE_7__ ExprList ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OP_Blob ; 
- int /*<<< orphan*/  OP_Column ; 
- int /*<<< orphan*/  OP_Compare ; 
- int /*<<< orphan*/  OP_Copy ; 
- int /*<<< orphan*/  OP_Gosub ; 
- int /*<<< orphan*/  OP_Goto ; 
- int /*<<< orphan*/  OP_Insert ; 
- int /*<<< orphan*/  OP_Jump ; 
- int /*<<< orphan*/  OP_MakeRecord ; 
- int /*<<< orphan*/  OP_NewRowid ; 
- int /*<<< orphan*/  OP_Next ; 
- int /*<<< orphan*/  OP_ResetSorter ; 
- int /*<<< orphan*/  OP_Rewind ; 
- int /*<<< orphan*/  P4_KEYINFO ; 
- scalar_t__ TK_CURRENT ; 
- scalar_t__ TK_RANGE ; 
- scalar_t__ TK_UNBOUNDED ; 
- int /*<<< orphan*/  VdbeCoverage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VdbeCoverageEqNe (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * sqlite3GetVdbe (TYPE_6__*) ; 
- int /*<<< orphan*/ * sqlite3KeyInfoFromExprList (TYPE_6__*,TYPE_7__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int sqlite3VdbeAddOp0 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int sqlite3VdbeAddOp3 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  sqlite3VdbeAppendP4 (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ ) ; 
- int sqlite3VdbeCurrentAddr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3VdbeJumpHere (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3WhereEnd (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  windowAggFinal (TYPE_6__*,TYPE_4__*,int) ; 
- int /*<<< orphan*/  windowAggStep (TYPE_6__*,TYPE_4__*,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+ int OP_Blob ;
+ int OP_Column ;
+ int OP_Compare ;
+ int OP_Copy ;
+ int OP_Gosub ;
+ int OP_Goto ;
+ int OP_Insert ;
+ int OP_Jump ;
+ int OP_MakeRecord ;
+ int OP_NewRowid ;
+ int OP_Next ;
+ int OP_ResetSorter ;
+ int OP_Rewind ;
+ int P4_KEYINFO ;
+ scalar_t__ TK_CURRENT ;
+ scalar_t__ TK_RANGE ;
+ scalar_t__ TK_UNBOUNDED ;
+ int VdbeCoverage (int *) ;
+ int VdbeCoverageEqNe (int *) ;
+ int assert (int) ;
+ int * sqlite3GetVdbe (TYPE_6__*) ;
+ int * sqlite3KeyInfoFromExprList (TYPE_6__*,TYPE_7__*,int ,int ) ;
+ int sqlite3VdbeAddOp0 (int *,int ) ;
+ int sqlite3VdbeAddOp1 (int *,int ,int) ;
+ int sqlite3VdbeAddOp2 (int *,int ,int,int) ;
+ int sqlite3VdbeAddOp3 (int *,int ,int,int,int) ;
+ int sqlite3VdbeAppendP4 (int *,void*,int ) ;
+ int sqlite3VdbeCurrentAddr (int *) ;
+ int sqlite3VdbeJumpHere (int *,int) ;
+ int sqlite3WhereEnd (int *) ;
+ int windowAggFinal (TYPE_6__*,TYPE_4__*,int) ;
+ int windowAggStep (TYPE_6__*,TYPE_4__*,int,int ,int,int ) ;
 
 __attribute__((used)) static void windowCodeDefaultStep(
-  Parse *pParse, 
+  Parse *pParse,
   Select *p,
   WhereInfo *pWInfo,
-  int regGosub, 
+  int regGosub,
   int addrGosub
 ){
   Window *pMWin = p->pWin;
@@ -85,7 +85,7 @@ __attribute__((used)) static void windowCodeDefaultStep(
   ExprList *pPart = pMWin->pPartition;
   ExprList *pOrderBy = pMWin->pOrderBy;
 
-  assert( pMWin->eType==TK_RANGE 
+  assert( pMWin->eType==TK_RANGE
       || (pMWin->eStart==TK_UNBOUNDED && pMWin->eEnd==TK_CURRENT)
   );
 
@@ -101,13 +101,13 @@ __attribute__((used)) static void windowCodeDefaultStep(
 
   pParse->nMem += nSub + 2;
 
-  /* Load the individual column values of the row returned by
-  ** the sub-select into an array of registers. */
+
+
   for(k=0; k<nSub; k++){
     sqlite3VdbeAddOp3(v, OP_Column, iSubCsr, k, reg+k);
   }
 
-  /* Check if this is the start of a new partition or peer group. */
+
   if( pPart || pOrderBy ){
     int nPart = (pPart ? pPart->nExpr : 0);
     int addrGoto = 0;
@@ -159,10 +159,10 @@ __attribute__((used)) static void windowCodeDefaultStep(
     if( addrJump ) sqlite3VdbeJumpHere(v, addrJump);
   }
 
-  /* Invoke step function for window functions */
+
   windowAggStep(pParse, pMWin, -1, 0, reg, 0);
 
-  /* Buffer the current row in the ephemeral table. */
+
   if( pMWin->nBufferCol>0 ){
     sqlite3VdbeAddOp3(v, OP_MakeRecord, reg, pMWin->nBufferCol, regRecord);
   }else{
@@ -172,7 +172,7 @@ __attribute__((used)) static void windowCodeDefaultStep(
   sqlite3VdbeAddOp2(v, OP_NewRowid, pMWin->iEphCsr, regRowid);
   sqlite3VdbeAddOp3(v, OP_Insert, pMWin->iEphCsr, regRecord, regRowid);
 
-  /* End the database scan loop. */
+
   sqlite3WhereEnd(pWInfo);
 
   windowAggFinal(pParse, pMWin, 1);

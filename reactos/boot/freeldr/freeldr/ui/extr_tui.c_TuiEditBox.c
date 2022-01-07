@@ -1,98 +1,98 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t ULONG ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  char* PCSTR ;
-typedef  char* PCHAR ;
-typedef  int INT ;
-typedef  scalar_t__ CHAR ;
-typedef  scalar_t__ BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATTR (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  D_HORZ ; 
- int /*<<< orphan*/  D_VERT ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FrLdrTempAlloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FrLdrTempFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ KEY_BACKSPACE ; 
- scalar_t__ KEY_DELETE ; 
- scalar_t__ KEY_END ; 
- scalar_t__ KEY_ENTER ; 
- scalar_t__ KEY_ESC ; 
- scalar_t__ KEY_EXTENDED ; 
- scalar_t__ KEY_HOME ; 
- scalar_t__ KEY_LEFT ; 
- scalar_t__ KEY_RIGHT ; 
- int /*<<< orphan*/  MachBeep () ; 
- scalar_t__ MachConsGetCh () ; 
- scalar_t__ MachConsKbHit () ; 
- int /*<<< orphan*/  MachHwIdle () ; 
- int /*<<< orphan*/  MachVideoHideShowTextCursor (scalar_t__) ; 
- int /*<<< orphan*/  MachVideoSetTextCursorPosition (int,int) ; 
- int /*<<< orphan*/  TAG_TUI_SCREENBUFFER ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  TuiDrawBox (int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TuiRestoreScreen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TuiSaveScreen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TuiUpdateDateTime () ; 
- int /*<<< orphan*/  UiDrawStatusText (char*) ; 
- int /*<<< orphan*/  UiDrawText (int,int,scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UiDrawText2 (size_t,int,size_t,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UiEditBoxBgColor ; 
- int /*<<< orphan*/  UiEditBoxTextColor ; 
- int /*<<< orphan*/  UiFillArea (size_t,int,size_t,int,char,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UiMessageBoxBgColor ; 
- int /*<<< orphan*/  UiMessageBoxFgColor ; 
- int UiScreenHeight ; 
- int UiScreenWidth ; 
- int /*<<< orphan*/  VideoCopyOffScreenBufferToVRAM () ; 
- int /*<<< orphan*/  memmove (char*,char*,size_t) ; 
- size_t min (size_t,size_t) ; 
- int strlen (char*) ; 
+
+
+
+typedef size_t ULONG ;
+typedef int PVOID ;
+typedef char* PCSTR ;
+typedef char* PCHAR ;
+typedef int INT ;
+typedef scalar_t__ CHAR ;
+typedef scalar_t__ BOOLEAN ;
+
+
+ int ATTR (int ,int ) ;
+ int D_HORZ ;
+ int D_VERT ;
+ scalar_t__ FALSE ;
+ int FrLdrTempAlloc (int,int ) ;
+ int FrLdrTempFree (int ,int ) ;
+ scalar_t__ KEY_BACKSPACE ;
+ scalar_t__ KEY_DELETE ;
+ scalar_t__ KEY_END ;
+ scalar_t__ KEY_ENTER ;
+ scalar_t__ KEY_ESC ;
+ scalar_t__ KEY_EXTENDED ;
+ scalar_t__ KEY_HOME ;
+ scalar_t__ KEY_LEFT ;
+ scalar_t__ KEY_RIGHT ;
+ int MachBeep () ;
+ scalar_t__ MachConsGetCh () ;
+ scalar_t__ MachConsKbHit () ;
+ int MachHwIdle () ;
+ int MachVideoHideShowTextCursor (scalar_t__) ;
+ int MachVideoSetTextCursorPosition (int,int) ;
+ int TAG_TUI_SCREENBUFFER ;
+ scalar_t__ TRUE ;
+ int TuiDrawBox (int,int,int,int,int ,int ,scalar_t__,scalar_t__,int ) ;
+ int TuiRestoreScreen (int ) ;
+ int TuiSaveScreen (int ) ;
+ int TuiUpdateDateTime () ;
+ int UiDrawStatusText (char*) ;
+ int UiDrawText (int,int,scalar_t__*,int ) ;
+ int UiDrawText2 (size_t,int,size_t,char*,int ) ;
+ int UiEditBoxBgColor ;
+ int UiEditBoxTextColor ;
+ int UiFillArea (size_t,int,size_t,int,char,int ) ;
+ int UiMessageBoxBgColor ;
+ int UiMessageBoxFgColor ;
+ int UiScreenHeight ;
+ int UiScreenWidth ;
+ int VideoCopyOffScreenBufferToVRAM () ;
+ int memmove (char*,char*,size_t) ;
+ size_t min (size_t,size_t) ;
+ int strlen (char*) ;
 
 BOOLEAN TuiEditBox(PCSTR MessageText, PCHAR EditTextBuffer, ULONG Length)
 {
-    INT        width = 8;
-    ULONG    height = 1;
-    INT        curline = 0;
-    INT        k;
-    size_t    i , j;
-    INT        x1, x2, y1, y2;
-    CHAR    temp[260];
-    CHAR    key;
-    BOOLEAN    Extended;
-    INT        EditBoxLine;
-    ULONG    EditBoxStartX, EditBoxEndX;
-    INT        EditBoxCursorX;
-    ULONG    EditBoxTextLength, EditBoxTextPosition;
-    INT        EditBoxTextDisplayIndex;
-    BOOLEAN    ReturnCode;
-    PVOID    ScreenBuffer;
+    INT width = 8;
+    ULONG height = 1;
+    INT curline = 0;
+    INT k;
+    size_t i , j;
+    INT x1, x2, y1, y2;
+    CHAR temp[260];
+    CHAR key;
+    BOOLEAN Extended;
+    INT EditBoxLine;
+    ULONG EditBoxStartX, EditBoxEndX;
+    INT EditBoxCursorX;
+    ULONG EditBoxTextLength, EditBoxTextPosition;
+    INT EditBoxTextDisplayIndex;
+    BOOLEAN ReturnCode;
+    PVOID ScreenBuffer;
 
-    // Save the screen contents
+
     ScreenBuffer = FrLdrTempAlloc(UiScreenWidth * UiScreenHeight * 2,
                                   TAG_TUI_SCREENBUFFER);
     TuiSaveScreen(ScreenBuffer);
 
-    // Find the height
+
     for (i=0; i<strlen(MessageText); i++)
     {
         if (MessageText[i] == '\n')
             height++;
     }
 
-    // Find the width
+
     for (i=0,j=0,k=0; i<height; i++)
     {
         while ((MessageText[j] != '\n') && (MessageText[j] != 0))
@@ -108,16 +108,16 @@ BOOLEAN TuiEditBox(PCSTR MessageText, PCHAR EditTextBuffer, ULONG Length)
         j++;
     }
 
-    // Calculate box area
+
     x1 = (UiScreenWidth - (width+2))/2;
     x2 = x1 + width + 3;
     y1 = ((UiScreenHeight - height - 2)/2) + 1;
     y2 = y1 + height + 4;
 
-    // Draw the box
+
     TuiDrawBox(x1, y1, x2, y2, D_VERT, D_HORZ, TRUE, TRUE, ATTR(UiMessageBoxFgColor, UiMessageBoxBgColor));
 
-    // Draw the text
+
     for (i=0,j=0; i<strlen(MessageText)+1; i++)
     {
         if ((MessageText[i] == '\n') || (MessageText[i] == 0))
@@ -138,25 +138,25 @@ BOOLEAN TuiEditBox(PCSTR MessageText, PCHAR EditTextBuffer, ULONG Length)
     EditBoxStartX = x1 + 3;
     EditBoxEndX = x2 - 3;
 
-    // Draw the edit box background and the text
+
     UiFillArea(EditBoxStartX, EditBoxLine, EditBoxEndX, EditBoxLine, ' ', ATTR(UiEditBoxTextColor, UiEditBoxBgColor));
     UiDrawText2(EditBoxStartX, EditBoxLine, EditBoxEndX - EditBoxStartX + 1, EditTextBuffer, ATTR(UiEditBoxTextColor, UiEditBoxBgColor));
 
-    // Show the cursor
+
     EditBoxCursorX = EditBoxStartX;
     MachVideoSetTextCursorPosition(EditBoxCursorX, EditBoxLine);
     MachVideoHideShowTextCursor(TRUE);
 
-    // Draw status text
+
     UiDrawStatusText("Press ENTER to continue, or ESC to cancel");
 
     VideoCopyOffScreenBufferToVRAM();
 
-    //
-    // Enter the text. Please keep in mind that the default input mode
-    // of the edit boxes is in insertion mode, that is, you can insert
-    // text without erasing the existing one.
-    //
+
+
+
+
+
     for (;;)
     {
         if (MachConsKbHit())
@@ -179,7 +179,7 @@ BOOLEAN TuiEditBox(PCSTR MessageText, PCHAR EditTextBuffer, ULONG Length)
                 ReturnCode = FALSE;
                 break;
             }
-            else if (key == KEY_BACKSPACE) // Remove a character
+            else if (key == KEY_BACKSPACE)
             {
                 if ( (EditBoxTextLength > 0) && (EditBoxTextPosition > 0) &&
                      (EditBoxTextPosition <= EditBoxTextLength) )
@@ -196,7 +196,7 @@ BOOLEAN TuiEditBox(PCSTR MessageText, PCHAR EditTextBuffer, ULONG Length)
                     MachBeep();
                 }
             }
-            else if (Extended && key == KEY_DELETE) // Remove a character
+            else if (Extended && key == KEY_DELETE)
             {
                 if ( (EditBoxTextLength > 0) &&
                      (EditBoxTextPosition < EditBoxTextLength) )
@@ -212,31 +212,31 @@ BOOLEAN TuiEditBox(PCSTR MessageText, PCHAR EditTextBuffer, ULONG Length)
                     MachBeep();
                 }
             }
-            else if (Extended && key == KEY_HOME) // Go to the start of the buffer
+            else if (Extended && key == KEY_HOME)
             {
                 EditBoxTextPosition = 0;
             }
-            else if (Extended && key == KEY_END) // Go to the end of the buffer
+            else if (Extended && key == KEY_END)
             {
                 EditBoxTextPosition = EditBoxTextLength;
             }
-            else if (Extended && key == KEY_RIGHT) // Go right
+            else if (Extended && key == KEY_RIGHT)
             {
                 if (EditBoxTextPosition < EditBoxTextLength)
                     EditBoxTextPosition++;
                 else
                     MachBeep();
             }
-            else if (Extended && key == KEY_LEFT) // Go left
+            else if (Extended && key == KEY_LEFT)
             {
                 if (EditBoxTextPosition > 0)
                     EditBoxTextPosition--;
                 else
                     MachBeep();
             }
-            else if (!Extended) // Add this key to the buffer
+            else if (!Extended)
             {
-                if ( (EditBoxTextLength   < Length - 1) &&
+                if ( (EditBoxTextLength < Length - 1) &&
                      (EditBoxTextPosition < Length - 1) )
                 {
                     memmove(EditTextBuffer + EditBoxTextPosition + 1,
@@ -258,10 +258,10 @@ BOOLEAN TuiEditBox(PCSTR MessageText, PCHAR EditTextBuffer, ULONG Length)
             }
         }
 
-        // Draw the edit box background
+
         UiFillArea(EditBoxStartX, EditBoxLine, EditBoxEndX, EditBoxLine, ' ', ATTR(UiEditBoxTextColor, UiEditBoxBgColor));
 
-        // Fill the text in
+
         if (EditBoxTextPosition > (EditBoxEndX - EditBoxStartX))
         {
             EditBoxTextDisplayIndex = EditBoxTextPosition - (EditBoxEndX - EditBoxStartX);
@@ -274,7 +274,7 @@ BOOLEAN TuiEditBox(PCSTR MessageText, PCHAR EditTextBuffer, ULONG Length)
         }
         UiDrawText2(EditBoxStartX, EditBoxLine, EditBoxEndX - EditBoxStartX + 1, &EditTextBuffer[EditBoxTextDisplayIndex], ATTR(UiEditBoxTextColor, UiEditBoxBgColor));
 
-        // Move the cursor
+
         MachVideoSetTextCursorPosition(EditBoxCursorX, EditBoxLine);
 
         TuiUpdateDateTime();
@@ -284,10 +284,10 @@ BOOLEAN TuiEditBox(PCSTR MessageText, PCHAR EditTextBuffer, ULONG Length)
         MachHwIdle();
     }
 
-    // Hide the cursor again
+
     MachVideoHideShowTextCursor(FALSE);
 
-    // Restore the screen contents
+
     TuiRestoreScreen(ScreenBuffer);
     FrLdrTempFree(ScreenBuffer, TAG_TUI_SCREENBUFFER);
 

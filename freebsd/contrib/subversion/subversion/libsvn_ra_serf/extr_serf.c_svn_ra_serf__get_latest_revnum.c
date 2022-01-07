@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-struct TYPE_3__ {int /*<<< orphan*/ * priv; } ;
-typedef  TYPE_1__ svn_ra_session_t ;
-typedef  int /*<<< orphan*/  svn_ra_serf__session_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_ra_serf__get_youngest_revnum (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+struct TYPE_3__ {int * priv; } ;
+typedef TYPE_1__ svn_ra_session_t ;
+typedef int svn_ra_serf__session_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+
+
+ int * svn_error_trace (int ) ;
+ int svn_ra_serf__get_youngest_revnum (int *,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 svn_ra_serf__get_latest_revnum(svn_ra_session_t *ra_session,

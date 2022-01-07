@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int Py_ssize_t ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArray_Dims ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
-typedef  int /*<<< orphan*/  NPY_ORDER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NPY_CORDER ; 
- int /*<<< orphan*/  NpyArg_ParseKeywords (int /*<<< orphan*/ *,char*,char**,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArg_ParseTuple (int /*<<< orphan*/ *,char*,int /*<<< orphan*/  (*) (int /*<<< orphan*/ *,int /*<<< orphan*/ *),int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_IntpConverter (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyArray_Newshape (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PyArray_OrderConverter ; 
- int /*<<< orphan*/ * PyArray_View (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_Occurred () ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_TypeError ; 
- scalar_t__ PyTuple_GET_ITEM (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int PyTuple_Size (int /*<<< orphan*/ *) ; 
- scalar_t__ Py_None ; 
- int /*<<< orphan*/  npy_free_cache_dim_obj (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Py_ssize_t ;
+typedef int PyObject ;
+typedef int PyArray_Dims ;
+typedef int PyArrayObject ;
+typedef int NPY_ORDER ;
+
+
+ int NPY_CORDER ;
+ int NpyArg_ParseKeywords (int *,char*,char**,int ,int *) ;
+ int PyArg_ParseTuple (int *,char*,int (*) (int *,int *),int *) ;
+ int PyArray_IntpConverter (int *,int *) ;
+ int * PyArray_Newshape (int *,int *,int ) ;
+ int PyArray_OrderConverter ;
+ int * PyArray_View (int *,int *,int *) ;
+ int PyErr_Occurred () ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_TypeError ;
+ scalar_t__ PyTuple_GET_ITEM (int *,int ) ;
+ int PyTuple_Size (int *) ;
+ scalar_t__ Py_None ;
+ int npy_free_cache_dim_obj (int ) ;
 
 __attribute__((used)) static PyObject *
 array_reshape(PyArrayObject *self, PyObject *args, PyObject *kwds)
 {
-    static char *keywords[] = {"order", NULL};
+    static char *keywords[] = {"order", ((void*)0)};
     PyArray_Dims newshape;
     PyObject *ret;
     NPY_ORDER order = NPY_CORDER;
@@ -43,16 +43,16 @@ array_reshape(PyArrayObject *self, PyObject *args, PyObject *kwds)
 
     if (!NpyArg_ParseKeywords(kwds, "|O&", keywords,
                 PyArray_OrderConverter, &order)) {
-        return NULL;
+        return ((void*)0);
     }
 
     if (n <= 1) {
         if (n != 0 && PyTuple_GET_ITEM(args, 0) == Py_None) {
-            return PyArray_View(self, NULL, NULL);
+            return PyArray_View(self, ((void*)0), ((void*)0));
         }
         if (!PyArg_ParseTuple(args, "O&:reshape", PyArray_IntpConverter,
                               &newshape)) {
-            return NULL;
+            return ((void*)0);
         }
     }
     else {
@@ -70,5 +70,5 @@ array_reshape(PyArrayObject *self, PyObject *args, PyObject *kwds)
 
  fail:
     npy_free_cache_dim_obj(newshape);
-    return NULL;
+    return ((void*)0);
 }

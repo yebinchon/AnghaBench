@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  p_Next; } ;
-typedef  TYPE_1__ t_List ;
-struct TYPE_8__ {int /*<<< orphan*/  node; } ;
-typedef  TYPE_2__ t_EthHashEntry ;
 
-/* Variables and functions */
- TYPE_2__* ETH_HASH_ENTRY_OBJ (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NCSW_LIST_DelAndInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NCSW_LIST_IsEmpty (TYPE_1__*) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int p_Next; } ;
+typedef TYPE_1__ t_List ;
+struct TYPE_8__ {int node; } ;
+typedef TYPE_2__ t_EthHashEntry ;
+
+
+ TYPE_2__* ETH_HASH_ENTRY_OBJ (int ) ;
+ int NCSW_LIST_DelAndInit (int *) ;
+ int NCSW_LIST_IsEmpty (TYPE_1__*) ;
 
 __attribute__((used)) static __inline__ t_EthHashEntry *DequeueAddrFromHashEntry(t_List *p_AddrLst)
 {
-   t_EthHashEntry *p_HashEntry = NULL;
+   t_EthHashEntry *p_HashEntry = ((void*)0);
     if (!NCSW_LIST_IsEmpty(p_AddrLst))
     {
         p_HashEntry = ETH_HASH_ENTRY_OBJ(p_AddrLst->p_Next);

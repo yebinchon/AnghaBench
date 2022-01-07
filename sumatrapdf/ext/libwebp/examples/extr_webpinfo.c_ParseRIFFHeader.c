@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WebPInfoStatus ;
-struct TYPE_8__ {int /*<<< orphan*/  quiet_; } ;
-typedef  TYPE_1__ WebPInfo ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int WebPInfoStatus ;
+struct TYPE_8__ {int quiet_; } ;
+typedef TYPE_1__ WebPInfo ;
 struct TYPE_9__ {size_t end_; } ;
-typedef  TYPE_2__ MemBuffer ;
+typedef TYPE_2__ MemBuffer ;
 
-/* Variables and functions */
- size_t CHUNK_HEADER_SIZE ; 
- int /*<<< orphan*/  CHUNK_SIZE_BYTES ; 
- scalar_t__ GetBuffer (TYPE_2__* const) ; 
- size_t GetLE32 (scalar_t__) ; 
- int /*<<< orphan*/  LOG_ERROR (char*) ; 
- int /*<<< orphan*/  LOG_WARN (char*) ; 
- size_t MAX_CHUNK_PAYLOAD ; 
- size_t const MemDataSize (TYPE_2__* const) ; 
- size_t RIFF_HEADER_SIZE ; 
- int /*<<< orphan*/  Skip (TYPE_2__* const,size_t) ; 
- scalar_t__ TAG_SIZE ; 
- int /*<<< orphan*/  WEBP_INFO_OK ; 
- int /*<<< orphan*/  WEBP_INFO_PARSE_ERROR ; 
- int /*<<< orphan*/  WEBP_INFO_TRUNCATED_DATA ; 
- scalar_t__ memcmp (scalar_t__,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+ size_t CHUNK_HEADER_SIZE ;
+ int CHUNK_SIZE_BYTES ;
+ scalar_t__ GetBuffer (TYPE_2__* const) ;
+ size_t GetLE32 (scalar_t__) ;
+ int LOG_ERROR (char*) ;
+ int LOG_WARN (char*) ;
+ size_t MAX_CHUNK_PAYLOAD ;
+ size_t const MemDataSize (TYPE_2__* const) ;
+ size_t RIFF_HEADER_SIZE ;
+ int Skip (TYPE_2__* const,size_t) ;
+ scalar_t__ TAG_SIZE ;
+ int WEBP_INFO_OK ;
+ int WEBP_INFO_PARSE_ERROR ;
+ int WEBP_INFO_TRUNCATED_DATA ;
+ scalar_t__ memcmp (scalar_t__,char*,int ) ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static WebPInfoStatus ParseRIFFHeader(const WebPInfo* const webp_info,
                                       MemBuffer* const mem) {

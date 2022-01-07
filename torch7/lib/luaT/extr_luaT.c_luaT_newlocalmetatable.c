@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  scalar_t__ lua_CFunction ;
 
-/* Variables and functions */
- scalar_t__ luaT_lua_newmetatable ; 
- char const* luaT_typenameid (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  lua_call (int /*<<< orphan*/ *,int,int) ; 
- void lua_pushcfunction (int /*<<< orphan*/ *,scalar_t__) ; 
- void lua_pushnil (int /*<<< orphan*/ *) ; 
- scalar_t__ lua_pushstring (int /*<<< orphan*/ *,char const*) ; 
- void lua_pushvalue (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+typedef scalar_t__ lua_CFunction ;
+
+
+ scalar_t__ luaT_lua_newmetatable ;
+ char const* luaT_typenameid (int *,char const*) ;
+ int lua_call (int *,int,int) ;
+ void lua_pushcfunction (int *,scalar_t__) ;
+ void lua_pushnil (int *) ;
+ scalar_t__ lua_pushstring (int *,char const*) ;
+ void lua_pushvalue (int *,int) ;
 
 const char* luaT_newlocalmetatable(lua_State *L, const char *tname, const char *parent_tname,
                                    lua_CFunction constructor, lua_CFunction destructor, lua_CFunction factory, int moduleidx)

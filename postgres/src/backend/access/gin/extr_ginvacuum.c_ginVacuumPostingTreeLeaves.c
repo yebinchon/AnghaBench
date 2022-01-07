@@ -1,109 +1,109 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_4__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  rightlink; } ;
-struct TYPE_5__ {int /*<<< orphan*/  strategy; int /*<<< orphan*/  index; int /*<<< orphan*/  tmpCxt; } ;
-typedef  int /*<<< orphan*/  PostingItem ;
-typedef  int /*<<< orphan*/  Page ;
-typedef  int /*<<< orphan*/  MemoryContext ;
-typedef  TYPE_1__ GinVacuumState ;
-typedef  int /*<<< orphan*/  Buffer ;
-typedef  int /*<<< orphan*/  BlockNumber ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- int /*<<< orphan*/  BufferGetPage (int /*<<< orphan*/ ) ; 
- scalar_t__ FirstOffsetNumber ; 
- int /*<<< orphan*/  GIN_EXCLUSIVE ; 
- int /*<<< orphan*/  GIN_SHARE ; 
- int /*<<< orphan*/  GIN_UNLOCK ; 
- scalar_t__ GinDataLeafPageIsEmpty (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * GinDataPageGetPostingItem (int /*<<< orphan*/ ,scalar_t__) ; 
- TYPE_4__* GinPageGetOpaque (int /*<<< orphan*/ ) ; 
- int GinPageIsData (int /*<<< orphan*/ ) ; 
- scalar_t__ GinPageIsLeaf (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InvalidBlockNumber ; 
- int /*<<< orphan*/  LockBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAIN_FORKNUM ; 
- int /*<<< orphan*/  MemoryContextReset (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MemoryContextSwitchTo (int /*<<< orphan*/ ) ; 
- scalar_t__ PageGetMaxOffsetNumber (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PostingItemGetBlockNumber (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RBM_NORMAL ; 
- int /*<<< orphan*/  ReadBufferExtended (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnlockReleaseBuffer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ginVacuumPostingTreeLeaf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+typedef struct TYPE_6__ TYPE_4__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int rightlink; } ;
+struct TYPE_5__ {int strategy; int index; int tmpCxt; } ;
+typedef int PostingItem ;
+typedef int Page ;
+typedef int MemoryContext ;
+typedef TYPE_1__ GinVacuumState ;
+typedef int Buffer ;
+typedef int BlockNumber ;
+
+
+ int Assert (int) ;
+ int BufferGetPage (int ) ;
+ scalar_t__ FirstOffsetNumber ;
+ int GIN_EXCLUSIVE ;
+ int GIN_SHARE ;
+ int GIN_UNLOCK ;
+ scalar_t__ GinDataLeafPageIsEmpty (int ) ;
+ int * GinDataPageGetPostingItem (int ,scalar_t__) ;
+ TYPE_4__* GinPageGetOpaque (int ) ;
+ int GinPageIsData (int ) ;
+ scalar_t__ GinPageIsLeaf (int ) ;
+ int InvalidBlockNumber ;
+ int LockBuffer (int ,int ) ;
+ int MAIN_FORKNUM ;
+ int MemoryContextReset (int ) ;
+ int MemoryContextSwitchTo (int ) ;
+ scalar_t__ PageGetMaxOffsetNumber (int ) ;
+ int PostingItemGetBlockNumber (int *) ;
+ int RBM_NORMAL ;
+ int ReadBufferExtended (int ,int ,int ,int ,int ) ;
+ int UnlockReleaseBuffer (int ) ;
+ int ginVacuumPostingTreeLeaf (int ,int ,TYPE_1__*) ;
 
 __attribute__((used)) static bool
 ginVacuumPostingTreeLeaves(GinVacuumState *gvs, BlockNumber blkno)
 {
-	Buffer		buffer;
-	Page		page;
-	bool		hasVoidPage = false;
-	MemoryContext oldCxt;
+ Buffer buffer;
+ Page page;
+ bool hasVoidPage = 0;
+ MemoryContext oldCxt;
 
-	/* Find leftmost leaf page of posting tree and lock it in exclusive mode */
-	while (true)
-	{
-		PostingItem *pitem;
 
-		buffer = ReadBufferExtended(gvs->index, MAIN_FORKNUM, blkno,
-									RBM_NORMAL, gvs->strategy);
-		LockBuffer(buffer, GIN_SHARE);
-		page = BufferGetPage(buffer);
+ while (1)
+ {
+  PostingItem *pitem;
 
-		Assert(GinPageIsData(page));
+  buffer = ReadBufferExtended(gvs->index, MAIN_FORKNUM, blkno,
+         RBM_NORMAL, gvs->strategy);
+  LockBuffer(buffer, GIN_SHARE);
+  page = BufferGetPage(buffer);
 
-		if (GinPageIsLeaf(page))
-		{
-			LockBuffer(buffer, GIN_UNLOCK);
-			LockBuffer(buffer, GIN_EXCLUSIVE);
-			break;
-		}
+  Assert(GinPageIsData(page));
 
-		Assert(PageGetMaxOffsetNumber(page) >= FirstOffsetNumber);
+  if (GinPageIsLeaf(page))
+  {
+   LockBuffer(buffer, GIN_UNLOCK);
+   LockBuffer(buffer, GIN_EXCLUSIVE);
+   break;
+  }
 
-		pitem = GinDataPageGetPostingItem(page, FirstOffsetNumber);
-		blkno = PostingItemGetBlockNumber(pitem);
-		Assert(blkno != InvalidBlockNumber);
+  Assert(PageGetMaxOffsetNumber(page) >= FirstOffsetNumber);
 
-		UnlockReleaseBuffer(buffer);
-	}
+  pitem = GinDataPageGetPostingItem(page, FirstOffsetNumber);
+  blkno = PostingItemGetBlockNumber(pitem);
+  Assert(blkno != InvalidBlockNumber);
 
-	/* Iterate all posting tree leaves using rightlinks and vacuum them */
-	while (true)
-	{
-		oldCxt = MemoryContextSwitchTo(gvs->tmpCxt);
-		ginVacuumPostingTreeLeaf(gvs->index, buffer, gvs);
-		MemoryContextSwitchTo(oldCxt);
-		MemoryContextReset(gvs->tmpCxt);
+  UnlockReleaseBuffer(buffer);
+ }
 
-		if (GinDataLeafPageIsEmpty(page))
-			hasVoidPage = true;
 
-		blkno = GinPageGetOpaque(page)->rightlink;
+ while (1)
+ {
+  oldCxt = MemoryContextSwitchTo(gvs->tmpCxt);
+  ginVacuumPostingTreeLeaf(gvs->index, buffer, gvs);
+  MemoryContextSwitchTo(oldCxt);
+  MemoryContextReset(gvs->tmpCxt);
 
-		UnlockReleaseBuffer(buffer);
+  if (GinDataLeafPageIsEmpty(page))
+   hasVoidPage = 1;
 
-		if (blkno == InvalidBlockNumber)
-			break;
+  blkno = GinPageGetOpaque(page)->rightlink;
 
-		buffer = ReadBufferExtended(gvs->index, MAIN_FORKNUM, blkno,
-									RBM_NORMAL, gvs->strategy);
-		LockBuffer(buffer, GIN_EXCLUSIVE);
-		page = BufferGetPage(buffer);
-	}
+  UnlockReleaseBuffer(buffer);
 
-	return hasVoidPage;
+  if (blkno == InvalidBlockNumber)
+   break;
+
+  buffer = ReadBufferExtended(gvs->index, MAIN_FORKNUM, blkno,
+         RBM_NORMAL, gvs->strategy);
+  LockBuffer(buffer, GIN_EXCLUSIVE);
+  page = BufferGetPage(buffer);
+ }
+
+ return hasVoidPage;
 }

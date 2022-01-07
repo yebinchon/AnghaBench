@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int lua_State ;
 struct TYPE_9__ {int size; } ;
-typedef  TYPE_1__ THLongStorage ;
+typedef TYPE_1__ THLongStorage ;
 
-/* Variables and functions */
- int /*<<< orphan*/  THLongStorage_copy (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  THLongStorage_free (TYPE_1__*) ; 
- TYPE_1__* THLongStorage_newWithSize (int) ; 
- int /*<<< orphan*/  THLongStorage_set (TYPE_1__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaL_argerror (int /*<<< orphan*/ *,int,char*) ; 
- TYPE_1__* luaT_toudata (int /*<<< orphan*/ *,int,char*) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_isnumber (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_tonumber (int /*<<< orphan*/ *,int) ; 
+
+ int THLongStorage_copy (TYPE_1__*,TYPE_1__*) ;
+ int THLongStorage_free (TYPE_1__*) ;
+ TYPE_1__* THLongStorage_newWithSize (int) ;
+ int THLongStorage_set (TYPE_1__*,int,int ) ;
+ int luaL_argerror (int *,int,char*) ;
+ TYPE_1__* luaT_toudata (int *,int,char*) ;
+ int lua_gettop (int *) ;
+ int lua_isnumber (int *,int) ;
+ int lua_tonumber (int *,int) ;
 
 THLongStorage* torch_checklongargs(lua_State *L, int index)
 {

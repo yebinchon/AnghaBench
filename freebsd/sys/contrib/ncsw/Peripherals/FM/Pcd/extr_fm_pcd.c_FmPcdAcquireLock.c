@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ t_Handle ;
-typedef  int /*<<< orphan*/  t_FmPcdLock ;
-typedef  int /*<<< orphan*/  t_FmPcd ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_COND (scalar_t__) ; 
- int /*<<< orphan*/ * DequeueLockFromFreeLst (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EnqueueLockToAcquiredLst (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FillFreeLocksLst (scalar_t__) ; 
+
+
+
+typedef scalar_t__ t_Handle ;
+typedef int t_FmPcdLock ;
+typedef int t_FmPcd ;
+
+
+ int ASSERT_COND (scalar_t__) ;
+ int * DequeueLockFromFreeLst (int *) ;
+ int EnqueueLockToAcquiredLst (int *,int *) ;
+ int FillFreeLocksLst (scalar_t__) ;
 
 t_FmPcdLock * FmPcdAcquireLock(t_Handle h_FmPcd)
 {

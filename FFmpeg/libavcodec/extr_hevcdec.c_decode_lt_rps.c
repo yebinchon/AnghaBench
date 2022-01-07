@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  scalar_t__ uint64_t ;
-typedef  int int64_t ;
-typedef  int int32_t ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
+typedef scalar_t__ uint64_t ;
+typedef int int64_t ;
+typedef int int32_t ;
 struct TYPE_9__ {int pic_order_cnt_lsb; } ;
 struct TYPE_8__ {TYPE_4__* sps; } ;
 struct TYPE_12__ {int poc; TYPE_2__ sh; TYPE_1__ ps; } ;
-struct TYPE_11__ {int log2_max_poc_lsb; unsigned int num_long_term_ref_pics_sps; int* lt_ref_pic_poc_lsb_sps; void** used_by_curr_pic_lt_sps_flag; int /*<<< orphan*/  long_term_ref_pics_present_flag; } ;
+struct TYPE_11__ {int log2_max_poc_lsb; unsigned int num_long_term_ref_pics_sps; int* lt_ref_pic_poc_lsb_sps; void** used_by_curr_pic_lt_sps_flag; int long_term_ref_pics_present_flag; } ;
 struct TYPE_10__ {unsigned int nb_refs; int* poc; void** used; } ;
-typedef  TYPE_3__ LongTermRPS ;
-typedef  TYPE_4__ HEVCSPS ;
-typedef  TYPE_5__ HEVCContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+typedef TYPE_3__ LongTermRPS ;
+typedef TYPE_4__ HEVCSPS ;
+typedef TYPE_5__ HEVCContext ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- scalar_t__ FF_ARRAY_ELEMS (int*) ; 
- int av_ceil_log2 (int) ; 
- void* get_bits (int /*<<< orphan*/ *,int) ; 
- void* get_bits1 (int /*<<< orphan*/ *) ; 
- void* get_ue_golomb_long (int /*<<< orphan*/ *) ; 
+
+ int AVERROR_INVALIDDATA ;
+ scalar_t__ FF_ARRAY_ELEMS (int*) ;
+ int av_ceil_log2 (int) ;
+ void* get_bits (int *,int) ;
+ void* get_bits1 (int *) ;
+ void* get_ue_golomb_long (int *) ;
 
 __attribute__((used)) static int decode_lt_rps(HEVCContext *s, LongTermRPS *rps, GetBitContext *gb)
 {
     const HEVCSPS *sps = s->ps.sps;
-    int max_poc_lsb    = 1 << sps->log2_max_poc_lsb;
+    int max_poc_lsb = 1 << sps->log2_max_poc_lsb;
     int prev_delta_msb = 0;
     unsigned int nb_sps = 0, nb_sh;
     int i;
@@ -69,10 +69,10 @@ __attribute__((used)) static int decode_lt_rps(HEVCContext *s, LongTermRPS *rps,
             if (sps->num_long_term_ref_pics_sps > 1)
                 lt_idx_sps = get_bits(gb, av_ceil_log2(sps->num_long_term_ref_pics_sps));
 
-            rps->poc[i]  = sps->lt_ref_pic_poc_lsb_sps[lt_idx_sps];
+            rps->poc[i] = sps->lt_ref_pic_poc_lsb_sps[lt_idx_sps];
             rps->used[i] = sps->used_by_curr_pic_lt_sps_flag[lt_idx_sps];
         } else {
-            rps->poc[i]  = get_bits(gb, sps->log2_max_poc_lsb);
+            rps->poc[i] = get_bits(gb, sps->log2_max_poc_lsb);
             rps->used[i] = get_bits1(gb);
         }
 

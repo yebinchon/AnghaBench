@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tm {int tm_mon; int tm_mday; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  adjyear (struct tm*,char,int,int /*<<< orphan*/ ) ; 
- int daysinmonth (struct tm*) ; 
- int domktime (struct tm*,char) ; 
+
+ int adjyear (struct tm*,char,int,int ) ;
+ int daysinmonth (struct tm*) ;
+ int domktime (struct tm*,char) ;
 
 __attribute__((used)) static int
 adjmon(struct tm *t, char type, int val, int istext, int mk)
@@ -29,9 +29,9 @@ adjmon(struct tm *t, char type, int val, int istext, int mk)
     case '+':
       if (istext) {
         if (val <= t->tm_mon)
-          val += 11 - t->tm_mon;	/* early next year */
+          val += 11 - t->tm_mon;
         else
-          val -= t->tm_mon + 1;		/* later this year */
+          val -= t->tm_mon + 1;
       }
       if (val) {
         if (!adjyear(t, '+', (t->tm_mon + val) / 12, 0))
@@ -46,9 +46,9 @@ adjmon(struct tm *t, char type, int val, int istext, int mk)
     case '-':
       if (istext) {
         if (val-1 > t->tm_mon)
-          val = 13 - val + t->tm_mon;	/* later last year */
+          val = 13 - val + t->tm_mon;
         else
-          val = t->tm_mon - val + 1;	/* early this year */
+          val = t->tm_mon - val + 1;
       }
       if (val) {
         if (!adjyear(t, '-', val / 12, 0))
@@ -69,7 +69,7 @@ adjmon(struct tm *t, char type, int val, int istext, int mk)
       t->tm_mon = --val;
   }
 
-  /* e.g., -v-1m on March, 31 is the last day of February in common sense */
+
   lmdays = daysinmonth(t);
   if (t->tm_mday > lmdays)
     t->tm_mday = lmdays;

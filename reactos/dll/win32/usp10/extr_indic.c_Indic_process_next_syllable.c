@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ (* lexical_function ) (int /*<<< orphan*/  const) ;
-typedef  int /*<<< orphan*/  WCHAR ;
 
-/* Variables and functions */
- scalar_t__ lex_Halant ; 
- scalar_t__ lex_NBSP ; 
- scalar_t__ lex_Ra ; 
- scalar_t__ lex_Vowel ; 
- int parse_consonant_syllable (int /*<<< orphan*/  const*,unsigned int,unsigned int,unsigned int*,unsigned int,scalar_t__ (*) (int /*<<< orphan*/  const)) ; 
- int parse_vowel_syllable (int /*<<< orphan*/  const*,unsigned int,unsigned int,unsigned int,scalar_t__ (*) (int /*<<< orphan*/  const)) ; 
+
+
+
+typedef scalar_t__ (* lexical_function ) (int const) ;
+typedef int WCHAR ;
+
+
+ scalar_t__ lex_Halant ;
+ scalar_t__ lex_NBSP ;
+ scalar_t__ lex_Ra ;
+ scalar_t__ lex_Vowel ;
+ int parse_consonant_syllable (int const*,unsigned int,unsigned int,unsigned int*,unsigned int,scalar_t__ (*) (int const)) ;
+ int parse_vowel_syllable (int const*,unsigned int,unsigned int,unsigned int,scalar_t__ (*) (int const)) ;
 
 __attribute__((used)) static int Indic_process_next_syllable(const WCHAR *input, unsigned int cChar,
         unsigned int start, unsigned int *main, unsigned int next, lexical_function lex)

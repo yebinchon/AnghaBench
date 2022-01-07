@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dm_table {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PRESUSPEND_UNDO ; 
- int /*<<< orphan*/  suspend_targets (struct dm_table*,int /*<<< orphan*/ ) ; 
+
+ int PRESUSPEND_UNDO ;
+ int suspend_targets (struct dm_table*,int ) ;
 
 void dm_table_presuspend_undo_targets(struct dm_table *t)
 {
-	if (!t)
-		return;
+ if (!t)
+  return;
 
-	suspend_targets(t, PRESUSPEND_UNDO);
+ suspend_targets(t, PRESUSPEND_UNDO);
 }

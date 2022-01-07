@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rtentry {int /*<<< orphan*/  rt_pksent; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RT_LOCK_DESTROY (struct rtentry*) ; 
- int /*<<< orphan*/  counter_u64_free (int /*<<< orphan*/ ) ; 
+
+
+
+struct rtentry {int rt_pksent; } ;
+
+
+ int RT_LOCK_DESTROY (struct rtentry*) ;
+ int counter_u64_free (int ) ;
 
 __attribute__((used)) static void
 rtentry_zfini(void *mem, int size)
 {
-	struct rtentry *rt = mem;
+ struct rtentry *rt = mem;
 
-	RT_LOCK_DESTROY(rt);
-	counter_u64_free(rt->rt_pksent);
+ RT_LOCK_DESTROY(rt);
+ counter_u64_free(rt->rt_pksent);
 }

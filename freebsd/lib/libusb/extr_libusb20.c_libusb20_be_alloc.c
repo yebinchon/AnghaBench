@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct libusb20_backend_methods {int /*<<< orphan*/  (* init_backend ) (struct libusb20_backend*) ;} ;
-struct libusb20_backend {struct libusb20_backend_methods const* methods; int /*<<< orphan*/  usb_devs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TAILQ_INIT (int /*<<< orphan*/ *) ; 
- struct libusb20_backend* malloc (int) ; 
- int /*<<< orphan*/  memset (struct libusb20_backend*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub1 (struct libusb20_backend*) ; 
+
+
+
+struct libusb20_backend_methods {int (* init_backend ) (struct libusb20_backend*) ;} ;
+struct libusb20_backend {struct libusb20_backend_methods const* methods; int usb_devs; } ;
+
+
+ int TAILQ_INIT (int *) ;
+ struct libusb20_backend* malloc (int) ;
+ int memset (struct libusb20_backend*,int ,int) ;
+ int stub1 (struct libusb20_backend*) ;
 
 struct libusb20_backend *
 libusb20_be_alloc(const struct libusb20_backend_methods *methods)
 {
-	struct libusb20_backend *pbe;
+ struct libusb20_backend *pbe;
 
-	pbe = malloc(sizeof(*pbe));
-	if (pbe == NULL) {
-		return (NULL);
-	}
-	memset(pbe, 0, sizeof(*pbe));
+ pbe = malloc(sizeof(*pbe));
+ if (pbe == ((void*)0)) {
+  return (((void*)0));
+ }
+ memset(pbe, 0, sizeof(*pbe));
 
-	TAILQ_INIT(&(pbe->usb_devs));
+ TAILQ_INIT(&(pbe->usb_devs));
 
-	pbe->methods = methods;		/* set backend methods */
+ pbe->methods = methods;
 
-	/* do the initial device scan */
-	if (pbe->methods->init_backend) {
-		pbe->methods->init_backend(pbe);
-	}
-	return (pbe);
+
+ if (pbe->methods->init_backend) {
+  pbe->methods->init_backend(pbe);
+ }
+ return (pbe);
 }

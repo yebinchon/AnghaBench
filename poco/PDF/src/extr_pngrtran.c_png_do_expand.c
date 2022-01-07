@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int png_uint_32 ;
-typedef  int png_uint_16 ;
-typedef  int png_size_t ;
-typedef  TYPE_1__* png_row_infop ;
-typedef  TYPE_2__* png_color_16p ;
-typedef  int* png_bytep ;
-typedef  int png_byte ;
-struct TYPE_6__ {int red; int green; int blue; int /*<<< orphan*/  gray; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int png_uint_32 ;
+typedef int png_uint_16 ;
+typedef int png_size_t ;
+typedef TYPE_1__* png_row_infop ;
+typedef TYPE_2__* png_color_16p ;
+typedef int* png_bytep ;
+typedef int png_byte ;
+struct TYPE_6__ {int red; int green; int blue; int gray; } ;
 struct TYPE_5__ {int width; scalar_t__ color_type; int bit_depth; int pixel_depth; int rowbytes; int channels; } ;
 
-/* Variables and functions */
- scalar_t__ PNG_COLOR_TYPE_GRAY ; 
- scalar_t__ PNG_COLOR_TYPE_GRAY_ALPHA ; 
- scalar_t__ PNG_COLOR_TYPE_RGB ; 
- scalar_t__ PNG_COLOR_TYPE_RGB_ALPHA ; 
- void* PNG_ROWBYTES (int,int) ; 
- int /*<<< orphan*/  png_debug (int,char*) ; 
 
-void /* PRIVATE */
+ scalar_t__ PNG_COLOR_TYPE_GRAY ;
+ scalar_t__ PNG_COLOR_TYPE_GRAY_ALPHA ;
+ scalar_t__ PNG_COLOR_TYPE_RGB ;
+ scalar_t__ PNG_COLOR_TYPE_RGB_ALPHA ;
+ void* PNG_ROWBYTES (int,int) ;
+ int png_debug (int,char*) ;
+
+void
 png_do_expand(png_row_infop row_info, png_bytep row,
    png_color_16p trans_value)
 {
@@ -40,9 +40,9 @@ png_do_expand(png_row_infop row_info, png_bytep row,
    png_uint_32 row_width=row_info->width;
 
    png_debug(1, "in png_do_expand\n");
-#if defined(PNG_USELESS_TESTS_SUPPORTED)
-   if (row != NULL && row_info != NULL)
-#endif
+
+
+
    {
       if (row_info->color_type == PNG_COLOR_TYPE_GRAY)
       {
@@ -127,7 +127,7 @@ png_do_expand(png_row_infop row_info, png_bytep row,
             row_info->rowbytes = row_width;
          }
 
-         if (trans_value != NULL)
+         if (trans_value != ((void*)0))
          {
             if (row_info->bit_depth == 8)
             {
@@ -151,7 +151,7 @@ png_do_expand(png_row_infop row_info, png_bytep row,
                dp = row + (row_info->rowbytes << 1) - 1;
                for (i = 0; i < row_width; i++)
                {
-                  if (*(sp-1) == gray_high && *(sp) == gray_low) 
+                  if (*(sp-1) == gray_high && *(sp) == gray_low)
                   {
                      *dp-- = 0;
                      *dp-- = 0;
@@ -209,7 +209,7 @@ png_do_expand(png_row_infop row_info, png_bytep row,
                   *(sp - 3) == green_high &&
                   *(sp - 2) == green_low &&
                   *(sp - 1) == blue_high &&
-                  *(sp    ) == blue_low)
+                  *(sp ) == blue_low)
                {
                   *dp-- = 0;
                   *dp-- = 0;

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int WORD ;
-struct TYPE_10__ {int /*<<< orphan*/  LigGlyph; int /*<<< orphan*/ * Component; int /*<<< orphan*/  CompCount; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * Ligature; int /*<<< orphan*/  LigatureCount; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * LigatureSet; int /*<<< orphan*/  Coverage; } ;
-struct TYPE_7__ {int /*<<< orphan*/  SubTableCount; } ;
-typedef  TYPE_1__ OT_LookupTable ;
-typedef  size_t INT ;
-typedef  TYPE_2__ GSUB_LigatureSubstFormat1 ;
-typedef  TYPE_3__ GSUB_LigatureSet ;
-typedef  TYPE_4__ GSUB_Ligature ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int GET_BE_WORD (int /*<<< orphan*/ ) ; 
- size_t GSUB_E_NOGLYPH ; 
- scalar_t__ GSUB_get_subtable (TYPE_1__ const*,int) ; 
- int GSUB_is_glyph_covered (int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  memmove (int*,int*,size_t) ; 
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int WORD ;
+struct TYPE_10__ {int LigGlyph; int * Component; int CompCount; } ;
+struct TYPE_9__ {int * Ligature; int LigatureCount; } ;
+struct TYPE_8__ {int * LigatureSet; int Coverage; } ;
+struct TYPE_7__ {int SubTableCount; } ;
+typedef TYPE_1__ OT_LookupTable ;
+typedef size_t INT ;
+typedef TYPE_2__ GSUB_LigatureSubstFormat1 ;
+typedef TYPE_3__ GSUB_LigatureSet ;
+typedef TYPE_4__ GSUB_Ligature ;
+typedef int BYTE ;
+
+
+ int GET_BE_WORD (int ) ;
+ size_t GSUB_E_NOGLYPH ;
+ scalar_t__ GSUB_get_subtable (TYPE_1__ const*,int) ;
+ int GSUB_is_glyph_covered (int const*,int) ;
+ int TRACE (char*,...) ;
+ int memmove (int*,int*,size_t) ;
 
 __attribute__((used)) static INT GSUB_apply_LigatureSubst(const OT_LookupTable *look, WORD *glyphs, INT glyph_index, INT write_dir, INT *glyph_count)
 {

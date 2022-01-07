@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ t_Handle ;
-typedef  int /*<<< orphan*/  t_Error ;
-struct TYPE_11__ {int /*<<< orphan*/  p_BmPortalLow; } ;
-typedef  TYPE_4__ t_BmPortal ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ t_Handle ;
+typedef int t_Error ;
+struct TYPE_11__ {int p_BmPortalLow; } ;
+typedef TYPE_4__ t_BmPortal ;
 struct bman_depletion {int dummy; } ;
 struct TYPE_8__ {struct bman_depletion state; } ;
 struct TYPE_10__ {struct bman_depletion state; } ;
 struct TYPE_9__ {TYPE_1__ as; TYPE_3__ ds; } ;
 struct bm_mc_result {TYPE_2__ query; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BM_MCC_VERB_CMD_QUERY ; 
- int /*<<< orphan*/  E_INVALID_HANDLE ; 
- int /*<<< orphan*/  E_OK ; 
- int /*<<< orphan*/  NCSW_PLOCK (TYPE_4__*) ; 
- int /*<<< orphan*/  PUNLOCK (TYPE_4__*) ; 
- int /*<<< orphan*/  SANITY_CHECK_RETURN_ERROR (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bm_mc_commit (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct bm_mc_result* bm_mc_result (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bm_mc_start (int /*<<< orphan*/ ) ; 
+
+ int BM_MCC_VERB_CMD_QUERY ;
+ int E_INVALID_HANDLE ;
+ int E_OK ;
+ int NCSW_PLOCK (TYPE_4__*) ;
+ int PUNLOCK (TYPE_4__*) ;
+ int SANITY_CHECK_RETURN_ERROR (TYPE_4__*,int ) ;
+ int bm_mc_commit (int ,int ) ;
+ struct bm_mc_result* bm_mc_result (int ) ;
+ int bm_mc_start (int ) ;
 
 t_Error BmPortalQuery(t_Handle h_BmPortal, struct bman_depletion *p_Pools, bool depletion)
 {
-    t_BmPortal          *p_BmPortal = (t_BmPortal *)h_BmPortal;
+    t_BmPortal *p_BmPortal = (t_BmPortal *)h_BmPortal;
     struct bm_mc_result *mcr;
 
     SANITY_CHECK_RETURN_ERROR(p_BmPortal, E_INVALID_HANDLE);

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct AVMD5 {int dummy; } ;
-typedef  int /*<<< orphan*/  hashstr ;
-typedef  int /*<<< orphan*/  hash ;
-typedef  int /*<<< orphan*/  challenge2 ;
-struct TYPE_3__ {char* password; int /*<<< orphan*/  auth_params; } ;
-typedef  TYPE_1__ RTMPContext ;
+typedef int hashstr ;
+typedef int hash ;
+typedef int challenge2 ;
+struct TYPE_3__ {char* password; int auth_params; } ;
+typedef TYPE_1__ RTMPContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AV_BASE64_SIZE (int) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_base64_encode (char*,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  av_free (struct AVMD5*) ; 
- int av_get_random_seed () ; 
- struct AVMD5* av_md5_alloc () ; 
- int /*<<< orphan*/  av_md5_final (struct AVMD5*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_md5_init (struct AVMD5*) ; 
- int /*<<< orphan*/  av_md5_update (struct AVMD5*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_strlcatf (int /*<<< orphan*/ ,int,char*,char const*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,...) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+ int AVERROR (int ) ;
+ int AV_BASE64_SIZE (int) ;
+ int ENOMEM ;
+ int av_base64_encode (char*,int,int *,int) ;
+ int av_free (struct AVMD5*) ;
+ int av_get_random_seed () ;
+ struct AVMD5* av_md5_alloc () ;
+ int av_md5_final (struct AVMD5*,int *) ;
+ int av_md5_init (struct AVMD5*) ;
+ int av_md5_update (struct AVMD5*,char const*,int ) ;
+ int av_strlcatf (int ,int,char*,char const*) ;
+ int snprintf (char*,int,char*,...) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static int do_adobe_auth(RTMPContext *rt, const char *user, const char *salt,
                          const char *opaque, const char *challenge)

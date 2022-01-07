@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  ktmp; int /*<<< orphan*/  ctx; } ;
-typedef  TYPE_1__ SIPHASH_PKEY_CTX ;
-typedef  int /*<<< orphan*/  EVP_PKEY_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_OCTET_STRING_set (int /*<<< orphan*/ *,unsigned char const*,size_t) ; 
- int /*<<< orphan*/  ASN1_STRING_get0_data (int /*<<< orphan*/ *) ; 
-#define  EVP_PKEY_CTRL_DIGESTINIT 131 
-#define  EVP_PKEY_CTRL_MD 130 
-#define  EVP_PKEY_CTRL_SET_DIGEST_SIZE 129 
-#define  EVP_PKEY_CTRL_SET_MAC_KEY 128 
- int /*<<< orphan*/  EVP_PKEY_CTX_get0_pkey (int /*<<< orphan*/ *) ; 
- TYPE_1__* EVP_PKEY_CTX_get_data (int /*<<< orphan*/ *) ; 
- unsigned char* EVP_PKEY_get0_siphash (int /*<<< orphan*/ ,size_t*) ; 
- size_t SIPHASH_KEY_SIZE ; 
- int SipHash_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int SipHash_set_hash_size (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int ktmp; int ctx; } ;
+typedef TYPE_1__ SIPHASH_PKEY_CTX ;
+typedef int EVP_PKEY_CTX ;
+
+
+ int ASN1_OCTET_STRING_set (int *,unsigned char const*,size_t) ;
+ int ASN1_STRING_get0_data (int *) ;
+
+
+
+
+ int EVP_PKEY_CTX_get0_pkey (int *) ;
+ TYPE_1__* EVP_PKEY_CTX_get_data (int *) ;
+ unsigned char* EVP_PKEY_get0_siphash (int ,size_t*) ;
+ size_t SIPHASH_KEY_SIZE ;
+ int SipHash_Init (int *,int ,int ,int ) ;
+ int SipHash_set_hash_size (int *,int) ;
 
 __attribute__((used)) static int pkey_siphash_ctrl(EVP_PKEY_CTX *ctx, int type, int p1, void *p2)
 {
@@ -37,27 +37,27 @@ __attribute__((used)) static int pkey_siphash_ctrl(EVP_PKEY_CTX *ctx, int type, 
 
     switch (type) {
 
-    case EVP_PKEY_CTRL_MD:
-        /* ignore */
+    case 130:
+
         break;
 
-    case EVP_PKEY_CTRL_SET_DIGEST_SIZE:
+    case 129:
         return SipHash_set_hash_size(&pctx->ctx, p1);
 
-    case EVP_PKEY_CTRL_SET_MAC_KEY:
-    case EVP_PKEY_CTRL_DIGESTINIT:
-        if (type == EVP_PKEY_CTRL_SET_MAC_KEY) {
-            /* user explicitly setting the key */
+    case 128:
+    case 131:
+        if (type == 128) {
+
             key = p2;
             len = p1;
         } else {
-            /* user indirectly setting the key via EVP_DigestSignInit */
+
             key = EVP_PKEY_get0_siphash(EVP_PKEY_CTX_get0_pkey(ctx), &len);
         }
-        if (key == NULL || len != SIPHASH_KEY_SIZE ||
+        if (key == ((void*)0) || len != SIPHASH_KEY_SIZE ||
             !ASN1_OCTET_STRING_set(&pctx->ktmp, key, len))
             return 0;
-        /* use default rounds (2,4) */
+
         return SipHash_Init(&pctx->ctx, ASN1_STRING_get0_data(&pctx->ktmp),
                             0, 0);
 

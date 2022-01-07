@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_fs_root_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_checksum_t ;
-struct text_baton_t {int /*<<< orphan*/ * stream; int /*<<< orphan*/  result_checksum; int /*<<< orphan*/ * pool; int /*<<< orphan*/  path; int /*<<< orphan*/ * root; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  apply_text (struct text_baton_t*,int /*<<< orphan*/ *) ; 
- struct text_baton_t* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  svn_checksum_dup (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs__canonicalize_abspath (char const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_stream_t ;
+typedef int svn_fs_root_t ;
+typedef int svn_error_t ;
+typedef int svn_checksum_t ;
+struct text_baton_t {int * stream; int result_checksum; int * pool; int path; int * root; } ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int apply_text (struct text_baton_t*,int *) ;
+ struct text_baton_t* apr_pcalloc (int *,int) ;
+ int svn_checksum_dup (int *,int *) ;
+ int svn_fs__canonicalize_abspath (char const*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 fs_apply_text(svn_stream_t **contents_p,

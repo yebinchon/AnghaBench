@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int total_size; int /*<<< orphan*/  timestamp; int /*<<< orphan*/  id; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int total_size; int timestamp; int id; } ;
 struct jr_code_close {TYPE_1__ p; } ;
-typedef  int /*<<< orphan*/  rec ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int rec ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JIT_CODE_CLOSE ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fwrite (struct jr_code_close*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  perf_close_marker_file () ; 
- int /*<<< orphan*/  perf_get_timestamp () ; 
- int /*<<< orphan*/  warnx (char*) ; 
+
+ int JIT_CODE_CLOSE ;
+ int fclose (int *) ;
+ int fwrite (struct jr_code_close*,int,int,int *) ;
+ int perf_close_marker_file () ;
+ int perf_get_timestamp () ;
+ int warnx (char*) ;
 
 int
 jvmti_close(void *agent)
 {
-	struct jr_code_close rec;
-	FILE *fp = agent;
+ struct jr_code_close rec;
+ FILE *fp = agent;
 
-	if (!fp) {
-		warnx("jvmti: invalid fd in close_agent");
-		return -1;
-	}
+ if (!fp) {
+  warnx("jvmti: invalid fd in close_agent");
+  return -1;
+ }
 
-	rec.p.id = JIT_CODE_CLOSE;
-	rec.p.total_size = sizeof(rec);
+ rec.p.id = JIT_CODE_CLOSE;
+ rec.p.total_size = sizeof(rec);
 
-	rec.p.timestamp = perf_get_timestamp();
+ rec.p.timestamp = perf_get_timestamp();
 
-	if (!fwrite(&rec, sizeof(rec), 1, fp))
-		return -1;
+ if (!fwrite(&rec, sizeof(rec), 1, fp))
+  return -1;
 
-	fclose(fp);
+ fclose(fp);
 
-	fp = NULL;
+ fp = ((void*)0);
 
-	perf_close_marker_file();
+ perf_close_marker_file();
 
-	return 0;
+ return 0;
 }

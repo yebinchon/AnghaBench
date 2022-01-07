@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct opaque_auth {int /*<<< orphan*/  oa_length; int /*<<< orphan*/  oa_base; int /*<<< orphan*/  oa_flavor; } ;
-typedef  int /*<<< orphan*/  bool_t ;
-typedef  int /*<<< orphan*/  XDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  MAX_AUTH_BYTES ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xdr_bytes (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ xdr_enum (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct opaque_auth {int oa_length; int oa_base; int oa_flavor; } ;
+typedef int bool_t ;
+typedef int XDR ;
+
+
+ int FALSE ;
+ int MAX_AUTH_BYTES ;
+ int assert (int ) ;
+ int xdr_bytes (int *,int *,int *,int ) ;
+ scalar_t__ xdr_enum (int *,int *) ;
 
 bool_t
 xdr_opaque_auth(XDR *xdrs, struct opaque_auth *ap)
 {
 
-	assert(xdrs != NULL);
-	assert(ap != NULL);
+ assert(xdrs != ((void*)0));
+ assert(ap != ((void*)0));
 
-	if (xdr_enum(xdrs, &(ap->oa_flavor)))
-		return (xdr_bytes(xdrs, &ap->oa_base,
-			&ap->oa_length, MAX_AUTH_BYTES));
-	return (FALSE);
+ if (xdr_enum(xdrs, &(ap->oa_flavor)))
+  return (xdr_bytes(xdrs, &ap->oa_base,
+   &ap->oa_length, MAX_AUTH_BYTES));
+ return (FALSE);
 }

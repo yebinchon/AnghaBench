@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Query ;
-typedef  int /*<<< orphan*/  ParamListInfo ;
-typedef  int /*<<< orphan*/  DestReceiver ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ExecuteQueryIntoDestReceiver (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ParseQueryString (char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Query ;
+typedef int ParamListInfo ;
+typedef int DestReceiver ;
+
+
+ int ExecuteQueryIntoDestReceiver (int *,int ,int *) ;
+ int * ParseQueryString (char const*,int *,int ) ;
 
 void
 ExecuteQueryStringIntoDestReceiver(const char *queryString, ParamListInfo params,
-								   DestReceiver *dest)
+           DestReceiver *dest)
 {
-	Query *query = ParseQueryString(queryString, NULL, 0);
+ Query *query = ParseQueryString(queryString, ((void*)0), 0);
 
-	ExecuteQueryIntoDestReceiver(query, params, dest);
+ ExecuteQueryIntoDestReceiver(query, params, dest);
 }

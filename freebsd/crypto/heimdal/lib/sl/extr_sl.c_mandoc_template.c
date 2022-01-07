@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  timestr ;
-typedef  int /*<<< orphan*/  time_t ;
-typedef  int /*<<< orphan*/  cmd ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int timestr ;
+typedef int time_t ;
+typedef int cmd ;
 struct TYPE_3__ {char* name; char* usage; scalar_t__ func; } ;
-typedef  TYPE_1__ SL_cmd ;
+typedef TYPE_1__ SL_cmd ;
 
-/* Variables and functions */
- char* getprogname () ; 
- int /*<<< orphan*/  localtime (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  strftime (char*,int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strncpy (char*,char const*,int) ; 
- char* strrchr (char*,char) ; 
- int /*<<< orphan*/  strupr (char*) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
+
+ char* getprogname () ;
+ int localtime (int *) ;
+ int printf (char*,...) ;
+ int strftime (char*,int,char*,int ) ;
+ int strncpy (char*,char const*,int) ;
+ char* strrchr (char*,char) ;
+ int strupr (char*) ;
+ int time (int *) ;
 
 __attribute__((used)) static void
 mandoc_template(SL_cmd *cmds,
-		const char *extra_string)
+  const char *extra_string)
 {
     SL_cmd *c, *prev;
     char timestr[64], cmd[64];
@@ -41,7 +41,7 @@ mandoc_template(SL_cmd *cmds,
     printf(".\\\"   * remove Op from mandatory flags\n");
     printf(".\\\"   * use better macros for arguments (like .Pa for files)\n");
     printf(".\\\"\n");
-    t = time(NULL);
+    t = time(((void*)0));
     strftime(timestr, sizeof(timestr), "%b %d, %Y", localtime(&t));
     printf(".Dd %s\n", timestr);
     p = strrchr(getprogname(), '/');
@@ -59,30 +59,30 @@ mandoc_template(SL_cmd *cmds,
     printf(".Sh SYNOPSIS\n");
     printf(".Nm\n");
     for(c = cmds; c->name; ++c) {
-/*	if (c->func == NULL)
-	    continue; */
-	printf(".Op Fl %s", c->name);
-	printf("\n");
+
+
+ printf(".Op Fl %s", c->name);
+ printf("\n");
 
     }
     if (extra_string && *extra_string)
-	printf (".Ar %s\n", extra_string);
+ printf (".Ar %s\n", extra_string);
     printf(".Sh DESCRIPTION\n");
     printf("Supported options:\n");
     printf(".Bl -tag -width Ds\n");
-    prev = NULL;
+    prev = ((void*)0);
     for(c = cmds; c->name; ++c) {
-	if (c->func) {
-	    if (prev)
-		printf ("\n%s\n", prev->usage);
+ if (c->func) {
+     if (prev)
+  printf ("\n%s\n", prev->usage);
 
-	    printf (".It Fl %s", c->name);
-	    prev = c;
-	} else
-	    printf (", %s\n", c->name);
+     printf (".It Fl %s", c->name);
+     prev = c;
+ } else
+     printf (", %s\n", c->name);
     }
     if (prev)
-	printf ("\n%s\n", prev->usage);
+ printf ("\n%s\n", prev->usage);
 
     printf(".El\n");
     printf(".\\\".Sh ENVIRONMENT\n");

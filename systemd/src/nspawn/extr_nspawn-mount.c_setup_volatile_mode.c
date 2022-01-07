@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uid_t ;
-typedef  int VolatileMode ;
 
-/* Variables and functions */
-#define  VOLATILE_OVERLAY 130 
-#define  VOLATILE_STATE 129 
-#define  VOLATILE_YES 128 
- int setup_volatile_overlay (char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
- int setup_volatile_state (char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
- int setup_volatile_yes (char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
+
+
+
+typedef int uid_t ;
+typedef int VolatileMode ;
+
+
+
+
+
+ int setup_volatile_overlay (char const*,int,int ,int ,char const*) ;
+ int setup_volatile_state (char const*,int,int ,int ,char const*) ;
+ int setup_volatile_yes (char const*,int,int ,int ,char const*) ;
 
 int setup_volatile_mode(
                 const char *directory,
@@ -29,13 +29,13 @@ int setup_volatile_mode(
 
         switch (mode) {
 
-        case VOLATILE_YES:
+        case 128:
                 return setup_volatile_yes(directory, userns, uid_shift, uid_range, selinux_apifs_context);
 
-        case VOLATILE_STATE:
+        case 129:
                 return setup_volatile_state(directory, userns, uid_shift, uid_range, selinux_apifs_context);
 
-        case VOLATILE_OVERLAY:
+        case 130:
                 return setup_volatile_overlay(directory, userns, uid_shift, uid_range, selinux_apifs_context);
 
         default:

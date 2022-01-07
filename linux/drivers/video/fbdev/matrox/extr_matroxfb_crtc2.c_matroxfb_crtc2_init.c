@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ENODEV ; 
- int /*<<< orphan*/  crtc2 ; 
- scalar_t__ fb_get_options (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  matroxfb_register_driver (int /*<<< orphan*/ *) ; 
+ int ENODEV ;
+ int crtc2 ;
+ scalar_t__ fb_get_options (char*,int *) ;
+ int matroxfb_register_driver (int *) ;
 
 __attribute__((used)) static int matroxfb_crtc2_init(void) {
-	if (fb_get_options("matrox_crtc2fb", NULL))
-		return -ENODEV;
+ if (fb_get_options("matrox_crtc2fb", ((void*)0)))
+  return -ENODEV;
 
-	matroxfb_register_driver(&crtc2);
-	return 0;
+ matroxfb_register_driver(&crtc2);
+ return 0;
 }

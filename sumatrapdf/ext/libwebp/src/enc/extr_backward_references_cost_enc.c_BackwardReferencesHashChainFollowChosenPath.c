@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  VP8LHashChain ;
-typedef  int /*<<< orphan*/  VP8LColorCache ;
-struct TYPE_5__ {int /*<<< orphan*/  error_; } ;
-typedef  TYPE_1__ VP8LBackwardRefs ;
-typedef  int /*<<< orphan*/  PixOrCopy ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PixOrCopyCreateCacheIdx (int const) ; 
- int /*<<< orphan*/  PixOrCopyCreateCopy (int const,int const) ; 
- int /*<<< orphan*/  PixOrCopyCreateLiteral (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  VP8LBackwardRefsCursorAdd (TYPE_1__* const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VP8LClearBackwardRefs (TYPE_1__* const) ; 
- int /*<<< orphan*/  VP8LColorCacheClear (int /*<<< orphan*/ *) ; 
- int VP8LColorCacheContains (int /*<<< orphan*/ *,int /*<<< orphan*/  const) ; 
- int VP8LColorCacheInit (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  VP8LColorCacheInsert (int /*<<< orphan*/ *,int /*<<< orphan*/  const) ; 
- int VP8LHashChainFindOffset (int /*<<< orphan*/  const* const,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int uint16_t ;
+typedef int VP8LHashChain ;
+typedef int VP8LColorCache ;
+struct TYPE_5__ {int error_; } ;
+typedef TYPE_1__ VP8LBackwardRefs ;
+typedef int PixOrCopy ;
+
+
+ int PixOrCopyCreateCacheIdx (int const) ;
+ int PixOrCopyCreateCopy (int const,int const) ;
+ int PixOrCopyCreateLiteral (int const) ;
+ int VP8LBackwardRefsCursorAdd (TYPE_1__* const,int ) ;
+ int VP8LClearBackwardRefs (TYPE_1__* const) ;
+ int VP8LColorCacheClear (int *) ;
+ int VP8LColorCacheContains (int *,int const) ;
+ int VP8LColorCacheInit (int *,int) ;
+ int VP8LColorCacheInsert (int *,int const) ;
+ int VP8LHashChainFindOffset (int const* const,int) ;
 
 __attribute__((used)) static int BackwardReferencesHashChainFollowChosenPath(
     const uint32_t* const argb, int cache_bits,
@@ -65,8 +65,8 @@ __attribute__((used)) static int BackwardReferencesHashChainFollowChosenPath(
       const int idx =
           use_color_cache ? VP8LColorCacheContains(&hashers, argb[i]) : -1;
       if (idx >= 0) {
-        // use_color_cache is true and hashers contains argb[i]
-        // push pixel as a color cache index
+
+
         v = PixOrCopyCreateCacheIdx(idx);
       } else {
         if (use_color_cache) VP8LColorCacheInsert(&hashers, argb[i]);

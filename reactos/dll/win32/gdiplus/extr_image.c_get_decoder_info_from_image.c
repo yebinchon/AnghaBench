@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int Flags; int /*<<< orphan*/  FormatID; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int Flags; int FormatID; } ;
 struct image_codec {TYPE_1__ info; } ;
-struct TYPE_5__ {int /*<<< orphan*/  format; } ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  TYPE_2__ GpImage ;
+struct TYPE_5__ {int format; } ;
+typedef int GpStatus ;
+typedef TYPE_2__ GpImage ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GenericError ; 
- int ImageCodecFlagsDecoder ; 
- scalar_t__ IsEqualIID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int NUM_CODECS ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- struct image_codec* codecs ; 
- int /*<<< orphan*/  wine_dbgstr_guid (int /*<<< orphan*/ *) ; 
+
+ int GenericError ;
+ int ImageCodecFlagsDecoder ;
+ scalar_t__ IsEqualIID (int *,int *) ;
+ int NUM_CODECS ;
+ int Ok ;
+ int TRACE (char*,int ) ;
+ struct image_codec* codecs ;
+ int wine_dbgstr_guid (int *) ;
 
 __attribute__((used)) static GpStatus get_decoder_info_from_image(GpImage *image, const struct image_codec **result)
 {

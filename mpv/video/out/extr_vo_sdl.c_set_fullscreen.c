@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct vo {TYPE_1__* opts; struct priv* priv; } ;
-struct priv {int /*<<< orphan*/  window; scalar_t__ switch_mode; } ;
-typedef  int Uint32 ;
+struct priv {int window; scalar_t__ switch_mode; } ;
+typedef int Uint32 ;
 struct TYPE_2__ {int fullscreen; } ;
-typedef  int /*<<< orphan*/  SDL_bool ;
+typedef int SDL_bool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_ERR (struct vo*,char*) ; 
- int SDL_GetWindowFlags (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SDL_IsScreenSaverEnabled () ; 
- scalar_t__ SDL_SetWindowFullscreen (int /*<<< orphan*/ ,int) ; 
- int SDL_WINDOW_FULLSCREEN ; 
- int SDL_WINDOW_FULLSCREEN_DESKTOP ; 
- int /*<<< orphan*/  force_resize (struct vo*) ; 
- int /*<<< orphan*/  set_screensaver (int /*<<< orphan*/ ) ; 
+
+ int MP_ERR (struct vo*,char*) ;
+ int SDL_GetWindowFlags (int ) ;
+ int SDL_IsScreenSaverEnabled () ;
+ scalar_t__ SDL_SetWindowFullscreen (int ,int) ;
+ int SDL_WINDOW_FULLSCREEN ;
+ int SDL_WINDOW_FULLSCREEN_DESKTOP ;
+ int force_resize (struct vo*) ;
+ int set_screensaver (int ) ;
 
 __attribute__((used)) static void set_fullscreen(struct vo *vo)
 {
@@ -53,7 +53,7 @@ __attribute__((used)) static void set_fullscreen(struct vo *vo)
         return;
     }
 
-    // toggling fullscreen might recreate the window, so better guard for this
+
     set_screensaver(prev_screensaver_state);
 
     force_resize(vo);

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dsa_switch_tree {int index; int /*<<< orphan*/  refcount; int /*<<< orphan*/  list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dsa_tree_list ; 
- int /*<<< orphan*/  kref_init (int /*<<< orphan*/ *) ; 
- struct dsa_switch_tree* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct dsa_switch_tree {int index; int refcount; int list; } ;
+
+
+ int GFP_KERNEL ;
+ int INIT_LIST_HEAD (int *) ;
+ int dsa_tree_list ;
+ int kref_init (int *) ;
+ struct dsa_switch_tree* kzalloc (int,int ) ;
+ int list_add_tail (int *,int *) ;
 
 __attribute__((used)) static struct dsa_switch_tree *dsa_tree_alloc(int index)
 {
-	struct dsa_switch_tree *dst;
+ struct dsa_switch_tree *dst;
 
-	dst = kzalloc(sizeof(*dst), GFP_KERNEL);
-	if (!dst)
-		return NULL;
+ dst = kzalloc(sizeof(*dst), GFP_KERNEL);
+ if (!dst)
+  return ((void*)0);
 
-	dst->index = index;
+ dst->index = index;
 
-	INIT_LIST_HEAD(&dst->list);
-	list_add_tail(&dst->list, &dsa_tree_list);
+ INIT_LIST_HEAD(&dst->list);
+ list_add_tail(&dst->list, &dsa_tree_list);
 
-	kref_init(&dst->refcount);
+ kref_init(&dst->refcount);
 
-	return dst;
+ return dst;
 }

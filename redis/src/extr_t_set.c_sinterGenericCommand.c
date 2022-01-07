@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_43__   TYPE_8__ ;
-typedef  struct TYPE_42__   TYPE_2__ ;
-typedef  struct TYPE_41__   TYPE_1__ ;
-typedef  struct TYPE_40__   TYPE_16__ ;
-typedef  struct TYPE_39__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  setTypeIterator ;
-typedef  int /*<<< orphan*/  sds ;
+
+
+typedef struct TYPE_43__ TYPE_8__ ;
+typedef struct TYPE_42__ TYPE_2__ ;
+typedef struct TYPE_41__ TYPE_1__ ;
+typedef struct TYPE_40__ TYPE_16__ ;
+typedef struct TYPE_39__ TYPE_10__ ;
+
+
+typedef int setTypeIterator ;
+typedef int sds ;
 struct TYPE_41__ {int encoding; scalar_t__ ptr; } ;
-typedef  TYPE_1__ robj ;
-typedef  int /*<<< orphan*/  intset ;
-typedef  int /*<<< orphan*/  int64_t ;
+typedef TYPE_1__ robj ;
+typedef int intset ;
+typedef int int64_t ;
 struct TYPE_42__ {size_t resp; TYPE_8__* db; } ;
-typedef  TYPE_2__ client ;
-struct TYPE_43__ {int /*<<< orphan*/  id; } ;
-struct TYPE_40__ {int /*<<< orphan*/  dirty; } ;
-struct TYPE_39__ {int /*<<< orphan*/  czero; int /*<<< orphan*/ * emptyset; } ;
+typedef TYPE_2__ client ;
+struct TYPE_43__ {int id; } ;
+struct TYPE_40__ {int dirty; } ;
+struct TYPE_39__ {int czero; int * emptyset; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NOTIFY_GENERIC ; 
- int /*<<< orphan*/  NOTIFY_SET ; 
- int OBJ_ENCODING_HT ; 
- int OBJ_ENCODING_INTSET ; 
- int /*<<< orphan*/  OBJ_SET ; 
- int /*<<< orphan*/  addReply (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  addReplyBulkCBuffer (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  addReplyBulkLongLong (TYPE_2__*,int /*<<< orphan*/ ) ; 
- void* addReplyDeferredLen (TYPE_2__*) ; 
- int /*<<< orphan*/  addReplyLongLong (TYPE_2__*,scalar_t__) ; 
- scalar_t__ checkType (TYPE_2__*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_1__* createIntsetObject () ; 
- int /*<<< orphan*/  dbAdd (TYPE_8__*,TYPE_1__*,TYPE_1__*) ; 
- int dbDelete (TYPE_8__*,TYPE_1__*) ; 
- int /*<<< orphan*/  decrRefCount (TYPE_1__*) ; 
- int /*<<< orphan*/  intsetFind (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_1__* lookupKeyRead (TYPE_8__*,TYPE_1__*) ; 
- TYPE_1__* lookupKeyWrite (TYPE_8__*,TYPE_1__*) ; 
- int /*<<< orphan*/  notifyKeyspaceEvent (int /*<<< orphan*/ ,char*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qsort (TYPE_1__**,unsigned long,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qsortCompareSetsByCardinality ; 
- int /*<<< orphan*/  sdsfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdsfromlonglong (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdslen (int /*<<< orphan*/ ) ; 
- TYPE_16__ server ; 
- int /*<<< orphan*/  setDeferredSetLen (TYPE_2__*,void*,unsigned long) ; 
- int /*<<< orphan*/  setTypeAdd (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * setTypeInitIterator (TYPE_1__*) ; 
- int /*<<< orphan*/  setTypeIsMember (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int setTypeNext (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  setTypeReleaseIterator (int /*<<< orphan*/ *) ; 
- scalar_t__ setTypeSize (TYPE_1__*) ; 
- TYPE_10__ shared ; 
- int /*<<< orphan*/  signalModifiedKey (TYPE_8__*,TYPE_1__*) ; 
- int /*<<< orphan*/  zfree (TYPE_1__**) ; 
- TYPE_1__** zmalloc (int) ; 
+
+ int NOTIFY_GENERIC ;
+ int NOTIFY_SET ;
+ int OBJ_ENCODING_HT ;
+ int OBJ_ENCODING_INTSET ;
+ int OBJ_SET ;
+ int addReply (TYPE_2__*,int ) ;
+ int addReplyBulkCBuffer (TYPE_2__*,int ,int ) ;
+ int addReplyBulkLongLong (TYPE_2__*,int ) ;
+ void* addReplyDeferredLen (TYPE_2__*) ;
+ int addReplyLongLong (TYPE_2__*,scalar_t__) ;
+ scalar_t__ checkType (TYPE_2__*,TYPE_1__*,int ) ;
+ TYPE_1__* createIntsetObject () ;
+ int dbAdd (TYPE_8__*,TYPE_1__*,TYPE_1__*) ;
+ int dbDelete (TYPE_8__*,TYPE_1__*) ;
+ int decrRefCount (TYPE_1__*) ;
+ int intsetFind (int *,int ) ;
+ TYPE_1__* lookupKeyRead (TYPE_8__*,TYPE_1__*) ;
+ TYPE_1__* lookupKeyWrite (TYPE_8__*,TYPE_1__*) ;
+ int notifyKeyspaceEvent (int ,char*,TYPE_1__*,int ) ;
+ int qsort (TYPE_1__**,unsigned long,int,int ) ;
+ int qsortCompareSetsByCardinality ;
+ int sdsfree (int ) ;
+ int sdsfromlonglong (int ) ;
+ int sdslen (int ) ;
+ TYPE_16__ server ;
+ int setDeferredSetLen (TYPE_2__*,void*,unsigned long) ;
+ int setTypeAdd (TYPE_1__*,int ) ;
+ int * setTypeInitIterator (TYPE_1__*) ;
+ int setTypeIsMember (TYPE_1__*,int ) ;
+ int setTypeNext (int *,int *,int *) ;
+ int setTypeReleaseIterator (int *) ;
+ scalar_t__ setTypeSize (TYPE_1__*) ;
+ TYPE_10__ shared ;
+ int signalModifiedKey (TYPE_8__*,TYPE_1__*) ;
+ int zfree (TYPE_1__**) ;
+ TYPE_1__** zmalloc (int) ;
 
 void sinterGenericCommand(client *c, robj **setkeys,
                           unsigned long setnum, robj *dstkey) {
     robj **sets = zmalloc(sizeof(robj*)*setnum);
     setTypeIterator *si;
-    robj *dstset = NULL;
+    robj *dstset = ((void*)0);
     sds elesds;
     int64_t intobj;
-    void *replylen = NULL;
+    void *replylen = ((void*)0);
     unsigned long j, cardinality = 0;
     int encoding;
 
@@ -99,39 +99,39 @@ void sinterGenericCommand(client *c, robj **setkeys,
         }
         sets[j] = setobj;
     }
-    /* Sort sets from the smallest to largest, this will improve our
-     * algorithm's performance */
+
+
     qsort(sets,setnum,sizeof(robj*),qsortCompareSetsByCardinality);
 
-    /* The first thing we should output is the total number of elements...
-     * since this is a multi-bulk write, but at this stage we don't know
-     * the intersection set size, so we use a trick, append an empty object
-     * to the output list and save the pointer to later modify it with the
-     * right length */
+
+
+
+
+
     if (!dstkey) {
         replylen = addReplyDeferredLen(c);
     } else {
-        /* If we have a target key where to store the resulting set
-         * create this key with an empty set inside */
+
+
         dstset = createIntsetObject();
     }
 
-    /* Iterate all the elements of the first (smallest) set, and test
-     * the element against all the other sets, if at least one set does
-     * not include the element it is discarded */
+
+
+
     si = setTypeInitIterator(sets[0]);
     while((encoding = setTypeNext(si,&elesds,&intobj)) != -1) {
         for (j = 1; j < setnum; j++) {
             if (sets[j] == sets[0]) continue;
             if (encoding == OBJ_ENCODING_INTSET) {
-                /* intset with intset is simple... and fast */
+
                 if (sets[j]->encoding == OBJ_ENCODING_INTSET &&
                     !intsetFind((intset*)sets[j]->ptr,intobj))
                 {
                     break;
-                /* in order to compare an integer with an object we
-                 * have to use the generic function, creating an object
-                 * for this */
+
+
+
                 } else if (sets[j]->encoding == OBJ_ENCODING_HT) {
                     elesds = sdsfromlonglong(intobj);
                     if (!setTypeIsMember(sets[j],elesds)) {
@@ -147,7 +147,7 @@ void sinterGenericCommand(client *c, robj **setkeys,
             }
         }
 
-        /* Only take action when all sets contain the member */
+
         if (j == setnum) {
             if (!dstkey) {
                 if (encoding == OBJ_ENCODING_HT)
@@ -169,8 +169,8 @@ void sinterGenericCommand(client *c, robj **setkeys,
     setTypeReleaseIterator(si);
 
     if (dstkey) {
-        /* Store the resulting set into the target, if the intersection
-         * is not an empty set. */
+
+
         int deleted = dbDelete(c->db,dstkey);
         if (setTypeSize(dstset) > 0) {
             dbAdd(c->db,dstkey,dstset);

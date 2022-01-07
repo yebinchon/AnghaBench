@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct radeon_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CG_GICST (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CG_GICST_MASK ; 
- int /*<<< orphan*/  CG_GIT ; 
- int /*<<< orphan*/  WREG32_P (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CG_GICST (int ) ;
+ int CG_GICST_MASK ;
+ int CG_GIT ;
+ int WREG32_P (int ,int ,int ) ;
 
 void r600_set_git(struct radeon_device *rdev, u32 t)
 {
-	WREG32_P(CG_GIT, CG_GICST(t), ~CG_GICST_MASK);
+ WREG32_P(CG_GIT, CG_GICST(t), ~CG_GICST_MASK);
 }

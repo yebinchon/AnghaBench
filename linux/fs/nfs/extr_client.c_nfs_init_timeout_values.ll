@@ -1,0 +1,247 @@
+; ModuleID = '/home/carl/AnghaBench/linux/fs/nfs/extr_client.c_nfs_init_timeout_values.c'
+source_filename = "/home/carl/AnghaBench/linux/fs/nfs/extr_client.c_nfs_init_timeout_values.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.rpc_timeout = type { i32, i32, i32, i8*, i32 }
+
+@HZ = common dso_local global i32 0, align 4
+@NFS_UNSPEC_RETRANS = common dso_local global i32 0, align 4
+@NFS_DEF_TCP_RETRANS = common dso_local global i32 0, align 4
+@NFS_UNSPEC_TIMEO = common dso_local global i32 0, align 4
+@NFS_DEF_TCP_TIMEO = common dso_local global i32 0, align 4
+@NFS_MAX_TCP_TIMEOUT = common dso_local global i8* null, align 8
+@NFS_DEF_UDP_RETRANS = common dso_local global i32 0, align 4
+@NFS_DEF_UDP_TIMEO = common dso_local global i32 0, align 4
+@NFS_MAX_UDP_TIMEOUT = common dso_local global i8* null, align 8
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local void @nfs_init_timeout_values(%struct.rpc_timeout* %0, i32 %1, i32 %2, i32 %3) #0 {
+  %5 = alloca %struct.rpc_timeout*, align 8
+  %6 = alloca i32, align 4
+  %7 = alloca i32, align 4
+  %8 = alloca i32, align 4
+  store %struct.rpc_timeout* %0, %struct.rpc_timeout** %5, align 8
+  store i32 %1, i32* %6, align 4
+  store i32 %2, i32* %7, align 4
+  store i32 %3, i32* %8, align 4
+  %9 = load i32, i32* %7, align 4
+  %10 = load i32, i32* @HZ, align 4
+  %11 = mul nsw i32 %9, %10
+  %12 = sdiv i32 %11, 10
+  %13 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %14 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %13, i32 0, i32 0
+  store i32 %12, i32* %14, align 8
+  %15 = load i32, i32* %8, align 4
+  %16 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %17 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %16, i32 0, i32 1
+  store i32 %15, i32* %17, align 4
+  %18 = load i32, i32* %6, align 4
+  switch i32 %18, label %150 [
+    i32 129, label %19
+    i32 130, label %19
+    i32 128, label %107
+  ]
+
+19:                                               ; preds = %4, %4
+  %20 = load i32, i32* %8, align 4
+  %21 = load i32, i32* @NFS_UNSPEC_RETRANS, align 4
+  %22 = icmp eq i32 %20, %21
+  br i1 %22, label %23, label %27
+
+23:                                               ; preds = %19
+  %24 = load i32, i32* @NFS_DEF_TCP_RETRANS, align 4
+  %25 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %26 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %25, i32 0, i32 1
+  store i32 %24, i32* %26, align 4
+  br label %27
+
+27:                                               ; preds = %23, %19
+  %28 = load i32, i32* %7, align 4
+  %29 = load i32, i32* @NFS_UNSPEC_TIMEO, align 4
+  %30 = icmp eq i32 %28, %29
+  br i1 %30, label %36, label %31
+
+31:                                               ; preds = %27
+  %32 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %33 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %32, i32 0, i32 0
+  %34 = load i32, i32* %33, align 8
+  %35 = icmp eq i32 %34, 0
+  br i1 %35, label %36, label %43
+
+36:                                               ; preds = %31, %27
+  %37 = load i32, i32* @NFS_DEF_TCP_TIMEO, align 4
+  %38 = load i32, i32* @HZ, align 4
+  %39 = mul nsw i32 %37, %38
+  %40 = sdiv i32 %39, 10
+  %41 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %42 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %41, i32 0, i32 0
+  store i32 %40, i32* %42, align 8
+  br label %43
+
+43:                                               ; preds = %36, %31
+  %44 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %45 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %44, i32 0, i32 0
+  %46 = load i32, i32* %45, align 8
+  %47 = sext i32 %46 to i64
+  %48 = inttoptr i64 %47 to i8*
+  %49 = load i8*, i8** @NFS_MAX_TCP_TIMEOUT, align 8
+  %50 = icmp ugt i8* %48, %49
+  br i1 %50, label %51, label %56
+
+51:                                               ; preds = %43
+  %52 = load i8*, i8** @NFS_MAX_TCP_TIMEOUT, align 8
+  %53 = ptrtoint i8* %52 to i32
+  %54 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %55 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %54, i32 0, i32 0
+  store i32 %53, i32* %55, align 8
+  br label %56
+
+56:                                               ; preds = %51, %43
+  %57 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %58 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %57, i32 0, i32 0
+  %59 = load i32, i32* %58, align 8
+  %60 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %61 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %60, i32 0, i32 2
+  store i32 %59, i32* %61, align 8
+  %62 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %63 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %62, i32 0, i32 0
+  %64 = load i32, i32* %63, align 8
+  %65 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %66 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %65, i32 0, i32 2
+  %67 = load i32, i32* %66, align 8
+  %68 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %69 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %68, i32 0, i32 1
+  %70 = load i32, i32* %69, align 4
+  %71 = mul nsw i32 %67, %70
+  %72 = add nsw i32 %64, %71
+  %73 = sext i32 %72 to i64
+  %74 = inttoptr i64 %73 to i8*
+  %75 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %76 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %75, i32 0, i32 3
+  store i8* %74, i8** %76, align 8
+  %77 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %78 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %77, i32 0, i32 3
+  %79 = load i8*, i8** %78, align 8
+  %80 = load i8*, i8** @NFS_MAX_TCP_TIMEOUT, align 8
+  %81 = icmp ugt i8* %79, %80
+  br i1 %81, label %82, label %86
+
+82:                                               ; preds = %56
+  %83 = load i8*, i8** @NFS_MAX_TCP_TIMEOUT, align 8
+  %84 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %85 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %84, i32 0, i32 3
+  store i8* %83, i8** %85, align 8
+  br label %86
+
+86:                                               ; preds = %82, %56
+  %87 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %88 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %87, i32 0, i32 3
+  %89 = load i8*, i8** %88, align 8
+  %90 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %91 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %90, i32 0, i32 0
+  %92 = load i32, i32* %91, align 8
+  %93 = sext i32 %92 to i64
+  %94 = inttoptr i64 %93 to i8*
+  %95 = icmp ult i8* %89, %94
+  br i1 %95, label %96, label %104
+
+96:                                               ; preds = %86
+  %97 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %98 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %97, i32 0, i32 0
+  %99 = load i32, i32* %98, align 8
+  %100 = sext i32 %99 to i64
+  %101 = inttoptr i64 %100 to i8*
+  %102 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %103 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %102, i32 0, i32 3
+  store i8* %101, i8** %103, align 8
+  br label %104
+
+104:                                              ; preds = %96, %86
+  %105 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %106 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %105, i32 0, i32 4
+  store i32 0, i32* %106, align 8
+  br label %152
+
+107:                                              ; preds = %4
+  %108 = load i32, i32* %8, align 4
+  %109 = load i32, i32* @NFS_UNSPEC_RETRANS, align 4
+  %110 = icmp eq i32 %108, %109
+  br i1 %110, label %111, label %115
+
+111:                                              ; preds = %107
+  %112 = load i32, i32* @NFS_DEF_UDP_RETRANS, align 4
+  %113 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %114 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %113, i32 0, i32 1
+  store i32 %112, i32* %114, align 4
+  br label %115
+
+115:                                              ; preds = %111, %107
+  %116 = load i32, i32* %7, align 4
+  %117 = load i32, i32* @NFS_UNSPEC_TIMEO, align 4
+  %118 = icmp eq i32 %116, %117
+  br i1 %118, label %124, label %119
+
+119:                                              ; preds = %115
+  %120 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %121 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %120, i32 0, i32 0
+  %122 = load i32, i32* %121, align 8
+  %123 = icmp eq i32 %122, 0
+  br i1 %123, label %124, label %131
+
+124:                                              ; preds = %119, %115
+  %125 = load i32, i32* @NFS_DEF_UDP_TIMEO, align 4
+  %126 = load i32, i32* @HZ, align 4
+  %127 = mul nsw i32 %125, %126
+  %128 = sdiv i32 %127, 10
+  %129 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %130 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %129, i32 0, i32 0
+  store i32 %128, i32* %130, align 8
+  br label %131
+
+131:                                              ; preds = %124, %119
+  %132 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %133 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %132, i32 0, i32 0
+  %134 = load i32, i32* %133, align 8
+  %135 = sext i32 %134 to i64
+  %136 = inttoptr i64 %135 to i8*
+  %137 = load i8*, i8** @NFS_MAX_UDP_TIMEOUT, align 8
+  %138 = icmp ugt i8* %136, %137
+  br i1 %138, label %139, label %144
+
+139:                                              ; preds = %131
+  %140 = load i8*, i8** @NFS_MAX_UDP_TIMEOUT, align 8
+  %141 = ptrtoint i8* %140 to i32
+  %142 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %143 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %142, i32 0, i32 0
+  store i32 %141, i32* %143, align 8
+  br label %144
+
+144:                                              ; preds = %139, %131
+  %145 = load i8*, i8** @NFS_MAX_UDP_TIMEOUT, align 8
+  %146 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %147 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %146, i32 0, i32 3
+  store i8* %145, i8** %147, align 8
+  %148 = load %struct.rpc_timeout*, %struct.rpc_timeout** %5, align 8
+  %149 = getelementptr inbounds %struct.rpc_timeout, %struct.rpc_timeout* %148, i32 0, i32 4
+  store i32 1, i32* %149, align 8
+  br label %152
+
+150:                                              ; preds = %4
+  %151 = call i32 (...) @BUG()
+  br label %152
+
+152:                                              ; preds = %150, %144, %104
+  ret void
+}
+
+declare dso_local i32 @BUG(...) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

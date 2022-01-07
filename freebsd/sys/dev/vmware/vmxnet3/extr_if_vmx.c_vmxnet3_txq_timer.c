@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint16_t ;
-typedef  int /*<<< orphan*/  if_ctx_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  iflib_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vmxnet3_refresh_host_stats (int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ uint16_t ;
+typedef int if_ctx_t ;
+
+
+ int iflib_get_softc (int ) ;
+ int vmxnet3_refresh_host_stats (int ) ;
 
 __attribute__((used)) static void
 vmxnet3_txq_timer(if_ctx_t ctx, uint16_t qid)
 {
-	/* Host stats refresh is global, so just trigger it on txq 0 */
-	if (qid == 0)
-		vmxnet3_refresh_host_stats(iflib_get_softc(ctx));
+
+ if (qid == 0)
+  vmxnet3_refresh_host_stats(iflib_get_softc(ctx));
 }

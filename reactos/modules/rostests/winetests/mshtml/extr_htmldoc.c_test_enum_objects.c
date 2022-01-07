@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  void* ULONG ;
-typedef  void IUnknown ;
-typedef  int /*<<< orphan*/  IOleContainer ;
-typedef  int /*<<< orphan*/  IEnumUnknown ;
-typedef  void* HRESULT ;
 
-/* Variables and functions */
- void* IEnumUnknown_Next (int /*<<< orphan*/ *,int,void**,void**) ; 
- int /*<<< orphan*/  IEnumUnknown_Release (int /*<<< orphan*/ *) ; 
- void* IOleContainer_EnumObjects (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  OLECONTF_EMBEDDINGS ; 
- void* S_FALSE ; 
- void* S_OK ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int buf ;
+typedef void* ULONG ;
+typedef void IUnknown ;
+typedef int IOleContainer ;
+typedef int IEnumUnknown ;
+typedef void* HRESULT ;
+
+
+ void* IEnumUnknown_Next (int *,int,void**,void**) ;
+ int IEnumUnknown_Release (int *) ;
+ void* IOleContainer_EnumObjects (int *,int ,int **) ;
+ int OLECONTF_EMBEDDINGS ;
+ void* S_FALSE ;
+ void* S_OK ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_enum_objects(IOleContainer *container)
 {
@@ -33,10 +33,10 @@ __attribute__((used)) static void test_enum_objects(IOleContainer *container)
     ULONG fetched;
     HRESULT hres;
 
-    enum_unknown = NULL;
+    enum_unknown = ((void*)0);
     hres = IOleContainer_EnumObjects(container, OLECONTF_EMBEDDINGS, &enum_unknown);
     ok(hres == S_OK, "EnumObjects failed: %08x\n", hres);
-    ok(enum_unknown != NULL, "enum_unknown == NULL\n");
+    ok(enum_unknown != ((void*)0), "enum_unknown == NULL\n");
 
     fetched = 0xdeadbeef;
     hres = IEnumUnknown_Next(enum_unknown, sizeof(buf)/sizeof(*buf), buf, &fetched);
@@ -49,7 +49,7 @@ __attribute__((used)) static void test_enum_objects(IOleContainer *container)
     ok(hres == S_FALSE, "Next returned %08x\n", hres);
     ok(!fetched, "fetched = %d\n", fetched);
 
-    hres = IEnumUnknown_Next(enum_unknown, 1, buf, NULL);
+    hres = IEnumUnknown_Next(enum_unknown, 1, buf, ((void*)0));
     ok(hres == S_FALSE, "Next returned %08x\n", hres);
 
     IEnumUnknown_Release(enum_unknown);

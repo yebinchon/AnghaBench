@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct FormatConverter {int /*<<< orphan*/  palette; int /*<<< orphan*/  source; } ;
-typedef  enum pixelformat { ____Placeholder_pixelformat } pixelformat ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct FormatConverter {int palette; int source; } ;
+typedef enum pixelformat { ____Placeholder_pixelformat } pixelformat ;
 struct TYPE_5__ {int Width; int Height; } ;
-typedef  TYPE_1__ WICRect ;
-typedef  int /*<<< orphan*/  WICColor ;
-typedef  int UINT ;
-typedef  scalar_t__ INT ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef TYPE_1__ WICRect ;
+typedef int WICColor ;
+typedef int UINT ;
+typedef scalar_t__ INT ;
+typedef scalar_t__ HRESULT ;
+typedef int BYTE ;
 
-/* Variables and functions */
- scalar_t__ E_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ IWICBitmapSource_CopyPixels (int /*<<< orphan*/ ,TYPE_1__ const*,int,int,int /*<<< orphan*/ *) ; 
- scalar_t__ IWICPalette_GetColors (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int*) ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_OK ; 
- scalar_t__ WINCODEC_ERR_WRONGSTATE ; 
- scalar_t__ copypixels_to_24bppBGR (struct FormatConverter*,TYPE_1__ const*,int,int,int /*<<< orphan*/ *,int) ; 
- int format_8bppIndexed ; 
- int /*<<< orphan*/  rgb_to_palette_index (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+ scalar_t__ E_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ int * HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int *) ;
+ scalar_t__ IWICBitmapSource_CopyPixels (int ,TYPE_1__ const*,int,int,int *) ;
+ scalar_t__ IWICPalette_GetColors (int ,int,int *,int*) ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_OK ;
+ scalar_t__ WINCODEC_ERR_WRONGSTATE ;
+ scalar_t__ copypixels_to_24bppBGR (struct FormatConverter*,TYPE_1__ const*,int,int,int *,int) ;
+ int format_8bppIndexed ;
+ int rgb_to_palette_index (int ,int ,int ,int *,int) ;
 
 __attribute__((used)) static HRESULT copypixels_to_8bppIndexed(struct FormatConverter *This, const WICRect *prc,
     UINT cbStride, UINT cbBufferSize, BYTE *pbBuffer, enum pixelformat source_format)

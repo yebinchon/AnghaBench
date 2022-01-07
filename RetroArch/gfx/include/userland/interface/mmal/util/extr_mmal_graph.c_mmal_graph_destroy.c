@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {unsigned int connection_num; unsigned int component_num; int /*<<< orphan*/  sema; int /*<<< orphan*/ * component; int /*<<< orphan*/ * connection; } ;
-struct TYPE_7__ {int /*<<< orphan*/  (* pf_destroy ) (TYPE_1__*) ;} ;
-typedef  int /*<<< orphan*/  MMAL_STATUS_T ;
-typedef  TYPE_1__ MMAL_GRAPH_T ;
-typedef  TYPE_2__ MMAL_GRAPH_PRIVATE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_TRACE (char*,TYPE_1__*) ; 
- int /*<<< orphan*/  MMAL_EINVAL ; 
- int /*<<< orphan*/  MMAL_SUCCESS ; 
- int /*<<< orphan*/  mmal_component_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mmal_connection_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*) ; 
- int /*<<< orphan*/  vcos_free (TYPE_1__*) ; 
- int /*<<< orphan*/  vcos_semaphore_delete (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {unsigned int connection_num; unsigned int component_num; int sema; int * component; int * connection; } ;
+struct TYPE_7__ {int (* pf_destroy ) (TYPE_1__*) ;} ;
+typedef int MMAL_STATUS_T ;
+typedef TYPE_1__ MMAL_GRAPH_T ;
+typedef TYPE_2__ MMAL_GRAPH_PRIVATE_T ;
+
+
+ int LOG_TRACE (char*,TYPE_1__*) ;
+ int MMAL_EINVAL ;
+ int MMAL_SUCCESS ;
+ int mmal_component_release (int ) ;
+ int mmal_connection_release (int ) ;
+ int stub1 (TYPE_1__*) ;
+ int vcos_free (TYPE_1__*) ;
+ int vcos_semaphore_delete (int *) ;
 
 MMAL_STATUS_T mmal_graph_destroy(MMAL_GRAPH_T *graph)
 {
@@ -38,7 +38,7 @@ MMAL_STATUS_T mmal_graph_destroy(MMAL_GRAPH_T *graph)
 
    LOG_TRACE("%p", graph);
 
-   /* Notify client of destruction */
+
    if (graph->pf_destroy)
       graph->pf_destroy(graph);
 

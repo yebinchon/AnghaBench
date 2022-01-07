@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_9__ ;
-typedef  struct TYPE_17__   TYPE_8__ ;
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_18__ TYPE_9__ ;
+typedef struct TYPE_17__ TYPE_8__ ;
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_16__ {void* instance; scalar_t__ RtlVerifyVersionInfo_; } ;
 struct TYPE_15__ {void* instance; scalar_t__ GetDpiForMonitor_; scalar_t__ SetProcessDpiAwareness_; } ;
 struct TYPE_14__ {void* instance; scalar_t__ EnableBlurBehindWindow; scalar_t__ Flush; scalar_t__ IsCompositionEnabled; } ;
@@ -28,32 +28,32 @@ struct TYPE_11__ {void* instance; scalar_t__ AdjustWindowRectExForDpi_; scalar_t
 struct TYPE_10__ {void* instance; scalar_t__ GetTime; } ;
 struct TYPE_17__ {TYPE_7__ ntdll; TYPE_6__ shcore; TYPE_5__ dwmapi; TYPE_4__ xinput; TYPE_3__ dinput8; TYPE_2__ user32; TYPE_1__ winmm; } ;
 struct TYPE_18__ {TYPE_8__ win32; } ;
-typedef  scalar_t__ PFN_timeGetTime ;
-typedef  scalar_t__ PFN_XInputGetState ;
-typedef  scalar_t__ PFN_XInputGetCapabilities ;
-typedef  scalar_t__ PFN_SetProcessDpiAwarenessContext ;
-typedef  scalar_t__ PFN_SetProcessDpiAwareness ;
-typedef  scalar_t__ PFN_SetProcessDPIAware ;
-typedef  scalar_t__ PFN_RtlVerifyVersionInfo ;
-typedef  scalar_t__ PFN_GetDpiForWindow ;
-typedef  scalar_t__ PFN_GetDpiForMonitor ;
-typedef  scalar_t__ PFN_EnableNonClientDpiScaling ;
-typedef  scalar_t__ PFN_DwmIsCompositionEnabled ;
-typedef  scalar_t__ PFN_DwmFlush ;
-typedef  scalar_t__ PFN_DwmEnableBlurBehindWindow ;
-typedef  scalar_t__ PFN_DirectInput8Create ;
-typedef  scalar_t__ PFN_ChangeWindowMessageFilterEx ;
-typedef  scalar_t__ PFN_AdjustWindowRectExForDpi ;
-typedef  int /*<<< orphan*/  GLFWbool ;
+typedef scalar_t__ PFN_timeGetTime ;
+typedef scalar_t__ PFN_XInputGetState ;
+typedef scalar_t__ PFN_XInputGetCapabilities ;
+typedef scalar_t__ PFN_SetProcessDpiAwarenessContext ;
+typedef scalar_t__ PFN_SetProcessDpiAwareness ;
+typedef scalar_t__ PFN_SetProcessDPIAware ;
+typedef scalar_t__ PFN_RtlVerifyVersionInfo ;
+typedef scalar_t__ PFN_GetDpiForWindow ;
+typedef scalar_t__ PFN_GetDpiForMonitor ;
+typedef scalar_t__ PFN_EnableNonClientDpiScaling ;
+typedef scalar_t__ PFN_DwmIsCompositionEnabled ;
+typedef scalar_t__ PFN_DwmFlush ;
+typedef scalar_t__ PFN_DwmEnableBlurBehindWindow ;
+typedef scalar_t__ PFN_DirectInput8Create ;
+typedef scalar_t__ PFN_ChangeWindowMessageFilterEx ;
+typedef scalar_t__ PFN_AdjustWindowRectExForDpi ;
+typedef int GLFWbool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_FALSE ; 
- int /*<<< orphan*/  GLFW_PLATFORM_ERROR ; 
- int /*<<< orphan*/  GLFW_TRUE ; 
- scalar_t__ GetProcAddress (void*,char*) ; 
- void* LoadLibraryA (char const*) ; 
- TYPE_9__ _glfw ; 
- int /*<<< orphan*/  _glfwInputErrorWin32 (int /*<<< orphan*/ ,char*) ; 
+
+ int GLFW_FALSE ;
+ int GLFW_PLATFORM_ERROR ;
+ int GLFW_TRUE ;
+ scalar_t__ GetProcAddress (void*,char*) ;
+ void* LoadLibraryA (char const*) ;
+ TYPE_9__ _glfw ;
+ int _glfwInputErrorWin32 (int ,char*) ;
 
 __attribute__((used)) static GLFWbool loadLibraries(void)
 {
@@ -105,10 +105,10 @@ __attribute__((used)) static GLFWbool loadLibraries(void)
             "xinput9_1_0.dll",
             "xinput1_2.dll",
             "xinput1_1.dll",
-            NULL
+            ((void*)0)
         };
 
-        for (i = 0;  names[i];  i++)
+        for (i = 0; names[i]; i++)
         {
             _glfw.win32.xinput.instance = LoadLibraryA(names[i]);
             if (_glfw.win32.xinput.instance)

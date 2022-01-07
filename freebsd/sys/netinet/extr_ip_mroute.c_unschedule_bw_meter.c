@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bw_meter {int bm_flags; int bm_time_hash; struct bw_meter* bm_time_next; } ;
 
-/* Variables and functions */
- int BW_METER_BUCKETS ; 
- int BW_METER_LEQ ; 
- int /*<<< orphan*/  MFC_LOCK_ASSERT () ; 
- struct bw_meter** V_bw_meter_timers ; 
- int /*<<< orphan*/  panic (char*) ; 
+
+ int BW_METER_BUCKETS ;
+ int BW_METER_LEQ ;
+ int MFC_LOCK_ASSERT () ;
+ struct bw_meter** V_bw_meter_timers ;
+ int panic (char*) ;
 
 __attribute__((used)) static void
 unschedule_bw_meter(struct bw_meter *x)
@@ -28,28 +28,28 @@ unschedule_bw_meter(struct bw_meter *x)
     MFC_LOCK_ASSERT();
 
     if (!(x->bm_flags & BW_METER_LEQ))
-	return;		/* XXX: we schedule timers only for "<=" entries */
+ return;
 
-    /*
-     * Compute the timeout hash value and delete the entry
-     */
+
+
+
     time_hash = x->bm_time_hash;
     if (time_hash >= BW_METER_BUCKETS)
-	return;		/* Entry was not scheduled */
+ return;
 
-    for (prev = NULL, tmp = V_bw_meter_timers[time_hash];
-	     tmp != NULL; prev = tmp, tmp = tmp->bm_time_next)
-	if (tmp == x)
-	    break;
+    for (prev = ((void*)0), tmp = V_bw_meter_timers[time_hash];
+      tmp != ((void*)0); prev = tmp, tmp = tmp->bm_time_next)
+ if (tmp == x)
+     break;
 
-    if (tmp == NULL)
-	panic("unschedule_bw_meter: bw_meter entry not found");
+    if (tmp == ((void*)0))
+ panic("unschedule_bw_meter: bw_meter entry not found");
 
-    if (prev != NULL)
-	prev->bm_time_next = x->bm_time_next;
+    if (prev != ((void*)0))
+ prev->bm_time_next = x->bm_time_next;
     else
-	V_bw_meter_timers[time_hash] = x->bm_time_next;
+ V_bw_meter_timers[time_hash] = x->bm_time_next;
 
-    x->bm_time_next = NULL;
+    x->bm_time_next = ((void*)0);
     x->bm_time_hash = BW_METER_BUCKETS;
 }

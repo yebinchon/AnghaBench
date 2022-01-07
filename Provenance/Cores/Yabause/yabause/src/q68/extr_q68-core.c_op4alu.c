@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_6__ {int SR; } ;
-typedef  TYPE_1__ Q68State ;
+typedef TYPE_1__ Q68State ;
 
-/* Variables and functions */
- scalar_t__ EA_ADDRESS_REG ; 
- scalar_t__ EA_DATA_REG ; 
- scalar_t__ EA_MODE (int) ; 
- int /*<<< orphan*/  INSN_CLEAR_CC () ; 
- int /*<<< orphan*/  INSN_GET_SIZE ; 
- int /*<<< orphan*/  INSN_SETNZ_SHIFT (int) ; 
- scalar_t__ SIZE_L ; 
- int SIZE_TO_BYTES (scalar_t__) ; 
- int SR_C ; 
- int SR_N ; 
- int SR_V ; 
- int SR_X ; 
- int SR_X_SHIFT ; 
- int SR_Z ; 
- int ea_get (TYPE_1__*,int,scalar_t__,int,int*) ; 
- int /*<<< orphan*/  ea_set (TYPE_1__*,int,scalar_t__,int) ; 
- int op_ill (TYPE_1__*,int) ; 
- scalar_t__ size ; 
+
+ scalar_t__ EA_ADDRESS_REG ;
+ scalar_t__ EA_DATA_REG ;
+ scalar_t__ EA_MODE (int) ;
+ int INSN_CLEAR_CC () ;
+ int INSN_GET_SIZE ;
+ int INSN_SETNZ_SHIFT (int) ;
+ scalar_t__ SIZE_L ;
+ int SIZE_TO_BYTES (scalar_t__) ;
+ int SR_C ;
+ int SR_N ;
+ int SR_V ;
+ int SR_X ;
+ int SR_X_SHIFT ;
+ int SR_Z ;
+ int ea_get (TYPE_1__*,int,scalar_t__,int,int*) ;
+ int ea_set (TYPE_1__*,int,scalar_t__,int) ;
+ int op_ill (TYPE_1__*,int) ;
+ scalar_t__ size ;
 
 __attribute__((used)) static int op4alu(Q68State *state, uint32_t opcode)
 {
@@ -44,11 +44,11 @@ __attribute__((used)) static int op4alu(Q68State *state, uint32_t opcode)
     enum {NEGX = 0, CLR = 1, NEG = 2, NOT = 3, TST = 5} aluop;
     aluop = opcode>>9 & 7;
 
-    if (EA_MODE(opcode) == EA_ADDRESS_REG) {  // Address registers not allowed
+    if (EA_MODE(opcode) == EA_ADDRESS_REG) {
         return op_ill(state, opcode);
     }
 
-    /* Retrieve the EA value */
+
     int cycles;
     uint32_t value = ea_get(state, opcode, size, 1, &cycles);
     if (cycles < 0) {
@@ -64,10 +64,10 @@ __attribute__((used)) static int op4alu(Q68State *state, uint32_t opcode)
         }
     }
 
-    /* Perform the actual computation */
+
     uint32_t result;
     if (aluop == NEGX) {
-        state->SR &= ~(SR_N | SR_V | SR_C);  // Z is never set, only cleared
+        state->SR &= ~(SR_N | SR_V | SR_C);
     } else {
         INSN_CLEAR_CC();
     }
@@ -79,7 +79,7 @@ __attribute__((used)) static int op4alu(Q68State *state, uint32_t opcode)
                      }
                      goto NEG_common;
                    }
-        case NEG:  result = (0 - value) & valuemask;
+        case NEG: result = (0 - value) & valuemask;
                    if (result == 0) {
                        state->SR |= SR_Z;
                    } else {
@@ -98,19 +98,19 @@ __attribute__((used)) static int op4alu(Q68State *state, uint32_t opcode)
                        state->SR &= ~SR_X;
                    }
                    break;
-        case CLR:  result = 0;
+        case CLR: result = 0;
                    state->SR |= SR_Z;
                    break;
-        case NOT:  result = ~value & valuemask;
+        case NOT: result = ~value & valuemask;
                    INSN_SETNZ_SHIFT(result);
                    break;
-        default:   // case TST
-                   result = value;  // Avoid a compiler warning
+        default:
+                   result = value;
                    INSN_SETNZ_SHIFT(value);
                    break;
-    }  // switch (aluop)
+    }
 
-    /* Store the result in the proper place (if the instruction is not TST) */
+
     if (aluop != TST) {
         ea_set(state, opcode, size, result);
     }

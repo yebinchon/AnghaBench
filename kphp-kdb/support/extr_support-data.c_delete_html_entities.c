@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  check (char*,int) ; 
+ int check (char*,int) ;
 
 void delete_html_entities (char *v) {
   int i;
@@ -45,32 +37,22 @@ void delete_html_entities (char *v) {
       }
     }
   }
-
-#define check(s, l)                         \
-  if (!strncmp (v + i + 2, s + 2, l - 2)) { \
-    int end = i + l;                        \
-    while (i < end) {                       \
-      v[i++] = ' ';                         \
-    }                                       \
-    i--;                                    \
-  }
-
   for (i = 0; v[i]; i++) {
     if (v[i] == '&' && v[i + 1] == '#') {
-      check ("&#amp;", 6);
-      check ("&#gt;", 5);
-      check ("&#lt;", 5);
-      check ("&#quot;", 7);
-      check ("&#33;", 5);
-      check ("&#34;", 5);
-      check ("&#36;", 5);
-      check ("&#39;", 5);
-      check ("&#60;", 5);
-      check ("&#62;", 5);
-      check ("&#8232;", 7);
-      check ("&#8233;", 7);
+      if (!strncmp (v + i + 2, "&#amp;" + 2, 6 - 2)) { int end = i + 6; while (i < end) { v[i++] = ' '; } i--; };
+      if (!strncmp (v + i + 2, "&#gt;" + 2, 5 - 2)) { int end = i + 5; while (i < end) { v[i++] = ' '; } i--; };
+      if (!strncmp (v + i + 2, "&#lt;" + 2, 5 - 2)) { int end = i + 5; while (i < end) { v[i++] = ' '; } i--; };
+      if (!strncmp (v + i + 2, "&#quot;" + 2, 7 - 2)) { int end = i + 7; while (i < end) { v[i++] = ' '; } i--; };
+      if (!strncmp (v + i + 2, "&#33;" + 2, 5 - 2)) { int end = i + 5; while (i < end) { v[i++] = ' '; } i--; };
+      if (!strncmp (v + i + 2, "&#34;" + 2, 5 - 2)) { int end = i + 5; while (i < end) { v[i++] = ' '; } i--; };
+      if (!strncmp (v + i + 2, "&#36;" + 2, 5 - 2)) { int end = i + 5; while (i < end) { v[i++] = ' '; } i--; };
+      if (!strncmp (v + i + 2, "&#39;" + 2, 5 - 2)) { int end = i + 5; while (i < end) { v[i++] = ' '; } i--; };
+      if (!strncmp (v + i + 2, "&#60;" + 2, 5 - 2)) { int end = i + 5; while (i < end) { v[i++] = ' '; } i--; };
+      if (!strncmp (v + i + 2, "&#62;" + 2, 5 - 2)) { int end = i + 5; while (i < end) { v[i++] = ' '; } i--; };
+      if (!strncmp (v + i + 2, "&#8232;" + 2, 7 - 2)) { int end = i + 7; while (i < end) { v[i++] = ' '; } i--; };
+      if (!strncmp (v + i + 2, "&#8233;" + 2, 7 - 2)) { int end = i + 7; while (i < end) { v[i++] = ' '; } i--; };
     }
   }
 
-#undef check
+
 }

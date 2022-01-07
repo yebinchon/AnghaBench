@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
-struct TYPE_3__ {int eType; int nMinKey; int nMaxVal; int nMinVal; void* aVal; void* aKey; int /*<<< orphan*/  nMaxKey; } ;
-typedef  TYPE_1__ Datasource ;
 
-/* Variables and functions */
-#define  TEST_DATASOURCE_RANDOM 129 
-#define  TEST_DATASOURCE_SEQUENCE 128 
- int /*<<< orphan*/  assert (int) ; 
- int sprintf (void*,char*,int) ; 
- int /*<<< orphan*/  testPrngString (int,void*,int) ; 
- int testPrngValue (int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct TYPE_3__ {int eType; int nMinKey; int nMaxVal; int nMinVal; void* aVal; void* aKey; int nMaxKey; } ;
+typedef TYPE_1__ Datasource ;
+
+
+
+
+ int assert (int) ;
+ int sprintf (void*,char*,int) ;
+ int testPrngString (int,void*,int) ;
+ int testPrngValue (int) ;
 
 void testDatasourceEntry(
-  Datasource *p, 
-  int iData, 
+  Datasource *p,
+  int iData,
   void **ppKey, int *pnKey,
   void **ppVal, int *pnVal
 ){
@@ -35,13 +35,13 @@ void testDatasourceEntry(
   if( ppKey ){
     int nKey = 0;
     switch( p->eType ){
-      case TEST_DATASOURCE_RANDOM: {
+      case 129: {
         int nRange = (1 + p->nMaxKey - p->nMinKey);
-        nKey = (int)( testPrngValue((u32)iData) % nRange ) + p->nMinKey; 
+        nKey = (int)( testPrngValue((u32)iData) % nRange ) + p->nMinKey;
         testPrngString((u32)iData, p->aKey, nKey);
         break;
       }
-      case TEST_DATASOURCE_SEQUENCE:
+      case 128:
         nKey = sprintf(p->aKey, "%012d", iData);
         break;
     }

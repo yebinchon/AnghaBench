@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int server_data_port; } ;
-typedef  TYPE_1__ FTPContext ;
+typedef TYPE_1__ FTPContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOSYS ; 
- int atoi (char*) ; 
- int /*<<< orphan*/  av_free (char*) ; 
- int /*<<< orphan*/  ff_dlog (TYPE_1__*,char*,int) ; 
- int ftp_send_command (TYPE_1__*,char const*,int const*,char**) ; 
- int strlen (char*) ; 
+
+ int AVERROR (int ) ;
+ int ENOSYS ;
+ int atoi (char*) ;
+ int av_free (char*) ;
+ int ff_dlog (TYPE_1__*,char*,int) ;
+ int ftp_send_command (TYPE_1__*,char const*,int const*,char**) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static int ftp_passive_mode_epsv(FTPContext *s)
 {
-    char *res = NULL, *start = NULL, *end = NULL;
+    char *res = ((void*)0), *start = ((void*)0), *end = ((void*)0);
     int i;
     static const char d = '|';
     static const char *command = "EPSV\r\n";

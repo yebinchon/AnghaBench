@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
 
-/* Variables and functions */
- int ERANGE ; 
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  assert (void*) ; 
- int /*<<< orphan*/  log_syntax (char const*,int /*<<< orphan*/ ,char const*,unsigned int,int,char*,char const*) ; 
- int parse_size (char const*,int,scalar_t__*) ; 
+
+
+
+typedef scalar_t__ uint64_t ;
+
+
+ int ERANGE ;
+ int LOG_ERR ;
+ int assert (void*) ;
+ int log_syntax (char const*,int ,char const*,unsigned int,int,char*,char const*) ;
+ int parse_size (char const*,int,scalar_t__*) ;
 
 int config_parse_iec_size(const char* unit,
                             const char *filename,

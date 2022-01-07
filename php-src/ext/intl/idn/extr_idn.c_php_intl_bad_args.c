@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  U_ILLEGAL_ARGUMENT_ERROR ; 
- int /*<<< orphan*/  php_intl_idn_check_status (int /*<<< orphan*/ ,char const*) ; 
+ int U_ILLEGAL_ARGUMENT_ERROR ;
+ int php_intl_idn_check_status (int ,char const*) ;
 
 __attribute__((used)) static inline void php_intl_bad_args(const char *msg)
 {
-	php_intl_idn_check_status(U_ILLEGAL_ARGUMENT_ERROR, msg);
+ php_intl_idn_check_status(U_ILLEGAL_ARGUMENT_ERROR, msg);
 }

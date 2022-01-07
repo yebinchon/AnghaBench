@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct shellExpectedValues {int numTypes; int* types; int /*<<< orphan*/  folder; } ;
-typedef  int BYTE ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
-#define  PT_DRIVE 131 
-#define  PT_DRIVE2 130 
-#define  PT_FOLDER 129 
-#define  PT_IESPECIAL2 128 
- scalar_t__ TRUE ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  getFolderName (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ,int,int) ; 
- scalar_t__ pSHGetFolderLocation ; 
- int testSHGetFolderLocation (int /*<<< orphan*/ ) ; 
- int testSHGetSpecialFolderLocation (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_SHGetFolderPath (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_SHGetSpecialFolderPath (scalar_t__,int /*<<< orphan*/ ) ; 
+
+
+
+struct shellExpectedValues {int numTypes; int* types; int folder; } ;
+typedef int BYTE ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ FALSE ;
+
+
+
+
+ scalar_t__ TRUE ;
+ scalar_t__ broken (int) ;
+ int getFolderName (int ) ;
+ int ok (int,char*,int ,int,int) ;
+ scalar_t__ pSHGetFolderLocation ;
+ int testSHGetFolderLocation (int ) ;
+ int testSHGetSpecialFolderLocation (int ) ;
+ int test_SHGetFolderPath (scalar_t__,int ) ;
+ int test_SHGetSpecialFolderPath (scalar_t__,int ) ;
 
 __attribute__((used)) static void test_ShellValues(const struct shellExpectedValues testEntries[],
  int numEntries, BOOL optional)
@@ -47,7 +47,7 @@ __attribute__((used)) static void test_ShellValues(const struct shellExpectedVal
             for (j = 0; !foundTypeMatch && j < testEntries[i].numTypes; j++)
                 if (testEntries[i].types[j] == type)
                     foundTypeMatch = TRUE;
-            ok(foundTypeMatch || optional || broken(type == 0xff) /* Win9x */,
+            ok(foundTypeMatch || optional || broken(type == 0xff) ,
              "%s has unexpected type %d (0x%02x)\n",
              getFolderName(testEntries[i].folder), type, type);
         }
@@ -56,15 +56,15 @@ __attribute__((used)) static void test_ShellValues(const struct shellExpectedVal
          j < testEntries[i].numTypes; j++)
             if (testEntries[i].types[j] == type)
                 foundTypeMatch = TRUE;
-        ok(foundTypeMatch || optional || broken(type == 0xff) /* Win9x */,
+        ok(foundTypeMatch || optional || broken(type == 0xff) ,
          "%s has unexpected type %d (0x%02x)\n",
          getFolderName(testEntries[i].folder), type, type);
         switch (type)
         {
-            case PT_FOLDER:
-            case PT_DRIVE:
-            case PT_DRIVE2:
-            case PT_IESPECIAL2:
+            case 129:
+            case 131:
+            case 130:
+            case 128:
                 test_SHGetFolderPath(optional, testEntries[i].folder);
                 test_SHGetSpecialFolderPath(optional, testEntries[i].folder);
                 break;

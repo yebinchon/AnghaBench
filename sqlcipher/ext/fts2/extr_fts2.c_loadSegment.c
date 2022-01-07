@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite_int64 ;
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int sqlite_int64 ;
 struct TYPE_10__ {scalar_t__ nPendingData; } ;
-typedef  TYPE_1__ fulltext_vtab ;
-struct TYPE_11__ {scalar_t__ nData; int /*<<< orphan*/  pData; } ;
-typedef  TYPE_2__ DataBuffer ;
-typedef  int /*<<< orphan*/  DLReader ;
+typedef TYPE_1__ fulltext_vtab ;
+struct TYPE_11__ {scalar_t__ nData; int pData; } ;
+typedef TYPE_2__ DataBuffer ;
+typedef int DLReader ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DL_DEFAULT ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  dataBufferDestroy (TYPE_2__*) ; 
- int /*<<< orphan*/  dataBufferInit (TYPE_2__*,scalar_t__) ; 
- int /*<<< orphan*/  dlrDestroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dlrInit (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  docListMerge (TYPE_2__*,int /*<<< orphan*/ *,int) ; 
- int loadSegmentInt (TYPE_1__*,char const*,int,int /*<<< orphan*/ ,char const*,int,int,TYPE_2__*) ; 
+
+ int DL_DEFAULT ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int dataBufferDestroy (TYPE_2__*) ;
+ int dataBufferInit (TYPE_2__*,scalar_t__) ;
+ int dlrDestroy (int *) ;
+ int dlrInit (int *,int ,int ,scalar_t__) ;
+ int docListMerge (TYPE_2__*,int *,int) ;
+ int loadSegmentInt (TYPE_1__*,char const*,int,int ,char const*,int,int,TYPE_2__*) ;
 
 __attribute__((used)) static int loadSegment(fulltext_vtab *v, const char *pData, int nData,
                        sqlite_int64 iLeavesEnd,
@@ -39,7 +39,7 @@ __attribute__((used)) static int loadSegment(fulltext_vtab *v, const char *pData
 
   assert( nData>1 );
 
-  /* This code should never be called with buffered updates. */
+
   assert( v->nPendingData<0 );
 
   dataBufferInit(&result, 0);

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct uwb_dev {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dev_set_drvdata (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  device_del (int /*<<< orphan*/ *) ; 
+
+
+
+struct uwb_dev {int dev; } ;
+
+
+ int dev_set_drvdata (int *,int *) ;
+ int device_del (int *) ;
 
 __attribute__((used)) static void __uwb_dev_sys_rm(struct uwb_dev *uwb_dev)
 {
-	dev_set_drvdata(&uwb_dev->dev, NULL);
-	device_del(&uwb_dev->dev);
+ dev_set_drvdata(&uwb_dev->dev, ((void*)0));
+ device_del(&uwb_dev->dev);
 }

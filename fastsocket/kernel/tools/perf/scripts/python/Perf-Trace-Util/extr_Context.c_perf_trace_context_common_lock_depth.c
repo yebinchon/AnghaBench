@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct scripting_context {int dummy; } ;
-typedef  int /*<<< orphan*/  PyObject ;
+typedef int PyObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyArg_ParseTuple (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ **) ; 
- struct scripting_context* PyCObject_AsVoidPtr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Py_BuildValue (char*,int) ; 
- int common_lock_depth (struct scripting_context*) ; 
+
+ int PyArg_ParseTuple (int *,char*,int **) ;
+ struct scripting_context* PyCObject_AsVoidPtr (int *) ;
+ int * Py_BuildValue (char*,int) ;
+ int common_lock_depth (struct scripting_context*) ;
 
 __attribute__((used)) static PyObject *perf_trace_context_common_lock_depth(PyObject *self,
-						      PyObject *args)
+            PyObject *args)
 {
-	static struct scripting_context *scripting_context;
-	PyObject *context;
-	int retval;
+ static struct scripting_context *scripting_context;
+ PyObject *context;
+ int retval;
 
-	if (!PyArg_ParseTuple(args, "O", &context))
-		return NULL;
+ if (!PyArg_ParseTuple(args, "O", &context))
+  return ((void*)0);
 
-	scripting_context = PyCObject_AsVoidPtr(context);
-	retval = common_lock_depth(scripting_context);
+ scripting_context = PyCObject_AsVoidPtr(context);
+ retval = common_lock_depth(scripting_context);
 
-	return Py_BuildValue("i", retval);
+ return Py_BuildValue("i", retval);
 }

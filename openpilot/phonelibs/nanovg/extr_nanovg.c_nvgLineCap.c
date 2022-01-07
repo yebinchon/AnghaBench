@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int lineCap; } ;
-typedef  TYPE_1__ NVGstate ;
-typedef  int /*<<< orphan*/  NVGcontext ;
+typedef TYPE_1__ NVGstate ;
+typedef int NVGcontext ;
 
-/* Variables and functions */
- TYPE_1__* nvg__getState (int /*<<< orphan*/ *) ; 
+
+ TYPE_1__* nvg__getState (int *) ;
 
 void nvgLineCap(NVGcontext* ctx, int cap)
 {
-	NVGstate* state = nvg__getState(ctx);
-	state->lineCap = cap;
+ NVGstate* state = nvg__getState(ctx);
+ state->lineCap = cap;
 }

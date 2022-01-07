@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct inode {int dummy; } ;
-struct TYPE_4__ {int /*<<< orphan*/  parallel_dirops; } ;
-struct TYPE_3__ {int /*<<< orphan*/  mutex; } ;
+struct TYPE_4__ {int parallel_dirops; } ;
+struct TYPE_3__ {int mutex; } ;
 
-/* Variables and functions */
- TYPE_2__* get_fuse_conn (struct inode*) ; 
- TYPE_1__* get_fuse_inode (struct inode*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
+
+ TYPE_2__* get_fuse_conn (struct inode*) ;
+ TYPE_1__* get_fuse_inode (struct inode*) ;
+ int mutex_lock (int *) ;
 
 bool fuse_lock_inode(struct inode *inode)
 {
-	bool locked = false;
+ bool locked = 0;
 
-	if (!get_fuse_conn(inode)->parallel_dirops) {
-		mutex_lock(&get_fuse_inode(inode)->mutex);
-		locked = true;
-	}
+ if (!get_fuse_conn(inode)->parallel_dirops) {
+  mutex_lock(&get_fuse_inode(inode)->mutex);
+  locked = 1;
+ }
 
-	return locked;
+ return locked;
 }

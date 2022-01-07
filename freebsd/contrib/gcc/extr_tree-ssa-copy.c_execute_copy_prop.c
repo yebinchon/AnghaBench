@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  copy_prop_visit_phi_node ; 
- int /*<<< orphan*/  copy_prop_visit_stmt ; 
- int do_store_copy_prop ; 
- int /*<<< orphan*/  fini_copy_prop () ; 
- int /*<<< orphan*/  init_copy_prop () ; 
- int /*<<< orphan*/  ssa_propagate (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int copy_prop_visit_phi_node ;
+ int copy_prop_visit_stmt ;
+ int do_store_copy_prop ;
+ int fini_copy_prop () ;
+ int init_copy_prop () ;
+ int ssa_propagate (int ,int ) ;
 
 __attribute__((used)) static void
 execute_copy_prop (bool store_copy_prop)

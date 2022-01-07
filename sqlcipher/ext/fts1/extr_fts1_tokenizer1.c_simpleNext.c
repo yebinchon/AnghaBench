@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ pTokenizer; } ;
-typedef  TYPE_1__ sqlite3_tokenizer_cursor ;
-struct TYPE_5__ {size_t iOffset; size_t nBytes; int nTokenAllocated; unsigned char* pToken; int /*<<< orphan*/  iToken; scalar_t__ pInput; } ;
-typedef  TYPE_2__ simple_tokenizer_cursor ;
-typedef  int /*<<< orphan*/  simple_tokenizer ;
+typedef TYPE_1__ sqlite3_tokenizer_cursor ;
+struct TYPE_5__ {size_t iOffset; size_t nBytes; int nTokenAllocated; unsigned char* pToken; int iToken; scalar_t__ pInput; } ;
+typedef TYPE_2__ simple_tokenizer_cursor ;
+typedef int simple_tokenizer ;
 
-/* Variables and functions */
- int SQLITE_DONE ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- scalar_t__ isDelim (int /*<<< orphan*/ *,unsigned char) ; 
- unsigned char* realloc (unsigned char*,int) ; 
- unsigned char tolower (unsigned char) ; 
+
+ int SQLITE_DONE ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ scalar_t__ isDelim (int *,unsigned char) ;
+ unsigned char* realloc (unsigned char*,int) ;
+ unsigned char tolower (unsigned char) ;
 
 __attribute__((used)) static int simpleNext(
-  sqlite3_tokenizer_cursor *pCursor,  /* Cursor returned by simpleOpen */
-  const char **ppToken,               /* OUT: *ppToken is the token text */
-  int *pnBytes,                       /* OUT: Number of bytes in token */
-  int *piStartOffset,                 /* OUT: Starting offset of token */
-  int *piEndOffset,                   /* OUT: Ending offset of token */
-  int *piPosition                     /* OUT: Position integer of token */
+  sqlite3_tokenizer_cursor *pCursor,
+  const char **ppToken,
+  int *pnBytes,
+  int *piStartOffset,
+  int *piEndOffset,
+  int *piPosition
 ){
   simple_tokenizer_cursor *c = (simple_tokenizer_cursor *) pCursor;
   simple_tokenizer *t = (simple_tokenizer *) pCursor->pTokenizer;
@@ -41,12 +41,12 @@ __attribute__((used)) static int simpleNext(
   while( c->iOffset<c->nBytes ){
     int iStartOffset;
 
-    /* Scan past delimiter characters */
+
     while( c->iOffset<c->nBytes && isDelim(t, p[c->iOffset]) ){
       c->iOffset++;
     }
 
-    /* Count non-delimiter characters. */
+
     iStartOffset = c->iOffset;
     while( c->iOffset<c->nBytes && !isDelim(t, p[c->iOffset]) ){
       c->iOffset++;
@@ -57,12 +57,12 @@ __attribute__((used)) static int simpleNext(
       if( n>c->nTokenAllocated ){
         c->nTokenAllocated = n+20;
         c->pToken = realloc(c->pToken, c->nTokenAllocated);
-        if( c->pToken==NULL ) return SQLITE_NOMEM;
+        if( c->pToken==((void*)0) ) return SQLITE_NOMEM;
       }
       for(i=0; i<n; i++){
-        /* TODO(shess) This needs expansion to handle UTF-8
-        ** case-insensitivity.
-        */
+
+
+
         unsigned char ch = p[iStartOffset+i];
         c->pToken[i] = ch<0x80 ? tolower(ch) : ch;
       }

@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ OSSL_NELEM (size_t*) ; 
- int /*<<< orphan*/  constant_time_eq_s ; 
- int /*<<< orphan*/  constant_time_ge_s ; 
- int /*<<< orphan*/  constant_time_lt_s ; 
- int /*<<< orphan*/  test_binary_op_s (int /*<<< orphan*/ *,char*,size_t,size_t,int) ; 
- int /*<<< orphan*/  test_eq_s (size_t,size_t) ; 
- int /*<<< orphan*/  test_select_s (size_t,size_t) ; 
- size_t* test_values_s ; 
+ scalar_t__ OSSL_NELEM (size_t*) ;
+ int constant_time_eq_s ;
+ int constant_time_ge_s ;
+ int constant_time_lt_s ;
+ int test_binary_op_s (int *,char*,size_t,size_t,int) ;
+ int test_eq_s (size_t,size_t) ;
+ int test_select_s (size_t,size_t) ;
+ size_t* test_values_s ;
 
 __attribute__((used)) static int test_binops_s(int i)
 {

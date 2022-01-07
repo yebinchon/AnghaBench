@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dspfilter_output {float* samples; unsigned int frames; } ;
 struct dspfilter_input {float* samples; unsigned int frames; } ;
 struct chorus_data {float delay; float depth; double lfo_ptr; double lfo_period; float input_rate; float** old; size_t old_ptr; float mix_dry; float mix_wet; } ;
 
-/* Variables and functions */
- size_t CHORUS_DELAY_MASK ; 
- int CHORUS_MAX_DELAY ; 
- double M_PI ; 
- float sin (double) ; 
+
+ size_t CHORUS_DELAY_MASK ;
+ int CHORUS_MAX_DELAY ;
+ double M_PI ;
+ float sin (double) ;
 
 __attribute__((used)) static void chorus_process(void *data, struct dspfilter_output *output,
       const struct dspfilter_input *input)
 {
    unsigned i;
-   float *out             = NULL;
+   float *out = ((void*)0);
    struct chorus_data *ch = (struct chorus_data*)data;
 
-   output->samples        = input->samples;
-   output->frames         = input->frames;
-   out                    = output->samples;
+   output->samples = input->samples;
+   output->frames = input->frames;
+   out = output->samples;
 
    for (i = 0; i < input->frames; i++, out += 2)
    {
@@ -53,18 +53,18 @@ __attribute__((used)) static void chorus_process(void *data, struct dspfilter_ou
       ch->old[0][ch->old_ptr] = in[0];
       ch->old[1][ch->old_ptr] = in[1];
 
-      l_a         = ch->old[0][(ch->old_ptr - delay_int - 0) & CHORUS_DELAY_MASK];
-      l_b         = ch->old[0][(ch->old_ptr - delay_int - 1) & CHORUS_DELAY_MASK];
-      r_a         = ch->old[1][(ch->old_ptr - delay_int - 0) & CHORUS_DELAY_MASK];
-      r_b         = ch->old[1][(ch->old_ptr - delay_int - 1) & CHORUS_DELAY_MASK];
+      l_a = ch->old[0][(ch->old_ptr - delay_int - 0) & CHORUS_DELAY_MASK];
+      l_b = ch->old[0][(ch->old_ptr - delay_int - 1) & CHORUS_DELAY_MASK];
+      r_a = ch->old[1][(ch->old_ptr - delay_int - 0) & CHORUS_DELAY_MASK];
+      r_b = ch->old[1][(ch->old_ptr - delay_int - 1) & CHORUS_DELAY_MASK];
 
-      /* Lerp introduces aliasing of the chorus component,
-       * but doing full polyphase here is probably overkill. */
-      chorus_l    = l_a * (1.0f - delay_frac) + l_b * delay_frac;
-      chorus_r    = r_a * (1.0f - delay_frac) + r_b * delay_frac;
 
-      out[0]      = ch->mix_dry * in[0] + ch->mix_wet * chorus_l;
-      out[1]      = ch->mix_dry * in[1] + ch->mix_wet * chorus_r;
+
+      chorus_l = l_a * (1.0f - delay_frac) + l_b * delay_frac;
+      chorus_r = r_a * (1.0f - delay_frac) + r_b * delay_frac;
+
+      out[0] = ch->mix_dry * in[0] + ch->mix_wet * chorus_l;
+      out[1] = ch->mix_dry * in[1] + ch->mix_wet * chorus_r;
 
       ch->old_ptr = (ch->old_ptr + 1) & CHORUS_DELAY_MASK;
    }

@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-struct sk_buff {int len; int /*<<< orphan*/ * data; } ;
+
+
+
+
+typedef int u8 ;
+struct sk_buff {int len; int * data; } ;
 struct nfc_target {int dummy; } ;
-struct nfc_digital_dev {scalar_t__ curr_nfc_dep_pni; int /*<<< orphan*/  target_fsc; } ;
+struct nfc_digital_dev {scalar_t__ curr_nfc_dep_pni; int target_fsc; } ;
 
-/* Variables and functions */
- int DIGITAL_ATS_FSCI (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DIGITAL_ATS_MAX_FSC ; 
- int EIO ; 
- scalar_t__ IS_ERR (struct sk_buff*) ; 
- int /*<<< orphan*/  NFC_PROTO_ISO14443 ; 
- int PTR_ERR (struct sk_buff*) ; 
- int /*<<< orphan*/  dev_kfree_skb (struct sk_buff*) ; 
- int /*<<< orphan*/ * digital_ats_fsc ; 
- int /*<<< orphan*/  digital_poll_next_tech (struct nfc_digital_dev*) ; 
- int digital_target_found (struct nfc_digital_dev*,struct nfc_target*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (struct nfc_target*) ; 
+
+ int DIGITAL_ATS_FSCI (int ) ;
+ int DIGITAL_ATS_MAX_FSC ;
+ int EIO ;
+ scalar_t__ IS_ERR (struct sk_buff*) ;
+ int NFC_PROTO_ISO14443 ;
+ int PTR_ERR (struct sk_buff*) ;
+ int dev_kfree_skb (struct sk_buff*) ;
+ int * digital_ats_fsc ;
+ int digital_poll_next_tech (struct nfc_digital_dev*) ;
+ int digital_target_found (struct nfc_digital_dev*,struct nfc_target*,int ) ;
+ int kfree (struct nfc_target*) ;
 
 __attribute__((used)) static void digital_in_recv_ats(struct nfc_digital_dev *ddev, void *arg,
-				struct sk_buff *resp)
+    struct sk_buff *resp)
 {
-	struct nfc_target *target = arg;
-	u8 fsdi;
-	int rc;
+ struct nfc_target *target = arg;
+ u8 fsdi;
+ int rc;
 
-	if (IS_ERR(resp)) {
-		rc = PTR_ERR(resp);
-		resp = NULL;
-		goto exit;
-	}
+ if (IS_ERR(resp)) {
+  rc = PTR_ERR(resp);
+  resp = ((void*)0);
+  goto exit;
+ }
 
-	if (resp->len < 2) {
-		rc = -EIO;
-		goto exit;
-	}
+ if (resp->len < 2) {
+  rc = -EIO;
+  goto exit;
+ }
 
-	fsdi = DIGITAL_ATS_FSCI(resp->data[1]);
-	if (fsdi >= 8)
-		ddev->target_fsc = DIGITAL_ATS_MAX_FSC;
-	else
-		ddev->target_fsc = digital_ats_fsc[fsdi];
+ fsdi = DIGITAL_ATS_FSCI(resp->data[1]);
+ if (fsdi >= 8)
+  ddev->target_fsc = DIGITAL_ATS_MAX_FSC;
+ else
+  ddev->target_fsc = digital_ats_fsc[fsdi];
 
-	ddev->curr_nfc_dep_pni = 0;
+ ddev->curr_nfc_dep_pni = 0;
 
-	rc = digital_target_found(ddev, target, NFC_PROTO_ISO14443);
+ rc = digital_target_found(ddev, target, NFC_PROTO_ISO14443);
 
 exit:
-	dev_kfree_skb(resp);
-	kfree(target);
+ dev_kfree_skb(resp);
+ kfree(target);
 
-	if (rc)
-		digital_poll_next_tech(ddev);
+ if (rc)
+  digital_poll_next_tech(ddev);
 }

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hostname ;
-typedef  int /*<<< orphan*/  THREAD ;
-typedef  int /*<<< orphan*/  IP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddHostCache (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  AddWaitThread (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DelWaitThread (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Free (int /*<<< orphan*/ *) ; 
- scalar_t__ GetHostNameInner (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NoticeThreadInit (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int hostname ;
+typedef int THREAD ;
+typedef int IP ;
+
+
+ int AddHostCache (int *,char*) ;
+ int AddWaitThread (int *) ;
+ int DelWaitThread (int *) ;
+ int Free (int *) ;
+ scalar_t__ GetHostNameInner (char*,int,int *) ;
+ int NoticeThreadInit (int *) ;
 
 void GetHostNameThread(THREAD *t, void *p)
 {
-	IP *ip;
-	char hostname[256];
-	// Validate arguments
-	if (t == NULL || p == NULL)
-	{
-		return;
-	}
+ IP *ip;
+ char hostname[256];
 
-	ip = (IP *)p;
+ if (t == ((void*)0) || p == ((void*)0))
+ {
+  return;
+ }
 
-	AddWaitThread(t);
+ ip = (IP *)p;
 
-	NoticeThreadInit(t);
+ AddWaitThread(t);
 
-	if (GetHostNameInner(hostname, sizeof(hostname), ip))
-	{
-		AddHostCache(ip, hostname);
-	}
+ NoticeThreadInit(t);
 
-	Free(ip);
+ if (GetHostNameInner(hostname, sizeof(hostname), ip))
+ {
+  AddHostCache(ip, hostname);
+ }
 
-	DelWaitThread(t);
+ Free(ip);
+
+ DelWaitThread(t);
 }

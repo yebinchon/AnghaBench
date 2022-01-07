@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {struct api_msg* apimsg; } ;
-struct net_msg {TYPE_1__ msg; int /*<<< orphan*/  type; } ;
+struct net_msg {TYPE_1__ msg; int type; } ;
 struct api_msg {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LWIP_DEBUGF (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  LWIP_ERROR (char*) ; 
- int /*<<< orphan*/  MEMP_API_MSG ; 
- int /*<<< orphan*/  MEMP_TCPIP_MSG ; 
- int /*<<< orphan*/  MQ_MSG_BLOCK ; 
- int /*<<< orphan*/  MQ_Send (int /*<<< orphan*/ ,struct net_msg*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NETMSG_API ; 
- int /*<<< orphan*/  TCPIP_DEBUG ; 
- int /*<<< orphan*/  memp_free (int /*<<< orphan*/ ,struct api_msg*) ; 
- struct net_msg* memp_malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  netthread_mbox ; 
+
+ int LWIP_DEBUGF (int ,char*) ;
+ int LWIP_ERROR (char*) ;
+ int MEMP_API_MSG ;
+ int MEMP_TCPIP_MSG ;
+ int MQ_MSG_BLOCK ;
+ int MQ_Send (int ,struct net_msg*,int ) ;
+ int NETMSG_API ;
+ int TCPIP_DEBUG ;
+ int memp_free (int ,struct api_msg*) ;
+ struct net_msg* memp_malloc (int ) ;
+ int netthread_mbox ;
 
 __attribute__((used)) static void net_apimsg(struct api_msg *apimsg)
 {
-	struct net_msg *msg = memp_malloc(MEMP_TCPIP_MSG);
+ struct net_msg *msg = memp_malloc(MEMP_TCPIP_MSG);
 
-	LWIP_DEBUGF(TCPIP_DEBUG, ("net_apimsg: %p\n",apimsg));
-	if(msg==NULL) {
-		LWIP_ERROR(("net_apimsg: msg out of memory.\n"));
-		memp_free(MEMP_API_MSG,apimsg);
-		return;
-	}
+ LWIP_DEBUGF(TCPIP_DEBUG, ("net_apimsg: %p\n",apimsg));
+ if(msg==((void*)0)) {
+  LWIP_ERROR(("net_apimsg: msg out of memory.\n"));
+  memp_free(MEMP_API_MSG,apimsg);
+  return;
+ }
 
-	msg->type = NETMSG_API;
-	msg->msg.apimsg = apimsg;
-	MQ_Send(netthread_mbox,msg,MQ_MSG_BLOCK);
+ msg->type = NETMSG_API;
+ msg->msg.apimsg = apimsg;
+ MQ_Send(netthread_mbox,msg,MQ_MSG_BLOCK);
 }

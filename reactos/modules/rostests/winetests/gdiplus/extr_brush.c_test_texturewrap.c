@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  GpWrapMode ;
-typedef  int /*<<< orphan*/  GpTexture ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpImage ;
-typedef  int /*<<< orphan*/  GpGraphics ;
-typedef  int /*<<< orphan*/  GpBrush ;
-typedef  int /*<<< orphan*/  GpBitmap ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GdipCreateBitmapFromGraphics (int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreateFromHDC (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreateTexture (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteBrush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDisposeImage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetTextureWrapMode (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipSetTextureWrapMode (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InvalidParameter ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WrapModeClamp ; 
- int /*<<< orphan*/  WrapModeTile ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int HDC ;
+typedef int GpWrapMode ;
+typedef int GpTexture ;
+typedef int GpStatus ;
+typedef int GpImage ;
+typedef int GpGraphics ;
+typedef int GpBrush ;
+typedef int GpBitmap ;
+
+
+ int GdipCreateBitmapFromGraphics (int,int,int *,int **) ;
+ int GdipCreateFromHDC (int ,int **) ;
+ int GdipCreateTexture (int *,int ,int **) ;
+ int GdipDeleteBrush (int *) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipDisposeImage (int *) ;
+ int GdipGetTextureWrapMode (int *,int *) ;
+ int GdipSetTextureWrapMode (int *,int ) ;
+ int GetDC (int ) ;
+ int InvalidParameter ;
+ int Ok ;
+ int ReleaseDC (int ,int ) ;
+ int WrapModeClamp ;
+ int WrapModeTile ;
+ int expect (int ,int ) ;
 
 __attribute__((used)) static void test_texturewrap(void)
 {
     GpStatus status;
     GpTexture *texture;
-    GpGraphics *graphics = NULL;
+    GpGraphics *graphics = ((void*)0);
     GpBitmap *bitmap;
     HDC hdc = GetDC(0);
     GpWrapMode wrap;
@@ -53,20 +53,20 @@ __attribute__((used)) static void test_texturewrap(void)
     status = GdipCreateTexture((GpImage*)bitmap, WrapModeTile, &texture);
     expect(Ok, status);
 
-    /* NULL */
-    status = GdipGetTextureWrapMode(NULL, NULL);
+
+    status = GdipGetTextureWrapMode(((void*)0), ((void*)0));
     expect(InvalidParameter, status);
-    status = GdipGetTextureWrapMode(texture, NULL);
+    status = GdipGetTextureWrapMode(texture, ((void*)0));
     expect(InvalidParameter, status);
-    status = GdipGetTextureWrapMode(NULL, &wrap);
+    status = GdipGetTextureWrapMode(((void*)0), &wrap);
     expect(InvalidParameter, status);
 
-    /* get */
+
     wrap = WrapModeClamp;
     status = GdipGetTextureWrapMode(texture, &wrap);
     expect(Ok, status);
     expect(WrapModeTile, wrap);
-    /* set, then get */
+
     wrap = WrapModeClamp;
     status = GdipSetTextureWrapMode(texture, wrap);
     expect(Ok, status);

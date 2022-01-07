@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int (* makeCurrentCb ) (int /*<<< orphan*/ ,int) ;int /*<<< orphan*/  opaque; } ;
-typedef  TYPE_1__ vout_display_sys_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int (* makeCurrentCb ) (int ,int) ;int opaque; } ;
+typedef TYPE_1__ vout_display_sys_t ;
 struct TYPE_5__ {TYPE_1__* sys; } ;
-typedef  TYPE_2__ vlc_gl_t ;
+typedef TYPE_2__ vlc_gl_t ;
 
-/* Variables and functions */
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int stub1 (int /*<<< orphan*/ ,int) ; 
+
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int stub1 (int ,int) ;
 
 __attribute__((used)) static int MakeCurrent(vlc_gl_t *gl)
 {
     vout_display_sys_t *sys = gl->sys;
-    bool success = sys->makeCurrentCb(sys->opaque, true);
+    bool success = sys->makeCurrentCb(sys->opaque, 1);
     return success ? VLC_SUCCESS : VLC_EGENERIC;
 }

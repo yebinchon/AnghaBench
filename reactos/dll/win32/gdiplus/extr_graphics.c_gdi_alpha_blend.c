@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int SourceConstantAlpha; int /*<<< orphan*/  AlphaFormat; scalar_t__ BlendFlags; int /*<<< orphan*/  BlendOp; } ;
-struct TYPE_5__ {int /*<<< orphan*/  hdc; } ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  TYPE_1__ GpGraphics ;
-typedef  TYPE_2__ BLENDFUNCTION ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AC_SRC_ALPHA ; 
- int /*<<< orphan*/  AC_SRC_OVER ; 
- scalar_t__ DT_RASPRINTER ; 
- int /*<<< orphan*/  GdiAlphaBlend (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__) ; 
- scalar_t__ GetDeviceCaps (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ SB_NONE ; 
- int /*<<< orphan*/  SHADEBLENDCAPS ; 
- int /*<<< orphan*/  SRCCOPY ; 
- int /*<<< orphan*/  StretchBlt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TECHNOLOGY ; 
- int /*<<< orphan*/  TRACE (char*) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int SourceConstantAlpha; int AlphaFormat; scalar_t__ BlendFlags; int BlendOp; } ;
+struct TYPE_5__ {int hdc; } ;
+typedef int INT ;
+typedef int HDC ;
+typedef TYPE_1__ GpGraphics ;
+typedef TYPE_2__ BLENDFUNCTION ;
+
+
+ int AC_SRC_ALPHA ;
+ int AC_SRC_OVER ;
+ scalar_t__ DT_RASPRINTER ;
+ int GdiAlphaBlend (int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,TYPE_2__) ;
+ scalar_t__ GetDeviceCaps (int ,int ) ;
+ scalar_t__ SB_NONE ;
+ int SHADEBLENDCAPS ;
+ int SRCCOPY ;
+ int StretchBlt (int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int TECHNOLOGY ;
+ int TRACE (char*) ;
 
 __attribute__((used)) static void gdi_alpha_blend(GpGraphics *graphics, INT dst_x, INT dst_y, INT dst_width, INT dst_height,
                             HDC hdc, INT src_x, INT src_y, INT src_width, INT src_height)

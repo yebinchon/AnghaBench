@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u64 ;
 
-/* Variables and functions */
- unsigned char MAX_RATE ; 
- unsigned short* cwRXBCNTSFOff ; 
+
+
+
+typedef scalar_t__ u64 ;
+
+
+ unsigned char MAX_RATE ;
+ unsigned short* cwRXBCNTSFOff ;
 
 u64 CARDqGetTSFOffset(unsigned char byRxRate, u64 qwTSF1, u64 qwTSF2)
 {
-	unsigned short wRxBcnTSFOffst;
+ unsigned short wRxBcnTSFOffst;
 
-	wRxBcnTSFOffst = cwRXBCNTSFOff[byRxRate % MAX_RATE];
+ wRxBcnTSFOffst = cwRXBCNTSFOff[byRxRate % MAX_RATE];
 
-	qwTSF2 += (u64)wRxBcnTSFOffst;
+ qwTSF2 += (u64)wRxBcnTSFOffst;
 
-	return qwTSF1 - qwTSF2;
+ return qwTSF1 - qwTSF2;
 }

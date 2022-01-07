@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u32 ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  JsonString ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JSON_SUBTYPE ; 
- scalar_t__ SQLITE_TEXT ; 
- int /*<<< orphan*/  jsonAppendChar (int /*<<< orphan*/ *,char) ; 
- int /*<<< orphan*/  jsonAppendSeparator (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsonAppendString (int /*<<< orphan*/ *,char const*,scalar_t__) ; 
- int /*<<< orphan*/  jsonAppendValue (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsonInit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsonReset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsonResult (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_error (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  sqlite3_result_subtype (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_type (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ u32 ;
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+typedef int JsonString ;
+
+
+ int JSON_SUBTYPE ;
+ scalar_t__ SQLITE_TEXT ;
+ int jsonAppendChar (int *,char) ;
+ int jsonAppendSeparator (int *) ;
+ int jsonAppendString (int *,char const*,scalar_t__) ;
+ int jsonAppendValue (int *,int *) ;
+ int jsonInit (int *,int *) ;
+ int jsonReset (int *) ;
+ int jsonResult (int *) ;
+ int sqlite3_result_error (int *,char*,int) ;
+ int sqlite3_result_subtype (int *,int ) ;
+ scalar_t__ sqlite3_value_bytes (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
+ scalar_t__ sqlite3_value_type (int *) ;
 
 __attribute__((used)) static void jsonObjectFunc(
   sqlite3_context *ctx,

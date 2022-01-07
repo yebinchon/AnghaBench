@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct msghdr {scalar_t__ msg_namelen; int /*<<< orphan*/ * msg_name; int /*<<< orphan*/ * msg_iov; } ;
-struct TYPE_5__ {int msgsize; int msgused; size_t iovused; scalar_t__ request_addr_size; int /*<<< orphan*/  transport; scalar_t__ msgbytes; int /*<<< orphan*/  request_addr; int /*<<< orphan*/ * iov; struct msghdr* msglist; } ;
-typedef  TYPE_1__ conn ;
-struct TYPE_6__ {int /*<<< orphan*/  malloc_fails; } ;
 
-/* Variables and functions */
- scalar_t__ IS_UDP (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATS_LOCK () ; 
- int /*<<< orphan*/  STATS_UNLOCK () ; 
- int /*<<< orphan*/  UDP_HEADER_SIZE ; 
- int add_iov (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct msghdr*,int /*<<< orphan*/ ,int) ; 
- struct msghdr* realloc (struct msghdr*,int) ; 
- TYPE_2__ stats ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct msghdr {scalar_t__ msg_namelen; int * msg_name; int * msg_iov; } ;
+struct TYPE_5__ {int msgsize; int msgused; size_t iovused; scalar_t__ request_addr_size; int transport; scalar_t__ msgbytes; int request_addr; int * iov; struct msghdr* msglist; } ;
+typedef TYPE_1__ conn ;
+struct TYPE_6__ {int malloc_fails; } ;
+
+
+ scalar_t__ IS_UDP (int ) ;
+ int STATS_LOCK () ;
+ int STATS_UNLOCK () ;
+ int UDP_HEADER_SIZE ;
+ int add_iov (TYPE_1__*,int *,int ) ;
+ int assert (int ) ;
+ int memset (struct msghdr*,int ,int) ;
+ struct msghdr* realloc (struct msghdr*,int) ;
+ TYPE_2__ stats ;
 
 __attribute__((used)) static int add_msghdr(conn *c)
 {
     struct msghdr *msg;
 
-    assert(c != NULL);
+    assert(c != ((void*)0));
 
     if (c->msgsize == c->msgused) {
         msg = realloc(c->msglist, c->msgsize * 2 * sizeof(struct msghdr));
@@ -48,8 +48,8 @@ __attribute__((used)) static int add_msghdr(conn *c)
 
     msg = c->msglist + c->msgused;
 
-    /* this wipes msg_iovlen, msg_control, msg_controllen, and
-       msg_flags, the last 3 of which aren't defined on solaris: */
+
+
     memset(msg, 0, sizeof(struct msghdr));
 
     msg->msg_iov = &c->iov[c->iovused];
@@ -63,8 +63,8 @@ __attribute__((used)) static int add_msghdr(conn *c)
     c->msgused++;
 
     if (IS_UDP(c->transport)) {
-        /* Leave room for the UDP header, which we'll fill in later. */
-        return add_iov(c, NULL, UDP_HEADER_SIZE);
+
+        return add_iov(c, ((void*)0), UDP_HEADER_SIZE);
     }
 
     return 0;

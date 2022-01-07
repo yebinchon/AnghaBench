@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct repl_server_status {scalar_t__ conn_generation; int flags; TYPE_1__* conn; struct repl_server_status* server_next; } ;
 struct repl_client_status {scalar_t__ conn_generation; TYPE_2__* conn; } ;
 struct related_binlog {int flags; int targets; struct repl_client_status** client; struct repl_server_status* server_first; } ;
 struct TYPE_4__ {scalar_t__ generation; } ;
 struct TYPE_3__ {scalar_t__ generation; } ;
 
-/* Variables and functions */
- struct related_binlog* LR ; 
- int LRF_BROKEN ; 
- int LRF_CHANGED_TIME ; 
- int LRF_MASTER ; 
- int RS_ALLREAD ; 
- int RS_ALLSENT ; 
- int RS_FATAL ; 
- int /*<<< orphan*/  check_flush_client (struct repl_client_status*) ; 
- int /*<<< orphan*/  destroy_client (struct repl_client_status*) ; 
- int /*<<< orphan*/  destroy_server (struct repl_server_status*) ; 
- int local_rbs ; 
- int /*<<< orphan*/  process_server (struct repl_server_status*) ; 
- int /*<<< orphan*/  process_server_rotate (struct repl_server_status*) ; 
- int /*<<< orphan*/  process_server_time (struct repl_server_status*) ; 
- scalar_t__ servers_readall ; 
- scalar_t__ servers_sentall ; 
+
+ struct related_binlog* LR ;
+ int LRF_BROKEN ;
+ int LRF_CHANGED_TIME ;
+ int LRF_MASTER ;
+ int RS_ALLREAD ;
+ int RS_ALLSENT ;
+ int RS_FATAL ;
+ int check_flush_client (struct repl_client_status*) ;
+ int destroy_client (struct repl_client_status*) ;
+ int destroy_server (struct repl_server_status*) ;
+ int local_rbs ;
+ int process_server (struct repl_server_status*) ;
+ int process_server_rotate (struct repl_server_status*) ;
+ int process_server_time (struct repl_server_status*) ;
+ scalar_t__ servers_readall ;
+ scalar_t__ servers_sentall ;
 
 int process_all_servers (void) {
   int i;
@@ -52,9 +52,9 @@ int process_all_servers (void) {
 
         process_server (S);
         process_server_rotate (S);
-	if (R->flags & LRF_CHANGED_TIME) {
-	  process_server_time (S);
-	}
+ if (R->flags & LRF_CHANGED_TIME) {
+   process_server_time (S);
+ }
 
         if (S->flags & RS_ALLREAD) {
           servers_readall++;

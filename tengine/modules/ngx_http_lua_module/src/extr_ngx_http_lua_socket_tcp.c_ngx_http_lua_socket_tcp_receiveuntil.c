@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-struct TYPE_10__ {scalar_t__ len; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_2__ ngx_str_t ;
-typedef  scalar_t__ ngx_int_t ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int u_char ;
+struct TYPE_10__ {scalar_t__ len; int * data; } ;
+typedef TYPE_2__ ngx_str_t ;
+typedef scalar_t__ ngx_int_t ;
 struct TYPE_11__ {TYPE_1__* connection; } ;
-typedef  TYPE_3__ ngx_http_request_t ;
+typedef TYPE_3__ ngx_http_request_t ;
 struct TYPE_12__ {unsigned int inclusive; } ;
-typedef  TYPE_4__ ngx_http_lua_socket_compiled_pattern_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_9__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_4__ ngx_http_lua_socket_compiled_pattern_t ;
+typedef int lua_State ;
+struct TYPE_9__ {int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
-#define  LUA_TBOOLEAN 129 
-#define  LUA_TNIL 128 
- int /*<<< orphan*/  LUA_TTABLE ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- scalar_t__ NGX_OK ; 
- scalar_t__ luaL_checklstring (int /*<<< orphan*/ *,int,scalar_t__*) ; 
- int /*<<< orphan*/  luaL_checktype (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int luaL_error (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  luaL_typename (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_getfield (int /*<<< orphan*/ *,int,char*) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- TYPE_4__* lua_newuserdata (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushcclosure (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lua_pushlightuserdata (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushliteral (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_rawget (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_setmetatable (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_toboolean (int /*<<< orphan*/ *,int) ; 
- int lua_type (int /*<<< orphan*/ *,int) ; 
- TYPE_3__* ngx_http_lua_get_req (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_http_lua_lightudata_mask (int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_http_lua_socket_compile_pattern (int /*<<< orphan*/ *,scalar_t__,TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_lua_socket_receiveuntil_iterator ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_memzero (TYPE_4__*,size_t) ; 
- int /*<<< orphan*/  pattern_udata_metatable_key ; 
+
+ int LUA_REGISTRYINDEX ;
+
+
+ int LUA_TTABLE ;
+ int NGX_LOG_DEBUG_HTTP ;
+ scalar_t__ NGX_OK ;
+ scalar_t__ luaL_checklstring (int *,int,scalar_t__*) ;
+ int luaL_checktype (int *,int,int ) ;
+ int luaL_error (int *,char*,...) ;
+ int luaL_typename (int *,int) ;
+ int lua_getfield (int *,int,char*) ;
+ int lua_gettop (int *) ;
+ TYPE_4__* lua_newuserdata (int *,size_t) ;
+ int lua_pop (int *,int) ;
+ int lua_pushcclosure (int *,int ,int) ;
+ int lua_pushlightuserdata (int *,int ) ;
+ int lua_pushliteral (int *,char*) ;
+ int lua_pushnil (int *) ;
+ int lua_rawget (int *,int ) ;
+ int lua_setmetatable (int *,int) ;
+ int lua_toboolean (int *,int) ;
+ int lua_type (int *,int) ;
+ TYPE_3__* ngx_http_lua_get_req (int *) ;
+ int ngx_http_lua_lightudata_mask (int ) ;
+ scalar_t__ ngx_http_lua_socket_compile_pattern (int *,scalar_t__,TYPE_4__*,int ) ;
+ int ngx_http_lua_socket_receiveuntil_iterator ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int ngx_memzero (TYPE_4__*,size_t) ;
+ int pattern_udata_metatable_key ;
 
 __attribute__((used)) static int
 ngx_http_lua_socket_tcp_receiveuntil(lua_State *L)
 {
-    ngx_http_request_t                  *r;
-    int                                  n;
-    ngx_str_t                            pat;
-    ngx_int_t                            rc;
-    size_t                               size;
-    unsigned                             inclusive = 0;
+    ngx_http_request_t *r;
+    int n;
+    ngx_str_t pat;
+    ngx_int_t rc;
+    size_t size;
+    unsigned inclusive = 0;
 
-    ngx_http_lua_socket_compiled_pattern_t     *cp;
+    ngx_http_lua_socket_compiled_pattern_t *cp;
 
     n = lua_gettop(L);
     if (n != 2 && n != 3) {
@@ -75,18 +75,18 @@ ngx_http_lua_socket_tcp_receiveuntil(lua_State *L)
     }
 
     if (n == 3) {
-        /* check out the options table */
+
 
         luaL_checktype(L, 3, LUA_TTABLE);
 
         lua_getfield(L, 3, "inclusive");
 
         switch (lua_type(L, -1)) {
-            case LUA_TNIL:
-                /* do nothing */
+            case 128:
+
                 break;
 
-            case LUA_TBOOLEAN:
+            case 129:
                 if (lua_toboolean(L, -1)) {
                     inclusive = 1;
                 }
@@ -102,7 +102,7 @@ ngx_http_lua_socket_tcp_receiveuntil(lua_State *L)
     }
 
     r = ngx_http_lua_get_req(L);
-    if (r == NULL) {
+    if (r == ((void*)0)) {
         return luaL_error(L, "no request found");
     }
 
@@ -121,7 +121,7 @@ ngx_http_lua_socket_tcp_receiveuntil(lua_State *L)
     size = sizeof(ngx_http_lua_socket_compiled_pattern_t);
 
     cp = lua_newuserdata(L, size);
-    if (cp == NULL) {
+    if (cp == ((void*)0)) {
         return luaL_error(L, "no memory");
     }
 

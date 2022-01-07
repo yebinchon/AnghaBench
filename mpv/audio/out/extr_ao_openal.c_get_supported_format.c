@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum af_format { ____Placeholder_af_format } af_format ;
-typedef  int /*<<< orphan*/  ALchar ;
 
-/* Variables and functions */
-#define  AF_FORMAT_FLOAT 131 
-#define  AF_FORMAT_S16 130 
-#define  AF_FORMAT_S32 129 
-#define  AF_FORMAT_U8 128 
- int AL_FALSE ; 
- int /*<<< orphan*/  AL_RENDERER ; 
- int /*<<< orphan*/  AL_TRUE ; 
- int /*<<< orphan*/  alGetEnumValue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  alGetString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  alIsExtensionPresent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * strstr (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef enum af_format { ____Placeholder_af_format } af_format ;
+typedef int ALchar ;
+
+
+
+
+
+
+ int AL_FALSE ;
+ int AL_RENDERER ;
+ int AL_TRUE ;
+ int alGetEnumValue (int *) ;
+ int alGetString (int ) ;
+ int alIsExtensionPresent (int *) ;
+ int * strstr (int ,char*) ;
 
 __attribute__((used)) static enum af_format get_supported_format(int format)
 {
     switch (format) {
-    case AF_FORMAT_U8:
+    case 128:
         if (alGetEnumValue((ALchar*)"AL_FORMAT_MONO8"))
-            return AF_FORMAT_U8;
+            return 128;
         break;
 
-    case AF_FORMAT_S16:
+    case 130:
         if (alGetEnumValue((ALchar*)"AL_FORMAT_MONO16"))
-            return AF_FORMAT_S16;
+            return 130;
         break;
 
-    case AF_FORMAT_S32:
-        if (strstr(alGetString(AL_RENDERER), "X-Fi") != NULL)
-            return AF_FORMAT_S32;
+    case 129:
+        if (strstr(alGetString(AL_RENDERER), "X-Fi") != ((void*)0))
+            return 129;
         break;
 
-    case AF_FORMAT_FLOAT:
+    case 131:
         if (alIsExtensionPresent((ALchar*)"AL_EXT_float32") == AL_TRUE)
-            return AF_FORMAT_FLOAT;
+            return 131;
         break;
     }
     return AL_FALSE;

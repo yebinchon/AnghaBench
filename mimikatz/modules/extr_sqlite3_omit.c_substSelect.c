@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  pFuncArg; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int pFuncArg; } ;
 struct TYPE_6__ {scalar_t__ isTabFunc; } ;
 struct SrcList_item {TYPE_2__ u1; TYPE_1__ fg; TYPE_4__* pSelect; } ;
-struct TYPE_9__ {TYPE_3__* pSrc; void* pWhere; void* pHaving; int /*<<< orphan*/  pOrderBy; int /*<<< orphan*/  pGroupBy; int /*<<< orphan*/  pEList; struct TYPE_9__* pPrior; } ;
+struct TYPE_9__ {TYPE_3__* pSrc; void* pWhere; void* pHaving; int pOrderBy; int pGroupBy; int pEList; struct TYPE_9__* pPrior; } ;
 struct TYPE_8__ {int nSrc; struct SrcList_item* a; } ;
-typedef  int /*<<< orphan*/  SubstContext ;
-typedef  TYPE_3__ SrcList ;
-typedef  TYPE_4__ Select ;
+typedef int SubstContext ;
+typedef TYPE_3__ SrcList ;
+typedef TYPE_4__ Select ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- void* substExpr (int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  substExprList (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int assert (int) ;
+ void* substExpr (int *,void*) ;
+ int substExprList (int *,int ) ;
 
 __attribute__((used)) static void substSelect(
-  SubstContext *pSubst, /* Description of the substitution */
-  Select *p,            /* SELECT statement in which to make substitutions */
-  int doPrior           /* Do substitutes on p->pPrior too */
+  SubstContext *pSubst,
+  Select *p,
+  int doPrior
 ){
   SrcList *pSrc;
   struct SrcList_item *pItem;

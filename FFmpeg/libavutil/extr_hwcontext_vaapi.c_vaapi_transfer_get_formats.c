@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
-typedef  enum AVHWFrameTransferDirection { ____Placeholder_AVHWFrameTransferDirection } AVHWFrameTransferDirection ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+typedef enum AVHWFrameTransferDirection { ____Placeholder_AVHWFrameTransferDirection } AVHWFrameTransferDirection ;
 struct TYPE_10__ {int nb_formats; TYPE_3__* formats; } ;
-typedef  TYPE_4__ VAAPIDeviceContext ;
+typedef TYPE_4__ VAAPIDeviceContext ;
 struct TYPE_11__ {scalar_t__ sw_format; TYPE_2__* device_ctx; } ;
 struct TYPE_9__ {scalar_t__ pix_fmt; } ;
 struct TYPE_8__ {TYPE_1__* internal; } ;
 struct TYPE_7__ {TYPE_4__* priv; } ;
-typedef  TYPE_5__ AVHWFramesContext ;
+typedef TYPE_5__ AVHWFramesContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AV_PIX_FMT_NONE ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int* av_malloc (int) ; 
+
+ int AVERROR (int ) ;
+ int AV_PIX_FMT_NONE ;
+ int ENOMEM ;
+ int av_assert0 (int) ;
+ int* av_malloc (int) ;
 
 __attribute__((used)) static int vaapi_transfer_get_formats(AVHWFramesContext *hwfc,
                                       enum AVHWFrameTransferDirection dir,

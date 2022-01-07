@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_reference ;
-typedef  int /*<<< orphan*/  git_refdb ;
-typedef  int /*<<< orphan*/  git_oid ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cl_assert (int) ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  current_master_tip ; 
- int /*<<< orphan*/  g_repo ; 
- int /*<<< orphan*/  git_oid_fromstr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_refdb_compress (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_refdb_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_reference_create (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_reference_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_reference_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_reference_lookup (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  git_repository_refdb (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int reference_is_packed (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int git_reference ;
+typedef int git_refdb ;
+typedef int git_oid ;
+
+
+ int cl_assert (int) ;
+ int cl_git_pass (int ) ;
+ int current_master_tip ;
+ int g_repo ;
+ int git_oid_fromstr (int *,int ) ;
+ int git_refdb_compress (int *) ;
+ int git_refdb_free (int *) ;
+ int git_reference_create (int **,int ,char const*,int *,int ,int *) ;
+ int git_reference_delete (int *) ;
+ int git_reference_free (int *) ;
+ int git_reference_lookup (int **,int ,char const*) ;
+ int git_repository_refdb (int **,int ) ;
+ int reference_is_packed (int *) ;
 
 void test_refs_delete__packed_only(void)
 {
-	/* can delete a just packed reference */
-	git_reference *ref;
-	git_refdb *refdb;
-	git_oid id;
-	const char *new_ref = "refs/heads/new_ref";
 
-	git_oid_fromstr(&id, current_master_tip);
+ git_reference *ref;
+ git_refdb *refdb;
+ git_oid id;
+ const char *new_ref = "refs/heads/new_ref";
 
-	/* Create and write the new object id reference */
-	cl_git_pass(git_reference_create(&ref, g_repo, new_ref, &id, 0, NULL));
-	git_reference_free(ref);
+ git_oid_fromstr(&id, current_master_tip);
 
-	/* Lookup the reference */
-	cl_git_pass(git_reference_lookup(&ref, g_repo, new_ref));
 
-	/* Ensure it's a loose reference */
-	cl_assert(reference_is_packed(ref) == 0);
+ cl_git_pass(git_reference_create(&ref, g_repo, new_ref, &id, 0, ((void*)0)));
+ git_reference_free(ref);
 
-	/* Pack all existing references */
-	cl_git_pass(git_repository_refdb(&refdb, g_repo));
-	cl_git_pass(git_refdb_compress(refdb));
 
-	/* Reload the reference from disk */
-	git_reference_free(ref);
-	cl_git_pass(git_reference_lookup(&ref, g_repo, new_ref));
+ cl_git_pass(git_reference_lookup(&ref, g_repo, new_ref));
 
-	/* Ensure it's a packed reference */
-	cl_assert(reference_is_packed(ref) == 1);
 
-	/* This should pass */
-	cl_git_pass(git_reference_delete(ref));
-	git_reference_free(ref);
-	git_refdb_free(refdb);
+ cl_assert(reference_is_packed(ref) == 0);
+
+
+ cl_git_pass(git_repository_refdb(&refdb, g_repo));
+ cl_git_pass(git_refdb_compress(refdb));
+
+
+ git_reference_free(ref);
+ cl_git_pass(git_reference_lookup(&ref, g_repo, new_ref));
+
+
+ cl_assert(reference_is_packed(ref) == 1);
+
+
+ cl_git_pass(git_reference_delete(ref));
+ git_reference_free(ref);
+ git_refdb_free(refdb);
 }

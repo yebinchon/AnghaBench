@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  subjectInfo ;
-typedef  int /*<<< orphan*/  sip ;
-struct TYPE_10__ {int /*<<< orphan*/ * pbData; int /*<<< orphan*/  cbData; } ;
-struct TYPE_9__ {int cbSize; scalar_t__ (* pfGet ) (TYPE_1__*,scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;void const* pwsFileName; scalar_t__ hFile; int /*<<< orphan*/ * pgSubjectType; } ;
-typedef  TYPE_1__ SIP_SUBJECTINFO ;
-typedef  TYPE_1__ SIP_DISPATCH_INFO ;
-typedef  int /*<<< orphan*/  HCRYPTMSG ;
-typedef  int /*<<< orphan*/  HCERTSTORE ;
-typedef  scalar_t__ HANDLE ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  scalar_t__ DWORD ;
-typedef  TYPE_3__ CERT_BLOB ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CERT_QUERY_CONTENT_FLAG_PKCS7_SIGNED ; 
- scalar_t__ CERT_QUERY_CONTENT_PKCS7_SIGNED_EMBED ; 
- int /*<<< orphan*/  CERT_QUERY_FORMAT_FLAG_BINARY ; 
- int /*<<< orphan*/  CERT_QUERY_OBJECT_BLOB ; 
- scalar_t__ CERT_QUERY_OBJECT_FILE ; 
- scalar_t__ CRYPT_QueryMessageObject (int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFileW (void const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CryptMemAlloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CryptMemFree (int /*<<< orphan*/ *) ; 
- scalar_t__ CryptSIPLoad (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ CryptSIPRetrieveSubjectGuid (void const*,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERROR_OUTOFMEMORY ; 
- int /*<<< orphan*/  E_INVALIDARG ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_NORMAL ; 
- int /*<<< orphan*/  FILE_SHARE_READ ; 
- int /*<<< orphan*/  GENERIC_READ ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__) ; 
- int /*<<< orphan*/  WARN (char*,scalar_t__) ; 
- scalar_t__ debugstr_w (void const*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ stub1 (TYPE_1__*,scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ stub2 (TYPE_1__*,scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int subjectInfo ;
+typedef int sip ;
+struct TYPE_10__ {int * pbData; int cbData; } ;
+struct TYPE_9__ {int cbSize; scalar_t__ (* pfGet ) (TYPE_1__*,scalar_t__*,int ,int *,int *) ;void const* pwsFileName; scalar_t__ hFile; int * pgSubjectType; } ;
+typedef TYPE_1__ SIP_SUBJECTINFO ;
+typedef TYPE_1__ SIP_DISPATCH_INFO ;
+typedef int HCRYPTMSG ;
+typedef int HCERTSTORE ;
+typedef scalar_t__ HANDLE ;
+typedef int GUID ;
+typedef scalar_t__ DWORD ;
+typedef TYPE_3__ CERT_BLOB ;
+typedef scalar_t__ BOOL ;
+
+
+ int CERT_QUERY_CONTENT_FLAG_PKCS7_SIGNED ;
+ scalar_t__ CERT_QUERY_CONTENT_PKCS7_SIGNED_EMBED ;
+ int CERT_QUERY_FORMAT_FLAG_BINARY ;
+ int CERT_QUERY_OBJECT_BLOB ;
+ scalar_t__ CERT_QUERY_OBJECT_FILE ;
+ scalar_t__ CRYPT_QueryMessageObject (int ,TYPE_3__*,int ,int ,scalar_t__*,int *,int *,int *,int *) ;
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFileW (void const*,int ,int ,int *,int ,int ,int *) ;
+ int * CryptMemAlloc (int ) ;
+ int CryptMemFree (int *) ;
+ scalar_t__ CryptSIPLoad (int *,int ,TYPE_1__*) ;
+ scalar_t__ CryptSIPRetrieveSubjectGuid (void const*,scalar_t__,int *) ;
+ int ERROR_OUTOFMEMORY ;
+ int E_INVALIDARG ;
+ scalar_t__ FALSE ;
+ int FILE_ATTRIBUTE_NORMAL ;
+ int FILE_SHARE_READ ;
+ int GENERIC_READ ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int OPEN_EXISTING ;
+ int SetLastError (int ) ;
+ int TRACE (char*,scalar_t__) ;
+ int WARN (char*,scalar_t__) ;
+ scalar_t__ debugstr_w (void const*) ;
+ int memset (TYPE_1__*,int ,int) ;
+ scalar_t__ stub1 (TYPE_1__*,scalar_t__*,int ,int *,int *) ;
+ scalar_t__ stub2 (TYPE_1__*,scalar_t__*,int ,int *,int *) ;
 
 __attribute__((used)) static BOOL CRYPT_QueryEmbeddedMessageObject(DWORD dwObjectType,
  const void *pvObject, DWORD dwExpectedContentTypeFlags,
@@ -74,7 +74,7 @@ __attribute__((used)) static BOOL CRYPT_QueryEmbeddedMessageObject(DWORD dwObjec
         return FALSE;
     }
     file = CreateFileW(pvObject, GENERIC_READ, FILE_SHARE_READ,
-     NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+     ((void*)0), OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, ((void*)0));
     if (file != INVALID_HANDLE_VALUE)
     {
         ret = CryptSIPRetrieveSubjectGuid(pvObject, file, &subject);
@@ -97,7 +97,7 @@ __attribute__((used)) static BOOL CRYPT_QueryEmbeddedMessageObject(DWORD dwObjec
                 subjectInfo.hFile = file;
                 subjectInfo.pwsFileName = pvObject;
                 ret = sip.pfGet(&subjectInfo, &encodingType, 0, &blob.cbData,
-                 NULL);
+                 ((void*)0));
                 if (ret)
                 {
                     blob.pbData = CryptMemAlloc(blob.cbData);
@@ -111,7 +111,7 @@ __attribute__((used)) static BOOL CRYPT_QueryEmbeddedMessageObject(DWORD dwObjec
                              CERT_QUERY_OBJECT_BLOB, &blob,
                              CERT_QUERY_CONTENT_FLAG_PKCS7_SIGNED,
                              CERT_QUERY_FORMAT_FLAG_BINARY,
-                             pdwMsgAndCertEncodingType, NULL, NULL,
+                             pdwMsgAndCertEncodingType, ((void*)0), ((void*)0),
                              phCertStore, phMsg);
                             if (ret && pdwContentType)
                                 *pdwContentType = CERT_QUERY_CONTENT_PKCS7_SIGNED_EMBED;

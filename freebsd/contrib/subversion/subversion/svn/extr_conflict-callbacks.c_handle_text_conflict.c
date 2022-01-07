@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
 struct TYPE_14__ {scalar_t__ apr_err; } ;
-typedef  TYPE_1__ svn_error_t ;
-struct TYPE_15__ {int /*<<< orphan*/  cancel_baton; int /*<<< orphan*/  cancel_func; } ;
-typedef  TYPE_2__ svn_cmdline_prompt_baton_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  svn_client_conflict_t ;
-typedef  scalar_t__ svn_client_conflict_option_id_t ;
-typedef  int /*<<< orphan*/  svn_cl__conflict_stats_t ;
-typedef  int svn_boolean_t ;
-struct TYPE_16__ {scalar_t__ choice; int /*<<< orphan*/  code; } ;
-typedef  TYPE_3__ client_option_t ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
+typedef TYPE_1__ svn_error_t ;
+struct TYPE_15__ {int cancel_baton; int cancel_func; } ;
+typedef TYPE_2__ svn_cmdline_prompt_baton_t ;
+typedef int svn_client_ctx_t ;
+typedef int svn_client_conflict_t ;
+typedef scalar_t__ svn_client_conflict_option_id_t ;
+typedef int svn_cl__conflict_stats_t ;
+typedef int svn_boolean_t ;
+struct TYPE_16__ {scalar_t__ choice; int code; } ;
+typedef TYPE_3__ client_option_t ;
+typedef int buf ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_array_header_t ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- scalar_t__ SVN_ERR_CL_NO_EXTERNAL_MERGE_TOOL ; 
- scalar_t__ SVN_ERR_EXTERNAL_PROGRAM ; 
- TYPE_1__* SVN_NO_ERROR ; 
- int TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  build_text_conflict_options (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  help_string (char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mark_conflict_resolved (int /*<<< orphan*/ *,scalar_t__,int,int /*<<< orphan*/ *,int,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  open_editor (int*,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  prompt_user (TYPE_3__ const**,int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  show_conflicts (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  show_diff (int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
- char* svn_cl__local_style_skip_ancestor (char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_cl__merge_file (int*,char const*,char const*,char const*,char const*,char const*,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_1__* svn_cl__merge_file_externally (char const*,char const*,char const*,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_client_conflict_get_local_abspath (int /*<<< orphan*/ *) ; 
- scalar_t__ svn_client_conflict_option_incoming_text_where_conflicted ; 
- scalar_t__ svn_client_conflict_option_merged_text ; 
- scalar_t__ svn_client_conflict_option_postpone ; 
- scalar_t__ svn_client_conflict_option_undefined ; 
- scalar_t__ svn_client_conflict_option_unspecified ; 
- scalar_t__ svn_client_conflict_option_working_text_where_conflicted ; 
- int /*<<< orphan*/  svn_client_conflict_text_get_contents (int /*<<< orphan*/ *,char const**,char const**,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_client_conflict_text_get_mime_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_cmdline_fprintf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,...) ; 
- char* svn_err_best_message (TYPE_1__*,char*,int) ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_1__*) ; 
- TYPE_1__* svn_error_trace (TYPE_1__*) ; 
- int svn_mime_type_is_binary (char const*) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ scalar_t__ SVN_ERR_CL_NO_EXTERNAL_MERGE_TOOL ;
+ scalar_t__ SVN_ERR_EXTERNAL_PROGRAM ;
+ TYPE_1__* SVN_NO_ERROR ;
+ int TRUE ;
+ int _ (char*) ;
+ int build_text_conflict_options (int **,int *,int *,int,int *,int *) ;
+ int help_string (char const**,int *,int *) ;
+ int mark_conflict_resolved (int *,scalar_t__,int,int *,int,char const*,int *,int *,int *) ;
+ int open_editor (int*,char const*,char const*,int *,int *) ;
+ int prompt_user (TYPE_3__ const**,int *,char const**,int *,TYPE_2__*,int *) ;
+ int show_conflicts (int *,int ,int ,int *) ;
+ int show_diff (int *,char const*,char const*,int ,int ,int *) ;
+ int stderr ;
+ scalar_t__ strcmp (int ,char*) ;
+ char* svn_cl__local_style_skip_ancestor (char const*,char const*,int *) ;
+ int svn_cl__merge_file (int*,char const*,char const*,char const*,char const*,char const*,char const*,char const*,int *,int ,int ,int *) ;
+ TYPE_1__* svn_cl__merge_file_externally (char const*,char const*,char const*,char const*,char const*,int *,int *,int *) ;
+ char* svn_client_conflict_get_local_abspath (int *) ;
+ scalar_t__ svn_client_conflict_option_incoming_text_where_conflicted ;
+ scalar_t__ svn_client_conflict_option_merged_text ;
+ scalar_t__ svn_client_conflict_option_postpone ;
+ scalar_t__ svn_client_conflict_option_undefined ;
+ scalar_t__ svn_client_conflict_option_unspecified ;
+ scalar_t__ svn_client_conflict_option_working_text_where_conflicted ;
+ int svn_client_conflict_text_get_contents (int *,char const**,char const**,char const**,int *,int *,int *) ;
+ char* svn_client_conflict_text_get_mime_type (int *) ;
+ int svn_cmdline_fprintf (int ,int *,char*,...) ;
+ char* svn_err_best_message (TYPE_1__*,char*,int) ;
+ int svn_error_clear (TYPE_1__*) ;
+ TYPE_1__* svn_error_trace (TYPE_1__*) ;
+ int svn_mime_type_is_binary (char const*) ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
 
 __attribute__((used)) static svn_error_t *
 handle_text_conflict(svn_boolean_t *resolved,
@@ -83,10 +83,10 @@ handle_text_conflict(svn_boolean_t *resolved,
 {
   apr_pool_t *iterpool = svn_pool_create(scratch_pool);
   svn_boolean_t diff_allowed = FALSE;
-  /* Have they done something that might have affected the merged file? */
+
   svn_boolean_t performed_edit = FALSE;
-  /* Have they done *something* (edit, look at diff, etc) to
-     give them a rational basis for choosing (r)esolved? */
+
+
   svn_boolean_t knows_something = FALSE;
   const char *local_relpath;
   const char *local_abspath = svn_client_conflict_get_local_abspath(conflict);
@@ -98,11 +98,11 @@ handle_text_conflict(svn_boolean_t *resolved,
   const char *their_abspath;
   const char *merged_abspath = svn_client_conflict_get_local_abspath(conflict);
   apr_array_header_t *text_conflict_options;
-  svn_client_conflict_option_id_t option_id; 
+  svn_client_conflict_option_id_t option_id;
 
   option_id = svn_client_conflict_option_unspecified;
 
-  SVN_ERR(svn_client_conflict_text_get_contents(NULL, &my_abspath,
+  SVN_ERR(svn_client_conflict_text_get_contents(((void*)0), &my_abspath,
                                                 &base_abspath, &their_abspath,
                                                 conflict, scratch_pool,
                                                 scratch_pool));
@@ -124,15 +124,6 @@ handle_text_conflict(svn_boolean_t *resolved,
                                     local_relpath));
       *printed_description = TRUE;
     }
-
-  /* ### TODO This whole feature availability check is grossly outdated.
-     DIFF_ALLOWED needs either to be redefined or to go away.
-   */
-
-  /* Diffing can happen between base and merged, to show conflict
-     markers to the user (this is the typical 3-way merge
-     scenario), or if no base is available, we can show a diff
-     between mine and theirs. */
   if (!is_binary &&
       ((merged_abspath && base_abspath)
       || (!base_abspath && my_abspath && their_abspath)))
@@ -142,7 +133,7 @@ handle_text_conflict(svn_boolean_t *resolved,
                                       is_binary, scratch_pool, scratch_pool));
   while (TRUE)
     {
-      const char *suggested_options[9]; /* filled statically below */
+      const char *suggested_options[9];
       const char **next_option = suggested_options;
       const client_option_t *opt;
 
@@ -151,13 +142,13 @@ handle_text_conflict(svn_boolean_t *resolved,
       *next_option++ = "p";
       if (diff_allowed)
         {
-          /* We need one more path for this feature. */
+
           if (my_abspath)
             *next_option++ = "df";
 
           *next_option++ = "e";
 
-          /* We need one more path for this feature. */
+
           if (my_abspath)
             *next_option++ = "m";
 
@@ -169,18 +160,18 @@ handle_text_conflict(svn_boolean_t *resolved,
           if (knows_something || is_binary)
             *next_option++ = "r";
 
-          /* The 'mine-full' option selects the ".mine" file for texts or
-           * the current working directory file for binary files. */
+
+
           if (my_abspath || is_binary)
             *next_option++ = "mf";
 
           *next_option++ = "tf";
         }
       *next_option++ = "s";
-      *next_option++ = NULL;
+      *next_option++ = ((void*)0);
 
       SVN_ERR(prompt_user(&opt, text_conflict_options, suggested_options,
-                          NULL, pb, iterpool));
+                          ((void*)0), pb, iterpool));
       if (! opt)
         continue;
 
@@ -223,7 +214,7 @@ handle_text_conflict(svn_boolean_t *resolved,
         }
       else if (strcmp(opt->code, "df") == 0)
         {
-          /* Re-check preconditions. */
+
           if (! diff_allowed || ! my_abspath)
             {
               SVN_ERR(svn_cmdline_fprintf(stderr, iterpool,
@@ -249,7 +240,7 @@ handle_text_conflict(svn_boolean_t *resolved,
         {
           svn_error_t *err;
 
-          /* Re-check preconditions. */
+
           if (! my_abspath)
             {
               SVN_ERR(svn_cmdline_fprintf(stderr, iterpool,
@@ -263,14 +254,14 @@ handle_text_conflict(svn_boolean_t *resolved,
                                               my_abspath,
                                               merged_abspath,
                                               local_abspath, config,
-                                              NULL, iterpool);
+                                              ((void*)0), iterpool);
           if (err)
             {
               if (err->apr_err == SVN_ERR_CL_NO_EXTERNAL_MERGE_TOOL)
                 {
                   svn_boolean_t remains_in_conflict = TRUE;
 
-                  /* Try the internal merge tool. */
+
                   svn_error_clear(err);
                   SVN_ERR(svn_cl__merge_file(&remains_in_conflict,
                                              base_abspath,
@@ -302,20 +293,20 @@ handle_text_conflict(svn_boolean_t *resolved,
             }
           else
             {
-              /* The external merge tool's exit code was either 0 or 1.
-               * The tool may leave the file conflicted by exiting with
-               * exit code 1, and we allow the user to mark the conflict
-               * resolved in this case. */
+
+
+
+
               performed_edit = TRUE;
               knows_something = TRUE;
             }
         }
       else if (strcmp(opt->code, "l") == 0 || strcmp(opt->code, ":-l") == 0)
         {
-          /* ### This check should be earlier as it's nasty to offer an option
-           *     and then when the user chooses it say 'Invalid option'. */
-          /* ### 'merged_abspath' shouldn't be necessary *before* we launch the
-           *     resolver: it should be the *result* of doing so. */
+
+
+
+
           if (base_abspath && their_abspath && my_abspath && merged_abspath)
             {
               svn_error_t *err;
@@ -327,7 +318,7 @@ handle_text_conflict(svn_boolean_t *resolved,
                                                   my_abspath,
                                                   merged_abspath,
                                                   local_abspath,
-                                                  config, NULL, iterpool);
+                                                  config, ((void*)0), iterpool);
               if (err && (err->apr_err == SVN_ERR_CL_NO_EXTERNAL_MERGE_TOOL ||
                           err->apr_err == SVN_ERR_EXTERNAL_PROGRAM))
                 {
@@ -381,9 +372,9 @@ handle_text_conflict(svn_boolean_t *resolved,
               continue;
             }
 
-          /* We only allow the user accept the merged version of
-             the file if they've edited it, or at least looked at
-             the diff. */
+
+
+
           if (opt->choice == svn_client_conflict_option_merged_text
               && ! knows_something && diff_allowed)
             {
@@ -404,7 +395,7 @@ handle_text_conflict(svn_boolean_t *resolved,
       option_id != svn_client_conflict_option_postpone)
     {
       SVN_ERR(mark_conflict_resolved(conflict, option_id,
-                                     TRUE, NULL, FALSE,
+                                     TRUE, ((void*)0), FALSE,
                                      path_prefix, conflict_stats,
                                      ctx, scratch_pool));
       *resolved = TRUE;

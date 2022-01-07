@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int count_lhs; size_t count_rhs; scalar_t__ protid; } ;
-typedef  TYPE_1__ twr_empty_floor_t ;
-struct connection_ops {scalar_t__* epm_protocols; scalar_t__ (* parse_top_of_tower ) (unsigned char const*,size_t,char**,char**) ;int /*<<< orphan*/  name; } ;
-typedef  scalar_t__ RPC_STATUS ;
+typedef TYPE_1__ twr_empty_floor_t ;
+struct connection_ops {scalar_t__* epm_protocols; scalar_t__ (* parse_top_of_tower ) (unsigned char const*,size_t,char**,char**) ;int name; } ;
+typedef scalar_t__ RPC_STATUS ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (struct connection_ops*) ; 
- scalar_t__ EPT_S_NOT_REGISTERED ; 
- char* I_RpcAllocate (scalar_t__) ; 
- scalar_t__ RPC_S_OK ; 
- struct connection_ops* conn_protseq_list ; 
- int /*<<< orphan*/  strcpy (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ strlen (int /*<<< orphan*/ ) ; 
- scalar_t__ stub1 (unsigned char const*,size_t,char**,char**) ; 
+
+ unsigned int ARRAY_SIZE (struct connection_ops*) ;
+ scalar_t__ EPT_S_NOT_REGISTERED ;
+ char* I_RpcAllocate (scalar_t__) ;
+ scalar_t__ RPC_S_OK ;
+ struct connection_ops* conn_protseq_list ;
+ int strcpy (char*,int ) ;
+ scalar_t__ strlen (int ) ;
+ scalar_t__ stub1 (unsigned char const*,size_t,char**,char**) ;
 
 RPC_STATUS RpcTransport_ParseTopOfTower(const unsigned char *tower_data,
                                         size_t tower_size,
@@ -34,7 +34,7 @@ RPC_STATUS RpcTransport_ParseTopOfTower(const unsigned char *tower_data,
 {
     const twr_empty_floor_t *protocol_floor;
     const twr_empty_floor_t *floor4;
-    const struct connection_ops *protseq_ops = NULL;
+    const struct connection_ops *protseq_ops = ((void*)0);
     RPC_STATUS status;
     unsigned int i;
 

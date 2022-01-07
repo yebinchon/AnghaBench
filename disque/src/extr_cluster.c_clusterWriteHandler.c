@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ssize_t ;
-struct TYPE_4__ {int /*<<< orphan*/  fd; int /*<<< orphan*/  sndbuf; } ;
-typedef  TYPE_1__ clusterLink ;
-typedef  int /*<<< orphan*/  aeEventLoop ;
-struct TYPE_5__ {int /*<<< orphan*/  el; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AE_WRITABLE ; 
- int /*<<< orphan*/  LL_DEBUG ; 
- int /*<<< orphan*/  UNUSED (int) ; 
- int /*<<< orphan*/  aeDeleteFileEvent (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  handleLinkIOError (TYPE_1__*) ; 
- scalar_t__ sdslen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdsrange (int /*<<< orphan*/ ,scalar_t__,int) ; 
- TYPE_2__ server ; 
- int /*<<< orphan*/  serverLog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- scalar_t__ write (int,int /*<<< orphan*/ ,scalar_t__) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ ssize_t ;
+struct TYPE_4__ {int fd; int sndbuf; } ;
+typedef TYPE_1__ clusterLink ;
+typedef int aeEventLoop ;
+struct TYPE_5__ {int el; } ;
+
+
+ int AE_WRITABLE ;
+ int LL_DEBUG ;
+ int UNUSED (int) ;
+ int aeDeleteFileEvent (int ,int ,int ) ;
+ int errno ;
+ int handleLinkIOError (TYPE_1__*) ;
+ scalar_t__ sdslen (int ) ;
+ int sdsrange (int ,scalar_t__,int) ;
+ TYPE_2__ server ;
+ int serverLog (int ,char*,int ) ;
+ int strerror (int ) ;
+ scalar_t__ write (int,int ,scalar_t__) ;
 
 void clusterWriteHandler(aeEventLoop *el, int fd, void *privdata, int mask) {
     clusterLink *link = (clusterLink*) privdata;

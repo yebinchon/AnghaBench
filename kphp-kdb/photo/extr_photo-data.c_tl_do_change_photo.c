@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  local_id; } ;
-typedef  TYPE_3__ user ;
-struct tl_change_photo {scalar_t__ changes_len; int /*<<< orphan*/  photo_id; int /*<<< orphan*/  user_id; int /*<<< orphan*/  changes; int /*<<< orphan*/  mask; } ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int local_id; } ;
+typedef TYPE_3__ user ;
+struct tl_change_photo {scalar_t__ changes_len; int photo_id; int user_id; int changes; int mask; } ;
 struct tl_act_extra {scalar_t__ extra; } ;
-struct TYPE_10__ {int /*<<< orphan*/  photo_len; int /*<<< orphan*/  photo; int /*<<< orphan*/  orig_album_id; int /*<<< orphan*/  orig_owner_id; int /*<<< orphan*/  server_id2; int /*<<< orphan*/  server_id; } ;
-struct TYPE_9__ {int /*<<< orphan*/  secret; int /*<<< orphan*/  extra; int /*<<< orphan*/  local_id; int /*<<< orphan*/  volume_id; int /*<<< orphan*/  rotate; int /*<<< orphan*/  size; } ;
+struct TYPE_10__ {int photo_len; int photo; int orig_album_id; int orig_owner_id; int server_id2; int server_id; } ;
+struct TYPE_9__ {int secret; int extra; int local_id; int volume_id; int rotate; int size; } ;
 struct TYPE_12__ {scalar_t__ v_fid; TYPE_2__ location_old; TYPE_1__ location_engine; scalar_t__ is_location_engine; } ;
-typedef  TYPE_4__ location ;
+typedef TYPE_4__ location ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LEV_PHOTO_CHANGE_PHOTO ; 
- scalar_t__ MAX_EVENT_SIZE ; 
- int /*<<< orphan*/  NOAIO ; 
- int /*<<< orphan*/  PHOTO_TYPE ; 
- int /*<<< orphan*/  TL_BOOL_FALSE ; 
- int /*<<< orphan*/  TL_BOOL_TRUE ; 
- int /*<<< orphan*/  TL_ERROR_BAD_VALUE ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ check_photo_id (int /*<<< orphan*/ ) ; 
- TYPE_3__* conv_uid (int /*<<< orphan*/ ) ; 
- int do_add_photo_location (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int do_add_photo_location_engine (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int do_change_data (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ field_changes_n ; 
- int /*<<< orphan*/  load_user_metafile (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_4__* location_changes ; 
- int location_changes_n ; 
- scalar_t__ photo_type__original_location ; 
- scalar_t__ rpc_get_fields (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  tl_fetch_set_error_format (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  tl_store_int (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  user_loaded (TYPE_3__*) ; 
+
+ int LEV_PHOTO_CHANGE_PHOTO ;
+ scalar_t__ MAX_EVENT_SIZE ;
+ int NOAIO ;
+ int PHOTO_TYPE ;
+ int TL_BOOL_FALSE ;
+ int TL_BOOL_TRUE ;
+ int TL_ERROR_BAD_VALUE ;
+ int assert (int) ;
+ scalar_t__ check_photo_id (int ) ;
+ TYPE_3__* conv_uid (int ) ;
+ int do_add_photo_location (int ,int ,int,int ,int ,int ,int ,int ,int ) ;
+ int do_add_photo_location_engine (int ,int ,int,int ,int ,int ,int ,int ,int ) ;
+ int do_change_data (int ,int ,int ) ;
+ scalar_t__ field_changes_n ;
+ int load_user_metafile (TYPE_3__*,int ,int ) ;
+ TYPE_4__* location_changes ;
+ int location_changes_n ;
+ scalar_t__ photo_type__original_location ;
+ scalar_t__ rpc_get_fields (int ,int ,int ,scalar_t__) ;
+ int tl_fetch_set_error_format (int ,char*) ;
+ int tl_store_int (int ) ;
+ int user_loaded (TYPE_3__*) ;
 
 int tl_do_change_photo (struct tl_act_extra *extra) {
   struct tl_change_photo *e = (struct tl_change_photo *)extra->extra;
@@ -53,7 +53,7 @@ int tl_do_change_photo (struct tl_act_extra *extra) {
   assert (check_photo_id (e->photo_id) && 0 < e->changes_len && e->changes_len < MAX_EVENT_SIZE);
 
   user *u = conv_uid (e->user_id);
-  assert (u != NULL);
+  assert (u != ((void*)0));
 
   load_user_metafile (u, u->local_id, NOAIO);
   if (!user_loaded (u)) {

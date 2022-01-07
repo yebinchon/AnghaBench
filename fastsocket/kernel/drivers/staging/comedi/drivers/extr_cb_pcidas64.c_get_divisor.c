@@ -1,38 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ unsigned int TIMER_BASE ;
 
-/* Forward declarations */
+ unsigned int TRIG_ROUND_MASK ;
 
-/* Type definitions */
 
-/* Variables and functions */
- unsigned int TIMER_BASE ; 
-#define  TRIG_ROUND_DOWN 130 
- unsigned int TRIG_ROUND_MASK ; 
-#define  TRIG_ROUND_NEAREST 129 
-#define  TRIG_ROUND_UP 128 
 
 __attribute__((used)) static unsigned int get_divisor(unsigned int ns, unsigned int flags)
 {
-	unsigned int divisor;
+ unsigned int divisor;
 
-	switch (flags & TRIG_ROUND_MASK) {
-	case TRIG_ROUND_UP:
-		divisor = (ns + TIMER_BASE - 1) / TIMER_BASE;
-		break;
-	case TRIG_ROUND_DOWN:
-		divisor = ns / TIMER_BASE;
-		break;
-	case TRIG_ROUND_NEAREST:
-	default:
-		divisor = (ns + TIMER_BASE / 2) / TIMER_BASE;
-		break;
-	}
-	return divisor;
+ switch (flags & TRIG_ROUND_MASK) {
+ case 128:
+  divisor = (ns + TIMER_BASE - 1) / TIMER_BASE;
+  break;
+ case 130:
+  divisor = ns / TIMER_BASE;
+  break;
+ case 129:
+ default:
+  divisor = (ns + TIMER_BASE / 2) / TIMER_BASE;
+  break;
+ }
+ return divisor;
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  pArg; int /*<<< orphan*/  (* xCallback ) (char*,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_1__ DState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  output_formatted (TYPE_1__*,char*,...) ; 
- int /*<<< orphan*/  stub1 (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub5 (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub6 (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub7 (char*,int /*<<< orphan*/ ) ; 
- char* unused_string (char const*,char*,char*,char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int pArg; int (* xCallback ) (char*,int ) ;} ;
+typedef TYPE_1__ DState ;
+
+
+ int output_formatted (TYPE_1__*,char*,...) ;
+ int stub1 (char*,int ) ;
+ int stub2 (char*,int ) ;
+ int stub3 (char*,int ) ;
+ int stub4 (char*,int ) ;
+ int stub5 (char const*,int ) ;
+ int stub6 (char const*,int ) ;
+ int stub7 (char*,int ) ;
+ char* unused_string (char const*,char*,char*,char*) ;
 
 __attribute__((used)) static void output_quoted_escaped_string(DState *p, const char *z){
   int i;

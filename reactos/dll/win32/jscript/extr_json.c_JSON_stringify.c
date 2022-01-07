@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vdisp_t ;
-struct TYPE_4__ {int /*<<< orphan*/  member_0; } ;
-struct TYPE_5__ {char* gap; int /*<<< orphan*/  stack; int /*<<< orphan*/  buf; int /*<<< orphan*/  buf_len; int /*<<< orphan*/  stack_top; TYPE_1__ member_7; int /*<<< orphan*/  member_6; int /*<<< orphan*/  member_5; int /*<<< orphan*/ * member_4; int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/ * member_1; int /*<<< orphan*/ * member_0; } ;
-typedef  TYPE_2__ stringify_ctx_t ;
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ E_NOTIMPL ; 
- scalar_t__ E_OUTOFMEMORY ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  debugstr_jsval (int /*<<< orphan*/ ) ; 
- int floor (double) ; 
- double get_number (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * get_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ ) ; 
- scalar_t__ is_number (int /*<<< orphan*/ ) ; 
- scalar_t__ is_object_instance (int /*<<< orphan*/ ) ; 
- scalar_t__ is_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * jsstr_alloc_len (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsstr_extract (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t,char*) ; 
- size_t jsstr_length (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_undefined () ; 
- scalar_t__ maybe_to_primitive (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ stringify (TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int vdisp_t ;
+struct TYPE_4__ {int member_0; } ;
+struct TYPE_5__ {char* gap; int stack; int buf; int buf_len; int stack_top; TYPE_1__ member_7; int member_6; int member_5; int * member_4; int member_3; int member_2; int * member_1; int * member_0; } ;
+typedef TYPE_2__ stringify_ctx_t ;
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int jsstr_t ;
+typedef int WORD ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ E_NOTIMPL ;
+ scalar_t__ E_OUTOFMEMORY ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int FIXME (char*,int ) ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_OK ;
+ int TRACE (char*) ;
+ int assert (int) ;
+ int debugstr_jsval (int ) ;
+ int floor (double) ;
+ double get_number (int ) ;
+ int * get_string (int ) ;
+ int heap_free (int ) ;
+ scalar_t__ is_number (int ) ;
+ scalar_t__ is_object_instance (int ) ;
+ scalar_t__ is_string (int ) ;
+ int * jsstr_alloc_len (int ,int ) ;
+ int jsstr_extract (int *,int ,size_t,char*) ;
+ size_t jsstr_length (int *) ;
+ int jsval_release (int ) ;
+ int jsval_string (int *) ;
+ int jsval_undefined () ;
+ scalar_t__ maybe_to_primitive (int *,int ,int *) ;
+ scalar_t__ stringify (TYPE_2__*,int ) ;
 
 __attribute__((used)) static HRESULT JSON_stringify(script_ctx_t *ctx, vdisp_t *jsthis, WORD flags, unsigned argc, jsval_t *argv, jsval_t *r)
 {
-    stringify_ctx_t stringify_ctx = {ctx, NULL,0,0, NULL,0,0, {0}};
+    stringify_ctx_t stringify_ctx = {ctx, ((void*)0),0,0, ((void*)0),0,0, {0}};
     HRESULT hres;
 
     TRACE("\n");

@@ -1,42 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int sampling_index; int object_type; int sbr; int /*<<< orphan*/  ps; int /*<<< orphan*/  sample_rate; int /*<<< orphan*/  chan_config; } ;
-typedef  TYPE_1__ MPEG4AudioConfig ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
-typedef  int /*<<< orphan*/  AACContext ;
 
-/* Variables and functions */
-#define  AOT_AAC_LC 134 
-#define  AOT_AAC_LTP 133 
-#define  AOT_AAC_MAIN 132 
-#define  AOT_AAC_SSR 131 
-#define  AOT_ER_AAC_ELD 130 
-#define  AOT_ER_AAC_LC 129 
-#define  AOT_ER_AAC_LD 128 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  ENOSYS ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  avpriv_report_missing_feature (int /*<<< orphan*/ *,char*,char*,int) ; 
- int decode_eld_specific_config (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int decode_ga_specific_config (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_dlog (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int ff_mpeg4audio_get_config_gb (TYPE_1__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int get_bits_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip_bits_long (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int sampling_index; int object_type; int sbr; int ps; int sample_rate; int chan_config; } ;
+typedef TYPE_1__ MPEG4AudioConfig ;
+typedef int GetBitContext ;
+typedef int AVCodecContext ;
+typedef int AACContext ;
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int ENOSYS ;
+ int av_log (int *,int ,char*,int) ;
+ int avpriv_report_missing_feature (int *,char*,char*,int) ;
+ int decode_eld_specific_config (int *,int *,int *,TYPE_1__*,int ) ;
+ int decode_ga_specific_config (int *,int *,int *,int,TYPE_1__*,int ) ;
+ int ff_dlog (int *,char*,int,int ,int,int ,int,int ) ;
+ int ff_mpeg4audio_get_config_gb (TYPE_1__*,int *,int,int *) ;
+ int get_bits_count (int *) ;
+ int skip_bits_long (int *,int) ;
 
 __attribute__((used)) static int decode_audio_specific_config_gb(AACContext *ac,
                                            AVCodecContext *avctx,
@@ -57,7 +48,7 @@ __attribute__((used)) static int decode_audio_specific_config_gb(AACContext *ac,
                m4ac->sampling_index);
         return AVERROR_INVALIDDATA;
     }
-    if (m4ac->object_type == AOT_ER_AAC_LD &&
+    if (m4ac->object_type == 128 &&
         (m4ac->sampling_index < 3 || m4ac->sampling_index > 7)) {
         av_log(avctx, AV_LOG_ERROR,
                "invalid low delay sampling rate index %d\n",
@@ -68,17 +59,17 @@ __attribute__((used)) static int decode_audio_specific_config_gb(AACContext *ac,
     skip_bits_long(gb, i);
 
     switch (m4ac->object_type) {
-    case AOT_AAC_MAIN:
-    case AOT_AAC_LC:
-    case AOT_AAC_SSR:
-    case AOT_AAC_LTP:
-    case AOT_ER_AAC_LC:
-    case AOT_ER_AAC_LD:
+    case 132:
+    case 134:
+    case 131:
+    case 133:
+    case 129:
+    case 128:
         if ((ret = decode_ga_specific_config(ac, avctx, gb, get_bit_alignment,
                                             m4ac, m4ac->chan_config)) < 0)
             return ret;
         break;
-    case AOT_ER_AAC_ELD:
+    case 130:
         if ((ret = decode_eld_specific_config(ac, avctx, gb,
                                               m4ac, m4ac->chan_config)) < 0)
             return ret;

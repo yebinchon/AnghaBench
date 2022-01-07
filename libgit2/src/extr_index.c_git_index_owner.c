@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_repository ;
-typedef  int /*<<< orphan*/  git_index ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * INDEX_OWNER (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int git_repository ;
+typedef int git_index ;
+
+
+ int * INDEX_OWNER (int const*) ;
 
 git_repository *git_index_owner(const git_index *index)
 {
-	return INDEX_OWNER(index);
+ return INDEX_OWNER(index);
 }

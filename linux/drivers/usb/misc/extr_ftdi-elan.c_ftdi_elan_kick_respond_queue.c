@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct usb_ftdi {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ftdi_respond_queue_work (struct usb_ftdi*,int /*<<< orphan*/ ) ; 
+
+ int ftdi_respond_queue_work (struct usb_ftdi*,int ) ;
 
 __attribute__((used)) static void ftdi_elan_kick_respond_queue(struct usb_ftdi *ftdi)
 {
-	ftdi_respond_queue_work(ftdi, 0);
+ ftdi_respond_queue_work(ftdi, 0);
 }

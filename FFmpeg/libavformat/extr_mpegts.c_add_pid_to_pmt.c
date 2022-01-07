@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct Program {int nb_pids; unsigned int* pids; } ;
-typedef  int /*<<< orphan*/  MpegTSContext ;
+typedef int MpegTSContext ;
 
-/* Variables and functions */
- int MAX_PIDS_PER_PROGRAM ; 
- struct Program* get_program (int /*<<< orphan*/ *,unsigned int) ; 
+
+ int MAX_PIDS_PER_PROGRAM ;
+ struct Program* get_program (int *,unsigned int) ;
 
 __attribute__((used)) static void add_pid_to_pmt(MpegTSContext *ts, unsigned int programid,
                            unsigned int pid)

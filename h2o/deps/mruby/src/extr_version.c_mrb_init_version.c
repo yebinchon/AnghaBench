@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MRUBY_COPYRIGHT ; 
- int /*<<< orphan*/  MRUBY_DESCRIPTION ; 
- int /*<<< orphan*/  MRUBY_RELEASE_DATE ; 
- int /*<<< orphan*/  MRUBY_RELEASE_NO ; 
- int /*<<< orphan*/  MRUBY_RUBY_ENGINE ; 
- int /*<<< orphan*/  MRUBY_RUBY_VERSION ; 
- int /*<<< orphan*/  MRUBY_VERSION ; 
- int /*<<< orphan*/  mrb_define_global_const (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_fixnum_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_str_new_lit (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mrb_value ;
+typedef int mrb_state ;
+
+
+ int MRUBY_COPYRIGHT ;
+ int MRUBY_DESCRIPTION ;
+ int MRUBY_RELEASE_DATE ;
+ int MRUBY_RELEASE_NO ;
+ int MRUBY_RUBY_ENGINE ;
+ int MRUBY_RUBY_VERSION ;
+ int MRUBY_VERSION ;
+ int mrb_define_global_const (int *,char*,int ) ;
+ int mrb_fixnum_value (int ) ;
+ int mrb_str_new_lit (int *,int ) ;
 
 void
 mrb_init_version(mrb_state* mrb)

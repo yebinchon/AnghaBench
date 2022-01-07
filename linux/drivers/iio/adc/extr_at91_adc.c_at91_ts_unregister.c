@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct at91_adc_state {int /*<<< orphan*/  ts_input; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  input_unregister_device (int /*<<< orphan*/ ) ; 
+
+
+
+struct at91_adc_state {int ts_input; } ;
+
+
+ int input_unregister_device (int ) ;
 
 __attribute__((used)) static void at91_ts_unregister(struct at91_adc_state *st)
 {
-	input_unregister_device(st->ts_input);
+ input_unregister_device(st->ts_input);
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct list_entry {int dummy; } ;
-struct TYPE_3__ {int type; int /*<<< orphan*/  iomode; int /*<<< orphan*/  length; int /*<<< orphan*/  offset; } ;
-typedef  TYPE_1__ pnfs_layout ;
-typedef  int /*<<< orphan*/  enum_t ;
-typedef  int /*<<< orphan*/  bool_t ;
-typedef  int /*<<< orphan*/  XDR ;
+struct TYPE_3__ {int type; int iomode; int length; int offset; } ;
+typedef TYPE_1__ pnfs_layout ;
+typedef int enum_t ;
+typedef int bool_t ;
+typedef int XDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
-#define  PNFS_LAYOUTTYPE_FILE 128 
- int /*<<< orphan*/  decode_file_layout (int /*<<< orphan*/ *,struct list_entry*,TYPE_1__*) ; 
- int /*<<< orphan*/  eprintf (char*,char*,int) ; 
- int /*<<< orphan*/  xdr_enum (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xdr_u_hyper (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+
+ int decode_file_layout (int *,struct list_entry*,TYPE_1__*) ;
+ int eprintf (char*,char*,int) ;
+ int xdr_enum (int *,int *) ;
+ int xdr_u_hyper (int *,int *) ;
 
 __attribute__((used)) static bool_t decode_layout(
     XDR *xdr,
@@ -45,7 +45,7 @@ __attribute__((used)) static bool_t decode_layout(
         return FALSE;
 
     switch (layout.type) {
-    case PNFS_LAYOUTTYPE_FILE:
+    case 128:
         return decode_file_layout(xdr, list, &layout);
 
     default:

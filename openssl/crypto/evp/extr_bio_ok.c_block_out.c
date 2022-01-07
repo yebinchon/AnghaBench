@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {size_t buf_len; unsigned char* buf; int blockout; int /*<<< orphan*/ * md; } ;
-typedef  int /*<<< orphan*/  EVP_MD_CTX ;
-typedef  int /*<<< orphan*/  EVP_MD ;
-typedef  TYPE_1__ BIO_OK_CTX ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_clear_retry_flags (int /*<<< orphan*/ *) ; 
- TYPE_1__* BIO_get_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_DigestFinal_ex (int /*<<< orphan*/ *,unsigned char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_DigestUpdate (int /*<<< orphan*/ *,unsigned char*,unsigned long) ; 
- int /*<<< orphan*/ * EVP_MD_CTX_md (int /*<<< orphan*/ *) ; 
- int EVP_MD_size (int /*<<< orphan*/  const*) ; 
- size_t OK_BLOCK_BLOCK ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {size_t buf_len; unsigned char* buf; int blockout; int * md; } ;
+typedef int EVP_MD_CTX ;
+typedef int EVP_MD ;
+typedef TYPE_1__ BIO_OK_CTX ;
+typedef int BIO ;
+
+
+ int BIO_clear_retry_flags (int *) ;
+ TYPE_1__* BIO_get_data (int *) ;
+ int EVP_DigestFinal_ex (int *,unsigned char*,int *) ;
+ int EVP_DigestUpdate (int *,unsigned char*,unsigned long) ;
+ int * EVP_MD_CTX_md (int *) ;
+ int EVP_MD_size (int const*) ;
+ size_t OK_BLOCK_BLOCK ;
 
 __attribute__((used)) static int block_out(BIO *b)
 {
@@ -47,7 +47,7 @@ __attribute__((used)) static int block_out(BIO *b)
     if (!EVP_DigestUpdate(md,
                           (unsigned char *)&(ctx->buf[OK_BLOCK_BLOCK]), tl))
         goto berr;
-    if (!EVP_DigestFinal_ex(md, &(ctx->buf[ctx->buf_len]), NULL))
+    if (!EVP_DigestFinal_ex(md, &(ctx->buf[ctx->buf_len]), ((void*)0)))
         goto berr;
     ctx->buf_len += md_size;
     ctx->blockout = 1;

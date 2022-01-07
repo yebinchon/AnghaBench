@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct sockaddr_in {int /*<<< orphan*/  sin_port; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct sockaddr_in {int sin_port; } ;
 struct sockaddr {int dummy; } ;
-typedef  int /*<<< orphan*/  socklen_t ;
-typedef  int /*<<< orphan*/  addr ;
+typedef int socklen_t ;
+typedef int addr ;
 struct TYPE_5__ {int fd; } ;
 struct TYPE_6__ {TYPE_1__ sock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atexit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__ fork () ; 
- int getsockname (int,struct sockaddr*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kill_srvpid ; 
- int make_server_socket (char*,char*) ; 
- int ntohs (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,int,scalar_t__) ; 
- int /*<<< orphan*/  prot_init () ; 
- int /*<<< orphan*/  puts (char*) ; 
- int /*<<< orphan*/  set_sig_handler () ; 
- TYPE_2__ srv ; 
- int /*<<< orphan*/  srv_acquire_wal (TYPE_2__*) ; 
- scalar_t__ srvpid ; 
- int /*<<< orphan*/  srvserve (TYPE_2__*) ; 
- int /*<<< orphan*/  twarn (char*) ; 
+
+ int atexit (int ) ;
+ int exit (int) ;
+ scalar_t__ fork () ;
+ int getsockname (int,struct sockaddr*,int *) ;
+ int kill_srvpid ;
+ int make_server_socket (char*,char*) ;
+ int ntohs (int ) ;
+ int printf (char*,int,scalar_t__) ;
+ int prot_init () ;
+ int puts (char*) ;
+ int set_sig_handler () ;
+ TYPE_2__ srv ;
+ int srv_acquire_wal (TYPE_2__*) ;
+ scalar_t__ srvpid ;
+ int srvserve (TYPE_2__*) ;
+ int twarn (char*) ;
 
 __attribute__((used)) static int
 mustforksrv(void)
@@ -63,19 +63,19 @@ mustforksrv(void)
     }
 
     if (srvpid > 0) {
-        // On exit the parent (test) sends SIGTERM to the child.
+
         atexit(kill_srvpid);
         printf("start server port=%d pid=%d\n", port, srvpid);
         return port;
     }
 
-    /* now in child */
+
 
     set_sig_handler();
     prot_init();
 
     srv_acquire_wal(&srv);
 
-    srvserve(&srv); /* does not return */
-    exit(1); /* satisfy the compiler */
+    srvserve(&srv);
+    exit(1);
 }

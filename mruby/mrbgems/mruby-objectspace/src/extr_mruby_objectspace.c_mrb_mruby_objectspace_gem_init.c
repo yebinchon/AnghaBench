@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct RClass {int dummy; } ;
-typedef  int /*<<< orphan*/  mrb_state ;
+typedef int mrb_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MRB_ARGS_OPT (int) ; 
- int /*<<< orphan*/  mrb_define_class_method (int /*<<< orphan*/ *,struct RClass*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct RClass* mrb_define_module (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  os_count_objects ; 
- int /*<<< orphan*/  os_each_object ; 
+
+ int MRB_ARGS_OPT (int) ;
+ int mrb_define_class_method (int *,struct RClass*,char*,int ,int ) ;
+ struct RClass* mrb_define_module (int *,char*) ;
+ int os_count_objects ;
+ int os_each_object ;
 
 void
 mrb_mruby_objectspace_gem_init(mrb_state *mrb)

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ parse; } ;
-typedef  TYPE_1__ ScriptHost ;
-typedef  int /*<<< orphan*/  HTMLScriptElement ;
-typedef  int /*<<< orphan*/  HTMLInnerWindow ;
+typedef TYPE_1__ ScriptHost ;
+typedef int HTMLScriptElement ;
+typedef int HTMLInnerWindow ;
 
-/* Variables and functions */
- TYPE_1__* get_elem_script_host (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  parse_script_elem (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+ TYPE_1__* get_elem_script_host (int *,int *) ;
+ int parse_script_elem (TYPE_1__*,int *) ;
 
 void doc_insert_script(HTMLInnerWindow *window, HTMLScriptElement *script_elem)
 {

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVFormatContext ;
 
-/* Variables and functions */
- int AV_CH_BACK_CENTER ; 
- int AV_CH_BACK_LEFT ; 
- int AV_CH_BACK_RIGHT ; 
- int AV_CH_FRONT_CENTER ; 
- int AV_CH_FRONT_LEFT ; 
- int AV_CH_FRONT_LEFT_OF_CENTER ; 
- int AV_CH_FRONT_RIGHT ; 
- int AV_CH_FRONT_RIGHT_OF_CENTER ; 
- int AV_CH_LOW_FREQUENCY ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  avpriv_request_sample (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int AVFormatContext ;
+
+
+ int AV_CH_BACK_CENTER ;
+ int AV_CH_BACK_LEFT ;
+ int AV_CH_BACK_RIGHT ;
+ int AV_CH_FRONT_CENTER ;
+ int AV_CH_FRONT_LEFT ;
+ int AV_CH_FRONT_LEFT_OF_CENTER ;
+ int AV_CH_FRONT_RIGHT ;
+ int AV_CH_FRONT_RIGHT_OF_CENTER ;
+ int AV_CH_LOW_FREQUENCY ;
+ int AV_LOG_WARNING ;
+ int av_log (int *,int ,char*) ;
+ int avpriv_request_sample (int *,char*) ;
 
 __attribute__((used)) static int wsd_to_av_channel_layoyt(AVFormatContext *s, int bit)
 {

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct uhci_hcd {int /*<<< orphan*/  io_addr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  finish_reset (struct uhci_hcd*) ; 
- int /*<<< orphan*/  to_pci_dev (int /*<<< orphan*/ ) ; 
- scalar_t__ uhci_check_and_reset_hc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uhci_dev (struct uhci_hcd*) ; 
+
+
+
+struct uhci_hcd {int io_addr; } ;
+
+
+ int finish_reset (struct uhci_hcd*) ;
+ int to_pci_dev (int ) ;
+ scalar_t__ uhci_check_and_reset_hc (int ,int ) ;
+ int uhci_dev (struct uhci_hcd*) ;
 
 __attribute__((used)) static void check_and_reset_hc(struct uhci_hcd *uhci)
 {
-	if (uhci_check_and_reset_hc(to_pci_dev(uhci_dev(uhci)), uhci->io_addr))
-		finish_reset(uhci);
+ if (uhci_check_and_reset_hc(to_pci_dev(uhci_dev(uhci)), uhci->io_addr))
+  finish_reset(uhci);
 }

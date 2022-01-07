@@ -4,7 +4,7 @@ CGI_decode_hex(const char *p, int *len) {
     int i, k, n, L, R;
 
     if (p == 0 || ((n = strlen(p)) & 1)) {
-        return 0;  /* length of input must be even */
+        return 0;
     }
     out = mymalloc(n / 2 + 1);
     for (i = k = 0; i < n; i += 2) {

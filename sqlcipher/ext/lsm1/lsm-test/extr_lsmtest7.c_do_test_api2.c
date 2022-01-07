@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lsm_db ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lsm_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * newLsmConnection (char*,int,int,int*) ; 
- scalar_t__ testCaseBegin (int*,char const*,char*) ; 
- int /*<<< orphan*/  testCaseFinish (int) ; 
- int /*<<< orphan*/  testDeleteLsmdb (char*) ; 
- int /*<<< orphan*/  testPagesize (int /*<<< orphan*/ *,int,int,int*) ; 
+
+
+
+typedef int lsm_db ;
+
+
+ int lsm_close (int *) ;
+ int * newLsmConnection (char*,int,int,int*) ;
+ scalar_t__ testCaseBegin (int*,char const*,char*) ;
+ int testCaseFinish (int) ;
+ int testDeleteLsmdb (char*) ;
+ int testPagesize (int *,int,int,int*) ;
 
 __attribute__((used)) static void do_test_api2(const char *zPattern, int *pRc){
   if( *pRc==0 && testCaseBegin(pRc, zPattern, "api2.lsm") ){

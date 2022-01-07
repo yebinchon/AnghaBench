@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct z8530_channel {int /*<<< orphan*/  dataio; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  z8530_read_port (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u8 ;
+struct z8530_channel {int dataio; } ;
+
+
+ int z8530_read_port (int ) ;
 
 __attribute__((used)) static inline u8 read_zsdata(struct z8530_channel *c)
 {
-	u8 r;
-	r=z8530_read_port(c->dataio);
-	return r;
+ u8 r;
+ r=z8530_read_port(c->dataio);
+ return r;
 }

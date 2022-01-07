@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ULONG ;
+
+
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int ULONG ;
 struct TYPE_15__ {scalar_t__ SizeOfBlock; scalar_t__ VirtualAddress; } ;
 struct TYPE_14__ {size_t NumberOfRvaAndSizes; TYPE_1__* DataDirectory; } ;
 struct TYPE_13__ {int PointerToRawData; int VirtualAddress; scalar_t__ SizeOfRawData; } ;
 struct TYPE_12__ {scalar_t__ VirtualAddress; int Size; } ;
-typedef  TYPE_2__* PIMAGE_SECTION_HEADER ;
-typedef  TYPE_3__* PIMAGE_OPTIONAL_HEADER ;
-typedef  TYPE_4__* PIMAGE_BASE_RELOCATION ;
+typedef TYPE_2__* PIMAGE_SECTION_HEADER ;
+typedef TYPE_3__* PIMAGE_OPTIONAL_HEADER ;
+typedef TYPE_4__* PIMAGE_BASE_RELOCATION ;
 
-/* Variables and functions */
- TYPE_2__* FindSectionForRVA (scalar_t__,unsigned int,TYPE_2__*) ; 
- size_t IMAGE_DIRECTORY_ENTRY_BASERELOC ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- void* malloc (scalar_t__) ; 
- scalar_t__ memcmp (TYPE_4__*,TYPE_4__*,scalar_t__) ; 
- int /*<<< orphan*/  memcpy (char*,TYPE_4__*,int) ; 
- int /*<<< orphan*/  stderr ; 
+
+ TYPE_2__* FindSectionForRVA (scalar_t__,unsigned int,TYPE_2__*) ;
+ size_t IMAGE_DIRECTORY_ENTRY_BASERELOC ;
+ int fprintf (int ,char*,...) ;
+ void* malloc (scalar_t__) ;
+ scalar_t__ memcmp (TYPE_4__*,TYPE_4__*,scalar_t__) ;
+ int memcpy (char*,TYPE_4__*,int) ;
+ int stderr ;
 
 __attribute__((used)) static int
 ProcessRelocations(ULONG *ProcessedRelocsLength, void **ProcessedRelocs,
@@ -44,22 +44,22 @@ ProcessRelocations(ULONG *ProcessedRelocsLength, void **ProcessedRelocs,
     if (OptHeader->NumberOfRvaAndSizes < IMAGE_DIRECTORY_ENTRY_BASERELOC ||
         OptHeader->DataDirectory[IMAGE_DIRECTORY_ENTRY_BASERELOC].VirtualAddress == 0)
     {
-        /* No relocation entries */
+
         *ProcessedRelocsLength = 0;
-        *ProcessedRelocs = NULL;
+        *ProcessedRelocs = ((void*)0);
         return 0;
     }
 
     RelocSectionHeader = FindSectionForRVA(OptHeader->DataDirectory[IMAGE_DIRECTORY_ENTRY_BASERELOC].VirtualAddress,
                                            NumberOfSections, SectionHeaders);
-    if (RelocSectionHeader == NULL)
+    if (RelocSectionHeader == ((void*)0))
     {
         fprintf(stderr, "Can't find section header for relocation data\n");
         return 1;
     }
 
     *ProcessedRelocs = malloc(RelocSectionHeader->SizeOfRawData);
-    if (*ProcessedRelocs == NULL)
+    if (*ProcessedRelocs == ((void*)0))
     {
         fprintf(stderr,
                 "Failed to allocate %u bytes for relocations\n",
@@ -80,7 +80,7 @@ ProcessRelocations(ULONG *ProcessedRelocsLength, void **ProcessedRelocs,
         TargetSectionHeader = FindSectionForRVA(BaseReloc->VirtualAddress,
                                                 NumberOfSections,
                                                 SectionHeaders);
-        if (TargetSectionHeader != NULL)
+        if (TargetSectionHeader != ((void*)0))
         {
             AcceptedRelocs = *ProcessedRelocs;
             Found = 0;

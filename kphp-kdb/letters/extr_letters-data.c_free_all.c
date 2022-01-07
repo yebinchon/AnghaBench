@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_1__* data; } ;
 struct TYPE_3__ {int memory_buf_mx; } ;
 
-/* Variables and functions */
- int MAX_LETTER_SIZE ; 
- int MAX_PRIORITY ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  dl_close_file (int) ; 
- int /*<<< orphan*/  dl_free (int /*<<< orphan*/ ,int) ; 
- scalar_t__ dl_get_memory_used () ; 
- int /*<<< orphan*/ * drive_l_to_letter ; 
- int /*<<< orphan*/  flush_all (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- TYPE_2__ header ; 
- int /*<<< orphan*/  id_to_letter ; 
- int /*<<< orphan*/  letter_buf ; 
- int /*<<< orphan*/  letter_buf_get ; 
- int /*<<< orphan*/  letter_delete_time (int,char*) ; 
- int /*<<< orphan*/  map_ll_int_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  map_ll_vptr_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * memory_buf ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  task_deletes ; 
- int /*<<< orphan*/  task_id_to_delete_time ; 
- int /*<<< orphan*/  vector_free (int /*<<< orphan*/ ) ; 
- scalar_t__ verbosity ; 
+
+ int MAX_LETTER_SIZE ;
+ int MAX_PRIORITY ;
+ int assert (int) ;
+ int dl_close_file (int) ;
+ int dl_free (int ,int) ;
+ scalar_t__ dl_get_memory_used () ;
+ int * drive_l_to_letter ;
+ int flush_all (int) ;
+ int fprintf (int ,char*,scalar_t__) ;
+ TYPE_2__ header ;
+ int id_to_letter ;
+ int letter_buf ;
+ int letter_buf_get ;
+ int letter_delete_time (int,char*) ;
+ int map_ll_int_free (int *) ;
+ int map_ll_vptr_free (int *) ;
+ int * memory_buf ;
+ int stderr ;
+ int task_deletes ;
+ int task_id_to_delete_time ;
+ int vector_free (int ) ;
+ scalar_t__ verbosity ;
 
 void free_all (void) {
-  //TODO truncate files
+
   letter_delete_time (-1, "Engine restart");
 
   flush_all (1);
@@ -67,7 +67,7 @@ void free_all (void) {
     dl_free (letter_buf, 2 * MAX_LETTER_SIZE + 1100);
     dl_free (letter_buf_get, 2 * MAX_LETTER_SIZE + 1100);
     fprintf (stderr, "Memory left: %lld\n", dl_get_memory_used());
-//    while (1) {}
+
     assert (dl_get_memory_used() == 0);
   }
 }

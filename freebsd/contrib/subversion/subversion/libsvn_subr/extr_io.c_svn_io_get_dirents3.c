@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  mtime; int /*<<< orphan*/  filesize; int /*<<< orphan*/  special; int /*<<< orphan*/  kind; } ;
-typedef  TYPE_1__ svn_io_dirent2_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  scalar_t__ apr_status_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int apr_int32_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-struct TYPE_8__ {char* name; int /*<<< orphan*/  mtime; int /*<<< orphan*/  size; } ;
-typedef  TYPE_2__ apr_finfo_t ;
-typedef  int /*<<< orphan*/  apr_dir_t ;
 
-/* Variables and functions */
- int APR_FINFO_MTIME ; 
- int APR_FINFO_NAME ; 
- int APR_FINFO_SIZE ; 
- int APR_FINFO_TYPE ; 
- int /*<<< orphan*/  APR_STATUS_IS_ENOENT (scalar_t__) ; 
- scalar_t__ APR_SUCCESS ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- scalar_t__ apr_dir_close (int /*<<< orphan*/ *) ; 
- scalar_t__ apr_dir_read (TYPE_2__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  entry_name_to_utf8 (char const**,char*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  map_apr_finfo_to_node_kind (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_wrap_apr (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ *,char const*,TYPE_1__*) ; 
- int /*<<< orphan*/  svn_io_dir_open (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ *) ; 
- TYPE_1__* svn_io_dirent2_create (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int mtime; int filesize; int special; int kind; } ;
+typedef TYPE_1__ svn_io_dirent2_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+typedef scalar_t__ apr_status_t ;
+typedef int apr_pool_t ;
+typedef int apr_int32_t ;
+typedef int apr_hash_t ;
+struct TYPE_8__ {char* name; int mtime; int size; } ;
+typedef TYPE_2__ apr_finfo_t ;
+typedef int apr_dir_t ;
+
+
+ int APR_FINFO_MTIME ;
+ int APR_FINFO_NAME ;
+ int APR_FINFO_SIZE ;
+ int APR_FINFO_TYPE ;
+ int APR_STATUS_IS_ENOENT (scalar_t__) ;
+ scalar_t__ APR_SUCCESS ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ scalar_t__ apr_dir_close (int *) ;
+ scalar_t__ apr_dir_read (TYPE_2__*,int,int *) ;
+ int * apr_hash_make (int *) ;
+ int entry_name_to_utf8 (char const**,char*,char const*,int *) ;
+ int map_apr_finfo_to_node_kind (int *,int *,TYPE_2__*) ;
+ int svn_dirent_local_style (char const*,int *) ;
+ int * svn_error_wrap_apr (scalar_t__,int ,int ) ;
+ int svn_hash_sets (int *,char const*,TYPE_1__*) ;
+ int svn_io_dir_open (int **,char const*,int *) ;
+ TYPE_1__* svn_io_dirent2_create (int *) ;
 
 svn_error_t *
 svn_io_get_dirents3(apr_hash_t **dirents,

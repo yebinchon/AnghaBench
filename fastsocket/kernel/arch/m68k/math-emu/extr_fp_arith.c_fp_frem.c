@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct fp_ext {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FPCR_ROUND_RN ; 
- int /*<<< orphan*/  PINSTR ; 
- int /*<<< orphan*/  dprint (int /*<<< orphan*/ ,char*) ; 
- struct fp_ext* modrem_kernel (struct fp_ext*,struct fp_ext*,int /*<<< orphan*/ ) ; 
+
+ int FPCR_ROUND_RN ;
+ int PINSTR ;
+ int dprint (int ,char*) ;
+ struct fp_ext* modrem_kernel (struct fp_ext*,struct fp_ext*,int ) ;
 
 struct fp_ext *
 fp_frem(struct fp_ext *dest, struct fp_ext *src)
 {
-	dprint(PINSTR, "frem\n");
-	return modrem_kernel(dest, src, FPCR_ROUND_RN);
+ dprint(PINSTR, "frem\n");
+ return modrem_kernel(dest, src, FPCR_ROUND_RN);
 }

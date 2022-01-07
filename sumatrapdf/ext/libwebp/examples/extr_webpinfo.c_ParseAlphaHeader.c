@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  scalar_t__ WebPInfoStatus ;
-typedef  int /*<<< orphan*/  WebPInfo ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef scalar_t__ WebPInfoStatus ;
+typedef int WebPInfo ;
 struct TYPE_3__ {int* payload_; size_t size_; } ;
-typedef  TYPE_1__ ChunkData ;
+typedef TYPE_1__ ChunkData ;
 
-/* Variables and functions */
- size_t ALPHA_HEADER_LEN ; 
- int const ALPHA_LOSSLESS_COMPRESSION ; 
- int const ALPHA_PREPROCESSED_LEVELS ; 
- size_t CHUNK_HEADER_SIZE ; 
- int /*<<< orphan*/  LOG_ERROR (char*) ; 
- int /*<<< orphan*/  LOG_WARN (char*) ; 
- scalar_t__ ParseLosslessTransform (int /*<<< orphan*/ * const,int const*,size_t,int /*<<< orphan*/ *) ; 
- scalar_t__ WEBP_INFO_BITSTREAM_ERROR ; 
- scalar_t__ WEBP_INFO_OK ; 
- scalar_t__ WEBP_INFO_TRUNCATED_DATA ; 
- char** kAlphaFilterMethods ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+ size_t ALPHA_HEADER_LEN ;
+ int const ALPHA_LOSSLESS_COMPRESSION ;
+ int const ALPHA_PREPROCESSED_LEVELS ;
+ size_t CHUNK_HEADER_SIZE ;
+ int LOG_ERROR (char*) ;
+ int LOG_WARN (char*) ;
+ scalar_t__ ParseLosslessTransform (int * const,int const*,size_t,int *) ;
+ scalar_t__ WEBP_INFO_BITSTREAM_ERROR ;
+ scalar_t__ WEBP_INFO_OK ;
+ scalar_t__ WEBP_INFO_TRUNCATED_DATA ;
+ char** kAlphaFilterMethods ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static WebPInfoStatus ParseAlphaHeader(const ChunkData* const chunk_data,
                                        WebPInfo* const webp_info) {

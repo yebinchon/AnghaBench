@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  error (char*,char const*,char*,char*) ; 
- scalar_t__ read_file (char const*,char*,int) ; 
- long double str2ld (char*,char**) ; 
+ int error (char*,char const*,char*,char*) ;
+ scalar_t__ read_file (char const*,char*,int) ;
+ long double str2ld (char*,char**) ;
 
 __attribute__((used)) static unsigned long long int bcache_read_number_with_units(const char *filename) {
     char buffer[50 + 1];
     if(read_file(filename, buffer, 50) == 0) {
         static int unknown_units_error = 10;
 
-        char *end = NULL;
+        char *end = ((void*)0);
         long double value = str2ld(buffer, &end);
         if(end && *end) {
             if(*end == 'k')

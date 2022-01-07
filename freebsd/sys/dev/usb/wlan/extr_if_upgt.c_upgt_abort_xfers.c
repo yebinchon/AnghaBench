@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct upgt_softc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UPGT_LOCK (struct upgt_softc*) ; 
- int /*<<< orphan*/  UPGT_UNLOCK (struct upgt_softc*) ; 
- int /*<<< orphan*/  upgt_abort_xfers_locked (struct upgt_softc*) ; 
+
+ int UPGT_LOCK (struct upgt_softc*) ;
+ int UPGT_UNLOCK (struct upgt_softc*) ;
+ int upgt_abort_xfers_locked (struct upgt_softc*) ;
 
 __attribute__((used)) static void
 upgt_abort_xfers(struct upgt_softc *sc)
 {
 
-	UPGT_LOCK(sc);
-	upgt_abort_xfers_locked(sc);
-	UPGT_UNLOCK(sc);
+ UPGT_LOCK(sc);
+ upgt_abort_xfers_locked(sc);
+ UPGT_UNLOCK(sc);
 }

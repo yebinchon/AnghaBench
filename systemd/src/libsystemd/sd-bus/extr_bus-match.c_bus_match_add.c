@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct match_callback {int dummy; } ;
-typedef  struct match_callback bus_match_node ;
-struct bus_match_component {int /*<<< orphan*/  value_str; int /*<<< orphan*/  value_u8; int /*<<< orphan*/  type; } ;
+typedef struct match_callback bus_match_node ;
+struct bus_match_component {int value_str; int value_u8; int type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (struct match_callback*) ; 
- int bus_match_add_compare_value (struct match_callback*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct match_callback**) ; 
- int bus_match_add_leaf (struct match_callback*,struct match_callback*) ; 
+
+ int assert (struct match_callback*) ;
+ int bus_match_add_compare_value (struct match_callback*,int ,int ,int ,struct match_callback**) ;
+ int bus_match_add_leaf (struct match_callback*,struct match_callback*) ;
 
 int bus_match_add(
                 struct bus_match_node *root,

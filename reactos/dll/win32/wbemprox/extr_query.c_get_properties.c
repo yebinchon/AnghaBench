@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct view {TYPE_2__* table; } ;
-typedef  size_t UINT ;
+typedef size_t UINT ;
 struct TYPE_4__ {size_t num_cols; TYPE_1__* columns; } ;
-struct TYPE_3__ {int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  SAFEARRAY ;
-typedef  int LONG ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
-typedef  scalar_t__ BOOL ;
+struct TYPE_3__ {int name; } ;
+typedef int SAFEARRAY ;
+typedef int LONG ;
+typedef scalar_t__ HRESULT ;
+typedef int BSTR ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ E_OUTOFMEMORY ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/ * SafeArrayCreateVector (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  SafeArrayDestroy (int /*<<< orphan*/ *) ; 
- scalar_t__ SafeArrayPutElement (int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SysAllocString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VT_BSTR ; 
- int WBEM_FLAG_NONSYSTEM_ONLY ; 
- int WBEM_FLAG_SYSTEM_ONLY ; 
- size_t count_selected_properties (struct view const*) ; 
- scalar_t__ is_method (TYPE_2__*,size_t) ; 
- int /*<<< orphan*/  is_selected_prop (struct view const*,int /*<<< orphan*/ ) ; 
- scalar_t__ is_system_prop (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ E_OUTOFMEMORY ;
+ scalar_t__ S_OK ;
+ int * SafeArrayCreateVector (int ,int ,size_t) ;
+ int SafeArrayDestroy (int *) ;
+ scalar_t__ SafeArrayPutElement (int *,int*,int ) ;
+ int SysAllocString (int ) ;
+ int SysFreeString (int ) ;
+ int VT_BSTR ;
+ int WBEM_FLAG_NONSYSTEM_ONLY ;
+ int WBEM_FLAG_SYSTEM_ONLY ;
+ size_t count_selected_properties (struct view const*) ;
+ scalar_t__ is_method (TYPE_2__*,size_t) ;
+ int is_selected_prop (struct view const*,int ) ;
+ scalar_t__ is_system_prop (int ) ;
 
 HRESULT get_properties( const struct view *view, LONG flags, SAFEARRAY **props )
 {

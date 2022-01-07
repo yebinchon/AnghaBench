@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8 ;
-typedef  int uint16 ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int MCP4725_COMMAND_WRITE_DAC ; 
- int MCP4725_COMMAND_WRITE_DAC_EEPROM ; 
- int MCP4725_I2C_ADDR_BASE ; 
- int /*<<< orphan*/  PLATFORM_I2C_DIRECTION_TRANSMITTER ; 
- int get_address (int /*<<< orphan*/ *,int) ; 
- int luaL_argerror (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_getfield (int /*<<< orphan*/ *,int,char*) ; 
- scalar_t__ lua_isboolean (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_isnil (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_isnumber (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_istable (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_toboolean (int /*<<< orphan*/ *,int) ; 
- int lua_tonumber (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mcp4725_i2c_id ; 
- int /*<<< orphan*/  platform_i2c_send_address (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  platform_i2c_send_byte (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  platform_i2c_send_start (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  platform_i2c_send_stop (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8 ;
+typedef int uint16 ;
+typedef int lua_State ;
+
+
+ int MCP4725_COMMAND_WRITE_DAC ;
+ int MCP4725_COMMAND_WRITE_DAC_EEPROM ;
+ int MCP4725_I2C_ADDR_BASE ;
+ int PLATFORM_I2C_DIRECTION_TRANSMITTER ;
+ int get_address (int *,int) ;
+ int luaL_argerror (int *,int,char*) ;
+ int lua_getfield (int *,int,char*) ;
+ scalar_t__ lua_isboolean (int *,int) ;
+ int lua_isnil (int *,int) ;
+ scalar_t__ lua_isnumber (int *,int) ;
+ scalar_t__ lua_istable (int *,int) ;
+ int lua_pop (int *,int) ;
+ scalar_t__ lua_toboolean (int *,int) ;
+ int lua_tonumber (int *,int) ;
+ int mcp4725_i2c_id ;
+ int platform_i2c_send_address (int ,int,int ) ;
+ int platform_i2c_send_byte (int ,int) ;
+ int platform_i2c_send_start (int ) ;
+ int platform_i2c_send_stop (int ) ;
 
 __attribute__((used)) static int mcp4725_write(lua_State* L){
 
   uint8 i2c_address = MCP4725_I2C_ADDR_BASE;
   uint16 dac_value = 0;
-  uint8  cmd_byte = 0;
+  uint8 cmd_byte = 0;
 
   if(lua_istable(L, 1))
   {

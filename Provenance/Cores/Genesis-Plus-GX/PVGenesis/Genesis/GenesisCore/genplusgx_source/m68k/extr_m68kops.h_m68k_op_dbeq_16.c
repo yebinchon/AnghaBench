@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint ;
 
-/* Variables and functions */
- scalar_t__ COND_NOT_EQ () ; 
- int /*<<< orphan*/  CYC_DBCC_F_EXP ; 
- int /*<<< orphan*/  CYC_DBCC_F_NOEXP ; 
- int DY ; 
- int MASK_OUT_ABOVE_16 (int) ; 
- int MASK_OUT_BELOW_16 (int) ; 
- int OPER_I_16 () ; 
- int REG_PC ; 
- int /*<<< orphan*/  USE_CYCLES (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  m68ki_branch_16 (int) ; 
+
+
+
+typedef int uint ;
+
+
+ scalar_t__ COND_NOT_EQ () ;
+ int CYC_DBCC_F_EXP ;
+ int CYC_DBCC_F_NOEXP ;
+ int DY ;
+ int MASK_OUT_ABOVE_16 (int) ;
+ int MASK_OUT_BELOW_16 (int) ;
+ int OPER_I_16 () ;
+ int REG_PC ;
+ int USE_CYCLES (int ) ;
+ int m68ki_branch_16 (int) ;
 
 __attribute__((used)) static void m68k_op_dbeq_16(void)
 {

@@ -1,47 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  KEY_DOWN ; 
- int /*<<< orphan*/  PRESSED ; 
- int /*<<< orphan*/  RELEASED ; 
- int /*<<< orphan*/  __this_cpu_write (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  input_report_key (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  input_sync (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  local_irq_restore (unsigned long) ; 
- int /*<<< orphan*/  local_irq_save (unsigned long) ; 
- int /*<<< orphan*/  preempt_disable () ; 
- int /*<<< orphan*/  preempt_enable () ; 
- int /*<<< orphan*/  reporting_keystroke ; 
- int /*<<< orphan*/  virt_keyboard ; 
+ int KEY_DOWN ;
+ int PRESSED ;
+ int RELEASED ;
+ int __this_cpu_write (int ,int) ;
+ int input_report_key (int ,int ,int ) ;
+ int input_sync (int ) ;
+ int local_irq_restore (unsigned long) ;
+ int local_irq_save (unsigned long) ;
+ int preempt_disable () ;
+ int preempt_enable () ;
+ int reporting_keystroke ;
+ int virt_keyboard ;
 
 void speakup_fake_down_arrow(void)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	/* disable keyboard interrupts */
-	local_irq_save(flags);
-	/* don't change CPU */
-	preempt_disable();
 
-	__this_cpu_write(reporting_keystroke, true);
-	input_report_key(virt_keyboard, KEY_DOWN, PRESSED);
-	input_report_key(virt_keyboard, KEY_DOWN, RELEASED);
-	input_sync(virt_keyboard);
-	__this_cpu_write(reporting_keystroke, false);
+ local_irq_save(flags);
 
-	/* reenable preemption */
-	preempt_enable();
-	/* reenable keyboard interrupts */
-	local_irq_restore(flags);
+ preempt_disable();
+
+ __this_cpu_write(reporting_keystroke, 1);
+ input_report_key(virt_keyboard, KEY_DOWN, PRESSED);
+ input_report_key(virt_keyboard, KEY_DOWN, RELEASED);
+ input_sync(virt_keyboard);
+ __this_cpu_write(reporting_keystroke, 0);
+
+
+ preempt_enable();
+
+ local_irq_restore(flags);
 }

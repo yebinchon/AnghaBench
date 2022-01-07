@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
-typedef  int /*<<< orphan*/  AVCodecParameters ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,unsigned int) ; 
- scalar_t__ ff_get_extradata (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned int) ; 
+
+
+
+typedef int AVIOContext ;
+typedef int AVFormatContext ;
+typedef int AVCodecParameters ;
+
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int ENOMEM ;
+ int av_log (int *,int ,char*,unsigned int) ;
+ scalar_t__ ff_get_extradata (int *,int *,int *,unsigned int) ;
 
 __attribute__((used)) static int rm_read_extradata(AVFormatContext *s, AVIOContext *pb, AVCodecParameters *par, unsigned size)
 {

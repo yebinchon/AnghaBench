@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int INT ;
-typedef  int GpStatus ;
-typedef  int /*<<< orphan*/  GpPathIterator ;
-typedef  int /*<<< orphan*/  GpPath ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  FillModeAlternate ; 
- int /*<<< orphan*/  GdipAddPathLine (int /*<<< orphan*/ *,double,double,double,double) ; 
- int /*<<< orphan*/  GdipClosePathFigure (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipCreatePath (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreatePathIter (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeletePath (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeletePathIter (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetPointCount (int /*<<< orphan*/ *,int*) ; 
- int GdipPathIterNextSubpathPath (int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int*) ; 
- int InvalidParameter ; 
- int Ok ; 
- int TRUE ; 
- int /*<<< orphan*/  expect (int,int) ; 
+
+
+
+typedef int INT ;
+typedef int GpStatus ;
+typedef int GpPathIterator ;
+typedef int GpPath ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int FillModeAlternate ;
+ int GdipAddPathLine (int *,double,double,double,double) ;
+ int GdipClosePathFigure (int *) ;
+ int GdipCreatePath (int ,int **) ;
+ int GdipCreatePathIter (int **,int *) ;
+ int GdipDeletePath (int *) ;
+ int GdipDeletePathIter (int *) ;
+ int GdipGetPointCount (int *,int*) ;
+ int GdipPathIterNextSubpathPath (int *,int*,int *,int*) ;
+ int InvalidParameter ;
+ int Ok ;
+ int TRUE ;
+ int expect (int,int) ;
 
 __attribute__((used)) static void test_nextsubpathpath(void)
 {
@@ -42,27 +42,27 @@ __attribute__((used)) static void test_nextsubpathpath(void)
 
     GdipCreatePath(FillModeAlternate, &path);
 
-    /* NULL args */
+
     GdipCreatePath(FillModeAlternate, &retpath);
     GdipCreatePathIter(&iter, path);
-    stat = GdipPathIterNextSubpathPath(NULL, NULL, NULL, NULL);
+    stat = GdipPathIterNextSubpathPath(((void*)0), ((void*)0), ((void*)0), ((void*)0));
     expect(InvalidParameter, stat);
-    stat = GdipPathIterNextSubpathPath(iter, NULL, NULL, NULL);
+    stat = GdipPathIterNextSubpathPath(iter, ((void*)0), ((void*)0), ((void*)0));
     expect(InvalidParameter, stat);
-    stat = GdipPathIterNextSubpathPath(NULL, &result, NULL, NULL);
+    stat = GdipPathIterNextSubpathPath(((void*)0), &result, ((void*)0), ((void*)0));
     expect(InvalidParameter, stat);
-    stat = GdipPathIterNextSubpathPath(iter, &result, NULL, &closed);
+    stat = GdipPathIterNextSubpathPath(iter, &result, ((void*)0), &closed);
     expect(Ok, stat);
-    stat = GdipPathIterNextSubpathPath(iter, NULL, NULL, &closed);
+    stat = GdipPathIterNextSubpathPath(iter, ((void*)0), ((void*)0), &closed);
     expect(InvalidParameter, stat);
-    stat = GdipPathIterNextSubpathPath(iter, NULL, retpath, NULL);
+    stat = GdipPathIterNextSubpathPath(iter, ((void*)0), retpath, ((void*)0));
     expect(InvalidParameter, stat);
-    stat = GdipPathIterNextSubpathPath(iter, &result, retpath, NULL);
+    stat = GdipPathIterNextSubpathPath(iter, &result, retpath, ((void*)0));
     expect(InvalidParameter, stat);
     GdipDeletePathIter(iter);
     GdipDeletePath(retpath);
 
-    /* empty path */
+
     GdipCreatePath(FillModeAlternate, &retpath);
     GdipCreatePathIter(&iter, path);
     result = -2;
@@ -77,7 +77,7 @@ __attribute__((used)) static void test_nextsubpathpath(void)
     GdipDeletePathIter(iter);
     GdipDeletePath(retpath);
 
-    /* open figure */
+
     GdipAddPathLine(path, 5.0, 5.0, 100.0, 50.0);
 
     GdipCreatePath(FillModeAlternate, &retpath);
@@ -91,7 +91,7 @@ __attribute__((used)) static void test_nextsubpathpath(void)
     count = -1;
     GdipGetPointCount(retpath, &count);
     expect(2, count);
-    /* subsequent call */
+
     result = -2;
     closed = TRUE;
     stat = GdipPathIterNextSubpathPath(iter, &result, retpath, &closed);
@@ -103,7 +103,7 @@ __attribute__((used)) static void test_nextsubpathpath(void)
     expect(2, count);
     GdipDeletePathIter(iter);
 
-    /* closed figure, check does it extend retpath or reset it */
+
     GdipAddPathLine(retpath, 50.0, 55.0, 200.0, 150.0);
 
     GdipClosePathFigure(path);
@@ -120,7 +120,7 @@ __attribute__((used)) static void test_nextsubpathpath(void)
     count = -1;
     GdipGetPointCount(retpath, &count);
     expect(2, count);
-    /* subsequent call */
+
     result = -2;
     closed = FALSE;
     stat = GdipPathIterNextSubpathPath(iter, &result, retpath, &closed);

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zdev_t ;
-typedef  int u8_t ;
-typedef  scalar_t__ u16_t ;
 
-/* Variables and functions */
- int ZM_WLAN_EID_EXTENDED_HT_CAPABILITY ; 
- int ZM_WLAN_EID_HT_CAPABILITY ; 
- int ZM_WLAN_EID_WPA_IE ; 
- int /*<<< orphan*/  zfMemoryMove (int*,int*,scalar_t__) ; 
+
+
+
+typedef int zdev_t ;
+typedef int u8_t ;
+typedef scalar_t__ u16_t ;
+
+
+ int ZM_WLAN_EID_EXTENDED_HT_CAPABILITY ;
+ int ZM_WLAN_EID_HT_CAPABILITY ;
+ int ZM_WLAN_EID_WPA_IE ;
+ int zfMemoryMove (int*,int*,scalar_t__) ;
 
 u16_t zfRemoveElement(zdev_t* dev, u8_t* buf, u16_t size, u8_t eid)
 {
     u16_t offset = 0;
     u16_t elen;
-    u8_t  HTEid = 0;
-    u8_t  oui[4] = {0x00, 0x50, 0xf2, 0x01};
-    u8_t  oui11n[3] = {0x00,0x90,0x4C};
-    u8_t  HTType = 0;
+    u8_t HTEid = 0;
+    u8_t oui[4] = {0x00, 0x50, 0xf2, 0x01};
+    u8_t oui11n[3] = {0x00,0x90,0x4C};
+    u8_t HTType = 0;
 
     if ((eid == ZM_WLAN_EID_HT_CAPABILITY) ||
         (eid == ZM_WLAN_EID_EXTENDED_HT_CAPABILITY))

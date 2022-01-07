@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fz_context ;
-typedef  int /*<<< orphan*/  fz_buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fz_append_string (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int fz_context ;
+typedef int fz_buffer ;
+
+
+ int fz_append_string (int *,int *,char*) ;
 
 __attribute__((used)) static void maybe_stroke_and_fill(fz_context *ctx, fz_buffer *buf, int sc, int ic)
 {
-	if (sc)
-		fz_append_string(ctx, buf, ic ? "b\n" : "s\n");
-	else
-		fz_append_string(ctx, buf, ic ? "f\n" : "n\n");
+ if (sc)
+  fz_append_string(ctx, buf, ic ? "b\n" : "s\n");
+ else
+  fz_append_string(ctx, buf, ic ? "f\n" : "n\n");
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  map; } ;
-typedef  int /*<<< orphan*/  Map ;
-typedef  TYPE_1__ Chunk ;
 
-/* Variables and functions */
- int chunked (float) ; 
- TYPE_1__* find_chunk (int,int) ; 
- scalar_t__ is_obstacle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  map_get (int /*<<< orphan*/ *,int,int,int) ; 
- int roundf (float) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int map; } ;
+typedef int Map ;
+typedef TYPE_1__ Chunk ;
+
+
+ int chunked (float) ;
+ TYPE_1__* find_chunk (int,int) ;
+ scalar_t__ is_obstacle (int ) ;
+ int map_get (int *,int,int,int) ;
+ int roundf (float) ;
 
 int collide(int height, float *x, float *y, float *z) {
     int result = 0;

@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int member_0; int member_1; } ;
-typedef  TYPE_1__ tjscalingfactor ;
-typedef  int /*<<< orphan*/  tjhandle ;
+typedef TYPE_1__ tjscalingfactor ;
+typedef int tjhandle ;
 
-/* Variables and functions */
- int TJFLAG_BOTTOMUP ; 
- int TJFLAG_NOREALLOC ; 
- int /*<<< orphan*/  _throw (char*) ; 
- int /*<<< orphan*/  _throwtj () ; 
- int /*<<< orphan*/  _tj (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  alloc ; 
- scalar_t__ checkBufYUV (unsigned char*,int,int,int,TYPE_1__) ; 
- scalar_t__ doYUV ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- int /*<<< orphan*/  initBuf (unsigned char*,int,int,int,int) ; 
- scalar_t__ malloc (unsigned long) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  pad ; 
- char** pixFormatStr ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,char const*,char const*,char*,int) ; 
- char** subName ; 
- char** subNameLong ; 
- unsigned long tjBufSizeYUV2 (int,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  tjCompress2 (int /*<<< orphan*/ ,unsigned char*,int,int /*<<< orphan*/ ,int,int,unsigned char**,unsigned long*,int,int,int) ; 
- int /*<<< orphan*/  tjCompressFromYUV (int /*<<< orphan*/ ,unsigned char*,int,int /*<<< orphan*/ ,int,int,unsigned char**,unsigned long*,int,int) ; 
- int /*<<< orphan*/  tjDestroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tjEncodeYUV3 (int /*<<< orphan*/ ,unsigned char*,int,int /*<<< orphan*/ ,int,int,unsigned char*,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  tjInitCompress () ; 
- int* tjPixelSize ; 
- int /*<<< orphan*/  writeJPEG (unsigned char*,unsigned long,char*) ; 
+
+ int TJFLAG_BOTTOMUP ;
+ int TJFLAG_NOREALLOC ;
+ int _throw (char*) ;
+ int _throwtj () ;
+ int _tj (int ) ;
+ int alloc ;
+ scalar_t__ checkBufYUV (unsigned char*,int,int,int,TYPE_1__) ;
+ scalar_t__ doYUV ;
+ int free (unsigned char*) ;
+ int initBuf (unsigned char*,int,int,int,int) ;
+ scalar_t__ malloc (unsigned long) ;
+ int memset (unsigned char*,int ,unsigned long) ;
+ int pad ;
+ char** pixFormatStr ;
+ int printf (char*,...) ;
+ int snprintf (char*,int,char*,char*,char const*,char const*,char*,int) ;
+ char** subName ;
+ char** subNameLong ;
+ unsigned long tjBufSizeYUV2 (int,int ,int,int) ;
+ int tjCompress2 (int ,unsigned char*,int,int ,int,int,unsigned char**,unsigned long*,int,int,int) ;
+ int tjCompressFromYUV (int ,unsigned char*,int,int ,int,int,unsigned char**,unsigned long*,int,int) ;
+ int tjDestroy (int ) ;
+ int tjEncodeYUV3 (int ,unsigned char*,int,int ,int,int,unsigned char*,int ,int,int) ;
+ int tjInitCompress () ;
+ int* tjPixelSize ;
+ int writeJPEG (unsigned char*,unsigned long,char*) ;
 
 void compTest(tjhandle handle, unsigned char **dstBuf, unsigned long *dstSize,
               int w, int h, int pf, char *basename, int subsamp, int jpegQual,
               int flags)
 {
   char tempStr[1024];
-  unsigned char *srcBuf = NULL, *yuvBuf = NULL;
+  unsigned char *srcBuf = ((void*)0), *yuvBuf = ((void*)0);
   const char *pfStr = pixFormatStr[pf];
   const char *buStrLong =
     (flags & TJFLAG_BOTTOMUP) ? "Bottom-Up" : "Top-Down ";
   const char *buStr = (flags & TJFLAG_BOTTOMUP) ? "BU" : "TD";
 
-  if ((srcBuf = (unsigned char *)malloc(w * h * tjPixelSize[pf])) == NULL)
+  if ((srcBuf = (unsigned char *)malloc(w * h * tjPixelSize[pf])) == ((void*)0))
     _throw("Memory allocation failure");
   initBuf(srcBuf, w, h, pf, flags);
 
@@ -68,7 +68,7 @@ void compTest(tjhandle handle, unsigned char **dstBuf, unsigned long *dstSize,
 
     if (!handle2) _throwtj();
 
-    if ((yuvBuf = (unsigned char *)malloc(yuvSize)) == NULL)
+    if ((yuvBuf = (unsigned char *)malloc(yuvSize)) == ((void*)0))
       _throw("Memory allocation failure");
     memset(yuvBuf, 0, yuvSize);
 

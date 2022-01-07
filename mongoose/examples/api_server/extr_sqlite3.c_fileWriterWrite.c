@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct TYPE_3__ {scalar_t__ eFWErr; int nBuffer; int iBufEnd; size_t iBufStart; scalar_t__ iWriteOff; int /*<<< orphan*/ * aBuffer; int /*<<< orphan*/  pFile; } ;
-typedef  TYPE_1__ FileWriter ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ sqlite3OsWrite (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__,scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct TYPE_3__ {scalar_t__ eFWErr; int nBuffer; int iBufEnd; size_t iBufStart; scalar_t__ iWriteOff; int * aBuffer; int pFile; } ;
+typedef TYPE_1__ FileWriter ;
+
+
+ int assert (int) ;
+ int memcpy (int *,int *,int) ;
+ scalar_t__ sqlite3OsWrite (int ,int *,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static void fileWriterWrite(FileWriter *p, u8 *pData, int nData){
   int nRem = nData;
@@ -31,8 +31,8 @@ __attribute__((used)) static void fileWriterWrite(FileWriter *p, u8 *pData, int 
     memcpy(&p->aBuffer[p->iBufEnd], &pData[nData-nRem], nCopy);
     p->iBufEnd += nCopy;
     if( p->iBufEnd==p->nBuffer ){
-      p->eFWErr = sqlite3OsWrite(p->pFile, 
-          &p->aBuffer[p->iBufStart], p->iBufEnd - p->iBufStart, 
+      p->eFWErr = sqlite3OsWrite(p->pFile,
+          &p->aBuffer[p->iBufStart], p->iBufEnd - p->iBufStart,
           p->iWriteOff + p->iBufStart
       );
       p->iBufStart = p->iBufEnd = 0;

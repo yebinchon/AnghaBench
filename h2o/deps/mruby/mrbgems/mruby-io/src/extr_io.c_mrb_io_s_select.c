@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timeval {scalar_t__ tv_usec; scalar_t__ tv_sec; } ;
 struct mrb_io {int fd; int fd2; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int mrb_int ;
-typedef  int /*<<< orphan*/  fd_set ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef int mrb_int ;
+typedef int fd_set ;
 
-/* Variables and functions */
- scalar_t__ EINTR ; 
- int /*<<< orphan*/  E_ARGUMENT_ERROR ; 
- scalar_t__ FD_ISSET (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_SET (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MRB_TT_ARRAY ; 
- int RARRAY_LEN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * RARRAY_PTR (int /*<<< orphan*/ ) ; 
- scalar_t__ errno ; 
- struct mrb_io* io_get_open_fptr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_ary_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_ary_new_capa (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mrb_ary_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_check_type (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_fixnum_value (int) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ **,int*) ; 
- scalar_t__ mrb_io_read_data_pending (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_nil_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_nil_value () ; 
- int /*<<< orphan*/  mrb_raisef (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_sys_fail (int /*<<< orphan*/ *,char*) ; 
- int select (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
- struct timeval time2timeval (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ EINTR ;
+ int E_ARGUMENT_ERROR ;
+ scalar_t__ FD_ISSET (int,int *) ;
+ int FD_SET (int,int *) ;
+ int FD_ZERO (int *) ;
+ int MRB_TT_ARRAY ;
+ int RARRAY_LEN (int ) ;
+ int * RARRAY_PTR (int ) ;
+ scalar_t__ errno ;
+ struct mrb_io* io_get_open_fptr (int *,int ) ;
+ int mrb_ary_new (int *) ;
+ int mrb_ary_new_capa (int *,int) ;
+ int mrb_ary_push (int *,int ,int ) ;
+ int mrb_check_type (int *,int ,int ) ;
+ int mrb_fixnum_value (int) ;
+ int mrb_get_args (int *,char*,int **,int*) ;
+ scalar_t__ mrb_io_read_data_pending (int *,int ) ;
+ scalar_t__ mrb_nil_p (int ) ;
+ int mrb_nil_value () ;
+ int mrb_raisef (int *,int ,char*,int ) ;
+ int mrb_sys_fail (int *,char*) ;
+ int select (int,int *,int *,int *,struct timeval*) ;
+ struct timeval time2timeval (int *,int ) ;
 
 __attribute__((used)) static mrb_value
 mrb_io_s_select(mrb_state *mrb, mrb_value klass)
@@ -76,7 +76,7 @@ mrb_io_s_select(mrb_state *mrb, mrb_value klass)
   read = argv[0];
 
   if (mrb_nil_p(timeout)) {
-    tp = NULL;
+    tp = ((void*)0);
   } else {
     timerec = time2timeval(mrb, timeout);
     tp = &timerec;
@@ -103,7 +103,7 @@ mrb_io_s_select(mrb_state *mrb, mrb_value klass)
       tp = &timerec;
     }
   } else {
-    rp = NULL;
+    rp = ((void*)0);
   }
 
   if (!mrb_nil_p(write)) {
@@ -122,7 +122,7 @@ mrb_io_s_select(mrb_state *mrb, mrb_value klass)
       }
     }
   } else {
-    wp = NULL;
+    wp = ((void*)0);
   }
 
   if (!mrb_nil_p(except)) {
@@ -141,7 +141,7 @@ mrb_io_s_select(mrb_state *mrb, mrb_value klass)
       }
     }
   } else {
-    ep = NULL;
+    ep = ((void*)0);
   }
 
   max++;
@@ -151,7 +151,7 @@ retry:
   if (n < 0) {
     if (errno != EINTR)
       mrb_sys_fail(mrb, "select failed");
-    if (tp == NULL)
+    if (tp == ((void*)0))
       goto retry;
     interrupt_flag = 1;
   }

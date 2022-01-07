@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bih ;
-typedef  int /*<<< orphan*/  bfh ;
-typedef  int /*<<< orphan*/  WICPixelFormatGUID ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int bih ;
+typedef int bfh ;
+typedef int WICPixelFormatGUID ;
 struct TYPE_4__ {int bfType; int bfReserved1; int bfReserved2; int bfOffBits; int bV5Width; int bV5Height; int bV5Planes; int bV5BitCount; int bV5ClrUsed; int bV5ClrImportant; } ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int HRESULT ;
-typedef  TYPE_1__ BITMAPV5HEADER ;
-typedef  TYPE_1__ BITMAPFILEHEADER ;
+typedef int IStream ;
+typedef int HRESULT ;
+typedef TYPE_1__ BITMAPV5HEADER ;
+typedef TYPE_1__ BITMAPFILEHEADER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GUID_WICPixelFormat1bppIndexed ; 
- int /*<<< orphan*/  GUID_WICPixelFormat32bppBGR ; 
- int /*<<< orphan*/  GUID_WICPixelFormat4bppIndexed ; 
- int /*<<< orphan*/  GUID_WICPixelFormat8bppIndexed ; 
- int IStream_Read (int /*<<< orphan*/ *,TYPE_1__*,int,int /*<<< orphan*/ *) ; 
- scalar_t__ IsEqualGUID (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int S_OK ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int wine_dbgstr_guid (int /*<<< orphan*/  const*) ; 
+
+ int GUID_WICPixelFormat1bppIndexed ;
+ int GUID_WICPixelFormat32bppBGR ;
+ int GUID_WICPixelFormat4bppIndexed ;
+ int GUID_WICPixelFormat8bppIndexed ;
+ int IStream_Read (int *,TYPE_1__*,int,int *) ;
+ scalar_t__ IsEqualGUID (int const*,int *) ;
+ int S_OK ;
+ int ok (int,char*,int) ;
+ int wine_dbgstr_guid (int const*) ;
 
 __attribute__((used)) static void check_bmp_format(IStream *stream, const WICPixelFormatGUID *format)
 {
@@ -37,14 +37,14 @@ __attribute__((used)) static void check_bmp_format(IStream *stream, const WICPix
     BITMAPFILEHEADER bfh;
     BITMAPV5HEADER bih;
 
-    hr = IStream_Read(stream, &bfh, sizeof(bfh), NULL);
+    hr = IStream_Read(stream, &bfh, sizeof(bfh), ((void*)0));
     ok(hr == S_OK, "IStream_Read error %#x\n", hr);
 
     ok(bfh.bfType == 0x4d42, "wrong BMP signature %02x\n", bfh.bfType);
     ok(bfh.bfReserved1 == 0, "wrong bfReserved1 %02x\n", bfh.bfReserved1);
     ok(bfh.bfReserved2 == 0, "wrong bfReserved2 %02x\n", bfh.bfReserved2);
 
-    hr = IStream_Read(stream, &bih, sizeof(bih), NULL);
+    hr = IStream_Read(stream, &bih, sizeof(bih), ((void*)0));
     ok(hr == S_OK, "IStream_Read error %#x\n", hr);
 
     if (IsEqualGUID(format, &GUID_WICPixelFormat1bppIndexed))

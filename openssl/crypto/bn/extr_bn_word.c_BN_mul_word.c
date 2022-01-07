@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {scalar_t__ top; int /*<<< orphan*/ * d; } ;
-typedef  int /*<<< orphan*/  BN_ULONG ;
-typedef  TYPE_1__ BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_MASK2 ; 
- int /*<<< orphan*/  BN_zero (TYPE_1__*) ; 
- int /*<<< orphan*/  bn_check_top (TYPE_1__*) ; 
- int /*<<< orphan*/  bn_mul_words (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * bn_wexpand (TYPE_1__*,scalar_t__) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {scalar_t__ top; int * d; } ;
+typedef int BN_ULONG ;
+typedef TYPE_1__ BIGNUM ;
+
+
+ int BN_MASK2 ;
+ int BN_zero (TYPE_1__*) ;
+ int bn_check_top (TYPE_1__*) ;
+ int bn_mul_words (int *,int *,scalar_t__,int ) ;
+ int * bn_wexpand (TYPE_1__*,scalar_t__) ;
 
 int BN_mul_word(BIGNUM *a, BN_ULONG w)
 {
@@ -34,7 +34,7 @@ int BN_mul_word(BIGNUM *a, BN_ULONG w)
         else {
             ll = bn_mul_words(a->d, a->d, a->top, w);
             if (ll) {
-                if (bn_wexpand(a, a->top + 1) == NULL)
+                if (bn_wexpand(a, a->top + 1) == ((void*)0))
                     return 0;
                 a->d[a->top++] = ll;
             }

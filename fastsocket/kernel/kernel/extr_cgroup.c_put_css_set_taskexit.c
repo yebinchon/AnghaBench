@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct css_set {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __put_css_set (struct css_set*,int) ; 
+
+ int __put_css_set (struct css_set*,int) ;
 
 __attribute__((used)) static inline void put_css_set_taskexit(struct css_set *cg)
 {
-	__put_css_set(cg, 1);
+ __put_css_set(cg, 1);
 }

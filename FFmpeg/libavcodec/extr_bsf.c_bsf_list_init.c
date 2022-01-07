@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {void* time_base_out; int /*<<< orphan*/ * par_out; void* time_base_in; int /*<<< orphan*/  par_in; } ;
-struct TYPE_6__ {int /*<<< orphan*/  par_out; void* time_base_out; void* time_base_in; int /*<<< orphan*/ * par_in; TYPE_1__* priv_data; } ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_7__ {void* time_base_out; int * par_out; void* time_base_in; int par_in; } ;
+struct TYPE_6__ {int par_out; void* time_base_out; void* time_base_in; int * par_in; TYPE_1__* priv_data; } ;
 struct TYPE_5__ {int nb_bsfs; TYPE_4__** bsfs; } ;
-typedef  TYPE_1__ BSFListContext ;
-typedef  void* AVRational ;
-typedef  int /*<<< orphan*/  AVCodecParameters ;
-typedef  TYPE_2__ AVBSFContext ;
+typedef TYPE_1__ BSFListContext ;
+typedef void* AVRational ;
+typedef int AVCodecParameters ;
+typedef TYPE_2__ AVBSFContext ;
 
-/* Variables and functions */
- int av_bsf_init (TYPE_4__*) ; 
- int avcodec_parameters_copy (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
+
+ int av_bsf_init (TYPE_4__*) ;
+ int avcodec_parameters_copy (int ,int const*) ;
 
 __attribute__((used)) static int bsf_list_init(AVBSFContext *bsf)
 {

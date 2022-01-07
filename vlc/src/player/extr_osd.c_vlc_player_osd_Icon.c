@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vout_thread_t ;
-typedef  int /*<<< orphan*/  vlc_player_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ ** vlc_player_osd_HoldAll (int /*<<< orphan*/ *,size_t*) ; 
- int /*<<< orphan*/  vlc_player_osd_ReleaseAll (int /*<<< orphan*/ *,int /*<<< orphan*/ **,size_t) ; 
- int /*<<< orphan*/  vouts_osd_Icon (int /*<<< orphan*/ **,size_t,short) ; 
+
+
+
+typedef int vout_thread_t ;
+typedef int vlc_player_t ;
+
+
+ int ** vlc_player_osd_HoldAll (int *,size_t*) ;
+ int vlc_player_osd_ReleaseAll (int *,int **,size_t) ;
+ int vouts_osd_Icon (int **,size_t,short) ;
 
 void
 vlc_player_osd_Icon(vlc_player_t *player, short type)

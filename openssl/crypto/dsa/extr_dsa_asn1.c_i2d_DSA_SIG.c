@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPACKET ;
-struct TYPE_8__ {int /*<<< orphan*/ * data; } ;
-struct TYPE_7__ {int /*<<< orphan*/  s; int /*<<< orphan*/  r; } ;
-typedef  TYPE_1__ DSA_SIG ;
-typedef  TYPE_2__ BUF_MEM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUF_MEM_free (TYPE_2__*) ; 
- TYPE_2__* BUF_MEM_new () ; 
- int /*<<< orphan*/  SIZE_MAX ; 
- int /*<<< orphan*/  WPACKET_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WPACKET_finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WPACKET_get_total_written (int /*<<< orphan*/ *,size_t*) ; 
- int /*<<< orphan*/  WPACKET_init_len (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WPACKET_init_null (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WPACKET_init_static_len (int /*<<< orphan*/ *,unsigned char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  encode_der_dsa_sig (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int WPACKET ;
+struct TYPE_8__ {int * data; } ;
+struct TYPE_7__ {int s; int r; } ;
+typedef TYPE_1__ DSA_SIG ;
+typedef TYPE_2__ BUF_MEM ;
+
+
+ int BUF_MEM_free (TYPE_2__*) ;
+ TYPE_2__* BUF_MEM_new () ;
+ int SIZE_MAX ;
+ int WPACKET_cleanup (int *) ;
+ int WPACKET_finish (int *) ;
+ int WPACKET_get_total_written (int *,size_t*) ;
+ int WPACKET_init_len (int *,TYPE_2__*,int ) ;
+ int WPACKET_init_null (int *,int ) ;
+ int WPACKET_init_static_len (int *,unsigned char*,int ,int ) ;
+ int encode_der_dsa_sig (int *,int ,int ) ;
 
 int i2d_DSA_SIG(const DSA_SIG *sig, unsigned char **ppout)
 {
-    BUF_MEM *buf = NULL;
+    BUF_MEM *buf = ((void*)0);
     size_t encoded_len;
     WPACKET pkt;
 
-    if (ppout == NULL) {
+    if (ppout == ((void*)0)) {
         if (!WPACKET_init_null(&pkt, 0))
             return -1;
-    } else if (*ppout == NULL) {
-        if ((buf = BUF_MEM_new()) == NULL
+    } else if (*ppout == ((void*)0)) {
+        if ((buf = BUF_MEM_new()) == ((void*)0)
                 || !WPACKET_init_len(&pkt, buf, 0)) {
             BUF_MEM_free(buf);
             return -1;
@@ -58,10 +58,10 @@ int i2d_DSA_SIG(const DSA_SIG *sig, unsigned char **ppout)
         return -1;
     }
 
-    if (ppout != NULL) {
-        if (*ppout == NULL) {
+    if (ppout != ((void*)0)) {
+        if (*ppout == ((void*)0)) {
             *ppout = (unsigned char *)buf->data;
-            buf->data = NULL;
+            buf->data = ((void*)0);
             BUF_MEM_free(buf);
         } else {
             *ppout += encoded_len;

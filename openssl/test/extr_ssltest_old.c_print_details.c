@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509 ;
-typedef  int /*<<< orphan*/  SSL_CIPHER ;
-typedef  int /*<<< orphan*/  SSL ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  BIO_puts (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  EVP_PKEY_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OBJ_nid2sn (int) ; 
- int /*<<< orphan*/  SSL_CIPHER_get_name (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  SSL_CIPHER_get_version (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * SSL_get_current_cipher (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SSL_get_peer_certificate (int /*<<< orphan*/ *) ; 
- scalar_t__ SSL_get_peer_signature_nid (int /*<<< orphan*/ *,int*) ; 
- scalar_t__ SSL_get_peer_tmp_key (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  SSL_get_version (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * X509_get0_pubkey (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bio_stdout ; 
- int /*<<< orphan*/  print_key_details (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int X509 ;
+typedef int SSL_CIPHER ;
+typedef int SSL ;
+typedef int EVP_PKEY ;
+
+
+ int BIO_printf (int ,char*,...) ;
+ int BIO_puts (int ,char*) ;
+ int EVP_PKEY_free (int *) ;
+ int OBJ_nid2sn (int) ;
+ int SSL_CIPHER_get_name (int const*) ;
+ int SSL_CIPHER_get_version (int const*) ;
+ int * SSL_get_current_cipher (int *) ;
+ int * SSL_get_peer_certificate (int *) ;
+ scalar_t__ SSL_get_peer_signature_nid (int *,int*) ;
+ scalar_t__ SSL_get_peer_tmp_key (int *,int **) ;
+ int SSL_get_version (int *) ;
+ int X509_free (int *) ;
+ int * X509_get0_pubkey (int *) ;
+ int bio_stdout ;
+ int print_key_details (int ,int *) ;
 
 __attribute__((used)) static void print_details(SSL *c_ssl, const char *prefix)
 {
@@ -45,10 +45,10 @@ __attribute__((used)) static void print_details(SSL *c_ssl, const char *prefix)
                SSL_get_version(c_ssl),
                SSL_CIPHER_get_version(ciph), SSL_CIPHER_get_name(ciph));
     cert = SSL_get_peer_certificate(c_ssl);
-    if (cert != NULL) {
+    if (cert != ((void*)0)) {
         EVP_PKEY* pubkey = X509_get0_pubkey(cert);
 
-        if (pubkey != NULL) {
+        if (pubkey != ((void*)0)) {
             BIO_puts(bio_stdout, ", ");
             print_key_details(bio_stdout, pubkey);
         }

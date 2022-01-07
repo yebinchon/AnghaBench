@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_client_get_repos_root (char const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_get_absolute (char const**,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_path_is_url (char const*) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_error_t ;
+typedef int svn_client_ctx_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * svn_client_get_repos_root (char const**,int *,char const*,int *,int *,int *) ;
+ int svn_dirent_get_absolute (char const**,char const*,int *) ;
+ int * svn_error_trace (int *) ;
+ int svn_path_is_url (char const*) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
 
 svn_error_t *
 svn_client_root_url_from_path(const char **url,
@@ -34,10 +34,10 @@ svn_client_root_url_from_path(const char **url,
   if (!svn_path_is_url(path_or_url))
     SVN_ERR(svn_dirent_get_absolute(&path_or_url, path_or_url, pool));
 
-  err = svn_client_get_repos_root(url, NULL, path_or_url,
+  err = svn_client_get_repos_root(url, ((void*)0), path_or_url,
                                   ctx, pool, subpool);
 
-  /* close ra session */
+
   svn_pool_destroy(subpool);
   return svn_error_trace(err);
 }

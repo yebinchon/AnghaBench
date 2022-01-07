@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pwm_tdiv_clk {int /*<<< orphan*/  divisor; } ;
 
-/* Variables and functions */
- unsigned long pwm_tdiv_div_bits (int /*<<< orphan*/ ) ; 
+
+
+
+struct pwm_tdiv_clk {int divisor; } ;
+
+
+ unsigned long pwm_tdiv_div_bits (int ) ;
 
 __attribute__((used)) static unsigned long clk_pwm_tdiv_bits(struct pwm_tdiv_clk *divclk)
 {
-	return pwm_tdiv_div_bits(divclk->divisor);
+ return pwm_tdiv_div_bits(divclk->divisor);
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct event_filter {int /*<<< orphan*/  filter_string; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kstrdup (char*,int /*<<< orphan*/ ) ; 
+
+
+
+struct event_filter {int filter_string; } ;
+
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int kfree (int ) ;
+ int kstrdup (char*,int ) ;
 
 __attribute__((used)) static int replace_filter_string(struct event_filter *filter,
-				 char *filter_string)
+     char *filter_string)
 {
-	kfree(filter->filter_string);
-	filter->filter_string = kstrdup(filter_string, GFP_KERNEL);
-	if (!filter->filter_string)
-		return -ENOMEM;
+ kfree(filter->filter_string);
+ filter->filter_string = kstrdup(filter_string, GFP_KERNEL);
+ if (!filter->filter_string)
+  return -ENOMEM;
 
-	return 0;
+ return 0;
 }

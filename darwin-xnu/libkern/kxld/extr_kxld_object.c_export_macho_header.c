@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const u_long ;
-typedef  int /*<<< orphan*/  u_int ;
-typedef  int /*<<< orphan*/  const u_char ;
-typedef  int /*<<< orphan*/  kern_return_t ;
-typedef  int /*<<< orphan*/  KXLDObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KERN_FAILURE ; 
- int /*<<< orphan*/  KERN_SUCCESS ; 
- int /*<<< orphan*/  KXLD_3264_FUNC (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  check (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  export_macho_header_32 ; 
- int /*<<< orphan*/  export_macho_header_64 ; 
- int /*<<< orphan*/  finish ; 
- int /*<<< orphan*/  kxld_object_is_32_bit (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  require_noerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int const u_long ;
+typedef int u_int ;
+typedef int const u_char ;
+typedef int kern_return_t ;
+typedef int KXLDObject ;
+
+
+ int KERN_FAILURE ;
+ int KERN_SUCCESS ;
+ int KXLD_3264_FUNC (int ,int ,int ,int ,int const*,int const*,int ,int const*,int const) ;
+ int check (int const*) ;
+ int export_macho_header_32 ;
+ int export_macho_header_64 ;
+ int finish ;
+ int kxld_object_is_32_bit (int const*) ;
+ int require_noerr (int ,int ) ;
 
 __attribute__((used)) static kern_return_t
 export_macho_header(const KXLDObject *object, u_char *buf, u_int ncmds,
@@ -37,8 +37,8 @@ export_macho_header(const KXLDObject *object, u_char *buf, u_int ncmds,
     check(buf);
     check(header_offset);
 
-    KXLD_3264_FUNC(kxld_object_is_32_bit(object), rval, 
-        export_macho_header_32, export_macho_header_64, 
+    KXLD_3264_FUNC(kxld_object_is_32_bit(object), rval,
+        export_macho_header_32, export_macho_header_64,
         object, buf, ncmds, header_offset, header_size);
     require_noerr(rval, finish);
 

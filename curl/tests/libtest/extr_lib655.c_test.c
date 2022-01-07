@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- scalar_t__ CURLE_COULDNT_RESOLVE_HOST ; 
- scalar_t__ CURLE_OK ; 
- int /*<<< orphan*/  CURLOPT_RESOLVER_START_DATA ; 
- int /*<<< orphan*/  CURLOPT_RESOLVER_START_FUNCTION ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- char* TEST_DATA_STRING ; 
- scalar_t__ TEST_ERR_FAILURE ; 
- int TEST_ERR_MAJOR_BAD ; 
- int cb_count ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * curl_easy_init () ; 
- scalar_t__ curl_easy_perform (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- scalar_t__ curl_global_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- char* resolver_alloc_cb_fail ; 
- char* resolver_alloc_cb_pass ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  test_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef scalar_t__ CURLcode ;
+typedef int CURL ;
+
+
+ scalar_t__ CURLE_COULDNT_RESOLVE_HOST ;
+ scalar_t__ CURLE_OK ;
+ int CURLOPT_RESOLVER_START_DATA ;
+ int CURLOPT_RESOLVER_START_FUNCTION ;
+ int CURLOPT_URL ;
+ int CURL_GLOBAL_ALL ;
+ char* TEST_DATA_STRING ;
+ scalar_t__ TEST_ERR_FAILURE ;
+ int TEST_ERR_MAJOR_BAD ;
+ int cb_count ;
+ int curl_easy_cleanup (int *) ;
+ int * curl_easy_init () ;
+ scalar_t__ curl_easy_perform (int *) ;
+ int curl_global_cleanup () ;
+ scalar_t__ curl_global_init (int ) ;
+ int fprintf (int ,char*,...) ;
+ char* resolver_alloc_cb_fail ;
+ char* resolver_alloc_cb_pass ;
+ int stderr ;
+ int test_setopt (int *,int ,char*) ;
 
 int test(char *URL)
 {
@@ -51,13 +51,13 @@ int test(char *URL)
     goto test_cleanup;
   }
 
-  /* First set the URL that is about to receive our request. */
+
   test_setopt(curl, CURLOPT_URL, URL);
 
   test_setopt(curl, CURLOPT_RESOLVER_START_DATA, TEST_DATA_STRING);
   test_setopt(curl, CURLOPT_RESOLVER_START_FUNCTION, resolver_alloc_cb_fail);
 
-  /* this should fail */
+
   res = curl_easy_perform(curl);
   if(res != CURLE_COULDNT_RESOLVE_HOST) {
     fprintf(stderr, "curl_easy_perform should have returned "
@@ -69,7 +69,7 @@ int test(char *URL)
 
   test_setopt(curl, CURLOPT_RESOLVER_START_FUNCTION, resolver_alloc_cb_pass);
 
-  /* this should succeed */
+
   res = curl_easy_perform(curl);
   if(res) {
     fprintf(stderr, "curl_easy_perform failed.\n");
@@ -83,7 +83,7 @@ int test(char *URL)
   }
 
 test_cleanup:
-  /* always cleanup */
+
   curl_easy_cleanup(curl);
   curl_global_cleanup();
 

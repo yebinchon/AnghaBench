@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
-typedef  struct TYPE_14__   TYPE_13__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+typedef struct TYPE_14__ TYPE_13__ ;
+
+
 struct TYPE_19__ {scalar_t__ eof_reached; } ;
 struct TYPE_18__ {TYPE_1__* priv_data; } ;
 struct TYPE_17__ {scalar_t__ type; } ;
 struct TYPE_16__ {TYPE_13__* fc; } ;
-struct TYPE_15__ {unsigned int sample_size; unsigned int stsz_sample_size; unsigned int sample_count; unsigned char* sample_sizes; int /*<<< orphan*/  data_size; } ;
+struct TYPE_15__ {unsigned int sample_size; unsigned int stsz_sample_size; unsigned int sample_count; unsigned char* sample_sizes; int data_size; } ;
 struct TYPE_14__ {int nb_streams; TYPE_4__** streams; } ;
-typedef  TYPE_1__ MOVStreamContext ;
-typedef  TYPE_2__ MOVContext ;
-typedef  TYPE_3__ MOVAtom ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_4__ AVStream ;
-typedef  TYPE_5__ AVIOContext ;
+typedef TYPE_1__ MOVStreamContext ;
+typedef TYPE_2__ MOVContext ;
+typedef TYPE_3__ MOVAtom ;
+typedef int GetBitContext ;
+typedef TYPE_4__ AVStream ;
+typedef TYPE_5__ AVIOContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int AVERROR_INVALIDDATA ; 
- scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_TRACE ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  ENOMEM ; 
- scalar_t__ MKTAG (char,char,char,char) ; 
- int UINT_MAX ; 
- int /*<<< orphan*/  av_free (unsigned char*) ; 
- int /*<<< orphan*/  av_freep (unsigned char**) ; 
- int /*<<< orphan*/  av_log (TYPE_13__*,int /*<<< orphan*/ ,char*,...) ; 
- unsigned char* av_malloc (scalar_t__) ; 
- unsigned char* av_malloc_array (unsigned int,int) ; 
- unsigned int avio_r8 (TYPE_5__*) ; 
- int /*<<< orphan*/  avio_rb24 (TYPE_5__*) ; 
- unsigned int avio_rb32 (TYPE_5__*) ; 
- int ffio_read_size (TYPE_5__*,unsigned char*,unsigned int) ; 
- unsigned char get_bits_long (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  init_get_bits (int /*<<< orphan*/ *,unsigned char*,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AVERROR_INVALIDDATA ;
+ scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_TRACE ;
+ int AV_LOG_WARNING ;
+ int ENOMEM ;
+ scalar_t__ MKTAG (char,char,char,char) ;
+ int UINT_MAX ;
+ int av_free (unsigned char*) ;
+ int av_freep (unsigned char**) ;
+ int av_log (TYPE_13__*,int ,char*,...) ;
+ unsigned char* av_malloc (scalar_t__) ;
+ unsigned char* av_malloc_array (unsigned int,int) ;
+ unsigned int avio_r8 (TYPE_5__*) ;
+ int avio_rb24 (TYPE_5__*) ;
+ unsigned int avio_rb32 (TYPE_5__*) ;
+ int ffio_read_size (TYPE_5__*,unsigned char*,unsigned int) ;
+ unsigned char get_bits_long (int *,unsigned int) ;
+ int init_get_bits (int *,unsigned char*,int) ;
 
 __attribute__((used)) static int mov_read_stsz(MOVContext *c, AVIOContext *pb, MOVAtom atom)
 {
@@ -66,18 +66,18 @@ __attribute__((used)) static int mov_read_stsz(MOVContext *c, AVIOContext *pb, M
     st = c->fc->streams[c->fc->nb_streams-1];
     sc = st->priv_data;
 
-    avio_r8(pb); /* version */
-    avio_rb24(pb); /* flags */
+    avio_r8(pb);
+    avio_rb24(pb);
 
     if (atom.type == MKTAG('s','t','s','z')) {
         sample_size = avio_rb32(pb);
-        if (!sc->sample_size) /* do not overwrite value computed in stsd */
+        if (!sc->sample_size)
             sc->sample_size = sample_size;
         sc->stsz_sample_size = sample_size;
         field_size = 32;
     } else {
         sample_size = 0;
-        avio_rb24(pb); /* reserved */
+        avio_rb24(pb);
         field_size = avio_r8(pb);
     }
     entries = avio_rb32(pb);

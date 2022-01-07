@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct ssh {int dummy; } ;
 struct channel_connect {int dummy; } ;
-typedef  int /*<<< orphan*/  cctx ;
-struct TYPE_4__ {struct channel_connect connect_ctx; int /*<<< orphan*/  type; int /*<<< orphan*/  host_port; int /*<<< orphan*/  path; } ;
-typedef  TYPE_1__ Channel ;
+typedef int cctx ;
+struct TYPE_4__ {struct channel_connect connect_ctx; int type; int host_port; int path; } ;
+typedef TYPE_1__ Channel ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  SSH_CHANNEL_RDYNAMIC_FINISH ; 
- int /*<<< orphan*/  channel_connect_ctx_free (struct channel_connect*) ; 
- int /*<<< orphan*/  channel_register_fds (struct ssh*,TYPE_1__*,int,int,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int connect_to_helper (struct ssh*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct channel_connect*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (struct channel_connect*,int /*<<< orphan*/ ,int) ; 
+
+ int SOCK_STREAM ;
+ int SSH_CHANNEL_RDYNAMIC_FINISH ;
+ int channel_connect_ctx_free (struct channel_connect*) ;
+ int channel_register_fds (struct ssh*,TYPE_1__*,int,int,int,int ,int,int ) ;
+ int connect_to_helper (struct ssh*,int ,int ,int ,int *,int *,struct channel_connect*,int *,int *) ;
+ int memset (struct channel_connect*,int ,int) ;
 
 __attribute__((used)) static int
 rdynamic_connect_finish(struct ssh *ssh, Channel *c)
 {
-	struct channel_connect cctx;
-	int sock;
+ struct channel_connect cctx;
+ int sock;
 
-	memset(&cctx, 0, sizeof(cctx));
-	sock = connect_to_helper(ssh, c->path, c->host_port, SOCK_STREAM, NULL,
-	    NULL, &cctx, NULL, NULL);
-	if (sock == -1)
-		channel_connect_ctx_free(&cctx);
-	else {
-		/* similar to SSH_CHANNEL_CONNECTING but we've already sent the open */
-		c->type = SSH_CHANNEL_RDYNAMIC_FINISH;
-		c->connect_ctx = cctx;
-		channel_register_fds(ssh, c, sock, sock, -1, 0, 1, 0);
-	}
-	return sock;
+ memset(&cctx, 0, sizeof(cctx));
+ sock = connect_to_helper(ssh, c->path, c->host_port, SOCK_STREAM, ((void*)0),
+     ((void*)0), &cctx, ((void*)0), ((void*)0));
+ if (sock == -1)
+  channel_connect_ctx_free(&cctx);
+ else {
+
+  c->type = SSH_CHANNEL_RDYNAMIC_FINISH;
+  c->connect_ctx = cctx;
+  channel_register_fds(ssh, c, sock, sock, -1, 0, 1, 0);
+ }
+ return sock;
 }

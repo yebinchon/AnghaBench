@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct request_queue {int /*<<< orphan*/  queue_lock; int /*<<< orphan*/  icq_list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIST_HEAD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __ioc_clear_queue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  icq_list ; 
- int /*<<< orphan*/  list_splice_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
+
+
+
+struct request_queue {int queue_lock; int icq_list; } ;
+
+
+ int LIST_HEAD (int ) ;
+ int __ioc_clear_queue (int *) ;
+ int icq_list ;
+ int list_splice_init (int *,int *) ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
 
 void ioc_clear_queue(struct request_queue *q)
 {
-	LIST_HEAD(icq_list);
+ LIST_HEAD(icq_list);
 
-	spin_lock_irq(&q->queue_lock);
-	list_splice_init(&q->icq_list, &icq_list);
-	spin_unlock_irq(&q->queue_lock);
+ spin_lock_irq(&q->queue_lock);
+ list_splice_init(&q->icq_list, &icq_list);
+ spin_unlock_irq(&q->queue_lock);
 
-	__ioc_clear_queue(&icq_list);
+ __ioc_clear_queue(&icq_list);
 }

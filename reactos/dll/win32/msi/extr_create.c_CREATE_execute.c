@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct tagMSIVIEW {int dummy; } ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_3__ {int /*<<< orphan*/  col_info; int /*<<< orphan*/  name; int /*<<< orphan*/  db; int /*<<< orphan*/  hold; scalar_t__ bIsTemp; } ;
-typedef  int /*<<< orphan*/  MSIRECORD ;
-typedef  TYPE_1__ MSICREATEVIEW ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int UINT ;
+struct TYPE_3__ {int col_info; int name; int db; int hold; scalar_t__ bIsTemp; } ;
+typedef int MSIRECORD ;
+typedef TYPE_1__ MSICREATEVIEW ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  MSICONDITION_FALSE ; 
- int /*<<< orphan*/  MSICONDITION_TRUE ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msi_create_table (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ERROR_SUCCESS ;
+ int MSICONDITION_FALSE ;
+ int MSICONDITION_TRUE ;
+ int TRACE (char*,TYPE_1__*,int ,char*) ;
+ int debugstr_w (int ) ;
+ int msi_create_table (int ,int ,int ,int ) ;
 
 __attribute__((used)) static UINT CREATE_execute( struct tagMSIVIEW *view, MSIRECORD *record )
 {

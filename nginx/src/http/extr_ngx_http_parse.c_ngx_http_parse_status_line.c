@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char u_char ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef char u_char ;
+typedef int ngx_int_t ;
 struct TYPE_7__ {int code; int count; char* start; char* end; int http_version; } ;
-typedef  TYPE_1__ ngx_http_status_t ;
+typedef TYPE_1__ ngx_http_status_t ;
 struct TYPE_8__ {int state; int http_major; int http_minor; } ;
-typedef  TYPE_2__ ngx_http_request_t ;
+typedef TYPE_2__ ngx_http_request_t ;
 struct TYPE_9__ {char* pos; char* last; } ;
-typedef  TYPE_3__ ngx_buf_t ;
+typedef TYPE_3__ ngx_buf_t ;
 
-/* Variables and functions */
-#define  CR 129 
-#define  LF 128 
- int /*<<< orphan*/  NGX_AGAIN ; 
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_OK ; 
+
+
+
+ int NGX_AGAIN ;
+ int NGX_ERROR ;
+ int NGX_OK ;
 
 ngx_int_t
 ngx_http_parse_status_line(ngx_http_request_t *r, ngx_buf_t *b,
     ngx_http_status_t *status)
 {
-    u_char   ch;
-    u_char  *p;
+    u_char ch;
+    u_char *p;
     enum {
         sw_start = 0,
         sw_H,
@@ -58,7 +58,7 @@ ngx_http_parse_status_line(ngx_http_request_t *r, ngx_buf_t *b,
 
         switch (state) {
 
-        /* "HTTP/" */
+
         case sw_start:
             switch (ch) {
             case 'H':
@@ -109,7 +109,7 @@ ngx_http_parse_status_line(ngx_http_request_t *r, ngx_buf_t *b,
             }
             break;
 
-        /* the first digit of major HTTP version */
+
         case sw_first_major_digit:
             if (ch < '1' || ch > '9') {
                 return NGX_ERROR;
@@ -119,7 +119,7 @@ ngx_http_parse_status_line(ngx_http_request_t *r, ngx_buf_t *b,
             state = sw_major_digit;
             break;
 
-        /* the major HTTP version or dot */
+
         case sw_major_digit:
             if (ch == '.') {
                 state = sw_first_minor_digit;
@@ -137,7 +137,7 @@ ngx_http_parse_status_line(ngx_http_request_t *r, ngx_buf_t *b,
             r->http_major = r->http_major * 10 + (ch - '0');
             break;
 
-        /* the first digit of minor HTTP version */
+
         case sw_first_minor_digit:
             if (ch < '0' || ch > '9') {
                 return NGX_ERROR;
@@ -147,7 +147,7 @@ ngx_http_parse_status_line(ngx_http_request_t *r, ngx_buf_t *b,
             state = sw_minor_digit;
             break;
 
-        /* the minor HTTP version or the end of the request line */
+
         case sw_minor_digit:
             if (ch == ' ') {
                 state = sw_status;
@@ -165,7 +165,7 @@ ngx_http_parse_status_line(ngx_http_request_t *r, ngx_buf_t *b,
             r->http_minor = r->http_minor * 10 + (ch - '0');
             break;
 
-        /* HTTP status code */
+
         case sw_status:
             if (ch == ' ') {
                 break;
@@ -184,42 +184,42 @@ ngx_http_parse_status_line(ngx_http_request_t *r, ngx_buf_t *b,
 
             break;
 
-        /* space or end of line */
+
         case sw_space_after_status:
             switch (ch) {
             case ' ':
                 state = sw_status_text;
                 break;
-            case '.':                    /* IIS may send 403.1, 403.2, etc */
+            case '.':
                 state = sw_status_text;
                 break;
-            case CR:
+            case 129:
                 state = sw_almost_done;
                 break;
-            case LF:
+            case 128:
                 goto done;
             default:
                 return NGX_ERROR;
             }
             break;
 
-        /* any text until end of line */
+
         case sw_status_text:
             switch (ch) {
-            case CR:
+            case 129:
                 state = sw_almost_done;
 
                 break;
-            case LF:
+            case 128:
                 goto done;
             }
             break;
 
-        /* end of status line */
+
         case sw_almost_done:
             status->end = p - 1;
             switch (ch) {
-            case LF:
+            case 128:
                 goto done;
             default:
                 return NGX_ERROR;
@@ -236,7 +236,7 @@ done:
 
     b->pos = p + 1;
 
-    if (status->end == NULL) {
+    if (status->end == ((void*)0)) {
         status->end = p;
     }
 

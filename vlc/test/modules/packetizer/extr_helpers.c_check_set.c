@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+
+
+typedef int uint8_t ;
 struct results_s {size_t offset; } ;
-typedef  size_t ssize_t ;
+typedef size_t ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  printf (char*,size_t,int) ; 
+
+ int printf (char*,size_t,int) ;
 
 __attribute__((used)) static int check_set( const uint8_t *p_set, const uint8_t *p_end,
                       const struct results_s *p_results, size_t i_results,
@@ -24,10 +24,10 @@ __attribute__((used)) static int check_set( const uint8_t *p_set, const uint8_t 
 {
     const uint8_t *p = p_set;
     size_t i_entry = 0;
-    while( p != NULL )
+    while( p != ((void*)0) )
     {
         p = pf_find( p, p_end );
-        if( p == NULL )
+        if( p == ((void*)0) )
             break;
         printf("- entry %zu offset %ld\n", i_entry, p - p_set);
         if( i_entry == i_results )
@@ -38,7 +38,7 @@ __attribute__((used)) static int check_set( const uint8_t *p_set, const uint8_t 
         p++;
     }
 
-    if( p != NULL || i_entry != i_results )
+    if( p != ((void*)0) || i_entry != i_results )
         return 1;
 
     return 0;

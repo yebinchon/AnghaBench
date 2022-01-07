@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ bond; } ;
 struct TYPE_6__ {scalar_t__ iftype; TYPE_2__* network; } ;
-typedef  TYPE_1__ Link ;
+typedef TYPE_1__ Link ;
 
-/* Variables and functions */
- scalar_t__ ARPHRD_CAN ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- scalar_t__ link_ipv6ll_enabled (TYPE_1__*) ; 
- scalar_t__ network_has_static_ipv6_configurations (TYPE_2__*) ; 
- int /*<<< orphan*/  socket_ipv6_is_supported () ; 
+
+ scalar_t__ ARPHRD_CAN ;
+ int assert (TYPE_1__*) ;
+ scalar_t__ link_ipv6ll_enabled (TYPE_1__*) ;
+ scalar_t__ network_has_static_ipv6_configurations (TYPE_2__*) ;
+ int socket_ipv6_is_supported () ;
 
 __attribute__((used)) static bool link_ipv6_enabled(Link *link) {
         assert(link);
 
         if (!socket_ipv6_is_supported())
-                return false;
+                return 0;
 
         if (link->network->bond)
-                return false;
+                return 0;
 
         if (link->iftype == ARPHRD_CAN)
-                return false;
+                return 0;
 
-        /* DHCPv6 client will not be started if no IPv6 link-local address is configured. */
+
         if (link_ipv6ll_enabled(link))
-                return true;
+                return 1;
 
         if (network_has_static_ipv6_configurations(link->network))
-                return true;
+                return 1;
 
-        return false;
+        return 0;
 }

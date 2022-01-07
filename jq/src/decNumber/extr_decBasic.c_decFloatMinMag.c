@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  decFloat ;
-typedef  int /*<<< orphan*/  decContext ;
-typedef  scalar_t__ Int ;
 
-/* Variables and functions */
- scalar_t__ DFISNAN (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * decCanonical (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  decFloatCopyAbs (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * decFloatMin (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- scalar_t__ decNumCompare (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int decFloat ;
+typedef int decContext ;
+typedef scalar_t__ Int ;
+
+
+ scalar_t__ DFISNAN (int const*) ;
+ int * decCanonical (int *,int const*) ;
+ int decFloatCopyAbs (int *,int const*) ;
+ int * decFloatMin (int *,int const*,int const*,int *) ;
+ scalar_t__ decNumCompare (int *,int *,int ) ;
 
 decFloat * decFloatMinMag(decFloat *result,
                        const decFloat *dfl, const decFloat *dfr,

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct vmcb {int dummy; } ;
 struct TYPE_2__ {struct vmcb* hsave; } ;
-struct vcpu_svm {struct vmcb* vmcb; TYPE_1__ nested; int /*<<< orphan*/  vcpu; } ;
+struct vcpu_svm {struct vmcb* vmcb; TYPE_1__ nested; int vcpu; } ;
 
-/* Variables and functions */
- scalar_t__ is_guest_mode (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ is_guest_mode (int *) ;
 
 __attribute__((used)) static inline struct vmcb *get_host_vmcb(struct vcpu_svm *svm)
 {
-	if (is_guest_mode(&svm->vcpu))
-		return svm->nested.hsave;
-	else
-		return svm->vmcb;
+ if (is_guest_mode(&svm->vcpu))
+  return svm->nested.hsave;
+ else
+  return svm->vmcb;
 }

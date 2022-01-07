@@ -1,82 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  SSL_SESSION ;
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL3_RT_MAX_PLAIN_LENGTH ; 
- int /*<<< orphan*/  SSL_CTX_clear_options (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_CTX_free (int /*<<< orphan*/ *) ; 
- void* SSL_CTX_set1_groups_list (int /*<<< orphan*/ *,char*) ; 
- void* SSL_CTX_set_max_early_data (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_ERROR_NONE ; 
- int /*<<< orphan*/  SSL_OP_ENABLE_MIDDLEBOX_COMPAT ; 
- int /*<<< orphan*/  SSL_READ_EARLY_DATA_FINISH ; 
- int /*<<< orphan*/  SSL_READ_EARLY_DATA_SUCCESS ; 
- int /*<<< orphan*/  SSL_SESSION_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_connect (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SSL_get1_session (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_read_early_data (int /*<<< orphan*/ *,char*,int,size_t*) ; 
- void* SSL_set_session (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_shutdown (int /*<<< orphan*/ *) ; 
- void* SSL_write_early_data (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,size_t*) ; 
- int /*<<< orphan*/  TEST_error (char*) ; 
- int /*<<< orphan*/  TEST_false (void*) ; 
- int /*<<< orphan*/  TEST_int_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_int_gt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_int_le (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_size_t_eq (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_size_t_gt (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_true (void*) ; 
- int /*<<< orphan*/  TLS1_VERSION ; 
- int /*<<< orphan*/  TLS_client_method () ; 
- int /*<<< orphan*/  TLS_server_method () ; 
- void* badccs ; 
- void* badsessid ; 
- void* badvers ; 
- int /*<<< orphan*/  bio_f_watchccs_filter () ; 
- int /*<<< orphan*/ * c_to_s_fbio ; 
- void* cappdataseen ; 
- void* ccsaftersh ; 
- void* ccsbeforesh ; 
- int /*<<< orphan*/  cert ; 
- void* chseen ; 
- scalar_t__ chsessidlen ; 
- void* create_ssl_connection (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- void* create_ssl_ctx_pair (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* create_ssl_objects (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  privkey ; 
- int /*<<< orphan*/ * s_to_c_fbio ; 
- void* sappdataseen ; 
- void* sccsseen ; 
- void* shseen ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+
+
+typedef int buf ;
+typedef int SSL_SESSION ;
+typedef int SSL_CTX ;
+typedef int SSL ;
+
+
+ int BIO_free (int *) ;
+ int * BIO_new (int ) ;
+ int SSL3_RT_MAX_PLAIN_LENGTH ;
+ int SSL_CTX_clear_options (int *,int ) ;
+ int SSL_CTX_free (int *) ;
+ void* SSL_CTX_set1_groups_list (int *,char*) ;
+ void* SSL_CTX_set_max_early_data (int *,int ) ;
+ int SSL_ERROR_NONE ;
+ int SSL_OP_ENABLE_MIDDLEBOX_COMPAT ;
+ int SSL_READ_EARLY_DATA_FINISH ;
+ int SSL_READ_EARLY_DATA_SUCCESS ;
+ int SSL_SESSION_free (int *) ;
+ int SSL_connect (int *) ;
+ int SSL_free (int *) ;
+ int * SSL_get1_session (int *) ;
+ int SSL_read_early_data (int *,char*,int,size_t*) ;
+ void* SSL_set_session (int *,int *) ;
+ int SSL_shutdown (int *) ;
+ void* SSL_write_early_data (int *,char const*,int ,size_t*) ;
+ int TEST_error (char*) ;
+ int TEST_false (void*) ;
+ int TEST_int_eq (int ,int ) ;
+ int TEST_int_gt (int ,int ) ;
+ int TEST_int_le (int ,int ) ;
+ int TEST_ptr (int *) ;
+ int TEST_size_t_eq (scalar_t__,int ) ;
+ int TEST_size_t_gt (scalar_t__,int ) ;
+ int TEST_true (void*) ;
+ int TLS1_VERSION ;
+ int TLS_client_method () ;
+ int TLS_server_method () ;
+ void* badccs ;
+ void* badsessid ;
+ void* badvers ;
+ int bio_f_watchccs_filter () ;
+ int * c_to_s_fbio ;
+ void* cappdataseen ;
+ void* ccsaftersh ;
+ void* ccsbeforesh ;
+ int cert ;
+ void* chseen ;
+ scalar_t__ chsessidlen ;
+ void* create_ssl_connection (int *,int *,int ) ;
+ void* create_ssl_ctx_pair (int ,int ,int ,int ,int **,int **,int ,int ) ;
+ void* create_ssl_objects (int *,int *,int **,int **,int *,int *) ;
+ int privkey ;
+ int * s_to_c_fbio ;
+ void* sappdataseen ;
+ void* sccsseen ;
+ void* shseen ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static int test_tls13ccs(int tst)
 {
-    SSL_CTX *sctx = NULL, *cctx = NULL;
-    SSL *sssl = NULL, *cssl = NULL;
+    SSL_CTX *sctx = ((void*)0), *cctx = ((void*)0);
+    SSL *sssl = ((void*)0), *cssl = ((void*)0);
     int ret = 0;
     const char msg[] = "Dummy data";
     char buf[80];
     size_t written, readbytes;
-    SSL_SESSION *sess = NULL;
+    SSL_SESSION *sess = ((void*)0);
 
     chseen = shseen = sccsseen = ccsaftersh = ccsbeforesh = 0;
     sappdataseen = cappdataseen = badccs = badvers = badsessid = 0;
@@ -88,21 +88,6 @@ __attribute__((used)) static int test_tls13ccs(int tst)
         || !TEST_true(SSL_CTX_set_max_early_data(sctx,
                                                  SSL3_RT_MAX_PLAIN_LENGTH)))
         goto err;
-
-    /*
-     * Test 0: Simple Handshake
-     * Test 1: Simple Handshake, client middlebox compat mode disabled
-     * Test 2: Simple Handshake, server middlebox compat mode disabled
-     * Test 3: HRR Handshake
-     * Test 4: HRR Handshake, client middlebox compat mode disabled
-     * Test 5: HRR Handshake, server middlebox compat mode disabled
-     * Test 6: Early data handshake
-     * Test 7: Early data handshake, client middlebox compat mode disabled
-     * Test 8: Early data handshake, server middlebox compat mode disabled
-     * Test 9: Early data then HRR
-     * Test 10: Early data then HRR, client middlebox compat mode disabled
-     * Test 11: Early data then HRR, server middlebox compat mode disabled
-     */
     switch (tst) {
     case 0:
     case 3:
@@ -127,8 +112,8 @@ __attribute__((used)) static int test_tls13ccs(int tst)
     }
 
     if (tst >= 6) {
-        /* Get a session suitable for early_data */
-        if (!TEST_true(create_ssl_objects(sctx, cctx, &sssl, &cssl, NULL, NULL))
+
+        if (!TEST_true(create_ssl_objects(sctx, cctx, &sssl, &cssl, ((void*)0), ((void*)0)))
                 || !TEST_true(create_ssl_connection(sssl, cssl, SSL_ERROR_NONE)))
             goto err;
         sess = SSL_get1_session(cssl);
@@ -138,20 +123,20 @@ __attribute__((used)) static int test_tls13ccs(int tst)
         SSL_shutdown(sssl);
         SSL_free(sssl);
         SSL_free(cssl);
-        sssl = cssl = NULL;
+        sssl = cssl = ((void*)0);
     }
 
     if ((tst >= 3 && tst <= 5) || tst >= 9) {
-        /* HRR handshake */
-#if defined(OPENSSL_NO_EC)
-# if !defined(OPENSSL_NO_DH)
-        if (!TEST_true(SSL_CTX_set1_groups_list(sctx, "ffdhe3072")))
-            goto err;
-# endif
-#else
+
+
+
+
+
+
+
         if (!TEST_true(SSL_CTX_set1_groups_list(sctx, "P-256")))
             goto err;
-#endif
+
     }
 
     s_to_c_fbio = BIO_new(bio_f_watchccs_filter());
@@ -163,18 +148,18 @@ __attribute__((used)) static int test_tls13ccs(int tst)
         goto err;
     }
 
-    /* BIOs get freed on error */
+
     if (!TEST_true(create_ssl_objects(sctx, cctx, &sssl, &cssl, s_to_c_fbio,
                                       c_to_s_fbio)))
         goto err;
 
     if (tst >= 6) {
-        /* Early data */
+
         if (!TEST_true(SSL_set_session(cssl, sess))
                 || !TEST_true(SSL_write_early_data(cssl, msg, strlen(msg),
                                                    &written))
                 || (tst <= 8
-                    && !TEST_int_eq(SSL_read_early_data(sssl, buf,  sizeof(buf),
+                    && !TEST_int_eq(SSL_read_early_data(sssl, buf, sizeof(buf),
                                                 &readbytes),
                                                 SSL_READ_EARLY_DATA_SUCCESS)))
             goto err;
@@ -185,21 +170,21 @@ __attribute__((used)) static int test_tls13ccs(int tst)
             if (!TEST_int_le(SSL_connect(cssl), 0))
                 goto err;
         }
-        if (!TEST_int_eq(SSL_read_early_data(sssl, buf,  sizeof(buf),
+        if (!TEST_int_eq(SSL_read_early_data(sssl, buf, sizeof(buf),
                                              &readbytes),
                          SSL_READ_EARLY_DATA_FINISH))
             goto err;
     }
 
-    /* Perform handshake (or complete it if doing early data ) */
+
     if (!TEST_true(create_ssl_connection(sssl, cssl, SSL_ERROR_NONE)))
         goto err;
 
-    /*
-     * Check there were no unexpected CCS messages, all record versions
-     * were as expected, and that the session ids were reflected by the server
-     * correctly.
-     */
+
+
+
+
+
     if (!TEST_false(badccs) || !TEST_false(badvers) || !TEST_false(badsessid))
         goto err;
 

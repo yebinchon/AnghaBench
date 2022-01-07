@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  scalar_t__ sqlite3_int64 ;
-typedef  int /*<<< orphan*/  sqlite3 ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_ROW ; 
- int /*<<< orphan*/ * prepare (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  printf (char*,int,...) ; 
- double sqlite3_column_double (int /*<<< orphan*/ *,int) ; 
- int sqlite3_column_int (int /*<<< orphan*/ *,int) ; 
- scalar_t__ sqlite3_column_int64 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_stmt ;
+typedef scalar_t__ sqlite3_int64 ;
+typedef int sqlite3 ;
+
+
+ scalar_t__ SQLITE_ROW ;
+ int * prepare (int *,char*,...) ;
+ int printf (char*,int,...) ;
+ double sqlite3_column_double (int *,int) ;
+ int sqlite3_column_int (int *,int) ;
+ scalar_t__ sqlite3_column_int64 (int *,int) ;
+ int sqlite3_finalize (int *) ;
+ scalar_t__ sqlite3_step (int *) ;
 
 __attribute__((used)) static void showSegmentStats(sqlite3 *db, const char *zTab){
   sqlite3_stmt *pStmt;

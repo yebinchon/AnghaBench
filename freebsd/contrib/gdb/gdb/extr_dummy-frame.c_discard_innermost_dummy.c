@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dummy_frame {int /*<<< orphan*/  regcache; struct dummy_frame* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  regcache_xfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xfree (struct dummy_frame*) ; 
+
+
+
+struct dummy_frame {int regcache; struct dummy_frame* next; } ;
+
+
+ int regcache_xfree (int ) ;
+ int xfree (struct dummy_frame*) ;
 
 __attribute__((used)) static void
 discard_innermost_dummy (struct dummy_frame **stack)

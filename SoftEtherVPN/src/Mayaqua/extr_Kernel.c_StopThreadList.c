@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  THREAD ;
-typedef  int /*<<< orphan*/  LIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/ * LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WaitThread (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int THREAD ;
+typedef int LIST ;
+
+
+ int INFINITE ;
+ int * LIST_DATA (int *,scalar_t__) ;
+ scalar_t__ LIST_NUM (int *) ;
+ int LockList (int *) ;
+ int UnlockList (int *) ;
+ int WaitThread (int *,int ) ;
 
 void StopThreadList(LIST *o)
 {
-	UINT i;
-	// Validate arguments
-	if (o == NULL)
-	{
-		return;
-	}
+ UINT i;
 
-	LockList(o);
-	{
-		for (i = 0;i < LIST_NUM(o);i++)
-		{
-			THREAD *t = LIST_DATA(o, i);
+ if (o == ((void*)0))
+ {
+  return;
+ }
 
-			WaitThread(t, INFINITE);
-		}
-	}
-	UnlockList(o);
+ LockList(o);
+ {
+  for (i = 0;i < LIST_NUM(o);i++)
+  {
+   THREAD *t = LIST_DATA(o, i);
+
+   WaitThread(t, INFINITE);
+  }
+ }
+ UnlockList(o);
 }

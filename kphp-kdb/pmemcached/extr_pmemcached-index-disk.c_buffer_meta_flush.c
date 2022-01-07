@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct metafile_header {int dummy; } ;
-struct TYPE_7__ {int global_offset; int local_offset; int key_len; int nrecords; int metafile_size; int /*<<< orphan*/  crc32; } ;
+struct TYPE_7__ {int global_offset; int local_offset; int key_len; int nrecords; int metafile_size; int crc32; } ;
 
-/* Variables and functions */
- TYPE_1__* buffer_meta ; 
- int /*<<< orphan*/  buffer_meta_init () ; 
- TYPE_1__* buffer_meta_key ; 
- int buffer_meta_key_len ; 
- int buffer_meta_number ; 
- int buffer_meta_pos ; 
- TYPE_1__* buffer_shifts ; 
- unsigned int compute_crc32 (TYPE_1__*,int) ; 
- int /*<<< orphan*/  compute_crc32_combine (unsigned int,unsigned int,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int global_offset ; 
- TYPE_1__ metafile_header_tmp ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
- int write_buffer_number ; 
- int /*<<< orphan*/  writeout (TYPE_1__*,int) ; 
+
+ TYPE_1__* buffer_meta ;
+ int buffer_meta_init () ;
+ TYPE_1__* buffer_meta_key ;
+ int buffer_meta_key_len ;
+ int buffer_meta_number ;
+ int buffer_meta_pos ;
+ TYPE_1__* buffer_shifts ;
+ unsigned int compute_crc32 (TYPE_1__*,int) ;
+ int compute_crc32_combine (unsigned int,unsigned int,int) ;
+ int fprintf (int ,char*,int) ;
+ int global_offset ;
+ TYPE_1__ metafile_header_tmp ;
+ int stderr ;
+ int verbosity ;
+ int write_buffer_number ;
+ int writeout (TYPE_1__*,int) ;
 
 void buffer_meta_flush () {
   metafile_header_tmp.global_offset = global_offset;

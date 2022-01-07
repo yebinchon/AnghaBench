@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
 
-/* Variables and functions */
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- char* ACPI_SIG_DSDT ; 
- int /*<<< orphan*/  AE_LIMIT ; 
- int /*<<< orphan*/  AE_OK ; 
- int AcpiGbl_Optind ; 
- int /*<<< orphan*/  AcpiTerminate () ; 
- int /*<<< orphan*/  AcpiUtStrupr (char*) ; 
- int /*<<< orphan*/  AdInitialize () ; 
- int /*<<< orphan*/  AslInitializeGlobals () ; 
- int /*<<< orphan*/  DtCreateAllTemplates () ; 
- int /*<<< orphan*/  DtCreateOneTemplateFile (char*,unsigned long) ; 
- int /*<<< orphan*/  UtDeleteLocalCaches () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,unsigned int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- unsigned long strtoul (char*,char**,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ACPI_STATUS ;
+
+
+ scalar_t__ ACPI_FAILURE (int ) ;
+ char* ACPI_SIG_DSDT ;
+ int AE_LIMIT ;
+ int AE_OK ;
+ int AcpiGbl_Optind ;
+ int AcpiTerminate () ;
+ int AcpiUtStrupr (char*) ;
+ int AdInitialize () ;
+ int AslInitializeGlobals () ;
+ int DtCreateAllTemplates () ;
+ int DtCreateOneTemplateFile (char*,unsigned long) ;
+ int UtDeleteLocalCaches () ;
+ int fprintf (int ,char*,unsigned int) ;
+ int stderr ;
+ int strcmp (char*,char*) ;
+ unsigned long strtoul (char*,char**,int ) ;
 
 ACPI_STATUS
 DtCreateTemplates (
-    char                    **argv)
+    char **argv)
 {
-    char                    *Signature;
-    char                    *End;
-    unsigned long           TableCount;
-    ACPI_STATUS             Status = AE_OK;
+    char *Signature;
+    char *End;
+    unsigned long TableCount;
+    ACPI_STATUS Status = AE_OK;
 
 
     AslInitializeGlobals ();
@@ -48,11 +48,11 @@ DtCreateTemplates (
         return (Status);
     }
 
-    /*
-     * Special cases for DSDT, ALL, and '*'
-     */
 
-    /* Default (no signature option) is DSDT */
+
+
+
+
 
     if (AcpiGbl_Optind < 3)
     {
@@ -64,13 +64,13 @@ DtCreateTemplates (
     Signature = argv[AcpiGbl_Optind];
     AcpiUtStrupr (Signature);
 
-    /*
-     * Multiple SSDT support (-T <ssdt count>)
-     */
+
+
+
     TableCount = strtoul (Signature, &End, 0);
     if (Signature != End)
     {
-        /* The count is used for table ID and method name - max is 254(+1) */
+
 
         if (TableCount > 254)
         {
@@ -87,15 +87,15 @@ DtCreateTemplates (
 
     if (!strcmp (Signature, "ALL"))
     {
-        /* Create all available/known templates */
+
 
         Status = DtCreateAllTemplates ();
         goto Exit;
     }
 
-    /*
-     * Normal case: Create template for each signature
-     */
+
+
+
     while (argv[AcpiGbl_Optind])
     {
         Signature = argv[AcpiGbl_Optind];
@@ -112,7 +112,7 @@ DtCreateTemplates (
 
 
 Exit:
-    /* Shutdown ACPICA subsystem */
+
 
     (void) AcpiTerminate ();
     UtDeleteLocalCaches ();

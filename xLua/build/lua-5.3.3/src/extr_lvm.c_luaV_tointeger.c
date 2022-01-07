@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ lua_Number ;
-typedef  int /*<<< orphan*/  lua_Integer ;
-typedef  int /*<<< orphan*/  TValue ;
 
-/* Variables and functions */
- scalar_t__ cvt2num (int /*<<< orphan*/  const*) ; 
- scalar_t__ fltvalue (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ivalue (int /*<<< orphan*/  const*) ; 
- scalar_t__ l_floor (scalar_t__) ; 
- scalar_t__ luaO_str2num (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int lua_numbertointeger (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svalue (int /*<<< orphan*/  const*) ; 
- scalar_t__ ttisfloat (int /*<<< orphan*/  const*) ; 
- scalar_t__ ttisinteger (int /*<<< orphan*/  const*) ; 
- scalar_t__ vslen (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef scalar_t__ lua_Number ;
+typedef int lua_Integer ;
+typedef int TValue ;
+
+
+ scalar_t__ cvt2num (int const*) ;
+ scalar_t__ fltvalue (int const*) ;
+ int ivalue (int const*) ;
+ scalar_t__ l_floor (scalar_t__) ;
+ scalar_t__ luaO_str2num (int ,int *) ;
+ int lua_numbertointeger (scalar_t__,int *) ;
+ int svalue (int const*) ;
+ scalar_t__ ttisfloat (int const*) ;
+ scalar_t__ ttisinteger (int const*) ;
+ scalar_t__ vslen (int const*) ;
 
 int luaV_tointeger (const TValue *obj, lua_Integer *p, int mode) {
   TValue v;
@@ -32,10 +32,10 @@ int luaV_tointeger (const TValue *obj, lua_Integer *p, int mode) {
   if (ttisfloat(obj)) {
     lua_Number n = fltvalue(obj);
     lua_Number f = l_floor(n);
-    if (n != f) {  /* not an integral value? */
-      if (mode == 0) return 0;  /* fails if mode demands integral value */
-      else if (mode > 1)  /* needs ceil? */
-        f += 1;  /* convert floor to ceil (remember: n != f) */
+    if (n != f) {
+      if (mode == 0) return 0;
+      else if (mode > 1)
+        f += 1;
     }
     return lua_numbertointeger(f, p);
   }
@@ -46,7 +46,7 @@ int luaV_tointeger (const TValue *obj, lua_Integer *p, int mode) {
   else if (cvt2num(obj) &&
             luaO_str2num(svalue(obj), &v) == vslen(obj) + 1) {
     obj = &v;
-    goto again;  /* convert result from 'luaO_str2num' to an integer */
+    goto again;
   }
-  return 0;  /* conversion failed */
+  return 0;
 }

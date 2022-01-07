@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_11__ {TYPE_3__* priv_data; } ;
-struct TYPE_10__ {int mbs_per_slice; int mb_width; int slices_width; int /*<<< orphan*/ * slice_q; TYPE_2__* tdata; } ;
+struct TYPE_10__ {int mbs_per_slice; int mb_width; int slices_width; int * slice_q; TYPE_2__* tdata; } ;
 struct TYPE_9__ {TYPE_1__* nodes; } ;
-struct TYPE_8__ {int prev_node; int /*<<< orphan*/  quant; } ;
-typedef  TYPE_2__ ProresThreadData ;
-typedef  TYPE_3__ ProresContext ;
-typedef  TYPE_4__ AVCodecContext ;
+struct TYPE_8__ {int prev_node; int quant; } ;
+typedef TYPE_2__ ProresThreadData ;
+typedef TYPE_3__ ProresContext ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int TRELLIS_WIDTH ; 
- int find_slice_quant (TYPE_4__*,int,int,int,int,TYPE_2__*) ; 
+
+ int TRELLIS_WIDTH ;
+ int find_slice_quant (TYPE_4__*,int,int,int,int,TYPE_2__*) ;
 
 __attribute__((used)) static int find_quant_thread(AVCodecContext *avctx, void *arg,
                              int jobnr, int threadnr)

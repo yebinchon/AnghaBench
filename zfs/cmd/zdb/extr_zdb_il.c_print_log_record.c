@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_10__ {TYPE_1__* zl_os; } ;
-typedef  TYPE_2__ zilog_t ;
-typedef  scalar_t__ uint_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  u_longlong_t ;
+typedef TYPE_2__ zilog_t ;
+typedef scalar_t__ uint_t ;
+typedef int uint64_t ;
+typedef int u_longlong_t ;
 struct TYPE_11__ {int lrc_txtype; int lrc_txg; scalar_t__ lrc_seq; scalar_t__ lrc_reclen; } ;
-typedef  TYPE_3__ lr_t ;
-struct TYPE_12__ {int /*<<< orphan*/  zri_count; int /*<<< orphan*/  (* zri_print ) (TYPE_2__*,int,TYPE_3__*) ;int /*<<< orphan*/  zri_name; } ;
-struct TYPE_9__ {int /*<<< orphan*/  os_encrypted; } ;
+typedef TYPE_3__ lr_t ;
+struct TYPE_12__ {int zri_count; int (* zri_print ) (TYPE_2__*,int,TYPE_3__*) ;int zri_name; } ;
+struct TYPE_9__ {int os_encrypted; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int MAX (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int TX_CI ; 
- scalar_t__ TX_MAX_TYPE ; 
- int /*<<< orphan*/ * dump_opt ; 
- int /*<<< orphan*/  printf (char*,char*,...) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*,int,TYPE_3__*) ; 
- char* tab_prefix ; 
- TYPE_4__* zil_rec_info ; 
+
+ int ASSERT (int) ;
+ int MAX (int ,int ) ;
+ int TX_CI ;
+ scalar_t__ TX_MAX_TYPE ;
+ int * dump_opt ;
+ int printf (char*,char*,...) ;
+ int stub1 (TYPE_2__*,int,TYPE_3__*) ;
+ char* tab_prefix ;
+ TYPE_4__* zil_rec_info ;
 
 __attribute__((used)) static int
 print_log_record(zilog_t *zilog, lr_t *lr, void *arg, uint64_t claim_txg)
 {
-	int txtype;
-	int verbose = MAX(dump_opt['d'], dump_opt['i']);
+ int txtype;
+ int verbose = MAX(dump_opt['d'], dump_opt['i']);
 
-	/* reduce size of txtype to strip off TX_CI bit */
-	txtype = lr->lrc_txtype;
 
-	ASSERT(txtype != 0 && (uint_t)txtype < TX_MAX_TYPE);
-	ASSERT(lr->lrc_txg);
+ txtype = lr->lrc_txtype;
 
-	(void) printf("\t\t%s%s len %6llu, txg %llu, seq %llu\n",
-	    (lr->lrc_txtype & TX_CI) ? "CI-" : "",
-	    zil_rec_info[txtype].zri_name,
-	    (u_longlong_t)lr->lrc_reclen,
-	    (u_longlong_t)lr->lrc_txg,
-	    (u_longlong_t)lr->lrc_seq);
+ ASSERT(txtype != 0 && (uint_t)txtype < TX_MAX_TYPE);
+ ASSERT(lr->lrc_txg);
 
-	if (txtype && verbose >= 3) {
-		if (!zilog->zl_os->os_encrypted) {
-			zil_rec_info[txtype].zri_print(zilog, txtype, lr);
-		} else {
-			(void) printf("%s(encrypted)\n", tab_prefix);
-		}
-	}
+ (void) printf("\t\t%s%s len %6llu, txg %llu, seq %llu\n",
+     (lr->lrc_txtype & TX_CI) ? "CI-" : "",
+     zil_rec_info[txtype].zri_name,
+     (u_longlong_t)lr->lrc_reclen,
+     (u_longlong_t)lr->lrc_txg,
+     (u_longlong_t)lr->lrc_seq);
 
-	zil_rec_info[txtype].zri_count++;
-	zil_rec_info[0].zri_count++;
+ if (txtype && verbose >= 3) {
+  if (!zilog->zl_os->os_encrypted) {
+   zil_rec_info[txtype].zri_print(zilog, txtype, lr);
+  } else {
+   (void) printf("%s(encrypted)\n", tab_prefix);
+  }
+ }
 
-	return (0);
+ zil_rec_info[txtype].zri_count++;
+ zil_rec_info[0].zri_count++;
+
+ return (0);
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct iovec {unsigned int* iov_base; long long iov_len; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  assert (int) ; 
- unsigned int compute_crc32 (void*,long long) ; 
- scalar_t__ dyn_cur ; 
- scalar_t__ dyn_top ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,long long,long long,unsigned int,...) ; 
- int idx_crc_enabled ; 
- int /*<<< orphan*/  idx_fd ; 
- long long idx_fsize ; 
- int idx_loaded_bytes ; 
- long long lseek (int /*<<< orphan*/ ,long long,int /*<<< orphan*/ ) ; 
- int readv (int /*<<< orphan*/ ,struct iovec*,int) ; 
- int /*<<< orphan*/  stderr ; 
- void* zmalloc (long long) ; 
+
+ int SEEK_SET ;
+ int assert (int) ;
+ unsigned int compute_crc32 (void*,long long) ;
+ scalar_t__ dyn_cur ;
+ scalar_t__ dyn_top ;
+ int fprintf (int ,char*,long long,long long,unsigned int,...) ;
+ int idx_crc_enabled ;
+ int idx_fd ;
+ long long idx_fsize ;
+ int idx_loaded_bytes ;
+ long long lseek (int ,long long,int ) ;
+ int readv (int ,struct iovec*,int) ;
+ int stderr ;
+ void* zmalloc (long long) ;
 
 void *load_index_part (void *data, long long offset, long long size, int max_size) {
   int r;

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_vector ;
-typedef  int /*<<< orphan*/  git_remote_head ;
 
-/* Variables and functions */
- int git_vector_insert (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int git_vector ;
+typedef int git_remote_head ;
+
+
+ int git_vector_insert (int *,int *) ;
 
 int record_ref_cb(git_remote_head *head, void *payload)
 {
-	git_vector *refs = (git_vector *) payload;
-	return git_vector_insert(refs, head);
+ git_vector *refs = (git_vector *) payload;
+ return git_vector_insert(refs, head);
 }

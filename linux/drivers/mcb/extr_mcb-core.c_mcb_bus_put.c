@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mcb_bus {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  put_device (int /*<<< orphan*/ *) ; 
+
+
+
+struct mcb_bus {int dev; } ;
+
+
+ int put_device (int *) ;
 
 void mcb_bus_put(struct mcb_bus *bus)
 {
-	if (bus)
-		put_device(&bus->dev);
+ if (bus)
+  put_device(&bus->dev);
 }

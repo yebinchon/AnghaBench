@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int priv_mask; } ;
-typedef  TYPE_1__ user_t ;
-typedef  int /*<<< orphan*/  index_header ;
+typedef TYPE_1__ user_t ;
+typedef int index_header ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int) ; 
- TYPE_1__* get_user_f (int,int) ; 
- int /*<<< orphan*/  idx_fd ; 
- int read (int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+ int assert (int) ;
+ int fprintf (int ,char*,int,int) ;
+ TYPE_1__* get_user_f (int,int) ;
+ int idx_fd ;
+ int read (int ,int*,int) ;
+ int stderr ;
+ int verbosity ;
 
 void load_privacy (index_header *header) {
   static int x[1 << 20];
-  //assert (header->small_data_offset >= sizeof (*header));
-  //assert (lseek (idx_fd, header->small_data_offset, SEEK_SET) == header->small_data_offset);
+
+
   while (1) {
     int l = read (idx_fd, x, 1 << 20);
     if (!l) {

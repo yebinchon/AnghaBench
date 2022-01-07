@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  (* end ) (void*) ;int /*<<< orphan*/  (* text ) (void*,char const*,int) ;int /*<<< orphan*/  (* origin ) (void*,int,int) ;int /*<<< orphan*/  (* move ) (void*,int,int,int,int,int,int) ;int /*<<< orphan*/  (* cancel_overrides ) (void*,char*) ;int /*<<< orphan*/  (* alignment ) (void*,int) ;int /*<<< orphan*/  (* font_size ) (void*,int) ;int /*<<< orphan*/  (* font_name ) (void*,char*) ;int /*<<< orphan*/  (* alpha ) (void*,int,char) ;int /*<<< orphan*/  (* color ) (void*,unsigned int,char) ;int /*<<< orphan*/  (* style ) (void*,char,int) ;int /*<<< orphan*/  (* new_line ) (void*,int) ;} ;
-typedef  TYPE_1__ ASSCodesCallbacks ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int sscanf (char const*,char*,...) ; 
- int strcspn (char const*,char*) ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int) ; 
- int /*<<< orphan*/  stub1 (void*,char const*,int) ; 
- int /*<<< orphan*/  stub10 (void*,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  stub11 (void*,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  stub12 (void*,int,int) ; 
- int /*<<< orphan*/  stub13 (void*,char const*,int) ; 
- int /*<<< orphan*/  stub14 (void*) ; 
- int /*<<< orphan*/  stub2 (void*,int) ; 
- int /*<<< orphan*/  stub3 (void*,char,int) ; 
- int /*<<< orphan*/  stub4 (void*,unsigned int,char) ; 
- int /*<<< orphan*/  stub5 (void*,int,char) ; 
- int /*<<< orphan*/  stub6 (void*,char*) ; 
- int /*<<< orphan*/  stub7 (void*,int) ; 
- int /*<<< orphan*/  stub8 (void*,int) ; 
- int /*<<< orphan*/  stub9 (void*,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int (* end ) (void*) ;int (* text ) (void*,char const*,int) ;int (* origin ) (void*,int,int) ;int (* move ) (void*,int,int,int,int,int,int) ;int (* cancel_overrides ) (void*,char*) ;int (* alignment ) (void*,int) ;int (* font_size ) (void*,int) ;int (* font_name ) (void*,char*) ;int (* alpha ) (void*,int,char) ;int (* color ) (void*,unsigned int,char) ;int (* style ) (void*,char,int) ;int (* new_line ) (void*,int) ;} ;
+typedef TYPE_1__ ASSCodesCallbacks ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int sscanf (char const*,char*,...) ;
+ int strcspn (char const*,char*) ;
+ int strncmp (char const*,char*,int) ;
+ int stub1 (void*,char const*,int) ;
+ int stub10 (void*,int,int,int,int,int,int) ;
+ int stub11 (void*,int,int,int,int,int,int) ;
+ int stub12 (void*,int,int) ;
+ int stub13 (void*,char const*,int) ;
+ int stub14 (void*) ;
+ int stub2 (void*,int) ;
+ int stub3 (void*,char,int) ;
+ int stub4 (void*,unsigned int,char) ;
+ int stub5 (void*,int,char) ;
+ int stub6 (void*,char*) ;
+ int stub7 (void*,int) ;
+ int stub8 (void*,int) ;
+ int stub9 (void*,char*) ;
 
 int ff_ass_split_override_codes(const ASSCodesCallbacks *callbacks, void *priv,
                                 const char *buf)
 {
-    const char *text = NULL;
+    const char *text = ((void*)0);
     char new_line[2];
     int text_len = 0;
 
@@ -46,7 +46,7 @@ int ff_ass_split_override_codes(const ASSCodesCallbacks *callbacks, void *priv,
             (sscanf(buf, "\\%1[nN]", new_line) == 1 ||
              !strncmp(buf, "{\\", 2))) {
             callbacks->text(priv, text, text_len);
-            text = NULL;
+            text = ((void*)0);
         }
         if (sscanf(buf, "\\%1[nN]", new_line) == 1) {
             if (callbacks->new_line)
@@ -79,7 +79,7 @@ int ff_ass_split_override_codes(const ASSCodesCallbacks *callbacks, void *priv,
                 } else if (sscanf(buf, "\\fn%1[\\}]%n", sep, &len) > 0 ||
                            sscanf(buf, "\\fn%127[^\\}]%1[\\}]%n", tmp, sep, &len) > 1) {
                     if (callbacks->font_name)
-                        callbacks->font_name(priv, tmp[0] ? tmp : NULL);
+                        callbacks->font_name(priv, tmp[0] ? tmp : ((void*)0));
                 } else if (sscanf(buf, "\\fs%1[\\}]%n", sep, &len) > 0 ||
                            sscanf(buf, "\\fs%u%1[\\}]%n", &size, sep, &len) > 1) {
                     if (callbacks->font_size)
@@ -107,7 +107,7 @@ int ff_ass_split_override_codes(const ASSCodesCallbacks *callbacks, void *priv,
                     if (callbacks->origin)
                         callbacks->origin(priv, x1, y1);
                 } else {
-                    len = strcspn(buf+1, "\\}") + 2;  /* skip unknown code */
+                    len = strcspn(buf+1, "\\}") + 2;
                 }
                 buf += len - 1;
             }

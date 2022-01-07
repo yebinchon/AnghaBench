@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* tif_clientinfo; } ;
-struct TYPE_4__ {void* data; struct TYPE_4__* next; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ TIFFClientInfoLink ;
-typedef  TYPE_2__ TIFF ;
+struct TYPE_4__ {void* data; struct TYPE_4__* next; int name; } ;
+typedef TYPE_1__ TIFFClientInfoLink ;
+typedef TYPE_2__ TIFF ;
 
-/* Variables and functions */
- scalar_t__ strcmp (int /*<<< orphan*/ ,char const*) ; 
+
+ scalar_t__ strcmp (int ,char const*) ;
 
 void *TIFFGetClientInfo( TIFF *tif, const char *name )
 
 {
     TIFFClientInfoLink *psLink = tif->tif_clientinfo;
 
-    while( psLink != NULL && strcmp(psLink->name,name) != 0 )
+    while( psLink != ((void*)0) && strcmp(psLink->name,name) != 0 )
         psLink = psLink->next;
 
-    if( psLink != NULL )
+    if( psLink != ((void*)0) )
         return psLink->data;
     else
-        return NULL;
+        return ((void*)0);
 }

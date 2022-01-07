@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sds ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  luaL_loadbuffer (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  lua_pcall (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdscatlen (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdsempty () ; 
- int /*<<< orphan*/  sdsfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdslen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+
+
+typedef int sds ;
+typedef int lua_State ;
+
+
+ int luaL_loadbuffer (int *,int ,int ,char*) ;
+ int lua_pcall (int *,int ,int ,int ) ;
+ int sdscatlen (int ,char*,int ) ;
+ int sdsempty () ;
+ int sdsfree (int ) ;
+ int sdslen (int ) ;
+ int strlen (char*) ;
 
 void scriptingEnableGlobalsProtection(lua_State *lua) {
     char *s[32];
     sds code = sdsempty();
     int j = 0;
 
-    /* strict.lua from: http://metalua.luaforge.net/src/lib/strict.lua.html.
-     * Modified to be adapted to Redis. */
+
+
     s[j++]="local dbg=debug\n";
     s[j++]="local mt = {}\n";
     s[j++]="setmetatable(_G, mt)\n";
@@ -48,9 +48,9 @@ void scriptingEnableGlobalsProtection(lua_State *lua) {
     s[j++]="  return rawget(t, n)\n";
     s[j++]="end\n";
     s[j++]="debug = nil\n";
-    s[j++]=NULL;
+    s[j++]=((void*)0);
 
-    for (j = 0; s[j] != NULL; j++) code = sdscatlen(code,s[j],strlen(s[j]));
+    for (j = 0; s[j] != ((void*)0); j++) code = sdscatlen(code,s[j],strlen(s[j]));
     luaL_loadbuffer(lua,code,sdslen(code),"@enable_strict_lua");
     lua_pcall(lua,0,0,0);
     sdsfree(code);

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct acpi_pci_devinfo {scalar_t__ ap_handle; } ;
-typedef  int /*<<< orphan*/  device_t ;
+typedef int device_t ;
 
-/* Variables and functions */
- scalar_t__ ACPI_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  acpi_GetInteger (scalar_t__,char*,int*) ; 
- char* acpi_name (scalar_t__) ; 
- struct acpi_pci_devinfo* device_get_ivars (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pci_child_location_str_method (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,size_t) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
- int /*<<< orphan*/  strlcat (char*,char*,size_t) ; 
+
+ scalar_t__ ACPI_SUCCESS (int ) ;
+ int acpi_GetInteger (scalar_t__,char*,int*) ;
+ char* acpi_name (scalar_t__) ;
+ struct acpi_pci_devinfo* device_get_ivars (int ) ;
+ int pci_child_location_str_method (int ,int ,char*,size_t) ;
+ int snprintf (char*,int,char*,int) ;
+ int strlcat (char*,char*,size_t) ;
 
 __attribute__((used)) static int
 acpi_pci_child_location_str_method(device_t cbdev, device_t child, char *buf,

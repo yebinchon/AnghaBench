@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-struct stats_server {int /*<<< orphan*/  metric; } ;
+
+
+
+
+typedef scalar_t__ uint32_t ;
+struct stats_server {int metric; } ;
 struct array {int dummy; } ;
-struct stats_pool {struct array server; int /*<<< orphan*/  metric; } ;
+struct stats_pool {struct array server; int metric; } ;
 
-/* Variables and functions */
- void* array_get (struct array*,scalar_t__) ; 
- scalar_t__ array_n (struct array*) ; 
- int /*<<< orphan*/  stats_metric_reset (int /*<<< orphan*/ *) ; 
+
+ void* array_get (struct array*,scalar_t__) ;
+ scalar_t__ array_n (struct array*) ;
+ int stats_metric_reset (int *) ;
 
 __attribute__((used)) static void
 stats_pool_reset(struct array *stats_pool)

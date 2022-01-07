@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {unsigned int width; unsigned int height; int /*<<< orphan*/ * texture; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {unsigned int width; unsigned int height; int * texture; } ;
 struct TYPE_4__ {TYPE_1__ menu; } ;
-typedef  TYPE_2__ vita_video_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
+typedef TYPE_2__ vita_video_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RARCH_LOG (char*,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  SCE_GXM_TEXTURE_FILTER_LINEAR ; 
- int /*<<< orphan*/  SCE_GXM_TEXTURE_FORMAT_U4U4U4U4_RGBA ; 
- int /*<<< orphan*/ * vita2d_create_empty_texture (unsigned int,unsigned int) ; 
- int /*<<< orphan*/ * vita2d_create_empty_texture_format (unsigned int,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vita2d_free_texture (int /*<<< orphan*/ *) ; 
- void* vita2d_texture_get_datap (int /*<<< orphan*/ *) ; 
- unsigned int vita2d_texture_get_stride (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vita2d_texture_set_filters (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int RARCH_LOG (char*,unsigned int,unsigned int) ;
+ int SCE_GXM_TEXTURE_FILTER_LINEAR ;
+ int SCE_GXM_TEXTURE_FORMAT_U4U4U4U4_RGBA ;
+ int * vita2d_create_empty_texture (unsigned int,unsigned int) ;
+ int * vita2d_create_empty_texture_format (unsigned int,unsigned int,int ) ;
+ int vita2d_free_texture (int *) ;
+ void* vita2d_texture_get_datap (int *) ;
+ unsigned int vita2d_texture_get_stride (int *) ;
+ int vita2d_texture_set_filters (int *,int ,int ) ;
 
 __attribute__((used)) static void vita_set_texture_frame(void *data, const void *frame, bool rgb32,
       unsigned width, unsigned height, float alpha)
@@ -42,7 +42,7 @@ __attribute__((used)) static void vita_set_texture_frame(void *data, const void 
    if (width != vita->menu.width && height != vita->menu.height && vita->menu.texture)
    {
       vita2d_free_texture(vita->menu.texture);
-      vita->menu.texture = NULL;
+      vita->menu.texture = ((void*)0);
    }
 
    if (!vita->menu.texture)
@@ -60,7 +60,7 @@ __attribute__((used)) static void vita_set_texture_frame(void *data, const void 
          RARCH_LOG("Creating Frame R5G6B5 texture: w: %i  h: %i\n",
                width, height);
       }
-      vita->menu.width  = width;
+      vita->menu.width = width;
       vita->menu.height = height;
    }
 
@@ -68,15 +68,15 @@ __attribute__((used)) static void vita_set_texture_frame(void *data, const void 
          SCE_GXM_TEXTURE_FILTER_LINEAR,
          SCE_GXM_TEXTURE_FILTER_LINEAR);
 
-   tex_p  = vita2d_texture_get_datap(vita->menu.texture);
+   tex_p = vita2d_texture_get_datap(vita->menu.texture);
    stride = vita2d_texture_get_stride(vita->menu.texture);
 
    if (rgb32)
    {
-      uint32_t         *tex32 = tex_p;
+      uint32_t *tex32 = tex_p;
       const uint32_t *frame32 = frame;
 
-      stride                 /= 4;
+      stride /= 4;
 
       for (i = 0; i < height; i++)
          for (j = 0; j < width; j++)
@@ -84,10 +84,10 @@ __attribute__((used)) static void vita_set_texture_frame(void *data, const void 
    }
    else
    {
-      uint16_t               *tex16 = tex_p;
-      const uint16_t       *frame16 = frame;
+      uint16_t *tex16 = tex_p;
+      const uint16_t *frame16 = frame;
 
-      stride                       /= 2;
+      stride /= 2;
 
       for (i = 0; i < height; i++)
          for (j = 0; j < width; j++)

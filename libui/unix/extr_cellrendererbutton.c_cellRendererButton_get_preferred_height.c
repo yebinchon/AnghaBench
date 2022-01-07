@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gint ;
-typedef  int /*<<< orphan*/  GtkWidget ;
-typedef  int /*<<< orphan*/  GtkCellRenderer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gtk_cell_renderer_get_preferred_height_for_width (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_cell_renderer_get_preferred_width (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int gint ;
+typedef int GtkWidget ;
+typedef int GtkCellRenderer ;
+
+
+ int gtk_cell_renderer_get_preferred_height_for_width (int *,int *,int ,int *,int *) ;
+ int gtk_cell_renderer_get_preferred_width (int *,int *,int *,int *) ;
 
 __attribute__((used)) static void cellRendererButton_get_preferred_height(GtkCellRenderer *r, GtkWidget *widget, gint *minimum, gint *natural)
 {
-	gint width;
+ gint width;
 
-	gtk_cell_renderer_get_preferred_width(r, widget, &width, NULL);
-	gtk_cell_renderer_get_preferred_height_for_width(r, widget, width, minimum, natural);
+ gtk_cell_renderer_get_preferred_width(r, widget, &width, ((void*)0));
+ gtk_cell_renderer_get_preferred_height_for_width(r, widget, width, minimum, natural);
 }

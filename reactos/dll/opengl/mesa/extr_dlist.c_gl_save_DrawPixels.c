@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * data; void* e; void* i; } ;
-typedef  TYPE_1__ Node ;
-typedef  int /*<<< orphan*/  GLvoid ;
-typedef  scalar_t__ GLsizei ;
-typedef  void* GLint ;
-typedef  void* GLenum ;
-typedef  int /*<<< orphan*/  GLcontext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPCODE_DRAW_PIXELS ; 
- TYPE_1__* alloc_instruction (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * data; void* e; void* i; } ;
+typedef TYPE_1__ Node ;
+typedef int GLvoid ;
+typedef scalar_t__ GLsizei ;
+typedef void* GLint ;
+typedef void* GLenum ;
+typedef int GLcontext ;
+
+
+ int OPCODE_DRAW_PIXELS ;
+ TYPE_1__* alloc_instruction (int *,int ,int) ;
 
 void gl_save_DrawPixels( GLcontext *ctx, GLsizei width, GLsizei height,
                          GLenum format, GLenum type, const GLvoid *pixels )
@@ -34,9 +34,9 @@ void gl_save_DrawPixels( GLcontext *ctx, GLsizei width, GLsizei height,
       n[4].e = type;
       n[5].data = (GLvoid *) pixels;
    }
-/* Special case:  gl_DrawPixels takes care of GL_COMPILE_AND_EXECUTE case!
-   if (ctx->ExecuteFlag) {
-      (*ctx->Exec.DrawPixels)( ctx, width, height, format, type, pixels );
-   }
-*/
+
+
+
+
+
 }

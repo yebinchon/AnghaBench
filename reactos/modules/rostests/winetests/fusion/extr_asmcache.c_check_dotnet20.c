@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  int /*<<< orphan*/  IAssemblyCache ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ CLDB_E_FILE_OLDVER ; 
- int /*<<< orphan*/  DeleteFileA (char*) ; 
- scalar_t__ E_ACCESSDENIED ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ IAssemblyCache_InstallAssembly (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IAssemblyCache_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IAssemblyCache_UninstallAssembly (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  create_assembly (char*) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- scalar_t__ pCreateAssemblyCache (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int ULONG ;
+typedef int IAssemblyCache ;
+typedef scalar_t__ HRESULT ;
+typedef int BOOL ;
+
+
+ scalar_t__ CLDB_E_FILE_OLDVER ;
+ int DeleteFileA (char*) ;
+ scalar_t__ E_ACCESSDENIED ;
+ int FALSE ;
+ scalar_t__ IAssemblyCache_InstallAssembly (int *,int ,char const*,int *) ;
+ int IAssemblyCache_Release (int *) ;
+ int IAssemblyCache_UninstallAssembly (int *,int ,char const*,int *,int *) ;
+ scalar_t__ S_OK ;
+ int TRUE ;
+ int create_assembly (char*) ;
+ int ok (int,char*,scalar_t__) ;
+ scalar_t__ pCreateAssemblyCache (int **,int ) ;
+ int skip (char*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static BOOL check_dotnet20(void)
 {
@@ -46,7 +46,7 @@ __attribute__((used)) static BOOL check_dotnet20(void)
     hr = pCreateAssemblyCache(&cache, 0);
     ok(hr == S_OK, "Expected S_OK, got %08x\n", hr);
 
-    hr = IAssemblyCache_InstallAssembly(cache, 0, winedll, NULL);
+    hr = IAssemblyCache_InstallAssembly(cache, 0, winedll, ((void*)0));
     if (hr == S_OK)
         ret = TRUE;
     else if (hr == CLDB_E_FILE_OLDVER)
@@ -57,7 +57,7 @@ __attribute__((used)) static BOOL check_dotnet20(void)
         ok(0, "Expected S_OK, got %08x\n", hr);
 
     DeleteFileA("wine.dll");
-    IAssemblyCache_UninstallAssembly(cache, 0, winedll, NULL, &disp);
+    IAssemblyCache_UninstallAssembly(cache, 0, winedll, ((void*)0), &disp);
     IAssemblyCache_Release(cache);
     return ret;
 }

@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_9__ ;
-typedef  struct TYPE_20__   TYPE_7__ ;
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int uint64_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_21__ TYPE_9__ ;
+typedef struct TYPE_20__ TYPE_7__ ;
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
 struct TYPE_16__ {TYPE_2__* item; } ;
-typedef  TYPE_3__ traverse_ptr ;
+typedef TYPE_3__ traverse_ptr ;
 struct TYPE_14__ {int incompat_flags; scalar_t__ node_size; } ;
-struct TYPE_17__ {int /*<<< orphan*/  extent_root; TYPE_1__ superblock; } ;
-typedef  TYPE_4__ device_extension ;
-typedef  int ULONG ;
+struct TYPE_17__ {int extent_root; TYPE_1__ superblock; } ;
+typedef TYPE_4__ device_extension ;
+typedef int ULONG ;
 struct TYPE_21__ {scalar_t__ obj_id; scalar_t__ obj_type; scalar_t__ offset; } ;
 struct TYPE_20__ {int flags; int refcount; } ;
 struct TYPE_19__ {int obj_id; scalar_t__ obj_type; int offset; } ;
 struct TYPE_18__ {int offset; } ;
 struct TYPE_15__ {int size; TYPE_9__ key; scalar_t__ data; } ;
-typedef  TYPE_5__ SHARED_BLOCK_REF ;
-typedef  int /*<<< orphan*/  PIRP ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  TYPE_6__ KEY ;
-typedef  int /*<<< orphan*/  EXTENT_ITEM2 ;
-typedef  TYPE_7__ EXTENT_ITEM ;
+typedef TYPE_5__ SHARED_BLOCK_REF ;
+typedef int PIRP ;
+typedef int NTSTATUS ;
+typedef TYPE_6__ KEY ;
+typedef int EXTENT_ITEM2 ;
+typedef TYPE_7__ EXTENT_ITEM ;
 
-/* Variables and functions */
- int BTRFS_INCOMPAT_FLAGS_SKINNY_METADATA ; 
- int /*<<< orphan*/  ERR (char*,int,...) ; 
- int EXTENT_ITEM_TREE_BLOCK ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int) ; 
- scalar_t__ TYPE_EXTENT_ITEM ; 
- scalar_t__ TYPE_METADATA_ITEM ; 
- scalar_t__ TYPE_SHARED_BLOCK_REF ; 
- int /*<<< orphan*/  find_item (TYPE_4__*,int /*<<< orphan*/ ,TYPE_3__*,TYPE_6__*,int,int /*<<< orphan*/ ) ; 
- int get_extent_data_len (scalar_t__) ; 
- int get_extent_data_refcount (scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  keycmp (TYPE_6__,TYPE_9__) ; 
+
+ int BTRFS_INCOMPAT_FLAGS_SKINNY_METADATA ;
+ int ERR (char*,int,...) ;
+ int EXTENT_ITEM_TREE_BLOCK ;
+ int NT_SUCCESS (int ) ;
+ int TRACE (char*,int) ;
+ scalar_t__ TYPE_EXTENT_ITEM ;
+ scalar_t__ TYPE_METADATA_ITEM ;
+ scalar_t__ TYPE_SHARED_BLOCK_REF ;
+ int find_item (TYPE_4__*,int ,TYPE_3__*,TYPE_6__*,int,int ) ;
+ int get_extent_data_len (scalar_t__) ;
+ int get_extent_data_refcount (scalar_t__,scalar_t__*) ;
+ int keycmp (TYPE_6__,TYPE_9__) ;
 
 uint64_t find_extent_shared_tree_refcount(device_extension* Vcb, uint64_t address, uint64_t parent, PIRP Irp) {
     NTSTATUS Status;
@@ -66,7 +66,7 @@ uint64_t find_extent_shared_tree_refcount(device_extension* Vcb, uint64_t addres
     searchkey.obj_type = Vcb->superblock.incompat_flags & BTRFS_INCOMPAT_FLAGS_SKINNY_METADATA ? TYPE_METADATA_ITEM : TYPE_EXTENT_ITEM;
     searchkey.offset = 0xffffffffffffffff;
 
-    Status = find_item(Vcb, Vcb->extent_root, &tp, &searchkey, false, Irp);
+    Status = find_item(Vcb, Vcb->extent_root, &tp, &searchkey, 0, Irp);
     if (!NT_SUCCESS(Status)) {
         ERR("error - find_item returned %08x\n", Status);
         return 0;
@@ -133,7 +133,7 @@ uint64_t find_extent_shared_tree_refcount(device_extension* Vcb, uint64_t addres
         inline_rc += sectcount;
     }
 
-    // FIXME - what if old?
+
 
     if (inline_rc == ei->refcount)
         return 0;
@@ -142,7 +142,7 @@ uint64_t find_extent_shared_tree_refcount(device_extension* Vcb, uint64_t addres
     searchkey.obj_type = TYPE_SHARED_BLOCK_REF;
     searchkey.offset = parent;
 
-    Status = find_item(Vcb, Vcb->extent_root, &tp, &searchkey, false, Irp);
+    Status = find_item(Vcb, Vcb->extent_root, &tp, &searchkey, 0, Irp);
     if (!NT_SUCCESS(Status)) {
         ERR("error - find_item returned %08x\n", Status);
         return 0;

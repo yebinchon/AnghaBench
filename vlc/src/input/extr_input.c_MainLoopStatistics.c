@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  double vlc_tick_t ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef double vlc_tick_t ;
 struct input_stats_t {int dummy; } ;
-typedef  int /*<<< orphan*/  input_thread_t ;
-struct TYPE_7__ {double normal_time; TYPE_2__* p_item; int /*<<< orphan*/ * stats; int /*<<< orphan*/  p_es_out; TYPE_1__* master; } ;
-typedef  TYPE_3__ input_thread_private_t ;
-struct TYPE_6__ {int /*<<< orphan*/  lock; struct input_stats_t* p_stats; } ;
-struct TYPE_5__ {int /*<<< orphan*/  p_demux; } ;
+typedef int input_thread_t ;
+struct TYPE_7__ {double normal_time; TYPE_2__* p_item; int * stats; int p_es_out; TYPE_1__* master; } ;
+typedef TYPE_3__ input_thread_private_t ;
+struct TYPE_6__ {int lock; struct input_stats_t* p_stats; } ;
+struct TYPE_5__ {int p_demux; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEMUX_GET_LENGTH ; 
- int /*<<< orphan*/  DEMUX_GET_NORMAL_TIME ; 
- int /*<<< orphan*/  DEMUX_GET_POSITION ; 
- int /*<<< orphan*/  DEMUX_GET_TIME ; 
- double VLC_TICK_INVALID ; 
- scalar_t__ demux_Control (int /*<<< orphan*/ ,int /*<<< orphan*/ ,double*) ; 
- int /*<<< orphan*/  es_out_SetTimes (int /*<<< orphan*/ ,double,double,double,double) ; 
- int /*<<< orphan*/  input_SendEventStatistics (int /*<<< orphan*/ *,struct input_stats_t*) ; 
- TYPE_3__* input_priv (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  input_stats_Compute (int /*<<< orphan*/ *,struct input_stats_t*) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int DEMUX_GET_LENGTH ;
+ int DEMUX_GET_NORMAL_TIME ;
+ int DEMUX_GET_POSITION ;
+ int DEMUX_GET_TIME ;
+ double VLC_TICK_INVALID ;
+ scalar_t__ demux_Control (int ,int ,double*) ;
+ int es_out_SetTimes (int ,double,double,double,double) ;
+ int input_SendEventStatistics (int *,struct input_stats_t*) ;
+ TYPE_3__* input_priv (int *) ;
+ int input_stats_Compute (int *,struct input_stats_t*) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 __attribute__((used)) static void MainLoopStatistics( input_thread_t *p_input )
 {
@@ -42,7 +42,7 @@ __attribute__((used)) static void MainLoopStatistics( input_thread_t *p_input )
     vlc_tick_t i_time;
     vlc_tick_t i_length;
 
-    /* update input status variables */
+
     if( demux_Control( priv->master->p_demux,
                        DEMUX_GET_POSITION, &f_position ) )
         f_position = 0.0;
@@ -53,19 +53,19 @@ __attribute__((used)) static void MainLoopStatistics( input_thread_t *p_input )
     if( demux_Control( priv->master->p_demux, DEMUX_GET_LENGTH, &i_length ) )
         i_length = VLC_TICK_INVALID;
 
-    /* In case of failure (not implemented or in case of seek), use the last
-     * normal_time value (that is VLC_TICK_0 by default). */
+
+
     demux_Control( priv->master->p_demux, DEMUX_GET_NORMAL_TIME, &priv->normal_time );
 
     es_out_SetTimes( priv->p_es_out, f_position, i_time, priv->normal_time,
                      i_length );
 
     struct input_stats_t new_stats;
-    if( priv->stats != NULL )
+    if( priv->stats != ((void*)0) )
         input_stats_Compute( priv->stats, &new_stats );
 
     vlc_mutex_lock( &priv->p_item->lock );
-    if( priv->stats != NULL )
+    if( priv->stats != ((void*)0) )
         *priv->p_item->p_stats = new_stats;
     vlc_mutex_unlock( &priv->p_item->lock );
 

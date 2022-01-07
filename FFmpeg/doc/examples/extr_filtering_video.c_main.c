@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
 struct TYPE_19__ {TYPE_1__** inputs; } ;
-struct TYPE_18__ {int /*<<< orphan*/  best_effort_timestamp; int /*<<< orphan*/  pts; } ;
+struct TYPE_18__ {int best_effort_timestamp; int pts; } ;
 struct TYPE_17__ {scalar_t__ stream_index; } ;
-struct TYPE_16__ {int /*<<< orphan*/  time_base; } ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFrame ;
+struct TYPE_16__ {int time_base; } ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFrame ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int /*<<< orphan*/  AV_BUFFERSRC_FLAG_KEEP_REF ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EAGAIN ; 
- int av_buffersink_get_frame (TYPE_5__*,TYPE_3__*) ; 
- scalar_t__ av_buffersrc_add_frame_flags (int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ) ; 
- char* av_err2str (int) ; 
- TYPE_3__* av_frame_alloc () ; 
- int /*<<< orphan*/  av_frame_free (TYPE_3__**) ; 
- int /*<<< orphan*/  av_frame_unref (TYPE_3__*) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_2__*) ; 
- int av_read_frame (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  avcodec_free_context (int /*<<< orphan*/ *) ; 
- int avcodec_receive_frame (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int avcodec_send_packet (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  avfilter_graph_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avformat_close_input (int /*<<< orphan*/ *) ; 
- TYPE_5__* buffersink_ctx ; 
- int /*<<< orphan*/  buffersrc_ctx ; 
- int /*<<< orphan*/  dec_ctx ; 
- int /*<<< orphan*/  display_frame (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  filter_descr ; 
- int /*<<< orphan*/  filter_graph ; 
- int /*<<< orphan*/  fmt_ctx ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int init_filters (int /*<<< orphan*/ ) ; 
- int open_input_file (char*) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ video_stream_index ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AV_BUFFERSRC_FLAG_KEEP_REF ;
+ int AV_LOG_ERROR ;
+ int EAGAIN ;
+ int av_buffersink_get_frame (TYPE_5__*,TYPE_3__*) ;
+ scalar_t__ av_buffersrc_add_frame_flags (int ,TYPE_3__*,int ) ;
+ char* av_err2str (int) ;
+ TYPE_3__* av_frame_alloc () ;
+ int av_frame_free (TYPE_3__**) ;
+ int av_frame_unref (TYPE_3__*) ;
+ int av_log (int *,int ,char*) ;
+ int av_packet_unref (TYPE_2__*) ;
+ int av_read_frame (int ,TYPE_2__*) ;
+ int avcodec_free_context (int *) ;
+ int avcodec_receive_frame (int ,TYPE_3__*) ;
+ int avcodec_send_packet (int ,TYPE_2__*) ;
+ int avfilter_graph_free (int *) ;
+ int avformat_close_input (int *) ;
+ TYPE_5__* buffersink_ctx ;
+ int buffersrc_ctx ;
+ int dec_ctx ;
+ int display_frame (TYPE_3__*,int ) ;
+ int exit (int) ;
+ int filter_descr ;
+ int filter_graph ;
+ int fmt_ctx ;
+ int fprintf (int ,char*,char*) ;
+ int init_filters (int ) ;
+ int open_input_file (char*) ;
+ int perror (char*) ;
+ int stderr ;
+ scalar_t__ video_stream_index ;
 
 int main(int argc, char **argv)
 {
@@ -80,7 +80,7 @@ int main(int argc, char **argv)
     if ((ret = init_filters(filter_descr)) < 0)
         goto end;
 
-    /* read all packets */
+
     while (1) {
         if ((ret = av_read_frame(fmt_ctx, &packet)) < 0)
             break;
@@ -88,7 +88,7 @@ int main(int argc, char **argv)
         if (packet.stream_index == video_stream_index) {
             ret = avcodec_send_packet(dec_ctx, &packet);
             if (ret < 0) {
-                av_log(NULL, AV_LOG_ERROR, "Error while sending a packet to the decoder\n");
+                av_log(((void*)0), AV_LOG_ERROR, "Error while sending a packet to the decoder\n");
                 break;
             }
 
@@ -97,19 +97,19 @@ int main(int argc, char **argv)
                 if (ret == AVERROR(EAGAIN) || ret == AVERROR_EOF) {
                     break;
                 } else if (ret < 0) {
-                    av_log(NULL, AV_LOG_ERROR, "Error while receiving a frame from the decoder\n");
+                    av_log(((void*)0), AV_LOG_ERROR, "Error while receiving a frame from the decoder\n");
                     goto end;
                 }
 
                 frame->pts = frame->best_effort_timestamp;
 
-                /* push the decoded frame into the filtergraph */
+
                 if (av_buffersrc_add_frame_flags(buffersrc_ctx, frame, AV_BUFFERSRC_FLAG_KEEP_REF) < 0) {
-                    av_log(NULL, AV_LOG_ERROR, "Error while feeding the filtergraph\n");
+                    av_log(((void*)0), AV_LOG_ERROR, "Error while feeding the filtergraph\n");
                     break;
                 }
 
-                /* pull filtered frames from the filtergraph */
+
                 while (1) {
                     ret = av_buffersink_get_frame(buffersink_ctx, filt_frame);
                     if (ret == AVERROR(EAGAIN) || ret == AVERROR_EOF)

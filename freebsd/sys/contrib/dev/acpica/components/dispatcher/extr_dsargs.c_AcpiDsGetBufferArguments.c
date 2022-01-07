@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  AmlStart; int /*<<< orphan*/  AmlLength; int /*<<< orphan*/ * Node; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int AmlStart; int AmlLength; int * Node; } ;
 struct TYPE_6__ {int Flags; } ;
 struct TYPE_8__ {TYPE_2__ Buffer; TYPE_1__ Common; } ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  TYPE_3__ ACPI_OPERAND_OBJECT ;
-typedef  int /*<<< orphan*/  ACPI_NAMESPACE_NODE ;
+typedef int ACPI_STATUS ;
+typedef TYPE_3__ ACPI_OPERAND_OBJECT ;
+typedef int ACPI_NAMESPACE_NODE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_DB_EXEC ; 
- int /*<<< orphan*/  ACPI_DEBUG_PRINT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_FUNCTION_TRACE_PTR (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  AE_AML_INTERNAL ; 
- int /*<<< orphan*/  AE_INFO ; 
- int /*<<< orphan*/  AE_OK ; 
- int AOPOBJ_DATA_VALID ; 
- int /*<<< orphan*/  AcpiDsExecuteArguments (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DsGetBufferArguments ; 
- int /*<<< orphan*/  return_ACPI_STATUS (int /*<<< orphan*/ ) ; 
+
+ int ACPI_DB_EXEC ;
+ int ACPI_DEBUG_PRINT (int ) ;
+ int ACPI_ERROR (int ) ;
+ int ACPI_FUNCTION_TRACE_PTR (int ,TYPE_3__*) ;
+ int AE_AML_INTERNAL ;
+ int AE_INFO ;
+ int AE_OK ;
+ int AOPOBJ_DATA_VALID ;
+ int AcpiDsExecuteArguments (int *,int *,int ,int ) ;
+ int DsGetBufferArguments ;
+ int return_ACPI_STATUS (int ) ;
 
 ACPI_STATUS
 AcpiDsGetBufferArguments (
-    ACPI_OPERAND_OBJECT     *ObjDesc)
+    ACPI_OPERAND_OBJECT *ObjDesc)
 {
-    ACPI_NAMESPACE_NODE     *Node;
-    ACPI_STATUS             Status;
+    ACPI_NAMESPACE_NODE *Node;
+    ACPI_STATUS Status;
 
 
     ACPI_FUNCTION_TRACE_PTR (DsGetBufferArguments, ObjDesc);
@@ -49,7 +49,7 @@ AcpiDsGetBufferArguments (
         return_ACPI_STATUS (AE_OK);
     }
 
-    /* Get the Buffer node */
+
 
     Node = ObjDesc->Buffer.Node;
     if (!Node)
@@ -62,7 +62,7 @@ AcpiDsGetBufferArguments (
 
     ACPI_DEBUG_PRINT ((ACPI_DB_EXEC, "Buffer Arg Init\n"));
 
-    /* Execute the AML code for the TermArg arguments */
+
 
     Status = AcpiDsExecuteArguments (Node, Node,
         ObjDesc->Buffer.AmlLength, ObjDesc->Buffer.AmlStart);

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ usec_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ usec_t ;
 struct timeval {int dummy; } ;
 struct TYPE_2__ {scalar_t__ rrd_update_every; } ;
-typedef  int /*<<< orphan*/  RRDSET ;
-typedef  int /*<<< orphan*/  RRDDIM ;
+typedef int RRDSET ;
+typedef int RRDDIM ;
 
-/* Variables and functions */
- scalar_t__ CPU_IDLEJITTER_SLEEP_TIME_MS ; 
- int /*<<< orphan*/  NETDATA_CHART_PRIO_SYSTEM_IDLEJITTER ; 
- int /*<<< orphan*/  RRDSET_TYPE_AREA ; 
- int /*<<< orphan*/  RRD_ALGORITHM_ABSOLUTE ; 
- scalar_t__ USEC_PER_MS ; 
- scalar_t__ USEC_PER_SEC ; 
- scalar_t__ config_get_number (char*,char*,scalar_t__) ; 
- int /*<<< orphan*/  config_set_number (char*,char*,scalar_t__) ; 
- int /*<<< orphan*/  cpuidlejitter_main_cleanup ; 
- scalar_t__ dt_usec (struct timeval*,struct timeval*) ; 
- scalar_t__ likely (unsigned long long) ; 
- TYPE_1__* localhost ; 
- scalar_t__ netdata_exit ; 
- int /*<<< orphan*/  netdata_thread_cleanup_pop (int) ; 
- int /*<<< orphan*/  netdata_thread_cleanup_push (int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  now_monotonic_timeval (struct timeval*) ; 
- int /*<<< orphan*/ * rrddim_add (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrddim_set_by_pointer (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/ * rrdset_create_localhost (char*,char*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,char*,char*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrdset_done (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rrdset_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sleep_usec (scalar_t__) ; 
- scalar_t__ unlikely (int) ; 
+
+ scalar_t__ CPU_IDLEJITTER_SLEEP_TIME_MS ;
+ int NETDATA_CHART_PRIO_SYSTEM_IDLEJITTER ;
+ int RRDSET_TYPE_AREA ;
+ int RRD_ALGORITHM_ABSOLUTE ;
+ scalar_t__ USEC_PER_MS ;
+ scalar_t__ USEC_PER_SEC ;
+ scalar_t__ config_get_number (char*,char*,scalar_t__) ;
+ int config_set_number (char*,char*,scalar_t__) ;
+ int cpuidlejitter_main_cleanup ;
+ scalar_t__ dt_usec (struct timeval*,struct timeval*) ;
+ scalar_t__ likely (unsigned long long) ;
+ TYPE_1__* localhost ;
+ scalar_t__ netdata_exit ;
+ int netdata_thread_cleanup_pop (int) ;
+ int netdata_thread_cleanup_push (int ,void*) ;
+ int now_monotonic_timeval (struct timeval*) ;
+ int * rrddim_add (int *,char*,int *,int,int,int ) ;
+ int rrddim_set_by_pointer (int *,int *,scalar_t__) ;
+ int * rrdset_create_localhost (char*,char*,int *,char*,int *,char*,char*,char*,int *,int ,scalar_t__,int ) ;
+ int rrdset_done (int *) ;
+ int rrdset_next (int *) ;
+ int sleep_usec (scalar_t__) ;
+ scalar_t__ unlikely (int) ;
 
 void *cpuidlejitter_main(void *ptr) {
     netdata_thread_cleanup_push(cpuidlejitter_main_cleanup, ptr);
@@ -54,20 +54,20 @@ void *cpuidlejitter_main(void *ptr) {
     RRDSET *st = rrdset_create_localhost(
             "system"
             , "idlejitter"
-            , NULL
+            , ((void*)0)
             , "idlejitter"
-            , NULL
+            , ((void*)0)
             , "CPU Idle Jitter"
             , "microseconds lost/s"
             , "idlejitter.plugin"
-            , NULL
+            , ((void*)0)
             , NETDATA_CHART_PRIO_SYSTEM_IDLEJITTER
             , localhost->rrd_update_every
             , RRDSET_TYPE_AREA
     );
-    RRDDIM *rd_min = rrddim_add(st, "min", NULL, 1, 1, RRD_ALGORITHM_ABSOLUTE);
-    RRDDIM *rd_max = rrddim_add(st, "max", NULL, 1, 1, RRD_ALGORITHM_ABSOLUTE);
-    RRDDIM *rd_avg = rrddim_add(st, "average", NULL, 1, 1, RRD_ALGORITHM_ABSOLUTE);
+    RRDDIM *rd_min = rrddim_add(st, "min", ((void*)0), 1, 1, RRD_ALGORITHM_ABSOLUTE);
+    RRDDIM *rd_max = rrddim_add(st, "max", ((void*)0), 1, 1, RRD_ALGORITHM_ABSOLUTE);
+    RRDDIM *rd_avg = rrddim_add(st, "average", ((void*)0), 1, 1, RRD_ALGORITHM_ABSOLUTE);
 
     usec_t update_every_ut = localhost->rrd_update_every * USEC_PER_SEC;
     struct timeval before, after;
@@ -116,5 +116,5 @@ void *cpuidlejitter_main(void *ptr) {
     }
 
     netdata_thread_cleanup_pop(1);
-    return NULL;
+    return ((void*)0);
 }

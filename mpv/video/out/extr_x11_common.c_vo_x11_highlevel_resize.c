@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mp_rect {scalar_t__ y0; scalar_t__ y1; scalar_t__ x0; scalar_t__ x1; } ;
 struct vo_x11_state {int size_changed_during_fs; int pos_changed_during_fs; struct mp_rect nofsrc; } ;
 struct vo {struct vo_x11_state* x11; struct mp_vo_opts* opts; } ;
 struct mp_vo_opts {int force_window_position; scalar_t__ fullscreen; } ;
 
-/* Variables and functions */
- scalar_t__ RC_H (struct mp_rect) ; 
- scalar_t__ RC_W (struct mp_rect) ; 
- int /*<<< orphan*/  vo_x11_move_resize (struct vo*,int,int,struct mp_rect) ; 
- int /*<<< orphan*/  vo_x11_sizehint (struct vo*,struct mp_rect,int) ; 
+
+ scalar_t__ RC_H (struct mp_rect) ;
+ scalar_t__ RC_W (struct mp_rect) ;
+ int vo_x11_move_resize (struct vo*,int,int,struct mp_rect) ;
+ int vo_x11_sizehint (struct vo*,struct mp_rect,int) ;
 
 __attribute__((used)) static void vo_x11_highlevel_resize(struct vo *vo, struct mp_rect rc)
 {
@@ -35,10 +35,10 @@ __attribute__((used)) static void vo_x11_highlevel_resize(struct vo *vo, struct 
     }
 
     if (opts->fullscreen) {
-        x11->size_changed_during_fs = true;
+        x11->size_changed_during_fs = 1;
         x11->pos_changed_during_fs = reset_pos;
-        vo_x11_sizehint(vo, rc, false);
+        vo_x11_sizehint(vo, rc, 0);
     } else {
-        vo_x11_move_resize(vo, reset_pos, true, rc);
+        vo_x11_move_resize(vo, reset_pos, 1, rc);
     }
 }

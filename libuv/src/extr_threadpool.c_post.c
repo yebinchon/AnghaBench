@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum uv__work_kind { ____Placeholder_uv__work_kind } uv__work_kind ;
-typedef  int /*<<< orphan*/  QUEUE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  QUEUE_EMPTY (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  QUEUE_INSERT_TAIL (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int UV__WORK_SLOW_IO ; 
- int /*<<< orphan*/  cond ; 
- scalar_t__ idle_threads ; 
- int /*<<< orphan*/  mutex ; 
- int /*<<< orphan*/  run_slow_work_message ; 
- int /*<<< orphan*/  slow_io_pending_wq ; 
- int /*<<< orphan*/  uv_cond_signal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wq ; 
+
+
+
+typedef enum uv__work_kind { ____Placeholder_uv__work_kind } uv__work_kind ;
+typedef int QUEUE ;
+
+
+ int QUEUE_EMPTY (int *) ;
+ int QUEUE_INSERT_TAIL (int *,int *) ;
+ int UV__WORK_SLOW_IO ;
+ int cond ;
+ scalar_t__ idle_threads ;
+ int mutex ;
+ int run_slow_work_message ;
+ int slow_io_pending_wq ;
+ int uv_cond_signal (int *) ;
+ int uv_mutex_lock (int *) ;
+ int uv_mutex_unlock (int *) ;
+ int wq ;
 
 __attribute__((used)) static void post(QUEUE* q, enum uv__work_kind kind) {
   uv_mutex_lock(&mutex);
   if (kind == UV__WORK_SLOW_IO) {
-    /* Insert into a separate queue. */
+
     QUEUE_INSERT_TAIL(&slow_io_pending_wq, q);
     if (!QUEUE_EMPTY(&run_slow_work_message)) {
-      /* Running slow I/O tasks is already scheduled => Nothing to do here.
-         The worker that runs said other task will schedule this one as well. */
+
+
       uv_mutex_unlock(&mutex);
       return;
     }

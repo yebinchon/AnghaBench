@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ top_item; scalar_t__ page_size; scalar_t__ focus_item; scalar_t__ nb_items; } ;
-typedef  int TIMER_DIRECTION ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  TYPE_1__ LB_DESCR ;
-typedef  scalar_t__ INT ;
+typedef int TIMER_DIRECTION ;
+typedef int LRESULT ;
+typedef TYPE_1__ LB_DESCR ;
+typedef scalar_t__ INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
-#define  LB_TIMER_DOWN 132 
-#define  LB_TIMER_LEFT 131 
-#define  LB_TIMER_NONE 130 
-#define  LB_TIMER_RIGHT 129 
-#define  LB_TIMER_UP 128 
- scalar_t__ LISTBOX_GetCurrentPageSize (TYPE_1__*) ; 
- int /*<<< orphan*/  LISTBOX_MoveCaret (TYPE_1__*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int FALSE ;
+
+
+
+
+
+ scalar_t__ LISTBOX_GetCurrentPageSize (TYPE_1__*) ;
+ int LISTBOX_MoveCaret (TYPE_1__*,scalar_t__,int ) ;
+ int TRUE ;
 
 __attribute__((used)) static LRESULT LISTBOX_HandleTimer( LB_DESCR *descr, INT index, TIMER_DIRECTION dir )
 {
     switch(dir)
     {
-    case LB_TIMER_UP:
+    case 128:
         if (descr->top_item) index = descr->top_item - 1;
         else index = 0;
         break;
-    case LB_TIMER_LEFT:
+    case 131:
         if (descr->top_item) index -= descr->page_size;
         break;
-    case LB_TIMER_DOWN:
+    case 132:
         index = descr->top_item + LISTBOX_GetCurrentPageSize( descr );
         if (index == descr->focus_item) index++;
         if (index >= descr->nb_items) index = descr->nb_items - 1;
         break;
-    case LB_TIMER_RIGHT:
+    case 129:
         if (index + descr->page_size < descr->nb_items)
             index += descr->page_size;
         break;
-    case LB_TIMER_NONE:
+    case 130:
         break;
     }
     if (index == descr->focus_item) return FALSE;

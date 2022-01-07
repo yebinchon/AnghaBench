@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gint64 ;
-typedef  int /*<<< orphan*/  gchar ;
-typedef  int /*<<< orphan*/  GhbValue ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ghb_dict_get_value (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ghb_value_get_int (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int gint64 ;
+typedef int gchar ;
+typedef int GhbValue ;
+
+
+ int * ghb_dict_get_value (int const*,int const*) ;
+ int ghb_value_get_int (int const*) ;
 
 gint64
 ghb_dict_get_int(const GhbValue *dict, const gchar *key)
 {
     const GhbValue* value;
     value = ghb_dict_get_value(dict, key);
-    if (value == NULL) return 0;
+    if (value == ((void*)0)) return 0;
     return ghb_value_get_int(value);
 }

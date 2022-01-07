@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  strm_value ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int strm_value ;
 struct TYPE_4__ {scalar_t__ mode; int rsize; struct TYPE_4__** rest; struct TYPE_4__* dst; scalar_t__ start_func; } ;
-typedef  TYPE_1__ strm_stream ;
-typedef  scalar_t__ strm_callback ;
+typedef TYPE_1__ strm_stream ;
+typedef scalar_t__ strm_callback ;
 
-/* Variables and functions */
- int FALSE ; 
- int TRUE ; 
- int /*<<< orphan*/  sched_yield () ; 
- scalar_t__ strm_dying ; 
- scalar_t__ strm_killed ; 
- int /*<<< orphan*/  strm_nil_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_nil_value () ; 
- int /*<<< orphan*/  strm_task_push (TYPE_1__*,scalar_t__,int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ int TRUE ;
+ int sched_yield () ;
+ scalar_t__ strm_dying ;
+ scalar_t__ strm_killed ;
+ int strm_nil_p (int ) ;
+ int strm_nil_value () ;
+ int strm_task_push (TYPE_1__*,scalar_t__,int ) ;
 
 void
 strm_emit(strm_stream* strm, strm_value data, strm_callback func)
@@ -34,7 +34,7 @@ strm_emit(strm_stream* strm, strm_value data, strm_callback func)
     if (strm->dst) {
       strm_task_push(strm->dst, strm->dst->start_func, data);
       if (strm->dst->mode == strm_killed) {
-        strm->dst = NULL;
+        strm->dst = ((void*)0);
       }
     }
     if (strm->rest) {
@@ -45,8 +45,8 @@ strm_emit(strm_stream* strm, strm_value data, strm_callback func)
       }
     }
 
-    /* termination check */
-    if (strm->dst == NULL) {
+
+    if (strm->dst == ((void*)0)) {
       int closed = TRUE;
       if (strm->rest) {
         int i;

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  lock; int /*<<< orphan*/  flags; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int lock; int flags; } ;
 struct wiimote_data {TYPE_1__ state; } ;
 struct input_dev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WIIPROTO_FLAG_EXT_USED ; 
- int /*<<< orphan*/  WIIPROTO_REQ_NULL ; 
- struct wiimote_data* input_get_drvdata (struct input_dev*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  wiiproto_req_drm (struct wiimote_data*,int /*<<< orphan*/ ) ; 
+
+ int WIIPROTO_FLAG_EXT_USED ;
+ int WIIPROTO_REQ_NULL ;
+ struct wiimote_data* input_get_drvdata (struct input_dev*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int wiiproto_req_drm (struct wiimote_data*,int ) ;
 
 __attribute__((used)) static void wiimod_pro_close(struct input_dev *dev)
 {
-	struct wiimote_data *wdata = input_get_drvdata(dev);
-	unsigned long flags;
+ struct wiimote_data *wdata = input_get_drvdata(dev);
+ unsigned long flags;
 
-	spin_lock_irqsave(&wdata->state.lock, flags);
-	wdata->state.flags &= ~WIIPROTO_FLAG_EXT_USED;
-	wiiproto_req_drm(wdata, WIIPROTO_REQ_NULL);
-	spin_unlock_irqrestore(&wdata->state.lock, flags);
+ spin_lock_irqsave(&wdata->state.lock, flags);
+ wdata->state.flags &= ~WIIPROTO_FLAG_EXT_USED;
+ wiiproto_req_drm(wdata, WIIPROTO_REQ_NULL);
+ spin_unlock_irqrestore(&wdata->state.lock, flags);
 }

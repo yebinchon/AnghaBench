@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GLFWwindow ;
 
-/* Variables and functions */
-#define  GLFW_KEY_DOWN 130 
-#define  GLFW_KEY_ESCAPE 129 
-#define  GLFW_KEY_UP 128 
- int GLFW_PRESS ; 
- int /*<<< orphan*/  glfwSetWindowShouldClose (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  set_swap_interval (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  swap_interval ; 
- int /*<<< orphan*/  swap_tear ; 
+
+
+
+typedef int GLFWwindow ;
+
+
+
+
+
+ int GLFW_PRESS ;
+ int glfwSetWindowShouldClose (int *,int) ;
+ int set_swap_interval (int *,int ) ;
+ int swap_interval ;
+ int swap_tear ;
 
 __attribute__((used)) static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
@@ -29,14 +29,14 @@ __attribute__((used)) static void key_callback(GLFWwindow* window, int key, int 
 
     switch (key)
     {
-        case GLFW_KEY_UP:
+        case 128:
         {
             if (swap_interval + 1 > swap_interval)
                 set_swap_interval(window, swap_interval + 1);
             break;
         }
 
-        case GLFW_KEY_DOWN:
+        case 130:
         {
             if (swap_tear)
             {
@@ -51,7 +51,7 @@ __attribute__((used)) static void key_callback(GLFWwindow* window, int key, int 
             break;
         }
 
-        case GLFW_KEY_ESCAPE:
+        case 129:
             glfwSetWindowShouldClose(window, 1);
             break;
     }

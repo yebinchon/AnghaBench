@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct net_buf_simple {int* data; int /*<<< orphan*/  len; } ;
-struct bt_mesh_msg_ctx {int /*<<< orphan*/  addr; int /*<<< orphan*/  app_idx; int /*<<< orphan*/  net_idx; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct net_buf_simple {int* data; int len; } ;
+struct bt_mesh_msg_ctx {int addr; int app_idx; int net_idx; } ;
 struct bt_mesh_model {struct bt_mesh_cfg_srv* user_data; } ;
 struct TYPE_2__ {int feat; } ;
 struct bt_mesh_cfg_srv {int frnd; TYPE_1__ hb_pub; } ;
 
-/* Variables and functions */
- int BLE_MESH_FEAT_FRIEND ; 
- int BLE_MESH_FRIEND_DISABLED ; 
- int /*<<< orphan*/  BLE_MESH_KEY_ANY ; 
- int /*<<< orphan*/  BT_DBG (char*,int,int,...) ; 
- int /*<<< orphan*/  BT_WARN (char*,...) ; 
- int /*<<< orphan*/  CONFIG_BLE_MESH_FRIEND ; 
- int /*<<< orphan*/  CONFIG_BLE_MESH_SETTINGS ; 
- scalar_t__ IS_ENABLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bt_hex (int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bt_mesh_friend_clear_net_idx (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bt_mesh_heartbeat_send () ; 
- int /*<<< orphan*/  bt_mesh_store_cfg () ; 
- int /*<<< orphan*/  send_friend_status (struct bt_mesh_model*,struct bt_mesh_msg_ctx*) ; 
+
+ int BLE_MESH_FEAT_FRIEND ;
+ int BLE_MESH_FRIEND_DISABLED ;
+ int BLE_MESH_KEY_ANY ;
+ int BT_DBG (char*,int,int,...) ;
+ int BT_WARN (char*,...) ;
+ int CONFIG_BLE_MESH_FRIEND ;
+ int CONFIG_BLE_MESH_SETTINGS ;
+ scalar_t__ IS_ENABLED (int ) ;
+ int bt_hex (int*,int ) ;
+ int bt_mesh_friend_clear_net_idx (int ) ;
+ int bt_mesh_heartbeat_send () ;
+ int bt_mesh_store_cfg () ;
+ int send_friend_status (struct bt_mesh_model*,struct bt_mesh_msg_ctx*) ;
 
 __attribute__((used)) static void friend_set(struct bt_mesh_model *model,
                        struct bt_mesh_msg_ctx *ctx,

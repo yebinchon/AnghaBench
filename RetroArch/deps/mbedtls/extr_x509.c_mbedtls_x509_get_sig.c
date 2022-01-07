@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int tag; size_t len; unsigned char* p; } ;
-typedef  TYPE_1__ mbedtls_x509_buf ;
+typedef TYPE_1__ mbedtls_x509_buf ;
 
-/* Variables and functions */
- int MBEDTLS_ERR_ASN1_OUT_OF_DATA ; 
- int MBEDTLS_ERR_X509_INVALID_SIGNATURE ; 
- int mbedtls_asn1_get_bitstring_null (unsigned char**,unsigned char const*,size_t*) ; 
+
+ int MBEDTLS_ERR_ASN1_OUT_OF_DATA ;
+ int MBEDTLS_ERR_X509_INVALID_SIGNATURE ;
+ int mbedtls_asn1_get_bitstring_null (unsigned char**,unsigned char const*,size_t*) ;
 
 int mbedtls_x509_get_sig( unsigned char **p, const unsigned char *end, mbedtls_x509_buf *sig )
 {

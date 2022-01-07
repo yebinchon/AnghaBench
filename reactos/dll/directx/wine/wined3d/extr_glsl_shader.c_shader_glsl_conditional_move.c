@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct wined3d_shader_instruction {int handler_idx; TYPE_2__* ctx; struct wined3d_shader_dst_param* dst; TYPE_4__* src; } ;
-struct TYPE_7__ {scalar_t__ type; int /*<<< orphan*/  data_type; TYPE_1__* idx; } ;
+struct TYPE_7__ {scalar_t__ type; int data_type; TYPE_1__* idx; } ;
 struct wined3d_shader_dst_param {unsigned int write_mask; TYPE_3__ reg; } ;
-struct glsl_src_param {int /*<<< orphan*/  param_str; } ;
-struct TYPE_8__ {int /*<<< orphan*/  swizzle; TYPE_3__ reg; } ;
-struct TYPE_6__ {int /*<<< orphan*/  buffer; } ;
+struct glsl_src_param {int param_str; } ;
+struct TYPE_8__ {int swizzle; TYPE_3__ reg; } ;
+struct TYPE_6__ {int buffer; } ;
 struct TYPE_5__ {scalar_t__ offset; } ;
-typedef  unsigned int DWORD ;
-typedef  scalar_t__ BOOL ;
+typedef unsigned int DWORD ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- scalar_t__ TRUE ; 
-#define  WINED3DSIH_CMP 130 
-#define  WINED3DSIH_CND 129 
-#define  WINED3DSIH_MOVC 128 
- unsigned int WINED3DSP_WRITEMASK_0 ; 
- int /*<<< orphan*/  shader_addline (int /*<<< orphan*/ ,char*,char const*,...) ; 
- int /*<<< orphan*/  shader_glsl_add_src_param (struct wined3d_shader_instruction const*,TYPE_4__*,unsigned int,struct glsl_src_param*) ; 
- unsigned int shader_glsl_append_dst (int /*<<< orphan*/ ,struct wined3d_shader_instruction const*) ; 
- unsigned int shader_glsl_append_dst_ext (int /*<<< orphan*/ ,struct wined3d_shader_instruction const*,struct wined3d_shader_dst_param*,int /*<<< orphan*/ ) ; 
- unsigned int shader_glsl_get_write_mask (struct wined3d_shader_dst_param*,char*) ; 
- unsigned int shader_glsl_swizzle_get_component (int /*<<< orphan*/ ,unsigned int) ; 
- scalar_t__ shader_is_scalar (TYPE_3__*) ; 
+
+ scalar_t__ FALSE ;
+ int FIXME (char*,int) ;
+ scalar_t__ TRUE ;
+
+
+
+ unsigned int WINED3DSP_WRITEMASK_0 ;
+ int shader_addline (int ,char*,char const*,...) ;
+ int shader_glsl_add_src_param (struct wined3d_shader_instruction const*,TYPE_4__*,unsigned int,struct glsl_src_param*) ;
+ unsigned int shader_glsl_append_dst (int ,struct wined3d_shader_instruction const*) ;
+ unsigned int shader_glsl_append_dst_ext (int ,struct wined3d_shader_instruction const*,struct wined3d_shader_dst_param*,int ) ;
+ unsigned int shader_glsl_get_write_mask (struct wined3d_shader_dst_param*,char*) ;
+ unsigned int shader_glsl_swizzle_get_component (int ,unsigned int) ;
+ scalar_t__ shader_is_scalar (TYPE_3__*) ;
 
 __attribute__((used)) static void shader_glsl_conditional_move(const struct wined3d_shader_instruction *ins)
 {
@@ -55,17 +55,17 @@ __attribute__((used)) static void shader_glsl_conditional_move(const struct wine
 
     switch (ins->handler_idx)
     {
-        case WINED3DSIH_CMP:
+        case 130:
             condition_prefix = "";
             condition_suffix = " >= 0.0";
             break;
 
-        case WINED3DSIH_CND:
+        case 129:
             condition_prefix = "";
             condition_suffix = " > 0.5";
             break;
 
-        case WINED3DSIH_MOVC:
+        case 128:
             condition_prefix = "bool(";
             condition_suffix = ")";
             break;
@@ -92,9 +92,9 @@ __attribute__((used)) static void shader_glsl_conditional_move(const struct wine
 
     dst = ins->dst[0];
 
-    /* Splitting the instruction up in multiple lines imposes a problem:
-     * The first lines may overwrite source parameters of the following lines.
-     * Deal with that by using a temporary destination register if needed. */
+
+
+
     if ((ins->src[0].reg.idx[0].offset == dst.reg.idx[0].offset
                 && ins->src[0].reg.type == dst.reg.type)
             || (ins->src[1].reg.idx[0].offset == dst.reg.idx[0].offset
@@ -103,11 +103,11 @@ __attribute__((used)) static void shader_glsl_conditional_move(const struct wine
                 && ins->src[2].reg.type == dst.reg.type))
         temp_destination = TRUE;
 
-    /* Cycle through all source0 channels. */
+
     for (i = 0; i < 4; ++i)
     {
         write_mask = 0;
-        /* Find the destination channels which use the current source0 channel. */
+
         for (j = 0; j < 4; ++j)
         {
             if (shader_glsl_swizzle_get_component(ins->src[0].swizzle, j) == i)

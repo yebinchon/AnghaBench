@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {struct shared_secret_cache_key* data; struct shared_secret_cache_key* key; int /*<<< orphan*/  hash; int /*<<< orphan*/  lock; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {struct shared_secret_cache_key* data; struct shared_secret_cache_key* key; int hash; int lock; } ;
 struct shared_secret_cache_key {TYPE_1__ entry; struct shared_secret_cache_key* key; } ;
-typedef  struct shared_secret_cache_key uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
+typedef struct shared_secret_cache_key uint8_t ;
+typedef int uint32_t ;
 struct slabhash {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DNSCRYPT_SHARED_SECRET_KEY_LENGTH ; 
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  crypto_box_BEFORENMBYTES ; 
- int /*<<< orphan*/  free (struct shared_secret_cache_key*) ; 
- int /*<<< orphan*/  lock_rw_init (int /*<<< orphan*/ *) ; 
- struct shared_secret_cache_key* malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (struct shared_secret_cache_key*,struct shared_secret_cache_key*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slabhash_insert (struct slabhash*,int /*<<< orphan*/ ,TYPE_1__*,struct shared_secret_cache_key*,int /*<<< orphan*/ *) ; 
+
+ int DNSCRYPT_SHARED_SECRET_KEY_LENGTH ;
+ scalar_t__ calloc (int,int) ;
+ int crypto_box_BEFORENMBYTES ;
+ int free (struct shared_secret_cache_key*) ;
+ int lock_rw_init (int *) ;
+ struct shared_secret_cache_key* malloc (int ) ;
+ int memcpy (struct shared_secret_cache_key*,struct shared_secret_cache_key*,int ) ;
+ int slabhash_insert (struct slabhash*,int ,TYPE_1__*,struct shared_secret_cache_key*,int *) ;
 
 __attribute__((used)) static void
 dnsc_shared_secret_cache_insert(struct slabhash *cache,
@@ -50,5 +50,5 @@ dnsc_shared_secret_cache_insert(struct slabhash *cache,
     slabhash_insert(cache,
                     hash, &k->entry,
                     d,
-                    NULL);
+                    ((void*)0));
 }

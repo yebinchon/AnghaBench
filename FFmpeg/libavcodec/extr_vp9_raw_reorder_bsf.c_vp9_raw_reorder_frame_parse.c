@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {unsigned int profile; int show_existing_frame; int refresh_frame_flags; void* show_frame; void* frame_type; void* frame_to_show; TYPE_1__* packet; } ;
-typedef  TYPE_2__ VP9RawReorderFrame ;
-struct TYPE_4__ {int size; int /*<<< orphan*/  data; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  int /*<<< orphan*/  AVBSFContext ;
+typedef TYPE_2__ VP9RawReorderFrame ;
+struct TYPE_4__ {int size; int data; } ;
+typedef int GetBitContext ;
+typedef int AVBSFContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,...) ; 
- void* get_bits (int /*<<< orphan*/ *,int) ; 
- void* get_bits1 (int /*<<< orphan*/ *) ; 
- int init_get_bits (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  skip_bits (int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int av_log (int *,int ,char*,...) ;
+ void* get_bits (int *,int) ;
+ void* get_bits1 (int *) ;
+ int init_get_bits (int *,int ,int) ;
+ int skip_bits (int *,int) ;
 
 __attribute__((used)) static int vp9_raw_reorder_frame_parse(AVBSFContext *bsf, VP9RawReorderFrame *frame)
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static int vp9_raw_reorder_frame_parse(AVBSFContext *bsf, 
         return AVERROR_INVALIDDATA;
     }
 
-    profile_low_bit  = get_bits1(&bc);
+    profile_low_bit = get_bits1(&bc);
     profile_high_bit = get_bits1(&bc);
     frame->profile = (profile_high_bit << 1) | profile_low_bit;
     if (frame->profile == 3) {
@@ -86,7 +86,7 @@ __attribute__((used)) static int vp9_raw_reorder_frame_parse(AVBSFContext *bsf, 
         else
             intra_only = 0;
         if (error_resilient_mode == 0) {
-            // reset_frame_context
+
             skip_bits(&bc, 2);
         }
         if (intra_only) {
@@ -99,15 +99,15 @@ __attribute__((used)) static int vp9_raw_reorder_frame_parse(AVBSFContext *bsf, 
             if (frame->profile > 0) {
                 unsigned int color_space;
                 if (frame->profile >= 2) {
-                    // ten_or_twelve_bit
+
                     skip_bits(&bc, 1);
                 }
                 color_space = get_bits(&bc, 3);
-                if (color_space != 7 /* CS_RGB */) {
-                    // color_range
+                if (color_space != 7 ) {
+
                     skip_bits(&bc, 1);
                     if (frame->profile == 1 || frame->profile == 3) {
-                        // subsampling
+
                         skip_bits(&bc, 3);
                     }
                 } else {

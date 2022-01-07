@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GLfloat ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- int /*<<< orphan*/  GLFW_SAMPLES ; 
- int /*<<< orphan*/  GLFW_VISIBLE ; 
- int /*<<< orphan*/  GL_COLOR_BUFFER_BIT ; 
- int GL_FALSE ; 
- int /*<<< orphan*/  GL_MODELVIEW ; 
- int /*<<< orphan*/  GL_MULTISAMPLE_ARB ; 
- int /*<<< orphan*/  GL_PROJECTION ; 
- int /*<<< orphan*/  GL_SAMPLES_ARB ; 
- int atoi (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  error_callback ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  framebuffer_size_callback ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  glClear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDisable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glEnable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glGetIntegerv (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  glLoadIdentity () ; 
- int /*<<< orphan*/  glMatrixMode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glOrtho (float,float,float,float,float,float) ; 
- int /*<<< orphan*/  glRectf (float,float,float,float) ; 
- int /*<<< orphan*/  glRotatef (int /*<<< orphan*/ ,float,float,float) ; 
- int /*<<< orphan*/  glTranslatef (float,float,float) ; 
- int /*<<< orphan*/ * glfwCreateWindow (int,int,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwExtensionSupported (char*) ; 
- int /*<<< orphan*/  glfwGetTime () ; 
- int /*<<< orphan*/  glfwInit () ; 
- int /*<<< orphan*/  glfwMakeContextCurrent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwPollEvents () ; 
- int /*<<< orphan*/  glfwSetErrorCallback (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetFramebufferSizeCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetKeyCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwShowWindow (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwSwapBuffers (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwSwapInterval (int) ; 
- int /*<<< orphan*/  glfwTerminate () ; 
- int /*<<< orphan*/  glfwWindowHint (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  glfwWindowShouldClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  key_callback ; 
- int /*<<< orphan*/  optarg ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  usage () ; 
+
+
+
+typedef int GLfloat ;
+typedef int GLFWwindow ;
+
+
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int GLFW_SAMPLES ;
+ int GLFW_VISIBLE ;
+ int GL_COLOR_BUFFER_BIT ;
+ int GL_FALSE ;
+ int GL_MODELVIEW ;
+ int GL_MULTISAMPLE_ARB ;
+ int GL_PROJECTION ;
+ int GL_SAMPLES_ARB ;
+ int atoi (int ) ;
+ int error_callback ;
+ int exit (int ) ;
+ int framebuffer_size_callback ;
+ int getopt (int,char**,char*) ;
+ int glClear (int ) ;
+ int glDisable (int ) ;
+ int glEnable (int ) ;
+ int glGetIntegerv (int ,int*) ;
+ int glLoadIdentity () ;
+ int glMatrixMode (int ) ;
+ int glOrtho (float,float,float,float,float,float) ;
+ int glRectf (float,float,float,float) ;
+ int glRotatef (int ,float,float,float) ;
+ int glTranslatef (float,float,float) ;
+ int * glfwCreateWindow (int,int,char*,int *,int *) ;
+ int glfwExtensionSupported (char*) ;
+ int glfwGetTime () ;
+ int glfwInit () ;
+ int glfwMakeContextCurrent (int *) ;
+ int glfwPollEvents () ;
+ int glfwSetErrorCallback (int ) ;
+ int glfwSetFramebufferSizeCallback (int *,int ) ;
+ int glfwSetKeyCallback (int *,int ) ;
+ int glfwShowWindow (int *) ;
+ int glfwSwapBuffers (int *) ;
+ int glfwSwapInterval (int) ;
+ int glfwTerminate () ;
+ int glfwWindowHint (int ,int) ;
+ int glfwWindowShouldClose (int *) ;
+ int key_callback ;
+ int optarg ;
+ int printf (char*,...) ;
+ int usage () ;
 
 int main(int argc, char** argv)
 {
@@ -93,7 +93,7 @@ int main(int argc, char** argv)
     glfwWindowHint(GLFW_SAMPLES, samples);
     glfwWindowHint(GLFW_VISIBLE, GL_FALSE);
 
-    window = glfwCreateWindow(800, 400, "Aliasing Detector", NULL, NULL);
+    window = glfwCreateWindow(800, 400, "Aliasing Detector", ((void*)0), ((void*)0));
     if (!window)
     {
         glfwTerminate();

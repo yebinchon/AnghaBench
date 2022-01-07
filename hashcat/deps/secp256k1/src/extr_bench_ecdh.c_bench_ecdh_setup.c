@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  point ;
-struct TYPE_2__ {int* scalar; int /*<<< orphan*/  point; int /*<<< orphan*/  ctx; } ;
-typedef  TYPE_1__ bench_ecdh_data ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK (int) ; 
- int /*<<< orphan*/  SECP256K1_FLAGS_TYPE_CONTEXT ; 
- int /*<<< orphan*/  secp256k1_context_create (int /*<<< orphan*/ ) ; 
- int secp256k1_ec_pubkey_parse (int /*<<< orphan*/ ,int /*<<< orphan*/ *,unsigned char const*,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int point ;
+struct TYPE_2__ {int* scalar; int point; int ctx; } ;
+typedef TYPE_1__ bench_ecdh_data ;
+
+
+ int CHECK (int) ;
+ int SECP256K1_FLAGS_TYPE_CONTEXT ;
+ int secp256k1_context_create (int ) ;
+ int secp256k1_ec_pubkey_parse (int ,int *,unsigned char const*,int) ;
 
 __attribute__((used)) static void bench_ecdh_setup(void* arg) {
     int i;
@@ -32,7 +32,7 @@ __attribute__((used)) static void bench_ecdh_setup(void* arg) {
         0xa2, 0xba, 0xd1, 0x84, 0xf8, 0x83, 0xc6, 0x9f
     };
 
-    /* create a context with no capabilities */
+
     data->ctx = secp256k1_context_create(SECP256K1_FLAGS_TYPE_CONTEXT);
     for (i = 0; i < 32; i++) {
         data->scalar[i] = i + 1;

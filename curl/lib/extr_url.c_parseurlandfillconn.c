@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_6__ ;
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_6__ ;
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {void* rawalloc; void* name; } ;
 struct TYPE_10__ {void* ipv6_ip; void* user_passwd; } ;
-struct connectdata {scalar_t__ scope_id; TYPE_1__ host; TYPE_4__ bits; int /*<<< orphan*/  remote_port; int /*<<< orphan*/  port; void* options; void* passwd; void* user; } ;
+struct connectdata {scalar_t__ scope_id; TYPE_1__ host; TYPE_4__ bits; int remote_port; int port; void* options; void* passwd; void* user; } ;
 struct TYPE_8__ {scalar_t__ scope_id; scalar_t__ path_as_is; scalar_t__ disallow_username_in_url; scalar_t__ uh; scalar_t__* str; } ;
 struct TYPE_11__ {char* scheme; char* user; char* password; char* options; char* hostname; char* path; char* port; char* query; } ;
-struct TYPE_12__ {TYPE_5__ up; int /*<<< orphan*/ * uh; } ;
+struct TYPE_12__ {TYPE_5__ up; int * uh; } ;
 struct TYPE_9__ {char* url; void* url_alloc; } ;
 struct Curl_easy {TYPE_2__ set; TYPE_6__ state; TYPE_3__ change; } ;
-typedef  scalar_t__ CURLcode ;
-typedef  scalar_t__ CURLUcode ;
-typedef  int /*<<< orphan*/  CURLU ;
+typedef scalar_t__ CURLcode ;
+typedef scalar_t__ CURLUcode ;
+typedef int CURLU ;
 
-/* Variables and functions */
- scalar_t__ CURLE_OK ; 
- scalar_t__ CURLE_OUT_OF_MEMORY ; 
- scalar_t__ CURLUE_NO_OPTIONS ; 
- scalar_t__ CURLUE_NO_PASSWORD ; 
- scalar_t__ CURLUE_NO_USER ; 
- int /*<<< orphan*/  CURLUPART_HOST ; 
- int /*<<< orphan*/  CURLUPART_OPTIONS ; 
- int /*<<< orphan*/  CURLUPART_PASSWORD ; 
- int /*<<< orphan*/  CURLUPART_PATH ; 
- int /*<<< orphan*/  CURLUPART_PORT ; 
- int /*<<< orphan*/  CURLUPART_QUERY ; 
- int /*<<< orphan*/  CURLUPART_SCHEME ; 
- int /*<<< orphan*/  CURLUPART_URL ; 
- int /*<<< orphan*/  CURLUPART_USER ; 
- int /*<<< orphan*/  CURLU_DEFAULT_PORT ; 
- int CURLU_DISALLOW_USER ; 
- int CURLU_GUESS_SCHEME ; 
- int CURLU_NON_SUPPORT_SCHEME ; 
- int CURLU_PATH_AS_IS ; 
- int /*<<< orphan*/  CURLU_URLDECODE ; 
- int /*<<< orphan*/  Curl_is_absolute_url (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ Curl_uc_to_curlcode (scalar_t__) ; 
- int /*<<< orphan*/  DEBUGF (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAX_SCHEME_LEN ; 
- size_t STRING_DEFAULT_PROTOCOL ; 
- void* TRUE ; 
- char* aprintf (char*,scalar_t__,char*) ; 
- int /*<<< orphan*/ * curl_url () ; 
- int /*<<< orphan*/ * curl_url_dup (scalar_t__) ; 
- scalar_t__ curl_url_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char**,int /*<<< orphan*/ ) ; 
- scalar_t__ curl_url_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  curlx_ultous (unsigned long) ; 
- scalar_t__ findprotocol (struct Curl_easy*,struct connectdata*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  infof (struct Curl_easy*,char*,char*) ; 
- int /*<<< orphan*/  strcasecompare (char*,char*) ; 
- void* strdup (char*) ; 
- size_t strlen (char*) ; 
- unsigned long strtoul (char*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  up_free (struct Curl_easy*) ; 
- int /*<<< orphan*/  zonefrom_url (int /*<<< orphan*/ *,struct connectdata*) ; 
+
+ scalar_t__ CURLE_OK ;
+ scalar_t__ CURLE_OUT_OF_MEMORY ;
+ scalar_t__ CURLUE_NO_OPTIONS ;
+ scalar_t__ CURLUE_NO_PASSWORD ;
+ scalar_t__ CURLUE_NO_USER ;
+ int CURLUPART_HOST ;
+ int CURLUPART_OPTIONS ;
+ int CURLUPART_PASSWORD ;
+ int CURLUPART_PATH ;
+ int CURLUPART_PORT ;
+ int CURLUPART_QUERY ;
+ int CURLUPART_SCHEME ;
+ int CURLUPART_URL ;
+ int CURLUPART_USER ;
+ int CURLU_DEFAULT_PORT ;
+ int CURLU_DISALLOW_USER ;
+ int CURLU_GUESS_SCHEME ;
+ int CURLU_NON_SUPPORT_SCHEME ;
+ int CURLU_PATH_AS_IS ;
+ int CURLU_URLDECODE ;
+ int Curl_is_absolute_url (char*,int *,int ) ;
+ scalar_t__ Curl_uc_to_curlcode (scalar_t__) ;
+ int DEBUGF (int ) ;
+ int MAX_SCHEME_LEN ;
+ size_t STRING_DEFAULT_PROTOCOL ;
+ void* TRUE ;
+ char* aprintf (char*,scalar_t__,char*) ;
+ int * curl_url () ;
+ int * curl_url_dup (scalar_t__) ;
+ scalar_t__ curl_url_get (int *,int ,char**,int ) ;
+ scalar_t__ curl_url_set (int *,int ,char*,int) ;
+ int curlx_ultous (unsigned long) ;
+ scalar_t__ findprotocol (struct Curl_easy*,struct connectdata*,char*) ;
+ int free (char*) ;
+ int infof (struct Curl_easy*,char*,char*) ;
+ int strcasecompare (char*,char*) ;
+ void* strdup (char*) ;
+ size_t strlen (char*) ;
+ unsigned long strtoul (char*,int *,int) ;
+ int up_free (struct Curl_easy*) ;
+ int zonefrom_url (int *,struct connectdata*) ;
 
 __attribute__((used)) static CURLcode parseurlandfillconn(struct Curl_easy *data,
                                     struct connectdata *conn)
@@ -79,9 +79,9 @@ __attribute__((used)) static CURLcode parseurlandfillconn(struct Curl_easy *data
   CURLUcode uc;
   char *hostname;
 
-  up_free(data); /* cleanup previous leftovers first */
+  up_free(data);
 
-  /* parse the URL */
+
   if(data->set.uh) {
     uh = data->state.uh = curl_url_dup(data->set.uh);
   }
@@ -93,7 +93,7 @@ __attribute__((used)) static CURLcode parseurlandfillconn(struct Curl_easy *data
     return CURLE_OUT_OF_MEMORY;
 
   if(data->set.str[STRING_DEFAULT_PROTOCOL] &&
-     !Curl_is_absolute_url(data->change.url, NULL, MAX_SCHEME_LEN)) {
+     !Curl_is_absolute_url(data->change.url, ((void*)0), MAX_SCHEME_LEN)) {
     char *url;
     if(data->change.url_alloc)
       free(data->change.url);
@@ -118,7 +118,7 @@ __attribute__((used)) static CURLcode parseurlandfillconn(struct Curl_easy *data
       return Curl_uc_to_curlcode(uc);
     }
 
-    /* after it was parsed, get the generated normalized version */
+
     uc = curl_url_get(uh, CURLUPART_URL, &newurl, 0);
     if(uc)
       return Curl_uc_to_curlcode(uc);
@@ -185,7 +185,7 @@ __attribute__((used)) static CURLcode parseurlandfillconn(struct Curl_easy *data
       return CURLE_OUT_OF_MEMORY;
   }
   else {
-    unsigned long port = strtoul(data->state.up.port, NULL, 10);
+    unsigned long port = strtoul(data->state.up.port, ((void*)0), 10);
     conn->port = conn->remote_port = curlx_ultous(port);
   }
 
@@ -193,11 +193,11 @@ __attribute__((used)) static CURLcode parseurlandfillconn(struct Curl_easy *data
 
   hostname = data->state.up.hostname;
   if(hostname && hostname[0] == '[') {
-    /* This looks like an IPv6 address literal. See if there is an address
-       scope. */
+
+
     size_t hlen;
     conn->bits.ipv6_ip = TRUE;
-    /* cut off the brackets! */
+
     hostname++;
     hlen = strlen(hostname);
     hostname[hlen - 1] = 0;
@@ -205,14 +205,14 @@ __attribute__((used)) static CURLcode parseurlandfillconn(struct Curl_easy *data
     zonefrom_url(uh, conn);
   }
 
-  /* make sure the connect struct gets its own copy of the host name */
+
   conn->host.rawalloc = strdup(hostname ? hostname : "");
   if(!conn->host.rawalloc)
     return CURLE_OUT_OF_MEMORY;
   conn->host.name = conn->host.rawalloc;
 
   if(data->set.scope_id)
-    /* Override any scope that was set above.  */
+
     conn->scope_id = data->set.scope_id;
 
   return CURLE_OK;

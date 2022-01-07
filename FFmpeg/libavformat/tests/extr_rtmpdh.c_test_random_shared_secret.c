@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  sharedkey2 ;
-typedef  int /*<<< orphan*/  sharedkey1 ;
-typedef  int /*<<< orphan*/  pubkey2 ;
-typedef  int /*<<< orphan*/  pubkey1 ;
-typedef  int /*<<< orphan*/  FF_DH ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  ENOMEM ; 
- int ff_dh_compute_shared_secret_key (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ff_dh_free (int /*<<< orphan*/ *) ; 
- int ff_dh_generate_public_key (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ff_dh_init (int) ; 
- int ff_dh_write_public_key (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  printf (char*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int sharedkey2 ;
+typedef int sharedkey1 ;
+typedef int pubkey2 ;
+typedef int pubkey1 ;
+typedef int FF_DH ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int ENOMEM ;
+ int ff_dh_compute_shared_secret_key (int *,int *,int,int *,int) ;
+ int ff_dh_free (int *) ;
+ int ff_dh_generate_public_key (int *) ;
+ int * ff_dh_init (int) ;
+ int ff_dh_write_public_key (int *,int *,int) ;
+ scalar_t__ memcmp (int *,int *,int) ;
+ int printf (char*) ;
 
 __attribute__((used)) static int test_random_shared_secret(void)
 {
-    FF_DH *peer1 = NULL, *peer2 = NULL;
+    FF_DH *peer1 = ((void*)0), *peer2 = ((void*)0);
     int ret;
     uint8_t pubkey1[128], pubkey2[128];
     uint8_t sharedkey1[128], sharedkey2[128];

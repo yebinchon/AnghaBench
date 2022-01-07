@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mrb_rational {int /*<<< orphan*/  numerator; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mrb_fixnum_value (int /*<<< orphan*/ ) ; 
- struct mrb_rational* rational_ptr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct mrb_rational {int numerator; } ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+
+
+ int mrb_fixnum_value (int ) ;
+ struct mrb_rational* rational_ptr (int *,int ) ;
 
 __attribute__((used)) static mrb_value
 rational_numerator(mrb_state *mrb, mrb_value self)

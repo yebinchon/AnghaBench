@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct xgmac_dma_desc {int /*<<< orphan*/  flags; } ;
 
-/* Variables and functions */
- int TXDESC_FIRST_SEG ; 
- int le32_to_cpu (int /*<<< orphan*/ ) ; 
+
+
+
+struct xgmac_dma_desc {int flags; } ;
+
+
+ int TXDESC_FIRST_SEG ;
+ int le32_to_cpu (int ) ;
 
 __attribute__((used)) static inline int desc_get_tx_fs(struct xgmac_dma_desc *p)
 {
-	return le32_to_cpu(p->flags) & TXDESC_FIRST_SEG;
+ return le32_to_cpu(p->flags) & TXDESC_FIRST_SEG;
 }

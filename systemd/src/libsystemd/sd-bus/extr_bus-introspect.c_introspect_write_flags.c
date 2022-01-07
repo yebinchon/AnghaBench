@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-struct introspect {int /*<<< orphan*/  f; int /*<<< orphan*/  trusted; } ;
 
-/* Variables and functions */
- scalar_t__ IN_SET (int,int,int /*<<< orphan*/ ) ; 
- int SD_BUS_VTABLE_DEPRECATED ; 
- int SD_BUS_VTABLE_METHOD_NO_REPLY ; 
- int SD_BUS_VTABLE_PROPERTY_CONST ; 
- int SD_BUS_VTABLE_PROPERTY_EMITS_CHANGE ; 
- int SD_BUS_VTABLE_PROPERTY_EMITS_INVALIDATION ; 
- int SD_BUS_VTABLE_PROPERTY_EXPLICIT ; 
- int SD_BUS_VTABLE_UNPRIVILEGED ; 
- int _SD_BUS_VTABLE_METHOD ; 
- int _SD_BUS_VTABLE_PROPERTY ; 
- int /*<<< orphan*/  _SD_BUS_VTABLE_WRITABLE_PROPERTY ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint64_t ;
+struct introspect {int f; int trusted; } ;
+
+
+ scalar_t__ IN_SET (int,int,int ) ;
+ int SD_BUS_VTABLE_DEPRECATED ;
+ int SD_BUS_VTABLE_METHOD_NO_REPLY ;
+ int SD_BUS_VTABLE_PROPERTY_CONST ;
+ int SD_BUS_VTABLE_PROPERTY_EMITS_CHANGE ;
+ int SD_BUS_VTABLE_PROPERTY_EMITS_INVALIDATION ;
+ int SD_BUS_VTABLE_PROPERTY_EXPLICIT ;
+ int SD_BUS_VTABLE_UNPRIVILEGED ;
+ int _SD_BUS_VTABLE_METHOD ;
+ int _SD_BUS_VTABLE_PROPERTY ;
+ int _SD_BUS_VTABLE_WRITABLE_PROPERTY ;
+ int fputs (char*,int ) ;
 
 __attribute__((used)) static void introspect_write_flags(struct introspect *i, int type, uint64_t flags) {
         if (flags & SD_BUS_VTABLE_DEPRECATED)

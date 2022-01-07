@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  esp_event_base_t ;
-typedef  int /*<<< orphan*/  EventGroupHandle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*) ; 
-#define  ETHERNET_EVENT_CONNECTED 131 
-#define  ETHERNET_EVENT_DISCONNECTED 130 
-#define  ETHERNET_EVENT_START 129 
-#define  ETHERNET_EVENT_STOP 128 
- int /*<<< orphan*/  ETH_CONNECT_BIT ; 
- int /*<<< orphan*/  ETH_START_BIT ; 
- int /*<<< orphan*/  ETH_STOP_BIT ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  xEventGroupSetBits (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int int32_t ;
+typedef int esp_event_base_t ;
+typedef int EventGroupHandle_t ;
+
+
+ int ESP_LOGI (int ,char*) ;
+
+
+
+
+ int ETH_CONNECT_BIT ;
+ int ETH_START_BIT ;
+ int ETH_STOP_BIT ;
+ int TAG ;
+ int xEventGroupSetBits (int ,int ) ;
 
 __attribute__((used)) static void eth_event_handler(void *arg, esp_event_base_t event_base,
                               int32_t event_id, void *event_data)
 {
     EventGroupHandle_t eth_event_group = (EventGroupHandle_t)arg;
     switch (event_id) {
-    case ETHERNET_EVENT_CONNECTED:
+    case 131:
         xEventGroupSetBits(eth_event_group, ETH_CONNECT_BIT);
         ESP_LOGI(TAG, "Ethernet Link Up");
         break;
-    case ETHERNET_EVENT_DISCONNECTED:
+    case 130:
         ESP_LOGI(TAG, "Ethernet Link Down");
         break;
-    case ETHERNET_EVENT_START:
+    case 129:
         xEventGroupSetBits(eth_event_group, ETH_START_BIT);
         ESP_LOGI(TAG, "Ethernet Started");
         break;
-    case ETHERNET_EVENT_STOP:
+    case 128:
         xEventGroupSetBits(eth_event_group, ETH_STOP_BIT);
         ESP_LOGI(TAG, "Ethernet Stopped");
         break;

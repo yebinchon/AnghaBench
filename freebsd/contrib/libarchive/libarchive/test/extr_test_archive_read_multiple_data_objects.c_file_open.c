@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mydata {scalar_t__ fd; int /*<<< orphan*/ * buffer; int /*<<< orphan*/  filename; } ;
+
+
+
+
+struct mydata {scalar_t__ fd; int * buffer; int filename; } ;
 struct archive {int dummy; } ;
 
-/* Variables and functions */
- int ARCHIVE_FAILED ; 
- int ARCHIVE_OK ; 
- int /*<<< orphan*/  BLOCK_SIZE ; 
- int O_BINARY ; 
- int O_RDONLY ; 
- scalar_t__ calloc (int,int /*<<< orphan*/ ) ; 
- scalar_t__ open (int /*<<< orphan*/ ,int) ; 
+
+ int ARCHIVE_FAILED ;
+ int ARCHIVE_OK ;
+ int BLOCK_SIZE ;
+ int O_BINARY ;
+ int O_RDONLY ;
+ scalar_t__ calloc (int,int ) ;
+ scalar_t__ open (int ,int) ;
 
 __attribute__((used)) static int
 file_open(struct archive *a, void *data)
@@ -32,7 +32,7 @@ file_open(struct archive *a, void *data)
     mydata->fd = open(mydata->filename, O_RDONLY | O_BINARY);
     if (mydata->fd >= 0)
     {
-      if ((mydata->buffer = (void*)calloc(1, BLOCK_SIZE)) == NULL)
+      if ((mydata->buffer = (void*)calloc(1, BLOCK_SIZE)) == ((void*)0))
         return (ARCHIVE_FAILED);
     }
   }

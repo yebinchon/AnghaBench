@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_4__ {size_t window_size; size_t min_size; size_t buf_size; int fh; int /*<<< orphan*/  data; int /*<<< orphan*/  table; int /*<<< orphan*/  chunk_mask; } ;
-typedef  TYPE_1__ Chunker ;
 
-/* Variables and functions */
- int /*<<< orphan*/  buzhash_init_table (int /*<<< orphan*/ ) ; 
- TYPE_1__* calloc (int,int) ; 
- int /*<<< orphan*/  malloc (size_t) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_4__ {size_t window_size; size_t min_size; size_t buf_size; int fh; int data; int table; int chunk_mask; } ;
+typedef TYPE_1__ Chunker ;
+
+
+ int buzhash_init_table (int ) ;
+ TYPE_1__* calloc (int,int) ;
+ int malloc (size_t) ;
 
 __attribute__((used)) static Chunker *
 chunker_init(size_t window_size, uint32_t chunk_mask, size_t min_size, size_t max_size, uint32_t seed)

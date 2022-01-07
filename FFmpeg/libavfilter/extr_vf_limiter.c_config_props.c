@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  limiter; } ;
+
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int limiter; } ;
 struct TYPE_13__ {TYPE_2__* priv; } ;
-struct TYPE_12__ {void* w; void* h; int /*<<< orphan*/  format; TYPE_5__* dst; } ;
+struct TYPE_12__ {void* w; void* h; int format; TYPE_5__* dst; } ;
 struct TYPE_11__ {int log2_chroma_w; int log2_chroma_h; TYPE_1__* comp; } ;
-struct TYPE_10__ {TYPE_6__ dsp; void* min; void* max; void** width; void** height; int /*<<< orphan*/  linesize; int /*<<< orphan*/  nb_planes; } ;
+struct TYPE_10__ {TYPE_6__ dsp; void* min; void* max; void** width; void** height; int linesize; int nb_planes; } ;
 struct TYPE_9__ {int depth; } ;
-typedef  TYPE_2__ LimiterContext ;
-typedef  TYPE_3__ AVPixFmtDescriptor ;
-typedef  TYPE_4__ AVFilterLink ;
-typedef  TYPE_5__ AVFilterContext ;
+typedef TYPE_2__ LimiterContext ;
+typedef TYPE_3__ AVPixFmtDescriptor ;
+typedef TYPE_4__ AVFilterLink ;
+typedef TYPE_5__ AVFilterContext ;
 
-/* Variables and functions */
- scalar_t__ ARCH_X86 ; 
- void* AV_CEIL_RSHIFT (void*,int) ; 
- void* FFMIN (void*,int) ; 
- int av_image_fill_linesizes (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  av_pix_fmt_count_planes (int /*<<< orphan*/ ) ; 
- TYPE_3__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_limiter_init_x86 (TYPE_6__*,int) ; 
- int /*<<< orphan*/  limiter16 ; 
- int /*<<< orphan*/  limiter8 ; 
+
+ scalar_t__ ARCH_X86 ;
+ void* AV_CEIL_RSHIFT (void*,int) ;
+ void* FFMIN (void*,int) ;
+ int av_image_fill_linesizes (int ,int ,void*) ;
+ int av_pix_fmt_count_planes (int ) ;
+ TYPE_3__* av_pix_fmt_desc_get (int ) ;
+ int ff_limiter_init_x86 (TYPE_6__*,int) ;
+ int limiter16 ;
+ int limiter8 ;
 
 __attribute__((used)) static int config_props(AVFilterLink *inlink)
 {
@@ -55,8 +55,8 @@ __attribute__((used)) static int config_props(AVFilterLink *inlink)
     vsub = desc->log2_chroma_h;
     s->height[1] = s->height[2] = AV_CEIL_RSHIFT(inlink->h, vsub);
     s->height[0] = s->height[3] = inlink->h;
-    s->width[1]  = s->width[2]  = AV_CEIL_RSHIFT(inlink->w, hsub);
-    s->width[0]  = s->width[3]  = inlink->w;
+    s->width[1] = s->width[2] = AV_CEIL_RSHIFT(inlink->w, hsub);
+    s->width[0] = s->width[3] = inlink->w;
 
     s->max = FFMIN(s->max, (1 << depth) - 1);
     s->min = FFMIN(s->min, (1 << depth) - 1);

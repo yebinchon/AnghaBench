@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct v4l2_fmtdesc {int /*<<< orphan*/  index; int /*<<< orphan*/  pixelformat; int /*<<< orphan*/  type; } ;
-typedef  int /*<<< orphan*/  fdesc ;
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
-struct TYPE_6__ {int av_pix_fmt; int /*<<< orphan*/  type; } ;
-typedef  TYPE_1__ V4L2Context ;
-struct TYPE_7__ {int /*<<< orphan*/  fd; } ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_CODEC_ID_RAWVIDEO ; 
- int AV_PIX_FMT_NONE ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  VIDIOC_ENUM_FMT ; 
- TYPE_4__* ctx_to_m2mctx (TYPE_1__*) ; 
- int ff_v4l2_format_v4l2_to_avfmt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct v4l2_fmtdesc*) ; 
- int /*<<< orphan*/  memset (struct v4l2_fmtdesc*,int /*<<< orphan*/ ,int) ; 
- int v4l2_try_raw_format (TYPE_1__*,int) ; 
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct v4l2_fmtdesc {int index; int pixelformat; int type; } ;
+typedef int fdesc ;
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+struct TYPE_6__ {int av_pix_fmt; int type; } ;
+typedef TYPE_1__ V4L2Context ;
+struct TYPE_7__ {int fd; } ;
+
+
+ int AVERROR (int ) ;
+ int AV_CODEC_ID_RAWVIDEO ;
+ int AV_PIX_FMT_NONE ;
+ int EINVAL ;
+ int VIDIOC_ENUM_FMT ;
+ TYPE_4__* ctx_to_m2mctx (TYPE_1__*) ;
+ int ff_v4l2_format_v4l2_to_avfmt (int ,int ) ;
+ int ioctl (int ,int ,struct v4l2_fmtdesc*) ;
+ int memset (struct v4l2_fmtdesc*,int ,int) ;
+ int v4l2_try_raw_format (TYPE_1__*,int) ;
 
 __attribute__((used)) static int v4l2_get_raw_format(V4L2Context* ctx, enum AVPixelFormat *p)
 {

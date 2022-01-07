@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  JSON_Value ;
-typedef  int /*<<< orphan*/  JSON_Object ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * json_object_get_value (int /*<<< orphan*/  const*,char const*) ; 
- int /*<<< orphan*/  json_object_nget_value (int /*<<< orphan*/  const*,char const*,int) ; 
- int /*<<< orphan*/ * json_value_get_object (int /*<<< orphan*/ ) ; 
- char* strchr (char const*,char) ; 
+
+
+
+typedef int JSON_Value ;
+typedef int JSON_Object ;
+
+
+ int * json_object_get_value (int const*,char const*) ;
+ int json_object_nget_value (int const*,char const*,int) ;
+ int * json_value_get_object (int ) ;
+ char* strchr (char const*,char) ;
 
 JSON_Value * json_object_dotget_value(const JSON_Object *object, const char *name) {
     const char *dot_position = strchr(name, '.');

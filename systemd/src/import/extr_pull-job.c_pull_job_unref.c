@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  checksum; int /*<<< orphan*/  payload; int /*<<< orphan*/  old_etags; int /*<<< orphan*/  etag; int /*<<< orphan*/  url; scalar_t__ checksum_context; int /*<<< orphan*/  compress; int /*<<< orphan*/  disk_fd; int /*<<< orphan*/  request_header; int /*<<< orphan*/  curl; int /*<<< orphan*/  glue; } ;
-typedef  TYPE_1__ PullJob ;
 
-/* Variables and functions */
- int /*<<< orphan*/  curl_glue_remove_and_free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  curl_slist_free_all (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcry_md_close (scalar_t__) ; 
- int /*<<< orphan*/  import_compress_free (int /*<<< orphan*/ *) ; 
- TYPE_1__* mfree (TYPE_1__*) ; 
- int /*<<< orphan*/  safe_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strv_free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int checksum; int payload; int old_etags; int etag; int url; scalar_t__ checksum_context; int compress; int disk_fd; int request_header; int curl; int glue; } ;
+typedef TYPE_1__ PullJob ;
+
+
+ int curl_glue_remove_and_free (int ,int ) ;
+ int curl_slist_free_all (int ) ;
+ int free (int ) ;
+ int gcry_md_close (scalar_t__) ;
+ int import_compress_free (int *) ;
+ TYPE_1__* mfree (TYPE_1__*) ;
+ int safe_close (int ) ;
+ int strv_free (int ) ;
 
 PullJob* pull_job_unref(PullJob *j) {
         if (!j)
-                return NULL;
+                return ((void*)0);
 
         curl_glue_remove_and_free(j->glue, j->curl);
         curl_slist_free_all(j->request_header);

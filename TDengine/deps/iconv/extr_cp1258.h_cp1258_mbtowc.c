@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ucs4_t ;
-typedef  TYPE_1__* conv_t ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ ucs4_t ;
+typedef TYPE_1__* conv_t ;
 struct TYPE_7__ {unsigned int idx; unsigned int len; } ;
 struct TYPE_6__ {unsigned short base; unsigned short composed; } ;
 struct TYPE_5__ {unsigned short istate; } ;
 
-/* Variables and functions */
- int RET_ILSEQ ; 
- int RET_TOOFEW (int) ; 
- int /*<<< orphan*/  abort () ; 
- unsigned short* cp1258_2uni ; 
- unsigned short* cp1258_comp_bases ; 
- TYPE_3__* viet_comp_table ; 
- TYPE_2__* viet_comp_table_data ; 
+
+ int RET_ILSEQ ;
+ int RET_TOOFEW (int) ;
+ int abort () ;
+ unsigned short* cp1258_2uni ;
+ unsigned short* cp1258_comp_bases ;
+ TYPE_3__* viet_comp_table ;
+ TYPE_2__* viet_comp_table_data ;
 
 __attribute__((used)) static int
 cp1258_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
@@ -44,7 +44,7 @@ cp1258_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
   last_wc = conv->istate;
   if (last_wc) {
     if (wc >= 0x0300 && wc < 0x0340) {
-      /* See whether last_wc and wc can be combined. */
+
       unsigned int k;
       unsigned int i1, i2;
       switch (wc) {
@@ -80,25 +80,25 @@ cp1258_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
           }
         }
         last_wc = viet_comp_table_data[i].composed;
-        /* Output the combined character. */
+
         conv->istate = 0;
         *pwc = (ucs4_t) last_wc;
         return 1;
       }
     }
   not_combining:
-    /* Output the buffered character. */
+
     conv->istate = 0;
     *pwc = (ucs4_t) last_wc;
-    return 0; /* Don't advance the input pointer. */
+    return 0;
   }
   if (wc >= 0x0041 && wc <= 0x01b0
       && ((cp1258_comp_bases[(wc - 0x0040) >> 5] >> (wc & 0x1f)) & 1)) {
-    /* wc is a possible match in viet_comp_table_data. Buffer it. */
+
     conv->istate = wc;
     return RET_TOOFEW(1);
   } else {
-    /* Output wc immediately. */
+
     *pwc = (ucs4_t) wc;
     return 1;
   }

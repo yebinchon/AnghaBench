@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_11__ {int* ch_size; TYPE_2__** channels; TYPE_1__* avctx; } ;
 struct TYPE_10__ {scalar_t__ nb_groups; } ;
 struct TYPE_9__ {int err_recognition; } ;
-typedef  TYPE_3__ DBEContext ;
+typedef TYPE_3__ DBEContext ;
 
-/* Variables and functions */
- int AV_EF_EXPLODE ; 
- int convert_input (TYPE_3__*,int,int) ; 
- int parse_channel (TYPE_3__*,int,int) ; 
- int parse_key (TYPE_3__*) ; 
- int skip_input (TYPE_3__*,int) ; 
+
+ int AV_EF_EXPLODE ;
+ int convert_input (TYPE_3__*,int,int) ;
+ int parse_channel (TYPE_3__*,int,int) ;
+ int parse_key (TYPE_3__*) ;
+ int skip_input (TYPE_3__*,int) ;
 
 __attribute__((used)) static int parse_audio(DBEContext *s, int start, int end, int seg_id)
 {

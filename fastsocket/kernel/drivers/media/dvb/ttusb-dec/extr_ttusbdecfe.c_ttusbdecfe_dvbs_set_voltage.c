@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ttusbdecfe_state {int voltage; } ;
 struct dvb_frontend {scalar_t__ demodulator_priv; } ;
-typedef  int fe_sec_voltage_t ;
+typedef int fe_sec_voltage_t ;
 
-/* Variables and functions */
- int EINVAL ; 
-#define  SEC_VOLTAGE_13 129 
-#define  SEC_VOLTAGE_18 128 
+
+ int EINVAL ;
+
+
 
 __attribute__((used)) static int ttusbdecfe_dvbs_set_voltage(struct dvb_frontend* fe, fe_sec_voltage_t voltage)
 {
-	struct ttusbdecfe_state* state = (struct ttusbdecfe_state*) fe->demodulator_priv;
+ struct ttusbdecfe_state* state = (struct ttusbdecfe_state*) fe->demodulator_priv;
 
-	switch (voltage) {
-	case SEC_VOLTAGE_13:
-		state->voltage = 13;
-		break;
-	case SEC_VOLTAGE_18:
-		state->voltage = 18;
-		break;
-	default:
-		return -EINVAL;
-	}
+ switch (voltage) {
+ case 129:
+  state->voltage = 13;
+  break;
+ case 128:
+  state->voltage = 18;
+  break;
+ default:
+  return -EINVAL;
+ }
 
-	return 0;
+ return 0;
 }

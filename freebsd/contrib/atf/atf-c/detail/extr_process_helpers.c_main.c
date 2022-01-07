@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EXIT_FAILURE ; 
- int /*<<< orphan*/  check_args (int,char const* const*,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const* const,char const* const) ; 
- int h_echo (char const* const) ; 
- int h_exit_failure () ; 
- int h_exit_signal () ; 
- int h_exit_success () ; 
- int h_stdout_stderr (char const* const) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char const* const,char*) ; 
+ int EXIT_FAILURE ;
+ int check_args (int,char const* const*,int) ;
+ int fprintf (int ,char*,char const* const,char const* const) ;
+ int h_echo (char const* const) ;
+ int h_exit_failure () ;
+ int h_exit_signal () ;
+ int h_exit_success () ;
+ int h_stdout_stderr (char const* const) ;
+ int stderr ;
+ scalar_t__ strcmp (char const* const,char*) ;
 
 int
 main(int argc, const char *const argv[])

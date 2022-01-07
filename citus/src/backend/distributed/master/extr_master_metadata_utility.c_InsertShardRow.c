@@ -1,93 +1,93 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  values ;
-typedef  int /*<<< orphan*/  uint64 ;
-typedef  int /*<<< orphan*/  text ;
-typedef  int /*<<< orphan*/  isNulls ;
-typedef  int /*<<< orphan*/ * TupleDesc ;
-typedef  int /*<<< orphan*/ * Relation ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/ * HeapTuple ;
-typedef  int Datum ;
 
-/* Variables and functions */
- int Anum_pg_dist_shard_logicalrelid ; 
- int Anum_pg_dist_shard_shardalias_DROPPED ; 
- int Anum_pg_dist_shard_shardid ; 
- int Anum_pg_dist_shard_shardmaxvalue ; 
- int Anum_pg_dist_shard_shardminvalue ; 
- int Anum_pg_dist_shard_shardstorage ; 
- int /*<<< orphan*/  CatalogTupleInsert (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int CharGetDatum (char) ; 
- int /*<<< orphan*/  CitusInvalidateRelcacheByRelid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CommandCounterIncrement () ; 
- int /*<<< orphan*/  DistShardRelationId () ; 
- int Int64GetDatum (int /*<<< orphan*/ ) ; 
- int Natts_pg_dist_shard ; 
- int /*<<< orphan*/  NoLock ; 
- int ObjectIdGetDatum (int /*<<< orphan*/ ) ; 
- int PointerGetDatum (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * RelationGetDescr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RowExclusiveLock ; 
- int /*<<< orphan*/  heap_close (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * heap_form_tuple (int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/ * heap_open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int*,int,int) ; 
+
+
+
+typedef int values ;
+typedef int uint64 ;
+typedef int text ;
+typedef int isNulls ;
+typedef int * TupleDesc ;
+typedef int * Relation ;
+typedef int Oid ;
+typedef int * HeapTuple ;
+typedef int Datum ;
+
+
+ int Anum_pg_dist_shard_logicalrelid ;
+ int Anum_pg_dist_shard_shardalias_DROPPED ;
+ int Anum_pg_dist_shard_shardid ;
+ int Anum_pg_dist_shard_shardmaxvalue ;
+ int Anum_pg_dist_shard_shardminvalue ;
+ int Anum_pg_dist_shard_shardstorage ;
+ int CatalogTupleInsert (int *,int *) ;
+ int CharGetDatum (char) ;
+ int CitusInvalidateRelcacheByRelid (int ) ;
+ int CommandCounterIncrement () ;
+ int DistShardRelationId () ;
+ int Int64GetDatum (int ) ;
+ int Natts_pg_dist_shard ;
+ int NoLock ;
+ int ObjectIdGetDatum (int ) ;
+ int PointerGetDatum (int *) ;
+ int * RelationGetDescr (int *) ;
+ int RowExclusiveLock ;
+ int heap_close (int *,int ) ;
+ int * heap_form_tuple (int *,int*,int*) ;
+ int * heap_open (int ,int ) ;
+ int memset (int*,int,int) ;
 
 void
 InsertShardRow(Oid relationId, uint64 shardId, char storageType,
-			   text *shardMinValue, text *shardMaxValue)
+      text *shardMinValue, text *shardMaxValue)
 {
-	Relation pgDistShard = NULL;
-	TupleDesc tupleDescriptor = NULL;
-	HeapTuple heapTuple = NULL;
-	Datum values[Natts_pg_dist_shard];
-	bool isNulls[Natts_pg_dist_shard];
+ Relation pgDistShard = ((void*)0);
+ TupleDesc tupleDescriptor = ((void*)0);
+ HeapTuple heapTuple = ((void*)0);
+ Datum values[Natts_pg_dist_shard];
+ bool isNulls[Natts_pg_dist_shard];
 
-	/* form new shard tuple */
-	memset(values, 0, sizeof(values));
-	memset(isNulls, false, sizeof(isNulls));
 
-	values[Anum_pg_dist_shard_logicalrelid - 1] = ObjectIdGetDatum(relationId);
-	values[Anum_pg_dist_shard_shardid - 1] = Int64GetDatum(shardId);
-	values[Anum_pg_dist_shard_shardstorage - 1] = CharGetDatum(storageType);
+ memset(values, 0, sizeof(values));
+ memset(isNulls, 0, sizeof(isNulls));
 
-	/* dropped shardalias column must also be set; it is still part of the tuple */
-	isNulls[Anum_pg_dist_shard_shardalias_DROPPED - 1] = true;
+ values[Anum_pg_dist_shard_logicalrelid - 1] = ObjectIdGetDatum(relationId);
+ values[Anum_pg_dist_shard_shardid - 1] = Int64GetDatum(shardId);
+ values[Anum_pg_dist_shard_shardstorage - 1] = CharGetDatum(storageType);
 
-	/* check if shard min/max values are null */
-	if (shardMinValue != NULL && shardMaxValue != NULL)
-	{
-		values[Anum_pg_dist_shard_shardminvalue - 1] = PointerGetDatum(shardMinValue);
-		values[Anum_pg_dist_shard_shardmaxvalue - 1] = PointerGetDatum(shardMaxValue);
-	}
-	else
-	{
-		isNulls[Anum_pg_dist_shard_shardminvalue - 1] = true;
-		isNulls[Anum_pg_dist_shard_shardmaxvalue - 1] = true;
-	}
 
-	/* open shard relation and insert new tuple */
-	pgDistShard = heap_open(DistShardRelationId(), RowExclusiveLock);
+ isNulls[Anum_pg_dist_shard_shardalias_DROPPED - 1] = 1;
 
-	tupleDescriptor = RelationGetDescr(pgDistShard);
-	heapTuple = heap_form_tuple(tupleDescriptor, values, isNulls);
 
-	CatalogTupleInsert(pgDistShard, heapTuple);
+ if (shardMinValue != ((void*)0) && shardMaxValue != ((void*)0))
+ {
+  values[Anum_pg_dist_shard_shardminvalue - 1] = PointerGetDatum(shardMinValue);
+  values[Anum_pg_dist_shard_shardmaxvalue - 1] = PointerGetDatum(shardMaxValue);
+ }
+ else
+ {
+  isNulls[Anum_pg_dist_shard_shardminvalue - 1] = 1;
+  isNulls[Anum_pg_dist_shard_shardmaxvalue - 1] = 1;
+ }
 
-	/* invalidate previous cache entry and close relation */
-	CitusInvalidateRelcacheByRelid(relationId);
 
-	CommandCounterIncrement();
-	heap_close(pgDistShard, NoLock);
+ pgDistShard = heap_open(DistShardRelationId(), RowExclusiveLock);
+
+ tupleDescriptor = RelationGetDescr(pgDistShard);
+ heapTuple = heap_form_tuple(tupleDescriptor, values, isNulls);
+
+ CatalogTupleInsert(pgDistShard, heapTuple);
+
+
+ CitusInvalidateRelcacheByRelid(relationId);
+
+ CommandCounterIncrement();
+ heap_close(pgDistShard, NoLock);
 }

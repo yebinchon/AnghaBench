@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8_t ;
-typedef  scalar_t__ u32_t ;
-typedef  int /*<<< orphan*/  u16_t ;
-struct tcp_pcb {scalar_t__ lastack; scalar_t__ rcv_nxt; int /*<<< orphan*/  local_port; int /*<<< orphan*/  remote_port; int /*<<< orphan*/  local_ip; int /*<<< orphan*/  remote_ip; } ;
+
+
+
+
+typedef int u8_t ;
+typedef scalar_t__ u32_t ;
+typedef int u16_t ;
+struct tcp_pcb {scalar_t__ lastack; scalar_t__ rcv_nxt; int local_port; int remote_port; int local_ip; int remote_ip; } ;
 struct pbuf {int dummy; } ;
 
-/* Variables and functions */
- struct pbuf* tcp_create_segment_wnd (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,size_t,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ struct pbuf* tcp_create_segment_wnd (int *,int *,int ,int ,void*,size_t,scalar_t__,scalar_t__,int ,int ) ;
 
 struct pbuf* tcp_create_rx_segment_wnd(struct tcp_pcb* pcb, void* data, size_t data_len,
                    u32_t seqno_offset, u32_t ackno_offset, u8_t headerflags, u16_t wnd)

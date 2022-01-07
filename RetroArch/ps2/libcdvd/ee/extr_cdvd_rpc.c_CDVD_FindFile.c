@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct TocEntry {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CDVD_FINDFILE ; 
- int /*<<< orphan*/  SifCallRpc (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int,void*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cd0 ; 
- int /*<<< orphan*/  cdvd_inited ; 
- int /*<<< orphan*/  memcpy (struct TocEntry*,int*,int) ; 
- int* sbuff ; 
- int /*<<< orphan*/  strncpy (char*,char const*,int) ; 
+
+ int CDVD_FINDFILE ;
+ int SifCallRpc (int *,int ,int ,void*,int,void*,int,int ,int ) ;
+ int cd0 ;
+ int cdvd_inited ;
+ int memcpy (struct TocEntry*,int*,int) ;
+ int* sbuff ;
+ int strncpy (char*,char const*,int) ;
 
 int CDVD_FindFile(const char *fname, struct TocEntry *tocEntry)
 {

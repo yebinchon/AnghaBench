@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ssp_data {int shut_down; TYPE_1__* spi; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dev; int /*<<< orphan*/  irq; } ;
+struct TYPE_2__ {int dev; int irq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dev_info (int /*<<< orphan*/ *,char*,int,int) ; 
- int /*<<< orphan*/  dev_warn (int /*<<< orphan*/ *,char*,int,int) ; 
- int /*<<< orphan*/  disable_irq (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  disable_irq_wake (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  enable_irq (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  enable_irq_wake (int /*<<< orphan*/ ) ; 
+
+ int dev_info (int *,char*,int,int) ;
+ int dev_warn (int *,char*,int,int) ;
+ int disable_irq (int ) ;
+ int disable_irq_wake (int ) ;
+ int enable_irq (int ) ;
+ int enable_irq_wake (int ) ;
 
 __attribute__((used)) static void ssp_enable_mcu(struct ssp_data *data, bool enable)
 {
-	dev_info(&data->spi->dev, "current shutdown = %d, old = %d\n", enable,
-		 data->shut_down);
+ dev_info(&data->spi->dev, "current shutdown = %d, old = %d\n", enable,
+   data->shut_down);
 
-	if (enable && data->shut_down) {
-		data->shut_down = false;
-		enable_irq(data->spi->irq);
-		enable_irq_wake(data->spi->irq);
-	} else if (!enable && !data->shut_down) {
-		data->shut_down = true;
-		disable_irq(data->spi->irq);
-		disable_irq_wake(data->spi->irq);
-	} else {
-		dev_warn(&data->spi->dev, "current shutdown = %d, old = %d\n",
-			 enable, data->shut_down);
-	}
+ if (enable && data->shut_down) {
+  data->shut_down = 0;
+  enable_irq(data->spi->irq);
+  enable_irq_wake(data->spi->irq);
+ } else if (!enable && !data->shut_down) {
+  data->shut_down = 1;
+  disable_irq(data->spi->irq);
+  disable_irq_wake(data->spi->irq);
+ } else {
+  dev_warn(&data->spi->dev, "current shutdown = %d, old = %d\n",
+    enable, data->shut_down);
+ }
 }

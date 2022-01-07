@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-struct stat {scalar_t__ st_rdev; int /*<<< orphan*/  st_mode; } ;
+
+
+
+
+typedef int uint64_t ;
+struct stat {scalar_t__ st_rdev; int st_mode; } ;
 struct btrfs_ioctl_fs_info_args {int num_devices; int max_id; int devid; scalar_t__ path; } ;
 struct btrfs_ioctl_dev_info_args {int num_devices; int max_id; int devid; scalar_t__ path; } ;
-typedef  scalar_t__ dev_t ;
+typedef scalar_t__ dev_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BTRFS_IOC_DEV_INFO ; 
- int /*<<< orphan*/  BTRFS_IOC_FS_INFO ; 
- int ENODEV ; 
- int ENOTTY ; 
- int /*<<< orphan*/  S_ISBLK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int btrfs_is_filesystem (int) ; 
- int errno ; 
- scalar_t__ ioctl (int,int /*<<< orphan*/ ,struct btrfs_ioctl_fs_info_args*) ; 
- scalar_t__ major (scalar_t__) ; 
- scalar_t__ stat (char*,struct stat*) ; 
+
+ int BTRFS_IOC_DEV_INFO ;
+ int BTRFS_IOC_FS_INFO ;
+ int ENODEV ;
+ int ENOTTY ;
+ int S_ISBLK (int ) ;
+ int assert (int) ;
+ int btrfs_is_filesystem (int) ;
+ int errno ;
+ scalar_t__ ioctl (int,int ,struct btrfs_ioctl_fs_info_args*) ;
+ scalar_t__ major (scalar_t__) ;
+ scalar_t__ stat (char*,struct stat*) ;
 
 int btrfs_get_block_device_fd(int fd, dev_t *dev) {
         struct btrfs_ioctl_fs_info_args fsi = {};
@@ -46,7 +46,7 @@ int btrfs_get_block_device_fd(int fd, dev_t *dev) {
         if (ioctl(fd, BTRFS_IOC_FS_INFO, &fsi) < 0)
                 return -errno;
 
-        /* We won't do this for btrfs RAID */
+
         if (fsi.num_devices != 1) {
                 *dev = 0;
                 return 0;

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct watchdog_device {int /*<<< orphan*/  lock; TYPE_1__* ops; int /*<<< orphan*/  status; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct watchdog_device {int lock; TYPE_1__* ops; int status; } ;
 struct TYPE_2__ {unsigned int (* status ) (struct watchdog_device*) ;} ;
 
-/* Variables and functions */
- int ENODEV ; 
- int EOPNOTSUPP ; 
- int /*<<< orphan*/  WDOG_UNREGISTERED ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- unsigned int stub1 (struct watchdog_device*) ; 
- scalar_t__ test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int ENODEV ;
+ int EOPNOTSUPP ;
+ int WDOG_UNREGISTERED ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ unsigned int stub1 (struct watchdog_device*) ;
+ scalar_t__ test_bit (int ,int *) ;
 
 __attribute__((used)) static int watchdog_get_status(struct watchdog_device *wddev,
-							unsigned int *status)
+       unsigned int *status)
 {
-	int err = 0;
+ int err = 0;
 
-	*status = 0;
-	if (!wddev->ops->status)
-		return -EOPNOTSUPP;
+ *status = 0;
+ if (!wddev->ops->status)
+  return -EOPNOTSUPP;
 
-	mutex_lock(&wddev->lock);
+ mutex_lock(&wddev->lock);
 
-	if (test_bit(WDOG_UNREGISTERED, &wddev->status)) {
-		err = -ENODEV;
-		goto out_status;
-	}
+ if (test_bit(WDOG_UNREGISTERED, &wddev->status)) {
+  err = -ENODEV;
+  goto out_status;
+ }
 
-	*status = wddev->ops->status(wddev);
+ *status = wddev->ops->status(wddev);
 
 out_status:
-	mutex_unlock(&wddev->lock);
-	return err;
+ mutex_unlock(&wddev->lock);
+ return err;
 }

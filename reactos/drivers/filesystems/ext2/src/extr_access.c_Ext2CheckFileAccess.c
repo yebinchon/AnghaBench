@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  Inode; } ;
-typedef  int /*<<< orphan*/  PEXT2_VCB ;
-typedef  TYPE_1__* PEXT2_MCB ;
 
-/* Variables and functions */
- int Ext2CheckInodeAccess (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int Inode; } ;
+typedef int PEXT2_VCB ;
+typedef TYPE_1__* PEXT2_MCB ;
+
+
+ int Ext2CheckInodeAccess (int ,int *,int) ;
 
 int Ext2CheckFileAccess(PEXT2_VCB Vcb, PEXT2_MCB Mcb, int attempt)
 {

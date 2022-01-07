@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  simple_http ; 
- int /*<<< orphan*/  subtest (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_close ; 
- int /*<<< orphan*/  test_handshake ; 
- int /*<<< orphan*/  test_reset_after_close ; 
- int /*<<< orphan*/  test_rst_during_loss ; 
- int /*<<< orphan*/  test_rst_then_close ; 
- int /*<<< orphan*/  test_send_then_close ; 
- int /*<<< orphan*/  tiny_connection_window ; 
- int /*<<< orphan*/  tiny_stream_window ; 
+ int simple_http ;
+ int subtest (char*,int ) ;
+ int test_close ;
+ int test_handshake ;
+ int test_reset_after_close ;
+ int test_rst_during_loss ;
+ int test_rst_then_close ;
+ int test_send_then_close ;
+ int tiny_connection_window ;
+ int tiny_stream_window ;
 
 void test_simple(void)
 {

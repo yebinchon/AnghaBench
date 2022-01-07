@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {size_t out_len; int /*<<< orphan*/  salt_len; int /*<<< orphan*/  salt; int /*<<< orphan*/  info_len; int /*<<< orphan*/  info; int /*<<< orphan*/  secret_len; int /*<<< orphan*/  secret; int /*<<< orphan*/  macctx; int /*<<< orphan*/  digest; int /*<<< orphan*/  provctx; } ;
-typedef  int /*<<< orphan*/  OSSL_PARAM ;
-typedef  int /*<<< orphan*/  OPENSSL_CTX ;
-typedef  TYPE_1__ KDF_SSKDF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OSSL_KDF_PARAM_INFO ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_KEY ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_MAC_SIZE ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_SALT ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_SECRET ; 
- int /*<<< orphan*/  OSSL_PARAM_get_size_t (int /*<<< orphan*/  const*,size_t*) ; 
- int /*<<< orphan*/ * OSSL_PARAM_locate_const (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * PROV_LIBRARY_CONTEXT_OF (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ossl_prov_digest_load_from_params (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ossl_prov_macctx_load_from_params (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sskdf_set_buffer (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {size_t out_len; int salt_len; int salt; int info_len; int info; int secret_len; int secret; int macctx; int digest; int provctx; } ;
+typedef int OSSL_PARAM ;
+typedef int OPENSSL_CTX ;
+typedef TYPE_1__ KDF_SSKDF ;
+
+
+ int OSSL_KDF_PARAM_INFO ;
+ int OSSL_KDF_PARAM_KEY ;
+ int OSSL_KDF_PARAM_MAC_SIZE ;
+ int OSSL_KDF_PARAM_SALT ;
+ int OSSL_KDF_PARAM_SECRET ;
+ int OSSL_PARAM_get_size_t (int const*,size_t*) ;
+ int * OSSL_PARAM_locate_const (int const*,int ) ;
+ int * PROV_LIBRARY_CONTEXT_OF (int ) ;
+ int ossl_prov_digest_load_from_params (int *,int const*,int *) ;
+ int ossl_prov_macctx_load_from_params (int *,int const*,int *,int *,int *,int *) ;
+ int sskdf_set_buffer (int *,int *,int const*) ;
 
 __attribute__((used)) static int sskdf_set_ctx_params(void *vctx, const OSSL_PARAM params[])
 {
@@ -40,24 +40,24 @@ __attribute__((used)) static int sskdf_set_ctx_params(void *vctx, const OSSL_PAR
         return 0;
 
     if (!ossl_prov_macctx_load_from_params(&ctx->macctx, params,
-                                           NULL, NULL, NULL, libctx))
+                                           ((void*)0), ((void*)0), ((void*)0), libctx))
         return 0;
 
-    if ((p = OSSL_PARAM_locate_const(params, OSSL_KDF_PARAM_SECRET)) != NULL
-        || (p = OSSL_PARAM_locate_const(params, OSSL_KDF_PARAM_KEY)) != NULL)
+    if ((p = OSSL_PARAM_locate_const(params, OSSL_KDF_PARAM_SECRET)) != ((void*)0)
+        || (p = OSSL_PARAM_locate_const(params, OSSL_KDF_PARAM_KEY)) != ((void*)0))
         if (!sskdf_set_buffer(&ctx->secret, &ctx->secret_len, p))
             return 0;
 
-    if ((p = OSSL_PARAM_locate_const(params, OSSL_KDF_PARAM_INFO)) != NULL)
+    if ((p = OSSL_PARAM_locate_const(params, OSSL_KDF_PARAM_INFO)) != ((void*)0))
         if (!sskdf_set_buffer(&ctx->info, &ctx->info_len, p))
             return 0;
 
-    if ((p = OSSL_PARAM_locate_const(params, OSSL_KDF_PARAM_SALT)) != NULL)
+    if ((p = OSSL_PARAM_locate_const(params, OSSL_KDF_PARAM_SALT)) != ((void*)0))
         if (!sskdf_set_buffer(&ctx->salt, &ctx->salt_len, p))
             return 0;
 
     if ((p = OSSL_PARAM_locate_const(params, OSSL_KDF_PARAM_MAC_SIZE))
-        != NULL) {
+        != ((void*)0)) {
         if (!OSSL_PARAM_get_size_t(p, &sz) || sz == 0)
             return 0;
         ctx->out_len = sz;

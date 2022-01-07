@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  off_t ;
-typedef  scalar_t__ i64 ;
-struct TYPE_3__ {int nWrite; int /*<<< orphan*/  fd; } ;
-typedef  TYPE_1__ IoContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- int fdatasync (int /*<<< orphan*/ ) ; 
- scalar_t__ getNextSize (char*,char**,int*) ; 
- int /*<<< orphan*/  lseek (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ safe_isdigit (char) ; 
- scalar_t__ safe_isspace (char) ; 
- int /*<<< orphan*/  testPrintError (char*,char*) ; 
- int /*<<< orphan*/  write (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int off_t ;
+typedef scalar_t__ i64 ;
+struct TYPE_3__ {int nWrite; int fd; } ;
+typedef TYPE_1__ IoContext ;
+
+
+ int SEEK_SET ;
+ int fdatasync (int ) ;
+ scalar_t__ getNextSize (char*,char**,int*) ;
+ int lseek (int ,int ,int ) ;
+ scalar_t__ safe_isdigit (char) ;
+ scalar_t__ safe_isspace (char) ;
+ int testPrintError (char*,char*) ;
+ int write (int ,int *,int) ;
 
 __attribute__((used)) static int doOneCmd(
   IoContext *pCtx,

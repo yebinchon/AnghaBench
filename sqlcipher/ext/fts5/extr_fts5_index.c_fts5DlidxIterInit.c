@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
-typedef  struct TYPE_14__   TYPE_12__ ;
 
-/* Type definitions */
-typedef  int sqlite3_int64 ;
-typedef  int /*<<< orphan*/  i64 ;
+
+
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+typedef struct TYPE_14__ TYPE_12__ ;
+
+
+typedef int sqlite3_int64 ;
+typedef int i64 ;
 struct TYPE_17__ {int nLvl; int iSegid; TYPE_2__* aLvl; } ;
 struct TYPE_16__ {TYPE_12__* pData; } ;
 struct TYPE_15__ {scalar_t__ rc; } ;
 struct TYPE_14__ {int* p; } ;
-typedef  TYPE_1__ Fts5Index ;
-typedef  TYPE_2__ Fts5DlidxLvl ;
-typedef  TYPE_3__ Fts5DlidxIter ;
+typedef TYPE_1__ Fts5Index ;
+typedef TYPE_2__ Fts5DlidxLvl ;
+typedef TYPE_3__ Fts5DlidxIter ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FTS5_DLIDX_ROWID (int,int,int) ; 
- scalar_t__ SQLITE_NOMEM ; 
- scalar_t__ SQLITE_OK ; 
- TYPE_12__* fts5DataRead (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fts5DlidxIterFirst (TYPE_3__*) ; 
- int /*<<< orphan*/  fts5DlidxIterFree (TYPE_3__*) ; 
- int /*<<< orphan*/  fts5DlidxIterLast (TYPE_1__*,TYPE_3__*) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ sqlite3_realloc64 (TYPE_3__*,int) ; 
+
+ int FTS5_DLIDX_ROWID (int,int,int) ;
+ scalar_t__ SQLITE_NOMEM ;
+ scalar_t__ SQLITE_OK ;
+ TYPE_12__* fts5DataRead (TYPE_1__*,int ) ;
+ int fts5DlidxIterFirst (TYPE_3__*) ;
+ int fts5DlidxIterFree (TYPE_3__*) ;
+ int fts5DlidxIterLast (TYPE_1__*,TYPE_3__*) ;
+ int memset (TYPE_2__*,int ,int) ;
+ scalar_t__ sqlite3_realloc64 (TYPE_3__*,int) ;
 
 __attribute__((used)) static Fts5DlidxIter *fts5DlidxIterInit(
-  Fts5Index *p,                   /* Fts5 Backend to iterate within */
-  int bRev,                       /* True for ORDER BY ASC */
-  int iSegid,                     /* Segment id */
-  int iLeafPg                     /* Leaf page number to load dlidx for */
+  Fts5Index *p,
+  int bRev,
+  int iSegid,
+  int iLeafPg
 ){
   Fts5DlidxIter *pIter = 0;
   int i;

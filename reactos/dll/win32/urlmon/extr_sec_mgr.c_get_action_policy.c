@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int URLZONEREG ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERROR_FILE_NOT_FOUND ; 
- int /*<<< orphan*/  ERROR_MORE_DATA ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  E_UNEXPECTED ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegQueryValueExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
-#define  URLACTION_ACTIVEX_OVERRIDE_SCRIPT_SAFETY 132 
-#define  URLACTION_SCRIPT_OVERRIDE_SAFETY 131 
- int URLPOLICY_DISALLOW ; 
-#define  URLZONEREG_DEFAULT 130 
-#define  URLZONEREG_HKCU 129 
-#define  URLZONEREG_HKLM 128 
- int /*<<< orphan*/  WARN (char*,int) ; 
- int /*<<< orphan*/  open_zone_key (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wsprintfW (char*,char const*,int) ; 
+
+
+
+typedef char WCHAR ;
+typedef int URLZONEREG ;
+typedef int LONG ;
+typedef int HRESULT ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef int BYTE ;
+
+
+ int ERR (char*,int ) ;
+ int ERROR_FILE_NOT_FOUND ;
+ int ERROR_MORE_DATA ;
+ int ERROR_SUCCESS ;
+ int E_FAIL ;
+ int E_INVALIDARG ;
+ int E_UNEXPECTED ;
+ scalar_t__ FAILED (int ) ;
+ int HKEY_CURRENT_USER ;
+ int HKEY_LOCAL_MACHINE ;
+ int RegCloseKey (int ) ;
+ int RegQueryValueExW (int ,char*,int *,int *,int *,int*) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+
+
+ int URLPOLICY_DISALLOW ;
+
+
+
+ int WARN (char*,int) ;
+ int open_zone_key (int ,int,int *) ;
+ int wsprintfW (char*,char const*,int) ;
 
 __attribute__((used)) static HRESULT get_action_policy(DWORD zone, DWORD action, BYTE *policy, DWORD size, URLZONEREG zone_reg)
 {
@@ -51,18 +51,18 @@ __attribute__((used)) static HRESULT get_action_policy(DWORD zone, DWORD action,
     HRESULT hres;
 
     switch(action) {
-    case URLACTION_SCRIPT_OVERRIDE_SAFETY:
-    case URLACTION_ACTIVEX_OVERRIDE_SCRIPT_SAFETY:
+    case 131:
+    case 132:
         *(DWORD*)policy = URLPOLICY_DISALLOW;
         return S_OK;
     }
 
     switch(zone_reg) {
-    case URLZONEREG_DEFAULT:
-    case URLZONEREG_HKCU:
+    case 130:
+    case 129:
         parent_key = HKEY_CURRENT_USER;
         break;
-    case URLZONEREG_HKLM:
+    case 128:
         parent_key = HKEY_LOCAL_MACHINE;
         break;
     default:
@@ -79,7 +79,7 @@ __attribute__((used)) static HRESULT get_action_policy(DWORD zone, DWORD action,
 
         wsprintfW(action_str, formatW, action);
 
-        res = RegQueryValueExW(hkey, action_str, NULL, NULL, policy, &len);
+        res = RegQueryValueExW(hkey, action_str, ((void*)0), ((void*)0), policy, &len);
         if(res == ERROR_MORE_DATA) {
             hres = E_INVALIDARG;
         }else if(res == ERROR_FILE_NOT_FOUND) {
@@ -92,8 +92,8 @@ __attribute__((used)) static HRESULT get_action_policy(DWORD zone, DWORD action,
         RegCloseKey(hkey);
     }
 
-    if(FAILED(hres) && zone_reg == URLZONEREG_DEFAULT)
-        return get_action_policy(zone, action, policy, size, URLZONEREG_HKLM);
+    if(FAILED(hres) && zone_reg == 130)
+        return get_action_policy(zone, action, policy, size, 128);
 
     return hres;
 }

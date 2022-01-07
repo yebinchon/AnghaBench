@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fetcher_thread {void (* pf_worker ) (int /*<<< orphan*/ *,struct fetcher_request*) ;int /*<<< orphan*/  interrupt; int /*<<< orphan*/  thread; int /*<<< orphan*/  active; int /*<<< orphan*/ * fetcher; struct background_worker* worker; struct fetcher_request* req; } ;
+
+
+
+
+struct fetcher_thread {void (* pf_worker ) (int *,struct fetcher_request*) ;int interrupt; int thread; int active; int * fetcher; struct background_worker* worker; struct fetcher_request* req; } ;
 struct fetcher_request {int dummy; } ;
 struct background_worker {int dummy; } ;
-typedef  int /*<<< orphan*/  input_fetcher_t ;
+typedef int input_fetcher_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FetcherThread ; 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  VLC_THREAD_PRIORITY_LOW ; 
- int /*<<< orphan*/  atomic_init (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  free (struct fetcher_thread*) ; 
- struct fetcher_thread* malloc (int) ; 
- scalar_t__ unlikely (int) ; 
- int /*<<< orphan*/  vlc_clone (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct fetcher_thread*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_interrupt_deinit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_interrupt_init (int /*<<< orphan*/ *) ; 
+
+ int FetcherThread ;
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int VLC_THREAD_PRIORITY_LOW ;
+ int atomic_init (int *,int) ;
+ int free (struct fetcher_thread*) ;
+ struct fetcher_thread* malloc (int) ;
+ scalar_t__ unlikely (int) ;
+ int vlc_clone (int *,int ,struct fetcher_thread*,int ) ;
+ int vlc_interrupt_deinit (int *) ;
+ int vlc_interrupt_init (int *) ;
 
 __attribute__((used)) static int StartWorker( input_fetcher_t* fetcher,
     void( *pf_worker )( input_fetcher_t*, struct fetcher_request* ),
@@ -44,7 +44,7 @@ __attribute__((used)) static int StartWorker( input_fetcher_t* fetcher,
     th->pf_worker = pf_worker;
 
     vlc_interrupt_init( &th->interrupt );
-    atomic_init( &th->active, true );
+    atomic_init( &th->active, 1 );
 
     if( !vlc_clone( &th->thread, FetcherThread, th, VLC_THREAD_PRIORITY_LOW ) )
     {

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct input_dev {int dummy; } ;
-struct bcm5974 {int /*<<< orphan*/  intf; int /*<<< orphan*/  pm_mutex; scalar_t__ opened; } ;
+struct bcm5974 {int intf; int pm_mutex; scalar_t__ opened; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bcm5974_pause_traffic (struct bcm5974*) ; 
- struct bcm5974* input_get_drvdata (struct input_dev*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usb_autopm_put_interface (int /*<<< orphan*/ ) ; 
+
+ int bcm5974_pause_traffic (struct bcm5974*) ;
+ struct bcm5974* input_get_drvdata (struct input_dev*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int usb_autopm_put_interface (int ) ;
 
 __attribute__((used)) static void bcm5974_close(struct input_dev *input)
 {
-	struct bcm5974 *dev = input_get_drvdata(input);
+ struct bcm5974 *dev = input_get_drvdata(input);
 
-	mutex_lock(&dev->pm_mutex);
+ mutex_lock(&dev->pm_mutex);
 
-	bcm5974_pause_traffic(dev);
-	dev->opened = 0;
+ bcm5974_pause_traffic(dev);
+ dev->opened = 0;
 
-	mutex_unlock(&dev->pm_mutex);
+ mutex_unlock(&dev->pm_mutex);
 
-	usb_autopm_put_interface(dev->intf);
+ usb_autopm_put_interface(dev->intf);
 }

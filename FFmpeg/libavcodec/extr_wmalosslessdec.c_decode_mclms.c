@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int mclms_order; int mclms_scaling; int num_channels; int* mclms_coeffs; int* mclms_coeffs_cur; int /*<<< orphan*/  gb; } ;
-typedef  TYPE_1__ WmallDecodeCtx ;
 
-/* Variables and functions */
- int av_log2 (int) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- scalar_t__ get_bits1 (int /*<<< orphan*/ *) ; 
- int get_bitsz (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int mclms_order; int mclms_scaling; int num_channels; int* mclms_coeffs; int* mclms_coeffs_cur; int gb; } ;
+typedef TYPE_1__ WmallDecodeCtx ;
+
+
+ int av_log2 (int) ;
+ int get_bits (int *,int) ;
+ scalar_t__ get_bits1 (int *) ;
+ int get_bitsz (int *,int) ;
 
 __attribute__((used)) static void decode_mclms(WmallDecodeCtx *s)
 {
-    s->mclms_order   = (get_bits(&s->gb, 4) + 1) * 2;
+    s->mclms_order = (get_bits(&s->gb, 4) + 1) * 2;
     s->mclms_scaling = get_bits(&s->gb, 4);
     if (get_bits1(&s->gb)) {
         int i, send_coef_bits;

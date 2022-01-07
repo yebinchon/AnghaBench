@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int uint16_t ;
 
-/* Variables and functions */
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+
+
 
 uint32_t hsv2grb(uint16_t hue, uint8_t sat, uint8_t val)
 {
   uint16_t H_accent = (hue % 360) / 60;
   uint16_t bottom = ((255 - sat) * val)>>8;
   uint16_t top = val;
-  uint8_t rising  = ((top-bottom)  *(hue%60   )  )  /  60  +  bottom;
-  uint8_t falling = ((top-bottom)  *(60-hue%60)  )  /  60  +  bottom;
+  uint8_t rising = ((top-bottom) *(hue%60 ) ) / 60 + bottom;
+  uint8_t falling = ((top-bottom) *(60-hue%60) ) / 60 + bottom;
 
   uint8_t r;
   uint8_t g;

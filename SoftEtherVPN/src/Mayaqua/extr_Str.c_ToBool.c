@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
 
-/* Variables and functions */
- scalar_t__ IsEmptyStr (char*) ; 
- int MAX_SIZE ; 
- scalar_t__ StartWith (char*,char*) ; 
- int /*<<< orphan*/  StrCpy (char*,int,char*) ; 
- scalar_t__ ToInt (char*) ; 
- int /*<<< orphan*/  Trim (char*) ; 
+
+
+
+typedef int tmp ;
+
+
+ scalar_t__ IsEmptyStr (char*) ;
+ int MAX_SIZE ;
+ scalar_t__ StartWith (char*,char*) ;
+ int StrCpy (char*,int,char*) ;
+ scalar_t__ ToInt (char*) ;
+ int Trim (char*) ;
 
 bool ToBool(char *str)
 {
-	char tmp[MAX_SIZE];
-	// Validate arguments
-	if (str == NULL)
-	{
-		return false;
-	}
+ char tmp[MAX_SIZE];
 
-	StrCpy(tmp, sizeof(tmp), str);
-	Trim(tmp);
+ if (str == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (IsEmptyStr(tmp))
-	{
-		return false;
-	}
+ StrCpy(tmp, sizeof(tmp), str);
+ Trim(tmp);
 
-	if (ToInt(tmp) != 0)
-	{
-		return true;
-	}
+ if (IsEmptyStr(tmp))
+ {
+  return 0;
+ }
 
-	if (StartWith("true", tmp))
-	{
-		return true;
-	}
+ if (ToInt(tmp) != 0)
+ {
+  return 1;
+ }
 
-	if (StartWith("yes", tmp))
-	{
-		return true;
-	}
+ if (StartWith("true", tmp))
+ {
+  return 1;
+ }
 
-	if (StartWith(tmp, "true"))
-	{
-		return true;
-	}
+ if (StartWith("yes", tmp))
+ {
+  return 1;
+ }
 
-	if (StartWith(tmp, "yes"))
-	{
-		return true;
-	}
+ if (StartWith(tmp, "true"))
+ {
+  return 1;
+ }
 
-	return false;
+ if (StartWith(tmp, "yes"))
+ {
+  return 1;
+ }
+
+ return 0;
 }

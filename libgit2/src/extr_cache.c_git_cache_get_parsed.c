@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_oid ;
-typedef  int /*<<< orphan*/  git_object ;
-typedef  int /*<<< orphan*/  git_cache ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GIT_CACHE_STORE_PARSED ; 
- int /*<<< orphan*/ * cache_get (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int git_oid ;
+typedef int git_object ;
+typedef int git_cache ;
+
+
+ int GIT_CACHE_STORE_PARSED ;
+ int * cache_get (int *,int const*,int ) ;
 
 git_object *git_cache_get_parsed(git_cache *cache, const git_oid *oid)
 {
-	return cache_get(cache, oid, GIT_CACHE_STORE_PARSED);
+ return cache_get(cache, oid, GIT_CACHE_STORE_PARSED);
 }

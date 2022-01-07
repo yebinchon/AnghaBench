@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  v8i16 ;
-struct TYPE_8__ {int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ v16u8 ;
-typedef  int /*<<< orphan*/  v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  ptrdiff_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPADD_SB2_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HADD_SB2_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INSERT_W4_UB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__) ; 
- int /*<<< orphan*/  LD_SB3 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LD_SB4 (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LW4 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__ PCKEV_XORI128_UB (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SAT_SH2_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SRARI_H2_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ST_W4 (TYPE_1__,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VSHF_B2_SB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XORI_B4_128_SB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__ __msa_aver_u_b (TYPE_1__,TYPE_1__) ; 
- int /*<<< orphan*/  __msa_ldi_b (int) ; 
- int /*<<< orphan*/ * luma_mask_arr ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int v8i16 ;
+struct TYPE_8__ {int member_0; } ;
+typedef TYPE_1__ v16u8 ;
+typedef int v16i8 ;
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int ptrdiff_t ;
+
+
+ int DPADD_SB2_SH (int ,int ,int ,int ,int ,int ) ;
+ int HADD_SB2_SH (int ,int ,int ,int ) ;
+ int INSERT_W4_UB (int ,int ,int ,int ,TYPE_1__) ;
+ int LD_SB3 (int *,int,int ,int ,int ) ;
+ int LD_SB4 (int const*,int ,int ,int ,int ,int ) ;
+ int LW4 (int *,int ,int ,int ,int ,int ) ;
+ TYPE_1__ PCKEV_XORI128_UB (int ,int ) ;
+ int SAT_SH2_SH (int ,int ,int) ;
+ int SRARI_H2_SH (int ,int ,int) ;
+ int ST_W4 (TYPE_1__,int ,int,int,int,int *,int ) ;
+ int VSHF_B2_SB (int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int XORI_B4_128_SB (int ,int ,int ,int ) ;
+ TYPE_1__ __msa_aver_u_b (TYPE_1__,TYPE_1__) ;
+ int __msa_ldi_b (int) ;
+ int * luma_mask_arr ;
 
 void ff_avg_h264_qpel4_mc20_msa(uint8_t *dst, const uint8_t *src,
                                 ptrdiff_t stride)

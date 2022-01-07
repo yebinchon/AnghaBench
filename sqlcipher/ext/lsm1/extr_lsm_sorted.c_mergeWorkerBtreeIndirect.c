@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ iIndirect; TYPE_1__* aSave; } ;
-struct TYPE_5__ {int /*<<< orphan*/  iPgno; } ;
-typedef  TYPE_2__ MergeWorker ;
-typedef  int /*<<< orphan*/  LsmPgno ;
+struct TYPE_5__ {int iPgno; } ;
+typedef TYPE_2__ MergeWorker ;
+typedef int LsmPgno ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int mergeWorkerBtreeWrite (TYPE_2__*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int LSM_OK ;
+ int mergeWorkerBtreeWrite (TYPE_2__*,int ,scalar_t__,int ,int ,int ) ;
 
 __attribute__((used)) static int mergeWorkerBtreeIndirect(MergeWorker *pMW){
   int rc = LSM_OK;

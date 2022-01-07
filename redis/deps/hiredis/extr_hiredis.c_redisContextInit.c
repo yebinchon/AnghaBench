@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  redisOptions ;
-struct TYPE_5__ {int /*<<< orphan*/ * reader; int /*<<< orphan*/ * obuf; int /*<<< orphan*/  fd; int /*<<< orphan*/ * funcs; } ;
-typedef  TYPE_1__ redisContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REDIS_INVALID_FD ; 
- TYPE_1__* calloc (int,int) ; 
- int /*<<< orphan*/  redisContextDefaultFuncs ; 
- int /*<<< orphan*/  redisFree (TYPE_1__*) ; 
- int /*<<< orphan*/ * redisReaderCreate () ; 
- int /*<<< orphan*/ * sdsempty () ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int redisOptions ;
+struct TYPE_5__ {int * reader; int * obuf; int fd; int * funcs; } ;
+typedef TYPE_1__ redisContext ;
+
+
+ int REDIS_INVALID_FD ;
+ TYPE_1__* calloc (int,int) ;
+ int redisContextDefaultFuncs ;
+ int redisFree (TYPE_1__*) ;
+ int * redisReaderCreate () ;
+ int * sdsempty () ;
 
 __attribute__((used)) static redisContext *redisContextInit(const redisOptions *options) {
     redisContext *c;
 
     c = calloc(1, sizeof(*c));
-    if (c == NULL)
-        return NULL;
+    if (c == ((void*)0))
+        return ((void*)0);
 
     c->funcs = &redisContextDefaultFuncs;
     c->obuf = sdsempty();
     c->reader = redisReaderCreate();
     c->fd = REDIS_INVALID_FD;
 
-    if (c->obuf == NULL || c->reader == NULL) {
+    if (c->obuf == ((void*)0) || c->reader == ((void*)0)) {
         redisFree(c);
-        return NULL;
+        return ((void*)0);
     }
-    (void)options; /* options are used in other functions */
+    (void)options;
     return c;
 }

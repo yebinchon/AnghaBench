@@ -1,43 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EORSTE ; 
- int /*<<< orphan*/  HW_CONFIG () ; 
- int PLLCSR ; 
- int /*<<< orphan*/  PLL_CONFIG () ; 
- int PLOCK ; 
- int SOFE ; 
- int SUSPE ; 
- scalar_t__ UDCON ; 
- int UDIEN ; 
- int /*<<< orphan*/  USB_CONFIG () ; 
- int /*<<< orphan*/  USB_FREEZE () ; 
- int WAKEUPE ; 
- int /*<<< orphan*/  sei () ; 
- int suspend ; 
- scalar_t__ usb_configuration ; 
+ int EORSTE ;
+ int HW_CONFIG () ;
+ int PLLCSR ;
+ int PLL_CONFIG () ;
+ int PLOCK ;
+ int SOFE ;
+ int SUSPE ;
+ scalar_t__ UDCON ;
+ int UDIEN ;
+ int USB_CONFIG () ;
+ int USB_FREEZE () ;
+ int WAKEUPE ;
+ int sei () ;
+ int suspend ;
+ scalar_t__ usb_configuration ;
 
 void usb_init(void) {
     HW_CONFIG();
-    USB_FREEZE();  // enable USB
-    PLL_CONFIG();  // config PLL
+    USB_FREEZE();
+    PLL_CONFIG();
     while (!(PLLCSR & (1 << PLOCK)))
-        ;                   // wait for PLL lock
-    USB_CONFIG();           // start USB clock
-    UDCON             = 0;  // enable attach resistor
+        ;
+    USB_CONFIG();
+    UDCON = 0;
     usb_configuration = 0;
-    suspend           = false;
-    UDIEN             = (1 << EORSTE) | (1 << SOFE) | (1 << SUSPE) | (1 << WAKEUPE);
+    suspend = 0;
+    UDIEN = (1 << EORSTE) | (1 << SOFE) | (1 << SUSPE) | (1 << WAKEUPE);
     sei();
 }

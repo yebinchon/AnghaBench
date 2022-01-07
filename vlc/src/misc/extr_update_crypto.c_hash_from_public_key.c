@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_7__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-struct TYPE_13__ {int version; scalar_t__ type; scalar_t__* hash_verification; int /*<<< orphan*/  digest_algo; } ;
-struct TYPE_9__ {int /*<<< orphan*/  e; int /*<<< orphan*/  n; } ;
-struct TYPE_8__ {int /*<<< orphan*/  y; int /*<<< orphan*/  g; int /*<<< orphan*/  q; int /*<<< orphan*/  p; } ;
+
+
+typedef struct TYPE_13__ TYPE_7__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+struct TYPE_13__ {int version; scalar_t__ type; scalar_t__* hash_verification; int digest_algo; } ;
+struct TYPE_9__ {int e; int n; } ;
+struct TYPE_8__ {int y; int g; int q; int p; } ;
 struct TYPE_10__ {TYPE_2__ rsa; TYPE_1__ dsa; } ;
 struct TYPE_11__ {scalar_t__ algo; size_t version; scalar_t__* timestamp; TYPE_3__ sig; } ;
 struct TYPE_12__ {scalar_t__* psz_username; TYPE_7__ sig; TYPE_4__ key; } ;
-typedef  TYPE_5__ public_key_t ;
-typedef  size_t i_len ;
-typedef  int /*<<< orphan*/  gcry_md_hd_t ;
-typedef  scalar_t__ gcry_error_t ;
+typedef TYPE_5__ public_key_t ;
+typedef size_t i_len ;
+typedef int gcry_md_hd_t ;
+typedef scalar_t__ gcry_error_t ;
 
-/* Variables and functions */
- scalar_t__ const GCRY_PK_DSA ; 
- scalar_t__ const GCRY_PK_RSA ; 
- scalar_t__ GENERIC_KEY_SIGNATURE ; 
- scalar_t__ POSITIVE_KEY_SIGNATURE ; 
- int /*<<< orphan*/  free (scalar_t__*) ; 
- scalar_t__ gcry_md_open (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcry_md_putc (int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  gcry_md_write (int /*<<< orphan*/ ,scalar_t__*,size_t) ; 
- scalar_t__* hash_finish (int /*<<< orphan*/ ,TYPE_7__*) ; 
- size_t mpi_len (int /*<<< orphan*/ ) ; 
- size_t strlen (char*) ; 
+
+ scalar_t__ const GCRY_PK_DSA ;
+ scalar_t__ const GCRY_PK_RSA ;
+ scalar_t__ GENERIC_KEY_SIGNATURE ;
+ scalar_t__ POSITIVE_KEY_SIGNATURE ;
+ int free (scalar_t__*) ;
+ scalar_t__ gcry_md_open (int *,int ,int ) ;
+ int gcry_md_putc (int ,size_t) ;
+ int gcry_md_write (int ,scalar_t__*,size_t) ;
+ scalar_t__* hash_finish (int ,TYPE_7__*) ;
+ size_t mpi_len (int ) ;
+ size_t strlen (char*) ;
 
 uint8_t *hash_from_public_key( public_key_t *p_pkey )
 {
@@ -49,14 +49,14 @@ uint8_t *hash_from_public_key( public_key_t *p_pkey )
     size_t i_n_len, i_e_len;
 
     if( p_pkey->sig.version != 4 )
-        return NULL;
+        return ((void*)0);
 
     if( p_pkey->sig.type < GENERIC_KEY_SIGNATURE ||
         p_pkey->sig.type > POSITIVE_KEY_SIGNATURE )
-        return NULL;
+        return ((void*)0);
 
-    if( p_pkey->psz_username == NULL )
-        return NULL;
+    if( p_pkey->psz_username == ((void*)0) )
+        return ((void*)0);
 
     gcry_error_t error = 0;
     gcry_md_hd_t hd;
@@ -74,11 +74,11 @@ uint8_t *hash_from_public_key( public_key_t *p_pkey )
 
         i_size = 6 + 2*2 + i_n_len + i_e_len;
     } else
-        return NULL;
+        return ((void*)0);
 
     error = gcry_md_open( &hd, p_pkey->sig.digest_algo, 0 );
     if( error )
-        return NULL;
+        return ((void*)0);
 
     gcry_md_putc( hd, 0x99 );
 
@@ -116,7 +116,7 @@ uint8_t *hash_from_public_key( public_key_t *p_pkey )
         p_hash[1] != p_pkey->sig.hash_verification[1] )
     {
         free(p_hash);
-        return NULL;
+        return ((void*)0);
     }
 
     return p_hash;

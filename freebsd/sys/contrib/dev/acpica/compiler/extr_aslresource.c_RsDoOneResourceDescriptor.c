@@ -1,393 +1,350 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_92__   TYPE_86__ ;
-typedef  struct TYPE_91__   TYPE_5__ ;
-typedef  struct TYPE_90__   TYPE_4__ ;
-typedef  struct TYPE_89__   TYPE_3__ ;
-typedef  struct TYPE_88__   TYPE_2__ ;
-typedef  struct TYPE_87__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT8 ;
-struct TYPE_87__ {int /*<<< orphan*/  Integer; } ;
-struct TYPE_88__ {int ParseOpcode; char* ParseOpName; int /*<<< orphan*/  Extra; int /*<<< orphan*/  FinalAmlLength; TYPE_1__ Value; int /*<<< orphan*/  CompileFlags; } ;
+
+
+typedef struct TYPE_92__ TYPE_86__ ;
+typedef struct TYPE_91__ TYPE_5__ ;
+typedef struct TYPE_90__ TYPE_4__ ;
+typedef struct TYPE_89__ TYPE_3__ ;
+typedef struct TYPE_88__ TYPE_2__ ;
+typedef struct TYPE_87__ TYPE_1__ ;
+
+
+typedef int UINT8 ;
+struct TYPE_87__ {int Integer; } ;
+struct TYPE_88__ {int ParseOpcode; char* ParseOpName; int Extra; int FinalAmlLength; TYPE_1__ Value; int CompileFlags; } ;
 struct TYPE_92__ {TYPE_2__ Asl; } ;
-struct TYPE_91__ {int /*<<< orphan*/  DescriptorType; } ;
-struct TYPE_90__ {TYPE_86__* DescriptorTypeOp; int /*<<< orphan*/  CurrentByteOffset; } ;
-struct TYPE_89__ {scalar_t__ Buffer; int /*<<< orphan*/  BufferLength; } ;
-typedef  TYPE_3__ ASL_RESOURCE_NODE ;
-typedef  TYPE_4__ ASL_RESOURCE_INFO ;
-typedef  TYPE_5__ AML_RESOURCE ;
+struct TYPE_91__ {int DescriptorType; } ;
+struct TYPE_90__ {TYPE_86__* DescriptorTypeOp; int CurrentByteOffset; } ;
+struct TYPE_89__ {scalar_t__ Buffer; int BufferLength; } ;
+typedef TYPE_3__ ASL_RESOURCE_NODE ;
+typedef TYPE_4__ ASL_RESOURCE_INFO ;
+typedef TYPE_5__ AML_RESOURCE ;
 
-/* Variables and functions */
-#define  ACPI_RSTATE_DEPENDENT_LIST 173 
-#define  ACPI_RSTATE_NORMAL 172 
-#define  ACPI_RSTATE_START_DEPENDENT 171 
- int /*<<< orphan*/  ASL_ERROR ; 
- int /*<<< orphan*/  ASL_MSG_DEPENDENT_NESTING ; 
- int /*<<< orphan*/  ASL_MSG_MISSING_STARTDEPENDENT ; 
- int /*<<< orphan*/  AslError (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_86__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OP_IS_RESOURCE_DESC ; 
-#define  PARSEOP_DEFAULT_ARG 170 
-#define  PARSEOP_DMA 169 
-#define  PARSEOP_DWORDIO 168 
-#define  PARSEOP_DWORDMEMORY 167 
-#define  PARSEOP_DWORDSPACE 166 
-#define  PARSEOP_ENDDEPENDENTFN 165 
-#define  PARSEOP_ENDTAG 164 
-#define  PARSEOP_EXTENDEDIO 163 
-#define  PARSEOP_EXTENDEDMEMORY 162 
-#define  PARSEOP_EXTENDEDSPACE 161 
-#define  PARSEOP_FIXEDDMA 160 
-#define  PARSEOP_FIXEDIO 159 
-#define  PARSEOP_GPIO_INT 158 
-#define  PARSEOP_GPIO_IO 157 
-#define  PARSEOP_I2C_SERIALBUS 156 
-#define  PARSEOP_I2C_SERIALBUS_V2 155 
-#define  PARSEOP_INTERRUPT 154 
-#define  PARSEOP_IO 153 
-#define  PARSEOP_IRQ 152 
-#define  PARSEOP_IRQNOFLAGS 151 
-#define  PARSEOP_MEMORY24 150 
-#define  PARSEOP_MEMORY32 149 
-#define  PARSEOP_MEMORY32FIXED 148 
-#define  PARSEOP_PINCONFIG 147 
-#define  PARSEOP_PINFUNCTION 146 
-#define  PARSEOP_PINGROUP 145 
-#define  PARSEOP_PINGROUPCONFIG 144 
-#define  PARSEOP_PINGROUPFUNCTION 143 
-#define  PARSEOP_QWORDIO 142 
-#define  PARSEOP_QWORDMEMORY 141 
-#define  PARSEOP_QWORDSPACE 140 
-#define  PARSEOP_REGISTER 139 
-#define  PARSEOP_SPI_SERIALBUS 138 
-#define  PARSEOP_SPI_SERIALBUS_V2 137 
-#define  PARSEOP_STARTDEPENDENTFN 136 
-#define  PARSEOP_STARTDEPENDENTFN_NOPRI 135 
-#define  PARSEOP_UART_SERIALBUS 134 
-#define  PARSEOP_UART_SERIALBUS_V2 133 
-#define  PARSEOP_VENDORLONG 132 
-#define  PARSEOP_VENDORSHORT 131 
-#define  PARSEOP_WORDBUSNUMBER 130 
-#define  PARSEOP_WORDIO 129 
-#define  PARSEOP_WORDSPACE 128 
- TYPE_3__* RsDoDmaDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoDwordIoDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoDwordMemoryDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoDwordSpaceDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoEndDependentDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoEndTagDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoExtendedIoDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoExtendedMemoryDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoExtendedSpaceDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoFixedDmaDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoFixedIoDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoGeneralRegisterDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoGpioIntDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoGpioIoDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoI2cSerialBusDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoInterruptDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoIoDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoIrqDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoIrqNoFlagsDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoMemory24Descriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoMemory32Descriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoMemory32FixedDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoPinConfigDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoPinFunctionDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoPinGroupConfigDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoPinGroupDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoPinGroupFunctionDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoQwordIoDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoQwordMemoryDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoQwordSpaceDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoSpiSerialBusDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoStartDependentDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoStartDependentNoPriDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoUartSerialBusDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoVendorLargeDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoVendorSmallDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoWordBusNumberDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoWordIoDescriptor (TYPE_4__*) ; 
- TYPE_3__* RsDoWordSpaceDescriptor (TYPE_4__*) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
+
+
+
+
+ int ASL_ERROR ;
+ int ASL_MSG_DEPENDENT_NESTING ;
+ int ASL_MSG_MISSING_STARTDEPENDENT ;
+ int AslError (int ,int ,TYPE_86__*,int *) ;
+ int OP_IS_RESOURCE_DESC ;
+ TYPE_3__* RsDoDmaDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoDwordIoDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoDwordMemoryDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoDwordSpaceDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoEndDependentDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoEndTagDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoExtendedIoDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoExtendedMemoryDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoExtendedSpaceDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoFixedDmaDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoFixedIoDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoGeneralRegisterDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoGpioIntDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoGpioIoDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoI2cSerialBusDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoInterruptDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoIoDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoIrqDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoIrqNoFlagsDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoMemory24Descriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoMemory32Descriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoMemory32FixedDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoPinConfigDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoPinFunctionDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoPinGroupConfigDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoPinGroupDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoPinGroupFunctionDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoQwordIoDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoQwordMemoryDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoQwordSpaceDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoSpiSerialBusDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoStartDependentDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoStartDependentNoPriDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoUartSerialBusDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoVendorLargeDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoVendorSmallDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoWordBusNumberDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoWordIoDescriptor (TYPE_4__*) ;
+ TYPE_3__* RsDoWordSpaceDescriptor (TYPE_4__*) ;
+ int printf (char*,char*) ;
 
 ASL_RESOURCE_NODE *
 RsDoOneResourceDescriptor (
-    ASL_RESOURCE_INFO       *Info,
-    UINT8                   *State)
+    ASL_RESOURCE_INFO *Info,
+    UINT8 *State)
 {
-    ASL_RESOURCE_NODE       *Rnode = NULL;
+    ASL_RESOURCE_NODE *Rnode = ((void*)0);
 
 
-    /* Construct the resource */
+
 
     switch (Info->DescriptorTypeOp->Asl.ParseOpcode)
     {
-    case PARSEOP_DMA:
+    case 169:
 
         Rnode = RsDoDmaDescriptor (Info);
         break;
 
-    case PARSEOP_FIXEDDMA:
+    case 160:
 
         Rnode = RsDoFixedDmaDescriptor (Info);
         break;
 
-    case PARSEOP_DWORDIO:
+    case 168:
 
         Rnode = RsDoDwordIoDescriptor (Info);
         break;
 
-    case PARSEOP_DWORDMEMORY:
+    case 167:
 
         Rnode = RsDoDwordMemoryDescriptor (Info);
         break;
 
-    case PARSEOP_DWORDSPACE:
+    case 166:
 
         Rnode = RsDoDwordSpaceDescriptor (Info);
         break;
 
-    case PARSEOP_ENDDEPENDENTFN:
+    case 165:
 
         switch (*State)
         {
-        case ACPI_RSTATE_NORMAL:
+        case 172:
 
             AslError (ASL_ERROR, ASL_MSG_MISSING_STARTDEPENDENT,
-                Info->DescriptorTypeOp, NULL);
+                Info->DescriptorTypeOp, ((void*)0));
             break;
 
-        case ACPI_RSTATE_START_DEPENDENT:
+        case 171:
 
             AslError (ASL_ERROR, ASL_MSG_DEPENDENT_NESTING,
-                Info->DescriptorTypeOp, NULL);
+                Info->DescriptorTypeOp, ((void*)0));
             break;
 
-        case ACPI_RSTATE_DEPENDENT_LIST:
+        case 173:
         default:
 
             break;
         }
 
-        *State = ACPI_RSTATE_NORMAL;
+        *State = 172;
         Rnode = RsDoEndDependentDescriptor (Info);
         break;
 
-    case PARSEOP_ENDTAG:
+    case 164:
 
         Rnode = RsDoEndTagDescriptor (Info);
         break;
 
-    case PARSEOP_EXTENDEDIO:
+    case 163:
 
         Rnode = RsDoExtendedIoDescriptor (Info);
         break;
 
-    case PARSEOP_EXTENDEDMEMORY:
+    case 162:
 
         Rnode = RsDoExtendedMemoryDescriptor (Info);
         break;
 
-    case PARSEOP_EXTENDEDSPACE:
+    case 161:
 
         Rnode = RsDoExtendedSpaceDescriptor (Info);
         break;
 
-    case PARSEOP_FIXEDIO:
+    case 159:
 
         Rnode = RsDoFixedIoDescriptor (Info);
         break;
 
-    case PARSEOP_INTERRUPT:
+    case 154:
 
         Rnode = RsDoInterruptDescriptor (Info);
         break;
 
-    case PARSEOP_IO:
+    case 153:
 
         Rnode = RsDoIoDescriptor (Info);
         break;
 
-    case PARSEOP_IRQ:
+    case 152:
 
         Rnode = RsDoIrqDescriptor (Info);
         break;
 
-    case PARSEOP_IRQNOFLAGS:
+    case 151:
 
         Rnode = RsDoIrqNoFlagsDescriptor (Info);
         break;
 
-    case PARSEOP_MEMORY24:
+    case 150:
 
         Rnode = RsDoMemory24Descriptor (Info);
         break;
 
-    case PARSEOP_MEMORY32:
+    case 149:
 
         Rnode = RsDoMemory32Descriptor (Info);
         break;
 
-    case PARSEOP_MEMORY32FIXED:
+    case 148:
 
         Rnode = RsDoMemory32FixedDescriptor (Info);
         break;
 
-    case PARSEOP_QWORDIO:
+    case 142:
 
         Rnode = RsDoQwordIoDescriptor (Info);
         break;
 
-    case PARSEOP_QWORDMEMORY:
+    case 141:
 
         Rnode = RsDoQwordMemoryDescriptor (Info);
         break;
 
-    case PARSEOP_QWORDSPACE:
+    case 140:
 
         Rnode = RsDoQwordSpaceDescriptor (Info);
         break;
 
-    case PARSEOP_REGISTER:
+    case 139:
 
         Rnode = RsDoGeneralRegisterDescriptor (Info);
         break;
 
-    case PARSEOP_STARTDEPENDENTFN:
+    case 136:
 
         switch (*State)
         {
-        case ACPI_RSTATE_START_DEPENDENT:
+        case 171:
 
             AslError (ASL_ERROR, ASL_MSG_DEPENDENT_NESTING,
-                Info->DescriptorTypeOp, NULL);
+                Info->DescriptorTypeOp, ((void*)0));
             break;
 
-        case ACPI_RSTATE_NORMAL:
-        case ACPI_RSTATE_DEPENDENT_LIST:
+        case 172:
+        case 173:
         default:
 
             break;
         }
 
-        *State = ACPI_RSTATE_START_DEPENDENT;
+        *State = 171;
         Rnode = RsDoStartDependentDescriptor (Info);
-        *State = ACPI_RSTATE_DEPENDENT_LIST;
+        *State = 173;
         break;
 
-    case PARSEOP_STARTDEPENDENTFN_NOPRI:
+    case 135:
 
         switch (*State)
         {
-        case ACPI_RSTATE_START_DEPENDENT:
+        case 171:
 
             AslError (ASL_ERROR, ASL_MSG_DEPENDENT_NESTING,
-                Info->DescriptorTypeOp, NULL);
+                Info->DescriptorTypeOp, ((void*)0));
             break;
 
-        case ACPI_RSTATE_NORMAL:
-        case ACPI_RSTATE_DEPENDENT_LIST:
+        case 172:
+        case 173:
         default:
 
             break;
         }
 
-        *State = ACPI_RSTATE_START_DEPENDENT;
+        *State = 171;
         Rnode = RsDoStartDependentNoPriDescriptor (Info);
-        *State = ACPI_RSTATE_DEPENDENT_LIST;
+        *State = 173;
         break;
 
-    case PARSEOP_VENDORLONG:
+    case 132:
 
         Rnode = RsDoVendorLargeDescriptor (Info);
         break;
 
-    case PARSEOP_VENDORSHORT:
+    case 131:
 
         Rnode = RsDoVendorSmallDescriptor (Info);
         break;
 
-    case PARSEOP_WORDBUSNUMBER:
+    case 130:
 
         Rnode = RsDoWordBusNumberDescriptor (Info);
         break;
 
-    case PARSEOP_WORDIO:
+    case 129:
 
         Rnode = RsDoWordIoDescriptor (Info);
         break;
 
-    case PARSEOP_WORDSPACE:
+    case 128:
 
         Rnode = RsDoWordSpaceDescriptor (Info);
         break;
 
-    case PARSEOP_GPIO_INT:
+    case 158:
 
         Rnode = RsDoGpioIntDescriptor (Info);
         break;
 
-    case PARSEOP_GPIO_IO:
+    case 157:
 
         Rnode = RsDoGpioIoDescriptor (Info);
         break;
 
-    case PARSEOP_I2C_SERIALBUS:
-    case PARSEOP_I2C_SERIALBUS_V2:
+    case 156:
+    case 155:
 
         Rnode = RsDoI2cSerialBusDescriptor (Info);
         break;
 
-    case PARSEOP_SPI_SERIALBUS:
-    case PARSEOP_SPI_SERIALBUS_V2:
+    case 138:
+    case 137:
 
         Rnode = RsDoSpiSerialBusDescriptor (Info);
         break;
 
-    case PARSEOP_UART_SERIALBUS:
-    case PARSEOP_UART_SERIALBUS_V2:
+    case 134:
+    case 133:
 
         Rnode = RsDoUartSerialBusDescriptor (Info);
         break;
 
-    case PARSEOP_PINCONFIG:
+    case 147:
 
         Rnode = RsDoPinConfigDescriptor (Info);
         break;
 
-    case PARSEOP_PINFUNCTION:
+    case 146:
 
         Rnode = RsDoPinFunctionDescriptor (Info);
         break;
 
-    case PARSEOP_PINGROUP:
+    case 145:
 
         Rnode = RsDoPinGroupDescriptor (Info);
         break;
 
-    case PARSEOP_PINGROUPFUNCTION:
+    case 143:
 
         Rnode = RsDoPinGroupFunctionDescriptor (Info);
         break;
 
-    case PARSEOP_PINGROUPCONFIG:
+    case 144:
 
         Rnode = RsDoPinGroupConfigDescriptor (Info);
         break;
 
-    case PARSEOP_DEFAULT_ARG:
+    case 170:
 
-        /* Just ignore any of these, they are used as fillers/placeholders */
+
         break;
 
     default:
@@ -397,12 +354,12 @@ RsDoOneResourceDescriptor (
         break;
     }
 
-    /*
-     * Mark original node as unused, but head of a resource descriptor.
-     * This allows the resource to be installed in the namespace so that
-     * references to the descriptor can be resolved.
-     */
-    Info->DescriptorTypeOp->Asl.ParseOpcode = PARSEOP_DEFAULT_ARG;
+
+
+
+
+
+    Info->DescriptorTypeOp->Asl.ParseOpcode = 170;
     Info->DescriptorTypeOp->Asl.CompileFlags = OP_IS_RESOURCE_DESC;
     Info->DescriptorTypeOp->Asl.Value.Integer = Info->CurrentByteOffset;
 

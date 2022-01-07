@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u16 ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u16 ;
 struct rmi_device {TYPE_2__* xport; } ;
 struct TYPE_4__ {TYPE_1__* ops; } ;
-struct TYPE_3__ {int (* read_block ) (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ;} ;
+struct TYPE_3__ {int (* read_block ) (TYPE_2__*,int ,int *,int) ;} ;
 
-/* Variables and functions */
- int stub1 (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+ int stub1 (TYPE_2__*,int ,int *,int) ;
 
 __attribute__((used)) static inline int rmi_read(struct rmi_device *d, u16 addr, u8 *buf)
 {
-	return d->xport->ops->read_block(d->xport, addr, buf, 1);
+ return d->xport->ops->read_block(d->xport, addr, buf, 1);
 }

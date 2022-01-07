@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct snd_pcm_runtime {TYPE_1__* status; } ;
 struct TYPE_2__ {int state; } ;
 
-/* Variables and functions */
- int EBADFD ; 
- int EPIPE ; 
- int ESTRPIPE ; 
-#define  SNDRV_PCM_STATE_PAUSED 132 
-#define  SNDRV_PCM_STATE_PREPARED 131 
-#define  SNDRV_PCM_STATE_RUNNING 130 
-#define  SNDRV_PCM_STATE_SUSPENDED 129 
-#define  SNDRV_PCM_STATE_XRUN 128 
+
+ int EBADFD ;
+ int EPIPE ;
+ int ESTRPIPE ;
+
+
+
+
+
 
 __attribute__((used)) static int pcm_accessible_state(struct snd_pcm_runtime *runtime)
 {
-	switch (runtime->status->state) {
-	case SNDRV_PCM_STATE_PREPARED:
-	case SNDRV_PCM_STATE_RUNNING:
-	case SNDRV_PCM_STATE_PAUSED:
-		return 0;
-	case SNDRV_PCM_STATE_XRUN:
-		return -EPIPE;
-	case SNDRV_PCM_STATE_SUSPENDED:
-		return -ESTRPIPE;
-	default:
-		return -EBADFD;
-	}
+ switch (runtime->status->state) {
+ case 131:
+ case 130:
+ case 132:
+  return 0;
+ case 128:
+  return -EPIPE;
+ case 129:
+  return -ESTRPIPE;
+ default:
+  return -EBADFD;
+ }
 }

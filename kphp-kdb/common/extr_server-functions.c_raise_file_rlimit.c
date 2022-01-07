@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rlimit {int rlim_cur; int rlim_max; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RLIMIT_NOFILE ; 
- scalar_t__ getrlimit (int /*<<< orphan*/ ,struct rlimit*) ; 
- int /*<<< orphan*/  kprintf (char*) ; 
- scalar_t__ setrlimit (int /*<<< orphan*/ ,struct rlimit*) ; 
+
+ int RLIMIT_NOFILE ;
+ scalar_t__ getrlimit (int ,struct rlimit*) ;
+ int kprintf (char*) ;
+ scalar_t__ setrlimit (int ,struct rlimit*) ;
 
 int raise_file_rlimit (int maxfiles) {
   struct rlimit rlim;
-  
+
   if (getrlimit(RLIMIT_NOFILE, &rlim) != 0) {
     kprintf ("failed to getrlimit number of files\n");
     return -1;

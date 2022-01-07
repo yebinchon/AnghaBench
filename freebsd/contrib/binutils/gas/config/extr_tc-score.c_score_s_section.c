@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int SEC_CODE ; 
- int bfd_get_section_flags (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  now_seg ; 
- int /*<<< orphan*/  obj_elf_section (int) ; 
- int /*<<< orphan*/  record_alignment (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stdoutput ; 
+ int SEC_CODE ;
+ int bfd_get_section_flags (int ,int ) ;
+ int now_seg ;
+ int obj_elf_section (int) ;
+ int record_alignment (int ,int) ;
+ int stdoutput ;
 
 __attribute__((used)) static void
 score_s_section (int ignore)

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int version; int flags; int link_update_opt; int res; int moniker_size; } ;
-typedef  TYPE_2__ ole_stream_header_t ;
-typedef  int /*<<< orphan*/  header ;
-typedef  int WCHAR ;
-typedef  int ULONG ;
+typedef TYPE_2__ ole_stream_header_t ;
+typedef int header ;
+typedef int WCHAR ;
+typedef int ULONG ;
 struct TYPE_6__ {int member_0; int member_1; int member_2; int member_3; int member_4; int member_5; int member_6; int member_7; } ;
 struct TYPE_8__ {int member_0; int member_1; int member_2; TYPE_1__ member_3; } ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  IStorage ;
-typedef  int /*<<< orphan*/  IPersistStorage ;
-typedef  int /*<<< orphan*/  IOleObject ;
-typedef  scalar_t__ HRESULT ;
-typedef  TYPE_3__ CLSID ;
+typedef int IStream ;
+typedef int IStorage ;
+typedef int IPersistStorage ;
+typedef int IOleObject ;
+typedef scalar_t__ HRESULT ;
+typedef TYPE_3__ CLSID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IID_IOleObject ; 
- int /*<<< orphan*/  IID_IPersistStorage ; 
- scalar_t__ IOleObject_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IOleObject_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IPersistStorage_InitNew (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IPersistStorage_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IStorage_OpenStream (int /*<<< orphan*/ *,int const*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IStorage_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IStream_Read (int /*<<< orphan*/ *,TYPE_2__*,int,int*) ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ OleCreateDefaultHandler (TYPE_3__ const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int STGM_READ ; 
- int STGM_SHARE_EXCLUSIVE ; 
- scalar_t__ STG_E_FILENOTFOUND ; 
- scalar_t__ S_OK ; 
- scalar_t__ create_storage (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
+
+ int IID_IOleObject ;
+ int IID_IPersistStorage ;
+ scalar_t__ IOleObject_QueryInterface (int *,int *,void**) ;
+ int IOleObject_Release (int *) ;
+ scalar_t__ IPersistStorage_InitNew (int *,int *) ;
+ int IPersistStorage_Release (int *) ;
+ scalar_t__ IStorage_OpenStream (int *,int const*,int *,int,int ,int **) ;
+ int IStorage_Release (int *) ;
+ scalar_t__ IStream_Read (int *,TYPE_2__*,int,int*) ;
+ int IStream_Release (int *) ;
+ scalar_t__ OleCreateDefaultHandler (TYPE_3__ const*,int ,int *,void**) ;
+ int STGM_READ ;
+ int STGM_SHARE_EXCLUSIVE ;
+ scalar_t__ STG_E_FILENOTFOUND ;
+ scalar_t__ S_OK ;
+ scalar_t__ create_storage (int **) ;
+ int ok (int,char*,int) ;
 
 __attribute__((used)) static void test_olestream(void)
 {
@@ -61,7 +61,7 @@ __attribute__((used)) static void test_olestream(void)
     hr = create_storage(&stg);
     ok(hr == S_OK, "got %08x\n", hr);
 
-    hr = IStorage_OpenStream(stg, olestream, NULL, STGM_SHARE_EXCLUSIVE | STGM_READ, 0, &stm);
+    hr = IStorage_OpenStream(stg, olestream, ((void*)0), STGM_SHARE_EXCLUSIVE | STGM_READ, 0, &stm);
     ok(hr == STG_E_FILENOTFOUND, "got %08x\n", hr);
 
     hr = OleCreateDefaultHandler(&non_existent_class, 0, &IID_IOleObject, (void**)&ole_obj);
@@ -73,7 +73,7 @@ __attribute__((used)) static void test_olestream(void)
     hr = IPersistStorage_InitNew(persist, stg);
     ok(hr == S_OK, "got %08x\n", hr);
 
-    hr = IStorage_OpenStream(stg, olestream, NULL, STGM_SHARE_EXCLUSIVE | STGM_READ, 0, &stm);
+    hr = IStorage_OpenStream(stg, olestream, ((void*)0), STGM_SHARE_EXCLUSIVE | STGM_READ, 0, &stm);
     ok(hr == S_OK, "got %08x\n", hr);
     hr = IStream_Read(stm, &header, sizeof(header), &read);
     ok(hr == S_OK, "got %08x\n", hr);

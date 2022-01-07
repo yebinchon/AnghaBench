@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  layer_state_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _idb_60_esc_led_off () ; 
- int /*<<< orphan*/  _idb_60_esc_led_on () ; 
- scalar_t__ layer_state_cmp (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int layer_state_t ;
+
+
+ int _idb_60_esc_led_off () ;
+ int _idb_60_esc_led_on () ;
+ scalar_t__ layer_state_cmp (int ,int) ;
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     if (layer_state_cmp(state, 1)) {
@@ -23,6 +23,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     } else {
         _idb_60_esc_led_off();
     }
-	
-	return state;
+
+ return state;
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ svn_linenum_t ;
-typedef  int svn_boolean_t ;
-struct TYPE_2__ {scalar_t__ matched_line; int /*<<< orphan*/  hunk; int /*<<< orphan*/  already_applied; int /*<<< orphan*/  rejected; } ;
-typedef  TYPE_1__ hunk_info_t ;
 
-/* Variables and functions */
- scalar_t__ svn_diff_hunk_get_original_start (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ svn_linenum_t ;
+typedef int svn_boolean_t ;
+struct TYPE_2__ {scalar_t__ matched_line; int hunk; int already_applied; int rejected; } ;
+typedef TYPE_1__ hunk_info_t ;
+
+
+ scalar_t__ svn_diff_hunk_get_original_start (int ) ;
 
 __attribute__((used)) static int
 sort_matched_hunks(const void *a, const void *b)
@@ -30,7 +30,7 @@ sort_matched_hunks(const void *a, const void *b)
 
   if (matched1 && matched2)
     {
-      /* Both match so use order matched in file. */
+
       if (item1->matched_line > item2->matched_line)
         return 1;
       else if (item1->matched_line == item2->matched_line)
@@ -39,13 +39,13 @@ sort_matched_hunks(const void *a, const void *b)
         return -1;
     }
   else if (matched2)
-    /* Only second matches, put it before first. */
+
     return 1;
   else if (matched1)
-    /* Only first matches, put it before second. */
+
     return -1;
 
-  /* Neither matches, sort by original_start. */
+
   original1 = svn_diff_hunk_get_original_start(item1->hunk);
   original2 = svn_diff_hunk_get_original_start(item2->hunk);
   if (original1 > original2)

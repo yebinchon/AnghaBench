@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct rgbvec {float r; float g; float b; } ;
-typedef  int /*<<< orphan*/  line ;
+typedef int line ;
 struct TYPE_9__ {TYPE_2__* priv; } ;
 struct TYPE_7__ {void* b; void* g; void* r; } ;
 struct TYPE_8__ {TYPE_1__ scale; struct rgbvec* lut; } ;
-typedef  TYPE_2__ LUT3DContext ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  TYPE_3__ AVFilterContext ;
+typedef TYPE_2__ LUT3DContext ;
+typedef int FILE ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int MAX_LINE_SIZE ; 
- int /*<<< orphan*/  NEXT_LINE (int /*<<< orphan*/ ) ; 
- int allocate_3dlut (TYPE_3__*,int const) ; 
- void* av_clipf (int,float,float) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,float,float,float,float,float,float) ; 
- int av_sscanf (char*,char*,float*,float*,float*) ; 
- scalar_t__ fgets (char*,int,int /*<<< orphan*/ *) ; 
- scalar_t__ skip_line (char*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- int strtol (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_DEBUG ;
+ int MAX_LINE_SIZE ;
+ int NEXT_LINE (int ) ;
+ int allocate_3dlut (TYPE_3__*,int const) ;
+ void* av_clipf (int,float,float) ;
+ int av_log (TYPE_3__*,int ,char*,float,float,float,float,float,float) ;
+ int av_sscanf (char*,char*,float*,float*,float*) ;
+ scalar_t__ fgets (char*,int,int *) ;
+ scalar_t__ skip_line (char*) ;
+ int strncmp (char*,char*,int) ;
+ int strtol (char*,int *,int ) ;
 
 __attribute__((used)) static int parse_cube(AVFilterContext *ctx, FILE *f)
 {
@@ -46,7 +46,7 @@ __attribute__((used)) static int parse_cube(AVFilterContext *ctx, FILE *f)
     while (fgets(line, sizeof(line), f)) {
         if (!strncmp(line, "LUT_3D_SIZE", 11)) {
             int ret, i, j, k;
-            const int size = strtol(line + 12, NULL, 0);
+            const int size = strtol(line + 12, ((void*)0), 0);
             const int size2 = size * size;
 
             ret = allocate_3dlut(ctx, size);
@@ -62,8 +62,8 @@ __attribute__((used)) static int parse_cube(AVFilterContext *ctx, FILE *f)
 try_again:
                             NEXT_LINE(0);
                             if (!strncmp(line, "DOMAIN_", 7)) {
-                                float *vals = NULL;
-                                if      (!strncmp(line + 7, "MIN ", 4)) vals = min;
+                                float *vals = ((void*)0);
+                                if (!strncmp(line + 7, "MIN ", 4)) vals = min;
                                 else if (!strncmp(line + 7, "MAX ", 4)) vals = max;
                                 if (!vals)
                                     return AVERROR_INVALIDDATA;

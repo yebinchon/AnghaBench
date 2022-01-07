@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64 ;
-typedef  int /*<<< orphan*/  PGresult ;
 
-/* Variables and functions */
- scalar_t__ PQgetisnull (int /*<<< orphan*/ *,int,int) ; 
- char* PQgetvalue (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  pg_strtouint64 (char*,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int int64 ;
+typedef int PGresult ;
+
+
+ scalar_t__ PQgetisnull (int *,int,int) ;
+ char* PQgetvalue (int *,int,int) ;
+ int pg_strtouint64 (char*,int *,int) ;
 
 int64
 ParseIntField(PGresult *result, int rowIndex, int colIndex)
 {
-	char *resultString = NULL;
+ char *resultString = ((void*)0);
 
-	if (PQgetisnull(result, rowIndex, colIndex))
-	{
-		return 0;
-	}
+ if (PQgetisnull(result, rowIndex, colIndex))
+ {
+  return 0;
+ }
 
-	resultString = PQgetvalue(result, rowIndex, colIndex);
+ resultString = PQgetvalue(result, rowIndex, colIndex);
 
-	return pg_strtouint64(resultString, NULL, 10);
+ return pg_strtouint64(resultString, ((void*)0), 10);
 }

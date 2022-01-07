@@ -1,107 +1,98 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
-typedef  int s16 ;
 
-/* Variables and functions */
-#define  ALU 144 
-#define  CJUMP 143 
-#define  COMPLEX 142 
-#define  EXT 141 
-#define  FLAGS 140 
-#define  IMM8 139 
-#define  LOAD 138 
- size_t MACH ; 
- size_t MACL ; 
-#define  MOV 137 
-#define  MULTDIV 136 
-#define  PCREL 135 
- int /*<<< orphan*/  POSTINC ; 
- int /*<<< orphan*/  PREDEC ; 
-#define  RJUMP 134 
-#define  RMW 133 
-#define  SHIFTIMM 132 
-#define  SJUMP 131 
-#define  STORE 130 
-#define  SYSTEM 129 
-#define  UJUMP 128 
- int /*<<< orphan*/ * addrmode ; 
- int /*<<< orphan*/  assert (int) ; 
- int* imm ; 
- int* itype ; 
- int* opcode ; 
- int* opcode2 ; 
- int* rs1 ; 
- size_t* rt1 ; 
- size_t* rt2 ; 
- int /*<<< orphan*/  sh2_clear_const (int*,int*,size_t) ; 
- int /*<<< orphan*/  sh2_set_const (int*,int*,size_t,int) ; 
- int slen ; 
- int* source ; 
- int start ; 
+
+
+
+typedef int u32 ;
+typedef int s16 ;
+ size_t MACH ;
+ size_t MACL ;
+
+
+
+ int POSTINC ;
+ int PREDEC ;
+
+
+
+
+
+
+
+ int * addrmode ;
+ int assert (int) ;
+ int* imm ;
+ int* itype ;
+ int* opcode ;
+ int* opcode2 ;
+ int* rs1 ;
+ size_t* rt1 ;
+ size_t* rt2 ;
+ int sh2_clear_const (int*,int*,size_t) ;
+ int sh2_set_const (int*,int*,size_t,int) ;
+ int slen ;
+ int* source ;
+ int start ;
 
 do_consts(int i,u32 *isconst,u32 *constmap)
 {
   switch(itype[i]) {
-    case LOAD:
+    case 138:
       sh2_clear_const(isconst,constmap,rt1[i]);
       if(addrmode[i]==POSTINC) {
         int size=(opcode[i]==4)?2:(opcode2[i]&3);
         constmap[rt2[i]]+=1<<size;
       }
       break;
-    case STORE:
+    case 130:
       if(addrmode[i]==PREDEC) {
         int size=(opcode[i]==4)?2:(opcode2[i]&3);
         constmap[rt1[i]]-=1<<size;
       }
       break;
-    case RMW:
+    case 133:
       break;
-    case PCREL:
-      if(opcode[i]==12) sh2_set_const(isconst,constmap,rt1[i],((start+i*2+4)&~3)+imm[i]); // MOVA
-      else { // PC-relative load (constant pool)
+    case 135:
+      if(opcode[i]==12) sh2_set_const(isconst,constmap,rt1[i],((start+i*2+4)&~3)+imm[i]);
+      else {
         u32 addr=((start+i*2+4)&~3)+imm[i];
         if((u32)((addr-start)>>1)<slen) {
           int value;
-          if(opcode[i]==9) value=(s16)source[((start+i*2+4)+imm[i]-start)>>1]; // MOV.W
-          else value=(source[(((start+i*2+4)&~3)+imm[i]-start)>>1]<<16)+source[(((start+i*2+4)&~3)+imm[i]+2-start)>>1]; // MOV.L
+          if(opcode[i]==9) value=(s16)source[((start+i*2+4)+imm[i]-start)>>1];
+          else value=(source[(((start+i*2+4)&~3)+imm[i]-start)>>1]<<16)+source[(((start+i*2+4)&~3)+imm[i]+2-start)>>1];
           sh2_set_const(isconst,constmap,rt1[i],value);
         }
         else sh2_clear_const(isconst,constmap,rt1[i]);
       }
       break;
-    case MOV:
+    case 137:
       if(((*isconst)>>rs1[i])&1) {
         int v=constmap[rs1[i]];
         sh2_set_const(isconst,constmap,rt1[i],v);
       }
       else sh2_clear_const(isconst,constmap,rt1[i]);
       break;
-    case IMM8:
-      if(opcode[i]==0x7) { // ADD
+    case 139:
+      if(opcode[i]==0x7) {
         if(((*isconst)>>rs1[i])&1) {
           int v=constmap[rs1[i]];
           sh2_set_const(isconst,constmap,rt1[i],v+imm[i]);
         }
         else sh2_clear_const(isconst,constmap,rt1[i]);
       }
-      else if(opcode[i]==0x8) { // CMP/EQ
+      else if(opcode[i]==0x8) {
       }
       else if(opcode[i]==12) {
-        if(opcode2[i]==8) { // TST
+        if(opcode2[i]==8) {
         }else
-        // AND/XOR/OR
+
         if(((*isconst)>>rs1[i])&1) {
           int v=constmap[rs1[i]];
           if(opcode2[i]==0x09) sh2_set_const(isconst,constmap,rt1[i],v&imm[i]);
@@ -110,64 +101,64 @@ do_consts(int i,u32 *isconst,u32 *constmap)
         }
         else sh2_clear_const(isconst,constmap,rt1[i]);
       }
-      else { // opcode[i]==0xE
+      else {
         assert(opcode[i]==0xE);
-        sh2_set_const(isconst,constmap,rt1[i],imm[i]); // MOV
+        sh2_set_const(isconst,constmap,rt1[i],imm[i]);
       }
       break;
-    case FLAGS:
-      if(opcode2[i]==9) { // MOVT
+    case 140:
+      if(opcode2[i]==9) {
         sh2_clear_const(isconst,constmap,rt1[i]);
       }
       break;
-    case ALU:
+    case 144:
       sh2_clear_const(isconst,constmap,rt1[i]);
       break;
-    case EXT:
+    case 141:
       sh2_clear_const(isconst,constmap,rt1[i]);
       break;
-    case MULTDIV:
+    case 136:
       if(opcode[i]==0) {
-        if(opcode2[i]==7) // MUL.L
+        if(opcode2[i]==7)
         {
           sh2_clear_const(isconst,constmap,MACL);
         }
-        if(opcode2[i]==8) // CLRMAC
+        if(opcode2[i]==8)
         {
           sh2_clear_const(isconst,constmap,MACH);
           sh2_clear_const(isconst,constmap,MACL);
         }
-        if(opcode2[i]==9) // DIV0U
+        if(opcode2[i]==9)
         {
         }
       }
       if(opcode[i]==2) {
-        if(opcode2[i]==7) // DIV0S
+        if(opcode2[i]==7)
         {
         }
-        if(opcode2[i]==14||opcode2[i]==15) // MULU.W / MULS.W
+        if(opcode2[i]==14||opcode2[i]==15)
         {
           sh2_clear_const(isconst,constmap,MACL);
         }
       }
       if(opcode[i]==3) {
-        // DMULU.L / DMULS.L
+
         sh2_clear_const(isconst,constmap,MACH);
         sh2_clear_const(isconst,constmap,MACL);
       }
       break;
-    case SHIFTIMM:
+    case 132:
       sh2_clear_const(isconst,constmap,rt1[i]);
       break;
-    case UJUMP:
-    case RJUMP:
-    case SJUMP:
-    case CJUMP:
+    case 128:
+    case 134:
+    case 131:
+    case 143:
       break;
-    case SYSTEM:
+    case 129:
       *isconst=0;
       break;
-    case COMPLEX:
+    case 142:
       *isconst=0;
       break;
   }

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  int int64_t ;
+
+
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+typedef int int64_t ;
 struct TYPE_15__ {TYPE_3__** tracks; TYPE_1__* priv; } ;
-typedef  TYPE_4__ VC_CONTAINER_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
-struct TYPE_16__ {int dts; int pts; scalar_t__ size; scalar_t__ buffer_size; scalar_t__ flags; int /*<<< orphan*/  data; scalar_t__ track; } ;
-typedef  TYPE_5__ VC_CONTAINER_PACKET_T ;
+typedef TYPE_4__ VC_CONTAINER_T ;
+typedef int VC_CONTAINER_STATUS_T ;
+struct TYPE_16__ {int dts; int pts; scalar_t__ size; scalar_t__ buffer_size; scalar_t__ flags; int data; scalar_t__ track; } ;
+typedef TYPE_5__ VC_CONTAINER_PACKET_T ;
 struct TYPE_17__ {int position; scalar_t__ frame_data_left; scalar_t__ block_size; scalar_t__ data_size; } ;
-typedef  TYPE_6__ VC_CONTAINER_MODULE_T ;
+typedef TYPE_6__ VC_CONTAINER_MODULE_T ;
 struct TYPE_14__ {TYPE_2__* format; } ;
 struct TYPE_13__ {int bitrate; } ;
 struct TYPE_12__ {TYPE_6__* module; } ;
 
-/* Variables and functions */
- scalar_t__ MIN (scalar_t__,scalar_t__) ; 
- scalar_t__ READ_BYTES (TYPE_4__*,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ SKIP_BYTES (TYPE_4__*,scalar_t__) ; 
- int /*<<< orphan*/  STREAM_STATUS (TYPE_4__*) ; 
- int /*<<< orphan*/  VC_CONTAINER_ERROR_EOS ; 
- scalar_t__ VC_CONTAINER_PACKET_FLAG_FRAME_END ; 
- scalar_t__ VC_CONTAINER_PACKET_FLAG_FRAME_START ; 
- scalar_t__ VC_CONTAINER_READ_FLAG_INFO ; 
- scalar_t__ VC_CONTAINER_READ_FLAG_SKIP ; 
- int /*<<< orphan*/  VC_CONTAINER_SUCCESS ; 
+
+ scalar_t__ MIN (scalar_t__,scalar_t__) ;
+ scalar_t__ READ_BYTES (TYPE_4__*,int ,scalar_t__) ;
+ scalar_t__ SKIP_BYTES (TYPE_4__*,scalar_t__) ;
+ int STREAM_STATUS (TYPE_4__*) ;
+ int VC_CONTAINER_ERROR_EOS ;
+ scalar_t__ VC_CONTAINER_PACKET_FLAG_FRAME_END ;
+ scalar_t__ VC_CONTAINER_PACKET_FLAG_FRAME_START ;
+ scalar_t__ VC_CONTAINER_READ_FLAG_INFO ;
+ scalar_t__ VC_CONTAINER_READ_FLAG_SKIP ;
+ int VC_CONTAINER_SUCCESS ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T wav_reader_read( VC_CONTAINER_T *p_ctx,
                                               VC_CONTAINER_PACKET_T *p_packet, uint32_t flags )
@@ -61,7 +61,7 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T wav_reader_read( VC_CONTAINER
       data_size = module->data_size - module->position;
    if(data_size == 0) return VC_CONTAINER_ERROR_EOS;
 
-   if((flags & VC_CONTAINER_READ_FLAG_SKIP) && !(flags & VC_CONTAINER_READ_FLAG_INFO)) /* Skip packet */
+   if((flags & VC_CONTAINER_READ_FLAG_SKIP) && !(flags & VC_CONTAINER_READ_FLAG_INFO))
    {
       size = SKIP_BYTES(p_ctx, data_size);
       module->frame_data_left = data_size - size;

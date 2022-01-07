@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- char* DRIVER_NAME ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  StartDriver (char*) ; 
- int /*<<< orphan*/  StopDriver (char*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  UnregisterDriver (char*) ; 
- int /*<<< orphan*/  wprintf (char*,...) ; 
+
+
+
+typedef int LPCWSTR ;
+typedef int BOOL ;
+
+
+ char* DRIVER_NAME ;
+ int FALSE ;
+ int GetLastError () ;
+ int StartDriver (char*) ;
+ int StopDriver (char*) ;
+ int TRUE ;
+ int UnregisterDriver (char*) ;
+ int wprintf (char*,...) ;
 
 __attribute__((used)) static BOOL
 UsermodeMethod(LPCWSTR lpDriverPath)

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct cpu_state {int c0; int c2; int c3; int /*<<< orphan*/  c1; } ;
-struct TYPE_8__ {int /*<<< orphan*/  sign; } ;
-typedef  TYPE_1__ float80 ;
 
-/* Variables and functions */
- TYPE_1__ ST (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  f80_is_supported (TYPE_1__) ; 
- scalar_t__ f80_isdenormal (TYPE_1__) ; 
- scalar_t__ f80_isinf (TYPE_1__) ; 
- scalar_t__ f80_isnan (TYPE_1__) ; 
- scalar_t__ f80_iszero (TYPE_1__) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct cpu_state {int c0; int c2; int c3; int c1; } ;
+struct TYPE_8__ {int sign; } ;
+typedef TYPE_1__ float80 ;
+
+
+ TYPE_1__ ST (int ) ;
+ int f80_is_supported (TYPE_1__) ;
+ scalar_t__ f80_isdenormal (TYPE_1__) ;
+ scalar_t__ f80_isinf (TYPE_1__) ;
+ scalar_t__ f80_isnan (TYPE_1__) ;
+ scalar_t__ f80_iszero (TYPE_1__) ;
 
 void fpu_xam(struct cpu_state *cpu) {
     float80 f = ST(0);
@@ -37,8 +37,8 @@ void fpu_xam(struct cpu_state *cpu) {
     } else if (f80_isdenormal(f)) {
         outflags = 0b110;
     } else {
-        // normal.
-        // todo: empty
+
+
         outflags = 0b010;
     }
     cpu->c1 = f.sign;

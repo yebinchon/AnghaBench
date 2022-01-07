@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct iov_iter {int dummy; } ;
 struct file {TYPE_1__* f_op; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
-typedef  int /*<<< orphan*/  rwf_t ;
-typedef  int /*<<< orphan*/  loff_t ;
-struct TYPE_2__ {int /*<<< orphan*/  write_iter; } ;
+typedef int ssize_t ;
+typedef int rwf_t ;
+typedef int loff_t ;
+struct TYPE_2__ {int write_iter; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  do_iter_write (struct file*,struct iov_iter*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ int do_iter_write (struct file*,struct iov_iter*,int *,int ) ;
 
 ssize_t vfs_iter_write(struct file *file, struct iov_iter *iter, loff_t *ppos,
-		rwf_t flags)
+  rwf_t flags)
 {
-	if (!file->f_op->write_iter)
-		return -EINVAL;
-	return do_iter_write(file, iter, ppos, flags);
+ if (!file->f_op->write_iter)
+  return -EINVAL;
+ return do_iter_write(file, iter, ppos, flags);
 }

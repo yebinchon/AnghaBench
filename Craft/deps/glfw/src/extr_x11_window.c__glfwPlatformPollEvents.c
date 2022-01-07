@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_5__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_5__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ cursorMode; } ;
-typedef  TYPE_2__ _GLFWwindow ;
-typedef  int /*<<< orphan*/  XEvent ;
-struct TYPE_6__ {int /*<<< orphan*/  display; } ;
+typedef TYPE_2__ _GLFWwindow ;
+typedef int XEvent ;
+struct TYPE_6__ {int display; } ;
 struct TYPE_8__ {TYPE_2__* cursorWindow; TYPE_1__ x11; } ;
 
-/* Variables and functions */
- scalar_t__ GLFW_CURSOR_DISABLED ; 
- int /*<<< orphan*/  XNextEvent (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int XPending (int /*<<< orphan*/ ) ; 
- TYPE_5__ _glfw ; 
- int /*<<< orphan*/  _glfwPlatformGetWindowSize (TYPE_2__*,int*,int*) ; 
- int /*<<< orphan*/  _glfwPlatformSetCursorPos (TYPE_2__*,int,int) ; 
- int /*<<< orphan*/  processEvent (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ GLFW_CURSOR_DISABLED ;
+ int XNextEvent (int ,int *) ;
+ int XPending (int ) ;
+ TYPE_5__ _glfw ;
+ int _glfwPlatformGetWindowSize (TYPE_2__*,int*,int*) ;
+ int _glfwPlatformSetCursorPos (TYPE_2__*,int,int) ;
+ int processEvent (int *) ;
 
 void _glfwPlatformPollEvents(void)
 {

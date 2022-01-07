@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mbuf {struct mbuf* m_nextpkt; } ;
-struct dn_pipe {int /*<<< orphan*/  idle_heap; int /*<<< orphan*/  not_eligible_heap; int /*<<< orphan*/  scheduler_heap; struct mbuf* head; int /*<<< orphan*/  fs; } ;
+struct dn_pipe {int idle_heap; int not_eligible_heap; int scheduler_heap; struct mbuf* head; int fs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DN_FREE_PKT (struct mbuf*) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  purge_flow_set (int /*<<< orphan*/ *,int) ; 
+
+ int DN_FREE_PKT (struct mbuf*) ;
+ int heap_free (int *) ;
+ int purge_flow_set (int *,int) ;
 
 __attribute__((used)) static void
 purge_pipe(struct dn_pipe *pipe)
@@ -26,9 +26,9 @@ purge_pipe(struct dn_pipe *pipe)
     purge_flow_set( &(pipe->fs), 1 );
 
     mnext = pipe->head;
-    while ((m = mnext) != NULL) {
-	mnext = m->m_nextpkt;
-	DN_FREE_PKT(m);
+    while ((m = mnext) != ((void*)0)) {
+ mnext = m->m_nextpkt;
+ DN_FREE_PKT(m);
     }
 
     heap_free( &(pipe->scheduler_heap) );

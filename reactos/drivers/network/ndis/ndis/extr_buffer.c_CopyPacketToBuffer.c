@@ -1,45 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int /*<<< orphan*/  PUCHAR ;
-typedef  int /*<<< orphan*/  PNDIS_PACKET ;
-typedef  int /*<<< orphan*/  PNDIS_BUFFER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CopyBufferChainToBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAX_TRACE ; 
- int /*<<< orphan*/  NDIS_DbgPrint (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  NdisGetFirstBufferFromPacket (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int UINT ;
+typedef int PVOID ;
+typedef int PUCHAR ;
+typedef int PNDIS_PACKET ;
+typedef int PNDIS_BUFFER ;
+
+
+ int CopyBufferChainToBuffer (int ,int ,int ,int ) ;
+ int MAX_TRACE ;
+ int NDIS_DbgPrint (int ,char*) ;
+ int NdisGetFirstBufferFromPacket (int ,int *,int *,int *,int *) ;
 
 UINT CopyPacketToBuffer(
     PUCHAR DstData,
     PNDIS_PACKET SrcPacket,
     UINT SrcOffset,
     UINT Length)
-/*
- * FUNCTION: Copies data from an NDIS packet to a buffer
- * ARGUMENTS:
- *     DstData   = Pointer to destination buffer
- *     SrcPacket = Pointer to source NDIS packet
- *     SrcOffset = Source start offset
- *     Length    = Number of bytes to copy
- * RETURNS:
- *     Number of bytes copied to destination buffer
- * NOTES:
- *     The number of bytes copied may be limited by the source
- *     buffer size
- */
 {
     PNDIS_BUFFER FirstBuffer;
     PVOID Address;

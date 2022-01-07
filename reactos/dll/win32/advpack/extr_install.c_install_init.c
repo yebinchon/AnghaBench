@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  default_install ;
-typedef  char WCHAR ;
-struct TYPE_4__ {char const* inf_filename; char const* install_sec; char const* working_dir; char const* inf_path; scalar_t__ hinf; int flags; int /*<<< orphan*/  need_reboot; } ;
-typedef  char const* LPCWSTR ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
-typedef  TYPE_1__ ADVInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADV_HRESULT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  INF_STYLE_WIN4 ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int RSC_FLAG_INF ; 
- int /*<<< orphan*/  S_OK ; 
- scalar_t__ SetupOpenInfFileW (char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_working_dir (TYPE_1__*,char const*,char const*) ; 
- int /*<<< orphan*/  lstrcatW (char const*,char const*) ; 
- int /*<<< orphan*/  lstrcpyW (char const*,char const*) ; 
- int lstrlenW (char const*) ; 
- int /*<<< orphan*/  set_ldids (scalar_t__,char const*,char const*) ; 
- char* wcsrchr (char const*,char) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int default_install ;
+typedef char WCHAR ;
+struct TYPE_4__ {char const* inf_filename; char const* install_sec; char const* working_dir; char const* inf_path; scalar_t__ hinf; int flags; int need_reboot; } ;
+typedef char const* LPCWSTR ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef TYPE_1__ ADVInfo ;
+
+
+ int ADV_HRESULT (int ) ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int GetLastError () ;
+ int GetProcessHeap () ;
+ void* HeapAlloc (int ,int ,int) ;
+ int INF_STYLE_WIN4 ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int RSC_FLAG_INF ;
+ int S_OK ;
+ scalar_t__ SetupOpenInfFileW (char const*,int *,int ,int *) ;
+ int get_working_dir (TYPE_1__*,char const*,char const*) ;
+ int lstrcatW (char const*,char const*) ;
+ int lstrcpyW (char const*,char const*) ;
+ int lstrlenW (char const*) ;
+ int set_ldids (scalar_t__,char const*,char const*) ;
+ char* wcsrchr (char const*,char) ;
 
 __attribute__((used)) static HRESULT install_init(LPCWSTR inf_filename, LPCWSTR install_sec,
                             LPCWSTR working_dir, DWORD flags, ADVInfo *info)
@@ -62,7 +62,7 @@ __attribute__((used)) static HRESULT install_init(LPCWSTR inf_filename, LPCWSTR 
 
     lstrcpyW(info->inf_filename, ptr);
 
-    /* FIXME: determine the proper platform to install (NTx86, etc) */
+
     if (!install_sec || !*install_sec)
     {
         len = sizeof(default_install) - 1;
@@ -93,19 +93,19 @@ __attribute__((used)) static HRESULT install_init(LPCWSTR inf_filename, LPCWSTR 
     lstrcatW(info->inf_path, backslash);
     lstrcatW(info->inf_path, info->inf_filename);
 
-    /* RunSetupCommand opens unmodified filename parameter */
+
     if (flags & RSC_FLAG_INF)
         path = inf_filename;
     else
         path = info->inf_path;
 
-    info->hinf = SetupOpenInfFileW(path, NULL, INF_STYLE_WIN4, NULL);
+    info->hinf = SetupOpenInfFileW(path, ((void*)0), INF_STYLE_WIN4, ((void*)0));
     if (info->hinf == INVALID_HANDLE_VALUE)
         return ADV_HRESULT(GetLastError());
 
     set_ldids(info->hinf, info->install_sec, info->working_dir);
 
-    /* FIXME: check that the INF is advanced */
+
 
     info->flags = flags;
     info->need_reboot = FALSE;

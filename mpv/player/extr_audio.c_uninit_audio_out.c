@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct MPContext {scalar_t__ stop_play; int /*<<< orphan*/  ao_filter_fmt; int /*<<< orphan*/ * ao; TYPE_1__* opts; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct MPContext {scalar_t__ stop_play; int ao_filter_fmt; int * ao; TYPE_1__* opts; } ;
 struct TYPE_2__ {scalar_t__ gapless_audio; } ;
 
-/* Variables and functions */
- scalar_t__ AT_END_OF_FILE ; 
- int /*<<< orphan*/  MPV_EVENT_AUDIO_RECONFIG ; 
- int /*<<< orphan*/  TA_FREEP (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ao_drain (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ao_uninit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_notify (struct MPContext*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ AT_END_OF_FILE ;
+ int MPV_EVENT_AUDIO_RECONFIG ;
+ int TA_FREEP (int *) ;
+ int ao_drain (int *) ;
+ int ao_uninit (int *) ;
+ int mp_notify (struct MPContext*,int ,int *) ;
 
 void uninit_audio_out(struct MPContext *mpctx)
 {
     if (mpctx->ao) {
-        // Note: with gapless_audio, stop_play is not correctly set
+
         if (mpctx->opts->gapless_audio || mpctx->stop_play == AT_END_OF_FILE)
             ao_drain(mpctx->ao);
         ao_uninit(mpctx->ao);
 
-        mp_notify(mpctx, MPV_EVENT_AUDIO_RECONFIG, NULL);
+        mp_notify(mpctx, MPV_EVENT_AUDIO_RECONFIG, ((void*)0));
     }
-    mpctx->ao = NULL;
+    mpctx->ao = ((void*)0);
     TA_FREEP(&mpctx->ao_filter_fmt);
 }

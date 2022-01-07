@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {scalar_t__ key_frame; scalar_t__* data; } ;
-struct TYPE_8__ {int max_ref_frames; int ref_frames; scalar_t__ keyframe; TYPE_2__* current_picture; int /*<<< orphan*/  avctx; TYPE_2__** last_picture; int /*<<< orphan*/ * halfpel_plane; } ;
-typedef  TYPE_1__ SnowContext ;
-typedef  TYPE_2__ AVFrame ;
+struct TYPE_8__ {int max_ref_frames; int ref_frames; scalar_t__ keyframe; TYPE_2__* current_picture; int avctx; TYPE_2__** last_picture; int * halfpel_plane; } ;
+typedef TYPE_1__ SnowContext ;
+typedef TYPE_2__ AVFrame ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- scalar_t__ USE_HALFPEL_PLANE ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int ff_snow_get_buffer (TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  ff_snow_release_buffer (int /*<<< orphan*/ ) ; 
- int halfpel_interpol (TYPE_1__*,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  memmove (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ scalar_t__ USE_HALFPEL_PLANE ;
+ int av_log (int ,int ,char*) ;
+ int ff_snow_get_buffer (TYPE_1__*,TYPE_2__*) ;
+ int ff_snow_release_buffer (int ) ;
+ int halfpel_interpol (TYPE_1__*,int ,TYPE_2__*) ;
+ int memmove (int *,int *,int) ;
 
 int ff_snow_frame_start(SnowContext *s){
    AVFrame *tmp;

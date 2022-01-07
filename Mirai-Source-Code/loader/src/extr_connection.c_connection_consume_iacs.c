@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct connection {int* rdbuf; int rdbuf_pos; int /*<<< orphan*/  fd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSG_NOSIGNAL ; 
- int /*<<< orphan*/  can_consume (struct connection*,int*,int) ; 
- int /*<<< orphan*/  send (int /*<<< orphan*/ ,int*,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+struct connection {int* rdbuf; int rdbuf_pos; int fd; } ;
+
+
+ int MSG_NOSIGNAL ;
+ int can_consume (struct connection*,int*,int) ;
+ int send (int ,int*,int,int ) ;
 
 int connection_consume_iacs(struct connection *conn)
 {

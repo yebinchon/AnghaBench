@@ -1,99 +1,99 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32 ;
-struct TYPE_6__ {int /*<<< orphan*/  workerPort; int /*<<< orphan*/  workerName; int /*<<< orphan*/  isActive; } ;
-typedef  TYPE_1__ WorkerNode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CheckCitusVersion (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DistNodeRelationId () ; 
- int /*<<< orphan*/  ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  EnsureCoordinator () ; 
- int /*<<< orphan*/  EnsureModificationsCanRun () ; 
- int /*<<< orphan*/  EnsureSuperUser () ; 
- int /*<<< orphan*/  ExclusiveLock ; 
- TYPE_1__* FindWorkerNode (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LockRelationOid (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MarkNodeHasMetadata (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  MarkNodeMetadataSynced (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  NOTICE ; 
- scalar_t__ NodeIsCoordinator (TYPE_1__*) ; 
- int /*<<< orphan*/  NodeIsPrimary (TYPE_1__*) ; 
- int /*<<< orphan*/  PreventInTransactionBlock (int,char*) ; 
- int /*<<< orphan*/  SyncMetadataSnapshotToNode (TYPE_1__*,int) ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errhint (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*,...) ; 
- char* quote_literal_cstr (char*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int int32 ;
+struct TYPE_6__ {int workerPort; int workerName; int isActive; } ;
+typedef TYPE_1__ WorkerNode ;
+
+
+ int CheckCitusVersion (int ) ;
+ int DistNodeRelationId () ;
+ int ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE ;
+ int ERROR ;
+ int EnsureCoordinator () ;
+ int EnsureModificationsCanRun () ;
+ int EnsureSuperUser () ;
+ int ExclusiveLock ;
+ TYPE_1__* FindWorkerNode (char*,int ) ;
+ int LockRelationOid (int ,int ) ;
+ int MarkNodeHasMetadata (char*,int ,int) ;
+ int MarkNodeMetadataSynced (int ,int ,int) ;
+ int NOTICE ;
+ scalar_t__ NodeIsCoordinator (TYPE_1__*) ;
+ int NodeIsPrimary (TYPE_1__*) ;
+ int PreventInTransactionBlock (int,char*) ;
+ int SyncMetadataSnapshotToNode (TYPE_1__*,int) ;
+ int ereport (int ,int ) ;
+ int errcode (int ) ;
+ int errhint (char*,char*,int ) ;
+ int errmsg (char*,...) ;
+ char* quote_literal_cstr (char*) ;
 
 void
 StartMetadatSyncToNode(char *nodeNameString, int32 nodePort)
 {
-	WorkerNode *workerNode = NULL;
-	char *escapedNodeName = quote_literal_cstr(nodeNameString);
+ WorkerNode *workerNode = ((void*)0);
+ char *escapedNodeName = quote_literal_cstr(nodeNameString);
 
-	/* fail if metadata synchronization doesn't succeed */
-	bool raiseInterrupts = true;
 
-	EnsureCoordinator();
-	EnsureSuperUser();
-	EnsureModificationsCanRun();
-	CheckCitusVersion(ERROR);
+ bool raiseInterrupts = 1;
 
-	PreventInTransactionBlock(true, "start_metadata_sync_to_node");
+ EnsureCoordinator();
+ EnsureSuperUser();
+ EnsureModificationsCanRun();
+ CheckCitusVersion(ERROR);
 
-	LockRelationOid(DistNodeRelationId(), ExclusiveLock);
+ PreventInTransactionBlock(1, "start_metadata_sync_to_node");
 
-	workerNode = FindWorkerNode(nodeNameString, nodePort);
-	if (workerNode == NULL)
-	{
-		ereport(ERROR, (errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),
-						errmsg("you cannot sync metadata to a non-existent node"),
-						errhint("First, add the node with SELECT master_add_node"
-								"(%s,%d)", escapedNodeName, nodePort)));
-	}
+ LockRelationOid(DistNodeRelationId(), ExclusiveLock);
 
-	if (!workerNode->isActive)
-	{
-		ereport(ERROR, (errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),
-						errmsg("you cannot sync metadata to an inactive node"),
-						errhint("First, activate the node with "
-								"SELECT master_activate_node(%s,%d)",
-								escapedNodeName, nodePort)));
-	}
+ workerNode = FindWorkerNode(nodeNameString, nodePort);
+ if (workerNode == ((void*)0))
+ {
+  ereport(ERROR, (errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),
+      errmsg("you cannot sync metadata to a non-existent node"),
+      errhint("First, add the node with SELECT master_add_node"
+        "(%s,%d)", escapedNodeName, nodePort)));
+ }
 
-	if (NodeIsCoordinator(workerNode))
-	{
-		ereport(NOTICE, (errmsg("%s:%d is the coordinator and already contains "
-								"metadata, skipping syncing the metadata",
-								nodeNameString, nodePort)));
-		return;
-	}
+ if (!workerNode->isActive)
+ {
+  ereport(ERROR, (errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),
+      errmsg("you cannot sync metadata to an inactive node"),
+      errhint("First, activate the node with "
+        "SELECT master_activate_node(%s,%d)",
+        escapedNodeName, nodePort)));
+ }
 
-	MarkNodeHasMetadata(nodeNameString, nodePort, true);
+ if (NodeIsCoordinator(workerNode))
+ {
+  ereport(NOTICE, (errmsg("%s:%d is the coordinator and already contains "
+        "metadata, skipping syncing the metadata",
+        nodeNameString, nodePort)));
+  return;
+ }
 
-	if (!NodeIsPrimary(workerNode))
-	{
-		/*
-		 * If this is a secondary node we can't actually sync metadata to it; we assume
-		 * the primary node is receiving metadata.
-		 */
-		return;
-	}
+ MarkNodeHasMetadata(nodeNameString, nodePort, 1);
 
-	SyncMetadataSnapshotToNode(workerNode, raiseInterrupts);
-	MarkNodeMetadataSynced(workerNode->workerName, workerNode->workerPort, true);
+ if (!NodeIsPrimary(workerNode))
+ {
+
+
+
+
+  return;
+ }
+
+ SyncMetadataSnapshotToNode(workerNode, raiseInterrupts);
+ MarkNodeMetadataSynced(workerNode->workerName, workerNode->workerPort, 1);
 }

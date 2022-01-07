@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_tick_t ;
-typedef  int /*<<< orphan*/  video_format_t ;
-struct TYPE_7__ {int /*<<< orphan*/  (* pf_update ) (TYPE_2__*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* pf_validate ) (TYPE_2__*,int,int /*<<< orphan*/  const*,int,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_1__ subpicture_updater_t ;
-struct TYPE_8__ {int /*<<< orphan*/ * p_region; TYPE_3__* p_private; TYPE_1__ updater; } ;
-typedef  TYPE_2__ subpicture_t ;
-struct TYPE_9__ {int /*<<< orphan*/  dst; int /*<<< orphan*/  src; } ;
-typedef  TYPE_3__ subpicture_private_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (TYPE_2__*,int,int /*<<< orphan*/  const*,int,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (TYPE_2__*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  subpicture_region_ChainDelete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  video_format_Clean (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  video_format_Copy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  video_format_IsSimilar (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int vlc_tick_t ;
+typedef int video_format_t ;
+struct TYPE_7__ {int (* pf_update ) (TYPE_2__*,int const*,int const*,int ) ;int (* pf_validate ) (TYPE_2__*,int,int const*,int,int const*,int ) ;} ;
+typedef TYPE_1__ subpicture_updater_t ;
+struct TYPE_8__ {int * p_region; TYPE_3__* p_private; TYPE_1__ updater; } ;
+typedef TYPE_2__ subpicture_t ;
+struct TYPE_9__ {int dst; int src; } ;
+typedef TYPE_3__ subpicture_private_t ;
+
+
+ int stub1 (TYPE_2__*,int,int const*,int,int const*,int ) ;
+ int stub2 (TYPE_2__*,int const*,int const*,int ) ;
+ int subpicture_region_ChainDelete (int *) ;
+ int video_format_Clean (int *) ;
+ int video_format_Copy (int *,int const*) ;
+ int video_format_IsSimilar (int const*,int *) ;
 
 void subpicture_Update( subpicture_t *p_subpicture,
                         const video_format_t *p_fmt_src,
@@ -49,7 +49,7 @@ void subpicture_Update( subpicture_t *p_subpicture,
         return;
 
     subpicture_region_ChainDelete( p_subpicture->p_region );
-    p_subpicture->p_region = NULL;
+    p_subpicture->p_region = ((void*)0);
 
     p_upd->pf_update( p_subpicture, p_fmt_src, p_fmt_dst, i_ts );
 

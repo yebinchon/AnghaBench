@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGI (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  cli_handle ; 
- scalar_t__ isalpha (int) ; 
- int /*<<< orphan*/  sscanf (char*,char*,...) ; 
- scalar_t__ strcasecmp (char*,char*) ; 
- int /*<<< orphan*/  xQueueSend (int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ) ; 
+ int ESP_LOGI (char*,char*,char*,char*) ;
+ int cli_handle ;
+ scalar_t__ isalpha (int) ;
+ int sscanf (char*,char*,...) ;
+ scalar_t__ strcasecmp (char*,char*) ;
+ int xQueueSend (int ,int*,int ) ;
 
 __attribute__((used)) static int enter_passkey_handler(int argc, char *argv[])
 {

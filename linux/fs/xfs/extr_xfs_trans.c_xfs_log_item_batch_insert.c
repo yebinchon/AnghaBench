@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xfs_lsn_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int xfs_lsn_t ;
 struct xfs_log_item {TYPE_1__* li_ops; } ;
 struct xfs_ail_cursor {int dummy; } ;
-struct xfs_ail {int /*<<< orphan*/  ail_lock; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* iop_unpin ) (struct xfs_log_item*,int /*<<< orphan*/ ) ;} ;
+struct xfs_ail {int ail_lock; } ;
+struct TYPE_2__ {int (* iop_unpin ) (struct xfs_log_item*,int ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (struct xfs_log_item*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xfs_trans_ail_update_bulk (struct xfs_ail*,struct xfs_ail_cursor*,struct xfs_log_item**,int,int /*<<< orphan*/ ) ; 
+
+ int spin_lock (int *) ;
+ int stub1 (struct xfs_log_item*,int ) ;
+ int xfs_trans_ail_update_bulk (struct xfs_ail*,struct xfs_ail_cursor*,struct xfs_log_item**,int,int ) ;
 
 __attribute__((used)) static inline void
 xfs_log_item_batch_insert(
-	struct xfs_ail		*ailp,
-	struct xfs_ail_cursor	*cur,
-	struct xfs_log_item	**log_items,
-	int			nr_items,
-	xfs_lsn_t		commit_lsn)
+ struct xfs_ail *ailp,
+ struct xfs_ail_cursor *cur,
+ struct xfs_log_item **log_items,
+ int nr_items,
+ xfs_lsn_t commit_lsn)
 {
-	int	i;
+ int i;
 
-	spin_lock(&ailp->ail_lock);
-	/* xfs_trans_ail_update_bulk drops ailp->ail_lock */
-	xfs_trans_ail_update_bulk(ailp, cur, log_items, nr_items, commit_lsn);
+ spin_lock(&ailp->ail_lock);
 
-	for (i = 0; i < nr_items; i++) {
-		struct xfs_log_item *lip = log_items[i];
+ xfs_trans_ail_update_bulk(ailp, cur, log_items, nr_items, commit_lsn);
 
-		if (lip->li_ops->iop_unpin)
-			lip->li_ops->iop_unpin(lip, 0);
-	}
+ for (i = 0; i < nr_items; i++) {
+  struct xfs_log_item *lip = log_items[i];
+
+  if (lip->li_ops->iop_unpin)
+   lip->li_ops->iop_unpin(lip, 0);
+ }
 }

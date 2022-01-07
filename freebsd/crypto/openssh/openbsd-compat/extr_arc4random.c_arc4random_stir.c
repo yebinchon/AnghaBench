@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  _ARC4_LOCK () ; 
- int /*<<< orphan*/  _ARC4_UNLOCK () ; 
- int /*<<< orphan*/  _rs_stir () ; 
+ int _ARC4_LOCK () ;
+ int _ARC4_UNLOCK () ;
+ int _rs_stir () ;
 
 void
 arc4random_stir(void)
 {
-	_ARC4_LOCK();
-	_rs_stir();
-	_ARC4_UNLOCK();
+ _ARC4_LOCK();
+ _rs_stir();
+ _ARC4_UNLOCK();
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct forth_condition_stack {int top; } ;
 
-/* Variables and functions */
- int MAX_ERROR_BUF_SIZE ; 
- int /*<<< orphan*/  add_lit_str (char*,void**,int*,int,char*) ; 
- scalar_t__ isspace (char) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  parse_token (char*,void**,int*,int,struct forth_condition_stack*,char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int,char*,int) ; 
+
+ int MAX_ERROR_BUF_SIZE ;
+ int add_lit_str (char*,void**,int*,int,char*) ;
+ scalar_t__ isspace (char) ;
+ int memset (char*,int ,int) ;
+ int parse_token (char*,void**,int*,int,struct forth_condition_stack*,char*) ;
+ int snprintf (char*,int,char*,int,char*) ;
+ int strcpy (char*,char*) ;
+ int strlen (char*) ;
+ int vkprintf (int,char*,int,char*,int) ;
 
 int lex (char *value, int value_len, void **IP, int ip_size, char last_error[MAX_ERROR_BUF_SIZE]) {
   int i, j, k = 0, n = 0;
@@ -37,7 +37,7 @@ int lex (char *value, int value_len, void **IP, int ip_size, char last_error[MAX
     }
 
     if (value[i] == '"') {
-      //read string literal in double quot
+
       i++;
       j = i;
       while (i < value_len && value[i] != '"') {

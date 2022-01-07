@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsIDOMNode ;
-typedef  int /*<<< orphan*/  nsAString ;
-struct TYPE_3__ {int /*<<< orphan*/  nsdoc; } ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  TYPE_1__ HTMLDocumentNode ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  E_UNEXPECTED ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_nsIDOMNode ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- char* heap_strdupWtoA (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_GetData (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMHTMLDocument_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  nsIDOMNode_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsnode_to_nsstring (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int nsresult ;
+typedef int nsIDOMNode ;
+typedef int nsAString ;
+struct TYPE_3__ {int nsdoc; } ;
+typedef int LPCWSTR ;
+typedef TYPE_1__ HTMLDocumentNode ;
+typedef int HRESULT ;
+
+
+ int ERR (char*,int ) ;
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ int E_UNEXPECTED ;
+ scalar_t__ FAILED (int ) ;
+ int IID_nsIDOMNode ;
+ scalar_t__ NS_FAILED (int ) ;
+ int S_OK ;
+ int TRACE (char*,int ) ;
+ int WARN (char*) ;
+ int debugstr_w (int ) ;
+ char* heap_strdupWtoA (int ) ;
+ int nsAString_Finish (int *) ;
+ int nsAString_GetData (int *,int *) ;
+ int nsAString_Init (int *,int *) ;
+ int nsIDOMHTMLDocument_QueryInterface (int ,int *,void**) ;
+ int nsIDOMNode_Release (int *) ;
+ int nsnode_to_nsstring (int *,int *) ;
 
 __attribute__((used)) static HRESULT get_doc_string(HTMLDocumentNode *This, char **str)
 {
@@ -58,7 +58,7 @@ __attribute__((used)) static HRESULT get_doc_string(HTMLDocumentNode *This, char
         return E_FAIL;
     }
 
-    nsAString_Init(&nsstr, NULL);
+    nsAString_Init(&nsstr, ((void*)0));
     hres = nsnode_to_nsstring(nsnode, &nsstr);
     nsIDOMNode_Release(nsnode);
     if(FAILED(hres)) {

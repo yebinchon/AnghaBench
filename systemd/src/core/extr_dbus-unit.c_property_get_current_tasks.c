@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int /*<<< orphan*/  sd_bus ;
-typedef  int /*<<< orphan*/  Unit ;
 
-/* Variables and functions */
- int ENODATA ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  log_unit_warning_errno (int /*<<< orphan*/ *,int,char*) ; 
- int sd_bus_message_append (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int unit_get_tasks_current (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint64_t ;
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
+typedef int sd_bus ;
+typedef int Unit ;
+
+
+ int ENODATA ;
+ int assert (int *) ;
+ int log_unit_warning_errno (int *,int,char*) ;
+ int sd_bus_message_append (int *,char*,int ) ;
+ int unit_get_tasks_current (int *,int *) ;
 
 __attribute__((used)) static int property_get_current_tasks(
                 sd_bus *bus,

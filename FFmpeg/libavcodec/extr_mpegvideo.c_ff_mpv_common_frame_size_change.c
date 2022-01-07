@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int i ;
-struct TYPE_14__ {int slice_context_count; scalar_t__ codec_id; int mb_height; int height; int start_mb_y; int end_mb_y; struct TYPE_14__** thread_context; scalar_t__ width; int /*<<< orphan*/  avctx; int /*<<< orphan*/  progressive_sequence; int /*<<< orphan*/ * current_picture_ptr; int /*<<< orphan*/  next_picture_ptr; int /*<<< orphan*/  last_picture_ptr; TYPE_1__* picture; int /*<<< orphan*/  context_initialized; } ;
+
+
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int i ;
+struct TYPE_14__ {int slice_context_count; scalar_t__ codec_id; int mb_height; int height; int start_mb_y; int end_mb_y; struct TYPE_14__** thread_context; scalar_t__ width; int avctx; int progressive_sequence; int * current_picture_ptr; int next_picture_ptr; int last_picture_ptr; TYPE_1__* picture; int context_initialized; } ;
 struct TYPE_13__ {int needs_realloc; } ;
-typedef  TYPE_2__ MpegEncContext ;
+typedef TYPE_2__ MpegEncContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ AV_CODEC_ID_MPEG2VIDEO ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int MAX_PICTURE_COUNT ; 
- int /*<<< orphan*/  av_freep (TYPE_2__**) ; 
- int av_image_check_size (scalar_t__,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__* av_memdup (TYPE_2__*,int) ; 
- int /*<<< orphan*/  ff_mpv_common_end (TYPE_2__*) ; 
- int /*<<< orphan*/  free_context_frame (TYPE_2__*) ; 
- int /*<<< orphan*/  free_duplicate_context (TYPE_2__*) ; 
- int init_context_frame (TYPE_2__*) ; 
- int init_duplicate_context (TYPE_2__*) ; 
- int /*<<< orphan*/  memset (TYPE_2__**,int /*<<< orphan*/ ,int) ; 
+
+ int AVERROR (int ) ;
+ scalar_t__ AV_CODEC_ID_MPEG2VIDEO ;
+ int EINVAL ;
+ int ENOMEM ;
+ int MAX_PICTURE_COUNT ;
+ int av_freep (TYPE_2__**) ;
+ int av_image_check_size (scalar_t__,int,int ,int ) ;
+ TYPE_2__* av_memdup (TYPE_2__*,int) ;
+ int ff_mpv_common_end (TYPE_2__*) ;
+ int free_context_frame (TYPE_2__*) ;
+ int free_duplicate_context (TYPE_2__*) ;
+ int init_context_frame (TYPE_2__*) ;
+ int init_duplicate_context (TYPE_2__*) ;
+ int memset (TYPE_2__**,int ,int) ;
 
 int ff_mpv_common_frame_size_change(MpegEncContext *s)
 {
@@ -57,11 +57,11 @@ int ff_mpv_common_frame_size_change(MpegEncContext *s)
                 s->picture[i].needs_realloc = 1;
         }
 
-    s->last_picture_ptr         =
-    s->next_picture_ptr         =
-    s->current_picture_ptr      = NULL;
+    s->last_picture_ptr =
+    s->next_picture_ptr =
+    s->current_picture_ptr = ((void*)0);
 
-    // init
+
     if (s->codec_id == AV_CODEC_ID_MPEG2VIDEO && !s->progressive_sequence)
         s->mb_height = (s->height + 31) / 32 * 2;
     else
@@ -75,7 +75,7 @@ int ff_mpv_common_frame_size_change(MpegEncContext *s)
         goto fail;
 
     memset(s->thread_context, 0, sizeof(s->thread_context));
-    s->thread_context[0]   = s;
+    s->thread_context[0] = s;
 
     if (s->width && s->height) {
         int nb_slices = s->slice_context_count;
@@ -92,7 +92,7 @@ int ff_mpv_common_frame_size_change(MpegEncContext *s)
                     goto fail;
                 s->thread_context[i]->start_mb_y =
                     (s->mb_height * (i) + nb_slices / 2) / nb_slices;
-                s->thread_context[i]->end_mb_y   =
+                s->thread_context[i]->end_mb_y =
                     (s->mb_height * (i + 1) + nb_slices / 2) / nb_slices;
             }
         } else {
@@ -100,7 +100,7 @@ int ff_mpv_common_frame_size_change(MpegEncContext *s)
             if (err < 0)
                 goto fail;
             s->start_mb_y = 0;
-            s->end_mb_y   = s->mb_height;
+            s->end_mb_y = s->mb_height;
         }
         s->slice_context_count = nb_slices;
     }

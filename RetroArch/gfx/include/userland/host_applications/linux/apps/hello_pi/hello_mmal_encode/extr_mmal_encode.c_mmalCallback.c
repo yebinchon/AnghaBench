@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  MMAL_WRAPPER_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sem ; 
- int /*<<< orphan*/  vcos_semaphore_post (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int MMAL_WRAPPER_T ;
+
+
+ int sem ;
+ int vcos_semaphore_post (int *) ;
 
 __attribute__((used)) static void mmalCallback(MMAL_WRAPPER_T* encoder)
 {

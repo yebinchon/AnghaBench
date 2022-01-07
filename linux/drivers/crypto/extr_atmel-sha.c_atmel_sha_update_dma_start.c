@@ -1,132 +1,132 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct scatterlist {int /*<<< orphan*/  length; int /*<<< orphan*/  offset; } ;
-struct atmel_sha_reqctx {unsigned int bufcnt; unsigned int offset; int block_size; int flags; struct scatterlist* sg; int /*<<< orphan*/  dma_addr; scalar_t__ buflen; int /*<<< orphan*/  buffer; scalar_t__ total; int /*<<< orphan*/ * digcnt; } ;
-struct atmel_sha_dev {int /*<<< orphan*/  dev; int /*<<< orphan*/  req; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DMA_TO_DEVICE ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  IS_ALIGNED (int /*<<< orphan*/ ,int) ; 
- int SHA_FLAGS_FINUP ; 
- int SHA_FLAGS_SG ; 
- struct atmel_sha_reqctx* ahash_request_ctx (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atmel_sha_append_sg (struct atmel_sha_reqctx*) ; 
- int atmel_sha_complete (struct atmel_sha_dev*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atmel_sha_fill_padding (struct atmel_sha_reqctx*,unsigned int) ; 
- int atmel_sha_update_dma_slow (struct atmel_sha_dev*) ; 
- int atmel_sha_xmit_start (struct atmel_sha_dev*,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  dev_dbg (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,scalar_t__) ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  dma_map_sg (int /*<<< orphan*/ ,struct scatterlist*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dma_map_single (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ dma_mapping_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned int min (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sg_dma_address (struct scatterlist*) ; 
- scalar_t__ sg_is_last (struct scatterlist*) ; 
+
+
+
+typedef int u32 ;
+struct scatterlist {int length; int offset; } ;
+struct atmel_sha_reqctx {unsigned int bufcnt; unsigned int offset; int block_size; int flags; struct scatterlist* sg; int dma_addr; scalar_t__ buflen; int buffer; scalar_t__ total; int * digcnt; } ;
+struct atmel_sha_dev {int dev; int req; } ;
+
+
+ int DMA_TO_DEVICE ;
+ int EINVAL ;
+ int IS_ALIGNED (int ,int) ;
+ int SHA_FLAGS_FINUP ;
+ int SHA_FLAGS_SG ;
+ struct atmel_sha_reqctx* ahash_request_ctx (int ) ;
+ int atmel_sha_append_sg (struct atmel_sha_reqctx*) ;
+ int atmel_sha_complete (struct atmel_sha_dev*,int ) ;
+ int atmel_sha_fill_padding (struct atmel_sha_reqctx*,unsigned int) ;
+ int atmel_sha_update_dma_slow (struct atmel_sha_dev*) ;
+ int atmel_sha_xmit_start (struct atmel_sha_dev*,int ,unsigned int,int ,unsigned int,unsigned int) ;
+ int dev_dbg (int ,char*,int ,int ,unsigned int,scalar_t__) ;
+ int dev_err (int ,char*,...) ;
+ int dma_map_sg (int ,struct scatterlist*,int,int ) ;
+ int dma_map_single (int ,int ,scalar_t__,int ) ;
+ scalar_t__ dma_mapping_error (int ,int ) ;
+ unsigned int min (scalar_t__,int ) ;
+ int sg_dma_address (struct scatterlist*) ;
+ scalar_t__ sg_is_last (struct scatterlist*) ;
 
 __attribute__((used)) static int atmel_sha_update_dma_start(struct atmel_sha_dev *dd)
 {
-	struct atmel_sha_reqctx *ctx = ahash_request_ctx(dd->req);
-	unsigned int length, final, tail;
-	struct scatterlist *sg;
-	unsigned int count;
+ struct atmel_sha_reqctx *ctx = ahash_request_ctx(dd->req);
+ unsigned int length, final, tail;
+ struct scatterlist *sg;
+ unsigned int count;
 
-	if (!ctx->total)
-		return 0;
+ if (!ctx->total)
+  return 0;
 
-	if (ctx->bufcnt || ctx->offset)
-		return atmel_sha_update_dma_slow(dd);
+ if (ctx->bufcnt || ctx->offset)
+  return atmel_sha_update_dma_slow(dd);
 
-	dev_dbg(dd->dev, "fast: digcnt: 0x%llx 0x%llx, bufcnt: %zd, total: %u\n",
-		ctx->digcnt[1], ctx->digcnt[0], ctx->bufcnt, ctx->total);
+ dev_dbg(dd->dev, "fast: digcnt: 0x%llx 0x%llx, bufcnt: %zd, total: %u\n",
+  ctx->digcnt[1], ctx->digcnt[0], ctx->bufcnt, ctx->total);
 
-	sg = ctx->sg;
+ sg = ctx->sg;
 
-	if (!IS_ALIGNED(sg->offset, sizeof(u32)))
-		return atmel_sha_update_dma_slow(dd);
+ if (!IS_ALIGNED(sg->offset, sizeof(u32)))
+  return atmel_sha_update_dma_slow(dd);
 
-	if (!sg_is_last(sg) && !IS_ALIGNED(sg->length, ctx->block_size))
-		/* size is not ctx->block_size aligned */
-		return atmel_sha_update_dma_slow(dd);
+ if (!sg_is_last(sg) && !IS_ALIGNED(sg->length, ctx->block_size))
 
-	length = min(ctx->total, sg->length);
+  return atmel_sha_update_dma_slow(dd);
 
-	if (sg_is_last(sg)) {
-		if (!(ctx->flags & SHA_FLAGS_FINUP)) {
-			/* not last sg must be ctx->block_size aligned */
-			tail = length & (ctx->block_size - 1);
-			length -= tail;
-		}
-	}
+ length = min(ctx->total, sg->length);
 
-	ctx->total -= length;
-	ctx->offset = length; /* offset where to start slow */
+ if (sg_is_last(sg)) {
+  if (!(ctx->flags & SHA_FLAGS_FINUP)) {
 
-	final = (ctx->flags & SHA_FLAGS_FINUP) && !ctx->total;
+   tail = length & (ctx->block_size - 1);
+   length -= tail;
+  }
+ }
 
-	/* Add padding */
-	if (final) {
-		tail = length & (ctx->block_size - 1);
-		length -= tail;
-		ctx->total += tail;
-		ctx->offset = length; /* offset where to start slow */
+ ctx->total -= length;
+ ctx->offset = length;
 
-		sg = ctx->sg;
-		atmel_sha_append_sg(ctx);
+ final = (ctx->flags & SHA_FLAGS_FINUP) && !ctx->total;
 
-		atmel_sha_fill_padding(ctx, length);
 
-		ctx->dma_addr = dma_map_single(dd->dev, ctx->buffer,
-			ctx->buflen + ctx->block_size, DMA_TO_DEVICE);
-		if (dma_mapping_error(dd->dev, ctx->dma_addr)) {
-			dev_err(dd->dev, "dma %zu bytes error\n",
-				ctx->buflen + ctx->block_size);
-			return atmel_sha_complete(dd, -EINVAL);
-		}
+ if (final) {
+  tail = length & (ctx->block_size - 1);
+  length -= tail;
+  ctx->total += tail;
+  ctx->offset = length;
 
-		if (length == 0) {
-			ctx->flags &= ~SHA_FLAGS_SG;
-			count = ctx->bufcnt;
-			ctx->bufcnt = 0;
-			return atmel_sha_xmit_start(dd, ctx->dma_addr, count, 0,
-					0, final);
-		} else {
-			ctx->sg = sg;
-			if (!dma_map_sg(dd->dev, ctx->sg, 1,
-				DMA_TO_DEVICE)) {
-					dev_err(dd->dev, "dma_map_sg  error\n");
-					return atmel_sha_complete(dd, -EINVAL);
-			}
+  sg = ctx->sg;
+  atmel_sha_append_sg(ctx);
 
-			ctx->flags |= SHA_FLAGS_SG;
+  atmel_sha_fill_padding(ctx, length);
 
-			count = ctx->bufcnt;
-			ctx->bufcnt = 0;
-			return atmel_sha_xmit_start(dd, sg_dma_address(ctx->sg),
-					length, ctx->dma_addr, count, final);
-		}
-	}
+  ctx->dma_addr = dma_map_single(dd->dev, ctx->buffer,
+   ctx->buflen + ctx->block_size, DMA_TO_DEVICE);
+  if (dma_mapping_error(dd->dev, ctx->dma_addr)) {
+   dev_err(dd->dev, "dma %zu bytes error\n",
+    ctx->buflen + ctx->block_size);
+   return atmel_sha_complete(dd, -EINVAL);
+  }
 
-	if (!dma_map_sg(dd->dev, ctx->sg, 1, DMA_TO_DEVICE)) {
-		dev_err(dd->dev, "dma_map_sg  error\n");
-		return atmel_sha_complete(dd, -EINVAL);
-	}
+  if (length == 0) {
+   ctx->flags &= ~SHA_FLAGS_SG;
+   count = ctx->bufcnt;
+   ctx->bufcnt = 0;
+   return atmel_sha_xmit_start(dd, ctx->dma_addr, count, 0,
+     0, final);
+  } else {
+   ctx->sg = sg;
+   if (!dma_map_sg(dd->dev, ctx->sg, 1,
+    DMA_TO_DEVICE)) {
+     dev_err(dd->dev, "dma_map_sg  error\n");
+     return atmel_sha_complete(dd, -EINVAL);
+   }
 
-	ctx->flags |= SHA_FLAGS_SG;
+   ctx->flags |= SHA_FLAGS_SG;
 
-	/* next call does not fail... so no unmap in the case of error */
-	return atmel_sha_xmit_start(dd, sg_dma_address(ctx->sg), length, 0,
-								0, final);
+   count = ctx->bufcnt;
+   ctx->bufcnt = 0;
+   return atmel_sha_xmit_start(dd, sg_dma_address(ctx->sg),
+     length, ctx->dma_addr, count, final);
+  }
+ }
+
+ if (!dma_map_sg(dd->dev, ctx->sg, 1, DMA_TO_DEVICE)) {
+  dev_err(dd->dev, "dma_map_sg  error\n");
+  return atmel_sha_complete(dd, -EINVAL);
+ }
+
+ ctx->flags |= SHA_FLAGS_SG;
+
+
+ return atmel_sha_xmit_start(dd, sg_dma_address(ctx->sg), length, 0,
+        0, final);
 }

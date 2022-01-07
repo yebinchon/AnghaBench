@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timeval {int tv_sec; scalar_t__ tv_usec; } ;
 struct in_addr {int dummy; } ;
 struct sockaddr_in {struct in_addr sin_addr; } ;
-struct addrinfo {int /*<<< orphan*/  ai_addrlen; scalar_t__ ai_addr; int /*<<< orphan*/  ai_socktype; int /*<<< orphan*/  ai_family; } ;
-typedef  int /*<<< orphan*/  recv_buf ;
-typedef  int /*<<< orphan*/  receiving_timeout ;
+struct addrinfo {int ai_addrlen; scalar_t__ ai_addr; int ai_socktype; int ai_family; } ;
+typedef int recv_buf ;
+typedef int receiving_timeout ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  REQUEST ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  SOL_SOCKET ; 
- int /*<<< orphan*/  SO_RCVTIMEO ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  WEB_PORT ; 
- int /*<<< orphan*/  WEB_SERVER ; 
- int /*<<< orphan*/  bzero (char*,int) ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ connect (int,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  freeaddrinfo (struct addrinfo*) ; 
- int getaddrinfo (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct addrinfo const*,struct addrinfo**) ; 
- int /*<<< orphan*/  inet_ntoa (struct in_addr) ; 
- int portTICK_PERIOD_MS ; 
- int /*<<< orphan*/  putchar (char) ; 
- int read (int,char*,int) ; 
- scalar_t__ setsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct timeval*,int) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vTaskDelay (int) ; 
- scalar_t__ write (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AF_INET ;
+ int ESP_LOGE (int ,char*,...) ;
+ int ESP_LOGI (int ,char*,...) ;
+ int REQUEST ;
+ int SOCK_STREAM ;
+ int SOL_SOCKET ;
+ int SO_RCVTIMEO ;
+ int TAG ;
+ int WEB_PORT ;
+ int WEB_SERVER ;
+ int bzero (char*,int) ;
+ int close (int) ;
+ scalar_t__ connect (int,scalar_t__,int ) ;
+ int errno ;
+ int freeaddrinfo (struct addrinfo*) ;
+ int getaddrinfo (int ,int ,struct addrinfo const*,struct addrinfo**) ;
+ int inet_ntoa (struct in_addr) ;
+ int portTICK_PERIOD_MS ;
+ int putchar (char) ;
+ int read (int,char*,int) ;
+ scalar_t__ setsockopt (int,int ,int ,struct timeval*,int) ;
+ int socket (int ,int ,int ) ;
+ int strlen (int ) ;
+ int vTaskDelay (int) ;
+ scalar_t__ write (int,int ,int ) ;
 
 __attribute__((used)) static void http_get_task(void *pvParameters)
 {
@@ -58,15 +58,15 @@ __attribute__((used)) static void http_get_task(void *pvParameters)
     while(1) {
         int err = getaddrinfo(WEB_SERVER, WEB_PORT, &hints, &res);
 
-        if(err != 0 || res == NULL) {
+        if(err != 0 || res == ((void*)0)) {
             ESP_LOGE(TAG, "DNS lookup failed err=%d res=%p", err, res);
             vTaskDelay(1000 / portTICK_PERIOD_MS);
             continue;
         }
 
-        /* Code to print the resolved IP.
 
-           Note: inet_ntoa is non-reentrant, look at ipaddr_ntoa_r for "real" code */
+
+
         addr = &((struct sockaddr_in *)res->ai_addr)->sin_addr;
         ESP_LOGI(TAG, "DNS lookup succeeded. IP=%s", inet_ntoa(*addr));
 
@@ -110,7 +110,7 @@ __attribute__((used)) static void http_get_task(void *pvParameters)
         }
         ESP_LOGI(TAG, "... set socket receiving timeout success");
 
-        /* Read HTTP response */
+
         do {
             bzero(recv_buf, sizeof(recv_buf));
             r = read(s, recv_buf, sizeof(recv_buf)-1);

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int ERROR_ACCESS_DENIED ; 
- int ERROR_FILE_INVALID ; 
- int ERROR_INVALID_PARAMETER ; 
- int /*<<< orphan*/  FALSE ; 
- int GetLastError () ; 
- int /*<<< orphan*/  LogSevInformation ; 
- int /*<<< orphan*/  LogSevMaximum ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  SetupCloseLog () ; 
- int SetupLogErrorA (char*,int /*<<< orphan*/ ) ; 
- int SetupOpenLog (int /*<<< orphan*/ ) ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+
+
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int ERROR_ACCESS_DENIED ;
+ int ERROR_FILE_INVALID ;
+ int ERROR_INVALID_PARAMETER ;
+ int FALSE ;
+ int GetLastError () ;
+ int LogSevInformation ;
+ int LogSevMaximum ;
+ int SetLastError (int) ;
+ int SetupCloseLog () ;
+ int SetupLogErrorA (char*,int ) ;
+ int SetupOpenLog (int ) ;
+ scalar_t__ broken (int) ;
+ int ok (int,char*,...) ;
+ int skip (char*) ;
 
 __attribute__((used)) static void test_SetupLogError(void)
 {
@@ -58,8 +58,8 @@ __attribute__((used)) static void test_SetupLogError(void)
     ok(ret, "SetupLogError failed\n");
 
     SetLastError(0xdeadbeef);
-    ret = SetupLogErrorA(NULL, LogSevInformation);
-    ok(ret || broken(!ret && GetLastError() == ERROR_INVALID_PARAMETER /* Win Vista+ */),
+    ret = SetupLogErrorA(((void*)0), LogSevInformation);
+    ok(ret || broken(!ret && GetLastError() == ERROR_INVALID_PARAMETER ),
         "SetupLogError failed: %08x\n", GetLastError());
 
     SetLastError(0xdeadbeef);

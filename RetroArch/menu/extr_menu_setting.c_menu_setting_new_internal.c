@@ -1,77 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rarch_setting_t ;
-struct TYPE_5__ {int index; int /*<<< orphan*/  size; } ;
-typedef  TYPE_1__ rarch_setting_info_t ;
-typedef  enum settings_list_type { ____Placeholder_settings_list_type } settings_list_type ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (int*) ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_MAIN_MENU ; 
- int SETTINGS_LIST_AI_SERVICE ; 
- int SETTINGS_LIST_AUDIO ; 
- int SETTINGS_LIST_CHEATS ; 
- int SETTINGS_LIST_CHEAT_DETAILS ; 
- int SETTINGS_LIST_CHEAT_SEARCH ; 
- int SETTINGS_LIST_CHEEVOS ; 
- int SETTINGS_LIST_CONFIGURATION ; 
- int SETTINGS_LIST_CORE ; 
- int SETTINGS_LIST_CORE_UPDATER ; 
- int SETTINGS_LIST_CRT_SWITCHRES ; 
- int SETTINGS_LIST_DIRECTORY ; 
- int SETTINGS_LIST_DRIVERS ; 
- int SETTINGS_LIST_FONT ; 
- int SETTINGS_LIST_FRAME_THROTTLING ; 
- int SETTINGS_LIST_FRAME_TIME_COUNTER ; 
- int SETTINGS_LIST_INPUT ; 
- int SETTINGS_LIST_INPUT_HOTKEY ; 
- int SETTINGS_LIST_LAKKA_SERVICES ; 
- int SETTINGS_LIST_LOGGING ; 
- int SETTINGS_LIST_MAIN_MENU ; 
- int SETTINGS_LIST_MENU ; 
- int SETTINGS_LIST_MENU_FILE_BROWSER ; 
- int SETTINGS_LIST_MENU_SOUNDS ; 
- int SETTINGS_LIST_MIDI ; 
- int SETTINGS_LIST_MULTIMEDIA ; 
- int SETTINGS_LIST_NETPLAY ; 
- int SETTINGS_LIST_OVERLAY ; 
- int SETTINGS_LIST_PLAYLIST ; 
- int SETTINGS_LIST_POWER_MANAGEMENT ; 
- int SETTINGS_LIST_PRIVACY ; 
- int SETTINGS_LIST_RECORDING ; 
- int SETTINGS_LIST_REWIND ; 
- int SETTINGS_LIST_SAVING ; 
- int SETTINGS_LIST_USER ; 
- int SETTINGS_LIST_USER_ACCOUNTS ; 
- int SETTINGS_LIST_USER_ACCOUNTS_CHEEVOS ; 
- int SETTINGS_LIST_USER_ACCOUNTS_TWITCH ; 
- int SETTINGS_LIST_USER_ACCOUNTS_YOUTUBE ; 
- int SETTINGS_LIST_USER_INTERFACE ; 
- int SETTINGS_LIST_VIDEO ; 
- int SETTINGS_LIST_VIDEO_LAYOUT ; 
- scalar_t__ calloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  menu_setting_terminate_last (int /*<<< orphan*/ *,int) ; 
- char* msg_hash_to_str (int /*<<< orphan*/ ) ; 
- scalar_t__ realloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  setting_append_list (int,int /*<<< orphan*/ **,TYPE_1__*,char const*) ; 
- int /*<<< orphan*/  settings_list_append (int /*<<< orphan*/ **,TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int rarch_setting_t ;
+struct TYPE_5__ {int index; int size; } ;
+typedef TYPE_1__ rarch_setting_info_t ;
+typedef enum settings_list_type { ____Placeholder_settings_list_type } settings_list_type ;
+
+
+ unsigned int ARRAY_SIZE (int*) ;
+ int MENU_ENUM_LABEL_MAIN_MENU ;
+ int SETTINGS_LIST_AI_SERVICE ;
+ int SETTINGS_LIST_AUDIO ;
+ int SETTINGS_LIST_CHEATS ;
+ int SETTINGS_LIST_CHEAT_DETAILS ;
+ int SETTINGS_LIST_CHEAT_SEARCH ;
+ int SETTINGS_LIST_CHEEVOS ;
+ int SETTINGS_LIST_CONFIGURATION ;
+ int SETTINGS_LIST_CORE ;
+ int SETTINGS_LIST_CORE_UPDATER ;
+ int SETTINGS_LIST_CRT_SWITCHRES ;
+ int SETTINGS_LIST_DIRECTORY ;
+ int SETTINGS_LIST_DRIVERS ;
+ int SETTINGS_LIST_FONT ;
+ int SETTINGS_LIST_FRAME_THROTTLING ;
+ int SETTINGS_LIST_FRAME_TIME_COUNTER ;
+ int SETTINGS_LIST_INPUT ;
+ int SETTINGS_LIST_INPUT_HOTKEY ;
+ int SETTINGS_LIST_LAKKA_SERVICES ;
+ int SETTINGS_LIST_LOGGING ;
+ int SETTINGS_LIST_MAIN_MENU ;
+ int SETTINGS_LIST_MENU ;
+ int SETTINGS_LIST_MENU_FILE_BROWSER ;
+ int SETTINGS_LIST_MENU_SOUNDS ;
+ int SETTINGS_LIST_MIDI ;
+ int SETTINGS_LIST_MULTIMEDIA ;
+ int SETTINGS_LIST_NETPLAY ;
+ int SETTINGS_LIST_OVERLAY ;
+ int SETTINGS_LIST_PLAYLIST ;
+ int SETTINGS_LIST_POWER_MANAGEMENT ;
+ int SETTINGS_LIST_PRIVACY ;
+ int SETTINGS_LIST_RECORDING ;
+ int SETTINGS_LIST_REWIND ;
+ int SETTINGS_LIST_SAVING ;
+ int SETTINGS_LIST_USER ;
+ int SETTINGS_LIST_USER_ACCOUNTS ;
+ int SETTINGS_LIST_USER_ACCOUNTS_CHEEVOS ;
+ int SETTINGS_LIST_USER_ACCOUNTS_TWITCH ;
+ int SETTINGS_LIST_USER_ACCOUNTS_YOUTUBE ;
+ int SETTINGS_LIST_USER_INTERFACE ;
+ int SETTINGS_LIST_VIDEO ;
+ int SETTINGS_LIST_VIDEO_LAYOUT ;
+ scalar_t__ calloc (int ,int) ;
+ int free (int *) ;
+ int menu_setting_terminate_last (int *,int) ;
+ char* msg_hash_to_str (int ) ;
+ scalar_t__ realloc (int *,int) ;
+ int setting_append_list (int,int **,TYPE_1__*,char const*) ;
+ int settings_list_append (int **,TYPE_1__*) ;
 
 __attribute__((used)) static rarch_setting_t *menu_setting_new_internal(rarch_setting_info_t *list_info)
 {
    unsigned i;
-   rarch_setting_t* resized_list        = NULL;
+   rarch_setting_t* resized_list = ((void*)0);
    enum settings_list_type list_types[] =
    {
       SETTINGS_LIST_MAIN_MENU,
@@ -94,15 +94,15 @@ __attribute__((used)) static rarch_setting_t *menu_setting_new_internal(rarch_se
       SETTINGS_LIST_FRAME_TIME_COUNTER,
       SETTINGS_LIST_FONT,
       SETTINGS_LIST_OVERLAY,
-#ifdef HAVE_VIDEO_LAYOUT
-      SETTINGS_LIST_VIDEO_LAYOUT,
-#endif
+
+
+
       SETTINGS_LIST_MENU,
       SETTINGS_LIST_MENU_FILE_BROWSER,
       SETTINGS_LIST_MULTIMEDIA,
-#ifdef HAVE_TRANSLATE
-      SETTINGS_LIST_AI_SERVICE,
-#endif
+
+
+
       SETTINGS_LIST_USER_INTERFACE,
       SETTINGS_LIST_POWER_MANAGEMENT,
       SETTINGS_LIST_MENU_SOUNDS,
@@ -120,20 +120,20 @@ __attribute__((used)) static rarch_setting_t *menu_setting_new_internal(rarch_se
       SETTINGS_LIST_PRIVACY,
       SETTINGS_LIST_MIDI
    };
-   const char *root                     = msg_hash_to_str(MENU_ENUM_LABEL_MAIN_MENU);
-   rarch_setting_t *list                = (rarch_setting_t*)calloc(
+   const char *root = msg_hash_to_str(MENU_ENUM_LABEL_MAIN_MENU);
+   rarch_setting_t *list = (rarch_setting_t*)calloc(
          list_info->size, sizeof(*list));
-   rarch_setting_t **list_ptr           = NULL;
+   rarch_setting_t **list_ptr = ((void*)0);
 
    if (!list)
-      return NULL;
+      return ((void*)0);
 
    for (i = 0; i < ARRAY_SIZE(list_types); i++)
    {
       if (!setting_append_list(list_types[i], &list, list_info, root))
       {
          free(list);
-         return NULL;
+         return ((void*)0);
       }
    }
 
@@ -142,18 +142,18 @@ __attribute__((used)) static rarch_setting_t *menu_setting_new_internal(rarch_se
    if (!settings_list_append(list_ptr, list_info))
    {
       free(list);
-      return NULL;
+      return ((void*)0);
    }
    menu_setting_terminate_last(list, list_info->index);
    list_info->index++;
 
-   /* flatten this array to save ourselves some kilobytes. */
+
    resized_list = (rarch_setting_t*)realloc(list,
          list_info->index * sizeof(rarch_setting_t));
    if (!resized_list)
    {
       free(list);
-      return NULL;
+      return ((void*)0);
    }
 
    list = resized_list;

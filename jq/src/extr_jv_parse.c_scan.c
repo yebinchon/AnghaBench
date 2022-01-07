@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct jv_parser {scalar_t__ st; int last_ch_was_ws; scalar_t__ column; int /*<<< orphan*/  line; } ;
-typedef  char* presult ;
-typedef  char* pfunc ;
-typedef  int /*<<< orphan*/  jv ;
-typedef  int chclass ;
 
-/* Variables and functions */
-#define  INVALID 132 
- scalar_t__ JV_PARSER_NORMAL ; 
- scalar_t__ JV_PARSER_STRING ; 
- scalar_t__ JV_PARSER_STRING_ESCAPE ; 
-#define  LITERAL 131 
- char* OK ; 
-#define  QUOTE 130 
-#define  STRUCTURE 129 
- int /*<<< orphan*/  TRY (scalar_t__) ; 
-#define  WHITESPACE 128 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ check_done (struct jv_parser*,int /*<<< orphan*/ *) ; 
- scalar_t__ check_literal (struct jv_parser*) ; 
- scalar_t__ check_truncation (struct jv_parser*) ; 
- int classify (char) ; 
- scalar_t__ found_string (struct jv_parser*) ; 
- scalar_t__ is_top_num (struct jv_parser*) ; 
- int /*<<< orphan*/  jv_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_invalid () ; 
- int /*<<< orphan*/  jv_is_valid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parser_reset (struct jv_parser*) ; 
- scalar_t__ token (struct jv_parser*,char) ; 
- int /*<<< orphan*/  tokenadd (struct jv_parser*,char) ; 
+
+
+
+struct jv_parser {scalar_t__ st; int last_ch_was_ws; scalar_t__ column; int line; } ;
+typedef char* presult ;
+typedef char* pfunc ;
+typedef int jv ;
+typedef int chclass ;
+
+
+
+ scalar_t__ JV_PARSER_NORMAL ;
+ scalar_t__ JV_PARSER_STRING ;
+ scalar_t__ JV_PARSER_STRING_ESCAPE ;
+
+ char* OK ;
+
+
+ int TRY (scalar_t__) ;
+
+ int assert (int) ;
+ scalar_t__ check_done (struct jv_parser*,int *) ;
+ scalar_t__ check_literal (struct jv_parser*) ;
+ scalar_t__ check_truncation (struct jv_parser*) ;
+ int classify (char) ;
+ scalar_t__ found_string (struct jv_parser*) ;
+ scalar_t__ is_top_num (struct jv_parser*) ;
+ int jv_free (int ) ;
+ int jv_invalid () ;
+ int jv_is_valid (int ) ;
+ int parser_reset (struct jv_parser*) ;
+ scalar_t__ token (struct jv_parser*,char) ;
+ int tokenadd (struct jv_parser*,char) ;
 
 __attribute__((used)) static pfunc scan(struct jv_parser* p, char ch, jv* out) {
   p->column++;
@@ -47,7 +47,7 @@ __attribute__((used)) static pfunc scan(struct jv_parser* p, char ch, jv* out) {
     p->line++;
     p->column = 0;
   }
-  if (ch == '\036' /* ASCII RS; see draft-ietf-json-sequence-07 */) {
+  if (ch == '\036' ) {
     if (check_truncation(p)) {
       if (check_literal(p) == 0 && is_top_num(p))
         return "Potentially truncated top-level numeric value";
@@ -56,7 +56,7 @@ __attribute__((used)) static pfunc scan(struct jv_parser* p, char ch, jv* out) {
     TRY(check_literal(p));
     if (p->st == JV_PARSER_NORMAL && check_done(p, out))
       return OK;
-    // shouldn't happen?
+
     assert(!jv_is_valid(*out));
     parser_reset(p);
     jv_free(*out);
@@ -67,25 +67,25 @@ __attribute__((used)) static pfunc scan(struct jv_parser* p, char ch, jv* out) {
   p->last_ch_was_ws = 0;
   if (p->st == JV_PARSER_NORMAL) {
     chclass cls = classify(ch);
-    if (cls == WHITESPACE)
+    if (cls == 128)
       p->last_ch_was_ws = 1;
-    if (cls != LITERAL) {
+    if (cls != 131) {
       TRY(check_literal(p));
       if (check_done(p, out)) answer = OK;
     }
     switch (cls) {
-    case LITERAL:
+    case 131:
       tokenadd(p, ch);
       break;
-    case WHITESPACE:
+    case 128:
       break;
-    case QUOTE:
+    case 130:
       p->st = JV_PARSER_STRING;
       break;
-    case STRUCTURE:
+    case 129:
       TRY(token(p, ch));
       break;
-    case INVALID:
+    case 132:
       return "Invalid character";
     }
     if (check_done(p, out)) answer = OK;

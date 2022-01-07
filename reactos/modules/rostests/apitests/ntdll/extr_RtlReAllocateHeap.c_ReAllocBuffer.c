@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ SIZE_T ;
-typedef  scalar_t__ PUCHAR ;
-typedef  int /*<<< orphan*/  PCSTR ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CheckBuffer (scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- int /*<<< orphan*/  RtlFillMemory (scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  RtlGetProcessHeap () ; 
- scalar_t__ RtlReAllocateHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  RtlSizeHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ok_hex (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  skip (char*,scalar_t__,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ SIZE_T ;
+typedef scalar_t__ PUCHAR ;
+typedef int PCSTR ;
+typedef int BOOLEAN ;
+
+
+ int CheckBuffer (scalar_t__,scalar_t__,int) ;
+ int FALSE ;
+ int HEAP_ZERO_MEMORY ;
+ int RtlFillMemory (scalar_t__,scalar_t__,int) ;
+ int RtlGetProcessHeap () ;
+ scalar_t__ RtlReAllocateHeap (int ,int ,scalar_t__,scalar_t__) ;
+ int RtlSizeHeap (int ,int ,scalar_t__) ;
+ int TRUE ;
+ int ok (int ,char*,scalar_t__,scalar_t__) ;
+ int ok_hex (int ,scalar_t__) ;
+ int skip (char*,scalar_t__,int ) ;
 
 __attribute__((used)) static
 BOOLEAN

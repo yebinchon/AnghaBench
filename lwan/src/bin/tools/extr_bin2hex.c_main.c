@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int bin2hex (char const*,char const*) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,...) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (int /*<<< orphan*/ ) ; 
+ int bin2hex (char const*,char const*) ;
+ int errno ;
+ int fprintf (int ,char*,char const*,...) ;
+ int printf (char*,...) ;
+ int stderr ;
+ char* strerror (int ) ;
 
 int main(int argc, char *argv[])
 {

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  size_t uint16_t ;
-typedef  int /*<<< orphan*/  Tox ;
 
-/* Variables and functions */
- int STRING_LENGTH ; 
- int TOX_MAX_NAME_LENGTH ; 
- int /*<<< orphan*/  memcpy (char*,char*,size_t) ; 
- int /*<<< orphan*/  new_lines (char*) ; 
- int /*<<< orphan*/  new_lines_mark (char*,int) ; 
- size_t sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- size_t strlen (char*) ; 
- int /*<<< orphan*/  tox_group_get_names (int /*<<< orphan*/ *,int,int /*<<< orphan*/ **,size_t*,int) ; 
- int tox_group_number_peers (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef size_t uint16_t ;
+typedef int Tox ;
+
+
+ int STRING_LENGTH ;
+ int TOX_MAX_NAME_LENGTH ;
+ int memcpy (char*,char*,size_t) ;
+ int new_lines (char*) ;
+ int new_lines_mark (char*,int) ;
+ size_t sprintf (char*,char*,int) ;
+ int strcpy (char*,char*) ;
+ size_t strlen (char*) ;
+ int tox_group_get_names (int *,int,int **,size_t*,int) ;
+ int tox_group_number_peers (int *,int) ;
 
 void print_groupchatpeers(Tox *m, int groupnumber)
 {

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int OLED_BLOCK_SIZE ; 
- int OLED_DISPLAY_HEIGHT ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int OLED_BLOCK_SIZE ;
+ int OLED_DISPLAY_HEIGHT ;
 
 __attribute__((used)) static void calc_bounds_90(uint8_t update_start, uint8_t *cmd_array) {
     cmd_array[1] = OLED_BLOCK_SIZE * update_start / OLED_DISPLAY_HEIGHT * 8;

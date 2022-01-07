@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_Number ;
-typedef  int /*<<< orphan*/  lua_Integer ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int lua_Number ;
+typedef int lua_Integer ;
 struct TYPE_6__ {int little; } ;
-struct TYPE_5__ {int islittle; int /*<<< orphan*/  L; void* maxalign; } ;
-typedef  int /*<<< orphan*/  KOption ;
-typedef  TYPE_1__ Header ;
+struct TYPE_5__ {int islittle; int L; void* maxalign; } ;
+typedef int KOption ;
+typedef TYPE_1__ Header ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Kchar ; 
- int /*<<< orphan*/  Kfloat ; 
- int /*<<< orphan*/  Kint ; 
- int /*<<< orphan*/  Knop ; 
- int /*<<< orphan*/  Kpaddalign ; 
- int /*<<< orphan*/  Kpadding ; 
- int /*<<< orphan*/  Kstring ; 
- int /*<<< orphan*/  Kuint ; 
- int /*<<< orphan*/  Kzstr ; 
- int MAXALIGN ; 
- int getnum (char const**,int) ; 
- void* getnumlimit (TYPE_1__*,char const**,int) ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ ,char*,...) ; 
- TYPE_2__ nativeendian ; 
+
+ int Kchar ;
+ int Kfloat ;
+ int Kint ;
+ int Knop ;
+ int Kpaddalign ;
+ int Kpadding ;
+ int Kstring ;
+ int Kuint ;
+ int Kzstr ;
+ int MAXALIGN ;
+ int getnum (char const**,int) ;
+ void* getnumlimit (TYPE_1__*,char const**,int) ;
+ int luaL_error (int ,char*,...) ;
+ TYPE_2__ nativeendian ;
 
 __attribute__((used)) static KOption getoption (Header *h, const char **fmt, int *size) {
   int opt = *((*fmt)++);
-  *size = 0;  /* default */
+  *size = 0;
   switch (opt) {
     case 'b': *size = sizeof(char); return Kint;
     case 'B': *size = sizeof(char); return Kuint;
@@ -48,10 +48,10 @@ __attribute__((used)) static KOption getoption (Header *h, const char **fmt, int
     case 'j': *size = sizeof(lua_Integer); return Kint;
     case 'J': *size = sizeof(lua_Integer); return Kuint;
     case 'T': *size = sizeof(size_t); return Kuint;
-#if LUA_FLOAT_TYPE != LUA_FLOAT_INT64
-    case 'f': *size = sizeof(float); return Kfloat;
-    case 'd': *size = sizeof(double); return Kfloat;
-#endif
+
+
+
+
     case 'n': *size = sizeof(lua_Number); return Kfloat;
     case 'i': *size = getnumlimit(h, fmt, sizeof(int)); return Kint;
     case 'I': *size = getnumlimit(h, fmt, sizeof(int)); return Kuint;

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gboolean ;
-struct TYPE_5__ {int /*<<< orphan*/  commit_mgr; } ;
-struct TYPE_4__ {int /*<<< orphan*/  commit_id; int /*<<< orphan*/  version; int /*<<< orphan*/  repo_id; } ;
-typedef  TYPE_1__ SeafCommit ;
-typedef  int /*<<< orphan*/  GHashTable ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  add_to_commit_hash ; 
- int /*<<< orphan*/  g_free ; 
- int /*<<< orphan*/  g_hash_table_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * g_hash_table_new_full (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_str_equal ; 
- int /*<<< orphan*/  g_str_hash ; 
- TYPE_2__* seaf ; 
- int /*<<< orphan*/  seaf_commit_manager_traverse_commit_tree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int gboolean ;
+struct TYPE_5__ {int commit_mgr; } ;
+struct TYPE_4__ {int commit_id; int version; int repo_id; } ;
+typedef TYPE_1__ SeafCommit ;
+typedef int GHashTable ;
+
+
+ int FALSE ;
+ int add_to_commit_hash ;
+ int g_free ;
+ int g_hash_table_destroy (int *) ;
+ int * g_hash_table_new_full (int ,int ,int ,int *) ;
+ int g_str_equal ;
+ int g_str_hash ;
+ TYPE_2__* seaf ;
+ int seaf_commit_manager_traverse_commit_tree (int ,int ,int ,int ,int ,int *,int ) ;
 
 __attribute__((used)) static GHashTable *
 commit_tree_to_hash (SeafCommit *head)
@@ -35,7 +35,7 @@ commit_tree_to_hash (SeafCommit *head)
     GHashTable *hash;
     gboolean res;
 
-    hash = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
+    hash = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, ((void*)0));
 
     res = seaf_commit_manager_traverse_commit_tree (seaf->commit_mgr,
                                                     head->repo_id,
@@ -50,5 +50,5 @@ commit_tree_to_hash (SeafCommit *head)
 
 fail:
     g_hash_table_destroy (hash);
-    return NULL;
+    return ((void*)0);
 }

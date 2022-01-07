@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct moniker {int refs; TYPE_1__ IMoniker_iface; int /*<<< orphan*/ * obj; } ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  TYPE_1__ IMoniker ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  IUnknown_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__*,...) ; 
- struct moniker* heap_alloc (int) ; 
- int /*<<< orphan*/  moniker_vtbl ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * lpVtbl; } ;
+struct moniker {int refs; TYPE_1__ IMoniker_iface; int * obj; } ;
+typedef int IUnknown ;
+typedef TYPE_1__ IMoniker ;
+typedef int HRESULT ;
+
+
+ int E_OUTOFMEMORY ;
+ int IUnknown_AddRef (int *) ;
+ int S_OK ;
+ int TRACE (char*,TYPE_1__*,...) ;
+ struct moniker* heap_alloc (int) ;
+ int moniker_vtbl ;
 
 __attribute__((used)) static HRESULT Moniker_create( IUnknown *unk, IMoniker **obj )
 {

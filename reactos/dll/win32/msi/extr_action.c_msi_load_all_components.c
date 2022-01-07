@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ UINT ;
-struct TYPE_9__ {int /*<<< orphan*/  db; int /*<<< orphan*/  components; } ;
-struct TYPE_8__ {int /*<<< orphan*/  hdr; } ;
-typedef  TYPE_1__ MSIQUERY ;
-typedef  TYPE_2__ MSIPACKAGE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- scalar_t__ ERROR_FUNCTION_FAILED ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ MSI_DatabaseOpenViewW (int /*<<< orphan*/ ,char const*,TYPE_1__**) ; 
- scalar_t__ MSI_IterateRecords (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  list_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  load_component ; 
- int /*<<< orphan*/  msi_init_assembly_caches (TYPE_2__*) ; 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+typedef scalar_t__ UINT ;
+struct TYPE_9__ {int db; int components; } ;
+struct TYPE_8__ {int hdr; } ;
+typedef TYPE_1__ MSIQUERY ;
+typedef TYPE_2__ MSIPACKAGE ;
+
+
+ int ERR (char*) ;
+ scalar_t__ ERROR_FUNCTION_FAILED ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ MSI_DatabaseOpenViewW (int ,char const*,TYPE_1__**) ;
+ scalar_t__ MSI_IterateRecords (TYPE_1__*,int *,int ,TYPE_2__*) ;
+ int list_empty (int *) ;
+ int load_component ;
+ int msi_init_assembly_caches (TYPE_2__*) ;
+ int msiobj_release (int *) ;
 
 UINT msi_load_all_components( MSIPACKAGE *package )
 {
@@ -52,7 +52,7 @@ UINT msi_load_all_components( MSIPACKAGE *package )
         return ERROR_FUNCTION_FAILED;
     }
 
-    r = MSI_IterateRecords(view, NULL, load_component, package);
+    r = MSI_IterateRecords(view, ((void*)0), load_component, package);
     msiobj_release(&view->hdr);
     return r;
 }

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ nsresult ;
-typedef  int /*<<< orphan*/  nsIDOMElementCSSInlineStyle ;
-typedef  int /*<<< orphan*/  nsIDOMCSSStyleDeclaration ;
-struct TYPE_3__ {int /*<<< orphan*/  nselem; } ;
-typedef  TYPE_1__ HTMLElement ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,scalar_t__) ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_NOTIMPL ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  IID_nsIDOMElementCSSInlineStyle ; 
- scalar_t__ NS_FAILED (scalar_t__) ; 
- scalar_t__ NS_OK ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ nsIDOMElementCSSInlineStyle_GetStyle (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  nsIDOMElementCSSInlineStyle_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ nsIDOMHTMLElement_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ nsresult ;
+typedef int nsIDOMElementCSSInlineStyle ;
+typedef int nsIDOMCSSStyleDeclaration ;
+struct TYPE_3__ {int nselem; } ;
+typedef TYPE_1__ HTMLElement ;
+typedef int HRESULT ;
+
+
+ int ERR (char*,scalar_t__) ;
+ int E_FAIL ;
+ int E_NOTIMPL ;
+ int FIXME (char*) ;
+ int IID_nsIDOMElementCSSInlineStyle ;
+ scalar_t__ NS_FAILED (scalar_t__) ;
+ scalar_t__ NS_OK ;
+ int S_OK ;
+ int assert (int) ;
+ scalar_t__ nsIDOMElementCSSInlineStyle_GetStyle (int *,int **) ;
+ int nsIDOMElementCSSInlineStyle_Release (int *) ;
+ scalar_t__ nsIDOMHTMLElement_QueryInterface (int ,int *,void**) ;
 
 __attribute__((used)) static HRESULT get_style_from_elem(HTMLElement *elem, nsIDOMCSSStyleDeclaration **ret)
 {

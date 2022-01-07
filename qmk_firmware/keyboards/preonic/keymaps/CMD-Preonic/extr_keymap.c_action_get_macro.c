@@ -1,123 +1,115 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  macro_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int macro_t ;
+struct TYPE_4__ {int pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
+typedef TYPE_2__ keyrecord_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KC_RSFT ; 
- int /*<<< orphan*/  const* MACRO_NONE ; 
-#define  M_BL 136 
- int /*<<< orphan*/  PLAY_SONG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _ADJUST ; 
-#define  _ARROW 135 
-#define  _COLEMAK 134 
-#define  _DVORAK 133 
-#define  _GAME 132 
-#define  _LOWER 131 
-#define  _NUMPAD 130 
-#define  _QWERTY 129 
-#define  _RAISE 128 
- int /*<<< orphan*/  backlight_step () ; 
- int /*<<< orphan*/  layer_off (int const) ; 
- int /*<<< orphan*/  layer_on (int const) ; 
- int /*<<< orphan*/  persistent_default_layer_set (unsigned long) ; 
- int /*<<< orphan*/  register_code (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tone_colemak ; 
- int /*<<< orphan*/  tone_dvorak ; 
- int /*<<< orphan*/  tone_qwerty ; 
- int /*<<< orphan*/  unregister_code (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_tri_layer (unsigned long const,int const,int /*<<< orphan*/ ) ; 
+
+ int KC_RSFT ;
+ int const* MACRO_NONE ;
+
+ int PLAY_SONG (int ) ;
+ int _ADJUST ;
+ int backlight_step () ;
+ int layer_off (int const) ;
+ int layer_on (int const) ;
+ int persistent_default_layer_set (unsigned long) ;
+ int register_code (int ) ;
+ int tone_colemak ;
+ int tone_dvorak ;
+ int tone_qwerty ;
+ int unregister_code (int ) ;
+ int update_tri_layer (unsigned long const,int const,int ) ;
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
       switch(id) {
-        case _QWERTY:
+        case 129:
           if (record->event.pressed) {
-            #ifdef AUDIO_ENABLE
-              PLAY_SONG(tone_qwerty);
-            #endif
-            persistent_default_layer_set(1UL<<_QWERTY);
+
+
+
+            persistent_default_layer_set(1UL<<129);
           }
           break;
-        case _COLEMAK:
+        case 134:
           if (record->event.pressed) {
-            #ifdef AUDIO_ENABLE
-              PLAY_SONG(tone_colemak);
-            #endif
-            persistent_default_layer_set(1UL<<_COLEMAK);
+
+
+
+            persistent_default_layer_set(1UL<<134);
           }
           break;
-        case _DVORAK:
+        case 133:
           if (record->event.pressed) {
-            #ifdef AUDIO_ENABLE
-              PLAY_SONG(tone_dvorak);
-            #endif
-            persistent_default_layer_set(1UL<<_DVORAK);
+
+
+
+            persistent_default_layer_set(1UL<<133);
           }
           break;
-        case _GAME:
+        case 132:
           if (record->event.pressed) {
-            #ifdef AUDIO_ENABLE
-              PLAY_SONG(tone_colemak);
-            #endif
-            persistent_default_layer_set(1UL<<_GAME);
+
+
+
+            persistent_default_layer_set(1UL<<132);
           }
           break;
-        case _NUMPAD:
+        case 130:
           if (record->event.pressed) {
-            #ifdef AUDIO_ENABLE
-              PLAY_SONG(tone_dvorak);
-            #endif
-            persistent_default_layer_set(1UL<<_NUMPAD);
+
+
+
+            persistent_default_layer_set(1UL<<130);
           }
           break;
-        case _ARROW:
+        case 135:
           if (record->event.pressed) {
-            #ifdef AUDIO_ENABLE
-              PLAY_SONG(tone_colemak);
-            #endif
-            persistent_default_layer_set(1UL<<_LOWER);
+
+
+
+            persistent_default_layer_set(1UL<<131);
           }
           break;
-        case _LOWER:
+        case 131:
           if (record->event.pressed) {
-            layer_on(_LOWER);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+            layer_on(131);
+            update_tri_layer(131, 128, _ADJUST);
           } else {
-            layer_off(_LOWER);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+            layer_off(131);
+            update_tri_layer(131, 128, _ADJUST);
           }
           break;
-        case _RAISE:
+        case 128:
           if (record->event.pressed) {
-            layer_on(_RAISE);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+            layer_on(128);
+            update_tri_layer(131, 128, _ADJUST);
           } else {
-            layer_off(_RAISE);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+            layer_off(128);
+            update_tri_layer(131, 128, _ADJUST);
           }
           break;
-        case M_BL:
+        case 136:
           if (record->event.pressed) {
             register_code(KC_RSFT);
-            #ifdef BACKLIGHT_ENABLE
-              backlight_step();
-            #endif
+
+
+
           } else {
             unregister_code(KC_RSFT);
           }

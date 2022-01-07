@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct bus_properties_map {int offset; int (* set ) (int /*<<< orphan*/ ,char const*,struct bus_properties_map const*,int /*<<< orphan*/ *,void*) ;scalar_t__ member; } ;
-typedef  struct bus_properties_map const sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SD_BUS_TYPE_ARRAY ; 
- int /*<<< orphan*/  SD_BUS_TYPE_DICT_ENTRY ; 
- int /*<<< orphan*/  SD_BUS_TYPE_STRING ; 
- int /*<<< orphan*/  SD_BUS_TYPE_VARIANT ; 
- int /*<<< orphan*/  assert (struct bus_properties_map const*) ; 
- int map_basic (int /*<<< orphan*/ ,char const*,struct bus_properties_map const*,unsigned int,int /*<<< orphan*/ *,void*) ; 
- int sd_bus_message_enter_container (struct bus_properties_map const*,int /*<<< orphan*/ ,char const*) ; 
- int sd_bus_message_exit_container (struct bus_properties_map const*) ; 
- int /*<<< orphan*/  sd_bus_message_get_bus (struct bus_properties_map const*) ; 
- int sd_bus_message_peek_type (struct bus_properties_map const*,int /*<<< orphan*/ *,char const**) ; 
- int sd_bus_message_read_basic (struct bus_properties_map const*,int /*<<< orphan*/ ,char const**) ; 
- int sd_bus_message_skip (struct bus_properties_map const*,char*) ; 
- scalar_t__ streq (scalar_t__,char const*) ; 
- int stub1 (int /*<<< orphan*/ ,char const*,struct bus_properties_map const*,int /*<<< orphan*/ *,void*) ; 
+
+
+
+typedef int uint8_t ;
+struct bus_properties_map {int offset; int (* set ) (int ,char const*,struct bus_properties_map const*,int *,void*) ;scalar_t__ member; } ;
+typedef struct bus_properties_map const sd_bus_message ;
+typedef int sd_bus_error ;
+
+
+ int SD_BUS_TYPE_ARRAY ;
+ int SD_BUS_TYPE_DICT_ENTRY ;
+ int SD_BUS_TYPE_STRING ;
+ int SD_BUS_TYPE_VARIANT ;
+ int assert (struct bus_properties_map const*) ;
+ int map_basic (int ,char const*,struct bus_properties_map const*,unsigned int,int *,void*) ;
+ int sd_bus_message_enter_container (struct bus_properties_map const*,int ,char const*) ;
+ int sd_bus_message_exit_container (struct bus_properties_map const*) ;
+ int sd_bus_message_get_bus (struct bus_properties_map const*) ;
+ int sd_bus_message_peek_type (struct bus_properties_map const*,int *,char const**) ;
+ int sd_bus_message_read_basic (struct bus_properties_map const*,int ,char const**) ;
+ int sd_bus_message_skip (struct bus_properties_map const*,char*) ;
+ scalar_t__ streq (scalar_t__,char const*) ;
+ int stub1 (int ,char const*,struct bus_properties_map const*,int *,void*) ;
 
 int bus_message_map_all_properties(
                 sd_bus_message *m,
@@ -58,14 +58,14 @@ int bus_message_map_all_properties(
                 if (r < 0)
                         return r;
 
-                for (i = 0, prop = NULL; map[i].member; i++)
+                for (i = 0, prop = ((void*)0); map[i].member; i++)
                         if (streq(map[i].member, member)) {
                                 prop = &map[i];
                                 break;
                         }
 
                 if (prop) {
-                        r = sd_bus_message_peek_type(m, NULL, &contents);
+                        r = sd_bus_message_peek_type(m, ((void*)0), &contents);
                         if (r < 0)
                                 return r;
 

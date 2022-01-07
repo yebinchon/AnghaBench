@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbedtls_asn1_named_data ;
 
-/* Variables and functions */
- int MBEDTLS_ERR_X509_ALLOC_FAILED ; 
- int MBEDTLS_ERR_X509_INVALID_NAME ; 
- int MBEDTLS_ERR_X509_UNKNOWN_OID ; 
- int MBEDTLS_X509_MAX_DN_NAME_SIZE ; 
- int /*<<< orphan*/  mbedtls_asn1_free_named_data_list (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * mbedtls_asn1_store_named_data (int /*<<< orphan*/ **,char const*,int,unsigned char*,int) ; 
- int strlen (char const*) ; 
- char* x509_at_oid_from_name (char const*,int) ; 
+
+
+
+typedef int mbedtls_asn1_named_data ;
+
+
+ int MBEDTLS_ERR_X509_ALLOC_FAILED ;
+ int MBEDTLS_ERR_X509_INVALID_NAME ;
+ int MBEDTLS_ERR_X509_UNKNOWN_OID ;
+ int MBEDTLS_X509_MAX_DN_NAME_SIZE ;
+ int mbedtls_asn1_free_named_data_list (int **) ;
+ int * mbedtls_asn1_store_named_data (int **,char const*,int,unsigned char*,int) ;
+ int strlen (char const*) ;
+ char* x509_at_oid_from_name (char const*,int) ;
 
 int mbedtls_x509_string_to_names( mbedtls_asn1_named_data **head, const char *name )
 {
     int ret = 0;
     const char *s = name, *c = s;
     const char *end = s + strlen( s );
-    const char *oid = NULL;
+    const char *oid = ((void*)0);
     int in_tag = 1;
     char data[MBEDTLS_X509_MAX_DN_NAME_SIZE];
     char *d = data;
 
-    /* Clear existing chain if present */
+
     mbedtls_asn1_free_named_data_list( head );
 
     while( c <= end )
     {
         if( in_tag && *c == '=' )
         {
-            if( ( oid = x509_at_oid_from_name( s, c - s ) ) == NULL )
+            if( ( oid = x509_at_oid_from_name( s, c - s ) ) == ((void*)0) )
             {
                 ret = MBEDTLS_ERR_X509_UNKNOWN_OID;
                 goto exit;
@@ -54,7 +54,7 @@ int mbedtls_x509_string_to_names( mbedtls_asn1_named_data **head, const char *na
         {
             c++;
 
-            /* Check for valid escaped characters */
+
             if( c == end || *c != ',' )
             {
                 ret = MBEDTLS_ERR_X509_INVALID_NAME;
@@ -65,7 +65,7 @@ int mbedtls_x509_string_to_names( mbedtls_asn1_named_data **head, const char *na
         {
             if( mbedtls_asn1_store_named_data( head, oid, strlen( oid ),
                                        (unsigned char *) data,
-                                       d - data ) == NULL )
+                                       d - data ) == ((void*)0) )
             {
                 return( MBEDTLS_ERR_X509_ALLOC_FAILED );
             }

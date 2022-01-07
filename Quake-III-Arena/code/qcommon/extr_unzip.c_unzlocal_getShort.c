@@ -1,49 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  v ;
-typedef  int /*<<< orphan*/  uLong ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LittleShort (short) ; 
- int UNZ_OK ; 
- int /*<<< orphan*/  fread (short*,int,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int v ;
+typedef int uLong ;
+typedef int FILE ;
+
+
+ int LittleShort (short) ;
+ int UNZ_OK ;
+ int fread (short*,int,int,int *) ;
 
 __attribute__((used)) static int unzlocal_getShort (FILE* fin, uLong *pX)
 {
-	short	v;
+ short v;
 
-	fread( &v, sizeof(v), 1, fin );
+ fread( &v, sizeof(v), 1, fin );
 
-	*pX = LittleShort( v);
-	return UNZ_OK;
-
-/*
-    uLong x ;
-    int i;
-    int err;
-
-    err = unzlocal_getByte(fin,&i);
-    x = (uLong)i;
-    
-    if (err==UNZ_OK)
-        err = unzlocal_getByte(fin,&i);
-    x += ((uLong)i)<<8;
-   
-    if (err==UNZ_OK)
-        *pX = x;
-    else
-        *pX = 0;
-    return err;
-*/
+ *pX = LittleShort( v);
+ return UNZ_OK;
 }

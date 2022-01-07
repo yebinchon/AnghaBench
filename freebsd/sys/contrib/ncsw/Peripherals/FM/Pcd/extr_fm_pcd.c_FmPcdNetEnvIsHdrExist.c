@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  scalar_t__ t_Handle ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
+typedef scalar_t__ t_Handle ;
 struct TYPE_11__ {TYPE_4__* netEnvs; } ;
-typedef  TYPE_5__ t_FmPcd ;
-typedef  scalar_t__ e_NetHeaderType ;
+typedef TYPE_5__ t_FmPcd ;
+typedef scalar_t__ e_NetHeaderType ;
 struct TYPE_10__ {TYPE_3__* aliasHdrs; TYPE_2__* units; } ;
 struct TYPE_9__ {scalar_t__ hdr; } ;
 struct TYPE_8__ {TYPE_1__* hdrs; } ;
 struct TYPE_7__ {scalar_t__ hdr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_COND (TYPE_5__*) ; 
- int FALSE ; 
- int FM_PCD_MAX_NUM_OF_ALIAS_HDRS ; 
- int FM_PCD_MAX_NUM_OF_DISTINCTION_UNITS ; 
- int FM_PCD_MAX_NUM_OF_INTERCHANGEABLE_HDRS ; 
- scalar_t__ HEADER_TYPE_NONE ; 
- int TRUE ; 
 
-bool  FmPcdNetEnvIsHdrExist(t_Handle h_FmPcd, uint8_t netEnvId, e_NetHeaderType hdr)
+ int ASSERT_COND (TYPE_5__*) ;
+ int FALSE ;
+ int FM_PCD_MAX_NUM_OF_ALIAS_HDRS ;
+ int FM_PCD_MAX_NUM_OF_DISTINCTION_UNITS ;
+ int FM_PCD_MAX_NUM_OF_INTERCHANGEABLE_HDRS ;
+ scalar_t__ HEADER_TYPE_NONE ;
+ int TRUE ;
+
+bool FmPcdNetEnvIsHdrExist(t_Handle h_FmPcd, uint8_t netEnvId, e_NetHeaderType hdr)
 {
-    t_FmPcd     *p_FmPcd = (t_FmPcd*)h_FmPcd;
-    int         i, k;
+    t_FmPcd *p_FmPcd = (t_FmPcd*)h_FmPcd;
+    int i, k;
 
     ASSERT_COND(p_FmPcd);
 

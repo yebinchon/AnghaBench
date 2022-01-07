@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int referred_to_segment_count; int flags; int /*<<< orphan*/  result; int /*<<< orphan*/ * referred_to_segments; int /*<<< orphan*/  number; } ;
-typedef  TYPE_1__ Jbig2Segment ;
-typedef  int /*<<< orphan*/  Jbig2Ctx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JBIG2_SEVERITY_WARNING ; 
- int /*<<< orphan*/  jbig2_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- TYPE_1__* jbig2_find_segment (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int referred_to_segment_count; int flags; int result; int * referred_to_segments; int number; } ;
+typedef TYPE_1__ Jbig2Segment ;
+typedef int Jbig2Ctx ;
+
+
+ int JBIG2_SEVERITY_WARNING ;
+ int jbig2_error (int *,int ,int ,char*,int ) ;
+ TYPE_1__* jbig2_find_segment (int *,int ) ;
 
 __attribute__((used)) static Jbig2Segment *
 jbig2_region_find_referred(Jbig2Ctx *ctx, Jbig2Segment *segment)
@@ -29,22 +29,22 @@ jbig2_region_find_referred(Jbig2Ctx *ctx, Jbig2Segment *segment)
 
     for (index = 0; index < nsegments; index++) {
         rsegment = jbig2_find_segment(ctx, segment->referred_to_segments[index]);
-        if (rsegment == NULL) {
+        if (rsegment == ((void*)0)) {
             jbig2_error(ctx, JBIG2_SEVERITY_WARNING, segment->number, "failed to find referred to segment %d", segment->referred_to_segments[index]);
             continue;
         }
         switch (rsegment->flags & 63) {
-        case 4:                /* intermediate text region */
-        case 20:               /* intermediate halftone region */
-        case 36:               /* intermediate generic region */
-        case 40:               /* intermediate generic refinement region */
+        case 4:
+        case 20:
+        case 36:
+        case 40:
             if (rsegment->result)
                 return rsegment;
             break;
-        default:               /* keep looking */
+        default:
             break;
         }
     }
-    /* no appropriate reference was found. */
-    return NULL;
+
+    return ((void*)0);
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct usb_serial {int dummy; } ;
-struct edgeport_serial {int /*<<< orphan*/  heartbeat_work; } ;
+struct edgeport_serial {int heartbeat_work; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cancel_delayed_work_sync (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (struct edgeport_serial*) ; 
- struct edgeport_serial* usb_get_serial_data (struct usb_serial*) ; 
+
+ int cancel_delayed_work_sync (int *) ;
+ int kfree (struct edgeport_serial*) ;
+ struct edgeport_serial* usb_get_serial_data (struct usb_serial*) ;
 
 __attribute__((used)) static void edge_release(struct usb_serial *serial)
 {
-	struct edgeport_serial *edge_serial = usb_get_serial_data(serial);
+ struct edgeport_serial *edge_serial = usb_get_serial_data(serial);
 
-	cancel_delayed_work_sync(&edge_serial->heartbeat_work);
-	kfree(edge_serial);
+ cancel_delayed_work_sync(&edge_serial->heartbeat_work);
+ kfree(edge_serial);
 }

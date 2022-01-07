@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_6__ {TYPE_1__* p; } ;
-typedef  TYPE_2__ picture_t ;
-struct TYPE_5__ {int i_visible_lines; int i_pitch; int i_visible_pitch; int /*<<< orphan*/ * p_pixels; } ;
+typedef TYPE_2__ picture_t ;
+struct TYPE_5__ {int i_visible_lines; int i_pitch; int i_visible_pitch; int * p_pixels; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  YUV422Mirror2Pixels (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int YUV422Mirror2Pixels (int *,int *,int) ;
 
 __attribute__((used)) static void YUV422VerticalMirror( picture_t *p_pic, picture_t *p_outpic,
                                  int i_plane, bool b_left_to_right,
@@ -37,7 +37,7 @@ __attribute__((used)) static void YUV422VerticalMirror( picture_t *p_pic, pictur
         p_line_end = p_in + p_pic->p[i_plane].i_visible_pitch;
         while( p_in < p_line_end )
         {
-            /* are we in the left part of the line */
+
             if ( p_in < p_line_start + ( p_line_end - p_line_start ) / 2 )
             {
                 if ( b_left_to_right )

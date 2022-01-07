@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct inode {int /*<<< orphan*/  i_size; } ;
-typedef  int /*<<< orphan*/  loff_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  i_size_write (struct inode*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  truncate_pagecache (struct inode*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct inode {int i_size; } ;
+typedef int loff_t ;
+
+
+ int i_size_write (struct inode*,int ) ;
+ int truncate_pagecache (struct inode*,int ,int ) ;
 
 void truncate_setsize(struct inode *inode, loff_t newsize)
 {
-	loff_t oldsize;
+ loff_t oldsize;
 
-	oldsize = inode->i_size;
-	i_size_write(inode, newsize);
+ oldsize = inode->i_size;
+ i_size_write(inode, newsize);
 
-	truncate_pagecache(inode, oldsize, newsize);
+ truncate_pagecache(inode, oldsize, newsize);
 }

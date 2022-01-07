@@ -1,27 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 __attribute__((used)) static bool make_proc_acpi_key_val(char **_ptr, char **_key, char **_val)
 {
     char *ptr = *_ptr;
 
     while (*ptr == ' ')
-        ptr++;  /* skip whitespace. */
+        ptr++;
 
     if (*ptr == '\0')
-        return false;  /* EOF. */
+        return 0;
 
     *_key = ptr;
 
@@ -29,15 +20,15 @@ __attribute__((used)) static bool make_proc_acpi_key_val(char **_ptr, char **_ke
         ptr++;
 
     if (*ptr == '\0')
-        return false;  /* (unexpected) EOF. */
+        return 0;
 
-    *(ptr++) = '\0';  /* terminate the key. */
+    *(ptr++) = '\0';
 
     while (*ptr == ' ')
-        ptr++;  /* skip whitespace. */
+        ptr++;
 
     if (*ptr == '\0')
-        return false;  /* (unexpected) EOF. */
+        return 0;
 
     *_val = ptr;
 
@@ -45,8 +36,8 @@ __attribute__((used)) static bool make_proc_acpi_key_val(char **_ptr, char **_ke
         ptr++;
 
     if (*ptr != '\0')
-        *(ptr++) = '\0';  /* terminate the value. */
+        *(ptr++) = '\0';
 
-    *_ptr = ptr;  /* store for next time. */
-    return true;
+    *_ptr = ptr;
+    return 1;
 }

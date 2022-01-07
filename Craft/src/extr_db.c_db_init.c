@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  db ; 
- int /*<<< orphan*/  db_enabled ; 
- int /*<<< orphan*/  db_worker_start () ; 
- int /*<<< orphan*/  delete_sign_stmt ; 
- int /*<<< orphan*/  delete_signs_stmt ; 
- int /*<<< orphan*/  get_key_stmt ; 
- int /*<<< orphan*/  insert_block_stmt ; 
- int /*<<< orphan*/  insert_light_stmt ; 
- int /*<<< orphan*/  insert_sign_stmt ; 
- int /*<<< orphan*/  load_blocks_stmt ; 
- int /*<<< orphan*/  load_lights_stmt ; 
- int /*<<< orphan*/  load_signs_stmt ; 
- int /*<<< orphan*/  set_key_stmt ; 
- int sqlite3_exec (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int sqlite3_open (char*,int /*<<< orphan*/ *) ; 
- int sqlite3_prepare_v2 (int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+ int db ;
+ int db_enabled ;
+ int db_worker_start () ;
+ int delete_sign_stmt ;
+ int delete_signs_stmt ;
+ int get_key_stmt ;
+ int insert_block_stmt ;
+ int insert_light_stmt ;
+ int insert_sign_stmt ;
+ int load_blocks_stmt ;
+ int load_lights_stmt ;
+ int load_signs_stmt ;
+ int set_key_stmt ;
+ int sqlite3_exec (int ,char const*,int *,int *,int *) ;
+ int sqlite3_open (char*,int *) ;
+ int sqlite3_prepare_v2 (int ,char const*,int,int *,int *) ;
 
 int db_init(char *path) {
     if (!db_enabled) {
@@ -111,34 +103,34 @@ int db_init(char *path) {
     int rc;
     rc = sqlite3_open(path, &db);
     if (rc) return rc;
-    rc = sqlite3_exec(db, create_query, NULL, NULL, NULL);
+    rc = sqlite3_exec(db, create_query, ((void*)0), ((void*)0), ((void*)0));
     if (rc) return rc;
     rc = sqlite3_prepare_v2(
-        db, insert_block_query, -1, &insert_block_stmt, NULL);
+        db, insert_block_query, -1, &insert_block_stmt, ((void*)0));
     if (rc) return rc;
     rc = sqlite3_prepare_v2(
-        db, insert_light_query, -1, &insert_light_stmt, NULL);
+        db, insert_light_query, -1, &insert_light_stmt, ((void*)0));
     if (rc) return rc;
     rc = sqlite3_prepare_v2(
-        db, insert_sign_query, -1, &insert_sign_stmt, NULL);
+        db, insert_sign_query, -1, &insert_sign_stmt, ((void*)0));
     if (rc) return rc;
     rc = sqlite3_prepare_v2(
-        db, delete_sign_query, -1, &delete_sign_stmt, NULL);
+        db, delete_sign_query, -1, &delete_sign_stmt, ((void*)0));
     if (rc) return rc;
     rc = sqlite3_prepare_v2(
-        db, delete_signs_query, -1, &delete_signs_stmt, NULL);
+        db, delete_signs_query, -1, &delete_signs_stmt, ((void*)0));
     if (rc) return rc;
-    rc = sqlite3_prepare_v2(db, load_blocks_query, -1, &load_blocks_stmt, NULL);
+    rc = sqlite3_prepare_v2(db, load_blocks_query, -1, &load_blocks_stmt, ((void*)0));
     if (rc) return rc;
-    rc = sqlite3_prepare_v2(db, load_lights_query, -1, &load_lights_stmt, NULL);
+    rc = sqlite3_prepare_v2(db, load_lights_query, -1, &load_lights_stmt, ((void*)0));
     if (rc) return rc;
-    rc = sqlite3_prepare_v2(db, load_signs_query, -1, &load_signs_stmt, NULL);
+    rc = sqlite3_prepare_v2(db, load_signs_query, -1, &load_signs_stmt, ((void*)0));
     if (rc) return rc;
-    rc = sqlite3_prepare_v2(db, get_key_query, -1, &get_key_stmt, NULL);
+    rc = sqlite3_prepare_v2(db, get_key_query, -1, &get_key_stmt, ((void*)0));
     if (rc) return rc;
-    rc = sqlite3_prepare_v2(db, set_key_query, -1, &set_key_stmt, NULL);
+    rc = sqlite3_prepare_v2(db, set_key_query, -1, &set_key_stmt, ((void*)0));
     if (rc) return rc;
-    sqlite3_exec(db, "begin;", NULL, NULL, NULL);
+    sqlite3_exec(db, "begin;", ((void*)0), ((void*)0), ((void*)0));
     db_worker_start();
     return 0;
 }

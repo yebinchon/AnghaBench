@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stbi ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,long,int /*<<< orphan*/ ) ; 
- long ftell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  start_file (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int stbi_info_main (int /*<<< orphan*/ *,int*,int*,int*) ; 
+
+
+
+typedef int stbi ;
+typedef int FILE ;
+
+
+ int SEEK_SET ;
+ int fseek (int *,long,int ) ;
+ long ftell (int *) ;
+ int start_file (int *,int *) ;
+ int stbi_info_main (int *,int*,int*,int*) ;
 
 int stbi_info_from_file(FILE *f, int *x, int *y, int *comp)
 {

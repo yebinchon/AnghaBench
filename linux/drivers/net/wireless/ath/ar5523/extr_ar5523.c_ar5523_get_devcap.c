@@ -1,96 +1,96 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct ar5523 {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CAP_ANALOG_2GHz_REVISION ; 
- int /*<<< orphan*/  CAP_ANALOG_5GHz_REVISION ; 
- int /*<<< orphan*/  CAP_BURST_SUPPORT ; 
- int /*<<< orphan*/  CAP_CHAN_SPREAD_SUPPORT ; 
- int /*<<< orphan*/  CAP_CHAP_TUNING_SUPPORT ; 
- int /*<<< orphan*/  CAP_CIPHER_AES_CCM ; 
- int /*<<< orphan*/  CAP_CIPHER_TKIP ; 
- int /*<<< orphan*/  CAP_COMPRESS_SUPPORT ; 
- int /*<<< orphan*/  CAP_CONNECTION_ID_MAX ; 
- int /*<<< orphan*/  CAP_DEVICE_TYPE ; 
- int /*<<< orphan*/  CAP_FAST_FRAMES_SUPPORT ; 
- int /*<<< orphan*/  CAP_HIGH_2GHZ_CHAN ; 
- int /*<<< orphan*/  CAP_HIGH_5GHZ_CHAN ; 
- int /*<<< orphan*/  CAP_LOW_2GHZ_CHAN ; 
- int /*<<< orphan*/  CAP_LOW_5GHZ_CHAN ; 
- int /*<<< orphan*/  CAP_MAC_REVISION ; 
- int /*<<< orphan*/  CAP_MAC_VERSION ; 
- int /*<<< orphan*/  CAP_MIC_TKIP ; 
- int /*<<< orphan*/  CAP_PHY_REVISION ; 
- int /*<<< orphan*/  CAP_REG_CAP_BITS ; 
- int /*<<< orphan*/  CAP_REG_DOMAIN ; 
- int /*<<< orphan*/  CAP_TARGET_REVISION ; 
- int /*<<< orphan*/  CAP_TARGET_VERSION ; 
- int /*<<< orphan*/  CAP_TOTAL_QUEUES ; 
- int /*<<< orphan*/  CAP_TURBOG_SUPPORT ; 
- int /*<<< orphan*/  CAP_TURBO_PRIME_SUPPORT ; 
- int /*<<< orphan*/  CAP_TWICE_ANTENNAGAIN_2G ; 
- int /*<<< orphan*/  CAP_TWICE_ANTENNAGAIN_5G ; 
- int /*<<< orphan*/  CAP_WIRELESS_MODES ; 
- int /*<<< orphan*/  CAP_WME_SUPPORT ; 
- int /*<<< orphan*/  GETCAP (int /*<<< orphan*/ ) ; 
+
+ int CAP_ANALOG_2GHz_REVISION ;
+ int CAP_ANALOG_5GHz_REVISION ;
+ int CAP_BURST_SUPPORT ;
+ int CAP_CHAN_SPREAD_SUPPORT ;
+ int CAP_CHAP_TUNING_SUPPORT ;
+ int CAP_CIPHER_AES_CCM ;
+ int CAP_CIPHER_TKIP ;
+ int CAP_COMPRESS_SUPPORT ;
+ int CAP_CONNECTION_ID_MAX ;
+ int CAP_DEVICE_TYPE ;
+ int CAP_FAST_FRAMES_SUPPORT ;
+ int CAP_HIGH_2GHZ_CHAN ;
+ int CAP_HIGH_5GHZ_CHAN ;
+ int CAP_LOW_2GHZ_CHAN ;
+ int CAP_LOW_5GHZ_CHAN ;
+ int CAP_MAC_REVISION ;
+ int CAP_MAC_VERSION ;
+ int CAP_MIC_TKIP ;
+ int CAP_PHY_REVISION ;
+ int CAP_REG_CAP_BITS ;
+ int CAP_REG_DOMAIN ;
+ int CAP_TARGET_REVISION ;
+ int CAP_TARGET_VERSION ;
+ int CAP_TOTAL_QUEUES ;
+ int CAP_TURBOG_SUPPORT ;
+ int CAP_TURBO_PRIME_SUPPORT ;
+ int CAP_TWICE_ANTENNAGAIN_2G ;
+ int CAP_TWICE_ANTENNAGAIN_5G ;
+ int CAP_WIRELESS_MODES ;
+ int CAP_WME_SUPPORT ;
+ int GETCAP (int ) ;
 
 __attribute__((used)) static int ar5523_get_devcap(struct ar5523 *ar)
 {
-#define	GETCAP(x) do {				\
-	error = ar5523_get_capability(ar, x, &cap);		\
-	if (error != 0)					\
-		return error;				\
-	ar5523_info(ar, "Cap: "			\
-	    "%s=0x%08x\n", #x, cap);	\
-} while (0)
-	int error;
-	u32 cap;
 
-	/* collect device capabilities */
-	GETCAP(CAP_TARGET_VERSION);
-	GETCAP(CAP_TARGET_REVISION);
-	GETCAP(CAP_MAC_VERSION);
-	GETCAP(CAP_MAC_REVISION);
-	GETCAP(CAP_PHY_REVISION);
-	GETCAP(CAP_ANALOG_5GHz_REVISION);
-	GETCAP(CAP_ANALOG_2GHz_REVISION);
 
-	GETCAP(CAP_REG_DOMAIN);
-	GETCAP(CAP_REG_CAP_BITS);
-	GETCAP(CAP_WIRELESS_MODES);
-	GETCAP(CAP_CHAN_SPREAD_SUPPORT);
-	GETCAP(CAP_COMPRESS_SUPPORT);
-	GETCAP(CAP_BURST_SUPPORT);
-	GETCAP(CAP_FAST_FRAMES_SUPPORT);
-	GETCAP(CAP_CHAP_TUNING_SUPPORT);
-	GETCAP(CAP_TURBOG_SUPPORT);
-	GETCAP(CAP_TURBO_PRIME_SUPPORT);
-	GETCAP(CAP_DEVICE_TYPE);
-	GETCAP(CAP_WME_SUPPORT);
-	GETCAP(CAP_TOTAL_QUEUES);
-	GETCAP(CAP_CONNECTION_ID_MAX);
 
-	GETCAP(CAP_LOW_5GHZ_CHAN);
-	GETCAP(CAP_HIGH_5GHZ_CHAN);
-	GETCAP(CAP_LOW_2GHZ_CHAN);
-	GETCAP(CAP_HIGH_2GHZ_CHAN);
-	GETCAP(CAP_TWICE_ANTENNAGAIN_5G);
-	GETCAP(CAP_TWICE_ANTENNAGAIN_2G);
 
-	GETCAP(CAP_CIPHER_AES_CCM);
-	GETCAP(CAP_CIPHER_TKIP);
-	GETCAP(CAP_MIC_TKIP);
-	return 0;
+
+
+
+ int error;
+ u32 cap;
+
+
+ do { error = ar5523_get_capability(ar, CAP_TARGET_VERSION, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_TARGET_VERSION", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_TARGET_REVISION, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_TARGET_REVISION", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_MAC_VERSION, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_MAC_VERSION", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_MAC_REVISION, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_MAC_REVISION", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_PHY_REVISION, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_PHY_REVISION", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_ANALOG_5GHz_REVISION, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_ANALOG_5GHz_REVISION", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_ANALOG_2GHz_REVISION, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_ANALOG_2GHz_REVISION", cap); } while (0);
+
+ do { error = ar5523_get_capability(ar, CAP_REG_DOMAIN, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_REG_DOMAIN", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_REG_CAP_BITS, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_REG_CAP_BITS", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_WIRELESS_MODES, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_WIRELESS_MODES", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_CHAN_SPREAD_SUPPORT, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_CHAN_SPREAD_SUPPORT", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_COMPRESS_SUPPORT, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_COMPRESS_SUPPORT", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_BURST_SUPPORT, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_BURST_SUPPORT", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_FAST_FRAMES_SUPPORT, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_FAST_FRAMES_SUPPORT", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_CHAP_TUNING_SUPPORT, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_CHAP_TUNING_SUPPORT", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_TURBOG_SUPPORT, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_TURBOG_SUPPORT", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_TURBO_PRIME_SUPPORT, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_TURBO_PRIME_SUPPORT", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_DEVICE_TYPE, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_DEVICE_TYPE", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_WME_SUPPORT, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_WME_SUPPORT", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_TOTAL_QUEUES, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_TOTAL_QUEUES", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_CONNECTION_ID_MAX, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_CONNECTION_ID_MAX", cap); } while (0);
+
+ do { error = ar5523_get_capability(ar, CAP_LOW_5GHZ_CHAN, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_LOW_5GHZ_CHAN", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_HIGH_5GHZ_CHAN, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_HIGH_5GHZ_CHAN", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_LOW_2GHZ_CHAN, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_LOW_2GHZ_CHAN", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_HIGH_2GHZ_CHAN, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_HIGH_2GHZ_CHAN", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_TWICE_ANTENNAGAIN_5G, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_TWICE_ANTENNAGAIN_5G", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_TWICE_ANTENNAGAIN_2G, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_TWICE_ANTENNAGAIN_2G", cap); } while (0);
+
+ do { error = ar5523_get_capability(ar, CAP_CIPHER_AES_CCM, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_CIPHER_AES_CCM", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_CIPHER_TKIP, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_CIPHER_TKIP", cap); } while (0);
+ do { error = ar5523_get_capability(ar, CAP_MIC_TKIP, &cap); if (error != 0) return error; ar5523_info(ar, "Cap: " "%s=0x%08x\n", "CAP_MIC_TKIP", cap); } while (0);
+ return 0;
 }

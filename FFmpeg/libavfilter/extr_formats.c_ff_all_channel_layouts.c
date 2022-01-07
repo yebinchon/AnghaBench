@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int all_layouts; } ;
-typedef  TYPE_1__ AVFilterChannelLayouts ;
+typedef TYPE_1__ AVFilterChannelLayouts ;
 
-/* Variables and functions */
- TYPE_1__* av_mallocz (int) ; 
+
+ TYPE_1__* av_mallocz (int) ;
 
 AVFilterChannelLayouts *ff_all_channel_layouts(void)
 {
     AVFilterChannelLayouts *ret = av_mallocz(sizeof(*ret));
     if (!ret)
-        return NULL;
+        return ((void*)0);
     ret->all_layouts = 1;
     return ret;
 }

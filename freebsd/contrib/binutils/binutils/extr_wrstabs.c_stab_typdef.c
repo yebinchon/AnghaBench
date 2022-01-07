@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct string_hash_entry {long index; unsigned int size; } ;
-struct stab_write_handle {long type_index; int /*<<< orphan*/  typedef_hash; TYPE_1__* type_stack; } ;
-typedef  int /*<<< orphan*/  bfd_boolean ;
+struct stab_write_handle {long type_index; int typedef_hash; TYPE_1__* type_stack; } ;
+typedef int bfd_boolean ;
 struct TYPE_2__ {long index; unsigned int size; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  N_LSYM ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  bfd_errmsg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bfd_get_error () ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  non_fatal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char const*,...) ; 
- char* stab_pop_type (struct stab_write_handle*) ; 
- int /*<<< orphan*/  stab_write_symbol (struct stab_write_handle*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- struct string_hash_entry* string_hash_lookup (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ strlen (char const*) ; 
- scalar_t__ xmalloc (scalar_t__) ; 
+
+ int FALSE ;
+ int N_LSYM ;
+ int TRUE ;
+ int _ (char*) ;
+ int bfd_errmsg (int ) ;
+ int bfd_get_error () ;
+ int free (char*) ;
+ int non_fatal (int ,int ) ;
+ int sprintf (char*,char*,char const*,...) ;
+ char* stab_pop_type (struct stab_write_handle*) ;
+ int stab_write_symbol (struct stab_write_handle*,int ,int ,int ,char*) ;
+ struct string_hash_entry* string_hash_lookup (int *,char const*,int ,int ) ;
+ scalar_t__ strlen (char const*) ;
+ scalar_t__ xmalloc (scalar_t__) ;
 
 __attribute__((used)) static bfd_boolean
 stab_typdef (void *p, const char *name)
@@ -64,14 +64,14 @@ stab_typdef (void *p, const char *name)
   free (buf);
 
   h = string_hash_lookup (&info->typedef_hash, name, TRUE, FALSE);
-  if (h == NULL)
+  if (h == ((void*)0))
     {
       non_fatal (_("string_hash_lookup failed: %s"),
-		 bfd_errmsg (bfd_get_error ()));
+   bfd_errmsg (bfd_get_error ()));
       return FALSE;
     }
 
-  /* I don't think we care about redefinitions.  */
+
 
   h->index = index;
   h->size = size;

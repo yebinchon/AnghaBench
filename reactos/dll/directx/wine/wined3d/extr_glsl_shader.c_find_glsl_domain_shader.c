@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wined3d_shader {struct glsl_shader_private* backend_data; } ;
 struct wined3d_context {int dummy; } ;
-struct shader_glsl_priv {int /*<<< orphan*/  shader_buffer; } ;
+struct shader_glsl_priv {int shader_buffer; } ;
 struct TYPE_2__ {struct glsl_ds_compiled_shader* ds; } ;
 struct glsl_shader_private {unsigned int num_gl_shaders; int shader_array_size; TYPE_1__ gl_shaders; } ;
 struct ds_compile_args {int dummy; } ;
-struct glsl_ds_compiled_shader {int /*<<< orphan*/  id; struct ds_compile_args args; } ;
-typedef  int /*<<< orphan*/  GLuint ;
+struct glsl_ds_compiled_shader {int id; struct ds_compile_args args; } ;
+typedef int GLuint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  TRACE (char*,struct wined3d_shader*) ; 
- struct glsl_ds_compiled_shader* heap_alloc (int) ; 
- struct glsl_shader_private* heap_alloc_zero (int) ; 
- struct glsl_ds_compiled_shader* heap_realloc (struct glsl_ds_compiled_shader*,unsigned int) ; 
- int /*<<< orphan*/  memcmp (struct ds_compile_args*,struct ds_compile_args const*,int) ; 
- int /*<<< orphan*/  shader_glsl_generate_domain_shader (struct wined3d_context const*,struct shader_glsl_priv*,struct wined3d_shader*,struct ds_compile_args const*) ; 
- int /*<<< orphan*/  string_buffer_clear (int /*<<< orphan*/ *) ; 
+
+ int ERR (char*) ;
+ int TRACE (char*,struct wined3d_shader*) ;
+ struct glsl_ds_compiled_shader* heap_alloc (int) ;
+ struct glsl_shader_private* heap_alloc_zero (int) ;
+ struct glsl_ds_compiled_shader* heap_realloc (struct glsl_ds_compiled_shader*,unsigned int) ;
+ int memcmp (struct ds_compile_args*,struct ds_compile_args const*,int) ;
+ int shader_glsl_generate_domain_shader (struct wined3d_context const*,struct shader_glsl_priv*,struct wined3d_shader*,struct ds_compile_args const*) ;
+ int string_buffer_clear (int *) ;
 
 __attribute__((used)) static GLuint find_glsl_domain_shader(const struct wined3d_context *context,
         struct shader_glsl_priv *priv, struct wined3d_shader *shader, const struct ds_compile_args *args)

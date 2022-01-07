@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct reserve_info {struct reserve_info* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+ int assert (int ) ;
 
 struct reserve_info *chain_reserve_entry(struct reserve_info *first,
-					struct reserve_info *list)
+     struct reserve_info *list)
 {
-	assert(first->next == NULL);
+ assert(first->next == ((void*)0));
 
-	first->next = list;
-	return first;
+ first->next = list;
+ return first;
 }

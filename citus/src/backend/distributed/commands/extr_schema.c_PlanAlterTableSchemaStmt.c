@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  missing_ok; int /*<<< orphan*/ * relation; } ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  List ;
-typedef  TYPE_1__ AlterObjectSchemaStmt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AccessExclusiveLock ; 
- int /*<<< orphan*/  InvalidOid ; 
- int /*<<< orphan*/  IsDistributedTable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * NIL ; 
- int /*<<< orphan*/  OidIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RangeVarGetRelid (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WARNING ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errhint (char*) ; 
- int /*<<< orphan*/  errmsg (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int missing_ok; int * relation; } ;
+typedef int Oid ;
+typedef int List ;
+typedef TYPE_1__ AlterObjectSchemaStmt ;
+
+
+ int AccessExclusiveLock ;
+ int InvalidOid ;
+ int IsDistributedTable (int ) ;
+ int * NIL ;
+ int OidIsValid (int ) ;
+ int RangeVarGetRelid (int *,int ,int ) ;
+ int WARNING ;
+ int ereport (int ,int ) ;
+ int errhint (char*) ;
+ int errmsg (char*) ;
 
 List *
 PlanAlterTableSchemaStmt(AlterObjectSchemaStmt *stmt, const char *queryString)
 {
-	Oid relationId = InvalidOid;
+ Oid relationId = InvalidOid;
 
-	if (stmt->relation == NULL)
-	{
-		return NIL;
-	}
+ if (stmt->relation == ((void*)0))
+ {
+  return NIL;
+ }
 
-	relationId = RangeVarGetRelid(stmt->relation,
-								  AccessExclusiveLock,
-								  stmt->missing_ok);
+ relationId = RangeVarGetRelid(stmt->relation,
+          AccessExclusiveLock,
+          stmt->missing_ok);
 
-	/* first check whether a distributed relation is affected */
-	if (!OidIsValid(relationId) || !IsDistributedTable(relationId))
-	{
-		return NIL;
-	}
 
-	/* emit a warning if a distributed relation is affected */
-	ereport(WARNING, (errmsg("not propagating ALTER ... SET SCHEMA commands to "
-							 "worker nodes"),
-					  errhint("Connect to worker nodes directly to manually "
-							  "change schemas of affected objects.")));
+ if (!OidIsValid(relationId) || !IsDistributedTable(relationId))
+ {
+  return NIL;
+ }
 
-	return NIL;
+
+ ereport(WARNING, (errmsg("not propagating ALTER ... SET SCHEMA commands to "
+        "worker nodes"),
+       errhint("Connect to worker nodes directly to manually "
+         "change schemas of affected objects.")));
+
+ return NIL;
 }

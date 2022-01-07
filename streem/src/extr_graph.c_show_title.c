@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bar_data {scalar_t__ tlen; int col; int /*<<< orphan*/  title; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clear () ; 
- int /*<<< orphan*/  erase_cursor () ; 
- int /*<<< orphan*/  fwrite (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  move_cursor (int,int) ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+struct bar_data {scalar_t__ tlen; int col; int title; } ;
+
+
+ int clear () ;
+ int erase_cursor () ;
+ int fwrite (int ,int,int,int ) ;
+ int move_cursor (int,int) ;
+ int stdout ;
 
 __attribute__((used)) static void
 show_title(struct bar_data* d)

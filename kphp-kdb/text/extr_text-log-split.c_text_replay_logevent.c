@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lev_generic {void* e; void* d; int /*<<< orphan*/  c; scalar_t__ timestamp; } ;
+
+
+
+
+struct lev_generic {void* e; void* d; int c; scalar_t__ timestamp; } ;
 struct lev_add_message {int dummy; } ;
 
-/* Variables and functions */
- int LEV_START ; 
- struct lev_generic LogTs ; 
- scalar_t__ Map ; 
- int /*<<< orphan*/  conv_rec ; 
- int /*<<< orphan*/  copy_mod ; 
- void* copy_rem ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int get_logrec_size (int,struct lev_generic*,int) ; 
- scalar_t__ jump_log_pos ; 
- int /*<<< orphan*/  log_cur_pos () ; 
- int /*<<< orphan*/  memcpy (struct lev_generic*,struct lev_generic*,int) ; 
- int rd_bytes ; 
- int /*<<< orphan*/  rd_rec ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  targ_existed ; 
- scalar_t__ targ_orig_size ; 
- scalar_t__ text_len ; 
- scalar_t__ want_write (int,struct lev_generic*) ; 
- scalar_t__ wr_bytes ; 
- int /*<<< orphan*/  wr_rec ; 
- struct lev_generic* write_alloc (int) ; 
- int write_convert_record (struct lev_add_message*,int,scalar_t__) ; 
+
+ int LEV_START ;
+ struct lev_generic LogTs ;
+ scalar_t__ Map ;
+ int conv_rec ;
+ int copy_mod ;
+ void* copy_rem ;
+ int fprintf (int ,char*,...) ;
+ int get_logrec_size (int,struct lev_generic*,int) ;
+ scalar_t__ jump_log_pos ;
+ int log_cur_pos () ;
+ int memcpy (struct lev_generic*,struct lev_generic*,int) ;
+ int rd_bytes ;
+ int rd_rec ;
+ int stderr ;
+ int targ_existed ;
+ scalar_t__ targ_orig_size ;
+ scalar_t__ text_len ;
+ scalar_t__ want_write (int,struct lev_generic*) ;
+ scalar_t__ wr_bytes ;
+ int wr_rec ;
+ struct lev_generic* write_alloc (int) ;
+ int write_convert_record (struct lev_add_message*,int,scalar_t__) ;
 
 int text_replay_logevent (struct lev_generic *E, int size) {
   int type, s, t, xs;

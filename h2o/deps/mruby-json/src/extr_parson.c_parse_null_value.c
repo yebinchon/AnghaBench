@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  JSON_Value ;
 
-/* Variables and functions */
- size_t SIZEOF_TOKEN (char*) ; 
- int /*<<< orphan*/ * json_value_init_null () ; 
- scalar_t__ strncmp (char*,char const*,size_t) ; 
+
+
+
+typedef int JSON_Value ;
+
+
+ size_t SIZEOF_TOKEN (char*) ;
+ int * json_value_init_null () ;
+ scalar_t__ strncmp (char*,char const*,size_t) ;
 
 __attribute__((used)) static JSON_Value * parse_null_value(const char **string) {
     size_t token_size = SIZEOF_TOKEN("null");
@@ -23,5 +23,5 @@ __attribute__((used)) static JSON_Value * parse_null_value(const char **string) 
         *string += token_size;
         return json_value_init_null();
     }
-    return NULL;
+    return ((void*)0);
 }

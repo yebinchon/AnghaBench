@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ time_t ;
+
+
+
+
+typedef scalar_t__ time_t ;
 struct reliable_entry {scalar_t__ const next_try; scalar_t__ active; } ;
 struct reliable {int size; struct reliable_entry* array; } ;
 struct gc_arena {int dummy; } ;
-typedef  scalar_t__ interval_t ;
+typedef scalar_t__ interval_t ;
 
-/* Variables and functions */
- scalar_t__ BIG_TIMEOUT ; 
- int /*<<< orphan*/  D_REL_DEBUG ; 
- int /*<<< orphan*/  dmsg (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gc_free (struct gc_arena*) ; 
- struct gc_arena gc_new () ; 
- scalar_t__ min_int (scalar_t__,scalar_t__ const) ; 
- scalar_t__ now ; 
- int /*<<< orphan*/  reliable_print_ids (struct reliable const*,struct gc_arena*) ; 
+
+ scalar_t__ BIG_TIMEOUT ;
+ int D_REL_DEBUG ;
+ int dmsg (int ,char*,int,int ) ;
+ int gc_free (struct gc_arena*) ;
+ struct gc_arena gc_new () ;
+ scalar_t__ min_int (scalar_t__,scalar_t__ const) ;
+ scalar_t__ now ;
+ int reliable_print_ids (struct reliable const*,struct gc_arena*) ;
 
 interval_t
 reliable_send_timeout(const struct reliable *rel)

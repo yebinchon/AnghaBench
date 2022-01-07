@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int LogMask ; 
- int /*<<< orphan*/  THREAD_LOCK () ; 
- int /*<<< orphan*/  THREAD_UNLOCK () ; 
+ int LogMask ;
+ int THREAD_LOCK () ;
+ int THREAD_UNLOCK () ;
 
 int
 setlogmask(int pmask)
 {
-	int omask;
+ int omask;
 
-	THREAD_LOCK();
-	omask = LogMask;
-	if (pmask != 0)
-		LogMask = pmask;
-	THREAD_UNLOCK();
-	return (omask);
+ THREAD_LOCK();
+ omask = LogMask;
+ if (pmask != 0)
+  LogMask = pmask;
+ THREAD_UNLOCK();
+ return (omask);
 }

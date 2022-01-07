@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tl_combinator_tree {scalar_t__ type; scalar_t__ type_len; int /*<<< orphan*/  act; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TL_ACT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TL_ERROR (char*) ; 
- int /*<<< orphan*/  TL_TYPE (scalar_t__) ; 
- int _tl_finish_subtree (struct tl_combinator_tree*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (struct tl_combinator_tree*) ; 
- scalar_t__ type_type ; 
- int /*<<< orphan*/  vkprintf (int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct tl_combinator_tree {scalar_t__ type; scalar_t__ type_len; int act; } ;
+
+
+ int TL_ACT (int ) ;
+ int TL_ERROR (char*) ;
+ int TL_TYPE (scalar_t__) ;
+ int _tl_finish_subtree (struct tl_combinator_tree*,int ,int ) ;
+ int assert (struct tl_combinator_tree*) ;
+ scalar_t__ type_type ;
+ int vkprintf (int,char*,int ,int ) ;
 
 int tl_finish_subtree (struct tl_combinator_tree *R) {
   assert (R);

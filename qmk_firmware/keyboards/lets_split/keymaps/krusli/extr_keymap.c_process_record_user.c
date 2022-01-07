@@ -1,81 +1,81 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_4__ {int pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
+typedef TYPE_2__ keyrecord_t ;
 
-/* Variables and functions */
-#define  ADJUST 134 
-#define  COLEMAK 133 
-#define  DVORAK 132 
-#define  LOWER 131 
-#define  NUMPAD 130 
- int /*<<< orphan*/  PLAY_SONG (int /*<<< orphan*/ ) ; 
-#define  QWERTY 129 
-#define  RAISE 128 
- int /*<<< orphan*/  _ADJUST ; 
- unsigned long _COLEMAK ; 
- unsigned long _DVORAK ; 
- int /*<<< orphan*/  _LOWER ; 
- unsigned long _NUMPAD ; 
- unsigned long _QWERTY ; 
- int /*<<< orphan*/  _RAISE ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  persistent_default_layer_set (unsigned long) ; 
- int /*<<< orphan*/  tone_colemak ; 
- int /*<<< orphan*/  tone_dvorak ; 
- int /*<<< orphan*/  tone_qwerty ; 
- int /*<<< orphan*/  update_tri_layer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+
+
+
+ int PLAY_SONG (int ) ;
+
+
+ int _ADJUST ;
+ unsigned long _COLEMAK ;
+ unsigned long _DVORAK ;
+ int _LOWER ;
+ unsigned long _NUMPAD ;
+ unsigned long _QWERTY ;
+ int _RAISE ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ int persistent_default_layer_set (unsigned long) ;
+ int tone_colemak ;
+ int tone_dvorak ;
+ int tone_qwerty ;
+ int update_tri_layer (int ,int ,int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case QWERTY:
+    case 129:
       if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(tone_qwerty);
-        #endif
+
+
+
         persistent_default_layer_set(1UL<<_QWERTY);
       }
-      return false;
+      return 0;
       break;
-    case NUMPAD:
+    case 130:
       if (record->event.pressed)
         persistent_default_layer_set(1UL<<_NUMPAD);
-      return false;
+      return 0;
       break;
-    case COLEMAK:
+    case 133:
       if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(tone_colemak);
-        #endif
+
+
+
         persistent_default_layer_set(1UL<<_COLEMAK);
       }
-      return false;
+      return 0;
       break;
-    case DVORAK:
+    case 132:
       if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(tone_dvorak);
-        #endif
+
+
+
         persistent_default_layer_set(1UL<<_DVORAK);
       }
-      return false;
+      return 0;
       break;
-    case LOWER:
+    case 131:
       if (record->event.pressed) {
         layer_on(_LOWER);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
@@ -83,9 +83,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_off(_LOWER);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
       }
-      return false;
+      return 0;
       break;
-    case RAISE:
+    case 128:
       if (record->event.pressed) {
         layer_on(_RAISE);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
@@ -93,16 +93,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_off(_RAISE);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
       }
-      return false;
+      return 0;
       break;
-    case ADJUST:
+    case 134:
       if (record->event.pressed) {
         layer_on(_ADJUST);
       } else {
         layer_off(_ADJUST);
       }
-      return false;
+      return 0;
       break;
   }
-  return true;
+  return 1;
 }

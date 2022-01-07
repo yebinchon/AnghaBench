@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_16__ {TYPE_3__* connected_port; } ;
-struct TYPE_15__ {scalar_t__ type; int /*<<< orphan*/  name; int /*<<< orphan*/  is_enabled; TYPE_2__* priv; scalar_t__ index; TYPE_1__* component; } ;
-struct TYPE_14__ {TYPE_4__* core; int /*<<< orphan*/  pf_disable; } ;
-struct TYPE_13__ {int /*<<< orphan*/  name; } ;
-typedef  scalar_t__ MMAL_STATUS_T ;
-typedef  TYPE_3__ MMAL_PORT_T ;
-typedef  TYPE_4__ MMAL_PORT_PRIVATE_CORE_T ;
+struct TYPE_15__ {scalar_t__ type; int name; int is_enabled; TYPE_2__* priv; scalar_t__ index; TYPE_1__* component; } ;
+struct TYPE_14__ {TYPE_4__* core; int pf_disable; } ;
+struct TYPE_13__ {int name; } ;
+typedef scalar_t__ MMAL_STATUS_T ;
+typedef TYPE_3__ MMAL_PORT_T ;
+typedef TYPE_4__ MMAL_PORT_PRIVATE_CORE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOCK_CONNECTION (TYPE_3__*) ; 
- int /*<<< orphan*/  LOG_ERROR (char*,int /*<<< orphan*/ ,TYPE_3__*,...) ; 
- int /*<<< orphan*/  LOG_TRACE (char*,int /*<<< orphan*/ ,int,int,TYPE_3__*) ; 
- scalar_t__ MMAL_EINVAL ; 
- scalar_t__ MMAL_ENOSYS ; 
- scalar_t__ MMAL_PORT_TYPE_INPUT ; 
- scalar_t__ MMAL_SUCCESS ; 
- int /*<<< orphan*/  UNLOCK_CONNECTION (TYPE_3__*) ; 
- scalar_t__ mmal_port_connection_disable (TYPE_3__*,TYPE_3__*) ; 
- scalar_t__ mmal_port_disable_internal (TYPE_3__*) ; 
- int /*<<< orphan*/  mmal_status_to_string (scalar_t__) ; 
+
+ int LOCK_CONNECTION (TYPE_3__*) ;
+ int LOG_ERROR (char*,int ,TYPE_3__*,...) ;
+ int LOG_TRACE (char*,int ,int,int,TYPE_3__*) ;
+ scalar_t__ MMAL_EINVAL ;
+ scalar_t__ MMAL_ENOSYS ;
+ scalar_t__ MMAL_PORT_TYPE_INPUT ;
+ scalar_t__ MMAL_SUCCESS ;
+ int UNLOCK_CONNECTION (TYPE_3__*) ;
+ scalar_t__ mmal_port_connection_disable (TYPE_3__*,TYPE_3__*) ;
+ scalar_t__ mmal_port_disable_internal (TYPE_3__*) ;
+ int mmal_status_to_string (scalar_t__) ;
 
 MMAL_STATUS_T mmal_port_disable(MMAL_PORT_T *port)
 {
@@ -54,7 +54,7 @@ MMAL_STATUS_T mmal_port_disable(MMAL_PORT_T *port)
    LOCK_CONNECTION(port);
    connected_port = core->connected_port;
 
-   /* Sanity checking */
+
    if (!port->is_enabled)
    {
       UNLOCK_CONNECTION(port);
@@ -65,7 +65,7 @@ MMAL_STATUS_T mmal_port_disable(MMAL_PORT_T *port)
    if (connected_port)
       LOCK_CONNECTION(connected_port);
 
-   /* Disable the output port of a connection first */
+
    if (connected_port && connected_port->type != MMAL_PORT_TYPE_INPUT)
    {
       status = mmal_port_disable_internal(connected_port);
@@ -84,7 +84,7 @@ MMAL_STATUS_T mmal_port_disable(MMAL_PORT_T *port)
       goto end;
    }
 
-   /* Disable the input port of a connection last */
+
    if (connected_port && connected_port->type == MMAL_PORT_TYPE_INPUT)
    {
       status = mmal_port_disable_internal(connected_port);

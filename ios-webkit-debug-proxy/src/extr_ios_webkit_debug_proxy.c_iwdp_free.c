@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct iwdp_struct {int dummy; } ;
 struct iwdp_private {int dummy; } ;
-typedef  TYPE_1__* iwdp_t ;
-typedef  TYPE_1__* iwdp_private_t ;
-struct TYPE_6__ {struct TYPE_6__* sim_wi_socket_addr; struct TYPE_6__* frontend; int /*<<< orphan*/  device_id_to_iport; struct TYPE_6__* private_state; } ;
+typedef TYPE_1__* iwdp_t ;
+typedef TYPE_1__* iwdp_private_t ;
+struct TYPE_6__ {struct TYPE_6__* sim_wi_socket_addr; struct TYPE_6__* frontend; int device_id_to_iport; struct TYPE_6__* private_state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  ht_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+ int free (TYPE_1__*) ;
+ int ht_free (int ) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 void iwdp_free(iwdp_t self) {
   if (self) {

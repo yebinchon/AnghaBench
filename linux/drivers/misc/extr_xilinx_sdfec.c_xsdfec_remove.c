@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct xsdfec_dev {int /*<<< orphan*/  clks; int /*<<< orphan*/  dev_id; int /*<<< orphan*/  miscdev; } ;
+
+
+
+
+struct xsdfec_dev {int clks; int dev_id; int miscdev; } ;
 struct platform_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dev_nrs ; 
- int /*<<< orphan*/  ida_free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  misc_deregister (int /*<<< orphan*/ *) ; 
- struct xsdfec_dev* platform_get_drvdata (struct platform_device*) ; 
- int /*<<< orphan*/  xsdfec_disable_all_clks (int /*<<< orphan*/ *) ; 
+
+ int dev_nrs ;
+ int ida_free (int *,int ) ;
+ int misc_deregister (int *) ;
+ struct xsdfec_dev* platform_get_drvdata (struct platform_device*) ;
+ int xsdfec_disable_all_clks (int *) ;
 
 __attribute__((used)) static int xsdfec_remove(struct platform_device *pdev)
 {
-	struct xsdfec_dev *xsdfec;
+ struct xsdfec_dev *xsdfec;
 
-	xsdfec = platform_get_drvdata(pdev);
-	misc_deregister(&xsdfec->miscdev);
-	ida_free(&dev_nrs, xsdfec->dev_id);
-	xsdfec_disable_all_clks(&xsdfec->clks);
-	return 0;
+ xsdfec = platform_get_drvdata(pdev);
+ misc_deregister(&xsdfec->miscdev);
+ ida_free(&dev_nrs, xsdfec->dev_id);
+ xsdfec_disable_all_clks(&xsdfec->clks);
+ return 0;
 }

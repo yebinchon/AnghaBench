@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int uint32_t ;
-struct TYPE_21__ {int /*<<< orphan*/ * pb; TYPE_2__* priv_data; } ;
-struct TYPE_20__ {int nb_frames; TYPE_1__* codecpar; int /*<<< orphan*/  time_base; int /*<<< orphan*/  avg_frame_rate; } ;
+
+
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int uint32_t ;
+struct TYPE_21__ {int * pb; TYPE_2__* priv_data; } ;
+struct TYPE_20__ {int nb_frames; TYPE_1__* codecpar; int time_base; int avg_frame_rate; } ;
 struct TYPE_19__ {int nb_audio_tracks; int acompression; int aformat; int nb_video_tracks; } ;
-struct TYPE_18__ {int sample_rate; int channels; int bits_per_coded_sample; void* codec_type; void* codec_id; void* height; void* width; scalar_t__ codec_tag; int /*<<< orphan*/  format; } ;
-typedef  TYPE_2__ MvContext ;
-typedef  TYPE_3__ AVStream ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_4__ AVFormatContext ;
+struct TYPE_18__ {int sample_rate; int channels; int bits_per_coded_sample; void* codec_type; void* codec_id; void* height; void* width; scalar_t__ codec_tag; int format; } ;
+typedef TYPE_2__ MvContext ;
+typedef TYPE_3__ AVStream ;
+typedef int AVIOContext ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int AUDIO_FORMAT_SIGNED ; 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int AVERROR_PATCHWELCOME ; 
- int /*<<< orphan*/  AVINDEX_KEYFRAME ; 
- void* AVMEDIA_TYPE_AUDIO ; 
- void* AVMEDIA_TYPE_VIDEO ; 
- void* AV_CODEC_ID_MVC1 ; 
- void* AV_CODEC_ID_NONE ; 
- void* AV_CODEC_ID_PCM_S16BE ; 
- void* AV_CODEC_ID_RAWVIDEO ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_PIX_FMT_ARGB ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_add_index_entry (TYPE_3__*,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_inv_q (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,...) ; 
- TYPE_3__* avformat_new_stream (TYPE_4__*,int /*<<< orphan*/ *) ; 
- scalar_t__ avio_feof (int /*<<< orphan*/ *) ; 
- int avio_rb16 (int /*<<< orphan*/ *) ; 
- void* avio_rb32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avpriv_request_sample (TYPE_4__*,char*,...) ; 
- int /*<<< orphan*/  avpriv_set_pts_info (TYPE_3__*,int,int,int) ; 
- int /*<<< orphan*/  parse_audio_var ; 
- int /*<<< orphan*/  parse_global_var ; 
- int /*<<< orphan*/  parse_video_var ; 
- int /*<<< orphan*/  read_index (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int read_table (TYPE_4__*,TYPE_3__*,int /*<<< orphan*/ ) ; 
- scalar_t__ set_channels (TYPE_4__*,TYPE_3__*,void*) ; 
- int /*<<< orphan*/  var_read_metadata (TYPE_4__*,char*,int) ; 
+
+ int AUDIO_FORMAT_SIGNED ;
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVERROR_PATCHWELCOME ;
+ int AVINDEX_KEYFRAME ;
+ void* AVMEDIA_TYPE_AUDIO ;
+ void* AVMEDIA_TYPE_VIDEO ;
+ void* AV_CODEC_ID_MVC1 ;
+ void* AV_CODEC_ID_NONE ;
+ void* AV_CODEC_ID_PCM_S16BE ;
+ void* AV_CODEC_ID_RAWVIDEO ;
+ int AV_LOG_ERROR ;
+ int AV_PIX_FMT_ARGB ;
+ int ENOMEM ;
+ int av_add_index_entry (TYPE_3__*,int,int,int,int ,int ) ;
+ int av_inv_q (int ) ;
+ int av_log (TYPE_4__*,int ,char*,...) ;
+ TYPE_3__* avformat_new_stream (TYPE_4__*,int *) ;
+ scalar_t__ avio_feof (int *) ;
+ int avio_rb16 (int *) ;
+ void* avio_rb32 (int *) ;
+ int avio_skip (int *,int) ;
+ int avpriv_request_sample (TYPE_4__*,char*,...) ;
+ int avpriv_set_pts_info (TYPE_3__*,int,int,int) ;
+ int parse_audio_var ;
+ int parse_global_var ;
+ int parse_video_var ;
+ int read_index (int *,TYPE_3__*) ;
+ int read_table (TYPE_4__*,TYPE_3__*,int ) ;
+ scalar_t__ set_channels (TYPE_4__*,TYPE_3__*,void*) ;
+ int var_read_metadata (TYPE_4__*,char*,int) ;
 
 __attribute__((used)) static int mv_read_header(AVFormatContext *avctx)
 {
     MvContext *mv = avctx->priv_data;
     AVIOContext *pb = avctx->pb;
-    AVStream *ast = NULL, *vst = NULL; //initialization to suppress warning
+    AVStream *ast = ((void*)0), *vst = ((void*)0);
     int version, i;
     int ret;
 
@@ -74,19 +74,19 @@ __attribute__((used)) static int mv_read_header(AVFormatContext *avctx)
         int v;
         avio_skip(pb, 22);
 
-        /* allocate audio track first to prevent unnecessary seeking
-         * (audio packet always precede video packet for a given frame) */
-        ast = avformat_new_stream(avctx, NULL);
+
+
+        ast = avformat_new_stream(avctx, ((void*)0));
         if (!ast)
             return AVERROR(ENOMEM);
 
-        vst = avformat_new_stream(avctx, NULL);
+        vst = avformat_new_stream(avctx, ((void*)0));
         if (!vst)
             return AVERROR(ENOMEM);
         avpriv_set_pts_info(vst, 64, 1, 15);
         vst->codecpar->codec_type = AVMEDIA_TYPE_VIDEO;
-        vst->avg_frame_rate    = av_inv_q(vst->time_base);
-        vst->nb_frames         = avio_rb32(pb);
+        vst->avg_frame_rate = av_inv_q(vst->time_base);
+        vst->nb_frames = avio_rb32(pb);
         v = avio_rb32(pb);
         switch (v) {
         case 1:
@@ -101,12 +101,12 @@ __attribute__((used)) static int mv_read_header(AVFormatContext *avctx)
             break;
         }
         vst->codecpar->codec_tag = 0;
-        vst->codecpar->width     = avio_rb32(pb);
-        vst->codecpar->height    = avio_rb32(pb);
+        vst->codecpar->width = avio_rb32(pb);
+        vst->codecpar->height = avio_rb32(pb);
         avio_skip(pb, 12);
 
-        ast->codecpar->codec_type  = AVMEDIA_TYPE_AUDIO;
-        ast->nb_frames          = vst->nb_frames;
+        ast->codecpar->codec_type = AVMEDIA_TYPE_AUDIO;
+        ast->nb_frames = vst->nb_frames;
         ast->codecpar->sample_rate = avio_rb32(pb);
         if (ast->codecpar->sample_rate <= 0) {
             av_log(avctx, AV_LOG_ERROR, "Invalid sample rate %d\n", ast->codecpar->sample_rate);
@@ -130,7 +130,7 @@ __attribute__((used)) static int mv_read_header(AVFormatContext *avctx)
 
         timestamp = 0;
         for (i = 0; i < vst->nb_frames; i++) {
-            uint32_t pos   = avio_rb32(pb);
+            uint32_t pos = avio_rb32(pb);
             uint32_t asize = avio_rb32(pb);
             uint32_t vsize = avio_rb32(pb);
             if (avio_feof(pb))
@@ -143,14 +143,14 @@ __attribute__((used)) static int mv_read_header(AVFormatContext *avctx)
     } else if (!version && avio_rb16(pb) == 3) {
         avio_skip(pb, 4);
 
-        if ((ret = read_table(avctx, NULL, parse_global_var)) < 0)
+        if ((ret = read_table(avctx, ((void*)0), parse_global_var)) < 0)
             return ret;
 
         if (mv->nb_audio_tracks > 1) {
             avpriv_request_sample(avctx, "Multiple audio streams support");
             return AVERROR_PATCHWELCOME;
         } else if (mv->nb_audio_tracks) {
-            ast = avformat_new_stream(avctx, NULL);
+            ast = avformat_new_stream(avctx, ((void*)0));
             if (!ast)
                 return AVERROR(ENOMEM);
             ast->codecpar->codec_type = AVMEDIA_TYPE_AUDIO;
@@ -177,7 +177,7 @@ __attribute__((used)) static int mv_read_header(AVFormatContext *avctx)
             avpriv_request_sample(avctx, "Multiple video streams support");
             return AVERROR_PATCHWELCOME;
         } else if (mv->nb_video_tracks) {
-            vst = avformat_new_stream(avctx, NULL);
+            vst = avformat_new_stream(avctx, ((void*)0));
             if (!vst)
                 return AVERROR(ENOMEM);
             vst->codecpar->codec_type = AVMEDIA_TYPE_VIDEO;

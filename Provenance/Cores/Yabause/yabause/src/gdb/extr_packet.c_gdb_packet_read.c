@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int state; size_t buflen; char bufsum; int cslen; char* buffer; char* checksum; int /*<<< orphan*/  client; } ;
-typedef  TYPE_1__ gdb_packet ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gdb_client_break (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gdb_client_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gdb_client_received (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  sscanf (char*,char*,int*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int state; size_t buflen; char bufsum; int cslen; char* buffer; char* checksum; int client; } ;
+typedef TYPE_1__ gdb_packet ;
+
+
+ int gdb_client_break (int ) ;
+ int gdb_client_error (int ) ;
+ int gdb_client_received (int ,TYPE_1__*) ;
+ int sscanf (char*,char*,int*) ;
 
 void gdb_packet_read(gdb_packet * packet, char * buffer, size_t got)
 {

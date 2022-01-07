@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct fps_counter {int /*<<< orphan*/  mutex; int /*<<< orphan*/  nr_rendered; int /*<<< orphan*/  started; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SDL_AtomicGet (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SDL_GetTicks () ; 
- int /*<<< orphan*/  check_interval_expired (struct fps_counter*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+struct fps_counter {int mutex; int nr_rendered; int started; } ;
+
+
+ int SDL_AtomicGet (int *) ;
+ int SDL_GetTicks () ;
+ int check_interval_expired (struct fps_counter*,int ) ;
+ int mutex_lock (int ) ;
+ int mutex_unlock (int ) ;
 
 void
 fps_counter_add_rendered_frame(struct fps_counter *counter) {

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ucred {int dummy; } ;
-typedef  int /*<<< orphan*/  pid_t ;
-typedef  int /*<<< orphan*/  Server ;
-typedef  int /*<<< orphan*/  ClientContext ;
+typedef int pid_t ;
+typedef int Server ;
+typedef int ClientContext ;
 
-/* Variables and functions */
- int client_context_get_internal (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct ucred const*,char const*,size_t,char const*,int,int /*<<< orphan*/ **) ; 
+
+ int client_context_get_internal (int *,int ,struct ucred const*,char const*,size_t,char const*,int,int **) ;
 
 int client_context_acquire(
                 Server *s,
@@ -26,5 +26,5 @@ int client_context_acquire(
                 const char *unit_id,
                 ClientContext **ret) {
 
-        return client_context_get_internal(s, pid, ucred, label, label_len, unit_id, true, ret);
+        return client_context_get_internal(s, pid, ucred, label, label_len, unit_id, 1, ret);
 }

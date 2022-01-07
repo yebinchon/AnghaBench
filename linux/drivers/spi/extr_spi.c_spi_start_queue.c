@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct spi_controller {int running; int /*<<< orphan*/  pump_messages; int /*<<< orphan*/  kworker; int /*<<< orphan*/  queue_lock; int /*<<< orphan*/ * cur_msg; scalar_t__ busy; } ;
 
-/* Variables and functions */
- int EBUSY ; 
- int /*<<< orphan*/  kthread_queue_work (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct spi_controller {int running; int pump_messages; int kworker; int queue_lock; int * cur_msg; scalar_t__ busy; } ;
+
+
+ int EBUSY ;
+ int kthread_queue_work (int *,int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static int spi_start_queue(struct spi_controller *ctlr)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	spin_lock_irqsave(&ctlr->queue_lock, flags);
+ spin_lock_irqsave(&ctlr->queue_lock, flags);
 
-	if (ctlr->running || ctlr->busy) {
-		spin_unlock_irqrestore(&ctlr->queue_lock, flags);
-		return -EBUSY;
-	}
+ if (ctlr->running || ctlr->busy) {
+  spin_unlock_irqrestore(&ctlr->queue_lock, flags);
+  return -EBUSY;
+ }
 
-	ctlr->running = true;
-	ctlr->cur_msg = NULL;
-	spin_unlock_irqrestore(&ctlr->queue_lock, flags);
+ ctlr->running = 1;
+ ctlr->cur_msg = ((void*)0);
+ spin_unlock_irqrestore(&ctlr->queue_lock, flags);
 
-	kthread_queue_work(&ctlr->kworker, &ctlr->pump_messages);
+ kthread_queue_work(&ctlr->kworker, &ctlr->pump_messages);
 
-	return 0;
+ return 0;
 }

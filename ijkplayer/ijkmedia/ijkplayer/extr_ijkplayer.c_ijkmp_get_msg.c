@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_8__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_16__ {int /*<<< orphan*/  start_on_prepared; int /*<<< orphan*/  msg_queue; } ;
+
+
+typedef struct TYPE_16__ TYPE_8__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+struct TYPE_16__ {int start_on_prepared; int msg_queue; } ;
 struct TYPE_15__ {int what; scalar_t__ arg1; } ;
-struct TYPE_14__ {int restart; int restart_from_beginning; int /*<<< orphan*/  mutex; TYPE_8__* ffplayer; int /*<<< orphan*/  mp_state; int /*<<< orphan*/  seek_msec; int /*<<< orphan*/  seek_req; } ;
-typedef  TYPE_1__ IjkMediaPlayer ;
-typedef  TYPE_2__ AVMessage ;
+struct TYPE_14__ {int restart; int restart_from_beginning; int mutex; TYPE_8__* ffplayer; int mp_state; int seek_msec; int seek_req; } ;
+typedef TYPE_1__ IjkMediaPlayer ;
+typedef TYPE_2__ AVMessage ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
-#define  FFP_MSG_COMPLETED 133 
-#define  FFP_MSG_PREPARED 132 
-#define  FFP_MSG_SEEK_COMPLETE 131 
-#define  FFP_REQ_PAUSE 130 
-#define  FFP_REQ_SEEK 129 
-#define  FFP_REQ_START 128 
- int /*<<< orphan*/  MPTRACE (char*) ; 
- int /*<<< orphan*/  MP_STATE_ASYNC_PREPARING ; 
- int /*<<< orphan*/  MP_STATE_COMPLETED ; 
- int /*<<< orphan*/  MP_STATE_PAUSED ; 
- int /*<<< orphan*/  MP_STATE_PREPARED ; 
- int /*<<< orphan*/  MP_STATE_STARTED ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  av_log (TYPE_8__*,int /*<<< orphan*/ ,char*,...) ; 
- int ffp_pause_l (TYPE_8__*) ; 
- int /*<<< orphan*/  ffp_seek_to_l (TYPE_8__*,scalar_t__) ; 
- int ffp_start_from_l (TYPE_8__*,int /*<<< orphan*/ ) ; 
- int ffp_start_l (TYPE_8__*) ; 
- int /*<<< orphan*/  ijkmp_change_state_l (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ikjmp_chkst_pause_l (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ikjmp_chkst_seek_l (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ikjmp_chkst_start_l (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg_free_res (TYPE_2__*) ; 
- int msg_queue_get (int /*<<< orphan*/ *,TYPE_2__*,int) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int AV_LOG_DEBUG ;
+
+
+
+
+
+
+ int MPTRACE (char*) ;
+ int MP_STATE_ASYNC_PREPARING ;
+ int MP_STATE_COMPLETED ;
+ int MP_STATE_PAUSED ;
+ int MP_STATE_PREPARED ;
+ int MP_STATE_STARTED ;
+ int assert (TYPE_1__*) ;
+ int av_log (TYPE_8__*,int ,char*,...) ;
+ int ffp_pause_l (TYPE_8__*) ;
+ int ffp_seek_to_l (TYPE_8__*,scalar_t__) ;
+ int ffp_start_from_l (TYPE_8__*,int ) ;
+ int ffp_start_l (TYPE_8__*) ;
+ int ijkmp_change_state_l (TYPE_1__*,int ) ;
+ int ikjmp_chkst_pause_l (int ) ;
+ int ikjmp_chkst_seek_l (int ) ;
+ int ikjmp_chkst_start_l (int ) ;
+ int msg_free_res (TYPE_2__*) ;
+ int msg_queue_get (int *,TYPE_2__*,int) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 int ijkmp_get_msg(IjkMediaPlayer *mp, AVMessage *msg, int block)
 {
@@ -58,13 +58,13 @@ int ijkmp_get_msg(IjkMediaPlayer *mp, AVMessage *msg, int block)
             return retval;
 
         switch (msg->what) {
-        case FFP_MSG_PREPARED:
+        case 132:
             MPTRACE("ijkmp_get_msg: FFP_MSG_PREPARED\n");
             pthread_mutex_lock(&mp->mutex);
             if (mp->mp_state == MP_STATE_ASYNC_PREPARING) {
                 ijkmp_change_state_l(mp, MP_STATE_PREPARED);
             } else {
-                // FIXME: 1: onError() ?
+
                 av_log(mp->ffplayer, AV_LOG_DEBUG, "FFP_MSG_PREPARED: expecting mp_state==MP_STATE_ASYNC_PREPARING\n");
             }
             if (!mp->ffplayer->start_on_prepared) {
@@ -73,7 +73,7 @@ int ijkmp_get_msg(IjkMediaPlayer *mp, AVMessage *msg, int block)
             pthread_mutex_unlock(&mp->mutex);
             break;
 
-        case FFP_MSG_COMPLETED:
+        case 133:
             MPTRACE("ijkmp_get_msg: FFP_MSG_COMPLETED\n");
 
             pthread_mutex_lock(&mp->mutex);
@@ -83,7 +83,7 @@ int ijkmp_get_msg(IjkMediaPlayer *mp, AVMessage *msg, int block)
             pthread_mutex_unlock(&mp->mutex);
             break;
 
-        case FFP_MSG_SEEK_COMPLETE:
+        case 131:
             MPTRACE("ijkmp_get_msg: FFP_MSG_SEEK_COMPLETE\n");
 
             pthread_mutex_lock(&mp->mutex);
@@ -92,12 +92,12 @@ int ijkmp_get_msg(IjkMediaPlayer *mp, AVMessage *msg, int block)
             pthread_mutex_unlock(&mp->mutex);
             break;
 
-        case FFP_REQ_START:
+        case 128:
             MPTRACE("ijkmp_get_msg: FFP_REQ_START\n");
             continue_wait_next_msg = 1;
             pthread_mutex_lock(&mp->mutex);
             if (0 == ikjmp_chkst_start_l(mp->mp_state)) {
-                // FIXME: 8 check seekable
+
                 if (mp->restart) {
                     if (mp->restart_from_beginning) {
                         av_log(mp->ffplayer, AV_LOG_DEBUG, "ijkmp_get_msg: FFP_REQ_START: restart from beginning\n");
@@ -122,7 +122,7 @@ int ijkmp_get_msg(IjkMediaPlayer *mp, AVMessage *msg, int block)
             pthread_mutex_unlock(&mp->mutex);
             break;
 
-        case FFP_REQ_PAUSE:
+        case 130:
             MPTRACE("ijkmp_get_msg: FFP_REQ_PAUSE\n");
             continue_wait_next_msg = 1;
             pthread_mutex_lock(&mp->mutex);
@@ -134,7 +134,7 @@ int ijkmp_get_msg(IjkMediaPlayer *mp, AVMessage *msg, int block)
             pthread_mutex_unlock(&mp->mutex);
             break;
 
-        case FFP_REQ_SEEK:
+        case 129:
             MPTRACE("ijkmp_get_msg: FFP_REQ_SEEK\n");
             continue_wait_next_msg = 1;
 

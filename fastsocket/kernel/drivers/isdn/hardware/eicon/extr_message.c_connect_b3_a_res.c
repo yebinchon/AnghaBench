@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t word ;
-typedef  int dword ;
-typedef  int byte ;
-struct TYPE_8__ {scalar_t__* ncci_state; int /*<<< orphan*/ * ncci_ch; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef size_t word ;
+typedef int dword ;
+typedef int byte ;
+struct TYPE_8__ {scalar_t__* ncci_state; int * ncci_ch; } ;
 struct TYPE_7__ {scalar_t__ State; } ;
-typedef  TYPE_1__ PLCI ;
-typedef  TYPE_2__ DIVA_CAPI_ADAPTER ;
-typedef  int /*<<< orphan*/  APPL ;
-typedef  int /*<<< orphan*/  API_PARSE ;
+typedef TYPE_1__ PLCI ;
+typedef TYPE_2__ DIVA_CAPI_ADAPTER ;
+typedef int APPL ;
+typedef int API_PARSE ;
 
-/* Variables and functions */
- void* CONNECTED ; 
- scalar_t__ IDLE ; 
- scalar_t__ INC_ACT_PENDING ; 
- scalar_t__ INC_CON_CONNECTED_ALERT ; 
- scalar_t__ INC_DIS_PENDING ; 
- scalar_t__ OUTG_DIS_PENDING ; 
- int /*<<< orphan*/  channel_request_xon (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  channel_xmit_xon (TYPE_1__*) ; 
- int /*<<< orphan*/  dbug (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dprintf (char*,size_t) ; 
+
+ void* CONNECTED ;
+ scalar_t__ IDLE ;
+ scalar_t__ INC_ACT_PENDING ;
+ scalar_t__ INC_CON_CONNECTED_ALERT ;
+ scalar_t__ INC_DIS_PENDING ;
+ scalar_t__ OUTG_DIS_PENDING ;
+ int channel_request_xon (TYPE_1__*,int ) ;
+ int channel_xmit_xon (TYPE_1__*) ;
+ int dbug (int,int ) ;
+ int dprintf (char*,size_t) ;
 
 __attribute__((used)) static byte connect_b3_a_res(dword Id, word Number, DIVA_CAPI_ADAPTER *a,
-			     PLCI *plci, APPL *appl, API_PARSE *parms)
+        PLCI *plci, APPL *appl, API_PARSE *parms)
 {
   word ncci;
 
@@ -52,5 +52,5 @@ __attribute__((used)) static byte connect_b3_a_res(dword Id, word Number, DIVA_C
       channel_xmit_xon (plci);
     }
   }
-  return false;
+  return 0;
 }

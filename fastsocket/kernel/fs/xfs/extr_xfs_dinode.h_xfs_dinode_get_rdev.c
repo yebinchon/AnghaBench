@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xfs_dev_t ;
+
+
+
+
+typedef int xfs_dev_t ;
 struct xfs_dinode {int dummy; } ;
-typedef  int /*<<< orphan*/  __be32 ;
+typedef int __be32 ;
 
-/* Variables and functions */
- scalar_t__ XFS_DFORK_DPTR (struct xfs_dinode*) ; 
- int /*<<< orphan*/  be32_to_cpu (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ XFS_DFORK_DPTR (struct xfs_dinode*) ;
+ int be32_to_cpu (int ) ;
 
 __attribute__((used)) static inline xfs_dev_t xfs_dinode_get_rdev(struct xfs_dinode *dip)
 {
-	return be32_to_cpu(*(__be32 *)XFS_DFORK_DPTR(dip));
+ return be32_to_cpu(*(__be32 *)XFS_DFORK_DPTR(dip));
 }

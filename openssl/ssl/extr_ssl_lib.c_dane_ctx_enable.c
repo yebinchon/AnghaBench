@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const* uint8_t ;
-struct dane_ctx_st {int /*<<< orphan*/  const* mdmax; int /*<<< orphan*/  const** mdord; int /*<<< orphan*/  const** mdevp; } ;
-struct TYPE_3__ {scalar_t__ nid; size_t mtype; int /*<<< orphan*/ * ord; } ;
-typedef  int /*<<< orphan*/  EVP_MD ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * DANETLS_MATCHING_LAST ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/ * EVP_get_digestbynid (scalar_t__) ; 
- scalar_t__ NID_undef ; 
- int /*<<< orphan*/  OPENSSL_free (int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/ ** OPENSSL_zalloc (int) ; 
- size_t OSSL_NELEM (TYPE_1__*) ; 
- int /*<<< orphan*/  SSL_F_DANE_CTX_ENABLE ; 
- int /*<<< orphan*/  SSLerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* dane_mds ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int const* uint8_t ;
+struct dane_ctx_st {int const* mdmax; int const** mdord; int const** mdevp; } ;
+struct TYPE_3__ {scalar_t__ nid; size_t mtype; int * ord; } ;
+typedef int EVP_MD ;
+
+
+ int * DANETLS_MATCHING_LAST ;
+ int ERR_R_MALLOC_FAILURE ;
+ int * EVP_get_digestbynid (scalar_t__) ;
+ scalar_t__ NID_undef ;
+ int OPENSSL_free (int const**) ;
+ int ** OPENSSL_zalloc (int) ;
+ size_t OSSL_NELEM (TYPE_1__*) ;
+ int SSL_F_DANE_CTX_ENABLE ;
+ int SSLerr (int ,int ) ;
+ TYPE_1__* dane_mds ;
 
 __attribute__((used)) static int dane_ctx_enable(struct dane_ctx_st *dctx)
 {
     const EVP_MD **mdevp;
     uint8_t *mdord;
     uint8_t mdmax = DANETLS_MATCHING_LAST;
-    int n = ((int)mdmax) + 1;   /* int to handle PrivMatch(255) */
+    int n = ((int)mdmax) + 1;
     size_t i;
 
-    if (dctx->mdevp != NULL)
+    if (dctx->mdevp != ((void*)0))
         return 1;
 
     mdevp = OPENSSL_zalloc(n * sizeof(*mdevp));
     mdord = OPENSSL_zalloc(n * sizeof(*mdord));
 
-    if (mdord == NULL || mdevp == NULL) {
+    if (mdord == ((void*)0) || mdevp == ((void*)0)) {
         OPENSSL_free(mdord);
         OPENSSL_free(mdevp);
         SSLerr(SSL_F_DANE_CTX_ENABLE, ERR_R_MALLOC_FAILURE);
         return 0;
     }
 
-    /* Install default entries */
+
     for (i = 0; i < OSSL_NELEM(dane_mds); ++i) {
         const EVP_MD *md;
 
         if (dane_mds[i].nid == NID_undef ||
-            (md = EVP_get_digestbynid(dane_mds[i].nid)) == NULL)
+            (md = EVP_get_digestbynid(dane_mds[i].nid)) == ((void*)0))
             continue;
         mdevp[dane_mds[i].mtype] = md;
         mdord[dane_mds[i].mtype] = dane_mds[i].ord;

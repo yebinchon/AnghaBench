@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sra_elt {int n_uses; int n_copies; struct sra_elt* sibling; struct sra_elt* groups; struct sra_elt* children; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dump_file ; 
- int /*<<< orphan*/  dump_sra_elt_name (int /*<<< orphan*/ ,struct sra_elt*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int) ; 
+
+ int dump_file ;
+ int dump_sra_elt_name (int ,struct sra_elt*) ;
+ int fprintf (int ,char*,int,int) ;
 
 __attribute__((used)) static void
 scan_dump (struct sra_elt *elt)

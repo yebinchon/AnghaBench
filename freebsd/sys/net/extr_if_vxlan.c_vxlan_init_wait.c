@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vxlan_softc {int vxl_flags; int /*<<< orphan*/  vxl_lock; } ;
 
-/* Variables and functions */
- int VXLAN_FLAG_INIT ; 
- int /*<<< orphan*/  VXLAN_LOCK_WASSERT (struct vxlan_softc*) ; 
- int /*<<< orphan*/  hz ; 
- int /*<<< orphan*/  rm_sleep (struct vxlan_softc*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+
+
+struct vxlan_softc {int vxl_flags; int vxl_lock; } ;
+
+
+ int VXLAN_FLAG_INIT ;
+ int VXLAN_LOCK_WASSERT (struct vxlan_softc*) ;
+ int hz ;
+ int rm_sleep (struct vxlan_softc*,int *,int ,char*,int ) ;
 
 __attribute__((used)) static void
 vxlan_init_wait(struct vxlan_softc *sc)
 {
 
-	VXLAN_LOCK_WASSERT(sc);
-	while (sc->vxl_flags & VXLAN_FLAG_INIT)
-		rm_sleep(sc, &sc->vxl_lock, 0, "vxlint", hz);
+ VXLAN_LOCK_WASSERT(sc);
+ while (sc->vxl_flags & VXLAN_FLAG_INIT)
+  rm_sleep(sc, &sc->vxl_lock, 0, "vxlint", hz);
 }

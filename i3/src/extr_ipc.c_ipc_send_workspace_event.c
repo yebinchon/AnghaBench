@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ylength ;
-typedef  int /*<<< orphan*/  yajl_gen ;
-typedef  int /*<<< orphan*/  Con ;
 
-/* Variables and functions */
- int /*<<< orphan*/  I3_IPC_EVENT_WORKSPACE ; 
- int /*<<< orphan*/  free ; 
- int /*<<< orphan*/  get_buf ; 
- int /*<<< orphan*/  ipc_marshal_workspace_event (char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ipc_send_event (char*,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  y (int /*<<< orphan*/ ,...) ; 
+
+
+
+typedef int ylength ;
+typedef int yajl_gen ;
+typedef int Con ;
+
+
+ int I3_IPC_EVENT_WORKSPACE ;
+ int free ;
+ int get_buf ;
+ int ipc_marshal_workspace_event (char const*,int *,int *) ;
+ int ipc_send_event (char*,int ,char const*) ;
+ int y (int ,...) ;
 
 void ipc_send_workspace_event(const char *change, Con *current, Con *old) {
     yajl_gen gen = ipc_marshal_workspace_event(change, current, old);

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  max_phandle; int /*<<< orphan*/  fdt; } ;
-typedef  TYPE_1__ DTBLOB_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXUP_RELATIVE ; 
- int dtoverlay_apply_fixups (TYPE_1__*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int dtoverlay_apply_fixups_node (TYPE_1__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dtoverlay_error (char*) ; 
- int /*<<< orphan*/  dtoverlay_phandle_relocate (TYPE_1__*,int,char*,int /*<<< orphan*/ ) ; 
- char* fdt_getprop (int /*<<< orphan*/ ,int,char*,int*) ; 
- int fdt_next_node (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int fdt_path_offset (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  phandle_debug (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int max_phandle; int fdt; } ;
+typedef TYPE_1__ DTBLOB_T ;
+
+
+ int FIXUP_RELATIVE ;
+ int dtoverlay_apply_fixups (TYPE_1__*,char const*,int ,int ) ;
+ int dtoverlay_apply_fixups_node (TYPE_1__*,int,int ,int ) ;
+ int dtoverlay_error (char*) ;
+ int dtoverlay_phandle_relocate (TYPE_1__*,int,char*,int ) ;
+ char* fdt_getprop (int ,int,char*,int*) ;
+ int fdt_next_node (int ,int,int *) ;
+ int fdt_path_offset (int ,char*) ;
+ int phandle_debug (char*,int ,int ) ;
 
 __attribute__((used)) static int dtoverlay_resolve_phandles(DTBLOB_T *base_dtb, DTBLOB_T *overlay_dtb)
 {
@@ -31,11 +31,11 @@ __attribute__((used)) static int dtoverlay_resolve_phandles(DTBLOB_T *base_dtb, 
    int node_off;
    int err = 0;
 
-   // First find and update the phandles in the overlay
+
 
    for (node_off = 0;
         node_off >= 0;
-        node_off = fdt_next_node(overlay_dtb->fdt, node_off, NULL))
+        node_off = fdt_next_node(overlay_dtb->fdt, node_off, ((void*)0)))
    {
       dtoverlay_phandle_relocate(overlay_dtb, node_off, "phandle",
                                  base_dtb->max_phandle);
@@ -48,15 +48,15 @@ __attribute__((used)) static int dtoverlay_resolve_phandles(DTBLOB_T *base_dtb, 
    {
       const char *fixups_stringlist;
 
-      // Update the references to local phandles using the local fixups.
-      // The property name is "fixup".
-      // The value is a NUL-separated stringlist of descriptors of the form:
-      //    path:property:offset
+
+
+
+
       fixups_stringlist =
          fdt_getprop(overlay_dtb->fdt, local_fixups_off, "fixup", &err);
       if (fixups_stringlist)
       {
-         // Relocate the overlay phandle references
+
          err = dtoverlay_apply_fixups(overlay_dtb, fixups_stringlist,
                                       base_dtb->max_phandle, FIXUP_RELATIVE);
       }

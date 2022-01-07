@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bwriter_shader {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BWRITERDECLUSAGE_COLOR ; 
- int /*<<< orphan*/  BWRITERDECLUSAGE_FOG ; 
- int /*<<< orphan*/  BWRITERDECLUSAGE_POSITION ; 
- int /*<<< orphan*/  BWRITERDECLUSAGE_PSIZE ; 
- int /*<<< orphan*/  BWRITERDECLUSAGE_TEXCOORD ; 
- int /*<<< orphan*/  BWRITERSP_WRITEMASK_ALL ; 
- int /*<<< orphan*/  OD0_REG ; 
- int /*<<< orphan*/  OD1_REG ; 
- int /*<<< orphan*/  OFOG_REG ; 
- int /*<<< orphan*/  OFOG_WRITEMASK ; 
- int /*<<< orphan*/  OPOS_REG ; 
- int /*<<< orphan*/  OPTS_REG ; 
- int /*<<< orphan*/  OPTS_WRITEMASK ; 
- int /*<<< orphan*/  OT0_REG ; 
- int /*<<< orphan*/  OT1_REG ; 
- int /*<<< orphan*/  OT2_REG ; 
- int /*<<< orphan*/  OT3_REG ; 
- int /*<<< orphan*/  OT4_REG ; 
- int /*<<< orphan*/  OT5_REG ; 
- int /*<<< orphan*/  OT6_REG ; 
- int /*<<< orphan*/  OT7_REG ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  record_declaration (struct bwriter_shader*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int BWRITERDECLUSAGE_COLOR ;
+ int BWRITERDECLUSAGE_FOG ;
+ int BWRITERDECLUSAGE_POSITION ;
+ int BWRITERDECLUSAGE_PSIZE ;
+ int BWRITERDECLUSAGE_TEXCOORD ;
+ int BWRITERSP_WRITEMASK_ALL ;
+ int OD0_REG ;
+ int OD1_REG ;
+ int OFOG_REG ;
+ int OFOG_WRITEMASK ;
+ int OPOS_REG ;
+ int OPTS_REG ;
+ int OPTS_WRITEMASK ;
+ int OT0_REG ;
+ int OT1_REG ;
+ int OT2_REG ;
+ int OT3_REG ;
+ int OT4_REG ;
+ int OT5_REG ;
+ int OT6_REG ;
+ int OT7_REG ;
+ int TRUE ;
+ int record_declaration (struct bwriter_shader*,int ,int,int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static void gen_oldvs_output(struct bwriter_shader *shader) {
     record_declaration(shader, BWRITERDECLUSAGE_POSITION, 0, 0, TRUE, OPOS_REG, BWRITERSP_WRITEMASK_ALL, TRUE);

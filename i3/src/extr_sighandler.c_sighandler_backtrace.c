@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ pid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DLOG (char*) ; 
- int /*<<< orphan*/  ELOG (char*) ; 
- int /*<<< orphan*/  FREE (char*) ; 
- int /*<<< orphan*/  STDERR_FILENO ; 
- int /*<<< orphan*/  STDIN_FILENO ; 
- int /*<<< orphan*/  STDOUT_FILENO ; 
- scalar_t__ WEXITSTATUS (int) ; 
- int /*<<< orphan*/  WIFEXITED (int) ; 
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dup2 (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  execvp (char*,char**) ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__ fork () ; 
- char* getenv (char*) ; 
- scalar_t__ getpid () ; 
- scalar_t__ path_exists (char*) ; 
- int pipe (int*) ; 
- int /*<<< orphan*/  sasprintf (char**,char*,char*,...) ; 
- char** start_argv ; 
- int /*<<< orphan*/  waitpid (scalar_t__,int*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ pid_t ;
+
+
+ int DLOG (char*) ;
+ int ELOG (char*) ;
+ int FREE (char*) ;
+ int STDERR_FILENO ;
+ int STDIN_FILENO ;
+ int STDOUT_FILENO ;
+ scalar_t__ WEXITSTATUS (int) ;
+ int WIFEXITED (int) ;
+ int close (int ) ;
+ int dup2 (int,int ) ;
+ int execvp (char*,char**) ;
+ int exit (int) ;
+ scalar_t__ fork () ;
+ char* getenv (char*) ;
+ scalar_t__ getpid () ;
+ scalar_t__ path_exists (char*) ;
+ int pipe (int*) ;
+ int sasprintf (char**,char*,char*,...) ;
+ char** start_argv ;
+ int waitpid (scalar_t__,int*,int ) ;
 
 __attribute__((used)) static int sighandler_backtrace(void) {
     char *tmpdir = getenv("TMPDIR");
-    if (tmpdir == NULL)
+    if (tmpdir == ((void*)0))
         tmpdir = "/tmp";
 
     pid_t pid_parent = getpid();
 
-    char *filename = NULL;
+    char *filename = ((void*)0);
     int suffix = 0;
-    /* Find a unique filename for the backtrace (since the PID of i3 stays the
-     * same), so that we don’t overwrite earlier backtraces. */
+
+
     do {
         FREE(filename);
         sasprintf(&filename, "%s/i3-backtrace.%d.%d.txt", tmpdir, pid_parent, suffix);
@@ -56,7 +56,7 @@ __attribute__((used)) static int sighandler_backtrace(void) {
         DLOG("Failed to fork for GDB\n");
         return -1;
     } else if (pid_gdb == 0) {
-        /* child */
+
         int stdin_pipe[2],
             stdout_pipe[2];
 
@@ -69,16 +69,16 @@ __attribute__((used)) static int sighandler_backtrace(void) {
             return -1;
         }
 
-        /* close standard streams in case i3 is started from a terminal; gdb
-         * needs to run without controlling terminal for it to work properly in
-         * this situation */
+
+
+
         close(STDIN_FILENO);
         close(STDOUT_FILENO);
         close(STDERR_FILENO);
 
-        /* We provide pipe file descriptors for stdin/stdout because gdb < 7.5
-         * crashes otherwise, see
-         * https://sourceware.org/bugzilla/show_bug.cgi?id=14114 */
+
+
+
         dup2(stdin_pipe[0], STDIN_FILENO);
         dup2(stdout_pipe[1], STDOUT_FILENO);
 
@@ -97,7 +97,7 @@ __attribute__((used)) static int sighandler_backtrace(void) {
             "-ex", "set logging on",
             "-ex", "bt full",
             "-ex", "quit",
-            NULL};
+            ((void*)0)};
         execvp(args[0], args);
         DLOG("Failed to exec GDB\n");
         exit(1);
@@ -106,7 +106,7 @@ __attribute__((used)) static int sighandler_backtrace(void) {
 
     waitpid(pid_gdb, &status, 0);
 
-    /* see if the backtrace was successful or not */
+
     if (!WIFEXITED(status) || WEXITSTATUS(status) != 0) {
         DLOG("GDB did not run properly\n");
         return -1;

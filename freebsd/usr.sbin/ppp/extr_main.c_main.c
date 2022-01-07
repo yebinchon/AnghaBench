@@ -1,120 +1,120 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct switches {scalar_t__ mode; int /*<<< orphan*/  fg; int /*<<< orphan*/  quiet; scalar_t__ nat; int /*<<< orphan*/  unit; } ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct switches {scalar_t__ mode; int fg; int quiet; scalar_t__ nat; int unit; } ;
 struct stat {int st_mode; } ;
 struct prompt {struct bundle* bundle; } ;
 struct TYPE_6__ {int fd; } ;
-struct TYPE_7__ {int /*<<< orphan*/  peer_range; } ;
+struct TYPE_7__ {int peer_range; } ;
 struct TYPE_8__ {TYPE_2__ cfg; } ;
 struct TYPE_9__ {TYPE_3__ ipcp; } ;
 struct bundle {TYPE_1__ notify; TYPE_5__* iface; TYPE_4__ ncp; scalar_t__ NatEnabled; } ;
-typedef  int pid_t ;
-struct TYPE_10__ {int /*<<< orphan*/  name; } ;
+typedef int pid_t ;
+struct TYPE_10__ {int name; } ;
 
-/* Variables and functions */
- scalar_t__ AF_UNSPEC ; 
- int /*<<< orphan*/  AbortProgram (int) ; 
- int BGPid ; 
- int /*<<< orphan*/  BringDownServer ; 
- char* CONFFILE ; 
- int /*<<< orphan*/  CheckLabel (char*,struct prompt*,scalar_t__) ; 
- int /*<<< orphan*/  CloseConnection ; 
- int /*<<< orphan*/  CloseSession ; 
- int /*<<< orphan*/  DoLoop (struct bundle*) ; 
-#define  EX_NORMAL 130 
-#define  EX_RECONNECT 129 
-#define  EX_REDIAL 128 
- int EX_SOCK ; 
- int EX_START ; 
- int /*<<< orphan*/  ID0init () ; 
- scalar_t__ ID0realuid () ; 
- int /*<<< orphan*/  KillChild ; 
- int /*<<< orphan*/  LibAliasInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LogALERT ; 
- int /*<<< orphan*/  LogERROR ; 
- int /*<<< orphan*/  LogPHASE ; 
- int /*<<< orphan*/  OPT_IFACEALIAS ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  O_RDWR ; 
- scalar_t__ PHYS_AUTO ; 
- scalar_t__ PHYS_BACKGROUND ; 
- scalar_t__ PHYS_DIRECT ; 
- scalar_t__ PHYS_INTERACTIVE ; 
- char* PPP_CONFDIR ; 
- int /*<<< orphan*/  PROMPT_STD ; 
- int ProcessArgs (int,char**,struct switches*) ; 
- int /*<<< orphan*/  RestartServer ; 
- int /*<<< orphan*/  SIGALRM ; 
- int /*<<< orphan*/  SIGHUP ; 
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  SIGPIPE ; 
- int /*<<< orphan*/  SIGQUIT ; 
- int /*<<< orphan*/  SIGTERM ; 
- int /*<<< orphan*/  SIGTSTP ; 
- int /*<<< orphan*/  SIGUSR1 ; 
- int /*<<< orphan*/  SIGUSR2 ; 
- int /*<<< orphan*/  SIG_IGN ; 
- int STDERR_FILENO ; 
- int STDIN_FILENO ; 
- int STDOUT_FILENO ; 
- int S_IWOTH ; 
- struct bundle* SignalBundle ; 
- struct prompt* SignalPrompt ; 
- int /*<<< orphan*/  TUN_PREFIX ; 
- int /*<<< orphan*/  TerminalStop ; 
- char* _PATH_DEVNULL ; 
- char* _PATH_TTY ; 
- int /*<<< orphan*/  bundle_ChangedPID (struct bundle*) ; 
- struct bundle* bundle_Create (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bundle_LockTun (struct bundle*) ; 
- int /*<<< orphan*/  bundle_SetLabel (struct bundle*,char const*) ; 
- int /*<<< orphan*/  close (int) ; 
- int dup (int) ; 
- int /*<<< orphan*/  errno ; 
- char* ex_desc (int) ; 
- int fork () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  la ; 
- int /*<<< orphan*/  log_Open (char*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,...) ; 
- char* mode2Nam (scalar_t__) ; 
- scalar_t__ ncprange_family (int /*<<< orphan*/ *) ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  opt_enable (struct bundle*,int /*<<< orphan*/ ) ; 
- scalar_t__ pipe (int*) ; 
- int /*<<< orphan*/  probe_Init () ; 
- struct prompt* prompt_Create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  prompt_Destroy (struct prompt*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  prompt_Printf (struct prompt*,char*,...) ; 
- int /*<<< orphan*/  prompt_Required (struct prompt*) ; 
- int /*<<< orphan*/  prompt_TtyCommandMode (struct prompt*) ; 
- int /*<<< orphan*/  prompt_TtyInit (struct prompt*) ; 
- int read (int,char*,int) ; 
- int /*<<< orphan*/  setsid () ; 
- int /*<<< orphan*/  sig_signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,char*) ; 
- scalar_t__ stat (char*,struct stat*) ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (int /*<<< orphan*/ ) ; 
- int strlen (char*) ; 
- char* strrchr (char*,char) ; 
- scalar_t__ system_Select (struct bundle*,char*,char*,struct prompt*,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ AF_UNSPEC ;
+ int AbortProgram (int) ;
+ int BGPid ;
+ int BringDownServer ;
+ char* CONFFILE ;
+ int CheckLabel (char*,struct prompt*,scalar_t__) ;
+ int CloseConnection ;
+ int CloseSession ;
+ int DoLoop (struct bundle*) ;
+
+
+
+ int EX_SOCK ;
+ int EX_START ;
+ int ID0init () ;
+ scalar_t__ ID0realuid () ;
+ int KillChild ;
+ int LibAliasInit (int *) ;
+ int LogALERT ;
+ int LogERROR ;
+ int LogPHASE ;
+ int OPT_IFACEALIAS ;
+ int O_RDONLY ;
+ int O_RDWR ;
+ scalar_t__ PHYS_AUTO ;
+ scalar_t__ PHYS_BACKGROUND ;
+ scalar_t__ PHYS_DIRECT ;
+ scalar_t__ PHYS_INTERACTIVE ;
+ char* PPP_CONFDIR ;
+ int PROMPT_STD ;
+ int ProcessArgs (int,char**,struct switches*) ;
+ int RestartServer ;
+ int SIGALRM ;
+ int SIGHUP ;
+ int SIGINT ;
+ int SIGPIPE ;
+ int SIGQUIT ;
+ int SIGTERM ;
+ int SIGTSTP ;
+ int SIGUSR1 ;
+ int SIGUSR2 ;
+ int SIG_IGN ;
+ int STDERR_FILENO ;
+ int STDIN_FILENO ;
+ int STDOUT_FILENO ;
+ int S_IWOTH ;
+ struct bundle* SignalBundle ;
+ struct prompt* SignalPrompt ;
+ int TUN_PREFIX ;
+ int TerminalStop ;
+ char* _PATH_DEVNULL ;
+ char* _PATH_TTY ;
+ int bundle_ChangedPID (struct bundle*) ;
+ struct bundle* bundle_Create (int ,scalar_t__,int ) ;
+ int bundle_LockTun (struct bundle*) ;
+ int bundle_SetLabel (struct bundle*,char const*) ;
+ int close (int) ;
+ int dup (int) ;
+ int errno ;
+ char* ex_desc (int) ;
+ int fork () ;
+ int fprintf (int ,char*,char*) ;
+ int la ;
+ int log_Open (char*) ;
+ int log_Printf (int ,char*,...) ;
+ char* mode2Nam (scalar_t__) ;
+ scalar_t__ ncprange_family (int *) ;
+ int open (char*,int ) ;
+ int opt_enable (struct bundle*,int ) ;
+ scalar_t__ pipe (int*) ;
+ int probe_Init () ;
+ struct prompt* prompt_Create (int *,int *,int ) ;
+ int prompt_Destroy (struct prompt*,int ) ;
+ int prompt_Printf (struct prompt*,char*,...) ;
+ int prompt_Required (struct prompt*) ;
+ int prompt_TtyCommandMode (struct prompt*) ;
+ int prompt_TtyInit (struct prompt*) ;
+ int read (int,char*,int) ;
+ int setsid () ;
+ int sig_signal (int ,int ) ;
+ int signal (int ,int ) ;
+ int snprintf (char*,int,char*,char*,char*) ;
+ scalar_t__ stat (char*,struct stat*) ;
+ int stderr ;
+ char* strerror (int ) ;
+ int strlen (char*) ;
+ char* strrchr (char*,char) ;
+ scalar_t__ system_Select (struct bundle*,char*,char*,struct prompt*,int *) ;
 
 int
 main(int argc, char **argv)
@@ -129,12 +129,12 @@ main(int argc, char **argv)
 
   probe_Init();
 
-  /*
-   * We open 3 descriptors to ensure that STDIN_FILENO, STDOUT_FILENO and
-   * STDERR_FILENO are always open.  These are closed before DoLoop(),
-   * but *after* we've avoided the possibility of erroneously closing
-   * an important descriptor with close(STD{IN,OUT,ERR}_FILENO).
-   */
+
+
+
+
+
+
   if ((holdfd[0] = open(_PATH_DEVNULL, O_RDWR)) == -1) {
     fprintf(stderr, "Cannot open %s !\n", _PATH_DEVNULL);
     return 2;
@@ -145,18 +145,10 @@ main(int argc, char **argv)
   name = strrchr(argv[0], '/');
   log_Open(name ? name + 1 : argv[0]);
 
-#ifndef NONAT
-  la = LibAliasInit(NULL);
-#endif
-  label = ProcessArgs(argc, argv, &sw);
 
-  /*
-   * A FreeBSD & OpenBSD hack to dodge a bug in the tty driver that drops
-   * output occasionally.... I must find the real reason some time.  To
-   * display the dodgy behaviour, comment out this bit, make yourself a large
-   * routing table and then run ppp in interactive mode.  The `show route'
-   * command will drop chunks of data !!!
-   */
+  la = LibAliasInit(((void*)0));
+
+  label = ProcessArgs(argc, argv, &sw);
   if (sw.mode == PHYS_INTERACTIVE) {
     close(STDIN_FILENO);
     if (open(_PATH_TTY, O_RDONLY) != STDIN_FILENO) {
@@ -165,11 +157,11 @@ main(int argc, char **argv)
     }
   }
 
-  /* Allow output for the moment (except in direct mode) */
+
   if (sw.mode == PHYS_DIRECT)
-    prompt = NULL;
+    prompt = ((void*)0);
   else
-    SignalPrompt = prompt = prompt_Create(NULL, NULL, PROMPT_STD);
+    SignalPrompt = prompt = prompt_Create(((void*)0), ((void*)0), PROMPT_STD);
 
   ID0init();
   if (ID0realuid() != 0) {
@@ -199,17 +191,17 @@ main(int argc, char **argv)
   if (!sw.quiet)
     prompt_Printf(prompt, "Working in %s mode\n", mode2Nam(sw.mode));
 
-  if ((bundle = bundle_Create(TUN_PREFIX, sw.mode, sw.unit)) == NULL)
+  if ((bundle = bundle_Create(TUN_PREFIX, sw.mode, sw.unit)) == ((void*)0))
     return EX_START;
 
-  /* NOTE:  We may now have changed argv[1] via a ``set proctitle'' */
+
 
   SignalBundle = bundle;
   bundle->NatEnabled = sw.nat;
   if (sw.nat)
     opt_enable(bundle, OPT_IFACEALIAS);
 
-  if (system_Select(bundle, "default", CONFFILE, prompt, NULL) < 0)
+  if (system_Select(bundle, "default", CONFFILE, prompt, ((void*)0)) < 0)
     prompt_Printf(prompt, "Warning: No default entry found in config file.\n");
 
   sig_signal(SIGHUP, CloseSession);
@@ -227,13 +219,13 @@ main(int argc, char **argv)
 
   lastlabel = argv[argc - 1];
   for (arg = label; arg < argc; arg++) {
-    /* In case we use LABEL or ``set enddisc label'' */
+
     bundle_SetLabel(bundle, lastlabel);
-    system_Select(bundle, argv[arg], CONFFILE, prompt, NULL);
+    system_Select(bundle, argv[arg], CONFFILE, prompt, ((void*)0));
   }
 
   if (label < argc)
-    /* In case the last label did a ``load'' */
+
     bundle_SetLabel(bundle, lastlabel);
 
   if (sw.mode == PHYS_AUTO &&
@@ -244,10 +236,10 @@ main(int argc, char **argv)
   }
 
   if (prompt) {
-    prompt->bundle = bundle;	/* couldn't do it earlier */
+    prompt->bundle = bundle;
     if (!sw.quiet)
       prompt_Printf(prompt, "Using interface: %s\n", bundle->iface->name);
-  } 
+  }
 
   if (sw.mode != PHYS_INTERACTIVE) {
     if (sw.mode != PHYS_DIRECT) {
@@ -257,70 +249,70 @@ main(int argc, char **argv)
 
         if (sw.mode == PHYS_BACKGROUND && pipe(bgpipe)) {
           log_Printf(LogERROR, "pipe: %s\n", strerror(errno));
-	  AbortProgram(EX_SOCK);
+   AbortProgram(EX_SOCK);
         }
 
         bgpid = fork();
         if (bgpid == -1) {
-	  log_Printf(LogERROR, "fork: %s\n", strerror(errno));
-	  AbortProgram(EX_SOCK);
+   log_Printf(LogERROR, "fork: %s\n", strerror(errno));
+   AbortProgram(EX_SOCK);
         }
 
         if (bgpid) {
-	  char c = EX_NORMAL;
+   char c = 130;
           int ret;
 
-	  if (sw.mode == PHYS_BACKGROUND) {
-	    close(bgpipe[1]);
-	    BGPid = bgpid;
-            /* If we get a signal, kill the child */
+   if (sw.mode == PHYS_BACKGROUND) {
+     close(bgpipe[1]);
+     BGPid = bgpid;
+
             signal(SIGHUP, KillChild);
             signal(SIGTERM, KillChild);
             signal(SIGINT, KillChild);
             signal(SIGQUIT, KillChild);
 
-	    /* Wait for our child to close its pipe before we exit */
+
             while ((ret = read(bgpipe[0], &c, 1)) == 1) {
               switch (c) {
-                case EX_NORMAL:
+                case 130:
                   if (!sw.quiet) {
-	            prompt_Printf(prompt, "PPP enabled\n");
-	            log_Printf(LogPHASE, "Parent: PPP enabled\n");
+             prompt_Printf(prompt, "PPP enabled\n");
+             log_Printf(LogPHASE, "Parent: PPP enabled\n");
                   }
-	          break;
-                case EX_REDIAL:
+           break;
+                case 128:
                   if (!sw.quiet)
-	            prompt_Printf(prompt, "Attempting redial\n");
+             prompt_Printf(prompt, "Attempting redial\n");
                   continue;
-                case EX_RECONNECT:
+                case 129:
                   if (!sw.quiet)
-	            prompt_Printf(prompt, "Attempting reconnect\n");
+             prompt_Printf(prompt, "Attempting reconnect\n");
                   continue;
-	        default:
-	          prompt_Printf(prompt, "Child failed (%s)\n",
+         default:
+           prompt_Printf(prompt, "Child failed (%s)\n",
                                 ex_desc((int)c));
-	          log_Printf(LogPHASE, "Parent: Child failed (%s)\n",
-		             ex_desc((int) c));
-	      }
-	      break;
+           log_Printf(LogPHASE, "Parent: Child failed (%s)\n",
+               ex_desc((int) c));
+       }
+       break;
             }
             if (ret != 1) {
-	      prompt_Printf(prompt, "Child exit, no status.\n");
-	      log_Printf(LogPHASE, "Parent: Child exit, no status.\n");
-	    }
-	    close(bgpipe[0]);
-	  }
-	  return c;
+       prompt_Printf(prompt, "Child exit, no status.\n");
+       log_Printf(LogPHASE, "Parent: Child exit, no status.\n");
+     }
+     close(bgpipe[0]);
+   }
+   return c;
         } else if (sw.mode == PHYS_BACKGROUND) {
-	  close(bgpipe[0]);
+   close(bgpipe[0]);
           bundle->notify.fd = bgpipe[1];
         }
 
         bundle_ChangedPID(bundle);
-        bundle_LockTun(bundle);	/* we have a new pid */
+        bundle_LockTun(bundle);
       }
 
-      /* -auto, -dedicated, -ddial, -foreground & -background */
+
       prompt_Destroy(prompt, 0);
       close(STDOUT_FILENO);
       close(STDERR_FILENO);
@@ -328,28 +320,28 @@ main(int argc, char **argv)
       if (!sw.fg)
         setsid();
     } else {
-      /*
-       * -direct - STDIN_FILENO gets used by physical_Open.  STDOUT_FILENO
-       * *may* get used in exec/pipe mode.
-       */
-      prompt_TtyInit(NULL);
+
+
+
+
+      prompt_TtyInit(((void*)0));
       close(STDERR_FILENO);
     }
   } else {
-    /* -interactive */
+
     close(STDERR_FILENO);
     prompt_TtyInit(prompt);
     prompt_TtyCommandMode(prompt);
     prompt_Required(prompt);
   }
 
-  /* We can get rid of these now */
+
   for (f = 0; f < sizeof holdfd / sizeof *holdfd; f++)
     close(holdfd[f]);
 
   log_Printf(LogPHASE, "PPP Started (%s mode).\n", mode2Nam(sw.mode));
   DoLoop(bundle);
-  AbortProgram(EX_NORMAL);
+  AbortProgram(130);
 
-  return EX_NORMAL;
+  return 130;
 }

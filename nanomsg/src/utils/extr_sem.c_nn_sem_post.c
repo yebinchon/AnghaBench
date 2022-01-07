@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nn_sem {int signaled; int /*<<< orphan*/  mutex; int /*<<< orphan*/  cond; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  errnum_assert (int,int) ; 
- int /*<<< orphan*/  nn_assert (int) ; 
- int pthread_cond_signal (int /*<<< orphan*/ *) ; 
- int pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct nn_sem {int signaled; int mutex; int cond; } ;
+
+
+ int errnum_assert (int,int) ;
+ int nn_assert (int) ;
+ int pthread_cond_signal (int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 void nn_sem_post (struct nn_sem *self)
 {

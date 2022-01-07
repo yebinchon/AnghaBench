@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  IP ;
 
-/* Variables and functions */
- int IsNetworkAddress4 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UINTToIP (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT ;
+typedef int IP ;
+
+
+ int IsNetworkAddress4 (int *,int *) ;
+ int UINTToIP (int *,int ) ;
 
 bool IsNetworkAddress32(UINT ip, UINT mask)
 {
-	IP a, b;
+ IP a, b;
 
-	UINTToIP(&a, ip);
-	UINTToIP(&b, mask);
+ UINTToIP(&a, ip);
+ UINTToIP(&b, mask);
 
-	return IsNetworkAddress4(&a, &b);
+ return IsNetworkAddress4(&a, &b);
 }

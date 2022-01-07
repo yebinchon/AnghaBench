@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  var ;
-typedef  int /*<<< orphan*/  int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Stream ; 
- int /*<<< orphan*/  method (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  (*) (int /*<<< orphan*/ )) ; 
+
+
+
+typedef int var ;
+typedef int int64_t ;
+
+
+ int Stream ;
+ int method (int ,int ,int (*) (int )) ;
 
 int64_t stell(var self) {
   return method(self, Stream, stell);

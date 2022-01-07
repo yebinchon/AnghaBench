@@ -1,64 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zio_bad_cksum_t ;
-typedef  int /*<<< orphan*/  zfs_ecksum_info_t ;
-typedef  int /*<<< orphan*/  zbookmark_phys_t ;
-typedef  int /*<<< orphan*/  vdev_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
+
+
+
+
+typedef int zio_bad_cksum_t ;
+typedef int zfs_ecksum_info_t ;
+typedef int zbookmark_phys_t ;
+typedef int vdev_t ;
+typedef int uint64_t ;
 struct zio {int dummy; } ;
-typedef  int /*<<< orphan*/  spa_t ;
-typedef  int /*<<< orphan*/  nvlist_t ;
-typedef  int /*<<< orphan*/  abd_t ;
+typedef int spa_t ;
+typedef int nvlist_t ;
+typedef int abd_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  B_FALSE ; 
- int EBUSY ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  FM_EREPORT_ZFS_CHECKSUM ; 
- int SET_ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * annotate_ecksum (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kmem_free (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  zfs_ereport_start (int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,struct zio*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ zfs_is_ratelimiting_event (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int zfs_zevent_post (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zfs_zevent_post_cb ; 
+
+ int B_FALSE ;
+ int EBUSY ;
+ int EINVAL ;
+ int FM_EREPORT_ZFS_CHECKSUM ;
+ int SET_ERROR (int ) ;
+ int * annotate_ecksum (int *,int *,int const*,int const*,int ,int ) ;
+ int kmem_free (int *,int) ;
+ int zfs_ereport_start (int **,int **,int ,int *,int *,int const*,struct zio*,int ,int ) ;
+ scalar_t__ zfs_is_ratelimiting_event (int ,int *) ;
+ int zfs_zevent_post (int *,int *,int ) ;
+ int zfs_zevent_post_cb ;
 
 int
 zfs_ereport_post_checksum(spa_t *spa, vdev_t *vd, const zbookmark_phys_t *zb,
     struct zio *zio, uint64_t offset, uint64_t length,
     const abd_t *good_data, const abd_t *bad_data, zio_bad_cksum_t *zbc)
 {
-	int rc = 0;
-#ifdef _KERNEL
-	nvlist_t *ereport = NULL;
-	nvlist_t *detector = NULL;
-	zfs_ecksum_info_t *info;
-
-	if (zfs_is_ratelimiting_event(FM_EREPORT_ZFS_CHECKSUM, vd))
-		return (EBUSY);
-
-	if (!zfs_ereport_start(&ereport, &detector, FM_EREPORT_ZFS_CHECKSUM,
-	    spa, vd, zb, zio, offset, length) || (ereport == NULL)) {
-		return (SET_ERROR(EINVAL));
-	}
-
-	info = annotate_ecksum(ereport, zbc, good_data, bad_data, length,
-	    B_FALSE);
-
-	if (info != NULL) {
-		rc = zfs_zevent_post(ereport, detector, zfs_zevent_post_cb);
-		kmem_free(info, sizeof (*info));
-	}
-#endif
-	return (rc);
+ int rc = 0;
+ return (rc);
 }

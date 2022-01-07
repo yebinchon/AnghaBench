@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  List ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ChooseIndexNameAddition (int /*<<< orphan*/ *) ; 
- char* ChooseRelationName (char const*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * NIL ; 
+
+
+
+typedef int Oid ;
+typedef int List ;
+
+
+ int * ChooseIndexNameAddition (int *) ;
+ char* ChooseRelationName (char const*,int *,char*,int ,int) ;
+ int * NIL ;
 
 __attribute__((used)) static char *
 ChooseIndexName(const char *tabname, Oid namespaceId,
-				List *colnames, List *exclusionOpNames,
-				bool primary, bool isconstraint)
+    List *colnames, List *exclusionOpNames,
+    bool primary, bool isconstraint)
 {
-	char	   *indexname;
+ char *indexname;
 
-	if (primary)
-	{
-		/* the primary key's name does not depend on the specific column(s) */
-		indexname = ChooseRelationName(tabname,
-									   NULL,
-									   "pkey",
-									   namespaceId,
-									   true);
-	}
-	else if (exclusionOpNames != NIL)
-	{
-		indexname = ChooseRelationName(tabname,
-									   ChooseIndexNameAddition(colnames),
-									   "excl",
-									   namespaceId,
-									   true);
-	}
-	else if (isconstraint)
-	{
-		indexname = ChooseRelationName(tabname,
-									   ChooseIndexNameAddition(colnames),
-									   "key",
-									   namespaceId,
-									   true);
-	}
-	else
-	{
-		indexname = ChooseRelationName(tabname,
-									   ChooseIndexNameAddition(colnames),
-									   "idx",
-									   namespaceId,
-									   false);
-	}
+ if (primary)
+ {
 
-	return indexname;
+  indexname = ChooseRelationName(tabname,
+            ((void*)0),
+            "pkey",
+            namespaceId,
+            1);
+ }
+ else if (exclusionOpNames != NIL)
+ {
+  indexname = ChooseRelationName(tabname,
+            ChooseIndexNameAddition(colnames),
+            "excl",
+            namespaceId,
+            1);
+ }
+ else if (isconstraint)
+ {
+  indexname = ChooseRelationName(tabname,
+            ChooseIndexNameAddition(colnames),
+            "key",
+            namespaceId,
+            1);
+ }
+ else
+ {
+  indexname = ChooseRelationName(tabname,
+            ChooseIndexNameAddition(colnames),
+            "idx",
+            namespaceId,
+            0);
+ }
+
+ return indexname;
 }

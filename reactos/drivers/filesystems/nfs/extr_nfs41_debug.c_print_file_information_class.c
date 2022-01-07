@@ -1,98 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  FileAllInformation 153 
-#define  FileAllocationInformation 152 
-#define  FileAttributeTagInformation 151 
-#define  FileBasicInformation 150 
-#define  FileBothDirectoryInformation 149 
-#define  FileCompressionInformation 148 
-#define  FileDirectoryInformation 147 
-#define  FileDispositionInformation 146 
-#define  FileEaInformation 145 
-#define  FileEndOfFileInformation 144 
-#define  FileFullDirectoryInformation 143 
-#define  FileIdBothDirectoryInformation 142 
-#define  FileIdFullDirectoryInformation 141 
-#define  FileInternalInformation 140 
-#define  FileLinkInformation 139 
-#define  FileNameInformation 138 
-#define  FileNamesInformation 137 
-#define  FileNetworkOpenInformation 136 
-#define  FileObjectIdInformation 135 
-#define  FilePositionInformation 134 
-#define  FileQuotaInformation 133 
-#define  FileRenameInformation 132 
-#define  FileReparsePointInformation 131 
-#define  FileStandardInformation 130 
-#define  FileStreamInformation 129 
-#define  FileValidDataLengthInformation 128 
-
-unsigned char * print_file_information_class(int InfoClass) 
+unsigned char * print_file_information_class(int InfoClass)
 {
     switch(InfoClass) {
-        case FileBothDirectoryInformation:
+        case 149:
             return (unsigned char *)"FileBothDirectoryInformation";
-        case FileDirectoryInformation:
+        case 147:
             return (unsigned char *)"FileDirectoryInformation";
-        case FileFullDirectoryInformation:
+        case 143:
             return (unsigned char *)"FileFullDirectoryInformation";
-        case FileIdBothDirectoryInformation:
+        case 142:
             return (unsigned char *)"FileIdBothDirectoryInformation";
-        case FileIdFullDirectoryInformation:
+        case 141:
             return (unsigned char *)"FileIdFullDirectoryInformation";
-        case FileNamesInformation:
+        case 137:
             return (unsigned char *)"FileNamesInformation";
-        case FileObjectIdInformation:
+        case 135:
             return (unsigned char *)"FileObjectIdInformation";
-        case FileQuotaInformation:
+        case 133:
             return (unsigned char *)"FileQuotaInformation";
-        case FileReparsePointInformation:
+        case 131:
             return (unsigned char *)"FileReparsePointInformation";
-        case FileAllInformation:
+        case 153:
             return (unsigned char *)"FileAllInformation";
-        case FileAttributeTagInformation:
+        case 151:
             return (unsigned char *)"FileAttributeTagInformation";
-        case FileBasicInformation:
+        case 150:
             return (unsigned char *)"FileBasicInformation";
-        case FileCompressionInformation:
+        case 148:
             return (unsigned char *)"FileCompressionInformation";
-        case FileEaInformation:
+        case 145:
             return (unsigned char *)"FileEaInformation";
-        case FileInternalInformation:
+        case 140:
             return (unsigned char *)"FileInternalInformation";
-        case FileNameInformation:
+        case 138:
             return (unsigned char *)"FileNameInformation";
-        case FileNetworkOpenInformation:
+        case 136:
             return (unsigned char *)"FileNetworkOpenInformation";
-        case FilePositionInformation:
+        case 134:
             return (unsigned char *)"FilePositionInformation";
-        case FileStandardInformation:
+        case 130:
             return (unsigned char *)"FileStandardInformation";
-        case FileStreamInformation:
+        case 129:
             return (unsigned char *)"FileStreamInformation";
-        case FileAllocationInformation:
+        case 152:
             return (unsigned char *)"FileAllocationInformation";
-        case FileDispositionInformation:
+        case 146:
             return (unsigned char *)"FileDispositionInformation";
-        case FileEndOfFileInformation:
+        case 144:
             return (unsigned char *)"FileEndOfFileInformation";
-        case FileLinkInformation:
+        case 139:
             return (unsigned char *)"FileLinkInformation";
-        case FileRenameInformation:
+        case 132:
             return (unsigned char *)"FileRenameInformation";
-        case FileValidDataLengthInformation:
+        case 128:
             return (unsigned char *)"FileValidDataLengthInformation";
         default:
             return (unsigned char *)"UNKNOWN";

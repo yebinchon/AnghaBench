@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int WORD ;
-struct TYPE_4__ {int dwHelpContext; int syskind; int libflags; int ver_major; int ver_minor; int /*<<< orphan*/  guid_list; int /*<<< orphan*/  guid; int /*<<< orphan*/  set_lcid; int /*<<< orphan*/  lcid; int /*<<< orphan*/  ptr_size; int /*<<< orphan*/  HelpFile; int /*<<< orphan*/  DocString; } ;
-typedef  char* LPVOID ;
-typedef  TYPE_1__ ITypeLibImpl ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int /*<<< orphan*/  MAKELANGID (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAKELCID (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PRIMARYLANGID (int) ; 
- int SLTG_LIBBLK_MAGIC ; 
- int /*<<< orphan*/  SLTG_ReadString (char*,int /*<<< orphan*/ *,TYPE_1__*) ; 
- scalar_t__ SUBLANGID (int) ; 
- scalar_t__ SUBLANG_NEUTRAL ; 
- int /*<<< orphan*/  TLB_append_guid (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  get_ptr_size (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WORD ;
+struct TYPE_4__ {int dwHelpContext; int syskind; int libflags; int ver_major; int ver_minor; int guid_list; int guid; int set_lcid; int lcid; int ptr_size; int HelpFile; int DocString; } ;
+typedef char* LPVOID ;
+typedef TYPE_1__ ITypeLibImpl ;
+typedef int GUID ;
+typedef int DWORD ;
+
+
+ int FIXME (char*,int) ;
+ int MAKELANGID (int ,int ) ;
+ int MAKELCID (int ,int ) ;
+ int PRIMARYLANGID (int) ;
+ int SLTG_LIBBLK_MAGIC ;
+ int SLTG_ReadString (char*,int *,TYPE_1__*) ;
+ scalar_t__ SUBLANGID (int) ;
+ scalar_t__ SUBLANG_NEUTRAL ;
+ int TLB_append_guid (int *,int *,int) ;
+ int get_ptr_size (int) ;
 
 __attribute__((used)) static DWORD SLTG_ReadLibBlk(LPVOID pLibBlk, ITypeLibImpl *pTypeLibImpl)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static DWORD SLTG_ReadLibBlk(LPVOID pLibBlk, ITypeLibImpl 
 
     if((w = *(WORD*)ptr) != SLTG_LIBBLK_MAGIC) {
         FIXME("libblk magic = %04x\n", w);
-	return 0;
+ return 0;
     }
 
     ptr += 6;
@@ -64,7 +64,7 @@ __attribute__((used)) static DWORD SLTG_ReadLibBlk(LPVOID pLibBlk, ITypeLibImpl 
         pTypeLibImpl->lcid = pTypeLibImpl->set_lcid = 0;
     ptr += 2;
 
-    ptr += 4; /* skip res12 */
+    ptr += 4;
 
     pTypeLibImpl->libflags = *(WORD*)ptr;
     ptr += 2;

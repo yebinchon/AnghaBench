@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ablkcipher_buffer {int /*<<< orphan*/  len; int /*<<< orphan*/  dst; int /*<<< orphan*/  data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  scatterwalk_copychunks (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct ablkcipher_buffer {int len; int dst; int data; } ;
+
+
+ int scatterwalk_copychunks (int ,int *,int ,int) ;
 
 __attribute__((used)) static inline void ablkcipher_buffer_write(struct ablkcipher_buffer *p)
 {
-	scatterwalk_copychunks(p->data, &p->dst, p->len, 1);
+ scatterwalk_copychunks(p->data, &p->dst, p->len, 1);
 }

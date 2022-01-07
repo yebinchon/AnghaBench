@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOCATION_FILE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TINST_LOCATION (scalar_t__) ; 
- int /*<<< orphan*/  input_filename ; 
- int /*<<< orphan*/  main_input_filename ; 
- scalar_t__ outermost_tinst_level () ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ tree ;
+
+
+ int LOCATION_FILE (int ) ;
+ int TINST_LOCATION (scalar_t__) ;
+ int input_filename ;
+ int main_input_filename ;
+ scalar_t__ outermost_tinst_level () ;
+ scalar_t__ strcmp (int ,int ) ;
 
 bool
 in_main_input_context (void)
@@ -27,7 +27,7 @@ in_main_input_context (void)
 
   if (tl)
     return strcmp (main_input_filename,
-		   LOCATION_FILE (TINST_LOCATION (tl))) == 0;
+     LOCATION_FILE (TINST_LOCATION (tl))) == 0;
   else
     return strcmp (main_input_filename, input_filename) == 0;
 }

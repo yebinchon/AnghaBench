@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint_t ;
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint_t ;
+typedef int uint8_t ;
 struct mm_backup_buffer {scalar_t__ avail; scalar_t__ data; } ;
-struct TYPE_3__ {int in_full; int in_avail; int /*<<< orphan*/  buf_lock; int /*<<< orphan*/  buf_cond; struct mm_backup_buffer* p_buf; scalar_t__ write_error; int /*<<< orphan*/  canceled; } ;
-typedef  TYPE_1__ mm_backup_ctx ;
+struct TYPE_3__ {int in_full; int in_avail; int buf_lock; int buf_cond; struct mm_backup_buffer* p_buf; scalar_t__ write_error; int canceled; } ;
+typedef TYPE_1__ mm_backup_ctx ;
 
-/* Variables and functions */
- scalar_t__ INPUT_BUFFER_SIZE ; 
- int /*<<< orphan*/  LOGE_ (char*) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,int /*<<< orphan*/  const*,scalar_t__) ; 
- int /*<<< orphan*/  pthread_cond_signal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_cond_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ INPUT_BUFFER_SIZE ;
+ int LOGE_ (char*) ;
+ int memcpy (scalar_t__,int const*,scalar_t__) ;
+ int pthread_cond_signal (int *) ;
+ int pthread_cond_wait (int *,int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 __attribute__((used)) static int dump_write_stream(mm_backup_ctx *ctx, const void *data, uint_t size)
 {

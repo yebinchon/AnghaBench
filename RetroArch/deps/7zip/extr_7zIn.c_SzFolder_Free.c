@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-struct TYPE_4__ {size_t NumCoders; int /*<<< orphan*/ * UnpackSizes; int /*<<< orphan*/ * PackStreams; int /*<<< orphan*/ * BindPairs; int /*<<< orphan*/ * Coders; } ;
-typedef  int /*<<< orphan*/  ISzAlloc ;
-typedef  TYPE_1__ CSzFolder ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IAlloc_Free (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SzCoderInfo_Free (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SzFolder_Init (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
+struct TYPE_4__ {size_t NumCoders; int * UnpackSizes; int * PackStreams; int * BindPairs; int * Coders; } ;
+typedef int ISzAlloc ;
+typedef TYPE_1__ CSzFolder ;
+
+
+ int IAlloc_Free (int *,int *) ;
+ int SzCoderInfo_Free (int *,int *) ;
+ int SzFolder_Init (TYPE_1__*) ;
 
 void SzFolder_Free(CSzFolder *p, ISzAlloc *alloc)
 {

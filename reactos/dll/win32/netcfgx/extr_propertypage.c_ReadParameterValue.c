@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_5__ {scalar_t__ Type; size_t dwEnumOptions; size_t cchValueLength; int /*<<< orphan*/ * pszValue; TYPE_1__* pEnumOptions; } ;
-struct TYPE_4__ {int /*<<< orphan*/  pszValue; } ;
-typedef  TYPE_2__* PPARAMETER ;
-typedef  size_t INT ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- size_t CB_ERR ; 
- size_t ComboBox_GetCurSel (int /*<<< orphan*/ ) ; 
- scalar_t__ ENUM_TYPE ; 
- int /*<<< orphan*/  Edit_GetText (int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t) ; 
- size_t Edit_GetTextLength (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDC_PROPERTY_VALUE_EDIT ; 
- int /*<<< orphan*/  IDC_PROPERTY_VALUE_LIST ; 
- int /*<<< orphan*/  wcscpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- size_t wcslen (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int VOID ;
+struct TYPE_5__ {scalar_t__ Type; size_t dwEnumOptions; size_t cchValueLength; int * pszValue; TYPE_1__* pEnumOptions; } ;
+struct TYPE_4__ {int pszValue; } ;
+typedef TYPE_2__* PPARAMETER ;
+typedef size_t INT ;
+typedef int HWND ;
+
+
+ size_t CB_ERR ;
+ size_t ComboBox_GetCurSel (int ) ;
+ scalar_t__ ENUM_TYPE ;
+ int Edit_GetText (int ,int *,size_t) ;
+ size_t Edit_GetTextLength (int ) ;
+ int GetDlgItem (int ,int ) ;
+ int GetProcessHeap () ;
+ void* HeapAlloc (int ,int ,size_t) ;
+ int HeapFree (int ,int ,int *) ;
+ int IDC_PROPERTY_VALUE_EDIT ;
+ int IDC_PROPERTY_VALUE_LIST ;
+ int wcscpy (int *,int ) ;
+ size_t wcslen (int ) ;
 
 __attribute__((used)) static
 VOID
@@ -51,13 +51,13 @@ ReadParameterValue(
             iLength = wcslen(pParam->pEnumOptions[iIndex].pszValue);
             if (iLength > pParam->cchValueLength)
             {
-                if (pParam->pszValue != NULL)
+                if (pParam->pszValue != ((void*)0))
                     HeapFree(GetProcessHeap(), 0, pParam->pszValue);
 
                 pParam->pszValue = HeapAlloc(GetProcessHeap(), 0, (iLength + 1) * sizeof(WCHAR));
             }
 
-            if (pParam->pszValue != NULL)
+            if (pParam->pszValue != ((void*)0))
             {
                 wcscpy(pParam->pszValue,
                        pParam->pEnumOptions[iIndex].pszValue);
@@ -70,13 +70,13 @@ ReadParameterValue(
         iLength = Edit_GetTextLength(GetDlgItem(hwnd, IDC_PROPERTY_VALUE_EDIT));
         if (iLength > pParam->cchValueLength)
         {
-            if (pParam->pszValue != NULL)
+            if (pParam->pszValue != ((void*)0))
                 HeapFree(GetProcessHeap(), 0, pParam->pszValue);
 
             pParam->pszValue = HeapAlloc(GetProcessHeap(), 0, (iLength + 1) * sizeof(WCHAR));
         }
 
-        if (pParam->pszValue != NULL)
+        if (pParam->pszValue != ((void*)0))
         {
             Edit_GetText(GetDlgItem(hwnd, IDC_PROPERTY_VALUE_EDIT),
                          pParam->pszValue,

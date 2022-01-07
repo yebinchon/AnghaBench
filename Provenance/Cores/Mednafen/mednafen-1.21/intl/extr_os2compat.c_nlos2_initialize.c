@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* LIBDIR ; 
- char* LOCALEDIR ; 
- char* LOCALE_ALIAS_PATH ; 
- int MAXPATHLEN ; 
- char* _nlos2_libdir ; 
- char* _nlos2_localealiaspath ; 
- char* _nlos2_localedir ; 
- char* getenv (char*) ; 
- int /*<<< orphan*/  libintl_nl_default_dirname ; 
- scalar_t__ malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char*) ; 
- int strlen (char*) ; 
+ char* LIBDIR ;
+ char* LOCALEDIR ;
+ char* LOCALE_ALIAS_PATH ;
+ int MAXPATHLEN ;
+ char* _nlos2_libdir ;
+ char* _nlos2_localealiaspath ;
+ char* _nlos2_localedir ;
+ char* getenv (char*) ;
+ int libintl_nl_default_dirname ;
+ scalar_t__ malloc (size_t) ;
+ int memcpy (char*,char*,int) ;
+ int strcpy (int ,char*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static __attribute__((constructor)) void
 nlos2_initialize ()

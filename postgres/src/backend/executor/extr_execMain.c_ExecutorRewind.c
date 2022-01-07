@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  es_query_cxt; } ;
-struct TYPE_4__ {scalar_t__ operation; int /*<<< orphan*/  planstate; TYPE_2__* estate; } ;
-typedef  TYPE_1__ QueryDesc ;
-typedef  int /*<<< orphan*/  MemoryContext ;
-typedef  TYPE_2__ EState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- scalar_t__ CMD_SELECT ; 
- int /*<<< orphan*/  ExecReScan (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MemoryContextSwitchTo (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int es_query_cxt; } ;
+struct TYPE_4__ {scalar_t__ operation; int planstate; TYPE_2__* estate; } ;
+typedef TYPE_1__ QueryDesc ;
+typedef int MemoryContext ;
+typedef TYPE_2__ EState ;
+
+
+ int Assert (int) ;
+ scalar_t__ CMD_SELECT ;
+ int ExecReScan (int ) ;
+ int MemoryContextSwitchTo (int ) ;
 
 void
 ExecutorRewind(QueryDesc *queryDesc)
 {
-	EState	   *estate;
-	MemoryContext oldcontext;
+ EState *estate;
+ MemoryContext oldcontext;
 
-	/* sanity checks */
-	Assert(queryDesc != NULL);
 
-	estate = queryDesc->estate;
+ Assert(queryDesc != ((void*)0));
 
-	Assert(estate != NULL);
+ estate = queryDesc->estate;
 
-	/* It's probably not sensible to rescan updating queries */
-	Assert(queryDesc->operation == CMD_SELECT);
+ Assert(estate != ((void*)0));
 
-	/*
-	 * Switch into per-query memory context
-	 */
-	oldcontext = MemoryContextSwitchTo(estate->es_query_cxt);
 
-	/*
-	 * rescan plan
-	 */
-	ExecReScan(queryDesc->planstate);
+ Assert(queryDesc->operation == CMD_SELECT);
 
-	MemoryContextSwitchTo(oldcontext);
+
+
+
+ oldcontext = MemoryContextSwitchTo(estate->es_query_cxt);
+
+
+
+
+ ExecReScan(queryDesc->planstate);
+
+ MemoryContextSwitchTo(oldcontext);
 }

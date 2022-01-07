@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ustring {unsigned char* Buffer; int Length; int MaximumLength; } ;
 
-/* Variables and functions */
- int STATUS_BUFFER_TOO_SMALL ; 
- int STATUS_INVALID_PARAMETER_1 ; 
- int STATUS_INVALID_PARAMETER_2 ; 
- int STATUS_SUCCESS ; 
- int STATUS_UNKNOWN_REVISION ; 
- int /*<<< orphan*/  memcmp (unsigned char*,unsigned char*,scalar_t__) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int pSystemFunction004 (struct ustring*,struct ustring*,struct ustring*) ; 
- int pSystemFunction005 (struct ustring*,struct ustring*,struct ustring*) ; 
- void* strlen (char*) ; 
+
+ int STATUS_BUFFER_TOO_SMALL ;
+ int STATUS_INVALID_PARAMETER_1 ;
+ int STATUS_INVALID_PARAMETER_2 ;
+ int STATUS_SUCCESS ;
+ int STATUS_UNKNOWN_REVISION ;
+ int memcmp (unsigned char*,unsigned char*,scalar_t__) ;
+ int memset (char*,int ,int) ;
+ int ok (int,char*,...) ;
+ int pSystemFunction004 (struct ustring*,struct ustring*,struct ustring*) ;
+ int pSystemFunction005 (struct ustring*,struct ustring*,struct ustring*) ;
+ void* strlen (char*) ;
 
 __attribute__((used)) static void test_SystemFunction005(void)
 {
@@ -31,7 +31,7 @@ __attribute__((used)) static void test_SystemFunction005(void)
     int r;
     struct ustring in, key, out, res;
     static char datastr[] = "twinkle twinkle little star";
-    static char keystr[]  = "byolnim";
+    static char keystr[] = "byolnim";
 
     in.Buffer = (unsigned char *)datastr;
     in.Length = strlen(datastr);
@@ -65,7 +65,7 @@ __attribute__((used)) static void test_SystemFunction005(void)
     out.MaximumLength = 0;
     r = pSystemFunction005(&out, &key, &res);
     ok(r == STATUS_SUCCESS ||
-       r == STATUS_INVALID_PARAMETER_1, /* Vista */
+       r == STATUS_INVALID_PARAMETER_1,
        "Expected STATUS_SUCCESS or STATUS_INVALID_PARAMETER_1, got %08x\n", r);
 
     ok(res.Length == in.Length, "Length wrong\n");
@@ -74,13 +74,13 @@ __attribute__((used)) static void test_SystemFunction005(void)
     res.MaximumLength = 0;
     r = pSystemFunction005(&out, &key, &res);
     ok(r == STATUS_BUFFER_TOO_SMALL ||
-       r == STATUS_INVALID_PARAMETER_1, /* Vista */
+       r == STATUS_INVALID_PARAMETER_1,
        "Expected STATUS_BUFFER_TOO_SMALL or STATUS_INVALID_PARAMETER_1, got %08x\n", r);
 
     key.Length = 1;
     r = pSystemFunction005(&out, &key, &res);
     ok(r == STATUS_UNKNOWN_REVISION ||
-       r == STATUS_INVALID_PARAMETER_1, /* Vista */
+       r == STATUS_INVALID_PARAMETER_1,
        "Expected STATUS_UNKNOWN_REVISION or STATUS_INVALID_PARAMETER_1, got %08x\n", r);
 
     key.Length = 0;

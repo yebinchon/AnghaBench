@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  svn_error_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_hash_gets (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/ * svn_wc__db_read_info (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_wc__db_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int svn_error_clear (int *) ;
+ int * svn_hash_gets (int *,char const*) ;
+ int * svn_wc__db_read_info (int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,char const**,int *,int *,int *,int *,int *,int *,int *,int *,char const*,int *,int *) ;
 
 svn_boolean_t
 svn_wc__internal_changelist_match(svn_wc__db_t *db,
@@ -32,13 +32,13 @@ svn_wc__internal_changelist_match(svn_wc__db_t *db,
   svn_error_t *err;
   const char *changelist;
 
-  if (clhash == NULL)
+  if (clhash == ((void*)0))
     return TRUE;
 
-  err = svn_wc__db_read_info(NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-                             NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-                             NULL, NULL, NULL, NULL, NULL, &changelist,
-                             NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+  err = svn_wc__db_read_info(((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                             ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                             ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), &changelist,
+                             ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
                              db, local_abspath, scratch_pool, scratch_pool);
   if (err)
     {
@@ -47,5 +47,5 @@ svn_wc__internal_changelist_match(svn_wc__db_t *db,
     }
 
   return (changelist
-            && svn_hash_gets((apr_hash_t *)clhash, changelist) != NULL);
+            && svn_hash_gets((apr_hash_t *)clhash, changelist) != ((void*)0));
 }

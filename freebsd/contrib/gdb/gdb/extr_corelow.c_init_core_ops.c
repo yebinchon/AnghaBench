@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {char* to_shortname; char* to_longname; char* to_doc; int to_has_memory; int to_has_stack; int to_has_registers; int /*<<< orphan*/  to_magic; int /*<<< orphan*/  to_stratum; int /*<<< orphan*/  to_thread_alive; int /*<<< orphan*/  to_create_inferior; void* to_remove_breakpoint; void* to_insert_breakpoint; int /*<<< orphan*/  to_files_info; int /*<<< orphan*/  to_xfer_memory; int /*<<< orphan*/  to_xfer_partial; int /*<<< orphan*/  to_fetch_registers; int /*<<< orphan*/  to_detach; int /*<<< orphan*/  to_attach; int /*<<< orphan*/  to_close; int /*<<< orphan*/  to_open; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPS_MAGIC ; 
- int /*<<< orphan*/  core_close ; 
- int /*<<< orphan*/  core_detach ; 
- int /*<<< orphan*/  core_file_thread_alive ; 
- int /*<<< orphan*/  core_files_info ; 
- int /*<<< orphan*/  core_open ; 
- TYPE_1__ core_ops ; 
- int /*<<< orphan*/  core_stratum ; 
- int /*<<< orphan*/  core_xfer_partial ; 
- int /*<<< orphan*/  find_default_attach ; 
- int /*<<< orphan*/  find_default_create_inferior ; 
- int /*<<< orphan*/  get_core_registers ; 
- void* ignore ; 
- int /*<<< orphan*/  xfer_memory ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {char* to_shortname; char* to_longname; char* to_doc; int to_has_memory; int to_has_stack; int to_has_registers; int to_magic; int to_stratum; int to_thread_alive; int to_create_inferior; void* to_remove_breakpoint; void* to_insert_breakpoint; int to_files_info; int to_xfer_memory; int to_xfer_partial; int to_fetch_registers; int to_detach; int to_attach; int to_close; int to_open; } ;
+
+
+ int OPS_MAGIC ;
+ int core_close ;
+ int core_detach ;
+ int core_file_thread_alive ;
+ int core_files_info ;
+ int core_open ;
+ TYPE_1__ core_ops ;
+ int core_stratum ;
+ int core_xfer_partial ;
+ int find_default_attach ;
+ int find_default_create_inferior ;
+ int get_core_registers ;
+ void* ignore ;
+ int xfer_memory ;
 
 __attribute__((used)) static void
 init_core_ops (void)

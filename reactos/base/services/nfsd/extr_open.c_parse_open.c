@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_9__ {int /*<<< orphan*/  path; } ;
-struct TYPE_7__ {int /*<<< orphan*/  create_opts; int /*<<< orphan*/  access_mode; int /*<<< orphan*/  access_mask; int /*<<< orphan*/  disposition; int /*<<< orphan*/  ea; TYPE_5__ symlink; int /*<<< orphan*/  srv_open; int /*<<< orphan*/  mode; int /*<<< orphan*/  open_owner_id; int /*<<< orphan*/  file_attrs; int /*<<< orphan*/  path; } ;
-typedef  TYPE_2__ open_upcall_args ;
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_9__ {int path; } ;
+struct TYPE_7__ {int create_opts; int access_mode; int access_mask; int disposition; int ea; TYPE_5__ symlink; int srv_open; int mode; int open_owner_id; int file_attrs; int path; } ;
+typedef TYPE_2__ open_upcall_args ;
 struct TYPE_6__ {TYPE_2__ open; } ;
 struct TYPE_8__ {TYPE_1__ args; } ;
-typedef  TYPE_3__ nfs41_upcall ;
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef TYPE_3__ nfs41_upcall ;
+typedef int ULONG ;
+typedef int LONG ;
+typedef int HANDLE ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dprintf (int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int get_name (unsigned char**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int parse_abs_path (unsigned char**,int /*<<< orphan*/ *,TYPE_5__*) ; 
- int /*<<< orphan*/  print_access_mask (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_create_attributes (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_disposition (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_share_mode (int,int /*<<< orphan*/ ) ; 
- int safe_read (unsigned char**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int dprintf (int,char*,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int get_name (unsigned char**,int *,int *) ;
+ int parse_abs_path (unsigned char**,int *,TYPE_5__*) ;
+ int print_access_mask (int,int ) ;
+ int print_create_attributes (int,int ) ;
+ int print_disposition (int,int ) ;
+ int print_share_mode (int,int ) ;
+ int safe_read (unsigned char**,int *,int *,int) ;
 
 __attribute__((used)) static int parse_open(unsigned char *buffer, uint32_t length, nfs41_upcall *upcall)
 {

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uahash_t ;
-struct TYPE_4__ {int /*<<< orphan*/  flags; int /*<<< orphan*/  id; } ;
-typedef  TYPE_1__ pattern_t ;
-typedef  int /*<<< orphan*/  ip_t ;
-typedef  int byte ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uahash_t ;
+struct TYPE_4__ {int flags; int id; } ;
+typedef TYPE_1__ pattern_t ;
+typedef int ip_t ;
+typedef int byte ;
 struct TYPE_5__ {TYPE_1__** first; } ;
 
-/* Variables and functions */
- int ANTISPAM_DB_FIELDS_FLAGS ; 
- int ANTISPAM_DB_FIELDS_IDS ; 
- int /*<<< orphan*/  antispam_db_request ; 
- int antispam_get_matches_dec (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int) ; 
- int antispam_get_matches_inc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int) ; 
- TYPE_2__ heap_pattern ; 
- int /*<<< orphan*/  st_relax_max (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  st_vec_pb (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  st_vec_resize (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int st_vec_size (TYPE_2__) ; 
- int /*<<< orphan*/  stats_all_matches_cnt ; 
- int /*<<< orphan*/  stats_matches_cnt ; 
- int /*<<< orphan*/  stats_matches_max ; 
- int stats_matches_sum ; 
+
+ int ANTISPAM_DB_FIELDS_FLAGS ;
+ int ANTISPAM_DB_FIELDS_IDS ;
+ int antispam_db_request ;
+ int antispam_get_matches_dec (int ,int ,char const*,int) ;
+ int antispam_get_matches_inc (int ,int ,char const*,int) ;
+ TYPE_2__ heap_pattern ;
+ int st_relax_max (int ,int) ;
+ int st_vec_pb (int ,int ) ;
+ int st_vec_resize (int ,int ) ;
+ int st_vec_size (TYPE_2__) ;
+ int stats_all_matches_cnt ;
+ int stats_matches_cnt ;
+ int stats_matches_max ;
+ int stats_matches_sum ;
 
 int antispam_get_matches (ip_t ip, uahash_t uahash, const char *text, byte fields, int limit) {
   int matches_cnt = 0;
@@ -45,7 +45,7 @@ int antispam_get_matches (ip_t ip, uahash_t uahash, const char *text, byte field
 
   st_vec_resize (antispam_db_request, 0);
   pattern_t **first = heap_pattern.first;
-  pattern_t **last  = first + st_vec_size (heap_pattern);
+  pattern_t **last = first + st_vec_size (heap_pattern);
   for (; first != last; ++first) {
     if (fields & ANTISPAM_DB_FIELDS_IDS) {
       st_vec_pb (antispam_db_request, (*first)->id);

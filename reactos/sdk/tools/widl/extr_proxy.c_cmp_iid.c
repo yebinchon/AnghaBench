@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  attrs; } ;
-typedef  TYPE_1__ type_t ;
-typedef  int /*<<< orphan*/  UUID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATTR_UUID ; 
- int /*<<< orphan*/ * get_attrp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int memcmp (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int attrs; } ;
+typedef TYPE_1__ type_t ;
+typedef int UUID ;
+
+
+ int ATTR_UUID ;
+ int * get_attrp (int ,int ) ;
+ int memcmp (int const*,int const*,int) ;
 
 __attribute__((used)) static int cmp_iid( const void *ptr1, const void *ptr2 )
 {

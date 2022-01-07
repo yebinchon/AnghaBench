@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  lock; } ;
-struct TYPE_5__ {int num; int* idx; int inited; int /*<<< orphan*/  cv; int /*<<< orphan*/  lock; int /*<<< orphan*/  efd; TYPE_2__* pool; } ;
-typedef  TYPE_1__ PoolQueue ;
-typedef  TYPE_2__ Pool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int*) ; 
- int /*<<< orphan*/  pool_release_locked (TYPE_2__*,int) ; 
- int /*<<< orphan*/  pthread_cond_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int lock; } ;
+struct TYPE_5__ {int num; int* idx; int inited; int cv; int lock; int efd; TYPE_2__* pool; } ;
+typedef TYPE_1__ PoolQueue ;
+typedef TYPE_2__ Pool ;
+
+
+ int close (int ) ;
+ int free (int*) ;
+ int pool_release_locked (TYPE_2__*,int) ;
+ int pthread_cond_destroy (int *) ;
+ int pthread_mutex_destroy (int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 void pool_release_queue(PoolQueue *c) {
   Pool *s = c->pool;
@@ -41,7 +41,7 @@ void pool_release_queue(PoolQueue *c) {
   close(c->efd);
   free(c->idx);
 
-  c->inited = false;
+  c->inited = 0;
 
   pthread_mutex_unlock(&c->lock);
 

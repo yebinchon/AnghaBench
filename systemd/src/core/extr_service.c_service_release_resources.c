@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Unit ;
-struct TYPE_5__ {scalar_t__ stdin_fd; scalar_t__ stdout_fd; scalar_t__ stderr_fd; int /*<<< orphan*/  fd_store; } ;
-typedef  TYPE_1__ Service ;
 
-/* Variables and functions */
- TYPE_1__* SERVICE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  log_unit_debug (int /*<<< orphan*/ *,char*) ; 
- void* safe_close (scalar_t__) ; 
- int /*<<< orphan*/  service_release_fd_store (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int Unit ;
+struct TYPE_5__ {scalar_t__ stdin_fd; scalar_t__ stdout_fd; scalar_t__ stderr_fd; int fd_store; } ;
+typedef TYPE_1__ Service ;
+
+
+ TYPE_1__* SERVICE (int *) ;
+ int assert (TYPE_1__*) ;
+ int log_unit_debug (int *,char*) ;
+ void* safe_close (scalar_t__) ;
+ int service_release_fd_store (TYPE_1__*) ;
 
 __attribute__((used)) static void service_release_resources(Unit *u) {
         Service *s = SERVICE(u);

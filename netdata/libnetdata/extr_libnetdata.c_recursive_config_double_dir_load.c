@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dirent {scalar_t__ d_type; char* d_name; } ;
-typedef  int /*<<< orphan*/  DIR ;
+typedef int DIR ;
 
-/* Variables and functions */
- scalar_t__ DT_DIR ; 
- scalar_t__ DT_LNK ; 
- scalar_t__ DT_REG ; 
- scalar_t__ DT_UNKNOWN ; 
- int /*<<< orphan*/  D_HEALTH ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,char*,...) ; 
- int /*<<< orphan*/  error (char*,char const*,...) ; 
- int /*<<< orphan*/  freez (char*) ; 
- int /*<<< orphan*/ * opendir (char*) ; 
- scalar_t__ path_is_dir (char*,char*) ; 
- scalar_t__ path_is_file (char*,char*) ; 
- struct dirent* readdir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- char* strdupz_path_subpath (char const*,char const*) ; 
- size_t strlen (char*) ; 
+
+ scalar_t__ DT_DIR ;
+ scalar_t__ DT_LNK ;
+ scalar_t__ DT_REG ;
+ scalar_t__ DT_UNKNOWN ;
+ int D_HEALTH ;
+ int closedir (int *) ;
+ int debug (int ,char*,char*,...) ;
+ int error (char*,char const*,...) ;
+ int freez (char*) ;
+ int * opendir (char*) ;
+ scalar_t__ path_is_dir (char*,char*) ;
+ scalar_t__ path_is_file (char*,char*) ;
+ struct dirent* readdir (int *) ;
+ int strcmp (char*,char*) ;
+ char* strdupz_path_subpath (char const*,char const*) ;
+ size_t strlen (char*) ;
 
 void recursive_config_double_dir_load(const char *user_path, const char *stock_path, const char *subpath, int (*callback)(const char *filename, void *data), void *data, size_t depth) {
     if(depth > 3) {
@@ -47,7 +47,7 @@ void recursive_config_double_dir_load(const char *user_path, const char *stock_p
         error("CONFIG cannot open user-config directory '%s'.", udir);
     }
     else {
-        struct dirent *de = NULL;
+        struct dirent *de = ((void*)0);
         while((de = readdir(dir))) {
             if(de->d_type == DT_DIR || de->d_type == DT_LNK) {
                 if( !de->d_name[0] ||
@@ -89,7 +89,7 @@ void recursive_config_double_dir_load(const char *user_path, const char *stock_p
         error("CONFIG cannot open stock config directory '%s'.", sdir);
     }
     else {
-        struct dirent *de = NULL;
+        struct dirent *de = ((void*)0);
         while((de = readdir(dir))) {
             if(de->d_type == DT_DIR || de->d_type == DT_LNK) {
                 if( !de->d_name[0] ||
@@ -101,8 +101,8 @@ void recursive_config_double_dir_load(const char *user_path, const char *stock_p
                 }
 
                 if(path_is_dir(sdir, de->d_name)) {
-                    // we recurse in stock subdirectory, only when there is no corresponding
-                    // user subdirectory - to avoid reading the files twice
+
+
 
                     if(!path_is_dir(udir, de->d_name))
                         recursive_config_double_dir_load(udir, sdir, de->d_name, callback, data, depth + 1);

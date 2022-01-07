@@ -1,43 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_Number ;
 
-/* Variables and functions */
-#define  LUA_OPADD 134 
-#define  LUA_OPDIV 133 
-#define  LUA_OPMOD 132 
-#define  LUA_OPMUL 131 
-#define  LUA_OPPOW 130 
-#define  LUA_OPSUB 129 
-#define  LUA_OPUNM 128 
- int /*<<< orphan*/  lua_assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luai_numadd (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luai_numdiv (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luai_nummod (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luai_nummul (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luai_numpow (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luai_numsub (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luai_numunm (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int lua_Number ;
+ int lua_assert (int ) ;
+ int luai_numadd (int *,int ,int ) ;
+ int luai_numdiv (int *,int ,int ) ;
+ int luai_nummod (int *,int ,int ) ;
+ int luai_nummul (int *,int ,int ) ;
+ int luai_numpow (int *,int ,int ) ;
+ int luai_numsub (int *,int ,int ) ;
+ int luai_numunm (int *,int ) ;
 
 lua_Number luaO_arith (int op, lua_Number v1, lua_Number v2) {
   switch (op) {
-    case LUA_OPADD: return luai_numadd(NULL, v1, v2);
-    case LUA_OPSUB: return luai_numsub(NULL, v1, v2);
-    case LUA_OPMUL: return luai_nummul(NULL, v1, v2);
-    case LUA_OPDIV: return luai_numdiv(NULL, v1, v2);
-    case LUA_OPMOD: return luai_nummod(NULL, v1, v2);
-    case LUA_OPPOW: return luai_numpow(NULL, v1, v2);
-    case LUA_OPUNM: return luai_numunm(NULL, v1);
+    case 134: return luai_numadd(((void*)0), v1, v2);
+    case 129: return luai_numsub(((void*)0), v1, v2);
+    case 131: return luai_nummul(((void*)0), v1, v2);
+    case 133: return luai_numdiv(((void*)0), v1, v2);
+    case 132: return luai_nummod(((void*)0), v1, v2);
+    case 130: return luai_numpow(((void*)0), v1, v2);
+    case 128: return luai_numunm(((void*)0), v1);
     default: lua_assert(0); return 0;
   }
 }

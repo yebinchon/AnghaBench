@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct omap_hdmi {int audio_playing; int /*<<< orphan*/  audio_playing_lock; scalar_t__ display_enabled; int /*<<< orphan*/  cfg; } ;
+
+
+
+
+struct omap_hdmi {int audio_playing; int audio_playing_lock; scalar_t__ display_enabled; int cfg; } ;
 struct device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WARN_ON (int) ; 
- struct omap_hdmi* dev_get_drvdata (struct device*) ; 
- int /*<<< orphan*/  hdmi_mode_has_audio (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hdmi_start_audio_stream (struct omap_hdmi*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int WARN_ON (int) ;
+ struct omap_hdmi* dev_get_drvdata (struct device*) ;
+ int hdmi_mode_has_audio (int *) ;
+ int hdmi_start_audio_stream (struct omap_hdmi*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static int hdmi_audio_start(struct device *dev)
 {
-	struct omap_hdmi *hd = dev_get_drvdata(dev);
-	unsigned long flags;
+ struct omap_hdmi *hd = dev_get_drvdata(dev);
+ unsigned long flags;
 
-	WARN_ON(!hdmi_mode_has_audio(&hd->cfg));
+ WARN_ON(!hdmi_mode_has_audio(&hd->cfg));
 
-	spin_lock_irqsave(&hd->audio_playing_lock, flags);
+ spin_lock_irqsave(&hd->audio_playing_lock, flags);
 
-	if (hd->display_enabled)
-		hdmi_start_audio_stream(hd);
-	hd->audio_playing = true;
+ if (hd->display_enabled)
+  hdmi_start_audio_stream(hd);
+ hd->audio_playing = 1;
 
-	spin_unlock_irqrestore(&hd->audio_playing_lock, flags);
-	return 0;
+ spin_unlock_irqrestore(&hd->audio_playing_lock, flags);
+ return 0;
 }

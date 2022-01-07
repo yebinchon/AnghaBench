@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zhuffman ;
-struct TYPE_5__ {int /*<<< orphan*/  z_distance; int /*<<< orphan*/  z_length; } ;
-typedef  TYPE_1__ zbuf ;
-typedef  int stbi__uint8 ;
-typedef  int /*<<< orphan*/  codelength_sizes ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int e (char*,char*) ; 
- int /*<<< orphan*/  memset (int*,int,int) ; 
- int /*<<< orphan*/  zbuild_huffman (int /*<<< orphan*/ *,int*,int) ; 
- int zhuffman_decode (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int zreceive (TYPE_1__*,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int zhuffman ;
+struct TYPE_5__ {int z_distance; int z_length; } ;
+typedef TYPE_1__ zbuf ;
+typedef int stbi__uint8 ;
+typedef int codelength_sizes ;
+
+
+ int assert (int) ;
+ int e (char*,char*) ;
+ int memset (int*,int,int) ;
+ int zbuild_huffman (int *,int*,int) ;
+ int zhuffman_decode (TYPE_1__*,int *) ;
+ int zreceive (TYPE_1__*,int) ;
 
 __attribute__((used)) static int compute_huffman_codes(zbuf *a)
 {
    static stbi__uint8 length_dezigzag[19] = { 16,17,18,0,8,7,9,6,10,5,11,4,12,3,13,2,14,1,15 };
    zhuffman z_codelength;
-   stbi__uint8 lencodes[286+32+137];//padding for maximum single op
+   stbi__uint8 lencodes[286+32+137];
    stbi__uint8 codelength_sizes[19];
    int i,n;
 
-   int hlit  = zreceive(a,5) + 257;
+   int hlit = zreceive(a,5) + 257;
    int hdist = zreceive(a,5) + 1;
    int hclen = zreceive(a,4) + 4;
 

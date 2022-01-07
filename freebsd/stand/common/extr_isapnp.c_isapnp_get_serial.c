@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SERIAL_ISOLATION ; 
- int /*<<< orphan*/  _PNP_ADDRESS ; 
- int /*<<< orphan*/  _PNP_ID_LEN ; 
- int /*<<< orphan*/  bzero (int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  delay (int) ; 
- int inb (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  isapnp_readport ; 
- int /*<<< orphan*/  outb (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int SERIAL_ISOLATION ;
+ int _PNP_ADDRESS ;
+ int _PNP_ID_LEN ;
+ int bzero (int*,int ) ;
+ int delay (int) ;
+ int inb (int ) ;
+ int isapnp_readport ;
+ int outb (int ,int ) ;
 
 __attribute__((used)) static int
 isapnp_get_serial(uint8_t *data)
 {
-    int		i, bit, valid = 0, sum = 0x6a;
+    int i, bit, valid = 0, sum = 0x6a;
 
     bzero(data, _PNP_ID_LEN);
     outb(_PNP_ADDRESS, SERIAL_ISOLATION);
     for (i = 0; i < 72; i++) {
-	bit = inb(isapnp_readport) == 0x55;
-	delay(250);	/* Delay 250 usec */
+ bit = inb(isapnp_readport) == 0x55;
+ delay(250);
 
-	/* Can't Short Circuit the next evaluation, so 'and' is last */
-	bit = (inb(isapnp_readport) == 0xaa) && bit;
-	delay(250);	/* Delay 250 usec */
 
-	valid = valid || bit;
+ bit = (inb(isapnp_readport) == 0xaa) && bit;
+ delay(250);
 
-	if (i < 64)
-	    sum = (sum >> 1) |
-		(((sum ^ (sum >> 1) ^ bit) << 7) & 0xff);
+ valid = valid || bit;
 
-	data[i / 8] = (data[i / 8] >> 1) | (bit ? 0x80 : 0);
+ if (i < 64)
+     sum = (sum >> 1) |
+  (((sum ^ (sum >> 1) ^ bit) << 7) & 0xff);
+
+ data[i / 8] = (data[i / 8] >> 1) | (bit ? 0x80 : 0);
     }
 
     valid = valid && (data[8] == sum);

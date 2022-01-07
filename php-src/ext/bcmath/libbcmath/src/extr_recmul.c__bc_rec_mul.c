@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* bc_num ;
+
+
+typedef struct TYPE_20__ TYPE_1__ ;
+
+
+typedef TYPE_1__* bc_num ;
 struct TYPE_20__ {int n_len; scalar_t__ n_sign; scalar_t__ n_value; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BCG (int /*<<< orphan*/ ) ; 
- int MAX (int,int) ; 
- int MUL_SMALL_DIGITS ; 
- int /*<<< orphan*/  _bc_rm_leading_zeros (TYPE_1__*) ; 
- int /*<<< orphan*/  _bc_shift_addsub (TYPE_1__*,TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  _bc_simp_mul (TYPE_1__*,int,TYPE_1__*,int,TYPE_1__**,int) ; 
- int /*<<< orphan*/  _zero_ ; 
- TYPE_1__* bc_copy_num (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bc_free_num (TYPE_1__**) ; 
- int /*<<< orphan*/  bc_init_num (TYPE_1__**) ; 
- scalar_t__ bc_is_zero (TYPE_1__*) ; 
- TYPE_1__* bc_new_num (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bc_sub (TYPE_1__*,TYPE_1__*,TYPE_1__**,int /*<<< orphan*/ ) ; 
- int mul_base_digits ; 
- TYPE_1__* new_sub_num (int,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int BCG (int ) ;
+ int MAX (int,int) ;
+ int MUL_SMALL_DIGITS ;
+ int _bc_rm_leading_zeros (TYPE_1__*) ;
+ int _bc_shift_addsub (TYPE_1__*,TYPE_1__*,int,int) ;
+ int _bc_simp_mul (TYPE_1__*,int,TYPE_1__*,int,TYPE_1__**,int) ;
+ int _zero_ ;
+ TYPE_1__* bc_copy_num (int ) ;
+ int bc_free_num (TYPE_1__**) ;
+ int bc_init_num (TYPE_1__**) ;
+ scalar_t__ bc_is_zero (TYPE_1__*) ;
+ TYPE_1__* bc_new_num (int,int ) ;
+ int bc_sub (TYPE_1__*,TYPE_1__*,TYPE_1__**,int ) ;
+ int mul_base_digits ;
+ TYPE_1__* new_sub_num (int,int ,scalar_t__) ;
 
 __attribute__((used)) static void
 _bc_rec_mul (bc_num u, int ulen, bc_num v, int vlen, bc_num *prod,
-	     int full_scale)
+      int full_scale)
 {
   bc_num u0, u1, v0, v1;
   bc_num m1, m2, m3, d1, d2;
   int n, prodlen, m1zero;
   int d1len, d2len;
 
-  /* Base case? */
+
   if ((ulen+vlen) < mul_base_digits
       || ulen < MUL_SMALL_DIGITS
       || vlen < MUL_SMALL_DIGITS ) {
@@ -48,10 +48,10 @@ _bc_rec_mul (bc_num u, int ulen, bc_num v, int vlen, bc_num *prod,
     return;
   }
 
-  /* Calculate n -- the u and v split point in digits. */
+
   n = (MAX(ulen, vlen)+1) / 2;
 
-  /* Split u and v. */
+
   if (ulen < n) {
     u1 = bc_copy_num (BCG(_zero_));
     u0 = new_sub_num (ulen,0, u->n_value);
@@ -73,7 +73,7 @@ _bc_rec_mul (bc_num u, int ulen, bc_num v, int vlen, bc_num *prod,
 
   m1zero = bc_is_zero(u1) || bc_is_zero(v1);
 
-  /* Calculate sub results ... */
+
 
   bc_init_num(&d1);
   bc_init_num(&d2);
@@ -83,7 +83,7 @@ _bc_rec_mul (bc_num u, int ulen, bc_num v, int vlen, bc_num *prod,
   d2len = d2->n_len;
 
 
-  /* Do recursive multiplies and shifted adds. */
+
   if (m1zero)
     m1 = bc_copy_num (BCG(_zero_));
   else
@@ -99,7 +99,7 @@ _bc_rec_mul (bc_num u, int ulen, bc_num v, int vlen, bc_num *prod,
   else
     _bc_rec_mul (u0, u0->n_len, v0, v0->n_len, &m3, 0);
 
-  /* Initialize product */
+
   prodlen = ulen+vlen+1;
   *prod = bc_new_num(prodlen, 0);
 
@@ -111,7 +111,7 @@ _bc_rec_mul (bc_num u, int ulen, bc_num v, int vlen, bc_num *prod,
   _bc_shift_addsub (*prod, m3, 0, 0);
   _bc_shift_addsub (*prod, m2, n, d1->n_sign != d2->n_sign);
 
-  /* Now clean up! */
+
   bc_free_num (&u1);
   bc_free_num (&u0);
   bc_free_num (&v1);

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct so_list {TYPE_1__* lm_info; } ;
-struct link_map_offsets {int /*<<< orphan*/  l_addr_size; scalar_t__ l_addr_offset; } ;
+struct link_map_offsets {int l_addr_size; scalar_t__ l_addr_offset; } ;
 struct TYPE_2__ {scalar_t__ lm; } ;
-typedef  int /*<<< orphan*/  CORE_ADDR ;
+typedef int CORE_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  extract_signed_integer (scalar_t__,int /*<<< orphan*/ ) ; 
- struct link_map_offsets* nto_fetch_link_map_offsets () ; 
+
+ int extract_signed_integer (scalar_t__,int ) ;
+ struct link_map_offsets* nto_fetch_link_map_offsets () ;
 
 __attribute__((used)) static CORE_ADDR
 LM_ADDR (struct so_list *so)
@@ -26,6 +26,6 @@ LM_ADDR (struct so_list *so)
   struct link_map_offsets *lmo = nto_fetch_link_map_offsets ();
 
   return (CORE_ADDR) extract_signed_integer (so->lm_info->lm +
-					     lmo->l_addr_offset,
-					     lmo->l_addr_size);
+          lmo->l_addr_offset,
+          lmo->l_addr_size);
 }

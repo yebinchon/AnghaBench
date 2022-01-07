@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * dh; scalar_t__ pad; int /*<<< orphan*/ * dhpeer; } ;
-typedef  TYPE_1__ PROV_DH_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int DH_compute_key (unsigned char*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int DH_compute_key_padded (unsigned char*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DH_get0_key (int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int /*<<< orphan*/ *) ; 
- scalar_t__ DH_size (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * dh; scalar_t__ pad; int * dhpeer; } ;
+typedef TYPE_1__ PROV_DH_CTX ;
+typedef int BIGNUM ;
+
+
+ int DH_compute_key (unsigned char*,int const*,int *) ;
+ int DH_compute_key_padded (unsigned char*,int const*,int *) ;
+ int DH_get0_key (int *,int const**,int *) ;
+ scalar_t__ DH_size (int *) ;
 
 __attribute__((used)) static int dh_derive(void *vpdhctx, unsigned char *secret, size_t *secretlen,
                      size_t outlen)
@@ -27,21 +27,21 @@ __attribute__((used)) static int dh_derive(void *vpdhctx, unsigned char *secret,
     PROV_DH_CTX *pdhctx = (PROV_DH_CTX *)vpdhctx;
     int ret;
     size_t dhsize;
-    const BIGNUM *pub_key = NULL;
+    const BIGNUM *pub_key = ((void*)0);
 
-    /* TODO(3.0): Add errors to stack */
-    if (pdhctx->dh == NULL || pdhctx->dhpeer == NULL)
+
+    if (pdhctx->dh == ((void*)0) || pdhctx->dhpeer == ((void*)0))
         return 0;
 
     dhsize = (size_t)DH_size(pdhctx->dh);
-    if (secret == NULL) {
+    if (secret == ((void*)0)) {
         *secretlen = dhsize;
         return 1;
     }
     if (outlen < dhsize)
         return 0;
 
-    DH_get0_key(pdhctx->dhpeer, &pub_key, NULL);
+    DH_get0_key(pdhctx->dhpeer, &pub_key, ((void*)0));
     ret = (pdhctx->pad) ? DH_compute_key_padded(secret, pub_key, pdhctx->dh)
                         : DH_compute_key(secret, pub_key, pdhctx->dh);
     if (ret <= 0)

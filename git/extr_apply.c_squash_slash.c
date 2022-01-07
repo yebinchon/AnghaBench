@@ -1,30 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 __attribute__((used)) static char *squash_slash(char *name)
 {
-	int i = 0, j = 0;
+ int i = 0, j = 0;
 
-	if (!name)
-		return NULL;
+ if (!name)
+  return ((void*)0);
 
-	while (name[i]) {
-		if ((name[j++] = name[i++]) == '/')
-			while (name[i] == '/')
-				i++;
-	}
-	name[j] = '\0';
-	return name;
+ while (name[i]) {
+  if ((name[j++] = name[i++]) == '/')
+   while (name[i] == '/')
+    i++;
+ }
+ name[j] = '\0';
+ return name;
 }

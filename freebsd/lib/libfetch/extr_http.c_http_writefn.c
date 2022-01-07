@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct httpio {int /*<<< orphan*/  conn; } ;
 
-/* Variables and functions */
- int fetch_write (int /*<<< orphan*/ ,char const*,int) ; 
+
+
+
+struct httpio {int conn; } ;
+
+
+ int fetch_write (int ,char const*,int) ;
 
 __attribute__((used)) static int
 http_writefn(void *v, const char *buf, int len)
 {
-	struct httpio *io = (struct httpio *)v;
+ struct httpio *io = (struct httpio *)v;
 
-	return (fetch_write(io->conn, buf, len));
+ return (fetch_write(io->conn, buf, len));
 }

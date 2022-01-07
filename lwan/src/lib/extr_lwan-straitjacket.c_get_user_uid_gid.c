@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uid_t ;
-struct passwd {int /*<<< orphan*/  pw_gid; int /*<<< orphan*/  pw_uid; } ;
-typedef  int /*<<< orphan*/  gid_t ;
 
-/* Variables and functions */
- long NSS_BUFLEN_PASSWD ; 
- int /*<<< orphan*/  _SC_GETPW_R_SIZE_MAX ; 
- int errno ; 
- int /*<<< orphan*/  free (char*) ; 
- int getpwnam_r (char const*,struct passwd*,char*,size_t,struct passwd**) ; 
- int /*<<< orphan*/  lwan_status_error (char*,...) ; 
- int /*<<< orphan*/  lwan_status_perror (char*,char const*) ; 
- char* malloc (size_t) ; 
- long sysconf (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uid_t ;
+struct passwd {int pw_gid; int pw_uid; } ;
+typedef int gid_t ;
+
+
+ long NSS_BUFLEN_PASSWD ;
+ int _SC_GETPW_R_SIZE_MAX ;
+ int errno ;
+ int free (char*) ;
+ int getpwnam_r (char const*,struct passwd*,char*,size_t,struct passwd**) ;
+ int lwan_status_error (char*,...) ;
+ int lwan_status_perror (char*,char const*) ;
+ char* malloc (size_t) ;
+ long sysconf (int ) ;
 
 __attribute__((used)) static bool get_user_uid_gid(const char *user, uid_t *uid, gid_t *gid)
 {
@@ -34,16 +34,16 @@ __attribute__((used)) static bool get_user_uid_gid(const char *user, uid_t *uid,
     int r;
 
     if (pw_size_max < 0) {
-        /* This constant is returned for sysconf(_SC_GETPW_R_SIZE_MAX) in glibc,
-         * and it seems to be a reasonable size (1024).  Use it as a fallback in
-         * the (very unlikely) case where sysconf() fails. */
+
+
+
         pw_size_max = NSS_BUFLEN_PASSWD;
     }
 
     buf = malloc((size_t)pw_size_max);
     if (!buf) {
         lwan_status_error("Could not allocate buffer for passwd struct");
-        return false;
+        return 0;
     }
 
     r = getpwnam_r(user, &pwd, buf, (size_t)pw_size_max, &result);
@@ -52,7 +52,7 @@ __attribute__((used)) static bool get_user_uid_gid(const char *user, uid_t *uid,
     free(buf);
 
     if (result)
-        return true;
+        return 1;
 
     if (!r) {
         lwan_status_error("Username not found: %s", user);
@@ -61,5 +61,5 @@ __attribute__((used)) static bool get_user_uid_gid(const char *user, uid_t *uid,
         lwan_status_perror("Could not obtain uid/gid for user %s", user);
     }
 
-    return false;
+    return 0;
 }

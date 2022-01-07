@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vchiq_config {int /*<<< orphan*/  version_min; int /*<<< orphan*/  version; int /*<<< orphan*/  max_services; int /*<<< orphan*/  max_outstanding_bulks; void* bulk_threshold; void* max_msg_size; } ;
 
-/* Variables and functions */
- void* VCHIQ_MAX_MSG_SIZE ; 
- int /*<<< orphan*/  VCHIQ_MAX_SERVICES ; 
- int /*<<< orphan*/  VCHIQ_NUM_SERVICE_BULKS ; 
- int /*<<< orphan*/  VCHIQ_VERSION ; 
- int /*<<< orphan*/  VCHIQ_VERSION_MIN ; 
+
+
+
+struct vchiq_config {int version_min; int version; int max_services; int max_outstanding_bulks; void* bulk_threshold; void* max_msg_size; } ;
+
+
+ void* VCHIQ_MAX_MSG_SIZE ;
+ int VCHIQ_MAX_SERVICES ;
+ int VCHIQ_NUM_SERVICE_BULKS ;
+ int VCHIQ_VERSION ;
+ int VCHIQ_VERSION_MIN ;
 
 void vchiq_get_config(struct vchiq_config *config)
 {
-	config->max_msg_size           = VCHIQ_MAX_MSG_SIZE;
-	config->bulk_threshold         = VCHIQ_MAX_MSG_SIZE;
-	config->max_outstanding_bulks  = VCHIQ_NUM_SERVICE_BULKS;
-	config->max_services           = VCHIQ_MAX_SERVICES;
-	config->version                = VCHIQ_VERSION;
-	config->version_min            = VCHIQ_VERSION_MIN;
+ config->max_msg_size = VCHIQ_MAX_MSG_SIZE;
+ config->bulk_threshold = VCHIQ_MAX_MSG_SIZE;
+ config->max_outstanding_bulks = VCHIQ_NUM_SERVICE_BULKS;
+ config->max_services = VCHIQ_MAX_SERVICES;
+ config->version = VCHIQ_VERSION;
+ config->version_min = VCHIQ_VERSION_MIN;
 }

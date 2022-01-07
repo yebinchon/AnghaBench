@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int log_level_max; void* network_namespace_path; scalar_t__ stdin_data_size; void* stdin_data; scalar_t__ log_ratelimit_burst; scalar_t__ log_ratelimit_interval_usec; TYPE_1__* directories; void* address_families; void* syscall_archs; int /*<<< orphan*/  syscall_filter; void* smack_process_label; void* apparmor_profile; void* selinux_context; void* utmp_id; int /*<<< orphan*/  numa_policy; int /*<<< orphan*/  cpu_set; scalar_t__ n_temporary_filesystems; int /*<<< orphan*/ * temporary_filesystems; scalar_t__ n_bind_mounts; int /*<<< orphan*/ * bind_mounts; void* inaccessible_paths; void* read_write_paths; void* read_only_paths; void* pam_name; void* supplementary_groups; void* group; void* user; void* syslog_identifier; void* tty_path; void* root_image; void* root_directory; void* working_directory; void** stdio_file; void** stdio_fdname; int /*<<< orphan*/  rlimit; void* unset_environment; void* pass_environment; void* environment_files; void* environment; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int log_level_max; void* network_namespace_path; scalar_t__ stdin_data_size; void* stdin_data; scalar_t__ log_ratelimit_burst; scalar_t__ log_ratelimit_interval_usec; TYPE_1__* directories; void* address_families; void* syscall_archs; int syscall_filter; void* smack_process_label; void* apparmor_profile; void* selinux_context; void* utmp_id; int numa_policy; int cpu_set; scalar_t__ n_temporary_filesystems; int * temporary_filesystems; scalar_t__ n_bind_mounts; int * bind_mounts; void* inaccessible_paths; void* read_write_paths; void* read_only_paths; void* pam_name; void* supplementary_groups; void* group; void* user; void* syslog_identifier; void* tty_path; void* root_image; void* root_directory; void* working_directory; void** stdio_file; void** stdio_fdname; int rlimit; void* unset_environment; void* pass_environment; void* environment_files; void* environment; } ;
 struct TYPE_6__ {void* paths; } ;
-typedef  size_t ExecDirectoryType ;
-typedef  TYPE_2__ ExecContext ;
+typedef size_t ExecDirectoryType ;
+typedef TYPE_2__ ExecContext ;
 
-/* Variables and functions */
- size_t _EXEC_DIRECTORY_TYPE_MAX ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int /*<<< orphan*/  bind_mount_free_many (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  cpu_set_reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  exec_context_free_log_extra_fields (TYPE_2__*) ; 
- int /*<<< orphan*/  hashmap_free (int /*<<< orphan*/ ) ; 
- void* mfree (void*) ; 
- int /*<<< orphan*/  numa_policy_reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rlimit_free_all (int /*<<< orphan*/ ) ; 
- void* set_free (void*) ; 
- void* strv_free (void*) ; 
- int /*<<< orphan*/  temporary_filesystem_free_many (int /*<<< orphan*/ *,scalar_t__) ; 
+
+ size_t _EXEC_DIRECTORY_TYPE_MAX ;
+ int assert (TYPE_2__*) ;
+ int bind_mount_free_many (int *,scalar_t__) ;
+ int cpu_set_reset (int *) ;
+ int exec_context_free_log_extra_fields (TYPE_2__*) ;
+ int hashmap_free (int ) ;
+ void* mfree (void*) ;
+ int numa_policy_reset (int *) ;
+ int rlimit_free_all (int ) ;
+ void* set_free (void*) ;
+ void* strv_free (void*) ;
+ int temporary_filesystem_free_many (int *,scalar_t__) ;
 
 void exec_context_done(ExecContext *c) {
         ExecDirectoryType i;
@@ -66,10 +66,10 @@ void exec_context_done(ExecContext *c) {
         c->inaccessible_paths = strv_free(c->inaccessible_paths);
 
         bind_mount_free_many(c->bind_mounts, c->n_bind_mounts);
-        c->bind_mounts = NULL;
+        c->bind_mounts = ((void*)0);
         c->n_bind_mounts = 0;
         temporary_filesystem_free_many(c->temporary_filesystems, c->n_temporary_filesystems);
-        c->temporary_filesystems = NULL;
+        c->temporary_filesystems = ((void*)0);
         c->n_temporary_filesystems = 0;
 
         cpu_set_reset(&c->cpu_set);

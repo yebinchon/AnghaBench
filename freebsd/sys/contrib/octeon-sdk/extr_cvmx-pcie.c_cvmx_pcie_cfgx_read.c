@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint32_t ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef void* uint32_t ;
 struct TYPE_6__ {void* data; void* addr; } ;
 struct TYPE_7__ {TYPE_2__ s; void* u64; } ;
-typedef  TYPE_3__ cvmx_pescx_cfg_rd_t ;
+typedef TYPE_3__ cvmx_pescx_cfg_rd_t ;
 struct TYPE_5__ {void* data; void* addr; } ;
 struct TYPE_8__ {TYPE_1__ s; void* u64; } ;
-typedef  TYPE_4__ cvmx_pemx_cfg_rd_t ;
+typedef TYPE_4__ cvmx_pemx_cfg_rd_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CVMX_PEMX_CFG_RD (int) ; 
- int /*<<< orphan*/  CVMX_PESCX_CFG_RD (int) ; 
- int /*<<< orphan*/  OCTEON_FEATURE_NPEI ; 
- void* cvmx_read_csr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cvmx_write_csr (int /*<<< orphan*/ ,void*) ; 
- scalar_t__ octeon_has_feature (int /*<<< orphan*/ ) ; 
+
+ int CVMX_PEMX_CFG_RD (int) ;
+ int CVMX_PESCX_CFG_RD (int) ;
+ int OCTEON_FEATURE_NPEI ;
+ void* cvmx_read_csr (int ) ;
+ int cvmx_write_csr (int ,void*) ;
+ scalar_t__ octeon_has_feature (int ) ;
 
 uint32_t cvmx_pcie_cfgx_read(int pcie_port, uint32_t cfg_offset)
 {

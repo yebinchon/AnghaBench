@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TypeName ;
-struct TYPE_3__ {int /*<<< orphan*/  typeName; } ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  const ObjectAddress ;
-typedef  TYPE_1__ AlterEnumStmt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  InvalidOid ; 
- int /*<<< orphan*/  LookupTypeNameOid (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ObjectAddressSet (int /*<<< orphan*/  const,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TypeRelationId ; 
- int /*<<< orphan*/ * makeTypeNameFromNameList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  const* palloc0 (int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int TypeName ;
+struct TYPE_3__ {int typeName; } ;
+typedef int Oid ;
+typedef int const ObjectAddress ;
+typedef TYPE_1__ AlterEnumStmt ;
+
+
+ int InvalidOid ;
+ int LookupTypeNameOid (int *,int *,int) ;
+ int ObjectAddressSet (int const,int ,int ) ;
+ int TypeRelationId ;
+ int * makeTypeNameFromNameList (int ) ;
+ int const* palloc0 (int) ;
 
 const ObjectAddress *
 AlterEnumStmtObjectAddress(AlterEnumStmt *stmt, bool missing_ok)
 {
-	TypeName *typeName = NULL;
-	Oid typeOid = InvalidOid;
-	ObjectAddress *address = NULL;
+ TypeName *typeName = ((void*)0);
+ Oid typeOid = InvalidOid;
+ ObjectAddress *address = ((void*)0);
 
-	typeName = makeTypeNameFromNameList(stmt->typeName);
-	typeOid = LookupTypeNameOid(NULL, typeName, missing_ok);
-	address = palloc0(sizeof(ObjectAddress));
-	ObjectAddressSet(*address, TypeRelationId, typeOid);
+ typeName = makeTypeNameFromNameList(stmt->typeName);
+ typeOid = LookupTypeNameOid(((void*)0), typeName, missing_ok);
+ address = palloc0(sizeof(ObjectAddress));
+ ObjectAddressSet(*address, TypeRelationId, typeOid);
 
-	return address;
+ return address;
 }

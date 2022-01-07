@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ui_file {int dummy; } ;
-struct dummy_frame {int /*<<< orphan*/  call_hi; int /*<<< orphan*/  call_lo; int /*<<< orphan*/  id; int /*<<< orphan*/  top; int /*<<< orphan*/  sp; int /*<<< orphan*/  fp; int /*<<< orphan*/  pc; struct dummy_frame* next; } ;
+struct dummy_frame {int call_hi; int call_lo; int id; int top; int sp; int fp; int pc; struct dummy_frame* next; } ;
 
-/* Variables and functions */
- struct dummy_frame* dummy_frame_stack ; 
- int /*<<< orphan*/  fprint_frame_id (struct ui_file*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf_unfiltered (struct ui_file*,char*,...) ; 
- int /*<<< orphan*/  gdb_print_host_address (struct dummy_frame*,struct ui_file*) ; 
- int /*<<< orphan*/  paddr (int /*<<< orphan*/ ) ; 
+
+ struct dummy_frame* dummy_frame_stack ;
+ int fprint_frame_id (struct ui_file*,int ) ;
+ int fprintf_unfiltered (struct ui_file*,char*,...) ;
+ int gdb_print_host_address (struct dummy_frame*,struct ui_file*) ;
+ int paddr (int ) ;
 
 __attribute__((used)) static void
 fprint_dummy_frames (struct ui_file *file)
 {
   struct dummy_frame *s;
-  for (s = dummy_frame_stack; s != NULL; s = s->next)
+  for (s = dummy_frame_stack; s != ((void*)0); s = s->next)
     {
       gdb_print_host_address (s, file);
       fprintf_unfiltered (file, ":");

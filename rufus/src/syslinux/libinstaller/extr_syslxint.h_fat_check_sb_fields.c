@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  FileSysType; } ;
-struct TYPE_4__ {int /*<<< orphan*/  FileSysType; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int FileSysType; } ;
+struct TYPE_4__ {int FileSysType; } ;
 struct fat_boot_sector {TYPE_1__ bs32; TYPE_2__ bs16; scalar_t__ bsFATs; scalar_t__ bsResSectors; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ ,char*,int) ; 
+
+ int memcmp (int ,char*,int) ;
 
 __attribute__((used)) static inline int fat_check_sb_fields(const struct fat_boot_sector *sb)
 {

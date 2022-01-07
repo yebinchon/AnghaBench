@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  state_machine; } ;
-struct TYPE_5__ {int /*<<< orphan*/  operation_status; int /*<<< orphan*/  domain; TYPE_1__ parent; } ;
-typedef  int /*<<< orphan*/  SCI_STATUS ;
-typedef  int /*<<< orphan*/  SCI_BASE_REMOTE_DEVICE_T ;
-typedef  TYPE_2__ SCIF_SAS_REMOTE_DEVICE_T ;
 
-/* Variables and functions */
- int SCIF_LOG_OBJECT_DOMAIN_DISCOVERY ; 
- int SCIF_LOG_OBJECT_REMOTE_DEVICE ; 
- int /*<<< orphan*/  SCIF_LOG_WARNING (int /*<<< orphan*/ ) ; 
- scalar_t__ SCI_BASE_REMOTE_DEVICE_STATE_FAILED ; 
- int /*<<< orphan*/  SCI_BASE_REMOTE_DEVICE_STATE_STARTING ; 
- int /*<<< orphan*/  sci_base_object_get_logger (TYPE_2__*) ; 
- int /*<<< orphan*/  sci_base_state_machine_change_state (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ sci_base_state_machine_get_state (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int state_machine; } ;
+struct TYPE_5__ {int operation_status; int domain; TYPE_1__ parent; } ;
+typedef int SCI_STATUS ;
+typedef int SCI_BASE_REMOTE_DEVICE_T ;
+typedef TYPE_2__ SCIF_SAS_REMOTE_DEVICE_T ;
+
+
+ int SCIF_LOG_OBJECT_DOMAIN_DISCOVERY ;
+ int SCIF_LOG_OBJECT_REMOTE_DEVICE ;
+ int SCIF_LOG_WARNING (int ) ;
+ scalar_t__ SCI_BASE_REMOTE_DEVICE_STATE_FAILED ;
+ int SCI_BASE_REMOTE_DEVICE_STATE_STARTING ;
+ int sci_base_object_get_logger (TYPE_2__*) ;
+ int sci_base_state_machine_change_state (int *,int ) ;
+ scalar_t__ sci_base_state_machine_get_state (int *) ;
 
 __attribute__((used)) static
 SCI_STATUS scif_sas_remote_device_stopped_start_handler(
@@ -40,7 +40,7 @@ SCI_STATUS scif_sas_remote_device_stopped_start_handler(
       &fw_device->parent.state_machine, SCI_BASE_REMOTE_DEVICE_STATE_STARTING
    );
 
-   // Check to see if the state transition occurred without issue.
+
    if (sci_base_state_machine_get_state(&fw_device->parent.state_machine)
        == SCI_BASE_REMOTE_DEVICE_STATE_FAILED)
    {

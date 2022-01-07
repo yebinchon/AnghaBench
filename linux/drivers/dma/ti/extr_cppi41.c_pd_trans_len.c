@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
 
-/* Variables and functions */
- int DESC_LENGTH_BITS_NUM ; 
+
+
+
+typedef int u32 ;
+
+
+ int DESC_LENGTH_BITS_NUM ;
 
 __attribute__((used)) static u32 pd_trans_len(u32 val)
 {
-	return val & ((1 << (DESC_LENGTH_BITS_NUM + 1)) - 1);
+ return val & ((1 << (DESC_LENGTH_BITS_NUM + 1)) - 1);
 }

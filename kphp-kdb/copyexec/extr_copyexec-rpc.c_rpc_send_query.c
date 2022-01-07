@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  Out; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* flush_packet ) (struct connection*) ;} ;
 
-/* Variables and functions */
- int MAX_PACKET_LEN ; 
- TYPE_1__* RPCS_FUNC (struct connection*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int compute_crc32 (int*,int) ; 
- int /*<<< orphan*/  cr_ok ; 
- int /*<<< orphan*/  server_check_ready (struct connection*) ; 
- int /*<<< orphan*/  stub1 (struct connection*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,...) ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ *,int*,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct connection {int Out; } ;
+struct TYPE_2__ {int (* flush_packet ) (struct connection*) ;} ;
+
+
+ int MAX_PACKET_LEN ;
+ TYPE_1__* RPCS_FUNC (struct connection*) ;
+ int assert (int) ;
+ int compute_crc32 (int*,int) ;
+ int cr_ok ;
+ int server_check_ready (struct connection*) ;
+ int stub1 (struct connection*) ;
+ int vkprintf (int,char*,...) ;
+ int write_out (int *,int*,int) ;
 
 int rpc_send_query (void *_R, struct connection *c) {
   int *R = _R;

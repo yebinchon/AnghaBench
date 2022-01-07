@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CDI_DOMINATORS ; 
- int /*<<< orphan*/  antloc ; 
- int /*<<< orphan*/  comp ; 
- int /*<<< orphan*/  free_dominance_info (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hoist_exprs ; 
- int /*<<< orphan*/  hoist_vbein ; 
- int /*<<< orphan*/  hoist_vbeout ; 
- int /*<<< orphan*/  sbitmap_vector_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  transp ; 
- int /*<<< orphan*/  transpout ; 
+ int CDI_DOMINATORS ;
+ int antloc ;
+ int comp ;
+ int free_dominance_info (int ) ;
+ int hoist_exprs ;
+ int hoist_vbein ;
+ int hoist_vbeout ;
+ int sbitmap_vector_free (int ) ;
+ int transp ;
+ int transpout ;
 
 __attribute__((used)) static void
 free_code_hoist_mem (void)

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APPEND (char const) ; 
- scalar_t__ log10 (int) ; 
- size_t sprintf (char*,char*,int) ; 
+
+
+
+typedef int ssize_t ;
+
+
+ int APPEND (char const) ;
+ scalar_t__ log10 (int) ;
+ size_t sprintf (char*,char*,int) ;
 
 size_t cb_sprint(char *to_buf, const char *buf, ssize_t length,
     ssize_t max_width, ssize_t max_lines) {
@@ -29,7 +29,7 @@ size_t cb_sprint(char *to_buf, const char *buf, ssize_t length,
   char *s = to_buf;
   size_t n = 0;
 
-#define APPEND(v) if (s) { *s++ = (v); } n++
+
 
   size_t i = 0;
   size_t num_lines = 0;
@@ -64,9 +64,9 @@ size_t cb_sprint(char *to_buf, const char *buf, ssize_t length,
     for (j = i; j < length && rem; ) {
       unsigned char ch = buf[j++];
       static const char* hexchars = "0123456789ABCDEF";
-      APPEND(' ');
-      APPEND(hexchars[(ch >> 4) & 0xF]);
-      APPEND(hexchars[ch & 0xF]);
+      if (s) { *s++ = (' '); } n++;
+      if (s) { *s++ = (hexchars[(ch >> 4) & 0xF]); } n++;
+      if (s) { *s++ = (hexchars[ch & 0xF]); } n++;
       rem--;
       if (ch == '\n') {
         break;
@@ -74,25 +74,25 @@ size_t cb_sprint(char *to_buf, const char *buf, ssize_t length,
     }
     size_t rem2 = rem;
     for (rem2 = rem; rem2 > 0; rem2--) {
-      APPEND(' ');
-      APPEND(' ');
-      APPEND(' ');
+      if (s) { *s++ = (' '); } n++;
+      if (s) { *s++ = (' '); } n++;
+      if (s) { *s++ = (' '); } n++;
     }
-    APPEND(' ');
-    APPEND(' ');
+    if (s) { *s++ = (' '); } n++;
+    if (s) { *s++ = (' '); } n++;
     while (i < j) {
       unsigned char ch = buf[i++];
-      APPEND(ch < 32 || ch > 126 ? '.' : ch);
+      if (s) { *s++ = (ch < 32 || ch > 126 ? '.' : ch); } n++;
     }
     if (i >= length) {
       break;
     }
     if (max_lines >= 0 && ++num_lines > max_lines) {
       for (rem2 = rem; rem2 > 0; rem2--) {
-        APPEND(' ');
+        if (s) { *s++ = (' '); } n++;
       }
-      APPEND(' ');
-      APPEND('+');
+      if (s) { *s++ = (' '); } n++;
+      if (s) { *s++ = ('+'); } n++;
       if (s) {
         size_t k = sprintf(s, "%zd", length - i);
         s += k;
@@ -102,7 +102,7 @@ size_t cb_sprint(char *to_buf, const char *buf, ssize_t length,
       }
       break;
     }
-    APPEND('\n');
+    if (s) { *s++ = ('\n'); } n++;
   }
   if (s) {
     *s++ = '\0';

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char const* uint8_t ;
+
+
+
+
+typedef char const* uint8_t ;
 struct gc_arena {int dummy; } ;
 struct buffer {scalar_t__ data; } ;
 
-/* Variables and functions */
- unsigned int FHE_CAPS ; 
- unsigned int FHE_SPACE_BREAK_MASK ; 
- scalar_t__ INT_MAX ; 
- scalar_t__ SIZE_MAX ; 
- struct buffer alloc_buf_gc (size_t const,struct gc_arena*) ; 
- int /*<<< orphan*/  buf_catrunc (struct buffer*,char*) ; 
- int /*<<< orphan*/  buf_printf (struct buffer*,char*,char const* const) ; 
- int /*<<< orphan*/  static_assert (int,char*) ; 
- size_t strlen (char const*) ; 
+
+ unsigned int FHE_CAPS ;
+ unsigned int FHE_SPACE_BREAK_MASK ;
+ scalar_t__ INT_MAX ;
+ scalar_t__ SIZE_MAX ;
+ struct buffer alloc_buf_gc (size_t const,struct gc_arena*) ;
+ int buf_catrunc (struct buffer*,char*) ;
+ int buf_printf (struct buffer*,char*,char const* const) ;
+ int static_assert (int,char*) ;
+ size_t strlen (char const*) ;
 
 char *
 format_hex_ex(const uint8_t *data, int size, int maxoutput,

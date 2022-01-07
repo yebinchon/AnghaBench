@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct adapter {int /*<<< orphan*/ * parent_dmat; int /*<<< orphan*/ * rx_dmat; int /*<<< orphan*/ * rx_jumbo_dmat; int /*<<< orphan*/ * tx_dmat; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bus_dma_tag_destroy (int /*<<< orphan*/ *) ; 
+
+
+
+struct adapter {int * parent_dmat; int * rx_dmat; int * rx_jumbo_dmat; int * tx_dmat; } ;
+
+
+ int bus_dma_tag_destroy (int *) ;
 
 int
 t3_sge_free(struct adapter * sc)
 {
 
-	if (sc->tx_dmat != NULL)
-		bus_dma_tag_destroy(sc->tx_dmat);
+ if (sc->tx_dmat != ((void*)0))
+  bus_dma_tag_destroy(sc->tx_dmat);
 
-	if (sc->rx_jumbo_dmat != NULL)
-		bus_dma_tag_destroy(sc->rx_jumbo_dmat);
+ if (sc->rx_jumbo_dmat != ((void*)0))
+  bus_dma_tag_destroy(sc->rx_jumbo_dmat);
 
-	if (sc->rx_dmat != NULL)
-		bus_dma_tag_destroy(sc->rx_dmat);
+ if (sc->rx_dmat != ((void*)0))
+  bus_dma_tag_destroy(sc->rx_dmat);
 
-	if (sc->parent_dmat != NULL)
-		bus_dma_tag_destroy(sc->parent_dmat);
+ if (sc->parent_dmat != ((void*)0))
+  bus_dma_tag_destroy(sc->parent_dmat);
 
-	return (0);
+ return (0);
 }

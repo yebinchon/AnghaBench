@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct TCP_Server_Info {int credits; int oplocks; int /*<<< orphan*/  req_lock; } ;
 
-/* Variables and functions */
- int enable_oplocks ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct TCP_Server_Info {int credits; int oplocks; int req_lock; } ;
+
+
+ int enable_oplocks ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 void
 cifs_set_credits(struct TCP_Server_Info *server, const int val)
 {
-	spin_lock(&server->req_lock);
-	server->credits = val;
-	server->oplocks = val > 1 ? enable_oplocks : false;
-	spin_unlock(&server->req_lock);
+ spin_lock(&server->req_lock);
+ server->credits = val;
+ server->oplocks = val > 1 ? enable_oplocks : 0;
+ spin_unlock(&server->req_lock);
 }

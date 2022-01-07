@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct d3d11_local_swapchain {int /*<<< orphan*/  d3d_dev; int /*<<< orphan*/ * dxgiswapChain; int /*<<< orphan*/ * dxgiswapChain4; int /*<<< orphan*/ ** swapchainTargetView; } ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  D3D11_ReleaseDevice (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ID3D11RenderTargetView_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDXGISwapChain4_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDXGISwapChain_Release (int /*<<< orphan*/ *) ; 
+
+
+
+struct d3d11_local_swapchain {int d3d_dev; int * dxgiswapChain; int * dxgiswapChain4; int ** swapchainTargetView; } ;
+
+
+ size_t ARRAY_SIZE (int **) ;
+ int D3D11_ReleaseDevice (int *) ;
+ int ID3D11RenderTargetView_Release (int *) ;
+ int IDXGISwapChain4_Release (int *) ;
+ int IDXGISwapChain_Release (int *) ;
 
 void LocalSwapchainCleanupDevice( void *opaque )
 {
@@ -26,18 +26,18 @@ void LocalSwapchainCleanupDevice( void *opaque )
     {
         if (display->swapchainTargetView[i]) {
             ID3D11RenderTargetView_Release(display->swapchainTargetView[i]);
-            display->swapchainTargetView[i] = NULL;
+            display->swapchainTargetView[i] = ((void*)0);
         }
     }
     if (display->dxgiswapChain4)
     {
         IDXGISwapChain4_Release(display->dxgiswapChain4);
-        display->dxgiswapChain4 = NULL;
+        display->dxgiswapChain4 = ((void*)0);
     }
     if (display->dxgiswapChain)
     {
         IDXGISwapChain_Release(display->dxgiswapChain);
-        display->dxgiswapChain = NULL;
+        display->dxgiswapChain = ((void*)0);
     }
 
     D3D11_ReleaseDevice( &display->d3d_dev );

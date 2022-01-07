@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ kind; int /*<<< orphan*/  const* base_id; } ;
-typedef  TYPE_1__ transaction_t ;
-typedef  int /*<<< orphan*/  trail_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_fs_id_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  get_txn (TYPE_1__**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  put_txn (int /*<<< orphan*/ *,TYPE_1__*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_fs_base__err_txn_not_mutable (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  svn_fs_base__id_eq (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- scalar_t__ transaction_kind_normal ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ kind; int const* base_id; } ;
+typedef TYPE_1__ transaction_t ;
+typedef int trail_t ;
+typedef int svn_fs_t ;
+typedef int svn_fs_id_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int get_txn (TYPE_1__**,int *,char const*,int ,int *,int *) ;
+ int put_txn (int *,TYPE_1__*,char const*,int *,int *) ;
+ int * svn_fs_base__err_txn_not_mutable (int *,char const*) ;
+ int svn_fs_base__id_eq (int const*,int const*) ;
+ scalar_t__ transaction_kind_normal ;
 
 svn_error_t *
 svn_fs_base__set_txn_base(svn_fs_t *fs,

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64 ;
-typedef  int /*<<< orphan*/  ShardPlacement ;
-typedef  int /*<<< orphan*/  ShardCacheEntry ;
-typedef  int /*<<< orphan*/  GroupShardPlacement ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * LoadGroupShardPlacement (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * LookupShardCacheEntry (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ResolveGroupShardPlacement (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint64 ;
+typedef int ShardPlacement ;
+typedef int ShardCacheEntry ;
+typedef int GroupShardPlacement ;
+
+
+ int * LoadGroupShardPlacement (int ,int ) ;
+ int * LookupShardCacheEntry (int ) ;
+ int * ResolveGroupShardPlacement (int *,int *) ;
 
 ShardPlacement *
 LoadShardPlacement(uint64 shardId, uint64 placementId)
 {
-	ShardCacheEntry *shardEntry = NULL;
-	GroupShardPlacement *groupPlacement = NULL;
-	ShardPlacement *nodePlacement = NULL;
+ ShardCacheEntry *shardEntry = ((void*)0);
+ GroupShardPlacement *groupPlacement = ((void*)0);
+ ShardPlacement *nodePlacement = ((void*)0);
 
-	shardEntry = LookupShardCacheEntry(shardId);
-	groupPlacement = LoadGroupShardPlacement(shardId, placementId);
-	nodePlacement = ResolveGroupShardPlacement(groupPlacement, shardEntry);
+ shardEntry = LookupShardCacheEntry(shardId);
+ groupPlacement = LoadGroupShardPlacement(shardId, placementId);
+ nodePlacement = ResolveGroupShardPlacement(groupPlacement, shardEntry);
 
-	return nodePlacement;
+ return nodePlacement;
 }

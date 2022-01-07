@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
+
+
+
+
+typedef int u_char ;
 struct args_entry {int count; } ;
 struct args {int dummy; } ;
 
-/* Variables and functions */
- struct args_entry* args_find (struct args*,int /*<<< orphan*/ ) ; 
+
+ struct args_entry* args_find (struct args*,int ) ;
 
 int
 args_has(struct args *args, u_char ch)
 {
-	struct args_entry	*entry;
+ struct args_entry *entry;
 
-	entry = args_find(args, ch);
-	if (entry == NULL)
-		return (0);
-	return (entry->count);
+ entry = args_find(args, ch);
+ if (entry == ((void*)0))
+  return (0);
+ return (entry->count);
 }

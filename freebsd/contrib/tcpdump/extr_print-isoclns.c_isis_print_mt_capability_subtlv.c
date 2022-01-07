@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/ * tptr ;
-typedef  int /*<<< orphan*/  netdissect_options ;
 
-/* Variables and functions */
- int EXTRACT_16BITS (int const*) ; 
- int EXTRACT_24BITS (int const*) ; 
- int EXTRACT_32BITS (int const*) ; 
-#define  ISIS_SUBTLV_SPBM_SI 129 
-#define  ISIS_SUBTLV_SPB_INSTANCE 128 
- int ISIS_SUBTLV_SPB_INSTANCE_MIN_LEN ; 
- int ISIS_SUBTLV_SPB_INSTANCE_VLAN_TUPLE_LEN ; 
- int /*<<< orphan*/  ND_PRINT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ND_TCHECK2 (int const,int) ; 
- int /*<<< orphan*/  isis_mt_capability_subtlv_values ; 
- int /*<<< orphan*/  tok2str (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  tstr ; 
+
+
+
+typedef int uint8_t ;
+typedef int * tptr ;
+typedef int netdissect_options ;
+
+
+ int EXTRACT_16BITS (int const*) ;
+ int EXTRACT_24BITS (int const*) ;
+ int EXTRACT_32BITS (int const*) ;
+
+
+ int ISIS_SUBTLV_SPB_INSTANCE_MIN_LEN ;
+ int ISIS_SUBTLV_SPB_INSTANCE_VLAN_TUPLE_LEN ;
+ int ND_PRINT (int *) ;
+ int ND_TCHECK2 (int const,int) ;
+ int isis_mt_capability_subtlv_values ;
+ int tok2str (int ,char*,int) ;
+ int tstr ;
 
 __attribute__((used)) static int
 isis_print_mt_capability_subtlv(netdissect_options *ndo,
@@ -38,9 +38,9 @@ isis_print_mt_capability_subtlv(netdissect_options *ndo,
   {
     ND_TCHECK2(*tptr, 2);
     stlv_type = *(tptr++);
-    stlv_len  = *(tptr++);
+    stlv_len = *(tptr++);
 
-    /* first lets see if we know the subTLVs name*/
+
     ND_PRINT((ndo, "\n\t      %s subTLV #%u, length: %u",
                tok2str(isis_mt_capability_subtlv_values, "unknown", stlv_type),
                stlv_type,
@@ -48,15 +48,15 @@ isis_print_mt_capability_subtlv(netdissect_options *ndo,
 
     len = len - 2;
 
-    /* Make sure the subTLV fits within the space left */
+
     if (len < stlv_len)
       goto trunc;
-    /* Make sure the entire subTLV is in the captured data */
+
     ND_TCHECK2(*(tptr), stlv_len);
 
     switch (stlv_type)
     {
-      case ISIS_SUBTLV_SPB_INSTANCE:
+      case 128:
           if (stlv_len < ISIS_SUBTLV_SPB_INSTANCE_MIN_LEN)
             goto trunc;
 
@@ -109,7 +109,7 @@ isis_print_mt_capability_subtlv(netdissect_options *ndo,
 
           break;
 
-      case ISIS_SUBTLV_SPBM_SI:
+      case 129:
           if (stlv_len < 8)
             goto trunc;
 

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  public_key; int /*<<< orphan*/  time; } ;
-typedef  TYPE_1__ Onion_Announce_Entry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ONION_ANNOUNCE_TIMEOUT ; 
- int /*<<< orphan*/  cmp_public_key ; 
- int id_closest (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int is_timeout (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (TYPE_1__*,void const*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int public_key; int time; } ;
+typedef TYPE_1__ Onion_Announce_Entry ;
+
+
+ int ONION_ANNOUNCE_TIMEOUT ;
+ int cmp_public_key ;
+ int id_closest (int ,int ,int ) ;
+ int is_timeout (int ,int ) ;
+ int memcpy (TYPE_1__*,void const*,int) ;
 
 __attribute__((used)) static int cmp_entry(const void *a, const void *b)
 {

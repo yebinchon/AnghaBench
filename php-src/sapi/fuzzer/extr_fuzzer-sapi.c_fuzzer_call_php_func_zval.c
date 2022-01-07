@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zval ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZVAL_STRING (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  ZVAL_UNDEF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  call_user_function (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  function_table ; 
- int /*<<< orphan*/  php_var_dump (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zval_ptr_dtor (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int zval ;
+
+
+ int CG (int ) ;
+ int ZVAL_STRING (int *,char const*) ;
+ int ZVAL_UNDEF (int *) ;
+ int call_user_function (int ,int *,int *,int *,int,int *) ;
+ int function_table ;
+ int php_var_dump (int *,int ) ;
+ int zval_ptr_dtor (int *) ;
 
 void fuzzer_call_php_func_zval(const char *func_name, int nargs, zval *args) {
-	zval retval, func;
+ zval retval, func;
 
-	ZVAL_STRING(&func, func_name);
-	ZVAL_UNDEF(&retval);
-	call_user_function(CG(function_table), NULL, &func, &retval, nargs, args);
+ ZVAL_STRING(&func, func_name);
+ ZVAL_UNDEF(&retval);
+ call_user_function(CG(function_table), ((void*)0), &func, &retval, nargs, args);
 
-	// TODO: check result?
-	/* to ensure retval is not broken */
-	php_var_dump(&retval, 0);
 
-	/* cleanup */
-	zval_ptr_dtor(&retval);
-	zval_ptr_dtor(&func);
+
+ php_var_dump(&retval, 0);
+
+
+ zval_ptr_dtor(&retval);
+ zval_ptr_dtor(&func);
 }

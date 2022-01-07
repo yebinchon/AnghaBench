@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_upgrade_get_repos_info_t ;
-typedef  int /*<<< orphan*/  svn_wc_notify_t ;
-typedef  int /*<<< orphan*/  (* svn_wc_notify_func2_t ) (void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;
-struct TYPE_11__ {int /*<<< orphan*/  uuid; int /*<<< orphan*/  repos; } ;
-typedef  TYPE_1__ svn_wc_entry_t ;
-typedef  int /*<<< orphan*/  svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_skel_t ;
+
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int svn_wc_upgrade_get_repos_info_t ;
+typedef int svn_wc_notify_t ;
+typedef int (* svn_wc_notify_func2_t ) (void*,int *,int *) ;
+struct TYPE_11__ {int uuid; int repos; } ;
+typedef TYPE_1__ svn_wc_entry_t ;
+typedef int svn_wc_context_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_skel_t ;
 struct TYPE_12__ {scalar_t__ apr_err; } ;
-typedef  TYPE_2__ svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  scalar_t__ svn_boolean_t ;
-struct upgrade_data_t {char const* root_abspath; int /*<<< orphan*/  sdb; int /*<<< orphan*/  wc_id; int /*<<< orphan*/  repos_id; int /*<<< orphan*/ * member_0; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
+typedef TYPE_2__ svn_error_t ;
+typedef int svn_cancel_func_t ;
+typedef scalar_t__ svn_boolean_t ;
+struct upgrade_data_t {char const* root_abspath; int sdb; int wc_id; int repos_id; int * member_0; } ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- char* PRISTINE_STORAGE_RELPATH ; 
- char* SDB_FILE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- scalar_t__ SVN_ERR_WC_UPGRADE_REQUIRED ; 
- TYPE_2__* SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_SQLITE__WITH_LOCK (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_WC_ENTRY_THIS_DIR ; 
- int SVN_WC__VERSION ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_pstrdup (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ensure_repos_info (TYPE_1__*,char const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  is_old_wcroot (char const*,int /*<<< orphan*/ *) ; 
- char const* svn_dirent_join (char*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_2__*) ; 
- int /*<<< orphan*/  svn_error_compose_create (TYPE_2__*,int /*<<< orphan*/ ) ; 
- TYPE_2__* svn_error_trace (int /*<<< orphan*/ ) ; 
- TYPE_1__* svn_hash_gets (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_io_file_rename2 (char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_remove_dir2 (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_wc__adm_child (char const*,char*,int /*<<< orphan*/ *) ; 
- TYPE_2__* svn_wc__db_bump_format (int*,scalar_t__*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_open (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_upgrade_begin (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_wclock_obtain (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_wclock_release (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_wq_add (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__ensure_directory (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__read_entries_old (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__wq_build_file_move (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__wq_build_postupgrade (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc__wq_merge (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__wq_run (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc_create_notify (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_notify_upgraded_path ; 
- int /*<<< orphan*/  upgrade_working_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,struct upgrade_data_t*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/  (*) (void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *),void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ char* PRISTINE_STORAGE_RELPATH ;
+ char* SDB_FILE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int) ;
+ scalar_t__ SVN_ERR_WC_UPGRADE_REQUIRED ;
+ TYPE_2__* SVN_NO_ERROR ;
+ int SVN_SQLITE__WITH_LOCK (int ,int ) ;
+ int SVN_WC_ENTRY_THIS_DIR ;
+ int SVN_WC__VERSION ;
+ int TRUE ;
+ int * apr_hash_make (int *) ;
+ int apr_pstrdup (int *,int ) ;
+ int ensure_repos_info (TYPE_1__*,char const*,int ,void*,int *,int *,int *) ;
+ int is_old_wcroot (char const*,int *) ;
+ char const* svn_dirent_join (char*,char*,int *) ;
+ int svn_error_clear (TYPE_2__*) ;
+ int svn_error_compose_create (TYPE_2__*,int ) ;
+ TYPE_2__* svn_error_trace (int ) ;
+ TYPE_1__* svn_hash_gets (int *,int ) ;
+ int svn_hash_sets (int *,int ,int ) ;
+ int svn_io_file_rename2 (char const*,char const*,int ,int *) ;
+ int svn_io_remove_dir2 (char const*,int ,int *,int *,int *) ;
+ char* svn_wc__adm_child (char const*,char*,int *) ;
+ TYPE_2__* svn_wc__db_bump_format (int*,scalar_t__*,int *,char const*,int *) ;
+ int svn_wc__db_close (int *) ;
+ int svn_wc__db_open (int **,int *,int ,int ,int *,int *) ;
+ int svn_wc__db_upgrade_begin (int *,int *,int *,int *,char const*,int ,int ,int *) ;
+ int svn_wc__db_wclock_obtain (int *,char const*,int ,int ,int *) ;
+ int svn_wc__db_wclock_release (int *,char const*,int *) ;
+ int svn_wc__db_wq_add (int *,char const*,int *,int *) ;
+ int svn_wc__ensure_directory (char const*,int *) ;
+ int svn_wc__read_entries_old (int **,char const*,int *,int *) ;
+ int svn_wc__wq_build_file_move (int **,int *,char const*,char const*,char const*,int *,int *) ;
+ int svn_wc__wq_build_postupgrade (int **,int *) ;
+ int * svn_wc__wq_merge (int *,int *,int *) ;
+ int svn_wc__wq_run (int *,char const*,int ,void*,int *) ;
+ int * svn_wc_create_notify (char const*,int ,int *) ;
+ int svn_wc_notify_upgraded_path ;
+ int upgrade_working_copy (int *,int *,char const*,int ,void*,int *,struct upgrade_data_t*,int ,void*,int (*) (void*,int *,int *),void*,int *,int *) ;
 
 svn_error_t *
 svn_wc_upgrade(svn_wc_context_t *wc_ctx,
@@ -82,8 +82,8 @@ svn_wc_upgrade(svn_wc_context_t *wc_ctx,
                apr_pool_t *scratch_pool)
 {
   svn_wc__db_t *db;
-  struct upgrade_data_t data = { NULL };
-  svn_skel_t *work_item, *work_items = NULL;
+  struct upgrade_data_t data = { ((void*)0) };
+  svn_skel_t *work_item, *work_items = ((void*)0);
   const char *pristine_from, *pristine_to, *db_from, *db_to;
   apr_hash_t *repos_cache = apr_hash_make(scratch_pool);
   svn_wc_entry_t *this_dir;
@@ -93,8 +93,8 @@ svn_wc_upgrade(svn_wc_context_t *wc_ctx,
   int result_format;
   svn_boolean_t bumped_format;
 
-  /* Try upgrading a wc-ng-style working copy. */
-  SVN_ERR(svn_wc__db_open(&db, NULL /* ### config */, TRUE, FALSE,
+
+  SVN_ERR(svn_wc__db_open(&db, ((void*)0) , TRUE, FALSE,
                           scratch_pool, scratch_pool));
 
 
@@ -112,11 +112,11 @@ svn_wc_upgrade(svn_wc_context_t *wc_ctx,
         }
 
       svn_error_clear(err);
-      /* Pre 1.7: Fall through */
+
     }
   else
     {
-      /* Auto-upgrade worked! */
+
       SVN_ERR(svn_wc__db_close(db));
 
       SVN_ERR_ASSERT(result_format == SVN_WC__VERSION);
@@ -136,16 +136,6 @@ svn_wc_upgrade(svn_wc_context_t *wc_ctx,
     }
 
   SVN_ERR(is_old_wcroot(local_abspath, scratch_pool));
-
-  /* Given a pre-wcng root some/wc we create a temporary wcng in
-     some/wc/.svn/tmp/wcng/wc.db and copy the metadata from one to the
-     other, then the temporary wc.db file gets moved into the original
-     root.  Until the wc.db file is moved the original working copy
-     remains a pre-wcng and 'cleanup' with an old client will remove
-     the partial upgrade.  Moving the wc.db file creates a wcng, and
-     'cleanup' with a new client will complete any outstanding
-     upgrade. */
-
   SVN_ERR(svn_wc__read_entries_old(&entries, local_abspath,
                                    scratch_pool, scratch_pool));
 
@@ -154,40 +144,40 @@ svn_wc_upgrade(svn_wc_context_t *wc_ctx,
                             repos_info_baton, repos_cache,
                             scratch_pool, scratch_pool));
 
-  /* Cache repos UUID pairs for when a subdir doesn't have this information */
+
   if (!svn_hash_gets(repos_cache, this_dir->repos))
     svn_hash_sets(repos_cache,
                   apr_pstrdup(scratch_pool, this_dir->repos),
                   apr_pstrdup(scratch_pool, this_dir->uuid));
 
-  /* Create the new DB in the temporary root wc/.svn/tmp/wcng/.svn */
+
   data.root_abspath = svn_dirent_join(svn_wc__adm_child(local_abspath, "tmp",
                                                         scratch_pool),
                                        "wcng", scratch_pool);
   root_adm_abspath = svn_wc__adm_child(data.root_abspath, "",
                                        scratch_pool);
-  SVN_ERR(svn_io_remove_dir2(root_adm_abspath, TRUE, NULL, NULL,
+  SVN_ERR(svn_io_remove_dir2(root_adm_abspath, TRUE, ((void*)0), ((void*)0),
                              scratch_pool));
   SVN_ERR(svn_wc__ensure_directory(root_adm_abspath, scratch_pool));
 
-  /* Create an empty sqlite database for this directory and store it in DB. */
+
   SVN_ERR(svn_wc__db_upgrade_begin(&data.sdb,
                                    &data.repos_id, &data.wc_id,
                                    db, data.root_abspath,
                                    this_dir->repos, this_dir->uuid,
                                    scratch_pool));
 
-  /* Migrate the entries over to the new database.
-   ### We need to think about atomicity here.
 
-   entries_write_new() writes in current format rather than
-   f12. Thus, this function bumps a working copy all the way to
-   current.  */
+
+
+
+
+
   SVN_ERR(svn_wc__db_wclock_obtain(db, data.root_abspath, 0, FALSE,
                                    scratch_pool));
 
   SVN_SQLITE__WITH_LOCK(
-    upgrade_working_copy(NULL, db, local_abspath,
+    upgrade_working_copy(((void*)0), db, local_abspath,
                          repos_info_func, repos_info_baton,
                          repos_cache, &data,
                          cancel_func, cancel_baton,
@@ -195,7 +185,7 @@ svn_wc_upgrade(svn_wc_context_t *wc_ctx,
                          scratch_pool, scratch_pool),
     data.sdb);
 
-  /* A workqueue item to move the pristine dir into place */
+
   pristine_from = svn_wc__adm_child(data.root_abspath, PRISTINE_STORAGE_RELPATH,
                                     scratch_pool);
   pristine_to = svn_wc__adm_child(local_abspath, PRISTINE_STORAGE_RELPATH,
@@ -206,7 +196,7 @@ svn_wc_upgrade(svn_wc_context_t *wc_ctx,
                                      scratch_pool, scratch_pool));
   work_items = svn_wc__wq_merge(work_items, work_item, scratch_pool);
 
-  /* A workqueue item to remove pre-wcng metadata */
+
   SVN_ERR(svn_wc__wq_build_postupgrade(&work_item, scratch_pool));
   work_items = svn_wc__wq_merge(work_items, work_item, scratch_pool);
   SVN_ERR(svn_wc__db_wq_add(db, data.root_abspath, work_items, scratch_pool));
@@ -214,20 +204,20 @@ svn_wc_upgrade(svn_wc_context_t *wc_ctx,
   SVN_ERR(svn_wc__db_wclock_release(db, data.root_abspath, scratch_pool));
   SVN_ERR(svn_wc__db_close(db));
 
-  /* Renaming the db file is what makes the pre-wcng into a wcng */
+
   db_from = svn_wc__adm_child(data.root_abspath, SDB_FILE, scratch_pool);
   db_to = svn_wc__adm_child(local_abspath, SDB_FILE, scratch_pool);
   SVN_ERR(svn_io_file_rename2(db_from, db_to, FALSE, scratch_pool));
 
-  /* Now we have a working wcng, tidy up the droppings */
-  SVN_ERR(svn_wc__db_open(&db, NULL /* ### config */, FALSE, FALSE,
+
+  SVN_ERR(svn_wc__db_open(&db, ((void*)0) , FALSE, FALSE,
                           scratch_pool, scratch_pool));
   SVN_ERR(svn_wc__wq_run(db, local_abspath, cancel_func, cancel_baton,
                          scratch_pool));
   SVN_ERR(svn_wc__db_close(db));
 
-  /* Should we have the workqueue remove this empty dir? */
-  SVN_ERR(svn_io_remove_dir2(data.root_abspath, FALSE, NULL, NULL,
+
+  SVN_ERR(svn_io_remove_dir2(data.root_abspath, FALSE, ((void*)0), ((void*)0),
                              scratch_pool));
 
   return SVN_NO_ERROR;

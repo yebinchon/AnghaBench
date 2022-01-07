@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ReusableSpace {void* pSpace; size_t nFree; int /*<<< orphan*/  nNeeded; } ;
-typedef  size_t sqlite3_int64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EIGHT_BYTE_ALIGNMENT (void*) ; 
- size_t ROUND8 (size_t) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+
+
+struct ReusableSpace {void* pSpace; size_t nFree; int nNeeded; } ;
+typedef size_t sqlite3_int64 ;
+
+
+ int EIGHT_BYTE_ALIGNMENT (void*) ;
+ size_t ROUND8 (size_t) ;
+ int assert (int ) ;
 
 __attribute__((used)) static void *allocSpace(
-  struct ReusableSpace *p,  /* Bulk memory available for allocation */
-  void *pBuf,               /* Pointer to a prior allocation */
-  sqlite3_int64 nByte       /* Bytes of memory needed */
+  struct ReusableSpace *p,
+  void *pBuf,
+  sqlite3_int64 nByte
 ){
   assert( EIGHT_BYTE_ALIGNMENT(p->pSpace) );
   if( pBuf==0 ){

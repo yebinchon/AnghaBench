@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct condition_filter_iterator {int pos; TYPE_1__* A; int /*<<< orphan*/  Cond; int /*<<< orphan*/  jump_to; } ;
-typedef  scalar_t__ iterator_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct condition_filter_iterator {int pos; TYPE_1__* A; int Cond; int jump_to; } ;
+typedef scalar_t__ iterator_t ;
 struct TYPE_3__ {int (* jump_to ) (TYPE_1__*,int) ;} ;
 
-/* Variables and functions */
- int INFTY ; 
- scalar_t__* User ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  empty_iterator_jump_to ; 
- int max_uid ; 
- int stub1 (TYPE_1__*,int) ; 
- int stub2 (TYPE_1__*,int) ; 
- scalar_t__ user_matches_condition (scalar_t__,int /*<<< orphan*/ ,int) ; 
+
+ int INFTY ;
+ scalar_t__* User ;
+ int assert (int) ;
+ int empty_iterator_jump_to ;
+ int max_uid ;
+ int stub1 (TYPE_1__*,int) ;
+ int stub2 (TYPE_1__*,int) ;
+ scalar_t__ user_matches_condition (scalar_t__,int ,int) ;
 
 int condition_filter_iterator_jump_to (iterator_t I, int req_pos) {
   struct condition_filter_iterator *IF = (struct condition_filter_iterator *) I;

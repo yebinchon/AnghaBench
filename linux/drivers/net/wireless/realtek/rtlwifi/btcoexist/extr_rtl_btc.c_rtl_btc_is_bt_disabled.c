@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct rtl_priv {int dummy; } ;
 struct TYPE_2__ {scalar_t__ bt_disabled; } ;
 struct btc_coexist {TYPE_1__ bt_info; } ;
 
-/* Variables and functions */
- struct btc_coexist* rtl_btc_coexist (struct rtl_priv*) ; 
+
+ struct btc_coexist* rtl_btc_coexist (struct rtl_priv*) ;
 
 bool rtl_btc_is_bt_disabled(struct rtl_priv *rtlpriv)
 {
-	struct btc_coexist *btcoexist = rtl_btc_coexist(rtlpriv);
+ struct btc_coexist *btcoexist = rtl_btc_coexist(rtlpriv);
 
-	if (!btcoexist)
-		return true;
+ if (!btcoexist)
+  return 1;
 
-	/* It seems 'bt_disabled' is never be initialized or set. */
-	if (btcoexist->bt_info.bt_disabled)
-		return true;
-	else
-		return false;
+
+ if (btcoexist->bt_info.bt_disabled)
+  return 1;
+ else
+  return 0;
 }

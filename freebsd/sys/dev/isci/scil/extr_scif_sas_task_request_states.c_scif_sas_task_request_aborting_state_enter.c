@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  core_object; int /*<<< orphan*/  status; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int core_object; int status; } ;
 struct TYPE_4__ {TYPE_2__ parent; } ;
-typedef  int /*<<< orphan*/  SCI_BASE_OBJECT_T ;
-typedef  TYPE_1__ SCIF_SAS_TASK_REQUEST_T ;
+typedef int SCI_BASE_OBJECT_T ;
+typedef TYPE_1__ SCIF_SAS_TASK_REQUEST_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCI_BASE_REQUEST_STATE_ABORTING ; 
- int /*<<< orphan*/  SET_STATE_HANDLER (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scif_sas_request_terminate_start (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scif_sas_task_request_state_handler_table ; 
+
+ int SCI_BASE_REQUEST_STATE_ABORTING ;
+ int SET_STATE_HANDLER (TYPE_2__*,int ,int ) ;
+ int scif_sas_request_terminate_start (TYPE_2__*,int ) ;
+ int scif_sas_task_request_state_handler_table ;
 
 __attribute__((used)) static
 void scif_sas_task_request_aborting_state_enter(
@@ -36,7 +36,7 @@ void scif_sas_task_request_aborting_state_enter(
       SCI_BASE_REQUEST_STATE_ABORTING
    );
 
-   /// @todo Is terminating a previously outstanding task request right?
+
    fw_task->parent.status = scif_sas_request_terminate_start(
                                &fw_task->parent, fw_task->parent.core_object
                             );

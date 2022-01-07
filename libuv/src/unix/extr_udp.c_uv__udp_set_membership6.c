@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  fd; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int fd; } ;
 struct TYPE_5__ {TYPE_1__ io_watcher; } ;
-typedef  TYPE_2__ uv_udp_t ;
-typedef  int uv_membership ;
-struct sockaddr_in6 {int /*<<< orphan*/  sin6_addr; scalar_t__ sin6_scope_id; } ;
-struct ipv6_mreq {int /*<<< orphan*/  ipv6mr_multiaddr; scalar_t__ ipv6mr_interface; } ;
-typedef  int /*<<< orphan*/  mreq ;
+typedef TYPE_2__ uv_udp_t ;
+typedef int uv_membership ;
+struct sockaddr_in6 {int sin6_addr; scalar_t__ sin6_scope_id; } ;
+struct ipv6_mreq {int ipv6mr_multiaddr; scalar_t__ ipv6mr_interface; } ;
+typedef int mreq ;
 
-/* Variables and functions */
- scalar_t__ ENXIO ; 
- int /*<<< orphan*/  IPPROTO_IPV6 ; 
- int IPV6_ADD_MEMBERSHIP ; 
- int IPV6_DROP_MEMBERSHIP ; 
- int UV_EINVAL ; 
- int UV_ENODEV ; 
-#define  UV_JOIN_GROUP 129 
-#define  UV_LEAVE_GROUP 128 
- int UV__ERR (scalar_t__) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  memset (struct ipv6_mreq*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ setsockopt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,struct ipv6_mreq*,int) ; 
- scalar_t__ uv_ip6_addr (char const*,int /*<<< orphan*/ ,struct sockaddr_in6*) ; 
+
+ scalar_t__ ENXIO ;
+ int IPPROTO_IPV6 ;
+ int IPV6_ADD_MEMBERSHIP ;
+ int IPV6_DROP_MEMBERSHIP ;
+ int UV_EINVAL ;
+ int UV_ENODEV ;
+
+
+ int UV__ERR (scalar_t__) ;
+ scalar_t__ errno ;
+ int memset (struct ipv6_mreq*,int ,int) ;
+ scalar_t__ setsockopt (int ,int ,int,struct ipv6_mreq*,int) ;
+ scalar_t__ uv_ip6_addr (char const*,int ,struct sockaddr_in6*) ;
 
 __attribute__((used)) static int uv__udp_set_membership6(uv_udp_t* handle,
                                    const struct sockaddr_in6* multicast_addr,
@@ -56,10 +56,10 @@ __attribute__((used)) static int uv__udp_set_membership6(uv_udp_t* handle,
   mreq.ipv6mr_multiaddr = multicast_addr->sin6_addr;
 
   switch (membership) {
-  case UV_JOIN_GROUP:
+  case 129:
     optname = IPV6_ADD_MEMBERSHIP;
     break;
-  case UV_LEAVE_GROUP:
+  case 128:
     optname = IPV6_DROP_MEMBERSHIP;
     break;
   default:
@@ -71,10 +71,10 @@ __attribute__((used)) static int uv__udp_set_membership6(uv_udp_t* handle,
                  optname,
                  &mreq,
                  sizeof(mreq))) {
-#if defined(__MVS__)
-  if (errno == ENXIO)
-    return UV_ENODEV;
-#endif
+
+
+
+
     return UV__ERR(errno);
   }
 

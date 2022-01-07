@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  CompartmentMgr; int /*<<< orphan*/  pTextLayoutSink; int /*<<< orphan*/  pTextEditSink; int /*<<< orphan*/  pStatusSink; int /*<<< orphan*/  pEditTransactionSink; int /*<<< orphan*/  pContextKeyEventSink; scalar_t__ defaultCookie; scalar_t__ pITfContextOwnerCompositionSink; scalar_t__ pITextStoreACP; } ;
-typedef  TYPE_1__ EditCookie ;
-typedef  TYPE_1__ Context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CompartmentMgr_Destructor (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  ITextStoreACP_Release (scalar_t__) ; 
- int /*<<< orphan*/  ITfContextOwnerCompositionSink_Release (scalar_t__) ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__*) ; 
- int /*<<< orphan*/  free_sinks (int /*<<< orphan*/ *) ; 
- TYPE_1__* remove_Cookie (scalar_t__) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int CompartmentMgr; int pTextLayoutSink; int pTextEditSink; int pStatusSink; int pEditTransactionSink; int pContextKeyEventSink; scalar_t__ defaultCookie; scalar_t__ pITfContextOwnerCompositionSink; scalar_t__ pITextStoreACP; } ;
+typedef TYPE_1__ EditCookie ;
+typedef TYPE_1__ Context ;
+
+
+ int CompartmentMgr_Destructor (int ) ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,TYPE_1__*) ;
+ int ITextStoreACP_Release (scalar_t__) ;
+ int ITfContextOwnerCompositionSink_Release (scalar_t__) ;
+ int TRACE (char*,TYPE_1__*) ;
+ int free_sinks (int *) ;
+ TYPE_1__* remove_Cookie (scalar_t__) ;
 
 __attribute__((used)) static void Context_Destructor(Context *This)
 {

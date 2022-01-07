@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int Q_limit ; 
- int Q_order ; 
- size_t* R ; 
- int R_cnt ; 
- int R_position ; 
- int /*<<< orphan*/  R_tot ; 
- int* UserRate ; 
- int user_ad_price (int,int) ; 
+ int Q_limit ;
+ int Q_order ;
+ size_t* R ;
+ int R_cnt ;
+ int R_position ;
+ int R_tot ;
+ int* UserRate ;
+ int user_ad_price (int,int) ;
 
 void store_res_std (int uid) {
   int i, j, r;
   R_tot++;
   if (R_position > 0) {
     r = user_ad_price (uid, R_position);
-    if (r >= Q_limit) { 
-      r = Q_limit - 1; 
+    if (r >= Q_limit) {
+      r = Q_limit - 1;
     } else if (r < 0) {
       r = 0;
     }
@@ -99,5 +91,5 @@ void store_res_std (int uid) {
       R[i] = uid;
     }
     break;
-  }    
+  }
 }

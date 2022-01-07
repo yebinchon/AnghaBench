@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  txt ;
-typedef  int /*<<< orphan*/  str ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int txt ;
+typedef int str ;
 struct TYPE_6__ {TYPE_1__* conf; } ;
-typedef  TYPE_2__ mbedtls_ssl_context ;
-struct TYPE_5__ {int /*<<< orphan*/ * f_dbg; } ;
+typedef TYPE_2__ mbedtls_ssl_context ;
+struct TYPE_5__ {int * f_dbg; } ;
 
-/* Variables and functions */
- int DEBUG_BUF_SIZE ; 
- int /*<<< orphan*/  debug_send_line (TYPE_2__ const*,int,char const*,int,char*) ; 
- int debug_threshold ; 
- scalar_t__ mbedtls_snprintf (char*,int,char*,...) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
+
+ int DEBUG_BUF_SIZE ;
+ int debug_send_line (TYPE_2__ const*,int,char const*,int,char*) ;
+ int debug_threshold ;
+ scalar_t__ mbedtls_snprintf (char*,int,char*,...) ;
+ int memset (char*,int ,int) ;
 
 void mbedtls_debug_print_buf( const mbedtls_ssl_context *ssl, int level,
                       const char *file, int line, const char *text,
@@ -33,7 +33,7 @@ void mbedtls_debug_print_buf( const mbedtls_ssl_context *ssl, int level,
     char txt[17];
     size_t i, idx = 0;
 
-    if( ssl->conf == NULL || ssl->conf->f_dbg == NULL || level > debug_threshold )
+    if( ssl->conf == ((void*)0) || ssl->conf->f_dbg == ((void*)0) || level > debug_threshold )
         return;
 
     mbedtls_snprintf( str + idx, sizeof( str ) - idx, "dumping '%s' (%u bytes)\n",
@@ -71,7 +71,7 @@ void mbedtls_debug_print_buf( const mbedtls_ssl_context *ssl, int level,
 
     if( len > 0 )
     {
-        for( /* i = i */; i % 16 != 0; i++ )
+        for( ; i % 16 != 0; i++ )
             idx += mbedtls_snprintf( str + idx, sizeof( str ) - idx, "   " );
 
         mbedtls_snprintf( str + idx, sizeof( str ) - idx, "  %s\n", txt );

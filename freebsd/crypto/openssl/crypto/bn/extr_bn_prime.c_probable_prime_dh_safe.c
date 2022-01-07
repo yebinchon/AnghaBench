@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ BN_ULONG ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  const BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const* BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_RAND_BOTTOM_ODD ; 
- int /*<<< orphan*/  BN_RAND_TOP_ONE ; 
- int /*<<< orphan*/  BN_add (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_add_word (int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  BN_lshift1 (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_mod (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- scalar_t__ BN_mod_word (int /*<<< orphan*/  const*,scalar_t__) ; 
- int /*<<< orphan*/  BN_rand (int /*<<< orphan*/  const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_rshift1 (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_sub (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int NUMPRIMES ; 
- int /*<<< orphan*/  bn_check_top (int /*<<< orphan*/  const*) ; 
- scalar_t__* primes ; 
+
+
+
+typedef scalar_t__ BN_ULONG ;
+typedef int BN_CTX ;
+typedef int const BIGNUM ;
+
+
+ int BN_CTX_end (int *) ;
+ int const* BN_CTX_get (int *) ;
+ int BN_CTX_start (int *) ;
+ int BN_RAND_BOTTOM_ODD ;
+ int BN_RAND_TOP_ONE ;
+ int BN_add (int const*,int const*,int const*) ;
+ int BN_add_word (int const*,int) ;
+ int BN_lshift1 (int const*,int const*) ;
+ int BN_mod (int const*,int const*,int const*,int *) ;
+ scalar_t__ BN_mod_word (int const*,scalar_t__) ;
+ int BN_rand (int const*,int,int ,int ) ;
+ int BN_rshift1 (int const*,int const*) ;
+ int BN_sub (int const*,int const*,int const*) ;
+ int NUMPRIMES ;
+ int bn_check_top (int const*) ;
+ scalar_t__* primes ;
 
 __attribute__((used)) static int probable_prime_dh_safe(BIGNUM *p, int bits, const BIGNUM *padd,
                                   const BIGNUM *rem, BN_CTX *ctx)
@@ -43,7 +43,7 @@ __attribute__((used)) static int probable_prime_dh_safe(BIGNUM *p, int bits, con
     t1 = BN_CTX_get(ctx);
     q = BN_CTX_get(ctx);
     qadd = BN_CTX_get(ctx);
-    if (qadd == NULL)
+    if (qadd == ((void*)0))
         goto err;
 
     if (!BN_rshift1(qadd, padd))
@@ -52,12 +52,12 @@ __attribute__((used)) static int probable_prime_dh_safe(BIGNUM *p, int bits, con
     if (!BN_rand(q, bits, BN_RAND_TOP_ONE, BN_RAND_BOTTOM_ODD))
         goto err;
 
-    /* we need ((rnd-rem) % add) == 0 */
+
     if (!BN_mod(t1, q, qadd, ctx))
         goto err;
     if (!BN_sub(q, q, t1))
         goto err;
-    if (rem == NULL) {
+    if (rem == ((void*)0)) {
         if (!BN_add_word(q, 1))
             goto err;
     } else {
@@ -67,7 +67,7 @@ __attribute__((used)) static int probable_prime_dh_safe(BIGNUM *p, int bits, con
             goto err;
     }
 
-    /* we now have a random number 'rand' to test. */
+
     if (!BN_lshift1(p, q))
         goto err;
     if (!BN_add_word(p, 1))
@@ -75,10 +75,10 @@ __attribute__((used)) static int probable_prime_dh_safe(BIGNUM *p, int bits, con
 
  loop:
     for (i = 1; i < NUMPRIMES; i++) {
-        /* check that p and q are prime */
-        /*
-         * check that for p and q gcd(p-1,primes) == 1 (except for 2)
-         */
+
+
+
+
         BN_ULONG pmod = BN_mod_word(p, (BN_ULONG)primes[i]);
         BN_ULONG qmod = BN_mod_word(q, (BN_ULONG)primes[i]);
         if (pmod == (BN_ULONG)-1 || qmod == (BN_ULONG)-1)

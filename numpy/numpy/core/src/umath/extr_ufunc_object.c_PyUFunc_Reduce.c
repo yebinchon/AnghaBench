@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int npy_bool ;
-typedef  int /*<<< orphan*/  PyUFuncObject ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArray_Descr ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
 
-/* Variables and functions */
- int NPY_MAXDIMS ; 
- int /*<<< orphan*/  NPY_UF_DBG_PRINT1 (char*,char const*) ; 
- int /*<<< orphan*/  NPY_UNSAFE_CASTING ; 
- scalar_t__ PyArray_ISOBJECT (int /*<<< orphan*/ *) ; 
- int PyArray_NDIM (int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- int /*<<< orphan*/ * PyUFunc_ReduceWrapper (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,char const*,int) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Py_None ; 
- scalar_t__ _get_bufsize_errmask (int /*<<< orphan*/ *,char*,int*,int*) ; 
- int /*<<< orphan*/ * _get_identity (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  npy_cache_import (char*,char*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  reduce_loop ; 
- scalar_t__ reduce_type_resolver (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- char* ufunc_get_name_cstr (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int npy_bool ;
+typedef int PyUFuncObject ;
+typedef int PyObject ;
+typedef int PyArray_Descr ;
+typedef int PyArrayObject ;
+
+
+ int NPY_MAXDIMS ;
+ int NPY_UF_DBG_PRINT1 (char*,char const*) ;
+ int NPY_UNSAFE_CASTING ;
+ scalar_t__ PyArray_ISOBJECT (int *) ;
+ int PyArray_NDIM (int *) ;
+ scalar_t__ PyArray_SIZE (int *) ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_ValueError ;
+ int * PyUFunc_ReduceWrapper (int *,int *,int *,int *,int *,int ,int*,int,int,int ,int *,int ,int *,int,char const*,int) ;
+ int Py_DECREF (int *) ;
+ int Py_INCREF (int *) ;
+ int * Py_None ;
+ scalar_t__ _get_bufsize_errmask (int *,char*,int*,int*) ;
+ int * _get_identity (int *,int*) ;
+ int memset (int*,int ,int) ;
+ int npy_cache_import (char*,char*,int **) ;
+ int reduce_loop ;
+ scalar_t__ reduce_type_resolver (int *,int *,int *,int **) ;
+ char* ufunc_get_name_cstr (int *) ;
 
 __attribute__((used)) static PyArrayObject *
 PyUFunc_Reduce(PyUFuncObject *ufunc, PyArrayObject *arr, PyArrayObject *out,
@@ -49,47 +49,47 @@ PyUFunc_Reduce(PyUFuncObject *ufunc, PyArrayObject *arr, PyArrayObject *out,
     PyArrayObject *result;
     PyObject *identity;
     const char *ufunc_name = ufunc_get_name_cstr(ufunc);
-    /* These parameters come from a TLS global */
+
     int buffersize = 0, errormask = 0;
-    static PyObject *NoValue = NULL;
+    static PyObject *NoValue = ((void*)0);
 
     NPY_UF_DBG_PRINT1("\nEvaluating ufunc %s.reduce\n", ufunc_name);
 
     npy_cache_import("numpy", "_NoValue", &NoValue);
-    if (NoValue == NULL) return NULL;
+    if (NoValue == ((void*)0)) return ((void*)0);
 
     ndim = PyArray_NDIM(arr);
 
-    /* Create an array of flags for reduction */
+
     memset(axis_flags, 0, ndim);
     for (iaxes = 0; iaxes < naxes; ++iaxes) {
         int axis = axes[iaxes];
         if (axis_flags[axis]) {
             PyErr_SetString(PyExc_ValueError,
                     "duplicate value in 'axis'");
-            return NULL;
+            return ((void*)0);
         }
         axis_flags[axis] = 1;
     }
 
-    if (_get_bufsize_errmask(NULL, "reduce", &buffersize, &errormask) < 0) {
-        return NULL;
+    if (_get_bufsize_errmask(((void*)0), "reduce", &buffersize, &errormask) < 0) {
+        return ((void*)0);
     }
 
-    /* Get the identity */
+
     identity = _get_identity(ufunc, &reorderable);
-    if (identity == NULL) {
-        return NULL;
+    if (identity == ((void*)0)) {
+        return ((void*)0);
     }
 
-    /* Get the initial value */
-    if (initial == NULL || initial == NoValue) {
+
+    if (initial == ((void*)0) || initial == NoValue) {
         initial = identity;
 
-        /*
-        * The identity for a dynamic dtype like
-        * object arrays can't be used in general
-        */
+
+
+
+
         if (initial != Py_None && PyArray_ISOBJECT(arr) && PyArray_SIZE(arr) != 0) {
             Py_DECREF(initial);
             initial = Py_None;
@@ -97,13 +97,13 @@ PyUFunc_Reduce(PyUFuncObject *ufunc, PyArrayObject *arr, PyArrayObject *out,
         }
     } else {
         Py_DECREF(identity);
-        Py_INCREF(initial);  /* match the reference count in the if above */
+        Py_INCREF(initial);
     }
 
-    /* Get the reduction dtype */
+
     if (reduce_type_resolver(ufunc, arr, odtype, &dtype) < 0) {
         Py_DECREF(initial);
-        return NULL;
+        return ((void*)0);
     }
 
     result = PyUFunc_ReduceWrapper(arr, out, wheremask, dtype, dtype,

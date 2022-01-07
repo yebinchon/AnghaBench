@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ bHasDocsize; scalar_t__ bFts4; } ;
-typedef  TYPE_1__ Fts3Table ;
+typedef TYPE_1__ Fts3Table ;
 
-/* Variables and functions */
- char FTS3_MATCHINFO_AVGLENGTH ; 
- char FTS3_MATCHINFO_HITS ; 
- char FTS3_MATCHINFO_LCS ; 
- char FTS3_MATCHINFO_LENGTH ; 
- char FTS3_MATCHINFO_LHITS ; 
- char FTS3_MATCHINFO_LHITS_BM ; 
- char FTS3_MATCHINFO_NCOL ; 
- char FTS3_MATCHINFO_NDOC ; 
- char FTS3_MATCHINFO_NPHRASE ; 
- int SQLITE_ERROR ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  sqlite3Fts3ErrMsg (char**,char*,char) ; 
+
+ char FTS3_MATCHINFO_AVGLENGTH ;
+ char FTS3_MATCHINFO_HITS ;
+ char FTS3_MATCHINFO_LCS ;
+ char FTS3_MATCHINFO_LENGTH ;
+ char FTS3_MATCHINFO_LHITS ;
+ char FTS3_MATCHINFO_LHITS_BM ;
+ char FTS3_MATCHINFO_NCOL ;
+ char FTS3_MATCHINFO_NDOC ;
+ char FTS3_MATCHINFO_NPHRASE ;
+ int SQLITE_ERROR ;
+ int SQLITE_OK ;
+ int sqlite3Fts3ErrMsg (char**,char*,char) ;
 
 __attribute__((used)) static int fts3MatchinfoCheck(
-  Fts3Table *pTab, 
+  Fts3Table *pTab,
   char cArg,
   char **pzErr
 ){

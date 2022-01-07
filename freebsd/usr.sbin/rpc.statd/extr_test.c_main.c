@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct sm_stat_res {int dummy; } ;
-struct TYPE_3__ {char* my_name; int my_proc; int /*<<< orphan*/  my_vers; int /*<<< orphan*/  my_prog; } ;
+struct TYPE_3__ {char* my_name; int my_proc; int my_vers; int my_prog; } ;
 struct TYPE_4__ {char* mon_name; TYPE_1__ my_id; } ;
 struct mon {TYPE_2__ mon_id; } ;
-typedef  int /*<<< orphan*/  CLIENT ;
+typedef int CLIENT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SM_PROG ; 
- int /*<<< orphan*/  SM_VERS ; 
- int /*<<< orphan*/ * clnt_create (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  printf (char*) ; 
- struct sm_stat_res* sm_mon_1 (struct mon*,int /*<<< orphan*/ *) ; 
- void* sm_simu_crash_1 (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+ int SM_PROG ;
+ int SM_VERS ;
+ int * clnt_create (char*,int ,int ,char*) ;
+ int exit (int) ;
+ int fprintf (int ,char*) ;
+ int printf (char*) ;
+ struct sm_stat_res* sm_mon_1 (struct mon*,int *) ;
+ void* sm_simu_crash_1 (char*,int *) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
 
 int main(int argc, char **argv)
 {
@@ -56,18 +56,18 @@ int main(int argc, char **argv)
   mon.mon_id.my_id.my_name = argv[1];
   mon.mon_id.my_id.my_prog = SM_PROG;
   mon.mon_id.my_id.my_vers = SM_VERS;
-  mon.mon_id.my_id.my_proc = 1;	/* have it call sm_stat() !!!	*/
+  mon.mon_id.my_id.my_proc = 1;
 
   if (strcmp(argv[1], "crash"))
   {
-    /* Hostname given		*/
+
     struct sm_stat_res *res;
 
     res = sm_mon_1(&mon, cli);
     if (res)
       printf("Success!\n");
     else
-      printf("Fail\n");  
+      printf("Fail\n");
   }
   else
   {
@@ -75,7 +75,7 @@ int main(int argc, char **argv)
     if (out)
       printf("Success!\n");
     else
-      printf("Fail\n");  
+      printf("Fail\n");
   }
 
   return 0;

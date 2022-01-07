@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  void* uint64_t ;
-typedef  int /*<<< orphan*/  int64_t ;
-struct TYPE_12__ {char* data; int /*<<< orphan*/  pos; void* duration; void* pts; int /*<<< orphan*/  stream_index; } ;
-struct TYPE_11__ {int /*<<< orphan*/  index; } ;
-struct TYPE_10__ {int /*<<< orphan*/  queue_end; int /*<<< orphan*/  queue; } ;
-typedef  int /*<<< orphan*/  MatroskaTrack ;
-typedef  TYPE_1__ MatroskaDemuxContext ;
-typedef  TYPE_2__ AVStream ;
-typedef  TYPE_3__ AVPacket ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_PKT_DATA_WEBVTT_IDENTIFIER ; 
- int /*<<< orphan*/  AV_PKT_DATA_WEBVTT_SETTINGS ; 
- int /*<<< orphan*/  ENOMEM ; 
- int av_new_packet (TYPE_3__*,int) ; 
- char* av_packet_new_side_data (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_3__*) ; 
- int ff_packet_list_put (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef char uint8_t ;
+typedef void* uint64_t ;
+typedef int int64_t ;
+struct TYPE_12__ {char* data; int pos; void* duration; void* pts; int stream_index; } ;
+struct TYPE_11__ {int index; } ;
+struct TYPE_10__ {int queue_end; int queue; } ;
+typedef int MatroskaTrack ;
+typedef TYPE_1__ MatroskaDemuxContext ;
+typedef TYPE_2__ AVStream ;
+typedef TYPE_3__ AVPacket ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_PKT_DATA_WEBVTT_IDENTIFIER ;
+ int AV_PKT_DATA_WEBVTT_SETTINGS ;
+ int ENOMEM ;
+ int av_new_packet (TYPE_3__*,int) ;
+ char* av_packet_new_side_data (TYPE_3__*,int ,int) ;
+ int av_packet_unref (TYPE_3__*) ;
+ int ff_packet_list_put (int *,int *,TYPE_3__*,int ) ;
+ int memcpy (char*,char*,int) ;
 
 __attribute__((used)) static int matroska_parse_webvtt(MatroskaDemuxContext *matroska,
                                  MatroskaTrack *track,
@@ -130,14 +130,14 @@ __attribute__((used)) static int matroska_parse_webvtt(MatroskaDemuxContext *mat
         memcpy(buf, settings, settings_len);
     }
 
-    // Do we need this for subtitles?
-    // pkt->flags = AV_PKT_FLAG_KEY;
+
+
 
     pkt->stream_index = st->index;
     pkt->pts = timecode;
 
-    // Do we need this for subtitles?
-    // pkt->dts = timecode;
+
+
 
     pkt->duration = duration;
     pkt->pos = pos;

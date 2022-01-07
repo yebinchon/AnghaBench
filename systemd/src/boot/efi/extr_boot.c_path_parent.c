@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINTN ;
-typedef  int /*<<< orphan*/  UINT8 ;
-typedef  int /*<<< orphan*/  EFI_DEVICE_PATH ;
 
-/* Variables and functions */
- scalar_t__ AllocatePool (int) ; 
- int /*<<< orphan*/  CopyMem (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * EndDevicePath ; 
- scalar_t__ NextDevicePathNode (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int UINTN ;
+typedef int UINT8 ;
+typedef int EFI_DEVICE_PATH ;
+
+
+ scalar_t__ AllocatePool (int) ;
+ int CopyMem (int *,int *,int) ;
+ int * EndDevicePath ;
+ scalar_t__ NextDevicePathNode (int *) ;
 
 EFI_DEVICE_PATH *path_parent(EFI_DEVICE_PATH *path, EFI_DEVICE_PATH *node) {
         EFI_DEVICE_PATH *parent;

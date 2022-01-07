@@ -1,55 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int /*<<< orphan*/  TRUE ; 
-#define  WINED3DSPSM_ABS 140 
-#define  WINED3DSPSM_ABSNEG 139 
-#define  WINED3DSPSM_BIAS 138 
-#define  WINED3DSPSM_BIASNEG 137 
-#define  WINED3DSPSM_COMP 136 
-#define  WINED3DSPSM_DW 135 
-#define  WINED3DSPSM_DZ 134 
-#define  WINED3DSPSM_NEG 133 
-#define  WINED3DSPSM_NONE 132 
-#define  WINED3DSPSM_SIGN 131 
-#define  WINED3DSPSM_SIGNNEG 130 
-#define  WINED3DSPSM_X2 129 
-#define  WINED3DSPSM_X2NEG 128 
 
+
+
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int FIXME (char*,int) ;
+ int TRUE ;
 __attribute__((used)) static DWORD abs_modifier(DWORD mod, BOOL *need_abs)
 {
     *need_abs = FALSE;
 
     switch(mod)
     {
-        case WINED3DSPSM_NONE:      return WINED3DSPSM_ABS;
-        case WINED3DSPSM_NEG:       return WINED3DSPSM_ABS;
-        case WINED3DSPSM_BIAS:      *need_abs = TRUE; return WINED3DSPSM_BIAS;
-        case WINED3DSPSM_BIASNEG:   *need_abs = TRUE; return WINED3DSPSM_BIASNEG;
-        case WINED3DSPSM_SIGN:      *need_abs = TRUE; return WINED3DSPSM_SIGN;
-        case WINED3DSPSM_SIGNNEG:   *need_abs = TRUE; return WINED3DSPSM_SIGNNEG;
-        case WINED3DSPSM_COMP:      *need_abs = TRUE; return WINED3DSPSM_COMP;
-        case WINED3DSPSM_X2:        *need_abs = TRUE; return WINED3DSPSM_X2;
-        case WINED3DSPSM_X2NEG:     *need_abs = TRUE; return WINED3DSPSM_X2NEG;
-        case WINED3DSPSM_DZ:        *need_abs = TRUE; return WINED3DSPSM_DZ;
-        case WINED3DSPSM_DW:        *need_abs = TRUE; return WINED3DSPSM_DW;
-        case WINED3DSPSM_ABS:       return WINED3DSPSM_ABS;
-        case WINED3DSPSM_ABSNEG:    return WINED3DSPSM_ABS;
+        case 132: return 140;
+        case 133: return 140;
+        case 138: *need_abs = TRUE; return 138;
+        case 137: *need_abs = TRUE; return 137;
+        case 131: *need_abs = TRUE; return 131;
+        case 130: *need_abs = TRUE; return 130;
+        case 136: *need_abs = TRUE; return 136;
+        case 129: *need_abs = TRUE; return 129;
+        case 128: *need_abs = TRUE; return 128;
+        case 134: *need_abs = TRUE; return 134;
+        case 135: *need_abs = TRUE; return 135;
+        case 140: return 140;
+        case 139: return 140;
     }
     FIXME("Unknown modifier %u\n", mod);
     return mod;

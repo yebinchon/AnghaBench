@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct wl_shell_surface {int dummy; } ;
-typedef  float int32_t ;
-struct TYPE_5__ {scalar_t__ numer; scalar_t__ denom; scalar_t__ minwidth; scalar_t__ maxwidth; scalar_t__ minheight; scalar_t__ maxheight; int /*<<< orphan*/  monitor; } ;
-typedef  TYPE_1__ _GLFWwindow ;
+typedef float int32_t ;
+struct TYPE_5__ {scalar_t__ numer; scalar_t__ denom; scalar_t__ minwidth; scalar_t__ maxwidth; scalar_t__ minheight; scalar_t__ maxheight; int monitor; } ;
+typedef TYPE_1__ _GLFWwindow ;
 
-/* Variables and functions */
- scalar_t__ GLFW_DONT_CARE ; 
- int /*<<< orphan*/  _glfwInputWindowDamage (TYPE_1__*) ; 
- int /*<<< orphan*/  _glfwInputWindowSize (TYPE_1__*,float,float) ; 
- int /*<<< orphan*/  _glfwPlatformSetWindowSize (TYPE_1__*,float,float) ; 
+
+ scalar_t__ GLFW_DONT_CARE ;
+ int _glfwInputWindowDamage (TYPE_1__*) ;
+ int _glfwInputWindowSize (TYPE_1__*,float,float) ;
+ int _glfwPlatformSetWindowSize (TYPE_1__*,float,float) ;
 
 __attribute__((used)) static void handleConfigure(void* data,
                             struct wl_shell_surface* shellSurface,

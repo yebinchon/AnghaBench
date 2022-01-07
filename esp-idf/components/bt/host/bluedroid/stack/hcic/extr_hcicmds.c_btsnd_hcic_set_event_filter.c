@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT8 ;
-typedef  void* UINT16 ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UINT8 ;
+typedef void* UINT16 ;
 struct TYPE_4__ {void* len; scalar_t__ offset; } ;
-typedef  TYPE_1__ BT_HDR ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+typedef TYPE_1__ BT_HDR ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_TO_STREAM (int*,int*,int) ; 
- int /*<<< orphan*/  BDADDR_TO_STREAM (int*,int*) ; 
- int BD_ADDR_LEN ; 
- int /*<<< orphan*/  DEVCLASS_TO_STREAM (int*,int*) ; 
- int DEV_CLASS_LEN ; 
- int /*<<< orphan*/  FALSE ; 
- int HCIC_PREAMBLE_SIZE ; 
- int HCI_FILTER_COND_BD_ADDR ; 
- int HCI_FILTER_COND_DEVICE_CLASS ; 
- TYPE_1__* HCI_GET_CMD_BUF (int) ; 
- int /*<<< orphan*/  HCI_SET_EVENT_FILTER ; 
- int /*<<< orphan*/  LOCAL_BR_EDR_CONTROLLER_ID ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  UINT16_TO_STREAM (int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UINT8_TO_STREAM (int*,int) ; 
- int /*<<< orphan*/  btu_hcif_send_cmd (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+ int ARRAY_TO_STREAM (int*,int*,int) ;
+ int BDADDR_TO_STREAM (int*,int*) ;
+ int BD_ADDR_LEN ;
+ int DEVCLASS_TO_STREAM (int*,int*) ;
+ int DEV_CLASS_LEN ;
+ int FALSE ;
+ int HCIC_PREAMBLE_SIZE ;
+ int HCI_FILTER_COND_BD_ADDR ;
+ int HCI_FILTER_COND_DEVICE_CLASS ;
+ TYPE_1__* HCI_GET_CMD_BUF (int) ;
+ int HCI_SET_EVENT_FILTER ;
+ int LOCAL_BR_EDR_CONTROLLER_ID ;
+ int TRUE ;
+ int UINT16_TO_STREAM (int*,int ) ;
+ int UINT8_TO_STREAM (int*,int) ;
+ int btu_hcif_send_cmd (int ,TYPE_1__*) ;
 
 BOOLEAN btsnd_hcic_set_event_filter (UINT8 filt_type, UINT8 filt_cond_type,
                                      UINT8 *filt_cond, UINT8 filt_cond_len)
@@ -41,8 +41,8 @@ BOOLEAN btsnd_hcic_set_event_filter (UINT8 filt_type, UINT8 filt_cond_type,
     BT_HDR *p;
     UINT8 *pp;
 
-    /* Use buffer large enough to hold all sizes in this command */
-    if ((p = HCI_GET_CMD_BUF(2 + filt_cond_len)) == NULL) {
+
+    if ((p = HCI_GET_CMD_BUF(2 + filt_cond_len)) == ((void*)0)) {
         return (FALSE);
     }
 
@@ -83,6 +83,6 @@ BOOLEAN btsnd_hcic_set_event_filter (UINT8 filt_type, UINT8 filt_cond_type,
         UINT8_TO_STREAM (pp, filt_type);
     }
 
-    btu_hcif_send_cmd (LOCAL_BR_EDR_CONTROLLER_ID,  p);
+    btu_hcif_send_cmd (LOCAL_BR_EDR_CONTROLLER_ID, p);
     return (TRUE);
 }

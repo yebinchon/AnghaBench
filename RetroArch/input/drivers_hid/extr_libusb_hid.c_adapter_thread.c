@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-struct libusb_adapter {size_t* data; size_t endpoint_in_max_size; size_t slot; int /*<<< orphan*/  endpoint_in; int /*<<< orphan*/  handle; int /*<<< orphan*/  send_control_lock; int /*<<< orphan*/  endpoint_out; int /*<<< orphan*/  send_control_buffer; int /*<<< orphan*/  quitting; TYPE_1__* hid; } ;
-typedef  int /*<<< orphan*/  send_command_size ;
-struct TYPE_2__ {int /*<<< orphan*/ * slots; } ;
-typedef  TYPE_1__ libusb_hid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fifo_read (int /*<<< orphan*/ ,size_t*,size_t) ; 
- int fifo_read_avail (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  libusb_interrupt_transfer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t*,size_t,int*,int) ; 
- int /*<<< orphan*/  pad_connection_packet (int /*<<< orphan*/ *,size_t,size_t*,int) ; 
- int /*<<< orphan*/  slock_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slock_unlock (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
+struct libusb_adapter {size_t* data; size_t endpoint_in_max_size; size_t slot; int endpoint_in; int handle; int send_control_lock; int endpoint_out; int send_control_buffer; int quitting; TYPE_1__* hid; } ;
+typedef int send_command_size ;
+struct TYPE_2__ {int * slots; } ;
+typedef TYPE_1__ libusb_hid_t ;
+
+
+ int fifo_read (int ,size_t*,size_t) ;
+ int fifo_read_avail (int ) ;
+ int libusb_interrupt_transfer (int ,int ,size_t*,size_t,int*,int) ;
+ int pad_connection_packet (int *,size_t,size_t*,int) ;
+ int slock_lock (int ) ;
+ int slock_unlock (int ) ;
 
 __attribute__((used)) static void adapter_thread(void *data)
 {
    uint8_t send_command_buf[4096];
    struct libusb_adapter *adapter = (struct libusb_adapter*)data;
-   libusb_hid_t *hid              = adapter ? adapter->hid : NULL;
+   libusb_hid_t *hid = adapter ? adapter->hid : ((void*)0);
 
    if (!adapter)
       return;

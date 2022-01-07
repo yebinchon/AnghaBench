@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int monitor_id; char* name; int x; int y; int w; int h; scalar_t__ mw; scalar_t__ mh; scalar_t__ primary; struct TYPE_3__* next; } ;
-typedef  TYPE_1__ workarea ;
+typedef TYPE_1__ workarea ;
 struct TYPE_4__ {TYPE_1__* monitors; } ;
 
-/* Variables and functions */
- char* color_bold ; 
- char* color_reset ; 
- int /*<<< orphan*/  fileno (int /*<<< orphan*/ ) ; 
- int isatty (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stdout ; 
- TYPE_2__* xcb ; 
+
+ char* color_bold ;
+ char* color_reset ;
+ int fileno (int ) ;
+ int isatty (int ) ;
+ int printf (char*,...) ;
+ int stdout ;
+ TYPE_2__* xcb ;
 
 void display_dump_monitor_layout ( void )
 {

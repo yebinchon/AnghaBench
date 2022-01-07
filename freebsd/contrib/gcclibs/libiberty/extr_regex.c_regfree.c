@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * translate; scalar_t__ fastmap_accurate; int /*<<< orphan*/ * fastmap; scalar_t__ used; scalar_t__ allocated; int /*<<< orphan*/ * buffer; } ;
-typedef  TYPE_1__ regex_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * translate; scalar_t__ fastmap_accurate; int * fastmap; scalar_t__ used; scalar_t__ allocated; int * buffer; } ;
+typedef TYPE_1__ regex_t ;
+
+
+ int free (int *) ;
 
 void
 regfree (regex_t *preg)
 {
-  if (preg->buffer != NULL)
+  if (preg->buffer != ((void*)0))
     free (preg->buffer);
-  preg->buffer = NULL;
+  preg->buffer = ((void*)0);
 
   preg->allocated = 0;
   preg->used = 0;
 
-  if (preg->fastmap != NULL)
+  if (preg->fastmap != ((void*)0))
     free (preg->fastmap);
-  preg->fastmap = NULL;
+  preg->fastmap = ((void*)0);
   preg->fastmap_accurate = 0;
 
-  if (preg->translate != NULL)
+  if (preg->translate != ((void*)0))
     free (preg->translate);
-  preg->translate = NULL;
+  preg->translate = ((void*)0);
 }

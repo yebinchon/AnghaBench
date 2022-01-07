@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  time_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int time_t ;
 struct tm {int dummy; } ;
-struct TYPE_4__ {size_t init_data_len; int part; int has_qlog; int /*<<< orphan*/  log_name; int /*<<< orphan*/  route_name; int /*<<< orphan*/  lock; int /*<<< orphan*/ * init_data; } ;
-typedef  TYPE_1__ LoggerState ;
+struct TYPE_4__ {size_t init_data_len; int part; int has_qlog; int log_name; int route_name; int lock; int * init_data; } ;
+typedef TYPE_1__ LoggerState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  localtime_r (int /*<<< orphan*/ *,struct tm*) ; 
- scalar_t__ malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pthread_mutex_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  snprintf (int /*<<< orphan*/ ,int,char*,char const*) ; 
- int /*<<< orphan*/  strftime (int /*<<< orphan*/ ,int,char*,struct tm*) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  umask (int /*<<< orphan*/ ) ; 
+
+ int assert (int *) ;
+ int localtime_r (int *,struct tm*) ;
+ scalar_t__ malloc (size_t) ;
+ int memcpy (int *,int const*,size_t) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int pthread_mutex_init (int *,int *) ;
+ int snprintf (int ,int,char*,char const*) ;
+ int strftime (int ,int,char*,struct tm*) ;
+ int time (int *) ;
+ int umask (int ) ;
 
 void logger_init(LoggerState *s, const char* log_name, const uint8_t* init_data, size_t init_data_len, bool has_qlog) {
   memset(s, 0, sizeof(*s));
@@ -40,12 +40,12 @@ void logger_init(LoggerState *s, const char* log_name, const uint8_t* init_data,
 
   umask(0);
 
-  pthread_mutex_init(&s->lock, NULL);
+  pthread_mutex_init(&s->lock, ((void*)0));
 
   s->part = -1;
   s->has_qlog = has_qlog;
 
-  time_t rawtime = time(NULL);
+  time_t rawtime = time(((void*)0));
   struct tm timeinfo;
   localtime_r(&rawtime, &timeinfo);
 

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_5__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {unsigned int i_chunk_count; scalar_t__ i_sample_count; int /*<<< orphan*/  i_track_ID; TYPE_2__* chunk; int /*<<< orphan*/  p_stbl; } ;
-typedef  TYPE_1__ mp4_track_t ;
-struct TYPE_7__ {scalar_t__ i_sample_count; scalar_t__ i_sample_first; int /*<<< orphan*/  i_sample_description_index; int /*<<< orphan*/ * p_sample_offset_pts; int /*<<< orphan*/ * p_sample_count_pts; scalar_t__ i_entries_pts; int /*<<< orphan*/ * p_sample_delta_dts; int /*<<< orphan*/ * p_sample_count_dts; scalar_t__ i_entries_dts; scalar_t__ i_first_dts; int /*<<< orphan*/  i_offset; } ;
-typedef  TYPE_2__ mp4_chunk_t ;
-typedef  int /*<<< orphan*/  demux_t ;
-struct TYPE_8__ {unsigned int i_entry_count; int* i_first_chunk; scalar_t__* i_samples_per_chunk; int /*<<< orphan*/ * i_sample_description_index; int /*<<< orphan*/ * i_chunk_offset; } ;
-typedef  int /*<<< orphan*/  MP4_Box_t ;
 
-/* Variables and functions */
- TYPE_5__* BOXDATA (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * MP4_BoxGet (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ UINT32_MAX ; 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- TYPE_2__* calloc (unsigned int,int) ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  msg_Warn (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ unlikely (int) ; 
+
+typedef struct TYPE_8__ TYPE_5__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {unsigned int i_chunk_count; scalar_t__ i_sample_count; int i_track_ID; TYPE_2__* chunk; int p_stbl; } ;
+typedef TYPE_1__ mp4_track_t ;
+struct TYPE_7__ {scalar_t__ i_sample_count; scalar_t__ i_sample_first; int i_sample_description_index; int * p_sample_offset_pts; int * p_sample_count_pts; scalar_t__ i_entries_pts; int * p_sample_delta_dts; int * p_sample_count_dts; scalar_t__ i_entries_dts; scalar_t__ i_first_dts; int i_offset; } ;
+typedef TYPE_2__ mp4_chunk_t ;
+typedef int demux_t ;
+struct TYPE_8__ {unsigned int i_entry_count; int* i_first_chunk; scalar_t__* i_samples_per_chunk; int * i_sample_description_index; int * i_chunk_offset; } ;
+typedef int MP4_Box_t ;
+
+
+ TYPE_5__* BOXDATA (int *) ;
+ int * MP4_BoxGet (int ,char*) ;
+ scalar_t__ UINT32_MAX ;
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ TYPE_2__* calloc (unsigned int,int) ;
+ int msg_Dbg (int *,char*,int ,unsigned int) ;
+ int msg_Err (int *,char*) ;
+ int msg_Warn (int *,char*) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static int TrackCreateChunksIndex( demux_t *p_demux,
                                    mp4_track_t *p_demux_track )
 {
-    MP4_Box_t *p_co64; /* give offset for each chunk, same for stco and co64 */
+    MP4_Box_t *p_co64;
     MP4_Box_t *p_stsc;
 
     unsigned int i_chunk;
@@ -57,12 +57,12 @@ __attribute__((used)) static int TrackCreateChunksIndex( demux_t *p_demux,
     }
     p_demux_track->chunk = calloc( p_demux_track->i_chunk_count,
                                    sizeof( mp4_chunk_t ) );
-    if( p_demux_track->chunk == NULL )
+    if( p_demux_track->chunk == ((void*)0) )
     {
         return VLC_ENOMEM;
     }
 
-    /* first we read chunk offset */
+
     for( i_chunk = 0; i_chunk < p_demux_track->i_chunk_count; i_chunk++ )
     {
         mp4_chunk_t *ck = &p_demux_track->chunk[i_chunk];
@@ -71,17 +71,17 @@ __attribute__((used)) static int TrackCreateChunksIndex( demux_t *p_demux,
 
         ck->i_first_dts = 0;
         ck->i_entries_dts = 0;
-        ck->p_sample_count_dts = NULL;
-        ck->p_sample_delta_dts = NULL;
+        ck->p_sample_count_dts = ((void*)0);
+        ck->p_sample_delta_dts = ((void*)0);
         ck->i_entries_pts = 0;
-        ck->p_sample_count_pts = NULL;
-        ck->p_sample_offset_pts = NULL;
+        ck->p_sample_count_pts = ((void*)0);
+        ck->p_sample_offset_pts = ((void*)0);
     }
 
-    /* now we read index for SampleEntry( soun vide mp4a mp4v ...)
-        to be used for the sample XXX begin to 1
-        We construct it begining at the end */
-    i_last = p_demux_track->i_chunk_count; /* last chunk proceded */
+
+
+
+    i_last = p_demux_track->i_chunk_count;
     i_index = BOXDATA(p_stsc)->i_entry_count;
 
     while( i_index-- > 0 )
@@ -104,7 +104,7 @@ __attribute__((used)) static int TrackCreateChunksIndex( demux_t *p_demux,
     }
 
     p_demux_track->i_sample_count = 0;
-    bool b_broken = false;
+    bool b_broken = 0;
     if ( p_demux_track->i_chunk_count )
     {
         p_demux_track->chunk[0].i_sample_first = 0;
@@ -116,7 +116,7 @@ __attribute__((used)) static int TrackCreateChunksIndex( demux_t *p_demux,
             mp4_chunk_t *cur = &p_demux_track->chunk[i_chunk];
             if( unlikely(UINT32_MAX - cur->i_sample_count < p_demux_track->i_sample_count) )
             {
-                b_broken = true;
+                b_broken = 1;
                 break;
             }
             p_demux_track->i_sample_count += cur->i_sample_count;

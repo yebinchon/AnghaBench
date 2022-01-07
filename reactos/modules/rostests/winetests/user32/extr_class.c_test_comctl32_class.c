@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  path ;
-typedef  int /*<<< orphan*/  nameW ;
-typedef  int /*<<< orphan*/  WNDCLASSW ;
-typedef  int /*<<< orphan*/  WNDCLASSA ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  ULONG_PTR ;
-typedef  scalar_t__ HWND ;
-typedef  int /*<<< orphan*/ * HMODULE ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int ActivateActCtx (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CP_ACP ; 
- scalar_t__ CreateWindowA (char const*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int DeactivateActCtx (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int DeleteFileA (char*) ; 
- int /*<<< orphan*/  DestroyWindow (scalar_t__) ; 
- int /*<<< orphan*/  FreeLibrary (int /*<<< orphan*/ *) ; 
- int GetClassInfoA (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int GetClassInfoW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/ * GetModuleHandleA (char*) ; 
- int /*<<< orphan*/  GetTempPathA (int,char*) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ReleaseActCtx (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WS_OVERLAPPEDWINDOW ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  comctl32_manifest ; 
- int /*<<< orphan*/  create_manifest_file (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_test_actctx (char*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int path ;
+typedef int nameW ;
+typedef int WNDCLASSW ;
+typedef int WNDCLASSA ;
+typedef int WCHAR ;
+typedef int ULONG_PTR ;
+typedef scalar_t__ HWND ;
+typedef int * HMODULE ;
+typedef int HANDLE ;
+typedef int BOOL ;
+
+
+ int ActivateActCtx (int ,int *) ;
+ int CP_ACP ;
+ scalar_t__ CreateWindowA (char const*,char*,int ,int ,int ,int,int,int *,int *,int *,int ) ;
+ int DeactivateActCtx (int ,int ) ;
+ int DeleteFileA (char*) ;
+ int DestroyWindow (scalar_t__) ;
+ int FreeLibrary (int *) ;
+ int GetClassInfoA (int ,char const*,int *) ;
+ int GetClassInfoW (int ,int *,int *) ;
+ int GetLastError () ;
+ int * GetModuleHandleA (char*) ;
+ int GetTempPathA (int,char*) ;
+ int MAX_PATH ;
+ int MultiByteToWideChar (int ,int ,char const*,int,int *,int) ;
+ int ReleaseActCtx (int ) ;
+ int WS_OVERLAPPEDWINDOW ;
+ scalar_t__ broken (int) ;
+ int comctl32_manifest ;
+ int create_manifest_file (char*,int ) ;
+ int create_test_actctx (char*) ;
+ int ok (int,char*,...) ;
+ int strcat (char*,char*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_comctl32_class( const char *name )
 {
@@ -77,9 +77,9 @@ __attribute__((used)) static void test_comctl32_class( const char *name )
         ret = ActivateActCtx(context, &cookie);
         ok(ret, "Failed to activate context.\n");
 
-        /* Some systems load modules during context activation. In this case skip the rest of the test. */
+
         module = GetModuleHandleA( "comctl32" );
-        ok( !module || broken(module != NULL) /* Vista/Win7 */, "comctl32 already loaded\n" );
+        ok( !module || broken(module != ((void*)0)) , "comctl32 already loaded\n" );
         if (module)
         {
             win_skip("Module loaded during context activation. Skipping tests.\n");
@@ -87,7 +87,7 @@ __attribute__((used)) static void test_comctl32_class( const char *name )
         }
 
         ret = GetClassInfoA( 0, name, &wcA );
-        ok( ret || broken(!ret) /* WinXP */, "GetClassInfoA failed for %s\n", name );
+        ok( ret || broken(!ret) , "GetClassInfoA failed for %s\n", name );
         if (!ret)
             goto skiptest;
 
@@ -98,8 +98,8 @@ __attribute__((used)) static void test_comctl32_class( const char *name )
         ok( module != 0, "comctl32 not loaded\n" );
         FreeLibrary( module );
         module = GetModuleHandleA( "comctl32" );
-        ok( !module || broken(module != NULL) /* Vista */, "comctl32 still loaded\n" );
-        hwnd = CreateWindowA( name, "test", WS_OVERLAPPEDWINDOW, 0, 0, 10, 10, NULL, NULL, NULL, 0 );
+        ok( !module || broken(module != ((void*)0)) , "comctl32 still loaded\n" );
+        hwnd = CreateWindowA( name, "test", WS_OVERLAPPEDWINDOW, 0, 0, 10, 10, ((void*)0), ((void*)0), ((void*)0), 0 );
         ok( hwnd != 0, "failed to create window for %s\n", name );
         module = GetModuleHandleA( "comctl32" );
         ok( module != 0, "comctl32 not loaded\n" );
@@ -115,7 +115,7 @@ __attribute__((used)) static void test_comctl32_class( const char *name )
         module = GetModuleHandleA( "comctl32" );
         ok( !module, "comctl32 already loaded\n" );
         ret = GetClassInfoA( 0, name, &wcA );
-        ok( ret || broken(!ret) /* <= winxp */, "GetClassInfoA failed for %s\n", name );
+        ok( ret || broken(!ret) , "GetClassInfoA failed for %s\n", name );
         if (!ret) return;
         MultiByteToWideChar( CP_ACP, 0, name, -1, nameW, sizeof(nameW)/sizeof(WCHAR) );
         ret = GetClassInfoW( 0, nameW, &wcW );
@@ -125,7 +125,7 @@ __attribute__((used)) static void test_comctl32_class( const char *name )
         FreeLibrary( module );
         module = GetModuleHandleA( "comctl32" );
         ok( !module, "comctl32 still loaded\n" );
-        hwnd = CreateWindowA( name, "test", WS_OVERLAPPEDWINDOW, 0, 0, 10, 10, NULL, NULL, NULL, 0 );
+        hwnd = CreateWindowA( name, "test", WS_OVERLAPPEDWINDOW, 0, 0, 10, 10, ((void*)0), ((void*)0), ((void*)0), 0 );
         ok( hwnd != 0, "failed to create window for %s\n", name );
         module = GetModuleHandleA( "comctl32" );
         ok( module != 0, "comctl32 not loaded\n" );

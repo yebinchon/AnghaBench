@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  List ;
-typedef  int /*<<< orphan*/  HTAB ;
-typedef  int /*<<< orphan*/  HASH_SEQ_STATUS ;
-typedef  int /*<<< orphan*/  CopyConnectionState ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * NIL ; 
- int /*<<< orphan*/  hash_seq_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ hash_seq_search (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * lappend (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int List ;
+typedef int HTAB ;
+typedef int HASH_SEQ_STATUS ;
+typedef int CopyConnectionState ;
+
+
+ int * NIL ;
+ int hash_seq_init (int *,int *) ;
+ scalar_t__ hash_seq_search (int *) ;
+ int * lappend (int *,int *) ;
 
 __attribute__((used)) static List *
 ConnectionStateList(HTAB *connectionStateHash)
 {
-	List *connectionStateList = NIL;
-	HASH_SEQ_STATUS status;
-	CopyConnectionState *connectionState = NULL;
+ List *connectionStateList = NIL;
+ HASH_SEQ_STATUS status;
+ CopyConnectionState *connectionState = ((void*)0);
 
-	hash_seq_init(&status, connectionStateHash);
+ hash_seq_init(&status, connectionStateHash);
 
-	connectionState = (CopyConnectionState *) hash_seq_search(&status);
-	while (connectionState != NULL)
-	{
-		connectionStateList = lappend(connectionStateList, connectionState);
+ connectionState = (CopyConnectionState *) hash_seq_search(&status);
+ while (connectionState != ((void*)0))
+ {
+  connectionStateList = lappend(connectionStateList, connectionState);
 
-		connectionState = (CopyConnectionState *) hash_seq_search(&status);
-	}
+  connectionState = (CopyConnectionState *) hash_seq_search(&status);
+ }
 
-	return connectionStateList;
+ return connectionStateList;
 }

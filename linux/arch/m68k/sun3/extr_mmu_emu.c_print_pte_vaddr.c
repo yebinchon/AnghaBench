@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  __pte (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pr_cont (char*,unsigned long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_pte (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sun3_get_pte (unsigned long) ; 
- int /*<<< orphan*/  sun3_get_segmap (unsigned long) ; 
+ int __pte (int ) ;
+ int pr_cont (char*,unsigned long,int ) ;
+ int print_pte (int ) ;
+ int sun3_get_pte (unsigned long) ;
+ int sun3_get_segmap (unsigned long) ;
 
 void print_pte_vaddr (unsigned long vaddr)
 {
-	pr_cont(" vaddr=%lx [%02lx]", vaddr, sun3_get_segmap (vaddr));
-	print_pte (__pte (sun3_get_pte (vaddr)));
+ pr_cont(" vaddr=%lx [%02lx]", vaddr, sun3_get_segmap (vaddr));
+ print_pte (__pte (sun3_get_pte (vaddr)));
 }

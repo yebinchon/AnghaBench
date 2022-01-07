@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  scalar_t__ sqlite3_int64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fts3GetReverseVarint (char**,char*,scalar_t__*) ; 
- int /*<<< orphan*/  fts3PoslistCopy (int /*<<< orphan*/ ,char**) ; 
- int /*<<< orphan*/  fts3ReversePoslist (char*,char**) ; 
- int /*<<< orphan*/  sqlite3Fts3GetVarint (char*,scalar_t__*) ; 
+
+
+
+typedef int u8 ;
+typedef scalar_t__ sqlite3_int64 ;
+
+
+ int assert (int) ;
+ int fts3GetReverseVarint (char**,char*,scalar_t__*) ;
+ int fts3PoslistCopy (int ,char**) ;
+ int fts3ReversePoslist (char*,char**) ;
+ int sqlite3Fts3GetVarint (char*,scalar_t__*) ;
 
 void sqlite3Fts3DoclistPrev(
-  int bDescIdx,                   /* True if the doclist is desc */
-  char *aDoclist,                 /* Pointer to entire doclist */
-  int nDoclist,                   /* Length of aDoclist in bytes */
-  char **ppIter,                  /* IN/OUT: Iterator pointer */
-  sqlite3_int64 *piDocid,         /* IN/OUT: Docid pointer */
-  int *pnList,                    /* OUT: List length pointer */
-  u8 *pbEof                       /* OUT: End-of-file flag */
+  int bDescIdx,
+  char *aDoclist,
+  int nDoclist,
+  char **ppIter,
+  sqlite3_int64 *piDocid,
+  int *pnList,
+  u8 *pbEof
 ){
   char *p = *ppIter;
 

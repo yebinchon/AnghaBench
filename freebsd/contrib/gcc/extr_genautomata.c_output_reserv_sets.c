@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  set_el_t ;
-typedef  scalar_t__ reserv_sets_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int els_in_cycle_reserv ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*) ; 
- int max_cycles_num ; 
- scalar_t__ memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  output_cycle_reservs (int /*<<< orphan*/ *,scalar_t__,int,int) ; 
+
+
+
+typedef int set_el_t ;
+typedef scalar_t__ reserv_sets_t ;
+typedef int FILE ;
+
+
+ int els_in_cycle_reserv ;
+ int fprintf (int *,char*) ;
+ int max_cycles_num ;
+ scalar_t__ memcmp (char*,char*,int) ;
+ int output_cycle_reservs (int *,scalar_t__,int,int) ;
 
 __attribute__((used)) static void
 output_reserv_sets (FILE *f, reserv_sets_t reservs)
@@ -37,10 +37,10 @@ output_reserv_sets (FILE *f, reserv_sets_t reservs)
       }
     else if (memcmp
              ((char *) reservs + start_cycle * els_in_cycle_reserv
-	      * sizeof (set_el_t),
+       * sizeof (set_el_t),
               (char *) reservs + cycle * els_in_cycle_reserv
-	      * sizeof (set_el_t),
-	      els_in_cycle_reserv * sizeof (set_el_t)) == 0)
+       * sizeof (set_el_t),
+       els_in_cycle_reserv * sizeof (set_el_t)) == 0)
       repetition_num++;
     else
       {

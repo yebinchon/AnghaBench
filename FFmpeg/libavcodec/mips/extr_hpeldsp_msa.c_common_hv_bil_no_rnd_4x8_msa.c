@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_36__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ v8u16 ;
-struct TYPE_36__ {int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HADD_UB2_UH (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  HADD_UB3_UH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ILVR_B2_UH (TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ILVR_B3_UH (TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,scalar_t__,scalar_t__,scalar_t__) ; 
- TYPE_1__ LD_SB (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  LD_SB4 (int /*<<< orphan*/  const*,int,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__) ; 
- int /*<<< orphan*/  PCKEV_B2_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,TYPE_1__,TYPE_1__) ; 
- int /*<<< orphan*/  SLDI_B2_SB (TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,int,TYPE_1__,TYPE_1__) ; 
- int /*<<< orphan*/  SLDI_B3_SB (TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,int,TYPE_1__,TYPE_1__,TYPE_1__) ; 
- int /*<<< orphan*/  SRA_4V (scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  ST_D4 (TYPE_1__,TYPE_1__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_36__ TYPE_1__ ;
+
+
+typedef scalar_t__ v8u16 ;
+struct TYPE_36__ {int member_0; } ;
+typedef TYPE_1__ v16i8 ;
+typedef int uint8_t ;
+typedef int int32_t ;
+
+
+ int HADD_UB2_UH (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int HADD_UB3_UH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ILVR_B2_UH (TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,scalar_t__,scalar_t__) ;
+ int ILVR_B3_UH (TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,scalar_t__,scalar_t__,scalar_t__) ;
+ TYPE_1__ LD_SB (int const*) ;
+ int LD_SB4 (int const*,int,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__) ;
+ int PCKEV_B2_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,TYPE_1__,TYPE_1__) ;
+ int SLDI_B2_SB (TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,int,TYPE_1__,TYPE_1__) ;
+ int SLDI_B3_SB (TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,int,TYPE_1__,TYPE_1__,TYPE_1__) ;
+ int SRA_4V (scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ;
+ int ST_D4 (TYPE_1__,TYPE_1__,int ,int,int ,int,int *,int) ;
 
 __attribute__((used)) static void common_hv_bil_no_rnd_4x8_msa(const uint8_t *src, int32_t src_stride,
                                          uint8_t *dst, int32_t dst_stride)

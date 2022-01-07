@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
 struct iovec {int dummy; } ;
 struct TYPE_4__ {scalar_t__ monotonic; scalar_t__ realtime; } ;
-typedef  TYPE_1__ dual_timestamp ;
-typedef  int /*<<< orphan*/  JournalFile ;
+typedef TYPE_1__ dual_timestamp ;
+typedef int JournalFile ;
 
-/* Variables and functions */
- struct iovec IOVEC_MAKE_STRING (char*) ; 
- scalar_t__ asprintf (char**,char*,int) ; 
- int /*<<< orphan*/  assert_ret (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/  dual_timestamp_get (TYPE_1__*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  journal_file_append_entry (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,struct iovec*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ struct iovec IOVEC_MAKE_STRING (char*) ;
+ scalar_t__ asprintf (char**,char*,int) ;
+ int assert_ret (int ) ;
+ int assert_se (int) ;
+ int dual_timestamp_get (TYPE_1__*) ;
+ int free (char*) ;
+ int journal_file_append_entry (int *,TYPE_1__*,int *,struct iovec*,int,int *,int *,int *) ;
 
 __attribute__((used)) static void append_number(JournalFile *f, int n, uint64_t *seqnum) {
         char *p;
@@ -44,6 +44,6 @@ __attribute__((used)) static void append_number(JournalFile *f, int n, uint64_t 
 
         assert_se(asprintf(&p, "NUMBER=%d", n) >= 0);
         iovec[0] = IOVEC_MAKE_STRING(p);
-        assert_ret(journal_file_append_entry(f, &ts, NULL, iovec, 1, seqnum, NULL, NULL));
+        assert_ret(journal_file_append_entry(f, &ts, ((void*)0), iovec, 1, seqnum, ((void*)0), ((void*)0)));
         free(p);
 }

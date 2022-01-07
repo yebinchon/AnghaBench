@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ctlr_info {int dummy; } ;
-struct CommandList {int /*<<< orphan*/ * waiting; } ;
+struct CommandList {int * waiting; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DECLARE_COMPLETION_ONSTACK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  enqueue_cmd_and_start_io (struct ctlr_info*,struct CommandList*) ; 
- int /*<<< orphan*/  wait ; 
- int /*<<< orphan*/  wait_for_completion (int /*<<< orphan*/ *) ; 
+
+ int DECLARE_COMPLETION_ONSTACK (int ) ;
+ int enqueue_cmd_and_start_io (struct ctlr_info*,struct CommandList*) ;
+ int wait ;
+ int wait_for_completion (int *) ;
 
 __attribute__((used)) static inline void hpsa_scsi_do_simple_cmd_core(struct ctlr_info *h,
-	struct CommandList *c)
+ struct CommandList *c)
 {
-	DECLARE_COMPLETION_ONSTACK(wait);
+ DECLARE_COMPLETION_ONSTACK(wait);
 
-	c->waiting = &wait;
-	enqueue_cmd_and_start_io(h, c);
-	wait_for_completion(&wait);
+ c->waiting = &wait;
+ enqueue_cmd_and_start_io(h, c);
+ wait_for_completion(&wait);
 }

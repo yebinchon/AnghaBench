@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct latencyTimeSeries {int idx; int /*<<< orphan*/  max; TYPE_1__* samples; } ;
-typedef  int /*<<< orphan*/  dictIterator ;
-typedef  int /*<<< orphan*/  dictEntry ;
-typedef  int /*<<< orphan*/  client ;
-struct TYPE_4__ {int /*<<< orphan*/  latency_events; } ;
-struct TYPE_3__ {int /*<<< orphan*/  latency; int /*<<< orphan*/  time; } ;
 
-/* Variables and functions */
- int LATENCY_TS_LEN ; 
- int /*<<< orphan*/  addReplyArrayLen (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  addReplyBulkCString (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  addReplyLongLong (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * dictGetIterator (int /*<<< orphan*/ ) ; 
- char* dictGetKey (int /*<<< orphan*/ *) ; 
- struct latencyTimeSeries* dictGetVal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * dictNext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dictReleaseIterator (int /*<<< orphan*/ *) ; 
- int dictSize (int /*<<< orphan*/ ) ; 
- TYPE_2__ server ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct latencyTimeSeries {int idx; int max; TYPE_1__* samples; } ;
+typedef int dictIterator ;
+typedef int dictEntry ;
+typedef int client ;
+struct TYPE_4__ {int latency_events; } ;
+struct TYPE_3__ {int latency; int time; } ;
+
+
+ int LATENCY_TS_LEN ;
+ int addReplyArrayLen (int *,int) ;
+ int addReplyBulkCString (int *,char*) ;
+ int addReplyLongLong (int *,int ) ;
+ int * dictGetIterator (int ) ;
+ char* dictGetKey (int *) ;
+ struct latencyTimeSeries* dictGetVal (int *) ;
+ int * dictNext (int *) ;
+ int dictReleaseIterator (int *) ;
+ int dictSize (int ) ;
+ TYPE_2__ server ;
 
 void latencyCommandReplyWithLatestEvents(client *c) {
     dictIterator *di;
@@ -38,7 +38,7 @@ void latencyCommandReplyWithLatestEvents(client *c) {
 
     addReplyArrayLen(c,dictSize(server.latency_events));
     di = dictGetIterator(server.latency_events);
-    while((de = dictNext(di)) != NULL) {
+    while((de = dictNext(di)) != ((void*)0)) {
         char *event = dictGetKey(de);
         struct latencyTimeSeries *ts = dictGetVal(de);
         int last = (ts->idx + LATENCY_TS_LEN - 1) % LATENCY_TS_LEN;

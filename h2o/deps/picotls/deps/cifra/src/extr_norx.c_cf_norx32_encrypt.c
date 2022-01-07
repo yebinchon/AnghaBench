@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  norx32_ctx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  do_header (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  do_trailer (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  encrypt_body (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  get_tag (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  mem_clean (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int norx32_ctx ;
+
+
+ int do_header (int *,int const*,size_t) ;
+ int do_trailer (int *,int const*,size_t) ;
+ int encrypt_body (int *,int const*,int *,size_t) ;
+ int get_tag (int *,int *) ;
+ int init (int *,int const*,int const*) ;
+ int mem_clean (int *,int) ;
 
 void cf_norx32_encrypt(const uint8_t key[16],
                        const uint8_t nonce[8],

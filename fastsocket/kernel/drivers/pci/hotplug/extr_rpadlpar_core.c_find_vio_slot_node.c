@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device_node {int dummy; } ;
 
-/* Variables and functions */
- struct device_node* of_find_node_by_name (int /*<<< orphan*/ *,char*) ; 
- struct device_node* of_get_next_child (struct device_node*,struct device_node*) ; 
- int rpaphp_get_drc_props (struct device_node*,int /*<<< orphan*/ *,char**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
+
+ struct device_node* of_find_node_by_name (int *,char*) ;
+ struct device_node* of_get_next_child (struct device_node*,struct device_node*) ;
+ int rpaphp_get_drc_props (struct device_node*,int *,char**,int *,int *) ;
+ int strcmp (char*,char*) ;
 
 __attribute__((used)) static struct device_node *find_vio_slot_node(char *drc_name)
 {
-	struct device_node *parent = of_find_node_by_name(NULL, "vdevice");
-	struct device_node *dn = NULL;
-	char *name;
-	int rc;
+ struct device_node *parent = of_find_node_by_name(((void*)0), "vdevice");
+ struct device_node *dn = ((void*)0);
+ char *name;
+ int rc;
 
-	if (!parent)
-		return NULL;
+ if (!parent)
+  return ((void*)0);
 
-	while ((dn = of_get_next_child(parent, dn))) {
-		rc = rpaphp_get_drc_props(dn, NULL, &name, NULL, NULL);
-		if ((rc == 0) && (!strcmp(drc_name, name)))
-			break;
-	}
+ while ((dn = of_get_next_child(parent, dn))) {
+  rc = rpaphp_get_drc_props(dn, ((void*)0), &name, ((void*)0), ((void*)0));
+  if ((rc == 0) && (!strcmp(drc_name, name)))
+   break;
+ }
 
-	return dn;
+ return dn;
 }

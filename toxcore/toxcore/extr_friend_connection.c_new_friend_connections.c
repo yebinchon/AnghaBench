@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  dht; int /*<<< orphan*/  net_crypto; TYPE_1__* onion_c; } ;
-struct TYPE_7__ {int /*<<< orphan*/  c; int /*<<< orphan*/  dht; } ;
-typedef  TYPE_1__ Onion_Client ;
-typedef  TYPE_2__ Friend_Connections ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LANdiscovery_init (int /*<<< orphan*/ ) ; 
- TYPE_2__* calloc (int,int) ; 
- int /*<<< orphan*/  handle_new_connections ; 
- int /*<<< orphan*/  new_connection_handler (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__*) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int dht; int net_crypto; TYPE_1__* onion_c; } ;
+struct TYPE_7__ {int c; int dht; } ;
+typedef TYPE_1__ Onion_Client ;
+typedef TYPE_2__ Friend_Connections ;
+
+
+ int LANdiscovery_init (int ) ;
+ TYPE_2__* calloc (int,int) ;
+ int handle_new_connections ;
+ int new_connection_handler (int ,int *,TYPE_2__*) ;
 
 Friend_Connections *new_friend_connections(Onion_Client *onion_c)
 {
     if (!onion_c)
-        return NULL;
+        return ((void*)0);
 
     Friend_Connections *temp = calloc(1, sizeof(Friend_Connections));
 
-    if (temp == NULL)
-        return NULL;
+    if (temp == ((void*)0))
+        return ((void*)0);
 
     temp->dht = onion_c->dht;
     temp->net_crypto = onion_c->c;

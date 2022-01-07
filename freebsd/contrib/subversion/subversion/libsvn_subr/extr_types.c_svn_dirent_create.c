@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * last_author; scalar_t__ time; int /*<<< orphan*/  created_rev; int /*<<< orphan*/  size; int /*<<< orphan*/  kind; } ;
-typedef  TYPE_1__ svn_dirent_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_INVALID_FILESIZE ; 
- int /*<<< orphan*/  SVN_INVALID_REVNUM ; 
- TYPE_1__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  svn_node_unknown ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * last_author; scalar_t__ time; int created_rev; int size; int kind; } ;
+typedef TYPE_1__ svn_dirent_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_INVALID_FILESIZE ;
+ int SVN_INVALID_REVNUM ;
+ TYPE_1__* apr_pcalloc (int *,int) ;
+ int svn_node_unknown ;
 
 svn_dirent_t *
 svn_dirent_create(apr_pool_t *result_pool)
@@ -30,7 +30,7 @@ svn_dirent_create(apr_pool_t *result_pool)
   new_dirent->size = SVN_INVALID_FILESIZE;
   new_dirent->created_rev = SVN_INVALID_REVNUM;
   new_dirent->time = 0;
-  new_dirent->last_author = NULL;
+  new_dirent->last_author = ((void*)0);
 
   return new_dirent;
 }

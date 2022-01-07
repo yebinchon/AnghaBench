@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int cast_int (unsigned int) ; 
+ int cast_int (unsigned int) ;
 
 int luaO_int2fb (unsigned int x) {
-  int e = 0;  /* expoent */
+  int e = 0;
   while (x >= 16) {
     x = (x+1) >> 1;
     e++;

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_7__ {double amount; int msize_x; int msize_y; int steps_y; int steps_x; void** sc; void* sr; } ;
-typedef  TYPE_1__ UnsharpFilterParam ;
+typedef TYPE_1__ UnsharpFilterParam ;
 struct TYPE_8__ {int nb_threads; } ;
-typedef  TYPE_2__ UnsharpContext ;
+typedef TYPE_2__ UnsharpContext ;
 struct TYPE_9__ {TYPE_2__* priv; } ;
-typedef  TYPE_3__ AVFilterContext ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_VERBOSE ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int MAX_MATRIX_SIZE ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,char const*,...) ; 
- void* av_malloc_array (int,int) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_VERBOSE ;
+ int EINVAL ;
+ int ENOMEM ;
+ int MAX_MATRIX_SIZE ;
+ int av_log (TYPE_3__*,int ,char*,char const*,...) ;
+ void* av_malloc_array (int,int) ;
 
 __attribute__((used)) static int init_filter_param(AVFilterContext *ctx, UnsharpFilterParam *fp, const char *effect_type, int width)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static int init_filter_param(AVFilterContext *ctx, Unsharp
     UnsharpContext *s = ctx->priv;
     const char *effect = fp->amount == 0 ? "none" : fp->amount < 0 ? "blur" : "sharpen";
 
-    if  (!(fp->msize_x & fp->msize_y & 1)) {
+    if (!(fp->msize_x & fp->msize_y & 1)) {
         av_log(ctx, AV_LOG_ERROR,
                "Invalid even size for %s matrix size %dx%d\n",
                effect_type, fp->msize_x, fp->msize_y);

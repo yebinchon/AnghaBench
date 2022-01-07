@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_3__ {scalar_t__ codec_id; int /*<<< orphan*/  extradata_size; int /*<<< orphan*/  extradata; } ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
-typedef  TYPE_1__ AVCodecParameters ;
 
-/* Variables and functions */
- scalar_t__ AV_CODEC_ID_VORBIS ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  avio_w8 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- scalar_t__ avpriv_split_xiph_headers (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/  const**,int*) ; 
- int /*<<< orphan*/  put_xiph_size (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_3__ {scalar_t__ codec_id; int extradata_size; int extradata; } ;
+typedef int AVIOContext ;
+typedef int AVFormatContext ;
+typedef TYPE_1__ AVCodecParameters ;
+
+
+ scalar_t__ AV_CODEC_ID_VORBIS ;
+ int AV_LOG_ERROR ;
+ int av_log (int *,int ,char*) ;
+ int avio_w8 (int *,int) ;
+ int avio_write (int *,int const*,int) ;
+ scalar_t__ avpriv_split_xiph_headers (int ,int ,int,int const**,int*) ;
+ int put_xiph_size (int *,int) ;
 
 __attribute__((used)) static int put_xiph_codecpriv(AVFormatContext *s, AVIOContext *pb, AVCodecParameters *par)
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static int put_xiph_codecpriv(AVFormatContext *s, AVIOCont
         return -1;
     }
 
-    avio_w8(pb, 2);                    // number packets - 1
+    avio_w8(pb, 2);
     for (j = 0; j < 2; j++) {
         put_xiph_size(pb, header_len[j]);
     }

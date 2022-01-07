@@ -1,74 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct pt_regs {int dummy; } ;
-struct TYPE_3__ {int /*<<< orphan*/  trap_no; } ;
+struct TYPE_3__ {int trap_no; } ;
 struct TYPE_4__ {TYPE_1__ thread; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DIE_OOPS ; 
- int /*<<< orphan*/  SIGSEGV ; 
- int /*<<< orphan*/  TAINT_DIE ; 
- int /*<<< orphan*/  add_taint (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bust_spinlocks (int) ; 
- int /*<<< orphan*/  console_verbose () ; 
- TYPE_2__* current ; 
- int /*<<< orphan*/  debug_stop_all () ; 
- int /*<<< orphan*/  die_lock ; 
- int /*<<< orphan*/  do_exit (int /*<<< orphan*/ ) ; 
- scalar_t__ in_interrupt () ; 
- int /*<<< orphan*/  lgr_info_log () ; 
- int /*<<< orphan*/  notify_die (int /*<<< orphan*/ ,char const*,struct pt_regs*,long,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  oops_enter () ; 
- int /*<<< orphan*/  oops_exit () ; 
- int /*<<< orphan*/  panic (char*) ; 
- scalar_t__ panic_on_oops ; 
- int /*<<< orphan*/  printk (char*,...) ; 
- int /*<<< orphan*/  show_regs (struct pt_regs*) ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
+
+ int DIE_OOPS ;
+ int SIGSEGV ;
+ int TAINT_DIE ;
+ int add_taint (int ) ;
+ int bust_spinlocks (int) ;
+ int console_verbose () ;
+ TYPE_2__* current ;
+ int debug_stop_all () ;
+ int die_lock ;
+ int do_exit (int ) ;
+ scalar_t__ in_interrupt () ;
+ int lgr_info_log () ;
+ int notify_die (int ,char const*,struct pt_regs*,long,int ,int ) ;
+ int oops_enter () ;
+ int oops_exit () ;
+ int panic (char*) ;
+ scalar_t__ panic_on_oops ;
+ int printk (char*,...) ;
+ int show_regs (struct pt_regs*) ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
 
 void die(const char * str, struct pt_regs * regs, long err)
 {
-	static int die_counter;
+ static int die_counter;
 
-	oops_enter();
-	lgr_info_log();
-	debug_stop_all();
-	console_verbose();
-	spin_lock_irq(&die_lock);
-	bust_spinlocks(1);
-	printk("%s: %04lx [#%d] ", str, err & 0xffff, ++die_counter);
-#ifdef CONFIG_PREEMPT
-	printk("PREEMPT ");
-#endif
-#ifdef CONFIG_SMP
-	printk("SMP ");
-#endif
-#ifdef CONFIG_DEBUG_PAGEALLOC
-	printk("DEBUG_PAGEALLOC");
-#endif
-	printk("\n");
-	notify_die(DIE_OOPS, str, regs, err, current->thread.trap_no, SIGSEGV);
-	show_regs(regs);
-	bust_spinlocks(0);
-	add_taint(TAINT_DIE);
-	spin_unlock_irq(&die_lock);
-	if (in_interrupt())
-		panic("Fatal exception in interrupt");
-	if (panic_on_oops)
-		panic("Fatal exception: panic_on_oops");
-	oops_exit();
-	do_exit(SIGSEGV);
+ oops_enter();
+ lgr_info_log();
+ debug_stop_all();
+ console_verbose();
+ spin_lock_irq(&die_lock);
+ bust_spinlocks(1);
+ printk("%s: %04lx [#%d] ", str, err & 0xffff, ++die_counter);
+ printk("\n");
+ notify_die(DIE_OOPS, str, regs, err, current->thread.trap_no, SIGSEGV);
+ show_regs(regs);
+ bust_spinlocks(0);
+ add_taint(TAINT_DIE);
+ spin_unlock_irq(&die_lock);
+ if (in_interrupt())
+  panic("Fatal exception in interrupt");
+ if (panic_on_oops)
+  panic("Fatal exception: panic_on_oops");
+ oops_exit();
+ do_exit(SIGSEGV);
 }

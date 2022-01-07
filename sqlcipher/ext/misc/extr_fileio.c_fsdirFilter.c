@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab_cursor ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-struct TYPE_4__ {char const* zBase; int nBase; scalar_t__ zPath; int /*<<< orphan*/  sStat; } ;
-typedef  TYPE_1__ fsdir_cursor ;
 
-/* Variables and functions */
- int SQLITE_ERROR ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ fileLinkStat (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fsdirResetCursor (TYPE_1__*) ; 
- int /*<<< orphan*/  fsdirSetErrmsg (TYPE_1__*,char*,...) ; 
- void* sqlite3_mprintf (char*,char const*,...) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
- scalar_t__ strlen (char const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sqlite3_vtab_cursor ;
+typedef int sqlite3_value ;
+struct TYPE_4__ {char const* zBase; int nBase; scalar_t__ zPath; int sStat; } ;
+typedef TYPE_1__ fsdir_cursor ;
+
+
+ int SQLITE_ERROR ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ scalar_t__ fileLinkStat (scalar_t__,int *) ;
+ int fsdirResetCursor (TYPE_1__*) ;
+ int fsdirSetErrmsg (TYPE_1__*,char*,...) ;
+ void* sqlite3_mprintf (char*,char const*,...) ;
+ scalar_t__ sqlite3_value_text (int *) ;
+ scalar_t__ strlen (char const*) ;
 
 __attribute__((used)) static int fsdirFilter(
-  sqlite3_vtab_cursor *cur, 
+  sqlite3_vtab_cursor *cur,
   int idxNum, const char *idxStr,
   int argc, sqlite3_value **argv
 ){

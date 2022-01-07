@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
 
-/* Variables and functions */
 
-wchar_t	*
+
+
+typedef int wchar_t ;
+
+
+
+wchar_t *
 wmemset(wchar_t *s, wchar_t c, size_t n)
 {
-	size_t i;
-	wchar_t *p;
+ size_t i;
+ wchar_t *p;
 
-	p = (wchar_t *)s;
-	for (i = 0; i < n; i++) {
-		*p = c;
-		p++;
-	}
-	return s;
+ p = (wchar_t *)s;
+ for (i = 0; i < n; i++) {
+  *p = c;
+  p++;
+ }
+ return s;
 }

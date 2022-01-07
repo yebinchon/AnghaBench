@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  major; int /*<<< orphan*/  iid; } ;
-typedef  int /*<<< orphan*/  ITypeLib ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ITypeLib_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ InterlockedCompareExchangePointer (void**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LOCALE_SYSTEM_DEFAULT ; 
- int /*<<< orphan*/  LoadRegTypeLib (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  S_OK ; 
- TYPE_1__* lib_ids ; 
- int /*<<< orphan*/ ** typelib ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int major; int iid; } ;
+typedef int ITypeLib ;
+typedef int HRESULT ;
+
+
+ int ERR (char*,int ) ;
+ scalar_t__ FAILED (int ) ;
+ int ITypeLib_Release (int *) ;
+ scalar_t__ InterlockedCompareExchangePointer (void**,int *,int *) ;
+ int LOCALE_SYSTEM_DEFAULT ;
+ int LoadRegTypeLib (int ,int ,int ,int ,int **) ;
+ int S_OK ;
+ TYPE_1__* lib_ids ;
+ int ** typelib ;
 
 __attribute__((used)) static HRESULT get_typelib(unsigned lib, ITypeLib **tl)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static HRESULT get_typelib(unsigned lib, ITypeLib **tl)
             return hres;
         }
 
-        if (InterlockedCompareExchangePointer((void**)&typelib[lib], *tl, NULL))
+        if (InterlockedCompareExchangePointer((void**)&typelib[lib], *tl, ((void*)0)))
             ITypeLib_Release(*tl);
     }
 

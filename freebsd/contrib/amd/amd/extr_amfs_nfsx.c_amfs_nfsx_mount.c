@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mntfs ;
-typedef  int /*<<< orphan*/  am_node ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int amfs_nfsx_remount (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mntfs ;
+typedef int am_node ;
+
+
+ int FALSE ;
+ int amfs_nfsx_remount (int *,int *,int ) ;
 
 __attribute__((used)) static int
 amfs_nfsx_mount(am_node *am, mntfs *mf)

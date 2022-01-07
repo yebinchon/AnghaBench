@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pppoe_addr {scalar_t__ sid; int /*<<< orphan*/  remote; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ETH_ALEN ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct pppoe_addr {scalar_t__ sid; int remote; } ;
+
+
+ int ETH_ALEN ;
+ int memcmp (int ,int ,int ) ;
 
 __attribute__((used)) static inline int cmp_2_addr(struct pppoe_addr *a, struct pppoe_addr *b)
 {
-	return a->sid == b->sid && !memcmp(a->remote, b->remote, ETH_ALEN);
+ return a->sid == b->sid && !memcmp(a->remote, b->remote, ETH_ALEN);
 }

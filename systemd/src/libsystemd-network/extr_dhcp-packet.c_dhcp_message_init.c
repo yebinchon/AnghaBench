@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  scalar_t__ uint16_t ;
-struct TYPE_4__ {void* magic; void* xid; int /*<<< orphan*/  hlen; scalar_t__ htype; scalar_t__ op; } ;
-typedef  TYPE_1__ DHCPMessage ;
 
-/* Variables and functions */
- scalar_t__ ARPHRD_ETHER ; 
- int /*<<< orphan*/  ARPHRD_INFINIBAND ; 
- int /*<<< orphan*/  BOOTREPLY ; 
- scalar_t__ BOOTREQUEST ; 
- int /*<<< orphan*/  DHCP_MAGIC_COOKIE ; 
- int /*<<< orphan*/  ETHER_ADDR_LEN ; 
- int /*<<< orphan*/  IN_SET (scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SD_DHCP_OPTION_MESSAGE_TYPE ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int dhcp_option_append (TYPE_1__*,size_t,size_t*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,scalar_t__*) ; 
- void* htobe32 (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint32_t ;
+typedef scalar_t__ uint16_t ;
+struct TYPE_4__ {void* magic; void* xid; int hlen; scalar_t__ htype; scalar_t__ op; } ;
+typedef TYPE_1__ DHCPMessage ;
+
+
+ scalar_t__ ARPHRD_ETHER ;
+ int ARPHRD_INFINIBAND ;
+ int BOOTREPLY ;
+ scalar_t__ BOOTREQUEST ;
+ int DHCP_MAGIC_COOKIE ;
+ int ETHER_ADDR_LEN ;
+ int IN_SET (scalar_t__,scalar_t__,int ) ;
+ int SD_DHCP_OPTION_MESSAGE_TYPE ;
+ int assert (int ) ;
+ int dhcp_option_append (TYPE_1__*,size_t,size_t*,int ,int ,int,scalar_t__*) ;
+ void* htobe32 (int ) ;
 
 int dhcp_message_init(DHCPMessage *message, uint8_t op, uint32_t xid,
                       uint8_t type, uint16_t arp_type, size_t optlen,

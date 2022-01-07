@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct platdata_mtd_ram {int /*<<< orphan*/  bankwidth; } ;
-struct pismo_mem {int /*<<< orphan*/  width; } ;
+
+
+
+
+struct platdata_mtd_ram {int bankwidth; } ;
+struct pismo_mem {int width; } ;
 struct pismo_data {int dummy; } ;
-typedef  int /*<<< orphan*/  data ;
+typedef int data ;
 
-/* Variables and functions */
- int pismo_add_device (struct pismo_data*,int,struct pismo_mem*,char*,struct platdata_mtd_ram*,int) ; 
+
+ int pismo_add_device (struct pismo_data*,int,struct pismo_mem*,char*,struct platdata_mtd_ram*,int) ;
 
 __attribute__((used)) static int pismo_add_sram(struct pismo_data *pismo, int i,
-			  struct pismo_mem *region)
+     struct pismo_mem *region)
 {
-	struct platdata_mtd_ram data = {
-		.bankwidth = region->width,
-	};
+ struct platdata_mtd_ram data = {
+  .bankwidth = region->width,
+ };
 
-	return pismo_add_device(pismo, i, region, "mtd-ram",
-		&data, sizeof(data));
+ return pismo_add_device(pismo, i, region, "mtd-ram",
+  &data, sizeof(data));
 }

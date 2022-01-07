@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lvi ;
-typedef  int WCHAR ;
-struct TYPE_4__ {int* pszText; int /*<<< orphan*/  mask; } ;
-typedef  TYPE_1__ LVITEM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LVIF_TEXT ; 
- int ListView_InsertItem (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  ListView_SetItemText (int /*<<< orphan*/ ,int,int,int*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
 
-__attribute__((used)) static int     list_channel_CB(HANDLE hProcess, void* addr, WCHAR* buffer, void* user)
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int lvi ;
+typedef int WCHAR ;
+struct TYPE_4__ {int* pszText; int mask; } ;
+typedef TYPE_1__ LVITEM ;
+typedef int HWND ;
+typedef int HANDLE ;
+
+
+ int LVIF_TEXT ;
+ int ListView_InsertItem (int ,TYPE_1__*) ;
+ int ListView_SetItemText (int ,int,int,int*) ;
+ int memset (TYPE_1__*,int ,int) ;
+
+__attribute__((used)) static int list_channel_CB(HANDLE hProcess, void* addr, WCHAR* buffer, void* user)
 {
-    int     j;
-    WCHAR   val[2];
-    LVITEM  lvi;
-    int     index;
-    HWND    hChannelLV = (HWND)user;
+    int j;
+    WCHAR val[2];
+    LVITEM lvi;
+    int index;
+    HWND hChannelLV = (HWND)user;
 
     memset(&lvi, 0, sizeof(lvi));
 

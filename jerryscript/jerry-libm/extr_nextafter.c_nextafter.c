@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int hi; int lo; } ;
 struct TYPE_4__ {double dbl; TYPE_1__ as_int; } ;
-typedef  TYPE_2__ double_accessor ;
+typedef TYPE_2__ double_accessor ;
 
-/* Variables and functions */
- int __HI (double) ; 
- unsigned int __LO (double) ; 
+
+ int __HI (double) ;
+ unsigned int __LO (double) ;
 
 double
 nextafter (double x,
@@ -28,27 +28,27 @@ nextafter (double x,
   unsigned lx, ly;
   double_accessor ret;
 
-  hx = __HI (x); /* high word of x */
-  lx = __LO (x); /* low  word of x */
-  hy = __HI (y); /* high word of y */
-  ly = __LO (y); /* low  word of y */
-  ix = hx & 0x7fffffff; /* |x| */
-  iy = hy & 0x7fffffff; /* |y| */
+  hx = __HI (x);
+  lx = __LO (x);
+  hy = __HI (y);
+  ly = __LO (y);
+  ix = hx & 0x7fffffff;
+  iy = hy & 0x7fffffff;
 
-  if (((ix >= 0x7ff00000) && ((ix - 0x7ff00000) | lx) != 0)     /* x is nan */
-      || ((iy >= 0x7ff00000) && ((iy - 0x7ff00000) | ly) != 0)) /* y is nan */
+  if (((ix >= 0x7ff00000) && ((ix - 0x7ff00000) | lx) != 0)
+      || ((iy >= 0x7ff00000) && ((iy - 0x7ff00000) | ly) != 0))
   {
     return x + y;
   }
 
   if (x == y)
   {
-    return x; /* x=y, return x */
+    return x;
   }
 
   if ((ix | lx) == 0)
-  { /* x == 0 */
-    ret.as_int.hi = hy & 0x80000000; /* return +-minsubnormal */
+  {
+    ret.as_int.hi = hy & 0x80000000;
     ret.as_int.lo = 1;
     y = ret.dbl * ret.dbl;
     if (y == ret.dbl)
@@ -57,14 +57,14 @@ nextafter (double x,
     }
     else
     {
-      return ret.dbl; /* raise underflow flag */
+      return ret.dbl;
     }
   }
 
   if (hx >= 0)
-  { /* x > 0 */
+  {
     if (hx > hy || ((hx == hy) && (lx > ly)))
-    { /* x > y, x -= ulp */
+    {
       if (lx == 0)
       {
         hx -= 1;
@@ -73,7 +73,7 @@ nextafter (double x,
       lx -= 1;
     }
     else
-    { /* x < y, x += ulp */
+    {
       lx += 1;
 
       if (lx == 0)
@@ -83,9 +83,9 @@ nextafter (double x,
     }
   }
   else
-  { /* x < 0 */
+  {
     if (hy >= 0 || hx > hy || ((hx == hy) && (lx > ly)))
-    { /* x < y, x -= ulp */
+    {
       if (lx == 0)
       {
         hx -= 1;
@@ -94,7 +94,7 @@ nextafter (double x,
       lx -= 1;
     }
     else
-    { /* x > y, x += ulp */
+    {
       lx += 1;
 
       if (lx == 0)
@@ -108,14 +108,14 @@ nextafter (double x,
 
   if (hy >= 0x7ff00000)
   {
-    return x + x; /* overflow */
+    return x + x;
   }
 
   if (hy < 0x00100000)
-  { /* underflow */
+  {
     y = x * x;
     if (y != x)
-    { /* raise underflow flag */
+    {
       ret.as_int.hi = hx;
       ret.as_int.lo = lx;
       return ret.dbl;

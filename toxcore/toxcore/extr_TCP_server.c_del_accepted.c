@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-struct TYPE_6__ {scalar_t__ status; int /*<<< orphan*/  priority_queue_start; int /*<<< orphan*/  public_key; } ;
-struct TYPE_5__ {scalar_t__ size_accepted_connections; scalar_t__ num_accepted_connections; TYPE_2__* accepted_connection_array; int /*<<< orphan*/  accepted_key_list; } ;
-typedef  TYPE_1__ TCP_Server ;
-typedef  int /*<<< orphan*/  TCP_Secure_Connection ;
 
-/* Variables and functions */
- scalar_t__ TCP_STATUS_NO_STATUS ; 
- int /*<<< orphan*/  bs_list_remove (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  realloc_connection (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sodium_memzero (TYPE_2__*,int) ; 
- int /*<<< orphan*/  wipe_priority_list (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+struct TYPE_6__ {scalar_t__ status; int priority_queue_start; int public_key; } ;
+struct TYPE_5__ {scalar_t__ size_accepted_connections; scalar_t__ num_accepted_connections; TYPE_2__* accepted_connection_array; int accepted_key_list; } ;
+typedef TYPE_1__ TCP_Server ;
+typedef int TCP_Secure_Connection ;
+
+
+ scalar_t__ TCP_STATUS_NO_STATUS ;
+ int bs_list_remove (int *,int ,int) ;
+ int realloc_connection (TYPE_1__*,int ) ;
+ int sodium_memzero (TYPE_2__*,int) ;
+ int wipe_priority_list (int ) ;
 
 __attribute__((used)) static int del_accepted(TCP_Server *TCP_server, int index)
 {

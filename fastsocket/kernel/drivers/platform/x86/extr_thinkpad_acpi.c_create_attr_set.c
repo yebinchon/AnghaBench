@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {char const* name; int /*<<< orphan*/ * attrs; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {char const* name; int * attrs; } ;
 struct attribute_set {unsigned int max_members; TYPE_1__ group; } ;
-struct attribute_set_obj {struct attribute_set s; int /*<<< orphan*/  a; } ;
+struct attribute_set_obj {struct attribute_set s; int a; } ;
 struct attribute {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- struct attribute_set_obj* kzalloc (int,int /*<<< orphan*/ ) ; 
+
+ int GFP_KERNEL ;
+ struct attribute_set_obj* kzalloc (int,int ) ;
 
 __attribute__((used)) static struct attribute_set *create_attr_set(unsigned int max_members,
-						const char *name)
+      const char *name)
 {
-	struct attribute_set_obj *sobj;
+ struct attribute_set_obj *sobj;
 
-	if (max_members == 0)
-		return NULL;
+ if (max_members == 0)
+  return ((void*)0);
 
-	/* Allocates space for implicit NULL at the end too */
-	sobj = kzalloc(sizeof(struct attribute_set_obj) +
-		    max_members * sizeof(struct attribute *),
-		    GFP_KERNEL);
-	if (!sobj)
-		return NULL;
-	sobj->s.max_members = max_members;
-	sobj->s.group.attrs = &sobj->a;
-	sobj->s.group.name = name;
 
-	return &sobj->s;
+ sobj = kzalloc(sizeof(struct attribute_set_obj) +
+      max_members * sizeof(struct attribute *),
+      GFP_KERNEL);
+ if (!sobj)
+  return ((void*)0);
+ sobj->s.max_members = max_members;
+ sobj->s.group.attrs = &sobj->a;
+ sobj->s.group.name = name;
+
+ return &sobj->s;
 }

@@ -1,30 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  IA64_RS_ARX 130 
-#define  IA64_RS_CRX 129 
-#define  IA64_RS_PSR 128 
- int REG_NONE ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  strstr (char const*,char*) ; 
+ int REG_NONE ;
+ int abort () ;
+ int strstr (char const*,char*) ;
 
 __attribute__((used)) static int
 lookup_regindex (const char *name, int specifier)
 {
   switch (specifier)
     {
-    case IA64_RS_ARX:
+    case 130:
       if (strstr (name, "[RSC]"))
         return 16;
       if (strstr (name, "[BSP]"))
@@ -60,7 +49,7 @@ lookup_regindex (const char *name, int specifier)
       else if (strstr (name, "[EC]"))
         return 66;
       abort ();
-    case IA64_RS_CRX:
+    case 129:
       if (strstr (name, "[DCR]"))
         return 0;
       else if (strstr (name, "[ITM]"))
@@ -104,7 +93,7 @@ lookup_regindex (const char *name, int specifier)
       else if (strstr (name, "[CMCV]"))
         return 74;
       abort ();
-    case IA64_RS_PSR:
+    case 128:
       if (strstr (name, ".be"))
         return 1;
       else if (strstr (name, ".up"))

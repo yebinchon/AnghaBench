@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_tick_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int vlc_tick_t ;
 struct TYPE_4__ {int i_cat; } ;
 struct TYPE_5__ {TYPE_1__ fmt_out; } ;
-struct decoder_owner {int /*<<< orphan*/  lock; int /*<<< orphan*/ * p_aout; int /*<<< orphan*/ * p_vout; TYPE_2__ dec; } ;
-typedef  TYPE_2__ decoder_t ;
+struct decoder_owner {int lock; int * p_aout; int * p_vout; TYPE_2__ dec; } ;
+typedef TYPE_2__ decoder_t ;
 
-/* Variables and functions */
-#define  AUDIO_ES 130 
-#define  SPU_ES 129 
-#define  VIDEO_ES 128 
- int /*<<< orphan*/  aout_DecChangePause (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_2__*,char*,char*) ; 
- int /*<<< orphan*/  vlc_assert_unreachable () ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vout_ChangePause (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+
+
+
+ int aout_DecChangePause (int *,int,int ) ;
+ int msg_Dbg (TYPE_2__*,char*,char*) ;
+ int vlc_assert_unreachable () ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
+ int vout_ChangePause (int *,int,int ) ;
 
 __attribute__((used)) static void DecoderThread_ChangePause( struct decoder_owner *p_owner, bool paused, vlc_tick_t date )
 {
@@ -36,19 +36,19 @@ __attribute__((used)) static void DecoderThread_ChangePause( struct decoder_owne
     msg_Dbg( p_dec, "toggling %s", paused ? "resume" : "pause" );
     switch( p_dec->fmt_out.i_cat )
     {
-        case VIDEO_ES:
+        case 128:
             vlc_mutex_lock( &p_owner->lock );
-            if( p_owner->p_vout != NULL )
+            if( p_owner->p_vout != ((void*)0) )
                 vout_ChangePause( p_owner->p_vout, paused, date );
             vlc_mutex_unlock( &p_owner->lock );
             break;
-        case AUDIO_ES:
+        case 130:
             vlc_mutex_lock( &p_owner->lock );
-            if( p_owner->p_aout != NULL )
+            if( p_owner->p_aout != ((void*)0) )
                 aout_DecChangePause( p_owner->p_aout, paused, date );
             vlc_mutex_unlock( &p_owner->lock );
             break;
-        case SPU_ES:
+        case 129:
             break;
         default:
             vlc_assert_unreachable();

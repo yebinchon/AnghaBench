@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_opt_revision_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_file_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * svn_client_diff_peg6 (int /*<<< orphan*/  const*,char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_stream_from_aprfile2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_stream_t ;
+typedef int svn_opt_revision_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef int svn_client_ctx_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_file_t ;
+typedef int apr_array_header_t ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int * svn_client_diff_peg6 (int const*,char const*,int const*,int const*,int const*,char const*,int ,int ,int ,int ,int ,int ,int ,int ,int ,char const*,int *,int *,int const*,int *,int *) ;
+ int * svn_stream_from_aprfile2 (int *,int ,int *) ;
 
 svn_error_t *
 svn_client_diff_peg5(const apr_array_header_t *diff_options,
@@ -57,12 +57,12 @@ svn_client_diff_peg5(const apr_array_header_t *diff_options,
                               relative_to_dir,
                               depth,
                               ignore_ancestry,
-                              FALSE /* no_diff_added */,
+                              FALSE ,
                               no_diff_deleted,
                               show_copies_as_adds,
                               ignore_content_type,
-                              FALSE /* ignore_properties */,
-                              FALSE /* properties_only */,
+                              FALSE ,
+                              FALSE ,
                               use_git_diff_format,
                               header_encoding,
                               outstream,

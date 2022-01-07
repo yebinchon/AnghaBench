@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct Range6List {unsigned int count; struct Range6* list; } ;
-struct Range6 {int /*<<< orphan*/  const end; int /*<<< orphan*/  const begin; } ;
-typedef  int /*<<< orphan*/  ipv6address ;
+struct Range6 {int const end; int const begin; } ;
+typedef int ipv6address ;
 
-/* Variables and functions */
- scalar_t__ LESSEQ (int /*<<< orphan*/  const,int /*<<< orphan*/  const) ; 
+
+ scalar_t__ LESSEQ (int const,int const) ;
 
 int
 range6list_is_contains(const struct Range6List *targets, const ipv6address ip)

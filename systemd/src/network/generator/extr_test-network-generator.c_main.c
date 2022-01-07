@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  test_link_one (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  test_netdev_one (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  test_network_one (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  test_network_two (char*,char*,char*,char*,char*,char*) ; 
+ int test_link_one (char*,char*,char*,char*) ;
+ int test_netdev_one (char*,char*,char*,char*) ;
+ int test_network_one (char*,char*,char*,char*) ;
+ int test_network_two (char*,char*,char*,char*,char*,char*) ;
 
 int main(int argc, char *argv[]) {
         test_network_one("", "ip", "dhcp6",

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {float* input; float* delta; } ;
-typedef  TYPE_1__ network ;
-struct TYPE_8__ {int outputs; int batch; float* delta; int inputs; float* weight_updates; float* weights; int /*<<< orphan*/  bias_updates; scalar_t__ batch_normalize; int /*<<< orphan*/  activation; int /*<<< orphan*/  output; } ;
-typedef  TYPE_2__ layer ;
+typedef TYPE_1__ network ;
+struct TYPE_8__ {int outputs; int batch; float* delta; int inputs; float* weight_updates; float* weights; int bias_updates; scalar_t__ batch_normalize; int activation; int output; } ;
+typedef TYPE_2__ layer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  backward_batchnorm_layer (TYPE_2__,TYPE_1__) ; 
- int /*<<< orphan*/  backward_bias (int /*<<< orphan*/ ,float*,int,int,int) ; 
- int /*<<< orphan*/  gemm (int,int /*<<< orphan*/ ,int,int,int,int,float*,int,float*,int,int,float*,int) ; 
- int /*<<< orphan*/  gradient_array (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,float*) ; 
+
+ int backward_batchnorm_layer (TYPE_2__,TYPE_1__) ;
+ int backward_bias (int ,float*,int,int,int) ;
+ int gemm (int,int ,int,int,int,int,float*,int,float*,int,int,float*,int) ;
+ int gradient_array (int ,int,int ,float*) ;
 
 void backward_connected_layer(layer l, network net)
 {

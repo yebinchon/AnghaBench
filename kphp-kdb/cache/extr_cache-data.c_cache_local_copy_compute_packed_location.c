@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int node_id; int server_id; int disk_id; } ;
 union cache_packed_local_copy_location {TYPE_1__ p; scalar_t__ i; } ;
-struct cache_local_copy {int flags; int /*<<< orphan*/  location; scalar_t__ packed_location; } ;
+struct cache_local_copy {int flags; int location; scalar_t__ packed_location; } ;
 
-/* Variables and functions */
- int CACHE_LOCAL_COPY_FLAG_INT ; 
- int MAX_DISK_ID ; 
- int MAX_NODE_ID ; 
- int MAX_SERVER_ID ; 
- int sscanf (int /*<<< orphan*/ ,char*,int*,int*,int*) ; 
+
+ int CACHE_LOCAL_COPY_FLAG_INT ;
+ int MAX_DISK_ID ;
+ int MAX_NODE_ID ;
+ int MAX_SERVER_ID ;
+ int sscanf (int ,char*,int*,int*,int*) ;
 
 __attribute__((used)) static void cache_local_copy_compute_packed_location (struct cache_local_copy *L, union cache_packed_local_copy_location *u) {
   if (L->flags & CACHE_LOCAL_COPY_FLAG_INT) {

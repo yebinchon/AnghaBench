@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_int ;
-typedef  int kxld_addr_t ;
-typedef  int address ;
 
-/* Variables and functions */
+
+
+
+typedef int u_int ;
+typedef int kxld_addr_t ;
+typedef int address ;
+
+
 
 kxld_addr_t
 kxld_align_address(kxld_addr_t address, u_int align)

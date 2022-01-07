@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TrackerServerInfo ;
-struct TYPE_4__ {scalar_t__ server_count; int /*<<< orphan*/ * servers; } ;
-typedef  TYPE_1__ TrackerServerGroup ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fdfs_server_equal (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int TrackerServerInfo ;
+struct TYPE_4__ {scalar_t__ server_count; int * servers; } ;
+typedef TYPE_1__ TrackerServerGroup ;
+
+
+ int fdfs_server_equal (int *,int *) ;
 
 bool fdfs_tracker_group_equals(TrackerServerGroup *pGroup1,
         TrackerServerGroup *pGroup2)
@@ -27,7 +27,7 @@ bool fdfs_tracker_group_equals(TrackerServerGroup *pGroup1,
 
     if (pGroup1->server_count != pGroup2->server_count)
     {
-        return false;
+        return 0;
     }
 
     pEnd1 = pGroup1->servers + pGroup1->server_count;
@@ -37,12 +37,12 @@ bool fdfs_tracker_group_equals(TrackerServerGroup *pGroup1,
     {
         if (!fdfs_server_equal(pServer1, pServer2))
         {
-            return false;
+            return 0;
         }
 
         pServer1++;
         pServer2++;
     }
 
-    return true;
+    return 1;
 }

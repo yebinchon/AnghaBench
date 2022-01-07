@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int BUFFER_EMPTY ; 
- unsigned int BUFFER_NUM_TYPES ; 
- void* GINT_TO_POINTER (unsigned int) ; 
- char** buffer_names ; 
- int /*<<< orphan*/  fixture ; 
- int /*<<< orphan*/  hb_test_add (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_test_add_fixture (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_test_add_fixture_flavor (int /*<<< orphan*/ ,void const*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_test_init (int*,char***) ; 
- int hb_test_run () ; 
- int /*<<< orphan*/  test_buffer_allocation ; 
- int /*<<< orphan*/  test_buffer_contents ; 
- int /*<<< orphan*/  test_buffer_empty ; 
- int /*<<< orphan*/  test_buffer_positions ; 
- int /*<<< orphan*/  test_buffer_properties ; 
- int /*<<< orphan*/  test_buffer_utf16_conversion ; 
- int /*<<< orphan*/  test_buffer_utf32_conversion ; 
- int /*<<< orphan*/  test_buffer_utf8_conversion ; 
- int /*<<< orphan*/  test_buffer_utf8_validity ; 
+ unsigned int BUFFER_EMPTY ;
+ unsigned int BUFFER_NUM_TYPES ;
+ void* GINT_TO_POINTER (unsigned int) ;
+ char** buffer_names ;
+ int fixture ;
+ int hb_test_add (int ) ;
+ int hb_test_add_fixture (int ,void*,int ) ;
+ int hb_test_add_fixture_flavor (int ,void const*,char const*,int ) ;
+ int hb_test_init (int*,char***) ;
+ int hb_test_run () ;
+ int test_buffer_allocation ;
+ int test_buffer_contents ;
+ int test_buffer_empty ;
+ int test_buffer_positions ;
+ int test_buffer_properties ;
+ int test_buffer_utf16_conversion ;
+ int test_buffer_utf32_conversion ;
+ int test_buffer_utf8_conversion ;
+ int test_buffer_utf8_validity ;
 
 int
 main (int argc, char **argv)

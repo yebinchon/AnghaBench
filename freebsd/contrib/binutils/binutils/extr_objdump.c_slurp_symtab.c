@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bfd ;
-typedef  int /*<<< orphan*/  asymbol ;
 
-/* Variables and functions */
- int HAS_SYMS ; 
- scalar_t__ bfd_canonicalize_symtab (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  bfd_fatal (int /*<<< orphan*/ ) ; 
- int bfd_get_file_flags (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bfd_get_filename (int /*<<< orphan*/ *) ; 
- long bfd_get_symtab_upper_bound (int /*<<< orphan*/ *) ; 
- scalar_t__ symcount ; 
- int /*<<< orphan*/ ** xmalloc (long) ; 
+
+
+
+typedef int bfd ;
+typedef int asymbol ;
+
+
+ int HAS_SYMS ;
+ scalar_t__ bfd_canonicalize_symtab (int *,int **) ;
+ int bfd_fatal (int ) ;
+ int bfd_get_file_flags (int *) ;
+ int bfd_get_filename (int *) ;
+ long bfd_get_symtab_upper_bound (int *) ;
+ scalar_t__ symcount ;
+ int ** xmalloc (long) ;
 
 __attribute__((used)) static asymbol **
 slurp_symtab (bfd *abfd)
 {
-  asymbol **sy = NULL;
+  asymbol **sy = ((void*)0);
   long storage;
 
   if (!(bfd_get_file_flags (abfd) & HAS_SYMS))
     {
       symcount = 0;
-      return NULL;
+      return ((void*)0);
     }
 
   storage = bfd_get_symtab_upper_bound (abfd);

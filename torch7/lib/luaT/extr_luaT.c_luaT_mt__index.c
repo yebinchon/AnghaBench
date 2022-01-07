@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_MULTRET ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_call (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_getfield (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_getmetatable (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_gettable (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_isfunction (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_isnil (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_istable (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int lua_toboolean (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int LUA_MULTRET ;
+ int luaL_error (int *,char*) ;
+ int lua_call (int *,int,int ) ;
+ int lua_getfield (int *,int,char*) ;
+ int lua_getmetatable (int *,int) ;
+ int lua_gettable (int *,int) ;
+ int lua_isfunction (int *,int) ;
+ int lua_isnil (int *,int) ;
+ int lua_istable (int *,int) ;
+ int lua_pop (int *,int) ;
+ int lua_pushvalue (int *,int) ;
+ int lua_toboolean (int *,int) ;
 
 __attribute__((used)) static int luaT_mt__index(lua_State *L)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static int luaT_mt__index(lua_State *L)
   if(!lua_istable(L, -1))
     luaL_error(L, "critical internal indexing error: not a metatable");
 
-  /* test for __index__ method first */
+
   lua_getfield(L, -1, "__index__");
   if(!lua_isnil(L, -1))
   {
@@ -46,7 +46,7 @@ __attribute__((used)) static int luaT_mt__index(lua_State *L)
     lua_pushvalue(L, 1);
     lua_pushvalue(L, 2);
 
-    lua_call(L, 2, LUA_MULTRET); /* DEBUG: risque: faut vraiment retourner 1 ou 2 valeurs... */
+    lua_call(L, 2, LUA_MULTRET);
 
     result = lua_toboolean(L, -1);
     lua_pop(L, 1);
@@ -54,13 +54,13 @@ __attribute__((used)) static int luaT_mt__index(lua_State *L)
     if(result)
       return 1;
 
-    /* on the stack: 1. the object 2. the value 3. the metatable */
-    /* apparently, __index wants only one element returned */
-    /* return lua_gettop(L)-3; */
+
+
+
 
   }
   else
-    lua_pop(L, 1); /* remove nil __index__ on the stack */
+    lua_pop(L, 1);
 
   lua_pushvalue(L, 2);
   lua_gettable(L, -2);

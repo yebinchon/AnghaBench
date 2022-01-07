@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct target_ops {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  inferior_ptid ; 
- int /*<<< orphan*/  printf_unfiltered (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  target_pid_to_str (int /*<<< orphan*/ ) ; 
+
+ int inferior_ptid ;
+ int printf_unfiltered (char*,int ) ;
+ int target_pid_to_str (int ) ;
 
 __attribute__((used)) static void
 child_files_info (struct target_ops *ignore)
 {
   printf_unfiltered ("\tUsing the running image of child %s.\n",
-		     target_pid_to_str (inferior_ptid));
+       target_pid_to_str (inferior_ptid));
 }

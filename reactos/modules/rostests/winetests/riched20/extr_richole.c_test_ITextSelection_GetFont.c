@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int LPARAM ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  ITextSelection ;
-typedef  int /*<<< orphan*/  ITextFont ;
-typedef  int /*<<< orphan*/  ITextDocument ;
-typedef  int /*<<< orphan*/  IRichEditOle ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  scalar_t__ HRESULT ;
-typedef  char CHAR ;
 
-/* Variables and functions */
- scalar_t__ CO_E_RELEASED ; 
- int /*<<< orphan*/  EM_SETSEL ; 
- scalar_t__ ITextFont_GetOutline (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITextFont_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ ITextSelection_GetFont (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SendMessageA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  WM_SETTEXT ; 
- int /*<<< orphan*/  create_interfaces (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- int get_refcount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  release_interfaces (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int LPARAM ;
+typedef int LONG ;
+typedef int IUnknown ;
+typedef int ITextSelection ;
+typedef int ITextFont ;
+typedef int ITextDocument ;
+typedef int IRichEditOle ;
+typedef int HWND ;
+typedef scalar_t__ HRESULT ;
+typedef char CHAR ;
+
+
+ scalar_t__ CO_E_RELEASED ;
+ int EM_SETSEL ;
+ scalar_t__ ITextFont_GetOutline (int *,int *) ;
+ int ITextFont_Release (int *) ;
+ scalar_t__ ITextSelection_GetFont (int *,int **) ;
+ scalar_t__ S_OK ;
+ int SendMessageA (int ,int ,int,int) ;
+ int WM_SETTEXT ;
+ int create_interfaces (int *,int **,int **,int **) ;
+ int get_refcount (int *) ;
+ int ok (int,char*,...) ;
+ int release_interfaces (int *,int **,int **,int **) ;
 
 __attribute__((used)) static void test_ITextSelection_GetFont(void)
 {
   HWND w;
-  IRichEditOle *reOle = NULL;
-  ITextDocument *txtDoc = NULL;
-  ITextSelection *txtSel = NULL;
-  ITextFont *txtFont = NULL, *txtFont1 = NULL;
+  IRichEditOle *reOle = ((void*)0);
+  ITextDocument *txtDoc = ((void*)0);
+  ITextSelection *txtSel = ((void*)0);
+  ITextFont *txtFont = ((void*)0), *txtFont1 = ((void*)0);
   HRESULT hres;
   int first, lim;
   int refcount;

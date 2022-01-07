@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  text ;
-typedef  int /*<<< orphan*/  PGresult ;
-typedef  int /*<<< orphan*/  Datum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CStringGetDatum (char*) ; 
- scalar_t__ DatumGetPointer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DirectFunctionCall1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ PQgetisnull (int /*<<< orphan*/ *,int,int) ; 
- char* PQgetvalue (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  textin ; 
+
+
+
+typedef int text ;
+typedef int PGresult ;
+typedef int Datum ;
+
+
+ int CStringGetDatum (char*) ;
+ scalar_t__ DatumGetPointer (int ) ;
+ int DirectFunctionCall1 (int ,int ) ;
+ scalar_t__ PQgetisnull (int *,int,int) ;
+ char* PQgetvalue (int *,int,int) ;
+ int textin ;
 
 __attribute__((used)) static text *
 ParseTextField(PGresult *result, int rowIndex, int colIndex)
 {
-	char *resultString = NULL;
-	Datum resultStringDatum = 0;
-	Datum textDatum = 0;
+ char *resultString = ((void*)0);
+ Datum resultStringDatum = 0;
+ Datum textDatum = 0;
 
-	if (PQgetisnull(result, rowIndex, colIndex))
-	{
-		return NULL;
-	}
+ if (PQgetisnull(result, rowIndex, colIndex))
+ {
+  return ((void*)0);
+ }
 
-	resultString = PQgetvalue(result, rowIndex, colIndex);
-	resultStringDatum = CStringGetDatum(resultString);
-	textDatum = DirectFunctionCall1(textin, resultStringDatum);
+ resultString = PQgetvalue(result, rowIndex, colIndex);
+ resultStringDatum = CStringGetDatum(resultString);
+ textDatum = DirectFunctionCall1(textin, resultStringDatum);
 
-	return (text *) DatumGetPointer(textDatum);
+ return (text *) DatumGetPointer(textDatum);
 }

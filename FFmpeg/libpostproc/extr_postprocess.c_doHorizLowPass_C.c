@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_3__ {scalar_t__ QP; } ;
-typedef  TYPE_1__ PPContext ;
+typedef TYPE_1__ PPContext ;
 
-/* Variables and functions */
- int BLOCK_SIZE ; 
- scalar_t__ FFABS (int) ; 
+
+ int BLOCK_SIZE ;
+ scalar_t__ FFABS (int) ;
 
 __attribute__((used)) static inline void doHorizLowPass_C(uint8_t dst[], int stride, const PPContext *c)
 {
@@ -28,10 +28,10 @@ __attribute__((used)) static inline void doHorizLowPass_C(uint8_t dst[], int str
 
         int sums[10];
         sums[0] = 4*first + dst[0] + dst[1] + dst[2] + 4;
-        sums[1] = sums[0] - first  + dst[3];
-        sums[2] = sums[1] - first  + dst[4];
-        sums[3] = sums[2] - first  + dst[5];
-        sums[4] = sums[3] - first  + dst[6];
+        sums[1] = sums[0] - first + dst[3];
+        sums[2] = sums[1] - first + dst[4];
+        sums[3] = sums[2] - first + dst[5];
+        sums[4] = sums[3] - first + dst[6];
         sums[5] = sums[4] - dst[0] + dst[7];
         sums[6] = sums[5] - dst[1] + last;
         sums[7] = sums[6] - dst[2] + last;

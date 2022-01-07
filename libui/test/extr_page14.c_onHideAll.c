@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uiButton ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hideOne ; 
- int /*<<< orphan*/  one ; 
- int /*<<< orphan*/  showOne ; 
- int /*<<< orphan*/  uiControl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uiControlHide (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uiButton ;
+
+
+ int hideOne ;
+ int one ;
+ int showOne ;
+ int uiControl (int ) ;
+ int uiControlHide (int ) ;
 
 __attribute__((used)) static void onHideAll(uiButton *b, void *data)
 {
-	uiControlHide(uiControl(hideOne));
-	uiControlHide(uiControl(one));
-	uiControlHide(uiControl(showOne));
+ uiControlHide(uiControl(hideOne));
+ uiControlHide(uiControl(one));
+ uiControlHide(uiControl(showOne));
 }

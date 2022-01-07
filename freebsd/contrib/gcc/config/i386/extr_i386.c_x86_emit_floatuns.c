@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * rtx ;
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AND ; 
- int DImode ; 
- int GET_MODE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IOR ; 
- int /*<<< orphan*/  LSHIFTRT ; 
- int /*<<< orphan*/  LT ; 
- int /*<<< orphan*/  OPTAB_DIRECT ; 
- int Pmode ; 
- int SImode ; 
- int /*<<< orphan*/  VOIDmode ; 
- int /*<<< orphan*/  const0_rtx ; 
- int /*<<< orphan*/ * const1_rtx ; 
- int /*<<< orphan*/  emit_barrier () ; 
- int /*<<< orphan*/  emit_cmp_and_jump_insns (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  emit_insn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_jump_insn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_label (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  expand_float (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * expand_simple_binop (int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * force_reg (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- int /*<<< orphan*/  gen_jump (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * gen_label_rtx () ; 
- int /*<<< orphan*/ * gen_reg_rtx (int) ; 
- int /*<<< orphan*/  gen_rtx_FLOAT (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gen_rtx_PLUS (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gen_rtx_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int * rtx ;
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+
+
+ int AND ;
+ int DImode ;
+ int GET_MODE (int *) ;
+ int IOR ;
+ int LSHIFTRT ;
+ int LT ;
+ int OPTAB_DIRECT ;
+ int Pmode ;
+ int SImode ;
+ int VOIDmode ;
+ int const0_rtx ;
+ int * const1_rtx ;
+ int emit_barrier () ;
+ int emit_cmp_and_jump_insns (int *,int ,int ,int ,int,int ,int *) ;
+ int emit_insn (int ) ;
+ int emit_jump_insn (int ) ;
+ int emit_label (int *) ;
+ int expand_float (int *,int *,int ) ;
+ int * expand_simple_binop (int,int ,int *,int *,int *,int,int ) ;
+ int * force_reg (int,int *) ;
+ int gcc_assert (int) ;
+ int gen_jump (int *) ;
+ int * gen_label_rtx () ;
+ int * gen_reg_rtx (int) ;
+ int gen_rtx_FLOAT (int,int *) ;
+ int gen_rtx_PLUS (int,int *,int *) ;
+ int gen_rtx_SET (int ,int *,int ) ;
 
 void
 x86_emit_floatuns (rtx operands[2])
@@ -67,8 +67,8 @@ x86_emit_floatuns (rtx operands[2])
 
   emit_label (neglab);
 
-  i0 = expand_simple_binop (Pmode, LSHIFTRT, in, const1_rtx, NULL, 1, OPTAB_DIRECT);
-  i1 = expand_simple_binop (Pmode, AND, in, const1_rtx, NULL, 1, OPTAB_DIRECT);
+  i0 = expand_simple_binop (Pmode, LSHIFTRT, in, const1_rtx, ((void*)0), 1, OPTAB_DIRECT);
+  i1 = expand_simple_binop (Pmode, AND, in, const1_rtx, ((void*)0), 1, OPTAB_DIRECT);
   i0 = expand_simple_binop (Pmode, IOR, i0, i1, i0, 1, OPTAB_DIRECT);
   expand_float (f0, i0, 0);
   emit_insn (gen_rtx_SET (VOIDmode, out, gen_rtx_PLUS (mode, f0, f0)));

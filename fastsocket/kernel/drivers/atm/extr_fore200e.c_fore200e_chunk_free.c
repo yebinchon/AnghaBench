@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct fore200e {TYPE_1__* bus; } ;
-struct chunk {int /*<<< orphan*/  alloc_addr; int /*<<< orphan*/  direction; int /*<<< orphan*/  dma_size; int /*<<< orphan*/  dma_addr; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* dma_unmap ) (struct fore200e*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
+struct chunk {int alloc_addr; int direction; int dma_size; int dma_addr; } ;
+struct TYPE_2__ {int (* dma_unmap ) (struct fore200e*,int ,int ,int ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (struct fore200e*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int kfree (int ) ;
+ int stub1 (struct fore200e*,int ,int ,int ) ;
 
 __attribute__((used)) static void
 fore200e_chunk_free(struct fore200e* fore200e, struct chunk* chunk)

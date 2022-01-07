@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_5__ {int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ ShellState ;
 
-/* Variables and functions */
- int SQLITE_DONE ; 
- int SQLITE_ROW ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- unsigned char* sqlite3_column_text (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_errmsg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_exec (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char**) ; 
- int /*<<< orphan*/  sqlite3_extended_errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,char const*) ; 
- int sqlite3_prepare_v2 (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int sqlite3_step (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  utf8_printf (int /*<<< orphan*/ ,char*,char*,unsigned char const*,...) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
+struct TYPE_5__ {int db; } ;
+typedef TYPE_1__ ShellState ;
+
+
+ int SQLITE_DONE ;
+ int SQLITE_ROW ;
+ int fflush (int ) ;
+ int printf (char*,...) ;
+ unsigned char* sqlite3_column_text (int *,int) ;
+ int sqlite3_errmsg (int ) ;
+ int sqlite3_exec (int *,char const*,int ,int ,char**) ;
+ int sqlite3_extended_errcode (int ) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,char const*) ;
+ int sqlite3_prepare_v2 (int ,char*,int,int **,int ) ;
+ int sqlite3_step (int *) ;
+ int stderr ;
+ int stdout ;
+ int utf8_printf (int ,char*,char*,unsigned char const*,...) ;
 
 __attribute__((used)) static void tryToCloneSchema(
   ShellState *p,

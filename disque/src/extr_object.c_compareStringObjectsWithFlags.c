@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ type; char* ptr; } ;
-typedef  TYPE_1__ robj ;
-typedef  int /*<<< orphan*/  bufb ;
-typedef  int /*<<< orphan*/  bufa ;
+typedef TYPE_1__ robj ;
+typedef int bufb ;
+typedef int bufa ;
 
-/* Variables and functions */
- int DISQUE_COMPARE_COLL ; 
- scalar_t__ OBJ_STRING ; 
- size_t ll2string (char*,int,long) ; 
- int memcmp (char*,char*,size_t) ; 
- scalar_t__ sdsEncodedObject (TYPE_1__*) ; 
- size_t sdslen (char*) ; 
- int /*<<< orphan*/  serverAssertWithInfo (int /*<<< orphan*/ *,TYPE_1__*,int) ; 
- int strcoll (char*,char*) ; 
+
+ int DISQUE_COMPARE_COLL ;
+ scalar_t__ OBJ_STRING ;
+ size_t ll2string (char*,int,long) ;
+ int memcmp (char*,char*,size_t) ;
+ scalar_t__ sdsEncodedObject (TYPE_1__*) ;
+ size_t sdslen (char*) ;
+ int serverAssertWithInfo (int *,TYPE_1__*,int) ;
+ int strcoll (char*,char*) ;
 
 int compareStringObjectsWithFlags(robj *a, robj *b, int flags) {
-    serverAssertWithInfo(NULL,a,a->type == OBJ_STRING && b->type == OBJ_STRING);
+    serverAssertWithInfo(((void*)0),a,a->type == OBJ_STRING && b->type == OBJ_STRING);
     char bufa[128], bufb[128], *astr, *bstr;
     size_t alen, blen, minlen;
 

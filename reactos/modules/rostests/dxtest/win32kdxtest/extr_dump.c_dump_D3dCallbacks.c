@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int dwSize; scalar_t__ dwReserved9; scalar_t__ dwReserved8; scalar_t__ dwReserved7; scalar_t__ dwReserved6; scalar_t__ dwReserved5; scalar_t__ dwReserved4; scalar_t__ dwReserved3; scalar_t__ dwReserved2; scalar_t__ dwReserved1; scalar_t__ dwReserved0; scalar_t__ dwReserved24; scalar_t__ dwReserved21; scalar_t__ dwReserved20; scalar_t__ dwReserved19; scalar_t__ dwReserved18; scalar_t__ dwReserved17; scalar_t__ dwReserved16; scalar_t__ dwReserved15; scalar_t__ dwReserved14; scalar_t__ dwReserved13; scalar_t__ dwReserved12; scalar_t__ TextureGetSurf; scalar_t__ TextureSwap; scalar_t__ TextureDestroy; scalar_t__ TextureCreate; scalar_t__ dwReserved; scalar_t__ dwReserved23; scalar_t__ dwReserved22; scalar_t__ dwReserved11; scalar_t__ dwReserved10; scalar_t__ SceneCapture; scalar_t__ ContextDestroyAll; scalar_t__ ContextDestroy; scalar_t__ ContextCreate; } ;
-typedef  TYPE_1__ D3DNTHAL_CALLBACKS ;
+typedef TYPE_1__ D3DNTHAL_CALLBACKS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  printf (char*,...) ; 
+
+ int printf (char*,...) ;
 
 void
 dump_D3dCallbacks(D3DNTHAL_CALLBACKS *puD3dCallbacks, char *text)
 {
     printf("dumping the D3DNTHAL_CALLBACKS from %s\n",text);
-    if (puD3dCallbacks->dwSize ==  sizeof(D3DNTHAL_CALLBACKS))
+    if (puD3dCallbacks->dwSize == sizeof(D3DNTHAL_CALLBACKS))
     {
         printf(" puD3dCallbacks->dwSize                                         : 0x%08lx\n",(long)puD3dCallbacks->dwSize);
         printf(" puD3dCallbacks->ContextCreate                                  : 0x%08lx\n",(long)puD3dCallbacks->ContextCreate);

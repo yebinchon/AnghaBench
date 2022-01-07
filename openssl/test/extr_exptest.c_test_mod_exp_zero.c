@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int BN_ULONG ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_new () ; 
- int /*<<< orphan*/  BN_RAND_BOTTOM_ANY ; 
- int /*<<< orphan*/  BN_RAND_TOP_ONE ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mod_exp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mod_exp_mont (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mod_exp_mont_consttime (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mod_exp_mont_word (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mod_exp_recp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mod_exp_simple (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_new () ; 
- int /*<<< orphan*/  BN_one (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_print_var (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_rand (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_BN_eq_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_error (char*) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  a_is_zero_mod_one (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int BN_ULONG ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_CTX_free (int *) ;
+ int * BN_CTX_new () ;
+ int BN_RAND_BOTTOM_ANY ;
+ int BN_RAND_TOP_ONE ;
+ int BN_free (int *) ;
+ int BN_mod_exp (int *,int *,int *,int *,int *) ;
+ int BN_mod_exp_mont (int *,int *,int *,int *,int *,int *) ;
+ int BN_mod_exp_mont_consttime (int *,int *,int *,int *,int *,int *) ;
+ int BN_mod_exp_mont_word (int *,int,int *,int *,int *,int *) ;
+ int BN_mod_exp_recp (int *,int *,int *,int *,int *) ;
+ int BN_mod_exp_simple (int *,int *,int *,int *,int *) ;
+ int * BN_new () ;
+ int BN_one (int *) ;
+ int BN_print_var (int *) ;
+ int BN_rand (int *,int,int ,int ) ;
+ int BN_zero (int *) ;
+ int TEST_BN_eq_zero (int *) ;
+ int TEST_error (char*) ;
+ int TEST_ptr (int *) ;
+ int TEST_true (int ) ;
+ int a_is_zero_mod_one (char*,int *,int *) ;
 
 __attribute__((used)) static int test_mod_exp_zero(void)
 {
-    BIGNUM *a = NULL, *p = NULL, *m = NULL;
-    BIGNUM *r = NULL;
+    BIGNUM *a = ((void*)0), *p = ((void*)0), *m = ((void*)0);
+    BIGNUM *r = ((void*)0);
     BN_ULONG one_word = 1;
     BN_CTX *ctx = BN_CTX_new();
     int ret = 1, failed = 0;
@@ -76,23 +76,23 @@ __attribute__((used)) static int test_mod_exp_zero(void)
     if (!TEST_true(a_is_zero_mod_one("BN_mod_exp_simple", r, a)))
         failed = 1;
 
-    if (!TEST_true(BN_mod_exp_mont(r, a, p, m, ctx, NULL)))
+    if (!TEST_true(BN_mod_exp_mont(r, a, p, m, ctx, ((void*)0))))
         goto err;
 
     if (!TEST_true(a_is_zero_mod_one("BN_mod_exp_mont", r, a)))
         failed = 1;
 
-    if (!TEST_true(BN_mod_exp_mont_consttime(r, a, p, m, ctx, NULL)))
+    if (!TEST_true(BN_mod_exp_mont_consttime(r, a, p, m, ctx, ((void*)0))))
         goto err;
 
     if (!TEST_true(a_is_zero_mod_one("BN_mod_exp_mont_consttime", r, a)))
         failed = 1;
 
-    /*
-     * A different codepath exists for single word multiplication
-     * in non-constant-time only.
-     */
-    if (!TEST_true(BN_mod_exp_mont_word(r, one_word, p, m, ctx, NULL)))
+
+
+
+
+    if (!TEST_true(BN_mod_exp_mont_word(r, one_word, p, m, ctx, ((void*)0))))
         goto err;
 
     if (!TEST_BN_eq_zero(r)) {

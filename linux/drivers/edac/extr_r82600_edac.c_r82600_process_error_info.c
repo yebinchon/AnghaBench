@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct r82600_error_info {int eapr; } ;
-struct mem_ctl_info {int /*<<< orphan*/  ctl_name; } ;
+struct mem_ctl_info {int ctl_name; } ;
 
-/* Variables and functions */
- int BIT (int) ; 
- int /*<<< orphan*/  HW_EVENT_ERR_CORRECTED ; 
- int /*<<< orphan*/  HW_EVENT_ERR_UNCORRECTED ; 
- int PAGE_SHIFT ; 
- int /*<<< orphan*/  edac_mc_find_csrow_by_page (struct mem_ctl_info*,int) ; 
- int /*<<< orphan*/  edac_mc_handle_error (int /*<<< orphan*/ ,struct mem_ctl_info*,int,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,char*) ; 
+
+ int BIT (int) ;
+ int HW_EVENT_ERR_CORRECTED ;
+ int HW_EVENT_ERR_UNCORRECTED ;
+ int PAGE_SHIFT ;
+ int edac_mc_find_csrow_by_page (struct mem_ctl_info*,int) ;
+ int edac_mc_handle_error (int ,struct mem_ctl_info*,int,int,int ,int,int ,int ,int,int ,char*) ;
 
 __attribute__((used)) static int r82600_process_error_info(struct mem_ctl_info *mci,
-				struct r82600_error_info *info,
-				int handle_errors)
+    struct r82600_error_info *info,
+    int handle_errors)
 {
-	int error_found;
-	u32 eapaddr, page;
-	u32 syndrome;
+ int error_found;
+ u32 eapaddr, page;
+ u32 syndrome;
 
-	error_found = 0;
+ error_found = 0;
 
-	/* bits 30:12 store the upper 19 bits of the 32 bit error address */
-	eapaddr = ((info->eapr >> 12) & 0x7FFF) << 13;
-	/* Syndrome in bits 11:4 [p.62]       */
-	syndrome = (info->eapr >> 4) & 0xFF;
 
-	/* the R82600 reports at less than page *
-	 * granularity (upper 19 bits only)     */
-	page = eapaddr >> PAGE_SHIFT;
+ eapaddr = ((info->eapr >> 12) & 0x7FFF) << 13;
 
-	if (info->eapr & BIT(0)) {	/* CE? */
-		error_found = 1;
+ syndrome = (info->eapr >> 4) & 0xFF;
 
-		if (handle_errors)
-			edac_mc_handle_error(HW_EVENT_ERR_CORRECTED, mci, 1,
-					     page, 0, syndrome,
-					     edac_mc_find_csrow_by_page(mci, page),
-					     0, -1,
-					     mci->ctl_name, "");
-	}
 
-	if (info->eapr & BIT(1)) {	/* UE? */
-		error_found = 1;
 
-		if (handle_errors)
-			/* 82600 doesn't give enough info */
-			edac_mc_handle_error(HW_EVENT_ERR_UNCORRECTED, mci, 1,
-					     page, 0, 0,
-					     edac_mc_find_csrow_by_page(mci, page),
-					     0, -1,
-					     mci->ctl_name, "");
-	}
+ page = eapaddr >> PAGE_SHIFT;
 
-	return error_found;
+ if (info->eapr & BIT(0)) {
+  error_found = 1;
+
+  if (handle_errors)
+   edac_mc_handle_error(HW_EVENT_ERR_CORRECTED, mci, 1,
+          page, 0, syndrome,
+          edac_mc_find_csrow_by_page(mci, page),
+          0, -1,
+          mci->ctl_name, "");
+ }
+
+ if (info->eapr & BIT(1)) {
+  error_found = 1;
+
+  if (handle_errors)
+
+   edac_mc_handle_error(HW_EVENT_ERR_UNCORRECTED, mci, 1,
+          page, 0, 0,
+          edac_mc_find_csrow_by_page(mci, page),
+          0, -1,
+          mci->ctl_name, "");
+ }
+
+ return error_found;
 }

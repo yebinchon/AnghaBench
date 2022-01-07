@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tty_driver {int dummy; } ;
 struct console {int index; scalar_t__ data; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static struct tty_driver *usb_console_device(struct console *co, int *index)
 {
-	struct tty_driver **p = (struct tty_driver **)co->data;
+ struct tty_driver **p = (struct tty_driver **)co->data;
 
-	if (!*p)
-		return NULL;
+ if (!*p)
+  return ((void*)0);
 
-	*index = co->index;
-	return *p;
+ *index = co->index;
+ return *p;
 }

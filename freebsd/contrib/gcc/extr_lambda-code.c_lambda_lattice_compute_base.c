@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int** lambda_matrix ;
-typedef  int /*<<< orphan*/  lambda_loopnest ;
-typedef  int lambda_loop ;
-typedef  int /*<<< orphan*/  lambda_linear_expression ;
-typedef  int /*<<< orphan*/  lambda_lattice ;
 
-/* Variables and functions */
- int** LATTICE_BASE (int /*<<< orphan*/ ) ; 
- scalar_t__* LATTICE_ORIGIN (int /*<<< orphan*/ ) ; 
- scalar_t__** LATTICE_ORIGIN_INVARIANTS (int /*<<< orphan*/ ) ; 
- int* LLE_COEFFICIENTS (int /*<<< orphan*/ ) ; 
- scalar_t__ LLE_CONSTANT (int /*<<< orphan*/ ) ; 
- int LLE_DENOMINATOR (int /*<<< orphan*/ ) ; 
- scalar_t__* LLE_INVARIANT_COEFFICIENTS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LLE_NEXT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LL_LOWER_BOUND (int) ; 
- int LL_STEP (int) ; 
- int LN_DEPTH (int /*<<< orphan*/ ) ; 
- int LN_INVARIANTS (int /*<<< orphan*/ ) ; 
- int* LN_LOOPS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- int /*<<< orphan*/  lambda_lattice_new (int,int) ; 
+
+
+
+typedef int** lambda_matrix ;
+typedef int lambda_loopnest ;
+typedef int lambda_loop ;
+typedef int lambda_linear_expression ;
+typedef int lambda_lattice ;
+
+
+ int** LATTICE_BASE (int ) ;
+ scalar_t__* LATTICE_ORIGIN (int ) ;
+ scalar_t__** LATTICE_ORIGIN_INVARIANTS (int ) ;
+ int* LLE_COEFFICIENTS (int ) ;
+ scalar_t__ LLE_CONSTANT (int ) ;
+ int LLE_DENOMINATOR (int ) ;
+ scalar_t__* LLE_INVARIANT_COEFFICIENTS (int ) ;
+ int LLE_NEXT (int ) ;
+ int LL_LOWER_BOUND (int) ;
+ int LL_STEP (int) ;
+ int LN_DEPTH (int ) ;
+ int LN_INVARIANTS (int ) ;
+ int* LN_LOOPS (int ) ;
+ int gcc_assert (int) ;
+ int lambda_lattice_new (int,int) ;
 
 __attribute__((used)) static lambda_lattice
 lambda_lattice_compute_base (lambda_loopnest nest)
@@ -54,44 +54,44 @@ lambda_lattice_compute_base (lambda_loopnest nest)
       loop = LN_LOOPS (nest)[i];
       gcc_assert (loop);
       step = LL_STEP (loop);
-      /* If we have a step of 1, then the base is one, and the
-         origin and invariant coefficients are 0.  */
+
+
       if (step == 1)
-	{
-	  for (j = 0; j < depth; j++)
-	    base[i][j] = 0;
-	  base[i][i] = 1;
-	  LATTICE_ORIGIN (ret)[i] = 0;
-	  for (j = 0; j < invariants; j++)
-	    LATTICE_ORIGIN_INVARIANTS (ret)[i][j] = 0;
-	}
+ {
+   for (j = 0; j < depth; j++)
+     base[i][j] = 0;
+   base[i][i] = 1;
+   LATTICE_ORIGIN (ret)[i] = 0;
+   for (j = 0; j < invariants; j++)
+     LATTICE_ORIGIN_INVARIANTS (ret)[i][j] = 0;
+ }
       else
-	{
-	  /* Otherwise, we need the lower bound expression (which must
-	     be an affine function)  to determine the base.  */
-	  expression = LL_LOWER_BOUND (loop);
-	  gcc_assert (expression && !LLE_NEXT (expression) 
-		      && LLE_DENOMINATOR (expression) == 1);
+ {
 
-	  /* The lower triangular portion of the base is going to be the
-	     coefficient times the step */
-	  for (j = 0; j < i; j++)
-	    base[i][j] = LLE_COEFFICIENTS (expression)[j]
-	      * LL_STEP (LN_LOOPS (nest)[j]);
-	  base[i][i] = step;
-	  for (j = i + 1; j < depth; j++)
-	    base[i][j] = 0;
 
-	  /* Origin for this loop is the constant of the lower bound
-	     expression.  */
-	  LATTICE_ORIGIN (ret)[i] = LLE_CONSTANT (expression);
+   expression = LL_LOWER_BOUND (loop);
+   gcc_assert (expression && !LLE_NEXT (expression)
+        && LLE_DENOMINATOR (expression) == 1);
 
-	  /* Coefficient for the invariants are equal to the invariant
-	     coefficients in the expression.  */
-	  for (j = 0; j < invariants; j++)
-	    LATTICE_ORIGIN_INVARIANTS (ret)[i][j] =
-	      LLE_INVARIANT_COEFFICIENTS (expression)[j];
-	}
+
+
+   for (j = 0; j < i; j++)
+     base[i][j] = LLE_COEFFICIENTS (expression)[j]
+       * LL_STEP (LN_LOOPS (nest)[j]);
+   base[i][i] = step;
+   for (j = i + 1; j < depth; j++)
+     base[i][j] = 0;
+
+
+
+   LATTICE_ORIGIN (ret)[i] = LLE_CONSTANT (expression);
+
+
+
+   for (j = 0; j < invariants; j++)
+     LATTICE_ORIGIN_INVARIANTS (ret)[i][j] =
+       LLE_INVARIANT_COEFFICIENTS (expression)[j];
+ }
     }
   return ret;
 }

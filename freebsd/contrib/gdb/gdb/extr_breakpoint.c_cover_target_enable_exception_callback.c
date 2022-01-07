@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct symtab_and_line {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  enable_p; int /*<<< orphan*/  kind; } ;
-typedef  TYPE_1__ args_for_catchpoint_enable ;
+struct TYPE_2__ {int enable_p; int kind; } ;
+typedef TYPE_1__ args_for_catchpoint_enable ;
 
-/* Variables and functions */
- struct symtab_and_line* target_enable_exception_callback (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ struct symtab_and_line* target_enable_exception_callback (int ,int ) ;
 
 __attribute__((used)) static int
 cover_target_enable_exception_callback (void *arg)
@@ -24,10 +24,10 @@ cover_target_enable_exception_callback (void *arg)
   args_for_catchpoint_enable *args = arg;
   struct symtab_and_line *sal;
   sal = target_enable_exception_callback (args->kind, args->enable_p);
-  if (sal == NULL)
+  if (sal == ((void*)0))
     return 0;
   else if (sal == (struct symtab_and_line *) -1)
     return -1;
   else
-    return 1;			/*is valid */
+    return 1;
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bfd ;
-typedef  int /*<<< orphan*/  asection ;
 
-/* Variables and functions */
- int SEC_LOAD ; 
- int bfd_get_section_flags (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ bfd_section_size (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ bfd_section_vma (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int bfd ;
+typedef int asection ;
+
+
+ int SEC_LOAD ;
+ int bfd_get_section_flags (int *,int *) ;
+ scalar_t__ bfd_section_size (int *,int *) ;
+ scalar_t__ bfd_section_vma (int *,int *) ;
 
 void
 find_lowest_section (bfd *abfd, asection *sect, void *obj)
@@ -27,11 +27,11 @@ find_lowest_section (bfd *abfd, asection *sect, void *obj)
   if (0 == (bfd_get_section_flags (abfd, sect) & SEC_LOAD))
     return;
   if (!*lowest)
-    *lowest = sect;		/* First loadable section */
+    *lowest = sect;
   else if (bfd_section_vma (abfd, *lowest) > bfd_section_vma (abfd, sect))
-    *lowest = sect;		/* A lower loadable section */
+    *lowest = sect;
   else if (bfd_section_vma (abfd, *lowest) == bfd_section_vma (abfd, sect)
-	   && (bfd_section_size (abfd, (*lowest))
-	       <= bfd_section_size (abfd, sect)))
+    && (bfd_section_size (abfd, (*lowest))
+        <= bfd_section_size (abfd, sect)))
     *lowest = sect;
 }

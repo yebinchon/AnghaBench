@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int cmsUInt16Number ;
-typedef  int /*<<< orphan*/  cmsToneCurve ;
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/ * cmsHPROFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/ * cmsBuildTabulatedToneCurve16 (int /*<<< orphan*/ ,int,int*) ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsFreeToneCurve (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cmsOpenProfileFromFile (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  cmsSetProfileVersion (int /*<<< orphan*/ ,int /*<<< orphan*/ *,double) ; 
- int /*<<< orphan*/  cmsSigGrayTRCTag ; 
- int /*<<< orphan*/  cmsWriteTag (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  remove (char*) ; 
+
+
+
+typedef int cmsUInt16Number ;
+typedef int cmsToneCurve ;
+typedef int cmsInt32Number ;
+typedef int * cmsHPROFILE ;
+
+
+ int DbgThread () ;
+ int * cmsBuildTabulatedToneCurve16 (int ,int,int*) ;
+ int cmsCloseProfile (int ,int *) ;
+ int cmsFreeToneCurve (int ,int *) ;
+ int * cmsOpenProfileFromFile (int ,char*,char*) ;
+ int cmsSetProfileVersion (int ,int *,double) ;
+ int cmsSigGrayTRCTag ;
+ int cmsWriteTag (int ,int *,int ,int *) ;
+ int remove (char*) ;
 
 __attribute__((used)) static
 cmsInt32Number CheckV4gamma(void)
@@ -34,7 +34,7 @@ cmsInt32Number CheckV4gamma(void)
     cmsToneCurve*g = cmsBuildTabulatedToneCurve16(DbgThread(), 2, Lin);
 
     h = cmsOpenProfileFromFile(DbgThread(), "v4gamma.icc", "w");
-    if (h == NULL) return 0;
+    if (h == ((void*)0)) return 0;
 
 
     cmsSetProfileVersion(DbgThread(), h, 4.3);

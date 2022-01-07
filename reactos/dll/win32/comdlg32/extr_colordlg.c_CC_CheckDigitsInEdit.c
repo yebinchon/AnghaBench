@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (char*) ; 
- int /*<<< orphan*/  EM_GETSEL ; 
- int /*<<< orphan*/  EM_SETSEL ; 
- int /*<<< orphan*/  GetWindowTextA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- long SendMessageA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,long) ; 
- int /*<<< orphan*/  SetWindowTextA (int /*<<< orphan*/ ,char*) ; 
- int atoi (char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int strlen (char*) ; 
+
+
+
+typedef int HWND ;
+
+
+ int ARRAY_SIZE (char*) ;
+ int EM_GETSEL ;
+ int EM_SETSEL ;
+ int GetWindowTextA (int ,char*,int ) ;
+ long SendMessageA (int ,int ,int ,long) ;
+ int SetWindowTextA (int ,char*) ;
+ int atoi (char*) ;
+ int sprintf (char*,char*,int) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static int CC_CheckDigitsInEdit( HWND hwnd, int maxval )
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static int CC_CheckDigitsInEdit( HWND hwnd, int maxval )
  for (i = 0 ; i < m ; i++)
   if (buffer[i] < '0' || buffer[i] > '9')
   {
-   for (k = i + 1; k <= m; k++)  /* delete bad character */
+   for (k = i + 1; k <= m; k++)
    {
     buffer[i] = buffer[k];
     m--;
@@ -46,7 +46,7 @@ __attribute__((used)) static int CC_CheckDigitsInEdit( HWND hwnd, int maxval )
   }
 
  value = atoi(buffer);
- if (value > maxval)       /* build a new string */
+ if (value > maxval)
  {
   sprintf(buffer, "%d", maxval);
   result = 2;

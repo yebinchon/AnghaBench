@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gboolean ;
-struct TYPE_7__ {int /*<<< orphan*/  size; int /*<<< orphan*/  modifier; int /*<<< orphan*/  mode; int /*<<< orphan*/  mtime; } ;
-struct TYPE_6__ {int /*<<< orphan*/  size; int /*<<< orphan*/  modifier; int /*<<< orphan*/  mode; int /*<<< orphan*/  mtime; int /*<<< orphan*/  id; } ;
-typedef  int /*<<< orphan*/  SeafFSManager ;
-typedef  TYPE_1__ SeafDirent ;
-typedef  int /*<<< orphan*/  GList ;
-typedef  TYPE_2__ DiffEntry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DIFF_STATUS_ADDED ; 
- int /*<<< orphan*/  DIFF_STATUS_DIR_ADDED ; 
- int /*<<< orphan*/  DIFF_TYPE_COMMITS ; 
- int /*<<< orphan*/  EMPTY_SHA1 ; 
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- scalar_t__ S_ISREG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- TYPE_2__* diff_entry_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*,char const*) ; 
- int /*<<< orphan*/ * g_list_prepend (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  g_strdup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hex_to_rawdata (int /*<<< orphan*/ ,unsigned char*,int) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int gboolean ;
+struct TYPE_7__ {int size; int modifier; int mode; int mtime; } ;
+struct TYPE_6__ {int size; int modifier; int mode; int mtime; int id; } ;
+typedef int SeafFSManager ;
+typedef TYPE_1__ SeafDirent ;
+typedef int GList ;
+typedef TYPE_2__ DiffEntry ;
+
+
+ int DIFF_STATUS_ADDED ;
+ int DIFF_STATUS_DIR_ADDED ;
+ int DIFF_TYPE_COMMITS ;
+ int EMPTY_SHA1 ;
+ scalar_t__ S_ISDIR (int ) ;
+ scalar_t__ S_ISREG (int ) ;
+ int TRUE ;
+ TYPE_2__* diff_entry_new (int ,int ,unsigned char*,char const*) ;
+ int * g_list_prepend (int *,TYPE_2__*) ;
+ int g_strdup (int ) ;
+ int hex_to_rawdata (int ,unsigned char*,int) ;
+ scalar_t__ strcmp (int ,int ) ;
 
 __attribute__((used)) static gboolean
 expand_dir_added_cb (SeafFSManager *mgr,
@@ -42,7 +42,7 @@ expand_dir_added_cb (SeafFSManager *mgr,
                      gboolean *stop)
 {
     GList **expanded = user_data;
-    DiffEntry *de = NULL;
+    DiffEntry *de = ((void*)0);
     unsigned char sha1[20];
 
     hex_to_rawdata (dent->id, sha1, 20);

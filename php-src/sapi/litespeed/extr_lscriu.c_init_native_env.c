@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  atoi (char*) ; 
- void* getenv (char*) ; 
- int /*<<< orphan*/  getpid () ; 
- int /*<<< orphan*/  iPidDump ; 
- int /*<<< orphan*/  lscriu_dbg (char*,int /*<<< orphan*/ ,char const*,...) ; 
- int /*<<< orphan*/  lscriu_err (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  s_criu_image_path ; 
- int /*<<< orphan*/  s_fd_native ; 
- int /*<<< orphan*/  strdup (char const*) ; 
+ int atoi (char*) ;
+ void* getenv (char*) ;
+ int getpid () ;
+ int iPidDump ;
+ int lscriu_dbg (char*,int ,char const*,...) ;
+ int lscriu_err (char*,int ) ;
+ int s_criu_image_path ;
+ int s_fd_native ;
+ int strdup (char const*) ;
 
 __attribute__((used)) static int init_native_env()
 {
@@ -47,6 +39,6 @@ __attribute__((used)) static int init_native_env()
     s_fd_native = atoi(pchFd);
     lscriu_dbg("LSCRIU (%d): Native checkpoint.  Use filepointer %d (%s) to send "
                "pid %d\n", getpid(), s_fd_native, pchFd, iPidDump);
-    s_criu_image_path  = strdup(image_path);
+    s_criu_image_path = strdup(image_path);
     return 0;
 }

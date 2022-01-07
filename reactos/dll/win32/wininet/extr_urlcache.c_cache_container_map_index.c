@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ CreateFileMappingW (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FILE_MAP_WRITE ; 
- int MAX_PATH ; 
- scalar_t__ OpenFileMappingW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PAGE_READWRITE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  cache_container_create_object_name (char*,char) ; 
- int /*<<< orphan*/  wsprintfW (char*,char const*,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef char WCHAR ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ scalar_t__ CreateFileMappingW (scalar_t__,int *,int ,int ,int ,char*) ;
+ int FALSE ;
+ int FILE_MAP_WRITE ;
+ int MAX_PATH ;
+ scalar_t__ OpenFileMappingW (int ,int ,char*) ;
+ int PAGE_READWRITE ;
+ int TRUE ;
+ int cache_container_create_object_name (char*,char) ;
+ int wsprintfW (char*,char const*,char const*,int ) ;
 
 __attribute__((used)) static HANDLE cache_container_map_index(HANDLE file, const WCHAR *path, DWORD size, BOOL *validate)
 {
@@ -43,5 +43,5 @@ __attribute__((used)) static HANDLE cache_container_map_index(HANDLE file, const
     }
 
     if(validate) *validate = TRUE;
-    return CreateFileMappingW(file, NULL, PAGE_READWRITE, 0, 0, mapping_name);
+    return CreateFileMappingW(file, ((void*)0), PAGE_READWRITE, 0, 0, mapping_name);
 }

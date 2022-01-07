@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  v_enc ;
-typedef  scalar_t__ uint8_t ;
-typedef  scalar_t__ uint64_t ;
-typedef  int /*<<< orphan*/  ptls_aead_context_t ;
-typedef  int /*<<< orphan*/  h ;
 
-/* Variables and functions */
- int BENCH_BATCH ; 
- int PTLS_ALERT_DECRYPT_ERROR ; 
- int PTLS_ERROR_NO_MEMORY ; 
- size_t PTLS_MAX_DIGEST_SIZE ; 
- scalar_t__ bench_time () ; 
- int /*<<< orphan*/  free (scalar_t__*) ; 
- scalar_t__ malloc (size_t) ; 
- int /*<<< orphan*/  memset (scalar_t__*,int /*<<< orphan*/ ,size_t) ; 
- size_t ptls_aead_decrypt (int /*<<< orphan*/ *,scalar_t__*,scalar_t__*,size_t,scalar_t__,scalar_t__*,int) ; 
- scalar_t__ ptls_aead_encrypt_final (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  ptls_aead_encrypt_init (int /*<<< orphan*/ *,scalar_t__,scalar_t__*,int) ; 
- size_t ptls_aead_encrypt_update (int /*<<< orphan*/ *,scalar_t__*,scalar_t__*,size_t) ; 
+
+
+
+typedef int v_enc ;
+typedef scalar_t__ uint8_t ;
+typedef scalar_t__ uint64_t ;
+typedef int ptls_aead_context_t ;
+typedef int h ;
+
+
+ int BENCH_BATCH ;
+ int PTLS_ALERT_DECRYPT_ERROR ;
+ int PTLS_ERROR_NO_MEMORY ;
+ size_t PTLS_MAX_DIGEST_SIZE ;
+ scalar_t__ bench_time () ;
+ int free (scalar_t__*) ;
+ scalar_t__ malloc (size_t) ;
+ int memset (scalar_t__*,int ,size_t) ;
+ size_t ptls_aead_decrypt (int *,scalar_t__*,scalar_t__*,size_t,scalar_t__,scalar_t__*,int) ;
+ scalar_t__ ptls_aead_encrypt_final (int *,scalar_t__*) ;
+ int ptls_aead_encrypt_init (int *,scalar_t__,scalar_t__*,int) ;
+ size_t ptls_aead_encrypt_update (int *,scalar_t__*,scalar_t__*,size_t) ;
 
 __attribute__((used)) static int bench_run_one(ptls_aead_context_t *e, ptls_aead_context_t *d, size_t n, size_t l, uint64_t *t_enc, uint64_t *t_dec,
                      uint64_t *s)
 {
     int ret = 0;
-    uint8_t *v_in = NULL;
+    uint8_t *v_in = ((void*)0);
     uint8_t *v_enc[BENCH_BATCH];
-    uint8_t *v_dec = NULL;
+    uint8_t *v_dec = ((void*)0);
     uint64_t h[4];
 
     *t_enc = 0;
@@ -47,7 +47,7 @@ __attribute__((used)) static int bench_run_one(ptls_aead_context_t *e, ptls_aead
     memset(h, 0, sizeof(h));
     v_in = (uint8_t *)malloc(l);
     v_dec = (uint8_t *)malloc(l);
-    if (v_in == NULL || v_dec == NULL) {
+    if (v_in == ((void*)0) || v_dec == ((void*)0)) {
         ret = PTLS_ERROR_NO_MEMORY;
     }
 
@@ -104,17 +104,17 @@ __attribute__((used)) static int bench_run_one(ptls_aead_context_t *e, ptls_aead
         }
     }
 
-    if (v_in != NULL) {
+    if (v_in != ((void*)0)) {
         free(v_in);
     }
 
     for (size_t i = 0; i < BENCH_BATCH; i++) {
-        if (v_enc[i] != NULL) {
+        if (v_enc[i] != ((void*)0)) {
             free(v_enc[i]);
         }
     }
 
-    if (v_dec != NULL) {
+    if (v_dec != ((void*)0)) {
         free(v_dec);
     }
 

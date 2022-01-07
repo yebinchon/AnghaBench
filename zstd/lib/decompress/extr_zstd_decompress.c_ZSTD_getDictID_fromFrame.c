@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int dictID; int /*<<< orphan*/  member_6; int /*<<< orphan*/  member_5; int /*<<< orphan*/  member_4; int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ ZSTD_frameHeader ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZSTD_frame ; 
- size_t ZSTD_getFrameHeader (TYPE_1__*,void const*,size_t) ; 
- scalar_t__ ZSTD_isError (size_t const) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int dictID; int member_6; int member_5; int member_4; int member_3; int member_2; int member_1; int member_0; } ;
+typedef TYPE_1__ ZSTD_frameHeader ;
+
+
+ int ZSTD_frame ;
+ size_t ZSTD_getFrameHeader (TYPE_1__*,void const*,size_t) ;
+ scalar_t__ ZSTD_isError (size_t const) ;
 
 unsigned ZSTD_getDictID_fromFrame(const void* src, size_t srcSize)
 {

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ui_file {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf_filtered (struct ui_file*,char*,char*) ; 
- int /*<<< orphan*/  fputs_filtered (char*,struct ui_file*) ; 
- char* local_hex_string_custom (unsigned int,char*) ; 
+
+ int fprintf_filtered (struct ui_file*,char*,char*) ;
+ int fputs_filtered (char*,struct ui_file*) ;
+ char* local_hex_string_custom (unsigned int,char*) ;
 
 __attribute__((used)) static void
 print_i387_control_word (unsigned int control, struct ui_file *file)
 {
   fprintf_filtered (file, "Control Word:        %s",
-		   local_hex_string_custom (control, "04"));
+     local_hex_string_custom (control, "04"));
   fputs_filtered ("  ", file);
   fprintf_filtered (file, " %s", (control & 0x0001) ? "IM" : "  ");
   fprintf_filtered (file, " %s", (control & 0x0002) ? "DM" : "  ");
@@ -48,7 +48,7 @@ print_i387_control_word (unsigned int control, struct ui_file *file)
       fputs_filtered ("Extended Precision (64-bits)\n", file);
       break;
     }
-      
+
   fputs_filtered ("                       RC: ", file);
   switch ((control >> 10) & 3)
     {

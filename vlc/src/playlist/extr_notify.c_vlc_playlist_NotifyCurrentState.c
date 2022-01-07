@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  size; int /*<<< orphan*/  data; } ;
-struct TYPE_6__ {int /*<<< orphan*/  has_next; int /*<<< orphan*/  has_prev; int /*<<< orphan*/  current; int /*<<< orphan*/  order; int /*<<< orphan*/  repeat; TYPE_1__ items; } ;
-typedef  TYPE_2__ vlc_playlist_t ;
-typedef  int /*<<< orphan*/  vlc_playlist_listener_id ;
 
-/* Variables and functions */
- int /*<<< orphan*/  on_current_index_changed ; 
- int /*<<< orphan*/  on_has_next_changed ; 
- int /*<<< orphan*/  on_has_prev_changed ; 
- int /*<<< orphan*/  on_items_reset ; 
- int /*<<< orphan*/  on_playback_order_changed ; 
- int /*<<< orphan*/  on_playback_repeat_changed ; 
- int /*<<< orphan*/  vlc_playlist_NotifyListener (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int size; int data; } ;
+struct TYPE_6__ {int has_next; int has_prev; int current; int order; int repeat; TYPE_1__ items; } ;
+typedef TYPE_2__ vlc_playlist_t ;
+typedef int vlc_playlist_listener_id ;
+
+
+ int on_current_index_changed ;
+ int on_has_next_changed ;
+ int on_has_prev_changed ;
+ int on_items_reset ;
+ int on_playback_order_changed ;
+ int on_playback_repeat_changed ;
+ int vlc_playlist_NotifyListener (TYPE_2__*,int *,int ,int ,...) ;
 
 __attribute__((used)) static void
 vlc_playlist_NotifyCurrentState(vlc_playlist_t *playlist,

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nodelay ;
-typedef  scalar_t__ evutil_socket_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPPROTO_TCP ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  TCP_NODELAY ; 
- int /*<<< orphan*/  ccnet_warning (char*,...) ; 
- int /*<<< orphan*/  evutil_closesocket (scalar_t__) ; 
- scalar_t__ makeSocketNonBlocking (scalar_t__) ; 
- int setsockopt (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- scalar_t__ socket (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int nodelay ;
+typedef scalar_t__ evutil_socket_t ;
+
+
+ int IPPROTO_TCP ;
+ int SOCK_STREAM ;
+ int TCP_NODELAY ;
+ int ccnet_warning (char*,...) ;
+ int evutil_closesocket (scalar_t__) ;
+ scalar_t__ makeSocketNonBlocking (scalar_t__) ;
+ int setsockopt (scalar_t__,int ,int ,char*,int) ;
+ scalar_t__ socket (int,int ,int ) ;
 
 __attribute__((used)) static evutil_socket_t
 createSocket (int family, int nonblock)

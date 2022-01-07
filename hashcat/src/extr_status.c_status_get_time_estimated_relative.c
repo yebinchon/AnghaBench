@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ runtime; } ;
-typedef  TYPE_1__ user_options_t ;
-typedef  int time_t ;
+typedef TYPE_1__ user_options_t ;
+typedef int time_t ;
 struct tm {int dummy; } ;
 struct TYPE_7__ {TYPE_1__* user_options; } ;
-typedef  TYPE_2__ hashcat_ctx_t ;
+typedef TYPE_2__ hashcat_ctx_t ;
 
-/* Variables and functions */
- char* ETA_RELATIVE_MAX_EXCEEDED ; 
- int /*<<< orphan*/  HCBUFSIZ_TINY ; 
- int /*<<< orphan*/  format_timer_display (struct tm*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- int get_runtime_left (TYPE_2__ const*) ; 
- struct tm* gmtime_r (int*,struct tm*) ; 
- scalar_t__ hcmalloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (char*,int /*<<< orphan*/ ,char*,char*,...) ; 
- int status_get_sec_etc (TYPE_2__ const*) ; 
- char* strdup (char*) ; 
+
+ char* ETA_RELATIVE_MAX_EXCEEDED ;
+ int HCBUFSIZ_TINY ;
+ int format_timer_display (struct tm*,char*,int ) ;
+ int free (char*) ;
+ int get_runtime_left (TYPE_2__ const*) ;
+ struct tm* gmtime_r (int*,struct tm*) ;
+ scalar_t__ hcmalloc (int ) ;
+ int snprintf (char*,int ,char*,char*,...) ;
+ int status_get_sec_etc (TYPE_2__ const*) ;
+ char* strdup (char*) ;
 
 char *status_get_time_estimated_relative (const hashcat_ctx_t *hashcat_ctx)
 {
@@ -40,11 +40,11 @@ char *status_get_time_estimated_relative (const hashcat_ctx_t *hashcat_ctx)
   time_t sec_etc = status_get_sec_etc (hashcat_ctx);
 
   struct tm *tmp;
-  struct tm  tm;
+  struct tm tm;
 
   tmp = gmtime_r (&sec_etc, &tm);
 
-  if (tmp == NULL)
+  if (tmp == ((void*)0))
   {
     snprintf (display, HCBUFSIZ_TINY, "%s", ETA_RELATIVE_MAX_EXCEEDED);
   }
@@ -64,7 +64,7 @@ char *status_get_time_estimated_relative (const hashcat_ctx_t *hashcat_ctx)
       time_t sec_left = runtime_left;
 
       struct tm *tmp_left;
-      struct tm  tm_left;
+      struct tm tm_left;
 
       tmp_left = gmtime_r (&sec_left, &tm_left);
 

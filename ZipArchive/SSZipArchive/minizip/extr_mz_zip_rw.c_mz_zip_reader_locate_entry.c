@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_2__ {int /*<<< orphan*/ * file_info; int /*<<< orphan*/  zip_handle; } ;
-typedef  TYPE_1__ mz_zip_reader ;
-typedef  scalar_t__ int32_t ;
 
-/* Variables and functions */
- scalar_t__ MZ_OK ; 
- scalar_t__ mz_zip_entry_get_info (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ mz_zip_entry_is_open (int /*<<< orphan*/ ) ; 
- scalar_t__ mz_zip_locate_entry (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mz_zip_reader_entry_close (void*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_2__ {int * file_info; int zip_handle; } ;
+typedef TYPE_1__ mz_zip_reader ;
+typedef scalar_t__ int32_t ;
+
+
+ scalar_t__ MZ_OK ;
+ scalar_t__ mz_zip_entry_get_info (int ,int **) ;
+ scalar_t__ mz_zip_entry_is_open (int ) ;
+ scalar_t__ mz_zip_locate_entry (int ,char const*,int ) ;
+ int mz_zip_reader_entry_close (void*) ;
 
 int32_t mz_zip_reader_locate_entry(void *handle, const char *filename, uint8_t ignore_case)
 {
@@ -33,7 +33,7 @@ int32_t mz_zip_reader_locate_entry(void *handle, const char *filename, uint8_t i
 
     err = mz_zip_locate_entry(reader->zip_handle, filename, ignore_case);
 
-    reader->file_info = NULL;
+    reader->file_info = ((void*)0);
     if (err == MZ_OK)
         err = mz_zip_entry_get_info(reader->zip_handle, &reader->file_info);
 

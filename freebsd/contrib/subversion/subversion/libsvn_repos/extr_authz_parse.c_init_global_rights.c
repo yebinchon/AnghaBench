@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char const* user; int /*<<< orphan*/  per_repos_rights; int /*<<< orphan*/  any_repos_rights; int /*<<< orphan*/  all_repos_rights; } ;
-typedef  TYPE_1__ authz_global_rights_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_rights (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char const* user; int per_repos_rights; int any_repos_rights; int all_repos_rights; } ;
+typedef TYPE_1__ authz_global_rights_t ;
+typedef int apr_pool_t ;
+
+
+ int apr_hash_make (int *) ;
+ int init_rights (int *) ;
 
 __attribute__((used)) static void
 init_global_rights(authz_global_rights_t *gr, const char *user,

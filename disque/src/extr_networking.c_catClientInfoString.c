@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sds ;
-struct TYPE_10__ {int flags; int fd; TYPE_2__* lastcmd; int /*<<< orphan*/  reply; scalar_t__ bufpos; int /*<<< orphan*/  querybuf; scalar_t__ lastinteraction; scalar_t__ ctime; TYPE_1__* name; scalar_t__ id; } ;
-typedef  TYPE_3__ client ;
-struct TYPE_11__ {scalar_t__ unixtime; int /*<<< orphan*/  el; } ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int sds ;
+struct TYPE_10__ {int flags; int fd; TYPE_2__* lastcmd; int reply; scalar_t__ bufpos; int querybuf; scalar_t__ lastinteraction; scalar_t__ ctime; TYPE_1__* name; scalar_t__ id; } ;
+typedef TYPE_3__ client ;
+struct TYPE_11__ {scalar_t__ unixtime; int el; } ;
 struct TYPE_9__ {char* name; } ;
 struct TYPE_8__ {scalar_t__ ptr; } ;
 
-/* Variables and functions */
- int AE_READABLE ; 
- int AE_WRITABLE ; 
- int CLIENT_BLOCKED ; 
- int CLIENT_CLOSE_AFTER_REPLY ; 
- int CLIENT_CLOSE_ASAP ; 
- int CLIENT_MONITOR ; 
- int CLIENT_UNBLOCKED ; 
- int CLIENT_UNIX_SOCKET ; 
- int aeGetFileEvents (int /*<<< orphan*/ ,int) ; 
- scalar_t__ getClientOutputBufferMemoryUsage (TYPE_3__*) ; 
- int /*<<< orphan*/  getClientPeerId (TYPE_3__*) ; 
- scalar_t__ listLength (int /*<<< orphan*/ ) ; 
- scalar_t__ sdsavail (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdscatfmt (int /*<<< orphan*/ ,char*,unsigned long long,int /*<<< orphan*/ ,int,char*,long long,long long,char*,unsigned long long,unsigned long long,unsigned long long,unsigned long long,unsigned long long,char*,char*) ; 
- scalar_t__ sdslen (int /*<<< orphan*/ ) ; 
- TYPE_4__ server ; 
+
+ int AE_READABLE ;
+ int AE_WRITABLE ;
+ int CLIENT_BLOCKED ;
+ int CLIENT_CLOSE_AFTER_REPLY ;
+ int CLIENT_CLOSE_ASAP ;
+ int CLIENT_MONITOR ;
+ int CLIENT_UNBLOCKED ;
+ int CLIENT_UNIX_SOCKET ;
+ int aeGetFileEvents (int ,int) ;
+ scalar_t__ getClientOutputBufferMemoryUsage (TYPE_3__*) ;
+ int getClientPeerId (TYPE_3__*) ;
+ scalar_t__ listLength (int ) ;
+ scalar_t__ sdsavail (int ) ;
+ int sdscatfmt (int ,char*,unsigned long long,int ,int,char*,long long,long long,char*,unsigned long long,unsigned long long,unsigned long long,unsigned long long,unsigned long long,char*,char*) ;
+ scalar_t__ sdslen (int ) ;
+ TYPE_4__ server ;
 
 sds catClientInfoString(sds s, client *client) {
     char flags[16], events[3], *p;

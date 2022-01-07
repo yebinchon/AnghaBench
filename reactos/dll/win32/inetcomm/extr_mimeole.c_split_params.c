@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  header_t ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int FALSE ; 
- int TRUE ; 
- int /*<<< orphan*/  add_param (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int header_t ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int add_param (int *,char*) ;
 
 __attribute__((used)) static void split_params(header_t *header, char *value)
 {

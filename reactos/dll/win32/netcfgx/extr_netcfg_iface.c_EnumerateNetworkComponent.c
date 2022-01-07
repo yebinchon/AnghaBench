@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  NetCfgComponentItem ;
-typedef  char* LPOLESTR ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  GUID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CoTaskMemFree (char*) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  EnumClientServiceProtocol (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  KEY_READ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StringFromCLSID (int /*<<< orphan*/  const*,char**) ; 
- int /*<<< orphan*/  swprintf (int /*<<< orphan*/ *,char*,char*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int NetCfgComponentItem ;
+typedef char* LPOLESTR ;
+typedef int HRESULT ;
+typedef int HKEY ;
+typedef int GUID ;
+
+
+ int CoTaskMemFree (char*) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int EnumClientServiceProtocol (int ,int const*,int **) ;
+ int HKEY_LOCAL_MACHINE ;
+ int KEY_READ ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegOpenKeyExW (int ,int *,int ,int ,int *) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int StringFromCLSID (int const*,char**) ;
+ int swprintf (int *,char*,char*) ;
 
 HRESULT
 EnumerateNetworkComponent(

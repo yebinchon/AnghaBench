@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct spi_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * olpc_ec ; 
- int /*<<< orphan*/ * olpc_xo175_ec_power_off ; 
- int /*<<< orphan*/  platform_device_unregister (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * pm_power_off ; 
- int /*<<< orphan*/  spi_slave_abort (struct spi_device*) ; 
+
+ int * olpc_ec ;
+ int * olpc_xo175_ec_power_off ;
+ int platform_device_unregister (int *) ;
+ int * pm_power_off ;
+ int spi_slave_abort (struct spi_device*) ;
 
 __attribute__((used)) static int olpc_xo175_ec_remove(struct spi_device *spi)
 {
-	if (pm_power_off == olpc_xo175_ec_power_off)
-		pm_power_off = NULL;
+ if (pm_power_off == olpc_xo175_ec_power_off)
+  pm_power_off = ((void*)0);
 
-	spi_slave_abort(spi);
+ spi_slave_abort(spi);
 
-	platform_device_unregister(olpc_ec);
-	olpc_ec = NULL;
+ platform_device_unregister(olpc_ec);
+ olpc_ec = ((void*)0);
 
-	return 0;
+ return 0;
 }

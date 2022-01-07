@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  serf_request_t ;
-typedef  int /*<<< orphan*/  serf_bucket_t ;
-typedef  int /*<<< orphan*/  serf_bucket_alloc_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * serf_bucket_barrier_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * serf_bucket_response_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * serf_request_get_alloc (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int serf_request_t ;
+typedef int serf_bucket_t ;
+typedef int serf_bucket_alloc_t ;
+typedef int apr_pool_t ;
+
+
+ int * serf_bucket_barrier_create (int *,int *) ;
+ int * serf_bucket_response_create (int *,int *) ;
+ int * serf_request_get_alloc (int *) ;
 
 __attribute__((used)) static serf_bucket_t *
 accept_response(serf_request_t *request,
@@ -26,7 +26,7 @@ accept_response(serf_request_t *request,
                 void *acceptor_baton,
                 apr_pool_t *pool)
 {
-  /* svn_ra_serf__handler_t *handler = acceptor_baton; */
+
   serf_bucket_t *c;
   serf_bucket_alloc_t *bkt_alloc;
 

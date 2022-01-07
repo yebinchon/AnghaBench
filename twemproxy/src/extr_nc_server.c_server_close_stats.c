@@ -1,36 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct server {int dummy; } ;
 struct context {int dummy; } ;
-typedef  int err_t ;
-
-/* Variables and functions */
-#define  ECONNABORTED 137 
-#define  ECONNREFUSED 136 
-#define  ECONNRESET 135 
-#define  EHOSTDOWN 134 
-#define  EHOSTUNREACH 133 
-#define  ENETDOWN 132 
-#define  ENETUNREACH 131 
-#define  ENOTCONN 130 
-#define  EPIPE 129 
-#define  ETIMEDOUT 128 
- int /*<<< orphan*/  server_connections ; 
- int /*<<< orphan*/  server_eof ; 
- int /*<<< orphan*/  server_err ; 
- int /*<<< orphan*/  server_timedout ; 
- int /*<<< orphan*/  stats_server_decr (struct context*,struct server*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stats_server_incr (struct context*,struct server*,int /*<<< orphan*/ ) ; 
+typedef int err_t ;
+ int server_connections ;
+ int server_eof ;
+ int server_err ;
+ int server_timedout ;
+ int stats_server_decr (struct context*,struct server*,int ) ;
+ int stats_server_incr (struct context*,struct server*,int ) ;
 
 __attribute__((used)) static void
 server_close_stats(struct context *ctx, struct server *server, err_t err,
@@ -46,18 +34,18 @@ server_close_stats(struct context *ctx, struct server *server, err_t err,
     }
 
     switch (err) {
-    case ETIMEDOUT:
+    case 128:
         stats_server_incr(ctx, server, server_timedout);
         break;
-    case EPIPE:
-    case ECONNRESET:
-    case ECONNABORTED:
-    case ECONNREFUSED:
-    case ENOTCONN:
-    case ENETDOWN:
-    case ENETUNREACH:
-    case EHOSTDOWN:
-    case EHOSTUNREACH:
+    case 129:
+    case 135:
+    case 137:
+    case 136:
+    case 130:
+    case 132:
+    case 131:
+    case 134:
+    case 133:
     default:
         stats_server_incr(ctx, server, server_err);
         break;

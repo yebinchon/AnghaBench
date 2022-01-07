@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct speller {int russian; struct speller* next; void* name; void* jargon; void* code; int /*<<< orphan*/  spell_checker; int /*<<< orphan*/ * config; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct speller {int russian; struct speller* next; void* name; void* jargon; void* code; int spell_checker; int * config; } ;
 struct TYPE_3__ {char* code; char* jargon; char* name; } ;
-typedef  int /*<<< orphan*/  AspellDictInfoList ;
-typedef  int /*<<< orphan*/  AspellDictInfoEnumeration ;
-typedef  TYPE_1__ AspellDictInfo ;
-typedef  int /*<<< orphan*/  AspellConfig ;
-typedef  int /*<<< orphan*/  AspellCanHaveError ;
+typedef int AspellDictInfoList ;
+typedef int AspellDictInfoEnumeration ;
+typedef TYPE_1__ AspellDictInfo ;
+typedef int AspellConfig ;
+typedef int AspellCanHaveError ;
 
-/* Variables and functions */
- int REG_EXTENDED ; 
- int REG_ICASE ; 
- int REG_NEWLINE ; 
- struct speller** SC ; 
- struct speller** SS ; 
- TYPE_1__* aspell_dict_info_enumeration_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * aspell_dict_info_list_elements (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aspell_error_message (int /*<<< orphan*/ *) ; 
- scalar_t__ aspell_error_number (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  delete_aspell_can_have_error (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  delete_aspell_config (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  delete_aspell_dict_info_enumeration (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  email_regexp ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/ * get_aspell_dict_info_list (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_is_letter () ; 
- int /*<<< orphan*/  kprintf (char*,int /*<<< orphan*/ ,...) ; 
- int* l_case ; 
- int /*<<< orphan*/ * new_aspell_config () ; 
- int /*<<< orphan*/ * new_aspell_speller (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  re_email ; 
- int /*<<< orphan*/  re_url ; 
- int spellers ; 
- int /*<<< orphan*/  strcmp (void*,char*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- int /*<<< orphan*/  to_aspell_speller (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  url_regexp ; 
- scalar_t__ use_aspell_suggestion ; 
- int /*<<< orphan*/  vk_aspell_config_replace (int /*<<< orphan*/ *,char*,char*) ; 
- int vk_regcomp (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  vkprintf (int,char*,char*,...) ; 
- void* zmalloc (int) ; 
- struct speller* zmalloc0 (int) ; 
- void* zstrdup (char*) ; 
+
+ int REG_EXTENDED ;
+ int REG_ICASE ;
+ int REG_NEWLINE ;
+ struct speller** SC ;
+ struct speller** SS ;
+ TYPE_1__* aspell_dict_info_enumeration_next (int *) ;
+ int * aspell_dict_info_list_elements (int *) ;
+ int aspell_error_message (int *) ;
+ scalar_t__ aspell_error_number (int *) ;
+ int delete_aspell_can_have_error (int *) ;
+ int delete_aspell_config (int *) ;
+ int delete_aspell_dict_info_enumeration (int *) ;
+ int email_regexp ;
+ int exit (int) ;
+ int * get_aspell_dict_info_list (int *) ;
+ int init_is_letter () ;
+ int kprintf (char*,int ,...) ;
+ int* l_case ;
+ int * new_aspell_config () ;
+ int * new_aspell_speller (int *) ;
+ int re_email ;
+ int re_url ;
+ int spellers ;
+ int strcmp (void*,char*) ;
+ int strncmp (char*,char*,int) ;
+ int to_aspell_speller (int *) ;
+ int url_regexp ;
+ scalar_t__ use_aspell_suggestion ;
+ int vk_aspell_config_replace (int *,char*,char*) ;
+ int vk_regcomp (int *,int ,int) ;
+ int vkprintf (int,char*,char*,...) ;
+ void* zmalloc (int) ;
+ struct speller* zmalloc0 (int) ;
+ void* zstrdup (char*) ;
 
 void spell_init (void) {
   int r = vk_regcomp (&re_email, email_regexp, REG_EXTENDED | REG_ICASE | REG_NEWLINE);
@@ -67,7 +67,7 @@ void spell_init (void) {
     exit (1);
   }
 
-  struct speller *head = NULL;
+  struct speller *head = ((void*)0);
   spellers = 0;
 
   init_is_letter ();
@@ -79,12 +79,12 @@ void spell_init (void) {
   AspellDictInfoEnumeration *dels = aspell_dict_info_list_elements (dlist);
   while ((entry = aspell_dict_info_enumeration_next (dels)) != 0) {
     struct speller *w;
-    for (w = head; w != NULL; w = w->next) {
+    for (w = head; w != ((void*)0); w = w->next) {
       if (!strcmp (w->code, entry->code) && !strcmp (w->jargon, entry->jargon)) {
         break;
       }
     }
-    if (w != NULL) {
+    if (w != ((void*)0)) {
       vkprintf (1, "skip duplicate dictionary (code:%s, jargon:%s)\n", entry->code, entry->jargon);
       continue;
     }
@@ -126,7 +126,7 @@ void spell_init (void) {
   SC = zmalloc (spellers * sizeof (struct speller));
   SS = zmalloc (spellers * sizeof (struct speller));
   int i = 0;
-  while (head != NULL) {
+  while (head != ((void*)0)) {
     SC[i] = SS[i] = head;
     head = head->next;
     i++;

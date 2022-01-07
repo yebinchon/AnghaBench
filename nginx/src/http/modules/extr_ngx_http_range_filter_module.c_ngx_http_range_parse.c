@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_7__ ;
-typedef  struct TYPE_21__   TYPE_6__ ;
-typedef  struct TYPE_20__   TYPE_5__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
-typedef  struct TYPE_15__   TYPE_13__ ;
 
-/* Type definitions */
-typedef  char u_char ;
-typedef  char off_t ;
-typedef  int ngx_uint_t ;
-typedef  scalar_t__ ngx_int_t ;
+
+
+typedef struct TYPE_22__ TYPE_7__ ;
+typedef struct TYPE_21__ TYPE_6__ ;
+typedef struct TYPE_20__ TYPE_5__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+typedef struct TYPE_15__ TYPE_13__ ;
+
+
+typedef char u_char ;
+typedef char off_t ;
+typedef int ngx_uint_t ;
+typedef scalar_t__ ngx_int_t ;
 struct TYPE_19__ {char content_length_n; } ;
 struct TYPE_18__ {TYPE_2__* range; } ;
-struct TYPE_20__ {TYPE_4__ headers_out; TYPE_3__ headers_in; int /*<<< orphan*/  pool; struct TYPE_20__* main; } ;
-typedef  TYPE_5__ ngx_http_request_t ;
+struct TYPE_20__ {TYPE_4__ headers_out; TYPE_3__ headers_in; int pool; struct TYPE_20__* main; } ;
+typedef TYPE_5__ ngx_http_request_t ;
 struct TYPE_21__ {char start; char end; } ;
-typedef  TYPE_6__ ngx_http_range_t ;
+typedef TYPE_6__ ngx_http_range_t ;
 struct TYPE_15__ {scalar_t__ nelts; } ;
 struct TYPE_22__ {TYPE_13__ ranges; } ;
-typedef  TYPE_7__ ngx_http_range_filter_ctx_t ;
+typedef TYPE_7__ ngx_http_range_filter_ctx_t ;
 struct TYPE_16__ {char* data; } ;
 struct TYPE_17__ {TYPE_1__ value; } ;
 
-/* Variables and functions */
- scalar_t__ NGX_DECLINED ; 
- scalar_t__ NGX_ERROR ; 
- scalar_t__ NGX_HTTP_RANGE_NOT_SATISFIABLE ; 
- int NGX_MAX_OFF_T_VALUE ; 
- scalar_t__ NGX_OK ; 
- scalar_t__ ngx_array_init (TYPE_13__*,int /*<<< orphan*/ ,int,int) ; 
- TYPE_6__* ngx_array_push (TYPE_13__*) ; 
- TYPE_7__* ngx_http_get_module_ctx (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_range_body_filter_module ; 
+
+ scalar_t__ NGX_DECLINED ;
+ scalar_t__ NGX_ERROR ;
+ scalar_t__ NGX_HTTP_RANGE_NOT_SATISFIABLE ;
+ int NGX_MAX_OFF_T_VALUE ;
+ scalar_t__ NGX_OK ;
+ scalar_t__ ngx_array_init (TYPE_13__*,int ,int,int) ;
+ TYPE_6__* ngx_array_push (TYPE_13__*) ;
+ TYPE_7__* ngx_http_get_module_ctx (TYPE_5__*,int ) ;
+ int ngx_http_range_body_filter_module ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_range_parse(ngx_http_request_t *r, ngx_http_range_filter_ctx_t *ctx,
     ngx_uint_t ranges)
 {
-    u_char                       *p;
-    off_t                         start, end, size, content_length, cutoff,
+    u_char *p;
+    off_t start, end, size, content_length, cutoff,
                                   cutlim;
-    ngx_uint_t                    suffix;
-    ngx_http_range_t             *range;
-    ngx_http_range_filter_ctx_t  *mctx;
+    ngx_uint_t suffix;
+    ngx_http_range_t *range;
+    ngx_http_range_filter_ctx_t *mctx;
 
     if (r != r->main) {
         mctx = ngx_http_get_module_ctx(r->main,
@@ -150,7 +150,7 @@ ngx_http_range_parse(ngx_http_request_t *r, ngx_http_range_filter_ctx_t *ctx,
 
         if (start < end) {
             range = ngx_array_push(&ctx->ranges);
-            if (range == NULL) {
+            if (range == ((void*)0)) {
                 return NGX_ERROR;
             }
 

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  type_histo ;
-typedef  int /*<<< orphan*/  length_histo ;
-struct TYPE_4__ {int /*<<< orphan*/ * length_bits; int /*<<< orphan*/ * length_depths; int /*<<< orphan*/ * type_bits; int /*<<< orphan*/ * type_depths; } ;
-typedef  int /*<<< orphan*/  HuffmanTree ;
-typedef  int /*<<< orphan*/  BlockTypeCodeCalculator ;
-typedef  TYPE_1__ BlockSplitCode ;
 
-/* Variables and functions */
- int BROTLI_MAX_BLOCK_TYPE_SYMBOLS ; 
- int BROTLI_NUM_BLOCK_LEN_SYMBOLS ; 
- size_t BlockLengthPrefixCode (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  BuildAndStoreHuffmanTree (int /*<<< orphan*/ *,size_t const,size_t const,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InitBlockTypeCodeCalculator (int /*<<< orphan*/ *) ; 
- size_t NextBlockTypeCode (int /*<<< orphan*/ *,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  StoreBlockSwitch (TYPE_1__*,int /*<<< orphan*/  const,int /*<<< orphan*/  const,int,size_t*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  StoreVarLenUint8 (size_t const,size_t*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t const) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int type_histo ;
+typedef int length_histo ;
+struct TYPE_4__ {int * length_bits; int * length_depths; int * type_bits; int * type_depths; } ;
+typedef int HuffmanTree ;
+typedef int BlockTypeCodeCalculator ;
+typedef TYPE_1__ BlockSplitCode ;
+
+
+ int BROTLI_MAX_BLOCK_TYPE_SYMBOLS ;
+ int BROTLI_NUM_BLOCK_LEN_SYMBOLS ;
+ size_t BlockLengthPrefixCode (int const) ;
+ int BuildAndStoreHuffmanTree (int *,size_t const,size_t const,int *,int *,int *,size_t*,int *) ;
+ int InitBlockTypeCodeCalculator (int *) ;
+ size_t NextBlockTypeCode (int *,int const) ;
+ int StoreBlockSwitch (TYPE_1__*,int const,int const,int,size_t*,int *) ;
+ int StoreVarLenUint8 (size_t const,size_t*,int *) ;
+ int memset (int *,int ,size_t const) ;
 
 __attribute__((used)) static void BuildAndStoreBlockSplitCode(const uint8_t* types,
                                         const uint32_t* lengths,
@@ -52,7 +52,7 @@ __attribute__((used)) static void BuildAndStoreBlockSplitCode(const uint8_t* typ
     ++length_histo[BlockLengthPrefixCode(lengths[i])];
   }
   StoreVarLenUint8(num_types - 1, storage_ix, storage);
-  if (num_types > 1) {  /* TODO: else? could StoreBlockSwitch occur? */
+  if (num_types > 1) {
     BuildAndStoreHuffmanTree(&type_histo[0], num_types + 2, num_types + 2, tree,
                              &code->type_depths[0], &code->type_bits[0],
                              storage_ix, storage);

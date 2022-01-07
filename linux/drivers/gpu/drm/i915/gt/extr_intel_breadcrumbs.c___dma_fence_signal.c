@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dma_fence {int /*<<< orphan*/  flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DMA_FENCE_FLAG_SIGNALED_BIT ; 
- int /*<<< orphan*/  test_and_set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct dma_fence {int flags; } ;
+
+
+ int DMA_FENCE_FLAG_SIGNALED_BIT ;
+ int test_and_set_bit (int ,int *) ;
 
 __attribute__((used)) static bool
 __dma_fence_signal(struct dma_fence *fence)
 {
-	return !test_and_set_bit(DMA_FENCE_FLAG_SIGNALED_BIT, &fence->flags);
+ return !test_and_set_bit(DMA_FENCE_FLAG_SIGNALED_BIT, &fence->flags);
 }
